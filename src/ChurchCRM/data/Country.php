@@ -6,7 +6,7 @@ class Country
   private $countryCode;
   private $countryName;
   private $countryNameYasumi;
-  public function __construct (string $CountryCode, string $CountryName, string $CountryNameYasumi)
+  public function __construct (string $CountryCode, string $CountryName, string $CountryNameYasumi = null)
   {
     $this->countryCode = $CountryCode;
     $this->countryName = $CountryName;

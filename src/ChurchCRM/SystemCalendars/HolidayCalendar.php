@@ -16,6 +16,10 @@ use ChurchCRM\dto\SystemConfig;
 
 class HolidayCalendar implements SystemCalendar {
  
+  public static function isAvailable() {
+    return Countries::getCountryByName(SystemConfig::getValue("sChurchCountry"))->getCountryNameYasumi() !== null;   
+  }
+  
   public function getAccessToken() {
     return false;
   }
@@ -38,7 +42,8 @@ class HolidayCalendar implements SystemCalendar {
     
   public function getEvents() {
     $Country = Countries::getCountryByName(SystemConfig::getValue("sChurchCountry"));
-    $holidays = Yasumi::create($Country->getCountryNameYasumi(),2018);
+    $year = date('Y');
+    $holidays = Yasumi::create($Country->getCountryNameYasumi(),$year);
     $events = new ObjectCollection();
     $events->setModel("ChurchCRM\\Event");
    
