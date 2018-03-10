@@ -4094,7 +4094,7 @@ msgstr "Volvar a Ficha de Depósitos"
 msgid "Fatal error in eGive API datastream: '"
 msgstr "Error fatal en eGive flujo de datos API: '"
 
-#: v2/routes/email.php:23
+#: v2/routes/email.php:24
 msgid "eMail Dashboard"
 msgstr "Dashboard de Email"
 
@@ -4815,7 +4815,7 @@ msgstr "Eventos"
 msgid "Fundraiser"
 msgstr "Recaudación de Fondos"
 
-#: v2/templates/email/dashboard.php:13
+#: v2/templates/email/dashboard.php:15
 msgid "Email Export"
 msgstr "Exportar por Email"
 
@@ -4823,7 +4823,7 @@ msgstr "Exportar por Email"
 msgid "Generate"
 msgstr "Generar"
 
-#: v2/templates/email/dashboard.php:38
+#: v2/templates/email/dashboard.php:29
 msgid "List"
 msgstr "Lista"
 
@@ -5085,27 +5085,27 @@ msgstr "Respaldo Descargado, Copia en servidor removida"
 msgid "You can import the generated CSV file to external email system."
 msgstr "Puede importar el archivo CSV generado a un sistema de email externo."
 
-#: v2/templates/email/dashboard.php:44
+#: v2/templates/email/dashboard.php:35
 msgid "Campaigns:"
 msgstr "Campañas:"
 
-#: v2/templates/email/dashboard.php:45
+#: v2/templates/email/dashboard.php:36
 msgid "Unsubscribed count:"
 msgstr "Cantidad de desuscritos:"
 
-#: v2/templates/email/dashboard.php:46
+#: v2/templates/email/dashboard.php:37
 msgid "Unsubscribed count since last send:"
 msgstr "Cantidad de desuscritos desde último enviado:"
 
-#: v2/templates/email/dashboard.php:47
+#: v2/templates/email/dashboard.php:38
 msgid "Cleaned count:"
 msgstr "Cantidad de limpiados:"
 
-#: v2/templates/email/dashboard.php:48
+#: v2/templates/email/dashboard.php:39
 msgid "Cleaned count since last send:"
 msgstr "Cantidad de limpiados desde último enviado:"
 
-#: v2/templates/email/dashboard.php:64
+#: v2/templates/email/dashboard.php:56
 msgid "Missing emails report"
 msgstr "Reporte de emails faltantes"
 
@@ -5187,27 +5187,27 @@ msgstr "Asistentes para Evento ID:"
 msgid "import subscribers to a list."
 msgstr "importar suscriptores a una lista."
 
-#: v2/templates/email/dashboard.php:77
+#: v2/templates/email/dashboard.php:71
 msgid "is not configured"
 msgstr "no está configurado"
 
-#: v2/templates/email/dashboard.php:78
+#: v2/templates/email/dashboard.php:72
 msgid "Please update the"
 msgstr "Por favor actualizar la"
 
-#: v2/templates/email/dashboard.php:78
+#: v2/templates/email/dashboard.php:72
 msgid "API key in Setting->"
 msgstr "Llave de API en Ajuste->"
 
-#: v2/templates/email/dashboard.php:79
+#: v2/templates/email/dashboard.php:74
 msgid "then update"
 msgstr "después actualizar"
 
-#: v2/templates/email/dashboard.php:79
+#: v2/templates/email/dashboard.php:74
 msgid "For more info see our "
 msgstr "Para más información vea nuestros "
 
-#: v2/templates/email/dashboard.php:79
+#: v2/templates/email/dashboard.php:75
 msgid "support docs."
 msgstr "documentos de soporte."
 
@@ -5441,11 +5441,11 @@ msgstr "Fecha de Inicio: "
 msgid "End Date: "
 msgstr "Fecha de Término: "
 
-#: v2/templates/email/dashboard.php:43
+#: v2/templates/email/dashboard.php:34
 msgid "Members:"
 msgstr "Miembros:"
 
-#: Include/Footer.php:147 v2/templates/email/dashboard.php:78
+#: Include/Footer.php:147 v2/templates/email/dashboard.php:73
 msgid "Edit General Settings"
 msgstr "Editar Ajustes Generales"
 
@@ -9349,11 +9349,11 @@ msgstr "Usuario debe tener permiso MenuOptions"
 msgid "Try our the Beta family view"
 msgstr "Pruebe la Beta de vista de familia"
 
-#: v2/routes/email.php:57
+#: v2/routes/email.php:58
 msgid "SMTP Host is not setup, please visit the settings page"
 msgstr "Servidor SMTP no ha sido configurado, por favor visite la página de ajustes"
 
-#: v2/routes/email.php:62
+#: v2/routes/email.php:63
 msgid "Debug Email Connection"
 msgstr "Depurar Conexión de Email"
 
