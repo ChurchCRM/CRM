@@ -65,14 +65,14 @@ class Menu
         $peopleMenu->addSubMenu(new MenuItem(gettext("Add New Family"), "FamilyEditor.php", SessionUser::getUser()->isAddRecords()));
         $peopleMenu->addSubMenu(new MenuItem(gettext("View Active Families"), "FamilyList.php"));
         $peopleMenu->addSubMenu(new MenuItem(gettext("View Inactive Families"), "FamilyList.php?mode=inactive"));
-        $adminMenu = new MenuItem(gettext("Admin"), "", SessionUser::getUser()->isAdmin());
-        $adminMenu->addSubMenu(new MenuItem(gettext("Classifications Manager"), "OptionManager.php?mode=classes", SessionUser::getUser()->isAdmin()));
-        $adminMenu->addSubMenu(new MenuItem(gettext("Family Roles"), "OptionManager.php?mode=famroles", SessionUser::getUser()->isAdmin()));
-        $adminMenu->addSubMenu(new MenuItem(gettext("Family Properties"), "PropertyList.php?Type=f", SessionUser::getUser()->isAdmin()));
-        $adminMenu->addSubMenu(new MenuItem(gettext("Family Custom Fields"), "FamilyCustomFieldsEditor.php", SessionUser::getUser()->isAdmin()));
-        $adminMenu->addSubMenu(new MenuItem(gettext("People Properties"), "PropertyList.php?Type=p", SessionUser::getUser()->isAdmin()));
-        $adminMenu->addSubMenu(new MenuItem(gettext("Person Custom Fields"), "PersonCustomFieldsEditor.php", SessionUser::getUser()->isAdmin()));
-        $adminMenu->addSubMenu(new MenuItem(gettext("Volunteer Opportunities"), "VolunteerOpportunityEditor.php", SessionUser::getUser()->isAdmin()));
+        $adminMenu = new MenuItem(gettext("Admin"), "", SessionUser::isAdmin());
+        $adminMenu->addSubMenu(new MenuItem(gettext("Classifications Manager"), "OptionManager.php?mode=classes", SessionUser::isAdmin()));
+        $adminMenu->addSubMenu(new MenuItem(gettext("Family Roles"), "OptionManager.php?mode=famroles", SessionUser::isAdmin()));
+        $adminMenu->addSubMenu(new MenuItem(gettext("Family Properties"), "PropertyList.php?Type=f", SessionUser::isAdmin()));
+        $adminMenu->addSubMenu(new MenuItem(gettext("Family Custom Fields"), "FamilyCustomFieldsEditor.php", SessionUser::isAdmin()));
+        $adminMenu->addSubMenu(new MenuItem(gettext("People Properties"), "PropertyList.php?Type=p", SessionUser::isAdmin()));
+        $adminMenu->addSubMenu(new MenuItem(gettext("Person Custom Fields"), "PersonCustomFieldsEditor.php", SessionUser::isAdmin()));
+        $adminMenu->addSubMenu(new MenuItem(gettext("Volunteer Opportunities"), "VolunteerOpportunityEditor.php", SessionUser::isAdmin()));
 
         $peopleMenu->addSubMenu($adminMenu);
 
@@ -102,9 +102,9 @@ class Menu
             $groupMenu->addSubMenu($tmpMenu);
         }
 
-        $adminMenu = new MenuItem(gettext("Admin"), "", SessionUser::getUser()->isAdmin());
-        $adminMenu->addSubMenu(new MenuItem(gettext("Group Properties"), "PropertyList.php?Type=g", SessionUser::getUser()->isAdmin()));
-        $adminMenu->addSubMenu(new MenuItem(gettext("Group Types"), "OptionManager.php?mode=grptypes", SessionUser::getUser()->isAdmin()));
+        $adminMenu = new MenuItem(gettext("Admin"), "", SessionUser::isAdmin());
+        $adminMenu->addSubMenu(new MenuItem(gettext("Group Properties"), "PropertyList.php?Type=g", SessionUser::isAdmin()));
+        $adminMenu->addSubMenu(new MenuItem(gettext("Group Types"), "OptionManager.php?mode=grptypes", SessionUser::isAdmin()));
 
         $groupMenu->addSubMenu($adminMenu);
 
@@ -143,9 +143,9 @@ class Menu
         $depositsMenu->addSubMenu(new MenuItem(gettext("Edit Deposit Slip"), "DepositSlipEditor.php", SessionUser::getUser()->isFinanceEnabled()));
         $depositsMenu->addCounter(new MenuCounter("iCurrentDeposit", "bg-green", $_SESSION['iCurrentDeposit']));
         
-        $adminMenu = new MenuItem(gettext("Admin"), "", SessionUser::getUser()->isAdmin());
-        $adminMenu->addSubMenu(new MenuItem(gettext("Envelope Manager"), "ManageEnvelopes.php", SessionUser::getUser()->isAdmin()));
-        $adminMenu->addSubMenu(new MenuItem(gettext("Donation Funds"), "DonationFundEditor.php", SessionUser::getUser()->isAdmin()));
+        $adminMenu = new MenuItem(gettext("Admin"), "", SessionUser::isAdmin());
+        $adminMenu->addSubMenu(new MenuItem(gettext("Envelope Manager"), "ManageEnvelopes.php", SessionUser::isAdmin()));
+        $adminMenu->addSubMenu(new MenuItem(gettext("Donation Funds"), "DonationFundEditor.php", SessionUser::isAdmin()));
 
         $depositsMenu->addSubMenu($adminMenu);
         return $depositsMenu;
@@ -190,14 +190,14 @@ class Menu
     private static function getAdminMenu()
     {
         $menu = new MenuItem(gettext("Admin"), "", SessionUser::isAdmin(), 'fa-gears');
-        $menu->addSubMenu(new MenuItem(gettext("Edit General Settings"), "SystemSettings.php"));
-        $menu->addSubMenu(new MenuItem(gettext("System Users"), "UserList.php"));
-        $menu->addSubMenu(new MenuItem(gettext("Property Types"), "PropertyTypeList.php"));
-        $menu->addSubMenu(new MenuItem(gettext("Restore Database"), "RestoreDatabase.php"));
-        $menu->addSubMenu(new MenuItem(gettext("Backup Database"), "BackupDatabase.php"));
-        $menu->addSubMenu(new MenuItem(gettext("CSV Import"), "CSVImport.php"));
-        $menu->addSubMenu(new MenuItem(gettext("CSV Export Records"), "CSVExport.php"));
-        $menu->addSubMenu(new MenuItem(gettext("Kiosk Manager"), "KioskManager.php"));
+        $menu->addSubMenu(new MenuItem(gettext("Edit General Settings"), "SystemSettings.php",SessionUser::isAdmin()));
+        $menu->addSubMenu(new MenuItem(gettext("System Users"), "UserList.php",SessionUser::isAdmin()));
+        $menu->addSubMenu(new MenuItem(gettext("Property Types"), "PropertyTypeList.php",SessionUser::isAdmin()));
+        $menu->addSubMenu(new MenuItem(gettext("Restore Database"), "RestoreDatabase.php",SessionUser::isAdmin()));
+        $menu->addSubMenu(new MenuItem(gettext("Backup Database"), "BackupDatabase.php",SessionUser::isAdmin()));
+        $menu->addSubMenu(new MenuItem(gettext("CSV Import"), "CSVImport.php",SessionUser::isAdmin()));
+        $menu->addSubMenu(new MenuItem(gettext("CSV Export Records"), "CSVExport.php",SessionUser::isAdmin()));
+        $menu->addSubMenu(new MenuItem(gettext("Kiosk Manager"), "KioskManager.php",SessionUser::isAdmin()));
         
         return $menu;
     }
