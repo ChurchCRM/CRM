@@ -60,8 +60,8 @@ $isAdmin = $_SESSION['user']->isAdmin();
                 <?php if ($isAdmin) {
         ?>
                     <li>
-                        <a href="<?= SystemURLs::getRootPath() ?>/VolunteerOpportunityEditor.php">
-                            <i class="fa fa-cog"></i> <?= _('Volunteer Opportunities') ?>
+                        <a href="<?= SystemURLs::getRootPath() ?>/r.php">
+                            <i class="fa fa-cog"></i> <?= _('') ?>
                         </a>
                     </li>
                     <?php

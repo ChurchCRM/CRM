@@ -71,6 +71,7 @@ class Menu
         $adminMenu->addSubMenu(new MenuItem(gettext("Family Custom Fields"), "FamilyCustomFieldsEditor.php", SessionUser::getUser()->isAdmin()));
         $adminMenu->addSubMenu(new MenuItem(gettext("People Properties"), "PropertyList.php?Type=p", SessionUser::getUser()->isAdmin()));
         $adminMenu->addSubMenu(new MenuItem(gettext("Person Custom Fields"), "PersonCustomFieldsEditor.php", SessionUser::getUser()->isAdmin()));
+        $adminMenu->addSubMenu(new MenuItem(gettext("Volunteer Opportunities"), "VolunteerOpportunityEditor.php", SessionUser::getUser()->isAdmin()));
 
         $peopleMenu->addSubMenu($adminMenu);
 
