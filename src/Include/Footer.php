@@ -50,52 +50,6 @@ $isAdmin = $_SESSION['user']->isAdmin();
     <div class="tab-content">
         <!-- Home tab content -->
         <div class="tab-pane" id="control-sidebar-settings-other-tab">
-            <h4 class="control-sidebar-heading"><i class="fa fa-cogs"></i> <?= _('Family') ?></h4>
-            <ul class="control-sidebar-menu">
-                <li>
-                    <a href="<?= SystemURLs::getRootPath() ?>/OptionManager.php?mode=famroles">
-                        <i class="fa fa-cog"></i> <?= _('Family Roles') ?>
-                    </a>
-                </li>
-                <li>
-                    <a href="<?= SystemURLs::getRootPath() ?>/PropertyList.php?Type=f">
-                        <i class="fa fa-cog"></i> <?= _('Family Properties') ?>
-                    </a>
-                </li>
-                <?php if ($isAdmin) {
-    ?>
-                    <li>
-                        <a href="<?= SystemURLs::getRootPath() ?>/FamilyCustomFieldsEditor.php">
-                            <i class="fa fa-cog"></i> <?= _('Edit Custom Family Fields') ?>
-                        </a>
-                    </li>
-                    <?php
-} ?>
-            </ul>
-            <br/>
-            <h4 class="control-sidebar-heading"><i class="fa fa-cogs"></i> <?= _('Person') ?></h4>
-            <ul class="control-sidebar-menu">
-                <li>
-                    <a href="<?= SystemURLs::getRootPath() ?>/OptionManager.php?mode=classes">
-                        <i class="fa fa-cog"></i> <?= _('Classifications Manager') ?>
-                    </a>
-                </li>
-                <li>
-                    <a href="<?= SystemURLs::getRootPath() ?>/PropertyList.php?Type=p">
-                        <i class="fa fa-cog"></i> <?= _('People Properties') ?>
-                    </a>
-                </li>
-                <?php if ($isAdmin) {
-        ?>
-                    <li>
-                        <a href="<?= SystemURLs::getRootPath() ?>/PersonCustomFieldsEditor.php">
-                            <i class="fa fa-cog"></i> <?= _('Edit Custom Person Fields') ?>
-                        </a>
-                    </li>
-                    <?php
-    } ?>
-            </ul>
-            <br/>
             <h4 class="control-sidebar-heading"><i class="fa fa-cogs"></i> <?= _('Group') ?></h4>
             <ul class="control-sidebar-menu">
                 <li>

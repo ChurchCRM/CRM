@@ -64,6 +64,16 @@ class Menu
         $peopleMenu->addSubMenu(new MenuItem(gettext("Add New Family"), "FamilyEditor.php", SessionUser::getUser()->isAddRecords()));
         $peopleMenu->addSubMenu(new MenuItem(gettext("View Active Families"), "FamilyList.php"));
         $peopleMenu->addSubMenu(new MenuItem(gettext("View Inactive Families"), "FamilyList.php?mode=inactive"));
+        $adminMenu = new MenuItem(gettext("Admin"), "", SessionUser::getUser()->isAdmin());
+        $adminMenu->addSubMenu(new MenuItem(gettext("Classifications Manager"), "OptionManager.php?mode=classes", SessionUser::getUser()->isAdmin()));
+        $adminMenu->addSubMenu(new MenuItem(gettext("Family Roles"), "OptionManager.php?mode=famroles", SessionUser::getUser()->isAdmin()));
+        $adminMenu->addSubMenu(new MenuItem(gettext("Family Properties"), "PropertyList.php?Type=f", SessionUser::getUser()->isAdmin()));
+        $adminMenu->addSubMenu(new MenuItem(gettext("Family Custom Fields"), "FamilyCustomFieldsEditor.php", SessionUser::getUser()->isAdmin()));
+        $adminMenu->addSubMenu(new MenuItem(gettext("People Properties"), "PropertyList.php?Type=p", SessionUser::getUser()->isAdmin()));
+        $adminMenu->addSubMenu(new MenuItem(gettext("Person Custom Fields"), "PersonCustomFieldsEditor.php", SessionUser::getUser()->isAdmin()));
+
+        $peopleMenu->addSubMenu($adminMenu);
+
         return $peopleMenu;
     }
 
