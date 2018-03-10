@@ -42,6 +42,7 @@ class Menu
             "Deposits" => self::getDepositsMenu(),
             "Fundraiser" => self::getFundraisersMenu(),
             "Reports" => self::getReportsMenu(),
+            "Admin" => self::getAdminMenu(),
             "Custom" => self::getCustomMenu(),
         );
     }
@@ -185,6 +186,22 @@ class Menu
         }
         return null;
     }
+    
+    private static function getAdminMenu()
+    {
+        $menu = new MenuItem(gettext("Admin"), "", SessionUser::isAdmin(), 'fa-gears');
+        $menu->addSubMenu(new MenuItem(gettext("Edit General Settings"), "SystemSettings.php"));
+        $menu->addSubMenu(new MenuItem(gettext("System Users"), "UserList.php"));
+        $menu->addSubMenu(new MenuItem(gettext("Property Types"), "PropertyTypeList.php"));
+        $menu->addSubMenu(new MenuItem(gettext("Restore Database"), "RestoreDatabase.php"));
+        $menu->addSubMenu(new MenuItem(gettext("Backup Database"), "BackupDatabase.php"));
+        $menu->addSubMenu(new MenuItem(gettext("CSV Import"), "CSVImport.php"));
+        $menu->addSubMenu(new MenuItem(gettext("CSV Export Records"), "CSVExport.php"));
+        $menu->addSubMenu(new MenuItem(gettext("Kiosk Manager"), "KioskManager.php"));
+        
+        return $menu;
+    }
+
 
     private static function getCustomMenu() {
         $menu = new MenuItem(gettext("Links"), "", SystemConfig::getBooleanValue("bEnabledMenuLinks"), 'fa-link');
