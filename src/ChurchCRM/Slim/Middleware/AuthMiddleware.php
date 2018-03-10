@@ -18,8 +18,6 @@ class AuthMiddleware {
             $this->apiKey = $request->getHeader("x-api-key");
             if (!empty($this->apiKey)) {
                 $this->user = UserQuery::create()->findOneByApiKey($this->apiKey);
-            } else if (!$this->isUserSessionValid($request)) {
-                return $response->withStatus(401, gettext('No logged in user'));
             }
 
             if (empty($this->user)) {
