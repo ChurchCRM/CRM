@@ -10,6 +10,9 @@ use ChurchCRM\Calendar;
 use Yasumi\Yasumi;
 use Yasumi\Holiday;
 use Propel\Runtime\ActiveQuery\Criteria;
+use ChurchCRM\data\Countries;
+use ChurchCRM\data\Country;
+use ChurchCRM\dto\SystemConfig;
 
 class HolidayCalendar implements SystemCalendar {
  
@@ -34,7 +37,8 @@ class HolidayCalendar implements SystemCalendar {
   }
     
   public function getEvents() {
-    $holidays = Yasumi::create('USA',2018);
+    $Country = Countries::getCountryByName(SystemConfig::getValue("sChurchCountry"));
+    $holidays = Yasumi::create($Country->getCountryNameYasumi(),2018);
     $events = new ObjectCollection();
     $events->setModel("ChurchCRM\\Event");
    
