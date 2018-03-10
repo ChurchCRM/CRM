@@ -10,7 +10,7 @@ msgstr ""
 "#-#-#-#-#  messages.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-05 07:05+0000\n"
+"POT-Creation-Date: 2018-03-10 07:10+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,8 +24,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2018-03-05T07:05:42.556Z\n"
-"PO-Revision-Date: 2018-03-05T07:05:42.556Z\n"
+"POT-Creation-Date: 2018-03-10T07:10:34.847Z\n"
+"PO-Revision-Date: 2018-03-10T07:10:34.847Z\n"
 
 #: AutoPaymentClearAccounts.php:24 CatchCreatePayment.php:71
 #: Include/Functions.php:233
@@ -348,7 +348,7 @@ msgstr ""
 msgid "Encrypt backup file with a password?"
 msgstr ""
 
-#: BackupDatabase.php:55 Login.php:197 Login.php:275 UserList.php:58
+#: BackupDatabase.php:55 Login.php:200 Login.php:278 UserList.php:58
 msgid "Password"
 msgstr ""
 
@@ -1419,7 +1419,7 @@ msgstr ""
 msgid "Your ChurchCRM Account was Deleted."
 msgstr ""
 
-#: ChurchCRM/Emails/users/BaseUserEmail.php:30 Login.php:193
+#: ChurchCRM/Emails/users/BaseUserEmail.php:30 Login.php:196
 msgid "Email/Username"
 msgstr ""
 
@@ -1529,6 +1529,10 @@ msgstr ""
 msgid "Group Directory"
 msgstr ""
 
+#: ChurchCRM/SQLUtils.php:22
+msgid "Unable to open file"
+msgstr ""
+
 #: ChurchCRM/Service/AppIntegrityService.php:28
 msgid "Signature definition file signature failed validation"
 msgstr ""
@@ -1611,6 +1615,18 @@ msgstr ""
 msgid "by"
 msgstr ""
 
+#: ChurchCRM/Service/UpgradeService.php:50
+msgid "Invalid upgrade file specified"
+msgstr ""
+
+#: ChurchCRM/Service/UpgradeService.php:60
+msgid "Failure executing upgrade script"
+msgstr ""
+
+#: ChurchCRM/Service/UpgradeService.php:70
+msgid "Databse upgrade failed"
+msgstr ""
+
 #: ChurchCRM/Slim/Middleware/AddEventsRoleAuthMiddleware.php:16
 msgid "User must have bAddEvent permissions"
 msgstr ""
@@ -1620,6 +1636,7 @@ msgid "User must be an Admin"
 msgstr ""
 
 #: ChurchCRM/Slim/Middleware/AuthMiddleware.php:30
+#: ChurchCRM/Slim/Middleware/Role/BaseAuthRoleMiddleware.php:21
 msgid "No logged in user"
 msgstr ""
 
@@ -1627,8 +1644,16 @@ msgstr ""
 msgid "User must have MenuOptions permission"
 msgstr ""
 
-#: ChurchCRM/Slim/Middleware/PublicCalendarAPIMiddleware.php:14
+#: ChurchCRM/Slim/Middleware/PublicCalendarAPIMiddleware.php:20
 msgid "External Calendar API is disabled"
+msgstr ""
+
+#: ChurchCRM/Slim/Middleware/PublicCalendarAPIMiddleware.php:25
+msgid "Missing calendar access token"
+msgstr ""
+
+#: ChurchCRM/Slim/Middleware/PublicCalendarAPIMiddleware.php:32
+msgid "Calendar access token not found"
 msgstr ""
 
 #: ChurchCRM/SystemCalendars/AnniversariesCalendar.php:31
@@ -3665,7 +3690,7 @@ msgid "Family View"
 msgstr ""
 
 #: FamilyView.php:170
-msgid "Try our the Beta family view"
+msgid "Try out the Beta family view"
 msgstr ""
 
 #: FamilyView.php:176
@@ -4720,7 +4745,7 @@ msgid "All rights reserved"
 msgstr ""
 
 #: Include/Footer.php:27
-msgid "Follow up on Twitter"
+msgid "Follow us on Twitter"
 msgstr ""
 
 #: Include/Footer.php:57 OptionManager.php:63 PeopleDashboard.php:285
@@ -4774,7 +4799,7 @@ msgstr ""
 msgid "Edit Donation Funds"
 msgstr ""
 
-#: Include/Footer.php:147 v2/templates/email/dashboard.php:73
+#: Include/Footer.php:147 v2/templates/email/dashboard.php:74
 msgid "Edit General Settings"
 msgstr ""
 
@@ -4962,41 +4987,41 @@ msgstr ""
 msgid " Bold"
 msgstr ""
 
-#: Include/Header-function.php:52
+#: Include/Header-function.php:60
 msgid "Issue Report!"
 msgstr ""
 
-#: Include/Header-function.php:59
+#: Include/Header-function.php:67
 msgid "Enter a Title for your bug / feature report"
 msgstr ""
 
-#: Include/Header-function.php:69
+#: Include/Header-function.php:77
 msgid "What were you doing when you noticed the bug / feature opportunity?"
 msgstr ""
 
-#: Include/Header-function.php:77
+#: Include/Header-function.php:85
 msgid ""
 "When you click \"submit,\" an error report will be posted to the ChurchCRM "
 "GitHub Issue tracker."
 msgstr ""
 
-#: Include/Header-function.php:78
+#: Include/Header-function.php:86
 msgid "Please do not include any confidential information."
 msgstr ""
 
-#: Include/Header-function.php:79
+#: Include/Header-function.php:87
 msgid ""
 "Some general information about your system will be submitted along with the "
 "request such as Server version and browser headers."
 msgstr ""
 
-#: Include/Header-function.php:80
+#: Include/Header-function.php:88
 msgid ""
 "No personally identifiable information will be submitted unless you "
 "purposefully include it."
 msgstr ""
 
-#: Include/Header-function.php:84
+#: Include/Header-function.php:92
 msgid "Submit"
 msgstr ""
 
@@ -5249,31 +5274,31 @@ msgid ""
 "administrator."
 msgstr ""
 
-#: Login.php:160 Login.php:210
+#: Login.php:163 Login.php:213
 msgid "Login"
 msgstr ""
 
-#: Login.php:173 Login.php:235
+#: Login.php:176 Login.php:238
 msgid "Please Login"
 msgstr ""
 
-#: Login.php:178 Login.php:243
+#: Login.php:181 Login.php:246
 msgid "Your previous session timed out.  Please login again."
 msgstr ""
 
-#: Login.php:202
+#: Login.php:205
 msgid "I forgot my password"
 msgstr ""
 
-#: Login.php:218
+#: Login.php:221
 msgid "Register a new Family"
 msgstr ""
 
-#: Login.php:286
+#: Login.php:289
 msgid "Enter your password to retrieve your session"
 msgstr ""
 
-#: Login.php:289
+#: Login.php:292
 msgid "Or sign in as a different user"
 msgstr ""
 
@@ -7290,6 +7315,14 @@ msgstr ""
 msgid "Not Found: Unknown calendar id"
 msgstr ""
 
+#: api/routes/calendar/events.php:128
+msgid "invalid event type id"
+msgstr ""
+
+#: api/routes/calendar/events.php:135
+msgid "invalid calendar pinning"
+msgstr ""
+
 #: api/routes/cart.php:20
 msgid "POST to cart requires a Persons array, FamilyID, or GroupID"
 msgstr ""
@@ -7311,6 +7344,14 @@ msgid "Your cart has been successfully emptied"
 msgstr ""
 
 #: api/routes/people/people-families.php:128
+#: api/routes/people/people-families.php:140
+#: api/routes/people/people-families.php:194
+msgid "FamilyId"
+msgstr ""
+
+#: api/routes/people/people-families.php:128
+#: api/routes/people/people-families.php:140
+#: api/routes/people/people-families.php:194
 msgid "not found"
 msgstr ""
 
@@ -7328,6 +7369,19 @@ msgstr ""
 
 #: api/routes/people/people-groups.php:154
 msgid "Added to group"
+msgstr ""
+
+#: api/routes/people/people-groups.php:247
+#: api/routes/people/people-groups.php:264
+msgid "invalid group id"
+msgstr ""
+
+#: api/routes/people/people-groups.php:251
+msgid "invalid status value"
+msgstr ""
+
+#: api/routes/people/people-groups.php:268
+msgid "invalid export value"
 msgstr ""
 
 #: api/routes/people/people-properties.php:22
@@ -7370,8 +7424,8 @@ msgstr ""
 msgid "The role could not be assigned."
 msgstr ""
 
-#: api/routes/public/public-calendar.php:48
-msgid "Invalid calendar access token"
+#: api/routes/public/public-user.php:27
+msgid "Invalid User/Password"
 msgstr ""
 
 #: api/routes/public/public-user.php:51
@@ -7408,6 +7462,11 @@ msgstr ""
 
 #: api/routes/system/system-database.php:135
 msgid "The people and families has been cleared from the database."
+msgstr ""
+
+#: api/routes/users.php:28 api/routes/users.php:44 api/routes/users.php:62
+#: api/routes/users.php:82
+msgid "Bad userId"
 msgstr ""
 
 #: eGive.php:75
@@ -7474,6 +7533,7 @@ msgstr ""
 msgid "Oops! Page not found."
 msgstr ""
 
+#: external/templates/calendar/calendar.php:6
 #: external/templates/password/enter-username.php:7
 #: external/templates/password/password-check-email.php:7
 #: external/templates/registration/family-register-done.php:6
@@ -7797,15 +7857,15 @@ msgstr ""
 msgid "Create PhotoBook"
 msgstr ""
 
-#: v2/routes/email.php:24
+#: v2/routes/email.php:26
 msgid "eMail Dashboard"
 msgstr ""
 
-#: v2/routes/email.php:58
+#: v2/routes/email.php:60
 msgid "SMTP Host is not setup, please visit the settings page"
 msgstr ""
 
-#: v2/routes/email.php:63
+#: v2/routes/email.php:65
 msgid "Debug Email Connection"
 msgstr ""
 
@@ -7850,64 +7910,72 @@ msgstr ""
 msgid "Email Export"
 msgstr ""
 
-#: v2/templates/email/dashboard.php:17
+#: v2/templates/email/dashboard.php:16
+msgid "Find Duplicate Emails"
+msgstr ""
+
+#: v2/templates/email/dashboard.php:18
 msgid "Debug"
 msgstr ""
 
-#: v2/templates/email/dashboard.php:29
+#: v2/templates/email/dashboard.php:30
 msgid "List"
 msgstr ""
 
-#: v2/templates/email/dashboard.php:34
+#: v2/templates/email/dashboard.php:35
 msgid "Members:"
 msgstr ""
 
-#: v2/templates/email/dashboard.php:35
+#: v2/templates/email/dashboard.php:36
 msgid "Campaigns:"
 msgstr ""
 
-#: v2/templates/email/dashboard.php:36
+#: v2/templates/email/dashboard.php:37
 msgid "Unsubscribed count:"
 msgstr ""
 
-#: v2/templates/email/dashboard.php:37
+#: v2/templates/email/dashboard.php:38
 msgid "Unsubscribed count since last send:"
 msgstr ""
 
-#: v2/templates/email/dashboard.php:38
+#: v2/templates/email/dashboard.php:39
 msgid "Cleaned count:"
 msgstr ""
 
-#: v2/templates/email/dashboard.php:39
+#: v2/templates/email/dashboard.php:40
 msgid "Cleaned count since last send:"
 msgstr ""
 
-#: v2/templates/email/dashboard.php:56
+#: v2/templates/email/dashboard.php:57
 msgid "Missing emails report"
 msgstr ""
 
-#: v2/templates/email/dashboard.php:71
+#: v2/templates/email/dashboard.php:72
 msgid "is not configured"
 msgstr ""
 
-#: v2/templates/email/dashboard.php:72
+#: v2/templates/email/dashboard.php:73
 msgid "Please update the"
 msgstr ""
 
-#: v2/templates/email/dashboard.php:72
+#: v2/templates/email/dashboard.php:73
 msgid "API key in Setting->"
 msgstr ""
 
-#: v2/templates/email/dashboard.php:74
+#: v2/templates/email/dashboard.php:75
 msgid "then update"
 msgstr ""
 
-#: v2/templates/email/dashboard.php:74
+#: v2/templates/email/dashboard.php:75
 msgid "For more info see our "
 msgstr ""
 
-#: v2/templates/email/dashboard.php:75
+#: v2/templates/email/dashboard.php:76
 msgid "support docs."
+msgstr ""
+
+#: v2/templates/email/duplicate.php:14
+msgid "Duplicate Emails"
 msgstr ""
 
 #: v2/templates/people/family-view.php:29
@@ -9456,6 +9524,9 @@ msgid "New Access Token"
 msgstr ""
 
 msgid "Delete Access Token"
+msgstr ""
+
+msgid "HTML URL"
 msgstr ""
 
 msgid "ICS URL"
