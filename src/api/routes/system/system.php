@@ -3,6 +3,8 @@
 use ChurchCRM\Utils\LoggerUtils;
 use Slim\Http\Request;
 use Slim\Http\Response;
+use ChurchCRM\Service\NotificationService;
+use ChurchCRM\dto\Notification\UiNotification;
 
 $app->group('/system', function () {
     $this->post('/csp-report', 'logCSPReportAPI');
@@ -18,7 +20,15 @@ function logCSPReportAPI(Request $request, Response $response, array $args)
 
 function getUiNotificationAPI(Request $request, Response $response, array $args)
 {
+    if (NotificationService::isUpdateRequired())
+    {
+        NotificationService::updateNotifications();
+    }
     $notifications = [];
-    array_push($notifications, new \ChurchCRM\dto\Notification\UiNotification("my title", "info"));
-    return $response->withJson($notifications);
+    foreach (NotificationService::getNotifications() as $notification) {
+        $uiNotification = new UiNotification($notification->title, "bell", $notification->link, "", "danger", "8000", "bottom", "left");
+        array_push($notifications, $uiNotification);
+    }
+
+    return $response->withJson(["notifications" => $notifications]);
 }
