@@ -1,17 +1,11 @@
 {
   "TTL": 300,
   "messages" : [
-    {
-      "targetVersion":"3.0.0",
-      "adminOnly": false,
-      "title":"Poll: Which PHP version are you using",
-      "link":"https://twitter.com/Church_CRM/status/970558204441649152"
-    },
      {
-      "targetVersion":"2.10.4",
+      "targetVersion":"3.100.",
       "adminOnly": false,
-      "title":"Poll: Which PHP version are you using",
-      "link":"https://twitter.com/Church_CRM/status/970558204441649152"
+      "title":"Title",
+      "link":"link"
     }
   ]
 }
