@@ -45,7 +45,7 @@ class TaskService
         ];
 
         $this->notificationClasses = [
-            new LatestReleaseTask()
+          //  new LatestReleaseTask()
         ];
     }
 
