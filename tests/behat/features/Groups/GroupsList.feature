@@ -10,7 +10,7 @@ Feature: Groups List
     And I press "addNewGroup"
     And I wait for AJAX to finish
     Then I should see "Test Group"
-    
+
   Scenario: Add a member to a group
     Given I am authenticated as "admin" using "changeme"
     And I am on "GroupView.php?GroupID=1"

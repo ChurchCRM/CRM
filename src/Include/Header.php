@@ -46,9 +46,6 @@ $MenuFirst = 1;
 </head>
 
 <body class="hold-transition <?= $_SESSION['user']->getStyle() ?> sidebar-mini">
-<?php
-  Header_system_notifications();
- ?>
 <!-- Site wrapper -->
 <div class="wrapper">
   <?php
