@@ -57,7 +57,7 @@ class AnniversariesCalendar implements SystemCalendar {
       $anniversary->setTitle(gettext("Anniversary").": ".$family->getFamilyString());
       $year = date('Y');
       $anniversary->setStart($year.'-'.$family->getWeddingMonth().'-'.$family->getWeddingDay());
-      $anniversary->setURL(SystemURLs::getURL()."FamilyView.php?FamilyID=".$family->getId());
+      $anniversary->setURL(SystemURLs::getRootPath()."FamilyView.php?FamilyID=".$family->getId());
       $events->push($anniversary);
     }
     return $events;
