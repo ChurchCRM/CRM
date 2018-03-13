@@ -7,7 +7,6 @@ Feature: Groups List
     Given I am authenticated as "admin" using "changeme"
     And I am on "/GroupList.php"
     And I fill in "groupName" with "Test Group"
-    And I wait for 11 seconds
     And I press "addNewGroup"
     And I wait for AJAX to finish
     Then I should see "Test Group"
