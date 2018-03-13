@@ -8,6 +8,7 @@ use Propel\Runtime\Collection\ObjectCollection;
 use ChurchCRM\Event;
 use ChurchCRM\Calendar;
 use Propel\Runtime\ActiveQuery\Criteria;
+use ChurchCRM\dto\SystemURLs;
 
 class BirthdaysCalendar implements SystemCalendar {
  
@@ -57,6 +58,7 @@ class BirthdaysCalendar implements SystemCalendar {
       $birthday->setStart($year.'-'.$person->getBirthMonth().'-'.$person->getBirthDay());
       $age = $person->getAge($birthday->getStart());
       $birthday->setTitle(gettext("Birthday") . ": " . $person->getFullName() . ( $age ? " (".$age.")" : '' ));
+      $birthday->setURL(SystemURLs::getURL()."PersonView.php?PersonID=".$person->getId());
       $events->push($birthday);
     }
     return $events;

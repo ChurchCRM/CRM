@@ -8,6 +8,7 @@ use Propel\Runtime\Collection\ObjectCollection;
 use ChurchCRM\Event;
 use ChurchCRM\Calendar;
 use Propel\Runtime\ActiveQuery\Criteria;
+use ChurchCRM\dto\SystemURLs;
 
 class AnniversariesCalendar implements SystemCalendar {
  
@@ -56,9 +57,7 @@ class AnniversariesCalendar implements SystemCalendar {
       $anniversary->setTitle(gettext("Anniversary").": ".$family->getFamilyString());
       $year = date('Y');
       $anniversary->setStart($year.'-'.$family->getWeddingMonth().'-'.$family->getWeddingDay());
-      $events->push(clone $anniversary);
-      $year -= 1;
-      $anniversary->setStart($year.'-'.$family->getWeddingMonth().'-'.$family->getWeddingDay());
+      $anniversary->setURL(SystemURLs::getURL()."FamilyView.php?FamilyID=".$family->getId());
       $events->push($anniversary);
     }
     return $events;
