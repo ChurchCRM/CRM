@@ -5,7 +5,6 @@ use Slim\Http\Response;
 use ChurchCRM\dto\SystemURLs;
 use Slim\Views\PhpRenderer;
 use ChurchCRM\UserQuery;
-use ChurchCRM\Slim\Middleware\AdminRoleAuthMiddleware;
 
 $app->group('/user', function () {
     $this->get('/not-found', 'viewUserNotFound');
