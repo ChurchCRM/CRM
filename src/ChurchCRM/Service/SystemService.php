@@ -348,10 +348,6 @@ class SystemService
 
     public function runTimerJobs()
     {
-        if (NotificationService::isUpdateRequired())
-        {
-          NotificationService::updateNotifications();
-        }
         //start the external backup timer job
         if (SystemConfig::getBooleanValue('bEnableExternalBackupTarget') && SystemConfig::getValue('sExternalBackupAutoInterval') > 0) {  //if remote backups are enabled, and the interval is greater than zero
             try {
