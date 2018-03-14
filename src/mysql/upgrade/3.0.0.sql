@@ -1,7 +1,8 @@
 ALTER TABLE `events_event`
   ADD COLUMN `location_id` INT DEFAULT NULL AFTER `event_typename`,
   ADD COLUMN `primary_contact_person_id` INT DEFAULT NULL AFTER `location_id`,
-  ADD COLUMN `secondary_contact_person_id` INT DEFAULT NULL AFTER `location_id`;
+  ADD COLUMN `secondary_contact_person_id` INT DEFAULT NULL AFTER `primary_contact_person_id`,
+  ADD COLUMN `event_url` text DEFAULT NULL AFTER `secondary_contact_person_id`;
 
 
 DROP TABLE IF EXISTS `event_audience`;
