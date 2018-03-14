@@ -11,7 +11,7 @@ class NotificationService
      *
      */
     try {
-      $TempNotificaions = json_decode(file_get_contents(SystemConfig::getValue("sCloudURL")."notifications.json" ));
+      $TempNotificaions = json_decode(file_get_contents(SystemConfig::getValue("sNotificationsURL")));
       if (isset($TempNotificaions->TTL) ) {
         $_SESSION['SystemNotifications'] = $TempNotificaions;
         $_SESSION['SystemNotifications']->expires = new \DateTime();

@@ -36,5 +36,6 @@ class FullCalendarEvent {
         $this->backgroundColor = "#".$CRMCalendar->getBackgroundColor();
         $this->textColor = "#".$CRMCalendar->getForegroundColor();
         $this->editable = $CRMEvent->isEditable();
+        $this->url = $CRMEvent->getURL();
   }
 }

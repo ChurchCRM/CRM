@@ -448,9 +448,11 @@ function deleteCalendar(){
 
 window.calendarPropertiesModal = {
   getBootboxContent: function (calendar){ 
+    var HTMLURL = '';
     var icsURL = '';
     var jsonURL = '';
     if (calendar.AccessToken){
+      HTMLURL =  window.CRM.fullURL + "external/calendars/"+calendar.AccessToken;
       icsURL =  window.CRM.fullURL + "api/public/calendar/"+calendar.AccessToken+"/ics";
       jsonURL =  window.CRM.fullURL + "api/public/calendar/"+calendar.AccessToken+"/events";
     }
@@ -461,6 +463,12 @@ window.calendarPropertiesModal = {
           + '<input id="AccessToken" class="form-control" type="text" readonly value="' + calendar.AccessToken + '"/>'
           + (window.CRM.calendarJSArgs.isModifiable ? '<a id="NewAccessToken" class="btn btn-warning"><i class="fa fa-repeat"></i>' + i18next.t("New Access Token") + '</a>' :  '')
           + (window.CRM.calendarJSArgs.isModifiable && calendar.AccessToken != null ? '<a id="DeleteAccessToken" class="btn btn-danger"><i class="fa fa-trash-o"></i>' + i18next.t("Delete Access Token") + '</a>' :  '')
+          + '</td>'
+          + '</tr>'
+          + '<tr>'
+          + "<td class='LabelColumn'>" + i18next.t('HTML URL') + ":</td>"
+          + '<td colspan="3">'
+          + '<span ><a href="'+HTMLURL+'">'+HTMLURL+'</a></span>'
           + '</td>'
           + '</tr>'
           + '<tr>'

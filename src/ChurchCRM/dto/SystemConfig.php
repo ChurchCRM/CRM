@@ -229,6 +229,7 @@ class SystemConfig
         "bEnabledCalendar" => new ConfigItem(2054, "bEnabledCalendar", "boolean", "1", gettext("Enable Calendar menu.")),
         "bEnabledFundraiser" => new ConfigItem(2055, "bEnabledFundraiser", "boolean", "1", gettext("Enable Fundraiser menu.")),
         "bEnabledEmail" => new ConfigItem(2056, "bEnabledEmail", "boolean", "1", gettext("Enable Email menu.")),
+        "sNotificationsURL" => new ConfigItem(2057, "sNotificationsURL", "text", "https://raw.githubusercontent.com/ChurchCRM/CRM/Notifications/notifications.json", gettext("ChurchCRM Central Notifications URL"))
         );
   }
 
