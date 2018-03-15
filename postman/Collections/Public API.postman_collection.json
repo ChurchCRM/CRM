@@ -1,13 +1,14 @@
 {
 	"info": {
 		"name": "Public API",
-		"_postman_id": "f46adc1f-8ac0-c4d1-f65a-2d9801f71ff5",
+		"_postman_id": "d208700c-5367-0331-43db-13a68b297103",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
 			"name": "Register",
+			"description": null,
 			"item": [
 				{
 					"name": "Register: Person",
@@ -34,7 +35,8 @@
 								"register",
 								"person"
 							]
-						}
+						},
+						"description": null
 					},
 					"response": []
 				},
@@ -63,7 +65,8 @@
 								"register",
 								"family"
 							]
-						}
+						},
+						"description": null
 					},
 					"response": []
 				},
@@ -91,7 +94,8 @@
 								"persons",
 								"self-register"
 							]
-						}
+						},
+						"description": null
 					},
 					"response": []
 				}
@@ -99,6 +103,7 @@
 		},
 		{
 			"name": "Data",
+			"description": null,
 			"item": [
 				{
 					"name": "Public Data: Countries",
@@ -120,7 +125,8 @@
 								"data",
 								"countries"
 							]
-						}
+						},
+						"description": null
 					},
 					"response": []
 				},
@@ -146,7 +152,8 @@
 								"us",
 								"states"
 							]
-						}
+						},
+						"description": null
 					},
 					"response": []
 				},
@@ -172,7 +179,8 @@
 								"ca",
 								"states"
 							]
-						}
+						},
+						"description": null
 					},
 					"response": []
 				}
@@ -180,6 +188,7 @@
 		},
 		{
 			"name": "Calendars",
+			"description": null,
 			"item": [
 				{
 					"name": "Public Calendar: Events (JSON)",
@@ -202,7 +211,8 @@
 								"{{CalendarAccessToken}}",
 								"events"
 							]
-						}
+						},
+						"description": null
 					},
 					"response": []
 				},
@@ -227,7 +237,8 @@
 								"{{CalendarAccessToken}}",
 								"ICS"
 							]
-						}
+						},
+						"description": null
 					},
 					"response": []
 				}
@@ -257,6 +268,7 @@
 		},
 		{
 			"name": "User",
+			"description": null,
 			"item": [
 				{
 					"name": "Public API Login",

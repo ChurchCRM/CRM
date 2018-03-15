@@ -1,124 +1,129 @@
 {
 	"info": {
 		"name": "Private API",
-		"_postman_id": "36c47ef2-598b-a903-e4d0-e65dbcb4dee5",
-		"description": "",
+		"_postman_id": "cb78b60f-60c4-1bd9-242f-9e031ae139aa",
+		"description": "# Introduction\nWhat does your API do?\n\n# Overview\nThings that the developers should know about\n\n# Authentication\nWhat is the preferred way of using the API?\n\n# Error Codes\nWhat errors and status codes can a user expect?\n\n# Rate limit\nIs there a limit to the number of requests an user can send?",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "Calendars",
+			"name": "Events",
+			"description": null,
 			"item": [
 				{
-					"name": "Events",
-					"item": [
-						{
-							"name": "Events: get by Id",
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "x-api-key",
-										"value": "SGNtn8Z8Db3hNqXh7c6uKO9tHs0d1FnIc23pZRntTfAxwnEtqA"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
-								"url": {
-									"raw": "{{host}}/api/calendars/3/events",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"api",
-										"calendars",
-										"3",
-										"events"
-									]
-								}
-							},
-							"response": []
+					"name": "Events: get by Id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "SGNtn8Z8Db3hNqXh7c6uKO9tHs0d1FnIc23pZRntTfAxwnEtqA"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
 						},
-						{
-							"name": "Get All Events",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
-								"url": {
-									"raw": "{{host}}/api/events/",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"api",
-										"events",
-										""
-									]
-								}
-							},
-							"response": []
+						"url": {
+							"raw": "{{host}}/api/calendars/3/events",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"calendars",
+								"3",
+								"events"
+							]
 						},
-						{
-							"name": "New Public Calendar Access Token",
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
-								"url": {
-									"raw": "{{host}}/api/calendars/1/NewAccessToken",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"api",
-										"calendars",
-										"1",
-										"NewAccessToken"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Get All Events",
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "x-api-key",
-										"value": "SwDPMNFswLdt4tQDRoYOmPqBU3fE47HMsbr6OXobysusMbVtpJ"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
-								"url": {
-									"raw": "{{host}}/api/events/",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"api",
-										"events",
-										""
-									]
-								}
-							},
-							"response": []
-						}
-					],
-					"_postman_isSubFolder": true
+						"description": null
+					},
+					"response": []
 				},
+				{
+					"name": "Get All Events",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/events/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"events",
+								""
+							]
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "New Public Calendar Access Token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/calendars/1/NewAccessToken",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"calendars",
+								"1",
+								"NewAccessToken"
+							]
+						},
+						"description": null
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Events",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "SwDPMNFswLdt4tQDRoYOmPqBU3fE47HMsbr6OXobysusMbVtpJ"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/events/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"events",
+								""
+							]
+						},
+						"description": null
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Calendars",
+			"description": null,
+			"item": [
 				{
 					"name": "New Calendar",
 					"request": {
@@ -143,7 +148,8 @@
 								"calendars",
 								""
 							]
-						}
+						},
+						"description": null
 					},
 					"response": []
 				},
@@ -162,7 +168,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{host}}/api/calendars/1",
+							"raw": "{{host}}/api/calendars/4",
 							"host": [
 								"{{host}}"
 							],
@@ -171,7 +177,8 @@
 								"calendars",
 								"4"
 							]
-						}
+						},
+						"description": null
 					},
 					"response": []
 				}
@@ -179,26 +186,59 @@
 		},
 		{
 			"name": "Cart",
+			"description": null,
 			"item": []
 		},
 		{
 			"name": "Dashboard",
+			"description": null,
 			"item": []
 		},
 		{
 			"name": "Emails",
-			"item": []
+			"description": null,
+			"item": [
+				{
+					"name": "Email: Debug",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "ajGwpy8Pdai22XDUpqjC5Ob04v0eG7EGgb4vz2bD2juT8YDmfM"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "{{host}}/api/email/debug",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"email",
+								"debug"
+							]
+						},
+						"description": null
+					},
+					"response": []
+				}
+			]
 		},
 		{
 			"name": "Finance",
+			"description": null,
 			"item": [
 				{
 					"name": "Deposits",
+					"description": null,
 					"item": [],
 					"_postman_isSubFolder": true
 				},
 				{
 					"name": "Payments",
+					"description": null,
 					"item": [],
 					"_postman_isSubFolder": true
 				}
@@ -206,21 +246,26 @@
 		},
 		{
 			"name": "Geocoder",
+			"description": null,
 			"item": []
 		},
 		{
 			"name": "Groups",
+			"description": null,
 			"item": []
 		},
 		{
 			"name": "Kiosks",
+			"description": null,
 			"item": []
 		},
 		{
 			"name": "People",
+			"description": null,
 			"item": [
 				{
 					"name": "Persons",
+					"description": null,
 					"item": [
 						{
 							"name": "Persons: Search",
@@ -303,27 +348,26 @@
 							},
 							"response": [
 								{
-									"id": "a1612d19-894e-4c76-8313-9af52fe4c416",
+									"id": "7c24d190-72f1-4296-b190-d2c1cf87ad83",
 									"name": "Persons: Get Photo by ID",
 									"originalRequest": {
 										"method": "GET",
 										"header": [
 											{
 												"key": "x-api-key",
-												"value": "ajGwpy8Pdai22XDUpqjC5Ob04v0eG7EGgb4vz2bD2juT8YDmfM",
-												"disabled": false
+												"value": "ajGwpy8Pdai22XDUpqjC5Ob04v0eG7EGgb4vz2bD2juT8YDmfM"
 											}
 										],
 										"body": {},
 										"url": {
-											"raw": "{{host}}/api/persons/{{personId}}/photo",
+											"raw": "{{host}}/api/persons/2/photo",
 											"host": [
 												"{{host}}"
 											],
 											"path": [
 												"api",
 												"persons",
-												"{{personId}}",
+												"2",
 												"photo"
 											]
 										}
@@ -331,7 +375,6 @@
 									"status": "Not Found",
 									"code": 404,
 									"_postman_previewlanguage": "html",
-									"_postman_previewtype": "text",
 									"header": [
 										{
 											"key": "CRM_USER_ID",
@@ -393,7 +436,6 @@
 											"key": "CRM%40%2Fmaster"
 										}
 									],
-									"responseTime": 343,
 									"body": "Can't find route for GET on http://demo.churchcrm.io/master/api/persons/%7B%7BpersonId%7D%7D/photo"
 								}
 							]
@@ -494,10 +536,6 @@
 									{
 										"key": "x-api-key",
 										"value": "ajGwpy8Pdai22XDUpqjC5Ob04v0eG7EGgb4vz2bD2juT8YDmfM"
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json"
 									}
 								],
 								"body": {
@@ -528,10 +566,6 @@
 									{
 										"key": "x-api-key",
 										"value": "ajGwpy8Pdai22XDUpqjC5Ob04v0eG7EGgb4vz2bD2juT8YDmfM"
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json"
 									}
 								],
 								"body": {
@@ -560,8 +594,8 @@
 								"method": "POST",
 								"header": [
 									{
-										"key": "Content-Type",
-										"value": "application/json"
+										"key": "x-api-key",
+										"value": ""
 									}
 								],
 								"body": {
@@ -587,7 +621,12 @@
 							"name": "Persons: Roles",
 							"request": {
 								"method": "GET",
-								"header": [],
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": ""
+									}
+								],
 								"body": {},
 								"url": {
 									"raw": "{{host}}/api/persons/roles",
@@ -603,18 +642,51 @@
 								"description": "Find where an email address is used more than once"
 							},
 							"response": []
+						},
+						{
+							"name": "Persons: Number of People with Birthdays Today",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "ajGwpy8Pdai22XDUpqjC5Ob04v0eG7EGgb4vz2bD2juT8YDmfM"
+									}
+								],
+								"body": {},
+								"url": {
+									"raw": "{{host}}/api/persons/search/admin",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"persons",
+										"search",
+										"admin"
+									]
+								},
+								"description": ""
+							},
+							"response": []
 						}
 					],
 					"_postman_isSubFolder": true
 				},
 				{
 					"name": "Families",
+					"description": null,
 					"item": [
 						{
 							"name": "Family: Send Verify Email",
 							"request": {
 								"method": "GET",
-								"header": [],
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": ""
+									}
+								],
 								"body": {},
 								"url": {
 									"raw": ""
@@ -627,7 +699,12 @@
 							"name": "Families: Search",
 							"request": {
 								"method": "GET",
-								"header": [],
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": ""
+									}
+								],
 								"body": {},
 								"url": {
 									"raw": "{{host}}/api/families/search/Kennedy",
@@ -649,7 +726,12 @@
 							"name": "Families: Today's Anniversaries Count",
 							"request": {
 								"method": "GET",
-								"header": [],
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": ""
+									}
+								],
 								"body": {},
 								"url": {
 									"raw": "{{host}}/api/families/numbers",
@@ -670,7 +752,12 @@
 							"name": "Families: Get Self Register",
 							"request": {
 								"method": "GET",
-								"header": [],
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": ""
+									}
+								],
 								"body": {},
 								"url": {
 									"raw": "{{host}}/api/families/self-register",
@@ -691,7 +778,12 @@
 							"name": "Families: Get Self Verify",
 							"request": {
 								"method": "GET",
-								"header": [],
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": ""
+									}
+								],
 								"body": {},
 								"url": {
 									"raw": "{{host}}/api/families/self-verify",
@@ -712,7 +804,12 @@
 							"name": "Families: Get Pending Self Verify",
 							"request": {
 								"method": "GET",
-								"header": [],
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": ""
+									}
+								],
 								"body": {},
 								"url": {
 									"raw": "{{host}}/api/families/pending-self-verify",
@@ -733,7 +830,12 @@
 							"name": "Families: Get by ID",
 							"request": {
 								"method": "GET",
-								"header": [],
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": ""
+									}
+								],
 								"body": {},
 								"url": {
 									"raw": "{{host}}/api/families/2",
@@ -754,7 +856,12 @@
 							"name": "Families: Get Photo by ID",
 							"request": {
 								"method": "GET",
-								"header": [],
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": ""
+									}
+								],
 								"body": {},
 								"url": {
 									"raw": "{{host}}/api/families/2/photo",
@@ -776,7 +883,12 @@
 							"name": "Families: Verify by ID",
 							"request": {
 								"method": "POST",
-								"header": [],
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": ""
+									}
+								],
 								"body": {},
 								"url": {
 									"raw": "{{host}}/api/families/2/verify",
@@ -797,11 +909,16 @@
 						{
 							"name": "Families: Geo Location by ID",
 							"request": {
-								"method": "POST",
-								"header": [],
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "ajGwpy8Pdai22XDUpqjC5Ob04v0eG7EGgb4vz2bD2juT8YDmfM"
+									}
+								],
 								"body": {},
 								"url": {
-									"raw": "{{host}}/api/families/2/verify",
+									"raw": "{{host}}/api/families/2/geolocation",
 									"host": [
 										"{{host}}"
 									],
@@ -809,10 +926,10 @@
 										"api",
 										"families",
 										"2",
-										"verify"
+										"geolocation"
 									]
 								},
-								"description": ""
+								"description": null
 							},
 							"response": []
 						},
@@ -820,10 +937,15 @@
 							"name": "Families: Set as Active",
 							"request": {
 								"method": "POST",
-								"header": [],
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": ""
+									}
+								],
 								"body": {},
 								"url": {
-									"raw": "{{host}}/api/families/2/verify",
+									"raw": "{{host}}/api/families/2/activate/false",
 									"host": [
 										"{{host}}"
 									],
@@ -831,7 +953,8 @@
 										"api",
 										"families",
 										"2",
-										"verify"
+										"activate",
+										"false"
 									]
 								},
 								"description": "Update the family status to activated or deactivated with :familyId and :status true/false.\nPass true to activate and false to deactivate."
@@ -845,7 +968,12 @@
 					"name": "Persons: Find Dup Emails",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "ajGwpy8Pdai22XDUpqjC5Ob04v0eG7EGgb4vz2bD2juT8YDmfM"
+							}
+						],
 						"body": {},
 						"url": {
 							"raw": "{{host}}/api/persons/duplicate/emails",
@@ -867,18 +995,22 @@
 		},
 		{
 			"name": "Search",
+			"description": null,
 			"item": []
 		},
 		{
 			"name": "System",
+			"description": null,
 			"item": [
 				{
 					"name": "Upgrade",
+					"description": null,
 					"item": [],
 					"_postman_isSubFolder": true
 				},
 				{
 					"name": "Database",
+					"description": null,
 					"item": [
 						{
 							"name": "Database - Reset",
@@ -887,7 +1019,7 @@
 								"header": [
 									{
 										"key": "x-api-key",
-										"value": "PRLlNXNShOwwlxhkOKYzRobBAl5f0B4OiEZVsCEzh2Vto4D4Es"
+										"value": "ajGwpy8Pdai22XDUpqjC5Ob04v0eG7EGgb4vz2bD2juT8YDmfM"
 									}
 								],
 								"body": {
@@ -919,10 +1051,7 @@
 										"value": "fin48waG4rIWwfLvTstDr8ZJtP6aNdSTm7NjsNPm6n0rtKNd37"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
+								"body": {},
 								"url": {
 									"raw": "{{host}}/api/database/people/clear",
 									"host": [
@@ -944,14 +1073,155 @@
 				},
 				{
 					"name": "Issues",
+					"description": null,
 					"item": [],
 					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Menu Links",
+					"description": "",
+					"item": [
+						{
+							"name": "MenuLink: Get All",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": ""
+									}
+								],
+								"body": {},
+								"url": {
+									"raw": "{{host}}/api/system/menu/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"system",
+										"menu",
+										""
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "MenuLink: Add Link",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "ajGwpy8Pdai22XDUpqjC5Ob04v0eG7EGgb4vz2bD2juT8YDmfM"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"Name\": \"msn\",\n    \"Url\": \"https://msn.com\",\n    \"Order\": 99\n}"
+								},
+								"url": {
+									"raw": "{{host}}/api/system/menu/",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"system",
+										"menu",
+										""
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						},
+						{
+							"name": "MenuLink: Delete Link",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "ajGwpy8Pdai22XDUpqjC5Ob04v0eG7EGgb4vz2bD2juT8YDmfM"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{host}}/api/system/menu/2666",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"system",
+										"menu",
+										"2666"
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "System: UI Notification",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": ""
+						},
+						"description": "get all notitication to show the user"
+					},
+					"response": []
+				},
+				{
+					"name": "System: UI Notification",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "ajGwpy8Pdai22XDUpqjC5Ob04v0eG7EGgb4vz2bD2juT8YDmfM"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "{{host}}/api/system/notification",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"system",
+								"notification"
+							]
+						},
+						"description": "get all notitication to show the user"
+					},
+					"response": []
 				}
 			]
 		},
 		{
 			"name": "Users",
+			"description": null,
 			"item": [
+				{
+					"name": "Email",
+					"description": "",
+					"item": [],
+					"_postman_isSubFolder": true
+				},
 				{
 					"name": "User: API Key Regen",
 					"request": {

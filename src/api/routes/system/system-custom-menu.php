@@ -2,7 +2,7 @@
 
 use ChurchCRM\MenuLink;
 use ChurchCRM\MenuLinkQuery;
-use ChurchCRM\Slim\Middleware\AdminRoleAuthMiddleware;
+use ChurchCRM\Slim\Middleware\Role\AdminRoleAuthMiddleware;
 use ChurchCRM\Utils\ORMUtils;
 use Slim\Http\Request;
 use Slim\Http\Response;

@@ -6,6 +6,7 @@ use ChurchCRM\PropertyQuery;
 use ChurchCRM\RecordProperty;
 use ChurchCRM\RecordPropertyQuery;
 use ChurchCRM\Slim\Middleware\Role\MenuOptionsRoleAuthMiddleware;
+
 use Slim\Http\Request;
 use Slim\Http\Response;
 
