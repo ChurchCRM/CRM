@@ -348,7 +348,7 @@
 							},
 							"response": [
 								{
-									"id": "7c24d190-72f1-4296-b190-d2c1cf87ad83",
+									"id": "a4c96a80-7548-4ddf-8bc1-b5b792c3c93e",
 									"name": "Persons: Get Photo by ID",
 									"originalRequest": {
 										"method": "GET",
