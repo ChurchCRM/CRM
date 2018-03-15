@@ -43,7 +43,7 @@ function system_failure($message, $header = 'Setup failure')
     exit();
 }
 
-function buildConnectionManagerConfig($sSERVERNAME, $sDATABASE, $sUSER, $sPASSWORD, $dbClassName, $dbPort = '3306')
+function buildConnectionManagerConfig($sSERVERNAME, $sDATABASE, $sUSER, $sPASSWORD, $dbClassName, $dbPort = "3306")
 {
     return [
         'dsn' => 'mysql:host=' . $sSERVERNAME . ';port='.$dbPort.';dbname=' . $sDATABASE,
@@ -69,8 +69,18 @@ try {
 
 SystemURLs::checkAllowedURL($bLockURL, $URL);
 
-$cnInfoCentral = mysqli_connect($sSERVERNAME, $sUSER, $sPASSWORD)
-or system_failure('Could not connect to MySQL on <strong>'.$sSERVERNAME.'</strong> as <strong>'.$sUSER.'</strong>. Please check the settings in <strong>Include/Config.php</strong>.<br/>MySQL Error: '.mysqli_error($cnInfoCentral));
+// Due to mysqli handling connections on 'localhost' via socket only, we need to tease out this case and handle
+// TCP/IP connections separately defaulting $dbPort to 3306 for the general case when$dbPort is not set.
+if ($sSERVERNAME == "localhost") {
+    $cnInfoCentral = mysqli_connect($sSERVERNAME, $sUSER, $sPASSWORD)
+    or system_failure('Could not connect to MySQL on <strong>'.$sSERVERNAME.'</strong> as <strong>'.$sUSER.'</strong>. Please check the settings in <strong>Include/Config.php</strong>.<br/>MySQL Error: '.mysqli_error($cnInfoCentral));
+} else {
+    if (!isset($dbPort)) {
+        $dbPort=3306;
+    }
+    $cnInfoCentral = mysqli_connect($sSERVERNAME.':'.$dbPort, $sUSER, $sPASSWORD)
+        or system_failure('Could not connect to MySQL on <strong>'.$sSERVERNAME.'</strong> on port <strong>'.$dbPort.'</strong> as <strong>'.$sUSER.'</strong>. Please check the settings in <strong>Include/Config.php</strong>.<br/>MySQL Error: '.mysqli_error($cnInfoCentral));
+}
 
 mysqli_set_charset($cnInfoCentral, 'utf8mb4');
 
@@ -91,7 +101,7 @@ $serviceContainer = Propel::getServiceContainer();
 $serviceContainer->checkVersion('2.0.0-dev');
 $serviceContainer->setAdapterClass('default', 'mysql');
 $manager = new ConnectionManagerSingle();
-$manager->setConfiguration(buildConnectionManagerConfig($sSERVERNAME, $sDATABASE, $sUSER, $sPASSWORD, $dbClassName));
+$manager->setConfiguration(buildConnectionManagerConfig($sSERVERNAME, $sDATABASE, $sUSER, $sPASSWORD, $dbClassName, $dbPort));
 $manager->setName('default');
 $serviceContainer->setConnectionManager('default', $manager);
 $serviceContainer->setDefaultDatasource('default');
@@ -130,7 +140,7 @@ $logger = LoggerUtils::getAppLogger();
 // ORM Logs
 $ormLogger = new Logger('ormLogger');
 $dbClassName = "\\Propel\\Runtime\\Connection\\DebugPDO";
-$manager->setConfiguration(buildConnectionManagerConfig($sSERVERNAME, $sDATABASE, $sUSER, $sPASSWORD, $dbClassName));
+$manager->setConfiguration(buildConnectionManagerConfig($sSERVERNAME, $sDATABASE, $sUSER, $sPASSWORD, $dbClassName, $dbPort));
 $ormLogger->pushHandler(new StreamHandler(LoggerUtils::buildLogFilePath("orm"), LoggerUtils::getLogLevel()));
 $serviceContainer->setLogger('defaultLogger', $ormLogger);
 

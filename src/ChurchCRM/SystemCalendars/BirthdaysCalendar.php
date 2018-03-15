@@ -53,12 +53,11 @@ class BirthdaysCalendar implements SystemCalendar {
       $birthday = new Event();
       $birthday->setId($person->getId());
       $birthday->setEditable(false);
-      $birthday->setTitle(gettext("Birthday").": ".$person->getFullName());
       $year = date('Y');
       $birthday->setStart($year.'-'.$person->getBirthMonth().'-'.$person->getBirthDay());
-      $events->push(clone $birthday);
-      $year -= 1;
-      $birthday->setStart($year.'-'.$person->getBirthMonth().'-'.$person->getBirthDay());
+      $age = $person->getAge($birthday->getStart());
+      $birthday->setTitle(gettext("Birthday") . ": " . $person->getFullName() . ( $age ? " (".$age.")" : '' ));
+      $birthday->setURL($person->getViewURI());
       $events->push($birthday);
     }
     return $events;

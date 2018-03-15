@@ -25,7 +25,7 @@ class MenuRenderer
     {
         ?>
         <li>
-            <a href="<?= $menuItem->getURI() ?>">
+            <a href="<?= $menuItem->getURI() ?>" <?= $menuItem->isExternal() ? "target='_blank'" : "" ?>>
                 <i class='fa <?= $menuItem->getIcon() ?>'></i>
                 <span>
                     <?= $menuItem->getName() ?>
@@ -50,10 +50,12 @@ class MenuRenderer
             </a>
             <ul class="treeview-menu">
             <?php foreach ($menuItem->getSubItems() as $menuSubItem) {
-                if ($menuSubItem->isMenu()) {
-                    self::renderSubMenuItem($menuSubItem);
-                } else {
-                    self::renderMenuItem($menuSubItem);
+                if ($menuSubItem->isVisible()) {
+                    if ($menuSubItem->isMenu()) {
+                        self::renderSubMenuItem($menuSubItem);
+                    } else {
+                        self::renderMenuItem($menuSubItem);
+                    }
                 }
             } ?>
             </ul>

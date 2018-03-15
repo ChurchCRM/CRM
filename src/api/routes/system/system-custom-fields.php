@@ -1,7 +1,7 @@
 <?php
 
 use ChurchCRM\PersonCustomMasterQuery;
-use ChurchCRM\Slim\Middleware\AdminRoleAuthMiddleware;
+use ChurchCRM\Slim\Middleware\Role\AdminRoleAuthMiddleware;
 use Slim\Http\Request;
 use Slim\Http\Response;
 

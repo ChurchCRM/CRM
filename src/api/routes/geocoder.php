@@ -24,5 +24,5 @@ function getGeoLocals(Request $request, Response $response, array $p_args)
     if (!empty($input)) {
         return $response->withJson(GeoUtils::getLatLong($input->address));
     }
-    return $response->withStatus(404);
+    return $response->withStatus(400); // bad request
 }

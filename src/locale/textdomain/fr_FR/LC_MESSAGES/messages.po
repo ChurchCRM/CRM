@@ -68,16 +68,16 @@ msgid "Save"
 msgstr "Enregistrer"
 
 #: AutoPaymentEditor.php:804 BatchWinnerEntry.php:83 BatchWinnerEntry.php:95
-#: CSVImport.php:271 DirectoryReports.php:82 DonatedItemEditor.php:186
-#: DonatedItemEditor.php:237 FamilyEditor.php:1089 GroupEditor.php:94
-#: GroupList.php:36 GroupView.php:40 Include/CountryDropDown.php:6
-#: Include/Functions.php:855 Include/Functions.php:908
-#: Include/Header-function.php:311 MapUsingGoogle.php:96
-#: MapUsingGoogle.php:120 PaddleNumEditor.php:176 PersonEditor.php:782
-#: PersonEditor.php:798 PersonEditor.php:1137 PrintView.php:265
-#: PrintView.php:275 SelectDelete.php:156 SelectList.php:35 SelectList.php:45
-#: SelectList.php:61 SelectList.php:1098 SelectList.php:1169
-#: SystemSettings.php:214 eGive.php:341
+#: CSVImport.php:271 ChurchCRM/Config/Menu/Menu.php:88 DirectoryReports.php:82
+#: DonatedItemEditor.php:186 DonatedItemEditor.php:237 FamilyEditor.php:1089
+#: GroupEditor.php:94 GroupList.php:36 GroupView.php:40
+#: Include/CountryDropDown.php:6 Include/Functions.php:855
+#: Include/Functions.php:908 MapUsingGoogle.php:96 MapUsingGoogle.php:120
+#: PaddleNumEditor.php:176 PersonEditor.php:782 PersonEditor.php:798
+#: PersonEditor.php:1137 PrintView.php:265 PrintView.php:275
+#: SelectDelete.php:156 SelectList.php:35 SelectList.php:45 SelectList.php:61
+#: SelectList.php:1098 SelectList.php:1169 SystemSettings.php:214
+#: eGive.php:341
 msgid "Unassigned"
 msgstr "Non attribué"
 
@@ -135,7 +135,7 @@ msgid "Phone"
 msgstr "Téléphone"
 
 #: AutoPaymentEditor.php:942 CSVExport.php:142 CSVImport.php:226
-#: CartToFamily.php:311 CartView.php:272
+#: CartToFamily.php:311 CartView.php:272 ChurchCRM/Config/Menu/Menu.php:40
 #: ChurchCRM/Reports/PDF_Directory.php:318
 #: ChurchCRM/Reports/PDF_Directory.php:394
 #: ChurchCRM/Reports/PDF_Directory.php:451 EditEventAttendees.php:42
@@ -152,8 +152,7 @@ msgstr "Téléphone"
 #: sundayschool/SundaySchoolClassView.php:89
 #: sundayschool/SundaySchoolClassView.php:205
 #: v2/templates/people/family-view.php:174
-#: v2/templates/people/family-view.php:314 menuconfig_mcf.php:15
-#: queryparameteroptions_qpo.php:13
+#: v2/templates/people/family-view.php:314 queryparameteroptions_qpo.php:13
 msgid "Email"
 msgstr "Email"
 
@@ -561,10 +560,6 @@ msgstr "ERREUR: fichier CSV téléchargé a disparu !"
 msgid "Data Cleared Successfully!"
 msgstr "Les données ont été effacé avec succès!"
 
-#: CSVImport.php:823
-msgid "Please select the confirmation checkbox"
-msgstr "Veuillez cocher la case de confirmation"
-
 #: CSVImport.php:812
 msgid "Upload CSV File"
 msgstr "Télécharger un fichier CSV"
@@ -589,7 +584,7 @@ msgstr "Importation des données réussie."
 msgid "persons were imported"
 msgstr "des personnes ont été importées"
 
-#: CanvassAutomation.php:21 ReportList.php:39
+#: CanvassAutomation.php:21 ChurchCRM/Config/Menu/Menu.php:148
 msgid "Canvass Automation"
 msgstr "Automatisation des démarchages"
 
@@ -943,7 +938,7 @@ msgstr "Oui"
 msgid "No"
 msgstr "Non"
 
-#: Include/Header.php:145 Include/Header.php:146
+#: Include/Header.php:146 Include/Header.php:147
 msgid "Developer Chat"
 msgstr "Chat pour développeurs"
 
@@ -1108,7 +1103,7 @@ msgid "Address"
 msgstr "Adresse"
 
 #: ChurchCRM/Service/CalendarService.php:16
-#: ChurchCRM/SystemCalendars/BirthdaysCalendar.php:56 DirectoryReports.php:174
+#: ChurchCRM/SystemCalendars/BirthdaysCalendar.php:59 DirectoryReports.php:174
 #: FamilyView.php:358 PersonView.php:510 Reports/ConfirmReport.php:184
 #: Reports/ConfirmReport.php:203 Reports/ConfirmReportEmail.php:192
 #: Reports/ConfirmReportEmail.php:210
@@ -2045,7 +2040,7 @@ msgstr "Voulez-vous continuer ?"
 msgid "You are about to email copy of the family information in pdf to the following emails"
 msgstr "Vous êtes sur le point d'envoyer une copie PDF des informations de la famille aux adresses emails suivantes"
 
-#: FinancialReports.php:35 ReportList.php:29
+#: FinancialReports.php:35
 msgid "Financial Reports"
 msgstr "Rapports financier"
 
@@ -2220,7 +2215,7 @@ msgstr "Coupon de remise :"
 msgid "Sort Data by:"
 msgstr "Trier les données par:"
 
-#: FinancialReports.php:301 menuconfig_mcf.php:21
+#: ChurchCRM/Config/Menu/Menu.php:122 FinancialReports.php:301
 msgid "Deposit"
 msgstr "Dépôt"
 
@@ -2775,7 +2770,7 @@ msgstr "Mot de Passe"
 msgid "Login"
 msgstr "Connexion"
 
-#: ManageEnvelopes.php:21 menuconfig_mcf.php:22
+#: ChurchCRM/Config/Menu/Menu.php:123 ManageEnvelopes.php:21
 msgid "Envelope Manager"
 msgstr "Gestionnaire d&#39;Enveloppes"
 
@@ -2867,7 +2862,7 @@ msgstr "Familles"
 msgid "See all Families"
 msgstr "Voir toutes les familles"
 
-#: Menu.php:196 PeopleDashboard.php:158 menuconfig_mcf.php:4
+#: ChurchCRM/Config/Menu/Menu.php:60 Menu.php:196 PeopleDashboard.php:158
 msgid "People"
 msgstr "Personnes"
 
@@ -3631,11 +3626,7 @@ msgstr "Rappel de rapport de contribution"
 msgid "Report Menu"
 msgstr "Menu Rapports"
 
-#: ReportList.php:40
-msgid "Automated support for conducting an every-member canvass."
-msgstr "Support automatisé pour effectuer un démarchage pour tous les membres."
-
-#: ReportList.php:58
+#: ChurchCRM/Config/Menu/Menu.php:116
 msgid "Event Attendance Reports"
 msgstr "Rapports de présence pour l'événement"
 
@@ -3699,7 +3690,7 @@ msgstr "Supprimer les données de la famille ET ses membres."
 msgid "Person Listing"
 msgstr "Liste des Personnes"
 
-#: SelectList.php:172 menuconfig_mcf.php:13
+#: ChurchCRM/Config/Menu/Menu.php:74 SelectList.php:172
 msgid "Group Assignment Helper"
 msgstr "Aide assignements au groupe"
 
@@ -3813,7 +3804,7 @@ msgstr "Permission"
 msgid "Base URL"
 msgstr "URL de base"
 
-#: ChurchCRM/dto/SystemConfig.php:238 Include/Footer.php:139
+#: ChurchCRM/dto/SystemConfig.php:246 Include/Footer.php:139
 #: SystemSettings.php:29
 msgid "System Settings"
 msgstr "Réglages Système"
@@ -4105,7 +4096,7 @@ msgstr "Retourner au Bordereau de dépôt"
 msgid "Fatal error in eGive API datastream: '"
 msgstr "Erreur fatale dans flux de données API de eGive: &#39;"
 
-#: v2/routes/email.php:23
+#: v2/routes/email.php:24
 msgid "eMail Dashboard"
 msgstr "Tableau de bord eMail"
 
@@ -4241,7 +4232,7 @@ msgstr " "
 msgid "am"
 msgstr " "
 
-#: ChurchCRM/model/ChurchCRM/Person.php:477 ChurchCRM/utils/MiscUtils.php:78
+#: ChurchCRM/model/ChurchCRM/Person.php:478 ChurchCRM/utils/MiscUtils.php:78
 msgid "yrs old"
 msgstr "ans"
 
@@ -4345,15 +4336,16 @@ msgstr "Certaines informations d'ordre général à propos de votre système ser
 msgid "No personally identifiable information will be submitted unless you purposefully include it."
 msgstr "Aucune informations personnelles identifiable ne seront transmit à moins que vous ne l'incluiez délibérément."
 
-#: Include/Header-function.php:354 Include/Header.php:188 menuconfig_mcf.php:5
+#: ChurchCRM/Config/Menu/Menu.php:35 ChurchCRM/Config/Menu/Menu.php:61
+#: ChurchCRM/Config/Menu/Menu.php:99
 msgid "Dashboard"
 msgstr "Tableau de bord"
 
-#: Include/Header.php:80
+#: Include/Header.php:81
 msgid "Toggle navigation"
 msgstr "Basculer le mode de navigation"
 
-#: Include/Header.php:115 PersonView.php:377
+#: Include/Header.php:116 PersonView.php:377
 msgid "Change Password"
 msgstr "Modifier Mot de Passe"
 
@@ -4603,8 +4595,9 @@ msgstr "Quantité:"
 msgid "Gift Designation:"
 msgstr "Description du cadeau:"
 
-#: GroupEditor.php:108 sundayschool/SundaySchoolClassView.php:39
-#: sundayschool/SundaySchoolDashboard.php:247 menuconfig_mcf.php:14
+#: ChurchCRM/Config/Menu/Menu.php:98 GroupEditor.php:108
+#: sundayschool/SundaySchoolClassView.php:39
+#: sundayschool/SundaySchoolDashboard.php:247
 msgid "Sunday School"
 msgstr "École du dimanche"
 
@@ -4715,6 +4708,7 @@ msgstr "Rejeter"
 msgid "Sunday School Dashboard"
 msgstr "Tableau de bord de l&#39;école du dimanche"
 
+#: ChurchCRM/Config/Menu/Menu.php:101
 #: sundayschool/SundaySchoolDashboard.php:69
 msgid "Classes"
 msgstr "Classes"
@@ -4794,7 +4788,7 @@ msgstr "Créer une feuille de présence"
 msgid "System Users"
 msgstr "Utilisateurs du système"
 
-#: v2/routes/calendar.php:22 menuconfig_mcf.php:3
+#: ChurchCRM/Config/Menu/Menu.php:51 v2/routes/calendar.php:22
 msgid "Calendar"
 msgstr "Calendrier"
 
@@ -4802,27 +4796,27 @@ msgstr "Calendrier"
 msgid "Members"
 msgstr "Membres"
 
-#: menuconfig_mcf.php:6
+#: ChurchCRM/Config/Menu/Menu.php:62
 msgid "Add New Person"
 msgstr "Ajouter une nouvelle personne"
 
-#: menuconfig_mcf.php:7
+#: ChurchCRM/Config/Menu/Menu.php:63
 msgid "View All Persons"
 msgstr "Afficher toutes les personnes"
 
-#: menuconfig_mcf.php:8
+#: ChurchCRM/Config/Menu/Menu.php:64
 msgid "Add New Family"
 msgstr "Ajouter une nouvelle famille"
 
-#: ChurchCRM/dto/SystemConfig.php:244 menuconfig_mcf.php:16
+#: ChurchCRM/Config/Menu/Menu.php:111 ChurchCRM/dto/SystemConfig.php:252
 msgid "Events"
 msgstr "Evénements"
 
-#: FundRaiserEditor.php:31 menuconfig_mcf.php:26
+#: ChurchCRM/Config/Menu/Menu.php:134 FundRaiserEditor.php:31
 msgid "Fundraiser"
 msgstr "Collectes de fonds"
 
-#: v2/templates/email/dashboard.php:13
+#: v2/templates/email/dashboard.php:15
 msgid "Email Export"
 msgstr "Exporter un Email"
 
@@ -4830,7 +4824,7 @@ msgstr "Exporter un Email"
 msgid "Generate"
 msgstr "Générer"
 
-#: v2/templates/email/dashboard.php:38
+#: v2/templates/email/dashboard.php:29
 msgid "List"
 msgstr "Liste"
 
@@ -4970,27 +4964,27 @@ msgstr "Se connecter à la base de données restaurée"
 msgid "Restore Error."
 msgstr "Erreur de restauration."
 
-#: ChurchCRM/dto/SystemConfig.php:231
+#: ChurchCRM/dto/SystemConfig.php:238
 msgid "Church Information"
 msgstr "Information de l'église"
 
-#: ChurchCRM/dto/SystemConfig.php:232
+#: ChurchCRM/dto/SystemConfig.php:239
 msgid "User setup"
 msgstr "Réglages utilisateur"
 
-#: ChurchCRM/dto/SystemConfig.php:233
+#: ChurchCRM/dto/SystemConfig.php:240
 msgid "Email Setup"
 msgstr "Réglages Email"
 
-#: ChurchCRM/dto/SystemConfig.php:235
+#: ChurchCRM/dto/SystemConfig.php:243
 msgid "Map Settings"
 msgstr "Réglages Carte"
 
-#: ChurchCRM/dto/SystemConfig.php:236
+#: ChurchCRM/dto/SystemConfig.php:244
 msgid "Report Settings"
 msgstr "Réglages Rapport"
 
-#: ChurchCRM/dto/SystemConfig.php:241
+#: ChurchCRM/dto/SystemConfig.php:249
 msgid "Localization"
 msgstr "Localisation"
 
@@ -5092,27 +5086,27 @@ msgstr "Sauvegarde téléchargé, la copie sur le serveur a été supprimée"
 msgid "You can import the generated CSV file to external email system."
 msgstr "Vous pouvez importer le fichier CSV généré sur un système d'email externe."
 
-#: v2/templates/email/dashboard.php:44
+#: v2/templates/email/dashboard.php:35
 msgid "Campaigns:"
 msgstr "Campagnes :"
 
-#: v2/templates/email/dashboard.php:45
+#: v2/templates/email/dashboard.php:36
 msgid "Unsubscribed count:"
 msgstr "Nombre de désabonnés :"
 
-#: v2/templates/email/dashboard.php:46
+#: v2/templates/email/dashboard.php:37
 msgid "Unsubscribed count since last send:"
 msgstr "Nombre de désabonnés depuis la dernière fois :"
 
-#: v2/templates/email/dashboard.php:47
+#: v2/templates/email/dashboard.php:38
 msgid "Cleaned count:"
 msgstr "Compte nettoyé :"
 
-#: v2/templates/email/dashboard.php:48
+#: v2/templates/email/dashboard.php:39
 msgid "Cleaned count since last send:"
 msgstr "Comptes nettoyés depuis  la dernière fois :"
 
-#: v2/templates/email/dashboard.php:64
+#: v2/templates/email/dashboard.php:56
 msgid "Missing emails report"
 msgstr "Rapport d&#39;emails manquant"
 
@@ -5194,27 +5188,27 @@ msgstr "Participants à l&#39;événement ID :"
 msgid "import subscribers to a list."
 msgstr "importer les abonnés de la liste."
 
-#: v2/templates/email/dashboard.php:77
+#: v2/templates/email/dashboard.php:71
 msgid "is not configured"
 msgstr "n'est pas configuré"
 
-#: v2/templates/email/dashboard.php:78
+#: v2/templates/email/dashboard.php:72
 msgid "Please update the"
 msgstr "Veuillez mettre à jour le"
 
-#: v2/templates/email/dashboard.php:78
+#: v2/templates/email/dashboard.php:72
 msgid "API key in Setting->"
 msgstr "Clé API dans Réglages->"
 
-#: v2/templates/email/dashboard.php:79
+#: v2/templates/email/dashboard.php:74
 msgid "then update"
 msgstr "puis mettre à jour"
 
-#: v2/templates/email/dashboard.php:79
+#: v2/templates/email/dashboard.php:74
 msgid "For more info see our "
 msgstr "Pour plus d'infos voir notre "
 
-#: v2/templates/email/dashboard.php:79
+#: v2/templates/email/dashboard.php:75
 msgid "support docs."
 msgstr "documentations."
 
@@ -5448,11 +5442,11 @@ msgstr "À partir de :"
 msgid "End Date: "
 msgstr "Jusqu&#39;à:"
 
-#: v2/templates/email/dashboard.php:43
+#: v2/templates/email/dashboard.php:34
 msgid "Members:"
 msgstr "Membres:"
 
-#: Include/Footer.php:147 v2/templates/email/dashboard.php:78
+#: Include/Footer.php:147 v2/templates/email/dashboard.php:73
 msgid "Edit General Settings"
 msgstr "Modifier les Réglages Généraux"
 
@@ -5500,15 +5494,15 @@ msgstr "Propriétés de Groupe "
 msgid "Assign a New Property:"
 msgstr "Attribuer une Nouvelle Propriété:"
 
-#: ChurchCRM/model/ChurchCRM/Person.php:470 ChurchCRM/utils/MiscUtils.php:71
+#: ChurchCRM/model/ChurchCRM/Person.php:471 ChurchCRM/utils/MiscUtils.php:71
 msgid "mos old"
 msgstr "âgé de (en mois)"
 
-#: ChurchCRM/model/ChurchCRM/Person.php:472 ChurchCRM/utils/MiscUtils.php:73
+#: ChurchCRM/model/ChurchCRM/Person.php:473 ChurchCRM/utils/MiscUtils.php:73
 msgid "mo old"
 msgstr "âgé de (en mois)"
 
-#: ChurchCRM/model/ChurchCRM/Person.php:479 ChurchCRM/utils/MiscUtils.php:80
+#: ChurchCRM/model/ChurchCRM/Person.php:480 ChurchCRM/utils/MiscUtils.php:80
 msgid "yr old"
 msgstr "ans"
 
@@ -5528,8 +5522,8 @@ msgstr "Tous"
 msgid "Family Map"
 msgstr "Carte de toutes les familles"
 
-#: Menu.php:234 PeopleDashboard.php:200 api/routes/search.php:173
-#: menuconfig_mcf.php:11
+#: ChurchCRM/Config/Menu/Menu.php:72 Menu.php:234 PeopleDashboard.php:200
+#: api/routes/search.php:173
 msgid "Groups"
 msgstr "Groupes"
 
@@ -5852,7 +5846,7 @@ msgstr "Date de la dernière vérification d'intégrité"
 msgid "Main"
 msgstr "Principal(e)"
 
-#: Include/Header-function.php:273 menuconfig_mcf.php:12
+#: ChurchCRM/Config/Menu/Menu.php:73
 msgid "List Groups"
 msgstr "Lister les groupes"
 
@@ -5860,55 +5854,55 @@ msgstr "Lister les groupes"
 msgid "Edit Group Types"
 msgstr "Modifier les types de groupes"
 
-#: menuconfig_mcf.php:17
+#: ChurchCRM/Config/Menu/Menu.php:113
 msgid "List Church Events"
 msgstr "Lister les événements de l'église"
 
-#: menuconfig_mcf.php:18
+#: ChurchCRM/Config/Menu/Menu.php:112
 msgid "Add Church Event"
 msgstr "Ajouter un nouvel événement d'église"
 
-#: menuconfig_mcf.php:19
+#: ChurchCRM/Config/Menu/Menu.php:114
 msgid "List Event Types"
 msgstr "Listes les types d'événement"
 
-#: menuconfig_mcf.php:20
+#: ChurchCRM/Config/Menu/Menu.php:115
 msgid "Check-in and Check-out"
 msgstr "Vérifier et confirmer"
 
-#: menuconfig_mcf.php:23
+#: ChurchCRM/Config/Menu/Menu.php:124
 msgid "View All Deposits"
 msgstr "Afficher tous les dépôts"
 
-#: menuconfig_mcf.php:24
+#: ChurchCRM/Config/Menu/Menu.php:125
 msgid "Deposit Reports"
 msgstr "Rapports des dépôts"
 
-#: menuconfig_mcf.php:25
+#: ChurchCRM/Config/Menu/Menu.php:126
 msgid "Edit Deposit Slip"
 msgstr "Modifier un bordereau de dépôt"
 
-#: menuconfig_mcf.php:27
+#: ChurchCRM/Config/Menu/Menu.php:136
 msgid "View All Fundraisers"
 msgstr "Afficher tous les collecteurs de fonds"
 
-#: menuconfig_mcf.php:28
+#: ChurchCRM/Config/Menu/Menu.php:135
 msgid "Create New Fundraiser"
 msgstr "Créer une nouvelle collecte de fonds"
 
-#: menuconfig_mcf.php:29
+#: ChurchCRM/Config/Menu/Menu.php:137
 msgid "Edit Fundraiser"
 msgstr "Modifier la collecte de fonds"
 
-#: menuconfig_mcf.php:30
+#: ChurchCRM/Config/Menu/Menu.php:139
 msgid "View Buyers"
 msgstr "Afficher les acheteurs"
 
-#: menuconfig_mcf.php:31
+#: ChurchCRM/Config/Menu/Menu.php:138
 msgid "Add Donors to Buyer List"
 msgstr "Ajouter les donateurs à la liste des acheteurs"
 
-#: menuconfig_mcf.php:32
+#: ChurchCRM/Config/Menu/Menu.php:147
 msgid "Data/Reports"
 msgstr "Données/Rapports"
 
@@ -5916,7 +5910,7 @@ msgstr "Données/Rapports"
 msgid "Reports Menu"
 msgstr "Menu des Rapports"
 
-#: menuconfig_mcf.php:34
+#: ChurchCRM/Config/Menu/Menu.php:149
 msgid "Query Menu"
 msgstr "Menu Requête"
 
@@ -7926,16 +7920,16 @@ msgstr "Familles"
 msgid "Deposit ticket type.  QBDT - Quickbooks"
 msgstr "Type de tiquet de dépôt. QBDT - quickbooks"
 
-#: ChurchCRM/dto/SystemConfig.php:237
+#: ChurchCRM/dto/SystemConfig.php:245
 msgid "Financial Settings"
 msgstr "Réglages financier"
 
-#: ChurchCRM/dto/SystemConfig.php:300 ChurchCRM/dto/SystemConfig.php:312
-#: ChurchCRM/dto/SystemConfig.php:325
+#: ChurchCRM/dto/SystemConfig.php:308 ChurchCRM/dto/SystemConfig.php:320
+#: ChurchCRM/dto/SystemConfig.php:333
 msgid "An invalid configuration name has been requested"
 msgstr "Nom de configuration invalide demandé"
 
-#: ChurchCRM/dto/SystemConfig.php:343
+#: ChurchCRM/dto/SystemConfig.php:351
 msgid "An invalid configuration id has been requested"
 msgstr "ID de configuration invalide demandé"
 
@@ -8214,11 +8208,11 @@ msgstr "Veuillez confirmer l'échec de la réinitialisation de l'identifiant"
 msgid "Password reset for"
 msgstr "Réinitialisation du Mot de Passe pour"
 
-#: menuconfig_mcf.php:9
+#: ChurchCRM/Config/Menu/Menu.php:65
 msgid "View Active Families"
 msgstr "Afficher les familles actives"
 
-#: menuconfig_mcf.php:10
+#: ChurchCRM/Config/Menu/Menu.php:66
 msgid "View Inactive Families"
 msgstr "Afficher les familles inactives"
 
@@ -8414,11 +8408,11 @@ msgstr "KioskVisibilityTimestamp"
 msgid "Show/Hide Lost Password Link on the login screen"
 msgstr "Afficher/Masquer le lien Mot de Passe Perdu sur fenêtre d'identification"
 
-#: ChurchCRM/dto/SystemConfig.php:240
+#: ChurchCRM/dto/SystemConfig.php:248
 msgid "Backup"
 msgstr "Sauvegarde"
 
-#: ChurchCRM/dto/SystemConfig.php:242
+#: ChurchCRM/dto/SystemConfig.php:250
 msgid "Integration"
 msgstr "Intégration"
 
@@ -8450,13 +8444,9 @@ msgstr "Lien de réinitialisation du Mot de Passe"
 msgid "Reset Password"
 msgstr "Réinitialisation du Mot de Passe"
 
-#: ChurchCRM/Service/SystemService.php:96
+#: ChurchCRM/Service/SystemService.php:95
 msgid "As part of the restore, external backups have been disabled.  If you wish to continue automatic backups, you must manuall re-enable the bEnableExternalBackupTarget setting."
 msgstr "Dans le cadre de la restauration, les sauvegardes externes ont été désactivées. Si vous voulez continuer les sauvegardes automatiques, vous devrez ré-activer le réglage bAutoriserSauvegardesExternes."
-
-#: EventEditor.php:498
-msgid "Event Group"
-msgstr "Événement du Groupe"
 
 #: external/routes/password.php:43
 msgid "Unable to reset password"
@@ -8486,19 +8476,19 @@ msgstr "Un nouveau mot de passe vous a été envoyé. Veuillez vérifier votre b
 msgid "Kiosk Manager"
 msgstr "Manager de kiosque."
 
-#: Include/Header.php:90
+#: Include/Header.php:91
 msgid "Your Cart"
 msgstr "Votre panier"
 
-#: Include/Header.php:99
+#: Include/Header.php:100
 msgid "Your settings and more"
 msgstr "Vos réglages et plus"
 
-#: Include/Header.php:140 Include/Header.php:141
+#: Include/Header.php:141 Include/Header.php:142
 msgid "Report an issue"
 msgstr "Signaler un problème"
 
-#: Include/Header.php:161
+#: Include/Header.php:162
 msgid "Your tasks"
 msgstr "Vos tâches"
 
@@ -8714,10 +8704,6 @@ msgstr "En attente de vérification automatique"
 msgid "Families with valid self verify links"
 msgstr "Familles avec des liens valide de vérification automatique"
 
-#: members/self-register.php:13
-msgid "Families Self Registration"
-msgstr "Enregistrement des Familles automatique"
-
 #: members/self-verify-updates.php:13
 msgid "Self Verify"
 msgstr "Vérification automatique"
@@ -8876,7 +8862,7 @@ msgstr "Rechercher des versements"
 msgid "Search Payments"
 msgstr "Rechercher des paiements"
 
-#: ChurchCRM/dto/SystemConfig.php:239
+#: ChurchCRM/dto/SystemConfig.php:247
 msgid "Quick Search"
 msgstr "Recherche rapide"
 
@@ -9056,18 +9042,6 @@ msgstr "Avec limitation"
 msgid "Filter Settings"
 msgstr "Réglages des filtres"
 
-#: calendar.php:70
-msgid "Event Type Filter"
-msgstr "Filtres du type d'événements"
-
-#: calendar.php:80
-msgid "Event Group Filter"
-msgstr "Filtres Groupe d'événements"
-
-#: 
-msgid "Calendar Title"
-msgstr "Titre du calendrier"
-
 #: 
 msgid "Calendar description"
 msgstr "Description du calendrier"
@@ -9089,30 +9063,18 @@ msgid "Are you sure about this change?"
 msgstr "Êtes vous sûr de vouloir faire ce changement ?"
 
 #: 
-msgid "will be dropped."
-msgstr "sera déplacé."
-
-#: 
 msgid "Resize Event"
 msgstr "Redimensionner événement"
-
-#: 
-msgid "Event Creation"
-msgstr "Creation événement"
-
-#: 
-msgid "Event was added successfully."
-msgstr "Événement ajouté avec succès."
 
 #: GetText.php:24
 msgid "Text from"
 msgstr "Texte de"
 
-#: Include/Header.php:113
+#: Include/Header.php:114
 msgid "Profile"
 msgstr "Profile"
 
-#: Include/Header.php:121
+#: Include/Header.php:122
 msgid "Sign out"
 msgstr "Se déconnecter"
 
@@ -9120,7 +9082,7 @@ msgstr "Se déconnecter"
 msgid "Sermon Text"
 msgstr "Texte de la Prédication"
 
-#: Include/Header.php:117 PersonView.php:376
+#: Include/Header.php:118 PersonView.php:376
 msgid "Change Settings"
 msgstr "Changer les Réglages"
 
@@ -9160,11 +9122,11 @@ msgstr "Champ où la dernière confession est enregistré, doit être sous forme
 msgid "Require that this ChurchCRM Database is accessed over HTTPS"
 msgstr "Requière que la base de données de ChurchCRM soit accessible par HTTPS"
 
-#: ChurchCRM/dto/SystemConfig.php:234
+#: ChurchCRM/dto/SystemConfig.php:241
 msgid "People Setup"
 msgstr "Installation de personnes"
 
-#: ChurchCRM/dto/SystemConfig.php:243
+#: ChurchCRM/dto/SystemConfig.php:251
 msgid "Church Services"
 msgstr "Cultes de l'Eglise"
 
@@ -9220,15 +9182,15 @@ msgstr "Visualiser les anniversaire et anniversaires de mariage au démarrage du
 msgid "Number of seconds after page load until the banner disappears, default 10 seconds"
 msgstr "Nombre de secondes à fixer pour que la bannière disparaisse, par défaut 10 secs."
 
-#: Include/Header.php:130
+#: Include/Header.php:131
 msgid "Help & Support"
 msgstr "Aide & Support"
 
-#: Include/Header.php:135 Include/Header.php:136
+#: Include/Header.php:136 Include/Header.php:137
 msgid "Help & Manual"
 msgstr "Aide & Manuel"
 
-#: Include/Header.php:150 Include/Header.php:151
+#: Include/Header.php:151 Include/Header.php:152
 msgid "Contributing"
 msgstr "Pour contribuer"
 
@@ -9248,7 +9210,7 @@ msgstr "Activer automatiquement le cryptage SMTP que le serveur relai peut utili
 msgid "Set the encryption system to use - ssl (deprecated) or tls"
 msgstr "Activer le système de cryptage pour utiliser SSL (deprecated) ou TLS"
 
-#: Include/Header.php:119
+#: Include/Header.php:120
 msgid "Lock"
 msgstr "Verrouiller la session"
 
@@ -9329,11 +9291,7 @@ msgstr "Supprimé du groupe"
 msgid "Added to group"
 msgstr "Rajouté au groupe"
 
-#: EventEditor.php:516
-msgid "Event Publicly Visible"
-msgstr "Événement visible publiquement"
-
-#: v2/routes/email.php:62
+#: v2/routes/email.php:63
 msgid "Debug Email Connection"
 msgstr "Débogage de la connexion courriel"
 

@@ -15,27 +15,8 @@ require_once 'Functions.php';
 
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\Service\NotificationService;
 use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\GroupQuery;
-use Propel\Runtime\ActiveQuery\Criteria;
-use ChurchCRM\ListOptionQuery;
 use ChurchCRM\MenuConfigQuery;
-use ChurchCRM\UserConfigQuery;
-
-function Header_system_notifications()
-{
-    if (NotificationService::hasActiveNotifications()) {
-        ?>
-        <div class="systemNotificationBar">
-            <?php
-            foreach (NotificationService::getNotifications() as $notification) {
-                echo "<a href=\"" . $notification->link . "\">" . $notification->title . "</a>";
-            } ?>
-        </div>
-        <?php
-    }
-}
 
 function Header_modals()
 {

@@ -10,6 +10,12 @@
       options.url=window.CRM.root+"/api/"+options.path;
       options.dataType = 'json';
       options.contentType =  "application/json";
+      options.beforeSend = function(jqXHR, settings) {
+        jqXHR.url = settings.url;
+      }
+      options.error = function(jqXHR, textStatus, errorThrown) {
+        window.CRM.system.handlejQAJAXError(jqXHR, textStatus, errorThrown, options.suppressErrorDialog);
+      }
       return $.ajax(options);
     }
 
@@ -165,7 +171,8 @@
       'refresh' : function () {
         window.CRM.APIRequest({
           method: 'GET',
-          path:"cart/"
+          path:"cart/",
+          suppressErrorDialog: true
         }).done(function(data) {
           window.CRM.cart.updatePage(data.PeopleCart);
           window.scrollTo(0, 0);
@@ -496,10 +503,29 @@
 
     window.CRM.system = {
       'runTimerJobs' : function () {
-        $.ajax({
-          url: window.CRM.root + "/api/timerjobs/run",
-          type: "POST"
+        window.CRM.APIRequest({
+          method:"POST",
+          path: "timerjobs/run",
+          suppressErrorDialog: true
         });
+      },
+      'handlejQAJAXError': function (jqXHR, textStatus, errorThrown, suppressErrorDialog) {
+        if (jqXHR.status === 401) {
+          window.location = window.CRM.root + "/Login.php?location="+window.location.pathname;
+        }
+        try {
+          var CRMResponse = JSON.parse(jqXHR.responseText);
+        } catch(err) {
+          var errortext = textStatus + " " + errorThrown;
+        }
+        if (suppressErrorDialog !== true) {
+          if(CRMResponse) {
+             window.CRM.DisplayErrorMessage(jqXHR.url, CRMResponse);
+          }
+          else{
+            window.CRM.DisplayErrorMessage(jqXHR.url,{"message":errortext});
+          }
+        }
       }
     };
 
@@ -593,6 +619,7 @@
         window.CRM.APIRequest({
           method: 'GET',
           path: 'dashboard/page?currentpagename=' + window.CRM.PageName.replace(window.CRM.root,''),
+          suppressErrorDialog: true
         }).done(function (data) {
           for (var key in data) {
             window["CRM"]["dashboard"]["renderers"][key](data[key]);
@@ -600,17 +627,6 @@
         });
       }
     }
-
-    $(document).ajaxError(function (evt, xhr, settings,errortext) {
-      if(errortext !== "abort") {
-        try {
-            var CRMResponse = JSON.parse(xhr.responseText);
-            window.CRM.DisplayErrorMessage(settings.url, CRMResponse);
-        } catch(err) {
-          window.CRM.DisplayErrorMessage(settings.url,{"message":errortext});
-        }
-      }
-    });
 
     function LimitTextSize(theTextArea, size) {
         if (theTextArea.value.length > size) {

@@ -100,6 +100,12 @@ require '../Include/HeaderNotLoggedIn.php';
                 <small id="DB_SERVER_NAME_HELP" class="form-text text-muted"></small>
             </div>
             <div class="form-group">
+                <label for="DB_SERVER_PORT">Database Server Port</label>
+                <input type="text" name="DB_SERVER_PORT" id="DB_SERVER_PORT" class="form-control"
+                       aria-describedby="DB_SERVER_PORT_HELP" required>
+                <small id="DB_SERVER_PORT_HELP" class="form-text text-muted"></small>
+            </div>
+            <div class="form-group">
                 <label for="DB_NAME">Database Name</label>
                 <input type="text" name="DB_NAME" id="DB_NAME" placeholder="churchcrm" class="form-control"
                        aria-describedby="DB_NAME_HELP" required>

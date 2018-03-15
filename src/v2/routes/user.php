@@ -5,7 +5,6 @@ use Slim\Http\Response;
 use ChurchCRM\dto\SystemURLs;
 use Slim\Views\PhpRenderer;
 use ChurchCRM\UserQuery;
-use ChurchCRM\Slim\Middleware\AdminRoleAuthMiddleware;
 
 $app->group('/user', function () {
     $this->get('/not-found', 'viewUserNotFound');
@@ -34,7 +33,7 @@ function viewUser(Request $request, Response $response, array $args)
     $userId = $args["id"];
 
     if (!$curUser->isAdmin() && $curUser->getId() != $userId) {
-        return $response->withStatus(401);
+        return $response->withStatus(403);
     }
 
     $user = UserQuery::create()->findPk($userId);

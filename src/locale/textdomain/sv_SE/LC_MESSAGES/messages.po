@@ -68,16 +68,16 @@ msgid "Save"
 msgstr "Spara"
 
 #: AutoPaymentEditor.php:804 BatchWinnerEntry.php:83 BatchWinnerEntry.php:95
-#: CSVImport.php:271 DirectoryReports.php:82 DonatedItemEditor.php:186
-#: DonatedItemEditor.php:237 FamilyEditor.php:1089 GroupEditor.php:94
-#: GroupList.php:36 GroupView.php:40 Include/CountryDropDown.php:6
-#: Include/Functions.php:855 Include/Functions.php:908
-#: Include/Header-function.php:311 MapUsingGoogle.php:96
-#: MapUsingGoogle.php:120 PaddleNumEditor.php:176 PersonEditor.php:782
-#: PersonEditor.php:798 PersonEditor.php:1137 PrintView.php:265
-#: PrintView.php:275 SelectDelete.php:156 SelectList.php:35 SelectList.php:45
-#: SelectList.php:61 SelectList.php:1098 SelectList.php:1169
-#: SystemSettings.php:214 eGive.php:341
+#: CSVImport.php:271 ChurchCRM/Config/Menu/Menu.php:88 DirectoryReports.php:82
+#: DonatedItemEditor.php:186 DonatedItemEditor.php:237 FamilyEditor.php:1089
+#: GroupEditor.php:94 GroupList.php:36 GroupView.php:40
+#: Include/CountryDropDown.php:6 Include/Functions.php:855
+#: Include/Functions.php:908 MapUsingGoogle.php:96 MapUsingGoogle.php:120
+#: PaddleNumEditor.php:176 PersonEditor.php:782 PersonEditor.php:798
+#: PersonEditor.php:1137 PrintView.php:265 PrintView.php:275
+#: SelectDelete.php:156 SelectList.php:35 SelectList.php:45 SelectList.php:61
+#: SelectList.php:1098 SelectList.php:1169 SystemSettings.php:214
+#: eGive.php:341
 msgid "Unassigned"
 msgstr "otilldelade"
 
@@ -135,7 +135,7 @@ msgid "Phone"
 msgstr "Telefon"
 
 #: AutoPaymentEditor.php:942 CSVExport.php:142 CSVImport.php:226
-#: CartToFamily.php:311 CartView.php:272
+#: CartToFamily.php:311 CartView.php:272 ChurchCRM/Config/Menu/Menu.php:40
 #: ChurchCRM/Reports/PDF_Directory.php:318
 #: ChurchCRM/Reports/PDF_Directory.php:394
 #: ChurchCRM/Reports/PDF_Directory.php:451 EditEventAttendees.php:42
@@ -152,8 +152,7 @@ msgstr "Telefon"
 #: sundayschool/SundaySchoolClassView.php:89
 #: sundayschool/SundaySchoolClassView.php:205
 #: v2/templates/people/family-view.php:174
-#: v2/templates/people/family-view.php:314 menuconfig_mcf.php:15
-#: queryparameteroptions_qpo.php:13
+#: v2/templates/people/family-view.php:314 queryparameteroptions_qpo.php:13
 msgid "Email"
 msgstr "Epost"
 
@@ -548,10 +547,6 @@ msgstr "FEL: uppladdade CSV filen finns inte!"
 msgid "Data Cleared Successfully!"
 msgstr "Informationen rensade!"
 
-#: CSVImport.php:823
-msgid "Please select the confirmation checkbox"
-msgstr "Välj bekräftelse kryss"
-
 #: CSVImport.php:812
 msgid "Upload CSV File"
 msgstr "Ladda upp CSV Fil"
@@ -576,7 +571,7 @@ msgstr "Importering lyckades."
 msgid "persons were imported"
 msgstr "personer importerade"
 
-#: CanvassAutomation.php:21 ReportList.php:39
+#: CanvassAutomation.php:21 ChurchCRM/Config/Menu/Menu.php:148
 msgid "Canvass Automation"
 msgstr "Insamlingskampanj automation"
 
@@ -1055,7 +1050,7 @@ msgid "Address"
 msgstr "Adress"
 
 #: ChurchCRM/Service/CalendarService.php:16
-#: ChurchCRM/SystemCalendars/BirthdaysCalendar.php:56 DirectoryReports.php:174
+#: ChurchCRM/SystemCalendars/BirthdaysCalendar.php:59 DirectoryReports.php:174
 #: FamilyView.php:358 PersonView.php:510 Reports/ConfirmReport.php:184
 #: Reports/ConfirmReport.php:203 Reports/ConfirmReportEmail.php:192
 #: Reports/ConfirmReportEmail.php:210
@@ -1829,7 +1824,7 @@ msgstr " Insamlingskampanj inmatning"
 msgid "Confirm Delete"
 msgstr "Bekräfta radera"
 
-#: FinancialReports.php:35 ReportList.php:29
+#: FinancialReports.php:35
 msgid "Financial Reports"
 msgstr "Financiellarapporter"
 
@@ -2006,7 +2001,7 @@ msgstr "Penningförsändelse kvitto:"
 msgid "Sort Data by:"
 msgstr "Sortera enligt:"
 
-#: FinancialReports.php:301 menuconfig_mcf.php:21
+#: ChurchCRM/Config/Menu/Menu.php:122 FinancialReports.php:301
 msgid "Deposit"
 msgstr "Insättning"
 
@@ -2475,7 +2470,7 @@ msgstr "Lösenord"
 msgid "Login"
 msgstr "logga in"
 
-#: ManageEnvelopes.php:21 menuconfig_mcf.php:22
+#: ChurchCRM/Config/Menu/Menu.php:123 ManageEnvelopes.php:21
 msgid "Envelope Manager"
 msgstr "Kuvert skötare"
 
@@ -2530,7 +2525,7 @@ msgstr "Uppdatera alla familj koordinat"
 msgid "Families"
 msgstr "Familjer"
 
-#: Menu.php:196 PeopleDashboard.php:158 menuconfig_mcf.php:4
+#: ChurchCRM/Config/Menu/Menu.php:60 Menu.php:196 PeopleDashboard.php:158
 msgid "People"
 msgstr "Personer"
 
@@ -3176,10 +3171,6 @@ msgstr "Bidrag löfte påminnelse rapport"
 msgid "Report Menu"
 msgstr "Rapport meny"
 
-#: ReportList.php:40
-msgid "Automated support for conducting an every-member canvass."
-msgstr "Automatisk stöd för att driva en insamilingskampanj på varje medlem."
-
 #: SelectDelete.php:67
 msgid "All donations from this family have been moved to another family."
 msgstr "Alla bidrag från denna familj flytades till en annan familj"
@@ -3237,7 +3228,7 @@ msgstr "Radera familj post och familj medlemmar"
 msgid "Person Listing"
 msgstr "Person lista"
 
-#: SelectList.php:172 menuconfig_mcf.php:13
+#: ChurchCRM/Config/Menu/Menu.php:74 SelectList.php:172
 msgid "Group Assignment Helper"
 msgstr "Grupp tilldelnings-verktyg"
 

@@ -66,9 +66,6 @@ if (isset($_POST['Submit'])) {
             $curUser->updatePassword($sNewPassword1);
             $curUser->setNeedPasswordChange(false);
             $curUser->save();
-            // Set the session variable so they don't get sent back here
-            $_SESSION['user'] = $curUser;
-
             $curUser->createTimeLineNote("password-changed-admin");
 
             if (!empty($curUser->getEmail())) {

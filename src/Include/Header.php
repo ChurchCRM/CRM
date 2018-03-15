@@ -46,9 +46,6 @@ $MenuFirst = 1;
 </head>
 
 <body class="hold-transition <?= $_SESSION['user']->getStyle() ?> sidebar-mini">
-<?php
-  Header_system_notifications();
- ?>
 <!-- Site wrapper -->
 <div class="wrapper">
   <?php
@@ -160,7 +157,7 @@ $MenuFirst = 1;
           ?>
           <li class="dropdown settings-dropdown">
             <a href="#" data-toggle="control-sidebar" title="<?= gettext('Your tasks') ?>">
-              <i class="fa fa-gears"></i>
+              <i class="fa fa-tasks"></i>
               <span class="label label-danger"><?= $taskSize ?></span>
             </a>
           </li>
@@ -195,9 +192,3 @@ $MenuFirst = 1;
     </section>
     <!-- Main content -->
     <section class="content">
-        <div class="main-box-body clearfix" style="display:none" id="globalMessage">
-          <div class="callout fade in" id="globalMessageCallOut">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-            <i class="fa fa-exclamation-triangle fa-fw fa-lg"></i><span id="globalMessageText"></span>
-          </div>
-        </div>
