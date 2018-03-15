@@ -62,15 +62,15 @@ msgstr "自动付款配置"
 #: PaddleNumEditor.php:147 PersonEditor.php:617 PersonEditor.php:775
 #: PersonEditor.php:818 PersonEditor.php:1129 PersonEditor.php:1192
 #: PersonEditor.php:1227 PledgeEditor.php:687 PropertyEditor.php:169
-#: PropertyTypeEditor.php:112 UserEditor.php:458 UserPasswordChange.php:216
+#: PropertyTypeEditor.php:112 UserEditor.php:458 UserPasswordChange.php:213
 #: WhyCameEditor.php:104
 msgid "Save"
 msgstr "保存"
 
 #: AutoPaymentEditor.php:804 BatchWinnerEntry.php:83 BatchWinnerEntry.php:95
-#: CSVImport.php:271 ChurchCRM/Config/Menu/Menu.php:88 DirectoryReports.php:82
-#: DonatedItemEditor.php:186 DonatedItemEditor.php:237 FamilyEditor.php:1089
-#: GroupEditor.php:94 GroupList.php:36 GroupView.php:40
+#: CSVImport.php:271 ChurchCRM/Config/Menu/Menu.php:100
+#: DirectoryReports.php:82 DonatedItemEditor.php:186 DonatedItemEditor.php:237
+#: FamilyEditor.php:1089 GroupEditor.php:94 GroupList.php:36 GroupView.php:40
 #: Include/CountryDropDown.php:6 Include/Functions.php:855
 #: Include/Functions.php:908 MapUsingGoogle.php:96 MapUsingGoogle.php:120
 #: PaddleNumEditor.php:176 PersonEditor.php:782 PersonEditor.php:798
@@ -181,7 +181,7 @@ msgstr "银行路由号码"
 msgid "Bank Account Number"
 msgstr "银行帐户号码"
 
-#: BackupDatabase.php:32 Include/Footer.php:178
+#: BackupDatabase.php:32 ChurchCRM/Config/Menu/Menu.php:197
 msgid "Backup Database"
 msgstr "备份数据库"
 
@@ -569,7 +569,7 @@ msgstr "数据导入成功。"
 msgid "persons were imported"
 msgstr "人进口"
 
-#: CanvassAutomation.php:21 ChurchCRM/Config/Menu/Menu.php:148
+#: CanvassAutomation.php:21 ChurchCRM/Config/Menu/Menu.php:171
 msgid "Canvass Automation"
 msgstr "招商自动化"
 
@@ -1259,10 +1259,10 @@ msgstr "出席计数"
 #: AutoPaymentEditor.php:801
 #: ChurchCRM/Emails/verify/FamilyVerificationEmail.php:24
 #: ElectronicPaymentList.php:195 FamilyView.php:205 FinancialReports.php:303
-#: Include/Footer.php:53 PersonEditor.php:796 PersonView.php:422
-#: PledgeEditor.php:508 PrintView.php:259 PropertyAssign.php:73
-#: PropertyEditor.php:43 PropertyList.php:28 PropertyTypeEditor.php:90
-#: PropertyTypeList.php:55 SelectList.php:1037
+#: PersonEditor.php:796 PersonView.php:422 PledgeEditor.php:508
+#: PrintView.php:259 PropertyAssign.php:73 PropertyEditor.php:43
+#: PropertyList.php:28 PropertyTypeEditor.php:90 PropertyTypeList.php:55
+#: SelectList.php:1037
 #: external/templates/registration/family-register-done.php:28
 msgid "Family"
 msgstr "家庭"
@@ -1995,7 +1995,7 @@ msgstr "汇款时："
 msgid "Sort Data by:"
 msgstr "通过对数据进行排序："
 
-#: ChurchCRM/Config/Menu/Menu.php:122 FinancialReports.php:301
+#: ChurchCRM/Config/Menu/Menu.php:140 FinancialReports.php:301
 msgid "Deposit"
 msgstr "存款"
 
@@ -2235,7 +2235,7 @@ msgstr "新角色"
 msgid "Group Listing"
 msgstr "集团上市"
 
-#: Include/Header-function.php:84
+#: Include/Header-function.php:65
 msgid "Submit"
 msgstr "提交"
 
@@ -2446,19 +2446,19 @@ msgstr "无效的登录名或密码"
 msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
 msgstr "太多次失败登录您的帐户已被锁定。请与管理员联系。"
 
-#: Login.php:173 Login.php:235
+#: Login.php:176 Login.php:238
 msgid "Please Login"
 msgstr "请登录"
 
-#: BackupDatabase.php:55 Login.php:197 Login.php:275 UserList.php:58
+#: BackupDatabase.php:55 Login.php:200 Login.php:278 UserList.php:58
 msgid "Password"
 msgstr "密码"
 
-#: Login.php:160 Login.php:210
+#: Login.php:163 Login.php:213
 msgid "Login"
 msgstr "注册"
 
-#: ChurchCRM/Config/Menu/Menu.php:123 ManageEnvelopes.php:21
+#: ChurchCRM/Config/Menu/Menu.php:147 ManageEnvelopes.php:21
 msgid "Envelope Manager"
 msgstr "信封经理"
 
@@ -2508,7 +2508,7 @@ msgstr "更新所有家庭坐标"
 msgid "Families"
 msgstr "家庭"
 
-#: ChurchCRM/Config/Menu/Menu.php:60 Menu.php:196 PeopleDashboard.php:158
+#: ChurchCRM/Config/Menu/Menu.php:61 Menu.php:196 PeopleDashboard.php:158
 msgid "People"
 msgstr "人"
 
@@ -2562,14 +2562,13 @@ msgstr "注编辑器"
 msgid "Private"
 msgstr "私人"
 
-#: Include/Footer.php:76 PropertyAssign.php:43 PropertyEditor.php:39
-#: PropertyList.php:24 PropertyTypeEditor.php:89 PropertyTypeList.php:55
+#: PropertyAssign.php:43 PropertyEditor.php:39 PropertyList.php:24
+#: PropertyTypeEditor.php:89 PropertyTypeList.php:55
 msgid "Person"
 msgstr "人"
 
-#: Include/Footer.php:99 OptionManager.php:85 PropertyAssign.php:58
-#: PropertyEditor.php:47 PropertyList.php:32 PropertyTypeEditor.php:91
-#: PropertyTypeList.php:55
+#: OptionManager.php:85 PropertyAssign.php:58 PropertyEditor.php:47
+#: PropertyList.php:32 PropertyTypeEditor.php:91 PropertyTypeList.php:55
 msgid "Group"
 msgstr "组"
 
@@ -2830,7 +2829,7 @@ msgstr "一次"
 
 #: ChurchCRM/Dashboard/PersonDemographicDashboardItem.php:32
 #: ChurchCRM/Dashboard/PersonDemographicDashboardItem.php:49
-#: Include/Footer.php:113 PledgeEditor.php:560
+#: PledgeEditor.php:560
 msgid "Other"
 msgstr "其他"
 
@@ -3198,7 +3197,7 @@ msgstr "删除家庭记录及家庭成员的"
 msgid "Person Listing"
 msgstr "人上市"
 
-#: ChurchCRM/Config/Menu/Menu.php:74 SelectList.php:172
+#: ChurchCRM/Config/Menu/Menu.php:86 SelectList.php:172
 msgid "Group Assignment Helper"
 msgstr "集团转让助手"
 
@@ -3390,6 +3389,8 @@ msgstr "（编辑自己的家庭。）"
 msgid "(Canvass volunteer.)"
 msgstr "（招商志愿者。）"
 
+#: ChurchCRM/Config/Menu/Menu.php:68 ChurchCRM/Config/Menu/Menu.php:105
+#: ChurchCRM/Config/Menu/Menu.php:146 ChurchCRM/Config/Menu/Menu.php:192
 #: UserEditor.php:446
 #, fuzzy
 msgid "Admin"
@@ -3424,71 +3425,71 @@ msgstr "登录失败"
 msgid "You must enter a password in both boxes"
 msgstr "您必须输入一个密码，这两个框"
 
-#: UserPasswordChange.php:61 UserPasswordChange.php:116
+#: UserPasswordChange.php:61 UserPasswordChange.php:113
 msgid "You must enter the same password in both boxes"
 msgstr "您必须在两个框中输入相同的密码"
 
-#: UserPasswordChange.php:104
+#: UserPasswordChange.php:101
 msgid "Invalid password"
 msgstr "无效的密码"
 
-#: UserPasswordChange.php:110
+#: UserPasswordChange.php:107
 msgid "You must enter your new password in both boxes"
 msgstr "在这两个框，您必须输入您的新密码"
 
-#: UserPasswordChange.php:122
+#: UserPasswordChange.php:119
 msgid "Your password choice is too obvious. Please choose something else."
 msgstr "选择你的密码是太明显了。请选择其他的东西。"
 
-#: UserPasswordChange.php:128
+#: UserPasswordChange.php:125
 msgid "Your new password must be at least"
 msgstr "您的新密码必须至少"
 
-#: UserPasswordChange.php:128
+#: UserPasswordChange.php:125
 msgid "characters"
 msgstr "字符"
 
-#: UserPasswordChange.php:134
+#: UserPasswordChange.php:131
 msgid "You need to actually change your password (nice try, though!)"
 msgstr "您需要更改您的密码（不错的尝试，但！）"
 
-#: UserPasswordChange.php:137
+#: UserPasswordChange.php:134
 msgid "Your new password is too similar to your old one.  Be more creative!"
 msgstr "您的新密码是你的旧太相似了。更多的创意！"
 
-#: UserPasswordChange.php:166
+#: UserPasswordChange.php:163
 msgid "User Password Change"
 msgstr "用户密码更改"
 
-#: UserPasswordChange.php:174
+#: UserPasswordChange.php:171
 msgid "Your account record indicates that you need to change your password before proceding."
 msgstr "您的帐户记录表明操作前，您需要更改您的密码。"
 
-#: UserPasswordChange.php:186
+#: UserPasswordChange.php:183
 msgid "Enter your current password, then your new password twice.  Passwords must be at least"
 msgstr "请输入您的当前密码，然后两次新密码。密码必须至少"
 
-#: UserPasswordChange.php:186
+#: UserPasswordChange.php:183
 msgid "characters in length."
 msgstr "字符的长度。"
 
-#: UserPasswordChange.php:188
+#: UserPasswordChange.php:185
 msgid "Enter a new password for this user."
 msgstr "输入此用户的密码。"
 
-#: UserPasswordChange.php:199
+#: UserPasswordChange.php:196
 #, fuzzy
 msgid "Old Password"
 msgstr "旧密码"
 
 #: ChurchCRM/Emails/users/NewAccountEmail.php:30
 #: ChurchCRM/Emails/users/PasswordChangeEmail.php:29
-#: ChurchCRM/Emails/users/ResetPasswordEmail.php:29 UserPasswordChange.php:205
+#: ChurchCRM/Emails/users/ResetPasswordEmail.php:29 UserPasswordChange.php:202
 #, fuzzy
 msgid "New Password"
 msgstr "新密码"
 
-#: UserPasswordChange.php:209
+#: UserPasswordChange.php:206
 #, fuzzy
 msgid "Confirm New Password"
 msgstr "确认新密码"

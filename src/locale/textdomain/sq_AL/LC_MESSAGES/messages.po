@@ -62,15 +62,15 @@ msgstr "Konfigurimi Automatik pagesa për "
 #: PaddleNumEditor.php:147 PersonEditor.php:617 PersonEditor.php:775
 #: PersonEditor.php:818 PersonEditor.php:1129 PersonEditor.php:1192
 #: PersonEditor.php:1227 PledgeEditor.php:687 PropertyEditor.php:169
-#: PropertyTypeEditor.php:112 UserEditor.php:458 UserPasswordChange.php:216
+#: PropertyTypeEditor.php:112 UserEditor.php:458 UserPasswordChange.php:213
 #: WhyCameEditor.php:104
 msgid "Save"
 msgstr "Ruaj"
 
 #: AutoPaymentEditor.php:804 BatchWinnerEntry.php:83 BatchWinnerEntry.php:95
-#: CSVImport.php:271 ChurchCRM/Config/Menu/Menu.php:88 DirectoryReports.php:82
-#: DonatedItemEditor.php:186 DonatedItemEditor.php:237 FamilyEditor.php:1089
-#: GroupEditor.php:94 GroupList.php:36 GroupView.php:40
+#: CSVImport.php:271 ChurchCRM/Config/Menu/Menu.php:100
+#: DirectoryReports.php:82 DonatedItemEditor.php:186 DonatedItemEditor.php:237
+#: FamilyEditor.php:1089 GroupEditor.php:94 GroupList.php:36 GroupView.php:40
 #: Include/CountryDropDown.php:6 Include/Functions.php:855
 #: Include/Functions.php:908 MapUsingGoogle.php:96 MapUsingGoogle.php:120
 #: PaddleNumEditor.php:176 PersonEditor.php:782 PersonEditor.php:798
@@ -181,7 +181,7 @@ msgstr "Banka Route Numri"
 msgid "Bank Account Number"
 msgstr "Numri i llogarisë bankare"
 
-#: BackupDatabase.php:32 Include/Footer.php:178
+#: BackupDatabase.php:32 ChurchCRM/Config/Menu/Menu.php:197
 msgid "Backup Database"
 msgstr "Baza e të dhënave Backup"
 
@@ -537,7 +537,7 @@ msgstr "Të dhënat e importit të suksesshme."
 msgid "persons were imported"
 msgstr "persona janë importuar"
 
-#: CanvassAutomation.php:21 ChurchCRM/Config/Menu/Menu.php:148
+#: CanvassAutomation.php:21 ChurchCRM/Config/Menu/Menu.php:171
 msgid "Canvass Automation"
 msgstr "Automatizimi anketim"
 
@@ -1220,10 +1220,10 @@ msgstr "Pikat Pjesëmarrja"
 #: AutoPaymentEditor.php:801
 #: ChurchCRM/Emails/verify/FamilyVerificationEmail.php:24
 #: ElectronicPaymentList.php:195 FamilyView.php:205 FinancialReports.php:303
-#: Include/Footer.php:53 PersonEditor.php:796 PersonView.php:422
-#: PledgeEditor.php:508 PrintView.php:259 PropertyAssign.php:73
-#: PropertyEditor.php:43 PropertyList.php:28 PropertyTypeEditor.php:90
-#: PropertyTypeList.php:55 SelectList.php:1037
+#: PersonEditor.php:796 PersonView.php:422 PledgeEditor.php:508
+#: PrintView.php:259 PropertyAssign.php:73 PropertyEditor.php:43
+#: PropertyList.php:28 PropertyTypeEditor.php:90 PropertyTypeList.php:55
+#: SelectList.php:1037
 #: external/templates/registration/family-register-done.php:28
 msgid "Family"
 msgstr "Familje"
@@ -1938,7 +1938,7 @@ msgstr "Remitencat Shqip:"
 msgid "Sort Data by:"
 msgstr "Rendit dhënave nga:"
 
-#: ChurchCRM/Config/Menu/Menu.php:122 FinancialReports.php:301
+#: ChurchCRM/Config/Menu/Menu.php:140 FinancialReports.php:301
 msgid "Deposit"
 msgstr "Depozitë"
 
@@ -2169,7 +2169,7 @@ msgstr "Roli i ri"
 msgid "Group Listing"
 msgstr "Listing Group"
 
-#: Include/Header-function.php:84
+#: Include/Header-function.php:65
 msgid "Submit"
 msgstr "Konfirmo"
 
@@ -2360,19 +2360,19 @@ msgstr "Login pavlefshme ose regjistrohu"
 msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
 msgstr "Shumë hyrje të dështuara: llogaria juaj ka qenë e mbyllur. Ju lutem kontaktoni një administrator."
 
-#: Login.php:173 Login.php:235
+#: Login.php:176 Login.php:238
 msgid "Please Login"
 msgstr "Ju lutem Identifikohu"
 
-#: BackupDatabase.php:55 Login.php:197 Login.php:275 UserList.php:58
+#: BackupDatabase.php:55 Login.php:200 Login.php:278 UserList.php:58
 msgid "Password"
 msgstr "Fjalekalmi"
 
-#: Login.php:160 Login.php:210
+#: Login.php:163 Login.php:213
 msgid "Login"
 msgstr "Hyrje"
 
-#: ChurchCRM/Config/Menu/Menu.php:123 ManageEnvelopes.php:21
+#: ChurchCRM/Config/Menu/Menu.php:147 ManageEnvelopes.php:21
 msgid "Envelope Manager"
 msgstr "Zarf Menaxher"
 
@@ -2413,7 +2413,7 @@ msgstr "Roli aktual"
 msgid "Update All Family Coordinates"
 msgstr "Update të gjitha koordinatat Family"
 
-#: Include/Footer.php:124 PersonView.php:425
+#: ChurchCRM/Config/Menu/Menu.php:75 PersonView.php:425
 msgid "Volunteer Opportunities"
 msgstr "Mundësitë vullnetare"
 
@@ -2424,7 +2424,7 @@ msgstr "Mundësitë vullnetare"
 msgid "Families"
 msgstr "Familjet"
 
-#: ChurchCRM/Config/Menu/Menu.php:60 Menu.php:196 PeopleDashboard.php:158
+#: ChurchCRM/Config/Menu/Menu.php:61 Menu.php:196 PeopleDashboard.php:158
 msgid "People"
 msgstr "Njerëz"
 
@@ -2477,14 +2477,13 @@ msgstr "Shënim i redaktorit"
 msgid "Private"
 msgstr "Privat"
 
-#: Include/Footer.php:76 PropertyAssign.php:43 PropertyEditor.php:39
-#: PropertyList.php:24 PropertyTypeEditor.php:89 PropertyTypeList.php:55
+#: PropertyAssign.php:43 PropertyEditor.php:39 PropertyList.php:24
+#: PropertyTypeEditor.php:89 PropertyTypeList.php:55
 msgid "Person"
 msgstr "Person"
 
-#: Include/Footer.php:99 OptionManager.php:85 PropertyAssign.php:58
-#: PropertyEditor.php:47 PropertyList.php:32 PropertyTypeEditor.php:91
-#: PropertyTypeList.php:55
+#: OptionManager.php:85 PropertyAssign.php:58 PropertyEditor.php:47
+#: PropertyList.php:32 PropertyTypeEditor.php:91 PropertyTypeList.php:55
 msgid "Group"
 msgstr "Grup"
 
@@ -2733,7 +2732,7 @@ msgstr "Dikur"
 
 #: ChurchCRM/Dashboard/PersonDemographicDashboardItem.php:32
 #: ChurchCRM/Dashboard/PersonDemographicDashboardItem.php:49
-#: Include/Footer.php:113 PledgeEditor.php:560
+#: PledgeEditor.php:560
 msgid "Other"
 msgstr "Tjera"
 
@@ -3087,7 +3086,7 @@ msgstr "Fshij Record familjare dhe anëtarët e familjes"
 msgid "Person Listing"
 msgstr "Person Listing"
 
-#: ChurchCRM/Config/Menu/Menu.php:74 SelectList.php:172
+#: ChurchCRM/Config/Menu/Menu.php:86 SelectList.php:172
 msgid "Group Assignment Helper"
 msgstr "Grupi Caktimi Helper"
 
@@ -3258,6 +3257,8 @@ msgstr "(Edit familjen e vet vetëm.)"
 msgid "(Canvass volunteer.)"
 msgstr "(Vullnetar anketim.)"
 
+#: ChurchCRM/Config/Menu/Menu.php:68 ChurchCRM/Config/Menu/Menu.php:105
+#: ChurchCRM/Config/Menu/Menu.php:146 ChurchCRM/Config/Menu/Menu.php:192
 #: UserEditor.php:446
 msgid "Admin"
 msgstr "Admin"
@@ -3290,69 +3291,69 @@ msgstr "Logins dështuara"
 msgid "You must enter a password in both boxes"
 msgstr "Ju duhet të hyjë në një fjalëkalim në të dy kutitë"
 
-#: UserPasswordChange.php:61 UserPasswordChange.php:116
+#: UserPasswordChange.php:61 UserPasswordChange.php:113
 msgid "You must enter the same password in both boxes"
 msgstr "Ju duhet të hyjë në të njëjtin fjalëkalim në të dy kutitë"
 
-#: UserPasswordChange.php:104
+#: UserPasswordChange.php:101
 msgid "Invalid password"
 msgstr "Regjistrohu Invalid"
 
-#: UserPasswordChange.php:110
+#: UserPasswordChange.php:107
 msgid "You must enter your new password in both boxes"
 msgstr "Ju duhet të shkruani fjalëkalimin tuaj të re në të dy kutitë"
 
-#: UserPasswordChange.php:122
+#: UserPasswordChange.php:119
 msgid "Your password choice is too obvious. Please choose something else."
 msgstr "Zgjedhja juaj fjalëkalimi është shumë e qartë. Ju lutemi zgjidhni diçka tjetër."
 
-#: UserPasswordChange.php:128
+#: UserPasswordChange.php:125
 msgid "Your new password must be at least"
 msgstr "Fjalëkalimi juaj i ri duhet të jetë së paku"
 
-#: UserPasswordChange.php:128
+#: UserPasswordChange.php:125
 msgid "characters"
 msgstr "karaktere"
 
-#: UserPasswordChange.php:134
+#: UserPasswordChange.php:131
 msgid "You need to actually change your password (nice try, though!)"
 msgstr "Ju duhet të vërtetë të ndryshuar fjalëkalimin tuaj (të mirë provoni, pse!)"
 
-#: UserPasswordChange.php:137
+#: UserPasswordChange.php:134
 msgid "Your new password is too similar to your old one.  Be more creative!"
 msgstr "Fjalëkalimi juaj i ri është shumë i ngjashëm me një tuaj të vjetër. Të jetë më kreative!"
 
-#: UserPasswordChange.php:166
+#: UserPasswordChange.php:163
 msgid "User Password Change"
 msgstr "Ndryshimi i përdoruesit Fjalëkalimi"
 
-#: UserPasswordChange.php:174
+#: UserPasswordChange.php:171
 msgid "Your account record indicates that you need to change your password before proceding."
 msgstr "Të dhënat tuaja të llogarisë tregon se ju duhet të ndryshoni fjalëkalimin tuaj para proceding."
 
-#: UserPasswordChange.php:186
+#: UserPasswordChange.php:183
 msgid "Enter your current password, then your new password twice.  Passwords must be at least"
 msgstr "Shkruani fjalëkalimin tuaj të tanishme, atëherë fjalëkalimin tuaj të ri dy herë. Fjalëkalimet duhet të jetë të paktën"
 
-#: UserPasswordChange.php:186
+#: UserPasswordChange.php:183
 msgid "characters in length."
 msgstr "karaktere në gjatësi."
 
-#: UserPasswordChange.php:188
+#: UserPasswordChange.php:185
 msgid "Enter a new password for this user."
 msgstr "Futni një fjalëkalim të ri për këtë përdorues."
 
-#: UserPasswordChange.php:199
+#: UserPasswordChange.php:196
 msgid "Old Password"
 msgstr "Vjetër Fjalëkalimi"
 
 #: ChurchCRM/Emails/users/NewAccountEmail.php:30
 #: ChurchCRM/Emails/users/PasswordChangeEmail.php:29
-#: ChurchCRM/Emails/users/ResetPasswordEmail.php:29 UserPasswordChange.php:205
+#: ChurchCRM/Emails/users/ResetPasswordEmail.php:29 UserPasswordChange.php:202
 msgid "New Password"
 msgstr "Fjalëkalimi i ri"
 
-#: UserPasswordChange.php:209
+#: UserPasswordChange.php:206
 msgid "Confirm New Password"
 msgstr "Konfirmo Re Password"
 
@@ -3859,23 +3860,23 @@ msgstr "Krijo Pjesëmarrja Sheet"
 msgid "Members"
 msgstr "Anëtarët"
 
-#: ChurchCRM/Config/Menu/Menu.php:62
+#: ChurchCRM/Config/Menu/Menu.php:63
 msgid "Add New Person"
 msgstr "Shto person i ri"
 
-#: ChurchCRM/Config/Menu/Menu.php:63
+#: ChurchCRM/Config/Menu/Menu.php:64
 msgid "View All Persons"
 msgstr "Shiko të gjitha Persona"
 
-#: ChurchCRM/Config/Menu/Menu.php:64
+#: ChurchCRM/Config/Menu/Menu.php:65
 msgid "Add New Family"
 msgstr "Shto Family re"
 
-#: ChurchCRM/Config/Menu/Menu.php:111 ChurchCRM/dto/SystemConfig.php:252
+#: ChurchCRM/Config/Menu/Menu.php:129 ChurchCRM/dto/SystemConfig.php:253
 msgid "Events"
 msgstr "Ngjarje"
 
-#: ChurchCRM/Config/Menu/Menu.php:134 FundRaiserEditor.php:31
+#: ChurchCRM/Config/Menu/Menu.php:157 FundRaiserEditor.php:31
 msgid "Fundraiser"
 msgstr "Fondesh"
 
@@ -3883,7 +3884,7 @@ msgstr "Fondesh"
 msgid "Deposit Type"
 msgstr "Lloji Depozita"
 
-#: ChurchCRM/dto/SystemConfig.php:244
+#: ChurchCRM/dto/SystemConfig.php:245
 msgid "Report Settings"
 msgstr "Raporti Cilësimet"
 

@@ -62,15 +62,15 @@ msgstr "Cấu hình thanh toán tự động cho "
 #: PaddleNumEditor.php:147 PersonEditor.php:617 PersonEditor.php:775
 #: PersonEditor.php:818 PersonEditor.php:1129 PersonEditor.php:1192
 #: PersonEditor.php:1227 PledgeEditor.php:687 PropertyEditor.php:169
-#: PropertyTypeEditor.php:112 UserEditor.php:458 UserPasswordChange.php:216
+#: PropertyTypeEditor.php:112 UserEditor.php:458 UserPasswordChange.php:213
 #: WhyCameEditor.php:104
 msgid "Save"
 msgstr "Lưu lại"
 
 #: AutoPaymentEditor.php:804 BatchWinnerEntry.php:83 BatchWinnerEntry.php:95
-#: CSVImport.php:271 ChurchCRM/Config/Menu/Menu.php:88 DirectoryReports.php:82
-#: DonatedItemEditor.php:186 DonatedItemEditor.php:237 FamilyEditor.php:1089
-#: GroupEditor.php:94 GroupList.php:36 GroupView.php:40
+#: CSVImport.php:271 ChurchCRM/Config/Menu/Menu.php:100
+#: DirectoryReports.php:82 DonatedItemEditor.php:186 DonatedItemEditor.php:237
+#: FamilyEditor.php:1089 GroupEditor.php:94 GroupList.php:36 GroupView.php:40
 #: Include/CountryDropDown.php:6 Include/Functions.php:855
 #: Include/Functions.php:908 MapUsingGoogle.php:96 MapUsingGoogle.php:120
 #: PaddleNumEditor.php:176 PersonEditor.php:782 PersonEditor.php:798
@@ -181,7 +181,7 @@ msgstr "Mã số Ngân hàng"
 msgid "Bank Account Number"
 msgstr "Số tài khoản ngân hàng"
 
-#: BackupDatabase.php:32 Include/Footer.php:178
+#: BackupDatabase.php:32 ChurchCRM/Config/Menu/Menu.php:197
 msgid "Backup Database"
 msgstr "Cơ sở dữ liệu sao lưu"
 
@@ -814,10 +814,10 @@ msgstr "Lưu lại tên"
 #: AutoPaymentEditor.php:801
 #: ChurchCRM/Emails/verify/FamilyVerificationEmail.php:24
 #: ElectronicPaymentList.php:195 FamilyView.php:205 FinancialReports.php:303
-#: Include/Footer.php:53 PersonEditor.php:796 PersonView.php:422
-#: PledgeEditor.php:508 PrintView.php:259 PropertyAssign.php:73
-#: PropertyEditor.php:43 PropertyList.php:28 PropertyTypeEditor.php:90
-#: PropertyTypeList.php:55 SelectList.php:1037
+#: PersonEditor.php:796 PersonView.php:422 PledgeEditor.php:508
+#: PrintView.php:259 PropertyAssign.php:73 PropertyEditor.php:43
+#: PropertyList.php:28 PropertyTypeEditor.php:90 PropertyTypeList.php:55
+#: SelectList.php:1037
 #: external/templates/registration/family-register-done.php:28
 msgid "Family"
 msgstr "Gia đình"
@@ -1173,7 +1173,7 @@ msgstr "Địa chỉ Hội Thánh"
 msgid "Sort Data by:"
 msgstr "Sắp xếp dữ liệu theo"
 
-#: ChurchCRM/Config/Menu/Menu.php:122 FinancialReports.php:301
+#: ChurchCRM/Config/Menu/Menu.php:140 FinancialReports.php:301
 msgid "Deposit"
 msgstr "Khoản "
 
@@ -1270,11 +1270,11 @@ msgstr "Thêm vai trò mới"
 msgid "Group Listing"
 msgstr "Danh sách Ban/Mục vụ"
 
-#: GroupList.php:56 GroupList.php:59
+#: GroupList.php:56 GroupList.php:60
 msgid "Add New Group"
 msgstr "Thêm Ban/Mục vụ mới"
 
-#: Include/Header-function.php:84
+#: Include/Header-function.php:65
 msgid "Submit"
 msgstr "Gửi đi"
 
@@ -1362,19 +1362,19 @@ msgstr "Hiển thị sự kiện trong năm"
 msgid "Start Date/Time"
 msgstr "Thời gian/ngày bắt đầu"
 
-#: Login.php:173 Login.php:235
+#: Login.php:176 Login.php:238
 msgid "Please Login"
 msgstr "Vui lòng đăng nhập"
 
-#: ChurchCRM/Emails/users/BaseUserEmail.php:30 Login.php:193
+#: ChurchCRM/Emails/users/BaseUserEmail.php:30 Login.php:196
 msgid "Email/Username"
 msgstr "Email/Tài khoản"
 
-#: BackupDatabase.php:55 Login.php:197 Login.php:275 UserList.php:58
+#: BackupDatabase.php:55 Login.php:200 Login.php:278 UserList.php:58
 msgid "Password"
 msgstr "Mật khẩu"
 
-#: Login.php:160 Login.php:210
+#: Login.php:163 Login.php:213
 msgid "Login"
 msgstr "Đăng nhập"
 
@@ -1411,7 +1411,7 @@ msgstr "Email cho tất cả (BCC)"
 msgid "Family Geographic"
 msgstr "Trợ giúp địa lý"
 
-#: Include/Footer.php:124 PersonView.php:425
+#: ChurchCRM/Config/Menu/Menu.php:75 PersonView.php:425
 msgid "Volunteer Opportunities"
 msgstr "Cộng tác viên"
 
@@ -1426,7 +1426,7 @@ msgstr "Gia đình"
 msgid "See all Families"
 msgstr "Xem tất cả gia đình"
 
-#: ChurchCRM/Config/Menu/Menu.php:60 Menu.php:196 PeopleDashboard.php:158
+#: ChurchCRM/Config/Menu/Menu.php:61 Menu.php:196 PeopleDashboard.php:158
 msgid "People"
 msgstr "Thành viên"
 
@@ -1517,9 +1517,8 @@ msgstr "Chỉnh sửa ghi chú"
 msgid "Private"
 msgstr "Giữ điều này riêng tư"
 
-#: Include/Footer.php:99 OptionManager.php:85 PropertyAssign.php:58
-#: PropertyEditor.php:47 PropertyList.php:32 PropertyTypeEditor.php:91
-#: PropertyTypeList.php:55
+#: OptionManager.php:85 PropertyAssign.php:58 PropertyEditor.php:47
+#: PropertyList.php:32 PropertyTypeEditor.php:91 PropertyTypeList.php:55
 msgid "Group"
 msgstr "Ban/Mục vụ"
 
@@ -1692,7 +1691,7 @@ msgstr "Thông tin địa chỉ"
 msgid "Send"
 msgstr "Gửi đi"
 
-#: Include/Footer.php:170 RestoreDatabase.php:28
+#: ChurchCRM/Config/Menu/Menu.php:196 RestoreDatabase.php:28
 msgid "Restore Database"
 msgstr "Khôi phục cơ sở dữ liệu"
 
@@ -1777,8 +1776,7 @@ msgstr "In ấn"
 msgid "Save Settings"
 msgstr "Lưu thay đổi"
 
-#: ChurchCRM/dto/SystemConfig.php:246 Include/Footer.php:139
-#: SystemSettings.php:29
+#: ChurchCRM/dto/SystemConfig.php:247 SystemSettings.php:29
 msgid "System Settings"
 msgstr "Cài đặt hệ thống"
 
@@ -1818,25 +1816,25 @@ msgstr "Tổng số lần đăng nhập"
 msgid "Failed Logins"
 msgstr "Đăng nhập thất bại"
 
-#: UserPasswordChange.php:166
+#: UserPasswordChange.php:163
 msgid "User Password Change"
 msgstr "Thay đổi mật khẩu thành viên"
 
-#: UserPasswordChange.php:186
+#: UserPasswordChange.php:183
 msgid "Enter your current password, then your new password twice.  Passwords must be at least"
 msgstr "Nhập mật khẩu hiện tại, sau đó nhập mật khẩu mới hai lần. Mật khẩu phải có ít nhất 6 ký tự."
 
-#: UserPasswordChange.php:199
+#: UserPasswordChange.php:196
 msgid "Old Password"
 msgstr "Mật khẩu cũ"
 
 #: ChurchCRM/Emails/users/NewAccountEmail.php:30
 #: ChurchCRM/Emails/users/PasswordChangeEmail.php:29
-#: ChurchCRM/Emails/users/ResetPasswordEmail.php:29 UserPasswordChange.php:205
+#: ChurchCRM/Emails/users/ResetPasswordEmail.php:29 UserPasswordChange.php:202
 msgid "New Password"
 msgstr "Mật khẩu mới"
 
-#: UserPasswordChange.php:209
+#: UserPasswordChange.php:206
 msgid "Confirm New Password"
 msgstr "Nhập lại mật khẩu mới"
 
@@ -1864,10 +1862,6 @@ msgstr "Bạn có ý kiến đóng góp nào cho chúng tôi không ?"
 msgid "How did you learn of the church?"
 msgstr "Làm thế nào mà bạn học hỏi được tại Hội Thánh ?"
 
-#: calendar.php:21
-msgid "Church Calendar"
-msgstr "Lịch Hội Thánh"
-
 #: Include/Footer.php:24 Register.php:42
 msgid "Version"
 msgstr "Phiên bản"
@@ -1884,7 +1878,7 @@ msgstr "Bảo lưu tất cả các quyền"
 msgid "Profile Image successfully updated."
 msgstr "Đã cập nhật thành công hình ảnh đại diện"
 
-#: Include/Header.php:116 PersonView.php:377
+#: Include/Header.php:113 PersonView.php:377
 msgid "Change Password"
 msgstr "Thay đổi mật khẩu"
 
@@ -1905,7 +1899,7 @@ msgstr "Di động"
 msgid "Work"
 msgstr "Công việc"
 
-#: ChurchCRM/Config/Menu/Menu.php:98 GroupEditor.php:108
+#: ChurchCRM/Config/Menu/Menu.php:116 GroupEditor.php:108
 #: sundayschool/SundaySchoolClassView.php:39
 #: sundayschool/SundaySchoolDashboard.php:247
 msgid "Sunday School"
@@ -1942,7 +1936,7 @@ msgstr "Email giáo viên"
 msgid "Sunday School Dashboard"
 msgstr "Bảng điều khiển"
 
-#: ChurchCRM/Config/Menu/Menu.php:101
+#: ChurchCRM/Config/Menu/Menu.php:119
 #: sundayschool/SundaySchoolDashboard.php:69
 msgid "Classes"
 msgstr "Lớp học"
@@ -1962,7 +1956,7 @@ msgstr "Báo cáo Trường Chúa Nhật"
 msgid "No Sunday School"
 msgstr "Không có lớp trường Chúa Nhật"
 
-#: ChurchCRM/Config/Menu/Menu.php:51 v2/routes/calendar.php:22
+#: ChurchCRM/Config/Menu/Menu.php:52 v2/routes/calendar.php:22
 msgid "Calendar"
 msgstr "Lịch"
 
@@ -1970,19 +1964,19 @@ msgstr "Lịch"
 msgid "Members"
 msgstr "Thành viên"
 
-#: ChurchCRM/Config/Menu/Menu.php:62
+#: ChurchCRM/Config/Menu/Menu.php:63
 msgid "Add New Person"
 msgstr "Thêm thành viên mới"
 
-#: ChurchCRM/Config/Menu/Menu.php:63
+#: ChurchCRM/Config/Menu/Menu.php:64
 msgid "View All Persons"
 msgstr "Xem tất cả thành viên"
 
-#: ChurchCRM/Config/Menu/Menu.php:64
+#: ChurchCRM/Config/Menu/Menu.php:65
 msgid "Add New Family"
 msgstr "Thêm gia đình mới"
 
-#: ChurchCRM/Config/Menu/Menu.php:111 ChurchCRM/dto/SystemConfig.php:252
+#: ChurchCRM/Config/Menu/Menu.php:129 ChurchCRM/dto/SystemConfig.php:253
 msgid "Events"
 msgstr "Sự kiện"
 
@@ -2002,7 +1996,7 @@ msgstr "Chào mừng bạn đến với"
 msgid "Login to restored Database"
 msgstr "Đăng nhập để phục hồi cơ sở dữ liệu"
 
-#: ChurchCRM/dto/SystemConfig.php:238
+#: ChurchCRM/dto/SystemConfig.php:239
 msgid "Church Information"
 msgstr "Thông tin Hội Thánh"
 
@@ -2018,7 +2012,7 @@ msgstr "Đăng nhập để nâng cấp hệ thống"
 msgid "Add New Class"
 msgstr "Thêm lớp mới"
 
-#: Login.php:178 Login.php:243
+#: Login.php:181 Login.php:246
 msgid "Your previous session timed out.  Please login again."
 msgstr "Phiên truy cập trước đã hết thời gian, vui lòng đăng nhập lại."
 
@@ -2049,7 +2043,7 @@ msgstr "Ghi chú"
 msgid "Reports"
 msgstr "Báo cáo"
 
-#: v2/templates/email/dashboard.php:34
+#: v2/templates/email/dashboard.php:35
 msgid "Members:"
 msgstr "Thành viên:"
 
@@ -2073,12 +2067,12 @@ msgstr "Gán thuộc tính mới:"
 msgid "Family Map"
 msgstr "Bản đồ gia đình"
 
-#: ChurchCRM/Config/Menu/Menu.php:72 Menu.php:234 PeopleDashboard.php:200
+#: ChurchCRM/Config/Menu/Menu.php:84 Menu.php:234 PeopleDashboard.php:200
 #: api/routes/search.php:173
 msgid "Groups"
 msgstr "Ban/Mục vụ"
 
-#: ChurchCRM/Config/Menu/Menu.php:73
+#: ChurchCRM/Config/Menu/Menu.php:85
 msgid "List Groups"
 msgstr "Danh sách Ban/Mục vụ"
 
@@ -2086,11 +2080,11 @@ msgstr "Danh sách Ban/Mục vụ"
 msgid "Edit Group Types"
 msgstr "Chỉnh sửa Thể loại Ban/Mục vụ"
 
-#: ChurchCRM/Config/Menu/Menu.php:124
+#: ChurchCRM/Config/Menu/Menu.php:141
 msgid "View All Deposits"
 msgstr "Xem tất cả khoản thu"
 
-#: ChurchCRM/Config/Menu/Menu.php:136
+#: ChurchCRM/Config/Menu/Menu.php:159
 msgid "View All Fundraisers"
 msgstr "Xem tất cả khoản đóng góp"
 
@@ -2111,10 +2105,6 @@ msgstr "Ngày sinh nhật"
 msgid "Select all members"
 msgstr "Lựa chọn tất cả thành viên"
 
-#: Include/Footer.php:200
-msgid "Please contact your admin to change the system settings."
-msgstr "Vui lòng liên hệ với Quản trị viên để thay đổi cài đặt hệ thống"
-
 #: PrintView.php:498
 msgid "Last Edited"
 msgstr "Vừa cập nhật"
@@ -2123,7 +2113,7 @@ msgstr "Vừa cập nhật"
 msgid "Group Type"
 msgstr "Thể loại Ban/Mục vụ"
 
-#: OptionManager.php:79
+#: ChurchCRM/Config/Menu/Menu.php:107 OptionManager.php:79
 msgid "Group Types"
 msgstr "Thể loại Ban/Mục vụ"
 
@@ -2174,11 +2164,11 @@ msgstr "Trạng thái"
 msgid "Email export"
 msgstr "Email xuất ra"
 
-#: ChurchCRM/Config/Menu/Menu.php:65
+#: ChurchCRM/Config/Menu/Menu.php:66
 msgid "View Active Families"
 msgstr "Xem gia đình đang hoạt động"
 
-#: ChurchCRM/Config/Menu/Menu.php:66
+#: ChurchCRM/Config/Menu/Menu.php:67
 msgid "View Inactive Families"
 msgstr "Xem gia đình không hoạt động"
 
