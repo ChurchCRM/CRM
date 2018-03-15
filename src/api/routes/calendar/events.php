@@ -5,7 +5,7 @@ use ChurchCRM\Base\EventTypeQuery;
 use ChurchCRM\CalendarQuery;
 use ChurchCRM\Event;
 use ChurchCRM\EventCounts;
-use ChurchCRM\Slim\Middleware\AddEventsRoleAuthMiddleware;
+use ChurchCRM\Slim\Middleware\Role\AddEventsRoleAuthMiddleware;
 use ChurchCRM\Utils\InputUtils;
 use Slim\Http\Response;
 

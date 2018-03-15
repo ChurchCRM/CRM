@@ -1,8 +1,6 @@
 <?php
 
-namespace ChurchCRM\Slim\Middleware;
-
-use ChurchCRM\Slim\Middleware\Role\BaseAuthRoleMiddleware;
+namespace ChurchCRM\Slim\Middleware\Role;
 
 class AddEventsRoleAuthMiddleware extends BaseAuthRoleMiddleware {
 
