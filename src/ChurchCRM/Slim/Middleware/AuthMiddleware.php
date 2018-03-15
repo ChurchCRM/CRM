@@ -6,6 +6,7 @@ use ChurchCRM\UserQuery;
 use Slim\Http\Request;
 use Slim\Http\Response;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\Utils\LoggerUtils;
 
 class AuthMiddleware {
 
@@ -17,13 +18,20 @@ class AuthMiddleware {
         if (!$this->isPublic( $request->getUri()->getPath())) {
             $this->apiKey = $request->getHeader("x-api-key");
             if (!empty($this->apiKey)) {
-                $this->user = UserQuery::create()->findOneByApiKey($this->apiKey);
-
+                $user = UserQuery::create()->findOneByApiKey($this->apiKey);
+                if (!empty($user)) {
+                    LoggerUtils::getAppLogger()->info($user->getName() . " : " . gettext("logged via API Key."));
+                    $this->user = $user;
+                } else {
+                    LoggerUtils::getAppLogger()->warn(gettext("logged via InValid API Key."));
+                    session_destroy();
+                }
             }
             if (empty($this->user)) {
                 $this->user = $_SESSION['user'];
             } else {
                 $_SESSION['user'] = $this->user;
+                $_SESSION['tLastOperation'] = time();
             }
 
             if (!$this->isUserSessionValid($request)) {
