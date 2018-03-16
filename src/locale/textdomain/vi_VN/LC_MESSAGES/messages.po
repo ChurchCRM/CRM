@@ -2076,10 +2076,6 @@ msgstr "Ban/Mục vụ"
 msgid "List Groups"
 msgstr "Danh sách Ban/Mục vụ"
 
-#: Include/Footer.php:108
-msgid "Edit Group Types"
-msgstr "Chỉnh sửa Thể loại Ban/Mục vụ"
-
 #: ChurchCRM/Config/Menu/Menu.php:141
 msgid "View All Deposits"
 msgstr "Xem tất cả khoản thu"

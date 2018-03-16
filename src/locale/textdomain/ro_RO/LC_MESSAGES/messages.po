@@ -3126,10 +3126,6 @@ msgstr "Trimite"
 msgid "Pledge Reminder Report"
 msgstr "Raportul Memento gaj"
 
-#: ReportList.php:15
-msgid "Report Menu"
-msgstr "Raportul Meniu"
-
 #: SelectDelete.php:67
 msgid "All donations from this family have been moved to another family."
 msgstr "Toate donațiile din această familie au fost mutate la o altă familie."

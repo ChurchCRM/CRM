@@ -14,7 +14,7 @@ msgstr "Abfrage kann nicht ausgeführt werden."
 
 #: AutoPaymentDelete.php:19
 msgid "Confirm Delete Automatic payment"
-msgstr "Bestätigen sie das automatische Löschen der Zahlung"
+msgstr "Bestätigen Sie das automatische Löschen der Zahlung"
 
 #: AutoPaymentDelete.php:63 Checkin.php:286 Checkin.php:368
 #: DepositSlipEditor.php:228 DonationFundEditor.php:153
@@ -1386,6 +1386,10 @@ msgstr "Monat"
 msgid "Year"
 msgstr "Jahr"
 
+#: ElectronicPaymentList.php:215
+msgid "Vanco CC"
+msgstr "Vanco Kreditkarte"
+
 #: ElectronicPaymentList.php:218 ElectronicPaymentList.php:283
 #: EventNames.php:294 FamilyView.php:209 FamilyView.php:662 FamilyView.php:711
 #: FamilyView.php:773 FindFundRaiser.php:233 FindFundRaiser.php:241
@@ -1667,6 +1671,18 @@ msgstr "Kein gültiger Hochzeitstag"
 #: FamilyEditor.php:241 PersonEditor.php:247
 msgid "Email is Not Valid"
 msgstr "E-Mail ist ungültig"
+
+#: FamilyEditor.php:645 PersonEditor.php:773
+msgid "Family Info"
+msgstr "Familieninformation"
+
+#: FamilyEditor.php:683
+msgid "None US/CND State"
+msgstr "Kein US-/kanadischer Staat"
+
+#: FamilyEditor.php:729 PersonEditor.php:816
+msgid "Contact Info"
+msgstr "Kontaktinformation"
 
 #: FamilyEditor.php:793
 msgid "Other Info"
@@ -2410,6 +2426,10 @@ msgstr "Text für Veranstaltungs ID:"
 msgid "Group Editor"
 msgstr "Gruppen Editor"
 
+#: GroupEditor.php:66
+msgid "Group Settings"
+msgstr "Gruppeneinstellungen"
+
 #: GroupEditor.php:85 GroupView.php:195
 #, fuzzy
 msgid "Type of Group"
@@ -2448,9 +2468,17 @@ msgstr "Gruppenrollen"
 msgid "New Role"
 msgstr "Neue Rolle"
 
+#: GroupEditor.php:190
+msgid "Add New Role"
+msgstr "Neue Rolle hinzufügen"
+
 #: GroupList.php:20
 msgid "Group Listing"
 msgstr "Gruppenauflistung"
+
+#: GroupList.php:56 GroupList.php:60
+msgid "Add New Group"
+msgstr "Neue Gruppe hinzufügen"
 
 #: Include/Header-function.php:65
 msgid "Submit"
@@ -2504,6 +2532,10 @@ msgstr "Gruppenbericht"
 #, fuzzy
 msgid "Select the group you would like to report"
 msgstr "Wähle die Gruppe aus über die du berichten willst"
+
+#: GroupReports.php:59
+msgid "No Role Selected"
+msgstr "Keine Rolle ausgewählt"
 
 #: GroupReports.php:65
 #, fuzzy
@@ -2561,6 +2593,10 @@ msgstr "Diese Gruppe bearbeiten"
 msgid "Delete this Group"
 msgstr "Diese Gruppe löschen"
 
+#: GroupView.php:430
+msgid "Confirm Delete Group"
+msgstr "Gruppe löschen bestätigen"
+
 #: GroupView.php:432
 #, fuzzy
 msgid "Please confirm deletion of this group record"
@@ -2609,6 +2645,18 @@ msgstr "Eigenschaften festlegen"
 #: GroupView.php:383
 msgid "Group Members:"
 msgstr "Gruppen Mitglieder:"
+
+#: GroupView.php:391
+msgid "Group members: "
+msgstr "Gruppenmitglieder"
+
+#: GroupView.php:403
+msgid "Add Selected Members to Group"
+msgstr "Ausgewählte Mitglieder zu Gruppe hinzufügen"
+
+#: GroupView.php:404
+msgid "Move Selected Members to Group"
+msgstr "Ausgewählte Mitglieder zu Gruppe verschieben"
 
 #: GroupView.php:412
 msgid "Add Group Member: "
@@ -2794,6 +2842,11 @@ msgstr "Personen"
 msgid "See All People"
 msgstr "Alle Menschen anzeigen"
 
+#: Menu.php:222 Menu.php:241 Menu.php:266 PeopleDashboard.php:186
+#: PeopleDashboard.php:207
+msgid "More info"
+msgstr "Weitere Informationen"
+
 #: PeopleDashboard.php:226
 msgid "Reports on groups and roles"
 msgstr "Berichte über Gruppen und Rollen"
@@ -2809,6 +2862,26 @@ msgstr "Erzeuge Briefe und Adressetiketten"
 #: PeopleDashboard.php:244
 msgid "US Address Verification Report"
 msgstr "Bericht zur US Adressüberprüfung "
+
+#: PeopleDashboard.php:296
+msgid "Role / Gender"
+msgstr "Rolle / Geschlecht"
+
+#: PeopleDashboard.php:460
+msgid "Men"
+msgstr "Männer"
+
+#: PeopleDashboard.php:463
+msgid "Women"
+msgstr "Frauen"
+
+#: PeopleDashboard.php:468 sundayschool/SundaySchoolDashboard.php:116
+msgid "Boys"
+msgstr "Jungen"
+
+#: PeopleDashboard.php:471 sundayschool/SundaySchoolDashboard.php:128
+msgid "Girls"
+msgstr "Mädchen"
 
 #: CartToFamily.php:206
 #: ChurchCRM/Emails/notifications/NewPersonOrFamilyEmail.php:58
@@ -3480,10 +3553,6 @@ msgstr "Senden"
 msgid "Pledge Reminder Report"
 msgstr "Bericht zur Erinnerung an Zusagen"
 
-#: ReportList.php:15
-msgid "Report Menu"
-msgstr "Berichts Menü"
-
 #: ChurchCRM/Config/Menu/Menu.php:134
 msgid "Event Attendance Reports"
 msgstr "Report der Besucher eines Events"
@@ -3622,6 +3691,10 @@ msgstr "Alle anschauen"
 msgid "Cart"
 msgstr "Korb"
 
+#: SelectList.php:1058
+msgid "Print"
+msgstr "Drucken"
+
 #: SettingsIndividual.php:86
 msgid "My User Settings"
 msgstr "Meine Benutzereinstellungen"
@@ -3651,6 +3724,10 @@ msgstr "Setze die Erlaubnis auf WAHR um neuen Nutzern die Möglichkeit zu geben 
 #: SettingsUser.php:84 UserEditor.php:477
 msgid "Permission"
 msgstr "Erlaubnis"
+
+#: ChurchCRM/dto/SystemConfig.php:247 SystemSettings.php:29
+msgid "System Settings"
+msgstr "Systemeinstellungen"
 
 #: TaxReport.php:29
 msgid "Tax Report"
@@ -3691,6 +3768,10 @@ msgstr "Personen zu Benutzern machen"
 #, fuzzy
 msgid "User"
 msgstr "Benutzer"
+
+#: UserEditor.php:380 external/templates/password/enter-username.php:30
+msgid "Login Name"
+msgstr "Login Name"
 
 #: UserEditor.php:385
 #, fuzzy
@@ -3759,6 +3840,14 @@ msgstr "Darstellung der Datenfelder"
 #: UserList.php:37
 msgid "User Listing"
 msgstr "Benutzer Auflistung"
+
+#: UserList.php:44
+msgid "New User"
+msgstr "Neuer Benutzer"
+
+#: UserList.php:45
+msgid "User Settings"
+msgstr "Benutzer-Einstellungen"
 
 #: UserList.php:55
 msgid "Last Login"
@@ -3933,6 +4022,10 @@ msgstr "Zurück zum Einzahlungsbeleg"
 msgid "Fatal error in eGive API datastream: '"
 msgstr "Schwerer Fehler in eGive API datastream:"
 
+#: email/MailChimpMissingReport.php:23
+msgid "People not in Mailchimp"
+msgstr "Menschen nicht in Mailchimp"
+
 #: Include/CanvassUtilities.php:66
 msgid "No families need canvassers assigned"
 msgstr "Familien müssen nicht Aktionsmitarbeitern zugewiesen werden"
@@ -3952,6 +4045,18 @@ msgstr "Zugewiesene Umschlagnummer an alle Familien mit mindestens einem Mitglie
 #: Include/EnvelopeFunctions.php:37
 msgid "Assigned envelope numbers to all families."
 msgstr "Zugewiesene Umschlagsnummer an alle Familien."
+
+#: Include/Footer.php:24 Register.php:42
+msgid "Version"
+msgstr "Version"
+
+#: Include/Footer.php:26 Include/FooterNotLoggedIn.php:6
+msgid "Copyright"
+msgstr "Copyright"
+
+#: Include/Footer.php:26 Include/FooterNotLoggedIn.php:6
+msgid "All rights reserved"
+msgstr "Alle Rechte vorbehalten"
 
 #: Include/Functions.php:95
 msgid "True / False"
@@ -3988,6 +4093,14 @@ msgstr "Tel. Nummer"
 #: Include/Functions.php:106
 msgid "Custom Drop-Down List"
 msgstr "Benutzersdefiniert Drop-Down Liste"
+
+#: Include/Functions.php:112
+msgid "Thank you for registering your ChurchCRM installation."
+msgstr "Danke für die Registrierungen Ihrer ChurchCRM Installation"
+
+#: Include/Functions.php:116
+msgid "PDFs successfully emailed "
+msgstr "PDF erfolgreich per E-Mail versandt"
 
 #: Include/Functions.php:121
 msgid "PDF successfully emailed to family members."
@@ -4146,6 +4259,10 @@ msgstr "Keine persönlichen Daten werden mitgeschickt, es sei denn Du fügst sie
 #: ChurchCRM/Config/Menu/Menu.php:117
 msgid "Dashboard"
 msgstr "Dashboard"
+
+#: Include/Header.php:113 PersonView.php:377
+msgid "Change Password"
+msgstr "Passwort ändern"
 
 #: Include/LabelFunctions.php:42
 #, fuzzy
@@ -4393,6 +4510,58 @@ msgstr "Geschenkwert:"
 msgid "Gift Designation:"
 msgstr "Geschenkbezeichnung:"
 
+#: ChurchCRM/Config/Menu/Menu.php:116 GroupEditor.php:108
+#: sundayschool/SundaySchoolClassView.php:39
+#: sundayschool/SundaySchoolDashboard.php:247
+msgid "Sunday School"
+msgstr "Sonntagsschule"
+
+#: Reports/ClassAttendance.php:99 Reports/ClassAttendance.php:184
+#: Reports/PhotoBook.php:64 sundayschool/SundaySchoolClassView.php:123
+#: sundayschool/SundaySchoolDashboard.php:81
+#: sundayschool/SundaySchoolDashboard.php:153
+msgid "Teachers"
+msgstr "Lehrer"
+
+#: sundayschool/SundaySchoolClassView.php:137
+#: sundayschool/SundaySchoolClassView.php:316
+msgid "Send Message"
+msgstr "Nachricht senden"
+
+#: sundayschool/SundaySchoolClassView.php:139
+msgid "View Profile"
+msgstr "Profil anzeigen"
+
+#: sundayschool/SundaySchoolClassView.php:164
+msgid "Birthdays by Month"
+msgstr "Geburtstage nach Monat"
+
+#: Reports/ClassAttendance.php:172 Reports/PhotoBook.php:66
+#: sundayschool/SundaySchoolClassView.php:193
+#: sundayschool/SundaySchoolDashboard.php:92
+#: sundayschool/SundaySchoolDashboard.php:154
+msgid "Students"
+msgstr "Schüler"
+
+#: external/templates/registration/family-register-members.php:94
+#: sundayschool/SundaySchoolClassView.php:206
+msgid "Mobile"
+msgstr "Mobil"
+
+#: external/templates/verify/verify-family-info.php:25
+#: sundayschool/SundaySchoolClassView.php:208
+#: sundayschool/SundaySchoolDashboard.php:207
+msgid "Home Address"
+msgstr "Heimatadresse"
+
+#: sundayschool/SundaySchoolClassView.php:209
+msgid "Dad Name"
+msgstr "Name des Vaters"
+
+#: sundayschool/SundaySchoolClassView.php:210
+msgid "Dad Mobile"
+msgstr "Mobiltelefon des Vaters"
+
 #: sundayschool/SundaySchoolClassView.php:211
 msgid "Dad Email"
 msgstr "Email Vater"
@@ -4536,6 +4705,42 @@ msgstr "Kalender"
 msgid "Members"
 msgstr "Mitglieder"
 
+#: ChurchCRM/Config/Menu/Menu.php:63
+msgid "Add New Person"
+msgstr "Neue Person hinzufügen"
+
+#: ChurchCRM/Config/Menu/Menu.php:64
+msgid "View All Persons"
+msgstr "Alle Personen anzeigen"
+
+#: ChurchCRM/Config/Menu/Menu.php:65
+msgid "Add New Family"
+msgstr "Neue Familie hinzufügen"
+
+#: ChurchCRM/Config/Menu/Menu.php:129 ChurchCRM/dto/SystemConfig.php:253
+msgid "Events"
+msgstr "Veranstaltungen"
+
+#: v2/templates/email/dashboard.php:15
+msgid "Email Export"
+msgstr "E-Mail Export"
+
+#: v2/templates/email/dashboard.php:30
+msgid "List"
+msgstr "Liste"
+
+#: CSVImport.php:115
+msgid "Import Data"
+msgstr "Daten importieren"
+
+#: CSVImport.php:819
+msgid "Clear Data"
+msgstr "Daten löschen"
+
+#: EditEventAttendees.php:76
+msgid "Are you sure you want to DELETE this person from Event ID: "
+msgstr "Sind Sie sicher, dass Sie diese Person aus der Veranstaltungs-ID LÖSCHEN wollen:"
+
 #: FindDepositSlip.php:98
 msgid "Please ensure this what you want to do."
 msgstr "Bitte bestätige, dass Du dies tun willst."
@@ -4616,6 +4821,36 @@ msgstr "Dateien zum Hochladen"
 msgid "No Restore Running"
 msgstr "Keine Wiederherstellung läuft"
 
+#: SystemSettings.php:83
+msgid "Setting saved"
+msgstr "Einstellung gespeichert"
+
+#: SettingsIndividual.php:144 SettingsUser.php:114 SettingsUser.php:144
+#: SystemSettings.php:199 UserEditor.php:515 UserEditor.php:543
+msgid "False"
+msgstr "Falsch"
+
+#: SettingsIndividual.php:145 SettingsUser.php:115 SettingsUser.php:145
+#: SystemSettings.php:200 UserEditor.php:516 UserEditor.php:544
+msgid "True"
+msgstr "Wahr"
+
+#: SystemSettings.php:207
+msgid "Edit Settings"
+msgstr "Einstellungen bearbeiten"
+
+#: UpgradeCRM.php:13 UpgradeCRM.php:29
+msgid "Upgrade ChurchCRM"
+msgstr "ChurchCRM upgraden"
+
+#: UpgradeCRM.php:35
+msgid "Step 1: Backup Database"
+msgstr "Schritt 1: Datenbank Backup"
+
+#: UpgradeCRM.php:37
+msgid "Please create a database backup before beginning the upgrade process."
+msgstr "Bitte erstellen Sie ein Datenbank Backup bevor Sie den Upgrade Prozess beginnen."
+
 #: UpgradeCRM.php:65
 msgid "Full Path:"
 msgstr "Voller Pfad:"
@@ -4671,6 +4906,19 @@ msgstr "Gesäuberte Anzahl seit letztem Versand:"
 #: v2/templates/email/dashboard.php:57
 msgid "Missing emails report"
 msgstr "Fehlende Mails Report"
+
+#: sundayschool/SundaySchoolDashboard.php:51
+msgid "Add New Class"
+msgstr "Neue Klasse hinzufügen"
+
+#: sundayschool/SundaySchoolDashboard.php:247
+#: sundayschool/SundaySchoolDashboard.php:260
+msgid "Add"
+msgstr "Hinzufügen"
+
+#: ChurchCRM/tasks/RegisteredTask.php:28
+msgid "Register Software"
+msgstr "Software registrieren"
 
 #: BackupDatabase.php:67
 msgid "No Backup Running"
@@ -4747,6 +4995,38 @@ msgstr "Alle Klassen hinzufügen"
 #: FinancialReports.php:134
 msgid "Clear All Classes"
 msgstr "Alle Klassen leeren"
+
+#: FinancialReports.php:180
+msgid "Add All Families"
+msgstr "Alle Familien hinzufügen"
+
+#: FinancialReports.php:181
+msgid "Clear All Families"
+msgstr "Alle Familien löschen"
+
+#: Login.php:221
+msgid "Register a new Family"
+msgstr "Eine neue Familie registrieren"
+
+#: ChurchCRM/tasks/HttpsTask.php:19
+msgid "Configure HTTPS"
+msgstr "HTTPS konfigurieren"
+
+#: PersonView.php:254
+msgid "Family:"
+msgstr "Familie:"
+
+#: Reports/ConfirmReport.php:120
+msgid "Address 1"
+msgstr "Adresse 1"
+
+#: Reports/ConfirmReport.php:125
+msgid "Address 2"
+msgstr "Adresse 2"
+
+#: Reports/ConfirmReport.php:186 Reports/ConfirmReport.php:205
+msgid "Cell phone"
+msgstr "Mobiltelefon"
 
 #: Reports/FundRaiserStatement.php:220
 msgid "-----------------------------------------------------------------------------------------------------------------------------------------------"
@@ -4832,6 +5112,18 @@ msgstr "CSV Import"
 msgid "Comment:"
 msgstr "Kommentar:"
 
+#: v2/templates/email/dashboard.php:35
+msgid "Members:"
+msgstr "Mitglieder:"
+
+#: ChurchCRM/Config/Menu/Menu.php:193 v2/templates/email/dashboard.php:74
+msgid "Edit General Settings"
+msgstr "Allgemeine Einstellungen bearbeiten"
+
+#: EventEditor.php:537 KioskManager.php:30
+msgid "Inactive"
+msgstr "Inaktiv"
+
 #: ChurchCRM/model/ChurchCRM/Person.php:480 ChurchCRM/utils/MiscUtils.php:80
 msgid "yr old"
 msgstr "jahre alt"
@@ -4913,6 +5205,14 @@ msgstr "Anfragen, für die Nutzer Finanzrechte haben muss:"
 msgid "Should only administrators have access to the CSV export system and directory report?"
 msgstr "Sollen nur Administratoren CSV Dateien exportieren dürfen?"
 
+#: ChurchCRM/dto/SystemConfig.php:84
+msgid "SMTP Username"
+msgstr "SMTP Benutzname"
+
+#: ChurchCRM/dto/SystemConfig.php:85
+msgid "SMTP Password"
+msgstr "SMTP Passwort"
+
 #: ChurchCRM/dto/SystemConfig.php:99
 msgid "Set true to enable use of donation envelopes"
 msgstr "Setze auf true um Spendenbriefumschläge zu aktivieren."
@@ -4953,17 +5253,9 @@ msgstr "Intervall für Integritätsprüfungen in Stunden"
 msgid "Last Integrity Check Timestamp"
 msgstr "Letzte Integritätsprüfung"
 
-#: menuconfig_mcf.php:2
-msgid "Main"
-msgstr "Haupt"
-
 #: ChurchCRM/Config/Menu/Menu.php:85
 msgid "List Groups"
 msgstr "Liste Gruppen"
-
-#: Include/Footer.php:108
-msgid "Edit Group Types"
-msgstr "Gruppenarten editieren"
 
 #: ChurchCRM/Config/Menu/Menu.php:159
 msgid "View All Fundraisers"
@@ -5025,6 +5317,26 @@ msgstr "2013/14"
 #: queryparameteroptions_qpo.php:11
 msgid "2014/2015"
 msgstr "2014/15"
+
+#: queryparameteroptions_qpo.php:16
+msgid "Regular Attender"
+msgstr "Regelmäßiger Besucher"
+
+#: queryparameteroptions_qpo.php:17
+msgid "Guest"
+msgstr "Gast"
+
+#: queryparameters_qrp.php:9
+msgid "Search"
+msgstr "Suche"
+
+#: queryparameters_qrp.php:10
+msgid "Field"
+msgstr "Feld"
+
+#: query_qry.php:9 query_qry.php:48 queryparameters_qrp.php:13
+msgid "Registered students"
+msgstr "Registrierte Schüler"
 
 #: queryparameters_qrp.php:21
 msgid "Field value"
@@ -5778,7 +6090,6 @@ msgstr "Wallis und Futuna"
 msgid "Oops! Page not found."
 msgstr "Seite nicht gefunden"
 
-#: external/templates/calendar/calendar.php:6
 #: external/templates/password/enter-username.php:7
 #: external/templates/password/password-check-email.php:7
 #: external/templates/registration/family-register-done.php:6

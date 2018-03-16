@@ -3620,10 +3620,6 @@ msgstr "Enviar"
 msgid "Pledge Reminder Report"
 msgstr "Reporte de Recordatorios Promesas"
 
-#: ReportList.php:15
-msgid "Report Menu"
-msgstr "Menu de reportes"
-
 #: ChurchCRM/Config/Menu/Menu.php:134
 msgid "Event Attendance Reports"
 msgstr "Reportes de Asistencia a Evento"
@@ -4816,10 +4812,6 @@ msgstr "Recaudación de Fondos"
 msgid "Email Export"
 msgstr "Exportar por Email"
 
-#: v2/templates/email/dashboard.php:23
-msgid "Generate"
-msgstr "Generar"
-
 #: v2/templates/email/dashboard.php:30
 msgid "List"
 msgstr "Lista"
@@ -5100,7 +5092,7 @@ msgstr "Cantidad de limpiados desde último enviado:"
 
 #: v2/templates/email/dashboard.php:57
 msgid "Missing emails report"
-msgstr "Reporte de emails faltantes"
+msgstr "Reporte de emails faltan"
 
 #: sundayschool/SundaySchoolDashboard.php:45
 msgid "Functions"
@@ -5833,17 +5825,9 @@ msgstr "Intervalo en Horas para Chequeo de Integridad"
 msgid "Last Integrity Check Timestamp"
 msgstr "Marca de Tiempo de Último Chequeo de Integridad"
 
-#: menuconfig_mcf.php:2
-msgid "Main"
-msgstr "Principal"
-
 #: ChurchCRM/Config/Menu/Menu.php:85
 msgid "List Groups"
 msgstr "Listar Grupos"
-
-#: Include/Footer.php:108
-msgid "Edit Group Types"
-msgstr "Editar Tipos de Grupo"
 
 #: ChurchCRM/Config/Menu/Menu.php:131
 msgid "List Church Events"
@@ -7638,7 +7622,6 @@ msgstr "Página no encontrada"
 msgid "Oops! Page not found."
 msgstr "Oops! Página no encontrada."
 
-#: external/templates/calendar/calendar.php:6
 #: external/templates/password/enter-username.php:7
 #: external/templates/password/password-check-email.php:7
 #: external/templates/registration/family-register-done.php:6
@@ -8762,7 +8745,7 @@ msgstr "Nueva Familia Agregada"
 msgid "Church Greeter"
 msgstr "Recibidor de Personas"
 
-#: ChurchCRM/Slim/Middleware/PublicCalendarAPIMiddleware.php:20
+#: ChurchCRM/Slim/Middleware/PublicCalendarAPIMiddleware.php:21
 msgid "External Calendar API is disabled"
 msgstr "API de calendario externo está deshabilitado"
 
@@ -9034,17 +9017,9 @@ msgstr "Twitter"
 msgid "LinkedIn"
 msgstr "LinkedIn"
 
-#: calendar.php:57
-msgid "Birthdate"
-msgstr "Fecha de Nacimiento"
-
 #: 
 msgid "Calendar description"
 msgstr "Descripción de Calendario"
-
-#: 
-msgid "Personal"
-msgstr "Personal"
 
 #: 
 msgid "Visitors"
@@ -9472,4 +9447,162 @@ msgstr "Alerta: bEnableExternalCalendarAPI deshabilitado, pero algunos calendari
 #: 
 msgid "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token"
 msgstr "Para que los calendarios puedan ser compartidos, el ajuste bEnableExternalCalendarAPI debe estar habilitado, además el calendario debe tener un token de acceso específico"
+
+#: ChurchCRM/Config/Menu/Menu.php:207
+msgid "Links"
+msgstr "Enlaces"
+
+#: ChurchCRM/dto/SystemConfig.php:225
+msgid "Show custom links on the left menu."
+msgstr "Mostrar enlaces personalizados en el menú izquierdo."
+
+#: ChurchCRM/dto/SystemConfig.php:226
+msgid "Enable Sunday School left menu."
+msgstr "Activar menú izquierdo de Escuela Dominical."
+
+#: ChurchCRM/dto/SystemConfig.php:227
+msgid "Enable Finance menu"
+msgstr "Activar menú Financiero"
+
+#: ChurchCRM/dto/SystemConfig.php:228
+msgid "Enable Events menu."
+msgstr "Activar menú de Eventos."
+
+#: ChurchCRM/dto/SystemConfig.php:229
+msgid "Enable Calendar menu."
+msgstr "Activar menú de Calendario."
+
+#: ChurchCRM/dto/SystemConfig.php:230
+msgid "Enable Fundraiser menu."
+msgstr "Activar menú de Recaudaciones."
+
+#: ChurchCRM/dto/SystemConfig.php:231
+msgid "Enable Email menu."
+msgstr "Activar menú de Email"
+
+#: ChurchCRM/dto/SystemConfig.php:243
+msgid "Enabled Features"
+msgstr "Funcionalidades Activadas"
+
+#: api/routes/system/system-custom-menu.php:38
+msgid "Validation Error"
+msgstr "Error de Validación"
+
+#: api/routes/system/system-custom-menu.php:46
+msgid "Link Not found"
+msgstr "Enlace No Encontrado"
+
+#: v2/templates/email/dashboard.php:12
+msgid "Email Functions"
+msgstr "Funciones de Email"
+
+#: v2/templates/email/dashboard.php:18
+msgid "Debug"
+msgstr "Depurar"
+
+#: ChurchCRM/Config/Menu/Menu.php:72
+msgid "Family Custom Fields"
+msgstr "Campos Personalizados de Familia"
+
+#: ChurchCRM/Config/Menu/Menu.php:74
+msgid "Person Custom Fields"
+msgstr "Campos Personalizados de Persona"
+
+#: ChurchCRM/Config/Menu/Menu.php:148
+msgid "Donation Funds"
+msgstr "Fondos de Donaciones"
+
+#: ChurchCRM/SQLUtils.php:22
+msgid "Unable to open file"
+msgstr "No es posible abrir el archivo"
+
+#: ChurchCRM/Service/UpgradeService.php:50
+msgid "Invalid upgrade file specified"
+msgstr "Archivo de actualización inválido"
+
+#: ChurchCRM/Service/UpgradeService.php:60
+msgid "Failure executing upgrade script"
+msgstr "Falla al ejecutar script de actualización"
+
+#. Database
+#: ChurchCRM/Service/UpgradeService.php:70
+msgid "Databse upgrade failed"
+msgstr "Falla al actualizar la base de datos"
+
+#: ChurchCRM/Slim/Middleware/AuthMiddleware.php:23
+msgid "logged via API Key."
+msgstr "conectado vía Llave de API."
+
+#. Invalid
+#: ChurchCRM/Slim/Middleware/AuthMiddleware.php:26
+msgid "logged via InValid API Key."
+msgstr "conectado vía Llave de API invalida."
+
+#: ChurchCRM/Slim/Middleware/PublicCalendarAPIMiddleware.php:26
+msgid "Missing calendar access token"
+msgstr "Falta token de acceso de calendario"
+
+#: ChurchCRM/Slim/Middleware/PublicCalendarAPIMiddleware.php:33
+msgid "Calendar access token not found"
+msgstr "Token de acceso de calendario no encontrado"
+
+#: ChurchCRM/Slim/Middleware/Role/DeleteRecordRoleAuthMiddleware.php:14
+msgid "User must have Delete Records permission"
+msgstr "Usuario debe tener permiso para Borrar Registros"
+
+#: ChurchCRM/dto/SystemConfig.php:232
+msgid "ChurchCRM Central Notifications URL"
+msgstr "URL Central de Notificaciones de ChurchCRM"
+
+#: Include/Footer.php:27
+msgid "Follow us on Twitter"
+msgstr "Síganos en Twitter"
+
+#: api/routes/calendar/events.php:128
+msgid "invalid event type id"
+msgstr "id de tipo de evento inválido"
+
+#: api/routes/calendar/events.php:135
+msgid "invalid calendar pinning"
+msgstr "Anclado de calendario inválido"
+
+#: api/routes/people/people-families.php:128
+#: api/routes/people/people-families.php:140
+#: api/routes/people/people-families.php:194
+msgid "FamilyId"
+msgstr "Id de Familia"
+
+#: api/routes/people/people-groups.php:247
+#: api/routes/people/people-groups.php:264
+msgid "invalid group id"
+msgstr "id de grupo inválido"
+
+#: api/routes/people/people-groups.php:251
+msgid "invalid status value"
+msgstr "valor de estado inválido"
+
+#: api/routes/people/people-groups.php:268
+msgid "invalid export value"
+msgstr "valor de exportación inválido"
+
+#: api/routes/public/public-user.php:27
+msgid "Invalid User/Password"
+msgstr "Usuario/Contraseña inválidos"
+
+#: api/routes/users.php:28 api/routes/users.php:44 api/routes/users.php:62
+#: api/routes/users.php:82
+msgid "Bad userId"
+msgstr "Id de usuario incorrecto"
+
+#: v2/templates/email/dashboard.php:16
+msgid "Find Duplicate Emails"
+msgstr "Buscar Emails duplicados"
+
+#: v2/templates/email/duplicate.php:14
+msgid "Duplicate Emails"
+msgstr "Emails Duplicados"
+
+#: 
+msgid "HTML URL"
+msgstr "URL de HTML"
 

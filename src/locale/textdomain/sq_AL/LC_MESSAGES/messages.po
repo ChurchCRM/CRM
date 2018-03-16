@@ -3030,10 +3030,6 @@ msgstr "Dërgoj"
 msgid "Pledge Reminder Report"
 msgstr "Zotimi Reminder Raporti"
 
-#: ReportList.php:15
-msgid "Report Menu"
-msgstr "Raporti Menu"
-
 #: SelectDelete.php:67
 msgid "All donations from this family have been moved to another family."
 msgstr "Të gjitha donacionet nga kjo familje janë zhvendosur në një familje tjetër."
