@@ -3,7 +3,7 @@ use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\SystemURLs;
 
 // Set the page title and include HTML header
-$sPageTitle = gettext("Family Registration");
+$sPageTitle = $calendarName;
 require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
 ?>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/moment/moment-with-locales.min.js"></script>
