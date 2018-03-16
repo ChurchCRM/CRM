@@ -170,19 +170,25 @@
         ],
         "dbVersion": "2.10.0"
     },
-    "current": {
+        "pre-3.0.0": {
         "versions": [
             "2.10.0",
             "2.10.1",
             "2.10.2",
             "2.10.3",
-            "2.10.4",
-            "3.0.0"
+            "2.10.4"
         ],
         "scripts": [
             "/mysql/upgrade/3.0.0.sql",
             "/mysql/upgrade/3.0.0.php"
         ],
+        "dbVersion": "3.0.0"
+    },
+    "current": {
+        "versions": [
+            "3.0.0"
+        ],
+        "scripts": [],
         "dbVersion": "3.0.1"
     }
 }
