@@ -11,6 +11,7 @@ use DateTime;
 use ChurchCRM\Utils\InputUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 use ChurchCRM\EventQuery;
+use ChurchCRM\Map\EventTableMap;
 
 class PublicCalendarAPIMiddleware
 {
@@ -53,7 +54,8 @@ class PublicCalendarAPIMiddleware
             ->joinCalendarEvent()
             ->useCalendarEventQuery()
             ->filterByCalendar($calendar)
-            ->endUse();
+            ->endUse()
+            ->orderBy(EventTableMap::COL_EVENT_START);
 
         if ($start_date) {
             $events->filterByStart($start_date, Criteria::GREATER_EQUAL);
