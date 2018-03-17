@@ -56,13 +56,12 @@ require __DIR__ . '/routes/system/system-custom-fields.php';
 require __DIR__ . '/routes/system/system-database.php';
 require __DIR__ . '/routes/system/system-issues.php';
 require __DIR__ . '/routes/system/system-register.php';
-require __DIR__ . '/routes/system/system-timerjobs.php';
 require __DIR__ . '/routes/system/system-upgrade.php';
 require __DIR__ . '/routes/system/system-custom-menu.php';
 
 // other
 require __DIR__ . '/routes/cart.php';
-require __DIR__ . '/routes/dashboard.php';
+require __DIR__ . '/routes/background.php';
 require __DIR__ . '/routes/geocoder.php';
 require __DIR__ . '/routes/kiosks.php';
 require __DIR__ . '/routes/search.php';
