@@ -8,6 +8,9 @@ use ChurchCRM\Slim\Middleware\Role\AdminRoleAuthMiddleware;
 use ChurchCRM\User;
 use ChurchCRM\UserConfigQuery;
 use ChurchCRM\UserQuery;
+use Slim\Http\Request;
+use Slim\Http\Response;
+use ChurchCRM\SessionUser;
 
 $app->group('/users', function () {
 
@@ -63,6 +66,7 @@ $app->group('/users', function () {
         }
     });
 
+    $this->get("/{userId:[0-9]+}/permissions", "getUserPermissionsAPI")->add(new AdminRoleAuthMiddleware());
 
 })->add(new AdminRoleAuthMiddleware());
 
@@ -82,3 +86,10 @@ $app->post('/users/{userId:[0-9]+}/apikey/regen', function ($request, $response,
         return $response->withStatus(404, gettext("Bad userId"));
     }
 });
+
+function getUserPermissionsAPI(Request $request, Response $response, array $args)
+{
+    $userId = $args['userId'];
+    $user = UserQuery::create()->findPk($userId);
+    return $response->withJson(["user" => $user->getName(), "userId" => $user->getId(), "addEvent" => $user->isAddEvent(), "cvsExport" => $user->isCVSExport()]);
+}
