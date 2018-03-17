@@ -3034,10 +3034,6 @@ msgstr "Verstuur"
 msgid "Pledge Reminder Report"
 msgstr "Bijdrage herinneering Rapport"
 
-#: ReportList.php:15
-msgid "Report Menu"
-msgstr "Rapport Menu"
-
 #: SelectDelete.php:67
 msgid "All donations from this family have been moved to another family."
 msgstr "Alle donaties van deze familie zijn verplaatst naar een andere familie."

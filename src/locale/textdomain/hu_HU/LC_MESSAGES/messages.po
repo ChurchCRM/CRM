@@ -3127,10 +3127,6 @@ msgstr "Küld"
 msgid "Pledge Reminder Report"
 msgstr "Pledge Emlékeztető Jelentés"
 
-#: ReportList.php:15
-msgid "Report Menu"
-msgstr "Jelentés Menu"
-
 #: SelectDelete.php:67
 msgid "All donations from this family have been moved to another family."
 msgstr "Minden adományt ennek a családnak már átkerült egy másik család."

@@ -3417,10 +3417,6 @@ msgstr "發送"
 msgid "Pledge Reminder Report"
 msgstr "質押提醒報告"
 
-#: ReportList.php:15
-msgid "Report Menu"
-msgstr "報告菜單"
-
 #: SelectDelete.php:67
 msgid "All donations from this family have been moved to another family."
 msgstr "從這個家庭的所有捐款已被移動到另一個家庭。"
@@ -4340,10 +4336,6 @@ msgstr "Twitter"
 #: 
 msgid "Calendar description"
 msgstr "行事曆描述"
-
-#: 
-msgid "Personal"
-msgstr "個人"
 
 #: 
 msgid "Visitors"

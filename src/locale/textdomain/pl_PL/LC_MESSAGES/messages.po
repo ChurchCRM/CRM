@@ -3136,10 +3136,6 @@ msgstr "Wyślij"
 msgid "Pledge Reminder Report"
 msgstr "Raport Przypominający o Datkach"
 
-#: ReportList.php:15
-msgid "Report Menu"
-msgstr "Menu Raportów"
-
 #: SelectDelete.php:67
 msgid "All donations from this family have been moved to another family."
 msgstr "Wszystkie datki od tej rodziny zostały przeniesione do innej rodziny."

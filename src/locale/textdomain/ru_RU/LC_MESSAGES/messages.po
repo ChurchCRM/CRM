@@ -3111,10 +3111,6 @@ msgstr "Отправить"
 msgid "Pledge Reminder Report"
 msgstr "Залог Напоминание Сообщить"
 
-#: ReportList.php:15
-msgid "Report Menu"
-msgstr "Сообщить Меню"
-
 #: SelectDelete.php:67
 msgid "All donations from this family have been moved to another family."
 msgstr "Все пожертвования от этой семьи были перемещены в другой семье."

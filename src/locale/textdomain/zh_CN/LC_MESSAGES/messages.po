@@ -3136,10 +3136,6 @@ msgstr "发送"
 msgid "Pledge Reminder Report"
 msgstr "质押提醒报告"
 
-#: ReportList.php:15
-msgid "Report Menu"
-msgstr "报告菜单"
-
 #: SelectDelete.php:67
 msgid "All donations from this family have been moved to another family."
 msgstr "从这个家庭的所有捐款已被移动到另一个家庭。"

@@ -3166,10 +3166,6 @@ msgstr "Skicka"
 msgid "Pledge Reminder Report"
 msgstr "Bidrag löfte påminnelse rapport"
 
-#: ReportList.php:15
-msgid "Report Menu"
-msgstr "Rapport meny"
-
 #: SelectDelete.php:67
 msgid "All donations from this family have been moved to another family."
 msgstr "Alla bidrag från denna familj flytades till en annan familj"

@@ -10,7 +10,7 @@ msgstr ""
 "#-#-#-#-#  messages.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-15 20:29+0000\n"
+"POT-Creation-Date: 2018-03-16 17:04+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,8 +24,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2018-03-15T20:29:12.802Z\n"
-"PO-Revision-Date: 2018-03-15T20:29:12.802Z\n"
+"POT-Creation-Date: 2018-03-16T17:04:52.989Z\n"
+"PO-Revision-Date: 2018-03-16T17:04:52.989Z\n"
 
 #: AutoPaymentClearAccounts.php:24 CatchCreatePayment.php:71
 #: Include/Functions.php:233
@@ -1711,15 +1711,15 @@ msgstr ""
 msgid "No logged in user"
 msgstr ""
 
-#: ChurchCRM/Slim/Middleware/PublicCalendarAPIMiddleware.php:20
+#: ChurchCRM/Slim/Middleware/PublicCalendarAPIMiddleware.php:21
 msgid "External Calendar API is disabled"
 msgstr ""
 
-#: ChurchCRM/Slim/Middleware/PublicCalendarAPIMiddleware.php:25
+#: ChurchCRM/Slim/Middleware/PublicCalendarAPIMiddleware.php:26
 msgid "Missing calendar access token"
 msgstr ""
 
-#: ChurchCRM/Slim/Middleware/PublicCalendarAPIMiddleware.php:32
+#: ChurchCRM/Slim/Middleware/PublicCalendarAPIMiddleware.php:33
 msgid "Calendar access token not found"
 msgstr ""
 
@@ -7538,7 +7538,6 @@ msgstr ""
 msgid "Oops! Page not found."
 msgstr ""
 
-#: external/templates/calendar/calendar.php:6
 #: external/templates/password/enter-username.php:7
 #: external/templates/password/password-check-email.php:7
 #: external/templates/registration/family-register-done.php:6

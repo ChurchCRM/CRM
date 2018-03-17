@@ -3147,10 +3147,6 @@ msgstr "Send"
 msgid "Pledge Reminder Report"
 msgstr "Pledge Påminnelse Rapporter"
 
-#: ReportList.php:15
-msgid "Report Menu"
-msgstr "Rapporter Meny"
-
 #: SelectDelete.php:67
 msgid "All donations from this family have been moved to another family."
 msgstr "Alle donasjoner fra denne familien har blitt flyttet til en annen familie."

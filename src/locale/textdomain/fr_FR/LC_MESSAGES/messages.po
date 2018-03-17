@@ -3622,10 +3622,6 @@ msgstr "Envoyer"
 msgid "Pledge Reminder Report"
 msgstr "Rappel de rapport de contribution"
 
-#: ReportList.php:15
-msgid "Report Menu"
-msgstr "Menu Rapports"
-
 #: ChurchCRM/Config/Menu/Menu.php:134
 msgid "Event Attendance Reports"
 msgstr "Rapports de présence pour l'événement"
@@ -4817,10 +4813,6 @@ msgstr "Collectes de fonds"
 msgid "Email Export"
 msgstr "Exporter un Email"
 
-#: v2/templates/email/dashboard.php:23
-msgid "Generate"
-msgstr "Générer"
-
 #: v2/templates/email/dashboard.php:30
 msgid "List"
 msgstr "Liste"
@@ -5831,17 +5823,9 @@ msgstr "Intervalle en heure pour la vérification d'intégrité"
 msgid "Last Integrity Check Timestamp"
 msgstr "Date de la dernière vérification d'intégrité"
 
-#: menuconfig_mcf.php:2
-msgid "Main"
-msgstr "Principal(e)"
-
 #: ChurchCRM/Config/Menu/Menu.php:85
 msgid "List Groups"
 msgstr "Lister les groupes"
-
-#: Include/Footer.php:108
-msgid "Edit Group Types"
-msgstr "Modifier les types de groupes"
 
 #: ChurchCRM/Config/Menu/Menu.php:131
 msgid "List Church Events"
@@ -7627,7 +7611,6 @@ msgstr "Page non trouvée"
 msgid "Oops! Page not found."
 msgstr "Oups ! Page non trouvée"
 
-#: external/templates/calendar/calendar.php:6
 #: external/templates/password/enter-username.php:7
 #: external/templates/password/password-check-email.php:7
 #: external/templates/registration/family-register-done.php:6
@@ -8724,7 +8707,7 @@ msgstr "Nouvelle Famille ajoutée"
 msgid "Church Greeter"
 msgstr "Personne d'accueil"
 
-#: ChurchCRM/Slim/Middleware/PublicCalendarAPIMiddleware.php:20
+#: ChurchCRM/Slim/Middleware/PublicCalendarAPIMiddleware.php:21
 msgid "External Calendar API is disabled"
 msgstr "API calendrier externe désactivé"
 
@@ -8996,17 +8979,9 @@ msgstr "Twitter"
 msgid "LinkedIn"
 msgstr "LinkedIn"
 
-#: calendar.php:57
-msgid "Birthdate"
-msgstr "Anniversaire"
-
 #: 
 msgid "Calendar description"
 msgstr "Description du calendrier"
-
-#: 
-msgid "Personal"
-msgstr "Personnel"
 
 #: 
 msgid "Visitors"
