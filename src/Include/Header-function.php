@@ -17,6 +17,7 @@ use ChurchCRM\Service\SystemService;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\MenuConfigQuery;
+use ChurchCRM\SessionUser;
 
 function Header_modals()
 {
@@ -94,7 +95,9 @@ function Header_body_scripts()
                         "url": "<?= SystemURLs::getRootPath() ?>/locale/datatables/<?= $localeInfo->getDataTables() ?>.json"
                     },
                     responsive: true,
+                    <?php if (SessionUser::getUser()->isCVSExport()) { ?>
                     "dom": 'T<"clear">lfrtip',
+                    <?php } ?>
                     "tableTools": {
                         "sSwfPath": "<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/datatables/extensions/TableTools/swf/copy_csv_xls.swf"
                     }
