@@ -39,11 +39,6 @@ class User extends BaseUser
         return $this->getPerson()->getFullName();
     }
 
-    public function isAddEvent()
-    {
-      return $this->isAdmin() || $this->isEnabledSecurity('bAddEvent');
-    }
-
     public function isAddRecordsEnabled()
     {
         return $this->isAdmin() || $this->isAddRecords();
@@ -102,6 +97,31 @@ class User extends BaseUser
     public function hashPassword($password)
     {
         return hash('sha256', $password . $this->getPersonId());
+    }
+
+    public function isAddEvent()
+    {
+        return $this->isEnabledSecurity('bAddEvent');
+    }
+
+    public function isCVSExport()
+    {
+        return $this->isEnabledSecurity('bExportCSV');
+    }
+
+    public function isEmailEnabled()
+    {
+        return $this->isEnabledSecurity('bEmailMailto');
+    }
+
+    public function isCreateDirectoryEnabled()
+    {
+        return $this->isEnabledSecurity('bCreateDirectory');
+    }
+
+    public function isbUSAddressVerificationEnabled()
+    {
+        return $this->isEnabledSecurity('bUSAddressVerification');
     }
 
 
@@ -180,17 +200,15 @@ class User extends BaseUser
     }
 
     public function isEnabledSecurity($securityConfigName){
-        $aSecurityListPrimal = [];
-        $ormSecGrpLists = UserConfigQuery::Create()
-            ->filterByPeronId($this->getId())
-            ->filterByPermission(true)
-            ->filterByCat('SECURITY')
-            ->find();
-
-        foreach ($ormSecGrpLists as $ormSecGrpList) {
-            array_push($aSecurityListPrimal, $ormSecGrpList->getName());
+        if ($this->isAdmin()) {
+            return true;
         }
-
-        return in_array($aSecurityListPrimal, $securityConfigName);
+        $userConfigs = $this->getUserConfigs();
+        foreach ($userConfigs as $userConfig) {
+            if ($userConfig->getName() == $securityConfigName) {
+                return $userConfig->getPermission() == "TRUE";
+            }
+        }
+        return false;
     }
 }
