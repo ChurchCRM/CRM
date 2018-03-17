@@ -203,8 +203,8 @@ class User extends BaseUser
         if ($this->isAdmin()) {
             return true;
         }
-        $userConfigs = $this->getUserConfigs();
-        foreach ($userConfigs as $userConfig) {
+
+        foreach ($this->getUserConfigs() as $userConfig) {
             if ($userConfig->getName() == $securityConfigName) {
                 return $userConfig->getPermission() == "TRUE";
             }

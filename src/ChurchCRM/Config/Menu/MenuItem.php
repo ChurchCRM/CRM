@@ -12,9 +12,6 @@ class MenuItem
     private $hasPermission;
     private $icon;
     private $external = false;
-    /**
-     * @var array MenuItem
-     */
     private $subItems = [];
     private $counters = [];
 

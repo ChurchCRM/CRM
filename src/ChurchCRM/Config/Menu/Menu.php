@@ -198,7 +198,6 @@ class Menu
         $menu->addSubMenu(new MenuItem(gettext("CSV Import"), "CSVImport.php",SessionUser::isAdmin()));
         $menu->addSubMenu(new MenuItem(gettext("CSV Export Records"), "CSVExport.php",SessionUser::getUser()->isCVSExport()));
         $menu->addSubMenu(new MenuItem(gettext("Kiosk Manager"), "KioskManager.php",SessionUser::isAdmin()));
-
         return $menu;
     }
 
