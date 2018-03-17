@@ -505,7 +505,7 @@
       'runTimerJobs' : function () {
         window.CRM.APIRequest({
           method:"POST",
-          path: "timerjobs/run",
+          path: "background/timerjobs",
           suppressErrorDialog: true
         });
       },

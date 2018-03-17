@@ -4,11 +4,12 @@ use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Service\SystemService;
 use Slim\Http\Request;
 use Slim\Http\Response;
+use ChurchCRM\Service\NewDashboardService;
 
 $app->group('/background', function () {
     $this->post('/csp-report', 'logCSPReportAPI');
     $this->get('/dashboard/page', 'getDashboardAPI');
-    $this->post('/timerjobs/run', 'runTimerJobsAPI');
+    $this->post('/timerjobs', 'runTimerJobsAPI');
 });
 
 function logCSPReportAPI(Request $request, Response $response, array $args)
