@@ -17,7 +17,12 @@ use ChurchCRM\dto\SystemConfig;
 class HolidayCalendar implements SystemCalendar {
  
   public static function isAvailable() {
-    return Countries::getCountryByName(SystemConfig::getValue("sChurchCountry"))->getCountryNameYasumi() !== null;   
+    $systemCountry = Countries::getCountryByName(SystemConfig::getValue("sChurchCountry"));
+    if (!empty($systemCountry))
+    {
+      return $systemCountry->getCountryNameYasumi() !== null;   
+    }
+    
   }
   
   public function getAccessToken() {

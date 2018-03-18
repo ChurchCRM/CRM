@@ -293,6 +293,10 @@ class Countries
     
     public static function getCountryByName(string $CountryName)
     {
+      if (empty($CountryName))
+      {
+        return null;
+      }
       self::initializeCountries();
       $result =  array_filter(self::$countries,function ($e) use ($CountryName) {
         return $e->getCountryName() === $CountryName;
