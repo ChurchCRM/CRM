@@ -15,7 +15,7 @@ class AuthMiddleware {
 
     public function __invoke( Request $request, Response $response, callable $next )
     {
-        if (!$this->isPublic( $request->getUri()->getPath())) {
+        if (!$this->isPath( $request, "public")) {
             $this->apiKey = $request->getHeader("x-api-key");
             if (!empty($this->apiKey)) {
                 $user = UserQuery::create()->findOneByApiKey($this->apiKey);
@@ -52,7 +52,7 @@ class AuthMiddleware {
         if ((time() - $_SESSION['tLastOperation']) > SystemConfig::getValue('iSessionTimeout')) {
            return false;
         } else {
-          if(!$this->isBackgroundRequest( $request->getUri()->getPath()))
+          if(!$this->isPath( $request, "background"))
           {
             //Only update tLastOperation if the request was an actual user request.
             //Background requests should not update tLastOperation
@@ -63,19 +63,12 @@ class AuthMiddleware {
       return true;
     }
 
-    private function isPublic($path) {
-        $pathAry = explode("/", $path);
-        if (!empty($path) && $pathAry[0] === "public") {
+    private function isPath(Request $request, $pathPart) {
+        $pathAry = explode("/", $request->getUri()->getPath());
+        if (!empty($pathAry) && $pathAry[0] === $pathPart) {
             return true;
         }
         return false;
     }
 
-    private function isBackgroundRequest($path) {
-      $pathAry = explode("/", $path);
-      if (!empty($path) && ($pathAry[0] === "run" || $pathAry[0] === "dashboard")) {
-          return true;
-      }
-      return false;
-    }
 }

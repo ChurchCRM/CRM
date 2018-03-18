@@ -32,8 +32,8 @@ $app->group('/database', function () {
         echo json_encode($backup);
     });
 
-    $this->post('/backupRemote', function () use ($app, $systemService) {
-        $backup = $this->SystemService->copyBackupToExternalStorage();
+    $this->post('/backupRemote', function ($request, $response, $args) {
+        $backup = SystemService::copyBackupToExternalStorage();
         echo json_encode($backup);
     });
 
