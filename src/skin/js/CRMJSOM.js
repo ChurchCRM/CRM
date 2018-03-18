@@ -208,7 +208,7 @@
                           </a>\
                       </li>\
                       <li>\
-                          <a href=' + window.CRM.root+ '/MapUsingGoogle.php?GroupID=0">\
+                          <a href="' + window.CRM.root+ '/MapUsingGoogle.php?GroupID=0">\
                               <i class="fa fa-map-marker text-info"></i>' + i18next.t("Map Cart") + '\
                           </a>\
                       </li>\
