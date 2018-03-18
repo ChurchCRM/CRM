@@ -208,7 +208,7 @@
                           </a>\
                       </li>\
                       <li>\
-                          <a href=' + window.CRM.root+ '/MapUsingGoogle.php?GroupID=0">\
+                          <a href="' + window.CRM.root+ '/MapUsingGoogle.php?GroupID=0">\
                               <i class="fa fa-map-marker text-info"></i>' + i18next.t("Map Cart") + '\
                           </a>\
                       </li>\
@@ -505,7 +505,7 @@
       'runTimerJobs' : function () {
         window.CRM.APIRequest({
           method:"POST",
-          path: "timerjobs/run",
+          path: "background/timerjobs",
           suppressErrorDialog: true
         });
       },
@@ -618,7 +618,7 @@
       refresh: function () {
         window.CRM.APIRequest({
           method: 'GET',
-          path: 'dashboard/page?currentpagename=' + window.CRM.PageName.replace(window.CRM.root,''),
+          path: 'background/dashboard/page?currentpagename=' + window.CRM.PageName.replace(window.CRM.root,''),
           suppressErrorDialog: true
         }).done(function (data) {
           for (var key in data) {

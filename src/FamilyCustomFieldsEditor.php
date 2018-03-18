@@ -384,10 +384,10 @@ if ($numRows == 0) {
             <td class="TextColumn" width="5%" nowrap>
                 <?php
                 if ($row > 1) {
-                    echo "<a href=\"FamilyCustomFieldsRowOps.php?OrderID=$row&Field=".$aFieldFields[$row].'&Action=up"><img src="Images/uparrow.gif" border="0"></a>';
+                    echo "<a href=\"FamilyCustomFieldsRowOps.php?OrderID=$row&Field=".$aFieldFields[$row].'&Action=up"><i class="fa fa-arrow-up"></i></a>';
                 }
         if ($row < $numRows) {
-            echo "<a href=\"FamilyCustomFieldsRowOps.php?OrderID=$row&Field=".$aFieldFields[$row].'&Action=down"><img src="Images/downarrow.gif" border="0"></a>';
+            echo "<a href=\"FamilyCustomFieldsRowOps.php?OrderID=$row&Field=".$aFieldFields[$row].'&Action=down"><i class="fa fa-arrow-down"></i></a>';
         } ?>
             </td>
 
