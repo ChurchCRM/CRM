@@ -15,35 +15,8 @@ require_once 'Functions.php';
 
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\Service\NotificationService;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\MenuConfigQuery;
-
-function Header_system_notifications()
-{
-    if (NotificationService::hasActiveNotifications()) {
-        ?>
-        <script nonce="<?= SystemURLs::getCSPNonce() ?>">
-            <?php foreach (NotificationService::getNotifications() as $notification) {
-            ?>
-            $.notify({
-                icon: 'fa fa-bell',
-                message: '<?= $notification->title?>',
-                url: '<?= $notification->link ?>'
-            },{
-                delay: 4000,
-                type: 'danger',
-                placement: {
-                    from: 'bottom',
-                    align: 'left'
-                }
-            });
-            <?php
-        } ?>
-        </script>
-        <?php
-    }
-}
 
 function Header_modals()
 {

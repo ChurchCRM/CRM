@@ -19,18 +19,13 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 use ChurchCRM\DepositQuery;
 use ChurchCRM\Service\DashboardService;
-use ChurchCRM\Service\FinancialService;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\MenuEventsCount;
 
-$financialService = new FinancialService();
 $dashboardService = new DashboardService();
-//Last edited active families
-$updatedFamilies = $dashboardService->getUpdatedFamilies(10);
-//Newly added active families
-$latestFamilies = $dashboardService->getLatestFamilies(10);
+
 //last Edited members from Active families
 $updatedMembers = $dashboardService->getUpdatedMembers(12);
 //Newly added members from Active families
@@ -357,7 +352,7 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
         <div class="box box-solid">
             <div class="box box-danger">
                 <div class="box-header with-border">
-                    <h3 class="box-title"><?= gettext('Latest Members') ?></h3>
+                    <h3 class="box-title"><?= gettext('Latest Persons') ?></h3>
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                         </button>
@@ -391,7 +386,7 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
         <div class="box box-solid">
             <div class="box box-danger">
                 <div class="box-header with-border">
-                    <h3 class="box-title"><?= gettext('Updated Members') ?></h3>
+                    <h3 class="box-title"><?= gettext('Updated Persons') ?></h3>
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                         </button>

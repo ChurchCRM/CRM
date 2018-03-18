@@ -62,15 +62,15 @@ msgstr "Automatische betaling configuratie voor de "
 #: PaddleNumEditor.php:147 PersonEditor.php:617 PersonEditor.php:775
 #: PersonEditor.php:818 PersonEditor.php:1129 PersonEditor.php:1192
 #: PersonEditor.php:1227 PledgeEditor.php:687 PropertyEditor.php:169
-#: PropertyTypeEditor.php:112 UserEditor.php:458 UserPasswordChange.php:216
+#: PropertyTypeEditor.php:112 UserEditor.php:458 UserPasswordChange.php:213
 #: WhyCameEditor.php:104
 msgid "Save"
 msgstr "Bewaar"
 
 #: AutoPaymentEditor.php:804 BatchWinnerEntry.php:83 BatchWinnerEntry.php:95
-#: CSVImport.php:271 ChurchCRM/Config/Menu/Menu.php:88 DirectoryReports.php:82
-#: DonatedItemEditor.php:186 DonatedItemEditor.php:237 FamilyEditor.php:1089
-#: GroupEditor.php:94 GroupList.php:36 GroupView.php:40
+#: CSVImport.php:271 ChurchCRM/Config/Menu/Menu.php:100
+#: DirectoryReports.php:82 DonatedItemEditor.php:186 DonatedItemEditor.php:237
+#: FamilyEditor.php:1089 GroupEditor.php:94 GroupList.php:36 GroupView.php:40
 #: Include/CountryDropDown.php:6 Include/Functions.php:855
 #: Include/Functions.php:908 MapUsingGoogle.php:96 MapUsingGoogle.php:120
 #: PaddleNumEditor.php:176 PersonEditor.php:782 PersonEditor.php:798
@@ -181,7 +181,7 @@ msgstr "Bank Route Nummer"
 msgid "Bank Account Number"
 msgstr "Bank Rekeningnummer"
 
-#: BackupDatabase.php:32 Include/Footer.php:178
+#: BackupDatabase.php:32 ChurchCRM/Config/Menu/Menu.php:197
 msgid "Backup Database"
 msgstr "Backup Database"
 
@@ -537,7 +537,7 @@ msgstr "Data import compleet."
 msgid "persons were imported"
 msgstr "Personen werden geimporteerd"
 
-#: CanvassAutomation.php:21 ChurchCRM/Config/Menu/Menu.php:148
+#: CanvassAutomation.php:21 ChurchCRM/Config/Menu/Menu.php:171
 msgid "Canvass Automation"
 msgstr "Automatisch onderzoek"
 
@@ -1208,10 +1208,10 @@ msgstr "Opkomst Tellingen"
 #: AutoPaymentEditor.php:801
 #: ChurchCRM/Emails/verify/FamilyVerificationEmail.php:24
 #: ElectronicPaymentList.php:195 FamilyView.php:205 FinancialReports.php:303
-#: Include/Footer.php:53 PersonEditor.php:796 PersonView.php:422
-#: PledgeEditor.php:508 PrintView.php:259 PropertyAssign.php:73
-#: PropertyEditor.php:43 PropertyList.php:28 PropertyTypeEditor.php:90
-#: PropertyTypeList.php:55 SelectList.php:1037
+#: PersonEditor.php:796 PersonView.php:422 PledgeEditor.php:508
+#: PrintView.php:259 PropertyAssign.php:73 PropertyEditor.php:43
+#: PropertyList.php:28 PropertyTypeEditor.php:90 PropertyTypeList.php:55
+#: SelectList.php:1037
 #: external/templates/registration/family-register-done.php:28
 msgid "Family"
 msgstr "Familie"
@@ -1921,7 +1921,7 @@ msgstr "Overschrijvings Strookje:"
 msgid "Sort Data by:"
 msgstr "Sorteer Data op:"
 
-#: ChurchCRM/Config/Menu/Menu.php:122 FinancialReports.php:301
+#: ChurchCRM/Config/Menu/Menu.php:140 FinancialReports.php:301
 msgid "Deposit"
 msgstr "Storting"
 
@@ -2152,7 +2152,7 @@ msgstr "Nieuwe Rol"
 msgid "Group Listing"
 msgstr "Groep Lijst"
 
-#: Include/Header-function.php:84
+#: Include/Header-function.php:65
 msgid "Submit"
 msgstr "Verstuur"
 
@@ -2352,19 +2352,19 @@ msgstr "Onjuist login of wachtwoord"
 msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
 msgstr "Teveel mislukte logins: uw toegang is geblokkeerd. Neem contact op met een Administrateur."
 
-#: Login.php:173 Login.php:235
+#: Login.php:176 Login.php:238
 msgid "Please Login"
 msgstr "Aub inloggen"
 
-#: BackupDatabase.php:55 Login.php:197 Login.php:275 UserList.php:58
+#: BackupDatabase.php:55 Login.php:200 Login.php:278 UserList.php:58
 msgid "Password"
 msgstr "Wachtwoord"
 
-#: Login.php:160 Login.php:210
+#: Login.php:163 Login.php:213
 msgid "Login"
 msgstr "Login"
 
-#: ChurchCRM/Config/Menu/Menu.php:123 ManageEnvelopes.php:21
+#: ChurchCRM/Config/Menu/Menu.php:147 ManageEnvelopes.php:21
 msgid "Envelope Manager"
 msgstr "Envelope Manager"
 
@@ -2405,7 +2405,7 @@ msgstr "Huidige Rol"
 msgid "Update All Family Coordinates"
 msgstr "Alles bijwerken Family Coördinaten"
 
-#: Include/Footer.php:124 PersonView.php:425
+#: ChurchCRM/Config/Menu/Menu.php:75 PersonView.php:425
 msgid "Volunteer Opportunities"
 msgstr "Vrijwilligers mogelijkheden"
 
@@ -2416,7 +2416,7 @@ msgstr "Vrijwilligers mogelijkheden"
 msgid "Families"
 msgstr "Families"
 
-#: ChurchCRM/Config/Menu/Menu.php:60 Menu.php:196 PeopleDashboard.php:158
+#: ChurchCRM/Config/Menu/Menu.php:61 Menu.php:196 PeopleDashboard.php:158
 msgid "People"
 msgstr "Mensen"
 
@@ -2469,14 +2469,13 @@ msgstr "Note Aministrateur"
 msgid "Private"
 msgstr "Prive"
 
-#: Include/Footer.php:76 PropertyAssign.php:43 PropertyEditor.php:39
-#: PropertyList.php:24 PropertyTypeEditor.php:89 PropertyTypeList.php:55
+#: PropertyAssign.php:43 PropertyEditor.php:39 PropertyList.php:24
+#: PropertyTypeEditor.php:89 PropertyTypeList.php:55
 msgid "Person"
 msgstr "Persoon"
 
-#: Include/Footer.php:99 OptionManager.php:85 PropertyAssign.php:58
-#: PropertyEditor.php:47 PropertyList.php:32 PropertyTypeEditor.php:91
-#: PropertyTypeList.php:55
+#: OptionManager.php:85 PropertyAssign.php:58 PropertyEditor.php:47
+#: PropertyList.php:32 PropertyTypeEditor.php:91 PropertyTypeList.php:55
 msgid "Group"
 msgstr "Groep"
 
@@ -2733,7 +2732,7 @@ msgstr "Eenmalig"
 
 #: ChurchCRM/Dashboard/PersonDemographicDashboardItem.php:32
 #: ChurchCRM/Dashboard/PersonDemographicDashboardItem.php:49
-#: Include/Footer.php:113 PledgeEditor.php:560
+#: PledgeEditor.php:560
 msgid "Other"
 msgstr "Andere"
 
@@ -3035,10 +3034,6 @@ msgstr "Verstuur"
 msgid "Pledge Reminder Report"
 msgstr "Bijdrage herinneering Rapport"
 
-#: ReportList.php:15
-msgid "Report Menu"
-msgstr "Rapport Menu"
-
 #: SelectDelete.php:67
 msgid "All donations from this family have been moved to another family."
 msgstr "Alle donaties van deze familie zijn verplaatst naar een andere familie."
@@ -3091,7 +3086,7 @@ msgstr "Verwijdeer Familie EN Familie Leden"
 msgid "Person Listing"
 msgstr "Persoon Lijst"
 
-#: ChurchCRM/Config/Menu/Menu.php:74 SelectList.php:172
+#: ChurchCRM/Config/Menu/Menu.php:86 SelectList.php:172
 msgid "Group Assignment Helper"
 msgstr "Groep Koppeling Helper"
 
@@ -3266,6 +3261,8 @@ msgstr "(Bewerk alleen u eigen familie.)"
 msgid "(Canvass volunteer.)"
 msgstr "(Enquete vrijwiliger.)"
 
+#: ChurchCRM/Config/Menu/Menu.php:68 ChurchCRM/Config/Menu/Menu.php:105
+#: ChurchCRM/Config/Menu/Menu.php:146 ChurchCRM/Config/Menu/Menu.php:192
 #: UserEditor.php:446
 msgid "Admin"
 msgstr "Admin"
@@ -3298,69 +3295,69 @@ msgstr "Mislukte Logins"
 msgid "You must enter a password in both boxes"
 msgstr "U moet een wachtwoord intypen in beide vensters"
 
-#: UserPasswordChange.php:61 UserPasswordChange.php:116
+#: UserPasswordChange.php:61 UserPasswordChange.php:113
 msgid "You must enter the same password in both boxes"
 msgstr "U moet in beide vensters een identiek wachtwoord invoeren"
 
-#: UserPasswordChange.php:104
+#: UserPasswordChange.php:101
 msgid "Invalid password"
 msgstr "Ongeldig wachtwoord"
 
-#: UserPasswordChange.php:110
+#: UserPasswordChange.php:107
 msgid "You must enter your new password in both boxes"
 msgstr "U moet uw wachtwoord intypen in beide vensters"
 
-#: UserPasswordChange.php:122
+#: UserPasswordChange.php:119
 msgid "Your password choice is too obvious. Please choose something else."
 msgstr "U keuze van wachtwoord is te makkelijk. Kies aub een ander wachtwoord."
 
-#: UserPasswordChange.php:128
+#: UserPasswordChange.php:125
 msgid "Your new password must be at least"
 msgstr "U nieuwe wachtwoord moet minimaal"
 
-#: UserPasswordChange.php:128
+#: UserPasswordChange.php:125
 msgid "characters"
 msgstr "karakters"
 
-#: UserPasswordChange.php:134
+#: UserPasswordChange.php:131
 msgid "You need to actually change your password (nice try, though!)"
 msgstr "U moet echt uw wachtwoord wijzigen (Leuk geprobeerd hoor!)"
 
-#: UserPasswordChange.php:137
+#: UserPasswordChange.php:134
 msgid "Your new password is too similar to your old one.  Be more creative!"
 msgstr "U nieuwe wachtwoord is bijna identiek aan het oude. Wees meer creatief!"
 
-#: UserPasswordChange.php:166
+#: UserPasswordChange.php:163
 msgid "User Password Change"
 msgstr "Gebruikers Wachtwoord Wijziging"
 
-#: UserPasswordChange.php:174
+#: UserPasswordChange.php:171
 msgid "Your account record indicates that you need to change your password before proceding."
 msgstr "Uw acount gegevens geven aan dat uw wachtwoord gewijzigd moet worden voordat u verder kan gaan."
 
-#: UserPasswordChange.php:186
+#: UserPasswordChange.php:183
 msgid "Enter your current password, then your new password twice.  Passwords must be at least"
 msgstr "Voer uw oude wachtwoord in, vervolgens 2x uw nieuwe wachtwoord. Wachtwoorden moeten op zijn minst"
 
-#: UserPasswordChange.php:186
+#: UserPasswordChange.php:183
 msgid "characters in length."
 msgstr "karakters lang zijn."
 
-#: UserPasswordChange.php:188
+#: UserPasswordChange.php:185
 msgid "Enter a new password for this user."
 msgstr "Type een nieuw wachtwoord voor deze gebruiker."
 
-#: UserPasswordChange.php:199
+#: UserPasswordChange.php:196
 msgid "Old Password"
 msgstr "Oud Wachtwoord"
 
 #: ChurchCRM/Emails/users/NewAccountEmail.php:30
 #: ChurchCRM/Emails/users/PasswordChangeEmail.php:29
-#: ChurchCRM/Emails/users/ResetPasswordEmail.php:29 UserPasswordChange.php:205
+#: ChurchCRM/Emails/users/ResetPasswordEmail.php:29 UserPasswordChange.php:202
 msgid "New Password"
 msgstr "Nieuw Wachtwoord"
 
-#: UserPasswordChange.php:209
+#: UserPasswordChange.php:206
 msgid "Confirm New Password"
 msgstr "Bevestig Nieuw Wachtwoord"
 
@@ -3875,23 +3872,23 @@ msgstr "Voer bezoekers-aantallen in"
 msgid "Members"
 msgstr "Leden"
 
-#: ChurchCRM/Config/Menu/Menu.php:62
+#: ChurchCRM/Config/Menu/Menu.php:63
 msgid "Add New Person"
 msgstr "Toevoegen Nieuw Persoon"
 
-#: ChurchCRM/Config/Menu/Menu.php:63
+#: ChurchCRM/Config/Menu/Menu.php:64
 msgid "View All Persons"
 msgstr "Bekijk alle Personen"
 
-#: ChurchCRM/Config/Menu/Menu.php:64
+#: ChurchCRM/Config/Menu/Menu.php:65
 msgid "Add New Family"
 msgstr "Voeg Nieuwe Familie toe"
 
-#: ChurchCRM/Config/Menu/Menu.php:111 ChurchCRM/dto/SystemConfig.php:252
+#: ChurchCRM/Config/Menu/Menu.php:129 ChurchCRM/dto/SystemConfig.php:253
 msgid "Events"
 msgstr "Evenementen"
 
-#: ChurchCRM/Config/Menu/Menu.php:134 FundRaiserEditor.php:31
+#: ChurchCRM/Config/Menu/Menu.php:157 FundRaiserEditor.php:31
 msgid "Fundraiser"
 msgstr "Fundraiser"
 
@@ -3899,7 +3896,7 @@ msgstr "Fundraiser"
 msgid "Deposit Type"
 msgstr "Bijdrage Type"
 
-#: ChurchCRM/dto/SystemConfig.php:244
+#: ChurchCRM/dto/SystemConfig.php:245
 msgid "Report Settings"
 msgstr "Rapportage Instellingen"
 

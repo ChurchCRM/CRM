@@ -62,15 +62,15 @@ msgstr "تهيئة الدفع التلقائي لل␣␣"
 #: PaddleNumEditor.php:147 PersonEditor.php:617 PersonEditor.php:775
 #: PersonEditor.php:818 PersonEditor.php:1129 PersonEditor.php:1192
 #: PersonEditor.php:1227 PledgeEditor.php:687 PropertyEditor.php:169
-#: PropertyTypeEditor.php:112 UserEditor.php:458 UserPasswordChange.php:216
+#: PropertyTypeEditor.php:112 UserEditor.php:458 UserPasswordChange.php:213
 #: WhyCameEditor.php:104
 msgid "Save"
 msgstr "حفظ"
 
 #: AutoPaymentEditor.php:804 BatchWinnerEntry.php:83 BatchWinnerEntry.php:95
-#: CSVImport.php:271 ChurchCRM/Config/Menu/Menu.php:88 DirectoryReports.php:82
-#: DonatedItemEditor.php:186 DonatedItemEditor.php:237 FamilyEditor.php:1089
-#: GroupEditor.php:94 GroupList.php:36 GroupView.php:40
+#: CSVImport.php:271 ChurchCRM/Config/Menu/Menu.php:100
+#: DirectoryReports.php:82 DonatedItemEditor.php:186 DonatedItemEditor.php:237
+#: FamilyEditor.php:1089 GroupEditor.php:94 GroupList.php:36 GroupView.php:40
 #: Include/CountryDropDown.php:6 Include/Functions.php:855
 #: Include/Functions.php:908 MapUsingGoogle.php:96 MapUsingGoogle.php:120
 #: PaddleNumEditor.php:176 PersonEditor.php:782 PersonEditor.php:798
@@ -189,7 +189,7 @@ msgstr "رقم الحساب المصرفي"
 msgid "Vanco Bank Account Method"
 msgstr "طريقة حساب البنك Vanco"
 
-#: BackupDatabase.php:32 Include/Footer.php:178
+#: BackupDatabase.php:32 ChurchCRM/Config/Menu/Menu.php:197
 msgid "Backup Database"
 msgstr "النسخ الاحتياطي لقاعدة البيانات"
 
@@ -826,7 +826,7 @@ msgstr "نعم"
 msgid "No"
 msgstr "لا"
 
-#: Include/Header.php:146 Include/Header.php:147
+#: Include/Header.php:143 Include/Header.php:144
 msgid "Developer Chat"
 msgstr "مطور الدردشة"
 
@@ -1146,10 +1146,10 @@ msgstr "إضافة أسلوب دفع إلكتروني الجديدة"
 #: AutoPaymentEditor.php:801
 #: ChurchCRM/Emails/verify/FamilyVerificationEmail.php:24
 #: ElectronicPaymentList.php:195 FamilyView.php:205 FinancialReports.php:303
-#: Include/Footer.php:53 PersonEditor.php:796 PersonView.php:422
-#: PledgeEditor.php:508 PrintView.php:259 PropertyAssign.php:73
-#: PropertyEditor.php:43 PropertyList.php:28 PropertyTypeEditor.php:90
-#: PropertyTypeList.php:55 SelectList.php:1037
+#: PersonEditor.php:796 PersonView.php:422 PledgeEditor.php:508
+#: PrintView.php:259 PropertyAssign.php:73 PropertyEditor.php:43
+#: PropertyList.php:28 PropertyTypeEditor.php:90 PropertyTypeList.php:55
+#: SelectList.php:1037
 #: external/templates/registration/family-register-done.php:28
 msgid "Family"
 msgstr "الأسرة"

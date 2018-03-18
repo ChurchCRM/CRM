@@ -11,7 +11,7 @@ use ChurchCRM\PersonCustomQuery;
 use ChurchCRM\PersonQuery;
 use ChurchCRM\PersonVolunteerOpportunityQuery;
 use ChurchCRM\Service\SystemService;
-use ChurchCRM\Slim\Middleware\AdminRoleAuthMiddleware;
+use ChurchCRM\Slim\Middleware\Role\AdminRoleAuthMiddleware;
 use ChurchCRM\UserQuery;
 use ChurchCRM\Utils\LoggerUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
@@ -32,8 +32,8 @@ $app->group('/database', function () {
         echo json_encode($backup);
     });
 
-    $this->post('/backupRemote', function () use ($app, $systemService) {
-        $backup = $this->SystemService->copyBackupToExternalStorage();
+    $this->post('/backupRemote', function ($request, $response, $args) {
+        $backup = SystemService::copyBackupToExternalStorage();
         echo json_encode($backup);
     });
 
