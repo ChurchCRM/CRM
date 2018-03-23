@@ -139,7 +139,7 @@ if ($personSheet) {
     echo "<table>";
     echo "	<tr>";
     echo "	<td  style=\"padding:5px;\">";
-    $imgName = str_replace(SystemURLs::getDocumentRoot(), "", $personSheet->getPhoto()->getPhotoURI());
+    $imgName = str_replace(SystemURLs::getDocumentRoot(), SystemURLs::getRootPath(), $personSheet->getPhoto()->getPhotoURI());
 
     echo "<img src=\"".$imgName."\"/>";
     echo "</td><td>";
