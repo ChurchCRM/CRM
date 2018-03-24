@@ -14,6 +14,7 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 require 'Include/ReportFunctions.php';
 
+use ChurchCRM\dto\Cart;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\ListOptionQuery;
@@ -207,7 +208,7 @@ if ($sFormat == 'addtocart') {
     $rsLabelsToWrite = RunQuery($sSQL);
     while ($aRow = mysqli_fetch_array($rsLabelsToWrite)) {
         extract($aRow);
-        AddToPeopleCart($per_ID);
+        Cart::AddPerson($per_ID);
     }
     RedirectUtils::Redirect('CartView.php');
 } else {
