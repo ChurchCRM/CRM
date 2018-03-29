@@ -27,7 +27,7 @@ use ChurchCRM\SessionUser;
 // Security: User must be an Admin to access this page.
 // Otherwise, re-direct them to the main menu.
 if (!SessionUser::isAdmin()) {
-    RedirectUtils::Redirect();
+    RedirectUtils::SecurityRedirect("Admin");
 }
 
 // Get all the User records

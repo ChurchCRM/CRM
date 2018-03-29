@@ -12,7 +12,7 @@ class RedirectUtils
      * @param string $sRelativeURL
      * @throws \Exception
      */
-    public static function Redirect($sRelativeURL = "Menu.php")
+    public static function Redirect($sRelativeURL)
     {
         LoggerUtils::getAppLogger()->info("Redirect Request: " . $sRelativeURL);
         if (substr($sRelativeURL, 0,1) != "/") {
@@ -27,4 +27,10 @@ class RedirectUtils
         header('Location: ' . $finalLocation);
         exit;
     }
+    
+    public static function SecurityRedirect($role) {
+        LoggerUtils::getAppLogger()->info("Security Redirect Request due to Role: " . $role);
+        self::Redirect("Menu.php");
+    }
+        
 }
