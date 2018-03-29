@@ -104,7 +104,7 @@ class User extends BaseUser
         return $this->isEnabledSecurity('bAddEvent');
     }
 
-    public function isCVSExport()
+    public function isCSVExport()
     {
         return $this->isEnabledSecurity('bExportCSV');
     }

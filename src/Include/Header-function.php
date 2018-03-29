@@ -95,7 +95,7 @@ function Header_body_scripts()
                         "url": "<?= SystemURLs::getRootPath() ?>/locale/datatables/<?= $localeInfo->getDataTables() ?>.json"
                     },
                     responsive: true,
-                    <?php if (SessionUser::getUser()->isCVSExport()) {
+                    <?php if (SessionUser::getUser()->isCSVExport()) {
         ?>
                     "dom": 'T<"clear">lfrtip',
                     <?php

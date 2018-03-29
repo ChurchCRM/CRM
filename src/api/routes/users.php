@@ -91,5 +91,5 @@ function getUserPermissionsAPI(Request $request, Response $response, array $args
 {
     $userId = $args['userId'];
     $user = UserQuery::create()->findPk($userId);
-    return $response->withJson(["user" => $user->getName(), "userId" => $user->getId(), "addEvent" => $user->isAddEvent(), "cvsExport" => $user->isCVSExport()]);
+    return $response->withJson(["user" => $user->getName(), "userId" => $user->getId(), "addEvent" => $user->isAddEvent(), "cvsExport" => $user->isCSVExport()]);
 }

@@ -16,7 +16,7 @@ use ChurchCRM\SessionUser;
 use ChurchCRM\Utils\RedirectUtils;
 
 if (!SessionUser::isAdmin()) {
-    RedirectUtils::Redirect();
+    RedirectUtils::SecurityRedirect("Admin");
 }
 
 // Set the page title

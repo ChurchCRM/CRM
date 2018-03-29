@@ -100,7 +100,7 @@ if (!Cart::HasPeople()) {
             <a href="CartToEvent.php" class="btn btn-app"><i
                 class="fa fa-ticket"></i><?= gettext('Empty Cart to Event') ?></a>
 
-            <?php if (SessionUser::getUser()->isCVSExport()) {
+            <?php if (SessionUser::getUser()->isCSVExport()) {
             ?>
                 <a href="CSVExport.php?Source=cart" class="btn btn-app"><i
                             class="fa fa-file-excel-o"></i><?= gettext('CSV Export') ?></a>

@@ -17,7 +17,7 @@ use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\SessionUser;
 
 // If user does not have CSV Export permission, redirect to the menu.
-if (!SessionUser::getUser()->isCVSExport()) {
+if (!SessionUser::getUser()->isCSVExport()) {
     RedirectUtils::SecurityRedirect("CSVExport");
 }
 
