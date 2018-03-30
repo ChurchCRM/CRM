@@ -15,6 +15,7 @@ require 'Include/LabelFunctions.php';
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\Cart;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\SessionUser;
 
 // Set the page title and include HTML header
 $sPageTitle = gettext('View Your Cart');
@@ -99,7 +100,7 @@ if (!Cart::HasPeople()) {
             <a href="CartToEvent.php" class="btn btn-app"><i
                 class="fa fa-ticket"></i><?= gettext('Empty Cart to Event') ?></a>
 
-            <?php if ($bExportCSV) {
+            <?php if (SessionUser::getUser()->isCSVExport()) {
             ?>
                 <a href="CSVExport.php?Source=cart" class="btn btn-app"><i
                             class="fa fa-file-excel-o"></i><?= gettext('CSV Export') ?></a>

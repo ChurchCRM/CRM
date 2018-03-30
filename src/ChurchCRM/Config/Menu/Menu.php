@@ -142,7 +142,7 @@ class Menu
         $depositsMenu->addSubMenu(new MenuItem(gettext("Deposit Reports"), "FinancialReports.php", SessionUser::getUser()->isFinanceEnabled()));
         $depositsMenu->addSubMenu(new MenuItem(gettext("Edit Deposit Slip"), "DepositSlipEditor.php", SessionUser::getUser()->isFinanceEnabled()));
         $depositsMenu->addCounter(new MenuCounter("iCurrentDeposit", "bg-green", $_SESSION['iCurrentDeposit']));
-        
+
         $adminMenu = new MenuItem(gettext("Admin"), "", SessionUser::isAdmin());
         $adminMenu->addSubMenu(new MenuItem(gettext("Envelope Manager"), "ManageEnvelopes.php", SessionUser::isAdmin()));
         $adminMenu->addSubMenu(new MenuItem(gettext("Donation Funds"), "DonationFundEditor.php", SessionUser::isAdmin()));
@@ -186,19 +186,18 @@ class Menu
         }
         return null;
     }
-    
+
     private static function getAdminMenu()
     {
-        $menu = new MenuItem(gettext("Admin"), "", SessionUser::isAdmin(), 'fa-gears');
+        $menu = new MenuItem(gettext("Admin"), "", true, 'fa-gears');
         $menu->addSubMenu(new MenuItem(gettext("Edit General Settings"), "SystemSettings.php",SessionUser::isAdmin()));
         $menu->addSubMenu(new MenuItem(gettext("System Users"), "UserList.php",SessionUser::isAdmin()));
         $menu->addSubMenu(new MenuItem(gettext("Property Types"), "PropertyTypeList.php",SessionUser::isAdmin()));
         $menu->addSubMenu(new MenuItem(gettext("Restore Database"), "RestoreDatabase.php",SessionUser::isAdmin()));
         $menu->addSubMenu(new MenuItem(gettext("Backup Database"), "BackupDatabase.php",SessionUser::isAdmin()));
         $menu->addSubMenu(new MenuItem(gettext("CSV Import"), "CSVImport.php",SessionUser::isAdmin()));
-        $menu->addSubMenu(new MenuItem(gettext("CSV Export Records"), "CSVExport.php",SessionUser::isAdmin()));
+        $menu->addSubMenu(new MenuItem(gettext("CSV Export Records"), "CSVExport.php",SessionUser::getUser()->isCSVExport()));
         $menu->addSubMenu(new MenuItem(gettext("Kiosk Manager"), "KioskManager.php",SessionUser::isAdmin()));
-        
         return $menu;
     }
 
