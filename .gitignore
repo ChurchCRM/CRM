@@ -47,3 +47,4 @@ src/tmp_attach
 src/logs/*.log
 
 error.log
+/src/skin/js/react-app.js
