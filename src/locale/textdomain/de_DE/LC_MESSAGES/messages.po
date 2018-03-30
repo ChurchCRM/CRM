@@ -205,6 +205,10 @@ msgstr "Wenn du sonst keine Sicherungen von deinem System fährst solltest du mi
 msgid "After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site."
 msgstr "Nachdem du die Sicherung heruntergeladen hast solltest du zwei kopien erzeugen. Speichere die eine an einem sicheren Platz online und die andere lokal ab."
 
+#: BackupDatabase.php:44
+msgid "If you are concerned about confidentiality of data stored in the ChurchCRM database, you should encrypt the backup data if it will be stored somewhere potentially accessible to others"
+msgstr "Wenn Sie Wert auf die Vertraulichkeit Ihrer Daten legen, die in der ChurchCRM-Datenbank gespeichert sind, sollte Sie die Backup-Daten verschlüsseln, falls sie irgendwo gespeichert werden, wo sie möglicherweise anderen zugänglich sind."
+
 #: BackupDatabase.php:45
 msgid "For added backup security, you can e-mail the backup to yourself at an e-mail account hosted off-site or to a trusted friend.  Be sure to use encryption if you do this, however."
 msgstr "Zusätzliche Sicherheit kann dadurch erreicht werden, dass du die Datenbanksicherung dir selbst an eine e-mail Adresse zusendest, die nicht auf dem selben Server verwaltet wird,  oder an eine Person deines Vertrauens. Die Datei sollte vorher verschlüsselt werden."
@@ -2842,6 +2846,10 @@ msgstr "Personen"
 msgid "See All People"
 msgstr "Alle Menschen anzeigen"
 
+#: PeopleDashboard.php:179
+msgid "Sunday School Kids"
+msgstr "Kinder der Sonntagsschule"
+
 #: Menu.php:222 Menu.php:241 Menu.php:266 PeopleDashboard.php:186
 #: PeopleDashboard.php:207
 msgid "More info"
@@ -2883,6 +2891,10 @@ msgstr "Jungen"
 msgid "Girls"
 msgstr "Mädchen"
 
+#: Menu.php:300
+msgid "Latest Families"
+msgstr "Zuletzt hinzugefügte Familien"
+
 #: CartToFamily.php:206
 #: ChurchCRM/Emails/notifications/NewPersonOrFamilyEmail.php:58
 #: FamilyEditor.php:654 LettersAndLabels.php:71 Menu.php:313 Menu.php:342
@@ -2891,6 +2903,23 @@ msgstr "Mädchen"
 #: external/templates/registration/family-register.php:31
 msgid "Family Name"
 msgstr "Familienname"
+
+#: Menu.php:329
+msgid "Updated Families"
+msgstr "Aktualisierte Familien"
+
+#: ChurchCRM/model/ChurchCRM/Family.php:183
+#: ChurchCRM/model/ChurchCRM/Person.php:145 Menu.php:344 PersonEditor.php:406
+msgid "Updated"
+msgstr "Aktualisiert"
+
+#: Menu.php:360
+msgid "Latest Members"
+msgstr "Zuletzt hinzugefügte Mitglieder"
+
+#: Menu.php:394
+msgid "Updated Members"
+msgstr "Aktualisierte Mitglieder"
 
 #: NoteDelete.php:27
 msgid "Note Delete Confirmation"
@@ -3044,6 +3073,10 @@ msgstr "Roter Text"
 #: PersonEditor.php:602 PersonView.php:369
 msgid "indicates items inherited from the associated family record."
 msgstr "zeigt die Regeln an, die von dem verknüpften Familieneintrag geerbt wurden."
+
+#: PersonEditor.php:615
+msgid "Personal Info"
+msgstr "Persönliche Information"
 
 #: PersonEditor.php:640
 msgid "Mr., Mrs., Dr., Rev."
@@ -4264,6 +4297,14 @@ msgstr "Dashboard"
 msgid "Change Password"
 msgstr "Passwort ändern"
 
+#: Include/Footer.php:34
+msgid "You have"
+msgstr "Sie haben"
+
+#: Include/Footer.php:35
+msgid "task(s)"
+msgstr "Aufgabe(n)"
+
 #: Include/LabelFunctions.php:42
 #, fuzzy
 msgid "Font"
@@ -4821,6 +4862,14 @@ msgstr "Dateien zum Hochladen"
 msgid "No Restore Running"
 msgstr "Keine Wiederherstellung läuft"
 
+#: ChurchCRM/dto/SystemConfig.php:239
+msgid "Church Information"
+msgstr "Kircheninformation"
+
+#: ChurchCRM/dto/SystemConfig.php:244
+msgid "Map Settings"
+msgstr "Karteneinstellungen"
+
 #: SystemSettings.php:83
 msgid "Setting saved"
 msgstr "Einstellung gespeichert"
@@ -4850,6 +4899,10 @@ msgstr "Schritt 1: Datenbank Backup"
 #: UpgradeCRM.php:37
 msgid "Please create a database backup before beginning the upgrade process."
 msgstr "Bitte erstellen Sie ein Datenbank Backup bevor Sie den Upgrade Prozess beginnen."
+
+#: UpgradeCRM.php:38
+msgid "Generate Database Backup"
+msgstr "Datenbank Backup erstellen"
 
 #: UpgradeCRM.php:65
 msgid "Full Path:"
@@ -4907,6 +4960,10 @@ msgstr "Gesäuberte Anzahl seit letztem Versand:"
 msgid "Missing emails report"
 msgstr "Fehlende Mails Report"
 
+#: sundayschool/SundaySchoolDashboard.php:45
+msgid "Functions"
+msgstr "Funktionen"
+
 #: sundayschool/SundaySchoolDashboard.php:51
 msgid "Add New Class"
 msgstr "Neue Klasse hinzufügen"
@@ -4916,9 +4973,21 @@ msgstr "Neue Klasse hinzufügen"
 msgid "Add"
 msgstr "Hinzufügen"
 
+#: sundayschool/SundaySchoolDashboard.php:252
+msgid "Enter Name"
+msgstr "Name eingeben"
+
 #: ChurchCRM/tasks/RegisteredTask.php:28
 msgid "Register Software"
 msgstr "Software registrieren"
+
+#: ChurchCRM/tasks/ChurchNameTask.php:19
+msgid "Update Church Info"
+msgstr "Kircheninformation aktualisieren"
+
+#: BackupDatabase.php:67
+msgid "Backup Status:"
+msgstr "Backup Status:"
 
 #: BackupDatabase.php:67
 msgid "No Backup Running"
@@ -5007,6 +5076,10 @@ msgstr "Alle Familien löschen"
 #: Login.php:221
 msgid "Register a new Family"
 msgstr "Eine neue Familie registrieren"
+
+#: Register.php:28
+msgid "Admin->Edit General Settings"
+msgstr "Admin -> Allgemeine Einstellungen bearbeiten"
 
 #: ChurchCRM/tasks/HttpsTask.php:19
 msgid "Configure HTTPS"
@@ -5213,6 +5286,10 @@ msgstr "SMTP Benutzname"
 msgid "SMTP Password"
 msgstr "SMTP Passwort"
 
+#: ChurchCRM/dto/SystemConfig.php:88
+msgid "First month of the fiscal year"
+msgstr "Erster Monat des Steuerjahres"
+
 #: ChurchCRM/dto/SystemConfig.php:99
 msgid "Set true to enable use of donation envelopes"
 msgstr "Setze auf true um Spendenbriefumschläge zu aktivieren."
@@ -5256,6 +5333,14 @@ msgstr "Letzte Integritätsprüfung"
 #: ChurchCRM/Config/Menu/Menu.php:85
 msgid "List Groups"
 msgstr "Liste Gruppen"
+
+#: ChurchCRM/Config/Menu/Menu.php:131
+msgid "List Church Events"
+msgstr "Kirchenveranstaltungen auflisten"
+
+#: ChurchCRM/Config/Menu/Menu.php:130
+msgid "Add Church Event"
+msgstr "Kirchenveranstaltung hinzufügen"
 
 #: ChurchCRM/Config/Menu/Menu.php:159
 msgid "View All Fundraisers"
@@ -5318,6 +5403,10 @@ msgstr "2013/14"
 msgid "2014/2015"
 msgstr "2014/15"
 
+#: queryparameteroptions_qpo.php:12
+msgid "2015/2016"
+msgstr "2015/2016"
+
 #: queryparameteroptions_qpo.php:16
 msgid "Regular Attender"
 msgstr "Regelmäßiger Besucher"
@@ -5325,6 +5414,10 @@ msgstr "Regelmäßiger Besucher"
 #: queryparameteroptions_qpo.php:17
 msgid "Guest"
 msgstr "Gast"
+
+#: queryparameters_qrp.php:2
+msgid "Minimum Age"
+msgstr "Mindestalter"
 
 #: queryparameters_qrp.php:9
 msgid "Search"
@@ -5337,6 +5430,10 @@ msgstr "Feld"
 #: query_qry.php:9 query_qry.php:48 queryparameters_qrp.php:13
 msgid "Registered students"
 msgstr "Registrierte Schüler"
+
+#: queryparameters_qrp.php:15
+msgid "Months"
+msgstr "Monate"
 
 #: queryparameters_qrp.php:21
 msgid "Field value"
@@ -5532,6 +5629,10 @@ msgstr "Gruppenarten Editieren"
 msgid "Security Group"
 msgstr "Sicherheitsgruppe"
 
+#: CSVImport.php:636 CSVImport.php:709
+msgid "Imported"
+msgstr "Importiert"
+
 #: ChurchCRM/dto/SystemConfig.php:106
 msgid "miles"
 msgstr "Meilen"
@@ -5603,6 +5704,22 @@ msgstr "Aruba"
 #: settings-countries.php:15
 msgid "Ascension Island"
 msgstr "Ascension"
+
+#: settings-countries.php:16
+msgid "Australia"
+msgstr "Australien"
+
+#: settings-countries.php:17
+msgid "Austria (Österreich)"
+msgstr "Österreich"
+
+#: settings-countries.php:29
+msgid "Bolivia"
+msgstr "Bolivien"
+
+#: settings-countries.php:33
+msgid "Brazil (Brasil)"
+msgstr "Brasilien"
 
 #: settings-countries.php:34
 msgid "British Indian Ocean Territory"
