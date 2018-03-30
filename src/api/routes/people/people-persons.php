@@ -2,6 +2,7 @@
 /* contributor Philippe Logel */
 
 // Person APIs
+use ChurchCRM\dto\Cart;
 use ChurchCRM\dto\MenuEventsCount;
 use ChurchCRM\dto\Photo;
 use ChurchCRM\Person;
@@ -66,7 +67,7 @@ $app->group('/persons', function () {
     });
 
     $this->post('/{personId:[0-9]+}/addToCart', function ($request, $response, $args) {
-        AddToPeopleCart($args['personId']);
+        Cart::AddPerson($args['personId']);
     });
 
     /**

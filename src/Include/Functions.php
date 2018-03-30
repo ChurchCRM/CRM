@@ -12,6 +12,7 @@
 
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\dto\Cart;
 use ChurchCRM\Service\PersonService;
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\Utils\InputUtils;
@@ -168,7 +169,7 @@ if (isset($_POST['BulkAddToCart'])) {
         }
     } else {
         for ($iCount = 0; $iCount < count($aItemsToProcess); $iCount++) {
-            AddToPeopleCart(str_replace(',', '', $aItemsToProcess[$iCount]));
+            Cart::AddPerson(str_replace(',', '', $aItemsToProcess[$iCount]));
         }
         $sGlobalMessage = $iCount.' '.gettext('item(s) added to the Cart.');
     }

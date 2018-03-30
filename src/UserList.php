@@ -22,12 +22,12 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\UserQuery;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\SessionUser;
 
 // Security: User must be an Admin to access this page.
 // Otherwise, re-direct them to the main menu.
-if (!$_SESSION['user']->isAdmin()) {
-    RedirectUtils::Redirect('Menu.php');
-    exit;
+if (!SessionUser::isAdmin()) {
+    RedirectUtils::SecurityRedirect("Admin");
 }
 
 // Get all the User records
