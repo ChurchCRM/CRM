@@ -161,6 +161,10 @@ msgstr "Email"
 msgid "Credit Card"
 msgstr "Credit kaart"
 
+#: AutoPaymentEditor.php:956
+msgid "Vanco Credit Card Method"
+msgstr "Vanco Creditcard Methode"
+
 #: AutoPaymentEditor.php:965
 msgid "Expiration Month"
 msgstr "Vervaldatum maand"
@@ -181,9 +185,17 @@ msgstr "Bank Route Nummer"
 msgid "Bank Account Number"
 msgstr "Bank Rekeningnummer"
 
+#: AutoPaymentEditor.php:997
+msgid "Vanco Bank Account Method"
+msgstr "Vanco Bankrekening Methode"
+
 #: BackupDatabase.php:32 ChurchCRM/Config/Menu/Menu.php:197
 msgid "Backup Database"
 msgstr "Backup Database"
+
+#: BackupDatabase.php:38
+msgid "This tool will assist you in manually backing up the ChurchCRM database."
+msgstr "Wizard voor het maken van een handmatige backup van de  ChurchCRM database"
 
 #: BackupDatabase.php:42
 msgid "You should make a manual backup at least once a week unless you already have a regular backup procedule for your systems."
@@ -193,9 +205,17 @@ msgstr "U zou minstens een keer in de week een backup moeten maken, tenzij u al 
 msgid "After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site."
 msgstr "Maak twee copieen van uw systeem backup. Leg er een in een kluis bij uw werkplek en de andere in een kluis op een andere locatie."
 
+#: BackupDatabase.php:44
+msgid "If you are concerned about confidentiality of data stored in the ChurchCRM database, you should encrypt the backup data if it will be stored somewhere potentially accessible to others"
+msgstr "Ter bescherming van geheime data in de ChurchCRM database word het aangeraden om uw externe backup bestanden te versleutelen."
+
 #: BackupDatabase.php:45
 msgid "For added backup security, you can e-mail the backup to yourself at an e-mail account hosted off-site or to a trusted friend.  Be sure to use encryption if you do this, however."
 msgstr "Voor extra backup veiligheid, kunt u de backup mailen naar een offsite email account of naar een vertrouwt persoon. Wees er zeker van dat u encryptie gebruikt als u dit doet."
+
+#: BackupDatabase.php:49
+msgid "Select archive type"
+msgstr "Selecteer archief type"
 
 #: BackupDatabase.php:53
 msgid "Encrypt backup file with a password?"
@@ -208,6 +228,10 @@ msgstr "Type wachtwoord opnieuw"
 #: BackupDatabase.php:59
 msgid "Generate and Download Backup"
 msgstr "Maak en download backup"
+
+#: BackupDatabase.php:60
+msgid "Generate and Ship Backup to External Storage"
+msgstr "Genereer en kopieer Backup naar Externe Opslag"
 
 #: BatchWinnerEntry.php:35 FundRaiserEditor.php:154
 msgid "Batch Winner Entry"
@@ -228,6 +252,10 @@ msgstr "Voer Winnaars"
 #: CSVExport.php:54 CartView.php:105
 msgid "CSV Export"
 msgstr "CVS Export"
+
+#: CSVExport.php:62
+msgid "Field Selection"
+msgstr "Veld Selectie"
 
 #: AutoPaymentEditor.php:896 CSVExport.php:66 CSVImport.php:213
 #: ManageEnvelopes.php:162 PersonEditor.php:668
@@ -276,10 +304,26 @@ msgstr "Werk/Andere Email"
 msgid "Membership Date"
 msgstr "Lidmaatschapsdatum"
 
+#: CSVExport.php:157
+msgid "Birth / Anniversary Date"
+msgstr "Geboorte / Jubileum Datum"
+
+#: CSVExport.php:162
+msgid "Age / Years Married"
+msgstr "Leeftijd / Aantal Jaren Getrouwd"
+
 #: CSVExport.php:172 CSVExport.php:293 CartView.php:275 OptionManager.php:62
 #: PersonEditor.php:780 PrintView.php:270 queryparameters_qrp.php:5
 msgid "Family Role"
 msgstr "Familie Rol"
+
+#: CSVExport.php:175
+msgid "Depends whether using person or family output method"
+msgstr "Afhankelijk van het gebruik van het persoon of familie uitvoer methode"
+
+#: CSVExport.php:188
+msgid "Custom Field Selection"
+msgstr "Aangepaste Veld Selectie"
 
 #: CSVExport.php:196
 msgid "Custom Person Fields"
@@ -584,21 +628,45 @@ msgstr "Kruis ter controle"
 msgid "Assign Canvassers"
 msgstr "Koppel enqueteurs"
 
+#: CanvassAutomation.php:143
+msgid "Randomly assign canvassers to all Families.  The Canvassers are taken from the &quot;Canvassers&quot; Group."
+msgstr "Willekeurig enqueteurs toekennen aan alle Families. De enqueteurs worden geselecteerd uit de &quot;Enqueteurs&quot; Groep."
+
 #: CanvassAutomation.php:150
 msgid "Assign To Non Pledging"
 msgstr "Toewijzen aan geen bijdrage"
+
+#: CanvassAutomation.php:154
+msgid "Randomly assign canvassers to non-pledging Families.  The Canvassers are taken from the &quot;BraveCanvassers&quot; Group."
+msgstr "Willekeurig aanwervers toekennen aan niet-gevende Families. De aanwervers worden geselecteerd uit de &quot;MoedigeEnqueteur&quot; Groep."
 
 #: CanvassAutomation.php:161
 msgid "Clear Canvasser Assignments"
 msgstr "Ledig enquêteurs Toewijzingen"
 
+#: CanvassAutomation.php:165
+msgid "Clear all the canvasser assignments for all families."
+msgstr "Wis alle aanwerver toekenningen voor alle families"
+
+#: CanvassAutomation.php:165
+msgid "Important note: this will lose any canvasser assignments that have been made by hand."
+msgstr "Let Op: Hiermee gaan alle handmatig toekenningen van aanwervers verloren"
+
 #: CanvassAutomation.php:172
 msgid "Enable Canvass for All Families"
 msgstr "Laat enquete voor alle families toe"
 
+#: CanvassAutomation.php:176
+msgid "Turn on the &quot;Ok To Canvass&quot; field for all Families."
+msgstr "De &quot;Aanwerven Ok&quot;  veld aan zetten voor alle Families"
+
 #: CanvassAutomation.php:183
 msgid "Disable Canvass for All Families"
 msgstr "Sta Enquete voor Alle Families niet meer toe"
+
+#: CanvassAutomation.php:187
+msgid "Turn off the &quot;Ok To Canvass&quot; field for all Families"
+msgstr "De &quot;Aanwerven Ok&quot;  veld uit zetten voor alle Families"
 
 #: CanvassAutomation.php:194
 msgid "Briefing Sheets"
@@ -612,6 +680,10 @@ msgstr "Maak een PDF met aanwijzings blad voor alle families, gesorteerd op enqu
 msgid "Progress Report"
 msgstr "Voortgangsrapport"
 
+#: CanvassAutomation.php:208
+msgid "Generate a PDF containing a progress report.  The progress report includes information on the overall progress of the canvass, and the progress of individual canvassers."
+msgstr "Genereer een PDF met een voortgangsrapport. De voortgangsrapport bevat informatie over de algehele voortgang van het aanwerven, en voortgang van individuele Enqueteurs"
+
 #: CanvassAutomation.php:214
 msgid "Summary Report"
 msgstr "Samenvattings Rapport"
@@ -620,9 +692,17 @@ msgstr "Samenvattings Rapport"
 msgid "Not Interested Report"
 msgstr "Niet geinterresseerd Rapport"
 
+#: CanvassAutomation.php:228
+msgid "Generate a PDF containing a report of the families marked &quot;Not Interested&quot; by the canvasser."
+msgstr "Genereer een PDF met een overzicht van famileis gemarkeerd als &quot;Niet geïnteresseerd&quot; door de Enqueteur "
+
 #: CanvassEditor.php:44
 msgid " Canvass Input for the "
 msgstr "Enqueteurs Input voor de "
+
+#: Reports/CanvassReports.php:170 UserEditor.php:440
+msgid "Canvasser"
+msgstr "Enqueteur "
 
 #: CanvassEditor.php:200 Reports/CanvassReports.php:347
 msgid "Positive"
@@ -3913,4 +3993,8 @@ msgstr "Familie:"
 #: Reports/AdvancedDeposit.php:850
 msgid "item"
 msgstr "object"
+
+#: CanvassEditor.php:163
+msgid "Canvasser:"
+msgstr "Enqueteur"
 

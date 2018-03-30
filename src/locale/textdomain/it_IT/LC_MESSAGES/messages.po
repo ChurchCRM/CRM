@@ -191,7 +191,7 @@ msgstr "Metodo Utente Banca Vanco"
 
 #: BackupDatabase.php:32 ChurchCRM/Config/Menu/Menu.php:197
 msgid "Backup Database"
-msgstr "Copia Database"
+msgstr "Backup Database"
 
 #: BackupDatabase.php:38
 msgid "This tool will assist you in manually backing up the ChurchCRM database."
@@ -227,7 +227,7 @@ msgstr "Reinserisci la password"
 
 #: BackupDatabase.php:59
 msgid "Generate and Download Backup"
-msgstr "Genera e scarica l'archivio"
+msgstr "Genera e scarica il Backup"
 
 #: BackupDatabase.php:60
 msgid "Generate and Ship Backup to External Storage"
@@ -251,7 +251,7 @@ msgstr "Inserisci Vincitori"
 
 #: CSVExport.php:54 CartView.php:105
 msgid "CSV Export"
-msgstr "Esporta su foglio di calcolo CSV"
+msgstr "Esporta CSV"
 
 #: CSVExport.php:62
 msgid "Field Selection"
@@ -291,13 +291,13 @@ msgstr "CAP"
 
 #: CSVExport.php:117
 msgid "Envelope"
-msgstr "Storico"
+msgstr "Busta"
 
 #: CSVExport.php:147 ChurchCRM/Reports/PDF_Directory.php:397
 #: ChurchCRM/Reports/PDF_Directory.php:454 PersonView.php:321
 #: Reports/DirectoryReport.php:299
 msgid "Work/Other Email"
-msgstr "Email lavoro/Altra email"
+msgstr "lavoro / Altra email"
 
 #: CSVExport.php:152 CSVExport.php:362 CSVImport.php:229 PersonEditor.php:1150
 #: PrintView.php:305
@@ -306,7 +306,7 @@ msgstr "Data Iscrizione"
 
 #: CSVExport.php:157
 msgid "Birth / Anniversary Date"
-msgstr "Data Nascita / Compleanno"
+msgstr "Nascita / Data Anniversario"
 
 #: CSVExport.php:162
 msgid "Age / Years Married"
@@ -315,11 +315,11 @@ msgstr "Età / Anni di Matrimonio"
 #: CSVExport.php:172 CSVExport.php:293 CartView.php:275 OptionManager.php:62
 #: PersonEditor.php:780 PrintView.php:270 queryparameters_qrp.php:5
 msgid "Family Role"
-msgstr "Ruolo famigliare"
+msgstr "Ruolo Familiare"
 
 #: CSVExport.php:175
 msgid "Depends whether using person or family output method"
-msgstr "Dipende dal metodo di gestione personale o famigliare"
+msgstr "Dipende dal metodo di gestione personale o familiare"
 
 #: CSVExport.php:188
 msgid "Custom Field Selection"
@@ -633,9 +633,8 @@ msgid "Randomly assign canvassers to all Families.  The Canvassers are taken fro
 msgstr "Assegna casualmente consulenti alle famiglie. I consulenti sono presi da &quot;Promotori&quot; Grouppo."
 
 #: CanvassAutomation.php:150
-#, fuzzy
 msgid "Assign To Non Pledging"
-msgstr "Assegna ruolo"
+msgstr "Assign To Non Pledging"
 
 #: CanvassAutomation.php:154
 msgid "Randomly assign canvassers to non-pledging Families.  The Canvassers are taken from the &quot;BraveCanvassers&quot; Group."
@@ -864,19 +863,19 @@ msgstr "Vai alle Etichette"
 
 #: CartView.php:87
 msgid "Empty Cart"
-msgstr "Svuota carrello"
+msgstr "Svuota Carrello"
 
 #: CartView.php:90
 msgid "Empty Cart to Group"
-msgstr "Svuota carrello nel gruppo"
+msgstr "Svuota Carrello nel Gruppo"
 
 #: CartView.php:96
 msgid "Empty Cart to Family"
-msgstr "Svuota carrello nella famiglia"
+msgstr "Svuota Carrello nella Famiglia"
 
 #: CartView.php:100
 msgid "Empty Cart to Event"
-msgstr "Svuota carrello nell' evento"
+msgstr "Svuota Carrello nell' Evento"
 
 #: CartView.php:109
 msgid "Map Cart"
@@ -897,21 +896,19 @@ msgstr "Email (copia nascosta)"
 
 #: CartView.php:176
 msgid "Create Directory From Cart"
-msgstr "Creare elenco da carrello"
+msgstr "Crea Elenco da Carrello"
 
 #: CartView.php:200 CartView.php:242
 msgid "Generate Labels"
 msgstr "Genera etichette"
 
 #: CartView.php:208
-#, fuzzy
 msgid "Bulk Mail Presort"
-msgstr "Ordinamento preliminare posta di massa"
+msgstr "Preselezione Bulk Mail"
 
 #: CartView.php:217
-#, fuzzy
 msgid "Quiet Presort"
-msgstr "Ordinamento preliminare silenzioso"
+msgstr "Preset Silenzioso"
 
 #: CartView.php:263
 msgid "Your cart contains"
@@ -985,9 +982,8 @@ msgid "Checked Out Time"
 msgstr "Ora del Check-Out"
 
 #: Checkin.php:315
-#, fuzzy
 msgid "Checked Out By"
-msgstr "Registrato da"
+msgstr "Checked-Out Da"
 
 #: Checkin.php:316 EditEventAttendees.php:44 EventNames.php:267
 #: ListEvents.php:205 PersonView.php:633
@@ -1190,9 +1186,8 @@ msgid "Create Directory"
 msgstr "Crea directory"
 
 #: DonatedItemEditor.php:44
-#, fuzzy
 msgid "Donated Item Editor"
-msgstr "Modifica note"
+msgstr "Editor Oggetti Donati"
 
 #: DonatedItemEditor.php:295 FamilyEditor.php:1117 PaddleNumEditor.php:150
 #: PersonEditor.php:1229 PledgeEditor.php:689
@@ -1291,14 +1286,12 @@ msgid "Church Event Editor"
 msgstr "Editor Eventi Chiesa"
 
 #: EditEventTypes.php:25 EventNames.php:29
-#, fuzzy
 msgid "Edit Event Types"
-msgstr "Modifica tipi di gruppi"
+msgstr "Modifica i Tipi di Evento"
 
 #: EditEventTypes.php:121
-#, fuzzy
 msgid "Edit Event Type"
-msgstr "Modifica tipo di Evento"
+msgstr "Modifica il Tipo di Evento"
 
 #: EditEventTypes.php:131 EventEditor.php:429 EventEditor.php:457
 #: EventNames.php:262 ListEvents.php:207
@@ -1470,9 +1463,8 @@ msgid "There are no events in this category"
 msgstr "Non ci sono eventi in questa categoria"
 
 #: EventAttendance.php:204
-#, fuzzy
 msgid "There are no Records"
-msgstr "Elimina schede:"
+msgstr "Non ci sono Record"
 
 #: EventNames.php:286 EventNames.php:287
 msgid "Create Event"
@@ -1496,9 +1488,8 @@ msgid "Items with a "
 msgstr "Articoli con a␣"
 
 #: EventEditor.php:415
-#, fuzzy
 msgid " are required"
-msgstr "Questo valore è richiesto."
+msgstr "␣sono richiesti"
 
 #: EventEditor.php:432
 msgid "Select your event type"
@@ -1521,7 +1512,6 @@ msgid "Attendance Notes: "
 msgstr "Frequenza Note:"
 
 #: EventEditor.php:524
-#, fuzzy
 msgid "Event Sermon"
 msgstr "Evento Sermone"
 
@@ -1716,19 +1706,16 @@ msgid "Other Info"
 msgstr "Altre Info"
 
 #: FamilyEditor.php:817
-#, fuzzy
 msgid "Ok To Canvass"
-msgstr "Ok Per Canvass"
+msgstr "Ok per fare Sondaggi"
 
 #: FamilyEditor.php:828
-#, fuzzy
 msgid "Assign a Canvasser"
-msgstr "Assegna un nuovo gruppo"
+msgstr "Assegna un Promotore"
 
 #: FamilyEditor.php:846
-#, fuzzy
 msgid "Assign a Brave Canvasser"
-msgstr "Assegna una nuova classificazione"
+msgstr "Assegna un bravo Promotore"
 
 #: FamilyEditor.php:867
 msgid "Envelope Info"
@@ -1970,7 +1957,6 @@ msgid "Updated By"
 msgstr "Aggiornato da"
 
 #: FamilyView.php:731
-#, fuzzy
 msgid "Add a new automatic payment"
 msgstr "Aggiungi un nuovo pagamento automatico"
 
@@ -2018,14 +2004,12 @@ msgid "Comment"
 msgstr "Commento"
 
 #: FamilyView.php:864
-#, fuzzy
 msgid "Add a new pledge"
-msgstr "Aggiungi nuovo utente"
+msgstr "Aggiungi nuova Donazione"
 
 #: FamilyView.php:866
-#, fuzzy
 msgid "Add a new payment"
-msgstr "Aggiungi una nuova donazione"
+msgstr "Aggiungi un nuovo Pagamento"
 
 #: FamilyView.php:877
 msgid " Canvass Entry"
@@ -2038,9 +2022,8 @@ msgstr "Chiudi"
 #: DepositSlipEditor.php:219 FamilyView.php:899 FindDepositSlip.php:94
 #: PersonView.php:929 PledgeDelete.php:19
 #: v2/templates/people/family-view.php:516
-#, fuzzy
 msgid "Confirm Delete"
-msgstr "Conferma"
+msgstr "Conferma Cancella"
 
 #: FamilyView.php:903 PersonView.php:933
 #: v2/templates/people/family-view.php:520
@@ -2057,41 +2040,37 @@ msgid "You are about to email copy of the family information in pdf to the follo
 msgstr "Stai per inviare per via e-mail una copia delle informazioni sulla famiglia in pdf alle seguenti e-mail"
 
 #: FinancialReports.php:35
-#, fuzzy
 msgid "Financial Reports"
-msgstr "Finanze"
+msgstr "Rapporti Finanziari\n"
+""
 
 #: FinancialReports.php:47
 msgid "No records were returned from the previous report."
 msgstr "Nessun record sono stati restituiti dalla relazione precedente."
 
 #: FinancialReports.php:54 FinancialReports.php:304
-#, fuzzy
 msgid "Report Type:"
-msgstr "Modello di rapporto"
+msgstr "Tipo di rapporto:"
 
 #: FinancialReports.php:56
-#, fuzzy
 msgid "Select Report Type"
-msgstr "Seleziona tipo di proprietà"
+msgstr "Seleziona tipo di rapporto"
 
 #: FinancialReports.php:57
 msgid "Pledge Summary"
 msgstr "Pegno Sommario"
 
 #: FinancialReports.php:58
-#, fuzzy
 msgid "Pledge Family Summary"
-msgstr "Pegno FamilySummary"
+msgstr "Sommario Accordo Familiare"
 
 #: FinancialReports.php:59
 msgid "Pledge Reminders"
 msgstr "Pledge Promemoria"
 
 #: FinancialReports.php:60
-#, fuzzy
 msgid "Voting Members"
-msgstr "Membri totali:"
+msgstr "Membri Votanti:"
 
 #: FinancialReports.php:61
 msgid "Giving Report (Tax Statements)"
@@ -2102,9 +2081,8 @@ msgid "Zero Givers"
 msgstr "Zero Givers"
 
 #: FinancialReports.php:63
-#, fuzzy
 msgid "Individual Deposit Report"
-msgstr "(Solo record individuali)"
+msgstr "Rapporto deposito Individuale"
 
 #: FinancialReports.php:64
 msgid "Advanced Deposit Report"
@@ -2118,18 +2096,16 @@ msgid "Next"
 msgstr "Successivo"
 
 #: FinancialReports.php:140
-#, fuzzy
 msgid "Filter by Family"
-msgstr "Per famiglia"
+msgstr "Filtra per Famiglia"
 
 #: FinancialReports.php:189
 msgid "Report Start Date:"
 msgstr "Segnala Data di inizio:"
 
 #: FinancialReports.php:191
-#, fuzzy
 msgid "Report End Date:"
-msgstr "Modello di rapporto"
+msgstr "Data di fine rapporto:"
 
 #: FinancialReports.php:194
 msgid "Apply Report Dates To:"
@@ -2140,9 +2116,8 @@ msgid "Deposit Date (Default)"
 msgstr "Data Deposit (Default)"
 
 #: FinancialReports.php:196
-#, fuzzy
 msgid "Payment Date"
-msgstr "Forma di pagamento:"
+msgstr "Data di pagamento"
 
 #: FinancialReports.php:212
 msgid "Filter by Deposit:"
@@ -2157,9 +2132,8 @@ msgid "All deposits within date range"
 msgstr "Tutti i depositi all&#39;interno di intervallo di date"
 
 #: FinancialReports.php:257
-#, fuzzy
 msgid "Filter by Payment Type:"
-msgstr "Forma di pagamento:"
+msgstr "Filtra tipo di pagamento:"
 
 #: FinancialReports.php:261
 msgid "All Methods"
@@ -2206,23 +2180,20 @@ msgid "All Payments"
 msgstr "Tutti i pagamenti di"
 
 #: FinancialReports.php:284
-#, fuzzy
 msgid "Generate:"
-msgstr "Sesso:"
+msgstr "Genera:"
 
 #: FinancialReports.php:285
 msgid "Only Families with unpaid pledges"
 msgstr "Solo le famiglie con impegni non pagati"
 
 #: FinancialReports.php:286 GeoPage.php:312 PeopleDashboard.php:118
-#, fuzzy
 msgid "All Families"
-msgstr "Visualizza tutte le famiglie"
+msgstr "Tutte le Famiglie"
 
 #: FinancialReports.php:290
-#, fuzzy
 msgid "Report Heading:"
-msgstr "Menu dei rapporti"
+msgstr "Intestazione del Rapporto:"
 
 #: FinancialReports.php:291
 msgid "Graphic"
@@ -2253,9 +2224,8 @@ msgid "All Data"
 msgstr "Tutti i dati"
 
 #: FinancialReports.php:306
-#, fuzzy
 msgid "Moderate Detail"
-msgstr "Nascondi dettagli"
+msgstr "Dettaglio Moderato"
 
 #: FinancialReports.php:307
 msgid "Summary Data"
@@ -2279,9 +2249,8 @@ msgid "Create Report"
 msgstr "Crea rapporto"
 
 #: FindDepositSlip.php:21
-#, fuzzy
 msgid "Deposit Listing"
-msgstr "Lista persone"
+msgstr "Elenco dei depositi"
 
 #: FindDepositSlip.php:62
 msgid "Add New Deposit"
@@ -2304,24 +2273,20 @@ msgid "Export Selected Rows (CSV)"
 msgstr "Esporta righe selezionate (CSV)"
 
 #: FindFundRaiser.php:18
-#, fuzzy
 msgid "Fundraiser Listing"
-msgstr "Lista utenti"
+msgstr "Elenco di raccolta fondi"
 
 #: FindFundRaiser.php:80
-#, fuzzy
 msgid "Date Start"
-msgstr "Data inserita"
+msgstr "Data di Inizio"
 
 #: FindFundRaiser.php:83
-#, fuzzy
 msgid "Apply Filters"
-msgstr "Apllica filtro"
+msgstr "Applica filtri"
 
 #: FindFundRaiser.php:87
-#, fuzzy
 msgid "Date End"
-msgstr "Data inserita"
+msgstr "Data Fine"
 
 #: FindFundRaiser.php:90 SelectList.php:758
 msgid "Clear Filters"
@@ -2345,39 +2310,32 @@ msgid "Number"
 msgstr "Numero"
 
 #: FundRaiserEditor.php:33
-#, fuzzy
 msgid "Create New Fund Raiser"
-msgstr "Crea nuova famiglia"
+msgstr "Crea un nuovo Fund Raiser"
 
 #: FundRaiserEditor.php:150
-#, fuzzy
 msgid "Add Donated Item"
-msgstr "Aggiungi donazione"
+msgstr "Aggiungi Oggetto Donato"
 
 #: FundRaiserEditor.php:151
-#, fuzzy
 msgid "Generate Catalog"
-msgstr "Crea le etichette"
+msgstr "Genera Catalogo"
 
 #: FundRaiserEditor.php:152
-#, fuzzy
 msgid "Generate Bid Sheets"
-msgstr "Crea le etichette"
+msgstr "Genera fogli di Offerta"
 
 #: FundRaiserEditor.php:153
-#, fuzzy
 msgid "Generate Certificates"
-msgstr "Crea le etichette"
+msgstr "Genera Certificati"
 
 #: FundRaiserEditor.php:185
-#, fuzzy
 msgid "Donated items for this fundraiser"
-msgstr "Oggetti donati per questa raccolta fondi"
+msgstr "Articoli donati per questa raccolta fondi"
 
 #: DonatedItemEditor.php:184 FundRaiserEditor.php:193
-#, fuzzy
 msgid "Donor"
-msgstr "Nome donatore:"
+msgstr "Donatore"
 
 #: DonatedItemEditor.php:231 FundRaiserEditor.php:194 PaddleNumEditor.php:172
 #: PaddleNumList.php:54
@@ -2385,9 +2343,8 @@ msgid "Buyer"
 msgstr "Acquirente"
 
 #: FundRaiserEditor.php:196
-#, fuzzy
 msgid "Sale Price"
-msgstr "Anteprima email"
+msgstr "Prezzo di vendita"
 
 #: DonatedItemEditor.php:218 FundRaiserEditor.php:198
 msgid "Material Value"
@@ -2402,9 +2359,8 @@ msgid "Family Geographic Utilities"
 msgstr "Famiglia Geographic Utilities"
 
 #: GeoPage.php:211
-#, fuzzy
 msgid "Select Family:"
-msgstr "Famiglia successiva"
+msgstr "Seleziona Famiglia:"
 
 #: GeoPage.php:230
 msgid "Maximum number of neighbors:"
@@ -2431,33 +2387,28 @@ msgid "Include families in coordinate file:"
 msgstr "Includere le famiglie nel file di coordinate:"
 
 #: GeoPage.php:317
-#, fuzzy
 msgid "Neighbor Families"
-msgstr "Famiglie"
+msgstr "Famiglie vicine"
 
 #: GeoPage.php:283 GeoPage.php:331
-#, fuzzy
 msgid "Make Data File"
-msgstr "Crea file"
+msgstr "Crea file Dati"
 
 #: GeoPage.php:265
 msgid "Show Neighbors"
 msgstr "Mostra Vicini"
 
 #: GeoPage.php:355
-#, fuzzy
 msgid "Distance"
-msgstr "Finanza"
+msgstr "Distanza"
 
 #: GeoPage.php:356
-#, fuzzy
 msgid "Direction"
-msgstr "Directory"
+msgstr "Direzione"
 
 #: FamilyEditor.php:707
-#, fuzzy
 msgid "Latitude"
-msgstr "Ultima modifica"
+msgstr "Latitudine"
 
 #: FamilyEditor.php:711
 msgid "Longitude"
@@ -2488,24 +2439,20 @@ msgid "Group Settings"
 msgstr "Impostazioni Gruppo"
 
 #: GroupEditor.php:85 GroupView.php:195
-#, fuzzy
 msgid "Type of Group"
 msgstr "Tipo di gruppo"
 
 #: GroupEditor.php:128 OptionManager.php:95
-#, fuzzy
 msgid "Group Member Roles"
-msgstr "Compoenti del gruppo"
+msgstr "Ruoli membri del gruppo"
 
 #: GroupEditor.php:130
-#, fuzzy
 msgid "Clone roles"
-msgstr "Clone ruoli"
+msgstr "Ruoli di clone"
 
 #: GroupEditor.php:134
-#, fuzzy
 msgid "from group"
-msgstr "Persona dal gruppo"
+msgstr "dal gruppo"
 
 #: GroupEditor.php:136 GroupPropsFormEditor.php:326
 msgid "Select a group"
@@ -2540,9 +2487,8 @@ msgid "Group role name changes are saved as soon as the box loses focus"
 msgstr "Le modifiche ai nomi dei ruoli di gruppo vengono salvate non appena la casella perde lo stato attivo"
 
 #: GroupEditor.php:188 MemberRoleChange.php:92
-#, fuzzy
 msgid "New Role"
-msgstr "Nuovo ruolo"
+msgstr "Nuovo Ruolo"
 
 #: GroupEditor.php:190
 msgid "Add New Role"
@@ -2605,23 +2551,20 @@ msgid "Group reports"
 msgstr "Rapporti sui gruppi"
 
 #: GroupReports.php:37
-#, fuzzy
 msgid "Select the group you would like to report"
-msgstr "Seleziona il gruppo sul quale desideri un rapporto"
+msgstr "Seleziona il gruppo che desideri segnalare"
 
 #: GroupReports.php:59
 msgid "No Role Selected"
 msgstr "Nessun Ruolo Selezionato"
 
 #: GroupReports.php:65
-#, fuzzy
 msgid "Only cart persons?"
-msgstr "Unica persona nel contenitore?"
+msgstr "Solo le persone del carrello?"
 
 #: GroupReports.php:71
-#, fuzzy
 msgid "Report Model"
-msgstr "Modello di rapporto"
+msgstr "Modello di Rapporto"
 
 #: GroupReports.php:72
 msgid "Report for group and role selected"
@@ -2636,9 +2579,8 @@ msgid "Select which information you want to include"
 msgstr "Seleziona quali informazioni vuoi includere"
 
 #: GroupReports.php:121
-#, fuzzy
 msgid "Standard Info"
-msgstr "Informazioni standard"
+msgstr "Informazioni Standard"
 
 #: GroupReports.php:128 Reports/GroupReport.php:137
 msgid "Other Email"
@@ -2649,9 +2591,8 @@ msgid "GroupRole"
 msgstr "Ruolo di gruppo"
 
 #: GroupReports.php:133
-#, fuzzy
 msgid "Group-Specific Property Fields"
-msgstr "Proprietà specifiche del gruppo"
+msgstr "Campi proprietà specifiche del gruppo"
 
 #: PersonView.php:222
 msgid "Undefined"
@@ -2678,7 +2619,6 @@ msgid "Confirm Delete Group"
 msgstr "Conferma cancellazione Gruppo"
 
 #: GroupView.php:432
-#, fuzzy
 msgid "Please confirm deletion of this group record"
 msgstr "Per favore, conferma l'eliminazione di questa scheda di gruppo"
 
@@ -2699,27 +2639,22 @@ msgid "Add Group Members to Cart"
 msgstr "Aggiungi i componenti del gruppo al contenitore"
 
 #: GroupView.php:85
-#, fuzzy
 msgid "Map this group"
-msgstr "Modifca questo gruppo"
+msgstr "Mappa questo gruppo"
 
 #: GroupView.php:128
-#, fuzzy
 msgid "Email Group"
-msgstr "Tutti i Gruppi"
+msgstr "Gruppo email"
 
 #: GroupView.php:205
-#, fuzzy
 msgid "Total Members"
-msgstr "Membri totali"
+msgstr "Totale membri"
 
 #: GroupView.php:200
-#, fuzzy
 msgid "Default Role"
-msgstr "Ruolo predefinito"
+msgstr "Ruolo Predefinito"
 
 #: GroupView.php:231
-#, fuzzy
 msgid "Group-Specific Properties"
 msgstr "Proprietà specifiche del gruppo"
 
@@ -2728,7 +2663,6 @@ msgid "Disabled for this group."
 msgstr "Disabilitato per questo gruppo."
 
 #: FamilyView.php:440 GroupView.php:276 PersonView.php:424 PrintView.php:449
-#, fuzzy
 msgid "Assigned Properties"
 msgstr "Proprietà assegnate"
 
@@ -2766,9 +2700,8 @@ msgid "Letters and Mailing Labels"
 msgstr "Lettere e Etichette Postali"
 
 #: LettersAndLabels.php:79
-#, fuzzy
 msgid "Newsletter labels"
-msgstr "Crea le etichette"
+msgstr "Etichette della newsletter"
 
 #: LettersAndLabels.php:80
 msgid "Confirm data letter"
@@ -2807,18 +2740,16 @@ msgid "No Attendance Recorded"
 msgstr "No presenze registrati"
 
 #: ListEvents.php:235
-#, fuzzy
 msgid "Attendees"
-msgstr "Partecipanti ("
+msgstr "I partecipanti"
 
 #: ListEvents.php:309
 msgid " Monthly Averages"
 msgstr "Medie mensili"
 
 #: Login.php:41 Login.php:56
-#, fuzzy
 msgid "Invalid login or password"
-msgstr "Password non valida"
+msgstr "Login o Password non Validi"
 
 #: Login.php:44
 msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
@@ -2841,14 +2772,12 @@ msgid "Login"
 msgstr "Entra"
 
 #: ChurchCRM/Config/Menu/Menu.php:147 ManageEnvelopes.php:21
-#, fuzzy
 msgid "Envelope Manager"
-msgstr "Gestione buste per le donazioni"
+msgstr "Gestore di Buste"
 
 #: ManageEnvelopes.php:117
-#, fuzzy
 msgid "Update Family Records"
-msgstr "Aggiungi una nuova famiglia"
+msgstr "Aggiorna i registri Familiari"
 
 #: ManageEnvelopes.php:128
 msgid "Update Envelopes"
@@ -2864,14 +2793,12 @@ msgid "Sort by"
 msgstr "Ordina per"
 
 #: ManageEnvelopes.php:170
-#, fuzzy
 msgid "Zero"
-msgstr "Persona"
+msgstr "Zero"
 
 #: ManageEnvelopes.php:172
-#, fuzzy
 msgid "Assign starting at #"
-msgstr "Da assegnare:"
+msgstr "Assegna a Partire da #"
 
 #: MapUsingGoogle.php:32
 msgid "Unable to display map due to missing Church Latitude or Longitude. Please update the church Address in the settings menu."
@@ -2886,14 +2813,12 @@ msgid "Member Role Change"
 msgstr "Modifica ruolo"
 
 #: MemberRoleChange.php:84
-#, fuzzy
 msgid "Member's Name"
-msgstr "Nome del componente"
+msgstr "Nome dei Membri"
 
 #: MemberRoleChange.php:88
-#, fuzzy
 msgid "Current Role"
-msgstr "Ruolo attuale"
+msgstr "Ruolo Attuale"
 
 #: PeopleDashboard.php:82
 msgid "All People"
@@ -2922,9 +2847,8 @@ msgid "Family Geographic"
 msgstr "Famiglia geografica"
 
 #: PeopleDashboard.php:123
-#, fuzzy
 msgid "Update All Family Coordinates"
-msgstr "Visualizza tutte le famiglie"
+msgstr "Aggiorna tutte le coordinate Familiari"
 
 #: ChurchCRM/Config/Menu/Menu.php:75 PersonView.php:425
 msgid "Volunteer Opportunities"
@@ -3055,9 +2979,8 @@ msgid "Note Delete Confirmation"
 msgstr "Conferma eliminazione nota"
 
 #: NoteDelete.php:61
-#, fuzzy
 msgid "Please confirm deletion of this note"
-msgstr "Per favore, conferma l'eliminazione di questa nota"
+msgstr "Si prega di confermare la cancellazione di questa nota"
 
 #: NoteDelete.php:68 PropertyDelete.php:63 PropertyTypeDelete.php:68
 msgid "Yes, delete this record"
@@ -3127,42 +3050,36 @@ msgid " by that name already exists."
 msgstr " con questo nome esiste già."
 
 #: PaddleNumEditor.php:45
-#, fuzzy
 msgid "Buyer Number Editor"
-msgstr "Modifica utente"
+msgstr "Editor numero acquirente"
 
 #: PaddleNumEditor.php:148
-#, fuzzy
 msgid "Generate Statement"
-msgstr "Crea le etichette"
+msgstr "Genera Dichiarazione"
 
 #: PaddleNumList.php:33
 msgid "Buyers for this fundraiser:"
 msgstr "Gli acquirenti di questa raccolta fondi:"
 
 #: PaddleNumList.php:40
-#, fuzzy
 msgid "Select all"
-msgstr "Seleziona ruolo"
+msgstr "Seleziona tutto"
 
 #: PaddleNumList.php:42
-#, fuzzy
 msgid "Select none"
-msgstr "Seleziona ruolo"
+msgstr "Non selezionare niente"
 
 #: PaddleNumList.php:43
-#, fuzzy
 msgid "Add Buyer"
-msgstr "Aggiungi nuovo"
+msgstr "Aggiungi acquirente"
 
 #: PaddleNumList.php:44
 msgid "Generate Statements for Selected"
 msgstr "Genera Dichiarazioni selezionato per"
 
 #: PaddleNumList.php:52
-#, fuzzy
 msgid "Select"
-msgstr "Seleziona ruolo"
+msgstr "Selezionare"
 
 #: PersonCustomFieldsEditor.php:25
 msgid "Custom Person Fields Editor"
@@ -3189,9 +3106,8 @@ msgid "You must enter a Last Name if no Family is selected."
 msgstr "Devi inserire un cognome se non hai selezionato una famiglia."
 
 #: PersonEditor.php:224
-#, fuzzy
 msgid "Not a valid Friend Date"
-msgstr "Data non valida"
+msgstr "Data non valida per un amico"
 
 #: PersonEditor.php:236
 msgid "Not a valid Membership Date"
@@ -3234,7 +3150,7 @@ msgstr "Selezionare il mese\n"
 
 #: PersonEditor.php:732
 msgid "Birth Day"
-msgstr "Compleanno\n"
+msgstr "Giorno di Nascita\n"
 ""
 
 #: PersonEditor.php:734
@@ -3242,39 +3158,34 @@ msgid "Select Day"
 msgstr "Seleziona giorno"
 
 #: PersonEditor.php:749
-#, fuzzy
 msgid "Birth Year"
-msgstr "Anno di nascita"
+msgstr "anno di nascita"
 
 #: PersonEditor.php:762 Reports/ConfirmReport.php:185
 #: Reports/ConfirmReport.php:204
 #: external/templates/registration/family-register-members.php:120
-#, fuzzy
 msgid "Hide Age"
-msgstr "Nascondi dettagli"
+msgstr "Nascondi Età"
 
 #: PersonEditor.php:799
-#, fuzzy
 msgid "Create a new family (using last name)"
-msgstr "Crea nuova famiglia"
+msgstr "Crea una nuova Famiglia (usando il cognome)"
 
 #: PersonEditor.php:1127
 msgid "Membership Info"
 msgstr "Informazioni per l'iscrizione"
 
 #: PersonEditor.php:1167 PersonView.php:292
-#, fuzzy
 msgid "Friend Date"
-msgstr "Data matrimonio"
+msgstr "Data di Amicizia"
 
 #: PersonToGroup.php:51
 msgid "Add Person to Group"
 msgstr "Aggiungi la persona al gruppo"
 
 #: PersonToGroup.php:57
-#, fuzzy
 msgid "Select the group to add this person to"
-msgstr "Seleziona il gruppo a cui aggiungere questa persona"
+msgstr "Seleziona il gruppo per aggiungere questa persona a"
 
 #: PersonView.php:29
 msgid "Person Profile"
@@ -3293,9 +3204,8 @@ msgid "Printable Page"
 msgstr "Pagina stampabile"
 
 #: PersonView.php:384
-#, fuzzy
 msgid "Edit \"Why Came\" Notes"
-msgstr "Modifica questa nota"
+msgstr "Modifica note \"Perché è venuto\""
 
 #: PersonView.php:395
 msgid "Delete this Record"
@@ -3330,14 +3240,12 @@ msgid "Assign New Group"
 msgstr "Assegna nuovo gruppo"
 
 #: PersonView.php:781
-#, fuzzy
 msgid "No volunteer opportunity assignments."
-msgstr "Nessuna proprietà assegnata."
+msgstr "Nessun incarico di opportunità di volontariato."
 
 #: PersonView.php:824
-#, fuzzy
 msgid "Assign a New Volunteer Opportunity"
-msgstr "Assegna una nuova proprietà"
+msgstr "Assegna una nuova opportunità di volontariato"
 
 #: PledgeDetails.php:17
 msgid "Electronic Transaction Details"
@@ -3352,23 +3260,20 @@ msgid "At least one fund must have a non-zero amount."
 msgstr "Almeno un fondo deve avere un valore diverso da zero."
 
 #: ChurchCRM/Service/FinancialService.php:511 PledgeEditor.php:295
-#, fuzzy
 msgid "Must specify non-zero check number"
-msgstr "Devi inserire un numero di assegno valido."
+msgstr "Devi specificare un numero di controllo diverso da zero"
 
 #: ChurchCRM/Service/FinancialService.php:516 PledgeEditor.php:302
 msgid "Check number not valid for 'CASH' payment"
 msgstr "Numero di controllo non valida per il pagamento &#39;CASH&#39;"
 
 #: PledgeEditor.php:440
-#, fuzzy
 msgid "Pledge Editor"
-msgstr "Modifica persona"
+msgstr "Editor di pegno"
 
 #: PledgeEditor.php:442
-#, fuzzy
 msgid "Payment Editor: "
-msgstr "Modifica persona"
+msgstr "Editor di pagamento:"
 
 #: PledgeEditor.php:442
 msgid " Deposit Slip #"
@@ -3391,49 +3296,42 @@ msgid "Deposit closed"
 msgstr "Deposito chiuso"
 
 #: PledgeEditor.php:529
-#, fuzzy
 msgid "Find family->"
-msgstr " famiglia)"
+msgstr "Trova Famiglia->"
 
 #: PledgeEditor.php:539
-#, fuzzy
 msgid "Payment Schedule"
-msgstr "Forma di pagamento:"
+msgstr "Programma di pagamento"
 
 #: PledgeEditor.php:541
-#, fuzzy
 msgid "Select Schedule"
-msgstr "Seleziona sesso"
+msgstr "Seleziona Programma"
 
 #: EventNames.php:168 PledgeEditor.php:544
 msgid "Weekly"
 msgstr "Settimanale"
 
 #: EventNames.php:184 PledgeEditor.php:548
-#, fuzzy
 msgid "Monthly"
-msgstr "Mese"
+msgstr "Mensile"
 
 #: PledgeEditor.php:552
 msgid "Quarterly"
 msgstr "Trimestrale"
 
 #: PledgeEditor.php:556
-#, fuzzy
 msgid "Once"
-msgstr "Annulla"
+msgstr "Una volta"
 
 #: ChurchCRM/Dashboard/PersonDemographicDashboardItem.php:32
 #: ChurchCRM/Dashboard/PersonDemographicDashboardItem.php:49
 #: PledgeEditor.php:560
-#, fuzzy
 msgid "Other"
-msgstr "Ottobre"
+msgstr "Altro"
 
 #: PledgeEditor.php:571
-#, fuzzy
 msgid "Payment by"
-msgstr "Forma di pagamento:"
+msgstr "Pagamento da"
 
 #: PledgeEditor.php:634
 msgid "Choose online payment method"
@@ -3448,9 +3346,8 @@ msgid "Bank account "
 msgstr "Conto corrente bancario"
 
 #: PledgeEditor.php:669
-#, fuzzy
 msgid "Scan check"
-msgstr "assegno"
+msgstr "Controllo scansione"
 
 #: PledgeEditor.php:678
 msgid "find family from check account #"
@@ -3461,9 +3358,8 @@ msgid "Set default check account number for family"
 msgstr "Imposta controllo numero predefinito conto per la famiglia"
 
 #: PledgeEditor.php:713
-#, fuzzy
 msgid "Fund Name"
-msgstr "Nome del gruppo"
+msgstr "Nome del fondo"
 
 #: PledgeEditor.php:718
 msgid "Non-deductible amount"
@@ -3480,9 +3376,8 @@ msgid "Age"
 msgstr "Età"
 
 #: PersonView.php:423 PrintView.php:377
-#, fuzzy
 msgid "Assigned Groups"
-msgstr "Gruppi assegnati"
+msgstr "Gruppi Assegnati"
 
 #: MemberRoleChange.php:80 PrintView.php:392
 msgid "Group Name"
@@ -3509,18 +3404,16 @@ msgid " Property Assignment"
 msgstr " Assegnazione proprietà"
 
 #: PropertyAssign.php:171
-#, fuzzy
 msgid "Assigning"
-msgstr "Da assegnare"
+msgstr "Assegnazione"
 
 #: PropertyDelete.php:24
 msgid "Property Delete Confirmation"
 msgstr "Conferma eliminazione proprietà"
 
 #: PropertyDelete.php:51
-#, fuzzy
 msgid "Please confirm deletion of this property"
-msgstr "Per favore, conferma l'eliminazione di questa proprietà"
+msgstr "Si prega di confermare la cancellazione di questa proprietà"
 
 #: PropertyDelete.php:59
 msgid "Deleting this Property will also delete all assignments of this Property to any People, Family, or Group records."
@@ -3536,9 +3429,8 @@ msgid "Property Editor"
 msgstr "Modifica proprietà"
 
 #: PropertyEditor.php:77
-#, fuzzy
 msgid "You must select a type"
-msgstr "Devi inserire un tipo"
+msgstr "Devi selezionare un Tipo"
 
 #: PropertyEditor.php:131
 msgid "Select Property Type"
@@ -3589,9 +3481,8 @@ msgid "it and lose any corresponding property assignments."
 msgstr "e perderai tutti gli assegnamenti di proprietà corrispondenti."
 
 #: PropertyTypeDelete.php:64
-#, fuzzy
 msgid "Please confirm deletion of this Property Type"
-msgstr "Per favore, conferma l'eliminazione di questo tipo di proprietà"
+msgstr "Si prega di confermare la cancellazione di questo Tipo di proprietà"
 
 #: PropertyTypeEditor.php:25
 msgid "Property Type Editor"
@@ -3732,7 +3623,6 @@ msgid "This information is used only to track the usage of this software.  "
 msgstr "Queste informazioni vengono utilizzate solo per monitorare l&#39;utilizzo di questo software."
 
 #: Register.php:55
-#, fuzzy
 msgid "Send"
 msgstr "Inviare"
 
@@ -3765,9 +3655,8 @@ msgid "Sorry, there are records of donations from this family. This family may n
 msgstr "Spiacenti, non ci sono record di donazioni da questa famiglia. Questa famiglia non può essere eliminato."
 
 #: SelectDelete.php:145
-#, fuzzy
 msgid "Return to Family View"
-msgstr "Ritorna alla scheda personale"
+msgstr "Ritorna a Family View"
 
 #: SelectDelete.php:149
 msgid "WARNING: This family has records of donations and may NOT be deleted until these donations are associated with another family."
@@ -3818,7 +3707,6 @@ msgid "Show people <b>not</b> in this group type:"
 msgstr "Visualizza le persona <b>non</b> appartenenti a questo tipo di gruppo:"
 
 #: SelectList.php:516
-#, fuzzy
 msgid "Sort order"
 msgstr "Ordinamento"
 
@@ -3847,19 +3735,16 @@ msgid "Male & Female"
 msgstr "Maschio & Femmina"
 
 #: SelectList.php:570
-#, fuzzy
 msgid "All Classifications"
-msgstr "Classificazioni"
+msgstr "Tutte le classificazioni"
 
 #: SelectList.php:596
-#, fuzzy
 msgid "All Family Roles"
-msgstr "Ruolo famigliare:"
+msgstr "Tutti i ruoli Familiari"
 
 #: SelectList.php:622
-#, fuzzy
 msgid "All Contact Properties"
-msgstr "Proprietà dei gruppi"
+msgstr "Tutte le proprietà del contatto"
 
 #: SelectList.php:654
 msgid "All Group Types"
@@ -3870,9 +3755,8 @@ msgid "All Groups"
 msgstr "Tutti i Gruppi"
 
 #: SelectList.php:743
-#, fuzzy
 msgid "All Roles"
-msgstr "Tutti i Gruppi"
+msgstr "Tutti i ruoli"
 
 #: SelectList.php:768
 msgid "Listing"
@@ -3891,40 +3775,34 @@ msgid "Print"
 msgstr "Stampa"
 
 #: SettingsIndividual.php:86
-#, fuzzy
 msgid "My User Settings"
-msgstr "Lista utenti"
+msgstr "Le mie impostazioni utente"
 
 #: SettingsIndividual.php:98 SettingsUser.php:85 SystemSettings.php:139
 #: UserEditor.php:478
-#, fuzzy
 msgid "Variable name"
-msgstr "Pagina stampabile"
+msgstr "Nome variabile"
 
 #: SettingsIndividual.php:99 SettingsUser.php:86 UserEditor.php:479
-#, fuzzy
 msgid "Current Value"
-msgstr "Ruolo attuale:"
+msgstr "Valore corrente"
 
 #: SettingsIndividual.php:113 SettingsIndividual.php:159 SettingsUser.php:98
 #: SettingsUser.php:159 SystemSettings.php:256 UserEditor.php:561
-#, fuzzy
 msgid "Save Settings"
-msgstr "Salva le modifiche"
+msgstr "Salva le impostazioni"
 
 #: SettingsUser.php:68
-#, fuzzy
 msgid "Default User Settings"
-msgstr "Opzione predefinita"
+msgstr "Impostazioni utente predefinite"
 
 #: SettingsUser.php:80
 msgid "Set Permission True to give new users the ability to change their current value.<BR>"
 msgstr "Impostare vera autorizzazione per offrire agli utenti nuovi la possibilità di cambiare il loro valore attuale. <BR>"
 
 #: SettingsUser.php:84 UserEditor.php:477
-#, fuzzy
 msgid "Permission"
-msgstr "Permessi"
+msgstr "Autorizzazione"
 
 #: Register.php:49
 msgid "Base URL"
@@ -3935,14 +3813,12 @@ msgid "System Settings"
 msgstr "Impostazioni di sistema"
 
 #: TaxReport.php:29
-#, fuzzy
 msgid "Tax Report"
-msgstr "Rapporti"
+msgstr "Rapporto fiscale"
 
 #: TaxReport.php:45
-#, fuzzy
 msgid "Calendar Year"
-msgstr "Anno non valido"
+msgstr "Anno civile"
 
 #: USISTAddressVerification.php:47
 msgid "US Address Verification"
@@ -3969,60 +3845,49 @@ msgid "Note: Changes will not take effect until next logon."
 msgstr "Nota: Le modifiche non avranno effetto fino al prossimo riavvio."
 
 #: UserEditor.php:344
-#, fuzzy
 msgid "Person to Make User"
-msgstr "Crea utente da persona"
+msgstr "Persona da Rendere Utente"
 
 #: UserEditor.php:364 api/routes/public/public-user.php:51
 #: v2/templates/admin/user.php:10
-#, fuzzy
 msgid "User"
 msgstr "Utente"
 
 #: UserEditor.php:380 external/templates/password/enter-username.php:30
-#, fuzzy
 msgid "Login Name"
-msgstr "Nome donatore"
+msgstr "Nome di Login"
 
 #: UserEditor.php:385
-#, fuzzy
 msgid "Add Records"
-msgstr "Aggiungi schede"
+msgstr "Aggiungi Record"
 
 #: UserEditor.php:392
-#, fuzzy
 msgid "Edit Records"
-msgstr "Modifica schede"
+msgstr "Modifica Record"
 
 #: UserEditor.php:399
-#, fuzzy
 msgid "Delete Records"
-msgstr "Elimina schede"
+msgstr "Elimina Record"
 
 #: UserEditor.php:406
-#, fuzzy
 msgid "Manage Properties and Classifications"
-msgstr "Gestiione proprietà e classificazioni"
+msgstr "Gestisci proprietà e classificazioni"
 
 #: UserEditor.php:413
-#, fuzzy
 msgid "Manage Groups and Roles"
-msgstr "Gestione gruppi e ruoli"
+msgstr "Gestisci gruppi e ruoli"
 
 #: UserEditor.php:420
-#, fuzzy
 msgid "Manage Donations and Finance"
-msgstr "Gestisci donazioni e finanze"
+msgstr "Gestisci donazioni e finanza"
 
 #: UserEditor.php:427
-#, fuzzy
 msgid "View, Add and Edit Notes"
 msgstr "Visualizza, aggiungi e modifica note"
 
 #: UserEditor.php:434
-#, fuzzy
 msgid "Edit Self"
-msgstr "Modifica utente"
+msgstr "Modifica Te Stesso"
 
 #: UserEditor.php:437
 msgid "(Edit own family only.)"
@@ -4035,16 +3900,14 @@ msgstr "(Canvass volontario.)"
 #: ChurchCRM/Config/Menu/Menu.php:68 ChurchCRM/Config/Menu/Menu.php:105
 #: ChurchCRM/Config/Menu/Menu.php:146 ChurchCRM/Config/Menu/Menu.php:192
 #: UserEditor.php:446
-#, fuzzy
 msgid "Admin"
-msgstr "Amministrazione"
+msgstr "Admin"
 
 #: UserEditor.php:449
 msgid "(Grants all privileges.)"
 msgstr "(garantisci tutti i privilegi.)"
 
 #: UserEditor.php:452
-#, fuzzy
 msgid "Style"
 msgstr "Stile"
 
@@ -4134,31 +3997,26 @@ msgid "Enter a new password for this user."
 msgstr "Inserisci una nuova password per questo utente."
 
 #: UserPasswordChange.php:196
-#, fuzzy
 msgid "Old Password"
-msgstr "Vecchia password"
+msgstr "Vecchia Password"
 
 #: ChurchCRM/Emails/users/NewAccountEmail.php:30
 #: ChurchCRM/Emails/users/PasswordChangeEmail.php:29
 #: ChurchCRM/Emails/users/ResetPasswordEmail.php:29 UserPasswordChange.php:202
-#, fuzzy
 msgid "New Password"
-msgstr "Nuova password"
+msgstr "Nuova Password"
 
 #: UserPasswordChange.php:206
-#, fuzzy
 msgid "Confirm New Password"
-msgstr "Conferma nuova password"
+msgstr "Conferma la Nuova Password"
 
 #: UserList.php:170
-#, fuzzy
 msgid "Please confirm the password reset of this user"
 msgstr "Per favore, conferma l'azzeramento della password per questo utente"
 
 #: VolunteerOpportunityEditor.php:69
-#, fuzzy
 msgid "Volunteer Opportunity Delete Confirmation"
-msgstr "Conferma eliminazione proprietà"
+msgstr "Conferma cancellazione opportunità volontarie"
 
 #: VolunteerOpportunityEditor.php:99
 msgid "There are people assigned to this Volunteer Opportunity."
@@ -4169,27 +4027,24 @@ msgid "Volunteer Opportunity will be unassigned for the following people."
 msgstr "Opportunità di volontariato sarà assegnato per le seguenti persone."
 
 #: VolunteerOpportunityEditor.php:109
-#, fuzzy
 msgid "Yes, delete this Volunteer Opportunity"
-msgstr "Sì, elimina questo record"
+msgstr "Sì, elimina questa opportunità di volontariato"
 
 #: VolunteerOpportunityEditor.php:194
 msgid "Volunteer Opportunity Editor"
 msgstr "Volontariato Editor Opportunità"
 
 #: VolunteerOpportunityEditor.php:283
-#, fuzzy
 msgid "No volunteer opportunities have been added yet"
-msgstr "Nessuna proprietà è ancora stata aggiunta"
+msgstr "Non sono state ancora aggiunte opportunità di volontariato"
 
 #: VolunteerOpportunityEditor.php:332
 msgid "NOTE: ADD, Delete, and Ordering changes are immediate.  Changes to Name or Desc fields must be saved by pressing 'Save Changes'"
 msgstr "NOTA: aggiungere, eliminare, e le modifiche di ordinazione sono immediati. Modifiche a Nome o campi decrescente deve essere salvato premendo &#39;Salva modifiche&#39;"
 
 #: VolunteerOpportunityEditor.php:434
-#, fuzzy
 msgid "Add New Opportunity"
-msgstr "Aggiungi un nuovo fondo"
+msgstr "Aggiungi una nuova opportunità"
 
 #: WhyCameEditor.php:32
 msgid "\"Why Came\" notes for "
@@ -4220,14 +4075,12 @@ msgid "Re-import to selected family"
 msgstr "Re-importazione famiglia selezionata"
 
 #: eGive.php:356
-#, fuzzy
 msgid "Data import results: "
-msgstr "Dati importati con successo."
+msgstr "Risultati dell'importazione dei dati:"
 
 #: eGive.php:356
-#, fuzzy
 msgid " gifts were imported, "
-msgstr "persone sono state importate"
+msgstr " i regali sono stati importati,"
 
 #: eGive.php:356
 msgid " gifts unchanged, and "
@@ -4338,14 +4191,12 @@ msgid "Failed to email PDF to family members."
 msgstr "Impossibile inviare per e-mail PDF ai membri della famiglia."
 
 #: Include/Functions.php:130
-#, fuzzy
 msgid "Group successfully added to the Cart."
-msgstr "Scheda selezionata aggiunta con successo al contenitore."
+msgstr "Gruppo aggiunto con successo al carrello."
 
 #: Include/Functions.php:136
-#, fuzzy
 msgid "Group successfully removed from the Cart."
-msgstr "Scheda selezionata rimossa con successo dal contenitore."
+msgstr "Gruppo rimosso con successo dal carrello."
 
 #: Include/Functions.php:140
 msgid "Profile Image successfully removed."
@@ -4364,27 +4215,24 @@ msgid "Selected record successfully removed from the Cart."
 msgstr "Scheda selezionata rimossa con successo dal contenitore."
 
 #: api/routes/cart.php:56
-#, fuzzy
 msgid "Your cart has been successfully emptied"
-msgstr "Il tuo contenitore è stato svuotato con successo"
+msgstr "Il tuo carrello è stato svuotato con successo"
 
 #: Include/Functions.php:173
 msgid "item(s) added to the Cart."
 msgstr "componenti aggiunti al contenitore."
 
 #: Include/Functions.php:198
-#, fuzzy
 msgid "Select Fiscal Year"
-msgstr "Seleziona un gruppo"
+msgstr "Seleziona Anno fiscale"
 
 #: Include/Functions.php:427
 msgid "pm"
 msgstr "pm"
 
 #: Include/Functions.php:432
-#, fuzzy
 msgid "am"
-msgstr "Nome"
+msgstr "sono"
 
 #: ChurchCRM/model/ChurchCRM/Person.php:478 ChurchCRM/utils/MiscUtils.php:78
 msgid "yrs old"
@@ -4516,12 +4364,10 @@ msgid "Home"
 msgstr "Casa"
 
 #: Include/LabelFunctions.php:42
-#, fuzzy
 msgid "Font"
-msgstr "Cifra"
+msgstr "Font"
 
 #: Include/LabelFunctions.php:80
-#, fuzzy
 msgid "Label Type"
 msgstr "Tipo di etichetta"
 
@@ -4538,29 +4384,24 @@ msgid "Grouped by Family"
 msgstr "Per famiglia"
 
 #: Include/LabelFunctions.php:117
-#, fuzzy
 msgid "To the parents of"
-msgstr "Per i genitori di"
+msgstr "Ai genitori di"
 
 #: Include/LabelFunctions.php:133
-#, fuzzy
 msgid "Start Row"
-msgstr "Riga iniziale"
+msgstr "Inizia riga"
 
 #: Include/LabelFunctions.php:140
-#, fuzzy
 msgid "Start Column"
-msgstr "Colonna iniziale"
+msgstr "Inizia colonna"
 
 #: Include/LabelFunctions.php:152
-#, fuzzy
 msgid "Ignore Incomplete<br>Addresses"
-msgstr "Ignora gli indirizzi<br>incompleti"
+msgstr "Ignora indirizzi web incompleti"
 
 #: Include/LabelFunctions.php:164
-#, fuzzy
 msgid "File Type"
-msgstr "Tipo"
+msgstr "Tipo di file"
 
 #: Reports/AdvancedDeposit.php:386 Reports/AdvancedDeposit.php:404
 #: Reports/AdvancedDeposit.php:493 Reports/AdvancedDeposit.php:507
@@ -4569,9 +4410,8 @@ msgstr "Tipo"
 #: Reports/AdvancedDeposit.php:710 Reports/AdvancedDeposit.php:728
 #: Reports/AdvancedDeposit.php:817 Reports/AdvancedDeposit.php:831
 #: Reports/AdvancedDeposit.php:848
-#, fuzzy
 msgid "items"
-msgstr "Filtri"
+msgstr "elementi"
 
 #: Reports/CanvassReports.php:204
 msgid "Did not pledge"
@@ -4593,14 +4433,12 @@ msgstr "M / F"
 
 #: Reports/ClassAttendance.php:151 Reports/ClassAttendance.php:152
 #: Reports/ClassList.php:134 Reports/ClassList.php:135
-#, fuzzy
 msgid "Liaison"
-msgstr "Stagione"
+msgstr "Collegamento"
 
 #: Reports/ConfirmReport.php:130 Reports/ConfirmReportEmail.php:135
-#, fuzzy
 msgid "City, State, Zip"
-msgstr "Città, Provincia CAP"
+msgstr "Città stato CAP"
 
 #: FamilyEditor.php:781 FamilyView.php:234 Reports/ConfirmReport.php:140
 #: Reports/ConfirmReportEmail.php:145
@@ -4611,9 +4449,8 @@ msgstr "Invia Newsletter"
 
 #: Reports/ConfirmReport.php:180 Reports/ConfirmReport.php:199
 #: Reports/ConfirmReportEmail.php:188 Reports/ConfirmReportEmail.php:206
-#, fuzzy
 msgid "Member Name"
-msgstr "Nome del componente:"
+msgstr "Nome del membro"
 
 #: Reports/ConfirmReport.php:182 Reports/ConfirmReport.php:201
 #: Reports/ConfirmReportEmail.php:190 Reports/ConfirmReportEmail.php:208
@@ -4622,15 +4459,13 @@ msgstr "Adulto / Bambino"
 
 #: FamilyList.php:47 GroupReports.php:126 Reports/CanvassReports.php:242
 #: Reports/ConfirmReportEmail.php:193 Reports/ConfirmReportEmail.php:211
-#, fuzzy
 msgid "Cell Phone"
-msgstr "Telefono cellulare"
+msgstr "Cellulare"
 
 #: Reports/ConfirmReport.php:187 Reports/ConfirmReport.php:206
 #: Reports/ConfirmReportEmail.php:194 Reports/ConfirmReportEmail.php:212
-#, fuzzy
 msgid "Member/Friend"
-msgstr "Membro"
+msgstr "Utente / Amico"
 
 #: Reports/DirectoryReport.php:179
 msgid "This option requires at least version 3.22 of MySQL!  Hit browser back button to return to ChurchCRM."
@@ -4653,20 +4488,17 @@ msgstr "Cella"
 
 #: Reports/FRBidSheets.php:75 Reports/FRCatalog.php:98
 #: Reports/FRCertificates.php:45
-#, fuzzy
 msgid "Estimated value "
-msgstr "Modifica valore"
+msgstr "Valore stimato"
 
 #: Reports/FRBidSheets.php:78 Reports/FRCatalog.php:101
 #: Reports/FRCertificates.php:48
-#, fuzzy
 msgid "Donated by "
-msgstr "Donazioni per fondo"
+msgstr "Donato da"
 
 #: Reports/FRBidSheets.php:89
-#, fuzzy
 msgid "Paddle"
-msgstr "Secondo nome"
+msgstr "Pagaia"
 
 #: Reports/FRBidSheets.php:90
 msgid "Bid"
@@ -4677,9 +4509,8 @@ msgid "Minimum bid "
 msgstr "Offerta minima"
 
 #: Reports/FamilyPledgeSummary.php:143 Reports/ReminderReport.php:154
-#, fuzzy
 msgid "All Funds"
-msgstr "Tutti i Gruppi"
+msgstr "Tutti i fondi"
 
 #: Reports/FamilyPledgeSummary.php:144 Reports/ReminderReport.php:155
 msgid " for all funds"
@@ -4694,9 +4525,8 @@ msgid "for funds "
 msgstr "per i fondi"
 
 #: Reports/FundRaiserStatement.php:92
-#, fuzzy
 msgid "Donated Items:"
-msgstr "Data della donazione:"
+msgstr "Articoli donati:"
 
 #: Reports/FundRaiserStatement.php:143
 msgid "Purchased Items:"
@@ -4723,9 +4553,8 @@ msgid "                                        Signature _______________________
 msgstr "Firma ________________________________________________________________"
 
 #: ChurchCRM/Reports/PDF_Attendance.php:179
-#, fuzzy
 msgid "Totals"
-msgstr "Totale"
+msgstr "Totali"
 
 #: ChurchCRM/Reports/PDF_CertificatesReport.php:30
 msgid "Certificate of Ownership"
@@ -4761,14 +4590,12 @@ msgid "Please mail you next gift to "
 msgstr "Si prega di posta ti regalo accanto a"
 
 #: Reports/TaxReport.php:282
-#, fuzzy
 msgid "Gift Amount:"
-msgstr "Cifra:"
+msgstr "Importo del regalo:"
 
 #: Reports/TaxReport.php:285
-#, fuzzy
 msgid "Gift Designation:"
-msgstr "Descrizione:"
+msgstr "Designazione del regalo:"
 
 #: ChurchCRM/Config/Menu/Menu.php:116 GroupEditor.php:108
 #: sundayschool/SundaySchoolClassView.php:39
@@ -4807,7 +4634,7 @@ msgstr "Stato rapido"
 
 #: sundayschool/SundaySchoolClassView.php:164
 msgid "Birthdays by Month"
-msgstr "Compleanno Madre"
+msgstr "Compleanni per Mese"
 
 #: Reports/ClassAttendance.php:172 Reports/PhotoBook.php:66
 #: sundayschool/SundaySchoolClassView.php:193
@@ -4913,9 +4740,8 @@ msgid "Report Details"
 msgstr "Segnala dettagli"
 
 #: sundayschool/SundaySchoolReports.php:186
-#, fuzzy
 msgid "To select multiple hold CTL"
-msgstr "Per la selezione multipla tieni premuto CTRL"
+msgstr "Per selezionare più tratti CTL"
 
 #: sundayschool/SundaySchoolReports.php:195
 msgid "Multiple groups will have a Page Break between Groups<br>"
@@ -4926,14 +4752,12 @@ msgid "List all Roles (unchecked will list Teacher/Student roles only)"
 msgstr "Elenca tutti i ruoli (deselezionata, elencherà solo i ruoli insegnante / studente)"
 
 #: sundayschool/SundaySchoolReports.php:212
-#, fuzzy
 msgid "First Sunday"
 msgstr "Prima Domenica"
 
 #: sundayschool/SundaySchoolReports.php:217
-#, fuzzy
 msgid "Last Sunday"
-msgstr "Ultima Domenica"
+msgstr "Domenica scorsa"
 
 #: sundayschool/SundaySchoolReports.php:222
 #: sundayschool/SundaySchoolReports.php:227
@@ -4943,24 +4767,20 @@ msgstr "Ultima Domenica"
 #: sundayschool/SundaySchoolReports.php:247
 #: sundayschool/SundaySchoolReports.php:252
 #: sundayschool/SundaySchoolReports.php:257
-#, fuzzy
 msgid "No Sunday School"
 msgstr "Nessuna Scuola Domenicale"
 
 #: sundayschool/SundaySchoolReports.php:262
-#, fuzzy
 msgid "Extra Students"
-msgstr "Studenti Extra"
+msgstr "Studenti extra"
 
 #: sundayschool/SundaySchoolReports.php:266
-#, fuzzy
 msgid "Extra Teachers"
 msgstr "Insegnanti extra"
 
 #: sundayschool/SundaySchoolReports.php:275
-#, fuzzy
 msgid "Create Class List"
-msgstr "Crea vCard"
+msgstr "Crea un elenco di classi"
 
 #: sundayschool/SundaySchoolReports.php:278
 msgid "Create Attendance Sheet"
@@ -8677,7 +8497,7 @@ msgstr "Memorizza i dati personali presso Vanco"
 
 #: CartView.php:171
 msgid "Text Cart"
-msgstr "Carrello di testo"
+msgstr "SMS da Carrello"
 
 #: ChurchCRM/dto/SystemConfig.php:190
 msgid "Your Church's Website"
@@ -9207,7 +9027,7 @@ msgstr "Profilo"
 
 #: Include/Header.php:119
 msgid "Sign out"
-msgstr "disconnessione"
+msgstr "ESCI"
 
 #: ListEvents.php:254
 msgid "Sermon Text"
@@ -9442,9 +9262,8 @@ msgid "User must have MenuOptions permission"
 msgstr "L'utente deve disporre dell'autorizzazione MenuOptions"
 
 #: FamilyView.php:170
-#, fuzzy
 msgid "Try out the Beta family view"
-msgstr "Prova la nostra visione della famiglia Beta"
+msgstr "Prova la visualizzazione della Famiglia Beta"
 
 #: v2/routes/email.php:60
 msgid "SMTP Host is not setup, please visit the settings page"
@@ -9663,4 +9482,108 @@ msgstr "Funzioni di posta elettronica"
 #: v2/templates/email/dashboard.php:18
 msgid "Debug"
 msgstr "Debug"
+
+#: ChurchCRM/Config/Menu/Menu.php:72
+msgid "Family Custom Fields"
+msgstr "Campi personalizzati familiari"
+
+#: ChurchCRM/Config/Menu/Menu.php:74
+msgid "Person Custom Fields"
+msgstr "Campi personalizzati persona"
+
+#: ChurchCRM/Config/Menu/Menu.php:148
+msgid "Donation Funds"
+msgstr "Fondi di donazione"
+
+#: ChurchCRM/SQLUtils.php:22
+msgid "Unable to open file"
+msgstr "Impossibile aprire il file"
+
+#: ChurchCRM/Service/UpgradeService.php:50
+msgid "Invalid upgrade file specified"
+msgstr "File di aggiornamento non valido"
+
+#: ChurchCRM/Service/UpgradeService.php:60
+msgid "Failure executing upgrade script"
+msgstr "Errore durante l'esecuzione dello script di aggiornamento"
+
+#: ChurchCRM/Service/UpgradeService.php:70
+msgid "Databse upgrade failed"
+msgstr "Aggiornamento Database fallito"
+
+#: ChurchCRM/Slim/Middleware/AuthMiddleware.php:23
+msgid "logged via API Key."
+msgstr "registrato tramite chiave API."
+
+#: ChurchCRM/Slim/Middleware/AuthMiddleware.php:26
+msgid "logged via InValid API Key."
+msgstr "registrato tramite chiave API InValid."
+
+#: ChurchCRM/Slim/Middleware/PublicCalendarAPIMiddleware.php:26
+msgid "Missing calendar access token"
+msgstr "Gettone di accesso al calendario mancante"
+
+#: ChurchCRM/Slim/Middleware/PublicCalendarAPIMiddleware.php:33
+msgid "Calendar access token not found"
+msgstr "Gettone di accesso al calendario non trovato"
+
+#: ChurchCRM/Slim/Middleware/Role/DeleteRecordRoleAuthMiddleware.php:14
+msgid "User must have Delete Records permission"
+msgstr "L'utente deve disporre dell'autorizzazione Elimina record"
+
+#: ChurchCRM/dto/SystemConfig.php:232
+msgid "ChurchCRM Central Notifications URL"
+msgstr "URL delle notifiche Central di ChurchCRM"
+
+#: Include/Footer.php:27
+msgid "Follow us on Twitter"
+msgstr "Seguici su Twitter"
+
+#: api/routes/calendar/events.php:128
+msgid "invalid event type id"
+msgstr "ID del tipo di evento non valido"
+
+#: api/routes/calendar/events.php:135
+msgid "invalid calendar pinning"
+msgstr "Appunto del calendario non valido"
+
+#: api/routes/people/people-families.php:128
+#: api/routes/people/people-families.php:140
+#: api/routes/people/people-families.php:194
+msgid "FamilyId"
+msgstr "ID Famiglia"
+
+#: api/routes/people/people-groups.php:247
+#: api/routes/people/people-groups.php:264
+msgid "invalid group id"
+msgstr "ID di gruppo non valido"
+
+#: api/routes/people/people-groups.php:251
+msgid "invalid status value"
+msgstr "valore di stato non valido"
+
+#: api/routes/people/people-groups.php:268
+msgid "invalid export value"
+msgstr "valore di esportazione non valido"
+
+#: api/routes/public/public-user.php:27
+msgid "Invalid User/Password"
+msgstr "Utente non valido / password"
+
+#: api/routes/users.php:28 api/routes/users.php:44 api/routes/users.php:62
+#: api/routes/users.php:82
+msgid "Bad userId"
+msgstr "ID utente errato"
+
+#: v2/templates/email/dashboard.php:16
+msgid "Find Duplicate Emails"
+msgstr "Trova email duplicate"
+
+#: v2/templates/email/duplicate.php:14
+msgid "Duplicate Emails"
+msgstr "Email duplicate"
+
+#: 
+msgid "HTML URL"
+msgstr "URL HTML"
 
