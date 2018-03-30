@@ -379,7 +379,7 @@ class SystemService
 
     public function downloadLatestRelease()
     {
-        $release = $this->getLatestRelese();
+        $release = $this->getLatestRelease();
         $UpgradeDir = SystemURLs::getDocumentRoot() . '/Upgrade';
         foreach ($release['assets'] as $asset) {
             if ($asset['name'] == "ChurchCRM-" . $release['name'] . ".zip") {
