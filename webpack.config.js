@@ -1,9 +1,11 @@
 const path = require('path');
 module.exports = {
-  entry:'./src/react/admin.js',
+  entry: {
+    'calendar-event-editor' : './src/react/calendar-event-editor.js'
+  },
   output: {
-    path:path.resolve('./src/skin/js'),
-    filename:'react-app.js'
+    path:path.resolve('./src/skin/js-react'),
+    filename:'[name]-app.js'
   },
   module: {
     rules: [
