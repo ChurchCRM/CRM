@@ -21,6 +21,7 @@ $container['cache'] = function () {
 // Add middleware to the application
 $app = new App($container);
 
+# Add middleware - executed in reverse order of appearing here.
 $app->add(new VersionMiddleware());
 $app->add(new AuthMiddleware());
 
@@ -37,12 +38,11 @@ require __DIR__ . '/routes/finance/finance-deposits.php';
 require __DIR__ . '/routes/finance/finance-payments.php';
 
 // People (families / persons)
-require __DIR__ . '/routes/people/people-email.php';
 require __DIR__ . '/routes/people/people-families.php';
 require __DIR__ . '/routes/people/people-groups.php';
+require __DIR__ . '/routes/people/people-person.php';
 require __DIR__ . '/routes/people/people-persons.php';
 require __DIR__ . '/routes/people/people-properties.php';
-require __DIR__ . '/routes/people/people-roles.php';
 
 // Public
 require __DIR__ . '/routes/public/public.php';
