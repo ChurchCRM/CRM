@@ -51,61 +51,6 @@ $app->group('/persons', function () {
         return $response->withJson(MenuEventsCount::getNumberBirthDates());
     });
 
-    $this->get('/{personId:[0-9]+}/photo', function ($request, $response, $args) {
-        $res = $this->cache->withExpires($response, MiscUtils::getPhotoCacheExpirationTimestamp());
-        $photo = new Photo("Person", $args['personId']);
-        return $res->write($photo->getPhotoBytes())->withHeader('Content-type', $photo->getPhotoContentType());
-
-    });
-
-    $this->get('/{personId:[0-9]+}/thumbnail', function ($request, $response, $args) {
-        $res = $this->cache->withExpires($response, MiscUtils::getPhotoCacheExpirationTimestamp());
-        $photo = new Photo("Person", $args['personId']);
-        return $res->write($photo->getThumbnailBytes())->withHeader('Content-type', $photo->getThumbnailContentType());
-    });
-
-    $this->post('/{personId:[0-9]+}/photo', function ($request, $response, $args) {
-        $input = (object)$request->getParsedBody();
-        $person = PersonQuery::create()->findPk($args['personId']);
-        $person->setImageFromBase64($input->imgBase64);
-        $response->withJSON(array("status" => "success"));
-    });
-
-    $this->delete('/{personId:[0-9]+}/photo', function ($request, $response, $args) {
-        $person = PersonQuery::create()->findPk($args['personId']);
-        return json_encode(array("status" => $person->deletePhoto()));
-    });
-
-    $this->post('/{personId:[0-9]+}/addToCart', function ($request, $response, $args) {
-        Cart::AddPerson($args['personId']);
-    });
-
-    /**
-     * @var $response \Psr\Http\Message\ResponseInterface
-     */
-    $this->delete('/{personId:[0-9]+}', function ($request, $response, $args) {
-        /**
-         * @var \ChurchCRM\User $sessionUser
-         */
-        $sessionUser = $_SESSION['user'];
-        if (!$sessionUser->isDeleteRecordsEnabled()) {
-            return $response->withStatus(403);
-        }
-        $personId = $args['personId'];
-        if ($sessionUser->getId() == $personId) {
-            return $response->withStatus(403);
-        }
-        $person = PersonQuery::create()->findPk($personId);
-        if (is_null($person)) {
-            return $response->withStatus(404);
-        }
-
-        $person->delete();
-
-        return $response->withJSON(array("status" => "success"));
-
-    });
-
     $this->get('/self-register', function ($request, $response, $args) {
         $people = PersonQuery::create()
             ->filterByEnteredBy(Person::SELF_REGISTER)
@@ -125,11 +70,6 @@ function getAllRolesAPI(Request $request, Response $response, array $p_args)
 
 /**
  * A method that review dup emails in the db and returns families and people where that email is used.
- *
- * @param \Slim\Http\Request $p_request The request.
- * @param \Slim\Http\Response $p_response The response.
- * @param array $p_args Arguments
- * @return \Slim\Http\Response The augmented response.
  */
 function getEmailDupesAPI(Request $request, Response $response, array $args)
 {
