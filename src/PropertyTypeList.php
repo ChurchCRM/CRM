@@ -12,6 +12,13 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
+use ChurchCRM\SessionUser;
+use ChurchCRM\Utils\RedirectUtils;
+
+if (!SessionUser::isAdmin()) {
+    RedirectUtils::SecurityRedirect("Admin");
+}
+
 // Set the page title
 $sPageTitle = gettext('Property Type List');
 

@@ -348,7 +348,7 @@
 							},
 							"response": [
 								{
-									"id": "a4c96a80-7548-4ddf-8bc1-b5b792c3c93e",
+									"id": "ca85b098-91fe-4ca4-90e7-b6b97c4a371b",
 									"name": "Persons: Get Photo by ID",
 									"originalRequest": {
 										"method": "GET",
@@ -540,7 +540,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n\t\"PersonId\": 2,\n\t\"PropertyId\": 3,\n\t\"PropertyValue\": \"yep\"\n}"
+									"raw": "{\n  \"PersonId\": 2,\n  \"PropertyId\": 3,\n  \"PropertyValue\": \"yep\"\n}"
 								},
 								"url": {
 									"raw": "{{host}}/api/persons/properties/",
@@ -570,7 +570,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n\t\"PersonId\": 2,\n\t\"PropertyId\": 3\n}"
+									"raw": "{\n  \"PersonId\": 2,\n  \"PropertyId\": 3\n}"
 								},
 								"url": {
 									"raw": "{{host}}/api/persons/properties/",
@@ -600,7 +600,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n\t\"personId\": 1,\n\t\"roleId\": 1\n\t\n}"
+									"raw": "{\n  \"personId\": 1,\n  \"roleId\": 1\n  \n}"
 								},
 								"url": {
 									"raw": "{{host}}/api/persons/role",
@@ -718,7 +718,7 @@
 										"Kennedy"
 									]
 								},
-								"description": ""
+								"description": null
 							},
 							"response": []
 						},
@@ -744,7 +744,7 @@
 										"numbers"
 									]
 								},
-								"description": ""
+								"description": null
 							},
 							"response": []
 						},
@@ -770,7 +770,7 @@
 										"self-register"
 									]
 								},
-								"description": ""
+								"description": null
 							},
 							"response": []
 						},
@@ -796,7 +796,7 @@
 										"self-verify"
 									]
 								},
-								"description": ""
+								"description": null
 							},
 							"response": []
 						},
@@ -822,7 +822,7 @@
 										"pending-self-verify"
 									]
 								},
-								"description": ""
+								"description": null
 							},
 							"response": []
 						},
@@ -848,7 +848,7 @@
 										"2"
 									]
 								},
-								"description": ""
+								"description": null
 							},
 							"response": []
 						},
@@ -875,7 +875,7 @@
 										"photo"
 									]
 								},
-								"description": ""
+								"description": null
 							},
 							"response": []
 						},
@@ -902,7 +902,7 @@
 										"verify"
 									]
 								},
-								"description": ""
+								"description": null
 							},
 							"response": []
 						},
@@ -1104,7 +1104,7 @@
 										""
 									]
 								},
-								"description": ""
+								"description": null
 							},
 							"response": []
 						},
@@ -1134,7 +1134,7 @@
 										""
 									]
 								},
-								"description": ""
+								"description": null
 							},
 							"response": []
 						},
@@ -1163,6 +1163,26 @@
 										"menu",
 										"2666"
 									]
+								},
+								"description": ""
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Debug",
+					"description": "",
+					"item": [
+						{
+							"name": "System: Debug URLs",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": ""
 								},
 								"description": ""
 							},
