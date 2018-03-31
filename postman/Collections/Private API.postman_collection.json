@@ -352,7 +352,7 @@
 							},
 							"response": [
 								{
-									"id": "f01851d6-da94-44eb-bd3a-77aaec119145",
+									"id": "63cb631c-0fed-455e-861a-36e25d317661",
 									"name": "Persons: Get Photo by ID",
 									"originalRequest": {
 										"method": "GET",
@@ -617,17 +617,19 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"personId\": 1,\n  \"roleId\": 1\n}"
+									"raw": ""
 								},
 								"url": {
-									"raw": "{{host}}/api/persons/role",
+									"raw": "{{host}}/api/person/1/role/1",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
 										"api",
-										"persons",
-										"role"
+										"person",
+										"1",
+										"role",
+										"1"
 									]
 								},
 								"description": "Find where an email address is used more than once"
