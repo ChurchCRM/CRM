@@ -27,12 +27,16 @@ function setPersonRole(Request $request, Response $response, array $p_args)
     $roleId = empty($data['roleId']) ? null : $data['roleId'];
 
     $person = PersonQuery::create()->findPk($personId);
+    if (empty($person)) {
+        return $response->withStatus(404, gettext('The person could not be found.'));
+    }
+
     $role = ListOptionQuery::create()
         ->filterByOptionId($roleId)
         ->findOne();
 
-    if (!$person || !$role) {
-        return $response->withStatus(404, gettext('The record could not be found.'));
+    if (empty($role)) {
+        return $response->withStatus(404, gettext('The role could not be found.'));
     }
 
     if ($person->getFmrId() == $roleId) {

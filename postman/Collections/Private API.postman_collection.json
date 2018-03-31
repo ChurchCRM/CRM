@@ -1,7 +1,7 @@
 {
 	"info": {
+		"_postman_id": "d5b77aa8-989c-4f95-be01-a36dcd68835c",
 		"name": "Private API",
-		"_postman_id": "cb78b60f-60c4-1bd9-242f-9e031ae139aa",
 		"description": "# Introduction\nWhat does your API do?\n\n# Overview\nThings that the developers should know about\n\n# Authentication\nWhat is the preferred way of using the API?\n\n# Error Codes\nWhat errors and status codes can a user expect?\n\n# Rate limit\nIs there a limit to the number of requests an user can send?",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -35,8 +35,7 @@
 								"3",
 								"events"
 							]
-						},
-						"description": null
+						}
 					},
 					"response": []
 				},
@@ -59,8 +58,7 @@
 								"events",
 								""
 							]
-						},
-						"description": null
+						}
 					},
 					"response": []
 				},
@@ -84,8 +82,7 @@
 								"1",
 								"NewAccessToken"
 							]
-						},
-						"description": null
+						}
 					},
 					"response": []
 				},
@@ -113,8 +110,7 @@
 								"events",
 								""
 							]
-						},
-						"description": null
+						}
 					},
 					"response": []
 				}
@@ -148,8 +144,7 @@
 								"calendars",
 								""
 							]
-						},
-						"description": null
+						}
 					},
 					"response": []
 				},
@@ -177,8 +172,7 @@
 								"calendars",
 								"4"
 							]
-						},
-						"description": null
+						}
 					},
 					"response": []
 				}
@@ -208,7 +202,10 @@
 								"value": "ajGwpy8Pdai22XDUpqjC5Ob04v0eG7EGgb4vz2bD2juT8YDmfM"
 							}
 						],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "{{host}}/api/email/debug",
 							"host": [
@@ -219,8 +216,7 @@
 								"email",
 								"debug"
 							]
-						},
-						"description": null
+						}
 					},
 					"response": []
 				}
@@ -277,7 +273,10 @@
 										"value": "ajGwpy8Pdai22XDUpqjC5Ob04v0eG7EGgb4vz2bD2juT8YDmfM"
 									}
 								],
-								"body": {},
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
 								"url": {
 									"raw": "{{host}}/api/persons/search/admin",
 									"host": [
@@ -304,7 +303,10 @@
 										"value": "ajGwpy8Pdai22XDUpqjC5Ob04v0eG7EGgb4vz2bD2juT8YDmfM"
 									}
 								],
-								"body": {},
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
 								"url": {
 									"raw": "{{host}}/api/persons/search/doe",
 									"host": [
@@ -316,8 +318,7 @@
 										"search",
 										"doe"
 									]
-								},
-								"description": ""
+								}
 							},
 							"response": []
 						},
@@ -331,7 +332,10 @@
 										"value": "ajGwpy8Pdai22XDUpqjC5Ob04v0eG7EGgb4vz2bD2juT8YDmfM"
 									}
 								],
-								"body": {},
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
 								"url": {
 									"raw": "{{host}}/api/persons/2/photo",
 									"host": [
@@ -348,7 +352,7 @@
 							},
 							"response": [
 								{
-									"id": "ca85b098-91fe-4ca4-90e7-b6b97c4a371b",
+									"id": "f01851d6-da94-44eb-bd3a-77aaec119145",
 									"name": "Persons: Get Photo by ID",
 									"originalRequest": {
 										"method": "GET",
@@ -358,7 +362,10 @@
 												"value": "ajGwpy8Pdai22XDUpqjC5Ob04v0eG7EGgb4vz2bD2juT8YDmfM"
 											}
 										],
-										"body": {},
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
 										"url": {
 											"raw": "{{host}}/api/persons/2/photo",
 											"host": [
@@ -427,7 +434,7 @@
 									],
 									"cookie": [
 										{
-											"expires": "Mon Jan 18 2038 19:14:07 GMT-0800 (Pacific Standard Time)",
+											"expires": "Invalid Date",
 											"httpOnly": false,
 											"domain": "demo.churchcrm.io",
 											"path": "/",
@@ -450,7 +457,10 @@
 										"value": "ajGwpy8Pdai22XDUpqjC5Ob04v0eG7EGgb4vz2bD2juT8YDmfM"
 									}
 								],
-								"body": {},
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
 								"url": {
 									"raw": "{{host}}/api/persons/2/photo",
 									"host": [
@@ -511,7 +521,10 @@
 										"value": "ajGwpy8Pdai22XDUpqjC5Ob04v0eG7EGgb4vz2bD2juT8YDmfM"
 									}
 								],
-								"body": {},
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
 								"url": {
 									"raw": "{{host}}/api/persons/2/thumbnail",
 									"host": [
@@ -595,12 +608,16 @@
 								"header": [
 									{
 										"key": "x-api-key",
-										"value": ""
+										"value": "ajGwpy8Pdai22XDUpqjC5Ob04v0eG7EGgb4vz2bD2juT8YDmfM"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
 									}
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"personId\": 1,\n  \"roleId\": 1\n  \n}"
+									"raw": "{\n  \"personId\": 1,\n  \"roleId\": 1\n}"
 								},
 								"url": {
 									"raw": "{{host}}/api/persons/role",
@@ -627,7 +644,10 @@
 										"value": ""
 									}
 								],
-								"body": {},
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
 								"url": {
 									"raw": "{{host}}/api/persons/roles",
 									"host": [
@@ -653,7 +673,10 @@
 										"value": "ajGwpy8Pdai22XDUpqjC5Ob04v0eG7EGgb4vz2bD2juT8YDmfM"
 									}
 								],
-								"body": {},
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
 								"url": {
 									"raw": "{{host}}/api/persons/search/admin",
 									"host": [
@@ -665,8 +688,7 @@
 										"search",
 										"admin"
 									]
-								},
-								"description": ""
+								}
 							},
 							"response": []
 						}
@@ -687,7 +709,10 @@
 										"value": ""
 									}
 								],
-								"body": {},
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
 								"url": {
 									"raw": ""
 								},
@@ -705,7 +730,10 @@
 										"value": ""
 									}
 								],
-								"body": {},
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
 								"url": {
 									"raw": "{{host}}/api/families/search/Kennedy",
 									"host": [
@@ -717,8 +745,7 @@
 										"search",
 										"Kennedy"
 									]
-								},
-								"description": null
+								}
 							},
 							"response": []
 						},
@@ -732,7 +759,10 @@
 										"value": ""
 									}
 								],
-								"body": {},
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
 								"url": {
 									"raw": "{{host}}/api/families/numbers",
 									"host": [
@@ -743,8 +773,7 @@
 										"families",
 										"numbers"
 									]
-								},
-								"description": null
+								}
 							},
 							"response": []
 						},
@@ -758,7 +787,10 @@
 										"value": ""
 									}
 								],
-								"body": {},
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
 								"url": {
 									"raw": "{{host}}/api/families/self-register",
 									"host": [
@@ -769,8 +801,7 @@
 										"families",
 										"self-register"
 									]
-								},
-								"description": null
+								}
 							},
 							"response": []
 						},
@@ -784,7 +815,10 @@
 										"value": ""
 									}
 								],
-								"body": {},
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
 								"url": {
 									"raw": "{{host}}/api/families/self-verify",
 									"host": [
@@ -795,8 +829,7 @@
 										"families",
 										"self-verify"
 									]
-								},
-								"description": null
+								}
 							},
 							"response": []
 						},
@@ -810,7 +843,10 @@
 										"value": ""
 									}
 								],
-								"body": {},
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
 								"url": {
 									"raw": "{{host}}/api/families/pending-self-verify",
 									"host": [
@@ -821,8 +857,7 @@
 										"families",
 										"pending-self-verify"
 									]
-								},
-								"description": null
+								}
 							},
 							"response": []
 						},
@@ -836,7 +871,10 @@
 										"value": ""
 									}
 								],
-								"body": {},
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
 								"url": {
 									"raw": "{{host}}/api/families/2",
 									"host": [
@@ -847,8 +885,7 @@
 										"families",
 										"2"
 									]
-								},
-								"description": null
+								}
 							},
 							"response": []
 						},
@@ -862,7 +899,10 @@
 										"value": ""
 									}
 								],
-								"body": {},
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
 								"url": {
 									"raw": "{{host}}/api/families/2/photo",
 									"host": [
@@ -874,8 +914,7 @@
 										"2",
 										"photo"
 									]
-								},
-								"description": null
+								}
 							},
 							"response": []
 						},
@@ -889,7 +928,10 @@
 										"value": ""
 									}
 								],
-								"body": {},
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
 								"url": {
 									"raw": "{{host}}/api/families/2/verify",
 									"host": [
@@ -901,8 +943,7 @@
 										"2",
 										"verify"
 									]
-								},
-								"description": null
+								}
 							},
 							"response": []
 						},
@@ -916,7 +957,10 @@
 										"value": "ajGwpy8Pdai22XDUpqjC5Ob04v0eG7EGgb4vz2bD2juT8YDmfM"
 									}
 								],
-								"body": {},
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
 								"url": {
 									"raw": "{{host}}/api/families/2/geolocation",
 									"host": [
@@ -928,8 +972,7 @@
 										"2",
 										"geolocation"
 									]
-								},
-								"description": null
+								}
 							},
 							"response": []
 						},
@@ -943,7 +986,10 @@
 										"value": ""
 									}
 								],
-								"body": {},
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
 								"url": {
 									"raw": "{{host}}/api/families/2/activate/false",
 									"host": [
@@ -974,7 +1020,10 @@
 								"value": "ajGwpy8Pdai22XDUpqjC5Ob04v0eG7EGgb4vz2bD2juT8YDmfM"
 							}
 						],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "{{host}}/api/persons/duplicate/emails",
 							"host": [
@@ -1051,7 +1100,10 @@
 										"value": "fin48waG4rIWwfLvTstDr8ZJtP6aNdSTm7NjsNPm6n0rtKNd37"
 									}
 								],
-								"body": {},
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
 								"url": {
 									"raw": "{{host}}/api/database/people/clear",
 									"host": [
@@ -1079,7 +1131,7 @@
 				},
 				{
 					"name": "Menu Links",
-					"description": "",
+					"description": null,
 					"item": [
 						{
 							"name": "MenuLink: Get All",
@@ -1091,7 +1143,10 @@
 										"value": ""
 									}
 								],
-								"body": {},
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
 								"url": {
 									"raw": "{{host}}/api/system/menu/",
 									"host": [
@@ -1103,8 +1158,7 @@
 										"menu",
 										""
 									]
-								},
-								"description": null
+								}
 							},
 							"response": []
 						},
@@ -1133,8 +1187,7 @@
 										"menu",
 										""
 									]
-								},
-								"description": null
+								}
 							},
 							"response": []
 						},
@@ -1163,8 +1216,7 @@
 										"menu",
 										"2666"
 									]
-								},
-								"description": ""
+								}
 							},
 							"response": []
 						}
@@ -1173,18 +1225,20 @@
 				},
 				{
 					"name": "Debug",
-					"description": "",
+					"description": null,
 					"item": [
 						{
 							"name": "System: Debug URLs",
 							"request": {
 								"method": "GET",
 								"header": [],
-								"body": {},
-								"url": {
+								"body": {
+									"mode": "raw",
 									"raw": ""
 								},
-								"description": ""
+								"url": {
+									"raw": ""
+								}
 							},
 							"response": []
 						}
@@ -1196,7 +1250,10 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": ""
 						},
@@ -1214,7 +1271,10 @@
 								"value": "ajGwpy8Pdai22XDUpqjC5Ob04v0eG7EGgb4vz2bD2juT8YDmfM"
 							}
 						],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "{{host}}/api/system/notification",
 							"host": [
@@ -1238,7 +1298,7 @@
 			"item": [
 				{
 					"name": "Email",
-					"description": "",
+					"description": null,
 					"item": [],
 					"_postman_isSubFolder": true
 				},
