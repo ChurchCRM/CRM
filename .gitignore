@@ -48,3 +48,4 @@ src/logs/*.log
 
 error.log
 /src/skin/js/react-app.js
+/src/skin/js-react/
