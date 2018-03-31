@@ -12,6 +12,7 @@ class EventModal extends React.Component<EventFormProps, EventFormState> {
     this.setReadOnlyMode = this.setReadOnlyMode.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
     this.exit = this.props.onClose.bind(this);
+    this.save = this.save.bind(this);
   }
 
   componentDidMount() {
@@ -57,6 +58,19 @@ class EventModal extends React.Component<EventFormProps, EventFormState> {
 
   exit() {
     this.props.onClose()
+  }
+
+  save() {
+    fetch("/api/events/"+this.props.eventId, {
+      credentials: "include",
+      method:"POST",
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(this.state.event)
+    })
+    .then(()=>this.exit());
   }
 
   renderDisplayForm() {
@@ -175,7 +189,7 @@ class EventModal extends React.Component<EventFormProps, EventFormState> {
 
           </Modal.Body>
           <Modal.Footer>
-            <button className="btn btn-success" onClick={this.setReadOnlyMode}>Read Only</button>
+            <button className="btn btn-success" onClick={this.save}>Save</button>
             <button className="btn btn-danger pull-left" onClick={this.setEditMode}>Delete</button>
             <button className="btn btn-default pull-right" onClick={this.exit}>Cancel</button>
           </Modal.Footer>

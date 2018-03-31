@@ -6,14 +6,11 @@ declare global {
     interface Window { showEventForm: Function; }
 }
 
-window.showEventForm = function(eventId) {
+window.showEventForm = function(eventId, refreshCallback) {
     const unmount = function() {
         ReactDOM.unmountComponentAtNode( document.getElementById('react-app'));
+        refreshCallback()
     }
     unmount();
     ReactDOM.render(<App unmountCall={unmount} eventId={eventId}/>, document.getElementById('react-app'));
 }
-
-$("#render").click(function() {
-    window.showEventForm(2);
-});
