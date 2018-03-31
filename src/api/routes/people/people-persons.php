@@ -1,5 +1,4 @@
 <?php
-/* contributor Philippe Logel */
 
 // Person APIs
 use ChurchCRM\dto\Cart;
