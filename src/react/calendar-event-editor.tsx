@@ -2,16 +2,18 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import App from './components/admin-app';
 
+declare global {
+    interface Window { showEventForm: Function; }
+}
+
+window.showEventForm = function(eventId) {
+    const unmount = function() {
+        ReactDOM.unmountComponentAtNode( document.getElementById('react-app'));
+    }
+    unmount();
+    ReactDOM.render(<App unmountCall={unmount} eventId={eventId}/>, document.getElementById('react-app'));
+}
 
 $("#render").click(function() {
-    console.log("test");
-    ReactDOM.render(<App />, document.getElementById('react-app'));
+    window.showEventForm(2);
 });
-
-
-
-$("#remove").click(function() {
-    console.log("test");
-    ReactDOM.unmountComponentAtNode(document.getElementById('react-app'));
-});
-
