@@ -5,12 +5,19 @@
 use ChurchCRM\dto\Cart;
 use ChurchCRM\dto\MenuEventsCount;
 use ChurchCRM\dto\Photo;
+use ChurchCRM\ListOptionQuery;
 use ChurchCRM\Person;
 use ChurchCRM\PersonQuery;
 use ChurchCRM\Utils\MiscUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
+use Slim\Http\Request;
+use Slim\Http\Response;
 
 $app->group('/persons', function () {
+
+    $this->get('/roles', 'getAllRolesAPI');
+    $this->get('/roles/', 'getAllRolesAPI');
+
     // search person by Name
     $this->get('/search/{query}', function ($request, $response, $args) {
         $query = $args['query'];
@@ -106,3 +113,9 @@ $app->group('/persons', function () {
     });
 
 });
+
+function getAllRolesAPI(Request $request, Response $response, array $p_args)
+{
+    $roles = ListOptionQuery::create()->getFamilyRoles();
+    return $response->withJson($roles->toArray());
+}

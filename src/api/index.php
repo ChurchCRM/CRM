@@ -44,7 +44,6 @@ require __DIR__ . '/routes/people/people-groups.php';
 require __DIR__ . '/routes/people/people-person.php';
 require __DIR__ . '/routes/people/people-persons.php';
 require __DIR__ . '/routes/people/people-properties.php';
-require __DIR__ . '/routes/people/people-roles.php';
 
 // Public
 require __DIR__ . '/routes/public/public.php';
