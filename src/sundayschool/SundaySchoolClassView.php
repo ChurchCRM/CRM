@@ -131,7 +131,7 @@ require '../Include/Header.php';
         <div class="box box-info text-center user-profile-2">
           <div class="user-profile-inner">
             <h4 class="white"><?= $teacher['per_FirstName'].' '.$teacher['per_LastName'] ?></h4>
-            <img src="<?= SystemURLs::getRootPath(); ?>/api/persons/<?= $teacher['per_ID'] ?>/thumbnail"
+            <img src="<?= SystemURLs::getRootPath(); ?>/api/person/<?= $teacher['per_ID'] ?>/thumbnail"
                   alt="User Image" class="user-image initials-image" width="85" height="85" />
             <a href="mailto:<?= $teacher['per_Email'] ?>" type="button" class="btn btn-primary btn-sm btn-block"><i
                 class="fa fa-envelope"></i> <?= gettext('Send Message') ?></a>
@@ -222,7 +222,7 @@ require '../Include/Header.php';
           $birthDate = MiscUtils::FormatBirthDate($child['birthYear'], $child['birthMonth'], $child['birthDay'], '-', $child['flags']); ?>
           <tr>
           <td>
-            <img src="<?= SystemURLs::getRootPath(); ?>/api/persons/<?= $child['kidId'] ?>/thumbnail"
+            <img src="<?= SystemURLs::getRootPath(); ?>/api/person/<?= $child['kidId'] ?>/thumbnail"
                 alt="User Image" class="user-image initials-image" style="width: <?= SystemConfig::getValue('iProfilePictureListSize') ?>px !; height: <?= SystemConfig::getValue('iProfilePictureListSize') ?>px; max-width:none" />
           </td>
           <td><a href="<?= SystemURLs::getRootPath(); ?>/PersonView.php?PersonID=<?= $child['kidId'] ?>"><?= $child['LastName'].', '.$child['firstName'] ?></a></td>
