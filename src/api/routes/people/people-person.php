@@ -11,7 +11,7 @@ use ChurchCRM\Utils\MiscUtils;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
-// This group does not look to load the person via middleware
+// This group does not load the person via middleware (to speed up the page loads)
 $app->group('/person/{personId:[0-9]+}', function () {
 
     $this->get('/thumbnail', function ($request, $response, $args) {
