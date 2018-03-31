@@ -113,8 +113,8 @@ $app->group('/persons', function () {
 });
 
 $app->group('/person/{personId:[0-9]+}', function () {
-    $this->post('/role/{roleId:[0-9]+}', 'setPersonRole')->add(new PersonAPIMiddleware())->add(new EditRecordsRoleAuthMiddleware());
-});
+    $this->post('/role/{roleId:[0-9]+}', 'setPersonRole')->add(new EditRecordsRoleAuthMiddleware());
+})->add(new PersonAPIMiddleware());
 
 
 function setPersonRole(Request $request, Response $response, array $args)
