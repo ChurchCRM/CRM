@@ -41,6 +41,7 @@ require __DIR__ . '/routes/finance/finance-payments.php';
 require __DIR__ . '/routes/people/people-email.php';
 require __DIR__ . '/routes/people/people-families.php';
 require __DIR__ . '/routes/people/people-groups.php';
+require __DIR__ . '/routes/people/people-person.php';
 require __DIR__ . '/routes/people/people-persons.php';
 require __DIR__ . '/routes/people/people-properties.php';
 require __DIR__ . '/routes/people/people-roles.php';
