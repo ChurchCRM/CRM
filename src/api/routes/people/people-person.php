@@ -11,26 +11,8 @@ use ChurchCRM\Utils\MiscUtils;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
-
+// This group does not look to load the person via middleware
 $app->group('/person/{personId:[0-9]+}', function () {
-
-    $this->delete('', function ($request, $response, $args) {
-
-        $person = $request->getAttribute("person");
-        if (SessionUser::getId() == $person->getId()) {
-            return $response->withStatus(403, gettext("Can't delete yourself"));
-        }
-
-        $person->delete();
-        return $response->withJSON(["status" => gettext("success")]);
-
-    })->add(new DeleteRecordRoleAuthMiddleware());
-
-    $this->post('/role/{roleId:[0-9]+}', 'setPersonRoleAPI')->add(new EditRecordsRoleAuthMiddleware());
-
-    $this->post('/addToCart', function ($request, $response, $args) {
-        Cart::AddPerson($args['personId']);
-    });
 
     $this->get('/thumbnail', function ($request, $response, $args) {
         $res = $this->cache->withExpires($response, MiscUtils::getPhotoCacheExpirationTimestamp());
@@ -42,6 +24,24 @@ $app->group('/person/{personId:[0-9]+}', function () {
         $res = $this->cache->withExpires($response, MiscUtils::getPhotoCacheExpirationTimestamp());
         $photo = new Photo("Person", $args['personId']);
         return $res->write($photo->getPhotoBytes())->withHeader('Content-type', $photo->getPhotoContentType());
+    });
+});
+
+$app->group('/person/{personId:[0-9]+}', function () {
+
+    $this->delete('', function ($request, $response, $args) {
+        $person = $request->getAttribute("person");
+        if (SessionUser::getId() == $person->getId()) {
+            return $response->withStatus(403, gettext("Can't delete yourself"));
+        }
+        $person->delete();
+        return $response->withJSON(["status" => gettext("success")]);
+    })->add(new DeleteRecordRoleAuthMiddleware());
+
+    $this->post('/role/{roleId:[0-9]+}', 'setPersonRoleAPI')->add(new EditRecordsRoleAuthMiddleware());
+
+    $this->post('/addToCart', function ($request, $response, $args) {
+        Cart::AddPerson($args['personId']);
     });
 
     $this->post('/photo', function ($request, $response, $args) {
