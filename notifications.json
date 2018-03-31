@@ -2,16 +2,10 @@
   "TTL": 300,
   "messages" : [
      {
-      "targetVersion":"3.0.1",
+      "targetVersion":"3.100.",
       "adminOnly": false,
-      "title":"Fix auto upgrade to 3.0.2",
-      "link":"https://github.com/ChurchCRM/CRM/wiki/Upgrade#300-and-301-automatic-upgrade-fix"
-    },
-    {
-      "targetVersion":"3.0.0",
-      "adminOnly": false,
-      "title":"Fix auto upgrade to 3.0.2",
-      "link":"https://github.com/ChurchCRM/CRM/wiki/Upgrade#300-and-301-automatic-upgrade-fix"
+      "title":"Title",
+      "link":"link"
     }
   ]
 }
