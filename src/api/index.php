@@ -21,6 +21,7 @@ $container['cache'] = function () {
 // Add middleware to the application
 $app = new App($container);
 
+# Add middleware - executed in reverse order of appearing here.
 $app->add(new VersionMiddleware());
 $app->add(new AuthMiddleware());
 
