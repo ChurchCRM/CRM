@@ -10,6 +10,7 @@ use ChurchCRM\PersonQuery;
 use ChurchCRM\ListOptionQuery;
 use ChurchCRM\Utils\MiscUtils;
 use ChurchCRM\Slim\Middleware\Role\EditRecordsRoleAuthMiddleware;
+use ChurchCRM\Slim\Middleware\PersonAPIMiddleware;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Slim\Http\Request;
 use Slim\Http\Response;
@@ -112,20 +113,15 @@ $app->group('/persons', function () {
 });
 
 $app->group('/person/{personId:[0-9]+}', function () {
-    $this->post('/role/{roleId:[0-9]+}', 'setPersonRole')->add(new EditRecordsRoleAuthMiddleware());
+    $this->post('/role/{roleId:[0-9]+}', 'setPersonRole')->add(new EditRecordsRoleAuthMiddleware())->add(new PersonAPIMiddleware());
 });
 
 
 function setPersonRole(Request $request, Response $response, array $args)
 {
-    $personId = $args['personId'];
+    $person =  $request->getAttribute("person");
+
     $roleId = $args['roleId'];
-
-    $person = PersonQuery::create()->findPk($personId);
-    if (empty($person)) {
-        return $response->withStatus(404, gettext('The person could not be found.'));
-    }
-
     $role = ListOptionQuery::create()
         ->filterByOptionId($roleId)
         ->findOne();
