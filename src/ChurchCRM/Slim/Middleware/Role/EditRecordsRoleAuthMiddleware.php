@@ -11,6 +11,6 @@ class EditRecordsRoleAuthMiddleware extends BaseAuthRoleMiddleware {
 
     function noRoleMessage()
     {
-        return gettext('User must have MenuOptions permission');
+        return gettext('User must have Edit Records permission');
     }
 }
