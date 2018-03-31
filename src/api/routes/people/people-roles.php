@@ -2,48 +2,48 @@
 
 use ChurchCRM\ListOptionQuery;
 use ChurchCRM\PersonQuery;
+use ChurchCRM\Slim\Middleware\Role\EditRecordsRoleAuthMiddleware;
+use Slim\Http\Request;
+use Slim\Http\Response;
 
 
-$app->group('/roles', function () {
-
-    $this->get('/all', function ($request, $response, $args) {
-        $roles = ListOptionQuery::create()->getFamilyRoles();
-        $roles = $roles->toArray();
-        return $response->withJson($roles);
-    });
-
-
-    $this->post('/persons/assign', function ($request, $response, $args) {
-        if (!$_SESSION['user']->isEditRecordsEnabled()) {
-            return $response->withStatus(403);
-        }
-
-        $data = $request->getParsedBody();
-        $personId = empty($data['personId']) ? null : $data['personId'];
-        $roleId = empty($data['roleId']) ? null : $data['roleId'];
-
-        $person = PersonQuery::create()->findPk($personId);
-        $role = ListOptionQuery::create()
-            ->filterByOptionId($roleId)
-            ->findOne();
-
-        if (!$person || !$role) {
-            return $response->withStatus(404, gettext('The record could not be found.'));
-        }
-
-        if ($person->getFmrId() == $roleId) {
-            return $response->withJson(['success' => true, 'msg' => gettext('The role is already assigned.')]);
-        }
-
-        $person->setFmrId($role->getOptionId());
-        if ($person->save()) {
-            return $response->withJson(['success' => true, 'msg' => gettext('The role is successfully assigned.')]);
-        } else {
-            throw new LogicException(gettext('The role could not be assigned.'));
-        }
-
-
-    });
-
-
+$app->group('/persons', function () {
+    $this->get('/roles', 'getAllRoles');
+    $this->get('/roles/', 'getAllRoles');
+    $this->post('/role', 'setPersonRole')->add(new EditRecordsRoleAuthMiddleware());
+    $this->post('/role/', 'setPersonRole')->add(new EditRecordsRoleAuthMiddleware());
 });
+
+function getAllRoles(Request $request, Response $response, array $p_args)
+{
+    $roles = ListOptionQuery::create()->getFamilyRoles();
+    return $response->withJson($roles->toArray());
+}
+
+function setPersonRole(Request $request, Response $response, array $p_args)
+{
+    $data = $request->getParsedBody();
+    $personId = empty($data['personId']) ? null : $data['personId'];
+    $roleId = empty($data['roleId']) ? null : $data['roleId'];
+
+    $person = PersonQuery::create()->findPk($personId);
+    $role = ListOptionQuery::create()
+        ->filterByOptionId($roleId)
+        ->findOne();
+
+    if (!$person || !$role) {
+        return $response->withStatus(404, gettext('The record could not be found.'));
+    }
+
+    if ($person->getFmrId() == $roleId) {
+        return $response->withJson(['success' => true, 'msg' => gettext('The role is already assigned.')]);
+    }
+
+    $person->setFmrId($role->getOptionId());
+    if ($person->save()) {
+        return $response->withJson(['success' => true, 'msg' => gettext('The role is successfully assigned.')]);
+    } else {
+        return $response->withStatus(500, gettext('The role could not be assigned.'));
+    }
+}
+
