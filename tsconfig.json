@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "sourceMap": true,
+    "jsx": "react"
+  },
+  "exclude": [
+    "node_modules",
+    "src/vendor",
+    "tests/vendor"
+  ]
+}

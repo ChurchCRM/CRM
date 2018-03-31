@@ -1,10 +1,10 @@
-import React from 'react';
+import * as React from 'react';
  
-class MyDiv extends React.Component {
-  constructor() {
-    super();
+class MyDiv extends React.Component<myappprops, myappstate> {
+  constructor(props: myappprops) {
+    super(props);
     this.state = {
-      test: "loading"
+      test: props.test
     };
   }
   componentDidMount() {
@@ -26,10 +26,17 @@ export default class App extends React.Component {
   render() {
     return (
      <div >
-       <MyDiv />
-       <MyDiv />
+       <MyDiv test="asdf" />
      </div>
      );
   }
 };
 
+
+interface myappprops {
+  test: string;
+}
+
+interface myappstate {
+  test: string;
+}
