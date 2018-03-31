@@ -1,15 +1,10 @@
 <?php
-/* contributor Philippe Logel */
 
-// Person APIs
-use ChurchCRM\dto\Cart;
 use ChurchCRM\dto\MenuEventsCount;
-use ChurchCRM\dto\Photo;
 use ChurchCRM\ListOptionQuery;
 use ChurchCRM\Person;
 use ChurchCRM\PersonQuery;
 use ChurchCRM\FamilyQuery;
-use ChurchCRM\Utils\MiscUtils;
 use Propel\Runtime\Propel;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Slim\Http\Request;
