@@ -3,9 +3,7 @@
 /* Contributors Philippe Logel */
 
 // Routes
-use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\MenuEventsCount;
-use ChurchCRM\dto\Photo;
 use ChurchCRM\Emails\FamilyVerificationEmail;
 use ChurchCRM\FamilyQuery;
 use ChurchCRM\Map\FamilyTableMap;
@@ -15,8 +13,6 @@ use ChurchCRM\NoteQuery;
 use ChurchCRM\Person;
 use ChurchCRM\Token;
 use ChurchCRM\TokenQuery;
-use ChurchCRM\Utils\GeoUtils;
-use ChurchCRM\Utils\MiscUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 
 $app->group('/families', function () {
