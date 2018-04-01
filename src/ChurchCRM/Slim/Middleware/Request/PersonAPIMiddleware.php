@@ -13,12 +13,12 @@ class PersonAPIMiddleware
 
         $personId = $request->getAttribute("route")->getArgument("personId");
         if (empty(trim($personId))) {
-          return $response->withStatus(400)->withJson(["message" => gettext("Missing"). " PersonId"]);
+          return $response->withStatus(400)->withJson(["message" => gettext("Missing"). " ". gettext("PersonId")]);
         }
 
         $person = PersonQuery::create()->findPk($personId);
         if (empty($person)) {
-            return $response->withStatus(404, gettext('The person could not be found.'));
+            return $response->withStatus(404, gettext("PersonId"). ": " . $personId . " ". gettext("not found"));
         }
 
         $request = $request->withAttribute("person", $person);
