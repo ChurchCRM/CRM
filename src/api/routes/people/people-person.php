@@ -2,7 +2,7 @@
 
 // Person APIs
 use ChurchCRM\ListOptionQuery;
-use ChurchCRM\Slim\Middleware\PersonAPIMiddleware;
+use ChurchCRM\Slim\Middleware\Request\PersonAPIMiddleware;
 use ChurchCRM\Slim\Middleware\Role\EditRecordsRoleAuthMiddleware;
 use Slim\Http\Request;
 use Slim\Http\Response;
