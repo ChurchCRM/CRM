@@ -20,10 +20,7 @@ use ChurchCRM\Utils\MiscUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 
 $app->group('/families', function () {
-    $this->get('/{familyId:[0-9]+}', function ($request, $response, $args) {
-        $family = FamilyQuery::create()->findPk($args['familyId']);
-        return $response->withJSON($family->toJSON());
-    });
+
 
     $this->get('/numbers', function ($request, $response, $args) {
         return $response->withJson(MenuEventsCount::getNumberAnniversaries());
@@ -82,18 +79,7 @@ $app->group('/families', function () {
         echo $this->FinancialService->getMemberByScanString($scanString);
     });
 
-    $this->get('/{familyId:[0-9]+}/photo', function ($request, $response, $args) {
-        $res = $this->cache->withExpires($response, MiscUtils::getPhotoCacheExpirationTimestamp());
-        $photo = new Photo("Family", $args['familyId']);
-        return $res->write($photo->getPhotoBytes())->withHeader('Content-type', $photo->getPhotoContentType());
-    });
 
-    $this->get('/{familyId:[0-9]+}/thumbnail', function ($request, $response, $args) {
-
-        $res = $this->cache->withExpires($response, MiscUtils::getPhotoCacheExpirationTimestamp());
-        $photo = new Photo("Family", $args['familyId']);
-        return $res->write($photo->getThumbnailBytes())->withHeader('Content-type', $photo->getThumbnailContentType());
-    });
 
     $this->post('/{familyId:[0-9]+}/photo', function ($request, $response, $args) {
         $input = (object)$request->getParsedBody();
@@ -179,18 +165,5 @@ $app->group('/families', function () {
     });
 
 
-    $this->get('/{familyId:[0-9]+}/geolocation', function ($request, $response, $args) {
-        $familyId = $args["familyId"];
-        $family = FamilyQuery::create()->findPk($familyId);
-        if (!empty($family)) {
-            $familyAddress = $family->getAddress();
-            $familyLatLong = GeoUtils::getLatLong($familyAddress);
 
-            $familyDrivingInfo = GeoUtils::DrivingDistanceMatrix($familyAddress, ChurchMetaData::getChurchAddress());
-            $geoLocationInfo = array_merge($familyDrivingInfo, $familyLatLong);
-
-            return $response->withJson($geoLocationInfo);
-        }
-        return $response->withStatus(404, gettext("FamilyId").  ": " . $familyId . " " . gettext("not found"));
-    });
 });
