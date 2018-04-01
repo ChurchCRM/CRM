@@ -1,6 +1,6 @@
 <?php
 
-namespace ChurchCRM\Slim\Middleware;
+namespace ChurchCRM\Slim\Middleware\Request;
 
 use Slim\Http\Request;
 use Slim\Http\Response;
@@ -13,7 +13,7 @@ class PersonAPIMiddleware
 
         $personId = $request->getAttribute("route")->getArgument("personId");
         if (empty(trim($personId))) {
-          return $response->withStatus(400)->withJson(["message" => gettext("Missing PersonId")]);
+          return $response->withStatus(400)->withJson(["message" => gettext("Missing"). " PersonId"]);
         }
 
         $person = PersonQuery::create()->findPk($personId);
