@@ -14,6 +14,23 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <h4><?= _("Add Menu") ?></h4>
             </div>
             <div class="box-body">
+                <section>
+                    <div class="form-group">
+                        <label for="MENU_NAME"><?= _("Menu Name")?></label>
+                        <input type="text" name="MENU_NAME" id="MENU_NAME" class="form-control"
+                               aria-describedby="MENU_NAME_HELP" required maxlength="20" max="20" size="20">
+                        <small id="MENU_NAME_HELP" class="form-text text-muted"><?= _("Max 20 char")?></small>
+                    </div>
+                    <div class="form-group">
+                        <label for="MENU_LINK"><?= _("Link Address")?></label>
+                        <input type="text" name="MENU_LINK" id="MENU_LINK" class="form-control"
+                               aria-describedby="MENU_LINK_HELP" required>
+                        <small id="MENU_LINK_HELP" class="form-text text-muted"><?= _("Start with http:// or https://")?></small>
+                    </div>
+                </section>
+                <div align="right">
+                    <a class="btn btn-success" id="add-Menu"><?= _("Add")?></a>
+                </div>
             </div>
         </div>
     </div>
@@ -63,14 +80,27 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 {
                     title: i18next.t('Address'),
                     data: 'Uri'
-                },
-                {
-                    title: i18next.t('Order'),
-                    data: 'Order',
-                    searchable: false
                 }
             ],
-            order: [[3, "asc"]]
+            order: [[1, "asc"]]
+        });
+    });
+
+    $("#add-Menu").click(function(){
+        menuName = $("#MENU_NAME").val();
+        menuLink = $("#MENU_LINK").val();
+        window.CRM.APIRequest({
+            method: "PUT",
+            path: "system/menu/",
+            data: JSON.stringify(    {
+                "Name": menuName,
+                "Uri": menuLink,
+                "Order": 0
+            })
+        }).done(function () {
+            $("#MENU_NAME").val("");
+            $("#MENU_LINK").val("");
+            $("#menus").DataTable().ajax.reload()
         });
     });
 
