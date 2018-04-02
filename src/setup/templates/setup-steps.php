@@ -97,7 +97,7 @@ require '../Include/HeaderNotLoggedIn.php';
                 <label for="DB_SERVER_NAME">MySQL Database Server Name</label>
                 <input type="text" name="DB_SERVER_NAME" id="DB_SERVER_NAME" class="form-control"
                        aria-describedby="DB_SERVER_NAME_HELP" required>
-                <small id="DB_SERVER_NAME_HELP" class="form-text text-muted">User localhost over 127.0.0.1</small>
+                <small id="DB_SERVER_NAME_HELP" class="form-text text-muted">Use localhost over 127.0.0.1</small>
             </div>
             <div class="form-group">
                 <label for="DB_SERVER_PORT">MySQL Database Server Port</label>
