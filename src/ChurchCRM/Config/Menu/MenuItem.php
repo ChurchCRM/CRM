@@ -3,6 +3,7 @@
 namespace ChurchCRM\Config\Menu;
 
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\LoggerUtils;
 
 class MenuItem
 {
@@ -111,6 +112,24 @@ class MenuItem
             return $this->hasPermission;
         }
         return $this->hasVisibleSubMenus();
+    }
+
+    public function openMenu() {
+        foreach ($this->subItems as $item) {
+            if ($item->isActive()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public function isActive()
+    {
+        if (empty($this->uri)) {
+            return false;
+        }
+        LoggerUtils::getAppLogger()->info($_SERVER["REQUEST_URI"] . " - " . $this->getURI() );
+        return $_SERVER["REQUEST_URI"] == $this->getURI();
     }
 
 }
