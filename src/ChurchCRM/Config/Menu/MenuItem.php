@@ -3,7 +3,6 @@
 namespace ChurchCRM\Config\Menu;
 
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\Utils\LoggerUtils;
 
 class MenuItem
 {
@@ -128,7 +127,6 @@ class MenuItem
         if (empty($this->uri)) {
             return false;
         }
-        LoggerUtils::getAppLogger()->info($_SERVER["REQUEST_URI"] . " - " . $this->getURI() );
         return $_SERVER["REQUEST_URI"] == $this->getURI();
     }
 
