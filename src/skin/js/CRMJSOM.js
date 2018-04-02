@@ -8,7 +8,6 @@
         options.method="GET"
       }
       options.url=window.CRM.root+"/api/"+options.path;
-      options.dataType = 'json';
       options.contentType =  "application/json";
       options.beforeSend = function(jqXHR, settings) {
         jqXHR.url = settings.url;
