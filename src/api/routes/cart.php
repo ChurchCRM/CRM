@@ -27,7 +27,7 @@ $app->group('/cart', function () {
         Cart::EmptyToGroup($cartPayload->groupID, $cartPayload->groupRoleID);
         return $response->withJson([
             'status' => "success",
-            'message' => $iCount . ' ' . gettext('records(s) successfully added to selected Group.')
+            'message' => gettext('records(s) successfully added to selected Group.')
         ]);
     });
 
@@ -36,7 +36,7 @@ $app->group('/cart', function () {
         Cart::RemoveGroup($cartPayload->Group);
         return $response->withJson([
             'status' => "success",
-            'message' => $iCount . ' ' . gettext('records(s) successfully deleted from the selected Group.')
+            'message' => gettext('records(s) successfully deleted from the selected Group.')
         ]);
     });
 
