@@ -75,21 +75,6 @@ $app->group('/families', function () {
         echo $this->FinancialService->getMemberByScanString($scanString);
     });
 
-
-
-    $this->post('/{familyId:[0-9]+}/photo', function ($request, $response, $args) {
-        $input = (object)$request->getParsedBody();
-        $family = FamilyQuery::create()->findPk($args['familyId']);
-        $family->setImageFromBase64($input->imgBase64);
-
-        $response->withJSON(array("status" => "success", "upload" => $upload));
-    });
-
-    $this->delete('/{familyId:[0-9]+}/photo', function ($request, $response, $args) {
-        $family = FamilyQuery::create()->findPk($args['familyId']);
-        return json_encode(array("status" => $family->deletePhoto()));
-    });
-
     $this->post('/{familyId}/verify', function ($request, $response, $args) {
         $familyId = $args["familyId"];
         $family = FamilyQuery::create()->findPk($familyId);

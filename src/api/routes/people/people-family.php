@@ -5,6 +5,7 @@ use ChurchCRM\Utils\GeoUtils;
 use ChurchCRM\Utils\MiscUtils;
 use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\ChurchMetaData;
+use ChurchCRM\Slim\Middleware\Role\EditRecordsRoleAuthMiddleware;
 
 $app->group('/family/{familyId:[0-9]+}', function () {
     $this->get('/photo', function ($request, $response, $args) {
@@ -34,6 +35,18 @@ $app->group('/family/{familyId:[0-9]+}', function () {
         $geoLocationInfo = array_merge($familyDrivingInfo, $familyLatLong);
         return $response->withJson($geoLocationInfo);
     });
+
+    $this->post('/photo', function ($request, $response, $args) {
+        $input = (object)$request->getParsedBody();
+        $family = $request->getAttribute("family");
+        $family->setImageFromBase64($input->imgBase64);
+        return $response->withStatus(200);
+    })->add(new EditRecordsRoleAuthMiddleware());
+
+    $this->delete('/photo', function ($request, $response, $args) {
+        $family = $request->getAttribute("family");
+        return $response->withJSON(["status" => $family->deletePhoto()]);
+    })->add(new EditRecordsRoleAuthMiddleware());
 
 })->add(new FamilyAPIMiddleware());
 
