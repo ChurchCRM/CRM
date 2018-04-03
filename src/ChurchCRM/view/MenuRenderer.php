@@ -24,7 +24,7 @@ class MenuRenderer
     private static function renderMenuItem(MenuItem $menuItem)
     {
         ?>
-        <li>
+        <li <?= $menuItem->isActive()? "class='active'" : ""?>>
             <a href="<?= $menuItem->getURI() ?>" <?= $menuItem->isExternal() ? "target='_blank'" : "" ?>>
                 <i class='fa <?= $menuItem->getIcon() ?>'></i>
                 <span>
@@ -39,7 +39,7 @@ class MenuRenderer
     private static function renderSubMenuItem(MenuItem $menuItem)
     {
         ?>
-        <li class="treeview">
+        <li class="treeview <?= $menuItem->openMenu()? "menu-open active" : "" ?>">
             <a href="#">
                 <i class="fa <?= $menuItem->getIcon() ?>"></i>
                 <span>
@@ -48,7 +48,7 @@ class MenuRenderer
                 </span>
                 <i class="fa fa-angle-left pull-right"></i>
             </a>
-            <ul class="treeview-menu">
+            <ul class="treeview-menu ">
             <?php foreach ($menuItem->getSubItems() as $menuSubItem) {
                 if ($menuSubItem->isVisible()) {
                     if ($menuSubItem->isMenu()) {
