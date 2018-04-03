@@ -773,7 +773,7 @@ require 'Include/Header.php';
           data: "",
           processResults: function (data, params) {
             var results = [];
-            var families = JSON.parse(data).Families
+            var families = data.Families
             $.each(families, function(key, object) {
               results.push({
                 id: object.Id,
