@@ -53,7 +53,7 @@ $rsPeopleWithEmail = RunQuery($sSQL);
               if ($mailchimpList == '') {
                   ?>
               <tr>
-                <td><img src="<?= SystemURLs::getRootPath(); ?>/api/persons/<?= $per_id ?>/thumbnail" alt="User Image" class="user-image initials-image" width="85" height="85" /></td>
+                <td><img src="<?= SystemURLs::getRootPath(); ?>/api/person/<?= $per_id ?>/thumbnail" alt="User Image" class="user-image initials-image" width="85" height="85" /></td>
                 <td><a href='<?=SystemURLs::getRootPath()?>/PersonView.php?PersonID=<?= $per_id ?>'><?= $per_FirstName.' '.$per_LastName ?></a></td>
                 <td><?= $per_Email ?></td>
               </tr>

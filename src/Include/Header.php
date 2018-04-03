@@ -52,7 +52,7 @@ $MenuFirst = 1;
   Header_modals();
   Header_body_scripts();
 
-  $loggedInUserPhoto = SystemURLs::getRootPath().'/api/persons/'.$_SESSION['user']->getId().'/thumbnail';
+  $loggedInUserPhoto = SystemURLs::getRootPath().'/api/person/'.$_SESSION['user']->getId().'/thumbnail';
   $MenuFirst = 1;
   ?>
 
@@ -95,7 +95,7 @@ $MenuFirst = 1;
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" id="dropdown-toggle" data-toggle="dropdown" title="<?= gettext('Your settings and more') ?>">
-              <img src="<?= SystemURLs::getRootPath()?>/api/persons/<?= $_SESSION['user']->getPersonId() ?>/thumbnail" class="user-image initials-image" alt="User Image">
+              <img src="<?= SystemURLs::getRootPath()?>/api/person/<?= $_SESSION['user']->getPersonId() ?>/thumbnail" class="user-image initials-image" alt="User Image">
               <span class="hidden-xs"><?= $_SESSION['user']->getName() ?> </span>
 
             </a>
@@ -104,7 +104,7 @@ $MenuFirst = 1;
                 <table border=0 width="100%">
                 <tr style="border-bottom: 1pt solid white;">
                 <td valign="middle" width=110>
-                  <img width="80" src="<?= SystemURLs::getRootPath()?>/api/persons/<?= $_SESSION['user']->getPersonId() ?>/thumbnail" class="initials-image img-circle no-border" alt="User Image">
+                  <img width="80" src="<?= SystemURLs::getRootPath()?>/api/person/<?= $_SESSION['user']->getPersonId() ?>/thumbnail" class="initials-image img-circle no-border" alt="User Image">
                 </td>
                 <td valign="middle" align="left" >
                   <a href="<?= SystemURLs::getRootPath()?>/PersonView.php?PersonID=<?= $_SESSION['user']->getPersonId() ?>" class="item_link">

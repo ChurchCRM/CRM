@@ -211,7 +211,7 @@ $iGroupID = InputUtils::LegacyFilterInput($_GET['GroupID'], 'int');
             //plot Person
             foreach ($persons as $member) {
                 $latLng = $member->getLatLng();
-                $photoFileThumb = SystemURLs::getRootPath() . '/api/persons/' . $member->getId() . '/thumbnail';
+                $photoFileThumb = SystemURLs::getRootPath() . '/api/person/' . $member->getId() . '/thumbnail';
                 $arr['ID'] = $member->getId();
                 $arr['Salutation'] = $member->getFullName();
                 $arr['Name'] = $member->getFullName();

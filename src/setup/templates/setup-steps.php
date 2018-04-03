@@ -91,19 +91,19 @@ require '../Include/HeaderNotLoggedIn.php';
                 </small>
             </div>
         </section>
-        <h2>Database Setup</h2>
+        <h2>MySQL Database Setup</h2>
         <section>
             <div class="form-group">
-                <label for="DB_SERVER_NAME">Database Server Name</label>
+                <label for="DB_SERVER_NAME">MySQL Database Server Name</label>
                 <input type="text" name="DB_SERVER_NAME" id="DB_SERVER_NAME" class="form-control"
                        aria-describedby="DB_SERVER_NAME_HELP" required>
-                <small id="DB_SERVER_NAME_HELP" class="form-text text-muted"></small>
+                <small id="DB_SERVER_NAME_HELP" class="form-text text-muted">Use localhost over 127.0.0.1</small>
             </div>
             <div class="form-group">
-                <label for="DB_SERVER_PORT">Database Server Port</label>
+                <label for="DB_SERVER_PORT">MySQL Database Server Port</label>
                 <input type="text" name="DB_SERVER_PORT" id="DB_SERVER_PORT" class="form-control"
-                       aria-describedby="DB_SERVER_PORT_HELP" required>
-                <small id="DB_SERVER_PORT_HELP" class="form-text text-muted"></small>
+                       aria-describedby="DB_SERVER_PORT_HELP" required value="3306">
+                <small id="DB_SERVER_PORT_HELP" class="form-text text-muted">Default MySQL Port is 3306</small>
             </div>
             <div class="form-group">
                 <label for="DB_NAME">Database Name</label>
@@ -115,7 +115,7 @@ require '../Include/HeaderNotLoggedIn.php';
                 <label for="DB_USER">Database User</label>
                 <input type="text" name="DB_USER" id="DB_USER" placeholder="churchcrm" class="form-control"
                        aria-describedby="DB_USER_HELP" required>
-                <small id="DB_USER_HELP" class="form-text text-muted">Must have permissions to create tables</small>
+                <small id="DB_USER_HELP" class="form-text text-muted">Must have permissions to create tables and views</small>
             </div>
             <div class="form-group">
                 <label for="DB_PASSWORD">Database Password</label>
