@@ -188,7 +188,7 @@ $bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() ||
         <div class="box box-primary">
             <div class="box-body box-profile">
                 <div class="image-container">
-                    <img src ="<?= SystemURLs::getRootPath().'/api/persons/'.$person->getId().'/photo' ?>"
+                    <img src ="<?= SystemURLs::getRootPath().'/api/person/'.$person->getId().'/photo' ?>"
                          class="initials-image profile-user-img img-responsive img-rounded profile-user-img-md">
                     <?php if ($bOkToEdit): ?>
                         <div class="after">
@@ -518,7 +518,7 @@ $bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() ||
               <tr>
                 <td>
 
-                 <img style="width:40px; height:40px;display:inline-block" src = "<?= $sRootPath.'/api/persons/'.$familyMember->getId().'/thumbnail' ?>" class="initials-image profile-user-img img-responsive img-circle no-border">
+                 <img style="width:40px; height:40px;display:inline-block" src = "<?= $sRootPath.'/api/person/'.$familyMember->getId().'/thumbnail' ?>" class="initials-image profile-user-img img-responsive img-circle no-border">
                   <a href="<?= SystemURLs::getRootPath() ?>/PersonView.php?PersonID=<?= $tmpPersonId ?>" class="user-link"><?= $familyMember->getFullName() ?> </a>
 
 
@@ -952,7 +952,7 @@ $bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() ||
     $("#deletePhoto").click (function () {
         $.ajax({
             type: "POST",
-            url: window.CRM.root + "/api/persons/<?= $iPersonID ?>/photo",
+            url: window.CRM.root + "/api/person/<?= $iPersonID ?>/photo",
             encode: true,
             dataType: 'json',
             data: {
@@ -964,7 +964,7 @@ $bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() ||
     });
 
     window.CRM.photoUploader =  $("#photoUploader").PhotoUploader({
-        url: window.CRM.root + "/api/persons/<?= $iPersonID ?>/photo",
+        url: window.CRM.root + "/api/person/<?= $iPersonID ?>/photo",
         maxPhotoSize: window.CRM.maxUploadSize,
         photoHeight: <?= SystemConfig::getValue("iPhotoHeight") ?>,
         photoWidth: <?= SystemConfig::getValue("iPhotoWidth") ?>,
@@ -986,14 +986,14 @@ $bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() ||
         $("#assigned-properties-table").DataTable(window.CRM.plugin.dataTable);
 
 
-        contentExists(window.CRM.root + "/api/persons/" + window.CRM.currentPersonID + "/photo", function(success) {
+        contentExists(window.CRM.root + "/api/person/" + window.CRM.currentPersonID + "/photo", function(success) {
             if (success) {
                 $("#view-larger-image-btn").removeClass('hide');
 
                 $("#view-larger-image-btn").click(function() {
                     bootbox.alert({
                         title: "<?= gettext('Photo') ?>",
-                        message: '<img class="img-rounded img-responsive center-block" src="<?= SystemURLs::getRootPath() ?>/api/persons/' + window.CRM.currentPersonID + '/photo" />',
+                        message: '<img class="img-rounded img-responsive center-block" src="<?= SystemURLs::getRootPath() ?>/api/person/' + window.CRM.currentPersonID + '/photo" />',
                         backdrop: true
                     });
                 });
