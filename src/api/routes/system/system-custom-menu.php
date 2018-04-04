@@ -22,7 +22,7 @@ function getMenus(Request $request, Response $response, array $args)
 {
     $links = MenuLinkQuery::create()->orderByOrder()->find();
 
-    return $response->withJson($links->toArray());
+    return $response->withJson(["menus" => $links->toArray()]);
 }
 
 
