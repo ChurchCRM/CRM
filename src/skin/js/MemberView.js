@@ -32,7 +32,7 @@ $('.delete-person').click(function (event) {
             if(result) {
                 $.ajax({
                     type: 'DELETE',
-                    url: window.CRM.root + '/api/persons/' + thisLink.data('person_id'),
+                    url: window.CRM.root + '/api/person/' + thisLink.data('person_id'),
                     dataType: 'json',
                     success: function (data, status, xmlHttpReq) {
                         if (thisLink.data('view') == 'family') {

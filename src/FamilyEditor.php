@@ -1070,7 +1070,7 @@ require 'Include/Header.php';
 				</select>
 			</td>
 			<td class="TextColumn">
-			<?php	if (!array_key_exists($iCount, $aperFlags) || !$aperFlags[$iCount] || $_SESSION['bSeePrivacyData']) {
+			<?php	if (!array_key_exists($iCount, $aperFlags) || !$aperFlags[$iCount]) {
                     $UpdateBirthYear = 1; ?>
 				<input name="BirthYear<?= $iCount ?>" type="text" value="<?= $aBirthYears[$iCount] ?>" size="4" maxlength="4">
 				<div><font color="red"><?php if (array_key_exists($iCount, $aBirthDateError)) {

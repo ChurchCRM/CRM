@@ -182,7 +182,7 @@ $bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() || ($_SESSION['user']->i
         <div class="box box-primary">
             <div class="box-body">
                 <div class="image-container">
-                    <img src="<?= SystemURLs::getRootPath() ?>/api/families/<?= $family->getId() ?>/photo" class="img-responsive profile-user-img profile-family-img"/>
+                    <img src="<?= SystemURLs::getRootPath() ?>/api/family/<?= $family->getId() ?>/photo" class="img-responsive profile-user-img profile-family-img"/>
                     <?php if ($bOkToEdit): ?>
                         <div class="after">
                             <div class="buttons">
@@ -365,7 +365,7 @@ $bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() || ($_SESSION['user']->i
                     ?>
                             <tr>
                                 <td>
-                                    <img src="<?= SystemURLs::getRootPath() ?>/api/persons/<?= $person->getId() ?>/thumbnail"
+                                    <img src="<?= SystemURLs::getRootPath() ?>/api/person/<?= $person->getId() ?>/thumbnail"
                                          width="40" height="40"
                                          class="initials-image img-circle"/>
                                     <a href="<?= $person->getViewURI() ?>"
@@ -998,7 +998,7 @@ $bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() || ($_SESSION['user']->i
         });
 
         window.CRM.photoUploader = $("#photoUploader").PhotoUploader({
-            url: window.CRM.root + "/api/families/" + window.CRM.currentFamily + "/photo",
+            url: window.CRM.root + "/api/family/" + window.CRM.currentFamily + "/photo",
             maxPhotoSize: window.CRM.maxUploadSize,
             photoHeight: <?= SystemConfig::getValue("iPhotoHeight") ?>,
             photoWidth: <?= SystemConfig::getValue("iPhotoWidth") ?>,
@@ -1007,7 +1007,7 @@ $bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() || ($_SESSION['user']->i
             }
         });
 
-        contentExists(window.CRM.root + "/api/families/" + window.CRM.currentFamily + "/photo", function (success) {
+        contentExists(window.CRM.root + "/api/family/" + window.CRM.currentFamily + "/photo", function (success) {
             if (success) {
                 $("#view-larger-image-btn").removeClass('hide');
             }

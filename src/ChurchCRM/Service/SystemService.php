@@ -178,7 +178,7 @@ class SystemService
         return $backup;
     }
 
-    public function copyBackupToExternalStorage()
+    public static function copyBackupToExternalStorage()
     {
         if (strcasecmp(SystemConfig::getValue('sExternalBackupType'), 'WebDAV') == 0) {
             if (SystemConfig::getValue('sExternalBackupUsername') && SystemConfig::getValue('sExternalBackupPassword') && SystemConfig::getValue('sExternalBackupEndpoint')) {
@@ -346,7 +346,7 @@ class SystemService
         return $result;
     }
 
-    public function runTimerJobs()
+    public static function runTimerJobs()
     {
         //start the external backup timer job
         if (SystemConfig::getBooleanValue('bEnableExternalBackupTarget') && SystemConfig::getValue('sExternalBackupAutoInterval') > 0) {  //if remote backups are enabled, and the interval is greater than zero
@@ -355,7 +355,7 @@ class SystemService
                 $previous = new \DateTime(SystemConfig::getValue('sLastBackupTimeStamp')); // get a DateTime object for the last time a backup was done.
                 $diff = $previous->diff($now);  // calculate the difference.
                 if (!SystemConfig::getValue('sLastBackupTimeStamp') || $diff->h >= SystemConfig::getValue('sExternalBackupAutoInterval')) {  // if there was no previous backup, or if the interval suggests we do a backup now.
-                    $this->copyBackupToExternalStorage();  // Tell system service to do an external storage backup.
+                    self::copyBackupToExternalStorage();  // Tell system service to do an external storage backup.
                     $now = new \DateTime();  // update the LastBackupTimeStamp.
                     SystemConfig::setValue('sLastBackupTimeStamp', $now->format('Y-m-d H:i:s'));
                 }
@@ -379,7 +379,7 @@ class SystemService
 
     public function downloadLatestRelease()
     {
-        $release = $this->getLatestRelese();
+        $release = $this->getLatestRelease();
         $UpgradeDir = SystemURLs::getDocumentRoot() . '/Upgrade';
         foreach ($release['assets'] as $asset) {
             if ($asset['name'] == "ChurchCRM-" . $release['name'] . ".zip") {

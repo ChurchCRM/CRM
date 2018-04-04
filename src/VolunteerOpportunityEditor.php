@@ -363,17 +363,17 @@ for ($row = 1; $row <= $numRows; $row++) {
         echo '<td class="LabelColumn"><b>'.$row.'</b></td>';
         echo '<td class="TextColumn">';
         if ($row == 1) {
-            echo '<a href="VolunteerOpportunityEditor.php?act=na&amp;row_num='.$row."\"> <img src=\"Images/Spacer.gif\" border=\"0\" width=\"15\" alt=''></a> ";
+            echo '<a href="VolunteerOpportunityEditor.php?act=na&amp;row_num='.$row."\"><i class='fa fa-fw'></i></a>";
         } else {
-            echo '<a href="VolunteerOpportunityEditor.php?act=up&amp;row_num='.$row."\"> <img src=\"Images/uparrow.gif\" border=\"0\" width=\"15\" alt=''></a> ";
+            echo '<a href="VolunteerOpportunityEditor.php?act=up&amp;row_num='.$row."\"> <i class='fa fa-arrow-up'></i></a> ";
         }
         if ($row != $numRows) {
-            echo '<a href="VolunteerOpportunityEditor.php?act=down&amp;row_num='.$row."\"> <img src=\"Images/downarrow.gif\" border=\"0\" width=\"15\" alt=''></a> ";
+            echo '<a href="VolunteerOpportunityEditor.php?act=down&amp;row_num='.$row."\"> <i class='fa fa-arrow-down'></i></a> ";
         } else {
-            echo '<a href="VolunteerOpportunityEditor.php?act=na&amp;row_num='.$row."\"> <img src=\"Images/Spacer.gif\" border=\"0\" width=\"15\" alt=''></a> ";
+            echo '<a href="VolunteerOpportunityEditor.php?act=na&amp;row_num='.$row."\"> <i class='fa fa-fw'></i></a> ";
         }
 
-        echo '<a href="VolunteerOpportunityEditor.php?act=delete&amp;Opp='.$aIDFields[$row]."\"> <img src=\"Images/x.gif\" border=\"0\" width=\"15\" alt=''></a></td>"; ?>
+        echo '<a href="VolunteerOpportunityEditor.php?act=delete&amp;Opp='.$aIDFields[$row]."\"> <i class='fa fa-times'></i></a></td>"; ?>
 
 	   <td class="TextColumn" align="center">
 	   <input type="text" name="<?= $row.'name' ?>" value="<?= htmlentities(stripslashes($aNameFields[$row]), ENT_NOQUOTES, 'UTF-8') ?>" class="form-control" size="20" maxlength="30">

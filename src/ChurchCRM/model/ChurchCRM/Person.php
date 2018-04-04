@@ -3,14 +3,15 @@
 namespace ChurchCRM;
 
 use ChurchCRM\Base\Person as BasePerson;
+use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\dto\Photo;
-use Propel\Runtime\Connection\ConnectionInterface;
-use ChurchCRM\Service\GroupService;
 use ChurchCRM\Emails\NewPersonOrFamilyEmail;
+use ChurchCRM\Service\GroupService;
+use ChurchCRM\Utils\GeoUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use DateTime;
+use Propel\Runtime\Connection\ConnectionInterface;
 
 /**
  * Skeleton subclass for representing a row from the 'person_per' table.

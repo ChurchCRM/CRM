@@ -21,6 +21,7 @@ $container['cache'] = function () {
 // Add middleware to the application
 $app = new App($container);
 
+# Add middleware - executed in reverse order of appearing here.
 $app->add(new VersionMiddleware());
 $app->add(new AuthMiddleware());
 
@@ -37,12 +38,12 @@ require __DIR__ . '/routes/finance/finance-deposits.php';
 require __DIR__ . '/routes/finance/finance-payments.php';
 
 // People (families / persons)
-require __DIR__ . '/routes/people/people-email.php';
+require __DIR__ . '/routes/people/people-family.php';
 require __DIR__ . '/routes/people/people-families.php';
 require __DIR__ . '/routes/people/people-groups.php';
+require __DIR__ . '/routes/people/people-person.php';
 require __DIR__ . '/routes/people/people-persons.php';
 require __DIR__ . '/routes/people/people-properties.php';
-require __DIR__ . '/routes/people/people-roles.php';
 
 // Public
 require __DIR__ . '/routes/public/public.php';
@@ -55,15 +56,15 @@ require __DIR__ . '/routes/public/public-register.php';
 require __DIR__ . '/routes/system/system.php';
 require __DIR__ . '/routes/system/system-custom-fields.php';
 require __DIR__ . '/routes/system/system-database.php';
+require __DIR__ . '/routes/system/system-debug.php';
 require __DIR__ . '/routes/system/system-issues.php';
 require __DIR__ . '/routes/system/system-register.php';
-require __DIR__ . '/routes/system/system-timerjobs.php';
 require __DIR__ . '/routes/system/system-upgrade.php';
 require __DIR__ . '/routes/system/system-custom-menu.php';
 
 // other
 require __DIR__ . '/routes/cart.php';
-require __DIR__ . '/routes/dashboard.php';
+require __DIR__ . '/routes/background.php';
 require __DIR__ . '/routes/geocoder.php';
 require __DIR__ . '/routes/kiosks.php';
 require __DIR__ . '/routes/search.php';

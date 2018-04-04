@@ -1,5 +1,108 @@
 # Changelog
 
+## 3.0.0 (15/03/2018)
+
+#### Enhancements:
+
+- [**UI**][**enhancement**] Admin Menus are hard to find [#4103](https://github.com/ChurchCRM/CRM/issues/4103)
+- [**bug**][**enhancement**] Member Distance is as the crow flies [#3687](https://github.com/ChurchCRM/CRM/issues/3687)
+- [**Good first bug**][**enhancement**] Demo Data changes [#1974](https://github.com/ChurchCRM/CRM/issues/1974)
+- [**Web Report**][**enhancement**] Put all available reports on reports menu [#1193](https://github.com/ChurchCRM/CRM/issues/1193)
+- [**enhancement**] Fundraiser: On/Off Switch  [#528](https://github.com/ChurchCRM/CRM/issues/528)
+- [**Feature: Sunday School**][**enhancement**] Sunday School: Need an On/Off Switch [#527](https://github.com/ChurchCRM/CRM/issues/527)
+
+#### Core Functionality
+
+- [**Feature: Events**][**UI**][**Web Report**] Birthday Calendar: Links [#4110](https://github.com/ChurchCRM/CRM/issues/4110)
+- [**API**][**Security**] Verify expired session also affetcs API [#4099](https://github.com/ChurchCRM/CRM/issues/4099)
+- [**Installation / Upgrade**][**Platform: Database**] menu_links table missing from upgrade script [#4083](https://github.com/ChurchCRM/CRM/issues/4083)
+- [**Installation / Upgrade**][**bug**] 2.10.0 missing from upgrade script [#4082](https://github.com/ChurchCRM/CRM/issues/4082)
+- [**Installation / Upgrade**][**bug**] 2.9.0 upgrade script fails [#4081](https://github.com/ChurchCRM/CRM/issues/4081)
+- [**Backend System**][**Code Smell**][**Installation / Upgrade**] SQL Errors encountered during upgrade are not logged [#4079](https://github.com/ChurchCRM/CRM/issues/4079)
+- [**Installation / Upgrade**][**bug**] Missing files referenced in upgrade.json will cause server hang [#4078](https://github.com/ChurchCRM/CRM/issues/4078)
+- [**Installation / Upgrade**][**bug**] Upgrade.JSON references menu rebuild script [#4077](https://github.com/ChurchCRM/CRM/issues/4077)
+- [**Feature: Events**][**Feature: Members**][**Web Report**] Upcoming Birthday Calendar Shows Last Year\'s Age [#4037](https://github.com/ChurchCRM/CRM/issues/4037)
+- [**Installation / Upgrade**][**Platform: Database**][**Platform: Self-Hosted**][**Platform: Shared Hosting**] Setup Error - Could not connect to MySQL [#4033](https://github.com/ChurchCRM/CRM/issues/4033)
+- [**Installation / Upgrade**][**Localization**][**Web Report**] Is not changing the language to Spanish and the applicacion integrity check [#4032](https://github.com/ChurchCRM/CRM/issues/4032)
+- [**Feature: Events**] Export Calendar does not alert of System Settings is disabled [#4005](https://github.com/ChurchCRM/CRM/issues/4005)
+- [**Code Smell**][**Feature: Reports**] Generate "Confirm data letters" - deprecated methods [#3989](https://github.com/ChurchCRM/CRM/issues/3989)
+- [**Feature: Users**][**Web Report**] Forgot Password Issue [#3987](https://github.com/ChurchCRM/CRM/issues/3987)
+- [**Feature: Reports**][**Web Report**] Reports missing [#3981](https://github.com/ChurchCRM/CRM/issues/3981)
+- [**Feature: Data Import / Export**][**Feature: Events**][**Feature: Members**] Birthdate/ Birthday not show up in calendar [#3980](https://github.com/ChurchCRM/CRM/issues/3980)
+- [**Installation / Upgrade**][**Platform: Shared Hosting**] Error Installing ChurchCRM on Shared Server [#3951](https://github.com/ChurchCRM/CRM/issues/3951)
+- [**Feature: Financial**][**Web Report**][**bug**] Non-deductible amounts still defaults to zero when total amount field is blank [#3925](https://github.com/ChurchCRM/CRM/issues/3925)
+- [**Feature: Emails**][**Web Report**] Email Menu item not working [#3924](https://github.com/ChurchCRM/CRM/issues/3924)
+- [**Feature: Members**][**Web Report**][**please address comments**] Picture not showing on individual print [#3914](https://github.com/ChurchCRM/CRM/issues/3914)
+- [**Installation / Upgrade**][**Web Report**] Integrity Checks [#3913](https://github.com/ChurchCRM/CRM/issues/3913)
+- [**Feature: Events**] Remove "Event Group" [#3900](https://github.com/ChurchCRM/CRM/issues/3900)
+- [**API**][**Feature: Events**][**Web Report**] Error just after calendar is opened [#3795](https://github.com/ChurchCRM/CRM/issues/3795)
+- [**Installation / Upgrade**][**Web Report**] Upgrade from 2.9.2 not working [#3794](https://github.com/ChurchCRM/CRM/issues/3794)
+- [**API**] CANT UPLOAD PICTURES [#3657](https://github.com/ChurchCRM/CRM/issues/3657)
+- [**API**][**Feature: Events**][**New Feature Request**] Provide public Calendar data API [#2146](https://github.com/ChurchCRM/CRM/issues/2146)
+- [**Feature: Members**][**question**] "ghost family" [#1173](https://github.com/ChurchCRM/CRM/issues/1173)
+- [**Feature: Sunday School**][**enhancement**] Sunday School: Need an On/Off Switch [#527](https://github.com/ChurchCRM/CRM/issues/527)
+- [**Feature: Events**][**New Feature Request**] Add Calendar view (google calendar integration) [#22](https://github.com/ChurchCRM/CRM/issues/22)
+
+#### Localization:
+
+- [**Installation / Upgrade**][**Localization**][**Web Report**] Is not changing the language to Spanish and the applicacion integrity check [#4032](https://github.com/ChurchCRM/CRM/issues/4032)
+- [**Localization**] Change Language to Spanish [#3235](https://github.com/ChurchCRM/CRM/issues/3235)
+
+#### Bug fixes:
+
+- [**P0 - Urgent**][**Security**] Changing user password switches to that user context [#4107](https://github.com/ChurchCRM/CRM/issues/4107)
+- [**Installation / Upgrade**][**bug**] 2.10.0 missing from upgrade script [#4082](https://github.com/ChurchCRM/CRM/issues/4082)
+- [**Installation / Upgrade**][**bug**] 2.9.0 upgrade script fails [#4081](https://github.com/ChurchCRM/CRM/issues/4081)
+- [**Installation / Upgrade**][**bug**] Missing files referenced in upgrade.json will cause server hang [#4078](https://github.com/ChurchCRM/CRM/issues/4078)
+- [**Installation / Upgrade**][**bug**] Upgrade.JSON references menu rebuild script [#4077](https://github.com/ChurchCRM/CRM/issues/4077)
+- [**P0 - Urgent**][**UI**][**Web Report**] People Menu Items [#4027](https://github.com/ChurchCRM/CRM/issues/4027)
+- [**Feature: Financial**][**Web Report**][**bug**] Non-deductible amounts still defaults to zero when total amount field is blank [#3925](https://github.com/ChurchCRM/CRM/issues/3925)
+- [**Security**][**bug**] Password Change Screen And Bad Session JavaScript Errors [#3722](https://github.com/ChurchCRM/CRM/issues/3722)
+- [**bug**][**enhancement**] Member Distance is as the crow flies [#3687](https://github.com/ChurchCRM/CRM/issues/3687)
+
+#### Inner Beauty:
+
+- [**Backend System**][**Code Smell**][**Installation / Upgrade**] SQL Errors encountered during upgrade are not logged [#4079](https://github.com/ChurchCRM/CRM/issues/4079)
+- [**Code Smell**][**development**] review and remove $_SESSION['bAddEvent'] [#4001](https://github.com/ChurchCRM/CRM/issues/4001)
+- [**Code Smell**][**Feature: Reports**] Generate "Confirm data letters" - deprecated methods [#3989](https://github.com/ChurchCRM/CRM/issues/3989)
+- [**Code Smell**] Stop using $_SESSION['iUserID'] [#3976](https://github.com/ChurchCRM/CRM/issues/3976)
+- [**Code Smell**] Menu ORM is not optimized  [#3836](https://github.com/ChurchCRM/CRM/issues/3836)
+- [**development**] Evaluate Propel ORM classes [#2441](https://github.com/ChurchCRM/CRM/issues/2441)
+- [**Backend System**][**New Feature Request**][**UI**] Favorites items menu [#2028](https://github.com/ChurchCRM/CRM/issues/2028)
+- [**Backend System**][**UI**][**development**] Move menu configuration out of SQL [#2000](https://github.com/ChurchCRM/CRM/issues/2000)
+- [**Backend System**][**development**] Internal Database settings [#1240](https://github.com/ChurchCRM/CRM/issues/1240)
+
+---
+
+## 2.10.4 (07/02/2018)
+
+#### Enhancements:
+
+- [**Feature: Financial**][**UI**][**Web Report**][**enhancement**] Default value for deposit payment entry [#3758](https://github.com/ChurchCRM/CRM/issues/3758)
+- [**Localization**][**development**][**enhancement**] Create REST APIs for Country & State  [#1931](https://github.com/ChurchCRM/CRM/issues/1931)
+
+#### Core Functionality
+
+- [**Installation / Upgrade**][**Platform: Dependencies**][**Platform: Shared Hosting**][**question**] Noob here - Does ChurchCRM work with Squarespace? Thanks [#3959](https://github.com/ChurchCRM/CRM/issues/3959)
+- [**Installation / Upgrade**] Church CRM fresh install but can't login using default credential [#3952](https://github.com/ChurchCRM/CRM/issues/3952)
+- [**Feature: Emails**][**Web Report**] Email Page - ERR_TOO_MANY_REDIRECTS [#3948](https://github.com/ChurchCRM/CRM/issues/3948)
+- [**API**][**Platform: Self-Hosted**][**Platform: Shared Hosting**][**Web Report**] 0 in families/people/etc. [#3921](https://github.com/ChurchCRM/CRM/issues/3921)
+- [**Feature: Members**][**Feature: Reports**][**Web Report**][**question**] Confirm Data Member Report [#3920](https://github.com/ChurchCRM/CRM/issues/3920)
+- [**API**][**Platform: Self-Hosted**] undefined: /api/timerjobs/run error on all pages [#3909](https://github.com/ChurchCRM/CRM/issues/3909)
+- [**Feature: Financial**][**UI**][**Web Report**][**enhancement**] Default value for deposit payment entry [#3758](https://github.com/ChurchCRM/CRM/issues/3758)
+- [**API**][**Security**] Add API key for access [#3033](https://github.com/ChurchCRM/CRM/issues/3033)
+
+#### Localization:
+
+- [**Localization**][**development**][**enhancement**] Create REST APIs for Country & State  [#1931](https://github.com/ChurchCRM/CRM/issues/1931)
+
+#### Inner Beauty:
+
+- [**Backend System**][**please address comments**] Fatal Error in XAMPP setup [#3627](https://github.com/ChurchCRM/CRM/issues/3627)
+- [**Localization**][**development**][**enhancement**] Create REST APIs for Country & State  [#1931](https://github.com/ChurchCRM/CRM/issues/1931)
+
+---
+
 ## 2.10.3 (13/01/2018)
 
 #### Enhancements:
