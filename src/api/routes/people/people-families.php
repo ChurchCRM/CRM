@@ -75,21 +75,6 @@ $app->group('/families', function () {
         echo $this->FinancialService->getMemberByScanString($scanString);
     });
 
-
-
-    $this->post('/{familyId:[0-9]+}/photo', function ($request, $response, $args) {
-        $input = (object)$request->getParsedBody();
-        $family = FamilyQuery::create()->findPk($args['familyId']);
-        $family->setImageFromBase64($input->imgBase64);
-
-        $response->withJSON(array("status" => "success", "upload" => $upload));
-    });
-
-    $this->delete('/{familyId:[0-9]+}/photo', function ($request, $response, $args) {
-        $family = FamilyQuery::create()->findPk($args['familyId']);
-        return json_encode(array("status" => $family->deletePhoto()));
-    });
-
     /**
      * Update the family status to activated or deactivated with :familyId and :status true/false.
      * Pass true to activate and false to deactivate.     *
