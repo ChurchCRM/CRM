@@ -7,6 +7,9 @@
       {
         options.method="GET"
       }
+      if (options.method != "DELETE") {
+        options.dataType = 'json';	
+      }
       options.url=window.CRM.root+"/api/"+options.path;
       options.contentType =  "application/json";
       options.beforeSend = function(jqXHR, settings) {
