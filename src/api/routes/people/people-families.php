@@ -3,9 +3,7 @@
 /* Contributors Philippe Logel */
 
 // Routes
-use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\MenuEventsCount;
-use ChurchCRM\dto\Photo;
 use ChurchCRM\Emails\FamilyVerificationEmail;
 use ChurchCRM\FamilyQuery;
 use ChurchCRM\Map\FamilyTableMap;
@@ -15,15 +13,10 @@ use ChurchCRM\NoteQuery;
 use ChurchCRM\Person;
 use ChurchCRM\Token;
 use ChurchCRM\TokenQuery;
-use ChurchCRM\Utils\GeoUtils;
-use ChurchCRM\Utils\MiscUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 
 $app->group('/families', function () {
-    $this->get('/{familyId:[0-9]+}', function ($request, $response, $args) {
-        $family = FamilyQuery::create()->findPk($args['familyId']);
-        return $response->withJSON($family->toJSON());
-    });
+
 
     $this->get('/numbers', function ($request, $response, $args) {
         return $response->withJson(MenuEventsCount::getNumberAnniversaries());
@@ -80,32 +73,6 @@ $app->group('/families', function () {
     $this->get('/byCheckNumber/{scanString}', function ($request, $response, $args) {
         $scanString = $args['scanString'];
         echo $this->FinancialService->getMemberByScanString($scanString);
-    });
-
-    $this->get('/{familyId:[0-9]+}/photo', function ($request, $response, $args) {
-        $res = $this->cache->withExpires($response, MiscUtils::getPhotoCacheExpirationTimestamp());
-        $photo = new Photo("Family", $args['familyId']);
-        return $res->write($photo->getPhotoBytes())->withHeader('Content-type', $photo->getPhotoContentType());
-    });
-
-    $this->get('/{familyId:[0-9]+}/thumbnail', function ($request, $response, $args) {
-
-        $res = $this->cache->withExpires($response, MiscUtils::getPhotoCacheExpirationTimestamp());
-        $photo = new Photo("Family", $args['familyId']);
-        return $res->write($photo->getThumbnailBytes())->withHeader('Content-type', $photo->getThumbnailContentType());
-    });
-
-    $this->post('/{familyId:[0-9]+}/photo', function ($request, $response, $args) {
-        $input = (object)$request->getParsedBody();
-        $family = FamilyQuery::create()->findPk($args['familyId']);
-        $family->setImageFromBase64($input->imgBase64);
-
-        $response->withJSON(array("status" => "success", "upload" => $upload));
-    });
-
-    $this->delete('/{familyId:[0-9]+}/photo', function ($request, $response, $args) {
-        $family = FamilyQuery::create()->findPk($args['familyId']);
-        return json_encode(array("status" => $family->deletePhoto()));
     });
 
     $this->post('/{familyId}/verify', function ($request, $response, $args) {
@@ -179,18 +146,5 @@ $app->group('/families', function () {
     });
 
 
-    $this->get('/{familyId:[0-9]+}/geolocation', function ($request, $response, $args) {
-        $familyId = $args["familyId"];
-        $family = FamilyQuery::create()->findPk($familyId);
-        if (!empty($family)) {
-            $familyAddress = $family->getAddress();
-            $familyLatLong = GeoUtils::getLatLong($familyAddress);
 
-            $familyDrivingInfo = GeoUtils::DrivingDistanceMatrix($familyAddress, ChurchMetaData::getChurchAddress());
-            $geoLocationInfo = array_merge($familyDrivingInfo, $familyLatLong);
-
-            return $response->withJson($geoLocationInfo);
-        }
-        return $response->withStatus(404, gettext("FamilyId").  ": " . $familyId . " " . gettext("not found"));
-    });
 });
