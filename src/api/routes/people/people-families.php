@@ -75,40 +75,6 @@ $app->group('/families', function () {
         echo $this->FinancialService->getMemberByScanString($scanString);
     });
 
-    $this->post('/{familyId}/verify', function ($request, $response, $args) {
-        $familyId = $args["familyId"];
-        $family = FamilyQuery::create()->findPk($familyId);
-        if ($family != null) {
-            TokenQuery::create()->filterByType("verifyFamily")->filterByReferenceId($family->getId())->delete();
-            $token = new Token();
-            $token->build("verifyFamily", $family->getId());
-            $token->save();
-            $email = new FamilyVerificationEmail($family->getEmails(), $family->getName(), $token->getToken());
-            if ($email->send()) {
-                $family->createTimeLineNote("verify-link");
-                $response = $response->withStatus(200);
-            } else {
-                $this->Logger->error($email->getError());
-                throw new \Exception($email->getError());
-            }
-        } else {
-            $response = $response->withStatus(404, gettext("FamilyId") . " " . $familyId . " " . gettext("not found"));
-        }
-        return $response;
-    });
-
-    $this->post('/verify/{familyId}/now', function ($request, $response, $args) {
-        $familyId = $args["familyId"];
-        $family = FamilyQuery::create()->findPk($familyId);
-        if ($family != null) {
-            $family->verify();
-            $response = $response->withStatus(200);
-        } else {
-            $response = $response->withStatus(404, gettext("FamilyId"). ": " . $familyId . " ". gettext("not found"));
-        }
-        return $response;
-    });
-
     /**
      * Update the family status to activated or deactivated with :familyId and :status true/false.
      * Pass true to activate and false to deactivate.     *
