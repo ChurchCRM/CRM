@@ -365,7 +365,7 @@ $bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() || ($_SESSION['user']->i
                     ?>
                             <tr>
                                 <td>
-                                    <img src="<?= SystemURLs::getRootPath() ?>/api/persons/<?= $person->getId() ?>/thumbnail"
+                                    <img src="<?= SystemURLs::getRootPath() ?>/api/person/<?= $person->getId() ?>/thumbnail"
                                          width="40" height="40"
                                          class="initials-image img-circle"/>
                                     <a href="<?= $person->getViewURI() ?>"
