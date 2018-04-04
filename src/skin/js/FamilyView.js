@@ -10,7 +10,7 @@ $(document).ready(function () {
     $("#onlineVerify").click(function () {
         $.ajax({
             type: 'POST',
-            url: window.CRM.root + '/api/families/' + window.CRM.currentFamily + '/verify'
+            url: window.CRM.root + '/api/family/' + window.CRM.currentFamily + '/verify'
         })
             .done(function (data, textStatus, xhr) {
                 $('#confirm-verify').modal('hide');
@@ -25,7 +25,7 @@ $(document).ready(function () {
     $("#verifyNow").click(function () {
         $.ajax({
             type: 'POST',
-            url: window.CRM.root + '/api/families/verify/' + window.CRM.currentFamily + '/now'
+            url: window.CRM.root + '/api/family/' + window.CRM.currentFamily + '/verify/now'
         })
             .done(function (data, textStatus, xhr) {
                 $('#confirm-verify').modal('hide');
@@ -53,7 +53,7 @@ $(document).ready(function () {
     $("#deletePhoto").click(function () {
         $.ajax({
             type: "POST",
-            url: window.CRM.root + "/api/families/" + window.CRM.currentFamily + "/photo",
+            url: window.CRM.root + "/api/family/" + window.CRM.currentFamily + "/photo",
             encode: true,
             dataType: 'json',
             data: {
@@ -67,7 +67,7 @@ $(document).ready(function () {
     $("#view-larger-image-btn").click(function () {
         bootbox.alert({
             title: i18next.t('Family Photo'),
-            message: '<img class="img-rounded img-responsive center-block" src="' + window.CRM.root + '/api/families/' + window.CRM.currentFamily + '/photo" />',
+            message: '<img class="img-rounded img-responsive center-block" src="' + window.CRM.root + '/api/family/' + window.CRM.currentFamily + '/photo" />',
             backdrop: true
         });
     });
