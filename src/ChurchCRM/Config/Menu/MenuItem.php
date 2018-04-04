@@ -113,4 +113,21 @@ class MenuItem
         return $this->hasVisibleSubMenus();
     }
 
+    public function openMenu() {
+        foreach ($this->subItems as $item) {
+            if ($item->isActive()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public function isActive()
+    {
+        if (empty($this->uri)) {
+            return false;
+        }
+        return $_SERVER["REQUEST_URI"] == $this->getURI();
+    }
+
 }

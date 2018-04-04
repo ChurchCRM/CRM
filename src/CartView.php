@@ -318,7 +318,7 @@ if (!Cart::HasPeople()) {
                         }
 
                         $personName = $per_FirstName . ' ' . $per_LastName;
-                        $thumbnail = SystemURLs::getRootPath() . '/api/persons/' . $per_ID . '/thumbnail'; ?>
+                        $thumbnail = SystemURLs::getRootPath() . '/api/person/' . $per_ID . '/thumbnail'; ?>
 
                         <tr>
                             <td>

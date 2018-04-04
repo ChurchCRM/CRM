@@ -194,7 +194,7 @@ $iGroupID = InputUtils::LegacyFilterInput($_GET['GroupID'], 'int');
                     //this helps to add head people persons details: otherwise doesn't seems to populate
                     $class = $family->getHeadPeople()[0];
                     $family->getHeadPeople()[0];
-                    $photoFileThumb = SystemURLs::getRootPath() . '/api/families/' . $family->getId() . '/photo';
+                    $photoFileThumb = SystemURLs::getRootPath() . '/api/family/' . $family->getId() . '/photo';
                     $arr['ID'] = $family->getId();
                     $arr['Name'] = $family->getName();
                     $arr['Salutation'] = $family->getSaluation();
@@ -211,7 +211,7 @@ $iGroupID = InputUtils::LegacyFilterInput($_GET['GroupID'], 'int');
             //plot Person
             foreach ($persons as $member) {
                 $latLng = $member->getLatLng();
-                $photoFileThumb = SystemURLs::getRootPath() . '/api/persons/' . $member->getId() . '/thumbnail';
+                $photoFileThumb = SystemURLs::getRootPath() . '/api/person/' . $member->getId() . '/thumbnail';
                 $arr['ID'] = $member->getId();
                 $arr['Salutation'] = $member->getFullName();
                 $arr['Name'] = $member->getFullName();
