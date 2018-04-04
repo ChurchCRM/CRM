@@ -1,6 +1,6 @@
 <?php
 
-// Routes
+use ChurchCRM\Slim\Middleware\Role\FinanceRoleAuthMiddleware;
 
 $app->group('/payments', function () {
     $this->get('/', function ($request, $response, $args) {
@@ -17,4 +17,4 @@ $app->group('/payments', function () {
         $this->FinancialService->deletePayment($groupKey);
         echo json_encode(['status' => 'ok']);
     });
-});
+})->add(new FinanceRoleAuthMiddleware());

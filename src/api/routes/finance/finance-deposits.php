@@ -1,9 +1,9 @@
 <?php
 
-// Routes
 use ChurchCRM\Deposit;
 use ChurchCRM\DepositQuery;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\Slim\Middleware\Role\FinanceRoleAuthMiddleware;
 
 $app->group('/deposits', function () {
     $this->post('', function ($request, $response, $args) {
@@ -83,4 +83,4 @@ $app->group('/deposits', function () {
         return $response->withJSON($Pledges);
 
     });
-});
+})->add(new FinanceRoleAuthMiddleware());
