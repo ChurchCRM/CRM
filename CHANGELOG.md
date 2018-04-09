@@ -1,5 +1,70 @@
 # Changelog
 
+## 3.0.3 (04/04/2018)
+
+#### Enhancements:
+
+- [**Documentation**][**enhancement**] Update SystemConfig to include a doc link  [#2321](https://github.com/ChurchCRM/CRM/issues/2321)
+- [**Performance**][**enhancement**] Photo System: Needs a Batch API [#2205](https://github.com/ChurchCRM/CRM/issues/2205)
+- [**Web Report**][**enhancement**] Sidebar menu should remain open/active for current page [#1843](https://github.com/ChurchCRM/CRM/issues/1843)
+- [**Feature: Members**][**enhancement**] Review All Export Flags and usages [#1396](https://github.com/ChurchCRM/CRM/issues/1396)
+
+#### Core Functionality
+
+- [**Installation / Upgrade**][**Platform: Database**][**Platform: Shared Hosting**] Could not connect to MySQL on 127.0.0.1 on port as USER [#4182](https://github.com/ChurchCRM/CRM/issues/4182)
+- [**Installation / Upgrade**][**bug/regression**] Can't Upgrade past 3.0.0 [#4180](https://github.com/ChurchCRM/CRM/issues/4180)
+- [**API**] Dashboard API Error when session timeout  [#3999](https://github.com/ChurchCRM/CRM/issues/3999)
+- [**Feature: Members**] Unique email address [#3787](https://github.com/ChurchCRM/CRM/issues/3787)
+- [**API**][**Platform: Shared Hosting**][**question**] Uploading Photo [#3044](https://github.com/ChurchCRM/CRM/issues/3044)
+- [**Installation / Upgrade**][**question**] Upgrading to 2.7.2 [#2403](https://github.com/ChurchCRM/CRM/issues/2403)
+- [**Installation / Upgrade**][**Platform: Shared Hosting**][**Security**] 403 Forbidden error [#2400](https://github.com/ChurchCRM/CRM/issues/2400)
+- [**Feature: Members**][**enhancement**] Review All Export Flags and usages [#1396](https://github.com/ChurchCRM/CRM/issues/1396)
+
+#### Performance:
+
+- [**Performance**][**enhancement**] Photo System: Needs a Batch API [#2205](https://github.com/ChurchCRM/CRM/issues/2205)
+
+#### Inner Beauty:
+
+- [**Backend System**][**Code Smell**] Deeplink to pages uses incorrect URL [#4007](https://github.com/ChurchCRM/CRM/issues/4007)
+- [**Backend System**][**New Feature Request**] Add a debug page on the admin Nav [#1420](https://github.com/ChurchCRM/CRM/issues/1420)
+- [**development**] Review System Settings [#1168](https://github.com/ChurchCRM/CRM/issues/1168)
+
+---
+
+## 3.0.2 (30/03/2018)
+*No changelog for this release.*
+
+---
+
+## 3.0.1 (30/03/2018)
+
+#### Core Functionality
+
+- [**Feature: Emails**][**Feature: Members**][**Platform: Dependencies**][**bug**] Church greeter email error [#4160](https://github.com/ChurchCRM/CRM/issues/4160)
+- [**Installation / Upgrade**] HTTP 500 Error [#4151](https://github.com/ChurchCRM/CRM/issues/4151)
+- [**API**][**Security**][**bug**] CodeSmell: Group All Background APIs into single Path [#4148](https://github.com/ChurchCRM/CRM/issues/4148)
+- [**Installation / Upgrade**][**please address comments**][**question**] 426 Upgrade Database [#4139](https://github.com/ChurchCRM/CRM/issues/4139)
+- [**API**][**Feature: Events**][**Web Report**][**bug**] Public Events API is not sorted by Date [#4130](https://github.com/ChurchCRM/CRM/issues/4130)
+- [**Feature: Events**][**Web Report**][**bug**] Calendar Public Views have wrong page title [#4128](https://github.com/ChurchCRM/CRM/issues/4128)
+- [**API**][**P0 - Urgent**][**Security**][**Web Report**][**bug/regression**] Unable to Use API Keys [#4112](https://github.com/ChurchCRM/CRM/issues/4112)
+- [**Feature: Data Import / Export**] Export CSV function is not working - v2.10.3 [#3966](https://github.com/ChurchCRM/CRM/issues/3966)
+- [**Installation / Upgrade**][**bug/regression**] upgrading from churchinfo [#3420](https://github.com/ChurchCRM/CRM/issues/3420)
+
+#### Bug fixes:
+
+- [**Feature: Emails**][**Feature: Members**][**Platform: Dependencies**][**bug**] Church greeter email error [#4160](https://github.com/ChurchCRM/CRM/issues/4160)
+- [**API**][**Security**][**bug**] CodeSmell: Group All Background APIs into single Path [#4148](https://github.com/ChurchCRM/CRM/issues/4148)
+- [**API**][**Feature: Events**][**Web Report**][**bug**] Public Events API is not sorted by Date [#4130](https://github.com/ChurchCRM/CRM/issues/4130)
+- [**Feature: Events**][**Web Report**][**bug**] Calendar Public Views have wrong page title [#4128](https://github.com/ChurchCRM/CRM/issues/4128)
+- [**API**][**P0 - Urgent**][**Security**][**Web Report**][**bug/regression**] Unable to Use API Keys [#4112](https://github.com/ChurchCRM/CRM/issues/4112)
+
+#### Inner Beauty:
+
+- [**build**] Many of our dependencies are out of date [#3601](https://github.com/ChurchCRM/CRM/issues/3601)
+
+---
+
 ## 3.0.0 (15/03/2018)
 
 #### Enhancements:
