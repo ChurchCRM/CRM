@@ -5,7 +5,7 @@ use ChurchCRM\GroupQuery;
 use ChurchCRM\Note;
 use ChurchCRM\Person2group2roleP2g2rQuery;
 use ChurchCRM\PersonQuery;
-use ChurchCRM\Slim\Middleware\Auth\ManageGroupRoleAuthMiddleware;
+use ChurchCRM\Slim\Middleware\Request\Auth\ManageGroupRoleAuthMiddleware;
 
 $app->group('/groups', function () {
     $this->get('/', function () {
