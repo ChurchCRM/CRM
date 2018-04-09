@@ -40,6 +40,7 @@ require __DIR__ . '/routes/finance/finance-payments.php';
 // People (families / persons)
 require __DIR__ . '/routes/people/people-family.php';
 require __DIR__ . '/routes/people/people-families.php';
+require __DIR__ . '/routes/people/people-group.php';
 require __DIR__ . '/routes/people/people-groups.php';
 require __DIR__ . '/routes/people/people-person.php';
 require __DIR__ . '/routes/people/people-persons.php';
