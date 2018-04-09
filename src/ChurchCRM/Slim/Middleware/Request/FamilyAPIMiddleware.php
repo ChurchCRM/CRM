@@ -18,7 +18,7 @@ class FamilyAPIMiddleware
 
         $family = FamilyQuery::create()->findPk($familyId);
         if (empty($family)) {
-            return $response->withStatus(404, gettext("FamilyId"). ": " . $familyId . " ". gettext("not found"));
+            return $response->withStatus(404, "FamilyId: " . $familyId . " ". gettext("not found"));
         }
 
         $request = $request->withAttribute("family", $family);
