@@ -13,7 +13,7 @@ class FamilyAPIMiddleware
 
         $familyId = $request->getAttribute("route")->getArgument("familyId");
         if (empty(trim($familyId))) {
-          return $response->withStatus(400)->withJson(["message" => gettext("Missing"). " FamilyId"]);
+          return $response->withStatus(400, gettext("Missing"). " FamilyId");
         }
 
         $family = FamilyQuery::create()->findPk($familyId);
