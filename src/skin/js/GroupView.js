@@ -189,7 +189,11 @@ function initDataTable() {
         width: 'auto',
         title: i18next.t('Address'),
         render: function (data, type, full, meta) {
-          return full.Person.Address1 + " " + full.Person.Address2;
+          var address = full.Person.Address1;
+          if (full.Person.Address2) {
+              address += " " + full.Person.Address2;
+          }
+          return address;
         }
       },
       {
