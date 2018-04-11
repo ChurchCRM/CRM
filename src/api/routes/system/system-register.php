@@ -2,6 +2,7 @@
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Service\SystemService;
+use ChurchCRM\Slim\Middleware\Role\AdminRoleAuthMiddleware;
 
 $app->group('/register', function () {
     $this->post('', function ($request, $response, $args) {
@@ -36,4 +37,4 @@ $app->group('/register', function () {
 
         return $response->withJson(['status' => 'success']);
     });
-});
+})->add(new AdminRoleAuthMiddleware());
