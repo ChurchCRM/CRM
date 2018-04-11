@@ -1,7 +1,7 @@
 const path = require('path');
 module.exports = {
   entry: {
-    //define entry poins for react apps.
+    'calendar-event-editor' : './src/react/calendar-event-editor.tsx'
   },
   output: {
     path:path.resolve('./src/skin/js-react'),

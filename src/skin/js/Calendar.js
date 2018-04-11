@@ -52,274 +52,6 @@ window.moveEventModal = {
   }
 };
 
-window.NewOrEditEventModal = {
-  getBootboxContent: function() {
-    var frm_str = '<form id="some-form">'
-          + '<table class="table modal-table">'
-          + '<tr>'
-          + "<td class='LabelColumn'><span class='required-field'>*</span>" + i18next.t('Event Type') + ":</td>"
-          + '<td colspan="3" class="TextColumn">'
-          + '<select type="text" id="eventType" value="39"  >'
-          + '</select>'
-          + '</td>'
-          + '</tr>'
-          + '<tr>'
-          + "<td class='LabelColumn'><span class='required-field'>*</span>" + i18next.t('Event Desc') + ":</td>"
-          + '<td colspan="3" class="TextColumn">'
-          + "<textarea id='EventDesc' rows='4' maxlength='100' class='form-control' required >" + i18next.t("Calendar description") + "</textarea>"
-          + '</td>'
-          + '</tr>'
-          + '<tr>'
-          + '<td class="LabelColumn"><span class="required-field">*</span>'
-          + i18next.t("Date Range") + ':'
-          + '</td>'
-          + '<td colspan="3" class="TextColumn">'
-          + '<input type="text" name="EventDateRange" id="EventDateRange" class="form-control"  required>'
-          + '</td>'
-          + '</tr>'
-          + '<tr>'
-          + "<td class='LabelColumn'><span class='required-field'>*</span>" + i18next.t('Pinned Calendars') + ":</td>"
-          + '<td colspan="3" class="TextColumn">'
-          + '<select type="text" multiple="multiple" id="PinnedCalendars" value="39" >'
-          + '</select>'
-          + '</td>'
-          + '</tr>'
-          + '<tr>'
-          + "<td class='LabelColumn' id='ATTENDENCES'>" + i18next.t('Attendance Counts') + ":</td>"
-          + '<td class="TextColumn" colspan="3">'
-          + '<table>'
-          + '<tr>'
-          + "<td><strong>" + i18next.t("Total") + ":&nbsp;</strong></td>"
-          + '<td>'
-          + '<input type="text" id="Total"  class="form-control"  >'
-          + '</td>'
-          + '</tr>'
-          + '<tr>'
-          + "<td><strong>" + i18next.t("Members") + ":&nbsp;</strong></td>"
-          + '<td>'
-          + '<input type="text" id="Members" value="0" size="8" class="form-control"  >'
-          + ' </td>'
-          + '</tr>'
-          + ' <tr>'
-          + "<td><strong>" + i18next.t("Visitors") + ":&nbsp;</strong></td>"
-          + '<td>'
-          + '<input type="text" id="Visitors" value="0" size="8" class="form-control"  >'
-          + '</td>'
-          + '</tr>'
-          + '<tr>'
-          + "<td><strong>" + i18next.t('Attendance Notes: ') + " &nbsp;</strong></td>"
-          + '<td><input type="text" id="EventCountNotes" value="" class="form-control">'
-          + '</td>'
-          + '</tr>'
-          + '</table>'
-          + '</td>'
-          + '</tr>'
-          + '<tr>'
-          + '<td colspan="4" class="TextColumn">' + i18next.t('Event Description') + '<textarea name="EventText" rows="5" cols="80" class="form-control" id="eventPredication"  ></textarea></td>'
-          + '</tr>'
-          + '</table>'
-          + '</form>';
-    var object = $('<div/>').html(frm_str).contents();
-
-    return object
-  },
-  readDOMNewEvent: function() {
-    var e = document.getElementById("eventType");
-      var eventTypeID = e.options[e.selectedIndex].value;
-
-      var EventTitle = $('#EventTitle').val();
-      var EventDesc = $('form #EventDesc').val();
-
-      var eventCalendars = $("#PinnedCalendars").val();
-
-      var Total = $('form #Total').val();
-      var Members = $('form #Members').val();
-      var Visitors = $('form #Visitors').val();
-      var EventCountNotes = $('form #EventCountNotes').val();
-
-      var eventPredication = CKEDITOR.instances['eventPredication'].getData();//$('form #eventPredication').val();
-      var dateRange = $('#EventDateRange').val().split(" - ");
-      var start = moment(dateRange[0],"YYYY-MM-DD HH:mm:ss a").format();
-      var end = moment(dateRange[1],"YYYY-MM-DD HH:mm:ss a").format();
-      var add = false;
-      return {
-          "eventTypeID": eventTypeID,
-          "EventTitle": EventTitle,
-          "EventDesc": EventDesc,
-          "eventCalendars": eventCalendars,
-          "Total": Total,
-          "Members": Members,
-          "Visitors": Visitors,
-          "EventCountNotes": EventCountNotes,
-          "eventPredication": eventPredication,
-          "start": start,
-          "end": end
-        };
-  },
-  saveButtonCallback: function() {
-    var Event = window.NewOrEditEventModal.readDOMNewEvent();
-      window.CRM.APIRequest({
-        method: 'POST',
-        path: 'events',
-        data: JSON.stringify(Event)
-      }).done(function (data) {
-        window.CRM.refreshAllFullCalendarSources();
-        window.NewOrEditEventModal.modal.modal("hide");
-      });
-  },  
-  getSaveButton: function() {
-    return {
-      label: i18next.t("Save"),
-      className: "btn btn-primary pull-right",
-      callback: window.NewOrEditEventModal.saveButtonCallback
-    };
-  },
-  getCancelButton: function() {
-    return {
-      label: i18next.t("Cancel"),
-      className: "btn btn-default pull-left"
-    };
-  },
-  loadCalendars: function() {
-    window.CRM.APIRequest({
-      method: 'GET',
-      path: 'calendars',
-    }).done(function (data) {
-      var calendars = data.Calendars;
-      var elt = document.getElementById("PinnedCalendars");
-      var len = calendars.length;
-      
-      for (i = 0; i < len; ++i) {
-        var option = document.createElement("option");
-        // there is a groups.type in function of the new plan of schema
-        option.text = calendars[i].Name;
-        option.value = calendars[i].Id;
-        elt.appendChild(option);
-      }
-      
-
-    });
-  },
-  loadEventTypes: function() {
-    window.CRM.APIRequest({
-    method: 'GET',
-    path: 'events/types',
-  }).done(function (data) {
-    eventTypes=data.EventTypes;
-    var elt = document.getElementById("eventType");
-    var len = eventTypes.length;
-
-    for (i = 0; i < len; ++i) {
-      var option = document.createElement("option");
-      option.text = eventTypes[i].Name;
-      option.value = eventTypes[i].Id;
-      elt.appendChild(option);
-    }
-
-  });
-  },
-  configureModalUIElements: function(start,end) {
-    // we add the calendars
-    window.NewOrEditEventModal.loadCalendars();
-    window.NewOrEditEventModal.loadEventTypes();
-    if (!start.hasTime())
-    {
-      start.hour(8);
-      start.minute(0);
-      end.hour(8);
-      end.minute(30);
-      end.day(end.day() - 1);
-    }
-    $('#EventDateRange').daterangepicker({
-      timePicker: true,
-      timePickerIncrement: 15,
-      linkedCalendars: true,
-      showDropdowns: true,
-      locale: {
-        format: 'YYYY-MM-DD h:mm A'
-      },
-      minDate: 1 / 1 / 1900,
-      startDate: start.format("YYYY-MM-DD h:mm A"),
-      endDate: end.format("YYYY-MM-DD h:mm A")
-    });
-    $("#PinnedCalendars").select2({ width: '100%' });
-
-    // this will ensure that image and table can be focused
-    $(document).on('focusin', function (e) {
-      e.stopImmediatePropagation();
-    });
-
-    $('#EventTitle').on('click', function () {
-      if (this.defaultValue == i18next.t("Event Title")) {
-        this.defaultValue = '';
-        this.style.color = '#000';
-      }
-      ;
-    });
-
-    $('#EventDesc').on('click', function () {
-      if (this.defaultValue == i18next.t("Calendar description")) {
-        this.defaultValue = '';
-        this.style.color = '#000';
-      }
-      ;
-    });
-
-    // this will create the toolbar for the textarea
-    CKEDITOR.replace('eventPredication', {
-      customConfig: window.CRM.root + '/skin/js/ckeditor/calendar_event_editor_config.js',
-      language: window.CRM.lang,
-      width: '100%'
-    });
-
-    $("#ATTENDENCES").parents("tr").hide();
-  },
-  configureEditModalUIElements: function(event) {
-   $("#PinnedCalendars").val([1]);
-   //todo: make this work!
-  },
-  getNewEventModal: function(start,end) {
-    window.NewOrEditEventModal.mode='new';
-    window.NewOrEditEventModal.modal = bootbox.dialog({
-      message: window.NewOrEditEventModal.getBootboxContent,
-      title: "<input type='text' id='EventTitle' value='" + i18next.t("Event Title") + "' size='30' maxlength='100' class='form-control' required>",
-      buttons: [
-        window.NewOrEditEventModal.getSaveButton(),
-        window.NewOrEditEventModal.getCancelButton()
-      ],
-      show: false,
-      onEscape: function () {
-        window.NewOrEditEventModal.modal.modal("hide");
-      }
-    });
-    window.NewOrEditEventModal.modal.modal("show");
-    window.NewOrEditEventModal.configureModalUIElements(start,end);
-  },
-  getEditEventModal: function(event) {
-    window.NewOrEditEventModal.mode='edit';
-    window.getEventDataFromFullCalendar(event).done(function (data) {
-      var event = data.Events[0];
-      window.NewOrEditEventModal.modal = bootbox.dialog({
-        message: window.NewOrEditEventModal.getBootboxContent,
-        title: "<input type='text' id='EventTitle' value='" + event.Title + "' size='30' maxlength='100' class='form-control'   required>",
-        buttons: [
-          window.NewOrEditEventModal.getSaveButton(),
-          window.NewOrEditEventModal.getCancelButton()
-        ],
-        show: false,
-        onEscape: function () {
-          window.NewOrEditEventModal.modal.modal("hide");
-        }
-      });
-      window.NewOrEditEventModal.modal.modal("show");
-      
-      window.NewOrEditEventModal.configureModalUIElements(moment(event.Start),moment(event.End));
-      window.NewOrEditEventModal.configureEditModalUIElements(event);
-      
-    });
-  }
-};
-
 window.getEventDataFromFullCalendar =  function(fullCalendarEvent) {
    if (fullCalendarEvent.source.url.match(/systemcalendar/g))
     {
@@ -339,99 +71,6 @@ window.CRM.refreshAllFullCalendarSources = function () {
   $(window.CRM.fullcalendar.fullCalendar("getEventSources")).each(function(idx,obj) {
     window.CRM.fullcalendar.fullCalendar("refetchEventSources", obj);
   });
-}
-
-window.displayEventModal = {
-  getBootboxContent: function (event){ 
-    var calendarPinnings ='';
-    $.each(event.CalendarEvents,function (idx,obj) {
-      calendarPinnings += "<li>"+obj.Calendar.Name+"</li>";
-    });
-    var frm_str = '<table class="table modal-table">'
-          + '<tr>'
-          + "<td><span class='required-field'>*</span>" + i18next.t('Event Type') + ":</td>"
-          + '<td colspan="3" class="TextColumn">'
-          + '<p>' + event.Type + "</p>" 
-          + '</td>'
-          + '</tr>'
-          + '<tr>'
-          + "<td class='LabelColumn'><span class='required-field'>*</span>" + i18next.t('Event Desc') + ":</td>"
-          + '<td colspan="3" class="TextColumn">'
-          + '<p>' + event.Desc + "</p>" 
-          + '</td>'
-          + '</tr>'
-          + '<tr>'
-          + '<td class="LabelColumn"><span class="required-field">*</span>'
-          + i18next.t("Date Range") + ':'
-          + '</td>'
-          + '<td colspan="3" class="TextColumn">'
-          + '<p>'+new moment(event.Start).format()+ " - " + new moment(event.End).format() +'</p>' 
-          + '</td>'
-          + '</tr>'
-          + '<tr>'
-          + "<td class='LabelColumn'><span class='required-field'>*</span>" + i18next.t('Pinned Calendars') + ":</td>"
-          + '<td colspan="3" class="TextColumn">'
-          + '<ul>'
-          + calendarPinnings
-          + "</li>"
-          + '</select>'
-          + '</td>'
-          + '</tr>'
-          + '<tr>'
-          + '<td colspan="4" class="TextColumn">' + i18next.t('Event Text') + '<p>'+ event.Text + '</p></td>'
-          + '</tr>'
-          + '</table>'
-          + '</form>';
-    var object = $('<div/>').html(frm_str).contents();
-
-    return object
-  },
-  getButtons: function () {
-    buttons =  [];
-    if (window.CRM.calendarJSArgs.isModifiable) {
-      buttons.push({
-        label: i18next.t("Edit"),
-        className: "btn btn-success",
-        callback: function(){
-          window.location = window.CRM.root + "/ListEvents.php"
-        }
-      });
-    }
-    if (window.CRM.calendarJSArgs.isModifiable) {
-      buttons.push({
-        label: i18next.t("Delete"),
-        className: "btn btn-danger pull-left",
-        callback: function() {
-          window.CRM.APIRequest({
-            method: "DELETE",
-            path: "events/"+window.displayEventModal.event.id
-          }).done(function() {
-            window.CRM.refreshAllFullCalendarSources();
-          });
-        }
-      });
-    }
-    buttons.push({
-      label: i18next.t("Cancel"),
-      className: "btn btn-default pull-right"
-    });
-    return buttons;
-  },
-  getDisplayEventModal: function(event) {
-   window.displayEventModal.event = event;
-   window.getEventDataFromFullCalendar(event).done(function (data) {
-      var bootboxmessage = window.displayEventModal.getBootboxContent(data.Events[0]);
-      window.displayEventModal.modal = bootbox.dialog({
-        title: data.Events[0].Title,
-        message: bootboxmessage,
-        show: true,
-        buttons: window.displayEventModal.getButtons(),
-        onEscape: function () {
-          window.displayEventModal.modal.modal("hide");
-        }
-      });
-    });
-  }
 }
 
 function deleteCalendar(){
@@ -652,6 +291,11 @@ window.newCalendarModal = {
   }
 }
 
+
+window.getDisplayEventModal = function(event) {
+   window.showEventForm(event.id, window.CRM.refreshAllFullCalendarSources);
+  }
+
 function initializeCalendar() {
   //
   // initialize the calendar
@@ -670,61 +314,50 @@ function initializeCalendar() {
     eventDrop: window.moveEventModal.handleEventDrop,
     eventResize: window.moveEventModal.handleEventResize,
     selectHelper: true,
-    select: window.NewOrEditEventModal.getNewEventModal,
-    eventClick: window.displayEventModal.getDisplayEventModal,
+    //select: window.NewOrEditEventModal.getNewEventModal,
+    eventClick: window.getDisplayEventModal,
     locale: window.CRM.lang
   });
 };
 
-function getCalendarFilterElement(calendar,type,parent) {
-  boxId = type+calendar.Id;
-  return '<div class="panel box box-primary" style="border-top: 0px">'+
-            '<div class="box-header" style="background-color:#'+calendar.BackgroundColor+'">' +
-              '<h4 class="box-title">' +
-                '<a data-toggle="collapse" data-parent="#'+parent+'" href="#'+boxId+'" aria-expanded="false" style="color:#'+calendar.ForegroundColor+'; font-size:10pt">' +
-                  calendar.Name+
-                '</a>'+
-              '</h4>'+
-            '</div>'+
-           ' <div id="'+boxId+'" class="panel-collapse collapse" aria-expanded="false" style="">'+
-              '<div class="box-body">'+
-                "<div style='margin-bottom: 10px' class='checkbox'><input checked data-onstyle='info' data-width='100%' data-toggle='toggle' data-on='Show on Calendar' data-off='Hide on Calendar' type='checkbox' id='display-"+boxId+"' class='calendarSelectionBox' data-calendartype='"+type+"' data-calendarname='"+calendar.Name+"' data-calendarid='"+calendar.Id+"'/></div>" +
-                "<div style='margin-bottom: 10px'><a class='btn btn-primary calendarfocus' style='width:100%' data-calendartype='"+type+"' data-calendarname='"+calendar.Name+"' data-calendarid='"+calendar.Id+"'>"+i18next.t('Focus')+"</a></div>"  +
-                (type === "user"  ? '<div><a class="btn btn-warning calendarproperties" data-calendarid="'+calendar.Id+'" style="width:100%; white-space: unset; font-size:10pt">Properties</a></div>' : "") +
-                '</div>'+
-            '</div>'+
-          '</div>';
+function getCalendarFilterElement(calendar,type) {
+  return "<div class='row calendar-filter-row'>" + 
+          "<div class='col-xs-1'>" +
+            "<input type='checkbox' checked class='calendarSelectionBox' data-calendartype='"+type+"' data-calendarname='"+calendar.Name+"' data-calendarid='"+calendar.Id+"'/>"+ 
+          "</div>"+
+          "<div class='col-xs-7'><label for='"+calendar.Name+"'>"+calendar.Name+"</label></div>"+
+          "<div class='col-xs-4'>"+
+            "<div class='calendar-filter-text' style=' color:#"+calendar.ForegroundColor+"; background-color:#"+calendar.BackgroundColor+";'><i class='fa fa-calendar' aria-hidden='true'></i></div>"+
+            (type === "user"  ? "<div class='calendar-filter-text'><i class='calendarproperties fa fa-eye' aria-hidden='true' data-calendarid='"+calendar.Id+"' ></i></div>" :"") +
+        "</div>";
 }
 
-function GetCalendarURL(calendarType, calendarID)
+
+function getFullCalendarSource (caltype,calendarid)
 {
-  var endpoint;
-  if(calendarType=== "user") {
-    endpoint="/api/calendars/"
-  }
-  else if(calendarType === "system")
-  {
-    endpoint="/api/systemcalendars/"
-  }
-  return window.CRM.root+endpoint+calendarID+"/fullcalendar";
+  if(caltype === "user") {
+      endpoint="/api/calendars/"
+    }
+    else if(caltype === "system")
+    {
+      endpoint="/api/systemcalendars/"
+    }
+    eventSourceURL = window.CRM.root +  endpoint + calendarid +"/fullcalendar"
+    return {id: caltype+calendarid, url: eventSourceURL}
 }
 
 function registerCalendarSelectionEvents() {
   
-  
-  $(document).on("change",".calendarSelectionBox", function(event) {
+  $(document).on("click",".calendarSelectionBox", function(event) {
+    console.log("Clicked");
+    var endpoint;
+    var caltype = $(this).data('calendartype');
+    var fullCalObject = getFullCalendarSource(caltype, $(this).data("calendarid"));
     if($(this).is(":checked")){
-      var eventSourceURL = GetCalendarURL($(this).data('calendartype'),$(this).data("calendarid"));
-      var alreadyPresent = window.CRM.fullcalendar.fullCalendar("getEventSources").find(function(element) {
-        return element.url === eventSourceURL;
-      })
-      if (!alreadyPresent) {
-        window.CRM.fullcalendar.fullCalendar("addEventSource",eventSourceURL);
-      }
+      window.CRM.fullcalendar.fullCalendar("addEventSource",fullCalObject);
     }
     else {
-      var eventSourceURL = GetCalendarURL($(this).data('calendartype'),$(this).data("calendarid"));
-      window.CRM.fullcalendar.fullCalendar("removeEventSource", eventSourceURL);
+      window.CRM.fullcalendar.fullCalendar("removeEventSource",fullCalObject);
     }
   });
   
@@ -779,11 +412,11 @@ function showAllUserCalendars() {
   }).done(function (calendars) {
     $("#userCalendars").empty();
     $.each(calendars.Calendars,function(idx,calendar) {
-      $("#userCalendars").append(getCalendarFilterElement(calendar,"user",'userCalendars'));
-
-      window.CRM.fullcalendar.fullCalendar("addEventSource", GetCalendarURL("user",calendar.Id));
+      $("#userCalendars").append(getCalendarFilterElement(calendar,"user"));
+      var fullCalObject = getFullCalendarSource("user", calendar.Id);
+      window.CRM.fullcalendar.fullCalendar("addEventSource",fullCalObject);
     });
-    $(".calendarSelectionBox").filter('input[data-calendartype=user]').bootstrapToggle();
+    
   });
 }
 
@@ -794,10 +427,10 @@ function showAllSystemCalendars() {
   }).done(function (calendars) {
     $("#systemCalendars").empty();
     $.each(calendars.Calendars,function(idx,calendar) {
-      $("#systemCalendars").append(getCalendarFilterElement(calendar,"system",'systemCalendars'))
-      window.CRM.fullcalendar.fullCalendar("addEventSource", GetCalendarURL("system",calendar.Id));
+      $("#systemCalendars").append(getCalendarFilterElement(calendar,"system"));
+       var fullCalObject = getFullCalendarSource("system", calendar.Id);
+      window.CRM.fullcalendar.fullCalendar("addEventSource",fullCalObject);
     });
-    $(".calendarSelectionBox").filter('input[data-calendartype=system]').bootstrapToggle();
   });
 }
 

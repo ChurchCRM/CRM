@@ -6,16 +6,18 @@ use ChurchCRM\CalendarQuery;
 use ChurchCRM\Event;
 use ChurchCRM\EventCounts;
 use ChurchCRM\Slim\Middleware\Request\Auth\AddEventsRoleAuthMiddleware;
+use ChurchCRM\Slim\Middleware\EventsMiddleware;
 use ChurchCRM\Utils\InputUtils;
 use Slim\Http\Response;
+use Slim\Http\Request;
 
 $app->group('/events', function () {
 
     $this->get('/', 'getAllEvents');
     $this->get('', 'getAllEvents');
     $this->get("/types", "getEventTypes");
-    $this->get('/{id}', 'getEvent');
-    $this->get('/{id}/', 'getEvent');
+    $this->get('/{id}', 'getEvent')->add(new EventsMiddleware);
+    $this->get('/{id}/', 'getEvent')->add(new EventsMiddleware);
     $this->get('/{id}/primarycontact', 'getEventPrimaryContact');
     $this->get('/{id}/secondarycontact', 'getEventSecondaryContact');
     $this->get('/{id}/location', 'getEventLocation');
@@ -23,7 +25,7 @@ $app->group('/events', function () {
 
     $this->post('/', 'newEvent')->add(new AddEventsRoleAuthMiddleware());
     $this->post('', 'newEvent')->add(new AddEventsRoleAuthMiddleware());
-    $this->post('/{id}', 'updateEvent')->add(new AddEventsRoleAuthMiddleware());
+    $this->post('/{id}', 'updateEvent')->add(new AddEventsRoleAuthMiddleware())->add(new EventsMiddleware);
     $this->post('/{id}/time', 'setEventTime')->add(new AddEventsRoleAuthMiddleware());
 
     $this->delete("/{id}", 'deleteEvent')->add(new AddEventsRoleAuthMiddleware());
@@ -51,23 +53,10 @@ function getEventTypes($request, Response $response, $args)
     return $response->withStatus(404);
 }
 
-function getEvent($request, Response $response, $args)
+function getEvent(Request $request, Response $response, $args)
 {
-    $Event = EventQuery::Create()
-        ->joinWithEventType()
-        ->useEventTypeQuery()
-        ->select("Name")
-        ->endUse()
-        ->joinWithCalendarEvent()
-        ->useCalendarEventQuery()
-        ->joinWithCalendar()
-        ->endUse()
-        ->findById($args['id']);
-
-    if ($Event) {
-        return $response->write($Event->toJSON());
-    }
-    return $response->withStatus(404);
+    $Event = $request->getAttribute("event");
+    return $response->write($Event->toJSON());
 }
 
 function getEventPrimaryContact($request, $response, $args)
@@ -151,8 +140,17 @@ function newEvent($request, $response, $args)
 
 function updateEvent($request, $response, $args)
 {
-    $input = (object)$request->getParsedBody();
-
+    
+   
+    $e=new Event();
+    //$e->getId();
+    $input = $request->getParsedBody();
+    $Event = $request->getAttribute("event");
+    $id = $Event->getId();
+    $Event->fromArray($input);
+    $Event->setId($id);
+   
+    $Event->save();    
 }
 
 function setEventTime($request, Response $response, $args)
