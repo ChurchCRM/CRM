@@ -29,6 +29,11 @@ $app->group('/person/{personId:[0-9]+}', function () {
 
 $app->group('/person/{personId:[0-9]+}', function () {
 
+    $this->get('', function ($request, $response, $args) {
+        $person = $request->getAttribute("person");
+        return $response->withJSON($person->toArray());
+    });
+
     $this->delete('', function ($request, $response, $args) {
         $person = $request->getAttribute("person");
         if (SessionUser::getId() == $person->getId()) {
