@@ -161,8 +161,6 @@ $iGroupID = InputUtils::LegacyFilterInput($_GET['GroupID'], 'int');
             google.maps.event.addListener(marker, 'click', function () {
                 infowindow.setContent(infowindow_content);
                 infowindow.open(map, marker);
-                //set image/gravtar
-                $('.profile-user-img').initial();
             });
         }
 
