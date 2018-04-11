@@ -73,7 +73,10 @@ echo "=========================================================="
 
 VERSION="$(npm --version)"
 echo "Node vesrion: $VERSION"
-    
+
+# NPM does not function nicely with Vagrant's "shared folders," so 
+# create a mountpoint to a folder in the guest-only filesystem
+
 mountpoint /vagrant/node_modules/ > /dev/null
 ISMOUNTPOINT=$?
 
