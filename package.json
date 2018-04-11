@@ -18,6 +18,15 @@
     },
     "homepage": "http://www.churchcrm.io",
     "devDependencies": {
+        "@types/jquery": "^3.3.1",
+        "@types/react": "^16.1.0",
+        "@types/react-bootstrap": "^0.32.6",
+        "@types/react-dom": "^16.0.4",
+        "@types/react-modal": "^3.1.2",
+        "babel-cli": "^6.26.0",
+        "babel-core": "^6.26.0",
+        "babel-loader": "^7.1.4",
+        "babel-preset-react": "^6.24.1",
         "grunt": "1.0.1",
         "grunt-confirm": "^1.0.7",
         "grunt-contrib-clean": "1.0.0",
@@ -26,10 +35,19 @@
         "grunt-contrib-sass": "1.0.0",
         "grunt-curl": "2.2.0",
         "grunt-poeditor-ab": "0.1.9",
-        "node-sha1": "1.0.1"
+        "node-sha1": "1.0.1",
+        "react": "^16.3.0",
+        "react-bootstrap": "^0.32.1",
+        "react-dom": "^16.3.0",
+        "react-modal": "^3.3.2",
+        "ts-loader": "^4.1.0",
+        "typescript": "^2.8.1",
+        "webpack": "^4.4.1",
+        "webpack-cli": "^2.0.13"
     },
     "dependencies": {
         "admin-lte": "2.3.7",
+        "babel-preset-env": "^1.6.1",
         "bootbox": "4.4.0",
         "bootstrap-show-password": "^1.1.1",
         "bootstrap-toggle": "2.2.2",
@@ -49,7 +67,7 @@
     },
     "scripts": {
         "install": "grunt clean && grunt updateVersions && grunt curl-dir && grunt copy && grunt sass",
-        "postinstall": "grunt genLocaleJSFiles",
+        "postinstall": "grunt genLocaleJSFiles && cp  -R -L ./node_modules/* /home/vagrant/host_node_modules",
         "locale-gen": "locale/update-locale.sh",
         "locale-download": "grunt updateFromPOeditor && grunt genLocaleJSFiles",
         "package": "grunt generateSignatures && grunt compress",
@@ -61,6 +79,7 @@
         "composer-install": "cd src/ && composer install",
         "composer-update": " cd src/ && composer update && composer dump-autoload && cd ../tests/ && composer update",
         "tests-install": "scripts/tests-install.sh",
-        "test": "scripts/tests-run.sh"
+        "test": "scripts/tests-run.sh",
+        "build-react": "webpack"
     }
 }
