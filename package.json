@@ -67,7 +67,7 @@
     },
     "scripts": {
         "install": "grunt clean && grunt updateVersions && grunt curl-dir && grunt copy && grunt sass",
-        "postinstall": "grunt genLocaleJSFiles && cp  -R -L ./node_modules/* /home/vagrant/host_node_modules",
+        "postinstall": "grunt genLocaleJSFiles && scripts/sync-react.sh",
         "locale-gen": "locale/update-locale.sh",
         "locale-download": "grunt updateFromPOeditor && grunt genLocaleJSFiles",
         "package": "grunt generateSignatures && grunt compress",
