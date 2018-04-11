@@ -84,9 +84,7 @@ ISMOUNTPOINT=$?
 if [ $ISMOUNTPOINT -eq 0 ]; then 
     echo "/vagrant/node_modules is a mountpoint - don't touch"
 else
-    echo "/vagrant/node_modules is not a mountpoint - nuke and mount"
-    sudo rm -rf /vagrant/node_modules
-    sudo mkdir /vagrant/node_modules
+    echo "/vagrant/node_modules is not a mountpoint - mount on local filesystem"
     mkdir -p /home/vagrant/node_modules /vagrant/node_modules
     sudo mount --bind /home/vagrant/node_modules/ /vagrant/node_modules
     echo "/home/vagrant/node_modules/ has been mounted to /vagrant/node_modules"
