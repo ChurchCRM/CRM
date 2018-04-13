@@ -127,15 +127,12 @@ require 'Include/Header.php';
             '<?= gettext("Please confirm removal of user status from:") ?> <b>' + userName + '</b></p>',
             callback: function (result) {
                 if (result) {
-                    $.ajax({
-                        method: "POST",
-                        url: window.CRM.root + "/api/users/" + userId,
-                        dataType: "json",
-                        encode: true,
+                    window.CRM.APIRequest({
+                        method: "DELETE",
+                        path: "users/" + userId,
                         data: {"_METHOD": "DELETE"}
-                    }).done(function (data) {
-                        if (data.status == "success")
-                            window.location.href = window.CRM.root + "/UserList.php";
+                    }).done(function () {
+                        window.location.href = window.CRM.root + "/UserList.php";
                     });
                 }
             }
