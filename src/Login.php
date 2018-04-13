@@ -154,7 +154,7 @@ if (isset($LocationFromGet) && $LocationFromGet != '') {
 }
 if ($type == "Lock" && $id > 0) {// this point is important for the photo in a lock session
     $person = PersonQuery::Create()
-              ->findOneByID($_SESSION['user']->getId());
+              ->findOneByID($id);
 } else {
     $type = $_SESSION['iLoginType'] = "";
 }
