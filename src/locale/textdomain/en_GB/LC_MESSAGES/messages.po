@@ -44,7 +44,7 @@ msgstr "Cheque"
 msgid "Scan check"
 msgstr "Scan cheque"
 
-#: Include/Functions.php:828
+#: Include/Functions.php:829
 msgid "Fall"
 msgstr "Autumn"
 
