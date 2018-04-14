@@ -77,11 +77,11 @@ function doBackup(isRemote)
   var endpointURL = "";
   if(isRemote)
   {
-    endpointURL = window.CRM.root +'/api/database/backupRemote';
+    endpointURL = 'database/backupRemote';
   }
   else
   {
-    endpointURL = window.CRM.root +'/api/database/backup';
+    endpointURL = 'database/backup';
   }
   var errorflag =0;
   if ($("input[name=encryptBackup]").is(':checked'))
@@ -112,16 +112,12 @@ function doBackup(isRemote)
     console.log(formData);
 
    //process the form
-   $.ajax({
-      type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
-      url         : endpointURL, // the url where we want to POST
-      data        : JSON.stringify(formData), // our data object
-      dataType    : 'json', // what type of data do we expect back from the server
-      encode      : true,
-      contentType: "application/json; charset=utf-8"
+   window.CRM.APIRequest({
+      method        : 'POST',
+      path         : endpointURL,
+      data        : JSON.stringify(formData)
     })
     .done(function(data) {
-      console.log(data);
       var downloadButton = "<button class=\"btn btn-primary\" id=\"downloadbutton\" role=\"button\" onclick=\"javascript:downloadbutton('"+data.filename+"')\"><i class='fa fa-download'></i>  "+data.filename+"</button>";
       $("#backupstatus").css("color","green");
       if(isRemote)
