@@ -1,16 +1,17 @@
 <?php
 
 use ChurchCRM\Slim\Middleware\Role\AdminRoleAuthMiddleware;
+use Slim\Http\Response;
 
 $app->group('/systemupgrade', function () {
-    $this->get('/downloadlatestrelease', function () {
+    $this->get('/downloadlatestrelease', function ($request, Response $response, $args) {
         $upgradeFile = $this->SystemService->downloadLatestRelease();
-        echo json_encode($upgradeFile);
+       return $response->withJson($upgradeFile);
     });
 
     $this->post('/doupgrade', function ($request, $response, $args) {
         $input = (object)$request->getParsedBody();
         $upgradeResult = $this->SystemService->doUpgrade($input->fullPath, $input->sha1);
-        echo json_encode($upgradeResult);
+        return $response->withJson($upgradeResult);
     });
 })->add(new AdminRoleAuthMiddleware());
