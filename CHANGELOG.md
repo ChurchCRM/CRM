@@ -1,5 +1,23 @@
 # Changelog
 
+## 3.0.4 (13/04/2018)
+
+#### Core Functionality
+
+- [**Code Smell**][**Installation / Upgrade**] Typo on setup page [#4215](https://github.com/ChurchCRM/CRM/issues/4215)
+- [**API**] GroupView.php broken thumbnail image link [#4213](https://github.com/ChurchCRM/CRM/issues/4213)
+- [**API**][**Configuration**][**Feature: Events**][**Web Report**] Calendar Public URLs [#4207](https://github.com/ChurchCRM/CRM/issues/4207)
+- [**API**] Review API Security [#4013](https://github.com/ChurchCRM/CRM/issues/4013)
+- [**Feature: Events**][**Web Report**] Event Time Range [#3724](https://github.com/ChurchCRM/CRM/issues/3724)
+- [**API**][**Feature: Events**] Calendar vCard Export [#3625](https://github.com/ChurchCRM/CRM/issues/3625)
+
+#### Inner Beauty:
+
+- [**Code Smell**][**Installation / Upgrade**] Typo on setup page [#4215](https://github.com/ChurchCRM/CRM/issues/4215)
+- [**Code Smell**] MapUsingGoogle still calls initial JS [#4202](https://github.com/ChurchCRM/CRM/issues/4202)
+
+---
+
 ## 3.0.3 (04/04/2018)
 
 #### Enhancements:
