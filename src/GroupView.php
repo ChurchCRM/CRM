@@ -437,12 +437,9 @@ require 'Include/Header.php';
                     callback: function (result) {
                       if (result)
                       {
-                         $.ajax({
-                            method: "POST",
-                            url: window.CRM.root + "/api/groups/" + window.CRM.currentGroup,
-                            dataType: "json",
-                            encode: true,
-                            data: {"_METHOD": "DELETE"}
+                          window.CRM.APIRequest({
+                            method: "DELETE",
+                            path: "groups/" + window.CRM.currentGroup,
                           }).done(function (data) {
                             if (data.status == "success")
                               window.location.href = window.CRM.root + "/GroupList.php";
