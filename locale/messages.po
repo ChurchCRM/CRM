@@ -10,7 +10,7 @@ msgstr ""
 "#-#-#-#-#  messages.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-06 15:04+0000\n"
+"POT-Creation-Date: 2018-04-13 05:09+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,8 +24,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2018-04-06T15:04:56.047Z\n"
-"PO-Revision-Date: 2018-04-06T15:04:56.047Z\n"
+"POT-Creation-Date: 2018-04-13T05:09:49.054Z\n"
+"PO-Revision-Date: 2018-04-13T05:09:49.054Z\n"
 
 #: AutoPaymentClearAccounts.php:24 CatchCreatePayment.php:71
 #: Include/Functions.php:234
@@ -1732,23 +1732,20 @@ msgstr ""
 msgid "Calendar access token not found"
 msgstr ""
 
+#: ChurchCRM/Slim/Middleware/Request/Auth/ManageGroupRoleAuthMiddleware.php:16
+msgid "User must have Manage Groups permission"
+msgstr ""
+
 #: ChurchCRM/Slim/Middleware/Request/FamilyAPIMiddleware.php:16
+#: ChurchCRM/Slim/Middleware/Request/GroupAPIMiddleware.php:16
 #: ChurchCRM/Slim/Middleware/Request/PersonAPIMiddleware.php:16
 msgid "Missing"
 msgstr ""
 
 #: ChurchCRM/Slim/Middleware/Request/FamilyAPIMiddleware.php:21
-msgid "FamilyId"
-msgstr ""
-
-#: ChurchCRM/Slim/Middleware/Request/FamilyAPIMiddleware.php:21
+#: ChurchCRM/Slim/Middleware/Request/GroupAPIMiddleware.php:21
 #: ChurchCRM/Slim/Middleware/Request/PersonAPIMiddleware.php:21
 msgid "not found"
-msgstr ""
-
-#: ChurchCRM/Slim/Middleware/Request/PersonAPIMiddleware.php:16
-#: ChurchCRM/Slim/Middleware/Request/PersonAPIMiddleware.php:21
-msgid "PersonId"
 msgstr ""
 
 #: ChurchCRM/Slim/Middleware/Role/AddEventsRoleAuthMiddleware.php:14
@@ -7204,19 +7201,19 @@ msgstr ""
 msgid "Please confirm removal of user status from:"
 msgstr ""
 
-#: UserList.php:147 UserList.php:168
+#: UserList.php:144 UserList.php:165
 msgid "Action Confirmation"
 msgstr ""
 
-#: UserList.php:149
+#: UserList.php:146
 msgid "Please confirm reset failed login count"
 msgstr ""
 
-#: UserList.php:170
+#: UserList.php:167
 msgid "Please confirm the password reset of this user"
 msgstr ""
 
-#: UserList.php:180
+#: UserList.php:177
 msgid "Password reset for"
 msgstr ""
 
@@ -7392,48 +7389,48 @@ msgstr ""
 msgid "Activated the Family"
 msgstr ""
 
-#: api/routes/people/people-groups.php:125
+#: api/routes/people/people-groups.php:135
 msgid "Deleted from group"
 msgstr ""
 
-#: api/routes/people/people-groups.php:154
+#: api/routes/people/people-groups.php:164
 msgid "Added to group"
 msgstr ""
 
-#: api/routes/people/people-groups.php:247
-#: api/routes/people/people-groups.php:264
+#: api/routes/people/people-groups.php:250
+#: api/routes/people/people-groups.php:267
 msgid "invalid group id"
 msgstr ""
 
-#: api/routes/people/people-groups.php:251
+#: api/routes/people/people-groups.php:254
 msgid "invalid status value"
 msgstr ""
 
-#: api/routes/people/people-groups.php:268
+#: api/routes/people/people-groups.php:271
 msgid "invalid export value"
 msgstr ""
 
-#: api/routes/people/people-person.php:35
+#: api/routes/people/people-person.php:40
 msgid "Can't delete yourself"
 msgstr ""
 
-#: api/routes/people/people-person.php:38
+#: api/routes/people/people-person.php:43
 msgid "success"
 msgstr ""
 
-#: api/routes/people/people-person.php:70
+#: api/routes/people/people-person.php:75
 msgid "The role could not be found."
 msgstr ""
 
-#: api/routes/people/people-person.php:74
+#: api/routes/people/people-person.php:79
 msgid "The role is already assigned."
 msgstr ""
 
-#: api/routes/people/people-person.php:79
+#: api/routes/people/people-person.php:84
 msgid "The role is successfully assigned."
 msgstr ""
 
-#: api/routes/people/people-person.php:81
+#: api/routes/people/people-person.php:86
 msgid "The role could not be assigned."
 msgstr ""
 
