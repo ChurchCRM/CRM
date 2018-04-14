@@ -327,6 +327,7 @@ class Family extends BaseFamily implements iPhoto
     public function toArray()
     {
       $array = parent::toArray();
+      $array['Address']=$this->getAddress();
       $array['FamilyString']=$this->getFamilyString();
       return $array;
     }

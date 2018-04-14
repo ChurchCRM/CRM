@@ -21,7 +21,7 @@ $sDATABASE = '||DB_NAME||';
 // - if you will be accessing from http://www.yourdomain.com then you would enter '' ... an empty string for a top level installation.
 //
 // NOTE:
-// - the path SHOULD Start end with slash, if not ''.
+// - the path SHOULD Start with slash, if not ''.
 // - the path SHOULD NOT end with slash.
 // - the is case sensitive.
 $sRootPath = '||ROOT_PATH||';

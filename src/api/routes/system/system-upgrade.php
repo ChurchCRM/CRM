@@ -1,6 +1,6 @@
 <?php
 
-// Routes
+use ChurchCRM\Slim\Middleware\Role\AdminRoleAuthMiddleware;
 
 $app->group('/systemupgrade', function () {
     $this->get('/downloadlatestrelease', function () {
@@ -13,4 +13,4 @@ $app->group('/systemupgrade', function () {
         $upgradeResult = $this->SystemService->doUpgrade($input->fullPath, $input->sha1);
         echo json_encode($upgradeResult);
     });
-});
+})->add(new AdminRoleAuthMiddleware());

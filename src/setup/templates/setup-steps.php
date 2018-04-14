@@ -76,7 +76,7 @@ require '../Include/HeaderNotLoggedIn.php';
                     <p/>
                     <i><b>NOTE:</b></i>
                     <p/>
-                    SHOULD Start end with slash.<br/>
+                    SHOULD Start with slash.<br/>
                     SHOULD NOT end with slash.<br/>
                     It is case sensitive.
                     </ul>
