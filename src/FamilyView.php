@@ -982,11 +982,9 @@ $bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() || ($_SESSION['user']->i
                 message: '<p style="color: red">' + popupMessage + '</p>',
                 callback: function (result) {
                     if (result) {
-                        $.ajax({
+                        window.CRM.APIRequest({
                             method: "POST",
-                            url: window.CRM.root + "/api/families/" + window.CRM.currentFamily + "/activate/" + !window.CRM.currentActive,
-                            dataType: "json",
-                            encode: true
+                            path: "families/" + window.CRM.currentFamily + "/activate/" + !window.CRM.currentActive
                         }).done(function (data) {
                             if (data.success == true)
                                 window.location.href = window.CRM.root + "/FamilyView.php?FamilyID=" + window.CRM.currentFamily;
