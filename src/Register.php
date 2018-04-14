@@ -62,13 +62,13 @@ require 'Include/Header.php';
 $(document).ready(function () {
   $("#registerForm").on("submit", function (ev) {
     ev.preventDefault();
-    $.ajax({
-      type: "POST",
-      url: window.CRM.root + "/api/register",
-      data: {
+    window.CRM.APIRequest({
+      method: "POST",
+      path: "register",
+      data: JSON.stringify({
         emailmessage: $("textarea[name=emailmessage]").val(),
         ChurchCRMURL: $("input[name=ChurchCRMURL]").val()
-      },
+      }),
       success: function (data) {
         window.location.href = window.CRM.root+"/";
       }
