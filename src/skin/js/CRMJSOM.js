@@ -10,7 +10,8 @@
       else if (options.method === "DELETE" )
       {
         options.method = "POST";
-        options.data = {"_METHOD" : "DELETE" };
+        options.data = JSON.stringify({"_METHOD" : "DELETE" });
+        options.dataType = 'json';
       }
       else
       {
