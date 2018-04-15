@@ -180,11 +180,11 @@ class SystemService
 
     public static function copyBackupToExternalStorage()
     {
+        $params = new \stdClass();
+        $params->iArchiveType = 3;
         if (strcasecmp(SystemConfig::getValue('sExternalBackupType'), 'WebDAV') == 0) {
             if (SystemConfig::getValue('sExternalBackupUsername') && SystemConfig::getValue('sExternalBackupPassword') && SystemConfig::getValue('sExternalBackupEndpoint')) {
-                $params = new \stdClass();
-                $params->iArchiveType = 3;
-                $backup = $this->getDatabaseBackup($params);
+                $backup = self::getDatabaseBackup($params);
                 $backup->credentials = SystemConfig::getValue('sExternalBackupUsername') . ':' . SystemConfig::getValue('sExternalBackupPassword');
                 $backup->filesize = filesize($backup->saveTo);
                 $fh = fopen($backup->saveTo, 'r');
@@ -204,7 +204,7 @@ class SystemService
             }
         } elseif (strcasecmp(SystemConfig::getValue('sExternalBackupType'), 'Local') == 0) {
             try {
-                $backup = $this->getDatabaseBackup($params);
+                $backup = self::getDatabaseBackup($params);
                 exec('mv ' . $backup->saveTo . ' ' . SystemConfig::getValue('sExternalBackupEndpoint'));
 
                 return $backup;
