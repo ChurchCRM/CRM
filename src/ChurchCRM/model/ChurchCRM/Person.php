@@ -492,4 +492,11 @@ class Person extends BasePerson implements iPhoto
        return $this->getFullName()." ".$this->getAge();
     }
 
+    public function toArray()
+    {
+        $array = parent::toArray();
+        $array['Address']=$this->getAddress();
+        return $array;
+    }
+
 }

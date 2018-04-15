@@ -7,7 +7,14 @@
       {
         options.method="GET"
       }
-      if (options.method != "DELETE") {
+      else if (options.method === "DELETE" )
+      {
+        options.method = "POST";
+        options.data = JSON.stringify({"_METHOD" : "DELETE" });
+        options.dataType = 'json';
+      }
+      else
+      {
         options.dataType = 'json';	
       }
       options.url=window.CRM.root+"/api/"+options.path;
