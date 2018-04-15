@@ -1,6 +1,6 @@
 <?php
 
-namespace ChurchCRM\Slim\Middleware;
+namespace ChurchCRM\Slim\Middleware\Request;
 
 use Slim\Http\Request;
 use Slim\Http\Response;
