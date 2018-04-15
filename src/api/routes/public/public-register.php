@@ -5,13 +5,14 @@ use Slim\Http\Response;
 use ChurchCRM\Person;
 use ChurchCRM\Family;
 use ChurchCRM\Utils\ORMUtils;
+use ChurchCRM\Slim\Middleware\Request\Setting\PublicRegistrationAuthMiddleware;
 
 $app->group('/public/register', function () {
     $this->post('/family', 'registerFamily');
     $this->post('/family/', 'registerFamily');
     $this->post('/person', 'registerPerson');
     $this->post('/person/', 'registerPerson');
-});
+})->add(new PublicRegistrationAuthMiddleware());
 
 function registerFamily(Request $request, Response $response, array $args)
 {
