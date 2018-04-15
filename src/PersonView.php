@@ -950,14 +950,9 @@ $bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() ||
 
 
     $("#deletePhoto").click (function () {
-        $.ajax({
-            type: "POST",
-            url: window.CRM.root + "/api/person/<?= $iPersonID ?>/photo",
-            encode: true,
-            dataType: 'json',
-            data: {
-                "_METHOD": "DELETE"
-            }
+        window.CRM.APIRequest({
+            method: "DELETE",
+            path: "person/<?= $iPersonID ?>/photo"
         }).done(function(data) {
             location.reload();
         });
