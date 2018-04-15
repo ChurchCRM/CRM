@@ -76,6 +76,10 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         <td>PHP Memory Limit</td>
                         <td><?= ini_get('memory_limit') ?></td>
                     </tr>
+                    <tr>
+                        <td>PHP Max Exec</td>
+                        <td><?= ini_get('max_execution_time') ?></td>
+                    </tr>
                 </table>
             </div>
         </div>
