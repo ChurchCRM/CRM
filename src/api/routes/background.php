@@ -1,6 +1,5 @@
 <?php
 
-use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Service\SystemService;
 use Slim\Http\Request;
 use Slim\Http\Response;
