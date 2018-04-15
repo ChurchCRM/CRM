@@ -28,7 +28,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     </tr>
                     <tr>
                         <td><?= gettext("Valid Mail Server Settings") ?></td>
-                        <td><?= SystemConfig::hasValidMailServerSettings() ?></td>
+                        <td><?= SystemConfig::hasValidMailServerSettings() ? "true" : "false" ?></td>
                     </tr>
                 </table>
             </div>
