@@ -21,9 +21,7 @@ select DISTINCT qrp_Description term, "" as translation, "queryparameters_qrp" a
 union all
 select DISTINCT qry_Name as term, "" as translation, "query_qry" as cntx from query_qry 
 union all
-select DISTINCT qry_Description as term, "" as translation, "query_qry" as cntx from query_qry 
-union all
-select DISTINCT content_english as term, "" as translation, "menuconfig_mcf" as cntx    from menuconfig_mcf;';
+select DISTINCT qry_Description as term, "" as translation, "query_qry" as cntx from query_qry';
 foreach ($db->query($query) as $row) {
     $stringFile = $stringsDir.'/'.$row['cntx'].'.php';
     if (!file_exists($stringFile)) {

@@ -21,12 +21,13 @@ require 'Include/Functions.php';
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\UserQuery;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\SessionUser;
 
 // Security: User must be an Admin to access this page.
 // Otherwise, re-direct them to the main menu.
-if (!$_SESSION['bAdmin']) {
-    Redirect('Menu.php');
-    exit;
+if (!SessionUser::isAdmin()) {
+    RedirectUtils::SecurityRedirect("Admin");
 }
 
 // Get all the User records
@@ -63,6 +64,8 @@ require 'Include/Header.php';
                 <tr>
                     <td>
                         <a href="UserEditor.php?PersonID=<?= $user->getId() ?>"><i class="fa fa-pencil"
+                                                                                   aria-hidden="true"></i></a>&nbsp;&nbsp;
+                        <a href="v2/user/<?= $user->getId() ?>"><i class="fa fa-eye"
                                                                                    aria-hidden="true"></i></a>&nbsp;&nbsp;
                         <?php if ($user->getId() != $_SESSION['user']->getId()) {
     ?>
@@ -124,15 +127,12 @@ require 'Include/Header.php';
             '<?= gettext("Please confirm removal of user status from:") ?> <b>' + userName + '</b></p>',
             callback: function (result) {
                 if (result) {
-                    $.ajax({
-                        method: "POST",
-                        url: window.CRM.root + "/api/users/" + userId,
-                        dataType: "json",
-                        encode: true,
+                    window.CRM.APIRequest({
+                        method: "DELETE",
+                        path: "users/" + userId,
                         data: {"_METHOD": "DELETE"}
-                    }).done(function (data) {
-                        if (data.status == "success")
-                            window.location.href = window.CRM.root + "/UserList.php";
+                    }).done(function () {
+                        window.location.href = window.CRM.root + "/UserList.php";
                     });
                 }
             }

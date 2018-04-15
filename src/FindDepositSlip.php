@@ -13,6 +13,7 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\RedirectUtils;
 
 $iDepositSlipID = $_SESSION['iCurrentDeposit'];
 
@@ -20,8 +21,8 @@ $iDepositSlipID = $_SESSION['iCurrentDeposit'];
 $sPageTitle = gettext('Deposit Listing');
 
 // Security: User must have finance permission to use this form
-if (!$_SESSION['bFinance']) {
-    Redirect('index.php');
+if (!$_SESSION['user']->isFinanceEnabled()) {
+    RedirectUtils::Redirect('index.php');
     exit;
 }
 
@@ -80,7 +81,7 @@ require 'Include/Header.php';
       <button type="button" id="exportSelectedRowsCSV" class="btn btn-success exportButton" data-exportType="csv"
               disabled><i class="fa fa-download"></i> <?= gettext('Export Selected Rows (CSV)') ?></button>
       <button type="button" id="generateDepositSlip" class="btn btn-success exportButton" data-exportType="pdf"
-              disabled> <?= gettext('Generate Deposit Split for Selected Rows (PDF)') ?></button>
+              disabled> <?= gettext('Generate Deposit Slip for Selected Rows (PDF)') ?></button>
     </div>
   </div>
 </div>
@@ -99,20 +100,17 @@ require 'Include/Header.php';
         cancel : {
           label: '<?= gettext("Close"); ?>'
         },
-        confirm: { 
+        confirm: {
           label: '<?php echo gettext("Delete"); ?>'
         }
       },
       callback: function ( result ) {
-        if ( result ) 
+        if ( result )
         {
           $.each(deletedRows, function (index, value) {
-            $.ajax({
-              type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
-              url: window.CRM.root + '/api/deposits/' + value.Id, // the url where we want to POST
-              dataType: 'json', // what type of data do we expect back from the server
-              encode: true,
-              data: {"_METHOD": "DELETE"}
+            window.CRM.APIRequest({
+              method: 'DELETE',
+              path: 'deposits/' + value.Id
             })
               .done(function (data) {
                 dataT.rows('.selected').remove().draw(false);

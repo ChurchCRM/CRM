@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: georg
- * Date: 11/12/2016
- * Time: 12:00 PM.
- */
-
 namespace ChurchCRM\data;
 
 class Countries

@@ -15,6 +15,7 @@ require 'Include/LabelFunctions.php';
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\Cart;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\SessionUser;
 
 // Set the page title and include HTML header
 $sPageTitle = gettext('View Your Cart');
@@ -85,12 +86,12 @@ if (!Cart::HasPeople()) {
         </div>
         <div class="box-body">
             <a href="#" id="emptyCart" class="btn btn-app emptyCart"><i class="fa fa-trash"></i><?= gettext('Empty Cart') ?></a>
-            <?php if ($_SESSION['bManageGroups']) {
+            <?php if ($_SESSION['user']->isManageGroupsEnabled()) {
             ?>
                 <a id="emptyCartToGroup" class="btn btn-app"><i class="fa fa-object-ungroup"></i><?= gettext('Empty Cart to Group') ?></a>
             <?php
         }
-        if ($_SESSION['bAddRecords']) {
+        if ($_SESSION['user']->isAddRecordsEnabled()) {
             ?>
             <a href="CartToFamily.php" class="btn btn-app"><i
                         class="fa fa-users"></i><?= gettext('Empty Cart to Family') ?></a>
@@ -99,7 +100,7 @@ if (!Cart::HasPeople()) {
             <a href="CartToEvent.php" class="btn btn-app"><i
                 class="fa fa-ticket"></i><?= gettext('Empty Cart to Event') ?></a>
 
-            <?php if ($bExportCSV) {
+            <?php if (SessionUser::getUser()->isCSVExport()) {
             ?>
                 <a href="CSVExport.php?Source=cart" class="btn btn-app"><i
                             class="fa fa-file-excel-o"></i><?= gettext('CSV Export') ?></a>
@@ -317,7 +318,7 @@ if (!Cart::HasPeople()) {
                         }
 
                         $personName = $per_FirstName . ' ' . $per_LastName;
-                        $thumbnail = SystemURLs::getRootPath() . '/api/persons/' . $per_ID . '/thumbnail'; ?>
+                        $thumbnail = SystemURLs::getRootPath() . '/api/person/' . $per_ID . '/thumbnail'; ?>
 
                         <tr>
                             <td>

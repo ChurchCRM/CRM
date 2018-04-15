@@ -19,6 +19,7 @@ use ChurchCRM\Emails\NewPersonOrFamilyEmail;
 use ChurchCRM\PersonQuery;
 use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\RedirectUtils;
 
 //Set the page title
 $sPageTitle = gettext('Person Editor');
@@ -43,21 +44,21 @@ if ($iPersonID > 0) {
     extract(mysqli_fetch_array($rsPerson));
 
     if (mysqli_num_rows($rsPerson) == 0) {
-        Redirect('Menu.php');
+        RedirectUtils::Redirect('Menu.php');
         exit;
     }
 
     if (!(
-        $_SESSION['bEditRecords'] ||
-        ($_SESSION['bEditSelf'] && $iPersonID == $_SESSION['iUserID']) ||
-        ($_SESSION['bEditSelf'] && $per_fam_ID > 0 && $per_fam_ID == $_SESSION['iFamID'])
+        $_SESSION['user']->isEditRecordsEnabled() ||
+        ($_SESSION['user']->isEditSelfEnabled() && $iPersonID == $_SESSION['user']->getId()) ||
+        ($_SESSION['user']->isEditSelfEnabled() && $per_fam_ID > 0 && $per_fam_ID == $_SESSION['user']->getPerson()->getFamId())
     )
     ) {
-        Redirect('Menu.php');
+        RedirectUtils::Redirect('Menu.php');
         exit;
     }
-} elseif (!$_SESSION['bAddRecords']) {
-    Redirect('Menu.php');
+} elseif (!$_SESSION['user']->isAddRecordsEnabled()) {
+    RedirectUtils::Redirect('Menu.php');
     exit;
 }
 // Get Field Security List Matrix
@@ -301,7 +302,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         // Family will be named by the Last Name.
         if ($iFamily == -1) {
             $sSQL = "INSERT INTO family_fam (fam_Name, fam_Address1, fam_Address2, fam_City, fam_State, fam_Zip, fam_Country, fam_HomePhone, fam_WorkPhone, fam_CellPhone, fam_Email, fam_DateEntered, fam_EnteredBy)
-					VALUES ('".$sLastName."','".$sAddress1."','".$sAddress2."','".$sCity."','".$sState."','".$sZip."','".$sCountry."','".$sHomePhone."','".$sWorkPhone."','".$sCellPhone."','".$sEmail."','".date('YmdHis')."',".$_SESSION['iUserID'].')';
+					VALUES ('".$sLastName."','".$sAddress1."','".$sAddress2."','".$sCity."','".$sState."','".$sZip."','".$sCountry."','".$sHomePhone."','".$sWorkPhone."','".$sCellPhone."','".$sEmail."','".date('YmdHis')."',".$_SESSION['user']->getId().')';
             //Execute the SQL
             RunQuery($sSQL);
             //Get the key back
@@ -327,7 +328,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
             } else {
                 $sSQL .= 'NULL';
             }
-            $sSQL .= ','.$iClassification.",'".date('YmdHis')."',".$_SESSION['iUserID'].',';
+            $sSQL .= ','.$iClassification.",'".date('YmdHis')."',".$_SESSION['user']->getId().',';
 
             if (strlen($dFriendDate) > 0) {
                 $sSQL .= '"'.$dFriendDate.'"';
@@ -343,7 +344,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
 
             $bGetKeyBack = true;
 
-            // Existing person (update)
+        // Existing person (update)
         } else {
             $sSQL = "UPDATE person_per SET per_Title = '".$sTitle."',per_FirstName = '".$sFirstName."',per_MiddleName = '".$sMiddleName."', per_LastName = '".$sLastName."', per_Suffix = '".$sSuffix."', per_Gender = ".$iGender.", per_Address1 = '".$sAddress1."', per_Address2 = '".$sAddress2."', per_City = '".$sCity."', per_State = '".$sState."', per_Zip = '".$sZip."', per_Country = '".$sCountry."', per_HomePhone = '".$sHomePhone."', per_WorkPhone = '".$sWorkPhone."', per_CellPhone = '".$sCellPhone."', per_Email = '".$sEmail."', per_WorkEmail = '".$sWorkEmail."', per_BirthMonth = ".$iBirthMonth.', per_BirthDay = '.$iBirthDay.', '.'per_BirthYear = '.$iBirthYear.', per_fam_ID = '.$iFamily.', per_Fmr_ID = '.$iFamilyRole.', per_cls_ID = '.$iClassification.', per_MembershipDate = ';
             if (strlen($dMembershipDate) > 0) {
@@ -352,11 +353,11 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
                 $sSQL .= 'NULL';
             }
 
-            if ($_SESSION['bFinance']) {
+            if ($_SESSION['user']->isFinanceEnabled()) {
                 $sSQL .= ', per_Envelope = '.$iEnvelope;
             }
 
-            $sSQL .= ", per_DateLastEdited = '".date('YmdHis')."', per_EditedBy = ".$_SESSION['iUserID'].', per_FriendDate =';
+            $sSQL .= ", per_DateLastEdited = '".date('YmdHis')."', per_EditedBy = ".$_SESSION['user']->getId().', per_FriendDate =';
 
             if (strlen($dFriendDate) > 0) {
                 $sSQL .= '"'.$dFriendDate.'"';
@@ -380,7 +381,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
 
 
         $note = new Note();
-        $note->setEntered($_SESSION['iUserID']);
+        $note->setEntered($_SESSION['user']->getId());
         // If this is a new person, get the key back and insert a blank row into the person_custom table
         if ($bGetKeyBack) {
             $sSQL = 'SELECT MAX(per_ID) AS iPersonID FROM person_per';
@@ -433,13 +434,13 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         // Check for redirection to another page after saving information: (ie. PersonEditor.php?previousPage=prev.php?a=1;b=2;c=3)
         if ($sPreviousPage != '') {
             $sPreviousPage = str_replace(';', '&', $sPreviousPage);
-            Redirect($sPreviousPage.$iPersonID);
+            RedirectUtils::Redirect($sPreviousPage.$iPersonID);
         } elseif (isset($_POST['PersonSubmit'])) {
             //Send to the view of this person
-            Redirect('PersonView.php?PersonID='.$iPersonID);
+            RedirectUtils::Redirect('PersonView.php?PersonID='.$iPersonID);
         } else {
             //Reload to editor to add another record
-            Redirect('PersonEditor.php');
+            RedirectUtils::Redirect('PersonEditor.php');
         }
     }
 
@@ -1223,8 +1224,8 @@ require 'Include/Header.php';
     </div>
   <?php
                         } ?>
-    <input type="submit" class="btn btn-primary" value="<?= gettext('Save') ?>" name="PersonSubmit">
-    <?php if ($_SESSION['bAddRecords']) {
+    <input type="submit" class="btn btn-primary" id="PersonSaveButton" value="<?= gettext('Save') ?>" name="PersonSubmit">
+    <?php if ($_SESSION['user']->isAddRecordsEnabled()) {
                             echo '<input type="submit" class="btn btn-primary" value="'.gettext('Save and Add').'" name="PersonSubmitAndAdd">';
                         } ?>
     <input type="button" class="btn btn-primary" value="<?= gettext('Cancel') ?>" name="PersonCancel"

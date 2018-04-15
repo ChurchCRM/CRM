@@ -19,6 +19,7 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Reports\ChurchInfoReport;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\PersonQuery;
+use ChurchCRM\Utils\MiscUtils;
 
 // Get the person ID from the querystring
 $iPersonID = InputUtils::LegacyFilterInput($_GET['PersonID'], 'int');
@@ -55,7 +56,7 @@ $sSQL = $sSQL.'FROM note_nte ';
 $sSQL = $sSQL.'LEFT JOIN person_per a ON nte_EnteredBy = a.per_ID ';
 $sSQL = $sSQL.'LEFT JOIN person_per b ON nte_EditedBy = b.per_ID ';
 $sSQL = $sSQL.'WHERE nte_per_ID = '.$iPersonID.' ';
-$sSQL = $sSQL.'AND (nte_Private = 0 OR nte_Private = '.$_SESSION['iUserID'].')';
+$sSQL = $sSQL.'AND (nte_Private = 0 OR nte_Private = '.$_SESSION['user']->getId().')';
 $rsNotes = RunQuery($sSQL);
 
 // Get the Groups this Person is assigned to
@@ -86,7 +87,7 @@ while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
 }
 
 // Format the BirthDate
-$dBirthDate = FormatBirthDate($per_BirthYear, $per_BirthMonth, $per_BirthDay, '-', $per_Flags);
+$dBirthDate = MiscUtils::FormatBirthDate($per_BirthYear, $per_BirthMonth, $per_BirthDay, '-', $per_Flags);
 //if ($per_BirthMonth > 0 && $per_BirthDay > 0)
 //{
 //	$dBirthDate = $per_BirthMonth . "/" . $per_BirthDay;
@@ -138,8 +139,7 @@ if ($personSheet) {
     echo "<table>";
     echo "	<tr>";
     echo "	<td  style=\"padding:5px;\">";
-    $imgName = str_replace(SystemURLs::getDocumentRoot(), "", $personSheet->getPhoto()->getPhotoURI());
-    
+    $imgName = SystemURLs::getRootPath()."/api/person/".$personSheet->getId()."/photo";
     echo "<img src=\"".$imgName."\"/>";
     echo "</td><td>";
     echo '<b><font size="4">'.$personSheet->getFullName().'</font></b><br>';
@@ -346,9 +346,9 @@ if ($fam_ID) {
             while ($aRow = mysqli_fetch_array($rsFamilyMembers)) {
                 $per_BirthYear = '';
                 $agr_Description = '';
-                
+
                 extract($aRow);
-                
+
                 // Alternate the row style
                 $sRowClass = AlternateRowStyle($sRowClass)
 
@@ -365,8 +365,7 @@ if ($fam_ID) {
 			<td>
 				<?= $sFamRole ?>&nbsp;
 			</td>
-			<td data-birth-date="<?= $per_Flags == 1 ? '' : date_create($per_BirthYear.'-'.$per_BirthMonth.'-'.$per_BirthDay)->format('Y-m-d') ?>">
-			</td>
+      <td><?= MiscUtils::FormatAge($per_BirthMonth, $per_BirthDay, $per_BirthYear, $per_Flags) ?></td>
 		</tr>
 	<?php
             }
@@ -485,7 +484,7 @@ if (mysqli_num_rows($rsAssignedProperties) == 0) {
     echo '</table>';
 }
 
-if ($_SESSION['bNotes']) {
+if ($_SESSION['user']->isNotesEnabled()) {
     echo '<p><b>'.gettext('Notes:').'</b></p>';
 
     // Loop through all the notes

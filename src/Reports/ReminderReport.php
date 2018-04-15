@@ -14,10 +14,11 @@ require '../Include/ReportFunctions.php';
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Reports\ChurchInfoReport;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\RedirectUtils;
 
 // Security
-if (!$_SESSION['bFinance'] && !$_SESSION['bAdmin']) {
-    Redirect('Menu.php');
+if (!$_SESSION['user']->isFinanceEnabled()) {
+    RedirectUtils::Redirect('Menu.php');
     exit;
 }
 
@@ -29,8 +30,8 @@ $pledge_filter = InputUtils::LegacyFilterInput($_POST['pledge_filter']);
 $only_owe = InputUtils::LegacyFilterInput($_POST['only_owe']);
 
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
-if (!$_SESSION['bAdmin'] && SystemConfig::getValue('bCSVAdminOnly')) {
-    Redirect('Menu.php');
+if (!$_SESSION['user']->isAdmin() && SystemConfig::getValue('bCSVAdminOnly')) {
+    RedirectUtils::Redirect('Menu.php');
     exit;
 }
 
@@ -178,7 +179,7 @@ $rsFunds = RunQuery($sSQL);
 class PDF_ReminderReport extends ChurchInfoReport
 {
     // Constructor
-    public function PDF_ReminderReport()
+    public function __construct()
     {
         parent::__construct('P', 'mm', $this->paperFormat);
 

@@ -3,12 +3,15 @@
 namespace ChurchCRM;
 
 use ChurchCRM\Base\Person as BasePerson;
+use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\dto\Photo;
-use Propel\Runtime\Connection\ConnectionInterface;
-use ChurchCRM\Service\GroupService;
 use ChurchCRM\Emails\NewPersonOrFamilyEmail;
+use ChurchCRM\Service\GroupService;
+use ChurchCRM\Utils\GeoUtils;
+use ChurchCRM\Utils\LoggerUtils;
+use DateTime;
+use Propel\Runtime\Connection\ConnectionInterface;
 
 /**
  * Skeleton subclass for representing a row from the 'person_per' table.
@@ -46,20 +49,38 @@ class Person extends BasePerson implements iPhoto
         return $this->getFlags() == 1 || $this->getBirthYear() == '' || $this->getBirthYear() == '0';
     }
 
-    public function getBirthDate()
+    private function getBirthDate()
     {
         if (!is_null($this->getBirthDay()) && $this->getBirthDay() != '' &&
             !is_null($this->getBirthMonth()) && $this->getBirthMonth() != ''
         ) {
             $birthYear = $this->getBirthYear();
-            if ($this->hideAge()) {
-                $birthYear = 1900;
+            if ($birthYear == '')
+            {
+              $birthYear = 1900;
             }
-
             return date_create($birthYear . '-' . $this->getBirthMonth() . '-' . $this->getBirthDay());
         }
+        return false;
 
-        return date_create();
+
+    }
+
+    public function getFormattedBirthDate()
+    {
+      $birthDate = $this->getBirthDate();
+      if (!$birthDate) {
+        return false;
+      }
+      if ($this->hideAge())
+      {
+        return $birthDate->format(SystemConfig::getValue("sDateFormatNoYear"));
+      }
+      else
+      {
+        return $birthDate->format(SystemConfig::getValue("sDateFormatLong"));
+      }
+
     }
 
     public function getViewURI()
@@ -91,36 +112,41 @@ class Person extends BasePerson implements iPhoto
 
     public function postInsert(ConnectionInterface $con = null)
     {
-      $this->createTimeLineNote(true);
+      $this->createTimeLineNote('create');
       if (!empty(SystemConfig::getValue("sNewPersonNotificationRecipientIDs")))
       {
         $NotificationEmail = new NewPersonOrFamilyEmail($this);
         if (!$NotificationEmail->send()) {
-          $logger->warn($NotificationEmail->getError());
+            LoggerUtils::getAppLogger()->warn(gettext("New Person Notification Email Error"). " :". $NotificationEmail->getError());
         }
       }
     }
 
     public function postUpdate(ConnectionInterface $con = null)
     {
-        $this->createTimeLineNote(false);
+      if (!empty($this->getDateLastEdited())) {
+        $this->createTimeLineNote('edit');
+      }
     }
 
-    private function createTimeLineNote($new)
+    private function createTimeLineNote($type)
     {
         $note = new Note();
         $note->setPerId($this->getId());
+        $note->setType($type);
+        $note->setDateEntered(new DateTime());
 
-        if ($new) {
-            $note->setText(gettext('Created'));
-            $note->setType('create');
-            $note->setEnteredBy($this->getEnteredBy());
-            $note->setDateEntered($this->getDateEntered());
-        } else {
-            $note->setText(gettext('Updated'));
-            $note->setType('edit');
-            $note->setEnteredBy($this->getEditedBy());
-            $note->setDateLastEdited($this->getDateLastEdited());
+         switch ($type) {
+            case "create":
+              $note->setText(gettext('Created'));
+              $note->setEnteredBy($this->getEnteredBy());
+              $note->setDateEntered($this->getDateEntered());
+              break;
+            case "edit":
+              $note->setText(gettext('Updated'));
+              $note->setEnteredBy($this->getEditedBy());
+              $note->setDateEntered($this->getDateLastEdited());
+              break;
         }
 
         $note->save();
@@ -217,12 +243,12 @@ class Person extends BasePerson implements iPhoto
 
     public function deletePhoto()
     {
-        if ($_SESSION['bAddRecords'] || $bOkToEdit) {
+        if ($_SESSION['user']->isDeleteRecordsEnabled()) {
             if ($this->getPhoto()->delete()) {
                 $note = new Note();
                 $note->setText(gettext("Profile Image Deleted"));
                 $note->setType("photo");
-                $note->setEntered($_SESSION['iUserID']);
+                $note->setEntered($_SESSION['user']->getId());
                 $note->setPerId($this->getId());
                 $note->save();
                 return true;
@@ -233,7 +259,7 @@ class Person extends BasePerson implements iPhoto
 
     public function getPhoto()
     {
-      if (!$this->photo) 
+      if (!$this->photo)
       {
         $this->photo = new Photo("Person",  $this->getId());
       }
@@ -242,11 +268,11 @@ class Person extends BasePerson implements iPhoto
 
     public function setImageFromBase64($base64)
     {
-        if ($_SESSION['bAddRecords'] || $bOkToEdit) {
+        if ($_SESSION['user']->isEditRecordsEnabled()) {
             $note = new Note();
             $note->setText(gettext("Profile Image uploaded"));
             $note->setType("photo");
-            $note->setEntered($_SESSION['iUserID']);
+            $note->setEntered($_SESSION['user']->getId());
             $this->getPhoto()->setImageFromBase64($base64);
             $note->setPerId($this->getId());
             $note->save();
@@ -395,62 +421,82 @@ class Person extends BasePerson implements iPhoto
             $user->delete($con);
         }
 
-        PersonVolunteerOpportunityQuery::create()->filterByPersonId($this->getId())->find($con)->delete();
+        PersonVolunteerOpportunityQuery::create()->filterByPersonId($this->getId())->delete($con);
 
-        PersonPropertyQuery::create()->filterByPerson($this)->find($con)->delete();
+        PropertyQuery::create()
+            ->filterByProClass("p")
+            ->useRecordPropertyQuery()
+            ->filterByRecordId($this->getId())
+            ->delete($con);
 
-        NoteQuery::create()->filterByPerson($this)->find($con)->delete();
+        NoteQuery::create()->filterByPerson($this)->delete($con);
 
         return parent::preDelete($con);
     }
-    
+
+    public function getProperties() {
+        $personProperties = PropertyQuery::create()
+            ->filterByProClass("p")
+            ->useRecordPropertyQuery()
+            ->filterByRecordId($this->getId())
+            ->find();
+        return $personProperties;
+    }
+
     public function getNumericCellPhone()
     {
       return "1".preg_replace('/[^\.0-9]/',"",$this->getCellPhone());
     }
-    
+
     public function postSave(ConnectionInterface $con = null) {
       $this->getPhoto()->refresh();
       return parent::postSave($con);
     }
-    
-    
-    /* Philippe Logel 2017 */
-    public function getAge()
+
+    public function getAge($now = null)
     {
-       $birthD = $this->getBirthDate();
-   
-       if ($this->hideAge() == 1) 
-       {
-            return '';
-       }
+      $birthDate = $this->getBirthDate();
 
-       $ageSuffix = gettext('Unknown');
+      if ($this->hideAge())
+      {
+        return false;
+      }
+      if (empty($now)) {
+        $now = date_create('today');
+      }
+      $age = date_diff($now,$birthDate);
 
-       $now = date_create('today');
-       $age = date_diff($now,$birthD);
+      if ($age->y < 1) {
+        $ageValue = $age->m;
+        if ($age->m > 1) {
+          $ageSuffix = gettext('mos old');
+        } else {
+          $ageSuffix = gettext('mo old');
+        }
+      } else {
+        $ageValue = $age->y;
+        if ($age->y > 1) {
+          $ageSuffix = gettext('yrs old');
+        } else {
+          $ageSuffix = gettext('yr old');
+        }
+      }
 
-       if ($age->y < 1) {
-         if ($age->m > 1) {
-           $ageSuffix = gettext('mos old');
-         } else {
-           $ageSuffix = gettext('mo old');
-         }
-       } else {
-         if ($age->y > 1) {
-           $ageSuffix = gettext('yrs old');
-         } else {
-           $ageSuffix = gettext('yr old');
-         }
-       }
+      return $ageValue. " ".$ageSuffix;
 
-       return $age->y." ".$ageSuffix;
     }
-    
+
     /* Philippe Logel 2017 */
     public function getFullNameWithAge()
     {
        return $this->getFullName()." ".$this->getAge();
+    }
+
+    public function toArray()
+    {
+        $array = parent::toArray();
+        $array['Address']=$this->getAddress();
+        return $array;
     }
 
 }

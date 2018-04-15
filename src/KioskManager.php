@@ -98,7 +98,6 @@ require 'Include/Header.php';
 
   })
   
-  window.CRM.events.getFutureEventes();
  
   $(document).on("change",".assignmentMenu",function(event){
     var kioskId = $(event.currentTarget).data("kioskid");

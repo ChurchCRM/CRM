@@ -14,9 +14,13 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 require 'Include/ReportFunctions.php';
 
+use ChurchCRM\dto\Cart;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\ListOptionQuery;
+use ChurchCRM\Utils\MiscUtils;
+use ChurchCRM\dto\Classification;
+use ChurchCRM\Utils\RedirectUtils;
 
 $delimiter = SystemConfig::getValue("sCSVExportDelemiter");
 
@@ -43,9 +47,8 @@ if ($sFormat == 'rollup') {
 }
 
 //Get membership classes
-$rsMembershipClasses = ListOptionQuery::create()->filterByID('1')->orderByOptionId()->find();
 $memberClass = array(0);
-foreach ($rsMembershipClasses as $Member) {
+foreach (Classification::getAll() as $Member) {
     $memberClass[] = $Member->getOptionName();
 }
 
@@ -205,9 +208,9 @@ if ($sFormat == 'addtocart') {
     $rsLabelsToWrite = RunQuery($sSQL);
     while ($aRow = mysqli_fetch_array($rsLabelsToWrite)) {
         extract($aRow);
-        AddToPeopleCart($per_ID);
+        Cart::AddPerson($per_ID);
     }
-    Redirect('CartView.php');
+    RedirectUtils::Redirect('CartView.php');
 } else {
     // Build the complete SQL statement
 
@@ -341,7 +344,7 @@ if ($sFormat == 'addtocart') {
 
     header('Content-type: text/x-csv;charset='.SystemConfig::getValue("sCSVExportCharset"));
     header('Content-Disposition: attachment; filename=churchcrm-export-'.date(SystemConfig::getValue("sDateFilenameFormat")).'.csv');
-    
+
     //add BOM to fix UTF-8 in Excel 2016 but not under, so the problem is solved with the sCSVExportCharset variable
     if (SystemConfig::getValue("sCSVExportCharset") == "UTF-8") {
         echo "\xEF\xBB\xBF";
@@ -498,8 +501,7 @@ if ($sFormat == 'addtocart') {
 
                     if (isset($_POST['Age'])) {
                         if (isset($per_BirthYear)) {
-                            $birthdate = $per_BirthYear.'-'.$per_BirthMonth.'-'.$per_BirthDay.' 00:00:00';
-                            $age = FormatAgeSuffix($birthDate, 0);
+                            $age = MiscUtils::FormatAge($per_BirthMonth, $per_BirthDay, $per_BirthYear, 0);
                         } else {
                             $age = '';
                         }

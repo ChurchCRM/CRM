@@ -15,6 +15,7 @@ require 'Include/Functions.php';
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\RedirectUtils;
 
 //Set the page title
 $sPageTitle = gettext('Query View');
@@ -24,8 +25,8 @@ $iQueryID = InputUtils::LegacyFilterInput($_GET['QueryID'], 'int');
 
 $aFinanceQueries = explode(',', SystemConfig::getValue('aFinanceQueries'));
 
-if (!$_SESSION['bFinance'] && in_array($iQueryID, $aFinanceQueries)) {
-    Redirect('Menu.php');
+if (!$_SESSION['user']->isFinanceEnabled() && in_array($iQueryID, $aFinanceQueries)) {
+    RedirectUtils::Redirect('Menu.php');
     exit;
 }
 
@@ -193,12 +194,12 @@ function DoQuery()
     //Run the SQL
     $rsQueryResults = RunQuery($qry_SQL); ?>
 <div class="box box-primary">
-    
+
     <div class="box-body">
         <p class="text-right">
             <?= $qry_Count ? mysqli_num_rows($rsQueryResults).gettext(' record(s) returned') : ''; ?>
         </p>
-        
+
         <div class="table-responsive">
         <table class="table table-striped">
             <thead>
@@ -242,7 +243,7 @@ function DoQuery()
         </table>
         </div>
     </div>
-    
+
     <div class="box-footer">
         <p>
         <?php if (count($aHiddenFormField)): ?>
@@ -256,7 +257,7 @@ function DoQuery()
             </form>
         <?php endif; ?>
         </p>
-        
+
         <p class="text-right">
             <?= '<a href="QueryView.php?QueryID='.$iQueryID.'">'.gettext('Run Query Again').'</a>'; ?>
         </p>
@@ -294,9 +295,9 @@ function DisplayQueryInfo()
 function getQueryFormInput($queryParameters)
 {
     global $aErrorText;
-    
+
     extract($queryParameters);
-    
+
     $input = '';
     $label = '<label>' . gettext($qrp_Name) . '</label>';
     $helpMsg = '<div>' . gettext($qrp_Description) . '</div>';
@@ -315,7 +316,7 @@ function getQueryFormInput($queryParameters)
 
             $input = '<select name="'.$qrp_Alias.'" class="form-control">';
             $input .= '<option disabled selected value> -- ' . gettext("select an option"). ' -- </option>';
-            
+
             //Loop through the parameter options
             while ($ThisRow = mysqli_fetch_array($rsParameterOptions)) {
                 extract($ThisRow);
@@ -341,15 +342,15 @@ function getQueryFormInput($queryParameters)
             $input .= '</select>';
             break;
     }
-    
+
     $helpBlock = '<div class="help-block">' . $helpMsg . '</div>';
-    
+
     if ($aErrorText[$qrp_Alias]) {
         $errorMsg = '<div>' . $aErrorText[$qrp_Alias] . '</div>';
         $helpBlock = '<div class="help-block">' . $helpMsg . $errorMsg . '</div>';
         return '<div class="form-group has-error">' . $label . $input . $helpBlock . '</div>';
     }
-    
+
     return '<div class="form-group">' . $label . $input . $helpBlock . '</div>';
 }
 
@@ -360,11 +361,11 @@ function DisplayParameterForm()
     global $iQueryID; ?>
 <div class="row">
     <div class="col-md-8">
-        
+
         <div class="box box-primary">
-            
+
             <div class="box-body">
-            
+
                 <form method="post" action="QueryView.php?QueryID=<?= $iQueryID ?>">
 <?php
 //Loop through the parameters and display an entry box for each one
@@ -374,17 +375,17 @@ if (mysqli_num_rows($rsParameters)) {
     while ($aRow = mysqli_fetch_array($rsParameters)) {
         echo getQueryFormInput($aRow);
     } ?>
-                    
+
                     <div class="form-group text-right">
                         <input class="btn btn-primary" type="Submit" value="<?= gettext("Execute Query") ?>" name="Submit">
                     </div>
                 </form>
-                
+
             </div>
         </div> <!-- box -->
-        
+
     </div>
-    
+
 </div>
 <?php
 }

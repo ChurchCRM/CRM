@@ -13,6 +13,7 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\RedirectUtils;
 
 $iPaddleNumID = InputUtils::LegacyFilterInputArr($_GET, 'PaddleNumID', 'int');
 $linkBack = InputUtils::LegacyFilterInputArr($_GET, 'linkBack');
@@ -76,7 +77,7 @@ if (isset($_POST['PaddleNumSubmit']) || isset($_POST['PaddleNumSubmitAndAdd']) |
         $sSQL = 'INSERT INTO paddlenum_pn (pn_fr_ID, pn_Num, pn_per_ID)
 		         VALUES ('.$iCurrentFundraiser.",'".$iNum."','".$iPerID."')";
         $bGetKeyBack = true;
-        // Existing record (update)
+    // Existing record (update)
     } else {
         $sSQL = 'UPDATE paddlenum_pn SET pn_fr_ID = '.$iCurrentFundraiser.", pn_Num = '".$iNum."', pn_per_ID = '".$iPerID."'";
         $sSQL .= ' WHERE pn_ID = '.$iPaddleNumID;
@@ -94,13 +95,13 @@ if (isset($_POST['PaddleNumSubmit']) || isset($_POST['PaddleNumSubmitAndAdd']) |
     }
 
     if (isset($_POST['PaddleNumSubmit'])) {
-        Redirect('PaddleNumEditor.php?PaddleNumID='.$iPaddleNumID.'&linkBack='.$linkBack);
+        RedirectUtils::Redirect('PaddleNumEditor.php?PaddleNumID='.$iPaddleNumID.'&linkBack='.$linkBack);
     } elseif (isset($_POST['PaddleNumSubmitAndAdd'])) {
         //Reload to editor to add another record
-        Redirect("PaddleNumEditor.php?CurrentFundraiser=$iCurrentFundraiser&linkBack=", $linkBack);
+        RedirectUtils::Redirect("PaddleNumEditor.php?CurrentFundraiser=$iCurrentFundraiser&linkBack=", $linkBack);
     } elseif (isset($_POST['GenerateStatement'])) {
         //Jump straight to generating the statement report
-        Redirect("Reports/FundRaiserStatement.php?PaddleNumID=$iPaddleNumID");
+        RedirectUtils::Redirect("Reports/FundRaiserStatement.php?PaddleNumID=$iPaddleNumID");
     }
 } else {
 
@@ -145,7 +146,7 @@ require 'Include/Header.php';
 		<td align="center">
 			<input type="submit" class="btn" value="<?= gettext('Save') ?>" name="PaddleNumSubmit">
 			<input type="submit" class="btn" value="<?= gettext('Generate Statement') ?>" name="GenerateStatement">
-			<?php if ($_SESSION['bAddRecords']) {
+			<?php if ($_SESSION['user']->isAddRecordsEnabled()) {
     echo '<input type="submit" class="btn" value="'.gettext('Save and Add')."\" name=\"PaddleNumSubmitAndAdd\">\n";
 } ?>
 			<input type="button" class="btn" value="<?= gettext('Back') ?>" name="PaddleNumCancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) {
@@ -166,7 +167,7 @@ require 'Include/Header.php';
 					<td class="LabelColumn"><?= gettext('Number') ?>:</td>
 					<td class="TextColumn"><input type="text" name="Num" id="Num" value="<?= $iNum ?>"></td>
 				</tr>
-				
+
 				<tr>
 					<td class="LabelColumn"><?= gettext('Buyer') ?>:
 					</td>
@@ -185,13 +186,13 @@ require 'Include/Header.php';
                                 echo ' '.FormatAddressLine($fam_Address1, $fam_City, $fam_State);
                             }
                             ?>
-	
+
 						</select>
 					</td>
 				</tr>
 			</table>
 			</td>
-		
+
 			<td width="50%" valign="top" align="center">
 			<table cellpadding="3">
 					<?php
@@ -214,11 +215,11 @@ require 'Include/Header.php';
 					<?php
                     }
                     ?>
-				
+
 			</table>
 			</td>
 			</tr>
-			
+
 			</table>
 			</tr>
 	</table>

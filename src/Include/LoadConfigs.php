@@ -28,19 +28,22 @@ use ChurchCRM\Utils\LoggerUtils;
 
 function system_failure($message, $header = 'Setup failure')
 {
+    if (!SystemConfig::isInitialized()) {
+        SystemConfig::init();
+    }
     require 'Include/HeaderNotLoggedIn.php'; ?>
-    <div class='container'>
-        <h3>ChurchCRM – <?= _($header) ?></h3>
-        <div class='alert alert-danger text-center' style='margin-top: 20px;'>
-            <?= gettext($message) ?>
-        </div>
-    </div>
-    <?php
-    require 'Include/FooterNotLoggedIn.php';
+  <div class='container'>
+      <h3>ChurchCRM – <?= _($header) ?></h3>
+      <div class='alert alert-danger text-center' style='margin-top: 20px;'>
+          <?= gettext($message) ?>
+      </div>
+  </div>
+  <?php
+  require 'Include/FooterNotLoggedIn.php';
     exit();
 }
 
-function buildConnectionManagerConfig($sSERVERNAME, $sDATABASE, $sUSER, $sPASSWORD, $dbClassName, $dbPort = '3306')
+function buildConnectionManagerConfig($sSERVERNAME, $sDATABASE, $sUSER, $sPASSWORD, $dbClassName, $dbPort = "3306")
 {
     return [
         'dsn' => 'mysql:host=' . $sSERVERNAME . ';port='.$dbPort.';dbname=' . $sDATABASE,
@@ -66,8 +69,18 @@ try {
 
 SystemURLs::checkAllowedURL($bLockURL, $URL);
 
-$cnInfoCentral = mysqli_connect($sSERVERNAME, $sUSER, $sPASSWORD)
-or system_failure('Could not connect to MySQL on <strong>'.$sSERVERNAME.'</strong> as <strong>'.$sUSER.'</strong>. Please check the settings in <strong>Include/Config.php</strong>.<br/>MySQL Error: '.mysqli_error($cnInfoCentral));
+// Due to mysqli handling connections on 'localhost' via socket only, we need to tease out this case and handle
+// TCP/IP connections separately defaulting $dbPort to 3306 for the general case when$dbPort is not set.
+if ($sSERVERNAME == "localhost") {
+    $cnInfoCentral = mysqli_connect($sSERVERNAME, $sUSER, $sPASSWORD)
+    or system_failure('Could not connect to MySQL on <strong>'.$sSERVERNAME.'</strong> as <strong>'.$sUSER.'</strong>. Please check the settings in <strong>Include/Config.php</strong>.<br/>MySQL Error: '.mysqli_error($cnInfoCentral));
+} else {
+    if (!isset($dbPort)) {
+        $dbPort=3306;
+    }
+    $cnInfoCentral = mysqli_connect($sSERVERNAME.':'.$dbPort, $sUSER, $sPASSWORD)
+        or system_failure('Could not connect to MySQL on <strong>'.$sSERVERNAME.'</strong> on port <strong>'.$dbPort.'</strong> as <strong>'.$sUSER.'</strong>. Please check the settings in <strong>Include/Config.php</strong>.<br/>MySQL Error: '.mysqli_error($cnInfoCentral));
+}
 
 mysqli_set_charset($cnInfoCentral, 'utf8mb4');
 
@@ -88,7 +101,7 @@ $serviceContainer = Propel::getServiceContainer();
 $serviceContainer->checkVersion('2.0.0-dev');
 $serviceContainer->setAdapterClass('default', 'mysql');
 $manager = new ConnectionManagerSingle();
-$manager->setConfiguration(buildConnectionManagerConfig($sSERVERNAME, $sDATABASE, $sUSER, $sPASSWORD, $dbClassName));
+$manager->setConfiguration(buildConnectionManagerConfig($sSERVERNAME, $sDATABASE, $sUSER, $sPASSWORD, $dbClassName, $dbPort));
 $manager->setName('default');
 $serviceContainer->setConnectionManager('default', $manager);
 $serviceContainer->setDefaultDatasource('default');
@@ -127,16 +140,16 @@ $logger = LoggerUtils::getAppLogger();
 // ORM Logs
 $ormLogger = new Logger('ormLogger');
 $dbClassName = "\\Propel\\Runtime\\Connection\\DebugPDO";
-$manager->setConfiguration(buildConnectionManagerConfig($sSERVERNAME, $sDATABASE, $sUSER, $sPASSWORD, $dbClassName));
+$manager->setConfiguration(buildConnectionManagerConfig($sSERVERNAME, $sDATABASE, $sUSER, $sPASSWORD, $dbClassName, $dbPort));
 $ormLogger->pushHandler(new StreamHandler(LoggerUtils::buildLogFilePath("orm"), LoggerUtils::getLogLevel()));
 $serviceContainer->setLogger('defaultLogger', $ormLogger);
 
 
-if (isset($_SESSION['iUserID'])) {      // Not set on Login.php
+if (isset($_SESSION['user'])) {      // Not set on Login.php
     // Load user variables from user config table.
     // **************************************************
     $sSQL = 'SELECT ucfg_name, ucfg_value AS value '
-        ."FROM userconfig_ucfg WHERE ucfg_per_ID='".$_SESSION['iUserID']."'";
+        ."FROM userconfig_ucfg WHERE ucfg_per_ID='".$_SESSION['user']->getId()."'";
     $rsConfig = mysqli_query($cnInfoCentral, $sSQL);     // Can't use RunQuery -- not defined yet
     if ($rsConfig) {
         while (list($ucfg_name, $value) = mysqli_fetch_row($rsConfig)) {
@@ -146,27 +159,6 @@ if (isset($_SESSION['iUserID'])) {      // Not set on Login.php
     }
 }
 
-$sMetaRefresh = '';  // Initialize to empty
-
-if (SystemConfig::getValue('sTimeZone')) {
-    date_default_timezone_set(SystemConfig::getValue('sTimeZone'));
-}
-
-$localeInfo = new LocaleInfo(SystemConfig::getValue('sLanguage'));
-setlocale(LC_ALL, $localeInfo->getLocale());
-
-// Get numeric and monetary locale settings.
-$aLocaleInfo = $localeInfo->getLocaleInfo();
-
-// This is needed to avoid some bugs in various libraries like fpdf.
-// http://www.velanhotels.com/fpdf/FAQ.htm#6
-setlocale(LC_NUMERIC, 'C');
-
-$domain = 'messages';
-$sLocaleDir = SystemURLs::getDocumentRoot().'/locale/textdomain';
-
-bind_textdomain_codeset($domain, 'UTF-8');
-bindtextdomain($domain, $sLocaleDir);
-textdomain($domain);
+require 'SimpleConfig.php';
 
 ?>

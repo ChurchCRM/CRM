@@ -16,10 +16,11 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\RedirectUtils;
 
 // Security: User must have Manage Groups permission
-if (!$_SESSION['bAdmin']) {
-    Redirect('Menu.php');
+if (!$_SESSION['user']->isAdmin()) {
+    RedirectUtils::Redirect('Menu.php');
     exit;
 }
 
@@ -65,7 +66,7 @@ require 'Include/Header.php';
     }
      $("#restorestatus").css("color", "orange");
     $("#restorestatus").html("<?= gettext('Restore Running, Please wait.')?>");
-    $.ajax({
+    $.ajax({ // not converting this to window.CRM.APIRequest because multipart/form-data
       url: window.CRM.root + '/api/database/restore',
       type: 'POST',
       data: formData,

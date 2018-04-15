@@ -22,8 +22,8 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\dto\SystemURLs;
 
 // Security: user must be allowed to edit records to use this page.
-if (!$_SESSION['bManageGroups']) {
-    Redirect('Menu.php');
+if (!$_SESSION['user']->isManageGroupsEnabled()) {
+    RedirectUtils::Redirect('Menu.php');
     exit;
 }
 
@@ -37,7 +37,7 @@ extract(mysqli_fetch_array($rsGroupInfo));
 
 // Abort if user tries to load with group having no special properties.
 if ($grp_hasSpecialProps == false) {
-    Redirect('GroupView.php?GroupID='.$iGroupID);
+    RedirectUtils::Redirect('GroupView.php?GroupID='.$iGroupID);
 }
 
 $sPageTitle = gettext('Group-Specific Properties Form Editor:').'  '.$grp_Name;
@@ -297,13 +297,13 @@ if ($numRows == 0) {
 			<td class="TextColumn" width="5%" nowrap>
 				<?php
                 if ($row != 1) {
-                    echo "<a href=\"GroupPropsFormRowOps.php?GroupID=$iGroupID&PropID=$row&Field=".$aFieldFields[$row].'&Action=up"><img src="Images/uparrow.gif" border="0"></a>';
+                    echo "<a href=\"GroupPropsFormRowOps.php?GroupID=$iGroupID&PropID=$row&Field=".$aFieldFields[$row].'&Action=up"><i class="fa fa-arrow-up"></i></a>';
                 }
         if ($row < $numRows) {
-            echo "<a href=\"GroupPropsFormRowOps.php?GroupID=$iGroupID&PropID=$row&Field=".$aFieldFields[$row].'&Action=down"><img src="Images/downarrow.gif" border="0"></a>';
+            echo "<a href=\"GroupPropsFormRowOps.php?GroupID=$iGroupID&PropID=$row&Field=".$aFieldFields[$row].'&Action=down"><i class="fa fa-arrow-down"></i></a>';
         } ?>
 
-				<?= "<a href=\"GroupPropsFormRowOps.php?GroupID=$iGroupID&PropID=$row&Field=$aFieldFields[$row]&Action=delete\"><img src=\"Images/x.gif\" border=\"0\"></a>"; ?>
+				<?= "<a href=\"GroupPropsFormRowOps.php?GroupID=$iGroupID&PropID=$row&Field=$aFieldFields[$row]&Action=delete\"><i class='fa fa-times' ></i></a>"; ?>
 			</td>
 			<td class="TextColumn" style="font-size:70%;">
 			<?= $aPropTypes[$aTypeFields[$row]]; ?>

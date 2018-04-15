@@ -19,7 +19,7 @@ require SystemURLs::getDocumentRoot() . '/vendor/ifsnop/mysqldump-php/src/Ifsnop
 
 class SystemService
 {
-    public function getLatestRelese()
+    public function getLatestRelease()
     {
         $client = new Client();
         $release = null;
@@ -88,7 +88,7 @@ class SystemService
         }
         FileSystemUtils::recursiveRemoveDirectory($restoreResult->backupRoot,true);
         $restoreResult->UpgradeStatus = UpgradeService::upgradeDatabaseVersion();
-        SQLUtils::sqlImport(SystemURLs::getDocumentRoot() . '/mysql/upgrade/rebuild_nav_menus.sql', $connection);
+        SQLUtils::sqlImport(SystemURLs::getDocumentRoot() . '/mysql/upgrade/rebuild_views.sql', $connection);
         //When restoring a database, do NOT let the database continue to create remote backups.
         //This can be very troublesome for users in a testing environment.
         SystemConfig::setValue('bEnableExternalBackupTarget', '0');
@@ -109,8 +109,12 @@ class SystemService
         mkdir($backup->backupDir,0750,true);
         $backup->headers = [];
         $backup->params = $params;
-        $backup->saveTo = "$backup->backupDir/ChurchCRM-" . date(SystemConfig::getValue("sDateFilenameFormat"));
-        $backup->SQLFile = "$backup->backupDir/ChurchCRM-Database.sql";
+
+        $safeFileName = preg_replace('/[^a-zA-Z0-9\-_]/','', SystemConfig::getValue('sChurchName'));
+        $baseFileName = "$backup->backupDir/" . $safeFileName . "-";
+
+        $backup->saveTo = $baseFileName . date(SystemConfig::getValue("sDateFilenameFormat"));
+        $backup->SQLFile = $baseFileName . "Database.sql";
 
         try {
             $dump = new Mysqldump('mysql:host=' . $sSERVERNAME . ';dbname=' . $sDATABASE, $sUSER, $sPASSWORD, ['add-drop-table' => true]);
@@ -174,7 +178,7 @@ class SystemService
         return $backup;
     }
 
-    public function copyBackupToExternalStorage()
+    public static function copyBackupToExternalStorage()
     {
         if (strcasecmp(SystemConfig::getValue('sExternalBackupType'), 'WebDAV') == 0) {
             if (SystemConfig::getValue('sExternalBackupUsername') && SystemConfig::getValue('sExternalBackupPassword') && SystemConfig::getValue('sExternalBackupEndpoint')) {
@@ -342,12 +346,8 @@ class SystemService
         return $result;
     }
 
-    public function runTimerJobs()
+    public static function runTimerJobs()
     {
-        if (NotificationService::isUpdateRequired())
-        {
-          NotificationService::updateNotifications();
-        }
         //start the external backup timer job
         if (SystemConfig::getBooleanValue('bEnableExternalBackupTarget') && SystemConfig::getValue('sExternalBackupAutoInterval') > 0) {  //if remote backups are enabled, and the interval is greater than zero
             try {
@@ -355,7 +355,7 @@ class SystemService
                 $previous = new \DateTime(SystemConfig::getValue('sLastBackupTimeStamp')); // get a DateTime object for the last time a backup was done.
                 $diff = $previous->diff($now);  // calculate the difference.
                 if (!SystemConfig::getValue('sLastBackupTimeStamp') || $diff->h >= SystemConfig::getValue('sExternalBackupAutoInterval')) {  // if there was no previous backup, or if the interval suggests we do a backup now.
-                    $this->copyBackupToExternalStorage();  // Tell system service to do an external storage backup.
+                    self::copyBackupToExternalStorage();  // Tell system service to do an external storage backup.
                     $now = new \DateTime();  // update the LastBackupTimeStamp.
                     SystemConfig::setValue('sLastBackupTimeStamp', $now->format('Y-m-d H:i:s'));
                 }
@@ -379,7 +379,7 @@ class SystemService
 
     public function downloadLatestRelease()
     {
-        $release = $this->getLatestRelese();
+        $release = $this->getLatestRelease();
         $UpgradeDir = SystemURLs::getDocumentRoot() . '/Upgrade';
         foreach ($release['assets'] as $asset) {
             if ($asset['name'] == "ChurchCRM-" . $release['name'] . ".zip") {

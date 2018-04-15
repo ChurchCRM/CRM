@@ -11,8 +11,8 @@ $(document).ready(function () {
   });
 
   $(".groupRemove").click(function(event){
-    var targetGroupID = $(event.target).data("groupid");
-    var targetGroupName = $(event.target).data("groupname");
+    var targetGroupID = event.currentTarget.dataset.groupid;
+    var targetGroupName = event.currentTarget.dataset.groupname;
     
     bootbox.confirm({
       message: i18next.t("Are you sure you want to remove this person's membership from") + " " + targetGroupName + "?",
@@ -125,7 +125,7 @@ $(document).ready(function () {
         $.ajax({
             type: 'GET',
             dataType: 'json',
-            url: window.CRM.root + '/api/roles/all',
+            url: window.CRM.root + '/api/persons/roles',
             success: function (data, status, xmlHttpReq) {
                 if (data.length) {
                     roles = [{text: familyRole, value: ''}];
@@ -148,9 +148,8 @@ $(document).ready(function () {
                             if (result) {
                                 $.ajax({
                                     type: 'POST',
-                                    data: { personId: personId, roleId: result },
                                     dataType: 'json',
-                                    url: window.CRM.root + '/api/roles/persons/assign',
+                                    url: window.CRM.root + '/api/person/'+ personId +'/role/' +result,
                                     success: function (data, status, xmlHttpReq) {
                                         if (data.success) {
                                             location.reload();

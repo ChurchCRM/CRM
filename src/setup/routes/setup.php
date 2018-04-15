@@ -17,7 +17,7 @@ $app->group('/', function () {
 
     $this->get('SystemPrerequisiteCheck', function ($request, $response, $args) {
         $required = ChurchCRM\Service\AppIntegrityService::getApplicationPrerequisites();
-        return $response->withStatus(200)->withJson($required);
+        return $response->withJson($required);
     });
 
     $this->post('', function ($request, $response, $args) {
@@ -25,6 +25,7 @@ $app->group('/', function () {
         $template = file_get_contents(SystemURLs::getDocumentRoot().'/Include/Config.php.example');
 
         $template = str_replace('||DB_SERVER_NAME||', $setupDate['DB_SERVER_NAME'], $template);
+        $template = str_replace('||DB_SERVER_PORT||', $setupDate['DB_SERVER_PORT'], $template);
         $template = str_replace('||DB_NAME||', $setupDate['DB_NAME'], $template);
         $template = str_replace('||DB_USER||', $setupDate['DB_USER'], $template);
         $template = str_replace('||DB_PASSWORD||', $setupDate['DB_PASSWORD'], $template);

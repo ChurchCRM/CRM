@@ -15,6 +15,7 @@ require '../Include/ReportFunctions.php';
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Reports\PDF_CanvassBriefingReport;
 use ChurchCRM\Utils\InputUtils;
+use \ChurchCRM\Utils\MiscUtils;
 
 //Get the Fiscal Year ID out of the querystring
 $iFYID = InputUtils::LegacyFilterInput($_GET['FYID'], 'int');
@@ -250,7 +251,7 @@ function CanvassBriefingSheets($iFYID)
             } else {
                 $sGender = 'F';
             }
-            $sAge = FormatAge($aFamilyMember['per_BirthMonth'], $aFamilyMember['per_BirthDay'], $aFamilyMember['per_BirthYear'], $aFamilyMember['per_Flags']);
+            $sAge = MiscUtils::FormatAge($aFamilyMember['per_BirthMonth'], $aFamilyMember['per_BirthDay'], $aFamilyMember['per_BirthYear'], $aFamilyMember['per_Flags']);
             $pdf->WriteAt($memberNameX, $curY, $aFamilyMember['per_FirstName'].' '.$aFamilyMember['per_LastName']);
             $pdf->WriteAt($memberGenderX, $curY, $sGender);
             $pdf->WriteAt($memberRoleX, $curY, $aFamilyMember['sFamRole']);

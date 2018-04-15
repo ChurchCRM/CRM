@@ -15,11 +15,12 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\RedirectUtils;
 
 // Security: User must have Manage Groups or Edit Records permissions
 // Otherwise, re-direct them to the main menu.
-if (!$_SESSION['bManageGroups'] && !$_SESSION['bEditRecords']) {
-    Redirect('Menu.php');
+if (!$_SESSION['user']->isManageGroupsEnabled() && !$_SESSION['user']->isEditRecordsEnabled()) {
+    RedirectUtils::Redirect('Menu.php');
     exit;
 }
 
@@ -35,7 +36,7 @@ if (isset($_POST['PropertyID'])) {
 }
 
 // Is there a PersonID in the querystring?
-if (isset($_GET['PersonID']) && $_SESSION['bEditRecords']) {
+if (isset($_GET['PersonID']) && $_SESSION['user']->isEditRecordsEnabled()) {
     $iPersonID = InputUtils::LegacyFilterInput($_GET['PersonID'], 'int');
     $iRecordID = $iPersonID;
     $sQuerystring = '?PersonID='.$iPersonID;
@@ -50,7 +51,7 @@ if (isset($_GET['PersonID']) && $_SESSION['bEditRecords']) {
 }
 
 // Is there a GroupID in the querystring?
-elseif (isset($_GET['GroupID']) && $_SESSION['bManageGroups']) {
+elseif (isset($_GET['GroupID']) && $_SESSION['user']->isManageGroupsEnabled()) {
     $iGroupID = InputUtils::LegacyFilterInput($_GET['GroupID'], 'int');
     $iRecordID = $iGroupID;
     $sQuerystring = '?GroupID='.$iGroupID;
@@ -65,7 +66,7 @@ elseif (isset($_GET['GroupID']) && $_SESSION['bManageGroups']) {
 }
 
 // Is there a FamilyID in the querystring?
-elseif (isset($_GET['FamilyID']) && $_SESSION['bEditRecords']) {
+elseif (isset($_GET['FamilyID']) && $_SESSION['user']->isEditRecordsEnabled()) {
     $iFamilyID = InputUtils::LegacyFilterInput($_GET['FamilyID'], 'int');
     $iRecordID = $iFamilyID;
     $sQuerystring = '?FamilyID='.$iFamilyID;
@@ -81,12 +82,12 @@ elseif (isset($_GET['FamilyID']) && $_SESSION['bEditRecords']) {
 
 // Somebody tried to call the script with no options
 else {
-    Redirect('Menu.php');
+    RedirectUtils::Redirect('Menu.php');
 }
 
 // If no property, return to previous page
 if (!$iPropertyID) {
-    Redirect("$sBackPage");
+    RedirectUtils::Redirect("$sBackPage");
 }
 
 function UpdateProperty($iRecordID, $sValue, $iPropertyID, $sAction)
@@ -123,7 +124,7 @@ if (isset($_POST['SecondPass'])) {
     $_SESSION['sGlobalMessage'] = gettext('Property successfully assigned.');
 
     // Back to the PersonView
-    Redirect($sBackPage);
+    RedirectUtils::Redirect($sBackPage);
 }
 
 // Get the name of the property
@@ -141,7 +142,7 @@ if (strlen($sPrompt) == 0) {
     $_SESSION['sGlobalMessage'] = gettext('Property successfully assigned.');
 
     // Back to the PersonView
-    Redirect($sBackPage);
+    RedirectUtils::Redirect($sBackPage);
 }
 
 // If we're editing, get the value

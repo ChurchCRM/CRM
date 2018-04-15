@@ -13,10 +13,12 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
+use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\SessionUser;
+
 // If user does not have CSV Export permission, redirect to the menu.
-if (!$bExportCSV) {
-    Redirect('Menu.php');
-    exit;
+if (!SessionUser::getUser()->isCSVExport()) {
+    RedirectUtils::SecurityRedirect("CSVExport");
 }
 
 //Get Classifications for the drop-down
@@ -165,7 +167,7 @@ require 'Include/Header.php';
             <label><?= gettext('Classification') ?>:</label>
             <input type="checkbox" name="PrintMembershipStatus" value="1">
           </div>
-          
+
           <div class="col-md-4">
             <label><?= gettext('Family Role') ?>:</label>
             <input type="checkbox" name="PrintFamilyRole" value="1">

@@ -15,6 +15,7 @@ require 'Include/Functions.php';
 use ChurchCRM\DepositQuery;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\RedirectUtils;
 
 $iDepositSlipID = 0;
 $thisDeposit = 0;
@@ -37,12 +38,12 @@ if ($iDepositSlipID) {
     }
 
     // Security: User must have finance permission or be the one who created this deposit
-    if (!($_SESSION['bFinance'] || $_SESSION['iUserID'] == $thisDeposit->getEnteredby())) {
-        Redirect('Menu.php');
+    if (!($_SESSION['user']->isFinanceEnabled() || $_SESSION['user']->getId() == $thisDeposit->getEnteredby())) {
+        RedirectUtils::Redirect('Menu.php');
         exit;
     }
 } else {
-    Redirect('Menu.php');
+    RedirectUtils::Redirect('Menu.php');
 }
 
 //Set the page title
@@ -57,7 +58,7 @@ if (isset($_POST['DepositSlipLoadAuthorized'])) {
 
 $_SESSION['iCurrentDeposit'] = $iDepositSlipID;  // Probably redundant
 
-/* @var $currentUser \ChurchCRM\User */
+/* @var $currentUser User */
 $currentUser = $_SESSION['user'];
 $currentUser->setCurrentDeposit($iDepositSlipID);
 $currentUser->save();
@@ -232,12 +233,9 @@ require 'Include/Header.php';
           {
             window.CRM.deletesRemaining = deletedRows.length;
             $.each(deletedRows, function(index, value) {
-              $.ajax({
-                type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
-                url: window.CRM.root+'/api/payments/' + value.Groupkey, // the url where we want to POST
-                dataType: 'json', // what type of data do we expect back from the server
-                data: {"_METHOD":"DELETE"},
-                encode: true
+              window.CRM.APIRequest({
+                method: 'DELETE',
+                path: 'payments/' + value.Groupkey,
               })
               .done(function(data) {
                 dataT.rows('.selected').remove().draw(false);

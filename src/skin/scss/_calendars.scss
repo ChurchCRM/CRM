@@ -1,0 +1,26 @@
+.modal-table{ 
+  table-layout:fixed;
+  width:100%
+}
+
+.modal-table td {
+  word-wrap: break-word;
+}
+
+.modal-table select, .modal-table input, .modal-table textarea {
+  width:100%;
+}
+
+.calendar-filter-row .col-xs-1, .calendar-filter-row .col-xs-7, .calendar-filter-row  .col-xs-4  {
+  padding-left:5px; padding-right:5px;
+}
+
+.calendar-filter-text {
+  display:inline-block; 
+  padding-left:5px; 
+  padding-right:5px;
+}
+
+.form-field-error { 
+  color: red;
+}

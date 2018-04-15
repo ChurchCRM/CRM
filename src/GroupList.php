@@ -47,7 +47,7 @@ $rsGroupTypes = ListOptionQuery::create()->filterById('3')->find();
 <table class="table" id="groupsTable">
 </table>
 <?php
-if ($_SESSION['bManageGroups']) {
+if ($_SESSION['user']->isManageGroupsEnabled()) {
       ?>
 
 
@@ -56,7 +56,9 @@ if ($_SESSION['bManageGroups']) {
     <label for="addNewGroup"><?= gettext('Add New Group') ?> :</label>
     <input class="form-control newGroup" name="groupName" id="groupName" style="width:100%">
     <br>
-    <button type="button" class="btn btn-primary" id="addNewGroup"><?= gettext('Add New Group') ?></button>
+    <div class="text-right">
+        <button type="button" class="btn btn-primary" id="addNewGroup"><?= gettext('Add New Group') ?></button>
+    </div>
 </form>
 <?php
   }

@@ -18,7 +18,7 @@ use ChurchCRM\Reports\ChurchInfoReport;
 class PDF_ConfirmReport extends ChurchInfoReport
 {
     // Constructor
-    public function PDF_ConfirmReport()
+    public function __construct()
     {
         parent::__construct('P', 'mm', $this->paperFormat);
         $this->leftX = 10;

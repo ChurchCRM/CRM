@@ -84,9 +84,6 @@ class SystemConfig
         "sSMTPUser" => new ConfigItem(29, "sSMTPUser", "text", "", gettext("SMTP Username")),
         "sSMTPPass" => new ConfigItem(30, "sSMTPPass", "password", "", gettext("SMTP Password")),
         "bShowFamilyData" => new ConfigItem(33, "bShowFamilyData", "boolean", "1", gettext("Unavailable person info inherited from assigned family for display?\rThis option causes certain info from a person's assigned family record to be\rdisplayed IF the corresponding info has NOT been entered for that person. ")),
-        "sGZIPname" => new ConfigItem(36, "sGZIPname", "text", "gzip"),
-        "sZIPname" => new ConfigItem(37, "sZIPname", "text", "zip"),
-        "sPGPname" => new ConfigItem(38, "sPGPname", "text", "gpg"),
         "sLanguage" => new ConfigItem(39, "sLanguage", "choice", "en_US", gettext("Internationalization (I18n) support"), "", json_encode(SystemConfig::getSupportedLocales())),
         "iFYMonth" => new ConfigItem(40, "iFYMonth", "choice", "1", gettext("First month of the fiscal year"),"",'{"Choices":["1","2","3","4","5","6","7","8","9","10","11","12"]}'),
         "sGoogleMapKey" => new ConfigItem(44, "sGoogleMapKey", "text", "", gettext("Google map API requires a unique key") , "https://developers.google.com/maps/documentation/javascript/get-api-key"),
@@ -202,7 +199,7 @@ class SystemConfig
         "bSearchIncludeGroups" => new ConfigItem(2023, "bSearchIncludeGroups", "boolean", "1", gettext("Search Groups")),
         "bSearchIncludeDeposits" => new ConfigItem(2024, "bSearchIncludeDeposits", "boolean", "1", gettext("Search Deposits")),
         "bSearchIncludePayments" => new ConfigItem(2025, "bSearchIncludePayments", "boolean", "1", gettext("Search Payments")),
-        "bSearchIncludeAddresses" => new ConfigItem(2026, "bSearchIncludeAddresses", "boolean", "1", gettext("Search Addresses")),        
+        "bSearchIncludeAddresses" => new ConfigItem(2026, "bSearchIncludeAddresses", "boolean", "1", gettext("Search Addresses")),
         "bSearchIncludePersonsMax" => new ConfigItem(2027, "bSearchIncludePersonsMax", "text", "15", gettext("Maximum number of People")),
         "bSearchIncludeFamiliesMax" => new ConfigItem(2028, "bSearchIncludeFamiliesMax", "text", "15", gettext("Maximum number of Families")),
         "bSearchIncludeFamilyHOHMax" => new ConfigItem(2029, "bSearchIncludeFamilyHOHMax", "text", "15", gettext("Maximum number of Family H.O.H Names")),
@@ -221,10 +218,19 @@ class SystemConfig
         "bHSTSEnable" => new ConfigItem(20142,"bHSTSEnable","boolean","0",gettext("Require that this ChurchCRM Database is accessed over HTTPS")),
         "bEventsOnDashboardPresence" => new ConfigItem(2042, "bEventsOnDashboardPresence", "boolean", "1", gettext("Show Birthdates Anniversaries on start up of the CRM")),
         "iEventsOnDashboardPresenceTimeOut" => new ConfigItem(2043, "iEventsOnDashboardPresenceTimeOut", "number", "10", gettext("Number of seconds after page load until the banner disappears, default 10 seconds")),
-        "iEventsInMenuBarIntervalTime" => new ConfigItem(2044, "iEventsInMenuBarIntervalTime", "number", "60", gettext("Menu bar event counter asynchronous refresh interval, default 60 second")),
         "bPHPMailerAutoTLS" => new ConfigItem(2045, "bPHPMailerAutoTLS", "boolean", "0", gettext("Automatically enable SMTP encryption if offered by the relaying server.")),
-        "sPHPMailerSMTPSecure" => new ConfigItem(2046, "sPHPMailerSMTPSecure", "choice", " ", gettext("Set the encryption system to use - ssl (deprecated) or tls"),"",'{"Choices":["None: ","TLS:tls","SSL:ssl"]}')
-    );
+        "sPHPMailerSMTPSecure" => new ConfigItem(2046, "sPHPMailerSMTPSecure", "choice", " ", gettext("Set the encryption system to use - ssl (deprecated) or tls"),"",'{"Choices":["None: ","TLS:tls","SSL:ssl"]}'),
+        "iDasbhoardServiceIntervalTime" => new ConfigItem(2047, "iDasbhoardServiceIntervalTime", "number", "60", gettext("Dashboard Service dynamic asynchronous refresh interval, default 60 second")),
+        "iProfilePictureListSize" => new ConfigItem(2048, "iProfilePictureListSize", "number", "85", gettext("Set the standard profile picture icon size in pixels to be used in people lists, default 85 pixels.")),
+        "bEnabledMenuLinks" => new ConfigItem(2050, "bEnabledMenuLinks", "boolean", "0", gettext("Show custom links on the left menu.")),
+        "bEnabledSundaySchool" => new ConfigItem(2051, "bEnabledSundaySchool", "boolean", "1", gettext("Enable Sunday School left menu.")),
+        "bEnabledFinance" => new ConfigItem(2052, "bEnabledFinance", "boolean", "1", gettext("Enable Finance menu")),
+        "bEnabledEvents" => new ConfigItem(2053, "bEnabledEvents", "boolean", "1", gettext("Enable Events menu.")),
+        "bEnabledCalendar" => new ConfigItem(2054, "bEnabledCalendar", "boolean", "1", gettext("Enable Calendar menu.")),
+        "bEnabledFundraiser" => new ConfigItem(2055, "bEnabledFundraiser", "boolean", "1", gettext("Enable Fundraiser menu.")),
+        "bEnabledEmail" => new ConfigItem(2056, "bEnabledEmail", "boolean", "1", gettext("Enable Email menu.")),
+        "sNotificationsURL" => new ConfigItem(2057, "sNotificationsURL", "text", "https://raw.githubusercontent.com/ChurchCRM/CRM/Notifications/notifications.json", gettext("ChurchCRM Central Notifications URL"))
+        );
   }
 
   private static function buildCategories()
@@ -233,17 +239,18 @@ class SystemConfig
       gettext('Church Information') =>["sChurchName","sChurchAddress","sChurchCity","sChurchState","sChurchZip","sChurchCountry","sChurchPhone","sChurchEmail","sHomeAreaCode","sTimeZone","iChurchLatitude","iChurchLongitude", "sChurchWebSite","sChurchFB", "sChurchTwitter"],
       gettext('User setup') => ["iMinPasswordLength","iMinPasswordChange","iMaxFailedLogins","iSessionTimeout","aDisallowedPasswords","bEnableLostPassword"],
       gettext('Email Setup')  => ["sSMTPHost","bSMTPAuth","sSMTPUser","sSMTPPass", "iSMTPTimeout","sToEmailAddress", "bPHPMailerAutoTLS","sPHPMailerSMTPSecure"],
-      gettext('People Setup')  => ["sDirClassifications","sDirRoleHead","sDirRoleSpouse","sDirRoleChild","sDefaultCity","sDefaultState","sDefaultCountry","bShowFamilyData","bHidePersonAddress","bHideFriendDate","bHideFamilyNewsletter","bHideWeddingDate","bHideLatLon","bForceUppercaseZip","bEnableSelfRegistration", "bAllowEmptyLastName", "iPersonNameStyle","sNewPersonNotificationRecipientIDs"],
+      gettext('People Setup')  => ["sDirClassifications","sDirRoleHead","sDirRoleSpouse","sDirRoleChild","sDefaultCity","sDefaultState","sDefaultCountry","bShowFamilyData","bHidePersonAddress","bHideFriendDate","bHideFamilyNewsletter","bHideWeddingDate","bHideLatLon","bForceUppercaseZip","bEnableSelfRegistration", "bAllowEmptyLastName", "iPersonNameStyle", "iProfilePictureListSize", "sNewPersonNotificationRecipientIDs"],
+      gettext('Enabled Features')  => ["bEnabledFinance", "bEnabledSundaySchool","bEnabledEvents","bEnabledCalendar","bEnabledFundraiser","bEnabledEmail", "bEnabledMenuLinks"],
       gettext('Map Settings')  => ["sGeoCoderProvider","sGoogleMapKey","sBingMapKey","sGMapIcons", "iMapZoom","sISTusername","sISTpassword"],
       gettext('Report Settings')  => ["sQBDTSettings","leftX","incrementY","sTaxReport1","sTaxReport2","sTaxReport3","sTaxSigner","sReminder1","sReminderSigner","sReminderNoPledge","sReminderNoPayments","sConfirm1","sConfirm2","sConfirm3","sConfirm4","sConfirm5","sConfirm6","sDear","sConfirmSincerely","sConfirmSigner","sPledgeSummary1","sPledgeSummary2","sDirectoryDisclaimer1","sDirectoryDisclaimer2","bDirLetterHead","sZeroGivers","sZeroGivers2","sZeroGivers3", "iPDFOutputType"],
       gettext('Financial Settings') => ["sDepositSlipType","iChecksPerDepositForm","bDisplayBillCounts","bUseScannedChecks","sElectronicTransactionProcessor","bEnableNonDeductible","iFYMonth","bUseDonationEnvelopes","aFinanceQueries"],
-      gettext('System Settings')  => ["sLogLevel", "bRegistered","sGZIPname","sZIPname","sPGPname","bCSVAdminOnly","sHeader","bEnableIntegrityCheck","iIntegrityCheckInterval","sLastIntegrityCheckTimeStamp", "iPhotoClientCacheDuration","bHSTSEnable"],
+      gettext('System Settings')  => ["sLogLevel", "bRegistered","bCSVAdminOnly","sHeader","bEnableIntegrityCheck","iIntegrityCheckInterval","sLastIntegrityCheckTimeStamp", "iPhotoClientCacheDuration","bHSTSEnable", "iDasbhoardServiceIntervalTime"],
       gettext('Quick Search') => ["bSearchIncludePersons","bSearchIncludePersonsMax","bSearchIncludeAddresses", "bSearchIncludeAddressesMax", "bSearchIncludeFamilies","bSearchIncludeFamiliesMax","bSearchIncludeFamilyHOH","bSearchIncludeFamilyHOHMax","bSearchIncludeGroups","bSearchIncludeGroupsMax","bSearchIncludeDeposits", "bSearchIncludeDepositsMax", "bSearchIncludePayments", "bSearchIncludePaymentsMax"],
       gettext('Backup')  => ["sLastBackupTimeStamp","bEnableExternalBackupTarget","sExternalBackupType","sExternalBackupAutoInterval","sExternalBackupEndpoint","sExternalBackupUsername","sExternalBackupPassword"],
       gettext('Localization')  => ["sLanguage","sDistanceUnit","sPhoneFormat","sPhoneFormatWithExt","sPhoneFormatCell","sDateFormatLong","sDateFormatNoYear","sDateFormatShort","sDateTimeFormat","sDateFilenameFormat","sCSVExportDelemiter","sCSVExportCharset","sDatePickerFormat","sDatePickerPlaceHolder"],
-      gettext('Integration')  => ["sMailChimpApiKey","sGoogleTrackingID","bEnableGravatarPhotos","bEnableGooglePhotos","iRemotePhotoCacheDuration","sNexmoAPIKey","sNexmoAPISecret","sNexmoFromNumber","sOLPURL","sOLPUserName","sOLPPassword","bEnableExternalCalendarAPI"],
+      gettext('Integration')  => ["sMailChimpApiKey","sGoogleTrackingID","bEnableGravatarPhotos","bEnableGooglePhotos","iRemotePhotoCacheDuration","sNexmoAPIKey","sNexmoAPISecret","sNexmoFromNumber","sOLPURL","sOLPUserName","sOLPPassword"],
       gettext('Church Services')  => ["iPersonConfessionFatherCustomField","iPersonConfessionDateCustomField"],
-      gettext('Events')  => ["bEventsOnDashboardPresence","iEventsOnDashboardPresenceTimeOut","iEventsInMenuBarIntervalTime"]
+      gettext('Events')  => ["bEnableExternalCalendarAPI","bEventsOnDashboardPresence","iEventsOnDashboardPresenceTimeOut"]
     );
   }
 
@@ -259,6 +266,10 @@ class SystemConfig
       }
   }
 
+  public static function isInitialized() {
+    return isset(self::$configs);
+  }
+
   public static function getCategories()
   {
     return self::$categories;
@@ -270,7 +281,7 @@ class SystemConfig
     {
       if ( isset( self::$configs[$config->getName()]))
       {
-        //if the current config set defined by code contains the current config retreived from the db, then cache it
+        //if the current config set defined by code contains the current config retrieved from the db, then cache it
         self::$configs[$config->getName()]->setDBConfigObject($config);
       }
       else

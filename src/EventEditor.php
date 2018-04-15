@@ -28,7 +28,7 @@ use ChurchCRM\dto\SystemURLs;
 
 $sPageTitle = gettext('Church Event Editor');
 
-if (!$_SESSION['bAdmin'] && !$_SESSION['bAddEvent']) {
+if (!$_SESSION['user']->isAddEvent()) {
     header('Location: Menu.php');
 }
 
@@ -271,7 +271,6 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
     $iEventEndHour = $aEndTimeTokens[0];
     $iEventEndMins = $aEndTimeTokens[1];
     $iEventStatus = $inactive;
-    $nEventGroupId = $event_grpid;
 
     $sSQL = "SELECT * FROM eventcounts_evtcnt WHERE evtcnt_eventid='$iEventID' ORDER BY evtcnt_countid ASC";
     //        echo $cvSQL;
@@ -323,7 +322,6 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
     $iEventEndHour = $sEventEndDateTime->format('H');
     $iEventEndMins = $sEventEndDateTime->format('i');
     $iEventStatus = $_POST['EventStatus'];
-    $nEventGroupId = $_POST['EventGroup'];
 
     $iNumCounts = $_POST['NumAttendCounts'];
     $nCnts = $iNumCounts;
@@ -354,8 +352,7 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
                      `event_start` = '".InputUtils::LegacyFilterInput($sEventStart)."',
                      `event_end` = '".InputUtils::LegacyFilterInput($sEventEnd)."',
                      `inactive` = '".InputUtils::LegacyFilterInput($iEventStatus)."',
-                     `event_typename` = '".InputUtils::LegacyFilterInput($sTypeName)."',
-                     `event_grpid` = '".InputUtils::LegacyFilterInput($nEventGroupId)."';";
+                     `event_typename` = '".InputUtils::LegacyFilterInput($sTypeName)."';";
             RunQuery($sSQL);
             $iEventID = mysqli_insert_id($cnInfoCentral);
             for ($c = 0; $c < $iNumCounts; $c++) {
@@ -379,10 +376,9 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
                      `event_start` = '".InputUtils::LegacyFilterInput($sEventStart)."',
                      `event_end` = '".InputUtils::LegacyFilterInput($sEventEnd)."',
                      `inactive` = '".InputUtils::LegacyFilterInput($iEventStatus)."',
-                     `event_typename` = '".InputUtils::LegacyFilterInput($sTypeName)."',
-                     `event_grpid` = '".InputUtils::LegacyFilterInput($nEventGroupId)."'".
+                     `event_typename` = '".InputUtils::LegacyFilterInput($sTypeName)."'".
                     " WHERE `event_id` = '".InputUtils::LegacyFilterInput($iEventID)."';";
-            //            echo $sSQL;
+            echo $sSQL;
             RunQuery($sSQL);
             for ($c = 0; $c < $iNumCounts; $c++) {
                 $cCnt = ltrim(rtrim($aCountName[$c]));
@@ -485,25 +481,6 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
     <td class="TextColumn">
       <input type="text" name="EventDateRange" value=""
              maxlength="10" id="EventDateRange" size="50" class='form-control' width="100%" style="width: 100%" required>
-    </td>
-
-  </tr>
-
-  <tr>
-    <td class="LabelColumn"><span style="color: red">*</span>
-      <?= gettext('Event Group') ?>:
-    </td>
-    <td class="TextColumn">
-      <select type="text" name="EventGroup" value="<?= $nEventGroupId ?>" width="100%" style="width: 100%">
-         <option value="0" <?= ($nEventGroupId == 0 ? "Selected":"") ?>><?= gettext("None") ?></option>
-        <?php
-          $groups=  ChurchCRM\Base\GroupQuery::create()->find();
-            foreach ($groups as $group) {
-                ?>
-         <option value="<?= $group->getId() ?>" <?= ($group->getId() == $nEventGroupId ? "Selected":"") ?>><?= $group->getName() ?></option>
-            <?php
-            } ?>
-      </select>
     </td>
 
   </tr>

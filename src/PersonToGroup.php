@@ -17,12 +17,13 @@ require 'Include/Functions.php';
 
 use ChurchCRM\Service\GroupService;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\RedirectUtils;
 
 $groupService = new GroupService();
 
 // Security: User must have Manage Groups & Roles permission
-if (!$_SESSION['bManageGroups']) {
-    Redirect('Menu.php');
+if (!$_SESSION['user']->isManageGroupsEnabled()) {
+    RedirectUtils::Redirect('Menu.php');
     exit;
 }
 
@@ -37,7 +38,7 @@ if (isset($_POST['Submit'])) {
     $sPreviousQuery = strip_tags($_POST['prevquery']);
     $groupService->addUserToGroup($iGroupID, $iPersonID, $iGroupRole);
 
-    Redirect("SelectList.php?$sPreviousQuery");
+    RedirectUtils::Redirect("SelectList.php?$sPreviousQuery");
 } else {
     $sPreviousQuery = strip_tags(rawurldecode($_GET['prevquery']));
 }
@@ -73,7 +74,7 @@ require 'Include/Header.php';
     </tr>
     <tr>
       <td class="LabelColumn"><?= gettext('Select Role') ?>:</td>
-      <td class="TextColumn"> 
+      <td class="TextColumn">
         <select name="GroupRole" id="GroupRole">
           <option><?= gettext('No Group Selected') ?></option>
         </select>

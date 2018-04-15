@@ -4,6 +4,16 @@ namespace ChurchCRM\Utils;
 use ChurchCRM\dto\SystemConfig;
 class MiscUtils {
  
+  public static function randomToken() {
+    $alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+    $apiKey = array(); //remember to declare $apiKey as an array
+    $alphaLength = strlen($alphabet) - 1; //put the length -1 in cache
+    for ($i = 0; $i < 50; $i++) {
+        $n = rand(0, $alphaLength);
+        $apiKey[] = $alphabet[$n];
+    }
+    return implode($apiKey); //turn the array into a string
+  }
 
   public static function random_word( $length = 6 ) {
       $cons = array( 'b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'r', 's', 't', 'v', 'w', 'x', 'z', 'pt', 'gl', 'gr', 'ch', 'ph', 'ps', 'sh', 'st', 'th', 'wh' );
@@ -42,5 +52,67 @@ class MiscUtils {
     return time() + $cacheLength ;
   }
 
+  public static function FormatAge($Month, $Day, $Year, $Flags)
+  {
+       if ($Flags || is_null($Year) || $Year == '') {
+          return;
+      }
+      
+      $birthDate = MiscUtils::BirthDate($Year, $Month, $Day);
+      $ageSuffix = gettext('Unknown');
+      $ageValue = 0;
+
+      $now = date_create('today');
+      $age = date_diff($now,$birthDate);
+
+      if ($age->y < 1) {
+        $ageValue = $age->m;
+        if ($age->m > 1) {
+          $ageSuffix = gettext('mos old');
+        } else {
+          $ageSuffix = gettext('mo old');
+        }
+      } else {
+        $ageValue = $age->y;
+        if ($age->y > 1) {
+          $ageSuffix = gettext('yrs old');
+        } else {
+          $ageSuffix = gettext('yr old');
+        }
+      }
+
+      return $ageValue. " ".$ageSuffix;
+    }
+
+  // Format a BirthDate
+  // Optionally, the separator may be specified.  Default is YEAR-MN-DY
+  public static function FormatBirthDate($per_BirthYear, $per_BirthMonth, $per_BirthDay, $sSeparator, $bFlags)
+  {
+      $birthDate = MiscUtils::BirthDate($per_BirthYear, $per_BirthMonth, $per_BirthDay);
+      if (!$birthDate) {
+        return false;
+      }
+      if ($bFlags || is_null($per_BirthYear) || $per_BirthYear == '')
+      {
+        return $birthDate->format(SystemConfig::getValue("sDateFormatNoYear"));  
+      }
+      else
+      {
+        return $birthDate->format(SystemConfig::getValue("sDateFormatLong"));
+      }
+  }
+  
+  public static function BirthDate($year, $month, $day)
+  {
+     if (!is_null($day) && $day != '' && !is_null($month) && $month != '') {
+        if (is_null($year) || $year == '')
+        {
+          $year = 1900;
+        }
+        return date_create($year . '-' . $month . '-' . $day);
+      }
+      return false;
+  }
+  
 }
 ?>

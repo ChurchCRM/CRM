@@ -7,12 +7,13 @@ require 'Include/Functions.php';
 require_once 'Include/Header-function.php';
 
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\RedirectUtils;
 
 // Set the page title and include HTML header
 $sPageTitle = gettext('Upgrade ChurchCRM');
 
-if (!$_SESSION['bAdmin']) {
-    Redirect('index.php');
+if (!$_SESSION['user']->isAdmin()) {
+    RedirectUtils::Redirect('index.php');
     exit;
 }
 
@@ -83,15 +84,12 @@ Header_body_scripts();
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
  $("#doBackup").click(function(){
    $("#status1").html('<i class="fa fa-circle-o-notch fa-spin"></i>');
-   $.ajax({
-      type        : 'POST', // define the type of HTTP verb we want to use (POST for our form)
-      url         : window.CRM.root +'/api/database/backup', // the url where we want to POST
-      data        : JSON.stringify({
-        'iArchiveType'              : 3
-      }), // our data object
-      dataType    : 'json', // what type of data do we expect back from the server
-      encode      : true,
-      contentType: "application/json; charset=utf-8"
+   window.CRM.APIRequest({
+      method : 'POST', 
+      path : 'database/backup',
+      data : JSON.stringify({
+        'iArchiveType' : 3
+      })
     })
     .done(function(data) {
       var downloadButton = "<button class=\"btn btn-primary\" id=\"downloadbutton\" role=\"button\" onclick=\"javascript:downloadbutton('"+data.filename+"')\"><i class='fa fa-download'></i>  "+data.filename+"</button>";
@@ -113,10 +111,9 @@ Header_body_scripts();
 
  $("#fetchUpdate").click(function(){
     $("#status2").html('<i class="fa fa-circle-o-notch fa-spin"></i>');
-    $.ajax({
+    window.CRM.APIRequest({
       type : 'GET',
-      url  : window.CRM.root +'/api/systemupgrade/downloadlatestrelease', // the url where we want to POST
-      dataType    : 'json' // what type of data do we expect back from the server
+      path  : 'systemupgrade/downloadlatestrelease',
     }).done(function(data){
       $("#status2").html('<i class="fa fa-check" style="color:green"></i>');
       window.CRM.updateFile=data;
@@ -132,16 +129,13 @@ Header_body_scripts();
 
  $("#applyUpdate").click(function(){
    $("#status3").html('<i class="fa fa-circle-o-notch fa-spin"></i>');
-   $.ajax({
-      type : 'POST',
-      url  : window.CRM.root +'/api/systemupgrade/doupgrade', // the url where we want to POST
-      data        : JSON.stringify({
+   window.CRM.APIRequest({
+      method : 'POST',
+      path : 'systemupgrade/doupgrade',
+      data : JSON.stringify({
         fullPath: window.CRM.updateFile.fullPath,
         sha1: window.CRM.updateFile.sha1
-      }), // our data object
-      dataType    : 'json', // what type of data do we expect back from the server
-      encode      : true,
-      contentType: "application/json; charset=utf-8"
+      })
     }).done(function(data){
       $("#status3").html('<i class="fa fa-check" style="color:green"></i>');
       $("#updatePhase").slideUp();

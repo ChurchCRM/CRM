@@ -11,10 +11,11 @@ require '../Include/ReportFunctions.php';
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Reports\ChurchInfoReport;
+use ChurchCRM\Utils\RedirectUtils;
 
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
-if (!$_SESSION['bAdmin'] && SystemConfig::getValue('bCSVAdminOnly')) {
-    Redirect('Menu.php');
+if (!$_SESSION['user']->isAdmin() && SystemConfig::getValue('bCSVAdminOnly')) {
+    RedirectUtils::Redirect('Menu.php');
     exit;
 }
 
@@ -41,7 +42,7 @@ class PDF_EnvelopeReport extends ChurchInfoReport
     }
 
     // Constructor
-    public function PDF_EnvelopeReport()
+    public function __construct()
     {
         global $paperFormat;
         parent::__construct('P', 'mm', $this->paperFormat);

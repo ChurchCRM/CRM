@@ -14,10 +14,11 @@ require '../Include/ReportFunctions.php';
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Reports\ChurchInfoReport;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\RedirectUtils;
 
 // Security
-if (!$_SESSION['bFinance'] && !$_SESSION['bAdmin']) {
-    Redirect('Menu.php');
+if (!$_SESSION['user']->isFinanceEnabled()) {
+    RedirectUtils::Redirect('Menu.php');
     exit;
 }
 
@@ -32,8 +33,8 @@ $iDepID = InputUtils::LegacyFilterInput($_POST['deposit'], 'int');
 $iMinimum = InputUtils::LegacyFilterInput($_POST['minimum'], 'int');
 
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
-if (!$_SESSION['bAdmin'] && SystemConfig::getValue('bCSVAdminOnly') && $output != 'pdf') {
-    Redirect('Menu.php');
+if (!$_SESSION['user']->isAdmin() && SystemConfig::getValue('bCSVAdminOnly') && $output != 'pdf') {
+    RedirectUtils::Redirect('Menu.php');
     exit;
 }
 
@@ -183,7 +184,7 @@ if ($output == 'pdf') {
     class PDF_TaxReport extends ChurchInfoReport
     {
         // Constructor
-        public function PDF_TaxReport()
+        public function __construct()
         {
             parent::__construct('P', 'mm', $this->paperFormat);
             $this->SetFont('Times', '', 10);

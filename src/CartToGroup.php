@@ -17,10 +17,11 @@ require 'Include/Functions.php';
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\GroupQuery;
 use ChurchCRM\dto\Cart;
+use ChurchCRM\Utils\RedirectUtils;
 
 // Security: User must have Manage Groups & Roles permission
-if (!$_SESSION['bManageGroups']) {
-    Redirect('Menu.php');
+if (!$_SESSION['user']->isManageGroupsEnabled()) {
+    RedirectUtils::Redirect('Menu.php');
     exit;
 }
 
@@ -32,7 +33,7 @@ if ((isset($_GET['groupeCreationID']) || isset($_POST['Submit'])) && count($_SES
     } else {
         $iGroupID = InputUtils::LegacyFilterInput($_GET['groupeCreationID'], 'int');
     }
-    
+
     if (array_key_exists('GroupRole', $_POST)) {
         $iGroupRole = InputUtils::LegacyFilterInput($_POST['GroupRole'], 'int');
     } else {
@@ -42,8 +43,8 @@ if ((isset($_GET['groupeCreationID']) || isset($_POST['Submit'])) && count($_SES
     Cart::EmptyToGroup($iGroupID, $iGroupRole);
 
     $sGlobalMessage = $iCount.' records(s) successfully added to selected Group.';
-    
-    Redirect('GroupView.php?GroupID='.$iGroupID.'&Action=EmptyCart');
+
+    RedirectUtils::Redirect('GroupView.php?GroupID='.$iGroupID.'&Action=EmptyCart');
 }
 
 $ormGroups = GroupQuery::Create()
@@ -99,7 +100,7 @@ if (count($_SESSION['aPeopleCart']) > 0) {
 } else {
         echo '<p align="center" class="LargeText">'.gettext('Your cart is empty!').'</p>';
     }
-    
+
 
 require 'Include/Footer.php';
 ?>

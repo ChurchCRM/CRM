@@ -5,6 +5,7 @@ require '../Include/Functions.php';
 use ChurchCRM\Service\DashboardService;
 use ChurchCRM\Service\SundaySchoolService;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\MiscUtils;
 
 $dashboardService = new DashboardService();
 $sundaySchoolService = new SundaySchoolService();
@@ -44,7 +45,7 @@ require '../Include/Header.php';
     <h3 class="box-title"><?= gettext('Functions') ?></h3>
   </div>
   <div class="box-body">
-    <?php if ($_SESSION['bManageGroups']) {
+    <?php if ($_SESSION['user']->isManageGroupsEnabled()) {
     ?>
       <button class="btn btn-app" data-toggle="modal" data-target="#add-class"><i
           class="fa fa-plus-square"></i><?= gettext('Add New Class') ?></button>
@@ -213,8 +214,7 @@ require '../Include/Header.php';
           extract($child);
 
           $hideAge = $flags == 1 || $birthYear == '' || $birthYear == '0';
-          $birthDate = FormatBirthDate($birthYear, $birthMonth, $birthDay, '-', $flags);
-          $birthDateDate = BirthDate($birthYear, $birthMonth, $birthDay, $hideAge);
+          $birthDate = MiscUtils::FormatBirthDate($birthYear, $birthMonth, $birthDay, '-', $flags);
 
           echo '<tr>';
           echo "<td><a href='../PersonView.php?PersonID=".$kidId."'>";
@@ -225,7 +225,7 @@ require '../Include/Header.php';
           echo '<td>'.$firstName.'</td>';
           echo '<td>'.$LastName.'</td>';
           echo '<td>'.$birthDate.'</td>';
-          echo "<td data-birth-date='".($hideAge ? '' : $birthDateDate->format('Y-m-d'))."'></td>";
+          echo "<td>".MiscUtils::FormatAge($birthMonth, $birthDay, $birthYear, $hideAge)."</td>";
           echo '<td>'.$Address1.' '.$Address2.' '.$city.' '.$state.' '.$zip.'</td>';
           echo '</tr>';
       }
@@ -235,7 +235,7 @@ require '../Include/Header.php';
     </table>
   </div>
 </div>
-<?php if ($_SESSION['bManageGroups']) {
+<?php if ($_SESSION['user']->isManageGroupsEnabled()) {
           ?>
   <div class="modal fade" id="add-class" tabindex="-1" role="dialog" aria-labelledby="add-class-label"
        aria-hidden="true">

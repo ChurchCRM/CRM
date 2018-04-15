@@ -98,7 +98,7 @@ module.exports = function (grunt) {
                     {
                         expand: true,
                         cwd:'node_modules/ckeditor/',
-                        src: ['*.js','*.json','lang/**/*','adapters/**/*','plugins/**/*','skins/**/*'],
+                        src: ['*.js','*.css','*.json','lang/**/*','adapters/**/*','plugins/**/*','skins/**/*'],
                         dest: 'src/skin/external/ckeditor/'
                     },
                     {
@@ -152,6 +152,13 @@ module.exports = function (grunt) {
                         flatten: true,
                         src: ['node_modules/bootstrap-show-password/bootstrap-show-password.min.js'],
                         dest: 'src/skin/external/bootstrap-show-password'
+                    },
+                    {
+                        expand: true,
+                        filter: 'isFile',
+                        flatten: true,
+                        src: ['node_modules/bootstrap-notify/bootstrap-notify.min.js'],
+                        dest: 'src/skin/external/bootstrap-notify'
                     }
                 ]
             }
@@ -182,10 +189,13 @@ module.exports = function (grunt) {
         },
         sass: {
             dist: {
-                files: {
-                    'src/skin/churchcrm.min.css': 'src/skin/churchcrm.scss'
-                }
-            }
+              options: {
+                 cacheLocation: process.env['HOME'] + "/node_cache"
+              },
+              files: {
+                  'src/skin/churchcrm.min.css': 'src/skin/churchcrm.scss'
+              }
+            },
         },
         compress: {
             'zip': {

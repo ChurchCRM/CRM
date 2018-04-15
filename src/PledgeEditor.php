@@ -17,6 +17,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\MICRReader;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\RedirectUtils;
 
 if (SystemConfig::getValue('bUseScannedChecks')) { // Instantiate the MICR class
     $micrObj = new MICRReader();
@@ -88,8 +89,8 @@ if ($sGroupKey) {
         $fund2PlgIds[$oneFundID] = $onePlgID;
 
         // Security: User must have Finance permission or be the one who entered this record originally
-        if (!($_SESSION['bFinance'] || $_SESSION['iUserID'] == $aRow['plg_EditedBy'])) {
-            Redirect('Menu.php');
+        if (!($_SESSION['user']->isFinanceEnabled() || $_SESSION['user']->getId() == $aRow['plg_EditedBy'])) {
+            RedirectUtils::Redirect('Menu.php');
             exit;
         }
     }
@@ -331,7 +332,7 @@ if (isset($_POST['PledgeSubmit']) || isset($_POST['PledgeSubmitAndAdd'])) {
             if ($fund2PlgIds && array_key_exists($fun_id, $fund2PlgIds)) {
                 if ($nAmount[$fun_id] > 0) {
                     $sSQL = "UPDATE pledge_plg SET plg_famID = '".$iFamily."',plg_FYID = '".$iFYID."',plg_date = '".$dDate."', plg_amount = '".$nAmount[$fun_id]."', plg_schedule = '".$iSchedule."', plg_method = '".$iMethod."', plg_comment = '".$sComment[$fun_id]."'";
-                    $sSQL .= ", plg_DateLastEdited = '".date('YmdHis')."', plg_EditedBy = ".$_SESSION['iUserID'].", plg_CheckNo = '".$iCheckNo."', plg_scanString = '".$tScanString."', plg_aut_ID='".$iAutID."', plg_NonDeductible='".$nNonDeductible[$fun_id]."' WHERE plg_plgID='".$fund2PlgIds[$fun_id]."'";
+                    $sSQL .= ", plg_DateLastEdited = '".date('YmdHis')."', plg_EditedBy = ".$_SESSION['user']->getId().", plg_CheckNo = '".$iCheckNo."', plg_scanString = '".$tScanString."', plg_aut_ID='".$iAutID."', plg_NonDeductible='".$nNonDeductible[$fun_id]."' WHERE plg_plgID='".$fund2PlgIds[$fun_id]."'";
                 } else { // delete that record
                     $sSQL = 'DELETE FROM pledge_plg WHERE plg_plgID ='.$fund2PlgIds[$fun_id];
                 }
@@ -358,7 +359,7 @@ if (isset($_POST['PledgeSubmit']) || isset($_POST['PledgeSubmitAndAdd'])) {
                 }
                 $sSQL = "INSERT INTO pledge_plg (plg_famID, plg_FYID, plg_date, plg_amount, plg_schedule, plg_method, plg_comment, plg_DateLastEdited, plg_EditedBy, plg_PledgeOrPayment, plg_fundID, plg_depID, plg_CheckNo, plg_scanString, plg_aut_ID, plg_NonDeductible, plg_GroupKey)
 			VALUES ('".$iFamily."','".$iFYID."','".$dDate."','".$nAmount[$fun_id]."','".$iSchedule."','".$iMethod."','".$sComment[$fun_id]."'";
-                $sSQL .= ",'".date('YmdHis')."',".$_SESSION['iUserID'].",'".$PledgeOrPayment."',".$fun_id.','.$iCurrentDeposit.','.$iCheckNo.",'".$tScanString."','".$iAutID."','".$nNonDeductible[$fun_id]."','".$sGroupKey."')";
+                $sSQL .= ",'".date('YmdHis')."',".$_SESSION['user']->getId().",'".$PledgeOrPayment."',".$fun_id.','.$iCurrentDeposit.','.$iCheckNo.",'".$tScanString."','".$iAutID."','".$nNonDeductible[$fun_id]."','".$sGroupKey."')";
             }
             if (isset($sSQL)) {
                 RunQuery($sSQL);
@@ -368,14 +369,14 @@ if (isset($_POST['PledgeSubmit']) || isset($_POST['PledgeSubmitAndAdd'])) {
         if (isset($_POST['PledgeSubmit'])) {
             // Check for redirection to another page after saving information: (ie. PledgeEditor.php?previousPage=prev.php?a=1;b=2;c=3)
             if ($linkBack != '') {
-                Redirect($linkBack);
+                RedirectUtils::Redirect($linkBack);
             } else {
                 //Send to the view of this pledge
-                Redirect('PledgeEditor.php?PledgeOrPayment='.$PledgeOrPayment.'&GroupKey='.$sGroupKey.'&linkBack=', $linkBack);
+                RedirectUtils::Redirect('PledgeEditor.php?PledgeOrPayment='.$PledgeOrPayment.'&GroupKey='.$sGroupKey.'&linkBack=', $linkBack);
             }
         } elseif (isset($_POST['PledgeSubmitAndAdd'])) {
             //Reload to editor to add another record
-            Redirect("PledgeEditor.php?CurrentDeposit=$iCurrentDeposit&PledgeOrPayment=".$PledgeOrPayment.'&linkBack=', $linkBack);
+            RedirectUtils::Redirect("PledgeEditor.php?CurrentDeposit=$iCurrentDeposit&PledgeOrPayment=".$PledgeOrPayment.'&linkBack=', $linkBack);
         }
     } // end if !$bErrorFlag
 } elseif (isset($_POST['MatchFamily']) || isset($_POST['MatchEnvelope']) || isset($_POST['SetDefaultCheck'])) {
@@ -684,7 +685,7 @@ require 'Include/Header.php';
     <?php if (!$dep_Closed) {
         ?>
         <input type="submit" class="btn " value="<?= gettext('Save') ?>" name="PledgeSubmit">
-        <?php if ($_SESSION['bAddRecords']) {
+        <?php if ($_SESSION['user']->isAddRecordsEnabled()) {
             echo '<input type="submit" class="btn btn-primary value="'.gettext('Save and Add').'" name="PledgeSubmitAndAdd">';
         } ?>
           <?php
@@ -728,7 +729,7 @@ require 'Include/Header.php';
                 <tr>
                   <td class="TextColumn"><?= $fun_name ?></td>
                   <td class="TextColumn">
-                    <input class="FundAmount" type="number" step="any" name="<?= $fun_id ?>_Amount" id="<?= $fun_id ?>_Amount" value="<?= $nAmount[$fun_id] ?>"><br>
+                    <input class="FundAmount" type="number" step="any" name="<?= $fun_id ?>_Amount" id="<?= $fun_id ?>_Amount" value="<?= ($nAmount[$fun_id] ? $nAmount[$fun_id] : "") ?>"><br>
                     <font color="red"><?= $sAmountError[$fun_id] ?></font>
                   </td>
                   <?php

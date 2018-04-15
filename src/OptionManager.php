@@ -16,6 +16,7 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\RedirectUtils;
 
 $mode = trim($_GET['mode']);
 
@@ -23,8 +24,8 @@ $mode = trim($_GET['mode']);
 switch ($mode) {
     case 'famroles':
     case 'classes':
-        if (!$_SESSION['bMenuOptions']) {
-            Redirect('Menu.php');
+        if (!$_SESSION['user']->isMenuOptionsEnabled()) {
+            RedirectUtils::Redirect('Menu.php');
             exit;
         }
         break;
@@ -32,8 +33,8 @@ switch ($mode) {
     case 'grptypes':
     case 'grproles':
     case 'groupcustom':
-        if (!$_SESSION['bManageGroups']) {
-            Redirect('Menu.php');
+        if (!$_SESSION['user']->isManageGroupsEnabled()) {
+            RedirectUtils::Redirect('Menu.php');
             exit;
         }
         break;
@@ -41,14 +42,14 @@ switch ($mode) {
     case 'custom':
     case 'famcustom':
     case 'securitygrp':
-        if (!$_SESSION['bAdmin']) {
-            Redirect('Menu.php');
+        if (!$_SESSION['user']->isAdmin()) {
+            RedirectUtils::Redirect('Menu.php');
             exit;
         }
         break;
 
     default:
-        Redirect('Menu.php');
+        RedirectUtils::Redirect('Menu.php');
         break;
 }
 
@@ -101,7 +102,7 @@ switch ($mode) {
 
         // Validate that this list ID is really for a group roles list. (for security)
         if (mysqli_num_rows($rsTemp) == 0) {
-            Redirect('Menu.php');
+            RedirectUtils::Redirect('Menu.php');
             break;
         }
 
@@ -122,7 +123,7 @@ switch ($mode) {
 
         // Validate that this is a valid person-custom field custom list
         if (mysqli_num_rows($rsTemp) == 0) {
-            Redirect('Menu.php');
+            RedirectUtils::Redirect('Menu.php');
             break;
         }
 
@@ -140,7 +141,7 @@ switch ($mode) {
 
         // Validate that this is a valid group-specific-property field custom list
         if (mysqli_num_rows($rsTemp) == 0) {
-            Redirect('Menu.php');
+            RedirectUtils::Redirect('Menu.php');
             break;
         }
 
@@ -158,13 +159,13 @@ switch ($mode) {
 
         // Validate that this is a valid family_custom field custom list
         if (mysqli_num_rows($rsTemp) == 0) {
-            Redirect('Menu.php');
+            RedirectUtils::Redirect('Menu.php');
             break;
         }
 
         break;
     default:
-        Redirect('Menu.php');
+        RedirectUtils::Redirect('Menu.php');
         break;
 }
 
@@ -331,13 +332,13 @@ for ($row = 1; $row <= $numRows; $row++) {
 
 			<?php
             if ($row != 1) {
-                echo "<a href=\"OptionManagerRowOps.php?mode=$mode&Order=$aSeqs[$row]&ListID=$listID&ID=".$aIDs[$row].'&Action=up"><img src="Images/uparrow.gif" border="0"></a>';
+                echo "<a href=\"OptionManagerRowOps.php?mode=$mode&Order=$aSeqs[$row]&ListID=$listID&ID=".$aIDs[$row].'&Action=up"><i class="fa fa-arrow-up"></i></a>';
             }
     if ($row < $numRows) {
-        echo "<a href=\"OptionManagerRowOps.php?mode=$mode&Order=$aSeqs[$row]&ListID=$listID&ID=".$aIDs[$row].'&Action=down"><img src="Images/downarrow.gif" border="0"></a>';
+        echo "<a href=\"OptionManagerRowOps.php?mode=$mode&Order=$aSeqs[$row]&ListID=$listID&ID=".$aIDs[$row].'&Action=down"><i class="fa fa-arrow-down"></i></a>';
     }
     if ($numRows > 0) {
-        echo "<a href=\"OptionManagerRowOps.php?mode=$mode&Order=$aSeqs[$row]&ListID=$listID&ID=".$aIDs[$row].'&Action=delete"><img src="Images/x.gif" border="0"></a>';
+        echo "<a href=\"OptionManagerRowOps.php?mode=$mode&Order=$aSeqs[$row]&ListID=$listID&ID=".$aIDs[$row].'&Action=delete"><i class="fa fa-times"></i></a>';
     } ?>
 		</td>
 		<td class="TextColumn">

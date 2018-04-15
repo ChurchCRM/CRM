@@ -10,6 +10,7 @@ use ChurchCRM\dto\Photo;
 use ChurchCRM\Utils\GeoUtils;
 use DateTime;
 use ChurchCRM\Emails\NewPersonOrFamilyEmail;
+use ChurchCRM\Utils\LoggerUtils;
 
 /**
  * Skeleton subclass for representing a row from the 'family_fam' table.
@@ -23,7 +24,7 @@ use ChurchCRM\Emails\NewPersonOrFamilyEmail;
 class Family extends BaseFamily implements iPhoto
 {
     private $photo;
-    
+
     public function getAddress()
     {
         $address = [];
@@ -87,7 +88,7 @@ class Family extends BaseFamily implements iPhoto
         {
           $NotificationEmail = new NewPersonOrFamilyEmail($this);
           if (!$NotificationEmail->send()) {
-            $logger->warn($NotificationEmail->getError());
+              LoggerUtils::getAppLogger()->warn(gettext("New Family Notification Email Error"). " :". $NotificationEmail->getError());
           }
         }
     }
@@ -114,7 +115,7 @@ class Family extends BaseFamily implements iPhoto
   public function getSpousePeople() {
     return $this->getPeopleByRole("sDirRoleSpouse");
   }
-  
+
   public function getAdults() {
     return array_merge($this->getHeadPeople(),$this->getSpousePeople());
   }
@@ -149,15 +150,18 @@ class Family extends BaseFamily implements iPhoto
 
   public function getEmails() {
     $emails = array();
+    if (!(empty($this->getEmail()))) {
+        array_push($emails, $this->getEmail());
+    }
     foreach ($this->getPeople() as $person) {
-      $email = $person->getEmail();
-      if ($email != null) {
-        array_push($emails, $email);
-      }
-      $email = $person->getWorkEmail();
-      if ($email != null) {
-        array_push($emails, $email);
-      }
+        $email = $person->getEmail();
+        if ($email != null) {
+            array_push($emails, $email);
+        }
+        $email = $person->getWorkEmail();
+        if ($email != null) {
+            array_push($emails, $email);
+        }
     }
     return $emails;
   }
@@ -182,11 +186,11 @@ class Family extends BaseFamily implements iPhoto
                 break;
             case "verify":
                 $note->setText(gettext('Family Data Verified'));
-                $note->setEnteredBy($_SESSION['iUserID']);
+                $note->setEnteredBy($_SESSION['user']->getId());
                 break;
             case "verify-link":
               $note->setText(gettext('Verification email sent'));
-              $note->setEnteredBy($_SESSION['iUserID']);
+              $note->setEnteredBy($_SESSION['user']->getId());
               break;
         }
 
@@ -234,7 +238,7 @@ class Family extends BaseFamily implements iPhoto
 
     public function getPhoto()
     {
-      if (!$this->photo) 
+      if (!$this->photo)
       {
         $this->photo = new Photo("Family",  $this->getId());
       }
@@ -243,13 +247,13 @@ class Family extends BaseFamily implements iPhoto
 
     public function deletePhoto()
     {
-      if ($_SESSION['bAddRecords'] || $bOkToEdit ) {
+      if ($_SESSION['user']->isDeleteRecordsEnabled() ) {
         if ( $this->getPhoto()->delete() )
         {
           $note = new Note();
           $note->setText(gettext("Profile Image Deleted"));
           $note->setType("photo");
-          $note->setEntered($_SESSION['iUserID']);
+          $note->setEntered($_SESSION['user']->getId());
           $note->setPerId($this->getId());
           $note->save();
           return true;
@@ -258,11 +262,11 @@ class Family extends BaseFamily implements iPhoto
       return false;
     }
     public function setImageFromBase64($base64) {
-      if ($_SESSION['bAddRecords'] || $bOkToEdit ) {
+      if ($_SESSION['user']->isEditRecordsEnabled() ) {
         $note = new Note();
         $note->setText(gettext("Profile Image uploaded"));
         $note->setType("photo");
-        $note->setEntered($_SESSION['iUserID']);
+        $note->setEntered($_SESSION['user']->getId());
         $this->getPhoto()->setImageFromBase64($base64);
         $note->setFamId($this->getId());
         $note->save();
@@ -270,14 +274,14 @@ class Family extends BaseFamily implements iPhoto
       }
       return false;
     }
-    
+
     public function verify()
     {
         $this->createTimeLineNote('verify');
     }
 
     public function getFamilyString($booleanIncludeHOH=true)
-    {    
+    {
       $HoH = [];
       if ($booleanIncludeHOH) {
         $HoH = $this->getHeadPeople();
@@ -292,7 +296,7 @@ class Family extends BaseFamily implements iPhoto
         foreach ($HoH as $person) {
           array_push($HoHs, $person->getFirstName());
         }
-        
+
         return $this->getName(). ": " . join(",", $HoHs) . " - " . $this->getAddress();
       }
       else
@@ -319,14 +323,15 @@ class Family extends BaseFamily implements iPhoto
             }
         }
     }
-    
+
     public function toArray()
     {
       $array = parent::toArray();
+      $array['Address']=$this->getAddress();
       $array['FamilyString']=$this->getFamilyString();
       return $array;
     }
-    
+
     public function toSearchArray()
     {
       $searchArray=[
@@ -335,5 +340,17 @@ class Family extends BaseFamily implements iPhoto
           "uri" => SystemURLs::getRootPath() . '/FamilyView.php?FamilyID=' . $this->getId()
       ];
       return $searchArray;
+    }
+
+    public function isActive() {
+        return empty($this->getDateDeactivated());
+    }
+
+    public function getProperties() {
+        return PropertyQuery::create()
+            ->filterByProClass("f")
+            ->useRecordPropertyQuery()
+            ->filterByRecordId($this->getId())
+            ->find();
     }
 }

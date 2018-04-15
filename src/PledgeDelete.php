@@ -13,6 +13,7 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\RedirectUtils;
 
 //Set the page title
 $sPageTitle = gettext('Confirm Delete');
@@ -22,8 +23,8 @@ $sGroupKey = InputUtils::LegacyFilterInput($_GET['GroupKey'], 'string');
 
 // Security: User must have Add or Edit Records permission to use this form in those manners
 // Clean error handling: (such as somebody typing an incorrect URL ?PersonID= manually)
-if (!$_SESSION['bAddRecords']) {
-    Redirect('Menu.php');
+if (!$_SESSION['user']->isDeleteRecordsEnabled()) {
+    RedirectUtils::Redirect('Menu.php');
     exit;
 }
 
@@ -33,10 +34,10 @@ if (isset($_POST['Delete'])) {
     RunQuery($sSQL);
 
     if ($linkBack != '') {
-        Redirect($linkBack);
+        RedirectUtils::Redirect($linkBack);
     }
 } elseif (isset($_POST['Cancel'])) {
-    Redirect($linkBack);
+    RedirectUtils::Redirect($linkBack);
 }
 
 require 'Include/Header.php';

@@ -19,28 +19,20 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 use ChurchCRM\DepositQuery;
 use ChurchCRM\Service\DashboardService;
-use ChurchCRM\Service\FinancialService;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\MenuEventsCount;
 
-$financialService = new FinancialService();
 $dashboardService = new DashboardService();
-$personCount = $dashboardService->getPersonCount();
-$familyCount = $dashboardService->getFamilyCount();
-$groupStats = $dashboardService->getGroupStats();
-//Last edited active families
-$updatedFamilies = $dashboardService->getUpdatedFamilies(10);
-//Newly added active families
-$latestFamilies = $dashboardService->getLatestFamilies(10);
+
 //last Edited members from Active families
 $updatedMembers = $dashboardService->getUpdatedMembers(12);
 //Newly added members from Active families
 $latestMembers = $dashboardService->getLatestMembers(12);
 
 $depositData = false;  //Determine whether or not we should display the deposit line graph
-if ($_SESSION['bFinance']) {
+if ($_SESSION['user']->isFinanceEnabled()) {
     $deposits = DepositQuery::create()->filterByDate(['min' =>date('Y-m-d', strtotime('-90 days'))])->find();
     if (count($deposits) > 0) {
         $depositData = $deposits->toJSON();
@@ -173,8 +165,8 @@ if ($showBanner && ($peopleWithBirthDaysCount > 0 || $AnniversariesCount > 0)) {
         <!-- small box -->
         <div class="small-box bg-aqua">
             <div class="inner">
-                <h3>
-                    <?= $familyCount['familyCount'] ?>
+                <h3 id="familyCountDashboard">
+                    0
                 </h3>
                 <p>
                     <?= gettext('Families') ?>
@@ -192,8 +184,8 @@ if ($showBanner && ($peopleWithBirthDaysCount > 0 || $AnniversariesCount > 0)) {
         <!-- small box -->
         <div class="small-box bg-green">
             <div class="inner">
-                <h3>
-                    <?= $personCount['personCount'] ?>
+                <h3 id="peopleStatsDashboard">
+                    0
                 </h3>
                 <p>
                     <?= gettext('People') ?>
@@ -211,8 +203,8 @@ if ($showBanner && ($peopleWithBirthDaysCount > 0 || $AnniversariesCount > 0)) {
         <!-- small box -->
         <div class="small-box bg-yellow">
             <div class="inner">
-                <h3>
-                    <?= $groupStats['sundaySchoolClasses'] ?>
+                <h3 id="groupStatsSundaySchool">
+                   0
                 </h3>
                 <p>
                     <?= gettext('Sunday School Classes') ?>
@@ -230,8 +222,8 @@ if ($showBanner && ($peopleWithBirthDaysCount > 0 || $AnniversariesCount > 0)) {
         <!-- small box -->
         <div class="small-box bg-red">
             <div class="inner">
-                <h3>
-                  <?= $groupStats['groups'] - $groupStats['sundaySchoolClasses']  ?>
+                <h3 id="groupsCountDashboard">
+                  0
                 </h3>
                 <p>
                     <?= gettext('Groups') ?>
@@ -309,8 +301,8 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
                 </div>
             </div><!-- /.box-header -->
             <div class="box-body clearfix">
-                <div class="table-responsive">
-                    <table class="table table-striped table-condensed">
+                <div class="table-responsive" style="overflow:hidden">
+                    <table class="dataTable table table-striped table-condensed" id="latestFamiliesDashboardItem">
                         <thead>
                         <tr>
                             <th data-field="name"><?= gettext('Family Name') ?></th>
@@ -319,18 +311,6 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
                         </tr>
                         </thead>
                         <tbody>
-                        <?php foreach ($latestFamilies as $family) {
-    ?>
-                            <tr>
-                                <td>
-                                    <a href="FamilyView.php?FamilyID=<?= $family->getId() ?>"><?= $family->getName() ?></a>
-                                </td>
-                                <td><?= $family->getAddress() ?></td>
-                                <td><?=  date_format($family->getDateEntered(), SystemConfig::getValue('sDateFormatLong')) ?></td>
-                            </tr>
-                            <?php
-}
-                        ?>
                         </tbody>
                     </table>
                 </div>
@@ -350,8 +330,8 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
                 </div>
             </div><!-- /.box-header -->
             <div class="box-body clearfix">
-                <div class="table-responsive">
-                    <table class="table table-striped table-condensed">
+                <div class="table-responsive" style="overflow:hidden">
+                    <table class=" dataTable table table-striped table-condensed" id="updatedFamiliesDashboardItem">
                         <thead>
                         <tr>
                             <th data-field="name"><?= gettext('Family Name') ?></th>
@@ -360,18 +340,6 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
                         </tr>
                         </thead>
                         <tbody>
-                        <?php foreach ($updatedFamilies as $family) {
-                            ?>
-                            <tr>
-                                <td>
-                                    <a href="FamilyView.php?FamilyID=<?= $family->getId() ?>"><?= $family->getName() ?></a>
-                                </td>
-                                <td><?= $family->getAddress() ?></td>
-                                <td><?=  date_format($family->getDateLastEdited(), SystemConfig::getValue('sDateFormatLong')) ?></td>
-                            </tr>
-                            <?php
-                        }
-                        ?>
                         </tbody>
                     </table>
                 </div>
@@ -384,7 +352,7 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
         <div class="box box-solid">
             <div class="box box-danger">
                 <div class="box-header with-border">
-                    <h3 class="box-title"><?= gettext('Latest Members') ?></h3>
+                    <h3 class="box-title"><?= gettext('Latest Persons') ?></h3>
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                         </button>
@@ -396,17 +364,17 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
                 <div class="box-body no-padding">
                     <ul class="users-list clearfix">
                         <?php foreach ($latestMembers as $person) {
-                            ?>
+    ?>
                             <li>
                                 <a class="users-list" href="PersonView.php?PersonID=<?= $person->getId() ?>">
-                                    <img src="<?= SystemURLs::getRootPath(); ?>/api/persons/<?= $person->getId() ?>/thumbnail"
+                                    <img src="<?= SystemURLs::getRootPath(); ?>/api/person/<?= $person->getId() ?>/thumbnail"
                                          alt="<?= $person->getFullName() ?>" class="user-image initials-image"
-                                         width="85" height="85"/><br/>
+                                         width="<?= SystemConfig::getValue('iProfilePictureListSize') ?>px" height="<?= SystemConfig::getValue('iProfilePictureListSize') ?>px"/><br/>
                                     <?= $person->getFullName() ?></a>
                                 <span class="users-list-date"><?= date_format($person->getDateEntered(), SystemConfig::getValue('sDateFormatLong')); ?>&nbsp;</span>
                             </li>
                             <?php
-                        }
+}
                         ?>
                     </ul>
                     <!-- /.users-list -->
@@ -418,7 +386,7 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
         <div class="box box-solid">
             <div class="box box-danger">
                 <div class="box-header with-border">
-                    <h3 class="box-title"><?= gettext('Updated Members') ?></h3>
+                    <h3 class="box-title"><?= gettext('Updated Persons') ?></h3>
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                         </button>
@@ -433,9 +401,9 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
                             ?>
                             <li>
                                 <a class="users-list" href="PersonView.php?PersonID=<?= $person->getId() ?>">
-                                    <img src="<?= SystemURLs::getRootPath(); ?>/api/persons/<?= $person->getId() ?>/thumbnail"
+                                    <img src="<?= SystemURLs::getRootPath(); ?>/api/person/<?= $person->getId() ?>/thumbnail"
                                          alt="<?= $person->getFullName() ?>" class="user-image initials-image"
-                                         width="85" height="85"/><br/>
+                                         width="<?= SystemConfig::getValue('iProfilePictureListSize') ?>px" height="<?= SystemConfig::getValue('iProfilePictureListSize') ?>px"/><br/>
                                     <?= $person->getFullName() ?></a>
                                 <span
                                     class="users-list-date"><?= date_format($person->getDateLastEdited(), SystemConfig::getValue('sDateFormatLong')); ?>&nbsp;</span>

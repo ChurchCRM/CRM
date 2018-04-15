@@ -16,10 +16,11 @@ require 'Include/Functions.php';
 
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\RedirectUtils;
 
 // Security: User must have add records permission
-if (!$_SESSION['bAddRecords']) {
-    Redirect('Menu.php');
+if (!$_SESSION['user']->isAddRecordsEnabled()) {
+    RedirectUtils::Redirect('Menu.php');
     exit;
 }
 
@@ -83,7 +84,7 @@ if (isset($_POST['Submit']) && count($_SESSION['aPeopleCart']) > 0) {
             $sError = '<p class="callout callout-warning" align="center" style="color:red;">'.gettext('No family name entered!').'</p>';
             $bError = true;
         } else {
-            $sSQL = "INSERT INTO family_fam (fam_Name, fam_Address1, fam_Address2, fam_City, fam_State, fam_Zip, fam_Country, fam_HomePhone, fam_WorkPhone, fam_CellPhone, fam_Email, fam_WeddingDate, fam_DateEntered, fam_EnteredBy) VALUES ('".$sFamilyName."','".$sAddress1."','".$sAddress2."','".$sCity."','".$sState."','".$sZip."','".$sCountry."','".$sHomePhone."','".$sWorkPhone."','".$sCellPhone."','".$sEmail."',".$dWeddingDate.",'".date('YmdHis')."',".$_SESSION['iUserID'].')';
+            $sSQL = "INSERT INTO family_fam (fam_Name, fam_Address1, fam_Address2, fam_City, fam_State, fam_Zip, fam_Country, fam_HomePhone, fam_WorkPhone, fam_CellPhone, fam_Email, fam_WeddingDate, fam_DateEntered, fam_EnteredBy) VALUES ('".$sFamilyName."','".$sAddress1."','".$sAddress2."','".$sCity."','".$sState."','".$sZip."','".$sCountry."','".$sHomePhone."','".$sWorkPhone."','".$sCellPhone."','".$sEmail."',".$dWeddingDate.",'".date('YmdHis')."',".$_SESSION['user']->getId().')';
             RunQuery($sSQL);
 
             //Get the key back
@@ -114,7 +115,7 @@ if (isset($_POST['Submit']) && count($_SESSION['aPeopleCart']) > 0) {
 
         $sGlobalMessage = $iCount.' records(s) successfully added to selected Family.';
 
-        Redirect('FamilyView.php?FamilyID='.$iFamilyID.'&Action=EmptyCart');
+        RedirectUtils::Redirect('FamilyView.php?FamilyID='.$iFamilyID.'&Action=EmptyCart');
     }
 }
 
@@ -162,7 +163,7 @@ if (count($_SESSION['aPeopleCart']) > 0) {
 
         echo '<tr class="'.$sRowClass.'">';
         echo '<td align="center">'.$count++.'</td>';
-        echo "<td><img src='".SystemURLs::getRootPath().'/api/persons/'.$per_ID."/thumbnail' class='direct-chat-img'> &nbsp <a href=\"PersonView.php?PersonID=".$per_ID.'">'.FormatFullName($per_Title, $per_FirstName, $per_MiddleName, $per_LastName, $per_Suffix, 1).'</a></td>';
+        echo "<td><img src='".SystemURLs::getRootPath().'/api/person/'.$per_ID."/thumbnail' class='direct-chat-img'> &nbsp <a href=\"PersonView.php?PersonID=".$per_ID.'">'.FormatFullName($per_Title, $per_FirstName, $per_MiddleName, $per_LastName, $per_Suffix, 1).'</a></td>';
 
         echo '<td align="center">';
         if ($per_fam_ID == 0) {
