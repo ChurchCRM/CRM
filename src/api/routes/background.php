@@ -16,7 +16,7 @@ function logCSPReportAPI(Request $request, Response $response, array $args)
 {
     $input = json_decode($request->getBody());
     $log = json_encode($input, JSON_PRETTY_PRINT);
-    LoggerUtils::getAppLogger()->warn($log);
+    LoggerUtils::getCSPLogger()->info($log);
 }
 
 function getDashboardAPI(Request $request, Response $response, array $p_args)
