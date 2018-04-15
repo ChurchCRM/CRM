@@ -24,7 +24,7 @@ function registerFamily(Request $request, Response $response, array $args)
 
     if ($family->validate()) {
     $family->save();
-    return $response->write($family->toJSON());
+    return $response->withJson($family->toArray());
     }
 
     return $response->withStatus(401)->withJson(["error" => gettext("Validation Error"),
@@ -42,7 +42,7 @@ function registerPerson(Request $request, Response $response, array $args)
     $person->setDateEntered(new \DateTime());
     if ($person->validate()) {
         $person->save();
-        return $response->write($person->toJSON());
+        return $response->withJson($person->toArray());
     }
 
     return $response->withStatus(401)->withJson(["error" => gettext("Validation Error"),

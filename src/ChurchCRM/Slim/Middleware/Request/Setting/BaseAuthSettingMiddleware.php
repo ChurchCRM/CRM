@@ -1,9 +1,10 @@
 <?php
 
-namespace ChurchCRM\Slim\Middleware\Setting;
+namespace ChurchCRM\Slim\Middleware\Request\Setting;
 
 use Slim\Http\Request;
 use Slim\Http\Response;
+use ChurchCRM\dto\SystemConfig;
 
 abstract class BaseAuthSettingMiddleware
 {
