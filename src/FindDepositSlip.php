@@ -108,12 +108,9 @@ require 'Include/Header.php';
         if ( result )
         {
           $.each(deletedRows, function (index, value) {
-            $.ajax({
-              type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
-              url: window.CRM.root + '/api/deposits/' + value.Id, // the url where we want to POST
-              dataType: 'json', // what type of data do we expect back from the server
-              encode: true,
-              data: {"_METHOD": "DELETE"}
+            window.CRM.APIRequest({
+              method: 'DELETE',
+              path: 'deposits/' + value.Id
             })
               .done(function (data) {
                 dataT.rows('.selected').remove().draw(false);
