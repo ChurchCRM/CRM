@@ -7,17 +7,9 @@ use Slim\Http\Response;
 use ChurchCRM\Service\NewDashboardService;
 
 $app->group('/background', function () {
-    $this->post('/csp-report', 'logCSPReportAPI');
     $this->get('/dashboard/page', 'getDashboardAPI');
     $this->post('/timerjobs', 'runTimerJobsAPI');
 });
-
-function logCSPReportAPI(Request $request, Response $response, array $args)
-{
-    $input = json_decode($request->getBody());
-    $log = json_encode($input, JSON_PRETTY_PRINT);
-    LoggerUtils::getCSPLogger()->info($log);
-}
 
 function getDashboardAPI(Request $request, Response $response, array $p_args)
 {

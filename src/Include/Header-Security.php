@@ -19,7 +19,7 @@ $csp = array(
     "frame-src 'self'",
     "font-src 'self' fonts.gstatic.com",
     "connect-src 'self'",
-    "report-uri ".SystemURLs::getRootPath()."/api/background/csp-report"
+    "report-uri ".SystemURLs::getRootPath()."/api/system/background/csp-report"
 );
 if (SystemConfig::getBooleanValue("bHSTSEnable")) {
     header('Strict-Transport-Security: max-age=31536000; includeSubDomains');
