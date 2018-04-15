@@ -348,7 +348,7 @@ foreach ($allMonths as $mKey => $mVal) {
 <script nonce="<?= SystemURLs::getCSPNonce() ?>" >
 //Added by @saulowulhynek to translation of datatable nav terms
   $(document).ready(function () {
-    $('#listEvents').DataTable(window.CRM.plugin.dataTable});
+    $('#listEvents').DataTable(window.CRM.plugin.dataTable);
   });
 </script>
 
