@@ -8,13 +8,13 @@ use Slim\Http\Request;
 use Slim\Http\Response;
 
 $app->group('/public/register', function () {
-    $this->post('/family', 'registerFamily');
-    $this->post('/family/', 'registerFamily');
-    $this->post('/person', 'registerPerson');
-    $this->post('/person/', 'registerPerson');
+    $this->post('/family', 'registerFamilyAPI');
+    $this->post('/family/', 'registerFamilyAPI');
+    $this->post('/person', 'registerPersonAPI');
+    $this->post('/person/', 'registerPersonAPI');
 })->add(new PublicRegistrationAuthMiddleware());
 
-function registerFamily(Request $request, Response $response, array $args)
+function registerFamilyAPI(Request $request, Response $response, array $args)
 {
     $family = new Family();
     $family->fromJSON($request->getBody());
@@ -32,7 +32,7 @@ function registerFamily(Request $request, Response $response, array $args)
 
 }
 
-function registerPerson(Request $request, Response $response, array $args)
+function registerPersonAPI(Request $request, Response $response, array $args)
 {
 
     $person = new Person();
