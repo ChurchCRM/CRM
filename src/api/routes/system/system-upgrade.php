@@ -1,6 +1,6 @@
 <?php
 
-use ChurchCRM\Slim\Middleware\Role\AdminRoleAuthMiddleware;
+use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
 
 $app->group('/systemupgrade', function () {
     $this->get('/downloadlatestrelease', function () {

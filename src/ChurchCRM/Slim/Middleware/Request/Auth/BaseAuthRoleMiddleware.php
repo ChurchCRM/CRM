@@ -1,6 +1,6 @@
 <?php
 
-namespace ChurchCRM\Slim\Middleware\Role;
+namespace ChurchCRM\Slim\Middleware\Request\Auth;
 
 use ChurchCRM\User;
 use Slim\Http\Request;

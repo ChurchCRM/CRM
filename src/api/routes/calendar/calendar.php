@@ -5,7 +5,7 @@ use ChurchCRM\CalendarQuery;
 use ChurchCRM\dto\FullCalendarEvent;
 use ChurchCRM\dto\SystemCalendars;
 use ChurchCRM\EventQuery;
-use ChurchCRM\Slim\Middleware\Role\AddEventsRoleAuthMiddleware;
+use ChurchCRM\Slim\Middleware\Request\Auth\AddEventsRoleAuthMiddleware;
 use Propel\Runtime\Collection\ObjectCollection;
 use Slim\Http\Request;
 use Slim\Http\Response;

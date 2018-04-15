@@ -1,10 +1,6 @@
 <?php
 
-/* Contributors Philippe Logel */
-
-// Routes
 use ChurchCRM\dto\MenuEventsCount;
-use ChurchCRM\Emails\FamilyVerificationEmail;
 use ChurchCRM\FamilyQuery;
 use ChurchCRM\Map\FamilyTableMap;
 use ChurchCRM\Map\TokenTableMap;

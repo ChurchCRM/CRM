@@ -2,7 +2,7 @@
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Service\SystemService;
-use ChurchCRM\Slim\Middleware\Role\AdminRoleAuthMiddleware;
+use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
 
 $app->group('/register', function () {
     $this->post('', function ($request, $response, $args) {

@@ -3,7 +3,7 @@
 use ChurchCRM\dto\SystemURLs;
 use Slim\Http\Request;
 use Slim\Http\Response;
-use ChurchCRM\Slim\Middleware\Role\AdminRoleAuthMiddleware;
+use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
 
 $app->group('/system/debug', function () {
     $this->get('/urls', 'getSystemURLAPI');
