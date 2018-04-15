@@ -1,11 +1,11 @@
 <?php
 
+use ChurchCRM\Family;
+use ChurchCRM\Person;
+use ChurchCRM\Slim\Middleware\Request\Setting\PublicRegistrationAuthMiddleware;
+use ChurchCRM\Utils\ORMUtils;
 use Slim\Http\Request;
 use Slim\Http\Response;
-use ChurchCRM\Person;
-use ChurchCRM\Family;
-use ChurchCRM\Utils\ORMUtils;
-use ChurchCRM\Slim\Middleware\Request\Setting\PublicRegistrationAuthMiddleware;
 
 $app->group('/public/register', function () {
     $this->post('/family', 'registerFamily');
@@ -23,8 +23,8 @@ function registerFamily(Request $request, Response $response, array $args)
     $family->setDateEntered(new \DateTime());
 
     if ($family->validate()) {
-    $family->save();
-    return $response->withJson($family->toArray());
+        $family->save();
+        return $response->withJson($family->toArray());
     }
 
     return $response->withStatus(401)->withJson(["error" => gettext("Validation Error"),
@@ -46,5 +46,5 @@ function registerPerson(Request $request, Response $response, array $args)
     }
 
     return $response->withStatus(401)->withJson(["error" => gettext("Validation Error"),
-            "failures" => ORMUtils::getValidationErrors($person->getValidationFailures())]);
+        "failures" => ORMUtils::getValidationErrors($person->getValidationFailures())]);
 }
