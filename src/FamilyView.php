@@ -413,7 +413,7 @@ $bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() || ($_SESSION['user']->i
                                            data-person_id="<?= $person->getId() ?>" data-view="family">
                                     <span class="fa-stack">
                                         <i class="fa fa-square fa-stack-2x"></i>
-                                        <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+                                        <i class="fa fa-trash-o fa-stack-1x fa-inverse btn-danger"></i>
                                     </span>
                                         </a>
                                         <?php

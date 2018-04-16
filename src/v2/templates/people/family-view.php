@@ -499,6 +499,7 @@ $familyAddress = $family->getAddress();
 
 
 
+<script src="<?= SystemURLs::getRootPath() ?>/skin/js/MemberView.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/FamilyView.js"></script>
 
 
