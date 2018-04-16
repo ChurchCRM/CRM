@@ -5,10 +5,19 @@ use Slim\Http\Response;
 use ChurchCRM\Service\NotificationService;
 use ChurchCRM\dto\Notification\UiNotification;
 use ChurchCRM\Service\TaskService;
+use ChurchCRM\Utils\LoggerUtils;
 
 $app->group('/system', function () {
     $this->get('/notification', 'getUiNotificationAPI');
+    $this->post('/background/csp-report', 'logCSPReportAPI');
 });
+
+function logCSPReportAPI(Request $request, Response $response, array $args)
+{
+    $input = json_decode($request->getBody());
+    $log = json_encode($input, JSON_PRETTY_PRINT);
+    LoggerUtils::getCSPLogger()->info($log);
+}
 
 function getUiNotificationAPI(Request $request, Response $response, array $args)
 {
