@@ -20,7 +20,7 @@ class AuthMiddleware {
             if (!empty($this->apiKey)) {
                 $user = UserQuery::create()->findOneByApiKey($this->apiKey);
                 if (!empty($user)) {
-                    LoggerUtils::getAppLogger()->info($user->getName() . " : " . gettext("logged via API Key."));
+                    LoggerUtils::getAppLogger()->debug($user->getName() . " : " . gettext("logged via API Key."));
                     $this->user = $user;
                 } else {
                     LoggerUtils::getAppLogger()->warn(gettext("logged via InValid API Key."));
