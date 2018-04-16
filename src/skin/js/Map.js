@@ -10,10 +10,6 @@ $(document).ready(function () {
         var mapOptions1 = {
             zoom: 14,
             center: LatLng,
-            scrollwheel: false,
-            disableDefaultUI: true,
-            draggable: false,
-            // Style for Google Maps
             styles: [{
                 "featureType": "landscape",
                 "stylers": [{"saturation": -100}, {"lightness": 65}, {"visibility": "on"}]
