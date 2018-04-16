@@ -109,7 +109,6 @@ $app->get('/search/{query}', function ($request, $response, $args) {
     if (SystemConfig::getBooleanValue("bSearchIncludeFamilies")) {
         try {
 
-            $results = [];
             $families = FamilyQuery::create()->
             filterByName("%$query%", Criteria::LIKE)->
             _or()->filterByHomePhone($searchLikeString, Criteria::LIKE)->
@@ -185,8 +184,7 @@ $app->get('/search/{query}', function ($request, $response, $args) {
         //Deposits Search
         if (SystemConfig::getBooleanValue("bSearchIncludeDeposits")) {
             try {
-                $Deposits = DepositQuery::create();
-                $Deposits->filterByComment("%$query%", Criteria::LIKE)
+                $Deposits = DepositQuery::create()->filterByComment("%$query%", Criteria::LIKE)
                     ->_or()
                     ->filterById($query)
                     ->_or()
@@ -195,14 +193,13 @@ $app->get('/search/{query}', function ($request, $response, $args) {
                     ->endUse()
                     ->withColumn('CONCAT("#",Deposit.Id," ",Deposit.Comment)', 'displayName')
                     ->withColumn('CONCAT("' . SystemURLs::getRootPath() . '/DepositSlipEditor.php?DepositSlipID=",Deposit.Id)', 'uri')
-                    ->limit(SystemConfig::getValue("bSearchIncludeDepositsMax"));
-
+                    ->limit(SystemConfig::getValue("bSearchIncludeDepositsMax"))->find();
 
                 if (!empty($Deposits)) {
                     $data = [];
                     $id++;
 
-                    foreach ($Deposits as $Deposit) {
+                    foreach ($Deposits->toArray() as $Deposit) {
                         $elt = ['id' => $id++,
                             'text' => $Deposit['displayName'],
                             'uri' => $Deposit['uri']];

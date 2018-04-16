@@ -413,7 +413,7 @@ $bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() || ($_SESSION['user']->i
                                            data-person_id="<?= $person->getId() ?>" data-view="family">
                                     <span class="fa-stack">
                                         <i class="fa fa-square fa-stack-2x"></i>
-                                        <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+                                        <i class="fa fa-trash-o fa-stack-1x fa-inverse btn-danger"></i>
                                     </span>
                                         </a>
                                         <?php
@@ -982,11 +982,9 @@ $bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() || ($_SESSION['user']->i
                 message: '<p style="color: red">' + popupMessage + '</p>',
                 callback: function (result) {
                     if (result) {
-                        $.ajax({
+                        window.CRM.APIRequest({
                             method: "POST",
-                            url: window.CRM.root + "/api/families/" + window.CRM.currentFamily + "/activate/" + !window.CRM.currentActive,
-                            dataType: "json",
-                            encode: true
+                            path: "families/" + window.CRM.currentFamily + "/activate/" + !window.CRM.currentActive
                         }).done(function (data) {
                             if (data.success == true)
                                 window.location.href = window.CRM.root + "/FamilyView.php?FamilyID=" + window.CRM.currentFamily;
