@@ -1,0 +1,4000 @@
+msgid ""
+msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: POEditor.com\n"
+"Project-Id-Version: ChurchCRM\n"
+"Language: nl\n"
+
+#: AutoPaymentClearAccounts.php:24 CatchCreatePayment.php:71
+#: Include/Functions.php:234
+msgid "Cannot execute query."
+msgstr "Kan de vraag niet beantwoorden."
+
+#: AutoPaymentDelete.php:19
+msgid "Confirm Delete Automatic payment"
+msgstr "Bevestig Verwijdering Automatische betaling"
+
+#: AutoPaymentDelete.php:63 Checkin.php:286 Checkin.php:368
+#: DepositSlipEditor.php:228 DonationFundEditor.php:153
+#: DonationFundEditor.php:183 EditEventAttendees.php:76
+#: ElectronicPaymentList.php:219 ElectronicPaymentList.php:284
+#: EventNames.php:302 FamilyCustomFieldsEditor.php:324
+#: FamilyCustomFieldsEditor.php:382 FamilyView.php:663 FamilyView.php:715
+#: FamilyView.php:774 FamilyView.php:911 FindDepositSlip.php:104
+#: FundRaiserEditor.php:200 ListEvents.php:241 PaddleNumList.php:55
+#: PersonCustomFieldsEditor.php:315 PersonCustomFieldsEditor.php:384
+#: PersonView.php:940 PledgeDelete.php:53 PropertyList.php:65
+#: PropertyList.php:106 PropertyTypeList.php:46 PropertyTypeList.php:67
+#: PropertyTypeList.php:69 v2/templates/people/family-view.php:530
+msgid "Delete"
+msgstr "Verwijder"
+
+#: AutoPaymentDelete.php:64 AutoPaymentEditor.php:787 BatchWinnerEntry.php:112
+#: CanvassEditor.php:239 Checkin.php:167 Checkin.php:274 Checkin.php:287
+#: DirectoryReports.php:286 DonatedItemEditor.php:297 EventNames.php:231
+#: FamilyEditor.php:1119 FamilyView.php:910 FinancialReports.php:69
+#: FundRaiserEditor.php:143 GroupPropsEditor.php:168 GroupReports.php:82
+#: GroupReports.php:151 LettersAndLabels.php:83 ManageEnvelopes.php:135
+#: MemberRoleChange.php:119 MemberRoleChange.php:121 NoteDelete.php:67
+#: NoteEditor.php:135 PersonEditor.php:1231 PersonView.php:939
+#: PledgeDelete.php:54 PropertyEditor.php:169 PropertyTypeEditor.php:114
+#: Register.php:56 ReminderReport.php:52 SettingsIndividual.php:114
+#: SettingsIndividual.php:160 SettingsUser.php:100 SettingsUser.php:160
+#: TaxReport.php:55 UserEditor.php:459 UserEditor.php:562
+#: WhyCameEditor.php:105 external/templates/verify/verify-family-info.php:151
+#: sundayschool/SundaySchoolDashboard.php:258
+#: sundayschool/SundaySchoolReports.php:286
+#: v2/templates/people/family-view.php:529
+msgid "Cancel"
+msgstr "Annuleren"
+
+#: AutoPaymentEditor.php:129
+msgid "Automatic payment configuration for the "
+msgstr "Automatische betaling configuratie voor de "
+
+#: AutoPaymentEditor.php:786 CanvassEditor.php:238 DepositSlipEditor.php:94
+#: DonatedItemEditor.php:293 FamilyEditor.php:647 FamilyEditor.php:731
+#: FamilyEditor.php:795 FamilyEditor.php:869 FamilyEditor.php:891
+#: FamilyEditor.php:922 FamilyEditor.php:1115 FundRaiserEditor.php:142
+#: GroupEditor.php:167 GroupPropsEditor.php:166 NoteEditor.php:133
+#: PaddleNumEditor.php:147 PersonEditor.php:617 PersonEditor.php:775
+#: PersonEditor.php:818 PersonEditor.php:1129 PersonEditor.php:1192
+#: PersonEditor.php:1227 PledgeEditor.php:687 PropertyEditor.php:169
+#: PropertyTypeEditor.php:112 UserEditor.php:458 UserPasswordChange.php:213
+#: WhyCameEditor.php:104
+msgid "Save"
+msgstr "Bewaar"
+
+#: AutoPaymentEditor.php:804 BatchWinnerEntry.php:83 BatchWinnerEntry.php:95
+#: CSVImport.php:271 ChurchCRM/Config/Menu/Menu.php:100
+#: DirectoryReports.php:82 DonatedItemEditor.php:186 DonatedItemEditor.php:237
+#: FamilyEditor.php:1089 GroupEditor.php:94 GroupList.php:36 GroupView.php:40
+#: Include/CountryDropDown.php:6 Include/Functions.php:856
+#: Include/Functions.php:909 MapUsingGoogle.php:96 MapUsingGoogle.php:120
+#: PaddleNumEditor.php:176 PersonEditor.php:782 PersonEditor.php:798
+#: PersonEditor.php:1137 PrintView.php:264 PrintView.php:274
+#: SelectDelete.php:156 SelectList.php:35 SelectList.php:45 SelectList.php:61
+#: SelectList.php:1098 SelectList.php:1169 SystemSettings.php:214
+#: eGive.php:341
+msgid "Unassigned"
+msgstr "Niet Toegekend"
+
+#: AutoPaymentEditor.php:824
+msgid "Automatic payment type"
+msgstr "automatisch betalings type"
+
+#: AutoPaymentEditor.php:854
+msgid "Payment amount"
+msgstr "Betalings bedrag"
+
+#: AutoPaymentEditor.php:859
+msgid "Payment interval (months)"
+msgstr "Betalings regelmaat (maand)"
+
+#: AutoPaymentEditor.php:867 CartToGroup.php:74 EditEventTypes.php:86
+#: EditEventTypes.php:98 EventNames.php:106 EventNames.php:118
+#: EventNames.php:163 GroupReports.php:47 GroupReports.php:142
+#: PersonToGroup.php:66 sundayschool/SundaySchoolReports.php:190
+msgid "None"
+msgstr "Geen"
+
+#: AutoPaymentEditor.php:880
+msgid "inactive"
+msgstr "inactief"
+
+#: AutoPaymentEditor.php:914 CSVExport.php:102 CSVImport.php:219
+#: CartToFamily.php:245 DirectoryReports.php:250 FamilyEditor.php:672
+#: PersonEditor.php:863 Register.php:44
+#: external/templates/registration/family-register.php:41
+#: queryparameteroptions_qpo.php:7
+msgid "City"
+msgstr "Plaats"
+
+#: AutoPaymentEditor.php:919 CSVExport.php:107 CSVImport.php:220
+#: CartToFamily.php:250 DirectoryReports.php:254 FamilyEditor.php:679
+#: PersonEditor.php:883 Register.php:45
+#: external/templates/registration/family-register.php:44
+#: queryparameteroptions_qpo.php:6
+msgid "State"
+msgstr "Provincie"
+
+#: AutoPaymentEditor.php:930 CSVExport.php:122 CSVImport.php:222
+#: CartToFamily.php:270 FamilyEditor.php:699 PersonEditor.php:928
+#: Register.php:47
+msgid "Country"
+msgstr "Land"
+
+#: AutoPaymentEditor.php:936 ChurchCRM/Reports/PDF_Directory.php:309
+#: ChurchCRM/Reports/PDF_Directory.php:383
+#: ChurchCRM/Reports/PDF_Directory.php:440 DirectoryReports.php:262
+#: Reports/DirectoryReport.php:285 Reports/GroupReport.php:119
+#: external/templates/registration/family-register-members.php:103
+msgid "Phone"
+msgstr "Telefoon"
+
+#: AutoPaymentEditor.php:942 CSVExport.php:142 CSVImport.php:226
+#: CartToFamily.php:311 CartView.php:273 ChurchCRM/Config/Menu/Menu.php:40
+#: ChurchCRM/Reports/PDF_Directory.php:318
+#: ChurchCRM/Reports/PDF_Directory.php:394
+#: ChurchCRM/Reports/PDF_Directory.php:451 EditEventAttendees.php:42
+#: EventAttendance.php:175 FamilyEditor.php:771 FamilyView.php:272
+#: FamilyView.php:277 FamilyView.php:359 GroupReports.php:127
+#: PersonEditor.php:1035 PersonEditor.php:1037 PersonView.php:307
+#: PersonView.php:511 PrintView.php:294 Reports/CanvassReports.php:243
+#: Reports/ConfirmReport.php:183 Reports/ConfirmReport.php:202
+#: Reports/ConfirmReportEmail.php:191 Reports/ConfirmReportEmail.php:209
+#: Reports/DirectoryReport.php:296 Reports/GroupReport.php:133
+#: external/templates/registration/family-register-members.php:83
+#: external/templates/verify/enter-info.php:33
+#: external/templates/verify/verify-family-info.php:76
+#: sundayschool/SundaySchoolClassView.php:89
+#: sundayschool/SundaySchoolClassView.php:205
+#: v2/templates/people/family-view.php:174
+#: v2/templates/people/family-view.php:314 queryparameteroptions_qpo.php:13
+msgid "Email"
+msgstr "Email"
+
+#: AutoPaymentEditor.php:948 ElectronicPaymentList.php:210
+#: FinancialReports.php:264 FindDepositSlip.php:48 PledgeEditor.php:589
+msgid "Credit Card"
+msgstr "Credit kaart"
+
+#: AutoPaymentEditor.php:956
+msgid "Vanco Credit Card Method"
+msgstr "Vanco Creditcard Methode"
+
+#: AutoPaymentEditor.php:965
+msgid "Expiration Month"
+msgstr "Vervaldatum maand"
+
+#: AutoPaymentEditor.php:971
+msgid "Expiration Year"
+msgstr "Vervaldatum jaar"
+
+#: AutoPaymentEditor.php:977
+msgid "Bank Name"
+msgstr "Bank Naam"
+
+#: AutoPaymentEditor.php:983
+msgid "Bank Route Number"
+msgstr "Bank Route Nummer"
+
+#: AutoPaymentEditor.php:989
+msgid "Bank Account Number"
+msgstr "Bank Rekeningnummer"
+
+#: AutoPaymentEditor.php:997
+msgid "Vanco Bank Account Method"
+msgstr "Vanco Bankrekening Methode"
+
+#: BackupDatabase.php:32 ChurchCRM/Config/Menu/Menu.php:197
+msgid "Backup Database"
+msgstr "Backup Database"
+
+#: BackupDatabase.php:38
+msgid "This tool will assist you in manually backing up the ChurchCRM database."
+msgstr "Wizard voor het maken van een handmatige backup van de  ChurchCRM database"
+
+#: BackupDatabase.php:42
+msgid "You should make a manual backup at least once a week unless you already have a regular backup procedule for your systems."
+msgstr "U zou minstens een keer in de week een backup moeten maken, tenzij u al een regelmatige backup procedure voor uw systeem heeft."
+
+#: BackupDatabase.php:43
+msgid "After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site."
+msgstr "Maak twee copieen van uw systeem backup. Leg er een in een kluis bij uw werkplek en de andere in een kluis op een andere locatie."
+
+#: BackupDatabase.php:44
+msgid "If you are concerned about confidentiality of data stored in the ChurchCRM database, you should encrypt the backup data if it will be stored somewhere potentially accessible to others"
+msgstr "Ter bescherming van geheime data in de ChurchCRM database word het aangeraden om uw externe backup bestanden te versleutelen."
+
+#: BackupDatabase.php:45
+msgid "For added backup security, you can e-mail the backup to yourself at an e-mail account hosted off-site or to a trusted friend.  Be sure to use encryption if you do this, however."
+msgstr "Voor extra backup veiligheid, kunt u de backup mailen naar een offsite email account of naar een vertrouwt persoon. Wees er zeker van dat u encryptie gebruikt als u dit doet."
+
+#: BackupDatabase.php:49
+msgid "Select archive type"
+msgstr "Selecteer archief type"
+
+#: BackupDatabase.php:53
+msgid "Encrypt backup file with a password?"
+msgstr "Codeer backup bestand met een wachtwoord?"
+
+#: BackupDatabase.php:56
+msgid "Re-type Password"
+msgstr "Type wachtwoord opnieuw"
+
+#: BackupDatabase.php:59
+msgid "Generate and Download Backup"
+msgstr "Maak en download backup"
+
+#: BackupDatabase.php:60
+msgid "Generate and Ship Backup to External Storage"
+msgstr "Genereer en kopieer Backup naar Externe Opslag"
+
+#: BatchWinnerEntry.php:35 FundRaiserEditor.php:154
+msgid "Batch Winner Entry"
+msgstr "Batch Winnaar Entry"
+
+#: BatchWinnerEntry.php:75
+msgid "Winner"
+msgstr "Winnaar"
+
+#: BatchWinnerEntry.php:76
+msgid "Price"
+msgstr "Prijs"
+
+#: BatchWinnerEntry.php:111
+msgid "Enter Winners"
+msgstr "Voer Winnaars"
+
+#: CSVExport.php:54 CartView.php:106
+msgid "CSV Export"
+msgstr "CVS Export"
+
+#: CSVExport.php:62
+msgid "Field Selection"
+msgstr "Veld Selectie"
+
+#: AutoPaymentEditor.php:896 CSVExport.php:66 CSVImport.php:213
+#: ManageEnvelopes.php:162 PersonEditor.php:668
+#: external/templates/registration/family-register-members.php:73
+#: external/templates/verify/enter-info.php:25
+#: sundayschool/SundaySchoolDashboard.php:204
+msgid "Last Name"
+msgstr "Achternaam"
+
+#: CSVExport.php:67
+msgid "Required"
+msgstr "Noodzakelijk"
+
+#: AutoPaymentEditor.php:890 CSVExport.php:77 CSVImport.php:211
+#: PersonEditor.php:646
+#: external/templates/registration/family-register-members.php:69
+#: external/templates/verify/enter-info.php:21
+#: sundayschool/SundaySchoolDashboard.php:203
+msgid "First Name"
+msgstr "Voornaam"
+
+#: CSVExport.php:82 CSVImport.php:212 PersonEditor.php:657
+msgid "Middle Name"
+msgstr "Tussenvoegsel"
+
+#: AutoPaymentEditor.php:925 CSVExport.php:112 CSVImport.php:221
+#: CartToFamily.php:262 DirectoryReports.php:258 FamilyEditor.php:689
+#: PersonEditor.php:906 Register.php:46
+#: external/templates/registration/family-register.php:51
+#: external/templates/verify/enter-info.php:29
+msgid "Zip"
+msgstr "Zip"
+
+#: CSVExport.php:117
+msgid "Envelope"
+msgstr "Enveloppe"
+
+#: CSVExport.php:147 ChurchCRM/Reports/PDF_Directory.php:397
+#: ChurchCRM/Reports/PDF_Directory.php:454 PersonView.php:321
+#: Reports/DirectoryReport.php:299
+msgid "Work/Other Email"
+msgstr "Werk/Andere Email"
+
+#: CSVExport.php:152 CSVExport.php:362 CSVImport.php:229 PersonEditor.php:1150
+#: PrintView.php:304
+msgid "Membership Date"
+msgstr "Lidmaatschapsdatum"
+
+#: CSVExport.php:157
+msgid "Birth / Anniversary Date"
+msgstr "Geboorte / Jubileum Datum"
+
+#: CSVExport.php:162
+msgid "Age / Years Married"
+msgstr "Leeftijd / Aantal Jaren Getrouwd"
+
+#: CSVExport.php:172 CSVExport.php:293 CartView.php:276 OptionManager.php:62
+#: PersonEditor.php:780 PrintView.php:269 queryparameters_qrp.php:5
+msgid "Family Role"
+msgstr "Familie Rol"
+
+#: CSVExport.php:175
+msgid "Depends whether using person or family output method"
+msgstr "Afhankelijk van het gebruik van het persoon of familie uitvoer methode"
+
+#: CSVExport.php:188
+msgid "Custom Field Selection"
+msgstr "Aangepaste Veld Selectie"
+
+#: CSVExport.php:196
+msgid "Custom Person Fields"
+msgstr "Aanpasbare Persoons-Veld"
+
+#: CSVExport.php:214
+msgid "Custom Family Fields"
+msgstr "Aanpasbare familie Velden"
+
+#: CSVExport.php:241 FinancialReports.php:108
+msgid "Filters"
+msgstr "Filters"
+
+#: CSVExport.php:247
+msgid "Records to export"
+msgstr "Records voor export"
+
+#: CSVExport.php:256
+msgid "Based on filters below.."
+msgstr "Gebaseerd op onderstaande filters.."
+
+#: CSVExport.php:259
+msgid "People in Cart (filters ignored)"
+msgstr "Mandje met Personen (filters genegeerd) "
+
+#: CSVExport.php:285 CSVExport.php:310 CSVExport.php:346
+#: DirectoryReports.php:80 DirectoryReports.php:98 DirectoryReports.php:116
+#: DirectoryReports.php:134 DirectoryReports.php:153 FinancialReports.php:259
+msgid "Use Ctrl Key to select multiple"
+msgstr "Druk op Ctrl toets om veelvouden te selecteren"
+
+#: CSVExport.php:327
+msgid "Don't Filter"
+msgstr "Niet filteren"
+
+#: CSVExport.php:328 ChurchCRM/Dashboard/PersonDemographicDashboardItem.php:26
+#: FamilyEditor.php:990 PeopleDashboard.php:310 PeopleDashboard.php:355
+#: PersonEditor.php:630 PrintView.php:244 PrintView.php:363 SelectList.php:555
+#: SelectList.php:1140
+#: external/templates/registration/family-register-members.php:59
+#: queryparameteroptions_qpo.php:2
+msgid "Male"
+msgstr "Man"
+
+#: CSVExport.php:329 ChurchCRM/Dashboard/PersonDemographicDashboardItem.php:29
+#: FamilyEditor.php:993 PeopleDashboard.php:323 PeopleDashboard.php:368
+#: PersonEditor.php:633 PrintView.php:247 PrintView.php:363 SelectList.php:561
+#: SelectList.php:1141
+#: external/templates/registration/family-register-members.php:60
+#: queryparameteroptions_qpo.php:3
+msgid "Female"
+msgstr "Vrouw"
+
+#: CSVExport.php:338 DirectoryReports.php:96
+msgid "Group Membership"
+msgstr "Groep Lidmaatschap"
+
+#: CSVExport.php:370 CSVExport.php:387 CSVExport.php:404 CSVExport.php:421
+msgid "From:"
+msgstr "Van"
+
+#: CSVExport.php:371 CSVExport.php:388 CSVExport.php:405 CSVExport.php:422
+msgid "To:"
+msgstr "Aan"
+
+#: CSVExport.php:379
+msgid "Birthday Date"
+msgstr "Verjaardagsdatum"
+
+#: Reports/ConfirmReport.php:150 Reports/ConfirmReportEmail.php:155
+#, fuzzy
+msgid "Anniversary Date"
+msgstr "Trouwdatum"
+
+#: CSVExport.php:434 FinancialReports.php:317
+msgid "Output Method:"
+msgstr "Output Methode:"
+
+#: CSVExport.php:438
+msgid "CSV Individual Records"
+msgstr "CVS Individuele Records"
+
+#: CSVExport.php:439
+msgid "CSV Combine Families"
+msgstr "CSV Combineer Families"
+
+#: CSVExport.php:440
+msgid "Add Individuals to Cart"
+msgstr "Voeg individuen toe aan mandje"
+
+#: CSVExport.php:443
+msgid "Skip records with incomplete mail address"
+msgstr "Negeer records met een incompleet Emailadres"
+
+#: CSVExport.php:445
+msgid "Create File"
+msgstr "Aanmaken bestand"
+
+#: CSVImport.php:128
+msgid "No file selected for upload."
+msgstr "Geen bestand geselecteerd voor upload"
+
+#: CSVImport.php:154
+msgid "Total number of rows in the CSV file:"
+msgstr "Totaal aantal rijen in het CSV bestand:"
+
+#: CSVImport.php:209
+msgid "Ignore this Field"
+msgstr "Negeer dit veld"
+
+#: CSVExport.php:72 CSVImport.php:210 DonatedItemEditor.php:208
+#: FindFundRaiser.php:236 FundRaiserEditor.php:169 FundRaiserEditor.php:195
+#: PersonEditor.php:637
+msgid "Title"
+msgstr "Titel"
+
+#: CSVExport.php:87 CSVImport.php:214 FamilyEditor.php:942
+#: PersonEditor.php:679
+msgid "Suffix"
+msgstr "Achtervoegsel"
+
+#: CSVExport.php:318 CSVImport.php:215 FamilyEditor.php:943
+#: PersonEditor.php:624 PrintView.php:238 PrintView.php:338
+#: sundayschool/SundaySchoolClassView.php:179 queryparameters_qrp.php:4
+msgid "Gender"
+msgstr "Geslacht"
+
+#: CSVImport.php:216
+msgid "Donation Envelope"
+msgstr "Bijdrage Enveloppe"
+
+#: CSVExport.php:127 CSVImport.php:223 CartToFamily.php:281
+#: EditEventAttendees.php:43 EventAttendance.php:176 FamilyEditor.php:737
+#: FamilyList.php:46 FamilyView.php:254 GroupReports.php:124
+#: PersonEditor.php:961 PersonEditor.php:963 PersonView.php:302
+#: PrintView.php:199 Reports/ConfirmReport.php:135
+#: Reports/ConfirmReportEmail.php:140 SelectList.php:965 SelectList.php:966
+#: SelectList.php:1041
+#: external/templates/registration/family-register-done.php:30
+#: external/templates/registration/family-register.php:68
+#: external/templates/verify/verify-family-info.php:27
+#: external/templates/verify/verify-family-info.php:70
+#: sundayschool/SundaySchoolClassView.php:207
+#: v2/templates/people/family-view.php:153
+#: v2/templates/people/family-view.php:299 queryparameteroptions_qpo.php:8
+msgid "Home Phone"
+msgstr "Telefoon Thuis"
+
+#: CSVExport.php:132 CSVImport.php:224 CartToFamily.php:291
+#: FamilyEditor.php:749 FamilyView.php:260 GroupReports.php:125
+#: PersonEditor.php:984 PersonEditor.php:986 PersonView.php:316
+#: PrintView.php:204 Reports/ConfirmReport.php:239
+#: Reports/ConfirmReportEmail.php:238 SelectList.php:968 SelectList.php:969
+#: SelectList.php:1041 external/templates/verify/verify-family-info.php:72
+#: v2/templates/people/family-view.php:160
+#: v2/templates/people/family-view.php:304
+msgid "Work Phone"
+msgstr "Telefoon Werk"
+
+#: CSVExport.php:137 CSVImport.php:225 CartToFamily.php:301
+#: FamilyEditor.php:759 FamilyView.php:266 PersonEditor.php:1009
+#: PersonEditor.php:1011 PersonView.php:297 PrintView.php:209
+#: SelectList.php:971 SelectList.php:972 SelectList.php:1041
+#: external/templates/verify/verify-family-info.php:74
+#: v2/templates/people/family-view.php:167
+#: v2/templates/people/family-view.php:309
+msgid "Mobile Phone"
+msgstr "Telefoon Mobiel"
+
+#: CSVImport.php:227 PersonEditor.php:1054 PrintView.php:299
+msgid "Work / Other Email"
+msgstr "Werk / Ander Email"
+
+#: CSVImport.php:228 PersonView.php:282 PrintView.php:253
+#: sundayschool/SundaySchoolClassView.php:203
+#: sundayschool/SundaySchoolDashboard.php:205
+msgid "Birth Date"
+msgstr "Geboortedatum"
+
+#: CSVImport.php:230 CartToFamily.php:211 DirectoryReports.php:173
+#: FamilyEditor.php:805 FamilyView.php:241
+#: external/templates/verify/verify-family-info.php:34
+#: v2/templates/people/family-view.php:140
+msgid "Wedding Date"
+msgstr "Trouwdatum"
+
+#: CSVImport.php:239
+msgid "Ignore first CSV row (to exclude a header)"
+msgstr "Negeer eerste CSV rij (om title te negeren)"
+
+#: CSVImport.php:244
+msgid "Make Family records based on last name and address"
+msgstr "Maak familie records gebaseerd op achternaam en adres"
+
+#: CSVImport.php:250
+msgid "Patriarch"
+msgstr "Mannelijk Gezinshoofd"
+
+#: CSVImport.php:251
+msgid "Matriarch"
+msgstr "Vrouwelijk Gezinshoofd"
+
+#: CSVImport.php:253
+msgid "Family Type: used with Make Family records... option above"
+msgstr "Familie Type: gebruikt met Aanmaken Familie records.. bovenstaande optie"
+
+#: CSVImport.php:260
+msgid "NOTE: Separators (dashes, etc.) or lack thereof do not matter"
+msgstr "LET OP: Schijdingstekens (-, +, _ etc) toevoegen hoeft niet"
+
+#: CSVImport.php:265
+msgid "Default country if none specified otherwise"
+msgstr "Standaard Land if geen land is aangegeven"
+
+#: CSVExport.php:167 CSVExport.php:268 CSVImport.php:281 CartView.php:275
+#: FamilyEditor.php:948 FinancialReports.php:117 OptionManager.php:69
+#: PeopleDashboard.php:411 PersonEditor.php:1135 PrintView.php:309
+#: queryparameters_qrp.php:19
+msgid "Classification"
+msgstr "Classificatie"
+
+#: CSVImport.php:283
+msgid "Perform Import"
+msgstr "Importeer"
+
+#: CSVImport.php:803
+msgid "ERROR: the uploaded CSV file no longer exists!"
+msgstr "FOUT: Het uploaded CSV bestand bestaat niet meer!"
+
+#: 
+msgid "Data Cleared Successfully!"
+msgstr "Data is met succes verwijderd!"
+
+#: CSVImport.php:812
+msgid "Upload CSV File"
+msgstr "Upload CSV Bestand"
+
+#: CSVImport.php:822
+msgid "Clear Persons and Families"
+msgstr "Verwijder Personen en Families"
+
+#: 
+msgid "Warning!  Do not select this option if you plan to add to an existing database.<br/>"
+msgstr "Waarschuwing! Selecteer deze optie niet als u iets wilt toevoegen in een bestaande database.<br/>"
+
+#: 
+msgid "Use only if unsatisfied with initial import.  All person and member data will be destroyed!"
+msgstr "Gebruik alleen als u ontevreden bent over import actie.  Alle personen en gegevens zullen worden verwijderd!"
+
+#: CSVImport.php:829
+msgid "Data import successful."
+msgstr "Data import compleet."
+
+#: CSVImport.php:829
+msgid "persons were imported"
+msgstr "Personen werden geimporteerd"
+
+#: CanvassAutomation.php:21 ChurchCRM/Config/Menu/Menu.php:171
+msgid "Canvass Automation"
+msgstr "Automatisch onderzoek"
+
+#: CanvassAutomation.php:46 CanvassAutomation.php:53 CanvassAutomation.php:60
+#: CanvassAutomation.php:68 CanvassAutomation.php:76
+msgid "Not confirmed."
+msgstr "Niet bevestigd."
+
+#: CanvassAutomation.php:51 CanvassEditor.php:145 FamilyEditor.php:57
+msgid "Canvassers"
+msgstr "Enqueteurs"
+
+#: CanvassAutomation.php:58 CanvassEditor.php:146 FamilyEditor.php:58
+msgid "BraveCanvassers"
+msgstr "MoedigeEnqueteurs"
+
+#: CanvassAutomation.php:66
+msgid "Cleared all canvasser assignments."
+msgstr "Verwijder alle enqueteurs koppelingen"
+
+#: CanvassAutomation.php:74
+msgid "Set Ok To Canvass for all families."
+msgstr "Ok om een Enquete te houden voor alle families."
+
+#: CanvassAutomation.php:82
+msgid "Disabled Ok To Canvass for all families."
+msgstr "Verwijder Ok om een enquete te houden voor alle Families"
+
+#: CanvassAutomation.php:84
+msgid "ClearAllOkToCanvass button not confimed."
+msgstr "LedigAlleKlaarVoorEnquete knop niet bevestigt."
+
+#: CanvassAutomation.php:129
+msgid "Set default fiscal year"
+msgstr "Zet standaard fiscaal jaar"
+
+#: CanvassAutomation.php:133 CanvassAutomation.php:144
+#: CanvassAutomation.php:155 CanvassAutomation.php:166
+#: CanvassAutomation.php:177 CanvassAutomation.php:188
+msgid "Check to confirm"
+msgstr "Kruis ter controle"
+
+#: CanvassAutomation.php:139
+msgid "Assign Canvassers"
+msgstr "Koppel enqueteurs"
+
+#: CanvassAutomation.php:143
+msgid "Randomly assign canvassers to all Families.  The Canvassers are taken from the &quot;Canvassers&quot; Group."
+msgstr "Willekeurig enqueteurs toekennen aan alle Families. De enqueteurs worden geselecteerd uit de &quot;Enqueteurs&quot; Groep."
+
+#: CanvassAutomation.php:150
+msgid "Assign To Non Pledging"
+msgstr "Toewijzen aan geen bijdrage"
+
+#: CanvassAutomation.php:154
+msgid "Randomly assign canvassers to non-pledging Families.  The Canvassers are taken from the &quot;BraveCanvassers&quot; Group."
+msgstr "Willekeurig aanwervers toekennen aan niet-gevende Families. De aanwervers worden geselecteerd uit de &quot;MoedigeEnqueteur&quot; Groep."
+
+#: CanvassAutomation.php:161
+msgid "Clear Canvasser Assignments"
+msgstr "Ledig enquêteurs Toewijzingen"
+
+#: CanvassAutomation.php:165
+msgid "Clear all the canvasser assignments for all families."
+msgstr "Wis alle aanwerver toekenningen voor alle families"
+
+#: CanvassAutomation.php:165
+msgid "Important note: this will lose any canvasser assignments that have been made by hand."
+msgstr "Let Op: Hiermee gaan alle handmatig toekenningen van aanwervers verloren"
+
+#: CanvassAutomation.php:172
+msgid "Enable Canvass for All Families"
+msgstr "Laat enquete voor alle families toe"
+
+#: CanvassAutomation.php:176
+msgid "Turn on the &quot;Ok To Canvass&quot; field for all Families."
+msgstr "De &quot;Aanwerven Ok&quot;  veld aan zetten voor alle Families"
+
+#: CanvassAutomation.php:183
+msgid "Disable Canvass for All Families"
+msgstr "Sta Enquete voor Alle Families niet meer toe"
+
+#: CanvassAutomation.php:187
+msgid "Turn off the &quot;Ok To Canvass&quot; field for all Families"
+msgstr "De &quot;Aanwerven Ok&quot;  veld uit zetten voor alle Families"
+
+#: CanvassAutomation.php:194
+msgid "Briefing Sheets"
+msgstr "Aanwijzings Blad"
+
+#: CanvassAutomation.php:198
+msgid "Generate a PDF containing briefing sheets for all Families, sorted by canvasser."
+msgstr "Maak een PDF met aanwijzings blad voor alle families, gesorteerd op enqueteurs."
+
+#: CanvassAutomation.php:204
+msgid "Progress Report"
+msgstr "Voortgangsrapport"
+
+#: CanvassAutomation.php:208
+msgid "Generate a PDF containing a progress report.  The progress report includes information on the overall progress of the canvass, and the progress of individual canvassers."
+msgstr "Genereer een PDF met een voortgangsrapport. De voortgangsrapport bevat informatie over de algehele voortgang van het aanwerven, en voortgang van individuele Enqueteurs"
+
+#: CanvassAutomation.php:214
+msgid "Summary Report"
+msgstr "Samenvattings Rapport"
+
+#: CanvassAutomation.php:224
+msgid "Not Interested Report"
+msgstr "Niet geinterresseerd Rapport"
+
+#: CanvassAutomation.php:228
+msgid "Generate a PDF containing a report of the families marked &quot;Not Interested&quot; by the canvasser."
+msgstr "Genereer een PDF met een overzicht van famileis gemarkeerd als &quot;Niet geïnteresseerd&quot; door de Enqueteur "
+
+#: CanvassEditor.php:44
+msgid " Canvass Input for the "
+msgstr "Enqueteurs Input voor de "
+
+#: Reports/CanvassReports.php:170 UserEditor.php:440
+msgid "Canvasser"
+msgstr "Enqueteur "
+
+#: CanvassEditor.php:200 Reports/CanvassReports.php:347
+msgid "Positive"
+msgstr "Positief"
+
+#: CanvassEditor.php:205 Reports/CanvassReports.php:347
+msgid "Critical"
+msgstr "Kritisch"
+
+#: CanvassEditor.php:210 Reports/CanvassReports.php:347
+msgid "Insightful"
+msgstr "Inzicht"
+
+#: CanvassEditor.php:215 Reports/CanvassReports.php:347
+msgid "Financial"
+msgstr "Financieel"
+
+#: CanvassEditor.php:220
+msgid "Suggestions"
+msgstr "Suggesties"
+
+#: CanvassEditor.php:225
+msgid "Not Interested"
+msgstr "Niet Geinteresseerd"
+
+#: CanvassEditor.php:232
+msgid "Why Not Interested?"
+msgstr "Waarom niet Geinterresseerd?"
+
+#: CartToEvent.php:50 CartToEvent.php:83
+msgid "Add Cart to Event"
+msgstr "Voeg mandje toe aan Evenement"
+
+#: CartToEvent.php:57
+msgid "Select the event to which you would like to add your cart"
+msgstr "Selecteer het evenement aan welke u het mandje wil toevoegen"
+
+#: CartToEvent.php:84
+msgid "OR"
+msgstr "OF"
+
+#: CartToEvent.php:85 Checkin.php:105 ListEvents.php:344
+msgid "Add New Event"
+msgstr "Voeg Evenement Toe"
+
+#: CartToEvent.php:92 CartToFamily.php:325 CartToGroup.php:101
+msgid "Your cart is empty!"
+msgstr "Uw mandje is leeg!"
+
+#: CartToFamily.php:84
+msgid "No family name entered!"
+msgstr "Geen familie naam ingevoerd!"
+
+#: CartToFamily.php:123
+msgid "Add Cart to Family"
+msgstr "Voeg mandje toe aan Familie"
+
+#: CartToFamily.php:155 CartView.php:271 Checkin.php:311
+#: ChurchCRM/Emails/notifications/NewPersonOrFamilyEmail.php:63
+#: DonationFundEditor.php:150 DonationFundEditor.php:213
+#: EditEventAttendees.php:32 EditEventAttendees.php:41 EventAttendance.php:174
+#: EventNames.php:263 FamilyCustomFieldsEditor.php:320
+#: FamilyCustomFieldsEditor.php:434 FamilyList.php:44 FamilyView.php:550
+#: GeoPage.php:357 GroupEditor.php:73 GroupPropsFormEditor.php:285
+#: GroupPropsFormEditor.php:397 GroupView.php:255 GroupView.php:288
+#: PersonCustomFieldsEditor.php:311 PersonCustomFieldsEditor.php:442
+#: PersonView.php:683 PersonView.php:788 PrintView.php:337 PrintView.php:463
+#: PropertyEditor.php:149 PropertyList.php:60 PropertyTypeEditor.php:96
+#: PropertyTypeList.php:41 Reports/CanvassReports.php:69
+#: Reports/CanvassReports.php:237 Reports/FRBidSheets.php:88
+#: SelectList.php:988 UserList.php:54 VolunteerOpportunityEditor.php:75
+#: VolunteerOpportunityEditor.php:354 VolunteerOpportunityEditor.php:421
+#: sundayschool/SundaySchoolClassView.php:202
+#: v2/templates/people/family-view.php:374 queryparameteroptions_qpo.php:4
+msgid "Name"
+msgstr "Naam"
+
+#: CartToFamily.php:156
+msgid "Assign Role"
+msgstr "Toewijzen aan Rol"
+
+#: CartToFamily.php:172
+msgid "Already in a family"
+msgstr "Reeds in een familie"
+
+#: CartToFamily.php:190
+msgid "Create new family"
+msgstr "Voer nieuwe familie in"
+
+#: CartToFamily.php:201
+msgid "If adding a new family, enter data below."
+msgstr "Indien nieuwe familie, voeg onderstaande gegevens toe."
+
+#: CartToFamily.php:216
+msgid "Use address/contact data from"
+msgstr "Gebruik adres/contact gegevens van"
+
+#: CartToFamily.php:220
+msgid "Only the new data below"
+msgstr "Onderstaand alleen de nieuwe gegevens"
+
+#: CartToFamily.php:257
+msgid "(Use the textbox for countries other than US and Canada)"
+msgstr "(Gebruik de tekstbox voor landen anders dan de US en Canada)"
+
+#: CartToFamily.php:286 CartToFamily.php:296 CartToFamily.php:306
+#: FamilyEditor.php:745 FamilyEditor.php:755 FamilyEditor.php:765
+#: Include/Functions.php:899 PersonEditor.php:977 PersonEditor.php:1001
+#: PersonEditor.php:1025
+msgid "Do not auto-format"
+msgstr "Gebruik geen Auto-formaat"
+
+#: CartToFamily.php:185 CartToFamily.php:319
+msgid "Add to Family"
+msgstr "Voeg toe aan Familie"
+
+#: CartToGroup.php:55
+msgid "Add Cart to Group"
+msgstr "Voeg mandje toe aan groep"
+
+#: CartToGroup.php:66
+msgid "Select the group to which you would like to add your cart"
+msgstr "Selecteer de groep welke u wilt toevoegen aan het mandje"
+
+#: CartToGroup.php:70 GroupReports.php:43 PersonToGroup.php:62
+#: sundayschool/SundaySchoolReports.php:186
+msgid "Select Group"
+msgstr "Selecteer Groep"
+
+#: CartToGroup.php:85 PersonToGroup.php:79
+msgid "No Group Selected"
+msgstr "Geen Groep Geselecteerd"
+
+#: CartToGroup.php:92 PersonToGroup.php:86 SelectList.php:1218
+msgid "Add to Group"
+msgstr "Voeg toe aan Groep"
+
+#: CartView.php:21
+msgid "View Your Cart"
+msgstr "Bekijk Uw mandje"
+
+#: CartView.php:29
+msgid "You have no items in your cart."
+msgstr "U heeft geen object in het mandje "
+
+#: CartView.php:38
+msgid "Back to Menu"
+msgstr "Terug naar menu"
+
+#: CartView.php:72
+msgid "Go To Labels"
+msgstr "Ga naar Etiketten"
+
+#: CartView.php:88
+msgid "Empty Cart"
+msgstr "Leeg mandje"
+
+#: CartView.php:91
+msgid "Empty Cart to Group"
+msgstr "Leeg mandje in Groep"
+
+#: CartView.php:97
+msgid "Empty Cart to Family"
+msgstr "Leeg mandje in Familie"
+
+#: CartView.php:101
+msgid "Empty Cart to Event"
+msgstr "Leeg mandje in Evenement"
+
+#: CartView.php:110
+msgid "Map Cart"
+msgstr "Route mandje "
+
+#: CartView.php:112
+msgid "Name Tags"
+msgstr "Naam"
+
+#: CartView.php:146
+msgid "Email Cart"
+msgstr "Email mandje"
+
+#: CartView.php:147 GroupView.php:139
+#: sundayschool/SundaySchoolClassView.php:101
+msgid "Email (BCC)"
+msgstr "Email (BCC)"
+
+#: CartView.php:177
+msgid "Create Directory From Cart"
+msgstr "Maak Adresboek van het mandje"
+
+#: CartView.php:201 CartView.php:243
+msgid "Generate Labels"
+msgstr "Genereer Etiketten"
+
+#: CartView.php:209
+msgid "Bulk Mail Presort"
+msgstr "Mass Mail Pre-sorteer"
+
+#: CartView.php:218
+msgid "Quiet Presort"
+msgstr "Stille Pre-sorteer"
+
+#: CartView.php:264
+msgid "Your cart contains"
+msgstr "Uw mandje bevat"
+
+#: CartView.php:264
+msgid "persons from"
+msgstr "personen van"
+
+#: CartView.php:274 CartView.php:332 EditEventTypes.php:166 FamilyView.php:555
+#: FamilyView.php:597 GroupView.php:293 GroupView.php:334 PersonView.php:686
+#: PersonView.php:704 PersonView.php:791 PersonView.php:809
+msgid "Remove"
+msgstr "Verwijder"
+
+#: CartView.php:295 CartView.php:315 DonationFundEditor.php:177
+#: FinancialReports.php:295 Include/Functions.php:686
+#: Include/Functions.php:770 ListEvents.php:296 Reports/ConfirmReport.php:227
+msgid "Yes"
+msgstr "Ja"
+
+#: CartView.php:308 CartView.php:317 DonationFundEditor.php:180
+#: FinancialReports.php:296 Include/Functions.php:688
+#: Include/Functions.php:771 ListEvents.php:296 Reports/ConfirmReport.php:229
+msgid "No"
+msgstr "Nee"
+
+#: Checkin.php:15
+msgid "Event Checkin"
+msgstr "Evenement Checkin"
+
+#: Checkin.php:75
+msgid "Select the event to which you would like to check people in for"
+msgstr "Selecteer het evenement waaraan u personen wilt toevoegen"
+
+#: CartToEvent.php:68 Checkin.php:84
+msgid "Select Event"
+msgstr "Selecteer Evenement:"
+
+#: external/templates/verify/verify-family-info.php:152
+msgid "Verify"
+msgstr "Controleren"
+
+#: Checkin.php:172
+msgid "Add Visitor"
+msgstr "Voeg bezoeker toe"
+
+#: Checkin.php:165
+msgid "CheckIn"
+msgstr "CheckIn"
+
+#: Checkin.php:273 Checkin.php:366
+msgid "CheckOut"
+msgstr "CheckOut"
+
+#: Checkin.php:312
+msgid "Checked In Time"
+msgstr "CheckIn tijd"
+
+#: Checkin.php:313
+msgid "Checked In By"
+msgstr "Ingechecked door"
+
+#: Checkin.php:314
+msgid "Checked Out Time"
+msgstr "Checkuit tij"
+
+#: Checkin.php:315
+msgid "Checked Out By"
+msgstr "Afgerekend doior "
+
+#: Checkin.php:316 EditEventAttendees.php:44 EventNames.php:267
+#: ListEvents.php:205 PersonView.php:633
+msgid "Action"
+msgstr "Actie"
+
+#: EditEventAttendees.php:84
+msgid "No Attendees Assigned to Event"
+msgstr "Geen bezoekers toegewezen aan Evenement"
+
+#: Checkin.php:455 Include/Functions.php:1410 Reports/CanvassReports.php:241
+#: Reports/VotingMembers.php:83 queryparameteroptions_qpo.php:15
+msgid "Member"
+msgstr "Lid"
+
+#: Checkin.php:457 ChurchCRM/Service/PersonService.php:39
+msgid " of the"
+msgstr " van de"
+
+#: Checkin.php:459 ChurchCRM/Service/PersonService.php:41 PersonView.php:267
+msgid "(No assigned family)"
+msgstr "(Geen gekoppelde familie)"
+
+#: ConvertIndividualToFamily.php:39
+msgid "Convert Individuals to Families"
+msgstr "Converteer personen naar families"
+
+#: ConvertIndividualToFamily.php:137
+msgid "Convert Next"
+msgstr "Converteer Volgende"
+
+#: ConvertIndividualToFamily.php:138
+msgid "Convert All"
+msgstr "Convert Alle"
+
+#: DepositSlipEditor.php:50
+msgid "Deposit Slip Number: "
+msgstr "Stortings Strookje Nummer"
+
+#: DepositSlipEditor.php:89
+msgid "Close deposit slip (remember to press Save)"
+msgstr "Maak Stortings strookje dicht (Vergeet het niet op te slaan)"
+
+#: DepositSlipEditor.php:97
+msgid "Deposit Slip Report"
+msgstr "Stortings Strook Rapport"
+
+#: DepositSlipEditor.php:102
+msgid "Important note: failed transactions will be deleted permanantly when the deposit slip is closed."
+msgstr "Belangrijk gegeven: Mislukte transacties zijn permananent verwijderd na het afsluiten van het stortings strookje."
+
+#: DepositSlipEditor.php:144
+msgid "Payments on this deposit slip:"
+msgstr "Betalingen op dit stortings strookje:"
+
+#: DepositSlipEditor.php:149 eGive.php:267
+msgid "Import eGive"
+msgstr "Importeren eGive"
+
+#: DepositSlipEditor.php:151
+msgid "Add Payment"
+msgstr "Voer Betaling in"
+
+#: DepositSlipEditor.php:155
+msgid "Load Authorized Transactions"
+msgstr "Laad ge-autorizeerde Transacties"
+
+#: DepositSlipEditor.php:156
+msgid "Run Transactions"
+msgstr "Verwerk Transacties"
+
+#: DirectoryReports.php:28
+msgid "Directory reports"
+msgstr "Adresboek Rapporten"
+
+#: DirectoryReports.php:78
+msgid "Select classifications to include"
+msgstr "Selecteer Classificaties die omvatten"
+
+#: DirectoryReports.php:114
+msgid "Which role is the head of household?"
+msgstr "Welke rol is het hoofd van het gezin"
+
+#: DirectoryReports.php:132
+msgid "Which role is the spouse?"
+msgstr "Welke rol is de echtgenoot?"
+
+#: DirectoryReports.php:151
+msgid "Which role is a child?"
+msgstr "Welke rol is een kind?"
+
+#: DirectoryReports.php:170
+msgid "Information to Include"
+msgstr "Informatie om toe te Voegen"
+
+#: AutoPaymentEditor.php:902 AutoPaymentEditor.php:908 CSVExport.php:92
+#: CSVExport.php:97 CSVImport.php:217 CSVImport.php:218 CartToFamily.php:235
+#: CartToFamily.php:240 CartView.php:272 DirectoryReports.php:172
+#: DirectoryReports.php:246 FamilyEditor.php:664 FamilyEditor.php:668
+#: FamilyList.php:45 FamilyView.php:214 GeoPage.php:358 GroupReports.php:123
+#: Menu.php:309 Menu.php:338 PersonEditor.php:831 PersonEditor.php:847
+#: PersonView.php:272 Register.php:43 Reports/ConfirmReportEmail.php:125
+#: Reports/ConfirmReportEmail.php:130 api/routes/search.php:97
+#: external/templates/registration/family-register-done.php:29
+#: external/templates/registration/family-register.php:35
+#: v2/templates/people/family-view.php:211
+msgid "Address"
+msgstr "Adres"
+
+#: ChurchCRM/Service/CalendarService.php:16
+#: ChurchCRM/SystemCalendars/BirthdaysCalendar.php:59 DirectoryReports.php:174
+#: FamilyView.php:358 PersonView.php:510 Reports/ConfirmReport.php:184
+#: Reports/ConfirmReport.php:203 Reports/ConfirmReportEmail.php:192
+#: Reports/ConfirmReportEmail.php:210
+#: external/templates/verify/verify-family-info.php:80
+#: v2/templates/people/family-view.php:323
+msgid "Birthday"
+msgstr "Geboortedatum"
+
+#: DirectoryReports.php:176
+msgid "Family Home Phone"
+msgstr "Tel.No Thuis van Familie"
+
+#: DirectoryReports.php:177
+msgid "Family Work Phone"
+msgstr "Werk Tel.No van Familie"
+
+#: DirectoryReports.php:178
+msgid "Family Cell Phone"
+msgstr "Mobiele Tel.No van Familie"
+
+#: DirectoryReports.php:179 Reports/ConfirmReport.php:156
+#: Reports/ConfirmReportEmail.php:161
+#: external/templates/verify/verify-family-info.php:29
+msgid "Family Email"
+msgstr "Email van Familie"
+
+#: DirectoryReports.php:181
+msgid "Personal Home Phone"
+msgstr "Persoonlijke Tel.No Thuis"
+
+#: DirectoryReports.php:182
+msgid "Personal Work Phone"
+msgstr "Persoonlijke Tel.No Werk"
+
+#: DirectoryReports.php:183
+msgid "Personal Cell Phone"
+msgstr "Persoonlijke Mobiele Tel.No"
+
+#: DirectoryReports.php:184
+msgid "Personal Email"
+msgstr "Persoonlijke Email"
+
+#: DirectoryReports.php:185
+msgid "Personal Work/Other Email"
+msgstr "Persoonlijk Werk/Ander Email"
+
+#: DirectoryReports.php:186
+msgid "Photos"
+msgstr "Foto's"
+
+#: DirectoryReports.php:202
+msgid "Number of Columns"
+msgstr "Aantal Colummen"
+
+#: DirectoryReports.php:210
+msgid "Paper Size"
+msgstr "Papier Grote"
+
+#: DirectoryReports.php:218 Include/LabelFunctions.php:61
+msgid "Font Size"
+msgstr "Font Grote"
+
+#: DirectoryReports.php:234
+msgid "Title page"
+msgstr "Title Pagina"
+
+#: DirectoryReports.php:238
+msgid "Use Title Page"
+msgstr "Gebruik Titel Pagina"
+
+#: ChurchCRM/dto/SystemConfig.php:128 DirectoryReports.php:242 Register.php:41
+msgid "Church Name"
+msgstr "Gemeente Naam"
+
+#: DirectoryReports.php:266
+msgid "Disclaimer"
+msgstr "Ontkenning"
+
+#: DirectoryReports.php:285
+msgid "Create Directory"
+msgstr "Maak Nieuwe Folder"
+
+#: DonatedItemEditor.php:44
+msgid "Donated Item Editor"
+msgstr "Gift Item Editor"
+
+#: DonatedItemEditor.php:295 FamilyEditor.php:1117 PaddleNumEditor.php:150
+#: PersonEditor.php:1229 PledgeEditor.php:689
+msgid "Save and Add"
+msgstr "Bewaar en Voeg toe"
+
+#: BatchWinnerEntry.php:74 DonatedItemEditor.php:172 FundRaiserEditor.php:191
+msgid "Item"
+msgstr "object"
+
+#: DonatedItemEditor.php:179
+msgid "Multiple items"
+msgstr "Meerdere items"
+
+#: DonatedItemEditor.php:179
+msgid "Sell to everyone"
+msgstr "Verkoop aan iedereen"
+
+#: DonatedItemEditor.php:213
+msgid "Estimated Price"
+msgstr "Geschatte prijs"
+
+#: DonatedItemEditor.php:233 FundRaiserEditor.php:192 FundRaiserEditor.php:230
+msgid "Multiple"
+msgstr "Meervoudig"
+
+#: DonatedItemEditor.php:255
+msgid "Final Price"
+msgstr "Uiteindelijke prijs"
+
+#: DonatedItemEditor.php:264 FindFundRaiser.php:227
+#: external/templates/password/enter-username.php:36
+msgid "Go"
+msgstr "Gaan"
+
+#: DonatedItemEditor.php:274 DonationFundEditor.php:151
+#: DonationFundEditor.php:221 EditEventAttendees.php:34
+#: FundRaiserEditor.php:174 GroupEditor.php:79 GroupPropsFormEditor.php:286
+#: GroupPropsFormEditor.php:410 GroupView.php:256 ListEvents.php:206
+#: PersonView.php:789 PropertyTypeEditor.php:104
+#: VolunteerOpportunityEditor.php:76 VolunteerOpportunityEditor.php:355
+#: VolunteerOpportunityEditor.php:429
+msgid "Description"
+msgstr "Omschrijving"
+
+#: DonationFundEditor.php:50
+msgid "Donation Fund Editor"
+msgstr "Fonds Donatie Administratie"
+
+#: DonationFundEditor.php:116
+msgid "Are you sure you want to delete this fund?"
+msgstr "Weet u zeker dat u dit fonds wil verwijderen?"
+
+#: DonationFundEditor.php:126
+msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using a delete or 'add new' button!"
+msgstr "Waarschuwing: Aanpassingen op velden zullen verwijderd worden als u niet op 'Bewaar gegevens' drukt, voordat u een verwijder of toevoeg knop gebruikt."
+
+#: DonationFundEditor.php:132 FamilyCustomFieldsEditor.php:315
+#: GroupPropsFormEditor.php:277 OptionManager.php:310
+#: PersonCustomFieldsEditor.php:304 PersonEditor.php:609
+#: VolunteerOpportunityEditor.php:340
+msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
+msgstr "Ongeldig veld of selectie. Verandering niet aangepast! Graag veranderen en probeer opnieuw"
+
+#: DonationFundEditor.php:144
+msgid "No funds have been added yet"
+msgstr "Er zijn nog geen fondsen toegevoegd"
+
+#: DonationFundEditor.php:152 EventEditor.php:534 GroupView.php:217
+#: KioskManager.php:30 ListEvents.php:210
+msgid "Active"
+msgstr "Actief"
+
+#: DonationFundEditor.php:196 EventEditor.php:543 EventNames.php:234
+#: FamilyCustomFieldsEditor.php:404 GroupPropsFormEditor.php:368
+#: OptionManager.php:367 PersonCustomFieldsEditor.php:407
+#: VolunteerOpportunityEditor.php:403
+msgid "Save Changes"
+msgstr "Bewaar Gegevens"
+
+#: DonationFundEditor.php:226
+msgid "Add New Fund"
+msgstr "Voeg Nieuw Fonds toe"
+
+#: EditEventAttendees.php:7 EventEditor.php:29
+msgid "Church Event Editor"
+msgstr "Kerk Evenement Redacteur"
+
+#: EditEventTypes.php:25 EventNames.php:29
+msgid "Edit Event Types"
+msgstr "Aanpassen Evenement Type"
+
+#: EditEventTypes.php:121
+msgid "Edit Event Type"
+msgstr "Aanpassen Evenement Type"
+
+#: EditEventTypes.php:131 EventEditor.php:429 EventEditor.php:457
+#: EventNames.php:262 ListEvents.php:207
+msgid "Event Type"
+msgstr "Type Evenement"
+
+#: EditEventTypes.php:137
+msgid "Save Name"
+msgstr "Bewaar Naam"
+
+#: EditEventTypes.php:142 EventNames.php:158 EventNames.php:264
+#, fuzzy
+msgid "Recurrence Pattern"
+msgstr "Periodiek Patroon"
+
+#: EditEventTypes.php:157 EventEditor.php:489 EventNames.php:266
+#: ListEvents.php:208
+msgid "Attendance Counts"
+msgstr "Opkomst Tellingen"
+
+#: AutoPaymentEditor.php:801
+#: ChurchCRM/Emails/verify/FamilyVerificationEmail.php:24
+#: ElectronicPaymentList.php:195 FamilyView.php:205 FinancialReports.php:303
+#: PersonEditor.php:796 PersonView.php:422 PledgeEditor.php:508
+#: PrintView.php:258 PropertyAssign.php:73 PropertyEditor.php:43
+#: PropertyList.php:28 PropertyTypeEditor.php:90 PropertyTypeList.php:62
+#: SelectList.php:1037
+#: external/templates/registration/family-register-done.php:28
+msgid "Family"
+msgstr "Familie"
+
+#: AutoPaymentEditor.php:847 ElectronicPaymentList.php:197 FamilyView.php:766
+#: PledgeEditor.php:520 ReminderReport.php:42 SelectDelete.php:217
+#: sundayschool/SundaySchoolReports.php:205 queryparameters_qrp.php:18
+msgid "Fiscal Year"
+msgstr "Fiscaal Jaar"
+
+#: ElectronicPaymentList.php:199 FamilyView.php:659 FamilyView.php:768
+#: PledgeEditor.php:714 SelectDelete.php:219
+msgid "Amount"
+msgstr "Bedrag"
+
+#: AutoPaymentEditor.php:864 ElectronicPaymentList.php:201 FamilyView.php:661
+#: FamilyView.php:765 FinancialReports.php:302 SelectDelete.php:216
+msgid "Fund"
+msgstr "Fonds"
+
+#: ElectronicPaymentList.php:202 FindDepositSlip.php:47
+msgid "Bank"
+msgstr "Bank"
+
+#: ElectronicPaymentList.php:211 FamilyEditor.php:945
+#: queryparameters_qrp.php:11
+msgid "Month"
+msgstr "Maand"
+
+#: ElectronicPaymentList.php:212 FamilyEditor.php:947
+#: Include/Functions.php:101
+msgid "Year"
+msgstr "Jaar"
+
+#: ElectronicPaymentList.php:218 ElectronicPaymentList.php:283
+#: EventNames.php:294 FamilyView.php:209 FamilyView.php:662 FamilyView.php:711
+#: FamilyView.php:773 FindFundRaiser.php:233 FindFundRaiser.php:241
+#: ListEvents.php:224 PersonView.php:238 PropertyList.php:64
+#: PropertyList.php:105 PropertyTypeList.php:45 PropertyTypeList.php:65
+#: SelectList.php:1052
+msgid "Edit"
+msgstr "Bewerken"
+
+#: Register.php:50
+#, fuzzy
+msgid "Message"
+msgstr "Bericht"
+
+#: EventAttendance.php:22
+msgid "Event Attendees"
+msgstr "Evenement bezoekers"
+
+#: EventAttendance.php:42
+msgid "Event Nonattendees"
+msgstr "Evenement niet bezoekers"
+
+#: EventAttendance.php:48
+msgid "Event Guests"
+msgstr "Evenement gasten"
+
+#: EventAttendance.php:60
+msgid "Back to Report Menu"
+msgstr "Terug naar rapportage menu"
+
+#: EventAttendance.php:171
+msgid "There "
+msgstr "Daar"
+
+#: EventAttendance.php:100 EventEditor.php:466
+msgid "Event Title"
+msgstr "Naam Evenement"
+
+#: EventAttendance.php:101
+msgid "Event Date"
+msgstr "Evenement Datum"
+
+#: EventAttendance.php:102
+msgid "Generate Report"
+msgstr "Genereer Rapportage"
+
+#: EventAttendance.php:134
+msgid "Attending Members"
+msgstr "Aanwezige Leden"
+
+#: EventAttendance.php:145
+msgid "Non-Attending Members"
+msgstr "Niet-Aanwezige Leden"
+
+#: EventAttendance.php:160
+msgid "Guests"
+msgstr "Gasten"
+
+#: EventAttendance.php:204
+msgid "There are no events in this category"
+msgstr "Er zijn geen evenementen in deze categorie"
+
+#: EventAttendance.php:204
+msgid "There are no Records"
+msgstr "Er zijn geen Records"
+
+#: EventEditor.php:407
+msgid "Editing Event ID: "
+msgstr "Aanpassen evenement ID: "
+
+#: EventEditor.php:413
+msgid " errors. Please see below"
+msgstr "fouten. Zie hieronder"
+
+#: EventEditor.php:415
+msgid "Items with a "
+msgstr "Objecten met een"
+
+#: EventEditor.php:415
+msgid " are required"
+msgstr "zijn vereist"
+
+#: EventEditor.php:472
+msgid "Event Desc"
+msgstr "Evenement Omschrijving"
+
+#: EventEditor.php:494
+msgid "No Attendance counts recorded"
+msgstr "Geen opkomst tellingen opgenomen"
+
+#: EventEditor.php:512
+msgid "Attendance Notes: "
+msgstr "Opkomst Notities: "
+
+#: EventEditor.php:524
+msgid "Event Sermon"
+msgstr "Evenementen Preek"
+
+#: EventEditor.php:530
+msgid "Event Status"
+msgstr "Evenement Status"
+
+#: EventNames.php:150
+msgid "EVENT TYPE NAME"
+msgstr "EVENEMENT TYPE NAAM"
+
+#: EventNames.php:172
+msgid "Sundays"
+msgstr "Zondags"
+
+#: EventNames.php:173
+msgid "Mondays"
+msgstr "Maandags"
+
+#: EventNames.php:174
+msgid "Tuesdays"
+msgstr "Dinsdags"
+
+#: EventNames.php:175
+msgid "Wednesdays"
+msgstr "Woensdags"
+
+#: EventNames.php:176
+msgid "Thursdays"
+msgstr "Donderdags"
+
+#: EventNames.php:177
+msgid "Fridays"
+msgstr "Vrijdags"
+
+#: EventNames.php:178
+msgid "Saturdays"
+msgstr "Zaterdags"
+
+#: EventNames.php:219
+msgid "ATTENDANCE COUNTS"
+msgstr "OPKOMST TELLING"
+
+#: EventNames.php:327
+msgid "Add Event Type"
+msgstr "Toevoegen Evenement Type"
+
+#: FamilyCustomFieldsEditor.php:30
+msgid "Custom Family Fields Editor"
+msgstr "Aanpasbare familie-Veld editor"
+
+#: FamilyCustomFieldsEditor.php:167 PersonCustomFieldsEditor.php:156
+msgid "Default Option"
+msgstr "Standaard optie"
+
+#: FamilyCustomFieldsEditor.php:286
+msgid "Warning:  By deleting this field, you will irrevokably lose all family data assigned for this field!"
+msgstr "Waarschuwing: Door het verwijderen van dit veld, wordt alle hieraan gekoppelde  familiegegevens vernietigd!"
+
+#: FamilyCustomFieldsEditor.php:298 PersonCustomFieldsEditor.php:287
+msgid "Warning: Arrow and delete buttons take effect immediately.  Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!"
+msgstr "Waarschuwing: Pijltjes en delete toetsen worden meteen toegepast. Veld naam wijzigingen zullen verdwijnen als u niet 'Opslaat' voor het gebruik van een van deze toetsen!"
+
+#: FamilyCustomFieldsEditor.php:307
+msgid "No custom Family fields have been added yet"
+msgstr "Aanpasbare persoons-velden zijn nog niet toegevoegd"
+
+#: FamilyCustomFieldsEditor.php:321 GroupPropsFormEditor.php:287
+#: PersonCustomFieldsEditor.php:312
+msgid "Special option"
+msgstr "Speciale Optie"
+
+#: FamilyCustomFieldsEditor.php:322 FamilyCustomFieldsEditor.php:447
+#: PersonCustomFieldsEditor.php:313 PersonCustomFieldsEditor.php:461
+msgid "Security Option"
+msgstr "Beveiligings optie"
+
+#: FamilyCustomFieldsEditor.php:323
+msgid "Family-View Side"
+msgstr "Familie Overzicht"
+
+#: FamilyCustomFieldsEditor.php:363 GroupPropsFormEditor.php:345
+#: PersonCustomFieldsEditor.php:356
+msgid "You must select a group."
+msgstr "U moet een groep selecteren."
+
+#: FamilyCustomFieldsEditor.php:368 PersonCustomFieldsEditor.php:359
+msgid "Edit List Options"
+msgstr "Bewerk Lijst Opties"
+
+#: FamilyCustomFieldsEditor.php:378 FamilyCustomFieldsEditor.php:452
+#: PersonCustomFieldsEditor.php:377 PersonCustomFieldsEditor.php:456
+msgid "Left"
+msgstr "Links"
+
+#: FamilyCustomFieldsEditor.php:379 FamilyCustomFieldsEditor.php:453
+#: PersonCustomFieldsEditor.php:381 PersonCustomFieldsEditor.php:457
+msgid "Right"
+msgstr "Rechts"
+
+#: FamilyCustomFieldsEditor.php:431 GroupPropsFormEditor.php:394
+#: PersonCustomFieldsEditor.php:439
+msgid "Help on types.."
+msgstr "Hulp on types.."
+
+#: DonationFundEditor.php:167 DonationFundEditor.php:216
+#: FamilyCustomFieldsEditor.php:338 FamilyCustomFieldsEditor.php:438
+#: FamilyEditor.php:219 GroupPropsFormEditor.php:315
+#: GroupPropsFormEditor.php:401 OptionManager.php:351
+#: PersonCustomFieldsEditor.php:332 PersonCustomFieldsEditor.php:446
+#: PropertyEditor.php:71 PropertyTypeEditor.php:45
+#: VolunteerOpportunityEditor.php:383 VolunteerOpportunityEditor.php:424
+msgid "You must enter a name"
+msgstr "U moet een naam invoeren"
+
+#: FamilyCustomFieldsEditor.php:441 GroupPropsFormEditor.php:404
+#: PersonCustomFieldsEditor.php:449
+msgid "That field name already exists."
+msgstr "De naam van dit veld bestaat al."
+
+#: FamilyCustomFieldsEditor.php:457 GroupPropsFormEditor.php:415
+#: PersonCustomFieldsEditor.php:465
+msgid "Add New Field"
+msgstr "Voeg een Nieuw Veld toe"
+
+#: FamilyEditor.php:25
+msgid "Family Editor"
+msgstr "Familie Administratie"
+
+#: FamilyEditor.php:198
+msgid "First name must be entered"
+msgstr "Voornaam moet ingetoetst worden"
+
+#: FamilyEditor.php:206 PersonEditor.php:209
+msgid "Invalid Year: allowable values are 1901 to 2155"
+msgstr "Ongeldig Jaar: Geldige waardes zijn van 1901 tot 2155"
+
+#: FamilyEditor.php:210 PersonEditor.php:213
+msgid "Invalid Birth Date."
+msgstr "Ongeldige Geboortedatum."
+
+#: FamilyEditor.php:228
+msgid "Not a valid Wedding Date"
+msgstr "Niet een geldige Trouwdatum"
+
+#: FamilyEditor.php:241 PersonEditor.php:247
+msgid "Email is Not Valid"
+msgstr "E-mail is niet geldig"
+
+#: FamilyEditor.php:817
+msgid "Ok To Canvass"
+msgstr "Onderzoek is akkoord"
+
+#: FamilyEditor.php:828
+msgid "Assign a Canvasser"
+msgstr "Wijs een Enqueteur toe"
+
+#: FamilyEditor.php:846
+msgid "Assign a Brave Canvasser"
+msgstr "Wijs een moedige Enqueteur toe:"
+
+#: FamilyEditor.php:889 PersonEditor.php:1190
+msgid "Custom Fields"
+msgstr "Aanpasbare Velden"
+
+#: FamilyEditor.php:920 FamilyView.php:356 PersonView.php:508
+#: PrintView.php:334
+#: external/templates/registration/family-register-members.php:20
+#: v2/templates/people/family-view.php:256
+msgid "Family Members"
+msgstr "Familie Leden"
+
+#: FamilyEditor.php:933
+msgid "You may create family members now or add them later.  All entries will become <i>new</i> person records."
+msgstr "U kunt nu familie leden toevoegen maar het kan ook later. Alles wat ingevoerd wordt zal een <i>nieuw</i> persoons record worden."
+
+#: FamilyEditor.php:939
+msgid "First"
+msgstr "Voornaam"
+
+#: FamilyEditor.php:940
+msgid "Middle"
+msgstr "Tussenvoegsel"
+
+#: FamilyEditor.php:941
+msgid "Last"
+msgstr "Achternaam"
+
+#: FamilyEditor.php:944 FamilyView.php:357 OptionManager.php:60
+#: OptionManager.php:93 PersonView.php:509 PrintView.php:339 PrintView.php:392
+#: Reports/CanvassReports.php:239 Reports/GroupReport.php:102
+msgid "Role"
+msgstr "Rol"
+
+#: FamilyEditor.php:946
+msgid "Day"
+msgstr "Dag"
+
+#: FamilyEditor.php:987 PersonEditor.php:626
+msgid "Select Gender"
+msgstr "Selecteer Geslacht"
+
+#: CartToGroup.php:82 FamilyEditor.php:1001 GroupReports.php:57
+#: PersonToGroup.php:76
+msgid "Select Role"
+msgstr "Selecteer Rol"
+
+#: ChurchCRM/Dashboard/PersonDemographicDashboardItem.php:23
+#: ChurchCRM/Dashboard/PersonDemographicDashboardItem.php:37
+#: ChurchCRM/Service/TimelineService.php:115 ChurchCRM/utils/MiscUtils.php:62
+#: FamilyEditor.php:1017 Include/Functions.php:772 PeopleDashboard.php:336
+#: PeopleDashboard.php:355 PeopleDashboard.php:368 PeopleDashboard.php:381
+msgid "Unknown"
+msgstr "Onbekend"
+
+#: FamilyEditor.php:1020 PersonEditor.php:695
+msgid "January"
+msgstr "januari"
+
+#: FamilyEditor.php:1023 PersonEditor.php:698
+msgid "February"
+msgstr "februari"
+
+#: FamilyEditor.php:1026 PersonEditor.php:701
+msgid "March"
+msgstr "maart"
+
+#: FamilyEditor.php:1029 PersonEditor.php:704
+msgid "April"
+msgstr "april"
+
+#: FamilyEditor.php:1032 PersonEditor.php:707
+msgid "May"
+msgstr "mei"
+
+#: FamilyEditor.php:1035 PersonEditor.php:710
+msgid "June"
+msgstr "juni"
+
+#: FamilyEditor.php:1038 PersonEditor.php:713
+msgid "July"
+msgstr "juli"
+
+#: FamilyEditor.php:1041 PersonEditor.php:716
+msgid "August"
+msgstr "augustus"
+
+#: FamilyEditor.php:1044 PersonEditor.php:719
+msgid "September"
+msgstr "september"
+
+#: FamilyEditor.php:1047 PersonEditor.php:722
+msgid "October"
+msgstr "oktober"
+
+#: FamilyEditor.php:1050 PersonEditor.php:725
+msgid "November"
+msgstr "november"
+
+#: FamilyEditor.php:1053 PersonEditor.php:728
+msgid "December"
+msgstr "december"
+
+#: FamilyEditor.php:1058
+msgid "Unk"
+msgstr "Onb"
+
+#: FamilyView.php:29 v2/templates/people/family-view.php:11
+msgid "Family View"
+msgstr "Familie Overzicht"
+
+#: FamilyView.php:229
+msgid "Latitude/Longitude"
+msgstr "Beedte/Lengte"
+
+#: FamilyEditor.php:875 FamilyView.php:247 ManageEnvelopes.php:166
+#: PledgeEditor.php:525 v2/templates/people/family-view.php:146
+msgid "Envelope Number"
+msgstr "Envelop Nummer"
+
+#: FamilyView.php:308
+msgid "Previous Family"
+msgstr "Vorige Familie"
+
+#: FamilyView.php:316
+msgid "Next Family"
+msgstr "Volgende Familie"
+
+#: FamilyView.php:194 PersonView.php:199
+#: v2/templates/people/family-view.php:58
+msgid "Upload Photo"
+msgstr "Upload Foto"
+
+#: FamilyView.php:198 PersonView.php:202
+#: v2/templates/people/family-view.php:62
+msgid "Delete Photo"
+msgstr "Verwijder Foto"
+
+#: FamilyView.php:444
+msgid "Automatic Payments"
+msgstr "Automatische Betalingen"
+
+#: FamilyView.php:446
+msgid "Pledges and Payments"
+msgstr "Bijdrage en Betalingen"
+
+#: FamilyView.php:542 PersonView.php:676 PrintView.php:459
+#: v2/templates/people/family-view.php:366
+msgid "No property assignments."
+msgstr "Geen toegevoegde Eigenschappen."
+
+#: FamilyView.php:551 GroupView.php:289 PersonView.php:684 PrintView.php:464
+#: PropertyAssign.php:176 SystemSettings.php:140
+#: v2/templates/people/family-view.php:375
+msgid "Value"
+msgstr "Waarde"
+
+#: FamilyView.php:554 FamilyView.php:592 GroupView.php:292 GroupView.php:328
+msgid "Edit Value"
+msgstr "Wijzig Waarde"
+
+#: FamilyView.php:615 PersonView.php:717
+#: v2/templates/people/family-view.php:401
+msgid "Assign a New Property"
+msgstr "Voeg een Nieuwe Eigenschap toe"
+
+#: FamilyView.php:636 GroupView.php:366 PersonView.php:756 PersonView.php:842
+#: PropertyAssign.php:185 SelectList.php:1060
+#: v2/templates/people/family-view.php:415
+msgid "Assign"
+msgstr "Koppel"
+
+#: FamilyView.php:658
+msgid "Next payment date"
+msgstr "Volgende Betaal datum"
+
+#: FamilyView.php:660
+msgid "Interval (months)"
+msgstr "Interval (Maanden)"
+
+#: FamilyView.php:664 FamilyView.php:775 SelectDelete.php:223
+msgid "Date Updated"
+msgstr "Datum Vernieuwd"
+
+#: FamilyView.php:665 FamilyView.php:776 SelectDelete.php:224
+msgid "Updated By"
+msgstr "Vernieuwd Door"
+
+#: FamilyView.php:731
+msgid "Add a new automatic payment"
+msgstr "Voer een nieuwe automatische betaling in"
+
+#: FamilyView.php:743
+msgid "Show Pledges"
+msgstr "Toon Bijdrage Beloftes"
+
+#: FamilyView.php:747
+msgid "Show Payments"
+msgstr "Toon Betalingen"
+
+#: FamilyView.php:756 MemberRoleChange.php:116 PropertyAssign.php:187
+msgid "Update"
+msgstr "Vernieuw"
+
+#: FamilyView.php:764
+msgid "Pledge or Payment"
+msgstr "Belofte of Betaling"
+
+#: AutoPaymentEditor.php:840 CanvassEditor.php:194 DepositSlipEditor.php:78
+#: EditEventAttendees.php:33 FamilyView.php:767 FindFundRaiser.php:235
+#: FundRaiserEditor.php:164 Include/Functions.php:97 PledgeEditor.php:518
+#: SelectDelete.php:218
+msgid "Date"
+msgstr "Datum"
+
+#: FamilyView.php:769
+msgid "NonDeductible"
+msgstr "Niet Aftrekbaar"
+
+#: FamilyView.php:770 SelectDelete.php:220
+msgid "Schedule"
+msgstr "Programma"
+
+#: FamilyView.php:771 SelectDelete.php:221
+msgid "Method"
+msgstr "Methode"
+
+#: FamilyView.php:772 PledgeEditor.php:722 SelectDelete.php:222
+msgid "Comment"
+msgstr "Commentaar"
+
+#: FamilyView.php:864
+msgid "Add a new pledge"
+msgstr "Voeg een nieuwe belofte toe"
+
+#: FamilyView.php:866
+msgid "Add a new payment"
+msgstr "Voeg een nieuwe betaling toe"
+
+#: FamilyView.php:877
+msgid " Canvass Entry"
+msgstr "Enquete intoetsen"
+
+#: DepositSlipEditor.php:219 FamilyView.php:899 FindDepositSlip.php:94
+#: PersonView.php:929 PledgeDelete.php:19
+#: v2/templates/people/family-view.php:517
+msgid "Confirm Delete"
+msgstr "Bevestig Verwijdering"
+
+#: FinancialReports.php:35
+msgid "Financial Reports"
+msgstr "Financiele Rapportage"
+
+#: FinancialReports.php:47
+msgid "No records were returned from the previous report."
+msgstr "Geen records zijn uit de vorige rapportage gekomen."
+
+#: FinancialReports.php:54 FinancialReports.php:304
+msgid "Report Type:"
+msgstr "Rapportage Type:"
+
+#: FinancialReports.php:56
+msgid "Select Report Type"
+msgstr "Selecteer Rapportage Type"
+
+#: FinancialReports.php:57
+msgid "Pledge Summary"
+msgstr "Beloftes Samenvatting"
+
+#: FinancialReports.php:59
+msgid "Pledge Reminders"
+msgstr "Belofte herinneringen"
+
+#: FinancialReports.php:60
+msgid "Voting Members"
+msgstr "Leden met Stemrecht"
+
+#: FinancialReports.php:61
+msgid "Giving Report (Tax Statements)"
+msgstr "Bijdrage Rapportage (Voor belastingdienst)"
+
+#: FinancialReports.php:62
+msgid "Zero Givers"
+msgstr "Zero Givers"
+
+#: FinancialReports.php:63
+msgid "Individual Deposit Report"
+msgstr "Individuele Storting Rapport"
+
+#: FinancialReports.php:64
+msgid "Advanced Deposit Report"
+msgstr "Geavanceerd Storting Rapport"
+
+#: FinancialReports.php:71 GroupReports.php:81
+#: external/templates/registration/family-register-members.php:131
+#: external/templates/registration/family-register.php:97
+#: external/templates/verify/enter-info.php:38
+msgid "Next"
+msgstr "Volgende"
+
+#: FinancialReports.php:140
+msgid "Filter by Family"
+msgstr "Filter op Familie"
+
+#: FinancialReports.php:189
+msgid "Report Start Date:"
+msgstr "Rapport Start Datum:"
+
+#: FinancialReports.php:191
+msgid "Report End Date:"
+msgstr "Einde Rapportage Datum:"
+
+#: FinancialReports.php:194
+msgid "Apply Report Dates To:"
+msgstr "Voer Rapportage Datums in Tot:"
+
+#: FinancialReports.php:195
+msgid "Deposit Date (Default)"
+msgstr "Storting Datum (Standaard)"
+
+#: FinancialReports.php:196
+msgid "Payment Date"
+msgstr "Betalings Datum"
+
+#: FinancialReports.php:212
+msgid "Filter by Deposit:"
+msgstr "Filter op Bijdrage:"
+
+#: FinancialReports.php:215
+msgid "If deposit is selected, date criteria will be ignored."
+msgstr "Als Storting is geselecteerd, zijn criteria op datum niet mogelijk"
+
+#: FinancialReports.php:219
+msgid "All deposits within date range"
+msgstr "Alle Stortingen tussen datums"
+
+#: FinancialReports.php:257
+msgid "Filter by Payment Type:"
+msgstr "Filter op Betalings Type:"
+
+#: FinancialReports.php:261
+msgid "All Methods"
+msgstr "Alle Methodes"
+
+#: FinancialReports.php:262 PledgeEditor.php:577 PledgeEditor.php:615
+msgid "Check"
+msgstr "Controleren"
+
+#: FinancialReports.php:263 PledgeEditor.php:581
+msgid "Cash"
+msgstr "Geld"
+
+#: FinancialReports.php:265 FindDepositSlip.php:49 PledgeEditor.php:597
+msgid "Bank Draft"
+msgstr "Bank Overschrijving"
+
+#: FinancialReports.php:266 FindDepositSlip.php:50 PledgeEditor.php:604
+msgid "eGive"
+msgstr "eGive"
+
+#: FinancialReports.php:271
+msgid "Minimun Total Amount:"
+msgstr "Minimum Totaal Bedrag:"
+
+#: FinancialReports.php:273
+msgid "0 - No Minimum"
+msgstr "0- Geen Minimum"
+
+#: FinancialReports.php:278
+msgid "Other Settings"
+msgstr "Andere Instellingen"
+
+#: FinancialReports.php:281
+msgid "Include:"
+msgstr "Omvat:"
+
+#: FinancialReports.php:282
+msgid "Only Payments with Pledges"
+msgstr "Alleen Betalingen met Beloftes"
+
+#: FinancialReports.php:283
+msgid "All Payments"
+msgstr "Alle Betalingen"
+
+#: FinancialReports.php:284
+msgid "Generate:"
+msgstr "Genereer:"
+
+#: FinancialReports.php:285
+msgid "Only Families with unpaid pledges"
+msgstr "Alleen Families met onbetaalde beloftes"
+
+#: FinancialReports.php:286 GeoPage.php:312 PeopleDashboard.php:118
+msgid "All Families"
+msgstr "Alle Families"
+
+#: FinancialReports.php:290
+msgid "Report Heading:"
+msgstr "Raport Titel:"
+
+#: FinancialReports.php:291
+msgid "Graphic"
+msgstr "Graphisch"
+
+#: ChurchCRM/dto/SystemConfig.php:129 FinancialReports.php:292
+msgid "Church Address"
+msgstr "Kerk Adres"
+
+#: FinancialReports.php:293
+msgid "Blank"
+msgstr "Blank"
+
+#: FinancialReports.php:294
+msgid "Remittance Slip:"
+msgstr "Overschrijvings Strookje:"
+
+#: FinancialReports.php:300
+msgid "Sort Data by:"
+msgstr "Sorteer Data op:"
+
+#: ChurchCRM/Config/Menu/Menu.php:140 FinancialReports.php:301
+msgid "Deposit"
+msgstr "Storting"
+
+#: FinancialReports.php:305
+msgid "All Data"
+msgstr "Alle Data"
+
+#: FinancialReports.php:306
+msgid "Moderate Detail"
+msgstr "Matig Detail"
+
+#: FinancialReports.php:307
+msgid "Summary Data"
+msgstr "Samenvattings Data"
+
+#: FinancialReports.php:319
+msgid "CSV"
+msgstr "CSV"
+
+#: FinancialReports.php:326 PaddleNumEditor.php:152 PledgeDetails.php:58
+msgid "Back"
+msgstr "Terug"
+
+#: FinancialReports.php:328 GroupReports.php:150 ReminderReport.php:50
+#: TaxReport.php:53
+msgid "Create Report"
+msgstr "Aanmaken rapportage"
+
+#: FindDepositSlip.php:21
+msgid "Deposit Listing"
+msgstr "Stortings Lijst"
+
+#: FindFundRaiser.php:18
+msgid "Fundraiser Listing"
+msgstr "Fundraiser Lijst"
+
+#: FindFundRaiser.php:80
+msgid "Date Start"
+msgstr "Start Datum"
+
+#: FindFundRaiser.php:83
+msgid "Apply Filters"
+msgstr "Zet Filters"
+
+#: FindFundRaiser.php:87
+msgid "Date End"
+msgstr "Eind Datum"
+
+#: FindFundRaiser.php:90 SelectList.php:758
+msgid "Clear Filters"
+msgstr "Verwijder Filters"
+
+#: FindFundRaiser.php:145 SelectList.php:807
+msgid "Previous Page"
+msgstr "Vorige Pagina"
+
+#: FindFundRaiser.php:187 SelectList.php:848
+msgid "Next Page"
+msgstr "Volgende Pagina"
+
+#: FindFundRaiser.php:219 SelectList.php:921
+msgid "Display:"
+msgstr "Vertoon:"
+
+#: FindFundRaiser.php:75 FindFundRaiser.php:234 Include/Functions.php:103
+#: PaddleNumEditor.php:167 PaddleNumList.php:53
+msgid "Number"
+msgstr "Nummer"
+
+#: FundRaiserEditor.php:33
+msgid "Create New Fund Raiser"
+msgstr "Voer fundraiser in"
+
+#: FundRaiserEditor.php:150
+msgid "Add Donated Item"
+msgstr "Voeg Geschonken Item"
+
+#: FundRaiserEditor.php:151
+msgid "Generate Catalog"
+msgstr "Genereer catalodus"
+
+#: FundRaiserEditor.php:152
+msgid "Generate Bid Sheets"
+msgstr "Genereer biedings blaadjes"
+
+#: FundRaiserEditor.php:153
+msgid "Generate Certificates"
+msgstr "Genereer Certificaten"
+
+#: FundRaiserEditor.php:185
+msgid "Donated items for this fundraiser"
+msgstr "Geschonken items voor deze fundraiser"
+
+#: DonatedItemEditor.php:184 FundRaiserEditor.php:193
+msgid "Donor"
+msgstr "Schenker"
+
+#: DonatedItemEditor.php:231 FundRaiserEditor.php:194 PaddleNumEditor.php:172
+#: PaddleNumList.php:54
+msgid "Buyer"
+msgstr "Koper"
+
+#: FundRaiserEditor.php:196
+msgid "Sale Price"
+msgstr "Verkoopprijs"
+
+#: DonatedItemEditor.php:218 FundRaiserEditor.php:198
+msgid "Material Value"
+msgstr "Materiële waarde"
+
+#: DonatedItemEditor.php:223 FundRaiserEditor.php:199
+msgid "Minimum Price"
+msgstr "Minimum Prijs"
+
+#: GeoPage.php:89
+msgid "Family Geographic Utilities"
+msgstr "Familie Geografische Utilities"
+
+#: GeoPage.php:211
+msgid "Select Family:"
+msgstr "Selecteer Familie:"
+
+#: GeoPage.php:230
+msgid "Maximum number of neighbors:"
+msgstr "Maximum aantal buren:"
+
+#: GeoPage.php:237
+msgid "Maximum distance"
+msgstr "Maximale afstand"
+
+#: GeoPage.php:291
+msgid "Data file format:"
+msgstr "Gegevens bestandsformaat:"
+
+#: GeoPage.php:296
+msgid "GPS Visualizer"
+msgstr "GPS Visualizer"
+
+#: GeoPage.php:301
+msgid "Street Atlas USA"
+msgstr "Street Atlas USA"
+
+#: GeoPage.php:307
+msgid "Include families in coordinate file:"
+msgstr "Inclusief gezinnen in coördinaten bestand:"
+
+#: GeoPage.php:317
+msgid "Neighbor Families"
+msgstr "Neighbor Gezinnen"
+
+#: GeoPage.php:283 GeoPage.php:331
+msgid "Make Data File"
+msgstr "Maak Data File"
+
+#: GeoPage.php:265
+msgid "Show Neighbors"
+msgstr "Toon Buren"
+
+#: GeoPage.php:355
+msgid "Distance"
+msgstr "Afstand"
+
+#: GeoPage.php:356
+msgid "Direction"
+msgstr "Richting"
+
+#: FamilyEditor.php:707
+msgid "Latitude"
+msgstr "Speelruimte"
+
+#: FamilyEditor.php:711
+msgid "Longitude"
+msgstr "Lengte"
+
+#: PersonView.php:381
+msgid "Add to Cart"
+msgstr "Voeg resultaten toe aan mandje"
+
+#: GeoPage.php:421 SelectList.php:760
+msgid "Intersect with Cart"
+msgstr "Doorsnede met mandje "
+
+#: 
+msgid "Remove from Cart"
+msgstr "Verwijder uit mandje "
+
+#: GetText.php:28
+msgid "Text for Event ID: "
+msgstr "Text voor Evenement ID: "
+
+#: GroupEditor.php:30
+msgid "Group Editor"
+msgstr "Groep Editor"
+
+#: GroupEditor.php:85 GroupView.php:195
+msgid "Type of Group"
+msgstr "Type of Groep"
+
+#: GroupEditor.php:128 OptionManager.php:95
+msgid "Group Member Roles"
+msgstr "Groepslid rollen"
+
+#: GroupEditor.php:130
+msgid "Clone roles"
+msgstr "Clone rollen"
+
+#: GroupEditor.php:134
+msgid "from group"
+msgstr "van de Groep"
+
+#: GroupEditor.php:136 GroupPropsFormEditor.php:326
+msgid "Select a group"
+msgstr "Selecteer een groep"
+
+#: GroupEditor.php:156 GroupView.php:80
+msgid "Edit Group-Specific Properties Form"
+msgstr "Bewerk het Groep-Specifieke Eigenschappen Formulier"
+
+#: GroupEditor.php:176
+msgid "Group Roles"
+msgstr "Groep Rollen"
+
+#: GroupEditor.php:188 MemberRoleChange.php:92
+msgid "New Role"
+msgstr "Nieuwe Rol"
+
+#: GroupList.php:20
+msgid "Group Listing"
+msgstr "Groep Lijst"
+
+#: Include/Header-function.php:66
+msgid "Submit"
+msgstr "Verstuur"
+
+#: GroupPropsEditor.php:26
+msgid "Group Member Properties Editor"
+msgstr "Groep Lidmaatschap Eigenschappen Editor"
+
+#: GroupPropsEditor.php:120
+msgid "This group currently has no properties!  You can add them in the Group Editor."
+msgstr "Deze groep heeft momenteel geen eigenschappen! U kunt ze in de Groep Editor toevoegen."
+
+#: GroupPropsEditor.php:122
+msgid "Return to Person Record"
+msgstr "Ga terug naar het Persoons Record"
+
+#: GroupPropsEditor.php:130
+msgid "Editing"
+msgstr "Bewerking"
+
+#: GroupPropsEditor.php:130
+msgid "data for member"
+msgstr "Data for een Lid"
+
+#: GroupPropsFormEditor.php:43
+msgid "Group-Specific Properties Form Editor:"
+msgstr "Bewerk het Groep-Specifieke Eigenschappen Formulier"
+
+#: GroupPropsFormEditor.php:265
+msgid "No properties have been added yet"
+msgstr "Er zijn nog geen eigenschappen toegevoegd"
+
+#: GroupPropsFormEditor.php:271
+msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete, or 'add new' button!"
+msgstr "Waarschuwing: Aanpassingen op het veld zullen verdwijnen als u niet 'Eerst Opslaat' voor het gebruik van een op, neer, verwijder of toevoeg knop!"
+
+#: GroupPropsFormEditor.php:288
+msgid "Show in"
+msgstr "Vertoon in"
+
+#: GroupPropsFormEditor.php:288
+msgid "Person View"
+msgstr "Toon Personen"
+
+#: GroupReports.php:25
+msgid "Group reports"
+msgstr "Groep Rapportages"
+
+#: GroupReports.php:37
+msgid "Select the group you would like to report"
+msgstr "Selecteer de groep waarop u wilt rapporteren"
+
+#: GroupReports.php:71
+msgid "Report Model"
+msgstr "Rapport Model"
+
+#: GroupReports.php:72
+msgid "Report for group and role selected"
+msgstr "Rapportage voor Groep en Rol geselecteerd"
+
+#: GroupReports.php:73
+msgid "Report for any role in group selected"
+msgstr "Rapportage voor alle rollen in geselecteerd groep"
+
+#: GroupReports.php:99
+msgid "Select which information you want to include"
+msgstr "Selecteer welke informatie u wilt zien"
+
+#: GroupReports.php:121
+msgid "Standard Info"
+msgstr "Standaard Informatie"
+
+#: GroupReports.php:128 Reports/GroupReport.php:137
+msgid "Other Email"
+msgstr "Andere Email"
+
+#: GroupReports.php:129
+msgid "GroupRole"
+msgstr "GroepRol"
+
+#: GroupReports.php:133
+msgid "Group-Specific Property Fields"
+msgstr "Groep-Specifieke Eigenschappen Velden"
+
+#: PersonView.php:222
+msgid "Undefined"
+msgstr "Ongedefineerd"
+
+#: GroupView.php:62
+msgid "Group View"
+msgstr "bekijk Groep"
+
+#: GroupView.php:75
+msgid "Edit this Group"
+msgstr "Bewerk deze Groep"
+
+#: GroupView.php:76
+msgid "Delete this Group"
+msgstr "Verwijder deze Groep"
+
+#: GroupView.php:432
+msgid "Please confirm deletion of this group record"
+msgstr "bevestig de verwijdering van dit Groep record"
+
+#: GroupView.php:434
+msgid "This will also delete all Roles and Group-Specific Property data associated with this Group record."
+msgstr "Deze keuze zal ook alle Rol en Groep-Specifieke Eigenschappen data verwijderen geassocieerd met dit Groep record."
+
+#: GroupView.php:84
+msgid "Add Group Members to Cart"
+msgstr "Voeg Groep Lidmaatschap toe aan dit mandje"
+
+#: GroupView.php:85
+msgid "Map this group"
+msgstr "Breng deze groep in kaart"
+
+#: GroupView.php:128
+msgid "Email Group"
+msgstr "Email Groep"
+
+#: GroupView.php:205
+#, fuzzy
+msgid "Total Members"
+msgstr "Totaal aantal Leden"
+
+#: GroupView.php:200
+#, fuzzy
+msgid "Default Role"
+msgstr "Standaard Rol"
+
+#: GroupView.php:231
+#, fuzzy
+msgid "Group-Specific Properties"
+msgstr "Groep-Specifieke Eigenschappen"
+
+#: GroupView.php:271
+msgid "Disabled for this group."
+msgstr "Uitgezet voor deze groep."
+
+#: FamilyView.php:440 GroupView.php:276 PersonView.php:424 PrintView.php:448
+msgid "Assigned Properties"
+msgstr "Toegevoegde Eigenschappen"
+
+#: GroupView.php:383
+msgid "Group Members:"
+msgstr "Groep Leden:"
+
+#: LettersAndLabels.php:26 PeopleDashboard.php:237
+msgid "Letters and Mailing Labels"
+msgstr "Etiketten voor brieven en Mailings"
+
+#: LettersAndLabels.php:79
+msgid "Newsletter labels"
+msgstr "Etiketten voor Niewsletters"
+
+#: LettersAndLabels.php:80
+msgid "Confirm data letter"
+msgstr "Bevestig Data op brief"
+
+#: LettersAndLabels.php:82
+msgid "Confirm data labels"
+msgstr "Beevstig data Etikettes"
+
+#: ListEvents.php:42
+msgid "Listing All Church Events"
+msgstr "Lijst van Alle kerk Evenementen"
+
+#: ListEvents.php:83
+msgid "Select Event Types To Display"
+msgstr "Selecteer Evenement Types om te bekijken"
+
+#: ListEvents.php:125
+msgid "Display Events in Year"
+msgstr "Vertoon Evenementen dit Jaar"
+
+#: ListEvents.php:209
+msgid "Start Date/Time"
+msgstr "Aanvangs Datum/Tijd"
+
+#: ListEvents.php:285
+msgid "No Attendance Recorded"
+msgstr "Geen Aanwezigheid bijgehouden"
+
+#: ListEvents.php:235
+#, fuzzy
+msgid "Attendees"
+msgstr "Aanwezigen("
+
+#: ListEvents.php:309
+msgid " Monthly Averages"
+msgstr "Maandelijkse Gemiddelden"
+
+#: Login.php:41 Login.php:56
+msgid "Invalid login or password"
+msgstr "Onjuist login of wachtwoord"
+
+#: Login.php:44
+msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
+msgstr "Teveel mislukte logins: uw toegang is geblokkeerd. Neem contact op met een Administrateur."
+
+#: Login.php:176 Login.php:238
+msgid "Please Login"
+msgstr "Aub inloggen"
+
+#: BackupDatabase.php:55 Login.php:200 Login.php:278 UserList.php:58
+msgid "Password"
+msgstr "Wachtwoord"
+
+#: Login.php:163 Login.php:213
+msgid "Login"
+msgstr "Login"
+
+#: ChurchCRM/Config/Menu/Menu.php:147 ManageEnvelopes.php:21
+msgid "Envelope Manager"
+msgstr "Envelope Manager"
+
+#: ManageEnvelopes.php:117
+msgid "Update Family Records"
+msgstr "Pas Familie Record aan"
+
+#: ManageEnvelopes.php:134 external/templates/verify/verify-family-info.php:17
+#: external/templates/verify/verify-family-info.php:134
+msgid "Confirm"
+msgstr "Bevestig"
+
+#: ManageEnvelopes.php:158
+msgid "Sort by"
+msgstr "Sorteer Data op:"
+
+#: ManageEnvelopes.php:170
+msgid "Zero"
+msgstr "Nul"
+
+#: ManageEnvelopes.php:172
+msgid "Assign starting at #"
+msgstr "Toewijzing beginnend bij #"
+
+#: MemberRoleChange.php:25
+msgid "Member Role Change"
+msgstr "Verandering van Rol Lid"
+
+#: MemberRoleChange.php:84
+msgid "Member's Name"
+msgstr "Naam van Lid"
+
+#: MemberRoleChange.php:88
+msgid "Current Role"
+msgstr "Huidige Rol"
+
+#: PeopleDashboard.php:123
+msgid "Update All Family Coordinates"
+msgstr "Alles bijwerken Family Coördinaten"
+
+#: ChurchCRM/Config/Menu/Menu.php:75 PersonView.php:425
+msgid "Volunteer Opportunities"
+msgstr "Vrijwilligers mogelijkheden"
+
+#: Menu.php:172 PeopleDashboard.php:137 api/routes/search.php:137
+#: members/online-pending-verify.php:24 members/self-register.php:24
+#: members/self-verify-updates.php:24
+#: sundayschool/SundaySchoolDashboard.php:104
+msgid "Families"
+msgstr "Families"
+
+#: ChurchCRM/Config/Menu/Menu.php:61 Menu.php:191 PeopleDashboard.php:158
+msgid "People"
+msgstr "Mensen"
+
+#: PeopleDashboard.php:226
+msgid "Reports on groups and roles"
+msgstr "Rapportage van groepen en rollen"
+
+#: PeopleDashboard.php:228
+msgid "Report on group and roles selected (it may be a multi-page PDF)."
+msgstr "Rapportage van geselecteerde groepen en rollen (Meervoudige-pagina's PDF)."
+
+#: PeopleDashboard.php:238
+msgid "Generate letters and mailing labels."
+msgstr "Genereer brieven en mailing Etikettes."
+
+#: PeopleDashboard.php:244
+msgid "US Address Verification Report"
+msgstr "Amerikaanse Address Verification Report"
+
+#: CartToFamily.php:206
+#: ChurchCRM/Emails/notifications/NewPersonOrFamilyEmail.php:58
+#: FamilyEditor.php:654 LettersAndLabels.php:71 Menu.php:308 Menu.php:337
+#: Reports/ConfirmReport.php:115 Reports/ConfirmReportEmail.php:120
+#: SelectDelete.php:152 SelectDelete.php:278
+#: external/templates/registration/family-register.php:31
+msgid "Family Name"
+msgstr "Familie Naam"
+
+#: NoteDelete.php:27
+msgid "Note Delete Confirmation"
+msgstr "Let op Verwijder Bevestiging"
+
+#: NoteDelete.php:61
+msgid "Please confirm deletion of this note"
+msgstr "Bevestig verwijdering van deze notitie"
+
+#: NoteDelete.php:68 PropertyDelete.php:63 PropertyTypeDelete.php:68
+msgid "Yes, delete this record"
+msgstr "Ja, Verwijder dit record"
+
+#: NoteDelete.php:68 PropertyDelete.php:63 SelectDelete.php:276
+msgid "(this action cannot be undone)"
+msgstr "{deze actie kan niet ongedaan worden gemaakt}"
+
+#: NoteEditor.php:29
+msgid "Note Editor"
+msgstr "Note Aministrateur"
+
+#: NoteEditor.php:128
+msgid "Private"
+msgstr "Prive"
+
+#: PropertyAssign.php:43 PropertyEditor.php:39 PropertyList.php:24
+#: PropertyTypeEditor.php:89 PropertyTypeList.php:62
+msgid "Person"
+msgstr "Persoon"
+
+#: OptionManager.php:85 PropertyAssign.php:58 PropertyEditor.php:47
+#: PropertyList.php:32 PropertyTypeEditor.php:91 PropertyTypeList.php:62
+msgid "Group"
+msgstr "Groep"
+
+#: OptionManager.php:114 OptionManager.php:132 OptionManager.php:150
+msgid "Option"
+msgstr "Optie"
+
+#: OptionManager.php:301
+msgid "Warning: Removing will reset all assignments for all persons with the assignment!"
+msgstr "Waarschuwing: Verwijdering betekent het resetten van de koppelingen van alle personen met deze koppeling!"
+
+#: OptionManager.php:308
+msgid "Error: Duplicate"
+msgstr "Error: Duplicaat"
+
+#: OptionManager.php:325
+msgid "Default"
+msgstr "Standaard"
+
+#: OptionManager.php:353
+msgid "Duplicate name found."
+msgstr "Indentieke naam gevonden."
+
+#: OptionManager.php:358
+msgid "Make Default"
+msgstr "Maak Standaard"
+
+#: OptionManager.php:372 OptionManager.php:376
+#: VolunteerOpportunityEditor.php:405
+msgid "Exit"
+msgstr "Exit"
+
+#: OptionManager.php:390
+msgid "Add New"
+msgstr "Voeg Nieuwe toe"
+
+#: OptionManager.php:397
+msgid "Error: A "
+msgstr "Fout: Een "
+
+#: OptionManager.php:397
+msgid " by that name already exists."
+msgstr " met die naam bestaat al."
+
+#: PaddleNumEditor.php:45
+msgid "Buyer Number Editor"
+msgstr "Gebruikers Administratie"
+
+#: PaddleNumEditor.php:148
+msgid "Generate Statement"
+msgstr "Genereer Rapportage"
+
+#: PaddleNumList.php:33
+msgid "Buyers for this fundraiser:"
+msgstr "Kopers van deze fundraiser:"
+
+#: PaddleNumList.php:40
+msgid "Select all"
+msgstr "Selecteer alles"
+
+#: PaddleNumList.php:42
+msgid "Select none"
+msgstr "Selecteer geen"
+
+#: PaddleNumList.php:43
+msgid "Add Buyer"
+msgstr "Voeg koper toe"
+
+#: PaddleNumList.php:44
+msgid "Generate Statements for Selected"
+msgstr "Genereer Verklaringen voor geselecteerde"
+
+#: PaddleNumList.php:52
+msgid "Select"
+msgstr "Selecteer "
+
+#: PersonCustomFieldsEditor.php:25
+msgid "Custom Person Fields Editor"
+msgstr "Aanpasbare Persoons-Veld Administratie"
+
+#: PersonCustomFieldsEditor.php:275
+msgid "Warning:  By deleting this field, you will irrevokably lose all person data assigned for this field!"
+msgstr "Waarschuwing: Door het verwijderen van dit veld, wordt alle persoons data hieraan gekoppeld vernietigd!"
+
+#: PersonCustomFieldsEditor.php:296
+msgid "No custom person fields have been added yet"
+msgstr "Aanpasbare persoons-velden zijn nog niet toegevoegd"
+
+#: PersonCustomFieldsEditor.php:314
+msgid "Person-View Side"
+msgstr "Bekijk-Persoon Kant"
+
+#: PersonEditor.php:25
+msgid "Person Editor"
+msgstr "Persoon Editor"
+
+#: PersonEditor.php:194
+msgid "You must enter a Last Name if no Family is selected."
+msgstr "U moet een achternaam invoeren als u geen Familie heeft geselecteerd."
+
+#: PersonEditor.php:224
+msgid "Not a valid Friend Date"
+msgstr "Geen geldige Bezoekers Datum"
+
+#: PersonEditor.php:236
+msgid "Not a valid Membership Date"
+msgstr "Geen geldige Lidmaatschap Datum"
+
+#: PersonEditor.php:258
+msgid "Work Email is Not Valid"
+msgstr "E-mail werk is niet geldig"
+
+#: PersonEditor.php:602
+msgid "Red text"
+msgstr "Rode tekst"
+
+#: PersonEditor.php:602 PersonView.php:369
+msgid "indicates items inherited from the associated family record."
+msgstr "geeft aan dat inhoud is geërfd van het gekoppelde familie record."
+
+#: PersonEditor.php:749
+msgid "Birth Year"
+msgstr "Geboorte Jaar"
+
+#: PersonEditor.php:762 Reports/ConfirmReport.php:185
+#: Reports/ConfirmReport.php:204
+#: external/templates/registration/family-register-members.php:120
+msgid "Hide Age"
+msgstr "Verberg Leeftijd"
+
+#: PersonEditor.php:799
+msgid "Create a new family (using last name)"
+msgstr "Voeg een Nieuwe familie toe (gebruik achternaam)"
+
+#: PersonEditor.php:1167 PersonView.php:292
+msgid "Friend Date"
+msgstr "Bezoekers Datum"
+
+#: PersonToGroup.php:51
+msgid "Add Person to Group"
+msgstr "Voeg persoon toe aan Groep"
+
+#: PersonToGroup.php:57
+msgid "Select the group to add this person to"
+msgstr "Selecteer de groep om deze persoon aan toe te voegen"
+
+#: PersonView.php:175
+msgid "Not assigned"
+msgstr "Niet gekoppeled"
+
+#: PersonView.php:380
+msgid "Printable Page"
+msgstr "Afdruk Voorbeeld"
+
+#: PersonView.php:384
+msgid "Edit \"Why Came\" Notes"
+msgstr "Bewerk \"Waarom Kwam\" Notities"
+
+#: PersonView.php:395
+msgid "Delete this Record"
+msgstr "Verwijder dit Record"
+
+#: PersonView.php:401
+msgid "Make User"
+msgstr "Maak Gebruiker"
+
+#: PersonView.php:405
+msgid "Edit User"
+msgstr "Bewerk Gebruiker"
+
+#: PersonView.php:581 PrintView.php:387
+msgid "No group assignments."
+msgstr "Geen Koppelingen aan Groepen."
+
+#: PersonView.php:781
+msgid "No volunteer opportunity assignments."
+msgstr "Geen vrijwilligers mogelijkheden koppelingen."
+
+#: PersonView.php:824
+msgid "Assign a New Volunteer Opportunity"
+msgstr "Koppel een Nieuwe vrijwilligers mogelijkheid"
+
+#: PledgeDetails.php:17
+msgid "Electronic Transaction Details"
+msgstr "Electronische Transactie Details"
+
+#: ChurchCRM/Service/FinancialService.php:481 PledgeEditor.php:271
+msgid "NonDeductible amount can't be greater than total amount."
+msgstr "Niet Aftrekbaar bedrag kan niet groter zijn dan het totale bedrag."
+
+#: ChurchCRM/Service/FinancialService.php:486 PledgeEditor.php:278
+msgid "At least one fund must have a non-zero amount."
+msgstr "Ten minste een fonds moet een niet-nul waarde."
+
+#: ChurchCRM/Service/FinancialService.php:511 PledgeEditor.php:295
+msgid "Must specify non-zero check number"
+msgstr "Dient aan te geven niet-nul controlenummer"
+
+#: ChurchCRM/Service/FinancialService.php:516 PledgeEditor.php:302
+msgid "Check number not valid for 'CASH' payment"
+msgstr "Controleer nummer niet geldig voor \"CASH\" betaling"
+
+#: PledgeEditor.php:440
+msgid "Pledge Editor"
+msgstr "Bijdrage Administrateur"
+
+#: PledgeEditor.php:442
+msgid "Payment Editor: "
+msgstr "Betalings Administrateur:"
+
+#: PledgeEditor.php:442
+msgid " Deposit Slip #"
+msgstr "Stortings Strookje #"
+
+#: PledgeEditor.php:463
+msgid " more entries will fit."
+msgstr "Er is ruimte voor meer."
+
+#: PledgeEditor.php:469
+msgid "Payment Editor - Modify Existing Payment"
+msgstr "Modificeer Bestaande Betaling"
+
+#: PledgeEditor.php:471
+msgid "Payment Editor - New Deposit Slip Will Be Created"
+msgstr "Betalings Adminitrateur - Nieuw Stortingsstrookje zal Gemaakt Worden"
+
+#: PledgeEditor.php:529
+msgid "Find family->"
+msgstr "Vind familie->"
+
+#: PledgeEditor.php:539
+msgid "Payment Schedule"
+msgstr "Betalings Programma:"
+
+#: PledgeEditor.php:541
+msgid "Select Schedule"
+msgstr "Selecteer Programma"
+
+#: EventNames.php:168 PledgeEditor.php:544
+msgid "Weekly"
+msgstr "Wekelijks"
+
+#: EventNames.php:184 PledgeEditor.php:548
+msgid "Monthly"
+msgstr "Maandelijks"
+
+#: PledgeEditor.php:552
+msgid "Quarterly"
+msgstr "Kwartaal"
+
+#: PledgeEditor.php:556
+msgid "Once"
+msgstr "Eenmalig"
+
+#: ChurchCRM/Dashboard/PersonDemographicDashboardItem.php:32
+#: ChurchCRM/Dashboard/PersonDemographicDashboardItem.php:49
+#: PledgeEditor.php:560
+msgid "Other"
+msgstr "Andere"
+
+#: PledgeEditor.php:571
+msgid "Payment by"
+msgstr "Betalings Datum"
+
+#: PledgeEditor.php:634
+msgid "Choose online payment method"
+msgstr "Kies online betalingswijze"
+
+#: PledgeEditor.php:642
+msgid "Select online payment record"
+msgstr "Selecteer online betalingsverslag"
+
+#: PledgeEditor.php:650
+msgid "Bank account "
+msgstr "Bank rekening "
+
+#: PledgeEditor.php:669
+msgid "Scan check"
+msgstr "Controleer scan"
+
+#: PledgeEditor.php:678
+msgid "find family from check account #"
+msgstr "Zoek familie via cheque account #"
+
+#: PledgeEditor.php:679
+msgid "Set default check account number for family"
+msgstr "Stel cheque account voor familie in"
+
+#: PledgeEditor.php:713
+msgid "Fund Name"
+msgstr "Fonds Naam"
+
+#: PledgeEditor.php:718
+msgid "Non-deductible amount"
+msgstr "Niet Aftrekbaar"
+
+#: PrintView.php:126
+msgid "Printable View"
+msgstr "Afdruk Voorbeeld"
+
+#: PrintView.php:340 Reports/CanvassReports.php:240
+#: sundayschool/SundaySchoolClassView.php:204
+#: sundayschool/SundaySchoolDashboard.php:206
+msgid "Age"
+msgstr "Leeftijd"
+
+#: PersonView.php:423 PrintView.php:376
+msgid "Assigned Groups"
+msgstr "Toegekende Groepen"
+
+#: MemberRoleChange.php:80 PrintView.php:391
+msgid "Group Name"
+msgstr "Groep Naam"
+
+#: PrintView.php:488
+msgid "Notes:"
+msgstr "Notities:"
+
+#: PrintView.php:494
+msgid "Entered:"
+msgstr "Ingevoerd:"
+
+#: ChurchCRM/Service/TimelineService.php:127 PrintView.php:497
+msgid "by"
+msgstr "Naast"
+
+#: PropertyAssign.php:124 PropertyAssign.php:142
+msgid "Property successfully assigned."
+msgstr "Succesvolle toegewezen eigenschap."
+
+#: PropertyAssign.php:157
+msgid " Property Assignment"
+msgstr " Eigenschap Koppeling"
+
+#: PropertyAssign.php:171
+msgid "Assigning"
+msgstr "Toewijzing"
+
+#: PropertyDelete.php:24
+msgid "Property Delete Confirmation"
+msgstr "Bevestig verwijdering eigenschap"
+
+#: PropertyDelete.php:51
+msgid "Please confirm deletion of this property"
+msgstr "Bevestiging aub verwijderen van deze eigenschap"
+
+#: PropertyDelete.php:59
+msgid "Deleting this Property will also delete all assignments of this Property to any People, Family, or Group records."
+msgstr "Het verwijderen van deze eigenschap zal ook alle koppelingen van deze eigenschap verwijderen van alle personen, Familie, of Groepen."
+
+#: PropertyDelete.php:65 PropertyTypeDelete.php:70 SelectDelete.php:293
+#: VolunteerOpportunityEditor.php:111
+msgid "No, cancel this deletion"
+msgstr "Nee, annuleer deze verwijdering"
+
+#: PropertyEditor.php:57
+msgid "Property Editor"
+msgstr "Eigenschappen Editor"
+
+#: PropertyEditor.php:77
+#, fuzzy
+msgid "You must select a type"
+msgstr "U moet een Type selecteren"
+
+#: PropertyEditor.php:131
+msgid "Select Property Type"
+msgstr "Selecteer het Type van Eigenschap"
+
+#: PropertyEditor.php:156 PropertyList.php:61
+msgid "A"
+msgstr "Een"
+
+#: PropertyEditor.php:164
+msgid "Entering a Prompt value will allow the association of a free-form value."
+msgstr "Invoeren van een gevraagde waarde zal de koppeling van een vrij-vormwaarde toestaan."
+
+#: PropertyList.php:42
+msgid "Property List"
+msgstr "Eigenschappen Lijst"
+
+#: PropertyList.php:54
+msgid "Add a New"
+msgstr "Voeg Nieuw toe"
+
+#: PropertyList.php:54 queryparameters_qrp.php:6
+msgid "Property"
+msgstr "Eigenschap"
+
+#: PropertyEditor.php:162 PropertyList.php:62
+msgid "Prompt"
+msgstr "Aanwijzing"
+
+#: PropertyTypeDelete.php:25
+msgid "Property Type Delete Confirmation"
+msgstr "Het Eigenschap Type verwijderen Bevestiging"
+
+#: PropertyTypeDelete.php:58 VolunteerOpportunityEditor.php:98
+msgid "Warning"
+msgstr "Waarschuwing"
+
+#: PropertyTypeDelete.php:58
+msgid "This property type is still being used by at least one property."
+msgstr "Dit Eigenschaps type  wordt nog gebruikt door minstens één Eigenschap."
+
+#: PropertyTypeDelete.php:58
+msgid "If you delete this type, you will also remove all properties using"
+msgstr "Als u dit type verwijderd, zult u alle eigenschappen van het gebruiken verwijderen"
+
+#: PropertyTypeDelete.php:58
+msgid "it and lose any corresponding property assignments."
+msgstr "het en verlies elke coresponderende Eigenschap toepassing"
+
+#: PropertyTypeDelete.php:64
+msgid "Please confirm deletion of this Property Type"
+msgstr "Bevestig aub Verwijdering van dit Eigenschap Type"
+
+#: PropertyTypeEditor.php:25
+msgid "Property Type Editor"
+msgstr "Eigenschap Type Administrateur"
+
+#: PropertyTypeList.php:23
+msgid "Property Type List"
+msgstr "Eigenschap Type Lijst"
+
+#: PropertyTypeList.php:35
+msgid "Add a New Property Type"
+msgstr "Voeg een Nieuw Eigenschap Type"
+
+#: PropertyTypeEditor.php:86 PropertyTypeList.php:42
+#: sundayschool/SundaySchoolDashboard.php:152
+#: sundayschool/SundaySchoolDashboard.php:247 queryparameters_qrp.php:12
+msgid "Class"
+msgstr "Klas"
+
+#: PropertyTypeList.php:43 v2/templates/people/family-view.php:344
+msgid "Properties"
+msgstr "Eigenschappen"
+
+#: PropertyUnassign.php:94
+msgid " Property Unassignment"
+msgstr "Eigenschap Ontkoppeling"
+
+#: PropertyUnassign.php:101
+msgid "Please confirm removal of this property from this"
+msgstr "Bevestig aub verwijdering van de eigenschap van deze"
+
+#: PropertyUnassign.php:110
+msgid "Unassigning"
+msgstr "Ontkoppelen"
+
+#: PropertyUnassign.php:116
+msgid "Yes, unassign this Property"
+msgstr "Ja, ontkoppel deze Eigenschap"
+
+#: PropertyUnassign.php:119
+msgid "No, retain this assignment"
+msgstr "Nee, Behoud deze koppeling"
+
+#: QueryList.php:16
+msgid "Query Listing"
+msgstr "Query Lijst"
+
+#: QueryList.php:31
+msgid "Run a Free-Text Query"
+msgstr "Run een Vrije-Text Query"
+
+#: QuerySQL.php:19
+msgid "Free-Text Query"
+msgstr "Vrije-Text Query"
+
+#: QuerySQL.php:46
+msgid "Export Results to CSV file"
+msgstr "Exporteer het Resultaat naar een CSV bestand"
+
+#: QuerySQL.php:54
+msgid "Execute SQL"
+msgstr "Voer SQL uit"
+
+#: QuerySQL.php:82 QuerySQL.php:132
+msgid "An error occured: "
+msgstr "Een fout heeft plaatsgevonden: "
+
+#: QuerySQL.php:117 QueryView.php:178 QueryView.php:200
+msgid " record(s) returned"
+msgstr "recors(s) ontvangen"
+
+#: QuerySQL.php:182
+msgid "Add Results To Cart"
+msgstr "Voeg resultaten toe aan mandje"
+
+#: QuerySQL.php:183
+msgid "Intersect Results With Cart"
+msgstr "Doorsnede resultaten en mandje "
+
+#: QuerySQL.php:184
+msgid "Remove Results From Cart"
+msgstr "Verwijder resultaten uit mandje "
+
+#: QuerySQL.php:189
+msgid "Return to Query Menu"
+msgstr "Ga terug naar Query Menu"
+
+#: QueryView.php:21
+msgid "Query View"
+msgstr "Query Overzicht"
+
+#: QueryView.php:91
+msgid "This value is required."
+msgstr "Deze waarde is vereist."
+
+#: QueryView.php:104
+msgid "This value must be numeric."
+msgstr "Deze waarde moet numeriek zijn."
+
+#: QueryView.php:109
+msgid "This value must be at least "
+msgstr "Deze waarde moet op zijn minst "
+
+#: QueryView.php:114 QueryView.php:127
+msgid "This value cannot be more than "
+msgstr "Deze waarde kan niet meer zijn dan "
+
+#: QueryView.php:127 QueryView.php:132
+msgid " characters long"
+msgstr " karakters lang"
+
+#: QueryView.php:132
+msgid "This value cannot be less than "
+msgstr "Deze waarde kan niet minder zijn dan "
+
+#: QueryView.php:262
+msgid "Run Query Again"
+msgstr "Draai Query opnieuw"
+
+#: QueryView.php:380
+msgid "Execute Query"
+msgstr "Execute Query"
+
+#: RPCdummy.php:51
+msgid "Address Info:"
+msgstr "Adres Informatie:"
+
+#: Register.php:35
+msgid "Please register your copy of ChurchCRM by checking over this information and pressing the Send button.  "
+msgstr "Registreer aub uw exemplaar van het KerkInfo pakket door het invullen van de gegevens en het indrukken van de verstuur knop.  "
+
+#: Register.php:36
+msgid "This information is used only to track the usage of this software.  "
+msgstr "Deze informatie wordt alleen gebruikt om het gebruik van dit pakket te registreren.  "
+
+#: Register.php:55
+msgid "Send"
+msgstr "Verstuur"
+
+#: ReminderReport.php:25
+msgid "Pledge Reminder Report"
+msgstr "Bijdrage herinneering Rapport"
+
+#: SelectDelete.php:67
+msgid "All donations from this family have been moved to another family."
+msgstr "Alle donaties van deze familie zijn verplaatst naar een andere familie."
+
+#: SelectDelete.php:71
+msgid "Family Delete Confirmation"
+msgstr "Bevestiging van Verwijdering Familie"
+
+#: SelectDelete.php:144
+msgid "Sorry, there are records of donations from this family. This family may not be deleted."
+msgstr "Er zijn donaties gekoppeld aan deze familie. De Familie mag dus niet worden verwijderd"
+
+#: SelectDelete.php:145
+msgid "Return to Family View"
+msgstr "Ga Terug naar Familie Overzicht"
+
+#: SelectDelete.php:149
+msgid "WARNING: This family has records of donations and may NOT be deleted until these donations are associated with another family."
+msgstr "WAARSCHUWING: Deze familie heeft gekoppelde donaties, en mag niet worden verwijderd totdat deze gekoppeld zijn aan een andere familie."
+
+#: SelectDelete.php:153
+msgid "Please select another family with whom to associate these donations:"
+msgstr "Selecteer aub een andere familie aan wie deze donaties worden gekoppeld:"
+
+#: SelectDelete.php:154
+msgid "WARNING: This action can not be undone and may have legal implications!"
+msgstr "Waarschuwing: Deze actie kan niet ongedaan worden gemaakt, en zou legale consequenties kunnen hebben!"
+
+#: SelectDelete.php:192
+msgid "CURRENT FAMILY WITH DONATIONS"
+msgstr "HUIDIGE FAMILIE MET DONATIES"
+
+#: SelectDelete.php:274
+msgid "Please confirm deletion of this family record:"
+msgstr "Bevestig aub verwijdering van deze familie:"
+
+#: SelectDelete.php:275
+msgid "Note: This will also delete all Notes associated with this Family record."
+msgstr "Dit zal ook alle notities gekoppeld aan deze familie verwijderen."
+
+#: SelectDelete.php:291
+msgid "Delete Family Record ONLY"
+msgstr "Verwijder ALLEEN Familie"
+
+#: SelectDelete.php:292
+msgid "Delete Family Record AND Family Members"
+msgstr "Verwijdeer Familie EN Familie Leden"
+
+#: SelectList.php:141
+msgid "Person Listing"
+msgstr "Persoon Lijst"
+
+#: ChurchCRM/Config/Menu/Menu.php:86 SelectList.php:172
+msgid "Group Assignment Helper"
+msgstr "Groep Koppeling Helper"
+
+#: SelectList.php:500
+msgid "Show people <b>not</b> in this group type:"
+msgstr "Toon personen >b>niet</b> in dit groep type:"
+
+#: SelectList.php:516
+msgid "Sort order"
+msgstr "Sorteer volgorde"
+
+#: SelectList.php:520
+msgid "By Name"
+msgstr "Op Naam"
+
+#: SelectList.php:523
+msgid "By Family"
+msgstr "Op Familie"
+
+#: SelectList.php:529
+msgid "By Newest Entries"
+msgstr "Op Nieuwste toevoegingen"
+
+#: SelectList.php:532
+msgid "By Recently Edited"
+msgstr "Op onlangs Bewerkt"
+
+#: SelectList.php:538
+msgid "Apply Filter"
+msgstr "Zet Filter"
+
+#: SelectList.php:549
+msgid "Male & Female"
+msgstr "Man & Vrouw"
+
+#: SelectList.php:570
+msgid "All Classifications"
+msgstr "Alle Classificaties"
+
+#: SelectList.php:596
+msgid "All Family Roles"
+msgstr "Alle Familie Rollen"
+
+#: SelectList.php:622
+msgid "All Contact Properties"
+msgstr "Eigenschappen"
+
+#: SelectList.php:654
+msgid "All Group Types"
+msgstr "Alle Groep Types"
+
+#: SelectList.php:694
+msgid "All Groups"
+msgstr "Alle Groep Types"
+
+#: SelectList.php:743
+msgid "All Roles"
+msgstr "Alle Rollen"
+
+#: SelectList.php:784
+msgid "View All"
+msgstr "Bekijk Alles"
+
+#: SelectList.php:1055
+msgid "Cart"
+msgstr "Mandje"
+
+#: SettingsIndividual.php:86
+msgid "My User Settings"
+msgstr "Mijn Gebruikers Instellingen"
+
+#: SettingsIndividual.php:98 SettingsUser.php:85 SystemSettings.php:139
+#: UserEditor.php:478
+msgid "Variable name"
+msgstr "Variabel namen"
+
+#: SettingsIndividual.php:99 SettingsUser.php:86 UserEditor.php:479
+msgid "Current Value"
+msgstr "Huidige waarde:"
+
+#: SettingsIndividual.php:113 SettingsIndividual.php:159 SettingsUser.php:98
+#: SettingsUser.php:159 SystemSettings.php:256 UserEditor.php:561
+msgid "Save Settings"
+msgstr "Sla instellingen op"
+
+#: SettingsUser.php:68
+msgid "Default User Settings"
+msgstr "Standaard Gebruikers Instellingen"
+
+#: SettingsUser.php:80
+msgid "Set Permission True to give new users the ability to change their current value.<BR>"
+msgstr "Stel Toestemming Trouw aan nieuwe gebruikers de mogelijkheid om hun huidige waarde te wijzigen. <BR>"
+
+#: SettingsUser.php:84 UserEditor.php:477
+msgid "Permission"
+msgstr "Toestemming"
+
+#: TaxReport.php:29
+msgid "Tax Report"
+msgstr "Belasting Raport"
+
+#: TaxReport.php:45
+msgid "Calendar Year"
+msgstr "Kalender Jaar"
+
+#: USISTAddressVerification.php:47
+msgid "US Address Verification"
+msgstr "Amerikaanse Address Verification"
+
+#: UserList.php:125
+msgid "User Delete Confirmation"
+msgstr "Bevestiging Verwijderen Gebruiker"
+
+#: UserList.php:127
+msgid "Please confirm removal of user status from:"
+msgstr "Bevestig aub verwijdering van gebruikers status van:"
+
+#: UserEditor.php:322
+msgid "User Editor"
+msgstr "Gebruikers Administratie"
+
+#: UserEditor.php:330
+msgid "Note: Changes will not take effect until next logon."
+msgstr "Let op: Wijzigingen worden pas effectief na opnieuw inloggen."
+
+#: UserEditor.php:344
+msgid "Person to Make User"
+msgstr "Persoon die Gebruiker wordt"
+
+#: UserEditor.php:364 api/routes/public/public-user.php:51
+#: v2/templates/admin/user.php:10
+msgid "User"
+msgstr "Gebruiker"
+
+#: UserEditor.php:380 external/templates/password/enter-username.php:30
+msgid "Login Name"
+msgstr "Login Naam"
+
+#: UserEditor.php:392
+msgid "Edit Records"
+msgstr "Bewerk Records"
+
+#: UserEditor.php:399
+msgid "Delete Records"
+msgstr "Verwijder Records"
+
+#: UserEditor.php:406
+msgid "Manage Properties and Classifications"
+msgstr "Administreer Eigenschappen en Classificaties"
+
+#: UserEditor.php:413
+msgid "Manage Groups and Roles"
+msgstr "Administreer Groepen en Rollen"
+
+#: UserEditor.php:420
+msgid "Manage Donations and Finance"
+msgstr "Administreer Donaties en Financien"
+
+#: UserEditor.php:427
+msgid "View, Add and Edit Notes"
+msgstr "Bekijk, Maak en bewerk Notities"
+
+#: UserEditor.php:434
+msgid "Edit Self"
+msgstr "Bewerk Eigen Gegevens"
+
+#: UserEditor.php:437
+msgid "(Edit own family only.)"
+msgstr "(Bewerk alleen u eigen familie.)"
+
+#: UserEditor.php:443
+msgid "(Canvass volunteer.)"
+msgstr "(Enquete vrijwiliger.)"
+
+#: ChurchCRM/Config/Menu/Menu.php:68 ChurchCRM/Config/Menu/Menu.php:105
+#: ChurchCRM/Config/Menu/Menu.php:146 ChurchCRM/Config/Menu/Menu.php:192
+#: UserEditor.php:446
+msgid "Admin"
+msgstr "Admin"
+
+#: UserEditor.php:449
+msgid "(Grants all privileges.)"
+msgstr "(Geeft alle rechten.)"
+
+#: UserEditor.php:452
+msgid "Style"
+msgstr "Stijl"
+
+#: UserList.php:37
+msgid "User Listing"
+msgstr "Gebruiker Lijst"
+
+#: UserList.php:55
+msgid "Last Login"
+msgstr "Laatste Login"
+
+#: UserList.php:56
+msgid "Total Logins"
+msgstr "Totale Logins"
+
+#: UserList.php:57
+msgid "Failed Logins"
+msgstr "Mislukte Logins"
+
+#: UserPasswordChange.php:55
+msgid "You must enter a password in both boxes"
+msgstr "U moet een wachtwoord intypen in beide vensters"
+
+#: UserPasswordChange.php:61 UserPasswordChange.php:113
+msgid "You must enter the same password in both boxes"
+msgstr "U moet in beide vensters een identiek wachtwoord invoeren"
+
+#: UserPasswordChange.php:101
+msgid "Invalid password"
+msgstr "Ongeldig wachtwoord"
+
+#: UserPasswordChange.php:107
+msgid "You must enter your new password in both boxes"
+msgstr "U moet uw wachtwoord intypen in beide vensters"
+
+#: UserPasswordChange.php:119
+msgid "Your password choice is too obvious. Please choose something else."
+msgstr "U keuze van wachtwoord is te makkelijk. Kies aub een ander wachtwoord."
+
+#: UserPasswordChange.php:125
+msgid "Your new password must be at least"
+msgstr "U nieuwe wachtwoord moet minimaal"
+
+#: UserPasswordChange.php:125
+msgid "characters"
+msgstr "karakters"
+
+#: UserPasswordChange.php:131
+msgid "You need to actually change your password (nice try, though!)"
+msgstr "U moet echt uw wachtwoord wijzigen (Leuk geprobeerd hoor!)"
+
+#: UserPasswordChange.php:134
+msgid "Your new password is too similar to your old one.  Be more creative!"
+msgstr "U nieuwe wachtwoord is bijna identiek aan het oude. Wees meer creatief!"
+
+#: UserPasswordChange.php:163
+msgid "User Password Change"
+msgstr "Gebruikers Wachtwoord Wijziging"
+
+#: UserPasswordChange.php:171
+msgid "Your account record indicates that you need to change your password before proceding."
+msgstr "Uw acount gegevens geven aan dat uw wachtwoord gewijzigd moet worden voordat u verder kan gaan."
+
+#: UserPasswordChange.php:183
+msgid "Enter your current password, then your new password twice.  Passwords must be at least"
+msgstr "Voer uw oude wachtwoord in, vervolgens 2x uw nieuwe wachtwoord. Wachtwoorden moeten op zijn minst"
+
+#: UserPasswordChange.php:183
+msgid "characters in length."
+msgstr "karakters lang zijn."
+
+#: UserPasswordChange.php:185
+msgid "Enter a new password for this user."
+msgstr "Type een nieuw wachtwoord voor deze gebruiker."
+
+#: UserPasswordChange.php:196
+msgid "Old Password"
+msgstr "Oud Wachtwoord"
+
+#: ChurchCRM/Emails/users/NewAccountEmail.php:30
+#: ChurchCRM/Emails/users/PasswordChangeEmail.php:29
+#: ChurchCRM/Emails/users/ResetPasswordEmail.php:29 UserPasswordChange.php:202
+msgid "New Password"
+msgstr "Nieuw Wachtwoord"
+
+#: UserPasswordChange.php:206
+msgid "Confirm New Password"
+msgstr "Bevestig Nieuw Wachtwoord"
+
+#: UserList.php:167
+msgid "Please confirm the password reset of this user"
+msgstr "Bevestig aub de reset van het wachtwoord van deze gebruiker"
+
+#: VolunteerOpportunityEditor.php:69
+msgid "Volunteer Opportunity Delete Confirmation"
+msgstr "Vrijwilligers Mogelijkheden Administrateur"
+
+#: VolunteerOpportunityEditor.php:99
+msgid "There are people assigned to this Volunteer Opportunity."
+msgstr "Er zijn personen gekoppeld aan deze vrijwilligers mogelijkheid:"
+
+#: VolunteerOpportunityEditor.php:100
+msgid "Volunteer Opportunity will be unassigned for the following people."
+msgstr "Vrijwilliger Opportunity zal worden toegewezen voor de volgende personen."
+
+#: VolunteerOpportunityEditor.php:109
+msgid "Yes, delete this Volunteer Opportunity"
+msgstr "Ja, verwijder deze vrijwilligers mogelijkheid"
+
+#: VolunteerOpportunityEditor.php:194
+msgid "Volunteer Opportunity Editor"
+msgstr "Vrijwilligers Mogelijkheden Administrateur"
+
+#: VolunteerOpportunityEditor.php:283
+msgid "No volunteer opportunities have been added yet"
+msgstr "Er zijn nog geen vrijwilligers mogelijkheden toegevoegd"
+
+#: VolunteerOpportunityEditor.php:332
+msgid "NOTE: ADD, Delete, and Ordering changes are immediate.  Changes to Name or Desc fields must be saved by pressing 'Save Changes'"
+msgstr "OPMERKING: toevoegen, verwijderen en bestelinformatie veranderingen zijn onmiddellijk. Wijzigingen in Naam of Desc velden moeten worden opgeslagen door op &#39;Wijzigingen opslaan&#39;"
+
+#: VolunteerOpportunityEditor.php:434
+msgid "Add New Opportunity"
+msgstr "Voeg een Nieuwe Vrijwilligers klus toe"
+
+#: WhyCameEditor.php:32
+msgid "\"Why Came\" notes for "
+msgstr "\"Waarom Kwam\" notities for "
+
+#: WhyCameEditor.php:87
+msgid "Why did you come to the church?"
+msgstr "Waarom bent u naar de kerk gekomen"
+
+#: WhyCameEditor.php:91
+msgid "Why do you keep coming?"
+msgstr "Waarom blijf je komen?"
+
+#: WhyCameEditor.php:95
+msgid "Do you have any suggestions for us?"
+msgstr "Heeft u nog suggesties voor ons?"
+
+#: WhyCameEditor.php:99
+msgid "How did you learn of the church?"
+msgstr "Hoe ben je bij deze kerk terecht gekomen?"
+
+#: eGive.php:352
+msgid "Re-import to selected family"
+msgstr "Re-import naar geselecteerde familie"
+
+#: eGive.php:356
+msgid "Data import results: "
+msgstr "Data import resultaten:"
+
+#: eGive.php:356
+msgid " gifts were imported, "
+msgstr "giften werden geimporteerd"
+
+#: eGive.php:356
+msgid " gifts unchanged, and "
+msgstr "geschenken ongewijzigd, en"
+
+#: eGive.php:356
+msgid " gifts not imported due to problems"
+msgstr "gaven niet geïmporteerd als gevolg van problemen"
+
+#: eGive.php:357 eGive.php:386
+msgid "Back to Deposit Slip"
+msgstr "Terug naar Stortings Strookje"
+
+#: eGive.php:385
+msgid "Fatal error in eGive API datastream: '"
+msgstr "Fatale fout in eGive API Datastream: &#39;"
+
+#: Include/CanvassUtilities.php:66
+msgid "No families need canvassers assigned"
+msgstr "Geen families hebben een koppeling nodig met een enqueteur"
+
+#: Include/CanvassUtilities.php:78
+msgid "Canvassers assigned at random to %d families."
+msgstr "Enqueteus zijn willekeurig gekoppeld aan %d families."
+
+#: Include/CanvassUtilities.php:112
+msgid "Canvassers assigned at random to %d non-pledging families."
+msgstr "Enqueteurs zijn willekeurig gekoppeld aan %d families die niet bijdragen."
+
+#: Include/EnvelopeFunctions.php:35
+msgid "Assigned envelope numbers to all families with at least one member."
+msgstr "Koppel Envelop nummers aan ale families die minimaal uit een lid bestaan."
+
+#: Include/EnvelopeFunctions.php:37
+msgid "Assigned envelope numbers to all families."
+msgstr "Koppel envelop nummer aan alle families."
+
+#: Include/Functions.php:96
+msgid "True / False"
+msgstr "Waar/ Niet Waar"
+
+#: Include/Functions.php:98
+msgid "Text Field (50 char)"
+msgstr "Text Veld (50 Kar)"
+
+#: Include/Functions.php:99
+msgid "Text Field (100 char)"
+msgstr "Text Veld (100 Kar.)"
+
+#: Include/Functions.php:100
+msgid "Text Field (long)"
+msgstr "Text Veld (lang)"
+
+#: Include/Functions.php:102
+msgid "Season"
+msgstr "Seizoen"
+
+#: Include/Functions.php:104
+msgid "Person from Group"
+msgstr "persoon van de Groep"
+
+#: Include/Functions.php:105
+msgid "Money"
+msgstr "Geld"
+
+#: Include/Functions.php:106
+msgid "Phone Number"
+msgstr "Telefoon Nummer"
+
+#: Include/Functions.php:107
+msgid "Custom Drop-Down List"
+msgstr "Aangepaste Selectie Lijst"
+
+#: Include/Functions.php:131
+msgid "Group successfully added to the Cart."
+msgstr "Groep met success toegevoegd mandje."
+
+#: Include/Functions.php:137
+msgid "Group successfully removed from the Cart."
+msgstr "De Groep is met success verwijderd uit het mandje."
+
+#: Include/Functions.php:156
+msgid "Selected record successfully removed from the Cart."
+msgstr "Geselecteerde records zijn met success verwijderd uit het mandje."
+
+#: api/routes/cart.php:56
+#, fuzzy
+msgid "Your cart has been successfully emptied"
+msgstr "U mandje is met success geleegd"
+
+#: Include/Functions.php:174
+msgid "item(s) added to the Cart."
+msgstr "Object(en) toegevoegd aan mandje ."
+
+#: Include/Functions.php:199
+msgid "Select Fiscal Year"
+msgstr "Selecteer Fiscaal Jaar"
+
+#: Include/Functions.php:428
+msgid "pm"
+msgstr "s'avonds"
+
+#: Include/Functions.php:433
+msgid "am"
+msgstr "Overdag"
+
+#: Include/Functions.php:754
+msgid "Invalid Editor ID!"
+msgstr "Ongeldig Administrateur ID!"
+
+#: Include/Functions.php:809
+msgid "Select Season"
+msgstr "Selecteer Seizoen"
+
+#: Include/Functions.php:814
+msgid "Winter"
+msgstr "Winter"
+
+#: Include/Functions.php:819
+msgid "Spring"
+msgstr "Lente"
+
+#: Include/Functions.php:824
+msgid "Summer"
+msgstr "Zomer"
+
+#: Include/Functions.php:829
+msgid "Fall"
+msgstr "Herfst"
+
+#: Include/Functions.php:926
+msgid "Error: Invalid Editor ID!"
+msgstr "Error: Ongeldige Administrateur ID!"
+
+#: FundRaiserEditor.php:52 Include/Functions.php:1123 PledgeEditor.php:318
+msgid "Not a valid date"
+msgstr "Geen geldige Datum"
+
+#: Include/Functions.php:1135
+msgid "Invalid Year"
+msgstr "Ongeldig Jaar"
+
+#: Include/Functions.php:1138
+msgid "Out of range: Allowable values are 1901 to 2155"
+msgstr "Ongeldig: Jaar moet tussen 1901 en 2155 zijn"
+
+#: Include/Functions.php:1151 Include/Functions.php:1167
+msgid "Invalid Number"
+msgstr "Ongeldig Nummer"
+
+#: Include/Functions.php:1154
+msgid "Number too large. Must be between -2147483648 and 2147483647"
+msgstr "Nummer is te groot. Moet tussen -2147483648 and 2147483647 vallen"
+
+#: Include/Functions.php:1170
+msgid "Money amount too large. Maximum is $999999999.99"
+msgstr "Geld bedrag te groot. Maximum is $999999999.99"
+
+#: Include/Functions.php:1320
+msgid " Bold Italic"
+msgstr "Vet Cursief"
+
+#: Include/Functions.php:1323
+msgid " Italic"
+msgstr "Cursief"
+
+#: Include/Functions.php:1325
+msgid " Bold"
+msgstr "Vet"
+
+#: Include/LabelFunctions.php:80
+msgid "Label Type"
+msgstr "Etikette Type"
+
+#: Include/LabelFunctions.php:97
+msgid "Label Grouping"
+msgstr "Etikette Groepering"
+
+#: Include/LabelFunctions.php:105
+msgid "All Individuals"
+msgstr "Alle Individuen"
+
+#: Include/LabelFunctions.php:112
+msgid "Grouped by Family"
+msgstr "Ge-groepeerd op Familie"
+
+#: Include/LabelFunctions.php:117
+msgid "To the parents of"
+msgstr "Aan de ouders van"
+
+#: Include/LabelFunctions.php:133
+msgid "Start Row"
+msgstr "Start Rij"
+
+#: Include/LabelFunctions.php:140
+msgid "Start Column"
+msgstr "Start Kolom"
+
+#: Include/LabelFunctions.php:152
+msgid "Ignore Incomplete<br>Addresses"
+msgstr "Negeer Incompleet"
+
+#: Include/LabelFunctions.php:164
+msgid "File Type"
+msgstr "Bestand Type"
+
+#: Reports/AdvancedDeposit.php:386 Reports/AdvancedDeposit.php:404
+#: Reports/AdvancedDeposit.php:493 Reports/AdvancedDeposit.php:507
+#: Reports/AdvancedDeposit.php:548 Reports/AdvancedDeposit.php:566
+#: Reports/AdvancedDeposit.php:655 Reports/AdvancedDeposit.php:669
+#: Reports/AdvancedDeposit.php:710 Reports/AdvancedDeposit.php:728
+#: Reports/AdvancedDeposit.php:817 Reports/AdvancedDeposit.php:831
+#: Reports/AdvancedDeposit.php:848
+msgid "items"
+msgstr "objects"
+
+#: Reports/CanvassReports.php:204
+msgid "Did not pledge"
+msgstr "Nog geen Bijdrage"
+
+#: Reports/CanvassReports.php:208
+msgid "Top pledger"
+msgstr "Top Bijdrager"
+
+#: Reports/CanvassReports.php:210
+msgid "Pledged"
+msgstr "Bijgedragen"
+
+#: Reports/CanvassReports.php:238 Reports/ConfirmReport.php:181
+#: Reports/ConfirmReport.php:200 Reports/ConfirmReportEmail.php:189
+#: Reports/ConfirmReportEmail.php:207
+msgid "M/F"
+msgstr "M/V"
+
+#: Reports/ClassAttendance.php:151 Reports/ClassAttendance.php:152
+#: Reports/ClassList.php:134 Reports/ClassList.php:135
+msgid "Liaison"
+msgstr "Liaison"
+
+#: Reports/ConfirmReport.php:130 Reports/ConfirmReportEmail.php:135
+msgid "City, State, Zip"
+msgstr "Stad, Provincie, Postcode"
+
+#: FamilyEditor.php:781 FamilyView.php:234 Reports/ConfirmReport.php:140
+#: Reports/ConfirmReportEmail.php:145
+#: external/templates/verify/verify-family-info.php:39
+#: v2/templates/people/family-view.php:133
+msgid "Send Newsletter"
+msgstr "Stuur Nieuwsbrief"
+
+#: Reports/ConfirmReport.php:180 Reports/ConfirmReport.php:199
+#: Reports/ConfirmReportEmail.php:188 Reports/ConfirmReportEmail.php:206
+msgid "Member Name"
+msgstr "Naam van Lid"
+
+#: Reports/ConfirmReport.php:182 Reports/ConfirmReport.php:201
+#: Reports/ConfirmReportEmail.php:190 Reports/ConfirmReportEmail.php:208
+msgid "Adult/Child"
+msgstr "Volwassene/Kind"
+
+#: FamilyList.php:47 GroupReports.php:126 Reports/CanvassReports.php:242
+#: Reports/ConfirmReportEmail.php:193 Reports/ConfirmReportEmail.php:211
+#, fuzzy
+msgid "Cell Phone"
+msgstr "Mobiele Telefoon"
+
+#: Reports/ConfirmReport.php:187 Reports/ConfirmReport.php:206
+#: Reports/ConfirmReportEmail.php:194 Reports/ConfirmReportEmail.php:212
+msgid "Member/Friend"
+msgstr "Lid/Vriend"
+
+#: Reports/DirectoryReport.php:179
+msgid "This option requires at least version 3.22 of MySQL!  Hit browser back button to return to ChurchCRM."
+msgstr "Deze optie vereist op zijn minst verie 3.22 of MySQL! Ga terug naar de vorige pagina om weer gebruik te maken van KerkInfo."
+
+#: ChurchCRM/Reports/PDF_Directory.php:312
+#: ChurchCRM/Reports/PDF_Directory.php:387
+#: ChurchCRM/Reports/PDF_Directory.php:444 Reports/DirectoryReport.php:289
+#: Reports/GroupReport.php:124
+#: external/templates/registration/family-register-members.php:96
+msgid "Work"
+msgstr "Werk"
+
+#: ChurchCRM/Reports/PDF_Directory.php:315
+#: ChurchCRM/Reports/PDF_Directory.php:391
+#: ChurchCRM/Reports/PDF_Directory.php:448 Reports/DirectoryReport.php:293
+#: Reports/GroupReport.php:129
+msgid "Cell"
+msgstr "Mobiel"
+
+#: Reports/FRBidSheets.php:75 Reports/FRCatalog.php:98
+#: Reports/FRCertificates.php:45
+msgid "Estimated value "
+msgstr "Geschatte Waarde"
+
+#: Reports/FRBidSheets.php:78 Reports/FRCatalog.php:101
+#: Reports/FRCertificates.php:48
+msgid "Donated by "
+msgstr "Geschonken door"
+
+#: Reports/FRBidSheets.php:89
+msgid "Paddle"
+msgstr "Peddel"
+
+#: Reports/FRBidSheets.php:90
+msgid "Bid"
+msgstr "Bod"
+
+#: Reports/FRCatalog.php:95
+msgid "Minimum bid "
+msgstr "Minimum bod"
+
+#: Reports/FamilyPledgeSummary.php:143 Reports/ReminderReport.php:154
+msgid "All Funds"
+msgstr "Alle Fonds"
+
+#: Reports/FamilyPledgeSummary.php:144 Reports/ReminderReport.php:155
+msgid " for all funds"
+msgstr " voor alle fondsen"
+
+#: Reports/FamilyPledgeSummary.php:146 Reports/ReminderReport.php:157
+msgid " for fund "
+msgstr " Voor fonds "
+
+#: Reports/FamilyPledgeSummary.php:149 Reports/ReminderReport.php:160
+msgid "for funds "
+msgstr "Voor fondsen"
+
+#: Reports/FundRaiserStatement.php:92
+msgid "Donated Items:"
+msgstr "Geschonken items:"
+
+#: Reports/FundRaiserStatement.php:143
+msgid "Purchased Items:"
+msgstr "Gekochte Artikelen:"
+
+#: Reports/FundRaiserStatement.php:215
+msgid "Total of all purchases: $"
+msgstr "Totaal van alle aankopen: $"
+
+#: Reports/FundRaiserStatement.php:222
+msgid "Total purchases: $"
+msgstr "Totaal aankopen: $"
+
+#: Reports/FundRaiserStatement.php:222
+msgid "Amount paid: ________________"
+msgstr "Bedrag betaald: ________________"
+
+#: Reports/FundRaiserStatement.php:224
+msgid "Paid by (  ) Cash    (  ) Check    (  ) Credit card __ __ __ __    __ __ __ __    __ __ __ __    __ __ __ __  Exp __ / __"
+msgstr "Ten laste van () Cash () Check () Creditcard ________________________________ Belichtingstijd __ / __"
+
+#: Reports/FundRaiserStatement.php:226
+msgid "                                        Signature ________________________________________________________________"
+msgstr "Handtekening ________________________________________________________________"
+
+#: ChurchCRM/Reports/PDF_Attendance.php:179
+msgid "Totals"
+msgstr "Totalen"
+
+#: ChurchCRM/Reports/PDF_CertificatesReport.php:30
+msgid "Certificate of Ownership"
+msgstr "Bewijs van Eigendom"
+
+#: ChurchCRM/Reports/PDF_Directory.php:38
+#: ChurchCRM/Reports/PDF_Directory.php:74
+msgid "Directory"
+msgstr "Adresboek"
+
+#: ChurchCRM/Reports/PDF_Directory.php:57
+msgid "Page"
+msgstr "Pagina"
+
+#: ChurchCRM/Reports/PDF_Directory.php:321
+msgid "Wedding"
+msgstr "Trouwerij"
+
+#: ChurchCRM/Reports/PDF_Directory.php:350
+msgid "and"
+msgstr "en"
+
+#: ChurchCRM/Reports/PDF_GroupDirectory.php:29
+msgid "Group Directory"
+msgstr "Groep Adresboek"
+
+#: Reports/TaxReport.php:241
+msgid "Please detach this slip and mail with your next gift."
+msgstr "Maak dit strookje los, en post het tegelijkertijd met uw bijdrage."
+
+#: Reports/TaxReport.php:243
+msgid "Please mail you next gift to "
+msgstr "Mail alstublieft uw volgende gift naar"
+
+#: Reports/TaxReport.php:282
+msgid "Gift Amount:"
+msgstr "Gift Bedrag:"
+
+#: Reports/TaxReport.php:285
+msgid "Gift Designation:"
+msgstr "Benoeming van Gift"
+
+#: sundayschool/SundaySchoolReports.php:30
+msgid "Sunday School Reports"
+msgstr "Zondag School Rapport"
+
+#: sundayschool/SundaySchoolDashboard.php:55
+msgid "Generate class lists and attendance sheets"
+msgstr "Genereer Klas Lijsten en opkomst overzichten"
+
+#: sundayschool/SundaySchoolReports.php:123
+msgid "At least one group must be selected to make class lists or attendance sheets."
+msgstr "Er moet minstens één groep worden geselecteerd om een lijst te maken"
+
+#: sundayschool/SundaySchoolReports.php:217
+msgid "Last Sunday"
+msgstr "Vorige Zondag"
+
+#: sundayschool/SundaySchoolReports.php:222
+#: sundayschool/SundaySchoolReports.php:227
+#: sundayschool/SundaySchoolReports.php:232
+#: sundayschool/SundaySchoolReports.php:237
+#: sundayschool/SundaySchoolReports.php:242
+#: sundayschool/SundaySchoolReports.php:247
+#: sundayschool/SundaySchoolReports.php:252
+#: sundayschool/SundaySchoolReports.php:257
+msgid "No Sunday School"
+msgstr "Geen Zondag School"
+
+#: sundayschool/SundaySchoolReports.php:266
+msgid "Extra Teachers"
+msgstr "Extra Onderwijzers"
+
+#: sundayschool/SundaySchoolReports.php:275
+msgid "Create Class List"
+msgstr "Maak klassen lijst"
+
+#: sundayschool/SundaySchoolReports.php:278
+msgid "Create Attendance Sheet"
+msgstr "Voer bezoekers-aantallen in"
+
+#: 
+msgid "Members"
+msgstr "Leden"
+
+#: ChurchCRM/Config/Menu/Menu.php:63
+msgid "Add New Person"
+msgstr "Toevoegen Nieuw Persoon"
+
+#: ChurchCRM/Config/Menu/Menu.php:64
+msgid "View All Persons"
+msgstr "Bekijk alle Personen"
+
+#: ChurchCRM/Config/Menu/Menu.php:65
+msgid "Add New Family"
+msgstr "Voeg Nieuwe Familie toe"
+
+#: ChurchCRM/Config/Menu/Menu.php:129 ChurchCRM/dto/SystemConfig.php:253
+msgid "Events"
+msgstr "Evenementen"
+
+#: ChurchCRM/Config/Menu/Menu.php:157 FundRaiserEditor.php:31
+msgid "Fundraiser"
+msgstr "Fundraiser"
+
+#: FindDepositSlip.php:45
+msgid "Deposit Type"
+msgstr "Bijdrage Type"
+
+#: ChurchCRM/dto/SystemConfig.php:245
+msgid "Report Settings"
+msgstr "Rapportage Instellingen"
+
+#: PersonView.php:254
+msgid "Family:"
+msgstr "Familie:"
+
+#: Reports/AdvancedDeposit.php:388 Reports/AdvancedDeposit.php:406
+#: Reports/AdvancedDeposit.php:495 Reports/AdvancedDeposit.php:509
+#: Reports/AdvancedDeposit.php:550 Reports/AdvancedDeposit.php:568
+#: Reports/AdvancedDeposit.php:657 Reports/AdvancedDeposit.php:671
+#: Reports/AdvancedDeposit.php:712 Reports/AdvancedDeposit.php:730
+#: Reports/AdvancedDeposit.php:819 Reports/AdvancedDeposit.php:833
+#: Reports/AdvancedDeposit.php:850
+msgid "item"
+msgstr "object"
+
+#: CanvassEditor.php:163
+msgid "Canvasser:"
+msgstr "Enqueteur"
+
