@@ -2281,5 +2281,19 @@
     "Duplicate Emails": "Email duplicate",
     "HTML URL": "URL HTML",
     "Latest Persons": "Ultime Persone",
-    "Updated Persons": "Persone Aggiornate"
+    "Updated Persons": "Persone Aggiornate",
+    "Custom Menus": "Menu Personalizzati",
+    "User must have Manage Groups permission": "L'utente deve disporre dell'autorizzazione Gestione Gruppi",
+    "Missing": "Mancante",
+    "User must have Edit Records permission": "L'utente deve avere l'autorizzazione Modifica Records",
+    "User must have Finance permission": "L'utente deve avere l'autorizzazione Finanza",
+    "Can't delete yourself": "Impossibile eliminare te stesso",
+    "success": "Successo",
+    "The role could not be found.": "Il ruolo non è stato trovato.",
+    "Add Menu": "Aggiungi Menu",
+    "Menu Name": "Nome Menu",
+    "Max 20 char": "Max 20 Caratteri",
+    "Link Address": "Indirizzo Link",
+    "Start with http:// or https://": "Inizia con http:// o https://",
+    "Menus": "Menu"
 }
