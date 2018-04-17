@@ -55,7 +55,7 @@ $(document).ready(function () {
       message: i18next.t("Are you sure you want to remove the selected group members?") + " (" + deletedRows.length + ") ",
       buttons: {
         confirm: {
-          label:  i18next.t('Yes'),
+          label:  i18next.t('Delete'),
             className: 'btn-danger'
         },
         cancel: {
