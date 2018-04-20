@@ -2295,5 +2295,13 @@
     "Max 20 char": "Max 20 caracteres",
     "Link Address": "Dirección de Link",
     "Start with http:// or https://": "Comenzar con http:// o https://",
-    "Menus": "Menus"
+    "Menus": "Menus",
+    "is disabled": "deshabilitado",
+    "System Information": "Información de Sistema",
+    "Software Version": "Versión de Software",
+    "Valid Mail Server Settings": "Ajustes de Servidor de Correos Válidos",
+    "Database": "Base de Datos",
+    "Database Version": "Versión de Base de Datos",
+    "Application Prerequisites": "Prerequisitos de Aplicación",
+    "WebServer Modules": "Módules de Servidor Web"
 }
