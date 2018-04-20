@@ -9660,3 +9660,35 @@ msgstr "Comenzar con http:// o https://"
 msgid "Menus"
 msgstr "Menus"
 
+#: ChurchCRM/Slim/Middleware/Request/Setting/BaseAuthSettingMiddleware.php:15
+msgid "is disabled"
+msgstr "deshabilitado"
+
+#: v2/templates/admin/debug.php:17
+msgid "System Information"
+msgstr "Información de Sistema"
+
+#: v2/templates/admin/debug.php:22
+msgid "Software Version"
+msgstr "Versión de Software"
+
+#: v2/templates/admin/debug.php:30
+msgid "Valid Mail Server Settings"
+msgstr "Ajustes de Servidor de Correos Válidos"
+
+#: v2/templates/admin/debug.php:40
+msgid "Database"
+msgstr "Base de Datos"
+
+#: v2/templates/admin/debug.php:45 v2/templates/admin/debug.php:49
+msgid "Database Version"
+msgstr "Versión de Base de Datos"
+
+#: v2/templates/admin/debug.php:90
+msgid "Application Prerequisites"
+msgstr "Prerequisitos de Aplicación"
+
+#: v2/templates/admin/debug.php:107
+msgid "WebServer Modules"
+msgstr "Módules de Servidor Web"
+
