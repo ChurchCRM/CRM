@@ -27,7 +27,7 @@ msgstr "Konfirmo Fshij pagesën automatik"
 #: PersonCustomFieldsEditor.php:315 PersonCustomFieldsEditor.php:384
 #: PersonView.php:940 PledgeDelete.php:53 PropertyList.php:65
 #: PropertyList.php:106 PropertyTypeList.php:46 PropertyTypeList.php:67
-#: PropertyTypeList.php:69 v2/templates/people/family-view.php:529
+#: PropertyTypeList.php:69 v2/templates/people/family-view.php:530
 msgid "Delete"
 msgstr "Fshiji"
 
@@ -46,7 +46,7 @@ msgstr "Fshiji"
 #: WhyCameEditor.php:105 external/templates/verify/verify-family-info.php:151
 #: sundayschool/SundaySchoolDashboard.php:258
 #: sundayschool/SundaySchoolReports.php:286
-#: v2/templates/people/family-view.php:528
+#: v2/templates/people/family-view.php:529
 msgid "Cancel"
 msgstr "Anulo"
 
@@ -1767,7 +1767,7 @@ msgstr " Diskutoj Hyrja"
 
 #: DepositSlipEditor.php:219 FamilyView.php:899 FindDepositSlip.php:94
 #: PersonView.php:929 PledgeDelete.php:19
-#: v2/templates/people/family-view.php:516
+#: v2/templates/people/family-view.php:517
 msgid "Confirm Delete"
 msgstr "Konfirmo Fshij"
 
@@ -2417,7 +2417,7 @@ msgstr "Update të gjitha koordinatat Family"
 msgid "Volunteer Opportunities"
 msgstr "Mundësitë vullnetare"
 
-#: Menu.php:172 PeopleDashboard.php:137 api/routes/search.php:138
+#: Menu.php:172 PeopleDashboard.php:137 api/routes/search.php:137
 #: members/online-pending-verify.php:24 members/self-register.php:24
 #: members/self-verify-updates.php:24
 #: sundayschool/SundaySchoolDashboard.php:104

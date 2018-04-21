@@ -27,7 +27,7 @@ msgstr "Xác nhận Xóa Thanh toán tự động"
 #: PersonCustomFieldsEditor.php:315 PersonCustomFieldsEditor.php:384
 #: PersonView.php:940 PledgeDelete.php:53 PropertyList.php:65
 #: PropertyList.php:106 PropertyTypeList.php:46 PropertyTypeList.php:67
-#: PropertyTypeList.php:69 v2/templates/people/family-view.php:529
+#: PropertyTypeList.php:69 v2/templates/people/family-view.php:530
 msgid "Delete"
 msgstr "Xóa bỏ"
 
@@ -46,7 +46,7 @@ msgstr "Xóa bỏ"
 #: WhyCameEditor.php:105 external/templates/verify/verify-family-info.php:151
 #: sundayschool/SundaySchoolDashboard.php:258
 #: sundayschool/SundaySchoolReports.php:286
-#: v2/templates/people/family-view.php:528
+#: v2/templates/people/family-view.php:529
 msgid "Cancel"
 msgstr "Hủy bỏ"
 
@@ -1415,7 +1415,7 @@ msgstr "Trợ giúp địa lý"
 msgid "Volunteer Opportunities"
 msgstr "Cộng tác viên"
 
-#: Menu.php:172 PeopleDashboard.php:137 api/routes/search.php:138
+#: Menu.php:172 PeopleDashboard.php:137 api/routes/search.php:137
 #: members/online-pending-verify.php:24 members/self-register.php:24
 #: members/self-verify-updates.php:24
 #: sundayschool/SundaySchoolDashboard.php:104
@@ -2060,7 +2060,7 @@ msgid "Family Map"
 msgstr "Bản đồ gia đình"
 
 #: ChurchCRM/Config/Menu/Menu.php:84 Menu.php:229 PeopleDashboard.php:200
-#: api/routes/search.php:173
+#: api/routes/search.php:172
 msgid "Groups"
 msgstr "Ban/Mục vụ"
 

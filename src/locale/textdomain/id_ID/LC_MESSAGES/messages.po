@@ -27,7 +27,7 @@ msgstr "Konfirmasi Hapus Pembayaran Otomatis"
 #: PersonCustomFieldsEditor.php:315 PersonCustomFieldsEditor.php:384
 #: PersonView.php:940 PledgeDelete.php:53 PropertyList.php:65
 #: PropertyList.php:106 PropertyTypeList.php:46 PropertyTypeList.php:67
-#: PropertyTypeList.php:69 v2/templates/people/family-view.php:529
+#: PropertyTypeList.php:69 v2/templates/people/family-view.php:530
 msgid "Delete"
 msgstr "Hapus"
 
@@ -46,7 +46,7 @@ msgstr "Hapus"
 #: WhyCameEditor.php:105 external/templates/verify/verify-family-info.php:151
 #: sundayschool/SundaySchoolDashboard.php:258
 #: sundayschool/SundaySchoolReports.php:286
-#: v2/templates/people/family-view.php:528
+#: v2/templates/people/family-view.php:529
 msgid "Cancel"
 msgstr "Batal"
 
@@ -1850,21 +1850,21 @@ msgstr "Tutup"
 
 #: DepositSlipEditor.php:219 FamilyView.php:899 FindDepositSlip.php:94
 #: PersonView.php:929 PledgeDelete.php:19
-#: v2/templates/people/family-view.php:516
+#: v2/templates/people/family-view.php:517
 msgid "Confirm Delete"
 msgstr "Konfirmasi penghapusan"
 
 #: FamilyView.php:903 PersonView.php:933
-#: v2/templates/people/family-view.php:520
+#: v2/templates/people/family-view.php:521
 msgid "You are about to delete the profile photo, this procedure is irreversible."
 msgstr "Anda akan menghapus foto profil, langkah ini tidak dapat diulangi"
 
 #: FamilyView.php:905 PersonView.php:935
-#: v2/templates/people/family-view.php:522
+#: v2/templates/people/family-view.php:523
 msgid "Do you want to proceed?"
 msgstr "Apakah anda mau melanjutkan?"
 
-#: FamilyView.php:932 v2/templates/people/family-view.php:567
+#: FamilyView.php:932 v2/templates/people/family-view.php:568
 msgid "You are about to email copy of the family information in pdf to the following emails"
 msgstr "anda akan mengkopi informasi keluarga dalam pdf lewat surel berikut"
 
@@ -2059,7 +2059,7 @@ msgstr "Kembali"
 msgid "Neighbor Families"
 msgstr "Keluarga Tetangga"
 
-#: Menu.php:172 PeopleDashboard.php:137 api/routes/search.php:138
+#: Menu.php:172 PeopleDashboard.php:137 api/routes/search.php:137
 #: members/online-pending-verify.php:24 members/self-register.php:24
 #: members/self-verify-updates.php:24
 #: sundayschool/SundaySchoolDashboard.php:104

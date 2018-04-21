@@ -27,7 +27,7 @@ msgstr "Conferma eliminazione di pagamento automatico"
 #: PersonCustomFieldsEditor.php:315 PersonCustomFieldsEditor.php:384
 #: PersonView.php:940 PledgeDelete.php:53 PropertyList.php:65
 #: PropertyList.php:106 PropertyTypeList.php:46 PropertyTypeList.php:67
-#: PropertyTypeList.php:69 v2/templates/people/family-view.php:529
+#: PropertyTypeList.php:69 v2/templates/people/family-view.php:530
 msgid "Delete"
 msgstr "Elimina"
 
@@ -46,7 +46,7 @@ msgstr "Elimina"
 #: WhyCameEditor.php:105 external/templates/verify/verify-family-info.php:151
 #: sundayschool/SundaySchoolDashboard.php:258
 #: sundayschool/SundaySchoolReports.php:286
-#: v2/templates/people/family-view.php:528
+#: v2/templates/people/family-view.php:529
 msgid "Cancel"
 msgstr "Annulla"
 
@@ -2021,21 +2021,21 @@ msgstr "Chiudi"
 
 #: DepositSlipEditor.php:219 FamilyView.php:899 FindDepositSlip.php:94
 #: PersonView.php:929 PledgeDelete.php:19
-#: v2/templates/people/family-view.php:516
+#: v2/templates/people/family-view.php:517
 msgid "Confirm Delete"
 msgstr "Conferma Cancella"
 
 #: FamilyView.php:903 PersonView.php:933
-#: v2/templates/people/family-view.php:520
+#: v2/templates/people/family-view.php:521
 msgid "You are about to delete the profile photo, this procedure is irreversible."
 msgstr "Stai per eliminare la foto del profilo, questa procedura è irreversibile."
 
 #: FamilyView.php:905 PersonView.php:935
-#: v2/templates/people/family-view.php:522
+#: v2/templates/people/family-view.php:523
 msgid "Do you want to proceed?"
 msgstr "Vuoi Procedere?"
 
-#: FamilyView.php:932 v2/templates/people/family-view.php:567
+#: FamilyView.php:932 v2/templates/people/family-view.php:568
 msgid "You are about to email copy of the family information in pdf to the following emails"
 msgstr "Stai per inviare per via e-mail una copia delle informazioni sulla famiglia in pdf alle seguenti e-mail"
 
@@ -2854,7 +2854,7 @@ msgstr "Aggiorna tutte le coordinate Familiari"
 msgid "Volunteer Opportunities"
 msgstr "Opportunità di volontariato"
 
-#: Menu.php:172 PeopleDashboard.php:137 api/routes/search.php:138
+#: Menu.php:172 PeopleDashboard.php:137 api/routes/search.php:137
 #: members/online-pending-verify.php:24 members/self-register.php:24
 #: members/self-verify-updates.php:24
 #: sundayschool/SundaySchoolDashboard.php:104
@@ -5061,15 +5061,15 @@ msgstr "Passaggio 4: accesso"
 msgid "Login to Upgraded System"
 msgstr "Accedi al sistema aggiornato"
 
-#: UpgradeCRM.php:100
+#: UpgradeCRM.php:97
 msgid "Backup Complete, Ready for Download."
 msgstr "Backup completo, pronto per il download."
 
-#: UpgradeCRM.php:110
+#: UpgradeCRM.php:107
 msgid "Backup Error."
 msgstr "Errore di backup."
 
-#: UpgradeCRM.php:156
+#: UpgradeCRM.php:149
 msgid "Backup Downloaded, Copy on server removed"
 msgstr "Backup scaricato, Copia sul server rimosso"
 
@@ -5509,7 +5509,7 @@ msgid "Family Map"
 msgstr "Mappa della Famiglia"
 
 #: ChurchCRM/Config/Menu/Menu.php:84 Menu.php:229 PeopleDashboard.php:200
-#: api/routes/search.php:173
+#: api/routes/search.php:172
 msgid "Groups"
 msgstr "Gruppi"
 
@@ -7674,23 +7674,23 @@ msgstr "Abbiamo riscontrato un errore durante l'invio con i tuoi dati di verific
 msgid "Visit our Site"
 msgstr "Visita il nostro sito"
 
-#: FamilyView.php:925 v2/templates/people/family-view.php:560
+#: FamilyView.php:925 v2/templates/people/family-view.php:561
 msgid "Request Family Info Verification"
 msgstr "Richiedi la verifica delle informazioni sulla Famiglia"
 
-#: FamilyView.php:928 v2/templates/people/family-view.php:563
+#: FamilyView.php:928 v2/templates/people/family-view.php:564
 msgid "Select how do you want to request the family information to be verified"
 msgstr "Seleziona come desideri richiedere la verifica delle informazioni sulla famiglia"
 
-#: FamilyView.php:949 v2/templates/people/family-view.php:582
+#: FamilyView.php:949 v2/templates/people/family-view.php:583
 msgid "Online Verification"
 msgstr "Verifica online"
 
-#: FamilyView.php:954 v2/templates/people/family-view.php:587
+#: FamilyView.php:954 v2/templates/people/family-view.php:588
 msgid "PDF Report"
 msgstr "Rapporto PDF"
 
-#: FamilyView.php:956 v2/templates/people/family-view.php:589
+#: FamilyView.php:956 v2/templates/people/family-view.php:590
 msgid "Verified In Person"
 msgstr "Verificato di persona"
 
@@ -8138,7 +8138,7 @@ msgstr "Leggenda"
 msgid "assigned"
 msgstr "assegnato"
 
-#: PersonView.php:995
+#: PersonView.php:990
 msgid "Photo"
 msgstr "Foto"
 
@@ -8860,11 +8860,11 @@ msgstr "Numero massimo di indirizzi"
 msgid "Show type of group:"
 msgstr "Mostra il tipo di gruppo:"
 
-#: api/routes/search.php:216
+#: api/routes/search.php:213
 msgid "Deposits"
 msgstr "depositi"
 
-#: api/routes/search.php:246
+#: api/routes/search.php:243
 msgid "Payments"
 msgstr "pagamenti"
 
@@ -9458,6 +9458,8 @@ msgstr "Abilita il menu Email."
 msgid "Enabled Features"
 msgstr "Funzionalità abilitate"
 
+#: api/routes/public/public-register.php:30
+#: api/routes/public/public-register.php:48
 #: api/routes/system/system-custom-menu.php:38
 msgid "Validation Error"
 msgstr "errore di convalida"
@@ -9580,4 +9582,62 @@ msgstr "Ultime Persone"
 #: Menu.php:389
 msgid "Updated Persons"
 msgstr "Persone Aggiornate"
+
+#: ChurchCRM/Config/Menu/Menu.php:202 v2/routes/admin/admin.php:30
+msgid "Custom Menus"
+msgstr "Menu Personalizzati"
+
+#: ChurchCRM/Slim/Middleware/Request/Auth/ManageGroupRoleAuthMiddleware.php:16
+msgid "User must have Manage Groups permission"
+msgstr "L'utente deve disporre dell'autorizzazione Gestione Gruppi"
+
+#: ChurchCRM/Slim/Middleware/Request/FamilyAPIMiddleware.php:16
+#: ChurchCRM/Slim/Middleware/Request/GroupAPIMiddleware.php:16
+#: ChurchCRM/Slim/Middleware/Request/PersonAPIMiddleware.php:16
+msgid "Missing"
+msgstr "Mancante"
+
+#: ChurchCRM/Slim/Middleware/Role/EditRecordsRoleAuthMiddleware.php:14
+msgid "User must have Edit Records permission"
+msgstr "L'utente deve avere l'autorizzazione Modifica Records"
+
+#: ChurchCRM/Slim/Middleware/Role/FinanceRoleAuthMiddleware.php:14
+msgid "User must have Finance permission"
+msgstr "L'utente deve avere l'autorizzazione Finanza"
+
+#: api/routes/people/people-person.php:40
+msgid "Can't delete yourself"
+msgstr "Impossibile eliminare te stesso"
+
+#: api/routes/people/people-person.php:43
+msgid "success"
+msgstr "Successo"
+
+#: api/routes/people/people-person.php:75
+msgid "The role could not be found."
+msgstr "Il ruolo non è stato trovato."
+
+#: v2/templates/admin/menus.php:14
+msgid "Add Menu"
+msgstr "Aggiungi Menu"
+
+#: v2/templates/admin/menus.php:19
+msgid "Menu Name"
+msgstr "Nome Menu"
+
+#: v2/templates/admin/menus.php:22
+msgid "Max 20 char"
+msgstr "Max 20 Caratteri"
+
+#: v2/templates/admin/menus.php:25
+msgid "Link Address"
+msgstr "Indirizzo Link"
+
+#: v2/templates/admin/menus.php:28
+msgid "Start with http:// or https://"
+msgstr "Inizia con http:// o https://"
+
+#: v2/templates/admin/menus.php:42
+msgid "Menus"
+msgstr "Menu"
 
