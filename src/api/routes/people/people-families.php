@@ -16,7 +16,7 @@ use Propel\Runtime\ActiveQuery\Criteria;
 
 $app->group('/families', function () {
 
-    $this->get('/email/none', function ($request, $response, $args) {
+    $this->get('/email/without', function ($request, $response, $args) {
         $families = FamilyQuery::create()->joinWithPerson()->find();
 
         $familiesWithoutEmails = [];
