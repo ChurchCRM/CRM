@@ -126,45 +126,13 @@ $app->group('/group/{groupId:[0-9]+}', function () {
         echo $membership->toJSON();
     });
 
-    $this->post('/roles/{roleID:[0-9]+}', function ($request, $response, $args) {
-        $groupID = $args['groupID'];
-        $roleID = $args['roleID'];
-        $input = (object)$request->getParsedBody();
-        $group = GroupQuery::create()->findOneById($groupID);
-        if (isset($input->groupRoleName)) {
-            $groupRole = ChurchCRM\ListOptionQuery::create()->filterById($group->getRoleListId())->filterByOptionId($roleID)->findOne();
-            $groupRole->setOptionName($input->groupRoleName);
-            $groupRole->save();
 
-            return json_encode(['success' => true]);
-        } elseif (isset($input->groupRoleOrder)) {
-            $groupRole = ChurchCRM\ListOptionQuery::create()->filterById($group->getRoleListId())->filterByOptionId($roleID)->findOne();
-            $groupRole->setOptionSequence($input->groupRoleOrder);
-            $groupRole->save();
 
-            return json_encode(['success' => true]);
-        }
-
-        echo json_encode(['success' => false]);
-    });
-
-    $this->get('/roles', function ($request, $response, $args) {
-        $groupID = $args['groupID'];
-        $group = GroupQuery::create()->findOneById($groupID);
-        $roles = ChurchCRM\ListOptionQuery::create()->filterById($group->getRoleListId())->find();
-        echo $roles->toJSON();
-    });
 
     $this->delete('/roles/{roleID:[0-9]+}', function ($request, $response, $args) {
         $groupID = $args['groupID'];
         $roleID = $args['roleID'];
         echo json_encode($this->GroupService->deleteGroupRole($groupID, $roleID));
-    });
-
-    $this->post('/roles', function ($request, $response, $args) {
-        $groupID = $args['groupID'];
-        $roleName = $request->getParsedBody()['roleName'];
-        echo $this->GroupService->addGroupRole($groupID, $roleName);
     });
 
     $this->post('/defaultRole', function ($request, $response, $args) {
@@ -221,4 +189,6 @@ $app->group('/group/{groupId:[0-9]+}', function () {
             return $response->withStatus(500, gettext('invalid export value'));
         }
     });
+
+
 })->add(new GroupAPIMiddleware());
