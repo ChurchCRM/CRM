@@ -152,16 +152,16 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
         $nEnvelope = "'0'";
     }
 
+    $iCanvasser = 0;
     if ($_SESSION['user']->isCanvasserEnabled()) { // Only take modifications to this field if the current user is a canvasser
         $bOkToCanvass = isset($_POST['OkToCanvass']);
-        $iCanvasser = 0;
         if (array_key_exists('Canvasser', $_POST)) {
             $iCanvasser = InputUtils::LegacyFilterInput($_POST['Canvasser']);
         }
         if ((!$iCanvasser) && array_key_exists('BraveCanvasser', $_POST)) {
             $iCanvasser = InputUtils::LegacyFilterInput($_POST['BraveCanvasser']);
         }
-        if (!$iCanvasser) {
+        if (empty($iCanvasser)) {
             $iCanvasser = 0;
         }
     }
