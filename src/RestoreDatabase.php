@@ -66,7 +66,7 @@ require 'Include/Header.php';
     }
      $("#restorestatus").css("color", "orange");
     $("#restorestatus").html("<?= gettext('Restore Running, Please wait.')?>");
-    $.ajax({
+    $.ajax({ // not converting this to window.CRM.APIRequest because multipart/form-data
       url: window.CRM.root + '/api/database/restore',
       type: 'POST',
       data: formData,

@@ -10,7 +10,7 @@ msgstr ""
 "#-#-#-#-#  messages.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-31 17:25+0000\n"
+"POT-Creation-Date: 2018-04-17 03:41+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,8 +24,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2018-03-31T17:25:15.056Z\n"
-"PO-Revision-Date: 2018-03-31T17:25:15.056Z\n"
+"POT-Creation-Date: 2018-04-17T03:41:21.160Z\n"
+"PO-Revision-Date: 2018-04-17T03:41:21.160Z\n"
 
 #: AutoPaymentClearAccounts.php:24 CatchCreatePayment.php:71
 #: Include/Functions.php:234
@@ -47,7 +47,7 @@ msgstr ""
 #: PersonCustomFieldsEditor.php:315 PersonCustomFieldsEditor.php:384
 #: PersonView.php:940 PledgeDelete.php:53 PropertyList.php:65
 #: PropertyList.php:106 PropertyTypeList.php:46 PropertyTypeList.php:67
-#: PropertyTypeList.php:69 v2/templates/people/family-view.php:529
+#: PropertyTypeList.php:69 v2/templates/people/family-view.php:530
 msgid "Delete"
 msgstr ""
 
@@ -66,7 +66,7 @@ msgstr ""
 #: WhyCameEditor.php:105 external/templates/verify/verify-family-info.php:151
 #: sundayschool/SundaySchoolDashboard.php:258
 #: sundayschool/SundaySchoolReports.php:286
-#: v2/templates/people/family-view.php:528
+#: v2/templates/people/family-view.php:529
 msgid "Cancel"
 msgstr ""
 
@@ -1287,7 +1287,7 @@ msgid "Volunteer Opportunities"
 msgstr ""
 
 #: ChurchCRM/Config/Menu/Menu.php:84 Menu.php:229 PeopleDashboard.php:200
-#: api/routes/search.php:173
+#: api/routes/search.php:172
 msgid "Groups"
 msgstr ""
 
@@ -1422,7 +1422,16 @@ msgstr ""
 msgid "Kiosk Manager"
 msgstr ""
 
-#: ChurchCRM/Config/Menu/Menu.php:206
+#: ChurchCRM/Config/Menu/Menu.php:201 v2/routes/admin/admin.php:19
+#: v2/templates/email/dashboard.php:18
+msgid "Debug"
+msgstr ""
+
+#: ChurchCRM/Config/Menu/Menu.php:202 v2/routes/admin/admin.php:30
+msgid "Custom Menus"
+msgstr ""
+
+#: ChurchCRM/Config/Menu/Menu.php:208
 msgid "Links"
 msgstr ""
 
@@ -1723,6 +1732,26 @@ msgstr ""
 msgid "Calendar access token not found"
 msgstr ""
 
+#: ChurchCRM/Slim/Middleware/Request/Auth/ManageGroupRoleAuthMiddleware.php:16
+msgid "User must have Manage Groups permission"
+msgstr ""
+
+#: ChurchCRM/Slim/Middleware/Request/FamilyAPIMiddleware.php:16
+#: ChurchCRM/Slim/Middleware/Request/GroupAPIMiddleware.php:16
+#: ChurchCRM/Slim/Middleware/Request/PersonAPIMiddleware.php:16
+msgid "Missing"
+msgstr ""
+
+#: ChurchCRM/Slim/Middleware/Request/FamilyAPIMiddleware.php:21
+#: ChurchCRM/Slim/Middleware/Request/GroupAPIMiddleware.php:21
+#: ChurchCRM/Slim/Middleware/Request/PersonAPIMiddleware.php:21
+msgid "not found"
+msgstr ""
+
+#: ChurchCRM/Slim/Middleware/Request/Setting/BaseAuthSettingMiddleware.php:15
+msgid "is disabled"
+msgstr ""
+
 #: ChurchCRM/Slim/Middleware/Role/AddEventsRoleAuthMiddleware.php:14
 msgid "User must have bAddEvent permissions"
 msgstr ""
@@ -1733,6 +1762,14 @@ msgstr ""
 
 #: ChurchCRM/Slim/Middleware/Role/DeleteRecordRoleAuthMiddleware.php:14
 msgid "User must have Delete Records permission"
+msgstr ""
+
+#: ChurchCRM/Slim/Middleware/Role/EditRecordsRoleAuthMiddleware.php:14
+msgid "User must have Edit Records permission"
+msgstr ""
+
+#: ChurchCRM/Slim/Middleware/Role/FinanceRoleAuthMiddleware.php:14
+msgid "User must have Finance permission"
 msgstr ""
 
 #: ChurchCRM/Slim/Middleware/Role/MenuOptionsRoleAuthMiddleware.php:14
@@ -2862,7 +2899,7 @@ msgstr ""
 
 #: DepositSlipEditor.php:219 FamilyView.php:899 FindDepositSlip.php:94
 #: PersonView.php:929 PledgeDelete.php:19
-#: v2/templates/people/family-view.php:516
+#: v2/templates/people/family-view.php:517
 msgid "Confirm Delete"
 msgstr ""
 
@@ -3964,39 +4001,39 @@ msgid " Canvass Entry"
 msgstr ""
 
 #: FamilyView.php:903 PersonView.php:933
-#: v2/templates/people/family-view.php:520
+#: v2/templates/people/family-view.php:521
 msgid ""
 "You are about to delete the profile photo, this procedure is irreversible."
 msgstr ""
 
 #: FamilyView.php:905 PersonView.php:935
-#: v2/templates/people/family-view.php:522
+#: v2/templates/people/family-view.php:523
 msgid "Do you want to proceed?"
 msgstr ""
 
-#: FamilyView.php:925 v2/templates/people/family-view.php:560
+#: FamilyView.php:925 v2/templates/people/family-view.php:561
 msgid "Request Family Info Verification"
 msgstr ""
 
-#: FamilyView.php:928 v2/templates/people/family-view.php:563
+#: FamilyView.php:928 v2/templates/people/family-view.php:564
 msgid "Select how do you want to request the family information to be verified"
 msgstr ""
 
-#: FamilyView.php:932 v2/templates/people/family-view.php:567
+#: FamilyView.php:932 v2/templates/people/family-view.php:568
 msgid ""
 "You are about to email copy of the family information in pdf to the "
 "following emails"
 msgstr ""
 
-#: FamilyView.php:949 v2/templates/people/family-view.php:582
+#: FamilyView.php:949 v2/templates/people/family-view.php:583
 msgid "Online Verification"
 msgstr ""
 
-#: FamilyView.php:954 v2/templates/people/family-view.php:587
+#: FamilyView.php:954 v2/templates/people/family-view.php:588
 msgid "PDF Report"
 msgstr ""
 
-#: FamilyView.php:956 v2/templates/people/family-view.php:589
+#: FamilyView.php:956 v2/templates/people/family-view.php:590
 msgid "Verified In Person"
 msgstr ""
 
@@ -5396,7 +5433,7 @@ msgstr ""
 msgid "Anniversaries of the day"
 msgstr ""
 
-#: Menu.php:172 PeopleDashboard.php:137 api/routes/search.php:138
+#: Menu.php:172 PeopleDashboard.php:137 api/routes/search.php:137
 #: members/online-pending-verify.php:24 members/self-register.php:24
 #: members/self-verify-updates.php:24
 #: sundayschool/SundaySchoolDashboard.php:104
@@ -5988,7 +6025,7 @@ msgstr ""
 msgid "Assign a New Volunteer Opportunity"
 msgstr ""
 
-#: PersonView.php:995
+#: PersonView.php:990
 msgid "Photo"
 msgstr ""
 
@@ -7045,15 +7082,15 @@ msgstr ""
 msgid "Login to Upgraded System"
 msgstr ""
 
-#: UpgradeCRM.php:100
+#: UpgradeCRM.php:97
 msgid "Backup Complete, Ready for Download."
 msgstr ""
 
-#: UpgradeCRM.php:110
+#: UpgradeCRM.php:107
 msgid "Backup Error."
 msgstr ""
 
-#: UpgradeCRM.php:156
+#: UpgradeCRM.php:149
 msgid "Backup Downloaded, Copy on server removed"
 msgstr ""
 
@@ -7168,19 +7205,19 @@ msgstr ""
 msgid "Please confirm removal of user status from:"
 msgstr ""
 
-#: UserList.php:147 UserList.php:168
+#: UserList.php:144 UserList.php:165
 msgid "Action Confirmation"
 msgstr ""
 
-#: UserList.php:149
+#: UserList.php:146
 msgid "Please confirm reset failed login count"
 msgstr ""
 
-#: UserList.php:170
+#: UserList.php:167
 msgid "Please confirm the password reset of this user"
 msgstr ""
 
-#: UserList.php:180
+#: UserList.php:177
 msgid "Password reset for"
 msgstr ""
 
@@ -7348,50 +7385,61 @@ msgstr ""
 msgid "Your cart has been successfully emptied"
 msgstr ""
 
-#: api/routes/people/people-families.php:128
-#: api/routes/people/people-families.php:140
-#: api/routes/people/people-families.php:194
-msgid "FamilyId"
-msgstr ""
-
-#: api/routes/people/people-families.php:128
-#: api/routes/people/people-families.php:140
-#: api/routes/people/people-families.php:194
-msgid "not found"
-msgstr ""
-
-#: api/routes/people/people-families.php:169
+#: api/routes/people/people-families.php:102
 msgid "Deactivated the Family"
 msgstr ""
 
-#: api/routes/people/people-families.php:171
+#: api/routes/people/people-families.php:104
 msgid "Activated the Family"
 msgstr ""
 
-#: api/routes/people/people-groups.php:125
+#: api/routes/people/people-groups.php:135
 msgid "Deleted from group"
 msgstr ""
 
-#: api/routes/people/people-groups.php:154
+#: api/routes/people/people-groups.php:164
 msgid "Added to group"
 msgstr ""
 
-#: api/routes/people/people-groups.php:247
-#: api/routes/people/people-groups.php:264
+#: api/routes/people/people-groups.php:250
+#: api/routes/people/people-groups.php:267
 msgid "invalid group id"
 msgstr ""
 
-#: api/routes/people/people-groups.php:251
+#: api/routes/people/people-groups.php:254
 msgid "invalid status value"
 msgstr ""
 
-#: api/routes/people/people-groups.php:268
+#: api/routes/people/people-groups.php:271
 msgid "invalid export value"
+msgstr ""
+
+#: api/routes/people/people-person.php:40
+msgid "Can't delete yourself"
+msgstr ""
+
+#: api/routes/people/people-person.php:43
+msgid "success"
+msgstr ""
+
+#: api/routes/people/people-person.php:75
+msgid "The role could not be found."
+msgstr ""
+
+#: api/routes/people/people-person.php:79
+msgid "The role is already assigned."
+msgstr ""
+
+#: api/routes/people/people-person.php:84
+msgid "The role is successfully assigned."
+msgstr ""
+
+#: api/routes/people/people-person.php:86
+msgid "The role could not be assigned."
 msgstr ""
 
 #: api/routes/people/people-properties.php:22
 #: api/routes/people/people-properties.php:66
-#: api/routes/people/people-roles.php:31
 msgid "The record could not be found."
 msgstr ""
 
@@ -7417,16 +7465,10 @@ msgstr ""
 msgid "The property could not be unassigned."
 msgstr ""
 
-#: api/routes/people/people-roles.php:35
-msgid "The role is already assigned."
-msgstr ""
-
-#: api/routes/people/people-roles.php:40
-msgid "The role is successfully assigned."
-msgstr ""
-
-#: api/routes/people/people-roles.php:42
-msgid "The role could not be assigned."
+#: api/routes/public/public-register.php:30
+#: api/routes/public/public-register.php:48
+#: api/routes/system/system-custom-menu.php:38
+msgid "Validation Error"
 msgstr ""
 
 #: api/routes/public/public-user.php:27
@@ -7445,16 +7487,12 @@ msgstr ""
 msgid "Persons"
 msgstr ""
 
-#: api/routes/search.php:216
+#: api/routes/search.php:213
 msgid "Deposits"
 msgstr ""
 
-#: api/routes/search.php:246
+#: api/routes/search.php:243
 msgid "Payments"
-msgstr ""
-
-#: api/routes/system/system-custom-menu.php:38
-msgid "Validation Error"
 msgstr ""
 
 #: api/routes/system/system-custom-menu.php:46
@@ -7789,7 +7827,7 @@ msgid "Students not in a Sunday School Class"
 msgstr ""
 
 #: sundayschool/SundaySchoolDashboard.php:247
-#: sundayschool/SundaySchoolDashboard.php:260
+#: sundayschool/SundaySchoolDashboard.php:260 v2/templates/admin/menus.php:32
 msgid "Add"
 msgstr ""
 
@@ -7873,6 +7911,58 @@ msgstr ""
 msgid "Debug Email Connection"
 msgstr ""
 
+#: v2/templates/admin/debug.php:17
+msgid "System Information"
+msgstr ""
+
+#: v2/templates/admin/debug.php:22
+msgid "Software Version"
+msgstr ""
+
+#: v2/templates/admin/debug.php:30
+msgid "Valid Mail Server Settings"
+msgstr ""
+
+#: v2/templates/admin/debug.php:40
+msgid "Database"
+msgstr ""
+
+#: v2/templates/admin/debug.php:45 v2/templates/admin/debug.php:49
+msgid "Database Version"
+msgstr ""
+
+#: v2/templates/admin/debug.php:90
+msgid "Application Prerequisites"
+msgstr ""
+
+#: v2/templates/admin/debug.php:107
+msgid "WebServer Modules"
+msgstr ""
+
+#: v2/templates/admin/menus.php:14
+msgid "Add Menu"
+msgstr ""
+
+#: v2/templates/admin/menus.php:19
+msgid "Menu Name"
+msgstr ""
+
+#: v2/templates/admin/menus.php:22
+msgid "Max 20 char"
+msgstr ""
+
+#: v2/templates/admin/menus.php:25
+msgid "Link Address"
+msgstr ""
+
+#: v2/templates/admin/menus.php:28
+msgid "Start with http:// or https://"
+msgstr ""
+
+#: v2/templates/admin/menus.php:42
+msgid "Menus"
+msgstr ""
+
 #: v2/templates/admin/user.php:20
 msgid "Username"
 msgstr ""
@@ -7916,10 +8006,6 @@ msgstr ""
 
 #: v2/templates/email/dashboard.php:16
 msgid "Find Duplicate Emails"
-msgstr ""
-
-#: v2/templates/email/dashboard.php:18
-msgid "Debug"
 msgstr ""
 
 #: v2/templates/email/dashboard.php:30

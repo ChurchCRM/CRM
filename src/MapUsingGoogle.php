@@ -161,8 +161,6 @@ $iGroupID = InputUtils::LegacyFilterInput($_GET['GroupID'], 'int');
             google.maps.event.addListener(marker, 'click', function () {
                 infowindow.setContent(infowindow_content);
                 infowindow.open(map, marker);
-                //set image/gravtar
-                $('.profile-user-img').initial();
             });
         }
 
@@ -194,7 +192,7 @@ $iGroupID = InputUtils::LegacyFilterInput($_GET['GroupID'], 'int');
                     //this helps to add head people persons details: otherwise doesn't seems to populate
                     $class = $family->getHeadPeople()[0];
                     $family->getHeadPeople()[0];
-                    $photoFileThumb = SystemURLs::getRootPath() . '/api/families/' . $family->getId() . '/photo';
+                    $photoFileThumb = SystemURLs::getRootPath() . '/api/family/' . $family->getId() . '/photo';
                     $arr['ID'] = $family->getId();
                     $arr['Name'] = $family->getName();
                     $arr['Salutation'] = $family->getSaluation();

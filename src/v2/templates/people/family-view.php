@@ -45,7 +45,7 @@ $familyAddress = $family->getAddress();
                     </div>
                     <div class="box-body">
                         <div class="image-container">
-                            <img src="<?= SystemURLs::getRootPath() ?>/api/families/<?= $family->getId() ?>/photo"
+                            <img src="<?= SystemURLs::getRootPath() ?>/api/family/<?= $family->getId() ?>/photo"
                                  class="img-responsive profile-user-img profile-family-img"/>
                             <div class="after">
                                 <div class="buttons">
@@ -499,6 +499,7 @@ $familyAddress = $family->getAddress();
 
 
 
+<script src="<?= SystemURLs::getRootPath() ?>/skin/js/MemberView.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/FamilyView.js"></script>
 
 
@@ -535,7 +536,7 @@ $familyAddress = $family->getAddress();
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     $(document).ready(function () {
         window.CRM.photoUploader = $("#photoUploader").PhotoUploader({
-            url: window.CRM.root + "/api/families/" + window.CRM.currentFamily + "/photo",
+            url: window.CRM.root + "/api/family/" + window.CRM.currentFamily + "/photo",
             maxPhotoSize: window.CRM.maxUploadSize,
             photoHeight: <?= SystemConfig::getValue("iPhotoHeight") ?>,
             photoWidth: <?= SystemConfig::getValue("iPhotoWidth") ?>,

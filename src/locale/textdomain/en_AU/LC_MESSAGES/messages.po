@@ -8,7 +8,7 @@ msgstr ""
 "Language: en-au\n"
 
 #: AutoPaymentClearAccounts.php:24 CatchCreatePayment.php:71
-#: Include/Functions.php:233
+#: Include/Functions.php:234
 msgid "Cannot execute query."
 msgstr "Unable to execute query"
 
@@ -22,8 +22,8 @@ msgstr "Unable to execute query"
 #: FundRaiserEditor.php:200 ListEvents.php:241 PaddleNumList.php:55
 #: PersonCustomFieldsEditor.php:315 PersonCustomFieldsEditor.php:384
 #: PersonView.php:940 PledgeDelete.php:53 PropertyList.php:65
-#: PropertyList.php:106 PropertyTypeList.php:39 PropertyTypeList.php:60
-#: PropertyTypeList.php:62 v2/templates/people/family-view.php:529
+#: PropertyList.php:106 PropertyTypeList.php:46 PropertyTypeList.php:67
+#: PropertyTypeList.php:69 v2/templates/people/family-view.php:530
 msgid "Delete"
 msgstr "Delete"
 
@@ -42,7 +42,7 @@ msgstr "Delete"
 #: WhyCameEditor.php:105 external/templates/verify/verify-family-info.php:151
 #: sundayschool/SundaySchoolDashboard.php:258
 #: sundayschool/SundaySchoolReports.php:286
-#: v2/templates/people/family-view.php:528
+#: v2/templates/people/family-view.php:529
 msgid "Cancel"
 msgstr "Cancel"
 
@@ -63,10 +63,10 @@ msgstr "Save"
 #: CSVImport.php:271 ChurchCRM/Config/Menu/Menu.php:100
 #: DirectoryReports.php:82 DonatedItemEditor.php:186 DonatedItemEditor.php:237
 #: FamilyEditor.php:1089 GroupEditor.php:94 GroupList.php:36 GroupView.php:40
-#: Include/CountryDropDown.php:6 Include/Functions.php:855
-#: Include/Functions.php:908 MapUsingGoogle.php:96 MapUsingGoogle.php:120
+#: Include/CountryDropDown.php:6 Include/Functions.php:856
+#: Include/Functions.php:909 MapUsingGoogle.php:96 MapUsingGoogle.php:120
 #: PaddleNumEditor.php:176 PersonEditor.php:782 PersonEditor.php:798
-#: PersonEditor.php:1137 PrintView.php:265 PrintView.php:275
+#: PersonEditor.php:1137 PrintView.php:264 PrintView.php:274
 #: SelectDelete.php:156 SelectList.php:35 SelectList.php:45 SelectList.php:61
 #: SelectList.php:1098 SelectList.php:1169 SystemSettings.php:214
 #: eGive.php:341

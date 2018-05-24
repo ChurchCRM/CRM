@@ -182,7 +182,7 @@ $bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() || ($_SESSION['user']->i
         <div class="box box-primary">
             <div class="box-body">
                 <div class="image-container">
-                    <img src="<?= SystemURLs::getRootPath() ?>/api/families/<?= $family->getId() ?>/photo" class="img-responsive profile-user-img profile-family-img"/>
+                    <img src="<?= SystemURLs::getRootPath() ?>/api/family/<?= $family->getId() ?>/photo" class="img-responsive profile-user-img profile-family-img"/>
                     <?php if ($bOkToEdit): ?>
                         <div class="after">
                             <div class="buttons">
@@ -413,7 +413,7 @@ $bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() || ($_SESSION['user']->i
                                            data-person_id="<?= $person->getId() ?>" data-view="family">
                                     <span class="fa-stack">
                                         <i class="fa fa-square fa-stack-2x"></i>
-                                        <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+                                        <i class="fa fa-trash-o fa-stack-1x fa-inverse btn-danger"></i>
                                     </span>
                                         </a>
                                         <?php
@@ -982,11 +982,9 @@ $bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() || ($_SESSION['user']->i
                 message: '<p style="color: red">' + popupMessage + '</p>',
                 callback: function (result) {
                     if (result) {
-                        $.ajax({
+                        window.CRM.APIRequest({
                             method: "POST",
-                            url: window.CRM.root + "/api/families/" + window.CRM.currentFamily + "/activate/" + !window.CRM.currentActive,
-                            dataType: "json",
-                            encode: true
+                            path: "families/" + window.CRM.currentFamily + "/activate/" + !window.CRM.currentActive
                         }).done(function (data) {
                             if (data.success == true)
                                 window.location.href = window.CRM.root + "/FamilyView.php?FamilyID=" + window.CRM.currentFamily;
@@ -998,7 +996,7 @@ $bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() || ($_SESSION['user']->i
         });
 
         window.CRM.photoUploader = $("#photoUploader").PhotoUploader({
-            url: window.CRM.root + "/api/families/" + window.CRM.currentFamily + "/photo",
+            url: window.CRM.root + "/api/family/" + window.CRM.currentFamily + "/photo",
             maxPhotoSize: window.CRM.maxUploadSize,
             photoHeight: <?= SystemConfig::getValue("iPhotoHeight") ?>,
             photoWidth: <?= SystemConfig::getValue("iPhotoWidth") ?>,
@@ -1007,7 +1005,7 @@ $bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() || ($_SESSION['user']->i
             }
         });
 
-        contentExists(window.CRM.root + "/api/families/" + window.CRM.currentFamily + "/photo", function (success) {
+        contentExists(window.CRM.root + "/api/family/" + window.CRM.currentFamily + "/photo", function (success) {
             if (success) {
                 $("#view-larger-image-btn").removeClass('hide');
             }

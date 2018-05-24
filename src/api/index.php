@@ -38,6 +38,7 @@ require __DIR__ . '/routes/finance/finance-deposits.php';
 require __DIR__ . '/routes/finance/finance-payments.php';
 
 // People (families / persons)
+require __DIR__ . '/routes/people/people-family.php';
 require __DIR__ . '/routes/people/people-families.php';
 require __DIR__ . '/routes/people/people-groups.php';
 require __DIR__ . '/routes/people/people-person.php';
@@ -49,9 +50,11 @@ require __DIR__ . '/routes/public/public.php';
 require __DIR__ . '/routes/public/public-data.php';
 require __DIR__ . '/routes/public/public-calendar.php';
 require __DIR__ . '/routes/public/public-user.php';
+require __DIR__ . '/routes/public/public-register.php';
 
 // system routes
 require __DIR__ . '/routes/system/system.php';
+require __DIR__ . '/routes/system/system-config.php';
 require __DIR__ . '/routes/system/system-custom-fields.php';
 require __DIR__ . '/routes/system/system-database.php';
 require __DIR__ . '/routes/system/system-debug.php';

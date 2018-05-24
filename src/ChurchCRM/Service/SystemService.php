@@ -180,11 +180,11 @@ class SystemService
 
     public static function copyBackupToExternalStorage()
     {
+        $params = new \stdClass();
+        $params->iArchiveType = 3;
         if (strcasecmp(SystemConfig::getValue('sExternalBackupType'), 'WebDAV') == 0) {
             if (SystemConfig::getValue('sExternalBackupUsername') && SystemConfig::getValue('sExternalBackupPassword') && SystemConfig::getValue('sExternalBackupEndpoint')) {
-                $params = new \stdClass();
-                $params->iArchiveType = 3;
-                $backup = $this->getDatabaseBackup($params);
+                $backup = self::getDatabaseBackup($params);
                 $backup->credentials = SystemConfig::getValue('sExternalBackupUsername') . ':' . SystemConfig::getValue('sExternalBackupPassword');
                 $backup->filesize = filesize($backup->saveTo);
                 $fh = fopen($backup->saveTo, 'r');
@@ -204,7 +204,7 @@ class SystemService
             }
         } elseif (strcasecmp(SystemConfig::getValue('sExternalBackupType'), 'Local') == 0) {
             try {
-                $backup = $this->getDatabaseBackup($params);
+                $backup = self::getDatabaseBackup($params);
                 exec('mv ' . $backup->saveTo . ' ' . SystemConfig::getValue('sExternalBackupEndpoint'));
 
                 return $backup;
@@ -284,7 +284,7 @@ class SystemService
         return $results[0]['ver_version'];
     }
 
-    public function getDBServerVersion()
+    public static function getDBServerVersion()
     {
       try{
         return Propel::getServiceContainer()->getConnection()->getAttribute(PDO::ATTR_SERVER_VERSION);
@@ -316,7 +316,7 @@ class SystemService
             'Page Size |' . $data->pageSize->height . 'x' . $data->pageSize->width . "\r\n" .
             'Platform Information | ' . php_uname($mode = 'a') . "\r\n" .
             'PHP Version | ' . phpversion() . "\r\n" .
-            'SQL Version | ' . $this->getDBServerVersion() . "\r\n" .
+            'SQL Version | ' . self::getDBServerVersion() . "\r\n" .
             'ChurchCRM Version |' . $_SESSION['sSoftwareInstalledVersion'] . "\r\n" .
             'Reporting Browser |' . $_SERVER['HTTP_USER_AGENT'] . "\r\n".
             'Prerequisite Status |' . ( AppIntegrityService::arePrerequisitesMet() ? "All Prerequisites met" : "Missing Prerequisites: " .json_encode(AppIntegrityService::getUnmetPrerequisites()))."\r\n".
