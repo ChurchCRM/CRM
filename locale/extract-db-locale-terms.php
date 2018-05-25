@@ -38,6 +38,7 @@ foreach ($stringFiles as $stringFile) {
 
 $stringFile = $stringsDir.'/settings-countries.php';
 require '../src/ChurchCRM/data/Countries.php';
+require '../src/ChurchCRM/data/Country.php';
 file_put_contents($stringFile, "<?php\r\n", FILE_APPEND);
 
 foreach (ChurchCRM\data\Countries::getNames() as $country) {
