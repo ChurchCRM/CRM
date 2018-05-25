@@ -43,6 +43,16 @@ class Person extends BasePerson implements iPhoto
     {
         return $this->getGender() == 2;
     }
+    
+    public function getGenderName()
+    {
+      switch (strtolower($this->getGender())) {
+        case 1:
+          return gettext('Male');
+        case 2:
+          return gettext('Female');
+      }
+    }
 
     public function hideAge()
     {
