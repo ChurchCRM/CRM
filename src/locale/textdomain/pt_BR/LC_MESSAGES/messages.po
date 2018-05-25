@@ -161,6 +161,7 @@ msgstr "e-mail"
 msgid "Credit Card"
 msgstr "Cartão de crédito"
 
+#. Maybe it will be better understood by Brazilian as "Forma de pagamento via Cartão de Crédito pela Vanco"
 #: AutoPaymentEditor.php:956
 #, fuzzy
 msgid "Vanco Credit Card Method"

@@ -319,7 +319,7 @@ msgstr "Rol Familiar"
 
 #: CSVExport.php:175
 msgid "Depends whether using person or family output method"
-msgstr "Depende del método de salida ya sea por individuo o por familia"
+msgstr "Depende del método de salida ya sea por persona o por familia"
 
 #: CSVExport.php:188
 msgid "Custom Field Selection"
@@ -1730,7 +1730,7 @@ msgstr "Miembros de la Familia"
 
 #: FamilyEditor.php:933
 msgid "You may create family members now or add them later.  All entries will become <i>new</i> person records."
-msgstr "Usted puede crear miembros de familia ahora o añadirlos posteriormente, todas las entradas serán consideradas como nuevos individuos"
+msgstr "Usted puede crear miembros de familia ahora o añadirlos posteriormente, todas las entradas serán consideradas como nuevas personas."
 
 #: FamilyEditor.php:939
 msgid "First"
@@ -3069,7 +3069,7 @@ msgstr "Seleccionar"
 
 #: PersonCustomFieldsEditor.php:25
 msgid "Custom Person Fields Editor"
-msgstr "Editor de campos personalizados de Individuo"
+msgstr "Editor de Campos Personalizados de Persona"
 
 #: PersonCustomFieldsEditor.php:275
 msgid "Warning:  By deleting this field, you will irrevokably lose all person data assigned for this field!"
