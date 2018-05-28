@@ -47,4 +47,3 @@ src/tmp_attach
 src/logs/*.log
 
 error.log
-src/UserList.php.orig
