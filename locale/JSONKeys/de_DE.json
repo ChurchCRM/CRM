@@ -1252,6 +1252,7 @@
     "User permission to export CSV files": "Benutzer darf CSV-Dateien exportieren.",
     "User permission to use IST Address Verification": "Benutzer darf IST Adressverfikation nutzen",
     "Allow user to add new event": "Benutzer darf neue Ereignisse hinzufügen",
+    "Allow user to see member privacy data, e.g. Birth Year, Age.": "Benutzer darf private Daten wie Geburtsdatum, Alter, sehen",
     "Done": "Erledigt",
     "Assigned": "Zugewiesen",
     "Yearly on": "Jährlich am",

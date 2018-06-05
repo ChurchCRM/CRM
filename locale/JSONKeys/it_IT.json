@@ -1466,6 +1466,7 @@
     "User permission to export CSV files": "Autorizzazione utente per esportare file CSV",
     "User permission to use IST Address Verification": "Autorizzazione dell'utente a utilizzare la verifica dell'indirizzo IST",
     "Allow user to add new event": "Consenti all'utente di aggiungere un nuovo evento",
+    "Allow user to see member privacy data, e.g. Birth Year, Age.": "Consenti all'utente di visualizzare i dati sulla privacy dei membri, ad es. Anno di nascita, Età.",
     "Canvass Progress Report": "Rapporto sui progressi dei Canvass",
     "Done": "Fatto",
     "Assigned": "Assegnato",
