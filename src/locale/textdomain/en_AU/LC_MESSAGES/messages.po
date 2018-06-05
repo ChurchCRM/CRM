@@ -30,19 +30,19 @@ msgstr "Delete"
 #: AutoPaymentDelete.php:64 AutoPaymentEditor.php:787 BatchWinnerEntry.php:112
 #: CanvassEditor.php:239 Checkin.php:167 Checkin.php:274 Checkin.php:287
 #: DirectoryReports.php:286 DonatedItemEditor.php:297 EventNames.php:231
-#: FamilyEditor.php:1119 FamilyView.php:910 FinancialReports.php:69
-#: FundRaiserEditor.php:143 GroupPropsEditor.php:168 GroupReports.php:82
-#: GroupReports.php:151 LettersAndLabels.php:83 ManageEnvelopes.php:135
-#: MemberRoleChange.php:119 MemberRoleChange.php:121 NoteDelete.php:67
-#: NoteEditor.php:135 PersonEditor.php:1231 PersonView.php:939
-#: PledgeDelete.php:54 PropertyEditor.php:169 PropertyTypeEditor.php:114
-#: Register.php:56 ReminderReport.php:52 SettingsIndividual.php:114
-#: SettingsIndividual.php:160 SettingsUser.php:100 SettingsUser.php:160
-#: TaxReport.php:55 UserEditor.php:459 UserEditor.php:562
-#: WhyCameEditor.php:105 external/templates/verify/verify-family-info.php:151
+#: external/templates/verify/verify-family-info.php:151 FamilyEditor.php:1119
+#: FamilyView.php:910 FinancialReports.php:69 FundRaiserEditor.php:143
+#: GroupPropsEditor.php:168 GroupReports.php:82 GroupReports.php:151
+#: LettersAndLabels.php:83 ManageEnvelopes.php:135 MemberRoleChange.php:119
+#: MemberRoleChange.php:121 NoteDelete.php:67 NoteEditor.php:135
+#: PersonEditor.php:1231 PersonView.php:939 PledgeDelete.php:54
+#: PropertyEditor.php:169 PropertyTypeEditor.php:114 Register.php:56
+#: ReminderReport.php:52 SettingsIndividual.php:114 SettingsIndividual.php:160
+#: SettingsUser.php:100 SettingsUser.php:160
 #: sundayschool/SundaySchoolDashboard.php:258
-#: sundayschool/SundaySchoolReports.php:286
-#: v2/templates/people/family-view.php:529
+#: sundayschool/SundaySchoolReports.php:286 TaxReport.php:55 UserEditor.php:459
+#: UserEditor.php:562 v2/templates/people/family-view.php:529
+#: WhyCameEditor.php:105
 msgid "Cancel"
 msgstr "Cancel"
 
@@ -60,8 +60,8 @@ msgid "Save"
 msgstr "Save"
 
 #: AutoPaymentEditor.php:804 BatchWinnerEntry.php:83 BatchWinnerEntry.php:95
-#: CSVImport.php:271 ChurchCRM/Config/Menu/Menu.php:100
-#: DirectoryReports.php:82 DonatedItemEditor.php:186 DonatedItemEditor.php:237
+#: ChurchCRM/Config/Menu/Menu.php:100 CSVImport.php:271 DirectoryReports.php:82
+#: DonatedItemEditor.php:186 DonatedItemEditor.php:237 eGive.php:341
 #: FamilyEditor.php:1089 GroupEditor.php:94 GroupList.php:36 GroupView.php:40
 #: Include/CountryDropDown.php:6 Include/Functions.php:856
 #: Include/Functions.php:909 MapUsingGoogle.php:96 MapUsingGoogle.php:120
@@ -69,7 +69,6 @@ msgstr "Save"
 #: PersonEditor.php:1137 PrintView.php:264 PrintView.php:274
 #: SelectDelete.php:156 SelectList.php:35 SelectList.php:45 SelectList.php:61
 #: SelectList.php:1098 SelectList.php:1169 SystemSettings.php:214
-#: eGive.php:341
 msgid "Unassigned"
 msgstr "Unassigned"
 
@@ -84,33 +83,30 @@ msgstr "None"
 msgid "inactive"
 msgstr "inactive"
 
-#: AutoPaymentEditor.php:914 CSVExport.php:102 CSVImport.php:219
-#: CartToFamily.php:245 DirectoryReports.php:250 FamilyEditor.php:672
-#: PersonEditor.php:863 Register.php:44
-#: external/templates/registration/family-register.php:41
-#: queryparameteroptions_qpo.php:7
+#: AutoPaymentEditor.php:914 CartToFamily.php:245 CSVExport.php:102
+#: CSVImport.php:219 DirectoryReports.php:250
+#: external/templates/registration/family-register.php:41 FamilyEditor.php:672
+#: PersonEditor.php:863 Register.php:44 queryparameteroptions_qpo.php:7
 msgid "City"
 msgstr "Suburb"
 
-#: AutoPaymentEditor.php:919 CSVExport.php:107 CSVImport.php:220
-#: CartToFamily.php:250 DirectoryReports.php:254 FamilyEditor.php:679
-#: PersonEditor.php:883 Register.php:45
-#: external/templates/registration/family-register.php:44
-#: queryparameteroptions_qpo.php:6
+#: AutoPaymentEditor.php:919 CartToFamily.php:250 CSVExport.php:107
+#: CSVImport.php:220 DirectoryReports.php:254
+#: external/templates/registration/family-register.php:44 FamilyEditor.php:679
+#: PersonEditor.php:883 Register.php:45 queryparameteroptions_qpo.php:6
 msgid "State"
 msgstr "State"
 
-#: AutoPaymentEditor.php:930 CSVExport.php:122 CSVImport.php:222
-#: CartToFamily.php:270 FamilyEditor.php:699 PersonEditor.php:928
-#: Register.php:47
+#: AutoPaymentEditor.php:930 CartToFamily.php:270 CSVExport.php:122
+#: CSVImport.php:222 FamilyEditor.php:699 PersonEditor.php:928 Register.php:47
 msgid "Country"
 msgstr "Country"
 
-#: AutoPaymentEditor.php:925 CSVExport.php:112 CSVImport.php:221
-#: CartToFamily.php:262 DirectoryReports.php:258 FamilyEditor.php:689
-#: PersonEditor.php:906 Register.php:46
+#: AutoPaymentEditor.php:925 CartToFamily.php:262 CSVExport.php:112
+#: CSVImport.php:221 DirectoryReports.php:258
 #: external/templates/registration/family-register.php:51
-#: external/templates/verify/enter-info.php:29
+#: external/templates/verify/enter-info.php:29 FamilyEditor.php:689
+#: PersonEditor.php:906 Register.php:46
 #, fuzzy
 msgid "Zip"
 msgstr "Postcode"
@@ -127,7 +123,7 @@ msgstr "Personal Mobile"
 msgid "Check"
 msgstr "Cheque"
 
-#: Reports/ConfirmReport.php:130 Reports/ConfirmReportEmail.php:135
+#: Reports/ConfirmReportEmail.php:135 Reports/ConfirmReport.php:130
 msgid "City, State, Zip"
 msgstr "Suburb, State, Post Code"
 
