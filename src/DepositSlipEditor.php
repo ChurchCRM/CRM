@@ -42,6 +42,9 @@ if ($iDepositSlipID) {
         RedirectUtils::Redirect('Menu.php');
         exit;
     }
+} elseif ($iDepositSlipID == 0) {
+    RedirectUtils::Redirect('FindDepositSlip.php');
+    exit;
 } else {
     RedirectUtils::Redirect('Menu.php');
 }
