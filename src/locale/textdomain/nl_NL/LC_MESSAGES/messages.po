@@ -299,7 +299,7 @@ msgstr "Enveloppe"
 msgid "Work/Other Email"
 msgstr "Werk/Andere Email"
 
-#: CSVExport.php:152 CSVExport.php:362 CSVImport.php:229 PersonEditor.php:1150
+#: CSVExport.php:152 CSVExport.php:371 CSVImport.php:229 PersonEditor.php:1150
 #: PrintView.php:304
 msgid "Membership Date"
 msgstr "Lidmaatschapsdatum"
@@ -312,84 +312,84 @@ msgstr "Geboorte / Jubileum Datum"
 msgid "Age / Years Married"
 msgstr "Leeftijd / Aantal Jaren Getrouwd"
 
-#: CSVExport.php:172 CSVExport.php:293 CartView.php:276 OptionManager.php:62
+#: CSVExport.php:172 CSVExport.php:302 CartView.php:276 OptionManager.php:62
 #: PersonEditor.php:780 PrintView.php:269 queryparameters_qrp.php:5
 msgid "Family Role"
 msgstr "Familie Rol"
 
-#: CSVExport.php:175
+#: CSVExport.php:182
 msgid "Depends whether using person or family output method"
 msgstr "Afhankelijk van het gebruik van het persoon of familie uitvoer methode"
 
-#: CSVExport.php:188
+#: CSVExport.php:197
 msgid "Custom Field Selection"
 msgstr "Aangepaste Veld Selectie"
 
-#: CSVExport.php:196
+#: CSVExport.php:205
 msgid "Custom Person Fields"
 msgstr "Aanpasbare Persoons-Veld"
 
-#: CSVExport.php:214
+#: CSVExport.php:223
 msgid "Custom Family Fields"
 msgstr "Aanpasbare familie Velden"
 
-#: CSVExport.php:241 FinancialReports.php:108
+#: CSVExport.php:250 FinancialReports.php:108
 msgid "Filters"
 msgstr "Filters"
 
-#: CSVExport.php:247
+#: CSVExport.php:256
 msgid "Records to export"
 msgstr "Records voor export"
 
-#: CSVExport.php:256
+#: CSVExport.php:265
 msgid "Based on filters below.."
 msgstr "Gebaseerd op onderstaande filters.."
 
-#: CSVExport.php:259
+#: CSVExport.php:268
 msgid "People in Cart (filters ignored)"
 msgstr "Mandje met Personen (filters genegeerd) "
 
-#: CSVExport.php:285 CSVExport.php:310 CSVExport.php:346
+#: CSVExport.php:294 CSVExport.php:319 CSVExport.php:355
 #: DirectoryReports.php:80 DirectoryReports.php:98 DirectoryReports.php:116
 #: DirectoryReports.php:134 DirectoryReports.php:153 FinancialReports.php:259
 msgid "Use Ctrl Key to select multiple"
 msgstr "Druk op Ctrl toets om veelvouden te selecteren"
 
-#: CSVExport.php:327
+#: CSVExport.php:336
 msgid "Don't Filter"
 msgstr "Niet filteren"
 
-#: CSVExport.php:328 ChurchCRM/Dashboard/PersonDemographicDashboardItem.php:26
-#: FamilyEditor.php:990 PeopleDashboard.php:310 PeopleDashboard.php:355
-#: PersonEditor.php:630 PrintView.php:244 PrintView.php:363 SelectList.php:555
-#: SelectList.php:1140
+#: CSVExport.php:337 ChurchCRM/Dashboard/PersonDemographicDashboardItem.php:26
+#: ChurchCRM/model/ChurchCRM/Person.php:51 FamilyEditor.php:990
+#: PeopleDashboard.php:310 PeopleDashboard.php:355 PersonEditor.php:630
+#: PrintView.php:244 PrintView.php:363 SelectList.php:555 SelectList.php:1140
 #: external/templates/registration/family-register-members.php:59
 #: queryparameteroptions_qpo.php:2
 msgid "Male"
 msgstr "Man"
 
-#: CSVExport.php:329 ChurchCRM/Dashboard/PersonDemographicDashboardItem.php:29
-#: FamilyEditor.php:993 PeopleDashboard.php:323 PeopleDashboard.php:368
-#: PersonEditor.php:633 PrintView.php:247 PrintView.php:363 SelectList.php:561
-#: SelectList.php:1141
+#: CSVExport.php:338 ChurchCRM/Dashboard/PersonDemographicDashboardItem.php:29
+#: ChurchCRM/model/ChurchCRM/Person.php:53 FamilyEditor.php:993
+#: PeopleDashboard.php:323 PeopleDashboard.php:368 PersonEditor.php:633
+#: PrintView.php:247 PrintView.php:363 SelectList.php:561 SelectList.php:1141
 #: external/templates/registration/family-register-members.php:60
 #: queryparameteroptions_qpo.php:3
 msgid "Female"
 msgstr "Vrouw"
 
-#: CSVExport.php:338 DirectoryReports.php:96
+#: CSVExport.php:347 DirectoryReports.php:96
 msgid "Group Membership"
 msgstr "Groep Lidmaatschap"
 
-#: CSVExport.php:370 CSVExport.php:387 CSVExport.php:404 CSVExport.php:421
+#: CSVExport.php:379 CSVExport.php:396 CSVExport.php:413 CSVExport.php:430
 msgid "From:"
 msgstr "Van"
 
-#: CSVExport.php:371 CSVExport.php:388 CSVExport.php:405 CSVExport.php:422
+#: CSVExport.php:380 CSVExport.php:397 CSVExport.php:414 CSVExport.php:431
 msgid "To:"
 msgstr "Aan"
 
-#: CSVExport.php:379
+#: CSVExport.php:388
 msgid "Birthday Date"
 msgstr "Verjaardagsdatum"
 
@@ -398,27 +398,27 @@ msgstr "Verjaardagsdatum"
 msgid "Anniversary Date"
 msgstr "Trouwdatum"
 
-#: CSVExport.php:434 FinancialReports.php:317
+#: CSVExport.php:443 FinancialReports.php:317
 msgid "Output Method:"
 msgstr "Output Methode:"
 
-#: CSVExport.php:438
+#: CSVExport.php:447
 msgid "CSV Individual Records"
 msgstr "CVS Individuele Records"
 
-#: CSVExport.php:439
+#: CSVExport.php:448
 msgid "CSV Combine Families"
 msgstr "CSV Combineer Families"
 
-#: CSVExport.php:440
+#: CSVExport.php:449
 msgid "Add Individuals to Cart"
 msgstr "Voeg individuen toe aan mandje"
 
-#: CSVExport.php:443
+#: CSVExport.php:452
 msgid "Skip records with incomplete mail address"
 msgstr "Negeer records met een incompleet Emailadres"
 
-#: CSVExport.php:445
+#: CSVExport.php:454
 msgid "Create File"
 msgstr "Aanmaken bestand"
 
@@ -445,7 +445,7 @@ msgstr "Titel"
 msgid "Suffix"
 msgstr "Achtervoegsel"
 
-#: CSVExport.php:318 CSVImport.php:215 FamilyEditor.php:943
+#: CSVExport.php:177 CSVExport.php:327 CSVImport.php:215 FamilyEditor.php:943
 #: PersonEditor.php:624 PrintView.php:238 PrintView.php:338
 #: sundayschool/SundaySchoolClassView.php:179 queryparameters_qrp.php:4
 msgid "Gender"
@@ -538,7 +538,7 @@ msgstr "LET OP: Schijdingstekens (-, +, _ etc) toevoegen hoeft niet"
 msgid "Default country if none specified otherwise"
 msgstr "Standaard Land if geen land is aangegeven"
 
-#: CSVExport.php:167 CSVExport.php:268 CSVImport.php:281 CartView.php:275
+#: CSVExport.php:167 CSVExport.php:277 CSVImport.php:281 CartView.php:275
 #: FamilyEditor.php:948 FinancialReports.php:117 OptionManager.php:69
 #: PeopleDashboard.php:411 PersonEditor.php:1135 PrintView.php:309
 #: queryparameters_qrp.php:19
@@ -931,6 +931,10 @@ msgstr "Ja"
 msgid "No"
 msgstr "Nee"
 
+#: Include/Header.php:143 Include/Header.php:144
+msgid "Developer Chat"
+msgstr "Chat met ontwikkelaar"
+
 #: Checkin.php:15
 msgid "Event Checkin"
 msgstr "Evenement Checkin"
@@ -1013,6 +1017,10 @@ msgstr "Convert Alle"
 msgid "Deposit Slip Number: "
 msgstr "Stortings Strookje Nummer"
 
+#: DepositSlipEditor.php:72
+msgid "Deposit Details: "
+msgstr "Storting details"
+
 #: DepositSlipEditor.php:89
 msgid "Close deposit slip (remember to press Save)"
 msgstr "Maak Stortings strookje dicht (Vergeet het niet op te slaan)"
@@ -1084,7 +1092,7 @@ msgid "Address"
 msgstr "Adres"
 
 #: ChurchCRM/Service/CalendarService.php:16
-#: ChurchCRM/SystemCalendars/BirthdaysCalendar.php:59 DirectoryReports.php:174
+#: ChurchCRM/SystemCalendars/BirthdaysCalendar.php:63 DirectoryReports.php:174
 #: FamilyView.php:358 PersonView.php:510 Reports/ConfirmReport.php:184
 #: Reports/ConfirmReport.php:203 Reports/ConfirmReportEmail.php:192
 #: Reports/ConfirmReportEmail.php:210
@@ -1155,7 +1163,7 @@ msgstr "Title Pagina"
 msgid "Use Title Page"
 msgstr "Gebruik Titel Pagina"
 
-#: ChurchCRM/dto/SystemConfig.php:128 DirectoryReports.php:242 Register.php:41
+#: ChurchCRM/dto/SystemConfig.php:129 DirectoryReports.php:242 Register.php:41
 msgid "Church Name"
 msgstr "Gemeente Naam"
 
@@ -1214,6 +1222,10 @@ msgstr "Gaan"
 #: VolunteerOpportunityEditor.php:429
 msgid "Description"
 msgstr "Omschrijving"
+
+#: DonatedItemEditor.php:279
+msgid "Picture URL"
+msgstr "Afbeelding URL"
 
 #: DonationFundEditor.php:50
 msgid "Donation Fund Editor"
@@ -1285,6 +1297,10 @@ msgstr "Periodiek Patroon"
 msgid "Attendance Counts"
 msgstr "Opkomst Tellingen"
 
+#: EditEventTypes.php:177
+msgid "Add counter"
+msgstr "Voeg teller toe"
+
 #: AutoPaymentEditor.php:801
 #: ChurchCRM/Emails/verify/FamilyVerificationEmail.php:24
 #: ElectronicPaymentList.php:195 FamilyView.php:205 FinancialReports.php:303
@@ -1296,16 +1312,33 @@ msgstr "Opkomst Tellingen"
 msgid "Family"
 msgstr "Familie"
 
+#: ElectronicPaymentList.php:196 FamilyCustomFieldsEditor.php:319
+#: FamilyCustomFieldsEditor.php:421 FamilyView.php:549 FamilyView.php:657
+#: GroupPropsFormEditor.php:284 GroupPropsFormEditor.php:385 GroupView.php:254
+#: GroupView.php:287 OptionManager.php:77 PersonCustomFieldsEditor.php:310
+#: PersonCustomFieldsEditor.php:429 PersonView.php:682 PropertyEditor.php:129
+#: SelectDelete.php:215
+msgid "Type"
+msgstr "Type"
+
 #: AutoPaymentEditor.php:847 ElectronicPaymentList.php:197 FamilyView.php:766
 #: PledgeEditor.php:520 ReminderReport.php:42 SelectDelete.php:217
 #: sundayschool/SundaySchoolReports.php:205 queryparameters_qrp.php:18
 msgid "Fiscal Year"
 msgstr "Fiscaal Jaar"
 
+#: ElectronicPaymentList.php:198
+msgid "Next Date"
+msgstr "Volgende datum"
+
 #: ElectronicPaymentList.php:199 FamilyView.php:659 FamilyView.php:768
 #: PledgeEditor.php:714 SelectDelete.php:219
 msgid "Amount"
 msgstr "Bedrag"
+
+#: ElectronicPaymentList.php:200
+msgid "Interval"
+msgstr "Interval"
 
 #: AutoPaymentEditor.php:864 ElectronicPaymentList.php:201 FamilyView.php:661
 #: FamilyView.php:765 FinancialReports.php:302 SelectDelete.php:216
@@ -1315,6 +1348,10 @@ msgstr "Fonds"
 #: ElectronicPaymentList.php:202 FindDepositSlip.php:47
 msgid "Bank"
 msgstr "Bank"
+
+#: ElectronicPaymentList.php:204
+msgid "Account"
+msgstr "Rekening"
 
 #: ElectronicPaymentList.php:211 FamilyEditor.php:945
 #: queryparameters_qrp.php:11
@@ -1392,6 +1429,14 @@ msgstr "Er zijn geen evenementen in deze categorie"
 msgid "There are no Records"
 msgstr "Er zijn geen Records"
 
+#: EventNames.php:286 EventNames.php:287
+msgid "Create Event"
+msgstr "Maak een gebeurtenis"
+
+#: EventEditor.php:407
+msgid "Create a new Event"
+msgstr "Maak een nieuwe gebeurtenis"
+
 #: EventEditor.php:407
 msgid "Editing Event ID: "
 msgstr "Aanpassen evenement ID: "
@@ -1407,6 +1452,14 @@ msgstr "Objecten met een"
 #: EventEditor.php:415
 msgid " are required"
 msgstr "zijn vereist"
+
+#: EventEditor.php:432
+msgid "Select your event type"
+msgstr "Selecteer type gebeurtenis"
+
+#: EventEditor.php:442
+msgid "You must pick an event type."
+msgstr "Selecteer een type gebeurtenis"
 
 #: EventEditor.php:472
 msgid "Event Desc"
@@ -1427,6 +1480,10 @@ msgstr "Evenementen Preek"
 #: EventEditor.php:530
 msgid "Event Status"
 msgstr "Evenement Status"
+
+#: EventEditor.php:554
+msgid "Return to Events"
+msgstr "Terug naar gebeurtenis"
 
 #: EventNames.php:150
 msgid "EVENT TYPE NAME"
@@ -1463,6 +1520,10 @@ msgstr "Zaterdags"
 #: EventNames.php:219
 msgid "ATTENDANCE COUNTS"
 msgstr "OPKOMST TELLING"
+
+#: EventNames.php:222
+msgid "Optional"
+msgstr "Optioneel"
 
 #: EventNames.php:327
 msgid "Add Event Type"
@@ -1569,6 +1630,18 @@ msgstr "Niet een geldige Trouwdatum"
 #: FamilyEditor.php:241 PersonEditor.php:247
 msgid "Email is Not Valid"
 msgstr "E-mail is niet geldig"
+
+#: FamilyEditor.php:645 PersonEditor.php:773
+msgid "Family Info"
+msgstr "Familie informatie"
+
+#: FamilyEditor.php:729 PersonEditor.php:816
+msgid "Contact Info"
+msgstr "Contact informatie"
+
+#: FamilyEditor.php:793
+msgid "Other Info"
+msgstr "Overige informatie"
 
 #: FamilyEditor.php:817
 msgid "Ok To Canvass"
@@ -1688,6 +1761,24 @@ msgstr "december"
 msgid "Unk"
 msgstr "Onb"
 
+#: FamilyList.php:30 FamilyView.php:312 v2/templates/people/family-view.php:83
+msgid "Family List"
+msgstr "Familie lijst"
+
+#: FamilyList.php:35
+msgid "Add Family"
+msgstr "Voeg familie toe"
+
+#: ChurchCRM/model/ChurchCRM/Family.php:178
+#: ChurchCRM/model/ChurchCRM/Person.php:151 FamilyList.php:49 Menu.php:310
+#: PersonEditor.php:393
+msgid "Created"
+msgstr "Aangemaakt"
+
+#: FamilyList.php:50
+msgid "Edited"
+msgstr "Gewijzigd"
+
 #: FamilyView.php:29 v2/templates/people/family-view.php:11
 msgid "Family View"
 msgstr "Familie Overzicht"
@@ -1701,6 +1792,14 @@ msgstr "Beedte/Lengte"
 msgid "Envelope Number"
 msgstr "Envelop Nummer"
 
+#: FamilyView.php:302 v2/templates/people/family-view.php:77
+msgid "Verify Info"
+msgstr "Controleer de informatie"
+
+#: FamilyView.php:304 v2/templates/people/family-view.php:80
+msgid "Add New Member"
+msgstr "Voeg nieuw lid toe"
+
 #: FamilyView.php:308
 msgid "Previous Family"
 msgstr "Vorige Familie"
@@ -1708,6 +1807,10 @@ msgstr "Vorige Familie"
 #: FamilyView.php:316
 msgid "Next Family"
 msgstr "Volgende Familie"
+
+#: FamilyView.php:322 v2/templates/people/family-view.php:88
+msgid "Delete this Family"
+msgstr "Verwijder deze familie"
 
 #: FamilyView.php:194 PersonView.php:199
 #: v2/templates/people/family-view.php:58
@@ -1718,6 +1821,20 @@ msgstr "Upload Foto"
 #: v2/templates/people/family-view.php:62
 msgid "Delete Photo"
 msgstr "Verwijder Foto"
+
+#: FamilyView.php:331 PersonView.php:385
+#: v2/templates/people/family-view.php:98
+msgid "Add a Note"
+msgstr "Een notitie toevoegen"
+
+#: FamilyView.php:335 v2/templates/people/family-view.php:102
+msgid "Add All Family Members to Cart"
+msgstr "Toevoegen van alle gezinsleden"
+
+#: FamilyView.php:438 PersonView.php:421
+#: v2/templates/people/family-view.php:428
+msgid "Timeline"
+msgstr "Tijdslijn"
 
 #: FamilyView.php:444
 msgid "Automatic Payments"
@@ -1781,6 +1898,10 @@ msgstr "Toon Bijdrage Beloftes"
 msgid "Show Payments"
 msgstr "Toon Betalingen"
 
+#: FamilyView.php:748
+msgid "Since"
+msgstr "Sinds"
+
 #: FamilyView.php:756 MemberRoleChange.php:116 PropertyAssign.php:187
 msgid "Update"
 msgstr "Vernieuw"
@@ -1824,11 +1945,25 @@ msgstr "Voeg een nieuwe betaling toe"
 msgid " Canvass Entry"
 msgstr "Enquete intoetsen"
 
+#: DepositSlipEditor.php:225 FindDepositSlip.php:101 GroupEditor.php:56
+msgid "Close"
+msgstr "Afsluiten"
+
 #: DepositSlipEditor.php:219 FamilyView.php:899 FindDepositSlip.php:94
 #: PersonView.php:929 PledgeDelete.php:19
 #: v2/templates/people/family-view.php:517
 msgid "Confirm Delete"
 msgstr "Bevestig Verwijdering"
+
+#: FamilyView.php:903 PersonView.php:933
+#: v2/templates/people/family-view.php:521
+msgid "You are about to delete the profile photo, this procedure is irreversible."
+msgstr "U gaat uw profielfoto verwijderen, hetgeen niet ongedaan kan worden gemaakt."
+
+#: FamilyView.php:905 PersonView.php:935
+#: v2/templates/people/family-view.php:523
+msgid "Do you want to proceed?"
+msgstr "Wilt u doorgaan ?"
 
 #: FinancialReports.php:35
 msgid "Financial Reports"
@@ -1985,7 +2120,7 @@ msgstr "Raport Titel:"
 msgid "Graphic"
 msgstr "Graphisch"
 
-#: ChurchCRM/dto/SystemConfig.php:129 FinancialReports.php:292
+#: ChurchCRM/dto/SystemConfig.php:130 FinancialReports.php:292
 msgid "Church Address"
 msgstr "Kerk Adres"
 
@@ -2033,6 +2168,26 @@ msgstr "Aanmaken rapportage"
 #: FindDepositSlip.php:21
 msgid "Deposit Listing"
 msgstr "Stortings Lijst"
+
+#: FindDepositSlip.php:62
+msgid "Add New Deposit"
+msgstr "Voeg nieuwe storting toe"
+
+#: FindDepositSlip.php:71
+msgid "Deposits: "
+msgstr "Stortingen"
+
+#: FindDepositSlip.php:78
+msgid "Delete Selected Rows"
+msgstr "Verwijder geselecteerde rijen."
+
+#: FindDepositSlip.php:80
+msgid "Export Selected Rows (OFX)"
+msgstr "Exporteer geselecteerde regels (OFX)"
+
+#: FindDepositSlip.php:82
+msgid "Export Selected Rows (CSV)"
+msgstr "Exporteer geselecteerde regels (CSV)"
 
 #: FindFundRaiser.php:18
 msgid "Fundraiser Listing"
@@ -2196,6 +2351,10 @@ msgstr "Text voor Evenement ID: "
 msgid "Group Editor"
 msgstr "Groep Editor"
 
+#: GroupEditor.php:66
+msgid "Group Settings"
+msgstr "Groepsinstellingen"
+
 #: GroupEditor.php:85 GroupView.php:195
 msgid "Type of Group"
 msgstr "Type of Groep"
@@ -2216,9 +2375,25 @@ msgstr "van de Groep"
 msgid "Select a group"
 msgstr "Selecteer een groep"
 
+#: GroupEditor.php:150
+msgid "Group Specific Properties: "
+msgstr "Groepspecifieke eigenschappen"
+
+#: GroupEditor.php:154
+msgid "Enabled"
+msgstr "Ingeschakeld"
+
 #: GroupEditor.php:156 GroupView.php:80
 msgid "Edit Group-Specific Properties Form"
 msgstr "Bewerk het Groep-Specifieke Eigenschappen Formulier"
+
+#: GroupEditor.php:158 GroupView.php:217
+msgid "Disabled"
+msgstr "Uitgeschakeld"
+
+#: GroupEditor.php:159
+msgid "Enable Group Specific Properties"
+msgstr "Inschakelen groepsspecifieke eigenschappen"
 
 #: GroupEditor.php:176
 msgid "Group Roles"
@@ -2228,9 +2403,17 @@ msgstr "Groep Rollen"
 msgid "New Role"
 msgstr "Nieuwe Rol"
 
+#: GroupEditor.php:190
+msgid "Add New Role"
+msgstr "Nieuwe rol toevoegen"
+
 #: GroupList.php:20
 msgid "Group Listing"
 msgstr "Groep Lijst"
+
+#: GroupList.php:56 GroupList.php:60
+msgid "Add New Group"
+msgstr "Nieuwe groep toevoegen"
 
 #: Include/Header-function.php:66
 msgid "Submit"
@@ -2284,6 +2467,14 @@ msgstr "Groep Rapportages"
 msgid "Select the group you would like to report"
 msgstr "Selecteer de groep waarop u wilt rapporteren"
 
+#: GroupReports.php:59
+msgid "No Role Selected"
+msgstr "Geen rol geselecteerd"
+
+#: GroupReports.php:65
+msgid "Only cart persons?"
+msgstr "Alleen personen in mandje ?"
+
 #: GroupReports.php:71
 msgid "Report Model"
 msgstr "Rapport Model"
@@ -2324,6 +2515,10 @@ msgstr "Ongedefineerd"
 msgid "Group View"
 msgstr "bekijk Groep"
 
+#: GroupView.php:69
+msgid "Group Functions"
+msgstr "Groep functies"
+
 #: GroupView.php:75
 msgid "Edit this Group"
 msgstr "Bewerk deze Groep"
@@ -2332,6 +2527,10 @@ msgstr "Bewerk deze Groep"
 msgid "Delete this Group"
 msgstr "Verwijder deze Groep"
 
+#: GroupView.php:430
+msgid "Confirm Delete Group"
+msgstr "Bevestig verwijderen groep"
+
 #: GroupView.php:432
 msgid "Please confirm deletion of this group record"
 msgstr "bevestig de verwijdering van dit Groep record"
@@ -2339,6 +2538,14 @@ msgstr "bevestig de verwijdering van dit Groep record"
 #: GroupView.php:434
 msgid "This will also delete all Roles and Group-Specific Property data associated with this Group record."
 msgstr "Deze keuze zal ook alle Rol en Groep-Specifieke Eigenschappen data verwijderen geassocieerd met dit Groep record."
+
+#: GroupView.php:436
+msgid "All group membership and properties will be destroyed.  The group members themselves will not be altered."
+msgstr "Alle groepslidmaatschap en eigenschappen worden vernietigd. De groepsleden zelf zullen niet worden gewijzigd."
+
+#: 
+msgid "Please select target group for members"
+msgstr "Selecteer de doelgroep voor de leden"
 
 #: GroupView.php:84
 msgid "Add Group Members to Cart"
@@ -2379,6 +2586,30 @@ msgstr "Toegevoegde Eigenschappen"
 msgid "Group Members:"
 msgstr "Groep Leden:"
 
+#: GroupView.php:391
+msgid "Group members: "
+msgstr "Groepsleden."
+
+#: GroupView.php:395
+msgid "Remove Selected Members from group"
+msgstr "Verwijder gelecteerde leden van groep"
+
+#: GroupView.php:397
+msgid "Add Selected Members to Cart"
+msgstr "Geselecteerde leden toevoegen aan mandje"
+
+#: GroupView.php:403
+msgid "Add Selected Members to Group"
+msgstr "Geselecteerde leden toevoegen aan groep"
+
+#: GroupView.php:404
+msgid "Move Selected Members to Group"
+msgstr "Verplaats geselecteerde leden naar groep"
+
+#: GroupView.php:412
+msgid "Add Group Member: "
+msgstr "Groepslid toevoegen"
+
 #: LettersAndLabels.php:26 PeopleDashboard.php:237
 msgid "Letters and Mailing Labels"
 msgstr "Etiketten voor brieven en Mailings"
@@ -2391,9 +2622,17 @@ msgstr "Etiketten voor Niewsletters"
 msgid "Confirm data letter"
 msgstr "Bevestig Data op brief"
 
+#: LettersAndLabels.php:81
+msgid "Confirm data Email"
+msgstr "Bevestig data email"
+
 #: LettersAndLabels.php:82
 msgid "Confirm data labels"
-msgstr "Beevstig data Etikettes"
+msgstr "Bevestig data Etiketten"
+
+#: ListEvents.php:40
+msgid "Listing Events of Type = "
+msgstr "Toon evenementen van type"
 
 #: ListEvents.php:42
 msgid "Listing All Church Events"
@@ -2436,6 +2675,10 @@ msgstr "Teveel mislukte logins: uw toegang is geblokkeerd. Neem contact op met e
 msgid "Please Login"
 msgstr "Aub inloggen"
 
+#: ChurchCRM/Emails/users/BaseUserEmail.php:30 Login.php:196
+msgid "Email/Username"
+msgstr "Email//Gebruikersnaam"
+
 #: BackupDatabase.php:55 Login.php:200 Login.php:278 UserList.php:58
 msgid "Password"
 msgstr "Wachtwoord"
@@ -2451,6 +2694,10 @@ msgstr "Envelope Manager"
 #: ManageEnvelopes.php:117
 msgid "Update Family Records"
 msgstr "Pas Familie Record aan"
+
+#: ManageEnvelopes.php:128
+msgid "Update Envelopes"
+msgstr "Wijzig enveloppen"
 
 #: ManageEnvelopes.php:134 external/templates/verify/verify-family-info.php:17
 #: external/templates/verify/verify-family-info.php:134
@@ -2481,6 +2728,27 @@ msgstr "Naam van Lid"
 msgid "Current Role"
 msgstr "Huidige Rol"
 
+#: PeopleDashboard.php:82
+msgid "All People"
+msgstr "Alle personen"
+
+#: ChurchCRM/Config/Menu/Menu.php:69
+msgid "Classifications Manager"
+msgstr "Classificatiemanager"
+
+#: PeopleDashboard.php:94
+msgid "Email All"
+msgstr "Email allen"
+
+#: PeopleDashboard.php:104
+msgid "Email All (BCC)"
+msgstr "Email allen (BCC)"
+
+#: ChurchCRM/Config/Menu/Menu.php:70 OptionManager.php:63
+#: PeopleDashboard.php:285
+msgid "Family Roles"
+msgstr "Familie rollen"
+
 #: PeopleDashboard.php:123
 msgid "Update All Family Coordinates"
 msgstr "Alles bijwerken Family Coördinaten"
@@ -2496,9 +2764,26 @@ msgstr "Vrijwilligers mogelijkheden"
 msgid "Families"
 msgstr "Families"
 
+#: Menu.php:179 PeopleDashboard.php:144
+msgid "See all Families"
+msgstr "Toon alle familes"
+
 #: ChurchCRM/Config/Menu/Menu.php:61 Menu.php:191 PeopleDashboard.php:158
 msgid "People"
 msgstr "Mensen"
+
+#: Menu.php:198 PeopleDashboard.php:165
+msgid "See All People"
+msgstr "Overzicht van alle mensen"
+
+#: PeopleDashboard.php:179
+msgid "Sunday School Kids"
+msgstr "Kinderen van de zondagschool"
+
+#: Menu.php:217 Menu.php:236 Menu.php:261 PeopleDashboard.php:186
+#: PeopleDashboard.php:207
+msgid "More info"
+msgstr "Meer informatie"
 
 #: PeopleDashboard.php:226
 msgid "Reports on groups and roles"
@@ -2516,6 +2801,38 @@ msgstr "Genereer brieven en mailing Etikettes."
 msgid "US Address Verification Report"
 msgstr "Amerikaanse Address Verification Report"
 
+#: PeopleDashboard.php:296
+msgid "Role / Gender"
+msgstr "Rol / geslacht"
+
+#: PeopleDashboard.php:298 PeopleDashboard.php:413
+msgid "Count"
+msgstr "Tellen"
+
+#: PeopleDashboard.php:460
+msgid "Men"
+msgstr "Mannen"
+
+#: PeopleDashboard.php:463
+msgid "Women"
+msgstr "Vrouwen"
+
+#: PeopleDashboard.php:468 sundayschool/SundaySchoolDashboard.php:116
+msgid "Boys"
+msgstr "Jongens "
+
+#: PeopleDashboard.php:471 sundayschool/SundaySchoolDashboard.php:128
+msgid "Girls"
+msgstr "Meisjes"
+
+#: Menu.php:210 sundayschool/SundaySchoolDashboard.php:139
+msgid "Sunday School Classes"
+msgstr "Klassen"
+
+#: Menu.php:295
+msgid "Latest Families"
+msgstr "Nieuwe families"
+
 #: CartToFamily.php:206
 #: ChurchCRM/Emails/notifications/NewPersonOrFamilyEmail.php:58
 #: FamilyEditor.php:654 LettersAndLabels.php:71 Menu.php:308 Menu.php:337
@@ -2524,6 +2841,15 @@ msgstr "Amerikaanse Address Verification Report"
 #: external/templates/registration/family-register.php:31
 msgid "Family Name"
 msgstr "Familie Naam"
+
+#: Menu.php:324
+msgid "Updated Families"
+msgstr "Bijgewerkte families"
+
+#: ChurchCRM/model/ChurchCRM/Family.php:183
+#: ChurchCRM/model/ChurchCRM/Person.php:156 Menu.php:339 PersonEditor.php:406
+msgid "Updated"
+msgstr "Bijgewerkt"
 
 #: NoteDelete.php:27
 msgid "Note Delete Confirmation"
@@ -2676,6 +3002,26 @@ msgstr "Rode tekst"
 msgid "indicates items inherited from the associated family record."
 msgstr "geeft aan dat inhoud is geërfd van het gekoppelde familie record."
 
+#: PersonEditor.php:682
+msgid "Jr., Sr., III"
+msgstr "Junior, Senior, "
+
+#: PersonEditor.php:688
+msgid "Birth Month"
+msgstr "Geboorte maand"
+
+#: PersonEditor.php:692
+msgid "Select Month"
+msgstr "Selecteer de maand"
+
+#: PersonEditor.php:732
+msgid "Birth Day"
+msgstr "Geboortedatum"
+
+#: PersonEditor.php:734
+msgid "Select Day"
+msgstr "Selecteer de dag"
+
 #: PersonEditor.php:749
 msgid "Birth Year"
 msgstr "Geboorte Jaar"
@@ -2702,9 +3048,17 @@ msgstr "Voeg persoon toe aan Groep"
 msgid "Select the group to add this person to"
 msgstr "Selecteer de groep om deze persoon aan toe te voegen"
 
+#: PersonView.php:29
+msgid "Person Profile"
+msgstr "Persoonlijk profiel"
+
 #: PersonView.php:175
 msgid "Not assigned"
 msgstr "Niet gekoppeled"
+
+#: PersonView.php:249
+msgid "About Me"
+msgstr "Over mij"
 
 #: PersonView.php:380
 msgid "Printable Page"
@@ -3098,6 +3452,10 @@ msgstr "Execute Query"
 msgid "Address Info:"
 msgstr "Adres Informatie:"
 
+#: Register.php:18
+msgid "Software Registration"
+msgstr "Software registratie"
+
 #: Register.php:35
 msgid "Please register your copy of ChurchCRM by checking over this information and pressing the Send button.  "
 msgstr "Registreer aub uw exemplaar van het KerkInfo pakket door het invullen van de gegevens en het indrukken van de verstuur knop.  "
@@ -3114,6 +3472,10 @@ msgstr "Verstuur"
 msgid "Pledge Reminder Report"
 msgstr "Bijdrage herinneering Rapport"
 
+#: ChurchCRM/Config/Menu/Menu.php:134
+msgid "Event Attendance Reports"
+msgstr "Evenement aanwezigheidsrapporten"
+
 #: SelectDelete.php:67
 msgid "All donations from this family have been moved to another family."
 msgstr "Alle donaties van deze familie zijn verplaatst naar een andere familie."
@@ -3121,6 +3483,10 @@ msgstr "Alle donaties van deze familie zijn verplaatst naar een andere familie."
 #: SelectDelete.php:71
 msgid "Family Delete Confirmation"
 msgstr "Bevestiging van Verwijdering Familie"
+
+#: VolunteerOpportunityEditor.php:72
+msgid "Please confirm deletion of"
+msgstr "Bevestig verwijderen"
 
 #: SelectDelete.php:144
 msgid "Sorry, there are records of donations from this family. This family may not be deleted."
@@ -3169,6 +3535,10 @@ msgstr "Persoon Lijst"
 #: ChurchCRM/Config/Menu/Menu.php:86 SelectList.php:172
 msgid "Group Assignment Helper"
 msgstr "Groep Koppeling Helper"
+
+#: SelectList.php:490
+msgid "Filter and Cart"
+msgstr "Filter en mandje"
 
 #: SelectList.php:500
 msgid "Show people <b>not</b> in this group type:"
@@ -3234,6 +3604,10 @@ msgstr "Bekijk Alles"
 msgid "Cart"
 msgstr "Mandje"
 
+#: SelectList.php:1058
+msgid "Print"
+msgstr "Print"
+
 #: SettingsIndividual.php:86
 msgid "My User Settings"
 msgstr "Mijn Gebruikers Instellingen"
@@ -3264,6 +3638,10 @@ msgstr "Stel Toestemming Trouw aan nieuwe gebruikers de mogelijkheid om hun huid
 msgid "Permission"
 msgstr "Toestemming"
 
+#: Register.php:49
+msgid "Base URL"
+msgstr "Basis URL"
+
 #: TaxReport.php:29
 msgid "Tax Report"
 msgstr "Belasting Raport"
@@ -3275,6 +3653,10 @@ msgstr "Kalender Jaar"
 #: USISTAddressVerification.php:47
 msgid "US Address Verification"
 msgstr "Amerikaanse Address Verification"
+
+#: UpdateAllLatLon.php:15
+msgid "Update Latitude & Longitude"
+msgstr "Breedte en lengtegraad updaten"
 
 #: UserList.php:125
 msgid "User Delete Confirmation"
@@ -3304,6 +3686,10 @@ msgstr "Gebruiker"
 #: UserEditor.php:380 external/templates/password/enter-username.php:30
 msgid "Login Name"
 msgstr "Login Naam"
+
+#: UserEditor.php:385
+msgid "Add Records"
+msgstr "Voeg items toe"
 
 #: UserEditor.php:392
 msgid "Edit Records"
@@ -3358,6 +3744,14 @@ msgstr "Stijl"
 #: UserList.php:37
 msgid "User Listing"
 msgstr "Gebruiker Lijst"
+
+#: UserList.php:44
+msgid "New User"
+msgstr "Nieuwe gebruiker"
+
+#: UserList.php:45
+msgid "User Settings"
+msgstr "Gebruikersinstellingen"
 
 #: UserList.php:55
 msgid "Last Login"
@@ -3525,6 +3919,10 @@ msgstr "Terug naar Stortings Strookje"
 msgid "Fatal error in eGive API datastream: '"
 msgstr "Fatale fout in eGive API Datastream: &#39;"
 
+#: v2/routes/email.php:26
+msgid "eMail Dashboard"
+msgstr "eMail dashboard"
+
 #: Include/CanvassUtilities.php:66
 msgid "No families need canvassers assigned"
 msgstr "Geen families hebben een koppeling nodig met een enqueteur"
@@ -3544,6 +3942,18 @@ msgstr "Koppel Envelop nummers aan ale families die minimaal uit een lid bestaan
 #: Include/EnvelopeFunctions.php:37
 msgid "Assigned envelope numbers to all families."
 msgstr "Koppel envelop nummer aan alle families."
+
+#: Include/Footer.php:24 Register.php:42
+msgid "Version"
+msgstr "Versie"
+
+#: Include/Footer.php:26 Include/FooterNotLoggedIn.php:6
+msgid "Copyright"
+msgstr "Copyright"
+
+#: Include/Footer.php:26 Include/FooterNotLoggedIn.php:6
+msgid "All rights reserved"
+msgstr "Alle rechten voorbehouden"
 
 #: Include/Functions.php:96
 msgid "True / False"
@@ -3580,6 +3990,14 @@ msgstr "Telefoon Nummer"
 #: Include/Functions.php:107
 msgid "Custom Drop-Down List"
 msgstr "Aangepaste Selectie Lijst"
+
+#: Include/Functions.php:113
+msgid "Thank you for registering your ChurchCRM installation."
+msgstr "Bedankt voor het registreren van uw ChurchCRM installatie"
+
+#: Include/Functions.php:117
+msgid "PDFs successfully emailed "
+msgstr "Het is gelukt om de pdf te e-mailen"
 
 #: Include/Functions.php:131
 msgid "Group successfully added to the Cart."
@@ -3677,6 +4095,26 @@ msgstr "Cursief"
 #: Include/Functions.php:1325
 msgid " Bold"
 msgstr "Vet"
+
+#: Include/Header.php:113 PersonView.php:377
+msgid "Change Password"
+msgstr "Wijzig password"
+
+#: Include/Footer.php:34
+msgid "You have"
+msgstr "Je hebt"
+
+#: Include/Footer.php:35
+msgid "task(s)"
+msgstr "Taak of taken"
+
+#: external/templates/registration/family-register-members.php:95
+msgid "Home"
+msgstr "Thuis"
+
+#: Include/LabelFunctions.php:42
+msgid "Font"
+msgstr "Font"
 
 #: Include/LabelFunctions.php:80
 msgid "Label Type"
@@ -3909,6 +4347,50 @@ msgstr "Gift Bedrag:"
 msgid "Gift Designation:"
 msgstr "Benoeming van Gift"
 
+#: ChurchCRM/Config/Menu/Menu.php:116 GroupEditor.php:108
+#: sundayschool/SundaySchoolClassView.php:39
+#: sundayschool/SundaySchoolDashboard.php:247
+msgid "Sunday School"
+msgstr "Zondagsschool"
+
+#: Reports/ClassAttendance.php:99 Reports/ClassAttendance.php:184
+#: Reports/PhotoBook.php:64 sundayschool/SundaySchoolClassView.php:123
+#: sundayschool/SundaySchoolDashboard.php:81
+#: sundayschool/SundaySchoolDashboard.php:153
+msgid "Teachers"
+msgstr "Docenten"
+
+#: sundayschool/SundaySchoolClassView.php:137
+#: sundayschool/SundaySchoolClassView.php:316
+msgid "Send Message"
+msgstr "Stuur bericht"
+
+#: sundayschool/SundaySchoolClassView.php:139
+msgid "View Profile"
+msgstr "Toon profiel"
+
+#: sundayschool/SundaySchoolClassView.php:164
+msgid "Birthdays by Month"
+msgstr "Verjaardagen per maand"
+
+#: Reports/ClassAttendance.php:172 Reports/PhotoBook.php:66
+#: sundayschool/SundaySchoolClassView.php:193
+#: sundayschool/SundaySchoolDashboard.php:92
+#: sundayschool/SundaySchoolDashboard.php:154
+msgid "Students"
+msgstr "Studenten"
+
+#: external/templates/registration/family-register-members.php:94
+#: sundayschool/SundaySchoolClassView.php:206
+msgid "Mobile"
+msgstr "Mobiel"
+
+#: external/templates/verify/verify-family-info.php:25
+#: sundayschool/SundaySchoolClassView.php:208
+#: sundayschool/SundaySchoolDashboard.php:207
+msgid "Home Address"
+msgstr "Huis adres"
+
 #: sundayschool/SundaySchoolReports.php:30
 msgid "Sunday School Reports"
 msgstr "Zondag School Rapport"
@@ -3948,6 +4430,14 @@ msgstr "Maak klassen lijst"
 msgid "Create Attendance Sheet"
 msgstr "Voer bezoekers-aantallen in"
 
+#: ChurchCRM/Config/Menu/Menu.php:194
+msgid "System Users"
+msgstr "Systeemgebruikers"
+
+#: ChurchCRM/Config/Menu/Menu.php:52 v2/routes/calendar.php:22
+msgid "Calendar"
+msgstr "Kalender"
+
 #: 
 msgid "Members"
 msgstr "Leden"
@@ -3964,7 +4454,7 @@ msgstr "Bekijk alle Personen"
 msgid "Add New Family"
 msgstr "Voeg Nieuwe Familie toe"
 
-#: ChurchCRM/Config/Menu/Menu.php:129 ChurchCRM/dto/SystemConfig.php:253
+#: ChurchCRM/Config/Menu/Menu.php:129 ChurchCRM/dto/SystemConfig.php:254
 msgid "Events"
 msgstr "Evenementen"
 
@@ -3972,13 +4462,165 @@ msgstr "Evenementen"
 msgid "Fundraiser"
 msgstr "Fundraiser"
 
+#: v2/templates/email/dashboard.php:15
+msgid "Email Export"
+msgstr "E-mail exporteren"
+
+#: v2/templates/email/dashboard.php:30
+msgid "List"
+msgstr "Lijst"
+
+#: CSVImport.php:115
+msgid "Import Data"
+msgstr "Gegevens importeren"
+
+#: CSVImport.php:819
+msgid "Clear Data"
+msgstr "Opschonen gegevens"
+
+#: FindDepositSlip.php:95
+msgid "Deposit(s)"
+msgstr "Storting(en)"
+
 #: FindDepositSlip.php:45
 msgid "Deposit Type"
 msgstr "Bijdrage Type"
 
-#: ChurchCRM/dto/SystemConfig.php:245
+#: IntegrityCheck.php:53
+msgid "Details:"
+msgstr "Details"
+
+#: IntegrityCheck.php:67
+msgid "File Missing"
+msgstr "Bestand ontbreekt"
+
+#: IntegrityCheck.php:89
+msgid "Integrity Check Passed"
+msgstr "Integriteitscontrole voltooid"
+
+#: ManageEnvelopes.php:145
+msgid "Family Select"
+msgstr "Familie selectie"
+
+#: Menu.php:44
+msgid "Welcome to"
+msgstr "Welkom bij"
+
+#: RestoreDatabase.php:33
+msgid "Select Database Files"
+msgstr "Selecteer database bestanden"
+
+#: RestoreDatabase.php:37
+msgid "CAUTION: This will completely erase the existing database, and replace it with the backup"
+msgstr "VOORZICHTIG: hiermee wordt de bestaande database volledig gewist en vervangen door de back-up"
+
+#: RestoreDatabase.php:38
+msgid "If you upload a backup from ChurchInfo, or a previous version of ChurchCRM, it will be automatically upgraded to the current database schema"
+msgstr "Als u een back-up uploadt vanuit ChurchInfo of een eerdere versie van ChurchCRM, wordt deze automatisch geüpgraded naar het huidige databaseschema"
+
+#: RestoreDatabase.php:43
+msgid "Upload Files"
+msgstr "Upload bestanden"
+
+#: RestoreDatabase.php:87
+msgid "Restore Complete"
+msgstr "Herstellen voltooid"
+
+#: RestoreDatabase.php:88
+msgid "Login to restored Database"
+msgstr "Login naar herstelde database."
+
+#: RestoreDatabase.php:91
+msgid "Restore Error."
+msgstr "Herstel fout."
+
+#: ChurchCRM/dto/SystemConfig.php:246
 msgid "Report Settings"
 msgstr "Rapportage Instellingen"
+
+#: UpgradeCRM.php:35
+msgid "Step 1: Backup Database"
+msgstr "Stap 1: backup database"
+
+#: UpgradeCRM.php:37
+msgid "Please create a database backup before beginning the upgrade process."
+msgstr "Maak een back-up van de database voordat u begint met het upgradeproces."
+
+#: UpgradeCRM.php:38
+msgid "Generate Database Backup"
+msgstr "database back-up genereren"
+
+#: UpgradeCRM.php:48
+msgid "Step 2: Fetch Update Package on Server"
+msgstr "Stap 2: Update-pakket ophalen van server"
+
+#: UpgradeCRM.php:50
+msgid "Fetch the latest files from the ChurchCRM GitHub release page"
+msgstr "Haal de nieuwste bestanden op van de ChurchCRM GitHub-releasepagina"
+
+#: UpgradeCRM.php:51
+msgid "Fetch Update Files"
+msgstr "Haal updatebestanden op."
+
+#: UpgradeCRM.php:58
+msgid "Step 3: Apply Update Package on Server"
+msgstr "Stap 3: Update-pakket op server toepassen"
+
+#: UpgradeCRM.php:65
+msgid "Full Path:"
+msgstr "Volledig pad:"
+
+#: UpgradeCRM.php:66
+msgid "SHA1:"
+msgstr "SHA1:"
+
+#: UpgradeCRM.php:76
+msgid "Step 4: Login"
+msgstr "Stap 4: login"
+
+#: UpgradeCRM.php:78
+msgid "Login to Upgraded System"
+msgstr "Inloggen op geüpgrade systeem"
+
+#: UpgradeCRM.php:97
+msgid "Backup Complete, Ready for Download."
+msgstr "Backup kompleet, gereed voor download."
+
+#: external/templates/registration/family-register-done.php:31
+msgid "Member(s)"
+msgstr "Leden"
+
+#: external/templates/registration/family-register-members.php:20
+msgid "Register"
+msgstr "Registreer"
+
+#: external/templates/registration/family-register.php:27
+msgid "Register your family"
+msgstr "Registreer je familie"
+
+#: external/templates/registration/family-register.php:72
+msgid "How many people are in your family"
+msgstr "Hoeveel personen telt je familie"
+
+#: FinancialReports.php:133
+msgid "Add All Classes"
+msgstr "Voeg alle klassen toe"
+
+#: FinancialReports.php:134
+msgid "Clear All Classes"
+msgstr "Verwijder alle klassen"
+
+#: FinancialReports.php:180
+msgid "Add All Families"
+msgstr "Voeg alle families toe"
+
+#: FinancialReports.php:181
+msgid "Clear All Families"
+msgstr "Verwijder alle families"
+
+#: Login.php:221
+msgid "Register a new Family"
+msgstr "Registreer een nieuwe familie"
 
 #: PersonView.php:254
 msgid "Family:"
@@ -3994,7 +4636,483 @@ msgstr "Familie:"
 msgid "item"
 msgstr "object"
 
+#: PersonView.php:426 SettingsIndividual.php:100 SettingsUser.php:87
+#: UserEditor.php:480
+msgid "Notes"
+msgstr "Notities"
+
+#: PeopleDashboard.php:218 PeopleDashboard.php:255 PeopleDashboard.php:263
+#: sundayschool/SundaySchoolDashboard.php:56
+msgid "Reports"
+msgstr "Rapporten"
+
+#: UpgradeCRM.php:64
+msgid "File Name:"
+msgstr "Familie naam:"
+
+#: CanvassAutomation.php:122 FinancialReports.php:202
+msgid "Fiscal Year:"
+msgstr "Fiscaal jaar:"
+
 #: CanvassEditor.php:163
 msgid "Canvasser:"
 msgstr "Enqueteur"
+
+#: AutoPaymentEditor.php:129 Checkin.php:457
+#: ChurchCRM/Service/PersonService.php:39
+msgid "family"
+msgstr "familie"
+
+#: CSVImport.php:110 ChurchCRM/Config/Menu/Menu.php:198
+msgid "CSV Import"
+msgstr "CSV Import"
+
+#: eGive.php:263
+msgid "Start Date: "
+msgstr "Start datum"
+
+#: eGive.php:265
+msgid "End Date: "
+msgstr " Eind datum"
+
+#: v2/templates/email/dashboard.php:35
+msgid "Members:"
+msgstr "Leden"
+
+#: FamilyEditor.php:463
+msgid "Updated via Family"
+msgstr "Gewijzigd via Familie"
+
+#: ChurchCRM/model/ChurchCRM/User.php:183
+msgid "system user deleted"
+msgstr "Systeem gebruiker is verwijderd"
+
+#: Include/Header.php:159
+msgid "Your tasks"
+msgstr "Je taken"
+
+#: Login.php:205
+msgid "I forgot my password"
+msgstr "Password vergeten"
+
+#: 
+msgid "Check Number"
+msgstr "Controleer het nummer"
+
+#: 
+msgid "Details"
+msgstr "Details"
+
+#: ChurchCRM/model/ChurchCRM/Family.php:192
+msgid "Verification email sent"
+msgstr "Controle e-mail is gestuurd"
+
+#: 
+msgid "Failed to send verification email"
+msgstr "Het is niet gelukt een controle e-mail te sturen"
+
+#: 
+msgid "Failed to add verification"
+msgstr "Het is niet gelukt controle toe te voegen"
+
+#: 
+msgid "Role Name"
+msgstr "Naam van de rol"
+
+#: 
+msgid "Remove all"
+msgstr "Verwijder alles"
+
+#: ChurchCRM/Dashboard/PersonDemographicDashboardItem.php:40
+msgid "Head of Household"
+msgstr "Hoofd van een gezin"
+
+#: ChurchCRM/Dashboard/PersonDemographicDashboardItem.php:46
+msgid "Child"
+msgstr "Kind"
+
+#: GeoPage.php:213
+msgid "Select a family"
+msgstr "Selecteer een gezin"
+
+#: ChurchCRM/Emails/notifications/NewPersonOrFamilyEmail.php:41
+#: ChurchCRM/Emails/notifications/NewPersonOrFamilyEmail.php:63
+msgid "New Person Added"
+msgstr "Nieuwe persoon toegevoegd"
+
+#: ChurchCRM/Emails/notifications/NewPersonOrFamilyEmail.php:45
+#: ChurchCRM/Emails/notifications/NewPersonOrFamilyEmail.php:57
+msgid "New Family Added"
+msgstr "Nieuwe familie toegevoegd"
+
+#: ChurchCRM/Slim/Middleware/PublicCalendarAPIMiddleware.php:21
+msgid "External Calendar API is disabled"
+msgstr "De API voor een externe kalender is inactief "
+
+#: GroupEditor.php:66
+msgid "Special Group Settings : Sunday School Type"
+msgstr "Specifieke groep parameter: type zondagsschool "
+
+#: ChurchCRM/dto/SystemConfig.php:198
+msgid "Search Family"
+msgstr "Familie zoeken"
+
+#: ChurchCRM/dto/SystemConfig.php:200
+msgid "Search Groups"
+msgstr "Groep zoeken"
+
+#: ChurchCRM/dto/SystemConfig.php:249
+msgid "Quick Search"
+msgstr "Snel zoeken"
+
+#: ChurchCRM/dto/SystemConfig.php:203
+msgid "Search Addresses"
+msgstr "Zoek het adres"
+
+#: ChurchCRM/dto/SystemConfig.php:205
+msgid "Maximum number of Families"
+msgstr "Het maximum aantal families"
+
+#: ChurchCRM/dto/SystemConfig.php:207
+msgid "Maximum number of Groups"
+msgstr "Het maximum aantal groepen"
+
+#: api/routes/search.php:243
+msgid "Payments"
+msgstr "Betalingen"
+
+#: sundayschool/SundaySchoolClassView.php:115
+msgid "Add Students"
+msgstr "Studenten toevoegen"
+
+#: 
+msgid "OK"
+msgstr "OK"
+
+#: 
+msgid "Please select target Role for members"
+msgstr "Selecteer de rol voor leden"
+
+#: 
+msgid "Select Group and Role"
+msgstr "Selecteer de groep en rol"
+
+#: Reports/ClassAttendance.php:207
+msgid "All Members"
+msgstr "Alle leden"
+
+#: Reports/PhotoBook.php:126 Reports/PhotoBook.php:138
+msgid "PhotoBook"
+msgstr "Fotoboek"
+
+#: sundayschool/SundaySchoolReports.php:199
+msgid "With Photos"
+msgstr "Met foto's"
+
+#: sundayschool/SundaySchoolReports.php:281
+msgid "Create PhotoBook"
+msgstr "Maak een fotoboek"
+
+#: Include/Header.php:117
+msgid "Lock"
+msgstr "Geblokeerd"
+
+#: Login.php:289
+msgid "Enter your password to retrieve your session"
+msgstr "Voer je password in om toegang te krijgen"
+
+#: Login.php:292
+msgid "Or sign in as a different user"
+msgstr "Of log in met een andere gebruikerscode"
+
+#: v2/templates/common/not-found-view.php:8
+#: v2/templates/common/not-found-view.php:16
+msgid "Not Found"
+msgstr "Niet gevonden"
+
+#: v2/templates/common/not-found-view.php:16
+msgid "Oops!"
+msgstr "Sorry!"
+
+#: v2/templates/common/not-found-view.php:20
+msgid "Meanwhile, you may"
+msgstr "Gelijktijdig kun je"
+
+#: ChurchCRM/Slim/Middleware/Request/FamilyAPIMiddleware.php:21
+#: ChurchCRM/Slim/Middleware/Request/GroupAPIMiddleware.php:21
+#: ChurchCRM/Slim/Middleware/Request/PersonAPIMiddleware.php:21
+msgid "not found"
+msgstr "Niet gevonden"
+
+#: api/routes/people/people-groups.php:164
+msgid "Added to group"
+msgstr "Aan de groep toegevoegd"
+
+#: v2/templates/common/not-found-view.php:19
+msgid "We could not find the person(s) you were looking for."
+msgstr "De persoon die u zoekt is niet gevonden"
+
+#: v2/templates/common/not-found-view.php:20
+msgid "return to People Dashboard"
+msgstr "Terug naar het dashboard: Mensen"
+
+#: ChurchCRM/Slim/Middleware/Role/MenuOptionsRoleAuthMiddleware.php:14
+msgid "User must have MenuOptions permission"
+msgstr "De gebruiker heeft toegang nodig voor de menu opties"
+
+#: FamilyView.php:170
+msgid "Try out the Beta family view"
+msgstr "Probeerde beta versie \"overzicht families\""
+
+#: v2/templates/people/family-view.php:29
+msgid "This Family is Deactivated"
+msgstr "Deze familie is gedeactiveerd"
+
+#: api/routes/system/system-database.php:89
+msgid "The database has been cleared."
+msgstr "Deze databank is opgeschoond"
+
+#: ChurchCRM/SystemCalendars/AnniversariesCalendar.php:35
+msgid "Anniversaries"
+msgstr "Gedenkdagen"
+
+#: 
+msgid "Delete Calendar"
+msgstr "Verwijder de kalender"
+
+#: 
+msgid "Invalid Entry"
+msgstr "Verkeerde invoer"
+
+#: 
+msgid "Calendar Name"
+msgstr "Naam van de kalender"
+
+#: 
+msgid "New Calendar"
+msgstr "Nieuwe kalender"
+
+#: ChurchCRM/Config/Menu/Menu.php:208
+msgid "Links"
+msgstr "Koppelingen"
+
+#: ChurchCRM/dto/SystemConfig.php:226
+msgid "Show custom links on the left menu."
+msgstr "Weergave van de aangepaste koppelingen in het linker scherm"
+
+#: ChurchCRM/dto/SystemConfig.php:227
+msgid "Enable Sunday School left menu."
+msgstr "Aanzetten van het linkermenu: zondag school"
+
+#: ChurchCRM/dto/SystemConfig.php:228
+msgid "Enable Finance menu"
+msgstr "Aanzetten: Financieel menu"
+
+#: ChurchCRM/dto/SystemConfig.php:229
+msgid "Enable Events menu."
+msgstr "Aanzetten: evenementen menu"
+
+#: ChurchCRM/dto/SystemConfig.php:230
+msgid "Enable Calendar menu."
+msgstr "Aanzetten: kalender menu"
+
+#: ChurchCRM/dto/SystemConfig.php:231
+msgid "Enable Fundraiser menu."
+msgstr "Aanzetten: giften menu"
+
+#: ChurchCRM/dto/SystemConfig.php:232
+msgid "Enable Email menu."
+msgstr "Aanzetten: e-mail menu"
+
+#: ChurchCRM/dto/SystemConfig.php:244
+msgid "Enabled Features"
+msgstr "Aanzetten: kenmerken"
+
+#: ChurchCRM/Config/Menu/Menu.php:72
+msgid "Family Custom Fields"
+msgstr "Aangepaste velden: familie"
+
+#: ChurchCRM/Config/Menu/Menu.php:74
+msgid "Person Custom Fields"
+msgstr "Gepersonalizeerd veld voor persoon"
+
+#: ChurchCRM/Config/Menu/Menu.php:148
+msgid "Donation Funds"
+msgstr "Giften"
+
+#: ChurchCRM/SQLUtils.php:22
+msgid "Unable to open file"
+msgstr "Kan bestand niet openen"
+
+#: ChurchCRM/Service/UpgradeService.php:70
+msgid "Databse upgrade failed"
+msgstr "De upgrade van de database is mislukt"
+
+#: ChurchCRM/Slim/Middleware/AuthMiddleware.php:23
+msgid "logged via API Key."
+msgstr "Opgeslagen via API key"
+
+#: ChurchCRM/Slim/Middleware/AuthMiddleware.php:26
+msgid "logged via InValid API Key."
+msgstr "Opgeslagen met een ongeldig API sleutel"
+
+#: ChurchCRM/Slim/Middleware/PublicCalendarAPIMiddleware.php:26
+msgid "Missing calendar access token"
+msgstr "Het certificaat van toegang tot de kalender is afwezig"
+
+#: ChurchCRM/Slim/Middleware/PublicCalendarAPIMiddleware.php:33
+msgid "Calendar access token not found"
+msgstr "Het certificaat van toegang tot de kalender is niet gevonden"
+
+#: ChurchCRM/Slim/Middleware/Role/DeleteRecordRoleAuthMiddleware.php:14
+msgid "User must have Delete Records permission"
+msgstr "De gebruiker heeft de rechten nodig om rijen met gegevens te mogen verwijderen"
+
+#: ChurchCRM/dto/SystemConfig.php:233
+msgid "ChurchCRM Central Notifications URL"
+msgstr "De URL voor de centrale meldingen in ChurchCRM"
+
+#: Include/Footer.php:27
+msgid "Follow us on Twitter"
+msgstr "Volg ons op Twitter"
+
+#: api/routes/calendar/events.php:128
+msgid "invalid event type id"
+msgstr "Ongeldige identificatie code voor een \"event\""
+
+#: api/routes/calendar/events.php:135
+msgid "invalid calendar pinning"
+msgstr "Het vastmaken van de kalender is ongeldig"
+
+#: api/routes/people/people-groups.php:250
+#: api/routes/people/people-groups.php:267
+msgid "invalid group id"
+msgstr "Ongeldige groepscode"
+
+#: api/routes/people/people-groups.php:254
+msgid "invalid status value"
+msgstr "Ongeldige waarde van de status"
+
+#: api/routes/people/people-groups.php:271
+msgid "invalid export value"
+msgstr "Ongeldige waarde van de export functie"
+
+#: api/routes/public/public-user.php:27
+msgid "Invalid User/Password"
+msgstr "Ongeldige  inlogcode en/of password"
+
+#: api/routes/users.php:31 api/routes/users.php:47 api/routes/users.php:65
+#: api/routes/users.php:86
+msgid "Bad userId"
+msgstr "Ongeldig gebruikers code"
+
+#: v2/templates/email/dashboard.php:16
+msgid "Find Duplicate Emails"
+msgstr "Zoek dubbele e-mails"
+
+#: v2/templates/email/duplicate.php:14
+msgid "Duplicate Emails"
+msgstr "Dubbele e-mails"
+
+#: 
+msgid "HTML URL"
+msgstr "HTML URL"
+
+#: Menu.php:355
+msgid "Latest Persons"
+msgstr "Laatste persoon"
+
+#: Menu.php:389
+msgid "Updated Persons"
+msgstr "Aantal gewijzigde personen"
+
+#: ChurchCRM/Config/Menu/Menu.php:202 v2/routes/admin/admin.php:30
+msgid "Custom Menus"
+msgstr "Aangepaste schermen"
+
+#: ChurchCRM/Slim/Middleware/Request/Auth/ManageGroupRoleAuthMiddleware.php:16
+msgid "User must have Manage Groups permission"
+msgstr "De gebruiker moet de volgende rechten hebben: groepen"
+
+#: ChurchCRM/Slim/Middleware/Request/FamilyAPIMiddleware.php:16
+#: ChurchCRM/Slim/Middleware/Request/GroupAPIMiddleware.php:16
+#: ChurchCRM/Slim/Middleware/Request/PersonAPIMiddleware.php:16
+msgid "Missing"
+msgstr "Ontbrekende"
+
+#: ChurchCRM/Slim/Middleware/Role/EditRecordsRoleAuthMiddleware.php:14
+msgid "User must have Edit Records permission"
+msgstr "De gebruiker moet de volgende rechten hebben: wijzig regels"
+
+#: ChurchCRM/Slim/Middleware/Role/FinanceRoleAuthMiddleware.php:14
+msgid "User must have Finance permission"
+msgstr "De gebruiker moet de volgende rechten hebben: Financieel"
+
+#: api/routes/people/people-person.php:40
+msgid "Can't delete yourself"
+msgstr "Kan jezelf niet verwijderen."
+
+#: api/routes/people/people-person.php:43
+msgid "success"
+msgstr "Succes"
+
+#: api/routes/people/people-person.php:75
+msgid "The role could not be found."
+msgstr "Rol niet gevonden."
+
+#: v2/templates/admin/menus.php:14
+msgid "Add Menu"
+msgstr "Nieuw menu"
+
+#: v2/templates/admin/menus.php:19
+msgid "Menu Name"
+msgstr "Menu naam"
+
+#: v2/templates/admin/menus.php:22
+msgid "Max 20 char"
+msgstr "Maximaal 20 karakters"
+
+#: v2/templates/admin/menus.php:25
+msgid "Link Address"
+msgstr "Link adres"
+
+#: v2/templates/admin/menus.php:28
+msgid "Start with http:// or https://"
+msgstr "Start met http:// of https://"
+
+#: v2/templates/admin/menus.php:42
+msgid "Menus"
+msgstr "Menus"
+
+#: ChurchCRM/Slim/Middleware/Request/Setting/BaseAuthSettingMiddleware.php:15
+msgid "is disabled"
+msgstr "Is inactief gemaakt"
+
+#: v2/templates/admin/debug.php:17
+msgid "System Information"
+msgstr "Systeem informatie"
+
+#: v2/templates/admin/debug.php:22
+msgid "Software Version"
+msgstr "Software versie"
+
+#: v2/templates/admin/debug.php:30
+msgid "Valid Mail Server Settings"
+msgstr "Toegestane mail server instellingen"
+
+#: v2/templates/admin/debug.php:40
+msgid "Database"
+msgstr "Database"
+
+#: v2/templates/admin/debug.php:45 v2/templates/admin/debug.php:49
+msgid "Database Version"
+msgstr "Versie van de database"
+
+#: v2/templates/admin/debug.php:90
+msgid "Application Prerequisites"
+msgstr "Minimale eisen voor het ingebruikname van de applicatie"
+
+#: v2/templates/admin/debug.php:107
+msgid "WebServer Modules"
+msgstr "Webserver modules"
 

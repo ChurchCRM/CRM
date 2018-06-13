@@ -299,7 +299,7 @@ msgstr "Amplop"
 msgid "Work/Other Email"
 msgstr "Email Kerja/Lainnya"
 
-#: CSVExport.php:152 CSVExport.php:362 CSVImport.php:229 PersonEditor.php:1150
+#: CSVExport.php:152 CSVExport.php:371 CSVImport.php:229 PersonEditor.php:1150
 #: PrintView.php:304
 msgid "Membership Date"
 msgstr "Tanggal Keanggotaan"
@@ -312,84 +312,84 @@ msgstr "Tanggal Lahir / Ulang Tahun"
 msgid "Age / Years Married"
 msgstr "Umur / Tahun Menikah"
 
-#: CSVExport.php:172 CSVExport.php:293 CartView.php:276 OptionManager.php:62
+#: CSVExport.php:172 CSVExport.php:302 CartView.php:276 OptionManager.php:62
 #: PersonEditor.php:780 PrintView.php:269 queryparameters_qrp.php:5
 msgid "Family Role"
 msgstr "Peran Keluarga"
 
-#: CSVExport.php:175
+#: CSVExport.php:182
 msgid "Depends whether using person or family output method"
 msgstr "Tergantung apakah menggunakan metode produksi pribadi atau keluarga"
 
-#: CSVExport.php:188
+#: CSVExport.php:197
 msgid "Custom Field Selection"
 msgstr "Seleksi Area Kustom"
 
-#: CSVExport.php:196
+#: CSVExport.php:205
 msgid "Custom Person Fields"
 msgstr "Area Pribadi Kustom"
 
-#: CSVExport.php:214
+#: CSVExport.php:223
 msgid "Custom Family Fields"
 msgstr "Area Keluarga Kustom"
 
-#: CSVExport.php:241 FinancialReports.php:108
+#: CSVExport.php:250 FinancialReports.php:108
 msgid "Filters"
 msgstr "Penyaring"
 
-#: CSVExport.php:247
+#: CSVExport.php:256
 msgid "Records to export"
 msgstr "Record untuk diekspor"
 
-#: CSVExport.php:256
+#: CSVExport.php:265
 msgid "Based on filters below.."
 msgstr "Berdasarkan filter di bawah .."
 
-#: CSVExport.php:259
+#: CSVExport.php:268
 msgid "People in Cart (filters ignored)"
 msgstr "Orang dalam Keranjang (filter diabaikan)"
 
-#: CSVExport.php:285 CSVExport.php:310 CSVExport.php:346
+#: CSVExport.php:294 CSVExport.php:319 CSVExport.php:355
 #: DirectoryReports.php:80 DirectoryReports.php:98 DirectoryReports.php:116
 #: DirectoryReports.php:134 DirectoryReports.php:153 FinancialReports.php:259
 msgid "Use Ctrl Key to select multiple"
 msgstr "Gunakan tombol Ctrl untuk pilih banyak"
 
-#: CSVExport.php:327
+#: CSVExport.php:336
 msgid "Don't Filter"
 msgstr "Jangan disaring"
 
-#: CSVExport.php:328 ChurchCRM/Dashboard/PersonDemographicDashboardItem.php:26
-#: FamilyEditor.php:990 PeopleDashboard.php:310 PeopleDashboard.php:355
-#: PersonEditor.php:630 PrintView.php:244 PrintView.php:363 SelectList.php:555
-#: SelectList.php:1140
+#: CSVExport.php:337 ChurchCRM/Dashboard/PersonDemographicDashboardItem.php:26
+#: ChurchCRM/model/ChurchCRM/Person.php:51 FamilyEditor.php:990
+#: PeopleDashboard.php:310 PeopleDashboard.php:355 PersonEditor.php:630
+#: PrintView.php:244 PrintView.php:363 SelectList.php:555 SelectList.php:1140
 #: external/templates/registration/family-register-members.php:59
 #: queryparameteroptions_qpo.php:2
 msgid "Male"
 msgstr "Pria"
 
-#: CSVExport.php:329 ChurchCRM/Dashboard/PersonDemographicDashboardItem.php:29
-#: FamilyEditor.php:993 PeopleDashboard.php:323 PeopleDashboard.php:368
-#: PersonEditor.php:633 PrintView.php:247 PrintView.php:363 SelectList.php:561
-#: SelectList.php:1141
+#: CSVExport.php:338 ChurchCRM/Dashboard/PersonDemographicDashboardItem.php:29
+#: ChurchCRM/model/ChurchCRM/Person.php:53 FamilyEditor.php:993
+#: PeopleDashboard.php:323 PeopleDashboard.php:368 PersonEditor.php:633
+#: PrintView.php:247 PrintView.php:363 SelectList.php:561 SelectList.php:1141
 #: external/templates/registration/family-register-members.php:60
 #: queryparameteroptions_qpo.php:3
 msgid "Female"
 msgstr "Wanita"
 
-#: CSVExport.php:338 DirectoryReports.php:96
+#: CSVExport.php:347 DirectoryReports.php:96
 msgid "Group Membership"
 msgstr "Keanggotaan Kelompok"
 
-#: CSVExport.php:370 CSVExport.php:387 CSVExport.php:404 CSVExport.php:421
+#: CSVExport.php:379 CSVExport.php:396 CSVExport.php:413 CSVExport.php:430
 msgid "From:"
 msgstr "Dari:"
 
-#: CSVExport.php:371 CSVExport.php:388 CSVExport.php:405 CSVExport.php:422
+#: CSVExport.php:380 CSVExport.php:397 CSVExport.php:414 CSVExport.php:431
 msgid "To:"
 msgstr "Ke:"
 
-#: CSVExport.php:379
+#: CSVExport.php:388
 msgid "Birthday Date"
 msgstr "Tanggal Lahir"
 
@@ -397,27 +397,27 @@ msgstr "Tanggal Lahir"
 msgid "Anniversary Date"
 msgstr "Tanggal Jadian"
 
-#: CSVExport.php:434 FinancialReports.php:317
+#: CSVExport.php:443 FinancialReports.php:317
 msgid "Output Method:"
 msgstr "Metode Hasil:"
 
-#: CSVExport.php:438
+#: CSVExport.php:447
 msgid "CSV Individual Records"
 msgstr "Catatan Individu CSV"
 
-#: CSVExport.php:439
+#: CSVExport.php:448
 msgid "CSV Combine Families"
 msgstr "CSV Gabungkan Keluarga"
 
-#: CSVExport.php:440
+#: CSVExport.php:449
 msgid "Add Individuals to Cart"
 msgstr "Tambahkan Individu ke Keranjang."
 
-#: CSVExport.php:443
+#: CSVExport.php:452
 msgid "Skip records with incomplete mail address"
 msgstr "Lewati record dengan alamat email yang tidak lengkap"
 
-#: CSVExport.php:445
+#: CSVExport.php:454
 msgid "Create File"
 msgstr "Buat File"
 
@@ -444,7 +444,7 @@ msgstr "Gelar"
 msgid "Suffix"
 msgstr "Akhiran"
 
-#: CSVExport.php:318 CSVImport.php:215 FamilyEditor.php:943
+#: CSVExport.php:177 CSVExport.php:327 CSVImport.php:215 FamilyEditor.php:943
 #: PersonEditor.php:624 PrintView.php:238 PrintView.php:338
 #: sundayschool/SundaySchoolClassView.php:179 queryparameters_qrp.php:4
 msgid "Gender"
@@ -537,7 +537,7 @@ msgstr "CATATAN: Tanda pemisah (tanda hubung, dll.) atau kurang dari itu tidak m
 msgid "Default country if none specified otherwise"
 msgstr "Set Negara secara tomatis jika tidak ditentukan"
 
-#: CSVExport.php:167 CSVExport.php:268 CSVImport.php:281 CartView.php:275
+#: CSVExport.php:167 CSVExport.php:277 CSVImport.php:281 CartView.php:275
 #: FamilyEditor.php:948 FinancialReports.php:117 OptionManager.php:69
 #: PeopleDashboard.php:411 PersonEditor.php:1135 PrintView.php:309
 #: queryparameters_qrp.php:19
@@ -580,10 +580,18 @@ msgstr "Impor data berhasil"
 msgid "persons were imported"
 msgstr "Data telah diimpor"
 
+#: CanvassAutomation.php:21 ChurchCRM/Config/Menu/Menu.php:171
+msgid "Canvass Automation"
+msgstr "Sensus Otomatis"
+
 #: CanvassAutomation.php:46 CanvassAutomation.php:53 CanvassAutomation.php:60
 #: CanvassAutomation.php:68 CanvassAutomation.php:76
 msgid "Not confirmed."
 msgstr "Belum terkonfirmasi"
+
+#: CanvassAutomation.php:51 CanvassEditor.php:145 FamilyEditor.php:57
+msgid "Canvassers"
+msgstr "Petugas Sensus"
 
 #: CanvassAutomation.php:129
 msgid "Set default fiscal year"
@@ -594,6 +602,46 @@ msgstr "Atur tahun fiskal"
 #: CanvassAutomation.php:177 CanvassAutomation.php:188
 msgid "Check to confirm"
 msgstr "Tandai sebagai konfirmasi"
+
+#: CanvassAutomation.php:139
+msgid "Assign Canvassers"
+msgstr "Tetapkan Kanvasser"
+
+#: CanvassAutomation.php:172
+msgid "Enable Canvass for All Families"
+msgstr "Aktifkan Palang untuk Semua Keluarga"
+
+#: CanvassAutomation.php:183
+msgid "Disable Canvass for All Families"
+msgstr "Matikan Palang untuk Semua Keluarga"
+
+#: CanvassAutomation.php:194
+msgid "Briefing Sheets"
+msgstr "lembar pengarahan"
+
+#: CanvassAutomation.php:198
+msgid "Generate a PDF containing briefing sheets for all Families, sorted by canvasser."
+msgstr "Hasilkan PDF yang berisi lembar pengarahan untuk semua Keluarga, yang diurutkan berdasarkan pemilih."
+
+#: CanvassAutomation.php:204
+msgid "Progress Report"
+msgstr "Laporan perkembangan"
+
+#: CanvassAutomation.php:208
+msgid "Generate a PDF containing a progress report.  The progress report includes information on the overall progress of the canvass, and the progress of individual canvassers."
+msgstr "Hasilkan PDF berisi laporan kemajuan. Laporan kemajuan mencakup informasi tentang kemajuan keseluruhan dari sensus, dan kemajuan dari masing-masing pemilih."
+
+#: CanvassAutomation.php:214
+msgid "Summary Report"
+msgstr "Rangkuman laporan"
+
+#: CanvassAutomation.php:218
+msgid "Generate a PDF containing a summary report.  The summary report includes comments extracted from the canvass data."
+msgstr "Hasilkan PDF berisi laporan ringkasan. Laporan ringkasan termasuk komentar yang diambil dari data sensus."
+
+#: CanvassAutomation.php:224
+msgid "Not Interested Report"
+msgstr "Laporan Tidak Tertarik"
 
 #: Reports/CanvassReports.php:170 UserEditor.php:440
 msgid "Canvasser"
@@ -983,7 +1031,7 @@ msgid "Address"
 msgstr "Alamat"
 
 #: ChurchCRM/Service/CalendarService.php:16
-#: ChurchCRM/SystemCalendars/BirthdaysCalendar.php:59 DirectoryReports.php:174
+#: ChurchCRM/SystemCalendars/BirthdaysCalendar.php:63 DirectoryReports.php:174
 #: FamilyView.php:358 PersonView.php:510 Reports/ConfirmReport.php:184
 #: Reports/ConfirmReport.php:203 Reports/ConfirmReportEmail.php:192
 #: Reports/ConfirmReportEmail.php:210
@@ -1054,7 +1102,7 @@ msgstr "Halaman Judul"
 msgid "Use Title Page"
 msgstr "Gunakan halaman judul"
 
-#: ChurchCRM/dto/SystemConfig.php:128 DirectoryReports.php:242 Register.php:41
+#: ChurchCRM/dto/SystemConfig.php:129 DirectoryReports.php:242 Register.php:41
 msgid "Church Name"
 msgstr "Nama Gereja"
 
@@ -1086,6 +1134,14 @@ msgstr "Jual kepada semua orang"
 #: DonatedItemEditor.php:213
 msgid "Estimated Price"
 msgstr "Estimasi Harga"
+
+#: DonatedItemEditor.php:233 FundRaiserEditor.php:192 FundRaiserEditor.php:230
+msgid "Multiple"
+msgstr "Kelipatan"
+
+#: DonatedItemEditor.php:255
+msgid "Final Price"
+msgstr "Harga Akhir"
 
 #: DonatedItemEditor.php:260
 msgid "Replicate item"
@@ -1566,6 +1622,10 @@ msgstr "Data Kontak"
 msgid "Other Info"
 msgstr "Info lainnya"
 
+#: FamilyEditor.php:867
+msgid "Envelope Info"
+msgstr "Keterangan Amplop"
+
 #: FamilyEditor.php:920 FamilyView.php:356 PersonView.php:508
 #: PrintView.php:334
 #: external/templates/registration/family-register-members.php:20
@@ -1669,7 +1729,7 @@ msgid "Add Family"
 msgstr "Tambah keluarga"
 
 #: ChurchCRM/model/ChurchCRM/Family.php:178
-#: ChurchCRM/model/ChurchCRM/Person.php:141 FamilyList.php:49 Menu.php:310
+#: ChurchCRM/model/ChurchCRM/Person.php:151 FamilyList.php:49 Menu.php:310
 #: PersonEditor.php:393
 msgid "Created"
 msgstr "Diciptakan"
@@ -2027,13 +2087,17 @@ msgstr "Judul Laporan"
 msgid "Graphic"
 msgstr "Grafik"
 
-#: ChurchCRM/dto/SystemConfig.php:129 FinancialReports.php:292
+#: ChurchCRM/dto/SystemConfig.php:130 FinancialReports.php:292
 msgid "Church Address"
 msgstr "Alamat gereja"
 
 #: FinancialReports.php:293
 msgid "Blank"
 msgstr "Kosong"
+
+#: FinancialReports.php:294
+msgid "Remittance Slip:"
+msgstr "Slip Pembayaran"
 
 #: FinancialReports.php:300
 msgid "Sort Data by:"
@@ -2051,9 +2115,79 @@ msgstr "Seluruh data"
 msgid "Moderate Detail"
 msgstr "Detail "
 
+#: FinancialReports.php:307
+msgid "Summary Data"
+msgstr "Data Ringkasan"
+
+#: FinancialReports.php:319
+msgid "CSV"
+msgstr "CSV"
+
 #: FinancialReports.php:326 PaddleNumEditor.php:152 PledgeDetails.php:58
 msgid "Back"
 msgstr "Kembali"
+
+#: FinancialReports.php:328 GroupReports.php:150 ReminderReport.php:50
+#: TaxReport.php:53
+msgid "Create Report"
+msgstr "Buat laporan"
+
+#: FindDepositSlip.php:21
+msgid "Deposit Listing"
+msgstr "Daftar deposit"
+
+#: FindDepositSlip.php:62
+msgid "Add New Deposit"
+msgstr "Tambahkan Deposit Baru"
+
+#: FindDepositSlip.php:71
+msgid "Deposits: "
+msgstr "Simpanan:␣"
+
+#: FindDepositSlip.php:78
+msgid "Delete Selected Rows"
+msgstr "Hapus Baris yang Dipilih"
+
+#: FindFundRaiser.php:80
+msgid "Date Start"
+msgstr "Tanggal mulai"
+
+#: FindFundRaiser.php:83
+msgid "Apply Filters"
+msgstr "Terapkan Filter"
+
+#: FindFundRaiser.php:87
+msgid "Date End"
+msgstr "Tanggal berakhir"
+
+#: FindFundRaiser.php:90 SelectList.php:758
+msgid "Clear Filters"
+msgstr "Hapus Filter"
+
+#: FindFundRaiser.php:145 SelectList.php:807
+msgid "Previous Page"
+msgstr "Halaman sebelumnya"
+
+#: FindFundRaiser.php:187 SelectList.php:848
+msgid "Next Page"
+msgstr "Halaman berikutnya"
+
+#: FindFundRaiser.php:219 SelectList.php:921
+msgid "Display:"
+msgstr "Tampilan:"
+
+#: FindFundRaiser.php:75 FindFundRaiser.php:234 Include/Functions.php:103
+#: PaddleNumEditor.php:167 PaddleNumList.php:53
+msgid "Number"
+msgstr "Angka"
+
+#: FundRaiserEditor.php:33
+msgid "Create New Fund Raiser"
+msgstr "Buat penggalangan dana baru"
+
+#: FundRaiserEditor.php:150
+msgid "Add Donated Item"
+msgstr "Tambahkan Item yang Disumbangkan"
 
 #: GeoPage.php:317
 msgid "Neighbor Families"
