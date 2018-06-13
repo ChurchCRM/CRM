@@ -580,10 +580,18 @@ msgstr "Impor data berhasil"
 msgid "persons were imported"
 msgstr "Data telah diimpor"
 
+#: CanvassAutomation.php:21 ChurchCRM/Config/Menu/Menu.php:171
+msgid "Canvass Automation"
+msgstr "Sensus Otomatis"
+
 #: CanvassAutomation.php:46 CanvassAutomation.php:53 CanvassAutomation.php:60
 #: CanvassAutomation.php:68 CanvassAutomation.php:76
 msgid "Not confirmed."
 msgstr "Belum terkonfirmasi"
+
+#: CanvassAutomation.php:51 CanvassEditor.php:145 FamilyEditor.php:57
+msgid "Canvassers"
+msgstr "Petugas Sensus"
 
 #: CanvassAutomation.php:129
 msgid "Set default fiscal year"
@@ -594,6 +602,46 @@ msgstr "Atur tahun fiskal"
 #: CanvassAutomation.php:177 CanvassAutomation.php:188
 msgid "Check to confirm"
 msgstr "Tandai sebagai konfirmasi"
+
+#: CanvassAutomation.php:139
+msgid "Assign Canvassers"
+msgstr "Tetapkan Kanvasser"
+
+#: CanvassAutomation.php:172
+msgid "Enable Canvass for All Families"
+msgstr "Aktifkan Palang untuk Semua Keluarga"
+
+#: CanvassAutomation.php:183
+msgid "Disable Canvass for All Families"
+msgstr "Matikan Palang untuk Semua Keluarga"
+
+#: CanvassAutomation.php:194
+msgid "Briefing Sheets"
+msgstr "lembar pengarahan"
+
+#: CanvassAutomation.php:198
+msgid "Generate a PDF containing briefing sheets for all Families, sorted by canvasser."
+msgstr "Hasilkan PDF yang berisi lembar pengarahan untuk semua Keluarga, yang diurutkan berdasarkan pemilih."
+
+#: CanvassAutomation.php:204
+msgid "Progress Report"
+msgstr "Laporan perkembangan"
+
+#: CanvassAutomation.php:208
+msgid "Generate a PDF containing a progress report.  The progress report includes information on the overall progress of the canvass, and the progress of individual canvassers."
+msgstr "Hasilkan PDF berisi laporan kemajuan. Laporan kemajuan mencakup informasi tentang kemajuan keseluruhan dari sensus, dan kemajuan dari masing-masing pemilih."
+
+#: CanvassAutomation.php:214
+msgid "Summary Report"
+msgstr "Rangkuman laporan"
+
+#: CanvassAutomation.php:218
+msgid "Generate a PDF containing a summary report.  The summary report includes comments extracted from the canvass data."
+msgstr "Hasilkan PDF berisi laporan ringkasan. Laporan ringkasan termasuk komentar yang diambil dari data sensus."
+
+#: CanvassAutomation.php:224
+msgid "Not Interested Report"
+msgstr "Laporan Tidak Tertarik"
 
 #: Reports/CanvassReports.php:170 UserEditor.php:440
 msgid "Canvasser"
@@ -1087,6 +1135,14 @@ msgstr "Jual kepada semua orang"
 msgid "Estimated Price"
 msgstr "Estimasi Harga"
 
+#: DonatedItemEditor.php:233 FundRaiserEditor.php:192 FundRaiserEditor.php:230
+msgid "Multiple"
+msgstr "Kelipatan"
+
+#: DonatedItemEditor.php:255
+msgid "Final Price"
+msgstr "Harga Akhir"
+
 #: DonatedItemEditor.php:260
 msgid "Replicate item"
 msgstr "Bentuk ulang barang"
@@ -1566,6 +1622,10 @@ msgstr "Data Kontak"
 msgid "Other Info"
 msgstr "Info lainnya"
 
+#: FamilyEditor.php:867
+msgid "Envelope Info"
+msgstr "Keterangan Amplop"
+
 #: FamilyEditor.php:920 FamilyView.php:356 PersonView.php:508
 #: PrintView.php:334
 #: external/templates/registration/family-register-members.php:20
@@ -2035,6 +2095,10 @@ msgstr "Alamat gereja"
 msgid "Blank"
 msgstr "Kosong"
 
+#: FinancialReports.php:294
+msgid "Remittance Slip:"
+msgstr "Slip Pembayaran"
+
 #: FinancialReports.php:300
 msgid "Sort Data by:"
 msgstr "Atur data dengan"
@@ -2051,9 +2115,79 @@ msgstr "Seluruh data"
 msgid "Moderate Detail"
 msgstr "Detail "
 
+#: FinancialReports.php:307
+msgid "Summary Data"
+msgstr "Data Ringkasan"
+
+#: FinancialReports.php:319
+msgid "CSV"
+msgstr "CSV"
+
 #: FinancialReports.php:326 PaddleNumEditor.php:152 PledgeDetails.php:58
 msgid "Back"
 msgstr "Kembali"
+
+#: FinancialReports.php:328 GroupReports.php:150 ReminderReport.php:50
+#: TaxReport.php:53
+msgid "Create Report"
+msgstr "Buat laporan"
+
+#: FindDepositSlip.php:21
+msgid "Deposit Listing"
+msgstr "Daftar deposit"
+
+#: FindDepositSlip.php:62
+msgid "Add New Deposit"
+msgstr "Tambahkan Deposit Baru"
+
+#: FindDepositSlip.php:71
+msgid "Deposits: "
+msgstr "Simpanan:␣"
+
+#: FindDepositSlip.php:78
+msgid "Delete Selected Rows"
+msgstr "Hapus Baris yang Dipilih"
+
+#: FindFundRaiser.php:80
+msgid "Date Start"
+msgstr "Tanggal mulai"
+
+#: FindFundRaiser.php:83
+msgid "Apply Filters"
+msgstr "Terapkan Filter"
+
+#: FindFundRaiser.php:87
+msgid "Date End"
+msgstr "Tanggal berakhir"
+
+#: FindFundRaiser.php:90 SelectList.php:758
+msgid "Clear Filters"
+msgstr "Hapus Filter"
+
+#: FindFundRaiser.php:145 SelectList.php:807
+msgid "Previous Page"
+msgstr "Halaman sebelumnya"
+
+#: FindFundRaiser.php:187 SelectList.php:848
+msgid "Next Page"
+msgstr "Halaman berikutnya"
+
+#: FindFundRaiser.php:219 SelectList.php:921
+msgid "Display:"
+msgstr "Tampilan:"
+
+#: FindFundRaiser.php:75 FindFundRaiser.php:234 Include/Functions.php:103
+#: PaddleNumEditor.php:167 PaddleNumList.php:53
+msgid "Number"
+msgstr "Angka"
+
+#: FundRaiserEditor.php:33
+msgid "Create New Fund Raiser"
+msgstr "Buat penggalangan dana baru"
+
+#: FundRaiserEditor.php:150
+msgid "Add Donated Item"
+msgstr "Tambahkan Item yang Disumbangkan"
 
 #: GeoPage.php:317
 msgid "Neighbor Families"

@@ -183,11 +183,11 @@ msgstr "Số tài khoản ngân hàng"
 
 #: BackupDatabase.php:32 ChurchCRM/Config/Menu/Menu.php:197
 msgid "Backup Database"
-msgstr "Sao lưu cơ sở dữ liệu"
+msgstr "Sao lưu dữ liệu"
 
 #: BackupDatabase.php:38
 msgid "This tool will assist you in manually backing up the ChurchCRM database."
-msgstr "Công cụ này sẽ giúp bạn tự sao lưu cơ sở dữ liệu Hệ Thống Quản Lý Hội Thánh"
+msgstr "Công cụ này sẽ giúp bạn tự sao lưu cơ sở dữ liệu của Hệ Thống Quản Lý Hội Thánh"
 
 #: BackupDatabase.php:42
 msgid "You should make a manual backup at least once a week unless you already have a regular backup procedule for your systems."
@@ -291,7 +291,7 @@ msgstr "Ngày đăng ký thành viên"
 #: CSVExport.php:157
 #, fuzzy
 msgid "Birth / Anniversary Date"
-msgstr "Ngày sinh / Kỷ niệm"
+msgstr "Ngày sinh / Kỷ niệm ngày cưới"
 
 #: CSVExport.php:162
 #, fuzzy
@@ -382,7 +382,7 @@ msgstr "Ngày sinh nhật:"
 #: Reports/ConfirmReport.php:150 Reports/ConfirmReportEmail.php:155
 #, fuzzy
 msgid "Anniversary Date"
-msgstr "Ngày kỷ niệm"
+msgstr "Kỷ niệm ngày cưới"
 
 #: CSVExport.php:443 FinancialReports.php:317
 msgid "Output Method:"
@@ -712,10 +712,42 @@ msgstr "Quay lại Menu"
 msgid "Empty Cart"
 msgstr "Xóa bỏ giỏ"
 
+#: CartView.php:91
+msgid "Empty Cart to Group"
+msgstr "Xóa bỏ giỏ trong Ban/Mục vụ"
+
+#: CartView.php:97
+msgid "Empty Cart to Family"
+msgstr "Xóa bỏ giỏ trong Gia đình"
+
+#: CartView.php:101
+msgid "Empty Cart to Event"
+msgstr "Xóa bỏ giỏ trong Sự kiện"
+
+#: CartView.php:110
+msgid "Map Cart"
+msgstr "Giỏ Bản đồ"
+
+#: CartView.php:112
+msgid "Name Tags"
+msgstr "Thẻ tên"
+
+#: CartView.php:146
+msgid "Email Cart"
+msgstr "Giỏ Email"
+
 #: CartView.php:147 GroupView.php:139
 #: sundayschool/SundaySchoolClassView.php:101
 msgid "Email (BCC)"
 msgstr "Email (BCC)"
+
+#: CartView.php:177
+msgid "Create Directory From Cart"
+msgstr "Tạo Danh bạ từ Giỏ"
+
+#: CartView.php:201 CartView.php:243
+msgid "Generate Labels"
+msgstr "Tạo các nhãn"
 
 #: CartView.php:264
 msgid "persons from"
@@ -787,7 +819,7 @@ msgstr "Thành viên"
 
 #: Checkin.php:459 ChurchCRM/Service/PersonService.php:41 PersonView.php:267
 msgid "(No assigned family)"
-msgstr "(Chưa được gán vào gia đình)"
+msgstr "(Chưa được thêm vào gia đình)"
 
 #: DirectoryReports.php:78
 msgid "Select classifications to include"
@@ -846,6 +878,10 @@ msgstr "Email công việc/khác"
 #: DirectoryReports.php:218 Include/LabelFunctions.php:61
 msgid "Font Size"
 msgstr "Kích thước chữ"
+
+#: DirectoryReports.php:285
+msgid "Create Directory"
+msgstr "Tạo Danh bạ"
 
 #: DonatedItemEditor.php:295 FamilyEditor.php:1117 PaddleNumEditor.php:150
 #: PersonEditor.php:1229 PledgeEditor.php:689
@@ -1099,9 +1135,18 @@ msgstr "Chỉnh sửa trường gia đình tùy chỉnh"
 msgid "Default Option"
 msgstr "Tùy chọn mặc định"
 
+#: FamilyCustomFieldsEditor.php:298 PersonCustomFieldsEditor.php:287
+msgid "Warning: Arrow and delete buttons take effect immediately.  Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!"
+msgstr "Cảnh báo: Mũi tên và nút xóa sẽ có hiệu lực ngay lập tức. Thay đổi tên trường sẽ bị mất nếu bạn không nhấn nút \"Lưu thay đổi\" trước khi sử dụng lên, xuống, xóa hoặc thêm trường mới !"
+
 #: FamilyCustomFieldsEditor.php:307
 msgid "No custom Family fields have been added yet"
 msgstr "Không có trường gia đình tùy chỉnh được thêm vào"
+
+#: FamilyCustomFieldsEditor.php:321 GroupPropsFormEditor.php:287
+#: PersonCustomFieldsEditor.php:312
+msgid "Special option"
+msgstr "Tùy chọn đặc biệt"
 
 #: FamilyCustomFieldsEditor.php:322 FamilyCustomFieldsEditor.php:447
 #: PersonCustomFieldsEditor.php:313 PersonCustomFieldsEditor.php:461
@@ -1122,6 +1167,11 @@ msgstr "Trái"
 #: PersonCustomFieldsEditor.php:381 PersonCustomFieldsEditor.php:457
 msgid "Right"
 msgstr "Phải"
+
+#: FamilyCustomFieldsEditor.php:431 GroupPropsFormEditor.php:394
+#: PersonCustomFieldsEditor.php:439
+msgid "Help on types.."
+msgstr "Xem hướng dẫn"
 
 #: DonationFundEditor.php:167 DonationFundEditor.php:216
 #: FamilyCustomFieldsEditor.php:338 FamilyCustomFieldsEditor.php:438
@@ -1350,7 +1400,7 @@ msgstr "Tự động dâng hiến"
 #: FamilyView.php:542 PersonView.php:676 PrintView.php:459
 #: v2/templates/people/family-view.php:366
 msgid "No property assignments."
-msgstr "Không có thuộc tính nào được gán vào đây"
+msgstr "Không có thuộc tính nào được thêm vào đây"
 
 #: FamilyView.php:551 GroupView.php:289 PersonView.php:684 PrintView.php:464
 #: PropertyAssign.php:176 SystemSettings.php:140
@@ -1371,7 +1421,7 @@ msgstr "Thêm vào thuộc tính mới"
 #: PropertyAssign.php:185 SelectList.php:1060
 #: v2/templates/people/family-view.php:415
 msgid "Assign"
-msgstr "Gán vào"
+msgstr "Thêm vào"
 
 #: FamilyView.php:664 FamilyView.php:775 SelectDelete.php:223
 msgid "Date Updated"
@@ -1559,6 +1609,10 @@ msgstr "Thuộc tính Ban/Mục vụ đặc biệt"
 msgid "Enabled"
 msgstr "Kích hoạt"
 
+#: GroupEditor.php:156 GroupView.php:80
+msgid "Edit Group-Specific Properties Form"
+msgstr "Chỉnh sửa mẫu thuộc tính cho Ban/Mục vụ đặc biệt"
+
 #: GroupEditor.php:158 GroupView.php:217
 msgid "Disabled"
 msgstr "Vô hiệu hóa"
@@ -1590,6 +1644,10 @@ msgstr "Thêm Ban/Mục vụ mới"
 #: Include/Header-function.php:66
 msgid "Submit"
 msgstr "Gửi đi"
+
+#: GroupPropsFormEditor.php:43
+msgid "Group-Specific Properties Form Editor:"
+msgstr "Chỉnh sửa mẫu thuộc tính cho Ban/Mục vụ đặc biệt"
 
 #: GroupPropsFormEditor.php:288
 msgid "Person View"
@@ -1655,6 +1713,14 @@ msgstr "Tổng số thành viên"
 msgid "Default Role"
 msgstr "Vai trò mặc định"
 
+#: GroupView.php:231
+msgid "Group-Specific Properties"
+msgstr "Thuộc tính cho Ban/Mục vụ đặc biệt"
+
+#: GroupView.php:271
+msgid "Disabled for this group."
+msgstr "Không kích hoạt cho Ban/Mục vụ này."
+
 #: FamilyView.php:440 GroupView.php:276 PersonView.php:424 PrintView.php:448
 msgid "Assigned Properties"
 msgstr "Nhóm Tế Bào"
@@ -1682,6 +1748,10 @@ msgstr "Thêm thành viên đã lựa chọn đến Ban/Mục vụ"
 #: GroupView.php:404
 msgid "Move Selected Members to Group"
 msgstr "Di chuyển thành viên đã lựa chọn đến Ban/Mục vụ"
+
+#: GroupView.php:412
+msgid "Add Group Member: "
+msgstr "Thêm thành viên vào Ban/Mục vụ: "
 
 #: LettersAndLabels.php:81
 msgid "Confirm data Email"
@@ -1922,6 +1992,14 @@ msgstr "Không lựa chọn"
 msgid "Select"
 msgstr "Lựa chọn"
 
+#: PersonCustomFieldsEditor.php:25
+msgid "Custom Person Fields Editor"
+msgstr "Chỉnh sửa trường tùy chọn"
+
+#: PersonCustomFieldsEditor.php:314
+msgid "Person-View Side"
+msgstr "Vị trí hiển thị"
+
 #: PersonEditor.php:25
 msgid "Person Editor"
 msgstr "Chỉnh sửa thành viên"
@@ -1976,6 +2054,14 @@ msgstr "Thông tin thành viên"
 msgid "Friend Date"
 msgstr "Ngày đến Hội Thánh"
 
+#: PersonToGroup.php:51
+msgid "Add Person to Group"
+msgstr "Thêm thành viên vào Ban/Mục vụ"
+
+#: PersonToGroup.php:57
+msgid "Select the group to add this person to"
+msgstr "Lựa chọn Ban/Mục vụ để thêm thành viên vào"
+
 #: PersonView.php:29
 msgid "Person Profile"
 msgstr "Hồ sơ cá nhân"
@@ -2010,7 +2096,7 @@ msgstr "Danh sách thành viên"
 
 #: PersonView.php:581 PrintView.php:387
 msgid "No group assignments."
-msgstr "Không có thuộc tính nào được gán vào đây"
+msgstr "Không có thuộc tính nào được thêm vào đây"
 
 #: PersonView.php:639
 msgid "Change Role"
@@ -2167,7 +2253,7 @@ msgstr "Gửi đi"
 
 #: ChurchCRM/Config/Menu/Menu.php:196 RestoreDatabase.php:28
 msgid "Restore Database"
-msgstr "Khôi phục cơ sở dữ liệu"
+msgstr "Khôi phục dữ liệu"
 
 #: SelectDelete.php:67
 msgid "All donations from this family have been moved to another family."
@@ -2197,6 +2283,10 @@ msgstr "Xóa bỏ bản ghi gia đình VÀ thành viên gia đình"
 msgid "Person Listing"
 msgstr "Danh sách các thành viên"
 
+#: ChurchCRM/Config/Menu/Menu.php:86 SelectList.php:172
+msgid "Group Assignment Helper"
+msgstr "Thêm vào Ban/Mục vụ"
+
 #: SelectList.php:490
 msgid "Filter and Cart"
 msgstr "Bộ lọc và giỏ"
@@ -2207,7 +2297,7 @@ msgstr "Hiển thị thành viên <b>KHÔNG</b> có trong thể loại Ban/Mục
 
 #: SelectList.php:516
 msgid "Sort order"
-msgstr "Sắp xếp theo:"
+msgstr "Sắp xếp theo"
 
 #: SelectList.php:520
 msgid "By Name"
@@ -2297,7 +2387,11 @@ msgstr "Cài đặt mặc định thành viên"
 
 #: SettingsUser.php:80
 msgid "Set Permission True to give new users the ability to change their current value.<BR>"
-msgstr "Thiết lập quyền đúng sẽ cho phép người dùng mới có khả năng thay đổi giá trị hiện tại của họ."
+msgstr "Thiết lập quyền đúng sẽ cho phép thành viên mới có khả năng thay đổi giá trị hiện tại của họ."
+
+#: SettingsUser.php:84 UserEditor.php:477
+msgid "Permission"
+msgstr "Quyền hạn"
 
 #: ChurchCRM/dto/SystemConfig.php:248 SystemSettings.php:29
 msgid "System Settings"
@@ -2336,7 +2430,7 @@ msgstr "Quản trị"
 
 #: UserEditor.php:473
 msgid "Set Permission True to give this user the ability to change their current value."
-msgstr "Thiết lập quyền đúng sẽ cho phép người dùng mới có khả năng thay đổi giá trị hiện tại của họ."
+msgstr "Thiết lập quyền đúng sẽ cho phép thành viên mới có khả năng thay đổi giá trị hiện tại của họ."
 
 #: UserList.php:37
 msgid "User Listing"
@@ -2450,7 +2544,19 @@ msgstr "Giữ tất cả các quyền"
 
 #: Include/Functions.php:96
 msgid "True / False"
-msgstr "Đúng / Sai"
+msgstr "Có / Không"
+
+#: Include/Functions.php:98
+msgid "Text Field (50 char)"
+msgstr "Ô nội dung (50 ký tự)"
+
+#: Include/Functions.php:99
+msgid "Text Field (100 char)"
+msgstr "Ô nội dung (100 ký tự)"
+
+#: Include/Functions.php:100
+msgid "Text Field (long)"
+msgstr "Ô nội dung dài"
 
 #: Include/Functions.php:145
 msgid "Profile Image successfully updated."
@@ -2675,6 +2781,10 @@ msgstr "Người gây quỹ"
 msgid "Email Export"
 msgstr "Email xuất ra"
 
+#: CSVImport.php:115
+msgid "Import Data"
+msgstr "Nhập dữ liệu"
+
 #: CSVImport.php:819
 msgid "Clear Data"
 msgstr "Xóa dữ liệu"
@@ -2698,6 +2808,18 @@ msgstr "Chào mừng bạn đến với"
 #: RestoreDatabase.php:33
 msgid "Select Database Files"
 msgstr "Lựa chọn tập tin dữ liệu"
+
+#: RestoreDatabase.php:36
+msgid "Select a backup file to restore"
+msgstr "Lựa chọn tập tin để khôi phục"
+
+#: RestoreDatabase.php:37
+msgid "CAUTION: This will completely erase the existing database, and replace it with the backup"
+msgstr "THẬN TRỌNG: Thao tác này sẽ xóa hoàn toàn cơ sở dữ liệu hiện có và thay thế bằng bản sao lưu"
+
+#: RestoreDatabase.php:38
+msgid "If you upload a backup from ChurchInfo, or a previous version of ChurchCRM, it will be automatically upgraded to the current database schema"
+msgstr "Nếu bạn tải lên bản sao lưu từ ChurchInfo hoặc phiên bản trước của ChurchCRM, nó sẽ được tự động nâng cấp lên cơ sở dữ liệu hiện tại"
 
 #: RestoreDatabase.php:43
 msgid "Upload Files"
@@ -2754,12 +2876,12 @@ msgstr "Giá trị mặc định"
 #: SettingsIndividual.php:144 SettingsUser.php:114 SettingsUser.php:144
 #: SystemSettings.php:199 UserEditor.php:515 UserEditor.php:543
 msgid "False"
-msgstr "Sai"
+msgstr "Không"
 
 #: SettingsIndividual.php:145 SettingsUser.php:115 SettingsUser.php:145
 #: SystemSettings.php:200 UserEditor.php:516 UserEditor.php:544
 msgid "True"
-msgstr "Đúng"
+msgstr "Có"
 
 #: UpgradeCRM.php:35
 msgid "Step 1: Backup Database"
@@ -2910,7 +3032,7 @@ msgstr "Sự kiện"
 #: ChurchCRM/Service/CalendarService.php:17
 #: ChurchCRM/SystemCalendars/AnniversariesCalendar.php:60
 msgid "Anniversary"
-msgstr "Kỷ niệm"
+msgstr "Kỷ niệm ngày cưới"
 
 #: PersonView.php:426 SettingsIndividual.php:100 SettingsUser.php:87
 #: UserEditor.php:480
@@ -2926,6 +3048,10 @@ msgstr "Báo cáo"
 #: ChurchCRM/Service/PersonService.php:39
 msgid "family"
 msgstr "gia đình"
+
+#: CSVExport.php:405
+msgid "Anniversary Date:"
+msgstr "Kỷ niệm ngày cưới:"
 
 #: CSVExport.php:422
 msgid "Date Entered:"
@@ -3016,6 +3142,10 @@ msgstr "Thuộc tính thành viên"
 msgid "Family Properties"
 msgstr "Thuộc tính Gia đình"
 
+#: ChurchCRM/Config/Menu/Menu.php:195
+msgid "Property Types"
+msgstr "Các loại thuộc tính"
+
 #: SelectList.php:975 SelectList.php:979 SelectList.php:1041
 #: queryparameteroptions_qpo.php:5
 msgid "Zip Code"
@@ -3070,6 +3200,30 @@ msgstr "Tìm nhân sự cho hai mục vụ đặc biệt"
 msgid "Last Edited"
 msgstr "Vừa cập nhật"
 
+#: userconfig_ucfg.php:2
+msgid "User permission to send email via mailto: links"
+msgstr "Thành viên có quyền gửi email thông qua mailto: links"
+
+#: userconfig_ucfg.php:3
+msgid "Delimiter to separate emails in mailto: links"
+msgstr "Dấu phân cách để tách các email trong mailto: links"
+
+#: userconfig_ucfg.php:4
+msgid "User permission to create directories"
+msgstr "Thành viên có quyền tạo ra danh bạ"
+
+#: userconfig_ucfg.php:5
+msgid "User permission to export CSV files"
+msgstr "Thành viên có quyền xuất tập tin CSV"
+
+#: userconfig_ucfg.php:6
+msgid "User permission to use IST Address Verification"
+msgstr "Thành viên có quyền sử dụng xác nhận địa chỉ"
+
+#: userconfig_ucfg.php:7
+msgid "Allow user to add new event"
+msgstr "Cho phép Thành viên thêm sự kiện mới"
+
 #: OptionManager.php:64
 msgid "Family Roles Editor"
 msgstr "Chỉnh sửa vai trò gia đình"
@@ -3109,6 +3263,10 @@ msgstr "Đã tạo gia đình"
 #: FamilyEditor.php:463
 msgid "Updated via Family"
 msgstr "Đã cập nhật qua gia đình"
+
+#: ChurchCRM/model/ChurchCRM/Family.php:188
+msgid "Family Data Verified"
+msgstr "Dữ liệu gia đình đã được xác nhận"
 
 #: ChurchCRM/model/ChurchCRM/Family.php:254
 #: ChurchCRM/model/ChurchCRM/Person.php:259
@@ -3239,6 +3397,14 @@ msgstr "Trạng thái"
 msgid "Email export"
 msgstr "Email xuất ra"
 
+#: GroupView.php:282
+msgid "No property assignments"
+msgstr "Không có thuộc tính nào được thêm vào đây"
+
+#: 
+msgid "View Cart"
+msgstr "Xem giỏ"
+
 #: 
 msgid "Your Cart is Empty"
 msgstr "Giỏ của bạn đang trống"
@@ -3315,6 +3481,10 @@ msgstr "Sao lưu"
 msgid "Integration"
 msgstr "Tích hợp"
 
+#: ChurchCRM/Emails/users/ResetPasswordEmail.php:22
+msgid "You ChurchCRM updated password has been changed"
+msgstr "Mật khẩu của bạn đã được thay đổi"
+
 #: external/templates/password/enter-username.php:27
 msgid "Reset your password"
 msgstr "Khôi phục mật khẩu của bạn"
@@ -3334,6 +3504,10 @@ msgstr "Người tham dự đã đăng ký"
 #: AutoPaymentEditor.php:836
 msgid "Disable "
 msgstr "Vô hiệu hóa "
+
+#: CartView.php:172
+msgid "Text Cart"
+msgstr "Giỏ nội dung"
 
 #: FamilyView.php:341 v2/templates/people/family-view.php:108
 msgid "Deactivate"
@@ -3415,6 +3589,10 @@ msgstr "Lựa chọn nhóm tế bào và vai trò"
 msgid "All Members"
 msgstr "Tất cả Thành viên"
 
+#: 
+msgid "Group Role"
+msgstr "Vai trò trong Ban/Mục vụ"
+
 #: Include/Header.php:111
 msgid "Profile"
 msgstr "Hồ sơ của tôi"
@@ -3471,6 +3649,10 @@ msgstr "Xóa tất cả trong giỏ"
 msgid " record returned"
 msgstr " bảng ghi được hiển thị"
 
+#: SelectList.php:776
+msgid " records returned"
+msgstr " bản ghi được tìm thấy"
+
 #: BackupDatabase.php:50
 msgid "Database Only (.sql)"
 msgstr "Chỉ cần bảng dữ liệu (.sql)"
@@ -3479,9 +3661,21 @@ msgstr "Chỉ cần bảng dữ liệu (.sql)"
 msgid "Database and Photos (.tar.gz)"
 msgstr "Bảng dữ liệu và Hình ảnh (.tar.gz)"
 
+#: api/routes/people/people-groups.php:135
+msgid "Deleted from group"
+msgstr "Đã xóa khỏi Ban/Mục vụ"
+
+#: api/routes/people/people-groups.php:164
+msgid "Added to group"
+msgstr "Đã thêm vào Ban/Mục vụ"
+
 #: v2/templates/common/not-found-view.php:20
 msgid "return to People Dashboard"
 msgstr "Quay lại Bảng điều khiển thành viên"
+
+#: FamilyView.php:170
+msgid "Try out the Beta family view"
+msgstr "Dùng thử phiên bản mới hiển thị Gia đình"
 
 #: v2/templates/people/family-view.php:29
 msgid "This Family is Deactivated"
@@ -3497,7 +3691,7 @@ msgstr "Dữ liệu đã được xóa sạch"
 
 #: ChurchCRM/SystemCalendars/AnniversariesCalendar.php:35
 msgid "Anniversaries"
-msgstr "Kỷ niệm"
+msgstr "Kỷ niệm ngày cưới"
 
 #: PersonView.php:406 PersonView.php:411
 msgid "View User"
@@ -3558,11 +3752,15 @@ msgstr "Tính năng Email"
 #: ChurchCRM/Config/Menu/Menu.php:201 v2/routes/admin/admin.php:19
 #: v2/templates/email/dashboard.php:18
 msgid "Debug"
-msgstr "Báo lỗi"
+msgstr "Tình trạng hệ thống"
 
 #: ChurchCRM/Config/Menu/Menu.php:72
 msgid "Family Custom Fields"
 msgstr "Trường Gia đình tùy chọn"
+
+#: ChurchCRM/Config/Menu/Menu.php:74
+msgid "Person Custom Fields"
+msgstr "Thêm trường tùy chọn"
 
 #: Menu.php:355
 msgid "Latest Persons"
