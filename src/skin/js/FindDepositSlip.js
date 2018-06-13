@@ -8,6 +8,33 @@ $(document).ready(function () {
       'depositComment': $("#depositComment").val(),
       'depositDate': $("#depositDate").val()
     };
+    
+    if(!$("#depositComment").val().trim() && FindDepositeSlipTranslation){
+        bootbox.confirm({
+             title: FindDepositeSlipTranslation.addNewDeposit.addNewDepositTitle,
+             message: FindDepositeSlipTranslation.addNewDeposit.blankCommentMessage,
+             buttons: {
+                cancel: {
+                    label: FindDepositeSlipTranslation.addNewDeposit.btnCancel
+                },
+                confirm: {
+                    label: FindDepositeSlipTranslation.addNewDeposit.btnConfirm
+                }
+            },
+             callback: function (result) {
+                 if(result == true){
+                        addNewDepositRequest(newDeposit);
+                 }
+             }
+        });
+        
+    }else{
+            addNewDepositRequest(newDeposit);
+    }
+
+  });
+  
+  function addNewDepositRequest(newDeposit){
     $.ajax({
       method: "POST",
       url: window.CRM.root + "/api/deposits",
@@ -19,7 +46,7 @@ $(document).ready(function () {
       dataT.row.add(data);
       dataT.rows().invalidate().draw(true);
     });
-  });
+  };
 
   dataT = $("#depositsTable").DataTable({
     "language": {
