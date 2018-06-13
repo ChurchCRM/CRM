@@ -67,23 +67,23 @@ require 'Include/Header.php';
 </div>
 
 <div class="box">
-  <div class="box-header with-border">
-    <h3 class="box-title"><?php echo gettext('Deposits: '); ?></h3>
-  </div>
-  <div class="box-body">
-    <div class="container-fluid">
-      <table class="display responsive nowrap data-table" id="depositsTable" width="100%"></table>
-
-      <button type="button" id="deleteSelectedRows" class="btn btn-danger"
-              disabled> <?= gettext('Delete Selected Rows') ?> </button>
-      <button type="button" id="exportSelectedRows" class="btn btn-success exportButton" data-exportType="ofx"
-              disabled><i class="fa fa-download"></i> <?= gettext('Export Selected Rows (OFX)') ?></button>
-      <button type="button" id="exportSelectedRowsCSV" class="btn btn-success exportButton" data-exportType="csv"
-              disabled><i class="fa fa-download"></i> <?= gettext('Export Selected Rows (CSV)') ?></button>
-      <button type="button" id="generateDepositSlip" class="btn btn-success exportButton" data-exportType="pdf"
-              disabled> <?= gettext('Generate Deposit Slip for Selected Rows (PDF)') ?></button>
+    <div class="box-header with-border">
+        <h3 class="box-title"><?php echo gettext('Deposits: '); ?></h3>
     </div>
-  </div>
+    <div class="box-body">
+        <div class="container-fluid">
+            <table class="display responsive nowrap data-table table table-striped table-hover" id="depositsTable" width="100%"></table>
+
+            <button type="button" id="deleteSelectedRows" class="btn btn-danger"
+                    disabled> <?= gettext('Delete Selected Rows') ?> </button>
+            <button type="button" id="exportSelectedRows" class="btn btn-success exportButton" data-exportType="ofx"
+                    disabled><i class="fa fa-download"></i> <?= gettext('Export Selected Rows (OFX)') ?></button>
+            <button type="button" id="exportSelectedRowsCSV" class="btn btn-success exportButton" data-exportType="csv"
+                    disabled><i class="fa fa-download"></i> <?= gettext('Export Selected Rows (CSV)') ?></button>
+            <button type="button" id="generateDepositSlip" class="btn btn-success exportButton" data-exportType="pdf"
+                    disabled> <?= gettext('Generate Deposit Slip for Selected Rows (PDF)') ?></button>
+        </div>
+    </div>
 </div>
 
 <script>
