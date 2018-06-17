@@ -297,6 +297,9 @@ if ($sFormat == 'addtocart') {
         if (!empty($_POST['PrintFamilyRole'])) {
             $headerString .= '"'.InputUtils::translate_special_charset("Family Role").'"'.$delimiter;
         }
+        if (!empty($_POST['PrintGender'])) {
+            $headerString .= '"'.InputUtils::translate_special_charset("Gender").'"'.$delimiter;
+        }
     } else {
         if (!empty($_POST['Birthday Date'])) {
             $headerString .= '"'.InputUtils::translate_special_charset("AnnivDate").'"'.$delimiter;
@@ -392,6 +395,7 @@ if ($sFormat == 'addtocart') {
         $sCountry = '';
 
         extract($aRow);
+        $person = ChurchCRM\PersonQuery::create()->findOneById($per_ID);
 
         // If we are doing a family roll-up, we want to favor available family address / phone numbers over the individual data returned
         if ($sFormat == 'rollup') {
@@ -514,6 +518,9 @@ if ($sFormat == 'addtocart') {
                     }
                     if (isset($_POST['PrintFamilyRole'])) {
                         $sString .= '"'.$delimiter.'"'.InputUtils::translate_special_charset($familyRoles[$per_fmr_ID]);
+                    }
+                    if (isset($_POST['PrintGender'])) {
+                        $sString .= '"'.$delimiter.'"'.InputUtils::translate_special_charset($person->getGenderName());
                     }
                 } else {
                     if (isset($_POST['BirthdayDate'])) {

@@ -46,7 +46,8 @@
         "geocoder-php/bing-maps-provider": "4.0.0",
         "mustache/mustache": "~2.5",
         "nexmo/client": "@beta",
-        "slim/http-cache": "^0.4.0"
+        "slim/http-cache": "^0.4.0",
+        "azuyalabs/yasumi": "^1.8"
     },
     "autoload": {
         "classmap": [

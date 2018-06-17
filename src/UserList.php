@@ -77,7 +77,7 @@ require 'Include/Header.php';
                     <td>
                         <a href="PersonView.php?PersonID=<?= $user->getId() ?>"> <?= $user->getPerson()->getFullName() ?></a>
                     </td>
-                    <td align="center"><?= $user->getLastLogin(SystemConfig::getValue('sDateFormatShort')) ?></td>
+                    <td align="center"><?= $user->getLastLogin(SystemConfig::getValue('sDateTimeFormat')) ?></td>
                     <td align="center"><?= $user->getLoginCount() ?></td>
                     <td align="center">
                         <?php if ($user->isLocked()) {

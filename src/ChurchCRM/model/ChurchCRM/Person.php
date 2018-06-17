@@ -43,6 +43,16 @@ class Person extends BasePerson implements iPhoto
     {
         return $this->getGender() == 2;
     }
+    
+    public function getGenderName()
+    {
+      switch (strtolower($this->getGender())) {
+        case 1:
+          return gettext('Male');
+        case 2:
+          return gettext('Female');
+      }
+    }
 
     public function hideAge()
     {
@@ -391,6 +401,14 @@ class Person extends BasePerson implements iPhoto
                     $nameString .= $this->getTitle() . ' ';
                 }
                 $nameString .= $this->getFirstName();
+                break;
+             case 7:
+                if ($this->getLastName()) {
+                    $nameString .= $this->getLastName() . ' ';
+                }
+                if ($this->getFirstName() ){
+                    $nameString .= $this->getFirstName();
+                }
                 break;
             default:
                 $nameString = $this->getFullName();

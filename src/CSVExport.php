@@ -172,7 +172,16 @@ require 'Include/Header.php';
             <label><?= gettext('Family Role') ?>:</label>
             <input type="checkbox" name="PrintFamilyRole" value="1">
           </div>
-          * <?= gettext('Depends whether using person or family output method') ?>
+          
+          <div class="col-md-4">
+            <label><?= gettext('Gender') ?>:</label>
+            <input type="checkbox" name="PrintGender" value="1">
+          </div>
+          
+          <div class="col-md-12">
+            * <?= gettext('Depends whether using person or family output method') ?>
+          </div>
+          
         </div>
       </div>
 

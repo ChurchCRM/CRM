@@ -11,4 +11,5 @@ interface SystemCalendar {
   public function getBackgroundColor(); 
   public function getEvents();
   public function getEventById($Id);
+  public static function isAvailable();
 }
