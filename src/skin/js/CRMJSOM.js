@@ -212,7 +212,7 @@
                           </a>\
                       </li>\
                       <li>\
-                          <a href="' + window.CRM.root+ '/"CartToEvent.php">\
+                          <a href="' + window.CRM.root+ '/CartToEvent.php">\
                               <i class="fa fa fa-ticket text-info"></i>' + i18next.t("Empty Cart to Event") + '\
                           </a>\
                       </li>\

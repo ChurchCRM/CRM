@@ -39,15 +39,15 @@ msgstr "Scan cheque"
 msgid "City, State, Zip"
 msgstr "City, Province, Postal Code"
 
-#: ChurchCRM/dto/SystemConfig.php:78
+#: ChurchCRM/dto/SystemConfig.php:79
 msgid "Default State - Must be 2-letter abbreviation!"
 msgstr "Default Province - Must be 2-letter abbreviation!"
 
-#: ChurchCRM/dto/SystemConfig.php:131
+#: ChurchCRM/dto/SystemConfig.php:132
 msgid "Church State"
 msgstr "Church Province"
 
-#: ChurchCRM/dto/SystemConfig.php:132
+#: ChurchCRM/dto/SystemConfig.php:133
 msgid "Church Zip"
 msgstr "Church Postal Code"
 

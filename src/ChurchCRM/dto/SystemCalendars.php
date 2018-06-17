@@ -1,8 +1,6 @@
 <?php
 
 namespace ChurchCRM\dto;
-use ChurchCRM\SystemCalendars\BirthdaysCalendar;
-use ChurchCRM\SystemCalendars\AnniversariesCalendar;
 use ChurchCRM\Interfaces\SystemCalendar;
 use Propel\Runtime\Collection\ObjectCollection;
 use ChurchCRM\Calendar;
@@ -10,9 +8,15 @@ use ChurchCRM\Calendar;
 class SystemCalendars {
 
   private static function getCalendars() {
+    $systemCalendarNamespace = "ChurchCRM\SystemCalendars\\";
+    $systemCalendarNames = ["BirthdaysCalendar", "AnniversariesCalendar", "HolidayCalendar"];
     $calendars = [];
-    array_push($calendars, new BirthdaysCalendar());
-    array_push($calendars, new AnniversariesCalendar());
+    foreach ($systemCalendarNames as $systemCalendarName)  {
+      $className = $systemCalendarNamespace.$systemCalendarName;
+      if ($className::isAvailable()) {
+        array_push($calendars, new $className());
+      }
+    }
     return $calendars;
   }
   

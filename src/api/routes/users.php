@@ -58,7 +58,7 @@ $app->group('/users', function () {
             if (!$email->send()) {
                 $this->Logger->warn($email->getError());
             }
-            return $response->withStatus(200);
+            return $response->withJson([]);
         } else {
             return $response->withStatus(404, gettext("Bad userId"));
         }

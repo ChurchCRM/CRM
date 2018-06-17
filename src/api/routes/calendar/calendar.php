@@ -45,7 +45,7 @@ function getSystemCalendarEvents(Request $request, Response $response, array $ar
 
     if ($Calendar) {
         $events = $Calendar->getEvents();
-        return $response->withJson($Calendar->toJSON());
+        return $response->withJson($events->toJSON());
     }
 }
 

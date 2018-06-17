@@ -11,6 +11,10 @@ use Propel\Runtime\ActiveQuery\Criteria;
 
 class BirthdaysCalendar implements SystemCalendar {
  
+  public static function isAvailable() {
+    return true;
+  }
+  
   public function getAccessToken() {
     return false;
   }

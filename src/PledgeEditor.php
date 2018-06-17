@@ -736,7 +736,7 @@ require 'Include/Header.php';
                     if ($bEnableNonDeductible) {
                         ?>
                       <td class="TextColumn">
-                        <input   type="number" step="any" name="<?= $fun_id ?>_NonDeductible" id="<?= $fun_id ?>_NonDeductible" value="<?= $nNonDeductible[$fun_id]?>" />
+                        <input type="number" step="any" name="<?= $fun_id ?>_NonDeductible" id="<?= $fun_id ?>_NonDeductible" value="<?= ($nNonDeductible[$fun_id] ? $nNonDeductible[$fun_id] : "")?>" />
                         <br>
                         <font color="red"><?= $sNonDeductibleError[$fun_id]?></font>
                       </td>
