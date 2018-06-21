@@ -9,16 +9,16 @@ $(document).ready(function () {
       'depositDate': $("#depositDate").val()
     };
     
-    if(!$("#depositComment").val().trim() && FindDepositeSlipTranslation){
+    if(!$("#depositComment").val().trim()){
         bootbox.confirm({
-             title: FindDepositeSlipTranslation.addNewDeposit.addNewDepositTitle,
-             message: FindDepositeSlipTranslation.addNewDeposit.blankCommentMessage,
+             title: i18next.t('Add New Deposit'),
+             message: i18next.t('You are about to add a new deposit without a comment'),
              buttons: {
                 cancel: {
-                    label: FindDepositeSlipTranslation.addNewDeposit.btnCancel
+                    label: i18next.t('Cancel')
                 },
                 confirm: {
-                    label: FindDepositeSlipTranslation.addNewDeposit.btnConfirm
+                    label: i18next.t('Confirm')
                 }
             },
              callback: function (result) {
