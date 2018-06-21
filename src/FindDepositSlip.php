@@ -67,59 +67,60 @@ require 'Include/Header.php';
 </div>
 
 <div class="box">
-  <div class="box-header with-border">
-    <h3 class="box-title"><?php echo gettext('Deposits: '); ?></h3>
-  </div>
-  <div class="box-body">
-    <div class="container-fluid">
-      <table class="display responsive nowrap data-table" id="depositsTable" width="100%"></table>
-
-      <button type="button" id="deleteSelectedRows" class="btn btn-danger"
-              disabled> <?= gettext('Delete Selected Rows') ?> </button>
-      <button type="button" id="exportSelectedRows" class="btn btn-success exportButton" data-exportType="ofx"
-              disabled><i class="fa fa-download"></i> <?= gettext('Export Selected Rows (OFX)') ?></button>
-      <button type="button" id="exportSelectedRowsCSV" class="btn btn-success exportButton" data-exportType="csv"
-              disabled><i class="fa fa-download"></i> <?= gettext('Export Selected Rows (CSV)') ?></button>
-      <button type="button" id="generateDepositSlip" class="btn btn-success exportButton" data-exportType="pdf"
-              disabled> <?= gettext('Generate Deposit Slip for Selected Rows (PDF)') ?></button>
+    <div class="box-header with-border">
+        <h3 class="box-title"><?php echo gettext('Deposits: '); ?></h3>
     </div>
-  </div>
+    <div class="box-body">
+        <div class="container-fluid">
+            <table class="display responsive nowrap data-table table table-striped table-hover" id="depositsTable" width="100%"></table>
+
+            <button type="button" id="deleteSelectedRows" class="btn btn-danger"
+                    disabled> <?= gettext('Delete Selected Rows') ?> </button>
+            <button type="button" id="exportSelectedRows" class="btn btn-success exportButton" data-exportType="ofx"
+                    disabled><i class="fa fa-download"></i> <?= gettext('Export Selected Rows (OFX)') ?></button>
+            <button type="button" id="exportSelectedRowsCSV" class="btn btn-success exportButton" data-exportType="csv"
+                    disabled><i class="fa fa-download"></i> <?= gettext('Export Selected Rows (CSV)') ?></button>
+            <button type="button" id="generateDepositSlip" class="btn btn-success exportButton" data-exportType="pdf"
+                    disabled> <?= gettext('Generate Deposit Slip for Selected Rows (PDF)') ?></button>
+        </div>
+    </div>
 </div>
+
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/FindDepositSlip.js"></script>
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
-  $('#deleteSelectedRows').click(function () {
-    var deletedRows = dataT.rows('.selected').data()
-    bootbox.confirm({
+    $('#deleteSelectedRows').click(function () {
+        var deletedRows = dataT.rows('.selected').data()
+        bootbox.confirm({
       title:'<?= gettext("Confirm Delete") ?>',
       message: '<p><?= gettext("Are you sure you want to delete the selected"); ?> '+ deletedRows.length + ' <?= gettext("Deposit(s)"); ?>?' +
         '</p><p><?= gettext("This will also delete all payments associated with this deposit"); ?></p>'+
         '<p><?= gettext("This action CANNOT be undone, and may have legal implications!") ?></p>'+
-        '<p><?= gettext("Please ensure this what you want to do.") ?></p>',
-      buttons: {
+                    '<p><?= gettext("Please ensure this what you want to do.") ?></p>',
+            buttons: {
         cancel : {
-          label: '<?= gettext("Close"); ?>'
-        },
-        confirm: {
-          label: '<?php echo gettext("Delete"); ?>'
-        }
-      },
+                    label: '<?= gettext("Close"); ?>'
+                },
+                confirm: {
+                    label: '<?php echo gettext("Delete"); ?>'
+                }
+            },
       callback: function ( result ) {
         if ( result )
-        {
-          $.each(deletedRows, function (index, value) {
-            window.CRM.APIRequest({
-              method: 'DELETE',
-              path: 'deposits/' + value.Id
-            })
-              .done(function (data) {
-                dataT.rows('.selected').remove().draw(false);
-              });
-          });
-        }
-      }
+                {
+                    $.each(deletedRows, function (index, value) {
+                        window.CRM.APIRequest({
+                            method: 'DELETE',
+                            path: 'deposits/' + value.Id
+                        })
+                                .done(function (data) {
+                                    dataT.rows('.selected').remove().draw(false);
+                                });
+                    });
+                }
+            }
+        });
     });
-  });
 </script>
 
 <?php require "Include/Footer.php" ?>
