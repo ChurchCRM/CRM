@@ -8,6 +8,33 @@ $(document).ready(function () {
       'depositComment': $("#depositComment").val(),
       'depositDate': $("#depositDate").val()
     };
+    
+    if(!$("#depositComment").val().trim()){
+        bootbox.confirm({
+             title: i18next.t('Add New Deposit'),
+             message: i18next.t('You are about to add a new deposit without a comment'),
+             buttons: {
+                cancel: {
+                    label: i18next.t('Cancel')
+                },
+                confirm: {
+                    label: i18next.t('Confirm')
+                }
+            },
+             callback: function (result) {
+                 if(result == true){
+                        addNewDepositRequest(newDeposit);
+                 }
+             }
+        });
+        
+    }else{
+            addNewDepositRequest(newDeposit);
+    }
+
+  });
+  
+  function addNewDepositRequest(newDeposit){
     $.ajax({
       method: "POST",
       url: window.CRM.root + "/api/deposits",
@@ -19,7 +46,7 @@ $(document).ready(function () {
       dataT.row.add(data);
       dataT.rows().invalidate().draw(true);
     });
-  });
+  };
 
   dataT = $("#depositsTable").DataTable({
     "language": {
