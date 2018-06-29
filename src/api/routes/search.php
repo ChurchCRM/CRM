@@ -129,7 +129,7 @@ $app->get('/search/{query}', function ($request, $response, $args) {
                 }
             }
 
-            if (SystemConfig::getBooleanValue("bSearchIncludeCustomProperties")) {
+            if (SystemConfig::getBooleanValue("bSearchIncludeFamilyCustomProperties")) {
                   $customFields = FamilyCustomMasterQuery::create()->find();
                   $familyQuery = FamilyQuery::create()
                           ->joinFamilyCustom()

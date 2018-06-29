@@ -231,7 +231,7 @@ class SystemConfig
         "bEnabledFundraiser" => new ConfigItem(2055, "bEnabledFundraiser", "boolean", "1", gettext("Enable Fundraiser menu.")),
         "bEnabledEmail" => new ConfigItem(2056, "bEnabledEmail", "boolean", "1", gettext("Enable Email menu.")),
         "sNotificationsURL" => new ConfigItem(2057, "sNotificationsURL", "text", "https://raw.githubusercontent.com/ChurchCRM/CRM/Notifications/notifications.json", gettext("ChurchCRM Central Notifications URL")),
-        "bSearchIncludeCustomProperties" => new ConfigItem(2058, "bSearchIncludeCustomProperties", "boolean", "1", gettext("Maximum number of Addresses"))
+        "bSearchIncludeFamilyCustomProperties" => new ConfigItem(2058, "bSearchIncludeFamilyCustomProperties", "boolean", "1", gettext("Include family custom properties in global search."))
         );
   }
 
