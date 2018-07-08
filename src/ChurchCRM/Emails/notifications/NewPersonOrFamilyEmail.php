@@ -77,7 +77,7 @@ class NewPersonOrFamilyEmail extends BaseEmail
         }
         $myTokens['IncludeDataInNewPersonNotifications'] = SystemConfig::getBooleanValue("IncludeDataInNewPersonNotifications");
         $myTokens['sGreeterCustomMsg1'] = SystemConfig::getValue("sGreeterCustomMsg1");
-        $myTokens['sGreeterCustomMsg2'] = SystemConfig::getValue("sGreeterCustomMsg1");
+        $myTokens['sGreeterCustomMsg2'] = SystemConfig::getValue("sGreeterCustomMsg2");
           
         return array_merge($this->getCommonTokens(), $myTokens);
     }
