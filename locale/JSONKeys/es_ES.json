@@ -1576,7 +1576,7 @@
     "Ceuta and Melilla (Ceuta y Melilla)": "Ceuta y Melilla",
     "Chad (Tchad)": "Chad (Tchad)",
     "Chile": "Chile",
-    "China (中国)": "China (中国) ",
+    "China (中国)": "China (中国)",
     "Christmas Island": "Isla Navidad",
     "Clipperton Island": "Isla Clipperton",
     "Cocos (Keeling) Islands (Kepulauan Cocos (Keeling))": "Islas Cocos (Keeling) (Kepulauan Cocos (Keeling))",
@@ -1653,7 +1653,6 @@
     "Kuwait (‫الكويت‬‎)": "Kuwait (‫الكويت‬‎)",
     "Kyrgyzstan (Кыргызстан)": "Kirguistán (Кыргызстан)",
     "Laos (ລາວ)": "Laos (ລາວ)",
-    "Latvia (Latvija)": "Letonia (Latvija)",
     "Lebanon (‫لبنان‬‎)": "Líbano (‫لبنان‬‎)",
     "Lesotho": "Lesoto",
     "Liberia": "Liberia",
@@ -2303,5 +2302,9 @@
     "Database": "Base de Datos",
     "Database Version": "Versión de Base de Datos",
     "Application Prerequisites": "Prerequisitos de Aplicación",
-    "WebServer Modules": "Módules de Servidor Web"
+    "WebServer Modules": "Módules de Servidor Web",
+    "Invalid country name supplied": "Nombre de país provisto es inválido",
+    "LastName FirstName": "Apellido Nombre",
+    "Holidays": "Festivos",
+    "Latvia (LatvijaLatviaLV": "Latvia (LatvijaLatviaLV)"
 }
