@@ -22,6 +22,6 @@ Feature: SystemSettings
     Given I am authenticated as "admin" using "changeme"
     And I am on "/SystemSettings.php"
     And I fill in "new_value[1003]" with "Test's test"
-    And I press "Save Settings"
+    And I click "#save"
     Then the "new_value[1003]" field should contain "Test's test"
     Then the "new_value[1003]" field should not contain "Test\'s test"

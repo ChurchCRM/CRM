@@ -72,7 +72,7 @@ require 'Include/Header.php';
   </div>
   <div class="box-body">
     <div class="container-fluid">
-      <table class="display responsive nowrap data-table" id="depositsTable" width="100%"></table>
+      <table class="display responsive nowrap data-table table table-striped table-hover" id="depositsTable" width="100%"></table>
 
       <button type="button" id="deleteSelectedRows" class="btn btn-danger"
               disabled> <?= gettext('Delete Selected Rows') ?> </button>
@@ -85,6 +85,7 @@ require 'Include/Header.php';
     </div>
   </div>
 </div>
+
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/FindDepositSlip.js"></script>
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
