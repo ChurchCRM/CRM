@@ -62,9 +62,20 @@
             {{/ passwordToken}}
             
             {{# familyLink }}
+              {{# IncludeDataInNewPersonNotifications }}
+                <p>{{FamilyEmail}}</p>
+                <p>{{FamilyPhone}}</p>
+                <p>{{FamilyAddress}}</p>
+              {{/ IncludeDataInNewPersonNotifications}}
               <p><a href="{{familyLink}}">View Family Page</a></p>
             {{/ familyLink }}
-             {{# personLink }}
+            {{# personLink }}
+              {{# IncludeDataInNewPersonNotifications }}
+                <p>{{PersonEmail}}</p>
+                <p>{{PersonPhone}}</p>
+                <p>{{PersonAddress}}</p>
+                <p>{{PersonAge}}</p>
+              {{/ IncludeDataInNewPersonNotifications}}
               <p><a href="{{personLink}}">View Person Page</a></p>
             {{/ personLink }}
             <p>
