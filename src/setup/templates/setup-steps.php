@@ -70,8 +70,8 @@ require '../Include/HeaderNotLoggedIn.php';
                     If you will be accessing from <b>http://www.yourdomain.com/churchcrm</b> then you would
                     enter <b>'/churchcrm'</b> here.
                     <br/>
-                    If you will be accessing from <b>http://www.yourdomain.com</b> then you would enter
-                    <b>''</b> ... an empty string for a top level installation.
+                    If you will be accessing from <b>http://www.yourdomain.com</b> then you leave
+                    this field blank.
 
                     <p/>
                     <i><b>NOTE:</b></i>
