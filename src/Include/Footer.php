@@ -23,15 +23,13 @@ $isAdmin = $_SESSION['user']->isAdmin();
     <div class="pull-right">
         <b><?= gettext('Version') ?></b> <?= $_SESSION['sSoftwareInstalledVersion'] ?>
     </div>
-    	<strong><?= gettext('Copyright') ?>
-			<script type="text/javascript">
-				<!-- Begin
-					copyright=new Date();
-					update=copyright.getFullYear();
-					document.write("2005-"+ update);
-				//  End -->
-			</script> &copy;  <a href="http://www.churchcrm.io" target="_blank" TITLE="www.churchcrm.io"><b>Church</b>CRM</a>.</strong> <?= gettext('All rights reserved') ?>.
-    | <a href="https://twitter.com/church_crm" target="_blank"><i class="fa fa-twitter"></i> <?= gettext("Follow us on Twitter") ?></a>
+    	<strong><?= gettext('Copyright') ?> &copy;
+		
+<!-- Bootstrap 3.3.5 -->
+<script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/bootstrap/js/copyright.js"></script>
+
+<a href="http://www.churchcrm.io" target="_blank" TITLE="www.churchcrm.io"><b>Church</b>CRM</a>.</strong> <?= gettext('All rights reserved') ?>.
+    | <a href="https://twitter.com/church_crm" target="_blank"><i class="fa fa-twitter"></i> <?= gettext("Follow us on Twitter") ?></a>.
 </footer>
 
 <!-- The Right Sidebar -->
