@@ -253,7 +253,7 @@ require 'Include/Header.php';
             ?>
           </div>
         </div>
-        <input type=submit class='btn btn-primary' name=save value="<?= gettext('Save Settings') ?>">
+        <input type='submit' class='btn btn-primary' name='save' id='save' value="<?= gettext('Save Settings') ?>">
     </div>
     </form>
   </div>
