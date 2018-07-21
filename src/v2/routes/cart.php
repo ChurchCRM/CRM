@@ -25,10 +25,9 @@ function getCartView(Request $request, Response $response, array $args) {
   if (!Cart::HasPeople()) {
     return $renderer->render($response, 'cartempty.php', $pageArgs);
   } else {
-    array_merge($pageArgs, array(
+    $pageArgs = array_merge($pageArgs, array(
         'sEmailLink' => getEmailLinks(),
         '$sPhoneLink' => getSMSCartLink(),
-        'iNumPersons' => Cart::CountPeople(),
         'iNumFamilies' => Cart::CountFamilies(),
         'cartPeople' => Cart::getCartPeople()
     ));

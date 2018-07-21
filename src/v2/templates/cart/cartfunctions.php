@@ -19,22 +19,22 @@ use ChurchCRM\dto\SystemURLs;
     }
     if ($_SESSION['user']->isAddRecordsEnabled()) {
       ?>
-      <a href="CartToFamily.php" class="btn btn-app"><i
+      <a href="<?= SystemURLs::getRootPath()."/CartToFamily.php"?>" class="btn btn-app"><i
           class="fa fa-users"></i><?= gettext('Empty Cart to Family') ?></a>
         <?php }
       ?>
-    <a href="CartToEvent.php" class="btn btn-app"><i
+    <a href="<?= SystemURLs::getRootPath()."/CartToEvent.php"?>" class="btn btn-app"><i
         class="fa fa-ticket"></i><?= gettext('Empty Cart to Event') ?></a>
 
     <?php if (SessionUser::getUser()->isCSVExport()) {
       ?>
-      <a href="CSVExport.php?Source=cart" class="btn btn-app"><i
+      <a href="<?= SystemURLs::getRootPath()."/CSVExport.php?Source=cart" ?>" class="btn btn-app"><i
           class="fa fa-file-excel-o"></i><?= gettext('CSV Export') ?></a>
         <?php }
       ?>
-    <a href="MapUsingGoogle.php?GroupID=0" class="btn btn-app"><i
+    <a href="<?= SystemURLs::getRootPath()."/MapUsingGoogle.php?GroupID=0"?>" class="btn btn-app"><i
         class="fa fa-map-marker"></i><?= gettext('Map Cart') ?></a>
-    <a href="Reports/NameTags.php?labeltype=74536&labelfont=times&labelfontsize=36" class="btn btn-app"><i
+    <a href="<?= SystemURLs::getRootPath()."/Reports/NameTags.php?labeltype=74536&labelfont=times&labelfontsize=36"?>" class="btn btn-app"><i
         class="fa fa-file-pdf-o"></i><?= gettext('Name Tags') ?></a>
       <?php
      
@@ -52,7 +52,7 @@ use ChurchCRM\dto\SystemURLs;
           }
         }
         ?>
-      <a href="DirectoryReports.php?cartdir=Cart+Directory" class="btn btn-app"><i
+      <a href="<?= SystemURLs::getRootPath()."/DirectoryReports.php?cartdir=Cart+Directory"?>" class="btn btn-app"><i
           class="fa fa-book"></i><?= gettext('Create Directory From Cart') ?></a>
 
       <script nonce="<?= SystemURLs::getCSPNonce() ?>" ><!--
