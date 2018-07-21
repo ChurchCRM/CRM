@@ -308,7 +308,7 @@ $bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() || ($_SESSION['user']->i
                                 class="fa fa-hand-o-left"></i><?= gettext('Previous Family') ?></a>
                     <?php
     } ?>
-                <a class="btn btn-app btn-danger" role="button" href="FamilyList.php"><i
+                <a class="btn btn-app btn-danger" role="button" href="<?= SystemURLs::getRootPath()?>/v2/family"><i
                             class="fa fa-list-ul"></i><?= gettext('Family List') ?></a>
                 <?php if (($next_id > 0)) {
         ?>

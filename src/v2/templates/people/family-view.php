@@ -79,7 +79,7 @@ $familyAddress = $family->getAddress();
                            href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?FamilyID=<?=$family->getId()?>"><i
                                 class="fa fa-plus-square"></i> <?= gettext('Add New Member') ?></a>
                         <a class="btn btn-app btn-danger" role="button"
-                           href="<?= SystemURLs::getRootPath() ?>/FamilyList.php"><i
+                           href="<?=SystemURLs::getRootPath()?>/v2/family"><i
                                 class="fa fa-list-ul"></i><?= gettext('Family List') ?></a>
                         <?php if ($_SESSION['user']->isDeleteRecordsEnabled()) {
                             ?>
