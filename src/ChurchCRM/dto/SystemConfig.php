@@ -231,9 +231,10 @@ class SystemConfig
         "bEnabledFundraiser" => new ConfigItem(2055, "bEnabledFundraiser", "boolean", "1", gettext("Enable Fundraiser menu.")),
         "bEnabledEmail" => new ConfigItem(2056, "bEnabledEmail", "boolean", "1", gettext("Enable Email menu.")),
         "sNotificationsURL" => new ConfigItem(2057, "sNotificationsURL", "text", "https://raw.githubusercontent.com/ChurchCRM/CRM/Notifications/notifications.json", gettext("ChurchCRM Central Notifications URL")),
-		"sGreeterCustomMsg1" => new ConfigItem(2058, "sGreeterCustomMsg1", "text", "", gettext("Custom message for church greeter email 1, max 255 characters")),
-		"sGreeterCustomMsg2" => new ConfigItem(2059, "sGreeterCustomMsg2", "text", "", gettext("Custom message for church greeter email 2, max 255 characters")),
-        "IncludeDataInNewPersonNotifications" => new ConfigItem(2060, "IncludeDataInNewPersonNotifications", "boolean", "0", gettext("Include contact and demographic data in new member email notification body"))
+        "sGreeterCustomMsg1" => new ConfigItem(2058, "sGreeterCustomMsg1", "text", "", gettext("Custom message for church greeter email 1, max 255 characters")),
+        "sGreeterCustomMsg2" => new ConfigItem(2059, "sGreeterCustomMsg2", "text", "", gettext("Custom message for church greeter email 2, max 255 characters")),
+        "IncludeDataInNewPersonNotifications" => new ConfigItem(2060, "IncludeDataInNewPersonNotifications", "boolean", "0", gettext("Include contact and demographic data in new member email notification body")),
+        "bSearchIncludeFamilyCustomProperties" => new ConfigItem(2061, "bSearchIncludeFamilyCustomProperties", "boolean", "0", gettext("Include family custom properties in global search."))
         );
   }
 
@@ -249,7 +250,7 @@ class SystemConfig
       gettext('Report Settings')  => ["sQBDTSettings","leftX","incrementY","sTaxReport1","sTaxReport2","sTaxReport3","sTaxSigner","sReminder1","sReminderSigner","sReminderNoPledge","sReminderNoPayments","sConfirm1","sConfirm2","sConfirm3","sConfirm4","sConfirm5","sConfirm6","sDear","sConfirmSincerely","sConfirmSigner","sPledgeSummary1","sPledgeSummary2","sDirectoryDisclaimer1","sDirectoryDisclaimer2","bDirLetterHead","sZeroGivers","sZeroGivers2","sZeroGivers3", "iPDFOutputType"],
       gettext('Financial Settings') => ["sDepositSlipType","iChecksPerDepositForm","bDisplayBillCounts","bUseScannedChecks","sElectronicTransactionProcessor","bEnableNonDeductible","iFYMonth","bUseDonationEnvelopes","aFinanceQueries"],
       gettext('System Settings')  => ["sLogLevel", "bRegistered","bCSVAdminOnly","sHeader","bEnableIntegrityCheck","iIntegrityCheckInterval","sLastIntegrityCheckTimeStamp", "iPhotoClientCacheDuration","bHSTSEnable", "iDasbhoardServiceIntervalTime"],
-      gettext('Quick Search') => ["bSearchIncludePersons","bSearchIncludePersonsMax","bSearchIncludeAddresses", "bSearchIncludeAddressesMax", "bSearchIncludeFamilies","bSearchIncludeFamiliesMax","bSearchIncludeFamilyHOH","bSearchIncludeFamilyHOHMax","bSearchIncludeGroups","bSearchIncludeGroupsMax","bSearchIncludeDeposits", "bSearchIncludeDepositsMax", "bSearchIncludePayments", "bSearchIncludePaymentsMax"],
+      gettext('Quick Search') => ["bSearchIncludePersons","bSearchIncludePersonsMax","bSearchIncludeAddresses", "bSearchIncludeAddressesMax", "bSearchIncludeFamilies","bSearchIncludeFamiliesMax","bSearchIncludeFamilyHOH","bSearchIncludeFamilyHOHMax","bSearchIncludeGroups","bSearchIncludeGroupsMax","bSearchIncludeDeposits", "bSearchIncludeDepositsMax", "bSearchIncludePayments", "bSearchIncludePaymentsMax", "bSearchIncludeCustomProperties"],
       gettext('Backup')  => ["sLastBackupTimeStamp","bEnableExternalBackupTarget","sExternalBackupType","sExternalBackupAutoInterval","sExternalBackupEndpoint","sExternalBackupUsername","sExternalBackupPassword"],
       gettext('Localization')  => ["sLanguage","sDistanceUnit","sPhoneFormat","sPhoneFormatWithExt","sPhoneFormatCell","sDateFormatLong","sDateFormatNoYear","sDateFormatShort","sDateTimeFormat","sDateFilenameFormat","sCSVExportDelemiter","sCSVExportCharset","sDatePickerFormat","sDatePickerPlaceHolder"],
       gettext('Integration')  => ["sMailChimpApiKey","sGoogleTrackingID","bEnableGravatarPhotos","bEnableGooglePhotos","iRemotePhotoCacheDuration","sNexmoAPIKey","sNexmoAPISecret","sNexmoFromNumber","sOLPURL","sOLPUserName","sOLPPassword"],
