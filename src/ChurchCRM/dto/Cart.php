@@ -190,12 +190,9 @@ class Cart
   }
   
   public static function getCartPeople() {
-
-    $selectCriteria = new Criteria();
-    $selectCriteria->add(PersonTableMap::COL_PER_ID, ConvertCartToString($_SESSION['aPeopleCart']), Criteria::IN);
-
+    
     $people = PersonQuery::create()
-            ->add($selectCriteria)
+            ->filterById($_SESSION['aPeopleCart'])
             ->find();
     return $people;
   }
