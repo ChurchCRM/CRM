@@ -232,7 +232,7 @@ window.NewOrEditEventModal = {
     }
     $('#EventDateRange').daterangepicker({
       timePicker: true,
-      timePickerIncrement: 30,
+      timePickerIncrement: 15,
       linkedCalendars: true,
       showDropdowns: true,
       locale: {
