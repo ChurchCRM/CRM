@@ -234,7 +234,8 @@ class SystemConfig
         "sGreeterCustomMsg1" => new ConfigItem(2058, "sGreeterCustomMsg1", "text", "", gettext("Custom message for church greeter email 1, max 255 characters")),
         "sGreeterCustomMsg2" => new ConfigItem(2059, "sGreeterCustomMsg2", "text", "", gettext("Custom message for church greeter email 2, max 255 characters")),
         "IncludeDataInNewPersonNotifications" => new ConfigItem(2060, "IncludeDataInNewPersonNotifications", "boolean", "0", gettext("Include contact and demographic data in new member email notification body")),
-        "bSearchIncludeFamilyCustomProperties" => new ConfigItem(2061, "bSearchIncludeFamilyCustomProperties", "boolean", "0", gettext("Include family custom properties in global search."))
+        "bSearchIncludeFamilyCustomProperties" => new ConfigItem(2061, "bSearchIncludeFamilyCustomProperties", "boolean", "0", gettext("Include family custom properties in global search.")),
+        "sMailtoDelimiter" => new ConfigItem(2062, "sMailtoDelimiter", "text", ";", gettext("Delimiter to separate emails in mailto: links")),
         );
   }
 

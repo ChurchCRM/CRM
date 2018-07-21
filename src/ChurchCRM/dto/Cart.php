@@ -197,4 +197,32 @@ class Cart
     return $people;
   }
   
+  public static function getEmailLink() {
+    /* @var $cartPerson ChurchCRM\Person */
+    $people = Cart::getCartPeople();
+    $emailAddressArray = array();
+    foreach($people as $cartPerson)
+    {
+      array_push($emailAddressArray, $cartPerson->getEmail());
+    }
+
+    $sEmailLink = implode(SystemConfig::getValue("sMailtoDelimiter"), $emailAddressArray);
+    if (SystemConfig::getValue('sToEmailAddress') != '' && !stristr($sEmailLink, SystemConfig::getValue('sToEmailAddress'))) {
+      $sEmailLink .= SystemConfig::getValue("sMailtoDelimiter") . SystemConfig::getValue('sToEmailAddress');
+    }
+    return $sEmailLink;
+  }
+  
+  public static function getSMSLink() {
+    
+     /* @var $cartPerson ChurchCRM\Person */
+    $people = Cart::getCartPeople();
+    $SMSNumberArray = array();
+    foreach($people as $cartPerson)
+    {
+      array_push($SMSNumberArray, $cartPerson->getCellPhone());
+    }
+    $sSMSLink = implode(",", $SMSNumberArray);
+    return $sSMSLink;
+  }
 }
