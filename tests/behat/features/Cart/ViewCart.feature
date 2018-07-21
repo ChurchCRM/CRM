@@ -9,7 +9,7 @@ Feature: Cart
     Then I should see "You have no items in your cart"
     And I am on "PersonView.php?PersonID=1"
     And I click "#AddPersonToCart"
-    And I am on "CartView.php"
+     And I am on "/v2/cart"
     Then I should see "Cart Functions"
     And I should see "Church Admin"
     And I click "#emptyCart"
