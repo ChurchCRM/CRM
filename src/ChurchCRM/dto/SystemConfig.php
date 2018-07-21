@@ -231,7 +231,10 @@ class SystemConfig
         "bEnabledFundraiser" => new ConfigItem(2055, "bEnabledFundraiser", "boolean", "1", gettext("Enable Fundraiser menu.")),
         "bEnabledEmail" => new ConfigItem(2056, "bEnabledEmail", "boolean", "1", gettext("Enable Email menu.")),
         "sNotificationsURL" => new ConfigItem(2057, "sNotificationsURL", "text", "https://raw.githubusercontent.com/ChurchCRM/CRM/Notifications/notifications.json", gettext("ChurchCRM Central Notifications URL")),
-        "bSearchIncludeFamilyCustomProperties" => new ConfigItem(2058, "bSearchIncludeFamilyCustomProperties", "boolean", "1", gettext("Include family custom properties in global search."))
+        "sGreeterCustomMsg1" => new ConfigItem(2058, "sGreeterCustomMsg1", "text", "", gettext("Custom message for church greeter email 1, max 255 characters")),
+        "sGreeterCustomMsg2" => new ConfigItem(2059, "sGreeterCustomMsg2", "text", "", gettext("Custom message for church greeter email 2, max 255 characters")),
+        "IncludeDataInNewPersonNotifications" => new ConfigItem(2060, "IncludeDataInNewPersonNotifications", "boolean", "0", gettext("Include contact and demographic data in new member email notification body")),
+        "bSearchIncludeFamilyCustomProperties" => new ConfigItem(2061, "bSearchIncludeFamilyCustomProperties", "boolean", "0", gettext("Include family custom properties in global search."))
         );
   }
 
@@ -241,7 +244,7 @@ class SystemConfig
       gettext('Church Information') =>["sChurchName","sChurchAddress","sChurchCity","sChurchState","sChurchZip","sChurchCountry","sChurchPhone","sChurchEmail","sHomeAreaCode","sTimeZone","iChurchLatitude","iChurchLongitude", "sChurchWebSite","sChurchFB", "sChurchTwitter"],
       gettext('User setup') => ["iMinPasswordLength","iMinPasswordChange","iMaxFailedLogins","iSessionTimeout","aDisallowedPasswords","bEnableLostPassword"],
       gettext('Email Setup')  => ["sSMTPHost","bSMTPAuth","sSMTPUser","sSMTPPass", "iSMTPTimeout","sToEmailAddress", "bPHPMailerAutoTLS","sPHPMailerSMTPSecure"],
-      gettext('People Setup')  => ["sDirClassifications","sDirRoleHead","sDirRoleSpouse","sDirRoleChild","sDefaultCity","sDefaultState","sDefaultCountry","bShowFamilyData","bHidePersonAddress","bHideFriendDate","bHideFamilyNewsletter","bHideWeddingDate","bHideLatLon","bForceUppercaseZip","bEnableSelfRegistration", "bAllowEmptyLastName", "iPersonNameStyle", "iProfilePictureListSize", "sNewPersonNotificationRecipientIDs"],
+      gettext('People Setup')  => ["sDirClassifications","sDirRoleHead","sDirRoleSpouse","sDirRoleChild","sDefaultCity","sDefaultState","sDefaultCountry","bShowFamilyData","bHidePersonAddress","bHideFriendDate","bHideFamilyNewsletter","bHideWeddingDate","bHideLatLon","bForceUppercaseZip","bEnableSelfRegistration", "bAllowEmptyLastName", "iPersonNameStyle", "iProfilePictureListSize", "sNewPersonNotificationRecipientIDs", "IncludeDataInNewPersonNotifications","sGreeterCustomMsg1","sGreeterCustomMsg2"],
       gettext('Enabled Features')  => ["bEnabledFinance", "bEnabledSundaySchool","bEnabledEvents","bEnabledCalendar","bEnabledFundraiser","bEnabledEmail", "bEnabledMenuLinks"],
       gettext('Map Settings')  => ["sGeoCoderProvider","sGoogleMapKey","sBingMapKey","sGMapIcons", "iMapZoom","sISTusername","sISTpassword"],
       gettext('Report Settings')  => ["sQBDTSettings","leftX","incrementY","sTaxReport1","sTaxReport2","sTaxReport3","sTaxSigner","sReminder1","sReminderSigner","sReminderNoPledge","sReminderNoPayments","sConfirm1","sConfirm2","sConfirm3","sConfirm4","sConfirm5","sConfirm6","sDear","sConfirmSincerely","sConfirmSigner","sPledgeSummary1","sPledgeSummary2","sDirectoryDisclaimer1","sDirectoryDisclaimer2","bDirLetterHead","sZeroGivers","sZeroGivers2","sZeroGivers3", "iPDFOutputType"],
