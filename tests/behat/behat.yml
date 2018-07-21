@@ -14,4 +14,4 @@ default:
       selenium2:
         capabilities:
           platform: Windows 10
-          version: 64.0
+          version: 67.0
