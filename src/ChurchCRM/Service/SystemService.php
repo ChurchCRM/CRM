@@ -39,6 +39,14 @@ class SystemService
 
         return $version;
     }
+    
+    static public function getCopyrightDate()
+    {
+        $composerFile = file_get_contents(SystemURLs::getDocumentRoot() . '/composer.json');
+        $composerJson = json_decode($composerFile, true);
+        $version = new \DateTime(composerJson['date']);
+        return $version->format("Y");
+    }
 
     public function restoreDatabaseFromBackup($file)
     {
