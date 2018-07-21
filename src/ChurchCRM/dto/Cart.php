@@ -206,7 +206,7 @@ class Cart
       array_push($emailAddressArray, $cartPerson->getEmail());
     }
 
-    $sEmailLink = implode(SystemConfig::getValue("sMailtoDelimiter"), $emailAddressArray);
+    $sEmailLink = implode(SystemConfig::getValue("sMailtoDelimiter"), array_unique(array_filter($emailAddressArray)));
     if (SystemConfig::getValue('sToEmailAddress') != '' && !stristr($sEmailLink, SystemConfig::getValue('sToEmailAddress'))) {
       $sEmailLink .= SystemConfig::getValue("sMailtoDelimiter") . SystemConfig::getValue('sToEmailAddress');
     }

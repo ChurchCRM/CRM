@@ -540,5 +540,17 @@ class Person extends BasePerson implements iPhoto
     public function getThumbnailURL() {
       return SystemURLs::getRootPath() . '/api/person/' . $this->getId() . '/thumbnail';
     }
+    
+    public function getEmail() {
+      if (parent::getEmail() == null)
+      {
+        $family = $this->getFamily();
+        if ($family != null)
+        {
+          return $family->getEmail();
+        }
+      }
+      return parent::getEmail();
+    }
 
 }
