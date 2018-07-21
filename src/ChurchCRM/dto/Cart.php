@@ -4,6 +4,8 @@ namespace ChurchCRM\dto;
 use ChurchCRM\Person2group2roleP2g2rQuery;
 use ChurchCRM\PersonQuery;
 use ChurchCRM\GroupQuery;
+use ChurchCRM\Map\PersonTableMap;
+use Propel\Runtime\ActiveQuery\Criteria;
 
 class Cart
 {
@@ -185,6 +187,17 @@ class Cart
     }
     
     $_SESSION['aPeopleCart'] = [];
+  }
+  
+  public static function getCartPeople() {
+
+    $selectCriteria = new Criteria();
+    $selectCriteria->add(PersonTableMap::COL_PER_ID, ConvertCartToString($_SESSION['aPeopleCart']), Criteria::IN);
+
+    $people = PersonQuery::create()
+            ->add($selectCriteria)
+            ->find();
+    return $people;
   }
   
 }

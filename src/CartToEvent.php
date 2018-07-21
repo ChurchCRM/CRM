@@ -42,8 +42,8 @@ if (isset($_POST['Submit']) && count($_SESSION['aPeopleCart']) > 0 && isset($_PO
     }
 
     $sGlobalMessage = $iCount.' records(s) successfully added to selected Event.';
-
-    RedirectUtils::Redirect('CartView.php?Action=EmptyCart&Message=aMessage&iCount='.$iCount.'&iEID='.$iEventID);
+    // TODO: do this in API
+    RedirectUtils::Redirect('v2/cart?Action=EmptyCart&Message=aMessage&iCount='.$iCount.'&iEID='.$iEventID);
 }
 
 // Set the page title and include HTML header
