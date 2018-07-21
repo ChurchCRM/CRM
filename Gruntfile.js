@@ -400,7 +400,6 @@ module.exports = function (grunt) {
 
         var curFile = grunt.file.readJSON(file);
         curFile.version = version;
-        var date = new Date();
         curFile.time =  moment().format("YYYY-MM-DD HH:MM:SS");
         var stringFile = JSON.stringify(curFile, null, 4);
         grunt.file.write(file, stringFile);
