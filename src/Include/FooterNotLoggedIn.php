@@ -1,5 +1,6 @@
 <?php
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Service\SystemService;
 
 ?>
     <div style="background-color: white; padding-top: 5px; padding-bottom: 5px; text-align: center; position: fixed; bottom: 0; width: 100%">
