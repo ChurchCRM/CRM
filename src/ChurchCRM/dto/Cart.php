@@ -202,13 +202,14 @@ class Cart
     /* @var $cartPerson ChurchCRM\Person */
     $people = Cart::getCartPeople();
     $emailAddressArray = array();
-    foreach($people as $cartPerson)
-    {
-      array_push($emailAddressArray, $cartPerson->getEmail());
+    foreach($people as $cartPerson) {
+      if (!empty($cartPerson->getEmail())) {
+        array_push($emailAddressArray, $cartPerson->getEmail());
+      }
     }
     $delimiter = SessionUser::getUser()->getUserConfigString("sMailtoDelimiter");
     $sEmailLink = implode($delimiter, array_unique(array_filter($emailAddressArray)));
-    if (SystemConfig::getValue('sToEmailAddress') != '' && !stristr($sEmailLink, SystemConfig::getValue('sToEmailAddress'))) {
+    if (!empty(SystemConfig::getValue('sToEmailAddress')) && !stristr($sEmailLink, SystemConfig::getValue('sToEmailAddress'))) {
       $sEmailLink .= $delimiter . SystemConfig::getValue('sToEmailAddress');
     }
     return $sEmailLink;
@@ -221,9 +222,15 @@ class Cart
     $SMSNumberArray = array();
     foreach($people as $cartPerson)
     {
-      array_push($SMSNumberArray, $cartPerson->getCellPhone());
+      if (!empty($cartPerson->getCellPhone())) {
+        array_push($SMSNumberArray, $cartPerson->getCellPhone());
+      }
     }
     $sSMSLink = implode(",", $SMSNumberArray);
     return $sSMSLink;
+  }
+  
+  public static function EmptyAll() {
+    Cart::RemovePersonArray($_SESSION['aPeopleCart']);
   }
 }

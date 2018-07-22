@@ -124,7 +124,7 @@ class Person extends BasePerson implements iPhoto
     {
       $classification = null;
       $clsId = $this->getClsId();
-      if (isset($clsId) && $clsId !== 0) {
+      if (!empty($clsId)) {
         $classification = ListOptionQuery::create()->filterById(1)->filterByOptionId($clsId)->findOne();
       }
       return $classification;

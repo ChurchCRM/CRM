@@ -18,7 +18,7 @@ require 'Include/Functions.php';
 
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
-
+use ChurchCRM\dto\Cart;
 // Security: User must have Manage Groups & Roles permission
 if (!$_SESSION['user']->isManageGroupsEnabled()) {
     RedirectUtils::Redirect('Menu.php');
@@ -40,6 +40,7 @@ if (isset($_POST['Submit']) && count($_SESSION['aPeopleCart']) > 0 && isset($_PO
         RunQuery($sSQL);
         $iCount++;
     }
+    Cart::EmptyAll();
 
     $sGlobalMessage = $iCount.' records(s) successfully added to selected Event.';
     // TODO: do this in API
