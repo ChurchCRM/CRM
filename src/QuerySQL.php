@@ -175,7 +175,7 @@ function RunFreeQuery()
         echo '</table>';
         echo '<p align="center">';
 
-        if (count($aHiddenFormField) > 0) { // TODO Don't post to CartView.php ?>
+        if (count($aHiddenFormField) > 0) { // TODO Don't post to CartView.php?>
 			<form method="post" action="CartView.php"><p align="center"> 
 				<input type="hidden" value="<?= implode(',', $aHiddenFormField) ?>" name="BulkAddToCart">
 				<input type="submit" class="btn" name="AddToCartSubmit" value="<?php echo gettext('Add Results To Cart'); ?>">&nbsp;
