@@ -6,6 +6,7 @@ use ChurchCRM\PersonQuery;
 use ChurchCRM\GroupQuery;
 use ChurchCRM\Map\PersonTableMap;
 use Propel\Runtime\ActiveQuery\Criteria;
+use ChurchCRM\SessionUser;
 
 class Cart
 {
@@ -205,10 +206,10 @@ class Cart
     {
       array_push($emailAddressArray, $cartPerson->getEmail());
     }
-
-    $sEmailLink = implode(SystemConfig::getValue("sMailtoDelimiter"), array_unique(array_filter($emailAddressArray)));
+    $delimiter = SessionUser::getUser()->getUserConfigString("sMailtoDelimiter");
+    $sEmailLink = implode($delimiter, array_unique(array_filter($emailAddressArray)));
     if (SystemConfig::getValue('sToEmailAddress') != '' && !stristr($sEmailLink, SystemConfig::getValue('sToEmailAddress'))) {
-      $sEmailLink .= SystemConfig::getValue("sMailtoDelimiter") . SystemConfig::getValue('sToEmailAddress');
+      $sEmailLink .= $delimiter . SystemConfig::getValue('sToEmailAddress');
     }
     return $sEmailLink;
   }
