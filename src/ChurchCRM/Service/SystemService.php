@@ -44,7 +44,14 @@ class SystemService
     {
         $composerFile = file_get_contents(SystemURLs::getDocumentRoot() . '/composer.json');
         $composerJson = json_decode($composerFile, true);
-        $version = new \DateTime($composerJson['date']);
+        if ((!empty($composerJson)) && array_key_exists('date', $composerJson) && (!empty($composerJson['date'])))
+        {
+          $version = new \DateTime($composerJson['date']);
+        }
+        else{
+          $version = new \DateTime();
+        }
+        
         return $version->format("Y");
     }
 
