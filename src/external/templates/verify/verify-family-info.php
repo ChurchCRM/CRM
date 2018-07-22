@@ -87,7 +87,7 @@ $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
                       <br/>
                   </li>
                   <li class="list-group-item">
-                    <b>Classification:</b> <?= cation::getName($person->getClsId()) ?>
+                    <b>Classification:</b> <?= Classification::getName($person->getClsId()) ?>
                   </li>
                   <?php if (count($person->getPerson2group2roleP2g2rs()) > 0) {?>
                   <li class="list-group-item">
