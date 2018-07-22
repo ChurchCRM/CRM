@@ -28,6 +28,11 @@ class FeatureContext extends MinkContext
     {
       #borrowed from https://vivait.co.uk/labs/handling-authentication-when-using-behat-mink
       $this->visit('/Login');
+      if ( strpos($this->getSession()->getCurrentUrl(),"SystemDBUpdate"))
+      {
+        // do the upgrade,
+        $this->pressButton("upgradeDatabase");
+      }
       $this->fillField('UserBox', $username);
       $this->fillField('PasswordBox', $password);
       $this->pressButton('Login');

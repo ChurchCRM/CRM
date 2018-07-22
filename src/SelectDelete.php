@@ -118,7 +118,7 @@ if (isset($_GET['Confirmed'])) {
     }
 
     // Redirect back to the family listing
-    RedirectUtils::Redirect('FamilyList.php');
+    RedirectUtils::Redirect(SystemURLs::getRootPath().'/v2/family');
 }
 
 
