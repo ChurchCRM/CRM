@@ -586,7 +586,7 @@ $bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() ||
                                 // Loop through the rows
                                 while ($aRow = mysqli_fetch_array($rsAssignedGroups)) {
                                     extract($aRow); ?>
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <p><br/></p>
                                         <!-- Info box -->
                                         <div class="box box-info">
