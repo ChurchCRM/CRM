@@ -541,9 +541,11 @@
     window.CRM.dashboard = {
       renderers: {
         EventsCounters: function (data) {
-          document.getElementById('BirthdateNumber').innerText = data.Birthdays;
-          document.getElementById('AnniversaryNumber').innerText = data.Anniversaries;
-          document.getElementById('EventsNumber').innerText = data.Events;
+          if (document.getElementById('BirthdateNumber') != null) {
+            document.getElementById('BirthdateNumber').innerText = data.Birthdays;
+            document.getElementById('AnniversaryNumber').innerText = data.Anniversaries;
+            document.getElementById('EventsNumber').innerText = data.Events;
+          }
         },
         FamilyCount: function (data) {
           var dashBoardFam = document.getElementById('familyCountDashboard');
