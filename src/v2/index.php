@@ -34,6 +34,7 @@ require __DIR__.'/routes/person.php';
 
 require __DIR__.'/routes/email.php';
 require __DIR__.'/routes/calendar.php';
+require __DIR__.'/routes/cart.php';
 
 // Run app
 $app->run();

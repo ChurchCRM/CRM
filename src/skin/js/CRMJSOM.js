@@ -192,7 +192,7 @@
               <li id="showWhenCartNotEmpty">\
                   <ul class="menu">\
                       <li>\
-                          <a href="' + window.CRM.root+ '/CartView.php">\
+                          <a href="' + window.CRM.root+ '/v2/cart">\
                               <i class="fa fa-shopping-cart text-green"></i>' + i18next.t("View Cart") + '\
                           </a>\
                       </li>\
