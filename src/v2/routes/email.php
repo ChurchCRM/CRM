@@ -11,12 +11,13 @@ use Slim\Http\Response;
 use Slim\Views\PhpRenderer;
 
 $app->group('/email', function () {
-    $this->get('/debug', 'testEmailConnection')->add(new AdminRoleAuthMiddleware());
-    $this->get('/dashboard', 'getEmailDashboard');
-    $this->get('/duplicate', 'getDuplicateEmails');
+    $this->get('/debug', 'testEmailConnectionMVC')->add(new AdminRoleAuthMiddleware());
+    $this->get('/dashboard', 'getEmailDashboardMVC');
+    $this->get('/duplicate', 'getDuplicateEmailsMVC');
+    $this->get('/missing', 'getFamiliesWithoutEmailsMVC');
 });
 
-function getEmailDashboard(Request $request, Response $response, array $args)
+function getEmailDashboardMVC(Request $request, Response $response, array $args)
 {
     $renderer = new PhpRenderer('templates/email/');
     $mailchimp = new MailChimpService();
@@ -31,7 +32,7 @@ function getEmailDashboard(Request $request, Response $response, array $args)
     return $renderer->render($response, 'dashboard.php', $pageArgs);
 }
 
-function testEmailConnection(Request $request, Response $response, array $args)
+function testEmailConnectionMVC(Request $request, Response $response, array $args)
 {
     $renderer = new PhpRenderer('templates/email/');
 
@@ -70,8 +71,12 @@ function testEmailConnection(Request $request, Response $response, array $args)
     return $renderer->render($response, 'debug.php', $pageArgs);
 }
 
-function getDuplicateEmails(Request $request, Response $response, array $args)
+function getDuplicateEmailsMVC(Request $request, Response $response, array $args)
 {
-    $renderer = new PhpRenderer('templates/email/');
-    return $renderer->render($response, 'duplicate.php');
+    return renderPage($response,'templates/email/',  'duplicate.php', _("Duplicate Emails"));
+}
+
+function getFamiliesWithoutEmailsMVC(Request $request, Response $response, array $args)
+{
+    return renderPage($response,'templates/email/',  'without.php', _("Families Without Emails"));
 }
