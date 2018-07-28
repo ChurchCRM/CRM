@@ -47,3 +47,5 @@ src/tmp_attach
 src/logs/*.log
 
 error.log
+
+nbproject/*

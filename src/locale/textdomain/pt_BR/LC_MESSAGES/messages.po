@@ -17,12 +17,12 @@ msgid "Confirm Delete Automatic payment"
 msgstr "Confirmar apagar débito automático"
 
 #: AutoPaymentDelete.php:63 Checkin.php:286 Checkin.php:368
-#: DepositSlipEditor.php:228 DonationFundEditor.php:153
+#: DepositSlipEditor.php:231 DonationFundEditor.php:153
 #: DonationFundEditor.php:183 EditEventAttendees.php:76
 #: ElectronicPaymentList.php:219 ElectronicPaymentList.php:284
 #: EventNames.php:302 FamilyCustomFieldsEditor.php:324
 #: FamilyCustomFieldsEditor.php:382 FamilyView.php:663 FamilyView.php:715
-#: FamilyView.php:774 FamilyView.php:911 FindDepositSlip.php:104
+#: FamilyView.php:774 FamilyView.php:911 FindDepositSlip.php:105
 #: FundRaiserEditor.php:200 ListEvents.php:241 PaddleNumList.php:55
 #: PersonCustomFieldsEditor.php:315 PersonCustomFieldsEditor.php:384
 #: PersonView.php:940 PledgeDelete.php:53 PropertyList.php:65
@@ -54,7 +54,7 @@ msgstr "Cancelar"
 msgid "Automatic payment configuration for the "
 msgstr "Configuração de débito automático para "
 
-#: AutoPaymentEditor.php:786 CanvassEditor.php:238 DepositSlipEditor.php:94
+#: AutoPaymentEditor.php:786 CanvassEditor.php:238 DepositSlipEditor.php:97
 #: DonatedItemEditor.php:293 FamilyEditor.php:647 FamilyEditor.php:731
 #: FamilyEditor.php:795 FamilyEditor.php:869 FamilyEditor.php:891
 #: FamilyEditor.php:922 FamilyEditor.php:1115 FundRaiserEditor.php:142
@@ -476,16 +476,16 @@ msgstr "Envelope de doação"
 
 #: CSVExport.php:127 CSVImport.php:223 CartToFamily.php:281
 #: EditEventAttendees.php:43 EventAttendance.php:176 FamilyEditor.php:737
-#: FamilyList.php:46 FamilyView.php:254 GroupReports.php:124
-#: PersonEditor.php:961 PersonEditor.php:963 PersonView.php:302
-#: PrintView.php:199 Reports/ConfirmReport.php:135
-#: Reports/ConfirmReportEmail.php:140 SelectList.php:965 SelectList.php:966
-#: SelectList.php:1041
+#: FamilyView.php:254 GroupReports.php:124 PersonEditor.php:961
+#: PersonEditor.php:963 PersonView.php:302 PrintView.php:199
+#: Reports/ConfirmReport.php:135 Reports/ConfirmReportEmail.php:140
+#: SelectList.php:965 SelectList.php:966 SelectList.php:1041
 #: external/templates/registration/family-register-done.php:30
 #: external/templates/registration/family-register.php:68
 #: external/templates/verify/verify-family-info.php:27
 #: external/templates/verify/verify-family-info.php:70
 #: sundayschool/SundaySchoolClassView.php:207
+#: v2/templates/people/family-list.php:33
 #: v2/templates/people/family-view.php:153
 #: v2/templates/people/family-view.php:299 queryparameteroptions_qpo.php:8
 msgid "Home Phone"
@@ -786,12 +786,11 @@ msgid "Add Cart to Family"
 msgstr "Adicionar Carrinho a uma Família"
 
 #: CartToFamily.php:155 CartView.php:271 Checkin.php:311
-#: ChurchCRM/Emails/notifications/NewPersonOrFamilyEmail.php:63
 #: DonationFundEditor.php:150 DonationFundEditor.php:213
 #: EditEventAttendees.php:32 EditEventAttendees.php:41 EventAttendance.php:174
 #: EventNames.php:263 FamilyCustomFieldsEditor.php:320
-#: FamilyCustomFieldsEditor.php:434 FamilyList.php:44 FamilyView.php:550
-#: GeoPage.php:357 GroupEditor.php:73 GroupPropsFormEditor.php:285
+#: FamilyCustomFieldsEditor.php:434 FamilyView.php:550 GeoPage.php:357
+#: GroupEditor.php:73 GroupPropsFormEditor.php:285
 #: GroupPropsFormEditor.php:397 GroupView.php:255 GroupView.php:288
 #: PersonCustomFieldsEditor.php:311 PersonCustomFieldsEditor.php:442
 #: PersonView.php:683 PersonView.php:788 PrintView.php:337 PrintView.php:463
@@ -801,6 +800,7 @@ msgstr "Adicionar Carrinho a uma Família"
 #: SelectList.php:988 UserList.php:54 VolunteerOpportunityEditor.php:75
 #: VolunteerOpportunityEditor.php:354 VolunteerOpportunityEditor.php:421
 #: sundayschool/SundaySchoolClassView.php:202
+#: v2/templates/people/family-list.php:31
 #: v2/templates/people/family-view.php:374 queryparameteroptions_qpo.php:4
 msgid "Name"
 msgstr "Nome"
@@ -1043,47 +1043,47 @@ msgstr "Converter próximo"
 msgid "Convert All"
 msgstr "Converter todos"
 
-#: DepositSlipEditor.php:50
+#: DepositSlipEditor.php:53
 msgid "Deposit Slip Number: "
 msgstr "Número de erro do depósito: "
 
-#: DepositSlipEditor.php:72
+#: DepositSlipEditor.php:75
 msgid "Deposit Details: "
 msgstr "Detalhes do Depósito: "
 
-#: DepositSlipEditor.php:89
+#: DepositSlipEditor.php:92
 msgid "Close deposit slip (remember to press Save)"
 msgstr "Fecha erro do depósito (lembre-se de pressionar Salvar)"
 
-#: DepositSlipEditor.php:97
+#: DepositSlipEditor.php:100
 msgid "Deposit Slip Report"
 msgstr "Relatório de erro do depósito"
 
-#: DepositSlipEditor.php:102
+#: DepositSlipEditor.php:105
 msgid "Important note: failed transactions will be deleted permanantly when the deposit slip is closed."
 msgstr "Nota importante: transações com falha serão excluídos permanantly quando o comprovante de depósito está fechada."
 
-#: DepositSlipEditor.php:111
+#: DepositSlipEditor.php:114
 msgid "Deposit Summary: "
 msgstr "Resumo dos Depósitos: "
 
-#: DepositSlipEditor.php:144
+#: DepositSlipEditor.php:147
 msgid "Payments on this deposit slip:"
 msgstr "Pagamentos neste depósito de erros:"
 
-#: DepositSlipEditor.php:149 eGive.php:267
+#: DepositSlipEditor.php:152 eGive.php:267
 msgid "Import eGive"
 msgstr "Importar eGive"
 
-#: DepositSlipEditor.php:151
+#: DepositSlipEditor.php:154
 msgid "Add Payment"
 msgstr "Incluir pagamento"
 
-#: DepositSlipEditor.php:155
+#: DepositSlipEditor.php:158
 msgid "Load Authorized Transactions"
 msgstr "Carregar transações autorizadas"
 
-#: DepositSlipEditor.php:156
+#: DepositSlipEditor.php:159
 msgid "Run Transactions"
 msgstr "Executar transações"
 
@@ -1116,12 +1116,13 @@ msgstr "Informações para incluir"
 #: CSVExport.php:97 CSVImport.php:217 CSVImport.php:218 CartToFamily.php:235
 #: CartToFamily.php:240 CartView.php:272 DirectoryReports.php:172
 #: DirectoryReports.php:246 FamilyEditor.php:664 FamilyEditor.php:668
-#: FamilyList.php:45 FamilyView.php:214 GeoPage.php:358 GroupReports.php:123
-#: Menu.php:309 Menu.php:338 PersonEditor.php:831 PersonEditor.php:847
-#: PersonView.php:272 Register.php:43 Reports/ConfirmReportEmail.php:125
-#: Reports/ConfirmReportEmail.php:130 api/routes/search.php:97
+#: FamilyView.php:214 GeoPage.php:358 GroupReports.php:123 Menu.php:309
+#: Menu.php:338 PersonEditor.php:831 PersonEditor.php:847 PersonView.php:272
+#: Register.php:43 Reports/ConfirmReportEmail.php:125
+#: Reports/ConfirmReportEmail.php:130 api/routes/search.php:98
 #: external/templates/registration/family-register-done.php:29
 #: external/templates/registration/family-register.php:35
+#: v2/templates/people/family-list.php:32
 #: v2/templates/people/family-view.php:211
 msgid "Address"
 msgstr "Endereço"
@@ -1875,22 +1876,23 @@ msgstr "Dezembro"
 msgid "Unk"
 msgstr "Desconhecido"
 
-#: FamilyList.php:30 FamilyView.php:312 v2/templates/people/family-view.php:83
+#: FamilyView.php:312 v2/templates/people/family-list.php:14
+#: v2/templates/people/family-view.php:83
 #, fuzzy
 msgid "Family List"
 msgstr "Lista de Famílias"
 
-#: FamilyList.php:35
+#: v2/templates/people/family-list.php:21
 msgid "Add Family"
 msgstr "   Adicionar Família"
 
 #: ChurchCRM/model/ChurchCRM/Family.php:178
-#: ChurchCRM/model/ChurchCRM/Person.php:151 FamilyList.php:49 Menu.php:310
-#: PersonEditor.php:393
+#: ChurchCRM/model/ChurchCRM/Person.php:151 Menu.php:310 PersonEditor.php:393
+#: v2/templates/people/family-list.php:36
 msgid "Created"
 msgstr "Criada"
 
-#: FamilyList.php:50
+#: v2/templates/people/family-list.php:37
 msgid "Edited"
 msgstr "Editada"
 
@@ -2031,7 +2033,7 @@ msgstr "Atualização"
 msgid "Pledge or Payment"
 msgstr "Promessa ou pagamento"
 
-#: AutoPaymentEditor.php:840 CanvassEditor.php:194 DepositSlipEditor.php:78
+#: AutoPaymentEditor.php:840 CanvassEditor.php:194 DepositSlipEditor.php:81
 #: EditEventAttendees.php:33 FamilyView.php:767 FindFundRaiser.php:235
 #: FundRaiserEditor.php:164 Include/Functions.php:97 PledgeEditor.php:518
 #: SelectDelete.php:218
@@ -2066,11 +2068,11 @@ msgstr "Incluir novo pagamento"
 msgid " Canvass Entry"
 msgstr " Entrada de Visitadores"
 
-#: DepositSlipEditor.php:225 FindDepositSlip.php:101 GroupEditor.php:56
+#: DepositSlipEditor.php:228 FindDepositSlip.php:102 GroupEditor.php:56
 msgid "Close"
 msgstr "Fechar"
 
-#: DepositSlipEditor.php:219 FamilyView.php:899 FindDepositSlip.php:94
+#: DepositSlipEditor.php:222 FamilyView.php:899 FindDepositSlip.php:95
 #: PersonView.php:929 PledgeDelete.php:19
 #: v2/templates/people/family-view.php:517
 msgid "Confirm Delete"
@@ -2940,7 +2942,7 @@ msgstr "Atualizar as coordenadas de todas as Famílias"
 msgid "Volunteer Opportunities"
 msgstr "Oportunidades de Voluntariado"
 
-#: Menu.php:172 PeopleDashboard.php:137 api/routes/search.php:137
+#: Menu.php:172 PeopleDashboard.php:137 api/routes/search.php:156
 #: members/online-pending-verify.php:24 members/self-register.php:24
 #: members/self-verify-updates.php:24
 #: sundayschool/SundaySchoolDashboard.php:104
@@ -3034,7 +3036,7 @@ msgid "Latest Families"
 msgstr "Últimas Famílias"
 
 #: CartToFamily.php:206
-#: ChurchCRM/Emails/notifications/NewPersonOrFamilyEmail.php:58
+#: ChurchCRM/Emails/notifications/NewPersonOrFamilyEmail.php:60
 #: FamilyEditor.php:654 LettersAndLabels.php:71 Menu.php:308 Menu.php:337
 #: Reports/ConfirmReport.php:115 Reports/ConfirmReportEmail.php:120
 #: SelectDelete.php:152 SelectDelete.php:278
@@ -3912,7 +3914,7 @@ msgstr "Pessoa"
 msgid "Base URL"
 msgstr "URL base"
 
-#: ChurchCRM/dto/SystemConfig.php:248 SystemSettings.php:29
+#: ChurchCRM/dto/SystemConfig.php:252 SystemSettings.php:29
 msgid "System Settings"
 msgstr "Configurações do Sistema"
 
@@ -4253,15 +4255,15 @@ msgstr "Apenas membros (familiares com pelo menos um membro da igreja)"
 msgid "Assigned envelope numbers to all families."
 msgstr "Atribuídos números envelope para todas as famílias."
 
-#: Include/Footer.php:24 Register.php:42
+#: Include/Footer.php:25 Register.php:42
 msgid "Version"
 msgstr "Versão"
 
-#: Include/Footer.php:26 Include/FooterNotLoggedIn.php:6
+#: Include/Footer.php:27 Include/FooterNotLoggedIn.php:7
 msgid "Copyright"
 msgstr "Direitos Autorais"
 
-#: Include/Footer.php:26 Include/FooterNotLoggedIn.php:6
+#: Include/Footer.php:27 Include/FooterNotLoggedIn.php:7
 msgid "All rights reserved"
 msgstr "Todos os Direitos Reservados"
 
@@ -4487,11 +4489,11 @@ msgstr "Alternância de Navegação"
 msgid "Change Password"
 msgstr "Mudar senha"
 
-#: Include/Footer.php:34
+#: Include/Footer.php:35
 msgid "You have"
 msgstr "Você tem"
 
-#: Include/Footer.php:35
+#: Include/Footer.php:36
 msgid "task(s)"
 msgstr "tarefa(s)"
 
@@ -4600,8 +4602,9 @@ msgstr "Nome do membro"
 msgid "Adult/Child"
 msgstr "Adulto/Criança"
 
-#: FamilyList.php:47 GroupReports.php:126 Reports/CanvassReports.php:242
+#: GroupReports.php:126 Reports/CanvassReports.php:242
 #: Reports/ConfirmReportEmail.php:193 Reports/ConfirmReportEmail.php:211
+#: v2/templates/people/family-list.php:34
 #, fuzzy
 msgid "Cell Phone"
 msgstr "Telefone celular"
@@ -4964,7 +4967,7 @@ msgstr "Ver Todas as Pessoas"
 msgid "Add New Family"
 msgstr "Adicionar uma Nova Família"
 
-#: ChurchCRM/Config/Menu/Menu.php:129 ChurchCRM/dto/SystemConfig.php:254
+#: ChurchCRM/Config/Menu/Menu.php:129 ChurchCRM/dto/SystemConfig.php:258
 msgid "Events"
 msgstr "Eventos"
 
@@ -5010,23 +5013,23 @@ msgstr "Intervalo de Datas"
 msgid "Deleting this event TYPE will NOT delete any existing Events or Attendance Counts.  Are you sure you want to DELETE Event Type ID: "
 msgstr "A exclusão deste TIPO de evento NÃO vai apagar todos os eventos existentes ou contadores de presença. Tem certeza de que deseja excluir Tipo de Evento ID: ␣"
 
-#: DepositSlipEditor.php:220 FindDepositSlip.php:95
+#: DepositSlipEditor.php:223 FindDepositSlip.php:96
 msgid "Are you sure you want to delete the selected"
 msgstr "Você tem certeza de que quer apagar o que foi selecionado"
 
-#: FindDepositSlip.php:95
+#: FindDepositSlip.php:96
 msgid "Deposit(s)"
 msgstr "Depósito(s)"
 
-#: FindDepositSlip.php:96
+#: FindDepositSlip.php:97
 msgid "This will also delete all payments associated with this deposit"
 msgstr "Isso também irá excluir todos os pagamentos associados a este depósito"
 
-#: DepositSlipEditor.php:221 FindDepositSlip.php:97
+#: DepositSlipEditor.php:224 FindDepositSlip.php:98
 msgid "This action CANNOT be undone, and may have legal implications!"
 msgstr "Esta ação NÃO pode ser desfeita, e pode ter implicações legais!"
 
-#: FindDepositSlip.php:98
+#: FindDepositSlip.php:99
 msgid "Please ensure this what you want to do."
 msgstr "Por Favor, assegure-se de que é isso que você deseja fazer."
 
@@ -5119,27 +5122,27 @@ msgstr "Faça o Login para restaurar o Banco de Dados"
 msgid "Restore Error."
 msgstr "Erro de Restauração"
 
-#: ChurchCRM/dto/SystemConfig.php:240
+#: ChurchCRM/dto/SystemConfig.php:244
 msgid "Church Information"
 msgstr "Informações da Igreja"
 
-#: ChurchCRM/dto/SystemConfig.php:241
+#: ChurchCRM/dto/SystemConfig.php:245
 msgid "User setup"
 msgstr "Configuração do usuário"
 
-#: ChurchCRM/dto/SystemConfig.php:242
+#: ChurchCRM/dto/SystemConfig.php:246
 msgid "Email Setup"
 msgstr "Configuração de e-mail"
 
-#: ChurchCRM/dto/SystemConfig.php:245
+#: ChurchCRM/dto/SystemConfig.php:249
 msgid "Map Settings"
 msgstr "Configurações do Mapa"
 
-#: ChurchCRM/dto/SystemConfig.php:246
+#: ChurchCRM/dto/SystemConfig.php:250
 msgid "Report Settings"
 msgstr "Configurações de Relatórios"
 
-#: ChurchCRM/dto/SystemConfig.php:251
+#: ChurchCRM/dto/SystemConfig.php:255
 msgid "Localization"
 msgstr "Localização"
 
@@ -5575,11 +5578,11 @@ msgstr "Data de entrada:"
 msgid "CSV Import"
 msgstr "Importar CSV"
 
-#: DepositSlipEditor.php:82
+#: DepositSlipEditor.php:85
 msgid "Comment:"
 msgstr "Comentário:"
 
-#: DepositSlipEditor.php:86
+#: DepositSlipEditor.php:89
 msgid "Closed:"
 msgstr "Fechado:"
 
@@ -5676,7 +5679,7 @@ msgid "Family Map"
 msgstr "Mapa da Família"
 
 #: ChurchCRM/Config/Menu/Menu.php:84 Menu.php:229 PeopleDashboard.php:200
-#: api/routes/search.php:172
+#: api/routes/search.php:190
 msgid "Groups"
 msgstr "Grupos"
 
@@ -7799,7 +7802,7 @@ msgstr "Registro da Família"
 msgid "Please enter the following to start your family's verification"
 msgstr "Por favor, digite a informação a seguir para iniciar a verificação da sua família"
 
-#: FamilyList.php:48
+#: v2/templates/people/family-list.php:35
 msgid "email"
 msgstr "e-mail"
 
@@ -7864,15 +7867,15 @@ msgstr "Nenhum Estado"
 msgid "Unavailable person info inherited from assigned family for display?\rThis option causes certain info from a person's assigned family record to be\rdisplayed IF the corresponding info has NOT been entered for that person. "
 msgstr "Informação de pessoa indisponível herdada da família atribuída para exibição?\rEsta opção faz com que determinadas informações do registro familiar atribuído a uma pessoa sejam exibidas SE a informação correspondente NÃO tiver sido inserida para essa pessoa. "
 
-#: ChurchCRM/Service/SystemService.php:75
+#: ChurchCRM/Service/SystemService.php:83
 msgid "Backup archive does not contain a database"
 msgstr "O arquivo de backup não contém um banco de dados"
 
-#: ChurchCRM/Service/SystemService.php:87
+#: ChurchCRM/Service/SystemService.php:95
 msgid "Unknown File Type"
 msgstr "Tipo de arquivo desconhecido"
 
-#: ChurchCRM/Service/SystemService.php:87
+#: ChurchCRM/Service/SystemService.php:95
 msgid "from file"
 msgstr "do arquivo"
 
@@ -8067,16 +8070,16 @@ msgstr "Famílias"
 msgid "Deposit ticket type.  QBDT - Quickbooks"
 msgstr "Tipo de ingresso de depósito. QBDT - Quickbooks"
 
-#: ChurchCRM/dto/SystemConfig.php:247
+#: ChurchCRM/dto/SystemConfig.php:251
 msgid "Financial Settings"
 msgstr "Configurações financeiras"
 
-#: ChurchCRM/dto/SystemConfig.php:310 ChurchCRM/dto/SystemConfig.php:322
-#: ChurchCRM/dto/SystemConfig.php:335
+#: ChurchCRM/dto/SystemConfig.php:314 ChurchCRM/dto/SystemConfig.php:326
+#: ChurchCRM/dto/SystemConfig.php:339
 msgid "An invalid configuration name has been requested"
 msgstr "Um nome de configuração inválido foi solicitado"
 
-#: ChurchCRM/dto/SystemConfig.php:353
+#: ChurchCRM/dto/SystemConfig.php:357
 msgid "An invalid configuration id has been requested"
 msgstr "Um ID de configuração inválido foi solicitado"
 
@@ -8085,11 +8088,11 @@ msgstr "Um ID de configuração inválido foi solicitado"
 msgid "Profile Image uploaded"
 msgstr "Imagem do Perfil Enviada"
 
-#: DepositSlipEditor.php:220
+#: DepositSlipEditor.php:223
 msgid "payments(s)?"
 msgstr "pagamento(s)?"
 
-#: DepositSlipEditor.php:222
+#: DepositSlipEditor.php:225
 msgid "Please ensure this what you want to do.</p>"
 msgstr "Por favor, assegure-se que é isso que você pretende fazer. </ P>"
 
@@ -8338,7 +8341,7 @@ msgstr "Divisão do fundo"
 msgid "Showing students with birthdays in"
 msgstr "Mostrando alunos com aniversários em"
 
-#: UserList.php:53
+#: UserList.php:53 v2/templates/people/family-list.php:30
 msgid "Actions"
 msgstr "Ações"
 
@@ -8554,11 +8557,11 @@ msgstr "Visibilidade da Hora no Quiosque"
 msgid "Show/Hide Lost Password Link on the login screen"
 msgstr "Mostrar/Esconder Link da senha perdida na tela de login"
 
-#: ChurchCRM/dto/SystemConfig.php:250
+#: ChurchCRM/dto/SystemConfig.php:254
 msgid "Backup"
 msgstr "Becape"
 
-#: ChurchCRM/dto/SystemConfig.php:252
+#: ChurchCRM/dto/SystemConfig.php:256
 msgid "Integration"
 msgstr "Integração"
 
@@ -8590,7 +8593,7 @@ msgstr "Link de resete da senha"
 msgid "Reset Password"
 msgstr "resetar a senha"
 
-#: ChurchCRM/Service/SystemService.php:95
+#: ChurchCRM/Service/SystemService.php:103
 msgid "As part of the restore, external backups have been disabled.  If you wish to continue automatic backups, you must manuall re-enable the bEnableExternalBackupTarget setting."
 msgstr "Como parte da recuperação, becapes externos "
 
@@ -8893,12 +8896,12 @@ msgid "Allow unauthenticated reads of events from the external calendar API"
 msgstr "Permitir leitura de eventos de API de calendários externos sem autenticação "
 
 #: ChurchCRM/Emails/notifications/NewPersonOrFamilyEmail.php:41
-#: ChurchCRM/Emails/notifications/NewPersonOrFamilyEmail.php:63
+#: ChurchCRM/Emails/notifications/NewPersonOrFamilyEmail.php:70
 msgid "New Person Added"
 msgstr "Nova pessoa adicionada"
 
 #: ChurchCRM/Emails/notifications/NewPersonOrFamilyEmail.php:45
-#: ChurchCRM/Emails/notifications/NewPersonOrFamilyEmail.php:57
+#: ChurchCRM/Emails/notifications/NewPersonOrFamilyEmail.php:59
 msgid "New Family Added"
 msgstr "Nova família adicionada"
 
@@ -8986,7 +8989,7 @@ msgstr "WNW"
 msgid "WSW"
 msgstr "WSW"
 
-#: api/routes/search.php:58 members/self-register.php:39
+#: api/routes/search.php:59 members/self-register.php:39
 msgid "Persons"
 msgstr "Pessoas"
 
@@ -9010,7 +9013,7 @@ msgstr "Procurar depósitos"
 msgid "Search Payments"
 msgstr "Procurar pagamentos"
 
-#: ChurchCRM/dto/SystemConfig.php:249
+#: ChurchCRM/dto/SystemConfig.php:253
 msgid "Quick Search"
 msgstr "Busca rápida"
 
@@ -9046,11 +9049,11 @@ msgstr "Número máximo de Endereços"
 msgid "Show type of group:"
 msgstr "Mostrar tipo de grupo:"
 
-#: api/routes/search.php:213
+#: api/routes/search.php:230
 msgid "Deposits"
 msgstr "Depósitos"
 
-#: api/routes/search.php:243
+#: api/routes/search.php:260
 msgid "Payments"
 msgstr "Pagamentos"
 
@@ -9242,11 +9245,11 @@ msgstr "Numero máximo de pessoas"
 msgid "Require that this ChurchCRM Database is accessed over HTTPS"
 msgstr "Exigir que este banco de dados ChurchCRM seja acessado através de HTTPS"
 
-#: ChurchCRM/dto/SystemConfig.php:243
+#: ChurchCRM/dto/SystemConfig.php:247
 msgid "People Setup"
 msgstr "Configuração de Pessoas"
 
-#: ChurchCRM/dto/SystemConfig.php:253
+#: ChurchCRM/dto/SystemConfig.php:257
 msgid "Church Services"
 msgstr "Atividades da Igerja"
 

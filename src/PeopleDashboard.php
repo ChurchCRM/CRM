@@ -115,7 +115,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
     }
      ?>
     <br/>
-    <a href="FamilyList.php" class="btn btn-app"><i class="fa fa-users"></i><?= gettext('All Families') ?></a>
+    <a href="<?= SystemURLs::getRootPath()?>/v2/family" class="btn btn-app"><i class="fa fa-users"></i><?= gettext('All Families') ?></a>
     <a href="GeoPage.php" class="btn btn-app"><i class="fa fa-globe"></i><?= gettext('Family Geographic') ?></a>
     <a href="MapUsingGoogle.php?GroupID=-1" class="btn btn-app"><i class="fa fa-map"></i><?= gettext('Family Map') ?>
     </a>
@@ -140,7 +140,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
       <div class="icon">
         <i class="fa fa-users"></i>
       </div>
-      <a href="<?= SystemURLs::getRootPath() ?>/FamilyList.php" class="small-box-footer">
+      <a href="<?= SystemURLs::getRootPath()?>/v2/family" class="small-box-footer">
         <?= gettext('See all Families') ?> <i class="fa fa-arrow-circle-right"></i>
       </a>
     </div>

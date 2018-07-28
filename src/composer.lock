@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b2eb520fc086fad83928712e1122fa16",
+    "content-hash": "04b1798c1168ea02c38f2eeabc3b65ef",
     "packages": [
         {
             "name": "authorizenet/authorizenet",
@@ -51,6 +51,59 @@
                 "payment"
             ],
             "time": "2018-02-21T13:23:46+00:00"
+        },
+        {
+            "name": "azuyalabs/yasumi",
+            "version": "1.8.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/azuyalabs/yasumi.git",
+                "reference": "115a3ccd53f45294d3d5f16ca85137cc9826953b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/azuyalabs/yasumi/zipball/115a3ccd53f45294d3d5f16ca85137cc9826953b",
+                "reference": "115a3ccd53f45294d3d5f16ca85137cc9826953b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.6",
+                "fzaninotto/faker": "~1.7",
+                "mikey179/vfsstream": "~1.6",
+                "phpunit/phpunit": "~5.7"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Yasumi\\": "src/Yasumi/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sacha Telgenhof",
+                    "email": "me@sachatelgenhof.nl"
+                }
+            ],
+            "description": "Yasumi is an easy PHP Library for calculating national holidays.",
+            "keywords": [
+                "Bank",
+                "calculation",
+                "calendar",
+                "celebration",
+                "date",
+                "holiday",
+                "holidays",
+                "national",
+                "time"
+            ],
+            "time": "2018-02-21T05:23:52+00:00"
         },
         {
             "name": "clue/stream-filter",

@@ -139,8 +139,8 @@ window.NewOrEditEventModal = {
 
       var eventPredication = CKEDITOR.instances['eventPredication'].getData();//$('form #eventPredication').val();
       var dateRange = $('#EventDateRange').val().split(" - ");
-      var start = moment(dateRange[0]).format();
-      var end = moment(dateRange[1]).format();
+      var start = moment(dateRange[0],"YYYY-MM-DD HH:mm:ss a").format();
+      var end = moment(dateRange[1],"YYYY-MM-DD HH:mm:ss a").format();
       var add = false;
       return {
           "eventTypeID": eventTypeID,
@@ -232,7 +232,7 @@ window.NewOrEditEventModal = {
     }
     $('#EventDateRange').daterangepicker({
       timePicker: true,
-      timePickerIncrement: 30,
+      timePickerIncrement: 15,
       linkedCalendars: true,
       showDropdowns: true,
       locale: {
