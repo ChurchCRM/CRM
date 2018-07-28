@@ -211,4 +211,12 @@ class User extends BaseUser
         }
         return false;
     }
+
+    public function getUserConfigString($userConfigName) {
+      foreach ($this->getUserConfigs() as $userConfig) {
+        if ($userConfig->getName() == $userConfigName) {
+          return $userConfig->getValue();
+        }
+      }
+    }
 }

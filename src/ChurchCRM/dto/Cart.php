@@ -4,6 +4,9 @@ namespace ChurchCRM\dto;
 use ChurchCRM\Person2group2roleP2g2rQuery;
 use ChurchCRM\PersonQuery;
 use ChurchCRM\GroupQuery;
+use ChurchCRM\Map\PersonTableMap;
+use Propel\Runtime\ActiveQuery\Criteria;
+use ChurchCRM\SessionUser;
 
 class Cart
 {
@@ -187,4 +190,47 @@ class Cart
     $_SESSION['aPeopleCart'] = [];
   }
   
+  public static function getCartPeople() {
+    
+    $people = PersonQuery::create()
+            ->filterById($_SESSION['aPeopleCart'])
+            ->find();
+    return $people;
+  }
+  
+  public static function getEmailLink() {
+    /* @var $cartPerson ChurchCRM\Person */
+    $people = Cart::getCartPeople();
+    $emailAddressArray = array();
+    foreach($people as $cartPerson) {
+      if (!empty($cartPerson->getEmail())) {
+        array_push($emailAddressArray, $cartPerson->getEmail());
+      }
+    }
+    $delimiter = SessionUser::getUser()->getUserConfigString("sMailtoDelimiter");
+    $sEmailLink = implode($delimiter, array_unique(array_filter($emailAddressArray)));
+    if (!empty(SystemConfig::getValue('sToEmailAddress')) && !stristr($sEmailLink, SystemConfig::getValue('sToEmailAddress'))) {
+      $sEmailLink .= $delimiter . SystemConfig::getValue('sToEmailAddress');
+    }
+    return $sEmailLink;
+  }
+  
+  public static function getSMSLink() {
+    
+     /* @var $cartPerson ChurchCRM\Person */
+    $people = Cart::getCartPeople();
+    $SMSNumberArray = array();
+    foreach($people as $cartPerson)
+    {
+      if (!empty($cartPerson->getCellPhone())) {
+        array_push($SMSNumberArray, $cartPerson->getCellPhone());
+      }
+    }
+    $sSMSLink = implode(",", $SMSNumberArray);
+    return $sSMSLink;
+  }
+  
+  public static function EmptyAll() {
+    Cart::RemovePersonArray($_SESSION['aPeopleCart']);
+  }
 }

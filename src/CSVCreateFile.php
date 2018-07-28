@@ -210,7 +210,8 @@ if ($sFormat == 'addtocart') {
         extract($aRow);
         Cart::AddPerson($per_ID);
     }
-    RedirectUtils::Redirect('CartView.php');
+    //// TODO: do this in API
+    RedirectUtils::Redirect("v2/cart");
 } else {
     // Build the complete SQL statement
 
