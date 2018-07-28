@@ -22,11 +22,15 @@ $app->group('/families', function () {
         $familiesWithoutEmails = [];
         foreach ($families as $family) {
             if (empty($family->getEmail())) {
+                $hasEmail = false;
                 foreach ($family->getPeople() as $person) {
-                    if (empty($person->getEmail() AND empty($person->getWorkEmail()))) {
-                        array_push($familiesWithoutEmails, $family->toArray());
+                    if (!empty($person->getEmail() || !empty($person->getWorkEmail()))) {
+                        $hasEmail = true;
                         break;
                     }
+                }
+                if (!$hasEmail) {
+                    array_push($familiesWithoutEmails, $family->toArray());
                 }
              }
         }
