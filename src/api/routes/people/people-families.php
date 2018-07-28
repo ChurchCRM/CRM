@@ -1,8 +1,5 @@
 <?php
 
-/* Contributors Philippe Logel */
-
-// Routes
 use ChurchCRM\dto\MenuEventsCount;
 use ChurchCRM\FamilyQuery;
 use ChurchCRM\Map\FamilyTableMap;
