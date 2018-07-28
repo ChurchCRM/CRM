@@ -1,7 +1,8 @@
 ALTER TABLE `events_event`
   ADD COLUMN `location_id` INT DEFAULT NULL AFTER `event_typename`,
   ADD COLUMN `primary_contact_person_id` INT DEFAULT NULL AFTER `location_id`,
-  ADD COLUMN `secondary_contact_person_id` INT DEFAULT NULL AFTER `location_id`;
+  ADD COLUMN `secondary_contact_person_id` INT DEFAULT NULL AFTER `primary_contact_person_id`,
+  ADD COLUMN `event_url` text DEFAULT NULL AFTER `secondary_contact_person_id`;
 
 
 DROP TABLE IF EXISTS `event_audience`;
@@ -14,10 +15,13 @@ CREATE TABLE `event_audience` (
 
 DROP TABLE IF EXISTS `calendars`;
 CREATE TABLE `calendars` (
-  `calendar_id` INT NOT NULL,
+  `calendar_id` INT NOT NULL auto_increment,
   `name` VARCHAR(128) NOT NULL,
-  `accesstoken` VARCHAR(99),
-  PRIMARY KEY (`calendar_id`)
+  `accesstoken` VARCHAR(255),
+  `foregroundColor` VARCHAR(6),
+  `backgroundColor` VARCHAR(6),
+  PRIMARY KEY (`calendar_id`),
+  UNIQUE KEY `accesstoken` (`accesstoken`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
 
@@ -35,3 +39,14 @@ RENAME TABLE church_location TO locations;
 ALTER TABLE user_usr
   ADD COLUMN usr_apiKey VARCHAR(255) AFTER usr_UserName,
 	ADD UNIQUE INDEX `usr_apiKey_unique` (`usr_apiKey` ASC);
+
+DROP TABLE IF EXISTS menuconfig_mcf;
+
+DROP TABLE IF EXISTS `menu_links`;
+CREATE TABLE `menu_links` (
+  `linkId` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
+  `linkName` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `linkUri` text COLLATE utf8_unicode_ci NOT NULL,
+  `linkOrder` INT NOT NULL,
+  PRIMARY KEY (`linkId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

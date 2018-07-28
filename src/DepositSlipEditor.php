@@ -38,10 +38,13 @@ if ($iDepositSlipID) {
     }
 
     // Security: User must have finance permission or be the one who created this deposit
-    if (!($_SESSION['bFinance'] || $_SESSION['iUserID'] == $thisDeposit->getEnteredby())) {
+    if (!($_SESSION['user']->isFinanceEnabled() || $_SESSION['user']->getId() == $thisDeposit->getEnteredby())) {
         RedirectUtils::Redirect('Menu.php');
         exit;
     }
+} elseif ($iDepositSlipID == 0) {
+    RedirectUtils::Redirect('FindDepositSlip.php');
+    exit;
 } else {
     RedirectUtils::Redirect('Menu.php');
 }
@@ -233,12 +236,9 @@ require 'Include/Header.php';
           {
             window.CRM.deletesRemaining = deletedRows.length;
             $.each(deletedRows, function(index, value) {
-              $.ajax({
-                type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
-                url: window.CRM.root+'/api/payments/' + value.Groupkey, // the url where we want to POST
-                dataType: 'json', // what type of data do we expect back from the server
-                data: {"_METHOD":"DELETE"},
-                encode: true
+              window.CRM.APIRequest({
+                method: 'DELETE',
+                path: 'payments/' + value.Groupkey,
               })
               .done(function(data) {
                 dataT.rows('.selected').remove().draw(false);

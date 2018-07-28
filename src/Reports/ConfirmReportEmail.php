@@ -27,7 +27,7 @@ use ChurchCRM\Utils\RedirectUtils;
 class EmailPDF_ConfirmReport extends ChurchInfoReport
 {
     // Constructor
-    public function EmailPDF_ConfirmReport()
+    public function __construct()
     {
         parent::__construct('P', 'mm', $this->paperFormat);
         $this->leftX = 10;
@@ -350,5 +350,5 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
 if ($_GET['familyId']) {
     RedirectUtils::Redirect('FamilyView.php?FamilyID='.$_GET['familyId'].'&PDFEmailed='.$familyEmailSent);
 } else {
-    RedirectUtils::Redirect('FamilyList.php?AllPDFsEmailed='.$familiesEmailed);
+    RedirectUtils::Redirect(SystemURLs::getRootPath().'/v2/family?AllPDFsEmailed='.$familiesEmailed);
 }

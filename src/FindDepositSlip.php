@@ -21,7 +21,7 @@ $iDepositSlipID = $_SESSION['iCurrentDeposit'];
 $sPageTitle = gettext('Deposit Listing');
 
 // Security: User must have finance permission to use this form
-if (!$_SESSION['bFinance']) {
+if (!$_SESSION['user']->isFinanceEnabled()) {
     RedirectUtils::Redirect('index.php');
     exit;
 }
@@ -72,7 +72,7 @@ require 'Include/Header.php';
   </div>
   <div class="box-body">
     <div class="container-fluid">
-      <table class="display responsive nowrap data-table" id="depositsTable" width="100%"></table>
+      <table class="display responsive nowrap data-table table table-striped table-hover" id="depositsTable" width="100%"></table>
 
       <button type="button" id="deleteSelectedRows" class="btn btn-danger"
               disabled> <?= gettext('Delete Selected Rows') ?> </button>
@@ -85,6 +85,7 @@ require 'Include/Header.php';
     </div>
   </div>
 </div>
+
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/FindDepositSlip.js"></script>
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
@@ -100,20 +101,17 @@ require 'Include/Header.php';
         cancel : {
           label: '<?= gettext("Close"); ?>'
         },
-        confirm: { 
+        confirm: {
           label: '<?php echo gettext("Delete"); ?>'
         }
       },
       callback: function ( result ) {
-        if ( result ) 
+        if ( result )
         {
           $.each(deletedRows, function (index, value) {
-            $.ajax({
-              type: 'POST', // define the type of HTTP verb we want to use (POST for our form)
-              url: window.CRM.root + '/api/deposits/' + value.Id, // the url where we want to POST
-              dataType: 'json', // what type of data do we expect back from the server
-              encode: true,
-              data: {"_METHOD": "DELETE"}
+            window.CRM.APIRequest({
+              method: 'DELETE',
+              path: 'deposits/' + value.Id
             })
               .done(function (data) {
                 dataT.rows('.selected').remove().draw(false);

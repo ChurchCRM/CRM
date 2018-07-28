@@ -8,10 +8,12 @@ use ChurchCRM\dto\ChurchMetaData;
 use Mustache_Engine;
 use Mustache_Loader_FilesystemLoader;
 use Monolog\Logger;
+use PHPMailer\PHPMailer\PHPMailer;
+use ChurchCRM\Service\SystemService;
 
 abstract class BaseEmail
 {
-    /** @var \PHPMailer */
+    /** @var PHPMailer */
     protected $mail;
     protected $mustache;
 
@@ -34,7 +36,7 @@ abstract class BaseEmail
     private function setConnection()
     {
 
-        $this->mail = new \PHPMailer();
+        $this->mail = new PHPMailer();
         $this->mail->IsSMTP();
         $this->mail->CharSet = 'UTF-8';
         $this->mail->Timeout = intval(SystemConfig::getValue("iSMTPTimeout"));
@@ -91,7 +93,8 @@ abstract class BaseEmail
             "churchCRMURL" => SystemURLs::getURL(),
             "dear" => SystemConfig::getValue('sDear'),
             "confirmSincerely" => SystemConfig::getValue('sConfirmSincerely'),
-            "confirmSigner" => SystemConfig::getValue('sConfirmSigner')
+            "confirmSigner" => SystemConfig::getValue('sConfirmSigner'),
+            "copyrightDate" => SystemService::getCopyrightDate()
         ];
     }
 

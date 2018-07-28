@@ -29,6 +29,7 @@ require_once 'Header-Security.php';
 
   <script nonce="<?= SystemURLs::getCSPNonce() ?>"  >
     window.CRM = {
-      root: "<?= SystemURLs::getRootPath() ?>"
+      root: "<?= SystemURLs::getRootPath() ?>",
+      iLoginType: "<?= $_SESSION['iLoginType'] ?>"
     };
   </script>

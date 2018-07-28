@@ -5,6 +5,8 @@ namespace ChurchCRM;
 use ChurchCRM\Base\User as BaseUser;
 use ChurchCRM\dto\SystemConfig;
 use Propel\Runtime\Connection\ConnectionInterface;
+use ChurchCRM\Utils\MiscUtils;
+
 /**
  * Skeleton subclass for representing a row from the 'user_usr' table.
  *
@@ -97,6 +99,31 @@ class User extends BaseUser
         return hash('sha256', $password . $this->getPersonId());
     }
 
+    public function isAddEvent()
+    {
+        return $this->isEnabledSecurity('bAddEvent');
+    }
+
+    public function isCSVExport()
+    {
+        return $this->isEnabledSecurity('bExportCSV');
+    }
+
+    public function isEmailEnabled()
+    {
+        return $this->isEnabledSecurity('bEmailMailto');
+    }
+
+    public function isCreateDirectoryEnabled()
+    {
+        return $this->isEnabledSecurity('bCreateDirectory');
+    }
+
+    public function isbUSAddressVerificationEnabled()
+    {
+        return $this->isEnabledSecurity('bUSAddressVerification');
+    }
+
 
     public function isLocked()
     {
@@ -125,14 +152,7 @@ class User extends BaseUser
 
     public static function randomApiKey()
     {
-        $alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
-        $apiKey = array(); //remember to declare $apiKey as an array
-        $alphaLength = strlen($alphabet) - 1; //put the length -1 in cache
-        for ($i = 0; $i < 50; $i++) {
-            $n = rand(0, $alphaLength);
-            $apiKey[] = $alphabet[$n];
-        }
-        return implode($apiKey); //turn the array into a string
+        return MiscUtils::randomToken();
     }
 
     public function postInsert(ConnectionInterface $con = null)
@@ -149,7 +169,7 @@ class User extends BaseUser
     {
         $note = new Note();
         $note->setPerId($this->getPersonId());
-        $note->setEntered($_SESSION['iUserID']);
+        $note->setEntered($_SESSION['user']->getId());
         $note->setType('user');
 
         switch ($type) {
@@ -177,5 +197,26 @@ class User extends BaseUser
         }
 
         $note->save();
+    }
+
+    public function isEnabledSecurity($securityConfigName){
+        if ($this->isAdmin()) {
+            return true;
+        }
+
+        foreach ($this->getUserConfigs() as $userConfig) {
+            if ($userConfig->getName() == $securityConfigName) {
+                return $userConfig->getPermission() == "TRUE";
+            }
+        }
+        return false;
+    }
+
+    public function getUserConfigString($userConfigName) {
+      foreach ($this->getUserConfigs() as $userConfig) {
+        if ($userConfig->getName() == $userConfigName) {
+          return $userConfig->getValue();
+        }
+      }
     }
 }

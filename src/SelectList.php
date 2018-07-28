@@ -112,13 +112,10 @@ switch ($sMode) {
         break;
 }
 
-// Save default search mode
-$_SESSION['bSearchFamily'] = ($sMode != 'person');
-
 if (array_key_exists('Number', $_GET)) {
-    $_SESSION['SearchLimit'] = InputUtils::LegacyFilterInput($_GET['Number'], 'int');
-    $tmpUser = UserQuery::create()->findPk($_SESSION['iUserID']);
-    $tmpUser->setSearchLimit($_SESSION['SearchLimit']);
+    $tmpUser = UserQuery::create()->findPk($_SESSION['user']->getId());
+    $tmpUser->setSearchLimit(InputUtils::LegacyFilterInput($_GET['Number'], 'int'));
+    $tmpUser->setSearchfamily($sMode != 'person');
     $tmpUser->save();
 }
 
@@ -191,7 +188,7 @@ if ($sMode == 'person') {
     }
 }
 
-$iPerPage = $_SESSION['SearchLimit'];
+$iPerPage = $_SESSION['user']->getSearchLimit();
 
 $sLimit5 = '';
 $sLimit10 = '';
@@ -896,28 +893,28 @@ if ($Total > 0) {
     }
 
     // Display record limit per page
-    if ($_SESSION['SearchLimit'] == '5') {
+    if ($iPerPage == '5') {
         $sLimit5 = 'selected';
     }
-    if ($_SESSION['SearchLimit'] == '10') {
+    if ($iPerPage == '10') {
         $sLimit10 = 'selected';
     }
-    if ($_SESSION['SearchLimit'] == '20') {
+    if ($iPerPage == '20') {
         $sLimit20 = 'selected';
     }
-    if ($_SESSION['SearchLimit'] == '25') {
+    if ($iPerPage == '25') {
         $sLimit25 = 'selected';
     }
-    if ($_SESSION['SearchLimit'] == '50') {
+    if ($iPerPage == '50') {
         $sLimit50 = 'selected';
     }
-    if ($_SESSION['SearchLimit'] == '100') {
+    if ($iPerPage == '100') {
         $sLimit100 = 'selected';
     }
-    if ($_SESSION['SearchLimit'] == '200') {
+    if ($iPerPage == '200') {
         $sLimit200 = 'selected';
     }
-    if ($_SESSION['SearchLimit'] == '500') {
+    if ($iPerPage == '500') {
         $sLimit500 = 'selected';
     }
 
@@ -1051,7 +1048,7 @@ foreach ($aPersonCol5 as $s) {
 }
 echo '</select></th><th>';
 
-if ($_SESSION['bEditRecords']) {
+if ($_SESSION['user']->isEditRecordsEnabled()) {
     echo gettext('Edit');
 }
 
@@ -1126,7 +1123,7 @@ while ($aRow = mysqli_fetch_array($rsPersons)) {
     //Display the row
     echo '<tr class="'.$sRowClass.'">'; ?>
 	</td>
-    <td style="padding-bottom:5px"><img src="<?= SystemURLs::getRootPath(); ?>/api/persons/<?= $per_ID ?>/thumbnail" class="initials-image direct-chat-img " style="width: <?= SystemConfig::getValue('iProfilePictureListSize') ?>px; height: <?= SystemConfig::getValue('iProfilePictureListSize') ?>px" /> </td>
+    <td style="padding-bottom:5px"><img src="<?= SystemURLs::getRootPath(); ?>/api/person/<?= $per_ID ?>/thumbnail" class="initials-image direct-chat-img " style="width: <?= SystemConfig::getValue('iProfilePictureListSize') ?>px; height: <?= SystemConfig::getValue('iProfilePictureListSize') ?>px" /> </td>
 	<td>
 	    <a href="PersonView.php?PersonID=<?= $per_ID ?>" >
 	    <?= FormatFullName($per_Title, $per_FirstName, $per_MiddleName, $per_LastName, $per_Suffix, 3) ?>
@@ -1174,7 +1171,7 @@ while ($aRow = mysqli_fetch_array($rsPersons)) {
     } ?>
 	</td>
     <td>
-	<?php if ($_SESSION['bEditRecords']) {
+	<?php if ($_SESSION['user']->isEditRecordsEnabled()) {
         ?>
 		<a href="PersonEditor.php?PersonID=<?= $per_ID ?>">
 		    <span class="fa-stack">

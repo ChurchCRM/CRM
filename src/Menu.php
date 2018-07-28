@@ -19,25 +19,20 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 use ChurchCRM\DepositQuery;
 use ChurchCRM\Service\DashboardService;
-use ChurchCRM\Service\FinancialService;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\MenuEventsCount;
 
-$financialService = new FinancialService();
 $dashboardService = new DashboardService();
-//Last edited active families
-$updatedFamilies = $dashboardService->getUpdatedFamilies(10);
-//Newly added active families
-$latestFamilies = $dashboardService->getLatestFamilies(10);
+
 //last Edited members from Active families
 $updatedMembers = $dashboardService->getUpdatedMembers(12);
 //Newly added members from Active families
 $latestMembers = $dashboardService->getLatestMembers(12);
 
 $depositData = false;  //Determine whether or not we should display the deposit line graph
-if ($_SESSION['bFinance']) {
+if ($_SESSION['user']->isFinanceEnabled()) {
     $deposits = DepositQuery::create()->filterByDate(['min' =>date('Y-m-d', strtotime('-90 days'))])->find();
     if (count($deposits) > 0) {
         $depositData = $deposits->toJSON();
@@ -180,7 +175,7 @@ if ($showBanner && ($peopleWithBirthDaysCount > 0 || $AnniversariesCount > 0)) {
             <div class="icon">
                 <i class="fa fa-users"></i>
             </div>
-            <a href="<?= SystemURLs::getRootPath() ?>/FamilyList.php" class="small-box-footer">
+            <a href="<?= SystemURLs::getRootPath() ?>/v2/family" class="small-box-footer">
                 <?= gettext('See all Families') ?> <i class="fa fa-arrow-circle-right"></i>
             </a>
         </div>
@@ -262,7 +257,7 @@ if ($showBanner && ($peopleWithBirthDaysCount > 0 || $AnniversariesCount > 0)) {
             <div class="icon">
                 <i class="fa fa-gg"></i>
             </div>
-            <a href="<?= SystemURLs::getRootPath() ?>/GroupList.php" class="small-box-footer">
+            <a href="<?= SystemURLs::getRootPath() ?>/ListEvents.php" class="small-box-footer">
                 <?= gettext('More info') ?>  <i class="fa fa-arrow-circle-right"></i>
             </a>
         </div>
@@ -357,7 +352,7 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
         <div class="box box-solid">
             <div class="box box-danger">
                 <div class="box-header with-border">
-                    <h3 class="box-title"><?= gettext('Latest Members') ?></h3>
+                    <h3 class="box-title"><?= gettext('Latest Persons') ?></h3>
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                         </button>
@@ -372,7 +367,7 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
     ?>
                             <li>
                                 <a class="users-list" href="PersonView.php?PersonID=<?= $person->getId() ?>">
-                                    <img src="<?= SystemURLs::getRootPath(); ?>/api/persons/<?= $person->getId() ?>/thumbnail"
+                                    <img src="<?= SystemURLs::getRootPath(); ?>/api/person/<?= $person->getId() ?>/thumbnail"
                                          alt="<?= $person->getFullName() ?>" class="user-image initials-image"
                                          width="<?= SystemConfig::getValue('iProfilePictureListSize') ?>px" height="<?= SystemConfig::getValue('iProfilePictureListSize') ?>px"/><br/>
                                     <?= $person->getFullName() ?></a>
@@ -391,7 +386,7 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
         <div class="box box-solid">
             <div class="box box-danger">
                 <div class="box-header with-border">
-                    <h3 class="box-title"><?= gettext('Updated Members') ?></h3>
+                    <h3 class="box-title"><?= gettext('Updated Persons') ?></h3>
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                         </button>
@@ -406,7 +401,7 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
                             ?>
                             <li>
                                 <a class="users-list" href="PersonView.php?PersonID=<?= $person->getId() ?>">
-                                    <img src="<?= SystemURLs::getRootPath(); ?>/api/persons/<?= $person->getId() ?>/thumbnail"
+                                    <img src="<?= SystemURLs::getRootPath(); ?>/api/person/<?= $person->getId() ?>/thumbnail"
                                          alt="<?= $person->getFullName() ?>" class="user-image initials-image"
                                          width="<?= SystemConfig::getValue('iProfilePictureListSize') ?>px" height="<?= SystemConfig::getValue('iProfilePictureListSize') ?>px"/><br/>
                                     <?= $person->getFullName() ?></a>

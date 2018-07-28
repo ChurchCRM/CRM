@@ -11,6 +11,7 @@
 
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\view\MenuRenderer;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\Cart;
 use ChurchCRM\Service\TaskService;
@@ -44,17 +45,14 @@ $MenuFirst = 1;
   <?php require 'Header-HTML-Scripts.php'; ?>
 </head>
 
-<body class="hold-transition <?= $_SESSION['sStyle'] ?> sidebar-mini">
-<?php
-  Header_system_notifications();
- ?>
+<body class="hold-transition <?= $_SESSION['user']->getStyle() ?> sidebar-mini">
 <!-- Site wrapper -->
 <div class="wrapper">
   <?php
   Header_modals();
   Header_body_scripts();
 
-  $loggedInUserPhoto = SystemURLs::getRootPath().'/api/persons/'.$_SESSION['iUserID'].'/thumbnail';
+  $loggedInUserPhoto = SystemURLs::getRootPath().'/api/person/'.$_SESSION['user']->getId().'/thumbnail';
   $MenuFirst = 1;
   ?>
 
@@ -97,7 +95,7 @@ $MenuFirst = 1;
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" id="dropdown-toggle" data-toggle="dropdown" title="<?= gettext('Your settings and more') ?>">
-              <img src="<?= SystemURLs::getRootPath()?>/api/persons/<?= $_SESSION['user']->getPersonId() ?>/thumbnail" class="user-image initials-image" alt="User Image">
+              <img src="<?= SystemURLs::getRootPath()?>/api/person/<?= $_SESSION['user']->getPersonId() ?>/thumbnail" class="user-image initials-image" alt="User Image">
               <span class="hidden-xs"><?= $_SESSION['user']->getName() ?> </span>
 
             </a>
@@ -106,7 +104,7 @@ $MenuFirst = 1;
                 <table border=0 width="100%">
                 <tr style="border-bottom: 1pt solid white;">
                 <td valign="middle" width=110>
-                  <img width="80" src="<?= SystemURLs::getRootPath()?>/api/persons/<?= $_SESSION['user']->getPersonId() ?>/thumbnail" class="initials-image img-circle no-border" alt="User Image">
+                  <img width="80" src="<?= SystemURLs::getRootPath()?>/api/person/<?= $_SESSION['user']->getPersonId() ?>/thumbnail" class="initials-image img-circle no-border" alt="User Image">
                 </td>
                 <td valign="middle" align="left" >
                   <a href="<?= SystemURLs::getRootPath()?>/PersonView.php?PersonID=<?= $_SESSION['user']->getPersonId() ?>" class="item_link">
@@ -159,7 +157,7 @@ $MenuFirst = 1;
           ?>
           <li class="dropdown settings-dropdown">
             <a href="#" data-toggle="control-sidebar" title="<?= gettext('Your tasks') ?>">
-              <i class="fa fa-gears"></i>
+              <i class="fa fa-tasks"></i>
               <span class="label label-danger"><?= $taskSize ?></span>
             </a>
           </li>
@@ -183,12 +181,7 @@ $MenuFirst = 1;
       <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
-        <li>
-          <a href="<?= SystemURLs::getRootPath() ?>/Menu.php">
-            <i class="fa fa-dashboard"></i> <span><?= gettext('Dashboard') ?></span>
-          </a>
-        </li>
-        <?php addMenu('root'); ?>
+        <?php MenuRenderer::RenderMenu(); ?>
       </ul>
     </section>
   </aside>
@@ -199,9 +192,3 @@ $MenuFirst = 1;
     </section>
     <!-- Main content -->
     <section class="content">
-        <div class="main-box-body clearfix" style="display:none" id="globalMessage">
-          <div class="callout fade in" id="globalMessageCallOut">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-            <i class="fa fa-exclamation-triangle fa-fw fa-lg"></i><span id="globalMessageText"></span>
-          </div>
-        </div>

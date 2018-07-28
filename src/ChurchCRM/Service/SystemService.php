@@ -19,7 +19,7 @@ require SystemURLs::getDocumentRoot() . '/vendor/ifsnop/mysqldump-php/src/Ifsnop
 
 class SystemService
 {
-    public function getLatestRelese()
+    public function getLatestRelease()
     {
         $client = new Client();
         $release = null;
@@ -38,6 +38,21 @@ class SystemService
         $version = $composerJson['version'];
 
         return $version;
+    }
+    
+    static public function getCopyrightDate()
+    {
+        $composerFile = file_get_contents(SystemURLs::getDocumentRoot() . '/composer.json');
+        $composerJson = json_decode($composerFile, true);
+        if ((!empty($composerJson)) && array_key_exists('time', $composerJson) && (!empty($composerJson['time'])))
+        {
+          $version = new \DateTime($composerJson['time']);
+        }
+        else{
+          $version = new \DateTime();
+        }
+        
+        return $version->format("Y");
     }
 
     public function restoreDatabaseFromBackup($file)
@@ -88,7 +103,6 @@ class SystemService
         }
         FileSystemUtils::recursiveRemoveDirectory($restoreResult->backupRoot,true);
         $restoreResult->UpgradeStatus = UpgradeService::upgradeDatabaseVersion();
-        SQLUtils::sqlImport(SystemURLs::getDocumentRoot() . '/mysql/upgrade/rebuild_nav_menus.sql', $connection);
         SQLUtils::sqlImport(SystemURLs::getDocumentRoot() . '/mysql/upgrade/rebuild_views.sql', $connection);
         //When restoring a database, do NOT let the database continue to create remote backups.
         //This can be very troublesome for users in a testing environment.
@@ -110,10 +124,10 @@ class SystemService
         mkdir($backup->backupDir,0750,true);
         $backup->headers = [];
         $backup->params = $params;
-        
+
         $safeFileName = preg_replace('/[^a-zA-Z0-9\-_]/','', SystemConfig::getValue('sChurchName'));
         $baseFileName = "$backup->backupDir/" . $safeFileName . "-";
-        
+
         $backup->saveTo = $baseFileName . date(SystemConfig::getValue("sDateFilenameFormat"));
         $backup->SQLFile = $baseFileName . "Database.sql";
 
@@ -179,13 +193,13 @@ class SystemService
         return $backup;
     }
 
-    public function copyBackupToExternalStorage()
+    public static function copyBackupToExternalStorage()
     {
+        $params = new \stdClass();
+        $params->iArchiveType = 3;
         if (strcasecmp(SystemConfig::getValue('sExternalBackupType'), 'WebDAV') == 0) {
             if (SystemConfig::getValue('sExternalBackupUsername') && SystemConfig::getValue('sExternalBackupPassword') && SystemConfig::getValue('sExternalBackupEndpoint')) {
-                $params = new \stdClass();
-                $params->iArchiveType = 3;
-                $backup = $this->getDatabaseBackup($params);
+                $backup = self::getDatabaseBackup($params);
                 $backup->credentials = SystemConfig::getValue('sExternalBackupUsername') . ':' . SystemConfig::getValue('sExternalBackupPassword');
                 $backup->filesize = filesize($backup->saveTo);
                 $fh = fopen($backup->saveTo, 'r');
@@ -205,7 +219,7 @@ class SystemService
             }
         } elseif (strcasecmp(SystemConfig::getValue('sExternalBackupType'), 'Local') == 0) {
             try {
-                $backup = $this->getDatabaseBackup($params);
+                $backup = self::getDatabaseBackup($params);
                 exec('mv ' . $backup->saveTo . ' ' . SystemConfig::getValue('sExternalBackupEndpoint'));
 
                 return $backup;
@@ -285,7 +299,7 @@ class SystemService
         return $results[0]['ver_version'];
     }
 
-    public function getDBServerVersion()
+    public static function getDBServerVersion()
     {
       try{
         return Propel::getServiceContainer()->getConnection()->getAttribute(PDO::ATTR_SERVER_VERSION);
@@ -317,7 +331,7 @@ class SystemService
             'Page Size |' . $data->pageSize->height . 'x' . $data->pageSize->width . "\r\n" .
             'Platform Information | ' . php_uname($mode = 'a') . "\r\n" .
             'PHP Version | ' . phpversion() . "\r\n" .
-            'SQL Version | ' . $this->getDBServerVersion() . "\r\n" .
+            'SQL Version | ' . self::getDBServerVersion() . "\r\n" .
             'ChurchCRM Version |' . $_SESSION['sSoftwareInstalledVersion'] . "\r\n" .
             'Reporting Browser |' . $_SERVER['HTTP_USER_AGENT'] . "\r\n".
             'Prerequisite Status |' . ( AppIntegrityService::arePrerequisitesMet() ? "All Prerequisites met" : "Missing Prerequisites: " .json_encode(AppIntegrityService::getUnmetPrerequisites()))."\r\n".
@@ -347,12 +361,8 @@ class SystemService
         return $result;
     }
 
-    public function runTimerJobs()
+    public static function runTimerJobs()
     {
-        if (NotificationService::isUpdateRequired())
-        {
-          NotificationService::updateNotifications();
-        }
         //start the external backup timer job
         if (SystemConfig::getBooleanValue('bEnableExternalBackupTarget') && SystemConfig::getValue('sExternalBackupAutoInterval') > 0) {  //if remote backups are enabled, and the interval is greater than zero
             try {
@@ -360,7 +370,7 @@ class SystemService
                 $previous = new \DateTime(SystemConfig::getValue('sLastBackupTimeStamp')); // get a DateTime object for the last time a backup was done.
                 $diff = $previous->diff($now);  // calculate the difference.
                 if (!SystemConfig::getValue('sLastBackupTimeStamp') || $diff->h >= SystemConfig::getValue('sExternalBackupAutoInterval')) {  // if there was no previous backup, or if the interval suggests we do a backup now.
-                    $this->copyBackupToExternalStorage();  // Tell system service to do an external storage backup.
+                    self::copyBackupToExternalStorage();  // Tell system service to do an external storage backup.
                     $now = new \DateTime();  // update the LastBackupTimeStamp.
                     SystemConfig::setValue('sLastBackupTimeStamp', $now->format('Y-m-d H:i:s'));
                 }
@@ -384,7 +394,7 @@ class SystemService
 
     public function downloadLatestRelease()
     {
-        $release = $this->getLatestRelese();
+        $release = $this->getLatestRelease();
         $UpgradeDir = SystemURLs::getDocumentRoot() . '/Upgrade';
         foreach ($release['assets'] as $asset) {
             if ($asset['name'] == "ChurchCRM-" . $release['name'] . ".zip") {

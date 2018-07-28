@@ -64,48 +64,14 @@ if (isset($_POST['User'])) {
 
         $_SESSION['user'] = $currentUser;
 
-        // Set the User's family id in case EditSelf is enabled
-        $_SESSION['iFamID'] = $currentUser->getPerson()->getFamId();
-
-        // Set the UserID
-        $_SESSION['iUserID'] = $currentUser->getPersonId();
-
-        // Set the pagination Search Limit
-        $_SESSION['SearchLimit'] = $currentUser->getSearchLimit();
-
-        // If user has administrator privilege, override other settings and enable all permissions.
-        $_SESSION['bAdmin'] = $currentUser->isAdmin();
-
-        $_SESSION['bAddRecords'] = $currentUser->isAddRecordsEnabled();
-        $_SESSION['bEditRecords'] = $currentUser->isEditRecordsEnabled();
-        $_SESSION['bDeleteRecords'] = $currentUser->isDeleteRecordsEnabled();
-        $_SESSION['bMenuOptions'] = $currentUser->isMenuOptionsEnabled();
         $_SESSION['bManageGroups'] = $currentUser->isManageGroupsEnabled();
         $_SESSION['bFinance'] = $currentUser->isFinanceEnabled();
-        $_SESSION['bNotes'] = $currentUser->isNotesEnabled();
-        $_SESSION['bEditSelf'] = $currentUser->isEditSelfEnabled();
-        $_SESSION['bCanvasser'] = $currentUser->isCanvasserEnabled();
-
-        // Set the FailedLogins
-        $_SESSION['iFailedLogins'] = $currentUser->getFailedLogins();
-
-        // Set the LoginCount
-        $_SESSION['iLoginCount'] = $currentUser->getLoginCount();
-
-        // Set the Last Login
-        $_SESSION['dLastLogin'] = $currentUser->getLastLogin();
-
-        // Set the Style Sheet
-        $_SESSION['sStyle'] = $currentUser->getStyle();
 
         // Create the Cart
         $_SESSION['aPeopleCart'] = [];
 
         // Create the variable for the Global Message
         $_SESSION['sGlobalMessage'] = '';
-
-        // Set whether or not we need a password change
-        $_SESSION['bNeedPasswordChange'] = $currentUser->getNeedPasswordChange();
 
         // Initialize the last operation time
         $_SESSION['tLastOperation'] = time();
@@ -115,15 +81,11 @@ if (isset($_POST['User'])) {
         // Pledge and payment preferences
         $_SESSION['sshowPledges'] = $currentUser->getShowPledges();
         $_SESSION['sshowPayments'] = $currentUser->getShowPayments();
-        $_SESSION['sshowSince'] = $currentUser->getShowSince();
         $_SESSION['idefaultFY'] = CurrentFY(); // Improve the chance of getting the correct fiscal year assigned to new transactions
         $_SESSION['iCurrentDeposit'] = $currentUser->getCurrentDeposit();
 
-        // Search preference
-        $_SESSION['bSearchFamily'] = $currentUser->getSearchfamily();
-
         $systemService = new SystemService();
-        $_SESSION['latestVersion'] = $systemService->getLatestRelese();
+        $_SESSION['latestVersion'] = $systemService->getLatestRelease();
         NotificationService::updateNotifications();
         $redirectLocation = $_SESSION['location'];
         if (isset($redirectLocation)) {
@@ -142,8 +104,8 @@ $id = 0;
 $type ="";
 
 // we hold down the last id
-if (isset($_SESSION['iUserID'])) {
-    $id = $_SESSION['iUserID'];
+if (isset($_SESSION['user'])) {
+    $id = $_SESSION['user']->getId();
 }
 
 // we hold down the last type of login : lock or nothing
@@ -178,8 +140,10 @@ session_start() ;
     // we restore only this part
 $_SESSION['iLoginType'] = $type;
 $_SESSION['username'] = $urlUserName;
-$_SESSION['iUserID'] = $id;
 $LocationFromGet = InputUtils::FilterString(urldecode($_GET['location']));
+if (substr($LocationFromGet, 0, 1) == "/") {
+    $LocationFromGet = substr($LocationFromGet, 1);
+}
 
 if (isset($LocationFromSession) && $LocationFromSession != '') {
     $_SESSION['location'] = $LocationFromSession;
@@ -190,7 +154,7 @@ if (isset($LocationFromGet) && $LocationFromGet != '') {
 }
 if ($type == "Lock" && $id > 0) {// this point is important for the photo in a lock session
     $person = PersonQuery::Create()
-              ->findOneByID($_SESSION['iUserID']);
+              ->findOneByID($id);
 } else {
     $type = $_SESSION['iLoginType'] = "";
 }
@@ -331,53 +295,5 @@ require 'Include/HeaderNotLoggedIn.php';
 </div>
 <!-- /.lockscreen-wrapper -->
 <script  src="<?= SystemURLs::getRootPath() ?>/skin/external/bootstrap-show-password/bootstrap-show-password.min.js"></script>
-<script>
-  <?php if ($_SESSION['iLoginType'] == "Lock") {
-            ?>
-    $(document).ready(function () {
-        $("#Login").hide();
-        document.title = 'Lock';
-    });
-
-    $("#Login-div-appear").click(function(){
-      // 200 is the interval in milliseconds for the fade-in/out, we use jQuery's callback feature to fade
-      // in the new div once the first one has faded out
-      $("#Lock").fadeOut(100, function () {
-        $("#Login").fadeIn(300);
-        document.title = 'Login';
-      });
-    });
-  <?php
-        } else {
-            ?>
-    $(document).ready(function () {
-        $("#Lock").hide();
-        document.title = 'Login';
-    });
-  <?php
-        } ?>
-</script>
-<script>
-    var $buoop = {vs: {i: 13, f: -2, o: -2, s: 9, c: -2}, unsecure: true, api: 4};
-    function $buo_f() {
-        var e = document.createElement("script");
-        e.src = "//browser-update.org/update.min.js";
-        document.body.appendChild(e);
-    }
-
-    try {
-        document.addEventListener("DOMContentLoaded", $buo_f, false)
-    }
-    catch (e) {
-        window.attachEvent("onload", $buo_f)
-    }
-
-    $('#password').password('toggle');
-    $("#password").password({
-        eyeOpenClass: 'glyphicon-eye-open',
-        eyeCloseClass: 'glyphicon-eye-close'
-    });
-</script>
-
-
+<script  src="<?= SystemURLs::getRootPath() ?>/skin/js/Login.js"></script>
 <?php require 'Include/FooterNotLoggedIn.php'; ?>

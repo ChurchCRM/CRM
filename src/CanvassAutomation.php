@@ -21,7 +21,7 @@ use ChurchCRM\Utils\RedirectUtils;
 $sPageTitle = gettext('Canvass Automation');
 
 // Security: User must have canvasser permission to use this form
-if (!$_SESSION['bCanvasser']) {
+if (!$_SESSION['user']->isCanvasserEnabled()) {
     RedirectUtils::Redirect('Menu.php');
     exit;
 }

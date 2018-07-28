@@ -270,7 +270,7 @@ class PDF_Directory extends ChurchInfoReport
     
     public function getBirthdayString($bDirBirthday, $per_BirthMonth, $per_BirthDay, $per_BirthYear, $per_Flags)
     {
-      if ($bDirBirthday ) {
+      if ($bDirBirthday && $per_BirthDay > 0 && $per_BirthMonth > 0) {
         return MiscUtils::FormatBirthDate($per_BirthYear, $per_BirthMonth, $per_BirthDay, "/", $per_Flags);
       }
       return '';

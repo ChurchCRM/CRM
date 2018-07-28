@@ -1,5 +1,267 @@
 # Changelog
 
+## 3.0.7 (23/07/2018)
+
+#### Core Functionality
+
+- [**Feature: Events**][**Web Report**] Need 15 minute intervals [#4368](https://github.com/ChurchCRM/CRM/issues/4368)
+- [**Feature: Members**] Bug: Custom Drop-Down List Cannot Be Edited [#4359](https://github.com/ChurchCRM/CRM/issues/4359)
+- [**Feature: Data Import / Export**] Can I List All Familes? [#4358](https://github.com/ChurchCRM/CRM/issues/4358)
+- [**Feature: Users**][**New Feature Request**] Allow for Searching by a Family's Custom Fields [#4350](https://github.com/ChurchCRM/CRM/issues/4350)
+- [**API**] API call error in ChurchCRM 3.0.6  while adding and saving calendar event  [#4343](https://github.com/ChurchCRM/CRM/issues/4343)
+- [**Feature: Groups**][**Platform: Dependencies**][**Web Report**] Group property editor [#4296](https://github.com/ChurchCRM/CRM/issues/4296)
+- [**Installation / Upgrade**][**Web Report**] Multiple API Errors after upgrade [#4286](https://github.com/ChurchCRM/CRM/issues/4286)
+- [**Feature: Emails**] Church greeter email content to be configurable [#4282](https://github.com/ChurchCRM/CRM/issues/4282)
+- [**Feature: Members**][**UI**][**Web Report**] Person Profile [#3865](https://github.com/ChurchCRM/CRM/issues/3865)
+- [**Feature: Reports**][**Web Report**][**question**] Cannot create directory from cart - redirects to Menu.php [#2806](https://github.com/ChurchCRM/CRM/issues/2806)
+- [**Feature: Emails**][**Feature: Members**] BCC all email issue [#2600](https://github.com/ChurchCRM/CRM/issues/2600)
+
+#### Bug fixes:
+
+- [**Web Report**][**bug**] Have a bug in Enable Features [#4301](https://github.com/ChurchCRM/CRM/issues/4301)
+
+#### Inner Beauty:
+
+- [**Documentation**][**development**] Vagrant Installation Instructions are Incomplete [#4360](https://github.com/ChurchCRM/CRM/issues/4360)
+
+---
+
+## 3.0.6 (13/06/2018)
+
+#### Enhancements:
+
+- [**Feature: Members**][**enhancement**] Please add Last Name First Name in iPersonNameStyle [#4298](https://github.com/ChurchCRM/CRM/issues/4298)
+
+#### Core Functionality
+
+- [**Feature: Data Import / Export**][**Web Report**] Missing Field in Import/Export [#4299](https://github.com/ChurchCRM/CRM/issues/4299)
+- [**Feature: Members**][**enhancement**] Please add Last Name First Name in iPersonNameStyle [#4298](https://github.com/ChurchCRM/CRM/issues/4298)
+- [**Feature: Users**][**Security**][**Web Report**] Deleting system user yields json api error [#4293](https://github.com/ChurchCRM/CRM/issues/4293)
+- [**Feature: Events**][**Web Report**] Event Attendance [#4289](https://github.com/ChurchCRM/CRM/issues/4289)
+- [**Feature: Events**] Add Holidays / Country - specific events. [#3903](https://github.com/ChurchCRM/CRM/issues/3903)
+- [**Feature: Events**][**Web Report**] Event check-in time only shows date [#3747](https://github.com/ChurchCRM/CRM/issues/3747)
+
+#### Localization:
+
+- [**Localization**] The Files ChurchCRM_Dutch.po and .mo [#4287](https://github.com/ChurchCRM/CRM/issues/4287)
+
+---
+
+## 3.0.5 (20/04/2018)
+
+#### Enhancements:
+
+- [**API**][**enhancement**] Move Delete Person to a API call [#1395](https://github.com/ChurchCRM/CRM/issues/1395)
+
+#### Core Functionality
+
+- [**Installation / Upgrade**] Add MySQL version to Admin Debug Page [#4256](https://github.com/ChurchCRM/CRM/issues/4256)
+- [**Installation / Upgrade**] Add PHP version to Admin Debug Page [#4255](https://github.com/ChurchCRM/CRM/issues/4255)
+- [**API**] Some searches fail with API error [#4222](https://github.com/ChurchCRM/CRM/issues/4222)
+- [**Installation / Upgrade**][**Web Report**] Problems after update [#4208](https://github.com/ChurchCRM/CRM/issues/4208)
+- [**Installation / Upgrade**][**Web Report**] error after upgrade to 3.0.2 [#4205](https://github.com/ChurchCRM/CRM/issues/4205)
+- [**API**][**Code Smell**] keep recieving this multiply error [#4021](https://github.com/ChurchCRM/CRM/issues/4021)
+- [**API**][**Backend System**][**Configuration**][**Platform: Self-Hosted**][**Platform: Shared Hosting**] Unable to submit an issue [#3996](https://github.com/ChurchCRM/CRM/issues/3996)
+- [**API**] Need Public Person/Family Self Register API [#3955](https://github.com/ChurchCRM/CRM/issues/3955)
+- [**API**][**Platform: Self-Hosted**][**Platform: Shared Hosting**] cant upload profile [#3329](https://github.com/ChurchCRM/CRM/issues/3329)
+- [**Feature: Members**] Family List should have active maps link [#2977](https://github.com/ChurchCRM/CRM/issues/2977)
+- [**API**][**enhancement**] Move Delete Person to a API call [#1395](https://github.com/ChurchCRM/CRM/issues/1395)
+
+#### Inner Beauty:
+
+- [**Platform: Dependencies**][**development**] Vagrant env is missing PHP zip [#4248](https://github.com/ChurchCRM/CRM/issues/4248)
+- [**Code Smell**] Review AJAX Delete Calls [#4237](https://github.com/ChurchCRM/CRM/issues/4237)
+- [**API**][**Code Smell**] keep recieving this multiply error [#4021](https://github.com/ChurchCRM/CRM/issues/4021)
+- [**API**][**Backend System**][**Configuration**][**Platform: Self-Hosted**][**Platform: Shared Hosting**] Unable to submit an issue [#3996](https://github.com/ChurchCRM/CRM/issues/3996)
+
+---
+
+## 3.0.4 (13/04/2018)
+
+#### Core Functionality
+
+- [**Code Smell**][**Installation / Upgrade**] Typo on setup page [#4215](https://github.com/ChurchCRM/CRM/issues/4215)
+- [**API**] GroupView.php broken thumbnail image link [#4213](https://github.com/ChurchCRM/CRM/issues/4213)
+- [**API**][**Configuration**][**Feature: Events**][**Web Report**] Calendar Public URLs [#4207](https://github.com/ChurchCRM/CRM/issues/4207)
+- [**API**] Review API Security [#4013](https://github.com/ChurchCRM/CRM/issues/4013)
+- [**Feature: Events**][**Web Report**] Event Time Range [#3724](https://github.com/ChurchCRM/CRM/issues/3724)
+- [**API**][**Feature: Events**] Calendar vCard Export [#3625](https://github.com/ChurchCRM/CRM/issues/3625)
+
+#### Inner Beauty:
+
+- [**Code Smell**][**Installation / Upgrade**] Typo on setup page [#4215](https://github.com/ChurchCRM/CRM/issues/4215)
+- [**Code Smell**] MapUsingGoogle still calls initial JS [#4202](https://github.com/ChurchCRM/CRM/issues/4202)
+
+---
+
+## 3.0.3 (04/04/2018)
+
+#### Enhancements:
+
+- [**Documentation**][**enhancement**] Update SystemConfig to include a doc link  [#2321](https://github.com/ChurchCRM/CRM/issues/2321)
+- [**Performance**][**enhancement**] Photo System: Needs a Batch API [#2205](https://github.com/ChurchCRM/CRM/issues/2205)
+- [**Web Report**][**enhancement**] Sidebar menu should remain open/active for current page [#1843](https://github.com/ChurchCRM/CRM/issues/1843)
+- [**Feature: Members**][**enhancement**] Review All Export Flags and usages [#1396](https://github.com/ChurchCRM/CRM/issues/1396)
+
+#### Core Functionality
+
+- [**Installation / Upgrade**][**Platform: Database**][**Platform: Shared Hosting**] Could not connect to MySQL on 127.0.0.1 on port as USER [#4182](https://github.com/ChurchCRM/CRM/issues/4182)
+- [**Installation / Upgrade**][**bug/regression**] Can't Upgrade past 3.0.0 [#4180](https://github.com/ChurchCRM/CRM/issues/4180)
+- [**API**] Dashboard API Error when session timeout  [#3999](https://github.com/ChurchCRM/CRM/issues/3999)
+- [**Feature: Members**] Unique email address [#3787](https://github.com/ChurchCRM/CRM/issues/3787)
+- [**API**][**Platform: Shared Hosting**][**question**] Uploading Photo [#3044](https://github.com/ChurchCRM/CRM/issues/3044)
+- [**Installation / Upgrade**][**question**] Upgrading to 2.7.2 [#2403](https://github.com/ChurchCRM/CRM/issues/2403)
+- [**Installation / Upgrade**][**Platform: Shared Hosting**][**Security**] 403 Forbidden error [#2400](https://github.com/ChurchCRM/CRM/issues/2400)
+- [**Feature: Members**][**enhancement**] Review All Export Flags and usages [#1396](https://github.com/ChurchCRM/CRM/issues/1396)
+
+#### Performance:
+
+- [**Performance**][**enhancement**] Photo System: Needs a Batch API [#2205](https://github.com/ChurchCRM/CRM/issues/2205)
+
+#### Inner Beauty:
+
+- [**Backend System**][**Code Smell**] Deeplink to pages uses incorrect URL [#4007](https://github.com/ChurchCRM/CRM/issues/4007)
+- [**Backend System**][**New Feature Request**] Add a debug page on the admin Nav [#1420](https://github.com/ChurchCRM/CRM/issues/1420)
+- [**development**] Review System Settings [#1168](https://github.com/ChurchCRM/CRM/issues/1168)
+
+---
+
+## 3.0.2 (30/03/2018)
+*No changelog for this release.*
+
+---
+
+## 3.0.1 (30/03/2018)
+
+#### Core Functionality
+
+- [**Feature: Emails**][**Feature: Members**][**Platform: Dependencies**][**bug**] Church greeter email error [#4160](https://github.com/ChurchCRM/CRM/issues/4160)
+- [**Installation / Upgrade**] HTTP 500 Error [#4151](https://github.com/ChurchCRM/CRM/issues/4151)
+- [**API**][**Security**][**bug**] CodeSmell: Group All Background APIs into single Path [#4148](https://github.com/ChurchCRM/CRM/issues/4148)
+- [**Installation / Upgrade**][**please address comments**][**question**] 426 Upgrade Database [#4139](https://github.com/ChurchCRM/CRM/issues/4139)
+- [**API**][**Feature: Events**][**Web Report**][**bug**] Public Events API is not sorted by Date [#4130](https://github.com/ChurchCRM/CRM/issues/4130)
+- [**Feature: Events**][**Web Report**][**bug**] Calendar Public Views have wrong page title [#4128](https://github.com/ChurchCRM/CRM/issues/4128)
+- [**API**][**P0 - Urgent**][**Security**][**Web Report**][**bug/regression**] Unable to Use API Keys [#4112](https://github.com/ChurchCRM/CRM/issues/4112)
+- [**Feature: Data Import / Export**] Export CSV function is not working - v2.10.3 [#3966](https://github.com/ChurchCRM/CRM/issues/3966)
+- [**Installation / Upgrade**][**bug/regression**] upgrading from churchinfo [#3420](https://github.com/ChurchCRM/CRM/issues/3420)
+
+#### Bug fixes:
+
+- [**Feature: Emails**][**Feature: Members**][**Platform: Dependencies**][**bug**] Church greeter email error [#4160](https://github.com/ChurchCRM/CRM/issues/4160)
+- [**API**][**Security**][**bug**] CodeSmell: Group All Background APIs into single Path [#4148](https://github.com/ChurchCRM/CRM/issues/4148)
+- [**API**][**Feature: Events**][**Web Report**][**bug**] Public Events API is not sorted by Date [#4130](https://github.com/ChurchCRM/CRM/issues/4130)
+- [**Feature: Events**][**Web Report**][**bug**] Calendar Public Views have wrong page title [#4128](https://github.com/ChurchCRM/CRM/issues/4128)
+- [**API**][**P0 - Urgent**][**Security**][**Web Report**][**bug/regression**] Unable to Use API Keys [#4112](https://github.com/ChurchCRM/CRM/issues/4112)
+
+#### Inner Beauty:
+
+- [**build**] Many of our dependencies are out of date [#3601](https://github.com/ChurchCRM/CRM/issues/3601)
+
+---
+
+## 3.0.0 (15/03/2018)
+
+#### Enhancements:
+
+- [**UI**][**enhancement**] Admin Menus are hard to find [#4103](https://github.com/ChurchCRM/CRM/issues/4103)
+- [**bug**][**enhancement**] Member Distance is as the crow flies [#3687](https://github.com/ChurchCRM/CRM/issues/3687)
+- [**Good first bug**][**enhancement**] Demo Data changes [#1974](https://github.com/ChurchCRM/CRM/issues/1974)
+- [**Web Report**][**enhancement**] Put all available reports on reports menu [#1193](https://github.com/ChurchCRM/CRM/issues/1193)
+- [**enhancement**] Fundraiser: On/Off Switch  [#528](https://github.com/ChurchCRM/CRM/issues/528)
+- [**Feature: Sunday School**][**enhancement**] Sunday School: Need an On/Off Switch [#527](https://github.com/ChurchCRM/CRM/issues/527)
+
+#### Core Functionality
+
+- [**Feature: Events**][**UI**][**Web Report**] Birthday Calendar: Links [#4110](https://github.com/ChurchCRM/CRM/issues/4110)
+- [**API**][**Security**] Verify expired session also affetcs API [#4099](https://github.com/ChurchCRM/CRM/issues/4099)
+- [**Installation / Upgrade**][**Platform: Database**] menu_links table missing from upgrade script [#4083](https://github.com/ChurchCRM/CRM/issues/4083)
+- [**Installation / Upgrade**][**bug**] 2.10.0 missing from upgrade script [#4082](https://github.com/ChurchCRM/CRM/issues/4082)
+- [**Installation / Upgrade**][**bug**] 2.9.0 upgrade script fails [#4081](https://github.com/ChurchCRM/CRM/issues/4081)
+- [**Backend System**][**Code Smell**][**Installation / Upgrade**] SQL Errors encountered during upgrade are not logged [#4079](https://github.com/ChurchCRM/CRM/issues/4079)
+- [**Installation / Upgrade**][**bug**] Missing files referenced in upgrade.json will cause server hang [#4078](https://github.com/ChurchCRM/CRM/issues/4078)
+- [**Installation / Upgrade**][**bug**] Upgrade.JSON references menu rebuild script [#4077](https://github.com/ChurchCRM/CRM/issues/4077)
+- [**Feature: Events**][**Feature: Members**][**Web Report**] Upcoming Birthday Calendar Shows Last Year\'s Age [#4037](https://github.com/ChurchCRM/CRM/issues/4037)
+- [**Installation / Upgrade**][**Platform: Database**][**Platform: Self-Hosted**][**Platform: Shared Hosting**] Setup Error - Could not connect to MySQL [#4033](https://github.com/ChurchCRM/CRM/issues/4033)
+- [**Installation / Upgrade**][**Localization**][**Web Report**] Is not changing the language to Spanish and the applicacion integrity check [#4032](https://github.com/ChurchCRM/CRM/issues/4032)
+- [**Feature: Events**] Export Calendar does not alert of System Settings is disabled [#4005](https://github.com/ChurchCRM/CRM/issues/4005)
+- [**Code Smell**][**Feature: Reports**] Generate "Confirm data letters" - deprecated methods [#3989](https://github.com/ChurchCRM/CRM/issues/3989)
+- [**Feature: Users**][**Web Report**] Forgot Password Issue [#3987](https://github.com/ChurchCRM/CRM/issues/3987)
+- [**Feature: Reports**][**Web Report**] Reports missing [#3981](https://github.com/ChurchCRM/CRM/issues/3981)
+- [**Feature: Data Import / Export**][**Feature: Events**][**Feature: Members**] Birthdate/ Birthday not show up in calendar [#3980](https://github.com/ChurchCRM/CRM/issues/3980)
+- [**Installation / Upgrade**][**Platform: Shared Hosting**] Error Installing ChurchCRM on Shared Server [#3951](https://github.com/ChurchCRM/CRM/issues/3951)
+- [**Feature: Financial**][**Web Report**][**bug**] Non-deductible amounts still defaults to zero when total amount field is blank [#3925](https://github.com/ChurchCRM/CRM/issues/3925)
+- [**Feature: Emails**][**Web Report**] Email Menu item not working [#3924](https://github.com/ChurchCRM/CRM/issues/3924)
+- [**Feature: Members**][**Web Report**][**please address comments**] Picture not showing on individual print [#3914](https://github.com/ChurchCRM/CRM/issues/3914)
+- [**Installation / Upgrade**][**Web Report**] Integrity Checks [#3913](https://github.com/ChurchCRM/CRM/issues/3913)
+- [**Feature: Events**] Remove "Event Group" [#3900](https://github.com/ChurchCRM/CRM/issues/3900)
+- [**API**][**Feature: Events**][**Web Report**] Error just after calendar is opened [#3795](https://github.com/ChurchCRM/CRM/issues/3795)
+- [**Installation / Upgrade**][**Web Report**] Upgrade from 2.9.2 not working [#3794](https://github.com/ChurchCRM/CRM/issues/3794)
+- [**API**] CANT UPLOAD PICTURES [#3657](https://github.com/ChurchCRM/CRM/issues/3657)
+- [**API**][**Feature: Events**][**New Feature Request**] Provide public Calendar data API [#2146](https://github.com/ChurchCRM/CRM/issues/2146)
+- [**Feature: Members**][**question**] "ghost family" [#1173](https://github.com/ChurchCRM/CRM/issues/1173)
+- [**Feature: Sunday School**][**enhancement**] Sunday School: Need an On/Off Switch [#527](https://github.com/ChurchCRM/CRM/issues/527)
+- [**Feature: Events**][**New Feature Request**] Add Calendar view (google calendar integration) [#22](https://github.com/ChurchCRM/CRM/issues/22)
+
+#### Localization:
+
+- [**Installation / Upgrade**][**Localization**][**Web Report**] Is not changing the language to Spanish and the applicacion integrity check [#4032](https://github.com/ChurchCRM/CRM/issues/4032)
+- [**Localization**] Change Language to Spanish [#3235](https://github.com/ChurchCRM/CRM/issues/3235)
+
+#### Bug fixes:
+
+- [**P0 - Urgent**][**Security**] Changing user password switches to that user context [#4107](https://github.com/ChurchCRM/CRM/issues/4107)
+- [**Installation / Upgrade**][**bug**] 2.10.0 missing from upgrade script [#4082](https://github.com/ChurchCRM/CRM/issues/4082)
+- [**Installation / Upgrade**][**bug**] 2.9.0 upgrade script fails [#4081](https://github.com/ChurchCRM/CRM/issues/4081)
+- [**Installation / Upgrade**][**bug**] Missing files referenced in upgrade.json will cause server hang [#4078](https://github.com/ChurchCRM/CRM/issues/4078)
+- [**Installation / Upgrade**][**bug**] Upgrade.JSON references menu rebuild script [#4077](https://github.com/ChurchCRM/CRM/issues/4077)
+- [**P0 - Urgent**][**UI**][**Web Report**] People Menu Items [#4027](https://github.com/ChurchCRM/CRM/issues/4027)
+- [**Feature: Financial**][**Web Report**][**bug**] Non-deductible amounts still defaults to zero when total amount field is blank [#3925](https://github.com/ChurchCRM/CRM/issues/3925)
+- [**Security**][**bug**] Password Change Screen And Bad Session JavaScript Errors [#3722](https://github.com/ChurchCRM/CRM/issues/3722)
+- [**bug**][**enhancement**] Member Distance is as the crow flies [#3687](https://github.com/ChurchCRM/CRM/issues/3687)
+
+#### Inner Beauty:
+
+- [**Backend System**][**Code Smell**][**Installation / Upgrade**] SQL Errors encountered during upgrade are not logged [#4079](https://github.com/ChurchCRM/CRM/issues/4079)
+- [**Code Smell**][**development**] review and remove $_SESSION['bAddEvent'] [#4001](https://github.com/ChurchCRM/CRM/issues/4001)
+- [**Code Smell**][**Feature: Reports**] Generate "Confirm data letters" - deprecated methods [#3989](https://github.com/ChurchCRM/CRM/issues/3989)
+- [**Code Smell**] Stop using $_SESSION['iUserID'] [#3976](https://github.com/ChurchCRM/CRM/issues/3976)
+- [**Code Smell**] Menu ORM is not optimized  [#3836](https://github.com/ChurchCRM/CRM/issues/3836)
+- [**development**] Evaluate Propel ORM classes [#2441](https://github.com/ChurchCRM/CRM/issues/2441)
+- [**Backend System**][**New Feature Request**][**UI**] Favorites items menu [#2028](https://github.com/ChurchCRM/CRM/issues/2028)
+- [**Backend System**][**UI**][**development**] Move menu configuration out of SQL [#2000](https://github.com/ChurchCRM/CRM/issues/2000)
+- [**Backend System**][**development**] Internal Database settings [#1240](https://github.com/ChurchCRM/CRM/issues/1240)
+
+---
+
+## 2.10.4 (07/02/2018)
+
+#### Enhancements:
+
+- [**Feature: Financial**][**UI**][**Web Report**][**enhancement**] Default value for deposit payment entry [#3758](https://github.com/ChurchCRM/CRM/issues/3758)
+- [**Localization**][**development**][**enhancement**] Create REST APIs for Country & State  [#1931](https://github.com/ChurchCRM/CRM/issues/1931)
+
+#### Core Functionality
+
+- [**Installation / Upgrade**][**Platform: Dependencies**][**Platform: Shared Hosting**][**question**] Noob here - Does ChurchCRM work with Squarespace? Thanks [#3959](https://github.com/ChurchCRM/CRM/issues/3959)
+- [**Installation / Upgrade**] Church CRM fresh install but can't login using default credential [#3952](https://github.com/ChurchCRM/CRM/issues/3952)
+- [**Feature: Emails**][**Web Report**] Email Page - ERR_TOO_MANY_REDIRECTS [#3948](https://github.com/ChurchCRM/CRM/issues/3948)
+- [**API**][**Platform: Self-Hosted**][**Platform: Shared Hosting**][**Web Report**] 0 in families/people/etc. [#3921](https://github.com/ChurchCRM/CRM/issues/3921)
+- [**Feature: Members**][**Feature: Reports**][**Web Report**][**question**] Confirm Data Member Report [#3920](https://github.com/ChurchCRM/CRM/issues/3920)
+- [**API**][**Platform: Self-Hosted**] undefined: /api/timerjobs/run error on all pages [#3909](https://github.com/ChurchCRM/CRM/issues/3909)
+- [**Feature: Financial**][**UI**][**Web Report**][**enhancement**] Default value for deposit payment entry [#3758](https://github.com/ChurchCRM/CRM/issues/3758)
+- [**API**][**Security**] Add API key for access [#3033](https://github.com/ChurchCRM/CRM/issues/3033)
+
+#### Localization:
+
+- [**Localization**][**development**][**enhancement**] Create REST APIs for Country & State  [#1931](https://github.com/ChurchCRM/CRM/issues/1931)
+
+#### Inner Beauty:
+
+- [**Backend System**][**please address comments**] Fatal Error in XAMPP setup [#3627](https://github.com/ChurchCRM/CRM/issues/3627)
+- [**Localization**][**development**][**enhancement**] Create REST APIs for Country & State  [#1931](https://github.com/ChurchCRM/CRM/issues/1931)
+
+---
+
 ## 2.10.3 (13/01/2018)
 
 #### Enhancements:
@@ -1804,7 +2066,6 @@
 - [**enhancement**] Mailchimp's Generate Email Export should export a person's groups [#457](https://github.com/ChurchCRM/CRM/issues/457)
 - [**enhancement**] Add to Cart from Family view should use ajax or at least return to same page [#449](https://github.com/ChurchCRM/CRM/issues/449)
 - [**bug**][**enhancement**] Main Menu is showing TBD for Groups [#431](https://github.com/ChurchCRM/CRM/issues/431)
-- [**enhancement**] Restyle Sunday School Dashboard to match Menu and Member Dashboard [#422](https://github.com/ChurchCRM/CRM/issues/422)
 - [**enhancement**] Auto-Migration [#376](https://github.com/ChurchCRM/CRM/issues/376)
 - [**bug**][**enhancement**] Skin: WhyCameEditor.php [#373](https://github.com/ChurchCRM/CRM/issues/373)
 - [**bug**][**enhancement**] Switch Assign a New Property from Drop-down to buttons [#370](https://github.com/ChurchCRM/CRM/issues/370)

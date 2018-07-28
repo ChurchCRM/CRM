@@ -29,4 +29,11 @@ class LoggerUtils
         return $logger;
     }
 
+    public static function getCSPLogger()
+    {
+        $logger = new Logger('cspLogger');
+        $logger->pushHandler(new StreamHandler(self::buildLogFilePath("csp"), self::getLogLevel()));
+        return $logger;
+    }
+
 }

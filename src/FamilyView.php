@@ -35,7 +35,7 @@ if (!empty($_GET['FamilyID'])) {
 }
 
 //Deactivate/Activate Family
-if ($_SESSION['bDeleteRecords'] && !empty($_POST['FID']) && !empty($_POST['Action'])) {
+if ($_SESSION['user']->isDeleteRecordsEnabled() && !empty($_POST['FID']) && !empty($_POST['Action'])) {
     $family = FamilyQuery::create()->findOneById($_POST['FID']);
     if ($_POST['Action'] == "Deactivate") {
         $family->deactivate();
@@ -50,10 +50,11 @@ if ($_SESSION['bDeleteRecords'] && !empty($_POST['FID']) && !empty($_POST['Actio
 $sSQL = "SELECT fun_ID,fun_Name,fun_Description,fun_Active FROM donationfund_fun WHERE fun_Active = 'true'";
 $rsFunds = RunQuery($sSQL);
 
-if (isset($_POST["UpdatePledgeTable"]) && $_SESSION['bFinance']) {
+if (isset($_POST["UpdatePledgeTable"]) && $_SESSION['user']->isFinanceEnabled()) {
     $_SESSION['sshowPledges'] = isset($_POST["ShowPledges"]);
     $_SESSION['sshowPayments'] = isset($_POST["ShowPayments"]);
-    $_SESSION['sshowSince'] = DateTime::createFromFormat("Y-m-d", InputUtils::LegacyFilterInput($_POST["ShowSinceDate"]));
+    $_SESSION['user']->setShowSince(InputUtils::LegacyFilterInput($_POST["ShowSinceDate"]));
+    $_SESSION['user']->save();
 }
 
 $dSQL = "SELECT fam_ID FROM family_fam order by fam_Name";
@@ -158,7 +159,7 @@ $sCellPhone = ExpandPhoneNumber($fam_CellPhone, $fam_Country, $dummy);
 
 $sFamilyEmails = array();
 
-$bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyID == $_SESSION['iFamID'])));
+$bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() || ($_SESSION['user']->isEditSelfEnabled() && ($iFamilyID == $_SESSION['user']->getPerson()->getFamId())));
 
 ?>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
@@ -166,7 +167,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
 </script>
 
 <div class="alert alert-info">
-    <strong><a href="<?= SystemURLs::getRootPath() ?>/v2/family/<?= $iFamilyID ?>/view"><?= gettext("Try our the Beta family view") ?></a> </strong>
+    <strong><a href="<?= SystemURLs::getRootPath() ?>/v2/family/<?= $iFamilyID ?>/view"><?= gettext("Try out the Beta family view") ?></a> </strong>
 </div>
 
 <?php if (!empty($fam_DateDeactivated)) {
@@ -181,7 +182,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
         <div class="box box-primary">
             <div class="box-body">
                 <div class="image-container">
-                    <img src="<?= SystemURLs::getRootPath() ?>/api/families/<?= $family->getId() ?>/photo" class="img-responsive profile-user-img profile-family-img"/>
+                    <img src="<?= SystemURLs::getRootPath() ?>/api/family/<?= $family->getId() ?>/photo" class="img-responsive profile-user-img profile-family-img"/>
                     <?php if ($bOkToEdit): ?>
                         <div class="after">
                             <div class="buttons">
@@ -307,7 +308,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
                                 class="fa fa-hand-o-left"></i><?= gettext('Previous Family') ?></a>
                     <?php
     } ?>
-                <a class="btn btn-app btn-danger" role="button" href="FamilyList.php"><i
+                <a class="btn btn-app btn-danger" role="button" href="<?= SystemURLs::getRootPath()?>/v2/family"><i
                             class="fa fa-list-ul"></i><?= gettext('Family List') ?></a>
                 <?php if (($next_id > 0)) {
         ?>
@@ -315,7 +316,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
                                 class="fa fa-hand-o-right"></i><?= gettext('Next Family') ?> </a>
                     <?php
     } ?>
-                <?php if ($_SESSION['bDeleteRecords']) {
+                <?php if ($_SESSION['user']->isDeleteRecordsEnabled()) {
         ?>
                     <a class="btn btn-app bg-maroon" href="SelectDelete.php?FamilyID=<?= $iFamilyID ?>"><i
                                 class="fa fa-trash-o"></i><?= gettext('Delete this Family') ?></a>
@@ -324,7 +325,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
                 <br/>
 
                 <?php
-                if ($_SESSION['bNotes']) {
+                if ($_SESSION['user']->isNotesEnabled()) {
                     ?>
                     <a class="btn btn-app" href="NoteEditor.php?FamilyID=<?= $iFamilyID ?>"><i
                                 class="fa fa-sticky-note"></i><?= gettext("Add a Note") ?></a>
@@ -364,7 +365,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
                     ?>
                             <tr>
                                 <td>
-                                    <img src="<?= SystemURLs::getRootPath() ?>/api/persons/<?= $person->getId() ?>/thumbnail"
+                                    <img src="<?= SystemURLs::getRootPath() ?>/api/person/<?= $person->getId() ?>/thumbnail"
                                          width="40" height="40"
                                          class="initials-image img-circle"/>
                                     <a href="<?= $person->getViewURI() ?>"
@@ -412,7 +413,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
                                            data-person_id="<?= $person->getId() ?>" data-view="family">
                                     <span class="fa-stack">
                                         <i class="fa fa-square fa-stack-2x"></i>
-                                        <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+                                        <i class="fa fa-trash-o fa-stack-1x fa-inverse btn-danger"></i>
                                     </span>
                                         </a>
                                         <?php
@@ -437,7 +438,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
                                                           data-toggle="tab"><?= gettext("Timeline") ?></a></li>
                 <li role="presentation"><a href="#properties" aria-controls="properties" role="tab"
                                            data-toggle="tab"><?= gettext("Assigned Properties") ?></a></li>
-                <?php if ($_SESSION['bFinance']) {
+                <?php if ($_SESSION['user']->isFinanceEnabled()) {
                     ?>
                     <li role="presentation"><a href="#finance" aria-controls="finance" role="tab"
                                                data-toggle="tab"><?= gettext("Automatic Payments") ?></a></li>
@@ -477,7 +478,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
 
                                 <div class="timeline-item">
                       <span class="time">
-                    <?php if ($_SESSION['bNotes'] && (isset($item["editLink"]) || isset($item["deleteLink"]))) {
+                    <?php if ($_SESSION['user']->isNotesEnabled() && (isset($item["editLink"]) || isset($item["deleteLink"]))) {
                         ?>
                         <?php if (isset($item["editLink"])) {
                             ?>
@@ -643,7 +644,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
                         </div>
                     </div>
                 </div>
-                <?php if ($_SESSION['bFinance']) {
+                <?php if ($_SESSION['user']->isFinanceEnabled()) {
         ?>
                 <div role="tab-pane fade" class="tab-pane" id="finance">
                     <div class="main-box clearfix">
@@ -747,8 +748,8 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
                                 <label for="ShowSinceDate"><?= gettext("Since") ?>:</label>
                                 <?php
                                 $showSince = "";
-        if ($_SESSION['sshowSince'] != null) {
-            $showSince = $_SESSION['sshowSince']->format('Y-m-d');
+        if ($_SESSION['user']->getShowSince() != null) {
+            $showSince = $_SESSION['user']->getShowSince()->format('Y-m-d');
         } ?>
                                 <input type="text" class="date-picker" Name="ShowSinceDate"
                                        value="<?= $showSince ?>" maxlength="10" id="ShowSinceDate" size="15">
@@ -801,7 +802,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
                 if ((($_SESSION['sshowPledges'] && $plg_PledgeOrPayment == 'Pledge') ||
                                                 ($_SESSION['sshowPayments'] && $plg_PledgeOrPayment == 'Payment')
                                             ) &&
-                                            ($_SESSION['sshowSince'] == "" || DateTime::createFromFormat("Y-m-d", $plg_date) > $_SESSION['sshowSince'])
+                                            (empty($_SESSION['user']->getShowSince()) || DateTime::createFromFormat("Y-m-d", $plg_date) > $_SESSION['user']->getShowSince())
                                         ) {
                     ?>
 
@@ -868,7 +869,7 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
                             <?php
     } ?>
 
-                            <?php if ($_SESSION['bCanvasser']) {
+                            <?php if ($_SESSION['user']->isCanvasserEnabled()) {
         ?>
 
                             <p align="center">
@@ -957,61 +958,60 @@ $bOkToEdit = ($_SESSION['bEditRecords'] || ($_SESSION['bEditSelf'] && ($iFamilyI
             </div>
         </div>
     </div>
+</div>
 
-    <script src="<?= SystemURLs::getRootPath() ?>/skin/external/jquery-photo-uploader/PhotoUploader.js"></script>
-    <script src="<?= SystemURLs::getRootPath() ?>/skin/js/FamilyView.js" ></script>
-    <script src="<?= SystemURLs::getRootPath() ?>/skin/js/MemberView.js" ></script>
-    <script nonce="<?= SystemURLs::getCSPNonce() ?>">
-        window.CRM.currentActive = <?= (empty($fam_DateDeactivated) ? 'true' : 'false') ?>;
-        var dataT = 0;
-        $(document).ready(function () {
-            $("#activateDeactivate").click(function () {
-                console.log("click activateDeactivate");
-                popupTitle = (window.CRM.currentActive == true ? "<?= gettext('Confirm Deactivation') ?>" : "<?= gettext('Confirm Activation') ?>" );
-                if (window.CRM.currentActive == true) {
-                    popupMessage = "<?= gettext('Please confirm deactivation of family') . ': ' . $fam_Name ?>";
-                }
-                else {
-                    popupMessage = "<?= gettext('Please confirm activation of family') . ': ' . $fam_Name  ?>";
-                }
+<script src="<?= SystemURLs::getRootPath() ?>/skin/external/jquery-photo-uploader/PhotoUploader.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/js/FamilyView.js" ></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/js/MemberView.js" ></script>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
+    window.CRM.currentActive = <?= (empty($fam_DateDeactivated) ? 'true' : 'false') ?>;
+    var dataT = 0;
+    $(document).ready(function () {
+        $("#activateDeactivate").click(function () {
+            console.log("click activateDeactivate");
+            popupTitle = (window.CRM.currentActive == true ? "<?= gettext('Confirm Deactivation') ?>" : "<?= gettext('Confirm Activation') ?>" );
+            if (window.CRM.currentActive == true) {
+                popupMessage = "<?= gettext('Please confirm deactivation of family') . ': ' . $fam_Name ?>";
+            }
+            else {
+                popupMessage = "<?= gettext('Please confirm activation of family') . ': ' . $fam_Name  ?>";
+            }
 
-                bootbox.confirm({
-                    title: popupTitle,
-                    message: '<p style="color: red">' + popupMessage + '</p>',
-                    callback: function (result) {
-                        if (result) {
-                            $.ajax({
-                                method: "POST",
-                                url: window.CRM.root + "/api/families/" + window.CRM.currentFamily + "/activate/" + !window.CRM.currentActive,
-                                dataType: "json",
-                                encode: true
-                            }).done(function (data) {
-                                if (data.success == true)
-                                    window.location.href = window.CRM.root + "/FamilyView.php?FamilyID=" + window.CRM.currentFamily;
+            bootbox.confirm({
+                title: popupTitle,
+                message: '<p style="color: red">' + popupMessage + '</p>',
+                callback: function (result) {
+                    if (result) {
+                        window.CRM.APIRequest({
+                            method: "POST",
+                            path: "families/" + window.CRM.currentFamily + "/activate/" + !window.CRM.currentActive
+                        }).done(function (data) {
+                            if (data.success == true)
+                                window.location.href = window.CRM.root + "/FamilyView.php?FamilyID=" + window.CRM.currentFamily;
 
-                            });
-                        }
+                        });
                     }
-                });
-            });
-
-            window.CRM.photoUploader = $("#photoUploader").PhotoUploader({
-                url: window.CRM.root + "/api/families/" + window.CRM.currentFamily + "/photo",
-                maxPhotoSize: window.CRM.maxUploadSize,
-                photoHeight: <?= SystemConfig::getValue("iPhotoHeight") ?>,
-                photoWidth: <?= SystemConfig::getValue("iPhotoWidth") ?>,
-                done: function (e) {
-                    location.reload();
                 }
             });
-
-            contentExists(window.CRM.root + "/api/families/" + window.CRM.currentFamily + "/photo", function (success) {
-                if (success) {
-                    $("#view-larger-image-btn").removeClass('hide');
-                }
-            });
-
         });
-    </script>
 
-    <?php require "Include/Footer.php" ?>
+        window.CRM.photoUploader = $("#photoUploader").PhotoUploader({
+            url: window.CRM.root + "/api/family/" + window.CRM.currentFamily + "/photo",
+            maxPhotoSize: window.CRM.maxUploadSize,
+            photoHeight: <?= SystemConfig::getValue("iPhotoHeight") ?>,
+            photoWidth: <?= SystemConfig::getValue("iPhotoWidth") ?>,
+            done: function (e) {
+                location.reload();
+            }
+        });
+
+        contentExists(window.CRM.root + "/api/family/" + window.CRM.currentFamily + "/photo", function (success) {
+            if (success) {
+                $("#view-larger-image-btn").removeClass('hide');
+            }
+        });
+
+    });
+</script>
+
+<?php require "Include/Footer.php" ?>

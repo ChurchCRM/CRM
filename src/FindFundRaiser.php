@@ -104,7 +104,6 @@ if (isset($_GET['Number'])) {
     $currentUser = $_SESSION['user'];
     $currentUser->setSearchLimit(InputUtils::LegacyFilterInput($_GET['Number'], 'int'));
     $currentUser->save();
-    $_SESSION['SearchLimit'] = $currentUser->getSearchLimit();
 }
 
 // Select the proper sort SQL
@@ -118,7 +117,7 @@ switch ($sSort) {
 }
 
 // Append a LIMIT clause to the SQL statement
-$iPerPage = $_SESSION['SearchLimit'];
+$iPerPage = $_SESSION['user']->getSearchLimit();
 if (empty($_GET['Result_Set'])) {
     $Result_Set = 0;
 } else {
@@ -201,19 +200,19 @@ $sLimit20 = '';
 $sLimit25 = '';
 $sLimit50 = '';
 
-if ($_SESSION['SearchLimit'] == '5') {
+if ($iPerPage == '5') {
     $sLimit5 = 'selected';
 }
-if ($_SESSION['SearchLimit'] == '10') {
+if ($iPerPage == '10') {
     $sLimit10 = 'selected';
 }
-if ($_SESSION['SearchLimit'] == '20') {
+if ($iPerPage == '20') {
     $sLimit20 = 'selected';
 }
-if ($_SESSION['SearchLimit'] == '25') {
+if ($iPerPage == '25') {
     $sLimit25 = 'selected';
 }
-if ($_SESSION['SearchLimit'] == '50') {
+if ($iPerPage == '50') {
     $sLimit50 = 'selected';
 }
 

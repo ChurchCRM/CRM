@@ -24,7 +24,7 @@ $output = InputUtils::LegacyFilterInput($_POST['output']);
 class PDF_VotingMembers extends ChurchInfoReport
 {
     // Constructor
-    public function PDF_VotingMembers()
+    public function __construct()
     {
         parent::__construct('P', 'mm', $this->paperFormat);
 

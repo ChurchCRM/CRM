@@ -69,7 +69,33 @@
         <vendor type="mysql">
             <parameter name="Engine" value="InnoDB"/>
         </vendor>
+        <behavior name="validate">
+            <parameter name="rule1" value="{column: per_firstname, validator: NotNull}" />
+            <parameter name="rule2" value="{column: per_firstname, validator: Length, options: {max: 50}}" />
+            <parameter name="rule3" value="{column: per_lastname, validator: NotNull}" />
+            <parameter name="rule4" value="{column: per_lastname, validator: Length, options: {max: 50}}" />
+            <parameter name="rule5" value="{column: per_email, validator: NotNull}" />
+            <parameter name="rule6" value="{column: per_email, validator: Email}" />
+        </behavior>
     </table>
+
+    <table name="menu_links" idMethod="native" phpName="MenuLink">
+        <column name="linkId" phpName="Id" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" primaryKey="true"
+                autoIncrement="true" required="true"/>
+        <column name="linkName" phpName="Name" type="VARCHAR" size="50"/>
+        <column name="linkUri" phpName="Uri" type="VARCHAR" size="500"/>
+        <column name="linkOrder" phpName="Order" type="SMALLINT"/>
+        <index name="linkId">
+            <index-column name="linkId"/>
+        </index>
+        <behavior name="validate">
+            <parameter name="rule1" value="{column: linkname, validator: NotNull}" />
+            <parameter name="rule2" value="{column: linkname, validator: Length, options: {max: 50}}" />
+            <parameter name="rule3" value="{column: linkuri, validator: NotNull}" />
+            <parameter name="rule4" value="{column: linkuri, validator: Length, options: {max: 50}}" />
+        </behavior>
+    </table>
+
     <table name="whycame_why" idMethod="native" phpName="WhyCame" description="This contains the comments related to why people came">
         <column name="why_ID" phpName="Id" type="SMALLINT" size="9" primaryKey="true" autoIncrement="true"
                 required="true"/>
@@ -147,10 +173,14 @@
         <vendor type="mysql">
             <parameter name="Engine" value="InnoDB"/>
         </vendor>
+        <behavior name="validate">
+            <parameter name="rule1" value="{column: fam_name, validator: NotNull}" />
+            <parameter name="rule2" value="{column: fam_name, validator: Length, options: {max: 50}}" />
+        </behavior>
     </table>
     <table name="family_custom_master" idMethod="native" phpName="FamilyCustomMaster">
         <column name="fam_custom_Order" phpName="CustomOrder" type="SMALLINT" required="true" defaultValue="0"/>
-        <column name="fam_custom_Field" phpName="CustomField" type="VARCHAR" size="5" required="true" defaultValue=""/>
+        <column name="fam_custom_Field" phpName="CustomField" type="VARCHAR" size="5" required="true" defaultValue="" primaryKey="true"/>
         <column name="fam_custom_Name" phpName="CustomName" type="VARCHAR" size="40" required="true" defaultValue=""/>
         <column name="fam_custom_Special" phpName="CustomSpecial" type="SMALLINT" size="8"
                 sqlType="mediumint(8) unsigned"/>
@@ -165,6 +195,9 @@
     <table name="family_custom" idMethod="native" phpName="FamilyCustom">
         <column name="fam_ID" phpName="FamId" type="SMALLINT" size="9" primaryKey="true" required="true"
                 defaultValue="0"/>
+        <foreign-key foreignTable="family_fam">
+          <reference local="fam_ID" foreign="fam_ID"/>
+        </foreign-key>
         <vendor type="mysql">
             <parameter name="Engine" value="InnoDB"/>
         </vendor>
@@ -208,28 +241,6 @@
         <unique name="cfg_name">
             <unique-column name="cfg_name"/>
         </unique>
-        <vendor type="mysql">
-            <parameter name="Engine" value="InnoDB"/>
-        </vendor>
-    </table>
-
-    <table name="menuconfig_mcf" idMethod="native" phpName="MenuConfig">
-        <column name="mid" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
-        <column name="name" phpName="Name" type="VARCHAR" size="20" required="true"/>
-        <column name="parent" phpName="Parent" type="VARCHAR" size="20" required="true"/>
-        <column name="ismenu" phpName="Menu" type="BOOLEAN" size="1" required="true"/>
-        <column name="content_english" phpName="ContentEnglish" type="VARCHAR" size="100" required="true"/>
-        <column name="content" phpName="Content" type="VARCHAR" size="100"/>
-        <column name="uri" phpName="URI" type="VARCHAR" size="255" required="true"/>
-        <column name="statustext" phpName="Status" type="VARCHAR" size="255" required="true"/>
-        <column name="security_grp" phpName="SecurityGroup" type="VARCHAR" size="50" required="true"/>
-        <column name="session_var" phpName="SessionVar" type="VARCHAR" size="50"/>
-        <column name="session_var_in_text" phpName="SessionVarInText" type="BOOLEAN" size="1" required="true"/>
-        <column name="session_var_in_uri" phpName="SessionVarInURI" type="BOOLEAN" size="1" required="true"/>
-        <column name="url_parm_name" phpName="URLParmName" type="VARCHAR" size="50"/>
-        <column name="active" phpName="Active" type="BOOLEAN" size="1" required="true"/>
-        <column name="sortorder" phpName="SortOrder" type="TINYINT" size="3" required="true"/>
-        <column name="icon" phpName="Icon" type="VARCHAR" size="50"/>
         <vendor type="mysql">
             <parameter name="Engine" value="InnoDB"/>
         </vendor>
@@ -483,7 +494,7 @@
             <parameter name="Engine" value="InnoDB"/>
         </vendor>
     </table>
-    <table name="event_types" idMethod="native" phpName="EventTypes">
+    <table name="event_types" idMethod="native" phpName="EventType">
         <column name="type_id" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
         <column name="type_name" phpName="Name" type="VARCHAR" size="255" required="true" defaultValue=""/>
         <column name="type_defstarttime" phpName="DefStartTime" type="TIME" required="true" defaultValue="00:00:00"/>
@@ -544,10 +555,14 @@
         <column name="location_id" phpName="LocationId" type="INTEGER" required="true" defaultValue="0"/>
         <column name="primary_contact_person_id" phpName="PrimaryContactPersonId" type="INTEGER" required="true" defaultValue="0"/>
         <column name="secondary_contact_person_id" phpName="SecondaryContactPersonId" type="INTEGER" required="true" defaultValue="0"/>
-        <column name="event_publicly_visible" phpName="PubliclyVisible" type="BOOLEAN" />
+        <column name="event_url" phpName="URL" type="LONGVARCHAR"/>
+        
+        <foreign-key foreignTable="event_types" name="EventType" refPhpName="EventType">
+            <reference local="event_type" foreign="type_id"/>
+        </foreign-key>
 
         <foreign-key foreignTable="person_per" name="PrimaryContact" refPhpName="PrimaryContactPerson" skipSql = "true">
-            <reference local="primary_contact_person_id" foreign="per_ID"/>
+            <reference local="event_type" foreign="per_ID"/>
         </foreign-key>
 
         <foreign-key foreignTable="person_per" name="SecondaryContact" refPhpName="SecondaryContactPerson" skipSql = "true">
@@ -890,20 +905,22 @@
     </table>
 
     <table name="calendars" idMethod="native" phpName="Calendar"  description="">
-      <column name="calendar_id" phpName="Id" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true"  primaryKey="true"/>
+      <column name="calendar_id" phpName="Id" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" autoIncrement="true" required="true"  primaryKey="true"/>
       <column name="name" phpName="Name" type="VARCHAR" size="99" required="true"/>
-      <column name="accesstoken" phpName="AccessToken" type="VARCHAR" size="99"/>
+      <column name="accesstoken" phpName="AccessToken" type="VARCHAR" size="255"/>
+      <column name="backgroundColor" phpName="BackgroundColor" type="VARCHAR" size="6"/>
+      <column name="foregroundColor" phpName="ForegroundColor" type="VARCHAR" size="6"/>
 
-      <foreign-key foreignTable="tokens">
-        <reference local="accesstoken" foreign="token"/>
-      </foreign-key>
+      <unique name="accesstoken">
+        <unique-column name="accesstoken"/>
+      </unique>
 
       <vendor type="mysql">
           <parameter name="Engine" value="InnoDB"/>
       </vendor>
     </table>
 
-    <table name="calendar_events" idMethod="native" phpName="CalendarEvents" isCrossRef="true" description="This is a join-table to link an event with a calendar">
+    <table name="calendar_events" idMethod="native" phpName="CalendarEvent" isCrossRef="true" description="This is a join-table to link an event with a calendar">
       <column name="calendar_id" phpName="GroupId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true"  primaryKey="true"/>
       <column name="event_id" phpName="EventId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true"  primaryKey="true"/>
 

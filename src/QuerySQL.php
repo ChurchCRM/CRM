@@ -20,7 +20,7 @@ $sPageTitle = gettext('Free-Text Query');
 
 // Security: User must be an Admin to access this page.  It allows unrestricted database access!
 // Otherwise, re-direct them to the main menu.
-if (!$_SESSION['bAdmin']) {
+if (!$_SESSION['user']->isAdmin()) {
     RedirectUtils::Redirect('Menu.php');
     exit;
 }
@@ -175,9 +175,8 @@ function RunFreeQuery()
         echo '</table>';
         echo '<p align="center">';
 
-        if (count($aHiddenFormField) > 0) {
-            ?>
-			<form method="post" action="CartView.php"><p align="center">
+        if (count($aHiddenFormField) > 0) { // TODO Don't post to CartView.php?>
+			<form method="post" action="CartView.php"><p align="center"> 
 				<input type="hidden" value="<?= implode(',', $aHiddenFormField) ?>" name="BulkAddToCart">
 				<input type="submit" class="btn" name="AddToCartSubmit" value="<?php echo gettext('Add Results To Cart'); ?>">&nbsp;
 				<input type="submit" class="btn" name="AndToCartSubmit" value="<?php echo gettext('Intersect Results With Cart'); ?>">&nbsp;
