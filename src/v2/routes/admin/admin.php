@@ -4,7 +4,7 @@ use Slim\Http\Request;
 use Slim\Http\Response;
 use Slim\Views\PhpRenderer;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\Slim\Middleware\Role\AdminRoleAuthMiddleware;
+use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
 
 $app->group('/admin', function () {
     $this->get('/debug', 'debugPage');
