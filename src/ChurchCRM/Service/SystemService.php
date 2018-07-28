@@ -44,15 +44,17 @@ class SystemService
     {
         $composerFile = file_get_contents(SystemURLs::getDocumentRoot() . '/composer.json');
         $composerJson = json_decode($composerFile, true);
+        $buildTime = new \DateTime();
+        
         if ((!empty($composerJson)) && array_key_exists('time', $composerJson) && (!empty($composerJson['time'])))
         {
-          $version = new \DateTime($composerJson['time']);
+            try{ 
+                $buildTime = new \DateTime($composerJson['time']);
+            } catch (Exception $e) {
+                // will use default 
+            }
         }
-        else{
-          $version = new \DateTime();
-        }
-        
-        return $version->format("Y");
+        return $buildTime->format("Y");
     }
 
     public function restoreDatabaseFromBackup($file)
