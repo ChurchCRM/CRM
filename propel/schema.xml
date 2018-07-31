@@ -92,7 +92,7 @@
             <parameter name="rule1" value="{column: linkname, validator: NotNull}" />
             <parameter name="rule2" value="{column: linkname, validator: Length, options: {max: 50}}" />
             <parameter name="rule3" value="{column: linkuri, validator: NotNull}" />
-            <parameter name="rule4" value="{column: linkuri, validator: Length, options: {max: 50}}" />
+            <parameter name="rule4" value="{column: linkuri, validator: Length, options: {max: 500}}" />
         </behavior>
     </table>
 
