@@ -138,7 +138,7 @@ $familyAddress = $family->getAddress();
                             }
                             if (!SystemConfig::getBooleanValue("bHideWeddingDate") && !empty($family->getWeddingdate())) { /* Wedding Date can be hidden - General Settings */ ?>
                                 <li><i class="fa-li fa fa-magic"></i><?= gettext("Wedding Date") ?>:
-                                    <span><?= FormatDate($family->getWeddingdate(), false) ?></span></li>
+                                    <span><?= $family->getWeddingDate()->format(SystemConfig::getValue("sDateFormatLong")) ?></span></li>
                                 <?php
                             }
                             if (SystemConfig::getValue("bUseDonationEnvelopes")) {

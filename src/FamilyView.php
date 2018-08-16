@@ -239,7 +239,7 @@ $bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() || ($_SESSION['user']->i
     }
     if (!SystemConfig::getValue("bHideWeddingDate") && $fam_WeddingDate != "") { /* Wedding Date can be hidden - General Settings */ ?>
                         <li><i class="fa-li fa fa-magic"></i><?= gettext("Wedding Date") ?>:
-                            <span><?= FormatDate($fam_WeddingDate, false) ?></span></li>
+                            <span><?= $family->getWeddingDate()->format(SystemConfig::getValue("sDateFormatLong")) ?></span></li>
                         <?php
     }
     if (SystemConfig::getValue("bUseDonationEnvelopes")) {
