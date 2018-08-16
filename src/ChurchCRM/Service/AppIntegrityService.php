@@ -64,7 +64,8 @@ class AppIntegrityService
       'cURL'                                      => function_exists('curl_version'),
       'locale gettext'                            => function_exists('bindtextdomain'),
       'Include/Config file is writeable'          => is_writable(SystemURLs::getDocumentRoot().'/Include/') || is_writable(SystemURLs::getDocumentRoot().'/Include/Config.php'),
-      'Images directory is writeable'             => AppIntegrityService::testImagesWriteable()
+      'Images directory is writeable'             => AppIntegrityService::testImagesWriteable(),
+      'PHP ZipArchive'                            => extension_loaded('zip')
     );
     return $prerequisites;
   }
