@@ -10,7 +10,7 @@ msgstr ""
 "#-#-#-#-#  messages.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-23 16:09+0000\n"
+"POT-Creation-Date: 2018-08-22 19:34+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,8 +24,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2018-07-23T16:09:09.190Z\n"
-"PO-Revision-Date: 2018-07-23T16:09:09.190Z\n"
+"POT-Creation-Date: 2018-08-22T19:34:07.864Z\n"
+"PO-Revision-Date: 2018-08-22T19:34:07.864Z\n"
 
 #: AutoPaymentClearAccounts.php:24 CatchCreatePayment.php:71
 #: Include/Functions.php:234
@@ -111,7 +111,7 @@ msgstr ""
 #: Include/Functions.php:909 MapUsingGoogle.php:96 MapUsingGoogle.php:120
 #: PaddleNumEditor.php:176 PersonEditor.php:782 PersonEditor.php:798
 #: PersonEditor.php:1137 PrintView.php:264 PrintView.php:274
-#: SelectDelete.php:156 SelectList.php:35 SelectList.php:45 SelectList.php:61
+#: SelectDelete.php:157 SelectList.php:35 SelectList.php:45 SelectList.php:61
 #: SelectList.php:1098 SelectList.php:1169 SystemSettings.php:214
 #: eGive.php:341
 msgid "Unassigned"
@@ -136,12 +136,12 @@ msgstr ""
 #: AutoPaymentEditor.php:840 CanvassEditor.php:194 DepositSlipEditor.php:81
 #: EditEventAttendees.php:33 FamilyView.php:767 FindFundRaiser.php:235
 #: FundRaiserEditor.php:164 Include/Functions.php:97 PledgeEditor.php:518
-#: SelectDelete.php:218
+#: SelectDelete.php:219
 msgid "Date"
 msgstr ""
 
 #: AutoPaymentEditor.php:847 ElectronicPaymentList.php:197 FamilyView.php:766
-#: PledgeEditor.php:520 ReminderReport.php:42 SelectDelete.php:217
+#: PledgeEditor.php:520 ReminderReport.php:42 SelectDelete.php:218
 #: sundayschool/SundaySchoolReports.php:205 queryparameters_qrp.php:18
 msgid "Fiscal Year"
 msgstr ""
@@ -155,7 +155,7 @@ msgid "Payment interval (months)"
 msgstr ""
 
 #: AutoPaymentEditor.php:864 ElectronicPaymentList.php:201 FamilyView.php:661
-#: FamilyView.php:765 FinancialReports.php:302 SelectDelete.php:216
+#: FamilyView.php:765 FinancialReports.php:302 SelectDelete.php:217
 msgid "Fund"
 msgstr ""
 
@@ -192,8 +192,8 @@ msgstr ""
 #: FamilyEditor.php:664 FamilyEditor.php:668 FamilyView.php:214
 #: GeoPage.php:358 GroupReports.php:123 Menu.php:309 Menu.php:338
 #: PersonEditor.php:831 PersonEditor.php:847 PersonView.php:272
-#: Register.php:43 Reports/ConfirmReportEmail.php:125
-#: Reports/ConfirmReportEmail.php:130 api/routes/search.php:98
+#: Register.php:43 Reports/ConfirmReportEmail.php:121
+#: Reports/ConfirmReportEmail.php:126 api/routes/search.php:98
 #: external/templates/registration/family-register-done.php:29
 #: external/templates/registration/family-register.php:35
 #: v2/templates/cart/cartlisting.php:18 v2/templates/people/family-list.php:32
@@ -249,7 +249,7 @@ msgstr ""
 #: PersonEditor.php:1035 PersonEditor.php:1037 PersonView.php:307
 #: PersonView.php:511 PrintView.php:294 Reports/CanvassReports.php:243
 #: Reports/ConfirmReport.php:183 Reports/ConfirmReport.php:202
-#: Reports/ConfirmReportEmail.php:191 Reports/ConfirmReportEmail.php:209
+#: Reports/ConfirmReportEmail.php:187 Reports/ConfirmReportEmail.php:205
 #: Reports/DirectoryReport.php:296 Reports/GroupReport.php:133
 #: external/templates/registration/family-register-members.php:83
 #: external/templates/verify/enter-info.php:33
@@ -429,7 +429,7 @@ msgstr ""
 #: EditEventAttendees.php:43 EventAttendance.php:176 FamilyEditor.php:737
 #: FamilyView.php:254 GroupReports.php:124 PersonEditor.php:961
 #: PersonEditor.php:963 PersonView.php:302 PrintView.php:199
-#: Reports/ConfirmReport.php:135 Reports/ConfirmReportEmail.php:140
+#: Reports/ConfirmReport.php:135 Reports/ConfirmReportEmail.php:136
 #: SelectList.php:965 SelectList.php:966 SelectList.php:1041
 #: external/templates/registration/family-register-done.php:30
 #: external/templates/registration/family-register.php:68
@@ -446,7 +446,7 @@ msgstr ""
 #: FamilyEditor.php:749 FamilyView.php:260 GroupReports.php:125
 #: PersonEditor.php:984 PersonEditor.php:986 PersonView.php:316
 #: PrintView.php:204 Reports/ConfirmReport.php:239
-#: Reports/ConfirmReportEmail.php:238 SelectList.php:968 SelectList.php:969
+#: Reports/ConfirmReportEmail.php:234 SelectList.php:968 SelectList.php:969
 #: SelectList.php:1041 external/templates/verify/verify-family-info.php:72
 #: v2/templates/people/family-view.php:160
 #: v2/templates/people/family-view.php:304
@@ -969,8 +969,8 @@ msgstr ""
 #: CartToFamily.php:206
 #: ChurchCRM/Emails/notifications/NewPersonOrFamilyEmail.php:60
 #: FamilyEditor.php:654 LettersAndLabels.php:71 Menu.php:308 Menu.php:337
-#: Reports/ConfirmReport.php:115 Reports/ConfirmReportEmail.php:120
-#: SelectDelete.php:152 SelectDelete.php:278
+#: Reports/ConfirmReport.php:115 Reports/ConfirmReportEmail.php:116
+#: SelectDelete.php:153 SelectDelete.php:279
 #: external/templates/registration/family-register.php:31
 msgid "Family Name"
 msgstr ""
@@ -1302,7 +1302,7 @@ msgstr ""
 msgid "Query Menu"
 msgstr ""
 
-#: ChurchCRM/Config/Menu/Menu.php:193 v2/templates/email/dashboard.php:74
+#: ChurchCRM/Config/Menu/Menu.php:193 v2/templates/email/dashboard.php:75
 msgid "Edit General Settings"
 msgstr ""
 
@@ -1327,7 +1327,7 @@ msgid "Kiosk Manager"
 msgstr ""
 
 #: ChurchCRM/Config/Menu/Menu.php:201 v2/routes/admin/admin.php:19
-#: v2/templates/email/dashboard.php:18
+#: v2/templates/email/dashboard.php:19
 msgid "Debug"
 msgstr ""
 
@@ -1540,8 +1540,8 @@ msgstr ""
 #: ChurchCRM/Service/CalendarService.php:16
 #: ChurchCRM/SystemCalendars/BirthdaysCalendar.php:63 DirectoryReports.php:174
 #: FamilyView.php:358 PersonView.php:510 Reports/ConfirmReport.php:184
-#: Reports/ConfirmReport.php:203 Reports/ConfirmReportEmail.php:192
-#: Reports/ConfirmReportEmail.php:210
+#: Reports/ConfirmReport.php:203 Reports/ConfirmReportEmail.php:188
+#: Reports/ConfirmReportEmail.php:206
 #: external/templates/verify/verify-family-info.php:80
 #: v2/templates/people/family-view.php:323
 msgid "Birthday"
@@ -1572,19 +1572,19 @@ msgstr ""
 msgid "Part"
 msgstr ""
 
-#: ChurchCRM/Service/SystemService.php:90
+#: ChurchCRM/Service/SystemService.php:92
 msgid "Backup archive does not contain a database"
 msgstr ""
 
-#: ChurchCRM/Service/SystemService.php:102
+#: ChurchCRM/Service/SystemService.php:104
 msgid "Unknown File Type"
 msgstr ""
 
-#: ChurchCRM/Service/SystemService.php:102
+#: ChurchCRM/Service/SystemService.php:104
 msgid "from file"
 msgstr ""
 
-#: ChurchCRM/Service/SystemService.php:110
+#: ChurchCRM/Service/SystemService.php:112
 msgid ""
 "As part of the restore, external backups have been disabled.  If you wish to "
 "continue automatic backups, you must manuall re-enable the "
@@ -1624,24 +1624,36 @@ msgid "logged via InValid API Key."
 msgstr ""
 
 #: ChurchCRM/Slim/Middleware/AuthMiddleware.php:38
-#: ChurchCRM/Slim/Middleware/Role/BaseAuthRoleMiddleware.php:21
+#: ChurchCRM/Slim/Middleware/Request/Auth/BaseAuthRoleMiddleware.php:21
 msgid "No logged in user"
 msgstr ""
 
-#: ChurchCRM/Slim/Middleware/PublicCalendarAPIMiddleware.php:21
-msgid "External Calendar API is disabled"
+#: ChurchCRM/Slim/Middleware/Request/Auth/AddEventsRoleAuthMiddleware.php:14
+msgid "User must have bAddEvent permissions"
 msgstr ""
 
-#: ChurchCRM/Slim/Middleware/PublicCalendarAPIMiddleware.php:26
-msgid "Missing calendar access token"
+#: ChurchCRM/Slim/Middleware/Request/Auth/AdminRoleAuthMiddleware.php:15
+msgid "User must be an Admin"
 msgstr ""
 
-#: ChurchCRM/Slim/Middleware/PublicCalendarAPIMiddleware.php:33
-msgid "Calendar access token not found"
+#: ChurchCRM/Slim/Middleware/Request/Auth/DeleteRecordRoleAuthMiddleware.php:14
+msgid "User must have Delete Records permission"
 msgstr ""
 
-#: ChurchCRM/Slim/Middleware/Request/Auth/ManageGroupRoleAuthMiddleware.php:16
+#: ChurchCRM/Slim/Middleware/Request/Auth/EditRecordsRoleAuthMiddleware.php:14
+msgid "User must have Edit Records permission"
+msgstr ""
+
+#: ChurchCRM/Slim/Middleware/Request/Auth/FinanceRoleAuthMiddleware.php:14
+msgid "User must have Finance permission"
+msgstr ""
+
+#: ChurchCRM/Slim/Middleware/Request/Auth/ManageGroupRoleAuthMiddleware.php:14
 msgid "User must have Manage Groups permission"
+msgstr ""
+
+#: ChurchCRM/Slim/Middleware/Request/Auth/MenuOptionsRoleAuthMiddleware.php:14
+msgid "User must have MenuOptions permission"
 msgstr ""
 
 #: ChurchCRM/Slim/Middleware/Request/FamilyAPIMiddleware.php:16
@@ -1656,32 +1668,20 @@ msgstr ""
 msgid "not found"
 msgstr ""
 
+#: ChurchCRM/Slim/Middleware/Request/PublicCalendarAPIMiddleware.php:21
+msgid "External Calendar API is disabled"
+msgstr ""
+
+#: ChurchCRM/Slim/Middleware/Request/PublicCalendarAPIMiddleware.php:26
+msgid "Missing calendar access token"
+msgstr ""
+
+#: ChurchCRM/Slim/Middleware/Request/PublicCalendarAPIMiddleware.php:33
+msgid "Calendar access token not found"
+msgstr ""
+
 #: ChurchCRM/Slim/Middleware/Request/Setting/BaseAuthSettingMiddleware.php:15
 msgid "is disabled"
-msgstr ""
-
-#: ChurchCRM/Slim/Middleware/Role/AddEventsRoleAuthMiddleware.php:14
-msgid "User must have bAddEvent permissions"
-msgstr ""
-
-#: ChurchCRM/Slim/Middleware/Role/AdminRoleAuthMiddleware.php:15
-msgid "User must be an Admin"
-msgstr ""
-
-#: ChurchCRM/Slim/Middleware/Role/DeleteRecordRoleAuthMiddleware.php:14
-msgid "User must have Delete Records permission"
-msgstr ""
-
-#: ChurchCRM/Slim/Middleware/Role/EditRecordsRoleAuthMiddleware.php:14
-msgid "User must have Edit Records permission"
-msgstr ""
-
-#: ChurchCRM/Slim/Middleware/Role/FinanceRoleAuthMiddleware.php:14
-msgid "User must have Finance permission"
-msgstr ""
-
-#: ChurchCRM/Slim/Middleware/Role/MenuOptionsRoleAuthMiddleware.php:14
-msgid "User must have MenuOptions permission"
 msgstr ""
 
 #: ChurchCRM/SystemCalendars/AnniversariesCalendar.php:35
@@ -2901,7 +2901,7 @@ msgid "Family Cell Phone"
 msgstr ""
 
 #: DirectoryReports.php:179 Reports/ConfirmReport.php:156
-#: Reports/ConfirmReportEmail.php:161
+#: Reports/ConfirmReportEmail.php:157
 #: external/templates/verify/verify-family-info.php:29
 msgid "Family Email"
 msgstr ""
@@ -3186,7 +3186,7 @@ msgstr ""
 #: GroupPropsFormEditor.php:284 GroupPropsFormEditor.php:385 GroupView.php:254
 #: GroupView.php:287 OptionManager.php:77 PersonCustomFieldsEditor.php:310
 #: PersonCustomFieldsEditor.php:429 PersonView.php:682 PropertyEditor.php:129
-#: SelectDelete.php:215
+#: SelectDelete.php:216
 msgid "Type"
 msgstr ""
 
@@ -3195,7 +3195,7 @@ msgid "Next Date"
 msgstr ""
 
 #: ElectronicPaymentList.php:199 FamilyView.php:659 FamilyView.php:768
-#: PledgeEditor.php:714 SelectDelete.php:219
+#: PledgeEditor.php:714 SelectDelete.php:220
 msgid "Amount"
 msgstr ""
 
@@ -3617,7 +3617,7 @@ msgid "Contact Info"
 msgstr ""
 
 #: FamilyEditor.php:781 FamilyView.php:234 Reports/ConfirmReport.php:140
-#: Reports/ConfirmReportEmail.php:145
+#: Reports/ConfirmReportEmail.php:141
 #: external/templates/verify/verify-family-info.php:39
 #: v2/templates/people/family-view.php:133
 msgid "Send Newsletter"
@@ -3880,11 +3880,11 @@ msgstr ""
 msgid "Interval (months)"
 msgstr ""
 
-#: FamilyView.php:664 FamilyView.php:775 SelectDelete.php:223
+#: FamilyView.php:664 FamilyView.php:775 SelectDelete.php:224
 msgid "Date Updated"
 msgstr ""
 
-#: FamilyView.php:665 FamilyView.php:776 SelectDelete.php:224
+#: FamilyView.php:665 FamilyView.php:776 SelectDelete.php:225
 msgid "Updated By"
 msgstr ""
 
@@ -3916,15 +3916,15 @@ msgstr ""
 msgid "NonDeductible"
 msgstr ""
 
-#: FamilyView.php:770 SelectDelete.php:220
+#: FamilyView.php:770 SelectDelete.php:221
 msgid "Schedule"
 msgstr ""
 
-#: FamilyView.php:771 SelectDelete.php:221
+#: FamilyView.php:771 SelectDelete.php:222
 msgid "Method"
 msgstr ""
 
-#: FamilyView.php:772 PledgeEditor.php:722 SelectDelete.php:222
+#: FamilyView.php:772 PledgeEditor.php:722 SelectDelete.php:223
 msgid "Comment"
 msgstr ""
 
@@ -4630,7 +4630,7 @@ msgid "Standard Info"
 msgstr ""
 
 #: GroupReports.php:126 Reports/CanvassReports.php:242
-#: Reports/ConfirmReportEmail.php:193 Reports/ConfirmReportEmail.php:211
+#: Reports/ConfirmReportEmail.php:189 Reports/ConfirmReportEmail.php:207
 #: v2/templates/people/family-list.php:34
 msgid "Cell Phone"
 msgstr ""
@@ -5448,7 +5448,7 @@ msgstr ""
 msgid "Yes, delete this record"
 msgstr ""
 
-#: NoteDelete.php:68 PropertyDelete.php:63 SelectDelete.php:276
+#: NoteDelete.php:68 PropertyDelete.php:63 SelectDelete.php:277
 msgid "(this action cannot be undone)"
 msgstr ""
 
@@ -6141,7 +6141,7 @@ msgid ""
 "any People, Family, or Group records."
 msgstr ""
 
-#: PropertyDelete.php:65 PropertyTypeDelete.php:70 SelectDelete.php:293
+#: PropertyDelete.php:65 PropertyTypeDelete.php:70 SelectDelete.php:294
 #: VolunteerOpportunityEditor.php:111
 msgid "No, cancel this deletion"
 msgstr ""
@@ -6453,8 +6453,8 @@ msgid "Pledge status"
 msgstr ""
 
 #: Reports/CanvassReports.php:238 Reports/ConfirmReport.php:181
-#: Reports/ConfirmReport.php:200 Reports/ConfirmReportEmail.php:189
-#: Reports/ConfirmReportEmail.php:207
+#: Reports/ConfirmReport.php:200 Reports/ConfirmReportEmail.php:185
+#: Reports/ConfirmReportEmail.php:203
 msgid "M/F"
 msgstr ""
 
@@ -6509,21 +6509,21 @@ msgstr ""
 msgid "Address 2"
 msgstr ""
 
-#: Reports/ConfirmReport.php:130 Reports/ConfirmReportEmail.php:135
+#: Reports/ConfirmReport.php:130 Reports/ConfirmReportEmail.php:131
 msgid "City, State, Zip"
 msgstr ""
 
-#: Reports/ConfirmReport.php:150 Reports/ConfirmReportEmail.php:155
+#: Reports/ConfirmReport.php:150 Reports/ConfirmReportEmail.php:151
 msgid "Anniversary Date"
 msgstr ""
 
 #: Reports/ConfirmReport.php:180 Reports/ConfirmReport.php:199
-#: Reports/ConfirmReportEmail.php:188 Reports/ConfirmReportEmail.php:206
+#: Reports/ConfirmReportEmail.php:184 Reports/ConfirmReportEmail.php:202
 msgid "Member Name"
 msgstr ""
 
 #: Reports/ConfirmReport.php:182 Reports/ConfirmReport.php:201
-#: Reports/ConfirmReportEmail.php:190 Reports/ConfirmReportEmail.php:208
+#: Reports/ConfirmReportEmail.php:186 Reports/ConfirmReportEmail.php:204
 msgid "Adult/Child"
 msgstr ""
 
@@ -6532,7 +6532,7 @@ msgid "Cell phone"
 msgstr ""
 
 #: Reports/ConfirmReport.php:187 Reports/ConfirmReport.php:206
-#: Reports/ConfirmReportEmail.php:194 Reports/ConfirmReportEmail.php:212
+#: Reports/ConfirmReportEmail.php:190 Reports/ConfirmReportEmail.php:208
 msgid "Member/Friend"
 msgstr ""
 
@@ -6688,7 +6688,7 @@ msgstr ""
 msgid "No Restore Running"
 msgstr ""
 
-#: RestoreDatabase.php:63 api/routes/system/system-database.php:45
+#: RestoreDatabase.php:63 api/routes/system/system-database.php:43
 msgid "The selected file exceeds this servers maximum upload size of"
 msgstr ""
 
@@ -6708,60 +6708,60 @@ msgstr ""
 msgid "Restore Error."
 msgstr ""
 
-#: SelectDelete.php:67
+#: SelectDelete.php:68
 msgid "All donations from this family have been moved to another family."
 msgstr ""
 
-#: SelectDelete.php:71
+#: SelectDelete.php:72
 msgid "Family Delete Confirmation"
 msgstr ""
 
-#: SelectDelete.php:144
+#: SelectDelete.php:145
 msgid ""
 "Sorry, there are records of donations from this family. This family may not "
 "be deleted."
 msgstr ""
 
-#: SelectDelete.php:145
+#: SelectDelete.php:146
 msgid "Return to Family View"
 msgstr ""
 
-#: SelectDelete.php:149
+#: SelectDelete.php:150
 msgid ""
 "WARNING: This family has records of donations and may NOT be deleted until "
 "these donations are associated with another family."
 msgstr ""
 
-#: SelectDelete.php:153
+#: SelectDelete.php:154
 msgid "Please select another family with whom to associate these donations:"
 msgstr ""
 
-#: SelectDelete.php:154
+#: SelectDelete.php:155
 msgid "WARNING: This action can not be undone and may have legal implications!"
 msgstr ""
 
-#: SelectDelete.php:192
+#: SelectDelete.php:193
 msgid "CURRENT FAMILY WITH DONATIONS"
 msgstr ""
 
-#: SelectDelete.php:274
+#: SelectDelete.php:275
 msgid "Please confirm deletion of this family record:"
 msgstr ""
 
-#: SelectDelete.php:275
+#: SelectDelete.php:276
 msgid ""
 "Note: This will also delete all Notes associated with this Family record."
 msgstr ""
 
-#: SelectDelete.php:281
+#: SelectDelete.php:282
 msgid "Family Members:"
 msgstr ""
 
-#: SelectDelete.php:291
+#: SelectDelete.php:292
 msgid "Delete Family Record ONLY"
 msgstr ""
 
-#: SelectDelete.php:292
+#: SelectDelete.php:293
 msgid "Delete Family Record AND Family Members"
 msgstr ""
 
@@ -7340,11 +7340,11 @@ msgstr ""
 msgid "Your cart has been successfully emptied"
 msgstr ""
 
-#: api/routes/people/people-families.php:102
+#: api/routes/people/people-families.php:119
 msgid "Deactivated the Family"
 msgstr ""
 
-#: api/routes/people/people-families.php:104
+#: api/routes/people/people-families.php:121
 msgid "Activated the Family"
 msgstr ""
 
@@ -7454,16 +7454,16 @@ msgstr ""
 msgid "Link Not found"
 msgstr ""
 
-#: api/routes/system/system-database.php:89
+#: api/routes/system/system-database.php:87
 msgid "The database has been cleared."
 msgstr ""
 
-#: api/routes/system/system-database.php:135
+#: api/routes/system/system-database.php:133
 msgid "The people and families has been cleared from the database."
 msgstr ""
 
-#: api/routes/users.php:31 api/routes/users.php:47 api/routes/users.php:65
-#: api/routes/users.php:86
+#: api/routes/users.php:29 api/routes/users.php:45 api/routes/users.php:63
+#: api/routes/users.php:84
 msgid "Bad userId"
 msgstr ""
 
@@ -7854,16 +7854,25 @@ msgstr ""
 msgid "View Your Cart"
 msgstr ""
 
-#: v2/routes/email.php:26
+#: v2/routes/email.php:27
 msgid "eMail Dashboard"
 msgstr ""
 
-#: v2/routes/email.php:60
+#: v2/routes/email.php:61
 msgid "SMTP Host is not setup, please visit the settings page"
 msgstr ""
 
-#: v2/routes/email.php:65
+#: v2/routes/email.php:66
 msgid "Debug Email Connection"
+msgstr ""
+
+#: v2/routes/email.php:76 v2/templates/email/duplicate.php:14
+msgid "Duplicate Emails"
+msgstr ""
+
+#: v2/routes/email.php:81 v2/templates/email/dashboard.php:17
+#: v2/templates/email/without.php:14
+msgid "Families Without Emails"
 msgstr ""
 
 #: v2/templates/admin/debug.php:17
@@ -8040,64 +8049,60 @@ msgstr ""
 msgid "Find Duplicate Emails"
 msgstr ""
 
-#: v2/templates/email/dashboard.php:30
+#: v2/templates/email/dashboard.php:31
 msgid "List"
 msgstr ""
 
-#: v2/templates/email/dashboard.php:35
+#: v2/templates/email/dashboard.php:36
 msgid "Members:"
 msgstr ""
 
-#: v2/templates/email/dashboard.php:36
+#: v2/templates/email/dashboard.php:37
 msgid "Campaigns:"
 msgstr ""
 
-#: v2/templates/email/dashboard.php:37
+#: v2/templates/email/dashboard.php:38
 msgid "Unsubscribed count:"
 msgstr ""
 
-#: v2/templates/email/dashboard.php:38
+#: v2/templates/email/dashboard.php:39
 msgid "Unsubscribed count since last send:"
 msgstr ""
 
-#: v2/templates/email/dashboard.php:39
+#: v2/templates/email/dashboard.php:40
 msgid "Cleaned count:"
 msgstr ""
 
-#: v2/templates/email/dashboard.php:40
+#: v2/templates/email/dashboard.php:41
 msgid "Cleaned count since last send:"
 msgstr ""
 
-#: v2/templates/email/dashboard.php:57
+#: v2/templates/email/dashboard.php:58
 msgid "Missing emails report"
 msgstr ""
 
-#: v2/templates/email/dashboard.php:72
+#: v2/templates/email/dashboard.php:73
 msgid "is not configured"
 msgstr ""
 
-#: v2/templates/email/dashboard.php:73
+#: v2/templates/email/dashboard.php:74
 msgid "Please update the"
 msgstr ""
 
-#: v2/templates/email/dashboard.php:73
+#: v2/templates/email/dashboard.php:74
 msgid "API key in Setting->"
 msgstr ""
 
-#: v2/templates/email/dashboard.php:75
+#: v2/templates/email/dashboard.php:76
 msgid "then update"
 msgstr ""
 
-#: v2/templates/email/dashboard.php:75
+#: v2/templates/email/dashboard.php:76
 msgid "For more info see our "
 msgstr ""
 
-#: v2/templates/email/dashboard.php:76
+#: v2/templates/email/dashboard.php:77
 msgid "support docs."
-msgstr ""
-
-#: v2/templates/email/duplicate.php:14
-msgid "Duplicate Emails"
 msgstr ""
 
 #: v2/templates/people/family-list.php:21

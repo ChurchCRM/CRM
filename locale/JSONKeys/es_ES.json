@@ -168,7 +168,6 @@
     "View Your Cart": "Ver el Separador",
     "You have no items in your cart.": "No tiene artículos en su Separador.",
     "Back to Menu": "Regresar al Menu",
-    "Go To Labels": "Ir a Etiquetas",
     "Empty Cart": "Vaciar Separador",
     "Empty Cart to Group": "Vaciar Separador a Grupo",
     "Empty Cart to Family": "Vaciar Separador a Familia",
@@ -1804,7 +1803,6 @@
     "Family Verification": "Verificación de Familia",
     "Family Member(s)": "Miembro(s) de Familia",
     "Work Email": "Correo electrónico del trabajo",
-    "Age Hidden": "Ocultar Edad",
     "Please let us know what information to update if any": "Por favor háganos saber qué información actualizar, si alguna",
     "Your verification request is complete": "Su petición de verificación está completada",
     "We encountered an error submitting with your verification data": "Encontramos un error al enviar sus datos de verificación",
@@ -2305,5 +2303,12 @@
     "WebServer Modules": "Módules de Servidor Web",
     "Invalid country name supplied": "Nombre de país provisto es inválido",
     "LastName FirstName": "Apellido Nombre",
-    "Holidays": "Festivos"
+    "Holidays": "Festivos",
+    "Person Name": "Nombre de Persona",
+    "Custom message for church greeter email 1, max 255 characters": "Mensaje personalizado para correo 1 de bienvenida de iglesia, 255 caracteres max",
+    "Custom message for church greeter email 2, max 255 characters": "Mensaje personalizado para correo 2 de bienvenida de iglesia, 255 caracteres max",
+    "Include contact and demographic data in new member email notification body": "Incluir contacto y datos demográficos en el cuerpo del correo de notificación para nuevos miembros",
+    "Include family custom properties in global search.": "Incluir propiedades personalizadas de familia en búsqueda global",
+    "Latvia (LatvijaLatviaLV": "Letonia (Latvija)",
+    "You are about to add a new deposit without a comment": "Está a punto de agregar un nuevo depósito sin comentarios"
 }
