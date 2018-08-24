@@ -1,10 +1,34 @@
 # Changelog
 
+## 3.0.8 (22/08/2018)
+
+#### Core Functionality
+
+- [**Installation / Upgrade**][**Platform: Dependencies**] ZipArchive should be checked by installation system [#4417](https://github.com/ChurchCRM/CRM/issues/4417)
+- [**Installation / Upgrade**] 3.0.7 installation error [#4396](https://github.com/ChurchCRM/CRM/issues/4396)
+- [**Feature: Cart**][**Feature: Events**] Empty cart to Event is broken [#4379](https://github.com/ChurchCRM/CRM/issues/4379)
+- [**Installation / Upgrade**][**Platform: Self-Hosted**][**question**] New installation with nginx "Error making API Call" [#4022](https://github.com/ChurchCRM/CRM/issues/4022)
+- [**Feature: Reports**] create report for families without emails  [#2814](https://github.com/ChurchCRM/CRM/issues/2814)
+
+#### Localization:
+
+- [**Localization**] Month in Wedding Date showing error [#4307](https://github.com/ChurchCRM/CRM/issues/4307)
+
+#### Bug fixes:
+
+- [**Web Report**][**bug**] Delete Family & Members error [#4424](https://github.com/ChurchCRM/CRM/issues/4424)
+
+#### Inner Beauty:
+
+- [**development**] Dev: Error with Copyright date [#4405](https://github.com/ChurchCRM/CRM/issues/4405)
+
+---
+
 ## 3.0.7 (23/07/2018)
 
 #### Core Functionality
 
-- [**Feature: Events**][**Web Report**] Need 15 minute intervals [#4368](https://github.com/ChurchCRM/CRM/issues/4368)
+- [**Feature: Events**] Need 15 minute intervals [#4368](https://github.com/ChurchCRM/CRM/issues/4368)
 - [**Feature: Members**] Bug: Custom Drop-Down List Cannot Be Edited [#4359](https://github.com/ChurchCRM/CRM/issues/4359)
 - [**Feature: Data Import / Export**] Can I List All Familes? [#4358](https://github.com/ChurchCRM/CRM/issues/4358)
 - [**Feature: Users**][**New Feature Request**] Allow for Searching by a Family's Custom Fields [#4350](https://github.com/ChurchCRM/CRM/issues/4350)
