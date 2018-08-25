@@ -552,11 +552,12 @@ $bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() ||
                         <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
                       </span>
                                             </a>
-                                            <a href="<?= SystemURLs::getRootPath() ?>/SelectDelete.php?mode=person&PersonID=<?= $tmpPersonId ?>">
-                      <span class="fa-stack">
-                        <i class="fa fa-square fa-stack-2x"></i>
-                        <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
-                      </span>
+                                             <a class="delete-person" data-person_name="<?= $familyMember->getFullName() ?>"
+                                           data-person_id="<?= $familyMember->getId() ?>" data-view="family">
+                                                <span class="fa-stack">
+                                                    <i class="fa fa-square fa-stack-2x"></i>
+                                                    <i class="fa fa-trash-o fa-stack-1x fa-inverse btn-danger"></i>
+                                                </span>
                                             </a>
                                             <?php
                               } ?>
