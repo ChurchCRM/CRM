@@ -599,7 +599,7 @@
                 {
                   data: 'DateLastEdited',
                   render: function (data, type, row, meta) {
-                    return moment(data).format('MM-DD-YYYY hh:mm');
+                    return moment(data).format(window.CRM.systemConfigs.sDateTimeFormat);
                   }
                 }
               ]
