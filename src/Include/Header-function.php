@@ -18,7 +18,7 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\MenuConfigQuery;
 use ChurchCRM\SessionUser;
-use PHPToMomentJSConverter;
+use ChurchCRM\Utils\PHPToMomentJSConverter;
 
 function Header_modals()
 {
