@@ -679,19 +679,19 @@ function initializeCalendar() {
 
 function getCalendarFilterElement(calendar,type,parent) {
   boxId = type+calendar.Id;
-  return '<div class="panel box box-primary">'+
-            '<div class="box-header with-border" style="background-color:#'+calendar.BackgroundColor+'">' +
+  return '<div class="panel box box-primary" style="border-top: 0px">'+
+            '<div class="box-header" style="background-color:#'+calendar.BackgroundColor+'">' +
               '<h4 class="box-title">' +
-                '<a data-toggle="collapse" data-parent="#'+parent+'" href="#'+boxId+'" aria-expanded="false" class="" style="color:#'+calendar.ForegroundColor+'">' +
+                '<a data-toggle="collapse" data-parent="#'+parent+'" href="#'+boxId+'" aria-expanded="false" style="color:#'+calendar.ForegroundColor+'; font-size:10pt">' +
                   calendar.Name+
                 '</a>'+
               '</h4>'+
             '</div>'+
            ' <div id="'+boxId+'" class="panel-collapse collapse" aria-expanded="false" style="">'+
               '<div class="box-body">'+
-               '<label for="display-'+boxId+'">Show On Calendar</label>' +
+               '<label for="display-'+boxId+'" style="font-size:10pt">Show On Calendar</label>' +
                "<input type='checkbox' id='display-"+boxId+"' class='calendarSelectionBox' data-calendartype='"+type+"' data-calendarname='"+calendar.Name+"' data-calendarid='"+calendar.Id+"'/>" +
-               '<a class="btn btn-primary calendarproperties" data-calendarid="'+calendar.Id+'" style="white-space: unset">Edit Calendar Properties</a>'+
+               (type === "user"  ? '<a class="btn btn-primary calendarproperties" data-calendarid="'+calendar.Id+'" style="white-space: unset; font-size:10pt">Edit Calendar Properties</a>' : "") +
               '</div>'+
             '</div>'+
           '</div>';
