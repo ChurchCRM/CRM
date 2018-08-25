@@ -18,14 +18,14 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     <!-- /. box -->
   </div>
    <div class="col-lg-2">
-     <div class="box">
-      <div class="box-header with-border">
-        <h3 class="box-title"><?= gettext('User Calendars') ?></h3>
-      </div>
-      <div class="box-body" >
-        <div id="userCalendars" class="container-fluid"></div>
-      </div>
-     </div>
+    <div class="box">
+        <div class="box-header with-border">
+          <h3 class="box-title"><?= gettext('User Calendars') ?></h3>
+        </div>
+        <div class="box-body" >
+        <div class="box-group" id="userCalendars"></div>
+        </div>
+    </div>
   </div>
   <div class="col-lg-2">
      <div class="box">
@@ -33,7 +33,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <h3 class="box-title"><?= gettext('System Calendars') ?></h3>
       </div>
       <div class="box-body">
-        <div  id="systemCalendars" class="container-fluid"></div>
+        <div class="box-group" id="systemCalendars"></div>
       </div>
      </div>
   </div>

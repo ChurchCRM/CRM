@@ -677,16 +677,24 @@ function initializeCalendar() {
   });
 };
 
-function getCalendarFilterElement(calendar,type) {
-  return "<div class='row calendar-filter-row'>" + 
-          "<div class='col-xs-1'>" +
-            "<input type='checkbox' class='calendarSelectionBox' data-calendartype='"+type+"' data-calendarname='"+calendar.Name+"' data-calendarid='"+calendar.Id+"'/>"+ 
-          "</div>"+
-          "<div class='col-xs-7'><label for='"+calendar.Name+"'>"+calendar.Name+"</label></div>"+
-          "<div class='col-xs-4'>"+
-            "<div class='calendar-filter-text' style=' color:#"+calendar.ForegroundColor+"; background-color:#"+calendar.BackgroundColor+";'><i class='fa fa-calendar' aria-hidden='true'></i></div>"+
-            (type === "user"  ? "<div class='calendar-filter-text'><i class='calendarproperties fa fa-eye' aria-hidden='true' data-calendarid='"+calendar.Id+"' ></i></div>" :"") +
-        "</div>";
+function getCalendarFilterElement(calendar,type,parent) {
+  boxId = type+calendar.Id;
+  return '<div class="panel box box-primary">'+
+            '<div class="box-header with-border" style="background-color:#'+calendar.BackgroundColor+'">' +
+              '<h4 class="box-title">' +
+                '<a data-toggle="collapse" data-parent="#'+parent+'" href="#'+boxId+'" aria-expanded="false" class="" style="color:#'+calendar.ForegroundColor+'">' +
+                  calendar.Name+
+                '</a>'+
+              '</h4>'+
+            '</div>'+
+           ' <div id="'+boxId+'" class="panel-collapse collapse" aria-expanded="false" style="">'+
+              '<div class="box-body">'+
+               '<label for="display-'+boxId+'">Show On Calendar</label>' +
+               "<input type='checkbox' id='display-"+boxId+"' class='calendarSelectionBox' data-calendartype='"+type+"' data-calendarname='"+calendar.Name+"' data-calendarid='"+calendar.Id+"'/>" +
+               '<a class="btn btn-primary calendarproperties" data-calendarid="'+calendar.Id+'" style="white-space: unset">Edit Calendar Properties</a>'+
+              '</div>'+
+            '</div>'+
+          '</div>';
 }
 
 function registerCalendarSelectionEvents() {
@@ -732,7 +740,7 @@ function initializeFilterSettings() {
   }).done(function (calendars) {
     $("#userCalendars").empty();
     $.each(calendars.Calendars,function(idx,calendar) {
-      $("#userCalendars").append(getCalendarFilterElement(calendar,"user"))
+      $("#userCalendars").append(getCalendarFilterElement(calendar,"user",'userCalendars'))
     });
     $("#userCalendars .calendarSelectionBox").click();
   });
@@ -743,7 +751,7 @@ function initializeFilterSettings() {
   }).done(function (calendars) {
     $("#systemCalendars").empty();
     $.each(calendars.Calendars,function(idx,calendar) {
-      $("#systemCalendars").append(getCalendarFilterElement(calendar,"system"))
+      $("#systemCalendars").append(getCalendarFilterElement(calendar,"system",'systemCalendars'))
     });
     $("#systemCalendars .calendarSelectionBox").click();
   });
