@@ -70,7 +70,7 @@ try {
 SystemURLs::checkAllowedURL($bLockURL, $URL);
 
 // Due to mysqli handling connections on 'localhost' via socket only, we need to tease out this case and handle
-// TCP/IP connections separately defaulting $dbPort to 3306 for the general case when$dbPort is not set.
+// TCP/IP connections separately defaulting $dbPort to 3306 for the general case when $dbPort is not set.
 if ($sSERVERNAME == "localhost") {
     $cnInfoCentral = mysqli_connect($sSERVERNAME, $sUSER, $sPASSWORD)
     or system_failure('Could not connect to MySQL on <strong>'.$sSERVERNAME.'</strong> as <strong>'.$sUSER.'</strong>. Please check the settings in <strong>Include/Config.php</strong>.<br/>MySQL Error: '.mysqli_error($cnInfoCentral));
@@ -78,7 +78,9 @@ if ($sSERVERNAME == "localhost") {
     if (!isset($dbPort)) {
         $dbPort=3306;
     }
-    $cnInfoCentral = mysqli_connect($sSERVERNAME.':'.$dbPort, $sUSER, $sPASSWORD)
+    // Connect via TCP to specified port and pass a 'null' for database name.
+    // We specify the database name in a different call, ie 'mysqli_select_db()' just below here
+    $cnInfoCentral = mysqli_connect($sSERVERNAME, $sUSER, $sPASSWORD, null, $dbPort)
         or system_failure('Could not connect to MySQL on <strong>'.$sSERVERNAME.'</strong> on port <strong>'.$dbPort.'</strong> as <strong>'.$sUSER.'</strong>. Please check the settings in <strong>Include/Config.php</strong>.<br/>MySQL Error: '.mysqli_error($cnInfoCentral));
 }
 
