@@ -9,7 +9,7 @@ class SystemCalendars {
 
   private static function getCalendars() {
     $systemCalendarNamespace = "ChurchCRM\SystemCalendars\\";
-    $systemCalendarNames = ["BirthdaysCalendar", "AnniversariesCalendar", "HolidayCalendar"];
+    $systemCalendarNames = ["BirthdaysCalendar", "AnniversariesCalendar", "HolidayCalendar", "EventsWithoutACalendar"];
     $calendars = [];
     foreach ($systemCalendarNames as $systemCalendarName)  {
       $className = $systemCalendarNamespace.$systemCalendarName;
