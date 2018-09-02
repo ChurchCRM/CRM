@@ -67,7 +67,7 @@ $donationFunds = DonationFundQuery::create()
 if (isset($_POST['SaveChanges'])) {
     for ($iFieldID = 0; $iFieldID < $donationFunds->count(); $iFieldID++) {
         $donation = $donationFunds[$iFieldID];
-        $donation->setName(InputUtils::LegacyFilterInput($_POST[$iFieldID.'name']));
+        $donation->setName(InputUtils::FilterString($_POST[$iFieldID.'name']));
         $donation->setDescription(InputUtils::LegacyFilterInput($_POST[$iFieldID.'desc']));
         $donation->setActive($_POST[$iFieldID.'active'] == 1);
         if (strlen($donation->getName()) == 0) {
