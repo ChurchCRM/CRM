@@ -229,7 +229,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
         $pdf->WriteAtCell($XCellPhone, $curY, $XClassification - $XCellPhone, $per_CellPhone);
         $pdf->WriteAtCell($XClassification, $curY, $XRight - $XClassification, $sClassName);
         $curY += SystemConfig::getValue('incrementY');
-        // Missing the following information for the personal record: ??? Is this the place to put this data ???
+        // Missing the following information for the personal record: ? Is this the place to put this data ?
         // Work Phone
         $pdf->WriteAtCell($XWorkPhone, $curY, $XRight - $XWorkPhone, gettext('Work Phone').':'.$per_WorkPhone);
         $curY += SystemConfig::getValue('incrementY');
