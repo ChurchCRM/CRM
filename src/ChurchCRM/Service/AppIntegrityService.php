@@ -65,7 +65,9 @@ class AppIntegrityService
       'locale gettext'                            => function_exists('bindtextdomain'),
       'Include/Config file is writeable'          => is_writable(SystemURLs::getDocumentRoot().'/Include/') || is_writable(SystemURLs::getDocumentRoot().'/Include/Config.php'),
       'Images directory is writeable'             => AppIntegrityService::testImagesWriteable(),
-      'PHP ZipArchive'                            => extension_loaded('zip')
+      'PHP ZipArchive'                            => extension_loaded('zip'),
+      'Mysqli Functions'                          => function_exists('mysqli_connect')
+        
     );
     return $prerequisites;
   }
