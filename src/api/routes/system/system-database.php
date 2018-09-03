@@ -18,21 +18,30 @@ use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\Propel;
 use Slim\Http\Request;
 use Slim\Http\Response;
-use ChurchCRM\BackupManager;
-
+use ChurchCRM\Backup\BackupJob;
+use ChurchCRM\Backup\RestoreJob;
+use ChurchCRM\Backup\BackupType;
+use ChurchCRM\dto\SystemConfig;
 $app->group('/database', function () {
 
     $this->post('/reset', 'resetDatabase');
     $this->delete('/people/clear', 'clearPeopleTables');
 
-    $this->get('/backup', function ($request, $response, $args) {
-
-        return $response->withJSON(BackupManager::CaptureBackup(ChurchCRM\BackupType::FullBackup));
+    $this->post('/backup', function ($request, $response, $args) {
+        $BaseName = preg_replace('/[^a-zA-Z0-9\-_]/','', SystemConfig::getValue('sChurchName')). "-" . date(SystemConfig::getValue("sDateFilenameFormat"));
+        $Backup = new BackupJob($BaseName, BackupType::FullBackup, false);
+        $BackupResult = $Backup->Execute();
+        return $response->withJSON($BackupResult);
     });
 
     $this->post('/backupRemote', function ($request, $response, $args) {
-        $backup = SystemService::copyBackupToExternalStorage();
-        echo json_encode($backup);
+      if (SystemConfig::getValue('sExternalBackupUsername') && SystemConfig::getValue('sExternalBackupPassword') && SystemConfig::getValue('sExternalBackupEndpoint')) {
+        $Backup = new Backup(BackupType::FullBackup);
+        return $response;
+      }
+      else {
+        throw new \Exception('WebDAV backups are not correctly configured.  Please ensure endpoint, username, and password are set', 500);
+      }
     });
 
     $this->post('/restore', function ($request, $response, $args) {
@@ -43,7 +52,7 @@ $app->group('/database', function () {
             throw new \Exception(gettext('The selected file exceeds this servers maximum upload size of') . ": " . $systemService->getMaxUploadFileSize(), 500);
         }
         $fileName = $_FILES['restoreFile'];
-        $restore = $this->SystemService->restoreDatabaseFromBackup($fileName);
+        BackupManager::RestoreBackup($fileName);
         echo json_encode($restore);
     });
 
