@@ -24,9 +24,6 @@ if (!$_SESSION['user']->isAdmin()) {
     exit;
 }
 
-if (strtoupper(mb_substr(PHP_OS, 0, 3)) === 'WIN') {
-    die('The Backup Utility will not work on a Windows based Server');
-}
 
 // Set the page title and include HTML header
 $sPageTitle = gettext('Backup Database');
