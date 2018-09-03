@@ -18,16 +18,16 @@ use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\Propel;
 use Slim\Http\Request;
 use Slim\Http\Response;
+use ChurchCRM\BackupManager;
 
 $app->group('/database', function () {
 
     $this->post('/reset', 'resetDatabase');
     $this->delete('/people/clear', 'clearPeopleTables');
 
-    $this->post('/backup', function ($request, $response, $args) {
-        $input = (object)$request->getParsedBody();
-        $backup = $this->SystemService->getDatabaseBackup($input);
-        echo json_encode($backup);
+    $this->get('/backup', function ($request, $response, $args) {
+
+        return $response->withJSON(BackupManager::CaptureBackup(ChurchCRM\BackupType::FullBackup));
     });
 
     $this->post('/backupRemote', function ($request, $response, $args) {
