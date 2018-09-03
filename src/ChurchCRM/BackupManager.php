@@ -15,6 +15,7 @@ namespace ChurchCRM
   use PharData;
   use RecursiveIteratorIterator;
   use RecursiveDirectoryIterator;
+  use SplFileInfo;
   
   
   abstract class BackupType
@@ -52,20 +53,32 @@ namespace ChurchCRM
        }
     }
     
+    private static function ShouldBackupImageFile(SplFileInfo $ImageFile)
+    {
+      $isExtraneousFile = strpos($ImageFile->getFileName(), "-initials") != false || 
+        strpos($ImageFile->getFileName(), "-remote") != false ||
+        strpos($ImageFile->getPathName(), "thumbnails") != false;
+      
+      return $ImageFile->isFile() && !(!SystemConfig::getBooleanValue("bBackupExtraneousImages") && $isExtraneousFile); //todo: figure out this logic
+      
+    }
+    
     public static function CreateArchive(BackupInstance $Backup) {
       $phar = new PharData($Backup->BackupFilePath);
       $phar->startBuffering();
       $phar->addFile($Backup->SQLFileName, 'ChurchCRM-Database.sql');
       $imageFiles = new RecursiveIteratorIterator(new RecursiveDirectoryIterator(SystemURLs::getImagesRoot()));
       foreach ($imageFiles as $imageFile) {
-        if (!$imageFile->isDir()) {
+        if (self::ShouldBackupImageFile($imageFile)) {
           $localName = substr(str_replace(SystemURLs::getDocumentRoot(), '', $imageFile->getRealPath()),1);
           $phar->addFile($imageFile->getRealPath(), $localName);
         }
       }
       $phar->stopBuffering();
       $phar->compress(\Phar::GZ);
+      unset($phar);
       unlink($Backup->BackupFilePath);
+      unlink($Backup->SQLFileName);
     }
     
     public static function CaptureBackup($BackupType) {
