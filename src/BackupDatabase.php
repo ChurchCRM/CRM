@@ -53,7 +53,7 @@ require 'Include/Header.php';
         <?= gettext('Re-type Password') ?>:<input type="password" name="pw2">
         <BR><span id="passworderror" style="color: red"></span><BR><BR>
 
-        <input type="button" class="btn btn-primary" id="doBackup" <?= 'value="'.gettext('Generate and Download Backup').'"' ?>>
+        <input type="button" class="btn btn-primary" id="doBackup" <?= 'value="'.gettext('Generate Backup').'"' ?>>
         <input type="button" class="btn btn-primary" id="doRemoteBackup" <?= 'value="'.gettext('Generate and Ship Backup to External Storage').'"' ?>>
 
         </form>

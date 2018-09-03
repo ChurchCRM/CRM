@@ -161,7 +161,7 @@ class SystemConfig
         "bEnableGravatarPhotos" => new ConfigItem(1035, "bEnableGravatarPhotos", "boolean", "0", gettext("lookup user images on Gravatar when no local image is present")),
         "bEnableExternalBackupTarget" => new ConfigItem(1036, "bEnableExternalBackupTarget", "boolean", "0", gettext("Enable Remote Backups to Cloud Services")),
         "sExternalBackupType" => new ConfigItem(1037, "sExternalBackupType", "choice", "", gettext("Cloud Service Type (Supported values: WebDAV, Local)"), "",'{"Choices":["'.gettext("WebDAV").'","'.gettext("Local").'"]}'),
-        "sExternalBackupEndpoint" => new ConfigItem(1038, "sExternalBackupEndpoint", "text", "", gettext("Remote Backup Endpoint")),
+        "sExternalBackupEndpoint" => new ConfigItem(1038, "sExternalBackupEndpoint", "text", "", gettext("Remote Backup Endpoint.  If WebDAV, this must be url encoded. ")),
         "sExternalBackupUsername" => new ConfigItem(1039, "sExternalBackupUsername", "text", "", gettext("Remote Backup Username")),
         "sExternalBackupPassword" => new ConfigItem(1040, "sExternalBackupPassword", "password", "", gettext("Remote Backup Password")),
         "sExternalBackupAutoInterval" => new ConfigItem(1041, "sExternalBackupAutoInterval", "text", "", gettext("Interval in Hours for Automatic Remote Backups")),
