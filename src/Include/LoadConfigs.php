@@ -88,12 +88,12 @@ if (!$cnInfoCentral) {
     
     // Sanitise the mysqli_connect_error if required.
     $sMYSQLERROR="none captured";
-    if( strlen( mysqli_connect_error() )>0 ) {
+    if (strlen(mysqli_connect_error())>0) {
         $sMYSQLERROR=mysqli_connect_error();
     }
 
     // If connecting via a socket, convert $dbPort to something sensible.
-    if ( $sSERVERNAME == "localhost" ){
+    if ($sSERVERNAME == "localhost") {
         $dbPort = "Unix socket";
     }
 
@@ -105,7 +105,6 @@ if (!$cnInfoCentral) {
     // Log the error to the application log, and show an error page to user.
     LoggerUtils::getAppLogger()->error("ERROR connecting to database at '".$sSERVERNAME."' on port '".$dbPort."' as user '".$sUSER."' -  MySQL Error: '".$sMYSQLERROR."'");
     system_failure('Could not connect to MySQL on <strong>'.$sSERVERNAME.'</strong> on port <strong>'.$dbPort.'</strong> as <strong>'.$sUSER.'</strong>. Please check the settings in <strong>Include/Config.php</strong>.<br/>MySQL Error: '.$sMYSQLERROR, 'Database Connection Failure');
-    
 }
 
 mysqli_set_charset($cnInfoCentral, 'utf8mb4');
