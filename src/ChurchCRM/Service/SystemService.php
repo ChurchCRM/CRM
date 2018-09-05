@@ -13,6 +13,7 @@ use PharData;
 use Propel\Runtime\Propel;
 use PDO;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\LoggerUtils;
 
 require SystemURLs::getDocumentRoot() . '/vendor/ifsnop/mysqldump-php/src/Ifsnop/Mysqldump/Mysqldump.php';
 
@@ -213,12 +214,16 @@ class SystemService
                 curl_setopt($ch, CURLOPT_INFILE, $fh);
                 curl_setopt($ch, CURLOPT_INFILESIZE, $backup->filesize);
                 $backup->result = curl_exec($ch);
+                $responseCode = curl_getinfo($ch, CURLINFO_RESPONSE_CODE);
+                if (substr($responseCode,0,1) != "2")
+                {
+                  // the remote server didn't respond with 2xx, so it's an error:
+                  throw new \Exception("Could not back up '".$backup->filename."' (".$backup->filesize." bytes) to '".$backup->remoteUrl.". Was expecting 2xx, got: ".curl_getinfo($ch, CURLINFO_RESPONSE_CODE), 500);
+                }
                 fclose($fh);
 
                 return $backup;
-            } else {
-                throw new \Exception('WebDAV backups are not correctly configured.  Please ensure endpoint, username, and password are set', 500);
-            }
+            } 
         } elseif (strcasecmp(SystemConfig::getValue('sExternalBackupType'), 'Local') == 0) {
             try {
                 $backup = self::getDatabaseBackup($params);
@@ -362,35 +367,63 @@ class SystemService
 
         return $result;
     }
+    
+    private static function IsTimerThresholdExceeded(string $LastTime, int $ThresholdHours)
+    {
+      if (empty($LastTime)) {
+        return true;
+      }
+      $tz = new \DateTimeZone(SystemConfig::getValue('sTimeZone'));
+      $now = new \DateTime("now", $tz);  //get the current time
+      $previous = \DateTime::createFromFormat(SystemConfig::getValue('sDateTimeFormat'),$LastTime, $tz); // get a DateTime object for the last time a backup was done.
+      $diff = abs($now->getTimestamp() - $previous->getTimestamp()) / 60 / 60 ;
+      LoggerUtils::getAppLogger()->addInfo("Difference from '". $previous->format(SystemConfig::getValue('sDateTimeFormat'))."' to '".$now->format(SystemConfig::getValue('sDateTimeFormat'))."' is: ".$diff." hours");
+      return $diff->h >= $ThresholdHours;
+    }
 
     public static function runTimerJobs()
     {
+      LoggerUtils::getAppLogger()->addInfo("Starting background job processing");
         //start the external backup timer job
-        if (SystemConfig::getBooleanValue('bEnableExternalBackupTarget') && SystemConfig::getValue('sExternalBackupAutoInterval') > 0) {  //if remote backups are enabled, and the interval is greater than zero
-            try {
-                $now = new \DateTime();  //get the current time
-                $previous = new \DateTime(SystemConfig::getValue('sLastBackupTimeStamp')); // get a DateTime object for the last time a backup was done.
-                $diff = $previous->diff($now);  // calculate the difference.
-                if (!SystemConfig::getValue('sLastBackupTimeStamp') || $diff->h >= SystemConfig::getValue('sExternalBackupAutoInterval')) {  // if there was no previous backup, or if the interval suggests we do a backup now.
-                    self::copyBackupToExternalStorage();  // Tell system service to do an external storage backup.
-                    $now = new \DateTime();  // update the LastBackupTimeStamp.
-                    SystemConfig::setValue('sLastBackupTimeStamp', $now->format('Y-m-d H:i:s'));
-                }
-            } catch (\Exception $exc) {
-                // an error in the auto-backup shouldn't prevent the page from loading...
+        if (SystemConfig::getBooleanValue('bEnableExternalBackupTarget') && SystemConfig::getValue('sExternalBackupAutoInterval') > 0) {  //if remote backups are enabled, and the interval is greater than zero 
+          try {
+            if (self::IsTimerThresholdExceeded(SystemConfig::getValue('sLastBackupTimeStamp'), SystemConfig::getValue('sExternalBackupAutoInterval'))) {  
+              // if there was no previous backup, or if the interval suggests we do a backup now.
+              LoggerUtils::getAppLogger()->addInfo("Starting a backup job.  Last backup run: ".SystemConfig::getValue('sLastBackupTimeStamp'));   
+              $backup = self::copyBackupToExternalStorage();  // Tell system service to do an external storage backup.
+              $now = new \DateTime();  // update the LastBackupTimeStamp.
+              SystemConfig::setValue('sLastBackupTimeStamp', $now->format(SystemConfig::getValue('sDateTimeFormat')));
+              LoggerUtils::getAppLogger()->addInfo("Backup job successful: '".$backup->filename."' (".$backup->filesize." bytes) copied to '".$backup->remoteUrl."'");
             }
+            else {
+              LoggerUtils::getAppLogger()->addInfo("Not starting a backup job.  Last backup run: ".SystemConfig::getValue('sLastBackupTimeStamp').". ".$diff->h." hours since last backup is less than the threshold of ".SystemConfig::getValue('sExternalBackupAutoInterval'));  
+            }
+          } catch (\Exception $exc) {
+              // an error in the auto-backup shouldn't prevent the page from loading...
+            LoggerUtils::getAppLogger()->addWarning("Failure executing backup job: ". $exc->getMessage() );  
+          }
         }
-        if (SystemConfig::getBooleanValue('bEnableIntegrityCheck') && SystemConfig::getValue('iIntegrityCheckInterval') > 0) {
-            $now = new \DateTime();  //get the current time
-            $previous = new \DateTime(SystemConfig::getValue('sLastIntegrityCheckTimeStamp')); // get a DateTime object for the last time a backup was done.
-            $diff = $previous->diff($now);  // calculate the difference.
-            if (!SystemConfig::getValue('sLastIntegrityCheckTimeStamp') || $diff->h >= SystemConfig::getValue('iIntegrityCheckInterval')) {  // if there was no previous backup, or if the interval suggests we do a backup now.
+        if (SystemConfig::getBooleanValue('bEnableIntegrityCheck') && SystemConfig::getValue('iIntegrityCheckInterval') > 0) {   
+            if (self::IsTimerThresholdExceeded(SystemConfig::getValue('sLastIntegrityCheckTimeStamp'),SystemConfig::getValue('iIntegrityCheckInterval'))) {  
+                // if there was no integrity check, or if the interval suggests we do one now.
+                LoggerUtils::getAppLogger()->addInfo("Starting application integrity check");
                 $integrityCheckFile = SystemURLs::getDocumentRoot() . '/integrityCheck.json';
                 $appIntegrity = AppIntegrityService::verifyApplicationIntegrity();
                 file_put_contents($integrityCheckFile, json_encode($appIntegrity));
                 $now = new \DateTime();  // update the LastBackupTimeStamp.
-                SystemConfig::setValue('sLastIntegrityCheckTimeStamp', $now->format('Y-m-d H:i:s'));
+                SystemConfig::setValue('sLastIntegrityCheckTimeStamp', $now->format(SystemConfig::getValue('sDateTimeFormat')));
+                if ($appIntegrity['result'] == 'success')
+                {
+                  LoggerUtils::getAppLogger()->addInfo("Application integrity check passed");
+                }
+                else
+                {
+                  LoggerUtils::getAppLogger()->addWarning("Application integrity check failed: ".$appIntegrity['message']);
+                }
             }
+             else {
+                  LoggerUtils::getAppLogger()->addInfo("Not starting application integrity check.  Last application integrity check run: ".SystemConfig::getValue('sLastIntegrityCheckTimeStamp'));  
+                }
         }
     }
 
