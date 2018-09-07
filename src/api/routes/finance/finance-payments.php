@@ -1,6 +1,6 @@
 <?php
 
-use ChurchCRM\Slim\Middleware\Role\FinanceRoleAuthMiddleware;
+use ChurchCRM\Slim\Middleware\Request\Auth\FinanceRoleAuthMiddleware;
 
 $app->group('/payments', function () {
     $this->get('/', function ($request, $response, $args) {

@@ -17,12 +17,12 @@ msgid "Confirm Delete Automatic payment"
 msgstr "Xác nhận Xóa Thanh toán tự động"
 
 #: AutoPaymentDelete.php:63 Checkin.php:286 Checkin.php:368
-#: DepositSlipEditor.php:228 DonationFundEditor.php:153
+#: DepositSlipEditor.php:231 DonationFundEditor.php:153
 #: DonationFundEditor.php:183 EditEventAttendees.php:76
 #: ElectronicPaymentList.php:219 ElectronicPaymentList.php:284
 #: EventNames.php:302 FamilyCustomFieldsEditor.php:324
 #: FamilyCustomFieldsEditor.php:382 FamilyView.php:663 FamilyView.php:715
-#: FamilyView.php:774 FamilyView.php:911 FindDepositSlip.php:104
+#: FamilyView.php:774 FamilyView.php:911 FindDepositSlip.php:105
 #: FundRaiserEditor.php:200 ListEvents.php:241 PaddleNumList.php:55
 #: PersonCustomFieldsEditor.php:315 PersonCustomFieldsEditor.php:384
 #: PersonView.php:940 PledgeDelete.php:53 PropertyList.php:65
@@ -43,7 +43,7 @@ msgstr "Xóa bỏ"
 #: Register.php:56 ReminderReport.php:52 SettingsIndividual.php:114
 #: SettingsIndividual.php:160 SettingsUser.php:100 SettingsUser.php:160
 #: TaxReport.php:55 UserEditor.php:459 UserEditor.php:562
-#: WhyCameEditor.php:105 external/templates/verify/verify-family-info.php:151
+#: WhyCameEditor.php:105 external/templates/verify/verify-family-info.php:144
 #: sundayschool/SundaySchoolDashboard.php:258
 #: sundayschool/SundaySchoolReports.php:286
 #: v2/templates/people/family-view.php:529
@@ -54,7 +54,7 @@ msgstr "Hủy bỏ"
 msgid "Automatic payment configuration for the "
 msgstr "Cấu hình thanh toán tự động cho "
 
-#: AutoPaymentEditor.php:786 CanvassEditor.php:238 DepositSlipEditor.php:94
+#: AutoPaymentEditor.php:786 CanvassEditor.php:238 DepositSlipEditor.php:97
 #: DonatedItemEditor.php:293 FamilyEditor.php:647 FamilyEditor.php:731
 #: FamilyEditor.php:795 FamilyEditor.php:869 FamilyEditor.php:891
 #: FamilyEditor.php:922 FamilyEditor.php:1115 FundRaiserEditor.php:142
@@ -75,7 +75,7 @@ msgstr "Lưu lại"
 #: Include/Functions.php:909 MapUsingGoogle.php:96 MapUsingGoogle.php:120
 #: PaddleNumEditor.php:176 PersonEditor.php:782 PersonEditor.php:798
 #: PersonEditor.php:1137 PrintView.php:264 PrintView.php:274
-#: SelectDelete.php:156 SelectList.php:35 SelectList.php:45 SelectList.php:61
+#: SelectDelete.php:157 SelectList.php:35 SelectList.php:45 SelectList.php:61
 #: SelectList.php:1098 SelectList.php:1169 SystemSettings.php:214
 #: eGive.php:341
 msgid "Unassigned"
@@ -135,7 +135,7 @@ msgid "Phone"
 msgstr "Điện thoại"
 
 #: AutoPaymentEditor.php:942 CSVExport.php:142 CSVImport.php:226
-#: CartToFamily.php:311 CartView.php:273 ChurchCRM/Config/Menu/Menu.php:40
+#: CartToFamily.php:311 ChurchCRM/Config/Menu/Menu.php:40
 #: ChurchCRM/Reports/PDF_Directory.php:318
 #: ChurchCRM/Reports/PDF_Directory.php:394
 #: ChurchCRM/Reports/PDF_Directory.php:451 EditEventAttendees.php:42
@@ -144,13 +144,14 @@ msgstr "Điện thoại"
 #: PersonEditor.php:1035 PersonEditor.php:1037 PersonView.php:307
 #: PersonView.php:511 PrintView.php:294 Reports/CanvassReports.php:243
 #: Reports/ConfirmReport.php:183 Reports/ConfirmReport.php:202
-#: Reports/ConfirmReportEmail.php:191 Reports/ConfirmReportEmail.php:209
+#: Reports/ConfirmReportEmail.php:187 Reports/ConfirmReportEmail.php:205
 #: Reports/DirectoryReport.php:296 Reports/GroupReport.php:133
 #: external/templates/registration/family-register-members.php:83
 #: external/templates/verify/enter-info.php:33
 #: external/templates/verify/verify-family-info.php:76
 #: sundayschool/SundaySchoolClassView.php:89
 #: sundayschool/SundaySchoolClassView.php:205
+#: v2/templates/cart/cartlisting.php:19
 #: v2/templates/people/family-view.php:174
 #: v2/templates/people/family-view.php:314 queryparameteroptions_qpo.php:13
 msgid "Email"
@@ -227,7 +228,7 @@ msgstr "Tạo và Tải Sao lưu"
 msgid "Generate and Ship Backup to External Storage"
 msgstr "Tạo và gửi tập tin lưu trữ đến kho lưu trữ bên ngoài"
 
-#: CSVExport.php:54 CartView.php:106
+#: CSVExport.php:54 v2/templates/cart/cartfunctions.php:32
 msgid "CSV Export"
 msgstr "Xuất CSV"
 
@@ -298,8 +299,9 @@ msgstr "Ngày sinh / Kỷ niệm ngày cưới"
 msgid "Age / Years Married"
 msgstr "Tuổi / năm kết hôn"
 
-#: CSVExport.php:172 CSVExport.php:302 CartView.php:276 OptionManager.php:62
-#: PersonEditor.php:780 PrintView.php:269 queryparameters_qrp.php:5
+#: CSVExport.php:172 CSVExport.php:302 OptionManager.php:62
+#: PersonEditor.php:780 PrintView.php:269 v2/templates/cart/cartlisting.php:22
+#: queryparameters_qrp.php:5
 #, fuzzy
 msgid "Family Role"
 msgstr "Vai trò trong gia đình"
@@ -379,7 +381,7 @@ msgstr "Gửi đến:"
 msgid "Birthday Date"
 msgstr "Ngày sinh nhật:"
 
-#: Reports/ConfirmReport.php:150 Reports/ConfirmReportEmail.php:155
+#: Reports/ConfirmReport.php:150 Reports/ConfirmReportEmail.php:151
 #, fuzzy
 msgid "Anniversary Date"
 msgstr "Kỷ niệm ngày cưới"
@@ -427,16 +429,16 @@ msgstr "Giới tính"
 
 #: CSVExport.php:127 CSVImport.php:223 CartToFamily.php:281
 #: EditEventAttendees.php:43 EventAttendance.php:176 FamilyEditor.php:737
-#: FamilyList.php:46 FamilyView.php:254 GroupReports.php:124
-#: PersonEditor.php:961 PersonEditor.php:963 PersonView.php:302
-#: PrintView.php:199 Reports/ConfirmReport.php:135
-#: Reports/ConfirmReportEmail.php:140 SelectList.php:965 SelectList.php:966
-#: SelectList.php:1041
+#: FamilyView.php:254 GroupReports.php:124 PersonEditor.php:961
+#: PersonEditor.php:963 PersonView.php:302 PrintView.php:199
+#: Reports/ConfirmReport.php:135 Reports/ConfirmReportEmail.php:136
+#: SelectList.php:965 SelectList.php:966 SelectList.php:1041
 #: external/templates/registration/family-register-done.php:30
 #: external/templates/registration/family-register.php:68
 #: external/templates/verify/verify-family-info.php:27
 #: external/templates/verify/verify-family-info.php:70
 #: sundayschool/SundaySchoolClassView.php:207
+#: v2/templates/people/family-list.php:33
 #: v2/templates/people/family-view.php:153
 #: v2/templates/people/family-view.php:299 queryparameteroptions_qpo.php:8
 msgid "Home Phone"
@@ -446,7 +448,7 @@ msgstr "Điện thoại nhà"
 #: FamilyEditor.php:749 FamilyView.php:260 GroupReports.php:125
 #: PersonEditor.php:984 PersonEditor.php:986 PersonView.php:316
 #: PrintView.php:204 Reports/ConfirmReport.php:239
-#: Reports/ConfirmReportEmail.php:238 SelectList.php:968 SelectList.php:969
+#: Reports/ConfirmReportEmail.php:234 SelectList.php:968 SelectList.php:969
 #: SelectList.php:1041 external/templates/verify/verify-family-info.php:72
 #: v2/templates/people/family-view.php:160
 #: v2/templates/people/family-view.php:304
@@ -496,10 +498,10 @@ msgstr "LƯU Ý: Phân tách bằng (dấu gạch ngang, vv) hoặc thiếu dấ
 msgid "Default country if none specified otherwise"
 msgstr "Quốc gia mặc định nếu không có quy định khác"
 
-#: CSVExport.php:167 CSVExport.php:277 CSVImport.php:281 CartView.php:275
-#: FamilyEditor.php:948 FinancialReports.php:117 OptionManager.php:69
-#: PeopleDashboard.php:411 PersonEditor.php:1135 PrintView.php:309
-#: queryparameters_qrp.php:19
+#: CSVExport.php:167 CSVExport.php:277 CSVImport.php:281 FamilyEditor.php:948
+#: FinancialReports.php:117 OptionManager.php:69 PeopleDashboard.php:411
+#: PersonEditor.php:1135 PrintView.php:309
+#: v2/templates/cart/cartlisting.php:21 queryparameters_qrp.php:19
 msgid "Classification"
 msgstr "Phân loại"
 
@@ -590,24 +592,24 @@ msgstr "Không quan tâm"
 msgid "Why Not Interested?"
 msgstr "Vì sao bạn không quan tâm ?"
 
-#: CartToEvent.php:50 CartToEvent.php:83
+#: CartToEvent.php:52 CartToEvent.php:85
 msgid "Add Cart to Event"
 msgstr "Thêm vào giỏ rồi gửi đến Sự kiện"
 
-#: CartToEvent.php:57
+#: CartToEvent.php:59
 #, fuzzy
 msgid "Select the event to which you would like to add your cart"
 msgstr "Chọn sự kiện mà bạn muốn thêm vào giỏ của bạn"
 
-#: CartToEvent.php:84
+#: CartToEvent.php:86
 msgid "OR"
 msgstr "HOẶC"
 
-#: CartToEvent.php:85 Checkin.php:105 ListEvents.php:344
+#: CartToEvent.php:87 Checkin.php:105 ListEvents.php:344
 msgid "Add New Event"
 msgstr "Thêm sự kiện mới"
 
-#: CartToEvent.php:92 CartToFamily.php:325 CartToGroup.php:101
+#: CartToEvent.php:94 CartToFamily.php:325 CartToGroup.php:101
 msgid "Your cart is empty!"
 msgstr "Giỏ của bạn đang trống!"
 
@@ -619,22 +621,22 @@ msgstr "Không có tên gia đình được nhập vào!"
 msgid "Add Cart to Family"
 msgstr "Thêm vào giỏ rồi gửi đến Gia đình"
 
-#: CartToFamily.php:155 CartView.php:271 Checkin.php:311
-#: ChurchCRM/Emails/notifications/NewPersonOrFamilyEmail.php:63
-#: DonationFundEditor.php:150 DonationFundEditor.php:213
-#: EditEventAttendees.php:32 EditEventAttendees.php:41 EventAttendance.php:174
-#: EventNames.php:263 FamilyCustomFieldsEditor.php:320
-#: FamilyCustomFieldsEditor.php:434 FamilyList.php:44 FamilyView.php:550
-#: GeoPage.php:357 GroupEditor.php:73 GroupPropsFormEditor.php:285
-#: GroupPropsFormEditor.php:397 GroupView.php:255 GroupView.php:288
-#: PersonCustomFieldsEditor.php:311 PersonCustomFieldsEditor.php:442
-#: PersonView.php:683 PersonView.php:788 PrintView.php:337 PrintView.php:463
-#: PropertyEditor.php:149 PropertyList.php:60 PropertyTypeEditor.php:96
-#: PropertyTypeList.php:41 Reports/CanvassReports.php:69
-#: Reports/CanvassReports.php:237 Reports/FRBidSheets.php:88
-#: SelectList.php:988 UserList.php:54 VolunteerOpportunityEditor.php:75
-#: VolunteerOpportunityEditor.php:354 VolunteerOpportunityEditor.php:421
+#: CartToFamily.php:155 Checkin.php:311 DonationFundEditor.php:150
+#: DonationFundEditor.php:213 EditEventAttendees.php:32
+#: EditEventAttendees.php:41 EventAttendance.php:174 EventNames.php:263
+#: FamilyCustomFieldsEditor.php:320 FamilyCustomFieldsEditor.php:434
+#: FamilyView.php:550 GeoPage.php:357 GroupEditor.php:73
+#: GroupPropsFormEditor.php:285 GroupPropsFormEditor.php:397 GroupView.php:255
+#: GroupView.php:288 PersonCustomFieldsEditor.php:311
+#: PersonCustomFieldsEditor.php:442 PersonView.php:683 PersonView.php:788
+#: PrintView.php:337 PrintView.php:463 PropertyEditor.php:149
+#: PropertyList.php:60 PropertyTypeEditor.php:96 PropertyTypeList.php:41
+#: Reports/CanvassReports.php:69 Reports/CanvassReports.php:237
+#: Reports/FRBidSheets.php:88 SelectList.php:988 UserList.php:54
+#: VolunteerOpportunityEditor.php:75 VolunteerOpportunityEditor.php:354
+#: VolunteerOpportunityEditor.php:421
 #: sundayschool/SundaySchoolClassView.php:202
+#: v2/templates/cart/cartlisting.php:17 v2/templates/people/family-list.php:31
 #: v2/templates/people/family-view.php:374 queryparameteroptions_qpo.php:4
 msgid "Name"
 msgstr "Tên"
@@ -696,86 +698,88 @@ msgstr "Không có Ban/Mục vụ được lựa chọn"
 msgid "Add to Group"
 msgstr "Thêm vào Ban/Mục vụ"
 
-#: CartView.php:21
+#: v2/routes/cart.php:21
 msgid "View Your Cart"
 msgstr "Xem giỏ "
 
-#: CartView.php:29
+#: v2/templates/cart/cartempty.php:10
 msgid "You have no items in your cart."
 msgstr "Bạn không có gì trong giỏ"
 
-#: CartView.php:38
+#: v2/templates/cart/cartempty.php:23
 msgid "Back to Menu"
 msgstr "Quay lại Menu"
 
-#: CartView.php:88
+#: v2/templates/cart/cartfunctions.php:14
 msgid "Empty Cart"
 msgstr "Xóa bỏ giỏ"
 
-#: CartView.php:91
+#: v2/templates/cart/cartfunctions.php:17
 msgid "Empty Cart to Group"
 msgstr "Xóa bỏ giỏ trong Ban/Mục vụ"
 
-#: CartView.php:97
+#: v2/templates/cart/cartfunctions.php:23
 msgid "Empty Cart to Family"
 msgstr "Xóa bỏ giỏ trong Gia đình"
 
-#: CartView.php:101
+#: v2/templates/cart/cartfunctions.php:27
 msgid "Empty Cart to Event"
 msgstr "Xóa bỏ giỏ trong Sự kiện"
 
-#: CartView.php:110
+#: v2/templates/cart/cartfunctions.php:36
 msgid "Map Cart"
 msgstr "Giỏ Bản đồ"
 
-#: CartView.php:112
+#: v2/templates/cart/cartfunctions.php:38
 msgid "Name Tags"
 msgstr "Thẻ tên"
 
-#: CartView.php:146
+#: v2/templates/cart/cartfunctions.php:43
 msgid "Email Cart"
 msgstr "Giỏ Email"
 
-#: CartView.php:147 GroupView.php:139
-#: sundayschool/SundaySchoolClassView.php:101
+#: GroupView.php:139 sundayschool/SundaySchoolClassView.php:101
+#: v2/templates/cart/cartfunctions.php:44
 msgid "Email (BCC)"
 msgstr "Email (BCC)"
 
-#: CartView.php:177
+#: v2/templates/cart/cartfunctions.php:53
 msgid "Create Directory From Cart"
 msgstr "Tạo Danh bạ từ Giỏ"
 
-#: CartView.php:201 CartView.php:243
+#: v2/templates/cart/generateLabels.php:4
+#: v2/templates/cart/generateLabels.php:46
 msgid "Generate Labels"
 msgstr "Tạo các nhãn"
 
-#: CartView.php:264
+#: v2/templates/cart/cartlisting.php:6
 msgid "persons from"
 msgstr "thành viên từ"
 
-#: CartView.php:274 CartView.php:332 EditEventTypes.php:166 FamilyView.php:555
-#: FamilyView.php:597 GroupView.php:293 GroupView.php:334 PersonView.php:686
-#: PersonView.php:704 PersonView.php:791 PersonView.php:809
+#: EditEventTypes.php:166 FamilyView.php:555 FamilyView.php:597
+#: GroupView.php:293 GroupView.php:334 PersonView.php:686 PersonView.php:704
+#: PersonView.php:791 PersonView.php:809 v2/templates/cart/cartlisting.php:20
+#: v2/templates/cart/cartlisting.php:37
 msgid "Remove"
 msgstr "Xóa bỏ"
 
-#: CartView.php:295 CartView.php:315 DonationFundEditor.php:177
-#: FinancialReports.php:295 Include/Functions.php:686
-#: Include/Functions.php:770 ListEvents.php:296 Reports/ConfirmReport.php:227
+#: DonationFundEditor.php:177 FinancialReports.php:295
+#: Include/Functions.php:686 Include/Functions.php:770 ListEvents.php:296
+#: Reports/ConfirmReport.php:227
 msgid "Yes"
 msgstr "Có"
 
-#: CartView.php:308 CartView.php:317 DonationFundEditor.php:180
-#: FinancialReports.php:296 Include/Functions.php:688
-#: Include/Functions.php:771 ListEvents.php:296 Reports/ConfirmReport.php:229
+#: DonationFundEditor.php:180 FinancialReports.php:296
+#: Include/Functions.php:688 Include/Functions.php:771 ListEvents.php:296
+#: Reports/ConfirmReport.php:229
 msgid "No"
 msgstr "Không"
 
-#: CartToEvent.php:68 Checkin.php:84
+#: CartToEvent.php:70 Checkin.php:84
 msgid "Select Event"
 msgstr "Lựa chọn sự kiện"
 
-#: external/templates/verify/verify-family-info.php:152
+#: external/templates/verify/verify-family-info.php:145
 msgid "Verify"
 msgstr "Xác thực"
 
@@ -829,16 +833,29 @@ msgstr "Lựa chọn phân loại bao gồm"
 msgid "Which role is the head of household?"
 msgstr "Ai giữ vai trò là chủ hộ ?"
 
+#: DirectoryReports.php:132
+msgid "Which role is the spouse?"
+msgstr "Ai giữ vai trò Vợ/Chồng?"
+
+#: DirectoryReports.php:151
+msgid "Which role is a child?"
+msgstr "Ai giữ vai trò con cái?"
+
+#: DirectoryReports.php:170
+msgid "Information to Include"
+msgstr "Phần thông tin bao gồm"
+
 #: AutoPaymentEditor.php:902 AutoPaymentEditor.php:908 CSVExport.php:92
 #: CSVExport.php:97 CSVImport.php:217 CSVImport.php:218 CartToFamily.php:235
-#: CartToFamily.php:240 CartView.php:272 DirectoryReports.php:172
-#: DirectoryReports.php:246 FamilyEditor.php:664 FamilyEditor.php:668
-#: FamilyList.php:45 FamilyView.php:214 GeoPage.php:358 GroupReports.php:123
-#: Menu.php:309 Menu.php:338 PersonEditor.php:831 PersonEditor.php:847
-#: PersonView.php:272 Register.php:43 Reports/ConfirmReportEmail.php:125
-#: Reports/ConfirmReportEmail.php:130 api/routes/search.php:97
+#: CartToFamily.php:240 DirectoryReports.php:172 DirectoryReports.php:246
+#: FamilyEditor.php:664 FamilyEditor.php:668 FamilyView.php:214
+#: GeoPage.php:358 GroupReports.php:123 Menu.php:309 Menu.php:338
+#: PersonEditor.php:831 PersonEditor.php:847 PersonView.php:272
+#: Register.php:43 Reports/ConfirmReportEmail.php:121
+#: Reports/ConfirmReportEmail.php:126 api/routes/search.php:98
 #: external/templates/registration/family-register-done.php:29
 #: external/templates/registration/family-register.php:35
+#: v2/templates/cart/cartlisting.php:18 v2/templates/people/family-list.php:32
 #: v2/templates/people/family-view.php:211
 msgid "Address"
 msgstr "Địa chỉ"
@@ -846,8 +863,8 @@ msgstr "Địa chỉ"
 #: ChurchCRM/Service/CalendarService.php:16
 #: ChurchCRM/SystemCalendars/BirthdaysCalendar.php:63 DirectoryReports.php:174
 #: FamilyView.php:358 PersonView.php:510 Reports/ConfirmReport.php:184
-#: Reports/ConfirmReport.php:203 Reports/ConfirmReportEmail.php:192
-#: Reports/ConfirmReportEmail.php:210
+#: Reports/ConfirmReport.php:203 Reports/ConfirmReportEmail.php:188
+#: Reports/ConfirmReportEmail.php:206
 #: external/templates/verify/verify-family-info.php:80
 #: v2/templates/people/family-view.php:323
 msgid "Birthday"
@@ -858,7 +875,7 @@ msgid "Family Cell Phone"
 msgstr "Điện thoại gia đình"
 
 #: DirectoryReports.php:179 Reports/ConfirmReport.php:156
-#: Reports/ConfirmReportEmail.php:161
+#: Reports/ConfirmReportEmail.php:157
 #: external/templates/verify/verify-family-info.php:29
 msgid "Family Email"
 msgstr "Email gia đình"
@@ -875,9 +892,29 @@ msgstr "Email cá nhân"
 msgid "Personal Work/Other Email"
 msgstr "Email công việc/khác"
 
+#: DirectoryReports.php:202
+msgid "Number of Columns"
+msgstr "Số lượng các cột"
+
+#: DirectoryReports.php:210
+msgid "Paper Size"
+msgstr "Kích thước trang giấy"
+
 #: DirectoryReports.php:218 Include/LabelFunctions.php:61
 msgid "Font Size"
 msgstr "Kích thước chữ"
+
+#: DirectoryReports.php:234
+msgid "Title page"
+msgstr "Tiêu đề trang"
+
+#: DirectoryReports.php:238
+msgid "Use Title Page"
+msgstr "Sử dụng tiêu đề trang"
+
+#: ChurchCRM/dto/SystemConfig.php:129 DirectoryReports.php:242 Register.php:41
+msgid "Church Name"
+msgstr "Tên Hội Thánh"
 
 #: DirectoryReports.php:285
 msgid "Create Directory"
@@ -960,7 +997,7 @@ msgstr "Gia đình"
 #: GroupPropsFormEditor.php:284 GroupPropsFormEditor.php:385 GroupView.php:254
 #: GroupView.php:287 OptionManager.php:77 PersonCustomFieldsEditor.php:310
 #: PersonCustomFieldsEditor.php:429 PersonView.php:682 PropertyEditor.php:129
-#: SelectDelete.php:215
+#: SelectDelete.php:216
 msgid "Type"
 msgstr "Thể loại"
 
@@ -1323,21 +1360,22 @@ msgstr "Tháng 11"
 msgid "December"
 msgstr "Tháng 12"
 
-#: FamilyList.php:30 FamilyView.php:312 v2/templates/people/family-view.php:83
+#: FamilyView.php:312 v2/templates/people/family-list.php:14
+#: v2/templates/people/family-view.php:83
 msgid "Family List"
 msgstr "Danh sách gia đình"
 
-#: FamilyList.php:35
+#: v2/templates/people/family-list.php:21
 msgid "Add Family"
 msgstr "Thêm gia đình"
 
 #: ChurchCRM/model/ChurchCRM/Family.php:178
-#: ChurchCRM/model/ChurchCRM/Person.php:151 FamilyList.php:49 Menu.php:310
-#: PersonEditor.php:393
+#: ChurchCRM/model/ChurchCRM/Person.php:171 Menu.php:310 PersonEditor.php:393
+#: v2/templates/people/family-list.php:36
 msgid "Created"
 msgstr "Đã tạo"
 
-#: FamilyList.php:50
+#: v2/templates/people/family-list.php:37
 msgid "Edited"
 msgstr "Đã sửa"
 
@@ -1423,11 +1461,11 @@ msgstr "Thêm vào thuộc tính mới"
 msgid "Assign"
 msgstr "Thêm vào"
 
-#: FamilyView.php:664 FamilyView.php:775 SelectDelete.php:223
+#: FamilyView.php:664 FamilyView.php:775 SelectDelete.php:224
 msgid "Date Updated"
 msgstr "Ngày cập nhật"
 
-#: FamilyView.php:665 FamilyView.php:776 SelectDelete.php:224
+#: FamilyView.php:665 FamilyView.php:776 SelectDelete.php:225
 msgid "Updated By"
 msgstr "Cập nhật bởi"
 
@@ -1439,22 +1477,22 @@ msgstr "Thêm hình thức tự động dâng hiến"
 msgid "Update"
 msgstr "Cập nhật"
 
-#: AutoPaymentEditor.php:840 CanvassEditor.php:194 DepositSlipEditor.php:78
+#: AutoPaymentEditor.php:840 CanvassEditor.php:194 DepositSlipEditor.php:81
 #: EditEventAttendees.php:33 FamilyView.php:767 FindFundRaiser.php:235
 #: FundRaiserEditor.php:164 Include/Functions.php:97 PledgeEditor.php:518
-#: SelectDelete.php:218
+#: SelectDelete.php:219
 msgid "Date"
 msgstr "Ngày"
 
-#: FamilyView.php:772 PledgeEditor.php:722 SelectDelete.php:222
+#: FamilyView.php:772 PledgeEditor.php:722 SelectDelete.php:223
 msgid "Comment"
 msgstr "Bình luận"
 
-#: DepositSlipEditor.php:225 FindDepositSlip.php:101 GroupEditor.php:56
+#: DepositSlipEditor.php:228 FindDepositSlip.php:102 GroupEditor.php:56
 msgid "Close"
 msgstr "Đóng lại"
 
-#: DepositSlipEditor.php:219 FamilyView.php:899 FindDepositSlip.php:94
+#: DepositSlipEditor.php:222 FamilyView.php:899 FindDepositSlip.php:95
 #: PersonView.php:929 PledgeDelete.php:19
 #: v2/templates/people/family-view.php:517
 msgid "Confirm Delete"
@@ -1790,7 +1828,7 @@ msgid "Update Family Records"
 msgstr "Cập nhật bản ghi Gia đình"
 
 #: ManageEnvelopes.php:134 external/templates/verify/verify-family-info.php:17
-#: external/templates/verify/verify-family-info.php:134
+#: external/templates/verify/verify-family-info.php:127
 msgid "Confirm"
 msgstr "Xác nhận"
 
@@ -1839,7 +1877,7 @@ msgstr "Cập nhật tất cả tọa độ của gia đình"
 msgid "Volunteer Opportunities"
 msgstr "Mục vụ đã tham gia"
 
-#: Menu.php:172 PeopleDashboard.php:137 api/routes/search.php:137
+#: Menu.php:172 PeopleDashboard.php:137 api/routes/search.php:156
 #: members/online-pending-verify.php:24 members/self-register.php:24
 #: members/self-verify-updates.php:24
 #: sundayschool/SundaySchoolDashboard.php:104
@@ -1916,10 +1954,10 @@ msgid "Latest Families"
 msgstr "Gia đình mới thêm"
 
 #: CartToFamily.php:206
-#: ChurchCRM/Emails/notifications/NewPersonOrFamilyEmail.php:58
+#: ChurchCRM/Emails/notifications/NewPersonOrFamilyEmail.php:60
 #: FamilyEditor.php:654 LettersAndLabels.php:71 Menu.php:308 Menu.php:337
-#: Reports/ConfirmReport.php:115 Reports/ConfirmReportEmail.php:120
-#: SelectDelete.php:152 SelectDelete.php:278
+#: Reports/ConfirmReport.php:115 Reports/ConfirmReportEmail.php:116
+#: SelectDelete.php:153 SelectDelete.php:279
 #: external/templates/registration/family-register.php:31
 msgid "Family Name"
 msgstr "Tên gia đình"
@@ -1929,7 +1967,7 @@ msgid "Updated Families"
 msgstr "Gia đình vừa cập nhật"
 
 #: ChurchCRM/model/ChurchCRM/Family.php:183
-#: ChurchCRM/model/ChurchCRM/Person.php:156 Menu.php:339 PersonEditor.php:406
+#: ChurchCRM/model/ChurchCRM/Person.php:176 Menu.php:339 PersonEditor.php:406
 msgid "Updated"
 msgstr "Đã cập nhật"
 
@@ -2172,7 +2210,7 @@ msgstr "Xác nhận xóa thuộc tính"
 msgid "Please confirm deletion of this property"
 msgstr "Vui lòng xác nhận xóa bỏ thuộc tính"
 
-#: PropertyDelete.php:65 PropertyTypeDelete.php:70 SelectDelete.php:293
+#: PropertyDelete.php:65 PropertyTypeDelete.php:70 SelectDelete.php:294
 #: VolunteerOpportunityEditor.php:111
 msgid "No, cancel this deletion"
 msgstr "Không, hủy bỏ lệnh xóa này"
@@ -2239,7 +2277,7 @@ msgstr "Lớp học"
 msgid "Properties"
 msgstr "Thuộc tính"
 
-#: QuerySQL.php:183
+#: QuerySQL.php:182
 msgid "Intersect Results With Cart"
 msgstr "Kết quả giao với giỏ"
 
@@ -2255,7 +2293,7 @@ msgstr "Gửi đi"
 msgid "Restore Database"
 msgstr "Khôi phục dữ liệu"
 
-#: SelectDelete.php:67
+#: SelectDelete.php:68
 msgid "All donations from this family have been moved to another family."
 msgstr "Tất cả tiền dâng hiến của gia đình này đã được chuyển sang gia đình khác"
 
@@ -2263,19 +2301,19 @@ msgstr "Tất cả tiền dâng hiến của gia đình này đã được chuy�
 msgid "Please confirm deletion of"
 msgstr "Vui lòng xác nhận xóa"
 
-#: SelectDelete.php:274
+#: SelectDelete.php:275
 msgid "Please confirm deletion of this family record:"
 msgstr "Vui lòng xác nhận quá trình xóa bản ghi của gia đình này:"
 
-#: SelectDelete.php:275
+#: SelectDelete.php:276
 msgid "Note: This will also delete all Notes associated with this Family record."
 msgstr "Ghi chú: Điều này sẽ xóa tất cả các Ghi chú liên kết với bản ghi của gia đình này"
 
-#: SelectDelete.php:291
+#: SelectDelete.php:292
 msgid "Delete Family Record ONLY"
 msgstr "CHỈ xóa bỏ bản ghi gia đình"
 
-#: SelectDelete.php:292
+#: SelectDelete.php:293
 msgid "Delete Family Record AND Family Members"
 msgstr "Xóa bỏ bản ghi gia đình VÀ thành viên gia đình"
 
@@ -2393,7 +2431,7 @@ msgstr "Thiết lập quyền đúng sẽ cho phép thành viên mới có khả
 msgid "Permission"
 msgstr "Quyền hạn"
 
-#: ChurchCRM/dto/SystemConfig.php:248 SystemSettings.php:29
+#: ChurchCRM/dto/SystemConfig.php:252 SystemSettings.php:29
 msgid "System Settings"
 msgstr "Hệ thống"
 
@@ -2530,15 +2568,15 @@ msgstr "Bạn có ý kiến đóng góp nào cho chúng tôi không ?"
 msgid "How did you learn of the church?"
 msgstr "Làm thế nào mà bạn học hỏi được tại Hội Thánh ?"
 
-#: Include/Footer.php:24 Register.php:42
+#: Include/Footer.php:25 Register.php:42
 msgid "Version"
 msgstr "Phiên bản"
 
-#: Include/Footer.php:26 Include/FooterNotLoggedIn.php:6
+#: Include/Footer.php:27 Include/FooterNotLoggedIn.php:7
 msgid "Copyright"
 msgstr "Bản quyền"
 
-#: Include/Footer.php:26 Include/FooterNotLoggedIn.php:6
+#: Include/Footer.php:27 Include/FooterNotLoggedIn.php:7
 msgid "All rights reserved"
 msgstr "Giữ tất cả các quyền"
 
@@ -2571,11 +2609,11 @@ msgstr "Bảng điều khiển"
 msgid "Change Password"
 msgstr "Thay đổi mật khẩu"
 
-#: Include/Footer.php:34
+#: Include/Footer.php:35
 msgid "You have"
 msgstr "Bạn có"
 
-#: Include/Footer.php:35
+#: Include/Footer.php:36
 msgid "task(s)"
 msgstr "yêu cầu"
 
@@ -2589,19 +2627,20 @@ msgid "Liaison"
 msgstr "Liên lạc"
 
 #: FamilyEditor.php:781 FamilyView.php:234 Reports/ConfirmReport.php:140
-#: Reports/ConfirmReportEmail.php:145
+#: Reports/ConfirmReportEmail.php:141
 #: external/templates/verify/verify-family-info.php:39
 #: v2/templates/people/family-view.php:133
 msgid "Send Newsletter"
 msgstr "Gửi bản tin"
 
 #: Reports/ConfirmReport.php:180 Reports/ConfirmReport.php:199
-#: Reports/ConfirmReportEmail.php:188 Reports/ConfirmReportEmail.php:206
+#: Reports/ConfirmReportEmail.php:184 Reports/ConfirmReportEmail.php:202
 msgid "Member Name"
 msgstr "Tên thành viên"
 
-#: FamilyList.php:47 GroupReports.php:126 Reports/CanvassReports.php:242
-#: Reports/ConfirmReportEmail.php:193 Reports/ConfirmReportEmail.php:211
+#: GroupReports.php:126 Reports/CanvassReports.php:242
+#: Reports/ConfirmReportEmail.php:189 Reports/ConfirmReportEmail.php:207
+#: v2/templates/people/family-list.php:34
 msgid "Cell Phone"
 msgstr "Di động"
 
@@ -2769,7 +2808,7 @@ msgstr "Danh sách Thành viên"
 msgid "Add New Family"
 msgstr "Thêm gia đình mới"
 
-#: ChurchCRM/Config/Menu/Menu.php:129 ChurchCRM/dto/SystemConfig.php:254
+#: ChurchCRM/Config/Menu/Menu.php:129 ChurchCRM/dto/SystemConfig.php:258
 msgid "Events"
 msgstr "Sự kiện"
 
@@ -2793,7 +2832,7 @@ msgstr "Xóa dữ liệu"
 msgid "Are you sure you want to DELETE this person from Event ID: "
 msgstr "Bạn có chắc chắn rằng muốn XÓA thành viên này từ mã sự kiện: "
 
-#: FindDepositSlip.php:95
+#: FindDepositSlip.php:96
 msgid "Deposit(s)"
 msgstr "Tiền ký gửi"
 
@@ -2841,27 +2880,27 @@ msgstr "Đăng nhập để phục hồi cơ sở dữ liệu"
 msgid "Restore Error."
 msgstr "Khôi phục bị lỗi"
 
-#: ChurchCRM/dto/SystemConfig.php:240
+#: ChurchCRM/dto/SystemConfig.php:244
 msgid "Church Information"
 msgstr "Hội Thánh"
 
-#: ChurchCRM/dto/SystemConfig.php:241
+#: ChurchCRM/dto/SystemConfig.php:245
 msgid "User setup"
 msgstr "Thành viên"
 
-#: ChurchCRM/dto/SystemConfig.php:242
+#: ChurchCRM/dto/SystemConfig.php:246
 msgid "Email Setup"
 msgstr "Email"
 
-#: ChurchCRM/dto/SystemConfig.php:245
+#: ChurchCRM/dto/SystemConfig.php:249
 msgid "Map Settings"
 msgstr "Bản đồ"
 
-#: ChurchCRM/dto/SystemConfig.php:246
+#: ChurchCRM/dto/SystemConfig.php:250
 msgid "Report Settings"
 msgstr "Báo cáo"
 
-#: ChurchCRM/dto/SystemConfig.php:251
+#: ChurchCRM/dto/SystemConfig.php:255
 msgid "Localization"
 msgstr "Ngôn ngữ"
 
@@ -2882,6 +2921,10 @@ msgstr "Không"
 #: SystemSettings.php:200 UserEditor.php:516 UserEditor.php:544
 msgid "True"
 msgstr "Có"
+
+#: SystemSettings.php:207
+msgid "Edit Settings"
+msgstr "Chỉnh sửa cài đặt"
 
 #: UpgradeCRM.php:35
 msgid "Step 1: Backup Database"
@@ -3021,7 +3064,7 @@ msgstr "Di động"
 msgid "Restore Running, Please wait."
 msgstr "Đang khôi phục, vui lòng chờ đợi."
 
-#: SelectDelete.php:281
+#: SelectDelete.php:282
 msgid "Family Members:"
 msgstr "Thành viên trong gia đình:"
 
@@ -3061,11 +3104,11 @@ msgstr "Ngày nhập vào:"
 msgid "CSV Import"
 msgstr "Nhập vào CSV"
 
-#: v2/templates/email/dashboard.php:35
+#: v2/templates/email/dashboard.php:36
 msgid "Members:"
 msgstr "Thành viên:"
 
-#: ChurchCRM/Config/Menu/Menu.php:193 v2/templates/email/dashboard.php:74
+#: ChurchCRM/Config/Menu/Menu.php:193 v2/templates/email/dashboard.php:75
 msgid "Edit General Settings"
 msgstr "Cài đặt tổng quan"
 
@@ -3098,7 +3141,7 @@ msgid "Family Map"
 msgstr "Bản đồ gia đình"
 
 #: ChurchCRM/Config/Menu/Menu.php:84 Menu.php:229 PeopleDashboard.php:200
-#: api/routes/search.php:172
+#: api/routes/search.php:190
 msgid "Groups"
 msgstr "Ban/Mục vụ"
 
@@ -3113,6 +3156,18 @@ msgstr "Đơn vị dùng để đo khoảng cách, dặm hoặc km."
 #: ChurchCRM/Config/Menu/Menu.php:85
 msgid "List Groups"
 msgstr "Danh sách Ban/Mục vụ"
+
+#: ChurchCRM/Config/Menu/Menu.php:131
+msgid "List Church Events"
+msgstr "Danh sách sự kiện"
+
+#: ChurchCRM/Config/Menu/Menu.php:130
+msgid "Add Church Event"
+msgstr "Thêm sự kiện mới"
+
+#: ChurchCRM/Config/Menu/Menu.php:132
+msgid "List Event Types"
+msgstr "Loại sự kiện"
 
 #: ChurchCRM/Config/Menu/Menu.php:141
 msgid "View All Deposits"
@@ -3269,7 +3324,7 @@ msgid "Family Data Verified"
 msgstr "Dữ liệu gia đình đã được xác nhận"
 
 #: ChurchCRM/model/ChurchCRM/Family.php:254
-#: ChurchCRM/model/ChurchCRM/Person.php:259
+#: ChurchCRM/model/ChurchCRM/Person.php:279
 msgid "Profile Image Deleted"
 msgstr "Hình ảnh đại diện đã được xóa"
 
@@ -3305,7 +3360,7 @@ msgstr "Thông tin máy chủ SMTP đang trống"
 msgid "Family Registration"
 msgstr "Đăng ký Gia đình"
 
-#: FamilyList.php:48
+#: v2/templates/people/family-list.php:35
 msgid "email"
 msgstr "Email"
 
@@ -3327,16 +3382,16 @@ msgstr "Điều kiện yêu cầu bắt buộc chưa được đáp ứng"
 msgid "All Application Prerequisites Satisfied"
 msgstr "Tất cả điều kiện yêu cầu bắt buộc đã được đáp ứng"
 
-#: api/routes/people/people-families.php:102
+#: api/routes/people/people-families.php:119
 msgid "Deactivated the Family"
 msgstr "Đã hủy kích hoạt gia đình này"
 
-#: ChurchCRM/dto/SystemConfig.php:247
+#: ChurchCRM/dto/SystemConfig.php:251
 msgid "Financial Settings"
 msgstr "Tài chính"
 
 #: ChurchCRM/model/ChurchCRM/Family.php:267
-#: ChurchCRM/model/ChurchCRM/Person.php:283
+#: ChurchCRM/model/ChurchCRM/Person.php:303
 msgid "Profile Image uploaded"
 msgstr "Đã cập nhật hình ảnh đại diện"
 
@@ -3413,7 +3468,7 @@ msgstr "Giỏ của bạn đang trống"
 msgid "View on Map"
 msgstr "Xem trên bản đồ"
 
-#: UserList.php:53
+#: UserList.php:53 v2/templates/people/family-list.php:30
 msgid "Actions"
 msgstr "Hành động"
 
@@ -3473,11 +3528,11 @@ msgstr "Gia đình không có thông tin tọa độ"
 msgid "ERROR"
 msgstr "XUẤT HIỆN LỖI"
 
-#: ChurchCRM/dto/SystemConfig.php:250
+#: ChurchCRM/dto/SystemConfig.php:254
 msgid "Backup"
 msgstr "Sao lưu"
 
-#: ChurchCRM/dto/SystemConfig.php:252
+#: ChurchCRM/dto/SystemConfig.php:256
 msgid "Integration"
 msgstr "Tích hợp"
 
@@ -3505,7 +3560,7 @@ msgstr "Người tham dự đã đăng ký"
 msgid "Disable "
 msgstr "Vô hiệu hóa "
 
-#: CartView.php:172
+#: v2/templates/cart/cartfunctions.php:47
 msgid "Text Cart"
 msgstr "Giỏ nội dung"
 
@@ -3557,11 +3612,11 @@ msgstr "Các gia đình với đường dẫn tự xác minh hợp lệ"
 msgid "Self Verify"
 msgstr "Tự xác nhận"
 
-#: api/routes/search.php:58 members/self-register.php:39
+#: api/routes/search.php:59 members/self-register.php:39
 msgid "Persons"
 msgstr "Thành viên"
 
-#: ChurchCRM/dto/SystemConfig.php:249
+#: ChurchCRM/dto/SystemConfig.php:253
 msgid "Quick Search"
 msgstr "Tìm kiếm"
 
@@ -3605,11 +3660,11 @@ msgstr "Thoát khỏi"
 msgid "Change Settings"
 msgstr "Thay đổi cài đặt"
 
-#: ChurchCRM/dto/SystemConfig.php:243
+#: ChurchCRM/dto/SystemConfig.php:247
 msgid "People Setup"
 msgstr "Nhân khẩu"
 
-#: ChurchCRM/dto/SystemConfig.php:253
+#: ChurchCRM/dto/SystemConfig.php:257
 msgid "Church Services"
 msgstr "Lễ nhóm"
 
@@ -3685,7 +3740,7 @@ msgstr "Gia đình này đã bị hủy kích hoạt"
 msgid "Metadata"
 msgstr "Thông tin cơ bản"
 
-#: api/routes/system/system-database.php:89
+#: api/routes/system/system-database.php:87
 msgid "The database has been cleared."
 msgstr "Dữ liệu đã được xóa sạch"
 
@@ -3697,7 +3752,7 @@ msgstr "Kỷ niệm ngày cưới"
 msgid "View User"
 msgstr "Xem thành viên"
 
-#: api/routes/system/system-database.php:135
+#: api/routes/system/system-database.php:133
 msgid "The people and families has been cleared from the database."
 msgstr "Các thành viên và gia đình đã được xóa sạch khỏi bảng dữ liệu"
 
@@ -3741,7 +3796,7 @@ msgstr "Tên lịch"
 msgid "New Calendar"
 msgstr "Tạo lịch mới"
 
-#: ChurchCRM/dto/SystemConfig.php:244
+#: ChurchCRM/dto/SystemConfig.php:248
 msgid "Enabled Features"
 msgstr "Tính năng"
 
@@ -3750,7 +3805,7 @@ msgid "Email Functions"
 msgstr "Tính năng Email"
 
 #: ChurchCRM/Config/Menu/Menu.php:201 v2/routes/admin/admin.php:19
-#: v2/templates/email/dashboard.php:18
+#: v2/templates/email/dashboard.php:19
 msgid "Debug"
 msgstr "Tình trạng hệ thống"
 

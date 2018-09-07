@@ -54,16 +54,31 @@ class NewPersonOrFamilyEmail extends BaseEmail
         ];
         if (get_class($this->relatedObject) == "ChurchCRM\Family")
         {
-          $myTokens['body'] = gettext("New Family Added")."\r\n".
-                  gettext("Family Name").": ".$this->relatedObject->getName();
+          /* @var $family ChurchCRM\Family */
+          $family = $this->relatedObject;
+          $myTokens['body'] = gettext("New Family Added")."\r\n". 
+            gettext("Family Name").": ". $family->getName();
+          $myTokens['FamilyEmail'] =  $family->getEmail();
+          $myTokens['FamilyPhone'] = $family->getCellPhone();
+          $myTokens['FamilyAddress'] =  $family->getAddress();
           $myTokens["familyLink"] = SystemURLs::getURL()."/FamilyView.php?FamilyID=".$this->relatedObject->getId();
         }
         elseif (get_class($this->relatedObject) == "ChurchCRM\Person")
         {
-          $myTokens['body'] = gettext("New Person Added")."\r\n". gettext("Name").": ". $this->relatedObject->getFullName();
-          $myTokens['personLink'] = SystemURLs::getURL()."/PersonView.php?PersonID=".$this->relatedObject->getId();
+          /* @var $person ChurchCRM\Person */
+          $person = $this->relatedObject;
+          $myTokens['body'] = gettext("New Person Added")."\r\n".
+            gettext("Person Name").": ". $person->getFullName();
+          $myTokens['PersonEmail'] = $person->getEmail();
+          $myTokens['PersonPhone'] = $person->getCellPhone();
+          $myTokens['PersonAddress'] = $person->getAddress();
+          $myTokens['PersonAge'] = $person->getAge();
+          $myTokens['personLink'] = SystemURLs::getURL()."/PersonView.php?PersonID=".$person->getId();
         }
-        
+        $myTokens['IncludeDataInNewPersonNotifications'] = SystemConfig::getBooleanValue("IncludeDataInNewPersonNotifications");
+        $myTokens['sGreeterCustomMsg1'] = SystemConfig::getValue("sGreeterCustomMsg1");
+        $myTokens['sGreeterCustomMsg2'] = SystemConfig::getValue("sGreeterCustomMsg2");
+          
         return array_merge($this->getCommonTokens(), $myTokens);
     }
 }

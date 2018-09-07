@@ -17,12 +17,12 @@ msgid "Confirm Delete Automatic payment"
 msgstr "Konfirmasi Hapus Pembayaran Otomatis"
 
 #: AutoPaymentDelete.php:63 Checkin.php:286 Checkin.php:368
-#: DepositSlipEditor.php:228 DonationFundEditor.php:153
+#: DepositSlipEditor.php:231 DonationFundEditor.php:153
 #: DonationFundEditor.php:183 EditEventAttendees.php:76
 #: ElectronicPaymentList.php:219 ElectronicPaymentList.php:284
 #: EventNames.php:302 FamilyCustomFieldsEditor.php:324
 #: FamilyCustomFieldsEditor.php:382 FamilyView.php:663 FamilyView.php:715
-#: FamilyView.php:774 FamilyView.php:911 FindDepositSlip.php:104
+#: FamilyView.php:774 FamilyView.php:911 FindDepositSlip.php:105
 #: FundRaiserEditor.php:200 ListEvents.php:241 PaddleNumList.php:55
 #: PersonCustomFieldsEditor.php:315 PersonCustomFieldsEditor.php:384
 #: PersonView.php:940 PledgeDelete.php:53 PropertyList.php:65
@@ -43,7 +43,7 @@ msgstr "Hapus"
 #: Register.php:56 ReminderReport.php:52 SettingsIndividual.php:114
 #: SettingsIndividual.php:160 SettingsUser.php:100 SettingsUser.php:160
 #: TaxReport.php:55 UserEditor.php:459 UserEditor.php:562
-#: WhyCameEditor.php:105 external/templates/verify/verify-family-info.php:151
+#: WhyCameEditor.php:105 external/templates/verify/verify-family-info.php:144
 #: sundayschool/SundaySchoolDashboard.php:258
 #: sundayschool/SundaySchoolReports.php:286
 #: v2/templates/people/family-view.php:529
@@ -54,7 +54,7 @@ msgstr "Batal"
 msgid "Automatic payment configuration for the "
 msgstr "Konfigurasi pembayaran otomatis untuk"
 
-#: AutoPaymentEditor.php:786 CanvassEditor.php:238 DepositSlipEditor.php:94
+#: AutoPaymentEditor.php:786 CanvassEditor.php:238 DepositSlipEditor.php:97
 #: DonatedItemEditor.php:293 FamilyEditor.php:647 FamilyEditor.php:731
 #: FamilyEditor.php:795 FamilyEditor.php:869 FamilyEditor.php:891
 #: FamilyEditor.php:922 FamilyEditor.php:1115 FundRaiserEditor.php:142
@@ -75,7 +75,7 @@ msgstr "Simpan"
 #: Include/Functions.php:909 MapUsingGoogle.php:96 MapUsingGoogle.php:120
 #: PaddleNumEditor.php:176 PersonEditor.php:782 PersonEditor.php:798
 #: PersonEditor.php:1137 PrintView.php:264 PrintView.php:274
-#: SelectDelete.php:156 SelectList.php:35 SelectList.php:45 SelectList.php:61
+#: SelectDelete.php:157 SelectList.php:35 SelectList.php:45 SelectList.php:61
 #: SelectList.php:1098 SelectList.php:1169 SystemSettings.php:214
 #: eGive.php:341
 msgid "Unassigned"
@@ -135,7 +135,7 @@ msgid "Phone"
 msgstr "Telepon"
 
 #: AutoPaymentEditor.php:942 CSVExport.php:142 CSVImport.php:226
-#: CartToFamily.php:311 CartView.php:273 ChurchCRM/Config/Menu/Menu.php:40
+#: CartToFamily.php:311 ChurchCRM/Config/Menu/Menu.php:40
 #: ChurchCRM/Reports/PDF_Directory.php:318
 #: ChurchCRM/Reports/PDF_Directory.php:394
 #: ChurchCRM/Reports/PDF_Directory.php:451 EditEventAttendees.php:42
@@ -144,13 +144,14 @@ msgstr "Telepon"
 #: PersonEditor.php:1035 PersonEditor.php:1037 PersonView.php:307
 #: PersonView.php:511 PrintView.php:294 Reports/CanvassReports.php:243
 #: Reports/ConfirmReport.php:183 Reports/ConfirmReport.php:202
-#: Reports/ConfirmReportEmail.php:191 Reports/ConfirmReportEmail.php:209
+#: Reports/ConfirmReportEmail.php:187 Reports/ConfirmReportEmail.php:205
 #: Reports/DirectoryReport.php:296 Reports/GroupReport.php:133
 #: external/templates/registration/family-register-members.php:83
 #: external/templates/verify/enter-info.php:33
 #: external/templates/verify/verify-family-info.php:76
 #: sundayschool/SundaySchoolClassView.php:89
 #: sundayschool/SundaySchoolClassView.php:205
+#: v2/templates/cart/cartlisting.php:19
 #: v2/templates/people/family-view.php:174
 #: v2/templates/people/family-view.php:314 queryparameteroptions_qpo.php:13
 msgid "Email"
@@ -249,7 +250,7 @@ msgstr "Hadiah"
 msgid "Enter Winners"
 msgstr "Masukkan para Pemenang"
 
-#: CSVExport.php:54 CartView.php:106
+#: CSVExport.php:54 v2/templates/cart/cartfunctions.php:32
 msgid "CSV Export"
 msgstr "Ekspor CSV"
 
@@ -312,8 +313,9 @@ msgstr "Tanggal Lahir / Ulang Tahun"
 msgid "Age / Years Married"
 msgstr "Umur / Tahun Menikah"
 
-#: CSVExport.php:172 CSVExport.php:302 CartView.php:276 OptionManager.php:62
-#: PersonEditor.php:780 PrintView.php:269 queryparameters_qrp.php:5
+#: CSVExport.php:172 CSVExport.php:302 OptionManager.php:62
+#: PersonEditor.php:780 PrintView.php:269 v2/templates/cart/cartlisting.php:22
+#: queryparameters_qrp.php:5
 msgid "Family Role"
 msgstr "Peran Keluarga"
 
@@ -393,7 +395,7 @@ msgstr "Ke:"
 msgid "Birthday Date"
 msgstr "Tanggal Lahir"
 
-#: Reports/ConfirmReport.php:150 Reports/ConfirmReportEmail.php:155
+#: Reports/ConfirmReport.php:150 Reports/ConfirmReportEmail.php:151
 msgid "Anniversary Date"
 msgstr "Tanggal Jadian"
 
@@ -456,16 +458,16 @@ msgstr "Amplop Donasi"
 
 #: CSVExport.php:127 CSVImport.php:223 CartToFamily.php:281
 #: EditEventAttendees.php:43 EventAttendance.php:176 FamilyEditor.php:737
-#: FamilyList.php:46 FamilyView.php:254 GroupReports.php:124
-#: PersonEditor.php:961 PersonEditor.php:963 PersonView.php:302
-#: PrintView.php:199 Reports/ConfirmReport.php:135
-#: Reports/ConfirmReportEmail.php:140 SelectList.php:965 SelectList.php:966
-#: SelectList.php:1041
+#: FamilyView.php:254 GroupReports.php:124 PersonEditor.php:961
+#: PersonEditor.php:963 PersonView.php:302 PrintView.php:199
+#: Reports/ConfirmReport.php:135 Reports/ConfirmReportEmail.php:136
+#: SelectList.php:965 SelectList.php:966 SelectList.php:1041
 #: external/templates/registration/family-register-done.php:30
 #: external/templates/registration/family-register.php:68
 #: external/templates/verify/verify-family-info.php:27
 #: external/templates/verify/verify-family-info.php:70
 #: sundayschool/SundaySchoolClassView.php:207
+#: v2/templates/people/family-list.php:33
 #: v2/templates/people/family-view.php:153
 #: v2/templates/people/family-view.php:299 queryparameteroptions_qpo.php:8
 msgid "Home Phone"
@@ -475,7 +477,7 @@ msgstr "Telepon Rumah"
 #: FamilyEditor.php:749 FamilyView.php:260 GroupReports.php:125
 #: PersonEditor.php:984 PersonEditor.php:986 PersonView.php:316
 #: PrintView.php:204 Reports/ConfirmReport.php:239
-#: Reports/ConfirmReportEmail.php:238 SelectList.php:968 SelectList.php:969
+#: Reports/ConfirmReportEmail.php:234 SelectList.php:968 SelectList.php:969
 #: SelectList.php:1041 external/templates/verify/verify-family-info.php:72
 #: v2/templates/people/family-view.php:160
 #: v2/templates/people/family-view.php:304
@@ -537,10 +539,10 @@ msgstr "CATATAN: Tanda pemisah (tanda hubung, dll.) atau kurang dari itu tidak m
 msgid "Default country if none specified otherwise"
 msgstr "Set Negara secara tomatis jika tidak ditentukan"
 
-#: CSVExport.php:167 CSVExport.php:277 CSVImport.php:281 CartView.php:275
-#: FamilyEditor.php:948 FinancialReports.php:117 OptionManager.php:69
-#: PeopleDashboard.php:411 PersonEditor.php:1135 PrintView.php:309
-#: queryparameters_qrp.php:19
+#: CSVExport.php:167 CSVExport.php:277 CSVImport.php:281 FamilyEditor.php:948
+#: FinancialReports.php:117 OptionManager.php:69 PeopleDashboard.php:411
+#: PersonEditor.php:1135 PrintView.php:309
+#: v2/templates/cart/cartlisting.php:21 queryparameters_qrp.php:19
 msgid "Classification"
 msgstr "Penggolongan"
 
@@ -675,23 +677,23 @@ msgstr "Tidak berminat"
 msgid "Why Not Interested?"
 msgstr "Mengapa tidak berminat ?"
 
-#: CartToEvent.php:50 CartToEvent.php:83
+#: CartToEvent.php:52 CartToEvent.php:85
 msgid "Add Cart to Event"
 msgstr "Tambahkan cart di Acara"
 
-#: CartToEvent.php:57
+#: CartToEvent.php:59
 msgid "Select the event to which you would like to add your cart"
 msgstr "Pilih acara yang ingin ditambahkan cart"
 
-#: CartToEvent.php:84
+#: CartToEvent.php:86
 msgid "OR"
 msgstr "Atau"
 
-#: CartToEvent.php:85 Checkin.php:105 ListEvents.php:344
+#: CartToEvent.php:87 Checkin.php:105 ListEvents.php:344
 msgid "Add New Event"
 msgstr "Tambah Event Baru"
 
-#: CartToEvent.php:92 CartToFamily.php:325 CartToGroup.php:101
+#: CartToEvent.php:94 CartToFamily.php:325 CartToGroup.php:101
 msgid "Your cart is empty!"
 msgstr "Cart kosong !"
 
@@ -703,22 +705,22 @@ msgstr "Nama keluarga masih kosong"
 msgid "Add Cart to Family"
 msgstr "Tambahkan Cart di Keluarga"
 
-#: CartToFamily.php:155 CartView.php:271 Checkin.php:311
-#: ChurchCRM/Emails/notifications/NewPersonOrFamilyEmail.php:63
-#: DonationFundEditor.php:150 DonationFundEditor.php:213
-#: EditEventAttendees.php:32 EditEventAttendees.php:41 EventAttendance.php:174
-#: EventNames.php:263 FamilyCustomFieldsEditor.php:320
-#: FamilyCustomFieldsEditor.php:434 FamilyList.php:44 FamilyView.php:550
-#: GeoPage.php:357 GroupEditor.php:73 GroupPropsFormEditor.php:285
-#: GroupPropsFormEditor.php:397 GroupView.php:255 GroupView.php:288
-#: PersonCustomFieldsEditor.php:311 PersonCustomFieldsEditor.php:442
-#: PersonView.php:683 PersonView.php:788 PrintView.php:337 PrintView.php:463
-#: PropertyEditor.php:149 PropertyList.php:60 PropertyTypeEditor.php:96
-#: PropertyTypeList.php:41 Reports/CanvassReports.php:69
-#: Reports/CanvassReports.php:237 Reports/FRBidSheets.php:88
-#: SelectList.php:988 UserList.php:54 VolunteerOpportunityEditor.php:75
-#: VolunteerOpportunityEditor.php:354 VolunteerOpportunityEditor.php:421
+#: CartToFamily.php:155 Checkin.php:311 DonationFundEditor.php:150
+#: DonationFundEditor.php:213 EditEventAttendees.php:32
+#: EditEventAttendees.php:41 EventAttendance.php:174 EventNames.php:263
+#: FamilyCustomFieldsEditor.php:320 FamilyCustomFieldsEditor.php:434
+#: FamilyView.php:550 GeoPage.php:357 GroupEditor.php:73
+#: GroupPropsFormEditor.php:285 GroupPropsFormEditor.php:397 GroupView.php:255
+#: GroupView.php:288 PersonCustomFieldsEditor.php:311
+#: PersonCustomFieldsEditor.php:442 PersonView.php:683 PersonView.php:788
+#: PrintView.php:337 PrintView.php:463 PropertyEditor.php:149
+#: PropertyList.php:60 PropertyTypeEditor.php:96 PropertyTypeList.php:41
+#: Reports/CanvassReports.php:69 Reports/CanvassReports.php:237
+#: Reports/FRBidSheets.php:88 SelectList.php:988 UserList.php:54
+#: VolunteerOpportunityEditor.php:75 VolunteerOpportunityEditor.php:354
+#: VolunteerOpportunityEditor.php:421
 #: sundayschool/SundaySchoolClassView.php:202
+#: v2/templates/cart/cartlisting.php:17 v2/templates/people/family-list.php:31
 #: v2/templates/people/family-view.php:374 queryparameteroptions_qpo.php:4
 msgid "Name"
 msgstr "Nama"
@@ -783,86 +785,84 @@ msgstr "Belum memilih Group"
 msgid "Add to Group"
 msgstr "Tambahkan ke Group"
 
-#: CartView.php:21
+#: v2/routes/cart.php:21
 msgid "View Your Cart"
 msgstr "Tampilkan Cart"
 
-#: CartView.php:29
+#: v2/templates/cart/cartempty.php:10
 msgid "You have no items in your cart."
 msgstr "Cart anda masih kosong"
 
-#: CartView.php:38
+#: v2/templates/cart/cartempty.php:23
 msgid "Back to Menu"
 msgstr "Kembali ke Menu"
 
-#: CartView.php:72
-msgid "Go To Labels"
-msgstr "Menuju ke labels"
-
-#: CartView.php:88
+#: v2/templates/cart/cartfunctions.php:14
 msgid "Empty Cart"
 msgstr "Kosongkan Cart"
 
-#: CartView.php:91
+#: v2/templates/cart/cartfunctions.php:17
 msgid "Empty Cart to Group"
 msgstr "Kosongkan Cart di Group"
 
-#: CartView.php:97
+#: v2/templates/cart/cartfunctions.php:23
 msgid "Empty Cart to Family"
 msgstr "Kosongkan Cart di Keluarga"
 
-#: CartView.php:101
+#: v2/templates/cart/cartfunctions.php:27
 msgid "Empty Cart to Event"
 msgstr "Kosongkan Cart di Acara"
 
-#: CartView.php:110
+#: v2/templates/cart/cartfunctions.php:36
 msgid "Map Cart"
 msgstr "Peta-kan Cart"
 
-#: CartView.php:112
+#: v2/templates/cart/cartfunctions.php:38
 msgid "Name Tags"
 msgstr "Tag Nama"
 
-#: CartView.php:146
+#: v2/templates/cart/cartfunctions.php:43
 msgid "Email Cart"
 msgstr "Cart Email"
 
-#: CartView.php:147 GroupView.php:139
-#: sundayschool/SundaySchoolClassView.php:101
+#: GroupView.php:139 sundayschool/SundaySchoolClassView.php:101
+#: v2/templates/cart/cartfunctions.php:44
 msgid "Email (BCC)"
 msgstr "Email (BCC)"
 
-#: CartView.php:177
+#: v2/templates/cart/cartfunctions.php:53
 msgid "Create Directory From Cart"
 msgstr "Buat Direktori dari Cart"
 
-#: CartView.php:201 CartView.php:243
+#: v2/templates/cart/generateLabels.php:4
+#: v2/templates/cart/generateLabels.php:46
 msgid "Generate Labels"
 msgstr "Buat label"
 
-#: CartView.php:264
+#: v2/templates/cart/cartlisting.php:6
 msgid "Your cart contains"
 msgstr "Daftar Pesanan"
 
-#: CartView.php:264
+#: v2/templates/cart/cartlisting.php:6
 msgid "persons from"
 msgstr "orang dari"
 
-#: CartView.php:274 CartView.php:332 EditEventTypes.php:166 FamilyView.php:555
-#: FamilyView.php:597 GroupView.php:293 GroupView.php:334 PersonView.php:686
-#: PersonView.php:704 PersonView.php:791 PersonView.php:809
+#: EditEventTypes.php:166 FamilyView.php:555 FamilyView.php:597
+#: GroupView.php:293 GroupView.php:334 PersonView.php:686 PersonView.php:704
+#: PersonView.php:791 PersonView.php:809 v2/templates/cart/cartlisting.php:20
+#: v2/templates/cart/cartlisting.php:37
 msgid "Remove"
 msgstr "Hapus"
 
-#: CartView.php:295 CartView.php:315 DonationFundEditor.php:177
-#: FinancialReports.php:295 Include/Functions.php:686
-#: Include/Functions.php:770 ListEvents.php:296 Reports/ConfirmReport.php:227
+#: DonationFundEditor.php:177 FinancialReports.php:295
+#: Include/Functions.php:686 Include/Functions.php:770 ListEvents.php:296
+#: Reports/ConfirmReport.php:227
 msgid "Yes"
 msgstr "Ya"
 
-#: CartView.php:308 CartView.php:317 DonationFundEditor.php:180
-#: FinancialReports.php:296 Include/Functions.php:688
-#: Include/Functions.php:771 ListEvents.php:296 Reports/ConfirmReport.php:229
+#: DonationFundEditor.php:180 FinancialReports.php:296
+#: Include/Functions.php:688 Include/Functions.php:771 ListEvents.php:296
+#: Reports/ConfirmReport.php:229
 msgid "No"
 msgstr "Tidak"
 
@@ -878,11 +878,11 @@ msgstr "Kehadiran di Acara"
 msgid "Select the event to which you would like to check people in for"
 msgstr "Pilih Acara yang akan diisi daftar kehadirannya"
 
-#: CartToEvent.php:68 Checkin.php:84
+#: CartToEvent.php:70 Checkin.php:84
 msgid "Select Event"
 msgstr "Pilih Acara"
 
-#: external/templates/verify/verify-family-info.php:152
+#: external/templates/verify/verify-family-info.php:145
 msgid "Verify"
 msgstr "Periksa"
 
@@ -948,47 +948,47 @@ msgstr "Konversi Berikutnya"
 msgid "Convert All"
 msgstr "Konversi semuanya"
 
-#: DepositSlipEditor.php:50
+#: DepositSlipEditor.php:53
 msgid "Deposit Slip Number: "
 msgstr "Nomor Slip Setoran"
 
-#: DepositSlipEditor.php:72
+#: DepositSlipEditor.php:75
 msgid "Deposit Details: "
 msgstr "Rincian Setoran"
 
-#: DepositSlipEditor.php:89
+#: DepositSlipEditor.php:92
 msgid "Close deposit slip (remember to press Save)"
 msgstr "Tutup slip setoran (jangan lupa klik \"Save\")"
 
-#: DepositSlipEditor.php:97
+#: DepositSlipEditor.php:100
 msgid "Deposit Slip Report"
 msgstr "Laporan Slip Setoran"
 
-#: DepositSlipEditor.php:102
+#: DepositSlipEditor.php:105
 msgid "Important note: failed transactions will be deleted permanantly when the deposit slip is closed."
 msgstr "Catatan penting : transaksi yang gagal akan terhapus permanen jika slip setoran di tutup"
 
-#: DepositSlipEditor.php:111
+#: DepositSlipEditor.php:114
 msgid "Deposit Summary: "
 msgstr "Ringkasan Setoran : "
 
-#: DepositSlipEditor.php:144
+#: DepositSlipEditor.php:147
 msgid "Payments on this deposit slip:"
 msgstr "Pembayaran pada slip setoran ini :"
 
-#: DepositSlipEditor.php:149 eGive.php:267
+#: DepositSlipEditor.php:152 eGive.php:267
 msgid "Import eGive"
 msgstr "Impor eGive"
 
-#: DepositSlipEditor.php:151
+#: DepositSlipEditor.php:154
 msgid "Add Payment"
 msgstr "Tambah Pembayaran"
 
-#: DepositSlipEditor.php:155
+#: DepositSlipEditor.php:158
 msgid "Load Authorized Transactions"
 msgstr "Load transaksi yang sudah terotorisasi"
 
-#: DepositSlipEditor.php:156
+#: DepositSlipEditor.php:159
 msgid "Run Transactions"
 msgstr "Jalankan transaksi"
 
@@ -1018,14 +1018,15 @@ msgstr "Informasi yang akan ditambahkan"
 
 #: AutoPaymentEditor.php:902 AutoPaymentEditor.php:908 CSVExport.php:92
 #: CSVExport.php:97 CSVImport.php:217 CSVImport.php:218 CartToFamily.php:235
-#: CartToFamily.php:240 CartView.php:272 DirectoryReports.php:172
-#: DirectoryReports.php:246 FamilyEditor.php:664 FamilyEditor.php:668
-#: FamilyList.php:45 FamilyView.php:214 GeoPage.php:358 GroupReports.php:123
-#: Menu.php:309 Menu.php:338 PersonEditor.php:831 PersonEditor.php:847
-#: PersonView.php:272 Register.php:43 Reports/ConfirmReportEmail.php:125
-#: Reports/ConfirmReportEmail.php:130 api/routes/search.php:97
+#: CartToFamily.php:240 DirectoryReports.php:172 DirectoryReports.php:246
+#: FamilyEditor.php:664 FamilyEditor.php:668 FamilyView.php:214
+#: GeoPage.php:358 GroupReports.php:123 Menu.php:309 Menu.php:338
+#: PersonEditor.php:831 PersonEditor.php:847 PersonView.php:272
+#: Register.php:43 Reports/ConfirmReportEmail.php:121
+#: Reports/ConfirmReportEmail.php:126 api/routes/search.php:98
 #: external/templates/registration/family-register-done.php:29
 #: external/templates/registration/family-register.php:35
+#: v2/templates/cart/cartlisting.php:18 v2/templates/people/family-list.php:32
 #: v2/templates/people/family-view.php:211
 msgid "Address"
 msgstr "Alamat"
@@ -1033,8 +1034,8 @@ msgstr "Alamat"
 #: ChurchCRM/Service/CalendarService.php:16
 #: ChurchCRM/SystemCalendars/BirthdaysCalendar.php:63 DirectoryReports.php:174
 #: FamilyView.php:358 PersonView.php:510 Reports/ConfirmReport.php:184
-#: Reports/ConfirmReport.php:203 Reports/ConfirmReportEmail.php:192
-#: Reports/ConfirmReportEmail.php:210
+#: Reports/ConfirmReport.php:203 Reports/ConfirmReportEmail.php:188
+#: Reports/ConfirmReportEmail.php:206
 #: external/templates/verify/verify-family-info.php:80
 #: v2/templates/people/family-view.php:323
 msgid "Birthday"
@@ -1053,7 +1054,7 @@ msgid "Family Cell Phone"
 msgstr "Handphone"
 
 #: DirectoryReports.php:179 Reports/ConfirmReport.php:156
-#: Reports/ConfirmReportEmail.php:161
+#: Reports/ConfirmReportEmail.php:157
 #: external/templates/verify/verify-family-info.php:29
 msgid "Family Email"
 msgstr "E-mail"
@@ -1267,13 +1268,13 @@ msgstr "Keluarga"
 #: GroupPropsFormEditor.php:284 GroupPropsFormEditor.php:385 GroupView.php:254
 #: GroupView.php:287 OptionManager.php:77 PersonCustomFieldsEditor.php:310
 #: PersonCustomFieldsEditor.php:429 PersonView.php:682 PropertyEditor.php:129
-#: SelectDelete.php:215
+#: SelectDelete.php:216
 msgid "Type"
 msgstr "Tipe"
 
 #. Merriam-Webster menerjemahkan Fiscal Year sebagai "an accounting period of 12 months." Mungkin hal ini berhubungan dengan kebiasaan di Amerika Serikat. Apabila ada rekan yang mengetahui lebih baik dalam penerjemahan kata ini, saya akan sangat berterima kasih.
 #: AutoPaymentEditor.php:847 ElectronicPaymentList.php:197 FamilyView.php:766
-#: PledgeEditor.php:520 ReminderReport.php:42 SelectDelete.php:217
+#: PledgeEditor.php:520 ReminderReport.php:42 SelectDelete.php:218
 #: sundayschool/SundaySchoolReports.php:205 queryparameters_qrp.php:18
 msgid "Fiscal Year"
 msgstr "12 Bulan"
@@ -1283,7 +1284,7 @@ msgid "Next Date"
 msgstr "Tahun berikutnya"
 
 #: ElectronicPaymentList.php:199 FamilyView.php:659 FamilyView.php:768
-#: PledgeEditor.php:714 SelectDelete.php:219
+#: PledgeEditor.php:714 SelectDelete.php:220
 msgid "Amount"
 msgstr "Jumlah"
 
@@ -1292,7 +1293,7 @@ msgid "Interval"
 msgstr "Jangka waktu"
 
 #: AutoPaymentEditor.php:864 ElectronicPaymentList.php:201 FamilyView.php:661
-#: FamilyView.php:765 FinancialReports.php:302 SelectDelete.php:216
+#: FamilyView.php:765 FinancialReports.php:302 SelectDelete.php:217
 msgid "Fund"
 msgstr "Dana"
 
@@ -1720,21 +1721,22 @@ msgstr "November"
 msgid "December"
 msgstr "Desember"
 
-#: FamilyList.php:30 FamilyView.php:312 v2/templates/people/family-view.php:83
+#: FamilyView.php:312 v2/templates/people/family-list.php:14
+#: v2/templates/people/family-view.php:83
 msgid "Family List"
 msgstr "Daftar Keluarga"
 
-#: FamilyList.php:35
+#: v2/templates/people/family-list.php:21
 msgid "Add Family"
 msgstr "Tambah keluarga"
 
 #: ChurchCRM/model/ChurchCRM/Family.php:178
-#: ChurchCRM/model/ChurchCRM/Person.php:151 FamilyList.php:49 Menu.php:310
-#: PersonEditor.php:393
+#: ChurchCRM/model/ChurchCRM/Person.php:171 Menu.php:310 PersonEditor.php:393
+#: v2/templates/people/family-list.php:36
 msgid "Created"
 msgstr "Diciptakan"
 
-#: FamilyList.php:50
+#: v2/templates/people/family-list.php:37
 msgid "Edited"
 msgstr "Disunting"
 
@@ -1841,11 +1843,11 @@ msgstr "tanggal pembayaran berikutnya"
 msgid "Interval (months)"
 msgstr "jangka waktu (bulan)"
 
-#: FamilyView.php:664 FamilyView.php:775 SelectDelete.php:223
+#: FamilyView.php:664 FamilyView.php:775 SelectDelete.php:224
 msgid "Date Updated"
 msgstr "Tanggal diperbaharui"
 
-#: FamilyView.php:665 FamilyView.php:776 SelectDelete.php:224
+#: FamilyView.php:665 FamilyView.php:776 SelectDelete.php:225
 msgid "Updated By"
 msgstr "Diperbaharui oleh"
 
@@ -1873,10 +1875,10 @@ msgstr "Perbaharui"
 msgid "Pledge or Payment"
 msgstr "Janji atau pembayaran"
 
-#: AutoPaymentEditor.php:840 CanvassEditor.php:194 DepositSlipEditor.php:78
+#: AutoPaymentEditor.php:840 CanvassEditor.php:194 DepositSlipEditor.php:81
 #: EditEventAttendees.php:33 FamilyView.php:767 FindFundRaiser.php:235
 #: FundRaiserEditor.php:164 Include/Functions.php:97 PledgeEditor.php:518
-#: SelectDelete.php:218
+#: SelectDelete.php:219
 msgid "Date"
 msgstr "Tanggal"
 
@@ -1884,15 +1886,15 @@ msgstr "Tanggal"
 msgid "NonDeductible"
 msgstr "Tidak dapat dideduksi"
 
-#: FamilyView.php:770 SelectDelete.php:220
+#: FamilyView.php:770 SelectDelete.php:221
 msgid "Schedule"
 msgstr "Jadwal"
 
-#: FamilyView.php:771 SelectDelete.php:221
+#: FamilyView.php:771 SelectDelete.php:222
 msgid "Method"
 msgstr "Cara"
 
-#: FamilyView.php:772 PledgeEditor.php:722 SelectDelete.php:222
+#: FamilyView.php:772 PledgeEditor.php:722 SelectDelete.php:223
 msgid "Comment"
 msgstr "Komentar"
 
@@ -1904,11 +1906,11 @@ msgstr "Tambahkan janji baru"
 msgid "Add a new payment"
 msgstr "Tambahkan pembayaran baru"
 
-#: DepositSlipEditor.php:225 FindDepositSlip.php:101 GroupEditor.php:56
+#: DepositSlipEditor.php:228 FindDepositSlip.php:102 GroupEditor.php:56
 msgid "Close"
 msgstr "Tutup"
 
-#: DepositSlipEditor.php:219 FamilyView.php:899 FindDepositSlip.php:94
+#: DepositSlipEditor.php:222 FamilyView.php:899 FindDepositSlip.php:95
 #: PersonView.php:929 PledgeDelete.php:19
 #: v2/templates/people/family-view.php:517
 msgid "Confirm Delete"
@@ -2193,7 +2195,7 @@ msgstr "Tambahkan Item yang Disumbangkan"
 msgid "Neighbor Families"
 msgstr "Keluarga Tetangga"
 
-#: Menu.php:172 PeopleDashboard.php:137 api/routes/search.php:137
+#: Menu.php:172 PeopleDashboard.php:137 api/routes/search.php:156
 #: members/online-pending-verify.php:24 members/self-register.php:24
 #: members/self-verify-updates.php:24
 #: sundayschool/SundaySchoolDashboard.php:104
@@ -2218,12 +2220,12 @@ msgid "Part"
 msgstr "Bagian"
 
 #: ChurchCRM/Emails/notifications/NewPersonOrFamilyEmail.php:41
-#: ChurchCRM/Emails/notifications/NewPersonOrFamilyEmail.php:63
+#: ChurchCRM/Emails/notifications/NewPersonOrFamilyEmail.php:70
 msgid "New Person Added"
 msgstr "Orang Baru Ditambahkan"
 
 #: ChurchCRM/Emails/notifications/NewPersonOrFamilyEmail.php:45
-#: ChurchCRM/Emails/notifications/NewPersonOrFamilyEmail.php:57
+#: ChurchCRM/Emails/notifications/NewPersonOrFamilyEmail.php:59
 msgid "New Family Added"
 msgstr "Keluarga Baru Ditambahkan"
 
@@ -2262,4 +2264,72 @@ msgstr "Bantuan & Manual"
 #: Include/Header.php:117
 msgid "Lock"
 msgstr "Kunci"
+
+#: api/routes/people/people-person.php:43
+msgid "success"
+msgstr "Sukses"
+
+#: v2/templates/admin/menus.php:14
+msgid "Add Menu"
+msgstr "Tambah Daftar"
+
+#: v2/templates/admin/menus.php:19
+msgid "Menu Name"
+msgstr "Nama Daftar"
+
+#: v2/templates/admin/menus.php:22
+msgid "Max 20 char"
+msgstr "Maks. 20 karakter"
+
+#: v2/templates/admin/menus.php:25
+msgid "Link Address"
+msgstr "Alamat tautan"
+
+#: v2/templates/admin/menus.php:28
+msgid "Start with http:// or https://"
+msgstr "Dimulai dengan http:// atau https://"
+
+#: v2/templates/admin/menus.php:42
+msgid "Menus"
+msgstr "Daftar"
+
+#: ChurchCRM/Slim/Middleware/Request/Setting/BaseAuthSettingMiddleware.php:15
+msgid "is disabled"
+msgstr "dinonaktifkan"
+
+#: v2/templates/admin/debug.php:17
+msgid "System Information"
+msgstr "Sistem informasi"
+
+#: v2/templates/admin/debug.php:22
+msgid "Software Version"
+msgstr "Versi perangkat lunak"
+
+#: v2/templates/admin/debug.php:30
+msgid "Valid Mail Server Settings"
+msgstr "Pengaturan Server Email yang Valid"
+
+#: v2/templates/admin/debug.php:40
+msgid "Database"
+msgstr "Basis data"
+
+#: v2/templates/admin/debug.php:45 v2/templates/admin/debug.php:49
+msgid "Database Version"
+msgstr "Versi basis data"
+
+#: v2/templates/admin/debug.php:90
+msgid "Application Prerequisites"
+msgstr "Prasyarat Aplikasi"
+
+#: v2/templates/admin/debug.php:107
+msgid "WebServer Modules"
+msgstr "Modul WebServer"
+
+#: ChurchCRM/data/Countries.php:308
+msgid "Invalid country name supplied"
+msgstr "Nama negara yang tidak valid diberikan"
+
+#: ChurchCRM/SystemCalendars/HolidayCalendar.php:45
+msgid "Holidays"
+msgstr "Liburan"
 

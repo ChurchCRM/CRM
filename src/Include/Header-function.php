@@ -18,6 +18,7 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\MenuConfigQuery;
 use ChurchCRM\SessionUser;
+use ChurchCRM\Utils\PHPToMomentJSConverter;
 
 function Header_modals()
 {
@@ -88,6 +89,9 @@ function Header_body_scripts()
             maxUploadSize: "<?= $systemService->getMaxUploadFileSize(true) ?>",
             maxUploadSizeBytes: "<?= $systemService->getMaxUploadFileSize(false) ?>",
             datePickerformat:"<?= SystemConfig::getValue('sDatePickerPlaceHolder') ?>",
+            systemConfigs: {
+              sDateTimeFormat: "<?= PHPToMomentJSConverter::ConvertFormatString(SystemConfig::getValue('sDateTimeFormat'))?>",
+            },
             iDasbhoardServiceIntervalTime:"<?= SystemConfig::getValue('iDasbhoardServiceIntervalTime') ?>",
             plugin: {
                 dataTable : {

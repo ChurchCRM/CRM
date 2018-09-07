@@ -28,6 +28,7 @@ use ChurchCRM\Utils\LoggerUtils;
 
 function system_failure($message, $header = 'Setup failure')
 {
+    $sPageTitle = $header;
     if (!SystemConfig::isInitialized()) {
         SystemConfig::init();
     }
@@ -70,16 +71,40 @@ try {
 SystemURLs::checkAllowedURL($bLockURL, $URL);
 
 // Due to mysqli handling connections on 'localhost' via socket only, we need to tease out this case and handle
-// TCP/IP connections separately defaulting $dbPort to 3306 for the general case when$dbPort is not set.
+// TCP/IP connections separately defaulting $dbPort to 3306 for the general case when $dbPort is not set.
 if ($sSERVERNAME == "localhost") {
-    $cnInfoCentral = mysqli_connect($sSERVERNAME, $sUSER, $sPASSWORD)
-    or system_failure('Could not connect to MySQL on <strong>'.$sSERVERNAME.'</strong> as <strong>'.$sUSER.'</strong>. Please check the settings in <strong>Include/Config.php</strong>.<br/>MySQL Error: '.mysqli_error($cnInfoCentral));
+    $cnInfoCentral = mysqli_connect($sSERVERNAME, $sUSER, $sPASSWORD);
 } else {
     if (!isset($dbPort)) {
         $dbPort=3306;
     }
-    $cnInfoCentral = mysqli_connect($sSERVERNAME.':'.$dbPort, $sUSER, $sPASSWORD)
-        or system_failure('Could not connect to MySQL on <strong>'.$sSERVERNAME.'</strong> on port <strong>'.$dbPort.'</strong> as <strong>'.$sUSER.'</strong>. Please check the settings in <strong>Include/Config.php</strong>.<br/>MySQL Error: '.mysqli_error($cnInfoCentral));
+    // Connect via TCP to specified port and pass a 'null' for database name.
+    // We specify the database name in a different call, ie 'mysqli_select_db()' just below here
+    $cnInfoCentral = mysqli_connect($sSERVERNAME, $sUSER, $sPASSWORD, null, $dbPort);
+}
+
+// Do we have a connection to the database? If not, log it and tell the user
+if (!$cnInfoCentral) {
+    
+    // Sanitise the mysqli_connect_error if required.
+    $sMYSQLERROR="none captured";
+    if (strlen(mysqli_connect_error())>0) {
+        $sMYSQLERROR=mysqli_connect_error();
+    }
+
+    // If connecting via a socket, convert $dbPort to something sensible.
+    if ($sSERVERNAME == "localhost") {
+        $dbPort = "Unix socket";
+    }
+
+    // Need to initialise otherwise logging etc will fail!
+    if (!SystemConfig::isInitialized()) {
+        SystemConfig::init();
+    }
+
+    // Log the error to the application log, and show an error page to user.
+    LoggerUtils::getAppLogger()->error("ERROR connecting to database at '".$sSERVERNAME."' on port '".$dbPort."' as user '".$sUSER."' -  MySQL Error: '".$sMYSQLERROR."'");
+    system_failure('Could not connect to MySQL on <strong>'.$sSERVERNAME.'</strong> on port <strong>'.$dbPort.'</strong> as <strong>'.$sUSER.'</strong>. Please check the settings in <strong>Include/Config.php</strong>.<br/>MySQL Error: '.$sMYSQLERROR, 'Database Connection Failure');
 }
 
 mysqli_set_charset($cnInfoCentral, 'utf8mb4');

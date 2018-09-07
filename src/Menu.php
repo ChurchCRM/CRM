@@ -175,7 +175,7 @@ if ($showBanner && ($peopleWithBirthDaysCount > 0 || $AnniversariesCount > 0)) {
             <div class="icon">
                 <i class="fa fa-users"></i>
             </div>
-            <a href="<?= SystemURLs::getRootPath() ?>/FamilyList.php" class="small-box-footer">
+            <a href="<?= SystemURLs::getRootPath() ?>/v2/family" class="small-box-footer">
                 <?= gettext('See all Families') ?> <i class="fa fa-arrow-circle-right"></i>
             </a>
         </div>

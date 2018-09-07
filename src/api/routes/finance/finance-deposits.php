@@ -3,7 +3,7 @@
 use ChurchCRM\Deposit;
 use ChurchCRM\DepositQuery;
 use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\Slim\Middleware\Role\FinanceRoleAuthMiddleware;
+use ChurchCRM\Slim\Middleware\Request\Auth\FinanceRoleAuthMiddleware;
 
 $app->group('/deposits', function () {
     $this->post('', function ($request, $response, $args) {

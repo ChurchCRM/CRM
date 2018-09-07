@@ -92,7 +92,7 @@
             <parameter name="rule1" value="{column: linkname, validator: NotNull}" />
             <parameter name="rule2" value="{column: linkname, validator: Length, options: {max: 50}}" />
             <parameter name="rule3" value="{column: linkuri, validator: NotNull}" />
-            <parameter name="rule4" value="{column: linkuri, validator: Length, options: {max: 50}}" />
+            <parameter name="rule4" value="{column: linkuri, validator: Length, options: {max: 500}}" />
         </behavior>
     </table>
 
@@ -180,7 +180,7 @@
     </table>
     <table name="family_custom_master" idMethod="native" phpName="FamilyCustomMaster">
         <column name="fam_custom_Order" phpName="CustomOrder" type="SMALLINT" required="true" defaultValue="0"/>
-        <column name="fam_custom_Field" phpName="CustomField" type="VARCHAR" size="5" required="true" defaultValue=""/>
+        <column name="fam_custom_Field" phpName="CustomField" type="VARCHAR" size="5" required="true" defaultValue="" primaryKey="true"/>
         <column name="fam_custom_Name" phpName="CustomName" type="VARCHAR" size="40" required="true" defaultValue=""/>
         <column name="fam_custom_Special" phpName="CustomSpecial" type="SMALLINT" size="8"
                 sqlType="mediumint(8) unsigned"/>
@@ -195,6 +195,9 @@
     <table name="family_custom" idMethod="native" phpName="FamilyCustom">
         <column name="fam_ID" phpName="FamId" type="SMALLINT" size="9" primaryKey="true" required="true"
                 defaultValue="0"/>
+        <foreign-key foreignTable="family_fam">
+          <reference local="fam_ID" foreign="fam_ID"/>
+        </foreign-key>
         <vendor type="mysql">
             <parameter name="Engine" value="InnoDB"/>
         </vendor>

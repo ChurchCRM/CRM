@@ -192,7 +192,7 @@
               <li id="showWhenCartNotEmpty">\
                   <ul class="menu">\
                       <li>\
-                          <a href="' + window.CRM.root+ '/CartView.php">\
+                          <a href="' + window.CRM.root+ '/v2/cart">\
                               <i class="fa fa-shopping-cart text-green"></i>' + i18next.t("View Cart") + '\
                           </a>\
                       </li>\
@@ -541,9 +541,11 @@
     window.CRM.dashboard = {
       renderers: {
         EventsCounters: function (data) {
-          document.getElementById('BirthdateNumber').innerText = data.Birthdays;
-          document.getElementById('AnniversaryNumber').innerText = data.Anniversaries;
-          document.getElementById('EventsNumber').innerText = data.Events;
+          if (document.getElementById('BirthdateNumber') != null) {
+            document.getElementById('BirthdateNumber').innerText = data.Birthdays;
+            document.getElementById('AnniversaryNumber').innerText = data.Anniversaries;
+            document.getElementById('EventsNumber').innerText = data.Events;
+          }
         },
         FamilyCount: function (data) {
           var dashBoardFam = document.getElementById('familyCountDashboard');
@@ -569,7 +571,7 @@
                 {
                   data: 'DateEntered',
                   render: function (data, type, row, meta) {
-                    return moment(data).format('MM-DD-YYYY hh:mm');
+                    return moment(data).format(window.CRM.systemConfigs.sDateTimeFormat);
                   }
                 }
               ]
@@ -597,7 +599,7 @@
                 {
                   data: 'DateLastEdited',
                   render: function (data, type, row, meta) {
-                    return moment(data).format('MM-DD-YYYY hh:mm');
+                    return moment(data).format(window.CRM.systemConfigs.sDateTimeFormat);
                   }
                 }
               ]

@@ -21,6 +21,8 @@ module.exports = function (grunt) {
         }
         return DTLangs.toString();
     };
+    
+    const sass = require('node-sass');
 
 // Project configuration.
     grunt.initConfig({
@@ -188,10 +190,12 @@ module.exports = function (grunt) {
             }
         },
         sass: {
+            options: {
+                implementation: sass,
+                sourceMap: true,
+                cacheLocation: process.env['HOME'] + "/node_cache"
+            },
             dist: {
-              options: {
-                 cacheLocation: process.env['HOME'] + "/node_cache"
-              },
               files: {
                   'src/skin/churchcrm.min.css': 'src/skin/churchcrm.scss'
               }
@@ -316,7 +320,7 @@ module.exports = function (grunt) {
         grunt.log.writeln(sha1(grunt.file.read(arg1, {encoding: null})));
     });
 
-    grunt.registerMultiTask('generateSignatures', 'A sample task that logs stuff.', function () {
+    grunt.registerMultiTask('generateSignatures', 'Generates SHA1 signatures of the release archive', function () {
         var sha1 = require('node-sha1');
         var signatures = {
             "version": this.data.version,
@@ -392,18 +396,17 @@ module.exports = function (grunt) {
     });
 
     grunt.registerMultiTask('updateVersions', 'Update Files to match NPM version', function () {
+        var moment = require('moment');
         var version = this.data.version;
 
         // php composer
         var file = 'src/composer.json';
 
         var curFile = grunt.file.readJSON(file);
-        if (curFile.version !== version) {
-            console.log("updating composer file to: " + version);
-            curFile.version = version;
-            var stringFile = JSON.stringify(curFile, null, 4);
-            grunt.file.write(file, stringFile);
-        }
+        curFile.version = version;
+        curFile.time =  moment().format("YYYY-MM-DD HH:MM:SS");
+        var stringFile = JSON.stringify(curFile, null, 4);
+        grunt.file.write(file, stringFile);
 
         // db update file
         file = 'src/mysql/upgrade.json';
@@ -450,7 +453,7 @@ module.exports = function (grunt) {
       //  display local master's commit hash
     });
 
-    grunt.loadNpmTasks('grunt-contrib-sass');
+    grunt.loadNpmTasks('grunt-sass');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-compress');

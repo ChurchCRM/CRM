@@ -11,15 +11,13 @@ use ChurchCRM\PersonCustomQuery;
 use ChurchCRM\PersonQuery;
 use ChurchCRM\PersonVolunteerOpportunityQuery;
 use ChurchCRM\Service\SystemService;
-use ChurchCRM\Slim\Middleware\Role\AdminRoleAuthMiddleware;
+use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
 use ChurchCRM\UserQuery;
 use ChurchCRM\Utils\LoggerUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\Propel;
 use Slim\Http\Request;
 use Slim\Http\Response;
-
-// Routes
 
 $app->group('/database', function () {
 

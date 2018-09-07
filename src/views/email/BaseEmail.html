@@ -62,11 +62,24 @@
             {{/ passwordToken}}
             
             {{# familyLink }}
+              {{# IncludeDataInNewPersonNotifications }}
+                <p>{{FamilyEmail}}</p>
+                <p>{{FamilyPhone}}</p>
+                <p>{{FamilyAddress}}</p>
+              {{/ IncludeDataInNewPersonNotifications}}
               <p><a href="{{familyLink}}">View Family Page</a></p>
             {{/ familyLink }}
-             {{# personLink }}
+            {{# personLink }}
+              {{# IncludeDataInNewPersonNotifications }}
+                <p>{{PersonEmail}}</p>
+                <p>{{PersonPhone}}</p>
+                <p>{{PersonAddress}}</p>
+                <p>{{PersonAge}}</p>
+              {{/ IncludeDataInNewPersonNotifications}}
               <p><a href="{{personLink}}">View Person Page</a></p>
             {{/ personLink }}
+            <p>{{ # sGreeterCustomMsg1 }}{{ sGreeterCustomMsg1 }}{{ / sGreeterCustomMsg1 }}</p>
+            <p>{{ # sGreeterCustomMsg2 }}{{ sGreeterCustomMsg2 }}{{ / sGreeterCustomMsg2 }}</p>
             <p>
             {{confirmSincerely}}, <br/>
             {{confirmSigner}}
@@ -86,7 +99,7 @@
         If you do not want to receive these emails from {{churchName}} in the future, please contact the church admins.
         </p>
         <hr width="50%"/>
-        <p>Church<b>CRM</b> 2015-2017</p>
+        <p>Church<b>CRM</b> {{copyrightDate}}</p>
     </footer>
 
 </div> <!-- /container -->

@@ -7,7 +7,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 ?>
 <div class="row">
-  <div class="col-lg-10">
+  <div class="col-lg-9">
     <div class="box box-info">
         <div class="box-body no-padding">
             <!-- THE CALENDAR -->
@@ -17,23 +17,23 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     </div>
     <!-- /. box -->
   </div>
-   <div class="col-lg-2">
-     <div class="box">
-      <div class="box-header with-border">
-        <h3 class="box-title"><?= gettext('User Calendars') ?></h3>
-      </div>
-      <div class="box-body" >
-        <div id="userCalendars" class="container-fluid"></div>
-      </div>
-     </div>
+   <div class="col-lg-3">
+    <div class="box">
+        <div class="box-header with-border">
+          <h3 class="box-title"><?= gettext('User Calendars') ?></h3>
+        </div>
+        <div class="box-body" >
+        <div class="box-group" style="height:25vh; overflow-y: scroll" id="userCalendars"></div>
+        </div>
+    </div>
   </div>
-  <div class="col-lg-2">
+  <div class="col-lg-3">
      <div class="box">
       <div class="box-header with-border">
         <h3 class="box-title"><?= gettext('System Calendars') ?></h3>
       </div>
       <div class="box-body">
-        <div  id="systemCalendars" class="container-fluid"></div>
+        <div class="box-group" style="height:25vh; overflow-y: scroll" id="systemCalendars"></div>
       </div>
      </div>
   </div>

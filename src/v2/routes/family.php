@@ -7,18 +7,49 @@ use Slim\Views\PhpRenderer;
 use ChurchCRM\FamilyQuery;
 use ChurchCRM\Service\TimelineService;
 use ChurchCRM\PropertyQuery;
+use ChurchCRM\Utils\InputUtils;
+use Propel\Runtime\ActiveQuery\Criteria;
 
 $app->group('/family', function () {
+    $this->get('','listFamilies');
+    $this->get('/','listFamilies');
     $this->get('/not-found', 'viewFamilyNotFound');
     $this->get('/{id}/view', 'viewFamily');
     $this->get('/{id}/view/', 'viewFamily');
 });
 
+function listFamilies(Request $request, Response $response, array $args)
+{
+  $renderer = new PhpRenderer('templates/people/');
+  $sMode = 'Active';
+  // Filter received user input as needed
+  if (isset($_GET['mode'])) {
+      $sMode = InputUtils::LegacyFilterInput($_GET['mode']);
+  }
+  if (strtolower($sMode) == 'inactive') {
+      $families = FamilyQuery::create()
+          ->filterByDateDeactivated(null, Criteria::ISNOTNULL)
+              ->orderByName()
+              ->find();
+  } else {
+      $sMode = 'Active';
+      $families = FamilyQuery::create()
+          ->filterByDateDeactivated(null)
+              ->orderByName()
+              ->find();
+  }
+  $pageArgs = [
+      'sMode' => $sMode,
+      'sRootPath' => SystemURLs::getRootPath(),
+      'families' => $families
+  ];
+  return $renderer->render($response, 'family-list.php', $pageArgs);
+}
 
 function viewFamilyNotFound(Request $request, Response $response, array $args)
 {
-    $renderer = new PhpRenderer('templates/common/');
-
+  $renderer = new PhpRenderer('templates/common/');
+  
   $pageArgs = [
         'sRootPath' => SystemURLs::getRootPath(),
         'memberType' => "Family",

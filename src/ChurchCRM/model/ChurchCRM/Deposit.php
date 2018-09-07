@@ -351,7 +351,12 @@ class Deposit extends BaseDeposit
 
         $this->generateTotalsByCurrencyType($thisReport);
         $thisReport->curY += $thisReport->depositSummaryParameters->summary->intervalY * 2;
-
+        
+        if (!empty($this->getComment()))
+        {
+          $thisReport->pdf->SetXY($thisReport->curX,  $thisReport->curY);
+          $thisReport->pdf->MultiCell(0, $thisReport->depositSummaryParameters->summary->intervalY, gettext('Deposit Comment') . ": " . $this->getComment(), 0, 'L');
+        }
         $thisReport->curY += 130;
         $thisReport->curX = $thisReport->depositSummaryParameters->summary->x;
 
@@ -360,6 +365,8 @@ class Deposit extends BaseDeposit
 
     private function generateWitnessSignature($thisReport)
     {
+        $thisReport->curX = $thisReport->depositSummaryParameters->summary->x;
+        $thisReport->curY = $thisReport->pdf->GetPageHeight()  - 30;
         $thisReport->pdf->setXY($thisReport->curX, $thisReport->curY);
         $thisReport->pdf->write(8, 'Witness 1');
         $thisReport->pdf->line($thisReport->curX + 17, $thisReport->curY + 8, $thisReport->curX + 80, $thisReport->curY + 8);

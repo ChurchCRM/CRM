@@ -108,7 +108,7 @@ class Person extends BasePerson implements iPhoto
 
         return $familyRole;
     }
-
+    
     public function getFamilyRoleName()
     {
         $roleName = '';
@@ -118,6 +118,26 @@ class Person extends BasePerson implements iPhoto
         }
 
         return $roleName;
+    }
+    
+    public function getClassification()
+    {
+      $classification = null;
+      $clsId = $this->getClsId();
+      if (!empty($clsId)) {
+        $classification = ListOptionQuery::create()->filterById(1)->filterByOptionId($clsId)->findOne();
+      }
+      return $classification;
+    }
+    
+    public function getClassificationName()
+    {
+      $classificationName = '';
+      $classification = $this->getClassification();
+      if (!is_null($classification)) {
+        $classificationName = $classification->getOptionName();
+      }
+      return $classificationName;
     }
 
     public function postInsert(ConnectionInterface $con = null)
@@ -291,7 +311,7 @@ class Person extends BasePerson implements iPhoto
         return false;
 
     }
-
+        
     /**
      * Returns a string of a person's full name, formatted as specified by $Style
      * $Style = 0  :  "Title FirstName MiddleName LastName, Suffix"
@@ -515,6 +535,22 @@ class Person extends BasePerson implements iPhoto
         $array = parent::toArray();
         $array['Address']=$this->getAddress();
         return $array;
+    }
+    
+    public function getThumbnailURL() {
+      return SystemURLs::getRootPath() . '/api/person/' . $this->getId() . '/thumbnail';
+    }
+    
+    public function getEmail() {
+      if (parent::getEmail() == null)
+      {
+        $family = $this->getFamily();
+        if ($family != null)
+        {
+          return $family->getEmail();
+        }
+      }
+      return parent::getEmail();
     }
 
 }
