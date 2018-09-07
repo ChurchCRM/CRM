@@ -9,12 +9,16 @@ use PHPMailer\PHPMailer\PHPMailer;
 use Slim\Http\Request;
 use Slim\Http\Response;
 use Slim\Views\PhpRenderer;
+use Propel\Runtime\ActiveQuery\Criteria;
 
 $app->group('/email', function () {
     $this->get('/debug', 'testEmailConnectionMVC')->add(new AdminRoleAuthMiddleware());
+    $this->get('', 'getEmailDashboardMVC');
+    $this->get('/', 'getEmailDashboardMVC');
     $this->get('/dashboard', 'getEmailDashboardMVC');
     $this->get('/duplicate', 'getDuplicateEmailsMVC');
     $this->get('/missing', 'getFamiliesWithoutEmailsMVC');
+    $this->get('/missingfrommailchimp', 'getEmailsNotInMailChimp');
 });
 
 function getEmailDashboardMVC(Request $request, Response $response, array $args)
@@ -79,4 +83,37 @@ function getDuplicateEmailsMVC(Request $request, Response $response, array $args
 function getFamiliesWithoutEmailsMVC(Request $request, Response $response, array $args)
 {
     return renderPage($response,'templates/email/',  'without.php', _("Families Without Emails"));
+}
+
+function getEmailsNotInMailChimp(Request $request, Response $response, array $args)
+{
+    $renderer = new PhpRenderer('templates/email/');
+    
+    $mailchimp = new MailChimpService();
+    if (!$mailchimp->isActive())
+    {
+      return $response->withRedirect(SystemURLs::getRootPath() . "/v2/email");
+    }
+    $People = \ChurchCRM\PersonQuery::create()
+            ->filterByEmail(null, Criteria::NOT_EQUAL)
+            ->orderByDateLastEdited(Criteria::DESC)
+            ->find();
+    
+    $missingEmailInMailChimp = array();
+    foreach($People as $Person)
+    {
+        $mailchimpList = $mailchimp->isEmailInMailChimp($Person->getEmail());
+        if ($mailchimpList == '') {
+           array_push($missingEmailInMailChimp, $Person);
+        }
+    }
+          
+
+    $pageArgs = [
+        'sRootPath' => SystemURLs::getRootPath(),
+        'sPageTitle' => gettext('People not in Mailchimp'),
+        'missingEmailInMailChimp' => $missingEmailInMailChimp
+    ];
+
+    return $renderer->render($response, 'not-in-mailchimp.php', $pageArgs);
 }
