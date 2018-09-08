@@ -6,6 +6,23 @@ use ChurchCRM\dto\SystemConfig;
 use \DrewM\MailChimp\MailChimp;
 use ChurchCRM\Utils\LoggerUtils;
 
+class ListEmailFilter {
+  private $email;
+  
+  function __construct($emailAddress)
+  {
+    $this->email = $emailAddress;
+  }
+  public function isEmailInList($list) {
+    foreach ($list['members'] as $listMember) {
+      if (strcmp(strtolower($listMember['email_address']), strtolower($this->email)) == 0) {
+        return true;
+      }
+    }
+    return false;
+  }       
+}
+
 class MailChimpService
 {
     private $isActive = false;
@@ -52,16 +69,8 @@ class MailChimpService
         
         try {
             $lists = $this->getListsFromCache();
-            $listNames = [];
-            foreach($lists as $list) {
-              foreach ($list['members'] as $listMember) {
-                if (strcmp(strtolower($listMember['email_address']), strtolower($email)) == 0) {
-                  LoggerUtils::getAppLogger()->info("Found $email in ".$list['name']);
-                  array_push($listNames, $list['name']);
-                }
-              }
-            }
-
+            $lists = array_filter($lists, array(new ListEmailFilter($email),'isEmailInList'));
+            $listNames = array_map(function ($list) { return $list['name']; }, $lists);
             $listMemberships = implode(',', $listNames);
             LoggerUtils::getAppLogger()->info($email. "is a member of ".$listMemberships);
 
