@@ -55,7 +55,7 @@ class MailChimpService
             $listNames = [];
             foreach($lists as $list) {
               foreach ($list['members'] as $listMember) {
-                if (strcmp(strtolower($listMember['email_address']), $email) == 0) {
+                if (strcmp(strtolower($listMember['email_address']), strtolower($email)) == 0) {
                   LoggerUtils::getAppLogger()->info("Found $email in ".$list['name']);
                   array_push($listNames, $list['name']);
                 }
