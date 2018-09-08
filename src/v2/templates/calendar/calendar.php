@@ -17,25 +17,18 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     </div>
     <!-- /. box -->
   </div>
-   <div class="col-lg-3">
-    <div class="box">
-        <div class="box-header with-border">
-          <h3 class="box-title"><?= gettext('User Calendars') ?></h3>
-        </div>
-        <div class="box-body" >
-        <div class="box-group" style="height:25vh; overflow-y: scroll" id="userCalendars"></div>
-        </div>
+   <div class="col-lg-3 nav-tabs-custom" id="CalendarTypesPanel" >
+    <ul class="nav nav-tabs">
+      <li class="active"><a data-toggle="tab" href="#userCalendars">User</a></li>
+      <li><a data-toggle="tab" href="#systemCalendars">System</a></li>
+    </ul>
+    <div class="tab-content" style="height:600px; overflow-y: scroll">
+       
+      <div class="tab-pane fade in active"  id="userCalendars"></div>
+      <div class="tab-pane fade" id="systemCalendars" ></div>
+      
     </div>
-  </div>
-  <div class="col-lg-3">
-     <div class="box">
-      <div class="box-header with-border">
-        <h3 class="box-title"><?= gettext('System Calendars') ?></h3>
-      </div>
-      <div class="box-body">
-        <div class="box-group" style="height:25vh; overflow-y: scroll" id="systemCalendars"></div>
-      </div>
-     </div>
+    
   </div>
 </div>
 
