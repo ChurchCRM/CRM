@@ -692,7 +692,8 @@ function getCalendarFilterElement(calendar,type,parent) {
                '<label for="display-'+boxId+'" style="font-size:10pt">Show On Calendar</label>' +
                "<input type='checkbox' id='display-"+boxId+"' class='calendarSelectionBox' data-calendartype='"+type+"' data-calendarname='"+calendar.Name+"' data-calendarid='"+calendar.Id+"'/>" +
                (type === "user"  ? '<br/><a class="btn btn-primary calendarproperties" data-calendarid="'+calendar.Id+'" style="white-space: unset; font-size:10pt">Edit Calendar Properties</a>' : "") +
-              '</div>'+
+                "<a class='btn btn-primary calendarFocus' data-calendartype='"+type+"' data-calendarname='"+calendar.Name+"' data-calendarid='"+calendar.Id+"'>focus</a>" +
+                '</div>'+
             '</div>'+
           '</div>';
 }
