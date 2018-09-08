@@ -3,23 +3,41 @@
 namespace ChurchCRM\Service;
 
 use ChurchCRM\dto\SystemConfig;
+use \DrewM\MailChimp\MailChimp;
+use ChurchCRM\Utils\LoggerUtils;
 
 class MailChimpService
 {
     private $isActive = false;
     private $myMailchimp;
+    private $lists;
 
     public function __construct()
     {
         if (!empty(SystemConfig::getValue('sMailChimpApiKey'))) {
             $this->isActive = true;
-            $this->myMailchimp = new \Mailchimp(SystemConfig::getValue('sMailChimpApiKey'));
+            $this->myMailchimp = new MailChimp(SystemConfig::getValue('sMailChimpApiKey'));
         }
     }
 
     public function isActive()
     {
-        return $this->isActive;
+        return $this->isActive; 
+    }
+    private function getListsFromCache(){
+      if (!isset($_SESSION['MailChimpLists'])){
+        LoggerUtils::getAppLogger()->info("Updating MailChimp List Cache");
+        $lists = $this->myMailchimp->get("lists")['lists'];
+        foreach($lists as &$list) {
+          $listmembers = $this->myMailchimp->get('lists/'.$list['id'].'/members',['count' => 100000]);
+          $list['members'] = $listmembers['members'];
+        }
+        $_SESSION['MailChimpLists'] = $lists;
+      }
+      else{
+        LoggerUtils::getAppLogger()->info("Using cached MailChimp List");
+      }
+      return $_SESSION['MailChimpLists'];
     }
 
     public function isEmailInMailChimp($email)
@@ -27,19 +45,27 @@ class MailChimpService
         if (!$this->isActive) {
             return 'Mailchimp is not active';
         }
-
+        
         if ($email == '') {
             return 'No email';
         }
-
+        
         try {
-            $lists = $this->myMailchimp->helper->listsForEmail(['email' => $email]);
+            $lists = $this->getListsFromCache();
             $listNames = [];
-            foreach ($lists as $val) {
-                array_push($listNames, $val['name']);
+            foreach($lists as $list) {
+              foreach ($list['members'] as $listMember) {
+                if (strcmp(strtolower($listMember['email_address']), $email) == 0) {
+                  LoggerUtils::getAppLogger()->info("Found $email in ".$list['name']);
+                  array_push($listNames, $list['name']);
+                }
+              }
             }
 
-            return implode(',', $listNames);
+            $listMemberships = implode(',', $listNames);
+            LoggerUtils::getAppLogger()->info($email. "is a member of ".$listMemberships);
+
+            return $listMemberships;
         } catch (\Mailchimp_Invalid_ApiKey $e) {
             return 'Invalid ApiKey';
         } catch (\Mailchimp_List_NotSubscribed $e) {
@@ -54,12 +80,12 @@ class MailChimpService
     public function getLists()
     {
         if (!$this->isActive) {
-            return 'Mailchimp is not active';
+          return 'Mailchimp is not active';
         }
         try {
-            $result = $this->myMailchimp->lists->getList();
-
-            return $result['data'];
+            $result = $this->getListsFromCache();
+            
+            return $result;
         } catch (\Mailchimp_Invalid_ApiKey $e) {
             return 'Invalid ApiKey';
         } catch (\Exception $e) {
