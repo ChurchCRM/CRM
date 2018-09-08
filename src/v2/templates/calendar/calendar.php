@@ -18,24 +18,17 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     <!-- /. box -->
   </div>
    <div class="col-lg-3" class="panel-group" id="CalendarTypesPanel" style="height:600px; overflow-y: scroll">
-    <div class="panel" >
-        <div class="panel-heading">
-          <h3 class="panel-title" data-toggle="collapse" data-parent="#CalendarTypesPanel" href="#userCalendarCollapse" aria-expanded="true"><?= gettext('User Calendars') ?></h3>
-          <a id="showAllUser">Show All</a>
-          
-        </div>
-        <div class="panel-collapse collapse in" id="userCalendarCollapse">
-          <div class="panel-body"  id="userCalendars"></div>
-        </div>
+    <ul class="nav nav-tabs">
+      <li class="active"><a data-toggle="tab" href="#userCalendars">User</a></li>
+      <li><a data-toggle="tab" href="#systemCalendars">System</a></li>
+    </ul>
+    <div class="tab-content" >
+       
+      <div class="tab-pane fade in active"  id="userCalendars"></div>
+      <div class="tab-pane fade" id="systemCalendars" ></div>
+      
     </div>
-    <div class="panel">
-     <div class="panel-heading">
-       <h3 class="panel-title" data-toggle="collapse" data-parent="#CalendarTypesPanel" href="#systemCalendarCollapse" aria-expanded="false" ><?= gettext('System Calendars') ?></h3>
-     </div>
-     <div class="panel-collapse collapse" id="systemCalendarCollapse">
-       <div class="panel-body" id="systemCalendars" ></div>
-     </div>
-    </div>
+    
   </div>
 </div>
 
