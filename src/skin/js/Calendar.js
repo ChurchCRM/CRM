@@ -745,8 +745,7 @@ function registerCalendarSelectionEvents() {
     console.log(sources);
     var sourcesToRemove  = [];
     var isFocusedCalendarVisible = false;
-    for (var i = sources.length-1; i--;)
-    {
+    for (var i = sources.length-1; i>=0; i--) {
       if (sources[i].url === calendarToKeepURL) {
         isFocusedCalendarVisible = true;
       }
@@ -763,12 +762,15 @@ function registerCalendarSelectionEvents() {
     console.log(sourcesToRemove);
     window.CRM.fullcalendar.fullCalendar( 'removeEventSources', sourcesToRemove);
   });
+  
+  $(document).on("click","#showAllUser", function(event) {
+    showAllUserCalendars();
+  });
+  
 }
 
-function initializeFilterSettings() {
-  
-  window.CRM.fullcalendar.fullCalendar( 'removeEventSources');
-  window.CRM.APIRequest({
+function showAllUserCalendars() {
+   window.CRM.APIRequest({
     method: 'GET',
     path: 'calendars',
   }).done(function (calendars) {
@@ -779,7 +781,9 @@ function initializeFilterSettings() {
     });
 
   });
- 
+}
+
+function showAllSystemCalendars() {
   window.CRM.APIRequest({
     method: 'GET',
     path: 'systemcalendars',
@@ -790,10 +794,11 @@ function initializeFilterSettings() {
       window.CRM.fullcalendar.fullCalendar("addEventSource", GetCalendarURL("system",calendar.Id));
     });
   });
-  
-  
+}
 
- 
+function initializeFilterSettings() {
+  showAllUserCalendars();
+  showAllSystemCalendars();
 };
 
 function initializeNewCalendarButton(){
