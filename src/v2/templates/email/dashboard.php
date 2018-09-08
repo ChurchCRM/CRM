@@ -56,7 +56,6 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <ul>
                         <li>
                             <a href="<?= SystemURLs::getRootPath()?>/v2/email/missingfrommailchimp"><?= gettext('Missing emails report') ?> </a>
-                            (slow)
                         </li>
                     </ul>
                 </div>
