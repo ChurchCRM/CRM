@@ -435,7 +435,6 @@ window.displayEventModal = {
 }
 
 function deleteCalendar(){
-  console.log(window.calendarPropertiesModal.calendar);
   window.CRM.APIRequest({
       method:"DELETE",
       path: "calendars/"+window.calendarPropertiesModal.calendar.Id
@@ -689,10 +688,9 @@ function getCalendarFilterElement(calendar,type,parent) {
             '</div>'+
            ' <div id="'+boxId+'" class="panel-collapse collapse" aria-expanded="false" style="">'+
               '<div class="box-body">'+
-               '<label for="display-'+boxId+'" style="font-size:10pt">Show On Calendar</label>' +
-               "<input type='checkbox' id='display-"+boxId+"' class='calendarSelectionBox' data-calendartype='"+type+"' data-calendarname='"+calendar.Name+"' data-calendarid='"+calendar.Id+"'/>" +
-               (type === "user"  ? '<br/><a class="btn btn-primary calendarproperties" data-calendarid="'+calendar.Id+'" style="white-space: unset; font-size:10pt">Edit Calendar Properties</a>' : "") +
-                "<a class='btn btn-primary calendarfocus' data-calendartype='"+type+"' data-calendarname='"+calendar.Name+"' data-calendarid='"+calendar.Id+"'>focus</a>" +
+                "<div><a class='btn btn-primary calendarfocus' style='width:100%' data-calendartype='"+type+"' data-calendarname='"+calendar.Name+"' data-calendarid='"+calendar.Id+"'>"+i18next.t('Focus')+"</a></div>" +
+                "<div class='checkbox'><input checked data-onstyle='info' data-width='100%' data-toggle='toggle' data-on='Show on Calendar' data-off='Hide on Calendar' type='checkbox' id='display-"+boxId+"' class='calendarSelectionBox' data-calendartype='"+type+"' data-calendarname='"+calendar.Name+"' data-calendarid='"+calendar.Id+"'/></div>" +
+                (type === "user"  ? '<div><a class="btn btn-warning calendarproperties" data-calendarid="'+calendar.Id+'" style="width:100%; white-space: unset; font-size:10pt">Properties</a></div>' : "") +
                 '</div>'+
             '</div>'+
           '</div>';
@@ -714,10 +712,15 @@ function GetCalendarURL(calendarType, calendarID)
 function registerCalendarSelectionEvents() {
   
   
-  $(document).on("click",".calendarSelectionBox", function(event) {
+  $(document).on("change",".calendarSelectionBox", function(event) {
     if($(this).is(":checked")){
       var eventSourceURL = GetCalendarURL($(this).data('calendartype'),$(this).data("calendarid"));
-      window.CRM.fullcalendar.fullCalendar("addEventSource",eventSourceURL);
+      var alreadyPresent = window.CRM.fullcalendar.fullCalendar("getEventSources").find(function(element) {
+        return element.url === eventSourceURL;
+      })
+      if (!alreadyPresent) {
+        window.CRM.fullcalendar.fullCalendar("addEventSource",eventSourceURL);
+      }
     }
     else {
       var eventSourceURL = GetCalendarURL($(this).data('calendartype'),$(this).data("calendarid"));
@@ -731,36 +734,36 @@ function registerCalendarSelectionEvents() {
       path: 'calendars/'+$(this).data("calendarid"),
     }).done(function (data) {
       var calendar = data.Calendars[0];
-      console.log(calendar);
       window.calendarPropertiesModal.show(calendar);
     });
     
   });
+  
   $(document).on("click",".calendarfocus", function(event) {
     var calendarTypeToKeep = $(this).data('calendartype');
     var calendarIDToKeep = $(this).data("calendarid");
     var calendarToKeepURL = GetCalendarURL(calendarTypeToKeep,calendarIDToKeep);
-    console.log("Keeping: " + calendarToKeepURL);
-    var sources = window.CRM.fullcalendar.fullCalendar( 'getEventSources' );
-    console.log(sources);
-    var sourcesToRemove  = [];
-    var isFocusedCalendarVisible = false;
-    for (var i = sources.length-1; i>=0; i--) {
-      if (sources[i].url === calendarToKeepURL) {
-        isFocusedCalendarVisible = true;
+    $(".calendarSelectionBox").each(function(i,d) {
+      if ($(d).data('calendartype')===calendarTypeToKeep && $(d).data('calendarid')===calendarIDToKeep) {
+        $(d).prop('checked', true).change()
       }
-        
-      if (sources[i].url !== calendarToKeepURL) {
-        sourcesToRemove.push(sources[i].url);
+      else{
+        $(d).prop('checked', false).change()
       }
-    }
-    if (!isFocusedCalendarVisible) 
-    {
-      window.CRM.fullcalendar.fullCalendar("addEventSource", calendarToKeepURL);
-    }
-    console.log("Removing event sources");
-    console.log(sourcesToRemove);
-    window.CRM.fullcalendar.fullCalendar( 'removeEventSources', sourcesToRemove);
+     });
+     $(this).removeClass("calendarfocus");
+     $(this).addClass("calendarunfocus");
+     $(this).text(i18next.t("Unfocus"));
+  });
+  
+  $(document).on("click",".calendarunfocus", function(event) {
+  
+    $(".calendarSelectionBox").each(function(i,d) {
+        $(d).prop('checked', true).change()
+     });
+     $(this).removeClass("calendarunfocus");
+     $(this).addClass("calendarfocus");
+     $(this).text(i18next.t("Focus"));
   });
   
   $(document).on("click","#showAllUser", function(event) {
@@ -776,10 +779,11 @@ function showAllUserCalendars() {
   }).done(function (calendars) {
     $("#userCalendars").empty();
     $.each(calendars.Calendars,function(idx,calendar) {
-      $("#userCalendars").append(getCalendarFilterElement(calendar,"user",'userCalendars'))
+      $("#userCalendars").append(getCalendarFilterElement(calendar,"user",'userCalendars'));
+
       window.CRM.fullcalendar.fullCalendar("addEventSource", GetCalendarURL("user",calendar.Id));
     });
-
+    $(".calendarSelectionBox").bootstrapToggle();
   });
 }
 
