@@ -692,30 +692,36 @@ function getCalendarFilterElement(calendar,type,parent) {
                '<label for="display-'+boxId+'" style="font-size:10pt">Show On Calendar</label>' +
                "<input type='checkbox' id='display-"+boxId+"' class='calendarSelectionBox' data-calendartype='"+type+"' data-calendarname='"+calendar.Name+"' data-calendarid='"+calendar.Id+"'/>" +
                (type === "user"  ? '<br/><a class="btn btn-primary calendarproperties" data-calendarid="'+calendar.Id+'" style="white-space: unset; font-size:10pt">Edit Calendar Properties</a>' : "") +
-                "<a class='btn btn-primary calendarFocus' data-calendartype='"+type+"' data-calendarname='"+calendar.Name+"' data-calendarid='"+calendar.Id+"'>focus</a>" +
+                "<a class='btn btn-primary calendarfocus' data-calendartype='"+type+"' data-calendarname='"+calendar.Name+"' data-calendarid='"+calendar.Id+"'>focus</a>" +
                 '</div>'+
             '</div>'+
           '</div>';
 }
 
+function GetCalendarURL(calendarType, calendarID)
+{
+  var endpoint;
+  if(calendarType=== "user") {
+    endpoint="/api/calendars/"
+  }
+  else if(calendarType === "system")
+  {
+    endpoint="/api/systemcalendars/"
+  }
+  return window.CRM.root+endpoint+calendarID+"/fullcalendar";
+}
+
 function registerCalendarSelectionEvents() {
   
+  
   $(document).on("click",".calendarSelectionBox", function(event) {
-    var endpoint;
-    if($(this).data('calendartype') === "user") {
-      endpoint="/api/calendars/"
-    }
-    else if($(this).data('calendartype') === "system")
-    {
-      endpoint="/api/systemcalendars/"
-    }
     if($(this).is(":checked")){
-      var eventSourceURL = window.CRM.root+endpoint+$(this).data("calendarid")+"/fullcalendar";
-      window.CRM.fullcalendar.fullCalendar("addEventSource",{id: $(this).data("calendarid"), url: eventSourceURL});
+      var eventSourceURL = GetCalendarURL($(this).data('calendartype'),$(this).data("calendarid"));
+      window.CRM.fullcalendar.fullCalendar("addEventSource",eventSourceURL);
     }
     else {
-      var eventSourceURL = window.CRM.root+endpoint+$(this).data("calendarid")+"/fullcalendar";
-      window.CRM.fullcalendar.fullCalendar("removeEventSource",{id: $(this).data("calendarid"), url: eventSourceURL});
+      var eventSourceURL = GetCalendarURL($(this).data('calendartype'),$(this).data("calendarid"));
+      window.CRM.fullcalendar.fullCalendar("removeEventSource", eventSourceURL);
     }
   });
   
@@ -730,6 +736,33 @@ function registerCalendarSelectionEvents() {
     });
     
   });
+  $(document).on("click",".calendarfocus", function(event) {
+    var calendarTypeToKeep = $(this).data('calendartype');
+    var calendarIDToKeep = $(this).data("calendarid");
+    var calendarToKeepURL = GetCalendarURL(calendarTypeToKeep,calendarIDToKeep);
+    console.log("Keeping: " + calendarToKeepURL);
+    var sources = window.CRM.fullcalendar.fullCalendar( 'getEventSources' );
+    console.log(sources);
+    var sourcesToRemove  = [];
+    var isFocusedCalendarVisible = false;
+    for (var i = sources.length-1; i--;)
+    {
+      if (sources[i].url === calendarToKeepURL) {
+        isFocusedCalendarVisible = true;
+      }
+        
+      if (sources[i].url !== calendarToKeepURL) {
+        sourcesToRemove.push(sources[i].url);
+      }
+    }
+    if (!isFocusedCalendarVisible) 
+    {
+      window.CRM.fullcalendar.fullCalendar("addEventSource", calendarToKeepURL);
+    }
+    console.log("Removing event sources");
+    console.log(sourcesToRemove);
+    window.CRM.fullcalendar.fullCalendar( 'removeEventSources', sourcesToRemove);
+  });
 }
 
 function initializeFilterSettings() {
@@ -742,8 +775,9 @@ function initializeFilterSettings() {
     $("#userCalendars").empty();
     $.each(calendars.Calendars,function(idx,calendar) {
       $("#userCalendars").append(getCalendarFilterElement(calendar,"user",'userCalendars'))
+      window.CRM.fullcalendar.fullCalendar("addEventSource", GetCalendarURL("user",calendar.Id));
     });
-    $("#userCalendars .calendarSelectionBox").click();
+
   });
  
   window.CRM.APIRequest({
@@ -753,8 +787,8 @@ function initializeFilterSettings() {
     $("#systemCalendars").empty();
     $.each(calendars.Calendars,function(idx,calendar) {
       $("#systemCalendars").append(getCalendarFilterElement(calendar,"system",'systemCalendars'))
+      window.CRM.fullcalendar.fullCalendar("addEventSource", GetCalendarURL("system",calendar.Id));
     });
-    $("#systemCalendars .calendarSelectionBox").click();
   });
   
   

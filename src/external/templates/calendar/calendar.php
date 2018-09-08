@@ -39,10 +39,7 @@ window.CRM.fullcalendar =  $('#calendar').fullCalendar({
     eventStartEditable: false,
     eventDurationEditable: false,
     selectHelper: true,
-    locale: window.CRM.lang,
-    eventSources: [ 
-      '<?= $eventSource ?>'
-    ]
+    locale: window.CRM.lang
   });
 </script>
   
