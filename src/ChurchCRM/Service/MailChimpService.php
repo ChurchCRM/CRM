@@ -71,7 +71,7 @@ class MailChimpService
             $lists = $this->getListsFromCache();
             $lists = array_filter($lists, array(new ListEmailFilter($email),'isEmailInList'));
             $listNames = array_map(function ($list) { return $list['name']; }, $lists);
-            $listMemberships = implode(',', $listNames);
+            $listMemberships = implode(', ', $listNames);
             LoggerUtils::getAppLogger()->info($email. "is a member of ".$listMemberships);
 
             return $listMemberships;
