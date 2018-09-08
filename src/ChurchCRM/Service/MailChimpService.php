@@ -43,7 +43,7 @@ class MailChimpService
     }
     private function getListsFromCache(){
       if (!isset($_SESSION['MailChimpLists'])){
-        LoggerUtils::getAppLogger()->info("Updating MailChimp List Cache");
+        LoggerUtils::getAppLogger()->debug("Updating MailChimp List Cache");
         $lists = $this->myMailchimp->get("lists")['lists'];
         foreach($lists as &$list) {
           $listmembers = $this->myMailchimp->get('lists/'.$list['id'].'/members',['count' => 100000]);
@@ -52,7 +52,7 @@ class MailChimpService
         $_SESSION['MailChimpLists'] = $lists;
       }
       else{
-        LoggerUtils::getAppLogger()->info("Using cached MailChimp List");
+        LoggerUtils::getAppLogger()->debug("Using cached MailChimp List");
       }
       return $_SESSION['MailChimpLists'];
     }
@@ -72,7 +72,7 @@ class MailChimpService
             $lists = array_filter($lists, array(new ListEmailFilter($email),'isEmailInList'));
             $listNames = array_map(function ($list) { return $list['name']; }, $lists);
             $listMemberships = implode(', ', $listNames);
-            LoggerUtils::getAppLogger()->info($email. "is a member of ".$listMemberships);
+            LoggerUtils::getAppLogger()->debug($email. "is a member of ".$listMemberships);
 
             return $listMemberships;
         } catch (\Mailchimp_Invalid_ApiKey $e) {
