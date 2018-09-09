@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "625a6db03f7680e59a24ebc489301072",
+    "content-hash": "b3aca2a432a50d7596b6d1b80d7fd0f2",
     "packages": [
         {
             "name": "authorizenet/authorizenet",
@@ -363,6 +363,53 @@
                 "parser"
             ],
             "time": "2014-09-09T13:34:57+00:00"
+        },
+        {
+            "name": "dotsunited/bundlefu",
+            "version": "v1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dotsunited/BundleFu.git",
+                "reference": "d219bef65b5ca1dd6f542c816a1bad88383b924a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dotsunited/BundleFu/zipball/d219bef65b5ca1dd6f542c816a1bad88383b924a",
+                "reference": "d219bef65b5ca1dd6f542c816a1bad88383b924a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.8.35 || ^5.7 || ^6.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "DotsUnited\\BundleFu": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jan Sorgalla",
+                    "email": "jan.sorgalla@dotsunited.de",
+                    "homepage": "http://dotsunited.de"
+                }
+            ],
+            "description": "BundleFu is a PHP 5.3+ library which bundles multiple css/javascript files into a big package and sends it out at once",
+            "homepage": "https://github.com/dotsunited/BundleFu",
+            "keywords": [
+                "asset",
+                "bundling",
+                "css",
+                "javascript"
+            ],
+            "time": "2017-12-13T09:31:37+00:00"
         },
         {
             "name": "drewm/mailchimp-api",
