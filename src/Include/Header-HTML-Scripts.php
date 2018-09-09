@@ -9,7 +9,7 @@ $bundle->setCssFilter(new ChurchCRM\CSSFilter(SystemURLs::getDocumentRoot()));
 ?>
 <title>ChurchCRM: <?= $sPageTitle ?></title>
 <?php 
-$bundle->start(); 
+$bundle->start();
 ?>
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" type="text/css" href="skin/adminlte/bootstrap/css/bootstrap.min.css">
