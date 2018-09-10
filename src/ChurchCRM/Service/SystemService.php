@@ -377,7 +377,6 @@ class SystemService
       $now = new \DateTime("now", $tz);  //get the current time
       $previous = \DateTime::createFromFormat(SystemConfig::getValue('sDateTimeFormat'),$LastTime, $tz); // get a DateTime object for the last time a backup was done.
       $diff = abs($now->getTimestamp() - $previous->getTimestamp()) / 60 / 60 ;
-      LoggerUtils::getAppLogger()->addInfo("Difference from '". $previous->format(SystemConfig::getValue('sDateTimeFormat'))."' to '".$now->format(SystemConfig::getValue('sDateTimeFormat'))."' is: ".$diff." hours");
       return $diff->h >= $ThresholdHours;
     }
 
@@ -396,7 +395,7 @@ class SystemService
               LoggerUtils::getAppLogger()->addInfo("Backup job successful: '".$backup->filename."' (".$backup->filesize." bytes) copied to '".$backup->remoteUrl."'");
             }
             else {
-              LoggerUtils::getAppLogger()->addInfo("Not starting a backup job.  Last backup run: ".SystemConfig::getValue('sLastBackupTimeStamp').". ".$diff->h." hours since last backup is less than the threshold of ".SystemConfig::getValue('sExternalBackupAutoInterval'));  
+              LoggerUtils::getAppLogger()->addInfo("Not starting a backup job.  Last backup run: ".SystemConfig::getValue('sLastBackupTimeStamp').".");  
             }
           } catch (\Exception $exc) {
               // an error in the auto-backup shouldn't prevent the page from loading...
