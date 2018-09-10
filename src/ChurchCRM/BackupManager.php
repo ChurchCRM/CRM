@@ -4,6 +4,7 @@ namespace ChurchCRM\Backup
 {
   use ChurchCRM\dto\SystemURLs;
   use ChurchCRM\FileSystemUtils;
+  use ChurchCRM\Utils\LoggerUtils;
   use ChurchCRM\SQLUtils;
   use Exception;
   use Ifsnop\Mysqldump\Mysqldump;
@@ -13,6 +14,7 @@ namespace ChurchCRM\Backup
   use RecursiveIteratorIterator;
   use RecursiveDirectoryIterator;
   use SplFileInfo;
+  use ChurchCRM\Utils\ExecutionTime;
   
   
   abstract class BackupType
@@ -132,7 +134,8 @@ namespace ChurchCRM\Backup
       unlink($SqlFile->getPathname());
     }
     public function Execute() {
-      
+      $time = new \ChurchCRM\Utils\ExecutionTime();
+      LoggerUtils::getAppLogger()->addDebug("Beginning backup job. Type: " . $this->BackupType . ". BaseName: " . $this->BackupFileBaseName);
       if ($this->BackupType == BackupType::FullBackup) {
         $this->CreateFullArchive();
       }
@@ -145,8 +148,15 @@ namespace ChurchCRM\Backup
       {
          $this->CreateGZSql();
       }
-      
-      return $backup;
+      $time->End();
+      $percentExecutionTime = (($time->getMiliseconds()/1000)/ini_get('max_execution_time'))*100;
+      LoggerUtils::getAppLogger()->addInfo("Completed backup job.  Took : " . $time->getMiliseconds()."ms. ".$percentExecutionTime."% of max_execution_time");
+      if ($percentExecutionTime > 80){
+        // if the backup took more than 80% of the max_execution_time, then write a warning to the log
+        LoggerUtils::getAppLogger()->addWarning("Backup task took more than 80% of max_execution_time (".ini_get('max_execution_time').").  Consider increasing this time to avoid a failure");
+      }
+
+      return true;
 
     }
   }
