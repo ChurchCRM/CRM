@@ -375,7 +375,11 @@ class SystemService
       }
       $tz = new \DateTimeZone(SystemConfig::getValue('sTimeZone'));
       $now = new \DateTime("now", $tz);  //get the current time
-      $previous = \DateTime::createFromFormat(SystemConfig::getValue('sDateTimeFormat'),$LastTime, $tz); // get a DateTime object for the last time a backup was done.
+      $previous = \DateTime::createFromFormat(SystemConfig::getValue('sDateFilenameFormat'),$LastTime, $tz); // get a DateTime object for the last time a backup was done.
+      if ($previous === false)
+      {
+        return true;
+      }
       $diff = abs($now->getTimestamp() - $previous->getTimestamp()) / 60 / 60 ;
       return $diff->h >= $ThresholdHours;
     }
@@ -391,7 +395,7 @@ class SystemService
               LoggerUtils::getAppLogger()->addInfo("Starting a backup job.  Last backup run: ".SystemConfig::getValue('sLastBackupTimeStamp'));   
               $backup = self::copyBackupToExternalStorage();  // Tell system service to do an external storage backup.
               $now = new \DateTime();  // update the LastBackupTimeStamp.
-              SystemConfig::setValue('sLastBackupTimeStamp', $now->format(SystemConfig::getValue('sDateTimeFormat')));
+              SystemConfig::setValue('sLastBackupTimeStamp', $now->format(SystemConfig::getValue('sDateFilenameFormat')));
               LoggerUtils::getAppLogger()->addInfo("Backup job successful: '".$backup->filename."' (".$backup->filesize." bytes) copied to '".$backup->remoteUrl."'");
             }
             else {
@@ -410,7 +414,7 @@ class SystemService
                 $appIntegrity = AppIntegrityService::verifyApplicationIntegrity();
                 file_put_contents($integrityCheckFile, json_encode($appIntegrity));
                 $now = new \DateTime();  // update the LastBackupTimeStamp.
-                SystemConfig::setValue('sLastIntegrityCheckTimeStamp', $now->format(SystemConfig::getValue('sDateTimeFormat')));
+                SystemConfig::setValue('sLastIntegrityCheckTimeStamp', $now->format(SystemConfig::getValue('sDateFilenameFormat')));
                 if ($appIntegrity['result'] == 'success')
                 {
                   LoggerUtils::getAppLogger()->addInfo("Application integrity check passed");
