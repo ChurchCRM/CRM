@@ -15,7 +15,7 @@ class CheckExecutionTimeTask
 
     public function isActive()
     {
-        return $this->sizeBytes < 120;
+        return $this->executionTime < 120;
     }
 
     public function isAdmin()
