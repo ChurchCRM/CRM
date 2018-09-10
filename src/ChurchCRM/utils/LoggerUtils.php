@@ -9,6 +9,8 @@ use ChurchCRM\dto\SystemURLs;
 
 class LoggerUtils
 {
+    private static $appLogger;
+    private static $cspLogger; 
     public static function getLogLevel()
     {
         return intval(SystemConfig::getValue("sLogLevel"));
@@ -24,16 +26,20 @@ class LoggerUtils
      */
     public static function getAppLogger()
     {
-        $logger = new Logger('defaultLogger');
-        $logger->pushHandler(new StreamHandler(self::buildLogFilePath("app"), self::getLogLevel()));
-        return $logger;
+      if (is_null(self::$appLogger)){
+        self::$appLogger = new Logger('defaultLogger');
+        self::$appLogger->pushHandler(new StreamHandler(self::buildLogFilePath("app"), self::getLogLevel()));
+      }
+      return self::$appLogger;
     }
 
     public static function getCSPLogger()
     {
-        $logger = new Logger('cspLogger');
-        $logger->pushHandler(new StreamHandler(self::buildLogFilePath("csp"), self::getLogLevel()));
-        return $logger;
+      if (is_null(self::$cspLogger)){
+        self::$cspLogger = new Logger('cspLogger');
+        self::$cspLogger->pushHandler(new StreamHandler(self::buildLogFilePath("csp"), self::getLogLevel()));
+      }
+      return self::$cspLogger;
     }
 
 }
