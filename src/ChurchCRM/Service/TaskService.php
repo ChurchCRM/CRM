@@ -17,6 +17,7 @@ use ChurchCRM\Tasks\PersonRoleDataCheck;
 use ChurchCRM\Tasks\PrerequisiteCheckTask;
 use ChurchCRM\Tasks\RegisteredTask;
 use ChurchCRM\Tasks\UpdateFamilyCoordinatesTask;
+use ChurchCRM\Tasks\CheckExecutionTimeTask;
 
 class TaskService
 {
@@ -41,7 +42,8 @@ class TaskService
             new PersonClassificationDataCheck(),
             new PersonRoleDataCheck(),
             new UpdateFamilyCoordinatesTask(),
-            new CheckUploadSizeTask()
+            new CheckUploadSizeTask(),
+            new CheckExecutionTimeTask()
         ];
 
         $this->notificationClasses = [
