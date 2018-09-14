@@ -219,7 +219,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
         $pdf->WriteAtCell($XRole, $curY, $XEmail - $XRole, $sFamRole);
         $pdf->WriteAtCell($XEmail, $curY, $XBirthday - $XEmail, $per_Email);
 
-        $birthdayStr = MiscUtils::FormatBirthDate($per_BirthYear, $per_BirthMonth, $per_BirthDay);
+        $birthdayStr = MiscUtils::FormatBirthDate($per_BirthYear, $per_BirthMonth, $per_BirthDay, $null, $null);
         //If the "HideAge" check box is true, then create a Yes/No representation of the check box.
         if ($per_Flags) {
             $hideAgeStr = gettext('Yes');
