@@ -217,7 +217,7 @@ require 'Include/HeaderNotLoggedIn.php';
 
         <?php if (SystemConfig::getBooleanValue('bEnableSelfRegistration')) {
             ?>
-            <a href="external/register/" class="text-center btn bg-olive"><i
+            <a href="<?= SystemURLs::getRootPath() ?>/external/register/" class="text-center btn bg-olive"><i
                         class="fa fa-user-plus"></i> <?= gettext('Register a new Family'); ?></a><br>
             <?php
         } ?>
