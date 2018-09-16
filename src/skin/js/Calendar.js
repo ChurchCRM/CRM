@@ -688,8 +688,8 @@ function getCalendarFilterElement(calendar,type,parent) {
             '</div>'+
            ' <div id="'+boxId+'" class="panel-collapse collapse" aria-expanded="false" style="">'+
               '<div class="box-body">'+
-                "<div><a class='btn btn-primary calendarfocus' style='width:100%' data-calendartype='"+type+"' data-calendarname='"+calendar.Name+"' data-calendarid='"+calendar.Id+"'>"+i18next.t('Focus')+"</a></div>" +
-                "<div class='checkbox'><input checked data-onstyle='info' data-width='100%' data-toggle='toggle' data-on='Show on Calendar' data-off='Hide on Calendar' type='checkbox' id='display-"+boxId+"' class='calendarSelectionBox' data-calendartype='"+type+"' data-calendarname='"+calendar.Name+"' data-calendarid='"+calendar.Id+"'/></div>" +
+                "<div style='margin-bottom: 10px' class='checkbox'><input checked data-onstyle='info' data-width='100%' data-toggle='toggle' data-on='Show on Calendar' data-off='Hide on Calendar' type='checkbox' id='display-"+boxId+"' class='calendarSelectionBox' data-calendartype='"+type+"' data-calendarname='"+calendar.Name+"' data-calendarid='"+calendar.Id+"'/></div>" +
+                "<div style='margin-bottom: 10px'><a class='btn btn-primary calendarfocus' style='width:100%' data-calendartype='"+type+"' data-calendarname='"+calendar.Name+"' data-calendarid='"+calendar.Id+"'>"+i18next.t('Focus')+"</a></div>"  +
                 (type === "user"  ? '<div><a class="btn btn-warning calendarproperties" data-calendarid="'+calendar.Id+'" style="width:100%; white-space: unset; font-size:10pt">Properties</a></div>' : "") +
                 '</div>'+
             '</div>'+
@@ -783,7 +783,7 @@ function showAllUserCalendars() {
 
       window.CRM.fullcalendar.fullCalendar("addEventSource", GetCalendarURL("user",calendar.Id));
     });
-    $(".calendarSelectionBox").bootstrapToggle();
+    $(".calendarSelectionBox").filter('input[data-calendartype=user]').bootstrapToggle();
   });
 }
 
@@ -797,6 +797,7 @@ function showAllSystemCalendars() {
       $("#systemCalendars").append(getCalendarFilterElement(calendar,"system",'systemCalendars'))
       window.CRM.fullcalendar.fullCalendar("addEventSource", GetCalendarURL("system",calendar.Id));
     });
+    $(".calendarSelectionBox").filter('input[data-calendartype=system]').bootstrapToggle();
   });
 }
 
