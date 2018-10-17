@@ -35,7 +35,7 @@ if (AppIntegrityService::arePrerequisitesMet()) {
         ?>
   <div class="callout callout-danger">
     <h4><?= gettext('Unmet Application Prerequisites') ?> </h4>
-    <p><?= gettext('Certain components that ChurchCRM relies upon are missing or improperly configured on this server.  The application may continue to function, but may produce unexpected behavior.  Click each prerequisite name to read more about the symptoms, diagnosis, and resolution of each') ?></p>
+    <p><?= gettext('Certain components that ChurchCRM relies upon are missing or improperly configured on this server.  The application may continue to function, but may produce unexpected behavior.  Click each prerequisite name to read more about symptoms, diagnosis, and resolution.') ?></p>
     <ul>
       <?php
       foreach (AppIntegrityService::getUnmetPrerequisites() as $prerequisite) {
