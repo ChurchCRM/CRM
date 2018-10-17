@@ -3,6 +3,7 @@
 namespace ChurchCRM\Service;
 
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\MiscUtils;
 
 class AppIntegrityService
 {
@@ -77,7 +78,7 @@ class AppIntegrityService
     $unmet = [];
     foreach (AppIntegrityService::getApplicationPrerequisites() as $prerequisite=>$status) {
           if (!$status) {
-              array_push($unmet,$prerequisite);
+              array_push($unmet,array("name" => $prerequisite, "anchor" => MiscUtils::GetGitHubWikiAnchorLink($prerequisite)));
           }
       }
     return $unmet;

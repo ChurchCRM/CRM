@@ -35,11 +35,11 @@ if (AppIntegrityService::arePrerequisitesMet()) {
         ?>
   <div class="callout callout-danger">
     <h4><?= gettext('Unmet Application Prerequisites') ?> </h4>
-    <p><?= gettext('Certain components that ChurchCRM relies upon are missing or improperly configured on this server.  The application may continue to function, but may produce unexpected behavior.') ?></p>
+    <p><?= gettext('Certain components that ChurchCRM relies upon are missing or improperly configured on this server.  The application may continue to function, but may produce unexpected behavior.  Click each prerequisite name to read more about the symptoms, diagnosis, and resolution of each') ?></p>
     <ul>
       <?php
-      foreach (AppIntegrityService::getUnmetPrerequisites() as $prerequisiteName) {
-          echo "<li>".$prerequisiteName.": ".gettext("Failed")."</li>";
+      foreach (AppIntegrityService::getUnmetPrerequisites() as $prerequisite) {
+          echo "<li><a href='https://github.com/ChurchCRM/CRM/wiki/ChurchCRM-Application-Platform-Prerequisites#".$prerequisite['anchor']."'>".$prerequisite['name']."</a>: ".gettext("Failed")."</li>";
       } ?>
     </ul>
   </div>
