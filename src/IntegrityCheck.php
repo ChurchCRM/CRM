@@ -40,7 +40,7 @@ if (AppIntegrityService::arePrerequisitesMet()) {
     <ul>
       <?php
       foreach (AppIntegrityService::getUnmetPrerequisites() as $prerequisite) {
-        echo "<li><a href='".$prerequisite->GetWikiLink()."'>".$prerequisite->getName()."</a>: ".$prerequisite->GetStatusText() ."</li>";
+          echo "<li><a href='".$prerequisite->GetWikiLink()."'>".$prerequisite->getName()."</a>: ".$prerequisite->GetStatusText() ."</li>";
       } ?>
     </ul>
   </div>
