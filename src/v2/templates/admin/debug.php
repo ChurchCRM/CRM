@@ -91,10 +91,10 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
             </div>
             <div class="box-body">
                 <table class="table table-striped">
-                    <?php foreach (AppIntegrityService::getApplicationPrerequisites() as $prerequisite => $status) { ?>
+                    <?php foreach (AppIntegrityService::getApplicationPrerequisites() as $prerequisite) { ?>
                         <tr>
-                            <td><?= $prerequisite ?></td>
-                            <td><?= $status ? "true" : "false" ?></td>
+                          <td><a href='<?=$prerequisite->GetWikiLink()?>'><?= $prerequisite->getName()?></a></td>
+                          <td><?= $prerequisite->GetStatusText()?></td>
                         </tr>
                     <?php } ?>
                 </table>

@@ -4,22 +4,22 @@ function skipCheck() {
 }
 
 window.CRM.checkIntegrity = function () {
-    window.CRM.renderPrerequisite("ChurchCRM File Integrity Check", "pending");
+    window.CRM.renderPrerequisite({Name: "ChurchCRM File Integrity Check",WikiLink:"",Satisfied:"pending"});
     $.ajax({
         url: window.CRM.root + "/setup/SystemIntegrityCheck",
         method: "GET"
     }).done(function (data) {
         if (data == "success") {
-            window.CRM.renderPrerequisite("ChurchCRM File Integrity Check", "pass");
+            window.CRM.renderPrerequisite({Name: "ChurchCRM File Integrity Check",WikiLink:"",Satisfied:true});
             $("#prerequisites-war").hide();
             window.CRM.prerequisitesStatus = true;
         }
         else {
-            window.CRM.renderPrerequisite("ChurchCRM File Integrity Check", "fail");
+            window.CRM.renderPrerequisite({Name: "ChurchCRM File Integrity Check",WikiLink:"",Satisfied:false});
         }
 
     }).fail(function () {
-        window.CRM.renderPrerequisite("ChurchCRM File Integrity Check", "fail");
+        window.CRM.renderPrerequisite({Name: "ChurchCRM File Integrity Check",WikiLink:"",Satisfied:false});
     });
 };
 
@@ -29,42 +29,36 @@ window.CRM.checkPrerequisites = function () {
         method: "GET",
         contentType: "application/json"
     }).done(function (data) {
-        $.each(data, function (key, value) {
-            if (value) {
-                status = "pass";
-            }
-            else {
-                status = "fail";
-            }
-            window.CRM.renderPrerequisite(key, status);
+        $.each(data, function (index, prerequisite) {
+          window.CRM.renderPrerequisite(prerequisite);
         });
     });
 };
-window.CRM.renderPrerequisite = function (name, status) {
+window.CRM.renderPrerequisite = function (prerequisite) {
     var td = {};
-    if (status == "pass") {
+    if (prerequisite.Satisfied === true) {
         td = {
             class: 'text-blue',
             html: '&check;'
         };
     }
-    else if (status == "pending") {
+    else if (prerequisite.Satisfied === "pending") {
         td = {
             class: 'text-orange',
             html: '<i class="fa fa-spinner fa-spin"></i>'
         };
     }
-    else if (status == "fail") {
+    else if (prerequisite.Satisfied === false) {
         td = {
             class: 'text-red',
             html: '&#x2717;'
         };
     }
-    var id = name.replace(/[^A-z0-9]/g, '');
-    window.CRM.prerequisites[id] = status;
+    var id = prerequisite.Name.replace(/[^A-z0-9]/g, '');
+    window.CRM.prerequisites[id] = prerequisite.Satisfied;
     var domElement = "#" + id;
     var prerequisite = $("<tr>", {id: id}).append(
-        $("<td>", {text: name})).append(
+        $("<td>", {text: prerequisite.Name})).append(
         $("<td>", td));
 
     if ($(domElement).length != 0) {

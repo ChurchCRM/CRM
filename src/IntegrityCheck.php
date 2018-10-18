@@ -7,6 +7,7 @@ require 'Include/Functions.php';
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\AppIntegrityService;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\dto\Prerequisite;
 
 //Set the page title
 $sPageTitle = gettext('Integrity Check Results');
@@ -39,7 +40,7 @@ if (AppIntegrityService::arePrerequisitesMet()) {
     <ul>
       <?php
       foreach (AppIntegrityService::getUnmetPrerequisites() as $prerequisite) {
-          echo "<li><a href='https://github.com/ChurchCRM/CRM/wiki/ChurchCRM-Application-Platform-Prerequisites#".$prerequisite['anchor']."'>".$prerequisite['name']."</a>: ".gettext("Failed")."</li>";
+        echo "<li><a href='".$prerequisite->GetWikiLink()."'>".$prerequisite->getName()."</a>: ".$prerequisite->GetStatusText() ."</li>";
       } ?>
     </ul>
   </div>

@@ -3,7 +3,7 @@
 namespace ChurchCRM\Service;
 
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\Utils\MiscUtils;
+use ChurchCRM\dto\Prerequisite;
 
 class AppIntegrityService
 {
@@ -49,52 +49,41 @@ class AppIntegrityService
 
   public static function getApplicationPrerequisites()
   {
+    
     $prerequisites = array(
-      'PHP 7.0+'                                  => version_compare(PHP_VERSION, '7.0.0', '>='),
-      'PCRE and UTF-8 Support'                    => function_exists('preg_match') && @preg_match('/^.$/u', 'ñ') && @preg_match('/^\pL$/u', 'ñ'),
-      'Multibyte Encoding'                        => extension_loaded('mbstring'),
-      'PHP Phar'                                  => extension_loaded('phar'),
-      'PHP Session'                               => extension_loaded('session'),
-      'PHP XML'                                   => extension_loaded('xml'),
-      'PHP EXIF'                                  => extension_loaded('exif'),
-      'PHP iconv'                                 => extension_loaded('iconv'),
-      'Mcrypt'                                    => extension_loaded('mcrypt'),
-      'Mod Rewrite'                               => AppIntegrityService::hasModRewrite(),
-      'GD Library for image manipulation'         => (extension_loaded('gd') && function_exists('gd_info')),
-      'FileInfo Extension for image manipulation' => extension_loaded('fileinfo'),
-      'cURL'                                      => function_exists('curl_version'),
-      'locale gettext'                            => function_exists('bindtextdomain'),
-      'Include/Config file is writeable'          => is_writable(SystemURLs::getDocumentRoot().'/Include/') || is_writable(SystemURLs::getDocumentRoot().'/Include/Config.php'),
-      'Images directory is writeable'             => AppIntegrityService::testImagesWriteable(),
-      'PHP ZipArchive'                            => extension_loaded('zip'),
-      'Mysqli Functions'                          => function_exists('mysqli_connect')
-        
+      new Prerequisite('PHP 7.0+', function() { return version_compare(PHP_VERSION, '7.0.0', '>='); }),
+      new Prerequisite('PCRE and UTF-8 Support', function() { return function_exists('preg_match') && @preg_match('/^.$/u', 'ñ') && @preg_match('/^\pL$/u', 'ñ'); }),
+      new Prerequisite('Multibyte Encoding', function() { return extension_loaded('mbstring'); }),
+      new Prerequisite('PHP Phar', function() { return extension_loaded('phar'); }),
+      new Prerequisite('PHP Session', function() { return extension_loaded('session'); }),
+      new Prerequisite('PHP XML', function() { return extension_loaded('xml'); }),
+      new Prerequisite('PHP EXIF', function() { return extension_loaded('exif'); }),
+      new Prerequisite('PHP iconv', function() { return extension_loaded('iconv'); }),
+      new Prerequisite('Mcrypt', function() { return extension_loaded('mcrypt'); }),
+      new Prerequisite('Mod Rewrite', function() { return AppIntegrityService::hasModRewrite(); }),
+      new Prerequisite('GD Library for image manipulation', function() { return (extension_loaded('gd') && function_exists('gd_info')); }),
+      new Prerequisite('FileInfo Extension for image manipulation', function() { return extension_loaded('fileinfo'); }),
+      new Prerequisite('cURL', function() { return function_exists('curl_version'); }),
+      new Prerequisite('locale gettext', function() { return function_exists('bindtextdomain'); }),
+      new Prerequisite('Include/Config file is writeable', function() { return is_writable(SystemURLs::getDocumentRoot().'/Include/') || is_writable(SystemURLs::getDocumentRoot().'/Include/Config.php'); }),
+      new Prerequisite('Images directory is writeable', function() { return AppIntegrityService::testImagesWriteable(); }),
+      new Prerequisite('PHP ZipArchive', function() { return extension_loaded('zip'); }),
+      new Prerequisite('Mysqli Functions', function() { return function_exists('mysqli_connect'); })
     );
     return $prerequisites;
   }
   
   public static function getUnmetPrerequisites()
   {
-    $unmet = [];
-    foreach (AppIntegrityService::getApplicationPrerequisites() as $prerequisite=>$status) {
-          if (!$status) {
-              array_push($unmet,array("name" => $prerequisite, "anchor" => MiscUtils::GetGitHubWikiAnchorLink($prerequisite)));
-          }
-      }
-    return $unmet;
+    return array_filter(AppIntegrityService::getApplicationPrerequisites(), function ($prereq) { 
+      return $prereq->IsPrerequisiteMet();
+    });
+    die();
   }
 
   public static function arePrerequisitesMet()
   {
-    $prerequisites = AppIntegrityService::getApplicationPrerequisites();
-    foreach ($prerequisites as $prerequisiteName => $prerequisiteMet)
-    {
-      if (!$prerequisiteMet)
-      {
-        return false;
-      }
-    }
-    return true;
+    return count(AppIntegrityService::getUnmetPrerequisites()) === 0;
   }
 
   public static function hasApacheModule($module)
