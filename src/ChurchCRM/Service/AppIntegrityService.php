@@ -7,6 +7,47 @@ use ChurchCRM\dto\Prerequisite;
 
 class AppIntegrityService
 {
+  private static $IntegrityCheckDetails;
+
+  private static function getIntegrityCheckData() {
+    $integrityCheckFile = SystemURLs::getDocumentRoot().'/integrityCheck.json';
+    if (is_null(AppIntegrityService::$IntegrityCheckDetails))
+    {
+      if (file_exists($integrityCheckFile)) {
+        AppIntegrityService::$IntegrityCheckDetails = json_decode(file_get_contents($integrityCheckFile));
+      } else {
+          AppIntegrityService::$IntegrityCheckDetails->status = 'failure';
+          AppIntegrityService::$IntegrityCheckDetails->message = gettext("integrityCheck.json file missing");
+      }
+    }
+    
+    return AppIntegrityService::$IntegrityCheckDetails;
+    
+  }
+  
+  public static function getIntegrityCheckStatus () {
+    if (AppIntegrityService::getIntegrityCheckData()->status == "failure")
+    {
+      return gettext("Failed");
+    }
+    else {
+      return gettext("Passed");
+    }
+  }
+  
+  public static function getIntegrityCheckMessage() {
+    if (AppIntegrityService::getIntegrityCheckData()->status != "failure")
+    {
+      AppIntegrityService::$IntegrityCheckDetails->message = gettext('The previous integrity check passed.  All system file hashes match the expected values.');
+    }
+
+    return AppIntegrityService::$IntegrityCheckDetails->message;
+    
+  }
+  
+  public static function getFilesFailingIntegrityCheck() { 
+    return AppIntegrityService::getIntegrityCheckData()->files;
+  }
   public static function verifyApplicationIntegrity()
   {
     $signatureFile = SystemURLs::getDocumentRoot() . '/signatures.json';
