@@ -117,9 +117,8 @@ class AppIntegrityService
   public static function getUnmetPrerequisites()
   {
     return array_filter(AppIntegrityService::getApplicationPrerequisites(), function ($prereq) { 
-      return $prereq->IsPrerequisiteMet();
+      return ! $prereq->IsPrerequisiteMet();
     });
-    die();
   }
 
   public static function arePrerequisitesMet()
