@@ -21,7 +21,7 @@ msgstr "Unable to execute query"
 #: FamilyView.php:774 FamilyView.php:911 FindDepositSlip.php:105
 #: FundRaiserEditor.php:200 ListEvents.php:241 PaddleNumList.php:55
 #: PersonCustomFieldsEditor.php:315 PersonCustomFieldsEditor.php:384
-#: PersonView.php:940 PledgeDelete.php:53 PropertyList.php:65
+#: PersonView.php:941 PledgeDelete.php:53 PropertyList.php:65
 #: PropertyList.php:106 PropertyTypeList.php:46 PropertyTypeList.php:67
 #: PropertyTypeList.php:69 v2/templates/people/family-view.php:530
 msgid "Delete"
@@ -34,7 +34,7 @@ msgstr "Delete"
 #: FundRaiserEditor.php:143 GroupPropsEditor.php:168 GroupReports.php:82
 #: GroupReports.php:151 LettersAndLabels.php:83 ManageEnvelopes.php:135
 #: MemberRoleChange.php:119 MemberRoleChange.php:121 NoteDelete.php:67
-#: NoteEditor.php:135 PersonEditor.php:1231 PersonView.php:939
+#: NoteEditor.php:135 PersonEditor.php:1231 PersonView.php:940
 #: PledgeDelete.php:54 PropertyEditor.php:169 PropertyTypeEditor.php:114
 #: Register.php:56 ReminderReport.php:52 SettingsIndividual.php:114
 #: SettingsIndividual.php:160 SettingsUser.php:100 SettingsUser.php:160
@@ -127,7 +127,7 @@ msgstr "Personal Mobile"
 msgid "Check"
 msgstr "Cheque"
 
-#: Reports/ConfirmReport.php:130 Reports/ConfirmReportEmail.php:131
+#: Reports/ConfirmReport.php:131 Reports/ConfirmReportEmail.php:131
 msgid "City, State, Zip"
 msgstr "Suburb, State, Post Code"
 
@@ -144,7 +144,7 @@ msgstr "Mobile Phone"
 msgid "Cell"
 msgstr "Mobile"
 
-#: Reports/ConfirmReport.php:186 Reports/ConfirmReport.php:205
+#: Reports/ConfirmReport.php:189 Reports/ConfirmReport.php:208
 msgid "Cell phone"
 msgstr "Mobile phone"
 

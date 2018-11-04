@@ -25,7 +25,7 @@ msgstr "ยืนยันที่จะลบการจ่ายเงิน
 #: FamilyView.php:774 FamilyView.php:911 FindDepositSlip.php:105
 #: FundRaiserEditor.php:200 ListEvents.php:241 PaddleNumList.php:55
 #: PersonCustomFieldsEditor.php:315 PersonCustomFieldsEditor.php:384
-#: PersonView.php:940 PledgeDelete.php:53 PropertyList.php:65
+#: PersonView.php:941 PledgeDelete.php:53 PropertyList.php:65
 #: PropertyList.php:106 PropertyTypeList.php:46 PropertyTypeList.php:67
 #: PropertyTypeList.php:69 v2/templates/people/family-view.php:530
 msgid "Delete"
@@ -38,7 +38,7 @@ msgstr "ลบ"
 #: FundRaiserEditor.php:143 GroupPropsEditor.php:168 GroupReports.php:82
 #: GroupReports.php:151 LettersAndLabels.php:83 ManageEnvelopes.php:135
 #: MemberRoleChange.php:119 MemberRoleChange.php:121 NoteDelete.php:67
-#: NoteEditor.php:135 PersonEditor.php:1231 PersonView.php:939
+#: NoteEditor.php:135 PersonEditor.php:1231 PersonView.php:940
 #: PledgeDelete.php:54 PropertyEditor.php:169 PropertyTypeEditor.php:114
 #: Register.php:56 ReminderReport.php:52 SettingsIndividual.php:114
 #: SettingsIndividual.php:160 SettingsUser.php:100 SettingsUser.php:160
@@ -127,7 +127,7 @@ msgstr "โทรศัพท์"
 #: FamilyView.php:277 FamilyView.php:359 GroupReports.php:127
 #: PersonEditor.php:1035 PersonEditor.php:1037 PersonView.php:307
 #: PersonView.php:511 PrintView.php:294 Reports/CanvassReports.php:243
-#: Reports/ConfirmReport.php:183 Reports/ConfirmReport.php:202
+#: Reports/ConfirmReport.php:186 Reports/ConfirmReport.php:205
 #: Reports/ConfirmReportEmail.php:187 Reports/ConfirmReportEmail.php:205
 #: Reports/DirectoryReport.php:296 Reports/GroupReport.php:133
 #: external/templates/registration/family-register-members.php:83
@@ -331,7 +331,7 @@ msgstr "เรียน"
 msgid "Birthday Date"
 msgstr "วันเกิด"
 
-#: Reports/ConfirmReport.php:150 Reports/ConfirmReportEmail.php:151
+#: Reports/ConfirmReport.php:151 Reports/ConfirmReportEmail.php:151
 #, fuzzy
 msgid "Anniversary Date"
 msgstr "วันครบรอบแต่งงาน"
@@ -358,7 +358,7 @@ msgstr "ซองถวาย"
 #: EditEventAttendees.php:43 EventAttendance.php:176 FamilyEditor.php:737
 #: FamilyView.php:254 GroupReports.php:124 PersonEditor.php:961
 #: PersonEditor.php:963 PersonView.php:302 PrintView.php:199
-#: Reports/ConfirmReport.php:135 Reports/ConfirmReportEmail.php:136
+#: Reports/ConfirmReport.php:136 Reports/ConfirmReportEmail.php:136
 #: SelectList.php:965 SelectList.php:966 SelectList.php:1041
 #: external/templates/registration/family-register-done.php:30
 #: external/templates/registration/family-register.php:68
@@ -374,7 +374,7 @@ msgstr "โทรศัพท์บ้าน"
 #: CSVExport.php:132 CSVImport.php:224 CartToFamily.php:291
 #: FamilyEditor.php:749 FamilyView.php:260 GroupReports.php:125
 #: PersonEditor.php:984 PersonEditor.php:986 PersonView.php:316
-#: PrintView.php:204 Reports/ConfirmReport.php:239
+#: PrintView.php:204 Reports/ConfirmReport.php:237
 #: Reports/ConfirmReportEmail.php:234 SelectList.php:968 SelectList.php:969
 #: SelectList.php:1041 external/templates/verify/verify-family-info.php:72
 #: v2/templates/people/family-view.php:160

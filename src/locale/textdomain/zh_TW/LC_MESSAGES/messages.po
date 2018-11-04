@@ -25,7 +25,7 @@ msgstr "確認刪除自動付款"
 #: FamilyView.php:774 FamilyView.php:911 FindDepositSlip.php:105
 #: FundRaiserEditor.php:200 ListEvents.php:241 PaddleNumList.php:55
 #: PersonCustomFieldsEditor.php:315 PersonCustomFieldsEditor.php:384
-#: PersonView.php:940 PledgeDelete.php:53 PropertyList.php:65
+#: PersonView.php:941 PledgeDelete.php:53 PropertyList.php:65
 #: PropertyList.php:106 PropertyTypeList.php:46 PropertyTypeList.php:67
 #: PropertyTypeList.php:69 v2/templates/people/family-view.php:530
 msgid "Delete"
@@ -38,7 +38,7 @@ msgstr "刪除"
 #: FundRaiserEditor.php:143 GroupPropsEditor.php:168 GroupReports.php:82
 #: GroupReports.php:151 LettersAndLabels.php:83 ManageEnvelopes.php:135
 #: MemberRoleChange.php:119 MemberRoleChange.php:121 NoteDelete.php:67
-#: NoteEditor.php:135 PersonEditor.php:1231 PersonView.php:939
+#: NoteEditor.php:135 PersonEditor.php:1231 PersonView.php:940
 #: PledgeDelete.php:54 PropertyEditor.php:169 PropertyTypeEditor.php:114
 #: Register.php:56 ReminderReport.php:52 SettingsIndividual.php:114
 #: SettingsIndividual.php:160 SettingsUser.php:100 SettingsUser.php:160
@@ -143,7 +143,7 @@ msgstr "電話"
 #: FamilyView.php:277 FamilyView.php:359 GroupReports.php:127
 #: PersonEditor.php:1035 PersonEditor.php:1037 PersonView.php:307
 #: PersonView.php:511 PrintView.php:294 Reports/CanvassReports.php:243
-#: Reports/ConfirmReport.php:183 Reports/ConfirmReport.php:202
+#: Reports/ConfirmReport.php:186 Reports/ConfirmReport.php:205
 #: Reports/ConfirmReportEmail.php:187 Reports/ConfirmReportEmail.php:205
 #: Reports/DirectoryReport.php:296 Reports/GroupReport.php:133
 #: external/templates/registration/family-register-members.php:83
@@ -412,7 +412,7 @@ msgstr "至："
 msgid "Birthday Date"
 msgstr "生日日期"
 
-#: Reports/ConfirmReport.php:150 Reports/ConfirmReportEmail.php:151
+#: Reports/ConfirmReport.php:151 Reports/ConfirmReportEmail.php:151
 #, fuzzy
 msgid "Anniversary Date"
 msgstr "週年日期"
@@ -478,7 +478,7 @@ msgstr "捐款信封"
 #: EditEventAttendees.php:43 EventAttendance.php:176 FamilyEditor.php:737
 #: FamilyView.php:254 GroupReports.php:124 PersonEditor.php:961
 #: PersonEditor.php:963 PersonView.php:302 PrintView.php:199
-#: Reports/ConfirmReport.php:135 Reports/ConfirmReportEmail.php:136
+#: Reports/ConfirmReport.php:136 Reports/ConfirmReportEmail.php:136
 #: SelectList.php:965 SelectList.php:966 SelectList.php:1041
 #: external/templates/registration/family-register-done.php:30
 #: external/templates/registration/family-register.php:68
@@ -494,7 +494,7 @@ msgstr "家庭電話"
 #: CSVExport.php:132 CSVImport.php:224 CartToFamily.php:291
 #: FamilyEditor.php:749 FamilyView.php:260 GroupReports.php:125
 #: PersonEditor.php:984 PersonEditor.php:986 PersonView.php:316
-#: PrintView.php:204 Reports/ConfirmReport.php:239
+#: PrintView.php:204 Reports/ConfirmReport.php:237
 #: Reports/ConfirmReportEmail.php:234 SelectList.php:968 SelectList.php:969
 #: SelectList.php:1041 external/templates/verify/verify-family-info.php:72
 #: v2/templates/people/family-view.php:160
@@ -793,7 +793,7 @@ msgstr "添加家庭至購物車"
 #: FamilyView.php:550 GeoPage.php:357 GroupEditor.php:73
 #: GroupPropsFormEditor.php:285 GroupPropsFormEditor.php:397 GroupView.php:255
 #: GroupView.php:288 PersonCustomFieldsEditor.php:311
-#: PersonCustomFieldsEditor.php:442 PersonView.php:683 PersonView.php:788
+#: PersonCustomFieldsEditor.php:442 PersonView.php:684 PersonView.php:789
 #: PrintView.php:337 PrintView.php:463 PropertyEditor.php:149
 #: PropertyList.php:60 PropertyTypeEditor.php:96 PropertyTypeList.php:41
 #: Reports/CanvassReports.php:69 Reports/CanvassReports.php:237
@@ -940,21 +940,21 @@ msgid "persons from"
 msgstr "人從"
 
 #: EditEventTypes.php:166 FamilyView.php:555 FamilyView.php:597
-#: GroupView.php:293 GroupView.php:334 PersonView.php:686 PersonView.php:704
-#: PersonView.php:791 PersonView.php:809 v2/templates/cart/cartlisting.php:20
+#: GroupView.php:293 GroupView.php:334 PersonView.php:687 PersonView.php:705
+#: PersonView.php:792 PersonView.php:810 v2/templates/cart/cartlisting.php:20
 #: v2/templates/cart/cartlisting.php:37
 msgid "Remove"
 msgstr "清除"
 
 #: DonationFundEditor.php:177 FinancialReports.php:295
 #: Include/Functions.php:686 Include/Functions.php:770 ListEvents.php:296
-#: Reports/ConfirmReport.php:227
+#: Reports/ConfirmReport.php:225
 msgid "Yes"
 msgstr "是"
 
 #: DonationFundEditor.php:180 FinancialReports.php:296
 #: Include/Functions.php:688 Include/Functions.php:771 ListEvents.php:296
-#: Reports/ConfirmReport.php:229
+#: Reports/ConfirmReport.php:227
 msgid "No"
 msgstr "否"
 
@@ -1008,7 +1008,7 @@ msgid "Checked Out By"
 msgstr "簽出"
 
 #: Checkin.php:316 EditEventAttendees.php:44 EventNames.php:267
-#: ListEvents.php:205 PersonView.php:633
+#: ListEvents.php:205 PersonView.php:634
 msgid "Action"
 msgstr "行動"
 
@@ -1127,8 +1127,8 @@ msgstr "地址"
 
 #: ChurchCRM/Service/CalendarService.php:16
 #: ChurchCRM/SystemCalendars/BirthdaysCalendar.php:63 DirectoryReports.php:174
-#: FamilyView.php:358 PersonView.php:510 Reports/ConfirmReport.php:184
-#: Reports/ConfirmReport.php:203 Reports/ConfirmReportEmail.php:188
+#: FamilyView.php:358 PersonView.php:510 Reports/ConfirmReport.php:187
+#: Reports/ConfirmReport.php:206 Reports/ConfirmReportEmail.php:188
 #: Reports/ConfirmReportEmail.php:206
 #: external/templates/verify/verify-family-info.php:80
 #: v2/templates/people/family-view.php:323
@@ -1147,7 +1147,7 @@ msgstr "家庭辦公電話"
 msgid "Family Cell Phone"
 msgstr "家庭手機"
 
-#: DirectoryReports.php:179 Reports/ConfirmReport.php:156
+#: DirectoryReports.php:179 Reports/ConfirmReport.php:159
 #: Reports/ConfirmReportEmail.php:157
 #: external/templates/verify/verify-family-info.php:29
 msgid "Family Email"
@@ -1263,7 +1263,7 @@ msgstr "去"
 #: DonationFundEditor.php:221 EditEventAttendees.php:34
 #: FundRaiserEditor.php:174 GroupEditor.php:79 GroupPropsFormEditor.php:286
 #: GroupPropsFormEditor.php:410 GroupView.php:256 ListEvents.php:206
-#: PersonView.php:789 PropertyTypeEditor.php:104
+#: PersonView.php:790 PropertyTypeEditor.php:104
 #: VolunteerOpportunityEditor.php:76 VolunteerOpportunityEditor.php:355
 #: VolunteerOpportunityEditor.php:429
 msgid "Description"
@@ -1374,7 +1374,7 @@ msgstr "家庭"
 #: FamilyCustomFieldsEditor.php:421 FamilyView.php:549 FamilyView.php:657
 #: GroupPropsFormEditor.php:284 GroupPropsFormEditor.php:385 GroupView.php:254
 #: GroupView.php:287 OptionManager.php:77 PersonCustomFieldsEditor.php:310
-#: PersonCustomFieldsEditor.php:429 PersonView.php:682 PropertyEditor.php:129
+#: PersonCustomFieldsEditor.php:429 PersonView.php:683 PropertyEditor.php:129
 #: SelectDelete.php:216
 msgid "Type"
 msgstr "類型"
@@ -1954,12 +1954,12 @@ msgstr "自動付款"
 msgid "Pledges and Payments"
 msgstr "認捐和實付"
 
-#: FamilyView.php:542 PersonView.php:676 PrintView.php:459
+#: FamilyView.php:542 PersonView.php:677 PrintView.php:459
 #: v2/templates/people/family-view.php:366
 msgid "No property assignments."
 msgstr "沒有財產的分配。"
 
-#: FamilyView.php:551 GroupView.php:289 PersonView.php:684 PrintView.php:464
+#: FamilyView.php:551 GroupView.php:289 PersonView.php:685 PrintView.php:464
 #: PropertyAssign.php:176 SystemSettings.php:140
 #: v2/templates/people/family-view.php:375
 msgid "Value"
@@ -1969,13 +1969,13 @@ msgstr "值"
 msgid "Edit Value"
 msgstr "編輯值"
 
-#: FamilyView.php:615 PersonView.php:717
+#: FamilyView.php:615 PersonView.php:718
 #: v2/templates/people/family-view.php:401
 #, fuzzy
 msgid "Assign a New Property"
 msgstr "分配一個新的屬性"
 
-#: FamilyView.php:636 GroupView.php:366 PersonView.php:756 PersonView.php:842
+#: FamilyView.php:636 GroupView.php:366 PersonView.php:757 PersonView.php:843
 #: PropertyAssign.php:185 SelectList.php:1060
 #: v2/templates/people/family-view.php:415
 msgid "Assign"
@@ -2061,17 +2061,17 @@ msgid "Close"
 msgstr "關閉"
 
 #: DepositSlipEditor.php:222 FamilyView.php:899 FindDepositSlip.php:95
-#: PersonView.php:929 PledgeDelete.php:19
+#: PersonView.php:930 PledgeDelete.php:19
 #: v2/templates/people/family-view.php:517
 msgid "Confirm Delete"
 msgstr "確認刪除"
 
-#: FamilyView.php:903 PersonView.php:933
+#: FamilyView.php:903 PersonView.php:934
 #: v2/templates/people/family-view.php:521
 msgid "You are about to delete the profile photo, this procedure is irreversible."
 msgstr "你可以刪除文檔圖片，此程序不可逆。"
 
-#: FamilyView.php:905 PersonView.php:935
+#: FamilyView.php:905 PersonView.php:936
 #: v2/templates/people/family-view.php:523
 msgid "Do you want to proceed?"
 msgstr "您想繼續嗎？"
@@ -2553,7 +2553,7 @@ msgstr "群組列表"
 msgid "Add New Group"
 msgstr "添加新群組"
 
-#: Include/Header-function.php:66
+#: Include/Header-function.php:67
 msgid "Submit"
 msgstr "提交"
 
@@ -3011,7 +3011,7 @@ msgstr "最新的家庭"
 #: CartToFamily.php:206
 #: ChurchCRM/Emails/notifications/NewPersonOrFamilyEmail.php:60
 #: FamilyEditor.php:654 LettersAndLabels.php:71 Menu.php:308 Menu.php:337
-#: Reports/ConfirmReport.php:115 Reports/ConfirmReportEmail.php:116
+#: Reports/ConfirmReport.php:116 Reports/ConfirmReportEmail.php:116
 #: SelectDelete.php:153 SelectDelete.php:279
 #: external/templates/registration/family-register.php:31
 msgid "Family Name"
@@ -3211,8 +3211,8 @@ msgstr "選擇日期"
 msgid "Birth Year"
 msgstr "出生年份"
 
-#: PersonEditor.php:762 Reports/ConfirmReport.php:185
-#: Reports/ConfirmReport.php:204
+#: PersonEditor.php:762 Reports/ConfirmReport.php:188
+#: Reports/ConfirmReport.php:207
 #: external/templates/registration/family-register-members.php:120
 msgid "Hide Age"
 msgstr "隱藏年齡"
@@ -3275,15 +3275,15 @@ msgstr "編輯用戶"
 msgid "List Members"
 msgstr "人員清單"
 
-#: PersonView.php:581 PrintView.php:387
+#: PersonView.php:582 PrintView.php:387
 msgid "No group assignments."
 msgstr "組分配。"
 
-#: PersonView.php:639
+#: PersonView.php:640
 msgid "Change Role"
 msgstr "變更角色"
 
-#: PersonView.php:642
+#: PersonView.php:643
 msgid "Update Properties"
 msgstr "更新屬性"
 
@@ -3291,11 +3291,11 @@ msgstr "更新屬性"
 msgid "Assign New Group"
 msgstr "指派新群組"
 
-#: PersonView.php:781
+#: PersonView.php:782
 msgid "No volunteer opportunity assignments."
 msgstr "沒有志願者的機會分配。"
 
-#: PersonView.php:824
+#: PersonView.php:825
 #, fuzzy
 msgid "Assign a New Volunteer Opportunity"
 msgstr "分配一個新的義工機會"
@@ -4176,11 +4176,11 @@ msgstr "回到存款單"
 msgid "Fatal error in eGive API datastream: '"
 msgstr "在eGive API數據流的致命錯誤："
 
-#: v2/routes/email.php:27
+#: v2/routes/email.php:31
 msgid "eMail Dashboard"
 msgstr "電子郵件儀錶板"
 
-#: email/MailChimpMissingReport.php:23
+#: v2/routes/email.php:114
 msgid "People not in Mailchimp"
 msgstr "聯繫人不在Mailchimp中"
 
@@ -4381,31 +4381,31 @@ msgstr "API調用出現錯誤"
 msgid "Error text"
 msgstr "文本錯誤"
 
-#: Include/Header-function.php:34
+#: Include/Header-function.php:35
 msgid "Issue Report!"
 msgstr "釋放報告！"
 
-#: Include/Header-function.php:41
+#: Include/Header-function.php:42
 msgid "Enter a Title for your bug / feature report"
 msgstr "請為故障/功能問題輸入標題"
 
-#: Include/Header-function.php:51
+#: Include/Header-function.php:52
 msgid "What were you doing when you noticed the bug / feature opportunity?"
 msgstr "當你看到缺陷/功能問題時你在操作什麼？"
 
-#: Include/Header-function.php:59
+#: Include/Header-function.php:60
 msgid "When you click \"submit,\" an error report will be posted to the ChurchCRM GitHub Issue tracker."
 msgstr "當您單擊“提交”時，錯誤報告將發佈到ChurchCRM GitHub問題跟踪器中。"
 
-#: Include/Header-function.php:60
+#: Include/Header-function.php:61
 msgid "Please do not include any confidential information."
 msgstr "請不要包含任何機密信息。"
 
-#: Include/Header-function.php:61
+#: Include/Header-function.php:62
 msgid "Some general information about your system will be submitted along with the request such as Server version and browser headers."
 msgstr "有關您的系統的一些常規信息將與服務器版本和瀏覽器標頭等請求一起提交。"
 
-#: Include/Header-function.php:62
+#: Include/Header-function.php:63
 msgid "No personally identifiable information will be submitted unless you purposefully include it."
 msgstr "除非您有意包含，否則不會提交任何個人身份信息。"
 
@@ -4503,8 +4503,8 @@ msgstr "前質"
 msgid "Pledged"
 msgstr "已抵押"
 
-#: Reports/CanvassReports.php:238 Reports/ConfirmReport.php:181
-#: Reports/ConfirmReport.php:200 Reports/ConfirmReportEmail.php:185
+#: Reports/CanvassReports.php:238 Reports/ConfirmReport.php:184
+#: Reports/ConfirmReport.php:203 Reports/ConfirmReportEmail.php:185
 #: Reports/ConfirmReportEmail.php:203
 msgid "M/F"
 msgstr "M / F"
@@ -4514,23 +4514,23 @@ msgstr "M / F"
 msgid "Liaison"
 msgstr "聯絡"
 
-#: Reports/ConfirmReport.php:130 Reports/ConfirmReportEmail.php:131
+#: Reports/ConfirmReport.php:131 Reports/ConfirmReportEmail.php:131
 msgid "City, State, Zip"
 msgstr "市，州，郵政編碼"
 
-#: FamilyEditor.php:781 FamilyView.php:234 Reports/ConfirmReport.php:140
+#: FamilyEditor.php:781 FamilyView.php:234 Reports/ConfirmReport.php:141
 #: Reports/ConfirmReportEmail.php:141
 #: external/templates/verify/verify-family-info.php:39
 #: v2/templates/people/family-view.php:133
 msgid "Send Newsletter"
 msgstr "發送通訊"
 
-#: Reports/ConfirmReport.php:180 Reports/ConfirmReport.php:199
+#: Reports/ConfirmReport.php:183 Reports/ConfirmReport.php:202
 #: Reports/ConfirmReportEmail.php:184 Reports/ConfirmReportEmail.php:202
 msgid "Member Name"
 msgstr "會員名稱"
 
-#: Reports/ConfirmReport.php:182 Reports/ConfirmReport.php:201
+#: Reports/ConfirmReport.php:185 Reports/ConfirmReport.php:204
 #: Reports/ConfirmReportEmail.php:186 Reports/ConfirmReportEmail.php:204
 msgid "Adult/Child"
 msgstr "成人/兒童"
@@ -4542,7 +4542,7 @@ msgstr "成人/兒童"
 msgid "Cell Phone"
 msgstr "手機"
 
-#: Reports/ConfirmReport.php:187 Reports/ConfirmReport.php:206
+#: Reports/ConfirmReport.php:190 Reports/ConfirmReport.php:209
 #: Reports/ConfirmReportEmail.php:190 Reports/ConfirmReportEmail.php:208
 msgid "Member/Friend"
 msgstr "會員/朋友"
@@ -4968,33 +4968,13 @@ msgstr "存款類型"
 msgid "Deposit Date"
 msgstr "存款日期"
 
-#: IntegrityCheck.php:12
-msgid "Integrity Check Results"
-msgstr "完整性檢查結果"
-
-#: IntegrityCheck.php:51
-msgid "Integrity Check Failure"
-msgstr "完整性檢查失敗"
-
-#: IntegrityCheck.php:52
-msgid "The previous integrity check failed"
-msgstr "先前的完整性檢查失敗"
-
-#: IntegrityCheck.php:53
+#: v2/templates/admin/debug.php:110
 msgid "Details:"
 msgstr "細節："
 
-#: IntegrityCheck.php:67
+#: v2/templates/admin/debug.php:130
 msgid "File Missing"
 msgstr "文件丟失"
-
-#: IntegrityCheck.php:73
-msgid "Expected Hash"
-msgstr "預期的Hash"
-
-#: IntegrityCheck.php:89
-msgid "Integrity Check Passed"
-msgstr "完整性檢查通過"
 
 #: ManageEnvelopes.php:131
 msgid "This will overwrite the family envelope numbers in the database with those selected on this page.  Continue?"
@@ -5264,27 +5244,27 @@ msgstr "匿名"
 msgid "Attendees for Event ID:"
 msgstr "活動ID：的與會者"
 
-#: v2/templates/email/dashboard.php:73
+#: v2/templates/email/dashboard.php:72
 msgid "is not configured"
 msgstr "未配置"
 
-#: v2/templates/email/dashboard.php:74
+#: v2/templates/email/dashboard.php:73
 msgid "Please update the"
 msgstr "請更新"
 
-#: v2/templates/email/dashboard.php:74
+#: v2/templates/email/dashboard.php:73
 msgid "API key in Setting->"
 msgstr "API密鑰，設置 - >"
 
-#: v2/templates/email/dashboard.php:76
+#: v2/templates/email/dashboard.php:75
 msgid "then update"
 msgstr "然後更新"
 
-#: v2/templates/email/dashboard.php:76
+#: v2/templates/email/dashboard.php:75
 msgid "For more info see our "
 msgstr "有關詳情，請參閱我們的"
 
-#: v2/templates/email/dashboard.php:77
+#: v2/templates/email/dashboard.php:76
 msgid "support docs."
 msgstr "支持文檔。"
 
@@ -5344,7 +5324,7 @@ msgstr "添加所有資金"
 msgid "Clear All Funds"
 msgstr "清除所有資金"
 
-#: FindDepositSlip.php:41
+#: ChurchCRM/model/ChurchCRM/Deposit.php:358 FindDepositSlip.php:41
 msgid "Deposit Comment"
 msgstr "存款注釋"
 
@@ -5364,15 +5344,15 @@ msgstr "如果您需要更改註冊數據，請轉到"
 msgid "Admin->Edit General Settings"
 msgstr "管理員 - >編輯常規設置"
 
-#: ChurchCRM/Service/AppIntegrityService.php:28
+#: ChurchCRM/Service/AppIntegrityService.php:70
 msgid "Signature definition file signature failed validation"
 msgstr "簽名定義文件簽字驗證失敗"
 
-#: ChurchCRM/Service/AppIntegrityService.php:31
+#: ChurchCRM/Service/AppIntegrityService.php:73
 msgid "Signature definition File Missing"
 msgstr "簽名定義文件丟失"
 
-#: ChurchCRM/Service/AppIntegrityService.php:35
+#: ChurchCRM/Service/AppIntegrityService.php:77
 msgid "One or more files failed signature validation"
 msgstr "一個或多個文件簽名驗證失敗"
 
@@ -5380,13 +5360,9 @@ msgstr "一個或多個文件簽名驗證失敗"
 msgid "Configure HTTPS"
 msgstr "配置HTTPS"
 
-#: IntegrityCheck.php:57
+#: v2/templates/admin/debug.php:114
 msgid "Files failing integrity check"
 msgstr "文件未通過完整性檢查"
-
-#: IntegrityCheck.php:74
-msgid "Actual Hash"
-msgstr "實際Hash"
 
 #: PersonView.php:254
 msgid "Family:"
@@ -5402,15 +5378,15 @@ msgstr "家庭："
 msgid "item"
 msgstr "項目"
 
-#: Reports/ConfirmReport.php:120
+#: Reports/ConfirmReport.php:121
 msgid "Address 1"
 msgstr "地址1"
 
-#: Reports/ConfirmReport.php:125
+#: Reports/ConfirmReport.php:126
 msgid "Address 2"
 msgstr "地址2"
 
-#: Reports/ConfirmReport.php:186 Reports/ConfirmReport.php:205
+#: Reports/ConfirmReport.php:189 Reports/ConfirmReport.php:208
 msgid "Cell phone"
 msgstr "手機"
 
@@ -5522,7 +5498,7 @@ msgstr "結束日期："
 msgid "Members:"
 msgstr "成員："
 
-#: ChurchCRM/Config/Menu/Menu.php:193 v2/templates/email/dashboard.php:75
+#: ChurchCRM/Config/Menu/Menu.php:193 v2/templates/email/dashboard.php:74
 msgid "Edit General Settings"
 msgstr "編輯常規設置"
 
@@ -5573,10 +5549,6 @@ msgstr "分配新屬性："
 #: 
 msgid "There was a problem retrieving the requested object"
 msgstr "檢索請求對象時出現問題"
-
-#: IntegrityCheck.php:62
-msgid "File Name"
-msgstr "文件名"
 
 #: GroupList.php:34 ListEvents.php:86 ManageEnvelopes.php:147
 msgid "All"
@@ -6320,10 +6292,6 @@ msgstr "用戶使用IST地址驗證的權限"
 #: userconfig_ucfg.php:7
 msgid "Allow user to add new event"
 msgstr "允許用戶添加新活動"
-
-#: userconfig_ucfg.php:8
-msgid "Allow user to see member privacy data, e.g. Birth Year, Age."
-msgstr "允許用戶查看會員隱私數據，例如出生年份，年齡。"
 
 #: Reports/CanvassReports.php:47
 msgid "Canvass Progress Report"
@@ -7720,15 +7688,15 @@ msgstr "無州"
 msgid "Unavailable person info inherited from assigned family for display?\rThis option causes certain info from a person's assigned family record to be\rdisplayed IF the corresponding info has NOT been entered for that person. "
 msgstr "從指定的系列繼承的不可用的人員信息是否顯示？\ r \ n此選項會導致人員指定的家庭記錄中的某些信息被顯示，如果尚未為該人輸入相應的信息。"
 
-#: ChurchCRM/Service/SystemService.php:92
+#: ChurchCRM/Service/SystemService.php:93
 msgid "Backup archive does not contain a database"
 msgstr "備份存檔不包含數據庫"
 
-#: ChurchCRM/Service/SystemService.php:104
+#: ChurchCRM/Service/SystemService.php:105
 msgid "Unknown File Type"
 msgstr "未知的文件类型"
 
-#: ChurchCRM/Service/SystemService.php:104
+#: ChurchCRM/Service/SystemService.php:105
 msgid "from file"
 msgstr "自文档"
 
@@ -7837,27 +7805,16 @@ msgid "The selected file exceeds this servers maximum upload size of"
 msgstr "所選文件超過此服務器的最大上載大小"
 
 #: ChurchCRM/tasks/PrerequisiteCheckTask.php:28
-#: ChurchCRM/tasks/PrerequisiteCheckTask.php:33 IntegrityCheck.php:37
+#: ChurchCRM/tasks/PrerequisiteCheckTask.php:33
 msgid "Unmet Application Prerequisites"
 msgstr "未滿足應用程序的先決條件"
 
-#: IntegrityCheck.php:30
-msgid "All Application Prerequisites Satisfied"
-msgstr "滿足所有應用程序先決條件"
-
-#: IntegrityCheck.php:31
-msgid "All components that ChurchCRM relies upon are present and correctly configured on this server"
-msgstr "ChurchCRM所依賴的所有組件都存在並在此服務器上正確配置"
-
-#: IntegrityCheck.php:38
-msgid "Certain components that ChurchCRM relies upon are missing or improperly configured on this server.  The application may continue to function, but may produce unexpected behavior."
-msgstr "ChurchCRM所依賴的某些組件在此服務器上丟失或配置不正確。 應用程序可能會繼續運行，但可能會產生意外行為。"
-
-#: IntegrityCheck.php:42
+#: ChurchCRM/Service/AppIntegrityService.php:31
+#: ChurchCRM/dto/Prerequisite.php:36
 msgid "Failed"
 msgstr "失敗"
 
-#: IntegrityCheck.php:90
+#: ChurchCRM/Service/AppIntegrityService.php:41
 msgid "The previous integrity check passed.  All system file hashes match the expected values."
 msgstr "已通過完整性檢查。所有系統文件都與預期值哈希匹配。"
 
@@ -7971,7 +7928,7 @@ msgstr "從購物車中刪除"
 msgid "Family Member"
 msgstr "家庭成員"
 
-#: FamilyView.php:621 PersonView.php:725 QueryView.php:318
+#: FamilyView.php:621 PersonView.php:726 QueryView.php:318
 #: v2/templates/people/family-view.php:407
 msgid "select an option"
 msgstr "選擇一個項目"
@@ -8140,11 +8097,11 @@ msgstr "在地圖上查看"
 msgid "Legend"
 msgstr "圖例"
 
-#: PersonView.php:746
+#: PersonView.php:747
 msgid "assigned"
 msgstr "已指派"
 
-#: PersonView.php:990
+#: PersonView.php:991
 msgid "Photo"
 msgstr "圖片"
 
@@ -8412,7 +8369,7 @@ msgstr "密碼重置鏈接"
 msgid "Reset Password"
 msgstr "重置密碼"
 
-#: ChurchCRM/Service/SystemService.php:112
+#: ChurchCRM/Service/SystemService.php:113
 msgid "As part of the restore, external backups have been disabled.  If you wish to continue automatic backups, you must manuall re-enable the bEnableExternalBackupTarget setting."
 msgstr "外部備份作為還原的一部分已被禁用。如果要繼續自動備份，則必須手動重新啟用bEnableExternalBackupTarget設置。"
 
@@ -9249,11 +9206,11 @@ msgstr "用戶必須具有MenuOptions權限"
 msgid "Try out the Beta family view"
 msgstr "試用Beta系列視圖"
 
-#: v2/routes/email.php:61
+#: v2/routes/email.php:65
 msgid "SMTP Host is not setup, please visit the settings page"
 msgstr "未設置SMTP主機，請訪問設置頁面"
 
-#: v2/routes/email.php:66
+#: v2/routes/email.php:70
 msgid "Debug Email Connection"
 msgstr "Debug郵件連接"
 
@@ -9326,14 +9283,6 @@ msgstr "私人日曆"
 #: v2/templates/admin/user.php:20
 msgid "Username"
 msgstr "用戶名"
-
-#: v2/templates/calendar/calendar.php:23
-msgid "User Calendars"
-msgstr "使用者日曆"
-
-#: v2/templates/calendar/calendar.php:33
-msgid "System Calendars"
-msgstr "系統日曆"
 
 #: 
 msgid "Are you sure you want to move"
@@ -9560,7 +9509,7 @@ msgstr "用戶ID不好"
 msgid "Find Duplicate Emails"
 msgstr "查找重複的電子郵件"
 
-#: v2/routes/email.php:76 v2/templates/email/duplicate.php:14
+#: v2/routes/email.php:80 v2/templates/email/duplicate.php:14
 msgid "Duplicate Emails"
 msgstr "重複的電子郵件"
 
@@ -9662,7 +9611,7 @@ msgstr "數據庫版本"
 msgid "Application Prerequisites"
 msgstr "應用程序的先決條件"
 
-#: v2/templates/admin/debug.php:107
+#: v2/templates/admin/debug.php:150
 msgid "WebServer Modules"
 msgstr "網頁服務器模塊"
 
@@ -9677,4 +9626,21 @@ msgstr "姓氏 名字"
 #: ChurchCRM/SystemCalendars/HolidayCalendar.php:45
 msgid "Holidays"
 msgstr "假日"
+
+#: ChurchCRM/Emails/notifications/NewPersonOrFamilyEmail.php:71
+msgid "Person Name"
+msgstr "人名"
+
+#: v2/routes/email.php:85 v2/templates/email/dashboard.php:17
+#: v2/templates/email/without.php:14
+msgid "Families Without Emails"
+msgstr "無Email家庭"
+
+#: v2/templates/cart/cartempty.php:16
+msgid "Record"
+msgstr "記錄"
+
+#: v2/templates/cart/cartempty.php:16
+msgid "Records"
+msgstr "記錄"
 

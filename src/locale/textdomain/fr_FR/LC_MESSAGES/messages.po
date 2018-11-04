@@ -25,7 +25,7 @@ msgstr "Confirmer Supprimer le paiement automatique"
 #: FamilyView.php:774 FamilyView.php:911 FindDepositSlip.php:105
 #: FundRaiserEditor.php:200 ListEvents.php:241 PaddleNumList.php:55
 #: PersonCustomFieldsEditor.php:315 PersonCustomFieldsEditor.php:384
-#: PersonView.php:940 PledgeDelete.php:53 PropertyList.php:65
+#: PersonView.php:941 PledgeDelete.php:53 PropertyList.php:65
 #: PropertyList.php:106 PropertyTypeList.php:46 PropertyTypeList.php:67
 #: PropertyTypeList.php:69 v2/templates/people/family-view.php:530
 msgid "Delete"
@@ -38,7 +38,7 @@ msgstr "Supprimer"
 #: FundRaiserEditor.php:143 GroupPropsEditor.php:168 GroupReports.php:82
 #: GroupReports.php:151 LettersAndLabels.php:83 ManageEnvelopes.php:135
 #: MemberRoleChange.php:119 MemberRoleChange.php:121 NoteDelete.php:67
-#: NoteEditor.php:135 PersonEditor.php:1231 PersonView.php:939
+#: NoteEditor.php:135 PersonEditor.php:1231 PersonView.php:940
 #: PledgeDelete.php:54 PropertyEditor.php:169 PropertyTypeEditor.php:114
 #: Register.php:56 ReminderReport.php:52 SettingsIndividual.php:114
 #: SettingsIndividual.php:160 SettingsUser.php:100 SettingsUser.php:160
@@ -143,7 +143,7 @@ msgstr "Téléphone"
 #: FamilyView.php:277 FamilyView.php:359 GroupReports.php:127
 #: PersonEditor.php:1035 PersonEditor.php:1037 PersonView.php:307
 #: PersonView.php:511 PrintView.php:294 Reports/CanvassReports.php:243
-#: Reports/ConfirmReport.php:183 Reports/ConfirmReport.php:202
+#: Reports/ConfirmReport.php:186 Reports/ConfirmReport.php:205
 #: Reports/ConfirmReportEmail.php:187 Reports/ConfirmReportEmail.php:205
 #: Reports/DirectoryReport.php:296 Reports/GroupReport.php:133
 #: external/templates/registration/family-register-members.php:83
@@ -398,7 +398,7 @@ msgstr "À:"
 msgid "Birthday Date"
 msgstr "Date de naissance"
 
-#: Reports/ConfirmReport.php:150 Reports/ConfirmReportEmail.php:151
+#: Reports/ConfirmReport.php:151 Reports/ConfirmReportEmail.php:151
 msgid "Anniversary Date"
 msgstr "Date d'anniversaire de mariage"
 
@@ -464,7 +464,7 @@ msgstr "Dons"
 #: EditEventAttendees.php:43 EventAttendance.php:176 FamilyEditor.php:737
 #: FamilyView.php:254 GroupReports.php:124 PersonEditor.php:961
 #: PersonEditor.php:963 PersonView.php:302 PrintView.php:199
-#: Reports/ConfirmReport.php:135 Reports/ConfirmReportEmail.php:136
+#: Reports/ConfirmReport.php:136 Reports/ConfirmReportEmail.php:136
 #: SelectList.php:965 SelectList.php:966 SelectList.php:1041
 #: external/templates/registration/family-register-done.php:30
 #: external/templates/registration/family-register.php:68
@@ -480,7 +480,7 @@ msgstr "Téléphone Fixe"
 #: CSVExport.php:132 CSVImport.php:224 CartToFamily.php:291
 #: FamilyEditor.php:749 FamilyView.php:260 GroupReports.php:125
 #: PersonEditor.php:984 PersonEditor.php:986 PersonView.php:316
-#: PrintView.php:204 Reports/ConfirmReport.php:239
+#: PrintView.php:204 Reports/ConfirmReport.php:237
 #: Reports/ConfirmReportEmail.php:234 SelectList.php:968 SelectList.php:969
 #: SelectList.php:1041 external/templates/verify/verify-family-info.php:72
 #: v2/templates/people/family-view.php:160
@@ -776,7 +776,7 @@ msgstr "Ajouter le panier à la famille"
 #: FamilyView.php:550 GeoPage.php:357 GroupEditor.php:73
 #: GroupPropsFormEditor.php:285 GroupPropsFormEditor.php:397 GroupView.php:255
 #: GroupView.php:288 PersonCustomFieldsEditor.php:311
-#: PersonCustomFieldsEditor.php:442 PersonView.php:683 PersonView.php:788
+#: PersonCustomFieldsEditor.php:442 PersonView.php:684 PersonView.php:789
 #: PrintView.php:337 PrintView.php:463 PropertyEditor.php:149
 #: PropertyList.php:60 PropertyTypeEditor.php:96 PropertyTypeList.php:41
 #: Reports/CanvassReports.php:69 Reports/CanvassReports.php:237
@@ -920,21 +920,21 @@ msgid "persons from"
 msgstr "personnes de"
 
 #: EditEventTypes.php:166 FamilyView.php:555 FamilyView.php:597
-#: GroupView.php:293 GroupView.php:334 PersonView.php:686 PersonView.php:704
-#: PersonView.php:791 PersonView.php:809 v2/templates/cart/cartlisting.php:20
+#: GroupView.php:293 GroupView.php:334 PersonView.php:687 PersonView.php:705
+#: PersonView.php:792 PersonView.php:810 v2/templates/cart/cartlisting.php:20
 #: v2/templates/cart/cartlisting.php:37
 msgid "Remove"
 msgstr "Supprimer"
 
 #: DonationFundEditor.php:177 FinancialReports.php:295
 #: Include/Functions.php:686 Include/Functions.php:770 ListEvents.php:296
-#: Reports/ConfirmReport.php:227
+#: Reports/ConfirmReport.php:225
 msgid "Yes"
 msgstr "Oui"
 
 #: DonationFundEditor.php:180 FinancialReports.php:296
 #: Include/Functions.php:688 Include/Functions.php:771 ListEvents.php:296
-#: Reports/ConfirmReport.php:229
+#: Reports/ConfirmReport.php:227
 msgid "No"
 msgstr "Non"
 
@@ -987,7 +987,7 @@ msgid "Checked Out By"
 msgstr "Désinscrit par"
 
 #: Checkin.php:316 EditEventAttendees.php:44 EventNames.php:267
-#: ListEvents.php:205 PersonView.php:633
+#: ListEvents.php:205 PersonView.php:634
 msgid "Action"
 msgstr "Action"
 
@@ -1105,8 +1105,8 @@ msgstr "Adresse"
 
 #: ChurchCRM/Service/CalendarService.php:16
 #: ChurchCRM/SystemCalendars/BirthdaysCalendar.php:63 DirectoryReports.php:174
-#: FamilyView.php:358 PersonView.php:510 Reports/ConfirmReport.php:184
-#: Reports/ConfirmReport.php:203 Reports/ConfirmReportEmail.php:188
+#: FamilyView.php:358 PersonView.php:510 Reports/ConfirmReport.php:187
+#: Reports/ConfirmReport.php:206 Reports/ConfirmReportEmail.php:188
 #: Reports/ConfirmReportEmail.php:206
 #: external/templates/verify/verify-family-info.php:80
 #: v2/templates/people/family-view.php:323
@@ -1125,7 +1125,7 @@ msgstr "Téléphone professionnel de la famille"
 msgid "Family Cell Phone"
 msgstr "Téléphone portable de la famille"
 
-#: DirectoryReports.php:179 Reports/ConfirmReport.php:156
+#: DirectoryReports.php:179 Reports/ConfirmReport.php:159
 #: Reports/ConfirmReportEmail.php:157
 #: external/templates/verify/verify-family-info.php:29
 msgid "Family Email"
@@ -1233,7 +1233,7 @@ msgstr "Aller"
 #: DonationFundEditor.php:221 EditEventAttendees.php:34
 #: FundRaiserEditor.php:174 GroupEditor.php:79 GroupPropsFormEditor.php:286
 #: GroupPropsFormEditor.php:410 GroupView.php:256 ListEvents.php:206
-#: PersonView.php:789 PropertyTypeEditor.php:104
+#: PersonView.php:790 PropertyTypeEditor.php:104
 #: VolunteerOpportunityEditor.php:76 VolunteerOpportunityEditor.php:355
 #: VolunteerOpportunityEditor.php:429
 msgid "Description"
@@ -1344,7 +1344,7 @@ msgstr "Famille"
 #: FamilyCustomFieldsEditor.php:421 FamilyView.php:549 FamilyView.php:657
 #: GroupPropsFormEditor.php:284 GroupPropsFormEditor.php:385 GroupView.php:254
 #: GroupView.php:287 OptionManager.php:77 PersonCustomFieldsEditor.php:310
-#: PersonCustomFieldsEditor.php:429 PersonView.php:682 PropertyEditor.php:129
+#: PersonCustomFieldsEditor.php:429 PersonView.php:683 PropertyEditor.php:129
 #: SelectDelete.php:216
 msgid "Type"
 msgstr "Type"
@@ -1916,12 +1916,12 @@ msgstr "Paiements automatiques"
 msgid "Pledges and Payments"
 msgstr "Contributions et paiements"
 
-#: FamilyView.php:542 PersonView.php:676 PrintView.php:459
+#: FamilyView.php:542 PersonView.php:677 PrintView.php:459
 #: v2/templates/people/family-view.php:366
 msgid "No property assignments."
 msgstr "Aucune affectation de propriété"
 
-#: FamilyView.php:551 GroupView.php:289 PersonView.php:684 PrintView.php:464
+#: FamilyView.php:551 GroupView.php:289 PersonView.php:685 PrintView.php:464
 #: PropertyAssign.php:176 SystemSettings.php:140
 #: v2/templates/people/family-view.php:375
 msgid "Value"
@@ -1931,12 +1931,12 @@ msgstr "Valeur"
 msgid "Edit Value"
 msgstr "Modifier la valeur"
 
-#: FamilyView.php:615 PersonView.php:717
+#: FamilyView.php:615 PersonView.php:718
 #: v2/templates/people/family-view.php:401
 msgid "Assign a New Property"
 msgstr "Attribuer une nouvelle propriété"
 
-#: FamilyView.php:636 GroupView.php:366 PersonView.php:756 PersonView.php:842
+#: FamilyView.php:636 GroupView.php:366 PersonView.php:757 PersonView.php:843
 #: PropertyAssign.php:185 SelectList.php:1060
 #: v2/templates/people/family-view.php:415
 msgid "Assign"
@@ -2023,17 +2023,17 @@ msgid "Close"
 msgstr "Fermer"
 
 #: DepositSlipEditor.php:222 FamilyView.php:899 FindDepositSlip.php:95
-#: PersonView.php:929 PledgeDelete.php:19
+#: PersonView.php:930 PledgeDelete.php:19
 #: v2/templates/people/family-view.php:517
 msgid "Confirm Delete"
 msgstr "Confirmer la suppression"
 
-#: FamilyView.php:903 PersonView.php:933
+#: FamilyView.php:903 PersonView.php:934
 #: v2/templates/people/family-view.php:521
 msgid "You are about to delete the profile photo, this procedure is irreversible."
 msgstr "Vous êtes sur le point de supprimer la photo de profile, cette opération est irréversible."
 
-#: FamilyView.php:905 PersonView.php:935
+#: FamilyView.php:905 PersonView.php:936
 #: v2/templates/people/family-view.php:523
 msgid "Do you want to proceed?"
 msgstr "Voulez-vous continuer ?"
@@ -2504,7 +2504,7 @@ msgstr "Liste des groupes"
 msgid "Add New Group"
 msgstr "Ajouter un nouveau groupe"
 
-#: Include/Header-function.php:66
+#: Include/Header-function.php:67
 msgid "Submit"
 msgstr "Soumettre"
 
@@ -2949,7 +2949,7 @@ msgstr "Dernières familles ajoutées"
 #: CartToFamily.php:206
 #: ChurchCRM/Emails/notifications/NewPersonOrFamilyEmail.php:60
 #: FamilyEditor.php:654 LettersAndLabels.php:71 Menu.php:308 Menu.php:337
-#: Reports/ConfirmReport.php:115 Reports/ConfirmReportEmail.php:116
+#: Reports/ConfirmReport.php:116 Reports/ConfirmReportEmail.php:116
 #: SelectDelete.php:153 SelectDelete.php:279
 #: external/templates/registration/family-register.php:31
 msgid "Family Name"
@@ -3147,8 +3147,8 @@ msgstr "Sélectionner un jour"
 msgid "Birth Year"
 msgstr "Année de Naissance"
 
-#: PersonEditor.php:762 Reports/ConfirmReport.php:185
-#: Reports/ConfirmReport.php:204
+#: PersonEditor.php:762 Reports/ConfirmReport.php:188
+#: Reports/ConfirmReport.php:207
 #: external/templates/registration/family-register-members.php:120
 msgid "Hide Age"
 msgstr "Cacher l&#39;âge"
@@ -3209,15 +3209,15 @@ msgstr "Modifier un Utilisateur"
 msgid "List Members"
 msgstr "Lister des membres"
 
-#: PersonView.php:581 PrintView.php:387
+#: PersonView.php:582 PrintView.php:387
 msgid "No group assignments."
 msgstr "Aucune tâches assignée au groupe"
 
-#: PersonView.php:639
+#: PersonView.php:640
 msgid "Change Role"
 msgstr "Changer le rôle"
 
-#: PersonView.php:642
+#: PersonView.php:643
 msgid "Update Properties"
 msgstr "Mettre à jour des Propriétés."
 
@@ -3225,11 +3225,11 @@ msgstr "Mettre à jour des Propriétés."
 msgid "Assign New Group"
 msgstr "Assigner un Nouveau Groupe"
 
-#: PersonView.php:781
+#: PersonView.php:782
 msgid "No volunteer opportunity assignments."
 msgstr "Aucunes assignation  d&#39;opportunité de bénévolat."
 
-#: PersonView.php:824
+#: PersonView.php:825
 msgid "Assign a New Volunteer Opportunity"
 msgstr "Ajouter une Nouvelle Opportunité de Bénévolat"
 
@@ -4083,11 +4083,11 @@ msgstr "Retourner au Bordereau de dépôt"
 msgid "Fatal error in eGive API datastream: '"
 msgstr "Erreur fatale dans flux de données API de eGive: &#39;"
 
-#: v2/routes/email.php:27
+#: v2/routes/email.php:31
 msgid "eMail Dashboard"
 msgstr "Tableau de bord eMail"
 
-#: email/MailChimpMissingReport.php:23
+#: v2/routes/email.php:114
 msgid "People not in Mailchimp"
 msgstr "Les Personnes qui ne se trouvent pas dans Mailchimp"
 
@@ -4295,31 +4295,31 @@ msgstr "Erreur de communication de l'API avec"
 msgid "Error text"
 msgstr "Erreur du texte"
 
-#: Include/Header-function.php:34
+#: Include/Header-function.php:35
 msgid "Issue Report!"
 msgstr "Signaler un problème!"
 
-#: Include/Header-function.php:41
+#: Include/Header-function.php:42
 msgid "Enter a Title for your bug / feature report"
 msgstr "Entrer un titre pour votre problème/fonctionnalité à signaler"
 
-#: Include/Header-function.php:51
+#: Include/Header-function.php:52
 msgid "What were you doing when you noticed the bug / feature opportunity?"
 msgstr "Que faisiez vous quand le bug/problème est apparut?"
 
-#: Include/Header-function.php:59
+#: Include/Header-function.php:60
 msgid "When you click \"submit,\" an error report will be posted to the ChurchCRM GitHub Issue tracker."
 msgstr "En cliquant sur \"Soumettre\", un rapport d'erreur sera envoyé au groupe ChurchCRM."
 
-#: Include/Header-function.php:60
+#: Include/Header-function.php:61
 msgid "Please do not include any confidential information."
 msgstr "Ne pas inclure d'information confidentielle."
 
-#: Include/Header-function.php:61
+#: Include/Header-function.php:62
 msgid "Some general information about your system will be submitted along with the request such as Server version and browser headers."
 msgstr "Certaines informations d'ordre général à propos de votre système seront transmises avec les requêtes comme la version de serveur et les entêtes de navigateurs internet."
 
-#: Include/Header-function.php:62
+#: Include/Header-function.php:63
 msgid "No personally identifiable information will be submitted unless you purposefully include it."
 msgstr "Aucune informations personnelles identifiable ne seront transmit à moins que vous ne l'incluiez délibérément."
 
@@ -4410,8 +4410,8 @@ msgstr "Meilleur contributeur"
 msgid "Pledged"
 msgstr "Contribué"
 
-#: Reports/CanvassReports.php:238 Reports/ConfirmReport.php:181
-#: Reports/ConfirmReport.php:200 Reports/ConfirmReportEmail.php:185
+#: Reports/CanvassReports.php:238 Reports/ConfirmReport.php:184
+#: Reports/ConfirmReport.php:203 Reports/ConfirmReportEmail.php:185
 #: Reports/ConfirmReportEmail.php:203
 msgid "M/F"
 msgstr "H / F"
@@ -4421,23 +4421,23 @@ msgstr "H / F"
 msgid "Liaison"
 msgstr "Liaison"
 
-#: Reports/ConfirmReport.php:130 Reports/ConfirmReportEmail.php:131
+#: Reports/ConfirmReport.php:131 Reports/ConfirmReportEmail.php:131
 msgid "City, State, Zip"
 msgstr "Ville, État, Code postal"
 
-#: FamilyEditor.php:781 FamilyView.php:234 Reports/ConfirmReport.php:140
+#: FamilyEditor.php:781 FamilyView.php:234 Reports/ConfirmReport.php:141
 #: Reports/ConfirmReportEmail.php:141
 #: external/templates/verify/verify-family-info.php:39
 #: v2/templates/people/family-view.php:133
 msgid "Send Newsletter"
 msgstr "Envoyer une Lettre de Nouvelles"
 
-#: Reports/ConfirmReport.php:180 Reports/ConfirmReport.php:199
+#: Reports/ConfirmReport.php:183 Reports/ConfirmReport.php:202
 #: Reports/ConfirmReportEmail.php:184 Reports/ConfirmReportEmail.php:202
 msgid "Member Name"
 msgstr "Nom du Membre"
 
-#: Reports/ConfirmReport.php:182 Reports/ConfirmReport.php:201
+#: Reports/ConfirmReport.php:185 Reports/ConfirmReport.php:204
 #: Reports/ConfirmReportEmail.php:186 Reports/ConfirmReportEmail.php:204
 msgid "Adult/Child"
 msgstr "Adulte / Enfant"
@@ -4448,7 +4448,7 @@ msgstr "Adulte / Enfant"
 msgid "Cell Phone"
 msgstr "Téléphone Portable"
 
-#: Reports/ConfirmReport.php:187 Reports/ConfirmReport.php:206
+#: Reports/ConfirmReport.php:190 Reports/ConfirmReport.php:209
 #: Reports/ConfirmReportEmail.php:190 Reports/ConfirmReportEmail.php:208
 msgid "Member/Friend"
 msgstr "Membre/Ami"
@@ -4868,33 +4868,13 @@ msgstr "Type de dépôt"
 msgid "Deposit Date"
 msgstr "Date de dépôt"
 
-#: IntegrityCheck.php:12
-msgid "Integrity Check Results"
-msgstr "Résultats de contrôle d&#39;intégrité"
-
-#: IntegrityCheck.php:51
-msgid "Integrity Check Failure"
-msgstr "Échec de contrôle d&#39;intégrité"
-
-#: IntegrityCheck.php:52
-msgid "The previous integrity check failed"
-msgstr "Le contrôle d&#39;intégrité précédent a échoué"
-
-#: IntegrityCheck.php:53
+#: v2/templates/admin/debug.php:110
 msgid "Details:"
 msgstr "Détails :"
 
-#: IntegrityCheck.php:67
+#: v2/templates/admin/debug.php:130
 msgid "File Missing"
 msgstr "Fichier manquant"
-
-#: IntegrityCheck.php:73
-msgid "Expected Hash"
-msgstr "Valeur de hachage attendu"
-
-#: IntegrityCheck.php:89
-msgid "Integrity Check Passed"
-msgstr "Vérification de l'intégrité validée"
 
 #: ManageEnvelopes.php:131
 msgid "This will overwrite the family envelope numbers in the database with those selected on this page.  Continue?"
@@ -5164,27 +5144,27 @@ msgstr "Anonyme"
 msgid "Attendees for Event ID:"
 msgstr "Participants à l&#39;événement ID :"
 
-#: v2/templates/email/dashboard.php:73
+#: v2/templates/email/dashboard.php:72
 msgid "is not configured"
 msgstr "n'est pas configuré"
 
-#: v2/templates/email/dashboard.php:74
+#: v2/templates/email/dashboard.php:73
 msgid "Please update the"
 msgstr "Veuillez mettre à jour le"
 
-#: v2/templates/email/dashboard.php:74
+#: v2/templates/email/dashboard.php:73
 msgid "API key in Setting->"
 msgstr "Clé API dans Réglages->"
 
-#: v2/templates/email/dashboard.php:76
+#: v2/templates/email/dashboard.php:75
 msgid "then update"
 msgstr "puis mettre à jour"
 
-#: v2/templates/email/dashboard.php:76
+#: v2/templates/email/dashboard.php:75
 msgid "For more info see our "
 msgstr "Pour plus d'infos voir notre "
 
-#: v2/templates/email/dashboard.php:77
+#: v2/templates/email/dashboard.php:76
 msgid "support docs."
 msgstr "documentations."
 
@@ -5244,7 +5224,7 @@ msgstr "Ajouter tous les fonds"
 msgid "Clear All Funds"
 msgstr "Supprimer tous les fonds"
 
-#: FindDepositSlip.php:41
+#: ChurchCRM/model/ChurchCRM/Deposit.php:358 FindDepositSlip.php:41
 msgid "Deposit Comment"
 msgstr "Commenter le dépôt"
 
@@ -5264,15 +5244,15 @@ msgstr "Si vous devez modifier votre inscription, aller dans "
 msgid "Admin->Edit General Settings"
 msgstr "Admin->Modifier les réglages généraux"
 
-#: ChurchCRM/Service/AppIntegrityService.php:28
+#: ChurchCRM/Service/AppIntegrityService.php:70
 msgid "Signature definition file signature failed validation"
 msgstr "La signature du fichier de définition de la signature n&#39;a pas été validé"
 
-#: ChurchCRM/Service/AppIntegrityService.php:31
+#: ChurchCRM/Service/AppIntegrityService.php:73
 msgid "Signature definition File Missing"
 msgstr "Le fichier de définition de la signature est introuvable."
 
-#: ChurchCRM/Service/AppIntegrityService.php:35
+#: ChurchCRM/Service/AppIntegrityService.php:77
 msgid "One or more files failed signature validation"
 msgstr "Un ou plusieurs fichiers n&#39;ont pas été signé"
 
@@ -5280,13 +5260,9 @@ msgstr "Un ou plusieurs fichiers n&#39;ont pas été signé"
 msgid "Configure HTTPS"
 msgstr "Configurer HTTPS"
 
-#: IntegrityCheck.php:57
+#: v2/templates/admin/debug.php:114
 msgid "Files failing integrity check"
 msgstr "Les fichiers ont échoué au test d'intégrité"
-
-#: IntegrityCheck.php:74
-msgid "Actual Hash"
-msgstr "Valeur de hachage reçu"
 
 #: PersonView.php:254
 msgid "Family:"
@@ -5302,15 +5278,15 @@ msgstr "Famille:"
 msgid "item"
 msgstr "article"
 
-#: Reports/ConfirmReport.php:120
+#: Reports/ConfirmReport.php:121
 msgid "Address 1"
 msgstr "Adresse 1"
 
-#: Reports/ConfirmReport.php:125
+#: Reports/ConfirmReport.php:126
 msgid "Address 2"
 msgstr "Adresse 2"
 
-#: Reports/ConfirmReport.php:186 Reports/ConfirmReport.php:205
+#: Reports/ConfirmReport.php:189 Reports/ConfirmReport.php:208
 msgid "Cell phone"
 msgstr "Téléphone Portable"
 
@@ -5422,7 +5398,7 @@ msgstr "Jusqu&#39;à:"
 msgid "Members:"
 msgstr "Membres:"
 
-#: ChurchCRM/Config/Menu/Menu.php:193 v2/templates/email/dashboard.php:75
+#: ChurchCRM/Config/Menu/Menu.php:193 v2/templates/email/dashboard.php:74
 msgid "Edit General Settings"
 msgstr "Modifier les Réglages Généraux"
 
@@ -5485,10 +5461,6 @@ msgstr "ans"
 #: 
 msgid "There was a problem retrieving the requested object"
 msgstr "Il y a eu un problème lors de la récupération de l'objet demandé"
-
-#: IntegrityCheck.php:62
-msgid "File Name"
-msgstr "Nom de fichier"
 
 #: GroupList.php:34 ListEvents.php:86 ManageEnvelopes.php:147
 msgid "All"
@@ -6271,10 +6243,6 @@ msgstr "Permission de l&#39;utilisateur d'utiliser la Vérification d'Adresse IS
 #: userconfig_ucfg.php:7
 msgid "Allow user to add new event"
 msgstr "Autoriser les utilisateurs à ajouter un nouvel événement"
-
-#: userconfig_ucfg.php:8
-msgid "Allow user to see member privacy data, e.g. Birth Year, Age."
-msgstr "Autoriser les utilisateurs à voir les données privées des membres (Année de naissance, Âge)"
 
 #: Reports/CanvassReports.php:47
 msgid "Canvass Progress Report"
@@ -7675,15 +7643,15 @@ msgstr "Statut inconnu"
 msgid "Unavailable person info inherited from assigned family for display?\rThis option causes certain info from a person's assigned family record to be\rdisplayed IF the corresponding info has NOT been entered for that person. "
 msgstr "Afficher les informations personnelle indisponible hérité de la famille assigné?\rCette option entraînera l'affichage de certaines informations d'une famille\r SI les informations correspondantes n'ont PAS été renseignées pour cette personne. "
 
-#: ChurchCRM/Service/SystemService.php:92
+#: ChurchCRM/Service/SystemService.php:93
 msgid "Backup archive does not contain a database"
 msgstr "La sauvegarde archivée ne contient pas de Base de Données"
 
-#: ChurchCRM/Service/SystemService.php:104
+#: ChurchCRM/Service/SystemService.php:105
 msgid "Unknown File Type"
 msgstr "Type de fichier inconnu"
 
-#: ChurchCRM/Service/SystemService.php:104
+#: ChurchCRM/Service/SystemService.php:105
 msgid "from file"
 msgstr "du fichier"
 
@@ -7796,27 +7764,16 @@ msgid "The selected file exceeds this servers maximum upload size of"
 msgstr "Le fichier sélectionné dépasse la capacité de téléchargement du serveur de"
 
 #: ChurchCRM/tasks/PrerequisiteCheckTask.php:28
-#: ChurchCRM/tasks/PrerequisiteCheckTask.php:33 IntegrityCheck.php:37
+#: ChurchCRM/tasks/PrerequisiteCheckTask.php:33
 msgid "Unmet Application Prerequisites"
 msgstr "Prérequis d'application non validés"
 
-#: IntegrityCheck.php:30
-msgid "All Application Prerequisites Satisfied"
-msgstr "Tous les prérequis pour l'application sont validés"
-
-#: IntegrityCheck.php:31
-msgid "All components that ChurchCRM relies upon are present and correctly configured on this server"
-msgstr "Tous les composants requis pour ChurchCRM sont présents et correctement configurés sur ce serveur."
-
-#: IntegrityCheck.php:38
-msgid "Certain components that ChurchCRM relies upon are missing or improperly configured on this server.  The application may continue to function, but may produce unexpected behavior."
-msgstr "Certains composants requis pour ChurchCRM sont absents ou mal configurés sur ce serveur. Cette application devrait fonctionner, mais risque de fonctionner de manière inapproprié."
-
-#: IntegrityCheck.php:42
+#: ChurchCRM/Service/AppIntegrityService.php:31
+#: ChurchCRM/dto/Prerequisite.php:36
 msgid "Failed"
 msgstr "Échec"
 
-#: IntegrityCheck.php:90
+#: ChurchCRM/Service/AppIntegrityService.php:41
 msgid "The previous integrity check passed.  All system file hashes match the expected values."
 msgstr "La vérification d'intégrité précédentes est validée. Tout le système de hash de fichier correspondent aux conditions requises."
 
@@ -7934,7 +7891,7 @@ msgstr "Retirer du panier"
 msgid "Family Member"
 msgstr "Membre de la Famille"
 
-#: FamilyView.php:621 PersonView.php:725 QueryView.php:318
+#: FamilyView.php:621 PersonView.php:726 QueryView.php:318
 #: v2/templates/people/family-view.php:407
 msgid "select an option"
 msgstr "sélectionner une option"
@@ -8107,11 +8064,11 @@ msgstr "Afficher la carte"
 msgid "Legend"
 msgstr "Légende"
 
-#: PersonView.php:746
+#: PersonView.php:747
 msgid "assigned"
 msgstr "Assigné"
 
-#: PersonView.php:990
+#: PersonView.php:991
 msgid "Photo"
 msgstr "Photo"
 
@@ -8379,7 +8336,7 @@ msgstr "Lien de réinitialisation du Mot de Passe"
 msgid "Reset Password"
 msgstr "Réinitialisation du Mot de Passe"
 
-#: ChurchCRM/Service/SystemService.php:112
+#: ChurchCRM/Service/SystemService.php:113
 msgid "As part of the restore, external backups have been disabled.  If you wish to continue automatic backups, you must manuall re-enable the bEnableExternalBackupTarget setting."
 msgstr "Dans le cadre de la restauration, les sauvegardes externes ont été désactivées. Si vous voulez continuer les sauvegardes automatiques, vous devrez ré-activer le réglage bAutoriserSauvegardesExternes."
 
@@ -9209,7 +9166,7 @@ msgstr "Supprimé du groupe"
 msgid "Added to group"
 msgstr "Rajouté au groupe"
 
-#: v2/routes/email.php:66
+#: v2/routes/email.php:70
 msgid "Debug Email Connection"
 msgstr "Débogage de la connexion courriel"
 
