@@ -321,7 +321,18 @@ class SystemService
     {
         return SystemService::getDBVersion() == SystemService::getInstalledVersion();
     }
-
+    
+    static public function getPrerequisiteStatus() {
+      if (AppIntegrityService::arePrerequisitesMet())
+      {
+        return "All Prerequisites met";
+      }
+      else
+      {
+        $missingPrerequisiteNames = array_map(create_function('$o','return $o["name"];'),AppIntegrityService::getUnmetPrerequisites());
+        return "Missing Prerequisites: ".json_encode($missingPrerequisiteNames);
+      }
+    }
 
     public function reportIssue($data)
     {
@@ -341,7 +352,7 @@ class SystemService
             'SQL Version | ' . self::getDBServerVersion() . "\r\n" .
             'ChurchCRM Version |' . $_SESSION['sSoftwareInstalledVersion'] . "\r\n" .
             'Reporting Browser |' . $_SERVER['HTTP_USER_AGENT'] . "\r\n".
-            'Prerequisite Status |' . ( AppIntegrityService::arePrerequisitesMet() ? "All Prerequisites met" : "Missing Prerequisites: " .json_encode(AppIntegrityService::getUnmetPrerequisites()))."\r\n".
+            'Prerequisite Status |' . self::getPrerequisiteStatus()."\r\n".
             'Integrity check status |' . file_get_contents(SystemURLs::getDocumentRoot() . '/integrityCheck.json')."\r\n";
 
         if (function_exists('apache_get_modules')) {

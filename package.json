@@ -53,6 +53,7 @@
         "postinstall": "grunt genLocaleJSFiles",
         "locale-gen": "locale/update-locale.sh",
         "locale-download": "grunt updateFromPOeditor && grunt genLocaleJSFiles",
+        "update-signatures": "grunt generateSignatures",
         "package": "grunt generateSignatures && grunt compress",
         "demosite": "scripts/demosite.sh",
         "changelog-gen": "scripts/gen-changelogs.sh",
