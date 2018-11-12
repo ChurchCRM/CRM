@@ -165,11 +165,9 @@ class AppIntegrityService
         $request_scheme = isset($request_url_parser['scheme']) ? $request_url_parser['scheme'] : 'http';
         $request_host = isset($request_url_parser['host']) ? $request_url_parser['host'] : 'localhost';
         $request_port = isset($request_url_parser['port']) ? $request_url_parser['port'] : (($request_scheme == 'https')? '443' : '80');
-		$logger->debug("hasModRewrite:", ["HTTP_REFERER" => $_SERVER['HTTP_REFERER']]);
-		$logger->debug("hasModRewrite:", [["scheme: " => $request_scheme], ["host: " => $request_host], ["port: " => $request_port]]);
+        $logger->debug("hasModRewrite:", ["HTTP_REFERER" => $_SERVER['HTTP_REFERER']]);
+        $logger->debug("hasModRewrite:", [["scheme: " => $request_scheme], ["host: " => $request_host], ["port: " => $request_port]]);
         $rewrite_chk_url = $request_scheme ."://". $_SERVER['HTTP_HOST'] . SystemURLs::getRootPath()."/INVALID";
-        $logger->debug("hasModRewrite:", ["Curl rewrite check url" => $rewrite_chk_url]);
-        curl_setopt($ch, CURLOPT_URL, $rewrite_chk_url);
         $logger->debug("hasModRewrite:", ["host ip" => gethostbyname($request_host)]);
 
         if ( gethostbyname($request_host) == '127.0.0.1') {
@@ -177,15 +175,29 @@ class AppIntegrityService
             $sapi_type = php_sapi_name();
 
             if ( $sapi_type == 'fpm-fcgi') {
-                $logger->debug("hasModRewrite:", ["Server ip mapping(".$request_host.":".$request_port.")" => $_SERVER['SERVER_ADDR']]);
-                curl_setopt($ch, CURLOPT_RESOLVE, array(sprintf("%s:%d:%s", $request_host, $request_port, $_SERVER['SERVER_ADDR'])));
+                if (fsockopen($_SERVER['SERVER_ADDR'], $request_port)) {
+                    $logger->debug("hasModRewrite:", ["Server ip mapping(".$request_host.":".$request_port.")" => $_SERVER['SERVER_ADDR']]);
+                    curl_setopt($ch, CURLOPT_RESOLVE, array(sprintf("%s:%d:%s", $request_host, $request_port, $_SERVER['SERVER_ADDR'])));
+                } else {
+                    $logger->debug("hasModRewrite:", ["Server ip mapping(".$request_host.":".(($request_scheme == 'https')? "443" : "80").")" => $_SERVER['SERVER_ADDR']]);
+                    $rewrite_chk_url = $request_scheme ."://". $request_host . SystemURLs::getRootPath()."/INVALID";
+                    curl_setopt($ch, CURLOPT_RESOLVE, array(sprintf("%s:%d:%s", $request_host, ($request_scheme == 'https')? "443" : "80", $_SERVER['SERVER_ADDR'])));
+                }
             } else if (isset($_SERVER['HTTP_X_REAL_IP'])) {
                 $logger->debug("hasModRewrite:", ["HTTP_X_REAL_IP" => $_SERVER['HTTP_X_REAL_IP']]);
-                $logger->debug("hasModRewrite:", ["Server ip mapping(".$request_host.":".$request_port.")" => $_SERVER['REMOTE_ADDR']]);
-                curl_setopt($ch, CURLOPT_RESOLVE, array(sprintf("%s:%d:%s", $request_host, $request_port, $_SERVER['REMOTE_ADDR'])));
+
+                if (fsockopen($_SERVER['REMOTE_ADDR'], $request_port)) {
+                    $logger->debug("hasModRewrite:", ["Server ip mapping(".$request_host.":".$request_port.")" => $_SERVER['REMOTE_ADDR']]);
+                    curl_setopt($ch, CURLOPT_RESOLVE, array(sprintf("%s:%d:%s", $request_host, $request_port, $_SERVER['REMOTE_ADDR'])));
+                } else {
+                    $logger->debug("hasModRewrite:", ["Server ip mapping(".$request_host.":".(($request_scheme == 'https')? "443" : "80").")" => $_SERVER['REMOTE_ADDR']]);
+                    $rewrite_chk_url = $request_scheme ."://". $request_host . SystemURLs::getRootPath()."/INVALID";
+                    curl_setopt($ch, CURLOPT_RESOLVE, array(sprintf("%s:%d:%s", $request_host, ($request_scheme == 'https')? "443" : "80", $_SERVER['REMOTE_ADDR'])));
+                }
             }
         }
-
+        $logger->debug("hasModRewrite:", ["Curl rewrite check url" => $rewrite_chk_url]);
+        curl_setopt($ch, CURLOPT_URL, $rewrite_chk_url);
         curl_setopt($ch, CURLOPT_STDERR, $verbose);
         curl_setopt($ch, CURLOPT_VERBOSE, 1);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
