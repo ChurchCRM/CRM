@@ -20,11 +20,11 @@ class AppIntegrityService
           AppIntegrityService::$IntegrityCheckDetails->message = gettext("integrityCheck.json file missing");
       }
     }
-    
+
     return AppIntegrityService::$IntegrityCheckDetails;
-    
+
   }
-  
+
   public static function getIntegrityCheckStatus () {
     if (AppIntegrityService::getIntegrityCheckData()->status == "failure")
     {
@@ -34,7 +34,7 @@ class AppIntegrityService
       return gettext("Passed");
     }
   }
-  
+
   public static function getIntegrityCheckMessage() {
     if (AppIntegrityService::getIntegrityCheckData()->status != "failure")
     {
@@ -42,10 +42,10 @@ class AppIntegrityService
     }
 
     return AppIntegrityService::$IntegrityCheckDetails->message;
-    
+
   }
-  
-  public static function getFilesFailingIntegrityCheck() { 
+
+  public static function getFilesFailingIntegrityCheck() {
     return AppIntegrityService::getIntegrityCheckData()->files;
   }
   public static function verifyApplicationIntegrity()
@@ -90,7 +90,7 @@ class AppIntegrityService
 
   public static function getApplicationPrerequisites()
   {
-    
+
     $prerequisites = array(
       new Prerequisite('PHP 7.0+', function() { return version_compare(PHP_VERSION, '7.0.0', '>='); }),
       new Prerequisite('PCRE and UTF-8 Support', function() { return function_exists('preg_match') && @preg_match('/^.$/u', 'ñ') && @preg_match('/^\pL$/u', 'ñ'); }),
@@ -113,10 +113,10 @@ class AppIntegrityService
     );
     return $prerequisites;
   }
-  
+
   public static function getUnmetPrerequisites()
   {
-    return array_filter(AppIntegrityService::getApplicationPrerequisites(), function ($prereq) { 
+    return array_filter(AppIntegrityService::getApplicationPrerequisites(), function ($prereq) {
       return ! $prereq->IsPrerequisiteMet();
     });
   }
@@ -143,30 +143,45 @@ class AppIntegrityService
     // Third, finally try calling a known invalid URL on this installation
     //   and check for a header that would only be present if .htaccess was processed.
     //   This header comes from index.php (which is the target of .htaccess for invalid URLs)
-
+    $logger = LoggerUtils::getAppLogger();
     $check = AppIntegrityService::hasApacheModule('mod_rewrite');
+    $logger->debug("hasModRewrite:", ["hasApacheModule('mod_rewrite')" => ($check ? "true":"false")]);
 
     if (!$check && function_exists('shell_exec')) {
+        $logger->debug("hasModRewrite:", ["shell_exec" => "exists"]);
+        $logger->debug("hasModRewrite:", ["SERVER_SOFTWARE" => strval($_SERVER['SERVER_SOFTWARE'])]);
+
         if (strpos($_SERVER['SERVER_SOFTWARE'], 'Apache') !== false) {
             $check = strpos(shell_exec('/usr/local/apache/bin/apachectl -l'), 'mod_rewrite') !== false;
+            $logger->debug("hasModRewrite:", ["check /usr/local/apache/bin/apachectl -l" => ($check ? 'true':'false')]);
         }
     }
 
-    if ( function_exists('curl_version')) {
+    if ( !$check && function_exists('curl_version')) {
+        $logger->debug("hasModRewrite:",["curl" => "exists"]);
         $verbose = fopen('php://temp', 'w+');
         $ch = curl_init();
         $request_url_parser = parse_url($_SERVER['HTTP_REFERER']);
         $request_scheme = isset($request_url_parser['scheme']) ? $request_url_parser['scheme'] : 'http';
         $request_host = isset($request_url_parser['host']) ? $request_url_parser['host'] : 'localhost';
         $request_port = isset($request_url_parser['port']) ? $request_url_parser['port'] : (($request_scheme == 'https')? '443' : '80');
-        curl_setopt($ch, CURLOPT_URL, $request_scheme ."://". $_SERVER['HTTP_HOST'] . SystemURLs::getRootPath()."/INVALID");
+		$logger->debug("hasModRewrite:", ["HTTP_REFERER" => $_SERVER['HTTP_REFERER']]);
+		$logger->debug("hasModRewrite:", [["scheme: " => $request_scheme], ["host: " => $request_host], ["port: " => $request_port]]);
+        $rewrite_chk_url = $request_scheme ."://". $_SERVER['HTTP_HOST'] . SystemURLs::getRootPath()."/INVALID";
+        $logger->debug("hasModRewrite:", ["Curl rewrite check url" => $rewrite_chk_url]);
+        curl_setopt($ch, CURLOPT_URL, $rewrite_chk_url);
+        $logger->debug("hasModRewrite:", ["host ip" => gethostbyname($request_host)]);
 
         if ( gethostbyname($request_host) == '127.0.0.1') {
+            $logger->debug("hasModRewrite:", ["sapi_type" => php_sapi_name()]);
             $sapi_type = php_sapi_name();
 
             if ( $sapi_type == 'fpm-fcgi') {
+                $logger->debug("hasModRewrite:", ["Server ip mapping(".$request_host.":".$request_port.")" => $_SERVER['SERVER_ADDR']]);
                 curl_setopt($ch, CURLOPT_RESOLVE, array(sprintf("%s:%d:%s", $request_host, $request_port, $_SERVER['SERVER_ADDR'])));
             } else if (isset($_SERVER['HTTP_X_REAL_IP'])) {
+                $logger->debug("hasModRewrite:", ["HTTP_X_REAL_IP" => $_SERVER['HTTP_X_REAL_IP']]);
+                $logger->debug("hasModRewrite:", ["Server ip mapping(".$request_host.":".$request_port.")" => $_SERVER['REMOTE_ADDR']]);
                 curl_setopt($ch, CURLOPT_RESOLVE, array(sprintf("%s:%d:%s", $request_host, $request_port, $_SERVER['REMOTE_ADDR'])));
             }
         }
@@ -196,8 +211,7 @@ class AppIntegrityService
         if ( $check == false) {
             rewind($verbose);
             $verboseLog = stream_get_contents($verbose);
-            $logger = LoggerUtils::getAppLogger();
-            $logger->warn("Curl information: ".htmlspecialchars($verboseLog));
+            $logger->warn("hasModRewrite:", ["Curl information" => [htmlspecialchars($verboseLog)]]);
         }
 
         fclose($verbose);
