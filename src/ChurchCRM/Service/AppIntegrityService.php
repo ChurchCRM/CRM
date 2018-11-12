@@ -159,7 +159,7 @@ class AppIntegrityService
         $request_scheme = isset($request_url_parser['scheme']) ? $request_url_parser['scheme'] : 'http';
         $request_host = isset($request_url_parser['host']) ? $request_url_parser['host'] : 'localhost';
         $request_port = isset($request_url_parser['port']) ? $request_url_parser['port'] : (($request_scheme == 'https')? '443' : '80');
-        curl_setopt($ch, CURLOPT_URL, $request_scheme ."://". $request_host . SystemURLs::getRootPath()."/INVALID");
+        curl_setopt($ch, CURLOPT_URL, $request_scheme ."://". $_SERVER['HTTP_HOST'] . SystemURLs::getRootPath()."/INVALID");
 
         if ( gethostbyname($request_host) == '127.0.0.1') {
             $sapi_type = php_sapi_name();
