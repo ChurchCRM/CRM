@@ -179,12 +179,18 @@ class PDF_Directory extends ChurchInfoReport
 
         $h = 0; // check image height.  id will be zero if not included
            $famimg = '../Images/Family/'.$fid.'.jpg';
+        if (!file_exists($famimg)) {
+           $famimg = '../Images/Family/'.$fid.'.png';
+        }
         if (file_exists($famimg)) {
             $s = getimagesize($famimg);
             $h = ($this->_ColWidth / $s[0]) * $s[1];
         }
 
         $persimg = '../Images/Person/'.$pid.'.jpg';
+        if (!file_exists($perimg)) {
+           $famimg = '../Images/Person/'.$pid.'.png';
+        }
         if (file_exists($persimg)) {
             $s = getimagesize($persimg);
             $h = ($this->_ColWidth / $s[0]) * $s[1];
@@ -472,11 +478,17 @@ class PDF_Directory extends ChurchInfoReport
 
         $dirimg = '';
         $famimg = '../Images/Family/'.$fid.'.jpg';
+        if (!file_exists($famimg)) {
+           $famimg = '../Images/Family/'.$fid.'.png';
+        }
         if (file_exists($famimg)) {
             $dirimg = $famimg;
         }
 
         $perimg = '../Images/Person/'.$pid.'.jpg';
+        if (!file_exists($perimg)) {
+           $famimg = '../Images/Person/'.$pid.'.png';
+        }
         if (file_exists($perimg)) {
             $dirimg = $perimg;
         }
