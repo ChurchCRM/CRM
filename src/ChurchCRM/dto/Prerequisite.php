@@ -17,7 +17,7 @@ class Prerequisite implements \JsonSerializable {
   public function IsPrerequisiteMet(){
     $callable = $this->testFunction;
     if ( $this->savedTestResult === null) {
-       $this->savedTestResult = (bool)$callable;
+       $this->savedTestResult = (bool)$callable();
     }
     return $this->savedTestResult;
   }
