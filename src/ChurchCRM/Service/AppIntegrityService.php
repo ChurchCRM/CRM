@@ -153,11 +153,11 @@ class AppIntegrityService
 
         if (strpos($_SERVER['SERVER_SOFTWARE'], 'Apache') !== false) {
             $check = strpos(shell_exec('/usr/local/apache/bin/apachectl -l'), 'mod_rewrite') !== false;
-            $logger->debug("hasModRewrite:", ["check /usr/local/apache/bin/apachectl -l" => ($check ? 'true':'false')]);
+            $logger->debug("hasModRewrite:", ["check /usr/local/apache/bin/apachectl -l" => ($check ? "true":"false")]);
         }
     }
 
-    if ( !$check && function_exists('curl_version')) {
+    if ( function_exists('curl_version')) {
         $logger->debug("hasModRewrite:",["curl" => "exists"]);
         $verbose = fopen('php://temp', 'w+');
         $ch = curl_init();
