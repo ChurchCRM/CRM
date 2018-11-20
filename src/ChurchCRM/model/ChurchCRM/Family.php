@@ -236,6 +236,9 @@ class Family extends BaseFamily implements iPhoto
         return $this->getName() . ' Family';
     }
 
+    /***
+     * @return ChurchCRM\dto\Photo
+     */
     public function getPhoto()
     {
       if (!$this->photo)

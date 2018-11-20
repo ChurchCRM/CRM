@@ -4,6 +4,8 @@ namespace ChurchCRM\Reports;
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Utils\MiscUtils;
+use ChurchCRM\FamilyQuery;
+use ChurchCRM\PersonQuery;
 
 class PDF_Directory extends ChurchInfoReport
 {
@@ -172,29 +174,17 @@ class PDF_Directory extends ChurchInfoReport
         return $nl;
     }
 
-    public function Check_Lines($numlines, $fid, $pid)
+    public function Check_Lines($numlines, $img)
     {
         // Need to determine if we will extend beyoned 17mm from the bottom of
         // the page.
 
         $h = 0; // check image height.  id will be zero if not included
-           $famimg = '../Images/Family/'.$fid.'.jpg';
-        if (!file_exists($famimg)) {
-           $famimg = '../Images/Family/'.$fid.'.png';
-        }
-        if (file_exists($famimg)) {
-            $s = getimagesize($famimg);
-            $h = ($this->_ColWidth / $s[0]) * $s[1];
-        }
 
-        $persimg = '../Images/Person/'.$pid.'.jpg';
-        if (!file_exists($perimg)) {
-           $famimg = '../Images/Person/'.$pid.'.png';
-        }
-        if (file_exists($persimg)) {
-            $s = getimagesize($persimg);
+        if (file_exists($img)) {
+            $s = getimagesize($img);
             $h = ($this->_ColWidth / $s[0]) * $s[1];
-        }
+        }     
 
 //      if ($this->GetY() + $h + $numlines * 5 > $this->h - 27)
         if ($this->GetY() + $h + $numlines * $this->_LS > $this->h - 27) {
@@ -214,7 +204,7 @@ class PDF_Directory extends ChurchInfoReport
     // changes.
     public function Add_Header($sLetter)
     {
-        $this->Check_Lines(2, 0, 0);
+        $this->Check_Lines(2, null);
         $this->SetTextColor(255);
         $this->SetFont($this->_Font, 'B', $this->_Char_Size);
 //        $_PosX = $this->_Column == 0 ? $this->_Margin_Left : $this->w - $this->_Margin_Left - $this->_ColWidth;
@@ -466,7 +456,20 @@ class PDF_Directory extends ChurchInfoReport
     // Number of lines is only for the $text parameter
     public function Add_Record($sName, $text, $numlines, $fid, $pid)
     {
-        $this->Check_Lines($numlines, $fid, $pid);
+        $dirimg = '';
+        if(!is_null($fid)){
+          $family = FamilyQuery::create()->findOneById($fid);
+          if($family && !($family->getPhoto()->isInitials()) && file_exists($family->getPhoto()->getPhotoURI())) {
+            $dirimg = $family->getPhoto()->getPhotoURI();
+          }
+        }
+        if(!is_null($pid)){
+          $person = PersonQuery::create()->findOneById($pid);
+          if ($person && !($person->getPhoto()->isInitials()) && file_exists($person->getPhoto()->getPhotoURI())) {
+            $dirimg = $person->getPhoto()->getPhotoURI();
+          }
+        }
+        $this->Check_Lines($numlines, $dirimg);
 
         $this->Print_Name(iconv('UTF-8', 'ISO-8859-1', $sName));
 
@@ -476,22 +479,7 @@ class PDF_Directory extends ChurchInfoReport
 
         $this->SetXY($_PosX, $_PosY);
 
-        $dirimg = '';
-        $famimg = '../Images/Family/'.$fid.'.jpg';
-        if (!file_exists($famimg)) {
-           $famimg = '../Images/Family/'.$fid.'.png';
-        }
-        if (file_exists($famimg)) {
-            $dirimg = $famimg;
-        }
-
-        $perimg = '../Images/Person/'.$pid.'.jpg';
-        if (!file_exists($perimg)) {
-           $famimg = '../Images/Person/'.$pid.'.png';
-        }
-        if (file_exists($perimg)) {
-            $dirimg = $perimg;
-        }
+        
 
         if ($dirimg != '') {
             $s = getimagesize($dirimg);
