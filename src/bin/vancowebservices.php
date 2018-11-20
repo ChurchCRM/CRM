@@ -224,7 +224,6 @@ class VancoTools
 
     public function encrypt($data, $key)
     {
-        //$ivsize = openssl_cipher_iv_length('AES-128-ECB');
         $ivsize = 16;
         $str_len = mb_strlen($data, '8bit');
         $pad_len = $ivsize - ($str_len % $ivsize);
