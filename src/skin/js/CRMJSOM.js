@@ -527,7 +527,8 @@
         } catch(err) {
           var errortext = textStatus + " " + errorThrown;
         }
-        if (suppressErrorDialog !== true) {
+        
+        if ( !(textStatus == "abort" || suppressErrorDialog) ) {
           if(CRMResponse) {
              window.CRM.DisplayErrorMessage(jqXHR.url, CRMResponse);
           }
