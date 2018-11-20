@@ -232,7 +232,6 @@ class VancoTools
         $iv = openssl_random_pseudo_bytes($ivsize);
 
         return openssl_encrypt($data, 'AES-128-ECB', $key, OPENSSL_RAW_DATA| OPENSSL_ZERO_PADDING, $iv);
-        //return mcrypt_encrypt(MCRYPT_RIJNDAEL_128, $key, $data, MCRYPT_MODE_ECB);
     }
 
     public function pad_msg($data)
@@ -263,7 +262,6 @@ class VancoTools
     public function decrypt($data, $key)
     {
         return openssl_decrypt($data, 'AES-128-ECB', $key, OPENSSL_RAW_DATA | OPENSSL_ZERO_PADDING);
-        //return mcrypt_decrypt(MCRYPT_RIJNDAEL_128, $key, $data, MCRYPT_MODE_ECB);
     }
 
     //Function to generate a unique requestid for the request.
