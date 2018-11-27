@@ -258,6 +258,7 @@ module.exports = function (grunt) {
                     src: [
                         '**/*.php',
                         '**/*.js',
+                        '**/.htaccess',
                         '!**/.gitignore',
                         '!vendor/**/example/**',
                         '!vendor/**/tests/**',
