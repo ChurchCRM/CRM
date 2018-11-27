@@ -2301,5 +2301,18 @@
     "Families Without Emails": "Familias sin Emails",
     "Record": "Registro",
     "Records": "Registros",
-    "Emptied into Event ID": "Vaciado hacia ID de Evento"
+    "Emptied into Event ID": "Vaciado hacia ID de Evento",
+    "integrityCheck.json file missing": "falta archivo integrityCheck.json",
+    "Passed": "Pasó",
+    "PHP Max Execution Time is too Short": "Máximo Tiempo de Ejecución de PHP es muy Corto",
+    "Increase the PHP execution time limit to allow for backup and restore.": "Incremente el límite de tiempo de ejecución de PHP para permitir respaldar y restaurar.",
+    "Application Integrity Check": "Comprobación de Integridad de Aplicación",
+    "Focus": "Enfocar",
+    "Unfocus": "Desenfocar",
+    "Warning: Signature mismatch": "Advertencia: Firmas no coinciden",
+    "Some ChurchCRM system files may have been modified since the last installation.": "Algunos archivos de sistema de ChurchCRM pueden haber sido modificados desde la última instalación.",
+    "This upgrade will completely destroy any customizations made to the following files by reverting the files to the official version.": "Esta actualización destruirá cualquier personalización hecha a los siguientes archivos al revertirlos a la versión oficial.",
+    "If you wish to maintain your changes to these files, please take a manual backup of these files before proceeding with this upgrade, and then manually restore the files after the upgrade is complete.": "Si desea mantener sus cambios a estos archivos, por favor haga un respaldo manual de estos antes de proceder con esta actualización, y luego restaure los archivos manualmente después de haberla completado.",
+    "Integrity Check Details:": "Detalles de Comprobación de Integridad:",
+    "I Understand": "Entiendo"
 }
