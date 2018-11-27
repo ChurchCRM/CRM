@@ -487,23 +487,23 @@ class SystemService
 
     public function doUpgrade($zipFilename, $sha1)
     {
-      $executionTime = new ExecutionTime();
       $logger = LoggerUtils::getAppLogger();
       $logger->info("Beginnging upgrade process");
-      ini_set('max_execution_time', 60);
       $logger->info("PHP max_execution_time is now: " . ini_get("max_execution_time"));
+      $logger->info("Beginning hash validation on " . $zipFilename);
       if ($sha1 == sha1_file($zipFilename)) {
-        $logger->debug("Hash validation succeeded on " . $zipFilename . " Got: " . sha1_file($zipFilename));
+        $logger->info("Hash validation succeeded on " . $zipFilename . " Got: " . sha1_file($zipFilename));
         $zip = new \ZipArchive();
         if ($zip->open($zipFilename) == true) {
-            $logger->info("Extracting " . $zipFilename." to: " . SystemURLs::getDocumentRoot() . '/Upgrade');
-            $zip->extractTo(SystemURLs::getDocumentRoot() . '/Upgrade');
-            $zip->close();
-            $logger->info("Extraction completed.  Took:" . $executionTime->getMiliseconds());
-            $executionTime = new ExecutionTime();
-            $logger->info("Moving extracted zip into place");
-            $this->moveDir(SystemURLs::getDocumentRoot() . '/Upgrade/churchcrm', SystemURLs::getDocumentRoot());
-            $logger->info("Move completed.  Took:" . $executionTime->getMiliseconds());
+          $logger->info("Extracting " . $zipFilename." to: " . SystemURLs::getDocumentRoot() . '/Upgrade');
+          $executionTime = new ExecutionTime();
+          $zip->extractTo(SystemURLs::getDocumentRoot() . '/Upgrade');
+          $zip->close();
+          $logger->info("Extraction completed.  Took:" . $executionTime->getMiliseconds());
+          $logger->info("Moving extracted zip into place");
+          $executionTime = new ExecutionTime();
+          $this->moveDir(SystemURLs::getDocumentRoot() . '/Upgrade/churchcrm', SystemURLs::getDocumentRoot());
+          $logger->info("Move completed.  Took:" . $executionTime->getMiliseconds());
         }
         $logger->info("Deleting zip archive: ".$zipFilename);
         unlink($zipFilename);
