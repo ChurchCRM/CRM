@@ -444,22 +444,22 @@ class SystemService
 
     public function downloadLatestRelease()
     {
-        $release = $this->getLatestRelease();
-        $UpgradeDir = SystemURLs::getDocumentRoot() . '/Upgrade';
-        foreach ($release['assets'] as $asset) {
-            if ($asset['name'] == "ChurchCRM-" . $release['name'] . ".zip") {
-                $url = $asset['browser_download_url'];
-            }
+      $release = $this->getLatestRelease();
+      $UpgradeDir = SystemURLs::getDocumentRoot() . '/Upgrade';
+      foreach ($release['assets'] as $asset) {
+        if ($asset['name'] == "ChurchCRM-" . $release['name'] . ".zip") {
+          $url = $asset['browser_download_url'];
         }
-        mkdir($UpgradeDir);
-        file_put_contents($UpgradeDir . '/' . basename($url), file_get_contents($url));
-        $returnFile = [];
-        $returnFile['fileName'] = basename($url);
-        $returnFile['releaseNotes'] = $release['body'];
-        $returnFile['fullPath'] = $UpgradeDir . '/' . basename($url);
-        $returnFile['sha1'] = sha1_file($UpgradeDir . '/' . basename($url));
+      }
+      mkdir($UpgradeDir);
+      file_put_contents($UpgradeDir . '/' . basename($url), file_get_contents($url));
+      $returnFile = [];
+      $returnFile['fileName'] = basename($url);
+      $returnFile['releaseNotes'] = $release['body'];
+      $returnFile['fullPath'] = $UpgradeDir . '/' . basename($url);
+      $returnFile['sha1'] = sha1_file($UpgradeDir . '/' . basename($url));
 
-        return $returnFile;
+      return $returnFile;
     }
 
     public function moveDir($src, $dest)
