@@ -9695,3 +9695,56 @@ msgstr "Registros"
 msgid "Emptied into Event ID"
 msgstr "Vaciado hacia ID de Evento"
 
+#: ChurchCRM/Service/AppIntegrityService.php:20
+msgid "integrityCheck.json file missing"
+msgstr "falta archivo integrityCheck.json"
+
+#: ChurchCRM/Service/AppIntegrityService.php:34
+#: ChurchCRM/dto/Prerequisite.php:34
+msgid "Passed"
+msgstr "Pasó"
+
+#: ChurchCRM/tasks/CheckExecutionTimeTask.php:33
+msgid "PHP Max Execution Time is too Short"
+msgstr "Máximo Tiempo de Ejecución de PHP es muy Corto"
+
+#: ChurchCRM/tasks/CheckExecutionTimeTask.php:38
+msgid "Increase the PHP execution time limit to allow for backup and restore."
+msgstr "Incremente el límite de tiempo de ejecución de PHP para permitir respaldar y restaurar."
+
+#: v2/templates/admin/debug.php:107
+msgid "Application Integrity Check"
+msgstr "Comprobación de Integridad de Aplicación"
+
+#: 
+msgid "Focus"
+msgstr "Enfocar"
+
+#: 
+msgid "Unfocus"
+msgstr "Desenfocar"
+
+#: UpgradeCRM.php:39
+msgid "Warning: Signature mismatch"
+msgstr "Advertencia: Firmas no coinciden"
+
+#: UpgradeCRM.php:41
+msgid "Some ChurchCRM system files may have been modified since the last installation."
+msgstr "Algunos archivos de sistema de ChurchCRM pueden haber sido modificados desde la última instalación."
+
+#: UpgradeCRM.php:41
+msgid "This upgrade will completely destroy any customizations made to the following files by reverting the files to the official version."
+msgstr "Esta actualización destruirá cualquier personalización hecha a los siguientes archivos al revertirlos a la versión oficial."
+
+#: UpgradeCRM.php:42
+msgid "If you wish to maintain your changes to these files, please take a manual backup of these files before proceeding with this upgrade, and then manually restore the files after the upgrade is complete."
+msgstr "Si desea mantener sus cambios a estos archivos, por favor haga un respaldo manual de estos antes de proceder con esta actualización, y luego restaure los archivos manualmente después de haberla completado."
+
+#: UpgradeCRM.php:44
+msgid "Integrity Check Details:"
+msgstr "Detalles de Comprobación de Integridad:"
+
+#: UpgradeCRM.php:76
+msgid "I Understand"
+msgstr "Entiendo"
+
