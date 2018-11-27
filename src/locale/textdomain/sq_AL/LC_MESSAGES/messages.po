@@ -10,11 +10,11 @@ msgstr ""
 #: AutoPaymentClearAccounts.php:24 CatchCreatePayment.php:71
 #: Include/Functions.php:234
 msgid "Cannot execute query."
-msgstr "Nuk mund të ekzekutuar query."
+msgstr "Nuk mund të ekzekutojë kërkesën."
 
 #: AutoPaymentDelete.php:19
 msgid "Confirm Delete Automatic payment"
-msgstr "Konfirmo Fshij pagesën automatik"
+msgstr "Konfirmo fshirjen e pagesës automatike"
 
 #: AutoPaymentDelete.php:63 Checkin.php:286 Checkin.php:368
 #: DepositSlipEditor.php:231 DonationFundEditor.php:153
@@ -29,7 +29,7 @@ msgstr "Konfirmo Fshij pagesën automatik"
 #: PropertyList.php:106 PropertyTypeList.php:46 PropertyTypeList.php:67
 #: PropertyTypeList.php:69 v2/templates/people/family-view.php:530
 msgid "Delete"
-msgstr "Fshiji"
+msgstr "Fshije"
 
 #: AutoPaymentDelete.php:64 AutoPaymentEditor.php:787 BatchWinnerEntry.php:112
 #: CanvassEditor.php:239 Checkin.php:167 Checkin.php:274 Checkin.php:287
@@ -52,7 +52,7 @@ msgstr "Anulo"
 
 #: AutoPaymentEditor.php:129
 msgid "Automatic payment configuration for the "
-msgstr "Konfigurimi Automatik pagesa për "
+msgstr "Automatic payment configuration for the "
 
 #: AutoPaymentEditor.php:786 CanvassEditor.php:238 DepositSlipEditor.php:97
 #: DonatedItemEditor.php:293 FamilyEditor.php:647 FamilyEditor.php:731
@@ -79,11 +79,11 @@ msgstr "Ruaj"
 #: SelectList.php:1098 SelectList.php:1169 SystemSettings.php:214
 #: eGive.php:341
 msgid "Unassigned"
-msgstr "Pacaktuara"
+msgstr "E pacaktuar"
 
 #: AutoPaymentEditor.php:824
 msgid "Automatic payment type"
-msgstr "Lloji i pagesave automatike"
+msgstr "Lloji i pagesës automatike"
 
 #: AutoPaymentEditor.php:854
 msgid "Payment amount"
@@ -110,7 +110,7 @@ msgstr "joaktiv"
 #: external/templates/registration/family-register.php:41
 #: queryparameteroptions_qpo.php:7
 msgid "City"
-msgstr "Qytet"
+msgstr "Qyteti"
 
 #: AutoPaymentEditor.php:919 CSVExport.php:107 CSVImport.php:220
 #: CartToFamily.php:250 DirectoryReports.php:254 FamilyEditor.php:679
@@ -118,7 +118,7 @@ msgstr "Qytet"
 #: external/templates/registration/family-register.php:44
 #: queryparameteroptions_qpo.php:6
 msgid "State"
-msgstr "Shtet"
+msgstr "Shteti"
 
 #: AutoPaymentEditor.php:930 CSVExport.php:122 CSVImport.php:222
 #: CartToFamily.php:270 FamilyEditor.php:699 PersonEditor.php:928
@@ -126,9 +126,9 @@ msgstr "Shtet"
 msgid "Country"
 msgstr "Shteti"
 
-#: AutoPaymentEditor.php:936 ChurchCRM/Reports/PDF_Directory.php:309
-#: ChurchCRM/Reports/PDF_Directory.php:383
-#: ChurchCRM/Reports/PDF_Directory.php:440 DirectoryReports.php:262
+#: AutoPaymentEditor.php:936 ChurchCRM/Reports/PDF_Directory.php:305
+#: ChurchCRM/Reports/PDF_Directory.php:379
+#: ChurchCRM/Reports/PDF_Directory.php:436 DirectoryReports.php:262
 #: Reports/DirectoryReport.php:285 Reports/GroupReport.php:119
 #: external/templates/registration/family-register-members.php:103
 msgid "Phone"
@@ -136,9 +136,9 @@ msgstr "Telefon"
 
 #: AutoPaymentEditor.php:942 CSVExport.php:142 CSVImport.php:226
 #: CartToFamily.php:311 ChurchCRM/Config/Menu/Menu.php:40
-#: ChurchCRM/Reports/PDF_Directory.php:318
-#: ChurchCRM/Reports/PDF_Directory.php:394
-#: ChurchCRM/Reports/PDF_Directory.php:451 EditEventAttendees.php:42
+#: ChurchCRM/Reports/PDF_Directory.php:314
+#: ChurchCRM/Reports/PDF_Directory.php:390
+#: ChurchCRM/Reports/PDF_Directory.php:447 EditEventAttendees.php:42
 #: EventAttendance.php:175 FamilyEditor.php:771 FamilyView.php:272
 #: FamilyView.php:277 FamilyView.php:359 GroupReports.php:127
 #: PersonEditor.php:1035 PersonEditor.php:1037 PersonView.php:307
@@ -155,28 +155,28 @@ msgstr "Telefon"
 #: v2/templates/people/family-view.php:174
 #: v2/templates/people/family-view.php:314 queryparameteroptions_qpo.php:13
 msgid "Email"
-msgstr "Email"
+msgstr "E-posta"
 
 #: AutoPaymentEditor.php:948 ElectronicPaymentList.php:210
 #: FinancialReports.php:264 FindDepositSlip.php:48 PledgeEditor.php:589
 msgid "Credit Card"
-msgstr "Credit Card"
+msgstr "Karta e kreditit"
 
 #: AutoPaymentEditor.php:965
 msgid "Expiration Month"
-msgstr "Muaji Skadimit"
+msgstr "Muaji i skadimit"
 
 #: AutoPaymentEditor.php:971
 msgid "Expiration Year"
-msgstr "Viti Skadimit"
+msgstr "Viti i skadimit"
 
 #: AutoPaymentEditor.php:977
 msgid "Bank Name"
-msgstr "Emri i Bankës"
+msgstr "Emri i bankës"
 
 #: AutoPaymentEditor.php:983
 msgid "Bank Route Number"
-msgstr "Banka Route Numri"
+msgstr "Numri i Linjës së Bankës"
 
 #: AutoPaymentEditor.php:989
 msgid "Bank Account Number"
@@ -184,7 +184,7 @@ msgstr "Numri i llogarisë bankare"
 
 #: BackupDatabase.php:32 ChurchCRM/Config/Menu/Menu.php:197
 msgid "Backup Database"
-msgstr "Baza e të dhënave Backup"
+msgstr "Databaza e kopjes rezervë"
 
 #: BackupDatabase.php:42
 msgid "You should make a manual backup at least once a week unless you already have a regular backup procedule for your systems."
@@ -266,8 +266,8 @@ msgstr "Zinxhir"
 msgid "Envelope"
 msgstr "Zarf"
 
-#: CSVExport.php:147 ChurchCRM/Reports/PDF_Directory.php:397
-#: ChurchCRM/Reports/PDF_Directory.php:454 PersonView.php:321
+#: CSVExport.php:147 ChurchCRM/Reports/PDF_Directory.php:393
+#: ChurchCRM/Reports/PDF_Directory.php:450 PersonView.php:321
 #: Reports/DirectoryReport.php:299
 msgid "Work/Other Email"
 msgstr "Puna / tjera Email"
@@ -3689,17 +3689,17 @@ msgstr "Anëtar / Shoqëri"
 msgid "This option requires at least version 3.22 of MySQL!  Hit browser back button to return to ChurchCRM."
 msgstr "Ky opsion kërkon të paktën versionin 3.22 të MySQL! Shfletuesi goditi përsëri button për t'u kthyer në ChurchCRM."
 
-#: ChurchCRM/Reports/PDF_Directory.php:312
-#: ChurchCRM/Reports/PDF_Directory.php:387
-#: ChurchCRM/Reports/PDF_Directory.php:444 Reports/DirectoryReport.php:289
+#: ChurchCRM/Reports/PDF_Directory.php:308
+#: ChurchCRM/Reports/PDF_Directory.php:383
+#: ChurchCRM/Reports/PDF_Directory.php:440 Reports/DirectoryReport.php:289
 #: Reports/GroupReport.php:124
 #: external/templates/registration/family-register-members.php:96
 msgid "Work"
 msgstr "Punë"
 
-#: ChurchCRM/Reports/PDF_Directory.php:315
-#: ChurchCRM/Reports/PDF_Directory.php:391
-#: ChurchCRM/Reports/PDF_Directory.php:448 Reports/DirectoryReport.php:293
+#: ChurchCRM/Reports/PDF_Directory.php:311
+#: ChurchCRM/Reports/PDF_Directory.php:387
+#: ChurchCRM/Reports/PDF_Directory.php:444 Reports/DirectoryReport.php:293
 #: Reports/GroupReport.php:129
 msgid "Cell"
 msgstr "Qelizë"
@@ -3778,20 +3778,20 @@ msgstr "Gjithsej"
 msgid "Certificate of Ownership"
 msgstr "Certifikata e Pronësisë"
 
-#: ChurchCRM/Reports/PDF_Directory.php:38
-#: ChurchCRM/Reports/PDF_Directory.php:74
+#: ChurchCRM/Reports/PDF_Directory.php:40
+#: ChurchCRM/Reports/PDF_Directory.php:76
 msgid "Directory"
 msgstr "Drejtori"
 
-#: ChurchCRM/Reports/PDF_Directory.php:57
+#: ChurchCRM/Reports/PDF_Directory.php:59
 msgid "Page"
 msgstr "Faqe"
 
-#: ChurchCRM/Reports/PDF_Directory.php:321
+#: ChurchCRM/Reports/PDF_Directory.php:317
 msgid "Wedding"
 msgstr "Martesë"
 
-#: ChurchCRM/Reports/PDF_Directory.php:350
+#: ChurchCRM/Reports/PDF_Directory.php:346
 msgid "and"
 msgstr "dhe"
 
