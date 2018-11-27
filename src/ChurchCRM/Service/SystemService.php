@@ -478,21 +478,21 @@ class SystemService
 
     public function doUpgrade($zipFilename, $sha1)
     {
-        ini_set('max_execution_time', 60);
-        if ($sha1 == sha1_file($zipFilename)) {
-            $zip = new \ZipArchive();
-            if ($zip->open($zipFilename) == true) {
-                $zip->extractTo(SystemURLs::getDocumentRoot() . '/Upgrade');
-                $zip->close();
-                $this->moveDir(SystemURLs::getDocumentRoot() . '/Upgrade/churchcrm', SystemURLs::getDocumentRoot());
-            }
-            unlink($zipFilename);
-            SystemConfig::setValue('sLastIntegrityCheckTimeStamp', null);
+      ini_set('max_execution_time', 60);
+      if ($sha1 == sha1_file($zipFilename)) {
+          $zip = new \ZipArchive();
+          if ($zip->open($zipFilename) == true) {
+              $zip->extractTo(SystemURLs::getDocumentRoot() . '/Upgrade');
+              $zip->close();
+              $this->moveDir(SystemURLs::getDocumentRoot() . '/Upgrade/churchcrm', SystemURLs::getDocumentRoot());
+          }
+          unlink($zipFilename);
+          SystemConfig::setValue('sLastIntegrityCheckTimeStamp', null);
 
-            return 'success';
-        } else {
-            return 'hash validation failure';
-        }
+          return 'success';
+      } else {
+          return 'hash validation failure';
+      }
     }
 
         // Returns a file size limit in bytes based on the PHP upload_max_filesize
