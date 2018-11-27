@@ -31,9 +31,8 @@ Header_body_scripts();
         </span>
     </li>
     <?php
-      if (AppIntegrityService::getIntegrityCheckStatus() == gettext("Failed")) 
-      {
-    ?>
+      if (AppIntegrityService::getIntegrityCheckStatus() == gettext("Failed")) {
+          ?>
     <li>
       <i class="fa fa-bomb bg-red"></i>
       <div class="timeline-item" >
@@ -62,20 +61,17 @@ Header_body_scripts();
                       <td>
                           <?php
                           if ($file->status == 'File Missing') {
-                           echo gettext('File Missing');
-                          }
-                          else {
-                          echo $file->actualhash;
-                        }?>
+                              echo gettext('File Missing');
+                          } else {
+                              echo $file->actualhash;
+                          } ?>
                       </td>
                     </tr>
                         <?php
-                      }
-                      ?>
+                      } ?>
                     </table>
                     <?php
-                  }   
-                ?>
+                  } ?>
             </div>
           <input type="button" class="btn btn-primary" id="acceptIntegrityCheckWarking" <?= 'value="'.gettext('I Understand').'"' ?>>
         </div>
