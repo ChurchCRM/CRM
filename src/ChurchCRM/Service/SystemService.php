@@ -14,6 +14,7 @@ use Propel\Runtime\Propel;
 use PDO;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
+use ChurchCRM\Utils\ExecutionTime;
 
 require SystemURLs::getDocumentRoot() . '/vendor/ifsnop/mysqldump-php/src/Ifsnop/Mysqldump/Mysqldump.php';
 
@@ -478,20 +479,33 @@ class SystemService
 
     public function doUpgrade($zipFilename, $sha1)
     {
+      $executionTime = new ExecutionTime();
+      $logger = LoggerUtils::getAppLogger();
+      $logger->info("Beginnging upgrade process");
       ini_set('max_execution_time', 60);
+      $logger->info("PHP max_execution_time is now: " . ini_get("max_execution_time"));
       if ($sha1 == sha1_file($zipFilename)) {
-          $zip = new \ZipArchive();
-          if ($zip->open($zipFilename) == true) {
-              $zip->extractTo(SystemURLs::getDocumentRoot() . '/Upgrade');
-              $zip->close();
-              $this->moveDir(SystemURLs::getDocumentRoot() . '/Upgrade/churchcrm', SystemURLs::getDocumentRoot());
-          }
-          unlink($zipFilename);
-          SystemConfig::setValue('sLastIntegrityCheckTimeStamp', null);
-
-          return 'success';
+        $logger->debug("Hash validation succeeded on " . $zipFilename . " Got: " . sha1_file($zipFilename));
+        $zip = new \ZipArchive();
+        if ($zip->open($zipFilename) == true) {
+            $logger->info("Extracting " . $zipFilename." to: " . SystemURLs::getDocumentRoot() . '/Upgrade');
+            $zip->extractTo(SystemURLs::getDocumentRoot() . '/Upgrade');
+            $zip->close();
+            $logger->info("Extraction completed.  Took:" . $executionTime->getMiliseconds());
+            $executionTime = new ExecutionTime();
+            $logger->info("Moving extracted zip into place");
+            $this->moveDir(SystemURLs::getDocumentRoot() . '/Upgrade/churchcrm', SystemURLs::getDocumentRoot());
+            $logger->info("Move completed.  Took:" . $executionTime->getMiliseconds());
+        }
+        $logger->info("Deleting zip archive: ".$zipFilename);
+        unlink($zipFilename);
+        SystemConfig::setValue('sLastIntegrityCheckTimeStamp', null);
+        $logger->debug("Set sLastIntegrityCheckTimeStamp to null");
+        $logger->info("Upgrade process complete");
+        return 'success';
       } else {
-          return 'hash validation failure';
+        $logger->err("Hash validation failed on " . $zipFilename.". Expected: ".$sha1. ". Got: ".sha1_file($zipFilename));
+        return 'hash validation failure';
       }
     }
 
