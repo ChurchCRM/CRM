@@ -184,7 +184,7 @@ class PDF_Directory extends ChurchInfoReport
         if (file_exists($img)) {
             $s = getimagesize($img);
             $h = ($this->_ColWidth / $s[0]) * $s[1];
-        }     
+        }
 
 //      if ($this->GetY() + $h + $numlines * 5 > $this->h - 27)
         if ($this->GetY() + $h + $numlines * $this->_LS > $this->h - 27) {
@@ -263,7 +263,7 @@ class PDF_Directory extends ChurchInfoReport
             return '';
         }
     }
-    
+
     public function getBirthdayString($bDirBirthday, $per_BirthMonth, $per_BirthDay, $per_BirthYear, $per_Flags)
     {
       if ($bDirBirthday && $per_BirthDay > 0 && $per_BirthMonth > 0) {
@@ -369,7 +369,7 @@ class PDF_Directory extends ChurchInfoReport
         }
 
         $iTempLen = strlen($sHeadStr);
-        
+
         $sHeadStr .= " " . $this->getBirthdayString($bDirBirthday, $per_BirthMonth, $per_BirthDay, $per_BirthYear, $per_Flags) . "\n";
 
         $sCountry = SelectWhichInfo($per_Country, $fam_Country, false);
@@ -473,26 +473,19 @@ class PDF_Directory extends ChurchInfoReport
 
         $this->Print_Name(iconv('UTF-8', 'ISO-8859-1', $sName));
 
-//        $_PosX = $this->_Column == 0 ? $this->_Margin_Left : $this->w - $this->_Margin_Left - $this->_ColWidth;
-         $_PosX = ($this->_Column * ($this->_ColWidth + $this->_Gutter)) + $this->_Margin_Left;
+        $_PosX = ($this->_Column * ($this->_ColWidth + $this->_Gutter)) + $this->_Margin_Left;
         $_PosY = $this->GetY();
 
         $this->SetXY($_PosX, $_PosY);
 
-        
-
         if ($dirimg != '') {
-            $s = getimagesize($dirimg);
-            $h = ($this->_ColWidth / $s[0]) * $s[1];
+            $h = 20;
             $_PosY += 2;
-            $this->Image($dirimg, $_PosX, $_PosY, $this->_ColWidth);
+            $this->Image($dirimg, $_PosX, $_PosY, $h);
             $this->SetXY($_PosX, $_PosY + $h + 2);
         }
 
-//        $this->MultiCell($this->_ColWidth, 5, $text, 0, 'L');
-
         $this->MultiCell($this->_ColWidth, $this->_LS, iconv('UTF-8', 'ISO-8859-1', $text), 0, 'L');
-//        $this->SetY($this->GetY() + 5);
         $this->SetY($this->GetY() + $this->_LS);
     }
 }
