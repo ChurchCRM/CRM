@@ -1,5 +1,6 @@
 const path = require('path');
 module.exports = {
+  mode: "development",
   entry: {
     'calendar-event-editor' : './src/react/calendar-event-editor.tsx'
   },
