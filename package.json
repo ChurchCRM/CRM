@@ -42,8 +42,8 @@
         "react-modal": "^3.3.2",
         "ts-loader": "^4.1.0",
         "typescript": "^2.8.1",
-        "webpack": "^4.4.1",
-        "webpack-cli": "^2.0.13"
+        "webpack": "4.19.1",
+        "webpack-cli": "^2.1.4"
     },
     "dependencies": {
         "admin-lte": "2.3.7",
@@ -69,7 +69,7 @@
     },
     "scripts": {
         "install": "grunt clean && grunt updateVersions && grunt curl-dir && grunt copy && grunt sass",
-        "postinstall": "grunt genLocaleJSFiles && scripts/sync-react.sh",
+        "postinstall": "grunt genLocaleJSFiles",
         "locale-gen": "locale/update-locale.sh",
         "locale-download": "grunt updateFromPOeditor && grunt genLocaleJSFiles",
         "update-signatures": "grunt generateSignatures",
