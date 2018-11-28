@@ -162,6 +162,10 @@ msgstr "Email"
 msgid "Credit Card"
 msgstr "Krediitkaart"
 
+#: AutoPaymentEditor.php:956
+msgid "Vanco Credit Card Method"
+msgstr "Vanco Krediit kaart meetod"
+
 #: AutoPaymentEditor.php:965
 msgid "Expiration Month"
 msgstr "Kehtiv kuni"
@@ -526,4 +530,74 @@ msgstr "Perekonnapea (ema)"
 #: CSVImport.php:253
 msgid "Family Type: used with Make Family records... option above"
 msgstr "Perekonna liik: kasutatakse perekonna faili loomisel ... valikuline"
+
+#: CSVImport.php:260
+msgid "NOTE: Separators (dashes, etc.) or lack thereof do not matter"
+msgstr "MÄRKUS: Eraldajad (komad, jne.) ei oma tähtsust"
+
+#: CSVImport.php:265
+msgid "Default country if none specified otherwise"
+msgstr "Pemine riik kui ei ole määratud teisiti"
+
+#: CSVExport.php:167 CSVExport.php:277 CSVImport.php:281 FamilyEditor.php:948
+#: FinancialReports.php:117 OptionManager.php:69 PeopleDashboard.php:411
+#: PersonEditor.php:1135 PrintView.php:309
+#: v2/templates/cart/cartlisting.php:21 queryparameters_qrp.php:19
+msgid "Classification"
+msgstr "Klassifikaator"
+
+#: CSVImport.php:283
+msgid "Perform Import"
+msgstr "Valmista import"
+
+#: CSVImport.php:803
+msgid "ERROR: the uploaded CSV file no longer exists!"
+msgstr "VIGA: üleslaetud CSV faili ei ole enam!"
+
+#: 
+msgid "Data Cleared Successfully!"
+msgstr "Andmed on edukalt puhastatud!"
+
+#: CSVImport.php:812
+msgid "Upload CSV File"
+msgstr "Lae CSV fail üles"
+
+#: CSVImport.php:822
+msgid "Clear Persons and Families"
+msgstr "Puhasta inimestest ja perekondadest"
+
+#: 
+msgid "Warning!  Do not select this option if you plan to add to an existing database.<br/>"
+msgstr "Hoiatus! Ära vali seda võimalust, kui sa plaanid lisada olemasolevasse andmebaasi.<br/>"
+
+#: 
+msgid "Use only if unsatisfied with initial import.  All person and member data will be destroyed!"
+msgstr "Kasuta vaid kui sa ei ole rahul olemasoleva impordiga. Kõik inimesed ja perekondade andmed kustutatakse!"
+
+#: CSVImport.php:829
+msgid "Data import successful."
+msgstr "Andmete import õnnestus."
+
+#: CSVImport.php:829
+msgid "persons were imported"
+msgstr "inimest imporditi"
+
+#: CanvassAutomation.php:46 CanvassAutomation.php:53 CanvassAutomation.php:60
+#: CanvassAutomation.php:68 CanvassAutomation.php:76
+msgid "Not confirmed."
+msgstr "Pole  kinnitatud"
+
+#: CanvassAutomation.php:129
+msgid "Set default fiscal year"
+msgstr "Määra peamine aruandlus aasta"
+
+#: CanvassAutomation.php:133 CanvassAutomation.php:144
+#: CanvassAutomation.php:155 CanvassAutomation.php:166
+#: CanvassAutomation.php:177 CanvassAutomation.php:188
+msgid "Check to confirm"
+msgstr "Kinnita"
+
+#: CanvassAutomation.php:224
+msgid "Not Interested Report"
+msgstr "Huvipakkuvaid aruandeid ei ole"
 

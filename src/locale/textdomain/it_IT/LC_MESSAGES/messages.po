@@ -1001,7 +1001,7 @@ msgstr "Membro"
 
 #: Checkin.php:457 ChurchCRM/Service/PersonService.php:39
 msgid " of the"
-msgstr " del"
+msgstr "del"
 
 #: Checkin.php:459 ChurchCRM/Service/PersonService.php:41 PersonView.php:267
 msgid "(No assigned family)"
@@ -9584,4 +9584,146 @@ msgstr "Inizia con http:// o https://"
 #: v2/templates/admin/menus.php:42
 msgid "Menus"
 msgstr "Menu"
+
+#: ChurchCRM/Slim/Middleware/Request/Setting/BaseAuthSettingMiddleware.php:15
+msgid "is disabled"
+msgstr "è disabilitato"
+
+#: v2/templates/admin/debug.php:17
+msgid "System Information"
+msgstr "Informazioni di Sistema"
+
+#: v2/templates/admin/debug.php:22
+msgid "Software Version"
+msgstr "Versione software"
+
+#: v2/templates/admin/debug.php:30
+msgid "Valid Mail Server Settings"
+msgstr "Impostazioni valide del server di posta"
+
+#: v2/templates/admin/debug.php:40
+msgid "Database"
+msgstr "Database"
+
+#: v2/templates/admin/debug.php:45 v2/templates/admin/debug.php:49
+msgid "Database Version"
+msgstr "Versione del database"
+
+#: v2/templates/admin/debug.php:90
+msgid "Application Prerequisites"
+msgstr "Prerequisiti dell'applicazione"
+
+#: v2/templates/admin/debug.php:150
+msgid "WebServer Modules"
+msgstr "Moduli WebServer"
+
+#: ChurchCRM/data/Countries.php:308
+msgid "Invalid country name supplied"
+msgstr "Nome del paese non valido"
+
+#: ChurchCRM/dto/SystemConfig.php:56
+msgid "LastName FirstName"
+msgstr "Cognome nome"
+
+#: ChurchCRM/SystemCalendars/HolidayCalendar.php:45
+msgid "Holidays"
+msgstr "Vacanze"
+
+#: ChurchCRM/Emails/notifications/NewPersonOrFamilyEmail.php:71
+msgid "Person Name"
+msgstr "Nome della persona"
+
+#: ChurchCRM/dto/SystemConfig.php:234
+msgid "Custom message for church greeter email 1, max 255 characters"
+msgstr "messaggio personalizzato per e-mail di benvenuto 1, max 255 caratteri"
+
+#: ChurchCRM/dto/SystemConfig.php:235
+msgid "Custom message for church greeter email 2, max 255 characters"
+msgstr "messaggio personalizzato per e-mail di benvenuto 2, max 255 caratteri"
+
+#: ChurchCRM/dto/SystemConfig.php:236
+msgid "Include contact and demographic data in new member email notification body"
+msgstr "Includi dati di contatto e demografici nel nuovo corpo di notifica email del membro"
+
+#: ChurchCRM/dto/SystemConfig.php:237
+msgid "Include family custom properties in global search."
+msgstr "Includi le proprietà personalizzate della famiglia nella ricerca globale."
+
+#: settings-countries.php:128
+msgid "Latvia (LatvijaLatviaLV"
+msgstr "Lettonia (LatvijaLatviaLV"
+
+#: 
+msgid "You are about to add a new deposit without a comment"
+msgstr "Stai per aggiungere un nuovo deposito senza commento"
+
+#: v2/routes/email.php:85 v2/templates/email/dashboard.php:17
+#: v2/templates/email/without.php:14
+msgid "Families Without Emails"
+msgstr "Famiglie senza email"
+
+#: v2/templates/cart/cartempty.php:16
+msgid "Record"
+msgstr "Disco"
+
+#: v2/templates/cart/cartempty.php:16
+msgid "Records"
+msgstr "Records"
+
+#: v2/templates/cart/cartempty.php:16
+msgid "Emptied into Event ID"
+msgstr "Svuotato nell'ID evento"
+
+#: ChurchCRM/Service/AppIntegrityService.php:20
+msgid "integrityCheck.json file missing"
+msgstr "file integrityCheck.json mancante"
+
+#: ChurchCRM/Service/AppIntegrityService.php:34
+#: ChurchCRM/dto/Prerequisite.php:34
+msgid "Passed"
+msgstr "Superato"
+
+#: ChurchCRM/tasks/CheckExecutionTimeTask.php:33
+msgid "PHP Max Execution Time is too Short"
+msgstr "PHP Il tempo massimo di esecuzione è troppo breve"
+
+#: ChurchCRM/tasks/CheckExecutionTimeTask.php:38
+msgid "Increase the PHP execution time limit to allow for backup and restore."
+msgstr "Aumentare il tempo limite di esecuzione di PHP per consentire il backup e il ripristino."
+
+#: v2/templates/admin/debug.php:107
+msgid "Application Integrity Check"
+msgstr "Verifica dell'integrità dell'applicazione"
+
+#: 
+msgid "Focus"
+msgstr "Focus"
+
+#: 
+msgid "Unfocus"
+msgstr "Unfocus"
+
+#: UpgradeCRM.php:39
+msgid "Warning: Signature mismatch"
+msgstr "Avviso: mancata corrispondenza della firma"
+
+#: UpgradeCRM.php:41
+msgid "Some ChurchCRM system files may have been modified since the last installation."
+msgstr "Alcuni file di sistema ChurchCRM potrebbero essere stati modificati dall'ultima installazione."
+
+#: UpgradeCRM.php:41
+msgid "This upgrade will completely destroy any customizations made to the following files by reverting the files to the official version."
+msgstr "Questo aggiornamento distruggerà completamente le personalizzazioni apportate ai seguenti file ripristinando i file nella versione ufficiale."
+
+#: UpgradeCRM.php:42
+msgid "If you wish to maintain your changes to these files, please take a manual backup of these files before proceeding with this upgrade, and then manually restore the files after the upgrade is complete."
+msgstr "Se si desidera mantenere le modifiche a questi file, esegui un backup manuale di questi file prima di procedere con questo aggiornamento e quindi ripristinare manualmente i file al termine dell'aggiornamento."
+
+#: UpgradeCRM.php:44
+msgid "Integrity Check Details:"
+msgstr "Dettagli del controllo di integrità:"
+
+#: UpgradeCRM.php:76
+msgid "I Understand"
+msgstr "ho capito"
 

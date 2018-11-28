@@ -690,6 +690,10 @@ msgstr "Genereer een PDF met een voortgangsrapport. De voortgangsrapport bevat i
 msgid "Summary Report"
 msgstr "Samenvattings Rapport"
 
+#: CanvassAutomation.php:218
+msgid "Generate a PDF containing a summary report.  The summary report includes comments extracted from the canvass data."
+msgstr "Genereer een PDF met een samenvatting. De samenvatting bevat commentaar vanuit de enquete data."
+
 #: CanvassAutomation.php:224
 msgid "Not Interested Report"
 msgstr "Niet geinterresseerd Rapport"
@@ -4480,6 +4484,22 @@ msgstr "Gegevens importeren"
 #: CSVImport.php:819
 msgid "Clear Data"
 msgstr "Opschonen gegevens"
+
+#: EditEventAttendees.php:76
+msgid "Are you sure you want to DELETE this person from Event ID: "
+msgstr "Weet je zeker dat je deze persoon wilt VERWIJDEREN uit het Evenement ID: "
+
+#: ElectronicPaymentList.php:41
+msgid "Delete automatic payment for"
+msgstr "Verwijder automatische betaling voor"
+
+#: ElectronicPaymentList.php:50
+msgid "Clear account numbers for"
+msgstr "Accountnummers wissen voor"
+
+#: EventEditor.php:479
+msgid "Date Range"
+msgstr "Data bereik"
 
 #: FindDepositSlip.php:96
 msgid "Deposit(s)"
