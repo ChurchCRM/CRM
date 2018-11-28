@@ -65,7 +65,8 @@
         "jquery-photo-uploader": "1.0.13",
         "jquery-steps": "1.1.0",
         "jquery-validation": "1.16.0",
-        "node-sass": "^4.11.0"
+        "node-sass": "^4.11.0",
+        "react-select": "^2.1.2"
     },
     "scripts": {
         "install": "grunt clean && grunt updateVersions && grunt curl-dir && grunt copy && grunt sass",

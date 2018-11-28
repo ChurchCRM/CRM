@@ -2,6 +2,7 @@ import * as React from 'react';
 import CRMEvent from '../interfaces/CRMEvent';
 import { Modal, FormControl } from 'react-bootstrap';
 import CRMRoot from '../window-context-service.jsx';
+import Select from 'react-select';
 
 class EventModal extends React.Component<EventFormProps, EventFormState> {
   constructor(props: EventFormProps) {
@@ -18,15 +19,14 @@ class EventModal extends React.Component<EventFormProps, EventFormState> {
   }
 
   componentDidMount() {
-
+    // when the component monts to the DOM, then we should execut an XHR query to find the details for the supplied event id.
     fetch(CRMRoot + "/api/events/" + this.props.eventId, {
       credentials: "include"
     })
       .then(response => response.json())
       .then(data => {
         this.setState({ event: data })
-      }
-      );
+      });
   }
 
   setEditMode() {
@@ -129,6 +129,9 @@ class EventModal extends React.Component<EventFormProps, EventFormState> {
   }
 
   renderEditForm() {
+    const AvailableCalendars = [
+      { value: "test", label: "test"}
+    ]
     return (
       <div>
         <Modal show={true} onHide={function () { }} >
@@ -167,7 +170,7 @@ class EventModal extends React.Component<EventFormProps, EventFormState> {
                   Pinned Calendars
                   </td>
                 <td>
-                  unk
+                 <Select name="PinnedCalendars" options={AvailableCalendars} onChange={this.handleInputChange}   />
                   </td>
               </tr>
               <tr>
@@ -219,7 +222,8 @@ interface EventFormProps {
 
 interface EventFormState {
   event?: CRMEvent,
-  isEditMode: boolean
+  isEditMode: boolean,
+  PinnedCalendars?: String[]
 }
 
 export default EventModal
