@@ -14,6 +14,7 @@ class EventModal extends React.Component<EventFormProps, EventFormState> {
     this.setEditMode = this.setEditMode.bind(this);
     this.setReadOnlyMode = this.setReadOnlyMode.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
+    this.updatePinnedCalendar = this.updatePinnedCalendar.bind(this);
     this.exit = this.props.onClose.bind(this);
     this.save = this.save.bind(this);
   }
@@ -38,13 +39,21 @@ class EventModal extends React.Component<EventFormProps, EventFormState> {
   }
 
   handleInputChange(event) {
-
+    console.log(event);
     const target = event.target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
     const name = target.name;
 
     this.setState({
       event: Object.assign({}, this.state.event, { [name]: value })
+    });
+    console.log(this.state);
+  }
+
+  updatePinnedCalendar(event) {
+    const newValue = event.label;
+    this.setState({
+      event: Object.assign({}, this.state.event, { PinnedCalendars: [newValue] })
     });
     console.log(this.state);
   }
@@ -170,7 +179,7 @@ class EventModal extends React.Component<EventFormProps, EventFormState> {
                   Pinned Calendars
                   </td>
                 <td>
-                 <Select name="PinnedCalendars" options={AvailableCalendars} onChange={this.handleInputChange}   />
+                 <Select name="PinnedCalendars" options={AvailableCalendars} onChange={this.updatePinnedCalendar}   />
                   </td>
               </tr>
               <tr>
@@ -222,8 +231,7 @@ interface EventFormProps {
 
 interface EventFormState {
   event?: CRMEvent,
-  isEditMode: boolean,
-  PinnedCalendars?: String[]
+  isEditMode: boolean
 }
 
 export default EventModal

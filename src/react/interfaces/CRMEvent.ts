@@ -6,6 +6,7 @@ interface CRMEvent {
     Start: string,
     Text: string,
     Type: number,
-    Title: string
+    Title: string,
+    PinnedCalendars?: String[]
   }
 export default CRMEvent
