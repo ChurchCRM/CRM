@@ -326,7 +326,7 @@ class SystemService
     static public function getPrerequisiteStatus() {
       if (AppIntegrityService::arePrerequisitesMet())
       {
-         return "All Prerequisites met";
+        return "All Prerequisites met";
       }
       else
       {
@@ -334,7 +334,7 @@ class SystemService
         $unmetNames = array_map(function($o) {
             return (string)($o->GetName());
           }, $unmet);
-        return "Missing Prerequisites: ".json_encode($unmetNames);
+        return "Missing Prerequisites: ".json_encode(array_values($unmetNames));
       }
     }
 
