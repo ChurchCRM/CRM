@@ -330,8 +330,11 @@ class SystemService
       }
       else
       {
-        $missingPrerequisiteNames = array_map(create_function('$o','return $o["name"];'),AppIntegrityService::getUnmetPrerequisites());
-        return "Missing Prerequisites: ".json_encode($missingPrerequisiteNames);
+        $unmet = AppIntegrityService::getUnmetPrerequisites();
+        $unmetNames = array_map(function($o) {
+            return (string)($o->GetName());
+          }, $unmet);
+        return "Missing Prerequisites: ".json_encode(array_values($unmetNames));
       }
     }
 
