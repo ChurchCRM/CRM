@@ -61,7 +61,12 @@ namespace ChurchCRM\Backup
        * @var String
        */
       public $BackupDownloadFileName;
-    
+      /**
+       * 
+       * @param String $BaseName
+       * @param BackupType $BackupType
+       * @param Boolean $IncludeExtraneousFiles
+       */
       public function __construct($BaseName, $BackupType, $IncludeExtraneousFiles)
       {
           $this->BackupType = $BackupType;

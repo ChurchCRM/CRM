@@ -30,8 +30,10 @@ $app->group('/database', function () {
     $this->delete('/people/clear', 'clearPeopleTables');
 
     $this->post('/backup', function ($request, $response, $args) {
+        $input = (object)$request->getParsedBody();
         $BaseName = preg_replace('/[^a-zA-Z0-9\-_]/','', SystemConfig::getValue('sChurchName')). "-" . date(SystemConfig::getValue("sDateFilenameFormat"));
-        $Backup = new BackupJob($BaseName, BackupType::FullBackup, false);
+        $BackupType = $input->BackupType;
+        $Backup = new BackupJob($BaseName, $BackupType, SystemConfig::getValue('bBackupExtraneousImages'));
         $Backup->Execute();
         return $response->withJSON($Backup);
     });

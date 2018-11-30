@@ -29,7 +29,7 @@ function doBackup(isRemote)
     // get the form data
     // there are many ways to get this data using jQuery (you can use the class or id also)
     var formData = {
-      'iArchiveType'              : $('input[name=archiveType]:checked').val(),
+      'BackupType'              : $('input[name=archiveType]:checked').val(),
       'bEncryptBackup'            : $("input[name=encryptBackup]").is(':checked'),
       'password'                  : $('input[name=pw1]').val()
     };
