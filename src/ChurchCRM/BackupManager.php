@@ -208,16 +208,18 @@ namespace ChurchCRM\Backup
       }
   }
 
-  class BackupDownloader {
-    public static function DownloadBackup($filename) {
-      $path = SystemURLs::getDocumentRoot() . "/tmp_attach/ChurchCRMBackups/$filename";
-      LoggerUtils::getAppLogger()->info("Download requested for :" . $path);
-        if (file_exists($path)) {
-            if ($fd = fopen($path, 'r')) {
-                $fsize = filesize($path);
-                $path_parts = pathinfo($path);
-                $ext = strtolower($path_parts['extension']);
-                switch ($ext) {
+  class BackupDownloader
+  {
+      public static function DownloadBackup($filename)
+      {
+          $path = SystemURLs::getDocumentRoot() . "/tmp_attach/ChurchCRMBackups/$filename";
+          LoggerUtils::getAppLogger()->info("Download requested for :" . $path);
+          if (file_exists($path)) {
+              if ($fd = fopen($path, 'r')) {
+                  $fsize = filesize($path);
+                  $path_parts = pathinfo($path);
+                  $ext = strtolower($path_parts['extension']);
+                  switch ($ext) {
                     case 'gz':
                         header('Content-type: application/x-gzip');
                         header('Content-Disposition: attachment; filename="' . $path_parts['basename'] . '"');
@@ -244,25 +246,24 @@ namespace ChurchCRM\Backup
                         header('Content-Disposition: filename="' . $path_parts['basename'] . '"');
                         break;
                 }
-                header("Content-length: $fsize");
-                header('Cache-control: private'); //use this to open files directly
-                LoggerUtils::getAppLogger()->debug("Headers sent. sending backup file contents");
-                while (!feof($fd)) {
-                    $buffer = fread($fd, 2048);
-                    echo $buffer;
-                }
-                LoggerUtils::getAppLogger()->debug("Backup file contents sent");
-            }
-            fclose($fd);
-            FileSystemUtils::recursiveRemoveDirectory(SystemURLs::getDocumentRoot() . '/tmp_attach/',true);
-            LoggerUtils::getAppLogger()->debug("Removed backup file from server filesystem");
-        }
-        else {
-          $message = "Requested download does not exist: " . $path;
-          LoggerUtils::getAppLogger()->err($message);
-          throw new \Exception($message,500);
-        }
-    }
+                  header("Content-length: $fsize");
+                  header('Cache-control: private'); //use this to open files directly
+                  LoggerUtils::getAppLogger()->debug("Headers sent. sending backup file contents");
+                  while (!feof($fd)) {
+                      $buffer = fread($fd, 2048);
+                      echo $buffer;
+                  }
+                  LoggerUtils::getAppLogger()->debug("Backup file contents sent");
+              }
+              fclose($fd);
+              FileSystemUtils::recursiveRemoveDirectory(SystemURLs::getDocumentRoot() . '/tmp_attach/', true);
+              LoggerUtils::getAppLogger()->debug("Removed backup file from server filesystem");
+          } else {
+              $message = "Requested download does not exist: " . $path;
+              LoggerUtils::getAppLogger()->err($message);
+              throw new \Exception($message, 500);
+          }
+      }
   }
   
   
