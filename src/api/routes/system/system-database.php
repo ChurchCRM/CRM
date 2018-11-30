@@ -22,6 +22,8 @@ use ChurchCRM\Backup\BackupJob;
 use ChurchCRM\Backup\RestoreJob;
 use ChurchCRM\Backup\BackupType;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\Backup\BackupDownloader;
+
 $app->group('/database', function () {
 
     $this->post('/reset', 'resetDatabase');
@@ -58,7 +60,7 @@ $app->group('/database', function () {
 
     $this->get('/download/{filename}', function ($request, $response, $args) {
         $filename = $args['filename'];
-        $this->SystemService->download($filename);
+        BackupDownloader::DownloadBackup($filename);
     });
 })->add(new AdminRoleAuthMiddleware());
 
