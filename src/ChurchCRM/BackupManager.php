@@ -63,12 +63,12 @@ namespace ChurchCRM\Backup
           $this->BackupFileBaseName = $this->TempFolder .'/'.$BaseName;
           $this->IncludeExtraneousFiles = $IncludeExtraneousFiles;
           LoggerUtils::getAppLogger()->debug(
-                  "Backup job created; ready to execute: Type: '" . 
-                  $this->BackupType . 
-                  "' Temp Folder: '" . 
+                  "Backup job created; ready to execute: Type: '" .
+                  $this->BackupType .
+                  "' Temp Folder: '" .
                   $this->TempFolder .
                   "' BaseName: '" . $this->BackupFileBaseName.
-                  "' Include extra files: '". ($this->IncludeExtraneousFiles ? 'true':'false') ."'"  );
+                  "' Include extra files: '". ($this->IncludeExtraneousFiles ? 'true':'false') ."'");
       }
 
       public function CopyToWebDAV($Endpoint, $Username, $Password)
@@ -96,9 +96,9 @@ namespace ChurchCRM\Backup
               $dump->start($SqlFilePath->getPathname());
               LoggerUtils::getAppLogger()->debug("Finisehd backing up datbase to " . $SqlFilePath->getPathname());
           } catch (\Exception $e) {
-            $message = "Failed to backup database to: " . $SqlFilePath->getPathname(). " Exception: " . $e;
-            LoggerUtils::getAppLogger()->error($message);
-            throw new Exception($message, 500);
+              $message = "Failed to backup database to: " . $SqlFilePath->getPathname(). " Exception: " . $e;
+              LoggerUtils::getAppLogger()->error($message);
+              throw new Exception($message, 500);
           }
       }
     
