@@ -40,8 +40,13 @@ $app->group('/database', function () {
 
     $this->post('/backupRemote', function ($request, $response, $args) {
       if (SystemConfig::getValue('sExternalBackupUsername') && SystemConfig::getValue('sExternalBackupPassword') && SystemConfig::getValue('sExternalBackupEndpoint')) {
-        $Backup = new Backup(BackupType::FullBackup);
-        return $response;
+        $input = (object)$request->getParsedBody();
+        $BaseName = preg_replace('/[^a-zA-Z0-9\-_]/','', SystemConfig::getValue('sChurchName')). "-" . date(SystemConfig::getValue("sDateFilenameFormat"));
+        $BackupType = $input->BackupType;
+        $Backup = new BackupJob($BaseName, $BackupType, SystemConfig::getValue('bBackupExtraneousImages'));
+        $Backup->Execute();
+        $copyStatus = $Backup->CopyToWebDAV(SystemConfig::getValue('sExternalBackupEndpoint'), SystemConfig::getValue('sExternalBackupUsername'), SystemConfig::getValue('sExternalBackupPassword'));
+        return $response->withJSON($copyStatus);
       }
       else {
         throw new \Exception('WebDAV backups are not correctly configured.  Please ensure endpoint, username, and password are set', 500);

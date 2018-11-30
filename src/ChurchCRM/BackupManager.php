@@ -84,17 +84,29 @@ namespace ChurchCRM\Backup
 
       public function CopyToWebDAV($Endpoint, $Username, $Password)
       {
-          $fh = fopen($this->BackupFile->getPathname(), 'r');
-          $remoteUrl = $Endpoint.urlencode($BackupFile->getFilename());
-          $credentials = $Username.":".$Password;
-          $ch = curl_init($remoteUrl);
-          curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_ANY);
-          curl_setopt($ch, CURLOPT_USERPWD, $credentials);
-          curl_setopt($ch, CURLOPT_PUT, true);
-          curl_setopt($ch, CURLOPT_INFILE, $fh);
-          curl_setopt($ch, CURLOPT_INFILESIZE, $BackupFile->getSize());
-          $result = curl_exec($ch);
-          fclose($fh);
+          LoggerUtils::getAppLogger()->info("Beginning to copy backup to: " . $Endpoint);
+          try {
+            $fh = fopen($this->BackupFile->getPathname(), 'r');
+            $remoteUrl = $Endpoint.urlencode($this->BackupFile->getFilename());
+            LoggerUtils::getAppLogger()->debug("Full remote URL: " .$remoteUrl  );
+            $credentials = $Username.":".$Password;
+            $ch = curl_init($remoteUrl);
+            curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_ANY);
+            curl_setopt($ch, CURLOPT_USERPWD, $credentials);
+            curl_setopt($ch, CURLOPT_PUT, true);
+            curl_setopt($ch, CURLOPT_INFILE, $fh);
+            curl_setopt($ch, CURLOPT_INFILESIZE, $this->BackupFile->getSize());
+            LoggerUtils::getAppLogger()->debug("Beginning to send file");
+            $time = new \ChurchCRM\Utils\ExecutionTime();
+            $result = curl_exec($ch);
+            fclose($fh);
+            LoggerUtils::getAppLogger()->debug("File send complete.  Took: " . $time->getMiliseconds() . "ms");
+          }
+          catch(\Exception $e)
+          {
+            LoggerUtils::getAppLogger()->err("Error copying backup: " . $e);
+          }
+          LoggerUtils::getAppLogger()->info("Backup copy completed.  Curl result: " . $result);
           return $result;
       }
     
