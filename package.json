@@ -1,6 +1,6 @@
 {
     "name": "ChurchCRM",
-    "version": "3.0.13",
+    "version": "3.0.14",
     "description": "Free Church CRM Software",
     "repository": {
         "type": "git",
@@ -50,6 +50,7 @@
     },
     "scripts": {
         "install": "grunt clean && grunt updateVersions && grunt curl-dir && grunt copy && grunt sass",
+        "updateVersions": "grunt updateVersions",
         "postinstall": "grunt genLocaleJSFiles",
         "locale-gen": "locale/update-locale.sh",
         "locale-download": "grunt updateFromPOeditor && grunt genLocaleJSFiles",
