@@ -44,7 +44,7 @@ function doBackup(isRemote)
       data        : JSON.stringify(formData)
     })
     .done(function(data) {
-      var downloadButton = "<button class=\"btn btn-primary\" id=\"downloadbutton\" role=\"button\" onclick=\"javascript:downloadbutton('"+data.filename+"')\"><i class='fa fa-download'></i>  "+data.filename+"</button>";
+      var downloadButton = "<button class=\"btn btn-primary\" id=\"downloadbutton\" role=\"button\" onclick=\"javascript:downloadbutton('"+data.BackupDownloadFileName+"')\"><i class='fa fa-download'></i>  "+data.BackupDownloadFileName+"</button>";
       $("#backupstatus").css("color","green");
       if(isRemote)
       {

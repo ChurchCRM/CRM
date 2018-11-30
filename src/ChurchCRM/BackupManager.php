@@ -22,18 +22,10 @@ namespace ChurchCRM\Backup
       const SQL = 2;
       const FullBackup = 3;
   }
-  
-  class BackupActionResult
-  {
-      public $BackupFilePath;
-      public $TempFolder;
-      public $BackupType;
-  }
 
   class JobBase
   {
       protected $BackupType;
-      protected $BackupActionResult;
    
       protected function CreateEmptyTempFolder()
       {
@@ -54,7 +46,21 @@ namespace ChurchCRM\Backup
        * @var SplFileInfo
        */
       private $BackupFile;
+      /**
+       *
+       * @var String
+       */
+      private $TempFolder;
+      /**
+       *
+       * @var Boolean
+       */
       private $IncludeExtraneousFiles;
+      /**
+       *
+       * @var String
+       */
+      public $BackupDownloadFileName;
     
       public function __construct($BaseName, $BackupType, $IncludeExtraneousFiles)
       {
@@ -174,7 +180,7 @@ namespace ChurchCRM\Backup
               // if the backup took more than 80% of the max_execution_time, then write a warning to the log
               LoggerUtils::getAppLogger()->addWarning("Backup task took more than 80% of max_execution_time (".ini_get('max_execution_time').").  Consider increasing this time to avoid a failure");
           }
-
+          $this->BackupDownloadFileName  = $this->BackupFile->getFilename();
           return true;
       }
   }
