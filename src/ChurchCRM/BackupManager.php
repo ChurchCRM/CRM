@@ -62,7 +62,7 @@ namespace ChurchCRM\Backup
        */
       public $BackupDownloadFileName;
       /**
-       * 
+       *
        * @param String $BaseName
        * @param BackupType $BackupType
        * @param Boolean $IncludeExtraneousFiles
