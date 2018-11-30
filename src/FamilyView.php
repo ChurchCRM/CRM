@@ -385,7 +385,7 @@ $bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() || ($_SESSION['user']->i
                                     <span class='label <?= $labelColor ?>'> <?= $famRole ?></span>
                                 </td>
                                 <td>
-                                    <?= $person->getClassification()->getOptionName() ?>
+                                    <?= $person->getClassification() ? $person->getClassification()->getOptionName() : "" ?>
                                 </td>
                                 <td>
                                     <?= $person->getFormattedBirthDate() ?>
