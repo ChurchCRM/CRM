@@ -61,8 +61,14 @@ namespace ChurchCRM\Backup
           $this->BackupType = $BackupType;
           $this->TempFolder =  $this->CreateEmptyTempFolder();
           $this->BackupFileBaseName = $this->TempFolder .'/'.$BaseName;
-          $this->BackupType = $BackupType;
           $this->IncludeExtraneousFiles = $IncludeExtraneousFiles;
+          LoggerUtils::getAppLogger()->debug(
+                  "Backup job created; ready to execute: Type: '" . 
+                  $this->BackupType . 
+                  "' Temp Folder: '" . 
+                  $this->TempFolder .
+                  "' BaseName: '" . $this->BackupFileBaseName.
+                  "' Include extra files: '". ($this->IncludeExtraneousFiles ? 'true':'false') ."'"  );
       }
 
       public function CopyToWebDAV($Endpoint, $Username, $Password)
@@ -84,11 +90,15 @@ namespace ChurchCRM\Backup
       private function CaptureSQLFile(\SplFileInfo $SqlFilePath)
       {
           global $sSERVERNAME, $sDATABASE, $sUSER, $sPASSWORD;
+          LoggerUtils::getAppLogger()->debug("Beginning to backup datbase to: " . $SqlFilePath->getPathname());
           try {
               $dump = new Mysqldump('mysql:host=' . $sSERVERNAME . ';dbname=' . $sDATABASE, $sUSER, $sPASSWORD, ['add-drop-table' => true]);
               $dump->start($SqlFilePath->getPathname());
+              LoggerUtils::getAppLogger()->debug("Finisehd backing up datbase to " . $SqlFilePath->getPathname());
           } catch (\Exception $e) {
-              throw new Exception("Unable to create backup archive at ". $Backup->SQLFileName, 500);
+            $message = "Failed to backup database to: " . $SqlFilePath->getPathname(). " Exception: " . $e;
+            LoggerUtils::getAppLogger()->error($message);
+            throw new Exception($message, 500);
           }
       }
     
@@ -103,27 +113,36 @@ namespace ChurchCRM\Backup
     
       private function CreateFullArchive()
       {
+          $imagesAddedToArchive = array();
           $this->BackupFile = new \SplFileInfo($this->BackupFileBaseName.".tar");
           $phar = new PharData($this->BackupFile->getPathname());
+          LoggerUtils::getAppLogger()->debug("Archive opened at: ".$this->BackupFile->getPathname());
           $phar->startBuffering();
    
           $SqlFile =  new \SplFileInfo($this->TempFolder."/".'ChurchCRM-Database.sql');
           $this->CaptureSQLFile($SqlFile);
           $phar->addFile($SqlFile, 'ChurchCRM-Database.sql');
-      
+          LoggerUtils::getAppLogger()->debug("Database added to archive");
           $imageFiles = new RecursiveIteratorIterator(new RecursiveDirectoryIterator(SystemURLs::getImagesRoot()));
           foreach ($imageFiles as $imageFile) {
               if ($this->ShouldBackupImageFile($imageFile)) {
                   $localName = substr(str_replace(SystemURLs::getDocumentRoot(), '', $imageFile->getRealPath()), 1);
                   $phar->addFile($imageFile->getRealPath(), $localName);
+                  array_push($imagesAddedToArchive, $imageFile->getRealPath());
               }
           }
+          LoggerUtils::getAppLogger()->debug("Images files added to archive: ". join(";", $imagesAddedToArchive));
           $phar->stopBuffering();
+          LoggerUtils::getAppLogger()->debug("Finished creating archive.  Beginning to compress");
           $phar->compress(\Phar::GZ);
+          LoggerUtils::getAppLogger()->debug("Archive compressed; should now be a .gz file");
           unset($phar);
           unlink($this->BackupFile->getPathname());
+          LoggerUtils::getAppLogger()->debug("Initial .tar archive deleted: " . $this->BackupFile->getPathname());
           $this->BackupFile = new \SplFileInfo($this->BackupFileBaseName.".tar.gz");
+          LoggerUtils::getAppLogger()->debug("New backup file: " .  $this->BackupFile);
           unlink($SqlFile);
+          LoggerUtils::getAppLogger()->debug("Temp Database backup deleted: " . $SqlFile);
       }
     
       private function CreateGZSql()
@@ -139,7 +158,7 @@ namespace ChurchCRM\Backup
       public function Execute()
       {
           $time = new \ChurchCRM\Utils\ExecutionTime();
-          LoggerUtils::getAppLogger()->addDebug("Beginning backup job. Type: " . $this->BackupType . ". BaseName: " . $this->BackupFileBaseName);
+          LoggerUtils::getAppLogger()->info("Beginning backup job. Type: " . $this->BackupType . ". BaseName: " . $this->BackupFileBaseName);
           if ($this->BackupType == BackupType::FullBackup) {
               $this->CreateFullArchive();
           } elseif ($this->BackupType == BackupType::SQL) {
