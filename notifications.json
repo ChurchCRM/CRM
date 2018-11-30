@@ -1,17 +1,96 @@
 {
   "TTL": 300,
   "messages" : [
-     {
-      "targetVersion":"3.0.1",
-      "adminOnly": false,
-      "title":"Action required for upgrade to 3.0.2",
-      "link":"https://github.com/ChurchCRM/CRM/wiki/Upgrade#300-and-301-automatic-upgrade-fix"
-    },
     {
       "targetVersion":"3.0.0",
       "adminOnly": false,
-      "title":"Action required for upgrade to 3.0.2",
-      "link":"https://github.com/ChurchCRM/CRM/wiki/Upgrade#300-and-301-automatic-upgrade-fix"
-    }
+      "title":"Do you Use Vanco Paymnet? Let us know",
+      "link":"https://twitter.com/Church_CRM/status/1068332389040967681"
+    },
+    {
+      "targetVersion":"3.0.1",
+      "adminOnly": false,
+      "title":"Do you Use Vanco Paymnet? Let us know",
+      "link":"https://twitter.com/Church_CRM/status/1068332389040967681"
+    },
+    {
+      "targetVersion":"3.0.2",
+      "adminOnly": false,
+      "title":"Do you Use Vanco Paymnet? Let us know",
+      "link":"https://twitter.com/Church_CRM/status/1068332389040967681"
+    },
+    {
+      "targetVersion":"3.0.3",
+      "adminOnly": false,
+      "title":"Do you Use Vanco Paymnet? Let us know",
+      "link":"https://twitter.com/Church_CRM/status/1068332389040967681"
+    },
+    {
+      "targetVersion":"3.0.4",
+      "adminOnly": false,
+      "title":"Do you Use Vanco Paymnet? Let us know",
+      "link":"https://twitter.com/Church_CRM/status/1068332389040967681"
+    },
+    {
+      "targetVersion":"3.0.5",
+      "adminOnly": false,
+      "title":"Do you Use Vanco Paymnet? Let us know",
+      "link":"https://twitter.com/Church_CRM/status/1068332389040967681"
+    },
+    {
+      "targetVersion":"3.0.6",
+      "adminOnly": false,
+      "title":"Do you Use Vanco Paymnet? Let us know",
+      "link":"https://twitter.com/Church_CRM/status/1068332389040967681"
+    },
+    {
+      "targetVersion":"3.0.7",
+      "adminOnly": false,
+      "title":"Do you Use Vanco Paymnet? Let us know",
+      "link":"https://twitter.com/Church_CRM/status/1068332389040967681"
+    },
+    {
+      "targetVersion":"3.0.8",
+      "adminOnly": false,
+      "title":"Do you Use Vanco Paymnet? Let us know",
+      "link":"https://twitter.com/Church_CRM/status/1068332389040967681"
+    },
+    {
+      "targetVersion":"3.0.9",
+      "adminOnly": false,
+      "title":"Do you Use Vanco Paymnet? Let us know",
+      "link":"https://twitter.com/Church_CRM/status/1068332389040967681"
+    },
+    {
+      "targetVersion":"3.0.10",
+      "adminOnly": false,
+      "title":"Do you Use Vanco Paymnet? Let us know",
+      "link":"https://twitter.com/Church_CRM/status/1068332389040967681"
+    },
+    
+    {
+      "targetVersion":"3.0.11",
+      "adminOnly": false,
+      "title":"Do you Use Vanco Paymnet? Let us know",
+      "link":"https://twitter.com/Church_CRM/status/1068332389040967681"
+    },
+    {
+      "targetVersion":"3.0.12",
+      "adminOnly": false,
+      "title":"Do you Use Vanco Paymnet? Let us know",
+      "link":"https://twitter.com/Church_CRM/status/1068332389040967681"
+    },
+    {
+      "targetVersion":"3.0.13",
+      "adminOnly": false,
+      "title":"Do you Use Vanco Paymnet? Let us know",
+      "link":"https://twitter.com/Church_CRM/status/1068332389040967681"
+    },
+    {
+      "targetVersion":"3.0.14",
+      "adminOnly": false,
+      "title":"Do you Use Vanco Paymnet? Let us know",
+      "link":"https://twitter.com/Church_CRM/status/1068332389040967681"
+    },
   ]
 }
