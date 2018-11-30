@@ -355,6 +355,7 @@ $bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() || ($_SESSION['user']->i
                         <tr>
                             <th><span><?= gettext("Family Members") ?></span></th>
                             <th class="text-center"><span><?= gettext("Role") ?></span></th>
+                            <th><span><?= gettext("Classifcation") ?></span></th
                             <th><span><?= gettext("Birthday") ?></span></th>
                             <th><span><?= gettext("Email") ?></span></th>
                             <th></th>
@@ -382,6 +383,9 @@ $bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() || ($_SESSION['user']->i
                         $labelColor = 'label-warning';
                     } ?>
                                     <span class='label <?= $labelColor ?>'> <?= $famRole ?></span>
+                                </td>
+                                <td>
+                                    <?= $person->getClassification()->getOptionName() ?>
                                 </td>
                                 <td>
                                     <?= $person->getFormattedBirthDate() ?>
