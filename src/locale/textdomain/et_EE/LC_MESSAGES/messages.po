@@ -5,16 +5,16 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: POEditor.com\n"
 "Project-Id-Version: ChurchCRM\n"
-"Language: th\n"
+"Language: et\n"
 
 #: AutoPaymentClearAccounts.php:24 CatchCreatePayment.php:71
 #: Include/Functions.php:234
 msgid "Cannot execute query."
-msgstr "ไม่สามารถสืบค้นฐานข้อมูล"
+msgstr "Ei saa käsklust käivitada"
 
 #: AutoPaymentDelete.php:19
 msgid "Confirm Delete Automatic payment"
-msgstr "ยืนยันที่จะลบการจ่ายเงินอัตโนมัต"
+msgstr "Automaatse tasumise kinnitus vajab KINNITAMIST"
 
 #: AutoPaymentDelete.php:63 Checkin.php:286 Checkin.php:368
 #: DepositSlipEditor.php:231 DonationFundEditor.php:153
@@ -29,7 +29,7 @@ msgstr "ยืนยันที่จะลบการจ่ายเงิน
 #: PropertyList.php:106 PropertyTypeList.php:46 PropertyTypeList.php:67
 #: PropertyTypeList.php:69 v2/templates/people/family-view.php:530
 msgid "Delete"
-msgstr "ลบ"
+msgstr "Kustuta"
 
 #: AutoPaymentDelete.php:64 AutoPaymentEditor.php:787 BatchWinnerEntry.php:112
 #: CanvassEditor.php:239 Checkin.php:167 Checkin.php:274 Checkin.php:287
@@ -48,7 +48,11 @@ msgstr "ลบ"
 #: sundayschool/SundaySchoolReports.php:286
 #: v2/templates/people/family-view.php:529
 msgid "Cancel"
-msgstr "ยกเลิก"
+msgstr "Tühista"
+
+#: AutoPaymentEditor.php:129
+msgid "Automatic payment configuration for the "
+msgstr "Automaatne tasumise seadistus"
 
 #: AutoPaymentEditor.php:786 CanvassEditor.php:238 DepositSlipEditor.php:97
 #: DonatedItemEditor.php:293 FamilyEditor.php:647 FamilyEditor.php:731
@@ -61,7 +65,7 @@ msgstr "ยกเลิก"
 #: PropertyTypeEditor.php:112 UserEditor.php:458 UserPasswordChange.php:213
 #: WhyCameEditor.php:104
 msgid "Save"
-msgstr "บันทึก"
+msgstr "Salvesta"
 
 #: AutoPaymentEditor.php:804 BatchWinnerEntry.php:83 BatchWinnerEntry.php:95
 #: CSVImport.php:271 ChurchCRM/Config/Menu/Menu.php:100
@@ -75,18 +79,30 @@ msgstr "บันทึก"
 #: SelectList.php:1098 SelectList.php:1169 SystemSettings.php:214
 #: eGive.php:341
 msgid "Unassigned"
-msgstr "ยังไม่ได้กำหนด"
+msgstr "Liigitamata"
+
+#: AutoPaymentEditor.php:824
+msgid "Automatic payment type"
+msgstr "Automaatne tasumise liik"
 
 #: AutoPaymentEditor.php:854
 msgid "Payment amount"
-msgstr "จำนวนเงินที่ชำระ"
+msgstr "Tasumise summa"
+
+#: AutoPaymentEditor.php:859
+msgid "Payment interval (months)"
+msgstr "Tasumise intervall (kuud)"
 
 #: AutoPaymentEditor.php:867 CartToGroup.php:74 EditEventTypes.php:86
 #: EditEventTypes.php:98 EventNames.php:106 EventNames.php:118
 #: EventNames.php:163 GroupReports.php:47 GroupReports.php:142
 #: PersonToGroup.php:66 sundayschool/SundaySchoolReports.php:190
 msgid "None"
-msgstr "ไม่มี"
+msgstr "Mitte ühtegi"
+
+#: AutoPaymentEditor.php:880
+msgid "inactive"
+msgstr "mitteaktiivne"
 
 #: AutoPaymentEditor.php:914 CSVExport.php:102 CSVImport.php:219
 #: CartToFamily.php:245 DirectoryReports.php:250 FamilyEditor.php:672
@@ -94,7 +110,7 @@ msgstr "ไม่มี"
 #: external/templates/registration/family-register.php:41
 #: queryparameteroptions_qpo.php:7
 msgid "City"
-msgstr "เมือง"
+msgstr "Linn"
 
 #: AutoPaymentEditor.php:919 CSVExport.php:107 CSVImport.php:220
 #: CartToFamily.php:250 DirectoryReports.php:254 FamilyEditor.php:679
@@ -102,13 +118,13 @@ msgstr "เมือง"
 #: external/templates/registration/family-register.php:44
 #: queryparameteroptions_qpo.php:6
 msgid "State"
-msgstr "จังหวัด"
+msgstr "Maakond"
 
 #: AutoPaymentEditor.php:930 CSVExport.php:122 CSVImport.php:222
 #: CartToFamily.php:270 FamilyEditor.php:699 PersonEditor.php:928
 #: Register.php:47
 msgid "Country"
-msgstr "ประเทศ"
+msgstr "Riik"
 
 #: AutoPaymentEditor.php:936 ChurchCRM/Reports/PDF_Directory.php:305
 #: ChurchCRM/Reports/PDF_Directory.php:379
@@ -116,7 +132,7 @@ msgstr "ประเทศ"
 #: Reports/DirectoryReport.php:285 Reports/GroupReport.php:119
 #: external/templates/registration/family-register-members.php:103
 msgid "Phone"
-msgstr "โทรศัพท์"
+msgstr "Telefon"
 
 #: AutoPaymentEditor.php:942 CSVExport.php:142 CSVImport.php:226
 #: CartToFamily.php:311 ChurchCRM/Config/Menu/Menu.php:40
@@ -139,161 +155,211 @@ msgstr "โทรศัพท์"
 #: v2/templates/people/family-view.php:174
 #: v2/templates/people/family-view.php:314 queryparameteroptions_qpo.php:13
 msgid "Email"
-msgstr "อีเมล"
+msgstr "Email"
 
 #: AutoPaymentEditor.php:948 ElectronicPaymentList.php:210
 #: FinancialReports.php:264 FindDepositSlip.php:48 PledgeEditor.php:589
 msgid "Credit Card"
-msgstr "บัตรเครดิต"
+msgstr "Krediitkaart"
+
+#: AutoPaymentEditor.php:956
+msgid "Vanco Credit Card Method"
+msgstr "Vanco Krediit kaart meetod"
 
 #: AutoPaymentEditor.php:965
 msgid "Expiration Month"
-msgstr "หมดอายูเดือน"
+msgstr "Kehtiv kuni"
 
 #: AutoPaymentEditor.php:971
 msgid "Expiration Year"
-msgstr "ปีที่หมดอายุ"
+msgstr "Kaotab kehtivuse aastal"
 
 #: AutoPaymentEditor.php:977
 msgid "Bank Name"
-msgstr "ชื่อธนาคาร"
+msgstr "Panga nimi"
 
-#. Thailand doesn't use routing numbers. Use Swift or BIC codes
 #: AutoPaymentEditor.php:983
 msgid "Bank Route Number"
-msgstr "Swift Code หรือ BIC code"
+msgstr "Panga SWIFT"
 
 #: AutoPaymentEditor.php:989
 msgid "Bank Account Number"
-msgstr "หมายเลขบัญชีธนาคาร"
+msgstr "IBAN"
+
+#: AutoPaymentEditor.php:997
+msgid "Vanco Bank Account Method"
+msgstr "Vanco panga konto meetod"
 
 #: BackupDatabase.php:32 ChurchCRM/Config/Menu/Menu.php:197
 msgid "Backup Database"
-msgstr "ฐานข้อมูลสำรอง"
+msgstr "Varunda andmebaas"
+
+#: BackupDatabase.php:38
+msgid "This tool will assist you in manually backing up the ChurchCRM database."
+msgstr "See tööriist aitab sul kokku pakkida ChurchCRM andmebaasi."
+
+#: BackupDatabase.php:42
+msgid "You should make a manual backup at least once a week unless you already have a regular backup procedule for your systems."
+msgstr "Sa peaksid tegema käsitsi varukoopia oma andmebaasist vähemalt kord nädalas, kui just su süsteem ei tee seda automaatselt."
+
+#: BackupDatabase.php:43
+msgid "After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site."
+msgstr "Peale varu andmebaasi allalaadimist, peaksid tgeema veel 2 koopiat. Pane üks tulekindlasse seifi oma serveris ja teise kuskile väljaspoole oma lehte."
+
+#: BackupDatabase.php:44
+msgid "If you are concerned about confidentiality of data stored in the ChurchCRM database, you should encrypt the backup data if it will be stored somewhere potentially accessible to others"
+msgstr "Kui sa oled mures oma andmete konfidentsiaalsuses ChurchCRM andmebaasis, siis sa pekasid krüptima oma varukoopia ja asetama ta sinna kuhu keegi ligi ei saa."
+
+#: BackupDatabase.php:45
+msgid "For added backup security, you can e-mail the backup to yourself at an e-mail account hosted off-site or to a trusted friend.  Be sure to use encryption if you do this, however."
+msgstr "Eraldi turvalisuse mõttes saa varukoopia oma e-mailile väljaspool oma serverit või anna usaldusväärse sõbra kätte. kasuta kindlasti krüptitud faili."
 
 #: BackupDatabase.php:49
 msgid "Select archive type"
-msgstr "เลือกประเภทเก็บ"
+msgstr "Vali arhiveerimise tüüp"
+
+#: BackupDatabase.php:53
+msgid "Encrypt backup file with a password?"
+msgstr "Krüpteeri tagavara fail parooliga?"
 
 #: BackupDatabase.php:56
 msgid "Re-type Password"
-msgstr "พิมพ์รหัสผ่านอีกครั้ง"
+msgstr "Korda parooli"
 
 #: BackupDatabase.php:59
 msgid "Generate and Download Backup"
-msgstr "สร้างและดาวน์โหลดไฟล์สำรองข้อมูล"
+msgstr "Genereeri ja lae varukoopia alla"
+
+#: BackupDatabase.php:60
+msgid "Generate and Ship Backup to External Storage"
+msgstr "Genereeri ja saada tagavarakoopia välisele seadmele"
+
+#: BatchWinnerEntry.php:35 FundRaiserEditor.php:154
+msgid "Batch Winner Entry"
+msgstr "Sisesta Võitja"
 
 #: BatchWinnerEntry.php:75
 msgid "Winner"
-msgstr "ผู้ชนะ"
+msgstr "Võitja"
 
 #: BatchWinnerEntry.php:76
 msgid "Price"
-msgstr "ราคา"
+msgstr "Auhind"
 
 #: BatchWinnerEntry.php:111
 msgid "Enter Winners"
-msgstr "ลงชื่อผู้ชนะ"
+msgstr "Sisesta võitjad"
 
 #: CSVExport.php:54 v2/templates/cart/cartfunctions.php:32
 msgid "CSV Export"
-msgstr "ส่งไฟล์ CSV ออก"
+msgstr "CSV eksport"
 
 #: CSVExport.php:62
 msgid "Field Selection"
-msgstr "เลือกฟิลด์"
+msgstr "Välja valija"
 
 #: AutoPaymentEditor.php:896 CSVExport.php:66 CSVImport.php:213
 #: ManageEnvelopes.php:162 PersonEditor.php:668
 #: external/templates/registration/family-register-members.php:73
 #: external/templates/verify/enter-info.php:25
 #: sundayschool/SundaySchoolDashboard.php:204
-#, fuzzy
 msgid "Last Name"
-msgstr "นามสกุล"
+msgstr "Perekonnanimi"
 
 #: CSVExport.php:67
 msgid "Required"
-msgstr "ฟิลด์ที่จำเป็น"
+msgstr "Kohustuslik"
 
 #: AutoPaymentEditor.php:890 CSVExport.php:77 CSVImport.php:211
 #: PersonEditor.php:646
 #: external/templates/registration/family-register-members.php:69
 #: external/templates/verify/enter-info.php:21
 #: sundayschool/SundaySchoolDashboard.php:203
-#, fuzzy
 msgid "First Name"
-msgstr "ชื่อจริง"
+msgstr "Eesnimi"
 
 #: CSVExport.php:82 CSVImport.php:212 PersonEditor.php:657
-#, fuzzy
 msgid "Middle Name"
-msgstr "ชื่อกลาง"
+msgstr "Keskmine nimi"
 
 #: AutoPaymentEditor.php:925 CSVExport.php:112 CSVImport.php:221
 #: CartToFamily.php:262 DirectoryReports.php:258 FamilyEditor.php:689
 #: PersonEditor.php:906 Register.php:46
 #: external/templates/registration/family-register.php:51
 #: external/templates/verify/enter-info.php:29
-#, fuzzy
 msgid "Zip"
-msgstr "รหัสไปรษณีย์"
+msgstr "Indeks"
 
 #: CSVExport.php:117
-#, fuzzy
 msgid "Envelope"
-msgstr "ซอง"
+msgstr "Ümbrik"
 
 #: CSVExport.php:147 ChurchCRM/Reports/PDF_Directory.php:393
 #: ChurchCRM/Reports/PDF_Directory.php:450 PersonView.php:321
 #: Reports/DirectoryReport.php:299
-#, fuzzy
 msgid "Work/Other Email"
-msgstr "อีเมล ที่ทำงาน/ที่อื่นๆ"
+msgstr "Töö/teine E-mail"
 
 #: CSVExport.php:152 CSVExport.php:371 CSVImport.php:229 PersonEditor.php:1150
 #: PrintView.php:304
-#, fuzzy
 msgid "Membership Date"
-msgstr "วันที่เป็นสมาชิก"
+msgstr "Liikmelisuse algus"
 
 #: CSVExport.php:157
-#, fuzzy
 msgid "Birth / Anniversary Date"
-msgstr "วันเกิด / วันครอบรอบแต่งงาน"
+msgstr "Sünni / Pulmaaastapäev"
 
 #: CSVExport.php:162
 msgid "Age / Years Married"
-msgstr "อายุ / แต่งงานกี่ปีแล้ว"
+msgstr "Vanus / Aastaid abielus"
 
 #: CSVExport.php:172 CSVExport.php:302 OptionManager.php:62
 #: PersonEditor.php:780 PrintView.php:269 v2/templates/cart/cartlisting.php:22
 #: queryparameters_qrp.php:5
-#, fuzzy
 msgid "Family Role"
-msgstr "บทบาทในครอบครัว"
+msgstr "Roll perekonnas"
+
+#: CSVExport.php:182
+msgid "Depends whether using person or family output method"
+msgstr "Oleneb kas kaustada isikut või perekonda väljaspool meetodit"
+
+#: CSVExport.php:197
+msgid "Custom Field Selection"
+msgstr "Muudetava välja valik"
+
+#: CSVExport.php:205
+msgid "Custom Person Fields"
+msgstr "Muudetav Isiku väli"
+
+#: CSVExport.php:223
+msgid "Custom Family Fields"
+msgstr "Muudetav perekonna väli"
 
 #: CSVExport.php:250 FinancialReports.php:108
 msgid "Filters"
-msgstr "ฟิลเตอร์"
+msgstr "Filter"
+
+#: CSVExport.php:256
+msgid "Records to export"
+msgstr "Valikud eksportimiseks"
 
 #: CSVExport.php:265
 msgid "Based on filters below.."
-msgstr "ขึ้นอยู่กับฟิลเตอร์ด้านล่าง"
+msgstr "Vastavalt valitud filtitele"
 
 #: CSVExport.php:268
 msgid "People in Cart (filters ignored)"
-msgstr "คนในรถเข็น"
+msgstr "Valitud inimesed"
 
 #: CSVExport.php:294 CSVExport.php:319 CSVExport.php:355
 #: DirectoryReports.php:80 DirectoryReports.php:98 DirectoryReports.php:116
 #: DirectoryReports.php:134 DirectoryReports.php:153 FinancialReports.php:259
 msgid "Use Ctrl Key to select multiple"
-msgstr "ใช้ Ctrl คีย์เพื่อเลือกหลาย"
+msgstr "Kasuta Ctrl klahvi mitme valikuks"
 
 #: CSVExport.php:336
 msgid "Don't Filter"
-msgstr "ไม่ใช้ฟิลเตอร์"
+msgstr "Ära kasuta filtrit"
 
 #: CSVExport.php:337 ChurchCRM/Dashboard/PersonDemographicDashboardItem.php:26
 #: ChurchCRM/model/ChurchCRM/Person.php:51 FamilyEditor.php:990
@@ -302,7 +368,7 @@ msgstr "ไม่ใช้ฟิลเตอร์"
 #: external/templates/registration/family-register-members.php:59
 #: queryparameteroptions_qpo.php:2
 msgid "Male"
-msgstr "ชาย"
+msgstr "Mees"
 
 #: CSVExport.php:338 ChurchCRM/Dashboard/PersonDemographicDashboardItem.php:29
 #: ChurchCRM/model/ChurchCRM/Person.php:53 FamilyEditor.php:993
@@ -311,48 +377,84 @@ msgstr "ชาย"
 #: external/templates/registration/family-register-members.php:60
 #: queryparameteroptions_qpo.php:3
 msgid "Female"
-msgstr "หญิง"
+msgstr "Naine"
 
 #: CSVExport.php:347 DirectoryReports.php:96
-#, fuzzy
 msgid "Group Membership"
-msgstr "สมาชิกกลุ่ม"
+msgstr "Liikmelisuse grupp"
 
 #: CSVExport.php:379 CSVExport.php:396 CSVExport.php:413 CSVExport.php:430
 msgid "From:"
-msgstr "จาก"
+msgstr "Kellelt:"
 
 #: CSVExport.php:380 CSVExport.php:397 CSVExport.php:414 CSVExport.php:431
 msgid "To:"
-msgstr "เรียน"
+msgstr "Kellele:"
 
 #: CSVExport.php:388
-#, fuzzy
 msgid "Birthday Date"
-msgstr "วันเกิด"
+msgstr "Sünnikuupäev"
 
 #: Reports/ConfirmReport.php:151 Reports/ConfirmReportEmail.php:151
-#, fuzzy
 msgid "Anniversary Date"
-msgstr "วันครบรอบแต่งงาน"
+msgstr "Pulmaaastapäev"
 
 #: CSVExport.php:443 FinancialReports.php:317
 msgid "Output Method:"
-msgstr "วิธีการส่งออก"
+msgstr "Väljastus meetod:"
+
+#: CSVExport.php:447
+msgid "CSV Individual Records"
+msgstr "CSV individuaalsed kirjed"
+
+#: CSVExport.php:448
+msgid "CSV Combine Families"
+msgstr "CSV kombineeritud perekonnad"
+
+#: CSVExport.php:449
+msgid "Add Individuals to Cart"
+msgstr "Lisa individuaalsed korvi"
+
+#: CSVExport.php:452
+msgid "Skip records with incomplete mail address"
+msgstr "Jäta vahele mittetäielikud e-maili aadressiga kirjed"
 
 #: CSVExport.php:454
 msgid "Create File"
-msgstr "สร้างไฟล์"
+msgstr "Koosta fail"
+
+#: CSVImport.php:128
+msgid "No file selected for upload."
+msgstr "Ühtegi faili pole üleslaadimiseks valitud"
+
+#: CSVImport.php:154
+msgid "Total number of rows in the CSV file:"
+msgstr "CSV on kokku ridu:"
+
+#: CSVImport.php:209
+msgid "Ignore this Field"
+msgstr "Jäta see vahele"
+
+#: CSVExport.php:72 CSVImport.php:210 DonatedItemEditor.php:208
+#: FindFundRaiser.php:236 FundRaiserEditor.php:169 FundRaiserEditor.php:195
+#: PersonEditor.php:637
+msgid "Title"
+msgstr "Pealkiri"
+
+#: CSVExport.php:87 CSVImport.php:214 FamilyEditor.php:942
+#: PersonEditor.php:679
+msgid "Suffix"
+msgstr "Eesliide"
 
 #: CSVExport.php:177 CSVExport.php:327 CSVImport.php:215 FamilyEditor.php:943
 #: PersonEditor.php:624 PrintView.php:238 PrintView.php:338
 #: sundayschool/SundaySchoolClassView.php:179 queryparameters_qrp.php:4
 msgid "Gender"
-msgstr "เพศ"
+msgstr "Sugu"
 
 #: CSVImport.php:216
 msgid "Donation Envelope"
-msgstr "ซองถวาย"
+msgstr "Annetuse ümbrik"
 
 #: CSVExport.php:127 CSVImport.php:223 CartToFamily.php:281
 #: EditEventAttendees.php:43 EventAttendance.php:176 FamilyEditor.php:737
@@ -369,7 +471,7 @@ msgstr "ซองถวาย"
 #: v2/templates/people/family-view.php:153
 #: v2/templates/people/family-view.php:299 queryparameteroptions_qpo.php:8
 msgid "Home Phone"
-msgstr "โทรศัพท์บ้าน"
+msgstr "Kodu telefon"
 
 #: CSVExport.php:132 CSVImport.php:224 CartToFamily.php:291
 #: FamilyEditor.php:749 FamilyView.php:260 GroupReports.php:125
@@ -380,7 +482,7 @@ msgstr "โทรศัพท์บ้าน"
 #: v2/templates/people/family-view.php:160
 #: v2/templates/people/family-view.php:304
 msgid "Work Phone"
-msgstr "โทรศัพท์ที่ทำงาน"
+msgstr "Töö telefon"
 
 #: CSVExport.php:137 CSVImport.php:225 CartToFamily.php:301
 #: FamilyEditor.php:759 FamilyView.php:266 PersonEditor.php:1009
@@ -390,46 +492,112 @@ msgstr "โทรศัพท์ที่ทำงาน"
 #: v2/templates/people/family-view.php:167
 #: v2/templates/people/family-view.php:309
 msgid "Mobile Phone"
-msgstr "โทรศัพท์มือถือ"
+msgstr "Mobiil"
 
 #: CSVImport.php:227 PersonEditor.php:1054 PrintView.php:299
 msgid "Work / Other Email"
-msgstr "อีเมล ที่ทำงาน / ที่อื่นๆ"
+msgstr "Töö / muu email"
 
 #: CSVImport.php:228 PersonView.php:282 PrintView.php:253
 #: sundayschool/SundaySchoolClassView.php:203
 #: sundayschool/SundaySchoolDashboard.php:205
 msgid "Birth Date"
-msgstr "วันเกิด"
+msgstr "Sünni kuupäev"
 
 #: CSVImport.php:230 CartToFamily.php:211 DirectoryReports.php:173
 #: FamilyEditor.php:805 FamilyView.php:241
 #: external/templates/verify/verify-family-info.php:34
 #: v2/templates/people/family-view.php:140
 msgid "Wedding Date"
-msgstr "วันแต่งงาน"
+msgstr "Pulma - laulatuse kuupäev"
+
+#: CSVImport.php:239
+msgid "Ignore first CSV row (to exclude a header)"
+msgstr "Jäta CSV esimene rida vahele"
 
 #: CSVImport.php:244
 msgid "Make Family records based on last name and address"
-msgstr "ข้อมูลแต่ละครอบครัวโดยเรียงตามลำดับอักษรของนามสกุลและที่อยู่"
+msgstr "Koosta uus perekond perekonnanime ja aadressi järgi"
 
 #: CSVImport.php:250
 msgid "Patriarch"
-msgstr "ผู้ชายที่อยู่ในวงศาคณาญาติที่เราให้ความเคารพ"
+msgstr "Perekonnapea (Isa)"
 
 #: CSVImport.php:251
 msgid "Matriarch"
-msgstr "ผู้หญิงที่อยู่ในวงศาคณาญาติที่เราให้ความเคารพ"
+msgstr "Perekonnapea (ema)"
 
-#: Login.php:163 Login.php:213
-msgid "Login"
-msgstr "เข้าสู่ระบบ"
+#: CSVImport.php:253
+msgid "Family Type: used with Make Family records... option above"
+msgstr "Perekonna liik: kasutatakse perekonna faili loomisel ... valikuline"
 
-#: UserEditor.php:380 external/templates/password/enter-username.php:30
-msgid "Login Name"
-msgstr "ชื่อผู้ใช้"
+#: CSVImport.php:260
+msgid "NOTE: Separators (dashes, etc.) or lack thereof do not matter"
+msgstr "MÄRKUS: Eraldajad (komad, jne.) ei oma tähtsust"
 
-#: UserList.php:55
-msgid "Last Login"
-msgstr "เข้าสู่ระบบครั้งล่าสุด"
+#: CSVImport.php:265
+msgid "Default country if none specified otherwise"
+msgstr "Pemine riik kui ei ole määratud teisiti"
+
+#: CSVExport.php:167 CSVExport.php:277 CSVImport.php:281 FamilyEditor.php:948
+#: FinancialReports.php:117 OptionManager.php:69 PeopleDashboard.php:411
+#: PersonEditor.php:1135 PrintView.php:309
+#: v2/templates/cart/cartlisting.php:21 queryparameters_qrp.php:19
+msgid "Classification"
+msgstr "Klassifikaator"
+
+#: CSVImport.php:283
+msgid "Perform Import"
+msgstr "Valmista import"
+
+#: CSVImport.php:803
+msgid "ERROR: the uploaded CSV file no longer exists!"
+msgstr "VIGA: üleslaetud CSV faili ei ole enam!"
+
+#: 
+msgid "Data Cleared Successfully!"
+msgstr "Andmed on edukalt puhastatud!"
+
+#: CSVImport.php:812
+msgid "Upload CSV File"
+msgstr "Lae CSV fail üles"
+
+#: CSVImport.php:822
+msgid "Clear Persons and Families"
+msgstr "Puhasta inimestest ja perekondadest"
+
+#: 
+msgid "Warning!  Do not select this option if you plan to add to an existing database.<br/>"
+msgstr "Hoiatus! Ära vali seda võimalust, kui sa plaanid lisada olemasolevasse andmebaasi.<br/>"
+
+#: 
+msgid "Use only if unsatisfied with initial import.  All person and member data will be destroyed!"
+msgstr "Kasuta vaid kui sa ei ole rahul olemasoleva impordiga. Kõik inimesed ja perekondade andmed kustutatakse!"
+
+#: CSVImport.php:829
+msgid "Data import successful."
+msgstr "Andmete import õnnestus."
+
+#: CSVImport.php:829
+msgid "persons were imported"
+msgstr "inimest imporditi"
+
+#: CanvassAutomation.php:46 CanvassAutomation.php:53 CanvassAutomation.php:60
+#: CanvassAutomation.php:68 CanvassAutomation.php:76
+msgid "Not confirmed."
+msgstr "Pole  kinnitatud"
+
+#: CanvassAutomation.php:129
+msgid "Set default fiscal year"
+msgstr "Määra peamine aruandlus aasta"
+
+#: CanvassAutomation.php:133 CanvassAutomation.php:144
+#: CanvassAutomation.php:155 CanvassAutomation.php:166
+#: CanvassAutomation.php:177 CanvassAutomation.php:188
+msgid "Check to confirm"
+msgstr "Kinnita"
+
+#: CanvassAutomation.php:224
+msgid "Not Interested Report"
+msgstr "Huvipakkuvaid aruandeid ei ole"
 

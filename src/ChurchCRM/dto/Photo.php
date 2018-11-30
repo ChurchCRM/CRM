@@ -294,4 +294,17 @@ class Photo {
     $this->photoThumbURI = SystemURLs::getImagesRoot() . "/" . $photoType . "/thumbnails/" . $id . ".jpg";
   }
 
+  public function isInitials() {
+    if($this->photoType == "Person" && $this->id == 2) {
+    echo $this->photoURI;
+    echo strpos($this->photoURI,"initials") !== false;
+    die();
+    }
+    return strpos($this->photoURI,"initials") !== false;
+  }
+  
+  public function isRemote() {
+    return strpos($this->photoURI,"remote")  !== false;
+  }
+  
 }

@@ -126,9 +126,9 @@ msgstr "Regione"
 msgid "Country"
 msgstr "Nazione"
 
-#: AutoPaymentEditor.php:936 ChurchCRM/Reports/PDF_Directory.php:309
-#: ChurchCRM/Reports/PDF_Directory.php:383
-#: ChurchCRM/Reports/PDF_Directory.php:440 DirectoryReports.php:262
+#: AutoPaymentEditor.php:936 ChurchCRM/Reports/PDF_Directory.php:305
+#: ChurchCRM/Reports/PDF_Directory.php:379
+#: ChurchCRM/Reports/PDF_Directory.php:436 DirectoryReports.php:262
 #: Reports/DirectoryReport.php:285 Reports/GroupReport.php:119
 #: external/templates/registration/family-register-members.php:103
 msgid "Phone"
@@ -136,9 +136,9 @@ msgstr "Telefono"
 
 #: AutoPaymentEditor.php:942 CSVExport.php:142 CSVImport.php:226
 #: CartToFamily.php:311 ChurchCRM/Config/Menu/Menu.php:40
-#: ChurchCRM/Reports/PDF_Directory.php:318
-#: ChurchCRM/Reports/PDF_Directory.php:394
-#: ChurchCRM/Reports/PDF_Directory.php:451 EditEventAttendees.php:42
+#: ChurchCRM/Reports/PDF_Directory.php:314
+#: ChurchCRM/Reports/PDF_Directory.php:390
+#: ChurchCRM/Reports/PDF_Directory.php:447 EditEventAttendees.php:42
 #: EventAttendance.php:175 FamilyEditor.php:771 FamilyView.php:272
 #: FamilyView.php:277 FamilyView.php:359 GroupReports.php:127
 #: PersonEditor.php:1035 PersonEditor.php:1037 PersonView.php:307
@@ -294,8 +294,8 @@ msgstr "CAP"
 msgid "Envelope"
 msgstr "Busta"
 
-#: CSVExport.php:147 ChurchCRM/Reports/PDF_Directory.php:397
-#: ChurchCRM/Reports/PDF_Directory.php:454 PersonView.php:321
+#: CSVExport.php:147 ChurchCRM/Reports/PDF_Directory.php:393
+#: ChurchCRM/Reports/PDF_Directory.php:450 PersonView.php:321
 #: Reports/DirectoryReport.php:299
 msgid "Work/Other Email"
 msgstr "lavoro / Altra email"
@@ -1001,7 +1001,7 @@ msgstr "Membro"
 
 #: Checkin.php:457 ChurchCRM/Service/PersonService.php:39
 msgid " of the"
-msgstr " del"
+msgstr "del"
 
 #: Checkin.php:459 ChurchCRM/Service/PersonService.php:41 PersonView.php:267
 msgid "(No assigned family)"
@@ -4466,17 +4466,17 @@ msgstr "Utente / Amico"
 msgid "This option requires at least version 3.22 of MySQL!  Hit browser back button to return to ChurchCRM."
 msgstr "Questa opzione richiede almeno la versione 3,22 di MySQL! Premi il pulsante Indietro del browser per tornare alla ChurchCRM."
 
-#: ChurchCRM/Reports/PDF_Directory.php:312
-#: ChurchCRM/Reports/PDF_Directory.php:387
-#: ChurchCRM/Reports/PDF_Directory.php:444 Reports/DirectoryReport.php:289
+#: ChurchCRM/Reports/PDF_Directory.php:308
+#: ChurchCRM/Reports/PDF_Directory.php:383
+#: ChurchCRM/Reports/PDF_Directory.php:440 Reports/DirectoryReport.php:289
 #: Reports/GroupReport.php:124
 #: external/templates/registration/family-register-members.php:96
 msgid "Work"
 msgstr "Professione"
 
-#: ChurchCRM/Reports/PDF_Directory.php:315
-#: ChurchCRM/Reports/PDF_Directory.php:391
-#: ChurchCRM/Reports/PDF_Directory.php:448 Reports/DirectoryReport.php:293
+#: ChurchCRM/Reports/PDF_Directory.php:311
+#: ChurchCRM/Reports/PDF_Directory.php:387
+#: ChurchCRM/Reports/PDF_Directory.php:444 Reports/DirectoryReport.php:293
 #: Reports/GroupReport.php:129
 msgid "Cell"
 msgstr "Cella"
@@ -4555,20 +4555,20 @@ msgstr "Totali"
 msgid "Certificate of Ownership"
 msgstr "Certificato di proprietà"
 
-#: ChurchCRM/Reports/PDF_Directory.php:38
-#: ChurchCRM/Reports/PDF_Directory.php:74
+#: ChurchCRM/Reports/PDF_Directory.php:40
+#: ChurchCRM/Reports/PDF_Directory.php:76
 msgid "Directory"
 msgstr "Directory"
 
-#: ChurchCRM/Reports/PDF_Directory.php:57
+#: ChurchCRM/Reports/PDF_Directory.php:59
 msgid "Page"
 msgstr "Pagina"
 
-#: ChurchCRM/Reports/PDF_Directory.php:321
+#: ChurchCRM/Reports/PDF_Directory.php:317
 msgid "Wedding"
 msgstr "Matrimonio"
 
-#: ChurchCRM/Reports/PDF_Directory.php:350
+#: ChurchCRM/Reports/PDF_Directory.php:346
 msgid "and"
 msgstr "e"
 
@@ -4882,7 +4882,7 @@ msgstr "Data di deposito"
 msgid "Details:"
 msgstr "Dettagli:"
 
-#: v2/templates/admin/debug.php:130
+#: UpgradeCRM.php:64 v2/templates/admin/debug.php:130
 msgid "File Missing"
 msgstr "File mancante"
 
@@ -4988,71 +4988,71 @@ msgstr "Vero"
 msgid "Edit Settings"
 msgstr "Modificare le impostazioni"
 
-#: UpgradeCRM.php:13 UpgradeCRM.php:29
+#: UpgradeCRM.php:14 UpgradeCRM.php:30
 msgid "Upgrade ChurchCRM"
 msgstr "Aggiorna ChurchCRM"
 
-#: UpgradeCRM.php:35
+#: UpgradeCRM.php:86
 msgid "Step 1: Backup Database"
 msgstr "Passaggio 1: database di backup"
 
-#: UpgradeCRM.php:37
+#: UpgradeCRM.php:88
 msgid "Please create a database backup before beginning the upgrade process."
 msgstr "Si prega di creare un backup del database prima di iniziare il processo di aggiornamento."
 
-#: UpgradeCRM.php:38
+#: UpgradeCRM.php:89
 msgid "Generate Database Backup"
 msgstr "Genera backup del database"
 
-#: UpgradeCRM.php:48
+#: UpgradeCRM.php:99
 msgid "Step 2: Fetch Update Package on Server"
 msgstr "Passaggio 2: recuperare il pacchetto di aggiornamento sul server"
 
-#: UpgradeCRM.php:50
+#: UpgradeCRM.php:101
 msgid "Fetch the latest files from the ChurchCRM GitHub release page"
 msgstr "Scarica gli ultimi file dalla pagina di rilascio di ChurchCRM GitHub"
 
-#: UpgradeCRM.php:51
+#: UpgradeCRM.php:102
 msgid "Fetch Update Files"
 msgstr "Recupera file di aggiornamento"
 
-#: UpgradeCRM.php:58
+#: UpgradeCRM.php:109
 msgid "Step 3: Apply Update Package on Server"
 msgstr "Passaggio 3: applicare il pacchetto di aggiornamento sul server"
 
-#: UpgradeCRM.php:60
+#: UpgradeCRM.php:111
 msgid "Extract the upgrade archive, and apply the new files"
 msgstr "Estrarre l'archivio di aggiornamento e applicare i nuovi file"
 
-#: UpgradeCRM.php:65
+#: UpgradeCRM.php:116
 msgid "Full Path:"
 msgstr "Percorso completo:"
 
-#: UpgradeCRM.php:66
+#: UpgradeCRM.php:117
 msgid "SHA1:"
 msgstr "SHA1:"
 
-#: UpgradeCRM.php:69
+#: UpgradeCRM.php:120
 msgid "Upgrade System"
 msgstr "Sistema di aggiornamento"
 
-#: UpgradeCRM.php:76
+#: UpgradeCRM.php:127
 msgid "Step 4: Login"
 msgstr "Passaggio 4: accesso"
 
-#: UpgradeCRM.php:78
+#: UpgradeCRM.php:129
 msgid "Login to Upgraded System"
 msgstr "Accedi al sistema aggiornato"
 
-#: UpgradeCRM.php:97
+#: UpgradeCRM.php:161
 msgid "Backup Complete, Ready for Download."
 msgstr "Backup completo, pronto per il download."
 
-#: UpgradeCRM.php:107
+#: UpgradeCRM.php:171
 msgid "Backup Error."
 msgstr "Errore di backup."
 
-#: UpgradeCRM.php:149
+#: UpgradeCRM.php:213
 msgid "Backup Downloaded, Copy on server removed"
 msgstr "Backup scaricato, Copia sul server rimosso"
 
@@ -5272,7 +5272,7 @@ msgstr "Uno o più file hanno fallito la convalida della firma"
 msgid "Configure HTTPS"
 msgstr "Configura HTTPS"
 
-#: v2/templates/admin/debug.php:114
+#: UpgradeCRM.php:48 v2/templates/admin/debug.php:114
 msgid "Files failing integrity check"
 msgstr "File in mancanza di controllo dell'integrità"
 
@@ -5349,7 +5349,7 @@ msgstr "Gli appunti"
 msgid "Reports"
 msgstr "Rapporti"
 
-#: UpgradeCRM.php:64
+#: UpgradeCRM.php:115
 msgid "File Name:"
 msgstr "Nome del file:"
 
@@ -6470,7 +6470,7 @@ msgstr "Aggiornato via Famiglia"
 msgid "Family Data Verified"
 msgstr "Dati familiari verificati"
 
-#: ChurchCRM/model/ChurchCRM/Family.php:254
+#: ChurchCRM/model/ChurchCRM/Family.php:257
 #: ChurchCRM/model/ChurchCRM/Person.php:279
 msgid "Profile Image Deleted"
 msgstr "Immagine del profilo eliminata"
@@ -7665,15 +7665,15 @@ msgstr "Nessuno stato"
 msgid "Unavailable person info inherited from assigned family for display?\rThis option causes certain info from a person's assigned family record to be\rdisplayed IF the corresponding info has NOT been entered for that person. "
 msgstr "Informazioni sulla persona non disponibile ereditate dalla famiglia assegnata per la visualizzazione? \␣Questa opzione fa sì che vengano visualizzate determinate informazioni dal record della famiglia assegnata a una persona SE non sono state inserite le informazioni corrispondenti per quella persona.␣"
 
-#: ChurchCRM/Service/SystemService.php:93
+#: ChurchCRM/Service/SystemService.php:94
 msgid "Backup archive does not contain a database"
 msgstr "L'archivio di backup non contiene un database"
 
-#: ChurchCRM/Service/SystemService.php:105
+#: ChurchCRM/Service/SystemService.php:106
 msgid "Unknown File Type"
 msgstr "Tipo di file sconosciuto"
 
-#: ChurchCRM/Service/SystemService.php:105
+#: ChurchCRM/Service/SystemService.php:106
 msgid "from file"
 msgstr "dal file"
 
@@ -7791,7 +7791,7 @@ msgid "Unmet Application Prerequisites"
 msgstr "Prerequisiti dell'applicazione non soddisfatti"
 
 #: ChurchCRM/Service/AppIntegrityService.php:31
-#: ChurchCRM/dto/Prerequisite.php:36
+#: ChurchCRM/dto/Prerequisite.php:36 UpgradeCRM.php:34 UpgradeCRM.php:87
 msgid "Failed"
 msgstr "mancato"
 
@@ -7848,7 +7848,7 @@ msgstr "È stato richiesto un nome di configurazione non valido"
 msgid "An invalid configuration id has been requested"
 msgstr "È stato richiesto un ID di configurazione non valido"
 
-#: ChurchCRM/model/ChurchCRM/Family.php:267
+#: ChurchCRM/model/ChurchCRM/Family.php:270
 #: ChurchCRM/model/ChurchCRM/Person.php:303
 msgid "Profile Image uploaded"
 msgstr "Immagine del profilo caricata"
@@ -8358,7 +8358,7 @@ msgstr "Link Reimposta Password"
 msgid "Reset Password"
 msgstr "Reimposta Password"
 
-#: ChurchCRM/Service/SystemService.php:113
+#: ChurchCRM/Service/SystemService.php:114
 msgid "As part of the restore, external backups have been disabled.  If you wish to continue automatic backups, you must manuall re-enable the bEnableExternalBackupTarget setting."
 msgstr "Come parte del ripristino, i backup esterni sono stati disabilitati. Se si desidera continuare i backup automatici, è necessario riattivare manualmente l'impostazione bEnableExternalBackupTarget."
 
@@ -8562,7 +8562,7 @@ msgstr "Figlio/a"
 msgid "Select a family"
 msgstr "Seleziona una famiglia"
 
-#: UpgradeCRM.php:61
+#: UpgradeCRM.php:112
 msgid "Release Notes"
 msgstr "Note della Versione"
 
@@ -9584,4 +9584,146 @@ msgstr "Inizia con http:// o https://"
 #: v2/templates/admin/menus.php:42
 msgid "Menus"
 msgstr "Menu"
+
+#: ChurchCRM/Slim/Middleware/Request/Setting/BaseAuthSettingMiddleware.php:15
+msgid "is disabled"
+msgstr "è disabilitato"
+
+#: v2/templates/admin/debug.php:17
+msgid "System Information"
+msgstr "Informazioni di Sistema"
+
+#: v2/templates/admin/debug.php:22
+msgid "Software Version"
+msgstr "Versione software"
+
+#: v2/templates/admin/debug.php:30
+msgid "Valid Mail Server Settings"
+msgstr "Impostazioni valide del server di posta"
+
+#: v2/templates/admin/debug.php:40
+msgid "Database"
+msgstr "Database"
+
+#: v2/templates/admin/debug.php:45 v2/templates/admin/debug.php:49
+msgid "Database Version"
+msgstr "Versione del database"
+
+#: v2/templates/admin/debug.php:90
+msgid "Application Prerequisites"
+msgstr "Prerequisiti dell'applicazione"
+
+#: v2/templates/admin/debug.php:150
+msgid "WebServer Modules"
+msgstr "Moduli WebServer"
+
+#: ChurchCRM/data/Countries.php:308
+msgid "Invalid country name supplied"
+msgstr "Nome del paese non valido"
+
+#: ChurchCRM/dto/SystemConfig.php:56
+msgid "LastName FirstName"
+msgstr "Cognome nome"
+
+#: ChurchCRM/SystemCalendars/HolidayCalendar.php:45
+msgid "Holidays"
+msgstr "Vacanze"
+
+#: ChurchCRM/Emails/notifications/NewPersonOrFamilyEmail.php:71
+msgid "Person Name"
+msgstr "Nome della persona"
+
+#: ChurchCRM/dto/SystemConfig.php:234
+msgid "Custom message for church greeter email 1, max 255 characters"
+msgstr "messaggio personalizzato per e-mail di benvenuto 1, max 255 caratteri"
+
+#: ChurchCRM/dto/SystemConfig.php:235
+msgid "Custom message for church greeter email 2, max 255 characters"
+msgstr "messaggio personalizzato per e-mail di benvenuto 2, max 255 caratteri"
+
+#: ChurchCRM/dto/SystemConfig.php:236
+msgid "Include contact and demographic data in new member email notification body"
+msgstr "Includi dati di contatto e demografici nel nuovo corpo di notifica email del membro"
+
+#: ChurchCRM/dto/SystemConfig.php:237
+msgid "Include family custom properties in global search."
+msgstr "Includi le proprietà personalizzate della famiglia nella ricerca globale."
+
+#: settings-countries.php:128
+msgid "Latvia (LatvijaLatviaLV"
+msgstr "Lettonia (LatvijaLatviaLV"
+
+#: 
+msgid "You are about to add a new deposit without a comment"
+msgstr "Stai per aggiungere un nuovo deposito senza commento"
+
+#: v2/routes/email.php:85 v2/templates/email/dashboard.php:17
+#: v2/templates/email/without.php:14
+msgid "Families Without Emails"
+msgstr "Famiglie senza email"
+
+#: v2/templates/cart/cartempty.php:16
+msgid "Record"
+msgstr "Disco"
+
+#: v2/templates/cart/cartempty.php:16
+msgid "Records"
+msgstr "Records"
+
+#: v2/templates/cart/cartempty.php:16
+msgid "Emptied into Event ID"
+msgstr "Svuotato nell'ID evento"
+
+#: ChurchCRM/Service/AppIntegrityService.php:20
+msgid "integrityCheck.json file missing"
+msgstr "file integrityCheck.json mancante"
+
+#: ChurchCRM/Service/AppIntegrityService.php:34
+#: ChurchCRM/dto/Prerequisite.php:34
+msgid "Passed"
+msgstr "Superato"
+
+#: ChurchCRM/tasks/CheckExecutionTimeTask.php:33
+msgid "PHP Max Execution Time is too Short"
+msgstr "PHP Il tempo massimo di esecuzione è troppo breve"
+
+#: ChurchCRM/tasks/CheckExecutionTimeTask.php:38
+msgid "Increase the PHP execution time limit to allow for backup and restore."
+msgstr "Aumentare il tempo limite di esecuzione di PHP per consentire il backup e il ripristino."
+
+#: v2/templates/admin/debug.php:107
+msgid "Application Integrity Check"
+msgstr "Verifica dell'integrità dell'applicazione"
+
+#: 
+msgid "Focus"
+msgstr "Focus"
+
+#: 
+msgid "Unfocus"
+msgstr "Unfocus"
+
+#: UpgradeCRM.php:39
+msgid "Warning: Signature mismatch"
+msgstr "Avviso: mancata corrispondenza della firma"
+
+#: UpgradeCRM.php:41
+msgid "Some ChurchCRM system files may have been modified since the last installation."
+msgstr "Alcuni file di sistema ChurchCRM potrebbero essere stati modificati dall'ultima installazione."
+
+#: UpgradeCRM.php:41
+msgid "This upgrade will completely destroy any customizations made to the following files by reverting the files to the official version."
+msgstr "Questo aggiornamento distruggerà completamente le personalizzazioni apportate ai seguenti file ripristinando i file nella versione ufficiale."
+
+#: UpgradeCRM.php:42
+msgid "If you wish to maintain your changes to these files, please take a manual backup of these files before proceeding with this upgrade, and then manually restore the files after the upgrade is complete."
+msgstr "Se si desidera mantenere le modifiche a questi file, esegui un backup manuale di questi file prima di procedere con questo aggiornamento e quindi ripristinare manualmente i file al termine dell'aggiornamento."
+
+#: UpgradeCRM.php:44
+msgid "Integrity Check Details:"
+msgstr "Dettagli del controllo di integrità:"
+
+#: UpgradeCRM.php:76
+msgid "I Understand"
+msgstr "ho capito"
 

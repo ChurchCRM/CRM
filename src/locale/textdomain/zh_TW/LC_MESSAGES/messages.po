@@ -126,9 +126,9 @@ msgstr "國"
 msgid "Country"
 msgstr "國家"
 
-#: AutoPaymentEditor.php:936 ChurchCRM/Reports/PDF_Directory.php:309
-#: ChurchCRM/Reports/PDF_Directory.php:383
-#: ChurchCRM/Reports/PDF_Directory.php:440 DirectoryReports.php:262
+#: AutoPaymentEditor.php:936 ChurchCRM/Reports/PDF_Directory.php:305
+#: ChurchCRM/Reports/PDF_Directory.php:379
+#: ChurchCRM/Reports/PDF_Directory.php:436 DirectoryReports.php:262
 #: Reports/DirectoryReport.php:285 Reports/GroupReport.php:119
 #: external/templates/registration/family-register-members.php:103
 msgid "Phone"
@@ -136,9 +136,9 @@ msgstr "電話"
 
 #: AutoPaymentEditor.php:942 CSVExport.php:142 CSVImport.php:226
 #: CartToFamily.php:311 ChurchCRM/Config/Menu/Menu.php:40
-#: ChurchCRM/Reports/PDF_Directory.php:318
-#: ChurchCRM/Reports/PDF_Directory.php:394
-#: ChurchCRM/Reports/PDF_Directory.php:451 EditEventAttendees.php:42
+#: ChurchCRM/Reports/PDF_Directory.php:314
+#: ChurchCRM/Reports/PDF_Directory.php:390
+#: ChurchCRM/Reports/PDF_Directory.php:447 EditEventAttendees.php:42
 #: EventAttendance.php:175 FamilyEditor.php:771 FamilyView.php:272
 #: FamilyView.php:277 FamilyView.php:359 GroupReports.php:127
 #: PersonEditor.php:1035 PersonEditor.php:1037 PersonView.php:307
@@ -301,8 +301,8 @@ msgstr "郵遞區號"
 msgid "Envelope"
 msgstr "信封"
 
-#: CSVExport.php:147 ChurchCRM/Reports/PDF_Directory.php:397
-#: ChurchCRM/Reports/PDF_Directory.php:454 PersonView.php:321
+#: CSVExport.php:147 ChurchCRM/Reports/PDF_Directory.php:393
+#: ChurchCRM/Reports/PDF_Directory.php:450 PersonView.php:321
 #: Reports/DirectoryReport.php:299
 #, fuzzy
 msgid "Work/Other Email"
@@ -589,16 +589,19 @@ msgid "Warning!  Do not select this option if you plan to add to an existing dat
 msgstr "警告！如果您打算添加到現有的數據庫，請不要選擇此選項。 <br/>"
 
 #: 
+#, fuzzy
 msgid "Use only if unsatisfied with initial import.  All person and member data will be destroyed!"
-msgstr "如果不滿意，首次進口，僅使用。所有的人，成員的數據將被破壞！"
+msgstr "僅使用於不滿意首次匯入。所有的人及成員的數據將被破壞！"
 
 #: CSVImport.php:829
+#, fuzzy
 msgid "Data import successful."
-msgstr "數據導入成功。"
+msgstr "數據匯入成功。"
 
 #: CSVImport.php:829
+#, fuzzy
 msgid "persons were imported"
-msgstr "人進口"
+msgstr "人被匯入"
 
 #: CanvassAutomation.php:21 ChurchCRM/Config/Menu/Menu.php:171
 msgid "Canvass Automation"
@@ -634,8 +637,9 @@ msgid "ClearAllOkToCanvass button not confimed."
 msgstr "未確認清除所有可以拉票按鈕。"
 
 #: CanvassAutomation.php:129
+#, fuzzy
 msgid "Set default fiscal year"
-msgstr "默認情況下財年"
+msgstr "設定內定財務年份"
 
 #: CanvassAutomation.php:133 CanvassAutomation.php:144
 #: CanvassAutomation.php:155 CanvassAutomation.php:166
@@ -2814,11 +2818,11 @@ msgstr "無效的登錄名或密碼"
 
 #: Login.php:44
 msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
-msgstr "太多次失敗登錄您的帳戶已被鎖定。請與管理員聯繫。"
+msgstr "太多次登入失敗: 您的帳戶已被鎖定。請與管理員聯繫。"
 
 #: Login.php:176 Login.php:238
 msgid "Please Login"
-msgstr "請登錄"
+msgstr "請登入"
 
 #: ChurchCRM/Emails/users/BaseUserEmail.php:30 Login.php:196
 msgid "Email/Username"
@@ -2830,7 +2834,7 @@ msgstr "密碼"
 
 #: Login.php:163 Login.php:213
 msgid "Login"
-msgstr "註冊"
+msgstr "登入"
 
 #: ChurchCRM/Config/Menu/Menu.php:147 ManageEnvelopes.php:21
 msgid "Envelope Manager"
@@ -3918,7 +3922,6 @@ msgid "User"
 msgstr "用戶名"
 
 #: UserEditor.php:380 external/templates/password/enter-username.php:30
-#, fuzzy
 msgid "Login Name"
 msgstr "登錄用戶名"
 
@@ -4004,15 +4007,15 @@ msgstr "用戶設置"
 
 #: UserList.php:55
 msgid "Last Login"
-msgstr "最後登錄"
+msgstr "最後登入"
 
 #: UserList.php:56
 msgid "Total Logins"
-msgstr "總計登錄"
+msgstr "總計登入次數"
 
 #: UserList.php:57
 msgid "Failed Logins"
-msgstr "登錄失敗"
+msgstr "登入失敗次數"
 
 #: UserPasswordChange.php:55
 msgid "You must enter a password in both boxes"
@@ -4209,6 +4212,11 @@ msgid "Version"
 msgstr "Version"
 
 #: Include/Footer.php:27 Include/FooterNotLoggedIn.php:7
+#, fuzzy
+msgid "Copyright"
+msgstr "版權"
+
+#: Include/Footer.php:27 Include/FooterNotLoggedIn.php:7
 msgid "All rights reserved"
 msgstr "版權所有"
 
@@ -4308,6 +4316,11 @@ msgstr "下午"
 #: Include/Functions.php:433
 msgid "am"
 msgstr "我"
+
+#: ChurchCRM/model/ChurchCRM/Person.php:517 ChurchCRM/utils/MiscUtils.php:78
+#, fuzzy
+msgid "yrs old"
+msgstr "歲"
 
 #: Include/Functions.php:754
 msgid "Invalid Editor ID!"
@@ -4551,17 +4564,17 @@ msgstr "會員/朋友"
 msgid "This option requires at least version 3.22 of MySQL!  Hit browser back button to return to ChurchCRM."
 msgstr "此選項需要至少3.22版本的MySQL！命中瀏覽器的“後退”按鈕返回到ChurchCRM的。"
 
-#: ChurchCRM/Reports/PDF_Directory.php:312
-#: ChurchCRM/Reports/PDF_Directory.php:387
-#: ChurchCRM/Reports/PDF_Directory.php:444 Reports/DirectoryReport.php:289
+#: ChurchCRM/Reports/PDF_Directory.php:308
+#: ChurchCRM/Reports/PDF_Directory.php:383
+#: ChurchCRM/Reports/PDF_Directory.php:440 Reports/DirectoryReport.php:289
 #: Reports/GroupReport.php:124
 #: external/templates/registration/family-register-members.php:96
 msgid "Work"
 msgstr "工作"
 
-#: ChurchCRM/Reports/PDF_Directory.php:315
-#: ChurchCRM/Reports/PDF_Directory.php:391
-#: ChurchCRM/Reports/PDF_Directory.php:448 Reports/DirectoryReport.php:293
+#: ChurchCRM/Reports/PDF_Directory.php:311
+#: ChurchCRM/Reports/PDF_Directory.php:387
+#: ChurchCRM/Reports/PDF_Directory.php:444 Reports/DirectoryReport.php:293
 #: Reports/GroupReport.php:129
 msgid "Cell"
 msgstr "細胞"
@@ -4640,20 +4653,20 @@ msgstr "總計"
 msgid "Certificate of Ownership"
 msgstr "所有權證書"
 
-#: ChurchCRM/Reports/PDF_Directory.php:38
-#: ChurchCRM/Reports/PDF_Directory.php:74
+#: ChurchCRM/Reports/PDF_Directory.php:40
+#: ChurchCRM/Reports/PDF_Directory.php:76
 msgid "Directory"
 msgstr "目錄"
 
-#: ChurchCRM/Reports/PDF_Directory.php:57
+#: ChurchCRM/Reports/PDF_Directory.php:59
 msgid "Page"
 msgstr "頁"
 
-#: ChurchCRM/Reports/PDF_Directory.php:321
+#: ChurchCRM/Reports/PDF_Directory.php:317
 msgid "Wedding"
 msgstr "婚禮"
 
-#: ChurchCRM/Reports/PDF_Directory.php:350
+#: ChurchCRM/Reports/PDF_Directory.php:346
 msgid "and"
 msgstr "和"
 
@@ -4972,7 +4985,7 @@ msgstr "存款日期"
 msgid "Details:"
 msgstr "細節："
 
-#: v2/templates/admin/debug.php:130
+#: UpgradeCRM.php:64 v2/templates/admin/debug.php:130
 msgid "File Missing"
 msgstr "文件丟失"
 
@@ -5022,7 +5035,7 @@ msgstr "恢復完成"
 
 #: RestoreDatabase.php:88
 msgid "Login to restored Database"
-msgstr "登錄還原的數據庫"
+msgstr "請登入以還原數據庫"
 
 #: RestoreDatabase.php:91
 msgid "Restore Error."
@@ -5078,71 +5091,71 @@ msgstr "是"
 msgid "Edit Settings"
 msgstr "編輯設置"
 
-#: UpgradeCRM.php:13 UpgradeCRM.php:29
+#: UpgradeCRM.php:14 UpgradeCRM.php:30
 msgid "Upgrade ChurchCRM"
 msgstr "升級ChurchCRM"
 
-#: UpgradeCRM.php:35
+#: UpgradeCRM.php:86
 msgid "Step 1: Backup Database"
 msgstr "第1步：備份數據庫"
 
-#: UpgradeCRM.php:37
+#: UpgradeCRM.php:88
 msgid "Please create a database backup before beginning the upgrade process."
 msgstr "請在開始升級過程之前創建數據庫備份。"
 
-#: UpgradeCRM.php:38
+#: UpgradeCRM.php:89
 msgid "Generate Database Backup"
 msgstr "生成數據庫備份"
 
-#: UpgradeCRM.php:48
+#: UpgradeCRM.php:99
 msgid "Step 2: Fetch Update Package on Server"
 msgstr "第2步：在服務器上獲取更新包"
 
-#: UpgradeCRM.php:50
+#: UpgradeCRM.php:101
 msgid "Fetch the latest files from the ChurchCRM GitHub release page"
 msgstr "從ChurchCRM GitHub發布頁面獲取最新文件"
 
-#: UpgradeCRM.php:51
+#: UpgradeCRM.php:102
 msgid "Fetch Update Files"
 msgstr "獲取更新文件"
 
-#: UpgradeCRM.php:58
+#: UpgradeCRM.php:109
 msgid "Step 3: Apply Update Package on Server"
 msgstr "第3步：在服務器上應用更新包"
 
-#: UpgradeCRM.php:60
+#: UpgradeCRM.php:111
 msgid "Extract the upgrade archive, and apply the new files"
 msgstr "提取升級存檔，並應用新文件"
 
-#: UpgradeCRM.php:65
+#: UpgradeCRM.php:116
 msgid "Full Path:"
 msgstr "完整路徑："
 
-#: UpgradeCRM.php:66
+#: UpgradeCRM.php:117
 msgid "SHA1:"
 msgstr "SHA1:"
 
-#: UpgradeCRM.php:69
+#: UpgradeCRM.php:120
 msgid "Upgrade System"
 msgstr "升級系統"
 
-#: UpgradeCRM.php:76
+#: UpgradeCRM.php:127
 msgid "Step 4: Login"
-msgstr "第4步：登錄"
+msgstr "第4步：登入"
 
-#: UpgradeCRM.php:78
+#: UpgradeCRM.php:129
 msgid "Login to Upgraded System"
-msgstr "登錄升級系統"
+msgstr "請登入以升級系統"
 
-#: UpgradeCRM.php:97
+#: UpgradeCRM.php:161
 msgid "Backup Complete, Ready for Download."
 msgstr "備份完成，準備下載。"
 
-#: UpgradeCRM.php:107
+#: UpgradeCRM.php:171
 msgid "Backup Error."
 msgstr "備份錯誤。"
 
-#: UpgradeCRM.php:149
+#: UpgradeCRM.php:213
 msgid "Backup Downloaded, Copy on server removed"
 msgstr "備份已下載，已刪除服務器上的副本"
 
@@ -5330,7 +5343,7 @@ msgstr "存款注釋"
 
 #: Login.php:181 Login.php:246
 msgid "Your previous session timed out.  Please login again."
-msgstr "您上次會話已超時。請再次登錄。"
+msgstr "您上次會話已超時。請再次登入。"
 
 #: Login.php:221
 msgid "Register a new Family"
@@ -5360,7 +5373,7 @@ msgstr "一個或多個文件簽名驗證失敗"
 msgid "Configure HTTPS"
 msgstr "配置HTTPS"
 
-#: v2/templates/admin/debug.php:114
+#: UpgradeCRM.php:48 v2/templates/admin/debug.php:114
 msgid "Files failing integrity check"
 msgstr "文件未通過完整性檢查"
 
@@ -5437,7 +5450,7 @@ msgstr "注釋"
 msgid "Reports"
 msgstr "報告"
 
-#: UpgradeCRM.php:64
+#: UpgradeCRM.php:115
 msgid "File Name:"
 msgstr "文件名："
 
@@ -5546,6 +5559,21 @@ msgstr "組屬性"
 msgid "Assign a New Property:"
 msgstr "分配新屬性："
 
+#: ChurchCRM/model/ChurchCRM/Person.php:510 ChurchCRM/utils/MiscUtils.php:71
+#, fuzzy
+msgid "mos old"
+msgstr "月"
+
+#: ChurchCRM/model/ChurchCRM/Person.php:512 ChurchCRM/utils/MiscUtils.php:73
+#, fuzzy
+msgid "mo old"
+msgstr "月"
+
+#: ChurchCRM/model/ChurchCRM/Person.php:519 ChurchCRM/utils/MiscUtils.php:80
+#, fuzzy
+msgid "yr old"
+msgstr "歲"
+
 #: 
 msgid "There was a problem retrieving the requested object"
 msgstr "檢索請求對象時出現問題"
@@ -5633,7 +5661,7 @@ msgstr "以逗號分隔的不允許（太簡單）密碼列表。"
 
 #: ChurchCRM/dto/SystemConfig.php:76
 msgid "Maximum number of failed logins to allow before a user account is locked.\rOnce the maximum has been reached, an administrator must re-enable the account.\rThis feature helps to protect against automated password guessing attacks.\rSet to zero to disable this feature."
-msgstr "鎖定用戶帳戶之前允許的最大登錄失敗次數。\ r \ n一旦達到最大值，管理員必須重新啟用該帳戶。\ r此功能有助於防止自動密碼猜測攻擊。\ r設置為零以禁用此功能。"
+msgstr "鎖定用戶帳戶之前允許的最大登入失敗次數。\ r \ n一旦達到最大值，管理員必須重新啟用該帳戶。\ r此功能有助於防止自動密碼猜測攻擊。\ r設置為零以禁用此功能。"
 
 #: ChurchCRM/dto/SystemConfig.php:77
 msgid "PDF handling mode.\r1 = Save File dialog\r2 = Open in current browser window"
@@ -5779,17 +5807,60 @@ msgstr "教會電話"
 msgid "Home area code of the church"
 msgstr "教會的區號"
 
+#: ChurchCRM/dto/SystemConfig.php:137 ChurchCRM/dto/SystemConfig.php:157
+#, fuzzy
+msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
+msgstr "用於稅務報告頂線的用語。日期將附加到此行的末尾。"
+
+#: ChurchCRM/dto/SystemConfig.php:138 ChurchCRM/dto/SystemConfig.php:139
+#: ChurchCRM/dto/SystemConfig.php:158 ChurchCRM/dto/SystemConfig.php:159
+#, fuzzy
+msgid "Verbage for bottom line of tax report."
+msgstr "用於稅務報告底線的用語"
+
 #: ChurchCRM/dto/SystemConfig.php:140
 msgid "Tax Report signer"
 msgstr "稅務報告簽名者"
+
+#: ChurchCRM/dto/SystemConfig.php:141
+#, fuzzy
+msgid "Verbage for the pledge reminder report"
+msgstr "用於認獻報告的用語"
 
 #: ChurchCRM/dto/SystemConfig.php:142
 msgid "Pledge Reminder Signer"
 msgstr "承諾簽名者"
 
+#: ChurchCRM/dto/SystemConfig.php:143
+#, fuzzy
+msgid "Verbage for the pledge reminder report - No record of a pledge"
+msgstr "用於認獻報告的用語-無認獻紀錄"
+
+#: ChurchCRM/dto/SystemConfig.php:144
+#, fuzzy
+msgid "Verbage for the pledge reminder report - No record of payments"
+msgstr "用於認獻報告的用語-無奉獻紀錄"
+
+#: ChurchCRM/dto/SystemConfig.php:145 ChurchCRM/dto/SystemConfig.php:146
+#: ChurchCRM/dto/SystemConfig.php:147 ChurchCRM/dto/SystemConfig.php:148
+#: ChurchCRM/dto/SystemConfig.php:149 ChurchCRM/dto/SystemConfig.php:150
+#, fuzzy
+msgid "Verbage for the database information confirmation and correction report"
+msgstr "用於數據庫信息確認和更正報告的用語"
+
 #: ChurchCRM/dto/SystemConfig.php:151
 msgid "Database information confirmation and correction report signer"
 msgstr "數據庫信息確認和更正報告簽名者"
+
+#: ChurchCRM/dto/SystemConfig.php:152 ChurchCRM/dto/SystemConfig.php:153
+#, fuzzy
+msgid "Verbage for the pledge summary report"
+msgstr "用於認獻總結報告的用語"
+
+#: ChurchCRM/dto/SystemConfig.php:154 ChurchCRM/dto/SystemConfig.php:155
+#, fuzzy
+msgid "Verbage for the directory report"
+msgstr "用於目錄報告的用語"
 
 #: ChurchCRM/dto/SystemConfig.php:156
 msgid "Church Letterhead path and file"
@@ -6249,6 +6320,11 @@ msgstr "家庭中可以參與佈道的人。"
 msgid "Compare pledges between two fiscal years"
 msgstr "比較兩個財政年度之間的承諾"
 
+#: query_qry.php:36 query_qry.php:75
+#, fuzzy
+msgid "Find people who pledged one year but not another"
+msgstr "搜尋僅認獻一年者"
+
 #: query_qry.php:37 query_qry.php:76
 msgid "People who are configured to pay by credit card."
 msgstr "配置為使用信用卡付款的人。"
@@ -6341,6 +6417,11 @@ msgstr "佈道不感興趣報告"
 #: EditEventTypes.php:89 EventNames.php:109
 msgid "Weekly on"
 msgstr "每週"
+
+#: EditEventTypes.php:89 EventNames.php:109
+#, fuzzy
+msgid "s"
+msgstr " "
 
 #: EditEventTypes.php:92 EventNames.php:112
 msgid "Monthly on"
@@ -6502,7 +6583,7 @@ msgstr "通過家庭更新"
 msgid "Family Data Verified"
 msgstr "家庭數據驗證"
 
-#: ChurchCRM/model/ChurchCRM/Family.php:254
+#: ChurchCRM/model/ChurchCRM/Family.php:257
 #: ChurchCRM/model/ChurchCRM/Person.php:279
 msgid "Profile Image Deleted"
 msgstr "個人資料圖片已刪除"
@@ -7688,15 +7769,15 @@ msgstr "無州"
 msgid "Unavailable person info inherited from assigned family for display?\rThis option causes certain info from a person's assigned family record to be\rdisplayed IF the corresponding info has NOT been entered for that person. "
 msgstr "從指定的系列繼承的不可用的人員信息是否顯示？\ r \ n此選項會導致人員指定的家庭記錄中的某些信息被顯示，如果尚未為該人輸入相應的信息。"
 
-#: ChurchCRM/Service/SystemService.php:93
+#: ChurchCRM/Service/SystemService.php:94
 msgid "Backup archive does not contain a database"
 msgstr "備份存檔不包含數據庫"
 
-#: ChurchCRM/Service/SystemService.php:105
+#: ChurchCRM/Service/SystemService.php:106
 msgid "Unknown File Type"
 msgstr "未知的文件类型"
 
-#: ChurchCRM/Service/SystemService.php:105
+#: ChurchCRM/Service/SystemService.php:106
 msgid "from file"
 msgstr "自文档"
 
@@ -7711,6 +7792,11 @@ msgstr "一些家庭的家庭坐標數據"
 #: ChurchCRM/dto/SystemConfig.php:110
 msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database."
 msgstr "將用戶輸入的邮编/邮政编码以大寫方式保存到數據庫。"
+
+#: ChurchCRM/dto/SystemConfig.php:174
+#, fuzzy
+msgid "Used to end a letter before Signer"
+msgstr "信結尾簽名者前用語"
 
 #: ChurchCRM/dto/SystemConfig.php:176
 msgid "Google Analytics Tracking Code"
@@ -7810,7 +7896,7 @@ msgid "Unmet Application Prerequisites"
 msgstr "未滿足應用程序的先決條件"
 
 #: ChurchCRM/Service/AppIntegrityService.php:31
-#: ChurchCRM/dto/Prerequisite.php:36
+#: ChurchCRM/dto/Prerequisite.php:36 UpgradeCRM.php:34 UpgradeCRM.php:87
 msgid "Failed"
 msgstr "失敗"
 
@@ -7867,7 +7953,7 @@ msgstr "提交了一個無效的配置名稱請求"
 msgid "An invalid configuration id has been requested"
 msgstr "提交了一個無效的配置id請求"
 
-#: ChurchCRM/model/ChurchCRM/Family.php:267
+#: ChurchCRM/model/ChurchCRM/Family.php:270
 #: ChurchCRM/model/ChurchCRM/Person.php:303
 msgid "Profile Image uploaded"
 msgstr "個人資料圖片已上傳"
@@ -7919,6 +8005,11 @@ msgstr "協調數據庫文件名："
 #: QueryView.php:253
 msgid "Add To Cart"
 msgstr "添加至購物車"
+
+#: QueryView.php:254
+#, fuzzy
+msgid "Intersect With Cart"
+msgstr "與購物車交集"
 
 #: QueryView.php:255
 msgid "Remove From Cart"
@@ -7995,6 +8086,11 @@ msgstr "簽退人員"
 #: Checkin.php:238
 msgid "Delete Checkin in Entry"
 msgstr "刪除條目中的簽到"
+
+#: Checkin.php:263
+#, fuzzy
+msgid "Adult Checking Out Person"
+msgstr "成人登出人員"
 
 #: Checkin.php:267
 msgid "Adult Name (Optional)"
@@ -8127,7 +8223,7 @@ msgstr "確認操作"
 
 #: UserList.php:146
 msgid "Please confirm reset failed login count"
-msgstr "請確認重置登錄失敗次數"
+msgstr "請確認重置登入失敗次數"
 
 #: UserList.php:177
 msgid "Password reset for"
@@ -8331,7 +8427,7 @@ msgstr "KioskVisibility時間戳"
 
 #: ChurchCRM/dto/SystemConfig.php:190
 msgid "Show/Hide Lost Password Link on the login screen"
-msgstr "在登錄屏幕上顯示/隱藏丟失密碼鏈接"
+msgstr "在登入屏幕上顯示/隱藏丟失密碼鏈接"
 
 #: ChurchCRM/dto/SystemConfig.php:254
 msgid "Backup"
@@ -8369,7 +8465,7 @@ msgstr "密碼重置鏈接"
 msgid "Reset Password"
 msgstr "重置密碼"
 
-#: ChurchCRM/Service/SystemService.php:113
+#: ChurchCRM/Service/SystemService.php:114
 msgid "As part of the restore, external backups have been disabled.  If you wish to continue automatic backups, you must manuall re-enable the bEnableExternalBackupTarget setting."
 msgstr "外部備份作為還原的一部分已被禁用。如果要繼續自動備份，則必須手動重新啟用bEnableExternalBackupTarget設置。"
 
@@ -8573,7 +8669,7 @@ msgstr "孩子"
 msgid "Select a family"
 msgstr "選擇一個家庭"
 
-#: UpgradeCRM.php:61
+#: UpgradeCRM.php:112
 msgid "Release Notes"
 msgstr "釋放說明"
 
@@ -8771,6 +8867,11 @@ msgstr "人員"
 #: ChurchCRM/dto/SystemConfig.php:198
 msgid "Search Family"
 msgstr "搜索家庭"
+
+#: ChurchCRM/dto/SystemConfig.php:199
+#, fuzzy
+msgid "Show Family Head of House Names"
+msgstr "顯示戶長姓名"
 
 #: ChurchCRM/dto/SystemConfig.php:200
 msgid "Search Groups"
@@ -8973,6 +9074,11 @@ msgstr "調整事件大小"
 msgid "Text from"
 msgstr "文字來自"
 
+#: Include/Header.php:111
+#, fuzzy
+msgid "Profile"
+msgstr "簡介"
+
 #: Include/Header.php:119
 msgid "Sign out"
 msgstr "登出"
@@ -9022,6 +9128,11 @@ msgstr "Confession最後字段的存儲，必須是一個數據類型"
 msgid "Require that this ChurchCRM Database is accessed over HTTPS"
 msgstr "要求通過HTTPS訪問此ChurchCRM數據庫"
 
+#: ChurchCRM/dto/SystemConfig.php:247
+#, fuzzy
+msgid "People Setup"
+msgstr "人員設定"
+
 #: ChurchCRM/dto/SystemConfig.php:257
 msgid "Church Services"
 msgstr "教堂服務"
@@ -9045,6 +9156,11 @@ msgstr "人員目錄"
 #: PeopleDashboard.php:233
 msgid "Printable directory of all people, grouped by family where assigned"
 msgstr "所有人員的打印目錄，按分配的家庭分組"
+
+#: PeopleDashboard.php:297 PeopleDashboard.php:412
+#, fuzzy
+msgid "of People"
+msgstr "人數"
 
 #: SystemDBUpdate.php:29
 msgid "System Upgrade"
@@ -9107,12 +9223,14 @@ msgid "Lock"
 msgstr "鎖"
 
 #: Login.php:289
+#, fuzzy
 msgid "Enter your password to retrieve your session"
-msgstr "輸入您的密碼以檢索您的會話"
+msgstr "輸入您的密碼來恢復瀏覽"
 
 #: Login.php:292
+#, fuzzy
 msgid "Or sign in as a different user"
-msgstr "或以其他用戶身份登錄"
+msgstr "或以其他用戶身份登入"
 
 #: ChurchCRM/dto/SystemConfig.php:224
 msgid "Dashboard Service dynamic asynchronous refresh interval, default 60 second"
@@ -9631,6 +9749,35 @@ msgstr "假日"
 msgid "Person Name"
 msgstr "人名"
 
+#: ChurchCRM/dto/SystemConfig.php:234
+#, fuzzy
+msgid "Custom message for church greeter email 1, max 255 characters"
+msgstr "教會歡迎郵件自訂訊息1, 最多255字符"
+
+#: ChurchCRM/dto/SystemConfig.php:235
+#, fuzzy
+msgid "Custom message for church greeter email 2, max 255 characters"
+msgstr "教會歡迎郵件自訂訊息2, 最多255字符"
+
+#: ChurchCRM/dto/SystemConfig.php:236
+#, fuzzy
+msgid "Include contact and demographic data in new member email notification body"
+msgstr "在新成員電子郵件通知正文中包含聯繫人和人口統計數據"
+
+#: ChurchCRM/dto/SystemConfig.php:237
+#, fuzzy
+msgid "Include family custom properties in global search."
+msgstr "在全局搜索中包含家庭自訂屬性。"
+
+#: settings-countries.php:128
+msgid "Latvia (LatvijaLatviaLV"
+msgstr "拉脫維亞 (LatvijaLatviaLV"
+
+#: 
+#, fuzzy
+msgid "You are about to add a new deposit without a comment"
+msgstr "您即將添加沒有註解的新存款"
+
 #: v2/routes/email.php:85 v2/templates/email/dashboard.php:17
 #: v2/templates/email/without.php:14
 msgid "Families Without Emails"
@@ -9643,4 +9790,45 @@ msgstr "記錄"
 #: v2/templates/cart/cartempty.php:16
 msgid "Records"
 msgstr "記錄"
+
+#: v2/templates/cart/cartempty.php:16
+#, fuzzy
+msgid "Emptied into Event ID"
+msgstr "清空事件代碼"
+
+#: ChurchCRM/Service/AppIntegrityService.php:20
+#, fuzzy
+msgid "integrityCheck.json file missing"
+msgstr "無integrityCheck.json檔案"
+
+#: ChurchCRM/Service/AppIntegrityService.php:34
+#: ChurchCRM/dto/Prerequisite.php:34
+#, fuzzy
+msgid "Passed"
+msgstr "通過"
+
+#: ChurchCRM/tasks/CheckExecutionTimeTask.php:33
+#, fuzzy
+msgid "PHP Max Execution Time is too Short"
+msgstr "PHP最大執行時間太短"
+
+#: ChurchCRM/tasks/CheckExecutionTimeTask.php:38
+#, fuzzy
+msgid "Increase the PHP execution time limit to allow for backup and restore."
+msgstr "增加PHP執行時間限制以允許備份和還原。"
+
+#: v2/templates/admin/debug.php:107
+#, fuzzy
+msgid "Application Integrity Check"
+msgstr "程式完整性檢查"
+
+#: 
+#, fuzzy
+msgid "Focus"
+msgstr "加入焦點"
+
+#: 
+#, fuzzy
+msgid "Unfocus"
+msgstr "移除焦點"
 
