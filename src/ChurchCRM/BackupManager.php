@@ -30,6 +30,12 @@ namespace ChurchCRM\Backup
        * @var BackupType 
        */
       protected $BackupType;
+      
+      /**
+       *
+       * @var String
+       */
+      protected $TempFolder;
    
       protected function CreateEmptyTempFolder()
       { 
@@ -52,11 +58,6 @@ namespace ChurchCRM\Backup
        * @var SplFileInfo
        */
       private $BackupFile;
-      /**
-       *
-       * @var String
-       */
-      private $TempFolder;
       /**
        *
        * @var Boolean
@@ -229,8 +230,8 @@ namespace ChurchCRM\Backup
           throw new \Exception($message, 500);
         }
         $rawUploadedFile = $_FILES['restoreFile'];
-        $tempDirectory = $this->CreateEmptyTempFolder();
-        $this->RestoreFile = new \SplFileInfo($tempDirectory."/" . $rawUploadedFile['name']);
+        $this->TempFolder = $this->CreateEmptyTempFolder();
+        $this->RestoreFile = new \SplFileInfo($this->TempFolder."/" . $rawUploadedFile['name']);
         LoggerUtils::getAppLogger()->debug("Moving ".$rawUploadedFile['tmp_name']. " to ". $this->RestoreFile);
         move_uploaded_file($rawUploadedFile['tmp_name'], $this->RestoreFile);
         LoggerUtils::getAppLogger()->debug("File move complete");
@@ -256,11 +257,35 @@ namespace ChurchCRM\Backup
         }
       }
       
-      private function RestoreSQLBackup() {
+      private function RestoreSQLBackup($SQLFileInfo) {
         $connection = Propel::getConnection();
-        LoggerUtils::getAppLogger()->debug("Restoring SQL file from: ".$this->RestoreFile);
-        SQLUtils::sqlImport($this->RestoreFile, $connection);
+        LoggerUtils::getAppLogger()->debug("Restoring SQL file from: ".$SQLFileInfo);
+        SQLUtils::sqlImport($SQLFileInfo, $connection);
         LoggerUtils::getAppLogger()->debug("Finished restoring SQL table");
+      }
+      
+       private function RestoreFullBackup() {
+        LoggerUtils::getAppLogger()->debug("Restoring full archive");
+        $phar = new PharData($this->RestoreFile);
+        LoggerUtils::getAppLogger()->debug("Extracting " . $this->RestoreFile . " to ". $this->TempFolder);
+        $phar->extractTo($this->TempFolder);
+        LoggerUtils::getAppLogger()->debug("Finished exctraction");
+        $sqlFile =  $this->TempFolder."/ChurchCRM-Database.sql";
+        if (file_exists($sqlFile))
+        {
+          $this->RestoreSQLBackup($sqlFile);
+          LoggerUtils::getAppLogger()->debug("Removing images from live instance");
+          FileSystemUtils::recursiveRemoveDirectory(SystemURLs::getDocumentRoot() . '/Images');
+          LoggerUtils::getAppLogger()->debug("Removal complete; Copying restored images to live instance");
+          FileSystemUtils::recursiveCopyDirectory($restoreResult->backupDir . '/Images/', SystemURLs::getImagesRoot());
+          LoggerUtils::getAppLogger()->debug("Finished copying images");
+        }
+        else
+        {
+          FileSystemUtils::recursiveRemoveDirectory($restoreResult->backupDir,true);
+          throw new Exception(gettext("Backup archive does not contain a database").": " .$this->RestoreFile);
+        }
+        LoggerUtils::getAppLogger()->debug("Finished restoring full archive");
       }
     
       public function Execute()
@@ -268,7 +293,10 @@ namespace ChurchCRM\Backup
         LoggerUtils::getAppLogger()->info("Executing restore job");
         switch ($this->BackupType) {
           case BackupType::SQL:
-            $this->RestoreSQLBackup();
+            $this->RestoreSQLBackup($this->RestoreFile);
+            break;
+          case BackupType::FullBackup:
+            $this->RestoreFullBackup();
             break;
         }
 
