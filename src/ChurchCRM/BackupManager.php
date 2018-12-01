@@ -277,7 +277,7 @@ namespace ChurchCRM\Backup
           LoggerUtils::getAppLogger()->debug("Removing images from live instance");
           FileSystemUtils::recursiveRemoveDirectory(SystemURLs::getDocumentRoot() . '/Images');
           LoggerUtils::getAppLogger()->debug("Removal complete; Copying restored images to live instance");
-          FileSystemUtils::recursiveCopyDirectory($restoreResult->backupDir . '/Images/', SystemURLs::getImagesRoot());
+          FileSystemUtils::recursiveCopyDirectory($this->TempFolder. '/Images/', SystemURLs::getImagesRoot());
           LoggerUtils::getAppLogger()->debug("Finished copying images");
         }
         else
@@ -301,6 +301,7 @@ namespace ChurchCRM\Backup
         }
 
         LoggerUtils::getAppLogger()->info("Finished executing restore job");
+        $this->TempFolder = $this->CreateEmptyTempFolder();
         
       }
   }
