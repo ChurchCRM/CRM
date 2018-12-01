@@ -3,6 +3,7 @@
 namespace ChurchCRM\Backup
 {
   use ChurchCRM\dto\SystemURLs;
+  use ChurchCRM\dto\SystemConfig;
   use ChurchCRM\FileSystemUtils;
   use ChurchCRM\Utils\LoggerUtils;
   use ChurchCRM\SQLUtils;
@@ -215,6 +216,11 @@ namespace ChurchCRM\Backup
        */
       private $RestoreFile;
       
+      /**
+       * 
+       * @var Array
+       */
+      public $Messages;
       
       private function IsIncomingFileFailed() {
         // Not actually sure what this is supposed to do, but it was working before??
@@ -224,6 +230,7 @@ namespace ChurchCRM\Backup
       public function __construct()
       {
         LoggerUtils::getAppLogger()->info("Beginning to process incoming archvie for restoration");
+        $this->Messages = array();
         if ($this->IsIncomingFileFailed()) {
           $message = "The selected file exceeds this servers maximum upload size of: " . SystemService::getMaxUploadFileSize();
           LoggerUtils::getAppLogger()->error($message);
@@ -287,6 +294,16 @@ namespace ChurchCRM\Backup
         }
         LoggerUtils::getAppLogger()->debug("Finished restoring full archive");
       }
+      
+      private function PostRestoreCleanup() {
+        //When restoring a database, do NOT let the database continue to create remote backups.
+        //This can be very troublesome for users in a testing environment.
+        LoggerUtils::getAppLogger()->debug("Starting post-restore cleanup");
+        SystemConfig::setValue('bEnableExternalBackupTarget', '0');
+        array_push($this->Messages, gettext('As part of the restore, external backups have been disabled.  If you wish to continue automatic backups, you must manuall re-enable the bEnableExternalBackupTarget setting.'));
+        SystemConfig::setValue('sLastIntegrityCheckTimeStamp', null);
+        LoggerUtils::getAppLogger()->debug("Reset System Settings for: bEnableExternalBackupTarget and sLastIntegrityCheckTimeStamp");
+      }
     
       public function Execute()
       {
@@ -299,7 +316,7 @@ namespace ChurchCRM\Backup
             $this->RestoreFullBackup();
             break;
         }
-
+        $this->PostRestoreCleanup();
         LoggerUtils::getAppLogger()->info("Finished executing restore job");
         $this->TempFolder = $this->CreateEmptyTempFolder();
         
