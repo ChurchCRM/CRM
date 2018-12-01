@@ -2,6 +2,7 @@
 
 namespace ChurchCRM\Tasks;
 
+use \ChurchCRM\Service\SystemService;
 use Propel\Runtime\Propel;
 
 class UnsupportedPaymentDataCheck implements iTask
@@ -10,12 +11,15 @@ class UnsupportedPaymentDataCheck implements iTask
 
     public function __construct()
     {
+      $this->count = 0;
+      if(SystemService::getDBTableExists("autopayment_aut")){
         $connection = Propel::getConnection();
         $query = 'Select * from autopayment_aut';
         $statement = $connection->prepare($query);
         $statement->execute();
         $results = $statement->fetchAll(\PDO::FETCH_ASSOC);
         $this->count = count($results);
+      }
     }
 
     public function isActive()
