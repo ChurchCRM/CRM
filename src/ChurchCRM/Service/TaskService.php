@@ -18,6 +18,8 @@ use ChurchCRM\Tasks\PrerequisiteCheckTask;
 use ChurchCRM\Tasks\RegisteredTask;
 use ChurchCRM\Tasks\UpdateFamilyCoordinatesTask;
 use ChurchCRM\Tasks\CheckExecutionTimeTask;
+use ChurchCRM\Tasks\UnsupportedDepositCheck;
+use ChurchCRM\Tasks\UnsupportedPaymentDataCheck;
 
 class TaskService
 {
@@ -43,7 +45,9 @@ class TaskService
             new PersonRoleDataCheck(),
             new UpdateFamilyCoordinatesTask(),
             new CheckUploadSizeTask(),
-            new CheckExecutionTimeTask()
+            new CheckExecutionTimeTask(),
+            new UnsupportedDepositCheck(),
+            new UnsupportedPaymentDataCheck()
         ];
 
         $this->notificationClasses = [
