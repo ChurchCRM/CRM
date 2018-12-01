@@ -261,9 +261,9 @@ $familyAddress = $family->getAddress();
 
                         </div>
                     </div>
-                    <div class="box-body">
+                    <div class="box-body row row-flex row-flex-wrap">
                         <?php foreach ($family->getPeople() as $person) { ?>
-                            <div class="col-sm-4">
+                            <div class="col-sm-6">
                                 <div class="box box-primary">
                                     <div class="box-body box-profile">
                                         <a href="<?= $person->getViewURI()?>" ?>
