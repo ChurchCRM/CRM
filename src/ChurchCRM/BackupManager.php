@@ -230,11 +230,17 @@ namespace ChurchCRM\Backup
         }
         $rawUploadedFile = $_FILES['restoreFile'];
         $tempDirectory = $this->CreateEmptyTempFolder();
-        $this->RestoreFile = new \SplFileInfo($tempDirectory."/ChurchCRMRestores/" . $rawUploadedFile['name']);
+        $this->RestoreFile = new \SplFileInfo($tempDirectory."/" . $rawUploadedFile['name']);
         LoggerUtils::getAppLogger()->debug("Moving ".$rawUploadedFile['tmp_name']. " to ". $this->RestoreFile);
-        move_uploaded_file($rawUploadedFile, $this->RestoreFile->getPath());
+        move_uploaded_file($rawUploadedFile['tmp_name'], $this->RestoreFile);
         LoggerUtils::getAppLogger()->debug("File move complete");
-        switch($this->RestoreFile->getExtension()) {
+        $this->DiscoverBackupType();
+        LoggerUtils::getAppLogger()->debug("Detected backup type:".  $this->RestoreFile->getExtension(). ": " . $this->BackupType);
+        LoggerUtils::getAppLogger()->info("Restore job created; ready to execute");
+      }
+      private function DiscoverBackupType()
+      {
+         switch($this->RestoreFile->getExtension()) {
           case "gz":
             $basename = $this->RestoreFile->getBasename();
             if (substr($basename, strlen($basename)-6,6) == "tar.gz"){
@@ -248,21 +254,26 @@ namespace ChurchCRM\Backup
             $this->BackupType = BackupType::SQL;
             break;
         }
-        LoggerUtils::getAppLogger()->debug("Detected backup type:".  $this->RestoreFile->getExtension(). ": " . $this->BackupType);
-        LoggerUtils::getAppLogger()->info("Restore job created; ready to execute");
       }
-      private function DiscoverBackupType()
-      {
-         
+      
+      private function RestoreSQLBackup() {
+        $connection = Propel::getConnection();
+        LoggerUtils::getAppLogger()->debug("Restoring SQL file from: ".$this->RestoreFile);
+        SQLUtils::sqlImport($this->RestoreFile, $connection);
+        LoggerUtils::getAppLogger()->debug("Finished restoring SQL table");
       }
     
       public function Execute()
       {
-          $Backup = new BackupInstance();
-          $Backup->TempFolder =  self::CreateEmptyTempFolder();
-          // if the file does not exist, then this object was constructed with intent to backup.  Calculate some paths here.
-          $Backup->BackupFilePath = $backup->TempFolder .'/'.preg_replace('/[^a-zA-Z0-9\-_]/', '', SystemConfig::getValue('sChurchName')). "-" . date(SystemConfig::getValue("sDateFilenameFormat"));
-          $Backup->BackupType = self::DiscoverBackupType(new \SplFileInfo($Backup->BackupFilePath));
+        LoggerUtils::getAppLogger()->info("Executing restore job");
+        switch ($this->BackupType) {
+          case BackupType::SQL:
+            $this->RestoreSQLBackup();
+            break;
+        }
+
+        LoggerUtils::getAppLogger()->info("Finished executing restore job");
+        
       }
   }
 
