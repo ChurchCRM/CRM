@@ -54,15 +54,9 @@ $app->group('/database', function () {
     });
 
     $this->post('/restore', function ($request, $response, $args) {
-
-        if ($_SERVER['REQUEST_METHOD'] == 'POST' && empty($_POST) &&
-            empty($_FILES) && $_SERVER['CONTENT_LENGTH'] > 0) {
-            $systemService = new SystemService();
-            throw new \Exception(gettext('The selected file exceeds this servers maximum upload size of') . ": " . $systemService->getMaxUploadFileSize(), 500);
-        }
-        $fileName = $_FILES['restoreFile'];
-        BackupManager::RestoreBackup($fileName);
-        echo json_encode($restore);
+        $RestoreJob = new RestoreJob();
+        $RestoreJob->Execute();
+        return $response->withJSON($RestoreJob);
     });
 
     $this->get('/download/{filename}', function ($request, $response, $args) {

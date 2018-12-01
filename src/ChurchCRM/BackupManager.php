@@ -25,14 +25,20 @@ namespace ChurchCRM\Backup
 
   class JobBase
   {
+     /**
+       *
+       * @var BackupType 
+       */
       protected $BackupType;
    
       protected function CreateEmptyTempFolder()
-      {
+      { 
           // both backup and restore operations require a clean temporary working folder.  Create it.
           $TempFolder = SystemURLs::getDocumentRoot() . "/tmp_attach/ChurchCRMBackups";
+          LoggerUtils::getAppLogger()->debug("Creating temp folder at ". $TempFolder);
           FileSystemUtils::recursiveRemoveDirectory($TempFolder, false);
           mkdir($TempFolder, 0750, true);
+          LoggerUtils::getAppLogger()->debug("Temp folder created");
           return $TempFolder;
       }
   }
@@ -202,15 +208,52 @@ namespace ChurchCRM\Backup
   
   class RestoreJob extends JobBase
   {
-      private function DiscoverBackupType(\SplFileInfo $BackupFile)
+      /**
+       *
+       * @var SplFileInfo
+       */
+      private $RestoreFile;
+      
+      
+      private function IsIncomingFileFailed() {
+        // Not actually sure what this is supposed to do, but it was working before??
+        return $_SERVER['REQUEST_METHOD'] == 'POST' && empty($_POST) && empty($_FILES) && $_SERVER['CONTENT_LENGTH'] > 0;
+      }
+      
+      public function __construct()
       {
-          if ($BackupFile->getExtension() == ".tar.gz") {
-              return BackupType::FullBackup;
-          } elseif ($BackupFile->getExtension() == ".sql.gz") {
-              return BackupType::GZSQL;
-          } elseif ($BackupFile->getExtension() == ".sql") {
-              return BackupType::SQL;
-          }
+        LoggerUtils::getAppLogger()->info("Beginning to process incoming archvie for restoration");
+        if ($this->IsIncomingFileFailed()) {
+          $message = "The selected file exceeds this servers maximum upload size of: " . SystemService::getMaxUploadFileSize();
+          LoggerUtils::getAppLogger()->error($message);
+          throw new \Exception($message, 500);
+        }
+        $rawUploadedFile = $_FILES['restoreFile'];
+        $tempDirectory = $this->CreateEmptyTempFolder();
+        $this->RestoreFile = new \SplFileInfo($tempDirectory."/ChurchCRMRestores/" . $rawUploadedFile['name']);
+        LoggerUtils::getAppLogger()->debug("Moving ".$rawUploadedFile['tmp_name']. " to ". $this->RestoreFile);
+        move_uploaded_file($rawUploadedFile, $this->RestoreFile->getPath());
+        LoggerUtils::getAppLogger()->debug("File move complete");
+        switch($this->RestoreFile->getExtension()) {
+          case "gz":
+            $basename = $this->RestoreFile->getBasename();
+            if (substr($basename, strlen($basename)-6,6) == "tar.gz"){
+              $this->BackupType = BackupType::FullBackup;
+            }
+            else if (substr($basename, strlen($basename)-6,6) == "sql.gz"){
+              $this->BackupType = BackupType::GZSQL;
+            }
+            break;
+          case "sql":
+            $this->BackupType = BackupType::SQL;
+            break;
+        }
+        LoggerUtils::getAppLogger()->debug("Detected backup type:".  $this->RestoreFile->getExtension(). ": " . $this->BackupType);
+        LoggerUtils::getAppLogger()->info("Restore job created; ready to execute");
+      }
+      private function DiscoverBackupType()
+      {
+         
       }
     
       public function Execute()
@@ -222,6 +265,7 @@ namespace ChurchCRM\Backup
           $Backup->BackupType = self::DiscoverBackupType(new \SplFileInfo($Backup->BackupFilePath));
       }
   }
+
 
   class BackupDownloader
   {

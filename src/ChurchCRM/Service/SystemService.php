@@ -394,17 +394,17 @@ class SystemService
 
         // Returns a file size limit in bytes based on the PHP upload_max_filesize
     // and post_max_size
-    public function getMaxUploadFileSize($humanFormat=true) {
+    public static function getMaxUploadFileSize($humanFormat=true) {
       //select maximum upload size
-      $max_upload = $this->parse_size(ini_get('upload_max_filesize'));
+      $max_upload = SystemService::parse_size(ini_get('upload_max_filesize'));
       //select post limit
-      $max_post = $this->parse_size(ini_get('post_max_size'));
+      $max_post = SystemService::parse_size(ini_get('post_max_size'));
       //select memory limit
-      $memory_limit = $this->parse_size(ini_get('memory_limit'));
+      $memory_limit = SystemService::parse_size(ini_get('memory_limit'));
       // return the smallest of them, this defines the real limit
       if ($humanFormat)
       {
-        return $this->human_filesize(min($max_upload, $max_post, $memory_limit));
+        return SystemService::human_filesize(min($max_upload, $max_post, $memory_limit));
       }
       else
       {
@@ -412,7 +412,7 @@ class SystemService
       }
     }
 
-    private function parse_size($size) {
+    public static function parse_size($size) {
       $unit = preg_replace('/[^bkmgtpezy]/i', '', $size); // Remove the non-unit characters from the size.
       $size = preg_replace('/[^0-9\.]/', '', $size); // Remove the non-numeric characters from the size.
       if ($unit) {
@@ -424,7 +424,7 @@ class SystemService
       }
     }
 
-    function human_filesize($bytes, $decimals = 2) {
+    static function human_filesize($bytes, $decimals = 2) {
       $size = array('B','kB','MB','GB','TB','PB','EB','ZB','YB');
       $factor = floor((strlen($bytes) - 1) / 3);
       return sprintf("%.{$decimals}f", $bytes / pow(1024, $factor)) . @$size[$factor];

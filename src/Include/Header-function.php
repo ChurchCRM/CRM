@@ -86,8 +86,8 @@ function Header_body_scripts()
             lang: "<?= $localeInfo->getLanguageCode() ?>",
             locale: "<?= $localeInfo->getLocale() ?>",
             shortLocale: "<?= $localeInfo->getShortLocale() ?>",
-            maxUploadSize: "<?= $systemService->getMaxUploadFileSize(true) ?>",
-            maxUploadSizeBytes: "<?= $systemService->getMaxUploadFileSize(false) ?>",
+            maxUploadSize: "<?= SystemService::getMaxUploadFileSize(true) ?>",
+            maxUploadSizeBytes: "<?= SystemService::getMaxUploadFileSize(false) ?>",
             datePickerformat:"<?= SystemConfig::getValue('sDatePickerPlaceHolder') ?>",
             systemConfigs: {
               sDateTimeFormat: "<?= PHPToMomentJSConverter::ConvertFormatString(SystemConfig::getValue('sDateTimeFormat'))?>",
