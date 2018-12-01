@@ -8,7 +8,7 @@ use ChurchCRM\dto\Classification;
 require SystemURLs::getDocumentRoot() . '/Include/SimpleConfig.php';
 
 //Set the page title
-$sPageTitle = gettext("Family View") . " - " . $family->getName();
+$sPageTitle =  $family->getName() . " - " . gettext("Family");
 include SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 /**
