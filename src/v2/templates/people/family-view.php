@@ -288,10 +288,11 @@ $familyAddress = $family->getAddress();
                                                 <button type="button" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i></button>
                                             </a>
                                         </p>
+                                        <?php if ($person->getClsId()) { ?>
                                         <li class="list-group">
                                             <b>Classification:</b> <?= Classification::getName($person->getClsId()) ?>
                                         </li>
-
+                                        <?php } ?>
                                         <ul class="list-group list-group-unbordered">
                                             <li class="list-group-item">
                                                 <?php if (!empty($person->getHomePhone())) { ?>
@@ -318,11 +319,14 @@ $familyAddress = $family->getAddress();
                                                     <i class="fa fa-fw fa-envelope-o"
                                                        title="<?= gettext("Work Email") ?>"></i>(W) <?= $person->getWorkEmail() ?>
                                                     <br/>
-                                                <?php } ?>
+                                                <?php }
+                                                $formatedBirthday = $person->getFormattedBirthDate();
+                                                if ($formatedBirthday) {?>
                                                 <i class="fa fa-fw fa-birthday-cake"
                                                    title="<?= gettext("Birthday") ?>"></i>
-                                                <?= $person->getFormattedBirthDate()?>  <?= $person->getAge()?>
+                                                <?= $formatedBirthday ?>  <?= $person->getAge()?>
                                                 </i>
+                                                <?php } ?>
                                             </li>
                                         </ul>
 
