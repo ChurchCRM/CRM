@@ -26,10 +26,10 @@ namespace ChurchCRM\Backup
 
   class JobBase
   {
-     /**
-       *
-       * @var BackupType 
-       */
+      /**
+        *
+        * @var BackupType
+        */
       protected $BackupType;
       
       /**
@@ -39,7 +39,7 @@ namespace ChurchCRM\Backup
       protected $TempFolder;
    
       protected function CreateEmptyTempFolder()
-      { 
+      {
           // both backup and restore operations require a clean temporary working folder.  Create it.
           $TempFolder = SystemURLs::getDocumentRoot() . "/tmp_attach/ChurchCRMBackups";
           LoggerUtils::getAppLogger()->debug("Creating temp folder at ". $TempFolder);
@@ -217,45 +217,45 @@ namespace ChurchCRM\Backup
       private $RestoreFile;
       
       /**
-       * 
+       *
        * @var Array
        */
       public $Messages;
       
-      private function IsIncomingFileFailed() {
-        // Not actually sure what this is supposed to do, but it was working before??
-        return $_SERVER['REQUEST_METHOD'] == 'POST' && empty($_POST) && empty($_FILES) && $_SERVER['CONTENT_LENGTH'] > 0;
+      private function IsIncomingFileFailed()
+      {
+          // Not actually sure what this is supposed to do, but it was working before??
+          return $_SERVER['REQUEST_METHOD'] == 'POST' && empty($_POST) && empty($_FILES) && $_SERVER['CONTENT_LENGTH'] > 0;
       }
       
       public function __construct()
       {
-        LoggerUtils::getAppLogger()->info("Beginning to process incoming archvie for restoration");
-        $this->Messages = array();
-        if ($this->IsIncomingFileFailed()) {
-          $message = "The selected file exceeds this servers maximum upload size of: " . SystemService::getMaxUploadFileSize();
-          LoggerUtils::getAppLogger()->error($message);
-          throw new \Exception($message, 500);
-        }
-        $rawUploadedFile = $_FILES['restoreFile'];
-        $this->TempFolder = $this->CreateEmptyTempFolder();
-        $this->RestoreFile = new \SplFileInfo($this->TempFolder."/" . $rawUploadedFile['name']);
-        LoggerUtils::getAppLogger()->debug("Moving ".$rawUploadedFile['tmp_name']. " to ". $this->RestoreFile);
-        move_uploaded_file($rawUploadedFile['tmp_name'], $this->RestoreFile);
-        LoggerUtils::getAppLogger()->debug("File move complete");
-        $this->DiscoverBackupType();
-        LoggerUtils::getAppLogger()->debug("Detected backup type:".  $this->RestoreFile->getExtension(). ": " . $this->BackupType);
-        LoggerUtils::getAppLogger()->info("Restore job created; ready to execute");
+          LoggerUtils::getAppLogger()->info("Beginning to process incoming archvie for restoration");
+          $this->Messages = array();
+          if ($this->IsIncomingFileFailed()) {
+              $message = "The selected file exceeds this servers maximum upload size of: " . SystemService::getMaxUploadFileSize();
+              LoggerUtils::getAppLogger()->error($message);
+              throw new \Exception($message, 500);
+          }
+          $rawUploadedFile = $_FILES['restoreFile'];
+          $this->TempFolder = $this->CreateEmptyTempFolder();
+          $this->RestoreFile = new \SplFileInfo($this->TempFolder."/" . $rawUploadedFile['name']);
+          LoggerUtils::getAppLogger()->debug("Moving ".$rawUploadedFile['tmp_name']. " to ". $this->RestoreFile);
+          move_uploaded_file($rawUploadedFile['tmp_name'], $this->RestoreFile);
+          LoggerUtils::getAppLogger()->debug("File move complete");
+          $this->DiscoverBackupType();
+          LoggerUtils::getAppLogger()->debug("Detected backup type:".  $this->RestoreFile->getExtension(). ": " . $this->BackupType);
+          LoggerUtils::getAppLogger()->info("Restore job created; ready to execute");
       }
       private function DiscoverBackupType()
       {
-         switch($this->RestoreFile->getExtension()) {
+          switch ($this->RestoreFile->getExtension()) {
           case "gz":
             $basename = $this->RestoreFile->getBasename();
-            if (substr($basename, strlen($basename)-6,6) == "tar.gz"){
-              $this->BackupType = BackupType::FullBackup;
-            }
-            else if (substr($basename, strlen($basename)-6,6) == "sql.gz"){
-              $this->BackupType = BackupType::GZSQL;
+            if (substr($basename, strlen($basename)-6, 6) == "tar.gz") {
+                $this->BackupType = BackupType::FullBackup;
+            } elseif (substr($basename, strlen($basename)-6, 6) == "sql.gz") {
+                $this->BackupType = BackupType::GZSQL;
             }
             break;
           case "sql":
@@ -264,51 +264,51 @@ namespace ChurchCRM\Backup
         }
       }
       
-      private function RestoreSQLBackup($SQLFileInfo) {
-        $connection = Propel::getConnection();
-        LoggerUtils::getAppLogger()->debug("Restoring SQL file from: ".$SQLFileInfo);
-        SQLUtils::sqlImport($SQLFileInfo, $connection);
-        LoggerUtils::getAppLogger()->debug("Finished restoring SQL table");
+      private function RestoreSQLBackup($SQLFileInfo)
+      {
+          $connection = Propel::getConnection();
+          LoggerUtils::getAppLogger()->debug("Restoring SQL file from: ".$SQLFileInfo);
+          SQLUtils::sqlImport($SQLFileInfo, $connection);
+          LoggerUtils::getAppLogger()->debug("Finished restoring SQL table");
       }
       
-       private function RestoreFullBackup() {
-        LoggerUtils::getAppLogger()->debug("Restoring full archive");
-        $phar = new PharData($this->RestoreFile);
-        LoggerUtils::getAppLogger()->debug("Extracting " . $this->RestoreFile . " to ". $this->TempFolder);
-        $phar->extractTo($this->TempFolder);
-        LoggerUtils::getAppLogger()->debug("Finished exctraction");
-        $sqlFile =  $this->TempFolder."/ChurchCRM-Database.sql";
-        if (file_exists($sqlFile))
-        {
-          $this->RestoreSQLBackup($sqlFile);
-          LoggerUtils::getAppLogger()->debug("Removing images from live instance");
-          FileSystemUtils::recursiveRemoveDirectory(SystemURLs::getDocumentRoot() . '/Images');
-          LoggerUtils::getAppLogger()->debug("Removal complete; Copying restored images to live instance");
-          FileSystemUtils::recursiveCopyDirectory($this->TempFolder. '/Images/', SystemURLs::getImagesRoot());
-          LoggerUtils::getAppLogger()->debug("Finished copying images");
-        }
-        else
-        {
-          FileSystemUtils::recursiveRemoveDirectory($restoreResult->backupDir,true);
-          throw new Exception(gettext("Backup archive does not contain a database").": " .$this->RestoreFile);
-        }
-        LoggerUtils::getAppLogger()->debug("Finished restoring full archive");
+      private function RestoreFullBackup()
+      {
+          LoggerUtils::getAppLogger()->debug("Restoring full archive");
+          $phar = new PharData($this->RestoreFile);
+          LoggerUtils::getAppLogger()->debug("Extracting " . $this->RestoreFile . " to ". $this->TempFolder);
+          $phar->extractTo($this->TempFolder);
+          LoggerUtils::getAppLogger()->debug("Finished exctraction");
+          $sqlFile =  $this->TempFolder."/ChurchCRM-Database.sql";
+          if (file_exists($sqlFile)) {
+              $this->RestoreSQLBackup($sqlFile);
+              LoggerUtils::getAppLogger()->debug("Removing images from live instance");
+              FileSystemUtils::recursiveRemoveDirectory(SystemURLs::getDocumentRoot() . '/Images');
+              LoggerUtils::getAppLogger()->debug("Removal complete; Copying restored images to live instance");
+              FileSystemUtils::recursiveCopyDirectory($this->TempFolder. '/Images/', SystemURLs::getImagesRoot());
+              LoggerUtils::getAppLogger()->debug("Finished copying images");
+          } else {
+              FileSystemUtils::recursiveRemoveDirectory($restoreResult->backupDir, true);
+              throw new Exception(gettext("Backup archive does not contain a database").": " .$this->RestoreFile);
+          }
+          LoggerUtils::getAppLogger()->debug("Finished restoring full archive");
       }
       
-      private function PostRestoreCleanup() {
-        //When restoring a database, do NOT let the database continue to create remote backups.
-        //This can be very troublesome for users in a testing environment.
-        LoggerUtils::getAppLogger()->debug("Starting post-restore cleanup");
-        SystemConfig::setValue('bEnableExternalBackupTarget', '0');
-        array_push($this->Messages, gettext('As part of the restore, external backups have been disabled.  If you wish to continue automatic backups, you must manuall re-enable the bEnableExternalBackupTarget setting.'));
-        SystemConfig::setValue('sLastIntegrityCheckTimeStamp', null);
-        LoggerUtils::getAppLogger()->debug("Reset System Settings for: bEnableExternalBackupTarget and sLastIntegrityCheckTimeStamp");
+      private function PostRestoreCleanup()
+      {
+          //When restoring a database, do NOT let the database continue to create remote backups.
+          //This can be very troublesome for users in a testing environment.
+          LoggerUtils::getAppLogger()->debug("Starting post-restore cleanup");
+          SystemConfig::setValue('bEnableExternalBackupTarget', '0');
+          array_push($this->Messages, gettext('As part of the restore, external backups have been disabled.  If you wish to continue automatic backups, you must manuall re-enable the bEnableExternalBackupTarget setting.'));
+          SystemConfig::setValue('sLastIntegrityCheckTimeStamp', null);
+          LoggerUtils::getAppLogger()->debug("Reset System Settings for: bEnableExternalBackupTarget and sLastIntegrityCheckTimeStamp");
       }
     
       public function Execute()
       {
-        LoggerUtils::getAppLogger()->info("Executing restore job");
-        switch ($this->BackupType) {
+          LoggerUtils::getAppLogger()->info("Executing restore job");
+          switch ($this->BackupType) {
           case BackupType::SQL:
             $this->RestoreSQLBackup($this->RestoreFile);
             break;
@@ -316,10 +316,9 @@ namespace ChurchCRM\Backup
             $this->RestoreFullBackup();
             break;
         }
-        $this->PostRestoreCleanup();
-        LoggerUtils::getAppLogger()->info("Finished executing restore job");
-        $this->TempFolder = $this->CreateEmptyTempFolder();
-        
+          $this->PostRestoreCleanup();
+          LoggerUtils::getAppLogger()->info("Finished executing restore job");
+          $this->TempFolder = $this->CreateEmptyTempFolder();
       }
   }
 
