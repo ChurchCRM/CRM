@@ -80,6 +80,12 @@ namespace ChurchCRM\Backup
        */
       public $shouldEncrypt;
       
+      /**
+       *
+       * @var String
+       */
+      public $BackupPassword;
+      
       
       /**
        *
@@ -87,13 +93,14 @@ namespace ChurchCRM\Backup
        * @param BackupType $BackupType
        * @param Boolean $IncludeExtraneousFiles
        */
-      public function __construct($BaseName, $BackupType, $IncludeExtraneousFiles)
+      public function __construct($BaseName, $BackupType, $IncludeExtraneousFiles, $EncryptBackup, $BackupPassword)
       {
           $this->BackupType = $BackupType;
           $this->TempFolder =  $this->CreateEmptyTempFolder();
           $this->BackupFileBaseName = $this->TempFolder .'/'.$BaseName;
           $this->IncludeExtraneousFiles = $IncludeExtraneousFiles;
-          $this->shouldEncrypt = true;
+          $this->shouldEncrypt = $EncryptBackup;
+          $this->BackupPassword = $BackupPassword;
           LoggerUtils::getAppLogger()->debug(
                   "Backup job created; ready to execute: Type: '" .
                   $this->BackupType .
@@ -200,7 +207,6 @@ namespace ChurchCRM\Backup
       
       private function EncryptBackupFile() {
         LoggerUtils::getAppLogger()->info("Encrypting backup file: ".$this->BackupFile);
-        $password = 'yOuR-pAs5w0rd-hERe';
         $cipher = 'aes-256-cbc';
         $salt = openssl_random_pseudo_bytes(12);
         $iv_length = openssl_cipher_iv_length($cipher);
@@ -208,7 +214,7 @@ namespace ChurchCRM\Backup
         $pbkdf2_length = $iv_length + $key_length;
         $iterations = 10000;
         LoggerUtils::getAppLogger()->info("Generating encryption key length: " . $pbkdf2_length . " and " . $iterations . " iterations using OpenSSL's PBKDF2");
-        $key_and_iv = openssl_pbkdf2($password, $salt, $pbkdf2_length, $iterations, 'sha256');
+        $key_and_iv = openssl_pbkdf2($this->BackupPassword, $salt, $pbkdf2_length, $iterations, 'sha256');
         $key = substr($key_and_iv,0,$key_length);
         $iv = substr($key_and_iv,$key_length,$iv_length);
         $fileContents = file_get_contents($this->BackupFile);
