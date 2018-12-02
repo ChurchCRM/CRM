@@ -26,7 +26,7 @@ $mailchimp = new MailChimpService();
 $curYear = (new DateTime)->format("Y");
 
 //Set the page title
-$sPageTitle = gettext("Family View");
+$sPageTitle = gettext("Family");
 require "Include/Header.php";
 
 //Get the FamilyID out of the querystring

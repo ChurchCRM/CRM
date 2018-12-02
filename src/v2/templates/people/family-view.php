@@ -8,7 +8,7 @@ use ChurchCRM\dto\Classification;
 require SystemURLs::getDocumentRoot() . '/Include/SimpleConfig.php';
 
 //Set the page title
-$sPageTitle = gettext("Family View") . " - " . $family->getName();
+$sPageTitle =  $family->getName() . " - " . gettext("Family");
 include SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 /**
@@ -261,9 +261,9 @@ $familyAddress = $family->getAddress();
 
                         </div>
                     </div>
-                    <div class="box-body">
+                    <div class="box-body row row-flex row-flex-wrap">
                         <?php foreach ($family->getPeople() as $person) { ?>
-                            <div class="col-sm-4">
+                            <div class="col-sm-6">
                                 <div class="box box-primary">
                                     <div class="box-body box-profile">
                                         <a href="<?= $person->getViewURI()?>" ?>
@@ -288,10 +288,11 @@ $familyAddress = $family->getAddress();
                                                 <button type="button" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i></button>
                                             </a>
                                         </p>
+                                        <?php if ($person->getClsId()) { ?>
                                         <li class="list-group">
                                             <b>Classification:</b> <?= Classification::getName($person->getClsId()) ?>
                                         </li>
-
+                                        <?php } ?>
                                         <ul class="list-group list-group-unbordered">
                                             <li class="list-group-item">
                                                 <?php if (!empty($person->getHomePhone())) { ?>
@@ -318,11 +319,14 @@ $familyAddress = $family->getAddress();
                                                     <i class="fa fa-fw fa-envelope-o"
                                                        title="<?= gettext("Work Email") ?>"></i>(W) <?= $person->getWorkEmail() ?>
                                                     <br/>
-                                                <?php } ?>
+                                                <?php }
+                                                $formatedBirthday = $person->getFormattedBirthDate();
+                                                if ($formatedBirthday) {?>
                                                 <i class="fa fa-fw fa-birthday-cake"
                                                    title="<?= gettext("Birthday") ?>"></i>
-                                                <?= $person->getFormattedBirthDate()?>  <?= $person->getAge()?>
+                                                <?= $formatedBirthday ?>  <?= $person->getAge()?>
                                                 </i>
+                                                <?php } ?>
                                             </li>
                                         </ul>
 
