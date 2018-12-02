@@ -42,8 +42,9 @@ namespace ChurchCRM\Backup
       {
           // both backup and restore operations require a clean temporary working folder.  Create it.
           $TempFolder = SystemURLs::getDocumentRoot() . "/tmp_attach/ChurchCRMBackups";
-          LoggerUtils::getAppLogger()->debug("Creating temp folder at ". $TempFolder);
+          LoggerUtils::getAppLogger()->debug("Removing temp folder tree at ". $TempFolder);
           FileSystemUtils::recursiveRemoveDirectory($TempFolder, false);
+          LoggerUtils::getAppLogger()->debug("Creating temp folder at ". $TempFolder);
           mkdir($TempFolder, 0750, true);
           LoggerUtils::getAppLogger()->debug("Temp folder created");
           return $TempFolder;
@@ -283,12 +284,12 @@ namespace ChurchCRM\Backup
           LoggerUtils::getAppLogger()->debug("File move complete");
           $this->DiscoverBackupType();
           LoggerUtils::getAppLogger()->debug("Detected backup type:".  $this->RestoreFile->getExtension(). ": " . $this->BackupType);
+          $this->TestBackupEncrypted();
           LoggerUtils::getAppLogger()->info("Restore job created; ready to execute");
       }
       private function TestBackupEncrypted() {
         $archive = file_get_contents($this->RestoreFile);
         $parts = explode(":",$archive);
-        LoggerUtils::getAppLogger()->info(count($parts));
         if (count($parts) == 3 && base64_decode($parts[0], true)) {
           $this->IsBackupEncrypted = true;
           LoggerUtils::getAppLogger()->info("Uploaded file was encrypted; we need a password");
@@ -299,24 +300,17 @@ namespace ChurchCRM\Backup
         }
       }
       private function DecryptBackup() {
-        LoggerUtils::getAppLogger()->info("Decrypting file");
+        LoggerUtils::getAppLogger()->info("Decrypting file: " . $this->RestoreFile);
        
         $password = 'yOuR-pAs5w0rd-hERe';
         $cipher = 'aes-256-cbc';
         $iv_length = openssl_cipher_iv_length($cipher);
         $key_length = 256;
         $iterations = 10000;
-        LoggerUtils::getAppLogger()->info("Beginning to decrpyt file");
-
         $archive = file_get_contents($this->RestoreFile);
         $parts = explode(":",$archive);
-        
-        $iv = base64_decode($parts[0]);
-        LoggerUtils::getAppLogger()->info("IV: " . base64_encode($iv));
-                
+        $iv = base64_decode($parts[0]);    
         $salt = base64_decode($parts[1]);
-        LoggerUtils::getAppLogger()->info("IV: " . base64_encode($salt));
-                
         $key_and_iv = openssl_pbkdf2($password, $salt, $iv_length + $key_length, $iterations, 'sha256');
         $key = substr($key_and_iv,0,$key_length);
         $decrypted = openssl_decrypt(base64_decode($parts[2]), 'aes-256-cbc', $key, OPENSSL_RAW_DATA, $iv);
@@ -338,7 +332,6 @@ namespace ChurchCRM\Backup
             $this->BackupType = BackupType::SQL;
             break;
         }
-        $this->TestBackupEncrypted();
       }
       
       private function RestoreSQLBackup($SQLFileInfo)
@@ -384,11 +377,11 @@ namespace ChurchCRM\Backup
     
       public function Execute()
       {
-          LoggerUtils::getAppLogger()->info("Executing restore job");
-          if ($this->IsBackupEncrypted) {
-            $this->DecryptBackup();
-          }
-          switch ($this->BackupType) {
+        LoggerUtils::getAppLogger()->info("Executing restore job");
+        if ($this->IsBackupEncrypted) {
+          $this->DecryptBackup();
+        }
+        switch ($this->BackupType) {
           case BackupType::SQL:
             $this->RestoreSQLBackup($this->RestoreFile);
             break;
@@ -396,9 +389,9 @@ namespace ChurchCRM\Backup
             $this->RestoreFullBackup();
             break;
         }
-          $this->PostRestoreCleanup();
-          LoggerUtils::getAppLogger()->info("Finished executing restore job");
-          $this->TempFolder = $this->CreateEmptyTempFolder();
+        $this->PostRestoreCleanup();
+        LoggerUtils::getAppLogger()->info("Finished executing restore job.  Cleaning out temp folder.");
+        $this->TempFolder = $this->CreateEmptyTempFolder();
       }
   }
 
