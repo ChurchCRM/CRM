@@ -226,7 +226,7 @@ namespace ChurchCRM\Backup
               $this->CreateGZSql();
           }
           if ($this->shouldEncrypt) {
-           $this->EncryptBackupFile();
+              $this->EncryptBackupFile();
           }
           $time->End();
           $percentExecutionTime = (($time->getMiliseconds()/1000)/ini_get('max_execution_time'))*100;
