@@ -196,23 +196,24 @@ namespace ChurchCRM\Backup
           unlink($SqlFile->getPathname());
       }
       
-      private function EncryptBackupFile() {
-        LoggerUtils::getAppLogger()->info("Encrypting backup file: ".$this->BackupFile);
-        $password = 'yOuR-pAs5w0rd-hERe';
-        $cipher = 'aes-256-cbc';
-        $salt = openssl_random_pseudo_bytes(12);
-        $iv_length = openssl_cipher_iv_length($cipher);
-        $key_length = 256;
-        $pbkdf2_length = $iv_length + $key_length;
-        $iterations = 10000;
-        LoggerUtils::getAppLogger()->info("Generating encryption key length: " . $pbkdf2_length . " and " . $iterations . " iterations using OpenSSL's PBKDF2");
-        $key_and_iv = openssl_pbkdf2($password, $salt, $pbkdf2_length, $iterations, 'sha256');
-        $key = substr($key_and_iv,0,$key_length);
-        $iv = substr($key_and_iv,$key_length,$iv_length);
-        $fileContents = file_get_contents($this->BackupFile);
-        $encrypted = base64_encode($iv).":".base64_encode($salt).":". base64_encode(openssl_encrypt($fileContents, $cipher, $key, OPENSSL_RAW_DATA, $iv));
-        file_put_contents($this->BackupFile, $encrypted);
-        LoggerUtils::getAppLogger()->info("Finished ecrypting backup file");
+      private function EncryptBackupFile()
+      {
+          LoggerUtils::getAppLogger()->info("Encrypting backup file: ".$this->BackupFile);
+          $password = 'yOuR-pAs5w0rd-hERe';
+          $cipher = 'aes-256-cbc';
+          $salt = openssl_random_pseudo_bytes(12);
+          $iv_length = openssl_cipher_iv_length($cipher);
+          $key_length = 256;
+          $pbkdf2_length = $iv_length + $key_length;
+          $iterations = 10000;
+          LoggerUtils::getAppLogger()->info("Generating encryption key length: " . $pbkdf2_length . " and " . $iterations . " iterations using OpenSSL's PBKDF2");
+          $key_and_iv = openssl_pbkdf2($password, $salt, $pbkdf2_length, $iterations, 'sha256');
+          $key = substr($key_and_iv, 0, $key_length);
+          $iv = substr($key_and_iv, $key_length, $iv_length);
+          $fileContents = file_get_contents($this->BackupFile);
+          $encrypted = base64_encode($iv).":".base64_encode($salt).":". base64_encode(openssl_encrypt($fileContents, $cipher, $key, OPENSSL_RAW_DATA, $iv));
+          file_put_contents($this->BackupFile, $encrypted);
+          LoggerUtils::getAppLogger()->info("Finished ecrypting backup file");
       }
       public function Execute()
       {
@@ -227,7 +228,7 @@ namespace ChurchCRM\Backup
               $this->CreateGZSql();
           }
           if ($this->shouldEncrypt) {
-           $this->EncryptBackupFile();
+              $this->EncryptBackupFile();
           }
           $time->End();
           $percentExecutionTime = (($time->getMiliseconds()/1000)/ini_get('max_execution_time'))*100;
@@ -285,43 +286,44 @@ namespace ChurchCRM\Backup
           LoggerUtils::getAppLogger()->debug("Detected backup type:".  $this->RestoreFile->getExtension(). ": " . $this->BackupType);
           LoggerUtils::getAppLogger()->info("Restore job created; ready to execute");
       }
-      private function TestBackupEncrypted() {
-        $archive = file_get_contents($this->RestoreFile);
-        $parts = explode(":",$archive);
-        LoggerUtils::getAppLogger()->info(count($parts));
-        if (count($parts) == 3 && base64_decode($parts[0], true)) {
-          $this->IsBackupEncrypted = true;
-          LoggerUtils::getAppLogger()->info("Uploaded file was encrypted; we need a password");
-        }
-        else {
-          $this->IsBackupEncrypted = false;
-          LoggerUtils::getAppLogger()->info("Uploaded file was not encrypted");
-        }
+      private function TestBackupEncrypted()
+      {
+          $archive = file_get_contents($this->RestoreFile);
+          $parts = explode(":", $archive);
+          LoggerUtils::getAppLogger()->info(count($parts));
+          if (count($parts) == 3 && base64_decode($parts[0], true)) {
+              $this->IsBackupEncrypted = true;
+              LoggerUtils::getAppLogger()->info("Uploaded file was encrypted; we need a password");
+          } else {
+              $this->IsBackupEncrypted = false;
+              LoggerUtils::getAppLogger()->info("Uploaded file was not encrypted");
+          }
       }
-      private function DecryptBackup() {
-        LoggerUtils::getAppLogger()->info("Decrypting file");
+      private function DecryptBackup()
+      {
+          LoggerUtils::getAppLogger()->info("Decrypting file");
        
-        $password = 'yOuR-pAs5w0rd-hERe';
-        $cipher = 'aes-256-cbc';
-        $iv_length = openssl_cipher_iv_length($cipher);
-        $key_length = 256;
-        $iterations = 10000;
-        LoggerUtils::getAppLogger()->info("Beginning to decrpyt file");
+          $password = 'yOuR-pAs5w0rd-hERe';
+          $cipher = 'aes-256-cbc';
+          $iv_length = openssl_cipher_iv_length($cipher);
+          $key_length = 256;
+          $iterations = 10000;
+          LoggerUtils::getAppLogger()->info("Beginning to decrpyt file");
 
-        $archive = file_get_contents($this->RestoreFile);
-        $parts = explode(":",$archive);
+          $archive = file_get_contents($this->RestoreFile);
+          $parts = explode(":", $archive);
         
-        $iv = base64_decode($parts[0]);
-        LoggerUtils::getAppLogger()->info("IV: " . base64_encode($iv));
+          $iv = base64_decode($parts[0]);
+          LoggerUtils::getAppLogger()->info("IV: " . base64_encode($iv));
                 
-        $salt = base64_decode($parts[1]);
-        LoggerUtils::getAppLogger()->info("IV: " . base64_encode($salt));
+          $salt = base64_decode($parts[1]);
+          LoggerUtils::getAppLogger()->info("IV: " . base64_encode($salt));
                 
-        $key_and_iv = openssl_pbkdf2($password, $salt, $iv_length + $key_length, $iterations, 'sha256');
-        $key = substr($key_and_iv,0,$key_length);
-        $decrypted = openssl_decrypt(base64_decode($parts[2]), 'aes-256-cbc', $key, OPENSSL_RAW_DATA, $iv);
-        file_put_contents($this->RestoreFile, $decrypted);
-        LoggerUtils::getAppLogger()->info("File decrypted");
+          $key_and_iv = openssl_pbkdf2($password, $salt, $iv_length + $key_length, $iterations, 'sha256');
+          $key = substr($key_and_iv, 0, $key_length);
+          $decrypted = openssl_decrypt(base64_decode($parts[2]), 'aes-256-cbc', $key, OPENSSL_RAW_DATA, $iv);
+          file_put_contents($this->RestoreFile, $decrypted);
+          LoggerUtils::getAppLogger()->info("File decrypted");
       }
       private function DiscoverBackupType()
       {
@@ -338,7 +340,7 @@ namespace ChurchCRM\Backup
             $this->BackupType = BackupType::SQL;
             break;
         }
-        $this->TestBackupEncrypted();
+          $this->TestBackupEncrypted();
       }
       
       private function RestoreSQLBackup($SQLFileInfo)
@@ -386,7 +388,7 @@ namespace ChurchCRM\Backup
       {
           LoggerUtils::getAppLogger()->info("Executing restore job");
           if ($this->IsBackupEncrypted) {
-            $this->DecryptBackup();
+              $this->DecryptBackup();
           }
           switch ($this->BackupType) {
           case BackupType::SQL:
