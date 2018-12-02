@@ -16,6 +16,7 @@ namespace ChurchCRM\Backup
   use RecursiveDirectoryIterator;
   use SplFileInfo;
   use ChurchCRM\Utils\ExecutionTime;
+  use ChurchCRM\Utils\InputUtils;
 
   abstract class BackupType
   {
@@ -211,6 +212,7 @@ namespace ChurchCRM\Backup
         $key = substr($key_and_iv,0,$key_length);
         $iv = substr($key_and_iv,$key_length,$iv_length);
         $fileContents = file_get_contents($this->BackupFile);
+        // store IV and SALT with cipher text recommendation from here: https://stackoverflow.com/a/19596880
         $encrypted = base64_encode($iv).":".base64_encode($salt).":". base64_encode(openssl_encrypt($fileContents, $cipher, $key, OPENSSL_RAW_DATA, $iv));
         file_put_contents($this->BackupFile, $encrypted);
         LoggerUtils::getAppLogger()->info("Finished ecrypting backup file");
@@ -260,6 +262,11 @@ namespace ChurchCRM\Backup
        * @var Boolean
        */
       private $IsBackupEncrypted;
+      /**
+       * 
+       * @var String
+       */
+      private $restorePassword;
       
       private function IsIncomingFileFailed()
       {
@@ -292,7 +299,14 @@ namespace ChurchCRM\Backup
         $parts = explode(":",$archive);
         if (count($parts) == 3 && base64_decode($parts[0], true)) {
           $this->IsBackupEncrypted = true;
-          LoggerUtils::getAppLogger()->info("Uploaded file was encrypted; we need a password");
+          $this->restorePassword = InputUtils::FilterString($_POST['restorePassword']);
+          if (! strlen($this->restorePassword) > 0 )
+          {
+            $message = "Uploaded file was encrypted; we need a password but none was given";
+            LoggerUtils::getAppLogger()->error($message);
+            throw new \Exception($message,500);
+          }
+          LoggerUtils::getAppLogger()->info("Uploaded file was encrypted; we need a password and one was given");
         }
         else {
           $this->IsBackupEncrypted = false;
@@ -301,8 +315,6 @@ namespace ChurchCRM\Backup
       }
       private function DecryptBackup() {
         LoggerUtils::getAppLogger()->info("Decrypting file: " . $this->RestoreFile);
-       
-        $password = 'yOuR-pAs5w0rd-hERe';
         $cipher = 'aes-256-cbc';
         $iv_length = openssl_cipher_iv_length($cipher);
         $key_length = 256;
@@ -311,9 +323,14 @@ namespace ChurchCRM\Backup
         $parts = explode(":",$archive);
         $iv = base64_decode($parts[0]);    
         $salt = base64_decode($parts[1]);
-        $key_and_iv = openssl_pbkdf2($password, $salt, $iv_length + $key_length, $iterations, 'sha256');
+        $key_and_iv = openssl_pbkdf2($this->restorePassword, $salt, $iv_length + $key_length, $iterations, 'sha256');
         $key = substr($key_and_iv,0,$key_length);
         $decrypted = openssl_decrypt(base64_decode($parts[2]), 'aes-256-cbc', $key, OPENSSL_RAW_DATA, $iv);
+        if (!$decrypted) {
+          $message = "Unable to decrypt file";
+          LoggerUtils::getAppLogger()->info($message);
+          throw new Exception($message);
+        }
         file_put_contents($this->RestoreFile, $decrypted);
         LoggerUtils::getAppLogger()->info("File decrypted");
       }
