@@ -17,6 +17,7 @@ namespace ChurchCRM\Backup
   use SplFileInfo;
   use ChurchCRM\Utils\ExecutionTime;
   use ChurchCRM\Utils\InputUtils;
+  use Defuse\Crypto\File;
 
   abstract class BackupType
   {
@@ -207,20 +208,9 @@ namespace ChurchCRM\Backup
       
       private function EncryptBackupFile() {
         LoggerUtils::getAppLogger()->info("Encrypting backup file: ".$this->BackupFile);
-        $cipher = 'aes-256-cbc';
-        $salt = openssl_random_pseudo_bytes(12);
-        $iv_length = openssl_cipher_iv_length($cipher);
-        $key_length = 256;
-        $pbkdf2_length = $iv_length + $key_length;
-        $iterations = 10000;
-        LoggerUtils::getAppLogger()->info("Generating encryption key length: " . $pbkdf2_length . " and " . $iterations . " iterations using OpenSSL's PBKDF2");
-        $key_and_iv = openssl_pbkdf2($this->BackupPassword, $salt, $pbkdf2_length, $iterations, 'sha256');
-        $key = substr($key_and_iv,0,$key_length);
-        $iv = substr($key_and_iv,$key_length,$iv_length);
-        $fileContents = file_get_contents($this->BackupFile);
-        // store IV and SALT with cipher text recommendation from here: https://stackoverflow.com/a/19596880
-        $encrypted = base64_encode($iv).":".base64_encode($salt).":". base64_encode(openssl_encrypt($fileContents, $cipher, $key, OPENSSL_RAW_DATA, $iv));
-        file_put_contents($this->BackupFile, $encrypted);
+        $tempfile = new \SplFileInfo($this->BackupFile->getPathname()."temp");
+        rename($this->BackupFile, $tempfile);
+        File::encryptFileWithPassword($tempfile, $this->BackupFile, $this->BackupPassword);
         LoggerUtils::getAppLogger()->info("Finished ecrypting backup file");
       }
       public function Execute()
@@ -297,48 +287,28 @@ namespace ChurchCRM\Backup
           LoggerUtils::getAppLogger()->debug("File move complete");
           $this->DiscoverBackupType();
           LoggerUtils::getAppLogger()->debug("Detected backup type:".  $this->RestoreFile->getExtension(). ": " . $this->BackupType);
-          $this->TestBackupEncrypted();
           LoggerUtils::getAppLogger()->info("Restore job created; ready to execute");
       }
-      private function TestBackupEncrypted() {
-        $archive = file_get_contents($this->RestoreFile);
-        $parts = explode(":",$archive);
-        if (count($parts) == 3 && base64_decode($parts[0], true)) {
-          $this->IsBackupEncrypted = true;
-          $this->restorePassword = InputUtils::FilterString($_POST['restorePassword']);
-          if (! strlen($this->restorePassword) > 0 )
-          {
-            $message = "Uploaded file was encrypted; we need a password but none was given";
-            LoggerUtils::getAppLogger()->error($message);
-            throw new \Exception($message,500);
-          }
-          LoggerUtils::getAppLogger()->info("Uploaded file was encrypted; we need a password and one was given");
-        }
-        else {
-          $this->IsBackupEncrypted = false;
-          LoggerUtils::getAppLogger()->info("Uploaded file was not encrypted");
-        }
-      }
+   
       private function DecryptBackup() {
         LoggerUtils::getAppLogger()->info("Decrypting file: " . $this->RestoreFile);
-        $cipher = 'aes-256-cbc';
-        $iv_length = openssl_cipher_iv_length($cipher);
-        $key_length = 256;
-        $iterations = 10000;
-        $archive = file_get_contents($this->RestoreFile);
-        $parts = explode(":",$archive);
-        $iv = base64_decode($parts[0]);    
-        $salt = base64_decode($parts[1]);
-        $key_and_iv = openssl_pbkdf2($this->restorePassword, $salt, $iv_length + $key_length, $iterations, 'sha256');
-        $key = substr($key_and_iv,0,$key_length);
-        $decrypted = openssl_decrypt(base64_decode($parts[2]), 'aes-256-cbc', $key, OPENSSL_RAW_DATA, $iv);
-        if (!$decrypted) {
-          $message = "Unable to decrypt file";
-          LoggerUtils::getAppLogger()->info($message);
-          throw new Exception($message);
+        $this->restorePassword = InputUtils::FilterString($_POST['restorePassword']);
+        $tempfile = new \SplFileInfo($this->RestoreFile->getPathname()."temp");
+        
+        try {
+          File::decryptFileWithPassword($this->RestoreFile, $tempfile, $this->restorePassword);
+          rename($tempfile, $this->RestoreFile);
+          LoggerUtils::getAppLogger()->info("File decrypted");
         }
-        file_put_contents($this->RestoreFile, $decrypted);
-        LoggerUtils::getAppLogger()->info("File decrypted");
+        catch (\Defuse\Crypto\Exception\WrongKeyOrModifiedCiphertextException $ex) {
+          if ($ex->getMessage() == 'Bad version header.') {
+             LoggerUtils::getAppLogger()->info("Bad version header; this file probably wasn't encrypted");
+          }
+          else{
+            LoggerUtils::getAppLogger()->error($ex->getMessage());
+            throw $ex;
+          }
+        }
       }
       private function DiscoverBackupType()
       {
@@ -401,20 +371,22 @@ namespace ChurchCRM\Backup
       public function Execute()
       {
         LoggerUtils::getAppLogger()->info("Executing restore job");
-        if ($this->IsBackupEncrypted) {
+        try {
           $this->DecryptBackup();
+          switch ($this->BackupType) {
+            case BackupType::SQL:
+              $this->RestoreSQLBackup($this->RestoreFile);
+              break;
+            case BackupType::FullBackup:
+              $this->RestoreFullBackup();
+              break;
+          }
+          $this->PostRestoreCleanup();
+          LoggerUtils::getAppLogger()->info("Finished executing restore job.  Cleaning out temp folder.");
+        } catch (Exception $ex) {
+          LoggerUtils::getAppLogger()->error("Error restoring backup: " . $ex);
         }
-        switch ($this->BackupType) {
-          case BackupType::SQL:
-            $this->RestoreSQLBackup($this->RestoreFile);
-            break;
-          case BackupType::FullBackup:
-            $this->RestoreFullBackup();
-            break;
-        }
-        $this->PostRestoreCleanup();
-        LoggerUtils::getAppLogger()->info("Finished executing restore job.  Cleaning out temp folder.");
-        $this->TempFolder = $this->CreateEmptyTempFolder();
+        $this->TempFolder = $this->CreateEmptyTempFolder(); 
       }
   }
 

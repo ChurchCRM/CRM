@@ -7,7 +7,7 @@
         "crm"
     ],
     "homepage": "http://www.churchcrm.io",
-    "time": "2018-11-29 08:11:83",
+    "time": "2018-12-01 19:12:15",
     "license": "MIT",
     "authors": [
         {
@@ -47,7 +47,8 @@
         "mustache/mustache": "~2.5",
         "nexmo/client": "@beta",
         "slim/http-cache": "^0.4.0",
-        "azuyalabs/yasumi": "^1.8"
+        "azuyalabs/yasumi": "^1.8",
+        "defuse/php-encryption": "^2.2"
     },
     "autoload": {
         "classmap": [
