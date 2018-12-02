@@ -323,6 +323,17 @@ class SystemService
         return SystemService::getDBVersion() == SystemService::getInstalledVersion();
     }
     
+    static public function getDBTableExists($tableName) {
+      if (!isset($_SESSION['CRM_DB_TABLES']))
+      {
+        $connection = Propel::getConnection();
+        $statement = $connection->prepare("SHOW FULL TABLES;");
+        $statement->execute();
+        $_SESSION['CRM_DB_TABLES'] = array_map(function($table) { return $table[0]; } , $statement->fetchAll());
+      }
+      return in_array($tableName,$_SESSION['CRM_DB_TABLES']);
+    }
+
     static public function getPrerequisiteStatus() {
       if (AppIntegrityService::arePrerequisitesMet())
       {
