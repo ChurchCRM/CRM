@@ -7,70 +7,58 @@ msgstr ""
 "Project-Id-Version: ChurchCRM\n"
 "Language: zh-CN\n"
 
-#: AutoPaymentClearAccounts.php:24 CatchCreatePayment.php:71
 #: Include/Functions.php:234
 msgid "Cannot execute query."
 msgstr "无法执行查询。"
 
-#: AutoPaymentDelete.php:19
-msgid "Confirm Delete Automatic payment"
-msgstr "确认删除自动付款"
-
-#: AutoPaymentDelete.php:63 Checkin.php:286 Checkin.php:368
-#: DepositSlipEditor.php:231 DonationFundEditor.php:153
-#: DonationFundEditor.php:183 EditEventAttendees.php:76
-#: ElectronicPaymentList.php:219 ElectronicPaymentList.php:284
-#: EventNames.php:302 FamilyCustomFieldsEditor.php:324
-#: FamilyCustomFieldsEditor.php:382 FamilyView.php:663 FamilyView.php:715
-#: FamilyView.php:774 FamilyView.php:911 FindDepositSlip.php:105
+#: Checkin.php:286 Checkin.php:368 DepositSlipEditor.php:231
+#: DonationFundEditor.php:153 DonationFundEditor.php:183
+#: EditEventAttendees.php:76 EventNames.php:302
+#: FamilyCustomFieldsEditor.php:324 FamilyCustomFieldsEditor.php:382
+#: FamilyView.php:679 FamilyView.php:816 FindDepositSlip.php:102
 #: FundRaiserEditor.php:200 ListEvents.php:241 PaddleNumList.php:55
 #: PersonCustomFieldsEditor.php:315 PersonCustomFieldsEditor.php:384
 #: PersonView.php:941 PledgeDelete.php:53 PropertyList.php:65
 #: PropertyList.php:106 PropertyTypeList.php:46 PropertyTypeList.php:67
-#: PropertyTypeList.php:69 v2/templates/people/family-view.php:530
+#: PropertyTypeList.php:69 v2/templates/people/family-view.php:534
 msgid "Delete"
 msgstr "删除"
 
-#: AutoPaymentDelete.php:64 AutoPaymentEditor.php:787 BatchWinnerEntry.php:112
-#: CanvassEditor.php:239 Checkin.php:167 Checkin.php:274 Checkin.php:287
-#: DirectoryReports.php:286 DonatedItemEditor.php:297 EventNames.php:231
-#: FamilyEditor.php:1119 FamilyView.php:910 FinancialReports.php:69
-#: FundRaiserEditor.php:143 GroupPropsEditor.php:168 GroupReports.php:82
-#: GroupReports.php:151 LettersAndLabels.php:83 ManageEnvelopes.php:135
-#: MemberRoleChange.php:119 MemberRoleChange.php:121 NoteDelete.php:67
-#: NoteEditor.php:135 PersonEditor.php:1231 PersonView.php:940
-#: PledgeDelete.php:54 PropertyEditor.php:169 PropertyTypeEditor.php:114
-#: Register.php:56 ReminderReport.php:52 SettingsIndividual.php:114
-#: SettingsIndividual.php:160 SettingsUser.php:100 SettingsUser.php:160
-#: TaxReport.php:55 UserEditor.php:459 UserEditor.php:562
-#: WhyCameEditor.php:105 external/templates/verify/verify-family-info.php:144
+#: BatchWinnerEntry.php:112 CanvassEditor.php:239 Checkin.php:167
+#: Checkin.php:274 Checkin.php:287 DirectoryReports.php:286
+#: DonatedItemEditor.php:297 EventNames.php:231 FamilyEditor.php:1119
+#: FamilyView.php:815 FinancialReports.php:69 FundRaiserEditor.php:143
+#: GroupPropsEditor.php:168 GroupReports.php:82 GroupReports.php:151
+#: LettersAndLabels.php:83 ManageEnvelopes.php:135 MemberRoleChange.php:119
+#: MemberRoleChange.php:121 NoteDelete.php:67 NoteEditor.php:135
+#: PersonEditor.php:1231 PersonView.php:940 PledgeDelete.php:54
+#: PropertyEditor.php:169 PropertyTypeEditor.php:114 Register.php:56
+#: ReminderReport.php:52 SettingsIndividual.php:114 SettingsIndividual.php:160
+#: SettingsUser.php:100 SettingsUser.php:160 TaxReport.php:55
+#: UserEditor.php:459 UserEditor.php:562 WhyCameEditor.php:105
+#: external/templates/verify/verify-family-info.php:144
 #: sundayschool/SundaySchoolDashboard.php:258
 #: sundayschool/SundaySchoolReports.php:286
-#: v2/templates/people/family-view.php:529
+#: v2/templates/people/family-view.php:533
 msgid "Cancel"
 msgstr "取消"
 
-#: AutoPaymentEditor.php:129
-msgid "Automatic payment configuration for the "
-msgstr "自动付款配置"
-
-#: AutoPaymentEditor.php:786 CanvassEditor.php:238 DepositSlipEditor.php:97
-#: DonatedItemEditor.php:293 FamilyEditor.php:647 FamilyEditor.php:731
-#: FamilyEditor.php:795 FamilyEditor.php:869 FamilyEditor.php:891
-#: FamilyEditor.php:922 FamilyEditor.php:1115 FundRaiserEditor.php:142
-#: GroupEditor.php:167 GroupPropsEditor.php:166 NoteEditor.php:133
-#: PaddleNumEditor.php:147 PersonEditor.php:617 PersonEditor.php:775
-#: PersonEditor.php:818 PersonEditor.php:1129 PersonEditor.php:1192
-#: PersonEditor.php:1227 PledgeEditor.php:687 PropertyEditor.php:169
-#: PropertyTypeEditor.php:112 UserEditor.php:458 UserPasswordChange.php:213
-#: WhyCameEditor.php:104
+#: CanvassEditor.php:238 DepositSlipEditor.php:97 DonatedItemEditor.php:293
+#: FamilyEditor.php:647 FamilyEditor.php:731 FamilyEditor.php:795
+#: FamilyEditor.php:869 FamilyEditor.php:891 FamilyEditor.php:922
+#: FamilyEditor.php:1115 FundRaiserEditor.php:142 GroupEditor.php:167
+#: GroupPropsEditor.php:166 NoteEditor.php:133 PaddleNumEditor.php:147
+#: PersonEditor.php:617 PersonEditor.php:775 PersonEditor.php:818
+#: PersonEditor.php:1129 PersonEditor.php:1192 PersonEditor.php:1227
+#: PledgeEditor.php:648 PropertyEditor.php:169 PropertyTypeEditor.php:112
+#: UserEditor.php:458 UserPasswordChange.php:213 WhyCameEditor.php:104
 msgid "Save"
 msgstr "保存"
 
-#: AutoPaymentEditor.php:804 BatchWinnerEntry.php:83 BatchWinnerEntry.php:95
-#: CSVImport.php:271 ChurchCRM/Config/Menu/Menu.php:100
-#: DirectoryReports.php:82 DonatedItemEditor.php:186 DonatedItemEditor.php:237
-#: FamilyEditor.php:1089 GroupEditor.php:94 GroupList.php:36 GroupView.php:40
+#: BatchWinnerEntry.php:83 BatchWinnerEntry.php:95 CSVImport.php:271
+#: ChurchCRM/Config/Menu/Menu.php:100 DirectoryReports.php:82
+#: DonatedItemEditor.php:186 DonatedItemEditor.php:237 FamilyEditor.php:1089
+#: GroupEditor.php:94 GroupList.php:36 GroupView.php:40
 #: Include/CountryDropDown.php:6 Include/Functions.php:856
 #: Include/Functions.php:909 MapUsingGoogle.php:96 MapUsingGoogle.php:120
 #: PaddleNumEditor.php:176 PersonEditor.php:782 PersonEditor.php:798
@@ -81,52 +69,33 @@ msgstr "保存"
 msgid "Unassigned"
 msgstr "未分配"
 
-#: AutoPaymentEditor.php:824
-msgid "Automatic payment type"
-msgstr "自动付款类型"
-
-#: AutoPaymentEditor.php:854
-msgid "Payment amount"
-msgstr "付款金额"
-
-#: AutoPaymentEditor.php:859
-msgid "Payment interval (months)"
-msgstr "付款的时间间隔（月）"
-
-#: AutoPaymentEditor.php:867 CartToGroup.php:74 EditEventTypes.php:86
-#: EditEventTypes.php:98 EventNames.php:106 EventNames.php:118
-#: EventNames.php:163 GroupReports.php:47 GroupReports.php:142
-#: PersonToGroup.php:66 sundayschool/SundaySchoolReports.php:190
+#: CartToGroup.php:74 EditEventTypes.php:86 EditEventTypes.php:98
+#: EventNames.php:106 EventNames.php:118 EventNames.php:163
+#: GroupReports.php:47 GroupReports.php:142 PersonToGroup.php:66
+#: sundayschool/SundaySchoolReports.php:190
 msgid "None"
 msgstr "无"
 
-#: AutoPaymentEditor.php:880
-msgid "inactive"
-msgstr "待用"
-
-#: AutoPaymentEditor.php:914 CSVExport.php:102 CSVImport.php:219
-#: CartToFamily.php:245 DirectoryReports.php:250 FamilyEditor.php:672
-#: PersonEditor.php:863 Register.php:44
-#: external/templates/registration/family-register.php:41
+#: CSVExport.php:102 CSVImport.php:219 CartToFamily.php:245
+#: DirectoryReports.php:250 FamilyEditor.php:672 PersonEditor.php:863
+#: Register.php:44 external/templates/registration/family-register.php:41
 #: queryparameteroptions_qpo.php:7
 msgid "City"
 msgstr "城市"
 
-#: AutoPaymentEditor.php:919 CSVExport.php:107 CSVImport.php:220
-#: CartToFamily.php:250 DirectoryReports.php:254 FamilyEditor.php:679
-#: PersonEditor.php:883 Register.php:45
-#: external/templates/registration/family-register.php:44
+#: CSVExport.php:107 CSVImport.php:220 CartToFamily.php:250
+#: DirectoryReports.php:254 FamilyEditor.php:679 PersonEditor.php:883
+#: Register.php:45 external/templates/registration/family-register.php:44
 #: queryparameteroptions_qpo.php:6
 msgid "State"
 msgstr "国"
 
-#: AutoPaymentEditor.php:930 CSVExport.php:122 CSVImport.php:222
-#: CartToFamily.php:270 FamilyEditor.php:699 PersonEditor.php:928
-#: Register.php:47
+#: CSVExport.php:122 CSVImport.php:222 CartToFamily.php:270
+#: FamilyEditor.php:699 PersonEditor.php:928 Register.php:47
 msgid "Country"
 msgstr "国家"
 
-#: AutoPaymentEditor.php:936 ChurchCRM/Reports/PDF_Directory.php:305
+#: ChurchCRM/Reports/PDF_Directory.php:305
 #: ChurchCRM/Reports/PDF_Directory.php:379
 #: ChurchCRM/Reports/PDF_Directory.php:436 DirectoryReports.php:262
 #: Reports/DirectoryReport.php:285 Reports/GroupReport.php:119
@@ -134,13 +103,12 @@ msgstr "国家"
 msgid "Phone"
 msgstr "电话"
 
-#: AutoPaymentEditor.php:942 CSVExport.php:142 CSVImport.php:226
-#: CartToFamily.php:311 ChurchCRM/Config/Menu/Menu.php:40
-#: ChurchCRM/Reports/PDF_Directory.php:314
+#: CSVExport.php:142 CSVImport.php:226 CartToFamily.php:311
+#: ChurchCRM/Config/Menu/Menu.php:40 ChurchCRM/Reports/PDF_Directory.php:314
 #: ChurchCRM/Reports/PDF_Directory.php:390
 #: ChurchCRM/Reports/PDF_Directory.php:447 EditEventAttendees.php:42
-#: EventAttendance.php:175 FamilyEditor.php:771 FamilyView.php:272
-#: FamilyView.php:277 FamilyView.php:359 GroupReports.php:127
+#: EventAttendance.php:175 FamilyEditor.php:771 FamilyView.php:262
+#: FamilyView.php:267 FamilyView.php:350 GroupReports.php:127
 #: PersonEditor.php:1035 PersonEditor.php:1037 PersonView.php:307
 #: PersonView.php:511 PrintView.php:294 Reports/CanvassReports.php:243
 #: Reports/ConfirmReport.php:186 Reports/ConfirmReport.php:205
@@ -153,42 +121,13 @@ msgstr "电话"
 #: sundayschool/SundaySchoolClassView.php:205
 #: v2/templates/cart/cartlisting.php:19
 #: v2/templates/people/family-view.php:174
-#: v2/templates/people/family-view.php:314 queryparameteroptions_qpo.php:13
+#: v2/templates/people/family-view.php:315 queryparameteroptions_qpo.php:13
 msgid "Email"
 msgstr "电子邮件"
 
-#: AutoPaymentEditor.php:948 ElectronicPaymentList.php:210
-#: FinancialReports.php:264 FindDepositSlip.php:48 PledgeEditor.php:589
+#: FinancialReports.php:264 PledgeEditor.php:589
 msgid "Credit Card"
 msgstr "信用卡"
-
-#: AutoPaymentEditor.php:956
-msgid "Vanco Credit Card Method"
-msgstr "Vanco信用卡方式"
-
-#: AutoPaymentEditor.php:965
-msgid "Expiration Month"
-msgstr "到期月份"
-
-#: AutoPaymentEditor.php:971
-msgid "Expiration Year"
-msgstr "到期年份"
-
-#: AutoPaymentEditor.php:977
-msgid "Bank Name"
-msgstr "银行名称"
-
-#: AutoPaymentEditor.php:983
-msgid "Bank Route Number"
-msgstr "银行路由号码"
-
-#: AutoPaymentEditor.php:989
-msgid "Bank Account Number"
-msgstr "银行帐户号码"
-
-#: AutoPaymentEditor.php:997
-msgid "Vanco Bank Account Method"
-msgstr "Vanco银行账户方式"
 
 #: BackupDatabase.php:32 ChurchCRM/Config/Menu/Menu.php:197
 msgid "Backup Database"
@@ -260,8 +199,8 @@ msgstr "CSV出口"
 msgid "Field Selection"
 msgstr "栏位选择"
 
-#: AutoPaymentEditor.php:896 CSVExport.php:66 CSVImport.php:213
-#: ManageEnvelopes.php:162 PersonEditor.php:668
+#: CSVExport.php:66 CSVImport.php:213 ManageEnvelopes.php:162
+#: PersonEditor.php:668
 #: external/templates/registration/family-register-members.php:73
 #: external/templates/verify/enter-info.php:25
 #: sundayschool/SundaySchoolDashboard.php:204
@@ -273,8 +212,7 @@ msgstr "姓氏"
 msgid "Required"
 msgstr "需要"
 
-#: AutoPaymentEditor.php:890 CSVExport.php:77 CSVImport.php:211
-#: PersonEditor.php:646
+#: CSVExport.php:77 CSVImport.php:211 PersonEditor.php:646
 #: external/templates/registration/family-register-members.php:69
 #: external/templates/verify/enter-info.php:21
 #: sundayschool/SundaySchoolDashboard.php:203
@@ -287,10 +225,9 @@ msgstr "产品名称"
 msgid "Middle Name"
 msgstr "中间名"
 
-#: AutoPaymentEditor.php:925 CSVExport.php:112 CSVImport.php:221
-#: CartToFamily.php:262 DirectoryReports.php:258 FamilyEditor.php:689
-#: PersonEditor.php:906 Register.php:46
-#: external/templates/registration/family-register.php:51
+#: CSVExport.php:112 CSVImport.php:221 CartToFamily.php:262
+#: DirectoryReports.php:258 FamilyEditor.php:689 PersonEditor.php:906
+#: Register.php:46 external/templates/registration/family-register.php:51
 #: external/templates/verify/enter-info.php:29
 #, fuzzy
 msgid "Zip"
@@ -475,7 +412,7 @@ msgstr "捐款信封"
 
 #: CSVExport.php:127 CSVImport.php:223 CartToFamily.php:281
 #: EditEventAttendees.php:43 EventAttendance.php:176 FamilyEditor.php:737
-#: FamilyView.php:254 GroupReports.php:124 PersonEditor.php:961
+#: FamilyView.php:244 GroupReports.php:124 PersonEditor.php:961
 #: PersonEditor.php:963 PersonView.php:302 PrintView.php:199
 #: Reports/ConfirmReport.php:136 Reports/ConfirmReportEmail.php:136
 #: SelectList.php:965 SelectList.php:966 SelectList.php:1041
@@ -486,28 +423,28 @@ msgstr "捐款信封"
 #: sundayschool/SundaySchoolClassView.php:207
 #: v2/templates/people/family-list.php:33
 #: v2/templates/people/family-view.php:153
-#: v2/templates/people/family-view.php:299 queryparameteroptions_qpo.php:8
+#: v2/templates/people/family-view.php:300 queryparameteroptions_qpo.php:8
 msgid "Home Phone"
 msgstr "家庭电话"
 
 #: CSVExport.php:132 CSVImport.php:224 CartToFamily.php:291
-#: FamilyEditor.php:749 FamilyView.php:260 GroupReports.php:125
+#: FamilyEditor.php:749 FamilyView.php:250 GroupReports.php:125
 #: PersonEditor.php:984 PersonEditor.php:986 PersonView.php:316
 #: PrintView.php:204 Reports/ConfirmReport.php:237
 #: Reports/ConfirmReportEmail.php:234 SelectList.php:968 SelectList.php:969
 #: SelectList.php:1041 external/templates/verify/verify-family-info.php:72
 #: v2/templates/people/family-view.php:160
-#: v2/templates/people/family-view.php:304
+#: v2/templates/people/family-view.php:305
 msgid "Work Phone"
 msgstr "工作电话"
 
 #: CSVExport.php:137 CSVImport.php:225 CartToFamily.php:301
-#: FamilyEditor.php:759 FamilyView.php:266 PersonEditor.php:1009
+#: FamilyEditor.php:759 FamilyView.php:256 PersonEditor.php:1009
 #: PersonEditor.php:1011 PersonView.php:297 PrintView.php:209
 #: SelectList.php:971 SelectList.php:972 SelectList.php:1041
 #: external/templates/verify/verify-family-info.php:74
 #: v2/templates/people/family-view.php:167
-#: v2/templates/people/family-view.php:309
+#: v2/templates/people/family-view.php:310
 msgid "Mobile Phone"
 msgstr "手机"
 
@@ -522,7 +459,7 @@ msgid "Birth Date"
 msgstr "出生日期"
 
 #: CSVImport.php:230 CartToFamily.php:211 DirectoryReports.php:173
-#: FamilyEditor.php:805 FamilyView.php:241
+#: FamilyEditor.php:805 FamilyView.php:231
 #: external/templates/verify/verify-family-info.php:34
 #: v2/templates/people/family-view.php:140
 msgid "Wedding Date"
@@ -788,7 +725,7 @@ msgstr "加入购物车家庭"
 #: DonationFundEditor.php:213 EditEventAttendees.php:32
 #: EditEventAttendees.php:41 EventAttendance.php:174 EventNames.php:263
 #: FamilyCustomFieldsEditor.php:320 FamilyCustomFieldsEditor.php:434
-#: FamilyView.php:550 GeoPage.php:357 GroupEditor.php:73
+#: FamilyView.php:542 GeoPage.php:357 GroupEditor.php:73
 #: GroupPropsFormEditor.php:285 GroupPropsFormEditor.php:397 GroupView.php:255
 #: GroupView.php:288 PersonCustomFieldsEditor.php:311
 #: PersonCustomFieldsEditor.php:442 PersonView.php:684 PersonView.php:789
@@ -800,7 +737,7 @@ msgstr "加入购物车家庭"
 #: VolunteerOpportunityEditor.php:421
 #: sundayschool/SundaySchoolClassView.php:202
 #: v2/templates/cart/cartlisting.php:17 v2/templates/people/family-list.php:31
-#: v2/templates/people/family-view.php:374 queryparameteroptions_qpo.php:4
+#: v2/templates/people/family-view.php:378 queryparameteroptions_qpo.php:4
 msgid "Name"
 msgstr "名称"
 
@@ -937,7 +874,7 @@ msgstr "您的购物车中包含"
 msgid "persons from"
 msgstr "人从"
 
-#: EditEventTypes.php:166 FamilyView.php:555 FamilyView.php:597
+#: EditEventTypes.php:166 FamilyView.php:547 FamilyView.php:589
 #: GroupView.php:293 GroupView.php:334 PersonView.php:687 PersonView.php:705
 #: PersonView.php:792 PersonView.php:810 v2/templates/cart/cartlisting.php:20
 #: v2/templates/cart/cartlisting.php:37
@@ -1108,12 +1045,11 @@ msgstr "哪个角色是个孩子吗？"
 msgid "Information to Include"
 msgstr "信息包括"
 
-#: AutoPaymentEditor.php:902 AutoPaymentEditor.php:908 CSVExport.php:92
-#: CSVExport.php:97 CSVImport.php:217 CSVImport.php:218 CartToFamily.php:235
-#: CartToFamily.php:240 DirectoryReports.php:172 DirectoryReports.php:246
-#: FamilyEditor.php:664 FamilyEditor.php:668 FamilyView.php:214
-#: GeoPage.php:358 GroupReports.php:123 Menu.php:309 Menu.php:338
-#: PersonEditor.php:831 PersonEditor.php:847 PersonView.php:272
+#: CSVExport.php:92 CSVExport.php:97 CSVImport.php:217 CSVImport.php:218
+#: CartToFamily.php:235 CartToFamily.php:240 DirectoryReports.php:172
+#: DirectoryReports.php:246 FamilyEditor.php:664 FamilyEditor.php:668
+#: FamilyView.php:204 GeoPage.php:358 GroupReports.php:123 Menu.php:309
+#: Menu.php:338 PersonEditor.php:831 PersonEditor.php:847 PersonView.php:272
 #: Register.php:43 Reports/ConfirmReportEmail.php:121
 #: Reports/ConfirmReportEmail.php:126 api/routes/search.php:98
 #: external/templates/registration/family-register-done.php:29
@@ -1125,11 +1061,11 @@ msgstr "地址"
 
 #: ChurchCRM/Service/CalendarService.php:16
 #: ChurchCRM/SystemCalendars/BirthdaysCalendar.php:63 DirectoryReports.php:174
-#: FamilyView.php:358 PersonView.php:510 Reports/ConfirmReport.php:187
+#: FamilyView.php:349 PersonView.php:510 Reports/ConfirmReport.php:187
 #: Reports/ConfirmReport.php:206 Reports/ConfirmReportEmail.php:188
 #: Reports/ConfirmReportEmail.php:206
 #: external/templates/verify/verify-family-info.php:80
-#: v2/templates/people/family-view.php:323
+#: v2/templates/people/family-view.php:326
 msgid "Birthday"
 msgstr "生日"
 
@@ -1199,7 +1135,7 @@ msgstr "扉页"
 msgid "Use Title Page"
 msgstr "使用标题页"
 
-#: ChurchCRM/dto/SystemConfig.php:129 DirectoryReports.php:242 Register.php:41
+#: ChurchCRM/dto/SystemConfig.php:128 DirectoryReports.php:242 Register.php:41
 msgid "Church Name"
 msgstr "教会名称"
 
@@ -1216,7 +1152,7 @@ msgid "Donated Item Editor"
 msgstr "捐赠项目编辑器“"
 
 #: DonatedItemEditor.php:295 FamilyEditor.php:1117 PaddleNumEditor.php:150
-#: PersonEditor.php:1229 PledgeEditor.php:689
+#: PersonEditor.php:1229 PledgeEditor.php:650
 msgid "Save and Add"
 msgstr "保存并添加"
 
@@ -1349,94 +1285,55 @@ msgstr "增加计数器"
 msgid "Return to Event Types"
 msgstr "回到活动类型"
 
-#: ElectronicPaymentList.php:33
-msgid "Electronic Payment Listing"
-msgstr "电子付款列表"
-
-#: ElectronicPaymentList.php:188
-msgid "Add a New Electronic Payment Method"
-msgstr "添加新电子付款方法"
-
-#: AutoPaymentEditor.php:801
-#: ChurchCRM/Emails/verify/FamilyVerificationEmail.php:24
-#: ElectronicPaymentList.php:195 FamilyView.php:205 FinancialReports.php:303
-#: PersonEditor.php:796 PersonView.php:422 PledgeEditor.php:508
-#: PrintView.php:258 PropertyAssign.php:73 PropertyEditor.php:43
-#: PropertyList.php:28 PropertyTypeEditor.php:90 PropertyTypeList.php:62
-#: SelectList.php:1037
+#: ChurchCRM/Emails/verify/FamilyVerificationEmail.php:24 FamilyView.php:29
+#: FamilyView.php:195 FinancialReports.php:303 PersonEditor.php:796
+#: PersonView.php:422 PledgeEditor.php:508 PrintView.php:258
+#: PropertyAssign.php:73 PropertyEditor.php:43 PropertyList.php:28
+#: PropertyTypeEditor.php:90 PropertyTypeList.php:62 SelectList.php:1037
 #: external/templates/registration/family-register-done.php:28
+#: v2/templates/people/family-view.php:11
 msgid "Family"
 msgstr "家庭"
 
-#: ElectronicPaymentList.php:196 FamilyCustomFieldsEditor.php:319
-#: FamilyCustomFieldsEditor.php:421 FamilyView.php:549 FamilyView.php:657
-#: GroupPropsFormEditor.php:284 GroupPropsFormEditor.php:385 GroupView.php:254
-#: GroupView.php:287 OptionManager.php:77 PersonCustomFieldsEditor.php:310
+#: FamilyCustomFieldsEditor.php:319 FamilyCustomFieldsEditor.php:421
+#: FamilyView.php:541 GroupPropsFormEditor.php:284
+#: GroupPropsFormEditor.php:385 GroupView.php:254 GroupView.php:287
+#: OptionManager.php:77 PersonCustomFieldsEditor.php:310
 #: PersonCustomFieldsEditor.php:429 PersonView.php:683 PropertyEditor.php:129
 #: SelectDelete.php:216
 msgid "Type"
 msgstr "类型"
 
-#: AutoPaymentEditor.php:847 ElectronicPaymentList.php:197 FamilyView.php:766
-#: PledgeEditor.php:520 ReminderReport.php:42 SelectDelete.php:218
-#: sundayschool/SundaySchoolReports.php:205 queryparameters_qrp.php:18
+#: FamilyView.php:671 PledgeEditor.php:520 ReminderReport.php:42
+#: SelectDelete.php:218 sundayschool/SundaySchoolReports.php:205
+#: queryparameters_qrp.php:18
 msgid "Fiscal Year"
 msgstr "财政年度"
 
-#: ElectronicPaymentList.php:198
-msgid "Next Date"
-msgstr "下一次日期"
-
-#: ElectronicPaymentList.php:199 FamilyView.php:659 FamilyView.php:768
-#: PledgeEditor.php:714 SelectDelete.php:220
+#: FamilyView.php:673 PledgeEditor.php:675 SelectDelete.php:220
 msgid "Amount"
 msgstr "量"
 
-#: ElectronicPaymentList.php:200
-msgid "Interval"
-msgstr "间隔"
-
-#: AutoPaymentEditor.php:864 ElectronicPaymentList.php:201 FamilyView.php:661
-#: FamilyView.php:765 FinancialReports.php:302 SelectDelete.php:217
+#: FamilyView.php:670 FinancialReports.php:302 SelectDelete.php:217
 msgid "Fund"
 msgstr "基金"
 
-#: ElectronicPaymentList.php:202 FindDepositSlip.php:47
+#: FindDepositSlip.php:47
 msgid "Bank"
 msgstr "银行"
 
-#: ElectronicPaymentList.php:203
-msgid "Routing"
-msgstr "路线"
-
-#: ElectronicPaymentList.php:204
-msgid "Account"
-msgstr "账户"
-
-#: ElectronicPaymentList.php:207
-msgid "Vanco ACH"
-msgstr "Vanco自动清算中心"
-
-#: ElectronicPaymentList.php:211 FamilyEditor.php:945
-#: queryparameters_qrp.php:11
+#: FamilyEditor.php:945 queryparameters_qrp.php:11
 msgid "Month"
 msgstr "月"
 
-#: ElectronicPaymentList.php:212 FamilyEditor.php:947
-#: Include/Functions.php:101
+#: FamilyEditor.php:947 Include/Functions.php:101
 msgid "Year"
 msgstr "年"
 
-#: ElectronicPaymentList.php:215
-msgid "Vanco CC"
-msgstr "Vanco CC"
-
-#: ElectronicPaymentList.php:218 ElectronicPaymentList.php:283
-#: EventNames.php:294 FamilyView.php:209 FamilyView.php:662 FamilyView.php:711
-#: FamilyView.php:773 FindFundRaiser.php:233 FindFundRaiser.php:241
-#: ListEvents.php:224 PersonView.php:238 PropertyList.php:64
-#: PropertyList.php:105 PropertyTypeList.php:45 PropertyTypeList.php:65
-#: SelectList.php:1052
+#: EventNames.php:294 FamilyView.php:199 FamilyView.php:678
+#: FindFundRaiser.php:233 FindFundRaiser.php:241 ListEvents.php:224
+#: PersonView.php:238 PropertyList.php:64 PropertyList.php:105
+#: PropertyTypeList.php:45 PropertyTypeList.php:65 SelectList.php:1052
 msgid "Edit"
 msgstr "编辑"
 
@@ -1762,7 +1659,7 @@ msgstr "信封资料"
 msgid "Custom Fields"
 msgstr "自定义字段"
 
-#: FamilyEditor.php:920 FamilyView.php:356 PersonView.php:508
+#: FamilyEditor.php:920 FamilyView.php:346 PersonView.php:508
 #: PrintView.php:334
 #: external/templates/registration/family-register-members.php:20
 #: v2/templates/people/family-view.php:256
@@ -1785,7 +1682,7 @@ msgstr "中间"
 msgid "Last"
 msgstr "最后"
 
-#: FamilyEditor.php:944 FamilyView.php:357 OptionManager.php:60
+#: FamilyEditor.php:944 FamilyView.php:347 OptionManager.php:60
 #: OptionManager.php:93 PersonView.php:509 PrintView.php:339 PrintView.php:392
 #: Reports/CanvassReports.php:239 Reports/GroupReport.php:102
 msgid "Role"
@@ -1864,7 +1761,7 @@ msgstr "十二月"
 msgid "Unk"
 msgstr "安克"
 
-#: FamilyView.php:312 v2/templates/people/family-list.php:14
+#: FamilyView.php:302 v2/templates/people/family-list.php:14
 #: v2/templates/people/family-view.php:83
 msgid "Family List"
 msgstr "家家列表"
@@ -1883,198 +1780,177 @@ msgstr "已建立"
 msgid "Edited"
 msgstr "已编辑"
 
-#: FamilyView.php:29 v2/templates/people/family-view.php:11
-msgid "Family View"
-msgstr "家庭观"
-
-#: FamilyView.php:223
+#: FamilyView.php:213
 msgid " of church<br>"
 msgstr "教会的"
 
-#: FamilyView.php:229
+#: FamilyView.php:219
 msgid "Latitude/Longitude"
 msgstr "纬度/经度"
 
-#: FamilyEditor.php:875 FamilyView.php:247 ManageEnvelopes.php:166
+#: FamilyEditor.php:875 FamilyView.php:237 ManageEnvelopes.php:166
 #: PledgeEditor.php:525 v2/templates/people/family-view.php:146
 msgid "Envelope Number"
 msgstr "信封号码"
 
-#: FamilyView.php:302 v2/templates/people/family-view.php:77
+#: FamilyView.php:292 v2/templates/people/family-view.php:77
 msgid "Verify Info"
 msgstr "认证资料"
 
-#: FamilyView.php:304 v2/templates/people/family-view.php:80
+#: FamilyView.php:294 v2/templates/people/family-view.php:80
 msgid "Add New Member"
 msgstr "添加新成员"
 
-#: FamilyView.php:308
+#: FamilyView.php:298
 msgid "Previous Family"
 msgstr "上一页家庭"
 
-#: FamilyView.php:316
+#: FamilyView.php:306
 msgid "Next Family"
 msgstr "下一个家庭"
 
-#: FamilyView.php:322 v2/templates/people/family-view.php:88
+#: FamilyView.php:312 v2/templates/people/family-view.php:88
 msgid "Delete this Family"
 msgstr "删除这家庭"
 
-#: FamilyView.php:194 PersonView.php:199
+#: FamilyView.php:184 PersonView.php:199
 #: v2/templates/people/family-view.php:58
 msgid "Upload Photo"
 msgstr "上传照片"
 
-#: FamilyView.php:198 PersonView.php:202
+#: FamilyView.php:188 PersonView.php:202
 #: v2/templates/people/family-view.php:62
 msgid "Delete Photo"
 msgstr "删除照片"
 
-#: FamilyView.php:331 PersonView.php:385
+#: FamilyView.php:321 PersonView.php:385
 #: v2/templates/people/family-view.php:98
 msgid "Add a Note"
 msgstr "添加备注"
 
-#: FamilyView.php:335 v2/templates/people/family-view.php:102
+#: FamilyView.php:325 v2/templates/people/family-view.php:102
 msgid "Add All Family Members to Cart"
 msgstr "添加家庭成员至购物车"
 
-#: FamilyView.php:438 PersonView.php:421
-#: v2/templates/people/family-view.php:428
+#: FamilyView.php:432 PersonView.php:421
+#: v2/templates/people/family-view.php:432
 msgid "Timeline"
 msgstr "时间线"
 
-#: FamilyView.php:444
-msgid "Automatic Payments"
-msgstr "自动付款"
-
-#: FamilyView.php:446
+#: FamilyView.php:438
 msgid "Pledges and Payments"
 msgstr "认捐和实付"
 
-#: FamilyView.php:542 PersonView.php:677 PrintView.php:459
-#: v2/templates/people/family-view.php:366
+#: FamilyView.php:534 PersonView.php:677 PrintView.php:459
+#: v2/templates/people/family-view.php:370
 msgid "No property assignments."
 msgstr "没有财产的分配。"
 
-#: FamilyView.php:551 GroupView.php:289 PersonView.php:685 PrintView.php:464
+#: FamilyView.php:543 GroupView.php:289 PersonView.php:685 PrintView.php:464
 #: PropertyAssign.php:176 SystemSettings.php:140
-#: v2/templates/people/family-view.php:375
+#: v2/templates/people/family-view.php:379
 msgid "Value"
 msgstr "值"
 
-#: FamilyView.php:554 FamilyView.php:592 GroupView.php:292 GroupView.php:328
+#: FamilyView.php:546 FamilyView.php:584 GroupView.php:292 GroupView.php:328
 msgid "Edit Value"
 msgstr "编辑值"
 
-#: FamilyView.php:615 PersonView.php:718
-#: v2/templates/people/family-view.php:401
+#: FamilyView.php:607 PersonView.php:718
+#: v2/templates/people/family-view.php:405
 #, fuzzy
 msgid "Assign a New Property"
 msgstr "分配一个新的属性"
 
-#: FamilyView.php:636 GroupView.php:366 PersonView.php:757 PersonView.php:843
+#: FamilyView.php:628 GroupView.php:366 PersonView.php:757 PersonView.php:843
 #: PropertyAssign.php:185 SelectList.php:1060
-#: v2/templates/people/family-view.php:415
+#: v2/templates/people/family-view.php:419
 msgid "Assign"
 msgstr "分配"
 
-#: FamilyView.php:658
-msgid "Next payment date"
-msgstr "下一个付款日期"
-
-#: FamilyView.php:660
-msgid "Interval (months)"
-msgstr "间隔（月）"
-
-#: FamilyView.php:664 FamilyView.php:775 SelectDelete.php:224
+#: FamilyView.php:680 SelectDelete.php:224
 msgid "Date Updated"
 msgstr "更新日期"
 
-#: FamilyView.php:665 FamilyView.php:776 SelectDelete.php:225
+#: FamilyView.php:681 SelectDelete.php:225
 msgid "Updated By"
 msgstr "更新人"
 
-#: FamilyView.php:731
-msgid "Add a new automatic payment"
-msgstr "添加一个新的自动付款"
-
-#: FamilyView.php:743
+#: FamilyView.php:648
 msgid "Show Pledges"
 msgstr "显示服务承诺"
 
-#: FamilyView.php:747
+#: FamilyView.php:652
 msgid "Show Payments"
 msgstr "显示支付"
 
-#: FamilyView.php:748
+#: FamilyView.php:653
 msgid "Since"
 msgstr "从"
 
-#: FamilyView.php:756 MemberRoleChange.php:116 PropertyAssign.php:187
+#: FamilyView.php:661 MemberRoleChange.php:116 PropertyAssign.php:187
 msgid "Update"
 msgstr "更新"
 
-#: FamilyView.php:764
+#: FamilyView.php:669
 msgid "Pledge or Payment"
 msgstr "质押或付款"
 
-#: AutoPaymentEditor.php:840 CanvassEditor.php:194 DepositSlipEditor.php:81
-#: EditEventAttendees.php:33 FamilyView.php:767 FindFundRaiser.php:235
-#: FundRaiserEditor.php:164 Include/Functions.php:97 PledgeEditor.php:518
-#: SelectDelete.php:219
+#: CanvassEditor.php:194 DepositSlipEditor.php:81 EditEventAttendees.php:33
+#: FamilyView.php:672 FindFundRaiser.php:235 FundRaiserEditor.php:164
+#: Include/Functions.php:97 PledgeEditor.php:518 SelectDelete.php:219
 msgid "Date"
 msgstr "日期"
 
-#: FamilyView.php:769
+#: FamilyView.php:674
 msgid "NonDeductible"
 msgstr "不得扣除"
 
-#: FamilyView.php:770 SelectDelete.php:221
+#: FamilyView.php:675 SelectDelete.php:221
 msgid "Schedule"
 msgstr "时间表"
 
-#: FamilyView.php:771 SelectDelete.php:222
+#: FamilyView.php:676 SelectDelete.php:222
 msgid "Method"
 msgstr "方法"
 
-#: FamilyView.php:772 PledgeEditor.php:722 SelectDelete.php:223
+#: FamilyView.php:677 PledgeEditor.php:683 SelectDelete.php:223
 msgid "Comment"
 msgstr "评论"
 
-#: FamilyView.php:864
+#: FamilyView.php:769
 msgid "Add a new pledge"
 msgstr "添加新的服务承诺"
 
-#: FamilyView.php:866
+#: FamilyView.php:771
 msgid "Add a new payment"
 msgstr "添加一个新的支付"
 
-#: FamilyView.php:877
+#: FamilyView.php:782
 msgid " Canvass Entry"
 msgstr "招商入口"
 
-#: DepositSlipEditor.php:228 FindDepositSlip.php:102 GroupEditor.php:56
+#: DepositSlipEditor.php:228 FindDepositSlip.php:99 GroupEditor.php:56
 msgid "Close"
 msgstr "关闭"
 
-#: DepositSlipEditor.php:222 FamilyView.php:899 FindDepositSlip.php:95
+#: DepositSlipEditor.php:222 FamilyView.php:804 FindDepositSlip.php:92
 #: PersonView.php:930 PledgeDelete.php:19
-#: v2/templates/people/family-view.php:517
+#: v2/templates/people/family-view.php:521
 msgid "Confirm Delete"
 msgstr "确认删除"
 
-#: FamilyView.php:903 PersonView.php:934
-#: v2/templates/people/family-view.php:521
+#: FamilyView.php:808 PersonView.php:934
+#: v2/templates/people/family-view.php:525
 msgid "You are about to delete the profile photo, this procedure is irreversible."
 msgstr "你可以删除文档图片，此程序不可逆。"
 
-#: FamilyView.php:905 PersonView.php:936
-#: v2/templates/people/family-view.php:523
+#: FamilyView.php:810 PersonView.php:936
+#: v2/templates/people/family-view.php:527
 msgid "Do you want to proceed?"
 msgstr "您想继续吗？"
 
-#: FamilyView.php:932 v2/templates/people/family-view.php:568
+#: FamilyView.php:837 v2/templates/people/family-view.php:572
 msgid "You are about to email copy of the family information in pdf to the following emails"
 msgstr "您将以pdf格式将家庭信息的副本通过电子邮件发送至以下电子邮件"
 
@@ -2187,11 +2063,11 @@ msgstr "查"
 msgid "Cash"
 msgstr "现金"
 
-#: FinancialReports.php:265 FindDepositSlip.php:49 PledgeEditor.php:597
+#: FinancialReports.php:265 PledgeEditor.php:597
 msgid "Bank Draft"
 msgstr "银行汇票"
 
-#: FinancialReports.php:266 FindDepositSlip.php:50 PledgeEditor.php:604
+#: FinancialReports.php:266 PledgeEditor.php:604
 msgid "eGive"
 msgstr "eGive"
 
@@ -2239,7 +2115,7 @@ msgstr "报告标题："
 msgid "Graphic"
 msgstr "图形"
 
-#: ChurchCRM/dto/SystemConfig.php:130 FinancialReports.php:292
+#: ChurchCRM/dto/SystemConfig.php:129 FinancialReports.php:292
 msgid "Church Address"
 msgstr "教会地址"
 
@@ -2292,23 +2168,23 @@ msgstr "创建报告"
 msgid "Deposit Listing"
 msgstr "存款上市"
 
-#: FindDepositSlip.php:62
+#: FindDepositSlip.php:59
 msgid "Add New Deposit"
 msgstr "添加新存款"
 
-#: FindDepositSlip.php:71
+#: FindDepositSlip.php:68
 msgid "Deposits: "
 msgstr "存款"
 
-#: FindDepositSlip.php:78
+#: FindDepositSlip.php:75
 msgid "Delete Selected Rows"
 msgstr "删除选定的行"
 
-#: FindDepositSlip.php:80
+#: FindDepositSlip.php:77
 msgid "Export Selected Rows (OFX)"
 msgstr "删除选定的行（OFX）"
 
-#: FindDepositSlip.php:82
+#: FindDepositSlip.php:79
 msgid "Export Selected Rows (CSV)"
 msgstr "删除选定的行（CSV）"
 
@@ -2720,7 +2596,7 @@ msgstr "组特定的属性"
 msgid "Disabled for this group."
 msgstr "这组停用。"
 
-#: FamilyView.php:440 GroupView.php:276 PersonView.php:424 PrintView.php:448
+#: FamilyView.php:434 GroupView.php:276 PersonView.php:424 PrintView.php:448
 #, fuzzy
 msgid "Assigned Properties"
 msgstr "指定的属性"
@@ -3302,19 +3178,19 @@ msgstr "分配一个新的义工机会"
 msgid "Electronic Transaction Details"
 msgstr "电子交易详情"
 
-#: ChurchCRM/Service/FinancialService.php:481 PledgeEditor.php:271
+#: ChurchCRM/Service/FinancialService.php:232 PledgeEditor.php:271
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "不可扣除的金额不能大于总金额。"
 
-#: ChurchCRM/Service/FinancialService.php:486 PledgeEditor.php:278
+#: ChurchCRM/Service/FinancialService.php:237 PledgeEditor.php:278
 msgid "At least one fund must have a non-zero amount."
 msgstr "的至少一个基金必须有一个非零的量。"
 
-#: ChurchCRM/Service/FinancialService.php:511 PledgeEditor.php:295
+#: ChurchCRM/Service/FinancialService.php:262 PledgeEditor.php:295
 msgid "Must specify non-zero check number"
 msgstr "必须指定非零的支票号码"
 
-#: ChurchCRM/Service/FinancialService.php:516 PledgeEditor.php:302
+#: ChurchCRM/Service/FinancialService.php:267 PledgeEditor.php:302
 msgid "Check number not valid for 'CASH' payment"
 msgstr "检查数量不适用于“现金”支付"
 
@@ -3384,35 +3260,23 @@ msgstr "其他"
 msgid "Payment by"
 msgstr "付款"
 
-#: PledgeEditor.php:634
-msgid "Choose online payment method"
-msgstr "选择在线支付方式"
-
-#: PledgeEditor.php:642
-msgid "Select online payment record"
-msgstr "选择网上支付记录"
-
-#: PledgeEditor.php:650
-msgid "Bank account "
-msgstr "银行帐户"
-
-#: PledgeEditor.php:669
+#: PledgeEditor.php:630
 msgid "Scan check"
 msgstr "扫描检查"
 
-#: PledgeEditor.php:678
+#: PledgeEditor.php:639
 msgid "find family from check account #"
 msgstr "找到家人从支票帐户＃"
 
-#: PledgeEditor.php:679
+#: PledgeEditor.php:640
 msgid "Set default check account number for family"
 msgstr "设置默认的支票帐户的家庭"
 
-#: PledgeEditor.php:713
+#: PledgeEditor.php:674
 msgid "Fund Name"
 msgstr "基金名称"
 
-#: PledgeEditor.php:718
+#: PledgeEditor.php:679
 msgid "Non-deductible amount"
 msgstr "不可税前抵扣的金额"
 
@@ -3558,7 +3422,7 @@ msgstr "添加新的属性类型"
 msgid "Class"
 msgstr "类"
 
-#: PropertyTypeList.php:43 v2/templates/people/family-view.php:344
+#: PropertyTypeList.php:43 v2/templates/people/family-view.php:348
 msgid "Properties"
 msgstr "属性"
 
@@ -3867,7 +3731,7 @@ msgstr "允许"
 msgid "Base URL"
 msgstr "基于URL"
 
-#: ChurchCRM/dto/SystemConfig.php:252 SystemSettings.php:29
+#: ChurchCRM/dto/SystemConfig.php:251 SystemSettings.php:29
 msgid "System Settings"
 msgstr "系统设置"
 
@@ -4516,7 +4380,7 @@ msgstr "联络"
 msgid "City, State, Zip"
 msgstr "市，州，邮政编码"
 
-#: FamilyEditor.php:781 FamilyView.php:234 Reports/ConfirmReport.php:141
+#: FamilyEditor.php:781 FamilyView.php:224 Reports/ConfirmReport.php:141
 #: Reports/ConfirmReportEmail.php:141
 #: external/templates/verify/verify-family-info.php:39
 #: v2/templates/people/family-view.php:133
@@ -4894,7 +4758,7 @@ msgstr "查看所有成员"
 msgid "Add New Family"
 msgstr "添加新家庭"
 
-#: ChurchCRM/Config/Menu/Menu.php:129 ChurchCRM/dto/SystemConfig.php:258
+#: ChurchCRM/Config/Menu/Menu.php:129 ChurchCRM/dto/SystemConfig.php:257
 msgid "Events"
 msgstr "活动"
 
@@ -4922,14 +4786,6 @@ msgstr "清除数据"
 msgid "Are you sure you want to DELETE this person from Event ID: "
 msgstr "你确定要从活动ID中删除此人员吗？"
 
-#: ElectronicPaymentList.php:41
-msgid "Delete automatic payment for"
-msgstr "删除自动支付"
-
-#: ElectronicPaymentList.php:50
-msgid "Clear account numbers for"
-msgstr "清除账号"
-
 #: EventEditor.php:479
 msgid "Date Range"
 msgstr "日期范围"
@@ -4938,23 +4794,23 @@ msgstr "日期范围"
 msgid "Deleting this event TYPE will NOT delete any existing Events or Attendance Counts.  Are you sure you want to DELETE Event Type ID: "
 msgstr "删除此活动TYPE不会删除任何现有的活动或出勤记录。您确定要删除活动类型ID："
 
-#: DepositSlipEditor.php:223 FindDepositSlip.php:96
+#: DepositSlipEditor.php:223 FindDepositSlip.php:93
 msgid "Are you sure you want to delete the selected"
 msgstr "您确定要删除所选内容吗？"
 
-#: FindDepositSlip.php:96
+#: FindDepositSlip.php:93
 msgid "Deposit(s)"
 msgstr "存款"
 
-#: FindDepositSlip.php:97
+#: FindDepositSlip.php:94
 msgid "This will also delete all payments associated with this deposit"
 msgstr "这也将删除与此存款相关的所有付款"
 
-#: DepositSlipEditor.php:224 FindDepositSlip.php:98
+#: DepositSlipEditor.php:224 FindDepositSlip.php:95
 msgid "This action CANNOT be undone, and may have legal implications!"
 msgstr "此操作无法撤消，可能会产生法律影响！"
 
-#: FindDepositSlip.php:99
+#: FindDepositSlip.php:96
 msgid "Please ensure this what you want to do."
 msgstr "请确保这是你想要做的。"
 
@@ -4962,7 +4818,7 @@ msgstr "请确保这是你想要做的。"
 msgid "Deposit Type"
 msgstr "存款类型"
 
-#: FindDepositSlip.php:54
+#: FindDepositSlip.php:51
 msgid "Deposit Date"
 msgstr "存款日期"
 
@@ -5026,27 +4882,27 @@ msgstr "登录还原的数据库"
 msgid "Restore Error."
 msgstr "恢复错误。"
 
-#: ChurchCRM/dto/SystemConfig.php:244
+#: ChurchCRM/dto/SystemConfig.php:243
 msgid "Church Information"
 msgstr "教会信息"
 
-#: ChurchCRM/dto/SystemConfig.php:245
+#: ChurchCRM/dto/SystemConfig.php:244
 msgid "User setup"
 msgstr "用户设置"
 
-#: ChurchCRM/dto/SystemConfig.php:246
+#: ChurchCRM/dto/SystemConfig.php:245
 msgid "Email Setup"
 msgstr "电子邮件设置"
 
-#: ChurchCRM/dto/SystemConfig.php:249
+#: ChurchCRM/dto/SystemConfig.php:248
 msgid "Map Settings"
 msgstr "地图设置"
 
-#: ChurchCRM/dto/SystemConfig.php:250
+#: ChurchCRM/dto/SystemConfig.php:249
 msgid "Report Settings"
 msgstr "报告设置"
 
-#: ChurchCRM/dto/SystemConfig.php:255
+#: ChurchCRM/dto/SystemConfig.php:254
 msgid "Localization"
 msgstr "本土化"
 
@@ -5459,8 +5315,7 @@ msgstr "布道者："
 msgid "Add Attendees for Event"
 msgstr "为活动添加参加者"
 
-#: AutoPaymentEditor.php:129 Checkin.php:457
-#: ChurchCRM/Service/PersonService.php:39
+#: Checkin.php:457 ChurchCRM/Service/PersonService.php:39
 msgid "family"
 msgstr "家庭"
 
@@ -5573,10 +5428,6 @@ msgstr "从:"
 msgid "Total $"
 msgstr "总共$"
 
-#: PledgeEditor.php:648
-msgid "Credit card ..."
-msgstr "信用卡 ..."
-
 #: PropertyEditor.php:156
 msgid "with this property.."
 msgstr "有这个属性.."
@@ -5585,7 +5436,7 @@ msgstr "有这个属性.."
 msgid "with this Property..."
 msgstr "有这个属性.."
 
-#: ChurchCRM/dto/SystemConfig.php:135 Register.php:48
+#: ChurchCRM/dto/SystemConfig.php:134 Register.php:48
 msgid "Church Email"
 msgstr "教会电邮"
 
@@ -5738,106 +5589,102 @@ msgid "Enable non-deductible payments"
 msgstr "启用不可抵扣的付款"
 
 #: ChurchCRM/dto/SystemConfig.php:112
-msgid "Electronic Transaction Processor"
-msgstr "电子交易处理器"
-
-#: ChurchCRM/dto/SystemConfig.php:113
 msgid "Set true to enable family self registration."
 msgstr "设置为true(是)以启用家庭自助注册。"
 
-#: ChurchCRM/dto/SystemConfig.php:126
+#: ChurchCRM/dto/SystemConfig.php:125
 msgid "ChurchCRM has been registered.  The ChurchCRM team uses registration information to track usage.  This information is kept confidential and never released or sold.  If this field is true the registration option in the admin menu changes to update registration."
 msgstr "ChurchCRM已经注册。 ChurchCRM团队使用注册信息来跟踪使用情况。信息将得到保密处理，绝不发布或出售。如果此字段为true(是)，则管理菜单中的注册选项将更改为更新注册。"
 
-#: ChurchCRM/dto/SystemConfig.php:127
+#: ChurchCRM/dto/SystemConfig.php:126
 msgid "Left Margin (1 = 1/100th inch)"
 msgstr "左边距（1 = 1/100英寸）"
 
-#: ChurchCRM/dto/SystemConfig.php:128
+#: ChurchCRM/dto/SystemConfig.php:127
 msgid "Line Thickness (1 = 1/100th inch"
 msgstr "线厚度（1 = 1/100英寸"
 
-#: ChurchCRM/dto/SystemConfig.php:131
+#: ChurchCRM/dto/SystemConfig.php:130
 msgid "Church City"
 msgstr "教会城市"
 
-#: ChurchCRM/dto/SystemConfig.php:132
+#: ChurchCRM/dto/SystemConfig.php:131
 msgid "Church State"
 msgstr "教会州"
 
-#: ChurchCRM/dto/SystemConfig.php:133
+#: ChurchCRM/dto/SystemConfig.php:132
 msgid "Church Zip"
 msgstr "教会邮编"
 
-#: ChurchCRM/dto/SystemConfig.php:134
+#: ChurchCRM/dto/SystemConfig.php:133
 msgid "Church Phone"
 msgstr "教会电话"
 
-#: ChurchCRM/dto/SystemConfig.php:136
+#: ChurchCRM/dto/SystemConfig.php:135
 msgid "Home area code of the church"
 msgstr "教会的区号"
 
-#: ChurchCRM/dto/SystemConfig.php:140
+#: ChurchCRM/dto/SystemConfig.php:139
 msgid "Tax Report signer"
 msgstr "税务报告签名者"
 
-#: ChurchCRM/dto/SystemConfig.php:142
+#: ChurchCRM/dto/SystemConfig.php:141
 msgid "Pledge Reminder Signer"
 msgstr "承诺签名者"
 
-#: ChurchCRM/dto/SystemConfig.php:151
+#: ChurchCRM/dto/SystemConfig.php:150
 msgid "Database information confirmation and correction report signer"
 msgstr "数据库信息确认和更正报告签名者"
 
-#: ChurchCRM/dto/SystemConfig.php:156
+#: ChurchCRM/dto/SystemConfig.php:155
 msgid "Church Letterhead path and file"
 msgstr "教会信头路径和文件"
 
-#: ChurchCRM/dto/SystemConfig.php:161
+#: ChurchCRM/dto/SystemConfig.php:160
 msgid "lookup user images on Gravatar when no local image is present"
 msgstr "当没有本地图像时，在Gravatar上查找用户图像"
 
-#: ChurchCRM/dto/SystemConfig.php:162
+#: ChurchCRM/dto/SystemConfig.php:161
 msgid "Enable Remote Backups to Cloud Services"
 msgstr "启用云服务的远程备份"
 
-#: ChurchCRM/dto/SystemConfig.php:163
+#: ChurchCRM/dto/SystemConfig.php:162
 msgid "Cloud Service Type (Supported values: WebDAV, Local)"
 msgstr "云服务类型（支持：WebDAV，本地）"
 
-#: ChurchCRM/dto/SystemConfig.php:164
+#: ChurchCRM/dto/SystemConfig.php:163
 msgid "Remote Backup Endpoint"
 msgstr "远程备份端点"
 
-#: ChurchCRM/dto/SystemConfig.php:165
+#: ChurchCRM/dto/SystemConfig.php:164
 msgid "Remote Backup Username"
 msgstr "远程备份用户名"
 
-#: ChurchCRM/dto/SystemConfig.php:166
+#: ChurchCRM/dto/SystemConfig.php:165
 msgid "Remote Backup Password"
 msgstr "远程备份密码"
 
-#: ChurchCRM/dto/SystemConfig.php:167
+#: ChurchCRM/dto/SystemConfig.php:166
 msgid "Interval in Hours for Automatic Remote Backups"
 msgstr "自动远程备份的小时间隔"
 
-#: ChurchCRM/dto/SystemConfig.php:168
+#: ChurchCRM/dto/SystemConfig.php:167
 msgid "Last Backup Timestamp"
 msgstr "上次备份时间戳"
 
-#: ChurchCRM/dto/SystemConfig.php:169
+#: ChurchCRM/dto/SystemConfig.php:168
 msgid "QuickBooks Deposit Ticket Settings"
 msgstr "QuickBooks存款票设置"
 
-#: ChurchCRM/dto/SystemConfig.php:170
+#: ChurchCRM/dto/SystemConfig.php:169
 msgid "Enable Integrity Check"
 msgstr "启用完整性检查"
 
-#: ChurchCRM/dto/SystemConfig.php:171
+#: ChurchCRM/dto/SystemConfig.php:170
 msgid "Interval in Hours for Integrity Check"
 msgstr "完整性检查的小时间隔"
 
-#: ChurchCRM/dto/SystemConfig.php:172
+#: ChurchCRM/dto/SystemConfig.php:171
 msgid "Last Integrity Check Timestamp"
 msgstr "最后完整性检查时间戳"
 
@@ -6501,7 +6348,7 @@ msgid "Family Data Verified"
 msgstr "家庭数据验证"
 
 #: ChurchCRM/model/ChurchCRM/Family.php:257
-#: ChurchCRM/model/ChurchCRM/Person.php:279
+#: ChurchCRM/model/ChurchCRM/Person.php:266
 msgid "Profile Image Deleted"
 msgstr "个人资料图片已删除"
 
@@ -6513,19 +6360,11 @@ msgstr "英里"
 msgid "kilometers"
 msgstr "公里"
 
-#: ChurchCRM/dto/SystemConfig.php:112
-msgid "Vanco"
-msgstr "Vanco"
-
-#: ChurchCRM/dto/SystemConfig.php:112
-msgid "Authorize.NET"
-msgstr "Authorize.NET"
-
-#: ChurchCRM/dto/SystemConfig.php:163
+#: ChurchCRM/dto/SystemConfig.php:162
 msgid "WebDAV"
 msgstr "WebDAV"
 
-#: ChurchCRM/dto/SystemConfig.php:163
+#: ChurchCRM/dto/SystemConfig.php:162
 msgid "Local"
 msgstr "本地"
 
@@ -7630,7 +7469,7 @@ msgid "Family Member(s)"
 msgstr "家庭成员"
 
 #: external/templates/verify/verify-family-info.php:78
-#: v2/templates/people/family-view.php:319
+#: v2/templates/people/family-view.php:320
 msgid "Work Email"
 msgstr "工作电邮"
 
@@ -7650,23 +7489,23 @@ msgstr "我们在使用您的验证数据时遇到错误"
 msgid "Visit our Site"
 msgstr "访问我们的网站"
 
-#: FamilyView.php:925 v2/templates/people/family-view.php:561
+#: FamilyView.php:830 v2/templates/people/family-view.php:565
 msgid "Request Family Info Verification"
 msgstr "申请家庭信息验证"
 
-#: FamilyView.php:928 v2/templates/people/family-view.php:564
+#: FamilyView.php:833 v2/templates/people/family-view.php:568
 msgid "Select how do you want to request the family information to be verified"
 msgstr "选择您想验证家庭信息的方式"
 
-#: FamilyView.php:949 v2/templates/people/family-view.php:583
+#: FamilyView.php:854 v2/templates/people/family-view.php:587
 msgid "Online Verification"
 msgstr "在线验证"
 
-#: FamilyView.php:954 v2/templates/people/family-view.php:588
+#: FamilyView.php:859 v2/templates/people/family-view.php:592
 msgid "PDF Report"
 msgstr "在线验证"
 
-#: FamilyView.php:956 v2/templates/people/family-view.php:590
+#: FamilyView.php:861 v2/templates/people/family-view.php:594
 msgid "Verified In Person"
 msgstr "亲自验证"
 
@@ -7702,7 +7541,7 @@ msgstr "一些家庭的家庭坐标数据"
 msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database."
 msgstr "将用户输入的邮编/邮政编码以大写方式保存到数据库。"
 
-#: ChurchCRM/dto/SystemConfig.php:176
+#: ChurchCRM/dto/SystemConfig.php:175
 msgid "Google Analytics Tracking Code"
 msgstr "Google Analytics跟踪代码"
 
@@ -7722,27 +7561,27 @@ msgstr "英语 - 澳大利亚"
 msgid "English - Great Britain"
 msgstr "英语 - 英国"
 
-#: settings-locales.php:12
+#: settings-locales.php:13
 msgid "German - Germany"
 msgstr "德语 - 德国"
 
-#: settings-locales.php:21
+#: settings-locales.php:22
 msgid "Spanish - Spain"
 msgstr "西班牙语 - 西班牙"
 
-#: settings-locales.php:11
+#: settings-locales.php:12
 msgid "French - France"
 msgstr "法语 - 法国"
 
-#: settings-locales.php:13
+#: settings-locales.php:14
 msgid "Hungarian"
 msgstr "匈牙利语"
 
-#: settings-locales.php:15
+#: settings-locales.php:16
 msgid "Italian - Italy"
 msgstr "意大利语 - 意大利"
 
-#: settings-locales.php:16
+#: settings-locales.php:17
 msgid "Norwegian"
 msgstr "挪威语"
 
@@ -7750,23 +7589,23 @@ msgstr "挪威语"
 msgid "Dutch - Netherlands"
 msgstr "荷兰语 - 荷兰"
 
-#: settings-locales.php:17
+#: settings-locales.php:18
 msgid "Polish"
 msgstr "波兰语"
 
-#: settings-locales.php:18
+#: settings-locales.php:19
 msgid "Portuguese - Brazil"
 msgstr "葡萄牙语 - 巴西"
 
-#: settings-locales.php:19
+#: settings-locales.php:20
 msgid "Romanian - Romania"
 msgstr "罗马尼亚语-罗马尼亚"
 
-#: settings-locales.php:20
+#: settings-locales.php:21
 msgid "Russian"
 msgstr "俄语"
 
-#: settings-locales.php:22
+#: settings-locales.php:23
 msgid "Sami (Northern) (Sweden)"
 msgstr "萨米语（北部）（瑞典）"
 
@@ -7774,7 +7613,7 @@ msgstr "萨米语（北部）（瑞典）"
 msgid "Albanian"
 msgstr "阿尔巴尼亚语"
 
-#: settings-locales.php:24
+#: settings-locales.php:25
 msgid "Vietnamese"
 msgstr "越南语"
 
@@ -7812,7 +7651,7 @@ msgstr "已通过完整性检查。所有系统文件都与预期值哈希匹配
 msgid "Google map API requires a unique key"
 msgstr "Google地图API需要唯一的密钥"
 
-#: ChurchCRM/dto/SystemConfig.php:160
+#: ChurchCRM/dto/SystemConfig.php:159
 msgid "Church Checking Account Number"
 msgstr "教堂检查账号"
 
@@ -7840,25 +7679,25 @@ msgstr "激活的家庭"
 msgid "families"
 msgstr "家庭"
 
-#: ChurchCRM/dto/SystemConfig.php:178
+#: ChurchCRM/dto/SystemConfig.php:177
 msgid "Deposit ticket type.  QBDT - Quickbooks"
 msgstr "存款票类型。 QBDT - Quickbooks"
 
-#: ChurchCRM/dto/SystemConfig.php:251
+#: ChurchCRM/dto/SystemConfig.php:250
 msgid "Financial Settings"
 msgstr "财务设置"
 
-#: ChurchCRM/dto/SystemConfig.php:314 ChurchCRM/dto/SystemConfig.php:326
-#: ChurchCRM/dto/SystemConfig.php:339
+#: ChurchCRM/dto/SystemConfig.php:313 ChurchCRM/dto/SystemConfig.php:325
+#: ChurchCRM/dto/SystemConfig.php:338
 msgid "An invalid configuration name has been requested"
 msgstr "提交了一个无效的配置名称请求"
 
-#: ChurchCRM/dto/SystemConfig.php:357
+#: ChurchCRM/dto/SystemConfig.php:356
 msgid "An invalid configuration id has been requested"
 msgstr "提交了一个无效的配置id请求"
 
 #: ChurchCRM/model/ChurchCRM/Family.php:270
-#: ChurchCRM/model/ChurchCRM/Person.php:303
+#: ChurchCRM/model/ChurchCRM/Person.php:290
 msgid "Profile Image uploaded"
 msgstr "个人资料图片已上传"
 
@@ -7870,27 +7709,27 @@ msgstr "付款？"
 msgid "Please ensure this what you want to do.</p>"
 msgstr "请确认这是你想要做的。"
 
-#: FamilyView.php:176
+#: FamilyView.php:166
 msgid " This Family is Deactivated"
 msgstr "这个家庭已停用"
 
-#: FamilyView.php:341 v2/templates/people/family-view.php:108
+#: FamilyView.php:331 v2/templates/people/family-view.php:108
 msgid " this Family"
 msgstr "这个家庭"
 
-#: FamilyView.php:972
+#: FamilyView.php:877
 msgid "Confirm Deactivation"
 msgstr "确认停用"
 
-#: FamilyView.php:972
+#: FamilyView.php:877
 msgid "Confirm Activation"
 msgstr "确认激活"
 
-#: FamilyView.php:974
+#: FamilyView.php:879
 msgid "Please confirm deactivation of family"
 msgstr "请确认停用家庭"
 
-#: FamilyView.php:977
+#: FamilyView.php:882
 msgid "Please confirm activation of family"
 msgstr "请确认激活家庭"
 
@@ -7918,8 +7757,8 @@ msgstr "从购物车中删除"
 msgid "Family Member"
 msgstr "家庭成员"
 
-#: FamilyView.php:621 PersonView.php:726 QueryView.php:318
-#: v2/templates/people/family-view.php:407
+#: FamilyView.php:613 PersonView.php:726 QueryView.php:318
+#: v2/templates/people/family-view.php:411
 msgid "select an option"
 msgstr "选择一个项目"
 
@@ -7990,19 +7829,19 @@ msgstr "删除条目中的签到"
 msgid "Adult Name (Optional)"
 msgstr "Adult Name(可选)"
 
-#: ChurchCRM/dto/SystemConfig.php:175
+#: ChurchCRM/dto/SystemConfig.php:174
 msgid "Text before name in emails/reports"
 msgstr "电子邮件/报告中姓名前的文字"
 
-#: ChurchCRM/dto/SystemConfig.php:179
+#: ChurchCRM/dto/SystemConfig.php:178
 msgid "Set true to allow empty lastname in Person Editor.  Set false to validate last name and inherit from family when left empty."
 msgstr "设置为是将允许在Person Editor（人员编辑）中允许姓氏为空值。设置为false(否)将验证姓氏，并在其空值时从家族继承。"
 
-#: ChurchCRM/dto/SystemConfig.php:181
+#: ChurchCRM/dto/SystemConfig.php:180
 msgid "Display bill counts on deposit slip"
 msgstr "在存款单上显示账单计数"
 
-#: ChurchCRM/dto/SystemConfig.php:182
+#: ChurchCRM/dto/SystemConfig.php:181
 msgid "ChurchCRM Cloud Access URL"
 msgstr "ChurchCRM云访问网址"
 
@@ -8038,7 +7877,7 @@ msgstr "账户已解锁"
 msgid "Part"
 msgstr "部分"
 
-#: FamilyView.php:190 PersonView.php:196
+#: FamilyView.php:180 PersonView.php:196
 #: v2/templates/people/family-view.php:52
 msgid "View Photo"
 msgstr "查看照片"
@@ -8099,7 +7938,7 @@ msgstr "图片"
 msgid "Payment Details"
 msgstr "付款详情"
 
-#: PledgeEditor.php:707
+#: PledgeEditor.php:668
 msgid "Fund Split"
 msgstr "基金拆分"
 
@@ -8291,43 +8130,43 @@ msgstr "要写入的事件日志严重性，由ORM和App Logs使用"
 msgid "Time zone"
 msgstr "时区"
 
-#: ChurchCRM/dto/SystemConfig.php:183
+#: ChurchCRM/dto/SystemConfig.php:182
 msgid "Nexmo SMS API Key"
 msgstr "Nexmo SMS API密钥"
 
-#: ChurchCRM/dto/SystemConfig.php:184
+#: ChurchCRM/dto/SystemConfig.php:183
 msgid "Nexmo SMS API Secret"
 msgstr "Nexmo SMS API保密"
 
-#: ChurchCRM/dto/SystemConfig.php:185
+#: ChurchCRM/dto/SystemConfig.php:184
 msgid "Nexmo SMS From Number"
 msgstr "Nexmo SMS From Number"
 
-#: ChurchCRM/dto/SystemConfig.php:186
+#: ChurchCRM/dto/SystemConfig.php:185
 msgid "OpenLP URL"
 msgstr "OpenLP 网址"
 
-#: ChurchCRM/dto/SystemConfig.php:187
+#: ChurchCRM/dto/SystemConfig.php:186
 msgid "OpenLP Username"
 msgstr "OpenLP 用户名"
 
-#: ChurchCRM/dto/SystemConfig.php:188
+#: ChurchCRM/dto/SystemConfig.php:187
 msgid "OpenLP Password"
 msgstr "OpenLP 密码"
 
-#: ChurchCRM/dto/SystemConfig.php:189
+#: ChurchCRM/dto/SystemConfig.php:188
 msgid "KioskVisibilityTimestamp"
 msgstr "KioskVisibility时间戳"
 
-#: ChurchCRM/dto/SystemConfig.php:190
+#: ChurchCRM/dto/SystemConfig.php:189
 msgid "Show/Hide Lost Password Link on the login screen"
 msgstr "在登录屏幕上显示/隐藏丢失密码链接"
 
-#: ChurchCRM/dto/SystemConfig.php:254
+#: ChurchCRM/dto/SystemConfig.php:253
 msgid "Backup"
 msgstr "备份"
 
-#: ChurchCRM/dto/SystemConfig.php:256
+#: ChurchCRM/dto/SystemConfig.php:255
 msgid "Integration"
 msgstr "集成"
 
@@ -8423,27 +8262,11 @@ msgstr "我忘记了我的密码"
 msgid "Attendees Checked In"
 msgstr "与会者签到"
 
-#: AutoPaymentEditor.php:828
-msgid "Bank Draft "
-msgstr "银行汇票"
-
-#: AutoPaymentEditor.php:832
-msgid "Credit Card "
-msgstr "信用卡"
-
-#: AutoPaymentEditor.php:836
-msgid "Disable "
-msgstr "禁用"
-
-#: AutoPaymentEditor.php:1014
-msgid "Store Private Data at Vanco"
-msgstr "在Vanco存储私人数据"
-
 #: v2/templates/cart/cartfunctions.php:47
 msgid "Text Cart"
 msgstr "Text Cart"
 
-#: ChurchCRM/dto/SystemConfig.php:191
+#: ChurchCRM/dto/SystemConfig.php:190
 msgid "Your Church's Website"
 msgstr "您教会的网站"
 
@@ -8451,11 +8274,11 @@ msgstr "您教会的网站"
 msgid "Self Verification"
 msgstr "自助验证"
 
-#: FamilyView.php:341 v2/templates/people/family-view.php:108
+#: FamilyView.php:331 v2/templates/people/family-view.php:108
 msgid "Deactivate"
 msgstr "停用"
 
-#: FamilyView.php:341 v2/templates/people/family-view.php:108
+#: FamilyView.php:331 v2/templates/people/family-view.php:108
 msgid "Activate"
 msgstr "启用"
 
@@ -8575,19 +8398,19 @@ msgstr "移动"
 msgid "Arabic - Egypt"
 msgstr "阿拉伯语 - 埃及"
 
-#: settings-locales.php:23
+#: settings-locales.php:24
 msgid "Thai"
 msgstr "泰语"
 
-#: ChurchCRM/dto/SystemConfig.php:192
+#: ChurchCRM/dto/SystemConfig.php:191
 msgid "Your Church's Facebook Page"
 msgstr "您的教会的Facebook页面"
 
-#: ChurchCRM/dto/SystemConfig.php:193
+#: ChurchCRM/dto/SystemConfig.php:192
 msgid "Your Church's Twitter Page"
 msgstr "您的会的Facebook页面"
 
-#: ChurchCRM/dto/SystemConfig.php:194
+#: ChurchCRM/dto/SystemConfig.php:193
 msgid "lookup user images on Google when no local image is present"
 msgstr "当没有本地图像时，在谷歌上查找用户图像"
 
@@ -8623,7 +8446,7 @@ msgstr "拥有有效自助验证链接的家庭"
 msgid "Self Verify"
 msgstr "自助验证"
 
-#: settings-locales.php:14
+#: settings-locales.php:15
 msgid "Indonesian - Indonesia"
 msgstr "印尼语 - 印尼"
 
@@ -8635,27 +8458,27 @@ msgstr "过账到购物车需要Persons array，家庭ID或组ID"
 msgid "records(s) successfully added to selected Group."
 msgstr "记录已成功添加到选定的组。"
 
-#: ChurchCRM/dto/SystemConfig.php:122
+#: ChurchCRM/dto/SystemConfig.php:121
 msgid "To export to another For european CharSet use ;"
 msgstr "导出到另一个用于欧洲的CharSet使用;"
 
-#: ChurchCRM/dto/SystemConfig.php:123
+#: ChurchCRM/dto/SystemConfig.php:122
 msgid "Default is UTF-8, For european CharSet use Windows-1252 for example for French language."
 msgstr "默认值为UTF-8，对于欧洲CharSet，请使用Windows-1252例如法国。"
 
-#: ChurchCRM/dto/SystemConfig.php:124
+#: ChurchCRM/dto/SystemConfig.php:123
 msgid "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example."
 msgstr "要在日期选取器中定义日期，默认情况下：yyyy-mm-dd，在法国：dd / mm / yyyy。"
 
-#: ChurchCRM/dto/SystemConfig.php:125
+#: ChurchCRM/dto/SystemConfig.php:124
 msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/m/Y for example."
 msgstr "要在日期选取器中定义日期，默认情况下：Y-m-d，在法国：d/m/Y。"
 
-#: ChurchCRM/dto/SystemConfig.php:195
+#: ChurchCRM/dto/SystemConfig.php:194
 msgid "Comma Separated list of PersonIDs of people to notify when a new family or person is added"
 msgstr "添加新家庭或人员时要通知的人员ID列表用逗号分隔"
 
-#: ChurchCRM/dto/SystemConfig.php:196
+#: ChurchCRM/dto/SystemConfig.php:195
 msgid "Allow unauthenticated reads of events from the external calendar API"
 msgstr "允许从外部日历API中进行未经身份验证的事件读取"
 
@@ -8758,51 +8581,51 @@ msgstr "WSW"
 msgid "Persons"
 msgstr "人员"
 
-#: ChurchCRM/dto/SystemConfig.php:198
+#: ChurchCRM/dto/SystemConfig.php:197
 msgid "Search Family"
 msgstr "搜索家庭"
 
-#: ChurchCRM/dto/SystemConfig.php:200
+#: ChurchCRM/dto/SystemConfig.php:199
 msgid "Search Groups"
 msgstr "搜索组"
 
-#: ChurchCRM/dto/SystemConfig.php:201
+#: ChurchCRM/dto/SystemConfig.php:200
 msgid "Search Deposits"
 msgstr "搜索存款"
 
-#: ChurchCRM/dto/SystemConfig.php:202
+#: ChurchCRM/dto/SystemConfig.php:201
 msgid "Search Payments"
 msgstr "搜索付款"
 
-#: ChurchCRM/dto/SystemConfig.php:253
+#: ChurchCRM/dto/SystemConfig.php:252
 msgid "Quick Search"
 msgstr "快速搜索"
 
-#: ChurchCRM/dto/SystemConfig.php:203
+#: ChurchCRM/dto/SystemConfig.php:202
 msgid "Search Addresses"
 msgstr "搜索地址"
 
-#: ChurchCRM/dto/SystemConfig.php:205
+#: ChurchCRM/dto/SystemConfig.php:204
 msgid "Maximum number of Families"
 msgstr "最大家庭数量"
 
-#: ChurchCRM/dto/SystemConfig.php:206
+#: ChurchCRM/dto/SystemConfig.php:205
 msgid "Maximum number of Family H.O.H Names"
 msgstr "家庭H.O.H姓名的最大数量"
 
-#: ChurchCRM/dto/SystemConfig.php:207
+#: ChurchCRM/dto/SystemConfig.php:206
 msgid "Maximum number of Groups"
 msgstr "最大组数"
 
-#: ChurchCRM/dto/SystemConfig.php:208
+#: ChurchCRM/dto/SystemConfig.php:207
 msgid "Maximum number of Deposits"
 msgstr "最大存款数量"
 
-#: ChurchCRM/dto/SystemConfig.php:209
+#: ChurchCRM/dto/SystemConfig.php:208
 msgid "Maximum number of Payments"
 msgstr "最大付款数量"
 
-#: ChurchCRM/dto/SystemConfig.php:210
+#: ChurchCRM/dto/SystemConfig.php:209
 msgid "Maximum number of Addresses"
 msgstr "最大地址数量"
 
@@ -8866,27 +8689,27 @@ msgstr "创建相簿"
 msgid "SSE"
 msgstr "SSE"
 
-#: ChurchCRM/dto/SystemConfig.php:211
+#: ChurchCRM/dto/SystemConfig.php:210
 msgid "Height to use for images"
 msgstr "图像的高度"
 
-#: ChurchCRM/dto/SystemConfig.php:212
+#: ChurchCRM/dto/SystemConfig.php:211
 msgid "Width to use for images"
 msgstr "图像的宽度"
 
-#: ChurchCRM/dto/SystemConfig.php:213
+#: ChurchCRM/dto/SystemConfig.php:212
 msgid "Width to use for thumbnails"
 msgstr "缩略图的宽度"
 
-#: ChurchCRM/dto/SystemConfig.php:214
+#: ChurchCRM/dto/SystemConfig.php:213
 msgid "Point size to use for initials thumbnails"
 msgstr "缩略图的磅值"
 
-#: ChurchCRM/dto/SystemConfig.php:215
+#: ChurchCRM/dto/SystemConfig.php:214
 msgid "Client cache seconds for images"
 msgstr "客户端缓存图像的秒数"
 
-#: ChurchCRM/dto/SystemConfig.php:216
+#: ChurchCRM/dto/SystemConfig.php:215
 msgid "Server cache time for remote images"
 msgstr "远程图片的服务器缓存时间"
 
@@ -8992,27 +8815,27 @@ msgstr "购物车中的群组ID必需是数字"
 msgid "FamilyID for Cart must be numeric"
 msgstr "购物车的家庭ID必须是数字"
 
-#: ChurchCRM/dto/SystemConfig.php:197
+#: ChurchCRM/dto/SystemConfig.php:196
 msgid "Search People"
 msgstr "搜索人物"
 
-#: ChurchCRM/dto/SystemConfig.php:204
+#: ChurchCRM/dto/SystemConfig.php:203
 msgid "Maximum number of People"
 msgstr "人数上限"
 
-#: ChurchCRM/dto/SystemConfig.php:217
+#: ChurchCRM/dto/SystemConfig.php:216
 msgid "Field where Father Of Confession is listed, must be a people of group type"
 msgstr "Father Of Confession出现的字段，必须是群体类型中的人"
 
-#: ChurchCRM/dto/SystemConfig.php:218
+#: ChurchCRM/dto/SystemConfig.php:217
 msgid "Field where last Confession is stored, must be a date type"
 msgstr "Confession最后字段的存储，必须是一个数据类型"
 
-#: ChurchCRM/dto/SystemConfig.php:219
+#: ChurchCRM/dto/SystemConfig.php:218
 msgid "Require that this ChurchCRM Database is accessed over HTTPS"
 msgstr "要求通过HTTPS访问此ChurchCRM数据库"
 
-#: ChurchCRM/dto/SystemConfig.php:257
+#: ChurchCRM/dto/SystemConfig.php:256
 msgid "Church Services"
 msgstr "教堂服务"
 
@@ -9056,11 +8879,11 @@ msgstr "现运作软件版本"
 msgid "Upgrade database"
 msgstr "数据库升级"
 
-#: ChurchCRM/dto/SystemConfig.php:220
+#: ChurchCRM/dto/SystemConfig.php:219
 msgid "Show Birthdates Anniversaries on start up of the CRM"
 msgstr "在启动CRM时显示出生日期"
 
-#: ChurchCRM/dto/SystemConfig.php:221
+#: ChurchCRM/dto/SystemConfig.php:220
 msgid "Number of seconds after page load until the banner disappears, default 10 seconds"
 msgstr "从页面加载到横幅消失的秒数，默认为10秒"
 
@@ -9084,11 +8907,11 @@ msgstr "出生日"
 msgid "Anniversaries of the day"
 msgstr "纪念日"
 
-#: ChurchCRM/dto/SystemConfig.php:222
+#: ChurchCRM/dto/SystemConfig.php:221
 msgid "Automatically enable SMTP encryption if offered by the relaying server."
 msgstr "如果由中继服务器提供，则自动启用SMTP加密。"
 
-#: ChurchCRM/dto/SystemConfig.php:223
+#: ChurchCRM/dto/SystemConfig.php:222
 msgid "Set the encryption system to use - ssl (deprecated) or tls"
 msgstr "将加密系统设置为使用 - ssl（不建议使用）或tls"
 
@@ -9104,11 +8927,11 @@ msgstr "输入您的密码以检索您的会话"
 msgid "Or sign in as a different user"
 msgstr "或以其他用户身份登录"
 
-#: ChurchCRM/dto/SystemConfig.php:224
+#: ChurchCRM/dto/SystemConfig.php:223
 msgid "Dashboard Service dynamic asynchronous refresh interval, default 60 second"
 msgstr "仪表板服务动态异步刷新间隔，默认为60秒"
 
-#: FindDepositSlip.php:84
+#: FindDepositSlip.php:81
 msgid "Generate Deposit Slip for Selected Rows (PDF)"
 msgstr "为选定的行生成存款单（PDF）"
 
@@ -9162,7 +8985,7 @@ msgstr "使用者必需是管理员"
 msgid "No logged in user"
 msgstr "没有登录用户"
 
-#: ChurchCRM/dto/SystemConfig.php:225
+#: ChurchCRM/dto/SystemConfig.php:224
 msgid "Set the standard profile picture icon size in pixels to be used in people lists, default 85 pixels."
 msgstr "设置要在人员列表中使用的标准配置文件图片图标大小（以像素为单位），默认为85像素。"
 
@@ -9192,7 +9015,7 @@ msgstr "返回人员仪表盘"
 msgid "User must have MenuOptions permission"
 msgstr "用户必须具有MenuOptions权限"
 
-#: FamilyView.php:170
+#: FamilyView.php:160
 msgid "Try out the Beta family view"
 msgstr "试用Beta系列视图"
 
@@ -9358,35 +9181,35 @@ msgstr "对于要共享的日历，除了具有特定访问令牌的日历之外
 msgid "Links"
 msgstr "连接"
 
-#: ChurchCRM/dto/SystemConfig.php:226
+#: ChurchCRM/dto/SystemConfig.php:225
 msgid "Show custom links on the left menu."
 msgstr "在左侧菜单中显示自定义链接。"
 
-#: ChurchCRM/dto/SystemConfig.php:227
+#: ChurchCRM/dto/SystemConfig.php:226
 msgid "Enable Sunday School left menu."
 msgstr "启用主日学校左侧菜单。"
 
-#: ChurchCRM/dto/SystemConfig.php:228
+#: ChurchCRM/dto/SystemConfig.php:227
 msgid "Enable Finance menu"
 msgstr "启用财务菜单"
 
-#: ChurchCRM/dto/SystemConfig.php:229
+#: ChurchCRM/dto/SystemConfig.php:228
 msgid "Enable Events menu."
 msgstr "启用事件菜单"
 
-#: ChurchCRM/dto/SystemConfig.php:230
+#: ChurchCRM/dto/SystemConfig.php:229
 msgid "Enable Calendar menu."
 msgstr "启用日历菜单"
 
-#: ChurchCRM/dto/SystemConfig.php:231
+#: ChurchCRM/dto/SystemConfig.php:230
 msgid "Enable Fundraiser menu."
 msgstr "启用筹款人菜单"
 
-#: ChurchCRM/dto/SystemConfig.php:232
+#: ChurchCRM/dto/SystemConfig.php:231
 msgid "Enable Email menu."
 msgstr "启用邮件菜单"
 
-#: ChurchCRM/dto/SystemConfig.php:248
+#: ChurchCRM/dto/SystemConfig.php:247
 msgid "Enabled Features"
 msgstr "启用功能"
 
@@ -9457,7 +9280,7 @@ msgstr "未找到日历访问令牌"
 msgid "User must have Delete Records permission"
 msgstr "用户必须具有删除记录权限"
 
-#: ChurchCRM/dto/SystemConfig.php:233
+#: ChurchCRM/dto/SystemConfig.php:232
 msgid "ChurchCRM Central Notifications URL"
 msgstr "ChurchCRM中央通知URL"
 
