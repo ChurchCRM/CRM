@@ -7,70 +7,58 @@ msgstr ""
 "Project-Id-Version: ChurchCRM\n"
 "Language: et\n"
 
-#: AutoPaymentClearAccounts.php:24 CatchCreatePayment.php:71
 #: Include/Functions.php:234
 msgid "Cannot execute query."
 msgstr "Ei saa käsklust käivitada"
 
-#: AutoPaymentDelete.php:19
-msgid "Confirm Delete Automatic payment"
-msgstr "Automaatse tasumise kinnitus vajab KINNITAMIST"
-
-#: AutoPaymentDelete.php:63 Checkin.php:286 Checkin.php:368
-#: DepositSlipEditor.php:231 DonationFundEditor.php:153
-#: DonationFundEditor.php:183 EditEventAttendees.php:76
-#: ElectronicPaymentList.php:219 ElectronicPaymentList.php:284
-#: EventNames.php:302 FamilyCustomFieldsEditor.php:324
-#: FamilyCustomFieldsEditor.php:382 FamilyView.php:663 FamilyView.php:715
-#: FamilyView.php:774 FamilyView.php:911 FindDepositSlip.php:105
+#: Checkin.php:286 Checkin.php:368 DepositSlipEditor.php:231
+#: DonationFundEditor.php:153 DonationFundEditor.php:183
+#: EditEventAttendees.php:76 EventNames.php:302
+#: FamilyCustomFieldsEditor.php:324 FamilyCustomFieldsEditor.php:382
+#: FamilyView.php:679 FamilyView.php:816 FindDepositSlip.php:102
 #: FundRaiserEditor.php:200 ListEvents.php:241 PaddleNumList.php:55
 #: PersonCustomFieldsEditor.php:315 PersonCustomFieldsEditor.php:384
 #: PersonView.php:941 PledgeDelete.php:53 PropertyList.php:65
 #: PropertyList.php:106 PropertyTypeList.php:46 PropertyTypeList.php:67
-#: PropertyTypeList.php:69 v2/templates/people/family-view.php:530
+#: PropertyTypeList.php:69 v2/templates/people/family-view.php:534
 msgid "Delete"
 msgstr "Kustuta"
 
-#: AutoPaymentDelete.php:64 AutoPaymentEditor.php:787 BatchWinnerEntry.php:112
-#: CanvassEditor.php:239 Checkin.php:167 Checkin.php:274 Checkin.php:287
-#: DirectoryReports.php:286 DonatedItemEditor.php:297 EventNames.php:231
-#: FamilyEditor.php:1119 FamilyView.php:910 FinancialReports.php:69
-#: FundRaiserEditor.php:143 GroupPropsEditor.php:168 GroupReports.php:82
-#: GroupReports.php:151 LettersAndLabels.php:83 ManageEnvelopes.php:135
-#: MemberRoleChange.php:119 MemberRoleChange.php:121 NoteDelete.php:67
-#: NoteEditor.php:135 PersonEditor.php:1231 PersonView.php:940
-#: PledgeDelete.php:54 PropertyEditor.php:169 PropertyTypeEditor.php:114
-#: Register.php:56 ReminderReport.php:52 SettingsIndividual.php:114
-#: SettingsIndividual.php:160 SettingsUser.php:100 SettingsUser.php:160
-#: TaxReport.php:55 UserEditor.php:459 UserEditor.php:562
-#: WhyCameEditor.php:105 external/templates/verify/verify-family-info.php:144
+#: BatchWinnerEntry.php:112 CanvassEditor.php:239 Checkin.php:167
+#: Checkin.php:274 Checkin.php:287 DirectoryReports.php:286
+#: DonatedItemEditor.php:297 EventNames.php:231 FamilyEditor.php:1119
+#: FamilyView.php:815 FinancialReports.php:69 FundRaiserEditor.php:143
+#: GroupPropsEditor.php:168 GroupReports.php:82 GroupReports.php:151
+#: LettersAndLabels.php:83 ManageEnvelopes.php:135 MemberRoleChange.php:119
+#: MemberRoleChange.php:121 NoteDelete.php:67 NoteEditor.php:135
+#: PersonEditor.php:1231 PersonView.php:940 PledgeDelete.php:54
+#: PropertyEditor.php:169 PropertyTypeEditor.php:114 Register.php:56
+#: ReminderReport.php:52 SettingsIndividual.php:114 SettingsIndividual.php:160
+#: SettingsUser.php:100 SettingsUser.php:160 TaxReport.php:55
+#: UserEditor.php:459 UserEditor.php:562 WhyCameEditor.php:105
+#: external/templates/verify/verify-family-info.php:144
 #: sundayschool/SundaySchoolDashboard.php:258
 #: sundayschool/SundaySchoolReports.php:286
-#: v2/templates/people/family-view.php:529
+#: v2/templates/people/family-view.php:533
 msgid "Cancel"
 msgstr "Tühista"
 
-#: AutoPaymentEditor.php:129
-msgid "Automatic payment configuration for the "
-msgstr "Automaatne tasumise seadistus"
-
-#: AutoPaymentEditor.php:786 CanvassEditor.php:238 DepositSlipEditor.php:97
-#: DonatedItemEditor.php:293 FamilyEditor.php:647 FamilyEditor.php:731
-#: FamilyEditor.php:795 FamilyEditor.php:869 FamilyEditor.php:891
-#: FamilyEditor.php:922 FamilyEditor.php:1115 FundRaiserEditor.php:142
-#: GroupEditor.php:167 GroupPropsEditor.php:166 NoteEditor.php:133
-#: PaddleNumEditor.php:147 PersonEditor.php:617 PersonEditor.php:775
-#: PersonEditor.php:818 PersonEditor.php:1129 PersonEditor.php:1192
-#: PersonEditor.php:1227 PledgeEditor.php:687 PropertyEditor.php:169
-#: PropertyTypeEditor.php:112 UserEditor.php:458 UserPasswordChange.php:213
-#: WhyCameEditor.php:104
+#: CanvassEditor.php:238 DepositSlipEditor.php:97 DonatedItemEditor.php:293
+#: FamilyEditor.php:647 FamilyEditor.php:731 FamilyEditor.php:795
+#: FamilyEditor.php:869 FamilyEditor.php:891 FamilyEditor.php:922
+#: FamilyEditor.php:1115 FundRaiserEditor.php:142 GroupEditor.php:167
+#: GroupPropsEditor.php:166 NoteEditor.php:133 PaddleNumEditor.php:147
+#: PersonEditor.php:617 PersonEditor.php:775 PersonEditor.php:818
+#: PersonEditor.php:1129 PersonEditor.php:1192 PersonEditor.php:1227
+#: PledgeEditor.php:648 PropertyEditor.php:169 PropertyTypeEditor.php:112
+#: UserEditor.php:458 UserPasswordChange.php:213 WhyCameEditor.php:104
 msgid "Save"
 msgstr "Salvesta"
 
-#: AutoPaymentEditor.php:804 BatchWinnerEntry.php:83 BatchWinnerEntry.php:95
-#: CSVImport.php:271 ChurchCRM/Config/Menu/Menu.php:100
-#: DirectoryReports.php:82 DonatedItemEditor.php:186 DonatedItemEditor.php:237
-#: FamilyEditor.php:1089 GroupEditor.php:94 GroupList.php:36 GroupView.php:40
+#: BatchWinnerEntry.php:83 BatchWinnerEntry.php:95 CSVImport.php:271
+#: ChurchCRM/Config/Menu/Menu.php:100 DirectoryReports.php:82
+#: DonatedItemEditor.php:186 DonatedItemEditor.php:237 FamilyEditor.php:1089
+#: GroupEditor.php:94 GroupList.php:36 GroupView.php:40
 #: Include/CountryDropDown.php:6 Include/Functions.php:856
 #: Include/Functions.php:909 MapUsingGoogle.php:96 MapUsingGoogle.php:120
 #: PaddleNumEditor.php:176 PersonEditor.php:782 PersonEditor.php:798
@@ -81,52 +69,33 @@ msgstr "Salvesta"
 msgid "Unassigned"
 msgstr "Liigitamata"
 
-#: AutoPaymentEditor.php:824
-msgid "Automatic payment type"
-msgstr "Automaatne tasumise liik"
-
-#: AutoPaymentEditor.php:854
-msgid "Payment amount"
-msgstr "Tasumise summa"
-
-#: AutoPaymentEditor.php:859
-msgid "Payment interval (months)"
-msgstr "Tasumise intervall (kuud)"
-
-#: AutoPaymentEditor.php:867 CartToGroup.php:74 EditEventTypes.php:86
-#: EditEventTypes.php:98 EventNames.php:106 EventNames.php:118
-#: EventNames.php:163 GroupReports.php:47 GroupReports.php:142
-#: PersonToGroup.php:66 sundayschool/SundaySchoolReports.php:190
+#: CartToGroup.php:74 EditEventTypes.php:86 EditEventTypes.php:98
+#: EventNames.php:106 EventNames.php:118 EventNames.php:163
+#: GroupReports.php:47 GroupReports.php:142 PersonToGroup.php:66
+#: sundayschool/SundaySchoolReports.php:190
 msgid "None"
 msgstr "Mitte ühtegi"
 
-#: AutoPaymentEditor.php:880
-msgid "inactive"
-msgstr "mitteaktiivne"
-
-#: AutoPaymentEditor.php:914 CSVExport.php:102 CSVImport.php:219
-#: CartToFamily.php:245 DirectoryReports.php:250 FamilyEditor.php:672
-#: PersonEditor.php:863 Register.php:44
-#: external/templates/registration/family-register.php:41
+#: CSVExport.php:102 CSVImport.php:219 CartToFamily.php:245
+#: DirectoryReports.php:250 FamilyEditor.php:672 PersonEditor.php:863
+#: Register.php:44 external/templates/registration/family-register.php:41
 #: queryparameteroptions_qpo.php:7
 msgid "City"
 msgstr "Linn"
 
-#: AutoPaymentEditor.php:919 CSVExport.php:107 CSVImport.php:220
-#: CartToFamily.php:250 DirectoryReports.php:254 FamilyEditor.php:679
-#: PersonEditor.php:883 Register.php:45
-#: external/templates/registration/family-register.php:44
+#: CSVExport.php:107 CSVImport.php:220 CartToFamily.php:250
+#: DirectoryReports.php:254 FamilyEditor.php:679 PersonEditor.php:883
+#: Register.php:45 external/templates/registration/family-register.php:44
 #: queryparameteroptions_qpo.php:6
 msgid "State"
 msgstr "Maakond"
 
-#: AutoPaymentEditor.php:930 CSVExport.php:122 CSVImport.php:222
-#: CartToFamily.php:270 FamilyEditor.php:699 PersonEditor.php:928
-#: Register.php:47
+#: CSVExport.php:122 CSVImport.php:222 CartToFamily.php:270
+#: FamilyEditor.php:699 PersonEditor.php:928 Register.php:47
 msgid "Country"
 msgstr "Riik"
 
-#: AutoPaymentEditor.php:936 ChurchCRM/Reports/PDF_Directory.php:305
+#: ChurchCRM/Reports/PDF_Directory.php:305
 #: ChurchCRM/Reports/PDF_Directory.php:379
 #: ChurchCRM/Reports/PDF_Directory.php:436 DirectoryReports.php:262
 #: Reports/DirectoryReport.php:285 Reports/GroupReport.php:119
@@ -134,13 +103,12 @@ msgstr "Riik"
 msgid "Phone"
 msgstr "Telefon"
 
-#: AutoPaymentEditor.php:942 CSVExport.php:142 CSVImport.php:226
-#: CartToFamily.php:311 ChurchCRM/Config/Menu/Menu.php:40
-#: ChurchCRM/Reports/PDF_Directory.php:314
+#: CSVExport.php:142 CSVImport.php:226 CartToFamily.php:311
+#: ChurchCRM/Config/Menu/Menu.php:40 ChurchCRM/Reports/PDF_Directory.php:314
 #: ChurchCRM/Reports/PDF_Directory.php:390
 #: ChurchCRM/Reports/PDF_Directory.php:447 EditEventAttendees.php:42
-#: EventAttendance.php:175 FamilyEditor.php:771 FamilyView.php:272
-#: FamilyView.php:277 FamilyView.php:359 GroupReports.php:127
+#: EventAttendance.php:175 FamilyEditor.php:771 FamilyView.php:262
+#: FamilyView.php:267 FamilyView.php:350 GroupReports.php:127
 #: PersonEditor.php:1035 PersonEditor.php:1037 PersonView.php:307
 #: PersonView.php:511 PrintView.php:294 Reports/CanvassReports.php:243
 #: Reports/ConfirmReport.php:186 Reports/ConfirmReport.php:205
@@ -153,42 +121,13 @@ msgstr "Telefon"
 #: sundayschool/SundaySchoolClassView.php:205
 #: v2/templates/cart/cartlisting.php:19
 #: v2/templates/people/family-view.php:174
-#: v2/templates/people/family-view.php:314 queryparameteroptions_qpo.php:13
+#: v2/templates/people/family-view.php:315 queryparameteroptions_qpo.php:13
 msgid "Email"
 msgstr "Email"
 
-#: AutoPaymentEditor.php:948 ElectronicPaymentList.php:210
-#: FinancialReports.php:264 FindDepositSlip.php:48 PledgeEditor.php:589
+#: FinancialReports.php:264 PledgeEditor.php:589
 msgid "Credit Card"
 msgstr "Krediitkaart"
-
-#: AutoPaymentEditor.php:956
-msgid "Vanco Credit Card Method"
-msgstr "Vanco Krediit kaart meetod"
-
-#: AutoPaymentEditor.php:965
-msgid "Expiration Month"
-msgstr "Kehtiv kuni"
-
-#: AutoPaymentEditor.php:971
-msgid "Expiration Year"
-msgstr "Kaotab kehtivuse aastal"
-
-#: AutoPaymentEditor.php:977
-msgid "Bank Name"
-msgstr "Panga nimi"
-
-#: AutoPaymentEditor.php:983
-msgid "Bank Route Number"
-msgstr "Panga SWIFT"
-
-#: AutoPaymentEditor.php:989
-msgid "Bank Account Number"
-msgstr "IBAN"
-
-#: AutoPaymentEditor.php:997
-msgid "Vanco Bank Account Method"
-msgstr "Vanco panga konto meetod"
 
 #: BackupDatabase.php:32 ChurchCRM/Config/Menu/Menu.php:197
 msgid "Backup Database"
@@ -258,8 +197,8 @@ msgstr "CSV eksport"
 msgid "Field Selection"
 msgstr "Välja valija"
 
-#: AutoPaymentEditor.php:896 CSVExport.php:66 CSVImport.php:213
-#: ManageEnvelopes.php:162 PersonEditor.php:668
+#: CSVExport.php:66 CSVImport.php:213 ManageEnvelopes.php:162
+#: PersonEditor.php:668
 #: external/templates/registration/family-register-members.php:73
 #: external/templates/verify/enter-info.php:25
 #: sundayschool/SundaySchoolDashboard.php:204
@@ -270,8 +209,7 @@ msgstr "Perekonnanimi"
 msgid "Required"
 msgstr "Kohustuslik"
 
-#: AutoPaymentEditor.php:890 CSVExport.php:77 CSVImport.php:211
-#: PersonEditor.php:646
+#: CSVExport.php:77 CSVImport.php:211 PersonEditor.php:646
 #: external/templates/registration/family-register-members.php:69
 #: external/templates/verify/enter-info.php:21
 #: sundayschool/SundaySchoolDashboard.php:203
@@ -282,10 +220,9 @@ msgstr "Eesnimi"
 msgid "Middle Name"
 msgstr "Keskmine nimi"
 
-#: AutoPaymentEditor.php:925 CSVExport.php:112 CSVImport.php:221
-#: CartToFamily.php:262 DirectoryReports.php:258 FamilyEditor.php:689
-#: PersonEditor.php:906 Register.php:46
-#: external/templates/registration/family-register.php:51
+#: CSVExport.php:112 CSVImport.php:221 CartToFamily.php:262
+#: DirectoryReports.php:258 FamilyEditor.php:689 PersonEditor.php:906
+#: Register.php:46 external/templates/registration/family-register.php:51
 #: external/templates/verify/enter-info.php:29
 msgid "Zip"
 msgstr "Indeks"
@@ -458,7 +395,7 @@ msgstr "Annetuse ümbrik"
 
 #: CSVExport.php:127 CSVImport.php:223 CartToFamily.php:281
 #: EditEventAttendees.php:43 EventAttendance.php:176 FamilyEditor.php:737
-#: FamilyView.php:254 GroupReports.php:124 PersonEditor.php:961
+#: FamilyView.php:244 GroupReports.php:124 PersonEditor.php:961
 #: PersonEditor.php:963 PersonView.php:302 PrintView.php:199
 #: Reports/ConfirmReport.php:136 Reports/ConfirmReportEmail.php:136
 #: SelectList.php:965 SelectList.php:966 SelectList.php:1041
@@ -469,28 +406,28 @@ msgstr "Annetuse ümbrik"
 #: sundayschool/SundaySchoolClassView.php:207
 #: v2/templates/people/family-list.php:33
 #: v2/templates/people/family-view.php:153
-#: v2/templates/people/family-view.php:299 queryparameteroptions_qpo.php:8
+#: v2/templates/people/family-view.php:300 queryparameteroptions_qpo.php:8
 msgid "Home Phone"
 msgstr "Kodu telefon"
 
 #: CSVExport.php:132 CSVImport.php:224 CartToFamily.php:291
-#: FamilyEditor.php:749 FamilyView.php:260 GroupReports.php:125
+#: FamilyEditor.php:749 FamilyView.php:250 GroupReports.php:125
 #: PersonEditor.php:984 PersonEditor.php:986 PersonView.php:316
 #: PrintView.php:204 Reports/ConfirmReport.php:237
 #: Reports/ConfirmReportEmail.php:234 SelectList.php:968 SelectList.php:969
 #: SelectList.php:1041 external/templates/verify/verify-family-info.php:72
 #: v2/templates/people/family-view.php:160
-#: v2/templates/people/family-view.php:304
+#: v2/templates/people/family-view.php:305
 msgid "Work Phone"
 msgstr "Töö telefon"
 
 #: CSVExport.php:137 CSVImport.php:225 CartToFamily.php:301
-#: FamilyEditor.php:759 FamilyView.php:266 PersonEditor.php:1009
+#: FamilyEditor.php:759 FamilyView.php:256 PersonEditor.php:1009
 #: PersonEditor.php:1011 PersonView.php:297 PrintView.php:209
 #: SelectList.php:971 SelectList.php:972 SelectList.php:1041
 #: external/templates/verify/verify-family-info.php:74
 #: v2/templates/people/family-view.php:167
-#: v2/templates/people/family-view.php:309
+#: v2/templates/people/family-view.php:310
 msgid "Mobile Phone"
 msgstr "Mobiil"
 
@@ -505,7 +442,7 @@ msgid "Birth Date"
 msgstr "Sünni kuupäev"
 
 #: CSVImport.php:230 CartToFamily.php:211 DirectoryReports.php:173
-#: FamilyEditor.php:805 FamilyView.php:241
+#: FamilyEditor.php:805 FamilyView.php:231
 #: external/templates/verify/verify-family-info.php:34
 #: v2/templates/people/family-view.php:140
 msgid "Wedding Date"
@@ -600,4 +537,172 @@ msgstr "Kinnita"
 #: CanvassAutomation.php:224
 msgid "Not Interested Report"
 msgstr "Huvipakkuvaid aruandeid ei ole"
+
+#: CanvassEditor.php:200 Reports/CanvassReports.php:347
+msgid "Positive"
+msgstr "Positiivne"
+
+#: CanvassEditor.php:205 Reports/CanvassReports.php:347
+msgid "Critical"
+msgstr "Kriitiline"
+
+#: CanvassEditor.php:210 Reports/CanvassReports.php:347
+msgid "Insightful"
+msgstr "Tähtsusetu"
+
+#: CanvassEditor.php:215 Reports/CanvassReports.php:347
+msgid "Financial"
+msgstr "Rahanduslik"
+
+#: CanvassEditor.php:220
+msgid "Suggestions"
+msgstr "Ettepanekud"
+
+#: CanvassEditor.php:225
+msgid "Not Interested"
+msgstr "Pole huvitatud"
+
+#: CanvassEditor.php:232
+msgid "Why Not Interested?"
+msgstr "Miks ei ole huvitatud?"
+
+#: CartToEvent.php:52 CartToEvent.php:85
+msgid "Add Cart to Event"
+msgstr "Lisa korv üritusele"
+
+#: CartToEvent.php:59
+msgid "Select the event to which you would like to add your cart"
+msgstr "Vali üritus millele sa soovid lisada korvi"
+
+#: CartToEvent.php:86
+msgid "OR"
+msgstr "VÕI"
+
+#: CartToEvent.php:87 Checkin.php:105 ListEvents.php:344
+msgid "Add New Event"
+msgstr "Lisa uus sündmus"
+
+#: CartToEvent.php:94 CartToFamily.php:325 CartToGroup.php:101
+msgid "Your cart is empty!"
+msgstr "Su korv on tühi"
+
+#: CartToFamily.php:84
+msgid "No family name entered!"
+msgstr "Ühtegi perekonnanime pole lisatud"
+
+#: CartToFamily.php:123
+msgid "Add Cart to Family"
+msgstr "Lisa perekond korvi"
+
+#: CartToFamily.php:155 Checkin.php:311 DonationFundEditor.php:150
+#: DonationFundEditor.php:213 EditEventAttendees.php:32
+#: EditEventAttendees.php:41 EventAttendance.php:174 EventNames.php:263
+#: FamilyCustomFieldsEditor.php:320 FamilyCustomFieldsEditor.php:434
+#: FamilyView.php:542 GeoPage.php:357 GroupEditor.php:73
+#: GroupPropsFormEditor.php:285 GroupPropsFormEditor.php:397 GroupView.php:255
+#: GroupView.php:288 PersonCustomFieldsEditor.php:311
+#: PersonCustomFieldsEditor.php:442 PersonView.php:684 PersonView.php:789
+#: PrintView.php:337 PrintView.php:463 PropertyEditor.php:149
+#: PropertyList.php:60 PropertyTypeEditor.php:96 PropertyTypeList.php:41
+#: Reports/CanvassReports.php:69 Reports/CanvassReports.php:237
+#: Reports/FRBidSheets.php:88 SelectList.php:988 UserList.php:54
+#: VolunteerOpportunityEditor.php:75 VolunteerOpportunityEditor.php:354
+#: VolunteerOpportunityEditor.php:421
+#: sundayschool/SundaySchoolClassView.php:202
+#: v2/templates/cart/cartlisting.php:17 v2/templates/people/family-list.php:31
+#: v2/templates/people/family-view.php:378 queryparameteroptions_qpo.php:4
+msgid "Name"
+msgstr "Nimi"
+
+#: CartToFamily.php:156
+msgid "Assign Role"
+msgstr "Määra roll"
+
+#: CartToFamily.php:172
+msgid "Already in a family"
+msgstr "Juba on perekond"
+
+#: CartToFamily.php:190
+msgid "Create new family"
+msgstr "Loo uus perekond"
+
+#: CartToFamily.php:201
+msgid "If adding a new family, enter data below."
+msgstr "Kui lisad uue perekonna, siis lisa andmed allapoole"
+
+#: CartToFamily.php:216
+msgid "Use address/contact data from"
+msgstr "Kasuta aadressi/kontakdi andme vormi"
+
+#: CartToFamily.php:220
+msgid "Only the new data below"
+msgstr "Lisa ainult uued andmed allapoole"
+
+#: CartToFamily.php:257
+msgid "(Use the textbox for countries other than US and Canada)"
+msgstr "(Kasuta teksti kasti peale USA ja Kanada riigi sisestamiseks)"
+
+#: CartToFamily.php:286 CartToFamily.php:296 CartToFamily.php:306
+#: FamilyEditor.php:745 FamilyEditor.php:755 FamilyEditor.php:765
+#: Include/Functions.php:899 PersonEditor.php:977 PersonEditor.php:1001
+#: PersonEditor.php:1025
+msgid "Do not auto-format"
+msgstr "Ära formaadi automaatselt"
+
+#: CartToFamily.php:185 CartToFamily.php:319
+msgid "Add to Family"
+msgstr "Lisa perekonnale"
+
+#: CartToGroup.php:55
+msgid "Add Cart to Group"
+msgstr "Lisa korv grupile"
+
+#: CartToGroup.php:66
+msgid "Select the group to which you would like to add your cart"
+msgstr "Vali grupp millele sa soovid lisada korvi"
+
+#: CartToGroup.php:70 GroupReports.php:43 PersonToGroup.php:62
+#: sundayschool/SundaySchoolReports.php:186
+msgid "Select Group"
+msgstr "Vali grupp"
+
+#: CartToGroup.php:85 PersonToGroup.php:79
+msgid "No Group Selected"
+msgstr "Ühtegi gruppi pole valitud"
+
+#: CartToGroup.php:92 PersonToGroup.php:86 SelectList.php:1218
+msgid "Add to Group"
+msgstr "Lisa grupp"
+
+#: v2/routes/cart.php:21
+msgid "View Your Cart"
+msgstr "Vaata oma korvi"
+
+#: v2/templates/cart/cartempty.php:10
+msgid "You have no items in your cart."
+msgstr "Su korv on tühi"
+
+#: v2/templates/cart/cartempty.php:23
+msgid "Back to Menu"
+msgstr "Tagasi menüüsse"
+
+#: v2/templates/cart/cartfunctions.php:14
+msgid "Empty Cart"
+msgstr "Tühjenda korv"
+
+#: v2/templates/cart/cartfunctions.php:17
+msgid "Empty Cart to Group"
+msgstr "Tühjenda grupi korv"
+
+#: v2/templates/cart/cartfunctions.php:23
+msgid "Empty Cart to Family"
+msgstr "Tühjenda pere korv"
+
+#: v2/templates/cart/cartfunctions.php:27
+msgid "Empty Cart to Event"
+msgstr "Tühjenda Sündmuse korv"
+
+#: v2/templates/cart/cartfunctions.php:38
+msgid "Name Tags"
+msgstr "Nime Tag"
 
