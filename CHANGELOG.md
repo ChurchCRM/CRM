@@ -1,5 +1,35 @@
 # Changelog
 
+## 3.0.13 (29/11/2018)
+*No changelog for this release.*
+
+---
+
+## 3.0.12 (28/11/2018)
+
+#### Core Functionality
+
+- [**Backend System**][**Installation / Upgrade**][**Security**][**Web Report**] Upgrade to 3.0.11 overwrote .htaccess [#4530](https://github.com/ChurchCRM/CRM/issues/4530)
+
+#### Inner Beauty:
+
+- [**Backend System**][**Installation / Upgrade**][**Security**][**Web Report**] Upgrade to 3.0.11 overwrote .htaccess [#4530](https://github.com/ChurchCRM/CRM/issues/4530)
+
+---
+
+## 3.0.11 (20/11/2018)
+
+#### Enhancements:
+
+- [**Platform: Shared Hosting**][**enhancement**][**question**] Photos are not being loaded onto the system [#2229](https://github.com/ChurchCRM/CRM/issues/2229)
+
+#### Core Functionality
+
+- [**Installation / Upgrade**][**Web Report**] How to Move ChurchCRM [#4494](https://github.com/ChurchCRM/CRM/issues/4494)
+- [**Installation / Upgrade**][**Platform: Database**][**Platform: Self-Hosted**] 426 Upgrade of database required [#4487](https://github.com/ChurchCRM/CRM/issues/4487)
+
+---
+
 ## 3.0.10 (13/09/2018)
 
 #### Enhancements:
