@@ -30,7 +30,7 @@ CREATE TABLE `calendar_events` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
---
+-n
 -- Dumping data for table `calendar_events`
 --
 
@@ -1627,7 +1627,7 @@ CREATE TABLE `version_ver` (
 LOCK TABLES `version_ver` WRITE;
 /*!40000 ALTER TABLE `version_ver` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `version_ver` VALUES (1,'3.0.9','2018-07-22 20:14:23',NULL);
+INSERT INTO `version_ver` VALUES (1,'3.1.0','2018-12-04 20:14:23',NULL);
 /*!40000 ALTER TABLE `version_ver` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
