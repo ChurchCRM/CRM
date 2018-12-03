@@ -206,12 +206,13 @@ namespace ChurchCRM\Backup
           unlink($SqlFile->getPathname());
       }
       
-      private function EncryptBackupFile() {
-        LoggerUtils::getAppLogger()->info("Encrypting backup file: ".$this->BackupFile);
-        $tempfile = new \SplFileInfo($this->BackupFile->getPathname()."temp");
-        rename($this->BackupFile, $tempfile);
-        File::encryptFileWithPassword($tempfile, $this->BackupFile, $this->BackupPassword);
-        LoggerUtils::getAppLogger()->info("Finished ecrypting backup file");
+      private function EncryptBackupFile()
+      {
+          LoggerUtils::getAppLogger()->info("Encrypting backup file: ".$this->BackupFile);
+          $tempfile = new \SplFileInfo($this->BackupFile->getPathname()."temp");
+          rename($this->BackupFile, $tempfile);
+          File::encryptFileWithPassword($tempfile, $this->BackupFile, $this->BackupPassword);
+          LoggerUtils::getAppLogger()->info("Finished ecrypting backup file");
       }
       public function Execute()
       {
@@ -259,7 +260,7 @@ namespace ChurchCRM\Backup
        */
       private $IsBackupEncrypted;
       /**
-       * 
+       *
        * @var String
        */
       private $restorePassword;
@@ -290,25 +291,24 @@ namespace ChurchCRM\Backup
           LoggerUtils::getAppLogger()->info("Restore job created; ready to execute");
       }
    
-      private function DecryptBackup() {
-        LoggerUtils::getAppLogger()->info("Decrypting file: " . $this->RestoreFile);
-        $this->restorePassword = InputUtils::FilterString($_POST['restorePassword']);
-        $tempfile = new \SplFileInfo($this->RestoreFile->getPathname()."temp");
+      private function DecryptBackup()
+      {
+          LoggerUtils::getAppLogger()->info("Decrypting file: " . $this->RestoreFile);
+          $this->restorePassword = InputUtils::FilterString($_POST['restorePassword']);
+          $tempfile = new \SplFileInfo($this->RestoreFile->getPathname()."temp");
         
-        try {
-          File::decryptFileWithPassword($this->RestoreFile, $tempfile, $this->restorePassword);
-          rename($tempfile, $this->RestoreFile);
-          LoggerUtils::getAppLogger()->info("File decrypted");
-        }
-        catch (\Defuse\Crypto\Exception\WrongKeyOrModifiedCiphertextException $ex) {
-          if ($ex->getMessage() == 'Bad version header.') {
-             LoggerUtils::getAppLogger()->info("Bad version header; this file probably wasn't encrypted");
+          try {
+              File::decryptFileWithPassword($this->RestoreFile, $tempfile, $this->restorePassword);
+              rename($tempfile, $this->RestoreFile);
+              LoggerUtils::getAppLogger()->info("File decrypted");
+          } catch (\Defuse\Crypto\Exception\WrongKeyOrModifiedCiphertextException $ex) {
+              if ($ex->getMessage() == 'Bad version header.') {
+                  LoggerUtils::getAppLogger()->info("Bad version header; this file probably wasn't encrypted");
+              } else {
+                  LoggerUtils::getAppLogger()->error($ex->getMessage());
+                  throw $ex;
+              }
           }
-          else{
-            LoggerUtils::getAppLogger()->error($ex->getMessage());
-            throw $ex;
-          }
-        }
       }
       private function DiscoverBackupType()
       {
@@ -370,10 +370,10 @@ namespace ChurchCRM\Backup
     
       public function Execute()
       {
-        LoggerUtils::getAppLogger()->info("Executing restore job");
-        try {
-          $this->DecryptBackup();
-          switch ($this->BackupType) {
+          LoggerUtils::getAppLogger()->info("Executing restore job");
+          try {
+              $this->DecryptBackup();
+              switch ($this->BackupType) {
             case BackupType::SQL:
               $this->RestoreSQLBackup($this->RestoreFile);
               break;
@@ -381,12 +381,12 @@ namespace ChurchCRM\Backup
               $this->RestoreFullBackup();
               break;
           }
-          $this->PostRestoreCleanup();
-          LoggerUtils::getAppLogger()->info("Finished executing restore job.  Cleaning out temp folder.");
-        } catch (Exception $ex) {
-          LoggerUtils::getAppLogger()->error("Error restoring backup: " . $ex);
-        }
-        $this->TempFolder = $this->CreateEmptyTempFolder(); 
+              $this->PostRestoreCleanup();
+              LoggerUtils::getAppLogger()->info("Finished executing restore job.  Cleaning out temp folder.");
+          } catch (Exception $ex) {
+              LoggerUtils::getAppLogger()->error("Error restoring backup: " . $ex);
+          }
+          $this->TempFolder = $this->CreateEmptyTempFolder();
       }
   }
 
