@@ -14,10 +14,9 @@
 require_once dirname(__FILE__).'/../vendor/autoload.php';
 
 use ChurchCRM\Bootstrapper;
+
 // enable this line to debug the bootstrapper process (database connections, etc).
 // this makes a lot of log noise, so don't leave it on for normal production use.
-//$debugBootstrapper = true; 
-Bootstrapper::init($sSERVERNAME, $dbPort,$sUSER,$sPASSWORD,$sDATABASE,$sRootPath,$bLockURL,$URL);
+//$debugBootstrapper = true;
+Bootstrapper::init($sSERVERNAME, $dbPort, $sUSER, $sPASSWORD, $sDATABASE, $sRootPath, $bLockURL, $URL);
 require 'SimpleConfig.php';
-
-?>
