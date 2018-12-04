@@ -10,6 +10,7 @@ use ChurchCRM\dto\SystemURLs;
 class LoggerUtils
 {
     private static $appLogger;
+    private static $appLogHandler;
     private static $cspLogger; 
     public static function getLogLevel()
     {
@@ -24,13 +25,28 @@ class LoggerUtils
     /**
      * @return Logger
      */
-    public static function getAppLogger()
+    public static function getAppLogger($level=null)
     {
       if (is_null(self::$appLogger)){
+        // if $level is null 
+        // (meaning this function was invoked without explicitly setting the level),
+        //  then get the level from the database
+        if (is_null($level)) {
+          $level = self::getLogLevel();
+        }
         self::$appLogger = new Logger('defaultLogger');
-        self::$appLogger->pushHandler(new StreamHandler(self::buildLogFilePath("app"), self::getLogLevel()));
+        //hold a reference to the handler object so that ResetAppLoggerLevel can be called later on
+        self::$appLogHandler = new StreamHandler(self::buildLogFilePath("app"), $level);
+        self::$appLogger->pushHandler(self::$appLogHandler);
       }
       return self::$appLogger;
+    }
+    
+    public static function ResetAppLoggerLevel() {
+      // if the app log hander was initialized (in the boostrapper) to a specific level
+      // before the database initialization occurred
+      // we provide a function to reset the app logger to what's defined in the databse.
+      self::$appLogHandler->setLevel(self::getLogLevel());
     }
 
     public static function getCSPLogger()

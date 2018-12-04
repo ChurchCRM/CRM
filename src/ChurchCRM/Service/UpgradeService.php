@@ -31,6 +31,7 @@ class UpgradeService
           $dbUpdates = json_decode($dbUpdatesFile, true);
           $errorFlag = false;
           $connection = Propel::getConnection();
+          $upgradeScriptsExecuted = 0;
           foreach ($dbUpdates as $dbUpdate) {
             try {
               if (in_array(SystemService::getDBVersion(), $dbUpdate['versions'])) {
@@ -54,12 +55,18 @@ class UpgradeService
                       $version->setUpdateEnd(new \DateTime());
                       $version->save();
                   }
+                // increment the number of scripts executed.
+                // If no scripts run, then there is no supported upgrade path defined in the JSON file
+                $upgradeScriptsExecuted ++; 
               }
             }
             catch (\Exception $exc) {
               $logger->error(gettext("Failure executing upgrade script").": ".$scriptName.": ".$exc->getMessage());
               throw $exc;
             }
+          }
+          if( $upgradeScriptsExecuted === 0 ) { 
+            $logger->warn("No upgrade path for " . SystemService::getDBVersion() . " to " . $_SESSION['sSoftwareInstalledVersion']); 
           }
           // always rebuild the views
           SQLUtils::sqlImport(SystemURLs::getDocumentRoot() . '/mysql/upgrade/rebuild_views.sql', $connection);

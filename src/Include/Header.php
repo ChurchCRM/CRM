@@ -17,10 +17,6 @@ use ChurchCRM\dto\Cart;
 use ChurchCRM\Service\TaskService;
 use ChurchCRM\Utils\RedirectUtils;
 
-if (!SystemService::isDBCurrent()) {  //either the DB is good, or the upgrade was successful.
-    RedirectUtils::Redirect('SystemDBUpdate.php');
-    exit;
-}
 
 
 $taskService = new TaskService();
