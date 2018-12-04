@@ -190,11 +190,7 @@ class SystemService
       }
     }
 
-    static public function isDBCurrent()
-    {
-        return SystemService::getDBVersion() == SystemService::getInstalledVersion();
-    }
-    
+  
     static public function getDBTableExists($tableName) {
       if (!isset($_SESSION['CRM_DB_TABLES']))
       {
