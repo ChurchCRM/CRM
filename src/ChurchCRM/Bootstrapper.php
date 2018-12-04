@@ -220,7 +220,7 @@ namespace ChurchCRM
             ],
         ];
       }
-      private static function configureUserEnvironment()
+      private static function configureUserEnvironment()  // TODO: This function needs to stop creating global variable-variables.
       {
           global $cnInfoCentral;
           if (isset($_SESSION['user'])) {      // Not set on Login.php
@@ -231,6 +231,8 @@ namespace ChurchCRM
               $rsConfig = mysqli_query($cnInfoCentral, $sSQL);     // Can't use RunQuery -- not defined yet
               if ($rsConfig) {
                   while (list($ucfg_name, $value) = mysqli_fetch_row($rsConfig)) {
+                    //TODO:  THESE Variable-Variables must go awawy
+                    // VV's will not work when set here; so all must be refactored away in all use cases throughout the code.
                       $$ucfg_name = $value;
                       $_SESSION[$ucfg_name] = $value;
                   }
