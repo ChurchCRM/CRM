@@ -17,8 +17,6 @@ use ChurchCRM\dto\Cart;
 use ChurchCRM\Service\TaskService;
 use ChurchCRM\Utils\RedirectUtils;
 
-
-
 $taskService = new TaskService();
 
 //
