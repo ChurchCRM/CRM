@@ -19,14 +19,14 @@ if (Bootstrapper::isDBCurrent()) {
 
 if (isset($_GET['upgrade']) && InputUtils::FilterString($_GET['upgrade']) == "true") {
     try {
-      LoggerUtils::getAppLogger()->info("Beginning database upgrade");
-      UpgradeService::upgradeDatabaseVersion();
-      LoggerUtils::getAppLogger()->info("Complete database upgrade; redirecting to Main menu");
-      RedirectUtils::Redirect('Menu.php');
-      exit;
+        LoggerUtils::getAppLogger()->info("Beginning database upgrade");
+        UpgradeService::upgradeDatabaseVersion();
+        LoggerUtils::getAppLogger()->info("Complete database upgrade; redirecting to Main menu");
+        RedirectUtils::Redirect('Menu.php');
+        exit;
     } catch (Exception $ex) {
-      $errorMessage = $ex->getMessage();
-      LoggerUtils::getAppLogger()->error("Error updating database: " .$errorMessage);
+        $errorMessage = $ex->getMessage();
+        LoggerUtils::getAppLogger()->error("Error updating database: " .$errorMessage);
     }
 }
 
