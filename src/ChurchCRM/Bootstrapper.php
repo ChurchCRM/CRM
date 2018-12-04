@@ -231,8 +231,8 @@ namespace ChurchCRM
               $rsConfig = mysqli_query($cnInfoCentral, $sSQL);     // Can't use RunQuery -- not defined yet
               if ($rsConfig) {
                   while (list($ucfg_name, $value) = mysqli_fetch_row($rsConfig)) {
-                    //TODO:  THESE Variable-Variables must go awawy
-                    // VV's will not work when set here; so all must be refactored away in all use cases throughout the code.
+                      //TODO:  THESE Variable-Variables must go awawy
+                      // VV's will not work when set here; so all must be refactored away in all use cases throughout the code.
                       $$ucfg_name = $value;
                       $_SESSION[$ucfg_name] = $value;
                   }
