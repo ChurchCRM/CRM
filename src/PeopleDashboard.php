@@ -12,6 +12,7 @@ use ChurchCRM\Service\DashboardService;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\PersonQuery;
 use ChurchCRM\ListOptionQuery;
+use ChurchCRM\SessionUser;
 
 // Set the page title
 $sPageTitle = gettext('People Dashboard');
@@ -227,7 +228,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
         <br>
         <?php echo gettext('Report on group and roles selected (it may be a multi-page PDF).'); ?>
         </p>
-        <?php if ($bCreateDirectory) {
+        <?php if (SessionUser::getUser()->isCreateDirectoryEnabled()) {
          ?>
           <p><a class="MediumText"
                 href="DirectoryReports.php"><?= gettext('People Directory') ?></a><br><?= gettext('Printable directory of all people, grouped by family where assigned') ?>
