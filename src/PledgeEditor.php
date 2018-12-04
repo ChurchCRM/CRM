@@ -624,45 +624,6 @@ require 'Include/Header.php';
 
     </div>
 
-
-    <?php
-    if ($dep_Type == 'CreditCard' || $dep_Type == 'BankDraft') {
-        ?>
-    <div class="col-lg-6">
-
-            <tr>
-              <td class="<?= $PledgeOrPayment == 'Pledge' ? 'LabelColumn' : 'PaymentLabelColumn' ?>"><?= gettext('Choose online payment method') ?></td>
-              <td class="TextColumnWithBottomBorder">
-                <select name="AutoPay">
-      <?php
-                          echo '<option value=0';
-        if ($iAutID == 0) {
-            echo ' selected';
-        }
-        echo '>'.gettext('Select online payment record')."</option>\n";
-        $sSQLTmp = 'SELECT aut_ID, aut_CreditCard, aut_BankName, aut_Route, aut_Account FROM autopayment_aut WHERE aut_FamID='.$iFamily;
-        $rsFindAut = RunQuery($sSQLTmp);
-        while ($aRow = mysqli_fetch_array($rsFindAut)) {
-            extract($aRow);
-            if ($aut_CreditCard != '') {
-                $showStr = gettext('Credit card ...').mb_substr($aut_CreditCard, strlen($aut_CreditCard) - 4, 4);
-            } else {
-                $showStr = gettext('Bank account ').$aut_BankName.' '.$aut_Route.' '.$aut_Account;
-            }
-            echo '<option value='.$aut_ID;
-            if ($iAutID == $aut_ID) {
-                echo ' selected';
-            }
-            echo '>'.$showStr."</option>\n";
-        } ?>
-                </select>
-              </td>
-            </tr>
-
-      </div>
-    <?php
-    } ?>
-
     <div class="col-lg-6">
        <?php if (SystemConfig::getValue('bUseScannedChecks') && ($dep_Type == 'Bank' || $PledgeOrPayment == 'Pledge')) {
         ?>

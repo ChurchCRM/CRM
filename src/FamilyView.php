@@ -26,7 +26,7 @@ $mailchimp = new MailChimpService();
 $curYear = (new DateTime)->format("Y");
 
 //Set the page title
-$sPageTitle = gettext("Family View");
+$sPageTitle = gettext("Family");
 require "Include/Header.php";
 
 //Get the FamilyID out of the querystring
@@ -112,16 +112,6 @@ $sSQL = "SELECT plg_plgID, plg_FYID, plg_date, plg_amount, plg_schedule, plg_met
      LEFT JOIN donationfund_fun b ON plg_fundID = b.fun_ID
      WHERE plg_famID = " . $iFamilyID . " ORDER BY pledge_plg.plg_date";
 $rsPledges = RunQuery($sSQL);
-
-//Get the automatic payments for this family
-$sSQL = "SELECT *, a.per_FirstName AS EnteredFirstName,
-               a.Per_LastName AS EnteredLastName,
-               b.fun_Name AS fundName
-     FROM autopayment_aut
-     LEFT JOIN person_per a ON aut_EditedBy = a.per_ID
-     LEFT JOIN donationfund_fun b ON aut_Fund = b.fun_ID
-     WHERE aut_famID = " . $iFamilyID . " ORDER BY autopayment_aut.aut_NextPayDate";
-$rsAutoPayments = RunQuery($sSQL);
 
 //Get the Properties assigned to this Family
 $sSQL = "SELECT pro_Name, pro_ID, pro_Prompt, r2p_Value, prt_Name, pro_prt_ID
@@ -444,8 +434,6 @@ $bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() || ($_SESSION['user']->i
                                            data-toggle="tab"><?= gettext("Assigned Properties") ?></a></li>
                 <?php if ($_SESSION['user']->isFinanceEnabled()) {
                     ?>
-                    <li role="presentation"><a href="#finance" aria-controls="finance" role="tab"
-                                               data-toggle="tab"><?= gettext("Automatic Payments") ?></a></li>
                     <li role="presentation"><a href="#pledges" aria-controls="pledges" role="tab"
                                                data-toggle="tab"><?= gettext("Pledges and Payments") ?></a></li>
                     <?php
@@ -650,93 +638,6 @@ $bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() || ($_SESSION['user']->i
                 </div>
                 <?php if ($_SESSION['user']->isFinanceEnabled()) {
         ?>
-                <div role="tab-pane fade" class="tab-pane" id="finance">
-                    <div class="main-box clearfix">
-                        <div class="main-box-body clearfix">
-                            <?php if (mysqli_num_rows($rsAutoPayments) > 0) {
-            ?>
-                                <table cellpadding="5" cellspacing="0" width="100%">
-
-                                    <tr class="TableHeader">
-                                        <td><?= gettext("Type") ?></td>
-                                        <td><?= gettext("Next payment date") ?></td>
-                                        <td><?= gettext("Amount") ?></td>
-                                        <td><?= gettext("Interval (months)") ?></td>
-                                        <td><?= gettext("Fund") ?></td>
-                                        <td><?= gettext("Edit") ?></td>
-                                        <td><?= gettext("Delete") ?></td>
-                                        <td><?= gettext("Date Updated") ?></td>
-                                        <td><?= gettext("Updated By") ?></td>
-                                    </tr>
-
-                                    <?php
-
-                                    $tog = 0;
-
-            //Loop through all automatic payments
-            while ($aRow = mysqli_fetch_array($rsAutoPayments)) {
-                $tog = (!$tog);
-
-                extract($aRow);
-
-                $payType = "Disabled";
-                if ($aut_EnableBankDraft) {
-                    $payType = "Bank Draft";
-                }
-                if ($aut_EnableCreditCard) {
-                    $payType = "Credit Card";
-                }
-
-                //Alternate the row style
-                if ($tog) {
-                    $sRowClass = "RowColorA";
-                } else {
-                    $sRowClass = "RowColorB";
-                } ?>
-
-                                        <tr class="<?= $sRowClass ?>">
-                                            <td>
-                                                <?= $payType ?>&nbsp;
-                                            </td>
-                                            <td>
-                                                <?= $aut_NextPayDate ?>&nbsp;
-                                            </td>
-                                            <td>
-                                                <?= $aut_Amount ?>&nbsp;
-                                            </td>
-                                            <td>
-                                                <?= $aut_Interval ?>&nbsp;
-                                            </td>
-                                            <td>
-                                                <?= gettext($fundName) ?>&nbsp;
-                                            </td>
-                                            <td>
-                                                <a
-                                                        href="AutoPaymentEditor.php?AutID=<?= $aut_ID ?>&amp;FamilyID=<?= $iFamilyID ?>&amp;linkBack=FamilyView.php?FamilyID=<?= $iFamilyID ?>"><?= gettext("Edit") ?></a>
-                                            </td>
-                                            <td>
-                                                <a
-                                                        href="AutoPaymentDelete.php?AutID=<?= $aut_ID ?>&amp;linkBack=FamilyView.php?FamilyID=<?= $iFamilyID ?>"><?= gettext("Delete") ?></a>
-                                            </td>
-                                            <td>
-                                                <?= $aut_DateLastEdited ?>&nbsp;
-                                            </td>
-                                            <td>
-                                                <?= $EnteredFirstName . " " . $EnteredLastName ?>&nbsp;
-                                            </td>
-                                        </tr>
-                                        <?php
-            } ?>
-                                </table>
-                                <?php
-        } ?>
-                            <p align="center">
-                                <a class="SmallText"
-                                   href="AutoPaymentEditor.php?AutID=-1&FamilyID=<?= $fam_ID ?>&amp;linkBack=FamilyView.php?FamilyID=<?= $iFamilyID ?>"><?= gettext("Add a new automatic payment") ?></a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
                 <div role="tab-pane fade" class="tab-pane" id="pledges">
                     <div class="main-box clearfix">
                         <div class="main-box-body clearfix">

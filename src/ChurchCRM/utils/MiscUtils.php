@@ -45,7 +45,7 @@ class MiscUtils {
   }
   
   public static function getPhotoCacheExpirationTimestamp() {
-    $cacheLength = SystemConfig::getValue(iPhotoClientCacheDuration);
+    $cacheLength = SystemConfig::getValue("iPhotoClientCacheDuration");
     $cacheLength = MiscUtils::getRandomCache($cacheLength,0.5*$cacheLength);
     //echo time() +  $cacheLength;
     //die();

@@ -513,7 +513,7 @@ $bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() ||
             </tr>
             </thead>
             <tbody>
-            <?php foreach ($person->getOtherFamilyMembers() as $familyMember) {
+            <?php foreach ($person->getFamily()->getPeople() as $familyMember) {
                               $tmpPersonId = $familyMember->getId(); ?>
               <tr>
                 <td>

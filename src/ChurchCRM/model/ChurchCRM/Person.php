@@ -43,7 +43,7 @@ class Person extends BasePerson implements iPhoto
     {
         return $this->getGender() == 2;
     }
-    
+
     public function getGenderName()
     {
       switch (strtolower($this->getGender())) {
@@ -108,7 +108,7 @@ class Person extends BasePerson implements iPhoto
 
         return $familyRole;
     }
-    
+
     public function getFamilyRoleName()
     {
         $roleName = '';
@@ -119,7 +119,7 @@ class Person extends BasePerson implements iPhoto
 
         return $roleName;
     }
-    
+
     public function getClassification()
     {
       $classification = null;
@@ -129,7 +129,7 @@ class Person extends BasePerson implements iPhoto
       }
       return $classification;
     }
-    
+
     public function getClassificationName()
     {
       $classificationName = '';
@@ -187,19 +187,6 @@ class Person extends BasePerson implements iPhoto
         $user = UserQuery::create()->findPk($this->getId());
 
         return !is_null($user);
-    }
-
-    public function getOtherFamilyMembers()
-    {
-        $familyMembers = $this->getFamily()->getPeople();
-        $otherFamilyMembers = [];
-        foreach ($familyMembers as $member) {
-            if ($member->getId() != $this->getId()) {
-                array_push($otherFamilyMembers, $member);
-            }
-        }
-
-        return $otherFamilyMembers;
     }
 
     /**
@@ -311,7 +298,7 @@ class Person extends BasePerson implements iPhoto
         return false;
 
     }
-        
+
     /**
      * Returns a string of a person's full name, formatted as specified by $Style
      * $Style = 0  :  "Title FirstName MiddleName LastName, Suffix"
@@ -536,11 +523,11 @@ class Person extends BasePerson implements iPhoto
         $array['Address']=$this->getAddress();
         return $array;
     }
-    
+
     public function getThumbnailURL() {
       return SystemURLs::getRootPath() . '/api/person/' . $this->getId() . '/thumbnail';
     }
-    
+
     public function getEmail() {
       if (parent::getEmail() == null)
       {

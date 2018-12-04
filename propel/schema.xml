@@ -314,51 +314,6 @@
         </vendor>
     </table>
 
-
-    <table name="autopayment_aut" idMethod="native" phpName="AutoPayment" description="This contains information for automatic electronic donations or payments for events">
-        <column name="aut_ID" phpName="Id" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" primaryKey="true"
-                autoIncrement="true" required="true"/>
-        <column name="aut_FamID" phpName="Familyid" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned"
-                required="true" defaultValue="0"/>
-        <column name="aut_EnableBankDraft" phpName="EnableBankDraft" type="BOOLEAN" size="1"
-                sqlType="tinyint(1) unsigned" required="true" defaultValue="false"/>
-        <column name="aut_EnableCreditCard" phpName="EnableCreditCard" type="BOOLEAN" size="1"
-                sqlType="tinyint(1) unsigned" required="true" defaultValue="false"/>
-        <column name="aut_NextPayDate" phpName="NextPayDate" type="DATE"/>
-        <column name="aut_FYID" phpName="Fyid" type="SMALLINT" size="9" required="true" defaultValue="9"/>
-        <column name="aut_Amount" phpName="Amount" type="DECIMAL" size="6" scale="2" required="true"
-                defaultValue="0.00"/>
-        <column name="aut_Interval" phpName="Interval" type="TINYINT" size="3" required="true" defaultValue="1"/>
-        <column name="aut_Fund" phpName="Fund" type="SMALLINT" size="6" required="true" defaultValue="0"/>
-        <column name="aut_FirstName" phpName="FirstName" type="VARCHAR" size="50"/>
-        <column name="aut_LastName" phpName="LastName" type="VARCHAR" size="50"/>
-        <column name="aut_Address1" phpName="Address1" type="VARCHAR" size="255"/>
-        <column name="aut_Address2" phpName="Address2" type="VARCHAR" size="255"/>
-        <column name="aut_City" phpName="City" type="VARCHAR" size="50"/>
-        <column name="aut_State" phpName="State" type="VARCHAR" size="50"/>
-        <column name="aut_Zip" phpName="Zip" type="VARCHAR" size="50"/>
-        <column name="aut_Country" phpName="Country" type="VARCHAR" size="50"/>
-        <column name="aut_Phone" phpName="Phone" type="VARCHAR" size="30"/>
-        <column name="aut_Email" phpName="Email" type="VARCHAR" size="100"/>
-        <column name="aut_CreditCard" phpName="CreditCard" type="VARCHAR" size="50"/>
-        <column name="aut_ExpMonth" phpName="ExpMonth" type="VARCHAR" size="2"/>
-        <column name="aut_ExpYear" phpName="ExpYear" type="VARCHAR" size="4"/>
-        <column name="aut_BankName" phpName="BankName" type="VARCHAR" size="50"/>
-        <column name="aut_Route" phpName="Route" type="VARCHAR" size="30"/>
-        <column name="aut_Account" phpName="Account" type="VARCHAR" size="30"/>
-        <column name="aut_DateLastEdited" phpName="DateLastEdited" type="TIMESTAMP"/>
-        <column name="aut_EditedBy" phpName="Editedby" type="SMALLINT" size="5" sqlType="smallint(5) unsigned"
-                defaultValue="0"/>
-        <column name="aut_Serial" phpName="Serial" type="SMALLINT" size="9" required="true" defaultValue="1"/>
-        <column name="aut_CreditCardVanco" phpName="Creditcardvanco" type="VARCHAR" size="50"/>
-        <column name="aut_AccountVanco" phpName="AccountVanco" type="VARCHAR" size="50"/>
-        <unique name="aut_ID">
-            <unique-column name="aut_ID"/>
-        </unique>
-        <vendor type="mysql">
-            <parameter name="Engine" value="InnoDB"/>
-        </vendor>
-    </table>
     <table name="canvassdata_can" idMethod="native" phpName="CanvassData" description="this contains information about the results of canvassing families">
         <column name="can_ID" phpName="Id" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" primaryKey="true"
                 autoIncrement="true" required="true"/>
