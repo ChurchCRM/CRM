@@ -166,7 +166,8 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
       </a>
     </div>
   </div>
-  <?php if ( SystemConfig::getValue('bEnabledSundaySchool') ){ ?> 
+  <?php if (SystemConfig::getValue('bEnabledSundaySchool')) {
+         ?> 
   <!-- ./col -->
   <div class="col-lg-3 col-md-6 col-sm-6">
     <!-- small box -->
@@ -188,7 +189,8 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
       </a>
     </div>
   </div>
-  <?php } ?>
+  <?php
+     } ?>
   <!-- ./col -->
   <div class="col-lg-3 col-md-6 col-sm-6">
     <!-- small box -->
