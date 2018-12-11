@@ -322,6 +322,7 @@ class SystemService
                   LoggerUtils::getAppLogger()->addInfo("Not starting application integrity check.  Last application integrity check run: ".SystemConfig::getValue('sLastIntegrityCheckTimeStamp'));  
                 }
         }
+        LoggerUtils::getAppLogger()->addInfo("Finished background job processing");
     }
 
     public function downloadLatestRelease()
