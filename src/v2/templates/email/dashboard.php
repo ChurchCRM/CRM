@@ -3,7 +3,6 @@
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\SessionUser;
 
-require SystemURLs::getDocumentRoot() . '/Include/SimpleConfig.php';
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 ?>
