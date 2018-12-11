@@ -82,6 +82,14 @@ namespace ChurchCRM
           }
           LoggerUtils::ResetAppLoggerLevel();
       }
+      /*** 
+       * Gets a LocaleInfo object for the currently configured system sLanguage
+       * 
+       * @return ChurchCRM\LocaleInfo
+       */
+      public static function GetCurrentLocale() {
+        return new LocaleInfo(SystemConfig::getValue('sLanguage'));
+      }
       
       private static function ConfigureLocale()
       {
@@ -91,8 +99,8 @@ namespace ChurchCRM
               date_default_timezone_set(SystemConfig::getValue('sTimeZone'));
           }
 
-          $localeInfo = new LocaleInfo(SystemConfig::getValue('sLanguage'));
-          self::$bootStrapLogger->debug("Setting locale to: " . SystemConfig::getValue('sLanguage'));
+          $localeInfo = Bootstrapper::GetCurrentLocale();
+          self::$bootStrapLogger->debug("Setting locale to: " . $localeInfo->getLocale());
           setlocale(LC_ALL, $localeInfo->getLocale());
 
           // Get numeric and monetary locale settings.
