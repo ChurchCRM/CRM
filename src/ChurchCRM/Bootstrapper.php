@@ -70,6 +70,7 @@ namespace ChurchCRM
           SystemConfig::init(ConfigQuery::create()->find());
           self::configureLogging();
           self::configureUserEnvironment();
+          self::ConfigureLocale();
           if (!self::isDBCurrent()) {
               if (!strpos($_SERVER['SCRIPT_NAME'], "SystemDBUpdate")) {
                   self::$bootStrapLogger->info(print_r($_SERVER, true));
@@ -80,6 +81,33 @@ namespace ChurchCRM
               }
           }
           LoggerUtils::ResetAppLoggerLevel();
+      }
+      
+      private static function ConfigureLocale() {
+        global $aLocaleInfo,$localeInfo;
+        if (SystemConfig::getValue('sTimeZone')) {
+          self::$bootStrapLogger->debug("Setting TimeZone to: " . SystemConfig::getValue('sTimeZone'));
+          date_default_timezone_set(SystemConfig::getValue('sTimeZone'));
+        }
+
+        $localeInfo = new LocaleInfo(SystemConfig::getValue('sLanguage'));
+        self::$bootStrapLogger->debug("Setting locale to: " . SystemConfig::getValue('sLanguage'));
+        setlocale(LC_ALL, $localeInfo->getLocale());
+
+        // Get numeric and monetary locale settings.
+        $aLocaleInfo = $localeInfo->getLocaleInfo();
+
+        // This is needed to avoid some bugs in various libraries like fpdf.
+        // http://www.velanhotels.com/fpdf/FAQ.htm#6
+        setlocale(LC_NUMERIC, 'C');
+
+        $domain = 'messages';
+        $sLocaleDir = SystemURLs::getDocumentRoot() . '/locale/textdomain';
+        self::$bootStrapLogger->debug("Setting local text domain bind to: " . $sLocaleDir);
+        bind_textdomain_codeset($domain, 'UTF-8');
+        bindtextdomain($domain, $sLocaleDir);
+        textdomain($domain);
+        self::$bootStrapLogger->debug("Locale configuration complete");
       }
       
       private static function initMySQLI()
