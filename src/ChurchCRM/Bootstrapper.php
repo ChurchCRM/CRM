@@ -239,8 +239,9 @@ namespace ChurchCRM
           self::$serviceContainer->setLogger('defaultLogger', $ormLogger);
       }
       
-      public static function GetDSN() {
-        return 'mysql:host=' . self::$databaseServerName . ';port='.self::$databasePort.';dbname=' . self::$databaseName;
+      public static function GetDSN()
+      {
+          return 'mysql:host=' . self::$databaseServerName . ';port='.self::$databasePort.';dbname=' . self::$databaseName;
       }
       
       private static function buildConnectionManagerConfig()
