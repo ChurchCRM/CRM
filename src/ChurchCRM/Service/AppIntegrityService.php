@@ -4,6 +4,7 @@ namespace ChurchCRM\Service;
 
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\Prerequisite;
+use ChurchCRM\Utils\LoggerUtils;
 
 class AppIntegrityService
 {
@@ -13,12 +14,24 @@ class AppIntegrityService
     $integrityCheckFile = SystemURLs::getDocumentRoot().'/integrityCheck.json';
     if (is_null(AppIntegrityService::$IntegrityCheckDetails))
     {
+      LoggerUtils::getAppLogger()->debug('Integrity check results not cached; reloading from file');
       if (file_exists($integrityCheckFile)) {
+        LoggerUtils::getAppLogger()->info('Integrity check result file found at: ' . $integrityCheckFile);
         AppIntegrityService::$IntegrityCheckDetails = json_decode(file_get_contents($integrityCheckFile));
-      } else {
+        if (is_null(AppIntegrityService::$IntegrityCheckDetails))
+        {
+          LoggerUtils::getAppLogger()->warn("Error decoding integrity check result file: " . $integrityCheckFile);
           AppIntegrityService::$IntegrityCheckDetails->status = 'failure';
-          AppIntegrityService::$IntegrityCheckDetails->message = gettext("integrityCheck.json file missing");
+          AppIntegrityService::$IntegrityCheckDetails->message = gettext("Error decoding integrity check result file");
+        }
+      } else {
+        LoggerUtils::getAppLogger()->debug('Integrity check result file not found at: ' . $integrityCheckFile);
+        AppIntegrityService::$IntegrityCheckDetails->status = 'failure';
+        AppIntegrityService::$IntegrityCheckDetails->message = gettext("integrityCheck.json file missing");
       }
+    }
+    else { 
+      LoggerUtils::getAppLogger()->debug('Integrity check results already cached; not reloading from file');
     }
     
     return AppIntegrityService::$IntegrityCheckDetails;
@@ -53,23 +66,32 @@ class AppIntegrityService
     $signatureFile = SystemURLs::getDocumentRoot() . '/signatures.json';
     $signatureFailures = [];
     if (file_exists($signatureFile)) {
+      LoggerUtils::getAppLogger()->info('Signature file found at: ' . $signatureFile);
       $signatureData = json_decode(file_get_contents($signatureFile));
+      if (is_null($signatureData)){
+        LoggerUtils::getAppLogger()->warn('Error decoding signature definition file: ' . $signatureFile);
+        return ['status' => 'failure', 'message' => gettext('Error decoding signature definition file')];
+      }
       if (sha1(json_encode($signatureData->files, JSON_UNESCAPED_SLASHES)) == $signatureData->sha1) {
         foreach ($signatureData->files as $file) {
           $currentFile = SystemURLs::getDocumentRoot() . '/' . $file->filename;
           if (file_exists($currentFile)) {
             $actualHash = sha1_file($currentFile);
             if ($actualHash != $file->sha1) {
+              LoggerUtils::getAppLogger()->warn('File hash mismatch: ' . $file->filename . ". Expected: " . $file->sha1. "; Got: " . $actualHash);
               array_push($signatureFailures, ['filename' => $file->filename, 'status' => 'Hash Mismatch', 'expectedhash' => $file->sha1, 'actualhash' => $actualHash]);
             }
           } else {
+            LoggerUtils::getAppLogger()->warn('File Missing: ' . $file->filename);
             array_push($signatureFailures, ['filename' => $file->filename, 'status' => 'File Missing']);
           }
         }
       } else {
+        LoggerUtils::getAppLogger()->warn('Signature definition file signature failed validation');
         return ['status' => 'failure', 'message' => gettext('Signature definition file signature failed validation')];
       }
     } else {
+      LoggerUtils::getAppLogger()->warn('Signature definition file not found at: ' . $signatureFile);
       return ['status' => 'failure', 'message' => gettext('Signature definition File Missing')];
     }
 
