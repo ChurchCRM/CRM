@@ -56,24 +56,24 @@ if (isset($_POST['Action'])) {
       $insert = "INSERT INTO event_types (type_name";
       $values = " VALUES ('".InputUtils::LegacyFilterInput($eName)."'";
       if (!empty($eTime)) {
-        $insert .= ", type_defstarttime";
-        $values .= ",'".InputUtils::LegacyFilterInput($eTime)."'";
+          $insert .= ", type_defstarttime";
+          $values .= ",'".InputUtils::LegacyFilterInput($eTime)."'";
       }
       if (!empty($eRecur)) {
-        $insert .= ", type_defrecurtype";
-        $values .= ",'".InputUtils::LegacyFilterInput($eRecur)."'";
+          $insert .= ", type_defrecurtype";
+          $values .= ",'".InputUtils::LegacyFilterInput($eRecur)."'";
       }
       if (!empty($eDOW)) {
-        $insert .= ", type_defrecurDOW";
-        $values .= ",'".InputUtils::LegacyFilterInput($eDOW)."'";
+          $insert .= ", type_defrecurDOW";
+          $values .= ",'".InputUtils::LegacyFilterInput($eDOW)."'";
       }
       if (!empty($eDOM)) {
-        $insert .= ", type_defrecurDOM";
-        $values .= ",'".InputUtils::LegacyFilterInput($eDOM)."'";
+          $insert .= ", type_defrecurDOM";
+          $values .= ",'".InputUtils::LegacyFilterInput($eDOM)."'";
       }
       if (!empty($eDOY)) {
-        $insert .= ", type_defrecurDOY";
-        $values .= ",'".InputUtils::LegacyFilterInput($eDOY)."'";
+          $insert .= ", type_defrecurDOY";
+          $values .= ",'".InputUtils::LegacyFilterInput($eDOY)."'";
       }
       $insert .= ")";
       $values .= ")";
