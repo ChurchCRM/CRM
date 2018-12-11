@@ -82,13 +82,14 @@ namespace ChurchCRM
           }
           LoggerUtils::ResetAppLoggerLevel();
       }
-      /*** 
+      /***
        * Gets a LocaleInfo object for the currently configured system sLanguage
-       * 
+       *
        * @return ChurchCRM\LocaleInfo
        */
-      public static function GetCurrentLocale() {
-        return new LocaleInfo(SystemConfig::getValue('sLanguage'));
+      public static function GetCurrentLocale()
+      {
+          return new LocaleInfo(SystemConfig::getValue('sLanguage'));
       }
       
       private static function ConfigureLocale()
