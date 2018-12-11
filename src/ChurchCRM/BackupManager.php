@@ -10,14 +10,13 @@ namespace ChurchCRM\Backup
   use Exception;
   use Ifsnop\Mysqldump\Mysqldump;
   use Propel\Runtime\Propel;
-  use PDO;
   use PharData;
   use RecursiveIteratorIterator;
   use RecursiveDirectoryIterator;
   use SplFileInfo;
-  use ChurchCRM\Utils\ExecutionTime;
   use ChurchCRM\Utils\InputUtils;
   use Defuse\Crypto\File;
+  use ChurchCRM\Bootstrapper;
 
   abstract class BackupType
   {
@@ -142,7 +141,7 @@ namespace ChurchCRM\Backup
           global $sSERVERNAME, $sDATABASE, $sUSER, $sPASSWORD;
           LoggerUtils::getAppLogger()->debug("Beginning to backup datbase to: " . $SqlFilePath->getPathname());
           try {
-              $dump = new Mysqldump('mysql:host=' . $sSERVERNAME . ';dbname=' . $sDATABASE, $sUSER, $sPASSWORD, ['add-drop-table' => true]);
+              $dump = new Mysqldump(Bootstrapper::GetDSN(), $sUSER, $sPASSWORD, ['add-drop-table' => true]);
               $dump->start($SqlFilePath->getPathname());
               LoggerUtils::getAppLogger()->debug("Finisehd backing up datbase to " . $SqlFilePath->getPathname());
           } catch (\Exception $e) {

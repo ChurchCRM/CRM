@@ -238,13 +238,18 @@ namespace ChurchCRM
           $ormLogger->pushHandler(new StreamHandler($ormLogPath, LoggerUtils::getLogLevel()));
           self::$serviceContainer->setLogger('defaultLogger', $ormLogger);
       }
+      
+      public static function GetDSN() {
+        return 'mysql:host=' . self::$databaseServerName . ';port='.self::$databasePort.';dbname=' . self::$databaseName;
+      }
+      
       private static function buildConnectionManagerConfig()
       {
           if (is_null(self::$databasePort)) {
               self::$databasePort = 3306;
           }
           return [
-            'dsn' => 'mysql:host=' . self::$databaseServerName . ';port='.self::$databasePort.';dbname=' . self::$databaseName,
+            'dsn' => Bootstrapper::GetDSN(),
             'user' => self::$databaseUser,
             'password' => self::$databasePassword,
             'settings' => [
