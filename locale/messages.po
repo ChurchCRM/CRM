@@ -10,7 +10,7 @@ msgstr ""
 "#-#-#-#-#  messages.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-03 22:08+0000\n"
+"POT-Creation-Date: 2018-12-14 01:24+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,8 +24,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2018-12-03T22:08:47.392Z\n"
-"PO-Revision-Date: 2018-12-03T22:08:47.392Z\n"
+"POT-Creation-Date: 2018-12-14T01:24:47.120Z\n"
+"PO-Revision-Date: 2018-12-14T01:24:47.120Z\n"
 
 #: BackupDatabase.php:32 ChurchCRM/Config/Menu/Menu.php:197
 msgid "Backup Database"
@@ -200,8 +200,8 @@ msgstr ""
 #: CSVExport.php:92 CSVExport.php:97 CSVImport.php:217 CSVImport.php:218
 #: CartToFamily.php:235 CartToFamily.php:240 DirectoryReports.php:172
 #: DirectoryReports.php:246 FamilyEditor.php:664 FamilyEditor.php:668
-#: FamilyView.php:204 GeoPage.php:358 GroupReports.php:123 Menu.php:309
-#: Menu.php:338 PersonEditor.php:831 PersonEditor.php:847 PersonView.php:272
+#: FamilyView.php:204 GeoPage.php:358 GroupReports.php:123 Menu.php:313
+#: Menu.php:342 PersonEditor.php:831 PersonEditor.php:847 PersonView.php:272
 #: Register.php:43 Reports/ConfirmReportEmail.php:121
 #: Reports/ConfirmReportEmail.php:126 api/routes/search.php:98
 #: external/templates/registration/family-register-done.php:29
@@ -321,7 +321,7 @@ msgid "Age / Years Married"
 msgstr ""
 
 #: CSVExport.php:167 CSVExport.php:277 CSVImport.php:281 FamilyEditor.php:948
-#: FinancialReports.php:117 OptionManager.php:69 PeopleDashboard.php:411
+#: FinancialReports.php:117 OptionManager.php:69 PeopleDashboard.php:415
 #: PersonEditor.php:1135 PrintView.php:309
 #: v2/templates/cart/cartlisting.php:21 queryparameters_qrp.php:19
 msgid "Classification"
@@ -383,7 +383,7 @@ msgstr ""
 
 #: CSVExport.php:337 ChurchCRM/Dashboard/PersonDemographicDashboardItem.php:26
 #: ChurchCRM/model/ChurchCRM/Person.php:51 FamilyEditor.php:990
-#: PeopleDashboard.php:310 PeopleDashboard.php:355 PersonEditor.php:630
+#: PeopleDashboard.php:314 PeopleDashboard.php:359 PersonEditor.php:630
 #: PrintView.php:244 PrintView.php:363 SelectList.php:555 SelectList.php:1140
 #: external/templates/registration/family-register-members.php:59
 #: queryparameteroptions_qpo.php:2
@@ -392,7 +392,7 @@ msgstr ""
 
 #: CSVExport.php:338 ChurchCRM/Dashboard/PersonDemographicDashboardItem.php:29
 #: ChurchCRM/model/ChurchCRM/Person.php:53 FamilyEditor.php:993
-#: PeopleDashboard.php:323 PeopleDashboard.php:368 PersonEditor.php:633
+#: PeopleDashboard.php:327 PeopleDashboard.php:372 PersonEditor.php:633
 #: PrintView.php:247 PrintView.php:363 SelectList.php:561 SelectList.php:1141
 #: external/templates/registration/family-register-members.php:60
 #: queryparameteroptions_qpo.php:3
@@ -824,7 +824,7 @@ msgstr ""
 
 #: CartToFamily.php:206
 #: ChurchCRM/Emails/notifications/NewPersonOrFamilyEmail.php:60
-#: FamilyEditor.php:654 LettersAndLabels.php:71 Menu.php:308 Menu.php:337
+#: FamilyEditor.php:654 LettersAndLabels.php:71 Menu.php:312 Menu.php:341
 #: Reports/ConfirmReport.php:116 Reports/ConfirmReportEmail.php:116
 #: SelectDelete.php:153 SelectDelete.php:279
 #: external/templates/registration/family-register.php:31
@@ -1046,7 +1046,7 @@ msgid "Classifications Manager"
 msgstr ""
 
 #: ChurchCRM/Config/Menu/Menu.php:70 OptionManager.php:63
-#: PeopleDashboard.php:285
+#: PeopleDashboard.php:289
 msgid "Family Roles"
 msgstr ""
 
@@ -1070,7 +1070,7 @@ msgstr ""
 msgid "Volunteer Opportunities"
 msgstr ""
 
-#: ChurchCRM/Config/Menu/Menu.php:84 Menu.php:229 PeopleDashboard.php:200
+#: ChurchCRM/Config/Menu/Menu.php:84 Menu.php:233 PeopleDashboard.php:204
 #: api/routes/search.php:190
 msgid "Groups"
 msgstr ""
@@ -1222,8 +1222,8 @@ msgstr ""
 #: ChurchCRM/Dashboard/PersonDemographicDashboardItem.php:23
 #: ChurchCRM/Dashboard/PersonDemographicDashboardItem.php:37
 #: ChurchCRM/Service/TimelineService.php:115 ChurchCRM/utils/MiscUtils.php:62
-#: FamilyEditor.php:1017 Include/Functions.php:772 PeopleDashboard.php:336
-#: PeopleDashboard.php:355 PeopleDashboard.php:368 PeopleDashboard.php:381
+#: FamilyEditor.php:1017 Include/Functions.php:772 PeopleDashboard.php:340
+#: PeopleDashboard.php:359 PeopleDashboard.php:372 PeopleDashboard.php:385
 msgid "Unknown"
 msgstr ""
 
@@ -1419,35 +1419,43 @@ msgstr ""
 msgid "Unable to open file"
 msgstr ""
 
-#: ChurchCRM/Service/AppIntegrityService.php:20
+#: ChurchCRM/Service/AppIntegrityService.php:25
+msgid "Error decoding integrity check result file"
+msgstr ""
+
+#: ChurchCRM/Service/AppIntegrityService.php:30
 msgid "integrityCheck.json file missing"
 msgstr ""
 
-#: ChurchCRM/Service/AppIntegrityService.php:31
+#: ChurchCRM/Service/AppIntegrityService.php:44
 #: ChurchCRM/dto/Prerequisite.php:36 UpgradeCRM.php:34 UpgradeCRM.php:87
 msgid "Failed"
 msgstr ""
 
-#: ChurchCRM/Service/AppIntegrityService.php:34
+#: ChurchCRM/Service/AppIntegrityService.php:47
 #: ChurchCRM/dto/Prerequisite.php:34
 msgid "Passed"
 msgstr ""
 
-#: ChurchCRM/Service/AppIntegrityService.php:41
+#: ChurchCRM/Service/AppIntegrityService.php:54
 msgid ""
 "The previous integrity check passed.  All system file hashes match the "
 "expected values."
 msgstr ""
 
-#: ChurchCRM/Service/AppIntegrityService.php:70
+#: ChurchCRM/Service/AppIntegrityService.php:73
+msgid "Error decoding signature definition file"
+msgstr ""
+
+#: ChurchCRM/Service/AppIntegrityService.php:91
 msgid "Signature definition file signature failed validation"
 msgstr ""
 
-#: ChurchCRM/Service/AppIntegrityService.php:73
+#: ChurchCRM/Service/AppIntegrityService.php:95
 msgid "Signature definition File Missing"
 msgstr ""
 
-#: ChurchCRM/Service/AppIntegrityService.php:77
+#: ChurchCRM/Service/AppIntegrityService.php:99
 msgid "One or more files failed signature validation"
 msgstr ""
 
@@ -2442,13 +2450,13 @@ msgid "New Family Notification Email Error"
 msgstr ""
 
 #: ChurchCRM/model/ChurchCRM/Family.php:178
-#: ChurchCRM/model/ChurchCRM/Person.php:171 Menu.php:310 PersonEditor.php:393
+#: ChurchCRM/model/ChurchCRM/Person.php:171 Menu.php:314 PersonEditor.php:393
 #: v2/templates/people/family-list.php:36
 msgid "Created"
 msgstr ""
 
 #: ChurchCRM/model/ChurchCRM/Family.php:183
-#: ChurchCRM/model/ChurchCRM/Person.php:176 Menu.php:339 PersonEditor.php:406
+#: ChurchCRM/model/ChurchCRM/Person.php:176 Menu.php:343 PersonEditor.php:406
 msgid "Updated"
 msgstr ""
 
@@ -5016,7 +5024,7 @@ msgstr ""
 msgid "Active Kiosks"
 msgstr ""
 
-#: LettersAndLabels.php:26 PeopleDashboard.php:237
+#: LettersAndLabels.php:26 PeopleDashboard.php:241
 msgid "Letters and Mailing Labels"
 msgstr ""
 
@@ -5228,36 +5236,36 @@ msgstr ""
 msgid "See All People"
 msgstr ""
 
-#: Menu.php:210 sundayschool/SundaySchoolDashboard.php:139
+#: Menu.php:212 sundayschool/SundaySchoolDashboard.php:139
 msgid "Sunday School Classes"
 msgstr ""
 
-#: Menu.php:217 Menu.php:236 Menu.php:261 PeopleDashboard.php:186
-#: PeopleDashboard.php:207
+#: Menu.php:219 Menu.php:240 Menu.php:265 PeopleDashboard.php:188
+#: PeopleDashboard.php:211
 msgid "More info"
 msgstr ""
 
-#: Menu.php:254
+#: Menu.php:258
 msgid "Attendees Checked In"
 msgstr ""
 
-#: Menu.php:275
+#: Menu.php:279
 msgid "Deposit Tracking"
 msgstr ""
 
-#: Menu.php:295
+#: Menu.php:299
 msgid "Latest Families"
 msgstr ""
 
-#: Menu.php:324
+#: Menu.php:328
 msgid "Updated Families"
 msgstr ""
 
-#: Menu.php:355
+#: Menu.php:359
 msgid "Latest Persons"
 msgstr ""
 
-#: Menu.php:389
+#: Menu.php:393
 msgid "Updated Persons"
 msgstr ""
 
@@ -5489,106 +5497,106 @@ msgstr ""
 msgid "Update All Family Coordinates"
 msgstr ""
 
-#: PeopleDashboard.php:179
+#: PeopleDashboard.php:181
 msgid "Sunday School Kids"
 msgstr ""
 
-#: PeopleDashboard.php:218 PeopleDashboard.php:255 PeopleDashboard.php:263
+#: PeopleDashboard.php:222 PeopleDashboard.php:259 PeopleDashboard.php:267
 #: sundayschool/SundaySchoolDashboard.php:56
 msgid "Reports"
 msgstr ""
 
-#: PeopleDashboard.php:226
+#: PeopleDashboard.php:230
 msgid "Reports on groups and roles"
 msgstr ""
 
-#: PeopleDashboard.php:228
+#: PeopleDashboard.php:232
 msgid "Report on group and roles selected (it may be a multi-page PDF)."
 msgstr ""
 
-#: PeopleDashboard.php:233
+#: PeopleDashboard.php:237
 msgid "People Directory"
 msgstr ""
 
-#: PeopleDashboard.php:233
+#: PeopleDashboard.php:237
 msgid "Printable directory of all people, grouped by family where assigned"
 msgstr ""
 
-#: PeopleDashboard.php:238
+#: PeopleDashboard.php:242
 msgid "Generate letters and mailing labels."
 msgstr ""
 
-#: PeopleDashboard.php:244
+#: PeopleDashboard.php:248
 msgid "US Address Verification Report"
 msgstr ""
 
-#: PeopleDashboard.php:245
+#: PeopleDashboard.php:249
 msgid ""
 "Generate report comparing all US family addresses with United States Postal "
 "Service Standard Address Format.<br>"
 msgstr ""
 
-#: PeopleDashboard.php:255
+#: PeopleDashboard.php:259
 msgid "Self Update"
 msgstr ""
 
-#: PeopleDashboard.php:263
+#: PeopleDashboard.php:267
 msgid "Self Register"
 msgstr ""
 
-#: PeopleDashboard.php:265
+#: PeopleDashboard.php:269
 msgid "List families that were created via self registration."
 msgstr ""
 
-#: PeopleDashboard.php:269
+#: PeopleDashboard.php:273
 msgid "Self Verify Updates"
 msgstr ""
 
-#: PeopleDashboard.php:269
+#: PeopleDashboard.php:273
 msgid "Families who commented via self verify links"
 msgstr ""
 
-#: PeopleDashboard.php:273 members/online-pending-verify.php:13
+#: PeopleDashboard.php:277 members/online-pending-verify.php:13
 msgid "Pending Self Verify"
 msgstr ""
 
-#: PeopleDashboard.php:273
+#: PeopleDashboard.php:277
 msgid "Families with valid self verify links"
 msgstr ""
 
-#: PeopleDashboard.php:296
+#: PeopleDashboard.php:300
 msgid "Role / Gender"
 msgstr ""
 
-#: PeopleDashboard.php:297 PeopleDashboard.php:412
+#: PeopleDashboard.php:301 PeopleDashboard.php:416
 msgid "of People"
 msgstr ""
 
-#: PeopleDashboard.php:298 PeopleDashboard.php:413
+#: PeopleDashboard.php:302 PeopleDashboard.php:417
 msgid "Count"
 msgstr ""
 
-#: PeopleDashboard.php:401
+#: PeopleDashboard.php:405
 msgid "People Classification"
 msgstr ""
 
-#: PeopleDashboard.php:436
+#: PeopleDashboard.php:440
 msgid "Gender Demographics"
 msgstr ""
 
-#: PeopleDashboard.php:460
+#: PeopleDashboard.php:464
 msgid "Men"
 msgstr ""
 
-#: PeopleDashboard.php:463
+#: PeopleDashboard.php:467
 msgid "Women"
 msgstr ""
 
-#: PeopleDashboard.php:468 sundayschool/SundaySchoolDashboard.php:116
+#: PeopleDashboard.php:472 sundayschool/SundaySchoolDashboard.php:116
 msgid "Boys"
 msgstr ""
 
-#: PeopleDashboard.php:471 sundayschool/SundaySchoolDashboard.php:128
+#: PeopleDashboard.php:475 sundayschool/SundaySchoolDashboard.php:128
 msgid "Girls"
 msgstr ""
 

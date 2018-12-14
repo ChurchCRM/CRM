@@ -2275,5 +2275,11 @@
     "This upgrade will completely destroy any customizations made to the following files by reverting the files to the official version.": "Esta actualización destruirá cualquier personalización hecha a los siguientes archivos al revertirlos a la versión oficial.",
     "If you wish to maintain your changes to these files, please take a manual backup of these files before proceeding with this upgrade, and then manually restore the files after the upgrade is complete.": "Si desea mantener sus cambios a estos archivos, por favor haga un respaldo manual de estos antes de proceder con esta actualización, y luego restaure los archivos manualmente después de haberla completado.",
     "Integrity Check Details:": "Detalles de Comprobación de Integridad:",
-    "I Understand": "Entiendo"
+    "I Understand": "Entiendo",
+    "Unsupported Deposit Types Detected": "Se han detectado Tipos de Depósito no soportados",
+    "Support for eGive, Credit Card, and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions.": "Se ha abandonado el soporte para pagos en eGive, Tarjetas de Crédito y Giros Bancarios. Reportes no bancarios podrían no estar accesibles en futuras versiones.",
+    "Unsupported Stored Payment Data Detected": "Se han detectado Datos de Pago Almacenados no soportados",
+    "Support for stored payment data has been removed. This data will soon be removed from your database": "Se ha removido el soporte para almacenar los datos de pagos. Estos datos serán  borrados pronto de su base de datos.",
+    "Classifcation": "Clasificación",
+    "Estonian": "Estonio"
 }
