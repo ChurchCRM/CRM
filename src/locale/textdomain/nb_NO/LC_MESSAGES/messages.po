@@ -283,7 +283,7 @@ msgstr "Ikke filtrer"
 
 #: CSVExport.php:337 ChurchCRM/Dashboard/PersonDemographicDashboardItem.php:26
 #: ChurchCRM/model/ChurchCRM/Person.php:51 FamilyEditor.php:990
-#: PeopleDashboard.php:310 PeopleDashboard.php:355 PersonEditor.php:630
+#: PeopleDashboard.php:314 PeopleDashboard.php:359 PersonEditor.php:630
 #: PrintView.php:244 PrintView.php:363 SelectList.php:555 SelectList.php:1140
 #: external/templates/registration/family-register-members.php:59
 #: queryparameteroptions_qpo.php:2
@@ -292,7 +292,7 @@ msgstr "Mann"
 
 #: CSVExport.php:338 ChurchCRM/Dashboard/PersonDemographicDashboardItem.php:29
 #: ChurchCRM/model/ChurchCRM/Person.php:53 FamilyEditor.php:993
-#: PeopleDashboard.php:323 PeopleDashboard.php:368 PersonEditor.php:633
+#: PeopleDashboard.php:327 PeopleDashboard.php:372 PersonEditor.php:633
 #: PrintView.php:247 PrintView.php:363 SelectList.php:561 SelectList.php:1141
 #: external/templates/registration/family-register-members.php:60
 #: queryparameteroptions_qpo.php:3
@@ -463,7 +463,7 @@ msgid "Default country if none specified otherwise"
 msgstr "Standardland hvis ingen spesifisert"
 
 #: CSVExport.php:167 CSVExport.php:277 CSVImport.php:281 FamilyEditor.php:948
-#: FinancialReports.php:117 OptionManager.php:69 PeopleDashboard.php:411
+#: FinancialReports.php:117 OptionManager.php:69 PeopleDashboard.php:415
 #: PersonEditor.php:1135 PrintView.php:309
 #: v2/templates/cart/cartlisting.php:21 queryparameters_qrp.php:19
 msgid "Classification"
@@ -970,8 +970,8 @@ msgstr "Informasjon til Inkluder"
 #: CSVExport.php:92 CSVExport.php:97 CSVImport.php:217 CSVImport.php:218
 #: CartToFamily.php:235 CartToFamily.php:240 DirectoryReports.php:172
 #: DirectoryReports.php:246 FamilyEditor.php:664 FamilyEditor.php:668
-#: FamilyView.php:204 GeoPage.php:358 GroupReports.php:123 Menu.php:309
-#: Menu.php:338 PersonEditor.php:831 PersonEditor.php:847 PersonView.php:272
+#: FamilyView.php:204 GeoPage.php:358 GroupReports.php:123 Menu.php:313
+#: Menu.php:342 PersonEditor.php:831 PersonEditor.php:847 PersonView.php:272
 #: Register.php:43 Reports/ConfirmReportEmail.php:121
 #: Reports/ConfirmReportEmail.php:126 api/routes/search.php:98
 #: external/templates/registration/family-register-done.php:29
@@ -1548,8 +1548,8 @@ msgstr "Velg Rolle"
 #: ChurchCRM/Dashboard/PersonDemographicDashboardItem.php:23
 #: ChurchCRM/Dashboard/PersonDemographicDashboardItem.php:37
 #: ChurchCRM/Service/TimelineService.php:115 ChurchCRM/utils/MiscUtils.php:62
-#: FamilyEditor.php:1017 Include/Functions.php:772 PeopleDashboard.php:336
-#: PeopleDashboard.php:355 PeopleDashboard.php:368 PeopleDashboard.php:381
+#: FamilyEditor.php:1017 Include/Functions.php:772 PeopleDashboard.php:340
+#: PeopleDashboard.php:359 PeopleDashboard.php:372 PeopleDashboard.php:385
 msgid "Unknown"
 msgstr "Ukjent"
 
@@ -2308,7 +2308,7 @@ msgstr "Tilordnede Egenskaper"
 msgid "Group Members:"
 msgstr "Gruppemedlemmer:"
 
-#: LettersAndLabels.php:26 PeopleDashboard.php:237
+#: LettersAndLabels.php:26 PeopleDashboard.php:241
 msgid "Letters and Mailing Labels"
 msgstr "Brev og Postetiketter"
 
@@ -2432,25 +2432,25 @@ msgstr "Familier"
 msgid "People"
 msgstr "Folk"
 
-#: PeopleDashboard.php:226
+#: PeopleDashboard.php:230
 msgid "Reports on groups and roles"
 msgstr "Rapporter om grupper og roller"
 
-#: PeopleDashboard.php:228
+#: PeopleDashboard.php:232
 msgid "Report on group and roles selected (it may be a multi-page PDF)."
 msgstr "Rapport om gruppen og roller valgt (det kan være en multi-siders PDF)."
 
-#: PeopleDashboard.php:238
+#: PeopleDashboard.php:242
 msgid "Generate letters and mailing labels."
 msgstr "Generere brev og adresseetiketter."
 
-#: PeopleDashboard.php:244
+#: PeopleDashboard.php:248
 msgid "US Address Verification Report"
 msgstr "USA-adressen senderapport"
 
 #: CartToFamily.php:206
 #: ChurchCRM/Emails/notifications/NewPersonOrFamilyEmail.php:60
-#: FamilyEditor.php:654 LettersAndLabels.php:71 Menu.php:308 Menu.php:337
+#: FamilyEditor.php:654 LettersAndLabels.php:71 Menu.php:312 Menu.php:341
 #: Reports/ConfirmReport.php:116 Reports/ConfirmReportEmail.php:116
 #: SelectDelete.php:153 SelectDelete.php:279
 #: external/templates/registration/family-register.php:31

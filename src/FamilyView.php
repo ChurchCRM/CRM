@@ -345,7 +345,7 @@ $bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() || ($_SESSION['user']->i
                         <tr>
                             <th><span><?= gettext("Family Members") ?></span></th>
                             <th class="text-center"><span><?= gettext("Role") ?></span></th>
-                            <th><span><?= gettext("Classifcation") ?></span></th
+                            <th><span><?= gettext("Classifcation") ?></span></th>
                             <th><span><?= gettext("Birthday") ?></span></th>
                             <th><span><?= gettext("Email") ?></span></th>
                             <th></th>
