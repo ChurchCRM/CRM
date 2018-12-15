@@ -50,7 +50,7 @@ namespace ChurchCRM
           try {
               SystemURLs::init($sRootPath, $URL, dirname(dirname(__FILE__)));
           } catch (\Exception $e) {
-            Bootstrapper::system_failure($e->getMessage());
+              Bootstrapper::system_failure($e->getMessage());
           }
           if ($debugBootstrapper) {
               self::$bootStrapLogger = LoggerUtils::getAppLogger(Logger::DEBUG);
