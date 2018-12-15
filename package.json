@@ -1,6 +1,6 @@
 {
     "name": "ChurchCRM",
-    "version": "3.1.1",
+    "version": "3.1.2",
     "description": "Free Church CRM Software",
     "repository": {
         "type": "git",
@@ -24,6 +24,7 @@
         "grunt-contrib-compress": "1.4.1",
         "grunt-contrib-copy": "1.0.0",
         "grunt-curl": "2.2.0",
+        "grunt-exec": "^3.0.0",
         "grunt-poeditor-ab": "0.1.9",
         "node-sha1": "1.0.1"
     },
@@ -37,16 +38,16 @@
         "ckeditor": "4.11.1",
         "font-awesome": "4.7.0",
         "fullcalendar": "3.0.1",
-        "grunt-git": "^1.0.7",
+        "grunt-git": "^1.0.10",
         "grunt-http": "^2.2.0",
-        "grunt-sass": "^3.0.1",
+        "grunt-sass": "^3.0.2",
         "i18next": "8.2.1",
         "i18next-xhr-backend": "1.4.1",
         "initial-js": "0.3.4",
         "jquery-photo-uploader": "1.0.13",
         "jquery-steps": "1.1.0",
         "jquery-validation": "1.16.0",
-        "node-sass": "^4.9.3"
+        "node-sass": "^4.11.0"
     },
     "scripts": {
         "install": "grunt clean && grunt updateVersions && grunt curl-dir && grunt copy && grunt sass",
@@ -57,7 +58,7 @@
         "update-signatures": "grunt generateSignatures",
         "package": "grunt generateSignatures && grunt compress",
         "demosite": "scripts/demosite.sh",
-        "changelog-gen": "scripts/gen-changelogs.sh",
+        "changelog-gen": "grunt exec:updatechangelog",
         "orm-gen": "php src/vendor/propel/propel/bin/propel.php --config-dir=propel model:build && cd src/ && composer dump-autoload",
         "graph-viz": "php src/vendor/propel/propel/bin/propel.php --config-dir=propel graphviz:generate",
         "datadictionary": "php src/vendor/propel/propel/bin/propel.php --config-dir=propel datadictionary:generate",

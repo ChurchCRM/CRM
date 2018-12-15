@@ -41,19 +41,19 @@ class SystemService
 
         return $version;
     }
-    
+
     static public function getCopyrightDate()
     {
         $composerFile = file_get_contents(SystemURLs::getDocumentRoot() . '/composer.json');
         $composerJson = json_decode($composerFile, true);
         $buildTime = new \DateTime();
-        
+
         if ((!empty($composerJson)) && array_key_exists('time', $composerJson) && (!empty($composerJson['time'])))
         {
             try{ 
                 $buildTime = new \DateTime($composerJson['time']);
             } catch (Exception $e) {
-                // will use default 
+                // will use default
             }
         }
         return $buildTime->format("Y");
@@ -144,7 +144,7 @@ class SystemService
                 fclose($fh);
 
                 return $backup;
-            } 
+            }
         } elseif (strcasecmp(SystemConfig::getValue('sExternalBackupType'), 'Local') == 0) {
             try {
                 $backup = self::getDatabaseBackup($params);
@@ -190,7 +190,11 @@ class SystemService
       }
     }
 
-  
+    static public function isDBCurrent()
+    {
+        return SystemService::getDBVersion() == SystemService::getInstalledVersion();
+    }
+
     static public function getDBTableExists($tableName) {
       if (!isset($_SESSION['CRM_DB_TABLES']))
       {
@@ -261,7 +265,7 @@ class SystemService
 
         return $result;
     }
-    
+
     private static function IsTimerThresholdExceeded(string $LastTime, int $ThresholdHours)
     {
       if (empty($LastTime)) {
@@ -275,33 +279,33 @@ class SystemService
         return true;
       }
       $diff = abs($now->getTimestamp() - $previous->getTimestamp()) / 60 / 60 ;
-      return $diff->h >= $ThresholdHours;
+      return $diff >= $ThresholdHours;
     }
 
     public static function runTimerJobs()
     {
       LoggerUtils::getAppLogger()->addInfo("Starting background job processing");
         //start the external backup timer job
-        if (SystemConfig::getBooleanValue('bEnableExternalBackupTarget') && SystemConfig::getValue('sExternalBackupAutoInterval') > 0) {  //if remote backups are enabled, and the interval is greater than zero 
+        if (SystemConfig::getBooleanValue('bEnableExternalBackupTarget') && SystemConfig::getValue('sExternalBackupAutoInterval') > 0) {  //if remote backups are enabled, and the interval is greater than zero
           try {
-            if (self::IsTimerThresholdExceeded(SystemConfig::getValue('sLastBackupTimeStamp'), SystemConfig::getValue('sExternalBackupAutoInterval'))) {  
+            if (self::IsTimerThresholdExceeded(SystemConfig::getValue('sLastBackupTimeStamp'), SystemConfig::getValue('sExternalBackupAutoInterval'))) {
               // if there was no previous backup, or if the interval suggests we do a backup now.
-              LoggerUtils::getAppLogger()->addInfo("Starting a backup job.  Last backup run: ".SystemConfig::getValue('sLastBackupTimeStamp'));   
+              LoggerUtils::getAppLogger()->addInfo("Starting a backup job.  Last backup run: ".SystemConfig::getValue('sLastBackupTimeStamp'));
               $backup = self::copyBackupToExternalStorage();  // Tell system service to do an external storage backup.
               $now = new \DateTime();  // update the LastBackupTimeStamp.
               SystemConfig::setValue('sLastBackupTimeStamp', $now->format(SystemConfig::getValue('sDateFilenameFormat')));
               LoggerUtils::getAppLogger()->addInfo("Backup job successful: '".$backup->filename."' (".$backup->filesize." bytes) copied to '".$backup->remoteUrl."'");
             }
             else {
-              LoggerUtils::getAppLogger()->addInfo("Not starting a backup job.  Last backup run: ".SystemConfig::getValue('sLastBackupTimeStamp').".");  
+              LoggerUtils::getAppLogger()->addInfo("Not starting a backup job.  Last backup run: ".SystemConfig::getValue('sLastBackupTimeStamp').".");
             }
           } catch (\Exception $exc) {
               // an error in the auto-backup shouldn't prevent the page from loading...
-            LoggerUtils::getAppLogger()->addWarning("Failure executing backup job: ". $exc->getMessage() );  
+            LoggerUtils::getAppLogger()->addWarning("Failure executing backup job: ". $exc->getMessage() );
           }
         }
-        if (SystemConfig::getBooleanValue('bEnableIntegrityCheck') && SystemConfig::getValue('iIntegrityCheckInterval') > 0) {   
-            if (self::IsTimerThresholdExceeded(SystemConfig::getValue('sLastIntegrityCheckTimeStamp'),SystemConfig::getValue('iIntegrityCheckInterval'))) {  
+        if (SystemConfig::getBooleanValue('bEnableIntegrityCheck') && SystemConfig::getValue('iIntegrityCheckInterval') > 0) {
+            if (self::IsTimerThresholdExceeded(SystemConfig::getValue('sLastIntegrityCheckTimeStamp'),SystemConfig::getValue('iIntegrityCheckInterval'))) {
                 // if there was no integrity check, or if the interval suggests we do one now.
                 LoggerUtils::getAppLogger()->addInfo("Starting application integrity check");
                 $integrityCheckFile = SystemURLs::getDocumentRoot() . '/integrityCheck.json';
@@ -309,7 +313,7 @@ class SystemService
                 file_put_contents($integrityCheckFile, json_encode($appIntegrity));
                 $now = new \DateTime();  // update the LastBackupTimeStamp.
                 SystemConfig::setValue('sLastIntegrityCheckTimeStamp', $now->format(SystemConfig::getValue('sDateFilenameFormat')));
-                if ($appIntegrity['result'] == 'success')
+                if ($appIntegrity['status'] == 'success')
                 {
                   LoggerUtils::getAppLogger()->addInfo("Application integrity check passed");
                 }
@@ -319,7 +323,7 @@ class SystemService
                 }
             }
              else {
-                  LoggerUtils::getAppLogger()->addInfo("Not starting application integrity check.  Last application integrity check run: ".SystemConfig::getValue('sLastIntegrityCheckTimeStamp'));  
+                  LoggerUtils::getAppLogger()->addInfo("Not starting application integrity check.  Last application integrity check run: ".SystemConfig::getValue('sLastIntegrityCheckTimeStamp'));
                 }
         }
         LoggerUtils::getAppLogger()->addInfo("Finished background job processing");

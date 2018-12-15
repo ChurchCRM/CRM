@@ -313,6 +313,11 @@ module.exports = function (grunt) {
             update: {
                 version: '<%= package.version %>'
             }
+        },
+        exec: {
+            updatechangelog: {
+                cmd: "gren changelog --generate --override --token=<%= buildConfig.GitHub.token %>"
+            }
         }
     });
 
@@ -460,4 +465,6 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-compress');
     grunt.loadNpmTasks('grunt-curl');
     grunt.loadNpmTasks('grunt-poeditor-ab');
+    grunt.loadNpmTasks('grunt-exec');
+    
 }
