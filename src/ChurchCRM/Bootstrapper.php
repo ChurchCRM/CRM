@@ -73,7 +73,6 @@ namespace ChurchCRM
           self::ConfigureLocale();
           if (!self::isDBCurrent()) {
               if (!strpos($_SERVER['SCRIPT_NAME'], "SystemDBUpdate")) {
-                  self::$bootStrapLogger->info(print_r($_SERVER, true));
                   self::$bootStrapLogger->info("Database is not current, redirecting to SystemDBUpdate");
                   RedirectUtils::Redirect('SystemDBUpdate.php');
               } else {
