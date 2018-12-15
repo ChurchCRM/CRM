@@ -407,7 +407,7 @@ class SystemService
         return true;
       }
       $diff = abs($now->getTimestamp() - $previous->getTimestamp()) / 60 / 60 ;
-      return $diff->h >= $ThresholdHours;
+      return $diff >= $ThresholdHours;
     }
 
     public static function runTimerJobs()
