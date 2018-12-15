@@ -50,14 +50,35 @@ if (isset($_POST['Action'])) {
       $eCntNum = count($eCntArray);
       $theID = $_POST['theID'];
 
-      $sSQL = "INSERT INTO event_types (type_name, type_defstarttime, type_defrecurtype, type_defrecurDOW, type_defrecurDOM, type_defrecurDOY)
-             VALUES ('".InputUtils::LegacyFilterInput($eName)."',
-                     '".InputUtils::LegacyFilterInput($eTime)."',
-                     '".InputUtils::LegacyFilterInput($eRecur)."',
-                     '".InputUtils::LegacyFilterInput($eDOW)."',
-                     '".InputUtils::LegacyFilterInput($eDOM)."',
-                     '".InputUtils::LegacyFilterInput($eDOY)."')";
+      # We need to be able to handle database configurations where MySQL Strict mode is enabled. (#4273)
+      # See: https://dev.mysql.com/doc/refman/en/sql-mode.html#sql-mode-strict
+      # Special thanks to @chiebert (GitHub) for the fix!
+      $insert = "INSERT INTO event_types (type_name";
+      $values = " VALUES ('".InputUtils::LegacyFilterInput($eName)."'";
+      if (!empty($eTime)) {
+          $insert .= ", type_defstarttime";
+          $values .= ",'".InputUtils::LegacyFilterInput($eTime)."'";
+      }
+      if (!empty($eRecur)) {
+          $insert .= ", type_defrecurtype";
+          $values .= ",'".InputUtils::LegacyFilterInput($eRecur)."'";
+      }
+      if (!empty($eDOW)) {
+          $insert .= ", type_defrecurDOW";
+          $values .= ",'".InputUtils::LegacyFilterInput($eDOW)."'";
+      }
+      if (!empty($eDOM)) {
+          $insert .= ", type_defrecurDOM";
+          $values .= ",'".InputUtils::LegacyFilterInput($eDOM)."'";
+      }
+      if (!empty($eDOY)) {
+          $insert .= ", type_defrecurDOY";
+          $values .= ",'".InputUtils::LegacyFilterInput($eDOY)."'";
+      }
+      $insert .= ")";
+      $values .= ")";
 
+      $sSQL = $insert.$values;
       RunQuery($sSQL);
     $theID = mysqli_insert_id($cnInfoCentral);
 

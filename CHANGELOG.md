@@ -1,5 +1,17 @@
 # Changelog
 
+## 3.1.1 (14/12/2018)
+
+#### Core Functionality
+
+- [**Feature: Reports**][**Web Report**] Send Newsletter property has opposite effect [#4605](https://github.com/ChurchCRM/CRM/issues/4605)
+
+#### Bug fixes:
+
+- [**Photos**][**Web Report**][**bug**] Thumbnails won\'t generate if the folder is missing [#4582](https://github.com/ChurchCRM/CRM/issues/4582)
+
+---
+
 ## 3.1.0 (03/12/2018)
 
 #### Enhancements:
