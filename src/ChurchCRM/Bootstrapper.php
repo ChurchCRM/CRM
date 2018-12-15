@@ -50,7 +50,7 @@ namespace ChurchCRM
           try {
               SystemURLs::init($sRootPath, $URL, dirname(dirname(__FILE__)));
           } catch (\Exception $e) {
-              system_failure($e->getMessage());
+            Bootstrapper::system_failure($e->getMessage());
           }
           if ($debugBootstrapper) {
               self::$bootStrapLogger = LoggerUtils::getAppLogger(Logger::DEBUG);
@@ -142,7 +142,7 @@ namespace ChurchCRM
           mysqli_set_charset($cnInfoCentral, 'utf8mb4');
           self::$bootStrapLogger->debug("Selecting database: " . self::$databaseName);
           mysqli_select_db($cnInfoCentral, self::$databaseName)
-      or system_failure('Could not connect to the MySQL database <strong>'.self::$databaseName.'</strong>. Please check the settings in <strong>Include/Config.php</strong>.<br/>MySQL Error: '.mysqli_error($cnInfoCentral));
+      or Bootstrapper::system_failure('Could not connect to the MySQL database <strong>'.self::$databaseName.'</strong>. Please check the settings in <strong>Include/Config.php</strong>.<br/>MySQL Error: '.mysqli_error($cnInfoCentral));
           self::$bootStrapLogger->debug("Database selected: " . self::$databaseName);
       }
       private static function testMYSQLI()
@@ -165,7 +165,7 @@ namespace ChurchCRM
               }
               // Log the error to the application log, and show an error page to user.
               LoggerUtils::getAppLogger()->error("ERROR connecting to database at '".self::$databaseServerName."' on port '".self::$databasePort."' as user '".$sUSER."' -  MySQL Error: '".$sMYSQLERROR."'");
-              system_failure('Could not connect to MySQL on <strong>'.self::$databaseServerName.'</strong> on port <strong>'.self::$databasePort.'</strong> as <strong>'.$sUSER.'</strong>. Please check the settings in <strong>Include/Config.php</strong>.<br/>MySQL Error: '.$sMYSQLERROR, 'Database Connection Failure');
+              Bootstrapper::system_failure('Could not connect to MySQL on <strong>'.self::$databaseServerName.'</strong> on port <strong>'.self::$databasePort.'</strong> as <strong>'.$sUSER.'</strong>. Please check the settings in <strong>Include/Config.php</strong>.<br/>MySQL Error: '.$sMYSQLERROR, 'Database Connection Failure');
           }
       }
       private static function initPropel()
