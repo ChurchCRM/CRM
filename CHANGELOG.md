@@ -1,5 +1,34 @@
 # Changelog
 
+## 3.1.1 (14/12/2018)
+
+#### Core Functionality
+
+- [**Feature: Reports**][**Web Report**] Send Newsletter property has opposite effect [#4605](https://github.com/ChurchCRM/CRM/issues/4605)
+
+#### Bug fixes:
+
+- [**Photos**][**Web Report**][**bug**] Thumbnails won\'t generate if the folder is missing [#4582](https://github.com/ChurchCRM/CRM/issues/4582)
+
+---
+
+## 3.1.0 (03/12/2018)
+
+#### Enhancements:
+
+- [**Feature: Members**][**Web Report**][**enhancement**] Show all family members on \"Family\" tab of PersonView [#4490](https://github.com/ChurchCRM/CRM/issues/4490)
+
+#### Core Functionality
+
+- [**Feature: Users**][**Security**] Admin account locked and reset via mysql does not seem to work [#4534](https://github.com/ChurchCRM/CRM/issues/4534)
+- [**Feature: Members**][**Web Report**][**enhancement**] Show all family members on \"Family\" tab of PersonView [#4490](https://github.com/ChurchCRM/CRM/issues/4490)
+
+#### Inner Beauty:
+
+- [**Backend System**][**bug/regression**] Cannot report errors in 3.0.12 [#4543](https://github.com/ChurchCRM/CRM/issues/4543)
+
+---
+
 ## 3.0.13 (29/11/2018)
 *No changelog for this release.*
 

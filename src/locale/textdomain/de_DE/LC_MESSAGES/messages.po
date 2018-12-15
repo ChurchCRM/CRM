@@ -317,7 +317,7 @@ msgstr "Nicht filtern"
 
 #: CSVExport.php:337 ChurchCRM/Dashboard/PersonDemographicDashboardItem.php:26
 #: ChurchCRM/model/ChurchCRM/Person.php:51 FamilyEditor.php:990
-#: PeopleDashboard.php:310 PeopleDashboard.php:355 PersonEditor.php:630
+#: PeopleDashboard.php:314 PeopleDashboard.php:359 PersonEditor.php:630
 #: PrintView.php:244 PrintView.php:363 SelectList.php:555 SelectList.php:1140
 #: external/templates/registration/family-register-members.php:59
 #: queryparameteroptions_qpo.php:2
@@ -326,7 +326,7 @@ msgstr "Mann"
 
 #: CSVExport.php:338 ChurchCRM/Dashboard/PersonDemographicDashboardItem.php:29
 #: ChurchCRM/model/ChurchCRM/Person.php:53 FamilyEditor.php:993
-#: PeopleDashboard.php:323 PeopleDashboard.php:368 PersonEditor.php:633
+#: PeopleDashboard.php:327 PeopleDashboard.php:372 PersonEditor.php:633
 #: PrintView.php:247 PrintView.php:363 SelectList.php:561 SelectList.php:1141
 #: external/templates/registration/family-register-members.php:60
 #: queryparameteroptions_qpo.php:3
@@ -497,7 +497,7 @@ msgid "Default country if none specified otherwise"
 msgstr "Standarteinstellung für das Land, falls nichts agegeben wird"
 
 #: CSVExport.php:167 CSVExport.php:277 CSVImport.php:281 FamilyEditor.php:948
-#: FinancialReports.php:117 OptionManager.php:69 PeopleDashboard.php:411
+#: FinancialReports.php:117 OptionManager.php:69 PeopleDashboard.php:415
 #: PersonEditor.php:1135 PrintView.php:309
 #: v2/templates/cart/cartlisting.php:21 queryparameters_qrp.php:19
 msgid "Classification"
@@ -1028,8 +1028,8 @@ msgstr "Informationen zum Einfügen"
 #: CSVExport.php:92 CSVExport.php:97 CSVImport.php:217 CSVImport.php:218
 #: CartToFamily.php:235 CartToFamily.php:240 DirectoryReports.php:172
 #: DirectoryReports.php:246 FamilyEditor.php:664 FamilyEditor.php:668
-#: FamilyView.php:204 GeoPage.php:358 GroupReports.php:123 Menu.php:309
-#: Menu.php:338 PersonEditor.php:831 PersonEditor.php:847 PersonView.php:272
+#: FamilyView.php:204 GeoPage.php:358 GroupReports.php:123 Menu.php:313
+#: Menu.php:342 PersonEditor.php:831 PersonEditor.php:847 PersonView.php:272
 #: Register.php:43 Reports/ConfirmReportEmail.php:121
 #: Reports/ConfirmReportEmail.php:126 api/routes/search.php:98
 #: external/templates/registration/family-register-done.php:29
@@ -1674,8 +1674,8 @@ msgstr "Rolle auswählen"
 #: ChurchCRM/Dashboard/PersonDemographicDashboardItem.php:23
 #: ChurchCRM/Dashboard/PersonDemographicDashboardItem.php:37
 #: ChurchCRM/Service/TimelineService.php:115 ChurchCRM/utils/MiscUtils.php:62
-#: FamilyEditor.php:1017 Include/Functions.php:772 PeopleDashboard.php:336
-#: PeopleDashboard.php:355 PeopleDashboard.php:368 PeopleDashboard.php:381
+#: FamilyEditor.php:1017 Include/Functions.php:772 PeopleDashboard.php:340
+#: PeopleDashboard.php:359 PeopleDashboard.php:372 PeopleDashboard.php:385
 msgid "Unknown"
 msgstr "Unbekannt"
 
@@ -1741,7 +1741,7 @@ msgid "Add Family"
 msgstr "Familie hinzufügen"
 
 #: ChurchCRM/model/ChurchCRM/Family.php:178
-#: ChurchCRM/model/ChurchCRM/Person.php:171 Menu.php:310 PersonEditor.php:393
+#: ChurchCRM/model/ChurchCRM/Person.php:171 Menu.php:314 PersonEditor.php:393
 #: v2/templates/people/family-list.php:36
 msgid "Created"
 msgstr "Erstellt"
@@ -2352,9 +2352,21 @@ msgstr "aus Gruppe"
 msgid "Select a group"
 msgstr "Gruppe auswählen"
 
+#: GroupEditor.php:154
+msgid "Enabled"
+msgstr "Aktiviert"
+
 #: GroupEditor.php:156 GroupView.php:80
 msgid "Edit Group-Specific Properties Form"
 msgstr "Bearbeiten der gruppenspezifischen Einstellungenform"
+
+#: GroupEditor.php:158 GroupView.php:217
+msgid "Disabled"
+msgstr "Deaktiviert"
+
+#: GroupEditor.php:159
+msgid "Enable Group Specific Properties"
+msgstr "Aktivieren Sie gruppenspezifische Eigenschaften"
 
 #: GroupEditor.php:176
 #, fuzzy
@@ -2504,6 +2516,15 @@ msgstr "Bitte bestätige die Löschung der Gruppeneinträge"
 msgid "This will also delete all Roles and Group-Specific Property data associated with this Group record."
 msgstr "Diese Aktion wird alle Rollen und gruppenspezifischen Daten und Einstellungen löschen."
 
+#: GroupView.php:436
+msgid "All group membership and properties will be destroyed.  The group members themselves will not be altered."
+msgstr "Alle Gruppenmitgliedschaften und Eigenschaften werden gelöscht.\n"
+"Die Gruppenmitglieder selbst werden nicht geändert."
+
+#: 
+msgid "Please select target group for members"
+msgstr "Bitte wählen Sie eine Zielgruppe für Mitglieder aus"
+
 #: GroupView.php:84
 msgid "Add Group Members to Cart"
 msgstr "Gruppenmitglieder dem Korb hinzufügen"
@@ -2548,6 +2569,15 @@ msgstr "Gruppen Mitglieder:"
 msgid "Group members: "
 msgstr "Gruppenmitglieder"
 
+#: GroupView.php:395
+msgid "Remove Selected Members from group"
+msgstr "entfernen"
+
+#. Cart - ist eigentlich Warenkorb, mir fehlt zur Übersetzung im Moment der Kontext...
+#: GroupView.php:397
+msgid "Add Selected Members to Cart"
+msgstr "Ausgewählte Mitglieder zur Liste hinzufügen"
+
 #: GroupView.php:403
 msgid "Add Selected Members to Group"
 msgstr "Ausgewählte Mitglieder zu Gruppe hinzufügen"
@@ -2560,7 +2590,7 @@ msgstr "Ausgewählte Mitglieder zu Gruppe verschieben"
 msgid "Add Group Member: "
 msgstr "Gruppenmitglieder hinzufügen: "
 
-#: LettersAndLabels.php:26 PeopleDashboard.php:237
+#: LettersAndLabels.php:26 PeopleDashboard.php:241
 msgid "Letters and Mailing Labels"
 msgstr "Brief- und Adressetikett"
 
@@ -2705,7 +2735,7 @@ msgid "Email All (BCC)"
 msgstr "Allen mailen (BCC)"
 
 #: ChurchCRM/Config/Menu/Menu.php:70 OptionManager.php:63
-#: PeopleDashboard.php:285
+#: PeopleDashboard.php:289
 msgid "Family Roles"
 msgstr "Familienrollen"
 
@@ -2740,70 +2770,70 @@ msgstr "Personen"
 msgid "See All People"
 msgstr "Alle Menschen anzeigen"
 
-#: PeopleDashboard.php:179
+#: PeopleDashboard.php:181
 msgid "Sunday School Kids"
 msgstr "Kinder der Sonntagsschule"
 
-#: Menu.php:217 Menu.php:236 Menu.php:261 PeopleDashboard.php:186
-#: PeopleDashboard.php:207
+#: Menu.php:219 Menu.php:240 Menu.php:265 PeopleDashboard.php:188
+#: PeopleDashboard.php:211
 msgid "More info"
 msgstr "Weitere Informationen"
 
-#: PeopleDashboard.php:226
+#: PeopleDashboard.php:230
 msgid "Reports on groups and roles"
 msgstr "Berichte über Gruppen und Rollen"
 
-#: PeopleDashboard.php:228
+#: PeopleDashboard.php:232
 msgid "Report on group and roles selected (it may be a multi-page PDF)."
 msgstr "Bericht über ausgewählte Rollen und Gruppen (möglicherweise mehrseitige PDF)"
 
-#: PeopleDashboard.php:238
+#: PeopleDashboard.php:242
 msgid "Generate letters and mailing labels."
 msgstr "Erzeuge Briefe und Adressetiketten"
 
-#: PeopleDashboard.php:244
+#: PeopleDashboard.php:248
 msgid "US Address Verification Report"
 msgstr "Bericht zur US Adressüberprüfung "
 
-#: PeopleDashboard.php:296
+#: PeopleDashboard.php:300
 msgid "Role / Gender"
 msgstr "Rolle / Geschlecht"
 
-#: PeopleDashboard.php:460
+#: PeopleDashboard.php:464
 msgid "Men"
 msgstr "Männer"
 
-#: PeopleDashboard.php:463
+#: PeopleDashboard.php:467
 msgid "Women"
 msgstr "Frauen"
 
-#: PeopleDashboard.php:468 sundayschool/SundaySchoolDashboard.php:116
+#: PeopleDashboard.php:472 sundayschool/SundaySchoolDashboard.php:116
 msgid "Boys"
 msgstr "Jungen"
 
-#: PeopleDashboard.php:471 sundayschool/SundaySchoolDashboard.php:128
+#: PeopleDashboard.php:475 sundayschool/SundaySchoolDashboard.php:128
 msgid "Girls"
 msgstr "Mädchen"
 
-#: Menu.php:295
+#: Menu.php:299
 msgid "Latest Families"
 msgstr "Zuletzt hinzugefügte Familien"
 
 #: CartToFamily.php:206
 #: ChurchCRM/Emails/notifications/NewPersonOrFamilyEmail.php:60
-#: FamilyEditor.php:654 LettersAndLabels.php:71 Menu.php:308 Menu.php:337
+#: FamilyEditor.php:654 LettersAndLabels.php:71 Menu.php:312 Menu.php:341
 #: Reports/ConfirmReport.php:116 Reports/ConfirmReportEmail.php:116
 #: SelectDelete.php:153 SelectDelete.php:279
 #: external/templates/registration/family-register.php:31
 msgid "Family Name"
 msgstr "Familienname"
 
-#: Menu.php:324
+#: Menu.php:328
 msgid "Updated Families"
 msgstr "Aktualisierte Familien"
 
 #: ChurchCRM/model/ChurchCRM/Family.php:183
-#: ChurchCRM/model/ChurchCRM/Person.php:176 Menu.php:339 PersonEditor.php:406
+#: ChurchCRM/model/ChurchCRM/Person.php:176 Menu.php:343 PersonEditor.php:406
 msgid "Updated"
 msgstr "Aktualisiert"
 
@@ -3632,6 +3662,10 @@ msgstr "Setze die Erlaubnis auf WAHR um neuen Nutzern die Möglichkeit zu geben 
 msgid "Permission"
 msgstr "Erlaubnis"
 
+#: Register.php:49
+msgid "Base URL"
+msgstr "Basis-URL"
+
 #: ChurchCRM/dto/SystemConfig.php:251 SystemSettings.php:29
 msgid "System Settings"
 msgstr "Systemeinstellungen"
@@ -3648,6 +3682,10 @@ msgstr "Kalenderjahr"
 #: USISTAddressVerification.php:47
 msgid "US Address Verification"
 msgstr "US Adressüberprüfung"
+
+#: UpdateAllLatLon.php:15
+msgid "Update Latitude & Longitude"
+msgstr "Latitude & Longitude aktualisieren"
 
 #: UserList.php:125
 msgid "User Delete Confirmation"
@@ -3743,6 +3781,10 @@ msgstr "(Hat alle Rechte)"
 #, fuzzy
 msgid "Style"
 msgstr "Darstellung der Datenfelder"
+
+#: UserEditor.php:473
+msgid "Set Permission True to give this user the ability to change their current value."
+msgstr "Setzen Sie die Berechtigungen, um diesem Benutzer die Möglichkeit zu geben, seinen aktuellen Wert zu ändern."
 
 #: UserList.php:37
 msgid "User Listing"
@@ -3901,6 +3943,10 @@ msgstr "Haben sie Vorschläge für uns?"
 msgid "How did you learn of the church?"
 msgstr "Wie haben sie die Kirche kennengelernt?"
 
+#: eGive.php:75
+msgid "eGive Import"
+msgstr "eGive Import"
+
 #: eGive.php:352
 msgid "Re-import to selected family"
 msgstr "Re-import in die ausgewählte Familie"
@@ -3928,6 +3974,10 @@ msgstr "Zurück zum Einzahlungsbeleg"
 #: eGive.php:385
 msgid "Fatal error in eGive API datastream: '"
 msgstr "Schwerer Fehler in eGive API datastream:"
+
+#: v2/routes/email.php:31
+msgid "eMail Dashboard"
+msgstr "eMail-Dashboard"
 
 #: v2/routes/email.php:114
 msgid "People not in Mailchimp"
@@ -4131,6 +4181,10 @@ msgid " Bold"
 msgstr "Fett"
 
 #: 
+msgid "Error making API Call to"
+msgstr "Fehler beim API-Aufruf an"
+
+#: 
 msgid "Error text"
 msgstr "Fehlermeldung"
 
@@ -4167,6 +4221,10 @@ msgstr "Keine persönlichen Daten werden mitgeschickt, es sei denn Du fügst sie
 msgid "Dashboard"
 msgstr "Dashboard"
 
+#: Include/Header.php:78
+msgid "Toggle navigation"
+msgstr "Navigation umschalten"
+
 #: Include/Header.php:113 PersonView.php:377
 msgid "Change Password"
 msgstr "Passwort ändern"
@@ -4178,6 +4236,10 @@ msgstr "Sie haben"
 #: Include/Footer.php:36
 msgid "task(s)"
 msgstr "Aufgabe(n)"
+
+#: external/templates/registration/family-register-members.php:95
+msgid "Home"
+msgstr "Home"
 
 #: Include/LabelFunctions.php:42
 #, fuzzy
@@ -4998,7 +5060,7 @@ msgstr "Jahrestag"
 msgid "Notes"
 msgstr "Notizen"
 
-#: PeopleDashboard.php:218 PeopleDashboard.php:255 PeopleDashboard.php:263
+#: PeopleDashboard.php:222 PeopleDashboard.php:259 PeopleDashboard.php:267
 #: sundayschool/SundaySchoolDashboard.php:56
 msgid "Reports"
 msgstr "Berichte"
@@ -5067,7 +5129,7 @@ msgstr "Alle"
 msgid "Family Map"
 msgstr "Familienkarte"
 
-#: ChurchCRM/Config/Menu/Menu.php:84 Menu.php:229 PeopleDashboard.php:200
+#: ChurchCRM/Config/Menu/Menu.php:84 Menu.php:233 PeopleDashboard.php:204
 #: api/routes/search.php:190
 msgid "Groups"
 msgstr "Gruppen"
