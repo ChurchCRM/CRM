@@ -7,9 +7,6 @@ use Propel\Runtime\ActiveQuery\Criteria;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\dto\SystemURLs;
 
-
-require SystemURLs::getDocumentRoot() . '/Include/SimpleConfig.php';
-
 //Set the page title
 $sPageTitle = gettext(ucfirst($sMode)) . ' ' . gettext('Family List');
 include SystemURLs::getDocumentRoot() . '/Include/Header.php';

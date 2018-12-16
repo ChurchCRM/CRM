@@ -19,6 +19,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\MenuConfigQuery;
 use ChurchCRM\SessionUser;
 use ChurchCRM\Utils\PHPToMomentJSConverter;
+use ChurchCRM\Bootstrapper;
 
 function Header_modals()
 {
@@ -77,7 +78,7 @@ function Header_modals()
 
 function Header_body_scripts()
 {
-    global $localeInfo;
+    $localeInfo = Bootstrapper::GetCurrentLocale();
     $systemService = new SystemService(); ?>
     <script nonce="<?= SystemURLs::getCSPNonce() ?>">
         window.CRM = {

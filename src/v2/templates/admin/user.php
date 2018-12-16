@@ -4,8 +4,6 @@
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 
-require SystemURLs::getDocumentRoot() . '/Include/SimpleConfig.php';
-
 //Set the page title
 $sPageTitle = gettext("User") . " - " . $user->getFullName();
 include SystemURLs::getDocumentRoot() . '/Include/Header.php';
