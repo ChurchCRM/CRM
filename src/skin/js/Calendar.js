@@ -311,7 +311,7 @@ function initializeCalendar() {
     eventDrop: window.moveEventModal.handleEventDrop,
     eventResize: window.moveEventModal.handleEventResize,
     selectHelper: true,
-    //select: window.NewOrEditEventModal.getNewEventModal,
+    select: window.showNewEventForm,
     eventClick: window.showEventForm,  // This starts the React app 
     locale: window.CRM.lang
   });
