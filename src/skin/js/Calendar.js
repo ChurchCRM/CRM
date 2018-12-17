@@ -292,9 +292,6 @@ window.newCalendarModal = {
 }
 
 
-window.getDisplayEventModal = function(event) {
-   window.showEventForm(event.id, window.CRM.refreshAllFullCalendarSources);
-  }
 
 function initializeCalendar() {
   //
@@ -315,7 +312,7 @@ function initializeCalendar() {
     eventResize: window.moveEventModal.handleEventResize,
     selectHelper: true,
     //select: window.NewOrEditEventModal.getNewEventModal,
-    eventClick: window.getDisplayEventModal,
+    eventClick: window.showEventForm,  // This starts the React app 
     locale: window.CRM.lang
   });
 };

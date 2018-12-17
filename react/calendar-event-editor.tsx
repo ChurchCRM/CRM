@@ -3,19 +3,24 @@ import * as ReactDOM from 'react-dom';
 import CRMEvent from './interfaces/CRMEvent';
 import EventModal from './components/EventModal';
 declare global {
-    interface Window { showEventForm: Function; }
+    interface Window { 
+      showEventForm(number): void,
+      CRM: {
+        refreshAllFullCalendarSources(): void 
+      } 
+    }
 }
 
-window.showEventForm = function(eventId, refreshCallback) {
+window.showEventForm = function(event) {
     const unmount = function() {
         ReactDOM.unmountComponentAtNode( document.getElementById('calendar-event-react-app'));
-        refreshCallback()
+        window.CRM.refreshAllFullCalendarSources()
     }
     unmount();
-    ReactDOM.render(<App unmountCall={unmount} eventId={eventId}/>, document.getElementById('calendar-event-react-app'));
+    ReactDOM.render(<EventEditor unmountCall={unmount} eventId={event.id}/>, document.getElementById('calendar-event-react-app'));
 }
 
-class App extends React.Component<{unmountCall:Function, eventId: number}> {
+class EventEditor extends React.Component<{unmountCall:Function, eventId: number}> {
 
     render() {
       return (
