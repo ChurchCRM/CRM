@@ -36,7 +36,6 @@ class ExistingEvent extends React.Component<EventFormProps, EventFormState> {
       })
         .then(response => response.json())
         .then(data => {
-          console.log(data);
           this.setState({ calendars: data.Calendars })
         });
   }
@@ -50,7 +49,7 @@ class ExistingEvent extends React.Component<EventFormProps, EventFormState> {
   }
 
   handleInputChange(event: React.ChangeEvent<HTMLInputElement>) {
-    console.log(event);
+
     const target = event.target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
     const name = target.name;
@@ -62,11 +61,12 @@ class ExistingEvent extends React.Component<EventFormProps, EventFormState> {
   }
 
   updatePinnedCalendar(event) {
-    const newValue = event.label;
+    const pinnedCalendars=event.map((selected:{value:number, label:string}) => selected.value);
+    console.log(pinnedCalendars);
     this.setState({
-      event: Object.assign({}, this.state.event, { PinnedCalendars: [newValue] })
+      event: Object.assign({}, this.state.event, { PinnedCalendars: pinnedCalendars })
     });
-    console.log(this.state);
+    console.log(this.state.event);
   }
 
   exit() {
@@ -108,7 +108,7 @@ class ExistingEvent extends React.Component<EventFormProps, EventFormState> {
         <h2>{this.state.event.Title}</h2>
       </Modal.Header>
       <Modal.Body>
-        <EventPropertiesEditor event={this.state.event} calendars={this.state.calendars} changeHandler={this.handleInputChange} />
+        <EventPropertiesEditor event={this.state.event} calendars={this.state.calendars} changeHandler={this.handleInputChange} pinnedCalendarChanged={this.updatePinnedCalendar} />
       </Modal.Body>
       <Modal.Footer>
         <button className="btn btn-success" onClick={this.setEditMode}>Edit</button>

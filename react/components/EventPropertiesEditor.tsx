@@ -5,11 +5,9 @@ import { Modal, FormControl } from 'react-bootstrap';
 import Select from 'react-select';
 
 
-const EventPropertiesEditor: React.FunctionComponent<{ event: CRMEvent, calendars: Array<Calendar>, changeHandler: (event:React.ChangeEvent<HTMLInputElement>)=>void }> = ({ event, calendars, changeHandler }) => {
-  console.log(calendars);
+const EventPropertiesEditor: React.FunctionComponent<{ event: CRMEvent, calendars: Array<Calendar>, changeHandler: (event:React.ChangeEvent<HTMLInputElement>)=>void, pinnedCalendarChanged: (event: Array<Object>) => void }> = ({ event, calendars, changeHandler, pinnedCalendarChanged }) => {
   //map the Calendar data type (returned from CRM API) into something that react-select can present as dropdown choices
   var options=calendars.map((Pcal:Calendar) => ({value: Pcal.Id,  label: Pcal.Name}) );
-  console.log(options);
   return (
 <div>
     <Modal show={true} onHide={function () { }} >
@@ -49,7 +47,7 @@ const EventPropertiesEditor: React.FunctionComponent<{ event: CRMEvent, calendar
                 Pinned Calendars
                 </td>
               <td>
-                <Select name="PinnedCalendars" options={options} onChange={changeHandler}   />
+                <Select name="PinnedCalendars" options={options} onChange={pinnedCalendarChanged} isMulti="true"  />
                 </td>
             </tr>
             <tr>
