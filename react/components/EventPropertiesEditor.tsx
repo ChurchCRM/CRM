@@ -1,58 +1,66 @@
 import * as React from 'react';
 import CRMEvent from '../interfaces/CRMEvent';
+import PinnedCalendar from '../interfaces/PinnedCalendar';
 import { Modal, FormControl } from 'react-bootstrap';
 import Select from 'react-select';
 
 
-const EventPropertiesEditor: React.FunctionComponent<{ event: CRMEvent }> = ({ event }) => (
+const EventPropertiesEditor: React.FunctionComponent<{ event: CRMEvent, pinnedCalendars: PinnedCalendar[], changeHandler: (event:React.ChangeEvent<HTMLInputElement>)=>void }> = ({ event, pinnedCalendars, changeHandler }) => {
+  console.log(pinnedCalendars);
+  //map the PinnedCalendar data type (returned from CRM API) into something that react-select can present as dropdown choices
+  var options=pinnedCalendars.map((Pcal:PinnedCalendar) => ({value: Pcal.calendarId,  label: Pcal.calendarName}) );
+  console.log(options);
+  return (
 <div>
     <Modal show={true} onHide={function () { }} >
       <Modal.Header>
-        <input name="Title" value={event.Title} onChange={this.handleInputChange} />
+        <input name="Title" value={event.Title} onChange={changeHandler} />
       </Modal.Header>
       <Modal.Body>
         <table>
-          <tr>
-            <td>
-              Event Type
+          <tbody>
+            <tr>
+              <td>
+                Event Type
+                </td>
+              <td>
+                <input name="Type" value={event.Type.toString()} onChange={changeHandler} />
               </td>
-            <td>
-              <input name="Type" value={event.Type.toString()} onChange={this.handleInputChange} />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              Event Description
+            </tr>
+            <tr>
+              <td>
+                Event Description
+                </td>
+              <td>
+                <input name="Desc" value={event.Desc} onChange={changeHandler} />
               </td>
-            <td>
-              <input name="Desc" value={event.Desc} onChange={this.handleInputChange} />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              Date Range
+            </tr>
+            <tr>
+              <td>
+                Date Range
+                </td>
+              <td>
+                <input name="Start" value={event.Start} onChange={changeHandler} />
+                <input name="End" value={event.End} onChange={changeHandler} />
               </td>
-            <td>
-              <input name="Start" value={event.Start} onChange={this.handleInputChange} />
-              <input name="End" value={event.End} onChange={this.handleInputChange} />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              Pinned Calendars
+            </tr>
+            <tr>
+              <td>
+                Pinned Calendars
+                </td>
+              <td>
+                <Select name="PinnedCalendars" options={options} onChange={changeHandler}   />
+                </td>
+            </tr>
+            <tr>
+              <td>
+                Text
+                </td>
+              <td>
+                <input name="Text" value={event.Text} onChange={changeHandler} />
               </td>
-            <td>
-              <Select name="PinnedCalendars"  onChange={this.updatePinnedCalendar}   />
-              </td>
-          </tr>
-          <tr>
-            <td>
-              Text
-              </td>
-            <td>
-              <input name="Text" value={event.Text} onChange={this.handleInputChange} />
-            </td>
-          </tr>
+            </tr>
+          </tbody>
         </table>
 
       </Modal.Body>
@@ -63,7 +71,7 @@ const EventPropertiesEditor: React.FunctionComponent<{ event: CRMEvent }> = ({ e
       </Modal.Footer>
     </Modal>
   </div>
-)
+)}
 
 
 export default EventPropertiesEditor

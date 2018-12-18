@@ -1,5 +1,6 @@
 import * as React from 'react';
 import CRMEvent from '../interfaces/CRMEvent';
+import PinnedCalendar from '../interfaces/PinnedCalendar';
 import { Modal, FormControl } from 'react-bootstrap';
 import CRMRoot from '../window-context-service.jsx';
 import EventPropertiesViewer from './EventPropertiesViewer';
@@ -30,6 +31,7 @@ class ExistingEvent extends React.Component<EventFormProps, EventFormState> {
       .then(data => {
         this.setState({ event: data })
       });
+    this.setState({pinnedCalendars: [{ calendarId: 0, calendarName: "tesT"} as PinnedCalendar]});
   }
 
   setEditMode() {
@@ -40,7 +42,7 @@ class ExistingEvent extends React.Component<EventFormProps, EventFormState> {
     this.setState({ isEditMode: false })
   }
 
-  handleInputChange(event) {
+  handleInputChange(event: React.ChangeEvent<HTMLInputElement>) {
     console.log(event);
     const target = event.target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
@@ -99,7 +101,7 @@ class ExistingEvent extends React.Component<EventFormProps, EventFormState> {
         <h2>{this.state.event.Title}</h2>
       </Modal.Header>
       <Modal.Body>
-<EventPropertiesEditor event={this.state.event} />
+        <EventPropertiesEditor event={this.state.event} pinnedCalendars={this.state.pinnedCalendars} changeHandler={this.handleInputChange} />
       </Modal.Body>
       <Modal.Footer>
         <button className="btn btn-success" onClick={this.setEditMode}>Edit</button>
@@ -138,7 +140,8 @@ interface EventFormProps {
 
 interface EventFormState {
   event?: CRMEvent,
-  isEditMode: boolean
+  isEditMode: boolean,
+  pinnedCalendars?: Array<PinnedCalendar>
 }
 
 export default ExistingEvent
