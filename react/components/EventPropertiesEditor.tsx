@@ -1,14 +1,14 @@
 import * as React from 'react';
 import CRMEvent from '../interfaces/CRMEvent';
-import PinnedCalendar from '../interfaces/PinnedCalendar';
+import Calendar from '../interfaces/Calendar';
 import { Modal, FormControl } from 'react-bootstrap';
 import Select from 'react-select';
 
 
-const EventPropertiesEditor: React.FunctionComponent<{ event: CRMEvent, pinnedCalendars: PinnedCalendar[], changeHandler: (event:React.ChangeEvent<HTMLInputElement>)=>void }> = ({ event, pinnedCalendars, changeHandler }) => {
-  console.log(pinnedCalendars);
-  //map the PinnedCalendar data type (returned from CRM API) into something that react-select can present as dropdown choices
-  var options=pinnedCalendars.map((Pcal:PinnedCalendar) => ({value: Pcal.calendarId,  label: Pcal.calendarName}) );
+const EventPropertiesEditor: React.FunctionComponent<{ event: CRMEvent, calendars: Array<Calendar>, changeHandler: (event:React.ChangeEvent<HTMLInputElement>)=>void }> = ({ event, calendars, changeHandler }) => {
+  console.log(calendars);
+  //map the Calendar data type (returned from CRM API) into something that react-select can present as dropdown choices
+  var options=calendars.map((Pcal:Calendar) => ({value: Pcal.Id,  label: Pcal.Name}) );
   console.log(options);
   return (
 <div>

@@ -1,11 +1,10 @@
 import * as React from 'react';
 import CRMEvent from '../interfaces/CRMEvent';
-import PinnedCalendar from '../interfaces/PinnedCalendar';
+import Calendar from '../interfaces/Calendar';
 import { Modal, FormControl } from 'react-bootstrap';
 import CRMRoot from '../window-context-service.jsx';
 import EventPropertiesViewer from './EventPropertiesViewer';
 import EventPropertiesEditor from './EventPropertiesEditor';
-import Select from 'react-select';
 
 class ExistingEvent extends React.Component<EventFormProps, EventFormState> {
   constructor(props: EventFormProps) {
@@ -31,7 +30,15 @@ class ExistingEvent extends React.Component<EventFormProps, EventFormState> {
       .then(data => {
         this.setState({ event: data })
       });
-    this.setState({pinnedCalendars: [{ calendarId: 0, calendarName: "tesT"} as PinnedCalendar]});
+
+    fetch(CRMRoot + "/api/calendars", {
+        credentials: "include"
+      })
+        .then(response => response.json())
+        .then(data => {
+          console.log(data);
+          this.setState({ calendars: data.Calendars })
+        });
   }
 
   setEditMode() {
@@ -101,7 +108,7 @@ class ExistingEvent extends React.Component<EventFormProps, EventFormState> {
         <h2>{this.state.event.Title}</h2>
       </Modal.Header>
       <Modal.Body>
-        <EventPropertiesEditor event={this.state.event} pinnedCalendars={this.state.pinnedCalendars} changeHandler={this.handleInputChange} />
+        <EventPropertiesEditor event={this.state.event} calendars={this.state.calendars} changeHandler={this.handleInputChange} />
       </Modal.Body>
       <Modal.Footer>
         <button className="btn btn-success" onClick={this.setEditMode}>Edit</button>
@@ -141,7 +148,7 @@ interface EventFormProps {
 interface EventFormState {
   event?: CRMEvent,
   isEditMode: boolean,
-  pinnedCalendars?: Array<PinnedCalendar>
+  calendars?: Array<Calendar>
 }
 
 export default ExistingEvent
