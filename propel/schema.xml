@@ -877,7 +877,7 @@
     </table>
 
     <table name="calendar_events" idMethod="native" phpName="CalendarEvent" isCrossRef="true" description="This is a join-table to link an event with a calendar">
-      <column name="calendar_id" phpName="GroupId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true"  primaryKey="true"/>
+      <column name="calendar_id" phpName="CalendarId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true"  primaryKey="true"/>
       <column name="event_id" phpName="EventId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true"  primaryKey="true"/>
 
       <foreign-key foreignTable="calendars">
