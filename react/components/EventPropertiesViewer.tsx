@@ -1,12 +1,9 @@
 import * as React from 'react';
 import CRMEvent from '../interfaces/CRMEvent';
-import { Modal, FormControl } from 'react-bootstrap';
-import Select from 'react-select';
+import Calendar from '../interfaces/Calendar';
 
-
-const EventPropertiesViewer: React.FunctionComponent<{ event: CRMEvent }> = ({ event }) => (
-  
-  
+const EventPropertiesViewer: React.FunctionComponent<{ event: CRMEvent, calendars: Array<Calendar> }> = ({ event, calendars }) => { 
+  return (
       <table>
         <tbody>
         <tr>
@@ -36,10 +33,20 @@ const EventPropertiesViewer: React.FunctionComponent<{ event: CRMEvent }> = ({ e
         <tr>
           <td>
             Pinned Calendars
-            </td>
+          </td>
           <td>
-            unk
-            </td>
+            <ul>
+            {
+              calendars.map(
+                (calendar: Calendar)=> {
+                  if (event.PinnedCalendars != null && event.PinnedCalendars.includes(calendar.Id)) {
+                    return (<li>{calendar.Name}</li>)
+                  }
+                }
+              )
+            }
+            </ul>
+          </td>
         </tr>
         <tr>
           <td>
@@ -51,5 +58,5 @@ const EventPropertiesViewer: React.FunctionComponent<{ event: CRMEvent }> = ({ e
         </tr>
         </tbody>
       </table>
-)
+)}
 export default EventPropertiesViewer;

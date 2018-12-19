@@ -10,7 +10,8 @@ class ExistingEvent extends React.Component<EventFormProps, EventFormState> {
   constructor(props: EventFormProps) {
     super(props);
     this.state = {
-      isEditMode: false
+      isEditMode: false,
+      calendars: []
     };
 
     this.setEditMode = this.setEditMode.bind(this);
@@ -105,13 +106,13 @@ class ExistingEvent extends React.Component<EventFormProps, EventFormState> {
       return ( <div>
     <Modal show={true} onHide={function () { }} >
       <Modal.Header>
-        <h2>{this.state.event.Title}</h2>
+      <input name="Title" value={this.state.event.Title} onChange={this.handleInputChange} />
       </Modal.Header>
       <Modal.Body>
         <EventPropertiesEditor event={this.state.event} calendars={this.state.calendars} changeHandler={this.handleInputChange} pinnedCalendarChanged={this.updatePinnedCalendar} />
       </Modal.Body>
       <Modal.Footer>
-        <button className="btn btn-success" onClick={this.setEditMode}>Edit</button>
+        <button className="btn btn-success" onClick={this.save}>Save</button>
         <button className="btn btn-danger pull-left" onClick={this.setEditMode}>Delete</button>
         <button className="btn btn-default pull-right" onClick={this.exit}>Cancel</button>
       </Modal.Footer>
@@ -126,7 +127,7 @@ class ExistingEvent extends React.Component<EventFormProps, EventFormState> {
             <h2>{this.state.event.Title}</h2>
           </Modal.Header>
           <Modal.Body>
-          <EventPropertiesViewer event={this.state.event}/>
+          <EventPropertiesViewer event={this.state.event} calendars={this.state.calendars} />
           </Modal.Body>
           <Modal.Footer>
             <button className="btn btn-success" onClick={this.setEditMode}>Edit</button>
@@ -148,7 +149,7 @@ interface EventFormProps {
 interface EventFormState {
   event?: CRMEvent,
   isEditMode: boolean,
-  calendars?: Array<Calendar>
+  calendars: Array<Calendar>
 }
 
 export default ExistingEvent
