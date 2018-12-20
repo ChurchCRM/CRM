@@ -9,28 +9,43 @@ import EventPropertiesEditor from './EventPropertiesEditor';
 class ExistingEvent extends React.Component<EventFormProps, EventFormState> {
   constructor(props: EventFormProps) {
     super(props);
+    
     this.state = {
       isEditMode: false,
-      calendars: []
+      calendars: [],
     };
+    if (this.props.eventId == 0) {
+      this.state= {
+        isEditMode: false,
+        calendars: [],
+        event: {
+          Id: 0,
+          Title: ""
+        }
+      }
+    }
+       
 
     this.setEditMode = this.setEditMode.bind(this);
     this.setReadOnlyMode = this.setReadOnlyMode.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
     this.updatePinnedCalendar = this.updatePinnedCalendar.bind(this);
+    this.delete = this.delete.bind(this);
     this.exit = this.props.onClose.bind(this);
     this.save = this.save.bind(this);
   }
 
   componentDidMount() {
-    // when the component monts to the DOM, then we should execut an XHR query to find the details for the supplied event id.
-    fetch(CRMRoot + "/api/events/" + this.props.eventId, {
-      credentials: "include"
-    })
-      .then(response => response.json())
-      .then(data => {
-        this.setState({ event: data })
-      });
+    if (this.props.eventId != 0) {
+      // when the component monts to the DOM, then we should execut an XHR query to find the details for the supplied event id.
+      fetch(CRMRoot + "/api/events/" + this.props.eventId, {
+        credentials: "include"
+      })
+        .then(response => response.json())
+        .then(data => {
+          this.setState({ event: data })
+        });
+    }
 
     fetch(CRMRoot + "/api/calendars", {
         credentials: "include"
@@ -87,6 +102,19 @@ class ExistingEvent extends React.Component<EventFormProps, EventFormState> {
       .then(() => this.exit());
   }
 
+  delete() {
+    fetch(CRMRoot + "/api/events/" + this.props.eventId, {
+      credentials: "include",
+      method: "POST",
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({"_METHOD" : "DELETE" })
+    })
+      .then(() => this.exit());
+  }
+
   render() {
     if (this.state.event === null || this.state.event === undefined) {
       return (
@@ -113,7 +141,7 @@ class ExistingEvent extends React.Component<EventFormProps, EventFormState> {
       </Modal.Body>
       <Modal.Footer>
         <button className="btn btn-success" onClick={this.save}>Save</button>
-        <button className="btn btn-danger pull-left" onClick={this.setEditMode}>Delete</button>
+        <button className="btn btn-danger pull-left" onClick={this.delete}>Delete</button>
         <button className="btn btn-default pull-right" onClick={this.exit}>Cancel</button>
       </Modal.Footer>
     </Modal>
@@ -131,7 +159,7 @@ class ExistingEvent extends React.Component<EventFormProps, EventFormState> {
           </Modal.Body>
           <Modal.Footer>
             <button className="btn btn-success" onClick={this.setEditMode}>Edit</button>
-            <button className="btn btn-danger pull-left" onClick={this.setEditMode}>Delete</button>
+            <button className="btn btn-danger pull-left" onClick={this.delete}>Delete</button>
             <button className="btn btn-default pull-right" onClick={this.exit}>Cancel</button>
           </Modal.Footer>
         </Modal>

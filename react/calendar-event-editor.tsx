@@ -18,7 +18,7 @@ window.showEventForm = function(event) {
         window.CRM.refreshAllFullCalendarSources()
     }
     unmount();
-    ReactDOM.render(<EventEditor unmountCall={unmount} eventId={event.id}/>, document.getElementById('calendar-event-react-app'));
+    ReactDOM.render(<ExistingEvent onClose={unmount} eventId={event.id}/>, document.getElementById('calendar-event-react-app'));
 }
 
 window.showNewEventForm = function(start,end) {
@@ -27,16 +27,5 @@ window.showNewEventForm = function(start,end) {
     window.CRM.refreshAllFullCalendarSources()
   }
   unmount();
-  //ReactDOM.render(<NewEvent unmountCall={unmount} />, document.getElementById('calendar-event-react-app'));
+  ReactDOM.render(<ExistingEvent onClose={unmount} eventId={0} />, document.getElementById('calendar-event-react-app'));
 }
-
-class EventEditor extends React.Component<{unmountCall:Function, eventId: number}> {
-
-    render() {
-      return (
-        <div >
-          <ExistingEvent onClose={this.props.unmountCall} eventId={this.props.eventId} />
-        </div>
-      );
-    }
-  };

@@ -4,7 +4,7 @@ import Calendar from '../interfaces/Calendar';
 
 const EventPropertiesViewer: React.FunctionComponent<{ event: CRMEvent, calendars: Array<Calendar> }> = ({ event, calendars }) => { 
   return (
-      <table>
+      <table className="table modal-table">
         <tbody>
         <tr>
           <td>
