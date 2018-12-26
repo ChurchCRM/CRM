@@ -25,12 +25,6 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\PersonQuery;
 use ChurchCRM\Utils\RedirectUtils;
 
-if (!SystemService::isDBCurrent()) {
-    RedirectUtils::Redirect('SystemDBUpdate.php');
-    exit;
-}
-
-
 // Get the UserID out of user name submitted in form results
 if (isset($_POST['User'])) {
     // Get the information for the selected user

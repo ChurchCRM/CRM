@@ -2,8 +2,6 @@
 
 use ChurchCRM\dto\SystemURLs;
 
-require SystemURLs::getDocumentRoot() . '/Include/SimpleConfig.php';
-
 //Set the page title
 include SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>

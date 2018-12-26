@@ -9,6 +9,7 @@ use Geocoder\Provider\GoogleMaps\GoogleMaps;
 use Geocoder\StatefulGeocoder;
 use Http\Adapter\Guzzle6\Client;
 use Geocoder\Query\GeocodeQuery;
+use ChurchCRM\Bootstrapper;
 
 class GeoUtils
 {
@@ -17,7 +18,7 @@ class GeoUtils
     {
 
         $logger = LoggerUtils::getAppLogger();
-        $localeInfo = new LocaleInfo(SystemConfig::getValue('sLanguage'));
+        $localeInfo = Bootstrapper::GetCurrentLocale();
 
         $provider = null;
         $adapter = new Client();

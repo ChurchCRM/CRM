@@ -19,9 +19,10 @@ use ChurchCRM\Reports\PDF_Directory;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\MiscUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\SessionUser;
 
 // Check for Create Directory user permission.
-if (!$bCreateDirectory) {
+if (!SessionUser::getUser()->isCreateDirectoryEnabled()) {
     RedirectUtils::Redirect('Menu.php');
     exit;
 }
