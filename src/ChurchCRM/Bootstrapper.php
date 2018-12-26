@@ -15,6 +15,7 @@ namespace ChurchCRM
   use Propel\Runtime\Propel;
   use ChurchCRM\Utils\LoggerUtils;
   use ChurchCRM\Utils\RedirectUtils;
+  use EcclesiaCRM\SessionUser;
 
   class Bootstrapper
   {
@@ -260,7 +261,7 @@ namespace ChurchCRM
       private static function configureUserEnvironment()  // TODO: This function needs to stop creating global variable-variables.
       {
           global $cnInfoCentral;
-          if (isset($_SESSION['user'])) {      // Not set on Login.php
+          if (!is_null(SessionUser::getUser())) {      // Not set on Login.php
               // Load user variables from user config table.
               // **************************************************
               $sSQL = 'SELECT ucfg_name, ucfg_value AS value '
