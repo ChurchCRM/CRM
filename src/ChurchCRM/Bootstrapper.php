@@ -15,6 +15,7 @@ namespace ChurchCRM
   use Propel\Runtime\Propel;
   use ChurchCRM\Utils\LoggerUtils;
   use ChurchCRM\Utils\RedirectUtils;
+  use ChurchCRM\SessionUser;
 
   class Bootstrapper
   {
@@ -34,7 +35,7 @@ namespace ChurchCRM
        */
       private static $bootStrapLogger;
       private static $serviceContainer;
-    
+
       public static function init($sSERVERNAME, $dbPort, $sUSER, $sPASSWORD, $sDATABASE, $sRootPath, $bLockURL, $URL)
       {
           global $debugBootstrapper;
@@ -46,7 +47,7 @@ namespace ChurchCRM
           self::$rootPath = $sRootPath;
           self::$lockURL = $bLockURL;
           self::$allowableURLs = $URL;
-      
+
           try {
               SystemURLs::init($sRootPath, $URL, dirname(dirname(__FILE__)));
           } catch (\Exception $e) {
@@ -57,12 +58,12 @@ namespace ChurchCRM
           } else {
               self::$bootStrapLogger = LoggerUtils::getAppLogger(Logger::INFO);
           }
-      
+
           self::$bootStrapLogger->debug("Starting ChurchCRM");
           SystemURLs::checkAllowedURL($bLockURL, $URL);
           self::initMySQLI();
           self::initPropel();
-      
+
           if (self::isDatabaseEmpty()) {
               self::installChurchCRMSchema();
           }
@@ -90,7 +91,7 @@ namespace ChurchCRM
       {
           return new LocaleInfo(SystemConfig::getValue('sLanguage'));
       }
-      
+
       private static function ConfigureLocale()
       {
           global $aLocaleInfo,$localeInfo;
@@ -118,7 +119,7 @@ namespace ChurchCRM
           textdomain($domain);
           self::$bootStrapLogger->debug("Locale configuration complete");
       }
-      
+
       private static function initMySQLI()
       {
           global $cnInfoCentral; // need to stop using this everywhere....
@@ -237,12 +238,12 @@ namespace ChurchCRM
           $ormLogger->pushHandler(new StreamHandler($ormLogPath, LoggerUtils::getLogLevel()));
           self::$serviceContainer->setLogger('defaultLogger', $ormLogger);
       }
-      
+
       public static function GetDSN()
       {
           return 'mysql:host=' . self::$databaseServerName . ';port='.self::$databasePort.';dbname=' . self::$databaseName;
       }
-      
+
       private static function buildConnectionManagerConfig()
       {
           if (is_null(self::$databasePort)) {
@@ -266,7 +267,7 @@ namespace ChurchCRM
       private static function configureUserEnvironment()  // TODO: This function needs to stop creating global variable-variables.
       {
           global $cnInfoCentral;
-          if (isset($_SESSION['user'])) {      // Not set on Login.php
+          if (SessionUser->isActive()) {      // Not set on Login.php
               // Load user variables from user config table.
               // **************************************************
               $sSQL = 'SELECT ucfg_name, ucfg_value AS value '
