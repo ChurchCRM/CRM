@@ -4,7 +4,6 @@ namespace ChurchCRM;
 
 class SessionUser
 {
-
     public static function isActive()
     {
         return isset($_SESSION['user']);
