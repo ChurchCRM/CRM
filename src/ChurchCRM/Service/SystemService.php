@@ -117,86 +117,6 @@ class SystemService
         return $restoreResult;
     }
 
-    public function getDatabaseBackup($params)
-    {
-        requireUserGroupMembership('bAdmin');
-        global $sSERVERNAME, $sDATABASE, $sUSER, $sPASSWORD;
-        $backup = new \stdClass();
-        $backup->backupRoot = SystemURLs::getDocumentRoot() . "/tmp_attach";
-        $backup->backupDir = $backup->backupRoot."/ChurchCRMBackups";
-        FileSystemUtils::recursiveRemoveDirectory($backup->backupRoot,true);
-        mkdir($backup->backupDir,0750,true);
-        $backup->headers = [];
-        $backup->params = $params;
-
-        $safeFileName = preg_replace('/[^a-zA-Z0-9\-_]/','', SystemConfig::getValue('sChurchName'));
-        $baseFileName = "$backup->backupDir/" . $safeFileName . "-";
-
-        $backup->saveTo = $baseFileName . date(SystemConfig::getValue("sDateFilenameFormat"));
-        $backup->SQLFile = $baseFileName . "Database.sql";
-
-        try {
-            $dump = new Mysqldump('mysql:host=' . $sSERVERNAME . ';dbname=' . $sDATABASE, $sUSER, $sPASSWORD, ['add-drop-table' => true]);
-            $dump->start($backup->SQLFile);
-        } catch (\Exception $e) {
-           throw new Exception("Unable to create backup archive at ". $backup->SQLFile,500);
-        }
-
-        switch ($params->iArchiveType) {
-            case 0: // The user wants a gzip'd SQL file.
-                $backup->saveTo .= '.sql.gz';
-                $gzf = gzopen($backup->saveTo, 'w6');
-                gzwrite($gzf, file_get_contents($backup->SQLFile));
-                gzclose($gzf);
-                break;
-            case 2: //The user wants a plain ol' SQL file
-                $backup->saveTo .= '.sql';
-                rename($backup->SQLFile, $backup->saveTo);
-                break;
-            case 3: //the user wants a .tar.gz file
-                $backup->saveTo .= '.tar';
-                $phar = new \PharData($backup->saveTo);
-                $phar->startBuffering();
-                $phar->addFile($backup->SQLFile, 'ChurchCRM-Database.sql');
-                $imageFiles = new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator(SystemURLs::getImagesRoot()));
-                foreach ($imageFiles as $imageFile) {
-                    if (!$imageFile->isDir()) {
-                        $localName = str_replace(SystemURLs::getDocumentRoot() . '/', '', $imageFile->getRealPath());
-                        $phar->addFile($imageFile->getRealPath(), $localName);
-                    }
-                }
-                $phar->stopBuffering();
-                $phar->compress(\Phar::GZ);
-                unlink($backup->saveTo);
-                $backup->saveTo .= '.gz';
-                break;
-        }
-
-        if ($params->bEncryptBackup) {  //the user has selected an encrypted backup
-            putenv('GNUPGHOME=/tmp');
-            $backup->encryptCommand = "echo $params->password | " . SystemConfig::getValue('sPGPname') . " -q -c --batch --no-tty --passphrase-fd 0 $backup->saveTo";
-            $backup->saveTo .= '.gpg';
-            system($backup->encryptCommand);
-            $archiveType = 3;
-        }
-
-        switch ($params->iArchiveType) {
-            case 0:
-                array_push($backup->headers, '');
-            case 1:
-                array_push($backup->headers, 'Content-type: application/x-zip');
-            case 2:
-                array_push($backup->headers, 'Content-type: text/plain');
-            case 3:
-                array_push($backup->headers, 'Content-type: application/pgp-encrypted');
-        }
-
-        $backup->filename = mb_substr($backup->saveTo, strrpos($backup->saveTo, '/', -1) + 1);
-        array_push($backup->headers, "Content-Disposition: attachment; filename=$backup->filename");
-
-        return $backup;
-    }
-
     public static function copyBackupToExternalStorage()
     {
         $params = new \stdClass();
@@ -237,54 +157,6 @@ class SystemService
         }
     }
 
-    public function download($filename)
-    {
-        requireUserGroupMembership('bAdmin');
-        set_time_limit(0);
-        $path = SystemURLs::getDocumentRoot() . "/tmp_attach/ChurchCRMBackups/$filename";
-        if (file_exists($path)) {
-            if ($fd = fopen($path, 'r')) {
-                $fsize = filesize($path);
-                $path_parts = pathinfo($path);
-                $ext = strtolower($path_parts['extension']);
-                switch ($ext) {
-                    case 'gz':
-                        header('Content-type: application/x-gzip');
-                        header('Content-Disposition: attachment; filename="' . $path_parts['basename'] . '"');
-                        break;
-                    case 'tar.gz':
-                        header('Content-type: application/x-gzip');
-                        header('Content-Disposition: attachment; filename="' . $path_parts['basename'] . '"');
-                        break;
-                    case 'sql':
-                        header('Content-type: text/plain');
-                        header('Content-Disposition: attachment; filename="' . $path_parts['basename'] . '"');
-                        break;
-                    case 'gpg':
-                        header('Content-type: application/pgp-encrypted');
-                        header('Content-Disposition: attachment; filename="' . $path_parts['basename'] . '"');
-                        break;
-                    case 'zip':
-                        header('Content-type: application/zip');
-                        header('Content-Disposition: attachment; filename="' . $path_parts['basename'] . '"');
-                        break;
-                    // add more headers for other content types here
-                    default:
-                        header('Content-type: application/octet-stream');
-                        header('Content-Disposition: filename="' . $path_parts['basename'] . '"');
-                        break;
-                }
-                header("Content-length: $fsize");
-                header('Cache-control: private'); //use this to open files directly
-                while (!feof($fd)) {
-                    $buffer = fread($fd, 2048);
-                    echo $buffer;
-                }
-            }
-            fclose($fd);
-            FileSystemUtils::recursiveRemoveDirectory(SystemURLs::getDocumentRoot() . '/tmp_attach/',true);
-        }
-    }
 
     public function getConfigurationSetting($settingName, $settingValue)
     {
@@ -534,17 +406,17 @@ class SystemService
 
         // Returns a file size limit in bytes based on the PHP upload_max_filesize
     // and post_max_size
-    public function getMaxUploadFileSize($humanFormat=true) {
+    public static function getMaxUploadFileSize($humanFormat=true) {
       //select maximum upload size
-      $max_upload = $this->parse_size(ini_get('upload_max_filesize'));
+      $max_upload = SystemService::parse_size(ini_get('upload_max_filesize'));
       //select post limit
-      $max_post = $this->parse_size(ini_get('post_max_size'));
+      $max_post = SystemService::parse_size(ini_get('post_max_size'));
       //select memory limit
-      $memory_limit = $this->parse_size(ini_get('memory_limit'));
+      $memory_limit = SystemService::parse_size(ini_get('memory_limit'));
       // return the smallest of them, this defines the real limit
       if ($humanFormat)
       {
-        return $this->human_filesize(min($max_upload, $max_post, $memory_limit));
+        return SystemService::human_filesize(min($max_upload, $max_post, $memory_limit));
       }
       else
       {
@@ -552,7 +424,7 @@ class SystemService
       }
     }
 
-    private function parse_size($size) {
+    public static function parse_size($size) {
       $unit = preg_replace('/[^bkmgtpezy]/i', '', $size); // Remove the non-unit characters from the size.
       $size = preg_replace('/[^0-9\.]/', '', $size); // Remove the non-numeric characters from the size.
       if ($unit) {
@@ -564,7 +436,7 @@ class SystemService
       }
     }
 
-    function human_filesize($bytes, $decimals = 2) {
+    static function human_filesize($bytes, $decimals = 2) {
       $size = array('B','kB','MB','GB','TB','PB','EB','ZB','YB');
       $factor = floor((strlen($bytes) - 1) / 3);
       return sprintf("%.{$decimals}f", $bytes / pow(1024, $factor)) . @$size[$factor];
