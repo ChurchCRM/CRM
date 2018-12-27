@@ -72,7 +72,7 @@ $isAdmin = $_SESSION['user']->isAdmin();
 <!-- Bootstrap 3.3.5 -->
 
 
-<script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/bootstrap/js/bootstrap.min.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/external/bootstrap/bootstrap.min.js"></script>
 <!-- SlimScroll -->
 <script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/slimScroll/jquery.slimscroll.min.js"></script>
 <!-- AdminLTE App -->
@@ -94,7 +94,7 @@ $isAdmin = $_SESSION['user']->isAdmin();
 
 <script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/chartjs/Chart.min.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/pace/pace.min.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/select2/select2.full.min.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/external/select2/select2.min.js"></script>
 
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/bootstrap-notify/bootstrap-notify.min.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/fullcalendar/fullcalendar.min.js"></script>

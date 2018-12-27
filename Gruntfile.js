@@ -37,7 +37,6 @@ module.exports = function (grunt) {
             '!vendor/**/tests/**',
             '!vendor/**/docs/**',
             '!Images/{Family,Person}/thumbnails/*.{jpg,jpeg,png}',
-            //'!Images/{Family,Person}/*.{jpg,jpeg,png}',
             '!composer.lock',
             '!Include/Config.php',
             '!integrityCheck.json',
@@ -56,18 +55,13 @@ module.exports = function (grunt) {
                         cwd: 'node_modules/admin-lte',
                         src: [
                             '{dist,bootstrap,plugins}/**',
-                            '!dist/img',
+                            '!dist/img/**',
                             '!plugins/**/*.md',
                             '!plugins/**/examples/**',
-                            '!plugins/fullcalendar/**',
-                            '!plugins/moment/**',
-                            '!plugins/fastclick/**',
+                            '!plugins/**/psd/**',
                             '!plugins/bootstrap-wysihtml5/**',
-                            '!plugins/ckeditor/**',
-                            '!plugins/jQueryUI/**',
-                            '!plugins/morris/**',
-                            '!dist/img/**',
-                            '!plugins/**/psd/**'],
+                            '!plugins/jQueryUI/**'
+                            ],
                         dest: 'src/skin/adminlte/'
                     },
                     {
@@ -114,6 +108,13 @@ module.exports = function (grunt) {
                         expand: true,
                         filter: 'isFile',
                         flatten: true,
+                        src: ['node_modules/bootstrap/dist/css/bootstrap.min.css', 'node_modules/bootstrap/dist/js/bootstrap.min.js'],
+                        dest: 'src/skin/external/bootstrap/'
+                    },
+                    {
+                        expand: true,
+                        filter: 'isFile',
+                        flatten: true,
                         src: ['node_modules/bootstrap-toggle/css/bootstrap-toggle.css', 'node_modules/bootstrap-toggle/js/bootstrap-toggle.js'],
                         dest: 'src/skin/external/bootstrap-toggle/'
                     },
@@ -123,6 +124,13 @@ module.exports = function (grunt) {
                         flatten: true,
                         src: ['node_modules/bootstrap-validator/dist/validator.min.js'],
                         dest: 'src/skin/external/bootstrap-validator/'
+                    },
+                    {
+                        expand: true,
+                        filter: 'isFile',
+                        flatten: true,
+                        src: ['node_modules/jquery/dist/jquery.min.js'],
+                        dest: 'src/skin/external/jquery/'
                     },
                     {
                         expand: true,
@@ -169,6 +177,14 @@ module.exports = function (grunt) {
                         src: ['node_modules/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js',
                         'node_modules/bootstrap-datepicker/dist/css/bootstrap-datepicker.standalone.min.css'],
                         dest: 'src/skin/external/bootstrap-datepicker'
+                    },
+                    {
+                        expand: true,
+                        filter: 'isFile',
+                        flatten: true,
+                        src: ['node_modules/select2/dist/js/select2.min.js',
+                        'node_modules/select2/dist/css/select2.min.css'],
+                        dest: 'src/skin/external/select2'
                     }
                 ]
             }

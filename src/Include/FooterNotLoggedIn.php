@@ -8,10 +8,10 @@ use ChurchCRM\Service\SystemService;
     </div>
 
 
-  <script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/select2/select2.full.min.js"></script>
+  <script src="<?= SystemURLs::getRootPath() ?>/skin/external/select2/select2.min.js"></script>
 
   <!-- Bootstrap 3.3.5 -->
-  <script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/bootstrap/js/bootstrap.min.js"></script>
+  <script src="<?= SystemURLs::getRootPath() ?>/skin/external/bootstrap/bootstrap.min.js"></script>
   <!-- iCheck -->
   <script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/iCheck/icheck.min.js"></script>
 
