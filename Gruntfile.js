@@ -21,7 +21,7 @@ module.exports = function (grunt) {
         }
         return DTLangs.toString();
     };
-    
+
     const sass = require('node-sass');
 
 // Project configuration.
@@ -161,6 +161,14 @@ module.exports = function (grunt) {
                         flatten: true,
                         src: ['node_modules/bootstrap-notify/bootstrap-notify.min.js'],
                         dest: 'src/skin/external/bootstrap-notify'
+                    },
+                    {
+                        expand: true,
+                        filter: 'isFile',
+                        flatten: true,
+                        src: ['node_modules/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js',
+                        'node_modules/bootstrap-datepicker/dist/css/bootstrap-datepicker.standalone.min.css'],
+                        dest: 'src/skin/external/bootstrap-datepicker'
                     }
                 ]
             }
@@ -386,13 +394,13 @@ module.exports = function (grunt) {
                 jsFileContent = jsFileContent + '\n' + "try {"+fullCalendar+"} catch(e) {};\n";
             }
             if (enableDatePicker) {
-                tempFile = 'node_modules/admin-lte/plugins/datepicker/locales/bootstrap-datepicker.'+languageCode+'.js';
+                tempFile = 'node_modules/bootstrap-datepicker/dist/locales/bootstrap-datepicker.'+languageCode+'.min.js';
                 var datePicker = grunt.file.read(tempFile);
                 jsFileContent = jsFileContent + '\n// Source: ' + tempFile;
                 jsFileContent = jsFileContent + '\n' + "try {"+datePicker+"} catch(e) {};\n"
             }
             if (enableSelect2) {
-                tempFile = 'node_modules/admin-lte/plugins/select2/i18n/'+languageCode+'.js';
+                tempFile = 'node_modules/select2/dist/js/i18n/'+languageCode+'.js';
                 jsFileContent = jsFileContent + '\n// Source: ' + tempFile;
                 var select2 = grunt.file.read(tempFile);
                 jsFileContent = jsFileContent + '\n' + "try {"+select2+"} catch(e) {}"
@@ -466,5 +474,5 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-curl');
     grunt.loadNpmTasks('grunt-poeditor-ab');
     grunt.loadNpmTasks('grunt-exec');
-    
+
 }
