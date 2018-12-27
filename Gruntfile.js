@@ -43,7 +43,7 @@ module.exports = function (grunt) {
             '!logs/*.log'
         ],
         clean: {
-            skin: ["src/skin/{adminlte,external}"],
+            skin: ["src/skin/external"],
             release: ["target"]
         },
         copy: {
@@ -52,17 +52,15 @@ module.exports = function (grunt) {
                     // includes files within path and its sub-directories
                     {
                         expand: true,
-                        cwd: 'node_modules/admin-lte',
+                        filter: 'isFile',
+                        flatten: true,
+                          cwd: 'node_modules/admin-lte',
                         src: [
-                            '{dist,bootstrap,plugins}/**',
-                            '!dist/img/**',
-                            '!plugins/**/*.md',
-                            '!plugins/**/examples/**',
-                            '!plugins/**/psd/**',
-                            '!plugins/bootstrap-wysihtml5/**',
-                            '!plugins/jQueryUI/**'
+                            'dist/css/*.min.*',
+                            'dist/css/skins/**',
+                            'dist/js/adminlte.min.js',
                             ],
-                        dest: 'src/skin/adminlte/'
+                        dest: 'src/skin/external/adminlte/'
                     },
                     {
                         expand: true,
@@ -210,7 +208,7 @@ module.exports = function (grunt) {
                     'https://cdn.datatables.net/select/1.2.2/css/select.bootstrap.min.css',
                     'https://cdn.datatables.net/select/1.2.2/js/dataTables.select.min.js'
                 ],
-                dest: 'src/skin/adminlte/plugins/datatables/extensions/Select/'
+                dest: 'src/skin/external/datatables/extensions/Select/'
             }
         },
         sass: {
