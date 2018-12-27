@@ -9,6 +9,7 @@ use ChurchCRM\Map\DonationFundTableMap;
 use ChurchCRM\Map\PledgeTableMap;
 use ChurchCRM\PledgeQuery as ChildPledgeQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
+use Propel\Runtime\Connection\ConnectionInterface;
 
 /**
  * Skeleton subclass for representing a row from the 'deposit_dep' table.
@@ -21,7 +22,7 @@ use Propel\Runtime\ActiveQuery\Criteria;
  */
 class Deposit extends BaseDeposit
 {
-    public function preDelete()
+    public function preDelete(ConnectionInterface $con = null)
     {
         $this->getPledges()->delete();
 
@@ -351,7 +352,7 @@ class Deposit extends BaseDeposit
 
         $this->generateTotalsByCurrencyType($thisReport);
         $thisReport->curY += $thisReport->depositSummaryParameters->summary->intervalY * 2;
-        
+
         if (!empty($this->getComment()))
         {
           $thisReport->pdf->SetXY($thisReport->curX,  $thisReport->curY);
