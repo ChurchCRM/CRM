@@ -19,11 +19,19 @@ class SessionUser
 
     public static function isAdmin()
     {
-        return self::getUser()->isAdmin();
+        if (self::isActive()) {
+            return self::getUser()->isAdmin();
+        } else {
+            return false;
+        }
     }
 
     public static function getId()
     {
-        return self::getUser()->getId();
+        if (self::isActive()) {
+            return self::getUser()->getId();
+        } else {
+            return 0;
+        }
     }
 }
