@@ -76,7 +76,7 @@ $isAdmin = $_SESSION['user']->isAdmin();
 <!-- SlimScroll -->
 <script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/slimScroll/jquery.slimscroll.min.js"></script>
 <!-- AdminLTE App -->
-<script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/dist/js/app.min.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/dist/js/adminlte.min.js"></script>
 
 <!-- InputMask -->
 <script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/input-mask/jquery.inputmask.js"></script>
