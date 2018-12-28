@@ -18,18 +18,18 @@
     },
     "homepage": "http://www.churchcrm.io",
     "devDependencies": {
-        "grunt": "1.0.1",
+        "grunt": "^1.0.3",
         "grunt-confirm": "^1.0.7",
-        "grunt-contrib-clean": "1.0.0",
-        "grunt-contrib-compress": "1.4.1",
-        "grunt-contrib-copy": "1.0.0",
-        "grunt-curl": "2.2.0",
+        "grunt-contrib-clean": "^1.0.0",
+        "grunt-contrib-compress": "^1.4.1",
+        "grunt-contrib-copy": "^1.0.0",
+        "grunt-curl": "^2.5.0",
         "grunt-exec": "^3.0.0",
-        "grunt-poeditor-ab": "0.1.9",
-        "node-sha1": "1.0.1"
+        "grunt-poeditor-ab": "^0.1.9",
+        "node-sha1": "^1.0.1"
     },
     "dependencies": {
-        "admin-lte": "2.4.5",
+        "admin-lte": "2.4.8",
         "bootbox": "4.4.0",
         "bootstrap-datepicker": "^1.8.0",
         "bootstrap-notify": "3.1.3",
