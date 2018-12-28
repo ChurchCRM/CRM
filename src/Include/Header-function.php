@@ -96,10 +96,12 @@ function Header_body_scripts()
             iDasbhoardServiceIntervalTime:"<?= SystemConfig::getValue('iDasbhoardServiceIntervalTime') ?>",
             plugin: {
                 dataTable : {
-                <?php if (SessionUser::getUser()->isCSVExport()) { ?>
+                <?php if (SessionUser::getUser()->isCSVExport()) {
+        ?>
                      dom: 'Bfrtip',
                      buttons: ['copy', 'excel', 'pdf'],
-                <?php } ?>
+                <?php
+    } ?>
                    "language": {
                         "url": "<?= SystemURLs::getRootPath() ?>/locale/datatables/<?= $localeInfo->getDataTables() ?>.json"
                     },
