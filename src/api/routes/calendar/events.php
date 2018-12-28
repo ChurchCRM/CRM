@@ -10,6 +10,7 @@ use ChurchCRM\Slim\Middleware\EventsMiddleware;
 use ChurchCRM\Utils\InputUtils;
 use Slim\Http\Response;
 use Slim\Http\Request;
+use Propel\Runtime\ActiveQuery\Criteria;
 
 $app->group('/events', function () {
 
@@ -149,6 +150,10 @@ function updateEvent($request, $response, $args)
     $id = $Event->getId();
     $Event->fromArray($input);
     $Event->setId($id);
+    $PinnedCalendars = CalendarQuery::Create()
+            ->filterById($input['PinnedCalendars'], Criteria::IN)
+            ->find();
+    $Event->setCalendars($PinnedCalendars);
    
     $Event->save();    
 }

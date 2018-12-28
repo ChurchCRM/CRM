@@ -1,6 +1,7 @@
 import * as React from 'react';
 import CRMEvent from '../interfaces/CRMEvent';
 import Calendar from '../interfaces/Calendar';
+import EventType from '../interfaces/EventType';
 import { Modal, FormControl } from 'react-bootstrap';
 import CRMRoot from '../window-context-service.jsx';
 import EventPropertiesViewer from './EventPropertiesViewer';
@@ -13,14 +14,18 @@ class ExistingEvent extends React.Component<EventFormProps, EventFormState> {
     this.state = {
       isEditMode: false,
       calendars: [],
+      eventTypes: []
     };
     if (this.props.eventId == 0) {
       this.state= {
-        isEditMode: false,
+        isEditMode: true,
         calendars: [],
+        eventTypes: [],
         event: {
           Id: 0,
-          Title: ""
+          Title: "",
+          Type: 0,
+          PinnedCalendars: []
         }
       }
     }
@@ -30,6 +35,7 @@ class ExistingEvent extends React.Component<EventFormProps, EventFormState> {
     this.setReadOnlyMode = this.setReadOnlyMode.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
     this.updatePinnedCalendar = this.updatePinnedCalendar.bind(this);
+    this.updateEventType = this.updateEventType.bind(this)
     this.delete = this.delete.bind(this);
     this.exit = this.props.onClose.bind(this);
     this.save = this.save.bind(this);
@@ -54,6 +60,14 @@ class ExistingEvent extends React.Component<EventFormProps, EventFormState> {
         .then(data => {
           this.setState({ calendars: data.Calendars })
         });
+
+    fetch(CRMRoot + "/api/events/types", {
+          credentials: "include"
+        })
+          .then(response => response.json())
+          .then(data => {
+            this.setState({ eventTypes: data.EventTypes })
+          });
   }
 
   setEditMode() {
@@ -85,12 +99,21 @@ class ExistingEvent extends React.Component<EventFormProps, EventFormState> {
     console.log(this.state.event);
   }
 
+  updateEventType(event) {
+    const eventType=event.value;
+    console.log(eventType);
+    this.setState({
+      event: Object.assign({}, this.state.event, { Type: eventType })
+    });
+    console.log(this.state.event);
+  }
+
   exit() {
     this.props.onClose()
   }
 
   save() {
-    fetch(CRMRoot + "/api/events/" + this.props.eventId, {
+    fetch(CRMRoot + "/api/events" + (this.state.event.Id !=0 ? "/"+this.state.event.Id:""), {
       credentials: "include",
       method: "POST",
       headers: {
@@ -137,7 +160,7 @@ class ExistingEvent extends React.Component<EventFormProps, EventFormState> {
       <input name="Title" value={this.state.event.Title} onChange={this.handleInputChange} />
       </Modal.Header>
       <Modal.Body>
-        <EventPropertiesEditor event={this.state.event} calendars={this.state.calendars} changeHandler={this.handleInputChange} pinnedCalendarChanged={this.updatePinnedCalendar} />
+        <EventPropertiesEditor event={this.state.event} calendars={this.state.calendars} eventTypes={this.state.eventTypes} changeHandler={this.handleInputChange} pinnedCalendarChanged={this.updatePinnedCalendar} eventTypeChanged={this.updateEventType} />
       </Modal.Body>
       <Modal.Footer>
         <button className="btn btn-success" onClick={this.save}>Save</button>
@@ -155,7 +178,7 @@ class ExistingEvent extends React.Component<EventFormProps, EventFormState> {
             <h2>{this.state.event.Title}</h2>
           </Modal.Header>
           <Modal.Body>
-          <EventPropertiesViewer event={this.state.event} calendars={this.state.calendars} />
+          <EventPropertiesViewer event={this.state.event} calendars={this.state.calendars} eventTypes={this.state.eventTypes} />
           </Modal.Body>
           <Modal.Footer>
             <button className="btn btn-success" onClick={this.setEditMode}>Edit</button>
@@ -177,7 +200,8 @@ interface EventFormProps {
 interface EventFormState {
   event?: CRMEvent,
   isEditMode: boolean,
-  calendars: Array<Calendar>
+  calendars: Array<Calendar>,
+  eventTypes: Array<EventType>
 }
 
 export default ExistingEvent

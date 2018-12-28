@@ -1,8 +1,9 @@
 import * as React from 'react';
 import CRMEvent from '../interfaces/CRMEvent';
 import Calendar from '../interfaces/Calendar';
+import EventType from '../interfaces/EventType';
 
-const EventPropertiesViewer: React.FunctionComponent<{ event: CRMEvent, calendars: Array<Calendar> }> = ({ event, calendars }) => { 
+const EventPropertiesViewer: React.FunctionComponent<{ event: CRMEvent, calendars: Array<Calendar>, eventTypes: Array<EventType> }> = ({ event, calendars, eventTypes }) => { 
   return (
       <table className="table modal-table">
         <tbody>
@@ -11,7 +12,15 @@ const EventPropertiesViewer: React.FunctionComponent<{ event: CRMEvent, calendar
             i18next.t('Event Type')
             </td>
           <td>
-            {event.Type}
+          {
+              eventTypes.map(
+                (eventType: EventType)=> {
+                  if (event.Type != null && event.Type == eventType.Id) {
+                    return (<p>{eventType.Name}</p>)
+                  }
+                }
+              )
+            }
           </td>
         </tr>
         <tr>
