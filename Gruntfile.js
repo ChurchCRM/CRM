@@ -141,6 +141,13 @@ module.exports = function (grunt) {
                         expand: true,
                         filter: 'isFile',
                         flatten: true,
+                        src: ['node_modules/bootstrap-daterangepicker/daterangepicker.css', 'node_modules/bootstrap-daterangepicker/daterangepicker.js'],
+                        dest: 'src/skin/external/bootstrap-daterangepicker/'
+                    },
+                    {
+                        expand: true,
+                        filter: 'isFile',
+                        flatten: true,
                         src: ['node_modules/inputmask/dist/min/jquery.inputmask.bundle.min.js', 'node_modules/inputmask/dist/min/inputmask/inputmask.date.extensions.min.js',
                         'node_modules/inputmask/dist/min/inputmask/inputmask.extensions.min.js'],
                         dest: 'src/skin/external/inputmask/'
@@ -177,7 +184,28 @@ module.exports = function (grunt) {
                         expand: true,
                         filter: 'isFile',
                         flatten: true,
-                        src: ['node_modules/datatables.net-bs/css/dataTables.bootstrap.min.css', 'node_modules/datatables.net-bs/js/dataTables.bootstrap.min.js'],
+                        src: ['node_modules/chart.js/Chart.min.js'],
+                        dest: 'src/skin/external/chartjs/'
+                    },
+                    {
+                        expand: true,
+                        filter: 'isFile',
+                        flatten: true,
+                        src: ['node_modules/pace/pace.js'],
+                        dest: 'src/skin/external/pace/'
+                    },
+                    {
+                        expand: true,
+                        filter: 'isFile',
+                        flatten: true,
+                        src: ['node_modules/flot/jquery.flot*.js'],
+                        dest: 'src/skin/external/flot/'
+                    },
+                    {
+                        expand: true,
+                        filter: 'isFile',
+                        flatten: true,
+                        src: ['node_modules/datatables.net/js/jquery.dataTables.min.js', 'node_modules/datatables.net-bs/css/dataTables.bootstrap.min.css', 'node_modules/datatables.net-bs/js/dataTables.bootstrap.min.js'],
                         dest: 'src/skin/external/datatables/'
                     },
                     {

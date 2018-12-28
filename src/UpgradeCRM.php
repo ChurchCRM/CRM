@@ -215,6 +215,7 @@ function downloadbutton(filename) {
 }
 </script>
 
+<script src="<?= SystemURLs::getRootPath() ?>/skin/external/datatables/jquery.dataTables.min.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/datatables/dataTables.bootstrap.min.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/datatables/extensions/Select/dataTables.select.min.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/datatables/extensions/buttons/dataTables.buttons.min.js"></script>

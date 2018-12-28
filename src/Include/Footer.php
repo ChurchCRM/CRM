@@ -73,27 +73,25 @@ $isAdmin = $_SESSION['user']->isAdmin();
 
 
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/bootstrap/bootstrap.min.js"></script>
-<!-- SlimScroll -->
-<script src="<?= SystemURLs::getRootPath() ?>/skin/external/slimScroll/jquery.slimscroll.min.js"></script>
 <!-- AdminLTE App -->
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/adminlte/adminlte.min.js"></script>
 
 <!-- InputMask -->
-<script src="<?= SystemURLs::getRootPath() ?>/skin/external/inputmask/jquery.inputmask.budle.min.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/external/inputmask/jquery.inputmask.bundle.min.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/inputmask/inputmask.date.extensions.min.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/inputmask/inputmask.extensions.min.js"></script>
 
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/external/daterangepicker/daterangepicker.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/external/timepicker/bootstrap-timepicker.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/external/bootstrap-daterangepicker/daterangepicker.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/external/bootstrap-timepicker/bootstrap-timepicker.min.js"></script>
 
+<script src="<?= SystemURLs::getRootPath() ?>/skin/external/datatables/jquery.dataTables.min.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/datatables/dataTables.bootstrap.min.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/datatables/extensions/Select/dataTables.select.min.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/datatables/extensions/buttons/dataTables.buttons.min.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/datatables/extensions/responsive/dataTables.responsive.min.js"></script>
 
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/chartjs/Chart.min.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/external/pace/pace.min.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/select2/select2.min.js"></script>
 
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/bootstrap-notify/bootstrap-notify.min.js"></script>
