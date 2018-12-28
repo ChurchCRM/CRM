@@ -83,6 +83,7 @@ $isAdmin = $_SESSION['user']->isAdmin();
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/inputmask/inputmask.date.extensions.min.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/inputmask/inputmask.extensions.min.js"></script>
 
+<script src="<?= SystemURLs::getRootPath() ?>/skin/external/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/daterangepicker/daterangepicker.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/timepicker/bootstrap-timepicker.js"></script>
 
@@ -103,7 +104,6 @@ $isAdmin = $_SESSION['user']->isAdmin();
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/i18next/i18next.min.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/locale/js/<?= Bootstrapper::GetCurrentLocale()->getLocale() ?>.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/bootstrap-validator/validator.min.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/external/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
 
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/IssueReporter.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/DataTables.js"></script>
