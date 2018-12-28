@@ -106,8 +106,22 @@ module.exports = function (grunt) {
                         expand: true,
                         filter: 'isFile',
                         flatten: true,
-                        src: ['node_modules/bootstrap/dist/css/bootstrap.min.css', 'node_modules/bootstrap/dist/js/bootstrap.min.js'],
+                        src: ['node_modules/bootstrap/dist/css/bootstrap.min.css', 'node_modules/bootstrap/dist/css/bootstrap.min.css.map', 'node_modules/bootstrap/dist/js/bootstrap.min.js'],
                         dest: 'src/skin/external/bootstrap/'
+                    },
+                    {
+                        expand: true,
+                        filter: 'isFile',
+                        flatten: true,
+                        src: ['node_modules/bootstrap/fonts/**'],
+                        dest: 'src/skin/external/fonts/'
+                    },
+                    {
+                        expand: true,
+                        filter: 'isFile',
+                        flatten: true,
+                        src: ['node_modules/admin-lte/plugins/iCheck/icheck.min.js', 'node_modules/admin-lte/plugins/iCheck/square/blue.**'],
+                        dest: 'src/skin/external/iCheck/'
                     },
                     {
                         expand: true,
@@ -115,6 +129,21 @@ module.exports = function (grunt) {
                         flatten: true,
                         src: ['node_modules/bootstrap-toggle/css/bootstrap-toggle.css', 'node_modules/bootstrap-toggle/js/bootstrap-toggle.js'],
                         dest: 'src/skin/external/bootstrap-toggle/'
+                    },
+                    {
+                        expand: true,
+                        filter: 'isFile',
+                        flatten: true,
+                        src: ['node_modules/bootstrap-timepicker/css/bootstrap-timepicker.min.css', 'node_modules/bootstrap-timepicker/js/bootstrap-timepicker.min.js'],
+                        dest: 'src/skin/external/bootstrap-timepicker/'
+                    },
+                    {
+                        expand: true,
+                        filter: 'isFile',
+                        flatten: true,
+                        src: ['node_modules/inputmask/dist/min/jquery.inputmask.bundle.min.js', 'node_modules/inputmask/dist/min/inputmask/inputmask.date.extensions.min.js',
+                        'node_modules/inputmask/dist/min/inputmask/inputmask.extensions.min.js'],
+                        dest: 'src/skin/external/inputmask/'
                     },
                     {
                         expand: true,
@@ -143,6 +172,13 @@ module.exports = function (grunt) {
                         flatten: true,
                         src: ['node_modules/jquery-validation/dist/jquery.validate.min.js'],
                         dest: 'src/skin/external/jquery-validation/'
+                    },
+                    {
+                        expand: true,
+                        filter: 'isFile',
+                        flatten: true,
+                        src: ['node_modules/datatables.net-bs/css/dataTables.bootstrap.min.css', 'node_modules/datatables.net-bs/js/dataTables.bootstrap.min.js'],
+                        dest: 'src/skin/external/datatables/'
                     },
                     {
                         expand: true,
@@ -188,7 +224,15 @@ module.exports = function (grunt) {
             }
         },
         'curl-dir': {
-            datatables: {
+            datatables_extensions_buttons: {
+                src: ['https://cdn.datatables.net/buttons/1.5.2/css/buttons.dataTables.min.css', 'https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js'],
+                dest: 'src/skin/external/datatables/extensions/buttons'
+            },
+            datatables_extensions_responsive: {
+                src: ['https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css', 'https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js'],
+                dest: 'src/skin/external/datatables/extensions/responsive'
+            },
+            datatables_locale: {
                 src: ['https://cdn.datatables.net/plug-ins/1.10.12/i18n/{'+dataTablesLang()+'}.json'],
                 dest: 'src/locale/datatables'
             },

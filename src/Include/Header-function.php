@@ -96,18 +96,14 @@ function Header_body_scripts()
             iDasbhoardServiceIntervalTime:"<?= SystemConfig::getValue('iDasbhoardServiceIntervalTime') ?>",
             plugin: {
                 dataTable : {
+                <?php if (SessionUser::getUser()->isCSVExport()) { ?>
+                     dom: 'Bfrtip',
+                     buttons: ['copy', 'excel', 'pdf'],
+                <?php } ?>
                    "language": {
                         "url": "<?= SystemURLs::getRootPath() ?>/locale/datatables/<?= $localeInfo->getDataTables() ?>.json"
                     },
-                    responsive: true,
-                    <?php if (SessionUser::getUser()->isCSVExport()) {
-        ?>
-                    "dom": 'T<"clear">lfrtip',
-                    <?php
-    } ?>
-                    "tableTools": {
-                        "sSwfPath": "<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/datatables/extensions/TableTools/swf/copy_csv_xls.swf"
-                    }
+                    responsive: true
                 }
             },
             PageName:"<?= $_SERVER['PHP_SELF']?>"

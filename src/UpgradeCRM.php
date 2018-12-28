@@ -133,7 +133,7 @@ Header_body_scripts();
   </ul>
 </div>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
-  $(document).ready(function() { 
+  $(document).ready(function() {
     $("#fileIntegrityCheckResultsTable").DataTable({
       responsive: true,
       paging:false,
@@ -149,7 +149,7 @@ Header_body_scripts();
  $("#doBackup").click(function(){
    $("#status1").html('<i class="fa fa-circle-o-notch fa-spin"></i>');
    window.CRM.APIRequest({
-      method : 'POST', 
+      method : 'POST',
       path : 'database/backup',
       data : JSON.stringify({
         'iArchiveType' : 3
@@ -215,12 +215,10 @@ function downloadbutton(filename) {
 }
 </script>
 
-<script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/datatables/dataTables.bootstrap.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js" ></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.min.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/datatables/extensions/Select/dataTables.select.min.js"></script>
-
+<script src="<?= SystemURLs::getRootPath() ?>/skin/external/datatables/dataTables.bootstrap.min.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/external/datatables/extensions/Select/dataTables.select.min.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/external/datatables/extensions/buttons/dataTables.buttons.min.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/external/datatables/extensions/responsive/dataTables.responsive.min.js"></script>
 
 <?php
 // Add the page footer
