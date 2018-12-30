@@ -51,7 +51,7 @@ function listFamilies(Request $request, Response $response, array $args)
 function viewFamilyNotFound(Request $request, Response $response, array $args)
 {
   $renderer = new PhpRenderer('templates/common/');
-  
+
   $pageArgs = [
         'sRootPath' => SystemURLs::getRootPath(),
         'memberType' => "Family",
@@ -77,14 +77,19 @@ function viewFamily(Request $request, Response $response, array $args)
     $allFamilyProperties = PropertyQuery::create()->findByProClass("f");
 
     $allFamilyCustomFields = FamilyCustomMasterQuery::create()->find();
-    $thisFamilyCustomFields = FamilyCustomQuery::create()->findOneByFamId($familyId);
+
+    // get family with all the extra columns created
+    $rawQry =  FamilyCustomQuery::create();
+    foreach ($allFamilyCustomFields as $customfield ) {
+        $rawQry->withColumn($customfield->getCustomField());
+    }
+    $thisFamilyCustomFields = $rawQry->findOneByFamId($familyId);
 
     $familyCustom = [];
-
     foreach ($allFamilyCustomFields as $customfield ) {
-        $value = $thisFamilyCustomFields->getByName($customfield->getCustomField());
+        $value = $thisFamilyCustomFields->getVirtualColumn($customfield->getCustomField());
         if (!empty($value)) {
-            array_push($familyCustom, $customfield->getCustomName() + ": " + $value);
+            array_push($familyCustom, $customfield->getCustomName() . ": " . $value);
         }
     }
 
