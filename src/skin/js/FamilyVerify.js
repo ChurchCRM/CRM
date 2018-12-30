@@ -49,13 +49,13 @@ $(document).ready(function () {
           "stylers": [{"hue": "#ffff00"}, {"lightness": -25}, {"saturation": -97}]
         }]
       };
-  
+
       // Get all html elements for map
       var mapElement1 = document.getElementById('map1');
-  
+
       // Create the Google Map using elements
       var map1 = new google.maps.Map(mapElement1, mapOptions1);
-  
+
       marker = new google.maps.Marker({position: LatLng, map: map1});
     }
   }
@@ -78,7 +78,7 @@ $(document).ready(function () {
         }
       });
   });
-  
- 
+
+
 
 });

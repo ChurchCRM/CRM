@@ -59,9 +59,6 @@ use ChurchCRM\dto\SystemURLs;
                 dataSrc: 'families'
             },
             "dom": window.CRM.plugin.dataTable.dom,
-            "tableTools": {
-                "sSwfPath": window.CRM.plugin.dataTable.tableTools.sSwfPath
-            },
             responsive: true,
             columns: [
                 {
@@ -98,9 +95,6 @@ use ChurchCRM\dto\SystemURLs;
                 dataSrc: 'people'
             },
             "dom": window.CRM.plugin.dataTable.dom,
-            "tableTools": {
-                "sSwfPath": window.CRM.plugin.dataTable.tableTools.sSwfPath
-            },
             responsive: true,
             columns: [
                 {

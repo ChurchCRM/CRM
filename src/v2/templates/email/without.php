@@ -33,9 +33,6 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 dataSrc: 'families'
             },
             "dom": window.CRM.plugin.dataTable.dom,
-            "tableTools": {
-                "sSwfPath": window.CRM.plugin.dataTable.tableTools.sSwfPath
-            },
             responsive: true,
             columns: [
                 {
