@@ -9,6 +9,8 @@ use ChurchCRM\Service\TimelineService;
 use ChurchCRM\PropertyQuery;
 use ChurchCRM\Utils\InputUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
+use ChurchCRM\FamilyCustomMasterQuery;
+use ChurchCRM\FamilyCustomQuery;
 
 $app->group('/family', function () {
     $this->get('','listFamilies');
@@ -49,7 +51,7 @@ function listFamilies(Request $request, Response $response, array $args)
 function viewFamilyNotFound(Request $request, Response $response, array $args)
 {
   $renderer = new PhpRenderer('templates/common/');
-  
+
   $pageArgs = [
         'sRootPath' => SystemURLs::getRootPath(),
         'memberType' => "Family",
@@ -74,11 +76,29 @@ function viewFamily(Request $request, Response $response, array $args)
 
     $allFamilyProperties = PropertyQuery::create()->findByProClass("f");
 
+    $allFamilyCustomFields = FamilyCustomMasterQuery::create()->find();
+
+    // get family with all the extra columns created
+    $rawQry =  FamilyCustomQuery::create();
+    foreach ($allFamilyCustomFields as $customfield ) {
+        $rawQry->withColumn($customfield->getCustomField());
+    }
+    $thisFamilyCustomFields = $rawQry->findOneByFamId($familyId);
+
+    $familyCustom = [];
+    foreach ($allFamilyCustomFields as $customfield ) {
+        $value = $thisFamilyCustomFields->getVirtualColumn($customfield->getCustomField());
+        if (!empty($value)) {
+            array_push($familyCustom, $customfield->getCustomName() . ": " . $value);
+        }
+    }
+
     $pageArgs = [
         'sRootPath' => SystemURLs::getRootPath(),
         'family' => $family,
         'familyTimeline' => $timelineService->getForFamily($family->getId()),
-        'allFamilyProperties' => $allFamilyProperties
+        'allFamilyProperties' => $allFamilyProperties,
+        'familyCustom' => $familyCustom
     ];
 
     return $renderer->render($response, 'family-view.php', $pageArgs);

@@ -62,9 +62,18 @@ $(document).ready(function () {
 
 
   $("#onlineVerifyBtn").click(function () {
+
+
+    var formData =  "";
+    if ($("input[type='radio']:checked").val() === 'change-needed') {
+     formData = $("#confirm-info-data").val()
+    }
+
+    alert(formData);
+
     $.post(window.CRM.root + '/external/verify/' + token,
       {
-        message: $("#confirm-info-data").val()
+        message: formData
       },
       function (data, status) {
         $('#confirm-modal-collect').hide();
@@ -80,5 +89,6 @@ $(document).ready(function () {
   });
 
 
-
 });
+
+
