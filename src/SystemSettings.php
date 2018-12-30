@@ -18,6 +18,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\Bootstrapper;
 
 // Security
 if (!$_SESSION['user']->isAdmin()) {
@@ -63,7 +64,7 @@ if (isset($_POST['save'])) {
     }
 
         // If changing the locale, translate the menu options
-        if ($id == 39 && $value != $localeInfo->getLocale()) {
+        if ($id == 39 && $value != Bootstrapper::GetCurrentLocale()->getLocale()) {
             $localeInfo = new LocaleInfo($value);
             setlocale(LC_ALL, $localeInfo->getLocale());
             $aLocaleInfo = $localeInfo->getLocaleInfo();
@@ -253,7 +254,7 @@ require 'Include/Header.php';
             ?>
           </div>
         </div>
-        <input type=submit class='btn btn-primary' name=save value="<?= gettext('Save Settings') ?>">
+        <input type='submit' class='btn btn-primary' name='save' id='save' value="<?= gettext('Save Settings') ?>">
     </div>
     </form>
   </div>

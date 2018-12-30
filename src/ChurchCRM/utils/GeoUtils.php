@@ -9,6 +9,7 @@ use Geocoder\Provider\GoogleMaps\GoogleMaps;
 use Geocoder\StatefulGeocoder;
 use Http\Adapter\Guzzle6\Client;
 use Geocoder\Query\GeocodeQuery;
+use ChurchCRM\Bootstrapper;
 
 class GeoUtils
 {
@@ -17,7 +18,7 @@ class GeoUtils
     {
 
         $logger = LoggerUtils::getAppLogger();
-        $localeInfo = new LocaleInfo(SystemConfig::getValue('sLanguage'));
+        $localeInfo = Bootstrapper::GetCurrentLocale();
 
         $provider = null;
         $adapter = new Client();
@@ -27,7 +28,7 @@ class GeoUtils
         try {
             switch (SystemConfig::getValue("sGeoCoderProvider")) {
                 case "GoogleMaps":
-                    $provider = new GoogleMaps($adapter, null, null, true, SystemConfig::getValue("sGoogleMapKey"));
+                    $provider = new GoogleMaps($adapter, null, SystemConfig::getValue("sGoogleMapKey"));
                     break;
                 case "BingMaps":
                     $provider = new BingMaps($adapter, SystemConfig::getValue("sBingMapKey"));

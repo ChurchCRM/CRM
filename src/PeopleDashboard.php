@@ -12,6 +12,7 @@ use ChurchCRM\Service\DashboardService;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\PersonQuery;
 use ChurchCRM\ListOptionQuery;
+use ChurchCRM\SessionUser;
 
 // Set the page title
 $sPageTitle = gettext('People Dashboard');
@@ -115,7 +116,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
     }
      ?>
     <br/>
-    <a href="FamilyList.php" class="btn btn-app"><i class="fa fa-users"></i><?= gettext('All Families') ?></a>
+    <a href="<?= SystemURLs::getRootPath()?>/v2/family" class="btn btn-app"><i class="fa fa-users"></i><?= gettext('All Families') ?></a>
     <a href="GeoPage.php" class="btn btn-app"><i class="fa fa-globe"></i><?= gettext('Family Geographic') ?></a>
     <a href="MapUsingGoogle.php?GroupID=-1" class="btn btn-app"><i class="fa fa-map"></i><?= gettext('Family Map') ?>
     </a>
@@ -140,7 +141,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
       <div class="icon">
         <i class="fa fa-users"></i>
       </div>
-      <a href="<?= SystemURLs::getRootPath() ?>/FamilyList.php" class="small-box-footer">
+      <a href="<?= SystemURLs::getRootPath()?>/v2/family" class="small-box-footer">
         <?= gettext('See all Families') ?> <i class="fa fa-arrow-circle-right"></i>
       </a>
     </div>
@@ -166,6 +167,8 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
       </a>
     </div>
   </div>
+  <?php if (SystemConfig::getValue('bEnabledSundaySchool')) {
+         ?> 
   <!-- ./col -->
   <div class="col-lg-3 col-md-6 col-sm-6">
     <!-- small box -->
@@ -187,6 +190,8 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
       </a>
     </div>
   </div>
+  <?php
+     } ?>
   <!-- ./col -->
   <div class="col-lg-3 col-md-6 col-sm-6">
     <!-- small box -->
@@ -227,7 +232,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
         <br>
         <?php echo gettext('Report on group and roles selected (it may be a multi-page PDF).'); ?>
         </p>
-        <?php if ($bCreateDirectory) {
+        <?php if (SessionUser::getUser()->isCreateDirectoryEnabled()) {
          ?>
           <p><a class="MediumText"
                 href="DirectoryReports.php"><?= gettext('People Directory') ?></a><br><?= gettext('Printable directory of all people, grouped by family where assigned') ?>

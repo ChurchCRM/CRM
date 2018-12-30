@@ -21,6 +21,7 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\PersonQuery;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\dto\SystemURLs;
 
 // Security: User must have Delete records permission
 // Otherwise, re-direct them to the main menu.
@@ -118,7 +119,7 @@ if (isset($_GET['Confirmed'])) {
     }
 
     // Redirect back to the family listing
-    RedirectUtils::Redirect('FamilyList.php');
+    RedirectUtils::Redirect(SystemURLs::getRootPath().'/v2/family');
 }
 
 

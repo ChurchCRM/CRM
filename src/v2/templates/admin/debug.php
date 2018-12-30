@@ -5,8 +5,6 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\AppIntegrityService;
 use ChurchCRM\Service\SystemService;
 
-require SystemURLs::getDocumentRoot() . '/Include/SimpleConfig.php';
-
 //Set the page title
 include SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
@@ -91,10 +89,10 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
             </div>
             <div class="box-body">
                 <table class="table table-striped">
-                    <?php foreach (AppIntegrityService::getApplicationPrerequisites() as $prerequisite => $status) { ?>
+                    <?php foreach (AppIntegrityService::getApplicationPrerequisites() as $prerequisite) { ?>
                         <tr>
-                            <td><?= $prerequisite ?></td>
-                            <td><?= $status ? "true" : "false" ?></td>
+                          <td><a href='<?=$prerequisite->GetWikiLink()?>'><?= $prerequisite->getName()?></a></td>
+                          <td><?= $prerequisite->GetStatusText()?></td>
                         </tr>
                     <?php } ?>
                 </table>
@@ -104,9 +102,52 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
     <div class="col-lg-4">
         <div class="box">
             <div class="box-header">
-                <h4><?= gettext("WebServer Modules") ?></h4>
+              <h4><?= gettext("Application Integrity Check") . ": " . AppIntegrityService::getIntegrityCheckStatus()?></h4>
             </div>
             <div class="box-body">
+              <p><?= gettext('Details:')?> <?=  AppIntegrityService::getIntegrityCheckMessage() ?></p>
+                <?php
+                  if (count(AppIntegrityService::getFilesFailingIntegrityCheck()) > 0) {
+                      ?>
+                    <p><?= gettext('Files failing integrity check') ?>:
+                    <table class="display responsive no-wrap" width="100%" id="fileIntegrityCheckResultsTable">
+                      <thead>
+                      <td>FileName</td>
+                      <td>Expected Hash</td>
+                      <td>Actual Hash</td>
+                    </thead>
+                      <?php
+                      foreach (AppIntegrityService::getFilesFailingIntegrityCheck() as $file) {
+                          ?>
+                    <tr>
+                      <td><?= $file->filename ?></td>
+                      <td><?= $file->expectedhash ?></td>
+                      <td>
+                          <?php
+                          if ($file->status == 'File Missing') {
+                           echo gettext('File Missing');
+                          }
+                          else {
+                          echo $file->actualhash;
+                        }?>
+                      </td>
+                    </tr>
+                        <?php
+                      }
+                      ?>
+                    </table>
+                    <?php
+                  }   
+                ?>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="box">
+            <div class="box-header">
+                <h4><?= gettext("WebServer Modules") ?></h4>
+            </div>
+            <div class="box-body" style="overflow: scroll-x">
                 <table class="table table-striped">
                     <?php
                     if (function_exists('apache_get_modules')) {
@@ -122,5 +163,16 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
     </div>
 </div>
 
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
+  $(document).ready(function() { 
+  $("#fileIntegrityCheckResultsTable").DataTable({
+    responsive: true,
+    paging:false,
+    searching: false
+  });
+  
+  });
+  
+</script>
 
 <?php include SystemURLs::getDocumentRoot() . '/Include/Footer.php'; ?>

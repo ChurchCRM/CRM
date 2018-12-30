@@ -17,60 +17,6 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `autopayment_aut`
---
-
-DROP TABLE IF EXISTS `autopayment_aut`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `autopayment_aut` (
-  `aut_ID` mediumint(9) unsigned NOT NULL AUTO_INCREMENT,
-  `aut_FamID` mediumint(9) unsigned NOT NULL DEFAULT '0',
-  `aut_EnableBankDraft` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  `aut_EnableCreditCard` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  `aut_NextPayDate` date DEFAULT NULL,
-  `aut_FYID` mediumint(9) NOT NULL DEFAULT '9',
-  `aut_Amount` decimal(6,2) NOT NULL DEFAULT '0.00',
-  `aut_Interval` tinyint(3) NOT NULL DEFAULT '1',
-  `aut_Fund` mediumint(6) NOT NULL DEFAULT '0',
-  `aut_FirstName` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `aut_LastName` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `aut_Address1` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `aut_Address2` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `aut_City` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `aut_State` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `aut_Zip` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `aut_Country` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `aut_Phone` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `aut_Email` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `aut_CreditCard` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `aut_ExpMonth` varchar(2) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `aut_ExpYear` varchar(4) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `aut_BankName` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `aut_Route` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `aut_Account` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `aut_DateLastEdited` datetime DEFAULT NULL,
-  `aut_EditedBy` smallint(5) unsigned DEFAULT '0',
-  `aut_Serial` mediumint(9) NOT NULL DEFAULT '1',
-  `aut_CreditCardVanco` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `aut_AccountVanco` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`aut_ID`),
-  UNIQUE KEY `aut_ID` (`aut_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `autopayment_aut`
---
-
-LOCK TABLES `autopayment_aut` WRITE;
-/*!40000 ALTER TABLE `autopayment_aut` DISABLE KEYS */;
-SET autocommit=0;
-/*!40000 ALTER TABLE `autopayment_aut` ENABLE KEYS */;
-UNLOCK TABLES;
-COMMIT;
-
---
 -- Table structure for table `calendar_events`
 --
 
@@ -1681,7 +1627,7 @@ CREATE TABLE `version_ver` (
 LOCK TABLES `version_ver` WRITE;
 /*!40000 ALTER TABLE `version_ver` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `version_ver` VALUES (1,'2.4.0','2016-11-19 20:14:23',NULL),(2,'2.5.0','2017-01-15 19:40:28','2017-01-15 19:40:28'),(3,'2.6.0','2017-02-11 13:15:10','2017-02-11 13:15:10'),(4,'2.7.0','2017-04-15 17:17:37','2017-04-15 17:17:37'),(5,'2.8.0','2017-07-16 16:34:11','2017-07-16 16:34:11'),(6,'2.8.6','2017-07-16 16:34:11','2017-07-16 16:34:11'),(7,'2.9.0','2017-12-03 18:26:20','2017-12-03 18:26:20'),(8,'2.9.1','2017-12-03 18:26:20','2017-12-03 18:26:20'),(9,'2.9.2','2017-12-03 18:26:20','2017-12-03 22:26:20'),(10,'2.9.3','2017-12-18 00:42:32','2017-12-18 00:42:32'),(11,'2.9.4','2017-12-25 14:19:34','2017-12-25 14:19:34'),(12,'2.10.0','2018-01-01 19:25:33','2018-01-01 19:25:33'),(13,'2.10.1','2018-01-04 23:07:32','2018-01-04 23:07:32'),(14,'2.10.4','2018-01-05 10:38:06','2018-01-05 10:38:06'),(15,'3.0.0','2018-02-17 20:29:42','2018-02-17 20:29:42'),(16,'3.0.6','2018-03-15 20:29:42','2018-03-15 20:29:42');
+INSERT INTO `version_ver` VALUES (1,'3.2.0','2018-12-04 20:14:23',NULL);
 /*!40000 ALTER TABLE `version_ver` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;

@@ -11,9 +11,10 @@
  ******************************************************************************/
 
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Service\SystemService;
+use ChurchCRM\Bootstrapper;
 
 $isAdmin = $_SESSION['user']->isAdmin();
-
 ?>
 </section><!-- /.content -->
 
@@ -23,7 +24,7 @@ $isAdmin = $_SESSION['user']->isAdmin();
     <div class="pull-right">
         <b><?= gettext('Version') ?></b> <?= $_SESSION['sSoftwareInstalledVersion'] ?>
     </div>
-    <strong><?= gettext('Copyright') ?> &copy; 2015-2018 <a href="http://www.churchcrm.io" target="_blank"><b>Church</b>CRM</a>.</strong> <?= gettext('All rights reserved') ?>.
+    <strong><?= gettext('Copyright') ?> &copy; <?= SystemService::getCopyrightDate() ?> <a href="http://www.churchcrm.io" target="_blank"><b>Church</b>CRM</a>.</strong> <?= gettext('All rights reserved') ?>.
     | <a href="https://twitter.com/church_crm" target="_blank"><i class="fa fa-twitter"></i> <?= gettext("Follow us on Twitter") ?></a>
 </footer>
 
@@ -102,7 +103,7 @@ $isAdmin = $_SESSION['user']->isAdmin();
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/fastclick/fastclick.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/bootstrap-toggle/bootstrap-toggle.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/i18next/i18next.min.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/locale/js/<?= $localeInfo->getLocale() ?>.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/locale/js/<?= Bootstrapper::GetCurrentLocale()->getLocale() ?>.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/bootstrap-validator/validator.min.js"></script>
 
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/IssueReporter.js"></script>

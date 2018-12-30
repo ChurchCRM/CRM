@@ -13,7 +13,7 @@ class HttpsTask implements iTask
     return true;
   }
   public function getLink(){
-    return SystemURLs::getSupportURL();
+    return SystemURLs::getSupportURL("ssl");
   }
   public function getTitle(){
     return gettext('Configure HTTPS');

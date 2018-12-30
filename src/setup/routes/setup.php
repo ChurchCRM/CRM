@@ -2,6 +2,7 @@
 
 use ChurchCRM\dto\SystemURLs;
 use Slim\Views\PhpRenderer;
+use ChurchCRM\Service\AppIntegrityService;
 
 $app->group('/', function () {
     $this->get('', function ($request, $response, $args) {
@@ -16,7 +17,7 @@ $app->group('/', function () {
     });
 
     $this->get('SystemPrerequisiteCheck', function ($request, $response, $args) {
-        $required = ChurchCRM\Service\AppIntegrityService::getApplicationPrerequisites();
+        $required = AppIntegrityService::getApplicationPrerequisites();
         return $response->withJson($required);
     });
 

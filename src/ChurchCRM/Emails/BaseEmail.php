@@ -9,6 +9,7 @@ use Mustache_Engine;
 use Mustache_Loader_FilesystemLoader;
 use Monolog\Logger;
 use PHPMailer\PHPMailer\PHPMailer;
+use ChurchCRM\Service\SystemService;
 
 abstract class BaseEmail
 {
@@ -92,7 +93,8 @@ abstract class BaseEmail
             "churchCRMURL" => SystemURLs::getURL(),
             "dear" => SystemConfig::getValue('sDear'),
             "confirmSincerely" => SystemConfig::getValue('sConfirmSincerely'),
-            "confirmSigner" => SystemConfig::getValue('sConfirmSigner')
+            "confirmSigner" => SystemConfig::getValue('sConfirmSigner'),
+            "copyrightDate" => SystemService::getCopyrightDate()
         ];
     }
 

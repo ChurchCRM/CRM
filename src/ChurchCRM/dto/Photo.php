@@ -12,6 +12,7 @@ class Photo {
   private $id;
   private $photoURI;
   private $photoThumbURI;
+  private $thubmnailPath;
   private $photoContentType;
   private $remotesEnabled;
   public static $validExtensions = ["png", "jpeg", "jpg"];
@@ -29,7 +30,8 @@ class Photo {
 
   private function setURIs($photoPath) {
     $this->photoURI = $photoPath;
-    $this->photoThumbURI = SystemURLs::getImagesRoot() . "/" . $this->photoType . "/thumbnails/" . $this->id . ".jpg";
+    $this->thubmnailPath = SystemURLs::getImagesRoot() . "/" . $this->photoType . "/thumbnails/";
+    $this->photoThumbURI = $this->thubmnailPath . $this->id . ".jpg";
   }
 
   private function shouldRefreshPhotoFile($photoFile) {
@@ -122,8 +124,15 @@ class Photo {
     }
     return $sourceGDImage;
   }
+  
+  private function ensureThumbnailsPath() {
+    if( !file_exists($this->thubmnailPath)){
+      mkdir($this->thubmnailPath);
+    }
+  }
 
   private function createThumbnail() {
+    $this->ensureThumbnailsPath();
     $thumbWidth = SystemConfig::getValue("iThumbnailWidth");
     $img =  $this->getGDImage($this->photoURI); //just in case we have legacy JPG/GIF that don't have a thumbnail.
     $width = imagesx( $img );
@@ -294,4 +303,17 @@ class Photo {
     $this->photoThumbURI = SystemURLs::getImagesRoot() . "/" . $photoType . "/thumbnails/" . $id . ".jpg";
   }
 
+  public function isInitials() {
+    if($this->photoType == "Person" && $this->id == 2) {
+    echo $this->photoURI;
+    echo strpos($this->photoURI,"initials") !== false;
+    die();
+    }
+    return strpos($this->photoURI,"initials") !== false;
+  }
+  
+  public function isRemote() {
+    return strpos($this->photoURI,"remote")  !== false;
+  }
+  
 }

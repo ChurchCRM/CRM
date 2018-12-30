@@ -3,7 +3,6 @@
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\SessionUser;
 
-require SystemURLs::getDocumentRoot() . '/Include/SimpleConfig.php';
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 ?>
@@ -14,6 +13,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     <div class="box-body">
         <a href="<?= SystemURLs::getRootPath()?>/email/MemberEmailExport.php" class="btn btn-app"><i class="fa fa-table"></i><?= gettext('Email Export') ?></a>
         <a href="<?= SystemURLs::getRootPath()?>/v2/email/duplicate" class="btn btn-app"><i class="fa fa-exclamation-triangle"></i><?= gettext('Find Duplicate Emails') ?></a>
+        <a href="<?= SystemURLs::getRootPath()?>/v2/email/missing" class="btn btn-app"><i class="fa fa-bell-slash"></i><?= gettext('Families Without Emails') ?></a>
         <?php if (SessionUser::isAdmin()) { ?>
         <a href="<?= SystemURLs::getRootPath()?>/v2/email/debug" class="btn btn-app"><i class="fa fa-stethoscope"></i><?= gettext('Debug') ?></a>
         <?php } ?>
@@ -54,8 +54,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <div class="box-body">
                     <ul>
                         <li>
-                            <a href="<?= SystemURLs::getRootPath()?>/email/MailChimpMissingReport.php"><?= gettext('Missing emails report') ?> </a>
-                            (slow)
+                            <a href="<?= SystemURLs::getRootPath()?>/v2/email/missingfrommailchimp"><?= gettext('Missing emails report') ?> </a>
                         </li>
                     </ul>
                 </div>

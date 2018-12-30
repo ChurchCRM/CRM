@@ -25,12 +25,6 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\PersonQuery;
 use ChurchCRM\Utils\RedirectUtils;
 
-if (!SystemService::isDBCurrent()) {
-    RedirectUtils::Redirect('SystemDBUpdate.php');
-    exit;
-}
-
-
 // Get the UserID out of user name submitted in form results
 if (isset($_POST['User'])) {
     // Get the information for the selected user
@@ -217,7 +211,7 @@ require 'Include/HeaderNotLoggedIn.php';
 
         <?php if (SystemConfig::getBooleanValue('bEnableSelfRegistration')) {
             ?>
-            <a href="external/register/" class="text-center btn bg-olive"><i
+            <a href="<?= SystemURLs::getRootPath() ?>/external/register/" class="text-center btn bg-olive"><i
                         class="fa fa-user-plus"></i> <?= gettext('Register a new Family'); ?></a><br>
             <?php
         } ?>

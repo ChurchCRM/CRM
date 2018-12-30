@@ -246,7 +246,7 @@ function DoQuery()
 
     <div class="box-footer">
         <p>
-        <?php if (count($aHiddenFormField)): ?>
+        <?php if (count($aHiddenFormField)): //TODO Don't post to CartView'?>
             <form method="post" action="CartView.php">
             <div class="col-sm-offset-1">
                 <input type="hidden" value="<?= implode(',', $aHiddenFormField) ?>" name="BulkAddToCart">

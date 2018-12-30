@@ -8,7 +8,7 @@ use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\Emails\FamilyVerificationEmail;
 use ChurchCRM\Token;
 use ChurchCRM\TokenQuery;
-use ChurchCRM\Slim\Middleware\Role\EditRecordsRoleAuthMiddleware;
+use ChurchCRM\Slim\Middleware\Request\Auth\EditRecordsRoleAuthMiddleware;
 
 $app->group('/family/{familyId:[0-9]+}', function () {
     $this->get('/photo', function ($request, $response, $args) {

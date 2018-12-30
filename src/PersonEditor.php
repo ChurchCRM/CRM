@@ -93,6 +93,9 @@ $fam_Country = '';
 $bNoFormat_HomePhone = false;
 $bNoFormat_WorkPhone = false;
 $bNoFormat_CellPhone = false;
+$sFacebookError = false;
+$sTwitterError = false;
+$sLinkedInError = false;
 
 //Is this the second pass?
 if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {

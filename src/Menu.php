@@ -175,7 +175,7 @@ if ($showBanner && ($peopleWithBirthDaysCount > 0 || $AnniversariesCount > 0)) {
             <div class="icon">
                 <i class="fa fa-users"></i>
             </div>
-            <a href="<?= SystemURLs::getRootPath() ?>/FamilyList.php" class="small-box-footer">
+            <a href="<?= SystemURLs::getRootPath() ?>/v2/family" class="small-box-footer">
                 <?= gettext('See all Families') ?> <i class="fa fa-arrow-circle-right"></i>
             </a>
         </div>
@@ -199,6 +199,8 @@ if ($showBanner && ($peopleWithBirthDaysCount > 0 || $AnniversariesCount > 0)) {
             </a>
         </div>
     </div><!-- ./col -->
+    <?php if (SystemConfig::getValue('bEnabledSundaySchool')) {
+        ?> 
     <div class="col-lg-3 col-xs-6">
         <!-- small box -->
         <div class="small-box bg-yellow">
@@ -218,6 +220,8 @@ if ($showBanner && ($peopleWithBirthDaysCount > 0 || $AnniversariesCount > 0)) {
             </a>
         </div>
     </div><!-- ./col -->
+    <?php
+    } ?>
     <div class="col-lg-3 col-xs-6">
         <!-- small box -->
         <div class="small-box bg-red">

@@ -4,24 +4,29 @@ use ChurchCRM\Service\SystemService;
 use ChurchCRM\Service\UpgradeService;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\Bootstrapper;
+use ChurchCRM\Utils\LoggerUtils;
 
 // Include the function library
 require 'Include/Config.php';
 $bSuppressSessionTests = true; // DO NOT MOVE
 require 'Include/Functions.php';
 
-if (SystemService::isDBCurrent()) {
+if (Bootstrapper::isDBCurrent()) {
     RedirectUtils::Redirect('Menu.php');
     exit;
 }
 
-if (InputUtils::FilterString($_GET['upgrade']) == "true") {
+if (isset($_GET['upgrade']) && InputUtils::FilterString($_GET['upgrade']) == "true") {
     try {
+        LoggerUtils::getAppLogger()->info("Beginning database upgrade");
         UpgradeService::upgradeDatabaseVersion();
+        LoggerUtils::getAppLogger()->info("Complete database upgrade; redirecting to Main menu");
         RedirectUtils::Redirect('Menu.php');
         exit;
     } catch (Exception $ex) {
         $errorMessage = $ex->getMessage();
+        LoggerUtils::getAppLogger()->error("Error updating database: " .$errorMessage);
     }
 }
 
@@ -52,7 +57,7 @@ require 'Include/HeaderNotLoggedIn.php'; ?>
                 <p></br></p>
                 <form>
                     <input type="hidden" name="upgrade" value="true"/>
-                    <button type="submit" class="btn btn-primary btn-block btn-flat"><i
+                    <button type="submit" class="btn btn-primary btn-block btn-flat" id="upgradeDatabase"><i
                             class="fa fa-database"></i> <?= gettext('Upgrade database') ?></button>
                 </form>
         </div>

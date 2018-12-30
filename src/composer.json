@@ -1,13 +1,13 @@
 {
     "name": "ChurchCRM/CRM",
-    "version": "3.0.6",
+    "version": "3.2.0",
     "type": "project",
     "keywords": [
         "church",
         "crm"
     ],
     "homepage": "http://www.churchcrm.io",
-    "time": "2014-10-01",
+    "time": "2018-12-28 19:12:27",
     "license": "MIT",
     "authors": [
         {
@@ -30,11 +30,10 @@
     },
     "require": {
         "php": ">=5.6.0",
-        "mailchimp/mailchimp": "2.0.6",
+        "drewm/mailchimp-api": "^2.5",
         "slim/slim": "3.9.2",
         "slim/php-view": "2.2",
         "monolog/monolog": "^1.17",
-        "authorizenet/authorizenet": "1.9.5",
         "knplabs/github-api": "~1.4",
         "propel/propel": "~2.0@dev",
         "setasign/fpdf": "1.8.1",
@@ -47,7 +46,8 @@
         "mustache/mustache": "~2.5",
         "nexmo/client": "@beta",
         "slim/http-cache": "^0.4.0",
-        "azuyalabs/yasumi": "^1.8"
+        "azuyalabs/yasumi": "^1.8",
+        "defuse/php-encryption": "^2.2"
     },
     "autoload": {
         "classmap": [

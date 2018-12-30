@@ -14,6 +14,7 @@ require '../Include/ReportFunctions.php';
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Reports\ChurchInfoReport;
+use ChurchCRM\Utils\MiscUtils;
 
 class PDF_ConfirmReport extends ChurchInfoReport
 {
@@ -149,7 +150,9 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
     $pdf->SetFont('Times', 'B', 10);
     $pdf->WriteAtCell(SystemConfig::getValue('leftX'), $curY, $dataCol - SystemConfig::getValue('leftX'), gettext('Anniversary Date'));
     $pdf->SetFont('Times', '', 10);
-    $pdf->WriteAtCell($dataCol, $curY, $dataWid, FormatDate($fam_WeddingDate));
+    if ($fam_WeddingDate != "") {
+        $pdf->WriteAtCell($dataCol, $curY, $dataWid, date_format(date_create($fam_WeddingDate), SystemConfig::getValue("sDateFormatLong")));
+    }
     $curY += SystemConfig::getValue('incrementY');
 
     $pdf->SetFont('Times', 'B', 10);
@@ -215,13 +218,8 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
         $pdf->WriteAtCell($XGender, $curY, $XRole - $XGender, $genderStr);
         $pdf->WriteAtCell($XRole, $curY, $XEmail - $XRole, $sFamRole);
         $pdf->WriteAtCell($XEmail, $curY, $XBirthday - $XEmail, $per_Email);
-        if ($per_BirthYear) {
-            $birthdayStr = $per_BirthYear.'-'.$per_BirthMonth.'-'.$per_BirthDay;
-        } elseif ($per_BirthMonth) {
-            $birthdayStr = $per_BirthMonth.'-'.$per_BirthDay;
-        } else {
-            $birthdayStr = '';
-        }
+
+        $birthdayStr = MiscUtils::FormatBirthDate($per_BirthYear, $per_BirthMonth, $per_BirthDay, $null, $null);
         //If the "HideAge" check box is true, then create a Yes/No representation of the check box.
         if ($per_Flags) {
             $hideAgeStr = gettext('Yes');
@@ -234,7 +232,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
         $pdf->WriteAtCell($XCellPhone, $curY, $XClassification - $XCellPhone, $per_CellPhone);
         $pdf->WriteAtCell($XClassification, $curY, $XRight - $XClassification, $sClassName);
         $curY += SystemConfig::getValue('incrementY');
-        // Missing the following information for the personal record: ??? Is this the place to put this data ???
+        // Missing the following information for the personal record: ? Is this the place to put this data ?
         // Work Phone
         $pdf->WriteAtCell($XWorkPhone, $curY, $XRight - $XWorkPhone, gettext('Work Phone').':'.$per_WorkPhone);
         $curY += SystemConfig::getValue('incrementY');

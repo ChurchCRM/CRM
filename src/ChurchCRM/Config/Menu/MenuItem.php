@@ -107,10 +107,10 @@ class MenuItem
 
     public function isVisible()
     {
-        if (!empty($this->uri)) {
-            return $this->hasPermission;
+        if ($this->hasPermission && (!empty($this->uri) || $this->hasVisibleSubMenus())) {
+            return true;
         }
-        return $this->hasVisibleSubMenus();
+        return false;
     }
 
     public function openMenu() {

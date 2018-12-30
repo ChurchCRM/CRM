@@ -2,8 +2,6 @@
 
 namespace ChurchCRM\Slim\Middleware\Request\Auth;
 
-use ChurchCRM\Slim\Middleware\Role\BaseAuthRoleMiddleware;
-
 class ManageGroupRoleAuthMiddleware extends BaseAuthRoleMiddleware {
 
     function hasRole()

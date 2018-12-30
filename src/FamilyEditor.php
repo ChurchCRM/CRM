@@ -20,6 +20,7 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Emails\NewPersonOrFamilyEmail;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\Bootstrapper;
 
 //Set the page title
 $sPageTitle = gettext('Family Editor');
@@ -222,7 +223,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
 
     // Validate Wedding Date if one was entered
     if ((strlen($dWeddingDate) > 0) && ($dWeddingDate != '')) {
-        $dateString = parseAndValidateDate($dWeddingDate, $locale = "<?= $localeInfo->getCountryCode() ?>", $pasfut = 'past');
+        $dateString = parseAndValidateDate($dWeddingDate, Bootstrapper::getCurrentLocale()->getCountryCode(), $pasfut = 'past');
         if ($dateString === false) {
             $sWeddingDateError = '<span style="color: red; ">'
                                 .gettext('Not a valid Wedding Date').'</span>';
@@ -1120,7 +1121,7 @@ require 'Include/Header.php';
     if ($iFamilyID > 0) {
         echo " onclick=\"javascript:document.location='FamilyView.php?FamilyID=$iFamilyID';\">";
     } else {
-        echo " onclick=\"javascript:document.location='FamilyList.php';\">";
+        echo " onclick=\"javascript:document.location='".SystemURLs::getRootPath()."/v2/family';\">";
     }
     echo '</td></tr></form></table>';
 ?>
