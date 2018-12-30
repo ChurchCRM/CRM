@@ -181,19 +181,9 @@ $familyAddress = $family->getAddress();
                                  * }*/
                             }
 
-                            /**
-                             * // Display the left-side custom fields
-                             * while ($Row = mysqli_fetch_array($rsFamCustomFields)) {
-                             * extract($Row);
-                             * if (($aSecurityType[$fam_custom_FieldSec] == 'bAll') || ($_SESSION[$aSecurityType[$fam_custom_FieldSec]])) {
-                             * $currentData = trim($aFamCustomData[$fam_custom_Field]);
-                             * if ($type_ID == 11) {
-                             * $fam_custom_Special = $sPhoneCountry;
-                             * }
-                             * echo "<li><i class=\"fa-li fa fa-tag\"></i>" . $fam_custom_Name . ": <span>" . displayCustomField($type_ID, $currentData, $fam_custom_Special) . "</span></li>";
-                             * }
-                             * } */
-                            ?>
+                          foreach ($familyCustom as $customField) { ?>
+                                <li><i class="fa-li fa fa-tag"></i><?= $customField ?></li>
+                            <?php }  ?>
                         </ul>
                     </div>
                 </div>
