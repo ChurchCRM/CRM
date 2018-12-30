@@ -9,6 +9,8 @@ use ChurchCRM\Service\TimelineService;
 use ChurchCRM\PropertyQuery;
 use ChurchCRM\Utils\InputUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
+use ChurchCRM\FamilyCustomMasterQuery;
+use ChurchCRM\FamilyCustomQuery;
 
 $app->group('/family', function () {
     $this->get('','listFamilies');
@@ -74,11 +76,24 @@ function viewFamily(Request $request, Response $response, array $args)
 
     $allFamilyProperties = PropertyQuery::create()->findByProClass("f");
 
+    $allFamilyCustomFields = FamilyCustomMasterQuery::create()->find();
+    $thisFamilyCustomFields = FamilyCustomQuery::create()->findOneByFamId($familyId);
+
+    $familyCustom = [];
+
+    foreach ($allFamilyCustomFields as $customfield ) {
+        $value = $thisFamilyCustomFields->getByName($customfield->getCustomField());
+        if (!empty($value)) {
+            array_push($familyCustom, $customfield->getCustomName() + ": " + $value);
+        }
+    }
+
     $pageArgs = [
         'sRootPath' => SystemURLs::getRootPath(),
         'family' => $family,
         'familyTimeline' => $timelineService->getForFamily($family->getId()),
-        'allFamilyProperties' => $allFamilyProperties
+        'allFamilyProperties' => $allFamilyProperties,
+        'familyCustom' => $familyCustom
     ];
 
     return $renderer->render($response, 'family-view.php', $pageArgs);
