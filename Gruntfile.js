@@ -253,7 +253,12 @@ module.exports = function (grunt) {
         },
         'curl-dir': {
             datatables_extensions_buttons: {
-                src: ['https://cdn.datatables.net/buttons/1.5.2/css/buttons.dataTables.min.css', 'https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js'],
+                src: [
+                    'https://cdn.datatables.net/buttons/1.5.3/css/buttons.dataTables.min.css',
+                    'https://cdn.datatables.net/buttons/1.5.3/css/buttons.bootstrap.min.css',
+                        'https://cdn.datatables.net/buttons/1.5.3/js/buttons.bootstrap.min.js',
+                        'https://cdn.datatables.net/buttons/1.5.3/js/dataTables.buttons.min.js',
+                        'https://cdn.datatables.net/buttons/1.5.3/js/buttons.print.min.js'],
                 dest: 'src/skin/external/datatables/extensions/buttons'
             },
             datatables_extensions_responsive: {
