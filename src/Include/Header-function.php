@@ -97,9 +97,11 @@ function Header_body_scripts()
             plugin: {
                 dataTable : {
                     dom: 'Bfrtip',
-                <?php if (SessionUser::getUser()->isCSVExport()) { ?>
+                <?php if (SessionUser::getUser()->isCSVExport()) {
+        ?>
                     buttons: ['copy', 'excel', 'pdf'],
-                <?php } ?>
+                <?php
+    } ?>
                    "language": {
                         "url": "<?= SystemURLs::getRootPath() ?>/locale/datatables/<?= $localeInfo->getDataTables() ?>.json"
                     },
