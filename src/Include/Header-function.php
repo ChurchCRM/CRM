@@ -96,12 +96,12 @@ function Header_body_scripts()
             iDasbhoardServiceIntervalTime:"<?= SystemConfig::getValue('iDasbhoardServiceIntervalTime') ?>",
             plugin: {
                 dataTable : {
-                    dom: 'Bfrtip',
-                <?php if (SessionUser::getUser()->isCSVExport()) {
-        ?>
-                    buttons: ['copy', 'excel', 'pdf'],
-                <?php
-    } ?>
+                    dom: "<'row'<'col-sm-4'B><'col-sm-4'r><'col-sm-4 searchStyle'f>>" +
+                            "<'row'<'col-sm-12't>>" +
+                            "<'row'<'col-sm-4'l><'col-sm-4'i><'col-sm-4'p>>",
+                    <?php if (SessionUser::getUser()->isCSVExport()) { ?>
+                    buttons: [ 'print' , 'copy', 'excel', 'pdf'],
+                    <?php } ?>
                    "language": {
                         "url": "<?= SystemURLs::getRootPath() ?>/locale/datatables/<?= $localeInfo->getDataTables() ?>.json"
                     },

@@ -205,13 +205,6 @@ module.exports = function (grunt) {
                         expand: true,
                         filter: 'isFile',
                         flatten: true,
-                        src: ['node_modules/datatables.net/js/jquery.dataTables.min.js', 'node_modules/datatables.net-bs/css/dataTables.bootstrap.min.css', 'node_modules/datatables.net-bs/js/dataTables.bootstrap.min.js'],
-                        dest: 'src/skin/external/datatables/'
-                    },
-                    {
-                        expand: true,
-                        filter: 'isFile',
-                        flatten: true,
                         src: [
                             'node_modules/i18next/dist/umd/i18next.min.js',
                             'node_modules/i18next-xhr-backend/dist/umd/i18nextXHRBackend.min.js'
@@ -252,18 +245,14 @@ module.exports = function (grunt) {
             }
         },
         'curl-dir': {
-            datatables_extensions_buttons: {
+            datatables: {
                 src: [
-                    'https://cdn.datatables.net/buttons/1.5.3/css/buttons.dataTables.min.css',
-                    'https://cdn.datatables.net/buttons/1.5.3/css/buttons.bootstrap.min.css',
-                        'https://cdn.datatables.net/buttons/1.5.3/js/buttons.bootstrap.min.js',
-                        'https://cdn.datatables.net/buttons/1.5.3/js/dataTables.buttons.min.js',
-                        'https://cdn.datatables.net/buttons/1.5.3/js/buttons.print.min.js'],
-                dest: 'src/skin/external/datatables/extensions/buttons'
-            },
-            datatables_extensions_responsive: {
-                src: ['https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css', 'https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js'],
-                dest: 'src/skin/external/datatables/extensions/responsive'
+                    'https://cdn.datatables.net/v/bs-3.3.7/jszip-2.5.0/dt-1.10.18/b-1.5.4/b-html5-1.5.4/b-print-1.5.4/r-2.2.2/sl-1.2.6/datatables.min.css',
+                    "https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js",
+                    "https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js",
+                    "https://cdn.datatables.net/v/bs-3.3.7/jszip-2.5.0/dt-1.10.18/b-1.5.4/b-html5-1.5.4/b-print-1.5.4/r-2.2.2/sl-1.2.6/datatables.min.js"
+                ],
+                dest: 'src/skin/external/datatables/'
             },
             datatables_locale: {
                 src: ['https://cdn.datatables.net/plug-ins/1.10.12/i18n/{'+dataTablesLang()+'}.json'],
@@ -279,13 +268,6 @@ module.exports = function (grunt) {
                     "https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
                 ],
                 dest: 'src/skin/external/jquery-ui/'
-            },
-            datatableselect: {
-                src: [
-                    'https://cdn.datatables.net/select/1.2.2/css/select.bootstrap.min.css',
-                    'https://cdn.datatables.net/select/1.2.2/js/dataTables.select.min.js'
-                ],
-                dest: 'src/skin/external/datatables/extensions/Select/'
             }
         },
         sass: {
