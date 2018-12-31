@@ -106,22 +106,22 @@ class User extends BaseUser
 
     public function isCSVExport()
     {
-        return $this->isEnabledSecurity('bExportCSV');
+        return $this->isAdmin() || $this->isEnabledSecurity('bExportCSV');
     }
 
     public function isEmailEnabled()
     {
-        return $this->isEnabledSecurity('bEmailMailto');
+        return $this->isAdmin() || $this->isEnabledSecurity('bEmailMailto');
     }
 
     public function isCreateDirectoryEnabled()
     {
-        return $this->isEnabledSecurity('bCreateDirectory');
+        return $this->isAdmin() || $this->isEnabledSecurity('bCreateDirectory');
     }
 
     public function isbUSAddressVerificationEnabled()
     {
-        return $this->isEnabledSecurity('bUSAddressVerification');
+        return $this->isAdmin() || $this->isEnabledSecurity('bUSAddressVerification');
     }
 
 
