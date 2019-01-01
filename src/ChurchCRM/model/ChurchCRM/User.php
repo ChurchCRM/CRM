@@ -101,7 +101,7 @@ class User extends BaseUser
 
     public function isAddEvent()
     {
-        return $this->isEnabledSecurity('bAddEvent');
+        return $this->isAdmin() || $this->isEnabledSecurity('bAddEvent');
     }
 
     public function isCSVExport()
