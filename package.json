@@ -26,7 +26,8 @@
         "grunt-curl": "^2.5.0",
         "grunt-exec": "^3.0.0",
         "grunt-poeditor-ab": "^0.1.9",
-        "node-sha1": "^1.0.1"
+        "node-sha1": "^1.0.1",
+        "i18next-extract-gettext": "^3.2.1"
     },
     "dependencies": {
         "admin-lte": "2.4.8",

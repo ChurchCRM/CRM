@@ -6,7 +6,7 @@ use Yasumi\Provider;
 class Countries
 {
     private static $countries;
-    
+
     private static function initializeCountries() {
       self::$countries = array(
         'AF' => new Country('AF','Afghanistan (‫افغانستان‬‎)'),
@@ -135,7 +135,7 @@ class Countries
         'KW' => new Country('KW','Kuwait (‫الكويت‬‎)'),
         'KG' => new Country('KG','Kyrgyzstan (Кыргызстан)'),
         'LA' => new Country('LA','Laos (ລາວ)'),
-        'LV' => new Country('LV','Latvia (LatvijaLatviaLV'),
+        'LV' => new Country('LV','Latvia (Latvija)'),
         'LB' => new Country('LB','Lebanon (‫لبنان‬‎)'),
         'LS' => new Country('LS','Lesotho'),
         'LR' => new Country('LR','Liberia'),
@@ -266,7 +266,7 @@ class Countries
         'ZM' => new Country('ZM','Zambia'),
         'ZW' => new Country('ZW','Zimbabwe')
       );
-    } 
+    }
     private static function getSingleName(Country $Country)
     {
       return $Country->getCountryName();
@@ -283,14 +283,14 @@ class Countries
       self::initializeCountries();
       return self::$countries;
     }
-    
+
     public static function getCountry(string $CountryCode)
     {
       self::initializeCountries();
       return self::$countries[$CountryCode];
     }
 
-    
+
     public static function getCountryByName(string $CountryName)
     {
       if (empty($CountryName))
@@ -303,7 +303,7 @@ class Countries
       });
       if (count($result) === 1 )
       {
-       return current($result); 
+       return current($result);
       }
       throw new \Exception(gettext("Invalid country name supplied"));
     }
