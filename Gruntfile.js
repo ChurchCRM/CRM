@@ -22,6 +22,8 @@ module.exports = function (grunt) {
         return DTLangs.toString();
     };
 
+    var datatTablesVer = "1.10.18";
+
     const sass = require('node-sass');
 
 // Project configuration.
@@ -249,13 +251,23 @@ module.exports = function (grunt) {
                 src: [
                     "https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js",
                     "https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js",
-                    "https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.10.18/b-1.5.4/b-html5-1.5.4/b-print-1.5.4/r-2.2.2/sl-1.2.6/datatables.min.css",
-                    "https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.10.18/b-1.5.4/b-html5-1.5.4/b-print-1.5.4/r-2.2.2/sl-1.2.6/datatables.min.js"
+                    "https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-"+datatTablesVer+"/b-1.5.4/b-html5-1.5.4/b-print-1.5.4/r-2.2.2/sl-1.2.6/datatables.min.css",
+                    "https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-"+datatTablesVer+"/b-1.5.4/b-html5-1.5.4/b-print-1.5.4/r-2.2.2/sl-1.2.6/datatables.min.js"
                 ],
                 dest: 'src/skin/external/datatables/'
             },
+            datatables_images: {
+                src: [
+                    'https://cdn.datatables.net/'+datatTablesVer+'/images/sort_asc.png',
+                    'https://cdn.datatables.net/'+datatTablesVer+'/images/sort_asc_disabled.png',
+                    'https://cdn.datatables.net/'+datatTablesVer+'/images/sort_both.png',
+                    'https://cdn.datatables.net/'+datatTablesVer+'/images/sort_desc.png',
+                    'https://cdn.datatables.net/'+datatTablesVer+'/images/sort_desc_disabled.png'
+                ],
+                dest: "src/skin/external/datatables/DataTables-"+datatTablesVer+"/images/"
+            },
             datatables_locale: {
-                src: ['https://cdn.datatables.net/plug-ins/1.10.12/i18n/{'+dataTablesLang()+'}.json'],
+                src: ['https://cdn.datatables.net/plug-ins/'+datatTablesVer+'/i18n/{'+dataTablesLang()+'}.json'],
                 dest: 'src/locale/datatables'
             },
             fastclick: {
