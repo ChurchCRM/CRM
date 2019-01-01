@@ -215,14 +215,9 @@ function downloadbutton(filename) {
 }
 </script>
 
-<script src="<?= SystemURLs::getRootPath() ?>/skin/external/datatables/jquery.dataTables.min.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/external/datatables/dataTables.bootstrap.min.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/external/datatables/extensions/Select/dataTables.select.min.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/external/datatables/extensions/buttons/dataTables.buttons.min.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/external/datatables/extensions/buttons/buttons.flash.min.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/external/datatables/extensions/buttons/buttons.bootstrap.min.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/external/datatables/extensions/buttons/buttons.print.min.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/external/datatables/extensions/responsive/dataTables.responsive.min.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/external/datatables/pdfmake.min.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/external/datatables/vfs_fonts.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/external/datatables/datatables.min.js"></script>
 
 <?php
 // Add the page footer
