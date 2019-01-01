@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: ChurchCRM\n"
 "Language: en-ca\n"
 
-#: queryparameteroptions_qpo.php:6
+#: 
 msgid "State"
 msgstr "Province"
 
@@ -43,15 +43,15 @@ msgstr "Church Province"
 msgid "Church Zip"
 msgstr "Church Postal Code"
 
-#: queryparameteroptions_qpo.php:5
+#: 
 msgid "Zip Code"
 msgstr "Postal Code"
 
-#: queryparameters_qrp.php:30
+#: 
 msgid "Enter any part of the following: Name, City, State, Zip, Home Phone, Email, or Work Email."
 msgstr "Enter any part of the following: Name, City, Province, Postal Code, Home Phone, Email, or Work Email."
 
-#: query_qry.php:26 query_qry.php:65
+#: 
 msgid "Search by any part of Name, City, State, Zip, Home Phone, Email, or Work Email."
 msgstr "Search by any part of Name, City, Province, Postal Code, Home Phone, Email, or Work Email."
 

@@ -31,11 +31,11 @@ msgstr "Unassigned"
 msgid "None"
 msgstr "None"
 
-#: queryparameteroptions_qpo.php:7
+#: 
 msgid "City"
 msgstr "Suburb"
 
-#: queryparameteroptions_qpo.php:6
+#: 
 msgid "State"
 msgstr "State"
 

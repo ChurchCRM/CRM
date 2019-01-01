@@ -31,11 +31,11 @@ msgstr "E pacaktuar"
 msgid "None"
 msgstr "Asnjë"
 
-#: queryparameteroptions_qpo.php:7
+#: 
 msgid "City"
 msgstr "Qyteti"
 
-#: queryparameteroptions_qpo.php:6
+#: 
 msgid "State"
 msgstr "Shteti"
 
@@ -47,7 +47,7 @@ msgstr "Shteti"
 msgid "Phone"
 msgstr "Telefon"
 
-#: queryparameteroptions_qpo.php:13
+#: 
 msgid "Email"
 msgstr "E-posta"
 
@@ -127,7 +127,7 @@ msgstr "Puna / tjera Email"
 msgid "Membership Date"
 msgstr "Anëtarësia Data"
 
-#: queryparameters_qrp.php:5
+#: 
 msgid "Family Role"
 msgstr "Roli i familjes"
 
@@ -163,11 +163,11 @@ msgstr "Përdorni Ctrl Key për të zgjedhur të shumta"
 msgid "Don't Filter"
 msgstr "Mos Filter"
 
-#: queryparameteroptions_qpo.php:2
+#: 
 msgid "Male"
 msgstr "Mashkull"
 
-#: queryparameteroptions_qpo.php:3
+#: 
 msgid "Female"
 msgstr "Femër"
 
@@ -236,7 +236,7 @@ msgstr "Titull"
 msgid "Suffix"
 msgstr "Prapashtesë"
 
-#: queryparameters_qrp.php:4
+#: 
 msgid "Gender"
 msgstr "Gjini"
 
@@ -244,7 +244,7 @@ msgstr "Gjini"
 msgid "Donation Envelope"
 msgstr "Dhurim Zarf"
 
-#: queryparameteroptions_qpo.php:8
+#: 
 msgid "Home Phone"
 msgstr "Faqja Telefon"
 
@@ -296,7 +296,7 @@ msgstr "SHËNIM: ndarësit (dashes, etj) ose mungesa e tij nuk kanë rëndësi"
 msgid "Default country if none specified otherwise"
 msgstr "Vendi Default qoftë se asnjë specifikuara ndryshe"
 
-#: queryparameters_qrp.php:19
+#: 
 msgid "Classification"
 msgstr "Klasifikimi"
 
@@ -500,7 +500,7 @@ msgstr "Asnjë emër i familjes hyri!"
 msgid "Add Cart to Family"
 msgstr "Shto te Shporta Family"
 
-#: queryparameteroptions_qpo.php:4
+#: 
 msgid "Name"
 msgstr "Emëri"
 
@@ -688,7 +688,7 @@ msgstr "Veprim"
 msgid "No Attendees Assigned to Event"
 msgstr "Nuk Pjesëmarrësit caktuar për Event"
 
-#: queryparameteroptions_qpo.php:15
+#: 
 msgid "Member"
 msgstr "Anëtar"
 
@@ -949,7 +949,7 @@ msgstr "Familje"
 msgid "Type"
 msgstr "Lloj"
 
-#: queryparameters_qrp.php:18
+#: 
 msgid "Fiscal Year"
 msgstr "Viti fiskal"
 
@@ -965,7 +965,7 @@ msgstr "Fond"
 msgid "Bank"
 msgstr "Banka"
 
-#: queryparameters_qrp.php:11
+#: 
 msgid "Month"
 msgstr "Muaj"
 
@@ -2466,7 +2466,7 @@ msgstr "Lista e Pronës"
 msgid "Add a New"
 msgstr "Shto Një i ri"
 
-#: queryparameters_qrp.php:6
+#: 
 msgid "Property"
 msgstr "Tipari (property)"
 
@@ -2510,7 +2510,7 @@ msgstr "Lista Tipi i Pronës"
 msgid "Add a New Property Type"
 msgstr "Shto një re Tipi i Pronës"
 
-#: queryparameters_qrp.php:12
+#: 
 msgid "Class"
 msgstr "Klasë"
 

@@ -31,11 +31,11 @@ msgstr "Nie przypisany"
 msgid "None"
 msgstr "Żaden"
 
-#: queryparameteroptions_qpo.php:7
+#: 
 msgid "City"
 msgstr "Miasto"
 
-#: queryparameteroptions_qpo.php:6
+#: 
 msgid "State"
 msgstr "Hrabstwo"
 
@@ -47,7 +47,7 @@ msgstr "Kraj"
 msgid "Phone"
 msgstr "Tel."
 
-#: queryparameteroptions_qpo.php:13
+#: 
 msgid "Email"
 msgstr "Email"
 
@@ -150,7 +150,7 @@ msgstr "Data urodzenia / Data ślubu"
 msgid "Age / Years Married"
 msgstr "Wiek / Lat małżeństwa"
 
-#: queryparameters_qrp.php:5
+#: 
 #, fuzzy
 msgid "Family Role"
 msgstr "Rola w Rodzinie"
@@ -193,11 +193,11 @@ msgstr "Użyj klawisza Ctrl aby zaznaczyć kilka"
 msgid "Don't Filter"
 msgstr "Nie filtruj"
 
-#: queryparameteroptions_qpo.php:2
+#: 
 msgid "Male"
 msgstr "Mężczyzna"
 
-#: queryparameteroptions_qpo.php:3
+#: 
 msgid "Female"
 msgstr "Kobieta"
 
@@ -268,7 +268,7 @@ msgstr "Tytuł"
 msgid "Suffix"
 msgstr "Suffix"
 
-#: queryparameters_qrp.php:4
+#: 
 msgid "Gender"
 msgstr "Płeć"
 
@@ -276,7 +276,7 @@ msgstr "Płeć"
 msgid "Donation Envelope"
 msgstr "Numer Koperty"
 
-#: queryparameteroptions_qpo.php:8
+#: 
 msgid "Home Phone"
 msgstr "Tel. Domowy"
 
@@ -328,7 +328,7 @@ msgstr "Podpowiedź: spacje, myślniki, etc. albo ich brak nie ma znaczenia"
 msgid "Default country if none specified otherwise"
 msgstr "Domyślny kraj jeżeli nie wybrano innego"
 
-#: queryparameters_qrp.php:19
+#: 
 msgid "Classification"
 msgstr "Klasyfikacja"
 
@@ -514,7 +514,7 @@ msgstr "Nie podano nazwy Rodziny!"
 msgid "Add Cart to Family"
 msgstr "Dodaj Koszyk do Rodziny"
 
-#: queryparameteroptions_qpo.php:4
+#: 
 msgid "Name"
 msgstr "Nazwa"
 
@@ -706,7 +706,7 @@ msgstr "Akcja"
 msgid "No Attendees Assigned to Event"
 msgstr "Nie przypisano żadnych uczestników dla tego Wydarzenia"
 
-#: queryparameteroptions_qpo.php:15
+#: 
 msgid "Member"
 msgstr "Członek"
 
@@ -988,7 +988,7 @@ msgstr "Rodzina"
 msgid "Type"
 msgstr "Typ"
 
-#: queryparameters_qrp.php:18
+#: 
 msgid "Fiscal Year"
 msgstr "Rok Podatkowy"
 
@@ -1004,7 +1004,7 @@ msgstr "Cel"
 msgid "Bank"
 msgstr "Bank"
 
-#: queryparameters_qrp.php:11
+#: 
 msgid "Month"
 msgstr "Miesiąc"
 
@@ -2570,7 +2570,7 @@ msgstr "Lista Właściwości"
 msgid "Add a New"
 msgstr "Dodaj Nową"
 
-#: queryparameters_qrp.php:6
+#: 
 msgid "Property"
 msgstr "Ustawienia"
 
@@ -2615,7 +2615,7 @@ msgstr "Lista Typów Właściwości"
 msgid "Add a New Property Type"
 msgstr "Dodaj Nowy Typ Właściwości"
 
-#: queryparameters_qrp.php:12
+#: 
 msgid "Class"
 msgstr "Klasa"
 

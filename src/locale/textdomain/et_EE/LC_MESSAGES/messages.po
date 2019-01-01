@@ -31,11 +31,11 @@ msgstr "Liigitamata"
 msgid "None"
 msgstr "Mitte ühtegi"
 
-#: queryparameteroptions_qpo.php:7
+#: 
 msgid "City"
 msgstr "Linn"
 
-#: queryparameteroptions_qpo.php:6
+#: 
 msgid "State"
 msgstr "Maakond"
 
@@ -47,7 +47,7 @@ msgstr "Riik"
 msgid "Phone"
 msgstr "Telefon"
 
-#: queryparameteroptions_qpo.php:13
+#: 
 msgid "Email"
 msgstr "Email"
 
@@ -155,7 +155,7 @@ msgstr "Sünni / Pulmaaastapäev"
 msgid "Age / Years Married"
 msgstr "Vanus / Aastaid abielus"
 
-#: queryparameters_qrp.php:5
+#: 
 msgid "Family Role"
 msgstr "Roll perekonnas"
 
@@ -199,11 +199,11 @@ msgstr "Kasuta Ctrl klahvi mitme valikuks"
 msgid "Don't Filter"
 msgstr "Ära kasuta filtrit"
 
-#: queryparameteroptions_qpo.php:2
+#: 
 msgid "Male"
 msgstr "Mees"
 
-#: queryparameteroptions_qpo.php:3
+#: 
 msgid "Female"
 msgstr "Naine"
 
@@ -271,7 +271,7 @@ msgstr "Pealkiri"
 msgid "Suffix"
 msgstr "Eesliide"
 
-#: queryparameters_qrp.php:4
+#: 
 msgid "Gender"
 msgstr "Sugu"
 
@@ -279,7 +279,7 @@ msgstr "Sugu"
 msgid "Donation Envelope"
 msgstr "Annetuse ümbrik"
 
-#: queryparameteroptions_qpo.php:8
+#: 
 msgid "Home Phone"
 msgstr "Kodu telefon"
 
@@ -331,7 +331,7 @@ msgstr "MÄRKUS: Eraldajad (komad, jne.) ei oma tähtsust"
 msgid "Default country if none specified otherwise"
 msgstr "Pemine riik kui ei ole määratud teisiti"
 
-#: queryparameters_qrp.php:19
+#: 
 msgid "Classification"
 msgstr "Klassifikaator"
 
@@ -443,7 +443,7 @@ msgstr "Ühtegi perekonnanime pole lisatud"
 msgid "Add Cart to Family"
 msgstr "Lisa perekond korvi"
 
-#: queryparameteroptions_qpo.php:4
+#: 
 msgid "Name"
 msgstr "Nimi"
 

@@ -31,11 +31,11 @@ msgstr "Niet toegekend"
 msgid "None"
 msgstr "Geen"
 
-#: queryparameteroptions_qpo.php:7
+#: 
 msgid "City"
 msgstr "Plaats"
 
-#: queryparameteroptions_qpo.php:6
+#: 
 msgid "State"
 msgstr "Provincie"
 
@@ -47,7 +47,7 @@ msgstr "Land"
 msgid "Phone"
 msgstr "Telefoon"
 
-#: queryparameteroptions_qpo.php:13
+#: 
 msgid "Email"
 msgstr "Email"
 
@@ -155,7 +155,7 @@ msgstr "Geboorte / Jubileum Datum"
 msgid "Age / Years Married"
 msgstr "Leeftijd / Aantal Jaren Getrouwd"
 
-#: queryparameters_qrp.php:5
+#: 
 msgid "Family Role"
 msgstr "Gezinsrol"
 
@@ -199,11 +199,11 @@ msgstr "Druk op Ctrl toets om veelvouden te selecteren"
 msgid "Don't Filter"
 msgstr "Niet filteren"
 
-#: queryparameteroptions_qpo.php:2
+#: 
 msgid "Male"
 msgstr "Man"
 
-#: queryparameteroptions_qpo.php:3
+#: 
 msgid "Female"
 msgstr "Vrouw"
 
@@ -272,7 +272,7 @@ msgstr "Titel"
 msgid "Suffix"
 msgstr "Achtervoegsel"
 
-#: queryparameters_qrp.php:4
+#: 
 msgid "Gender"
 msgstr "Geslacht"
 
@@ -280,7 +280,7 @@ msgstr "Geslacht"
 msgid "Donation Envelope"
 msgstr "Bijdrage Enveloppe"
 
-#: queryparameteroptions_qpo.php:8
+#: 
 msgid "Home Phone"
 msgstr "Telefoon Thuis"
 
@@ -332,7 +332,7 @@ msgstr "LET OP: Schijdingstekens (-, +, _ etc) toevoegen hoeft niet"
 msgid "Default country if none specified otherwise"
 msgstr "Standaard Land if geen land is aangegeven"
 
-#: queryparameters_qrp.php:19
+#: 
 msgid "Classification"
 msgstr "Kenmerken"
 
@@ -552,7 +552,7 @@ msgstr "Geen naam gezin ingevoerd!"
 msgid "Add Cart to Family"
 msgstr "Voeg mandje toe aan gezin"
 
-#: queryparameteroptions_qpo.php:4
+#: 
 msgid "Name"
 msgstr "Naam"
 
@@ -744,7 +744,7 @@ msgstr "Actie"
 msgid "No Attendees Assigned to Event"
 msgstr "Geen bezoekers toegewezen aan deze activiteit"
 
-#: queryparameteroptions_qpo.php:15
+#: 
 msgid "Member"
 msgstr "Lid"
 
@@ -1041,7 +1041,7 @@ msgstr "Gezin"
 msgid "Type"
 msgstr "Soort"
 
-#: queryparameters_qrp.php:18
+#: 
 msgid "Fiscal Year"
 msgstr "Fiscaal Jaar"
 
@@ -1057,7 +1057,7 @@ msgstr "Fonds"
 msgid "Bank"
 msgstr "Bank"
 
-#: queryparameters_qrp.php:11
+#: 
 msgid "Month"
 msgstr "Maand"
 
@@ -2996,7 +2996,7 @@ msgstr "Eigenschappen"
 msgid "Add a New"
 msgstr "Toevoegen - "
 
-#: queryparameters_qrp.php:6
+#: 
 msgid "Property"
 msgstr "Eigenschap"
 
@@ -3040,7 +3040,7 @@ msgstr "Eigenschap Type Lijst"
 msgid "Add a New Property Type"
 msgstr "Kenmerk toevoegen"
 
-#: queryparameters_qrp.php:12
+#: 
 msgid "Class"
 msgstr "Catechisatiegroep "
 
@@ -5273,229 +5273,229 @@ msgstr "Gezinseigenschappen"
 msgid "Property Types"
 msgstr "Soorten eigenschappen"
 
-#: queryparameteroptions_qpo.php:5
+#: 
 msgid "Zip Code"
 msgstr "Postcode"
 
-#: queryparameteroptions_qpo.php:9
+#: 
 msgid "2012/2013"
 msgstr "2012/2013"
 
-#: queryparameteroptions_qpo.php:10
+#: 
 msgid "2013/2014"
 msgstr "2013/2014"
 
-#: queryparameteroptions_qpo.php:11
+#: 
 msgid "2014/2015"
 msgstr "2014/2015"
 
-#: queryparameteroptions_qpo.php:12
+#: 
 msgid "2015/2016"
 msgstr "2015/2016"
 
-#: queryparameteroptions_qpo.php:14
+#: 
 msgid "WorkEmail"
 msgstr "E-mail werk"
 
-#: queryparameteroptions_qpo.php:16
+#: 
 msgid "Regular Attender"
 msgstr "Regelmatige bezoeker"
 
-#: queryparameteroptions_qpo.php:17
+#: 
 msgid "Guest"
 msgstr "Gast"
 
-#: queryparameteroptions_qpo.php:18
+#: 
 msgid "Non-Attender"
 msgstr "Niet deelnemer"
 
-#: queryparameteroptions_qpo.php:19
+#: 
 msgid "Non-Attender (staff)"
 msgstr "Niet bezoeker (staf)"
 
-#: queryparameters_qrp.php:2
+#: 
 msgid "Minimum Age"
 msgstr "Minimum leeftijd"
 
-#: queryparameters_qrp.php:3
+#: 
 msgid "Maximum Age"
 msgstr "Maximale leeftijd"
 
-#: queryparameters_qrp.php:7
+#: 
 msgid "Beginning Date"
 msgstr "Startdatum"
 
-#: queryparameters_qrp.php:8
+#: 
 msgid "Ending Date"
 msgstr "Einddatum"
 
-#: queryparameters_qrp.php:9
+#: 
 msgid "Search"
 msgstr "Zoeken"
 
-#: queryparameters_qrp.php:10
+#: 
 msgid "Field"
 msgstr "Veld"
 
-#: query_qry.php:9 query_qry.php:48 queryparameters_qrp.php:13
+#: 
 msgid "Registered students"
 msgstr "Geregistreerde leerlingen"
 
-#: queryparameters_qrp.php:14
+#: 
 msgid "Volunteer opportunities"
 msgstr "Vrijwilligerswerk"
 
-#: queryparameters_qrp.php:15
+#: 
 msgid "Months"
 msgstr "Maanden"
 
-#: queryparameters_qrp.php:16
+#: 
 msgid "First Fiscal Year"
 msgstr "Eerste boekjaar"
 
-#: queryparameters_qrp.php:17
+#: 
 msgid "Second Fiscal Year"
 msgstr "Tweede boekjaar"
 
-#: queryparameters_qrp.php:20
+#: 
 msgid "Custom field"
 msgstr "Aangepast veld"
 
-#: queryparameters_qrp.php:21
+#: 
 msgid "Field value"
 msgstr "Veldwaarde\n"
 ""
 
-#: queryparameters_qrp.php:22
+#: 
 msgid "The minimum age for which you want records returned."
 msgstr "De minimum leeftijd waarvoor u geretourneerde records."
 
-#: queryparameters_qrp.php:23
+#: 
 msgid "The maximum age for which you want records returned."
 msgstr "De maximum leeftijd waarvoor u geretourneerde records."
 
-#: queryparameters_qrp.php:24
+#: 
 msgid "The desired gender to search the database for."
 msgstr "Het gewenste geslacht in de database te doorzoeken."
 
-#: queryparameters_qrp.php:25
+#: 
 msgid "Select the desired family role."
 msgstr "Selecteer de gewenste rol in het gezin."
 
-#: queryparameters_qrp.php:26
+#: 
 msgid "The gender for which you would like records returned."
 msgstr "Het geslacht waarvoor u wilt geretourneerde records."
 
-#: queryparameters_qrp.php:27
+#: 
 msgid "The property for which you would like person records returned."
 msgstr "Records met personen op basis van de gewenste eigenschap."
 
-#: queryparameters_qrp.php:28
+#: 
 msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that conatain donations."
 msgstr "Selecteer de begindatum de totale bijdragen voor elk lid (dat wil zeggen YYYY-MM-DD) te berekenen. OPMERKING: U kunt alleen kiezen voor data die donaties bevatten. "
 
-#: queryparameters_qrp.php:31
+#: 
 msgid "Select field to search for."
 msgstr "Zoekargument"
 
-#: queryparameters_qrp.php:34
+#: 
 msgid "Group of registered students"
 msgstr "Groep met geregistreerde leerlingen"
 
-#: queryparameters_qrp.php:36
+#: 
 msgid "Choose a volunteer opportunity"
 msgstr "Kies vrijwilligerswerk"
 
-#: queryparameters_qrp.php:37
+#: 
 msgid "Number of months since becoming a friend"
 msgstr "Aantal maanden betrokken"
 
-#: queryparameters_qrp.php:41
+#: 
 msgid "but not this year"
 msgstr "maar niet dit jaar"
 
-#: queryparameters_qrp.php:42
+#: 
 msgid "Fiscal Year."
 msgstr "Fiscaal jaar"
 
-#: query_qry.php:3 query_qry.php:42
+#: 
 msgid "Person by Age"
 msgstr "Personen per leeftijd"
 
-#: query_qry.php:5 query_qry.php:44
+#: 
 msgid "Person by Role and Gender"
 msgstr "Persoon gesorteerd op rol en geslacht"
 
-#: query_qry.php:6 query_qry.php:45
+#: 
 msgid "Person by Property"
 msgstr "Persoon gesorteerd op eigenschap"
 
-#: query_qry.php:7 query_qry.php:46
+#: 
 msgid "Advanced Search"
 msgstr "Geavanceerd zoeken"
 
-#: query_qry.php:8 query_qry.php:47
+#: 
 msgid "Birthdays"
 msgstr "Verjaardagen"
 
-#: query_qry.php:10 query_qry.php:49
+#: 
 msgid "Membership anniversaries"
 msgstr "Jubilea van leden\n"
 ""
 
-#: query_qry.php:11 query_qry.php:50
+#: 
 msgid "Select database users"
 msgstr "Selecteer de database gebruikers"
 
-#: query_qry.php:12 query_qry.php:51
+#: 
 msgid "Select all members"
 msgstr "Selecteer alle leden"
 
-#: query_qry.php:13 query_qry.php:52
+#: 
 msgid "Volunteers"
 msgstr "Vrijwilligers"
 
-#: query_qry.php:14 query_qry.php:53
+#: 
 msgid "Recent friends"
 msgstr "Nieuwe leden"
 
-#: query_qry.php:15 query_qry.php:54
+#: 
 msgid "Families to Canvass"
 msgstr "Te werven gezinnen"
 
-#: query_qry.php:16 query_qry.php:55
+#: 
 msgid "Pledge comparison"
 msgstr "Vergelijk toezeggingen"
 
-#: query_qry.php:17 query_qry.php:56
+#: 
 msgid "Missing pledges"
 msgstr "Ontbrekende toezeggingen"
 
-#: query_qry.php:18 query_qry.php:57
+#: 
 msgid "Credit Card People"
 msgstr "Personen met een creditcard"
 
-#: query_qry.php:19 query_qry.php:58
+#: 
 msgid "Family Pledge by Fiscal Year"
 msgstr "Toezeggingen gezinnen per fiscaal jaar"
 
-#: query_qry.php:20 query_qry.php:59
+#: 
 msgid "CustomSearch"
 msgstr "Aangepaste zoekopdracht"
 
-#: query_qry.php:27 query_qry.php:66
+#: 
 msgid "People with birthdays in a particular month"
 msgstr "Personen met een verjaardag in een gegeven maand"
 
-#: query_qry.php:28 query_qry.php:67
+#: 
 msgid "Find Registered students"
 msgstr "Vind geregistreerde leden"
 
-#: query_qry.php:30 query_qry.php:69
+#: 
 msgid "People who are registered as database users"
 msgstr "Personen die als database gebruiker zijn geregistreerd"
 
-#: query_qry.php:31 query_qry.php:70
+#: 
 msgid "People who are members"
 msgstr "Personen die lid zijn"
 
@@ -5503,7 +5503,7 @@ msgstr "Personen die lid zijn"
 msgid "Last Edited"
 msgstr "De laatste bewerkt"
 
-#: userconfig_ucfg.php:7
+#: 
 msgid "Allow user to add new event"
 msgstr "Gebruiker mag activiteit toevoegen"
 
@@ -5691,487 +5691,487 @@ msgstr "WebDAV"
 msgid "Local"
 msgstr "Lokaal"
 
-#: settings-countries.php:7
+#: 
 msgid "Andorra"
 msgstr "Andorra"
 
-#: settings-countries.php:8
+#: 
 msgid "Angola"
 msgstr "Angola"
 
-#: settings-countries.php:9
+#: 
 msgid "Anguilla"
 msgstr "Anguilla"
 
-#: settings-countries.php:10
+#: 
 msgid "Antarctica"
 msgstr "Antarctica"
 
-#: settings-countries.php:13
+#: 
 msgid "Armenia (Հայաստան)"
 msgstr "Armenia (Հայաստան)"
 
-#: settings-countries.php:14
+#: 
 msgid "Aruba"
 msgstr "Aruba"
 
-#: settings-countries.php:15
+#: 
 msgid "Ascension Island"
 msgstr "Ascension Island"
 
-#: settings-countries.php:18
+#: 
 msgid "Azerbaijan (Azərbaycan)"
 msgstr "Azerbaijan (Azərbaycan)"
 
-#: settings-countries.php:19
+#: 
 msgid "Bahamas"
 msgstr "Bahamas"
 
-#: settings-countries.php:21
+#: 
 msgid "Bangladesh (বাংলাদেশ)"
 msgstr "Bangladesh (বাংলাদেশ)"
 
-#: settings-countries.php:22
+#: 
 msgid "Barbados"
 msgstr "Barbados"
 
-#: settings-countries.php:23
+#: 
 msgid "Belarus (Беларусь)"
 msgstr "Belarus (Беларусь)"
 
-#: settings-countries.php:25
+#: 
 msgid "Belize"
 msgstr "Belize"
 
-#: settings-countries.php:27
+#: 
 msgid "Bermuda"
 msgstr "Bermuda"
 
-#: settings-countries.php:28
+#: 
 msgid "Bhutan (འབྲུག)"
 msgstr "Bhutan (འབྲུག)"
 
-#: settings-countries.php:29
+#: 
 msgid "Bolivia"
 msgstr "Bolivia"
 
-#: settings-countries.php:31
+#: 
 msgid "Botswana"
 msgstr "Botswana"
 
-#: settings-countries.php:32
+#: 
 msgid "Bouvet Island"
 msgstr "Bouvet Island"
 
-#: settings-countries.php:33
+#: 
 msgid "Brazil (Brasil)"
 msgstr "Brazil (Brasil)"
 
-#: settings-countries.php:36
+#: 
 msgid "Brunei"
 msgstr "Brunei"
 
-#: settings-countries.php:38
+#: 
 msgid "Burkina Faso"
 msgstr "Burkina Faso"
 
-#: settings-countries.php:39
+#: 
 msgid "Burundi (Uburundi)"
 msgstr "Burundi (Uburundi)"
 
-#: settings-countries.php:40
+#: 
 msgid "Cambodia (កម្ពុជា)"
 msgstr "Cambodia (កម្ពុជា)"
 
-#: settings-countries.php:42
+#: 
 msgid "Canada"
 msgstr "Canada"
 
-#: settings-countries.php:44
+#: 
 msgid "Cape Verde (Kabu Verdi)"
 msgstr "Cape Verde (Kabu Verdi)"
 
-#: settings-countries.php:51
+#: 
 msgid "China (中国)"
 msgstr "China (中国)"
 
-#: settings-countries.php:54
+#: 
 msgid "Cocos (Keeling) Islands (Kepulauan Cocos (Keeling))"
 msgstr "Cocos (Keeling) Islands (Kepulauan Cocos (Keeling))"
 
-#: settings-countries.php:55
+#: 
 msgid "Colombia"
 msgstr "Colombia"
 
-#: settings-countries.php:57
+#: 
 msgid "Congo (DRC) (Jamhuri ya Kidemokrasia ya Kongo)"
 msgstr "Congo (DRC) (Jamhuri ya Kidemokrasia ya Kongo)"
 
-#: settings-countries.php:60
+#: 
 msgid "Costa Rica"
 msgstr "Costa Rica"
 
-#: settings-countries.php:63
+#: 
 msgid "Cuba"
 msgstr "Cuba"
 
-#: settings-countries.php:65
+#: 
 msgid "Cyprus (Κύπρος)"
 msgstr "Cyprus (Κύπρος)"
 
-#: settings-countries.php:68
+#: 
 msgid "Diego Garcia"
 msgstr "Diego Garcia"
 
-#: settings-countries.php:69
+#: 
 msgid "Djibouti"
 msgstr "Djibouti"
 
-#: settings-countries.php:70
+#: 
 msgid "Dominica"
 msgstr "Dominica"
 
-#: settings-countries.php:72
+#: 
 msgid "Ecuador"
 msgstr "Ecuador"
 
-#: settings-countries.php:74
+#: 
 msgid "El Salvador"
 msgstr "El Salvador"
 
-#: settings-countries.php:76
+#: 
 msgid "Eritrea"
 msgstr "Eritrea"
 
-#: settings-countries.php:79
+#: 
 msgid "Falkland Islands (Islas Malvinas)"
 msgstr "Falkland Islands (Islas Malvinas)"
 
-#: settings-countries.php:81
+#: 
 msgid "Fiji"
 msgstr "Fiji"
 
-#: settings-countries.php:82
+#: 
 msgid "Finland (Suomi)"
 msgstr "Finland (Suomi)"
 
-#: settings-countries.php:87
+#: 
 msgid "Gabon"
 msgstr "Gabon"
 
-#: settings-countries.php:88
+#: 
 msgid "Gambia"
 msgstr "Gambia"
 
-#: settings-countries.php:89
+#: 
 msgid "Georgia (საქართველო)"
 msgstr "Georgia (საქართველო)"
 
-#: settings-countries.php:91
+#: 
 msgid "Ghana (Gaana)"
 msgstr "Ghana (Gaana)"
 
-#: settings-countries.php:92
+#: 
 msgid "Gibraltar"
 msgstr "Gibraltar"
 
-#: settings-countries.php:95
+#: 
 msgid "Grenada"
 msgstr "Grenada"
 
-#: settings-countries.php:96
+#: 
 msgid "Guadeloupe"
 msgstr "Guadeloupe"
 
-#: settings-countries.php:97
+#: 
 msgid "Guam"
 msgstr "Guam"
 
-#: settings-countries.php:98
+#: 
 msgid "Guatemala"
 msgstr "Guatemala"
 
-#: settings-countries.php:99
+#: 
 msgid "Guernsey"
 msgstr "Guernsey"
 
-#: settings-countries.php:100
+#: 
 msgid "Guinea (Guinée)"
 msgstr "Guinea (Guinée)"
 
-#: settings-countries.php:102
+#: 
 msgid "Guyana"
 msgstr "Guyana"
 
-#: settings-countries.php:105
+#: 
 msgid "Honduras"
 msgstr "Honduras"
 
-#: settings-countries.php:106
+#: 
 msgid "Hong Kong (香港)"
 msgstr "Hong Kong (香港)"
 
-#: settings-countries.php:109
+#: 
 msgid "India (भारत)"
 msgstr "India (भारत)"
 
-#: settings-countries.php:114
+#: 
 msgid "Isle of Man"
 msgstr "Isle of Man"
 
-#: settings-countries.php:117
+#: 
 msgid "Jamaica"
 msgstr "Jamaica"
 
-#: settings-countries.php:118
+#: 
 msgid "Japan (日本)"
 msgstr "Japan (日本)"
 
-#: settings-countries.php:119
+#: 
 msgid "Jersey"
 msgstr "Jersey"
 
-#: settings-countries.php:121
+#: 
 msgid "Kazakhstan (Казахстан)"
 msgstr "Kazakhstan (Казахстан)"
 
-#: settings-countries.php:123
+#: 
 msgid "Kiribati"
 msgstr "Kiribati"
 
-#: settings-countries.php:126
+#: 
 msgid "Kyrgyzstan (Кыргызстан)"
 msgstr "Kyrgyzstan (Кыргызстан)"
 
-#: settings-countries.php:127
+#: 
 msgid "Laos (ລາວ)"
 msgstr "Laos (ລາວ)"
 
-#: settings-countries.php:130
+#: 
 msgid "Lesotho"
 msgstr "Lesotho"
 
-#: settings-countries.php:131
+#: 
 msgid "Liberia"
 msgstr "Liberia"
 
-#: settings-countries.php:133
+#: 
 msgid "Liechtenstein"
 msgstr "Liechtenstein"
 
-#: settings-countries.php:136
+#: 
 msgid "Macau (澳門)"
 msgstr "Macau (澳門)"
 
-#: settings-countries.php:138
+#: 
 msgid "Madagascar (Madagasikara)"
 msgstr "Madagascar (Madagasikara)"
 
-#: settings-countries.php:139
+#: 
 msgid "Malawi"
 msgstr "Malawi"
 
-#: settings-countries.php:142
+#: 
 msgid "Mali"
 msgstr "Mali"
 
-#: settings-countries.php:143
+#: 
 msgid "Malta"
 msgstr "Malta"
 
-#: settings-countries.php:145
+#: 
 msgid "Martinique"
 msgstr "Martinique"
 
-#: settings-countries.php:147
+#: 
 msgid "Mauritius (Moris)"
 msgstr "Mauritius (Moris)"
 
-#: settings-countries.php:148
+#: 
 msgid "Mayotte"
 msgstr "Mayotte"
 
-#: settings-countries.php:151
+#: 
 msgid "Moldova (Republica Moldova)"
 msgstr "Moldova (Republica Moldova)"
 
-#: settings-countries.php:152
+#: 
 msgid "Monaco"
 msgstr "Monaco"
 
-#: settings-countries.php:154
+#: 
 msgid "Montenegro (Crna Gora)"
 msgstr "Montenegro (Crna Gora)"
 
-#: settings-countries.php:155
+#: 
 msgid "Montserrat"
 msgstr "Montserrat"
 
-#: settings-countries.php:157
+#: 
 msgid "Mozambique (Moçambique)"
 msgstr "Mozambique (Moçambique)"
 
-#: settings-countries.php:160
+#: 
 msgid "Nauru"
 msgstr "Nauru"
 
-#: settings-countries.php:161
+#: 
 msgid "Nepal (नेपाल)"
 msgstr "Nepal (नेपाल)"
 
-#: settings-countries.php:162
+#: 
 msgid "Netherlands (Nederland)"
 msgstr "Nederland"
 
-#: settings-countries.php:165
+#: 
 msgid "Nicaragua"
 msgstr "Nicaragua"
 
-#: settings-countries.php:166
+#: 
 msgid "Niger (Nijar)"
 msgstr "Niger (Nijar)"
 
-#: settings-countries.php:167
+#: 
 msgid "Nigeria"
 msgstr "Nigeria"
 
-#: settings-countries.php:168
+#: 
 msgid "Niue"
 msgstr "Niue"
 
-#: settings-countries.php:169
+#: 
 msgid "Norfolk Island"
 msgstr "Norfolk Island"
 
-#: settings-countries.php:175
+#: 
 msgid "Palau"
 msgstr "Palau"
 
-#: settings-countries.php:179
+#: 
 msgid "Paraguay"
 msgstr "Paraguay"
 
-#: settings-countries.php:182
+#: 
 msgid "Pitcairn Islands"
 msgstr "Pitcairn Islands"
 
-#: settings-countries.php:184
+#: 
 msgid "Portugal"
 msgstr "Portugal"
 
-#: settings-countries.php:185
+#: 
 msgid "Puerto Rico"
 msgstr "Puerto Rico"
 
-#: settings-countries.php:187
+#: 
 msgid "Réunion (La Réunion)"
 msgstr "Réunion (La Réunion)"
 
-#: settings-countries.php:190
+#: 
 msgid "Rwanda"
 msgstr "Rwanda"
 
-#: settings-countries.php:191
+#: 
 msgid "Saint Barthélemy (Saint-Barthélemy)"
 msgstr "Saint Barthélemy (Saint-Barthélemy)"
 
-#: settings-countries.php:192
+#: 
 msgid "Saint Helena"
 msgstr "Saint Helena"
 
-#: settings-countries.php:194
+#: 
 msgid "Saint Lucia"
 msgstr "Saint Lucia"
 
-#: settings-countries.php:195
+#: 
 msgid "Saint Martin (Saint-Martin (partie française))"
 msgstr "Saint Martin (Saint-Martin (partie française))"
 
-#: settings-countries.php:197
+#: 
 msgid "Samoa"
 msgstr "Samoa"
 
-#: settings-countries.php:198
+#: 
 msgid "San Marino"
 msgstr "San Marino"
 
-#: settings-countries.php:204
+#: 
 msgid "Sierra Leone"
 msgstr "Sierra Leone"
 
-#: settings-countries.php:205
+#: 
 msgid "Singapore"
 msgstr "Singapore"
 
-#: settings-countries.php:206
+#: 
 msgid "Sint Maarten"
 msgstr "Sint Maarten"
 
-#: settings-countries.php:219
+#: 
 msgid "Suriname"
 msgstr "Suriname"
 
-#: settings-countries.php:221
+#: 
 msgid "Swaziland"
 msgstr "Swaziland"
 
-#: settings-countries.php:225
+#: 
 msgid "Taiwan (台灣)"
 msgstr "Taiwan (台灣)"
 
-#: settings-countries.php:227
+#: 
 msgid "Tanzania"
 msgstr "Tanzania"
 
-#: settings-countries.php:228
+#: 
 msgid "Thailand (ไทย)"
 msgstr "Thailand (ไทย)"
 
-#: settings-countries.php:229
+#: 
 msgid "Timor-Leste"
 msgstr "Timor-Leste"
 
-#: settings-countries.php:231
+#: 
 msgid "Tokelau"
 msgstr "Tokelau"
 
-#: settings-countries.php:232
+#: 
 msgid "Tonga"
 msgstr "Tonga"
 
-#: settings-countries.php:234
+#: 
 msgid "Tristan da Cunha"
 msgstr "Tristan da Cunha"
 
-#: settings-countries.php:237
+#: 
 msgid "Turkmenistan"
 msgstr "Turkmenistan"
 
-#: settings-countries.php:239
+#: 
 msgid "Tuvalu"
 msgstr "Tuvalu"
 
-#: settings-countries.php:247
+#: 
 msgid "Uruguay"
 msgstr "Uruguay"
 
-#: settings-countries.php:249
+#: 
 msgid "Vanuatu"
 msgstr "Vanuatu"
 
-#: settings-countries.php:251
+#: 
 msgid "Venezuela"
 msgstr "Venezuela"
 
-#: settings-countries.php:252
+#: 
 msgid "Vietnam (Việt Nam)"
 msgstr "Vietnam (Việt Nam)"
 
-#: settings-countries.php:256
+#: 
 msgid "Zambia"
 msgstr "Zambia"
 
-#: settings-countries.php:257
+#: 
 msgid "Zimbabwe"
 msgstr "Zimbabwe"
 
@@ -6211,15 +6211,15 @@ msgstr "Bezoek onze pagina"
 msgid "Google Analytics Tracking Code"
 msgstr "Google Analytics Tracking Code"
 
-#: settings-locales.php:16
+#: 
 msgid "Italian - Italy"
 msgstr "Italian - Italy"
 
-#: settings-locales.php:6
+#: 
 msgid "Dutch - Netherlands"
 msgstr "Nederlands"
 
-#: settings-locales.php:5
+#: 
 msgid "Chinese - Taiwan"
 msgstr "Chinese - Taiwan"
 
@@ -7323,7 +7323,7 @@ msgstr "Contactgegevens en demografische gegevens in de nieuwe lid e-mailbericht
 msgid "Include family custom properties in global search."
 msgstr "Inclusief familie aangepaste eigenschappen in wereldwijde zoektocht."
 
-#: settings-countries.php:128
+#: 
 #, fuzzy
 msgid "Latvia (Latvija)"
 msgstr "Letland\n"
@@ -7421,7 +7421,7 @@ msgstr "Ondersteuning voor opgeslagen betalingsgegevens is verwijderd. Deze gege
 msgid "Classifcation"
 msgstr "Ingeschreven als soort lid"
 
-#: settings-locales.php:11
+#: 
 msgid "Estonian"
 msgstr "Estland"
 

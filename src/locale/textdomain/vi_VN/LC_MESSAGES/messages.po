@@ -31,11 +31,11 @@ msgstr "Chưa được gán"
 msgid "None"
 msgstr "Không có"
 
-#: queryparameteroptions_qpo.php:7
+#: 
 msgid "City"
 msgstr "Thành phố"
 
-#: queryparameteroptions_qpo.php:6
+#: 
 msgid "State"
 msgstr "Bang (thuộc Mỹ)"
 
@@ -47,7 +47,7 @@ msgstr "Quốc gia "
 msgid "Phone"
 msgstr "Điện thoại"
 
-#: queryparameteroptions_qpo.php:13
+#: 
 msgid "Email"
 msgstr "Email"
 
@@ -149,7 +149,7 @@ msgstr "Ngày sinh / Kỷ niệm ngày cưới"
 msgid "Age / Years Married"
 msgstr "Tuổi / năm kết hôn"
 
-#: queryparameters_qrp.php:5
+#: 
 #, fuzzy
 msgid "Family Role"
 msgstr "Vai trò trong gia đình"
@@ -191,11 +191,11 @@ msgstr "Sử dụng Ctrl Key để chọn nhiều"
 msgid "Don't Filter"
 msgstr "Không lọc"
 
-#: queryparameteroptions_qpo.php:2
+#: 
 msgid "Male"
 msgstr "Nam"
 
-#: queryparameteroptions_qpo.php:3
+#: 
 msgid "Female"
 msgstr "Nữ"
 
@@ -254,11 +254,11 @@ msgstr "Chức danh"
 msgid "Suffix"
 msgstr "Hậu tố"
 
-#: queryparameters_qrp.php:4
+#: 
 msgid "Gender"
 msgstr "Giới tính"
 
-#: queryparameteroptions_qpo.php:8
+#: 
 msgid "Home Phone"
 msgstr "Điện thoại nhà"
 
@@ -298,7 +298,7 @@ msgstr "LƯU Ý: Phân tách bằng (dấu gạch ngang, vv) hoặc thiếu dấ
 msgid "Default country if none specified otherwise"
 msgstr "Quốc gia mặc định nếu không có quy định khác"
 
-#: queryparameters_qrp.php:19
+#: 
 msgid "Classification"
 msgstr "Phân loại"
 
@@ -415,7 +415,7 @@ msgstr "Không có tên gia đình được nhập vào!"
 msgid "Add Cart to Family"
 msgstr "Thêm vào giỏ rồi gửi đến Gia đình"
 
-#: queryparameteroptions_qpo.php:4
+#: 
 msgid "Name"
 msgstr "Tên"
 
@@ -576,7 +576,7 @@ msgstr "Kiểm tra bởi"
 msgid "Action"
 msgstr "Hành động"
 
-#: queryparameteroptions_qpo.php:15
+#: 
 msgid "Member"
 msgstr "Thành viên"
 
@@ -716,7 +716,7 @@ msgstr "Gia đình"
 msgid "Type"
 msgstr "Thể loại"
 
-#: queryparameters_qrp.php:11
+#: 
 msgid "Month"
 msgstr "Tháng"
 
@@ -1868,7 +1868,7 @@ msgstr "(Danh sách thuộc tính)"
 msgid "Add a New"
 msgstr "Thêm mới"
 
-#: queryparameters_qrp.php:6
+#: 
 msgid "Property"
 msgstr "Thuộc tính"
 
@@ -1896,7 +1896,7 @@ msgstr "Danh sách thuộc tính"
 msgid "Add a New Property Type"
 msgstr "Thêm loại thuộc tính mới"
 
-#: queryparameters_qrp.php:12
+#: 
 msgid "Class"
 msgstr "Lớp học"
 
@@ -2780,51 +2780,51 @@ msgstr "Thuộc tính Gia đình"
 msgid "Property Types"
 msgstr "Các loại thuộc tính"
 
-#: queryparameteroptions_qpo.php:5
+#: 
 msgid "Zip Code"
 msgstr "Mã bưu chính"
 
-#: queryparameters_qrp.php:9
+#: 
 msgid "Search"
 msgstr "Tìm kiếm"
 
-#: queryparameters_qrp.php:14
+#: 
 msgid "Volunteer opportunities"
 msgstr "Mục vụ đã tham gia"
 
-#: queryparameters_qrp.php:15
+#: 
 msgid "Months"
 msgstr "Tháng"
 
-#: queryparameters_qrp.php:36
+#: 
 msgid "Choose a volunteer opportunity"
 msgstr "Chọn mục vụ"
 
-#: queryparameters_qrp.php:44
+#: 
 msgid "First volunteer opportunity choice"
 msgstr "Lựa chọn mục vụ đầu tiên"
 
-#: queryparameters_qrp.php:45
+#: 
 msgid "Second volunteer opportunity choice"
 msgstr "Lựa chọn mục vụ thứ hai"
 
-#: query_qry.php:8 query_qry.php:47
+#: 
 msgid "Birthdays"
 msgstr "Ngày sinh nhật"
 
-#: query_qry.php:12 query_qry.php:51
+#: 
 msgid "Select all members"
 msgstr "Lựa chọn tất cả thành viên"
 
-#: query_qry.php:13 query_qry.php:52
+#: 
 msgid "Volunteers"
 msgstr "Nhân sự"
 
-#: query_qry.php:32 query_qry.php:71
+#: 
 msgid "Find volunteers for a particular opportunity"
 msgstr "Tìm nhân sự cho một mục vụ cụ thể"
 
-#: query_qry.php:39 query_qry.php:78
+#: 
 msgid "Find volunteers for who match two specific opportunity codes"
 msgstr "Tìm nhân sự cho hai mục vụ đặc biệt"
 
@@ -2832,27 +2832,27 @@ msgstr "Tìm nhân sự cho hai mục vụ đặc biệt"
 msgid "Last Edited"
 msgstr "Vừa cập nhật"
 
-#: userconfig_ucfg.php:2
+#: 
 msgid "User permission to send email via mailto: links"
 msgstr "Thành viên có quyền gửi email thông qua mailto: links"
 
-#: userconfig_ucfg.php:3
+#: 
 msgid "Delimiter to separate emails in mailto: links"
 msgstr "Dấu phân cách để tách các email trong mailto: links"
 
-#: userconfig_ucfg.php:4
+#: 
 msgid "User permission to create directories"
 msgstr "Thành viên có quyền tạo ra danh bạ"
 
-#: userconfig_ucfg.php:5
+#: 
 msgid "User permission to export CSV files"
 msgstr "Thành viên có quyền xuất tập tin CSV"
 
-#: userconfig_ucfg.php:6
+#: 
 msgid "User permission to use IST Address Verification"
 msgstr "Thành viên có quyền sử dụng xác nhận địa chỉ"
 
-#: userconfig_ucfg.php:7
+#: 
 msgid "Allow user to add new event"
 msgstr "Cho phép Thành viên thêm sự kiện mới"
 

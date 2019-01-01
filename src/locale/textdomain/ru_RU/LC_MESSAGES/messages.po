@@ -31,11 +31,11 @@ msgstr "Не назначен"
 msgid "None"
 msgstr "Ни один"
 
-#: queryparameteroptions_qpo.php:7
+#: 
 msgid "City"
 msgstr "Город"
 
-#: queryparameteroptions_qpo.php:6
+#: 
 msgid "State"
 msgstr "Область"
 
@@ -47,7 +47,7 @@ msgstr "Страна"
 msgid "Phone"
 msgstr "Телефон"
 
-#: queryparameteroptions_qpo.php:13
+#: 
 msgid "Email"
 msgstr "е-мейл"
 
@@ -150,7 +150,7 @@ msgstr "Рождения / Юбилей Дата"
 msgid "Age / Years Married"
 msgstr "Возраст / лет замужем"
 
-#: queryparameters_qrp.php:5
+#: 
 #, fuzzy
 msgid "Family Role"
 msgstr "Роль семьи"
@@ -193,11 +193,11 @@ msgstr "Используйте клавишу Ctrl, чтобы выбрать н
 msgid "Don't Filter"
 msgstr "Не Фильтр"
 
-#: queryparameteroptions_qpo.php:2
+#: 
 msgid "Male"
 msgstr "Муж"
 
-#: queryparameteroptions_qpo.php:3
+#: 
 msgid "Female"
 msgstr "Жен"
 
@@ -268,7 +268,7 @@ msgstr "Название"
 msgid "Suffix"
 msgstr "Суффикс"
 
-#: queryparameters_qrp.php:4
+#: 
 msgid "Gender"
 msgstr "Пол"
 
@@ -276,7 +276,7 @@ msgstr "Пол"
 msgid "Donation Envelope"
 msgstr "Пожертвование Конверт"
 
-#: queryparameteroptions_qpo.php:8
+#: 
 msgid "Home Phone"
 msgstr "Домашний телефон"
 
@@ -328,7 +328,7 @@ msgstr "ПРИМЕЧАНИЕ: Сепараторы (тире и т.д.) или �
 msgid "Default country if none specified otherwise"
 msgstr "Страна по умолчанию, если ничего не указано иное"
 
-#: queryparameters_qrp.php:19
+#: 
 msgid "Classification"
 msgstr "Классификация"
 
@@ -514,7 +514,7 @@ msgstr "Без названия семья не введены!"
 msgid "Add Cart to Family"
 msgstr "Добавить корзину, чтобы семьи"
 
-#: queryparameteroptions_qpo.php:4
+#: 
 msgid "Name"
 msgstr "Название"
 
@@ -980,7 +980,7 @@ msgstr "Семья"
 msgid "Type"
 msgstr "Тип"
 
-#: queryparameters_qrp.php:18
+#: 
 msgid "Fiscal Year"
 msgstr "Отчетный год"
 
@@ -996,7 +996,7 @@ msgstr "Фонд"
 msgid "Bank"
 msgstr "Банк:    "
 
-#: queryparameters_qrp.php:11
+#: 
 msgid "Month"
 msgstr "Mесяц"
 
@@ -2546,7 +2546,7 @@ msgstr "Список недвижимости"
 msgid "Add a New"
 msgstr "Добавить новые"
 
-#: queryparameters_qrp.php:6
+#: 
 msgid "Property"
 msgstr "Объявление"
 
@@ -2591,7 +2591,7 @@ msgstr "Тип недвижимости Список"
 msgid "Add a New Property Type"
 msgstr "Добавить Новый тип недвижимости"
 
-#: queryparameters_qrp.php:12
+#: 
 msgid "Class"
 msgstr "Класс"
 

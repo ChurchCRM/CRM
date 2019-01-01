@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: ChurchCRM\n"
 "Language: en\n"
 
-#: queryparameteroptions_qpo.php:6
+#: 
 msgid "State"
 msgstr "County"
 

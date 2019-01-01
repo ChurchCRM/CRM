@@ -31,11 +31,11 @@ msgstr "غير معين"
 msgid "None"
 msgstr "لا شئ"
 
-#: queryparameteroptions_qpo.php:7
+#: 
 msgid "City"
 msgstr "المدينة"
 
-#: queryparameteroptions_qpo.php:6
+#: 
 msgid "State"
 msgstr "الحي"
 
@@ -47,7 +47,7 @@ msgstr "البلد"
 msgid "Phone"
 msgstr "التليفون"
 
-#: queryparameteroptions_qpo.php:13
+#: 
 msgid "Email"
 msgstr "البريد الإلكتروني"
 
@@ -151,7 +151,7 @@ msgstr "تاريخ الميلاد / المناسبة السنوية"
 msgid "Age / Years Married"
 msgstr "مدة / سنوات الزواج"
 
-#: queryparameters_qrp.php:5
+#: 
 msgid "Family Role"
 msgstr "القرابة في الأسرة"
 
@@ -195,11 +195,11 @@ msgstr "استخدم مفتاح Ctrl لتحديد عدة عناصر"
 msgid "Don't Filter"
 msgstr "لا تصفية"
 
-#: queryparameteroptions_qpo.php:2
+#: 
 msgid "Male"
 msgstr "ذكر"
 
-#: queryparameteroptions_qpo.php:3
+#: 
 msgid "Female"
 msgstr "أنثي"
 
@@ -267,7 +267,7 @@ msgstr "اللقب"
 msgid "Suffix"
 msgstr "الاسم اللاحق"
 
-#: queryparameters_qrp.php:4
+#: 
 msgid "Gender"
 msgstr "النوع"
 
@@ -275,7 +275,7 @@ msgstr "النوع"
 msgid "Donation Envelope"
 msgstr "ظرف التبرع"
 
-#: queryparameteroptions_qpo.php:8
+#: 
 msgid "Home Phone"
 msgstr "تليفون المنزل"
 
@@ -327,7 +327,7 @@ msgstr "ملاحظة: الفواصل (شرطات، إلخ) أو عدمه لا ي
 msgid "Default country if none specified otherwise"
 msgstr "البلد الافتراضية إذا كان غير محدد"
 
-#: queryparameters_qrp.php:19
+#: 
 msgid "Classification"
 msgstr "تصنيف"
 
@@ -451,7 +451,7 @@ msgstr "لم يتم إدخال اسم العائلة!"
 msgid "Add Cart to Family"
 msgstr "إضافة عربة للأسرة"
 
-#: queryparameteroptions_qpo.php:4
+#: 
 msgid "Name"
 msgstr "الاسم"
 
@@ -607,7 +607,7 @@ msgstr "الخروج"
 msgid "Action"
 msgstr "عمل"
 
-#: queryparameteroptions_qpo.php:15
+#: 
 msgid "Member"
 msgstr "الأعضاء"
 
@@ -859,7 +859,7 @@ msgstr "الأسرة"
 msgid "Type"
 msgstr "نوع"
 
-#: queryparameters_qrp.php:18
+#: 
 msgid "Fiscal Year"
 msgstr "السنة المالية"
 
@@ -875,7 +875,7 @@ msgstr "صندوق"
 msgid "Bank"
 msgstr "بنك"
 
-#: queryparameters_qrp.php:11
+#: 
 msgid "Month"
 msgstr "شهر"
 

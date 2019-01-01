@@ -31,11 +31,11 @@ msgstr "Gazdátlan"
 msgid "None"
 msgstr "Egyik sem"
 
-#: queryparameteroptions_qpo.php:7
+#: 
 msgid "City"
 msgstr "City"
 
-#: queryparameteroptions_qpo.php:6
+#: 
 msgid "State"
 msgstr "Állami"
 
@@ -47,7 +47,7 @@ msgstr "Ország"
 msgid "Phone"
 msgstr "Telefon"
 
-#: queryparameteroptions_qpo.php:13
+#: 
 msgid "Email"
 msgstr "Email"
 
@@ -143,7 +143,7 @@ msgstr "Születési / Anniversary Dátum"
 msgid "Age / Years Married"
 msgstr "Életkor / Évek Házas"
 
-#: queryparameters_qrp.php:5
+#: 
 #, fuzzy
 msgid "Family Role"
 msgstr "Család Szerep"
@@ -186,11 +186,11 @@ msgstr "Használja a Ctrl gombot több"
 msgid "Don't Filter"
 msgstr "Ne Szűrés"
 
-#: queryparameteroptions_qpo.php:2
+#: 
 msgid "Male"
 msgstr "Férfi"
 
-#: queryparameteroptions_qpo.php:3
+#: 
 msgid "Female"
 msgstr "Női"
 
@@ -261,7 +261,7 @@ msgstr "Cím"
 msgid "Suffix"
 msgstr "Képző"
 
-#: queryparameters_qrp.php:4
+#: 
 msgid "Gender"
 msgstr "Nemek"
 
@@ -269,7 +269,7 @@ msgstr "Nemek"
 msgid "Donation Envelope"
 msgstr "Adomány boríték"
 
-#: queryparameteroptions_qpo.php:8
+#: 
 msgid "Home Phone"
 msgstr "Otthoni telefon"
 
@@ -321,7 +321,7 @@ msgstr "Megjegyzés: Elválasztók (gondolatjelek, stb), vagy annak hiánya nem 
 msgid "Default country if none specified otherwise"
 msgstr "Alapértelmezett ország, ha nincs másként nem"
 
-#: queryparameters_qrp.php:19
+#: 
 msgid "Classification"
 msgstr "Besorolás"
 
@@ -507,7 +507,7 @@ msgstr "Nincs családja beírt név!"
 msgid "Add Cart to Family"
 msgstr "Add kosárba Family"
 
-#: queryparameteroptions_qpo.php:4
+#: 
 msgid "Name"
 msgstr "Név"
 
@@ -699,7 +699,7 @@ msgstr "Akció"
 msgid "No Attendees Assigned to Event"
 msgstr "Nem Résztvevők Hozzárendelve Event"
 
-#: queryparameteroptions_qpo.php:15
+#: 
 msgid "Member"
 msgstr "Tag"
 
@@ -981,7 +981,7 @@ msgstr "Család"
 msgid "Type"
 msgstr "Type"
 
-#: queryparameters_qrp.php:18
+#: 
 msgid "Fiscal Year"
 msgstr "Költségvetési év"
 
@@ -997,7 +997,7 @@ msgstr "Alap"
 msgid "Bank"
 msgstr "Bank"
 
-#: queryparameters_qrp.php:11
+#: 
 msgid "Month"
 msgstr "Hónap"
 
@@ -2557,7 +2557,7 @@ msgstr "Property List"
 msgid "Add a New"
 msgstr "Hozzáadása Új"
 
-#: queryparameters_qrp.php:6
+#: 
 msgid "Property"
 msgstr "Ingatlan"
 
@@ -2602,7 +2602,7 @@ msgstr "Ingatlan típusa List"
 msgid "Add a New Property Type"
 msgstr "Hozzáadása Új Ingatlan típusa"
 
-#: queryparameters_qrp.php:12
+#: 
 msgid "Class"
 msgstr "Osztály"
 

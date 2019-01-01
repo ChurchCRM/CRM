@@ -31,11 +31,11 @@ msgstr "otilldelade"
 msgid "None"
 msgstr "Inga"
 
-#: queryparameteroptions_qpo.php:7
+#: 
 msgid "City"
 msgstr "Stad"
 
-#: queryparameteroptions_qpo.php:6
+#: 
 msgid "State"
 msgstr "Län"
 
@@ -47,7 +47,7 @@ msgstr "Land"
 msgid "Phone"
 msgstr "Telefon"
 
-#: queryparameteroptions_qpo.php:13
+#: 
 msgid "Email"
 msgstr "Epost"
 
@@ -152,7 +152,7 @@ msgstr "födelse / Bröllopsdatumet"
 msgid "Age / Years Married"
 msgstr "Ålder / År gifte"
 
-#: queryparameters_qrp.php:5
+#: 
 #, fuzzy
 msgid "Family Role"
 msgstr "Familj roll"
@@ -195,11 +195,11 @@ msgstr "Använd Ctrl-tangenten för att välj fler än en"
 msgid "Don't Filter"
 msgstr "Filtrera inte"
 
-#: queryparameteroptions_qpo.php:2
+#: 
 msgid "Male"
 msgstr "Man"
 
-#: queryparameteroptions_qpo.php:3
+#: 
 msgid "Female"
 msgstr "Kvinna"
 
@@ -270,7 +270,7 @@ msgstr "Titel"
 msgid "Suffix"
 msgstr "Ändelse"
 
-#: queryparameters_qrp.php:4
+#: 
 msgid "Gender"
 msgstr "Kön"
 
@@ -278,7 +278,7 @@ msgstr "Kön"
 msgid "Donation Envelope"
 msgstr "Insamlingskuvert"
 
-#: queryparameteroptions_qpo.php:8
+#: 
 msgid "Home Phone"
 msgstr "Hemtelefon"
 
@@ -330,7 +330,7 @@ msgstr "OBS: Avskiljare (strek, osv.) eller saknaden därav är betydelselös"
 msgid "Default country if none specified otherwise"
 msgstr "Förinställd land om ingen annan angiven"
 
-#: queryparameters_qrp.php:19
+#: 
 msgid "Classification"
 msgstr "Klassificering "
 
@@ -516,7 +516,7 @@ msgstr "Ingen familjnamn inmatad!"
 msgid "Add Cart to Family"
 msgstr "Lägg korgen till familj"
 
-#: queryparameteroptions_qpo.php:4
+#: 
 msgid "Name"
 msgstr "Namn"
 
@@ -709,7 +709,7 @@ msgstr "Handling"
 msgid "No Attendees Assigned to Event"
 msgstr "Inga deltagare angiven till evenemang"
 
-#: queryparameteroptions_qpo.php:15
+#: 
 msgid "Member"
 msgstr "Medlem"
 
@@ -992,7 +992,7 @@ msgstr "Familj"
 msgid "Type"
 msgstr "Typ"
 
-#: queryparameters_qrp.php:18
+#: 
 msgid "Fiscal Year"
 msgstr "Bokföringsår"
 
@@ -1008,7 +1008,7 @@ msgstr "Fond"
 msgid "Bank"
 msgstr "Bank"
 
-#: queryparameters_qrp.php:11
+#: 
 msgid "Month"
 msgstr "Månad"
 
@@ -2600,7 +2600,7 @@ msgstr "Egenskap lista"
 msgid "Add a New"
 msgstr "Lägg till en ny"
 
-#: queryparameters_qrp.php:6
+#: 
 msgid "Property"
 msgstr "Egenskap"
 
@@ -2645,7 +2645,7 @@ msgstr "Egenskapstyp lista"
 msgid "Add a New Property Type"
 msgstr "Lägg till en ny egenskapstyp"
 
-#: queryparameters_qrp.php:12
+#: 
 msgid "Class"
 msgstr "Klass"
 

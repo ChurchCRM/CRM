@@ -31,11 +31,11 @@ msgstr "ยังไม่ได้กำหนด"
 msgid "None"
 msgstr "ไม่มี"
 
-#: queryparameteroptions_qpo.php:7
+#: 
 msgid "City"
 msgstr "เมือง"
 
-#: queryparameteroptions_qpo.php:6
+#: 
 msgid "State"
 msgstr "จังหวัด"
 
@@ -47,7 +47,7 @@ msgstr "ประเทศ"
 msgid "Phone"
 msgstr "โทรศัพท์"
 
-#: queryparameteroptions_qpo.php:13
+#: 
 msgid "Email"
 msgstr "อีเมล"
 
@@ -135,7 +135,7 @@ msgstr "วันเกิด / วันครอบรอบแต่งงา
 msgid "Age / Years Married"
 msgstr "อายุ / แต่งงานกี่ปีแล้ว"
 
-#: queryparameters_qrp.php:5
+#: 
 #, fuzzy
 msgid "Family Role"
 msgstr "บทบาทในครอบครัว"
@@ -160,11 +160,11 @@ msgstr "ใช้ Ctrl คีย์เพื่อเลือกหลาย"
 msgid "Don't Filter"
 msgstr "ไม่ใช้ฟิลเตอร์"
 
-#: queryparameteroptions_qpo.php:2
+#: 
 msgid "Male"
 msgstr "ชาย"
 
-#: queryparameteroptions_qpo.php:3
+#: 
 msgid "Female"
 msgstr "หญิง"
 
@@ -199,7 +199,7 @@ msgstr "วิธีการส่งออก"
 msgid "Create File"
 msgstr "สร้างไฟล์"
 
-#: queryparameters_qrp.php:4
+#: 
 msgid "Gender"
 msgstr "เพศ"
 
@@ -207,7 +207,7 @@ msgstr "เพศ"
 msgid "Donation Envelope"
 msgstr "ซองถวาย"
 
-#: queryparameteroptions_qpo.php:8
+#: 
 msgid "Home Phone"
 msgstr "โทรศัพท์บ้าน"
 

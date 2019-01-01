@@ -31,11 +31,11 @@ msgstr "Neatribuit"
 msgid "None"
 msgstr "Nici unul"
 
-#: queryparameteroptions_qpo.php:7
+#: 
 msgid "City"
 msgstr "Oraș"
 
-#: queryparameteroptions_qpo.php:6
+#: 
 msgid "State"
 msgstr "De stat"
 
@@ -47,7 +47,7 @@ msgstr "Țară"
 msgid "Phone"
 msgstr "Telefon"
 
-#: queryparameteroptions_qpo.php:13
+#: 
 msgid "Email"
 msgstr "E-mail"
 
@@ -150,7 +150,7 @@ msgstr "Nasterii / Aniversare Data"
 msgid "Age / Years Married"
 msgstr "Vârsta / ani Casatorit"
 
-#: queryparameters_qrp.php:5
+#: 
 #, fuzzy
 msgid "Family Role"
 msgstr "Rolul familiei"
@@ -193,11 +193,11 @@ msgstr "Foloseste Ctrl pentru a selecta mai multe"
 msgid "Don't Filter"
 msgstr "Nu Filtru"
 
-#: queryparameteroptions_qpo.php:2
+#: 
 msgid "Male"
 msgstr "Masculin"
 
-#: queryparameteroptions_qpo.php:3
+#: 
 msgid "Female"
 msgstr "Femeie"
 
@@ -268,7 +268,7 @@ msgstr "Titlu"
 msgid "Suffix"
 msgstr "Sufix"
 
-#: queryparameters_qrp.php:4
+#: 
 msgid "Gender"
 msgstr "Gen"
 
@@ -276,7 +276,7 @@ msgstr "Gen"
 msgid "Donation Envelope"
 msgstr "Plic donație"
 
-#: queryparameteroptions_qpo.php:8
+#: 
 msgid "Home Phone"
 msgstr "Telefon acasă"
 
@@ -328,7 +328,7 @@ msgstr "NOTĂ: Separatore (linii, etc) sau lipsa acestora nu contează"
 msgid "Default country if none specified otherwise"
 msgstr "Țară implicit dacă nu se specifică altfel"
 
-#: queryparameters_qrp.php:19
+#: 
 msgid "Classification"
 msgstr "Clasificare"
 
@@ -514,7 +514,7 @@ msgstr "Nici un nume de familie a intrat!"
 msgid "Add Cart to Family"
 msgstr "Adauga in cos pentru a Familiei"
 
-#: queryparameteroptions_qpo.php:4
+#: 
 msgid "Name"
 msgstr "Nume"
 
@@ -706,7 +706,7 @@ msgstr "Acțiune"
 msgid "No Attendees Assigned to Event"
 msgstr "Nu Participanți alocate la Eveniment"
 
-#: queryparameteroptions_qpo.php:15
+#: 
 msgid "Member"
 msgstr "Membru"
 
@@ -988,7 +988,7 @@ msgstr "Familie"
 msgid "Type"
 msgstr "Tip"
 
-#: queryparameters_qrp.php:18
+#: 
 msgid "Fiscal Year"
 msgstr "Exercițiu financiar"
 
@@ -1004,7 +1004,7 @@ msgstr "Fond"
 msgid "Bank"
 msgstr "Bancă"
 
-#: queryparameters_qrp.php:11
+#: 
 msgid "Month"
 msgstr "Lună"
 
@@ -2565,7 +2565,7 @@ msgstr "Lista de proprietate"
 msgid "Add a New"
 msgstr "Adauga un nou"
 
-#: queryparameters_qrp.php:6
+#: 
 msgid "Property"
 msgstr "Proprietate"
 
@@ -2610,7 +2610,7 @@ msgstr "Tip de listă"
 msgid "Add a New Property Type"
 msgstr "Adauga un nou tip de proprietate"
 
-#: queryparameters_qrp.php:12
+#: 
 msgid "Class"
 msgstr "Clasă"
 

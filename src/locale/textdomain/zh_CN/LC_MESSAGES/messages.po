@@ -31,11 +31,11 @@ msgstr "未分配"
 msgid "None"
 msgstr "无"
 
-#: queryparameteroptions_qpo.php:7
+#: 
 msgid "City"
 msgstr "城市"
 
-#: queryparameteroptions_qpo.php:6
+#: 
 msgid "State"
 msgstr "国"
 
@@ -47,7 +47,7 @@ msgstr "国家"
 msgid "Phone"
 msgstr "电话"
 
-#: queryparameteroptions_qpo.php:13
+#: 
 msgid "Email"
 msgstr "电子邮件"
 
@@ -166,7 +166,7 @@ msgstr "生日/纪念日日期"
 msgid "Age / Years Married"
 msgstr "年龄/年结婚"
 
-#: queryparameters_qrp.php:5
+#: 
 #, fuzzy
 msgid "Family Role"
 msgstr "家庭角色"
@@ -213,11 +213,11 @@ msgstr "使用Ctrl键选择多个"
 msgid "Don't Filter"
 msgstr "不过滤"
 
-#: queryparameteroptions_qpo.php:2
+#: 
 msgid "Male"
 msgstr "男"
 
-#: queryparameteroptions_qpo.php:3
+#: 
 msgid "Female"
 msgstr "女"
 
@@ -288,7 +288,7 @@ msgstr "标题"
 msgid "Suffix"
 msgstr "后缀"
 
-#: queryparameters_qrp.php:4
+#: 
 msgid "Gender"
 msgstr "性别"
 
@@ -296,7 +296,7 @@ msgstr "性别"
 msgid "Donation Envelope"
 msgstr "捐款信封"
 
-#: queryparameteroptions_qpo.php:8
+#: 
 msgid "Home Phone"
 msgstr "家庭电话"
 
@@ -348,7 +348,7 @@ msgstr "注：分离器（破折号等）或缺乏无所谓"
 msgid "Default country if none specified otherwise"
 msgstr "默认情况下，如果没有国家另有规定"
 
-#: queryparameters_qrp.php:19
+#: 
 msgid "Classification"
 msgstr "分类"
 
@@ -570,7 +570,7 @@ msgstr "没有家人的名字进了！"
 msgid "Add Cart to Family"
 msgstr "加入购物车家庭"
 
-#: queryparameteroptions_qpo.php:4
+#: 
 msgid "Name"
 msgstr "名称"
 
@@ -766,7 +766,7 @@ msgstr "行动"
 msgid "No Attendees Assigned to Event"
 msgstr "没有分配给事件的参加者"
 
-#: queryparameteroptions_qpo.php:15
+#: 
 msgid "Member"
 msgstr "成员"
 
@@ -1072,7 +1072,7 @@ msgstr "家庭"
 msgid "Type"
 msgstr "类型"
 
-#: queryparameters_qrp.php:18
+#: 
 msgid "Fiscal Year"
 msgstr "财政年度"
 
@@ -1088,7 +1088,7 @@ msgstr "基金"
 msgid "Bank"
 msgstr "银行"
 
-#: queryparameters_qrp.php:11
+#: 
 msgid "Month"
 msgstr "月"
 
@@ -3063,7 +3063,7 @@ msgstr "属性列表"
 msgid "Add a New"
 msgstr "添加新"
 
-#: queryparameters_qrp.php:6
+#: 
 msgid "Property"
 msgstr "财产"
 
@@ -3108,7 +3108,7 @@ msgstr "物业类型列表"
 msgid "Add a New Property Type"
 msgstr "添加新的属性类型"
 
-#: queryparameters_qrp.php:12
+#: 
 msgid "Class"
 msgstr "类"
 
@@ -5380,347 +5380,347 @@ msgstr "家庭财产"
 msgid "Property Types"
 msgstr "财产类型"
 
-#: queryparameteroptions_qpo.php:5
+#: 
 msgid "Zip Code"
 msgstr "邮政编码"
 
-#: queryparameteroptions_qpo.php:9
+#: 
 msgid "2012/2013"
 msgstr "2012/2013"
 
-#: queryparameteroptions_qpo.php:10
+#: 
 msgid "2013/2014"
 msgstr "2013/2014"
 
-#: queryparameteroptions_qpo.php:11
+#: 
 msgid "2014/2015"
 msgstr "2014/2015"
 
-#: queryparameteroptions_qpo.php:12
+#: 
 msgid "2015/2016"
 msgstr "2015/2016"
 
-#: queryparameteroptions_qpo.php:14
+#: 
 msgid "WorkEmail"
 msgstr "工作电邮"
 
-#: queryparameteroptions_qpo.php:16
+#: 
 msgid "Regular Attender"
 msgstr "常规与会者"
 
-#: queryparameteroptions_qpo.php:17
+#: 
 msgid "Guest"
 msgstr "客人"
 
-#: queryparameteroptions_qpo.php:18
+#: 
 msgid "Non-Attender"
 msgstr "非与会者"
 
-#: queryparameteroptions_qpo.php:19
+#: 
 msgid "Non-Attender (staff)"
 msgstr "非与会者(员工)"
 
-#: queryparameters_qrp.php:2
+#: 
 msgid "Minimum Age"
 msgstr "最低年龄"
 
-#: queryparameters_qrp.php:3
+#: 
 msgid "Maximum Age"
 msgstr "最高年龄"
 
-#: queryparameters_qrp.php:7
+#: 
 msgid "Beginning Date"
 msgstr "开始日期"
 
-#: queryparameters_qrp.php:8
+#: 
 msgid "Ending Date"
 msgstr "结束日期"
 
-#: queryparameters_qrp.php:9
+#: 
 msgid "Search"
 msgstr "搜索"
 
-#: queryparameters_qrp.php:10
+#: 
 msgid "Field"
 msgstr "领域"
 
-#: query_qry.php:9 query_qry.php:48 queryparameters_qrp.php:13
+#: 
 msgid "Registered students"
 msgstr "注册学生"
 
-#: queryparameters_qrp.php:14
+#: 
 msgid "Volunteer opportunities"
 msgstr "志愿者机会"
 
-#: queryparameters_qrp.php:15
+#: 
 msgid "Months"
 msgstr "月"
 
-#: queryparameters_qrp.php:16
+#: 
 msgid "First Fiscal Year"
 msgstr "第一财年"
 
-#: queryparameters_qrp.php:17
+#: 
 msgid "Second Fiscal Year"
 msgstr "第二财年"
 
-#: queryparameters_qrp.php:20
+#: 
 msgid "Custom field"
 msgstr "自定义字段"
 
-#: queryparameters_qrp.php:21
+#: 
 msgid "Field value"
 msgstr "字段值"
 
-#: queryparameters_qrp.php:22
+#: 
 msgid "The minimum age for which you want records returned."
 msgstr "你想要返回的记录的最小年龄。"
 
-#: queryparameters_qrp.php:23
+#: 
 msgid "The maximum age for which you want records returned."
 msgstr "你想要返回的记录的最高年龄。"
 
-#: queryparameters_qrp.php:24
+#: 
 msgid "The desired gender to search the database for."
 msgstr "搜索数据库所需的性别。"
 
-#: queryparameters_qrp.php:25
+#: 
 msgid "Select the desired family role."
 msgstr "选择所需的家庭角色。"
 
-#: queryparameters_qrp.php:26
+#: 
 msgid "The gender for which you would like records returned."
 msgstr "返回您想要记录的性别。"
 
-#: queryparameters_qrp.php:27
+#: 
 msgid "The property for which you would like person records returned."
 msgstr "返回您想要记录的人员。"
 
-#: queryparameters_qrp.php:28
+#: 
 msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that conatain donations."
 msgstr "请选择开始日期以计算每个成员的总贡献（即YYYY-MM-DD）。注意：您只能选择含捐赠的日期。"
 
-#: queryparameters_qrp.php:29
+#: 
 msgid "Please enter the last date to calculate total contributions for each member (i.e. YYYY-MM-DD)."
 msgstr "请输入最后一个日期来计算每个成员的总贡献（即YYYY-MM-DD）。"
 
-#: queryparameters_qrp.php:30
+#: 
 msgid "Enter any part of the following: Name, City, State, Zip, Home Phone, Email, or Work Email."
 msgstr "输入以下任意栏：姓名，城市，州，邮编，家庭电话，电子邮件或工作电子邮件。"
 
-#: queryparameters_qrp.php:31
+#: 
 msgid "Select field to search for."
 msgstr "选择要搜索的字段。"
 
-#: queryparameters_qrp.php:32
+#: 
 msgid "The birthday month for which you would like records returned."
 msgstr "返回您想要记录的生日月份。"
 
-#: queryparameters_qrp.php:33
+#: 
 msgid "The sunday school class for which you would like records returned."
 msgstr "返回您想要记录的主日学校课程。"
 
-#: queryparameters_qrp.php:34
+#: 
 msgid "Group of registered students"
 msgstr "已注册学生组"
 
-#: queryparameters_qrp.php:35
+#: 
 msgid "The membership anniversary month for which you would like records returned."
 msgstr "返回您想要记录的会员周年的月份。"
 
-#: queryparameters_qrp.php:36
+#: 
 msgid "Choose a volunteer opportunity"
 msgstr "选择志愿者机会"
 
-#: queryparameters_qrp.php:37
+#: 
 msgid "Number of months since becoming a friend"
 msgstr "自成为朋友以来的月数"
 
-#: queryparameters_qrp.php:38
+#: 
 msgid "First fiscal year for comparison"
 msgstr "比较第一个财政年度"
 
-#: queryparameters_qrp.php:39
+#: 
 msgid "Second fiscal year for comparison"
 msgstr "比较第二个财政年度"
 
-#: queryparameters_qrp.php:40
+#: 
 msgid "Pledged this year"
 msgstr "今年的承诺"
 
-#: queryparameters_qrp.php:41
+#: 
 msgid "but not this year"
 msgstr "但不是今年"
 
-#: queryparameters_qrp.php:42
+#: 
 msgid "Fiscal Year."
 msgstr "财政年度."
 
-#: queryparameters_qrp.php:43
+#: 
 msgid "Member, Regular Attender, etc."
 msgstr "会员，常规参加者等"
 
-#: queryparameters_qrp.php:44
+#: 
 msgid "First volunteer opportunity choice"
 msgstr "第一个志愿者机会选择"
 
-#: queryparameters_qrp.php:45
+#: 
 msgid "Second volunteer opportunity choice"
 msgstr "第二个志愿者机会选择"
 
-#: queryparameters_qrp.php:46
+#: 
 msgid "Choose customer person field"
 msgstr "选择客户人员字段"
 
-#: queryparameters_qrp.php:47
+#: 
 msgid "Match custom field to this value"
 msgstr "将自定义字段与此值匹配"
 
-#: query_qry.php:2 query_qry.php:41
+#: 
 msgid "Family Member Count"
 msgstr "家庭成员计数"
 
-#: query_qry.php:3 query_qry.php:42
+#: 
 msgid "Person by Age"
 msgstr "按年龄划分的人员"
 
-#: query_qry.php:4 query_qry.php:43
+#: 
 msgid "Total By Gender"
 msgstr "按性别划分的总数"
 
-#: query_qry.php:5 query_qry.php:44
+#: 
 msgid "Person by Role and Gender"
 msgstr "按角色和性别划分的人员"
 
-#: query_qry.php:6 query_qry.php:45
+#: 
 msgid "Person by Property"
 msgstr "按财产划分的人员"
 
-#: query_qry.php:7 query_qry.php:46
+#: 
 msgid "Advanced Search"
 msgstr "高级搜索"
 
-#: query_qry.php:8 query_qry.php:47
+#: 
 msgid "Birthdays"
 msgstr "生日"
 
-#: query_qry.php:10 query_qry.php:49
+#: 
 msgid "Membership anniversaries"
 msgstr "会员纪念日"
 
-#: query_qry.php:11 query_qry.php:50
+#: 
 msgid "Select database users"
 msgstr "选择数据库用户"
 
-#: query_qry.php:12 query_qry.php:51
+#: 
 msgid "Select all members"
 msgstr "选择所有成员"
 
-#: query_qry.php:13 query_qry.php:52
+#: 
 msgid "Volunteers"
 msgstr "志愿者"
 
-#: query_qry.php:14 query_qry.php:53
+#: 
 msgid "Recent friends"
 msgstr "最近的朋友"
 
-#: query_qry.php:15 query_qry.php:54
+#: 
 msgid "Families to Canvass"
 msgstr "家庭到布道者"
 
-#: query_qry.php:16 query_qry.php:55
+#: 
 msgid "Pledge comparison"
 msgstr "比较承诺"
 
-#: query_qry.php:17 query_qry.php:56
+#: 
 msgid "Missing pledges"
 msgstr "遗失承诺"
 
-#: query_qry.php:18 query_qry.php:57
+#: 
 msgid "Credit Card People"
 msgstr "信用卡人员"
 
-#: query_qry.php:19 query_qry.php:58
+#: 
 msgid "Family Pledge by Fiscal Year"
 msgstr "财政年度的家庭承诺"
 
-#: query_qry.php:20 query_qry.php:59
+#: 
 msgid "CustomSearch"
 msgstr "定制搜索"
 
-#: query_qry.php:21 query_qry.php:60
+#: 
 msgid "Returns each family and the total number of people assigned to them."
 msgstr "返回每个家庭以及分配给他们的总人数。"
 
-#: query_qry.php:22 query_qry.php:61
+#: 
 msgid "Returns any person records with ages between two given ages."
 msgstr "返回年龄介于两个给定年龄之间的所有人员记录。"
 
-#: query_qry.php:23 query_qry.php:62
+#: 
 msgid "Total of records matching a given gender."
 msgstr "与给定性别匹配的记录总数。"
 
-#: query_qry.php:24 query_qry.php:63
+#: 
 msgid "Selects person records with the family role and gender specified."
 msgstr "选择具有指定的系列角色和性别的人员记录。"
 
-#: query_qry.php:25 query_qry.php:64
+#: 
 msgid "Returns person records which are assigned the given property."
 msgstr "返回分配制定属性的人员记录。"
 
-#: query_qry.php:26 query_qry.php:65
+#: 
 msgid "Search by any part of Name, City, State, Zip, Home Phone, Email, or Work Email."
 msgstr "按名称，城市，州，邮编，家庭电话，电子邮件或工作电子邮件的任意进行搜索。"
 
-#: query_qry.php:27 query_qry.php:66
+#: 
 msgid "People with birthdays in a particular month"
 msgstr "在特定月份生日的人"
 
-#: query_qry.php:28 query_qry.php:67
+#: 
 msgid "Find Registered students"
 msgstr "找到注册学生"
 
-#: query_qry.php:29 query_qry.php:68
+#: 
 msgid "Members who joined in a particular month"
 msgstr "在特定月份加入的会员"
 
-#: query_qry.php:30 query_qry.php:69
+#: 
 msgid "People who are registered as database users"
 msgstr "注册为数据库用户的人员"
 
-#: query_qry.php:31 query_qry.php:70
+#: 
 msgid "People who are members"
 msgstr "成为会员的人"
 
-#: query_qry.php:32 query_qry.php:71
+#: 
 msgid "Find volunteers for a particular opportunity"
 msgstr "为特定的机会寻找志愿者"
 
-#: query_qry.php:33 query_qry.php:72
+#: 
 msgid "Friends who signed up in previous months"
 msgstr "在前几个月注册的朋友"
 
-#: query_qry.php:34 query_qry.php:73
+#: 
 msgid "People in families that are ok to canvass."
 msgstr "家庭中可以参与布道的人。"
 
-#: query_qry.php:35 query_qry.php:74
+#: 
 msgid "Compare pledges between two fiscal years"
 msgstr "比较两个财政年度之间的承诺"
 
-#: query_qry.php:37 query_qry.php:76
+#: 
 msgid "People who are configured to pay by credit card."
 msgstr "配置为使用信用卡付款的人。"
 
-#: query_qry.php:38 query_qry.php:77
+#: 
 msgid "Pledge summary by family name for each fund for the selected fiscal year"
 msgstr "通过姓氏删选所选会计年度基金的承诺摘要"
 
-#: query_qry.php:39 query_qry.php:78
+#: 
 msgid "Find volunteers for who match two specific opportunity codes"
 msgstr "寻找符合两个特定机会代码的志愿者"
 
-#: query_qry.php:40 query_qry.php:79
+#: 
 msgid "Find people with a custom field value"
 msgstr "查找具有自定义字段值的人员"
 
@@ -5728,27 +5728,27 @@ msgstr "查找具有自定义字段值的人员"
 msgid "Last Edited"
 msgstr "最后编辑"
 
-#: userconfig_ucfg.php:2
+#: 
 msgid "User permission to send email via mailto: links"
 msgstr "用户通过 邮件到：链接 发送电子邮件的权限"
 
-#: userconfig_ucfg.php:3
+#: 
 msgid "Delimiter to separate emails in mailto: links"
 msgstr "用于分隔 邮件到：链接 的电子邮件的分隔符"
 
-#: userconfig_ucfg.php:4
+#: 
 msgid "User permission to create directories"
 msgstr "用户创建目录的权限"
 
-#: userconfig_ucfg.php:5
+#: 
 msgid "User permission to export CSV files"
 msgstr "用户导出CSV文件的权限"
 
-#: userconfig_ucfg.php:6
+#: 
 msgid "User permission to use IST Address Verification"
 msgstr "用户使用IST地址验证的权限"
 
-#: userconfig_ucfg.php:7
+#: 
 msgid "Allow user to add new event"
 msgstr "允许用户添加新活动"
 
@@ -5980,1015 +5980,1015 @@ msgstr "WebDAV"
 msgid "Local"
 msgstr "本地"
 
-#: settings-countries.php:2
+#: 
 msgid "Afghanistan (‫افغانستان‬‎)"
 msgstr "阿富汗（افغانستان）"
 
-#: settings-countries.php:3
+#: 
 msgid "Åland Islands (Åland)"
 msgstr "奥兰群岛 (Åland)"
 
-#: settings-countries.php:4
+#: 
 msgid "Albania (Shqipëri)"
 msgstr "阿尔巴尼亚（Shqipëri）"
 
-#: settings-countries.php:5
+#: 
 msgid "Algeria (‫الجزائر‬‎)"
 msgstr "阿尔及利亚（الجزائر）"
 
-#: settings-countries.php:6
+#: 
 msgid "American Samoa"
 msgstr "美属萨摩亚"
 
-#: settings-countries.php:7
+#: 
 msgid "Andorra"
 msgstr "安道尔"
 
-#: settings-countries.php:8
+#: 
 msgid "Angola"
 msgstr "安哥拉"
 
-#: settings-countries.php:9
+#: 
 msgid "Anguilla"
 msgstr "安圭拉"
 
-#: settings-countries.php:10
+#: 
 msgid "Antarctica"
 msgstr "南极洲"
 
-#: settings-countries.php:11
+#: 
 msgid "Antigua and Barbuda"
 msgstr "安提瓜和巴布达"
 
-#: settings-countries.php:12
+#: 
 msgid "Argentina"
 msgstr "阿根廷"
 
-#: settings-countries.php:13
+#: 
 msgid "Armenia (Հայաստան)"
 msgstr "亚美尼亚（Հայաստան）"
 
-#: settings-countries.php:14
+#: 
 msgid "Aruba"
 msgstr "阿鲁巴"
 
-#: settings-countries.php:15
+#: 
 msgid "Ascension Island"
 msgstr "阿森松岛"
 
-#: settings-countries.php:16
+#: 
 msgid "Australia"
 msgstr "澳大利亚"
 
-#: settings-countries.php:17
+#: 
 msgid "Austria (Österreich)"
 msgstr "奥地利（Österreich）"
 
-#: settings-countries.php:18
+#: 
 msgid "Azerbaijan (Azərbaycan)"
 msgstr "阿塞拜疆（Azərbaycan）"
 
-#: settings-countries.php:19
+#: 
 msgid "Bahamas"
 msgstr "巴哈马"
 
-#: settings-countries.php:20
+#: 
 msgid "Bahrain (‫البحرين‬‎)"
 msgstr "巴林（البحرين）"
 
-#: settings-countries.php:21
+#: 
 msgid "Bangladesh (বাংলাদেশ)"
 msgstr "孟加拉国（বাংলাদেশ）"
 
-#: settings-countries.php:22
+#: 
 msgid "Barbados"
 msgstr "巴巴多斯"
 
-#: settings-countries.php:23
+#: 
 msgid "Belarus (Беларусь)"
 msgstr "白俄罗斯（Беларусь）"
 
-#: settings-countries.php:24
+#: 
 msgid "Belgium (België)"
 msgstr "比利时（België）"
 
-#: settings-countries.php:25
+#: 
 msgid "Belize"
 msgstr "伯利兹"
 
-#: settings-countries.php:26
+#: 
 msgid "Benin (Bénin)"
 msgstr "贝宁（Bénin）"
 
-#: settings-countries.php:27
+#: 
 msgid "Bermuda"
 msgstr "百慕大"
 
-#: settings-countries.php:28
+#: 
 msgid "Bhutan (འབྲུག)"
 msgstr "不丹（འབྲུག）"
 
-#: settings-countries.php:29
+#: 
 msgid "Bolivia"
 msgstr "玻利维亚"
 
-#: settings-countries.php:30
+#: 
 msgid "Bosnia and Herzegovina (Босна и Херцеговина)"
 msgstr "波斯尼亚和黑塞哥维那（БоснаиХерцеговина）"
 
-#: settings-countries.php:31
+#: 
 msgid "Botswana"
 msgstr "博茨瓦纳"
 
-#: settings-countries.php:32
+#: 
 msgid "Bouvet Island"
 msgstr "布维岛"
 
-#: settings-countries.php:33
+#: 
 msgid "Brazil (Brasil)"
 msgstr "巴西（Brasil）"
 
-#: settings-countries.php:34
+#: 
 msgid "British Indian Ocean Territory"
 msgstr "英属印度洋领地"
 
-#: settings-countries.php:35
+#: 
 msgid "British Virgin Islands"
 msgstr "英属维尔京群岛"
 
-#: settings-countries.php:36
+#: 
 msgid "Brunei"
 msgstr "文莱"
 
-#: settings-countries.php:37
+#: 
 msgid "Bulgaria (България)"
 msgstr "保加利亚（България）"
 
-#: settings-countries.php:38
+#: 
 msgid "Burkina Faso"
 msgstr "布基纳法索"
 
-#: settings-countries.php:39
+#: 
 msgid "Burundi (Uburundi)"
 msgstr "布隆迪（Uburundi）"
 
-#: settings-countries.php:40
+#: 
 msgid "Cambodia (កម្ពុជា)"
 msgstr "柬埔寨（កម្ពុជា）"
 
-#: settings-countries.php:41
+#: 
 msgid "Cameroon (Cameroun)"
 msgstr "喀麦隆（Cameroun）"
 
-#: settings-countries.php:42
+#: 
 msgid "Canada"
 msgstr "加拿大"
 
-#: settings-countries.php:43
+#: 
 msgid "Canary Islands (islas Canarias)"
 msgstr "加那利群岛（islas Canarias）"
 
-#: settings-countries.php:44
+#: 
 msgid "Cape Verde (Kabu Verdi)"
 msgstr "佛得角（Kabu Verdi）"
 
-#: settings-countries.php:45
+#: 
 msgid "Caribbean Netherlands"
 msgstr "加勒比荷兰"
 
-#: settings-countries.php:46
+#: 
 msgid "Cayman Islands"
 msgstr "开曼群岛"
 
-#: settings-countries.php:47
+#: 
 msgid "Central African Republic (République centrafricaine)"
 msgstr "中非共和国（Républiquecentrafricaine）"
 
-#: settings-countries.php:48
+#: 
 msgid "Ceuta and Melilla (Ceuta y Melilla)"
 msgstr "休达和梅利利亚（Ceuta y Melilla）"
 
-#: settings-countries.php:49
+#: 
 msgid "Chad (Tchad)"
 msgstr "乍得（Tchad）"
 
-#: settings-countries.php:50
+#: 
 msgid "Chile"
 msgstr "智利"
 
-#: settings-countries.php:51
+#: 
 msgid "China (中国)"
 msgstr "中国"
 
-#: settings-countries.php:52
+#: 
 msgid "Christmas Island"
 msgstr "圣诞岛"
 
-#: settings-countries.php:53
+#: 
 msgid "Clipperton Island"
 msgstr "克利珀顿岛"
 
-#: settings-countries.php:54
+#: 
 msgid "Cocos (Keeling) Islands (Kepulauan Cocos (Keeling))"
 msgstr "科科斯（Keeling）群岛（Kepulauan Cocos（Keeling)）"
 
-#: settings-countries.php:55
+#: 
 msgid "Colombia"
 msgstr "哥伦比亚"
 
-#: settings-countries.php:56
+#: 
 msgid "Comoros (‫جزر القمر‬‎)"
 msgstr "科摩罗（جزرالقمر）"
 
-#: settings-countries.php:57
+#: 
 msgid "Congo (DRC) (Jamhuri ya Kidemokrasia ya Kongo)"
 msgstr "刚果（金）（Jamhuri ya Kidemokrasia ya Kongo）"
 
-#: settings-countries.php:58
+#: 
 msgid "Congo (Republic) (Congo-Brazzaville)"
 msgstr "刚果（共和国）（Congo-Brazzaville）"
 
-#: settings-countries.php:59
+#: 
 msgid "Cook Islands"
 msgstr "库克群岛"
 
-#: settings-countries.php:60
+#: 
 msgid "Costa Rica"
 msgstr "哥斯达黎加"
 
-#: settings-countries.php:61
+#: 
 msgid "Côte d’Ivoire"
 msgstr "科特迪瓦"
 
-#: settings-countries.php:62
+#: 
 msgid "Croatia (Hrvatska)"
 msgstr "克罗地亚（Hrvatska）"
 
-#: settings-countries.php:63
+#: 
 msgid "Cuba"
 msgstr "古巴"
 
-#: settings-countries.php:64
+#: 
 msgid "Curaçao"
 msgstr "库拉索"
 
-#: settings-countries.php:65
+#: 
 msgid "Cyprus (Κύπρος)"
 msgstr "塞浦路斯（Κύπρος）"
 
-#: settings-countries.php:66
+#: 
 msgid "Czech Republic (Česká republika)"
 msgstr "捷克共和国（Českárepublika）"
 
-#: settings-countries.php:67
+#: 
 msgid "Denmark (Danmark)"
 msgstr "丹麦（Danmark）"
 
-#: settings-countries.php:68
+#: 
 msgid "Diego Garcia"
 msgstr "迪戈加西亚"
 
-#: settings-countries.php:69
+#: 
 msgid "Djibouti"
 msgstr "吉布提"
 
-#: settings-countries.php:70
+#: 
 msgid "Dominica"
 msgstr "多米尼加"
 
-#: settings-countries.php:71
+#: 
 msgid "Dominican Republic (República Dominicana)"
 msgstr "多米尼加共和国（RepúblicaDominicana）"
 
-#: settings-countries.php:72
+#: 
 msgid "Ecuador"
 msgstr "厄瓜多尔"
 
-#: settings-countries.php:73
+#: 
 msgid "Egypt (‫مصر‬‎)"
 msgstr "埃及（مصر）"
 
-#: settings-countries.php:74
+#: 
 msgid "El Salvador"
 msgstr "萨尔瓦多"
 
-#: settings-countries.php:75
+#: 
 msgid "Equatorial Guinea (Guinea Ecuatorial)"
 msgstr "赤道几内亚（Guinea Ecuatorial）"
 
-#: settings-countries.php:76
+#: 
 msgid "Eritrea"
 msgstr "厄立特里亚"
 
-#: settings-countries.php:77
+#: 
 msgid "Estonia (Eesti)"
 msgstr "爱沙尼亚（Eesti）"
 
-#: settings-countries.php:78
+#: 
 msgid "Ethiopia"
 msgstr "埃塞俄比亚"
 
-#: settings-countries.php:79
+#: 
 msgid "Falkland Islands (Islas Malvinas)"
 msgstr "福克兰群岛（Islas Malvinas）"
 
-#: settings-countries.php:80
+#: 
 msgid "Faroe Islands (Føroyar)"
 msgstr "法罗群岛（Føroyar）"
 
-#: settings-countries.php:81
+#: 
 msgid "Fiji"
 msgstr "斐济"
 
-#: settings-countries.php:82
+#: 
 msgid "Finland (Suomi)"
 msgstr "芬兰（Suomi）"
 
-#: settings-countries.php:83
+#: 
 msgid "France"
 msgstr "法国"
 
-#: settings-countries.php:84
+#: 
 msgid "French Guiana (Guyane française)"
 msgstr "法属圭亚那（Guyane française）"
 
-#: settings-countries.php:85
+#: 
 msgid "French Polynesia (Polynésie française)"
 msgstr "法属波利尼西亚（Polynésiefrançaise）"
 
-#: settings-countries.php:86
+#: 
 msgid "French Southern Territories (Terres australes françaises)"
 msgstr "法属南部领土（Terresaustralesfrançaises）"
 
-#: settings-countries.php:87
+#: 
 msgid "Gabon"
 msgstr "加蓬"
 
-#: settings-countries.php:88
+#: 
 msgid "Gambia"
 msgstr "冈比亚"
 
-#: settings-countries.php:89
+#: 
 msgid "Georgia (საქართველო)"
 msgstr "格鲁吉亚（საქართველო）"
 
-#: settings-countries.php:90
+#: 
 msgid "Germany (Deutschland)"
 msgstr "德国（Deutschland）"
 
-#: settings-countries.php:91
+#: 
 msgid "Ghana (Gaana)"
 msgstr "加纳（Gaana）"
 
-#: settings-countries.php:92
+#: 
 msgid "Gibraltar"
 msgstr "直布罗陀"
 
-#: settings-countries.php:93
+#: 
 msgid "Greece (Ελλάδα)"
 msgstr "希腊（Ελλάδα）"
 
-#: settings-countries.php:94
+#: 
 msgid "Greenland (Kalaallit Nunaat)"
 msgstr "格陵兰岛（Kalaallit Nunaat）"
 
-#: settings-countries.php:95
+#: 
 msgid "Grenada"
 msgstr "格林纳达"
 
-#: settings-countries.php:96
+#: 
 msgid "Guadeloupe"
 msgstr "瓜德罗普岛"
 
-#: settings-countries.php:97
+#: 
 msgid "Guam"
 msgstr "关岛"
 
-#: settings-countries.php:98
+#: 
 msgid "Guatemala"
 msgstr "危地马拉"
 
-#: settings-countries.php:99
+#: 
 msgid "Guernsey"
 msgstr "根西岛"
 
-#: settings-countries.php:100
+#: 
 msgid "Guinea (Guinée)"
 msgstr "几内亚（Guinée）"
 
-#: settings-countries.php:101
+#: 
 msgid "Guinea-Bissau (Guiné Bissau)"
 msgstr "几内亚比绍（GuinéBissau）"
 
-#: settings-countries.php:102
+#: 
 msgid "Guyana"
 msgstr "圭亚那"
 
-#: settings-countries.php:103
+#: 
 msgid "Haiti"
 msgstr "海地"
 
-#: settings-countries.php:104
+#: 
 msgid "Heard & McDonald Islands"
 msgstr "赫德与麦当劳群岛"
 
-#: settings-countries.php:105
+#: 
 msgid "Honduras"
 msgstr "洪都拉斯"
 
-#: settings-countries.php:106
+#: 
 msgid "Hong Kong (香港)"
 msgstr "香港"
 
-#: settings-countries.php:107
+#: 
 msgid "Hungary (Magyarország)"
 msgstr "匈牙利（Magyarország）"
 
-#: settings-countries.php:108
+#: 
 msgid "Iceland (Ísland)"
 msgstr "冰岛（Ísland）"
 
-#: settings-countries.php:109
+#: 
 msgid "India (भारत)"
 msgstr "印度（भारत）"
 
-#: settings-countries.php:110
+#: 
 msgid "Indonesia"
 msgstr "印度尼西亚"
 
-#: settings-countries.php:111
+#: 
 msgid "Iran (‫ایران‬‎)"
 msgstr "伊朗（ایران）"
 
-#: settings-countries.php:112
+#: 
 msgid "Iraq (‫العراق‬‎)"
 msgstr "伊拉克（العراق）"
 
-#: settings-countries.php:113
+#: 
 msgid "Ireland"
 msgstr "爱尔兰"
 
-#: settings-countries.php:114
+#: 
 msgid "Isle of Man"
 msgstr "马恩岛"
 
-#: settings-countries.php:115
+#: 
 msgid "Israel (‫ישראל‬‎)"
 msgstr "以色列（ישראל）"
 
-#: settings-countries.php:116
+#: 
 msgid "Italy (Italia)"
 msgstr "意大利（Italia）"
 
-#: settings-countries.php:117
+#: 
 msgid "Jamaica"
 msgstr "牙买加"
 
-#: settings-countries.php:118
+#: 
 msgid "Japan (日本)"
 msgstr "日本"
 
-#: settings-countries.php:119
+#: 
 msgid "Jersey"
 msgstr "新泽西"
 
-#: settings-countries.php:120
+#: 
 msgid "Jordan (‫الأردن‬‎)"
 msgstr "乔丹（الأردن）"
 
-#: settings-countries.php:121
+#: 
 msgid "Kazakhstan (Казахстан)"
 msgstr "哈萨克斯坦（Казахстан）"
 
-#: settings-countries.php:122
+#: 
 msgid "Kenya"
 msgstr "肯尼亚"
 
-#: settings-countries.php:123
+#: 
 msgid "Kiribati"
 msgstr "基里巴斯"
 
-#: settings-countries.php:124
+#: 
 msgid "Kosovo (Kosovë)"
 msgstr "科索沃（Kosovë）"
 
-#: settings-countries.php:125
+#: 
 msgid "Kuwait (‫الكويت‬‎)"
 msgstr "科威特（الكويت）"
 
-#: settings-countries.php:126
+#: 
 msgid "Kyrgyzstan (Кыргызстан)"
 msgstr "吉尔吉斯斯坦（Кыргызстан）"
 
-#: settings-countries.php:127
+#: 
 msgid "Laos (ລາວ)"
 msgstr "老挝（ລາວ）"
 
-#: settings-countries.php:129
+#: 
 msgid "Lebanon (‫لبنان‬‎)"
 msgstr "黎巴嫩（لبنان）"
 
-#: settings-countries.php:130
+#: 
 msgid "Lesotho"
 msgstr "莱索托"
 
-#: settings-countries.php:131
+#: 
 msgid "Liberia"
 msgstr "利比里亚"
 
-#: settings-countries.php:132
+#: 
 msgid "Libya (‫ليبيا‬‎)"
 msgstr "利比亚（ليبيا）"
 
-#: settings-countries.php:133
+#: 
 msgid "Liechtenstein"
 msgstr "列支敦士登"
 
-#: settings-countries.php:134
+#: 
 msgid "Lithuania (Lietuva)"
 msgstr "立陶宛（Lietuva）"
 
-#: settings-countries.php:135
+#: 
 msgid "Luxembourg"
 msgstr "卢森堡"
 
-#: settings-countries.php:137
+#: 
 msgid "Macedonia (FYROM) (Македонија)"
 msgstr "马其顿（前南斯拉夫马其顿共和国）（Македонија）"
 
-#: settings-countries.php:138
+#: 
 msgid "Madagascar (Madagasikara)"
 msgstr "马达加斯加（马达加斯加）"
 
-#: settings-countries.php:139
+#: 
 msgid "Malawi"
 msgstr "马拉维"
 
-#: settings-countries.php:140
+#: 
 msgid "Malaysia"
 msgstr "马来西亚"
 
-#: settings-countries.php:141
+#: 
 msgid "Maldives"
 msgstr "马尔代夫"
 
-#: settings-countries.php:142
+#: 
 msgid "Mali"
 msgstr "马里"
 
-#: settings-countries.php:143
+#: 
 msgid "Malta"
 msgstr "马耳他"
 
-#: settings-countries.php:144
+#: 
 msgid "Marshall Islands"
 msgstr "马绍尔群岛"
 
-#: settings-countries.php:145
+#: 
 msgid "Martinique"
 msgstr "马提尼克"
 
-#: settings-countries.php:146
+#: 
 msgid "Mauritania (‫موريتانيا‬‎)"
 msgstr "毛里塔尼亚（موريتانيا）"
 
-#: settings-countries.php:147
+#: 
 msgid "Mauritius (Moris)"
 msgstr "毛里求斯（Moris）"
 
-#: settings-countries.php:148
+#: 
 msgid "Mayotte"
 msgstr "马约特"
 
-#: settings-countries.php:149
+#: 
 msgid "Mexico (México)"
 msgstr "墨西哥（México）"
 
-#: settings-countries.php:150
+#: 
 msgid "Micronesia"
 msgstr "密克罗尼西亚"
 
-#: settings-countries.php:151
+#: 
 msgid "Moldova (Republica Moldova)"
 msgstr "摩尔多瓦（Republica Moldova）"
 
-#: settings-countries.php:152
+#: 
 msgid "Monaco"
 msgstr "摩纳哥"
 
-#: settings-countries.php:153
+#: 
 msgid "Mongolia (Монгол)"
 msgstr "蒙古（Монгол）"
 
-#: settings-countries.php:154
+#: 
 msgid "Montenegro (Crna Gora)"
 msgstr "黑山（Crna Gora）"
 
-#: settings-countries.php:155
+#: 
 msgid "Montserrat"
 msgstr "蒙特塞拉特"
 
-#: settings-countries.php:156
+#: 
 msgid "Morocco (‫المغرب‬‎)"
 msgstr "摩洛哥（المغرب）"
 
-#: settings-countries.php:157
+#: 
 msgid "Mozambique (Moçambique)"
 msgstr "莫桑比克（莫桑比克）"
 
-#: settings-countries.php:158
+#: 
 msgid "Myanmar (Burma) (မြန်မာ)"
 msgstr "缅甸（မြန်မာ）"
 
-#: settings-countries.php:159
+#: 
 msgid "Namibia (Namibië)"
 msgstr "纳米比亚（Namibië）"
 
-#: settings-countries.php:160
+#: 
 msgid "Nauru"
 msgstr "瑙鲁"
 
-#: settings-countries.php:161
+#: 
 msgid "Nepal (नेपाल)"
 msgstr "尼泊尔（नेपाल）"
 
-#: settings-countries.php:162
+#: 
 msgid "Netherlands (Nederland)"
 msgstr "荷兰（Nederland)"
 
-#: settings-countries.php:163
+#: 
 msgid "New Caledonia (Nouvelle-Calédonie)"
 msgstr "新喀里多尼亚（Nouvelle-Calédonie）"
 
-#: settings-countries.php:164
+#: 
 msgid "New Zealand"
 msgstr "新西兰"
 
-#: settings-countries.php:165
+#: 
 msgid "Nicaragua"
 msgstr "尼加拉瓜"
 
-#: settings-countries.php:166
+#: 
 msgid "Niger (Nijar)"
 msgstr "尼日尔（Nijar）"
 
-#: settings-countries.php:167
+#: 
 msgid "Nigeria"
 msgstr "尼日利亚"
 
-#: settings-countries.php:168
+#: 
 msgid "Niue"
 msgstr "纽埃"
 
-#: settings-countries.php:169
+#: 
 msgid "Norfolk Island"
 msgstr "诺福克岛"
 
-#: settings-countries.php:170
+#: 
 msgid "Northern Mariana Islands"
 msgstr "北马里亚纳群岛"
 
-#: settings-countries.php:171
+#: 
 msgid "North Korea (조선 민주주의 인민 공화국)"
 msgstr "朝鲜（조선민주주의인민공화국）"
 
-#: settings-countries.php:172
+#: 
 msgid "Norway (Norge)"
 msgstr "挪威（Norge）"
 
-#: settings-countries.php:173
+#: 
 msgid "Oman (‫عُمان‬‎)"
 msgstr "阿曼（عمان）"
 
-#: settings-countries.php:174
+#: 
 msgid "Pakistan (‫پاکستان‬‎)"
 msgstr "巴基斯坦（پاکستان）"
 
-#: settings-countries.php:175
+#: 
 msgid "Palau"
 msgstr "帕劳"
 
-#: settings-countries.php:176
+#: 
 msgid "Palestine (‫فلسطين‬‎)"
 msgstr "巴勒斯坦（فلسطين）"
 
-#: settings-countries.php:177
+#: 
 msgid "Panama (Panamá)"
 msgstr "巴拿马（Panamá）"
 
-#: settings-countries.php:178
+#: 
 msgid "Papua New Guinea"
 msgstr "巴布亚新几内亚"
 
-#: settings-countries.php:179
+#: 
 msgid "Paraguay"
 msgstr "巴拉圭"
 
-#: settings-countries.php:180
+#: 
 msgid "Peru (Perú)"
 msgstr "秘鲁（Perú）"
 
-#: settings-countries.php:181
+#: 
 msgid "Philippines"
 msgstr "菲律宾"
 
-#: settings-countries.php:182
+#: 
 msgid "Pitcairn Islands"
 msgstr "皮特凯恩群岛"
 
-#: settings-countries.php:183
+#: 
 msgid "Poland (Polska)"
 msgstr "波兰（Polska）"
 
-#: settings-countries.php:184
+#: 
 msgid "Portugal"
 msgstr "Polska"
 
-#: settings-countries.php:185
+#: 
 msgid "Puerto Rico"
 msgstr "波多黎各"
 
-#: settings-countries.php:186
+#: 
 msgid "Qatar (‫قطر‬‎)"
 msgstr "卡塔尔（قطر）"
 
-#: settings-countries.php:187
+#: 
 msgid "Réunion (La Réunion)"
 msgstr "留尼旺（留尼汪岛）"
 
-#: settings-countries.php:188
+#: 
 msgid "Romania (România)"
 msgstr "罗马尼亚（România）"
 
-#: settings-countries.php:189
+#: 
 msgid "Russia (Россия)"
 msgstr "俄罗斯（Россия）"
 
-#: settings-countries.php:190
+#: 
 msgid "Rwanda"
 msgstr "卢旺达"
 
-#: settings-countries.php:191
+#: 
 msgid "Saint Barthélemy (Saint-Barthélemy)"
 msgstr "圣巴泰勒米（Saint-Barthélemy）"
 
-#: settings-countries.php:192
+#: 
 msgid "Saint Helena"
 msgstr "圣赫勒拿岛"
 
-#: settings-countries.php:193
+#: 
 msgid "Saint Kitts and Nevis"
 msgstr "圣基茨和尼维斯"
 
-#: settings-countries.php:194
+#: 
 msgid "Saint Lucia"
 msgstr "圣卢西亚"
 
-#: settings-countries.php:195
+#: 
 msgid "Saint Martin (Saint-Martin (partie française))"
 msgstr "圣马丁（圣马丁（partiefrançaise））"
 
-#: settings-countries.php:196
+#: 
 msgid "Saint Pierre and Miquelon (Saint-Pierre-et-Miquelon)"
 msgstr "圣皮埃尔和密克隆（Saint-Pierre-et-Miquelon）"
 
-#: settings-countries.php:197
+#: 
 msgid "Samoa"
 msgstr "萨摩亚"
 
-#: settings-countries.php:198
+#: 
 msgid "San Marino"
 msgstr "圣马力诺"
 
-#: settings-countries.php:199
+#: 
 msgid "São Tomé and Príncipe (São Tomé e Príncipe)"
 msgstr "圣多美和普林西比（São Tomé e Príncipe）"
 
-#: settings-countries.php:200
+#: 
 msgid "Saudi Arabia (‫المملكة العربية السعودية‬‎)"
 msgstr "沙特阿拉伯（المملكةالعربيةالسعودية）"
 
-#: settings-countries.php:201
+#: 
 msgid "Senegal (Sénégal)"
 msgstr "塞内加尔（Sénégal）"
 
-#: settings-countries.php:202
+#: 
 msgid "Serbia (Србија)"
 msgstr "塞尔维亚（Србија）"
 
-#: settings-countries.php:203
+#: 
 msgid "Seychelles"
 msgstr "塞舌尔"
 
-#: settings-countries.php:204
+#: 
 msgid "Sierra Leone"
 msgstr "塞拉利昂"
 
-#: settings-countries.php:205
+#: 
 msgid "Singapore"
 msgstr "新加坡"
 
-#: settings-countries.php:206
+#: 
 msgid "Sint Maarten"
 msgstr "圣马丁岛"
 
-#: settings-countries.php:207
+#: 
 msgid "Slovakia (Slovensko)"
 msgstr "斯洛伐克（Slovensko）"
 
-#: settings-countries.php:208
+#: 
 msgid "Slovenia (Slovenija)"
 msgstr "斯洛文尼亚（Slovenija）"
 
-#: settings-countries.php:209
+#: 
 msgid "Solomon Islands"
 msgstr "所罗门群岛"
 
-#: settings-countries.php:210
+#: 
 msgid "Somalia (Soomaaliya)"
 msgstr "索马里（Soomaaliya）"
 
-#: settings-countries.php:211
+#: 
 msgid "South Africa"
 msgstr "南非"
 
-#: settings-countries.php:212
+#: 
 msgid "South Georgia & South Sandwich Islands"
 msgstr "南乔治亚岛和南桑威奇群岛"
 
-#: settings-countries.php:213
+#: 
 msgid "South Korea (대한민국)"
 msgstr "韩国（대한민국）"
 
-#: settings-countries.php:214
+#: 
 msgid "South Sudan (‫جنوب السودان‬‎)"
 msgstr "南苏丹（جنوبالسودان）"
 
-#: settings-countries.php:215
+#: 
 msgid "Spain (España)"
 msgstr "西班牙（España）"
 
-#: settings-countries.php:216
+#: 
 msgid "Sri Lanka (ශ්‍රී ලංකාව)"
 msgstr "斯里兰卡（ශ්‍රී ලංකාව） "
 
-#: settings-countries.php:217
+#: 
 msgid "St. Vincent & Grenadines"
 msgstr "圣文森特和格林纳丁斯"
 
-#: settings-countries.php:218
+#: 
 msgid "Sudan (‫السودان‬‎)"
 msgstr "苏丹（السودان）"
 
-#: settings-countries.php:219
+#: 
 msgid "Suriname"
 msgstr "苏里南"
 
-#: settings-countries.php:220
+#: 
 msgid "Svalbard and Jan Mayen (Svalbard og Jan Mayen)"
 msgstr "斯瓦尔巴和扬马延（Svalbard og Jan Mayen）"
 
-#: settings-countries.php:221
+#: 
 msgid "Swaziland"
 msgstr "斯威士兰"
 
-#: settings-countries.php:222
+#: 
 msgid "Sweden (Sverige)"
 msgstr "瑞典（Sverige）"
 
-#: settings-countries.php:223
+#: 
 msgid "Switzerland (Schweiz)"
 msgstr "瑞士（Schweiz）"
 
-#: settings-countries.php:224
+#: 
 msgid "Syria (‫سوريا‬‎)"
 msgstr "叙利亚（سوريا）"
 
-#: settings-countries.php:226
+#: 
 msgid "Tajikistan"
 msgstr "塔吉克斯坦"
 
-#: settings-countries.php:227
+#: 
 msgid "Tanzania"
 msgstr "坦桑尼亚"
 
-#: settings-countries.php:228
+#: 
 msgid "Thailand (ไทย)"
 msgstr "泰国（ไทย）"
 
-#: settings-countries.php:229
+#: 
 msgid "Timor-Leste"
 msgstr "东帝汶"
 
-#: settings-countries.php:230
+#: 
 msgid "Togo"
 msgstr "多哥"
 
-#: settings-countries.php:231
+#: 
 msgid "Tokelau"
 msgstr "托克劳"
 
-#: settings-countries.php:232
+#: 
 msgid "Tonga"
 msgstr "汤加"
 
-#: settings-countries.php:233
+#: 
 msgid "Trinidad and Tobago"
 msgstr "特立尼达和多巴哥"
 
-#: settings-countries.php:234
+#: 
 msgid "Tristan da Cunha"
 msgstr "特里斯坦达库尼亚"
 
-#: settings-countries.php:235
+#: 
 msgid "Tunisia (‫تونس‬‎)"
 msgstr "突尼斯（تونس）"
 
-#: settings-countries.php:236
+#: 
 msgid "Turkey (Türkiye)"
 msgstr "土耳其（Türkiye）"
 
-#: settings-countries.php:237
+#: 
 msgid "Turkmenistan"
 msgstr "土库曼斯坦"
 
-#: settings-countries.php:238
+#: 
 msgid "Turks and Caicos Islands"
 msgstr "特克斯和凯科斯群岛"
 
-#: settings-countries.php:239
+#: 
 msgid "Tuvalu"
 msgstr "图瓦卢"
 
-#: settings-countries.php:240
+#: 
 msgid "U.S. Outlying Islands"
 msgstr "美国离岛"
 
-#: settings-countries.php:241
+#: 
 msgid "U.S. Virgin Islands"
 msgstr "美属维尔京群岛"
 
-#: settings-countries.php:242
+#: 
 msgid "Uganda"
 msgstr "乌干达"
 
-#: settings-countries.php:243
+#: 
 msgid "Ukraine (Україна)"
 msgstr "乌克兰（Україна）"
 
-#: settings-countries.php:244
+#: 
 msgid "United Arab Emirates (‫الإمارات العربية المتحدة‬‎)"
 msgstr "阿拉伯联合酋长国（الإماراتالعربيةالمتحدة）"
 
-#: settings-countries.php:245
+#: 
 msgid "United Kingdom"
 msgstr "英国"
 
-#: settings-countries.php:246
+#: 
 msgid "United States"
 msgstr "美国"
 
-#: settings-countries.php:247
+#: 
 msgid "Uruguay"
 msgstr "乌拉圭"
 
-#: settings-countries.php:248
+#: 
 msgid "Uzbekistan (Oʻzbekiston)"
 msgstr "乌兹别克斯坦（奥兹别克斯坦）"
 
-#: settings-countries.php:249
+#: 
 msgid "Vanuatu"
 msgstr "瓦努阿图"
 
-#: settings-countries.php:250
+#: 
 msgid "Vatican City (Città del Vaticano)"
 msgstr "梵蒂冈城（CittàdelVaticano）"
 
-#: settings-countries.php:251
+#: 
 msgid "Venezuela"
 msgstr "委内瑞拉"
 
-#: settings-countries.php:252
+#: 
 msgid "Vietnam (Việt Nam)"
 msgstr "越南（ViệtNam）"
 
-#: settings-countries.php:253
+#: 
 msgid "Wallis and Futuna"
 msgstr "瓦利斯和富图纳群岛"
 
-#: settings-countries.php:254
+#: 
 msgid "Western Sahara (‫الصحراء الغربية‬‎)"
 msgstr "西撒哈拉（الصحراءالغربية）"
 
-#: settings-countries.php:255
+#: 
 msgid "Yemen (‫اليمن‬‎)"
 msgstr "也门（اليمن）"
 
-#: settings-countries.php:256
+#: 
 msgid "Zambia"
 msgstr "赞比亚"
 
-#: settings-countries.php:257
+#: 
 msgid "Zimbabwe"
 msgstr "津巴布韦"
 
@@ -7144,83 +7144,83 @@ msgstr "将用户输入的邮编/邮政编码以大写方式保存到数据库�
 msgid "Google Analytics Tracking Code"
 msgstr "Google Analytics跟踪代码"
 
-#: settings-locales.php:10
+#: 
 msgid "English - United States"
 msgstr "英语-美国"
 
-#: settings-locales.php:8
+#: 
 msgid "English - Canada"
 msgstr "英语 - 加拿大"
 
-#: settings-locales.php:7
+#: 
 msgid "English - Australia"
 msgstr "英语 - 澳大利亚"
 
-#: settings-locales.php:9
+#: 
 msgid "English - Great Britain"
 msgstr "英语 - 英国"
 
-#: settings-locales.php:13
+#: 
 msgid "German - Germany"
 msgstr "德语 - 德国"
 
-#: settings-locales.php:22
+#: 
 msgid "Spanish - Spain"
 msgstr "西班牙语 - 西班牙"
 
-#: settings-locales.php:12
+#: 
 msgid "French - France"
 msgstr "法语 - 法国"
 
-#: settings-locales.php:14
+#: 
 msgid "Hungarian"
 msgstr "匈牙利语"
 
-#: settings-locales.php:16
+#: 
 msgid "Italian - Italy"
 msgstr "意大利语 - 意大利"
 
-#: settings-locales.php:17
+#: 
 msgid "Norwegian"
 msgstr "挪威语"
 
-#: settings-locales.php:6
+#: 
 msgid "Dutch - Netherlands"
 msgstr "荷兰语 - 荷兰"
 
-#: settings-locales.php:18
+#: 
 msgid "Polish"
 msgstr "波兰语"
 
-#: settings-locales.php:19
+#: 
 msgid "Portuguese - Brazil"
 msgstr "葡萄牙语 - 巴西"
 
-#: settings-locales.php:20
+#: 
 msgid "Romanian - Romania"
 msgstr "罗马尼亚语-罗马尼亚"
 
-#: settings-locales.php:21
+#: 
 msgid "Russian"
 msgstr "俄语"
 
-#: settings-locales.php:23
+#: 
 msgid "Sami (Northern) (Sweden)"
 msgstr "萨米语（北部）（瑞典）"
 
-#: settings-locales.php:2
+#: 
 msgid "Albanian"
 msgstr "阿尔巴尼亚语"
 
-#: settings-locales.php:25
+#: 
 msgid "Vietnamese"
 msgstr "越南语"
 
-#: settings-locales.php:4
+#: 
 msgid "Chinese - China"
 msgstr "中文-中国"
 
-#: settings-locales.php:5
+#: 
 msgid "Chinese - Taiwan"
 msgstr "中文-台湾"
 
@@ -7984,11 +7984,11 @@ msgstr "释放说明"
 msgid "Move"
 msgstr "移动"
 
-#: settings-locales.php:3
+#: 
 msgid "Arabic - Egypt"
 msgstr "阿拉伯语 - 埃及"
 
-#: settings-locales.php:24
+#: 
 msgid "Thai"
 msgstr "泰语"
 
@@ -8036,7 +8036,7 @@ msgstr "拥有有效自助验证链接的家庭"
 msgid "Self Verify"
 msgstr "自助验证"
 
-#: settings-locales.php:15
+#: 
 msgid "Indonesian - Indonesia"
 msgstr "印尼语 - 印尼"
 

@@ -31,11 +31,11 @@ msgstr "Belum Ditetapkan"
 msgid "None"
 msgstr "Tidak ada"
 
-#: queryparameteroptions_qpo.php:7
+#: 
 msgid "City"
 msgstr "Kota"
 
-#: queryparameteroptions_qpo.php:6
+#: 
 msgid "State"
 msgstr "Provinsi"
 
@@ -47,7 +47,7 @@ msgstr "Negara"
 msgid "Phone"
 msgstr "Telepon"
 
-#: queryparameteroptions_qpo.php:13
+#: 
 msgid "Email"
 msgstr "Email"
 
@@ -155,7 +155,7 @@ msgstr "Tanggal Lahir / Ulang Tahun"
 msgid "Age / Years Married"
 msgstr "Umur / Tahun Menikah"
 
-#: queryparameters_qrp.php:5
+#: 
 msgid "Family Role"
 msgstr "Peran Keluarga"
 
@@ -199,11 +199,11 @@ msgstr "Gunakan tombol Ctrl untuk pilih banyak"
 msgid "Don't Filter"
 msgstr "Jangan disaring"
 
-#: queryparameteroptions_qpo.php:2
+#: 
 msgid "Male"
 msgstr "Pria"
 
-#: queryparameteroptions_qpo.php:3
+#: 
 msgid "Female"
 msgstr "Wanita"
 
@@ -271,7 +271,7 @@ msgstr "Gelar"
 msgid "Suffix"
 msgstr "Akhiran"
 
-#: queryparameters_qrp.php:4
+#: 
 msgid "Gender"
 msgstr "Jenis Kelamin"
 
@@ -279,7 +279,7 @@ msgstr "Jenis Kelamin"
 msgid "Donation Envelope"
 msgstr "Amplop Donasi"
 
-#: queryparameteroptions_qpo.php:8
+#: 
 msgid "Home Phone"
 msgstr "Telepon Rumah"
 
@@ -331,7 +331,7 @@ msgstr "CATATAN: Tanda pemisah (tanda hubung, dll.) atau kurang dari itu tidak m
 msgid "Default country if none specified otherwise"
 msgstr "Set Negara secara tomatis jika tidak ditentukan"
 
-#: queryparameters_qrp.php:19
+#: 
 msgid "Classification"
 msgstr "Penggolongan"
 
@@ -491,7 +491,7 @@ msgstr "Nama keluarga masih kosong"
 msgid "Add Cart to Family"
 msgstr "Tambahkan Cart di Keluarga"
 
-#: queryparameteroptions_qpo.php:4
+#: 
 msgid "Name"
 msgstr "Nama"
 
@@ -675,7 +675,7 @@ msgstr "Aksi"
 msgid "No Attendees Assigned to Event"
 msgstr "Tidak ada yang hadir pada acara"
 
-#: queryparameteroptions_qpo.php:15
+#: 
 msgid "Member"
 msgstr "Anggota"
 
@@ -968,7 +968,7 @@ msgid "Type"
 msgstr "Tipe"
 
 #. Merriam-Webster menerjemahkan Fiscal Year sebagai "an accounting period of 12 months." Mungkin hal ini berhubungan dengan kebiasaan di Amerika Serikat. Apabila ada rekan yang mengetahui lebih baik dalam penerjemahan kata ini, saya akan sangat berterima kasih.
-#: queryparameters_qrp.php:18
+#: 
 msgid "Fiscal Year"
 msgstr "12 Bulan"
 
@@ -984,7 +984,7 @@ msgstr "Dana"
 msgid "Bank"
 msgstr "Bank"
 
-#: queryparameters_qrp.php:11
+#: 
 msgid "Month"
 msgstr "Bulan"
 
