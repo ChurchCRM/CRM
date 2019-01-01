@@ -557,7 +557,7 @@ $familyAddress = $family->getAddress();
                 <p>
                     <?php if (count($family->getEmails()) > 0) {
                     ?>
-                <p><?= gettext("You are about to email copy of the family information in pdf to the following emails") ?>
+                <p><?= gettext("You are about to email copy of the family information to the following emails") ?>
                 <ul>
                     <?php foreach ($family->getEmails() as $tmpEmail) { ?>
                         <li><?= $tmpEmail ?></li>
