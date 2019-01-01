@@ -38,8 +38,6 @@
         "bootstrap-validator": "0.11.9",
         "chart.js": "1.0.*",
         "ckeditor": "4.11.1",
-        "datatables.net": "^1.10.15",
-        "datatables.net-bs": "^1.10.15",
         "font-awesome": "4.7.0",
         "fullcalendar": "3.0.1",
         "grunt-git": "^1.0.10",
