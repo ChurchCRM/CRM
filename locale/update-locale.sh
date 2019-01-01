@@ -12,7 +12,7 @@ cd ../locale
 # Extract DB Terms
 php extract-db-locale-terms.php
 cd db-strings
-find . -iname "*.php" | sort | xargs xgettext --join-existing --from-code=UTF-8 -o ../messages.po
+find . -iname "*.php" | sort | xargs xgettext --no-location --no-wrap --join-existing --from-code=UTF-8 -o ../messages.po
 
 
 # merge PHP & DB & JS Terms
