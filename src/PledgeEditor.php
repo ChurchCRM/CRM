@@ -752,15 +752,16 @@ require 'Include/Header.php';
       $('[name=FamilyID]').val(e.params.data.id);
     });
 
-    $("#FundTable").DataTable({
-        "language": {
-            "url": window.CRM.plugin.dataTable.language.url
-        },
-        responsive:true,
+
+
+    var dataTableConfig = {
         paging: false,
-        searching: false,
-        "dom": window.CRM.plugin.dataTable.dom
-    });
+        searching: false
+    }
+
+    $.extend(dataTableConfig, window.CRM.plugin.dataTable);
+
+    $("#FundTable").DataTable(dataTableConfig);
 
 
     $(".FundAmount").change(function(){

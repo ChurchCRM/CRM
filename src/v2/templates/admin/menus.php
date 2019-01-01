@@ -51,15 +51,11 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     $(document).ready(function () {
-        $("#menus").DataTable({
-            "language": {
-                "url": window.CRM.plugin.dataTable.language.url
-            },
+        var dataTableConfig = {
             ajax: {
                 url: window.CRM.root + "/api/system/menu",
                 dataSrc: "menus"
             },
-            responsive: true,
             columns: [
                 {
                     width: '15px',
@@ -81,7 +77,9 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 }
             ],
             order: [[1, "asc"]]
-        });
+        }
+        $.extend(dataTableConfig, window.CRM.plugin.dataTable);
+        $("#menus").DataTable(dataTableConfig);
     });
 
     $("#add-Menu").click(function(){

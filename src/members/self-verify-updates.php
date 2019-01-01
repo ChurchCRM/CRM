@@ -35,16 +35,12 @@ use ChurchCRM\dto\SystemURLs;
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     $(document).ready(function () {
-        $("#families").DataTable({
-            "language": {
-                "url": window.CRM.plugin.dataTable.language.url
-            },
+
+        var dataTableConfig = {
             ajax: {
                 url: window.CRM.root + "/api/families/self-verify",
                 dataSrc: 'families'
             },
-            "dom": window.CRM.plugin.dataTable.dom,
-            responsive: true,
             columns: [
                 {
                     title: i18next.t('Family Id'),
@@ -74,7 +70,9 @@ use ChurchCRM\dto\SystemURLs;
                 }
             ],
             order: [[2, "desc"]]
-        });
+        }
+        $.extend(dataTableConfig, window.CRM.plugin.dataTable);
+        $("#families").DataTable(dataTableConfig);
     });
 </script>
 <?php

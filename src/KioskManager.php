@@ -106,16 +106,12 @@ require 'Include/Header.php';
   })
 
   $(document).ready(function(){
-    window.CRM.kioskDataTable = $("#KioskTable").DataTable({
-    "language": {
-      "url": window.CRM.plugin.dataTable.language.url
-    },
-    responsive: true,
+
+    var dataTableConfig = {
     ajax: {
       url: window.CRM.root + "/api/kiosks/",
       dataSrc: "KioskDevices"
     },
-    "dom": window.CRM.plugin.dataTable.dom,
     columns: [
       {
         width: 'auto',
@@ -184,7 +180,11 @@ require 'Include/Header.php';
         }
       }
     ]
-  })
+  }
+
+    $.extend(dataTableConfig, window.CRM.plugin.dataTable);
+
+    window.CRM.kioskDataTable = $("#KioskTable").DataTable(dataTableConfig)
 
     setInterval(function(){window.CRM.kioskDataTable.ajax.reload()},5000);
   })
