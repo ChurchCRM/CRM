@@ -20,7 +20,7 @@ msgstr "ไม่สามารถสืบค้นฐานข้อมูล
 #: PersonCustomFieldsEditor.php:315 PersonCustomFieldsEditor.php:384
 #: PersonView.php:941 PledgeDelete.php:53 PropertyList.php:65
 #: PropertyList.php:106 PropertyTypeList.php:46 PropertyTypeList.php:67
-#: PropertyTypeList.php:69 v2/templates/people/family-view.php:532
+#: PropertyTypeList.php:69 v2/templates/people/family-view.php:522
 msgid "Delete"
 msgstr "ลบ"
 
@@ -31,15 +31,15 @@ msgstr "ลบ"
 #: GroupPropsEditor.php:168 GroupReports.php:82 GroupReports.php:151
 #: LettersAndLabels.php:83 ManageEnvelopes.php:135 MemberRoleChange.php:119
 #: MemberRoleChange.php:121 NoteDelete.php:67 NoteEditor.php:135
-#: PersonEditor.php:1231 PersonView.php:940 PledgeDelete.php:54
+#: PersonEditor.php:1234 PersonView.php:940 PledgeDelete.php:54
 #: PropertyEditor.php:169 PropertyTypeEditor.php:114 Register.php:56
 #: ReminderReport.php:52 SettingsIndividual.php:114 SettingsIndividual.php:160
 #: SettingsUser.php:100 SettingsUser.php:160 TaxReport.php:55
-#: UserEditor.php:459 UserEditor.php:562 WhyCameEditor.php:105
-#: external/templates/verify/verify-family-info.php:144
+#: UserEditor.php:458 UserEditor.php:561 WhyCameEditor.php:105
+#: external/templates/verify/verify-family-info.php:159
 #: sundayschool/SundaySchoolDashboard.php:258
 #: sundayschool/SundaySchoolReports.php:286
-#: v2/templates/people/family-view.php:531
+#: v2/templates/people/family-view.php:521
 msgid "Cancel"
 msgstr "ยกเลิก"
 
@@ -48,10 +48,10 @@ msgstr "ยกเลิก"
 #: FamilyEditor.php:870 FamilyEditor.php:892 FamilyEditor.php:923
 #: FamilyEditor.php:1116 FundRaiserEditor.php:142 GroupEditor.php:167
 #: GroupPropsEditor.php:166 NoteEditor.php:133 PaddleNumEditor.php:147
-#: PersonEditor.php:617 PersonEditor.php:775 PersonEditor.php:818
-#: PersonEditor.php:1129 PersonEditor.php:1192 PersonEditor.php:1227
+#: PersonEditor.php:620 PersonEditor.php:778 PersonEditor.php:821
+#: PersonEditor.php:1132 PersonEditor.php:1195 PersonEditor.php:1230
 #: PledgeEditor.php:648 PropertyEditor.php:169 PropertyTypeEditor.php:112
-#: UserEditor.php:458 UserPasswordChange.php:213 WhyCameEditor.php:104
+#: UserEditor.php:457 UserPasswordChange.php:213 WhyCameEditor.php:104
 msgid "Save"
 msgstr "บันทึก"
 
@@ -61,8 +61,8 @@ msgstr "บันทึก"
 #: GroupEditor.php:94 GroupList.php:36 GroupView.php:40
 #: Include/CountryDropDown.php:6 Include/Functions.php:856
 #: Include/Functions.php:909 MapUsingGoogle.php:96 MapUsingGoogle.php:120
-#: PaddleNumEditor.php:176 PersonEditor.php:782 PersonEditor.php:798
-#: PersonEditor.php:1137 PrintView.php:264 PrintView.php:274
+#: PaddleNumEditor.php:176 PersonEditor.php:785 PersonEditor.php:801
+#: PersonEditor.php:1140 PrintView.php:264 PrintView.php:274
 #: SelectDelete.php:157 SelectList.php:35 SelectList.php:45 SelectList.php:61
 #: SelectList.php:1098 SelectList.php:1169 SystemSettings.php:215
 #: eGive.php:341
@@ -77,21 +77,21 @@ msgid "None"
 msgstr "ไม่มี"
 
 #: CSVExport.php:102 CSVImport.php:219 CartToFamily.php:245
-#: DirectoryReports.php:251 FamilyEditor.php:673 PersonEditor.php:863
+#: DirectoryReports.php:251 FamilyEditor.php:673 PersonEditor.php:866
 #: Register.php:44 external/templates/registration/family-register.php:41
 #: queryparameteroptions_qpo.php:7
 msgid "City"
 msgstr "เมือง"
 
 #: CSVExport.php:107 CSVImport.php:220 CartToFamily.php:250
-#: DirectoryReports.php:255 FamilyEditor.php:680 PersonEditor.php:883
+#: DirectoryReports.php:255 FamilyEditor.php:680 PersonEditor.php:886
 #: Register.php:45 external/templates/registration/family-register.php:44
 #: queryparameteroptions_qpo.php:6
 msgid "State"
 msgstr "จังหวัด"
 
 #: CSVExport.php:122 CSVImport.php:222 CartToFamily.php:270
-#: FamilyEditor.php:700 PersonEditor.php:928 Register.php:47
+#: FamilyEditor.php:700 PersonEditor.php:931 Register.php:47
 msgid "Country"
 msgstr "ประเทศ"
 
@@ -109,7 +109,7 @@ msgstr "โทรศัพท์"
 #: ChurchCRM/Reports/PDF_Directory.php:447 EditEventAttendees.php:42
 #: EventAttendance.php:175 FamilyEditor.php:772 FamilyView.php:262
 #: FamilyView.php:267 FamilyView.php:350 GroupReports.php:127
-#: PersonEditor.php:1035 PersonEditor.php:1037 PersonView.php:307
+#: PersonEditor.php:1038 PersonEditor.php:1040 PersonView.php:307
 #: PersonView.php:511 PrintView.php:294 Reports/CanvassReports.php:243
 #: Reports/ConfirmReport.php:186 Reports/ConfirmReport.php:205
 #: Reports/ConfirmReportEmail.php:187 Reports/ConfirmReportEmail.php:205
@@ -119,9 +119,9 @@ msgstr "โทรศัพท์"
 #: external/templates/verify/verify-family-info.php:76
 #: sundayschool/SundaySchoolClassView.php:89
 #: sundayschool/SundaySchoolClassView.php:205
-#: v2/templates/cart/cartlisting.php:19
+#: v2/templates/cart/cartlisting.php:19 v2/templates/people/family-list.php:32
 #: v2/templates/people/family-view.php:172
-#: v2/templates/people/family-view.php:313 queryparameteroptions_qpo.php:13
+#: v2/templates/people/family-view.php:303 queryparameteroptions_qpo.php:13
 msgid "Email"
 msgstr "อีเมล"
 
@@ -162,7 +162,7 @@ msgid "Field Selection"
 msgstr "เลือกฟิลด์"
 
 #: CSVExport.php:66 CSVImport.php:213 ManageEnvelopes.php:162
-#: PersonEditor.php:668
+#: PersonEditor.php:671
 #: external/templates/registration/family-register-members.php:73
 #: external/templates/verify/enter-info.php:25
 #: sundayschool/SundaySchoolDashboard.php:204
@@ -174,7 +174,7 @@ msgstr "นามสกุล"
 msgid "Required"
 msgstr "ฟิลด์ที่จำเป็น"
 
-#: CSVExport.php:77 CSVImport.php:211 PersonEditor.php:646
+#: CSVExport.php:77 CSVImport.php:211 PersonEditor.php:649
 #: external/templates/registration/family-register-members.php:69
 #: external/templates/verify/enter-info.php:21
 #: sundayschool/SundaySchoolDashboard.php:203
@@ -182,13 +182,13 @@ msgstr "ฟิลด์ที่จำเป็น"
 msgid "First Name"
 msgstr "ชื่อจริง"
 
-#: CSVExport.php:82 CSVImport.php:212 PersonEditor.php:657
+#: CSVExport.php:82 CSVImport.php:212 PersonEditor.php:660
 #, fuzzy
 msgid "Middle Name"
 msgstr "ชื่อกลาง"
 
 #: CSVExport.php:112 CSVImport.php:221 CartToFamily.php:262
-#: DirectoryReports.php:259 FamilyEditor.php:690 PersonEditor.php:906
+#: DirectoryReports.php:259 FamilyEditor.php:690 PersonEditor.php:909
 #: Register.php:46 external/templates/registration/family-register.php:51
 #: external/templates/verify/enter-info.php:29
 #, fuzzy
@@ -207,7 +207,7 @@ msgstr "ซอง"
 msgid "Work/Other Email"
 msgstr "อีเมล ที่ทำงาน/ที่อื่นๆ"
 
-#: CSVExport.php:152 CSVExport.php:371 CSVImport.php:229 PersonEditor.php:1150
+#: CSVExport.php:152 CSVExport.php:371 CSVImport.php:229 PersonEditor.php:1153
 #: PrintView.php:304
 #, fuzzy
 msgid "Membership Date"
@@ -223,7 +223,7 @@ msgid "Age / Years Married"
 msgstr "อายุ / แต่งงานกี่ปีแล้ว"
 
 #: CSVExport.php:172 CSVExport.php:302 OptionManager.php:62
-#: PersonEditor.php:780 PrintView.php:269 v2/templates/cart/cartlisting.php:22
+#: PersonEditor.php:783 PrintView.php:269 v2/templates/cart/cartlisting.php:22
 #: queryparameters_qrp.php:5
 #, fuzzy
 msgid "Family Role"
@@ -253,7 +253,7 @@ msgstr "ไม่ใช้ฟิลเตอร์"
 
 #: CSVExport.php:337 ChurchCRM/Dashboard/PersonDemographicDashboardItem.php:26
 #: ChurchCRM/model/ChurchCRM/Person.php:51 FamilyEditor.php:991
-#: PeopleDashboard.php:315 PeopleDashboard.php:360 PersonEditor.php:630
+#: PeopleDashboard.php:315 PeopleDashboard.php:360 PersonEditor.php:633
 #: PrintView.php:244 PrintView.php:363 SelectList.php:555 SelectList.php:1140
 #: external/templates/registration/family-register-members.php:59
 #: queryparameteroptions_qpo.php:2
@@ -262,7 +262,7 @@ msgstr "ชาย"
 
 #: CSVExport.php:338 ChurchCRM/Dashboard/PersonDemographicDashboardItem.php:29
 #: ChurchCRM/model/ChurchCRM/Person.php:53 FamilyEditor.php:994
-#: PeopleDashboard.php:328 PeopleDashboard.php:373 PersonEditor.php:633
+#: PeopleDashboard.php:328 PeopleDashboard.php:373 PersonEditor.php:636
 #: PrintView.php:247 PrintView.php:363 SelectList.php:561 SelectList.php:1141
 #: external/templates/registration/family-register-members.php:60
 #: queryparameteroptions_qpo.php:3
@@ -301,7 +301,7 @@ msgid "Create File"
 msgstr "สร้างไฟล์"
 
 #: CSVExport.php:177 CSVExport.php:327 CSVImport.php:215 FamilyEditor.php:944
-#: PersonEditor.php:624 PrintView.php:238 PrintView.php:338
+#: PersonEditor.php:627 PrintView.php:238 PrintView.php:338
 #: sundayschool/SundaySchoolClassView.php:179 queryparameters_qrp.php:4
 msgid "Gender"
 msgstr "เพศ"
@@ -312,8 +312,8 @@ msgstr "ซองถวาย"
 
 #: CSVExport.php:127 CSVImport.php:223 CartToFamily.php:281
 #: EditEventAttendees.php:43 EventAttendance.php:176 FamilyEditor.php:738
-#: FamilyView.php:244 GroupReports.php:124 PersonEditor.php:961
-#: PersonEditor.php:963 PersonView.php:302 PrintView.php:199
+#: FamilyView.php:244 GroupReports.php:124 PersonEditor.php:964
+#: PersonEditor.php:966 PersonView.php:302 PrintView.php:199
 #: Reports/ConfirmReport.php:136 Reports/ConfirmReportEmail.php:136
 #: SelectList.php:965 SelectList.php:966 SelectList.php:1041
 #: external/templates/registration/family-register-done.php:30
@@ -323,32 +323,32 @@ msgstr "ซองถวาย"
 #: sundayschool/SundaySchoolClassView.php:207
 #: v2/templates/people/family-list.php:30
 #: v2/templates/people/family-view.php:151
-#: v2/templates/people/family-view.php:298 queryparameteroptions_qpo.php:8
+#: v2/templates/people/family-view.php:288 queryparameteroptions_qpo.php:8
 msgid "Home Phone"
 msgstr "โทรศัพท์บ้าน"
 
 #: CSVExport.php:132 CSVImport.php:224 CartToFamily.php:291
 #: FamilyEditor.php:750 FamilyView.php:250 GroupReports.php:125
-#: PersonEditor.php:984 PersonEditor.php:986 PersonView.php:316
+#: PersonEditor.php:987 PersonEditor.php:989 PersonView.php:316
 #: PrintView.php:204 Reports/ConfirmReport.php:237
 #: Reports/ConfirmReportEmail.php:234 SelectList.php:968 SelectList.php:969
 #: SelectList.php:1041 external/templates/verify/verify-family-info.php:72
 #: v2/templates/people/family-view.php:158
-#: v2/templates/people/family-view.php:303
+#: v2/templates/people/family-view.php:293
 msgid "Work Phone"
 msgstr "โทรศัพท์ที่ทำงาน"
 
 #: CSVExport.php:137 CSVImport.php:225 CartToFamily.php:301
-#: FamilyEditor.php:760 FamilyView.php:256 PersonEditor.php:1009
-#: PersonEditor.php:1011 PersonView.php:297 PrintView.php:209
+#: FamilyEditor.php:760 FamilyView.php:256 PersonEditor.php:1012
+#: PersonEditor.php:1014 PersonView.php:297 PrintView.php:209
 #: SelectList.php:971 SelectList.php:972 SelectList.php:1041
 #: external/templates/verify/verify-family-info.php:74
 #: v2/templates/people/family-view.php:165
-#: v2/templates/people/family-view.php:308
+#: v2/templates/people/family-view.php:298
 msgid "Mobile Phone"
 msgstr "โทรศัพท์มือถือ"
 
-#: CSVImport.php:227 PersonEditor.php:1054 PrintView.php:299
+#: CSVImport.php:227 PersonEditor.php:1057 PrintView.php:299
 msgid "Work / Other Email"
 msgstr "อีเมล ที่ทำงาน / ที่อื่นๆ"
 

@@ -2,7 +2,7 @@
 
 cd src
 # Extract PHP Terms
-find . -iname '*.php' | sort | grep -v ./vendor | xargs xgettext --from-code=UTF-8 -o ../locale/messages.po -L PHP
+find . -iname '*.php' | sort | grep -v ./vendor | xargs xgettext --from-code=UTF-8 -o ../locale/messages.po -L PHP --no-location
 
 # Extract JS Terms
 i18next-extract-gettext --files=skin/js/*.js --output=../locale/js-strings.po
