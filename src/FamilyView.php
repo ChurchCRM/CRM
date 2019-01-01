@@ -834,7 +834,7 @@ $bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() || ($_SESSION['user']->i
                 <p>
                     <?php if (count($sFamilyEmails) > 0) {
         ?>
-                <p><?= gettext("You are about to email copy of the family information in pdf to the following emails") ?>
+                <p><?= gettext("You are about to email copy of the family information to the following emails") ?>
                 <ul>
                     <?php foreach ($sFamilyEmails as $tmpEmail) {
             ?>
