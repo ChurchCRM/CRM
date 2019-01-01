@@ -113,12 +113,12 @@ require 'Include/Header.php'
 	</tr>
 	<tr>
 		<td colspan="2" align="center">
-			<input type="submit" class="btn" name="Submit" value="<?= gettext('Update') ?>">
+			<input type="submit" class="btn btn-default" name="Submit" value="<?= gettext('Update') ?>">
 			<?php
                 if ($iReturn) {
-                    echo '&nbsp;&nbsp;<input type="button" class="btn" name="Cancel" value="'.gettext('Cancel')."\" onclick=\"document.location='GroupView.php?GroupID=".$iGroupID."';\">";
+                    echo '&nbsp;&nbsp;<input type="button" class="btn btn-default" name="Cancel" value="'.gettext('Cancel')."\" onclick=\"document.location='GroupView.php?GroupID=".$iGroupID."';\">";
                 } else {
-                    echo '&nbsp;&nbsp;<input type="button" class="btn" name="Cancel" value="'.gettext('Cancel')."\" onclick=\"document.location='PersonView.php?PersonID=".$iPersonID."';\">";
+                    echo '&nbsp;&nbsp;<input type="button" class="btn btn-default" name="Cancel" value="'.gettext('Cancel')."\" onclick=\"document.location='PersonView.php?PersonID=".$iPersonID."';\">";
                 }
             ?>
 		</td>

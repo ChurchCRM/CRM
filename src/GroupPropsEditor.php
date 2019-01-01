@@ -119,7 +119,7 @@ if (mysqli_num_rows($rsPropList) == 0) {
   <form>
     <h3><?= gettext('This group currently has no properties!  You can add them in the Group Editor.') ?></h3>
     <BR>
-    <input type="button" class="btn" value="<?= gettext('Return to Person Record') ?>" Name="Cancel" onclick="javascript:document.location='PersonView.php?PersonID=<?= $iPersonID ?>';">
+    <input type="button" class="btn btn-default" value="<?= gettext('Return to Person Record') ?>" Name="Cancel" onclick="javascript:document.location='PersonView.php?PersonID=<?= $iPersonID ?>';">
   </form>
   <?php
 } else {
@@ -165,7 +165,7 @@ if (mysqli_num_rows($rsPropList) == 0) {
               <br><br>
               <input type="submit" class="btn btn-primary" value="<?= gettext('Save') ?>" Name="GroupPropSubmit">
               &nbsp;
-              <input type="button" class="btn" value="<?= gettext('Cancel') ?>" Name="Cancel" onclick="javascript:document.location='PersonView.php?PersonID=<?= $iPersonID ?>';">
+              <input type="button" class="btn btn-default" value="<?= gettext('Cancel') ?>" Name="Cancel" onclick="javascript:document.location='PersonView.php?PersonID=<?= $iPersonID ?>';">
             </td>
           </tr>
         </table>

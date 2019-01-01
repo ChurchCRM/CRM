@@ -658,7 +658,7 @@ $bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() || ($_SESSION['user']->i
         } ?>
                                 <input type="text" class="date-picker" Name="ShowSinceDate"
                                        value="<?= $showSince ?>" maxlength="10" id="ShowSinceDate" size="15">
-                                <input type="submit" class="btn" <?= 'value="' . gettext("Update") . '"' ?>
+                                <input type="submit" class="btn btn-default" <?= 'value="' . gettext("Update") . '"' ?>
                                        name="UpdatePledgeTable"
                                        style="font-size: 8pt;">
                             </form>
@@ -834,7 +834,7 @@ $bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() || ($_SESSION['user']->i
                 <p>
                     <?php if (count($sFamilyEmails) > 0) {
         ?>
-                <p><?= gettext("You are about to email copy of the family information in pdf to the following emails") ?>
+                <p><?= gettext("You are about to email copy of the family information to the following emails") ?>
                 <ul>
                     <?php foreach ($sFamilyEmails as $tmpEmail) {
             ?>

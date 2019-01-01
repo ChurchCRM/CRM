@@ -316,7 +316,7 @@ if (count($_SESSION['aPeopleCart']) > 0) {
 </div>
 <p align="center">
 <BR>
-<input type="submit" class="btn" name="Submit" value="<?= gettext('Add to Family') ?>">
+<input type="submit" class="btn btn-default" name="Submit" value="<?= gettext('Add to Family') ?>">
 <BR><BR>
 </p>
 </form>

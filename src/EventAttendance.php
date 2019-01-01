@@ -57,7 +57,7 @@ require 'Include/Header.php';
 ?>
 <table cellpadding="4" align="center" cellspacing="0" width="100%">
   <tr>
-    <td align="center"><input type="button" class="btn" value="<?= gettext('Back to Report Menu') ?>" Name="Exit" onclick="javascript:document.location='ReportList.php';"></td>
+    <td align="center"><input type="button" class="btn btn-default" value="<?= gettext('Back to Report Menu') ?>" Name="Exit" onclick="javascript:document.location='ReportList.php';"></td>
   </tr>
 </table>
 <?php
@@ -131,7 +131,7 @@ $cSQL = 'SELECT COUNT(per_ID) AS cCount
          WHERE per_cls_ID IN ('1','2','5')";
         $tOpps = RunQuery($tSQL);
         $tNumTotal = mysqli_fetch_row($tOpps)[0]; ?>
-               <input type="submit" name="Type" value="<?= gettext('Attending Members').' ['.$cNumAttend.']' ?>" class="btn">
+               <input type="submit" name="Type" value="<?= gettext('Attending Members').' ['.$cNumAttend.']' ?>" class="btn btn-default">
              </form>
            </td>
            <td class="TextColumn">
@@ -142,7 +142,7 @@ $cSQL = 'SELECT COUNT(per_ID) AS cCount
                <input type="hidden" name="Choice" value="Nonattendees">
 <?php
 ?>
-               <input type="submit" name="Type" value="<?= gettext('Non-Attending Members').' ['.($tNumTotal - $cNumAttend).']' ?>" class="btn">
+               <input type="submit" name="Type" value="<?= gettext('Non-Attending Members').' ['.($tNumTotal - $cNumAttend).']' ?>" class="btn btn-default">
              </form>
            </td>
            <td class="TextColumn">
@@ -157,7 +157,7 @@ $gSQL = 'SELECT COUNT(per_ID) AS gCount
          WHERE t1.per_ID = t3.person_id AND t2.event_id = t3.event_id AND t3.event_id = '.$aEventID[$row].' AND per_cls_ID = 3';
         $gOpps = RunQuery($gSQL);
         $gNumGuestAttend = mysqli_fetch_row($gOpps)[0]; ?>
-               <input <?= ($gNumGuestAttend == 0 ? 'type="button"' : 'type="submit"') ?> name="Type" value="<?= gettext('Guests').' ['.$gNumGuestAttend.']' ?>" class="btn">
+               <input <?= ($gNumGuestAttend == 0 ? 'type="button"' : 'type="submit"') ?> name="Type" value="<?= gettext('Guests').' ['.$gNumGuestAttend.']' ?>" class="btn btn-default">
              </form>
            </td>
          </tr>
