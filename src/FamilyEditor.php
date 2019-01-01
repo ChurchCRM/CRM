@@ -1117,7 +1117,7 @@ require 'Include/Header.php';
     if ($_SESSION['user']->isAddRecordsEnabled()) {
         echo ' <input type="submit" class="btn btn-info" value="'.gettext('Save and Add').'" name="FamilySubmitAndAdd"> ';
     }
-    echo ' <input type="button" class="btn" value="'.gettext('Cancel').'" Name="FamilyCancel"';
+    echo ' <input type="button" class="btn btn-default" value="'.gettext('Cancel').'" Name="FamilyCancel"';
     if ($iFamilyID > 0) {
         echo " onclick=\"javascript:document.location='FamilyView.php?FamilyID=$iFamilyID';\">";
     } else {

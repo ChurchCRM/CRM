@@ -130,8 +130,8 @@ if ($sReportType == '') {
         <td></td>
         <td>
         <br/>
-        <button type="button" id="addAllClasses" class="btn"><?= gettext('Add All Classes') ?></button>
-        <button type="button" id="clearAllClasses" class="btn"><?= gettext('Clear All Classes') ?></button><br/><br/>
+        <button type="button" id="addAllClasses" class="btn btn-default"><?= gettext('Add All Classes') ?></button>
+        <button type="button" id="clearAllClasses" class="btn btn-default"><?= gettext('Clear All Classes') ?></button><br/><br/>
         </td></tr>
         <?php
 
@@ -177,8 +177,8 @@ if ($sReportType == '') {
         <td></td>
         <td>
         <br/>
-        <button type="button" id="addAllFamilies" class="btn"><?= gettext('Add All Families') ?></button>
-        <button type="button" id="clearAllFamilies" class="btn"><?= gettext('Clear All Families') ?></button><br/><br/>
+        <button type="button" id="addAllFamilies" class="btn btn-default"><?= gettext('Add All Families') ?></button>
+        <button type="button" id="clearAllFamilies" class="btn btn-default"><?= gettext('Clear All Families') ?></button><br/><br/>
         </td></tr>
         <?php
     }
@@ -245,8 +245,8 @@ if ($sReportType == '') {
         <td></td>
         <td>
         <br/>
-        <button type="button" id="addAllFunds" class="btn"><?= gettext('Add All Funds') ?></button>
-        <button type="button" id="clearAllFunds" class="btn"><?= gettext('Clear All Funds') ?></button><br/><br/>
+        <button type="button" id="addAllFunds" class="btn btn-default"><?= gettext('Add All Funds') ?></button>
+        <button type="button" id="clearAllFunds" class="btn btn-default"><?= gettext('Clear All Funds') ?></button><br/><br/>
         </td></tr>
 
         <?php

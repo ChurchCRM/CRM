@@ -658,7 +658,7 @@ $bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() || ($_SESSION['user']->i
         } ?>
                                 <input type="text" class="date-picker" Name="ShowSinceDate"
                                        value="<?= $showSince ?>" maxlength="10" id="ShowSinceDate" size="15">
-                                <input type="submit" class="btn" <?= 'value="' . gettext("Update") . '"' ?>
+                                <input type="submit" class="btn btn-default" <?= 'value="' . gettext("Update") . '"' ?>
                                        name="UpdatePledgeTable"
                                        style="font-size: 8pt;">
                             </form>

@@ -126,7 +126,7 @@ if ($processNews != '') {
           <table border width="100%" align="left">
             <tr>
               <td align="center" width="25%">
-                <input type="submit" class="btn" value="<?= gettext('Set default fiscal year') ?>"
+                <input type="submit" class="btn btn-default" value="<?= gettext('Set default fiscal year') ?>"
                        name="SetDefaultFY">
               </td>
               <td align="left" width="75%">
@@ -136,7 +136,7 @@ if ($processNews != '') {
 
             <tr>
               <td align="center" width="25%">
-                <input type="submit" class="btn" value="<?= gettext('Assign Canvassers') ?>"
+                <input type="submit" class="btn btn-default" value="<?= gettext('Assign Canvassers') ?>"
                        name="AssignCanvassers">
               </td>
               <td align="left" width="75%">
@@ -147,7 +147,7 @@ if ($processNews != '') {
 
             <tr>
               <td align="center" width="25%">
-                <input type="submit" class="btn" value="<?= gettext('Assign To Non Pledging') ?>"
+                <input type="submit" class="btn btn-default" value="<?= gettext('Assign To Non Pledging') ?>"
                        name="AssignNonPledging">
               </td>
               <td align="left" width="75%">
@@ -158,7 +158,7 @@ if ($processNews != '') {
 
             <tr>
               <td align="center" width="25%">
-                <input type="submit" class="btn" value="<?= gettext('Clear Canvasser Assignments') ?>"
+                <input type="submit" class="btn btn-default" value="<?= gettext('Clear Canvasser Assignments') ?>"
                        name="ClearCanvasserAssignments">
               </td>
               <td align="left" width="75%">
@@ -169,7 +169,7 @@ if ($processNews != '') {
 
             <tr>
               <td align="center" width="25%">
-                <input type="submit" class="btn" value="<?= gettext('Enable Canvass for All Families') ?>"
+                <input type="submit" class="btn btn-default" value="<?= gettext('Enable Canvass for All Families') ?>"
                        name="SetAllOkToCanvass">
               </td>
               <td align="left" width="75%">
@@ -180,7 +180,7 @@ if ($processNews != '') {
 
             <tr>
               <td align="center" width="25%">
-                <input type="submit" class="btn" value="<?= gettext('Disable Canvass for All Families') ?>"
+                <input type="submit" class="btn btn-default" value="<?= gettext('Disable Canvass for All Families') ?>"
                        name="ClearAllOkToCanvass">
               </td>
               <td align="left" width="75%">
@@ -191,7 +191,7 @@ if ($processNews != '') {
 
             <tr>
               <td align="center" width="25%">
-                <input type="submit" class="btn" value="<?= gettext('Briefing Sheets') ?>"
+                <input type="submit" class="btn btn-default" value="<?= gettext('Briefing Sheets') ?>"
                        name="BriefingSheets">
               </td>
               <td align="left" width="75%">
@@ -201,7 +201,7 @@ if ($processNews != '') {
 
             <tr>
               <td align="center" width="25%">
-                <input type="submit" class="btn" value="<?= gettext('Progress Report') ?>"
+                <input type="submit" class="btn btn-default" value="<?= gettext('Progress Report') ?>"
                        name="ProgressReport">
               </td>
               <td align="left" width="75%">
@@ -211,7 +211,7 @@ if ($processNews != '') {
 
             <tr>
               <td align="center" width="25%">
-                <input type="submit" class="btn" value="<?= gettext('Summary Report') ?>"
+                <input type="submit" class="btn btn-default" value="<?= gettext('Summary Report') ?>"
                        name="SummaryReport">
               </td>
               <td align="left" width="75%">
@@ -221,7 +221,7 @@ if ($processNews != '') {
 
             <tr>
               <td align="center" width="25%">
-                <input type="submit" class="btn" value="<?= gettext('Not Interested Report') ?>"
+                <input type="submit" class="btn btn-default" value="<?= gettext('Not Interested Report') ?>"
                        name="NotInterestedReport">
               </td>
               <td align="left" width="75%">

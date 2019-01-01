@@ -365,7 +365,7 @@ if ($numRows == 0) {
 				<tr>
 					<td width="30%"></td>
 					<td width="40%" align="center" valign="bottom">
-						<input type="submit" class="btn" value="<?= gettext('Save Changes') ?>" Name="SaveChanges">
+						<input type="submit" class="btn btn-default" value="<?= gettext('Save Changes') ?>" Name="SaveChanges">
 					</td>
 					<td width="30%"></td>
 				</tr>
@@ -412,7 +412,7 @@ if ($numRows == 0) {
 						&nbsp;
 					</td>
 					<td>
-						<input type="submit" class="btn" value="<?= gettext('Add New Field') ?>" Name="AddField">
+						<input type="submit" class="btn btn-default" value="<?= gettext('Add New Field') ?>" Name="AddField">
 					</td>
 					<td width="15%"></td>
 				</tr>

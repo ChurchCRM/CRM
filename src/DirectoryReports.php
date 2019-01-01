@@ -284,7 +284,7 @@ while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
 <p align="center">
 <BR>
 <input type="submit" class="btn btn-primary" name="Submit" value="<?= gettext('Create Directory') ?>">
-<input type="button" class="btn" name="Cancel" <?= 'value="'.gettext('Cancel').'"' ?> onclick="javascript:document.location='Menu.php';">
+<input type="button" class="btn btn-default" name="Cancel" <?= 'value="'.gettext('Cancel').'"' ?> onclick="javascript:document.location='Menu.php';">
 </p>
 </form>
 </div>
