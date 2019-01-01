@@ -456,7 +456,7 @@ require 'Include/Header.php';
                     <tr>
                         <td colspan="2" align="center">
                             <input type="submit" class="btn btn-primary" value="<?= gettext('Save') ?>" name="save">&nbsp;<input
-                                type="button" class="btn" name="Cancel" value="<?= gettext('Cancel') ?>"
+                                type="button" class="btn btn-default" name="Cancel" value="<?= gettext('Cancel') ?>"
                                 onclick="javascript:document.location='UserList.php';">
                         </td>
                     </tr>
@@ -559,7 +559,7 @@ require 'Include/Header.php';
                     <td colspan="3" class="text-center">
                         <input type="submit" class="btn btn-primary" name="save"
                                value="<?= gettext('Save Settings') ?>">
-                        <input type="submit" class="btn" name="cancel" value="<?= gettext('Cancel') ?>">
+                        <input type="submit" class="btn btn-default" name="cancel" value="<?= gettext('Cancel') ?>">
                     </td>
                 </tr>
             </table>

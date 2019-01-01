@@ -535,7 +535,7 @@ if ($iMode == 1) {
 <input type="text" name="Filter" value="<?= $sFilter ?>">
 <input type="hidden" name="mode" value="<?= $sMode ?>">
 <input type="hidden" name="Letter" value="<?= $sLetter ?>">
-<input type="submit" class="btn" value="<?= gettext('Apply Filter') ?>">
+<input type="submit" class="btn btn-default" value="<?= gettext('Apply Filter') ?>">
 
 </td></tr>
 <?php
@@ -755,7 +755,7 @@ if ($iMode == 1) {
     }
 } ?>
 
-<input type="button" class="btn" value="<?= gettext('Clear Filters') ?>" onclick="javascript:document.location='SelectList.php?mode=<?= $sMode ?>&amp;Sort=<?= $sSort ?>&amp;type=<?= $iGroupTypeMissing ?>'"><BR><BR>
+<input type="button" class="btn btn-default" value="<?= gettext('Clear Filters') ?>" onclick="javascript:document.location='SelectList.php?mode=<?= $sMode ?>&amp;Sort=<?= $sSort ?>&amp;type=<?= $iGroupTypeMissing ?>'"><BR><BR>
 <a id="AddAllToCart" class="btn btn-primary" ><?= gettext('Add All to Cart') ?></a>
 <input name="IntersectCart" type="submit" class="btn btn-warning" value="<?= gettext('Intersect with Cart') ?>">&nbsp;
 <a id="RemoveAllFromCart" class="btn btn-danger" ><?= gettext('Remove All from Cart') ?></a>

@@ -166,7 +166,7 @@ require 'Include/Header.php';
         </div>
         <div class="row">
           <div class="col-md-6">
-            <input type="submit" class="btn" name="Submit" value="<?= gettext('Save') ?>">&nbsp;<input type="button" class="btn" name="Cancel" value="<?= gettext('Cancel') ?>" onclick="document.location='PropertyList.php?Type=<?= $sType ?>';">
+            <input type="submit" class="btn btn-default" name="Submit" value="<?= gettext('Save') ?>">&nbsp;<input type="button" class="btn btn-default" name="Cancel" value="<?= gettext('Cancel') ?>" onclick="document.location='PropertyList.php?Type=<?= $sType ?>';">
         </div>
         </div>
     </div>

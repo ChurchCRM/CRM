@@ -272,7 +272,7 @@ require 'Include/HeaderNotLoggedIn.php';
         <input type="password" id="PasswordBoxLock" name="Password" class="form-control" placeholder="<?= gettext('Password')?>">
 
         <div class="input-group-btn">
-          <button type="submit"  class="btn"><i class="fa fa-arrow-right text-muted"></i></button>
+          <button type="submit"  class="btn btn-default"><i class="fa fa-arrow-right text-muted"></i></button>
         </div>
       </div>
     </form>
