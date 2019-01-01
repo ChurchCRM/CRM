@@ -83,8 +83,6 @@ FontSizeSelect('labelfontsize');
               <input type="button" class="btn" name="Cancel" value="<?= gettext('Cancel') ?>" onclick="javascript:document.location = 'Menu.php';">
             </div>
 
-
-
         </form>
       </div>
     </div>
