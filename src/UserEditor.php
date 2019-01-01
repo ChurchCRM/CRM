@@ -380,7 +380,12 @@ require 'Include/Header.php';
                         <td><?= gettext('Login Name') ?>:</td>
                         <td><input type="text" name="UserName" value="<?= $sUserName ?>" class="form-control" width="32"></td>
                     </tr>
-
+                    <tr>
+                        <td><?= gettext('Admin') ?>:</td>
+                        <td><input type="checkbox" name="Admin" value="1"<?php if ($usr_Admin) {
+                        echo ' checked';
+                    } ?>>&nbsp;<span class="SmallText"><?= gettext('(Grants all privileges.)') ?></span></td>
+                    </tr>
                     <tr>
                         <td><?= gettext('Add Records') ?>:</td>
                         <td><input type="checkbox" name="AddRecords" value="1"<?php if ($usr_AddRecords) {
@@ -441,12 +446,6 @@ require 'Include/Header.php';
                         <td><input type="checkbox" name="Canvasser" value="1"<?php if ($usr_Canvasser) {
                         echo ' checked';
                     } ?>>&nbsp;<span class="SmallText"><?= gettext('(Canvass volunteer.)') ?></span></td>
-                    </tr>
-                    <tr>
-                        <td><?= gettext('Admin') ?>:</td>
-                        <td><input type="checkbox" name="Admin" value="1"<?php if ($usr_Admin) {
-                        echo ' checked';
-                    } ?>>&nbsp;<span class="SmallText"><?= gettext('(Grants all privileges.)') ?></span></td>
                     </tr>
                     <tr>
                         <td><?= gettext('Style') ?>:</td>
