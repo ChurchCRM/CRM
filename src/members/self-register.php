@@ -50,19 +50,12 @@ use ChurchCRM\dto\SystemURLs;
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     $(document).ready(function () {
-        $("#families").DataTable({
-            "language": {
-                "url": window.CRM.plugin.dataTable.language.url
-            },
+
+        var dataTableConfig = {
             ajax: {
                 url: window.CRM.root + "/api/families/self-register",
                 dataSrc: 'families'
             },
-            "dom": window.CRM.plugin.dataTable.dom,
-            "tableTools": {
-                "sSwfPath": window.CRM.plugin.dataTable.tableTools.sSwfPath
-            },
-            responsive: true,
             columns: [
                 {
                     title: i18next.t('Family Id'),
@@ -87,21 +80,18 @@ use ChurchCRM\dto\SystemURLs;
                 }
             ],
             order: [[2, "desc"]]
-        });
+        }
 
-        $("#people").DataTable({
-            "language": {
-                "url": window.CRM.plugin.dataTable.language.url
-            },
+        $.extend(dataTableConfig, window.CRM.plugin.dataTable);
+
+        $("#families").DataTable(dataTableConfig);
+
+
+        dataTableConfig = {
             ajax: {
                 url: window.CRM.root + "/api/persons/self-register",
                 dataSrc: 'people'
             },
-            "dom": window.CRM.plugin.dataTable.dom,
-            "tableTools": {
-                "sSwfPath": window.CRM.plugin.dataTable.tableTools.sSwfPath
-            },
-            responsive: true,
             columns: [
                 {
                     title: i18next.t('Id'),
@@ -131,7 +121,9 @@ use ChurchCRM\dto\SystemURLs;
                 }
             ],
             order: [[3, "desc"]]
-        });
+        }
+        $.extend(dataTableConfig, window.CRM.plugin.dataTable);
+        $("#people").DataTable(dataTableConfig);
     });
 </script>
 
