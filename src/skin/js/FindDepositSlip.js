@@ -8,7 +8,7 @@ $(document).ready(function () {
       'depositComment': $("#depositComment").val(),
       'depositDate': $("#depositDate").val()
     };
-    
+
     if(!$("#depositComment").val().trim()){
         bootbox.confirm({
              title: i18next.t('Add New Deposit'),
@@ -27,13 +27,13 @@ $(document).ready(function () {
                  }
              }
         });
-        
+
     }else{
             addNewDepositRequest(newDeposit);
     }
 
   });
-  
+
   function addNewDepositRequest(newDeposit){
     $.ajax({
       method: "POST",
@@ -48,15 +48,11 @@ $(document).ready(function () {
     });
   };
 
-  dataT = $("#depositsTable").DataTable({
-    "language": {
-      "url": window.CRM.plugin.dataTable.language.url
-    },
+ var dataTableConfig = {
     ajax: {
       url: window.CRM.root + "/api/deposits",
       dataSrc: "Deposits"
     },
-    responsive: true,
     "deferRender": true,
     columns: [
       {
@@ -110,7 +106,9 @@ $(document).ready(function () {
       }
     ],
     order: [0, 'desc']
-  });
+  }
+  $.extend(dataTableConfig, window.CRM.plugin.dataTable);
+  dataT = $("#depositsTable").DataTable(dataTableConfig);
 
   $("#depositsTable tbody").on('click', 'tr', function () {
     $(this).toggleClass('selected');

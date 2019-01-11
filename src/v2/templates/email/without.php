@@ -24,19 +24,11 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     $(document).ready(function () {
-        $("#noEmails").DataTable({
-            "language": {
-                "url": window.CRM.plugin.dataTable.language.url
-            },
+        var dataTableConfig = {
             ajax: {
                 url: window.CRM.root + "/api/families/email/without",
                 dataSrc: 'families'
             },
-            "dom": window.CRM.plugin.dataTable.dom,
-            "tableTools": {
-                "sSwfPath": window.CRM.plugin.dataTable.tableTools.sSwfPath
-            },
-            responsive: true,
             columns: [
                 {
                     title: i18next.t('Family'),
@@ -51,7 +43,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     data: 'Address',
                 },
             ]
-        });
+        }
+        $.extend(dataTableConfig, window.CRM.plugin.dataTable);
+        $("#noEmails").DataTable(dataTableConfig);
     });
 
     function peopleToString(people) {

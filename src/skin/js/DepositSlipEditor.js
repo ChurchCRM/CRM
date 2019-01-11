@@ -43,21 +43,18 @@ function initPaymentTable()
     );
   }
 
-
-  dataT = $("#paymentsTable").DataTable({
+ var dataTableConfig = {
     ajax:{
       url :window.CRM.root+"/api/deposits/"+depositSlipID+"/pledges",
       dataSrc:''
     },
-      "language": {
-          "url": window.CRM.plugin.dataTable.language.url
-      },
     columns: colDef,
-    responsive: true,
     "createdRow" : function (row,data,index) {
       $(row).addClass("paymentRow");
     }
-  });
+  }
+  $.extend(dataTableConfig, window.CRM.plugin.dataTable);
+  dataT = $("#paymentsTable").DataTable(dataTableConfig);
   dataT.on( 'xhr', function () {
    // var json = dataT.ajax.json();
    // console.log( json );
