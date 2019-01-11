@@ -156,7 +156,7 @@ Header_body_scripts();
       })
     })
     .done(function(data) {
-      var downloadButton = "<button class=\"btn btn-primary\" id=\"downloadbutton\" role=\"button\" onclick=\"javascript:downloadbutton('"+data.filename+"')\"><i class='fa fa-download'></i>  "+data.filename+"</button>";
+      var downloadButton = "<button class=\"btn btn-primary\" id=\"downloadbutton\" role=\"button\" onclick=\"javascript:downloadbutton('"+data.BackupDownloadFileName+"')\"><i class='fa fa-download'></i>  "+data.BackupDownloadFileName+"</button>";
       $("#backupstatus").css("color","green");
       $("#backupstatus").html("<?= gettext('Backup Complete, Ready for Download.') ?>");
       $("#resultFiles").html(downloadButton);
