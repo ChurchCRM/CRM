@@ -21,7 +21,7 @@ module.exports = function (grunt) {
         }
         return DTLangs.toString();
     };
-    
+
     const sass = require('node-sass');
 
 // Project configuration.
@@ -466,5 +466,5 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-curl');
     grunt.loadNpmTasks('grunt-poeditor-ab');
     grunt.loadNpmTasks('grunt-exec');
-    
+
 }

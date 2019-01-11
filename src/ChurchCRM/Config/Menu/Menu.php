@@ -60,9 +60,9 @@ class Menu
     {
         $peopleMenu = new MenuItem(gettext("People"), "", true, 'fa-users');
         $peopleMenu->addSubMenu(new MenuItem(gettext("Dashboard"), "PeopleDashboard.php"));
-        $peopleMenu->addSubMenu(new MenuItem(gettext("Add New Person"), "PersonEditor.php", SessionUser::getUser()->isAddRecords()));
+        $peopleMenu->addSubMenu(new MenuItem(gettext("Add New Person"), "PersonEditor.php", SessionUser::getUser()->isAddRecordsEnabled()));
         $peopleMenu->addSubMenu(new MenuItem(gettext("View All Persons"), "SelectList.php?mode=person"));
-        $peopleMenu->addSubMenu(new MenuItem(gettext("Add New Family"), "FamilyEditor.php", SessionUser::getUser()->isAddRecords()));
+        $peopleMenu->addSubMenu(new MenuItem(gettext("Add New Family"), "FamilyEditor.php", SessionUser::getUser()->isAddRecordsEnabled()));
         $peopleMenu->addSubMenu(new MenuItem(gettext("View Active Families"), "v2/family"));
         $peopleMenu->addSubMenu(new MenuItem(gettext("View Inactive Families"), "v2/family?mode=inactive"));
         $adminMenu = new MenuItem(gettext("Admin"), "", SessionUser::isAdmin());
@@ -127,7 +127,7 @@ class Menu
     private static function getEventsMenu()
     {
         $eventsMenu = new MenuItem(gettext("Events"), "", SystemConfig::getBooleanValue("bEnabledEvents"), 'fa-ticket');
-        $eventsMenu->addSubMenu(new MenuItem(gettext("Add Church Event"), "EventEditor.php", SessionUser::getUser()->isAddEvent()));
+        $eventsMenu->addSubMenu(new MenuItem(gettext("Add Church Event"), "EventEditor.php", SessionUser::getUser()->isAddEventEnabled()));
         $eventsMenu->addSubMenu(new MenuItem(gettext("List Church Events"), "ListEvents.php"));
         $eventsMenu->addSubMenu(new MenuItem(gettext("List Event Types"), "EventNames.php"));
         $eventsMenu->addSubMenu(new MenuItem(gettext("Check-in and Check-out"), "Checkin.php"));

@@ -99,9 +99,19 @@ class User extends BaseUser
         return hash('sha256', $password . $this->getPersonId());
     }
 
+    public function isAddEventEnabled()
+    {
+        return $this->isAddEvent();
+    }
+
     public function isAddEvent()
     {
         return $this->isAdmin() || $this->isEnabledSecurity('bAddEvent');
+    }
+
+    public function isCSVExportEnabled()
+    {
+        return $this->isCSVExport();
     }
 
     public function isCSVExport()
