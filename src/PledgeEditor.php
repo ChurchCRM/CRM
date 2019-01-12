@@ -526,7 +526,7 @@ require 'Include/Header.php';
           <input  class="form-control" type="number" name="Envelope" size=8 id="Envelope" value="<?= $iEnvelope ?>">
           <?php if (!$dep_Closed) {
         ?>
-            <input class="form-control" type="submit" class="btn" value="<?= gettext('Find family->') ?>" name="MatchEnvelope">
+            <input class="form-control" type="submit" class="btn btn-default" value="<?= gettext('Find family->') ?>" name="MatchEnvelope">
           <?php
     } ?>
 
@@ -636,8 +636,8 @@ require 'Include/Header.php';
     <div class="col-lg-6">
       <?php if (SystemConfig::getValue('bUseScannedChecks') && $dep_Type == 'Bank') {
         ?>
-        <input type="submit" class="btn" value="<?= gettext('find family from check account #') ?>" name="MatchFamily">
-        <input type="submit" class="btn" value="<?= gettext('Set default check account number for family') ?>" name="SetDefaultCheck">
+        <input type="submit" class="btn btn-default" value="<?= gettext('find family from check account #') ?>" name="MatchFamily">
+        <input type="submit" class="btn btn-default" value="<?= gettext('Set default check account number for family') ?>" name="SetDefaultCheck">
       <?php
     } ?>
     </div>
@@ -752,18 +752,16 @@ require 'Include/Header.php';
       $('[name=FamilyID]').val(e.params.data.id);
     });
 
-    $("#FundTable").DataTable({
-        "language": {
-            "url": window.CRM.plugin.dataTable.language.url
-        },
-        responsive:true,
+
+
+    var dataTableConfig = {
         paging: false,
-        searching: false,
-        "dom": window.CRM.plugin.dataTable.dom,
-        "tableTools": {
-            "sSwfPath": window.CRM.plugin.dataTable.tableTools.sSwfPath
-        },
-    });
+        searching: false
+    }
+
+    $.extend(dataTableConfig, window.CRM.plugin.dataTable);
+
+    $("#FundTable").DataTable(dataTableConfig);
 
 
     $(".FundAmount").change(function(){

@@ -22,7 +22,7 @@ $iGroupID = InputUtils::LegacyFilterInput($_GET['GroupID'], 'int');
 ?>
 
 <div class="callout callout-info">
-    <a href="<?= SystemURLs::getRootPath() ?>/UpdateAllLatLon.php" class="btn"><i class="fa fa-map-marker"></i> </a>
+    <a href="<?= SystemURLs::getRootPath() ?>/UpdateAllLatLon.php" class="btn btn-default"><i class="fa fa-map-marker"></i> </a>
     <?= gettext('Missing Families? Update Family Latitude or Longitude now.') ?>
 </div>
 

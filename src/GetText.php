@@ -32,7 +32,7 @@ $aEventText = $event_text;
   </tr>
   <tr>
     <td align="center" valign="bottom">
-      <input type="button" name="Action" value="Close Window" class="btn" onclick="javascript:window.close()">
+      <input type="button" name="Action" value="Close Window" class="btn btn-default" onclick="javascript:window.close()">
     </td>
   </tr>
 </html>

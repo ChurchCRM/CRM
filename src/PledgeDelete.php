@@ -50,8 +50,8 @@ require 'Include/Header.php';
 
 	<tr>
 		<td align="center">
-			<input type="submit" class="btn" value="<?= gettext('Delete') ?>" name="Delete">
-			<input type="submit" class="btn" value="<?= gettext('Cancel') ?>" name="Cancel">
+			<input type="submit" class="btn btn-default" value="<?= gettext('Delete') ?>" name="Delete">
+			<input type="submit" class="btn btn-default" value="<?= gettext('Cancel') ?>" name="Cancel">
 		</td>
 	</tr>
 </table>

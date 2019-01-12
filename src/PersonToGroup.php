@@ -83,7 +83,7 @@ require 'Include/Header.php';
   </table>
   <p align="center">
     <BR>
-    <input type="submit" class="btn" name="Submit" value="<?= gettext('Add to Group') ?>">
+    <input type="submit" class="btn btn-default" name="Submit" value="<?= gettext('Add to Group') ?>">
     <BR><BR>
   </p>
 </form>

@@ -267,12 +267,12 @@ require 'Include/HeaderNotLoggedIn.php';
     <!-- lockscreen credentials (contains the form) -->
     <form class="lockscreen-credentials" role="form" method="post" name="LoginForm" action="Login.php">
       <div class="input-group">
-        <input type="hidden" id="UserBox" name="User" class="form-control" value="<?= $urlUserName ?>">
+        <input type="hidden" id="UserBoxLock" name="User" class="form-control" value="<?= $urlUserName ?>">
 
-        <input type="password" id="PasswordBox" name="Password" class="form-control" placeholder="<?= gettext('Password')?>">
+        <input type="password" id="PasswordBoxLock" name="Password" class="form-control" placeholder="<?= gettext('Password')?>">
 
         <div class="input-group-btn">
-          <button type="submit"  class="btn"><i class="fa fa-arrow-right text-muted"></i></button>
+          <button type="submit"  class="btn btn-default"><i class="fa fa-arrow-right text-muted"></i></button>
         </div>
       </div>
     </form>

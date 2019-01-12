@@ -133,7 +133,7 @@ Header_body_scripts();
   </ul>
 </div>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
-  $(document).ready(function() { 
+  $(document).ready(function() {
     $("#fileIntegrityCheckResultsTable").DataTable({
       responsive: true,
       paging:false,
@@ -149,14 +149,14 @@ Header_body_scripts();
  $("#doBackup").click(function(){
    $("#status1").html('<i class="fa fa-circle-o-notch fa-spin"></i>');
    window.CRM.APIRequest({
-      method : 'POST', 
+      method : 'POST',
       path : 'database/backup',
       data : JSON.stringify({
         'iArchiveType' : 3
       })
     })
     .done(function(data) {
-      var downloadButton = "<button class=\"btn btn-primary\" id=\"downloadbutton\" role=\"button\" onclick=\"javascript:downloadbutton('"+data.filename+"')\"><i class='fa fa-download'></i>  "+data.filename+"</button>";
+      var downloadButton = "<button class=\"btn btn-primary\" id=\"downloadbutton\" role=\"button\" onclick=\"javascript:downloadbutton('"+data.BackupDownloadFileName+"')\"><i class='fa fa-download'></i>  "+data.BackupDownloadFileName+"</button>";
       $("#backupstatus").css("color","green");
       $("#backupstatus").html("<?= gettext('Backup Complete, Ready for Download.') ?>");
       $("#resultFiles").html(downloadButton);
@@ -215,12 +215,9 @@ function downloadbutton(filename) {
 }
 </script>
 
-<script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/datatables/dataTables.bootstrap.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js" ></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.min.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/datatables/extensions/Select/dataTables.select.min.js"></script>
-
+<script src="<?= SystemURLs::getRootPath() ?>/skin/external/datatables/pdfmake.min.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/external/datatables/vfs_fonts.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/external/datatables/datatables.min.js"></script>
 
 <?php
 // Add the page footer

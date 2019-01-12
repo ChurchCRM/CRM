@@ -29,7 +29,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <th><?= gettext('Address') ?></th>
                 <th><?= gettext('Home Phone') ?></th>
                 <th><?= gettext('Cell Phone') ?></th>
-                <th><?= gettext('email') ?></th>
+                <th><?= gettext('Email') ?></th>
                 <th><?= gettext('Created') ?></th>
                 <th><?= gettext('Edited') ?></th>
             </tr>

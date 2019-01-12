@@ -380,7 +380,12 @@ require 'Include/Header.php';
                         <td><?= gettext('Login Name') ?>:</td>
                         <td><input type="text" name="UserName" value="<?= $sUserName ?>" class="form-control" width="32"></td>
                     </tr>
-
+                    <tr>
+                        <td><?= gettext('Admin') ?>:</td>
+                        <td><input type="checkbox" name="Admin" value="1"<?php if ($usr_Admin) {
+                        echo ' checked';
+                    } ?>>&nbsp;<span class="SmallText"><?= gettext('(Grants all privileges.)') ?></span></td>
+                    </tr>
                     <tr>
                         <td><?= gettext('Add Records') ?>:</td>
                         <td><input type="checkbox" name="AddRecords" value="1"<?php if ($usr_AddRecords) {
@@ -443,12 +448,6 @@ require 'Include/Header.php';
                     } ?>>&nbsp;<span class="SmallText"><?= gettext('(Canvass volunteer.)') ?></span></td>
                     </tr>
                     <tr>
-                        <td><?= gettext('Admin') ?>:</td>
-                        <td><input type="checkbox" name="Admin" value="1"<?php if ($usr_Admin) {
-                        echo ' checked';
-                    } ?>>&nbsp;<span class="SmallText"><?= gettext('(Grants all privileges.)') ?></span></td>
-                    </tr>
-                    <tr>
                         <td><?= gettext('Style') ?>:</td>
                         <td class="TextColumnWithBottomBorder"><select
                                 name="Style"><?php StyleSheetOptions($usr_Style); ?></select></td>
@@ -456,7 +455,7 @@ require 'Include/Header.php';
                     <tr>
                         <td colspan="2" align="center">
                             <input type="submit" class="btn btn-primary" value="<?= gettext('Save') ?>" name="save">&nbsp;<input
-                                type="button" class="btn" name="Cancel" value="<?= gettext('Cancel') ?>"
+                                type="button" class="btn btn-default" name="Cancel" value="<?= gettext('Cancel') ?>"
                                 onclick="javascript:document.location='UserList.php';">
                         </td>
                     </tr>
@@ -559,7 +558,7 @@ require 'Include/Header.php';
                     <td colspan="3" class="text-center">
                         <input type="submit" class="btn btn-primary" name="save"
                                value="<?= gettext('Save Settings') ?>">
-                        <input type="submit" class="btn" name="cancel" value="<?= gettext('Cancel') ?>">
+                        <input type="submit" class="btn btn-default" name="cancel" value="<?= gettext('Cancel') ?>">
                     </td>
                 </tr>
             </table>
