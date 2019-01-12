@@ -122,12 +122,21 @@ namespace ChurchCRM\Backup
               curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_ANY);
               curl_setopt($ch, CURLOPT_USERPWD, $credentials);
               curl_setopt($ch, CURLOPT_PUT, true);
+              curl_setopt($ch, CURLOPT_FAILONERROR, true); 
               curl_setopt($ch, CURLOPT_INFILE, $fh);
               curl_setopt($ch, CURLOPT_INFILESIZE, $this->BackupFile->getSize());
               LoggerUtils::getAppLogger()->debug("Beginning to send file");
               $time = new \ChurchCRM\Utils\ExecutionTime();
               $result = curl_exec($ch);
+              if (curl_error($ch)) {
+                  $error_msg = curl_error($ch);
+              }
+              curl_close($ch);
               fclose($fh);
+              
+              if( isset($error_msg)) {
+                throw new \Exception("Error backing up to remote: ". $error_msg);
+              }
               LoggerUtils::getAppLogger()->debug("File send complete.  Took: " . $time->getMiliseconds() . "ms");
           } catch (\Exception $e) {
               LoggerUtils::getAppLogger()->err("Error copying backup: " . $e);
