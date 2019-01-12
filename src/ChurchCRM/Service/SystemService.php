@@ -15,6 +15,8 @@ use PDO;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\ExecutionTime;
+use ChurchCRM\Backup\BackupJob;
+use ChurchCRM\Backup\BackupType;
 
 require SystemURLs::getDocumentRoot() . '/vendor/ifsnop/mysqldump-php/src/Ifsnop/Mysqldump/Mysqldump.php';
 
@@ -58,105 +60,6 @@ class SystemService
         }
         return $buildTime->format("Y");
     }
-
-    public function restoreDatabaseFromBackup($file)
-    {
-        requireUserGroupMembership('bAdmin');
-        $restoreResult = new \stdClass();
-        $restoreResult->Messages = [];
-        $connection = Propel::getConnection();
-        $restoreResult->file = $file;
-        $restoreResult->type = pathinfo($file['name'], PATHINFO_EXTENSION);
-        $restoreResult->type2 = pathinfo(mb_substr($file['name'], 0, strlen($file['name']) - 3), PATHINFO_EXTENSION);
-        $restoreResult->root = SystemURLs::getDocumentRoot();
-        $restoreResult->headers = [];
-        $restoreResult->backupRoot = SystemURLs::getDocumentRoot() . '/tmp_attach/';
-        $restoreResult->backupDir = $restoreResult->backupRoot  . '/ChurchCRMRestores/';
-        $restoreResult->uploadedFileDestination =  $restoreResult->backupDir . '/' . $file['name'];
-        // Delete any old backup files
-        FileSystemUtils::recursiveRemoveDirectory($restoreResult->backupRoot,true);
-        mkdir($restoreResult->backupDir);
-        move_uploaded_file($file['tmp_name'], $restoreResult->uploadedFileDestination);
-        if ($restoreResult->type == 'gz') {
-            if ($restoreResult->type2 == 'tar') {
-                $phar = new PharData($restoreResult->uploadedFileDestination);
-                $phar->extractTo($restoreResult->backupDir);
-                $restoreResult->SQLfile = "$restoreResult->backupDir/ChurchCRM-Database.sql";
-                if (file_exists($restoreResult->SQLfile))
-                {
-                  SQLUtils::sqlImport($restoreResult->SQLfile, $connection);
-                  FileSystemUtils::recursiveRemoveDirectory(SystemURLs::getDocumentRoot() . '/Images');
-                  FileSystemUtils::recursiveCopyDirectory($restoreResult->backupDir . '/Images/', SystemURLs::getImagesRoot());
-                }
-                else
-                {
-                  FileSystemUtils::recursiveRemoveDirectory($restoreResult->backupDir,true);
-                  throw new Exception(gettext("Backup archive does not contain a database").": " . $file['name']);
-                }
-
-            } elseif ($restoreResult->type2 == 'sql') {
-                $restoreResult->SQLfile = $restoreResult->backupDir . str_replace('.gz', '', $file['name']);
-                file_put_contents($restoreResult->SQLfile, gzopen($restoreResult->uploadedFileDestination, r));
-                SQLUtils::sqlImport($restoreResult->SQLfile, $connection);
-            }
-        } elseif ($restoreResult->type == 'sql') {
-            SQLUtils::sqlImport($restoreResult->uploadedFileDestination, $connection);
-        } else {
-            FileSystemUtils::recursiveRemoveDirectory($restoreResult->backupDir,true);
-            throw new Exception(gettext("Unknown File Type").": " . $restoreResult->type . " ".gettext("from file").": " . $file['name']);
-        }
-        FileSystemUtils::recursiveRemoveDirectory($restoreResult->backupRoot,true);
-        $restoreResult->UpgradeStatus = UpgradeService::upgradeDatabaseVersion();
-        SQLUtils::sqlImport(SystemURLs::getDocumentRoot() . '/mysql/upgrade/rebuild_views.sql', $connection);
-        //When restoring a database, do NOT let the database continue to create remote backups.
-        //This can be very troublesome for users in a testing environment.
-        SystemConfig::setValue('bEnableExternalBackupTarget', '0');
-        array_push($restoreResult->Messages, gettext('As part of the restore, external backups have been disabled.  If you wish to continue automatic backups, you must manuall re-enable the bEnableExternalBackupTarget setting.'));
-        SystemConfig::setValue('sLastIntegrityCheckTimeStamp', null);
-
-        return $restoreResult;
-    }
-
-    public static function copyBackupToExternalStorage()
-    {
-        $params = new \stdClass();
-        $params->iArchiveType = 3;
-        if (strcasecmp(SystemConfig::getValue('sExternalBackupType'), 'WebDAV') == 0) {
-            if (SystemConfig::getValue('sExternalBackupUsername') && SystemConfig::getValue('sExternalBackupPassword') && SystemConfig::getValue('sExternalBackupEndpoint')) {
-                $backup = self::getDatabaseBackup($params);
-                $backup->credentials = SystemConfig::getValue('sExternalBackupUsername') . ':' . SystemConfig::getValue('sExternalBackupPassword');
-                $backup->filesize = filesize($backup->saveTo);
-                $fh = fopen($backup->saveTo, 'r');
-                $backup->remoteUrl = SystemConfig::getValue('sExternalBackupEndpoint');
-                $ch = curl_init($backup->remoteUrl . $backup->filename);
-                curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_ANY);
-                curl_setopt($ch, CURLOPT_USERPWD, $backup->credentials);
-                curl_setopt($ch, CURLOPT_PUT, true);
-                curl_setopt($ch, CURLOPT_INFILE, $fh);
-                curl_setopt($ch, CURLOPT_INFILESIZE, $backup->filesize);
-                $backup->result = curl_exec($ch);
-                $responseCode = curl_getinfo($ch, CURLINFO_RESPONSE_CODE);
-                if (substr($responseCode,0,1) != "2")
-                {
-                  // the remote server didn't respond with 2xx, so it's an error:
-                  throw new \Exception("Could not back up '".$backup->filename."' (".$backup->filesize." bytes) to '".$backup->remoteUrl.". Was expecting 2xx, got: ".curl_getinfo($ch, CURLINFO_RESPONSE_CODE), 500);
-                }
-                fclose($fh);
-
-                return $backup;
-            }
-        } elseif (strcasecmp(SystemConfig::getValue('sExternalBackupType'), 'Local') == 0) {
-            try {
-                $backup = self::getDatabaseBackup($params);
-                exec('mv ' . $backup->saveTo . ' ' . SystemConfig::getValue('sExternalBackupEndpoint'));
-
-                return $backup;
-            } catch (\Exception $exc) {
-                throw new \Exception('The local path ' . SystemConfig::getValue('sExternalBackupEndpoint') . ' is not writeable.  Unable to store backup.', 500);
-            }
-        }
-    }
-
 
     public function getConfigurationSetting($settingName, $settingValue)
     {
@@ -291,10 +194,13 @@ class SystemService
             if (self::IsTimerThresholdExceeded(SystemConfig::getValue('sLastBackupTimeStamp'), SystemConfig::getValue('sExternalBackupAutoInterval'))) {
               // if there was no previous backup, or if the interval suggests we do a backup now.
               LoggerUtils::getAppLogger()->addInfo("Starting a backup job.  Last backup run: ".SystemConfig::getValue('sLastBackupTimeStamp'));
-              $backup = self::copyBackupToExternalStorage();  // Tell system service to do an external storage backup.
+              $BaseName = preg_replace('/[^a-zA-Z0-9\-_]/','', SystemConfig::getValue('sChurchName')). "-" . date(SystemConfig::getValue("sDateFilenameFormat"));
+              $Backup = new BackupJob($BaseName, BackupType::FullBackup, SystemConfig::getValue('bBackupExtraneousImages'));
+              $Backup->Execute();
+              $Backup->CopyToWebDAV(SystemConfig::getValue('sExternalBackupEndpoint'), SystemConfig::getValue('sExternalBackupUsername'), SystemConfig::getValue('sExternalBackupPassword'));
               $now = new \DateTime();  // update the LastBackupTimeStamp.
               SystemConfig::setValue('sLastBackupTimeStamp', $now->format(SystemConfig::getValue('sDateFilenameFormat')));
-              LoggerUtils::getAppLogger()->addInfo("Backup job successful: '".$backup->filename."' (".$backup->filesize." bytes) copied to '".$backup->remoteUrl."'");
+              LoggerUtils::getAppLogger()->addInfo("Backup job successful");
             }
             else {
               LoggerUtils::getAppLogger()->addInfo("Not starting a backup job.  Last backup run: ".SystemConfig::getValue('sLastBackupTimeStamp').".");
