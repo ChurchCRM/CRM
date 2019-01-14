@@ -1153,13 +1153,13 @@ while ($aRow = mysqli_fetch_array($rsPersons)) {
 
     echo '<td>';
     // Phone number or zip code
-    if ($sPersonColumn5 == 'Home Phone') {
+    if ($sPersonColumn5 == gettext('Home Phone')) {
         echo SelectWhichInfo(ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy),
                 ExpandPhoneNumber($per_HomePhone, $fam_Country, $dummy), true);
-    } elseif ($sPersonColumn5 == 'Work Phone') {
+    } elseif ($sPersonColumn5 == gettext('Work Phone')) {
         echo SelectWhichInfo(ExpandPhoneNumber($per_WorkPhone, $fam_Country, $dummy),
                 ExpandPhoneNumber($fam_WorkPhone, $fam_Country, $dummy), true);
-    } elseif ($sPersonColumn5 == 'Mobile Phone') {
+    } elseif ($sPersonColumn5 == gettext('Mobile Phone')) {
         echo SelectWhichInfo(ExpandPhoneNumber($per_CellPhone, $fam_Country, $dummy),
                 ExpandPhoneNumber($fam_CellPhone, $fam_Country, $dummy), true);
     } else {
