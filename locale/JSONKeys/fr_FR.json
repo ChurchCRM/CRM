@@ -1766,8 +1766,6 @@
     "None State": "Statut inconnu",
     "Unavailable person info inherited from assigned family for display?\\rThis option causes certain info from a person's assigned family record to be\\rdisplayed IF the corresponding info has NOT been entered for that person. ": "Afficher les informations personnelle indisponible hérité de la famille assigné?\\rCette option entraînera l'affichage de certaines informations d'une famille\\r SI les informations correspondantes n'ont PAS été renseignées pour cette personne. ",
     "Backup archive does not contain a database": "La sauvegarde archivée ne contient pas de Base de Données",
-    "Unknown File Type": "Type de fichier inconnu",
-    "from file": "du fichier",
     "Missing Coordinates": "Cordonnées manquantes",
     "Family Coordinates Data for Some Families": "Coordonnées de la famille pour certaines familles",
     "Make user-entered zip/postcodes UPPERCASE when saving to the database.": "Forcer la saisie du Code Postale en MAJUSCULE pour la sauvegarde dans la Base de Donnée.",

@@ -1749,8 +1749,6 @@
     "None State": "无州",
     "Unavailable person info inherited from assigned family for display?\\rThis option causes certain info from a person's assigned family record to be\\rdisplayed IF the corresponding info has NOT been entered for that person. ": "从指定的系列继承的不可用的人员信息是否显示？\\ r \\ n此选项会导致人员指定的家庭记录中的某些信息被显示，如果尚未为该人输入相应的信息。",
     "Backup archive does not contain a database": "备份存档不包含数据库",
-    "Unknown File Type": "未知的文件类型",
-    "from file": "自文档",
     "Missing Coordinates": "缺少坐标",
     "Family Coordinates Data for Some Families": "一些家庭的家庭坐标数据",
     "Make user-entered zip/postcodes UPPERCASE when saving to the database.": "将用户输入的邮编/邮政编码以大写方式保存到数据库。",
