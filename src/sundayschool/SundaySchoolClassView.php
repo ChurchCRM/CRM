@@ -8,6 +8,7 @@ use ChurchCRM\Service\SundaySchoolService;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\MiscUtils;
+use ChurchCRM\SessionUser;
 
 $sundaySchoolService = new SundaySchoolService();
 
