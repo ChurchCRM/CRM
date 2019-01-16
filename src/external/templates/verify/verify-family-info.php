@@ -133,7 +133,7 @@ $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
                   <div class="radio">
                     <label>
                       <input type="radio" name="verifyType" id="NoChanges" value="no-change" checked="">
-                      <?= gettext('All information on thie page is correct.') ?>
+                      <?= gettext('All information on this page is correct.') ?>
                     </label>
                   </div>
                   <div class="radio">
