@@ -17,6 +17,7 @@ use ChurchCRM\Service\PersonService;
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\Utils\LoggerUtils;
 
 $personService = new PersonService();
 $systemService = new SystemService();
@@ -28,9 +29,9 @@ $_SESSION['sSoftwareInstalledVersion'] = SystemService::getInstalledVersion();
 
 if (empty($bSuppressSessionTests)) {  // This is used for the login page only.
     // Basic security: If the UserID isn't set (no session), redirect to the login page
-
     if (!isset($_SESSION['user'])) {
         $LoginLocation = '?location='. urlencode(substr($_SERVER['REQUEST_URI'], 1));
+        LoggerUtils::getAppLogger()->addInfo("No user session set; redirecting session (".session_id() .") to '".'Login.php'.$LoginLocation."'");
         RedirectUtils::Redirect('Login.php'.$LoginLocation);
         exit;
     }
@@ -38,6 +39,7 @@ if (empty($bSuppressSessionTests)) {  // This is used for the login page only.
     try {
         $_SESSION['user']->reload();
     } catch (\Exception $exc) {
+        LoggerUtils::getAppLogger()->addInfo("Unable to reload user; redirecting session (".session_id() .") to Login.php");
         RedirectUtils::Redirect('Login.php');
         exit;
     }
@@ -47,6 +49,7 @@ if (empty($bSuppressSessionTests)) {  // This is used for the login page only.
     if (SystemConfig::getValue('iSessionTimeout') > 0) {
         if ((time() - $_SESSION['tLastOperation']) > SystemConfig::getValue('iSessionTimeout')) {
             $LoginLocation = '?location='. urlencode(substr($_SERVER['REQUEST_URI'], 1));
+            LoggerUtils::getAppLogger()->addInfo("Session expired; redirecting session (".session_id() .") to '".'Login.php'.$LoginLocation."'");
             RedirectUtils::Redirect('Login.php'.$LoginLocation);
             exit;
         } else {
@@ -56,6 +59,7 @@ if (empty($bSuppressSessionTests)) {  // This is used for the login page only.
 
     // If this user needs to change password, send to that page
     if ($_SESSION['user']->getNeedPasswordChange() && !isset($bNoPasswordRedirect)) {
+        LoggerUtils::getAppLogger()->addInfo("User needs password change.  Redirecting.");
         RedirectUtils::Redirect('UserPasswordChange.php?PersonID='.$_SESSION['user']->getId());
         exit;
     }
