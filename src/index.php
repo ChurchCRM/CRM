@@ -49,15 +49,15 @@ if (strtolower($shortName) == 'index.php' || strtolower($fileName) == 'index.php
     require 'Login.php';
 } elseif (file_exists($shortName)) {
     // Try actual path
-    LoggerUtils::getAppLogger()->addInfo("Including shortname: " . $shortName);  
+    LoggerUtils::getAppLogger()->addInfo("Including shortname: " . $shortName);
     require $shortName;
 } elseif (file_exists($fileName)) {
     // Try magic filename
-    LoggerUtils::getAppLogger()->addInfo("Including filename: " . $fileName);  
+    LoggerUtils::getAppLogger()->addInfo("Including filename: " . $fileName);
     require $fileName;
 } elseif (strpos($_SERVER['REQUEST_URI'], 'js') || strpos($_SERVER['REQUEST_URI'], 'css')) { // if this is a CSS or JS file that we can't find, return 404
-  LoggerUtils::getAppLogger()->addInfo("Could not find:  " . $_SERVER['REQUEST_URI'] );
-  header($_SERVER['SERVER_PROTOCOL'].' 404 Not Found', true, 404);
+    LoggerUtils::getAppLogger()->addInfo("Could not find:  " . $_SERVER['REQUEST_URI']);
+    header($_SERVER['SERVER_PROTOCOL'].' 404 Not Found', true, 404);
     exit;
 } else {
     header('Location: index.php');
