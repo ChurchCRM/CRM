@@ -152,7 +152,7 @@ Header_body_scripts();
       method : 'POST',
       path : 'database/backup',
       data : JSON.stringify({
-        'iArchiveType' : 3
+        'BackupType' : 3
       })
     })
     .done(function(data) {
