@@ -365,20 +365,21 @@ namespace ChurchCRM\Backup
           LoggerUtils::getAppLogger()->debug("Finished restoring full archive");
       }
       
-      private function RestoreGZSQL() {
-        LoggerUtils::getAppLogger()->debug("Decompressing gzipped SQL file: ". $this->RestoreFile);
-        $gzf = gzopen($this->RestoreFile, 'r');
-        $buffer_size = 4096;
-        $SqlFile = new \SplFileInfo($this->TempFolder."/".'ChurchCRM-Database.sql');
-        $out_file = fopen($SqlFile, 'wb'); 
-        while (!gzeof($gzf)) {
-          fwrite($out_file, gzread($gzf, $buffer_size));
-        }
-        fclose($out_file);
-        gzclose($gzf);
-        $this->RestoreSQLBackup($SqlFile);
-        unlink($this->RestoreFile);
-        unlink($SqlFile->getPathname());
+      private function RestoreGZSQL()
+      {
+          LoggerUtils::getAppLogger()->debug("Decompressing gzipped SQL file: ". $this->RestoreFile);
+          $gzf = gzopen($this->RestoreFile, 'r');
+          $buffer_size = 4096;
+          $SqlFile = new \SplFileInfo($this->TempFolder."/".'ChurchCRM-Database.sql');
+          $out_file = fopen($SqlFile, 'wb');
+          while (!gzeof($gzf)) {
+              fwrite($out_file, gzread($gzf, $buffer_size));
+          }
+          fclose($out_file);
+          gzclose($gzf);
+          $this->RestoreSQLBackup($SqlFile);
+          unlink($this->RestoreFile);
+          unlink($SqlFile->getPathname());
       }
       
       private function PostRestoreCleanup()
@@ -396,8 +397,8 @@ namespace ChurchCRM\Backup
       {
           LoggerUtils::getAppLogger()->info("Executing restore job");
           try {
-            $this->DecryptBackup();
-            switch ($this->BackupType) {
+              $this->DecryptBackup();
+              switch ($this->BackupType) {
               case BackupType::SQL:
                 $this->RestoreSQLBackup($this->RestoreFile);
                 break;
@@ -408,8 +409,8 @@ namespace ChurchCRM\Backup
                 $this->RestoreFullBackup();
                 break;
             }
-            $this->PostRestoreCleanup();
-            LoggerUtils::getAppLogger()->info("Finished executing restore job.  Cleaning out temp folder.");
+              $this->PostRestoreCleanup();
+              LoggerUtils::getAppLogger()->info("Finished executing restore job.  Cleaning out temp folder.");
           } catch (Exception $ex) {
               LoggerUtils::getAppLogger()->error("Error restoring backup: " . $ex);
           }
