@@ -2279,5 +2279,7 @@
     "Generate Backup": "Generar Respaldo",
     "Remote Backup Endpoint.  If WebDAV, this must be url encoded. ": "Punto de Respaldo Remoto. En caso de WebDAV, este debe tener codificación por url.",
     "Include initials image files, remote image files (gravatar), and thumbnails in backup.  These files are generally able to be reproduced after a restore and add very little value to the backup archive at a large expense of execution time and storage": "Incluir archivos de imágenes iniciales, archivos de imágenes remotas (gravatar), y miniaturas en respaldo. Estos archivos por lo general pueden ser reproducidos después de haber restaurado. Agregan muy poco valor al archivo de respaldo, con altos costos en tiempo de ejecución y almacenamiento.",
-    "Password (if any)": "Contraseña (si hubiera)"
+    "Password (if any)": "Contraseña (si hubiera)",
+    "All information on this page is correct.": "Toda la información en esta página es correcta.",
+    "Please update the my family information with the following": "Por favor actualice la información familiar con lo siguiente"
 }
