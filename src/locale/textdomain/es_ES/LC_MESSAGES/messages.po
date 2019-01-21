@@ -9181,3 +9181,13 @@ msgstr "Incluir archivos de imágenes iniciales, archivos de imágenes remotas (
 msgid "Password (if any)"
 msgstr "Contraseña (si hubiera)"
 
+#. thie -> this
+#: 
+#, fuzzy
+msgid "All information on this page is correct."
+msgstr "Toda la información en esta página es correcta."
+
+#: 
+msgid "Please update the my family information with the following"
+msgstr "Por favor actualice la información familiar con lo siguiente"
+

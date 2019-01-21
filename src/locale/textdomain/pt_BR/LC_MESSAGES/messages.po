@@ -3445,7 +3445,7 @@ msgstr "Salvar Configurações"
 
 #: 
 msgid "Default User Settings"
-msgstr " Configurações padrão de usuários"
+msgstr "Configurações padrão de usuários"
 
 #: 
 msgid "Set Permission True to give new users the ability to change their current value.<BR>"
@@ -4596,7 +4596,7 @@ msgstr "Configuração do Usuário"
 
 #: 
 msgid "Email Setup"
-msgstr "Configuração de E-mail"
+msgstr "Configurações E-mail"
 
 #: 
 msgid "Map Settings"
@@ -4632,7 +4632,7 @@ msgstr "Verdadeiro"
 
 #: 
 msgid "Edit Settings"
-msgstr "Editar Configurações"
+msgstr "Configurações"
 
 #: 
 msgid "Upgrade ChurchCRM"
@@ -4897,7 +4897,7 @@ msgstr "Se você precisar fazer mudanças nos dados de registro, vá para "
 
 #: 
 msgid "Admin->Edit General Settings"
-msgstr "Admin->Editar Configurações Gerais"
+msgstr "Admin > Configurações Gerais"
 
 #: 
 msgid "Signature definition file signature failed validation"
@@ -5048,7 +5048,7 @@ msgstr "Membros:"
 
 #: 
 msgid "Edit General Settings"
-msgstr "Editar Configurações Gerais"
+msgstr "Configurações Gerais"
 
 #: 
 #, fuzzy
@@ -8562,7 +8562,8 @@ msgstr "Texto do Sermão"
 
 #: 
 msgid "Change Settings"
-msgstr "Configuração de Alterações"
+msgstr "Configurações\n"
+""
 
 #: 
 msgid "Unknown Type"
@@ -8604,7 +8605,7 @@ msgstr "Exigir que este banco de dados ChurchCRM seja acessado através de HTTPS
 
 #: 
 msgid "People Setup"
-msgstr "Configuração de Pessoas"
+msgstr "Configurações Pessoas"
 
 #: 
 msgid "Church Services"
@@ -9332,4 +9333,29 @@ msgstr "Arquivo de resultado de verificação de integridade de erro de decodifi
 #: 
 msgid "Error decoding signature definition file"
 msgstr "Erro ao decodificar o arquivo de definição de assinatura"
+
+#: 
+msgid "Generate Backup"
+msgstr "Gerar Backup"
+
+#: 
+msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
+msgstr "Ponto final do backup remoto. Se WebDAV, isso deve ser codificado por url"
+
+#: 
+msgid "Include initials image files, remote image files (gravatar), and thumbnails in backup.  These files are generally able to be reproduced after a restore and add very little value to the backup archive at a large expense of execution time and storage"
+msgstr "Inclua arquivos de imagem iniciais, arquivos de imagem remotos (gravatar) e miniaturas no backup. Em geral, esses arquivos podem ser reproduzidos após uma restauração e adicionar muito pouco valor ao arquivo de backup com grande despesa de tempo de execução e armazenamento."
+
+#: 
+msgid "Password (if any)"
+msgstr "Senha (Se houver)"
+
+#: 
+#, fuzzy
+msgid "All information on this page is correct."
+msgstr "Todas as informações na página estão corretas."
+
+#: 
+msgid "Please update the my family information with the following"
+msgstr "Por favor, atualize as informações da minha família com o seguinte"
 
