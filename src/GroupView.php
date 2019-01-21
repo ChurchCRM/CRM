@@ -23,6 +23,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\ListOptionQuery;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\SessionUser;
 
 //Get the GroupID out of the querystring
 $iGroupID = InputUtils::LegacyFilterInput($_GET['GroupID'], 'int');
@@ -121,7 +122,7 @@ require 'Include/Header.php';
         }
         $sEmailLink = urlencode($sEmailLink);  // Mailto should comply with RFC 2368
 
-        if ($bEmailMailto) { // Does user have permission to email groups
+        if (SessionUser::getUser()->isEmailEnabled()) { // Does user have permission to email groups
         // Display link
         ?>
         <div class="btn-group">
@@ -177,7 +178,7 @@ require 'Include/Header.php';
         }
     }
     if ($sPhoneLink) {
-        if ($bEmailMailto) { // Does user have permission to email groups
+        if (SessionUser::getUser()->isEmailEnabled()) { // Does user have permission to email groups
             // Display link
             echo '<a class="btn btn-app" href="javascript:void(0)" onclick="allPhonesCommaD()"><i class="fa fa-mobile-phone"></i>'.gettext('Text Group').'</a>';
             echo '<script nonce="'. SystemURLs::getCSPNonce() .'">function allPhonesCommaD() {prompt("'.gettext("Press CTRL + C to copy all group members\' phone numbers").'", "'.mb_substr($sPhoneLink, 0, -2).'")};</script>';

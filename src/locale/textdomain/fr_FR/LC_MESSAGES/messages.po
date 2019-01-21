@@ -7083,14 +7083,6 @@ msgid "Backup archive does not contain a database"
 msgstr "La sauvegarde archivée ne contient pas de Base de Données"
 
 #: 
-msgid "Unknown File Type"
-msgstr "Type de fichier inconnu"
-
-#: 
-msgid "from file"
-msgstr "du fichier"
-
-#: 
 msgid "Missing Coordinates"
 msgstr "Cordonnées manquantes"
 

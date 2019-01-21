@@ -362,7 +362,7 @@
     "November": "十一月",
     "December": "十二月",
     "Unk": "安克",
-    "Family List": "家家列表",
+    "Family List": "家庭列表",
     "Add Family": "添加家庭",
     "Created": "已建立",
     "Edited": "已編輯",
@@ -1766,8 +1766,6 @@
     "None State": "無州",
     "Unavailable person info inherited from assigned family for display?\\rThis option causes certain info from a person's assigned family record to be\\rdisplayed IF the corresponding info has NOT been entered for that person. ": "從指定的系列繼承的不可用的人員信息是否顯示？\\ r \\ n此選項會導致人員指定的家庭記錄中的某些信息被顯示，如果尚未為該人輸入相應的信息。",
     "Backup archive does not contain a database": "備份存檔不包含資料庫",
-    "Unknown File Type": "未知的文件类型",
-    "from file": "自文档",
     "Missing Coordinates": "缺少坐標",
     "Family Coordinates Data for Some Families": "一些家庭的家庭坐標數據",
     "Make user-entered zip/postcodes UPPERCASE when saving to the database.": "將用戶輸入的ZIP/郵遞區號以大寫方式保存到資料庫。",
@@ -2277,5 +2275,11 @@
     "Classifcation": "分類",
     "Estonian": "愛沙尼亞語",
     "Error decoding integrity check result file": "解碼完整性檢查結果文件錯誤",
-    "Error decoding signature definition file": "解碼簽名定義文件錯誤"
+    "Error decoding signature definition file": "解碼簽名定義文件錯誤",
+    "Generate Backup": "生成備份",
+    "Remote Backup Endpoint.  If WebDAV, this must be url encoded. ": "遠程備份端點。如果是WebDAV，必須是url編碼的。",
+    "Include initials image files, remote image files (gravatar), and thumbnails in backup.  These files are generally able to be reproduced after a restore and add very little value to the backup archive at a large expense of execution time and storage": "在備份中包括縮寫圖像文件，遠端圖像文件（gravatar）和縮圖。這些文件通常能夠在還原後再現，卻花費很大的執行時間和存儲成本為備份存檔添加非常少的益處.",
+    "Password (if any)": "密碼（如果有的話）",
+    "All information on thie page is correct.": "頁面上的所有信息都是正確的。",
+    "Please update the my family information with the following": "請使用以下內容更新我的家庭信息"
 }

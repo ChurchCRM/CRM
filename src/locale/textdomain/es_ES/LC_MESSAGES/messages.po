@@ -7095,14 +7095,6 @@ msgid "Backup archive does not contain a database"
 msgstr "Archivo de respaldo no contiene una base de datos"
 
 #: 
-msgid "Unknown File Type"
-msgstr "Tipo de Archivo Desconocido"
-
-#: 
-msgid "from file"
-msgstr "de archivo"
-
-#: 
 #, fuzzy
 msgid "Missing Coordinates"
 msgstr "Coordenadas faltantes"

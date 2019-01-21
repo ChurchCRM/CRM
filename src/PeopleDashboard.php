@@ -24,6 +24,7 @@ $personCount = $dashboardService->getPersonCount();
 $personStats = $dashboardService->getPersonStats();
 $familyCount = $dashboardService->getFamilyCount();
 $groupStats = $dashboardService->getGroupStats();
+$ageStats = $dashboardService->getAgeStats();
 $demographicStats = ListOptionQuery::create()->filterByID('2')->find();
 
 $sSQL = 'select count(*) as numb, per_Gender from person_per, family_fam
@@ -88,7 +89,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
             $sEmailLink .= $sMailtoDelimiter.SystemConfig::getValue('sToEmailAddress');
         }
         $sEmailLink = urlencode($sEmailLink);  // Mailto should comply with RFC 2368
-       if ($bEmailMailto) { // Does user have permission to email groups
+       if (SessionUser::getUser()->isEmailEnabled()) { // Does user have permission to email groups
       // Display link
        ?>
         <div class="btn-group">
@@ -449,6 +450,20 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
         <canvas id="gender-donut" style="height:250px"></canvas>
       </div>
     </div>
+    <div class="box box-info">
+      <div class="box-header">
+        <i class="fa fa-birthday-cake"></i>
+        <h3 class="box-title"><?= gettext('Age Histogram') ?></h3>
+
+        <div class="box-tools pull-right">
+          <div id="age-stats-bar-legend" class="chart-legend"></div>
+        </div>
+      </div>
+      <!-- /.box-header -->
+      <div class="box-body">
+        <canvas id="age-stats-bar" style="height:250px"></canvas>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -503,6 +518,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
 
         var pieChartCanvas = $("#gender-donut").get(0).getContext("2d");
         var pieChart = new Chart(pieChartCanvas);
+     
 
         //Create pie or douhnut chart
         // You can switch between pie and douhnut using the method below.
@@ -513,6 +529,40 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
 
         //and append it to your page somewhere
         $('#gender-donut-legend').append(legend);
+        var ageLabels = <?php
+          echo json_encode(array_keys($ageStats));
+        ?>;
+        var ageValues = <?php
+          echo json_encode(array_values($ageStats));
+        ?>;
+        var ageStatsCanvas = $("#age-stats-bar").get(0).getContext("2d");
+        var AgeChart = new Chart(ageStatsCanvas);
+        AgeChart.Bar(
+          {
+            labels: ageLabels,
+            datasets: [ {
+                label: "Ages",
+                data: ageValues,
+                backgroundColor: 'rgba(255, 99, 132, 1)',
+            }]
+          },
+          {
+            scales: {
+              xAxes: [{
+                display: false,
+                barPercentage: 1.3,
+                ticks: {
+                  max: 3,
+                }
+             }],
+              yAxes: [{
+                ticks: {
+                  beginAtZero:true
+                }
+              }]
+            }
+          }
+        );
     });
 </script>
 

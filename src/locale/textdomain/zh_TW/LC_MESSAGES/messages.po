@@ -1512,8 +1512,9 @@ msgid "Unk"
 msgstr "安克"
 
 #: 
+#, fuzzy
 msgid "Family List"
-msgstr "家家列表"
+msgstr "家庭列表"
 
 #: 
 msgid "Add Family"
@@ -7240,14 +7241,6 @@ msgid "Backup archive does not contain a database"
 msgstr "備份存檔不包含資料庫"
 
 #: 
-msgid "Unknown File Type"
-msgstr "未知的文件类型"
-
-#: 
-msgid "from file"
-msgstr "自文档"
-
-#: 
 msgid "Missing Coordinates"
 msgstr "缺少坐標"
 
@@ -9336,4 +9329,34 @@ msgstr "解碼完整性檢查結果文件錯誤"
 #, fuzzy
 msgid "Error decoding signature definition file"
 msgstr "解碼簽名定義文件錯誤"
+
+#: 
+#, fuzzy
+msgid "Generate Backup"
+msgstr "生成備份"
+
+#: 
+#, fuzzy
+msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
+msgstr "遠程備份端點。如果是WebDAV，必須是url編碼的。"
+
+#: 
+#, fuzzy
+msgid "Include initials image files, remote image files (gravatar), and thumbnails in backup.  These files are generally able to be reproduced after a restore and add very little value to the backup archive at a large expense of execution time and storage"
+msgstr "在備份中包括縮寫圖像文件，遠端圖像文件（gravatar）和縮圖。這些文件通常能夠在還原後再現，卻花費很大的執行時間和存儲成本為備份存檔添加非常少的益處."
+
+#: 
+#, fuzzy
+msgid "Password (if any)"
+msgstr "密碼（如果有的話）"
+
+#: 
+#, fuzzy
+msgid "All information on thie page is correct."
+msgstr "頁面上的所有信息都是正確的。"
+
+#: 
+#, fuzzy
+msgid "Please update the my family information with the following"
+msgstr "請使用以下內容更新我的家庭信息"
 

@@ -7,6 +7,15 @@ use ChurchCRM\PersonQuery;
 
 class DashboardService
 {
+  public function getAgeStats(){
+    $ageStats = [];
+    $people = PersonQuery::create()->find();
+    foreach($people as $person) {
+      $ageStats[$person->getNumericAge()]++;
+    }
+    ksort($ageStats);
+    return $ageStats;
+  }
     public function getFamilyCount()
     {
         $familyCount = FamilyQuery::Create()

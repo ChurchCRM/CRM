@@ -7121,14 +7121,6 @@ msgid "Backup archive does not contain a database"
 msgstr "备份存档不包含数据库"
 
 #: 
-msgid "Unknown File Type"
-msgstr "未知的文件类型"
-
-#: 
-msgid "from file"
-msgstr "自文档"
-
-#: 
 msgid "Missing Coordinates"
 msgstr "缺少坐标"
 
