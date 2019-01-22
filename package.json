@@ -26,6 +26,7 @@
         "grunt-curl": "^2.5.0",
         "grunt-exec": "^3.0.0",
         "grunt-github-release-notes": "^0.7.0",
+        "grunt-lineending": "^1.0.0",
         "grunt-poeditor-ab": "^0.1.9",
         "i18next-extract-gettext": "^3.2.1",
         "node-sha1": "^1.0.1"
@@ -59,6 +60,7 @@
     },
     "scripts": {
         "install": "grunt clean && grunt updateVersions && grunt curl-dir && grunt copy && grunt sass",
+        "line-endings": "grunt lineending",
         "updateVersions": "grunt updateVersions",
         "postinstall": "grunt genLocaleJSFiles",
         "locale-gen": "locale/update-locale.sh",
