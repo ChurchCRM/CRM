@@ -59,8 +59,7 @@
         "pace-js": "^1.0.2"
     },
     "scripts": {
-        "install": "grunt clean && grunt updateVersions && grunt curl-dir && grunt copy && grunt sass",
-        "line-endings": "grunt lineending",
+        "install": "grunt clean && grunt updateVersions && grunt curl-dir && grunt copy && grunt sass && grunt lineending",
         "updateVersions": "grunt updateVersions",
         "postinstall": "grunt genLocaleJSFiles",
         "locale-gen": "locale/update-locale.sh",
