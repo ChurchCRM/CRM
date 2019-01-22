@@ -24,7 +24,7 @@ $personCount = $dashboardService->getPersonCount();
 $personStats = $dashboardService->getPersonStats();
 $familyCount = $dashboardService->getFamilyCount();
 $groupStats = $dashboardService->getGroupStats();
-//$ageStats = $dashboardService->getAgeStats();
+$ageStats = $dashboardService->getAgeStats();
 $demographicStats = ListOptionQuery::create()->filterByID('2')->find();
 
 $sSQL = 'select count(*) as numb, per_Gender from person_per, family_fam
