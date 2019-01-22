@@ -71,8 +71,8 @@
         "orm-gen": "php src/vendor/propel/propel/bin/propel.php --config-dir=propel model:build && cd src/ && composer dump-autoload",
         "graph-viz": "php src/vendor/propel/propel/bin/propel.php --config-dir=propel graphviz:generate",
         "datadictionary": "php src/vendor/propel/propel/bin/propel.php --config-dir=propel datadictionary:generate",
-        "composer-install": "cd src/ && composer install",
-        "composer-update": " cd src/ && composer update && composer dump-autoload && cd ../tests/ && composer update",
+        "composer-install": "cd src/ && composer install && grunt lineending",
+        "composer-update": " cd src/ && composer update && composer dump-autoload && cd ../tests/ && composer update && grunt lineending",
         "tests-install": "scripts/tests-install.sh",
         "test": "scripts/tests-run.sh"
     }
