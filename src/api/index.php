@@ -36,6 +36,7 @@ require __DIR__ . '/routes/calendar/calendar.php';
 // finance routes
 require __DIR__ . '/routes/finance/finance-deposits.php';
 require __DIR__ . '/routes/finance/finance-payments.php';
+require __DIR__ . '/routes/finance/finance-reports.php';
 
 // People (families / persons)
 require __DIR__ . '/routes/people/people-family.php';

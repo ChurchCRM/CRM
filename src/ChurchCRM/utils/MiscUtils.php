@@ -123,5 +123,12 @@ class MiscUtils {
     $anchor = str_replace(" ", "-", $anchor);
     return $anchor;
   }
+  
+  public static function StringLengthTruncate($text, $length, $ellipsis = "...") {
+    if (strlen($text) > $length) {
+      return mb_substr($text, 0, $length).$ellipsis;
+    }
+    return $text;
+  }
 }
 ?>
