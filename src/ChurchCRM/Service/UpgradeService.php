@@ -26,35 +26,57 @@ class UpgradeService
         }
 
         //the database isn't at the current version.  Start the upgrade
-        $dbUpdatesFile = file_get_contents(SystemURLs::getDocumentRoot() . '/mysql/upgrade.json');
-        $dbUpdates = json_decode($dbUpdatesFile, true);
-        $errorFlag = false;
-        $connection = Propel::getConnection();
-        foreach ($dbUpdates as $dbUpdate) {
-            if (in_array(SystemService::getDBVersion(), $dbUpdate['versions'])) {
-                $version = new Version();
-                $version->setVersion($dbUpdate['dbVersion']);
-                $version->setUpdateStart(new \DateTime());
-                $logger->info("New Version: " .$version->getVersion());
-                foreach ($dbUpdate['scripts'] as $dbScript) {
-                    $scriptName = SystemURLs::getDocumentRoot() . $dbScript;
-                    $logger->info("Upgrade DB - " . $scriptName);
-                    if (pathinfo($scriptName, PATHINFO_EXTENSION) == "sql") {
-                        SQLUtils::sqlImport($scriptName, $connection);
-                    } else {
-                        require_once ($scriptName);
-                    }
-                }
-                if (!$errorFlag) {
-                    $version->setUpdateEnd(new \DateTime());
-                    $version->save();
-                }
+        try {
+          $dbUpdatesFile = file_get_contents(SystemURLs::getDocumentRoot() . '/mysql/upgrade.json');
+          $dbUpdates = json_decode($dbUpdatesFile, true);
+          $errorFlag = false;
+          $connection = Propel::getConnection();
+          $upgradeScriptsExecuted = 0;
+          foreach ($dbUpdates as $dbUpdate) {
+            try {
+              if (in_array(SystemService::getDBVersion(), $dbUpdate['versions'])) {
+                  $version = new Version();
+                  $version->setVersion($dbUpdate['dbVersion']);
+                  $version->setUpdateStart(new \DateTime());
+                  $logger->info("New Version: " .$version->getVersion());
+                  foreach ($dbUpdate['scripts'] as $dbScript) {
+                      $scriptName = SystemURLs::getDocumentRoot() . $dbScript;
+                      $logger->info("Upgrade DB - " . $scriptName);
+                      if (pathinfo($scriptName, PATHINFO_EXTENSION) == "sql") {
+                          SQLUtils::sqlImport($scriptName, $connection);
+                      } elseif (pathinfo($scriptName, PATHINFO_EXTENSION) == "php") {
+                          require_once ($scriptName);
+                      }
+                      else {
+                        throw new \Exception(gettext("Invalid upgrade file specified").": " . $scriptName);
+                      }
+                  }
+                  if (!$errorFlag) {
+                      $version->setUpdateEnd(new \DateTime());
+                      $version->save();
+                  }
+                // increment the number of scripts executed.
+                // If no scripts run, then there is no supported upgrade path defined in the JSON file
+                $upgradeScriptsExecuted ++; 
+              }
             }
-        }
-        // always rebuild the menu
-        SQLUtils::sqlImport(SystemURLs::getDocumentRoot() . '/mysql/upgrade/rebuild_nav_menus.sql', $connection);
+            catch (\Exception $exc) {
+              $logger->error(gettext("Failure executing upgrade script").": ".$scriptName.": ".$exc->getMessage());
+              throw $exc;
+            }
+          }
+          if( $upgradeScriptsExecuted === 0 ) { 
+            $logger->warn("No upgrade path for " . SystemService::getDBVersion() . " to " . $_SESSION['sSoftwareInstalledVersion']); 
+          }
+          // always rebuild the views
+          SQLUtils::sqlImport(SystemURLs::getDocumentRoot() . '/mysql/upgrade/rebuild_views.sql', $connection);
 
-        return true;
+          return true;
+        }
+        catch (\Exception $exc){
+           $logger->error(gettext("Databse upgrade failed").": " . $exc->getMessage());
+           throw $exc; //allow the method requesting the upgrade to handle this failure also.
+        }
     }
 
 }

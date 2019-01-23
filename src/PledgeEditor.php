@@ -89,7 +89,7 @@ if ($sGroupKey) {
         $fund2PlgIds[$oneFundID] = $onePlgID;
 
         // Security: User must have Finance permission or be the one who entered this record originally
-        if (!($_SESSION['bFinance'] || $_SESSION['iUserID'] == $aRow['plg_EditedBy'])) {
+        if (!($_SESSION['user']->isFinanceEnabled() || $_SESSION['user']->getId() == $aRow['plg_EditedBy'])) {
             RedirectUtils::Redirect('Menu.php');
             exit;
         }
@@ -332,7 +332,7 @@ if (isset($_POST['PledgeSubmit']) || isset($_POST['PledgeSubmitAndAdd'])) {
             if ($fund2PlgIds && array_key_exists($fun_id, $fund2PlgIds)) {
                 if ($nAmount[$fun_id] > 0) {
                     $sSQL = "UPDATE pledge_plg SET plg_famID = '".$iFamily."',plg_FYID = '".$iFYID."',plg_date = '".$dDate."', plg_amount = '".$nAmount[$fun_id]."', plg_schedule = '".$iSchedule."', plg_method = '".$iMethod."', plg_comment = '".$sComment[$fun_id]."'";
-                    $sSQL .= ", plg_DateLastEdited = '".date('YmdHis')."', plg_EditedBy = ".$_SESSION['iUserID'].", plg_CheckNo = '".$iCheckNo."', plg_scanString = '".$tScanString."', plg_aut_ID='".$iAutID."', plg_NonDeductible='".$nNonDeductible[$fun_id]."' WHERE plg_plgID='".$fund2PlgIds[$fun_id]."'";
+                    $sSQL .= ", plg_DateLastEdited = '".date('YmdHis')."', plg_EditedBy = ".$_SESSION['user']->getId().", plg_CheckNo = '".$iCheckNo."', plg_scanString = '".$tScanString."', plg_aut_ID='".$iAutID."', plg_NonDeductible='".$nNonDeductible[$fun_id]."' WHERE plg_plgID='".$fund2PlgIds[$fun_id]."'";
                 } else { // delete that record
                     $sSQL = 'DELETE FROM pledge_plg WHERE plg_plgID ='.$fund2PlgIds[$fun_id];
                 }
@@ -359,7 +359,7 @@ if (isset($_POST['PledgeSubmit']) || isset($_POST['PledgeSubmitAndAdd'])) {
                 }
                 $sSQL = "INSERT INTO pledge_plg (plg_famID, plg_FYID, plg_date, plg_amount, plg_schedule, plg_method, plg_comment, plg_DateLastEdited, plg_EditedBy, plg_PledgeOrPayment, plg_fundID, plg_depID, plg_CheckNo, plg_scanString, plg_aut_ID, plg_NonDeductible, plg_GroupKey)
 			VALUES ('".$iFamily."','".$iFYID."','".$dDate."','".$nAmount[$fun_id]."','".$iSchedule."','".$iMethod."','".$sComment[$fun_id]."'";
-                $sSQL .= ",'".date('YmdHis')."',".$_SESSION['iUserID'].",'".$PledgeOrPayment."',".$fun_id.','.$iCurrentDeposit.','.$iCheckNo.",'".$tScanString."','".$iAutID."','".$nNonDeductible[$fun_id]."','".$sGroupKey."')";
+                $sSQL .= ",'".date('YmdHis')."',".$_SESSION['user']->getId().",'".$PledgeOrPayment."',".$fun_id.','.$iCurrentDeposit.','.$iCheckNo.",'".$tScanString."','".$iAutID."','".$nNonDeductible[$fun_id]."','".$sGroupKey."')";
             }
             if (isset($sSQL)) {
                 RunQuery($sSQL);
@@ -526,7 +526,7 @@ require 'Include/Header.php';
           <input  class="form-control" type="number" name="Envelope" size=8 id="Envelope" value="<?= $iEnvelope ?>">
           <?php if (!$dep_Closed) {
         ?>
-            <input class="form-control" type="submit" class="btn" value="<?= gettext('Find family->') ?>" name="MatchEnvelope">
+            <input class="form-control" type="submit" class="btn btn-default" value="<?= gettext('Find family->') ?>" name="MatchEnvelope">
           <?php
     } ?>
 
@@ -624,45 +624,6 @@ require 'Include/Header.php';
 
     </div>
 
-
-    <?php
-    if ($dep_Type == 'CreditCard' || $dep_Type == 'BankDraft') {
-        ?>
-    <div class="col-lg-6">
-
-            <tr>
-              <td class="<?= $PledgeOrPayment == 'Pledge' ? 'LabelColumn' : 'PaymentLabelColumn' ?>"><?= gettext('Choose online payment method') ?></td>
-              <td class="TextColumnWithBottomBorder">
-                <select name="AutoPay">
-      <?php
-                          echo '<option value=0';
-        if ($iAutID == 0) {
-            echo ' selected';
-        }
-        echo '>'.gettext('Select online payment record')."</option>\n";
-        $sSQLTmp = 'SELECT aut_ID, aut_CreditCard, aut_BankName, aut_Route, aut_Account FROM autopayment_aut WHERE aut_FamID='.$iFamily;
-        $rsFindAut = RunQuery($sSQLTmp);
-        while ($aRow = mysqli_fetch_array($rsFindAut)) {
-            extract($aRow);
-            if ($aut_CreditCard != '') {
-                $showStr = gettext('Credit card ...').mb_substr($aut_CreditCard, strlen($aut_CreditCard) - 4, 4);
-            } else {
-                $showStr = gettext('Bank account ').$aut_BankName.' '.$aut_Route.' '.$aut_Account;
-            }
-            echo '<option value='.$aut_ID;
-            if ($iAutID == $aut_ID) {
-                echo ' selected';
-            }
-            echo '>'.$showStr."</option>\n";
-        } ?>
-                </select>
-              </td>
-            </tr>
-
-      </div>
-    <?php
-    } ?>
-
     <div class="col-lg-6">
        <?php if (SystemConfig::getValue('bUseScannedChecks') && ($dep_Type == 'Bank' || $PledgeOrPayment == 'Pledge')) {
         ?>
@@ -675,8 +636,8 @@ require 'Include/Header.php';
     <div class="col-lg-6">
       <?php if (SystemConfig::getValue('bUseScannedChecks') && $dep_Type == 'Bank') {
         ?>
-        <input type="submit" class="btn" value="<?= gettext('find family from check account #') ?>" name="MatchFamily">
-        <input type="submit" class="btn" value="<?= gettext('Set default check account number for family') ?>" name="SetDefaultCheck">
+        <input type="submit" class="btn btn-default" value="<?= gettext('find family from check account #') ?>" name="MatchFamily">
+        <input type="submit" class="btn btn-default" value="<?= gettext('Set default check account number for family') ?>" name="SetDefaultCheck">
       <?php
     } ?>
     </div>
@@ -685,7 +646,7 @@ require 'Include/Header.php';
     <?php if (!$dep_Closed) {
         ?>
         <input type="submit" class="btn " value="<?= gettext('Save') ?>" name="PledgeSubmit">
-        <?php if ($_SESSION['bAddRecords']) {
+        <?php if ($_SESSION['user']->isAddRecordsEnabled()) {
             echo '<input type="submit" class="btn btn-primary value="'.gettext('Save and Add').'" name="PledgeSubmitAndAdd">';
         } ?>
           <?php
@@ -729,14 +690,14 @@ require 'Include/Header.php';
                 <tr>
                   <td class="TextColumn"><?= $fun_name ?></td>
                   <td class="TextColumn">
-                    <input class="FundAmount" type="number" step="any" name="<?= $fun_id ?>_Amount" id="<?= $fun_id ?>_Amount" value="<?= $nAmount[$fun_id] ?>"><br>
+                    <input class="FundAmount" type="number" step="any" name="<?= $fun_id ?>_Amount" id="<?= $fun_id ?>_Amount" value="<?= ($nAmount[$fun_id] ? $nAmount[$fun_id] : "") ?>"><br>
                     <font color="red"><?= $sAmountError[$fun_id] ?></font>
                   </td>
                   <?php
                     if ($bEnableNonDeductible) {
                         ?>
                       <td class="TextColumn">
-                        <input   type="number" step="any" name="<?= $fun_id ?>_NonDeductible" id="<?= $fun_id ?>_NonDeductible" value="<?= $nNonDeductible[$fun_id]?>" />
+                        <input type="number" step="any" name="<?= $fun_id ?>_NonDeductible" id="<?= $fun_id ?>_NonDeductible" value="<?= ($nNonDeductible[$fun_id] ? $nNonDeductible[$fun_id] : "")?>" />
                         <br>
                         <font color="red"><?= $sNonDeductibleError[$fun_id]?></font>
                       </td>
@@ -791,18 +752,16 @@ require 'Include/Header.php';
       $('[name=FamilyID]').val(e.params.data.id);
     });
 
-    $("#FundTable").DataTable({
-        "language": {
-            "url": window.CRM.plugin.dataTable.language.url
-        },
-        responsive:true,
+
+
+    var dataTableConfig = {
         paging: false,
-        searching: false,
-        "dom": window.CRM.plugin.dataTable.dom,
-        "tableTools": {
-            "sSwfPath": window.CRM.plugin.dataTable.tableTools.sSwfPath
-        },
-    });
+        searching: false
+    }
+
+    $.extend(dataTableConfig, window.CRM.plugin.dataTable);
+
+    $("#FundTable").DataTable(dataTableConfig);
 
 
     $(".FundAmount").change(function(){

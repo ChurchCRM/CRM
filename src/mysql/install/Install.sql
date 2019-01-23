@@ -12,51 +12,6 @@ CREATE TABLE `version_ver` (
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci  AUTO_INCREMENT=1 ;
 
 
-
---
--- Table structure for table `autopayment_aut`
---
-
-CREATE TABLE `autopayment_aut` (
-  `aut_ID` mediumint(9) unsigned NOT NULL auto_increment,
-  `aut_FamID` mediumint(9) unsigned NOT NULL default '0',
-  `aut_EnableBankDraft` tinyint(1) unsigned NOT NULL default '0',
-  `aut_EnableCreditCard` tinyint(1) unsigned NOT NULL default '0',
-  `aut_NextPayDate` date default NULL,
-  `aut_FYID` mediumint(9) NOT NULL default '9',
-  `aut_Amount` decimal(6,2) NOT NULL default '0.00',
-  `aut_Interval` tinyint(3) NOT NULL default '1',
-  `aut_Fund` mediumint(6) NOT NULL default '0',
-  `aut_FirstName` varchar(50) default NULL,
-  `aut_LastName` varchar(50) default NULL,
-  `aut_Address1` varchar(255) default NULL,
-  `aut_Address2` varchar(255) default NULL,
-  `aut_City` varchar(50) default NULL,
-  `aut_State` varchar(50) default NULL,
-  `aut_Zip` varchar(50) default NULL,
-  `aut_Country` varchar(50) default NULL,
-  `aut_Phone` varchar(30) default NULL,
-  `aut_Email` varchar(100) default NULL,
-  `aut_CreditCard` varchar(50) default NULL,
-  `aut_ExpMonth` varchar(2) default NULL,
-  `aut_ExpYear` varchar(4) default NULL,
-  `aut_BankName` varchar(50) default NULL,
-  `aut_Route` varchar(30) default NULL,
-  `aut_Account` varchar(30) default NULL,
-  `aut_DateLastEdited` datetime default NULL,
-  `aut_EditedBy` smallint(5) unsigned default '0',
-  `aut_Serial` mediumint(9) NOT NULL default '1',
-  `aut_CreditCardVanco` varchar(50) default NULL,
-  `aut_AccountVanco` varchar(50) default NULL,
-  PRIMARY KEY  (`aut_ID`),
-  UNIQUE KEY `aut_ID` (`aut_ID`)
-) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `autopayment_aut`
---
-
-
 -- --------------------------------------------------------
 
 --
@@ -245,9 +200,10 @@ CREATE TABLE `events_event` (
   `event_end` datetime NOT NULL,
   `inactive` int(1) NOT NULL default '0',
   `event_typename` varchar(40) NOT NULL default '',
-  `event_grpid` mediumint(9),
-  `event_publicly_visible` BOOLEAN DEFAULT FALSE,
-
+  `location_id` INT DEFAULT NULL,
+  `primary_contact_person_id` INT DEFAULT NULL,
+  `secondary_contact_person_id` INT DEFAULT NULL,
+  `event_url` text,
   PRIMARY KEY  (`event_id`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1;
 
@@ -257,6 +213,16 @@ CREATE TABLE `events_event` (
 
 
 -- --------------------------------------------------------
+
+--
+-- Table structure for table `event_audience`
+--
+
+CREATE TABLE `event_audience` (
+  `event_id` INT NOT NULL,
+  `group_id` INT NOT NULL,
+  PRIMARY KEY (`event_id`,`group_id`)
+) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
 --
 -- Table structure for table `event_attend`
@@ -308,6 +274,28 @@ INSERT INTO `event_types` (`type_id`, `type_name`, `type_defstarttime`, `type_de
   (2, 'Sunday School', '09:30:00', 'weekly', 'Sunday', '', '2016-01-01', 1);
 
 -- --------------------------------------------------------
+
+
+CREATE TABLE `calendars` (
+  `calendar_id` INT NOT NULL auto_increment,
+  `name` VARCHAR(128) NOT NULL,
+  `accesstoken` VARCHAR(255),
+  `foregroundColor` VARCHAR(6),
+  `backgroundColor` VARCHAR(6),
+  PRIMARY KEY (`calendar_id`),
+  UNIQUE KEY `accesstoken` (`accesstoken`)
+) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+
+INSERT INTO `calendars` (`calendar_id`,`name`,`accesstoken`,`foregroundColor`,`backgroundColor`) VALUES
+ (1,"Public Calendar",NULL,"FFFFFF","00AA00"),
+ (2,"Private Calendar",NULL,"FFFFFF","0000AA");
+
+# This is a join-table to link an event with a calendar
+CREATE TABLE `calendar_events` (
+  `calendar_id` INT NOT NULL,
+  `event_id` INT NOT NULL,
+  PRIMARY KEY (`calendar_id`,`event_id`)
+) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
 --
 -- Table structure for table `family_custom`
@@ -526,82 +514,6 @@ INSERT INTO `list_lst` (`lst_ID`, `lst_OptionID`, `lst_OptionSequence`, `lst_Opt
   (11, 1, 1, 'Member'),
   (12, 1, 1, 'Teacher'),
   (12, 2, 2, 'Student');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `menuconfig_mcf`
---
-
-CREATE TABLE `menuconfig_mcf` (
-  `mid` int(11) NOT NULL auto_increment,
-  `name` varchar(20) NOT NULL,
-  `parent` varchar(20) NOT NULL,
-  `ismenu` tinyint(1) NOT NULL,
-  `content_english` varchar(100) NOT NULL,
-  `content` varchar(100) NULL,
-  `uri` varchar(255) NOT NULL,
-  `statustext` varchar(255) NOT NULL,
-  `security_grp` varchar(50) NOT NULL,
-  `session_var` varchar(50) default NULL,
-  `session_var_in_text` tinyint(1) NOT NULL,
-  `session_var_in_uri` tinyint(1) NOT NULL,
-  `url_parm_name` varchar(50) default NULL,
-  `active` tinyint(1) NOT NULL,
-  `sortorder` tinyint(3) NOT NULL,
-  `icon` varchar(50) DEFAULT NULL,
-  PRIMARY KEY  (`mid`)
-) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci  AUTO_INCREMENT=90 ;
-
---
--- Dumping data for table `menuconfig_mcf`
---
-
-
-INSERT INTO `menuconfig_mcf` (`mid`, `name`, `parent`, `ismenu`, `content_english`, `content`, `uri`, `statustext`, `security_grp`, `session_var`, `session_var_in_text`, `session_var_in_uri`, `url_parm_name`, `active`, `sortorder`, `icon`) VALUES
-  (1, 'root', '', 1, 'Main', 'Main', '', '', 'bAll', NULL, 0, 0, NULL, 1, 0, NULL),
-  (2, 'calendar', 'root', 0, 'Calendar', 'Calendar', 'calendar.php', '', 'bAll', NULL, 0, 0, NULL, 1, 1, 'fa-calendar'),
-
-  (10, 'people', 'root', 1, 'People', 'People', '', 'People', 'bAll', NULL, 0, 0, NULL, 1, 2, 'fa-users'),
-  (11, 'membdash', 'people', 0, 'Dashboard', 'Dashboard', 'PeopleDashboard.php', '', 'bAddRecords', NULL, 0, 0, NULL, 1, 1, NULL),
-  (12, 'newperson', 'people', 0, 'Add New Person', 'Add New Person', 'PersonEditor.php', '', 'bAddRecords', NULL, 0, 0, NULL, 1, 2, NULL),
-  (13, 'viewperson', 'people', 0, 'View All Persons', 'View All Persons', 'SelectList.php?mode=person', '', 'bAll', NULL, 0, 0, NULL, 1, 3, NULL),
-  (14, 'newfamily', 'people', 0, 'Add New Family', 'Add New Family', 'FamilyEditor.php', '', 'bAddRecords', NULL, 0, 0, NULL, 1, 4, NULL),
-  (15, 'viewfamily', 'people', 0, 'View Active Families', 'View Active Families', 'FamilyList.php', '', 'bAll', NULL, 0, 0, NULL, 1, 5, NULL),
-  (16, 'viewfamilyinactive', 'people', 0, 'View Inactive Families', 'View Inactive Families', 'FamilyList.php?mode=inactive', '', 'bAll', NULL, 0, 0, NULL, 1, 6, NULL),
-
-  (20, 'groups', 'root', 1, 'Groups', 'Groups', '', '', 'bAll', NULL, 0, 0, NULL, 1, 3, 'fa-tag'),
-  (21, 'listgroups', 'groups', 0, 'List Groups', 'List Groups', 'GroupList.php', '', 'bAll', NULL, 0, 0, NULL, 1, 1, NULL),
-
-  (24, 'assigngroup', 'groups', 0, 'Group Assignment Helper', 'Group Assignment Helper', 'SelectList.php?mode=groupassign', '', 'bAll', NULL, 0, 0, NULL, 1, 4, NULL),
-
-  (30, 'sundayschool', 'root', 1, 'Sunday School', 'Sunday School', '', '', 'bAll', NULL, 0, 0, NULL, 1, 4, 'fa-child'),
-  (31, 'sundayschool-dash', 'sundayschool', 0, 'Dashboard', 'Dashboard', 'sundayschool/SundaySchoolDashboard.php', '', 'bAll', NULL, 0, 0, NULL, 1, 2, NULL),
-
-  (40, 'email', 'root', 0, 'Email', 'Email', 'email/Dashboard.php', '', 'bAll', NULL, 0, 0, NULL, 1, 5, 'fa-envelope'),
-
-  (50, 'events', 'root', 1, 'Events', 'Events', '', 'Events', 'bAll', NULL, 0, 0, NULL, 1,6, 'fa-ticket'),
-  (51, 'listevent', 'events', 0, 'List Church Events', 'List Church Events', 'ListEvents.php', 'List Church Events', 'bAll', NULL, 0, 0, NULL, 1, 1, NULL),
-  (52, 'addevent', 'events', 0, 'Add Church Event', 'Add Church Event', 'EventEditor.php', 'Add Church Event', 'bAddEvent', NULL, 0, 0, NULL, 1, 2, NULL),
-  (53, 'eventype', 'events', 0, 'List Event Types', 'List Event Types', 'EventNames.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 3, NULL),
-  (54, 'eventcheckin', 'events', 0, 'Check-in and Check-out', 'Check-in and Check-out', 'Checkin.php', '', 'bAll', NULL, 0, 0, NULL, 1, 4, NULL),
-
-  (60, 'deposit', 'root', 1, 'Deposit', 'Deposit', '', '', 'bFinance', NULL, 0, 0, NULL, 1, 7, 'fa-bank'),
-  (61, 'envelopmgr', 'deposit', 0, 'Envelope Manager', 'Envelope Manager', 'ManageEnvelopes.php', '', 'bAdmin', NULL, 0, 0, NULL, 1, 1, NULL),
-  (63, 'viewdeposit', 'deposit', 0, 'View All Deposits', 'View All Deposits', 'FindDepositSlip.php', '', 'bFinance', NULL, 0, 0, NULL, 1, 3, NULL),
-  (64, 'depositreport', 'deposit', 0, 'Deposit Reports', 'Deposit Reports', 'FinancialReports.php', '', 'bFinance', NULL, 0, 0, NULL, 1, 4, NULL),
-  (65, 'depositslip', 'deposit', 0, 'Edit Deposit Slip', 'Edit Deposit Slip', 'DepositSlipEditor.php', '', 'bFinance', 'iCurrentDeposit', 1, 1, 'DepositSlipID', 1, 5, NULL),
-
-  (70, 'fundraiser', 'root', 1, 'Fundraiser', 'Fundraiser', '', '', 'bAll', NULL, 0, 0, NULL, 1, 8, 'fa-money'),
-  (71, 'viewfundraiser', 'fundraiser', 0, 'View All Fundraisers', 'View All Fundraisers', 'FindFundRaiser.php', '', 'bAll', NULL, 0, 0, NULL, 1, 1, NULL),
-  (72, 'newfundraiser', 'fundraiser', 0, 'Create New Fundraiser', 'Create New Fundraiser', 'FundRaiserEditor.php?FundRaiserID=-1', '', 'bAll', NULL, 0, 0, NULL, 1, 2, NULL),
-  (73, 'editfundraiser', 'fundraiser', 0, 'Edit Fundraiser', 'Edit Fundraiser', 'FundRaiserEditor.php', '', 'bAll', 'iCurrentFundraiser', 1, 1, 'FundRaiserID', 1, 3, NULL),
-  (74, 'viewbuyers', 'fundraiser', 0, 'View Buyers', 'View Buyers', 'PaddleNumList.php', '', 'bAll', 'iCurrentFundraiser', 1, 1, 'FundRaiserID', 1, 4, NULL),
-  (75, 'adddonors', 'fundraiser', 0, 'Add Donors to Buyer List', 'Add Donors to Buyer List', 'AddDonors.php', '', 'bAll', 'iCurrentFundraiser', 1, 1, 'FundRaiserID', 1, 5, NULL),
-
-  (80, 'report', 'root', 1, 'Data/Reports', 'Data/Reports', '', '', 'bAll', NULL, 0, 0, NULL, 1, 9, 'fa-file-pdf-o'),
-  (81, 'reportmenu', 'report', 0, 'Reports Menu', 'Reports Menu', 'ReportList.php', '', 'bAll', NULL, 0, 0, NULL, 1, 1, NULL),
-  (82, 'querymenu', 'report', 0, 'Query Menu', 'Query Menu', 'QueryList.php', '', 'bAll', NULL, 0, 0, NULL, 1, 2, NULL);
 
 -- --------------------------------------------------------
 
@@ -1004,7 +916,6 @@ INSERT INTO `query_qry` (`qry_ID`, `qry_SQL`, `qry_Name`, `qry_Description`, `qr
   (27, 'SELECT per_ID as AddToCart, CONCAT(per_FirstName,'' '',per_LastName) AS Name FROM person_per inner join family_fam on per_fam_ID=fam_ID where per_fmr_ID<>3 AND fam_OkToCanvass="TRUE" ORDER BY fam_Zip', 'Families to Canvass', 'People in families that are ok to canvass.', 0),
   (28, 'SELECT fam_Name, a.plg_amount as PlgFY1, b.plg_amount as PlgFY2 from family_fam left join pledge_plg a on a.plg_famID = fam_ID and a.plg_FYID=~fyid1~ and a.plg_PledgeOrPayment=''Pledge'' left join pledge_plg b on b.plg_famID = fam_ID and b.plg_FYID=~fyid2~ and b.plg_PledgeOrPayment=''Pledge'' order by fam_Name', 'Pledge comparison', 'Compare pledges between two fiscal years', 1),
   (30, 'SELECT per_ID as AddToCart, CONCAT(per_FirstName,'' '',per_LastName) AS Name, fam_address1, fam_city, fam_state, fam_zip FROM person_per join family_fam on per_fam_id=fam_id where per_fmr_id<>3 and per_fam_id in (select fam_id from family_fam inner join pledge_plg a on a.plg_famID=fam_ID and a.plg_FYID=~fyid1~ and a.plg_amount>0) and per_fam_id not in (select fam_id from family_fam inner join pledge_plg b on b.plg_famID=fam_ID and b.plg_FYID=~fyid2~ and b.plg_amount>0)', 'Missing pledges', 'Find people who pledged one year but not another', 1),
-  (31, 'select per_ID as AddToCart, per_FirstName, per_LastName, per_email from person_per, autopayment_aut where aut_famID=per_fam_ID and aut_CreditCard!="" and per_email!="" and (per_fmr_ID=1 or per_fmr_ID=2 or per_cls_ID=1)', 'Credit Card People', 'People who are configured to pay by credit card.', 0),
   (32, 'SELECT fam_Name, fam_Envelope, b.fun_Name as Fund_Name, a.plg_amount as Pledge from family_fam left join pledge_plg a on a.plg_famID = fam_ID and a.plg_FYID=~fyid~ and a.plg_PledgeOrPayment=\'Pledge\' and a.plg_amount>0 join donationfund_fun b on b.fun_ID = a.plg_fundID order by fam_Name, a.plg_fundID', 'Family Pledge by Fiscal Year', 'Pledge summary by family name for each fund for the selected fiscal year', 1),
   (100, 'SELECT a.per_ID as AddToCart, CONCAT(''<a href=PersonView.php?PersonID='',a.per_ID,''>'',a.per_FirstName,'' '',a.per_LastName,''</a>'') AS Name FROM person_per AS a LEFT JOIN person2volunteeropp_p2vo p2v1 ON (a.per_id = p2v1.p2vo_per_ID AND p2v1.p2vo_vol_ID = ~volopp1~) LEFT JOIN person2volunteeropp_p2vo p2v2 ON (a.per_id = p2v2.p2vo_per_ID AND p2v2.p2vo_vol_ID = ~volopp2~) WHERE p2v1.p2vo_per_ID=p2v2.p2vo_per_ID ORDER BY per_LastName', 'Volunteers', 'Find volunteers for who match two specific opportunity codes', 1),
   (200, 'SELECT a.per_ID as AddToCart, CONCAT(''<a href=PersonView.php?PersonID='',a.per_ID,''>'',a.per_FirstName,'' '',a.per_LastName,''</a>'') AS Name FROM person_per AS a LEFT JOIN person_custom pc ON a.per_id = pc.per_ID WHERE pc.~custom~=''~value~'' ORDER BY per_LastName', 'CustomSearch', 'Find people with a custom field value', 1);
@@ -1087,7 +998,6 @@ INSERT INTO `userconfig_ucfg` (`ucfg_per_id`, `ucfg_id`, `ucfg_name`, `ucfg_valu
   (0, 6, 'bExportCSV', '0', 'boolean', 'User permission to export CSV files', 'FALSE', 'SECURITY'),
   (0, 7, 'bUSAddressVerification', '0', 'boolean', 'User permission to use IST Address Verification', 'FALSE', ''),
   (0, 10, 'bAddEvent', '0', 'boolean', 'Allow user to add new event', 'FALSE', 'SECURITY'),
-  (0, 11, 'bSeePrivacyData', '0', 'boolean', 'Allow user to see member privacy data, e.g. Birth Year, Age.', 'FALSE', 'SECURITY'),
   (1, 0, 'bEmailMailto', '1', 'boolean', 'User permission to send email via mailto: links', 'TRUE', ''),
   (1, 1, 'sMailtoDelimiter', ',', 'text', 'user permission to send email via mailto: links', 'TRUE', ''),
   (1, 5, 'bCreateDirectory', '1', 'boolean', 'User permission to create directories', 'TRUE', ''),
@@ -1123,6 +1033,7 @@ CREATE TABLE `user_usr` (
   `usr_defaultFY` mediumint(9) NOT NULL default '10',
   `usr_currentDeposit` mediumint(9) NOT NULL default '0',
   `usr_UserName` varchar(50) default NULL,
+  `usr_apiKey` VARCHAR(255) default NULL,
   `usr_EditSelf` tinyint(1) unsigned NOT NULL default '0',
   `usr_CalStart` date default NULL,
   `usr_CalEnd` date default NULL,
@@ -1138,6 +1049,7 @@ CREATE TABLE `user_usr` (
   `usr_Canvasser` tinyint(1) NOT NULL default '0',
   PRIMARY KEY  (`usr_per_ID`),
   UNIQUE KEY `usr_UserName` (`usr_UserName`),
+  UNIQUE KEY `usr_apiKey` (`usr_apiKey`),
   KEY `usr_per_ID` (`usr_per_ID`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
@@ -1154,7 +1066,7 @@ INSERT INTO `user_usr` (`usr_per_ID`, `usr_Password`, `usr_NeedPasswordChange`, 
                         `usr_CalNoSchool5`, `usr_CalNoSchool6`, `usr_CalNoSchool7`, `usr_CalNoSchool8`, `usr_SearchFamily`,
                         `usr_Canvasser`)
 VALUES
-  (1, '4bdf3fba58c956fc3991a1fde84929223f968e2853de596e49ae80a91499609b', 1, '2016-01-01 00:00:00', 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 10, 'skin-blue', 0, 0, '2016-01-01', 10, 0, 'Admin', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0);
+  (1, '4bdf3fba58c956fc3991a1fde84929223f968e2853de596e49ae80a91499609b', 1, '2016-01-01 00:00:00', 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 10, 'skin-red', 0, 0, '2016-01-01', 10, 0, 'Admin', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0);
 
 
 -- --------------------------------------------------------
@@ -1290,7 +1202,7 @@ CREATE TABLE `tokens` (
   PRIMARY KEY (`token`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
-CREATE TABLE `church_location` (
+CREATE TABLE `locations` (
   `location_id` INT NOT NULL,
   `location_typeId` INT NOT NULL,
   `location_name` VARCHAR(256) NOT NULL,
@@ -1322,14 +1234,26 @@ CREATE TABLE `church_location_role` (
   PRIMARY KEY (`location_id`, `role_id`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
+--
+-- Table structure for table `menu_links`
+--
+
+CREATE TABLE `menu_links` (
+  `linkId` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
+  `linkName` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `linkUri` text COLLATE utf8_unicode_ci NOT NULL,
+  `linkOrder` INT NOT NULL,
+  PRIMARY KEY (`linkId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
 CREATE VIEW email_list AS
-    SELECT fam_Email AS email, 'family' AS type, fam_id AS id FROM family_fam WHERE fam_email IS NOT NULL AND fam_email != '' 
-    UNION 
-    SELECT per_email AS email, 'person_home' AS type, per_id AS id FROM person_per WHERE per_email IS NOT NULL AND per_email != '' 
-    UNION 
+    SELECT fam_Email AS email, 'family' AS type, fam_id AS id FROM family_fam WHERE fam_email IS NOT NULL AND fam_email != ''
+    UNION
+    SELECT per_email AS email, 'person_home' AS type, per_id AS id FROM person_per WHERE per_email IS NOT NULL AND per_email != ''
+    UNION
     SELECT per_WorkEmail AS email, 'person_work' AS type, per_id AS id FROM person_per WHERE per_WorkEmail IS NOT NULL AND per_WorkEmail != '';
-    
-CREATE VIEW email_count AS    
+
+CREATE VIEW email_count AS
     SELECT email, COUNT(*) AS total FROM email_list group by email;
 
 update version_ver set ver_update_end = now();

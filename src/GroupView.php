@@ -23,6 +23,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\ListOptionQuery;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\SessionUser;
 
 //Get the GroupID out of the querystring
 $iGroupID = InputUtils::LegacyFilterInput($_GET['GroupID'], 'int');
@@ -71,7 +72,7 @@ require 'Include/Header.php';
   <div class="box-body">
 
     <?php
-    if ($_SESSION['bManageGroups']) {
+    if ($_SESSION['user']->isManageGroupsEnabled()) {
         echo '<a class="btn btn-app" href="GroupEditor.php?GroupID=' . $thisGroup->getId() . '"><i class="fa fa-pencil"></i>' . gettext('Edit this Group') . '</a>';
         echo '<button class="btn btn-app"  id="deleteGroupButton"><i class="fa fa-trash"></i>' . gettext('Delete this Group') . '</button>'; ?>
 
@@ -102,6 +103,7 @@ require 'Include/Header.php';
             AND p2g2r_grp_ID = ".$iGroupID;
     $rsEmailList = RunQuery($sSQL);
     $sEmailLink = '';
+    $sMailtoDelimiter = SessionUser::getUser()->getUserConfigString("sMailtoDelimiter");
     while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailList)) {
         $sEmail = SelectWhichInfo($per_Email, $fam_Email, false);
         if ($sEmail) {
@@ -121,7 +123,7 @@ require 'Include/Header.php';
         }
         $sEmailLink = urlencode($sEmailLink);  // Mailto should comply with RFC 2368
 
-        if ($bEmailMailto) { // Does user have permission to email groups
+        if (SessionUser::getUser()->isEmailEnabled()) { // Does user have permission to email groups
         // Display link
         ?>
         <div class="btn-group">
@@ -177,7 +179,7 @@ require 'Include/Header.php';
         }
     }
     if ($sPhoneLink) {
-        if ($bEmailMailto) { // Does user have permission to email groups
+        if (SessionUser::getUser()->isEmailEnabled()) { // Does user have permission to email groups
             // Display link
             echo '<a class="btn btn-app" href="javascript:void(0)" onclick="allPhonesCommaD()"><i class="fa fa-mobile-phone"></i>'.gettext('Text Group').'</a>';
             echo '<script nonce="'. SystemURLs::getCSPNonce() .'">function allPhonesCommaD() {prompt("'.gettext("Press CTRL + C to copy all group members\' phone numbers").'", "'.mb_substr($sPhoneLink, 0, -2).'")};</script>';
@@ -288,7 +290,7 @@ require 'Include/Header.php';
                   <td valign="top"><b><?= gettext('Name') ?></b>
                   <td valign="top"><b><?= gettext('Value') ?></td>
                   <?php
-                  if ($_SESSION['bManageGroups']) {
+                  if ($_SESSION['user']->isManageGroupsEnabled()) {
                       echo '<td valign="top"><b>'.gettext('Edit Value').'</td>';
                       echo '<td valign="top"><b>'.gettext('Remove').'</td>';
                   }
@@ -324,13 +326,13 @@ require 'Include/Header.php';
                     echo '<td valign="top">'.$pro_Name.'&nbsp;</td>';
                     echo '<td valign="top">'.$r2p_Value.'&nbsp;</td>';
 
-                    if (strlen($pro_Prompt) > 0 && $_SESSION['bManageGroups']) {
+                    if (strlen($pro_Prompt) > 0 && $_SESSION['user']->isManageGroupsEnabled()) {
                         echo '<td valign="top"><a href="PropertyAssign.php?GroupID='.$iGroupID.'&amp;PropertyID='.$pro_ID.'">'.gettext('Edit Value').'</a></td>';
                     } else {
                         echo '<td>&nbsp;</td>';
                     }
 
-                    if ($_SESSION['bManageGroups']) {
+                    if ($_SESSION['user']->isManageGroupsEnabled()) {
                         echo '<td valign="top"><a href="PropertyUnassign.php?GroupID='.$iGroupID.'&amp;PropertyID='.$pro_ID.'">'.gettext('Remove').'</a>';
                     } else {
                         echo '<td>&nbsp;</td>';
@@ -347,7 +349,7 @@ require 'Include/Header.php';
                 echo '</table>';
             }
 
-                if ($_SESSION['bManageGroups']) {
+                if ($_SESSION['user']->isManageGroupsEnabled()) {
                     echo '<form method="post" action="PropertyAssign.php?GroupID='.$iGroupID.'">';
                     echo '<p>';
                     echo '<span>'.gettext('Assign a New Property:').'</span>';
@@ -437,12 +439,9 @@ require 'Include/Header.php';
                     callback: function (result) {
                       if (result)
                       {
-                         $.ajax({
-                            method: "POST",
-                            url: window.CRM.root + "/api/groups/" + window.CRM.currentGroup,
-                            dataType: "json",
-                            encode: true,
-                            data: {"_METHOD": "DELETE"}
+                          window.CRM.APIRequest({
+                            method: "DELETE",
+                            path: "groups/" + window.CRM.currentGroup,
                           }).done(function (data) {
                             if (data.status == "success")
                               window.location.href = window.CRM.root + "/GroupList.php";

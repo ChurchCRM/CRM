@@ -17,7 +17,7 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
 // Security
-if (!$_SESSION['bFinance'] && !$_SESSION['bAdmin']) {
+if (!$_SESSION['user']->isFinanceEnabled()) {
     RedirectUtils::Redirect('Menu.php');
     exit;
 }
@@ -77,7 +77,7 @@ if (!$output) {
 }
 
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
-if (!$_SESSION['bAdmin'] && SystemConfig::getValue('bCSVAdminOnly') && $output != 'pdf') {
+if (!$_SESSION['user']->isAdmin() && SystemConfig::getValue('bCSVAdminOnly') && $output != 'pdf') {
     RedirectUtils::Redirect('Menu.php');
     exit;
 }
@@ -882,7 +882,7 @@ if ($output == 'pdf') {
     $pdf->FinishPage($page);
     $pdf->Output('DepositReport-'.date(SystemConfig::getValue("sDateFilenameFormat")).'.pdf', 'D');
 
-    // Output a text file
+// Output a text file
 // ##################
 } elseif ($output == 'csv') {
 

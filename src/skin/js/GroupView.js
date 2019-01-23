@@ -55,12 +55,12 @@ $(document).ready(function () {
       message: i18next.t("Are you sure you want to remove the selected group members?") + " (" + deletedRows.length + ") ",
       buttons: {
         confirm: {
-          label:  i18next.t('Yes'),
-            className: 'btn-success'
+          label:  i18next.t('Delete'),
+            className: 'btn-danger'
         },
         cancel: {
           label:  i18next.t('No'),
-          className: 'btn-danger'
+          className: 'btn-default'
         }
       },
       callback: function (result)
@@ -154,24 +154,13 @@ function initDataTable() {
       url: window.CRM.root + "/api/groups/" + window.CRM.currentGroup + "/members",
       dataSrc: "Person2group2roleP2g2rs"
     },
-    "language": {
-      "url": window.CRM.plugin.dataTable.language.url
-    },
-      responsive: true,
-      "language": {
-          "url": window.CRM.plugin.dataTable.language.url
-      },
-      "dom": window.CRM.plugin.dataTable.dom,
-      "tableTools": {
-          "sSwfPath": window.CRM.plugin.dataTable.tableTools.sSwfPath
-      },
     columns: [
       {
         width: 'auto',
         title: i18next.t('Name'),
         data: 'PersonId',
         render: function (data, type, full, meta) {
-          return '<img src="' + window.CRM.root + '/api/persons/' + full.PersonId + '/thumbnail" class="direct-chat-img initials-image" style="width:' + window.CRM.iProfilePictureListSize + 'px; height:' + window.CRM.iProfilePictureListSize + 'px"> &nbsp <a href="PersonView.php?PersonID="' + full.PersonId + '"><a target="_top" href="PersonView.php?PersonID=' + full.PersonId + '">' + full.Person.FirstName + " " + full.Person.LastName + '</a>';
+          return '<img src="' + window.CRM.root + '/api/person/' + full.PersonId + '/thumbnail" class="direct-chat-img initials-image" style="width:' + window.CRM.iProfilePictureListSize + 'px; height:' + window.CRM.iProfilePictureListSize + 'px"> &nbsp <a href="PersonView.php?PersonID="' + full.PersonId + '"><a target="_top" href="PersonView.php?PersonID=' + full.PersonId + '">' + full.Person.FirstName + " " + full.Person.LastName + '</a>';
         }
       },
       {
@@ -189,7 +178,11 @@ function initDataTable() {
         width: 'auto',
         title: i18next.t('Address'),
         render: function (data, type, full, meta) {
-          return full.Person.Address1 + " " + full.Person.Address2;
+          var address = full.Person.Address1;
+          if (full.Person.Address2) {
+              address += " " + full.Person.Address2;
+          }
+          return address;
         }
       },
       {

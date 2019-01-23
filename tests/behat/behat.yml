@@ -10,3 +10,8 @@ default:
     Novaway\CommonContexts\Extension: ~
     Behat\MinkExtension:
       base_url: http://localhost
+      browser_name: Chrome
+      selenium2:
+        capabilities:
+          platform: Windows 10
+          version: 67.0

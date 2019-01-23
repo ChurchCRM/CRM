@@ -10,16 +10,20 @@ namespace ChurchCRM
      *
      * @param string path to sql file
      */
-      public static function sqlImport($file, $mysqli)
+      public static function sqlImport($fileName, $mysqli)
       {
           $delimiter = ';';
-          $file = fopen($file, 'r');
+          $fileHandle = fopen($fileName, 'r');
           $isFirstRow = true;
           $isMultiLineComment = false;
           $sql = '';
+          
+          if (!$fileHandle) {
+              throw new \Exception(gettext("Unable to open file").": " . $fileName);
+          }
 
-          while (!feof($file)) {
-              $row = fgets($file);
+          while (!feof($fileHandle)) {
+              $row = fgets($fileHandle);
 
               // remove BOM for utf-8 encoded file
               if ($isFirstRow) {
@@ -61,7 +65,7 @@ namespace ChurchCRM
               self::query($row, $mysqli);
           }
 
-          fclose($file);
+          fclose($fileHandle);
       }
 
       /**

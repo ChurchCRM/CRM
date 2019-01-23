@@ -12,6 +12,7 @@ use ChurchCRM\Service\DashboardService;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\PersonQuery;
 use ChurchCRM\ListOptionQuery;
+use ChurchCRM\SessionUser;
 
 // Set the page title
 $sPageTitle = gettext('People Dashboard');
@@ -23,6 +24,7 @@ $personCount = $dashboardService->getPersonCount();
 $personStats = $dashboardService->getPersonStats();
 $familyCount = $dashboardService->getFamilyCount();
 $groupStats = $dashboardService->getGroupStats();
+$ageStats = $dashboardService->getAgeStats();
 $demographicStats = ListOptionQuery::create()->filterByID('2')->find();
 
 $sSQL = 'select count(*) as numb, per_Gender from person_per, family_fam
@@ -58,15 +60,13 @@ $sSQL = "SELECT per_Email, fam_Email, lst_OptionName as virt_RoleName FROM perso
 
 $rsEmailList = RunQuery($sSQL);
 $sEmailLink = '';
+$sMailtoDelimiter = SessionUser::getUser()->getUserConfigString("sMailtoDelimiter");
 while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailList)) {
     $sEmail = SelectWhichInfo($per_Email, $fam_Email, false);
     if ($sEmail) {
-        /* if ($sEmailLink) // Don't put delimiter before first email
-            $sEmailLink .= $sMailtoDelimiter; */
-        // Add email only if email address is not already in string
         if (!stristr($sEmailLink, $sEmail)) {
             $sEmailLink .= $sEmail .= $sMailtoDelimiter;
-            $roleEmails->$virt_RoleName .= $sEmail .= $sMailtoDelimiter;
+            $roleEmails->$virt_RoleName .= $sEmail;
         }
     }
 }
@@ -87,7 +87,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
             $sEmailLink .= $sMailtoDelimiter.SystemConfig::getValue('sToEmailAddress');
         }
         $sEmailLink = urlencode($sEmailLink);  // Mailto should comply with RFC 2368
-       if ($bEmailMailto) { // Does user have permission to email groups
+       if (SessionUser::getUser()->isEmailEnabled()) { // Does user have permission to email groups
       // Display link
        ?>
         <div class="btn-group">
@@ -115,7 +115,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
     }
      ?>
     <br/>
-    <a href="FamilyList.php" class="btn btn-app"><i class="fa fa-users"></i><?= gettext('All Families') ?></a>
+    <a href="<?= SystemURLs::getRootPath()?>/v2/family" class="btn btn-app"><i class="fa fa-users"></i><?= gettext('All Families') ?></a>
     <a href="GeoPage.php" class="btn btn-app"><i class="fa fa-globe"></i><?= gettext('Family Geographic') ?></a>
     <a href="MapUsingGoogle.php?GroupID=-1" class="btn btn-app"><i class="fa fa-map"></i><?= gettext('Family Map') ?>
     </a>
@@ -140,7 +140,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
       <div class="icon">
         <i class="fa fa-users"></i>
       </div>
-      <a href="<?= SystemURLs::getRootPath() ?>/FamilyList.php" class="small-box-footer">
+      <a href="<?= SystemURLs::getRootPath()?>/v2/family" class="small-box-footer">
         <?= gettext('See all Families') ?> <i class="fa fa-arrow-circle-right"></i>
       </a>
     </div>
@@ -166,6 +166,8 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
       </a>
     </div>
   </div>
+  <?php if (SystemConfig::getValue('bEnabledSundaySchool')) {
+         ?> 
   <!-- ./col -->
   <div class="col-lg-3 col-md-6 col-sm-6">
     <!-- small box -->
@@ -187,6 +189,8 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
       </a>
     </div>
   </div>
+  <?php
+     } ?>
   <!-- ./col -->
   <div class="col-lg-3 col-md-6 col-sm-6">
     <!-- small box -->
@@ -227,7 +231,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
         <br>
         <?php echo gettext('Report on group and roles selected (it may be a multi-page PDF).'); ?>
         </p>
-        <?php if ($bCreateDirectory) {
+        <?php if (SessionUser::getUser()->isCreateDirectoryEnabled()) {
          ?>
           <p><a class="MediumText"
                 href="DirectoryReports.php"><?= gettext('People Directory') ?></a><br><?= gettext('Printable directory of all people, grouped by family where assigned') ?>
@@ -444,6 +448,20 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
         <canvas id="gender-donut" style="height:250px"></canvas>
       </div>
     </div>
+    <div class="box box-info">
+      <div class="box-header">
+        <i class="fa fa-birthday-cake"></i>
+        <h3 class="box-title"><?= gettext('Age Histogram') ?></h3>
+
+        <div class="box-tools pull-right">
+          <div id="age-stats-bar-legend" class="chart-legend"></div>
+        </div>
+      </div>
+      <!-- /.box-header -->
+      <div class="box-body">
+        <canvas id="age-stats-bar" style="height:250px"></canvas>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -498,6 +516,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
 
         var pieChartCanvas = $("#gender-donut").get(0).getContext("2d");
         var pieChart = new Chart(pieChartCanvas);
+     
 
         //Create pie or douhnut chart
         // You can switch between pie and douhnut using the method below.
@@ -508,6 +527,40 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
 
         //and append it to your page somewhere
         $('#gender-donut-legend').append(legend);
+        var ageLabels = <?php
+          echo json_encode(array_keys($ageStats));
+        ?>;
+        var ageValues = <?php
+          echo json_encode(array_values($ageStats));
+        ?>;
+        var ageStatsCanvas = $("#age-stats-bar").get(0).getContext("2d");
+        var AgeChart = new Chart(ageStatsCanvas);
+        AgeChart.Bar(
+          {
+            labels: ageLabels,
+            datasets: [ {
+                label: "Ages",
+                data: ageValues,
+                backgroundColor: 'rgba(255, 99, 132, 1)',
+            }]
+          },
+          {
+            scales: {
+              xAxes: [{
+                display: false,
+                barPercentage: 1.3,
+                ticks: {
+                  max: 3,
+                }
+             }],
+              yAxes: [{
+                ticks: {
+                  beginAtZero:true
+                }
+              }]
+            }
+          }
+        );
     });
 </script>
 

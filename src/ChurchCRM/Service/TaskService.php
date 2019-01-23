@@ -2,20 +2,24 @@
 
 namespace ChurchCRM\Service;
 
+use ChurchCRM\dto\Notification\UiNotification;
+use ChurchCRM\Tasks\CheckUploadSizeTask;
 use ChurchCRM\Tasks\ChurchAddress;
 use ChurchCRM\Tasks\ChurchNameTask;
 use ChurchCRM\Tasks\EmailTask;
 use ChurchCRM\Tasks\HttpsTask;
 use ChurchCRM\Tasks\IntegrityCheckTask;
-use ChurchCRM\Tasks\PrerequisiteCheckTask;
 use ChurchCRM\Tasks\iTask;
 use ChurchCRM\Tasks\LatestReleaseTask;
-use ChurchCRM\Tasks\RegisteredTask;
-use ChurchCRM\Tasks\PersonGenderDataCheck;
 use ChurchCRM\Tasks\PersonClassificationDataCheck;
+use ChurchCRM\Tasks\PersonGenderDataCheck;
 use ChurchCRM\Tasks\PersonRoleDataCheck;
+use ChurchCRM\Tasks\PrerequisiteCheckTask;
+use ChurchCRM\Tasks\RegisteredTask;
 use ChurchCRM\Tasks\UpdateFamilyCoordinatesTask;
-use ChurchCRM\Tasks\CheckUploadSizeTask;
+use ChurchCRM\Tasks\CheckExecutionTimeTask;
+use ChurchCRM\Tasks\UnsupportedDepositCheck;
+use ChurchCRM\Tasks\UnsupportedPaymentDataCheck;
 
 class TaskService
 {
@@ -23,10 +27,10 @@ class TaskService
      * @var ObjectCollection|iTask[]
      */
     private $taskClasses;
+    private $notificationClasses;
 
     public function __construct()
     {
-
         $this->taskClasses = [
             new PrerequisiteCheckTask(),
             new ChurchNameTask(),
@@ -40,7 +44,14 @@ class TaskService
             new PersonClassificationDataCheck(),
             new PersonRoleDataCheck(),
             new UpdateFamilyCoordinatesTask(),
-            new CheckUploadSizeTask()
+            new CheckUploadSizeTask(),
+            new CheckExecutionTimeTask(),
+            new UnsupportedDepositCheck(),
+            new UnsupportedPaymentDataCheck()
+        ];
+
+        $this->notificationClasses = [
+          //  new LatestReleaseTask()
         ];
     }
 
@@ -53,6 +64,18 @@ class TaskService
                     'link' => $taskClass->getLink(),
                     'admin' => $taskClass->isAdmin(),
                     'desc' => $taskClass->getDesc()]);
+            }
+        }
+        return $tasks;
+    }
+
+    public function getTaskNotifications()
+    {
+        $tasks = [];
+        foreach ($this->notificationClasses as $taskClass) {
+            if ($taskClass->isActive()) {
+                array_push($tasks,
+                    new UiNotification($taskClass->getTitle(), "wrench", $taskClass->getLink(), $taskClass->getDesc(), ($taskClass->isAdmin() ? "warning" : "info"), "12000", "bottom", "left"));
             }
         }
         return $tasks;

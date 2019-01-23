@@ -24,7 +24,7 @@ $mode = trim($_GET['mode']);
 switch ($mode) {
     case 'famroles':
     case 'classes':
-        if (!$_SESSION['bMenuOptions']) {
+        if (!$_SESSION['user']->isMenuOptionsEnabled()) {
             RedirectUtils::Redirect('Menu.php');
             exit;
         }
@@ -33,7 +33,7 @@ switch ($mode) {
     case 'grptypes':
     case 'grproles':
     case 'groupcustom':
-        if (!$_SESSION['bManageGroups']) {
+        if (!$_SESSION['user']->isManageGroupsEnabled()) {
             RedirectUtils::Redirect('Menu.php');
             exit;
         }
@@ -42,7 +42,7 @@ switch ($mode) {
     case 'custom':
     case 'famcustom':
     case 'securitygrp':
-        if (!$_SESSION['bAdmin']) {
+        if (!$_SESSION['user']->isAdmin()) {
             RedirectUtils::Redirect('Menu.php');
             exit;
         }
@@ -332,13 +332,13 @@ for ($row = 1; $row <= $numRows; $row++) {
 
 			<?php
             if ($row != 1) {
-                echo "<a href=\"OptionManagerRowOps.php?mode=$mode&Order=$aSeqs[$row]&ListID=$listID&ID=".$aIDs[$row].'&Action=up"><img src="Images/uparrow.gif" border="0"></a>';
+                echo "<a href=\"OptionManagerRowOps.php?mode=$mode&Order=$aSeqs[$row]&ListID=$listID&ID=".$aIDs[$row].'&Action=up"><i class="fa fa-arrow-up"></i></a>';
             }
     if ($row < $numRows) {
-        echo "<a href=\"OptionManagerRowOps.php?mode=$mode&Order=$aSeqs[$row]&ListID=$listID&ID=".$aIDs[$row].'&Action=down"><img src="Images/downarrow.gif" border="0"></a>';
+        echo "<a href=\"OptionManagerRowOps.php?mode=$mode&Order=$aSeqs[$row]&ListID=$listID&ID=".$aIDs[$row].'&Action=down"><i class="fa fa-arrow-down"></i></a>';
     }
     if ($numRows > 0) {
-        echo "<a href=\"OptionManagerRowOps.php?mode=$mode&Order=$aSeqs[$row]&ListID=$listID&ID=".$aIDs[$row].'&Action=delete"><img src="Images/x.gif" border="0"></a>';
+        echo "<a href=\"OptionManagerRowOps.php?mode=$mode&Order=$aSeqs[$row]&ListID=$listID&ID=".$aIDs[$row].'&Action=delete"><i class="fa fa-times"></i></a>';
     } ?>
 		</td>
 		<td class="TextColumn">
@@ -355,7 +355,7 @@ for ($row = 1; $row <= $numRows; $row++) {
 		</td>
 		<?php
         if ($mode == 'grproles') {
-            echo '<td class="TextColumn"><input class="form-control input-small" type="button" class="btn" value="'.gettext('Make Default')."\" Name=\"default\" onclick=\"javascript:document.location='OptionManagerRowOps.php?mode=".$mode.'&ListID='.$listID.'&ID='.$aIDs[$row]."&Action=makedefault';\" ></td>";
+            echo '<td class="TextColumn"><input class="form-control input-small" type="button" class="btn btn-default" value="'.gettext('Make Default')."\" Name=\"default\" onclick=\"javascript:document.location='OptionManagerRowOps.php?mode=".$mode.'&ListID='.$listID.'&ID='.$aIDs[$row]."&Action=makedefault';\" ></td>";
         } ?>
 
 	</tr>
@@ -369,11 +369,11 @@ for ($row = 1; $row <= $numRows; $row++) {
 
 	<?php if ($mode == 'groupcustom' || $mode == 'custom' || $mode == 'famcustom') {
             ?>
-		<input type="button" class="btn" value="<?= gettext('Exit') ?>" Name="Exit" onclick="javascript:window.close();">
+		<input type="button" class="btn btn-default" value="<?= gettext('Exit') ?>" Name="Exit" onclick="javascript:window.close();">
 	<?php
         } elseif ($mode != 'grproles') {
             ?>
-		<input type="button" class="btn" value="<?= gettext('Exit') ?>" Name="Exit" onclick="javascript:document.location='<?php
+		<input type="button" class="btn btn-default" value="<?= gettext('Exit') ?>" Name="Exit" onclick="javascript:document.location='<?php
         echo 'Menu.php'; ?>';">
 	<?php
         } ?>
@@ -387,7 +387,7 @@ for ($row = 1; $row <= $numRows; $row++) {
 	<input class="form-control input-small" type="text" name="newFieldName" size="30" maxlength="40">
 </span>
 <p>  </p>
-<input type="submit" class="btn" value="<?= gettext('Add New').' '.$adjplusname ?>" Name="AddField">
+<input type="submit" class="btn btn-default" value="<?= gettext('Add New').' '.$adjplusname ?>" Name="AddField">
 <?php
     if ($iNewNameError > 0) {
         echo '<div><span style="color: red;"><BR>';

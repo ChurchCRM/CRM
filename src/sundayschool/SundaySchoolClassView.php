@@ -8,6 +8,7 @@ use ChurchCRM\Service\SundaySchoolService;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\MiscUtils;
+use ChurchCRM\SessionUser;
 
 $sundaySchoolService = new SundaySchoolService();
 
@@ -70,6 +71,7 @@ require '../Include/Header.php';
   </div>
   <div class="box-body">
     <?php
+    $sMailtoDelimiter = SessionUser::getUser()->getUserConfigString("sMailtoDelimiter");
     $allEmails = array_unique(array_merge($ParentsEmails, $KidsEmails, $TeachersEmails));
     $roleEmails->Parents = implode($sMailtoDelimiter, $ParentsEmails).',';
     $roleEmails->Teachers = implode($sMailtoDelimiter, $TeachersEmails).',';
@@ -81,7 +83,7 @@ require '../Include/Header.php';
     }
     $sEmailLink = urlencode($sEmailLink);  // Mailto should comply with RFC 2368
 
-    if ($bEmailMailto) { // Does user have permission to email groups
+    if (SessionUser::getUser()->isEmailEnabled()) { // Does user have permission to email groups
       // Display link
       ?>
       <div class="btn-group">
@@ -131,7 +133,7 @@ require '../Include/Header.php';
         <div class="box box-info text-center user-profile-2">
           <div class="user-profile-inner">
             <h4 class="white"><?= $teacher['per_FirstName'].' '.$teacher['per_LastName'] ?></h4>
-            <img src="<?= SystemURLs::getRootPath(); ?>/api/persons/<?= $teacher['per_ID'] ?>/thumbnail"
+            <img src="<?= SystemURLs::getRootPath(); ?>/api/person/<?= $teacher['per_ID'] ?>/thumbnail"
                   alt="User Image" class="user-image initials-image" width="85" height="85" />
             <a href="mailto:<?= $teacher['per_Email'] ?>" type="button" class="btn btn-primary btn-sm btn-block"><i
                 class="fa fa-envelope"></i> <?= gettext('Send Message') ?></a>
@@ -222,7 +224,7 @@ require '../Include/Header.php';
           $birthDate = MiscUtils::FormatBirthDate($child['birthYear'], $child['birthMonth'], $child['birthDay'], '-', $child['flags']); ?>
           <tr>
           <td>
-            <img src="<?= SystemURLs::getRootPath(); ?>/api/persons/<?= $child['kidId'] ?>/thumbnail"
+            <img src="<?= SystemURLs::getRootPath(); ?>/api/person/<?= $child['kidId'] ?>/thumbnail"
                 alt="User Image" class="user-image initials-image" style="width: <?= SystemConfig::getValue('iProfilePictureListSize') ?>px !; height: <?= SystemConfig::getValue('iProfilePictureListSize') ?>px; max-width:none" />
           </td>
           <td><a href="<?= SystemURLs::getRootPath(); ?>/PersonView.php?PersonID=<?= $child['kidId'] ?>"><?= $child['LastName'].', '.$child['firstName'] ?></a></td>
@@ -323,13 +325,13 @@ function implodeUnique($array, $withQuotes)
 </div><!-- /.modal -->
 
 <!-- FLOT CHARTS -->
-<script  src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/flot/jquery.flot.min.js"></script>
+<script  src="<?= SystemURLs::getRootPath() ?>/skin/external/flot/jquery.flot.js"></script>
 <!-- FLOT RESIZE PLUGIN - allows the chart to redraw when the window is resized -->
-<script  src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/flot/jquery.flot.resize.min.js"></script>
+<script  src="<?= SystemURLs::getRootPath() ?>/skin/external/flot/jquery.flot.resize.js"></script>
 <!-- FLOT PIE PLUGIN - also used to draw donut charts -->
-<script  src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/flot/jquery.flot.pie.min.js"></script>
+<script  src="<?= SystemURLs::getRootPath() ?>/skin/external/flot/jquery.flot.pie.js"></script>
 <!-- FLOT CATEGORIES PLUGIN - Used to draw bar charts -->
-<script  src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/flot/jquery.flot.categories.min.js"></script>
+<script  src="<?= SystemURLs::getRootPath() ?>/skin/external/flot/jquery.flot.categories.js"></script>
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
   $(document).ready(function () {

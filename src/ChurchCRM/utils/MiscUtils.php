@@ -4,6 +4,16 @@ namespace ChurchCRM\Utils;
 use ChurchCRM\dto\SystemConfig;
 class MiscUtils {
  
+  public static function randomToken() {
+    $alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+    $apiKey = array(); //remember to declare $apiKey as an array
+    $alphaLength = strlen($alphabet) - 1; //put the length -1 in cache
+    for ($i = 0; $i < 50; $i++) {
+        $n = rand(0, $alphaLength);
+        $apiKey[] = $alphabet[$n];
+    }
+    return implode($apiKey); //turn the array into a string
+  }
 
   public static function random_word( $length = 6 ) {
       $cons = array( 'b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'r', 's', 't', 'v', 'w', 'x', 'z', 'pt', 'gl', 'gr', 'ch', 'ph', 'ps', 'sh', 'st', 'th', 'wh' );
@@ -35,7 +45,7 @@ class MiscUtils {
   }
   
   public static function getPhotoCacheExpirationTimestamp() {
-    $cacheLength = SystemConfig::getValue(iPhotoClientCacheDuration);
+    $cacheLength = SystemConfig::getValue("iPhotoClientCacheDuration");
     $cacheLength = MiscUtils::getRandomCache($cacheLength,0.5*$cacheLength);
     //echo time() +  $cacheLength;
     //die();
@@ -104,5 +114,14 @@ class MiscUtils {
       return false;
   }
   
+  public static function GetGitHubWikiAnchorLink($text) {
+    // roughly adapted from https://gist.github.com/asabaylus/3071099#gistcomment-1593627
+    $anchor = strtolower($text);
+    $anchor = preg_replace('/[^\w\d\- ]+/','',$anchor);
+    $anchor = preg_replace('/\s/','-',$anchor);
+    $anchor = preg_replace('/\-+$/','',$anchor);
+    $anchor = str_replace(" ", "-", $anchor);
+    return $anchor;
+  }
 }
 ?>

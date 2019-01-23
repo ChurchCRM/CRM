@@ -3,13 +3,15 @@
 namespace ChurchCRM;
 
 use ChurchCRM\Base\Person as BasePerson;
+use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\dto\Photo;
-use Propel\Runtime\Connection\ConnectionInterface;
-use ChurchCRM\Service\GroupService;
 use ChurchCRM\Emails\NewPersonOrFamilyEmail;
+use ChurchCRM\Service\GroupService;
+use ChurchCRM\Utils\GeoUtils;
+use ChurchCRM\Utils\LoggerUtils;
 use DateTime;
+use Propel\Runtime\Connection\ConnectionInterface;
 
 /**
  * Skeleton subclass for representing a row from the 'person_per' table.
@@ -40,6 +42,16 @@ class Person extends BasePerson implements iPhoto
     public function isFemale()
     {
         return $this->getGender() == 2;
+    }
+
+    public function getGenderName()
+    {
+      switch (strtolower($this->getGender())) {
+        case 1:
+          return gettext('Male');
+        case 2:
+          return gettext('Female');
+      }
     }
 
     public function hideAge()
@@ -108,6 +120,26 @@ class Person extends BasePerson implements iPhoto
         return $roleName;
     }
 
+    public function getClassification()
+    {
+      $classification = null;
+      $clsId = $this->getClsId();
+      if (!empty($clsId)) {
+        $classification = ListOptionQuery::create()->filterById(1)->filterByOptionId($clsId)->findOne();
+      }
+      return $classification;
+    }
+
+    public function getClassificationName()
+    {
+      $classificationName = '';
+      $classification = $this->getClassification();
+      if (!is_null($classification)) {
+        $classificationName = $classification->getOptionName();
+      }
+      return $classificationName;
+    }
+
     public function postInsert(ConnectionInterface $con = null)
     {
       $this->createTimeLineNote('create');
@@ -115,7 +147,7 @@ class Person extends BasePerson implements iPhoto
       {
         $NotificationEmail = new NewPersonOrFamilyEmail($this);
         if (!$NotificationEmail->send()) {
-          $logger->warn($NotificationEmail->getError());
+            LoggerUtils::getAppLogger()->warn(gettext("New Person Notification Email Error"). " :". $NotificationEmail->getError());
         }
       }
     }
@@ -155,19 +187,6 @@ class Person extends BasePerson implements iPhoto
         $user = UserQuery::create()->findPk($this->getId());
 
         return !is_null($user);
-    }
-
-    public function getOtherFamilyMembers()
-    {
-        $familyMembers = $this->getFamily()->getPeople();
-        $otherFamilyMembers = [];
-        foreach ($familyMembers as $member) {
-            if ($member->getId() != $this->getId()) {
-                array_push($otherFamilyMembers, $member);
-            }
-        }
-
-        return $otherFamilyMembers;
     }
 
     /**
@@ -241,12 +260,12 @@ class Person extends BasePerson implements iPhoto
 
     public function deletePhoto()
     {
-        if ($_SESSION['bAddRecords'] || $bOkToEdit) {
+        if ($_SESSION['user']->isDeleteRecordsEnabled()) {
             if ($this->getPhoto()->delete()) {
                 $note = new Note();
                 $note->setText(gettext("Profile Image Deleted"));
                 $note->setType("photo");
-                $note->setEntered($_SESSION['iUserID']);
+                $note->setEntered($_SESSION['user']->getId());
                 $note->setPerId($this->getId());
                 $note->save();
                 return true;
@@ -266,11 +285,11 @@ class Person extends BasePerson implements iPhoto
 
     public function setImageFromBase64($base64)
     {
-        if ($_SESSION['bAddRecords'] || $bOkToEdit) {
+        if ($_SESSION['user']->isEditRecordsEnabled()) {
             $note = new Note();
             $note->setText(gettext("Profile Image uploaded"));
             $note->setType("photo");
-            $note->setEntered($_SESSION['iUserID']);
+            $note->setEntered($_SESSION['user']->getId());
             $this->getPhoto()->setImageFromBase64($base64);
             $note->setPerId($this->getId());
             $note->save();
@@ -390,6 +409,14 @@ class Person extends BasePerson implements iPhoto
                 }
                 $nameString .= $this->getFirstName();
                 break;
+             case 7:
+                if ($this->getLastName()) {
+                    $nameString .= $this->getLastName() . ' ';
+                }
+                if ($this->getFirstName() ){
+                    $nameString .= $this->getFirstName();
+                }
+                break;
             default:
                 $nameString = $this->getFullName();
 
@@ -451,7 +478,7 @@ class Person extends BasePerson implements iPhoto
       return parent::postSave($con);
     }
 
-    public function getAge()
+    public function getAge($now = null)
     {
       $birthDate = $this->getBirthDate();
 
@@ -459,8 +486,9 @@ class Person extends BasePerson implements iPhoto
       {
         return false;
       }
-
-      $now = date_create('today');
+      if (empty($now)) {
+        $now = date_create('today');
+      }
       $age = date_diff($now,$birthDate);
 
       if ($age->y < 1) {
@@ -482,11 +510,52 @@ class Person extends BasePerson implements iPhoto
       return $ageValue. " ".$ageSuffix;
 
     }
+    
+    public function getNumericAge() {
+      $birthDate = $this->getBirthDate();
+      if ($this->hideAge())
+      {
+        return false;
+      }
+      if (empty($now)) {
+        $now = date_create('today');
+      }
+      $age = date_diff($now,$birthDate);
+       if ($age->y < 1) {
+        $ageValue = 0;
+      } else {
+        $ageValue = $age->y;
+      }
+      return $ageValue;
+    }
 
     /* Philippe Logel 2017 */
     public function getFullNameWithAge()
     {
        return $this->getFullName()." ".$this->getAge();
+    }
+
+    public function toArray($keyType = TableMap::TYPE_PHPNAME, $includeLazyLoadColumns = true, $alreadyDumpedObjects = array(), $includeForeignObjects = false)
+    {
+        $array = parent::toArray();
+        $array['Address']=$this->getAddress();
+        return $array;
+    }
+
+    public function getThumbnailURL() {
+      return SystemURLs::getRootPath() . '/api/person/' . $this->getId() . '/thumbnail';
+    }
+
+    public function getEmail() {
+      if (parent::getEmail() == null)
+      {
+        $family = $this->getFamily();
+        if ($family != null)
+        {
+          return $family->getEmail();
+        }
+      }
+      return parent::getEmail();
     }
 
 }

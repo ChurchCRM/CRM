@@ -23,7 +23,7 @@ $sGroupKey = InputUtils::LegacyFilterInput($_GET['GroupKey'], 'string');
 
 // Security: User must have Add or Edit Records permission to use this form in those manners
 // Clean error handling: (such as somebody typing an incorrect URL ?PersonID= manually)
-if (!$_SESSION['bAddRecords']) {
+if (!$_SESSION['user']->isDeleteRecordsEnabled()) {
     RedirectUtils::Redirect('Menu.php');
     exit;
 }
@@ -50,8 +50,8 @@ require 'Include/Header.php';
 
 	<tr>
 		<td align="center">
-			<input type="submit" class="btn" value="<?= gettext('Delete') ?>" name="Delete">
-			<input type="submit" class="btn" value="<?= gettext('Cancel') ?>" name="Cancel">
+			<input type="submit" class="btn btn-default" value="<?= gettext('Delete') ?>" name="Delete">
+			<input type="submit" class="btn btn-default" value="<?= gettext('Cancel') ?>" name="Cancel">
 		</td>
 	</tr>
 </table>

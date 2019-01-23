@@ -22,7 +22,7 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\dto\SystemURLs;
 
 // Security: user must be allowed to edit records to use this page.
-if (!$_SESSION['bManageGroups']) {
+if (!$_SESSION['user']->isManageGroupsEnabled()) {
     RedirectUtils::Redirect('Menu.php');
     exit;
 }
@@ -297,13 +297,13 @@ if ($numRows == 0) {
 			<td class="TextColumn" width="5%" nowrap>
 				<?php
                 if ($row != 1) {
-                    echo "<a href=\"GroupPropsFormRowOps.php?GroupID=$iGroupID&PropID=$row&Field=".$aFieldFields[$row].'&Action=up"><img src="Images/uparrow.gif" border="0"></a>';
+                    echo "<a href=\"GroupPropsFormRowOps.php?GroupID=$iGroupID&PropID=$row&Field=".$aFieldFields[$row].'&Action=up"><i class="fa fa-arrow-up"></i></a>';
                 }
         if ($row < $numRows) {
-            echo "<a href=\"GroupPropsFormRowOps.php?GroupID=$iGroupID&PropID=$row&Field=".$aFieldFields[$row].'&Action=down"><img src="Images/downarrow.gif" border="0"></a>';
+            echo "<a href=\"GroupPropsFormRowOps.php?GroupID=$iGroupID&PropID=$row&Field=".$aFieldFields[$row].'&Action=down"><i class="fa fa-arrow-down"></i></a>';
         } ?>
 
-				<?= "<a href=\"GroupPropsFormRowOps.php?GroupID=$iGroupID&PropID=$row&Field=$aFieldFields[$row]&Action=delete\"><img src=\"Images/x.gif\" border=\"0\"></a>"; ?>
+				<?= "<a href=\"GroupPropsFormRowOps.php?GroupID=$iGroupID&PropID=$row&Field=$aFieldFields[$row]&Action=delete\"><i class='fa fa-times' ></i></a>"; ?>
 			</td>
 			<td class="TextColumn" style="font-size:70%;">
 			<?= $aPropTypes[$aTypeFields[$row]]; ?>
@@ -365,7 +365,7 @@ if ($numRows == 0) {
 				<tr>
 					<td width="30%"></td>
 					<td width="40%" align="center" valign="bottom">
-						<input type="submit" class="btn" value="<?= gettext('Save Changes') ?>" Name="SaveChanges">
+						<input type="submit" class="btn btn-default" value="<?= gettext('Save Changes') ?>" Name="SaveChanges">
 					</td>
 					<td width="30%"></td>
 				</tr>
@@ -412,7 +412,7 @@ if ($numRows == 0) {
 						&nbsp;
 					</td>
 					<td>
-						<input type="submit" class="btn" value="<?= gettext('Add New Field') ?>" Name="AddField">
+						<input type="submit" class="btn btn-default" value="<?= gettext('Add New Field') ?>" Name="AddField">
 					</td>
 					<td width="15%"></td>
 				</tr>

@@ -69,7 +69,33 @@
         <vendor type="mysql">
             <parameter name="Engine" value="InnoDB"/>
         </vendor>
+        <behavior name="validate">
+            <parameter name="rule1" value="{column: per_firstname, validator: NotNull}" />
+            <parameter name="rule2" value="{column: per_firstname, validator: Length, options: {max: 50}}" />
+            <parameter name="rule3" value="{column: per_lastname, validator: NotNull}" />
+            <parameter name="rule4" value="{column: per_lastname, validator: Length, options: {max: 50}}" />
+            <parameter name="rule5" value="{column: per_email, validator: NotNull}" />
+            <parameter name="rule6" value="{column: per_email, validator: Email}" />
+        </behavior>
     </table>
+
+    <table name="menu_links" idMethod="native" phpName="MenuLink">
+        <column name="linkId" phpName="Id" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" primaryKey="true"
+                autoIncrement="true" required="true"/>
+        <column name="linkName" phpName="Name" type="VARCHAR" size="50"/>
+        <column name="linkUri" phpName="Uri" type="VARCHAR" size="500"/>
+        <column name="linkOrder" phpName="Order" type="SMALLINT"/>
+        <index name="linkId">
+            <index-column name="linkId"/>
+        </index>
+        <behavior name="validate">
+            <parameter name="rule1" value="{column: linkname, validator: NotNull}" />
+            <parameter name="rule2" value="{column: linkname, validator: Length, options: {max: 50}}" />
+            <parameter name="rule3" value="{column: linkuri, validator: NotNull}" />
+            <parameter name="rule4" value="{column: linkuri, validator: Length, options: {max: 500}}" />
+        </behavior>
+    </table>
+
     <table name="whycame_why" idMethod="native" phpName="WhyCame" description="This contains the comments related to why people came">
         <column name="why_ID" phpName="Id" type="SMALLINT" size="9" primaryKey="true" autoIncrement="true"
                 required="true"/>
@@ -132,7 +158,8 @@
                 defaultValue="0"/>
         <column name="fam_scanCheck" phpName="ScanCheck" type="LONGVARCHAR"/>
         <column name="fam_scanCredit" phpName="ScanCredit" type="LONGVARCHAR"/>
-        <column name="fam_SendNewsLetter" phpName="SendNewsletter" type="BOOLEAN" required="true" defaultValue="FALSE"/>
+        <column name="fam_SendNewsLetter" phpName="SendNewsletter" type="CHAR" sqlType="enum('FALSE','TRUE')"
+                required="true" defaultValue="FALSE"/>
         <column name="fam_DateDeactivated" phpName="DateDeactivated" type="DATE"/>
         <column name="fam_OkToCanvass" phpName="OkToCanvass" type="CHAR" sqlType="enum('FALSE','TRUE')" required="true"
                 defaultValue="FALSE"/>
@@ -147,10 +174,14 @@
         <vendor type="mysql">
             <parameter name="Engine" value="InnoDB"/>
         </vendor>
+        <behavior name="validate">
+            <parameter name="rule1" value="{column: fam_name, validator: NotNull}" />
+            <parameter name="rule2" value="{column: fam_name, validator: Length, options: {max: 50}}" />
+        </behavior>
     </table>
     <table name="family_custom_master" idMethod="native" phpName="FamilyCustomMaster">
         <column name="fam_custom_Order" phpName="CustomOrder" type="SMALLINT" required="true" defaultValue="0"/>
-        <column name="fam_custom_Field" phpName="CustomField" type="VARCHAR" size="5" required="true" defaultValue=""/>
+        <column name="fam_custom_Field" phpName="CustomField" type="VARCHAR" size="5" required="true" defaultValue="" primaryKey="true"/>
         <column name="fam_custom_Name" phpName="CustomName" type="VARCHAR" size="40" required="true" defaultValue=""/>
         <column name="fam_custom_Special" phpName="CustomSpecial" type="SMALLINT" size="8"
                 sqlType="mediumint(8) unsigned"/>
@@ -165,6 +196,9 @@
     <table name="family_custom" idMethod="native" phpName="FamilyCustom">
         <column name="fam_ID" phpName="FamId" type="SMALLINT" size="9" primaryKey="true" required="true"
                 defaultValue="0"/>
+        <foreign-key foreignTable="family_fam">
+          <reference local="fam_ID" foreign="fam_ID"/>
+        </foreign-key>
         <vendor type="mysql">
             <parameter name="Engine" value="InnoDB"/>
         </vendor>
@@ -208,28 +242,6 @@
         <unique name="cfg_name">
             <unique-column name="cfg_name"/>
         </unique>
-        <vendor type="mysql">
-            <parameter name="Engine" value="InnoDB"/>
-        </vendor>
-    </table>
-
-    <table name="menuconfig_mcf" idMethod="native" phpName="MenuConfig">
-        <column name="mid" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
-        <column name="name" phpName="Name" type="VARCHAR" size="20" required="true"/>
-        <column name="parent" phpName="Parent" type="VARCHAR" size="20" required="true"/>
-        <column name="ismenu" phpName="Menu" type="BOOLEAN" size="1" required="true"/>
-        <column name="content_english" phpName="ContentEnglish" type="VARCHAR" size="100" required="true"/>
-        <column name="content" phpName="Content" type="VARCHAR" size="100"/>
-        <column name="uri" phpName="URI" type="VARCHAR" size="255" required="true"/>
-        <column name="statustext" phpName="Status" type="VARCHAR" size="255" required="true"/>
-        <column name="security_grp" phpName="SecurityGroup" type="VARCHAR" size="50" required="true"/>
-        <column name="session_var" phpName="SessionVar" type="VARCHAR" size="50"/>
-        <column name="session_var_in_text" phpName="SessionVarInText" type="BOOLEAN" size="1" required="true"/>
-        <column name="session_var_in_uri" phpName="SessionVarInURI" type="BOOLEAN" size="1" required="true"/>
-        <column name="url_parm_name" phpName="URLParmName" type="VARCHAR" size="50"/>
-        <column name="active" phpName="Active" type="BOOLEAN" size="1" required="true"/>
-        <column name="sortorder" phpName="SortOrder" type="TINYINT" size="3" required="true"/>
-        <column name="icon" phpName="Icon" type="VARCHAR" size="50"/>
         <vendor type="mysql">
             <parameter name="Engine" value="InnoDB"/>
         </vendor>
@@ -303,51 +315,6 @@
         </vendor>
     </table>
 
-
-    <table name="autopayment_aut" idMethod="native" phpName="AutoPayment" description="This contains information for automatic electronic donations or payments for events">
-        <column name="aut_ID" phpName="Id" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" primaryKey="true"
-                autoIncrement="true" required="true"/>
-        <column name="aut_FamID" phpName="Familyid" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned"
-                required="true" defaultValue="0"/>
-        <column name="aut_EnableBankDraft" phpName="EnableBankDraft" type="BOOLEAN" size="1"
-                sqlType="tinyint(1) unsigned" required="true" defaultValue="false"/>
-        <column name="aut_EnableCreditCard" phpName="EnableCreditCard" type="BOOLEAN" size="1"
-                sqlType="tinyint(1) unsigned" required="true" defaultValue="false"/>
-        <column name="aut_NextPayDate" phpName="NextPayDate" type="DATE"/>
-        <column name="aut_FYID" phpName="Fyid" type="SMALLINT" size="9" required="true" defaultValue="9"/>
-        <column name="aut_Amount" phpName="Amount" type="DECIMAL" size="6" scale="2" required="true"
-                defaultValue="0.00"/>
-        <column name="aut_Interval" phpName="Interval" type="TINYINT" size="3" required="true" defaultValue="1"/>
-        <column name="aut_Fund" phpName="Fund" type="SMALLINT" size="6" required="true" defaultValue="0"/>
-        <column name="aut_FirstName" phpName="FirstName" type="VARCHAR" size="50"/>
-        <column name="aut_LastName" phpName="LastName" type="VARCHAR" size="50"/>
-        <column name="aut_Address1" phpName="Address1" type="VARCHAR" size="255"/>
-        <column name="aut_Address2" phpName="Address2" type="VARCHAR" size="255"/>
-        <column name="aut_City" phpName="City" type="VARCHAR" size="50"/>
-        <column name="aut_State" phpName="State" type="VARCHAR" size="50"/>
-        <column name="aut_Zip" phpName="Zip" type="VARCHAR" size="50"/>
-        <column name="aut_Country" phpName="Country" type="VARCHAR" size="50"/>
-        <column name="aut_Phone" phpName="Phone" type="VARCHAR" size="30"/>
-        <column name="aut_Email" phpName="Email" type="VARCHAR" size="100"/>
-        <column name="aut_CreditCard" phpName="CreditCard" type="VARCHAR" size="50"/>
-        <column name="aut_ExpMonth" phpName="ExpMonth" type="VARCHAR" size="2"/>
-        <column name="aut_ExpYear" phpName="ExpYear" type="VARCHAR" size="4"/>
-        <column name="aut_BankName" phpName="BankName" type="VARCHAR" size="50"/>
-        <column name="aut_Route" phpName="Route" type="VARCHAR" size="30"/>
-        <column name="aut_Account" phpName="Account" type="VARCHAR" size="30"/>
-        <column name="aut_DateLastEdited" phpName="DateLastEdited" type="TIMESTAMP"/>
-        <column name="aut_EditedBy" phpName="Editedby" type="SMALLINT" size="5" sqlType="smallint(5) unsigned"
-                defaultValue="0"/>
-        <column name="aut_Serial" phpName="Serial" type="SMALLINT" size="9" required="true" defaultValue="1"/>
-        <column name="aut_CreditCardVanco" phpName="Creditcardvanco" type="VARCHAR" size="50"/>
-        <column name="aut_AccountVanco" phpName="AccountVanco" type="VARCHAR" size="50"/>
-        <unique name="aut_ID">
-            <unique-column name="aut_ID"/>
-        </unique>
-        <vendor type="mysql">
-            <parameter name="Engine" value="InnoDB"/>
-        </vendor>
-    </table>
     <table name="canvassdata_can" idMethod="native" phpName="CanvassData" description="this contains information about the results of canvassing families">
         <column name="can_ID" phpName="Id" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" primaryKey="true"
                 autoIncrement="true" required="true"/>
@@ -483,7 +450,7 @@
             <parameter name="Engine" value="InnoDB"/>
         </vendor>
     </table>
-    <table name="event_types" idMethod="native" phpName="EventTypes">
+    <table name="event_types" idMethod="native" phpName="EventType">
         <column name="type_id" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
         <column name="type_name" phpName="Name" type="VARCHAR" size="255" required="true" defaultValue=""/>
         <column name="type_defstarttime" phpName="DefStartTime" type="TIME" required="true" defaultValue="00:00:00"/>
@@ -541,10 +508,24 @@
         <column name="event_end" phpName="End" type="TIMESTAMP" required="true"/>
         <column name="inactive" phpName="InActive" type="INTEGER" size="1" required="true" defaultValue="0"/>
         <column name="event_typename" phpName="TypeName" type="VARCHAR" size="40" required="true" defaultValue=""/>
-        <column name="event_grpid" phpName="GroupId" type="INTEGER" required="false" defaultValue="0"/>
-        <column name="event_publicly_visible" phpName="PubliclyVisible" type="BOOLEAN" />
-        <foreign-key foreignTable="group_grp">
-            <reference local="event_grpid" foreign="grp_ID"/>
+        <column name="location_id" phpName="LocationId" type="INTEGER" required="true" defaultValue="0"/>
+        <column name="primary_contact_person_id" phpName="PrimaryContactPersonId" type="INTEGER" required="true" defaultValue="0"/>
+        <column name="secondary_contact_person_id" phpName="SecondaryContactPersonId" type="INTEGER" required="true" defaultValue="0"/>
+        <column name="event_url" phpName="URL" type="LONGVARCHAR"/>
+        
+        <foreign-key foreignTable="event_types" name="EventType" refPhpName="EventType">
+            <reference local="event_type" foreign="type_id"/>
+        </foreign-key>
+
+        <foreign-key foreignTable="person_per" name="PrimaryContact" refPhpName="PrimaryContactPerson" skipSql = "true">
+            <reference local="event_type" foreign="per_ID"/>
+        </foreign-key>
+
+        <foreign-key foreignTable="person_per" name="SecondaryContact" refPhpName="SecondaryContactPerson" skipSql = "true">
+            <reference local="secondary_contact_person_id" foreign="per_ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="locations">
+            <reference local="location_id" foreign="location_id"/>
         </foreign-key>
         <index name="event_txt">
             <index-column name="event_text"/>
@@ -639,7 +620,8 @@
         <column name="usr_showSince" phpName="ShowSince" type="DATE" required="true" defaultValue="2016-01-01"/>
         <column name="usr_defaultFY" phpName="DefaultFY" type="SMALLINT" size="9" required="true" defaultValue="10"/>
         <column name="usr_currentDeposit" phpName="CurrentDeposit" type="SMALLINT" size="9" required="true" defaultValue="0"/>
-        <column name="usr_UserName" phpName="UserName" type="VARCHAR" size="32"/>
+        <column name="usr_UserName" phpName="UserName" type="VARCHAR" size="32" required="true"/>
+        <column name="usr_ApiKey" phpName="ApiKey" type="VARCHAR" size="255" />
         <column name="usr_EditSelf" phpName="EditSelf" type="BOOLEAN" size="1" sqlType="tinyint(1) unsigned" required="true" defaultValue="0"/>
         <column name="usr_CalStart" phpName="CalStart" type="DATE"/>
         <column name="usr_CalEnd" phpName="CalEnd" type="DATE"/>
@@ -658,6 +640,9 @@
         </index>
         <unique name="usr_UserName">
             <unique-column name="usr_UserName"/>
+        </unique>
+        <unique name="usr_ApiKey">
+            <unique-column name="usr_ApiKey"/>
         </unique>
         <foreign-key foreignTable="person_per">
             <reference local="usr_per_ID" foreign="per_ID"/>
@@ -838,6 +823,73 @@
         <vendor type="mysql">
             <parameter name="Engine" value="InnoDB"/>
         </vendor>
+    </table>
+
+    <table name="event_audience" idMethod="native" phpName="EventAudience" isCrossRef="true" description="This is a join-table to link an event with a prospective audience for the purpose of advertising / outreach">
+        <column name="event_id" phpName="EventId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true"  primaryKey="true"/>
+        <column name="group_id" phpName="GroupId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true"  primaryKey="true"/>
+
+        <foreign-key foreignTable="events_event">
+          <reference local="event_id" foreign="event_id"/>
+        </foreign-key>
+        <foreign-key foreignTable="group_grp">
+          <reference local="group_id" foreign="grp_ID"/>
+        </foreign-key>
+
+        <vendor type="mysql">
+            <parameter name="Engine" value="InnoDB"/>
+        </vendor>
+    </table>
+
+    <table name="locations" idMethod="native" phpName="Location"  description="This is a table for storing all physical locations (Church Offices, Events, etc) ">
+        <column name="location_id" phpName="LocationId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true"  primaryKey="true"/>
+        <column name="location_typeID" phpName="LocationType" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true"/>
+        <column name="location_name" type="VARCHAR" size="256" required="true" defaultValue="" descripton="Location Name (e.g 'Main Campus')"/>
+        <column name="location_address" type="VARCHAR" size="45" required="true" defaultValue="" />
+        <column name="location_city" type="VARCHAR" size="45" required="true" defaultValue="" />
+        <column name="location_state" type="VARCHAR" size="45" required="true" defaultValue=""/>
+        <column name="location_zip" type="VARCHAR" size="45" required="true" defaultValue=""/>
+        <column name="location_country" type="VARCHAR" size="45" required="true" defaultValue=""/>
+        <column name="location_phone" type="VARCHAR" size="45" required="true" defaultValue=""/>
+        <column name="location_email" type="VARCHAR" size="45" required="true" defaultValue=""/>
+        <column name="location_timzezone" type="VARCHAR" size="45" required="true" defaultValue="" />
+
+
+        <vendor type="mysql">
+            <parameter name="Engine" value="InnoDB"/>
+        </vendor>
+    </table>
+
+    <table name="calendars" idMethod="native" phpName="Calendar"  description="">
+      <column name="calendar_id" phpName="Id" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" autoIncrement="true" required="true"  primaryKey="true"/>
+      <column name="name" phpName="Name" type="VARCHAR" size="99" required="true"/>
+      <column name="accesstoken" phpName="AccessToken" type="VARCHAR" size="255"/>
+      <column name="backgroundColor" phpName="BackgroundColor" type="VARCHAR" size="6"/>
+      <column name="foregroundColor" phpName="ForegroundColor" type="VARCHAR" size="6"/>
+
+      <unique name="accesstoken">
+        <unique-column name="accesstoken"/>
+      </unique>
+
+      <vendor type="mysql">
+          <parameter name="Engine" value="InnoDB"/>
+      </vendor>
+    </table>
+
+    <table name="calendar_events" idMethod="native" phpName="CalendarEvent" isCrossRef="true" description="This is a join-table to link an event with a calendar">
+      <column name="calendar_id" phpName="GroupId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true"  primaryKey="true"/>
+      <column name="event_id" phpName="EventId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true"  primaryKey="true"/>
+
+      <foreign-key foreignTable="calendars">
+        <reference local="calendar_id" foreign="calendar_id"/>
+      </foreign-key>
+      <foreign-key foreignTable="events_event">
+        <reference local="event_id" foreign="event_id"/>
+      </foreign-key>
+
+      <vendor type="mysql">
+          <parameter name="Engine" value="InnoDB"/>
+      </vendor>
     </table>
 
     <!--

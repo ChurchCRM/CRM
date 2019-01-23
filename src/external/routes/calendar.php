@@ -1,35 +1,18 @@
 <?php
 
-// Routes
+use ChurchCRM\dto\SystemURLs;
+use Slim\Views\PhpRenderer;
+use ChurchCRM\Slim\Middleware\Request\PublicCalendarAPIMiddleware;
 
-use ChurchCRM\Utils\InputUtils;
-use Propel\Runtime\ActiveQuery\Criteria;
+$app->group('/calendars', function () {
+    $this->get('/{CalendarAccessToken}', 'serveCalendarPage');
+    $this->get('/{CalendarAccessToken}/', 'serveCalendarPage');
 
-$app->group('/calendar', function () {
-    $this->get('/events', function ($request, $response, $args) {
-        if (!ChurchCRM\dto\SystemConfig::getBooleanValue("bEnableExternalCalendarAPI"))
-        {
-          throw new \Exception(gettext("External Calendar API is disabled")  , 400);
-        }
+})->add(new PublicCalendarAPIMiddleware());
 
-        $params = $request->getQueryParams();
-        $start_date = DateTime::createFromFormat("Y-m-d",$params['start']);
-        $start_date->setTime(0,0,0);
-        $max_events = InputUtils::FilterInt($params['max']);
-
-        $events = ChurchCRM\EventQuery::create()
-                ->filterByPubliclyVisible(true)
-                ->orderByStart(Criteria::ASC);
-
-        if($start_date) {
-          $events->filterByStart($start_date,  Criteria::GREATER_EQUAL);
-        }
-
-        if ($max_events) {
-          $events->limit($max_events);
-        }
-        
-        return $response->withJson($events->find()->toArray());
-
-    });
-});
+function serveCalendarPage ($request, $response) {
+  $renderer = new PhpRenderer('templates/calendar/');
+  $eventSource = SystemURLs::getRootPath()."/api/public/calendar/".$request->getAttribute("route")->getArgument("CalendarAccessToken")."/fullcalendar";
+  $calendarName = $request->getAttribute("calendar")->getName();
+  return $renderer->render($response, 'calendar.php', ['eventSource' => $eventSource, 'calendarName'=> $calendarName]);
+}

@@ -28,6 +28,9 @@ echo "=========================================================="
 echo "===============   NPM                    ================="
 echo "=========================================================="
 
+. ~/.nvm/nvm.sh
+nvm install 8
+nvm alias default 8
 npm install -g i18next-extract-gettext
 npm install -g grunt-cli
 npm install --unsafe-perm --no-bin-links

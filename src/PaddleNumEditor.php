@@ -77,7 +77,7 @@ if (isset($_POST['PaddleNumSubmit']) || isset($_POST['PaddleNumSubmitAndAdd']) |
         $sSQL = 'INSERT INTO paddlenum_pn (pn_fr_ID, pn_Num, pn_per_ID)
 		         VALUES ('.$iCurrentFundraiser.",'".$iNum."','".$iPerID."')";
         $bGetKeyBack = true;
-        // Existing record (update)
+    // Existing record (update)
     } else {
         $sSQL = 'UPDATE paddlenum_pn SET pn_fr_ID = '.$iCurrentFundraiser.", pn_Num = '".$iNum."', pn_per_ID = '".$iPerID."'";
         $sSQL .= ' WHERE pn_ID = '.$iPaddleNumID;
@@ -144,12 +144,12 @@ require 'Include/Header.php';
 <table class="table" cellpadding="3" align="center">
 	<tr>
 		<td align="center">
-			<input type="submit" class="btn" value="<?= gettext('Save') ?>" name="PaddleNumSubmit">
-			<input type="submit" class="btn" value="<?= gettext('Generate Statement') ?>" name="GenerateStatement">
-			<?php if ($_SESSION['bAddRecords']) {
-    echo '<input type="submit" class="btn" value="'.gettext('Save and Add')."\" name=\"PaddleNumSubmitAndAdd\">\n";
+			<input type="submit" class="btn btn-default" value="<?= gettext('Save') ?>" name="PaddleNumSubmit">
+			<input type="submit" class="btn btn-default" value="<?= gettext('Generate Statement') ?>" name="GenerateStatement">
+			<?php if ($_SESSION['user']->isAddRecordsEnabled()) {
+    echo '<input type="submit" class="btn btn-default" value="'.gettext('Save and Add')."\" name=\"PaddleNumSubmitAndAdd\">\n";
 } ?>
-			<input type="button" class="btn" value="<?= gettext('Back') ?>" name="PaddleNumCancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) {
+			<input type="button" class="btn btn-default" value="<?= gettext('Back') ?>" name="PaddleNumCancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) {
     echo $linkBack;
 } else {
     echo 'Menu.php';
@@ -167,7 +167,7 @@ require 'Include/Header.php';
 					<td class="LabelColumn"><?= gettext('Number') ?>:</td>
 					<td class="TextColumn"><input type="text" name="Num" id="Num" value="<?= $iNum ?>"></td>
 				</tr>
-				
+
 				<tr>
 					<td class="LabelColumn"><?= gettext('Buyer') ?>:
 					</td>
@@ -186,13 +186,13 @@ require 'Include/Header.php';
                                 echo ' '.FormatAddressLine($fam_Address1, $fam_City, $fam_State);
                             }
                             ?>
-	
+
 						</select>
 					</td>
 				</tr>
 			</table>
 			</td>
-		
+
 			<td width="50%" valign="top" align="center">
 			<table cellpadding="3">
 					<?php
@@ -215,11 +215,11 @@ require 'Include/Header.php';
 					<?php
                     }
                     ?>
-				
+
 			</table>
 			</td>
 			</tr>
-			
+
 			</table>
 			</tr>
 	</table>

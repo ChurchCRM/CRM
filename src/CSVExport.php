@@ -14,11 +14,11 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\SessionUser;
 
 // If user does not have CSV Export permission, redirect to the menu.
-if (!$bExportCSV) {
-    RedirectUtils::Redirect('Menu.php');
-    exit;
+if (!SessionUser::getUser()->isCSVExport()) {
+    RedirectUtils::SecurityRedirect("CSVExport");
 }
 
 //Get Classifications for the drop-down
@@ -167,12 +167,21 @@ require 'Include/Header.php';
             <label><?= gettext('Classification') ?>:</label>
             <input type="checkbox" name="PrintMembershipStatus" value="1">
           </div>
-          
+
           <div class="col-md-4">
             <label><?= gettext('Family Role') ?>:</label>
             <input type="checkbox" name="PrintFamilyRole" value="1">
           </div>
-          * <?= gettext('Depends whether using person or family output method') ?>
+
+          <div class="col-md-4">
+            <label><?= gettext('Gender') ?>:</label>
+            <input type="checkbox" name="PrintGender" value="1">
+          </div>
+
+          <div class="col-md-12">
+            * <?= gettext('Depends whether using person or family output method') ?>
+          </div>
+
         </div>
       </div>
 
@@ -442,7 +451,7 @@ require 'Include/Header.php';
 
           <label><?= gettext('Skip records with incomplete mail address') ?></label><input type="checkbox" name="SkipIncompleteAddr" value="1">
 
-          <input type="submit" class="btn" value=<?= '"'.gettext('Create File').'"' ?> name="Submit"></td>
+          <input type="submit" class="btn btn-default" value=<?= '"'.gettext('Create File').'"' ?> name="Submit"></td>
 
         </div>
       </div>

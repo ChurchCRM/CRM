@@ -5,10 +5,8 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\Classification;
 
-require SystemURLs::getDocumentRoot() . '/Include/SimpleConfig.php';
-
 //Set the page title
-$sPageTitle = gettext("Family View") . " - " . $family->getName();
+$sPageTitle =  $family->getName() . " - " . gettext("Family");
 include SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 /**
@@ -45,7 +43,7 @@ $familyAddress = $family->getAddress();
                     </div>
                     <div class="box-body">
                         <div class="image-container">
-                            <img src="<?= SystemURLs::getRootPath() ?>/api/families/<?= $family->getId() ?>/photo"
+                            <img src="<?= SystemURLs::getRootPath() ?>/api/family/<?= $family->getId() ?>/photo"
                                  class="img-responsive profile-user-img profile-family-img"/>
                             <div class="after">
                                 <div class="buttons">
@@ -76,39 +74,25 @@ $familyAddress = $family->getAddress();
                         <a class="btn btn-app" href="#" data-toggle="modal" data-target="#confirm-verify"><i
                                 class="fa fa-check-square"></i> <?= gettext("Verify Info") ?></a>
                         <a class="btn btn-app bg-olive"
-                           href="<?= SystemURLs::getRootPath() ?>../../index.php"><i
+                           href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?FamilyID=<?=$family->getId()?>"><i
                                 class="fa fa-plus-square"></i> <?= gettext('Add New Member') ?></a>
-                        <?php if (($previous_id > 0)) {
-                            ?>
-                            <a class="btn btn-app"
-                               href="<?= SystemURLs::getRootPath() ?>../../index.php"><i
-                                    class="fa fa-hand-o-left"></i><?= gettext('Previous Family') ?></a>
-                            <?php
-                        } ?>
                         <a class="btn btn-app btn-danger" role="button"
-                           href="<?= SystemURLs::getRootPath() ?>../../index.php"><i
+                           href="<?=SystemURLs::getRootPath()?>/v2/family"><i
                                 class="fa fa-list-ul"></i><?= gettext('Family List') ?></a>
-                        <?php if (($next_id > 0)) {
-                            ?>
-                            <a class="btn btn-app" role="button"
-                               href="<?= SystemURLs::getRootPath() ?>../../index.php"><i
-                                    class="fa fa-hand-o-right"></i><?= gettext('Next Family') ?> </a>
-                            <?php
-                        } ?>
-                        <?php if ($_SESSION['bDeleteRecords']) {
+                        <?php if ($_SESSION['user']->isDeleteRecordsEnabled()) {
                             ?>
                             <a class="btn btn-app bg-maroon"
-                               href="<?= SystemURLs::getRootPath() ?>../../index.php"><i
+                               href="<?= SystemURLs::getRootPath() ?>/SelectDelete.php?FamilyID=<?=$family->getId()?>"><i
                                     class="fa fa-trash-o"></i><?= gettext('Delete this Family') ?></a>
                             <?php
                         } ?>
 
 
                         <?php
-                        if ($_SESSION['bNotes']) {
+                        if ($_SESSION['user']->isNotesEnabled()) {
                             ?>
                             <a class="btn btn-app"
-                               href="<?= SystemURLs::getRootPath() ?>../../index.php"><i
+                               href="<?= SystemURLs::getRootPath() ?>/NoteEditor.php?FamilyID=<?= $family->getId()?>"><i
                                     class="fa fa-sticky-note"></i><?= gettext("Add a Note") ?></a>
                             <?php
                         } ?>
@@ -152,7 +136,7 @@ $familyAddress = $family->getAddress();
                             }
                             if (!SystemConfig::getBooleanValue("bHideWeddingDate") && !empty($family->getWeddingdate())) { /* Wedding Date can be hidden - General Settings */ ?>
                                 <li><i class="fa-li fa fa-magic"></i><?= gettext("Wedding Date") ?>:
-                                    <span><?= FormatDate($family->getWeddingdate(), false) ?></span></li>
+                                    <span><?= $family->getWeddingDate()->format(SystemConfig::getValue("sDateFormatLong")) ?></span></li>
                                 <?php
                             }
                             if (SystemConfig::getValue("bUseDonationEnvelopes")) {
@@ -197,19 +181,9 @@ $familyAddress = $family->getAddress();
                                  * }*/
                             }
 
-                            /**
-                             * // Display the left-side custom fields
-                             * while ($Row = mysqli_fetch_array($rsFamCustomFields)) {
-                             * extract($Row);
-                             * if (($aSecurityType[$fam_custom_FieldSec] == 'bAll') || ($_SESSION[$aSecurityType[$fam_custom_FieldSec]])) {
-                             * $currentData = trim($aFamCustomData[$fam_custom_Field]);
-                             * if ($type_ID == 11) {
-                             * $fam_custom_Special = $sPhoneCountry;
-                             * }
-                             * echo "<li><i class=\"fa-li fa fa-tag\"></i>" . $fam_custom_Name . ": <span>" . displayCustomField($type_ID, $currentData, $fam_custom_Special) . "</span></li>";
-                             * }
-                             * } */
-                            ?>
+                          foreach ($familyCustom as $customField) { ?>
+                                <li><i class="fa-li fa fa-tag"></i><?= $customField ?></li>
+                            <?php }  ?>
                         </ul>
                     </div>
                 </div>
@@ -275,9 +249,9 @@ $familyAddress = $family->getAddress();
 
                         </div>
                     </div>
-                    <div class="box-body">
+                    <div class="box-body row row-flex row-flex-wrap">
                         <?php foreach ($family->getPeople() as $person) { ?>
-                            <div class="col-sm-4">
+                            <div class="col-sm-6">
                                 <div class="box box-primary">
                                     <div class="box-body box-profile">
                                         <a href="<?= $person->getViewURI()?>" ?>
@@ -302,10 +276,11 @@ $familyAddress = $family->getAddress();
                                                 <button type="button" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i></button>
                                             </a>
                                         </p>
+                                        <?php if ($person->getClsId()) { ?>
                                         <li class="list-group">
                                             <b>Classification:</b> <?= Classification::getName($person->getClsId()) ?>
                                         </li>
-
+                                        <?php } ?>
                                         <ul class="list-group list-group-unbordered">
                                             <li class="list-group-item">
                                                 <?php if (!empty($person->getHomePhone())) { ?>
@@ -332,11 +307,14 @@ $familyAddress = $family->getAddress();
                                                     <i class="fa fa-fw fa-envelope-o"
                                                        title="<?= gettext("Work Email") ?>"></i>(W) <?= $person->getWorkEmail() ?>
                                                     <br/>
-                                                <?php } ?>
+                                                <?php }
+                                                $formatedBirthday = $person->getFormattedBirthDate();
+                                                if ($formatedBirthday) {?>
                                                 <i class="fa fa-fw fa-birthday-cake"
                                                    title="<?= gettext("Birthday") ?>"></i>
-                                                <?= $person->getFormattedBirthDate()?>  <?= $person->getAge()?>
+                                                <?= $formatedBirthday ?>  <?= $person->getAge()?>
                                                 </i>
+                                                <?php } ?>
                                             </li>
                                         </ul>
 
@@ -513,6 +491,7 @@ $familyAddress = $family->getAddress();
 
 
 
+<script src="<?= SystemURLs::getRootPath() ?>/skin/js/MemberView.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/FamilyView.js"></script>
 
 
@@ -549,7 +528,7 @@ $familyAddress = $family->getAddress();
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     $(document).ready(function () {
         window.CRM.photoUploader = $("#photoUploader").PhotoUploader({
-            url: window.CRM.root + "/api/families/" + window.CRM.currentFamily + "/photo",
+            url: window.CRM.root + "/api/family/" + window.CRM.currentFamily + "/photo",
             maxPhotoSize: window.CRM.maxUploadSize,
             photoHeight: <?= SystemConfig::getValue("iPhotoHeight") ?>,
             photoWidth: <?= SystemConfig::getValue("iPhotoWidth") ?>,
@@ -564,5 +543,47 @@ $familyAddress = $family->getAddress();
     });
 </script>
 <!-- Photos end -->
+<div class="modal fade" id="confirm-verify" tabindex="-1" role="dialog" aria-labelledby="confirm-verify-label"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title"
+                    id="confirm-verify-label"><?= gettext("Request Family Info Verification") ?></h4>
+            </div>
+            <div class="modal-body">
+                <b><?= gettext("Select how do you want to request the family information to be verified") ?></b>
+                <p>
+                    <?php if (count($family->getEmails()) > 0) {
+                    ?>
+                <p><?= gettext("You are about to email copy of the family information to the following emails") ?>
+                <ul>
+                    <?php foreach ($family->getEmails() as $tmpEmail) { ?>
+                        <li><?= $tmpEmail ?></li>
+                    <?php } ?>
+                </ul>
+                </p>
+            </div>
+            <?php
+            } ?>
+            <div class="modal-footer text-center">
+                <?php if (count($family->getEmails()) > 0 && !empty(SystemConfig::getValue('sSMTPHost'))) {
+                    ?>
+                    <button type="button" id="onlineVerify"
+                            class="btn btn-warning warning"><i
+                            class="fa fa-envelope"></i> <?= gettext("Online Verification") ?>
+                    </button>
+                    <?php
+                } ?>
+                <button type="button" id="verifyDownloadPDF"
+                        class="btn btn-info"><i class="fa fa-download"></i> <?= gettext("PDF Report") ?></button>
+                <button type="button" id="verifyNow"
+                        class="btn btn-success"><i class="fa fa-check"></i> <?= gettext("Verified In Person") ?>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <?php include SystemURLs::getDocumentRoot() . '/Include/Footer.php'; ?>

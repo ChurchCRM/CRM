@@ -92,6 +92,16 @@
     "datePicker": false,
     "select2": false
   },
+  "Estonian": {
+    "poEditor": "et",
+    "locale": "et_EE",
+    "languageCode": "et",
+    "countryCode": "EE",
+    "dataTables": "Estonian",
+    "fullCalendar" : false,
+    "datePicker": true,
+    "select2": false
+  },
   "French - France": {
     "poEditor": "fr",
     "locale": "fr_FR",
@@ -149,7 +159,7 @@
     "countryCode": "NO",
     "dataTables": "Norwegian-Bokmal",
     "fullCalendar" : true,
-    "datePicker": true,
+    "datePicker": false,
     "select2": true
   },
   "Polish": {

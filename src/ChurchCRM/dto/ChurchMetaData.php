@@ -90,6 +90,11 @@ class ChurchMetaData
         }
         return SystemConfig::getValue('iChurchLongitude');
     }
+    
+    public static function getChurchTimeZone()
+    {
+      return SystemConfig::getValue('sTimeZone');
+    }
 
     private static function updateLatLng()
     {

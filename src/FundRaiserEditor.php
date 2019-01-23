@@ -59,11 +59,11 @@ if (isset($_POST['FundRaiserSubmit'])) {
         // New deposit slip
         if ($iFundRaiserID <= 0) {
             $sSQL = 'INSERT INTO fundraiser_fr (fr_date, fr_title, fr_description, fr_EnteredBy, fr_EnteredDate) VALUES ('.
-            "'".$dDate."','".$sTitle."','".$sDescription."',".$_SESSION['iUserID'].",'".date('YmdHis')."')";
+            "'".$dDate."','".$sTitle."','".$sDescription."',".$_SESSION['user']->getId().",'".date('YmdHis')."')";
             $bGetKeyBack = true;
-            // Existing record (update)
+        // Existing record (update)
         } else {
-            $sSQL = "UPDATE fundraiser_fr SET fr_date = '".$dDate."', fr_title = '".$sTitle."', fr_description = '".$sDescription."', fr_EnteredBy = ".$_SESSION['iUserID'].", fr_EnteredDate='".date('YmdHis')."' WHERE fr_ID = ".$iFundRaiserID.';';
+            $sSQL = "UPDATE fundraiser_fr SET fr_date = '".$dDate."', fr_title = '".$sTitle."', fr_description = '".$sDescription."', fr_EnteredBy = ".$_SESSION['user']->getId().", fr_EnteredDate='".date('YmdHis')."' WHERE fr_ID = ".$iFundRaiserID.';';
             $bGetKeyBack = false;
         }
         //Execute the SQL
@@ -139,8 +139,8 @@ require 'Include/Header.php';
 
 	<tr>
 		<td align="center">
-		<input type="submit" class="btn" value="<?= gettext('Save') ?>" name="FundRaiserSubmit">
-			<input type="button" class="btn" value="<?= gettext('Cancel') ?>" name="FundRaiserCancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) {
+		<input type="submit" class="btn btn-default" value="<?= gettext('Save') ?>" name="FundRaiserSubmit">
+			<input type="button" class="btn btn-default" value="<?= gettext('Cancel') ?>" name="FundRaiserCancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) {
     echo $linkBack;
 } else {
     echo 'Menu.php';

@@ -17,9 +17,10 @@ require 'Include/Functions.php';
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\SessionUser;
 
 // Check for Create Directory user permission.
-if (!$bCreateDirectory) {
+if (!SessionUser::getUser()->isCreateDirectoryEnabled()) {
     RedirectUtils::Redirect('Menu.php');
     exit;
 }
@@ -283,7 +284,7 @@ while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
 <p align="center">
 <BR>
 <input type="submit" class="btn btn-primary" name="Submit" value="<?= gettext('Create Directory') ?>">
-<input type="button" class="btn" name="Cancel" <?= 'value="'.gettext('Cancel').'"' ?> onclick="javascript:document.location='Menu.php';">
+<input type="button" class="btn btn-default" name="Cancel" <?= 'value="'.gettext('Cancel').'"' ?> onclick="javascript:document.location='Menu.php';">
 </p>
 </form>
 </div>

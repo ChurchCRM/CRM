@@ -21,10 +21,11 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\PersonQuery;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\dto\SystemURLs;
 
 // Security: User must have Delete records permission
 // Otherwise, re-direct them to the main menu.
-if (!$_SESSION['bDeleteRecords']) {
+if (!$_SESSION['user']->isDeleteRecordsEnabled()) {
     RedirectUtils::Redirect('Menu.php');
     exit;
 }
@@ -52,15 +53,15 @@ if (isset($_GET['CancelFamily'])) {
 $DonationMessage = '';
 
 // Move Donations from 1 family to another
-if ($_SESSION['bFinance'] && isset($_GET['MoveDonations']) && $iFamilyID && $iDonationFamilyID && $iFamilyID != $iDonationFamilyID) {
+if ($_SESSION['user']->isFinanceEnabled() && isset($_GET['MoveDonations']) && $iFamilyID && $iDonationFamilyID && $iFamilyID != $iDonationFamilyID) {
     $today = date('Y-m-d');
     $sSQL = "UPDATE pledge_plg SET plg_FamID='$iDonationFamilyID',
-		plg_DateLastEdited ='$today', plg_EditedBy='" . $_SESSION['iUserID']
+		plg_DateLastEdited ='$today', plg_EditedBy='" . $_SESSION['user']->getId()
         . "' WHERE plg_FamID='$iFamilyID'";
     RunQuery($sSQL);
 
     $sSQL = "UPDATE egive_egv SET egv_famID='$iDonationFamilyID',
-		egv_DateLastEdited ='$today', egv_EditedBy='" . $_SESSION['iUserID']
+		egv_DateLastEdited ='$today', egv_EditedBy='" . $_SESSION['user']->getId()
         . "' WHERE egv_famID='$iFamilyID'";
     RunQuery($sSQL);
 
@@ -118,7 +119,7 @@ if (isset($_GET['Confirmed'])) {
     }
 
     // Redirect back to the family listing
-    RedirectUtils::Redirect('FamilyList.php');
+    RedirectUtils::Redirect(SystemURLs::getRootPath().'/v2/family');
 }
 
 
@@ -139,11 +140,11 @@ require 'Include/Header.php';
         $rsDonations = RunQuery($sSQL);
         $bIsDonor = (mysqli_num_rows($rsDonations) > 0);
 
-        if ($bIsDonor && !$_SESSION['bFinance']) {
+        if ($bIsDonor && !$_SESSION['user']->isFinanceEnabled()) {
             // Donations from Family. Current user not authorized for Finance
             echo '<p class="LargeText">' . gettext('Sorry, there are records of donations from this family. This family may not be deleted.') . '<br><br>';
             echo '<a href="FamilyView.php?FamilyID=' . $iFamilyID . '">' . gettext('Return to Family View') . '</a></p>';
-        } elseif ($bIsDonor && $_SESSION['bFinance']) {
+        } elseif ($bIsDonor && $_SESSION['user']->isFinanceEnabled()) {
             // Donations from Family. Current user authorized for Finance.
             // Select another family to move donations to.
             echo '<p class="LargeText">' . gettext('WARNING: This family has records of donations and may NOT be deleted until these donations are associated with another family.') . '</p>';

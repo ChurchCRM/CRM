@@ -5,6 +5,8 @@ namespace ChurchCRM;
 use ChurchCRM\Base\User as BaseUser;
 use ChurchCRM\dto\SystemConfig;
 use Propel\Runtime\Connection\ConnectionInterface;
+use ChurchCRM\Utils\MiscUtils;
+
 /**
  * Skeleton subclass for representing a row from the 'user_usr' table.
  *
@@ -97,6 +99,41 @@ class User extends BaseUser
         return hash('sha256', $password . $this->getPersonId());
     }
 
+    public function isAddEventEnabled()
+    {
+        return $this->isAddEvent();
+    }
+
+    public function isAddEvent()
+    {
+        return $this->isAdmin() || $this->isEnabledSecurity('bAddEvent');
+    }
+
+    public function isCSVExportEnabled()
+    {
+        return $this->isCSVExport();
+    }
+
+    public function isCSVExport()
+    {
+        return $this->isAdmin() || $this->isEnabledSecurity('bExportCSV');
+    }
+
+    public function isEmailEnabled()
+    {
+        return $this->isAdmin() || $this->isEnabledSecurity('bEmailMailto');
+    }
+
+    public function isCreateDirectoryEnabled()
+    {
+        return $this->isAdmin() || $this->isEnabledSecurity('bCreateDirectory');
+    }
+
+    public function isbUSAddressVerificationEnabled()
+    {
+        return $this->isAdmin() || $this->isEnabledSecurity('bUSAddressVerification');
+    }
+
 
     public function isLocked()
     {
@@ -111,7 +148,6 @@ class User extends BaseUser
         return $password;
     }
 
-
     public static function randomPassword()
     {
         $alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
@@ -122,6 +158,11 @@ class User extends BaseUser
             $pass[] = $alphabet[$n];
         }
         return implode($pass); //turn the array into a string
+    }
+
+    public static function randomApiKey()
+    {
+        return MiscUtils::randomToken();
     }
 
     public function postInsert(ConnectionInterface $con = null)
@@ -138,7 +179,7 @@ class User extends BaseUser
     {
         $note = new Note();
         $note->setPerId($this->getPersonId());
-        $note->setEntered($_SESSION['iUserID']);
+        $note->setEntered($_SESSION['user']->getId());
         $note->setType('user');
 
         switch ($type) {
@@ -166,5 +207,26 @@ class User extends BaseUser
         }
 
         $note->save();
+    }
+
+    public function isEnabledSecurity($securityConfigName){
+        if ($this->isAdmin()) {
+            return true;
+        }
+
+        foreach ($this->getUserConfigs() as $userConfig) {
+            if ($userConfig->getName() == $securityConfigName) {
+                return $userConfig->getPermission() == "TRUE";
+            }
+        }
+        return false;
+    }
+
+    public function getUserConfigString($userConfigName) {
+      foreach ($this->getUserConfigs() as $userConfig) {
+        if ($userConfig->getName() == $userConfigName) {
+          return $userConfig->getValue();
+        }
+      }
     }
 }

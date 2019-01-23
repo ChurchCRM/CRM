@@ -16,7 +16,7 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\RedirectUtils;
 
 // Security
-if (!$_SESSION['bFinance'] && !$_SESSION['bAdmin']) {
+if (!$_SESSION['user']->isFinanceEnabled()) {
     RedirectUtils::Redirect('Menu.php');
     exit;
 }
@@ -67,7 +67,7 @@ if ($sReportType == '') {
     // First Pass Cancel, Next Buttons
     echo "<tr><td>&nbsp;</td>
         <td><input type=button class=btn name=Cancel value='".gettext('Cancel')."'
-        onclick=\"javascript:document.location='ReportList.php';\">
+        onclick=\"javascript:document.location='Menu.php';\">
         <input type=submit class=btn name=Submit1 value='".gettext('Next')."'>
         </td></tr>
         </table></form>";
@@ -130,8 +130,8 @@ if ($sReportType == '') {
         <td></td>
         <td>
         <br/>
-        <button type="button" id="addAllClasses" class="btn"><?= gettext('Add All Classes') ?></button>
-        <button type="button" id="clearAllClasses" class="btn"><?= gettext('Clear All Classes') ?></button><br/><br/>
+        <button type="button" id="addAllClasses" class="btn btn-default"><?= gettext('Add All Classes') ?></button>
+        <button type="button" id="clearAllClasses" class="btn btn-default"><?= gettext('Clear All Classes') ?></button><br/><br/>
         </td></tr>
         <?php
 
@@ -177,8 +177,8 @@ if ($sReportType == '') {
         <td></td>
         <td>
         <br/>
-        <button type="button" id="addAllFamilies" class="btn"><?= gettext('Add All Families') ?></button>
-        <button type="button" id="clearAllFamilies" class="btn"><?= gettext('Clear All Families') ?></button><br/><br/>
+        <button type="button" id="addAllFamilies" class="btn btn-default"><?= gettext('Add All Families') ?></button>
+        <button type="button" id="clearAllFamilies" class="btn btn-default"><?= gettext('Clear All Families') ?></button><br/><br/>
         </td></tr>
         <?php
     }
@@ -245,8 +245,8 @@ if ($sReportType == '') {
         <td></td>
         <td>
         <br/>
-        <button type="button" id="addAllFunds" class="btn"><?= gettext('Add All Funds') ?></button>
-        <button type="button" id="clearAllFunds" class="btn"><?= gettext('Clear All Funds') ?></button><br/><br/>
+        <button type="button" id="addAllFunds" class="btn btn-default"><?= gettext('Add All Funds') ?></button>
+        <button type="button" id="clearAllFunds" class="btn btn-default"><?= gettext('Clear All Funds') ?></button><br/><br/>
         </td></tr>
 
         <?php
@@ -312,7 +312,7 @@ if ($sReportType == '') {
         echo '<td class=TextColumnWithBottomBorder><input name=RequireDonationYears type=text value=0 size=5></td></tr>';
     }
 
-    if ((($_SESSION['bAdmin'] && $bCSVAdminOnly) || !$bCSVAdminOnly)
+    if ((($_SESSION['user']->isAdmin() && $bCSVAdminOnly) || !$bCSVAdminOnly)
         && ($sReportType == 'Pledge Summary' || $sReportType == 'Giving Report' || $sReportType == 'Individual Deposit Report' || $sReportType == 'Advanced Deposit Report' || $sReportType == 'Zero Givers')) {
         echo '<tr><td class=LabelColumn>'.gettext('Output Method:').'</td>';
         echo "<td class=TextColumnWithBottomBorder><input name=output type=radio checked value='pdf'>PDF";
@@ -330,41 +330,44 @@ if ($sReportType == '') {
 }
 ?>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
-$("#family").select2();
-$("#addAllFamilies").click(function () {
-var all = [];
-    $("#family > option").each(function () {
-        all.push(this.value);
-    });
-     $("#family").val(all).trigger("change");
-});
-$("#clearAllFamilies").click(function () {
-      $("#family").val(null).trigger("change");
-});
+$(document).ready(function() {
+  $("#family").select2();
+  $("#addAllFamilies").click(function () {
+  var all = [];
+      $("#family > option").each(function () {
+          all.push(this.value);
+      });
+       $("#family").val(all).trigger("change");
+  });
+  $("#clearAllFamilies").click(function () {
+        $("#family").val(null).trigger("change");
+  });
 
-$("#classList").select2();
-$("#addAllClasses").click(function () {
-var all = [];
-    $("#classList > option").each(function () {
-        all.push(this.value);
-    });
-     $("#classList").val(all).trigger("change");
-});
-$("#clearAllClasses").click(function () {
-      $("#classList").val(null).trigger("change");
-});
+  $("#classList").select2();
+  $("#addAllClasses").click(function () {
+  var all = [];
+      $("#classList > option").each(function () {
+          all.push(this.value);
+      });
+       $("#classList").val(all).trigger("change");
+  });
+  $("#clearAllClasses").click(function () {
+        $("#classList").val(null).trigger("change");
+  });
 
-$("#fundsList").select2();
-$("#addAllFunds").click(function () {
-var all = [];
-    $("#fundsList > option").each(function () {
-        all.push(this.value);
-    });
-     $("#fundsList").val(all).trigger("change");
-});
-$("#clearAllFunds").click(function () {
-      $("#fundsList").val(null).trigger("change");
-});
+  $("#fundsList").select2();
+  $("#addAllFunds").click(function () {
+  var all = [];
+      $("#fundsList > option").each(function () {
+          all.push(this.value);
+      });
+       $("#fundsList").val(all).trigger("change");
+  });
+  $("#clearAllFunds").click(function () {
+        $("#fundsList").val(null).trigger("change");
+  });
+  }
+);
 
 </script>
 </div>

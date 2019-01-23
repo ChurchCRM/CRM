@@ -49,15 +49,15 @@ if ($iPersonID > 0) {
     }
 
     if (!(
-        $_SESSION['bEditRecords'] ||
-        ($_SESSION['bEditSelf'] && $iPersonID == $_SESSION['iUserID']) ||
-        ($_SESSION['bEditSelf'] && $per_fam_ID > 0 && $per_fam_ID == $_SESSION['iFamID'])
+        $_SESSION['user']->isEditRecordsEnabled() ||
+        ($_SESSION['user']->isEditSelfEnabled() && $iPersonID == $_SESSION['user']->getId()) ||
+        ($_SESSION['user']->isEditSelfEnabled() && $per_fam_ID > 0 && $per_fam_ID == $_SESSION['user']->getPerson()->getFamId())
     )
     ) {
         RedirectUtils::Redirect('Menu.php');
         exit;
     }
-} elseif (!$_SESSION['bAddRecords']) {
+} elseif (!$_SESSION['user']->isAddRecordsEnabled()) {
     RedirectUtils::Redirect('Menu.php');
     exit;
 }
@@ -93,6 +93,9 @@ $fam_Country = '';
 $bNoFormat_HomePhone = false;
 $bNoFormat_WorkPhone = false;
 $bNoFormat_CellPhone = false;
+$sFacebookError = false;
+$sTwitterError = false;
+$sLinkedInError = false;
 
 //Is this the second pass?
 if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
@@ -302,7 +305,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         // Family will be named by the Last Name.
         if ($iFamily == -1) {
             $sSQL = "INSERT INTO family_fam (fam_Name, fam_Address1, fam_Address2, fam_City, fam_State, fam_Zip, fam_Country, fam_HomePhone, fam_WorkPhone, fam_CellPhone, fam_Email, fam_DateEntered, fam_EnteredBy)
-					VALUES ('".$sLastName."','".$sAddress1."','".$sAddress2."','".$sCity."','".$sState."','".$sZip."','".$sCountry."','".$sHomePhone."','".$sWorkPhone."','".$sCellPhone."','".$sEmail."','".date('YmdHis')."',".$_SESSION['iUserID'].')';
+					VALUES ('".$sLastName."','".$sAddress1."','".$sAddress2."','".$sCity."','".$sState."','".$sZip."','".$sCountry."','".$sHomePhone."','".$sWorkPhone."','".$sCellPhone."','".$sEmail."','".date('YmdHis')."',".$_SESSION['user']->getId().')';
             //Execute the SQL
             RunQuery($sSQL);
             //Get the key back
@@ -328,7 +331,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
             } else {
                 $sSQL .= 'NULL';
             }
-            $sSQL .= ','.$iClassification.",'".date('YmdHis')."',".$_SESSION['iUserID'].',';
+            $sSQL .= ','.$iClassification.",'".date('YmdHis')."',".$_SESSION['user']->getId().',';
 
             if (strlen($dFriendDate) > 0) {
                 $sSQL .= '"'.$dFriendDate.'"';
@@ -344,7 +347,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
 
             $bGetKeyBack = true;
 
-            // Existing person (update)
+        // Existing person (update)
         } else {
             $sSQL = "UPDATE person_per SET per_Title = '".$sTitle."',per_FirstName = '".$sFirstName."',per_MiddleName = '".$sMiddleName."', per_LastName = '".$sLastName."', per_Suffix = '".$sSuffix."', per_Gender = ".$iGender.", per_Address1 = '".$sAddress1."', per_Address2 = '".$sAddress2."', per_City = '".$sCity."', per_State = '".$sState."', per_Zip = '".$sZip."', per_Country = '".$sCountry."', per_HomePhone = '".$sHomePhone."', per_WorkPhone = '".$sWorkPhone."', per_CellPhone = '".$sCellPhone."', per_Email = '".$sEmail."', per_WorkEmail = '".$sWorkEmail."', per_BirthMonth = ".$iBirthMonth.', per_BirthDay = '.$iBirthDay.', '.'per_BirthYear = '.$iBirthYear.', per_fam_ID = '.$iFamily.', per_Fmr_ID = '.$iFamilyRole.', per_cls_ID = '.$iClassification.', per_MembershipDate = ';
             if (strlen($dMembershipDate) > 0) {
@@ -353,11 +356,11 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
                 $sSQL .= 'NULL';
             }
 
-            if ($_SESSION['bFinance']) {
+            if ($_SESSION['user']->isFinanceEnabled()) {
                 $sSQL .= ', per_Envelope = '.$iEnvelope;
             }
 
-            $sSQL .= ", per_DateLastEdited = '".date('YmdHis')."', per_EditedBy = ".$_SESSION['iUserID'].', per_FriendDate =';
+            $sSQL .= ", per_DateLastEdited = '".date('YmdHis')."', per_EditedBy = ".$_SESSION['user']->getId().', per_FriendDate =';
 
             if (strlen($dFriendDate) > 0) {
                 $sSQL .= '"'.$dFriendDate.'"';
@@ -381,7 +384,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
 
 
         $note = new Note();
-        $note->setEntered($_SESSION['iUserID']);
+        $note->setEntered($_SESSION['user']->getId());
         // If this is a new person, get the key back and insert a blank row into the person_custom table
         if ($bGetKeyBack) {
             $sSQL = 'SELECT MAX(per_ID) AS iPersonID FROM person_per';
@@ -1225,7 +1228,7 @@ require 'Include/Header.php';
   <?php
                         } ?>
     <input type="submit" class="btn btn-primary" id="PersonSaveButton" value="<?= gettext('Save') ?>" name="PersonSubmit">
-    <?php if ($_SESSION['bAddRecords']) {
+    <?php if ($_SESSION['user']->isAddRecordsEnabled()) {
                             echo '<input type="submit" class="btn btn-primary" value="'.gettext('Save and Add').'" name="PersonSubmitAndAdd">';
                         } ?>
     <input type="button" class="btn btn-primary" value="<?= gettext('Cancel') ?>" name="PersonCancel"

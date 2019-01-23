@@ -16,7 +16,7 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
 // Security: User must have canvasser permission to use this form
-if (!$_SESSION['bCanvasser']) {
+if (!$_SESSION['user']->isCanvasserEnabled()) {
     RedirectUtils::Redirect('Menu.php');
     exit;
 }
@@ -127,7 +127,7 @@ if (isset($_POST['Submit'])) {
         $tWhyNotInterested = $can_WhyNotInterested;
     } else {
         // Set some default values
-        $iCanvasser = $_SESSION['iUserID'];
+        $iCanvasser = $_SESSION['user']->getId();
         $dDate = date('Y-m-d');
 
         $dDate = '';
@@ -236,7 +236,7 @@ require 'Include/Header.php';
 </div>
     <div>
             <input type="submit" class="btn btn-primary" value="<?= gettext('Save') ?>" name="Submit">
-            <input type="button" class="btn" value="<?= gettext('Cancel') ?>" name="Cancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) {
+            <input type="button" class="btn btn-default" value="<?= gettext('Cancel') ?>" name="Cancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) {
                 echo $linkBack;
             } else {
                 echo 'Menu.php';

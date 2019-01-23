@@ -8,7 +8,7 @@ $sPageTitle = gettext("Family Registration");
 require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
 ?>
 
-    <div class="register-box" style="width: 600px;">
+    <div class="register-box">
         <div class="register-logo">
             <?php
             $headerHTML = '<b>Church</b>CRM';
@@ -46,7 +46,8 @@ require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
             if (userName) {
                 $.ajax({
                     method: "POST",
-                    url: window.CRM.root + "/external/password/reset/" + userName,
+                    url: window.CRM.root + "/api/public/user/password/reset/",
+                    data: JSON.stringify({ 'userName': userName })
                 }).done(function (data) {
                     bootbox.alert("<?= gettext("Check your email for a password reset link")?>",
                         function () {

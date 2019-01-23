@@ -43,7 +43,7 @@ if (isset($_POST['Submit'])) {
         $sSQL = 'INSERT INTO whycame_why (why_per_ID, why_join, why_come, why_suggest, why_hearOfUs)
 				VALUES ('.$iPerson.', "'.$tJoin.'", "'.$tCome.'", "'.$tSuggest.'", "'.$tHearOfUs.'")';
 
-        // Existing record (update)
+    // Existing record (update)
     } else {
         $sSQL = 'UPDATE whycame_why SET why_join = "'.$tJoin.'", why_come = "'.$tCome.'", why_suggest = "'.$tSuggest.'", why_hearOfUs = "'.$tHearOfUs.'" WHERE why_per_ID = '.$iPerson;
     }
@@ -102,7 +102,7 @@ require 'Include/Header.php';
         <tr>
           <td colspan="2" align="center">
             <input type="submit" class="btn btn-primary" value="<?= gettext('Save') ?>" name="Submit">
-            <input type="button" class="btn" value="<?= gettext('Cancel') ?>" name="Cancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) {
+            <input type="button" class="btn btn-default" value="<?= gettext('Cancel') ?>" name="Cancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) {
     echo $linkBack;
 } else {
     echo 'PersonView.php?PersonID='.$iPerson;
