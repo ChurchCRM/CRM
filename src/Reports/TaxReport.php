@@ -80,9 +80,6 @@ $sSQL = 'SELECT fam_ID, fam_Name, fam_Address1, fam_Address2, fam_City, fam_Stat
 	INNER JOIN pledge_plg ON fam_ID=plg_FamID
 	LEFT JOIN donationfund_fun ON plg_fundID=fun_ID';
 
-if ($classList[0]) {
-    $sSQL .= ' LEFT JOIN person_per ON fam_ID=per_fam_ID';
-}
 $sSQL .= " WHERE plg_PledgeOrPayment='Payment' ";
 
 // Add  SQL criteria
@@ -147,7 +144,7 @@ if (!empty($_POST['family'])) {
 }
 
 if ($classList[0]) {
-    $q = ' per_cls_ID IN '.$inClassList.' AND per_fam_ID NOT IN (SELECT DISTINCT per_fam_ID FROM person_per WHERE per_cls_ID IN '.$notInClassList.')';
+    $q = ' plg_famID IN (SELECT DISTINCT per_fam_ID FROM person_per WHERE per_cls_ID IN '.$inClassList.')';
 
     $sSQL .= ' AND'.$q;
 }
