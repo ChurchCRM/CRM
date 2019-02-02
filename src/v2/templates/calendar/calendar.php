@@ -5,6 +5,7 @@ use ChurchCRM\dto\SystemURLs;
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 ?>
+<link rel="stylesheet" href="<?= SystemURLs::getRootPath() ?>/skin/external/react-datepicker/react-datepicker.min.css">
 <div class="row">
   <div class="col-lg-9">
     <div class="box box-info">

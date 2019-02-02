@@ -35,6 +35,7 @@ class ExistingEvent extends React.Component<EventFormProps, EventFormState> {
     this.setReadOnlyMode = this.setReadOnlyMode.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
     this.updatePinnedCalendar = this.updatePinnedCalendar.bind(this);
+    this.handleDateChange = this.handleDateChange.bind(this);
     this.updateEventType = this.updateEventType.bind(this)
     this.delete = this.delete.bind(this);
     this.exit = this.props.onClose.bind(this);
@@ -88,6 +89,10 @@ class ExistingEvent extends React.Component<EventFormProps, EventFormState> {
       event: Object.assign({}, this.state.event, { [name]: value })
     });
     console.log(this.state);
+  }
+
+  handleDateChange(date) {
+    console.log(date);
   }
 
   updatePinnedCalendar(event) {
@@ -160,7 +165,7 @@ class ExistingEvent extends React.Component<EventFormProps, EventFormState> {
       <input name="Title" value={this.state.event.Title} onChange={this.handleInputChange} />
       </Modal.Header>
       <Modal.Body>
-        <EventPropertiesEditor event={this.state.event} calendars={this.state.calendars} eventTypes={this.state.eventTypes} changeHandler={this.handleInputChange} pinnedCalendarChanged={this.updatePinnedCalendar} eventTypeChanged={this.updateEventType} />
+        <EventPropertiesEditor event={this.state.event} calendars={this.state.calendars} eventTypes={this.state.eventTypes} changeHandler={this.handleInputChange} handleDateChange={this.handleDateChange} pinnedCalendarChanged={this.updatePinnedCalendar} eventTypeChanged={this.updateEventType} />
       </Modal.Body>
       <Modal.Footer>
         <button className="btn btn-success" onClick={this.save}>Save</button>
