@@ -73,6 +73,7 @@
         "node-sass": "^4.11.0",
         "pace-js": "^1.0.2",
         "react-datepicker": "^2.0.0",
+        "react-moment": "^0.8.4",
         "react-select": "^2.1.2",
         "select2": "^4.0.5"
     },
