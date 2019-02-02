@@ -113,26 +113,26 @@ function newEvent($request, $response, $args)
 
     //fetch all related event objects before committing this event.
     $type = EventTypeQuery::Create()
-        ->findOneById($input->eventTypeID);
+        ->findOneById($input->Type);
     if (!$type) {
         return $response->withStatus(400, gettext("invalid event type id"));
     }
 
     $calendars = CalendarQuery::create()
-        ->filterById($input->eventCalendars)
+        ->filterById($input->PinnedCalendars)
         ->find();
-    if (count($calendars) != count($input->eventCalendars)) {
+    if (count($calendars) != count($input->PinnedCalendars)) {
         return $response->withStatus(400, gettext("invalid calendar pinning"));
     }
 
     // we have event type and pined calendars.  now create the event.
     $event = new Event;
-    $event->setTitle($input->EventTitle);
+    $event->setTitle($input->Title);
     $event->setType($type);
-    $event->setDesc($input->EventDesc);
-    $event->setStart(str_replace("T", " ", $input->start));
-    $event->setEnd(str_replace("T", " ", $input->end));
-    $event->setText(InputUtils::FilterHTML($input->eventPredication));
+    $event->setDesc($input->Desc);
+    $event->setStart(str_replace("T", " ", $input->Start));
+    $event->setEnd(str_replace("T", " ", $input->End));
+    $event->setText(InputUtils::FilterHTML($input->Text));
     $event->setCalendars($calendars);
     $event->save();
 
