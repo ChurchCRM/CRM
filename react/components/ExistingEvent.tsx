@@ -35,7 +35,8 @@ class ExistingEvent extends React.Component<EventFormProps, EventFormState> {
     this.setReadOnlyMode = this.setReadOnlyMode.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
     this.updatePinnedCalendar = this.updatePinnedCalendar.bind(this);
-    this.handleDateChange = this.handleDateChange.bind(this);
+    this.handleStartDateChange = this.handleStartDateChange.bind(this);
+    this.handleEndDateChange = this.handleEndDateChange.bind(this);
     this.updateEventType = this.updateEventType.bind(this)
     this.delete = this.delete.bind(this);
     this.exit = this.props.onClose.bind(this);
@@ -91,8 +92,20 @@ class ExistingEvent extends React.Component<EventFormProps, EventFormState> {
     console.log(this.state);
   }
 
-  handleDateChange(date) {
-    console.log(date);
+  handleStartDateChange(date) {
+    var newEventState = Object.assign({}, this.state.event, { Start: date })
+    this.setState({
+      event: newEventState
+    })
+    console.log(this.state);
+  }
+
+  handleEndDateChange(date) {
+    var newEventState = Object.assign({}, this.state.event, { End: date })
+    this.setState({
+      event: newEventState
+    })
+    console.log(this.state);
   }
 
   updatePinnedCalendar(event) {
@@ -165,7 +178,7 @@ class ExistingEvent extends React.Component<EventFormProps, EventFormState> {
       <input name="Title" value={this.state.event.Title} onChange={this.handleInputChange} />
       </Modal.Header>
       <Modal.Body>
-        <EventPropertiesEditor event={this.state.event} calendars={this.state.calendars} eventTypes={this.state.eventTypes} changeHandler={this.handleInputChange} handleDateChange={this.handleDateChange} pinnedCalendarChanged={this.updatePinnedCalendar} eventTypeChanged={this.updateEventType} />
+        <EventPropertiesEditor event={this.state.event} calendars={this.state.calendars} eventTypes={this.state.eventTypes} changeHandler={this.handleInputChange} handleStartDateChange={this.handleStartDateChange}  handleEndDateChange={this.handleEndDateChange} pinnedCalendarChanged={this.updatePinnedCalendar} eventTypeChanged={this.updateEventType} />
       </Modal.Body>
       <Modal.Footer>
         <button className="btn btn-success" onClick={this.save}>Save</button>

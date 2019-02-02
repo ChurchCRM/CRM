@@ -7,7 +7,7 @@ import Select from 'react-select';
 import DatePicker from 'react-datepicker';
 
 
-const EventPropertiesEditor: React.FunctionComponent<{ event: CRMEvent, calendars: Array<Calendar>, eventTypes: Array<EventType>, changeHandler: (event:React.ChangeEvent)=>void, handleDateChange: (date: any)=>void,  pinnedCalendarChanged: (event: Array<Object>) => void, eventTypeChanged: (event: Array<Object>) => void }> = ({ event, calendars, eventTypes, changeHandler, handleDateChange, pinnedCalendarChanged, eventTypeChanged }) => {
+const EventPropertiesEditor: React.FunctionComponent<{ event: CRMEvent, calendars: Array<Calendar>, eventTypes: Array<EventType>, changeHandler: (event:React.ChangeEvent)=>void, handleStartDateChange: (date: any)=>void, handleEndDateChange: (date: any)=>void,  pinnedCalendarChanged: (event: Array<Object>) => void, eventTypeChanged: (event: Array<Object>) => void }> = ({ event, calendars, eventTypes, changeHandler, handleStartDateChange, handleEndDateChange, pinnedCalendarChanged, eventTypeChanged }) => {
   //map the Calendar data type (returned from CRM API) into something that react-select can present as dropdown choices
   var calendarOptions=calendars.map((Pcal:Calendar) => ({value: Pcal.Id,  label: Pcal.Name}) );
   var EventTypeOptions=eventTypes.map((eventType:EventType) => ({value: eventType.Id,  label: eventType.Name}) );
@@ -37,8 +37,8 @@ const EventPropertiesEditor: React.FunctionComponent<{ event: CRMEvent, calendar
             Date Range
             </td>
           <td className="TextColumn">
-            <DatePicker name="Start" selected={event.Start} onChange={handleDateChange}  showTimeSelect dateFormat="Pp"/>
-            <input name="End" value={event.End} onChange={changeHandler} />
+            <DatePicker name="Start" selected={event.Start} onChange={handleStartDateChange}  showTimeSelect dateFormat="Pp"/>
+            <DatePicker name="End" selected={event.End} onChange={handleEndDateChange}  showTimeSelect dateFormat="Pp"/>
           </td>
         </tr>
         <tr>
