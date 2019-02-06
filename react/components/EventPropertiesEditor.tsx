@@ -18,7 +18,7 @@ const EventPropertiesEditor: React.FunctionComponent<{ event: CRMEvent, calendar
       <tbody>
         <tr>
           <td className="LabelColumn">
-            Event Type
+          {window.i18next.t('Event Type')}
             </td>
           <td className="TextColumn">
             <Select name="EventType" options={EventTypeOptions} value={initialEventTypeValue} onChange={eventTypeChanged} />
@@ -26,7 +26,7 @@ const EventPropertiesEditor: React.FunctionComponent<{ event: CRMEvent, calendar
         </tr>
         <tr>
          <td className="LabelColumn">
-            Event Description
+         {window.i18next.t('Description')}
             </td>
           <td className="TextColumn">
             <textarea name="Desc" value={event.Desc} onChange={changeHandler} />
@@ -34,16 +34,23 @@ const EventPropertiesEditor: React.FunctionComponent<{ event: CRMEvent, calendar
         </tr>
         <tr>
           <td className="LabelColumn">
-            Date Range
+          {window.i18next.t('Start Date')}
             </td>
           <td className="TextColumn">
             <DatePicker name="Start" selected={event.Start} onChange={handleStartDateChange}  showTimeSelect dateFormat="Pp"/>
+          </td>
+        </tr>
+        <tr>
+          <td className="LabelColumn">
+          {window.i18next.t('End Date')}
+            </td>
+          <td className="TextColumn">
             <DatePicker name="End" selected={event.End} onChange={handleEndDateChange}  showTimeSelect dateFormat="Pp"/>
           </td>
         </tr>
         <tr>
           <td className="LabelColumn">
-            Pinned Calendars
+          {window.i18next.t('Pinned Calendars')}
             </td>
           <td className="TextColumn">
             <Select name="PinnedCalendars" options={calendarOptions} value={initialPinnedCalendarValue} onChange={pinnedCalendarChanged} isMulti="true"  />
@@ -51,7 +58,7 @@ const EventPropertiesEditor: React.FunctionComponent<{ event: CRMEvent, calendar
         </tr>
         <tr>
           <td className="LabelColumn">
-            Text
+          {window.i18next.t('Text')}
             </td>
           <td className="TextColumn">
             <textarea name="Text" value={event.Text} onChange={changeHandler} />

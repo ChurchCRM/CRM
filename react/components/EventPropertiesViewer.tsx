@@ -10,7 +10,7 @@ const EventPropertiesViewer: React.FunctionComponent<{ event: CRMEvent, calendar
         <tbody>
         <tr>
           <td>
-            i18next.t('Event Type')
+            {window.i18next.t('Type')}
             </td>
           <td>
           {
@@ -26,7 +26,7 @@ const EventPropertiesViewer: React.FunctionComponent<{ event: CRMEvent, calendar
         </tr>
         <tr>
           <td>
-            Event Description
+          {window.i18next.t('Event Description')}
             </td>
           <td>
             {event.Desc}
@@ -34,16 +34,23 @@ const EventPropertiesViewer: React.FunctionComponent<{ event: CRMEvent, calendar
         </tr>
         <tr>
           <td>
-            Date Range
+          {window.i18next.t('Start Date')}
             </td>
           <td>
-          <Moment format="MMM Do YYYY, h:mm:ss a">{event.Start}</Moment> - 
+          <Moment format="MMM Do YYYY, h:mm:ss a">{event.Start}</Moment>
+          </td>
+        </tr>
+        <tr>
+          <td>
+          {window.i18next.t('End Date')}
+            </td>
+          <td>
           <Moment format="MMM Do YYYY, h:mm:ss a">{event.End}</Moment>
           </td>
         </tr>
         <tr>
           <td>
-            Pinned Calendars
+          {window.i18next.t('Pinned Calendars')}
           </td>
           <td>
             <ul>
@@ -61,7 +68,7 @@ const EventPropertiesViewer: React.FunctionComponent<{ event: CRMEvent, calendar
         </tr>
         <tr>
           <td>
-            Text
+          {window.i18next.t('Text')}
             </td>
           <td>
             {event.Text}
