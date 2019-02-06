@@ -294,6 +294,7 @@ window.newCalendarModal = {
 
 
 function initializeCalendar() {
+  window.CRM.isCalendarLoading  = false;
   //
   // initialize the calendar
   // -----------------------------------------------------------------
@@ -313,7 +314,10 @@ function initializeCalendar() {
     selectHelper: true,
     select: window.showNewEventForm,
     eventClick: window.showEventForm,  // This starts the React app 
-    locale: window.CRM.lang
+    locale: window.CRM.lang,
+    loading: function(isLoading, view){ 
+      window.CRM.isCalendarLoading = isLoading;
+    }
   });
 };
 
