@@ -53,7 +53,7 @@ msgstr "E-mail"
 
 #: 
 msgid "Credit Card"
-msgstr "Cartão de crédito"
+msgstr "Cartão de Crédito"
 
 #: 
 msgid "Backup Database"
@@ -61,19 +61,19 @@ msgstr "Backup do Banco de Dados"
 
 #: 
 msgid "This tool will assist you in manually backing up the ChurchCRM database."
-msgstr "Esta ferramenta irá lhe ajudar a fazer o backup manual do banco de dados do ChurchCRM."
+msgstr "Esta ferramenta vai te ajudar a fazer o backup manual do banco de dados."
 
 #: 
 msgid "You should make a manual backup at least once a week unless you already have a regular backup procedule for your systems."
-msgstr "Você deve fazer um backup manual, pelo menos uma vez por semana, a menos que você já tem um procedule backup regular de seus sistemas."
+msgstr "Você deve fazer um backup manual, pelo menos uma vez por semana, a menos que você programe um backup automático."
 
 #: 
 msgid "After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site."
-msgstr "Depois de baixar o arquivo de backup, você deve fazer duas cópias. Coloque uma delas em um cofre à prova de fogo no local eo outro em um local seguro fora do local."
+msgstr "Depois de baixar o arquivo de backup, você deve fazer duas cópias. Guarde-as em locais separados à prova de fogo, água e etc."
 
 #: 
 msgid "If you are concerned about confidentiality of data stored in the ChurchCRM database, you should encrypt the backup data if it will be stored somewhere potentially accessible to others"
-msgstr "Se você está preocupado com a confidencialidade de dados armazenados no banco de dados do ChurchCRM, você deve criptografar os dados de backup se ele vai ser armazenado em algum lugar potencialmente acessível por outros."
+msgstr "Se for armazenar backup do banco de dados do ChurchCRM em algum lugar potencialmente acessível por outras pessoas, é altamente recomendável  criptografar os dados."
 
 #: 
 #, fuzzy
@@ -87,7 +87,7 @@ msgstr "Criptografar o banco de dados com uma senha?"
 #: 
 #, fuzzy
 msgid "Re-type Password"
-msgstr "Digite sua senha novamente"
+msgstr "Repita a Senha"
 
 #: 
 msgid "Generate and Ship Backup to External Storage"
@@ -95,7 +95,7 @@ msgstr "Gerar e enviar Backup para Armazenamento Externo"
 
 #: 
 msgid "Batch Winner Entry"
-msgstr "Entrada Vencedor lote"
+msgstr "Entrada em lote"
 
 #: 
 msgid "Winner"
@@ -134,7 +134,7 @@ msgstr "Primeiro Nome"
 #: 
 #, fuzzy
 msgid "Middle Name"
-msgstr "Nome do meio"
+msgstr "Nome do Meio"
 
 #: 
 #, fuzzy
@@ -149,7 +149,7 @@ msgstr "Envelope"
 #: 
 #, fuzzy
 msgid "Work/Other Email"
-msgstr "Outro E-mail"
+msgstr "Outro E-mail "
 
 #: 
 #, fuzzy
@@ -172,7 +172,6 @@ msgid "Family Role"
 msgstr "Papel na Família"
 
 #: 
-#, fuzzy
 msgid "Depends whether using person or family output method"
 msgstr "Depende se o uso de método de saída Pessoa ou Família"
 
@@ -193,7 +192,6 @@ msgid "Filters"
 msgstr "Filtros"
 
 #: 
-#, fuzzy
 msgid "Records to export"
 msgstr "Campos para Exportar"
 
@@ -3445,7 +3443,7 @@ msgstr "Salvar Configurações"
 
 #: 
 msgid "Default User Settings"
-msgstr " Configurações padrão de usuários"
+msgstr "Configurações padrão de usuários"
 
 #: 
 msgid "Set Permission True to give new users the ability to change their current value.<BR>"
@@ -4596,7 +4594,7 @@ msgstr "Configuração do Usuário"
 
 #: 
 msgid "Email Setup"
-msgstr "Configuração de E-mail"
+msgstr "Configurações E-mail"
 
 #: 
 msgid "Map Settings"
@@ -4632,7 +4630,7 @@ msgstr "Verdadeiro"
 
 #: 
 msgid "Edit Settings"
-msgstr "Editar Configurações"
+msgstr "Configurações"
 
 #: 
 msgid "Upgrade ChurchCRM"
@@ -4897,7 +4895,7 @@ msgstr "Se você precisar fazer mudanças nos dados de registro, vá para "
 
 #: 
 msgid "Admin->Edit General Settings"
-msgstr "Admin->Editar Configurações Gerais"
+msgstr "Admin > Configurações Gerais"
 
 #: 
 msgid "Signature definition file signature failed validation"
@@ -5048,7 +5046,7 @@ msgstr "Membros:"
 
 #: 
 msgid "Edit General Settings"
-msgstr "Editar Configurações Gerais"
+msgstr "Configurações Gerais"
 
 #: 
 #, fuzzy
@@ -8562,7 +8560,8 @@ msgstr "Texto do Sermão"
 
 #: 
 msgid "Change Settings"
-msgstr "Configuração de Alterações"
+msgstr "Configurações\n"
+""
 
 #: 
 msgid "Unknown Type"
@@ -8604,7 +8603,7 @@ msgstr "Exigir que este banco de dados ChurchCRM seja acessado através de HTTPS
 
 #: 
 msgid "People Setup"
-msgstr "Configuração de Pessoas"
+msgstr "Configurações Pessoas"
 
 #: 
 msgid "Church Services"
@@ -9332,4 +9331,29 @@ msgstr "Arquivo de resultado de verificação de integridade de erro de decodifi
 #: 
 msgid "Error decoding signature definition file"
 msgstr "Erro ao decodificar o arquivo de definição de assinatura"
+
+#: 
+msgid "Generate Backup"
+msgstr "Gerar Backup"
+
+#: 
+msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
+msgstr "Ponto final do backup remoto. Se WebDAV, isso deve ser codificado por url"
+
+#: 
+msgid "Include initials image files, remote image files (gravatar), and thumbnails in backup.  These files are generally able to be reproduced after a restore and add very little value to the backup archive at a large expense of execution time and storage"
+msgstr "Inclua arquivos de imagem iniciais, arquivos de imagem remotos (gravatar) e miniaturas no backup. Em geral, esses arquivos podem ser reproduzidos após uma restauração e adicionar muito pouco valor ao arquivo de backup com grande despesa de tempo de execução e armazenamento."
+
+#: 
+msgid "Password (if any)"
+msgstr "Senha (Se houver)"
+
+#: 
+#, fuzzy
+msgid "All information on this page is correct."
+msgstr "Todas as informações na página estão corretas."
+
+#: 
+msgid "Please update the my family information with the following"
+msgstr "Por favor, atualize as informações da minha família com o seguinte"
 

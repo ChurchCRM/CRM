@@ -60,15 +60,13 @@ $sSQL = "SELECT per_Email, fam_Email, lst_OptionName as virt_RoleName FROM perso
 
 $rsEmailList = RunQuery($sSQL);
 $sEmailLink = '';
+$sMailtoDelimiter = SessionUser::getUser()->getUserConfigString("sMailtoDelimiter");
 while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailList)) {
     $sEmail = SelectWhichInfo($per_Email, $fam_Email, false);
     if ($sEmail) {
-        /* if ($sEmailLink) // Don't put delimiter before first email
-            $sEmailLink .= $sMailtoDelimiter; */
-        // Add email only if email address is not already in string
         if (!stristr($sEmailLink, $sEmail)) {
             $sEmailLink .= $sEmail .= $sMailtoDelimiter;
-            $roleEmails->$virt_RoleName .= $sEmail .= $sMailtoDelimiter;
+            $roleEmails->$virt_RoleName .= $sEmail;
         }
     }
 }

@@ -9352,7 +9352,7 @@ msgstr "密碼（如果有的話）"
 
 #: 
 #, fuzzy
-msgid "All information on thie page is correct."
+msgid "All information on this page is correct."
 msgstr "頁面上的所有信息都是正確的。"
 
 #: 

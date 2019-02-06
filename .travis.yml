@@ -37,9 +37,9 @@ before_install:
 
 # prepare travis ci for the build process
 install:
+ - npm install
  - npm run composer-install
  - npm run orm-gen
- - npm install
  - npm run build-react
  - npm run tests-install
 

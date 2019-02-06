@@ -17,6 +17,7 @@ use ChurchCRM\Service\PersonService;
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\SessionUser;
 
 $personService = new PersonService();
 $systemService = new SystemService();
@@ -1682,6 +1683,7 @@ function random_color()
 
 function generateGroupRoleEmailDropdown($roleEmails, $href)
 {
+    $sMailtoDelimiter = SessionUser::getUser()->getUserConfigString("sMailtoDelimiter");
     foreach ($roleEmails as $role => $Email) {
         if (SystemConfig::getValue('sToEmailAddress') != '' && !stristr($Email, SystemConfig::getValue('sToEmailAddress'))) {
             $Email .= $sMailtoDelimiter.SystemConfig::getValue('sToEmailAddress');
