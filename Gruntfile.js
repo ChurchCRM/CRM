@@ -418,6 +418,17 @@ module.exports = function (grunt) {
             updatechangelog: {
                 cmd: "gren changelog --generate --override --token=<%= buildConfig.GitHub.token %>"
             }
+        },
+        lineending: {
+          dist: {
+            options: {
+              eol: 'lf',
+              overwrite: true
+            },
+            files: {
+              '': ['src/vendor/**/*.php', 'src/vendor/**/*.js', 'src/skin/external/**/*.php', 'src/skin/external/**/*.js']
+            }
+          }
         }
     });
 
@@ -566,5 +577,6 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-curl');
     grunt.loadNpmTasks('grunt-poeditor-ab');
     grunt.loadNpmTasks('grunt-exec');
+    grunt.loadNpmTasks('grunt-lineending');
 
 }
