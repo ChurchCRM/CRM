@@ -1,6 +1,6 @@
 {
     "name": "ChurchCRM",
-    "version": "3.2.3",
+    "version": "3.2.4",
     "description": "Free Church CRM Software",
     "repository": {
         "type": "git",
@@ -35,6 +35,7 @@
         "grunt-curl": "^2.5.0",
         "grunt-exec": "^3.0.0",
         "grunt-github-release-notes": "^0.7.0",
+        "grunt-lineending": "^1.0.0",
         "grunt-poeditor-ab": "^0.1.9",
         "i18next-extract-gettext": "^3.2.1",
         "node-sha1": "^1.0.1",
@@ -71,14 +72,14 @@
         "jquery-steps": "1.1.0",
         "jquery-validation": "1.16.0",
         "node-sass": "^4.11.0",
+        "select2": "^4.0.5",
         "pace-js": "^1.0.2",
         "react-datepicker": "^2.0.0",
         "react-moment": "^0.8.4",
-        "react-select": "^2.1.2",
-        "select2": "^4.0.5"
+        "react-select": "^2.1.2"
     },
     "scripts": {
-        "install": "grunt clean && grunt updateVersions && grunt curl-dir && grunt copy && grunt sass",
+        "install": "grunt clean && grunt updateVersions && grunt curl-dir && grunt copy && grunt sass && grunt lineending",
         "updateVersions": "grunt updateVersions",
         "postinstall": "grunt genLocaleJSFiles",
         "locale-gen": "locale/update-locale.sh",
@@ -90,8 +91,8 @@
         "orm-gen": "php src/vendor/propel/propel/bin/propel.php --config-dir=propel model:build && cd src/ && composer dump-autoload",
         "graph-viz": "php src/vendor/propel/propel/bin/propel.php --config-dir=propel graphviz:generate",
         "datadictionary": "php src/vendor/propel/propel/bin/propel.php --config-dir=propel datadictionary:generate",
-        "composer-install": "cd src/ && composer install",
-        "composer-update": " cd src/ && composer update && composer dump-autoload && cd ../tests/ && composer update",
+        "composer-install": "cd src/ && composer install && cd .. && grunt lineending",
+        "composer-update": " cd src/ && composer update && composer dump-autoload && cd ../tests/ && composer update && cd .. && grunt lineending",
         "tests-install": "scripts/tests-install.sh",
         "test": "scripts/tests-run.sh",
         "build-react": "webpack"
