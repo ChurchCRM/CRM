@@ -51,7 +51,11 @@ class ExistingEvent extends React.Component<EventFormProps, EventFormState> {
       })
         .then(response => response.json())
         .then(data => {
-          this.setState({ event: data })
+          var event: CRMEvent;
+          event = data;
+          event.Start = new Date(event.Start);
+          event.End = new Date(event.End);
+          this.setState({ event: event });
         });
     }
 
