@@ -21,7 +21,7 @@ const EventPropertiesEditor: React.FunctionComponent<{ event: CRMEvent, calendar
           {window.i18next.t('Event Type')}
             </td>
           <td className="TextColumn">
-            <Select name="EventType" options={EventTypeOptions} value={initialEventTypeValue} onChange={eventTypeChanged} />
+            <Select name="EventType" inputId="EventType" options={EventTypeOptions} value={initialEventTypeValue} onChange={eventTypeChanged} />
           </td>
         </tr>
         <tr>
@@ -53,7 +53,7 @@ const EventPropertiesEditor: React.FunctionComponent<{ event: CRMEvent, calendar
           {window.i18next.t('Pinned Calendars')}
             </td>
           <td className="TextColumn">
-            <Select name="PinnedCalendars" options={calendarOptions} value={initialPinnedCalendarValue} onChange={pinnedCalendarChanged} isMulti="true"  />
+            <Select name="PinnedCalendars" inputId="PinnedCalendars" options={calendarOptions} value={initialPinnedCalendarValue} onChange={pinnedCalendarChanged} isMulti="true"  />
             </td>
         </tr>
         <tr>
