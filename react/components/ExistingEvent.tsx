@@ -77,11 +77,11 @@ class ExistingEvent extends React.Component<EventFormProps, EventFormState> {
   }
 
   setEditMode() {
-    this.setState({ isEditMode: true })
+    this.setState({ isEditMode: true });
   }
 
   setReadOnlyMode() {
-    this.setState({ isEditMode: false })
+    this.setState({ isEditMode: false });
   }
 
   handleInputChange(event: React.ChangeEvent<HTMLInputElement>) {
@@ -96,15 +96,15 @@ class ExistingEvent extends React.Component<EventFormProps, EventFormState> {
     console.log(this.state);
   }
 
-  handleStartDateChange(date) {
-    var newEventState = Object.assign({}, this.state.event, { Start: date })
+  handleStartDateChange(date: Date) {
+    var newEventState = Object.assign({}, this.state.event, { Start: date });
     this.setState({
       event: newEventState
     })
     console.log(this.state);
   }
 
-  handleEndDateChange(date) {
+  handleEndDateChange(date: Date) {
     var newEventState = Object.assign({}, this.state.event, { End: date })
     this.setState({
       event: newEventState
