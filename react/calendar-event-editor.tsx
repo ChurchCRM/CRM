@@ -14,7 +14,9 @@ declare global {
       // React does have it's own i18next implementation, but for now, lets use the one that's already being loaded
       i18next: { 
         t(string): string
-      }
+      },
+      // instead of loading the whole react-moment class, we can just use the one that's already on window.
+      moment: any
     }
 }
 
