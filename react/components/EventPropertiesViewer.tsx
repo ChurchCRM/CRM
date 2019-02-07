@@ -2,7 +2,6 @@ import * as React from 'react';
 import CRMEvent from '../interfaces/CRMEvent';
 import Calendar from '../interfaces/Calendar';
 import EventType from '../interfaces/EventType';
-import Moment from 'react-moment';
 
 const EventPropertiesViewer: React.FunctionComponent<{ event: CRMEvent, calendars: Array<Calendar>, eventTypes: Array<EventType> }> = ({ event, calendars, eventTypes }) => { 
   return (
@@ -37,7 +36,7 @@ const EventPropertiesViewer: React.FunctionComponent<{ event: CRMEvent, calendar
           {window.i18next.t('Start Date')}
             </td>
           <td>
-          <Moment format="MMM Do YYYY, h:mm:ss a">{event.Start}</Moment>
+          {event.Start.toString()}
           </td>
         </tr>
         <tr>
@@ -45,7 +44,7 @@ const EventPropertiesViewer: React.FunctionComponent<{ event: CRMEvent, calendar
           {window.i18next.t('End Date')}
             </td>
           <td>
-          <Moment format="MMM Do YYYY, h:mm:ss a">{event.End}</Moment>
+          {event.End.toString()}
           </td>
         </tr>
         <tr>
