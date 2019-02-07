@@ -1,9 +1,9 @@
 interface CRMEvent {
     Desc?: string,
-    End?: string,
+    End?: Date,
     Id: number,
     InActive?: boolean,
-    Start?: string,
+    Start?: Date,
     Text?: string,
     Type?: number,
     Title?: string,
