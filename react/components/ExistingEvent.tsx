@@ -135,6 +135,15 @@ class ExistingEvent extends React.Component<EventFormProps, EventFormState> {
   }
 
   save() {
+    var DateReplacer = function(key, value) {
+
+      if (this[key] instanceof Date) {
+        var td = this[key];
+        return window.moment(td).format();
+      }
+      
+      return value;
+   }
     fetch(CRMRoot + "/api/events" + (this.state.event.Id !=0 ? "/"+this.state.event.Id:""), {
       credentials: "include",
       method: "POST",
@@ -142,7 +151,7 @@ class ExistingEvent extends React.Component<EventFormProps, EventFormState> {
         Accept: 'application/json',
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(this.state.event)
+      body: JSON.stringify(this.state.event,DateReplacer)
     })
       .then(() => this.exit());
   }
