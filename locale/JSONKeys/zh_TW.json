@@ -2281,5 +2281,6 @@
     "Include initials image files, remote image files (gravatar), and thumbnails in backup.  These files are generally able to be reproduced after a restore and add very little value to the backup archive at a large expense of execution time and storage": "在備份中包括縮寫圖像文件，遠端圖像文件（gravatar）和縮圖。這些文件通常能夠在還原後再現，卻花費很大的執行時間和存儲成本為備份存檔添加非常少的益處.",
     "Password (if any)": "密碼（如果有的話）",
     "All information on this page is correct.": "頁面上的所有信息都是正確的。",
-    "Please update the my family information with the following": "請使用以下內容更新我的家庭信息"
+    "Please update the my family information with the following": "請使用以下內容更新我的家庭信息",
+    "Age Histogram": "年齡直方圖"
 }
