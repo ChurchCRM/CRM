@@ -32,6 +32,7 @@
         "grunt-lineending": "^1.0.0",
         "grunt-poeditor-ab": "^0.1.9",
         "i18next-extract-gettext": "^3.2.1",
+        "i18next-xhr-backend": "^1.4.1",
         "node-sha1": "^1.0.1"
     },
     "dependencies": {
@@ -48,7 +49,6 @@
         "fullcalendar": "^3.0.1",
         "i18n": "^0.8.3",
         "i18next": "8.2.1",
-        "i18next-xhr-backend": "^1.4.1",
         "initial-js": "0.3.4",
         "jquery": "^3.2.1",
         "jquery-photo-uploader": "^1.0.13",
