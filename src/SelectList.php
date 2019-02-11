@@ -117,6 +117,8 @@ if (array_key_exists('Number', $_GET)) {
     $tmpUser->setSearchLimit(InputUtils::LegacyFilterInput($_GET['Number'], 'int'));
     $tmpUser->setSearchfamily($sMode != 'person');
     $tmpUser->save();
+    
+    $_SESSION['user'] = $tmpUser;
 }
 
 if (array_key_exists('PersonColumn3', $_GET)) {
