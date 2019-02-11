@@ -181,11 +181,11 @@ msgstr "Seleção de Campo Personalizado"
 
 #: 
 msgid "Custom Person Fields"
-msgstr "Campos personalizados da pessoa"
+msgstr "Personalizar Pessoas"
 
 #: 
 msgid "Custom Family Fields"
-msgstr "Campos personalizados da família"
+msgstr "Personalizar Famílias"
 
 #: 
 msgid "Filters"
@@ -300,11 +300,11 @@ msgstr "Telefone Residencial"
 
 #: 
 msgid "Work Phone"
-msgstr "Telefone Comercial"
+msgstr "Celular Comercial"
 
 #: 
 msgid "Mobile Phone"
-msgstr "Telefone celular"
+msgstr "Celular"
 
 #: 
 msgid "Work / Other Email"
@@ -408,7 +408,7 @@ msgstr "Apuradas todas as atribuições de visitações."
 
 #: 
 msgid "Set Ok To Canvass for all families."
-msgstr "Definir OK para visitação de todas as famílias."
+msgstr "Definir Ok para visitação de todas as famílias."
 
 #: 
 msgid "Disabled Ok To Canvass for all families."
@@ -603,7 +603,7 @@ msgstr "(Use a caixa de texto para paises diferentes de EUA e Canadá)"
 
 #: 
 msgid "Do not auto-format"
-msgstr "Não formate automaticamente"
+msgstr "Não Formatar"
 
 #: 
 msgid "Add to Family"
@@ -868,15 +868,15 @@ msgstr "Aniversário"
 
 #: 
 msgid "Family Home Phone"
-msgstr "Telefone residencial da família"
+msgstr "Telefone Residencial da Família"
 
 #: 
 msgid "Family Work Phone"
-msgstr "Telefone do trabalho da família"
+msgstr "Telefone do Trabalho da Família"
 
 #: 
 msgid "Family Cell Phone"
-msgstr "Celular da família"
+msgstr "Celular da Família"
 
 #: 
 msgid "Family Email"
@@ -884,15 +884,15 @@ msgstr "E-mail da família"
 
 #: 
 msgid "Personal Home Phone"
-msgstr "Telefone pessoal da família"
+msgstr "Telefone Pessoal da Família"
 
 #: 
 msgid "Personal Work Phone"
-msgstr "Telefone pessoal do trabalho"
+msgstr "Telefone Pessoal do Trabalho"
 
 #: 
 msgid "Personal Cell Phone"
-msgstr "Telefone celular pessoal"
+msgstr "Celular Pessoal"
 
 #: 
 msgid "Personal Email"
@@ -945,11 +945,12 @@ msgstr "Criar diretório"
 #: 
 #, fuzzy
 msgid "Donated Item Editor"
-msgstr "Editor de items do menu"
+msgstr "Editor de Items do Menu"
 
 #: 
 msgid "Save and Add"
-msgstr "Gravar e adicionar"
+msgstr "Salvar e Adicionar\n"
+""
 
 #: 
 #, fuzzy
@@ -997,7 +998,7 @@ msgstr "URL da Figura"
 
 #: 
 msgid "Donation Fund Editor"
-msgstr "Editor de fundo de doações"
+msgstr "Editor de Fundo de Doações"
 
 #: 
 msgid "Are you sure you want to delete this fund?"
@@ -1029,7 +1030,7 @@ msgstr "Adicionar novo fundo"
 
 #: 
 msgid "Church Event Editor"
-msgstr "Editor de enventos da igreja"
+msgstr "Editor de Eventos da Igreja"
 
 #: 
 msgid "Edit Event Types"
@@ -1281,7 +1282,7 @@ msgstr "Adicionar tipo de evento"
 
 #: 
 msgid "Custom Family Fields Editor"
-msgstr "Editor de campos personalizados da Família"
+msgstr "Editor de Campos Personalizados de Famílias"
 
 #: 
 msgid "Default Option"
@@ -1293,11 +1294,11 @@ msgstr "Atenção: Ao excluir este campo, você vai perder todos os dados irrevo
 
 #: 
 msgid "Warning: Arrow and delete buttons take effect immediately.  Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!"
-msgstr "Aviso: Arrow e botões de exclusão terá efeito imediato. Mudanças de nome de campo serão perdidos se você não \"Guardar alterações\" antes de usar um para cima, baixo, apagar ou adicionar novos &#39;\"botão!"
+msgstr "AVISO! Os botões de setas e excluir tem efeito imediato. As alterações no nome do campo serão perdidas se você não salva-las antes de usar qualquer um dos botões. "
 
 #: 
 msgid "No custom Family fields have been added yet"
-msgstr "Nenhum campo personalizado foi adicionado ainda"
+msgstr "Você ainda não criou nenhum Campo Personalizado para as Famílias."
 
 #: 
 msgid "Special option"
@@ -1305,7 +1306,7 @@ msgstr "Opção especial"
 
 #: 
 msgid "Security Option"
-msgstr "Opção de segurança"
+msgstr "Segurança"
 
 #: 
 msgid "Family-View Side"
@@ -1346,7 +1347,7 @@ msgstr "Lado"
 
 #: 
 msgid "Add New Field"
-msgstr "Adicionar novo campo"
+msgstr "Adicionar"
 
 #: 
 msgid "Family Editor"
@@ -1377,9 +1378,8 @@ msgid "Family Info"
 msgstr "Informação da Família"
 
 #: 
-#, fuzzy
 msgid "None US/CND State"
-msgstr "Nenhum Estado"
+msgstr "Estado"
 
 #: 
 msgid "Contact Info"
@@ -1391,9 +1391,8 @@ msgid "Other Info"
 msgstr "Outras Informações"
 
 #: 
-#, fuzzy
 msgid "Ok To Canvass"
-msgstr "Ok para Visitação"
+msgstr "Permitem ser visitados"
 
 #: 
 #, fuzzy
@@ -1411,7 +1410,7 @@ msgstr "Informações do Envelope"
 
 #: 
 msgid "Custom Fields"
-msgstr "Campos personalizados"
+msgstr "Campos Personalizados"
 
 #: 
 msgid "Family Members"
@@ -1594,7 +1593,7 @@ msgstr "Editar Valor"
 #: 
 #, fuzzy
 msgid "Assign a New Property"
-msgstr " Atribuir uma nova propriedade"
+msgstr "Atribuir uma Nova pPopriedade"
 
 #: 
 msgid "Assign"
@@ -2080,7 +2079,7 @@ msgstr "Texto para o evento ID: "
 
 #: 
 msgid "Group Editor"
-msgstr "Editor de grupo"
+msgstr "Editor de Grupos"
 
 #: 
 msgid "Group Settings"
@@ -2163,11 +2162,11 @@ msgstr "Enviar"
 
 #: 
 msgid "Group Member Properties Editor"
-msgstr "Editor de propriedades do grupo"
+msgstr "Editor de Propriedades dos Grupos"
 
 #: 
 msgid "This group currently has no properties!  You can add them in the Group Editor."
-msgstr "Este grupo atualmente não tem propriedades! Você pode adicioná-los no Editor de Grupo."
+msgstr "Este grupo atualmente não tem propriedades! Você pode adicioná-los no Editor de Grupos."
 
 #: 
 msgid "Return to Person Record"
@@ -2183,7 +2182,7 @@ msgstr "informações para membro"
 
 #: 
 msgid "Group-Specific Properties Form Editor:"
-msgstr "Editor de propriedades especificas do grupo"
+msgstr "Editor de Propriedades Especificas dos Grupos"
 
 #: 
 msgid "No properties have been added yet"
@@ -2330,7 +2329,7 @@ msgstr "Desativada para este grupo."
 #: 
 #, fuzzy
 msgid "Assigned Properties"
-msgstr "Propriedades atribuídas"
+msgstr "Propriedades"
 
 #: 
 msgid "Group Members:"
@@ -2498,7 +2497,7 @@ msgstr "Todas as pessoas"
 
 #: 
 msgid "Classifications Manager"
-msgstr "Gerenciamento de Classificações"
+msgstr "Editar Classificações"
 
 #: 
 msgid "Email All"
@@ -2510,7 +2509,7 @@ msgstr "E-mail para Todos (Cco)"
 
 #: 
 msgid "Family Roles"
-msgstr "Papéis Família"
+msgstr "Editar Papéis"
 
 #: 
 msgid "Family Geographic"
@@ -2522,7 +2521,7 @@ msgstr "Atualizar as coordenadas de todas as Famílias"
 
 #: 
 msgid "Volunteer Opportunities"
-msgstr "Oportunidades de Voluntariado"
+msgstr "Voluntariado"
 
 #: 
 msgid "Families"
@@ -2644,7 +2643,7 @@ msgstr "(esta ação não pode ser desfeita)"
 
 #: 
 msgid "Note Editor"
-msgstr "Editor de notas"
+msgstr "Editor de Notas"
 
 #: 
 msgid "Private"
@@ -2664,7 +2663,7 @@ msgstr "Opção"
 
 #: 
 msgid "Warning: Removing will reset all assignments for all persons with the assignment!"
-msgstr "Aviso: Removendo irá repor todas as atribuições para todas as pessoas com a atribuição!"
+msgstr "AVISO! Ao remover uma atribuição, ela será excluída do perfil de todas as pessoas à que foi atribuída.  "
 
 #: 
 msgid "Error: Duplicate"
@@ -2737,7 +2736,7 @@ msgstr "Selecionar"
 
 #: 
 msgid "Custom Person Fields Editor"
-msgstr "Editor personalizado de campos de pessoas"
+msgstr "Editor de Campos Personalizados de Pessoas"
 
 #: 
 msgid "Warning:  By deleting this field, you will irrevokably lose all person data assigned for this field!"
@@ -2745,7 +2744,7 @@ msgstr "Atenção: Ao excluir este campo, você vai perder todos os dados irrevo
 
 #: 
 msgid "No custom person fields have been added yet"
-msgstr "Nenhum campo de pessoas personalizado foi adicionado ainda"
+msgstr "Você ainda não criou nenhum Campo Personalizado de Pessoas."
 
 #: 
 msgid "Person-View Side"
@@ -2753,7 +2752,7 @@ msgstr "Lado na visualização de pessoas"
 
 #: 
 msgid "Person Editor"
-msgstr "EDITOR DE PESSOAS"
+msgstr "Editor de Pessoas"
 
 #: 
 msgid "You must enter a Last Name if no Family is selected."
@@ -2765,7 +2764,7 @@ msgstr "Não é uma data de ingresso válida"
 
 #: 
 msgid "Not a valid Membership Date"
-msgstr "Não é uma data de membresia válida "
+msgstr "Não é uma Data de Membresia válida!"
 
 #: 
 msgid "Work Email is Not Valid"
@@ -2773,11 +2772,11 @@ msgstr "E-mail não é válido"
 
 #: 
 msgid "Red text"
-msgstr "Texto vermelho"
+msgstr "Texto em Vermelho"
 
 #: 
 msgid "indicates items inherited from the associated family record."
-msgstr "indica items herdados do registro da família."
+msgstr "indica dados herdados da família."
 
 #: 
 msgid "Personal Info"
@@ -2785,11 +2784,11 @@ msgstr "Informações Pessoais"
 
 #: 
 msgid "Mr., Mrs., Dr., Rev."
-msgstr "Sr., Sra., Dr., Pr."
+msgstr "Ex... Sr; Sra; Dr; Pr."
 
 #: 
 msgid "Jr., Sr., III"
-msgstr "Junior, Filho, Neto"
+msgstr "Ex... Junior, Filho, Neto"
 
 #: 
 #, fuzzy
@@ -2803,7 +2802,7 @@ msgstr "Selecione o Mês"
 #: 
 #, fuzzy
 msgid "Birth Day"
-msgstr "Aviversário"
+msgstr "Dia do Aniversário"
 
 #: 
 msgid "Select Day"
@@ -2829,7 +2828,7 @@ msgstr "Informação da Membresia"
 #: 
 #, fuzzy
 msgid "Friend Date"
-msgstr "Data deIngresso"
+msgstr "Visitante desde "
 
 #: 
 msgid "Add Person to Group"
@@ -2894,7 +2893,7 @@ msgstr "Atribuir Novo Grupo"
 
 #: 
 msgid "No volunteer opportunity assignments."
-msgstr "Não participa de oportunidades de voluntariado."
+msgstr "Não participa de voluntariado."
 
 #: 
 #, fuzzy
@@ -2923,11 +2922,11 @@ msgstr "Verifique o número não é válido para &#39;CAIXA&#39; pagamento"
 
 #: 
 msgid "Pledge Editor"
-msgstr "Editor de promessa"
+msgstr "Editor de Promessa"
 
 #: 
 msgid "Payment Editor: "
-msgstr "Editor de pagamento: "
+msgstr "Editor de Pagamento:"
 
 #: 
 msgid " Deposit Slip #"
@@ -2939,11 +2938,11 @@ msgstr "mais entradas vai caber."
 
 #: 
 msgid "Payment Editor - Modify Existing Payment"
-msgstr "Editor de pagamento - Modificar pagamentos existentes"
+msgstr "Editor de Pagamento | Modificar Pagamentos Existentes"
 
 #: 
 msgid "Payment Editor - New Deposit Slip Will Be Created"
-msgstr "Editor de pagamentos - Novo depósito Slip será criado"
+msgstr "Editor de Pagamentos | Novo Depósito Será Criado"
 
 #: 
 msgid "Deposit closed"
@@ -3021,7 +3020,7 @@ msgstr "idade"
 #: 
 #, fuzzy
 msgid "Assigned Groups"
-msgstr "Grupos Atribuídos"
+msgstr "Grupos"
 
 #: 
 msgid "Group Name"
@@ -3067,11 +3066,11 @@ msgstr "Excluindo esta propriedade também vai apagar todas as atribuições des
 
 #: 
 msgid "No, cancel this deletion"
-msgstr "Não, cancele esta exclusão"
+msgstr "Cancelar"
 
 #: 
 msgid "Property Editor"
-msgstr "Editor de propriedade"
+msgstr "Editor de Propriedade"
 
 #: 
 #, fuzzy
@@ -3133,7 +3132,7 @@ msgstr "Por favor, confirme a exclusão deste tipo de imóvel"
 
 #: 
 msgid "Property Type Editor"
-msgstr "Editor de tipo de propriedade"
+msgstr "Editor de Tipo de Propriedade"
 
 #: 
 msgid "Property Type List"
@@ -3166,7 +3165,7 @@ msgstr "Não assinalada:"
 
 #: 
 msgid "Yes, unassign this Property"
-msgstr "Sim, não atribuir esta propriedade"
+msgstr "Cancelar a atribuição"
 
 #: 
 msgid "No, retain this assignment"
@@ -3295,7 +3294,7 @@ msgstr "Confirmação família Excluir"
 #: 
 #, fuzzy
 msgid "Please confirm deletion of"
-msgstr "Confirma a remoção de"
+msgstr "Por favor, confirme a exclusão de"
 
 #: 
 msgid "Sorry, there are records of donations from this family. This family may not be deleted."
@@ -3333,11 +3332,11 @@ msgstr "Nota: Isso também irá excluir todas as notas associadas a este registr
 
 #: 
 msgid "Delete Family Record ONLY"
-msgstr "Apaga somente o registro da família"
+msgstr "Deletar apenas o dados da Família"
 
 #: 
 msgid "Delete Family Record AND Family Members"
-msgstr "Remove a família e todos os membros"
+msgstr "Remover a Família e TODOS os Membros"
 
 #: 
 msgid "Person Listing"
@@ -3394,7 +3393,7 @@ msgstr "Todos os papéis familiares"
 
 #: 
 msgid "All Contact Properties"
-msgstr "Todas as propriedades de contato"
+msgstr "Todas as Propriedades de Contato"
 
 #: 
 msgid "All Group Types"
@@ -3490,7 +3489,7 @@ msgstr "Por favor, confirme a remoção do status de usuário de:"
 
 #: 
 msgid "User Editor"
-msgstr "Editor de usuário"
+msgstr "Editor de Usuários"
 
 #: 
 msgid "Note: Changes will not take effect until next logon."
@@ -3561,7 +3560,7 @@ msgstr "(Visitante voluntário.)"
 
 #: 
 msgid "Admin"
-msgstr "Administrador"
+msgstr "Configurações"
 
 #: 
 msgid "(Grants all privileges.)"
@@ -3679,12 +3678,12 @@ msgstr "Confirma reset de Senha deste Usuário"
 #: 
 #, fuzzy
 msgid "Volunteer Opportunity Delete Confirmation"
-msgstr "Editor de oportunidades de voluntariado"
+msgstr "Excluir Confirmação de Voluntariado"
 
 #: 
 #, fuzzy
 msgid "There are people assigned to this Volunteer Opportunity."
-msgstr "Atribuir uma nova oportunidade de voluntariado:"
+msgstr "Há pessoas designadas para este Voluntariado."
 
 #: 
 msgid "Volunteer Opportunity will be unassigned for the following people."
@@ -3693,11 +3692,11 @@ msgstr "Oportunidade voluntário será atribuído para as seguintes pessoas."
 #: 
 #, fuzzy
 msgid "Yes, delete this Volunteer Opportunity"
-msgstr "Atribuir uma nova oportunidade de voluntariado:"
+msgstr "Excluir"
 
 #: 
 msgid "Volunteer Opportunity Editor"
-msgstr "Editor de oportunidades de voluntariado"
+msgstr "Voluntariado"
 
 #: 
 msgid "No volunteer opportunities have been added yet"
@@ -3705,7 +3704,7 @@ msgstr "Nenhuma oportunidade foi adicionada ainda"
 
 #: 
 msgid "NOTE: ADD, Delete, and Ordering changes are immediate.  Changes to Name or Desc fields must be saved by pressing 'Save Changes'"
-msgstr "NOTA: adicionar, excluir, e as mudanças de encomenda são imediatos. Alterações no nome ou campos Desc devem ser salvos pressionando \"Salvar alterações\""
+msgstr "NOTA! Somente as alterações como: ADICIONAR, EXCLUIR e PEDIR são imediatas. Alterações nos campos Nome ou Descrição, devem ser salvas pressionando 'Salvar Alterações'."
 
 #: 
 msgid "Add New Opportunity"
@@ -3837,7 +3836,7 @@ msgstr "Dinheiro"
 
 #: 
 msgid "Phone Number"
-msgstr "Número de telefone"
+msgstr "Telefone"
 
 #: 
 msgid "Custom Drop-Down List"
@@ -4130,7 +4129,7 @@ msgstr "Adulto/Criança"
 #: 
 #, fuzzy
 msgid "Cell Phone"
-msgstr "Telefone celular"
+msgstr "Celular"
 
 #: 
 msgid "Member/Friend"
@@ -4436,7 +4435,7 @@ msgstr "Criar controle de freqüência"
 
 #: 
 msgid "System Users"
-msgstr "Usuários do sistema"
+msgstr "Usuários do Sistema"
 
 #: 
 msgid "Calendar"
@@ -4590,15 +4589,15 @@ msgstr "Informações da Igreja"
 
 #: 
 msgid "User setup"
-msgstr "Configuração do Usuário"
+msgstr "Usuários"
 
 #: 
 msgid "Email Setup"
-msgstr "Configurações E-mail"
+msgstr "E-mail"
 
 #: 
 msgid "Map Settings"
-msgstr "Configurações do Mapa"
+msgstr "Mapa e Geolocalização"
 
 #: 
 msgid "Report Settings"
@@ -4755,7 +4754,7 @@ msgstr "Atualizar Informações da Igreja"
 
 #: 
 msgid "Set Church Address"
-msgstr "Configurar Endereço da Igreja"
+msgstr "Endereço da Igreja"
 
 #: 
 msgid "Set Email Settings"
@@ -4935,7 +4934,7 @@ msgstr "Complemento"
 
 #: 
 msgid "Cell phone"
-msgstr "Telefone celular"
+msgstr "Celular"
 
 #: 
 msgid "-----------------------------------------------------------------------------------------------------------------------------------------------"
@@ -5087,11 +5086,11 @@ msgstr "Grupo de texto"
 
 #: 
 msgid "Group Properties"
-msgstr "Propriedades dos grupos"
+msgstr "Propriedades (Grupos)"
 
 #: 
 msgid "Assign a New Property:"
-msgstr " Atribuir uma nova propriedade:"
+msgstr "Atribuir uma nova Propriedade:"
 
 #: 
 msgid "mos old"
@@ -5492,11 +5491,11 @@ msgstr "Exportar Registros em CSV"
 
 #: 
 msgid "People Properties"
-msgstr "Propriedades de Pessoas"
+msgstr "Propriedades (Pessoas)"
 
 #: 
 msgid "Family Properties"
-msgstr "Propriedades da Família"
+msgstr "Propriedades (Família)"
 
 #: 
 msgid "Property Types"
@@ -5985,7 +5984,7 @@ msgstr "Pressione CTRL + C para copiar todos os telefones dos membros do grupo"
 
 #: 
 msgid "Family Roles Editor"
-msgstr "Ediir de Papéis Familiares"
+msgstr "Editor de Papéis nas Famílias"
 
 #: 
 msgid "Person Classification"
@@ -6041,7 +6040,7 @@ msgstr " Lista de Opções de Personalização de Pessoa"
 
 #: 
 msgid "Person Custom List Options Editor"
-msgstr " Editor de Lista de Opções de Personalização de Pessoa"
+msgstr "Editor de Lista de Opções de Personalização de Pessoa"
 
 #: 
 msgid "Custom List Option"
@@ -7722,11 +7721,11 @@ msgstr "Senha resetada para"
 
 #: 
 msgid "View Active Families"
-msgstr "Ver família ativas"
+msgstr "Famílias Ativas"
 
 #: 
 msgid "View Inactive Families"
-msgstr "Família Inativas"
+msgstr "Famílias Inativas"
 
 #: 
 msgid "SMTP Server timeout in sec"
@@ -7802,7 +7801,7 @@ msgstr "senha do usuário do sistema mudada"
 
 #: 
 msgid "system user password changed by admin"
-msgstr "senha do usuário do sistema alterada pelo administrador"
+msgstr "Senha do usuário do sistema alterada pelo administrador"
 
 #: 
 msgid "system user login reset"
@@ -8098,7 +8097,7 @@ msgstr "Todos os membros deste grupo estão no carrinho"
 
 #: 
 msgid "Remove all"
-msgstr "Remover todos"
+msgstr "Remover Todos"
 
 #: 
 msgid "Not all members of this group are in the cart"
@@ -8603,7 +8602,7 @@ msgstr "Exigir que este banco de dados ChurchCRM seja acessado através de HTTPS
 
 #: 
 msgid "People Setup"
-msgstr "Configurações Pessoas"
+msgstr "Pessoas"
 
 #: 
 msgid "Church Services"
@@ -8717,7 +8716,7 @@ msgstr "Adicionar tudo ao Carrinho"
 
 #: 
 msgid "Remove All from Cart"
-msgstr "Remover tudo do Carrinho"
+msgstr "Remover Tudo do Carrinho"
 
 #: 
 msgid " record returned"
@@ -9001,11 +9000,11 @@ msgstr "Depurar"
 
 #: 
 msgid "Family Custom Fields"
-msgstr "Campos Personalizados da Família"
+msgstr "Campos Personalizados das Famílias"
 
 #: 
 msgid "Person Custom Fields"
-msgstr "Campos Personalizados de Pessoa"
+msgstr "Campos Personalizados de Pessoas"
 
 #: 
 msgid "Donation Funds"
@@ -9254,7 +9253,7 @@ msgstr "integrityCheck.json arquivo faltando"
 
 #: 
 msgid "Passed"
-msgstr "Passado"
+msgstr "Aprovado"
 
 #: 
 msgid "PHP Max Execution Time is too Short"
@@ -9356,4 +9355,8 @@ msgstr "Todas as informações na página estão corretas."
 #: 
 msgid "Please update the my family information with the following"
 msgstr "Por favor, atualize as informações da minha família com o seguinte"
+
+#: 
+msgid "Age Histogram"
+msgstr "Histograma de Idade"
 
