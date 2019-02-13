@@ -67,7 +67,11 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
     if ($sEmail) {
         if (!stristr($sEmailLink, $sEmail)) {
             $sEmailLink .= $sEmail .= $sMailtoDelimiter;
-            $roleEmails->$virt_RoleName .= $sEmail;
+            if(!array_key_exists($virt_RoleName,$roleEmails))
+            {
+                $roleEmails[$virt_RoleName] ="";
+            }
+            $roleEmails[$virt_RoleName] .= $sEmail;
         }
     }
 }
