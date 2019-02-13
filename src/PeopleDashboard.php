@@ -242,7 +242,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
         <br><?php echo gettext('Generate letters and mailing labels.'); ?>
         </p>
         <?php
-        if ($bUSAddressVerification) {
+        if (SessionUser::getUser()->isbUSAddressVerificationEnabled()) {
             echo '<p>';
             echo '<a class="MediumText" href="USISTAddressVerification.php">';
             echo gettext('US Address Verification Report')."</a><br>\n";
