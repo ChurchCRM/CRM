@@ -9,4 +9,3 @@ use ChurchCRM\Service\ReportingService;
 use ChurchCRM\Service\SystemService;
 
 // DIC configuration
-$container['Logger'] = $logger;
