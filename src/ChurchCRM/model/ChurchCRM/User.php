@@ -99,7 +99,7 @@ class User extends BaseUser
         return hash('sha256', $password . $this->getPersonId());
     }
 
-    public function isAddEventEnabled()
+    public function isAddEventEnabled() // TODO: Create permission to manag event deletion see https://github.com/ChurchCRM/CRM/issues/4726
     {
         return $this->isAddEvent();
     }
