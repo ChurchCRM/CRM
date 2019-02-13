@@ -203,9 +203,11 @@ foreach ($allMonths as $mKey => $mVal) {
   <table id="listEvents" class='table data-table table-striped table-bordered table-responsive'>
     <thead>
       <tr class="TableHeader">
-        <?php if (SessionUSer::getUser()->isAddEvent()) { ?> 
+        <?php if (SessionUSer::getUser()->isAddEvent()) {
+            ?> 
         <th><?= gettext('Action') ?></th>
-        <?php } ?>
+        <?php
+        } ?>
         <th><?= gettext('Description') ?></th>
         <th><?= gettext('Event Type') ?></th>
         <th><?= gettext('Attendance Counts') ?></th>
@@ -218,7 +220,8 @@ foreach ($allMonths as $mKey => $mVal) {
         for ($row = 1; $row <= $numRows; $row++) {
             ?>
           <tr>
-            <?php if (SessionUSer::getUser()->isAddEvent()) { ?>
+            <?php if (SessionUSer::getUser()->isAddEvent()) {
+                ?>
               <td>
               <table class='table-responsive'>
                 <tr>
@@ -250,7 +253,8 @@ foreach ($allMonths as $mKey => $mVal) {
                 </tr>
               </table>
             </td>
-            <?php } ?>
+            <?php
+            } ?>
             <td>
               <?= $aEventTitle[$row] ?>
               <?= ($aEventDesc[$row] == '' ? '&nbsp;' : $aEventDesc[$row]) ?>
