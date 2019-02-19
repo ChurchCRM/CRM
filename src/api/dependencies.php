@@ -19,4 +19,3 @@ $container['ReportingService'] = new ReportingService();
 $container['SystemService'] = new SystemService();
 
 $container['CalendarService'] = new CalendarService();
-$container['Logger'] = $logger;
