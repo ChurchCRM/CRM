@@ -93,7 +93,6 @@ class ExistingEvent extends React.Component<EventFormProps, EventFormState> {
     this.setState({
       event: Object.assign({}, this.state.event, { [name]: value })
     });
-    console.log(this.state);
   }
 
   handleStartDateChange(date: Date) {
@@ -101,7 +100,6 @@ class ExistingEvent extends React.Component<EventFormProps, EventFormState> {
     this.setState({
       event: newEventState
     })
-    console.log(this.state);
   }
 
   handleEndDateChange(date: Date) {
@@ -109,25 +107,20 @@ class ExistingEvent extends React.Component<EventFormProps, EventFormState> {
     this.setState({
       event: newEventState
     })
-    console.log(this.state);
   }
 
   updatePinnedCalendar(event) {
     const pinnedCalendars=event.map((selected:{value:number, label:string}) => selected.value);
-    console.log(pinnedCalendars);
     this.setState({
       event: Object.assign({}, this.state.event, { PinnedCalendars: pinnedCalendars })
     });
-    console.log(this.state.event);
   }
 
   updateEventType(event) {
     const eventType=event.value;
-    console.log(eventType);
     this.setState({
       event: Object.assign({}, this.state.event, { Type: eventType })
     });
-    console.log(this.state.event);
   }
 
   exit() {
