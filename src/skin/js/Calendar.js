@@ -52,20 +52,6 @@ window.moveEventModal = {
   }
 };
 
-window.getEventDataFromFullCalendar =  function(fullCalendarEvent) {
-   if (fullCalendarEvent.source.url.match(/systemcalendar/g))
-    {
-      path = "systemcalendars/"+event.source.id+"/events/"+event.id;
-    }
-    else
-    {
-      path = "events/"+fullCalendarEvent.id;
-    }
-    return window.CRM.APIRequest({
-      method: 'GET',
-      path: path,
-    });
-};
 
 window.CRM.refreshAllFullCalendarSources = function () {
   $(window.CRM.fullcalendar.fullCalendar("getEventSources")).each(function(idx,obj) {
@@ -312,7 +298,7 @@ function initializeCalendar() {
     eventDrop: window.moveEventModal.handleEventDrop,
     eventResize: window.moveEventModal.handleEventResize,
     selectHelper: true,
-    select: window.showNewEventForm,
+    select: window.showNewEventForm,   // This starts the React app 
     eventClick: window.showEventForm,  // This starts the React app 
     locale: window.CRM.lang,
     loading: function(isLoading, view){ 
