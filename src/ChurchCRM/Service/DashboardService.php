@@ -11,7 +11,15 @@ class DashboardService
     $ageStats = [];
     $people = PersonQuery::create()->find();
     foreach($people as $person) {
-      $ageStats[$person->getNumericAge()]++;
+        $personNumericAge = (int)$person->getNumericAge();
+        if ($personNumericAge == 0)
+        {
+            continue;
+        }
+        if(!array_key_exists($personNumericAge,$ageStats)){
+            $ageStats[$personNumericAge] = 0;
+        }
+        $ageStats[$personNumericAge]++;
     }
     ksort($ageStats);
     return $ageStats;

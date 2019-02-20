@@ -25,6 +25,7 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\PersonQuery;
 use ChurchCRM\Utils\RedirectUtils;
 
+$urlUserName =""; //initialize this variable so that PHP Strict doesn't warn about it
 // Get the UserID out of user name submitted in form results
 if (isset($_POST['User'])) {
     // Get the information for the selected user
@@ -134,7 +135,10 @@ session_start() ;
     // we restore only this part
 $_SESSION['iLoginType'] = $type;
 $_SESSION['username'] = $urlUserName;
-$LocationFromGet = InputUtils::FilterString(urldecode($_GET['location']));
+$LocationFromGet = "";
+if (array_key_exists("location", $_GET)) {
+    $LocationFromGet =InputUtils::FilterString(urldecode($_GET['location']));
+}
 if (substr($LocationFromGet, 0, 1) == "/") {
     $LocationFromGet = substr($LocationFromGet, 1);
 }

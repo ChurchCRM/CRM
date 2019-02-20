@@ -61,12 +61,16 @@ $sSQL = "SELECT per_Email, fam_Email, lst_OptionName as virt_RoleName FROM perso
 $rsEmailList = RunQuery($sSQL);
 $sEmailLink = '';
 $sMailtoDelimiter = SessionUser::getUser()->getUserConfigString("sMailtoDelimiter");
+$roleEmails = array();
 while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailList)) {
     $sEmail = SelectWhichInfo($per_Email, $fam_Email, false);
     if ($sEmail) {
         if (!stristr($sEmailLink, $sEmail)) {
             $sEmailLink .= $sEmail .= $sMailtoDelimiter;
-            $roleEmails->$virt_RoleName .= $sEmail;
+            if (!array_key_exists($virt_RoleName, $roleEmails)) {
+                $roleEmails[$virt_RoleName] ="";
+            }
+            $roleEmails[$virt_RoleName] .= $sEmail;
         }
     }
 }
@@ -242,7 +246,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
         <br><?php echo gettext('Generate letters and mailing labels.'); ?>
         </p>
         <?php
-        if ($bUSAddressVerification) {
+        if (SessionUser::getUser()->isbUSAddressVerificationEnabled()) {
             echo '<p>';
             echo '<a class="MediumText" href="USISTAddressVerification.php">';
             echo gettext('US Address Verification Report')."</a><br>\n";
