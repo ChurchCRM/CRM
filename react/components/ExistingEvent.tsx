@@ -181,7 +181,7 @@ class ExistingEvent extends React.Component<EventFormProps, EventFormState> {
       return ( <div>
     <Modal show={true} onHide={function () { }} >
       <Modal.Header>
-      <input name="Title" value={this.state.event.Title} onChange={this.handleInputChange} />
+      <input name="Title" value={this.state.event.Title} onChange={this.handleInputChange} placeholder={window.i18next.t("Event Title")}/>
       </Modal.Header>
       <Modal.Body>
         <EventPropertiesEditor event={this.state.event} calendars={this.state.calendars} eventTypes={this.state.eventTypes} changeHandler={this.handleInputChange} handleStartDateChange={this.handleStartDateChange}  handleEndDateChange={this.handleEndDateChange} pinnedCalendarChanged={this.updatePinnedCalendar} eventTypeChanged={this.updateEventType} />
