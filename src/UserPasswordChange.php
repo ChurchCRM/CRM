@@ -71,7 +71,7 @@ if (isset($_POST['Submit'])) {
             if (!empty($curUser->getEmail())) {
                 $email = new PasswordChangeEmail($curUser, $sNewPassword1);
                 if (!$email->send()) {
-                    $logger->warn($email->getError());
+                    LoggerUtils::getAppLogger()->warn($email->getError());
                 }
             }
 
