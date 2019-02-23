@@ -41,8 +41,7 @@ const EventPropertiesEditor: React.FunctionComponent<{ event: CRMEvent, calendar
               name="Start" 
               selected={event.Start} 
               onChange={handleStartDateChange}  
-              showTimeSelect  
-              timeFormat="h:mm"
+              showTimeSelect
               timeIntervals={15}
               dateFormat="MMMM d, yyyy h:mm aa"
               timeCaption="time" />
