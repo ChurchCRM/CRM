@@ -3,10 +3,15 @@ import * as ReactDOM from 'react-dom';
 import CRMEvent from './interfaces/CRMEvent';
 import ExistingEvent from './components/ExistingEvent';
 declare global {
+    interface Moment {
+      _isAMomentObject: boolean,
+      hasTime(): boolean,
+      format(): string;
+    }
     interface Window { 
       // Since TypeScript requires a definition for all methods, let's tell it how to handle the javascript objects already in the page 
       showEventForm(object): void,
-      showNewEventForm(start: any,end: any): void,
+      showNewEventForm(start: Moment,end: Moment): void,
       CRM: {
         // we need to access this method of CRMJSOM, so let's tell TypeScript how to use it
         refreshAllFullCalendarSources(): void 
@@ -29,7 +34,7 @@ window.showEventForm = function(event) {
     ReactDOM.render(<ExistingEvent onClose={unmount} eventId={event.id}/>, document.getElementById('calendar-event-react-app'));
 }
 
-function FullCalendarToLocalizedDate(input) {
+function FullCalendarToLocalizedDate(input:Moment) : Date {
   var offsetStr = "";
   if(!input.hasTime())
   {

@@ -29,11 +29,9 @@ class ExistingEvent extends React.Component<EventFormProps, EventFormState> {
         }
       }
       if (this.props.start) {
-        console.log("startDate: " + this.props.start);
         this.state.event.Start = this.props.start;
       }
       if (this.props.end) {
-        console.log("endDate: " + this.props.end);
         this.state.event.End = this.props.end;
       }
     }
