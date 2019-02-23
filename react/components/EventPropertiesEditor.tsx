@@ -39,7 +39,10 @@ const EventPropertiesEditor: React.FunctionComponent<{ event: CRMEvent, calendar
           <td className="TextColumn">
             <DatePicker 
               name="Start" 
+              selectsStart
               selected={event.Start} 
+              startDate={event.Start}
+              endDate={event.End}
               onChange={handleStartDateChange}  
               showTimeSelect
               timeIntervals={15}
@@ -54,11 +57,12 @@ const EventPropertiesEditor: React.FunctionComponent<{ event: CRMEvent, calendar
           <td className="TextColumn">
             <DatePicker 
               name="End"
-              minDate={event.Start}
               selected={event.End} 
+              startDate={event.Start}
+              endDate={event.End}
+              selectsEnd
               onChange={handleEndDateChange}  
               showTimeSelect  
-              timeFormat="h:mm"
               timeIntervals={15}
               dateFormat="MMMM d, yyyy h:mm aa"
               timeCaption="time" />
