@@ -5,6 +5,7 @@ use ChurchCRM\dto\SystemURLs;
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 ?>
+<link rel="stylesheet" href="<?= SystemURLs::getRootPath() ?>/skin/external/react-datepicker/react-datepicker.min.css">
 <div class="row">
   <div class="col-lg-9">
     <div class="box box-info">
@@ -31,10 +32,13 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
   </div>
 </div>
 
+<div id="calendar-event-react-app"></div>
+
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
   window.CRM.calendarJSArgs = <?= json_encode($calendarJSArgs) ?>;
 </script>
 
+<script src="<?= SystemURLs::getRootPath() ?>/skin/js-react/calendar-event-editor-app.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/ckeditor/ckeditor.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/Calendar.js" ></script>
 

@@ -49,3 +49,4 @@ src/logs/*.log
 error.log
 
 nbproject/*
+/src/skin/js-react/

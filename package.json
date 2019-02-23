@@ -18,6 +18,15 @@
     },
     "homepage": "http://www.churchcrm.io",
     "devDependencies": {
+        "@types/jquery": "^3.3.1",
+        "@types/react": "^16.1.0",
+        "@types/react-bootstrap": "^0.32.6",
+        "@types/react-dom": "^16.0.4",
+        "@types/react-modal": "^3.1.2",
+        "babel-cli": "^6.26.0",
+        "babel-core": "^6.26.0",
+        "babel-loader": "^7.1.4",
+        "babel-preset-react": "^6.24.1",
         "grunt": "^1.0.3",
         "grunt-confirm": "^1.0.7",
         "grunt-contrib-clean": "^1.0.0",
@@ -33,7 +42,15 @@
         "grunt-poeditor-ab": "^0.1.9",
         "i18next-extract-gettext": "^3.2.1",
         "i18next-xhr-backend": "^1.4.1",
-        "node-sha1": "^1.0.1"
+        "node-sha1": "^1.0.1",
+        "react": "^16.3.0",
+        "react-bootstrap": "^0.32.1",
+        "react-dom": "^16.3.0",
+        "react-modal": "^3.3.2",
+        "ts-loader": "^4.1.0",
+        "typescript": "^2.8.1",
+        "webpack": "4.19.1",
+        "webpack-cli": "^2.1.4"
     },
     "dependencies": {
         "admin-lte": "^2.4.*",
@@ -46,7 +63,7 @@
         "chart.js": "^1.1.*",
         "ckeditor": "^4.11.1",
         "font-awesome": "^4.7.0",
-        "fullcalendar": "^3.0.1",
+        "fullcalendar": "^3.9.0",
         "i18n": "^0.8.3",
         "i18next": "8.2.1",
         "initial-js": "0.3.4",
@@ -55,8 +72,10 @@
         "jquery-steps": "^1.1.0",
         "jquery-validation": "^1.16.0",
         "node-sass": "^4.11.0",
-        "select2": "^4.0.5",
-        "pace-js": "^1.0.2"
+        "pace-js": "^1.0.2",
+        "react-datepicker": "^2.1.0",
+        "react-select": "^2.1.2",
+        "select2": "^4.0.5"
     },
     "scripts": {
         "install": "grunt clean && grunt updateVersions && grunt curl-dir && grunt copy && grunt sass && grunt lineending",
@@ -74,6 +93,7 @@
         "composer-install": "cd src/ && composer install && cd .. && grunt lineending",
         "composer-update": " cd src/ && composer update && composer dump-autoload && cd ../tests/ && composer update && cd .. && grunt lineending",
         "tests-install": "scripts/tests-install.sh",
-        "test": "scripts/tests-run.sh"
+        "test": "scripts/tests-run.sh",
+        "build-react": "webpack"
     }
 }
