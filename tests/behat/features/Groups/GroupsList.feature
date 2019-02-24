@@ -26,6 +26,7 @@ Feature: Groups List
     And I am on "GroupView.php?GroupID=1"
     And I wait for AJAX to finish
     And I click the ".groupRow" element
+    And I wait for AJAX to finish
     Then I should see "Add (1) Members to Cart"
     And I click the "#addSelectedToCart" element
     And I wait for AJAX to finish
@@ -37,9 +38,11 @@ Feature: Groups List
     And I am on "GroupView.php?GroupID=1"
     And I wait for AJAX to finish
     And I click the ".groupRow" element
+    And I wait for AJAX to finish
     Then I should see "Add (1) Members to Cart"
     And I click the "#buttonDropdown" element
     And I click the "#addSelectedToGroup" element
+    And I wait for AJAX to finish
     Then I should see "Select Group and Role"
     And I fill in select2 input "targetGroupSelection" with "Class 1-3" and select "Class 1-3"
     And I fill in select2 input "targetRoleSelection" with "Student" and select "Student"
@@ -50,9 +53,11 @@ Feature: Groups List
     And I am on "GroupView.php?GroupID=1"
     And I wait for AJAX to finish
     And I click the ".groupRow" element
+    And I wait for AJAX to finish
     Then I should see "Add (1) Members to Cart"
     And I click the "#buttonDropdown" element
     And I click the "#moveSelectedToGroup" element
+    And I wait for AJAX to finish
     Then I should see "Select Group and Role"
     And I fill in select2 input "targetGroupSelection" with "Class 4-5" and select "Class 4-5"
     And I fill in select2 input "targetRoleSelection" with "Student" and select "Student"

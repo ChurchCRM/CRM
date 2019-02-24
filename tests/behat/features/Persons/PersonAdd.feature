@@ -18,6 +18,7 @@ Feature: AddPerson
     And I fill in "LinkedIn" with "test"
 
     And I click the "#PersonSaveButton" element
+    And I wait for AJAX to finish
     Then I should see "Person Profile"
     Then I should see "Bob Barker"
     Then I should see "About Me"
@@ -28,19 +29,25 @@ Feature: AddPerson
     And I should not see "Birthday"
 
     Then I click the "#EditPerson" element
+    And I wait for AJAX to finish
     And I fill in "BirthMonth" with "03"
     And I fill in "BirthDay" with "04"
     And I click the "#PersonSaveButton" element
+    And I wait for AJAX to finish
     Then I should see "Birth Date: 03/04"
 
     Then I click the "#EditPerson" element
+    And I wait for AJAX to finish
     And I fill in "BirthYear" with "1992"
     And I click the "#PersonSaveButton" element
+    And I wait for AJAX to finish
     Then I should see "Birth Date: 03/04/1992"
     And I should see "yrs old"
 
     Then I click the "#EditPerson" element
+    And I wait for AJAX to finish
     And I fill in "HideAge" with "checked"
     And I click the "#PersonSaveButton" element
+    And I wait for AJAX to finish
     Then I should see "Birth Date: 03/04"
     And I should not see "yrs old"
