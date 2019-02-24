@@ -668,7 +668,7 @@ require 'Include/Header.php';
         <h3 class="box-title"><?= gettext("Fund Split") ?></h3>
       </div>
         <div class="box-body">
-          <table id="FundTable">
+          <table class="table">
             <thead>
               <tr>
                 <th class="<?= $PledgeOrPayment == 'Pledge' ? 'LabelColumn' : 'PaymentLabelColumn' ?>"><?= gettext('Fund Name') ?></th>
@@ -751,18 +751,6 @@ require 'Include/Header.php';
     $("#FamilyName").on("select2:select", function (e) {
       $('[name=FamilyID]').val(e.params.data.id);
     });
-
-
-
-    var dataTableConfig = {
-        paging: false,
-        searching: false
-    }
-
-    $.extend(dataTableConfig, window.CRM.plugin.dataTable);
-
-    $("#FundTable").DataTable(dataTableConfig);
-
 
     $(".FundAmount").change(function(){
       CalculateTotal();

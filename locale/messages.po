@@ -10,7 +10,7 @@ msgstr ""
 "#-#-#-#-#  messages.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-10 22:17+0000\n"
+"POT-Creation-Date: 2019-02-23 07:26+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,8 +24,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2019-02-10T22:17:42.279Z\n"
-"PO-Revision-Date: 2019-02-10T22:17:42.279Z\n"
+"POT-Creation-Date: 2019-02-23T07:26:56.018Z\n"
+"PO-Revision-Date: 2019-02-23T07:26:56.018Z\n"
 
 msgid "Backup Database"
 msgstr ""
@@ -997,6 +997,12 @@ msgid "logged via InValid API Key."
 msgstr ""
 
 msgid "No logged in user"
+msgstr ""
+
+msgid "Missing event id"
+msgstr ""
+
+msgid "Event not found"
 msgstr ""
 
 msgid "User must have bAddEvent permissions"
@@ -6872,24 +6878,6 @@ msgstr ""
 msgid "Are you sure you want to change the end time for "
 msgstr ""
 
-msgid "Calendar description"
-msgstr ""
-
-msgid "Pinned Calendars"
-msgstr ""
-
-msgid "Members"
-msgstr ""
-
-msgid "Visitors"
-msgstr ""
-
-msgid "Event Description"
-msgstr ""
-
-msgid "Event Text"
-msgstr ""
-
 msgid "Access Token"
 msgstr ""
 
@@ -6926,10 +6914,10 @@ msgstr ""
 msgid "New Calendar"
 msgstr ""
 
-msgid "Focus"
+msgid "Unfocus"
 msgstr ""
 
-msgid "Unfocus"
+msgid "Focus"
 msgstr ""
 
 msgid ""
