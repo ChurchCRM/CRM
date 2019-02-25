@@ -9,7 +9,7 @@ default:
   extensions:
     Novaway\CommonContexts\Extension: ~
     Behat\MinkExtension:
-      base_url: http://web_server
+      base_url: http://cmr
       browser_name: chrome
       selenium2:
         capabilities:

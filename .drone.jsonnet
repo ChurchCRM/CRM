@@ -1,12 +1,13 @@
 local ApacheTestVer = "2.4";
 local MeriadbTestVer = "10.3";
+local PhpTestVers = ["7.0","7.1","7.2"];
 
 local CacheMountPath = "drone-ci";
-local StepBuild = {
+local StepBuild(php_ver) = {
   name: "build",
-  image: "devilbox/php-fpm:7.2-work",
+  image: "devilbox/php-fpm:"+php_ver+"-work",
   environment: {
-    "FORWARD_PORTS_TO_LOCALHOST": "3306:mysql:3306",
+    "FORWARD_PORTS_TO_LOCALHOST": "3306:mysql:3306, 80:crm:80",
     "PHP_MODULES_DISABLE": "xdebug",
   },
   commands: [
@@ -26,23 +27,11 @@ local StepBuild = {
     "npm run orm-gen",
   ],
 };
-local StoreCache = {
-  name: "store-cache",
-  image: "chrishsieh/drone-volume-cache",
-  environment: {
-    "PLUGIN_MOUNT": CacheMountPath,
-    "PLUGIN_REBUILD": "true",
-  },
-  volumes: [ {
-    name: "cache",
-    path: "/cache",
-  }],
-};
 local TestVersion(php_ver) = {
   name: "Test-" + php_ver,
   image: "devilbox/php-fpm:" + php_ver + "-work",
   environment: {
-      "FORWARD_PORTS_TO_LOCALHOST": "3306:mysql:3306, 80:crm"+ php_ver + ":80",
+      "FORWARD_PORTS_TO_LOCALHOST": "3306:mysql:3306, 80:crm:80",
       "PHP_MODULES_DISABLE": "xdebug",
     },
   commands: [
@@ -53,24 +42,10 @@ local TestVersion(php_ver) = {
       "mysql --user=root --password=churchcrm --host=mysql -e 'create database IF NOT EXISTS churchcrm_test;'",
       "mysql --user=root --password=churchcrm --host=mysql churchcrm_test < src/mysql/install/Install.sql;",
       "mysql --user=root --password=churchcrm --host=mysql churchcrm_test < demo/ChurchCRM-Database.sql;",
-      "sed -i 's/web_server/crm" + php_ver + "/g' ./drone-ci/Config.php",
-      "sed -i 's/web_server/crm" + php_ver + "/g' ./drone-ci/behat.yml",
       "cp ./drone-ci/Config.php ./src/Include/Config.php",
       "cp ./drone-ci/behat.yml ./tests/behat/behat.yml",
       "npm run test",
     ],
-};
-local RestoreCache(php_ver) = {
-  name: "restore-cache-" + php_ver,
-  image: "chrishsieh/drone-volume-cache",
-  environment: {
-    "PLUGIN_MOUNT": CacheMountPath,
-    "PLUGIN_RESTORE": "true",
-  },
-  volumes: [ {
-    name: "cache",
-    path: "/cache",
-  }],
 };
 local ServiceDb(meriadb_ver) = {
   name: "mysql",
@@ -80,10 +55,10 @@ local ServiceDb(meriadb_ver) = {
   },
 };
 local ServicePhp(php_ver) = {
-  name: "php" + php_ver,
+  name: "php",
   image: "devilbox/php-fpm:" + php_ver + "-work",
   environment: {
-    "FORWARD_PORTS_TO_LOCALHOST": "3306:mysql:3306, 80:crm"+ php_ver + ":80",
+    "FORWARD_PORTS_TO_LOCALHOST": "3306:mysql:3306, 80:crm:80",
     "PHP_MODULES_DISABLE": "xdebug",
   },
   commands: [
@@ -94,14 +69,14 @@ local ServicePhp(php_ver) = {
   working_dir: "/var/www/default"
 };
 local ServiceWeb(php_ver, apache_ver) = {
-  name: "crm" + php_ver,
+  name: "crm",
   image: "devilbox/apache-" + apache_ver,
   environment: {
     "PHP_FPM_ENABLE": 1,
-    "PHP_FPM_SERVER_ADDR": "php" + php_ver,
+    "PHP_FPM_SERVER_ADDR": "php",
     "PHP_FPM_SERVER_PORT": 9000,
     "MAIN_VHOST_ENABLE": 1,
-    "MAIN_VHOST_SSL_CN": "crm" + php_ver,
+    "MAIN_VHOST_SSL_CN": "crm",
   },
   commands: [
     "rm -rf /var/www/default/htdocs",
@@ -121,25 +96,24 @@ local ServiceSelenium = {
   ],
 };
 
-local StartBuild = [ StepBuild, StoreCache, ];
-local StartTestVer(php_ver) = {
-  steps+: [ TestVersion(php_ver) , RestoreCache(php_ver), ],
-  services+: [ ServicePhp(php_ver), ServiceWeb(php_ver, ApacheTestVer), ],
-};
-
-local PipeMain = 
+local PipeMain(ApacheTestVer, MeriadbTestVer, PhpTestVer) =
 {
   kind: "pipeline",
-  name: "Build&Test",
-  steps: StartBuild,
+  name: "PHP:"+PhpTestVer,
+  steps: [
+    StepBuild(PhpTestVer),
+    TestVersion(PhpTestVer),
+  ],
   services: [
     ServiceDb(MeriadbTestVer),
+    ServicePhp(PhpTestVer),
+    ServiceWeb(PhpTestVer, ApacheTestVer),
     ServiceSelenium,
   ],
-  volumes: [{
-    name: "cache",
-    temp: {},
-  }],
 };
 
-[ PipeMain + StartTestVer("7.0") + StartTestVer("7.1") + StartTestVer("7.2") ]
+[
+  PipeMain(ApacheTestVer, MeriadbTestVer, "7.0"),
+  PipeMain(ApacheTestVer, MeriadbTestVer, "7.1"),
+  PipeMain(ApacheTestVer, MeriadbTestVer, "7.2"),
+]
