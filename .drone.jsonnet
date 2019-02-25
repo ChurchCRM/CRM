@@ -14,6 +14,7 @@ local StepBuild(php_ver) = {
     "php --version",
     "node --version",
     "composer --version",
+    "composer global require hirak/prestissimo",
     "apt-get update",
     "apt-get install -y ruby-full",
     "gem install sass -v 3.4.25",
