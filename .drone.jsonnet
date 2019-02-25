@@ -116,4 +116,5 @@ local PipeMain(ApacheTestVer, MeriadbTestVer, PhpTestVer) =
   PipeMain(ApacheTestVer, MeriadbTestVer, "7.0"),
   PipeMain(ApacheTestVer, MeriadbTestVer, "7.1"),
   PipeMain(ApacheTestVer, MeriadbTestVer, "7.2"),
+  PipeMain(ApacheTestVer, MeriadbTestVer, "7.3"),
 ]
