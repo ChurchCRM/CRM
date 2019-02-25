@@ -24,6 +24,7 @@ steps:
   - npm install --unsafe-perm
   - npm run composer-install
   - npm run orm-gen
+  - npm run build-react
   environment:
     FORWARD_PORTS_TO_LOCALHOST: "3306:mysql:3306, 80:crm:80"
     PHP_MODULES_DISABLE: xdebug
@@ -108,6 +109,7 @@ steps:
   - npm install --unsafe-perm
   - npm run composer-install
   - npm run orm-gen
+  - npm run build-react
   environment:
     FORWARD_PORTS_TO_LOCALHOST: "3306:mysql:3306, 80:crm:80"
     PHP_MODULES_DISABLE: xdebug
@@ -192,6 +194,7 @@ steps:
   - npm install --unsafe-perm
   - npm run composer-install
   - npm run orm-gen
+  - npm run build-react
   environment:
     FORWARD_PORTS_TO_LOCALHOST: "3306:mysql:3306, 80:crm:80"
     PHP_MODULES_DISABLE: xdebug
@@ -276,6 +279,7 @@ steps:
   - npm install --unsafe-perm
   - npm run composer-install
   - npm run orm-gen
+  - npm run build-react
   environment:
     FORWARD_PORTS_TO_LOCALHOST: "3306:mysql:3306, 80:crm:80"
     PHP_MODULES_DISABLE: xdebug

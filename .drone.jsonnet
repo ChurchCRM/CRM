@@ -24,6 +24,7 @@ local StepBuild(php_ver) = {
     "npm install --unsafe-perm",
     "npm run composer-install",
     "npm run orm-gen",
+    "npm run build-react",
   ],
 };
 local TestVersion(php_ver) = {

@@ -68,9 +68,9 @@ class FeatureContext extends MinkContext
     */
    public function iWaitForTheCalendarToLoad() {
         // need to wait for the initial AJAX post to succeed.
-        $this->getSession()->wait(10000);
+        $this->getSession()->wait(3000);
         // Then need to wait for FullCalendarJS to tell us that it's done loading
-        $this->getSession()->wait(10000, 'window.CRM.isCalendarLoading === false');
+        $this->getSession()->wait(3000, 'window.CRM.isCalendarLoading === false');
    }
 
       /**
