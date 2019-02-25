@@ -112,7 +112,31 @@ local PipeMain(ApacheTestVer, MeriadbTestVer, PhpTestVer) =
     ServiceSelenium,
   ],
 };
+local PipeGitter = 
+{
+  kind: "pipeline",
+  name: "Notify",
+  clone: {
+    disable: true,
+  },
+  steps: [
+    {
+      name: "notify",
+      image: "plugins/gitter",
+      settings: {
+        webhook: {
+          "from_secret": "gitter_webhok",
+        },
+      },
+    },
+  ],
+  depends_on: [
+    "PHP:"+php_ver for php_ver in PhpTestVers
+  ],
+};
 
 [
   PipeMain(ApacheTestVer, MeriadbTestVer, php) for php in PhpTestVers
+] + [
+  PipeGitter
 ]

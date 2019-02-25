@@ -342,4 +342,28 @@ services:
   - name: shm
     path: /dev/shm:/dev/shm
 
+---
+kind: pipeline
+name: Notify
+
+platform:
+  os: linux
+  arch: amd64
+
+clone:
+  disable: true
+
+steps:
+- name: notify
+  image: plugins/gitter
+  settings:
+    webhook:
+      from_secret: gitter_webhok
+
+depends_on:
+- PHP:7.0
+- PHP:7.1
+- PHP:7.2
+- PHP:7.3
+
 ...
