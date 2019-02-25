@@ -1,8 +1,7 @@
 local ApacheTestVer = "2.4";
 local MeriadbTestVer = "10.3";
-local PhpTestVers = ["7.0","7.1","7.2"];
+local PhpTestVers = ["7.0","7.1","7.2","7.3","7.4"];
 
-local CacheMountPath = "drone-ci";
 local StepBuild(php_ver) = {
   name: "build",
   image: "devilbox/php-fpm:"+php_ver+"-work",
@@ -113,8 +112,5 @@ local PipeMain(ApacheTestVer, MeriadbTestVer, PhpTestVer) =
 };
 
 [
-  PipeMain(ApacheTestVer, MeriadbTestVer, "7.0"),
-  PipeMain(ApacheTestVer, MeriadbTestVer, "7.1"),
-  PipeMain(ApacheTestVer, MeriadbTestVer, "7.2"),
-  PipeMain(ApacheTestVer, MeriadbTestVer, "7.3"),
+  PipeMain(ApacheTestVer, MeriadbTestVer, php) for php in PhpTestVers
 ]

@@ -334,4 +334,88 @@ services:
   - name: shm
     path: /dev/shm:/dev/shm
 
+---
+kind: pipeline
+name: PHP:7.4
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: build
+  image: devilbox/php-fpm:7.4-work
+  commands:
+  - export DB=mysql
+  - php --version
+  - node --version
+  - composer --version
+  - apt-get update
+  - apt-get install -y ruby-full
+  - gem install sass -v 3.4.25
+  - "chmod +x ./travis-ci/*.sh"
+  - "chmod +x ./scripts/*.sh"
+  - cp BuildConfig.json.example BuildConfig.json
+  - chown -R devilbox:devilbox /drone/src/src
+  - npm install --unsafe-perm
+  - npm run composer-install
+  - npm run orm-gen
+  environment:
+    FORWARD_PORTS_TO_LOCALHOST: "3306:mysql:3306, 80:crm:80"
+    PHP_MODULES_DISABLE: xdebug
+
+- name: Test-7.4
+  image: devilbox/php-fpm:7.4-work
+  commands:
+  - cp ./drone-ci/tests-run.sh ./scripts/tests-run.sh
+  - cp ./drone-ci/bootstrap.php ./tests/bootstrap.php
+  - npm run tests-install
+  - "mysql --user=root --password=churchcrm --host=mysql -e 'drop database IF EXISTS churchcrm_test;'"
+  - "mysql --user=root --password=churchcrm --host=mysql -e 'create database IF NOT EXISTS churchcrm_test;'"
+  - mysql --user=root --password=churchcrm --host=mysql churchcrm_test < src/mysql/install/Install.sql;
+  - mysql --user=root --password=churchcrm --host=mysql churchcrm_test < demo/ChurchCRM-Database.sql;
+  - cp ./drone-ci/Config.php ./src/Include/Config.php
+  - cp ./drone-ci/behat.yml ./tests/behat/behat.yml
+  - npm run test
+  environment:
+    FORWARD_PORTS_TO_LOCALHOST: "3306:mysql:3306, 80:crm:80"
+    PHP_MODULES_DISABLE: xdebug
+
+services:
+- name: mysql
+  image: cytopia/mariadb-10.3
+  environment:
+    MYSQL_ROOT_PASSWORD: churchcrm
+
+- name: php
+  image: devilbox/php-fpm:7.4-work
+  commands:
+  - mkdir /var/www/default
+  - ln -s /drone/src/src/ /var/www/default/htdocs
+  - /docker-entrypoint.sh
+  environment:
+    FORWARD_PORTS_TO_LOCALHOST: "3306:mysql:3306, 80:crm:80"
+    PHP_MODULES_DISABLE: xdebug
+  working_dir: /var/www/default
+
+- name: crm
+  image: devilbox/apache-2.4
+  commands:
+  - rm -rf /var/www/default/htdocs
+  - ln -s /drone/src/src/ /var/www/default/htdocs
+  - /docker-entrypoint.sh
+  environment:
+    MAIN_VHOST_ENABLE: 1
+    MAIN_VHOST_SSL_CN: crm
+    PHP_FPM_ENABLE: 1
+    PHP_FPM_SERVER_ADDR: php
+    PHP_FPM_SERVER_PORT: 9000
+  working_dir: /var/www/default
+
+- name: selenium
+  image: selenium/standalone-chrome
+  volumes:
+  - name: shm
+    path: /dev/shm:/dev/shm
+
 ...
