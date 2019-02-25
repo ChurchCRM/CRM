@@ -1,6 +1,6 @@
 local ApacheTestVer = "2.4";
 local MeriadbTestVer = "10.3";
-local PhpTestVers = ["7.0","7.1","7.2","7.3","7.4"];
+local PhpTestVers = ["7.0","7.1","7.2","7.3"];
 
 local StepBuild(php_ver) = {
   name: "build",
