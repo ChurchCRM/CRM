@@ -4,8 +4,8 @@
 
 echo "Scanning composer for vulnerabilities"
 cd tests
-php security-checker.phar security:check /vagrant/src/composer.lock
-php security-checker.phar security:check /vagrant/tests/composer.lock
+php security-checker.phar security:check $(pwd)/../src/composer.lock
+php security-checker.phar security:check $(pwd)/../tests/composer.lock
 
 
 SingleTest=./behat/features/$1
@@ -44,7 +44,11 @@ if [[ "${SAUCE_USERNAME}" && "${SAUCE_ACCESS_KEY}" ]]; then
   export BEHAT_PARAMS='{"extensions" : {"Behat\\MinkExtension" : {"selenium2" : { "wd_host":"'${SAUCE_USERNAME}':'${SAUCE_ACCESS_KEY}'@ondemand.saucelabs.com/wd/hub"}}}}'
 else
   echo "NO SAUCE"
-  export BEHAT_PARAMS='{"extensions" : {"Behat\\MinkExtension" : {"goutte" : "~","selenium2":"~"}}}'
+  export BEHAT_PARAMS='{"extensions" : {"Behat\\MinkExtension" : {"selenium2" : { "wd_host": "http://$(hostname -f):4444/wd/hub"}}}}'
+  docker run -d -p 4444:4444 --shm-size=2g selenium/standalone-chrome
+  cp ../drone-ci/behat.yml ./behat/behat.yml
+  sed -i "s;crm$;$(hostname -f);g" ./behat/behat.yml
+  sed -i "s;'/src';'';g" ./bootstrap.php
 fi
 
 #echo $BEHAT_PARAMS
