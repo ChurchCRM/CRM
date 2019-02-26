@@ -44,7 +44,9 @@ if [[ "${SAUCE_USERNAME}" && "${SAUCE_ACCESS_KEY}" ]]; then
   export BEHAT_PARAMS='{"extensions" : {"Behat\\MinkExtension" : {"selenium2" : { "wd_host":"'${SAUCE_USERNAME}':'${SAUCE_ACCESS_KEY}'@ondemand.saucelabs.com/wd/hub"}}}}'
 else
   echo "NO SAUCE"
-  export BEHAT_PARAMS='{"extensions" : {"Behat\\MinkExtension" : {"goutte" : "~","selenium2":"~"}}}'
+  export BEHAT_PARAMS='{"extensions" : {"Behat\\MinkExtension" : {"selenium2" : { "wd_host": "http://$(hostname -f):4444/wd/hub"}}}}'
+  cp drone-ci/behat.yml tests/behat/behat.yml
+  sed -i "s;crm$;$(hostname -f);g" ./tests/behat/behat.yml
 fi
 
 #echo $BEHAT_PARAMS

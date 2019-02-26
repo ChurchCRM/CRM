@@ -28,7 +28,7 @@ local StepBuild(php_ver) = {
     "npm run build-react",
   ],
 };
-local TestVersion(php_ver) = {
+local StepTest(php_ver) = {
   name: "Test-" + php_ver,
   image: "devilbox/php-fpm:" + php_ver + "-work",
   environment: {
@@ -103,7 +103,7 @@ local PipeMain(ApacheTestVer, MeriadbTestVer, PhpTestVer) =
   name: "PHP:"+PhpTestVer,
   steps: [
     StepBuild(PhpTestVer),
-    TestVersion(PhpTestVer),
+    StepTest(PhpTestVer),
   ],
   services: [
     ServiceDb(MeriadbTestVer),
@@ -112,7 +112,7 @@ local PipeMain(ApacheTestVer, MeriadbTestVer, PhpTestVer) =
     ServiceSelenium,
   ],
 };
-local PipeGitter = 
+local PipeGitter =
 {
   kind: "pipeline",
   name: "Notify",

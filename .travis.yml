@@ -7,7 +7,7 @@ php:
 
 rvm:
   - 2.2
-  
+
 addons:
   sauce_connect: true
 
@@ -31,6 +31,7 @@ before_install:
  - sudo apt-get update
  - sudo apt-get install ruby-full
  - sudo gem install sass -v 3.4.25
+ - docker run -d -p 4444:4444 --shm-size=2g selenium/standalone-chrome
  - chmod +x ./travis-ci/*.sh
  - chmod +x ./scripts/*.sh
  - cp BuildConfig.json.example BuildConfig.json
@@ -56,6 +57,7 @@ before_script:
  - sudo cp -f travis-ci/000-default.conf /etc/apache2/sites-available/000-default.conf
  - sudo chmod -R a+rwx /home
  - sudo sed -e "s?%TRAVIS_BUILD_DIR%?$(pwd)/src?g" --in-place /etc/apache2/sites-available/000-default.conf
+ - sudo sed -i "s;/vagrant;$(pwd);g" ./scripts/tests-run.sh
  - sudo service apache2 restart
 
 # execute tests
