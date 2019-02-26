@@ -14,6 +14,7 @@ Feature: Person View
     And I wait for AJAX to finish
     Then I should see "Select Group and Role"
     And I fill in select2 input "targetGroupSelection" with "Class 1-3" and select "Class 1-3"
+    And I wait for AJAX to finish
     And I fill in select2 input "targetRoleSelection" with "Student" and select "Student"
     And I press "OK"
 
