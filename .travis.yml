@@ -31,6 +31,7 @@ before_install:
  - sudo apt-get update
  - sudo apt-get install ruby-full
  - sudo gem install sass -v 3.4.25
+ - sudo composer global require hirak/prestissimo
  - chmod +x ./travis-ci/*.sh
  - chmod +x ./scripts/*.sh
  - cp BuildConfig.json.example BuildConfig.json
@@ -54,7 +55,7 @@ before_script:
  - sudo a2enmod rewrite proxy_fcgi
  - ~/.phpenv/versions/$(phpenv version-name)/sbin/php-fpm
  - sudo cp -f travis-ci/000-default.conf /etc/apache2/sites-available/000-default.conf
- - sudo cp -f travis-ci/tests-run.sh /scripts/tests-run.sh
+ - sudo cp -f travis-ci/tests-run.sh scripts/tests-run.sh
  - sudo chmod -R a+rwx /home
  - sudo sed -e "s?%TRAVIS_BUILD_DIR%?$(pwd)/src?g" --in-place /etc/apache2/sites-available/000-default.conf
  - sudo service apache2 restart

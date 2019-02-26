@@ -133,6 +133,12 @@ local PipeGitter =
   depends_on: [
     "PHP:"+php_ver for php_ver in PhpTestVers
   ],
+  trigger: {
+    status: [
+      "success",
+      "failure",
+    ],
+  },
 };
 
 [

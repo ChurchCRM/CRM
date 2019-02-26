@@ -46,6 +46,7 @@ else
   echo "NO SAUCE"
   export BEHAT_PARAMS='{"extensions" : {"Behat\\MinkExtension" : {"selenium2" : { "wd_host": "http://$(hostname -f):4444/wd/hub"}}}}'
   docker run -d -p 4444:4444 --shm-size=2g selenium/standalone-chrome
+  sleep 10
   cp ../drone-ci/behat.yml ./behat/behat.yml
   sed -i "s;crm$;$(hostname -f);g" ./behat/behat.yml
   sed -i "s;'/src';'';g" ./bootstrap.php

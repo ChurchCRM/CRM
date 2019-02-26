@@ -360,6 +360,11 @@ steps:
     webhook:
       from_secret: gitter_webhok
 
+trigger:
+  status:
+  - success
+  - failure
+
 depends_on:
 - PHP:7.0
 - PHP:7.1
