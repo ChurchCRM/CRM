@@ -25,7 +25,8 @@ try {
     require __DIR__."/SendingLoggerMiddleware.php";
     DriverManager::loadDriver(\BotMan\Drivers\Slack\SlackDriver::class);
 
-    function EventsToString() {
+    function EventsToString()
+    {
         $logger = LoggerUtils::getChatBotLogger();
         $logger->info("looking for events");
         /** @var ChurchCRM\EventQuery $events */
@@ -33,14 +34,13 @@ try {
 
         $strings  = [];
         $i = 0;
-        foreach($events as $event)
-        {
+        foreach ($events as $event) {
             /** @var ChurchCRM\Event $event */
             $strings[$i] = "*" . $event->getTitle() . "*\n";
             $strings[$i] .= "_" . $event->getStart("m/d/Y") . "_";
             $i ++;
         }
-        return implode("\n\n",$strings);
+        return implode("\n\n", $strings);
     }
 
     // Create BotMan instance
@@ -55,24 +55,24 @@ try {
     // Give the bot something to listen for.
     $botman->hears('hello', function (BotMan $bot) {
         // add records to the log
-        $bot->replyInThread('Hello yourself.',[]);
+        $bot->replyInThread('Hello yourself.', []);
     });
 
     $botman->hears('I want ([0-9]+)', function ($bot, $number) {
-        $bot->replyInThread('You will get: '.$number,[]);
+        $bot->replyInThread('You will get: '.$number, []);
     });
 
     $botman->hears('(what time|when) (is).*', function (BotMan $bot) {
-        $bot->replyInThread("found events:\n" . EventsToString(),[]);
+        $bot->replyInThread("found events:\n" . EventsToString(), []);
     });
 
     $botman->hears('(events|(on the)? calendar|(on the)? schedule)|(what are|what is|what(\')?s)|(this week|soon|upcoming)', function (BotMan $bot) {
-        $bot->replyInThread("these are upcoming:\n" . EventsToString(),[]);
+        $bot->replyInThread("these are upcoming:\n" . EventsToString(), []);
     });
 
 
-    $botman->fallback(function($bot) {
-        $bot->replyInThread('Sorry, I did not understand these commands. Here is a list of commands I understand: ...',[]);
+    $botman->fallback(function ($bot) {
+        $bot->replyInThread('Sorry, I did not understand these commands. Here is a list of commands I understand: ...', []);
     });
 
     $middleware = new ReceivedLoggerMiddleware();
@@ -85,7 +85,6 @@ try {
 
     // Start listening
     $botman->listen();
-} catch (Exception $e) { 
+} catch (Exception $e) {
     $logger->info("error handling request: ".$e);
 }
-
