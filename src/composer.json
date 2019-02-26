@@ -49,7 +49,8 @@
         "azuyalabs/yasumi": "^1.8",
         "defuse/php-encryption": "^2.2",
         "botman/driver-slack": "^2.1",
-        "botman/botman": "^2.4"
+        "botman/botman": "^2.4",
+        "php-ai/php-ml": "^0.7.0"
     },
     "autoload": {
         "classmap": [
