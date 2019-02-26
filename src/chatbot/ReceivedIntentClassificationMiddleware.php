@@ -33,8 +33,8 @@ class ReceivedIntentClassificationMiddleware implements Received
     public function received(IncomingMessage $message, $next, BotMan $bot)
     {
         // initialize the tokenizer and the classifier
-        $vectorizer = new TokenCountVectorizer(new WordTokenizer ());
-        $svcClassifier =  new SVC(   Kernel::LINEAR, // $kernel
+        $vectorizer = new TokenCountVectorizer(new WordTokenizer());
+        $svcClassifier =  new SVC(Kernel::LINEAR, // $kernel
         1.0,            // $cost
         3,              // $degree
         null,           // $gamma
@@ -48,15 +48,14 @@ class ReceivedIntentClassificationMiddleware implements Received
         // load our intent classes, and train the model accordingly.
         $intents = [new EventsQuestionIntent(), new DemographicQuestionIntent()];
         $intentsReference =[];
-        foreach ($intents as $intent)
-        {
+        foreach ($intents as $intent) {
             $intentsReference[$intent->getLabel()] = $intent;
             LoggerUtils::getChatBotLogger()->info("Training model for intent: " . $intent->getLabel());
             $samples = $intent->getSamples();
             $vectorizer->fit($samples);
             LoggerUtils::getChatBotLogger()->info("Vocabulary: " . json_encode($vectorizer->getVocabulary()));
             $vectorizer->transform($samples);
-            $labels = array_fill(0,count($samples ),$intent->getLabel());
+            $labels = array_fill(0, count($samples), $intent->getLabel());
             LoggerUtils::getChatBotLogger()->info("Samples: " . json_encode($samples).".  Labels: " . json_encode($labels));
             $svcClassifier->train($samples, $labels);
         }
@@ -76,14 +75,14 @@ class ReceivedIntentClassificationMiddleware implements Received
             $prediction = $svcClassifier->predict($m);
             LoggerUtils::getChatBotLogger()->info("Prediction: " . json_encode($prediction));
     
-            // after we've derived an intent, let's remove the intent-causing words 
+            // after we've derived an intent, let's remove the intent-causing words
             //  to find out what other context exists in the message
-            $questionVectorizer = new TokenCountVectorizer(new WordTokenizer ());
+            $questionVectorizer = new TokenCountVectorizer(new WordTokenizer());
             LoggerUtils::getChatBotLogger()->info(json_encode($m));
             $questionVectorizer->fit([$message->getText()]);
             LoggerUtils::getChatBotLogger()->info("Question tokenized");
 
-            $message->addExtras("MatchedIntent",$intentsReference[$prediction[0]]);
+            $message->addExtras("MatchedIntent", $intentsReference[$prediction[0]]);
         }
       
 
