@@ -26,7 +26,8 @@ try {
     require __DIR__."/ReceivedIntentClassificationMiddleware.php";
     DriverManager::loadDriver(\BotMan\Drivers\Slack\SlackDriver::class);
 
-    function EventsToString() {
+    function EventsToString()
+    {
         $logger = LoggerUtils::getChatBotLogger();
         $logger->info("looking for events");
         /** @var ChurchCRM\EventQuery $events */
@@ -34,14 +35,13 @@ try {
 
         $strings  = [];
         $i = 0;
-        foreach($events as $event)
-        {
+        foreach ($events as $event) {
             /** @var ChurchCRM\Event $event */
             $strings[$i] = "*" . $event->getTitle() . "*\n";
             $strings[$i] .= "_" . $event->getStart("m/d/Y") . "_";
             $i ++;
         }
-        return implode("\n\n",$strings);
+        return implode("\n\n", $strings);
     }
 
     // Create BotMan instance
@@ -56,18 +56,16 @@ try {
     // Give the bot something to listen for.
     $botman->hears('hello', function (BotMan $bot) {
         // add records to the log
-        $bot->replyInThread('Hello yourself.',[]);
+        $bot->replyInThread('Hello yourself.', []);
     });
 
-    $botman->fallback(function($bot) {
+    $botman->fallback(function ($bot) {
         if ($bot->getMessage()->getExtras("MatchedIntent")) {
             $intent = $bot->getMessage()->getExtras("MatchedIntent");
-            $bot->replyInThread('Matched Intent: ' . $intent->getLabel(). ".  Response: " .$intent->getResponse(),[]);
+            $bot->replyInThread('Matched Intent: ' . $intent->getLabel(). ".  Response: " .$intent->getResponse(), []);
+        } else {
+            $bot->replyInThread('Sorry, I did not understand these commands. Here is a list of commands I understand: ...', []);
         }
-        else {
-            $bot->replyInThread('Sorry, I did not understand these commands. Here is a list of commands I understand: ...',[]);
-        }
-        
     });
 
     $middleware = new ReceivedLoggerMiddleware();
@@ -83,7 +81,6 @@ try {
 
     // Start listening
     $botman->listen();
-} catch (Exception $e) { 
+} catch (Exception $e) {
     $logger->info("error handling request: ".$e);
 }
-
