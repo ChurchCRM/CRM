@@ -6,4 +6,5 @@ Feature: Events Add
   Scenario: Add Event
     Given I am authenticated as "admin" using "changeme"
     And I am on "/EventEditor.php"
+    And I wait for AJAX to finish
     Then I should see "Create a new Event"

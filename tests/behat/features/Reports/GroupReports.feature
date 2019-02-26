@@ -6,9 +6,12 @@ Feature: Group Reports
   Scenario: Open the Group Reports Page
     Given I am authenticated as "admin" using "changeme"
     And I am on "/GroupReports.php"
+    And I wait for AJAX to finish
     Then I should see "Group reports"
     And I should see "Select the group you would like to report"
     When I press "Next"
+    And I wait for AJAX to finish
     Then I should see "Select which information you want to include"
     When I press "Create Report"
+    And I wait for AJAX to finish
     #Then I should see in the header "Content-Disposition:attachment;"

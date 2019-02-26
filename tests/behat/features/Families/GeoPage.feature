@@ -6,11 +6,13 @@ Feature: GeoPage
   Scenario: Find Demo Family Neighbors and Test Cart
     Given I am authenticated as "admin" using "changeme"
     And I am on "/GeoPage.php"
+    And I wait for AJAX to finish
     Then I should see "Family Geographic Utilities"
     And I fill in select2 input "Family" with "Berry" and select "Berry - 1931 Edwards Rd Riverside, PA United States"
     And I fill in "MaxDistance" with "500"
     And I wait for AJAX to finish
     And I press "Show Neighbors"
+    And I wait for AJAX to finish
     Then I should see "Rafael Dixon"
     Then I should see "0" in the "#iconCount" element
     And I click "#AddAllToCart"
@@ -20,5 +22,5 @@ Feature: GeoPage
     And I wait for AJAX to finish
     Then I should see "0" in the "#iconCount" element
 
-    
+
 

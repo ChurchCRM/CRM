@@ -6,6 +6,7 @@ Feature: People Dashboard
   Scenario: Open the People Dashboard
     Given I am authenticated as "admin" using "changeme"
     And I am on "/PeopleDashboard.php"
+    And I wait for AJAX to finish
     Then I should see "People Dashboard"
     And I should see "People Functions"
     And I should see "Reports"

@@ -6,6 +6,7 @@ Feature: Sunday School Dashboard
   Scenario: Sunday School Dashboard
     Given I am authenticated as "admin" using "changeme"
     And I am on "/sundayschool/SundaySchoolDashboard.php"
+    And I wait for AJAX to finish
     Then I should see "Sunday School Dashboard"
     And I should see "Sunday School Classes"
     And I should see "Students not in a Sunday School Class"

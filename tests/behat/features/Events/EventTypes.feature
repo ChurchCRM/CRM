@@ -6,4 +6,5 @@ Feature: Event Types
   Scenario: Add Event
     Given I am authenticated as "admin" using "changeme"
     And I am on "/EventNames.php"
+    And I wait for AJAX to finish
     Then I should see "Add Event Type"

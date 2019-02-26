@@ -6,6 +6,7 @@ Feature: Groups List
   Scenario: Add a Group
     Given I am authenticated as "admin" using "changeme"
     And I am on "/GroupList.php"
+    And I wait for AJAX to finish
     And I fill in "groupName" with "Test Group"
     And I press "addNewGroup"
     And I wait for AJAX to finish
@@ -14,6 +15,7 @@ Feature: Groups List
   Scenario: Add a member to a group
     Given I am authenticated as "admin" using "changeme"
     And I am on "GroupView.php?GroupID=1"
+    And I wait for AJAX to finish
     And I fill in select2 input "addGroupMember" with "admin" and select "Church Admin"
     And I wait for AJAX to finish
     Then I should see "Select Role"

@@ -6,6 +6,7 @@ Feature: AddPerson
   Scenario: Entering a new Person With Various Birthdate Requirements
     Given I am authenticated as "admin" using "changeme"
     And I am on "/PersonEditor.php"
+    And I wait for AJAX to finish
     Then I should see "Personal Info"
     And I fill in "Gender" with "1"
     And I fill in "First Name" with "Bob"

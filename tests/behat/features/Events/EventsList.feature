@@ -6,6 +6,7 @@ Feature: Events List
   Scenario: Listing Events
     Given I am authenticated as "admin" using "changeme"
     And I am on "/ListEvents.php"
+    And I wait for AJAX to finish
     Then I should see "Listing All Church Events"
     And I should see "Select Event Types To Display"
     And I should see "Display Events in Year"

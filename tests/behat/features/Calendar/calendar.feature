@@ -11,6 +11,7 @@ Feature: Calendar
   Scenario: Create a new calendar
     Given I am authenticated as "admin" using "changeme"
     And  I am on "/v2/calendar"
+    And I wait for AJAX to finish
     And I click the "#newCalendarButton" element
     And I wait for AJAX to finish
     Then I should see "New Calendar"
@@ -20,10 +21,11 @@ Feature: Calendar
     And I press "Save"
     And I wait for AJAX to finish
     Then I should see "Test Calendar"
-      
+
   Scenario: Create a new event;
     Given I am authenticated as "admin" using "changeme"
     And  I am on "/v2/calendar"
+    And I wait for AJAX to finish
     Then I click on "#calendar > div.fc-view-container > div > table > tbody > tr > td > div > div > div:nth-child(1) > div.fc-bg > table > tbody > tr > td.fc-day.fc-widget-content.fc-fri.fc-past"
     And I wait for AJAX to finish
     Then I should see "Save"

@@ -8,6 +8,7 @@ Feature: Person View
   Scenario: Add Person To Group
     Given I am authenticated as "admin" using "changeme"
     And I am on "/PersonView.php?PersonID=1"
+    And I wait for AJAX to finish
     And I follow "Assigned Groups"
     And I wait for AJAX to finish
     And I click the "#addGroup" element
