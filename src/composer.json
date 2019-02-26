@@ -47,7 +47,9 @@
         "nexmo/client": "@beta",
         "slim/http-cache": "^0.4.0",
         "azuyalabs/yasumi": "^1.8",
-        "defuse/php-encryption": "^2.2"
+        "defuse/php-encryption": "^2.2",
+        "botman/driver-slack": "^2.1",
+        "botman/botman": "^2.4"
     },
     "autoload": {
         "classmap": [
