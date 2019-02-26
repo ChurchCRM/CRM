@@ -23,6 +23,7 @@ $logger->info("Request on BotMan Listener");
 try {
     require __DIR__."/ReceivedLoggerMiddleware.php";
     require __DIR__."/SendingLoggerMiddleware.php";
+    require __DIR__."/ReceivedIntentClassificationMiddleware.php";
     DriverManager::loadDriver(\BotMan\Drivers\Slack\SlackDriver::class);
 
     function EventsToString() {
@@ -46,7 +47,7 @@ try {
     // Create BotMan instance
     $config = [
         'slack' => [
-            'token' => '<YOUR SLACK TOKEN HERE>'
+            'token' => 'xoxb-415875409555-560137378439-C2pgSF0zhD6KiYXJTwuAkcc3'
         ]
     ];
     $botman = BotManFactory::create($config);
@@ -58,24 +59,21 @@ try {
         $bot->replyInThread('Hello yourself.',[]);
     });
 
-    $botman->hears('I want ([0-9]+)', function ($bot, $number) {
-        $bot->replyInThread('You will get: '.$number,[]);
-    });
-
-    $botman->hears('(what time|when) (is).*', function (BotMan $bot) {
-        $bot->replyInThread("found events:\n" . EventsToString(),[]);
-    });
-
-    $botman->hears('(events|(on the)? calendar|(on the)? schedule)|(what are|what is|what(\')?s)|(this week|soon|upcoming)', function (BotMan $bot) {
-        $bot->replyInThread("these are upcoming:\n" . EventsToString(),[]);
-    });
-
-
     $botman->fallback(function($bot) {
-        $bot->replyInThread('Sorry, I did not understand these commands. Here is a list of commands I understand: ...',[]);
+        if ($bot->getMessage()->getExtras("MatchedIntent")) {
+            $intent = $bot->getMessage()->getExtras("MatchedIntent");
+            $bot->replyInThread('Matched Intent: ' . $intent->getLabel(). ".  Response: " .$intent->getResponse(),[]);
+        }
+        else {
+            $bot->replyInThread('Sorry, I did not understand these commands. Here is a list of commands I understand: ...',[]);
+        }
+        
     });
 
     $middleware = new ReceivedLoggerMiddleware();
+    $botman->middleware->received($middleware);
+
+    $middleware = new ReceivedIntentClassificationMiddleware();
     $botman->middleware->received($middleware);
 
 
