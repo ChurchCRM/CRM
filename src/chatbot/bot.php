@@ -26,24 +26,6 @@ try {
     require __DIR__."/ReceivedIntentClassificationMiddleware.php";
     DriverManager::loadDriver(\BotMan\Drivers\Slack\SlackDriver::class);
 
-    function EventsToString() {
-        $logger = LoggerUtils::getChatBotLogger();
-        $logger->info("looking for events");
-        /** @var ChurchCRM\EventQuery $events */
-        $events  = EventQuery::Create()-> orderByStart() -> find();
-
-        $strings  = [];
-        $i = 0;
-        foreach($events as $event)
-        {
-            /** @var ChurchCRM\Event $event */
-            $strings[$i] = "*" . $event->getTitle() . "*\n";
-            $strings[$i] .= "_" . $event->getStart("m/d/Y") . "_";
-            $i ++;
-        }
-        return implode("\n\n",$strings);
-    }
-
     // Create BotMan instance
     $config = [
         'slack' => [
@@ -59,15 +41,9 @@ try {
         $bot->replyInThread('Hello yourself.',[]);
     });
 
+
     $botman->fallback(function($bot) {
-        if ($bot->getMessage()->getExtras("MatchedIntent")) {
-            $intent = $bot->getMessage()->getExtras("MatchedIntent");
-            $bot->replyInThread('Matched Intent: ' . $intent->getLabel(). ".  Response: " .$intent->getResponse(),[]);
-        }
-        else {
-            $bot->replyInThread('Sorry, I did not understand these commands. Here is a list of commands I understand: ...',[]);
-        }
-        
+        $bot->replyInThread('Sorry, I did not understand these commands. Here is a list of commands I understand: ...',[]);
     });
 
     $middleware = new ReceivedLoggerMiddleware();
@@ -75,7 +51,10 @@ try {
 
     $middleware = new ReceivedIntentClassificationMiddleware();
     $botman->middleware->received($middleware);
-
+    foreach ($middleware->getIntents() as $intent) {
+        LoggerUtils::getChatBotLogger()->info("Adding hears middleware for: " . $intent->getLabel());
+        $botman->hears('',function (BotMan $bot) {})->middleware($intent);
+    }
 
     $smiddleware = new SendingLoggerMiddleware();
     $botman->middleware->sending($smiddleware);

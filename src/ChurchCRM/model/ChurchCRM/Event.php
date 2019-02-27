@@ -27,16 +27,24 @@ class Event extends BaseEvent
   
   public function toArray($keyType = TableMap::TYPE_PHPNAME, $includeLazyLoadColumns = true, $alreadyDumpedObjects = array(), $includeForeignObjects = false)
   {
-    
     $array = parent::toArray($keyType, $includeLazyLoadColumns, $alreadyDumpedObjects, $includeForeignObjects);
-    $array['PinnedCalendars'] = array_map('intval',Base\CalendarEventQuery::create() 
-            ->filterByEventId($this->getId())
-            ->select(Map\CalendarEventTableMap::COL_CALENDAR_ID)
-            ->find()->toArray());
+    $array['PinnedCalendars'] = $this->getPinnedCalendars();
     return $array;
     
   }
-  
+
+  public function getPinnedCalendars() {
+    return  array_map('intval',Base\CalendarEventQuery::create() 
+      ->filterByEventId($this->getId())
+      ->select(Map\CalendarEventTableMap::COL_CALENDAR_ID)
+      ->find()->toArray());
+  }
+
+  public function getPinnedCalendarNames() {
+      $PinnedCalendars = CalendarQuery::Create() ->filterById($this->getPinnedCalendars()) -> Select(Map\CalendarTableMap::COL_NAME) -> find();
+      return $PinnedCalendars->toArray();
+  }
+
   public function isEditable()
   {
     return $this->editable;
