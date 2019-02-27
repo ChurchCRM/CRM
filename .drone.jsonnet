@@ -7,40 +7,21 @@ local CommonEnv = {
   "PHP_MODULES_DISABLE": "xdebug",
 };
 local CommonPhpImg(ver) = "devilbox/php-fpm:"+ver+"-work";
-local StepGitterPass(php_string) =
+local StepGitter(php_string) =
 {
-  name: "notify_pass",
+  name: "notify",
   image: "plugins/webhook",
   settings: {
     urls: {
-      from_secret: "gitter_webhok",
+      from_secret: "gitter_travis_webhok",
     },
-    template: {
-      "message": "Drone [{{ repo.owner }}/{{ repo.name }}](https://github.com/{{ repo.owner }}/{{ repo.name }}/commit/{{ build.commit }}) ({{ build.branch }}) Test " + php_string + " **{{ build.status }}** [({{ build.number }})]({{ build.link }}) by {{ build.author }}",
-      "icon": "smile",
-    }
+    debug: true,
+    content_type: "application/x-www-form-urlencoded",
+    template: "{{#success build.status}}icon=smile{{else}}icon=frown{{/success}}&message=Drone [{{ repo.owner }}/{{ repo.name }}](https://github.com/{{ repo.owner }}/{{ repo.name }}/commit/{{ build.commit }}) ({{ build.branch }}) Test " + php_string + " **{{ build.status }}** [({{ build.number }})]({{ build.link }}) by {{ build.author }}",
   },
   when: {
     status: [
       "success",
-    ],
-  },
-};
-local StepGitterFail(php_string) =
-{
-  name: "notify_fail",
-  image: "plugins/webhook",
-  settings: {
-    urls: {
-      from_secret: "gitter_webhok",
-    },
-    template: {
-      "message": "Drone [{{ repo.owner }}/{{ repo.name }}](https://github.com/{{ repo.owner }}/{{ repo.name }}/commit/{{ build.commit }}) ({{ build.branch }}) Test " + php_string + " **{{ build.status }}** [({{ build.number }})]({{ build.link }}) by {{ build.author }}",
-      "icon": "frown",
-    }
-  },
-  when: {
-    status: [
       "failure",
     ],
   },
@@ -138,8 +119,7 @@ local PipeMain(ApacheTestVer, MeriadbTestVer, PhpTestVer) =
   steps: [
     StepBuild(PhpTestVer),
     StepTest(PhpTestVer),
-    StepGitterPass("PHP:"+PhpTestVer),
-    StepGitterFail("PHP:"+PhpTestVer),
+    StepGitter("PHP:"+PhpTestVer),
   ],
   services: [
     ServiceDb(MeriadbTestVer),
