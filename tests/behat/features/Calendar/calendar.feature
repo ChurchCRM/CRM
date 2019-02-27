@@ -11,7 +11,6 @@ Feature: Calendar
   Scenario: Create a new calendar
     Given I am authenticated as "admin" using "changeme"
     And  I am on "/v2/calendar"
-    And I wait for AJAX to finish
     And I click the "#newCalendarButton" element
     And I wait for AJAX to finish
     Then I should see "New Calendar"

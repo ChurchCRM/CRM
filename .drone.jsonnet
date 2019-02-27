@@ -1,14 +1,32 @@
 local ApacheTestVer = "2.4";
 local MeriadbTestVer = "10.3";
-local PhpTestVers = ["7.0","7.1","7.2","7.3"];
+local PhpTestVers = ["7.0", "7.1", "7.2", "7.3"];
 
+local CommonEnv = {
+  "FORWARD_PORTS_TO_LOCALHOST": "3306:mysql:3306, 80:crm:80",
+  "PHP_MODULES_DISABLE": "xdebug",
+};
+local CommonPhpImg(ver) = "devilbox/php-fpm:"+ver+"-work";
+local StepGitter =
+{
+  name: "notify",
+  image: "plugins/gitter",
+  settings: {
+    webhook: {
+      "from_secret": "gitter_webhok",
+    },
+  },
+  when: {
+    status: [
+      "success",
+      "failure",
+    ],
+  },
+};
 local StepBuild(php_ver) = {
   name: "build",
-  image: "devilbox/php-fpm:"+php_ver+"-work",
-  environment: {
-    "FORWARD_PORTS_TO_LOCALHOST": "3306:mysql:3306, 80:crm:80",
-    "PHP_MODULES_DISABLE": "xdebug",
-  },
+  image: CommonPhpImg(php_ver),
+  environment: CommonEnv,
   commands: [
     "export DB=mysql",
     "php --version",
@@ -30,11 +48,8 @@ local StepBuild(php_ver) = {
 };
 local StepTest(php_ver) = {
   name: "Test-" + php_ver,
-  image: "devilbox/php-fpm:" + php_ver + "-work",
-  environment: {
-      "FORWARD_PORTS_TO_LOCALHOST": "3306:mysql:3306, 80:crm:80",
-      "PHP_MODULES_DISABLE": "xdebug",
-    },
+  image: CommonPhpImg(php_ver),
+  environment: CommonEnv,
   commands: [
       "cp ./drone-ci/tests-run.sh ./scripts/tests-run.sh",
       "cp ./drone-ci/bootstrap.php ./tests/bootstrap.php",
@@ -57,17 +72,14 @@ local ServiceDb(meriadb_ver) = {
 };
 local ServicePhp(php_ver) = {
   name: "php",
-  image: "devilbox/php-fpm:" + php_ver + "-work",
-  environment: {
-    "FORWARD_PORTS_TO_LOCALHOST": "3306:mysql:3306, 80:crm:80",
-    "PHP_MODULES_DISABLE": "xdebug",
-  },
+  image: CommonPhpImg(php_ver),
+  environment: CommonEnv,
   commands: [
     "mkdir /var/www/default",
     "ln -s /drone/src/src/ /var/www/default/htdocs",
     "/docker-entrypoint.sh",
   ],
-  working_dir: "/var/www/default"
+  working_dir: "/var/www/default",
 };
 local ServiceWeb(php_ver, apache_ver) = {
   name: "crm",
@@ -84,7 +96,7 @@ local ServiceWeb(php_ver, apache_ver) = {
     "ln -s /drone/src/src/ /var/www/default/htdocs",
     "/docker-entrypoint.sh",
   ],
-  working_dir: "/var/www/default"
+  working_dir: "/var/www/default",
 };
 local ServiceSelenium = {
   name: "selenium",
@@ -104,6 +116,7 @@ local PipeMain(ApacheTestVer, MeriadbTestVer, PhpTestVer) =
   steps: [
     StepBuild(PhpTestVer),
     StepTest(PhpTestVer),
+    StepGitter,
   ],
   services: [
     ServiceDb(MeriadbTestVer),
@@ -143,6 +156,4 @@ local PipeGitter =
 
 [
   PipeMain(ApacheTestVer, MeriadbTestVer, php) for php in PhpTestVers
-] + [
-  PipeGitter
 ]

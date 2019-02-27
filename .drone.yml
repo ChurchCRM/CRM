@@ -47,6 +47,16 @@ steps:
     FORWARD_PORTS_TO_LOCALHOST: "3306:mysql:3306, 80:crm:80"
     PHP_MODULES_DISABLE: xdebug
 
+- name: notify
+  image: plugins/gitter
+  settings:
+    webhook:
+      from_secret: gitter_webhok
+  when:
+    status:
+    - success
+    - failure
+
 services:
 - name: mysql
   image: cytopia/mariadb-10.3
@@ -132,6 +142,16 @@ steps:
   environment:
     FORWARD_PORTS_TO_LOCALHOST: "3306:mysql:3306, 80:crm:80"
     PHP_MODULES_DISABLE: xdebug
+
+- name: notify
+  image: plugins/gitter
+  settings:
+    webhook:
+      from_secret: gitter_webhok
+  when:
+    status:
+    - success
+    - failure
 
 services:
 - name: mysql
@@ -219,6 +239,16 @@ steps:
     FORWARD_PORTS_TO_LOCALHOST: "3306:mysql:3306, 80:crm:80"
     PHP_MODULES_DISABLE: xdebug
 
+- name: notify
+  image: plugins/gitter
+  settings:
+    webhook:
+      from_secret: gitter_webhok
+  when:
+    status:
+    - success
+    - failure
+
 services:
 - name: mysql
   image: cytopia/mariadb-10.3
@@ -305,6 +335,16 @@ steps:
     FORWARD_PORTS_TO_LOCALHOST: "3306:mysql:3306, 80:crm:80"
     PHP_MODULES_DISABLE: xdebug
 
+- name: notify
+  image: plugins/gitter
+  settings:
+    webhook:
+      from_secret: gitter_webhok
+  when:
+    status:
+    - success
+    - failure
+
 services:
 - name: mysql
   image: cytopia/mariadb-10.3
@@ -341,34 +381,5 @@ services:
   volumes:
   - name: shm
     path: /dev/shm:/dev/shm
-
----
-kind: pipeline
-name: Notify
-
-platform:
-  os: linux
-  arch: amd64
-
-clone:
-  disable: true
-
-steps:
-- name: notify
-  image: plugins/gitter
-  settings:
-    webhook:
-      from_secret: gitter_webhok
-
-trigger:
-  status:
-  - success
-  - failure
-
-depends_on:
-- PHP:7.0
-- PHP:7.1
-- PHP:7.2
-- PHP:7.3
 
 ...
