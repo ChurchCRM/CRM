@@ -13,9 +13,8 @@ local StepGitter(php_string) =
   image: "plugins/webhook",
   settings: {
     urls: {
-      from_secret: "gitter_travis_webhok",
+      from_secret: "gitter_webhok",
     },
-    debug: true,
     content_type: "application/x-www-form-urlencoded",
     template: "{{#success build.status}}icon=smile{{else}}icon=frown{{/success}}&message=Drone [{{ repo.owner }}/{{ repo.name }}](https://github.com/{{ repo.owner }}/{{ repo.name }}/commit/{{ build.commit }}) ({{ build.branch }}) Test " + php_string + " **{{ build.status }}** [({{ build.number }})]({{ build.link }}) by {{ build.author }}",
   },
