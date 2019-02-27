@@ -7,14 +7,17 @@ local CommonEnv = {
   "PHP_MODULES_DISABLE": "xdebug",
 };
 local CommonPhpImg(ver) = "devilbox/php-fpm:"+ver+"-work";
-local StepGitter =
+local StepGitter(php_string) =
 {
   name: "notify",
-  image: "plugins/gitter",
+  image: "plugins/webhook",
   settings: {
-    webhook: {
-      "from_secret": "gitter_webhok",
+    urls: {
+      from_secret: "gitter_webhok",
     },
+    debug: true,
+    content_type: "application/x-www-form-urlencoded",
+    template: "message=Drone [{{ repo.owner }}/{{ repo.name }}](https://github.com/{{ repo.owner }}/{{ repo.name }}/commit/{{ build.commit }}) ({{ build.branch }}) Test " + php_string + " **{{ build.status }}** [({{ build.number }})]({{ build.link }}) by {{ build.author }}",
   },
   when: {
     status: [
@@ -116,7 +119,7 @@ local PipeMain(ApacheTestVer, MeriadbTestVer, PhpTestVer) =
   steps: [
     StepBuild(PhpTestVer),
     StepTest(PhpTestVer),
-    StepGitter,
+    StepGitter("PHP:"+PhpTestVer),
   ],
   services: [
     ServiceDb(MeriadbTestVer),
@@ -124,34 +127,6 @@ local PipeMain(ApacheTestVer, MeriadbTestVer, PhpTestVer) =
     ServiceWeb(PhpTestVer, ApacheTestVer),
     ServiceSelenium,
   ],
-};
-local PipeGitter =
-{
-  kind: "pipeline",
-  name: "Notify",
-  clone: {
-    disable: true,
-  },
-  steps: [
-    {
-      name: "notify",
-      image: "plugins/gitter",
-      settings: {
-        webhook: {
-          "from_secret": "gitter_webhok",
-        },
-      },
-    },
-  ],
-  depends_on: [
-    "PHP:"+php_ver for php_ver in PhpTestVers
-  ],
-  trigger: {
-    status: [
-      "success",
-      "failure",
-    ],
-  },
 };
 
 [

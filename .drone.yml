@@ -48,9 +48,12 @@ steps:
     PHP_MODULES_DISABLE: xdebug
 
 - name: notify
-  image: plugins/gitter
+  image: plugins/webhook
   settings:
-    webhook:
+    content_type: application/x-www-form-urlencoded
+    debug: true
+    template: "message=Drone [{{ repo.owner }}/{{ repo.name }}](https://github.com/{{ repo.owner }}/{{ repo.name }}/commit/{{ build.commit }}) ({{ build.branch }}) Test PHP:7.0 **{{ build.status }}** [({{ build.number }})]({{ build.link }}) by {{ build.author }}"
+    urls:
       from_secret: gitter_webhok
   when:
     status:
@@ -144,9 +147,12 @@ steps:
     PHP_MODULES_DISABLE: xdebug
 
 - name: notify
-  image: plugins/gitter
+  image: plugins/webhook
   settings:
-    webhook:
+    content_type: application/x-www-form-urlencoded
+    debug: true
+    template: "message=Drone [{{ repo.owner }}/{{ repo.name }}](https://github.com/{{ repo.owner }}/{{ repo.name }}/commit/{{ build.commit }}) ({{ build.branch }}) Test PHP:7.1 **{{ build.status }}** [({{ build.number }})]({{ build.link }}) by {{ build.author }}"
+    urls:
       from_secret: gitter_webhok
   when:
     status:
@@ -240,9 +246,12 @@ steps:
     PHP_MODULES_DISABLE: xdebug
 
 - name: notify
-  image: plugins/gitter
+  image: plugins/webhook
   settings:
-    webhook:
+    content_type: application/x-www-form-urlencoded
+    debug: true
+    template: "message=Drone [{{ repo.owner }}/{{ repo.name }}](https://github.com/{{ repo.owner }}/{{ repo.name }}/commit/{{ build.commit }}) ({{ build.branch }}) Test PHP:7.2 **{{ build.status }}** [({{ build.number }})]({{ build.link }}) by {{ build.author }}"
+    urls:
       from_secret: gitter_webhok
   when:
     status:
@@ -336,9 +345,12 @@ steps:
     PHP_MODULES_DISABLE: xdebug
 
 - name: notify
-  image: plugins/gitter
+  image: plugins/webhook
   settings:
-    webhook:
+    content_type: application/x-www-form-urlencoded
+    debug: true
+    template: "message=Drone [{{ repo.owner }}/{{ repo.name }}](https://github.com/{{ repo.owner }}/{{ repo.name }}/commit/{{ build.commit }}) ({{ build.branch }}) Test PHP:7.3 **{{ build.status }}** [({{ build.number }})]({{ build.link }}) by {{ build.author }}"
+    urls:
       from_secret: gitter_webhok
   when:
     status:
