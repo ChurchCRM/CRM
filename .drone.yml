@@ -47,17 +47,28 @@ steps:
     FORWARD_PORTS_TO_LOCALHOST: "3306:mysql:3306, 80:crm:80"
     PHP_MODULES_DISABLE: xdebug
 
-- name: notify
+- name: notify_pass
   image: plugins/webhook
   settings:
-    content_type: application/x-www-form-urlencoded
-    debug: true
-    template: "message=Drone [{{ repo.owner }}/{{ repo.name }}](https://github.com/{{ repo.owner }}/{{ repo.name }}/commit/{{ build.commit }}) ({{ build.branch }}) Test PHP:7.0 **{{ build.status }}** [({{ build.number }})]({{ build.link }}) by {{ build.author }}"
+    template:
+      icon: smile
+      message: "Drone [{{ repo.owner }}/{{ repo.name }}](https://github.com/{{ repo.owner }}/{{ repo.name }}/commit/{{ build.commit }}) ({{ build.branch }}) Test PHP:7.0 **{{ build.status }}** [({{ build.number }})]({{ build.link }}) by {{ build.author }}"
     urls:
       from_secret: gitter_webhok
   when:
     status:
     - success
+
+- name: notify_fail
+  image: plugins/webhook
+  settings:
+    template:
+      icon: frown
+      message: "Drone [{{ repo.owner }}/{{ repo.name }}](https://github.com/{{ repo.owner }}/{{ repo.name }}/commit/{{ build.commit }}) ({{ build.branch }}) Test PHP:7.0 **{{ build.status }}** [({{ build.number }})]({{ build.link }}) by {{ build.author }}"
+    urls:
+      from_secret: gitter_webhok
+  when:
+    status:
     - failure
 
 services:
@@ -146,17 +157,28 @@ steps:
     FORWARD_PORTS_TO_LOCALHOST: "3306:mysql:3306, 80:crm:80"
     PHP_MODULES_DISABLE: xdebug
 
-- name: notify
+- name: notify_pass
   image: plugins/webhook
   settings:
-    content_type: application/x-www-form-urlencoded
-    debug: true
-    template: "message=Drone [{{ repo.owner }}/{{ repo.name }}](https://github.com/{{ repo.owner }}/{{ repo.name }}/commit/{{ build.commit }}) ({{ build.branch }}) Test PHP:7.1 **{{ build.status }}** [({{ build.number }})]({{ build.link }}) by {{ build.author }}"
+    template:
+      icon: smile
+      message: "Drone [{{ repo.owner }}/{{ repo.name }}](https://github.com/{{ repo.owner }}/{{ repo.name }}/commit/{{ build.commit }}) ({{ build.branch }}) Test PHP:7.1 **{{ build.status }}** [({{ build.number }})]({{ build.link }}) by {{ build.author }}"
     urls:
       from_secret: gitter_webhok
   when:
     status:
     - success
+
+- name: notify_fail
+  image: plugins/webhook
+  settings:
+    template:
+      icon: frown
+      message: "Drone [{{ repo.owner }}/{{ repo.name }}](https://github.com/{{ repo.owner }}/{{ repo.name }}/commit/{{ build.commit }}) ({{ build.branch }}) Test PHP:7.1 **{{ build.status }}** [({{ build.number }})]({{ build.link }}) by {{ build.author }}"
+    urls:
+      from_secret: gitter_webhok
+  when:
+    status:
     - failure
 
 services:
@@ -245,17 +267,28 @@ steps:
     FORWARD_PORTS_TO_LOCALHOST: "3306:mysql:3306, 80:crm:80"
     PHP_MODULES_DISABLE: xdebug
 
-- name: notify
+- name: notify_pass
   image: plugins/webhook
   settings:
-    content_type: application/x-www-form-urlencoded
-    debug: true
-    template: "message=Drone [{{ repo.owner }}/{{ repo.name }}](https://github.com/{{ repo.owner }}/{{ repo.name }}/commit/{{ build.commit }}) ({{ build.branch }}) Test PHP:7.2 **{{ build.status }}** [({{ build.number }})]({{ build.link }}) by {{ build.author }}"
+    template:
+      icon: smile
+      message: "Drone [{{ repo.owner }}/{{ repo.name }}](https://github.com/{{ repo.owner }}/{{ repo.name }}/commit/{{ build.commit }}) ({{ build.branch }}) Test PHP:7.2 **{{ build.status }}** [({{ build.number }})]({{ build.link }}) by {{ build.author }}"
     urls:
       from_secret: gitter_webhok
   when:
     status:
     - success
+
+- name: notify_fail
+  image: plugins/webhook
+  settings:
+    template:
+      icon: frown
+      message: "Drone [{{ repo.owner }}/{{ repo.name }}](https://github.com/{{ repo.owner }}/{{ repo.name }}/commit/{{ build.commit }}) ({{ build.branch }}) Test PHP:7.2 **{{ build.status }}** [({{ build.number }})]({{ build.link }}) by {{ build.author }}"
+    urls:
+      from_secret: gitter_webhok
+  when:
+    status:
     - failure
 
 services:
@@ -344,17 +377,28 @@ steps:
     FORWARD_PORTS_TO_LOCALHOST: "3306:mysql:3306, 80:crm:80"
     PHP_MODULES_DISABLE: xdebug
 
-- name: notify
+- name: notify_pass
   image: plugins/webhook
   settings:
-    content_type: application/x-www-form-urlencoded
-    debug: true
-    template: "message=Drone [{{ repo.owner }}/{{ repo.name }}](https://github.com/{{ repo.owner }}/{{ repo.name }}/commit/{{ build.commit }}) ({{ build.branch }}) Test PHP:7.3 **{{ build.status }}** [({{ build.number }})]({{ build.link }}) by {{ build.author }}"
+    template:
+      icon: smile
+      message: "Drone [{{ repo.owner }}/{{ repo.name }}](https://github.com/{{ repo.owner }}/{{ repo.name }}/commit/{{ build.commit }}) ({{ build.branch }}) Test PHP:7.3 **{{ build.status }}** [({{ build.number }})]({{ build.link }}) by {{ build.author }}"
     urls:
       from_secret: gitter_webhok
   when:
     status:
     - success
+
+- name: notify_fail
+  image: plugins/webhook
+  settings:
+    template:
+      icon: frown
+      message: "Drone [{{ repo.owner }}/{{ repo.name }}](https://github.com/{{ repo.owner }}/{{ repo.name }}/commit/{{ build.commit }}) ({{ build.branch }}) Test PHP:7.3 **{{ build.status }}** [({{ build.number }})]({{ build.link }}) by {{ build.author }}"
+    urls:
+      from_secret: gitter_webhok
+  when:
+    status:
     - failure
 
 services:

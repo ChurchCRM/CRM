@@ -7,21 +7,40 @@ local CommonEnv = {
   "PHP_MODULES_DISABLE": "xdebug",
 };
 local CommonPhpImg(ver) = "devilbox/php-fpm:"+ver+"-work";
-local StepGitter(php_string) =
+local StepGitterPass(php_string) =
 {
-  name: "notify",
+  name: "notify_pass",
   image: "plugins/webhook",
   settings: {
     urls: {
       from_secret: "gitter_webhok",
     },
-    debug: true,
-    content_type: "application/x-www-form-urlencoded",
-    template: "message=Drone [{{ repo.owner }}/{{ repo.name }}](https://github.com/{{ repo.owner }}/{{ repo.name }}/commit/{{ build.commit }}) ({{ build.branch }}) Test " + php_string + " **{{ build.status }}** [({{ build.number }})]({{ build.link }}) by {{ build.author }}",
+    template: {
+      "message": "Drone [{{ repo.owner }}/{{ repo.name }}](https://github.com/{{ repo.owner }}/{{ repo.name }}/commit/{{ build.commit }}) ({{ build.branch }}) Test " + php_string + " **{{ build.status }}** [({{ build.number }})]({{ build.link }}) by {{ build.author }}",
+      "icon": "smile",
+    }
   },
   when: {
     status: [
       "success",
+    ],
+  },
+};
+local StepGitterFail(php_string) =
+{
+  name: "notify_fail",
+  image: "plugins/webhook",
+  settings: {
+    urls: {
+      from_secret: "gitter_webhok",
+    },
+    template: {
+      "message": "Drone [{{ repo.owner }}/{{ repo.name }}](https://github.com/{{ repo.owner }}/{{ repo.name }}/commit/{{ build.commit }}) ({{ build.branch }}) Test " + php_string + " **{{ build.status }}** [({{ build.number }})]({{ build.link }}) by {{ build.author }}",
+      "icon": "frown",
+    }
+  },
+  when: {
+    status: [
       "failure",
     ],
   },
@@ -119,7 +138,8 @@ local PipeMain(ApacheTestVer, MeriadbTestVer, PhpTestVer) =
   steps: [
     StepBuild(PhpTestVer),
     StepTest(PhpTestVer),
-    StepGitter("PHP:"+PhpTestVer),
+    StepGitterPass("PHP:"+PhpTestVer),
+    StepGitterFail("PHP:"+PhpTestVer),
   ],
   services: [
     ServiceDb(MeriadbTestVer),
