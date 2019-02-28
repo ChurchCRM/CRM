@@ -1,0 +1,17 @@
+default:
+  suites:
+        default:
+            contexts:
+                - nwcontext:form
+                - nwcontext:formstone
+                - nwcontext:select2
+                - FeatureContext
+  extensions:
+    Novaway\CommonContexts\Extension: ~
+    Behat\MinkExtension:
+      base_url: http://crm
+      browser_name: chrome
+      selenium2:
+        capabilities:
+          browser: chrome
+          marionette: true
