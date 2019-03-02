@@ -30,6 +30,7 @@
 
 @import 'external/fullcalendar/fullcalendar.min.css';
 @import 'external/fullcalendar/fullcalendar.print.css' print;
+@import 'external/react-datepicker/react-datepicker.min.css';
 
 // Import ChurchCRM custom styles
 
@@ -46,3 +47,8 @@
 @import 'scss/cartDropdown';
 @import 'scss/strike';
 @import 'scss/calendars';
+@import 'scss/react-datepicker';
+
+html, body {
+  font-size: 14px;
+}
