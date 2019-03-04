@@ -16,9 +16,11 @@ use Phpml\Classification\SVC;
 use Phpml\SupportVectorMachine\Kernel;
 use \Phpml\Math\Set;
 
-require_once __DIR__."/Intents/ChatbotIntent.php";
-require_once __DIR__."/Intents/EventsQuestionIntent.php";
-require_once __DIR__."/Intents/DemographicQuestionIntent.php";
+require_once __DIR__."/ChatbotIntent.php";
+foreach (glob("Intents/*.php") as $filename)
+{
+    include $filename;
+}
 
 class ReceivedIntentClassificationMiddleware implements Received
 {
@@ -41,24 +43,31 @@ class ReceivedIntentClassificationMiddleware implements Received
          100,            // $cacheSize
          true,           // $shrinking
          true            // $probabilityEstimates, set to true
-         );
+        );
  
          // load our intent classes, and train the model accordingly.
-         $this->intents = [new EventsQuestionIntent(), new DemographicQuestionIntent()];
-         $this->intentsReference =[];
-         foreach ($this->intents as $intent)
-         {             
-            $this->intentsReference[$intent->getLabel()] = $intent;
-             LoggerUtils::getChatBotLogger()->info("Training model for intent: " . $intent->getLabel());
-             $samples = $intent->getSamples();
-             $this->vectorizer->fit($samples);
-             LoggerUtils::getChatBotLogger()->info("Vocabulary: " . json_encode($this->vectorizer->getVocabulary()));
-             $this->vectorizer->transform($samples);
-             $labels = array_fill(0,count($samples ),$intent->getLabel());
-             LoggerUtils::getChatBotLogger()->info("Samples: " . json_encode($samples).".  Labels: " . json_encode($labels));
-             $this->svcClassifier->train($samples, $labels);
-         }
-         LoggerUtils::getChatBotLogger()->info("All models trained");
+        $this->intents  = array();
+        foreach(get_declared_classes() as $class){
+            if(is_subclass_of($class, 'ChatbotIntent')) {
+                $this->intents[] = new $class();
+            }
+        }
+        //$this->intents = [new EventsQuestionIntent(), new DemographicQuestionIntent()];
+        $this->intentsReference =[];
+        foreach ($this->intents as $intent)
+        {             
+        $this->intentsReference[$intent->getLabel()] = $intent;
+            LoggerUtils::getChatBotLogger()->info("Training model for intent: " . $intent->getLabel());
+            $samples = $intent->getSamples();
+            $this->vectorizer->fit($samples);
+            //LoggerUtils::getChatBotLogger()->info("Vocabulary: " . json_encode($this->vectorizer->getVocabulary()));
+            $this->vectorizer->transform($samples);
+            $labels = array_fill(0,count($samples ),$intent->getLabel());
+            //LoggerUtils::getChatBotLogger()->info("Samples: " . json_encode($samples).".  Labels: " . json_encode($labels));
+            $this->svcClassifier->train($samples, $labels);
+        }
+        LoggerUtils::getChatBotLogger()->info("Vocabulary: " . json_encode($this->vectorizer->getVocabulary()));
+        LoggerUtils::getChatBotLogger()->info("All models trained");
          
     }
     /**
@@ -94,6 +103,9 @@ class ReceivedIntentClassificationMiddleware implements Received
             LoggerUtils::getChatBotLogger()->info("Question tokenized");
 
             $message->addExtras("MatchedIntent",$this->intentsReference[$prediction[0]]);
+        }
+        else {
+            LoggerUtils::getChatBotLogger()->info("No vocabulary words matched in incoming message.  Not attempting prediction");
         }
       
         return $next($message);

@@ -5,15 +5,16 @@ use BotMan\BotMan\BotMan;
 use ChurchCRM\EventQuery;
 
 
-Class EventsQuestionIntent implements ChatbotIntent{
+Class EventsQuestionIntent extends ChatbotIntent{
     public function getSamples() {
-        return [
+        return array_merge([
             'time',
             'when',
-            'upcoming events',
+            'events',
+            'upcoming',
             'calendar',
-            "happening this week"
-        ];
+            "happening"
+        ],$this->getPastTenseSamples(),$this->getPresentTenseSamples());
         
     }
     public function getLabel() { 
@@ -24,18 +25,31 @@ Class EventsQuestionIntent implements ChatbotIntent{
         return "Eventually";
     }
 
-    public function matching(IncomingMessage $message, $pattern, $regexMatched) {
-        $logger = LoggerUtils::getChatBotLogger();
-        $logger->info(print_r($message->getExtras(),true));
-        $matched = $message->getExtras('MatchedIntent') instanceof self;
-        $logger->info("This is" . ($matched ? "":" not") . " " . $this->getLabel());
-        return $matched;
+    protected function getPresentTenseSamples() {
+        return [ 'this', 
+        'today',
+        'tomorrow',
+        'future',
+        'next'];
+    }
+
+
+    protected function getPastTenseSamples() {
+        return [ 'past',
+        'yesterday',
+        'earlier',
+        'last week'];
+        
+        /* $earlier = new \DateTime();
+            $di = new DateInterval('P7D');
+            $di->invert = 1;
+            $earlier->add($di);.*/
     }
 
     public function heard(IncomingMessage $message, $next, BotMan $bot) {
         // add records to the log
         $logger = LoggerUtils::getChatBotLogger();
-        $logger->info("Replying with an event");
+        $logger->info("Replying with events");
         $bot->replyInThread($this->EventsToString(),[]);
         return $next($message);
     }
@@ -55,8 +69,9 @@ Class EventsQuestionIntent implements ChatbotIntent{
                 ->filterByEnd(array("max" => $later))
                 ->find();
 
-            $strings  = ["Found " . count($events) . " events:"];
-            $i = 0;
+            $strings = [];
+            $strings[0]  = "Found " . count($events) . " events between " . $now->format('Y-m-d H:i:s') . " and " . $later->format('Y-m-d H:i:s');
+            $i = 1;
             foreach($events as $event)
             {
                 /** @var ChurchCRM\Event $event */
@@ -73,5 +88,4 @@ Class EventsQuestionIntent implements ChatbotIntent{
             return "Error looking up events";
         }
     }
-
 }
