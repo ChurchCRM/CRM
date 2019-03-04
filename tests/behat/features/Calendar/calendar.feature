@@ -31,8 +31,8 @@ Feature: Calendar
     And I fill in "Title" with "Selenium Test Event"
     And I update react-select with "EventType" with "Church Service"
     And I fill in "Desc" with "Test Description"
-    And I fill in "Start" with "03/05/2019, 9:00 PM"
-    And I fill in "End" with "03/05/2019, 10:00 PM"
+    And I fill in date "Start" with today
+    And I fill in date "End" with today
     And I update react-select with "PinnedCalendars" with "Public Calendar"
     And I fill in "Text" with "Test Text"
     Then I press "Save"

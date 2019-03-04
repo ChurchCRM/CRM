@@ -88,5 +88,20 @@ class FeatureContext extends MinkContext
         $driver->click($FieldXPath."//parent::div//parent::div//parent::div//parent::div//parent::div");
         $driver->setValue($FieldXPath,$value);
     }
+
+
+    /**
+     * Fills in form field with today's date
+     * Example: When I fill in date "Start" with today
+     *
+     * @When /^(?:|I )fill in date "(?P<field>(?:[^"]|\\")*)" with today$/
+     */
+    public function fillTodayDateField($field)
+    {
+        $field = $this->fixStepArgument($field);
+        $value = date("Y/m/d");
+        $this->getSession()->getPage()->fillField($field, $value);
+    }
+
 }
 
