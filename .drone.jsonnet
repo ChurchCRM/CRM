@@ -1,30 +1,12 @@
 local ApacheTestVer = "2.4";
 local MeriadbTestVer = "10.3";
-local PhpTestVers = ["7.0", "7.1", "7.2", "7.3"];
+local PhpTestVers = ["7.1", "7.2", "7.3"];
 
 local CommonEnv = {
   "FORWARD_PORTS_TO_LOCALHOST": "3306:mysql:3306, 80:crm:80",
   "PHP_MODULES_DISABLE": "xdebug",
 };
 local CommonPhpImg(ver) = "devilbox/php-fpm:"+ver+"-work";
-local StepGitter(php_string) =
-{
-  name: "notify",
-  image: "plugins/webhook",
-  settings: {
-    urls: {
-      from_secret: "gitter_webhok",
-    },
-    content_type: "application/x-www-form-urlencoded",
-    template: "{{#success build.status}}icon=smile{{else}}icon=frown{{/success}}&message=Drone [{{ repo.owner }}/{{ repo.name }}](https://github.com/{{ repo.owner }}/{{ repo.name }}/commit/{{ build.commit }}) ({{ build.branch }}) Test " + php_string + " **{{ build.status }}** [({{ build.number }})]({{ build.link }}) by {{ build.author }}",
-  },
-  when: {
-    status: [
-      "success",
-      "failure",
-    ],
-  },
-};
 local StepBuild(php_ver) = {
   name: "build",
   image: CommonPhpImg(php_ver),
@@ -110,7 +92,46 @@ local ServiceSelenium = {
     }
   ],
 };
-
+local PipeNotify =
+{
+  local pipe_obj = self,
+  kind: "pipeline",
+  name: "Notify",
+  clone: {
+    disable: true,
+  },
+  steps: [
+    {
+      name: "notify",
+      image: "chrishsieh/drone_webhook",
+      settings: {
+        urls: {
+          from_secret: "gitter_webhok",
+        },
+        token: {
+          from_secret: "drone_api",
+        },
+        pipeline_name: pipe_obj.name,
+        on_success: "change",
+        on_failure: "always",
+//        debug: true,
+        content_type: "application/x-www-form-urlencoded",
+        template: |||
+          {{#success build.status}}icon=smile{{else}}icon=frown{{/success}}&message=Drone [{{repo.owner}}/{{repo.name}}](https://github.com/{{repo.owner}}/{{repo.name}}/commit/{{build.commit}}) ({{build.branch}}) [**{{build.status}}**]({{build.link}})({{build.number}}) {{#each job.status}}{{#success this.status}}![Status](https://img.shields.io/badge/{{this.name}}-O-success.svg){{else}}![Status](https://img.shields.io/badge/{{this.name}}-X-critical.svg){{/success}}{{/each}} by {{build.author}}
+        |||
+      },
+    },
+  ],
+  trigger: {
+    status: [
+      "success",
+      "failure",
+    ],
+  },
+  depends_on: [
+    "PHP:"+php_ver for php_ver in PhpTestVers
+  ],
+};
 local PipeMain(ApacheTestVer, MeriadbTestVer, PhpTestVer) =
 {
   kind: "pipeline",
@@ -118,7 +139,6 @@ local PipeMain(ApacheTestVer, MeriadbTestVer, PhpTestVer) =
   steps: [
     StepBuild(PhpTestVer),
     StepTest(PhpTestVer),
-    StepGitter("PHP:"+PhpTestVer),
   ],
   services: [
     ServiceDb(MeriadbTestVer),
@@ -130,4 +150,6 @@ local PipeMain(ApacheTestVer, MeriadbTestVer, PhpTestVer) =
 
 [
   PipeMain(ApacheTestVer, MeriadbTestVer, php) for php in PhpTestVers
+] + [
+  PipeNotify
 ]
