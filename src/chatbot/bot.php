@@ -38,12 +38,12 @@ try {
     // Give the bot something to listen for.
     $botman->hears('hello', function (BotMan $bot) {
         // add records to the log
-        $bot->replyInThread('Hello yourself.',[]);
+        $bot->replyInThread('Hello yourself.', []);
     });
 
 
-    $botman->fallback(function($bot) {
-        $bot->replyInThread('Sorry, I did not understand these commands. Here is a list of commands I understand: ...',[]);
+    $botman->fallback(function ($bot) {
+        $bot->replyInThread('Sorry, I did not understand these commands. Here is a list of commands I understand: ...', []);
     });
 
     $middleware = new ReceivedLoggerMiddleware();
@@ -53,7 +53,8 @@ try {
     $botman->middleware->received($middleware);
     foreach ($middleware->getIntents() as $intent) {
         LoggerUtils::getChatBotLogger()->info("Adding hears middleware for: " . $intent->getLabel());
-        $botman->hears('',function (BotMan $bot) {})->middleware($intent);
+        $botman->hears('', function (BotMan $bot) {
+        })->middleware($intent);
     }
 
     $smiddleware = new SendingLoggerMiddleware();
@@ -62,7 +63,6 @@ try {
 
     // Start listening
     $botman->listen();
-} catch (Exception $e) { 
+} catch (Exception $e) {
     $logger->info("error handling request: ".$e);
 }
-
