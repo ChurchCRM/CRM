@@ -25,7 +25,7 @@ Feature: Calendar
     Given I am authenticated as "admin" using "changeme"
     And  I am on "/v2/calendar"
     And I wait for AJAX to finish
-    Then I click on "#calendar > div.fc-view-container > div > table > tbody > tr > td > div > div > div:nth-child(1) > div.fc-bg > table > tbody > tr > td.fc-day.fc-widget-content.fc-fri.fc-past"
+    Then I click on "#calendar > div.fc-view-container > div > table > tbody > tr > td > div > div > div:nth-child(3) > div.fc-content-skeleton > table > tbody > tr:nth-child(1) > td:nth-child(3)"
     And I wait for AJAX to finish
     Then I should see "Save"
     And I fill in "Title" with "Selenium Test Event"
