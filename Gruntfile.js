@@ -283,8 +283,8 @@ module.exports = function (grunt) {
             },
             jqueryuicss: {
                 src: [
-                    'https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css',
-                    "https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+                    'https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.css',
+                    "https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"
                 ],
                 dest: 'src/skin/external/jquery-ui/'
             }
