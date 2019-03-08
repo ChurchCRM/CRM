@@ -1,6 +1,7 @@
 local ApacheTestVer = "2.4";
 local MeriadbTestVer = "10.3";
 local PhpTestVers = ["7.1", "7.2", "7.3"];
+local PhpPackageVer = "7.3";
 
 local CommonEnv = {
   "FORWARD_PORTS_TO_LOCALHOST": "3306:mysql:3306, 80:crm:80",
@@ -46,6 +47,90 @@ local StepTest(php_ver) = {
       "cp ./drone-ci/behat.yml ./tests/behat/behat.yml",
       "npm run test",
     ],
+};
+local StepPipeWait = {
+  name: "Pipeline Wait",
+  image: "chrishsieh/drone_pipeline_wait",
+  settings: {
+    wait_pipelines: std.setDiff(["PHP:"+php_ver for php_ver in PhpTestVers], ["PHP:"+ PhpPackageVer]),
+    token: {
+      from_secret: "drone_api",
+    },
+  },
+  when: {
+    branch: [
+      "master",
+      "develop",
+    ],
+  },
+};
+local StepPackage(php_ver) = {
+  name: "Package",
+  image: CommonPhpImg(php_ver),
+  environment: {
+    "demoKey": {
+      from_secret: "demokey",
+    },
+  },
+  commands: [
+    "chown -R www-data:www-data /drone/src/src",
+    "npm run package",
+    "npm run demosite",
+  ],
+  when: {
+    branch: [
+      "master",
+      "develop",
+    ],
+  },
+};
+local StepChangelog(php_ver) = {
+  name: "Changelog",
+  image: CommonPhpImg(php_ver),
+  environment: {
+    "GREN_GITHUB_TOKEN": {
+      from_secret: "github_api",
+    },
+  },
+  commands: [
+    "sed -i 's/ --token=<%= buildConfig.GitHub.token %>//g' ./Gruntfile.js",
+    "npm run changelog-gen",
+  ],
+  when: {
+    branch: [
+      "master",
+    ],
+    event: [
+      "release",
+      "tag",
+    ],
+  },
+};
+local StepRelease(php_ver) = {
+  name: "Publish",
+  image: "plugins/github-release",
+  settings: {
+    "api_key": {
+      from_secret: "github_api",
+    },
+    files: [
+      "churchcrm/*",
+      "target/ChurchCRM*",
+    ],
+    checksum: [
+      "sha1",
+    ],
+    note: "CHANGELOG.md",
+  },
+  when: {
+    branch: [
+      "master",
+    ],
+    event: [
+      "release",
+      "tag",
+    ],
+  },
 };
 local ServiceDb(meriadb_ver) = {
   name: "mysql",
@@ -117,7 +202,7 @@ local PipeNotify =
 //        debug: true,
         content_type: "application/x-www-form-urlencoded",
         template: |||
-          {{#success build.status}}icon=smile{{else}}icon=frown{{/success}}&message=Drone [{{repo.owner}}/{{repo.name}}](https://github.com/{{repo.owner}}/{{repo.name}}/commit/{{build.commit}}) ({{build.branch}}) [**{{build.status}}**]({{build.link}})({{build.number}}) {{#each job.status}}{{#success this.status}}![Status](https://img.shields.io/badge/{{this.name}}-O-success.svg){{else}}![Status](https://img.shields.io/badge/{{this.name}}-X-critical.svg){{/success}}{{/each}} by {{build.author}}
+          {{#success build.status}}icon=smile{{else}}icon=frown{{/success}}&message=Drone [{{repo.owner}}/{{repo.name}}](https://github.com/{{repo.owner}}/{{repo.name}}/commit/{{build.commit}}) ({{build.branch}}) [**{{build.status}}**]({{build.link}})({{build.number}})\n{{#each job.status}}{{#success this.status}}![Status](https://img.shields.io/badge/{{this.name}}-O-success.svg){{else}}![Status](https://img.shields.io/badge/{{this.name}}-X-critical.svg){{/success}}{{/each}} by {{build.author}}
         |||
       },
     },
@@ -136,10 +221,20 @@ local PipeMain(ApacheTestVer, MeriadbTestVer, PhpTestVer) =
 {
   kind: "pipeline",
   name: "PHP:"+PhpTestVer,
+  clone: {
+    depth: 1,
+  },
   steps: [
     StepBuild(PhpTestVer),
     StepTest(PhpTestVer),
-  ],
+  ] + (
+    if std.count([PhpPackageVer], PhpTestVer) == 0 then [] else [
+      StepPipeWait,
+      StepPackage(PhpTestVer),
+      StepChangelog(PhpTestVer),
+      StepRelease(PhpTestVer),
+    ]
+  ),
   services: [
     ServiceDb(MeriadbTestVer),
     ServicePhp(PhpTestVer),

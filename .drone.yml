@@ -6,6 +6,9 @@ platform:
   os: linux
   arch: amd64
 
+clone:
+  depth: 1
+
 steps:
 - name: build
   image: devilbox/php-fpm:7.1-work
@@ -91,6 +94,9 @@ name: PHP:7.2
 platform:
   os: linux
   arch: amd64
+
+clone:
+  depth: 1
 
 steps:
 - name: build
@@ -178,6 +184,9 @@ platform:
   os: linux
   arch: amd64
 
+clone:
+  depth: 1
+
 steps:
 - name: build
   image: devilbox/php-fpm:7.3-work
@@ -218,6 +227,66 @@ steps:
   environment:
     FORWARD_PORTS_TO_LOCALHOST: "3306:mysql:3306, 80:crm:80"
     PHP_MODULES_DISABLE: xdebug
+
+- name: Pipeline Wait
+  image: chrishsieh/drone_pipeline_wait
+  settings:
+    token:
+      from_secret: drone_api
+    wait_pipelines:
+    - PHP:7.1
+    - PHP:7.2
+  when:
+    branch:
+    - master
+    - develop
+
+- name: Package
+  image: devilbox/php-fpm:7.3-work
+  commands:
+  - chown -R www-data:www-data /drone/src/src
+  - npm run package
+  - npm run demosite
+  environment:
+    demoKey:
+      from_secret: demokey
+  when:
+    branch:
+    - master
+    - develop
+
+- name: Changelog
+  image: devilbox/php-fpm:7.3-work
+  commands:
+  - "sed -i 's/ --token=<%= buildConfig.GitHub.token %>//g' ./Gruntfile.js"
+  - npm run changelog-gen
+  environment:
+    GREN_GITHUB_TOKEN:
+      from_secret: github_api
+  when:
+    branch:
+    - master
+    event:
+    - release
+    - tag
+
+- name: Publish
+  image: plugins/github-release
+  settings:
+    api_key:
+      from_secret: github_api
+    checksum:
+    - sha1
+    files:
+    - "churchcrm/*"
+    - "target/ChurchCRM*"
+    note: CHANGELOG.md
+  when:
+    branch:
+    - master
+    event:
+    - release
+    - tag
 
 services:
 - name: mysql
@@ -275,7 +344,7 @@ steps:
     on_failure: always
     on_success: change
     pipeline_name: Notify
-    template: "{{#success build.status}}icon=smile{{else}}icon=frown{{/success}}&message=Drone [{{repo.owner}}/{{repo.name}}](https://github.com/{{repo.owner}}/{{repo.name}}/commit/{{build.commit}}) ({{build.branch}}) [**{{build.status}}**]({{build.link}})({{build.number}}) {{#each job.status}}{{#success this.status}}![Status](https://img.shields.io/badge/{{this.name}}-O-success.svg){{else}}![Status](https://img.shields.io/badge/{{this.name}}-X-critical.svg){{/success}}{{/each}} by {{build.author}}\n"
+    template: "{{#success build.status}}icon=smile{{else}}icon=frown{{/success}}&message=Drone [{{repo.owner}}/{{repo.name}}](https://github.com/{{repo.owner}}/{{repo.name}}/commit/{{build.commit}}) ({{build.branch}}) [**{{build.status}}**]({{build.link}})({{build.number}})\\n{{#each job.status}}{{#success this.status}}![Status](https://img.shields.io/badge/{{this.name}}-O-success.svg){{else}}![Status](https://img.shields.io/badge/{{this.name}}-X-critical.svg){{/success}}{{/each}} by {{build.author}}\n"
     token:
       from_secret: drone_api
     urls:
