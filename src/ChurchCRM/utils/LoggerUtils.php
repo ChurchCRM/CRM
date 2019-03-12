@@ -12,7 +12,6 @@ class LoggerUtils
     private static $appLogger;
     private static $appLogHandler;
     private static $cspLogger; 
-    private static $chatbotLogger;
     public static function getLogLevel()
     {
         return intval(SystemConfig::getValue("sLogLevel"));
@@ -61,11 +60,7 @@ class LoggerUtils
 
     public static function getChatBotLogger()
     {
-      if (is_null(self::$cspLogger)){
-        self::$chatbotLogger = new Logger('chatbot');
-        self::$chatbotLogger->pushHandler(new StreamHandler(self::buildLogFilePath("chatbot"), self::getLogLevel()));
-      }
-      return self::$chatbotLogger;
+      return self::getAppLogger();
     }
 
 }

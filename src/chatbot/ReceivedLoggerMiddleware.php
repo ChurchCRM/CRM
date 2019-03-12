@@ -22,7 +22,7 @@ class ReceivedLoggerMiddleware implements Received
      */
     public function received(IncomingMessage $message, $next, BotMan $bot)
     {
-        LoggerUtils::getChatBotLogger()->info("Incoming message: " . $message->getText());
+        LoggerUtils::getChatBotLogger()->debug("Incoming message: " . $message->getText());
         return $next($message);
     }
 }

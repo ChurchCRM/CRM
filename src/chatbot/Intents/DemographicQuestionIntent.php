@@ -25,7 +25,7 @@ Class DemographicQuestionIntent extends ChatbotIntent {
     public function heard(IncomingMessage $message, $next, BotMan $bot) {
         // add records to the log
         $logger = LoggerUtils::getChatBotLogger();
-        $logger->info("Replying demographic");
+        $logger->debug("Replying demographic");
         $bot->replyInThread('Blah Demo',[]);
         return $next($message);
     }

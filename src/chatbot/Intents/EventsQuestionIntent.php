@@ -49,7 +49,7 @@ Class EventsQuestionIntent extends ChatbotIntent{
     public function heard(IncomingMessage $message, $next, BotMan $bot) {
         // add records to the log
         $logger = LoggerUtils::getChatBotLogger();
-        $logger->info("Replying with events");
+        $logger->debug("Replying with events");
         $bot->replyInThread($this->EventsToString(),[]);
         return $next($message);
     }

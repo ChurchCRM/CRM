@@ -27,7 +27,7 @@ class SendingLoggerMiddleware implements Sending
      */
     public function sending($payload, $next, BotMan $bot)
     {
-        LoggerUtils::getChatBotLogger()->info("Outgoing message: " . print_r($payload, true));
+        LoggerUtils::getChatBotLogger()->info("Outgoing message: " . $payload["text"]);
         return $next($payload);
     }
 }

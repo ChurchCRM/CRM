@@ -53,7 +53,7 @@ try {
     $middleware = new ReceivedIntentClassificationMiddleware();
     $botman->middleware->received($middleware);
     foreach ($middleware->getIntents() as $intent) {
-        LoggerUtils::getChatBotLogger()->info("Adding hears middleware for: " . $intent->getLabel());
+        LoggerUtils::getChatBotLogger()->debug("Adding hears middleware for: " . $intent->getLabel());
         $botman->hears('', function (BotMan $bot) {
         })->middleware($intent);
     }
@@ -65,5 +65,5 @@ try {
     // Start listening
     $botman->listen();
 } catch (Exception $e) {
-    $logger->info("error handling request: ".$e);
+    $logger->warn("error handling request: ".$e);
 }

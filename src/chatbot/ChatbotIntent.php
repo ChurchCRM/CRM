@@ -15,7 +15,6 @@ abstract class ChatbotIntent implements Matching, Heard
     {
         $logger = LoggerUtils::getChatBotLogger();
         $matched = $message->getExtras('MatchedIntent')->getLabel() == $this->getLabel();
-        $logger->info("This is" . ($matched ? "":" not") . " " . $this->getLabel());
         return $matched;
     }
 }

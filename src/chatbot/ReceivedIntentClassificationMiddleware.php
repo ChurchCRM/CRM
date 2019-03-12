@@ -30,7 +30,7 @@ class ReceivedIntentClassificationMiddleware implements Received
 
     public function __construct()
     {
-        LoggerUtils::getChatBotLogger()->info("Construction Intent Classification Middleware. Training Models.");
+        LoggerUtils::getChatBotLogger()->debug("Construction Intent Classification Middleware. Training Models.");
         // initialize the tokenizer and the classifier
         $this->vectorizer = new TokenCountVectorizer(new WordTokenizer());
         $this->svcClassifier =  new SVC(Kernel::LINEAR, // $kernel
@@ -55,7 +55,7 @@ class ReceivedIntentClassificationMiddleware implements Received
         $this->intentsReference =[];
         foreach ($this->intents as $intent) {
             $this->intentsReference[$intent->getLabel()] = $intent;
-            LoggerUtils::getChatBotLogger()->info("Training model for intent: " . $intent->getLabel());
+            LoggerUtils::getChatBotLogger()->debug("Training model for intent: " . $intent->getLabel());
             $samples = $intent->getSamples();
             $this->vectorizer->fit($samples);
             //LoggerUtils::getChatBotLogger()->info("Vocabulary: " . json_encode($this->vectorizer->getVocabulary()));
@@ -64,8 +64,8 @@ class ReceivedIntentClassificationMiddleware implements Received
             //LoggerUtils::getChatBotLogger()->info("Samples: " . json_encode($samples).".  Labels: " . json_encode($labels));
             $this->svcClassifier->train($samples, $labels);
         }
-        LoggerUtils::getChatBotLogger()->info("Vocabulary: " . json_encode($this->vectorizer->getVocabulary()));
-        LoggerUtils::getChatBotLogger()->info("All models trained");
+        LoggerUtils::getChatBotLogger()->debug("Vocabulary: " . json_encode($this->vectorizer->getVocabulary()));
+        LoggerUtils::getChatBotLogger()->debug("All models trained");
     }
     /**
      * Handle an incoming message.
@@ -81,27 +81,27 @@ class ReceivedIntentClassificationMiddleware implements Received
         // now let's assess the message and determine what intent it may match
         $m = [strtolower($message->getText())];
         $this->vectorizer->transform($m);
-        LoggerUtils::getChatBotLogger()->info("message transformed to modeled vector. Sample: " . json_encode($m));
+        LoggerUtils::getChatBotLogger()->debug("message transformed to modeled vector. Sample: " . json_encode($m));
 
         // ensure that the "set" resulting from transforming the question into the learned vocabulary has at least one "1"
         $mSet =  new Set($m[0]);
         if ($mSet->contains(1)) {
-            LoggerUtils::getChatBotLogger()->info("Predicting intent of message.");
+            LoggerUtils::getChatBotLogger()->debug("Predicting intent of message.");
             $prediction = $this->svcClassifier->predictProbability($m);
-            LoggerUtils::getChatBotLogger()->info("Probability: " . json_encode($prediction));
+            LoggerUtils::getChatBotLogger()->debug("Probability: " . json_encode($prediction));
             $prediction = $this->svcClassifier->predict($m);
-            LoggerUtils::getChatBotLogger()->info("Prediction: " . json_encode($prediction));
+            LoggerUtils::getChatBotLogger()->info("Incoming bot message predicted intent: " . json_encode($prediction));
     
             // after we've derived an intent, let's remove the intent-causing words
             //  to find out what other context exists in the message
             $questionVectorizer = new TokenCountVectorizer(new WordTokenizer());
-            LoggerUtils::getChatBotLogger()->info(json_encode($m));
+            LoggerUtils::getChatBotLogger()->debug(json_encode($m));
             $questionVectorizer->fit([$message->getText()]);
-            LoggerUtils::getChatBotLogger()->info("Question tokenized");
+            LoggerUtils::getChatBotLogger()->debug("Question tokenized");
 
             $message->addExtras("MatchedIntent", $this->intentsReference[$prediction[0]]);
         } else {
-            LoggerUtils::getChatBotLogger()->info("No vocabulary words matched in incoming message.  Not attempting prediction");
+            LoggerUtils::getChatBotLogger()->debug("No vocabulary words matched in incoming message.  Not attempting prediction");
         }
       
         return $next($message);
