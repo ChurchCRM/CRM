@@ -16,6 +16,7 @@ use Monolog\Handler\StreamHandler;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Event;
 use ChurchCRM\EventQuery;
+use ChurchCRM\dto\SystemConfig;
 
 $logger = LoggerUtils::getChatBotLogger();
 $logger->info("Request on BotMan Listener");
@@ -29,7 +30,7 @@ try {
     // Create BotMan instance
     $config = [
         'slack' => [
-            'token' => '<TOKEN>'
+            'token' => SystemConfig::getValue("SlackBotToken")
         ]
     ];
     $botman = BotManFactory::create($config);

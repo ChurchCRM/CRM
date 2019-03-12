@@ -234,8 +234,11 @@ class SystemConfig
         "sGreeterCustomMsg2" => new ConfigItem(2059, "sGreeterCustomMsg2", "text", "", gettext("Custom message for church greeter email 2, max 255 characters")),
         "IncludeDataInNewPersonNotifications" => new ConfigItem(2060, "IncludeDataInNewPersonNotifications", "boolean", "0", gettext("Include contact and demographic data in new member email notification body")),
         "bSearchIncludeFamilyCustomProperties" => new ConfigItem(2061, "bSearchIncludeFamilyCustomProperties", "boolean", "0", gettext("Include family custom properties in global search.")),
-        "bBackupExtraneousImages" => new ConfigItem(2062, "bBackupExtraneousImages", "boolean", "0", gettext("Include initials image files, remote image files (gravatar), and thumbnails in backup.  These files are generally able to be reproduced after a restore and add very little value to the backup archive at a large expense of execution time and storage"))
+        "bBackupExtraneousImages" => new ConfigItem(2062, "bBackupExtraneousImages", "boolean", "0", gettext("Include initials image files, remote image files (gravatar), and thumbnails in backup.  These files are generally able to be reproduced after a restore and add very little value to the backup archive at a large expense of execution time and storage")),
+        "SlackBotToken" => new ConfigItem(2063, "SlackBotToken", "text", "", gettext("Slack bot applciation Bot User OAuth Access Token")),
+
         );
+        
   }
 
   private static function buildCategories()
@@ -253,7 +256,7 @@ class SystemConfig
       gettext('Quick Search') => ["bSearchIncludePersons","bSearchIncludePersonsMax","bSearchIncludeAddresses", "bSearchIncludeAddressesMax", "bSearchIncludeFamilies","bSearchIncludeFamiliesMax","bSearchIncludeFamilyHOH","bSearchIncludeFamilyHOHMax","bSearchIncludeGroups","bSearchIncludeGroupsMax","bSearchIncludeDeposits", "bSearchIncludeDepositsMax", "bSearchIncludePayments", "bSearchIncludePaymentsMax", "bSearchIncludeFamilyCustomProperties"],
       gettext('Backup')  => ["sLastBackupTimeStamp","bEnableExternalBackupTarget","sExternalBackupType","sExternalBackupAutoInterval","sExternalBackupEndpoint","sExternalBackupUsername","sExternalBackupPassword","bBackupExtraneousImages"],
       gettext('Localization')  => ["sLanguage","sDistanceUnit","sPhoneFormat","sPhoneFormatWithExt","sPhoneFormatCell","sDateFormatLong","sDateFormatNoYear","sDateFormatShort","sDateTimeFormat","sDateFilenameFormat","sCSVExportDelemiter","sCSVExportCharset","sDatePickerFormat","sDatePickerPlaceHolder"],
-      gettext('Integration')  => ["sMailChimpApiKey","sGoogleTrackingID","bEnableGravatarPhotos","bEnableGooglePhotos","iRemotePhotoCacheDuration","sNexmoAPIKey","sNexmoAPISecret","sNexmoFromNumber","sOLPURL","sOLPUserName","sOLPPassword"],
+      gettext('Integration')  => ["sMailChimpApiKey","sGoogleTrackingID","bEnableGravatarPhotos","bEnableGooglePhotos","iRemotePhotoCacheDuration","sNexmoAPIKey","sNexmoAPISecret","sNexmoFromNumber","sOLPURL","sOLPUserName","sOLPPassword","SlackBotToken"],
       gettext('Church Services')  => ["iPersonConfessionFatherCustomField","iPersonConfessionDateCustomField"],
       gettext('Events')  => ["bEnableExternalCalendarAPI","bEventsOnDashboardPresence","iEventsOnDashboardPresenceTimeOut"]
     );
