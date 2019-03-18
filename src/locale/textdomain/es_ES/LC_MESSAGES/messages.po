@@ -9191,3 +9191,7 @@ msgstr "Toda la información en esta página es correcta."
 msgid "Please update the my family information with the following"
 msgstr "Por favor actualice la información familiar con lo siguiente"
 
+#: 
+msgid "Age Histogram"
+msgstr "Histograma de Edades"
+

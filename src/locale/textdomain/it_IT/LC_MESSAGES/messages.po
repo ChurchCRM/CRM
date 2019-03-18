@@ -4293,7 +4293,7 @@ msgstr "Membri"
 
 #: 
 msgid "Add New Person"
-msgstr "Aggiungi nuova Persona"
+msgstr "Aggiungi Persona"
 
 #: 
 msgid "View All Persons"
@@ -4301,7 +4301,7 @@ msgstr "Visualizza tutte le persone"
 
 #: 
 msgid "Add New Family"
-msgstr "Aggiungi nuova Famiglia"
+msgstr "Nuova Famiglia"
 
 #: 
 msgid "Events"
@@ -8762,7 +8762,7 @@ msgstr "Per condividere i calendari, è necessario abilitare l'impostazione bEna
 
 #: 
 msgid "Links"
-msgstr "link"
+msgstr "Link"
 
 #: 
 msgid "Show custom links on the left menu."
@@ -9047,7 +9047,7 @@ msgstr "Stai per aggiungere un nuovo deposito senza commento"
 
 #: 
 msgid "Families Without Emails"
-msgstr "Famiglie senza email"
+msgstr "Famiglie senza e-mail"
 
 #: 
 msgid "Record"
@@ -9111,5 +9111,65 @@ msgstr "Dettagli del controllo di integrità:"
 
 #: 
 msgid "I Understand"
-msgstr "ho capito"
+msgstr "Co capito"
+
+#: 
+msgid "Unsupported Deposit Types Detected"
+msgstr "Rilevati tipi di deposito non supportati"
+
+#: 
+msgid "Support for eGive, Credit Card, and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions."
+msgstr "Il supporto per i pagamenti di eGive, carta di credito e assegno circolare è stato dichiarato obsoleto. I rapporti non bancari esistenti potrebbero non essere più accessibili nelle versioni future."
+
+#: 
+msgid "Unsupported Stored Payment Data Detected"
+msgstr "Rilevati dati di pagamento non supportati"
+
+#: 
+msgid "Support for stored payment data has been removed. This data will soon be removed from your database"
+msgstr "Il supporto per i dati di pagamento memorizzati è stato rimosso. Questi dati saranno presto rimossi dal tuo database"
+
+#: 
+msgid "Classifcation"
+msgstr "Classifcazione"
+
+#: 
+msgid "Estonian"
+msgstr "Estone"
+
+#: 
+msgid "Error decoding integrity check result file"
+msgstr "Errore nel decodificare il file del risultato della verifica dell'integrità"
+
+#: 
+msgid "Error decoding signature definition file"
+msgstr "Errore durante la decodifica del file di definizione della firma"
+
+#: 
+msgid "Generate Backup"
+msgstr "Genera backup"
+
+#: 
+msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
+msgstr "Endpoint del backup remoto. Se WebDAV, questo deve essere codificato in url."
+
+#: 
+msgid "Include initials image files, remote image files (gravatar), and thumbnails in backup.  These files are generally able to be reproduced after a restore and add very little value to the backup archive at a large expense of execution time and storage"
+msgstr "Includi file immagine iniziali, file immagine remoti (gravatar) e miniature nel backup. Questi file sono generalmente riproducibili dopo un ripristino e aggiungono pochissimo valore all'archivio di backup a spese considerevoli del tempo di esecuzione e dell'archiviazione"
+
+#: 
+msgid "Password (if any)"
+msgstr "Password (se presente)"
+
+#: 
+msgid "All information on this page is correct."
+msgstr "Tutte le informazioni su questa pagina sono corrette."
+
+#: 
+msgid "Please update the my family information with the following"
+msgstr "Si prega di aggiornare le informazioni sulla mia famiglia con quanto segue"
+
+#: 
+msgid "Age Histogram"
+msgstr "Istogramma di età"
 
