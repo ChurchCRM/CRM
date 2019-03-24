@@ -7,7 +7,9 @@ use ChurchCRM\Service\AppIntegrityService;
 $app->group('/', function () {
     $this->get('', function ($request, $response, $args) {
         $renderer = new PhpRenderer('templates/');
-
+        if (substr( phpversion(), 0, 2 )  == "5.6") {
+            return $renderer->render($response, 'setup-error.php', ['sRootPath' => SystemURLs::getRootPath()]);
+        }
         return $renderer->render($response, 'setup-steps.php', ['sRootPath' => SystemURLs::getRootPath()]);
     });
 
