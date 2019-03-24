@@ -5004,8 +5004,8 @@ msgid "These are the family role numbers designated as child"
 msgstr "Questi sono i numeri dei ruoli familiari designati come bambini"
 
 #: 
-msgid "Session timeout length in seconds\rSet to zero to disable session timeouts."
-msgstr "Durata del timeout della sessione in secondi \ r Impostare su zero per disabilitare i timeout della sessione."
+msgid "Session timeout length in seconds\\rSet to zero to disable session timeouts."
+msgstr "Durata del timeout della sessione in secondi \\ r Impostare su zero per disabilitare i timeout della sessione."
 
 #: 
 msgid "Queries for which user must have finance permissions to use:"
@@ -5020,20 +5020,20 @@ msgid "Minimum length a user may set their password to"
 msgstr "Lunghezza minima a cui un utente può impostare la propria password"
 
 #: 
-msgid "Minimum amount that a new password must differ from the old one (# of characters changed)\rSet to zero to disable this feature"
-msgstr "Importo minimo che una nuova password deve differire da quella precedente (numero di caratteri modificati) \ r Impostare a zero per disabilitare questa funzione"
+msgid "Minimum amount that a new password must differ from the old one (# of characters changed)\\rSet to zero to disable this feature"
+msgstr "Importo minimo che una nuova password deve differire da quella precedente (numero di caratteri modificati) \\ r Impostare a zero per disabilitare questa funzione"
 
 #: 
 msgid "A comma-seperated list of disallowed (too obvious) passwords."
 msgstr "Un elenco separato da virgole di password non consentite (troppo ovvie)."
 
 #: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\rOnce the maximum has been reached, an administrator must re-enable the account.\rThis feature helps to protect against automated password guessing attacks.\rSet to zero to disable this feature."
-msgstr "Numero massimo di accessi non riusciti da consentire prima che un account utente sia bloccato. \ RUna volta raggiunto il limite massimo, un amministratore deve riattivare l'account. \ RQuesta funzione consente di proteggere dagli attacchi di induzione automatica delle password. \ RImpostare su zero per disabilitare questo caratteristica."
+msgid "Maximum number of failed logins to allow before a user account is locked.\\rOnce the maximum has been reached, an administrator must re-enable the account.\\rThis feature helps to protect against automated password guessing attacks.\\rSet to zero to disable this feature."
+msgstr "Numero massimo di accessi non riusciti da consentire prima che un account utente sia bloccato. \\ RUna volta raggiunto il limite massimo, un amministratore deve riattivare l'account. \\ RQuesta funzione consente di proteggere dagli attacchi di induzione automatica delle password. \\ RImpostare su zero per disabilitare questo caratteristica."
 
 #: 
-msgid "PDF handling mode.\r1 = Save File dialog\r2 = Open in current browser window"
-msgstr "Modalità di gestione PDF. \ R1 = Finestra di dialogo Salva file \ r2 = Apri nella finestra corrente del browser"
+msgid "PDF handling mode.\\r1 = Save File dialog\\r2 = Open in current browser window"
+msgstr "Modalità di gestione PDF. \\ R1 = Finestra di dialogo Salva file \\ r2 = Apri nella finestra corrente del browser"
 
 #: 
 msgid "Default City"
@@ -5816,7 +5816,7 @@ msgid "custom event types"
 msgstr "tipi di eventi personalizzati"
 
 #: 
-msgid "Press CTRL + C to copy all group members\\' phone numbers"
+msgid "Press CTRL + C to copy all group members\\\\' phone numbers"
 msgstr "Premi CTRL + C per copiare tutti i numeri di telefono dei Membri del Gruppo"
 
 #: 
@@ -7097,8 +7097,8 @@ msgid "None State"
 msgstr "Nessuno stato"
 
 #: 
-msgid "Unavailable person info inherited from assigned family for display?\rThis option causes certain info from a person's assigned family record to be\rdisplayed IF the corresponding info has NOT been entered for that person. "
-msgstr "Informazioni sulla persona non disponibile ereditate dalla famiglia assegnata per la visualizzazione? \␣Questa opzione fa sì che vengano visualizzate determinate informazioni dal record della famiglia assegnata a una persona SE non sono state inserite le informazioni corrispondenti per quella persona.␣"
+msgid "Unavailable person info inherited from assigned family for display?\\rThis option causes certain info from a person's assigned family record to be\\rdisplayed IF the corresponding info has NOT been entered for that person. "
+msgstr "Informazioni sulla persona non disponibile ereditate dalla famiglia assegnata per la visualizzazione? \\␣Questa opzione fa sì che vengano visualizzate determinate informazioni dal record della famiglia assegnata a una persona SE non sono state inserite le informazioni corrispondenti per quella persona.␣"
 
 #: 
 msgid "Backup archive does not contain a database"
