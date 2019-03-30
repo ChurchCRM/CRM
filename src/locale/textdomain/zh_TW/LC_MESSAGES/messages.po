@@ -3234,10 +3234,6 @@ msgid "Execute Query"
 msgstr "執行查詢"
 
 #: 
-msgid "Address Info:"
-msgstr "地址信息："
-
-#: 
 msgid "Software Registration"
 msgstr "登記軟件"
 
@@ -4407,10 +4403,6 @@ msgid "Calendar"
 msgstr "日曆"
 
 #: 
-msgid "Members"
-msgstr "成員"
-
-#: 
 msgid "Add New Person"
 msgstr "添加新成員"
 
@@ -5129,10 +5121,6 @@ msgid "These are the family role numbers designated as child"
 msgstr "這些是指定為孩子的家庭角色的編號"
 
 #: 
-msgid "Session timeout length in seconds\rSet to zero to disable session timeouts."
-msgstr "會話超時長度（以秒為單位）\ r設為零以禁用會話超時。"
-
-#: 
 msgid "Queries for which user must have finance permissions to use:"
 msgstr "用戶必須具有財務權限才能使用的查詢："
 
@@ -5145,20 +5133,8 @@ msgid "Minimum length a user may set their password to"
 msgstr "用戶設置密碼的最小長度"
 
 #: 
-msgid "Minimum amount that a new password must differ from the old one (# of characters changed)\rSet to zero to disable this feature"
-msgstr "新密碼必須與舊密碼不同的最小字符數（更改的字符數）\ r設為零以禁用此功能"
-
-#: 
 msgid "A comma-seperated list of disallowed (too obvious) passwords."
 msgstr "以逗號分隔的不允許（太簡單）密碼列表。"
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\rOnce the maximum has been reached, an administrator must re-enable the account.\rThis feature helps to protect against automated password guessing attacks.\rSet to zero to disable this feature."
-msgstr "鎖定用戶帳戶之前允許的最大登入失敗次數。\ r \ n一旦達到最大值，管理員必須重新啟用該帳戶。\ r此功能有助於防止自動密碼猜測攻擊。\ r設置為零以禁用此功能。"
-
-#: 
-msgid "PDF handling mode.\r1 = Save File dialog\r2 = Open in current browser window"
-msgstr "PDF處理模式。\ r1 =保存文件對話框\ r2 =在當前瀏覽器窗口中打開"
 
 #: 
 msgid "Default City"
@@ -5958,10 +5934,6 @@ msgstr "自定義活動類型"
 #: 
 msgid "custom event types"
 msgstr "自定義活動類型"
-
-#: 
-msgid "Press CTRL + C to copy all group members\\' phone numbers"
-msgstr "按CTRL + C複製所有組成員\\'電話號碼"
 
 #: 
 msgid "Family Roles Editor"
@@ -7232,10 +7204,6 @@ msgid "None State"
 msgstr "無州"
 
 #: 
-msgid "Unavailable person info inherited from assigned family for display?\rThis option causes certain info from a person's assigned family record to be\rdisplayed IF the corresponding info has NOT been entered for that person. "
-msgstr "從指定的系列繼承的不可用的人員信息是否顯示？\ r \ n此選項會導致人員指定的家庭記錄中的某些信息被顯示，如果尚未為該人輸入相應的信息。"
-
-#: 
 #, fuzzy
 msgid "Backup archive does not contain a database"
 msgstr "備份存檔不包含資料庫"
@@ -8491,14 +8459,6 @@ msgid "LinkedIn"
 msgstr "LinkedIn"
 
 #: 
-msgid "Calendar description"
-msgstr "行事曆描述"
-
-#: 
-msgid "Visitors"
-msgstr "受訪者"
-
-#: 
 msgid "Move Event"
 msgstr "移動事件"
 
@@ -8851,18 +8811,6 @@ msgstr "至"
 #: 
 msgid "Are you sure you want to change the end time for "
 msgstr "您是否想更變結束時間於␣"
-
-#: 
-msgid "Pinned Calendars"
-msgstr "固定日曆"
-
-#: 
-msgid "Event Description"
-msgstr "活動描述"
-
-#: 
-msgid "Event Text"
-msgstr "活動文字"
 
 #: 
 msgid "Access Token"
@@ -9364,4 +9312,14 @@ msgstr "請使用以下內容更新我的家庭信息"
 #, fuzzy
 msgid "Age Histogram"
 msgstr "年齡直方圖"
+
+#: 
+#, fuzzy
+msgid "Missing event id"
+msgstr "缺少事件ID"
+
+#: 
+#, fuzzy
+msgid "Event not found"
+msgstr "事件未找到"
 

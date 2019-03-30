@@ -3252,10 +3252,6 @@ msgid "Execute Query"
 msgstr "Rodar a pesquisa"
 
 #: 
-msgid "Address Info:"
-msgstr "Informações Endereço:"
-
-#: 
 msgid "Software Registration"
 msgstr "Registro do Software"
 
@@ -4442,10 +4438,6 @@ msgid "Calendar"
 msgstr "Calendário"
 
 #: 
-msgid "Members"
-msgstr "Membros"
-
-#: 
 msgid "Add New Person"
 msgstr "Nova Pessoa"
 
@@ -5163,10 +5155,6 @@ msgid "These are the family role numbers designated as child"
 msgstr "Estes são os números de papíes famíliares designados como filhos"
 
 #: 
-msgid "Session timeout length in seconds\rSet to zero to disable session timeouts."
-msgstr "Tempo limite de sessão em segundos \ rDefina como zero para desativar o tempo limite da sessão."
-
-#: 
 msgid "Queries for which user must have finance permissions to use:"
 msgstr "Consultas para as quais o usuário deve ter permissões de para acessar finanças:"
 
@@ -5179,20 +5167,8 @@ msgid "Minimum length a user may set their password to"
 msgstr "O tamanho mínimo da senha de um usuário pode é"
 
 #: 
-msgid "Minimum amount that a new password must differ from the old one (# of characters changed)\rSet to zero to disable this feature"
-msgstr "Número mínimo de caracteres diferentes que uma nova senha deve ser diferente da anterior (número de caracteres alterado)\rDefina como zero para desativar esse recurso"
-
-#: 
 msgid "A comma-seperated list of disallowed (too obvious) passwords."
 msgstr "Uma lista separada por vírgulas não é permitida como senha (muito óbvio)."
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\rOnce the maximum has been reached, an administrator must re-enable the account.\rThis feature helps to protect against automated password guessing attacks.\rSet to zero to disable this feature."
-msgstr "Número máximos de logins falhados antes da conta do usuário ser bloqueada.\r Uma vez que este número tenha sido alcançado, um administrador deve reabilitar a conta.\rEsta funcionalidade ajuda a proteger o sistema contra ataques automatizados de adivinhação de senha. Defina como zero para desativar esse recurso."
-
-#: 
-msgid "PDF handling mode.\r1 = Save File dialog\r2 = Open in current browser window"
-msgstr "Modo de manipulação de PDF.\r1 = Salvar o arquivo de diálogo\r2 = Abrir na janela atual do navegador"
 
 #: 
 msgid "Default City"
@@ -5977,10 +5953,6 @@ msgstr "tipo de evento personalizado"
 #: 
 msgid "custom event types"
 msgstr "tipos de eventos personalizados"
-
-#: 
-msgid "Press CTRL + C to copy all group members\\' phone numbers"
-msgstr "Pressione CTRL + C para copiar todos os telefones dos membros do grupo"
 
 #: 
 msgid "Family Roles Editor"
@@ -7254,10 +7226,6 @@ msgid "None State"
 msgstr "Nenhum Estado"
 
 #: 
-msgid "Unavailable person info inherited from assigned family for display?\rThis option causes certain info from a person's assigned family record to be\rdisplayed IF the corresponding info has NOT been entered for that person. "
-msgstr "Informação de pessoa indisponível herdada da família atribuída para exibição?\rEsta opção faz com que determinadas informações do registro familiar atribuído a uma pessoa sejam exibidas SE a informação correspondente NÃO tiver sido inserida para essa pessoa. "
-
-#: 
 msgid "Backup archive does not contain a database"
 msgstr "O arquivo de backup não contém um banco de dados"
 
@@ -8526,14 +8494,6 @@ msgid "LinkedIn"
 msgstr "LinkedIn"
 
 #: 
-msgid "Calendar description"
-msgstr "Descrição do Calendário"
-
-#: 
-msgid "Visitors"
-msgstr "Visitantes"
-
-#: 
 msgid "Move Event"
 msgstr "Mais eventos"
 
@@ -8881,18 +8841,6 @@ msgstr "de"
 #: 
 msgid "Are you sure you want to change the end time for "
 msgstr "Tem certeza de que deseja alterar a hora final?"
-
-#: 
-msgid "Pinned Calendars"
-msgstr "Calendários Fixados"
-
-#: 
-msgid "Event Description"
-msgstr "Descrição do Evento"
-
-#: 
-msgid "Event Text"
-msgstr "Texto do Evento"
 
 #: 
 msgid "Access Token"

@@ -3149,10 +3149,6 @@ msgid "Execute Query"
 msgstr "Execute Query"
 
 #: 
-msgid "Address Info:"
-msgstr "Adres gegevens:"
-
-#: 
 msgid "Software Registration"
 msgstr "Software registratie"
 
@@ -4283,10 +4279,6 @@ msgid "Calendar"
 msgstr "Kalender"
 
 #: 
-msgid "Members"
-msgstr "Leden"
-
-#: 
 msgid "Add New Person"
 msgstr "Personen toevoegen"
 
@@ -4999,10 +4991,6 @@ msgid "These are the family role numbers designated as child"
 msgstr "Dit zijn de familie rol nummers aangewezen als kind"
 
 #: 
-msgid "Session timeout length in seconds\rSet to zero to disable session timeouts."
-msgstr "Programma time-out lengte in seconden. Op nul instellen om programma time-outs uit te schakelen."
-
-#: 
 msgid "Queries for which user must have finance permissions to use:"
 msgstr "Query's waarvoor de gebruiker \"Finance\" rechten nodig heeft.  "
 
@@ -5015,20 +5003,8 @@ msgid "Minimum length a user may set their password to"
 msgstr "Minimale lengte kan een gebruiker zijn wachtwoord ingesteld op"
 
 #: 
-msgid "Minimum amount that a new password must differ from the old one (# of characters changed)\rSet to zero to disable this feature"
-msgstr "Minimum aantal karakters dat een nieuw wachtwoord moet afwijken van de oude. Op nul instellen om deze functie uit te schakelen"
-
-#: 
 msgid "A comma-seperated list of disallowed (too obvious) passwords."
 msgstr "Een door komma's gescheiden lijst van niet-toegestane (ook voor de hand liggende) wachtwoorden."
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\rOnce the maximum has been reached, an administrator must re-enable the account.\rThis feature helps to protect against automated password guessing attacks.\rSet to zero to disable this feature."
-msgstr "Maximumaantal mislukte aanmeldingen dat moet worden toegestaan ​​voordat een gebruikersaccount is vergrendeld. Nadat het maximum is bereikt, moet een beheerder het account opnieuw inschakelen. Deze functie helpt u te beschermen tegen automatische aanvallen met wachtwoord raden. R Stel nul in om dit uit te schakelen voorzien zijn van."
-
-#: 
-msgid "PDF handling mode.\r1 = Save File dialog\r2 = Open in current browser window"
-msgstr "PDF handling-modus. \ R1 = Bestand opslaan dialoog \ r2 = Open in huidige browservenster"
 
 #: 
 msgid "Default City"
@@ -6748,14 +6724,6 @@ msgid "LinkedIn"
 msgstr "LinkedIn"
 
 #: 
-msgid "Calendar description"
-msgstr "Omschrijving kalender"
-
-#: 
-msgid "Visitors"
-msgstr "Bezoekers"
-
-#: 
 msgid "Move Event"
 msgstr "Verplaats activiteit"
 
@@ -7002,18 +6970,6 @@ msgstr "Aan"
 #: 
 msgid "Are you sure you want to change the end time for "
 msgstr "Weet je zeker dat je de eindtijd wilt veranderen van"
-
-#: 
-msgid "Pinned Calendars"
-msgstr "Vastgezette kalenders"
-
-#: 
-msgid "Event Description"
-msgstr "Omschrijving activiteit"
-
-#: 
-msgid "Event Text"
-msgstr "Tekst van de activiteit"
 
 #: 
 msgid "Access Token"

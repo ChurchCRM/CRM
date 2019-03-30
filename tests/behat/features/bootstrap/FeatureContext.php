@@ -20,11 +20,11 @@ class FeatureContext extends MinkContext
     public function __construct()
     {
     }
-    
+
     /**
     * @Given /^I am authenticated as "([^"]*)" using "([^"]*)"$/
     */
-    public function iAmAuthenticatedAs($username, $password) 
+    public function iAmAuthenticatedAs($username, $password)
     {
       #borrowed from https://vivait.co.uk/labs/handling-authentication-when-using-behat-mink
       $this->visit('/Login');
@@ -58,7 +58,15 @@ class FeatureContext extends MinkContext
     * @Given /^I wait for AJAX to finish$/
     */
    public function iWaitForAjaxToFinish() {
-    $this->getSession()->wait(3000, '(typeof(jQuery)=="undefined" || (0 === jQuery.active && 0 === jQuery(\':animated\').length))');
+    $waitTime = 10000;
+    try {
+        //Wait for jQuery
+        if ($this->getSession()->evaluateScript("return (typeof jQuery != 'undefined')")) {
+            $this->getSession()->wait($waitTime, '(0 === jQuery.active && 0 === jQuery(\':animated\').length)');
+        }
+    } catch (Exception $e) {
+        var_dump($e->getMessage()); //Debug here.
+    }
    }
 
     /**

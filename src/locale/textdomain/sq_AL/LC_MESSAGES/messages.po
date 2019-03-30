@@ -2615,10 +2615,6 @@ msgid "Execute Query"
 msgstr "Execute Query"
 
 #: 
-msgid "Address Info:"
-msgstr "Adresa Info:"
-
-#: 
 msgid "Please register your copy of ChurchCRM by checking over this information and pressing the Send button.  "
 msgstr "Ju lutemi regjistrohuni kopje të ChurchCRM duke kontrolluar mbi këtë informacion dhe të shtypur butonin Send.  "
 
@@ -3415,10 +3411,6 @@ msgstr "Krijo Lista Class"
 #: 
 msgid "Create Attendance Sheet"
 msgstr "Krijo Pjesëmarrja Sheet"
-
-#: 
-msgid "Members"
-msgstr "Anëtarët"
 
 #: 
 msgid "Add New Person"

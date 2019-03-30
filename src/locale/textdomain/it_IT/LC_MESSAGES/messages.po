@@ -3155,10 +3155,6 @@ msgid "Execute Query"
 msgstr "Esegui Query"
 
 #: 
-msgid "Address Info:"
-msgstr "Indirizzo:"
-
-#: 
 msgid "Software Registration"
 msgstr "Registrazione del software"
 
@@ -4288,12 +4284,8 @@ msgid "Calendar"
 msgstr "Calendario"
 
 #: 
-msgid "Members"
-msgstr "Membri"
-
-#: 
 msgid "Add New Person"
-msgstr "Aggiungi nuova Persona"
+msgstr "Aggiungi Persona"
 
 #: 
 msgid "View All Persons"
@@ -4301,7 +4293,7 @@ msgstr "Visualizza tutte le persone"
 
 #: 
 msgid "Add New Family"
-msgstr "Aggiungi nuova Famiglia"
+msgstr "Nuova Famiglia"
 
 #: 
 msgid "Events"
@@ -5004,10 +4996,6 @@ msgid "These are the family role numbers designated as child"
 msgstr "Questi sono i numeri dei ruoli familiari designati come bambini"
 
 #: 
-msgid "Session timeout length in seconds\rSet to zero to disable session timeouts."
-msgstr "Durata del timeout della sessione in secondi \ r Impostare su zero per disabilitare i timeout della sessione."
-
-#: 
 msgid "Queries for which user must have finance permissions to use:"
 msgstr "Query per le quali l'utente deve disporre delle autorizzazioni di finanziamento da utilizzare:"
 
@@ -5020,20 +5008,8 @@ msgid "Minimum length a user may set their password to"
 msgstr "Lunghezza minima a cui un utente può impostare la propria password"
 
 #: 
-msgid "Minimum amount that a new password must differ from the old one (# of characters changed)\rSet to zero to disable this feature"
-msgstr "Importo minimo che una nuova password deve differire da quella precedente (numero di caratteri modificati) \ r Impostare a zero per disabilitare questa funzione"
-
-#: 
 msgid "A comma-seperated list of disallowed (too obvious) passwords."
 msgstr "Un elenco separato da virgole di password non consentite (troppo ovvie)."
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\rOnce the maximum has been reached, an administrator must re-enable the account.\rThis feature helps to protect against automated password guessing attacks.\rSet to zero to disable this feature."
-msgstr "Numero massimo di accessi non riusciti da consentire prima che un account utente sia bloccato. \ RUna volta raggiunto il limite massimo, un amministratore deve riattivare l'account. \ RQuesta funzione consente di proteggere dagli attacchi di induzione automatica delle password. \ RImpostare su zero per disabilitare questo caratteristica."
-
-#: 
-msgid "PDF handling mode.\r1 = Save File dialog\r2 = Open in current browser window"
-msgstr "Modalità di gestione PDF. \ R1 = Finestra di dialogo Salva file \ r2 = Apri nella finestra corrente del browser"
 
 #: 
 msgid "Default City"
@@ -5814,10 +5790,6 @@ msgstr "tipo di evento personalizzato"
 #: 
 msgid "custom event types"
 msgstr "tipi di eventi personalizzati"
-
-#: 
-msgid "Press CTRL + C to copy all group members\\' phone numbers"
-msgstr "Premi CTRL + C per copiare tutti i numeri di telefono dei Membri del Gruppo"
 
 #: 
 msgid "Family Roles Editor"
@@ -7097,10 +7069,6 @@ msgid "None State"
 msgstr "Nessuno stato"
 
 #: 
-msgid "Unavailable person info inherited from assigned family for display?\rThis option causes certain info from a person's assigned family record to be\rdisplayed IF the corresponding info has NOT been entered for that person. "
-msgstr "Informazioni sulla persona non disponibile ereditate dalla famiglia assegnata per la visualizzazione? \␣Questa opzione fa sì che vengano visualizzate determinate informazioni dal record della famiglia assegnata a una persona SE non sono state inserite le informazioni corrispondenti per quella persona.␣"
-
-#: 
 msgid "Backup archive does not contain a database"
 msgstr "L'archivio di backup non contiene un database"
 
@@ -8345,14 +8313,6 @@ msgid "LinkedIn"
 msgstr "LinkedIn"
 
 #: 
-msgid "Calendar description"
-msgstr "Descrizione del calendario"
-
-#: 
-msgid "Visitors"
-msgstr "I visitatori"
-
-#: 
 msgid "Move Event"
 msgstr "Sposta Evento"
 
@@ -8697,18 +8657,6 @@ msgid "Are you sure you want to change the end time for "
 msgstr "Sei sicuro di voler modificare l'ora di fine per"
 
 #: 
-msgid "Pinned Calendars"
-msgstr "Calendari aggiunti"
-
-#: 
-msgid "Event Description"
-msgstr "descrizione dell'evento"
-
-#: 
-msgid "Event Text"
-msgstr "Testo dell'evento"
-
-#: 
 msgid "Access Token"
 msgstr "Token di accesso"
 
@@ -8762,7 +8710,7 @@ msgstr "Per condividere i calendari, è necessario abilitare l'impostazione bEna
 
 #: 
 msgid "Links"
-msgstr "link"
+msgstr "Link"
 
 #: 
 msgid "Show custom links on the left menu."
@@ -9047,7 +8995,7 @@ msgstr "Stai per aggiungere un nuovo deposito senza commento"
 
 #: 
 msgid "Families Without Emails"
-msgstr "Famiglie senza email"
+msgstr "Famiglie senza e-mail"
 
 #: 
 msgid "Record"
@@ -9111,5 +9059,65 @@ msgstr "Dettagli del controllo di integrità:"
 
 #: 
 msgid "I Understand"
-msgstr "ho capito"
+msgstr "Co capito"
+
+#: 
+msgid "Unsupported Deposit Types Detected"
+msgstr "Rilevati tipi di deposito non supportati"
+
+#: 
+msgid "Support for eGive, Credit Card, and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions."
+msgstr "Il supporto per i pagamenti di eGive, carta di credito e assegno circolare è stato dichiarato obsoleto. I rapporti non bancari esistenti potrebbero non essere più accessibili nelle versioni future."
+
+#: 
+msgid "Unsupported Stored Payment Data Detected"
+msgstr "Rilevati dati di pagamento non supportati"
+
+#: 
+msgid "Support for stored payment data has been removed. This data will soon be removed from your database"
+msgstr "Il supporto per i dati di pagamento memorizzati è stato rimosso. Questi dati saranno presto rimossi dal tuo database"
+
+#: 
+msgid "Classifcation"
+msgstr "Classifcazione"
+
+#: 
+msgid "Estonian"
+msgstr "Estone"
+
+#: 
+msgid "Error decoding integrity check result file"
+msgstr "Errore nel decodificare il file del risultato della verifica dell'integrità"
+
+#: 
+msgid "Error decoding signature definition file"
+msgstr "Errore durante la decodifica del file di definizione della firma"
+
+#: 
+msgid "Generate Backup"
+msgstr "Genera backup"
+
+#: 
+msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
+msgstr "Endpoint del backup remoto. Se WebDAV, questo deve essere codificato in url."
+
+#: 
+msgid "Include initials image files, remote image files (gravatar), and thumbnails in backup.  These files are generally able to be reproduced after a restore and add very little value to the backup archive at a large expense of execution time and storage"
+msgstr "Includi file immagine iniziali, file immagine remoti (gravatar) e miniature nel backup. Questi file sono generalmente riproducibili dopo un ripristino e aggiungono pochissimo valore all'archivio di backup a spese considerevoli del tempo di esecuzione e dell'archiviazione"
+
+#: 
+msgid "Password (if any)"
+msgstr "Password (se presente)"
+
+#: 
+msgid "All information on this page is correct."
+msgstr "Tutte le informazioni su questa pagina sono corrette."
+
+#: 
+msgid "Please update the my family information with the following"
+msgstr "Si prega di aggiornare le informazioni sulla mia famiglia con quanto segue"
+
+#: 
+msgid "Age Histogram"
+msgstr "Istogramma di età"
 

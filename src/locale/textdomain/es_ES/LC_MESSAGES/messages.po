@@ -3145,10 +3145,6 @@ msgid "Execute Query"
 msgstr "Ejecutar búsqueda"
 
 #: 
-msgid "Address Info:"
-msgstr "Información de dirección:"
-
-#: 
 msgid "Software Registration"
 msgstr "Registro del Software"
 
@@ -4278,10 +4274,6 @@ msgid "Calendar"
 msgstr "Calendario"
 
 #: 
-msgid "Members"
-msgstr "Miembros"
-
-#: 
 msgid "Add New Person"
 msgstr "Añadir Nueva Persona"
 
@@ -4983,15 +4975,11 @@ msgstr "Estos son los números de roles de familia designados como cabezas del h
 
 #: 
 msgid "These are the family role numbers designated as spouse"
-msgstr "Límite de tiempo de sesión en segundos\rColocar en cero para deshabilitar límites de tiempo de sesión."
+msgstr "Límite de tiempo de sesión en segundos\\rColocar en cero para deshabilitar límites de tiempo de sesión."
 
 #: 
 msgid "These are the family role numbers designated as child"
 msgstr "Estos son los números de rol de familia designados como niño"
-
-#: 
-msgid "Session timeout length in seconds\rSet to zero to disable session timeouts."
-msgstr "Límite de tiempo de sesión en segundos\rColocar en cero para deshabilitar tiempos límite de sesión."
 
 #: 
 msgid "Queries for which user must have finance permissions to use:"
@@ -5006,20 +4994,8 @@ msgid "Minimum length a user may set their password to"
 msgstr "Largo mínimo de contraseña que un usuario debe ingresar"
 
 #: 
-msgid "Minimum amount that a new password must differ from the old one (# of characters changed)\rSet to zero to disable this feature"
-msgstr "Cantidad mínima de diferencia en que una nueva contraseña debe diferir de una vieja (# de caracteres  cambiados)\rColocar en cero para deshabilitar esta funcionalidad"
-
-#: 
 msgid "A comma-seperated list of disallowed (too obvious) passwords."
 msgstr "Una lista de contraseñas deshabilitadas (muy obvias), separadas por coma."
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\rOnce the maximum has been reached, an administrator must re-enable the account.\rThis feature helps to protect against automated password guessing attacks.\rSet to zero to disable this feature."
-msgstr "Número máximo de ingresos fallidos permitidos antes de que la cuenta de un usuario sea bloqueada.\rUna vez que el máximo haya sido alcanzado, un administrador debe restablecer la cuenta.\rEsta funcionalidad ayuda a proteger ante ataques de adivinación automático de contraseña.\rColocar en cero para deshabilitar esta funcionalidad."
-
-#: 
-msgid "PDF handling mode.\r1 = Save File dialog\r2 = Open in current browser window"
-msgstr "Modo de manejo de PDF.\r1 = Diálogo de Guardado de Archivo\r2 = Abrir en ventana actual de navegador"
 
 #: 
 msgid "Default City"
@@ -5807,10 +5783,6 @@ msgstr "tipo de evento personalizado"
 #: 
 msgid "custom event types"
 msgstr "tipos de evento personalizados"
-
-#: 
-msgid "Press CTRL + C to copy all group members\\' phone numbers"
-msgstr "Presione CTRL + C para copiar todos teléfonos de los miembros del grupo"
 
 #: 
 msgid "Family Roles Editor"
@@ -7086,11 +7058,6 @@ msgid "None State"
 msgstr "Ningún Estado"
 
 #: 
-msgid "Unavailable person info inherited from assigned family for display?\rThis option causes certain info from a person's assigned family record to be\rdisplayed IF the corresponding info has NOT been entered for that person. "
-msgstr "Desplegar información no disponible de la persona desde familia asignada?\n"
-"\r Esta opción hace que cierta información de un registro de familia asignado a la persona sea\r desplegado SI la información correspondiente NO ha sido ingresada para esa persona. "
-
-#: 
 msgid "Backup archive does not contain a database"
 msgstr "Archivo de respaldo no contiene una base de datos"
 
@@ -8361,14 +8328,6 @@ msgid "LinkedIn"
 msgstr "LinkedIn"
 
 #: 
-msgid "Calendar description"
-msgstr "Descripción de Calendario"
-
-#: 
-msgid "Visitors"
-msgstr "Visitantes"
-
-#: 
 msgid "Move Event"
 msgstr "Mover Evento"
 
@@ -8712,18 +8671,6 @@ msgstr "hasta"
 #: 
 msgid "Are you sure you want to change the end time for "
 msgstr "Está seguro de que desea cambiar la hora final por "
-
-#: 
-msgid "Pinned Calendars"
-msgstr "Calendarios Anclados"
-
-#: 
-msgid "Event Description"
-msgstr "Descripción de Evento"
-
-#: 
-msgid "Event Text"
-msgstr "Texto de Evento"
 
 #: 
 msgid "Access Token"
@@ -9190,4 +9137,8 @@ msgstr "Toda la información en esta página es correcta."
 #: 
 msgid "Please update the my family information with the following"
 msgstr "Por favor actualice la información familiar con lo siguiente"
+
+#: 
+msgid "Age Histogram"
+msgstr "Histograma de Edades"
 

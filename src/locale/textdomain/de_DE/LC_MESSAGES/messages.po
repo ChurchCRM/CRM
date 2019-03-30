@@ -3157,10 +3157,6 @@ msgid "Execute Query"
 msgstr "Abrage starten"
 
 #: 
-msgid "Address Info:"
-msgstr "Adresseninfo:"
-
-#: 
 msgid "Software Registration"
 msgstr "Software registrieren"
 
@@ -4315,10 +4311,6 @@ msgid "Calendar"
 msgstr "Kalender"
 
 #: 
-msgid "Members"
-msgstr "Mitglieder"
-
-#: 
 msgid "Add New Person"
 msgstr "Neue Person hinzufügen"
 
@@ -4803,10 +4795,6 @@ msgid "These are the family role numbers designated as child"
 msgstr "Diese Familienrollen sind als Kinder gedacht"
 
 #: 
-msgid "Session timeout length in seconds\rSet to zero to disable session timeouts."
-msgstr "Session timeout in Sekunden\rSetze den Wert auf Null, um das timeout zu deaktivieren."
-
-#: 
 msgid "Queries for which user must have finance permissions to use:"
 msgstr "Anfragen, für die Nutzer Finanzrechte haben muss:"
 
@@ -5121,10 +5109,6 @@ msgstr "angepasste Ereignisart"
 #: 
 msgid "custom event types"
 msgstr "angepasste Ereignisarten"
-
-#: 
-msgid "Press CTRL + C to copy all group members\\' phone numbers"
-msgstr "Drücke STRG+C um alle Telefonnummern zu kopieren"
 
 #: 
 msgid "Family Roles Editor"

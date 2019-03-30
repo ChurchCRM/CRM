@@ -3147,10 +3147,6 @@ msgid "Execute Query"
 msgstr "Exécuter la Requête"
 
 #: 
-msgid "Address Info:"
-msgstr "Adresse:"
-
-#: 
 msgid "Software Registration"
 msgstr "Enregistrement du logiciel"
 
@@ -4279,10 +4275,6 @@ msgid "Calendar"
 msgstr "Calendrier"
 
 #: 
-msgid "Members"
-msgstr "Membres"
-
-#: 
 msgid "Add New Person"
 msgstr "Ajouter une nouvelle personne"
 
@@ -4991,10 +4983,6 @@ msgid "These are the family role numbers designated as child"
 msgstr "Voici les numéros des rôles familiaux attribués aux enfants"
 
 #: 
-msgid "Session timeout length in seconds\rSet to zero to disable session timeouts."
-msgstr "Durée d'une punition en secondes\rMettre à zéro pour désactiver les punitions."
-
-#: 
 msgid "Queries for which user must have finance permissions to use:"
 msgstr "Requêtes pour lesquelles l'utilisateur doit avoir des permissions de finance pour utiliser:"
 
@@ -5007,20 +4995,8 @@ msgid "Minimum length a user may set their password to"
 msgstr "Longueur minimal d'un Mot de Passe utilisateur"
 
 #: 
-msgid "Minimum amount that a new password must differ from the old one (# of characters changed)\rSet to zero to disable this feature"
-msgstr "La quantité minimale de caractères qu'un nouveau mot de passe doit avoir de différent de l'ancien (# nombre de caractères modifié)\rFixer à zéro pour désactiver cette fonction"
-
-#: 
 msgid "A comma-seperated list of disallowed (too obvious) passwords."
 msgstr "Une liste de mot de passe rejeté (trop évident), séparé par une virugle."
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\rOnce the maximum has been reached, an administrator must re-enable the account.\rThis feature helps to protect against automated password guessing attacks.\rSet to zero to disable this feature."
-msgstr "Nombre maximum d'échec d'authentification autorisé avant qu'un compte utilisateur soit verrouillé.\rUne fois que le maximum est atteint, un administrateur devra réactiver le compte.\rCette fonctionnalité permet de se protéger contre les attaques automatiques.\nFixer à zéro pour désactiver cette fonctionnalité."
-
-#: 
-msgid "PDF handling mode.\r1 = Save File dialog\r2 = Open in current browser window"
-msgstr "Mode de gestion PDF.\r1 = Enregistrer le dialogue du fichier\r2 = Ouvrir dans la fenêtre du navigateur."
 
 #: 
 msgid "Default City"
@@ -5801,10 +5777,6 @@ msgstr "type d'événement personnalisé"
 #: 
 msgid "custom event types"
 msgstr "types d'événement personnalisé"
-
-#: 
-msgid "Press CTRL + C to copy all group members\\' phone numbers"
-msgstr "Appuyer sur CTRL + C pour copier tous numéros de téléphone des membres du groupe"
 
 #: 
 msgid "Family Roles Editor"
@@ -7075,10 +7047,6 @@ msgid "None State"
 msgstr "Statut inconnu"
 
 #: 
-msgid "Unavailable person info inherited from assigned family for display?\rThis option causes certain info from a person's assigned family record to be\rdisplayed IF the corresponding info has NOT been entered for that person. "
-msgstr "Afficher les informations personnelle indisponible hérité de la famille assigné?\rCette option entraînera l'affichage de certaines informations d'une famille\r SI les informations correspondantes n'ont PAS été renseignées pour cette personne. "
-
-#: 
 msgid "Backup archive does not contain a database"
 msgstr "La sauvegarde archivée ne contient pas de Base de Données"
 
@@ -8321,14 +8289,6 @@ msgstr "Twitter"
 #: 
 msgid "LinkedIn"
 msgstr "LinkedIn"
-
-#: 
-msgid "Calendar description"
-msgstr "Description du calendrier"
-
-#: 
-msgid "Visitors"
-msgstr "Visiteurs"
 
 #: 
 msgid "Move Event"

@@ -2712,10 +2712,6 @@ msgid "Execute Query"
 msgstr "Execute Query"
 
 #: 
-msgid "Address Info:"
-msgstr "Cím Info:"
-
-#: 
 msgid "Please register your copy of ChurchCRM by checking over this information and pressing the Send button.  "
 msgstr "Kérjük regisztrálja másolatát ChurchCRM ellenőrzésével át ezt az információt, és nyomja meg a Küldés gombot."
 
