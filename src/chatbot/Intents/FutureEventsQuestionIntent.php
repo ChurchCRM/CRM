@@ -7,7 +7,7 @@ use ChurchCRM\EventQuery;
 
 Class FutureEventsQuestionIntent extends EventsQuestionIntent{
     public function getSamples() {
-        return array_merge(parent::getSamples(),$this->getPresentTenseSamples());
+        return array_merge(parent::getEventIntentSamples(),$this->getPresentTenseSamples());
         
     }
     public function getLabel() { 

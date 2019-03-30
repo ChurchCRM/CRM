@@ -7,6 +7,10 @@ use ChurchCRM\EventQuery;
 
 Class EventsQuestionIntent extends ChatbotIntent{
     public function getSamples() {
+        return [];
+    }
+
+    protected function getEventIntentSamples() {
         return [
             'time',
             'when',
@@ -15,7 +19,6 @@ Class EventsQuestionIntent extends ChatbotIntent{
             'calendar',
             "happening"
         ];
-        
     }
     public function getLabel() { 
         return "event";
