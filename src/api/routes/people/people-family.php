@@ -39,7 +39,7 @@ $app->group('/family/{familyId:[0-9]+}', function () {
         $geoLocationInfo = array_merge($familyDrivingInfo, $familyLatLong);
         return $response->withJson($geoLocationInfo);
     });
-    
+
      $this->post('/photo', function ($request, $response, $args) {
         $input = (object)$request->getParsedBody();
         $family = $request->getAttribute("family");
@@ -52,7 +52,7 @@ $app->group('/family/{familyId:[0-9]+}', function () {
     })->add(new EditRecordsRoleAuthMiddleware());
 
 
-    $this->post('/verify', function ($request, $response, $args) {
+    $this->get('/verify', function ($request, $response, $args) {
         $family = $request->getAttribute("family");
         TokenQuery::create()->filterByType("verifyFamily")->filterByReferenceId($family->getId())->delete();
         $token = new Token();
@@ -64,11 +64,11 @@ $app->group('/family/{familyId:[0-9]+}', function () {
             return $response->withStatus(200);
         } else {
             LoggerUtils::getAppLogger()->error($email->getError());
-            return $response->withStatus(500, $email->getError());
+            return $response->withStatus(500, getText("Error sending email, please check logs"));
         }
     });
 
-    $this->post('/verify/now', function ($request, $response, $args) {
+    $this->get('/verify/now', function ($request, $response, $args) {
         $family = $request->getAttribute("family");
         $family->verify();
         return $response->withStatus(200);
