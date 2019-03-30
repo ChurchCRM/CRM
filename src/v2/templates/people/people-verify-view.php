@@ -21,12 +21,13 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
 <p><br/><br/></p>
 <div class="col-lg-6">
     <div class="box box-info">
-        <div class="box-header with-border">
-            <h3 class="box-title"><?= gettext('Self Update') ?> <?= gettext('Reports') ?></h3>
-            <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+        <div class="box">
+            <div class="box-header with-border">
+                <h3 class="box-title"><?= gettext('Functions') ?></h3>
+            </div>
+            <div class="box-body">
+                <a href="<?= SystemURLs::getRootPath()?>/Reports/ConfirmReport.php" class="btn btn-app"><i class="fa fa-pdf"></i><?= gettext('Confirm data letter') ?></a>
+                <a href="<?= SystemURLs::getRootPath()?>/Reports/ConfirmReportEmail.php" class="btn btn-app"><i class="fa fa-pdf"></i><?= gettext('Confirm data Email') ?></a>
             </div>
         </div>
         <div class="box-body">
