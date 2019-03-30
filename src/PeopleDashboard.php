@@ -107,7 +107,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
         </div>
        <div class="btn-group">
           <a class="btn btn-app" href="mailto:?bcc=<?= mb_substr($sEmailLink, 0, -3) ?>"><i class="fa fa-send"></i><?=gettext('Email All (BCC)') ?></a>
-           <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" >
+           <button type="button" class="btn btn-app dropdown-toggle" data-toggle="dropdown" >
             <span class="caret"></span>
             <span class="sr-only">Toggle Dropdown</span>
           </button>
