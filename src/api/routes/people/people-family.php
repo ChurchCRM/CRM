@@ -52,7 +52,7 @@ $app->group('/family/{familyId:[0-9]+}', function () {
     })->add(new EditRecordsRoleAuthMiddleware());
 
 
-    $this->get('/verify', function ($request, $response, $args) {
+    $this->post('/verify', function ($request, $response, $args) {
         $family = $request->getAttribute("family");
         TokenQuery::create()->filterByType("verifyFamily")->filterByReferenceId($family->getId())->delete();
         $token = new Token();
@@ -68,10 +68,10 @@ $app->group('/family/{familyId:[0-9]+}', function () {
         }
     });
 
-    $this->get('/verify/now', function ($request, $response, $args) {
+    $this->post('/verify/now', function ($request, $response, $args) {
         $family = $request->getAttribute("family");
         $family->verify();
-        return $response->withStatus(200);
+        return $response->withJSON(["message" => "Success"]);
     });
 
 

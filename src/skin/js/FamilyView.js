@@ -9,19 +9,21 @@ $(document).ready(function () {
 
     $("#onlineVerify").click(function () {
         window.CRM.APIRequest({
-          path: 'family/' + window.CRM.currentFamily + '/verify',
+            method : 'POST',
+            path: 'family/' + window.CRM.currentFamily + '/verify',
         }).done(function () {
-        $('#confirm-verify').modal('hide');
-        showGlobalMessage(i18next.t("Verification email sent"), "success")
+            $('#confirm-verify').modal('hide');
+            showGlobalMessage(i18next.t("Verification email sent"), "success")
         });
     });
 
     $("#verifyNow").click(function () {
         window.CRM.APIRequest({
-          path: 'family/' + window.CRM.currentFamily + '/verify/now',
+            method: 'POST',
+            path: 'family/' + window.CRM.currentFamily + '/verify/now',
         }).done(function () {
-          $('#confirm-verify').modal('hide');
-          showGlobalMessage(i18next.t("Verification recorded"), "success")
+            $('#confirm-verify').modal('hide');
+            showGlobalMessage(i18next.t("Verification recorded"), "success")
         });
     });
 
