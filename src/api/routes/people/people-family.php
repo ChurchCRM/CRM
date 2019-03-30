@@ -64,7 +64,7 @@ $app->group('/family/{familyId:[0-9]+}', function () {
             return $response->withStatus(200);
         } else {
             LoggerUtils::getAppLogger()->error($email->getError());
-            return $response->withStatus(500, getText("Error sending email, please check logs"));
+            return $response->withStatus(500)->withJSON(['message' =>  getText("Error sending email, please check logs"), "trace" => $email->getError() ]);
         }
     });
 

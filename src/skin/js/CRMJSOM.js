@@ -15,7 +15,7 @@
       }
       else
       {
-        options.dataType = 'json';	
+        options.dataType = 'json';
       }
       options.url=window.CRM.root+"/api/"+options.path;
       options.contentType =  "application/json";
@@ -527,7 +527,7 @@
         } catch(err) {
           var errortext = textStatus + " " + errorThrown;
         }
-        
+
         if ( !(textStatus == "abort" || suppressErrorDialog) ) {
           if(CRMResponse) {
              window.CRM.DisplayErrorMessage(jqXHR.url, CRMResponse);
