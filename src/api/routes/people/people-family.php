@@ -9,6 +9,7 @@ use ChurchCRM\Emails\FamilyVerificationEmail;
 use ChurchCRM\Token;
 use ChurchCRM\TokenQuery;
 use ChurchCRM\Slim\Middleware\Request\Auth\EditRecordsRoleAuthMiddleware;
+use ChurchCRM\Utils\LoggerUtils;
 
 $app->group('/family/{familyId:[0-9]+}', function () {
     $this->get('/photo', function ($request, $response, $args) {
@@ -62,7 +63,7 @@ $app->group('/family/{familyId:[0-9]+}', function () {
             $family->createTimeLineNote("verify-link");
             return $response->withStatus(200);
         } else {
-            $this->Logger->error($email->getError());
+            LoggerUtils::getAppLogger()->error($email->getError());
             return $response->withStatus(500, $email->getError());
         }
     });
