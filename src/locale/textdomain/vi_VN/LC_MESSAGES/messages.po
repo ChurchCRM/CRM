@@ -1909,10 +1909,6 @@ msgid "Intersect Results With Cart"
 msgstr "Kết quả giao với giỏ"
 
 #: 
-msgid "Address Info:"
-msgstr "Thông tin địa chỉ"
-
-#: 
 msgid "Send"
 msgstr "Gửi đi"
 
@@ -2379,10 +2375,6 @@ msgstr "Hệ thống thành viên"
 #: 
 msgid "Calendar"
 msgstr "Lịch"
-
-#: 
-msgid "Members"
-msgstr "Thành viên"
 
 #: 
 msgid "Add New Person"

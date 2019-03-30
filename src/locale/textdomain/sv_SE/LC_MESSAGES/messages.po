@@ -2755,10 +2755,6 @@ msgid "Execute Query"
 msgstr "Gör förfrågan"
 
 #: 
-msgid "Address Info:"
-msgstr "Adress info:"
-
-#: 
 msgid "Please register your copy of ChurchCRM by checking over this information and pressing the Send button.  "
 msgstr "Var snäll och anmälla din kopia av ChurchCRM igenom att kolla denna information och trycka på Skicka knappen.  "
 
