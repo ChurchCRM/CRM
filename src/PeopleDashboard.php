@@ -282,7 +282,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
           <th style="width: 40px"><?= gettext('Count') ?></th>
         </tr>
         <?php foreach ($personStats as $key => $value) {
-                  ?>
+            ?>
           <tr>
             <td><a href='SelectList.php?Sort=name&Filter=&mode=person&Classification=<?= $classifications->$key ?>'><?= gettext($key) ?></a></td>
             <td>
@@ -294,7 +294,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
             <td><span class="badge bg-green"><?= $value ?></span></td>
           </tr>
         <?php
-              } ?>
+        } ?>
       </table>
       <!-- /.box-body-->
     </div>
