@@ -87,19 +87,30 @@ class ReceivedIntentClassificationMiddleware implements Received
         $mSet =  new Set($m[0]);
         if ($mSet->contains(1)) {
             LoggerUtils::getChatBotLogger()->debug("Predicting intent of message.");
-            $prediction = $this->svcClassifier->predictProbability($m);
-            LoggerUtils::getChatBotLogger()->debug("Probability: " . json_encode($prediction));
-            $prediction = $this->svcClassifier->predict($m);
-            LoggerUtils::getChatBotLogger()->info("Incoming bot message predicted intent: " . json_encode($prediction));
-    
-            // after we've derived an intent, let's remove the intent-causing words
-            //  to find out what other context exists in the message
-            $questionVectorizer = new TokenCountVectorizer(new WordTokenizer());
-            LoggerUtils::getChatBotLogger()->debug(json_encode($m));
-            $questionVectorizer->fit([$message->getText()]);
-            LoggerUtils::getChatBotLogger()->debug("Question tokenized");
+            $predictionProbabilities = $this->svcClassifier->predictProbability($m);
+            LoggerUtils::getChatBotLogger()->debug("Probability: " . json_encode($predictionProbabilities));
+            $prediction = $this->svcClassifier->predict($m)[0];
+            LoggerUtils::getChatBotLogger()->info("Incoming bot message predicted intent: " . $prediction);
+           
+            // Ensure the SVC is at least 50% sure of the predicted probability
+            if ($predictionProbabilities[0][$prediction] > .5) {
+                $message->addExtras("MatchedIntent", $this->intentsReference[$prediction]);
+            }
+            else {
+                LoggerUtils::getChatBotLogger()->info("Not usign prediciton; chance too low: " . $predictionProbabilities[0][$prediction]);
+            }
 
-            $message->addExtras("MatchedIntent", $this->intentsReference[$prediction[0]]);
+            
+            if (false) {
+                // after we've derived an intent, let's remove the intent-causing words
+                //  to find out what other context exists in the message
+                $questionVectorizer = new TokenCountVectorizer(new WordTokenizer());
+                LoggerUtils::getChatBotLogger()->debug(json_encode($m));
+                $questionVectorizer->fit([$message->getText()]);
+                LoggerUtils::getChatBotLogger()->debug("Question tokenized");
+            }
+
+            
         } else {
             LoggerUtils::getChatBotLogger()->debug("No vocabulary words matched in incoming message.  Not attempting prediction");
         }
