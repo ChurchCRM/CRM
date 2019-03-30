@@ -171,7 +171,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
     </div>
   </div>
   <?php if (SystemConfig::getValue('bEnabledSundaySchool')) {
-         ?> 
+         ?>
   <!-- ./col -->
   <div class="col-lg-3 col-md-6 col-sm-6">
     <!-- small box -->
@@ -231,6 +231,10 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
           </div>
       </div>
       <div class="box-body">
+        <p> <a class="MediumText" href="members/self-register.php"><?php echo gettext('Self Register') ?> <?= gettext('Reports') ?></a>
+        <br>
+        <?php echo gettext('List families that were created via self registration.') ?>
+       </p>
         <a class="MediumText" href="GroupReports.php"><?php echo gettext('Reports on groups and roles'); ?></a>
         <br>
         <?php echo gettext('Report on group and roles selected (it may be a multi-page PDF).'); ?>
@@ -257,24 +261,43 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
       </div>
     </div>
   </div>
-    <div class="col-lg-6">
-        <div class="box box-info">
-            <div class="box-header with-border">
-                <h3 class="box-title"><?= gettext('Self Update') ?> <?= gettext('Reports') ?></h3>
-                <div class="box-tools pull-right">
-                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                    </button>
-                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-                </div>
-            </div>
-            <div class="box-body">
-               <p> <a class="MediumText" href="members/self-register.php"><?php echo gettext('Self Register') ?> <?= gettext('Reports') ?></a>
-                <br>
-                <?php echo gettext('List families that were created via self registration.') ?>
-               </p>
-            </div>
+  <div class="col-lg-6">
+      <div class="box box-primary">
+      <div class="box-header with-border">
+        <i class="fa fa-bar-chart-o"></i>
+
+        <h3 class="box-title"><?= gettext('People Classification') ?></h3>
+
+        <div class="box-tools pull-right">
+          <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+          </button>
+          <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
         </div>
+      </div>
+      <table class="table table-condensed">
+        <tr>
+          <th><?= gettext('Classification') ?></th>
+          <th>% <?= gettext('of People') ?></th>
+          <th style="width: 40px"><?= gettext('Count') ?></th>
+        </tr>
+        <?php foreach ($personStats as $key => $value) {
+                  ?>
+          <tr>
+            <td><a href='SelectList.php?Sort=name&Filter=&mode=person&Classification=<?= $classifications->$key ?>'><?= gettext($key) ?></a></td>
+            <td>
+              <div class="progress progress-xs progress-striped active">
+                <div class="progress-bar progress-bar-success"
+                     style="width: <?= round($value / $personCount['personCount'] * 100) ?>%"></div>
+              </div>
+            </td>
+            <td><span class="badge bg-green"><?= $value ?></span></td>
+          </tr>
+        <?php
+              } ?>
+      </table>
+      <!-- /.box-body-->
     </div>
+  </div>
 </div>
 <div class="row">
   <div class="col-lg-6">
@@ -394,41 +417,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
     </div>
   </div>
   <div class="col-lg-6">
-    <div class="box box-primary">
-      <div class="box-header with-border">
-        <i class="fa fa-bar-chart-o"></i>
 
-        <h3 class="box-title"><?= gettext('People Classification') ?></h3>
-
-        <div class="box-tools pull-right">
-          <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-          </button>
-          <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-        </div>
-      </div>
-      <table class="table table-condensed">
-        <tr>
-          <th><?= gettext('Classification') ?></th>
-          <th>% <?= gettext('of People') ?></th>
-          <th style="width: 40px"><?= gettext('Count') ?></th>
-        </tr>
-        <?php foreach ($personStats as $key => $value) {
-                  ?>
-          <tr>
-            <td><a href='SelectList.php?Sort=name&Filter=&mode=person&Classification=<?= $classifications->$key ?>'><?= gettext($key) ?></a></td>
-            <td>
-              <div class="progress progress-xs progress-striped active">
-                <div class="progress-bar progress-bar-success"
-                     style="width: <?= round($value / $personCount['personCount'] * 100) ?>%"></div>
-              </div>
-            </td>
-            <td><span class="badge bg-green"><?= $value ?></span></td>
-          </tr>
-        <?php
-              } ?>
-      </table>
-      <!-- /.box-body-->
-    </div>
     <div class="box box-info">
       <div class="box-header">
         <i class="fa fa-address-card-o"></i>
@@ -512,7 +501,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
 
         var pieChartCanvas = $("#gender-donut").get(0).getContext("2d");
         var pieChart = new Chart(pieChartCanvas);
-     
+
 
         //Create pie or douhnut chart
         // You can switch between pie and douhnut using the method below.
