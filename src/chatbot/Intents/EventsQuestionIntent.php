@@ -7,14 +7,14 @@ use ChurchCRM\EventQuery;
 
 Class EventsQuestionIntent extends ChatbotIntent{
     public function getSamples() {
-        return array_merge([
+        return [
             'time',
             'when',
             'events',
             'upcoming',
             'calendar',
             "happening"
-        ],$this->getPastTenseSamples(),$this->getPresentTenseSamples());
+        ];
         
     }
     public function getLabel() { 
@@ -23,28 +23,7 @@ Class EventsQuestionIntent extends ChatbotIntent{
 
     public function getResponse() {
         return "Eventually";
-    }
-
-    protected function getPresentTenseSamples() {
-        return [ 'this', 
-        'today',
-        'tomorrow',
-        'future',
-        'next'];
-    }
-
-
-    protected function getPastTenseSamples() {
-        return [ 'past',
-        'yesterday',
-        'earlier',
-        'last week'];
-        
-        /* $earlier = new \DateTime();
-            $di = new DateInterval('P7D');
-            $di->invert = 1;
-            $earlier->add($di);.*/
-    }
+    }  
 
     public function heard(IncomingMessage $message, $next, BotMan $bot) {
         // add records to the log
@@ -54,23 +33,21 @@ Class EventsQuestionIntent extends ChatbotIntent{
         return $next($message);
     }
 
-    private function EventsToString() {
+    protected function EventsToString(\DateTime $StartDate, \DateTime $EndDate) {
         $logger = LoggerUtils::getChatBotLogger();
         try {
             
             /** @var ChurchCRM\EventQuery $events */
-            $now = new \DateTime();
-            $later = new \DateTime();
-            $later->add(new DateInterval('P7D'));
-            $logger->info("looking for events between " . $now->format('Y-m-d H:i:s') . " and " . $later->format('Y-m-d H:i:s'));
+         
+            $logger->info("looking for events between " . $StartDate->format('Y-m-d H:i:s') . " and " . $EndDate->format('Y-m-d H:i:s'));
             $events  = EventQuery::Create() 
                 -> orderByStart() 
-                ->filterByStart(array("min" => $now))
-                ->filterByEnd(array("max" => $later))
+                ->filterByStart(array("min" => $StartDate))
+                ->filterByEnd(array("max" => $EndDate))
                 ->find();
 
             $strings = [];
-            $strings[0]  = "Found " . count($events) . " events between " . $now->format('Y-m-d H:i:s') . " and " . $later->format('Y-m-d H:i:s');
+            $strings[0]  = "Found " . count($events) . " events between " . $StartDate->format('Y-m-d H:i:s') . " and " . $EndDate->format('Y-m-d H:i:s');
             $i = 1;
             foreach($events as $event)
             {
