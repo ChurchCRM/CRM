@@ -95,8 +95,7 @@ class ReceivedIntentClassificationMiddleware implements Received
             // Ensure the SVC is at least 50% sure of the predicted probability
             if ($predictionProbabilities[0][$prediction] > .5) {
                 $message->addExtras("MatchedIntent", $this->intentsReference[$prediction]);
-            }
-            else {
+            } else {
                 LoggerUtils::getChatBotLogger()->info("Not usign prediciton; chance too low: " . $predictionProbabilities[0][$prediction]);
             }
 
@@ -109,8 +108,6 @@ class ReceivedIntentClassificationMiddleware implements Received
                 $questionVectorizer->fit([$message->getText()]);
                 LoggerUtils::getChatBotLogger()->debug("Question tokenized");
             }
-
-            
         } else {
             LoggerUtils::getChatBotLogger()->debug("No vocabulary words matched in incoming message.  Not attempting prediction");
         }
