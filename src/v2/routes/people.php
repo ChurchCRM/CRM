@@ -18,5 +18,11 @@ function viewPeopleVerify(Request $request, Response $response, array $args)
         'sRootPath' => SystemURLs::getRootPath(),
     ];
 
+    if ($request->getParam("EmailsError")) {
+        array_merge($pageArgs, ['sGlobalMessage' =>"Eamil Error"]);
+    }
+
+
+
     return $renderer->render($response, 'people-verify-view.php', $pageArgs);
 }

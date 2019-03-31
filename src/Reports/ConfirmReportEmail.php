@@ -340,6 +340,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
             $familiesEmailed = $familiesEmailed + 1;
         } else {
             LoggerUtils::getAppLogger()->error($mail->getError());
+            RedirectUtils::Redirect(SystemURLs::getRootPath().'/v2/people/verify?EmailsError='. $familiesEmailed);
         }
     }
 }
@@ -347,5 +348,5 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
 if ($_GET['familyId']) {
     RedirectUtils::Redirect('FamilyView.php?FamilyID='.$_GET['familyId'].'&PDFEmailed='.$familyEmailSent);
 } else {
-    RedirectUtils::Redirect(SystemURLs::getRootPath().'/v2/family?AllPDFsEmailed='.$familiesEmailed);
+    RedirectUtils::Redirect(SystemURLs::getRootPath().'/v2/people/verify?EmailsSent='. $familiesEmailed);
 }
