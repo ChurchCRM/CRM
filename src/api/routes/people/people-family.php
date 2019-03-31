@@ -9,6 +9,7 @@ use ChurchCRM\Emails\FamilyVerificationEmail;
 use ChurchCRM\Token;
 use ChurchCRM\TokenQuery;
 use ChurchCRM\Slim\Middleware\Request\Auth\EditRecordsRoleAuthMiddleware;
+use ChurchCRM\Utils\LoggerUtils;
 
 $app->group('/family/{familyId:[0-9]+}', function () {
     $this->get('/photo', function ($request, $response, $args) {
@@ -38,7 +39,7 @@ $app->group('/family/{familyId:[0-9]+}', function () {
         $geoLocationInfo = array_merge($familyDrivingInfo, $familyLatLong);
         return $response->withJson($geoLocationInfo);
     });
-    
+
      $this->post('/photo', function ($request, $response, $args) {
         $input = (object)$request->getParsedBody();
         $family = $request->getAttribute("family");
@@ -62,15 +63,15 @@ $app->group('/family/{familyId:[0-9]+}', function () {
             $family->createTimeLineNote("verify-link");
             return $response->withStatus(200);
         } else {
-            $this->Logger->error($email->getError());
-            return $response->withStatus(500, $email->getError());
+            LoggerUtils::getAppLogger()->error($email->getError());
+            return $response->withStatus(500)->withJSON(['message' =>  getText("Error sending email, please check logs"), "trace" => $email->getError() ]);
         }
     });
 
     $this->post('/verify/now', function ($request, $response, $args) {
         $family = $request->getAttribute("family");
         $family->verify();
-        return $response->withStatus(200);
+        return $response->withJSON(["message" => "Success"]);
     });
 
 
