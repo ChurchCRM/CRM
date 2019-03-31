@@ -18,11 +18,10 @@ function viewPeopleVerify(Request $request, Response $response, array $args)
         'sRootPath' => SystemURLs::getRootPath(),
     ];
 
-    if ($request->getParam("EmailsError")) {
-        array_merge($pageArgs, ['sGlobalMessage' =>"Eamil Error"]);
+    if ($request->getQueryParam("EmailsError")) {
+        $errorArgs = ['sGlobalMessage' => gettext("Error sending email(s)") . " - " . gettext("Please check logs for more information"), "sGlobalMessageClass" => "danger"];
+        $pageArgs =  array_merge($pageArgs, $errorArgs);
     }
-
-
 
     return $renderer->render($response, 'people-verify-view.php', $pageArgs);
 }
