@@ -19,6 +19,7 @@ use ChurchCRM\Emails\FamilyVerificationEmail;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\LoggerUtils;
 
 class EmailPDF_ConfirmReport extends ChurchInfoReport
 {
@@ -338,7 +339,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
         if ($mail->send()) {
             $familiesEmailed = $familiesEmailed + 1;
         } else {
-            $logger->error($mail->getError());
+            LoggerUtils::getAppLogger()->error($mail->getError());
         }
     }
 }
