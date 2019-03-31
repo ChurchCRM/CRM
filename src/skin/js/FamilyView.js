@@ -32,7 +32,10 @@ $(document).ready(function () {
             path: 'family/' + window.CRM.currentFamily + '/verify/url',
         }).done(function (data) {
             $('#confirm-verify').modal('hide');
-            alert(data.url);
+            bootbox.alert({
+                title: i18next.t("Verification URL"),
+                message: "<a href='"+data.url+"'>"+data.url+"</a>"
+            });
         });
     });
 
