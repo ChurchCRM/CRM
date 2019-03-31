@@ -10,6 +10,7 @@ use ChurchCRM\Token;
 use ChurchCRM\TokenQuery;
 use ChurchCRM\Slim\Middleware\Request\Auth\EditRecordsRoleAuthMiddleware;
 use ChurchCRM\Utils\LoggerUtils;
+use ChurchCRM\dto\SystemURLs;
 
 $app->group('/family/{familyId:[0-9]+}', function () {
     $this->get('/photo', function ($request, $response, $args) {
@@ -66,6 +67,16 @@ $app->group('/family/{familyId:[0-9]+}', function () {
             LoggerUtils::getAppLogger()->error($email->getError());
             return $response->withStatus(500)->withJSON(['message' =>  getText("Error sending email, please check logs"), "trace" => $email->getError() ]);
         }
+    });
+
+    $this->get('/verify/url', function ($request, $response, $args) {
+        $family = $request->getAttribute("family");
+        TokenQuery::create()->filterByType("verifyFamily")->filterByReferenceId($family->getId())->delete();
+        $token = new Token();
+        $token->build("verifyFamily", $family->getId());
+        $token->save();
+        $family->createTimeLineNote("verify-link");
+        return $response->withJSON(["url" => SystemURLs::getRootPath(). "/external/verify/".$token.getToken()]);
     });
 
     $this->post('/verify/now', function ($request, $response, $args) {
