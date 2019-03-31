@@ -3,6 +3,9 @@
 use Propel\Runtime\ActiveQuery\Criteria;
 use ChurchCRM\dto\SystemURLs;
 
+//$sGlobalMessage = "xxx";
+//$sGlobalMessageClass = "danger";
+
 //Set the page title
 $sPageTitle = gettext(ucfirst($sMode)) . ' ' . gettext('People Verify Dashboard');
 include SystemURLs::getDocumentRoot() . '/Include/Header.php';
