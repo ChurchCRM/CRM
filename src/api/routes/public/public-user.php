@@ -44,7 +44,7 @@ function userPasswordReset(Request $request, Response $response, array $args)
             $token->save();
             $email = new ResetPasswordTokenEmail($user, $token->getToken());
             if (!$email->send()) {
-                $logger->error($email->getError());
+                LoggerUtils::getAppLogger()->error($email->getError());
             }
             return $response->withStatus(200);
         } else {

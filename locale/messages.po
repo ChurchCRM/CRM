@@ -10,7 +10,7 @@ msgstr ""
 "#-#-#-#-#  messages.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-23 07:26+0000\n"
+"POT-Creation-Date: 2019-03-30 22:41+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,8 +24,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2019-02-23T07:26:56.018Z\n"
-"PO-Revision-Date: 2019-02-23T07:26:56.018Z\n"
+"POT-Creation-Date: 2019-03-30T22:41:56.490Z\n"
+"PO-Revision-Date: 2019-03-30T22:41:56.490Z\n"
 
 msgid "Backup Database"
 msgstr ""
@@ -3577,12 +3577,6 @@ msgstr ""
 msgid "Newsletter labels"
 msgstr ""
 
-msgid "Confirm data letter"
-msgstr ""
-
-msgid "Confirm data Email"
-msgstr ""
-
 msgid "Confirm data labels"
 msgstr ""
 
@@ -3899,6 +3893,9 @@ msgstr ""
 msgid "All People"
 msgstr ""
 
+msgid "Verify People"
+msgstr ""
+
 msgid "Email All"
 msgstr ""
 
@@ -3918,6 +3915,12 @@ msgid "Sunday School Kids"
 msgstr ""
 
 msgid "Reports"
+msgstr ""
+
+msgid "Self Register"
+msgstr ""
+
+msgid "List families that were created via self registration."
 msgstr ""
 
 msgid "Reports on groups and roles"
@@ -3943,28 +3946,7 @@ msgid ""
 "Service Standard Address Format.<br>"
 msgstr ""
 
-msgid "Self Update"
-msgstr ""
-
-msgid "Self Register"
-msgstr ""
-
-msgid "List families that were created via self registration."
-msgstr ""
-
-msgid "Self Verify Updates"
-msgstr ""
-
-msgid "Families who commented via self verify links"
-msgstr ""
-
-msgid "Pending Self Verify"
-msgstr ""
-
-msgid "Families with valid self verify links"
-msgstr ""
-
-msgid "Role / Gender"
+msgid "People Classification"
 msgstr ""
 
 msgid "of People"
@@ -3973,7 +3955,7 @@ msgstr ""
 msgid "Count"
 msgstr ""
 
-msgid "People Classification"
+msgid "Role / Gender"
 msgstr ""
 
 msgid "Gender Demographics"
@@ -4411,9 +4393,6 @@ msgid "Run Query Again"
 msgstr ""
 
 msgid "Execute Query"
-msgstr ""
-
-msgid "Address Info:"
 msgstr ""
 
 msgid "Software Registration"
@@ -5387,9 +5366,6 @@ msgstr ""
 msgid "Self Registrations"
 msgstr ""
 
-msgid "Self Verify"
-msgstr ""
-
 msgid "Public Calendar"
 msgstr ""
 
@@ -5734,6 +5710,21 @@ msgid "This Family is Deactivated"
 msgstr ""
 
 msgid "Metadata"
+msgstr ""
+
+msgid "People Verify Dashboard"
+msgstr ""
+
+msgid "Download family letters"
+msgstr ""
+
+msgid "Send family email"
+msgstr ""
+
+msgid "Self Verify"
+msgstr ""
+
+msgid "Pending Self Verify"
 msgstr ""
 
 msgid "Family Member Count"
@@ -6978,10 +6969,7 @@ msgstr ""
 msgid "Details"
 msgstr ""
 
-msgid "Failed to send verification email"
-msgstr ""
-
-msgid "Failed to add verification"
+msgid "Verification recorded"
 msgstr ""
 
 msgid "Family Photo"
