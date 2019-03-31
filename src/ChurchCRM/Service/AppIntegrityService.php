@@ -133,12 +133,6 @@ class AppIntegrityService
       new Prerequisite('Mysqli Functions', function() { return function_exists('mysqli_connect'); })
     );
 
-
-    if (version_compare(PHP_VERSION, '5.6', '<=')) {
-     array_push($prerequisites,   new Prerequisite('Mcrypt', function () {
-            return extension_loaded('mcrypt');
-        }));
-    }
     return $prerequisites;
   }
   
