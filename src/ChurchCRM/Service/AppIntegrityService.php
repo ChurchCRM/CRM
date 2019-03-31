@@ -30,14 +30,14 @@ class AppIntegrityService
         AppIntegrityService::$IntegrityCheckDetails->message = gettext("integrityCheck.json file missing");
       }
     }
-    else { 
+    else {
       LoggerUtils::getAppLogger()->debug('Integrity check results already cached; not reloading from file');
     }
-    
+
     return AppIntegrityService::$IntegrityCheckDetails;
-    
+
   }
-  
+
   public static function getIntegrityCheckStatus () {
     if (AppIntegrityService::getIntegrityCheckData()->status == "failure")
     {
@@ -47,7 +47,7 @@ class AppIntegrityService
       return gettext("Passed");
     }
   }
-  
+
   public static function getIntegrityCheckMessage() {
     if (AppIntegrityService::getIntegrityCheckData()->status != "failure")
     {
@@ -55,10 +55,10 @@ class AppIntegrityService
     }
 
     return AppIntegrityService::$IntegrityCheckDetails->message;
-    
+
   }
-  
-  public static function getFilesFailingIntegrityCheck() { 
+
+  public static function getFilesFailingIntegrityCheck() {
     return AppIntegrityService::getIntegrityCheckData()->files;
   }
   public static function verifyApplicationIntegrity()
@@ -101,10 +101,10 @@ class AppIntegrityService
       return ['status' => 'success'];
     }
   }
-  
+
   private static function testImagesWriteable()
   {
-    return is_writable(SystemURLs::getDocumentRoot().'/Images/') && 
+    return is_writable(SystemURLs::getDocumentRoot().'/Images/') &&
             is_writable(SystemURLs::getDocumentRoot().'/Images/Family') &&
             is_writable(SystemURLs::getDocumentRoot().'/Images/Person');
 
@@ -112,7 +112,7 @@ class AppIntegrityService
 
   public static function getApplicationPrerequisites()
   {
-    
+
     $prerequisites = array(
       new Prerequisite('PHP 7.0+', function() { return version_compare(PHP_VERSION, '7.0.0', '>='); }),
       new Prerequisite('PCRE and UTF-8 Support', function() { return function_exists('preg_match') && @preg_match('/^.$/u', 'ñ') && @preg_match('/^\pL$/u', 'ñ'); }),
@@ -122,7 +122,6 @@ class AppIntegrityService
       new Prerequisite('PHP XML', function() { return extension_loaded('xml'); }),
       new Prerequisite('PHP EXIF', function() { return extension_loaded('exif'); }),
       new Prerequisite('PHP iconv', function() { return extension_loaded('iconv'); }),
-      new Prerequisite('Mcrypt', function() { return extension_loaded('mcrypt'); }),
       new Prerequisite('Mod Rewrite', function() { return AppIntegrityService::hasModRewrite(); }),
       new Prerequisite('GD Library for image manipulation', function() { return (extension_loaded('gd') && function_exists('gd_info')); }),
       new Prerequisite('FileInfo Extension for image manipulation', function() { return extension_loaded('fileinfo'); }),
@@ -133,12 +132,13 @@ class AppIntegrityService
       new Prerequisite('PHP ZipArchive', function() { return extension_loaded('zip'); }),
       new Prerequisite('Mysqli Functions', function() { return function_exists('mysqli_connect'); })
     );
+    
     return $prerequisites;
   }
-  
+
   public static function getUnmetPrerequisites()
   {
-    return array_filter(AppIntegrityService::getApplicationPrerequisites(), function ($prereq) { 
+    return array_filter(AppIntegrityService::getApplicationPrerequisites(), function ($prereq) {
       return ! $prereq->IsPrerequisiteMet();
     });
   }
@@ -165,7 +165,7 @@ class AppIntegrityService
     // Third, finally try calling a known invalid URL on this installation
     //   and check for a header that would only be present if .htaccess was processed.
     //   This header comes from index.php (which is the target of .htaccess for invalid URLs)
-    
+
     $check = AppIntegrityService::hasApacheModule('mod_rewrite');
 
     if (!$check && function_exists('shell_exec')) {
@@ -173,13 +173,13 @@ class AppIntegrityService
     }
 
     if ( function_exists('curl_version')) {
-        $ch = curl_init(); 
-        curl_setopt($ch, CURLOPT_URL, $_SERVER['HTTP_HOST'] . SystemURLs::getRootPath()."/INVALID"); 
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $_SERVER['HTTP_HOST'] . SystemURLs::getRootPath()."/INVALID");
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($ch, CURLOPT_HEADER, 1);
         curl_setopt($ch, CURLOPT_NOBODY, 1);
-        $output = curl_exec($ch); 
-        curl_close($ch);      
+        $output = curl_exec($ch);
+        curl_close($ch);
         $headers=array();
         $data=explode("\n",$output);
         $headers['status']=$data[0];
@@ -191,7 +191,7 @@ class AppIntegrityService
               $headers[trim($middle[0])] = trim($middle[1]);
             }
         }
-        $check =  $headers['CRM'] == "would redirect";      
+        $check =  $headers['CRM'] == "would redirect";
       }
 
       return $check;
