@@ -75,7 +75,7 @@ $app->group('/family/{familyId:[0-9]+}', function () {
         $token = new Token();
         $token->build("verifyFamily", $family->getId());
         $token->save();
-        $family->createTimeLineNote("verify-link");
+        $family->createTimeLineNote("verify-URL");
         return $response->withJSON(["url" => SystemURLs::getURL(). "external/verify/".$token->getToken()]);
     });
 
