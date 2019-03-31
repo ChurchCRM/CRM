@@ -340,7 +340,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
             $familiesEmailed = $familiesEmailed + 1;
         } else {
             LoggerUtils::getAppLogger()->error($mail->getError());
-            RedirectUtils::Redirect(SystemURLs::getRootPath().'/v2/people/verify?EmailsError='. $familiesEmailed);
+            RedirectUtils::Redirect(SystemURLs::getRootPath().'/v2/people/verify?EmailsError=true');
         }
     }
 }
