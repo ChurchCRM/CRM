@@ -122,7 +122,6 @@ class AppIntegrityService
       new Prerequisite('PHP XML', function() { return extension_loaded('xml'); }),
       new Prerequisite('PHP EXIF', function() { return extension_loaded('exif'); }),
       new Prerequisite('PHP iconv', function() { return extension_loaded('iconv'); }),
-      new Prerequisite('Mcrypt', function() { return extension_loaded('mcrypt'); }),
       new Prerequisite('Mod Rewrite', function() { return AppIntegrityService::hasModRewrite(); }),
       new Prerequisite('GD Library for image manipulation', function() { return (extension_loaded('gd') && function_exists('gd_info')); }),
       new Prerequisite('FileInfo Extension for image manipulation', function() { return extension_loaded('fileinfo'); }),
@@ -133,6 +132,13 @@ class AppIntegrityService
       new Prerequisite('PHP ZipArchive', function() { return extension_loaded('zip'); }),
       new Prerequisite('Mysqli Functions', function() { return function_exists('mysqli_connect'); })
     );
+
+
+    if (version_compare(PHP_VERSION, '5.6', '<=')) {
+     array_push($prerequisites,   new Prerequisite('Mcrypt', function () {
+            return extension_loaded('mcrypt');
+        }));
+    }
     return $prerequisites;
   }
   
