@@ -1,10 +1,6 @@
 <?php
 
-
-use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\FamilyQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
-use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\dto\SystemURLs;
 
 //Set the page title
