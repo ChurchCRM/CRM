@@ -27,6 +27,18 @@ $(document).ready(function () {
         });
     });
 
+    $("#verifyURL").click(function () {
+        window.CRM.APIRequest({
+            path: 'family/' + window.CRM.currentFamily + '/verify/url',
+        }).done(function (data) {
+            $('#confirm-verify').modal('hide');
+            bootbox.alert({
+                title: i18next.t("Verification URL"),
+                message: "<a href='"+data.url+"'>"+data.url+"</a>"
+            });
+        });
+    });
+
 
     $("#verifyDownloadPDF").click(function () {
         window.open(window.CRM.root + '/Reports/ConfirmReport.php?familyId=' + window.CRM.currentFamily, '_blank');

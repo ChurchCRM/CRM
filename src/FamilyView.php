@@ -855,8 +855,10 @@ $bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() || ($_SESSION['user']->i
                     </button>
                     <?php
     } ?>
+                <button type="button" id="verifyURL"
+                        class="btn btn-default"><i class="fa fa-chain"></i> <?= gettext("URL") ?></button>
                 <button type="button" id="verifyDownloadPDF"
-                        class="btn btn-info"><i class="fa fa-download"></i> <?= gettext("PDF Report") ?></button>
+                        class="btn btn-info"><i class="fa fa-download"></i> <?= gettext("PDF") ?></button>
                 <button type="button" id="verifyNow"
                         class="btn btn-success"><i class="fa fa-check"></i> <?= gettext("Verified In Person") ?>
                 </button>
