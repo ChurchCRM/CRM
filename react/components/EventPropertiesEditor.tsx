@@ -7,7 +7,7 @@ import Select from 'react-select';
 import DatePicker from 'react-datepicker';
 
 
-const EventPropertiesEditor: React.FunctionComponent<{ event: CRMEvent, calendars: Array<Calendar>, eventTypes: Array<EventType>, changeHandler: (event:React.ChangeEvent)=>void, handleStartDateChange: (date: any)=>void, handleEndDateChange: (date: any)=>void,  pinnedCalendarChanged: (event: Array<Object>) => void, eventTypeChanged: (event: Array<Object>) => void, isFormComplete: () => boolean }> = ({ event, calendars, eventTypes, changeHandler, handleStartDateChange, handleEndDateChange, pinnedCalendarChanged, eventTypeChanged, isFormComplete }) => {
+const EventPropertiesEditor: React.FunctionComponent<{ event: CRMEvent, calendars: Array<Calendar>, eventTypes: Array<EventType>, changeHandler: (event:React.ChangeEvent)=>void, handleStartDateChange: (date: any)=>void, handleEndDateChange: (date: any)=>void,  pinnedCalendarChanged: (event: Array<Object>) => void, eventTypeChanged: (event: Array<Object>) => void}> = ({ event, calendars, eventTypes, changeHandler, handleStartDateChange, handleEndDateChange, pinnedCalendarChanged, eventTypeChanged}) => {
   //map the Calendar data type (returned from CRM API) into something that react-select can present as dropdown choices
   var calendarOptions=calendars.map((Pcal:Calendar) => ({value: Pcal.Id,  label: Pcal.Name}) );
   var EventTypeOptions=eventTypes.map((eventType:EventType) => ({value: eventType.Id,  label: eventType.Name}) );

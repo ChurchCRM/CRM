@@ -196,7 +196,7 @@ class ExistingEvent extends React.Component<EventFormProps, EventFormState> {
       <span className={this.state.event.Title.length ==0 ? "RequiredFormFieldUnsatisfied" : "RequiredFormFieldSatisfied"}>{window.i18next.t('This field is required')}</span>
       </Modal.Header>
       <Modal.Body>
-        <EventPropertiesEditor event={this.state.event} calendars={this.state.calendars} eventTypes={this.state.eventTypes} changeHandler={this.handleInputChange} handleStartDateChange={this.handleStartDateChange}  handleEndDateChange={this.handleEndDateChange} pinnedCalendarChanged={this.updatePinnedCalendar} eventTypeChanged={this.updateEventType} isFormComplete={this.isFormComplete} />
+        <EventPropertiesEditor event={this.state.event} calendars={this.state.calendars} eventTypes={this.state.eventTypes} changeHandler={this.handleInputChange} handleStartDateChange={this.handleStartDateChange}  handleEndDateChange={this.handleEndDateChange} pinnedCalendarChanged={this.updatePinnedCalendar} eventTypeChanged={this.updateEventType} />
       </Modal.Body>
       <Modal.Footer>
         <button disabled={!this.isFormComplete()} className="btn btn-success" onClick={this.save}>Save</button>
