@@ -1,0 +1,26 @@
+FROM php:7-fpm-alpine
+MAINTAINER ChurchCRM
+
+ENV CHURCHCRM_VERSION 3.3.2
+
+# Install dependencies
+RUN apk update && \
+    apk add --no-cache libxml2-dev gettext-dev libpng-dev freetype-dev libjpeg-turbo-dev libzip-dev
+RUN docker-php-ext-install -j$(nproc) xml exif pdo_mysql gettext iconv mysqli zip && \
+    docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ && \
+    docker-php-ext-install -j$(nproc) gd
+
+# Configure PHP
+RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
+ADD uploads.conf "$PHP_INI_DIR/conf.d/"
+
+# Download and install ChurchCRM
+WORKDIR /tmp
+RUN curl -LO https://github.com/ChurchCRM/CRM/releases/download/${CHURCHCRM_VERSION}/ChurchCRM-${CHURCHCRM_VERSION}.zip
+RUN unzip ChurchCRM-${CHURCHCRM_VERSION}.zip
+RUN mv churchcrm/* /var/www/html/
+RUN rm -fr ChurchCRM-${CHURCHCRM_VERSION}.zip churchcrm
+
+# Configure image
+WORKDIR /var/www/html
+VOLUME /var/www/html
