@@ -129,6 +129,11 @@ class ExistingEvent extends React.Component<EventFormProps, EventFormState> {
     });
   }
 
+  isFormComplete(): boolean {
+    return this.state.event.PinnedCalendars.length >0 && this.state.event.Title.length >0 && this.state.event.Start != null && this.state.event.End != null;
+          
+  }
+
   exit() {
     this.props.onClose()
   }
@@ -188,12 +193,13 @@ class ExistingEvent extends React.Component<EventFormProps, EventFormState> {
     <Modal show={true} onHide={function () { }} >
       <Modal.Header>
       <input name="Title" value={this.state.event.Title} onChange={this.handleInputChange} placeholder={window.i18next.t("Event Title")}/>
+      <span className={this.state.event.Title.length ==0 ? "RequiredFormFieldUnsatisfied" : "RequiredFormFieldSatisfied"}>{window.i18next.t('This field is required')}</span>
       </Modal.Header>
       <Modal.Body>
-        <EventPropertiesEditor event={this.state.event} calendars={this.state.calendars} eventTypes={this.state.eventTypes} changeHandler={this.handleInputChange} handleStartDateChange={this.handleStartDateChange}  handleEndDateChange={this.handleEndDateChange} pinnedCalendarChanged={this.updatePinnedCalendar} eventTypeChanged={this.updateEventType} />
+        <EventPropertiesEditor event={this.state.event} calendars={this.state.calendars} eventTypes={this.state.eventTypes} changeHandler={this.handleInputChange} handleStartDateChange={this.handleStartDateChange}  handleEndDateChange={this.handleEndDateChange} pinnedCalendarChanged={this.updatePinnedCalendar} eventTypeChanged={this.updateEventType} isFormComplete={this.isFormComplete} />
       </Modal.Body>
       <Modal.Footer>
-        <button className="btn btn-success" onClick={this.save}>Save</button>
+        <button disabled={!this.isFormComplete()} className="btn btn-success" onClick={this.save}>Save</button>
         <button className="btn btn-danger pull-left" onClick={this.delete}>Delete</button>
         <button className="btn btn-default pull-right" onClick={this.exit}>Cancel</button>
       </Modal.Footer>
