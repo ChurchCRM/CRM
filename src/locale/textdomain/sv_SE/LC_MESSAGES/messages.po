@@ -2055,10 +2055,6 @@ msgid "Newsletter labels"
 msgstr "Nyhetsbrev etikett"
 
 #: 
-msgid "Confirm data letter"
-msgstr "Bekräfta informations-brev"
-
-#: 
 msgid "Confirm data labels"
 msgstr "Bekräfta informations etikett"
 

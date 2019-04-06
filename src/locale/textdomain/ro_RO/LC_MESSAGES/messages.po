@@ -2038,10 +2038,6 @@ msgid "Newsletter labels"
 msgstr "Etichetele Newsletter"
 
 #: 
-msgid "Confirm data letter"
-msgstr "Confirmați scrisoare de date"
-
-#: 
 msgid "Confirm data labels"
 msgstr "Confirmați etichete de date"
 

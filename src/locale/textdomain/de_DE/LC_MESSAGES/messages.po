@@ -2313,14 +2313,6 @@ msgid "Newsletter labels"
 msgstr "Newsletter Adressaufkleber"
 
 #: 
-msgid "Confirm data letter"
-msgstr "Bestätige Datenbrief"
-
-#: 
-msgid "Confirm data Email"
-msgstr "Bestätige Emaildaten"
-
-#: 
 msgid "Confirm data labels"
 msgstr "Bestätige Datenaufkleber"
 
@@ -5731,10 +5723,6 @@ msgstr "Arbeitsmail"
 #: 
 msgid "Visit our Site"
 msgstr "Besuche unsere Seite"
-
-#: 
-msgid "PDF Report"
-msgstr "PDF Bericht"
 
 #: 
 msgid "None State"

@@ -2043,10 +2043,6 @@ msgid "Newsletter labels"
 msgstr "Naklejki Newsletter"
 
 #: 
-msgid "Confirm data letter"
-msgstr "Potwierdź data letter"
-
-#: 
 msgid "Confirm data labels"
 msgstr "Potwierdź data labels"
 

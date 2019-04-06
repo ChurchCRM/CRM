@@ -2027,10 +2027,6 @@ msgid "Newsletter labels"
 msgstr "Информационный бюллетень этикетки"
 
 #: 
-msgid "Confirm data letter"
-msgstr "Подтвердите письмо данных"
-
-#: 
 msgid "Confirm data labels"
 msgstr "Подтвердите метки данных"
 

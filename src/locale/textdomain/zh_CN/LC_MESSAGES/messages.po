@@ -2352,14 +2352,6 @@ msgid "Newsletter labels"
 msgstr "通讯标签"
 
 #: 
-msgid "Confirm data letter"
-msgstr "确认数据信"
-
-#: 
-msgid "Confirm data Email"
-msgstr "确认数据电子邮件"
-
-#: 
 msgid "Confirm data labels"
 msgstr "确认数据标签"
 
@@ -7073,10 +7065,6 @@ msgid "Online Verification"
 msgstr "在线验证"
 
 #: 
-msgid "PDF Report"
-msgstr "在线验证"
-
-#: 
 msgid "Verified In Person"
 msgstr "亲自验证"
 
@@ -7849,14 +7837,6 @@ msgid "Verification email sent"
 msgstr "验证电邮已发出"
 
 #: 
-msgid "Failed to send verification email"
-msgstr "无法发送验证邮件"
-
-#: 
-msgid "Failed to add verification"
-msgstr "无法添加验证"
-
-#: 
 msgid "Confirm Enable Group Specific Properties"
 msgstr "确认启用组特定属性"
 
@@ -7965,10 +7945,6 @@ msgid "lookup user images on Google when no local image is present"
 msgstr "当没有本地图像时，在谷歌上查找用户图像"
 
 #: 
-msgid "Self Update"
-msgstr "自助更新"
-
-#: 
 msgid "Self Register"
 msgstr "自助登记"
 
@@ -7977,20 +7953,8 @@ msgid "List families that were created via self registration."
 msgstr "列出自助注册创建的家庭清单。"
 
 #: 
-msgid "Self Verify Updates"
-msgstr "自助验证更新"
-
-#: 
-msgid "Families who commented via self verify links"
-msgstr "通过自助验证链接评价的家庭"
-
-#: 
 msgid "Pending Self Verify"
 msgstr "待自助验证"
-
-#: 
-msgid "Families with valid self verify links"
-msgstr "拥有有效自助验证链接的家庭"
 
 #: 
 msgid "Self Verify"

@@ -2040,10 +2040,6 @@ msgid "Newsletter labels"
 msgstr "Nyhetsbrev etiketter"
 
 #: 
-msgid "Confirm data letter"
-msgstr "Bekreft data brev"
-
-#: 
 msgid "Confirm data labels"
 msgstr "Bekreft dataetiketter"
 

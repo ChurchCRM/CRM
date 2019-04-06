@@ -1441,10 +1441,6 @@ msgid "Add Group Member: "
 msgstr "Thêm thành viên vào Ban/Mục vụ: "
 
 #: 
-msgid "Confirm data Email"
-msgstr "Xác nhận dữ liệu Email"
-
-#: 
 msgid "Listing All Church Events"
 msgstr "Danh sách tất cả các sự kiện Hội Thánh"
 
@@ -3129,10 +3125,6 @@ msgid "Select a family"
 msgstr "Lựa chọn gia đình"
 
 #: 
-msgid "Self Update"
-msgstr "Tự cập nhật"
-
-#: 
 msgid "Self Register"
 msgstr "Tự đăng ký"
 
@@ -3141,20 +3133,8 @@ msgid "List families that were created via self registration."
 msgstr "Danh sách các gia đình đã được tạo thông qua việc tự đăng ký."
 
 #: 
-msgid "Self Verify Updates"
-msgstr "Tự xác thực các cập nhật"
-
-#: 
-msgid "Families who commented via self verify links"
-msgstr "Các gia đình đã được gửi qua đường dẫn tự xác nhận"
-
-#: 
 msgid "Pending Self Verify"
 msgstr "Chờ tự xác nhận"
-
-#: 
-msgid "Families with valid self verify links"
-msgstr "Các gia đình với đường dẫn tự xác minh hợp lệ"
 
 #: 
 msgid "Self Verify"

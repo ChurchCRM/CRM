@@ -2295,14 +2295,6 @@ msgid "Newsletter labels"
 msgstr "Etiquettes de la lettre de nouvelles"
 
 #: 
-msgid "Confirm data letter"
-msgstr "Confirmer les données de la lettre"
-
-#: 
-msgid "Confirm data Email"
-msgstr "Confirmer les données Email"
-
-#: 
 msgid "Confirm data labels"
 msgstr "Confirmer les données des étiquettes"
 
@@ -7035,10 +7027,6 @@ msgid "Online Verification"
 msgstr "Vérification en ligne"
 
 #: 
-msgid "PDF Report"
-msgstr "Rapport PDF"
-
-#: 
 msgid "Verified In Person"
 msgstr "Vérifier en personne"
 
@@ -7823,14 +7811,6 @@ msgid "Verification email sent"
 msgstr "Email de vérification envoyé"
 
 #: 
-msgid "Failed to send verification email"
-msgstr "Échec de l'envoi de l'email de vérification"
-
-#: 
-msgid "Failed to add verification"
-msgstr "Échec d'ajout de vérification"
-
-#: 
 msgid "Confirm Enable Group Specific Properties"
 msgstr "Confirmer l'Activation des Propriétés Spécifique du groupe"
 
@@ -7939,10 +7919,6 @@ msgid "lookup user images on Google when no local image is present"
 msgstr "chercher des images de l'utilisateur sur Google en l'absence d'image locale"
 
 #: 
-msgid "Self Update"
-msgstr "Mise à jour automatique"
-
-#: 
 msgid "Self Register"
 msgstr "Enregistrement automatique"
 
@@ -7951,20 +7927,8 @@ msgid "List families that were created via self registration."
 msgstr "Lister les familles enregistrées automatiquement."
 
 #: 
-msgid "Self Verify Updates"
-msgstr "Verifications des Mise à jour automatique"
-
-#: 
-msgid "Families who commented via self verify links"
-msgstr "Familles qui ont commentés via le lien de vérification automatique"
-
-#: 
 msgid "Pending Self Verify"
 msgstr "En attente de vérification automatique"
-
-#: 
-msgid "Families with valid self verify links"
-msgstr "Familles avec des liens valide de vérification automatique"
 
 #: 
 msgid "Self Verify"
