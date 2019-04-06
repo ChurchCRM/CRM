@@ -111,5 +111,24 @@ class FeatureContext extends MinkContext
         $this->getSession()->getPage()->fillField($field, $value);
     }
 
+    /**
+    * @Then /^the "(?P<ButtonName>(?:[^"]|\\")*)" button should be (disabled|enabled)$/
+     * @param   string       $state  "enabled" or "disabled"
+     * @param   string       $ButtonName    text for the button name
+    */
+    public function assertButtonEnabledOrDisabled($ButtonName,$desiredState)
+    {
+        // Find by named selector: http://mink.behat.org/en/latest/guides/traversing-pages.html?highlight=find#named-selectors
+        $button = $this->getSession()->getPage()->find("named", array("button",$ButtonName));
+        if (empty($button)) {
+            throw new Exception($ButtonName . " button could not be found");
+        } else {
+            $observedState = $button->hasAttribute('disabled') ? "disabled" : "enabled";
+            if ($desiredState != $observedState) {
+                throw new Exception("Button '$ButtonName' should have been '$desiredState' but was really '$observedState' ");
+            }
+        }
+    }
+
 }
 

@@ -7,7 +7,7 @@ import Select from 'react-select';
 import DatePicker from 'react-datepicker';
 
 
-const EventPropertiesEditor: React.FunctionComponent<{ event: CRMEvent, calendars: Array<Calendar>, eventTypes: Array<EventType>, changeHandler: (event:React.ChangeEvent)=>void, handleStartDateChange: (date: any)=>void, handleEndDateChange: (date: any)=>void,  pinnedCalendarChanged: (event: Array<Object>) => void, eventTypeChanged: (event: Array<Object>) => void }> = ({ event, calendars, eventTypes, changeHandler, handleStartDateChange, handleEndDateChange, pinnedCalendarChanged, eventTypeChanged }) => {
+const EventPropertiesEditor: React.FunctionComponent<{ event: CRMEvent, calendars: Array<Calendar>, eventTypes: Array<EventType>, changeHandler: (event:React.ChangeEvent)=>void, handleStartDateChange: (date: any)=>void, handleEndDateChange: (date: any)=>void,  pinnedCalendarChanged: (event: Array<Object>) => void, eventTypeChanged: (event: Array<Object>) => void}> = ({ event, calendars, eventTypes, changeHandler, handleStartDateChange, handleEndDateChange, pinnedCalendarChanged, eventTypeChanged}) => {
   //map the Calendar data type (returned from CRM API) into something that react-select can present as dropdown choices
   var calendarOptions=calendars.map((Pcal:Calendar) => ({value: Pcal.Id,  label: Pcal.Name}) );
   var EventTypeOptions=eventTypes.map((eventType:EventType) => ({value: eventType.Id,  label: eventType.Name}) );
@@ -70,7 +70,8 @@ const EventPropertiesEditor: React.FunctionComponent<{ event: CRMEvent, calendar
         </tr>
         <tr>
           <td className="LabelColumn">
-          {window.i18next.t('Pinned Calendars')}
+          <span>{window.i18next.t('Pinned Calendars')}</span>
+          <span className={event.PinnedCalendars.length ==0 ? "RequiredFormFieldUnsatisfied" : "RequiredFormFieldSatisfied"}>{window.i18next.t('This field is required')}</span>
             </td>
           <td className="TextColumn">
             <Select name="PinnedCalendars" inputId="PinnedCalendars" options={calendarOptions} value={initialPinnedCalendarValue} onChange={pinnedCalendarChanged} isMulti="true"  />
