@@ -2295,14 +2295,6 @@ msgid "Newsletter labels"
 msgstr "Etiketten voor Niewsletters"
 
 #: 
-msgid "Confirm data letter"
-msgstr "Bevestig Data op brief"
-
-#: 
-msgid "Confirm data Email"
-msgstr "Bevestig data email"
-
-#: 
 msgid "Confirm data labels"
 msgstr "Bevestig data Etiketten"
 
@@ -6474,14 +6466,6 @@ msgstr "Details"
 #: 
 msgid "Verification email sent"
 msgstr "Controle e-mail is gestuurd"
-
-#: 
-msgid "Failed to send verification email"
-msgstr "Het is niet gelukt een controle e-mail te sturen"
-
-#: 
-msgid "Failed to add verification"
-msgstr "Het is niet gelukt controle toe te voegen"
 
 #: 
 msgid "Role Name"

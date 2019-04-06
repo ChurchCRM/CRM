@@ -2030,10 +2030,6 @@ msgid "Newsletter labels"
 msgstr "Hírlevél címkék"
 
 #: 
-msgid "Confirm data letter"
-msgstr "Még adatokat írni"
-
-#: 
 msgid "Confirm data labels"
 msgstr "Még adatfeliratokat"
 
