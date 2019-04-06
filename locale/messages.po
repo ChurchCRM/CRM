@@ -10,7 +10,7 @@ msgstr ""
 "#-#-#-#-#  messages.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-30 22:41+0000\n"
+"POT-Creation-Date: 2019-04-06 21:25+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,8 +24,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2019-03-30T22:41:56.490Z\n"
-"PO-Revision-Date: 2019-03-30T22:41:56.490Z\n"
+"POT-Creation-Date: 2019-04-06T21:25:34.793Z\n"
+"PO-Revision-Date: 2019-04-06T21:25:34.793Z\n"
 
 msgid "Backup Database"
 msgstr ""
@@ -1701,6 +1701,9 @@ msgstr ""
 msgid "Verification email sent"
 msgstr ""
 
+msgid "Verification URL created"
+msgstr ""
+
 msgid "Profile Image Deleted"
 msgstr ""
 
@@ -2691,7 +2694,10 @@ msgstr ""
 msgid "Online Verification"
 msgstr ""
 
-msgid "PDF Report"
+msgid "URL"
+msgstr ""
+
+msgid "PDF"
 msgstr ""
 
 msgid "Verified In Person"
@@ -3362,12 +3368,6 @@ msgid "Custom Drop-Down List"
 msgstr ""
 
 msgid "Thank you for registering your ChurchCRM installation."
-msgstr ""
-
-msgid "PDFs successfully emailed "
-msgstr ""
-
-msgid "families"
 msgstr ""
 
 msgid "PDF successfully emailed to family members."
@@ -5156,6 +5156,12 @@ msgstr ""
 msgid "Activated the Family"
 msgstr ""
 
+msgid "Error sending email(s)"
+msgstr ""
+
+msgid "Please check logs for more information"
+msgstr ""
+
 msgid "Deleted from group"
 msgstr ""
 
@@ -5527,6 +5533,12 @@ msgid "Families Without Emails"
 msgstr ""
 
 msgid "People not in Mailchimp"
+msgstr ""
+
+msgid "PDFs successfully emailed "
+msgstr ""
+
+msgid "families"
 msgstr ""
 
 msgid "System Information"
@@ -6970,6 +6982,9 @@ msgid "Details"
 msgstr ""
 
 msgid "Verification recorded"
+msgstr ""
+
+msgid "Verification URL"
 msgstr ""
 
 msgid "Family Photo"
