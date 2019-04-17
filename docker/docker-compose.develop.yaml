@@ -25,7 +25,7 @@ services:
       context: .
       dockerfile: Dockerfile.nginx
     ports:
-      - "8080:80"
+      - "8080:8080"
     links:
       - churchcrm
     volumes:
