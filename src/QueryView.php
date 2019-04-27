@@ -159,7 +159,7 @@ function ProcessSQL()
         extract($aRow);
 
         //Debugging code
-//        echo "--" . $qry_SQL . "<br>--" . "~" . $qrp_Alias . "~" . "<br>--" . $vPOST[$qrp_Alias] . "<p>";
+        //echo "--" . $qry_SQL . "<br>--" . "~" . $qrp_Alias . "~" . "<br>--" . $vPOST[$qrp_Alias] . "<p>";
 
         //Replace the placeholder with the parameter value
         $qrp_Value = is_array($vPOST[$qrp_Alias]) ? implode(',', $vPOST[$qrp_Alias]) : $vPOST[$qrp_Alias];
