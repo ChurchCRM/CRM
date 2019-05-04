@@ -214,8 +214,8 @@
             "3.3.2"
         ],
         "scripts": [
-            "/mysql/upgrade/3.3.3.sql"
+            "/mysql/upgrade/3.4.0.sql"
         ],
-        "dbVersion": "3.3.3"
+        "dbVersion": "3.4.0"
     }
 }
