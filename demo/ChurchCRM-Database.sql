@@ -1627,7 +1627,7 @@ CREATE TABLE `version_ver` (
 LOCK TABLES `version_ver` WRITE;
 /*!40000 ALTER TABLE `version_ver` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `version_ver` VALUES (1,'3.3.2','2019-02-10 20:14:23',NULL);
+INSERT INTO `version_ver` VALUES (1,'3.4.0','2019-02-10 20:14:23',NULL);
 /*!40000 ALTER TABLE `version_ver` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
