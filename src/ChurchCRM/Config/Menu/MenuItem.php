@@ -56,8 +56,8 @@ class MenuItem
 
     public function getName()
     {
-        if (strlen($this->name) > $this->maxNameStr) {
-            return substr($this->name, 0, $this->maxNameStr - 3) . " ...";
+        if (mb_strlen($this->name) > $this->maxNameStr) {
+            return mb_substr($this->name, 0, $this->maxNameStr - 3) . " ...";
         }
         return $this->name;
     }
