@@ -11,6 +11,9 @@ if (file_exists('Include/Config.php')) {
     exit();
 }
 
+/* Set internal character encoding to UTF-8 */
+mb_internal_encoding("UTF-8");
+
 function dashesToCamelCase($string, $capitalizeFirstCharacter = false)
 {
     $str = str_replace(' ', '', ucwords(str_replace('-', ' ', $string)));

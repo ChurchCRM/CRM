@@ -235,14 +235,14 @@ class Photo {
       $fullNameArr = PersonQuery::create()->select(array('FirstName','LastName'))->findOneById($this->id);
       foreach ($fullNameArr as $name)
       {
-        $retstr .= strtoupper(substr($name, 0,1));
+        $retstr .= mb_strtoupper(mb_substr($name, 0, 1));
       }
 
     }
     elseif ($this->photoType == "Family" )
     {
       $fullNameArr = FamilyQuery::create()->findOneById($this->id)->getName();
-        $retstr .= strtoupper(substr($fullNameArr, 0,1));
+        $retstr .= mb_strtoupper(mb_substr($fullNameArr, 0, 1));
     }
     return $retstr;
   }
