@@ -230,7 +230,7 @@ class PDF_Attendance extends ChurchInfoReport
 				}
 			
 				if (date('n', $dWhichSunday) != $whichMonth) { // Finish the previous month
-					$this->WriteAt($monthX, $yMonths + 1, substr(gettext(date('F', $dWhichMonthDate)),0,3));
+					$this->WriteAt($monthX, $yMonths + 1, mb_substr(gettext(date('F', $dWhichMonthDate)),0,3));
 					$aHeavyVerticalX[$heavyVerticalXCnt++] = $monthX;
 					$whichMonth = date('n', $dWhichSunday);
 					$dWhichMonthDate = $dWhichSunday;

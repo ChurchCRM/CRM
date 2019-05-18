@@ -280,8 +280,7 @@ window.newCalendarModal = {
 
 
 function initializeCalendar() {
-  window.CRM.isCalendarLoading  = false;
-  //
+  window.CRM.isCalendarLoading  = false;  //
   // initialize the calendar
   // -----------------------------------------------------------------
   window.CRM.fullcalendar =  $('#calendar').fullCalendar({
@@ -308,44 +307,55 @@ function initializeCalendar() {
   });
 };
 
-function getCalendarFilterElement(calendar,type) {
-  return "<div class='row calendar-filter-row'>" + 
-          "<div class='col-xs-1'>" +
-            "<input type='checkbox' checked class='calendarSelectionBox' data-calendartype='"+type+"' data-calendarname='"+calendar.Name+"' data-calendarid='"+calendar.Id+"'/>"+ 
-          "</div>"+
-          "<div class='col-xs-7'><label for='"+calendar.Name+"'>"+calendar.Name+"</label></div>"+
-          "<div class='col-xs-4'>"+
-            "<div class='calendar-filter-text' style=' color:#"+calendar.ForegroundColor+"; background-color:#"+calendar.BackgroundColor+";'><i class='fa fa-calendar' aria-hidden='true'></i></div>"+
-            (type === "user"  ? "<div class='calendar-filter-text'><i class='calendarproperties fa fa-eye' aria-hidden='true' data-calendarid='"+calendar.Id+"' ></i></div>" :"") +
-        "</div>";
+function getCalendarFilterElement(calendar,type,parent) {
+  boxId = type+calendar.Id;
+  return '<div class="panel box box-primary" style="border-top: 0px">'+
+            '<div class="box-header" style="background-color:#'+calendar.BackgroundColor+'">' +
+              '<h4 class="box-title">' +
+                '<a data-toggle="collapse" data-parent="#'+parent+'" href="#'+boxId+'" aria-expanded="false" style="color:#'+calendar.ForegroundColor+'; font-size:10pt">' +
+                  calendar.Name+
+                '</a>'+
+              '</h4>'+
+            '</div>'+
+           ' <div id="'+boxId+'" class="panel-collapse collapse" aria-expanded="false" style="">'+
+              '<div class="box-body">'+
+                "<div style='margin-bottom: 10px' class='checkbox'><input checked data-onstyle='info' data-width='100%' data-toggle='toggle' data-on='Show on Calendar' data-off='Hide on Calendar' type='checkbox' id='display-"+boxId+"' class='calendarSelectionBox' data-calendartype='"+type+"' data-calendarname='"+calendar.Name+"' data-calendarid='"+calendar.Id+"'/></div>" +
+                "<div style='margin-bottom: 10px'><a class='btn btn-primary calendarfocus' style='width:100%' data-calendartype='"+type+"' data-calendarname='"+calendar.Name+"' data-calendarid='"+calendar.Id+"'>"+i18next.t('Focus')+"</a></div>"  +
+                (type === "user"  ? '<div><a class="btn btn-warning calendarproperties" data-calendarid="'+calendar.Id+'" style="width:100%; white-space: unset; font-size:10pt">Properties</a></div>' : "") +
+                '</div>'+
+            '</div>'+
+          '</div>';
 }
 
-
-function getFullCalendarSource (caltype,calendarid)
+function GetCalendarURL(calendarType, calendarID)
 {
-  if(caltype === "user") {
-      endpoint="/api/calendars/"
-    }
-    else if(caltype === "system")
-    {
-      endpoint="/api/systemcalendars/"
-    }
-    eventSourceURL = window.CRM.root +  endpoint + calendarid +"/fullcalendar"
-    return {id: caltype+calendarid, url: eventSourceURL}
+  var endpoint;
+  if(calendarType=== "user") {
+    endpoint="/api/calendars/"
+  }
+  else if(calendarType === "system")
+  {
+    endpoint="/api/systemcalendars/"
+  }
+  return window.CRM.root+endpoint+calendarID+"/fullcalendar";
 }
 
 function registerCalendarSelectionEvents() {
   
-  $(document).on("click",".calendarSelectionBox", function(event) {
-    console.log("Clicked");
-    var endpoint;
-    var caltype = $(this).data('calendartype');
-    var fullCalObject = getFullCalendarSource(caltype, $(this).data("calendarid"));
+  
+  $(document).on("change",".calendarSelectionBox", function(event) {
     if($(this).is(":checked")){
-      window.CRM.fullcalendar.fullCalendar("addEventSource",fullCalObject);
+      var eventSourceURL = GetCalendarURL($(this).data('calendartype'),$(this).data("calendarid"));
+      var alreadyPresent = window.CRM.fullcalendar.fullCalendar("getEventSources").find(function(element) {
+        return element.url === eventSourceURL;
+      })
+      if (!alreadyPresent) {
+        window.CRM.fullcalendar.fullCalendar("addEventSource",eventSourceURL);
+      }
     }
     else {
-      window.CRM.fullcalendar.fullCalendar("removeEventSource",fullCalObject);
+      var eventSourceURL = GetCalendarURL($(this).data('calendartype'),$(this).data("calendarid"));
+      window.CRM.fullcalendar.fullCalendar("removeEventSource", eventSourceURL);
     }
   });
   
@@ -400,11 +410,11 @@ function showAllUserCalendars() {
   }).done(function (calendars) {
     $("#userCalendars").empty();
     $.each(calendars.Calendars,function(idx,calendar) {
-      $("#userCalendars").append(getCalendarFilterElement(calendar,"user"));
-      var fullCalObject = getFullCalendarSource("user", calendar.Id);
-      window.CRM.fullcalendar.fullCalendar("addEventSource",fullCalObject);
+      $("#userCalendars").append(getCalendarFilterElement(calendar,"user",'userCalendars'));
+
+      window.CRM.fullcalendar.fullCalendar("addEventSource", GetCalendarURL("user",calendar.Id));
     });
-    
+    $(".calendarSelectionBox").filter('input[data-calendartype=user]').bootstrapToggle();
   });
 }
 
@@ -415,10 +425,10 @@ function showAllSystemCalendars() {
   }).done(function (calendars) {
     $("#systemCalendars").empty();
     $.each(calendars.Calendars,function(idx,calendar) {
-      $("#systemCalendars").append(getCalendarFilterElement(calendar,"system"));
-       var fullCalObject = getFullCalendarSource("system", calendar.Id);
-      window.CRM.fullcalendar.fullCalendar("addEventSource",fullCalObject);
+      $("#systemCalendars").append(getCalendarFilterElement(calendar,"system",'systemCalendars'))
+      window.CRM.fullcalendar.fullCalendar("addEventSource", GetCalendarURL("system",calendar.Id));
     });
+    $(".calendarSelectionBox").filter('input[data-calendartype=system]').bootstrapToggle();
   });
 }
 
