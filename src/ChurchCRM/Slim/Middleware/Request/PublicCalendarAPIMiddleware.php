@@ -48,8 +48,7 @@ class PublicCalendarAPIMiddleware
             $start_date = new DateTime();
         }
         $start_date->setTime(0, 0, 0);
-        $max_events = InputUtils::FilterInt($params['max']);
-
+       
         $events = EventQuery::create()
             ->joinCalendarEvent()
             ->useCalendarEventQuery()
@@ -61,7 +60,8 @@ class PublicCalendarAPIMiddleware
             $events->filterByStart($start_date, Criteria::GREATER_EQUAL);
         }
 
-        if ($max_events) {
+        if(array_key_exists('max',$params)) {
+            $max_events = InputUtils::FilterInt($params['max']);
             $events->limit($max_events);
         }
 
