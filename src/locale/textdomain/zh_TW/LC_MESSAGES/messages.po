@@ -9353,3 +9353,33 @@ msgstr "發送家庭郵件"
 msgid "Verification recorded"
 msgstr "驗證記錄"
 
+#: 
+#, fuzzy
+msgid "Verification URL created"
+msgstr "驗證網址已創建"
+
+#: 
+#, fuzzy
+msgid "URL"
+msgstr "網址"
+
+#: 
+#, fuzzy
+msgid "PDF"
+msgstr "PDF"
+
+#: 
+#, fuzzy
+msgid "Error sending email(s)"
+msgstr "發送電子郵件時出錯"
+
+#: 
+#, fuzzy
+msgid "Please check logs for more information"
+msgstr "請查看日誌以獲取更多信息"
+
+#: 
+#, fuzzy
+msgid "Verification URL"
+msgstr "驗證網址"
+

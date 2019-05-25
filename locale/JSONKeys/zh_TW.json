@@ -2273,5 +2273,11 @@
     "People Verify Dashboard": "人員驗證儀表板",
     "Download family letters": "下載家庭信件",
     "Send family email": "發送家庭郵件",
-    "Verification recorded": "驗證記錄"
+    "Verification recorded": "驗證記錄",
+    "Verification URL created": "驗證網址已創建",
+    "URL": "網址",
+    "PDF": "PDF",
+    "Error sending email(s)": "發送電子郵件時出錯",
+    "Please check logs for more information": "請查看日誌以獲取更多信息",
+    "Verification URL": "驗證網址"
 }
