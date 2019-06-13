@@ -25,6 +25,7 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\UserQuery;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\PersonQuery;
 
 $iTenThousand = 10000;  // Constant used to offset negative choices in drop down lists
 
@@ -202,142 +203,142 @@ $sLimit200 = '';
 $sLimit500 = '';
 
 // SQL for group-assignment helper
-if ($iMode == 2) {
-    $sBaseSQL = 'SELECT *, IF(LENGTH(per_Zip) > 0,per_Zip,fam_Zip) AS zip '.
-                'FROM person_per LEFT JOIN family_fam '.
-                'ON person_per.per_fam_ID = family_fam.fam_ID ';
+// if ($iMode == 2) {
+//     $sBaseSQL = 'SELECT *, IF(LENGTH(per_Zip) > 0,per_Zip,fam_Zip) AS zip '.
+//                 'FROM person_per LEFT JOIN family_fam '.
+//                 'ON person_per.per_fam_ID = family_fam.fam_ID ';
 
-    // Find people who are part of a group of the specified type.
-    // MySQL doesn't have subqueries until version 4.1.. for now, do it the hard way
-    $sSQLsub = 'SELECT per_ID FROM person_per LEFT JOIN person2group2role_p2g2r '.
-                'ON p2g2r_per_ID = per_ID LEFT JOIN group_grp '.
-                'ON grp_ID = p2g2r_grp_ID '.
-                "WHERE grp_Type = $iGroupTypeMissing GROUP BY per_ID";
-    $rsSub = RunQuery($sSQLsub);
+//     // Find people who are part of a group of the specified type.
+//     // MySQL doesn't have subqueries until version 4.1.. for now, do it the hard way
+//     $sSQLsub = 'SELECT per_ID FROM person_per LEFT JOIN person2group2role_p2g2r '.
+//                 'ON p2g2r_per_ID = per_ID LEFT JOIN group_grp '.
+//                 'ON grp_ID = p2g2r_grp_ID '.
+//                 "WHERE grp_Type = $iGroupTypeMissing GROUP BY per_ID";
+//     $rsSub = RunQuery($sSQLsub);
 
-    if (mysqli_num_rows($rsSub) > 0) {
-        $sExcludedIDs = '';
-        while ($aTemp = mysqli_fetch_row($rsSub)) {
-            $sExcludedIDs .= $aTemp[0].',';
-        }
-        $sExcludedIDs = mb_substr($sExcludedIDs, 0, -1);
-        $sGroupWhereExt = ' AND per_ID NOT IN ('.$sExcludedIDs.')';
-    }
-}
+//     if (mysqli_num_rows($rsSub) > 0) {
+//         $sExcludedIDs = '';
+//         while ($aTemp = mysqli_fetch_row($rsSub)) {
+//             $sExcludedIDs .= $aTemp[0].',';
+//         }
+//         $sExcludedIDs = mb_substr($sExcludedIDs, 0, -1);
+//         $sGroupWhereExt = ' AND per_ID NOT IN ('.$sExcludedIDs.')';
+//     }
+// }
 
 // SQL for standard Person List
-if ($iMode == 1) {
-    // Set the base SQL
-    $sBaseSQL = 'SELECT *, IF(LENGTH(per_Zip) > 0,per_Zip,fam_Zip) AS zip '.
-                'FROM person_per LEFT JOIN family_fam '.
-                'ON per_fam_ID = family_fam.fam_ID ';
+// if ($iMode == 1) {
+//     // Set the base SQL
+//     $sBaseSQL = 'SELECT *, IF(LENGTH(per_Zip) > 0,per_Zip,fam_Zip) AS zip '.
+//                 'FROM person_per LEFT JOIN family_fam '.
+//                 'ON per_fam_ID = family_fam.fam_ID ';
 
-    $sGroupWhereExt = ''; // Group Filtering Logic
-    $sJoinExt = '';
-    if (isset($iGroupType)) {
-        if ($iGroupType >= 0) {
-            $sJoinExt = ' LEFT JOIN person2group2role_p2g2r ON per_ID = p2g2r_per_ID '.
-                        ' LEFT JOIN group_grp ON grp_ID = p2g2r_grp_ID ';
-            $sGroupWhereExt = ' AND grp_type = '.$iGroupType.' ';
+//     $sGroupWhereExt = ''; // Group Filtering Logic
+//     $sJoinExt = '';
+//     if (isset($iGroupType)) {
+//         if ($iGroupType >= 0) {
+//             $sJoinExt = ' LEFT JOIN person2group2role_p2g2r ON per_ID = p2g2r_per_ID '.
+//                         ' LEFT JOIN group_grp ON grp_ID = p2g2r_grp_ID ';
+//             $sGroupWhereExt = ' AND grp_type = '.$iGroupType.' ';
 
-            if ($iGroupID >= 0) {
-                if ($iRoleID >= 0) {
-                    $sJoinExt = ' LEFT JOIN person2group2role_p2g2r '.
-                                ' ON per_ID = p2g2r_per_ID '.
-                                ' LEFT JOIN list_lst '.
-                                ' ON p2g2r_grp_ID = lst_ID ';
-                    $sGroupWhereExt = ' AND p2g2r_grp_ID='.$iGroupID.' '.
-                                        ' AND p2g2r_per_ID=per_ID '.
-                                        ' AND p2g2r_rle_ID='.$iRoleID.' ';
-                } else {
-                    $sJoinExt = ' LEFT JOIN person2group2role_p2g2r '.
-                                ' ON per_ID = p2g2r_per_ID ';
-                    $sGroupWhereExt = ' AND p2g2r_grp_ID='.$iGroupID.' '.
-                                        ' AND p2g2r_per_ID = per_ID ';
-                }
-            } else {
-                $sJoinExt = ' LEFT JOIN person2group2role_p2g2r '.
-                            ' ON per_ID = p2g2r_per_ID '.
-                            ' LEFT JOIN group_grp ON grp_ID = p2g2r_grp_ID ';
-                $sGroupWhereExt = ' AND grp_type='.$iGroupType.' '.
-                                    ' AND per_ID NOT IN '.
-                                    ' (SELECT p2g2r_per_ID FROM person2group2role_p2g2r '.
-                                    '  WHERE p2g2r_grp_ID='.($iGroupID + $iTenThousand).') ';
-            }
-        } else {
-            $sJoinExt = ' ';
-            $sGroupWhereExt = ' AND per_ID NOT IN (SELECT p2g2r_per_ID '.
-                                ' FROM person2group2role_p2g2r '.
-                                ' LEFT JOIN group_grp ON grp_ID = p2g2r_grp_ID '.
-                                ' WHERE grp_type = '.($iGroupType + $iTenThousand).')';
-        }
-    }
-}
+//             if ($iGroupID >= 0) {
+//                 if ($iRoleID >= 0) {
+//                     $sJoinExt = ' LEFT JOIN person2group2role_p2g2r '.
+//                                 ' ON per_ID = p2g2r_per_ID '.
+//                                 ' LEFT JOIN list_lst '.
+//                                 ' ON p2g2r_grp_ID = lst_ID ';
+//                     $sGroupWhereExt = ' AND p2g2r_grp_ID='.$iGroupID.' '.
+//                                         ' AND p2g2r_per_ID=per_ID '.
+//                                         ' AND p2g2r_rle_ID='.$iRoleID.' ';
+//                 } else {
+//                     $sJoinExt = ' LEFT JOIN person2group2role_p2g2r '.
+//                                 ' ON per_ID = p2g2r_per_ID ';
+//                     $sGroupWhereExt = ' AND p2g2r_grp_ID='.$iGroupID.' '.
+//                                         ' AND p2g2r_per_ID = per_ID ';
+//                 }
+//             } else {
+//                 $sJoinExt = ' LEFT JOIN person2group2role_p2g2r '.
+//                             ' ON per_ID = p2g2r_per_ID '.
+//                             ' LEFT JOIN group_grp ON grp_ID = p2g2r_grp_ID ';
+//                 $sGroupWhereExt = ' AND grp_type='.$iGroupType.' '.
+//                                     ' AND per_ID NOT IN '.
+//                                     ' (SELECT p2g2r_per_ID FROM person2group2role_p2g2r '.
+//                                     '  WHERE p2g2r_grp_ID='.($iGroupID + $iTenThousand).') ';
+//             }
+//         } else {
+//             $sJoinExt = ' ';
+//             $sGroupWhereExt = ' AND per_ID NOT IN (SELECT p2g2r_per_ID '.
+//                                 ' FROM person2group2role_p2g2r '.
+//                                 ' LEFT JOIN group_grp ON grp_ID = p2g2r_grp_ID '.
+//                                 ' WHERE grp_type = '.($iGroupType + $iTenThousand).')';
+//         }
+//     }
+// }
 
-$sPersonPropertyWhereExt = ''; // Person Property Filtering Logic
-$sJoinExt2 = '';
-if (isset($iPersonProperty)) {
-    if ($iPersonProperty >= 0) {
-        $sJoinExt2 = ' LEFT JOIN record2property_r2p ON per_ID = r2p_record_ID '; // per_ID should match the r2p_record_ID
-        $sPersonPropertyWhereExt = ' AND r2p_pro_ID = '.$iPersonProperty.' ';
-    } else { // >>>> THE SQL CODE BELOW IS NOT TESTED PROPERLY <<<<<
-        $sJoinExt2 = ' ';
-        $sPersonPropertyWhereExt = ' AND per_ID NOT IN (SELECT r2p_record_ID '.
-                            ' FROM record2property_r2p '.
-                            ' WHERE r2p_pro_ID = '.($iPersonProperty + $iTenThousand).')';
-    }
-    $sJoinExt .= $sJoinExt2; // We add our new SQL statement to the JoinExt variable from the group type.
-}
+// $sPersonPropertyWhereExt = ''; // Person Property Filtering Logic
+// $sJoinExt2 = '';
+// if (isset($iPersonProperty)) {
+//     if ($iPersonProperty >= 0) {
+//         $sJoinExt2 = ' LEFT JOIN record2property_r2p ON per_ID = r2p_record_ID '; // per_ID should match the r2p_record_ID
+//         $sPersonPropertyWhereExt = ' AND r2p_pro_ID = '.$iPersonProperty.' ';
+//     } else { // >>>> THE SQL CODE BELOW IS NOT TESTED PROPERLY <<<<<
+//         $sJoinExt2 = ' ';
+//         $sPersonPropertyWhereExt = ' AND per_ID NOT IN (SELECT r2p_record_ID '.
+//                             ' FROM record2property_r2p '.
+//                             ' WHERE r2p_pro_ID = '.($iPersonProperty + $iTenThousand).')';
+//     }
+//     $sJoinExt .= $sJoinExt2; // We add our new SQL statement to the JoinExt variable from the group type.
+// }
 
-$sFilterWhereExt = '';
-if (isset($sFilter)) {
-    // Check if there's a space
-    if (strstr($sFilter, ' ')) {
-        // break on the space...
-        $aFilter = explode(' ', $sFilter);
+// $sFilterWhereExt = '';
+// if (isset($sFilter)) {
+//     // Check if there's a space
+//     if (strstr($sFilter, ' ')) {
+//         // break on the space...
+//         $aFilter = explode(' ', $sFilter);
 
-        // use the results to check the first and last names
-        $sFilterWhereExt = " AND per_FirstName LIKE '%".$aFilter[0]."%' ".
-                            " AND per_LastName LIKE '%".$aFilter[1]."%' ";
-    } else {
-        $sFilterWhereExt = " AND (per_FirstName LIKE '%".$sFilter."%' ".
-                            " OR per_LastName LIKE '%".$sFilter."%') ";
-    }
-}
+//         // use the results to check the first and last names
+//         $sFilterWhereExt = " AND per_FirstName LIKE '%".$aFilter[0]."%' ".
+//                             " AND per_LastName LIKE '%".$aFilter[1]."%' ";
+//     } else {
+//         $sFilterWhereExt = " AND (per_FirstName LIKE '%".$sFilter."%' ".
+//                             " OR per_LastName LIKE '%".$sFilter."%') ";
+//     }
+// }
 
-$sClassificationWhereExt = '';
-if ($iClassification >= 0) {
-    $sClassificationWhereExt = ' AND per_cls_ID='.$iClassification.' ';
-} else {
-    $sClassificationWhereExt = ' AND per_cls_ID!='.
-                                    ($iClassification + $iTenThousand).' ';
-}
+// $sClassificationWhereExt = '';
+// if ($iClassification >= 0) {
+//     $sClassificationWhereExt = ' AND per_cls_ID='.$iClassification.' ';
+// } else {
+//     $sClassificationWhereExt = ' AND per_cls_ID!='.
+//                                     ($iClassification + $iTenThousand).' ';
+// }
 
-$sFamilyRoleWhereExt = '';
-if ($iFamilyRole >= 0) {
-    $sFamilyRoleWhereExt = ' AND per_fmr_ID='.$iFamilyRole.' ';
-} else {
-    $sFamilyRoleWhereExt = ' AND per_fmr_ID!='.($iFamilyRole + $iTenThousand).' ';
-}
+// $sFamilyRoleWhereExt = '';
+// if ($iFamilyRole >= 0) {
+//     $sFamilyRoleWhereExt = ' AND per_fmr_ID='.$iFamilyRole.' ';
+// } else {
+//     $sFamilyRoleWhereExt = ' AND per_fmr_ID!='.($iFamilyRole + $iTenThousand).' ';
+// }
 
-if ($iGender >= 0) {
-    $sGenderWhereExt = ' AND per_Gender = '.$iGender;
-} else {
-    $sGenderWhereExt = '';
-}
-if (isset($sLetter)) {
-    $sLetterWhereExt = " AND per_LastName LIKE '".$sLetter."%'";
-} else {
-    $sLetterWhereExt = '';
-}
+// if ($iGender >= 0) {
+//     $sGenderWhereExt = ' AND per_Gender = '.$iGender;
+// } else {
+//     $sGenderWhereExt = '';
+// }
+// if (isset($sLetter)) {
+//     $sLetterWhereExt = " AND per_LastName LIKE '".$sLetter."%'";
+// } else {
+//     $sLetterWhereExt = '';
+// }
 
-$sGroupBySQL = ' GROUP BY per_ID';
+// $sGroupBySQL = ' GROUP BY per_ID';
 
-$activeFamiliesWhereExt = ' AND fam_DateDeactivated is null';
-$sWhereExt = $sGroupWhereExt . $sFilterWhereExt . $sClassificationWhereExt .
-    $sFamilyRoleWhereExt . $sGenderWhereExt . $sLetterWhereExt . $sPersonPropertyWhereExt . $activeFamiliesWhereExt;
+// $activeFamiliesWhereExt = ' AND fam_DateDeactivated is null';
+// $sWhereExt = $sGroupWhereExt . $sFilterWhereExt . $sClassificationWhereExt .
+//     $sFamilyRoleWhereExt . $sGenderWhereExt . $sLetterWhereExt . $sPersonPropertyWhereExt . $activeFamiliesWhereExt;
 
-$sSQL = $sBaseSQL.$sJoinExt.' WHERE 1'.$sWhereExt.$sGroupBySQL;
+// $sSQL = $sBaseSQL.$sJoinExt.' WHERE 1'.$sWhereExt.$sGroupBySQL;
 
 // URL to redirect back to this same page
 $sRedirect = 'SelectList.php?';
@@ -387,80 +388,80 @@ if (array_key_exists('PersonProperties', $_GET)) {
 $sRedirect = mb_substr($sRedirect, 0, -5); // Chop off last &amp;
 
 
-$peopleIDArray = array();
-$rsPersons = RunQuery($sSQL);
-while ($aRow = mysqli_fetch_row($rsPersons)) {
-    array_push($peopleIDArray, intval($aRow[0]));
-}
+// $peopleIDArray = array();
+// $rsPersons = RunQuery($sSQL);
+// while ($aRow = mysqli_fetch_row($rsPersons)) {
+//     array_push($peopleIDArray, intval($aRow[0]));
+// }
 
 
 // Get the total number of persons
-$rsPer = RunQuery($sSQL);
-$Total = mysqli_num_rows($rsPer);
+// $rsPer = RunQuery($sSQL);
+// $Total = mysqli_num_rows($rsPer);
 
 // Select the proper sort SQL
-switch ($sSort) {
-    case 'family':
-            $sOrderSQL = ' ORDER BY fam_Name';
-            break;
-    case 'zip':
-            $sOrderSQL = ' ORDER BY zip, per_LastName, per_FirstName';
-            break;
-    case 'entered':
-            $sOrderSQL = ' ORDER BY per_DateEntered DESC';
-            break;
-    case 'edited':
-            $sOrderSQL = ' ORDER BY per_DateLastEdited DESC';
-            break;
-    default:
-            $sOrderSQL = ' ORDER BY per_LastName, per_FirstName';
-            break;
-}
+// switch ($sSort) {
+//     case 'family':
+//             $sOrderSQL = ' ORDER BY fam_Name';
+//             break;
+//     case 'zip':
+//             $sOrderSQL = ' ORDER BY zip, per_LastName, per_FirstName';
+//             break;
+//     case 'entered':
+//             $sOrderSQL = ' ORDER BY per_DateEntered DESC';
+//             break;
+//     case 'edited':
+//             $sOrderSQL = ' ORDER BY per_DateLastEdited DESC';
+//             break;
+//     default:
+//             $sOrderSQL = ' ORDER BY per_LastName, per_FirstName';
+//             break;
+// }
 
-if ($iClassification >= 0) {
-    $iClassificationStr = $iClassification;
-} else {
-    $iClassificationStr = '';
-}
+// if ($iClassification >= 0) {
+//     $iClassificationStr = $iClassification;
+// } else {
+//     $iClassificationStr = '';
+// }
 
-if ($iFamilyRole >= 0) {
-    $iFamilyRoleStr = $iFamilyRole;
-} else {
-    $iFamilyRoleStr = '';
-}
+// if ($iFamilyRole >= 0) {
+//     $iFamilyRoleStr = $iFamilyRole;
+// } else {
+//     $iFamilyRoleStr = '';
+// }
 
-if ($iGender >= 0) {
-    $iGenderStr = $iGender;
-} else {
-    $iGenderStr = '';
-}
+// if ($iGender >= 0) {
+//     $iGenderStr = $iGender;
+// } else {
+//     $iGenderStr = '';
+// }
 
-if ($iGroupType >= 0) {
-    $iGroupTypeStr = $iGroupType;
-} else {
-    $iGroupTypeStr = '';
-}
+// if ($iGroupType >= 0) {
+//     $iGroupTypeStr = $iGroupType;
+// } else {
+//     $iGroupTypeStr = '';
+// }
 
-if (isset($iGroupID) && $iGroupID != '') {
-    $iGroupIDStr = $iGroupID;
-} else {
-    $iGroupIDStr = '';
-}
+// if (isset($iGroupID) && $iGroupID != '') {
+//     $iGroupIDStr = $iGroupID;
+// } else {
+//     $iGroupIDStr = '';
+// }
 
-if (isset($iRoleID) && $iRoleID != '') {
-    $iRoleIDStr = $iRoleID;
-} else {
-    $iRoleIDStr = '';
-}
+// if (isset($iRoleID) && $iRoleID != '') {
+//     $iRoleIDStr = $iRoleID;
+// } else {
+//     $iRoleIDStr = '';
+// }
 
-if (isset($iPersonProperty) && $iPersonProperty != '') {
-    $iPersonPropertyStr = $iPersonProperty;
-} else {
-    $iPersonPropertyStr = '';
-}
+// if (isset($iPersonProperty) && $iPersonProperty != '') {
+//     $iPersonPropertyStr = $iPersonProperty;
+// } else {
+//     $iPersonPropertyStr = '';
+// }
 
-// Regular PersonList display
-$sLimitSQL = '';
+// // Regular PersonList display
+// $sLimitSQL = '';
 
 // Append a LIMIT clause to the SQL statement
 if (empty($_GET['Result_Set'])) {
@@ -771,6 +772,12 @@ if ($iMode == 1) {
     </div>
 	<div class="box-body">
 <?php
+
+$member = PersonQuery::create()
+            ->orderByLastName();
+
+$Total = count($member);
+
 // Display record count
 if ($Total == 1) {
     echo '<p align = "center">' . $Total . gettext(" record returned") . '</p>';
@@ -1070,21 +1077,35 @@ $sRowClass = 'RowColorA';
 $iPrevFamily = -1;
 
 //Loop through the person recordset
-while ($aRow = mysqli_fetch_array($rsPersons)) {
-    $per_Title = '';
-    $per_FirstName = '';
-    $per_MiddleName = '';
-    $per_LastName = '';
-    $per_Suffix = '';
-    $per_Gender = '';
 
-    $fam_Name = '';
-    $fam_Address1 = '';
-    $fam_Address2 = '';
-    $fam_City = '';
-    $fam_State = '';
+foreach ($member as $person) {
+    $per_ID = $person->getId();
+    $per_Title = $person->getTitle();
+    $per_FirstName = $person->getFirstName();
+    $per_MiddleName = $person->getMiddleName();
+    $per_LastName = $person->getLastName();
+    $per_Suffix = $person->getSuffix();
+    $per_Gender = $person->getGenderName(); //getGender()
+    $per_HomePhone = $person->getHomePhone();
+    $per_WorkPhone = $person->getWorkPhone();
+    $per_CellPhone = $person->getCellPhone();
+    $per_Country = $person->getCellPhone();
 
-    extract($aRow);
+    //$fam = $person->getFamId();
+    //$fam = array($person->getFamily());
+
+    $fam_ID = $person->getFamId();
+    $fam_Name = $person->getFamilyName();
+    $fam_Address = $person->getAddress();
+
+    $fam_HomePhone = $person->getFamilyPhone(0);
+    $fam_WorkPhone = $person->getFamilyPhone(1);
+    $fam_CellPhone = $person->getFamilyPhone(2);
+    $fam_Country = $person->getFamilyCountry();
+
+    $zip = $person->getZip();
+    $aClassificationName = $person->getClassificationName();
+    $aFamilyRoleName = $person->getfamilyRoleName();
 
     // Add alphabetical headers based on sort
     $sBlankLine = '<tr><td>&nbsp;</td></tr>';
@@ -1134,36 +1155,33 @@ while ($aRow = mysqli_fetch_array($rsPersons)) {
     <td>
     <?php
     if ($sPersonColumn3 == 'Classification') {
-        echo $aClassificationName[$per_cls_ID];
+        //echo $aClassificationName[$per_cls_ID];
+        echo gettext($aClassificationName);
     } elseif ($sPersonColumn3 == 'Family Role') {
-        echo $aFamilyRoleName[$per_fmr_ID];
+        //echo $aFamilyRoleName[$per_fmr_ID];
+        echo gettext($aFamilyRoleName);
     } else {    // Display Gender
-        switch ($per_Gender) {
-            case 1: echo gettext('Male'); break;
-            case 2: echo gettext('Female'); break;
-            default: echo '';
-        }
+        echo gettext($per_Gender);
     }
     echo '&nbsp;</td>';
 
     echo '<td>';
     if ($fam_Name != '') {
-        echo '<a href="FamilyView.php?FamilyID='.$fam_ID.'">'.$fam_Name;
-        echo FormatAddressLine($fam_Address1, $fam_City, $fam_State).'</a>';
+        echo '<a href="FamilyView.php?FamilyID='.$fam_ID.'">'.$fam_Name . " - " . $fam_Address . '</a>';
     }
     echo '&nbsp;</td>';
 
     echo '<td>';
     // Phone number or zip code
     if ($sPersonColumn5 == gettext('Home Phone')) {
-        echo SelectWhichInfo(ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy),
-                ExpandPhoneNumber($per_HomePhone, $fam_Country, $dummy), true);
+        echo SelectWhichInfo(ExpandPhoneNumber($per_HomePhone, $per_Country, $dummy),
+                ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy), true);
     } elseif ($sPersonColumn5 == gettext('Work Phone')) {
         echo SelectWhichInfo(ExpandPhoneNumber($per_WorkPhone, $fam_Country, $dummy),
-                ExpandPhoneNumber($fam_WorkPhone, $fam_Country, $dummy), true);
+                ExpandPhoneNumber($fam_WorkPhone, $per_Country, $dummy), true);
     } elseif ($sPersonColumn5 == gettext('Mobile Phone')) {
         echo SelectWhichInfo(ExpandPhoneNumber($per_CellPhone, $fam_Country, $dummy),
-                ExpandPhoneNumber($fam_CellPhone, $fam_Country, $dummy), true);
+                ExpandPhoneNumber($fam_CellPhone, $per_Country, $dummy), true);
     } else {
         if (isset($zip)) {
             echo $zip;

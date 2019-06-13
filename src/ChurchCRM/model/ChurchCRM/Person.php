@@ -226,6 +226,67 @@ class Person extends BasePerson implements iPhoto
     }
 
     /**
+     * Get name of a person family.
+     * @return string
+     */
+    public function getFamilyName()
+    {
+      if ($this->getFamily()) {
+          return $this->getFamily()
+              ->getName();
+      }
+      //if it reaches here, no family name found. return empty family name
+      return "";
+    }
+
+    /**
+     * Get name of a person family.
+     * @return string
+     */
+    public function getFamilyCountry()
+    {
+      if ($this->getFamily()) {
+          return $this->getFamily()
+              ->getCountry();
+      }
+      //if it reaches here, no country found. return empty country
+      return "";
+    }
+
+            /**
+     * Get Phone of a person family.
+     * 0 = Home
+     * 1 = Work
+     * 2 = Cell
+     * @return string
+     */
+    public function getFamilyPhone($type)
+    {
+      switch ($Style) {
+        case 0:
+          if($this->getFamily()) {
+          return $this->getFamily()
+              ->getHomePhone();
+          }
+          break;
+        case 1:
+        if($this->getFamily()) {
+          return $this->getFamily()
+              ->getWorkPhone();
+          }
+          break;
+        case 2:
+        if($this->getFamily()) {
+          return $this->getFamily()
+              ->getCellPhone();
+          }
+          break;
+        
+      }
+      //if it reaches here, no phone found. return empty phone
+      return "";
+    }
+    /**
      * * If person address found, return latitude and Longitude of person address
      * else return family latitude and Longitude
      * @return array
@@ -308,6 +369,8 @@ class Person extends BasePerson implements iPhoto
      * $Style = 4  :  "FirstName MiddleName LastName"
      * $Style = 5  :  "Title FirstName LastName"
      * $Style = 6  :  "LastName, Title FirstName"
+     * $Style = 7  :  "LastName FirstName"
+     * $Style = 8  :  "LastName, FirstName Middlename"
      *
      * @param $Style
      * @return string
@@ -400,6 +463,7 @@ class Person extends BasePerson implements iPhoto
                     $nameString .= ' ' . $this->getLastName();
                 }
                 break;
+
             case 6:
                 if ($this->getLastName()) {
                     $nameString .= $this->getLastName() . ', ';
@@ -409,12 +473,23 @@ class Person extends BasePerson implements iPhoto
                 }
                 $nameString .= $this->getFirstName();
                 break;
-             case 7:
+
+            case 7:
                 if ($this->getLastName()) {
                     $nameString .= $this->getLastName() . ' ';
                 }
                 if ($this->getFirstName() ){
                     $nameString .= $this->getFirstName();
+                }
+                break;
+                
+            case 8:
+                if ($this->getLastName()) {
+                    $nameString .= $this->getLastName() . ', ';
+                }
+                $nameString .= $this->getFirstName();
+                if ($this->getMiddleName()) {
+                    $nameString .= ' ' . $this->getMiddleName();
                 }
                 break;
             default:
