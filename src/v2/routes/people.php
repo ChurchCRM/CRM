@@ -59,7 +59,9 @@ function listPeople(Request $request, Response $response, array $args)
     //echo "<script>alert($sMode)</script>";
     // filterByClsId: src\ChurchCRM\model\ChurchCRM\Base\PersonQuery.php
     $member = PersonQuery::create();
-
+    // set default sMode
+    $sMode = "People";
+    
     if (isset($_GET['Classification'])) {
         $id = InputUtils::LegacyFilterInput($_GET['Classification']);
         
