@@ -75,7 +75,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         }
                             ?>
 
-              <td><?= $person->getFormattedName(8) ?></td>
+              <td><?= $person->getFormattedName(SystemConfig::getValue('iPersonNameStyle')) ?></td>
                 <?= SystemConfig::getValue('bHidePersonAddress') ?'': '<td>' . $person->getAddress() . '</hd>' ?>
                 <td><?= $person->getHomePhone() ?></td>
                 <td><?= $person->getCellPhone() ?></td>
