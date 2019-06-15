@@ -3839,7 +3839,7 @@ msgstr "Ingrese un Título para su reporte de problema/característica nueva"
 
 #: 
 msgid "What were you doing when you noticed the bug / feature opportunity?"
-msgstr "Qué estaba usted haciendo cuando se dio cuenta del problema/oportunidad de característica nueva?"
+msgstr "Qué estaba usted haciendo cuando se dio cuenta del problema/funcionalidad nueva?"
 
 #: 
 msgid "When you click \"submit,\" an error report will be posted to the ChurchCRM GitHub Issue tracker."
@@ -9105,4 +9105,98 @@ msgstr "Por favor actualice la información familiar con lo siguiente"
 #: 
 msgid "Age Histogram"
 msgstr "Histograma de Edades"
+
+#: 
+msgid "Missing event id"
+msgstr "Falta id de evento"
+
+#: 
+msgid "Event not found"
+msgstr "Evento no encontrado"
+
+#: 
+msgid "Session timeout length in seconds\n"
+"Set to zero to disable session timeouts."
+msgstr "Límite de tiempo de la sesión en segundos\n"
+"Ajustar a cero para deshabilitar el límite de tiempo."
+
+#: 
+msgid "Minimum amount that a new password must differ from the old one (# of characters changed)\n"
+"Set to zero to disable this feature"
+msgstr "Cantidad mínima en que una nueva contraseña debe diferir de la antigua (# caracteres cambiados)\n"
+"Ajustar a cero para deshabilitar esta funcionalidad"
+
+#: 
+msgid "Maximum number of failed logins to allow before a user account is locked.\n"
+"Once the maximum has been reached, an administrator must re-enable the account.\n"
+"This feature helps to protect against automated password guessing attacks.\n"
+"Set to zero to disable this feature."
+msgstr "Número máximo de ingresos fallidos a permitir antes de que se bloquee una cuenta de usuario.\n"
+"Una vez que el número se ha alacanzado, el administrador debe restablecer la cuenta.\n"
+"Esta funcionalidad ayuda a proteger ante ataques automáticos de predicción de contraseñas.\n"
+"Ajustar a cero para deshabilitar esta funcionalidad."
+
+#: 
+msgid "PDF handling mode.\n"
+"1 = Save File dialog\n"
+"2 = Open in current browser window"
+msgstr "Modo de manejo de PDF.\n"
+"1 = Diálogo para guardar Archivo\n"
+"2 = Abrir en ventana del navegador actual"
+
+#: 
+msgid "Unavailable person info inherited from assigned family for display?\n"
+"This option causes certain info from a person's assigned family record to be\n"
+"displayed IF the corresponding info has NOT been entered for that person. "
+msgstr "Desplegar Información no disponible heredando desde la familia asignada?\n"
+"Esta opción causa que cierta información de la familia asignada a la persona pueda ser desplegada SI la información correspondiente NO ha sido ingresada para esa persona."
+
+#. member\'s
+#: 
+msgid "Press CTRL + C to copy all group members\\' phone numbers"
+msgstr "Presionar CTRL + C para copiar todos los números de teléfono de los miembros del grupo"
+
+#: 
+msgid "Verify People"
+msgstr "Verificación de Personas"
+
+#: 
+msgid "People Verify Dashboard"
+msgstr "Dashboard de Verificación de Personas"
+
+#: 
+msgid "Download family letters"
+msgstr "Descargar cartas de familia"
+
+#: 
+msgid "Send family email"
+msgstr "Enviar email de familia"
+
+#: 
+msgid "Verification recorded"
+msgstr "Verificación grabada"
+
+#: 
+msgid "Verification URL created"
+msgstr "URL de verificación creada"
+
+#: 
+msgid "URL"
+msgstr "URL"
+
+#: 
+msgid "PDF"
+msgstr "PDF"
+
+#: 
+msgid "Error sending email(s)"
+msgstr "Error al enviar email(s)"
+
+#: 
+msgid "Please check logs for more information"
+msgstr "Para mayor información por favor revise los logs"
+
+#: 
+msgid "Verification URL"
+msgstr "URL de verificación"
 
