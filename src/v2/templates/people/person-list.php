@@ -36,8 +36,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
             <!--Populate the table with person details -->
             <?php foreach ($member as $person) {
-              /* @var $member ChurchCRM\people */
-              
+              /* @var $member ChurchCRM\people */       
     ?>
             <tr>
               <td><a href='<?= SystemURLs::getRootPath()?>/PersonView.php?PersonID=<?= $person->getId() ?>'>
@@ -93,9 +92,8 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>" >
   $(document).ready(function() {
-      $('#families').DataTable( {
-          "order": [[ 1, "asc" ]]
-      } );
+      //$('#families').DataTable( {"order": [[ 1, "asc" ]]} );
+      $('#families').DataTable(window.CRM.plugin.dataTable);
   } );
 </script>
 
