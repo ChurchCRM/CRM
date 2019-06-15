@@ -9,7 +9,6 @@ use ChurchCRM\Service\TimelineService;
 use ChurchCRM\PropertyQuery;
 use ChurchCRM\Utils\InputUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
-use ChurchCRM\FamilyQuery;
 
 //use ChurchCRM\PersonCustomMasterQuery;
 //use ChurchCRM\PersonCustomQuery;
@@ -66,9 +65,7 @@ function listPeople(Request $request, Response $response, array $args)
     if (isset($_GET['Classification'])) {
         $id = InputUtils::LegacyFilterInput($_GET['Classification']);
         
-        $member
-        ->leftJoinFamily()->filterByClsId($id)
-        ->where('family_fam.fam_DateDeactivated IS NULL');
+        $member->filterByClsId($id);
 
         $option =  ListOptionQuery::create()->filterById(1)->filterByOptionId($id)->find();
         
