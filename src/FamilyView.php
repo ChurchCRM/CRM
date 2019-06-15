@@ -374,7 +374,7 @@ $bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() || ($_SESSION['user']->i
                     } elseif ($famRole == '') {
                         $labelColor = 'label-danger';
                         $famRole = 'Unassigned';
-                    }?>
+                    } ?>
                                     <span class='label <?= $labelColor ?>'> <?= $famRole ?></span>
                                 </td>
                                 <td>
