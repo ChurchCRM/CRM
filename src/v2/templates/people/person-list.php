@@ -93,9 +93,8 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>" >
   $(document).ready(function() {
-      $('#families').DataTable( {
-          "order": [[ 1, "asc" ]]
-      } );
+      //$('#families').DataTable( {"order": [[ 1, "asc" ]]} );
+      $('#families').DataTable(window.CRM.plugin.dataTable);
   } );
 </script>
 

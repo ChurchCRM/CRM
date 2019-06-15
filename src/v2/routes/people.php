@@ -65,7 +65,9 @@ function listPeople(Request $request, Response $response, array $args)
     if (isset($_GET['Classification'])) {
         $id = InputUtils::LegacyFilterInput($_GET['Classification']);
         
-        $member->filterByClsId($id);
+        $member->filterByClsId($id)
+        ->leftJoinFamily()
+        ->where('family_fam.fam_DateDeactivated IS NULL');
 
         $option =  ListOptionQuery::create()->filterById(1)->filterByOptionId($id)->find();
         
