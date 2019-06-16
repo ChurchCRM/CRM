@@ -176,7 +176,7 @@ if ($showBanner && ($peopleWithBirthDaysCount > 0 || $AnniversariesCount > 0)) {
                 <i class="fa fa-users"></i>
             </div>
             <a href="<?= SystemURLs::getRootPath() ?>/v2/family" class="small-box-footer">
-                <?= gettext('See All Families') ?> <i class="fa fa-arrow-circle-right"></i>
+                <?= gettext('See all Families') ?> <i class="fa fa-arrow-circle-right"></i>
             </a>
         </div>
     </div><!-- ./col -->
@@ -195,7 +195,7 @@ if ($showBanner && ($peopleWithBirthDaysCount > 0 || $AnniversariesCount > 0)) {
                 <i class="fa fa-user"></i>
             </div>
             <a href="<?= SystemURLs::getRootPath() ?>/v2/people" class="small-box-footer">
-                <?= gettext('See All People') ?> <i class="fa fa-arrow-circle-right"></i>
+                <?= gettext('See all People') ?> <i class="fa fa-arrow-circle-right"></i>
             </a>
         </div>
     </div><!-- ./col -->

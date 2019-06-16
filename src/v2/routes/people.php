@@ -58,14 +58,14 @@ function listPeople(Request $request, Response $response, array $args)
     // FamilyRole
     //echo "<script>alert($sMode)</script>";
     // filterByClsId: src\ChurchCRM\model\ChurchCRM\Base\PersonQuery.php
-    $member = PersonQuery::create();
+    $members = PersonQuery::create();
     // set default sMode
     $sMode = "People";
     
     if (isset($_GET['Classification'])) {
         $id = InputUtils::LegacyFilterInput($_GET['Classification']);
         
-        $member->filterByClsId($id)
+        $members->filterByClsId($id)
         ->leftJoinFamily()
         ->where('family_fam.fam_DateDeactivated IS NULL');
 
@@ -79,7 +79,7 @@ function listPeople(Request $request, Response $response, array $args)
     if (isset($_GET['FamilyRole'])) {
         $id = InputUtils::LegacyFilterInput($_GET['FamilyRole']);
         
-        $member->filterByFmrId($id);
+        $members->filterByFmrId($id);
 
         $option =  ListOptionQuery::create()->filterById(2)->filterByOptionId($id)->find();
         
@@ -95,7 +95,7 @@ function listPeople(Request $request, Response $response, array $args)
       if (isset($_GET['Gender'])) {
         $id = InputUtils::LegacyFilterInput($_GET['Gender']);
         
-        $member->filterByGender($id);
+        $members->filterByGender($id);
 
         switch ($id) {
             case 0:
@@ -113,7 +113,7 @@ function listPeople(Request $request, Response $response, array $args)
     $pageArgs = [
         'sMode' => $sMode,
         'sRootPath' => SystemURLs::getRootPath(),
-        'member' => $member
+        'members' => $members
     ];
 
     return $renderer->render($response, 'person-list.php', $pageArgs);

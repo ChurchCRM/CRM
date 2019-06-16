@@ -253,7 +253,7 @@ class Person extends BasePerson implements iPhoto
       return "";
     }
 
-            /**
+     /**
      * Get Phone of a person family.
      * 0 = Home
      * 1 = Work
@@ -262,7 +262,7 @@ class Person extends BasePerson implements iPhoto
      */
     public function getFamilyPhone($type)
     {
-      switch ($Style) {
+      switch ($type) {
         case 0:
           if($this->getFamily()) {
           return $this->getFamily()
@@ -281,7 +281,6 @@ class Person extends BasePerson implements iPhoto
               ->getCellPhone();
           }
           break;
-        
       }
       //if it reaches here, no phone found. return empty phone
       return "";
@@ -480,14 +479,18 @@ class Person extends BasePerson implements iPhoto
                 }
                 if ($this->getFirstName() ){
                     $nameString .= $this->getFirstName();
+                } else {
+                    $nameString = trim($nameString);
                 }
                 break;
                 
             case 8:
                 if ($this->getLastName()) {
-                    $nameString .= $this->getLastName() . ', ';
+                    $nameString .= $this->getLastName();
                 }
-                $nameString .= $this->getFirstName();
+                if ($this->getFirstName()) {
+                    $nameString .= ', ' . $this->getFirstName();
+                }
                 if ($this->getMiddleName()) {
                     $nameString .= ' ' . $this->getMiddleName();
                 }
