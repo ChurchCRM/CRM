@@ -249,6 +249,14 @@ module.exports = function (grunt) {
                         flatten: true,
                         src: ['node_modules/react-datepicker/dist/react-datepicker.min.css'],
                         dest: 'src/skin/external/react-datepicker'
+                    },
+                    {
+                        expand: true,
+                        filter: 'isFile',
+                        flatten: true,
+                        src: ['node_modules/yadcf/jquery.dataTables.yadcf.js',
+                        'node_modules/yadcf/jquery.dataTables.yadcf.css'],
+                        dest: 'src/skin/external/yadcf'
                     }
                 ]
             }

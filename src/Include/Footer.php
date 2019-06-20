@@ -88,6 +88,7 @@ $isAdmin = $_SESSION['user']->isAdmin();
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/datatables/pdfmake.min.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/datatables/vfs_fonts.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/datatables/datatables.min.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/external/yadcf/jquery.dataTables.yadcf.js"></script>
 
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/chartjs/Chart.min.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/select2/select2.min.js"></script>
