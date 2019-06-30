@@ -123,12 +123,12 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <td><?= $person->getHomePhone() ?></td>
                 <td><?= $person->getCellPhone() ?></td>
                 <td><?= $person->getEmail() ?></td>
-                <td><?= $person->getGenderName() ?></td>
-                <td><?= $person->getClassificationName() ?></td>
-                <td><?= $person->getFamilyRoleName() ?></td>
-                <td><?= $person->getPropertiesString() ?></td>
-                <td><?= $person->getCustomFields() ?></td>
-                <td><?= $person->getGroups() ?></td>
+                <td><?= empty($person->getGenderName()) ? 'Unassigned': $person->getGenderName() ?></td>
+                <td><?= empty($person->getClassificationName()) ? 'Unassigned' : $person->getClassificationName() ?></td>
+                <td><?= empty($person->getFamilyRoleName()) ? 'Unassigned': $person->getFamilyRoleName() ?></td>
+                <td><?= empty($person->getPropertiesString()) ? 'Unassigned': $person->getPropertiesString() ?></td>
+                <td><?= empty($person->getCustomFields()) ? 'Unassigned': $person->getCustomFields() ?></td>
+                <td><?= empty($person->getGroups()) ? 'Unassigned': $person->getGroups() ?></td>
                 <?php
 }
                 ?>

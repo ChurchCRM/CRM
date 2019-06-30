@@ -54,7 +54,7 @@ function listPeople(Request $request, Response $response, array $args)
         ->filterByProClass("p")
         ->find();
 
-    // $pL[] = "Unassigned";
+    $pL[] = "Unassigned";
     foreach($pP as $element) {
         $pL[] = $element->getProName();
     }
@@ -64,7 +64,7 @@ function listPeople(Request $request, Response $response, array $args)
     $cM = PersonCustomMasterQuery::create()
         ->find();
     
-    // $cL[] = "Unassigned";
+    $cL[] = "Unassigned";
     foreach ($cM as $element) {
         $cL[] = $element->getName();
     }
@@ -74,7 +74,7 @@ function listPeople(Request $request, Response $response, array $args)
     $gQ = GroupQuery::create()
         ->find();
     
-    // $gL[] = "Unassigned";
+    $gL[] = "Unassigned";
     foreach ($gQ as $element) {
         $gL[] = $element->getName();
     }
