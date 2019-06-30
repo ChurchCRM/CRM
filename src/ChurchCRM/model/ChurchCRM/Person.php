@@ -12,7 +12,7 @@ use ChurchCRM\Utils\GeoUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use DateTime;
 use Propel\Runtime\Connection\ConnectionInterface;
-
+use Propel\Runtime\Propel;
 /**
  * Skeleton subclass for representing a row from the 'person_per' table.
  *
@@ -538,12 +538,70 @@ class Person extends BasePerson implements iPhoto
     }
 
     public function getProperties() {
-        $personProperties = PropertyQuery::create()
-            ->filterByProClass("p")
-            ->useRecordPropertyQuery()
-            ->filterByRecordId($this->getId())
-            ->find();
-        return $personProperties;
+      $personProperties = PropertyQuery::create()
+          ->filterByProClass("p")
+          ->useRecordPropertyQuery()
+          ->filterByRecordId($this->getId())
+          ->find();
+      return $personProperties;
+    }
+
+    //  return list of person properties seperated by ', '
+    // created for the person-list.php datatable
+    public function getPropertiesString() {
+      $personProperties = PropertyQuery::create()
+          ->filterByProClass("p")
+          ->leftJoinRecordProperty()
+          // ->withColumn('r2p_Value')
+          ->where('r2p_record_ID='.$this->getId())
+          ->find();
+
+      foreach($personProperties as $element) {
+          $PropertiesList .= $element->getProName() . ", ";
+      }
+      return rtrim($PropertiesList, ", ");
+    }
+
+    // return list of person custom fields seperated by ', '
+    // created for the person-list.php datatable
+    public function getCustomFields() {
+
+      // get list of custom field names c1, c2, etc
+      $CustomMasterName =  PersonCustomMasterQuery::create()->find();
+      
+      // get person data.  Propel will not see custom fields c1, c2, etc., so we'll get them using raw sql
+      $conn = Propel::getConnection();
+      $sql = 'SELECT * FROM person_custom WHERE per_ID = ?';
+      
+      $stmt = $conn->prepare($sql);
+      $stmt->bindParam(1,$this->getId());
+      $stmt->execute();
+      $person = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+      
+      // loop thourgh each custom field and update custom columns with readable name and value
+      foreach($CustomMasterName as $column) {
+          $i += 1;
+          foreach ($person as $element) {
+            if($element["c$i"] <> "") {
+              $personCustom .= $column->getName() . ":" . $element["c$i"] . ", ";
+            }
+          }
+      }
+      return rtrim($personCustom, ", ");
+    }
+
+    public function getGroups() {
+      $GroupList = GroupQuery::create()
+      ->leftJoinPerson2group2roleP2g2r()
+      ->where('p2g2r_per_ID='.$this->getId())
+      ->find();
+
+
+
+      foreach($GroupList as $element) {
+        $group .= $element->getName() . ", ";
+      }
+      return rtrim($group, ", ");
     }
 
     public function getNumericCellPhone()

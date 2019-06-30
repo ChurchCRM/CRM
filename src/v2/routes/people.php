@@ -10,11 +10,10 @@ use ChurchCRM\PropertyQuery;
 use ChurchCRM\Utils\InputUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 
-//use ChurchCRM\PersonCustomMasterQuery;
-//use ChurchCRM\PersonCustomQuery;
-//use ChurchCRM\GroupQuery;
+use ChurchCRM\PersonCustomMasterQuery;
 use ChurchCRM\ListOptionQuery;
-//use ChurchCRM\Service\GroupService;
+use ChurchCRM\GroupQuery;
+
 
 // entity can be a person, family, or business
 $app->group('/people', function () {
@@ -49,6 +48,37 @@ function viewPeopleVerify(Request $request, Response $response, array $args)
 
 function listPeople(Request $request, Response $response, array $args)
 {
+    // get list of family properties so we can filter on person-list.php
+    $pL = [];
+    $pP = PropertyQuery::create()
+        ->filterByProClass("p")
+        ->find();
+
+    // $pL[] = "Unassigned";
+    foreach($pP as $element) {
+        $pL[] = $element->getProName();
+    }
+
+    // get person custom list so we can filter on  person-list.php
+    $cL = [];
+    $cM = PersonCustomMasterQuery::create()
+        ->find();
+    
+    // $cL[] = "Unassigned";
+    foreach ($cM as $element) {
+        $cL[] = $element->getName();
+    }
+
+    // get person custom list so we can filter on  person-list.php
+    $gL = [];
+    $gQ = GroupQuery::create()
+        ->find();
+    
+    // $gL[] = "Unassigned";
+    foreach ($gQ as $element) {
+        $gL[] = $element->getName();
+    }
+
     //echo "<script>alert('listPeople')</script>";
     $renderer = new PhpRenderer('templates/people/');
     //$sMode = 'Active';
@@ -113,7 +143,10 @@ function listPeople(Request $request, Response $response, array $args)
     $pageArgs = [
         'sMode' => $sMode,
         'sRootPath' => SystemURLs::getRootPath(),
-        'members' => $members
+        'members' => $members,
+        'fp' => json_encode($pL), // FamilyProperties
+        'cl' => json_encode($cL), // CustomFields
+        'gl' => json_encode($gL) // GroupList
     ];
 
     return $renderer->render($response, 'person-list.php', $pageArgs);
