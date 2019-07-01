@@ -336,6 +336,7 @@ require 'Include/Header.php';
                   <option value="0"><?= gettext("Don't Filter") ?></option>
                   <option value="1"><?= gettext('Male') ?></option>
                   <option value="2"><?= gettext('Female') ?></option>
+                  <option value="3"><?= gettext('Non-binary') ?></option>
                 </select>
               </div>
             </div>
