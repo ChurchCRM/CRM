@@ -215,6 +215,10 @@ $bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() ||
         ?>
                         <i class="fa fa-female"></i>
                         <?php
+} elseif ($person->isNonbinary()) {
+        ?>
+                        <i class="fa fa-genderless"></i>
+                        <?php
     } ?>
                     <?= $person->getFullName() ?></h3>
 

@@ -28,6 +28,9 @@ class PersonDemographicDashboardItem implements DashboardItemInterface {
         case 2:
           $gender = gettext('Female');
           break;
+        case 3:
+          $gender = gettext('Non-binary');
+          break;
         default:
           $gender = gettext('Other');
       }

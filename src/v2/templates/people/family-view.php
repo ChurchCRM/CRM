@@ -260,7 +260,7 @@ $familyAddress = $family->getAddress();
                                             <h3 class="profile-username text-center"><?= $person->getTitle() ?> <?= $person->getFullName() ?></h3>
                                         </a>
                                         <p class="text-muted text-center"><i
-                                                class="fa fa-fw fa-<?= ($person->isMale() ? "male" : "female") ?>"></i> <?= $person->getFamilyRoleName() ?>
+                                                class="fa fa-fw fa-<?= $person->getGender() ?>"></i> <?= $person->getFamilyRoleName() ?>
                                         </p>
 
                                         <p class="text-center">

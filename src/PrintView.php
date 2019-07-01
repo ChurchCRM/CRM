@@ -246,6 +246,9 @@ if ($fam_ID) {
                     case 2:
                         echo gettext('Female');
                         break;
+                    case 3:
+                        echo gettext('Non-binary');
+                        break;
                 } ?>
 			</td>
 		</tr>
@@ -360,7 +363,7 @@ if ($fam_ID) {
 				<br>
 			</td>
 			<td>
-				<?php switch ($per_Gender) {case 1: echo gettext('Male'); break; case 2: echo gettext('Female'); break; default: echo ''; } ?>&nbsp;
+				<?php switch ($per_Gender) {case 1: echo gettext('Male'); break; case 2: echo gettext('Female'); break;  case 3: echo gettext('Non-binary'); break;default: echo ''; } ?>&nbsp;
 			</td>
 			<td>
 				<?= $sFamRole ?>&nbsp;

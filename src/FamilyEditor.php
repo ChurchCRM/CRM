@@ -992,6 +992,9 @@ require 'Include/Header.php';
 					<option value="2" <?php if ($aGenders[$iCount] == 2) {
                 echo 'selected';
             } ?> ><?= gettext('Female') ?></option>
+                    <option value="3" <?php if ($aGenders[$iCount] == 3) {
+                echo 'selected';
+            } ?> ><?= gettext('Non-binary') ?></option>
 				</select>
 			</td>
 

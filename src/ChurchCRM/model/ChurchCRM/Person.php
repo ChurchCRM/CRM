@@ -44,6 +44,11 @@ class Person extends BasePerson implements iPhoto
         return $this->getGender() == 2;
     }
 
+    public function isNonbinary()
+    {
+        return $this->getGender() == 3;
+    }
+
     public function getGenderName()
     {
       switch (strtolower($this->getGender())) {
@@ -51,6 +56,8 @@ class Person extends BasePerson implements iPhoto
           return gettext('Male');
         case 2:
           return gettext('Female');
+        case 3:
+          return gettext('Non-binary');
       }
     }
 

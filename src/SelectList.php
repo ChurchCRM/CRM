@@ -560,7 +560,13 @@ echo '<option value="2"';
 if (isset($iGender) && $iGender == 2) {
     echo ' selected ';
 }
-echo '> '.gettext('Female').'</option></select>';
+echo '> '.gettext('Female').'</option>';
+
+echo '<option value="3"';
+if (isset($iGender) && $iGender == 3) {
+    echo ' selected ';
+}
+echo '> '.gettext('Non-binary').'</option></select>';
 
 // **********
 // Classification drop down list
@@ -1141,6 +1147,7 @@ while ($aRow = mysqli_fetch_array($rsPersons)) {
         switch ($per_Gender) {
             case 1: echo gettext('Male'); break;
             case 2: echo gettext('Female'); break;
+            case 3: echo gettext('Non-binary'); break;
             default: echo '';
         }
     }

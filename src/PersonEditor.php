@@ -634,6 +634,9 @@ require 'Include/Header.php';
                             <option value="2" <?php if ($iGender == 2) {
         echo 'selected';
     } ?>><?= gettext('Female') ?></option>
+                            <option value="3" <?php if ($iGender == 3) {
+        echo 'selected';
+    } ?>><?= gettext('Non-binary') ?></option>
                         </select>
                     </div>
                     <div class="col-md-3">

@@ -61,7 +61,7 @@ $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
                 <h3 class="profile-username text-center"><?= $person->getTitle() ?> <?= $person->getFullName() ?></h3>
 
                 <p class="text-muted text-center"><i
-                    class="fa fa-fw fa-<?= ($person->isMale() ? "male" : "female") ?>"></i> <?= $person->getFamilyRoleName() ?>
+                    class="fa fa-fw fa-<?= $person->getGender() ?>"></i> <?= $person->getFamilyRoleName() ?>
                 </p>
 
                 <ul class="list-group list-group-unbordered">

@@ -20,6 +20,7 @@ $kids = 0;
 $families = 0;
 $maleKids = 0;
 $femaleKids = 0;
+$nonbinaryKids = 0;
 $familyIds = [];
 foreach ($classStats as $class) {
     $kids = $kids + $class['kids'];
@@ -31,7 +32,9 @@ foreach ($classStats as $class) {
             $maleKids++;
         } elseif ($kid['kidGender'] == '2') {
             $femaleKids++;
-        }
+        }  elseif ($kid['kidGender'] == '3') {
+          $nonbinaryKids++;
+      }
     }
 }
 
@@ -127,6 +130,18 @@ require '../Include/Header.php';
       <div class="info-box-content">
         <span class="info-box-text"><?= gettext('Girls') ?></span>
         <span class="info-box-number"> <?= $femaleKids ?></span>
+      </div>
+      <!-- /.info-box-content -->
+    </div>
+    <!-- /.info-box -->
+    </div>
+  <div class="col-md-3 col-sm-6 col-xs-12">
+    <div class="info-box">
+      <span class="info-box-icon bg-yellow"><i class="fa fa-genderless"></i></span>
+
+      <div class="info-box-content">
+        <span class="info-box-text"><?= gettext('Non-binary') ?></span>
+        <span class="info-box-number"> <?= $nonbinaryKids ?></span>
       </div>
       <!-- /.info-box-content -->
     </div>

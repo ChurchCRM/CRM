@@ -58,6 +58,7 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
                         <select name="memberGender-<?= $x ?>" class="form-control">
                           <option value="1"><?= gettext('Male') ?></option>
                           <option value="2"><?= gettext('Female') ?></option>
+                          <option value="3"><?= gettext('Non-binary') ?></option>
                         </select>
                       </div>
                     </div>

@@ -446,6 +446,10 @@ if (isset($_POST['DoImport'])) {
                                     $sSQLpersonData .= '2, ';
                                       $iGender = 2;
                                     break;
+                                case 'non-binary': case 'b': case 'binary':
+                                    $sSQLpersonData .= '3, ';
+                                      $iGender = 3;
+                                    break;
                                 default:
                                     $sSQLpersonData .= '0, ';
                                     break;

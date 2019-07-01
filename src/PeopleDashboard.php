@@ -324,6 +324,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
             <?php foreach ($demographicStats as $demStat) {
             $countMale = PersonQuery::create()->filterByFmrId($demStat->getOptionID())->filterByGender(1)->count();
             $countFemale = PersonQuery::create()->filterByFmrId($demStat->getOptionID())->filterByGender(2)->count();
+            $countNonbinary = PersonQuery::create()->filterByFmrId($demStat->getOptionID())->filterByGender(3)->count();
             $countUnknown = PersonQuery::create()->filterByFmrId($demStat->getOptionID())->filterByGender(0)->count();
             $demStatId = $demStat->getOptionID();
             $demStatName = $demStat->getOptionName();
@@ -354,6 +355,19 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
 </tr>
 <?php
             }
+            if ($countNonbinary != 0) {
+                ?>
+<tr>
+<td><a href="SelectList.php?mode=person&Gender=3&FamilyRole=<?= $demStatId ?>"><?= $demStatName ?> - <?= gettext('Non-binary') ?></a></td>
+<td>
+<div class="progress progress-xs progress-striped active">
+<div class="progress-bar progress-bar-success" style="width: <?= round(($countNonbinary / $genPop) * 100)?>%" title="<?= round(($countNonbinary / $genPop) * 100)?>%"></div>
+</div>
+</td>
+<td><span class="badge bg-green"><?= $countNonbinary ?></span></td>
+</tr>
+<?php
+            }
             if ($countUnknown != 0) {
                 ?>
 <tr>
@@ -370,6 +384,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
         }
             $countUnknownMale = PersonQuery::create()->filterByFmrId(0)->filterByGender(1)->count();
             $countUnknownFemale = PersonQuery::create()->filterByFmrId(0)->filterByGender(2)->count();
+            $countUnknownNonbinary = PersonQuery::create()->filterByFmrId(0)->filterByGender(3)->count();
             $countUnknwonRoleUnknownGender = PersonQuery::create()->filterByFmrId(0)->filterByGender(0)->count();
 
             $genPop = PersonQuery::create()->count();
@@ -396,6 +411,19 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
 </div>
 </td>
 <td><span class="badge bg-green"><?= $countUnknownFemale ?></span></td>
+</tr>
+<?php
+            }
+            if ($countUnknownNonbinary != 0) {
+                ?>
+<tr>
+<td><a href="SelectList.php?mode=person&Gender=3&FamilyRole=0"><?= gettext('Unknown') ?> - <?= gettext('Non-binary') ?></a></td>
+<td>
+<div class="progress progress-xs progress-striped active">
+<div class="progress-bar progress-bar-success" style="width: <?= round(($countUnknownNonbinary / $genPop) * 100)?>%" title="<?= round(($countUnknownNonbinary / $genPop) * 100)?>%"></div>
+</div>
+</td>
+<td><span class="badge bg-green"><?= $countUnknownNonbinary ?></span></td>
 </tr>
 <?php
             }
