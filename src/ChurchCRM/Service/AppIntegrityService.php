@@ -169,12 +169,19 @@ class AppIntegrityService
     $check = AppIntegrityService::hasApacheModule('mod_rewrite');
 
     if (!$check && function_exists('shell_exec')) {
+      if (strpos($_SERVER['SERVER_SOFTWARE'], 'Apache') !== false) {
         $check = strpos(shell_exec('/usr/local/apache/bin/apachectl -l'), 'mod_rewrite') !== false;
+      }
     }
 
     if ( function_exists('curl_version')) {
         $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $_SERVER['HTTP_HOST'] . SystemURLs::getRootPath()."/INVALID");
+        $request_url_parser = parse_url($_SERVER['HTTP_REFERER']);
+        $request_scheme = isset($request_url_parser['scheme']) ? $request_url_parser['scheme'] : 'http';
+        $rewrite_chk_url = $request_scheme ."://". $_SERVER['HTTP_HOST'] . SystemURLs::getRootPath()."/INVALID";
+        curl_setopt($ch, CURLOPT_URL, $rewrite_chk_url);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($ch, CURLOPT_HEADER, 1);
         curl_setopt($ch, CURLOPT_NOBODY, 1);

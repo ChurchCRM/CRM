@@ -165,8 +165,8 @@ namespace ChurchCRM
                   SystemConfig::init();
               }
               // Log the error to the application log, and show an error page to user.
-              LoggerUtils::getAppLogger()->error("ERROR connecting to database at '".self::$databaseServerName."' on port '".self::$databasePort."' as user '".$sUSER."' -  MySQL Error: '".$sMYSQLERROR."'");
-              Bootstrapper::system_failure('Could not connect to MySQL on <strong>'.self::$databaseServerName.'</strong> on port <strong>'.self::$databasePort.'</strong> as <strong>'.$sUSER.'</strong>. Please check the settings in <strong>Include/Config.php</strong>.<br/>MySQL Error: '.$sMYSQLERROR, 'Database Connection Failure');
+              LoggerUtils::getAppLogger()->error("ERROR connecting to database at '".self::$databaseServerName."' on port '".self::$databasePort."' as user '".self::$databaseUser."' -  MySQL Error: '".$sMYSQLERROR."'");
+              Bootstrapper::system_failure('Could not connect to MySQL on <strong>'.self::$databaseServerName.'</strong> on port <strong>'.self::$databasePort.'</strong> as <strong>'.self::$databaseUser.'</strong>. Please check the settings in <strong>Include/Config.php</strong>.<br/>MySQL Error: '.$sMYSQLERROR, 'Database Connection Failure');
           }
       }
       private static function initPropel()
