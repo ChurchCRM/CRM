@@ -40,6 +40,10 @@ class Pledge extends BasePledge
       
       if($family)
       {
+        // This must be done in the Pledge object model instead of during a query with Propel's ->WithColumn() syntax 
+        // because the getFamilyString logic is implemented in PHP, not SQL, and the consumer of this object
+        // expects to see the fully-formatted family string (name, address, state) instead of only family name.
+        // i.e. commit 33b40c973685b7f03cfb3e79241fe53594b83f04 does it incorrectly.
         $array['FamilyString']=$family->getFamilyString();
       }
       
