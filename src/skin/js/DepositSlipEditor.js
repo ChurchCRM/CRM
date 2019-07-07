@@ -4,7 +4,7 @@ function initPaymentTable()
     {
       width: 'auto',
       title:i18next.t('Family'),
-      data:'FamilyName',
+      data:'FamilyString',
       render: function(data, type, full, meta) {
         var familyName = data ? data : i18next.t('Anonymous');
         return '<a href=\'PledgeEditor.php?linkBack=DepositSlipEditor.php?DepositSlipID=' + depositSlipID +

@@ -78,9 +78,6 @@ $app->group('/deposits', function () {
             ->withColumn('SUM(Pledge.Amount)', 'sumAmount')
             ->joinDonationFund()
             ->withColumn('DonationFund.Name')
-            ->joinFamily()->useFamilyQuery()
-            ->withColumn('Family.Name', 'FamilyName')
-            ->endUse()
             ->find()
             ->toArray();
         return $response->withJSON($Pledges);
