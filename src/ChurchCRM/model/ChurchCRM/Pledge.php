@@ -32,17 +32,4 @@ class Pledge extends BasePledge
             throw new PropelException('Cannot delete a payment from a closed deposit', 500);
         }
     }
-    
-    public function toArray()
-    {
-      $array = parent::toArray();
-      $family = $this->getFamily();
-      
-      if($family)
-      {
-        $array['FamilyString']=$family->getFamilyString();
-      }
-      
-      return $array;
-    }
 }
