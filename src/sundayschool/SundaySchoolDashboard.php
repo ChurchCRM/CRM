@@ -6,6 +6,7 @@ use ChurchCRM\Service\DashboardService;
 use ChurchCRM\Service\SundaySchoolService;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\MiscUtils;
+use ChurchCRM\GenderTypeQuery;
 
 $dashboardService = new DashboardService();
 $sundaySchoolService = new SundaySchoolService();
@@ -22,12 +23,20 @@ $maleKids = 0;
 $femaleKids = 0;
 $nonbinaryKids = 0;
 $familyIds = [];
+
+// unverified!!!!
+$genderlist = GenderTypeQuery::create()->find();
+foreach($genderlist as $gendertype) {
+  $kidsgender[$gendertype->getID()] = [$gendertype->getName(), "0"];
+}
+// echo print_r($kidsgender);
 foreach ($classStats as $class) {
     $kids = $kids + $class['kids'];
     $teachers = $teachers + $class['teachers'];
     $classKids = $sundaySchoolService->getKidsFullDetails($class['id']);
     foreach ($classKids as $kid) {
         array_push($familyIds, $kid['fam_id']);
+        $kidsgender[$kid['kidGender']][1] += 1;
         if ($kid['kidGender'] == '1') {
             $maleKids++;
         } elseif ($kid['kidGender'] == '2') {
@@ -37,7 +46,7 @@ foreach ($classStats as $class) {
       }
     }
 }
-
+// echo print_r($kidsgender);
 // Set the page title and include HTML header
 $sPageTitle = gettext('Sunday School Dashboard');
 require '../Include/Header.php';
@@ -111,42 +120,19 @@ require '../Include/Header.php';
     </div>
     <!-- /.info-box -->
   </div>
-  <div class="col-md-3 col-sm-6 col-xs-12">
-    <div class="info-box">
-      <span class="info-box-icon bg-blue"><i class="fa fa-male"></i></span>
-
-      <div class="info-box-content">
-        <span class="info-box-text"><?= gettext('Boys') ?></span>
-        <span class="info-box-number"> <?= $maleKids ?></span>
-      </div>
-      <!-- /.info-box-content -->
-    </div>
-    <!-- /.info-box -->
-  </div>
-  <div class="col-md-3 col-sm-6 col-xs-12">
-    <div class="info-box">
-      <span class="info-box-icon bg-fuchsia"><i class="fa fa-female"></i></span>
-
-      <div class="info-box-content">
-        <span class="info-box-text"><?= gettext('Girls') ?></span>
-        <span class="info-box-number"> <?= $femaleKids ?></span>
-      </div>
-      <!-- /.info-box-content -->
-    </div>
-    <!-- /.info-box -->
-    </div>
-  <div class="col-md-3 col-sm-6 col-xs-12">
-    <div class="info-box">
-      <span class="info-box-icon bg-yellow"><i class="fa fa-genderless"></i></span>
-
-      <div class="info-box-content">
-        <span class="info-box-text"><?= gettext('Non-binary') ?></span>
-        <span class="info-box-number"> <?= $nonbinaryKids ?></span>
-      </div>
-      <!-- /.info-box-content -->
-    </div>
-    <!-- /.info-box -->
-  </div>
+  <?php
+    foreach($kidsgender as $row) {
+      echo '<div class="col-md-3 col-sm-6 col-xs-12">';
+        echo '<div class="info-box">';
+          echo '<span class="info-box-icon bg-yellow"><i class="fa fa-child"></i></span>';
+          echo '<div class="info-box-content">';
+            echo '<span class="info-box-text">' . gettext($row[0]) . '</span>';
+            echo '<span class="info-box-number">' . $row[1] . '</span>';
+          echo '</div>';
+        echo '</div>';
+      echo '</div>';
+    }
+  ?>
 </div><!-- /.row -->
 <!-- on continue -->
 <div class="box box-info">

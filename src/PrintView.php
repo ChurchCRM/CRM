@@ -20,6 +20,7 @@ use ChurchCRM\Reports\ChurchInfoReport;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\PersonQuery;
 use ChurchCRM\Utils\MiscUtils;
+use ChurchCRM\GenderTypeQuery;
 
 // Get the person ID from the querystring
 $iPersonID = InputUtils::LegacyFilterInput($_GET['PersonID'], 'int');
@@ -238,18 +239,7 @@ if ($fam_ID) {
 			<td class="LabelColumn"><?= gettext('Gender') ?>:</td>
 			<td width="<?= $iTableSpacerWidth ?>"></td>
 			<td class="TextColumn">
-				<?php
-                switch (strtolower($per_Gender)) {
-                    case 1:
-                        echo gettext('Male');
-                        break;
-                    case 2:
-                        echo gettext('Female');
-                        break;
-                    case 3:
-                        echo gettext('Non-binary');
-                        break;
-                } ?>
+				<?= gettext(GenderTypeQuery::create()->findPk($per_Gender)->getName()); ?>
 			</td>
 		</tr>
 		<tr>
@@ -363,7 +353,7 @@ if ($fam_ID) {
 				<br>
 			</td>
 			<td>
-				<?php switch ($per_Gender) {case 1: echo gettext('Male'); break; case 2: echo gettext('Female'); break;  case 3: echo gettext('Non-binary'); break;default: echo ''; } ?>&nbsp;
+				<?= gettext(GenderTypeQuery::create()->findPk($per_Gender)->getName()); ?>&nbsp;
 			</td>
 			<td>
 				<?= $sFamRole ?>&nbsp;

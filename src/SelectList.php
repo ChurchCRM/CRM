@@ -8,6 +8,7 @@
 *  Additional Contributors:
 *  2006 Ed Davis
 *  2011 Michael Wilt
+*  2019 Troy Smith
 
 *  Design notes: this file would benefit from some thoughtful cleanup.  The filter
 *  settings are using badly overloaded values, with positive, negative, and not-set
@@ -25,6 +26,7 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\UserQuery;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\GenderTypeQuery;
 
 $iTenThousand = 10000;  // Constant used to offset negative choices in drop down lists
 
@@ -560,13 +562,7 @@ echo '<option value="2"';
 if (isset($iGender) && $iGender == 2) {
     echo ' selected ';
 }
-echo '> '.gettext('Female').'</option>';
-
-echo '<option value="3"';
-if (isset($iGender) && $iGender == 3) {
-    echo ' selected ';
-}
-echo '> '.gettext('Non-binary').'</option></select>';
+echo '> '.gettext('Female').'</option></select>';
 
 // **********
 // Classification drop down list
@@ -1144,12 +1140,7 @@ while ($aRow = mysqli_fetch_array($rsPersons)) {
     } elseif ($sPersonColumn3 == 'Family Role') {
         echo $aFamilyRoleName[$per_fmr_ID];
     } else {    // Display Gender
-        switch ($per_Gender) {
-            case 1: echo gettext('Male'); break;
-            case 2: echo gettext('Female'); break;
-            case 3: echo gettext('Non-binary'); break;
-            default: echo '';
-        }
+        echo gettext(GenderTypeQuery::create()->findPk($per_Gender)->getName());
     }
     echo '&nbsp;</td>';
 

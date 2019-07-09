@@ -15,6 +15,7 @@ require 'Include/Functions.php';
 
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\SessionUser;
+use ChurchCRM\GenderTypeQuery;
 
 // If user does not have CSV Export permission, redirect to the menu.
 if (!SessionUser::getUser()->isCSVExport()) {
@@ -334,9 +335,11 @@ require 'Include/Header.php';
               <div class="box-body no-padding">
                 <select name="Gender">
                   <option value="0"><?= gettext("Don't Filter") ?></option>
-                  <option value="1"><?= gettext('Male') ?></option>
-                  <option value="2"><?= gettext('Female') ?></option>
-                  <option value="3"><?= gettext('Non-binary') ?></option>
+                  <?php
+                    foreach ($ganderlist as $gender) {
+                      echo '<option value=' . $gender->getId() .'>' . gettext($gender->getName()) . '</option>';
+                    }
+                  ?>
                 </select>
               </div>
             </div>

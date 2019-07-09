@@ -20,6 +20,7 @@ use ChurchCRM\PersonQuery;
 use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\GenderTypeQuery;
 
 //Set the page title
 $sPageTitle = gettext('Person Editor');
@@ -626,18 +627,29 @@ require 'Include/Header.php';
                     <div class="col-md-2">
                         <label><?= gettext('Gender') ?>:</label>
                         <select name="Gender" class="form-control">
-                            <option value="0"><?= gettext('Select Gender') ?></option>
-                            <option value="0" disabled>-----------------------</option>
-                            <option value="1" <?php if ($iGender == 1) {
-        echo 'selected';
-    } ?>><?= gettext('Male') ?></option>
-                            <option value="2" <?php if ($iGender == 2) {
-        echo 'selected';
-    } ?>><?= gettext('Female') ?></option>
-                            <option value="3" <?php if ($iGender == 3) {
-        echo 'selected';
-    } ?>><?= gettext('Non-binary') ?></option>
+                            <?php
+                                $genderType = GenderTypeQuery::create()
+                                    ->find();
+
+                                foreach ($genderType as $gender) {
+                                    echo "<option value=" . $gender->getId() . ">" . gettext($gender->getName()) . "</option>";
+                                }
+                            ?>
                         </select>
+
+                        <!-- <select name="Gender" class="form-control">
+                            <option value="0">< ?= gettext('Select Gender') ?></option>
+                            <option value="0" disabled>-----------------------</option>
+                            <option value="1" < ?php if ($iGender == 1) {
+        echo 'selected';
+    } ?>>< ?= gettext('Male') ?></option>
+                            <option value="2" < ?php if ($iGender == 2) {
+        echo 'selected';
+    } ?>>< ?= gettext('Female') ?></option>
+                            <option value="3" < ?php if ($iGender == 3) {
+        echo 'selected';
+    } ?>>< ?= gettext('Non-binary') ?></option>
+                        </select> -->
                     </div>
                     <div class="col-md-3">
                         <label for="Title"><?= gettext('Title') ?>:</label>

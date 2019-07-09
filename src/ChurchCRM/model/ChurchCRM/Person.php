@@ -12,6 +12,8 @@ use ChurchCRM\Utils\GeoUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use DateTime;
 use Propel\Runtime\Connection\ConnectionInterface;
+use ChurchCRM\GenderTypeQuery;
+
 
 /**
  * Skeleton subclass for representing a row from the 'person_per' table.
@@ -34,31 +36,10 @@ class Person extends BasePerson implements iPhoto
         return $this->getFormattedName(SystemConfig::getValue('iPersonNameStyle'));
     }
 
-    public function isMale()
-    {
-        return $this->getGender() == 1;
-    }
-
-    public function isFemale()
-    {
-        return $this->getGender() == 2;
-    }
-
-    public function isNonbinary()
-    {
-        return $this->getGender() == 3;
-    }
-
     public function getGenderName()
     {
-      switch (strtolower($this->getGender())) {
-        case 1:
-          return gettext('Male');
-        case 2:
-          return gettext('Female');
-        case 3:
-          return gettext('Non-binary');
-      }
+      $gender = GenderTypeQuery::create()->findPk($this->getGender());
+      return $gender->getName();
     }
 
     public function hideAge()

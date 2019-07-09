@@ -207,19 +207,9 @@ $bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() ||
                     <?php endif; ?>
                 </div>
                 <h3 class="profile-username text-center">
-                    <?php if ($person->isMale()) {
-    ?>
-                        <i class="fa fa-male"></i>
-                        <?php
-} elseif ($person->isFemale()) {
-        ?>
-                        <i class="fa fa-female"></i>
-                        <?php
-} elseif ($person->isNonbinary()) {
-        ?>
-                        <i class="fa fa-genderless"></i>
-                        <?php
-    } ?>
+
+                        <i class="fa fa-user"></i>
+
                     <?= $person->getFullName() ?></h3>
 
                 <p class="text-muted text-center">

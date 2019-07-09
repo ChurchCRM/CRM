@@ -40,7 +40,7 @@
                 required="true" defaultValue="0"/>
         <column name="per_BirthYear" phpName="BirthYear" type="INTEGER" size="4"/>
         <column name="per_MembershipDate" phpName="MembershipDate" type="DATE"/>
-        <column name="per_Gender" phpName="Gender" type="TINYINT" size="1" sqlType="tinyint(1) unsigned" required="true"
+        <column name="per_Gender" phpName="Gender" type="TINYINT" size="3" sqlType="tinyint(3) unsigned" required="true"
                 defaultValue="false"/>
         <column name="per_fmr_ID" phpName="FmrId" type="TINYINT" size="3" sqlType="tinyint(3) unsigned" required="true"
                 defaultValue="0"/>
@@ -65,6 +65,9 @@
         </index>
         <foreign-key foreignTable="family_fam">
             <reference local="per_fam_ID" foreign="fam_ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="gender_gen">
+            <reference local="per_Gender" foreign="gen_ID"/>
         </foreign-key>
         <vendor type="mysql">
             <parameter name="Engine" value="InnoDB"/>
@@ -890,6 +893,26 @@
       <vendor type="mysql">
           <parameter name="Engine" value="InnoDB"/>
       </vendor>
+    </table>
+
+    <table name="gender_gen" idMethod="native" phpName="GenderType" description="This contains all the gender choices">
+        <column name="gen_ID" phpName="Id" type="SMALLINT" size="1" sqlType="tinyinit(1) unsigned" primaryKey="true"
+                autoIncrement="true" required="true"/>
+        <column name="gen_Name" phpName="Name" type="VARCHAR" size="30"/>
+        <column name="gen_Description" phpName="Description" type="VARCHAR" size="50"/>
+
+        <index name="gen_ID">
+            <index-column name="gen_ID"/>
+        </index>
+        <vendor type="mysql">
+            <parameter name="Engine" value="InnoDB"/>
+        </vendor>
+        <behavior name="validate">
+            <parameter name="rule1" value="{column: gen_Name, validator: NotNull}" />
+            <parameter name="rule2" value="{column: gen_Name, validator: Length, options: {max: 30}}" />
+            <parameter name="rule3" value="{column: gen_Description, validator: NotNull}" />
+            <parameter name="rule4" value="{column: gen_Description, validator: Length, options: {max: 50}}" />
+        </behavior>
     </table>
 
     <!--

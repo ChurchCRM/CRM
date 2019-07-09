@@ -3,6 +3,7 @@
 namespace ChurchCRM\Dashboard;
 
 use ChurchCRM\Dashboard\DashboardItemInterface;
+use ChurchCRM\GenderTypeQuery;
 
 class PersonDemographicDashboardItem implements DashboardItemInterface {
   
@@ -17,23 +18,9 @@ class PersonDemographicDashboardItem implements DashboardItemInterface {
                 where family_fam.fam_DateDeactivated is  null
                 group by per_Gender, per_fmr_ID order by per_fmr_ID;';
         $rsGenderAndRole = RunQuery($sSQL);
+        $genderlist = GenderTypeQuery::create();
         while ($row = mysqli_fetch_array($rsGenderAndRole)) {
-            switch ($row['per_Gender']) {
-        case 0:
-          $gender = gettext('Unknown');
-          break;
-        case 1:
-          $gender = gettext('Male');
-          break;
-        case 2:
-          $gender = gettext('Female');
-          break;
-        case 3:
-          $gender = gettext('Non-binary');
-          break;
-        default:
-          $gender = gettext('Other');
-      }
+          $gender = $genderlist->findPk($row['per_Gender'])->getName();
 
             switch ($row['per_fmr_ID']) {
         case 0:

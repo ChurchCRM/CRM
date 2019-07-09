@@ -1,10 +1,12 @@
 <?php
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\GenderTypeQuery;
 
 // Set the page title and include HTML header
 $sPageTitle = gettext("Family Registration");
 require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
+$genderlist = GenderTypeQuery::create()->find();
 ?>
   <form action="<?= SystemURLs::getRootPath() ?>/external/register/confirm" method="post">
     <div class="register-box" style="width: 600px;">
@@ -56,9 +58,11 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
                       </div>
                       <div class="col-lg-4">
                         <select name="memberGender-<?= $x ?>" class="form-control">
-                          <option value="1"><?= gettext('Male') ?></option>
-                          <option value="2"><?= gettext('Female') ?></option>
-                          <option value="3"><?= gettext('Non-binary') ?></option>
+                        <?PHP
+                          foreach($genderlist as $gender) {
+                            echo '<option value=>' . $gender->getId() . '>' . gettext($gender->getName()) . '</option>';
+                          }
+                        ?>
                         </select>
                       </div>
                     </div>

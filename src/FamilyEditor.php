@@ -21,9 +21,12 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Emails\NewPersonOrFamilyEmail;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Bootstrapper;
+use ChurchCRM\GenderTypeQuery;
 
 //Set the page title
 $sPageTitle = gettext('Family Editor');
+
+$genderlist = GenderTypeQuery::create()->find();
 
 $iFamilyID = -1;
 
@@ -983,18 +986,12 @@ require 'Include/Header.php';
 			</td>
 			<td class="TextColumn">
 				<select name="Gender<?php echo $iCount ?>">
-					<option value="0" <?php if ($aGenders[$iCount] == 0) {
-                echo 'selected';
-            } ?> ><?= gettext('Select Gender') ?></option>
-					<option value="1" <?php if ($aGenders[$iCount] == 1) {
-                echo 'selected';
-            } ?> ><?= gettext('Male') ?></option>
-					<option value="2" <?php if ($aGenders[$iCount] == 2) {
-                echo 'selected';
-            } ?> ><?= gettext('Female') ?></option>
-                    <option value="3" <?php if ($aGenders[$iCount] == 3) {
-                echo 'selected';
-            } ?> ><?= gettext('Non-binary') ?></option>
+                <?php
+                    foreach($genderlist as $gender) {
+                        echo '<option value=' . $gender->getId(); if ($aGenders[$iCount] == 0) { echo "selected";}
+                        echo '>' . $gender->getName() . '</option>';
+                    }
+                ?>
 				</select>
 			</td>
 
