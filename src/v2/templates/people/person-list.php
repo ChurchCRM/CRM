@@ -14,7 +14,7 @@ use ChurchCRM\SessionUser;
 use ChurchCRM\Bootstrapper;
 
 //Set the page title
-$sPageTitle = gettext(ucfirst($sMode)) . ' ' . gettext('List');
+$sPageTitle = gettext(ucfirst($sMode)) . ' ' . gettext('Listing');
 include SystemURLs::getDocumentRoot() . '/Include/Header.php';
 /* @var $families ObjectCollection */
 ?>
@@ -29,17 +29,17 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <div class="col-lg-6">
                 <div class='external-filter'>
                 <!-- <label>Gender:</label> -->
-                <span style="margin: 5px; display:inline-block;"id="filter-07"></span>
+                <span style="margin: 5px; display:inline-block;"id="filter-Gender"></span>
                 <!-- <label>Classification:</label> -->
-                <span style="margin: 5px; display:inline-block;"id="filter-08"></span>
+                <span style="margin: 5px; display:inline-block;"id="filter-Classification"></span>
                 <!-- <label>Family Role:</label> -->
-                <span style="margin: 5px; display:inline-block;"  id="filter-09"></span>
+                <span style="margin: 5px; display:inline-block;"  id="filter-Role"></span>
                 <!-- <label>Contact Properties:</label> -->
-                <span style="margin: 5px; display:inline-block;"  id="filter-10"></span>
+                <span style="margin: 5px; display:inline-block;"  id="filter-Properties"></span>
                 <!-- <label>Custom Fields:</label> -->
-                <span style="margin: 5px; display:inline-block;"  id="filter-11"></span>
+                <span style="margin: 5px; display:inline-block;"  id="filter-Custom"></span>
                 <!-- <label>Group Types:</label> -->
-                <span style="margin: 5px; display:inline-block;"  id="filter-12"></span>
+                <span style="margin: 5px; display:inline-block;"  id="filter-Group"></span>
                 <input style="margin: 20px" id="ClearFilter" type="button" class="btn btn-default" value="<?= gettext('Clear Filter') ?>"><BR><BR>
                 </div>
             </div>
@@ -62,7 +62,8 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <tr>
                 <th><?= gettext('Actions') ?></th>
                 <th><?= gettext('Id') ?></th>
-                <th><?= gettext('Name') ?></th>
+                <th><?= gettext('Last Name') ?></th>
+                <th><?= gettext('First Name') ?></th>
                 <th><?= gettext('Address') ?></th>
                 <th><?= gettext('Home Phone') ?></th>
                 <th><?= gettext('Cell Phone') ?></th>
@@ -118,7 +119,8 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         }
                             ?>
                 <td><?= $person->getId() ?></td>
-                <td><?= $person->getFormattedName(SystemConfig::getValue('iPersonNameStyle')) ?></td>
+                <td><?= $person->getLastName()?></td>
+                <td><?= $person->getFirstName()?></td>
                 <td><?= $person->getAddress() ?></td>
                 <td><?= $person->getHomePhone() ?></td>
                 <td><?= $person->getCellPhone() ?></td>
@@ -155,7 +157,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
         var bVisible = parseInt("<?= SystemConfig::getValue('bHidePersonAddress') ? 0 : 1 ?>");
 
         oTable = $('#members').DataTable({
-            columns: [null,{visible:false},null,{visible:bVisible},null,null,null,null,null,null,{visible:false},{visible:false},{visible:false}],
+            columns: [null,{visible:false},null,null,{visible:bVisible},null,null,null,null,null,null,{visible:false},{visible:false},{visible:false}],
             "language": {
                 url: "<?= SystemURLs::getRootPath() . '/locale/datatables/' . Bootstrapper::GetCurrentLocale()->getDataTables() ?>.json"
             },
@@ -169,48 +171,48 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
         });
 
         yadcf.init(oTable, [{
-            column_number: [7],
-            filter_type: 'multi_select',
-            select_type: 'select2',
-            filter_container_id: 'filter-07',
-            filter_default_label: 'Gender',
-            filter_match_mode : "exact",
-            select_type_options: {width: '190px'}
-        }, {
             column_number: [8],
             filter_type: 'multi_select',
             select_type: 'select2',
-            filter_container_id: 'filter-08',
-            filter_default_label: 'Classification',
+            filter_container_id: 'filter-Gender',
+            filter_default_label: 'Gender',
             filter_match_mode : "exact",
             select_type_options: {width: '190px'}
         }, {
             column_number: [9],
             filter_type: 'multi_select',
             select_type: 'select2',
-            filter_container_id: 'filter-09',
-            filter_default_label: 'Family Role',
+            filter_container_id: 'filter-Classification',
+            filter_default_label: 'Classification',
             filter_match_mode : "exact",
             select_type_options: {width: '190px'}
         }, {
             column_number: [10],
-            filter_container_id: 'filter-10',
+            filter_type: 'multi_select',
+            select_type: 'select2',
+            filter_container_id: 'filter-Role',
+            filter_default_label: 'Family Role',
+            filter_match_mode : "exact",
+            select_type_options: {width: '190px'}
+        }, {
+            column_number: [11],
+            filter_container_id: 'filter-Properties',
             filter_type: 'multi_select',
             select_type: 'select2', 
             data: FamilyProperties, 
             filter_default_label: "Family Properties",
             select_type_options: {width: '190px'}
         }, {
-            column_number: [11],
-            filter_container_id: 'filter-11',
+            column_number: [12],
+            filter_container_id: 'filter-Custom',
             filter_type: 'multi_select',
             select_type: 'select2',
             data: CustomFields, 
             filter_default_label: "Custom Field",
             select_type_options: {width: '190px'}
         }, {
-            column_number: [12],
-            filter_container_id: 'filter-12',
+            column_number: [13],
+            filter_container_id: 'filter-Group',
             filter_type: 'multi_select',
             select_type: 'select2',
             data: GroupTypes, 

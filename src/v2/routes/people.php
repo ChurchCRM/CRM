@@ -69,7 +69,7 @@ function listPeople(Request $request, Response $response, array $args)
         $cL[] = $element->getName();
     }
 
-    // get person custom list so we can filter on  person-list.php
+    // get person group list so we can filter on  person-list.php
     $gL = [];
     $gQ = GroupQuery::create()
         ->find();
@@ -122,7 +122,7 @@ function listPeople(Request $request, Response $response, array $args)
         }
     }
 
-      if (isset($_GET['Gender'])) {
+    if (isset($_GET['Gender'])) {
         $id = InputUtils::LegacyFilterInput($_GET['Gender']);
         
         $members->filterByGender($id);
@@ -137,8 +137,12 @@ function listPeople(Request $request, Response $response, array $args)
             case 2:
                 $sMode = $sMode . " - " . gettext('Female');
                 break;
-          }
-    }  
+        }
+    }
+    // groupassign
+    if (isset($_GET['groupassign'])) {
+        $sMode = gettext('Group Assignment Helper');
+    } 
 
     $pageArgs = [
         'sMode' => $sMode,

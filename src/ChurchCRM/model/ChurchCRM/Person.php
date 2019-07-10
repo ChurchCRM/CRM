@@ -556,6 +556,7 @@ class Person extends BasePerson implements iPhoto
           ->where('r2p_record_ID='.$this->getId())
           ->find();
 
+      $PropertiesList = "";
       foreach($personProperties as $element) {
           $PropertiesList .= $element->getProName() . ", ";
       }
@@ -578,6 +579,7 @@ class Person extends BasePerson implements iPhoto
       $stmt->execute();
       $person = $stmt->fetchAll(\PDO::FETCH_ASSOC);
       
+      $personCustom = "";
       // loop thourgh each custom field and update custom columns with readable name and value
       foreach($CustomMasterName as $column) {
           $i += 1;
@@ -597,7 +599,7 @@ class Person extends BasePerson implements iPhoto
       ->find();
 
 
-
+      $group = "";
       foreach($GroupList as $element) {
         $group .= $element->getName() . ", ";
       }

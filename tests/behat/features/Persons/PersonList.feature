@@ -5,14 +5,14 @@ Feature: Person List
 
   Scenario: Listing all persons
     Given I am authenticated as "admin" using "changeme"
-    And I am on "/SelectList.php?mode=person"
+    And I am on "/v2/people"
     Then I should see "Person Listing"
     And I should see "Admin, Church"
     And I should see "Barker, Bob"
     
   Scenario: Add and remove all persons to cart
     Given I am authenticated as "admin" using "changeme"
-    And I am on "/SelectList.php?mode=person"
+    And I am on "/v2/people"
     Then I should see "0" in the "#iconCount" element
     And I click the "#AddAllToCart" element
     And I wait for AJAX to finish

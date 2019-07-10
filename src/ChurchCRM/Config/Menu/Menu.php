@@ -83,7 +83,7 @@ class Menu
     {
         $groupMenu = new MenuItem(gettext("Groups"), "", true, 'fa-tag');
         $groupMenu->addSubMenu(new MenuItem(gettext("List Groups"), "GroupList.php"));
-        $groupMenu->addSubMenu(new MenuItem(gettext("Group Assignment Helper"), "SelectList.php?mode=groupassign"));
+        $groupMenu->addSubMenu(new MenuItem(gettext("Group Assignment Helper"), "v2/people?groupassign"));
 
         $listOptions = ListOptionQuery::Create()->filterById(3)->orderByOptionSequence()->find();
 
