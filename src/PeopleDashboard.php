@@ -3,7 +3,10 @@
  * User: George Dawoud
  * Date: 1/17/2016
  * Time: 8:01 AM.
+ * 
+ * Updated by Troy Smith, 2019-07-13
  */
+
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
@@ -14,6 +17,7 @@ use ChurchCRM\PersonQuery;
 use ChurchCRM\ListOptionQuery;
 use ChurchCRM\SessionUser;
 use ChurchCRM\GenderTypeQuery;
+use Propel\Runtime\Propel;
 
 // Set the page title
 $sPageTitle = gettext('People Dashboard');
@@ -28,52 +32,42 @@ $groupStats = $dashboardService->getGroupStats();
 $ageStats = $dashboardService->getAgeStats();
 $demographicStats = ListOptionQuery::create()->filterByID('2')->find();
 
-$sSQL = 'select count(*) as numb, per_Gender from person_per, family_fam
-        where fam_ID =per_fam_ID and fam_DateDeactivated is  null
-        and per_Gender in (1,2) and
-        per_fmr_ID not in (' . SystemConfig::getValue('sDirRoleChild') . ')
-        group by per_Gender ;';
-$rsAdultsGender = RunQuery($sSQL);
-
-$sSQL = 'select count(*) as numb, per_Gender from person_per , family_fam
-          where fam_ID =per_fam_ID and fam_DateDeactivated is  null
-          and per_Gender in (1,2)
-          and per_fmr_ID in (' . SystemConfig::getValue('sDirRoleChild') . ')
-          group by per_Gender ;';
-$rsKidsGender = RunQuery($sSQL);
-
-$sSQL = 'select lst_OptionID,lst_OptionName from list_lst where lst_ID = 1;';
-$rsClassification = RunQuery($sSQL);
-$classifications = new stdClass();
-while (list($lst_OptionID, $lst_OptionName) = mysqli_fetch_row($rsClassification)) {
-    $classifications->$lst_OptionName = $lst_OptionID;
+$classList = ListOptionQuery::create()->filterByID(1)->find();
+foreach ($classList as $list) {
+  $classifications[$list->getOptionName()] = $list->getOptionID();
 }
 
 $sSQL = "SELECT per_Email, fam_Email, lst_OptionName as virt_RoleName FROM person_per
           LEFT JOIN family_fam ON per_fam_ID = family_fam.fam_ID
           INNER JOIN list_lst on lst_ID=1 AND per_cls_ID = lst_OptionID
-          WHERE fam_DateDeactivated is  null
+          WHERE family_fam.fam_DateDeactivated is null
 			 AND per_ID NOT IN
           (SELECT per_ID
               FROM person_per
               INNER JOIN record2property_r2p ON r2p_record_ID = per_ID
               INNER JOIN property_pro ON r2p_pro_ID = pro_ID AND pro_Name = 'Do Not Email')";
 
-$rsEmailList = RunQuery($sSQL);
+$conn = Propel::getConnection(); 
+$stmt = $conn->prepare($sSQL);
+$stmt->execute();
+$rsEmailList = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+
 $sEmailLink = '';
 $sMailtoDelimiter = SessionUser::getUser()->getUserConfigString("sMailtoDelimiter");
 $roleEmails = array();
-while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailList)) {
-    $sEmail = SelectWhichInfo($per_Email, $fam_Email, false);
-    if ($sEmail) {
-        if (!stristr($sEmailLink, $sEmail)) {
-            $sEmailLink .= $sEmail .= $sMailtoDelimiter;
-            if (!array_key_exists($virt_RoleName, $roleEmails)) {
-                $roleEmails[$virt_RoleName] ="";
-            }
-            $roleEmails[$virt_RoleName] .= $sEmail;
+
+foreach($rsEmailList as $email) {
+  $sEmail = SelectWhichInfo($email['per_Email'], $email['fam_Email'], false);
+ 
+  if ($sEmail) {
+    if (!stristr($sEmailLink, $sEmail)) {
+        $sEmailLink .= $sEmail .= $sMailtoDelimiter;
+        if (!array_key_exists($email['virt_RoleName'], $roleEmails)) {
+            $roleEmails[$email['virt_RoleName']] = "";
         }
+        $roleEmails[$email['virt_RoleName']] .= $sEmail;
     }
+  }
 }
 
 ?>
@@ -285,7 +279,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
         <?php foreach ($personStats as $key => $value) {
             ?>
           <tr>
-            <td><a href='SelectList.php?Sort=name&Filter=&mode=person&Classification=<?= $classifications->$key ?>'><?= gettext($key) ?></a></td>
+            <td><a href='SelectList.php?Sort=name&Filter=&mode=person&Classification=<?= $classifications[$key] ?>'><?= gettext($key) ?></a></td> 
             <td>
               <div class="progress progress-xs progress-striped active">
                 <div class="progress-bar progress-bar-success"
@@ -324,12 +318,12 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
           </tr>
             <?php 
               $genderlist = GenderTypeQuery::create()->find();
-              $genPop = PersonQuery::create()->leftJoinFamily()->where("fam_DateDeactivated is NULL")->count();
+              $genPop = PersonQuery::create()->leftJoinFamily()->where("family_fam.fam_DateDeactivated is NULL")->count();
               foreach ($demographicStats as $demStat) {
                 unset($countGender);
                 foreach ($genderlist as $gender) {
                   // GenderName, Count, GenderID, demStatId, demStatName 
-                  $countGender[] = [$gender->getName(), PersonQuery::create()->leftJoinFamily()->where("fam_DateDeactivated is NULL")->filterByFmrId($demStat->getOptionID())->filterByGender($gender->getId())->count(), $gender->getId(), $demStat->getOptionID(), $demStat->getOptionName()];
+                  $countGender[] = [$gender->getName(), PersonQuery::create()->leftJoinFamily()->where("family_fam.fam_DateDeactivated is NULL")->filterByFmrId($demStat->getOptionID())->filterByGender($gender->getId())->count(), $gender->getId(), $demStat->getOptionID(), $demStat->getOptionName()];
                 }
   
                 foreach($countGender as $row) {
@@ -351,7 +345,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
               unset($countGender);
               foreach ($genderlist as $gender) {
                 // GenderName, Count, GenderID, demStatId, demStatName 
-                $countGender[] = [$gender->getName(), PersonQuery::create()->leftJoinFamily()->where("fam_DateDeactivated is NULL")->filterByFmrId("0")->filterByGender($gender->getId())->count(), $gender->getId(), 0, "Unknown"];
+                $countGender[] = [$gender->getName(), PersonQuery::create()->leftJoinFamily()->where("family_fam.fam_DateDeactivated is NULL")->filterByFmrId("0")->filterByGender($gender->getId())->count(), $gender->getId(), 0, "Unknown"];
               }
               foreach($countGender as $row) {
                 if ($row[1] != "0") {
@@ -417,7 +411,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
             $RoleChild = SystemConfig::getValue('sDirRoleChild');
 
               // get list of children
-              $personList = PersonQuery::create()->leftJoinFamily()->where("fam_DateDeactivated is NULL")
+              $personList = PersonQuery::create()->leftJoinFamily()->where("family_fam.fam_DateDeactivated is NULL")
                 ->withColumn("COUNT(per_ID)", "Numb")
                 ->filterByFmrId($RoleChild)
                 ->groupByGender()
@@ -431,7 +425,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
               }
 
               // get list of adults
-              $personList = PersonQuery::create()->leftJoinFamily()->where("fam_DateDeactivated is NULL")
+              $personList = PersonQuery::create()->leftJoinFamily()->where("family_fam.fam_DateDeactivated is NULL")
                 ->withColumn("COUNT(per_ID)", "Numb")
                 ->filterByFmrId(!$RoleChild)
                 ->groupByGender()
