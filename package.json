@@ -54,7 +54,7 @@
         "webpack-cli": "^2.1.4"
     },
     "dependencies": {
-        "admin-lte": "^2.4.12",
+        "admin-lte": "^2.4.10",
         "bootbox": "^5.1.3",
         "bootstrap-datepicker": "^1.9.0",
         "bootstrap-notify": "^3.1.3",
