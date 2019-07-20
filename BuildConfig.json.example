@@ -4,5 +4,12 @@
     },
     "GitHub": {
         "token": ""
+    },
+    "SeleniumTests": {
+        "TestURL": "http://127.0.0.1",
+        "SeleniumTestHostType": 1,
+        "SauceUsername":"",
+        "SauceAccessKey":""
     }
+    
 }
