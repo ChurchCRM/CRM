@@ -20,6 +20,7 @@ use ChurchCRM\PersonQuery;
 use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\Utils\LoggerUtils;
 
 //Set the page title
 $sPageTitle = gettext('Person Editor');
@@ -401,7 +402,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
                 $person = PersonQuery::create()->findOneByID($iPersonID);
                 $NotificationEmail = new NewPersonOrFamilyEmail($person);
                 if (!$NotificationEmail->send()) {
-                    $logger->warn($NotificationEmail->getError());
+                    LoggerUtils::getAppLogger()->warn($NotificationEmail->getError());
                 }
             }
         } else {
