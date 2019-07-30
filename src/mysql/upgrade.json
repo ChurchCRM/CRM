@@ -184,7 +184,7 @@
         ],
         "dbVersion": "3.0.0"
     },
-    "current": {
+    "pre-3.4.0": {
         "versions": [
             "3.0.0",
             "3.0.1",
@@ -217,5 +217,13 @@
             "/mysql/upgrade/3.4.0.sql"
         ],
         "dbVersion": "3.4.0"
-    }
+    },
+    "current": {
+      "versions": [
+        "3.4.0"
+      ],
+      "scripts": [
+      ],
+      "dbVersion": "3.4.1"
+  }
 }
