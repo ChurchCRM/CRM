@@ -489,14 +489,19 @@ class Person extends BasePerson implements iPhoto
                     $nameString .= $this->getLastName();
                 }
                 if ($this->getFirstName()) {
+                  if (!$nameString) { // no first name
+                    $nameString = $this->getFirstName();
+                  } else {
                     $nameString .= ', ' . $this->getFirstName();
+                  }
+                    
                 }
                 if ($this->getMiddleName()) {
                     $nameString .= ' ' . $this->getMiddleName();
                 }
                 break;
             default:
-                $nameString = $this->getFullName();
+                $nameString = trim($this->getFullName());
 
         }
         return $nameString;

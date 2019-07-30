@@ -79,14 +79,12 @@ function listPeople(Request $request, Response $response, array $args)
         $gL[] = $element->getName();
     }
 
-    //echo "<script>alert('listPeople')</script>";
     $renderer = new PhpRenderer('templates/people/');
-    //$sMode = 'Active';
     // Filter received user input as needed
     // Classification
     // Gender
     // FamilyRole
-    //echo "<script>alert($sMode)</script>";
+  
     // filterByClsId: src\ChurchCRM\model\ChurchCRM\Base\PersonQuery.php
     $members = PersonQuery::create();
     // set default sMode
