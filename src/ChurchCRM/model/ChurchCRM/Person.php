@@ -566,28 +566,25 @@ class Person extends BasePerson implements iPhoto
     // return list of person custom fields seperated by ', '
     // created for the person-list.php datatable
     public function getCustomFields() {
+      // get list of custom field column names
+      $allPersonCustomFields = PersonCustomMasterQuery::create()->find();
 
-      // get list of custom field names c1, c2, etc
-      $CustomMasterName =  PersonCustomMasterQuery::create()->find();
-      
-      // get person data.  Propel will not see custom fields c1, c2, etc., so we'll get them using raw sql
-      $conn = Propel::getConnection();
-      $sql = 'SELECT * FROM person_custom WHERE per_ID = ?';
-      
-      $stmt = $conn->prepare($sql);
-      $stmt->bindParam(1,$this->getId());
-      $stmt->execute();
-      $person = $stmt->fetchAll(\PDO::FETCH_ASSOC);
-      
+      // add custom fields to person_custom table since they are not defined in the propel schema
+      $rawQry =  PersonCustomQuery::create();
+      foreach ($allPersonCustomFields as $customfield ) {
+          $rawQry->withColumn($customfield->getId());
+      }
+      $thisPersonCustomFields = $rawQry->findOneByPerId($this->getId());
+
+      // get custom column names and values
       $personCustom = "";
-      // loop thourgh each custom field and update custom columns with readable name and value
-      foreach($CustomMasterName as $column) {
-          $i += 1;
-          foreach ($person as $element) {
-            if($element["c$i"] <> "") {
-              $personCustom .= $column->getName() . ":" . $element["c$i"] . ", ";
+      if ($rawQry->count() > 0) {
+        foreach ($allPersonCustomFields as $customfield ) {
+            $value = $thisPersonCustomFields->getVirtualColumn($customfield->getId());
+            if (!empty($value)) {
+                $personCustom .= $customfield->getName() . ": " . $value . ", ";
             }
-          }
+        }        
       }
       return rtrim($personCustom, ", ");
     }
