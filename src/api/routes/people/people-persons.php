@@ -41,7 +41,24 @@ $app->group('/persons', function () {
 
         return $response->withJson($return);
     });
-
+    // search for contributors
+    $this->get('/search2/{query}', function ($request, $response, $args) {
+        $query = $args['query'];
+        $results = [];
+        $q = PersonQuery::create()
+            ->filterByLastName("%$query%", Criteria::LIKE)
+            ->_or()
+            ->filterByFirstName("%$query%", Criteria::LIKE)
+            ->_or()
+            ->filterByEnvelope(is_numeric($query) ? $query : -1, Criteria::EQUAL)
+            ->limit(15)
+            ->find();
+        foreach ($q as $person) {
+            $results[] = $person->toSearchArray();
+        }
+        return $response->withJSON(json_encode(["People" => $results]));
+    });
+    
     $this->get('/numbers', function ($request, $response, $args) {
         return $response->withJson(MenuEventsCount::getNumberBirthDates());
     });

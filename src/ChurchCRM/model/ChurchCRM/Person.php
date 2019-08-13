@@ -535,11 +535,24 @@ class Person extends BasePerson implements iPhoto
        return $this->getFullName()." ".$this->getAge();
     }
 
-    public function toArray($keyType = TableMap::TYPE_PHPNAME, $includeLazyLoadColumns = true, $alreadyDumpedObjects = array(), $includeForeignObjects = false)
+    public function toArray()
     {
         $array = parent::toArray();
         $array['Address']=$this->getAddress();
         return $array;
+    }
+
+    public function toSearchArray()
+    {
+      $searchArray=[
+          "Id" => $this->getId(),
+          "displayName" => $this->getLastName() . " " . $this->getFirstName() . " - " . $this->getAddress(),
+          // "uri" => SystemURLs::getRootPath() . '/PersonView.php?PersonID=' . $this->getId(),
+          "envelope" => $this->getEnvelope(),
+          "TypeOfMbr" => "3"
+
+      ];
+      return $searchArray;
     }
 
     public function getThumbnailURL() {

@@ -344,7 +344,8 @@ class Family extends BaseFamily implements iPhoto
       $searchArray=[
           "Id" => $this->getId(),
           "displayName" => $this->getFamilyString(SystemConfig::getBooleanValue("bSearchIncludeFamilyHOH")),
-          "uri" => SystemURLs::getRootPath() . '/FamilyView.php?FamilyID=' . $this->getId()
+          "uri" => SystemURLs::getRootPath() . '/FamilyView.php?FamilyID=' . $this->getId(),
+          "TypeOfMbr" => "2"
       ];
       return $searchArray;
     }

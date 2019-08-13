@@ -18,6 +18,7 @@ use ChurchCRM\MICRReader;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\DonationFundQuery;
 
 if (SystemConfig::getValue('bUseScannedChecks')) { // Instantiate the MICR class
     $micrObj = new MICRReader();
@@ -40,6 +41,21 @@ $sAmountError = [];
 $sComment = [];
 
 $checkHash = [];
+
+// Get the list of funds
+// $rsFunds = DonationFundQuery::create()->filterByActive(true)->find();
+// echo print_r($rsFunds);
+// echo "<br>";
+// foreach ($rsFunds as $aRow) {
+//     echo print_r("Row: " . $aRow->getId());
+//     $fun_ID = $aRow->getId();
+//     $fundId2Name[$fun_ID] = $aRow->getName();
+//     $nAmount[$fun_ID] = 0.0;
+//     $nNonDeductible[$fun_ID] = 0.0;
+//     $sAmountError[$fun_ID] = '';
+//     $sComment[$fun_ID] = '';
+//     $fundIdActive[$fun_ID] = $aRow->getActive();
+// }
 
 // Get the list of funds
 $sSQL = 'SELECT fun_ID,fun_Name,fun_Description,fun_Active FROM donationfund_fun';
@@ -69,7 +85,7 @@ if (array_key_exists('GroupKey', $_GET)) {
     $sGroupKey = InputUtils::LegacyFilterInput($_GET['GroupKey'], 'string');
 } // this will only be set if someone pressed the 'edit' button on the Pledge or Deposit line
 if (array_key_exists('CurrentDeposit', $_GET)) {
-    $iCurrentDeposit = InputUtils::LegacyFilterInput($_GET['CurrentDeposit'], 'integer');
+    $iCurrentDeposit = InputUtils::LegacyFilterInput($_GET['CurrentDeposit'], 'int');
 }
 $linkBack = InputUtils::LegacyFilterInput($_GET['linkBack'], 'string');
 $iFamily = 0;
@@ -668,7 +684,7 @@ require 'Include/Header.php';
         <h3 class="box-title"><?= gettext("Fund Split") ?></h3>
       </div>
         <div class="box-body">
-          <table class="table">
+          <table class="display responsive nowrap data-table table table-striped table-hover">
             <thead>
               <tr>
                 <th class="<?= $PledgeOrPayment == 'Pledge' ? 'LabelColumn' : 'PaymentLabelColumn' ?>"><?= gettext('Fund Name') ?></th>

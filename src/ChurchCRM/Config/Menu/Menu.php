@@ -40,6 +40,7 @@ class Menu
             "Email" => new MenuItem(gettext("Email"), "v2/email/dashboard", SystemConfig::getBooleanValue("bEnabledEmail"), 'fa-envelope'),
             "Events" => self::getEventsMenu(),
             "Deposits" => self::getDepositsMenu(),
+            "Contributions" => self::getContributionsMenu(),
             "Fundraiser" => self::getFundraisersMenu(),
             "Reports" => self::getReportsMenu(),
             "Admin" => self::getAdminMenu(),
@@ -151,6 +152,13 @@ class Menu
         return $depositsMenu;
     }
 
+    private static function getContributionsMenu()
+    {
+        $contributionsMenu = new MenuItem(gettext("Contributions"), "", SystemConfig::getBooleanValue("bEnabledFinance") && SessionUser::getUser()->isFinanceEnabled(), 'fa-dollar');
+        $contributionsMenu->addSubMenu(new MenuItem(gettext("View All Contributions"), "FindContributions.php", SessionUser::getUser()->isFinanceEnabled()));
+
+        return $contributionsMenu;
+    }
 
     private static function getFundraisersMenu()
     {

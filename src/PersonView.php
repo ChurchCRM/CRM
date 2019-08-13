@@ -20,6 +20,7 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\MailChimpService;
 use ChurchCRM\Service\TimelineService;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Contrib;
 
 $timelineService = new TimelineService();
 $mailchimp = new MailChimpService();
@@ -424,6 +425,7 @@ $bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() ||
                 <li role="presentation"><a href="#properties" aria-controls="properties" role="tab" data-toggle="tab"><?= gettext('Assigned Properties') ?></a></li>
                 <li role="presentation"><a href="#volunteer" aria-controls="volunteer" role="tab" data-toggle="tab"><?= gettext('Volunteer Opportunities') ?></a></li>
                 <li role="presentation"><a href="#notes" aria-controls="notes" role="tab" data-toggle="tab"><?= gettext('Notes') ?></a></li>
+                <li role="presentation"><a href="#pledges" aria-controls="pledges" role="tab" data-toggle="tab"><?= gettext('Contributions') ?></a></li>
             </ul>
 
             <!-- Tab panes -->
@@ -913,10 +915,18 @@ $bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() ||
                         <!-- END timeline item -->
                     </ul>
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
+                <?php if ($_SESSION['user']->isFinanceEnabled()) {
+        ?>
+                <div role="tab-pane fade" class="tab-pane" id="pledges">
+                    <div class="main-box clearfix">
+                        <div class="main-box-body clearfix">
+                            <table class="display responsive nowrap data-table table table-striped table-hover" id="contribTable" width="100%"></table>
+
+            <?php
+    } ?>
+                        </div>
+                    </div>
+                </div>
 <!-- Modal -->
 <div id="photoUploader">
 
@@ -996,9 +1006,63 @@ $bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() ||
             }
         });
 
+        // initilize payment table
+        initPaymentTable();
+
     });
 
+function initPaymentTable()
+{
+    var dataTableConfig = {
+    ajax: {
+      url: window.CRM.root + "/api/contrib/" + window.CRM.currentPersonID + "/person",
+      dataSrc: "Contribs"
+    },
+    "deferRender": true,
+    columns: [
+      {
+        title:i18next.t( 'Contribution ID'),
+        data: 'Id',
+        render: function (data, type, full, meta) {
+          if (type === 'display') {
+            return '<a href=\'ContributionEditor.php?ContributionID=' + full.Id + '&ContributorID=' + full.per_ID + '&linkBack=FindContributions.php\'><span class="fa-stack"><i class="fa fa-square fa-stack-2x"></i><i class="fa fa-search-plus fa-stack-1x fa-inverse"></i></span></a>' + full.Id;
+          }
+          else {
+            return parseInt(full.Id);
+          }
+        },
+        type: 'num'
+      },
+      {
+        title:i18next.t( 'Contribution Date'),
+        data: 'Date',
+        render: function (data, type, full, meta) {
+          if (type === 'display') {
+            return moment(data).format("YYYY-MM-DD");
+          }
+          else {
+            return data
+          }
+        },
+        searchable: true
+      },
+      {
+        title:i18next.t( 'Total'),
+        data: 'totalAmount',
+        searchable: false,
+      },
+      {
+        title:i18next.t( 'Comment'),
+        data: 'Comment',
+        searchable: true,
 
+      }
+    ],
+    order: [0, 'desc']
+  }
+  $.extend(dataTableConfig, window.CRM.plugin.dataTable);
+  dataT = $("#contribTable").DataTable(dataTableConfig);
+}
 </script>
 
 <?php require 'Include/Footer.php' ?>

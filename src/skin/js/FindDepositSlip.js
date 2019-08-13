@@ -73,7 +73,7 @@ $(document).ready(function () {
         data: 'Date',
         render: function (data, type, full, meta) {
           if (type === 'display') {
-            return moment(data).format("MM-DD-YY");
+            return moment(data).format(window.CRM.sDateTimeFormat);
           }
           else {
             return data

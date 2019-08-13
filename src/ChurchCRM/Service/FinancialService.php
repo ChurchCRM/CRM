@@ -272,18 +272,18 @@ class FinancialService
     }
     }
 
-    public function processCurrencyDenominations($payment, $groupKey)
-    {
-        $currencyDenoms = json_decode($payment->cashDenominations);
-        foreach ($currencyDenoms as $cdom) {
-            $sSQL = "INSERT INTO pledge_denominations_pdem (pdem_plg_GroupKey, plg_depID, pdem_denominationID, pdem_denominationQuantity) 
-      VALUES ('".$groupKey."','".$payment->DepositID."','".$cdom->currencyID."','".$cdom->Count."')";
-            if (isset($sSQL)) {
-                RunQuery($sSQL);
-                unset($sSQL);
-            }
-        }
-    }
+    // public function processCurrencyDenominations($payment, $groupKey)
+    // {
+    //     $currencyDenoms = json_decode($payment->cashDenominations);
+    //     foreach ($currencyDenoms as $cdom) {
+    //         $sSQL = "INSERT INTO pledge_denominations_pdem (pdem_plg_GroupKey, plg_depID, pdem_denominationID, pdem_denominationQuantity) 
+    //   VALUES ('".$groupKey."','".$payment->DepositID."','".$cdom->currencyID."','".$cdom->Count."')";
+    //         if (isset($sSQL)) {
+    //             RunQuery($sSQL);
+    //             unset($sSQL);
+    //         }
+    //     }
+    // }
 
     public function insertPledgeorPayment($payment)
     {
@@ -630,36 +630,36 @@ class FinancialService
         return $CSVReturn;
     }
 
-    public function getCurrencyTypeOnDeposit($currencyID, $depositID)
-    {
-        $currencies = [];
-    // Get the list of Currency denominations
-    $sSQL = 'select sum(pdem_denominationQuantity) from pledge_denominations_pdem
-                 where  plg_depID = '.$depositID.'
-                 AND
-                 pdem_denominationID = '.$currencyID;
-        $rscurrencyDenomination = RunQuery($sSQL);
+    // public function getCurrencyTypeOnDeposit($currencyID, $depositID)
+    // {
+    //     $currencies = [];
+    // // Get the list of Currency denominations
+    // $sSQL = 'select sum(pdem_denominationQuantity) from pledge_denominations_pdem
+    //              where  plg_depID = '.$depositID.'
+    //              AND
+    //              pdem_denominationID = '.$currencyID;
+    //     $rscurrencyDenomination = RunQuery($sSQL);
 
-        return mysqli_fetch_array($rscurrencyDenomination)[0];
-    }
+    //     return mysqli_fetch_array($rscurrencyDenomination)[0];
+    // }
 
-    public function getCurrency()
-    {
-        $currencies = [];
-    // Get the list of Currency denominations
-    $sSQL = 'SELECT * FROM currency_denominations_cdem';
-        $rscurrencyDenomination = RunQuery($sSQL);
-        mysqli_data_seek($rscurrencyDenomination, 0);
-        while ($row = mysqli_fetch_array($rscurrencyDenomination)) {
-            $currency = new \stdClass();
-            $currency->id = $row['cdem_denominationID'];
-            $currency->Name = $row['cdem_denominationName'];
-            $currency->Value = $row['cdem_denominationValue'];
-            $currency->cClass = $row['cdem_denominationClass'];
-            array_push($currencies, $currency);
-        } // end while
-    return $currencies;
-    }
+    // public function getCurrency()
+    // {
+    //     $currencies = [];
+    // // Get the list of Currency denominations
+    // $sSQL = 'SELECT * FROM currency_denominations_cdem';
+    //     $rscurrencyDenomination = RunQuery($sSQL);
+    //     mysqli_data_seek($rscurrencyDenomination, 0);
+    //     while ($row = mysqli_fetch_array($rscurrencyDenomination)) {
+    //         $currency = new \stdClass();
+    //         $currency->id = $row['cdem_denominationID'];
+    //         $currency->Name = $row['cdem_denominationName'];
+    //         $currency->Value = $row['cdem_denominationValue'];
+    //         $currency->cClass = $row['cdem_denominationClass'];
+    //         array_push($currencies, $currency);
+    //     } // end while
+    // return $currencies;
+    // }
 
     public function getActiveFunds()
     {

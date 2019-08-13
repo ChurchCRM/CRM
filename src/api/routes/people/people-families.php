@@ -10,6 +10,7 @@ use ChurchCRM\Person;
 use ChurchCRM\Token;
 use ChurchCRM\TokenQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
+use ChurchCRM\PersonQuery;
 
 $app->group('/families', function () {
 
@@ -50,6 +51,20 @@ $app->group('/families', function () {
         foreach ($q as $family) {
             array_push($results, $family->toSearchArray());
         }
+
+        // unset($q);
+        // unset($family);
+        // $q = PersonQuery::create()
+        //     ->filterByLastName("%$query%", Criteria::LIKE)
+        //     ->_or()
+        //     ->filterByFirstName("%$query%", Criteria::LIKE)
+        //     // ->_or()
+        //     // ->filterByEnvelope($query, Criteria::EQUAL)
+        //     ->limit(7)
+        //     ->find();
+        // foreach ($q as $family) {
+        //     array_push($results, $family->toSearchArray());
+        // }
 
         return $response->withJSON(json_encode(["Families" => $results]));
     });

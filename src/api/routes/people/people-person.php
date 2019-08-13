@@ -8,6 +8,8 @@ use ChurchCRM\SessionUser;
 use ChurchCRM\Slim\Middleware\Request\Auth\DeleteRecordRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\EditRecordsRoleAuthMiddleware;
 use ChurchCRM\Utils\MiscUtils;
+use ChurchCRM\Person;
+use ChurchCRM\PersonQuery;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
@@ -32,6 +34,17 @@ $app->group('/person/{personId:[0-9]+}', function () {
     $this->get('', function ($request, $response, $args) {
         $person = $request->getAttribute("person");
         return $response->withJSON($person->toArray());
+    });
+    // search for contributors
+    $this->get('/search2', function ($request, $response, $args) {
+        $query = $args['personId'];
+        $results = [];
+        $q = PersonQuery::create()->filterById($query);
+
+        foreach ($q as $person) {
+            $results[] = $person->toSearchArray();
+        }
+        return $response->withJSON(json_encode(["Person" => $results]));
     });
 
     $this->delete('', function ($request, $response, $args) {

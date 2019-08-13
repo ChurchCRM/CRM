@@ -11,10 +11,12 @@ $app->group('/payments', function () {
         $payment = $request->getParsedBody();
         echo json_encode(['payment' => $this->FinancialService->submitPledgeOrPayment($payment)]);
     });
-
+    // udpate required here!
     $this->delete('/{groupKey}', function ($request, $response, $args) {
-        $groupKey = $args['groupKey'];
-        $this->FinancialService->deletePayment($groupKey);
+        $familyID = $args['FamilyID'];
+        $TypeOfMbr = $args['TypeOfMbr'];
+        $TypeOfMbr = $args['DepositID'];
+        $this->FinancialService->deletePayment($familyID, $TypeOfMbr, $depositID);
         echo json_encode(['status' => 'ok']);
     });
 })->add(new FinanceRoleAuthMiddleware());
