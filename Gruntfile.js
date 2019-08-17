@@ -30,15 +30,16 @@ module.exports = function (grunt) {
     grunt.initConfig({
         package: grunt.file.readJSON('package.json'),
         pkg: grunt.file.readJSON('package.json'),
-        buildConfig: () => { 
+        buildConfig: (function() { 
             try {
+                grunt.log.writeln("Using BuildConfig.json");
                 return grunt.file.readJSON('BuildConfig.json');
             }
             catch {
                 grunt.log.writeln("BuildConfig.json not found, using defaults");
                 return {};
             }
-        },
+        })(),
         projectFiles: [
             '**',
             '**/.*',
