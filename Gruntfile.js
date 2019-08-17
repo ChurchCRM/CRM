@@ -32,11 +32,11 @@ module.exports = function (grunt) {
         pkg: grunt.file.readJSON('package.json'),
         buildConfig: () => { 
             try {
-                return grunt.file.readJSON('BuildConfig.json')
+                return grunt.file.readJSON('BuildConfig.json');
             }
             catch {
                 grunt.log.writeln("BuildConfig.json not found, using defaults");
-                return {}
+                return {};
             }
         },
         projectFiles: [
