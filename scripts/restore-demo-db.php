@@ -13,21 +13,18 @@ function extract_config_values($value){
   global $sSERVERNAME,$sUSER,$sPASSWORD,$sDATABASE;
 
   if (preg_match('/\\$sSERVERNAME\\s+=\\s+[\'"](.*?)[\'"];/',$value,$matches)) {
-        $sSERVERNAME = $matches[1];
+    $sSERVERNAME = $matches[1];
   }
 
   if (preg_match('/\\$sUSER\\s+=\\s+[\'"](.*?)[\'"];/',$value,$matches)) {
-    print_r($matches);
     $sUSER = $matches[1];
   }
 
   if (preg_match('/\\$sPASSWORD\\s+=\\s+[\'"](.*?)[\'"];/',$value,$matches)) {
-    print_r($matches);
     $sPASSWORD = $matches[1];
   }
 
   if (preg_match('/\\$sDATABASE\\s+=\\s+[\'"](.*?)[\'"];/',$value,$matches)) {
-    print_r($matches);
     $sDATABASE = $matches[1];
   }
 }
@@ -35,10 +32,11 @@ function extract_config_values($value){
 $config = explode("\n",file_get_contents ("src\Include\Config.php"));
 array_map("extract_config_values",$config);
 
-echo "$sSERVERNAME\n";
-echo "$sUSER\n";
-echo "$sPASSWORD\n";
-echo "$sDATABASE\n";
+echo "Beginning to restore demo database\n";
+echo "MySQL Server: $sSERVERNAME\n";
+echo "User: $sUSER\n";
+echo "Password: $sPASSWORD\n";
+echo "Database: $sDATABASE\n";
 
 $mysqli = new mysqli($sSERVERNAME, $sUSER, $sPASSWORD, $sDATABASE);
 $mysqli->select_db($sDATABASE);
