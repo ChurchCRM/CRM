@@ -1,11 +1,5 @@
 <?php
 
-
-//Include the function library
-require 'Include/Config.php';
-require 'Include/Functions.php';
-
-
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Base\FamilyQuery;
@@ -131,9 +125,3 @@ $plgGroup = PledgeQuery::create()->filterByPledgeOrPayment('Payment')->groupByGr
     }
   }
 }
-
-
-//RedirectUtils::Redirect('index.php');
-header("Refresh: 3 url=index.php");
-echo 'Update completed! Redirecting after 3 seconds.';
-?>
