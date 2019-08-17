@@ -52,5 +52,5 @@ if ($result = $mysqli->query("SHOW TABLES"))
 }
 $mysqli->query('SET foreign_key_checks = 1');
 echo "Tables deleted, restoring demo db\n";
-SQLUtils::sqlImport("demo/ChurchCRM-Database.sql", $mysqli);
+SQLUtils::sqlImport(dirname(__FILE__)."/../demo/ChurchCRM-Database.sql", $mysqli);
 echo "Demo db restored\n\n";
