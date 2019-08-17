@@ -97,11 +97,8 @@ function listPeople(Request $request, Response $response, array $args)
         ->leftJoinFamily()
         ->where('family_fam.fam_DateDeactivated IS NULL');
 
-        $option =  ListOptionQuery::create()->filterById(1)->filterByOptionId($id)->find();
-        
-        foreach($option as $element) {
-            $sMode = $element->getOptionName(); 
-        }
+        $option =  ListOptionQuery::create()->filterById(1)->filterByOptionId($id)->findOne();
+        $sMode = $option->getOptionName(); 
     }
 
     if (isset($_GET['FamilyRole'])) {
@@ -109,14 +106,12 @@ function listPeople(Request $request, Response $response, array $args)
         
         $members->filterByFmrId($id);
 
-        $option =  ListOptionQuery::create()->filterById(2)->filterByOptionId($id)->find();
+        $option =  ListOptionQuery::create()->filterById(2)->filterByOptionId($id)->findOne();
         
         if ($id == 0) {
             $sMode = gettext('Unknown');
         } else {
-            foreach($option as $element) {
-                $sMode = $element->getOptionName(); 
-            }
+            $sMode = $option->getOptionName(); 
         }
     }
 
