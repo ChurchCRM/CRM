@@ -916,14 +916,14 @@ $bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() ||
                     </ul>
                 </div>
                 <?php if ($_SESSION['user']->isFinanceEnabled()) {
-        ?>
+                                                            ?>
                 <div role="tab-pane fade" class="tab-pane" id="pledges">
                     <div class="main-box clearfix">
                         <div class="main-box-body clearfix">
                             <table class="display responsive nowrap data-table table table-striped table-hover" id="contribTable" width="100%"></table>
 
             <?php
-    } ?>
+                                                        } ?>
                         </div>
                     </div>
                 </div>

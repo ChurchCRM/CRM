@@ -11,6 +11,7 @@
 
 
 namespace ChurchCRM;
+
 //Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
@@ -189,8 +190,8 @@ require 'Include/Header.php';
         ?> -->
         <input class="btn " value="<?= gettext('Save') ?>" id="PledgeSubmit" name="PledgeSubmit" <?= $iContributionID ? 'enabled' : 'disabled' ?> />
         <?php if ($_SESSION['user']->isAddRecordsEnabled()) {
-            echo '<input class="btn btn-primary" value="'.gettext('New Contribution').'" id="PledgeSubmitAdd" disabled>';
-        } ?>
+        echo '<input class="btn btn-primary" value="'.gettext('New Contribution').'" id="PledgeSubmitAdd" disabled>';
+    } ?>
           <!-- < ?php
     } ?> -->
     <?php if (!$dep_Closed) {
