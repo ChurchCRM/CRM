@@ -50,7 +50,7 @@ $(document).ready(function () {
 
  var dataTableConfig = {
     ajax: {
-      url: window.CRM.root + "/api/deposits",
+      url: window.CRM.root + "/api/deposits/group",
       dataSrc: "Deposits"
     },
     "deferRender": true,

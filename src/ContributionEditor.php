@@ -39,6 +39,11 @@ $sDateFormat = SystemConfig::getValue('sDateFormatLong');
 $bEnableNonDeductible = SystemConfig::getValue('bEnableNonDeductible');
 
 // Handle URL via _GET first
+// $iContributorName = 0;
+// if (array_key_exists('ContributorName', $_GET)) {
+//     $iContributorName = InputUtils::LegacyFilterInput($_GET['ContributorName'], 'int');
+// }
+
 $iContributionID = 0;
 if (array_key_exists('ContributionID', $_GET)) {
     $iContributionID = InputUtils::LegacyFilterInput($_GET['ContributionID'], 'int');
@@ -122,9 +127,11 @@ require 'Include/Header.php';
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-primary" data-dismiss="modal" id="submitContrib"><?= gettext('Submit') ?></button>
+                        <button type="button" class="btn btn-primary" id="addAnotherSplit"><?= gettext('Add Split') ?></button>
+                        <button type="button" class="btn btn-primary" id="addAnotherContribution"><?= gettext('Add Contribution') ?></button>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" id="submitContribAdd"><?= gettext('Submit & Add') ?></button>
+                        
                     </div>
                 </form>
             </div>
@@ -137,16 +144,16 @@ require 'Include/Header.php';
   <div class="col-lg-6">
     <div class="box">
       <div class="box-header with-border">
-        <h3 class="box-title"><?= gettext("Payment Details") ?></h3>
+        <h3 class="box-title"><?= gettext("Contribution Details") ?></h3>
       </div>
       <div class="box-body">
-      <input type="hidden" name="ContributionID" id="ContributionID" value= <?= $iContributionID ?>>
-        <input type="hidden" name="ContributorID" id="ContributorID">
+      <input type="hidden" name="ContributionID" id="ContributionID" value= <?= $iContributionID ?> >
+        <input type="hidden" name="ContributorID" id="ContributorID" value= <?= $iContributorID ?> >
         <input type="hidden" name="TypeOfMbr" id="TypeOfMbr">
         <div class="col-lg-12">
-          <label for="FamilyName"><?= gettext('Contributor') ?></label>
+          <label for="ContributorName"><?= gettext('Contributor') ?></label>
           <select class="form-control" id="ContributorName" name="ContributorName" >
-            <option selected ><?= $ContributorName ?></option>
+            <!-- <option selected >< ?= $iContributorName ?></option> -->
           </select>
         </div>
 
@@ -180,9 +187,9 @@ require 'Include/Header.php';
     <div class="col-lg-12">
     <!-- < ?php if (!$dep_Closed) {
         ?> -->
-        <input type="submit" class="btn " value="<?= gettext('Save') ?>" id="PledgeSubmit" name="PledgeSubmit" <?= $iContributionID ? 'enabled' : 'disabled' ?> />
+        <input class="btn " value="<?= gettext('Save') ?>" id="PledgeSubmit" name="PledgeSubmit" <?= $iContributionID ? 'enabled' : 'disabled' ?> />
         <?php if ($_SESSION['user']->isAddRecordsEnabled()) {
-            echo '<input type="submit" class="btn btn-primary value="'.gettext('Save and Add').'" name="PledgeSubmitAndAdd">';
+            echo '<input class="btn btn-primary" value="'.gettext('New Contribution').'" id="PledgeSubmitAdd" disabled>';
         } ?>
           <!-- < ?php
     } ?> -->
@@ -191,7 +198,7 @@ require 'Include/Header.php';
     } else {
         $cancelText = 'Return';
     } ?>
-    <input type="button" class="btn btn-danger" value="<?= gettext($cancelText) ?>" id="PledgeCancel" name="PledgeCancel" />
+    <!-- <input type="button" class="btn btn-danger" value="< ?= gettext($cancelText) ?>" id="PledgeCancel" name="PledgeCancel" /> -->
     </div>
   </div>
 </div>
@@ -201,7 +208,7 @@ require 'Include/Header.php';
 
 <div class="box">
   <div class="box-header with-border">
-    <h3 class="box-title"><?php echo gettext('Contributions: '); ?></h3>
+    <h3 class="box-title"><?php echo gettext('Contribution Splits: '); ?></h3>
       <div class="pull-right">
       <!-- <button type="button" class="btn btn-primary" id="addNewContrib2">< ?= gettext('Add New Split') ?></button> -->
       <button disabled id="addNewContrib" type="button" class="btn btn-primary" data-toggle="modal" data-target="#addNewContribModal"><?= gettext('Add New Split') ?></button>
@@ -234,20 +241,31 @@ require 'Include/Header.php';
 <script nonce="<?= SystemURLs::getCSPNonce() ?>" >
 
 // var sDatePickerPlaceHolder = "< ?= $sDatePickerPlaceHolder ?>";
-var linkBack = "<?= $linkBack ?>";
-var iContributorID = <?= $iContributorID ?>;
-var iContributionID = <?= $iContributionID ?>;
+    var linkBack = "<?= $linkBack ?>";
+    var iContributorID = <?= $iContributorID ?>;
+    var iContributionID = <?= $iContributionID ?>;
+    // var iContributorName = < ?= $iContributorName ?>;
+    var CurrentUser = <?= $_SESSION['user']->getId() ?>;
+
 
   $(document).ready(function() {
+    // setfocus on name
+
+
     // $("#contribDate").datepicker({format: 'yyyy-mm-dd', language: window.CRM.lang});
     initPaymentTable();
     initFundList();
+
+    // update contributor name if available
+    // if (iContributorName) {
+    //   initContributor();
+    // }
 
     if (iContributorID) { // edit contributions
       $("#addNewContrib").prop('disabled',false);
       initContribution();
       initContributor();
-      
+      // $("#AddFund").focus();
     } else { // if new contribution
       // get previouse sunday since data entry normally occurs later
       var PreviousSunday = new Date()
@@ -303,9 +321,9 @@ var iContributionID = <?= $iContributionID ?>;
     });
 
     // PledgeCancel
-    $("#PledgeCancel").on("click", function() {
-      document.location = window.CRM.root+'/findContributions.php'
-    });
+    // $("#PledgeCancel").on("click", function() {
+    //   document.location = window.CRM.root+'/findContributions.php'
+    // });
 
     // delete selected rows
     $('#deleteSelectedRows').click(function () {
@@ -363,8 +381,20 @@ var iContributionID = <?= $iContributionID ?>;
     });
   });
 
-  // submit contribution and/ or split
+  // modal submit contribution and/ or split
   $("#submitContrib").on('click', function () {
+    if (IsNewContribution()) {
+        // add contribution first to generate ConID to link split, AddSplit() will be called after the contribution has been created
+        AddContribution();
+      } else {
+        // only add split if contribution already exists
+        AddSplit();
+        $("#addNewContribModal").hide();
+        // $("#addNewContrib").prop('disabled', false);
+      }
+  });
+  // modal submit contribution and add another split
+  $("#addAnotherSplit").on('click', function () {
     if (IsNewContribution()) {
         // add contribution first to generate ConID to link split, AddSplit() will be called after the contribution has been created
         AddContribution();
@@ -373,129 +403,37 @@ var iContributionID = <?= $iContributionID ?>;
         AddSplit();
       }
   });
-
-  function UpdateContribution() {
-    // verification
-    dt = $('[name=contribDate]').datepicker('getDate')
-
-    if (iContributorID == 0 || iContributionID == 0 || dt == null) {
-      alert("Invalid data entered!");
-      return;
-    }
-
-    // get current date
-    var today = new Date();
-    // set iContributorID so this is no longer a new contribution
-    iContributorID = parseInt($('[name=ContributorID]').val());
-    // get ContributionID
-    //iContributionID
-   // update contribution
-   var postData = {
-      ContributorId: iContributorID,
-      TypeOfMbr: $('[name=TypeOfMbr]').val(),
-      Date: dt,
-      Comment: $('[name=contribComment]').val(),
-      DateLastEdited: today,
-      EnteredBy: <?= $_SESSION['user']->getId() ?>,
-    };
-
-    $.ajax({
-      method: "POST",
-      url: window.CRM.root + "/api/contrib/" + iContributionID,
-      data: JSON.stringify(postData),
-      contentType: "application/json; charset=utf-8",
-      dataType: "json",
-      // success: function (data) {
-
-      // }
-    }).done(function(data){
-      iContributionID = parseInt(data.Id);
-      alert("Sucessfully updated!");
-    });
-  }
-
-  function AddContribution() {
-    // return false;
-    // set iContributorID so this is no longer a new contribution
-    iContributorID = parseInt($('[name=ContributorID]').val());
-    // get current date
-    var today = new Date();
-
-    // add contribution first so we can get a split id
-    var postData = {
-      AddContributorId: iContributorID,
-      AddTypeOfMbr: $('[name=TypeOfMbr]').val(),
-      AddDate: $('[name=contribDate]').datepicker('getDate'),
-      AddComment: $('[name=contribComment]').val(),
-      AddDateEntered: today,
-      AddEnteredBy: <?= $_SESSION['user']->getId() ?>,
-    };
-
-    $.ajax({
-      method: "POST",
-      url: window.CRM.root + "/api/contrib",
-      data: JSON.stringify(postData),
-      contentType: "application/json; charset=utf-8",
-      dataType: "json",
-      // success: function (data) {
-
-      // }
-    }).done(function(data) {
-      $("#ContributionID").val(data.Id);
-        iContributionID = parseInt(data.Id);
-        
+    // modal submit contribution and start new contribution
+    $("#addAnotherContribution").on('click', function () {
+    if (IsNewContribution()) {
+        // add contribution first to generate ConID to link split, AddSplit() will be called after the contribution has been created
+        AddContribution();
+      } else {
+        // only add split if contribution already exists
         AddSplit();
-
-    });
-  }
-
-  function AddSplit () {
-    // return false;
-    var postData = {
-      AddConId: iContributionID,
-      AddFund: $("[name=AddFund]").val(),
-      AddAmount: $("[name=AddAmount]").val(),
-      AddComment : $("[name=AddComment]").val(),
-      AddNonDeductible : $("[name=AddNonDeductible]").is(':checked'),
-
-      // "screenSize": {
-      //     "height":screen.height,
-      //     "width":screen.width
-      // },
-      // "windowSize":{
-      //     "height":$(window).height(),
-      //     "width":$(window).width()
-      // },
-      // "pageSize" : {
-      //     "height" : $(document).height(),
-      //     "width":$(document).width()
-      // }
-    };
-      
-    $.ajax({
-      method: "POST",
-      url: window.CRM.root + "/api/split",
-      data: JSON.stringify(postData),
-      contentType: "application/json; charset=utf-8",
-      dataType: "json",
-      // success: function (data) {
-
-        
-      // }
-    }).done(function(data) {
-        // we have to update the datable url for new contributions since the iContributionID variable is empty when initinalized
-        $("#splitTable").DataTable().ajax.url(window.CRM.root+"/api/split/" + iContributionID + "/splits").load();
-        initContribution();
         $("#addNewContribModal").hide();
-        $("[name=AddFund]").val('');
-        $("[name=AddAmount]").val('');
-        $("[name=AddComment]").val('');
-        $("[name=AddNonDeductible]").val('');
-        $("#PledgeSubmit").prop('disabled', false);
+        // $("#addNewContrib").prop('disabled', false);
+        document.location= window.CRM.root + "/ContributionEditor.php?linkBack=findContributions.php";
+      }
+  });
 
-        // $("[name=TotalAmount]").val(total);
-    });
-  }
+    // submit contribution and/ or split
+    $("#PledgeSubmitAdd").on('click', function () {
+      
+      // if hasSplit, save and move to new
+      if (hasSplit()) {
+        UpdateContribution(true);
+        // alert(hasSplit());
+        document.location= window.CRM.root + "/ContributionEditor.php?linkBack=findContributions.php";
+      } else {
+        alert('Contribution must have at least one split!');
+      }
+  });
+  // set focus
+  // $("addNewContribModal").on('shown'), function () {
+  //   $("#AddFund").focus();
+  // };
+  // $("addNewContribModal").modal();
 
   function IsNewContribution() {
     if (iContributionID === 0) {
@@ -503,6 +441,10 @@ var iContributionID = <?= $iContributionID ?>;
     } else {
       return false;
     }
+  }
+
+  function hasSplit() {
+    return Boolean(dataT.data().count());
   }
 
   });

@@ -938,6 +938,9 @@
         <foreign-key foreignTable="typeofmbr">
             <reference local="con_TypeOfMbr" foreign="typeid"/>
         </foreign-key>
+        <foreign-key foreignTable="deposit_dep">
+            <reference local="con_DepID" foreign="dep_ID"/>
+        </foreign-key>
         <vendor type="mysql">
             <parameter name="Engine" value="InnoDB"/>
         </vendor>

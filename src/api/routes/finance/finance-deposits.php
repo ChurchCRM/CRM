@@ -4,6 +4,7 @@ use ChurchCRM\Deposit;
 use ChurchCRM\DepositQuery;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Slim\Middleware\Request\Auth\FinanceRoleAuthMiddleware;
+use ChurchCRM\ContribQuery;
 
 $app->group('/deposits', function () {
     $this->post('', function ($request, $response, $args) {
@@ -18,6 +19,17 @@ $app->group('/deposits', function () {
 
     $this->get('', function ($request, $response, $args) {
         echo DepositQuery::create()->find()->toJSON();
+    });
+
+    $this->get('/group', function ($request, $response, $args) {
+        echo DepositQuery::create()
+            ->leftJoinContrib()
+            ->useContribQuery()
+                ->leftJoinContribSplit()
+                ->withColumn('SUM(contrib_split.spl_Amount)', 'totalAmount')
+            ->endUse()
+            ->find()
+            ->toJSON();
     });
 
     $this->get('/{id:[0-9]+}', function ($request, $response, $args) {

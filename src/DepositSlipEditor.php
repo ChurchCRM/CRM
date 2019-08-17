@@ -119,7 +119,7 @@ require 'Include/Header.php';
           <ul style="margin:0px; border:0px; padding:0px;">
           <?php
           // Get deposit totals
-          echo '<li><b>TOTAL ('.$thisDeposit->getPledges()->count().'):</b> $'.$thisDeposit->getVirtualColumn('totalAmount').'</li>';
+          echo '<li><b>TOTAL ('.$thisDeposit->getCountContribs() .'):</b> $'.$thisDeposit->getTotalAmount().'</li>';
                         if ($thisDeposit->getCountCash()) {
                             echo '<li><b>CASH ('.$thisDeposit->getCountCash().'):</b> $'.$thisDeposit->getTotalCash().'</li>';
                         }
@@ -151,7 +151,7 @@ require 'Include/Header.php';
           if ($thisDeposit->getType() == 'eGive') {
               echo '<input type=button class=btn value="'.gettext('Import eGive')."\" name=ImporteGive onclick=\"javascript:document.location='eGive.php?DepositSlipID=$iDepositSlipID&linkBack=DepositSlipEditor.php?DepositSlipID=$iDepositSlipID&PledgeOrPayment=Payment&CurrentDeposit=$iDepositSlipID';\">";
           } else {
-              echo '<input type=button class="btn btn-success" value="'.gettext('Add Payment')."\" name=AddPayment onclick=\"javascript:document.location='PledgeEditor.php?CurrentDeposit=$iDepositSlipID&PledgeOrPayment=Payment&linkBack=DepositSlipEditor.php?DepositSlipID=$iDepositSlipID&PledgeOrPayment=Payment&CurrentDeposit=$iDepositSlipID';\">";
+              echo '<input type=button class="btn btn-success" value="'.gettext('Add Contributions')."\" name=AddPayment onclick=\"javascript:document.location='FindContributions.php?DepositSlipID=$iDepositSlipID&linkBack=DepositSlipEditor.php?DepositSlipID=$iDepositSlipID';\">";
           }
           if ($thisDeposit->getType() == 'BankDraft' || $thisDeposit->getType() == 'CreditCard') {
               ?>
@@ -234,26 +234,40 @@ require 'Include/Header.php';
         callback: function ( result ) {
           if ( result )
           {
-            window.CRM.deletesRemaining = deletedRows.length;
+            //window.CRM.deletesRemaining = deletedRows.length;
             $.each(deletedRows, function(index, value) {
-              window.CRM.APIRequest({
-                method: 'DELETE',
-                path: 'payments/' + value.Groupkey,
+                RemoveFromDeposit(value.Id);
               })
-              .done(function(data) {
-                dataT.rows('.selected').remove().draw(false);
-                window.CRM.deletesRemaining --;
-                if ( window.CRM.deletesRemaining == 0 )
-                {
-                  location.reload();
-                }
-              });
-              });
+              // .done(function(data) {
+              //   dataT.rows('.selected').remove().draw(false);
+              // });
           }
         }
       })
     });
   });
+  function RemoveFromDeposit(iConId) {
+    // return false;
+    var postData = {
+      DepId: null,
+    };
+      
+    $.ajax({
+      method: "POST",
+      url: window.CRM.root + "/api/contrib/" + iConId + "/deposit",
+      data: JSON.stringify(postData),
+      contentType: "application/json; charset=utf-8",
+      dataType: "json",
+      // success: function (data) {
+      // }
+    })
+    .done(function(data) {
+        // redirect to deposit page
+        //document.location = window.CRM.root + "/" + slinkBack;
+        dataT.rows('.selected').remove().draw(false);
+    })
+    ;
+  }
 </script>
 <?php
   require 'Include/Footer.php';

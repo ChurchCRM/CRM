@@ -3,13 +3,23 @@ function initPaymentTable()
   var colDef = [
     {
       width: 'auto',
-      title:i18next.t('Family'),
-      data:'FamilyString',
-      render: function(data, type, full, meta) {
-        var familyName = data ? data : i18next.t('Anonymous');
-        return '<a href=\'PledgeEditor.php?linkBack=DepositSlipEditor.php?DepositSlipID=' + depositSlipID +
-            '&GroupKey=' + full.Groupkey + '\'><span class="fa-stack"><i class="fa fa-square fa-stack-2x"></i><i class="fa '+  (isDepositClosed ? "fa-search-plus": "fa-pencil" ) +' fa-stack-1x fa-inverse"></i></span></a>' + familyName;
-      }
+      title:i18next.t('Contribution ID'),
+      data: 'Id'
+    },
+    {
+      width: 'auto',
+      title:i18next.t('Last Name'),
+      data:'LastName',
+      // render: function(data, type, full, meta) {
+      //   var familyName = data ? data : i18next.t('Anonymous');
+      //   return '<a href=\'PledgeEditor.php?linkBack=DepositSlipEditor.php?DepositSlipID=' + depositSlipID +
+      //       '&GroupKey=' + full.Groupkey + '\'><span class="fa-stack"><i class="fa fa-square fa-stack-2x"></i><i class="fa '+  (isDepositClosed ? "fa-search-plus": "fa-pencil" ) +' fa-stack-1x fa-inverse"></i></span></a>' + familyName;
+      // }
+    },
+    {
+      width: 'auto',
+      title:i18next.t('First Name'),
+      data:'FirstName',
     },
     {
       width: 'auto',
@@ -19,7 +29,7 @@ function initPaymentTable()
     {
       width: 'auto',
       title:i18next.t('Amount'),
-      data:'sumAmount'
+      data:'totalAmount'
     },
     {
       width: 'auto',
@@ -45,8 +55,8 @@ function initPaymentTable()
 
  var dataTableConfig = {
     ajax:{
-      url :window.CRM.root+"/api/deposits/"+depositSlipID+"/pledges",
-      dataSrc:''
+      url: window.CRM.root + "/api/contrib/" + depositSlipID + "/deposit",
+      dataSrc: "Contribs"
     },
     columns: colDef,
     "createdRow" : function (row,data,index) {
@@ -139,8 +149,6 @@ function initDepositSlipEditor()
       $("#deleteSelectedRows").prop('disabled', !(selectedRows));
       $("#deleteSelectedRows").text("Delete (" + selectedRows + ") Selected Rows");
     }
-
-
   });
 
 }

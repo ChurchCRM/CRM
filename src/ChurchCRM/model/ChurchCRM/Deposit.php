@@ -5,11 +5,14 @@ namespace ChurchCRM;
 use ChurchCRM\Base\Deposit as BaseDeposit;
 use ChurchCRM\Base\Pledge;
 use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\Map\DonationFundTableMap;
+// use ChurchCRM\Map\DonationFundTableMap;
 use ChurchCRM\Map\PledgeTableMap;
 use ChurchCRM\PledgeQuery as ChildPledgeQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\Connection\ConnectionInterface;
+// use Propel\Runtime\Propel;
+use ChurchCRM\ContribSplit;
+use ChurchCRM\DonationFundQuery;
 
 /**
  * Skeleton subclass for representing a row from the 'deposit_dep' table.
@@ -413,41 +416,59 @@ class Deposit extends BaseDeposit
         $Report->pdf->Output('ChurchCRM-DepositReport-'.$this->getId().'-'.date(SystemConfig::getValue("sDateFilenameFormat")).'.pdf', 'D');
     }
 
+    public function getCountContribs() {
+        $countContribs = ContribQuery::create()
+            ->filterByDepid($this->getId())
+            ->groupById()
+            ->find()
+            ->count();
+
+        return $countContribs;
+    }
+
     public function getTotalAmount()
     {
-        return $this->getVirtualColumn('totalAmount');
+        // return $this->getVirtualColumn('totalAmount');
+        $totalCash = ContribQuery::create()
+            ->filterByDepId($this->getId())
+            ->groupByDepId()
+            ->withColumn('SUM(contrib_split.spl_Amount)', 'totalAmount')
+            ->find()
+            ->getColumnValues('totalAmount')[0];
+        return $totalCash;
     }
 
     public function getTotalChecks()
     {
-        $totalCash = PledgeQuery::create()
-            ->filterByDepid($this->getId())
+        $totalCash = ContribQuery::create()
             ->filterByMethod('CHECK')
-            ->withColumn('SUM(Pledge.Amount)', 'sumAmount')
+            ->filterByDepId($this->getId())
+            ->groupByDepId()
+            ->withColumn('SUM(contrib_split.spl_Amount)', 'totalAmount')
             ->find()
-            ->getColumnValues('sumAmount')[0];
-
+            ->getColumnValues('totalAmount')[0];
         return $totalCash;
     }
 
     public function getTotalCash()
     {
-        $totalCash = PledgeQuery::create()
-            ->filterByDepid($this->getId())
+        $totalCash = ContribQuery::create()
             ->filterByMethod('CASH')
-            ->withColumn('SUM(Pledge.Amount)', 'sumAmount')
+            ->filterByDepId($this->getId())
+            ->groupByDepId()
+            ->withColumn('SUM(contrib_split.spl_Amount)', 'totalAmount')
             ->find()
-            ->getColumnValues('sumAmount')[0];
+            ->getColumnValues('totalAmount')[0];
 
         return $totalCash;
     }
 
     public function getCountChecks()
     {
-        $countCash = PledgeQuery::create()
+        $countCash = ContribQuery::create()
             ->filterByDepid($this->getId())
-            ->groupByGroupkey()
             ->filterByMethod('CHECK')
+            ->groupById()
             ->find()
             ->count();
 
@@ -456,10 +477,10 @@ class Deposit extends BaseDeposit
 
     public function getCountCash()
     {
-        $countCash = PledgeQuery::create()
+        $countCash = ContribQuery::create()
             ->filterByDepid($this->getId())
-            ->groupByGroupkey()
             ->filterByMethod('CASH')
+            ->groupById()
             ->find()
             ->count();
 
@@ -468,17 +489,19 @@ class Deposit extends BaseDeposit
 
     public function getFundTotals()
     {
-        $funds = PledgeQuery::create()
-      ->filterByDepid($this->getId())
-      ->groupByFundid()
-      ->withColumn('SUM('.PledgeTableMap::COL_PLG_AMOUNT.')', 'Total')
-      ->joinDonationFund()
-      ->withColumn(DonationFundTableMap::COL_FUN_NAME, 'Name')
-      ->orderBy(DonationFundTableMap::COL_FUN_NAME)
-      ->select(['Name', 'Total'])
-      ->find();
+        $funds = ContribSplitQuery::create()
+            ->withColumn('SUM(contrib_split.spl_Amount)', 'Total')
+            ->useContribQuery()
+            ->filterByDepId($this->getId())
+            ->enduse()
+            ->joinDonationFund()->useDonationFundQuery()
+            ->withColumn('DonationFund.Name', 'Name')
+            ->endUse()
+            ->select(['Name', 'Total'])
+            ->groupByFundId()
+            ->find();   
 
-        return $funds;
+            return $funds;
     }
 
     public function getPledgesJoinAll(Criteria $criteria = null, ConnectionInterface $con = null, $joinBehavior = Criteria::LEFT_JOIN)

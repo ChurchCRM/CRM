@@ -23,7 +23,7 @@ $app->group('/contrib', function () {
         $contribution->save();
         echo $contribution->toJSON();
     });
-        // update contribution
+    // update contribution
     $this->post('/{id:[0-9]+}', function ($request, $response, $args) {
         $id = $args['id'];
         $input = (object)$request->getParsedBody();
@@ -37,9 +37,21 @@ $app->group('/contrib', function () {
         $contribution->save();
         echo $contribution->toJSON();
     });
+    // add/remove contribution to/from deposit
+    $this->post('/{id:[0-9]+}/deposit', function ($request, $response, $args) {
+        $id = $args['id'];
+        $input = (object)$request->getParsedBody();
+        $contribution = ContribQuery::create()->findOneById($id);
+        $contribution->setDepId($input->DepId);
+        $contribution->save();
+        echo $contribution->toJSON();
+    });
+
     // get list of all contributions
     $this->get('', function ($request, $response, $args) {
         echo ContribQuery::create()
+            ->groupById()
+            ->withColumn('SUM(contrib_split.spl_Amount)', 'totalAmount')
             ->find()
             ->toJSON();
     });
@@ -47,6 +59,8 @@ $app->group('/contrib', function () {
     $this->get('/{id:[0-9]+/contribution}', function ($request, $response, $args) {
         $id = $args['id'];
         echo ContribQuery::create()
+            ->withColumn('SUM(contrib_split.spl_Amount)', 'totalAmount')
+            // ->groupById()
             ->findOneById($id)
             ->toJSON();
     });
@@ -55,11 +69,32 @@ $app->group('/contrib', function () {
         $id = $args['id'];
         echo ContribQuery::create()
             ->filterByConId($id)
+            // ->groupById()
             ->find()
             ->toJSON();
     });
 
+    // get a list of contribtions associated with a deposit single
+    $this->get('/{id:[0-9]+/deposit}', function ($request, $response, $args) {
+        $id = $args['id'];
+        echo ContribQuery::create()
+            ->filterByDepId($id)
+            ->groupById()
+            ->withColumn('SUM(contrib_split.spl_Amount)', 'totalAmount')
+            ->find()
+            ->toJSON();
+    });
 
+    // get a list of contribtions NOT associated with a deposit
+    $this->get('/deposit', function ($request, $response, $args) {
+        //$id = $args['id'];
+        echo ContribQuery::create()
+            ->filterByDepId(null)
+            ->groupById()
+            ->withColumn('SUM(contrib_split.spl_Amount)', 'totalAmount')
+            ->find()
+            ->toJSON();
+    });
     // $this->get('/{id:[0-9]+}/ofx', function ($request, $response, $args) {
     //     $id = $args['id'];
     //     $OFX = ContribQuery::create()->findOneById($id)->getOFX();

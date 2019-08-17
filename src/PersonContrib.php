@@ -92,8 +92,8 @@ $plgGroup = PledgeQuery::create()->filterByPledgeOrPayment('Payment')->groupByGr
     // $contributions->setComment();
     // $contributions->setDateentered();
     // $contributions->setEnteredby();
-    // $contributions->setDatelastedited();
-    // $contributions->setEditedby();
+    $contributions->setDatelastedited($grp->getDatelastedited());
+    $contributions->setEditedby($grp->getEditedby());
     $contributions->save();
     $ConID = $contributions->getId();
 
@@ -112,6 +112,8 @@ $plgGroup = PledgeQuery::create()->filterByPledgeOrPayment('Payment')->groupByGr
       $split->setFundId($plg->getFundid());
       $split->setAmount($plg->getAmount());
       $split->setNondeductible(false);
+      // $split->setDatelastedited($plg->getDatelastedited());
+      // $split->setEditedby($plg->getEditedby());
       $split->save();
 
     }
@@ -123,6 +125,8 @@ $plgGroup = PledgeQuery::create()->filterByPledgeOrPayment('Payment')->groupByGr
       $split->setFundId($plg->getFundid());
       $split->setAmount($plg->getNondeductible());
       $split->setNondeductible(true);
+      // $split->setDatelastedited($plg->getDatelastedited());
+      // $split->setEditedby($plg->getEditedby());
       $split->save();
     }
   }

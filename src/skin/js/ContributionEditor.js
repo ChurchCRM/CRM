@@ -172,4 +172,115 @@ function initPaymentTable()
         });
     });
   }
+  
+  function UpdateContribution(quiet = false) {
+    // verification
+    dt = $('[name=contribDate]').datepicker('getDate')
+
+    if (iContributorID == 0 || iContributionID == 0 || dt == null) {
+      alert("Invalid data entered!");
+      return;
+    }
+
+    // get current date
+    var today = new Date();
+    // set iContributorID so this is no longer a new contribution
+    iContributorID = parseInt($('[name=ContributorID]').val());
+    // get ContributionID
+    //iContributionID
+   // update contribution
+   var postData = {
+      ContributorId: iContributorID,
+      TypeOfMbr: $('[name=TypeOfMbr]').val(),
+      Date: dt,
+      Comment: $('[name=contribComment]').val(),
+      DateLastEdited: today,
+      EnteredBy: CurrentUser,
+    };
+
+    $.ajax({
+      method: "POST",
+      url: window.CRM.root + "/api/contrib/" + iContributionID,
+      data: JSON.stringify(postData),
+      contentType: "application/json; charset=utf-8",
+      dataType: "json",
+      // success: function (data) {
+
+      // }
+    }).done(function(data){
+      iContributionID = parseInt(data.Id);
+      if (quiet) {
+        alert("Sucessfully updated!");
+      }
+    });
+  }
+
+  function AddContribution() {
+    // return false;
+    // set iContributorID so this is no longer a new contribution
+    iContributorID = parseInt($('[name=ContributorID]').val());
+    // get current date
+    var today = new Date();
+
+    // add contribution first so we can get a split id
+    var postData = {
+      AddContributorId: iContributorID,
+      AddTypeOfMbr: $('[name=TypeOfMbr]').val(),
+      AddDate: $('[name=contribDate]').datepicker('getDate'),
+      AddComment: $('[name=contribComment]').val(),
+      AddDateEntered: today,
+      AddEnteredBy: CurrentUser,
+    };
+
+    $.ajax({
+      method: "POST",
+      url: window.CRM.root + "/api/contrib",
+      data: JSON.stringify(postData),
+      contentType: "application/json; charset=utf-8",
+      dataType: "json",
+      // success: function (data) {
+
+      // }
+    }).done(function(data) {
+      $("#ContributionID").val(data.Id);
+        iContributionID = parseInt(data.Id);
+        
+        AddSplit();
+    });
+  }
+
+  function AddSplit() {
+    // return false;
+    var postData = {
+      AddConId: iContributionID,
+      AddFund: $("[name=AddFund]").val(),
+      AddAmount: $("[name=AddAmount]").val(),
+      AddComment : $("[name=AddComment]").val(),
+      AddNonDeductible : $("[name=AddNonDeductible]").is(':checked'),
+    };
+      
+    $.ajax({
+      method: "POST",
+      url: window.CRM.root + "/api/split",
+      data: JSON.stringify(postData),
+      contentType: "application/json; charset=utf-8",
+      dataType: "json",
+      // success: function (data) {
+
+        
+      // }
+    }).done(function(data) {
+        // we have to update the datable url for new contributions since the iContributionID variable is empty when initinalized
+        $("#splitTable").DataTable().ajax.url(window.CRM.root+"/api/split/" + iContributionID + "/splits").load();
+        initContribution();
+        // $("#addNewContribModal").hide();
+        $("[name=AddFund]").val('');
+        $("[name=AddAmount]").val('');
+        $("[name=AddComment]").val('');
+        $("[name=AddNonDeductible]").val('');
+        $("#PledgeSubmit").prop('disabled', false);
+        $("PledgeSubmitAdd").prop('disabled', false);
+        // $("[name=TotalAmount]").val(total);
+    });
+  }
  

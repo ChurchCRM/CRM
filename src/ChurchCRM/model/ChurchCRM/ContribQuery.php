@@ -24,8 +24,9 @@ class ContribQuery extends BaseContribQuery
         $this->withColumn("per_LastName", "LastName");
         $this->withColumn("per_Envelope", "Envelope");
         $this->leftJoinContribSplit();
-        $this->groupById();
-        $this->withColumn('SUM(contrib_split.spl_Amount)', 'totalAmount');
+        $this->withColumn("spl_FundId", "spl_FundId");
+        // $this->groupById();
+        // $this->withColumn('SUM(contrib_split.spl_Amount)', 'totalAmount');
         parent::preSelect($con);
     }
 }
