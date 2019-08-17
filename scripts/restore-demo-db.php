@@ -7,10 +7,11 @@ $sSERVERNAME = "";
 $sUSER = "";
 $sPASSWORD = "";
 $sDATABASE = "";
+$dbPort = "";
 
 function extract_config_values($value){
 
-  global $sSERVERNAME,$sUSER,$sPASSWORD,$sDATABASE;
+  global $sSERVERNAME,$sUSER,$sPASSWORD,$sDATABASE,$dbPort;
 
   if (preg_match('/\\$sSERVERNAME\\s+=\\s+[\'"](.*?)[\'"];/',$value,$matches)) {
     $sSERVERNAME = $matches[1];
@@ -27,6 +28,10 @@ function extract_config_values($value){
   if (preg_match('/\\$sDATABASE\\s+=\\s+[\'"](.*?)[\'"];/',$value,$matches)) {
     $sDATABASE = $matches[1];
   }
+
+  if (preg_match('/\\$dbPort\\s+=\\s+[\'"](.*?)[\'"];/',$value,$matches)) {
+    $dbPort = $matches[1];
+  }
 }
 
 $config = explode("\n",file_get_contents (dirname(__FILE__)."/../src/Include/Config.php"));
@@ -34,11 +39,12 @@ array_map("extract_config_values",$config);
 
 echo "Beginning to restore demo database\n";
 echo "MySQL Server: $sSERVERNAME\n";
+echo "Port: $dbPort\n";
 echo "User: $sUSER\n";
 echo "Password: $sPASSWORD\n";
 echo "Database: $sDATABASE\n";
 
-$mysqli = new mysqli($sSERVERNAME, $sUSER, $sPASSWORD, $sDATABASE);
+$mysqli = new mysqli($sSERVERNAME, $sUSER, $sPASSWORD, $sDATABASE,$dbPort);
 $mysqli->select_db($sDATABASE);
 echo "Connected to database\n";
 echo "Deleting all tables\n";
