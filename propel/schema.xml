@@ -901,6 +901,7 @@
     <table name="account_acct" idMethod="native" phpName="Account" >
         <column name="acct_id" phpName="Id" type="SMALLINT" size="9" primaryKey="true" autoIncrement="true" required="true"/>
         <column name="acct_name" phpName="Name" type="LONGVARCHAR" required="true"/>
+        <column name="acct_type" phpName="AccountType" type="CHAR" sqlType="enum('DONOR','FUND')" />
         <column name="acct_person_id" phpName="OwnerPersonId" type="SMALLINT" required="true"/>
         <column name="acct_family_id" phpName="OwnerFamilyId" type="SMALLINT" required="true"/>
         <foreign-key foreignTable="person_per">
