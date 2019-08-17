@@ -16,6 +16,7 @@ require 'Include/Functions.php';
 use ChurchCRM\UserQuery;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Emails\PasswordChangeEmail;
+use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 

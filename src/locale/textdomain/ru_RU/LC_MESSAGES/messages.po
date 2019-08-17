@@ -60,6 +60,10 @@ msgid "Backup Database"
 msgstr "Резервное копирование базы данных"
 
 #: 
+msgid "This tool will assist you in manually backing up the ChurchCRM database."
+msgstr "Этот инструмент поможет вам вручную сделать резервное копирования базы данных."
+
+#: 
 msgid "You should make a manual backup at least once a week unless you already have a regular backup procedule for your systems."
 msgstr "Вы должны сделать ручное резервное копирование по крайней мере, один раз в неделю, если у вас уже есть регулярное создание резервных копий procedule для ваших систем."
 
@@ -3132,6 +3136,10 @@ msgid "Fatal error in eGive API datastream: '"
 msgstr "Фатальная ошибка в eGive API потока данных: '"
 
 #: 
+msgid "eMail Dashboard"
+msgstr "Email Панель Управления"
+
+#: 
 msgid "No families need canvassers assigned"
 msgstr "Нет семьи не должны агитаторов, назначенные"
 
@@ -3279,6 +3287,10 @@ msgstr " Курсив"
 #: 
 msgid " Bold"
 msgstr " Жирный"
+
+#: 
+msgid "Dashboard"
+msgstr "Панель Управления"
 
 #: 
 #, fuzzy
@@ -3497,6 +3509,10 @@ msgid "Gift Designation:"
 msgstr "Подарок Обозначение:"
 
 #: 
+msgid "Sunday School Dashboard"
+msgstr "Панель Управления Воскресная Школы"
+
+#: 
 msgid "Sunday School Reports"
 msgstr "Воскресная школа Отчеты"
 
@@ -3540,4 +3556,56 @@ msgstr "Создать список классов"
 #: 
 msgid "Create Attendance Sheet"
 msgstr "Создать посещаемости лист"
+
+#: 
+msgid "People Dashboard"
+msgstr "Панель Управления Людей"
+
+#: 
+msgid "return to People Dashboard"
+msgstr "Вернутся к Панели Управления Людьми"
+
+#: 
+msgid "Generate Backup"
+msgstr "Создать резервную копию."
+
+#: 
+msgid "Password (if any)"
+msgstr "Пароль, если есть."
+
+#: 
+msgid "All information on this page is correct."
+msgstr "На этой странице все верно."
+
+#: 
+msgid "Please update the my family information with the following"
+msgstr "Пожалуйтса обновите информацию об моей семье."
+
+#: 
+msgid "People Verify Dashboard"
+msgstr "Панель Управления для верификации личности"
+
+#: 
+msgid "Verification URL created"
+msgstr "Верифицированный URL создан."
+
+#: 
+msgid "URL"
+msgstr "URL"
+
+#: 
+msgid "PDF"
+msgstr "PDF"
+
+#: 
+msgid "Error sending email(s)"
+msgstr "Ошибка при отправке почты."
+
+#: 
+msgid "Please check logs for more information"
+msgstr "Для большей информации обратитесь к логам. "
+
+#: 
+msgid "Verification URL"
+msgstr "Верификация URL"
 
