@@ -43,7 +43,7 @@ $isAdmin = $_SESSION['user']->isAdmin();
     } ?>
                     <!-- Task item -->
                     <li>
-                        <a href="<?= $task['link'] ?>">
+                        <a target="blank" href="<?= $task['link'] ?>">
                             <i class="menu-icon fa fa-fw <?= $taskIcon ?>"></i>
                             <div class="menu-info">
                                 <h4 class="control-sidebar-subheading"

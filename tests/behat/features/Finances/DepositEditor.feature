@@ -23,6 +23,7 @@ Feature: Deposit Editor
     # This scope of validation could be improved
     # Instead of checking the whole table for each component of this payments
     # We should try to find _the payment_ and make sure all values match
+    And I wait for AJAX to finish
     Then I should see "Berry: Salvador - 1931 Edwards Rd Riverside, PA United States" in the "#paymentsTable" element
     And I should see "1000.00" in the "#paymentsTable" element
     And I should see "867" in the "#paymentsTable" element
