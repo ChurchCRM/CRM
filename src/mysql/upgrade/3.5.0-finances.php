@@ -21,6 +21,7 @@ use ChurchCRM\AccountQuery;
 $sSQL = "CREATE TABLE `account_acct` (
     `acct_id` SMALLINT(9) NOT NULL AUTO_INCREMENT,
     `acct_name` TEXT NOT NULL,
+    `acct_type` enum('DONOR','FUND'),
     `acct_person_id` SMALLINT NOT NULL,
     `acct_family_id` SMALLINT NOT NULL,
     PRIMARY KEY (`acct_id`)
@@ -67,6 +68,7 @@ $funds = DonationFundQuery::create()->find();
 foreach ($funds as $fund) {
   $account = new Account();
   $account->setName($fund->getName());
+  $account->setAccountType("FUND");
   $account->save();
 }
 
@@ -74,24 +76,24 @@ foreach ($funds as $fund) {
 $plgGroup = PledgeQuery::create()->filterByPledgeOrPayment('Payment')->groupByGroupkey()->find();
 
 
-  foreach ($plgGroup as $grp) {
-    // create contribution
-    // assign contribution to person with lowest role number
-    $FamID = $grp->getFamID();
-    $people = PersonQuery::create()->filterByFamId($FamID)->orderByFmrId()->findOne();
-    $PerID = $people->getId();
+foreach ($plgGroup as $grp) {
+  // create contribution
+  // assign contribution to person with lowest role number
+  $FamID = $grp->getFamID();
+  $people = PersonQuery::create()->filterByFamId($FamID)->orderByFmrId()->findOne();
+  $PerID = $people->getId();
 
-    // create contribution info
-    $transaction = new Transaction();
-    $transaction->setDepId($grp->getDepId());
-    $transaction->setDateEntered($grp->getDate());
-    $transaction->setMethod($grp->getMethod());
-    $transaction->setCheckNo($grp->getCheckNo());
-    // $transaction->setComment();
-    // $transaction->setDateentered();
-    // $transaction->setEnteredby();
-    $transaction->setDatelastedited($grp->getDatelastedited());
-    $transaction->setEditedby($grp->getEditedby());
+  // create contribution info
+  $transaction = new Transaction();
+  $transaction->setDepId($grp->getDepId());
+  $transaction->setDateEntered($grp->getDate());
+  $transaction->setMethod($grp->getMethod());
+  $transaction->setCheckNo($grp->getCheckNo());
+  // $transaction->setComment();
+  // $transaction->setDateentered();
+  // $transaction->setEnteredby();
+  $transaction->setDatelastedited($grp->getDatelastedited());
+  $transaction->setEditedby($grp->getEditedby());
     
    
 
@@ -132,6 +134,8 @@ $plgGroup = PledgeQuery::create()->filterByPledgeOrPayment('Payment')->groupByGr
   }
 
   $PersonAccount = AccountQuery::create()->filterByOwnerPersonId($PerID)->findOneOrCreate();
+  $PersonAccount->setAccountType("DONOR");
+  $PersonAccount->setName($people->getFullName());
   $split = new TransactionSplit();
   $split->setAccount($PersonAccount);
   $split->setAmount($totalAmount * -1);

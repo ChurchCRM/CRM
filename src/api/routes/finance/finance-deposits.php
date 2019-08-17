@@ -4,7 +4,7 @@ use ChurchCRM\Deposit;
 use ChurchCRM\DepositQuery;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Slim\Middleware\Request\Auth\FinanceRoleAuthMiddleware;
-use ChurchCRM\ContribQuery;
+use ChurchCRM\TransactionQuery;
 
 $app->group('/deposits', function () {
     $this->post('', function ($request, $response, $args) {
@@ -23,10 +23,17 @@ $app->group('/deposits', function () {
 
     $this->get('/group', function ($request, $response, $args) {
         echo DepositQuery::create()
-            ->leftJoinContrib()
-            ->useContribQuery()
-                ->leftJoinContribSplit()
-                ->withColumn('SUM(contrib_split.spl_Amount)', 'totalAmount')
+            ->leftJoinTransaction()
+            ->useTransactionQuery()
+                ->leftJoinTransactionSplit()
+                ->useTransactionSplitQuery()
+                  ->leftJoinAccount()
+                  ->useAccountQuery()
+                    ->filterByAccountType("FUND")
+                  ->endUse()
+                ->endUse()
+                ->withColumn('SUM(tran_split_Amount)', 'totalAmount')
+                
             ->endUse()
             ->find()
             ->toJSON();

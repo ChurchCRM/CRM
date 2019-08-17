@@ -67,7 +67,7 @@ var dataT = 0;
     var dataTableConfig = {
       ajax: {
         url: window.CRM.root + url,
-        dataSrc: "Contribs"
+        dataSrc: "Transactions"
       },
       "deferRender": true,
       columns: [
