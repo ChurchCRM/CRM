@@ -35,7 +35,7 @@ module.exports = function (grunt) {
                 grunt.log.writeln("Using BuildConfig.json");
                 return grunt.file.readJSON('BuildConfig.json');
             }
-            catch {
+            catch (e) {
                 grunt.log.writeln("BuildConfig.json not found, using defaults");
                 return grunt.file.readJSON('BuildConfig.json.example');
             }
