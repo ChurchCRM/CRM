@@ -195,20 +195,15 @@ var dataT = 0;
     });
   }
 
-  function initAddToDeposit() {
+  function initAddToDeposit() { // search filtered records only
     $("#depositButton").show();
 
     $("#AddToDeposit").click(function() {
       // add all visible records in table to deposit
-      //   var listContributions = [];
-          // var addRows = dataT.rows('.selected').data()
-          var addRows = dataT.rows().data();
+          var addRows = dataT.rows( {order:'index', search:'applied'} ).data();
           $.each(addRows, function (index, value) {
             AddToDeposit(parseInt(value.Id));
           });
-        //   // console.log(listContributions);
-        //   window.CRM.cart.addContributions(listContributions);
-        // });
     });
   }
 
