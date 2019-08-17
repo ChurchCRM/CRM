@@ -769,7 +769,7 @@
     <table name="record2property_r2p" idMethod="native" phpName="RecordProperty" isCrossRef="true" description="This table indicates which persons, families, or groups are assigned specific properties and what the values of those properties are.">
         <column name="r2p_pro_ID" phpName="PropertyId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true"  primaryKey="true"/>
         <column name="r2p_record_ID" phpName="RecordId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true"  primaryKey="true"/>
-        <column name="r2p_Value" phpName="PropertyValue" type="LONGVARCHAR" required="true"  defaultValue=""/>
+        <column name="r2p_Value" phpName="PropertyValue" type="LONGVARCHAR" required="true" />
 
         <foreign-key foreignTable="property_pro" description="This contains the definition of all person, family, and group properties">
             <reference local="r2p_pro_ID" foreign="pro_ID"/>
