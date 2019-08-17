@@ -1,6 +1,6 @@
 <?php
 
-include "src\ChurchCRM\SQLUtils.php";
+include dirname(__FILE__)."/../src/ChurchCRM/SQLUtils.php";
 Use ChurchCRM\SQLUtils;
 
 $sSERVERNAME = "";
@@ -29,7 +29,7 @@ function extract_config_values($value){
   }
 }
 
-$config = explode("\n",file_get_contents ("src\Include\Config.php"));
+$config = explode("\n",file_get_contents (dirname(__FILE__)."/../src/Include/Config.php"));
 array_map("extract_config_values",$config);
 
 echo "Beginning to restore demo database\n";
