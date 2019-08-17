@@ -31,7 +31,7 @@ require 'Include/Header.php';
 
 $iDepositSlipID = 0;
 if (array_key_exists('DepositSlipID', $_GET)) {
-  $iDepositSlipID = InputUtils::LegacyFilterInput($_GET['DepositSlipID'], 'int');
+    $iDepositSlipID = InputUtils::LegacyFilterInput($_GET['DepositSlipID'], 'int');
 }
 
 $linkBack = InputUtils::LegacyFilterInput($_GET['linkBack'], 'string');
@@ -62,8 +62,8 @@ $linkBack = InputUtils::LegacyFilterInput($_GET['linkBack'], 'string');
           
         </div>
         <div id="depositButton" style="display:none">
-          <button type="button" id="AddToDeposit" class="btn btn-primary"><?= gettext('Add to Deposit (' . $iDepositSlipID . ')' ) ?></button>
-          <button type="button" id="cancel" class="btn btn-danger"><?= gettext('Cancel' ) ?></button>
+          <button type="button" id="AddToDeposit" class="btn btn-primary"><?= gettext('Add to Deposit (' . $iDepositSlipID . ')') ?></button>
+          <button type="button" id="cancel" class="btn btn-danger"><?= gettext('Cancel') ?></button>
         </div>
     </div>
   </div>
