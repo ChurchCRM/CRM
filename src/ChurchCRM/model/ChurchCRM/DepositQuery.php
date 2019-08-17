@@ -18,7 +18,7 @@ class DepositQuery extends BaseDepositQuery
     public function preSelect(\Propel\Runtime\Connection\ConnectionInterface $con)
     {
         // $this->joinPledge(); // must be removed smith fix me
-        $this->leftJoinContrib();
+        $this->leftJoinTransaction();
         $this->groupBy('Deposit.Id');
         // $this->withColumn('SUM(Pledge.Amount)', 'totalAmount');
         parent::preSelect($con);
