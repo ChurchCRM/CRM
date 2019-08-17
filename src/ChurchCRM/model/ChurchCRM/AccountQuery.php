@@ -2,10 +2,10 @@
 
 namespace ChurchCRM;
 
-use ChurchCRM\Base\MemberQuery as BaseMemberQuery;
+use ChurchCRM\Base\AccountQuery as BaseAccountQuery;
 
 /**
- * Skeleton subclass for performing query and update operations on the 'typeofmbr' table.
+ * Skeleton subclass for performing query and update operations on the 'account_acct' table.
  *
  *
  *
@@ -14,7 +14,7 @@ use ChurchCRM\Base\MemberQuery as BaseMemberQuery;
  * long as it does not already exist in the output directory.
  *
  */
-class MemberQuery extends BaseMemberQuery
+class AccountQuery extends BaseAccountQuery
 {
 
 }

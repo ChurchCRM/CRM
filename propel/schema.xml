@@ -896,13 +896,20 @@
           <parameter name="Engine" value="InnoDB"/>
       </vendor>
     </table>
-    <table name="typeofmbr" idMethod="native" phpName="Member" >
-        <column name="typeid" phpName="TypeID" type="SMALLINT" size="3" sqlType="tinyinit(3) unsigned" primaryKey="true"
-        autoIncrement="true" required="true"/>
-        <column name="Name" phpName="Name" type="LONGVARCHAR" required="true"/>
-        <index name="typeid">
-            <index-column name="typeid"/>
-        </index>
+
+
+    <table name="account_acct" idMethod="native" phpName="Account" >
+        <column name="acct_id" phpName="Id" type="SMALLINT" size="9" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="acct_name" phpName="Name" type="LONGVARCHAR" required="true"/>
+        <column name="acct_person_id" phpName="OwnerPersonId" type="SMALLINT" required="true"/>
+        <column name="acct_family_id" phpName="OwnerFamilyId" type="SMALLINT" required="true"/>
+        <foreign-key foreignTable="person_per">
+            <reference local="acct_person_id" foreign="per_ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="family_fam">
+            <reference local="acct_family_id" foreign="fam_ID"/>
+        </foreign-key>
+
         <vendor type="mysql">
             <parameter name="Engine" value="InnoDB"/>
         </vendor>
@@ -912,52 +919,40 @@
         </behavior>
     </table>
 
-    <table name="contrib_con" idMethod="native" phpName="Contrib" description="This contains all contribution information">
-        <column name="con_ID" phpName="Id" type="SMALLINT" size="9" primaryKey="true" autoIncrement="true" required="true"/>
-        <column name="con_ContribID" phpName="ConId" type="SMALLINT" size="9" required="true"/>
-        <column name="con_DepID" phpName="DepId" type="SMALLINT" size="9"/>
-        <column name="con_TypeOfMbr" phpName="TypeOfMbr" type="TINYINT" size="3" sqlType="tinyint(3) unsigned" required="true"
-                defaultValue="0"/> 
-        <column name="con_Date" phpName="Date" type="DATE"/>
-        <!-- <column name="con_Amount" phpName="Amount" type="DECIMAL" size="8" scale="2"/> -->
-        <column name="con_method" phpName="Method" type="CHAR" sqlType="enum('CREDITCARD','CHECK','CASH','BANKDRAFT','EGIVE')"/>
-        <column name="con_Comment" phpName="Comment" type="LONGVARCHAR"/>
-
-        <column name="con_DateEntered" phpName="Dateentered" type="TIMESTAMP"/>
-        <column name="con_EnteredBy" phpName="Enteredby" type="SMALLINT" size="9" defaultValue="0"/>
-
-        <column name="con_DateLastEdited" phpName="Datelastedited" type="TIMESTAMP"/>
-        <column name="con_EditedBy" phpName="Editedby" type="SMALLINT" size="9" defaultValue="0"/>
-        <column name="con_CheckNo" phpName="Checkno" type="BIGINT" size="16" sqlType="bigint(16) unsigned"/>
-        <!-- <index name="con_ContribID">
-            <index-column name="con_ContribID"/>
-        </index> -->
-        <foreign-key foreignTable="person_per">
-            <reference local="con_ContribID" foreign="per_ID"/>
-        </foreign-key>
-        <foreign-key foreignTable="typeofmbr">
-            <reference local="con_TypeOfMbr" foreign="typeid"/>
-        </foreign-key>
+    <table name="transaction_tran" idMethod="native" phpName="Transaction" description="This contains all transaction information">
+        <column name="tran_ID" phpName="Id" type="SMALLINT" size="9" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="tran_DepID" phpName="DepId" type="SMALLINT" size="9"/>
+        <column name="tran_method" phpName="Method" type="CHAR" sqlType="enum('CREDITCARD','CHECK','CASH','BANKDRAFT','EGIVE')"/>
+        <column name="tran_Comment" phpName="Comment" type="LONGVARCHAR"/>
+        <column name="tran_DateEntered" phpName="DateEntered" type="TIMESTAMP"/>
+        <column name="tran_EnteredBy" phpName="Enteredby" type="SMALLINT" size="9" defaultValue="0"/>
+        <column name="tran_DateLastEdited" phpName="Datelastedited" type="TIMESTAMP"/>
+        <column name="tran_EditedBy" phpName="Editedby" type="SMALLINT" size="9" defaultValue="0"/>
+        <column name="tran_CheckNo" phpName="Checkno" type="BIGINT" size="16" sqlType="bigint(16) unsigned"/>
+       
+        
+        
         <foreign-key foreignTable="deposit_dep">
-            <reference local="con_DepID" foreign="dep_ID"/>
+            <reference local="tran_DepID" foreign="dep_ID"/>
         </foreign-key>
         <vendor type="mysql">
             <parameter name="Engine" value="InnoDB"/>
         </vendor>
     </table>
 
-    <table name="contrib_split" idMethod="native" phpName="ContribSplit" description="This contains all contribution split information">
-        <column name="spl_ID" phpName="Id" type="SMALLINT" size="9" primaryKey="true" autoIncrement="true" required="true"/>
-        <column name="spl_ConID" phpName="ConId" type="SMALLINT" size="9" required="true"/>
-        <column name="spl_FundID" phpName="FundId" type="TINYINT" size="3" required="true"/>
-        <column name="spl_Amount" phpName="Amount" type="DECIMAL" size="8" scale="2"/>
-        <column name="spl_Comment" phpName="Comment" type="LONGVARCHAR"/>
-        <column name="spl_NonDeductible" phpName="Nondeductible" type="DECIMAL" size="8" scale="2" required="true"/>
-        <foreign-key foreignTable="contrib_con">
-            <reference local="spl_ConID" foreign="con_ID"/>
+    <table name="tran_split" idMethod="native" phpName="TransactionSplit" description="This contains all transaction split information">
+        <column name="tran_split_ID" phpName="Id" type="SMALLINT" size="9" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="tran_split_trans_ID" phpName="TransactionId" type="SMALLINT" size="9" required="true"/>
+        <column name="tran_split_Acct_ID" phpName="AccountId" type="SMALLINT" size="9"/>
+        <column name="tran_split_Fund_ID" phpName="FundId" type="TINYINT" size="3" required="true"/>
+        <column name="tran_split_Amount" phpName="Amount" type="DECIMAL" size="8" scale="2"/>
+        <column name="tran_split_Comment" phpName="Comment" type="LONGVARCHAR"/>
+        <column name="tran_split_NonDeductible" phpName="Nondeductible" type="DECIMAL" size="8" scale="2" required="true"/>
+        <foreign-key foreignTable="transaction_tran">
+            <reference local="tran_split_trans_ID" foreign="tran_ID"/>
         </foreign-key>
-        <foreign-key foreignTable="donationfund_fun">
-            <reference local="spl_FundID" foreign="fun_ID"/>
+        <foreign-key foreignTable="account_acct">
+            <reference local="tran_split_Acct_ID" foreign="acct_id"/>
         </foreign-key>
         <vendor type="mysql">
             <parameter name="Engine" value="InnoDB"/>
