@@ -21,6 +21,8 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Emails\NewPersonOrFamilyEmail;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Bootstrapper;
+use ChurchCRM\SessionUser;
+use ChurchCRM\Utils\LoggerUtils;
 
 //Set the page title
 $sPageTitle = gettext('Family Editor');
@@ -479,7 +481,9 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
 
             while ($rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQLI_BOTH)) {
                 extract($rowCustomField);
-                if (($aSecurityType[$fam_custom_FieldSec] == 'bAll') || ($_SESSION[$aSecurityType[$fam_custom_FieldSec]])) {
+                $customFiledSecurityType = $aSecurityType[$fam_custom_FieldSec];
+                LoggerUtils::getAppLogger()->info("Looking for user with per " . $customFiledSecurityType . " for field " . $fam_custom_Field);
+                if ($customFiledSecurityType == 'bAll' || SessionUser::isEnabledSecurity($customFiledSecurityType)) {
                     $currentFieldData = trim($aCustomData[$fam_custom_Field]);
 
                     sqlCustomField($sSQL, $type_ID, $currentFieldData, $fam_custom_Field, $sCountry);
@@ -896,7 +900,9 @@ require 'Include/Header.php';
 		<?php mysqli_data_seek($rsCustomFields, 0);
         while ($rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQLI_BOTH)) {
             extract($rowCustomField);
-            if (($aSecurityType[$fam_custom_FieldSec] == 'bAll') || ($_SESSION[$aSecurityType[$fam_custom_FieldSec]])) {
+            $customFiledSecurityType = $aSecurityType[$fam_custom_FieldSec];
+            LoggerUtils::getAppLogger()->info("Looking for user with per " . $customFiledSecurityType . " for field " . $fam_custom_Field);
+            if ($customFiledSecurityType == 'bAll' || SessionUser::getUser()->isEnabledSecurity($customFiledSecurityType)) {
                 ?>
 			<div class="row">
 				<div class="form-group col-md-4">
