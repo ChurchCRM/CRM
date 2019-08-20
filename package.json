@@ -96,6 +96,7 @@
         "composer-update": " cd src/ && composer update && composer dump-autoload && cd ../tests/ && composer update && cd .. && grunt lineending",
         "tests-install": "scripts/tests-install.sh",
         "test": "scripts/tests-run.sh",
-        "build-react": "webpack"
+        "build-react": "webpack",
+        "restore-demo-db": "php scripts/restore-demo-db.php"
     }
 }
