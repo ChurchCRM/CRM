@@ -44,19 +44,28 @@ echo "User: $sUSER\n";
 echo "Password: $sPASSWORD\n";
 echo "Database: $sDATABASE\n";
 
-$mysqli = new mysqli($sSERVERNAME, $sUSER, $sPASSWORD, $sDATABASE,$dbPort);
-$mysqli->select_db($sDATABASE);
-echo "Connected to database\n";
-echo "Deleting all tables\n";
+try {
+  $mysqli = new mysqli($sSERVERNAME, $sUSER, $sPASSWORD, $sDATABASE,$dbPort);
+  if (mysqli_connect_errno())
+  {
+    throw new \Exception("Failed to connect to MySQL: " . mysqli_connect_error());
+  }
+  $mysqli->select_db($sDATABASE);
+  echo "Connected to database\n";
+  echo "Deleting all tables\n";
 
-if ($result = $mysqli->query("SHOW TABLES"))
-{
-    while($row = $result->fetch_array(MYSQLI_NUM))
-    {
-        $mysqli->query('DROP TABLE IF EXISTS '.$row[0]);
-    }
+  if ($result = $mysqli->query("SHOW TABLES"))
+  {
+      while($row = $result->fetch_array(MYSQLI_NUM))
+      {
+          $mysqli->query('DROP TABLE IF EXISTS '.$row[0]);
+      }
+  }
+  $mysqli->query('SET foreign_key_checks = 1');
+  echo "Tables deleted, restoring demo db\n";
+  SQLUtils::sqlImport(dirname(__FILE__)."/../demo/ChurchCRM-Database.sql", $mysqli);
+  echo "Demo db restored\n\n";
 }
-$mysqli->query('SET foreign_key_checks = 1');
-echo "Tables deleted, restoring demo db\n";
-SQLUtils::sqlImport(dirname(__FILE__)."/../demo/ChurchCRM-Database.sql", $mysqli);
-echo "Demo db restored\n\n";
+catch (\Exception $e) {
+  echo "Error restoring database: $e";
+}
