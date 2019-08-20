@@ -90,12 +90,14 @@
         "demosite": "scripts/demosite.sh",
         "changelog-gen": "grunt exec:updatechangelog",
         "orm-gen": "php src/vendor/propel/propel/bin/propel.php --config-dir=propel model:build && cd src/ && composer dump-autoload",
+        "sql-gen": "php src/vendor/propel/propel/bin/propel.php --config-dir=propel sql:build",
         "graph-viz": "php src/vendor/propel/propel/bin/propel.php --config-dir=propel graphviz:generate",
         "datadictionary": "php src/vendor/propel/propel/bin/propel.php --config-dir=propel datadictionary:generate",
         "composer-install": "cd src/ && composer install && cd .. && grunt lineending",
         "composer-update": " cd src/ && composer update && composer dump-autoload && cd ../tests/ && composer update && cd .. && grunt lineending",
         "tests-install": "scripts/tests-install.sh",
         "test": "scripts/tests-run.sh",
-        "build-react": "webpack"
+        "build-react": "webpack",
+        "restore-demo-db": "php scripts/restore-demo-db.php"
     }
 }
