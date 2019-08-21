@@ -6,6 +6,7 @@ use ChurchCRM\Base\User as BaseUser;
 use ChurchCRM\dto\SystemConfig;
 use Propel\Runtime\Connection\ConnectionInterface;
 use ChurchCRM\Utils\MiscUtils;
+use ChurchCRM\Utils\LoggerUtils;
 
 /**
  * Skeleton subclass for representing a row from the 'user_usr' table.
@@ -209,8 +210,43 @@ class User extends BaseUser
         $note->save();
     }
 
-    public function isEnabledSecurity($securityConfigName){
+    public function isEnabledSecurity($securityConfigName) {
         if ($this->isAdmin()) {
+            return true;
+        } else if ($securityConfigName == "bAdmin") {
+            return false;
+        }
+
+        if ($securityConfigName == "bAll") {
+            return true;
+        }
+
+
+        if ($securityConfigName == "bAddRecords" && $this->isAddRecordsEnabled()) {
+            return true;
+        }
+
+        if ($securityConfigName == "bEditRecords" && $this->isEditRecordsEnabled()) {
+            return true;
+        }
+
+        if ($securityConfigName == "bDeleteRecords" && $this->isDeleteRecordsEnabled()) {
+            return true;
+        }
+
+        if ($securityConfigName == "bManageGroups" && $this->isManageGroupsEnabled()) {
+            return true;
+        }
+
+        if ($securityConfigName == "bFinance" && $this->isFinanceEnabled()) {
+            return true;
+        }
+
+        if ($securityConfigName == "bNotes" && $this->isNotesEnabled()) {
+            return true;
+        }
+
+        if ($securityConfigName == "bCanvasser" && $this->isCanvasserEnabled()) {
             return true;
         }
 
