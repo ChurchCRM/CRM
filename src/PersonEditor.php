@@ -21,6 +21,7 @@ use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Utils\LoggerUtils;
+use ChurchCRM\SessionUser;
 
 //Set the page title
 $sPageTitle = gettext('Person Editor');
@@ -271,7 +272,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
     while ($rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQLI_BOTH)) {
         extract($rowCustomField);
 
-        if ($aSecurityType[$custom_FieldSec] == 'bAll' || $_SESSION[$aSecurityType[$custom_FieldSec]]) {
+        if (SessionUser::getUser()->isEnabledSecurity($aSecurityType[$custom_FieldSec])) {
             $currentFieldData = InputUtils::LegacyFilterInput($_POST[$custom_Field]);
 
             $bErrorFlag |= !validateCustomField($type_ID, $currentFieldData, $custom_Field, $aCustomErrors);
@@ -421,7 +422,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
             $sSQL = '';
             while ($rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQLI_BOTH)) {
                 extract($rowCustomField);
-                if ($aSecurityType[$custom_FieldSec] == 'bAll' || $_SESSION[$aSecurityType[$custom_FieldSec]]) {
+                if (SessionUser::getUser()->isEnabledSecurity($aSecurityType[$custom_FieldSec] )) {
                     $currentFieldData = trim($aCustomData[$custom_Field]);
                     sqlCustomField($sSQL, $type_ID, $currentFieldData, $custom_Field, $sPhoneCountry);
                 }
@@ -1203,7 +1204,7 @@ require 'Include/Header.php';
                                 while ($rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQLI_BOTH)) {
                                     extract($rowCustomField);
 
-                                    if ($aSecurityType[$custom_FieldSec] == 'bAll' || $_SESSION[$aSecurityType[$custom_FieldSec]]) {
+                                    if (SessionUser::getUser()->isEnabledSecurity($aSecurityType[$custom_FieldSec])) {
                                         echo "<div class='row'><div class=\"form-group col-md-3\"><label>".$custom_Name.'</label>';
 
                                         if (array_key_exists($custom_Field, $aCustomData)) {
