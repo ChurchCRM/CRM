@@ -4,6 +4,7 @@ require_once "vendor/autoload.php";
 require_once "runner/SeleniumTestConfig.php";
 
 use PHPSauceConnect\SauceLabsSauceConnect;
+use Symfony\Component\Console\Input\ArgvInput;
 
 function ConsoleWriteLine($string) {
     echo $string."\n";
@@ -63,8 +64,18 @@ function run_browser_automation_tests(SeleniumTestConfig $SeleniumTestConfg) {
         //    sed -i "s;'/src';'';g" ./bootstrap.php
     }
     
-    include "../vendor/behat/behat/bin/behat";
+    define('BEHAT_BIN_PATH', dirname(__FILE__)."/vendor/behat/behat/bin");
 
+    $factory = new \Behat\Behat\ApplicationFactory();
+    $options = array( 
+        "0"
+    );
+    if (is_array($SeleniumTestConfg->BehatTestsToRun)  && count($SeleniumTestConfg->BehatTestsToRun) > 0 ) {
+        $options = array_merge($options,array_values($SeleniumTestConfg->BehatTestsToRun));
+    }
+
+    $input = new ArgvInput($options);
+    $factory->createApplication()->run($input);
 
 }
 

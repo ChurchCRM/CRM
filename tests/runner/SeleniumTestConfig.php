@@ -10,6 +10,10 @@ class SeleniumTestConfig {
     public $TestURL;
     public $SauceUsername;
     public $SauceAccessKey;
+    /** 
+     * @var array
+     */
+    public $BehatTestsToRun;
     /**
      * @var SeleniumTestHostType
      */
