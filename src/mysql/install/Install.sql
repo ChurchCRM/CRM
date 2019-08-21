@@ -503,7 +503,6 @@ INSERT INTO `list_lst` (`lst_ID`, `lst_OptionID`, `lst_OptionSequence`, `lst_Opt
   (5, 3, 3, 'bAddRecords'),
   (5, 4, 4, 'bEditRecords'),
   (5, 5, 5, 'bDeleteRecords'),
-  (5, 6, 6, 'bMenuOptions'),
   (5, 7, 7, 'bManageGroups'),
   (5, 8, 8, 'bFinance'),
   (5, 9, 9, 'bNotes'),
