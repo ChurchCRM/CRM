@@ -422,7 +422,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
             $sSQL = '';
             while ($rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQLI_BOTH)) {
                 extract($rowCustomField);
-                if (SessionUser::getUser()->isEnabledSecurity($aSecurityType[$custom_FieldSec] )) {
+                if (SessionUser::getUser()->isEnabledSecurity($aSecurityType[$custom_FieldSec])) {
                     $currentFieldData = trim($aCustomData[$custom_Field]);
                     sqlCustomField($sSQL, $type_ID, $currentFieldData, $custom_Field, $sPhoneCountry);
                 }
