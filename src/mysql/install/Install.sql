@@ -507,7 +507,6 @@ INSERT INTO `list_lst` (`lst_ID`, `lst_OptionID`, `lst_OptionSequence`, `lst_Opt
   (5, 7, 7, 'bManageGroups'),
   (5, 8, 8, 'bFinance'),
   (5, 9, 9, 'bNotes'),
-  (5, 10, 10, 'bCommunication'),
   (5, 11, 11, 'bCanvasser'),
   (10, 1, 1, 'Teacher'),
   (10, 2, 2, 'Student'),

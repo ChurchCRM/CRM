@@ -1525,7 +1525,6 @@ CREATE TABLE `user_usr` (
   `usr_MenuOptions` tinyint(3) unsigned NOT NULL DEFAULT '0',
   `usr_ManageGroups` tinyint(3) unsigned NOT NULL DEFAULT '0',
   `usr_Finance` tinyint(3) unsigned NOT NULL DEFAULT '0',
-  `usr_Communication` tinyint(3) unsigned NOT NULL DEFAULT '0',
   `usr_Notes` tinyint(3) unsigned NOT NULL DEFAULT '0',
   `usr_Admin` tinyint(3) unsigned NOT NULL DEFAULT '0',
   `usr_Workspacewidth` smallint(6) DEFAULT NULL,
