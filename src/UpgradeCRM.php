@@ -9,6 +9,7 @@ require_once 'Include/Header-function.php';
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Service\AppIntegrityService;
+use ChurchCRM\Service\TaskService;
 
 // Set the page title and include HTML header
 $sPageTitle = gettext('Upgrade ChurchCRM');
@@ -30,6 +31,39 @@ Header_body_scripts();
             <?= gettext('Upgrade ChurchCRM') ?>
         </span>
     </li>
+
+    <?php
+     $taskService = new TaskService();
+     $preUpgradeTasks = $taskService->getPreUpgradeTasks();
+      if (count($preUpgradeTasks) > 0) {
+          ?>
+    <li>
+      <i class="fa fa-bomb bg-red"></i>
+      <div class="timeline-item" >
+        <h3 class="timeline-header"><?= gettext('Warning: Pre-Upgrade Tasks Detected') ?> <span id="status1"></span></h3>
+        <div class="timeline-body" id="preUpgradeCheckWarning">
+          <p><?= gettext("Some conditions have been identified wich may prevent a successful upgrade")?></b></p>
+          <p><?= gettext("Please review and mitigate these tasks before continuing with the upgrade:")?></p>
+          <div>
+            <ul>
+              <?php
+                foreach ($preUpgradeTasks as $preUpgradeTask) {
+                  ?>
+                    <li><?= $preUpgradeTask->getTitle() ?>: <?= $preUpgradeTask->getDesc()?></li>
+                  <?php
+                }
+              ?>
+
+            </ul>
+              
+          </div>
+          <input type="button" class="btn btn-primary" id="acceptIntegrityCheckWarking" <?= 'value="'.gettext('I Understand').'"' ?>>
+        </div>
+      </div>
+    </li>
+    <?php
+      }
+    ?>
     <?php
       if (AppIntegrityService::getIntegrityCheckStatus() == gettext("Failed")) {
           ?>
