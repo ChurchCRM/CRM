@@ -45,10 +45,12 @@ if [[ "${SAUCE_USERNAME}" && "${SAUCE_ACCESS_KEY}" ]]; then
 else
   echo "NO SAUCE"
   export BEHAT_PARAMS='{"extensions" : {"Behat\\MinkExtension" : {"selenium2" : { "wd_host": "http://localhost:4444/wd/hub"}}}}'
-  docker run -d -p 4444:4444 --shm-size=2g selenium/standalone-chrome
+  docker run -d -p 4444:4444 --shm-size=2g selenium/standalone-chrome:3.141.5
   sleep 10
-  cp ../drone-ci/behat.yml ./behat/behat.yml
-  sed -i "s;crm$;$(hostname -f);g" ./behat/behat.yml
+  sed -i "s;localhost$;$(hostname -f);g" ./behat/behat.yml
+  sed -i "s|Chrome|chrome|g" ./behat/behat.yml
+  sed -i "s|platform: Windows 10|browser: chrome|g" ./behat/behat.yml
+  sed -i "s|version: 67.0|marionette: true\r          chrome:\r            switches: ['--disable-gpu', '--window-size=1280,1600']|g" ./behat/behat.yml
   sed -i "s;'/src';'';g" ./bootstrap.php
 fi
 

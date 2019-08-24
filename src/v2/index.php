@@ -31,6 +31,7 @@ require __DIR__.'/routes/admin/admin.php';
 require __DIR__.'/routes/user.php';
 
 // people routes
+require __DIR__.'/routes/people.php';
 require __DIR__.'/routes/family.php';
 require __DIR__.'/routes/person.php';
 

@@ -60,6 +60,10 @@ msgid "Backup Database"
 msgstr "Säkerhetskopiera databasen"
 
 #: 
+msgid "This tool will assist you in manually backing up the ChurchCRM database."
+msgstr "Detta verktyg hjälper dig att manuellt säkerhetskopiera databasen för ChurchCRM"
+
+#: 
 msgid "You should make a manual backup at least once a week unless you already have a regular backup procedule for your systems."
 msgstr "Du borde säkerhetskopiera databasen minst en gång i veckan om du inte redan har en annan säkerhetskopieringssystem igång"
 
@@ -924,6 +928,10 @@ msgid "Description"
 msgstr "Beskrivning"
 
 #: 
+msgid "Picture URL"
+msgstr "Bild URL"
+
+#: 
 msgid "Donation Fund Editor"
 msgstr "Insamlingsfond redigerare"
 
@@ -983,6 +991,10 @@ msgstr "Återkommande mönster"
 #: 
 msgid "Attendance Counts"
 msgstr "Deltagande summor"
+
+#: 
+msgid "Add counter"
+msgstr "Lägg till räknare"
 
 #: 
 msgid "Family"
@@ -1096,6 +1108,14 @@ msgid " are required"
 msgstr "Denna inmatning krävs."
 
 #: 
+msgid "Select your event type"
+msgstr "Välj typ av händelse"
+
+#: 
+msgid "You must pick an event type."
+msgstr "Du måste välja en händelse-typ"
+
+#: 
 #, fuzzy
 msgid "Event Desc"
 msgstr "Evenemangsbeskr."
@@ -1117,6 +1137,10 @@ msgstr "Evenemangspredikan"
 #, fuzzy
 msgid "Event Status"
 msgstr "Evenemangsstatus"
+
+#: 
+msgid "Return to Events"
+msgstr "Tillbaka till Händelser"
 
 #: 
 msgid "EVENT TYPE NAME"
@@ -1252,6 +1276,18 @@ msgid "Email is Not Valid"
 msgstr "Epost är inte giltig"
 
 #: 
+msgid "Family Info"
+msgstr "Familj Info"
+
+#: 
+msgid "Contact Info"
+msgstr "Kontakt Info"
+
+#: 
+msgid "Other Info"
+msgstr "Övrig Info"
+
+#: 
 #, fuzzy
 msgid "Ok To Canvass"
 msgstr "godkände för insamlingskampanjor"
@@ -1265,6 +1301,10 @@ msgstr "Ange en insamlingskampanj arbetare"
 #, fuzzy
 msgid "Assign a Brave Canvasser"
 msgstr "Ange en modig insamlingskampanj arbetare"
+
+#: 
+msgid "Envelope Info"
+msgstr "Kuvert Info"
 
 #: 
 msgid "Custom Fields"
@@ -1363,12 +1403,36 @@ msgid "Unk"
 msgstr "Okänd"
 
 #: 
+msgid "Family List"
+msgstr "Familjelista"
+
+#: 
+msgid "Add Family"
+msgstr "Skapa Familj"
+
+#: 
+msgid "Created"
+msgstr "Skapad"
+
+#: 
+msgid "Edited"
+msgstr "Ändrad"
+
+#: 
 msgid "Latitude/Longitude"
 msgstr "Latitud/Longitud"
 
 #: 
 msgid "Envelope Number"
 msgstr "Kuvertnummer"
+
+#: 
+msgid "Verify Info"
+msgstr "Bekräfta Info"
+
+#: 
+msgid "Add New Member"
+msgstr "Skapa Ny Medlem"
 
 #: 
 msgid "Previous Family"
@@ -2053,10 +2117,6 @@ msgstr "Brev och post etikett"
 #: 
 msgid "Newsletter labels"
 msgstr "Nyhetsbrev etikett"
-
-#: 
-msgid "Confirm data letter"
-msgstr "Bekräfta informations-brev"
 
 #: 
 msgid "Confirm data labels"
@@ -2753,10 +2813,6 @@ msgstr "Kör förfrågan igen"
 #: 
 msgid "Execute Query"
 msgstr "Gör förfrågan"
-
-#: 
-msgid "Address Info:"
-msgstr "Adress info:"
 
 #: 
 msgid "Please register your copy of ChurchCRM by checking over this information and pressing the Send button.  "
@@ -3630,4 +3686,32 @@ msgstr "Skapa klasslista"
 #: 
 msgid "Create Attendance Sheet"
 msgstr "Skapa deltagande formulär"
+
+#: 
+msgid "I Understand"
+msgstr "Jag Förstår"
+
+#: 
+msgid "Generate Backup"
+msgstr "Skapa Säkerhetskopia"
+
+#: 
+msgid "Password (if any)"
+msgstr "Lösenord (om det behövs)"
+
+#: 
+msgid "All information on this page is correct."
+msgstr "All information på denna sida är korrekt."
+
+#: 
+msgid "Age Histogram"
+msgstr "Åldershistogram"
+
+#: 
+msgid "Event not found"
+msgstr "Händelsen hittade ej"
+
+#: 
+msgid "Press CTRL + C to copy all group members\\' phone numbers"
+msgstr "Tryck CTRL + C för att kopiera alla gruppmedlemmars telefonnummer"
 

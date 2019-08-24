@@ -2038,10 +2038,6 @@ msgid "Newsletter labels"
 msgstr "Etichetele Newsletter"
 
 #: 
-msgid "Confirm data letter"
-msgstr "Confirmați scrisoare de date"
-
-#: 
 msgid "Confirm data labels"
 msgstr "Confirmați etichete de date"
 
@@ -2713,10 +2709,6 @@ msgstr "Rulați din nou interogarea"
 #: 
 msgid "Execute Query"
 msgstr "Executa interogări"
-
-#: 
-msgid "Address Info:"
-msgstr "Adresa Info:"
 
 #: 
 msgid "Please register your copy of ChurchCRM by checking over this information and pressing the Send button.  "

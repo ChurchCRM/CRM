@@ -30,7 +30,16 @@ module.exports = function (grunt) {
     grunt.initConfig({
         package: grunt.file.readJSON('package.json'),
         pkg: grunt.file.readJSON('package.json'),
-        buildConfig: grunt.file.readJSON('BuildConfig.json'),
+        buildConfig: (function() { 
+            try {
+                grunt.log.writeln("Using BuildConfig.json");
+                return grunt.file.readJSON('BuildConfig.json');
+            }
+            catch (e) {
+                grunt.log.writeln("BuildConfig.json not found, using defaults");
+                return grunt.file.readJSON('BuildConfig.json.example');
+            }
+        })(),
         projectFiles: [
             '**',
             '**/.*',
@@ -101,7 +110,7 @@ module.exports = function (grunt) {
                         expand: true,
                         filter: 'isFile',
                         flatten: true,
-                        src: ['node_modules/bootbox/bootbox.min.js'],
+                        src: ['node_modules/bootbox/dist/bootbox.min.js'],
                         dest: 'src/skin/external/bootbox/'
                     },
                     {
@@ -217,7 +226,7 @@ module.exports = function (grunt) {
                         expand: true,
                         filter: 'isFile',
                         flatten: true,
-                        src: ['node_modules/bootstrap-show-password/bootstrap-show-password.min.js'],
+                        src: ['node_modules/bootstrap-show-password/dist/bootstrap-show-password.min.js'],
                         dest: 'src/skin/external/bootstrap-show-password'
                     },
                     {

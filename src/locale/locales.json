@@ -182,6 +182,16 @@
     "datePicker": true,
     "select2": true
   },
+  "Portuguese - Portugal": {
+    "poEditor": "pt",
+    "locale": "pt_PT",
+    "languageCode": "pt-PT",
+    "countryCode": "PT",
+    "dataTables": "Portuguese",
+    "fullCalendar" : false,
+    "datePicker": false,
+    "select2": false
+  },
   "Romanian - Romania": {
     "poEditor": "ro",
     "locale": "ro_RO",

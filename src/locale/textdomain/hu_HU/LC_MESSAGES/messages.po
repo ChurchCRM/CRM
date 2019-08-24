@@ -2030,10 +2030,6 @@ msgid "Newsletter labels"
 msgstr "Hírlevél címkék"
 
 #: 
-msgid "Confirm data letter"
-msgstr "Még adatokat írni"
-
-#: 
 msgid "Confirm data labels"
 msgstr "Még adatfeliratokat"
 
@@ -2710,10 +2706,6 @@ msgstr "Lekérdezés futtatása Again"
 #: 
 msgid "Execute Query"
 msgstr "Execute Query"
-
-#: 
-msgid "Address Info:"
-msgstr "Cím Info:"
 
 #: 
 msgid "Please register your copy of ChurchCRM by checking over this information and pressing the Send button.  "

@@ -2293,14 +2293,6 @@ msgid "Newsletter labels"
 msgstr "Etiquetas Boletín"
 
 #: 
-msgid "Confirm data letter"
-msgstr "Confirme carta datos"
-
-#: 
-msgid "Confirm data Email"
-msgstr "Confirmar datos de Email"
-
-#: 
 msgid "Confirm data labels"
 msgstr "Compruebe las etiquetas de datos"
 
@@ -3145,10 +3137,6 @@ msgid "Execute Query"
 msgstr "Ejecutar búsqueda"
 
 #: 
-msgid "Address Info:"
-msgstr "Información de dirección:"
-
-#: 
 msgid "Software Registration"
 msgstr "Registro del Software"
 
@@ -3851,7 +3839,7 @@ msgstr "Ingrese un Título para su reporte de problema/característica nueva"
 
 #: 
 msgid "What were you doing when you noticed the bug / feature opportunity?"
-msgstr "Qué estaba usted haciendo cuando se dio cuenta del problema/oportunidad de característica nueva?"
+msgstr "Qué estaba usted haciendo cuando se dio cuenta del problema/funcionalidad nueva?"
 
 #: 
 msgid "When you click \"submit,\" an error report will be posted to the ChurchCRM GitHub Issue tracker."
@@ -4276,10 +4264,6 @@ msgstr "Usuarios del Sistema"
 #: 
 msgid "Calendar"
 msgstr "Calendario"
-
-#: 
-msgid "Members"
-msgstr "Miembros"
 
 #: 
 msgid "Add New Person"
@@ -4990,10 +4974,6 @@ msgid "These are the family role numbers designated as child"
 msgstr "Estos son los números de rol de familia designados como niño"
 
 #: 
-msgid "Session timeout length in seconds\\rSet to zero to disable session timeouts."
-msgstr "Límite de tiempo de sesión en segundos\\rColocar en cero para deshabilitar tiempos límite de sesión."
-
-#: 
 msgid "Queries for which user must have finance permissions to use:"
 msgstr "Consultas para las cuales el usuario debe tener permisos financieros:"
 
@@ -5006,20 +4986,8 @@ msgid "Minimum length a user may set their password to"
 msgstr "Largo mínimo de contraseña que un usuario debe ingresar"
 
 #: 
-msgid "Minimum amount that a new password must differ from the old one (# of characters changed)\\rSet to zero to disable this feature"
-msgstr "Cantidad mínima de diferencia en que una nueva contraseña debe diferir de una vieja (# de caracteres  cambiados)\\rColocar en cero para deshabilitar esta funcionalidad"
-
-#: 
 msgid "A comma-seperated list of disallowed (too obvious) passwords."
 msgstr "Una lista de contraseñas deshabilitadas (muy obvias), separadas por coma."
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\\rOnce the maximum has been reached, an administrator must re-enable the account.\\rThis feature helps to protect against automated password guessing attacks.\\rSet to zero to disable this feature."
-msgstr "Número máximo de ingresos fallidos permitidos antes de que la cuenta de un usuario sea bloqueada.\\rUna vez que el máximo haya sido alcanzado, un administrador debe restablecer la cuenta.\\rEsta funcionalidad ayuda a proteger ante ataques de adivinación automático de contraseña.\\rColocar en cero para deshabilitar esta funcionalidad."
-
-#: 
-msgid "PDF handling mode.\\r1 = Save File dialog\\r2 = Open in current browser window"
-msgstr "Modo de manejo de PDF.\\r1 = Diálogo de Guardado de Archivo\\r2 = Abrir en ventana actual de navegador"
 
 #: 
 msgid "Default City"
@@ -5807,10 +5775,6 @@ msgstr "tipo de evento personalizado"
 #: 
 msgid "custom event types"
 msgstr "tipos de evento personalizados"
-
-#: 
-msgid "Press CTRL + C to copy all group members\\\\' phone numbers"
-msgstr "Presione CTRL + C para copiar todos teléfonos de los miembros del grupo"
 
 #: 
 msgid "Family Roles Editor"
@@ -7074,21 +7038,12 @@ msgid "Online Verification"
 msgstr "Verificación Online"
 
 #: 
-msgid "PDF Report"
-msgstr "Reporte en PDF"
-
-#: 
 msgid "Verified In Person"
 msgstr "Verificar en Persona"
 
 #: 
 msgid "None State"
 msgstr "Ningún Estado"
-
-#: 
-msgid "Unavailable person info inherited from assigned family for display?\\rThis option causes certain info from a person's assigned family record to be\\rdisplayed IF the corresponding info has NOT been entered for that person. "
-msgstr "Desplegar información no disponible de la persona desde familia asignada?\n"
-"\\r Esta opción hace que cierta información de un registro de familia asignado a la persona sea\\r desplegado SI la información correspondiente NO ha sido ingresada para esa persona. "
 
 #: 
 msgid "Backup archive does not contain a database"
@@ -7890,14 +7845,6 @@ msgid "Verification email sent"
 msgstr "Email de verificación enviado"
 
 #: 
-msgid "Failed to send verification email"
-msgstr "Falla al enviar email de verificación"
-
-#: 
-msgid "Failed to add verification"
-msgstr "Falla al agregar verificación"
-
-#: 
 msgid "Confirm Enable Group Specific Properties"
 msgstr "Confirmar la Habilitación de Propiedades Específicas de Grupo"
 
@@ -8009,10 +7956,6 @@ msgid "lookup user images on Google when no local image is present"
 msgstr "buscar imágenes de usuario en Google cuando no esté presente una imagen local"
 
 #: 
-msgid "Self Update"
-msgstr "Auto Actualizar"
-
-#: 
 msgid "Self Register"
 msgstr "Auto Registrar"
 
@@ -8021,20 +7964,8 @@ msgid "List families that were created via self registration."
 msgstr "Listar familias que fueron creadas mediante auto-registros"
 
 #: 
-msgid "Self Verify Updates"
-msgstr "Auto Verificar Actualizaciones"
-
-#: 
-msgid "Families who commented via self verify links"
-msgstr "Familias que comentaron mediante enlaces de auto verificación"
-
-#: 
 msgid "Pending Self Verify"
 msgstr "Auto Verificaciones Pendientes"
-
-#: 
-msgid "Families with valid self verify links"
-msgstr "Familias con enlaces de auto verificación validos"
 
 #: 
 msgid "Self Verify"
@@ -8359,14 +8290,6 @@ msgstr "Twitter"
 #: 
 msgid "LinkedIn"
 msgstr "LinkedIn"
-
-#: 
-msgid "Calendar description"
-msgstr "Descripción de Calendario"
-
-#: 
-msgid "Visitors"
-msgstr "Visitantes"
 
 #: 
 msgid "Move Event"
@@ -8712,18 +8635,6 @@ msgstr "hasta"
 #: 
 msgid "Are you sure you want to change the end time for "
 msgstr "Está seguro de que desea cambiar la hora final por "
-
-#: 
-msgid "Pinned Calendars"
-msgstr "Calendarios Anclados"
-
-#: 
-msgid "Event Description"
-msgstr "Descripción de Evento"
-
-#: 
-msgid "Event Text"
-msgstr "Texto de Evento"
 
 #: 
 msgid "Access Token"
@@ -9194,4 +9105,98 @@ msgstr "Por favor actualice la información familiar con lo siguiente"
 #: 
 msgid "Age Histogram"
 msgstr "Histograma de Edades"
+
+#: 
+msgid "Missing event id"
+msgstr "Falta id de evento"
+
+#: 
+msgid "Event not found"
+msgstr "Evento no encontrado"
+
+#: 
+msgid "Session timeout length in seconds\n"
+"Set to zero to disable session timeouts."
+msgstr "Límite de tiempo de la sesión en segundos\n"
+"Ajustar a cero para deshabilitar el límite de tiempo."
+
+#: 
+msgid "Minimum amount that a new password must differ from the old one (# of characters changed)\n"
+"Set to zero to disable this feature"
+msgstr "Cantidad mínima en que una nueva contraseña debe diferir de la antigua (# caracteres cambiados)\n"
+"Ajustar a cero para deshabilitar esta funcionalidad"
+
+#: 
+msgid "Maximum number of failed logins to allow before a user account is locked.\n"
+"Once the maximum has been reached, an administrator must re-enable the account.\n"
+"This feature helps to protect against automated password guessing attacks.\n"
+"Set to zero to disable this feature."
+msgstr "Número máximo de ingresos fallidos a permitir antes de que se bloquee una cuenta de usuario.\n"
+"Una vez que el número se ha alacanzado, el administrador debe restablecer la cuenta.\n"
+"Esta funcionalidad ayuda a proteger ante ataques automáticos de predicción de contraseñas.\n"
+"Ajustar a cero para deshabilitar esta funcionalidad."
+
+#: 
+msgid "PDF handling mode.\n"
+"1 = Save File dialog\n"
+"2 = Open in current browser window"
+msgstr "Modo de manejo de PDF.\n"
+"1 = Diálogo para guardar Archivo\n"
+"2 = Abrir en ventana del navegador actual"
+
+#: 
+msgid "Unavailable person info inherited from assigned family for display?\n"
+"This option causes certain info from a person's assigned family record to be\n"
+"displayed IF the corresponding info has NOT been entered for that person. "
+msgstr "Desplegar Información no disponible heredando desde la familia asignada?\n"
+"Esta opción causa que cierta información de la familia asignada a la persona pueda ser desplegada SI la información correspondiente NO ha sido ingresada para esa persona."
+
+#. member\'s
+#: 
+msgid "Press CTRL + C to copy all group members\\' phone numbers"
+msgstr "Presionar CTRL + C para copiar todos los números de teléfono de los miembros del grupo"
+
+#: 
+msgid "Verify People"
+msgstr "Verificación de Personas"
+
+#: 
+msgid "People Verify Dashboard"
+msgstr "Dashboard de Verificación de Personas"
+
+#: 
+msgid "Download family letters"
+msgstr "Descargar cartas de familia"
+
+#: 
+msgid "Send family email"
+msgstr "Enviar email de familia"
+
+#: 
+msgid "Verification recorded"
+msgstr "Verificación grabada"
+
+#: 
+msgid "Verification URL created"
+msgstr "URL de verificación creada"
+
+#: 
+msgid "URL"
+msgstr "URL"
+
+#: 
+msgid "PDF"
+msgstr "PDF"
+
+#: 
+msgid "Error sending email(s)"
+msgstr "Error al enviar email(s)"
+
+#: 
+msgid "Please check logs for more information"
+msgstr "Para mayor información por favor revise los logs"
+
+#: 
+msgid "Verification URL"
+msgstr "URL de verificación"
 

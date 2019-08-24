@@ -2296,14 +2296,6 @@ msgid "Newsletter labels"
 msgstr "Etichette della newsletter"
 
 #: 
-msgid "Confirm data letter"
-msgstr "Conferma lettera di dati"
-
-#: 
-msgid "Confirm data Email"
-msgstr "Conferma i dati Email"
-
-#: 
 msgid "Confirm data labels"
 msgstr "Confermare le etichette dati"
 
@@ -3153,10 +3145,6 @@ msgstr "Esegui query nuovamente"
 #: 
 msgid "Execute Query"
 msgstr "Esegui Query"
-
-#: 
-msgid "Address Info:"
-msgstr "Indirizzo:"
 
 #: 
 msgid "Software Registration"
@@ -4288,10 +4276,6 @@ msgid "Calendar"
 msgstr "Calendario"
 
 #: 
-msgid "Members"
-msgstr "Membri"
-
-#: 
 msgid "Add New Person"
 msgstr "Aggiungi Persona"
 
@@ -5004,10 +4988,6 @@ msgid "These are the family role numbers designated as child"
 msgstr "Questi sono i numeri dei ruoli familiari designati come bambini"
 
 #: 
-msgid "Session timeout length in seconds\\rSet to zero to disable session timeouts."
-msgstr "Durata del timeout della sessione in secondi \\ r Impostare su zero per disabilitare i timeout della sessione."
-
-#: 
 msgid "Queries for which user must have finance permissions to use:"
 msgstr "Query per le quali l'utente deve disporre delle autorizzazioni di finanziamento da utilizzare:"
 
@@ -5020,20 +5000,8 @@ msgid "Minimum length a user may set their password to"
 msgstr "Lunghezza minima a cui un utente può impostare la propria password"
 
 #: 
-msgid "Minimum amount that a new password must differ from the old one (# of characters changed)\\rSet to zero to disable this feature"
-msgstr "Importo minimo che una nuova password deve differire da quella precedente (numero di caratteri modificati) \\ r Impostare a zero per disabilitare questa funzione"
-
-#: 
 msgid "A comma-seperated list of disallowed (too obvious) passwords."
 msgstr "Un elenco separato da virgole di password non consentite (troppo ovvie)."
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\\rOnce the maximum has been reached, an administrator must re-enable the account.\\rThis feature helps to protect against automated password guessing attacks.\\rSet to zero to disable this feature."
-msgstr "Numero massimo di accessi non riusciti da consentire prima che un account utente sia bloccato. \\ RUna volta raggiunto il limite massimo, un amministratore deve riattivare l'account. \\ RQuesta funzione consente di proteggere dagli attacchi di induzione automatica delle password. \\ RImpostare su zero per disabilitare questo caratteristica."
-
-#: 
-msgid "PDF handling mode.\\r1 = Save File dialog\\r2 = Open in current browser window"
-msgstr "Modalità di gestione PDF. \\ R1 = Finestra di dialogo Salva file \\ r2 = Apri nella finestra corrente del browser"
 
 #: 
 msgid "Default City"
@@ -5814,10 +5782,6 @@ msgstr "tipo di evento personalizzato"
 #: 
 msgid "custom event types"
 msgstr "tipi di eventi personalizzati"
-
-#: 
-msgid "Press CTRL + C to copy all group members\\\\' phone numbers"
-msgstr "Premi CTRL + C per copiare tutti i numeri di telefono dei Membri del Gruppo"
 
 #: 
 msgid "Family Roles Editor"
@@ -7085,20 +7049,12 @@ msgid "Online Verification"
 msgstr "Verifica online"
 
 #: 
-msgid "PDF Report"
-msgstr "Rapporto PDF"
-
-#: 
 msgid "Verified In Person"
 msgstr "Verificato di persona"
 
 #: 
 msgid "None State"
 msgstr "Nessuno stato"
-
-#: 
-msgid "Unavailable person info inherited from assigned family for display?\\rThis option causes certain info from a person's assigned family record to be\\rdisplayed IF the corresponding info has NOT been entered for that person. "
-msgstr "Informazioni sulla persona non disponibile ereditate dalla famiglia assegnata per la visualizzazione? \\␣Questa opzione fa sì che vengano visualizzate determinate informazioni dal record della famiglia assegnata a una persona SE non sono state inserite le informazioni corrispondenti per quella persona.␣"
 
 #: 
 msgid "Backup archive does not contain a database"
@@ -7877,14 +7833,6 @@ msgid "Verification email sent"
 msgstr "Verifica email inviata"
 
 #: 
-msgid "Failed to send verification email"
-msgstr "Errore di invio verifica email"
-
-#: 
-msgid "Failed to add verification"
-msgstr "Impossibile aggiungere la verifica"
-
-#: 
 msgid "Confirm Enable Group Specific Properties"
 msgstr "Conferma Abilita proprietà specifiche del gruppo"
 
@@ -7993,10 +7941,6 @@ msgid "lookup user images on Google when no local image is present"
 msgstr "cerca le immagini degli utenti su Google quando non sono presenti immagini locali"
 
 #: 
-msgid "Self Update"
-msgstr "Aggiornamento automatico"
-
-#: 
 msgid "Self Register"
 msgstr "Registro personale"
 
@@ -8005,20 +7949,8 @@ msgid "List families that were created via self registration."
 msgstr "Elenca le famiglie che sono state create tramite la registrazione automatica."
 
 #: 
-msgid "Self Verify Updates"
-msgstr "Auto verifica aggiornamenti"
-
-#: 
-msgid "Families who commented via self verify links"
-msgstr "Famiglie che hanno commentato tramite link di auto-verifica"
-
-#: 
 msgid "Pending Self Verify"
 msgstr "Auto Verifiche da Approvare"
-
-#: 
-msgid "Families with valid self verify links"
-msgstr "Famiglie con link di autovalutazione validi"
 
 #: 
 msgid "Self Verify"
@@ -8343,14 +8275,6 @@ msgstr "Twitter"
 #: 
 msgid "LinkedIn"
 msgstr "LinkedIn"
-
-#: 
-msgid "Calendar description"
-msgstr "Descrizione del calendario"
-
-#: 
-msgid "Visitors"
-msgstr "I visitatori"
 
 #: 
 msgid "Move Event"
@@ -8695,18 +8619,6 @@ msgstr "a"
 #: 
 msgid "Are you sure you want to change the end time for "
 msgstr "Sei sicuro di voler modificare l'ora di fine per"
-
-#: 
-msgid "Pinned Calendars"
-msgstr "Calendari aggiunti"
-
-#: 
-msgid "Event Description"
-msgstr "descrizione dell'evento"
-
-#: 
-msgid "Event Text"
-msgstr "Testo dell'evento"
 
 #: 
 msgid "Access Token"

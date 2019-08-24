@@ -1953,10 +1953,6 @@ msgid "Newsletter labels"
 msgstr "Etiketat Newsletter"
 
 #: 
-msgid "Confirm data letter"
-msgstr "Konfirmo letër të të dhënave"
-
-#: 
 msgid "Confirm data labels"
 msgstr "Konfirmo etiketat të dhënave"
 
@@ -2613,10 +2609,6 @@ msgstr "Run Query Përsëri"
 #: 
 msgid "Execute Query"
 msgstr "Execute Query"
-
-#: 
-msgid "Address Info:"
-msgstr "Adresa Info:"
 
 #: 
 msgid "Please register your copy of ChurchCRM by checking over this information and pressing the Send button.  "
@@ -3415,10 +3407,6 @@ msgstr "Krijo Lista Class"
 #: 
 msgid "Create Attendance Sheet"
 msgstr "Krijo Pjesëmarrja Sheet"
-
-#: 
-msgid "Members"
-msgstr "Anëtarët"
 
 #: 
 msgid "Add New Person"

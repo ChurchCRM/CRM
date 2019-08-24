@@ -2365,14 +2365,6 @@ msgid "Newsletter labels"
 msgstr "通訊標籤"
 
 #: 
-msgid "Confirm data letter"
-msgstr "確認數據信"
-
-#: 
-msgid "Confirm data Email"
-msgstr "確認數據電子郵件"
-
-#: 
 msgid "Confirm data labels"
 msgstr "確認數據標籤"
 
@@ -3232,10 +3224,6 @@ msgstr "再次運行查詢"
 #: 
 msgid "Execute Query"
 msgstr "執行查詢"
-
-#: 
-msgid "Address Info:"
-msgstr "地址信息："
 
 #: 
 msgid "Software Registration"
@@ -4407,10 +4395,6 @@ msgid "Calendar"
 msgstr "日曆"
 
 #: 
-msgid "Members"
-msgstr "成員"
-
-#: 
 msgid "Add New Person"
 msgstr "添加新成員"
 
@@ -5129,10 +5113,6 @@ msgid "These are the family role numbers designated as child"
 msgstr "這些是指定為孩子的家庭角色的編號"
 
 #: 
-msgid "Session timeout length in seconds\\rSet to zero to disable session timeouts."
-msgstr "會話超時長度（以秒為單位）\\ r設為零以禁用會話超時。"
-
-#: 
 msgid "Queries for which user must have finance permissions to use:"
 msgstr "用戶必須具有財務權限才能使用的查詢："
 
@@ -5145,20 +5125,8 @@ msgid "Minimum length a user may set their password to"
 msgstr "用戶設置密碼的最小長度"
 
 #: 
-msgid "Minimum amount that a new password must differ from the old one (# of characters changed)\\rSet to zero to disable this feature"
-msgstr "新密碼必須與舊密碼不同的最小字符數（更改的字符數）\\ r設為零以禁用此功能"
-
-#: 
 msgid "A comma-seperated list of disallowed (too obvious) passwords."
 msgstr "以逗號分隔的不允許（太簡單）密碼列表。"
-
-#: 
-msgid "Maximum number of failed logins to allow before a user account is locked.\\rOnce the maximum has been reached, an administrator must re-enable the account.\\rThis feature helps to protect against automated password guessing attacks.\\rSet to zero to disable this feature."
-msgstr "鎖定用戶帳戶之前允許的最大登入失敗次數。\\ r \\ n一旦達到最大值，管理員必須重新啟用該帳戶。\\ r此功能有助於防止自動密碼猜測攻擊。\\ r設置為零以禁用此功能。"
-
-#: 
-msgid "PDF handling mode.\\r1 = Save File dialog\\r2 = Open in current browser window"
-msgstr "PDF處理模式。\\ r1 =保存文件對話框\\ r2 =在當前瀏覽器窗口中打開"
 
 #: 
 msgid "Default City"
@@ -5958,10 +5926,6 @@ msgstr "自定義活動類型"
 #: 
 msgid "custom event types"
 msgstr "自定義活動類型"
-
-#: 
-msgid "Press CTRL + C to copy all group members\\\\' phone numbers"
-msgstr "按CTRL + C複製所有組成員\\\\'電話號碼"
 
 #: 
 msgid "Family Roles Editor"
@@ -7220,20 +7184,12 @@ msgid "Online Verification"
 msgstr "在線驗證"
 
 #: 
-msgid "PDF Report"
-msgstr "在線驗證"
-
-#: 
 msgid "Verified In Person"
 msgstr "親自驗證"
 
 #: 
 msgid "None State"
 msgstr "無州"
-
-#: 
-msgid "Unavailable person info inherited from assigned family for display?\\rThis option causes certain info from a person's assigned family record to be\\rdisplayed IF the corresponding info has NOT been entered for that person. "
-msgstr "從指定的系列繼承的不可用的人員信息是否顯示？\\ r \\ n此選項會導致人員指定的家庭記錄中的某些信息被顯示，如果尚未為該人輸入相應的信息。"
 
 #: 
 #, fuzzy
@@ -8020,14 +7976,6 @@ msgid "Verification email sent"
 msgstr "驗證電郵已發出"
 
 #: 
-msgid "Failed to send verification email"
-msgstr "無法發送驗證郵件"
-
-#: 
-msgid "Failed to add verification"
-msgstr "無法添加驗證"
-
-#: 
 msgid "Confirm Enable Group Specific Properties"
 msgstr "確認啟用組特定屬性"
 
@@ -8136,10 +8084,6 @@ msgid "lookup user images on Google when no local image is present"
 msgstr "當沒有本地圖像時，在谷歌上查找用戶圖像"
 
 #: 
-msgid "Self Update"
-msgstr "自助更新"
-
-#: 
 msgid "Self Register"
 msgstr "自助登記"
 
@@ -8148,20 +8092,8 @@ msgid "List families that were created via self registration."
 msgstr "列出自助註冊創建的家庭清單。"
 
 #: 
-msgid "Self Verify Updates"
-msgstr "自助驗證更新"
-
-#: 
-msgid "Families who commented via self verify links"
-msgstr "通過自助驗證鏈接評價的家庭"
-
-#: 
 msgid "Pending Self Verify"
 msgstr "待自助驗證"
-
-#: 
-msgid "Families with valid self verify links"
-msgstr "擁有有效自助驗證鏈接的家庭"
 
 #: 
 msgid "Self Verify"
@@ -8489,14 +8421,6 @@ msgstr "Twitter"
 #: 
 msgid "LinkedIn"
 msgstr "LinkedIn"
-
-#: 
-msgid "Calendar description"
-msgstr "行事曆描述"
-
-#: 
-msgid "Visitors"
-msgstr "受訪者"
 
 #: 
 msgid "Move Event"
@@ -8851,18 +8775,6 @@ msgstr "至"
 #: 
 msgid "Are you sure you want to change the end time for "
 msgstr "您是否想更變結束時間於␣"
-
-#: 
-msgid "Pinned Calendars"
-msgstr "固定日曆"
-
-#: 
-msgid "Event Description"
-msgstr "活動描述"
-
-#: 
-msgid "Event Text"
-msgstr "活動文字"
 
 #: 
 msgid "Access Token"
@@ -9374,4 +9286,100 @@ msgstr "缺少事件ID"
 #, fuzzy
 msgid "Event not found"
 msgstr "事件未找到"
+
+#: 
+#, fuzzy
+msgid "Session timeout length in seconds\n"
+"Set to zero to disable session timeouts."
+msgstr "通訊超時（以秒為單位）設置為零以禁用通訊超時。"
+
+#: 
+#, fuzzy
+msgid "Minimum amount that a new password must differ from the old one (# of characters changed)\n"
+"Set to zero to disable this feature"
+msgstr "新密碼必須與舊密碼不同的最小數量（更改的字符數）設置為零以禁用此功能"
+
+#: 
+#, fuzzy
+msgid "Maximum number of failed logins to allow before a user account is locked.\n"
+"Once the maximum has been reached, an administrator must re-enable the account.\n"
+"This feature helps to protect against automated password guessing attacks.\n"
+"Set to zero to disable this feature."
+msgstr "鎖定用戶帳戶之前允許的最大登錄失敗次數。達到最大值後，管理員必須重新啟用該帳戶。此功能有助於防止自動密碼猜測攻擊。設置為零可禁用此功能。"
+
+#: 
+#, fuzzy
+msgid "PDF handling mode.\n"
+"1 = Save File dialog\n"
+"2 = Open in current browser window"
+msgstr "PDF處理模式。 \n"
+"1 =保存文件對話框 \n"
+"2 =在當前瀏覽器窗口中打開"
+
+#: 
+#, fuzzy
+msgid "Unavailable person info inherited from assigned family for display?\n"
+"This option causes certain info from a person's assigned family record to be\n"
+"displayed IF the corresponding info has NOT been entered for that person. "
+msgstr "從指定的家庭繼承的不可用人員信息是否顯示？如果尚未為該人輸入相應的信息，則此選項會導致顯示某人指定的家庭記錄中的某些信息。"
+
+#: 
+#, fuzzy
+msgid "Press CTRL + C to copy all group members\\' phone numbers"
+msgstr "按CTRL + C複製所有組成員的電話號碼"
+
+#: 
+#, fuzzy
+msgid "Verify People"
+msgstr "驗證人員"
+
+#: 
+#, fuzzy
+msgid "People Verify Dashboard"
+msgstr "人員驗證儀表板"
+
+#: 
+#, fuzzy
+msgid "Download family letters"
+msgstr "下載家庭信件"
+
+#: 
+#, fuzzy
+msgid "Send family email"
+msgstr "發送家庭郵件"
+
+#: 
+#, fuzzy
+msgid "Verification recorded"
+msgstr "驗證記錄"
+
+#: 
+#, fuzzy
+msgid "Verification URL created"
+msgstr "驗證網址已創建"
+
+#: 
+#, fuzzy
+msgid "URL"
+msgstr "網址"
+
+#: 
+#, fuzzy
+msgid "PDF"
+msgstr "PDF"
+
+#: 
+#, fuzzy
+msgid "Error sending email(s)"
+msgstr "發送電子郵件時出錯"
+
+#: 
+#, fuzzy
+msgid "Please check logs for more information"
+msgstr "請查看日誌以獲取更多信息"
+
+#: 
+#, fuzzy
+msgid "Verification URL"
+msgstr "驗證網址"
 

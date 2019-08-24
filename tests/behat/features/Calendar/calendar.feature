@@ -28,12 +28,16 @@ Feature: Calendar
     Then I click on "#calendar > div.fc-view-container > div > table > tbody > tr > td > div > div > div:nth-child(3) > div.fc-content-skeleton > table > tbody > tr:nth-child(1) > td:nth-child(3)"
     And I wait for AJAX to finish
     Then I should see "Save"
+    And the "Save" button should be disabled
+    And I should see "This field is required"
     And I fill in "Title" with "Selenium Test Event"
     And I update react-select with "EventType" with "Church Service"
     And I fill in "Desc" with "Test Description"
     And I fill in date "Start" with today
     And I fill in date "End" with today
     And I update react-select with "PinnedCalendars" with "Public Calendar"
+    And I should not see "This field is required"
+    And the "Save" button should be enabled
     And I fill in "Text" with "Test Text"
     Then I press "Save"
     And I wait for the calendar to load
