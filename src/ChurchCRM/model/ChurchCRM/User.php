@@ -6,7 +6,6 @@ use ChurchCRM\Base\User as BaseUser;
 use ChurchCRM\dto\SystemConfig;
 use Propel\Runtime\Connection\ConnectionInterface;
 use ChurchCRM\Utils\MiscUtils;
-use ChurchCRM\Utils\LoggerUtils;
 
 /**
  * Skeleton subclass for representing a row from the 'user_usr' table.
