@@ -898,6 +898,7 @@ require 'Include/Header.php';
         while ($rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQLI_BOTH)) {
             extract($rowCustomField);
             if (SessionUser::getUser()->isEnabledSecurity($aSecurityType[$fam_custom_FieldSec])) {
+                ?>
 			<div class="row">
 				<div class="form-group col-md-4">
 				<label><?= $fam_custom_Name  ?> </label>
