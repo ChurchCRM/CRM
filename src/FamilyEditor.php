@@ -22,7 +22,6 @@ use ChurchCRM\Emails\NewPersonOrFamilyEmail;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Bootstrapper;
 use ChurchCRM\SessionUser;
-use ChurchCRM\Utils\LoggerUtils;
 
 //Set the page title
 $sPageTitle = gettext('Family Editor');
@@ -899,7 +898,6 @@ require 'Include/Header.php';
         while ($rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQLI_BOTH)) {
             extract($rowCustomField);
             if (SessionUser::getUser()->isEnabledSecurity($aSecurityType[$fam_custom_FieldSec])) {
-                LoggerUtils::getAppLogger()->info("Looking Good ")?>
 			<div class="row">
 				<div class="form-group col-md-4">
 				<label><?= $fam_custom_Name  ?> </label>
