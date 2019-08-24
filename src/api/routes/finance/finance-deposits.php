@@ -64,16 +64,15 @@ $app->group('/deposits', function () {
 
     $this->get('/{id:[0-9]+}/csv', function ($request, $response, $args) {
         $id = $args['id'];
-        //echo DepositQuery::create()->findOneById($id)->toCSV();
+        // fix
         header('Content-Disposition: attachment; filename=ChurchCRM-Deposit-' . $id . '-' . date(SystemConfig::getValue("sDateFilenameFormat")) . '.csv');
-        echo ChurchCRM\PledgeQuery::create()->filterByDepid($id)
-            ->joinDonationFund()->useDonationFundQuery()
-            ->withColumn('DonationFund.Name', 'DonationFundName')
+        echo DepositQuery::create()
+            ->useContribQuery()
+                ->useContribSplitQuery()
+                    ->withColumn('SUM(contrib_split.spl_Amount)', 'totalAmount')
+                ->endUse()
             ->endUse()
-            ->joinFamily()->useFamilyQuery()
-            ->withColumn('Family.Name', 'FamilyName')
-            ->endUse()
-            ->find()
+            ->findOneById($id)
             ->toCSV();
     });
 

@@ -10,25 +10,15 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Utils\RedirectUtils;
 
 
-// $sSQL = "
-// ALTER TABLE `pledge_plg`
-// DROP FOREIGN KEY typeofmbr,
-// DROP FOREIGN KEY deposit,
-// DROP COLUMN `plg_typeofmbr`;
-// ";
-// $bval = RunQuery($sSQL);
+$sSQL = "ALTER TABLE person_per
+  DROP per_inactive";
 
-$sSQL = "
-DROP table typeofmbr;
-";
-// $bval = RunQuery($sSQL);
+$bval = RunQuery($sSQL);
 
-// $sSQL = "
-// ALTER TABLE `pledge_con`
-// DROP FOREIGN KEY Family,
-// DROP FOREIGN KEY Person
-// ";
-// $bval = RunQuery($sSQL);
+$sSQL = "DROP table typeofmbr;";
+
+$bval = RunQuery($sSQL);
+
 
 $sSQL = "DROP TABLE contrib_con;";
 $bval = RunQuery($sSQL);

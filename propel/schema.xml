@@ -60,6 +60,7 @@
         <column name="per_FacebookID" phpName="FacebookID" type="bigint" size="20" Description="FacebookID" />
         <column name="per_Twitter" phpName="Twitter" type="VARCHAR" size="50" Description="Twitter username" />
         <column name="per_LinkedIn" phpName="LinkedIn" type="VARCHAR" size="50" Description="LinkedIn name" />
+        <column name="per_inactive" phpName="inActive" type="BOOLEAN" size="1" required="true"/>
         <index name="per_ID">
             <index-column name="per_ID"/>
         </index>

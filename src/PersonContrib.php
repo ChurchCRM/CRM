@@ -44,7 +44,6 @@ $sSQL = "CREATE TABLE IF NOT EXISTS `contrib_con` (
   `con_TypeOfMbr` enum('0','1','2','3') COLLATE utf8_unicode_ci DEFAULT NULL,
   `con_DepID` mediumint(9) unsigned DEFAULT NULL,
   `con_Date` date DEFAULT NULL,
-  -- `con_Amount` decimal(8,2) unsigned NOT NULL,
   `con_Method` enum('CREDITCARD','CHECK','CASH','BANKDRAFT','EGIVE'),
   `con_CheckNo` bigint(16) unsigned,
   `con_Comment` text COLLATE utf8_unicode_ci,
@@ -69,6 +68,13 @@ $sSQL = "CREATE TABLE IF NOT EXISTS `contrib_split` (
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8";
   
  $bval = RunQuery($sSQL);
+
+// add 'active' option to person table
+$sSQL = "ALTER TABLE person_per
+  ADD per_inactive tinyint(1) NOT NULL DEFAULT 0";
+
+$bval = RunQuery($sSQL);
+
 
 // move pledge from family to person
 $plgGroup = PledgeQuery::create()->filterByPledgeOrPayment('Payment')->groupByGroupkey()->find();

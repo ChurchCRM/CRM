@@ -178,12 +178,12 @@ var dataT = 0;
       var selectedRows = dataT.rows('.selected').data().length;
       $("#deleteSelectedRows").prop('disabled', !(selectedRows));
       $("#deleteSelectedRows").text("Delete (" + selectedRows + ") Selected Rows");
-      $("#exportSelectedRows").prop('disabled', !(selectedRows));
-      $("#exportSelectedRows").html("<i class=\"fa fa-download\"></i> Export (" + selectedRows + ") Selected Rows (OFX)");
+      // $("#exportSelectedRows").prop('disabled', !(selectedRows));
+      // $("#exportSelectedRows").html("<i class=\"fa fa-download\"></i> Export (" + selectedRows + ") Selected Rows (OFX)");
       $("#exportSelectedRowsCSV").prop('disabled', !(selectedRows));
       $("#exportSelectedRowsCSV").html("<i class=\"fa fa-download\"></i> Export (" + selectedRows + ") Selected Rows (CSV)");
-      $("#generateDepositSlip").prop('disabled', !(selectedRows));
-      $("#generateDepositSlip").html("<i class=\"fa fa-download\"></i> Generate Deposit Split for Selected (" + selectedRows + ") Rows (PDF)");
+      // $("#generateDepositSlip").prop('disabled', !(selectedRows));
+      // $("#generateDepositSlip").html("<i class=\"fa fa-download\"></i> Generate Deposit Split for Selected (" + selectedRows + ") Rows (PDF)");
     });
   
     $('.exportButton').click(function (sender) {
@@ -195,22 +195,32 @@ var dataT = 0;
     });
   }
 
-  function initAddToDeposit() { // search filtered records only
+  function initAddToDeposit() { // search filtered records
     $("#depositButton").show();
+
+    $("#contribTable tbody").on('click', 'tr', function () {
+      $(this).toggleClass('selected');
+      var selectedRows = dataT.rows('.selected').data().length;
+      $("#AddSelectedToDeposit").prop('disabled', !(selectedRows));
+      $("#AddSelectedToDeposit").text("Add (" + selectedRows + ") Selected Rows");
+    });
 
     $("#AddToDeposit").click(function() {
       // add all visible records in table to deposit
-      //   var listContributions = [];
-          // var addRows = dataT.rows('.selected').data()
-          var addRows = dataT.rows( {order:'index', search:'applied'} ).data();
-          $.each(addRows, function (index, value) {
-            AddToDeposit(parseInt(value.Id));
-          });
-        //   // console.log(listContributions);
-        //   window.CRM.cart.addContributions(listContributions);
-        // });
+      var addRows = dataT.rows( {order:'index', search:'applied'} ).column(0).data();
+      $.each(addRows, function (index, value) {
+        AddToDeposit(parseInt(value));
+      });
     });
-  }
+
+  $("#AddSelectedToDeposit").click(function() {
+    // add all visible records in table to deposit
+    var addRows = dataT.rows('.selected').data();
+    $.each(addRows, function (index, value) {
+      AddToDeposit(parseInt(value.Id));
+    });
+  });
+}
 
   function AddToDeposit(iConId) {
     // return false;
