@@ -51,8 +51,8 @@ $linkBack = InputUtils::LegacyFilterInput($_GET['linkBack'], 'string');
         <div id="contribButton" style="display:none">
           <button type="button" id="deleteSelectedRows" class="btn btn-danger"
                   disabled> <?= gettext('Delete Selected Rows') ?> </button>
-          <button type="button" id="exportSelectedRows" class="btn btn-success exportButton" data-exportType="ofx"
-                  disabled><i class="fa fa-download"></i> <?= gettext('Export Selected Rows (OFX)') ?></button>
+          <!-- <button type="button" id="exportSelectedRows" class="btn btn-success exportButton" data-exportType="ofx"
+                  disabled><i class="fa fa-download"></i> < ?= gettext('Export Selected Rows (OFX)') ?></button> -->
           <button type="button" id="exportSelectedRowsCSV" class="btn btn-success exportButton" data-exportType="csv"
                   disabled><i class="fa fa-download"></i> <?= gettext('Export Selected Rows (CSV)') ?></button>
           <!-- <button type="button" id="generateDepositSlip" class="btn btn-success exportButton" data-exportType="pdf"
@@ -62,8 +62,9 @@ $linkBack = InputUtils::LegacyFilterInput($_GET['linkBack'], 'string');
           
         </div>
         <div id="depositButton" style="display:none">
-          <button type="button" id="AddToDeposit" class="btn btn-primary"><?= gettext('Add to Deposit (' . $iDepositSlipID . ')') ?></button>
-          <button type="button" id="cancel" class="btn btn-danger"><?= gettext('Cancel') ?></button>
+          <button type="button" id="AddToDeposit" class="btn btn-primary"><?= gettext('Add to Deposit (#' . $iDepositSlipID . ')' ) ?></button>
+          <button type="button" id="AddSelectedToDeposit" class="btn btn-primary"><?= gettext('Add Selected Rows') ?></button>
+          <button type="button" id="cancel" class="btn btn-danger"><?= gettext('Cancel' ) ?></button>
         </div>
     </div>
   </div>
@@ -79,29 +80,79 @@ slinkBack = "<?= $linkBack ?>";
 $(document).ready(function () {
   if (iDepositSlipID) {
     url = "/api/contrib/deposit";
+    initTable(url);
     initAddToDeposit()
   } 
   else {
     url = "/api/contrib";
+    initTable(url);
+    // table must be initialized before buttons
     initButtons();
   }
-  initTable(url);
-  
 
-  // $("#AddAllToCart").click(function(){
-  //   var listContributions = [];
-  //   // var deletedRows = dataT.rows('.selected').data()
-  //   var deletedRows = dataT.rows().data();
-  //   $.each(deletedRows, function (index, value) {
-  //     listContributions.push(parseInt(value.Id));
-  //   });
-  //   // console.log(listContributions);
-  //   window.CRM.cart.addContributions(listContributions);
-  // });
-  
-  //  $("#RemoveAllFromCart").click(function(){
-  //   window.CRM.cart.removeContributions(listContributions);
-  // });
+  // delete only if no associated with a deposit
+  $('#deleteSelectedRows').click(function () {
+      var selectedRows = dataT.rows('.selected').data()
+      // verify
+      var inDeposit = false;
+      promise = $.when(
+        $.each(selectedRows, function(index, value) {
+          if (value.DepId != null) {
+            inDeposit = true;
+            return false;
+          }
+        })
+      )
+      promise.done(function(data){
+        if(inDeposit) {
+          depositError();
+        } 
+        else {
+          deleteContrib(selectedRows.length);
+        }
+      });
+    });
+
+  function deleteContrib(len) {
+    bootbox.confirm({
+        title:'<?= gettext("Confirm Delete") ?>',
+        message: '<p><?= gettext("Are you sure you want to delete the selected"); ?> '+ len + ' <?= gettext("Contribution(s)"); ?>?' +
+          '</p><p><?= gettext("This will also remove all splits associated with this contribution"); ?></p>'+
+          '<p><?= gettext("This action CANNOT be undone, and may have legal implications!") ?></p>'+
+          '<p><?= gettext("Please ensure this what you want to do.") ?></p>',
+        buttons: {
+          cancel : {
+            label: '<?= gettext("Close"); ?>'
+          },
+          confirm: {
+            label: '<?php echo gettext("Delete"); ?>'
+          }
+        },
+        callback: function (result) {
+          if ( result )
+          {
+            $.each(deletedRows, function (index, value) {
+              window.CRM.APIRequest({
+                method: 'DELETE',
+                path: 'contrib/' + value.Id
+              })
+                .done(function (data) {
+                  dataT.rows('.selected').remove().draw(false);
+                });
+            });
+          }
+        }
+      });
+  }
+
+  function depositError() {
+    bootbox.alert({
+        title:'<?= gettext("Delete Error") ?>',
+        message: '<p><?= gettext("Unable to delete contributions that are associated with a deposit."); ?></p>'+
+          '<p><?= gettext("Contributions must be removed from a deposit before they can deleted."); ?></p>'
+      });
+  }
+
 });
 </script>
 
