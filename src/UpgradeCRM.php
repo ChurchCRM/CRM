@@ -48,11 +48,10 @@ Header_body_scripts();
             <ul>
               <?php
                 foreach ($preUpgradeTasks as $preUpgradeTask) {
-                  ?>
+                    ?>
                     <li><?= $preUpgradeTask->getTitle() ?>: <?= $preUpgradeTask->getDesc()?></li>
                   <?php
-                }
-              ?>
+                } ?>
 
             </ul>
               
