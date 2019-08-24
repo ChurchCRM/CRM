@@ -7,7 +7,6 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\FileSystemUtils;
 use ChurchCRM\SQLUtils;
 use Exception;
-use Github\Client;
 use Ifsnop\Mysqldump\Mysqldump;
 use PharData;
 use Propel\Runtime\Propel;
@@ -17,20 +16,25 @@ use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\ExecutionTime;
 use ChurchCRM\Backup\BackupJob;
 use ChurchCRM\Backup\BackupType;
+use ChurchCRM\Utils\ChurchCRMReleaseManager;
+use ChurchCRM\dto\ChurchCRMRelease;
 
 require SystemURLs::getDocumentRoot() . '/vendor/ifsnop/mysqldump-php/src/Ifsnop/Mysqldump/Mysqldump.php';
 
 
 class SystemService
 {
-    public function getLatestRelease()
+
+    private static function getLatestPatchVersion() {
+      $versionToCheck = "3.2.0";
+      LoggerUtils::getAppLogger()->addInfo("Checking for latest ChurchCRM patches for " . $versionToCheck);
+      $nextVersionStep = ChurchCRMReleaseManager::getNextReleaseStep(ChurchCRMRelease::FromString($versionToCheck));//self::getInstalledVersion());
+      LoggerUtils::getAppLogger()->addInfo("Next upgrade step for " . $versionToCheck. " is : " . json_encode($nextVersionStep));
+    }
+    
+    public static function getLatestRelease()
     {
-        $client = new Client();
-        $release = null;
-        try {
-            $release = $client->api('repo')->releases()->latest('churchcrm', 'crm');
-        } catch (\Exception $e) {
-        }
+        self::getLatestPatchVersion();
 
         return $release;
     }
