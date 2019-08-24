@@ -232,6 +232,11 @@ class SystemService
                   LoggerUtils::getAppLogger()->addInfo("Not starting application integrity check.  Last application integrity check run: ".SystemConfig::getValue('sLastIntegrityCheckTimeStamp'));
                 }
         }
+        if (self::IsTimerThresholdExceeded(SystemConfig::getValue('sLastSoftwareUpdateCheckTimeStamp'),SystemConfig::getValue('iSoftwareUpdateCheckInterval'))) {
+          LoggerUtils::getAppLogger()->addInfo("Starting software update check");
+          $_SESSION['latestVersion'] = self::getLatestRelease();
+        }
+
         LoggerUtils::getAppLogger()->addInfo("Finished background job processing");
     }
 
@@ -239,7 +244,7 @@ class SystemService
     {
       $logger = LoggerUtils::getAppLogger();
       $logger->debug("Querying for latest release");
-      $release = $this->getLatestRelease();
+      $release = self::getLatestRelease();
       $logger->debug("Query result: " . print_r($release,true));
       $UpgradeDir = SystemURLs::getDocumentRoot() . '/Upgrade';
       foreach ($release['assets'] as $asset) {
