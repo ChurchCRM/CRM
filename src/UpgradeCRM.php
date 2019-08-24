@@ -57,7 +57,8 @@ Header_body_scripts();
             </ul>
               
           </div>
-          <input type="button" class="btn btn-primary" id="acceptIntegrityCheckWarking" <?= 'value="'.gettext('I Understand').'"' ?>>
+          <p></p>
+          <input type="button" class="btn btn-primary" id="acceptUpgradeTaskWarking" <?= 'value="'.gettext('I Understand').'"' ?>>
         </div>
       </div>
     </li>
@@ -71,7 +72,7 @@ Header_body_scripts();
       <i class="fa fa-bomb bg-red"></i>
       <div class="timeline-item" >
         <h3 class="timeline-header"><?= gettext('Warning: Signature mismatch') ?> <span id="status1"></span></h3>
-        <div class="timeline-body" id="integrityCheckWarning">
+        <div class="timeline-body" id="integrityCheckWarning" <?= count($preUpgradeTasks) > 0 ? 'style="display:none"' : '' ?>>
           <p><?= gettext("Some ChurchCRM system files may have been modified since the last installation.")?><b><?= gettext("This upgrade will completely destroy any customizations made to the following files by reverting the files to the official version.")?></b></p>
           <p><?= gettext("If you wish to maintain your changes to these files, please take a manual backup of these files before proceeding with this upgrade, and then manually restore the files after the upgrade is complete.")?></p>
           <div>
@@ -172,6 +173,11 @@ Header_body_scripts();
       responsive: true,
       paging:false,
       searching: false
+    });
+
+    $("#acceptUpgradeTaskWarking").click(function() {
+      $("#preUpgradeCheckWarning").slideUp();
+      $("#integrityCheckWarning").show("slow");
     });
 
     $("#acceptIntegrityCheckWarking").click(function() {
