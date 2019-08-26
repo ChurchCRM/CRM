@@ -219,11 +219,12 @@
         "dbVersion": "3.4.0"
     },
     "current": {
-      "versions": [
-        "3.4.0"
-      ],
-      "scripts": [
-      ],
-      "dbVersion": "3.4.1"
-  }
+        "versions": [
+            "3.4.0"
+        ],
+        "scripts": [
+
+        ],
+        "dbVersion": "3.5.0"
+    }
 }
