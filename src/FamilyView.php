@@ -270,7 +270,7 @@ $bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() || ($_SESSION['user']->i
                             <?php
         }
     }
-    // Display the left-side custom fields
+    // Display the custom fields
     while ($Row = mysqli_fetch_array($rsFamCustomFields)) {
         extract($Row);
         if (($aSecurityType[$fam_custom_FieldSec] == 'bAll') || ($_SESSION[$aSecurityType[$fam_custom_FieldSec]])) {

@@ -592,7 +592,6 @@ CREATE TABLE `family_custom_master` (
   `fam_custom_Field` varchar(5) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `fam_custom_Name` varchar(40) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `fam_custom_Special` mediumint(8) unsigned DEFAULT NULL,
-  `fam_custom_Side` enum('left','right') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'left',
   `fam_custom_FieldSec` tinyint(4) NOT NULL DEFAULT '1',
   `type_ID` tinyint(4) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -1125,7 +1124,6 @@ CREATE TABLE `person_custom_master` (
   `custom_Field` varchar(5) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `custom_Name` varchar(40) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `custom_Special` mediumint(8) unsigned DEFAULT NULL,
-  `custom_Side` enum('left','right') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'left',
   `custom_FieldSec` tinyint(4) NOT NULL,
   `type_ID` tinyint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`custom_Field`)

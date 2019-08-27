@@ -344,7 +344,7 @@ $bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() ||
                         <?php
                     }
 
-                    // Display the right-side custom fields
+                    // Display the side custom fields
                     while ($Row = mysqli_fetch_array($rsCustomFields)) {
                         extract($Row);
                         $currentData = trim($aCustomData[$custom_Field]);
