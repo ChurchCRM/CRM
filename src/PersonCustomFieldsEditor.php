@@ -83,7 +83,6 @@ require 'Include/Header.php'; ?>
       // If no errors, then update.
       if (!$bErrorFlag) {
           for ($iFieldID = 1; $iFieldID <= $numRows; $iFieldID++) {
-
               $sSQL = "UPDATE person_custom_master
 					SET custom_Name = '".$aNameFields[$iFieldID]."',
 						custom_Special = ".$aSpecialFields[$iFieldID].",
