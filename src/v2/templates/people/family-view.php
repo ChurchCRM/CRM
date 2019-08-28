@@ -4,15 +4,12 @@
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\Classification;
+use ChurchCRM\SessionUser;
 
 //Set the page title
 $sPageTitle =  $family->getName() . " - " . gettext("Family");
 include SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
-/**
- * @var $sessionUser \ChurchCRM\User
- */
-$sessionUser = $_SESSION['user'];
 $curYear = (new DateTime)->format("Y");
 $familyAddress = $family->getAddress();
 ?>
@@ -50,7 +47,7 @@ $familyAddress = $family->getAddress();
                                     <a id="view-larger-image-btn" href="#" title="<?= gettext("View Photo") ?>">
                                         <i class="fa fa-search-plus"></i>
                                     </a>
-                                    <?php if ($sessionUser->isEditRecordsEnabled()): ?>
+                                    <?php if (SessionUser::getUser()->isEditRecordsEnabled()): ?>
                                         &nbsp;
                                         <a href="#" data-toggle="modal" data-target="#upload-image"
                                            title="<?= gettext("Upload Photo") ?>">
@@ -79,7 +76,12 @@ $familyAddress = $family->getAddress();
                         <a class="btn btn-app btn-danger" role="button"
                            href="<?=SystemURLs::getRootPath()?>/v2/family"><i
                                 class="fa fa-list-ul"></i><?= gettext('Family List') ?></a>
-                        <?php if ($_SESSION['user']->isDeleteRecordsEnabled()) {
+                        <?php if (SessionUser::getUser()->isDeleteRecordsEnabled()) { ?>
+                            <button class="btn btn-app bg-orange" id="activateDeactivate">
+                                <i class="fa <?= (empty($fam_DateDeactivated) ? 'fa-times-circle-o' : 'fa-check-circle-o') ?> "></i><?php echo((empty($fam_DateDeactivated) ? _('Deactivate') : _('Activate')) . _(' this Family')); ?>
+                            </button>
+                        <?php }
+                        if (SessionUser::getUser()->isDeleteRecordsEnabled()) {
                             ?>
                             <a class="btn btn-app bg-maroon"
                                href="<?= SystemURLs::getRootPath() ?>/SelectDelete.php?FamilyID=<?=$family->getId()?>"><i
@@ -89,7 +91,7 @@ $familyAddress = $family->getAddress();
 
 
                         <?php
-                        if ($_SESSION['user']->isNotesEnabled()) {
+                        if (SessionUser::getUser()->isNotesEnabled()) {
                             ?>
                             <a class="btn btn-app"
                                href="<?= SystemURLs::getRootPath() ?>/NoteEditor.php?FamilyID=<?= $family->getId()?>"><i
@@ -335,7 +337,7 @@ $familyAddress = $family->getAddress();
                 <i class="fa fa-hashtag"></i>
                 <h3 class="box-title"><?= gettext("Properties") ?></h3>
                 <div class="box-tools pull-right">
-                    <?php if ($sessionUser->isEditRecordsEnabled()) { ?>
+                    <?php if (SessionUser::getUser()->isEditRecordsEnabled()) { ?>
                     <button type="button" class="btn btn-box-tool"><i
                             class="fa fa-plus-circle"></i>
                     </button>
@@ -372,7 +374,7 @@ $familyAddress = $family->getAddress();
                     foreach ($familyProperties as $familyProperty) {?>
                         <tr>
                             <td>
-                            <?php if ($sessionUser->isEditRecordsEnabled()) {
+                            <?php if (SessionUser::getUser()->isEditRecordsEnabled()) {
                                 if (!empty($familyProperty->getProperty()->getProPrompt())) { ?>
                                     <a href="<?=SystemURLs::getRootPath()?>/PropertyAssign.php?FamilyID=<?= $family->getId()?>&PropertyID=<?=$familyProperty->getPropertyId() ?>"><button type="button" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></button></a>
                                 <?php } ?>
@@ -387,7 +389,7 @@ $familyAddress = $family->getAddress();
                     </table>
                 <?php } ?>
                 <p/>
-                <?php if ($sessionUser->isEditRecordsEnabled()) { ?>
+                <?php if (SessionUser::getUser()->isEditRecordsEnabled()) { ?>
                     <div class="hide" id="family-add-property">
                         <div>
                             <strong><?= gettext("Assign a New Property") ?>:</strong>
@@ -442,7 +444,7 @@ $familyAddress = $family->getAddress();
                             <i class="fa <?= $item['style'] ?>"></i>
                             <div class="timeline-item">
                                 <span class="time">
-                                    <?php if ($sessionUser->isNotesEnabled() && (isset($item["editLink"]) || isset($item["deleteLink"]))) {
+                                    <?php if (SessionUser::getUser()->isNotesEnabled() && (isset($item["editLink"]) || isset($item["deleteLink"]))) {
                                     ?>
                                         <?php if (isset($item["editLink"])) { ?>
                                             <a href="<?= $item["editLink"] ?>"><button type="button" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></button></a>
