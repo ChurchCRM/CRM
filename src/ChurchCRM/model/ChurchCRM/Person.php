@@ -557,7 +557,6 @@ class Person extends BasePerson implements iPhoto
       $personProperties = PropertyQuery::create()
           ->filterByProClass("p")
           ->leftJoinRecordProperty()
-          // ->withColumn('r2p_Value')
           ->where('r2p_record_ID='.$this->getId())
           ->find();
 
