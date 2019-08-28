@@ -154,6 +154,8 @@ $bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() || ($_SESSION['user']->i
 ?>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     window.CRM.currentFamily = <?= $iFamilyID ?>;
+    window.CRM.currentFamilyName = "<?= $fam_Name ?>";
+    window.CRM.currentActive = <?= (empty($fam_DateDeactivated) ? 'true' : 'false') ?>;
 </script>
 
 <div class="alert alert-info">
@@ -874,36 +876,9 @@ $bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() || ($_SESSION['user']->i
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/FamilyView.js" ></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/MemberView.js" ></script>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
-    window.CRM.currentActive = <?= (empty($fam_DateDeactivated) ? 'true' : 'false') ?>;
     var dataT = 0;
     $(document).ready(function () {
-        $("#activateDeactivate").click(function () {
-            console.log("click activateDeactivate");
-            popupTitle = (window.CRM.currentActive == true ? "<?= gettext('Confirm Deactivation') ?>" : "<?= gettext('Confirm Activation') ?>" );
-            if (window.CRM.currentActive == true) {
-                popupMessage = "<?= gettext('Please confirm deactivation of family') . ': ' . $fam_Name ?>";
-            }
-            else {
-                popupMessage = "<?= gettext('Please confirm activation of family') . ': ' . $fam_Name  ?>";
-            }
 
-            bootbox.confirm({
-                title: popupTitle,
-                message: '<p style="color: red">' + popupMessage + '</p>',
-                callback: function (result) {
-                    if (result) {
-                        window.CRM.APIRequest({
-                            method: "POST",
-                            path: "families/" + window.CRM.currentFamily + "/activate/" + !window.CRM.currentActive
-                        }).done(function (data) {
-                            if (data.success == true)
-                                window.location.href = window.CRM.root + "/FamilyView.php?FamilyID=" + window.CRM.currentFamily;
-
-                        });
-                    }
-                }
-            });
-        });
 
         window.CRM.photoUploader = $("#photoUploader").PhotoUploader({
             url: window.CRM.root + "/api/family/" + window.CRM.currentFamily + "/photo",
