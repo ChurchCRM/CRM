@@ -3,6 +3,7 @@
 namespace ChurchCRM\Service;
 
 use ChurchCRM\dto\Notification\UiNotification;
+use ChurchCRM\SessionUser;
 use ChurchCRM\Tasks\CheckUploadSizeTask;
 use ChurchCRM\Tasks\ChurchAddress;
 use ChurchCRM\Tasks\ChurchNameTask;
@@ -62,7 +63,7 @@ class TaskService
     {
         $tasks = [];
         foreach ($this->taskClasses as $taskClass) {
-            if ($taskClass->isActive()) {
+            if ($taskClass->isActive() && (!$taskClass->isAdmin() || ($taskClass->isAdmin() && SessionUser::isAdmin()))) {
                 array_push($tasks, ['title' => $taskClass->getTitle(),
                     'link' => $taskClass->getLink(),
                     'admin' => $taskClass->isAdmin(),
