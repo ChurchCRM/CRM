@@ -17,7 +17,6 @@ use ChurchCRM\GroupQuery;
 
 // entity can be a person, family, or business
 $app->group('/people', function () {
-    //echo "<script>alert('test')</script>";
     $this->get('','listPeople');
     $this->get('/', 'listPeople');
     $this->get('/verify','viewPeopleVerify');
@@ -85,62 +84,59 @@ function listPeople(Request $request, Response $response, array $args)
     // Gender
     // FamilyRole
   
-    // filterByClsId: src\ChurchCRM\model\ChurchCRM\Base\PersonQuery.php
     $members = PersonQuery::create();
     // set default sMode
     $sMode = "People";
     
+    $filterByClsId = '';
     if (isset($_GET['Classification'])) {
         $id = InputUtils::LegacyFilterInput($_GET['Classification']);
-        
-        $members->filterByClsId($id)
-        ->leftJoinFamily()
-        ->where('family_fam.fam_DateDeactivated IS NULL');
-
         $option =  ListOptionQuery::create()->filterById(1)->filterByOptionId($id)->findOne();
-        $sMode = $option->getOptionName(); 
+        $filterByClsId = $option->getOptionName(); 
+        $sMode = $filterByClsId;
     }
 
+    $filterByFmrId = '';
     if (isset($_GET['FamilyRole'])) {
         $id = InputUtils::LegacyFilterInput($_GET['FamilyRole']);
-        
-        $members->filterByFmrId($id);
-
         $option =  ListOptionQuery::create()->filterById(2)->filterByOptionId($id)->findOne();
         
         if ($id == 0) {
-            $sMode = gettext('Unknown');
+            $filterByFmrId = gettext('Unassigned');
+            $sMode = $filterByFmrId;
         } else {
-            $sMode = $option->getOptionName(); 
+            $filterByFmrId = $option->getOptionName();
+            $sMode = $filterByFmrId;
         }
     }
 
+    $filterByGender = '';
     if (isset($_GET['Gender'])) {
         $id = InputUtils::LegacyFilterInput($_GET['Gender']);
-        
-        $members->filterByGender($id);
 
         switch ($id) {
             case 0:
-                $sMode = $sMode . " - " . gettext('Unknown');
+                $filterByGender = gettext('Unassigned');
+                $sMode = $sMode . " - " . $filterByGender;
                 break;
             case 1:
-                $sMode = $sMode . " - " . gettext('Male');
+                $filterByGender = gettext('Male');
+                $sMode = $sMode . " - " . $filterByGender;
                 break;
             case 2:
-                $sMode = $sMode . " - " . gettext('Female');
+            $filterByGender = gettext('Female');
+                $sMode = $sMode . " - " . $filterByGender;
                 break;
         }
     }
-    // groupassign
-    if (isset($_GET['groupassign'])) {
-        $sMode = gettext('Group Assignment Helper');
-    } 
 
     $pageArgs = [
         'sMode' => $sMode,
         'sRootPath' => SystemURLs::getRootPath(),
         'members' => $members,
+        'filterByClsId' => $filterByClsId,
+        'filterByFmrId' => $filterByFmrId,
+        'filterByGender' => $filterByGender,
         'fp' => json_encode($pL), // FamilyProperties
         'cl' => json_encode($cL), // CustomFields
         'gl' => json_encode($gL) // GroupList

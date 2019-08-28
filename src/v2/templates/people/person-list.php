@@ -152,6 +152,12 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
         var CustomFields = JSON.parse('<?= $cl ?>');
 
         var GroupTypes = JSON.parse('<?= $gl ?>');
+
+        // setup filters
+        var filterByClsId = '<?= $filterByClsId ?>';
+        var filterByFmrId = '<?= $filterByFmrId ?>';
+        var filterByGender = '<?= $filterByGender ?>';
+
         // setup datatables
         'use strict';
         var bVisible = parseInt("<?= SystemConfig::getValue('bHidePersonAddress') ? 0 : 1 ?>");
@@ -221,6 +227,26 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
         }
     ]);
 
+    // I'm getting the following error when the filters below are executed.
+    // jquery.min.js:2 [Report Only] Refused to execute inline event handler because it violates the following Content Security Policy directive: 
+    // "script-src 'unsafe-eval' 'self' 'nonce-GYZDHvtTpRPW9UHIGF8NyQ==' browser-update.org". Either the 'unsafe-inline' keyword, a hash ('sha256-...'), 
+    // or a nonce ('nonce-...') is required to enable inline execution.
+
+    // filter by gender
+    if (filterByGender != '') {
+        yadcf.exFilterColumn(oTable, [[8, filterByGender]]);
+    }
+
+    // filter by Classification
+    if (filterByClsId != '') {
+        yadcf.exFilterColumn(oTable, [[9, filterByClsId]]);
+    }
+
+    // filter by Family Role
+    if (filterByFmrId != '') {
+        yadcf.exFilterColumn(oTable, [[10, filterByFmrId]]);
+    }
+    
     });
 
     document.getElementById("ClearFilter").addEventListener("click", function() {yadcf.exResetAllFilters(oTable,true);});
