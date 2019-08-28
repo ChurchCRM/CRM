@@ -209,8 +209,43 @@ class User extends BaseUser
         $note->save();
     }
 
-    public function isEnabledSecurity($securityConfigName){
+    public function isEnabledSecurity($securityConfigName) {
         if ($this->isAdmin()) {
+            return true;
+        } else if ($securityConfigName == "bAdmin") {
+            return false;
+        }
+
+        if ($securityConfigName == "bAll") {
+            return true;
+        }
+
+
+        if ($securityConfigName == "bAddRecords" && $this->isAddRecordsEnabled()) {
+            return true;
+        }
+
+        if ($securityConfigName == "bEditRecords" && $this->isEditRecordsEnabled()) {
+            return true;
+        }
+
+        if ($securityConfigName == "bDeleteRecords" && $this->isDeleteRecordsEnabled()) {
+            return true;
+        }
+
+        if ($securityConfigName == "bManageGroups" && $this->isManageGroupsEnabled()) {
+            return true;
+        }
+
+        if ($securityConfigName == "bFinance" && $this->isFinanceEnabled()) {
+            return true;
+        }
+
+        if ($securityConfigName == "bNotes" && $this->isNotesEnabled()) {
+            return true;
+        }
+
+        if ($securityConfigName == "bCanvasser" && $this->isCanvasserEnabled()) {
             return true;
         }
 
