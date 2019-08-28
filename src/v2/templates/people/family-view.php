@@ -16,7 +16,9 @@ $familyAddress = $family->getAddress();
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     window.CRM.currentFamily = <?= $family->getId() ?>;
+    window.CRM.currentFamilyName = "<?= $family->getName() ?>";
     window.CRM.currentActive = <?= $family->isActive() ? "true" : "false" ?>;
+    window.CRM.currentFamilyView = 2;
 </script>
 
 
@@ -76,12 +78,7 @@ $familyAddress = $family->getAddress();
                         <a class="btn btn-app btn-danger" role="button"
                            href="<?=SystemURLs::getRootPath()?>/v2/family"><i
                                 class="fa fa-list-ul"></i><?= gettext('Family List') ?></a>
-                        <?php if (SessionUser::getUser()->isDeleteRecordsEnabled()) { ?>
-                            <button class="btn btn-app bg-orange" id="activateDeactivate">
-                                <i class="fa <?= (empty($fam_DateDeactivated) ? 'fa-times-circle-o' : 'fa-check-circle-o') ?> "></i><?php echo((empty($fam_DateDeactivated) ? _('Deactivate') : _('Activate')) . _(' this Family')); ?>
-                            </button>
-                        <?php }
-                        if (SessionUser::getUser()->isDeleteRecordsEnabled()) {
+                        <?php if (SessionUser::getUser()->isDeleteRecordsEnabled()) {
                             ?>
                             <a class="btn btn-app bg-maroon"
                                href="<?= SystemURLs::getRootPath() ?>/SelectDelete.php?FamilyID=<?=$family->getId()?>"><i
@@ -101,14 +98,12 @@ $familyAddress = $family->getAddress();
                         <a class="btn btn-app" id="AddFamilyToCart" data-familyid="<?= $family->getId() ?>"> <i
                                 class="fa fa-cart-plus"></i> <?= gettext("Add All Family Members to Cart") ?></a>
 
-
-                        <?php if ($bOkToEdit) {
-                            ?>
+                        <?php if (SessionUser::getUser()->isEditRecordsEnabled()) { ?>
                             <button class="btn btn-app bg-orange" id="activateDeactivate">
-                                <i class="fa <?= (empty($fam_DateDeactivated) ? 'fa-times-circle-o' : 'fa-check-circle-o') ?> "></i><?php echo((empty($fam_DateDeactivated) ? _('Deactivate') : _('Activate')) . _(' this Family')); ?>
+                                <i class="fa <?= (empty($family->isActive()) ? 'fa-times-circle-o' : 'fa-check-circle-o') ?> "></i><?php echo(($family->isActive() ? _('Deactivate') : _('Activate')) . _(' this Family')); ?>
                             </button>
-                            <?php
-                        } ?>
+                        <?php } ?>
+
                     </div>
                 </div>
             </div>
