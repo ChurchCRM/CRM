@@ -156,6 +156,7 @@ $bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() || ($_SESSION['user']->i
     window.CRM.currentFamily = <?= $iFamilyID ?>;
     window.CRM.currentFamilyName = "<?= $fam_Name ?>";
     window.CRM.currentActive = <?= (empty($fam_DateDeactivated) ? 'true' : 'false') ?>;
+    window.CRM.currentFamilyView = 1;
 </script>
 
 <div class="alert alert-info">

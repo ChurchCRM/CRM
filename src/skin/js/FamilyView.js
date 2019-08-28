@@ -94,8 +94,11 @@ $(document).ready(function () {
                         path: "families/" + window.CRM.currentFamily + "/activate/" + !window.CRM.currentActive
                     }).done(function (data) {
                         if (data.success == true)
-                            window.location.href = window.CRM.root + "/FamilyView.php?FamilyID=" + window.CRM.currentFamily;
-
+                            if (window.CRM.currentFamilyView == 1) {
+                                window.location.href = window.CRM.root + "/FamilyView.php?FamilyID=" + window.CRM.currentFamily;
+                            } else {
+                                window.location.href = window.CRM.root + "/v2/family/" + window.CRM.currentFamily + "/view";
+                            }
                     });
                 }
             }
