@@ -20,6 +20,7 @@ use ChurchCRM\Service\TimelineService;
 use ChurchCRM\Utils\GeoUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\SessionUser;
 
 $timelineService = new TimelineService();
 $mailchimp = new MailChimpService();
@@ -273,7 +274,7 @@ $bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() || ($_SESSION['user']->i
     // Display the custom fields
     while ($Row = mysqli_fetch_array($rsFamCustomFields)) {
         extract($Row);
-        if (($aSecurityType[$fam_custom_FieldSec] == 'bAll') || ($_SESSION[$aSecurityType[$fam_custom_FieldSec]])) {
+        if (SessionUser::getUser()->isEnabledSecurity($aSecurityType[$fam_custom_FieldSec])) {
             $currentData = trim($aFamCustomData[$fam_custom_Field]);
             if ($type_ID == 11) {
                 $fam_custom_Special = $sPhoneCountry;
