@@ -92,7 +92,7 @@
             <parameter name="rule1" value="{column: linkname, validator: NotNull}" />
             <parameter name="rule2" value="{column: linkname, validator: Length, options: {max: 50}}" />
             <parameter name="rule3" value="{column: linkuri, validator: NotNull}" />
-            <parameter name="rule4" value="{column: linkuri, validator: Length, options: {max: 50}}" />
+            <parameter name="rule4" value="{column: linkuri, validator: Length, options: {max: 500}}" />
         </behavior>
     </table>
 
@@ -158,7 +158,8 @@
                 defaultValue="0"/>
         <column name="fam_scanCheck" phpName="ScanCheck" type="LONGVARCHAR"/>
         <column name="fam_scanCredit" phpName="ScanCredit" type="LONGVARCHAR"/>
-        <column name="fam_SendNewsLetter" phpName="SendNewsletter" type="BOOLEAN" required="true" defaultValue="FALSE"/>
+        <column name="fam_SendNewsLetter" phpName="SendNewsletter" type="CHAR" sqlType="enum('FALSE','TRUE')"
+                required="true" defaultValue="FALSE"/>
         <column name="fam_DateDeactivated" phpName="DateDeactivated" type="DATE"/>
         <column name="fam_OkToCanvass" phpName="OkToCanvass" type="CHAR" sqlType="enum('FALSE','TRUE')" required="true"
                 defaultValue="FALSE"/>
@@ -180,7 +181,7 @@
     </table>
     <table name="family_custom_master" idMethod="native" phpName="FamilyCustomMaster">
         <column name="fam_custom_Order" phpName="CustomOrder" type="SMALLINT" required="true" defaultValue="0"/>
-        <column name="fam_custom_Field" phpName="CustomField" type="VARCHAR" size="5" required="true" defaultValue=""/>
+        <column name="fam_custom_Field" phpName="CustomField" type="VARCHAR" size="5" required="true" defaultValue="" primaryKey="true"/>
         <column name="fam_custom_Name" phpName="CustomName" type="VARCHAR" size="40" required="true" defaultValue=""/>
         <column name="fam_custom_Special" phpName="CustomSpecial" type="SMALLINT" size="8"
                 sqlType="mediumint(8) unsigned"/>
@@ -195,6 +196,9 @@
     <table name="family_custom" idMethod="native" phpName="FamilyCustom">
         <column name="fam_ID" phpName="FamId" type="SMALLINT" size="9" primaryKey="true" required="true"
                 defaultValue="0"/>
+        <foreign-key foreignTable="family_fam">
+          <reference local="fam_ID" foreign="fam_ID"/>
+        </foreign-key>
         <vendor type="mysql">
             <parameter name="Engine" value="InnoDB"/>
         </vendor>
@@ -311,51 +315,6 @@
         </vendor>
     </table>
 
-
-    <table name="autopayment_aut" idMethod="native" phpName="AutoPayment" description="This contains information for automatic electronic donations or payments for events">
-        <column name="aut_ID" phpName="Id" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" primaryKey="true"
-                autoIncrement="true" required="true"/>
-        <column name="aut_FamID" phpName="Familyid" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned"
-                required="true" defaultValue="0"/>
-        <column name="aut_EnableBankDraft" phpName="EnableBankDraft" type="BOOLEAN" size="1"
-                sqlType="tinyint(1) unsigned" required="true" defaultValue="false"/>
-        <column name="aut_EnableCreditCard" phpName="EnableCreditCard" type="BOOLEAN" size="1"
-                sqlType="tinyint(1) unsigned" required="true" defaultValue="false"/>
-        <column name="aut_NextPayDate" phpName="NextPayDate" type="DATE"/>
-        <column name="aut_FYID" phpName="Fyid" type="SMALLINT" size="9" required="true" defaultValue="9"/>
-        <column name="aut_Amount" phpName="Amount" type="DECIMAL" size="6" scale="2" required="true"
-                defaultValue="0.00"/>
-        <column name="aut_Interval" phpName="Interval" type="TINYINT" size="3" required="true" defaultValue="1"/>
-        <column name="aut_Fund" phpName="Fund" type="SMALLINT" size="6" required="true" defaultValue="0"/>
-        <column name="aut_FirstName" phpName="FirstName" type="VARCHAR" size="50"/>
-        <column name="aut_LastName" phpName="LastName" type="VARCHAR" size="50"/>
-        <column name="aut_Address1" phpName="Address1" type="VARCHAR" size="255"/>
-        <column name="aut_Address2" phpName="Address2" type="VARCHAR" size="255"/>
-        <column name="aut_City" phpName="City" type="VARCHAR" size="50"/>
-        <column name="aut_State" phpName="State" type="VARCHAR" size="50"/>
-        <column name="aut_Zip" phpName="Zip" type="VARCHAR" size="50"/>
-        <column name="aut_Country" phpName="Country" type="VARCHAR" size="50"/>
-        <column name="aut_Phone" phpName="Phone" type="VARCHAR" size="30"/>
-        <column name="aut_Email" phpName="Email" type="VARCHAR" size="100"/>
-        <column name="aut_CreditCard" phpName="CreditCard" type="VARCHAR" size="50"/>
-        <column name="aut_ExpMonth" phpName="ExpMonth" type="VARCHAR" size="2"/>
-        <column name="aut_ExpYear" phpName="ExpYear" type="VARCHAR" size="4"/>
-        <column name="aut_BankName" phpName="BankName" type="VARCHAR" size="50"/>
-        <column name="aut_Route" phpName="Route" type="VARCHAR" size="30"/>
-        <column name="aut_Account" phpName="Account" type="VARCHAR" size="30"/>
-        <column name="aut_DateLastEdited" phpName="DateLastEdited" type="TIMESTAMP"/>
-        <column name="aut_EditedBy" phpName="Editedby" type="SMALLINT" size="5" sqlType="smallint(5) unsigned"
-                defaultValue="0"/>
-        <column name="aut_Serial" phpName="Serial" type="SMALLINT" size="9" required="true" defaultValue="1"/>
-        <column name="aut_CreditCardVanco" phpName="Creditcardvanco" type="VARCHAR" size="50"/>
-        <column name="aut_AccountVanco" phpName="AccountVanco" type="VARCHAR" size="50"/>
-        <unique name="aut_ID">
-            <unique-column name="aut_ID"/>
-        </unique>
-        <vendor type="mysql">
-            <parameter name="Engine" value="InnoDB"/>
-        </vendor>
-    </table>
     <table name="canvassdata_can" idMethod="native" phpName="CanvassData" description="this contains information about the results of canvassing families">
         <column name="can_ID" phpName="Id" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" primaryKey="true"
                 autoIncrement="true" required="true"/>
@@ -805,7 +764,7 @@
     <table name="record2property_r2p" idMethod="native" phpName="RecordProperty" isCrossRef="true" description="This table indicates which persons, families, or groups are assigned specific properties and what the values of those properties are.">
         <column name="r2p_pro_ID" phpName="PropertyId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true"  primaryKey="true"/>
         <column name="r2p_record_ID" phpName="RecordId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true"  primaryKey="true"/>
-        <column name="r2p_Value" phpName="PropertyValue" type="LONGVARCHAR" required="true"  defaultValue=""/>
+        <column name="r2p_Value" phpName="PropertyValue" type="LONGVARCHAR" required="true" />
 
         <foreign-key foreignTable="property_pro" description="This contains the definition of all person, family, and group properties">
             <reference local="r2p_pro_ID" foreign="pro_ID"/>
@@ -918,7 +877,7 @@
     </table>
 
     <table name="calendar_events" idMethod="native" phpName="CalendarEvent" isCrossRef="true" description="This is a join-table to link an event with a calendar">
-      <column name="calendar_id" phpName="GroupId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true"  primaryKey="true"/>
+      <column name="calendar_id" phpName="CalendarId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true"  primaryKey="true"/>
       <column name="event_id" phpName="EventId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true"  primaryKey="true"/>
 
       <foreign-key foreignTable="calendars">

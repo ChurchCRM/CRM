@@ -4,7 +4,7 @@
 
 use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\iCal;
-use ChurchCRM\Slim\Middleware\PublicCalendarAPIMiddleware;
+use ChurchCRM\Slim\Middleware\Request\PublicCalendarAPIMiddleware;
 use Slim\Http\Request;
 use Slim\Http\Response;
 

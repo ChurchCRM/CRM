@@ -2,7 +2,6 @@
 
 use ChurchCRM\dto\SystemURLs;
 
-require SystemURLs::getDocumentRoot() . '/Include/SimpleConfig.php';
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 ?>
@@ -25,19 +24,11 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     $(document).ready(function () {
-        $("#dupEmails").DataTable({
-            "language": {
-                "url": window.CRM.plugin.dataTable.language.url
-            },
+        var dataTableConfig = {
             ajax: {
                 url: window.CRM.root + "/api/persons/duplicate/emails",
                 dataSrc: 'emails'
             },
-            "dom": window.CRM.plugin.dataTable.dom,
-            "tableTools": {
-                "sSwfPath": window.CRM.plugin.dataTable.tableTools.sSwfPath
-            },
-            responsive: true,
             columns: [
                 {
                     title: i18next.t('Email'),
@@ -70,7 +61,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     searchable: true
                 }
             ]
-        });
+        }
+        $.extend(dataTableConfig, window.CRM.plugin.dataTable);
+        $("#dupEmails").DataTable();
     });
 
     function peopleToString(people) {

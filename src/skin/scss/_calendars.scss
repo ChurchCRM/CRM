@@ -24,3 +24,13 @@
 .form-field-error { 
   color: red;
 }
+
+.RequiredFormFieldUnsatisfied {
+  color: red;
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.RequiredFormFieldSatisfied {
+  visibility: hidden;
+}

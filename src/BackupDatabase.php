@@ -24,9 +24,6 @@ if (!$_SESSION['user']->isAdmin()) {
     exit;
 }
 
-if (strtoupper(mb_substr(PHP_OS, 0, 3)) === 'WIN') {
-    die('The Backup Utility will not work on a Windows based Server');
-}
 
 // Set the page title and include HTML header
 $sPageTitle = gettext('Backup Database');
@@ -42,7 +39,6 @@ require 'Include/Header.php';
         <li><?= gettext('You should make a manual backup at least once a week unless you already have a regular backup procedule for your systems.') ?></li><br>
         <li><?= gettext('After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site.') ?></li><br>
         <li><?= gettext('If you are concerned about confidentiality of data stored in the ChurchCRM database, you should encrypt the backup data if it will be stored somewhere potentially accessible to others') ?></li><br>
-        <li><?= gettext('For added backup security, you can e-mail the backup to yourself at an e-mail account hosted off-site or to a trusted friend.  Be sure to use encryption if you do this, however.') ?></li>
         </ul>
         <BR><BR>
         <form method="post" action="<?= sRootPath ?>/api/database/backup" id="BackupDatabase">
@@ -56,7 +52,7 @@ require 'Include/Header.php';
         <?= gettext('Re-type Password') ?>:<input type="password" name="pw2">
         <BR><span id="passworderror" style="color: red"></span><BR><BR>
 
-        <input type="button" class="btn btn-primary" id="doBackup" <?= 'value="'.gettext('Generate and Download Backup').'"' ?>>
+        <input type="button" class="btn btn-primary" id="doBackup" <?= 'value="'.gettext('Generate Backup').'"' ?>>
         <input type="button" class="btn btn-primary" id="doRemoteBackup" <?= 'value="'.gettext('Generate and Ship Backup to External Storage').'"' ?>>
 
         </form>

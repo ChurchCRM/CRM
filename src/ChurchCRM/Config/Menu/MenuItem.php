@@ -56,8 +56,8 @@ class MenuItem
 
     public function getName()
     {
-        if (strlen($this->name) > $this->maxNameStr) {
-            return substr($this->name, 0, $this->maxNameStr - 3) . " ...";
+        if (mb_strlen($this->name) > $this->maxNameStr) {
+            return mb_substr($this->name, 0, $this->maxNameStr - 3) . " ...";
         }
         return $this->name;
     }
@@ -107,10 +107,10 @@ class MenuItem
 
     public function isVisible()
     {
-        if (!empty($this->uri)) {
-            return $this->hasPermission;
+        if ($this->hasPermission && (!empty($this->uri) || $this->hasVisibleSubMenus())) {
+            return true;
         }
-        return $this->hasVisibleSubMenus();
+        return false;
     }
 
     public function openMenu() {

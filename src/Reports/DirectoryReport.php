@@ -19,9 +19,10 @@ use ChurchCRM\Reports\PDF_Directory;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\MiscUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\SessionUser;
 
 // Check for Create Directory user permission.
-if (!$bCreateDirectory) {
+if (!SessionUser::getUser()->isCreateDirectoryEnabled()) {
     RedirectUtils::Redirect('Menu.php');
     exit;
 }
@@ -312,7 +313,7 @@ while ($aRow = mysqli_fetch_array($rsRecords)) {
 
     if ($numlines > 0) {
         if (strtoupper($sLastLetter) != strtoupper(mb_substr($pdf->sSortBy, 0, 1))) {
-            $pdf->Check_Lines($numlines + 2, 0, 0);
+            $pdf->Check_Lines($numlines + 2, null);
             $sLastLetter = strtoupper(mb_substr($pdf->sSortBy, 0, 1));
             $pdf->Add_Header($sLastLetter);
         }

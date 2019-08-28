@@ -25,12 +25,7 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\PersonQuery;
 use ChurchCRM\Utils\RedirectUtils;
 
-if (!SystemService::isDBCurrent()) {
-    RedirectUtils::Redirect('SystemDBUpdate.php');
-    exit;
-}
-
-
+$urlUserName =""; //initialize this variable so that PHP Strict doesn't warn about it
 // Get the UserID out of user name submitted in form results
 if (isset($_POST['User'])) {
     // Get the information for the selected user
@@ -140,7 +135,10 @@ session_start() ;
     // we restore only this part
 $_SESSION['iLoginType'] = $type;
 $_SESSION['username'] = $urlUserName;
-$LocationFromGet = InputUtils::FilterString(urldecode($_GET['location']));
+$LocationFromGet = "";
+if (array_key_exists("location", $_GET)) {
+    $LocationFromGet =InputUtils::FilterString(urldecode($_GET['location']));
+}
 if (substr($LocationFromGet, 0, 1) == "/") {
     $LocationFromGet = substr($LocationFromGet, 1);
 }
@@ -217,7 +215,7 @@ require 'Include/HeaderNotLoggedIn.php';
 
         <?php if (SystemConfig::getBooleanValue('bEnableSelfRegistration')) {
             ?>
-            <a href="external/register/" class="text-center btn bg-olive"><i
+            <a href="<?= SystemURLs::getRootPath() ?>/external/register/" class="text-center btn bg-olive"><i
                         class="fa fa-user-plus"></i> <?= gettext('Register a new Family'); ?></a><br>
             <?php
         } ?>
@@ -273,12 +271,12 @@ require 'Include/HeaderNotLoggedIn.php';
     <!-- lockscreen credentials (contains the form) -->
     <form class="lockscreen-credentials" role="form" method="post" name="LoginForm" action="Login.php">
       <div class="input-group">
-        <input type="hidden" id="UserBox" name="User" class="form-control" value="<?= $urlUserName ?>">
+        <input type="hidden" id="UserBoxLock" name="User" class="form-control" value="<?= $urlUserName ?>">
 
-        <input type="password" id="PasswordBox" name="Password" class="form-control" placeholder="<?= gettext('Password')?>">
+        <input type="password" id="PasswordBoxLock" name="Password" class="form-control" placeholder="<?= gettext('Password')?>">
 
         <div class="input-group-btn">
-          <button type="submit"  class="btn"><i class="fa fa-arrow-right text-muted"></i></button>
+          <button type="submit"  class="btn btn-default"><i class="fa fa-arrow-right text-muted"></i></button>
         </div>
       </div>
     </form>

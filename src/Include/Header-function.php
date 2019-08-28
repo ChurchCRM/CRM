@@ -18,6 +18,8 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\MenuConfigQuery;
 use ChurchCRM\SessionUser;
+use ChurchCRM\Utils\PHPToMomentJSConverter;
+use ChurchCRM\Bootstrapper;
 
 function Header_modals()
 {
@@ -76,7 +78,7 @@ function Header_modals()
 
 function Header_body_scripts()
 {
-    global $localeInfo;
+    $localeInfo = Bootstrapper::GetCurrentLocale();
     $systemService = new SystemService(); ?>
     <script nonce="<?= SystemURLs::getCSPNonce() ?>">
         window.CRM = {
@@ -85,9 +87,12 @@ function Header_body_scripts()
             lang: "<?= $localeInfo->getLanguageCode() ?>",
             locale: "<?= $localeInfo->getLocale() ?>",
             shortLocale: "<?= $localeInfo->getShortLocale() ?>",
-            maxUploadSize: "<?= $systemService->getMaxUploadFileSize(true) ?>",
-            maxUploadSizeBytes: "<?= $systemService->getMaxUploadFileSize(false) ?>",
+            maxUploadSize: "<?= SystemService::getMaxUploadFileSize(true) ?>",
+            maxUploadSizeBytes: "<?= SystemService::getMaxUploadFileSize(false) ?>",
             datePickerformat:"<?= SystemConfig::getValue('sDatePickerPlaceHolder') ?>",
+            systemConfigs: {
+              sDateTimeFormat: "<?= PHPToMomentJSConverter::ConvertFormatString(SystemConfig::getValue('sDateTimeFormat'))?>",
+            },
             iDasbhoardServiceIntervalTime:"<?= SystemConfig::getValue('iDasbhoardServiceIntervalTime') ?>",
             plugin: {
                 dataTable : {
@@ -95,14 +100,9 @@ function Header_body_scripts()
                         "url": "<?= SystemURLs::getRootPath() ?>/locale/datatables/<?= $localeInfo->getDataTables() ?>.json"
                     },
                     responsive: true,
-                    <?php if (SessionUser::getUser()->isCSVExport()) {
-        ?>
-                    "dom": 'T<"clear">lfrtip',
-                    <?php
-    } ?>
-                    "tableTools": {
-                        "sSwfPath": "<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/datatables/extensions/TableTools/swf/copy_csv_xls.swf"
-                    }
+                    dom: "<'row'<'col-sm-4'<?= SessionUser::getUser()->isCSVExport() ? "B" : "" ?>><'col-sm-4'r><'col-sm-4 searchStyle'f>>" +
+                            "<'row'<'col-sm-12't>>" +
+                            "<'row'<'col-sm-4'l><'col-sm-4'i><'col-sm-4'p>>"
                 }
             },
             PageName:"<?= $_SERVER['PHP_SELF']?>"

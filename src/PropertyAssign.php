@@ -181,7 +181,7 @@ require 'Include/Header.php';
 </table>
 </div>
 
-<p align="center"><input type="submit" class="btn" <?= 'value="'; if ($sAction == 'add') {
+<p align="center"><input type="submit" class="btn btn-default" <?= 'value="'; if ($sAction == 'add') {
         echo gettext('Assign');
     } else {
         echo gettext('Update');

@@ -1,16 +1,14 @@
 <?php
 
-// Users APIs
 use ChurchCRM\Emails\AccountDeletedEmail;
 use ChurchCRM\Emails\ResetPasswordEmail;
 use ChurchCRM\Emails\UnlockedEmail;
-use ChurchCRM\Slim\Middleware\Role\AdminRoleAuthMiddleware;
+use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
 use ChurchCRM\User;
 use ChurchCRM\UserConfigQuery;
 use ChurchCRM\UserQuery;
 use Slim\Http\Request;
 use Slim\Http\Response;
-use ChurchCRM\SessionUser;
 
 $app->group('/users', function () {
 

@@ -1,6 +1,6 @@
 <?php
 
-use ChurchCRM\Slim\Middleware\Role\AdminRoleAuthMiddleware;
+use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
 use Slim\Http\Response;
 
 $app->group('/systemupgrade', function () {

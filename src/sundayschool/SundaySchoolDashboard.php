@@ -165,7 +165,7 @@ require '../Include/Header.php';
 							<i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
             </span>
             </a>
-          	<a href='/GroupEditor.php?GroupID=<?= $class['id'] ?>'>
+          	<a href='<?= SystemURLs::getRootPath() ?>/GroupEditor.php?GroupID=<?= $class['id'] ?>'>
             <span class="fa-stack">
 							<i class="fa fa-square fa-stack-2x"></i>
 							<i class="fa fa fa-pencil fa-stack-1x fa-inverse"></i>

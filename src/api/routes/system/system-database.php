@@ -11,15 +11,18 @@ use ChurchCRM\PersonCustomQuery;
 use ChurchCRM\PersonQuery;
 use ChurchCRM\PersonVolunteerOpportunityQuery;
 use ChurchCRM\Service\SystemService;
-use ChurchCRM\Slim\Middleware\Role\AdminRoleAuthMiddleware;
+use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
 use ChurchCRM\UserQuery;
 use ChurchCRM\Utils\LoggerUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\Propel;
 use Slim\Http\Request;
 use Slim\Http\Response;
-
-// Routes
+use ChurchCRM\Backup\BackupJob;
+use ChurchCRM\Backup\RestoreJob;
+use ChurchCRM\Backup\BackupType;
+use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\Backup\BackupDownloader;
 
 $app->group('/database', function () {
 
@@ -28,30 +31,37 @@ $app->group('/database', function () {
 
     $this->post('/backup', function ($request, $response, $args) {
         $input = (object)$request->getParsedBody();
-        $backup = $this->SystemService->getDatabaseBackup($input);
-        echo json_encode($backup);
+        $BaseName = preg_replace('/[^a-zA-Z0-9\-_]/','', SystemConfig::getValue('sChurchName')). "-" . date(SystemConfig::getValue("sDateFilenameFormat"));
+        $BackupType = $input->BackupType;
+        $Backup = new BackupJob($BaseName, $BackupType, SystemConfig::getValue('bBackupExtraneousImages'), $input->EncryptBackup, $input->BackupPassword);
+        $Backup->Execute();
+        return $response->withJSON($Backup);
     });
 
     $this->post('/backupRemote', function ($request, $response, $args) {
-        $backup = SystemService::copyBackupToExternalStorage();
-        echo json_encode($backup);
+      if (SystemConfig::getValue('sExternalBackupUsername') && SystemConfig::getValue('sExternalBackupPassword') && SystemConfig::getValue('sExternalBackupEndpoint')) {
+        $input = (object)$request->getParsedBody();
+        $BaseName = preg_replace('/[^a-zA-Z0-9\-_]/','', SystemConfig::getValue('sChurchName')). "-" . date(SystemConfig::getValue("sDateFilenameFormat"));
+        $BackupType = $input->BackupType;
+        $Backup = new BackupJob($BaseName, $BackupType, SystemConfig::getValue('bBackupExtraneousImages'));
+        $Backup->Execute();
+        $copyStatus = $Backup->CopyToWebDAV(SystemConfig::getValue('sExternalBackupEndpoint'), SystemConfig::getValue('sExternalBackupUsername'), SystemConfig::getValue('sExternalBackupPassword'));
+        return $response->withJSON($copyStatus);
+      }
+      else {
+        throw new \Exception('WebDAV backups are not correctly configured.  Please ensure endpoint, username, and password are set', 500);
+      }
     });
 
     $this->post('/restore', function ($request, $response, $args) {
-
-        if ($_SERVER['REQUEST_METHOD'] == 'POST' && empty($_POST) &&
-            empty($_FILES) && $_SERVER['CONTENT_LENGTH'] > 0) {
-            $systemService = new SystemService();
-            throw new \Exception(gettext('The selected file exceeds this servers maximum upload size of') . ": " . $systemService->getMaxUploadFileSize(), 500);
-        }
-        $fileName = $_FILES['restoreFile'];
-        $restore = $this->SystemService->restoreDatabaseFromBackup($fileName);
-        echo json_encode($restore);
+        $RestoreJob = new RestoreJob();
+        $RestoreJob->Execute();
+        return $response->withJSON($RestoreJob);
     });
 
     $this->get('/download/{filename}', function ($request, $response, $args) {
         $filename = $args['filename'];
-        $this->SystemService->download($filename);
+        BackupDownloader::DownloadBackup($filename);
     });
 })->add(new AdminRoleAuthMiddleware());
 

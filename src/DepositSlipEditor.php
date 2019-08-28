@@ -94,10 +94,10 @@ require 'Include/Header.php';
           </div>
           <div class="row p-2">
             <div class="col-lg-5 m-2" style="text-align:center">
-              <input type="submit" class="btn" value="<?php echo gettext('Save'); ?>" name="DepositSlipSubmit">
+              <input type="submit" class="btn btn-default" value="<?php echo gettext('Save'); ?>" name="DepositSlipSubmit">
             </div>
             <div class="col-lg-5 m-2" style="text-align:center">
-              <input type="button" class="btn" value="<?php echo gettext('Deposit Slip Report'); ?>" name="DepositSlipGeneratePDF" onclick="window.CRM.VerifyThenLoadAPIContent(window.CRM.root + '/api/deposits/<?php echo $thisDeposit->getId() ?>/pdf');">
+              <input type="button" class="btn btn-default" value="<?php echo gettext('Deposit Slip Report'); ?>" name="DepositSlipGeneratePDF" onclick="window.CRM.VerifyThenLoadAPIContent(window.CRM.root + '/api/deposits/<?php echo $thisDeposit->getId() ?>/pdf');">
             </div>
           </div>
           <?php

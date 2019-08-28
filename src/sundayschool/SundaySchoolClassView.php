@@ -8,6 +8,7 @@ use ChurchCRM\Service\SundaySchoolService;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\MiscUtils;
+use ChurchCRM\SessionUser;
 
 $sundaySchoolService = new SundaySchoolService();
 
@@ -70,6 +71,7 @@ require '../Include/Header.php';
   </div>
   <div class="box-body">
     <?php
+    $sMailtoDelimiter = SessionUser::getUser()->getUserConfigString("sMailtoDelimiter");
     $allEmails = array_unique(array_merge($ParentsEmails, $KidsEmails, $TeachersEmails));
     $roleEmails->Parents = implode($sMailtoDelimiter, $ParentsEmails).',';
     $roleEmails->Teachers = implode($sMailtoDelimiter, $TeachersEmails).',';
@@ -81,7 +83,7 @@ require '../Include/Header.php';
     }
     $sEmailLink = urlencode($sEmailLink);  // Mailto should comply with RFC 2368
 
-    if ($bEmailMailto) { // Does user have permission to email groups
+    if (SessionUser::getUser()->isEmailEnabled()) { // Does user have permission to email groups
       // Display link
       ?>
       <div class="btn-group">
@@ -323,13 +325,13 @@ function implodeUnique($array, $withQuotes)
 </div><!-- /.modal -->
 
 <!-- FLOT CHARTS -->
-<script  src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/flot/jquery.flot.min.js"></script>
+<script  src="<?= SystemURLs::getRootPath() ?>/skin/external/flot/jquery.flot.js"></script>
 <!-- FLOT RESIZE PLUGIN - allows the chart to redraw when the window is resized -->
-<script  src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/flot/jquery.flot.resize.min.js"></script>
+<script  src="<?= SystemURLs::getRootPath() ?>/skin/external/flot/jquery.flot.resize.js"></script>
 <!-- FLOT PIE PLUGIN - also used to draw donut charts -->
-<script  src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/flot/jquery.flot.pie.min.js"></script>
+<script  src="<?= SystemURLs::getRootPath() ?>/skin/external/flot/jquery.flot.pie.js"></script>
 <!-- FLOT CATEGORIES PLUGIN - Used to draw bar charts -->
-<script  src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/flot/jquery.flot.categories.min.js"></script>
+<script  src="<?= SystemURLs::getRootPath() ?>/skin/external/flot/jquery.flot.categories.js"></script>
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
   $(document).ready(function () {

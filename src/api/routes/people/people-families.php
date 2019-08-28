@@ -1,10 +1,6 @@
 <?php
 
-/* Contributors Philippe Logel */
-
-// Routes
 use ChurchCRM\dto\MenuEventsCount;
-use ChurchCRM\Emails\FamilyVerificationEmail;
 use ChurchCRM\FamilyQuery;
 use ChurchCRM\Map\FamilyTableMap;
 use ChurchCRM\Map\TokenTableMap;
@@ -17,6 +13,27 @@ use Propel\Runtime\ActiveQuery\Criteria;
 
 $app->group('/families', function () {
 
+    $this->get('/email/without', function ($request, $response, $args) {
+        $families = FamilyQuery::create()->joinWithPerson()->find();
+
+        $familiesWithoutEmails = [];
+        foreach ($families as $family) {
+            if (empty($family->getEmail())) {
+                $hasEmail = false;
+                foreach ($family->getPeople() as $person) {
+                    if (!empty($person->getEmail() || !empty($person->getWorkEmail()))) {
+                        $hasEmail = true;
+                        break;
+                    }
+                }
+                if (!$hasEmail) {
+                    array_push($familiesWithoutEmails, $family->toArray());
+                }
+             }
+        }
+
+        return $response->withJson(["count" => count($familiesWithoutEmails), "families" => $familiesWithoutEmails]);
+    });
 
     $this->get('/numbers', function ($request, $response, $args) {
         return $response->withJson(MenuEventsCount::getNumberAnniversaries());
@@ -27,7 +44,7 @@ $app->group('/families', function () {
         $query = $args['query'];
         $results = [];
         $q = FamilyQuery::create()
-            ->filterByName("%$query%", Propel\Runtime\ActiveQuery\Criteria::LIKE)
+            ->filterByName("%$query%", Criteria::LIKE)
             ->limit(15)
             ->find();
         foreach ($q as $family) {

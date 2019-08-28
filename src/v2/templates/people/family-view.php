@@ -5,10 +5,8 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\Classification;
 
-require SystemURLs::getDocumentRoot() . '/Include/SimpleConfig.php';
-
 //Set the page title
-$sPageTitle = gettext("Family View") . " - " . $family->getName();
+$sPageTitle =  $family->getName() . " - " . gettext("Family");
 include SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 /**
@@ -79,7 +77,7 @@ $familyAddress = $family->getAddress();
                            href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?FamilyID=<?=$family->getId()?>"><i
                                 class="fa fa-plus-square"></i> <?= gettext('Add New Member') ?></a>
                         <a class="btn btn-app btn-danger" role="button"
-                           href="<?= SystemURLs::getRootPath() ?>/FamilyList.php"><i
+                           href="<?=SystemURLs::getRootPath()?>/v2/family"><i
                                 class="fa fa-list-ul"></i><?= gettext('Family List') ?></a>
                         <?php if ($_SESSION['user']->isDeleteRecordsEnabled()) {
                             ?>
@@ -138,7 +136,7 @@ $familyAddress = $family->getAddress();
                             }
                             if (!SystemConfig::getBooleanValue("bHideWeddingDate") && !empty($family->getWeddingdate())) { /* Wedding Date can be hidden - General Settings */ ?>
                                 <li><i class="fa-li fa fa-magic"></i><?= gettext("Wedding Date") ?>:
-                                    <span><?= FormatDate($family->getWeddingdate(), false) ?></span></li>
+                                    <span><?= $family->getWeddingDate()->format(SystemConfig::getValue("sDateFormatLong")) ?></span></li>
                                 <?php
                             }
                             if (SystemConfig::getValue("bUseDonationEnvelopes")) {
@@ -183,19 +181,9 @@ $familyAddress = $family->getAddress();
                                  * }*/
                             }
 
-                            /**
-                             * // Display the left-side custom fields
-                             * while ($Row = mysqli_fetch_array($rsFamCustomFields)) {
-                             * extract($Row);
-                             * if (($aSecurityType[$fam_custom_FieldSec] == 'bAll') || ($_SESSION[$aSecurityType[$fam_custom_FieldSec]])) {
-                             * $currentData = trim($aFamCustomData[$fam_custom_Field]);
-                             * if ($type_ID == 11) {
-                             * $fam_custom_Special = $sPhoneCountry;
-                             * }
-                             * echo "<li><i class=\"fa-li fa fa-tag\"></i>" . $fam_custom_Name . ": <span>" . displayCustomField($type_ID, $currentData, $fam_custom_Special) . "</span></li>";
-                             * }
-                             * } */
-                            ?>
+                          foreach ($familyCustom as $customField) { ?>
+                                <li><i class="fa-li fa fa-tag"></i><?= $customField ?></li>
+                            <?php }  ?>
                         </ul>
                     </div>
                 </div>
@@ -261,9 +249,9 @@ $familyAddress = $family->getAddress();
 
                         </div>
                     </div>
-                    <div class="box-body">
+                    <div class="box-body row row-flex row-flex-wrap">
                         <?php foreach ($family->getPeople() as $person) { ?>
-                            <div class="col-sm-4">
+                            <div class="col-sm-6">
                                 <div class="box box-primary">
                                     <div class="box-body box-profile">
                                         <a href="<?= $person->getViewURI()?>" ?>
@@ -288,10 +276,11 @@ $familyAddress = $family->getAddress();
                                                 <button type="button" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i></button>
                                             </a>
                                         </p>
+                                        <?php if ($person->getClsId()) { ?>
                                         <li class="list-group">
                                             <b>Classification:</b> <?= Classification::getName($person->getClsId()) ?>
                                         </li>
-
+                                        <?php } ?>
                                         <ul class="list-group list-group-unbordered">
                                             <li class="list-group-item">
                                                 <?php if (!empty($person->getHomePhone())) { ?>
@@ -318,11 +307,14 @@ $familyAddress = $family->getAddress();
                                                     <i class="fa fa-fw fa-envelope-o"
                                                        title="<?= gettext("Work Email") ?>"></i>(W) <?= $person->getWorkEmail() ?>
                                                     <br/>
-                                                <?php } ?>
+                                                <?php }
+                                                $formatedBirthday = $person->getFormattedBirthDate();
+                                                if ($formatedBirthday) {?>
                                                 <i class="fa fa-fw fa-birthday-cake"
                                                    title="<?= gettext("Birthday") ?>"></i>
-                                                <?= $person->getFormattedBirthDate()?>  <?= $person->getAge()?>
+                                                <?= $formatedBirthday ?>  <?= $person->getAge()?>
                                                 </i>
+                                                <?php } ?>
                                             </li>
                                         </ul>
 
@@ -565,7 +557,7 @@ $familyAddress = $family->getAddress();
                 <p>
                     <?php if (count($family->getEmails()) > 0) {
                     ?>
-                <p><?= gettext("You are about to email copy of the family information in pdf to the following emails") ?>
+                <p><?= gettext("You are about to email copy of the family information to the following emails") ?>
                 <ul>
                     <?php foreach ($family->getEmails() as $tmpEmail) { ?>
                         <li><?= $tmpEmail ?></li>
@@ -584,8 +576,10 @@ $familyAddress = $family->getAddress();
                     </button>
                     <?php
                 } ?>
+                <button type="button" id="verifyURL"
+                        class="btn btn-default"><i class="fa fa-chain"></i> <?= gettext("URL") ?></button>
                 <button type="button" id="verifyDownloadPDF"
-                        class="btn btn-info"><i class="fa fa-download"></i> <?= gettext("PDF Report") ?></button>
+                        class="btn btn-info"><i class="fa fa-download"></i> <?= gettext("PDF") ?></button>
                 <button type="button" id="verifyNow"
                         class="btn btn-success"><i class="fa fa-check"></i> <?= gettext("Verified In Person") ?>
                 </button>

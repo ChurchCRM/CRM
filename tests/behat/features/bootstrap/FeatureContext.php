@@ -20,14 +20,19 @@ class FeatureContext extends MinkContext
     public function __construct()
     {
     }
-    
+
     /**
     * @Given /^I am authenticated as "([^"]*)" using "([^"]*)"$/
     */
-    public function iAmAuthenticatedAs($username, $password) 
+    public function iAmAuthenticatedAs($username, $password)
     {
       #borrowed from https://vivait.co.uk/labs/handling-authentication-when-using-behat-mink
       $this->visit('/Login');
+      if ( strpos($this->getSession()->getCurrentUrl(),"SystemDBUpdate"))
+      {
+        // do the upgrade,
+        $this->pressButton("upgradeDatabase");
+      }
       $this->fillField('UserBox', $username);
       $this->fillField('PasswordBox', $password);
       $this->pressButton('Login');
@@ -53,7 +58,77 @@ class FeatureContext extends MinkContext
     * @Given /^I wait for AJAX to finish$/
     */
    public function iWaitForAjaxToFinish() {
-     $this->getSession()->wait(3000, '(typeof(jQuery)=="undefined" || (0 === jQuery.active && 0 === jQuery(\':animated\').length))');
+    $waitTime = 10000;
+    try {
+        //Wait for jQuery
+        if ($this->getSession()->evaluateScript("return (typeof jQuery != 'undefined')")) {
+            $this->getSession()->wait($waitTime, '(0 === jQuery.active && 0 === jQuery(\':animated\').length)');
+        }
+    } catch (Exception $e) {
+        var_dump($e->getMessage()); //Debug here.
+    }
    }
+
+    /**
+    * Wait for FullCalendarJS to load
+    *
+    * @Given /^I wait for the calendar to load$/
+    */
+   public function iWaitForTheCalendarToLoad() {
+        // need to wait for the initial AJAX post to succeed.
+        $this->getSession()->wait(3000);
+        // Then need to wait for FullCalendarJS to tell us that it's done loading
+        $this->getSession()->wait(3000, 'window.CRM.isCalendarLoading === false');
+   }
+
+      /**
+     * Fills in form field with specified id|name|label|value
+     * Example: When I fill in "username" with: "bwayne"
+     * Example: And I fill in "bwayne" for "username"
+     *
+     * @When /^(?:|I )update react-select with "(?P<field>(?:[^"]|\\")*)" with "(?P<value>(?:[^"]|\\")*)"$/
+     */
+    public function updateReactSelectWith($field, $value)
+    {
+        $value = $this->fixStepArgument($value);
+        $driver = $this->getSession()->getDriver();
+        $FieldXPath = '//*[@id="'.$field.'"]';
+        $driver->click($FieldXPath."//parent::div//parent::div//parent::div//parent::div//parent::div");
+        $driver->setValue($FieldXPath,$value);
+    }
+
+
+    /**
+     * Fills in form field with today's date
+     * Example: When I fill in date "Start" with today
+     *
+     * @When /^(?:|I )fill in date "(?P<field>(?:[^"]|\\")*)" with today$/
+     */
+    public function fillTodayDateField($field)
+    {
+        $field = $this->fixStepArgument($field);
+        $value = date("Y/m/d");
+        $this->getSession()->getPage()->fillField($field, $value);
+    }
+
+    /**
+    * @Then /^the "(?P<ButtonName>(?:[^"]|\\")*)" button should be (disabled|enabled)$/
+     * @param   string       $state  "enabled" or "disabled"
+     * @param   string       $ButtonName    text for the button name
+    */
+    public function assertButtonEnabledOrDisabled($ButtonName,$desiredState)
+    {
+        // Find by named selector: http://mink.behat.org/en/latest/guides/traversing-pages.html?highlight=find#named-selectors
+        $button = $this->getSession()->getPage()->find("named", array("button",$ButtonName));
+        if (empty($button)) {
+            throw new Exception($ButtonName . " button could not be found");
+        } else {
+            $observedState = $button->hasAttribute('disabled') ? "disabled" : "enabled";
+            if ($desiredState != $observedState) {
+                throw new Exception("Button '$ButtonName' should have been '$desiredState' but was really '$observedState' ");
+            }
+        }
+    }
+
 }
 

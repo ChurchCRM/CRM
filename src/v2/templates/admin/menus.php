@@ -2,8 +2,6 @@
 
 use ChurchCRM\dto\SystemURLs;
 
-require SystemURLs::getDocumentRoot() . '/Include/SimpleConfig.php';
-
 //Set the page title
 include SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
@@ -53,15 +51,11 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     $(document).ready(function () {
-        $("#menus").DataTable({
-            "language": {
-                "url": window.CRM.plugin.dataTable.language.url
-            },
+        var dataTableConfig = {
             ajax: {
                 url: window.CRM.root + "/api/system/menu",
                 dataSrc: "menus"
             },
-            responsive: true,
             columns: [
                 {
                     width: '15px',
@@ -69,7 +63,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     title: i18next.t('Delete'),
                     data: 'Id',
                     render: function (data, type, row) {
-                        return '<a class="btn" onclick="deleteMenu(' + row.Id + ')"><i class="fa fa-trash bg-red"></i></a>';
+                        return '<a class="btn btn-default" onclick="deleteMenu(' + row.Id + ')"><i class="fa fa-trash bg-red"></i></a>';
                     },
                     searchable: false
                 },
@@ -83,7 +77,9 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 }
             ],
             order: [[1, "asc"]]
-        });
+        }
+        $.extend(dataTableConfig, window.CRM.plugin.dataTable);
+        $("#menus").DataTable(dataTableConfig);
     });
 
     $("#add-Menu").click(function(){

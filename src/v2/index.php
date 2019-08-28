@@ -24,16 +24,20 @@ $app->add(new AuthMiddleware());
 // Set up
 require __DIR__.'/../Include/slim/error-handler.php';
 
+require __DIR__.'/routes/common/mvc-helper.php';
+
 // admin routes
-require __DIR__ . '/routes/admin/admin.php';
-require __DIR__ . '/routes/user.php';
+require __DIR__.'/routes/admin/admin.php';
+require __DIR__.'/routes/user.php';
 
 // people routes
+require __DIR__.'/routes/people.php';
 require __DIR__.'/routes/family.php';
 require __DIR__.'/routes/person.php';
 
 require __DIR__.'/routes/email.php';
 require __DIR__.'/routes/calendar.php';
+require __DIR__.'/routes/cart.php';
 
 // Run app
 $app->run();

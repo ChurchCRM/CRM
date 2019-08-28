@@ -5,17 +5,20 @@ use ChurchCRM\Base\EventTypeQuery;
 use ChurchCRM\CalendarQuery;
 use ChurchCRM\Event;
 use ChurchCRM\EventCounts;
-use ChurchCRM\Slim\Middleware\Role\AddEventsRoleAuthMiddleware;
+use ChurchCRM\Slim\Middleware\Request\Auth\AddEventsRoleAuthMiddleware;
+use ChurchCRM\Slim\Middleware\EventsMiddleware;
 use ChurchCRM\Utils\InputUtils;
 use Slim\Http\Response;
+use Slim\Http\Request;
+use Propel\Runtime\ActiveQuery\Criteria;
 
 $app->group('/events', function () {
 
     $this->get('/', 'getAllEvents');
     $this->get('', 'getAllEvents');
     $this->get("/types", "getEventTypes");
-    $this->get('/{id}', 'getEvent');
-    $this->get('/{id}/', 'getEvent');
+    $this->get('/{id}', 'getEvent')->add(new EventsMiddleware);
+    $this->get('/{id}/', 'getEvent')->add(new EventsMiddleware);
     $this->get('/{id}/primarycontact', 'getEventPrimaryContact');
     $this->get('/{id}/secondarycontact', 'getEventSecondaryContact');
     $this->get('/{id}/location', 'getEventLocation');
@@ -23,7 +26,7 @@ $app->group('/events', function () {
 
     $this->post('/', 'newEvent')->add(new AddEventsRoleAuthMiddleware());
     $this->post('', 'newEvent')->add(new AddEventsRoleAuthMiddleware());
-    $this->post('/{id}', 'updateEvent')->add(new AddEventsRoleAuthMiddleware());
+    $this->post('/{id}', 'updateEvent')->add(new AddEventsRoleAuthMiddleware())->add(new EventsMiddleware);
     $this->post('/{id}/time', 'setEventTime')->add(new AddEventsRoleAuthMiddleware());
 
     $this->delete("/{id}", 'deleteEvent')->add(new AddEventsRoleAuthMiddleware());
@@ -51,23 +54,10 @@ function getEventTypes($request, Response $response, $args)
     return $response->withStatus(404);
 }
 
-function getEvent($request, Response $response, $args)
+function getEvent(Request $request, Response $response, $args)
 {
-    $Event = EventQuery::Create()
-        ->joinWithEventType()
-        ->useEventTypeQuery()
-        ->select("Name")
-        ->endUse()
-        ->joinWithCalendarEvent()
-        ->useCalendarEventQuery()
-        ->joinWithCalendar()
-        ->endUse()
-        ->findById($args['id']);
-
-    if ($Event) {
-        return $response->write($Event->toJSON());
-    }
-    return $response->withStatus(404);
+    $Event = $request->getAttribute("event");
+    return $response->write($Event->toJSON());
 }
 
 function getEventPrimaryContact($request, $response, $args)
@@ -123,26 +113,26 @@ function newEvent($request, $response, $args)
 
     //fetch all related event objects before committing this event.
     $type = EventTypeQuery::Create()
-        ->findOneById($input->eventTypeID);
+        ->findOneById($input->Type);
     if (!$type) {
         return $response->withStatus(400, gettext("invalid event type id"));
     }
 
     $calendars = CalendarQuery::create()
-        ->filterById($input->eventCalendars)
+        ->filterById($input->PinnedCalendars)
         ->find();
-    if (count($calendars) != count($input->eventCalendars)) {
+    if (count($calendars) != count($input->PinnedCalendars)) {
         return $response->withStatus(400, gettext("invalid calendar pinning"));
     }
 
     // we have event type and pined calendars.  now create the event.
     $event = new Event;
-    $event->setTitle($input->EventTitle);
+    $event->setTitle($input->Title);
     $event->setType($type);
-    $event->setDesc($input->EventDesc);
-    $event->setStart(str_replace("T", " ", $input->start));
-    $event->setEnd(str_replace("T", " ", $input->end));
-    $event->setText(InputUtils::FilterHTML($input->eventPredication));
+    $event->setDesc($input->Desc);
+    $event->setStart(str_replace("T", " ", $input->Start));
+    $event->setEnd(str_replace("T", " ", $input->End));
+    $event->setText(InputUtils::FilterHTML($input->Text));
     $event->setCalendars($calendars);
     $event->save();
 
@@ -151,8 +141,21 @@ function newEvent($request, $response, $args)
 
 function updateEvent($request, $response, $args)
 {
-    $input = (object)$request->getParsedBody();
-
+    
+   
+    $e=new Event();
+    //$e->getId();
+    $input = $request->getParsedBody();
+    $Event = $request->getAttribute("event");
+    $id = $Event->getId();
+    $Event->fromArray($input);
+    $Event->setId($id);
+    $PinnedCalendars = CalendarQuery::Create()
+            ->filterById($input['PinnedCalendars'], Criteria::IN)
+            ->find();
+    $Event->setCalendars($PinnedCalendars);
+   
+    $Event->save();    
 }
 
 function setEventTime($request, Response $response, $args)

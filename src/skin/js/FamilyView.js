@@ -8,33 +8,35 @@ $(document).ready(function () {
 
 
     $("#onlineVerify").click(function () {
-        $.ajax({
-            type: 'POST',
-            url: window.CRM.root + '/api/family/' + window.CRM.currentFamily + '/verify'
-        })
-            .done(function (data, textStatus, xhr) {
-                $('#confirm-verify').modal('hide');
-                if (xhr.status == 200) {
-                    showGlobalMessage(i18next.t("Verification email sent"), "success")
-                } else {
-                    showGlobalMessage(i18next.t("Failed to send verification email"), "danger")
-                }
-            });
+        window.CRM.APIRequest({
+            method : 'POST',
+            path: 'family/' + window.CRM.currentFamily + '/verify',
+        }).done(function () {
+            $('#confirm-verify').modal('hide');
+            showGlobalMessage(i18next.t("Verification email sent"), "success")
+        });
     });
 
     $("#verifyNow").click(function () {
-        $.ajax({
-            type: 'POST',
-            url: window.CRM.root + '/api/family/' + window.CRM.currentFamily + '/verify/now'
-        })
-            .done(function (data, textStatus, xhr) {
-                $('#confirm-verify').modal('hide');
-                if (xhr.status == 200) {
-                    location.reload();
-                } else {
-                    showGlobalMessage(i18next.t("Failed to add verification"), "danger")
-                }
+        window.CRM.APIRequest({
+            method: 'POST',
+            path: 'family/' + window.CRM.currentFamily + '/verify/now',
+        }).done(function () {
+            $('#confirm-verify').modal('hide');
+            showGlobalMessage(i18next.t("Verification recorded"), "success")
+        });
+    });
+
+    $("#verifyURL").click(function () {
+        window.CRM.APIRequest({
+            path: 'family/' + window.CRM.currentFamily + '/verify/url',
+        }).done(function (data) {
+            $('#confirm-verify').modal('hide');
+            bootbox.alert({
+                title: i18next.t("Verification URL"),
+                message: "<a href='"+data.url+"'>"+data.url+"</a>"
             });
+        });
     });
 
 

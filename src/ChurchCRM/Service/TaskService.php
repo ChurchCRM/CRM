@@ -3,6 +3,7 @@
 namespace ChurchCRM\Service;
 
 use ChurchCRM\dto\Notification\UiNotification;
+use ChurchCRM\SessionUser;
 use ChurchCRM\Tasks\CheckUploadSizeTask;
 use ChurchCRM\Tasks\ChurchAddress;
 use ChurchCRM\Tasks\ChurchNameTask;
@@ -17,6 +18,9 @@ use ChurchCRM\Tasks\PersonRoleDataCheck;
 use ChurchCRM\Tasks\PrerequisiteCheckTask;
 use ChurchCRM\Tasks\RegisteredTask;
 use ChurchCRM\Tasks\UpdateFamilyCoordinatesTask;
+use ChurchCRM\Tasks\CheckExecutionTimeTask;
+use ChurchCRM\Tasks\UnsupportedDepositCheck;
+use ChurchCRM\Tasks\UnsupportedPaymentDataCheck;
 
 class TaskService
 {
@@ -41,7 +45,10 @@ class TaskService
             new PersonClassificationDataCheck(),
             new PersonRoleDataCheck(),
             new UpdateFamilyCoordinatesTask(),
-            new CheckUploadSizeTask()
+            new CheckUploadSizeTask(),
+            new CheckExecutionTimeTask(),
+            new UnsupportedDepositCheck(),
+            new UnsupportedPaymentDataCheck()
         ];
 
         $this->notificationClasses = [
@@ -53,7 +60,7 @@ class TaskService
     {
         $tasks = [];
         foreach ($this->taskClasses as $taskClass) {
-            if ($taskClass->isActive()) {
+            if ($taskClass->isActive() && (!$taskClass->isAdmin() || ($taskClass->isAdmin() && SessionUser::isAdmin()))) {
                 array_push($tasks, ['title' => $taskClass->getTitle(),
                     'link' => $taskClass->getLink(),
                     'admin' => $taskClass->isAdmin(),

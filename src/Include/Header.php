@@ -17,12 +17,6 @@ use ChurchCRM\dto\Cart;
 use ChurchCRM\Service\TaskService;
 use ChurchCRM\Utils\RedirectUtils;
 
-if (!SystemService::isDBCurrent()) {  //either the DB is good, or the upgrade was successful.
-    RedirectUtils::Redirect('SystemDBUpdate.php');
-    exit;
-}
-
-
 $taskService = new TaskService();
 
 //
@@ -74,7 +68,7 @@ $MenuFirst = 1;
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
       <!-- Sidebar toggle button-->
-      <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+      <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
         <span class="sr-only"><?= gettext('Toggle navigation') ?></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -180,7 +174,7 @@ $MenuFirst = 1;
       </form>
       <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
-      <ul class="sidebar-menu">
+      <ul class="sidebar-menu" data-widget="tree">
         <?php MenuRenderer::RenderMenu(); ?>
       </ul>
     </section>

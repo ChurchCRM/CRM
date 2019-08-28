@@ -17,6 +17,7 @@ use ChurchCRM\Service\PersonService;
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\SessionUser;
 
 $personService = new PersonService();
 $systemService = new SystemService();
@@ -111,10 +112,6 @@ $sGlobalMessageClass = 'success';
 
 if (isset($_GET['Registered'])) {
     $sGlobalMessage = gettext('Thank you for registering your ChurchCRM installation.');
-}
-
-if (isset($_GET['AllPDFsEmailed'])) {
-    $sGlobalMessage = gettext('PDFs successfully emailed ').$_GET['AllPDFsEmailed'].' '.gettext('families').".";
 }
 
 if (isset($_GET['PDFEmailed'])) {
@@ -605,7 +602,7 @@ function FormatFullName($Title, $FirstName, $MiddleName, $LastName, $Suffix, $St
       }
       $nameString .= $FirstName;
       if ($MiddleName) {
-          $nameString .= ' '.strtoupper(mb_substr($MiddleName, 0, 1, 'UTF-8')).'.';
+          $nameString .= ' '.mb_strtoupper(mb_substr($MiddleName, 0, 1)).'.';
       }
       if ($LastName) {
           $nameString .= ' '.$LastName;
@@ -640,7 +637,7 @@ function FormatFullName($Title, $FirstName, $MiddleName, $LastName, $Suffix, $St
       }
       $nameString .= $FirstName;
       if ($MiddleName) {
-          $nameString .= ' '.strtoupper(mb_substr($MiddleName, 0, 1, 'UTF-8')).'.';
+          $nameString .= ' '.mb_strtoupper(mb_substr($MiddleName, 0, 1)).'.';
       }
       if ($Suffix) {
           $nameString .= ', '.$Suffix;
@@ -1682,6 +1679,7 @@ function random_color()
 
 function generateGroupRoleEmailDropdown($roleEmails, $href)
 {
+    $sMailtoDelimiter = SessionUser::getUser()->getUserConfigString("sMailtoDelimiter");
     foreach ($roleEmails as $role => $Email) {
         if (SystemConfig::getValue('sToEmailAddress') != '' && !stristr($Email, SystemConfig::getValue('sToEmailAddress'))) {
             $Email .= $sMailtoDelimiter.SystemConfig::getValue('sToEmailAddress');

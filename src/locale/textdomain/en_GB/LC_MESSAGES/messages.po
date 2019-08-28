@@ -7,61 +7,49 @@ msgstr ""
 "Project-Id-Version: ChurchCRM\n"
 "Language: en\n"
 
-#: AutoPaymentEditor.php:919 CSVExport.php:107 CSVImport.php:220
-#: CartToFamily.php:250 DirectoryReports.php:254 FamilyEditor.php:679
-#: PersonEditor.php:883 Register.php:45
-#: external/templates/registration/family-register.php:44
-#: queryparameteroptions_qpo.php:6
+#: 
 msgid "State"
 msgstr "County"
 
-#: AutoPaymentEditor.php:925 CSVExport.php:112 CSVImport.php:221
-#: CartToFamily.php:262 DirectoryReports.php:258 FamilyEditor.php:689
-#: PersonEditor.php:906 Register.php:46
-#: external/templates/registration/family-register.php:51
-#: external/templates/verify/enter-info.php:29
+#: 
 #, fuzzy
 msgid "Zip"
 msgstr "Postcode"
 
-#: CartToFamily.php:257
+#: 
 msgid "(Use the textbox for countries other than US and Canada)"
 msgstr "(Use the textbox for countries other than the UK)"
 
-#: DirectoryReports.php:178
+#: 
 msgid "Family Cell Phone"
 msgstr "Family Mobile"
 
-#: DirectoryReports.php:183
+#: 
 msgid "Personal Cell Phone"
 msgstr "Personal Mobile"
 
-#: FinancialReports.php:262 PledgeEditor.php:577 PledgeEditor.php:615
+#: 
 msgid "Check"
 msgstr "Cheque"
 
-#: PledgeEditor.php:669
+#: 
 msgid "Scan check"
 msgstr "Scan cheque"
 
-#: Include/Functions.php:829
+#: 
 msgid "Fall"
 msgstr "Autumn"
 
-#: Reports/ConfirmReport.php:130 Reports/ConfirmReportEmail.php:135
+#: 
 msgid "City, State, Zip"
 msgstr "City, Postcode"
 
-#: FamilyList.php:47 GroupReports.php:126 Reports/CanvassReports.php:242
-#: Reports/ConfirmReportEmail.php:193 Reports/ConfirmReportEmail.php:211
+#: 
 #, fuzzy
 msgid "Cell Phone"
 msgstr "Mobile Phone"
 
-#: ChurchCRM/Reports/PDF_Directory.php:315
-#: ChurchCRM/Reports/PDF_Directory.php:391
-#: ChurchCRM/Reports/PDF_Directory.php:448 Reports/DirectoryReport.php:293
-#: Reports/GroupReport.php:129
+#: 
 msgid "Cell"
 msgstr "Mobile"
 

@@ -13,17 +13,14 @@
 // and we don't want to incur IE's CSS limits.
 // ( http://spaceninja.com/2015/03/31/ie-css-limits/ )
 
-@import 'adminlte/plugins/datepicker/datepicker3.css';
-@import 'adminlte/plugins/daterangepicker/daterangepicker.css';
-@import 'adminlte/plugins/timepicker/bootstrap-timepicker.min.css';
-@import 'adminlte/plugins/iCheck/square/blue.css';
-@import 'adminlte/plugins/datatables/dataTables.bootstrap.css';
-@import 'adminlte/plugins/datatables/extensions/TableTools/css/dataTables.tableTools.min.css';
-@import 'adminlte/plugins/datatables/extensions/Responsive/css/dataTables.responsive.css';
-@import 'adminlte/plugins/datatables/extensions/Select/select.bootstrap.min.css';
-@import 'adminlte/plugins/select2/select2.min.css';
-@import 'adminlte/dist/css/AdminLTE.min.css';
-@import 'adminlte/dist/css/skins/_all-skins.min.css';
+@import 'external/bootstrap-datepicker/bootstrap-datepicker.standalone.min.css';
+@import 'external/bootstrap-timepicker/bootstrap-timepicker.min.css';
+@import 'external/bootstrap-daterangepicker/daterangepicker.css';
+@import 'external/iCheck/blue.css';
+@import 'external/datatables/datatables.min.css';
+@import 'external/select2/select2.min.css';
+@import 'external/adminlte/AdminLTE.min.css';
+@import 'external/adminlte/_all-skins.min.css';
 
 @import 'external/jquery-ui/jquery-ui.css';
 @import 'external/bootstrap-toggle/bootstrap-toggle.css';
@@ -33,6 +30,7 @@
 
 @import 'external/fullcalendar/fullcalendar.min.css';
 @import 'external/fullcalendar/fullcalendar.print.css' print;
+@import 'external/react-datepicker/react-datepicker.min.css';
 
 // Import ChurchCRM custom styles
 
@@ -49,3 +47,8 @@
 @import 'scss/cartDropdown';
 @import 'scss/strike';
 @import 'scss/calendars';
+@import 'scss/react-datepicker';
+
+html, body {
+  font-size: 14px;
+}

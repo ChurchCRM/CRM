@@ -43,11 +43,8 @@ require 'Include/Header.php';
           </div>
           <div class="col-lg-3">
             <label for="depositType"><?= gettext('Deposit Type') ?></label>
-            <select class="form-control" id="depositType" name="depositType">
+            <select class="form-control" id="depositType" name="depositType" disabled>
               <option value="Bank"><?= gettext('Bank') ?></option>
-              <option value="CreditCard"><?= gettext('Credit Card') ?></option>
-              <option value="BankDraft"><?= gettext('Bank Draft') ?></option>
-              <option value="eGive"><?= gettext('eGive') ?></option>
             </select>
           </div>
           <div class="col-lg-3">
@@ -72,7 +69,7 @@ require 'Include/Header.php';
   </div>
   <div class="box-body">
     <div class="container-fluid">
-      <table class="display responsive nowrap data-table" id="depositsTable" width="100%"></table>
+      <table class="display responsive nowrap data-table table table-striped table-hover" id="depositsTable" width="100%"></table>
 
       <button type="button" id="deleteSelectedRows" class="btn btn-danger"
               disabled> <?= gettext('Delete Selected Rows') ?> </button>
@@ -85,6 +82,7 @@ require 'Include/Header.php';
     </div>
   </div>
 </div>
+
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/FindDepositSlip.js"></script>
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">

@@ -40,6 +40,8 @@ require 'Include/Header.php';
     <form id="restoredatabase" action="<?= sRootPath ?>/api/database/restore" method="POST"
           enctype="multipart/form-data">
       <input type="file" name="restoreFile" id="restoreFile" multiple=""><br>
+      <label for="restorePassword"><?= gettext("Password (if any)") ?>:</label>
+      <input type="text" name="restorePassword" /><br/>
       <button type="submit" class="btn btn-primary"><?= gettext('Upload Files') ?></button>
     </form>
   </div>

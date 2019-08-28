@@ -20,6 +20,8 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Emails\NewPersonOrFamilyEmail;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\Bootstrapper;
+use ChurchCRM\SessionUser;
 
 //Set the page title
 $sPageTitle = gettext('Family Editor');
@@ -34,7 +36,7 @@ if (array_key_exists('FamilyID', $_GET)) {
 // Security: User must have Add or Edit Records permission to use this form in those manners
 // Clean error handling: (such as somebody typing an incorrect URL ?PersonID= manually)
 if ($iFamilyID > 0) {
-    if (!($_SESSION['user']->isEditRecordsEnabled() || ($_SESSION['user']->isEditSelfEnabled() && ($iFamilyID == $_SESSION['user']->getPerson()->getFamId())))) {
+    if (!(SessionUser::getUser()->isEditRecordsEnabled() || (SessionUser::getUser()->isEditSelfEnabled() && $iFamilyID == SessionUser::getUser()->getPerson()->getFamId()))) {
         RedirectUtils::Redirect('Menu.php');
         exit;
     }
@@ -222,7 +224,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
 
     // Validate Wedding Date if one was entered
     if ((strlen($dWeddingDate) > 0) && ($dWeddingDate != '')) {
-        $dateString = parseAndValidateDate($dWeddingDate, $locale = "<?= $localeInfo->getCountryCode() ?>", $pasfut = 'past');
+        $dateString = parseAndValidateDate($dWeddingDate, Bootstrapper::getCurrentLocale()->getCountryCode(), $pasfut = 'past');
         if ($dateString === false) {
             $sWeddingDateError = '<span style="color: red; ">'
                                 .gettext('Not a valid Wedding Date').'</span>';
@@ -478,7 +480,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
 
             while ($rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQLI_BOTH)) {
                 extract($rowCustomField);
-                if (($aSecurityType[$fam_custom_FieldSec] == 'bAll') || ($_SESSION[$aSecurityType[$fam_custom_FieldSec]])) {
+                if (SessionUser::getUser()->isEnabledSecurity($aSecurityType[$fam_custom_FieldSec])) {
                     $currentFieldData = trim($aCustomData[$fam_custom_Field]);
 
                     sqlCustomField($sSQL, $type_ID, $currentFieldData, $fam_custom_Field, $sCountry);
@@ -895,7 +897,7 @@ require 'Include/Header.php';
 		<?php mysqli_data_seek($rsCustomFields, 0);
         while ($rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQLI_BOTH)) {
             extract($rowCustomField);
-            if (($aSecurityType[$fam_custom_FieldSec] == 'bAll') || ($_SESSION[$aSecurityType[$fam_custom_FieldSec]])) {
+            if (SessionUser::getUser()->isEnabledSecurity($aSecurityType[$fam_custom_FieldSec])) {
                 ?>
 			<div class="row">
 				<div class="form-group col-md-4">
@@ -1116,11 +1118,11 @@ require 'Include/Header.php';
     if ($_SESSION['user']->isAddRecordsEnabled()) {
         echo ' <input type="submit" class="btn btn-info" value="'.gettext('Save and Add').'" name="FamilySubmitAndAdd"> ';
     }
-    echo ' <input type="button" class="btn" value="'.gettext('Cancel').'" Name="FamilyCancel"';
+    echo ' <input type="button" class="btn btn-default" value="'.gettext('Cancel').'" Name="FamilyCancel"';
     if ($iFamilyID > 0) {
         echo " onclick=\"javascript:document.location='FamilyView.php?FamilyID=$iFamilyID';\">";
     } else {
-        echo " onclick=\"javascript:document.location='FamilyList.php';\">";
+        echo " onclick=\"javascript:document.location='".SystemURLs::getRootPath()."/v2/family';\">";
     }
     echo '</td></tr></form></table>';
 ?>

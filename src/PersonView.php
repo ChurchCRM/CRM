@@ -328,19 +328,19 @@ $bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() ||
 
     if ($per_FacebookID > 0) {
         ?>
-              <li><i class="fa-li fa fa-facebook-official"></i><?= gettext('Facebook') ?>: <span><a href="https://www.facebook.com/<?= InputUtils::FilterInt($per_FacebookID) ?>"><?= gettext('Facebook') ?></a></span></li>
+              <li><i class="fa-li fa fa-facebook-official"></i><?= gettext('Facebook') ?>: <span><a href="https://www.facebook.com/<?= InputUtils::FilterInt($per_FacebookID) ?> "target="_blank"><?= gettext('Facebook') ?></a></span></li>
           <?php
     }
 
     if (strlen($per_Twitter) > 0) {
         ?>
-              <li><i class="fa-li fa fa-twitter"></i><?= gettext('Twitter') ?>: <span><a href="https://www.twitter.com/<?= InputUtils::FilterString($per_Twitter) ?>"><?= gettext('Twitter') ?></a></span></li>
+              <li><i class="fa-li fa fa-twitter"></i><?= gettext('Twitter') ?>: <span><a href="https://www.twitter.com/<?= InputUtils::FilterString($per_Twitter) ?>" target="_blank"><?= gettext('Twitter') ?></a></span></li>
           <?php
     }
 
                     if (strlen($per_LinkedIn) > 0) {
                         ?>
-                        <li><i class="fa-li fa fa-linkedin"></i><?= gettext('LinkedIn') ?>: <span><a href="https://www.linkedin.com/in/<?= InputUtils::FiltersTring($per_LinkedIn) ?>"><?= gettext('LinkedIn') ?></a></span></li>
+                        <li><i class="fa-li fa fa-linkedin"></i><?= gettext('LinkedIn') ?>: <span><a href="https://www.linkedin.com/in/<?= InputUtils::FiltersTring($per_LinkedIn) ?>" target="_blank"><?= gettext('LinkedIn') ?></a></span></li>
                         <?php
                     }
 
@@ -513,7 +513,7 @@ $bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() ||
             </tr>
             </thead>
             <tbody>
-            <?php foreach ($person->getOtherFamilyMembers() as $familyMember) {
+            <?php foreach ($person->getFamily()->getPeople() as $familyMember) {
                               $tmpPersonId = $familyMember->getId(); ?>
               <tr>
                 <td>
@@ -552,11 +552,12 @@ $bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() ||
                         <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
                       </span>
                                             </a>
-                                            <a href="<?= SystemURLs::getRootPath() ?>/SelectDelete.php?mode=person&PersonID=<?= $tmpPersonId ?>">
-                      <span class="fa-stack">
-                        <i class="fa fa-square fa-stack-2x"></i>
-                        <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
-                      </span>
+                                             <a class="delete-person" data-person_name="<?= $familyMember->getFullName() ?>"
+                                           data-person_id="<?= $familyMember->getId() ?>" data-view="family">
+                                                <span class="fa-stack">
+                                                    <i class="fa fa-square fa-stack-2x"></i>
+                                                    <i class="fa fa-trash-o fa-stack-1x fa-inverse btn-danger"></i>
+                                                </span>
                                             </a>
                                             <?php
                               } ?>
@@ -586,7 +587,7 @@ $bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() ||
                                 // Loop through the rows
                                 while ($aRow = mysqli_fetch_array($rsAssignedGroups)) {
                                     extract($aRow); ?>
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <p><br/></p>
                                         <!-- Info box -->
                                         <div class="box box-info">

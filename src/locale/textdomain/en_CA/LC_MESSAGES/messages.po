@@ -7,60 +7,51 @@ msgstr ""
 "Project-Id-Version: ChurchCRM\n"
 "Language: en-ca\n"
 
-#: AutoPaymentEditor.php:919 CSVExport.php:107 CSVImport.php:220
-#: CartToFamily.php:250 DirectoryReports.php:254 FamilyEditor.php:679
-#: PersonEditor.php:883 Register.php:45
-#: external/templates/registration/family-register.php:44
-#: queryparameteroptions_qpo.php:6
+#: 
 msgid "State"
 msgstr "Province"
 
-#: AutoPaymentEditor.php:925 CSVExport.php:112 CSVImport.php:221
-#: CartToFamily.php:262 DirectoryReports.php:258 FamilyEditor.php:689
-#: PersonEditor.php:906 Register.php:46
-#: external/templates/registration/family-register.php:51
-#: external/templates/verify/enter-info.php:29
+#: 
 msgid "Zip"
 msgstr "Postal Code"
 
-#: FamilyEditor.php:683
+#: 
 msgid "None US/CND State"
 msgstr "None Province"
 
-#: FinancialReports.php:262 PledgeEditor.php:577 PledgeEditor.php:615
+#: 
 msgid "Check"
 msgstr "Cheque"
 
-#: PledgeEditor.php:669
+#: 
 msgid "Scan check"
 msgstr "Scan cheque"
 
-#: Reports/ConfirmReport.php:130 Reports/ConfirmReportEmail.php:135
+#: 
 msgid "City, State, Zip"
 msgstr "City, Province, Postal Code"
 
-#: ChurchCRM/dto/SystemConfig.php:79
+#: 
 msgid "Default State - Must be 2-letter abbreviation!"
 msgstr "Default Province - Must be 2-letter abbreviation!"
 
-#: ChurchCRM/dto/SystemConfig.php:132
+#: 
 msgid "Church State"
 msgstr "Church Province"
 
-#: ChurchCRM/dto/SystemConfig.php:133
+#: 
 msgid "Church Zip"
 msgstr "Church Postal Code"
 
-#: SelectList.php:975 SelectList.php:979 SelectList.php:1041
-#: queryparameteroptions_qpo.php:5
+#: 
 msgid "Zip Code"
 msgstr "Postal Code"
 
-#: queryparameters_qrp.php:30
+#: 
 msgid "Enter any part of the following: Name, City, State, Zip, Home Phone, Email, or Work Email."
 msgstr "Enter any part of the following: Name, City, Province, Postal Code, Home Phone, Email, or Work Email."
 
-#: query_qry.php:26 query_qry.php:65
+#: 
 msgid "Search by any part of Name, City, State, Zip, Home Phone, Email, or Work Email."
 msgstr "Search by any part of Name, City, Province, Postal Code, Home Phone, Email, or Work Email."
 

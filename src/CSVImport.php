@@ -39,7 +39,7 @@ class Family
     public $_type;         // 0=patriarch, 1=martriarch
 
     // constructor, initialize variables
-    public function Family($famtype)
+    public function __construct($famtype)
     {
         $this->_type = $famtype;
         $this->MemberCount = 0;
@@ -809,7 +809,7 @@ if ($iStage == 1) {
         <p style="color: red"> <?= $csvError ?></p>
         <form method="post" action="CSVImport.php" enctype="multipart/form-data">
         <input class="icTinyButton" type="file" name="CSVfile"><br/>
-        <input type="submit" class="btn" value=" <?= gettext('Upload CSV File') ?> "
+        <input type="submit" class="btn btn-default" value=" <?= gettext('Upload CSV File') ?> "
         name="UploadCSV">
         </form>
         </div>

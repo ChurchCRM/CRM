@@ -526,7 +526,7 @@ require 'Include/Header.php';
           <input  class="form-control" type="number" name="Envelope" size=8 id="Envelope" value="<?= $iEnvelope ?>">
           <?php if (!$dep_Closed) {
         ?>
-            <input class="form-control" type="submit" class="btn" value="<?= gettext('Find family->') ?>" name="MatchEnvelope">
+            <input class="form-control" type="submit" class="btn btn-default" value="<?= gettext('Find family->') ?>" name="MatchEnvelope">
           <?php
     } ?>
 
@@ -624,45 +624,6 @@ require 'Include/Header.php';
 
     </div>
 
-
-    <?php
-    if ($dep_Type == 'CreditCard' || $dep_Type == 'BankDraft') {
-        ?>
-    <div class="col-lg-6">
-
-            <tr>
-              <td class="<?= $PledgeOrPayment == 'Pledge' ? 'LabelColumn' : 'PaymentLabelColumn' ?>"><?= gettext('Choose online payment method') ?></td>
-              <td class="TextColumnWithBottomBorder">
-                <select name="AutoPay">
-      <?php
-                          echo '<option value=0';
-        if ($iAutID == 0) {
-            echo ' selected';
-        }
-        echo '>'.gettext('Select online payment record')."</option>\n";
-        $sSQLTmp = 'SELECT aut_ID, aut_CreditCard, aut_BankName, aut_Route, aut_Account FROM autopayment_aut WHERE aut_FamID='.$iFamily;
-        $rsFindAut = RunQuery($sSQLTmp);
-        while ($aRow = mysqli_fetch_array($rsFindAut)) {
-            extract($aRow);
-            if ($aut_CreditCard != '') {
-                $showStr = gettext('Credit card ...').mb_substr($aut_CreditCard, strlen($aut_CreditCard) - 4, 4);
-            } else {
-                $showStr = gettext('Bank account ').$aut_BankName.' '.$aut_Route.' '.$aut_Account;
-            }
-            echo '<option value='.$aut_ID;
-            if ($iAutID == $aut_ID) {
-                echo ' selected';
-            }
-            echo '>'.$showStr."</option>\n";
-        } ?>
-                </select>
-              </td>
-            </tr>
-
-      </div>
-    <?php
-    } ?>
-
     <div class="col-lg-6">
        <?php if (SystemConfig::getValue('bUseScannedChecks') && ($dep_Type == 'Bank' || $PledgeOrPayment == 'Pledge')) {
         ?>
@@ -675,8 +636,8 @@ require 'Include/Header.php';
     <div class="col-lg-6">
       <?php if (SystemConfig::getValue('bUseScannedChecks') && $dep_Type == 'Bank') {
         ?>
-        <input type="submit" class="btn" value="<?= gettext('find family from check account #') ?>" name="MatchFamily">
-        <input type="submit" class="btn" value="<?= gettext('Set default check account number for family') ?>" name="SetDefaultCheck">
+        <input type="submit" class="btn btn-default" value="<?= gettext('find family from check account #') ?>" name="MatchFamily">
+        <input type="submit" class="btn btn-default" value="<?= gettext('Set default check account number for family') ?>" name="SetDefaultCheck">
       <?php
     } ?>
     </div>
@@ -707,7 +668,7 @@ require 'Include/Header.php';
         <h3 class="box-title"><?= gettext("Fund Split") ?></h3>
       </div>
         <div class="box-body">
-          <table id="FundTable">
+          <table class="table">
             <thead>
               <tr>
                 <th class="<?= $PledgeOrPayment == 'Pledge' ? 'LabelColumn' : 'PaymentLabelColumn' ?>"><?= gettext('Fund Name') ?></th>
@@ -790,20 +751,6 @@ require 'Include/Header.php';
     $("#FamilyName").on("select2:select", function (e) {
       $('[name=FamilyID]').val(e.params.data.id);
     });
-
-    $("#FundTable").DataTable({
-        "language": {
-            "url": window.CRM.plugin.dataTable.language.url
-        },
-        responsive:true,
-        paging: false,
-        searching: false,
-        "dom": window.CRM.plugin.dataTable.dom,
-        "tableTools": {
-            "sSwfPath": window.CRM.plugin.dataTable.tableTools.sSwfPath
-        },
-    });
-
 
     $(".FundAmount").change(function(){
       CalculateTotal();

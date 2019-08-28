@@ -2,12 +2,16 @@
 
 use ChurchCRM\dto\SystemURLs;
 use Slim\Views\PhpRenderer;
+use ChurchCRM\Service\AppIntegrityService;
 
 $app->group('/', function () {
     $this->get('', function ($request, $response, $args) {
         $renderer = new PhpRenderer('templates/');
-
-        return $renderer->render($response, 'setup-steps.php', ['sRootPath' => SystemURLs::getRootPath()]);
+        $renderPage = 'setup-steps.php';
+        if (version_compare(phpversion(), "7.0.0", "<")) {
+            $renderPage = 'setup-error.php';
+        }
+        return $renderer->render($response, $renderPage, ['sRootPath' => SystemURLs::getRootPath()]);
     });
 
     $this->get('SystemIntegrityCheck', function ($request, $response, $args) {
@@ -16,7 +20,7 @@ $app->group('/', function () {
     });
 
     $this->get('SystemPrerequisiteCheck', function ($request, $response, $args) {
-        $required = ChurchCRM\Service\AppIntegrityService::getApplicationPrerequisites();
+        $required = AppIntegrityService::getApplicationPrerequisites();
         return $response->withJson($required);
     });
 

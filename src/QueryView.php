@@ -82,11 +82,12 @@ function ValidateInput()
     if (mysqli_num_rows($rsParameters)) {
         mysqli_data_seek($rsParameters, 0);
     }
+
     while ($aRow = mysqli_fetch_array($rsParameters)) {
         extract($aRow);
 
         //Is the value required?
-        if ($qrp_Required && strlen(trim($_POST[$qrp_Alias])) < 1) {
+        if ($qrp_Required && empty($_POST[$qrp_Alias])) {
             $bError = true;
             $aErrorText[$qrp_Alias] = gettext('This value is required.');
         }
@@ -161,7 +162,8 @@ function ProcessSQL()
         //echo "--" . $qry_SQL . "<br>--" . "~" . $qrp_Alias . "~" . "<br>--" . $vPOST[$qrp_Alias] . "<p>";
 
         //Replace the placeholder with the parameter value
-        $qry_SQL = str_replace('~'.$qrp_Alias.'~', $vPOST[$qrp_Alias], $qry_SQL);
+        $qrp_Value = is_array($vPOST[$qrp_Alias]) ? implode(',', $vPOST[$qrp_Alias]) : $vPOST[$qrp_Alias];
+        $qry_SQL = str_replace('~'.$qrp_Alias.'~', $qrp_Value, $qry_SQL);
     }
 }
 
@@ -246,7 +248,7 @@ function DoQuery()
 
     <div class="box-footer">
         <p>
-        <?php if (count($aHiddenFormField)): ?>
+        <?php if (count($aHiddenFormField)): //TODO Don't post to CartView'?>
             <form method="post" action="CartView.php">
             <div class="col-sm-offset-1">
                 <input type="hidden" value="<?= implode(',', $aHiddenFormField) ?>" name="BulkAddToCart">
@@ -332,6 +334,21 @@ function getQueryFormInput($queryParameters)
             $rsParameterOptions = RunQuery($qrp_OptionSQL);
 
             $input .= '<select name="'.$qrp_Alias.'" class="form-control">';
+            $input .= '<option disabled selected value> -- select an option -- </option>';
+
+            while ($ThisRow = mysqli_fetch_array($rsParameterOptions)) {
+                extract($ThisRow);
+                $input .= '<option value="'.$Value.'">'.$Display.'</option>';
+            }
+
+            $input .= '</select>';
+            break;
+
+        case 3:
+            //Run the SQL to get the options
+            $rsParameterOptions = RunQuery($qrp_OptionSQL);
+
+            $input .= '<select name="'.$qrp_Alias.'[]" class="form-control" size="10" multiple="multiple">';
             $input .= '<option disabled selected value> -- select an option -- </option>';
 
             while ($ThisRow = mysqli_fetch_array($rsParameterOptions)) {

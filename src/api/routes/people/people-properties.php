@@ -5,7 +5,7 @@ use ChurchCRM\PersonQuery;
 use ChurchCRM\PropertyQuery;
 use ChurchCRM\RecordProperty;
 use ChurchCRM\RecordPropertyQuery;
-use ChurchCRM\Slim\Middleware\Role\MenuOptionsRoleAuthMiddleware;
+use ChurchCRM\Slim\Middleware\Request\Auth\MenuOptionsRoleAuthMiddleware;
 
 $app->group('/properties', function () {
 

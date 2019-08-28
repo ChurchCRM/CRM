@@ -402,7 +402,7 @@ for ($row = 1; $row <= $numRows; $row++) {
 <td width="40%" align="center" valign="bottom">
 <input type="submit" class="btn btn-primary" value="<?= gettext('Save Changes') ?>" Name="SaveChanges">
 &nbsp;
-<input type="button" class="btn" value="<?= gettext('Exit') ?>" Name="Exit" onclick="javascript:document.location='Menu.php'">
+<input type="button" class="btn btn-default" value="<?= gettext('Exit') ?>" Name="Exit" onclick="javascript:document.location='Menu.php'">
 </td>
 <td width="30%"></td>
 </tr>

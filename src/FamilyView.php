@@ -20,13 +20,14 @@ use ChurchCRM\Service\TimelineService;
 use ChurchCRM\Utils\GeoUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\SessionUser;
 
 $timelineService = new TimelineService();
 $mailchimp = new MailChimpService();
 $curYear = (new DateTime)->format("Y");
 
 //Set the page title
-$sPageTitle = gettext("Family View");
+$sPageTitle = gettext("Family");
 require "Include/Header.php";
 
 //Get the FamilyID out of the querystring
@@ -112,16 +113,6 @@ $sSQL = "SELECT plg_plgID, plg_FYID, plg_date, plg_amount, plg_schedule, plg_met
      LEFT JOIN donationfund_fun b ON plg_fundID = b.fun_ID
      WHERE plg_famID = " . $iFamilyID . " ORDER BY pledge_plg.plg_date";
 $rsPledges = RunQuery($sSQL);
-
-//Get the automatic payments for this family
-$sSQL = "SELECT *, a.per_FirstName AS EnteredFirstName,
-               a.Per_LastName AS EnteredLastName,
-               b.fun_Name AS fundName
-     FROM autopayment_aut
-     LEFT JOIN person_per a ON aut_EditedBy = a.per_ID
-     LEFT JOIN donationfund_fun b ON aut_Fund = b.fun_ID
-     WHERE aut_famID = " . $iFamilyID . " ORDER BY autopayment_aut.aut_NextPayDate";
-$rsAutoPayments = RunQuery($sSQL);
 
 //Get the Properties assigned to this Family
 $sSQL = "SELECT pro_Name, pro_ID, pro_Prompt, r2p_Value, prt_Name, pro_prt_ID
@@ -237,9 +228,9 @@ $bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() || ($_SESSION['user']->i
                         </li>
                         <?php
     }
-    if (!SystemConfig::getValue("bHideWeddingDate") && $fam_WeddingDate != "") { /* Wedding Date can be hidden - General Settings */ ?>
+    if (!SystemConfig::getValue("bHideWeddingDate") && !is_null($family->getWeddingDate())) { /* Wedding Date can be hidden - General Settings */ ?>
                         <li><i class="fa-li fa fa-magic"></i><?= gettext("Wedding Date") ?>:
-                            <span><?= FormatDate($fam_WeddingDate, false) ?></span></li>
+                            <span><?= $family->getWeddingDate(SystemConfig::getValue("sDateFormatLong")) ?></span></li>
                         <?php
     }
     if (SystemConfig::getValue("bUseDonationEnvelopes")) {
@@ -283,7 +274,7 @@ $bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() || ($_SESSION['user']->i
     // Display the left-side custom fields
     while ($Row = mysqli_fetch_array($rsFamCustomFields)) {
         extract($Row);
-        if (($aSecurityType[$fam_custom_FieldSec] == 'bAll') || ($_SESSION[$aSecurityType[$fam_custom_FieldSec]])) {
+        if (SessionUser::getUser()->isEnabledSecurity($aSecurityType[$fam_custom_FieldSec])) {
             $currentData = trim($aFamCustomData[$fam_custom_Field]);
             if ($type_ID == 11) {
                 $fam_custom_Special = $sPhoneCountry;
@@ -308,7 +299,7 @@ $bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() || ($_SESSION['user']->i
                                 class="fa fa-hand-o-left"></i><?= gettext('Previous Family') ?></a>
                     <?php
     } ?>
-                <a class="btn btn-app btn-danger" role="button" href="FamilyList.php"><i
+                <a class="btn btn-app btn-danger" role="button" href="<?= SystemURLs::getRootPath()?>/v2/family"><i
                             class="fa fa-list-ul"></i><?= gettext('Family List') ?></a>
                 <?php if (($next_id > 0)) {
         ?>
@@ -355,6 +346,7 @@ $bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() || ($_SESSION['user']->i
                         <tr>
                             <th><span><?= gettext("Family Members") ?></span></th>
                             <th class="text-center"><span><?= gettext("Role") ?></span></th>
+                            <th><span><?= gettext("Classifcation") ?></span></th>
                             <th><span><?= gettext("Birthday") ?></span></th>
                             <th><span><?= gettext("Email") ?></span></th>
                             <th></th>
@@ -380,8 +372,14 @@ $bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() || ($_SESSION['user']->i
                         $labelColor = 'label-info';
                     } elseif ($famRole == 'Child') {
                         $labelColor = 'label-warning';
+                    } elseif ($famRole == '') {
+                        $labelColor = 'label-danger';
+                        $famRole = 'Unassigned';
                     } ?>
                                     <span class='label <?= $labelColor ?>'> <?= $famRole ?></span>
+                                </td>
+                                <td>
+                                    <?= $person->getClassification() ? $person->getClassification()->getOptionName() : "" ?>
                                 </td>
                                 <td>
                                     <?= $person->getFormattedBirthDate() ?>
@@ -440,8 +438,6 @@ $bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() || ($_SESSION['user']->i
                                            data-toggle="tab"><?= gettext("Assigned Properties") ?></a></li>
                 <?php if ($_SESSION['user']->isFinanceEnabled()) {
                     ?>
-                    <li role="presentation"><a href="#finance" aria-controls="finance" role="tab"
-                                               data-toggle="tab"><?= gettext("Automatic Payments") ?></a></li>
                     <li role="presentation"><a href="#pledges" aria-controls="pledges" role="tab"
                                                data-toggle="tab"><?= gettext("Pledges and Payments") ?></a></li>
                     <?php
@@ -646,93 +642,6 @@ $bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() || ($_SESSION['user']->i
                 </div>
                 <?php if ($_SESSION['user']->isFinanceEnabled()) {
         ?>
-                <div role="tab-pane fade" class="tab-pane" id="finance">
-                    <div class="main-box clearfix">
-                        <div class="main-box-body clearfix">
-                            <?php if (mysqli_num_rows($rsAutoPayments) > 0) {
-            ?>
-                                <table cellpadding="5" cellspacing="0" width="100%">
-
-                                    <tr class="TableHeader">
-                                        <td><?= gettext("Type") ?></td>
-                                        <td><?= gettext("Next payment date") ?></td>
-                                        <td><?= gettext("Amount") ?></td>
-                                        <td><?= gettext("Interval (months)") ?></td>
-                                        <td><?= gettext("Fund") ?></td>
-                                        <td><?= gettext("Edit") ?></td>
-                                        <td><?= gettext("Delete") ?></td>
-                                        <td><?= gettext("Date Updated") ?></td>
-                                        <td><?= gettext("Updated By") ?></td>
-                                    </tr>
-
-                                    <?php
-
-                                    $tog = 0;
-
-            //Loop through all automatic payments
-            while ($aRow = mysqli_fetch_array($rsAutoPayments)) {
-                $tog = (!$tog);
-
-                extract($aRow);
-
-                $payType = "Disabled";
-                if ($aut_EnableBankDraft) {
-                    $payType = "Bank Draft";
-                }
-                if ($aut_EnableCreditCard) {
-                    $payType = "Credit Card";
-                }
-
-                //Alternate the row style
-                if ($tog) {
-                    $sRowClass = "RowColorA";
-                } else {
-                    $sRowClass = "RowColorB";
-                } ?>
-
-                                        <tr class="<?= $sRowClass ?>">
-                                            <td>
-                                                <?= $payType ?>&nbsp;
-                                            </td>
-                                            <td>
-                                                <?= $aut_NextPayDate ?>&nbsp;
-                                            </td>
-                                            <td>
-                                                <?= $aut_Amount ?>&nbsp;
-                                            </td>
-                                            <td>
-                                                <?= $aut_Interval ?>&nbsp;
-                                            </td>
-                                            <td>
-                                                <?= gettext($fundName) ?>&nbsp;
-                                            </td>
-                                            <td>
-                                                <a
-                                                        href="AutoPaymentEditor.php?AutID=<?= $aut_ID ?>&amp;FamilyID=<?= $iFamilyID ?>&amp;linkBack=FamilyView.php?FamilyID=<?= $iFamilyID ?>"><?= gettext("Edit") ?></a>
-                                            </td>
-                                            <td>
-                                                <a
-                                                        href="AutoPaymentDelete.php?AutID=<?= $aut_ID ?>&amp;linkBack=FamilyView.php?FamilyID=<?= $iFamilyID ?>"><?= gettext("Delete") ?></a>
-                                            </td>
-                                            <td>
-                                                <?= $aut_DateLastEdited ?>&nbsp;
-                                            </td>
-                                            <td>
-                                                <?= $EnteredFirstName . " " . $EnteredLastName ?>&nbsp;
-                                            </td>
-                                        </tr>
-                                        <?php
-            } ?>
-                                </table>
-                                <?php
-        } ?>
-                            <p align="center">
-                                <a class="SmallText"
-                                   href="AutoPaymentEditor.php?AutID=-1&FamilyID=<?= $fam_ID ?>&amp;linkBack=FamilyView.php?FamilyID=<?= $iFamilyID ?>"><?= gettext("Add a new automatic payment") ?></a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
                 <div role="tab-pane fade" class="tab-pane" id="pledges">
                     <div class="main-box clearfix">
                         <div class="main-box-body clearfix">
@@ -753,7 +662,7 @@ $bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() || ($_SESSION['user']->i
         } ?>
                                 <input type="text" class="date-picker" Name="ShowSinceDate"
                                        value="<?= $showSince ?>" maxlength="10" id="ShowSinceDate" size="15">
-                                <input type="submit" class="btn" <?= 'value="' . gettext("Update") . '"' ?>
+                                <input type="submit" class="btn btn-default" <?= 'value="' . gettext("Update") . '"' ?>
                                        name="UpdatePledgeTable"
                                        style="font-size: 8pt;">
                             </form>
@@ -929,7 +838,7 @@ $bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() || ($_SESSION['user']->i
                 <p>
                     <?php if (count($sFamilyEmails) > 0) {
         ?>
-                <p><?= gettext("You are about to email copy of the family information in pdf to the following emails") ?>
+                <p><?= gettext("You are about to email copy of the family information to the following emails") ?>
                 <ul>
                     <?php foreach ($sFamilyEmails as $tmpEmail) {
             ?>
@@ -950,8 +859,10 @@ $bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() || ($_SESSION['user']->i
                     </button>
                     <?php
     } ?>
+                <button type="button" id="verifyURL"
+                        class="btn btn-default"><i class="fa fa-chain"></i> <?= gettext("URL") ?></button>
                 <button type="button" id="verifyDownloadPDF"
-                        class="btn btn-info"><i class="fa fa-download"></i> <?= gettext("PDF Report") ?></button>
+                        class="btn btn-info"><i class="fa fa-download"></i> <?= gettext("PDF") ?></button>
                 <button type="button" id="verifyNow"
                         class="btn btn-success"><i class="fa fa-check"></i> <?= gettext("Verified In Person") ?>
                 </button>

@@ -45,7 +45,7 @@ class MiscUtils {
   }
   
   public static function getPhotoCacheExpirationTimestamp() {
-    $cacheLength = SystemConfig::getValue(iPhotoClientCacheDuration);
+    $cacheLength = SystemConfig::getValue("iPhotoClientCacheDuration");
     $cacheLength = MiscUtils::getRandomCache($cacheLength,0.5*$cacheLength);
     //echo time() +  $cacheLength;
     //die();
@@ -114,5 +114,14 @@ class MiscUtils {
       return false;
   }
   
+  public static function GetGitHubWikiAnchorLink($text) {
+    // roughly adapted from https://gist.github.com/asabaylus/3071099#gistcomment-1593627
+    $anchor = strtolower($text);
+    $anchor = preg_replace('/[^\w\d\- ]+/','',$anchor);
+    $anchor = preg_replace('/\s/','-',$anchor);
+    $anchor = preg_replace('/\-+$/','',$anchor);
+    $anchor = str_replace(" ", "-", $anchor);
+    return $anchor;
+  }
 }
 ?>

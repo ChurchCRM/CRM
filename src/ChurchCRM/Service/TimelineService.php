@@ -152,8 +152,9 @@ class TimelineService
                 break;
             case 'verify':
                 $item['style'] = 'fa-check-circle-o bg-teal';
-                break;
             case 'verify-link':
+                $item['style'] = 'fa-check-circle-o bg-teal';
+            case 'verify-URL':
                 $item['style'] = 'fa-check-circle-o bg-teal';
                 break;
             case 'user':

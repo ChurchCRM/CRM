@@ -51,9 +51,9 @@ $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
         <i class="fa fa-users"></i>
         <h3 class="box-title"><?= gettext("Family Member(s)")?></h3>
       </div>
-      <div class="row">
+      <div class="row row-flex row-flex-wrap">
         <?php foreach ($family->getPeopleSorted() as $person) { ?>
-          <div class="col-md-3 col-sm-4">
+          <div class="col-md-4 col-sm-4">
             <div class="box box-primary">
               <div class="box-body box-profile">
                  <img class="profile-user-img img-responsive img-circle initials-image" src="data:image/png;base64,<?= base64_encode($person->getPhoto()->getThumbnailBytes()) ?>">
@@ -77,17 +77,10 @@ $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
                       <?php }  if (!empty($person->getWorkEmail()))  { ?>
                     <i class="fa fa-fw fa-envelope-o" title="<?= gettext("Work Email")?>"></i>(W) <?= $person->getWorkEmail() ?><br/>
                       <?php }  ?>
-                    <i class="fa fa-fw fa-birthday-cake" title="<?= gettext("Birthday")?>"></i>
-                      <?php if ($person->hideAge()) { ?>
-                          <?= $person->getBirthDate()->format("M d") ?>
-                          <i class="fa fa-fw fa-eye-slash" title="<?= gettext("Age Hidden")?>"></i>
-                      <?php } else {?>
-                          <?= $person->getBirthDate()->format("M d Y") ?>
-                      <?php } ?>
-                      <br/>
+                    <i class="fa fa-fw fa-birthday-cake" title="<?= gettext("Birthday")?>"></i> <?= $person->getFormattedBirthDate() ?><br/>
                   </li>
                   <li class="list-group-item">
-                    <b>Classification:</b> <?= cation::getName($person->getClsId()) ?>
+                    <b>Classification:</b> <?= Classification::getName($person->getClsId()) ?>
                   </li>
                   <?php if (count($person->getPerson2group2roleP2g2rs()) > 0) {?>
                   <li class="list-group-item">
@@ -129,14 +122,29 @@ $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
        aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
-        <div class="modal-header">
+        <div class="modal-header info">
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
           <h4 class="modal-title" id="delete-Image-label"><?= gettext("Confirm") ?></h4>
         </div>
 
         <div class="modal-body" id="confirm-modal-collect">
-          <p><?= gettext("Please let us know what information to update if any") ?></p>
+            <form id="verifyForm">
+            <div class="form-group">
+                  <div class="radio">
+                    <label>
+                      <input type="radio" name="verifyType" id="NoChanges" value="no-change" checked="">
+                      <?= gettext('All information on this page is correct.') ?>
+                    </label>
+                  </div>
+                  <div class="radio">
+                    <label>
+                      <input type="radio" name="verifyType" id="UpdateNeeded" value="change-needed">
+                      <?= gettext('Please update the my family information with the following') ?>
+                    </label>
+                  </div>
+                </div>
           <textarea id="confirm-info-data" class="form-control" rows="10"></textarea>
+        </form>
         </div>
 
         <div class="modal-body" id="confirm-modal-done">
@@ -149,7 +157,7 @@ $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
 
         <div class="modal-footer">
           <button id="onlineVerifyCancelBtn" type="button" class="btn btn-default" data-dismiss="modal"><?= gettext("Cancel") ?></button>
-          <button id="onlineVerifyBtn" class="btn btn-success"><?= gettext("Verify") ?></button>
+          <button id="onlineVerifyBtn" class="btn btn-success"><?= gettext("Send") ?></button>
           <a href="<?= ChurchMetaData::getChurchWebSite() ?>" id="onlineVerifySiteBtn" class="btn btn-success"><?= gettext("Visit our Site") ?></a>
         </div>
       </div>

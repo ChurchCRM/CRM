@@ -15,6 +15,7 @@ use ChurchCRM\FamilyQuery;
 use ChurchCRM\GroupQuery;
 use ChurchCRM\PersonQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
+use ChurchCRM\FamilyCustomMasterQuery;
 
 // Routes search
 
@@ -104,11 +105,10 @@ $app->get('/search/{query}', function ($request, $response, $args) {
         }
     }
 
-
     //family search
     if (SystemConfig::getBooleanValue("bSearchIncludeFamilies")) {
         try {
-
+            $returnData = [];
             $families = FamilyQuery::create()->
             filterByName("%$query%", Criteria::LIKE)->
             _or()->filterByHomePhone($searchLikeString, Criteria::LIKE)->
@@ -118,26 +118,44 @@ $app->get('/search/{query}', function ($request, $response, $args) {
             limit(SystemConfig::getValue("bSearchIncludeFamiliesMax"))->find();
 
             if (!empty($families)) {
-                $data = [];
                 $id++;
-
                 foreach ($families as $family) {
                     $searchArray = [
                         "id" => $id++,
                         "text" => $family->getFamilyString(SystemConfig::getBooleanValue("bSearchIncludeFamilyHOH")),
                         "uri" => $family->getViewURI()
                     ];
+                    array_push($returnData, $searchArray);
+                }
+            }
 
-                    array_push($data, $searchArray);
+            if (SystemConfig::getBooleanValue("bSearchIncludeFamilyCustomProperties")) {
+                  $customFields = FamilyCustomMasterQuery::create()->find();
+                  $familyQuery = FamilyQuery::create()
+                          ->joinFamilyCustom()
+                          ->useFamilyCustomQuery();
+                  foreach($customFields as $customField)
+                  {
+                    $familyQuery->where($customField->getCustomField()." LIKE ?","%$query%", PDO::PARAM_STR );
+                    $familyQuery->_or();
+                  }
+                  $families = $familyQuery->endUse()->find();
+                  foreach ($families as $family) {
+                    $searchArray = [
+                      "id" => $id++,
+                      "text" => $family->getFamilyString(SystemConfig::getBooleanValue("bSearchIncludeFamilyHOH")),
+                      "uri" => $family->getViewURI()
+                    ];
+                    array_push($returnData, $searchArray);
+                   }
                 }
 
-                if (!empty($data)) {
-                    $dataFamilies = ['children' => $data,
-                        'id' => 2,
-                        'text' => gettext('Families')];
+            if (!empty($returnData)) {
+                $dataFamilies = ['children' => $returnData,
+                    'id' => 2,
+                    'text' => gettext('Families')];
 
-                    array_push($resultsArray, $dataFamilies);
-                }
+                array_push($resultsArray, $dataFamilies);
             }
         } catch (Exception $e) {
             $this->Logger->warn($e->getMessage());
@@ -178,7 +196,6 @@ $app->get('/search/{query}', function ($request, $response, $args) {
             $this->Logger->warn($e->getMessage());
         }
     }
-
 
     if ($_SESSION['user']->isFinanceEnabled()) {
         //Deposits Search

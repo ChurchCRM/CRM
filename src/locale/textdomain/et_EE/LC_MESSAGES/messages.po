@@ -1,0 +1,537 @@
+msgid ""
+msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: POEditor.com\n"
+"Project-Id-Version: ChurchCRM\n"
+"Language: et\n"
+
+#: 
+msgid "Cannot execute query."
+msgstr "Ei saa käsklust käivitada"
+
+#: 
+msgid "Delete"
+msgstr "Kustuta"
+
+#: 
+msgid "Cancel"
+msgstr "Tühista"
+
+#: 
+msgid "Save"
+msgstr "Salvesta"
+
+#: 
+msgid "Unassigned"
+msgstr "Liigitamata"
+
+#: 
+msgid "None"
+msgstr "Mitte ühtegi"
+
+#: 
+msgid "City"
+msgstr "Linn"
+
+#: 
+msgid "State"
+msgstr "Maakond"
+
+#: 
+msgid "Country"
+msgstr "Riik"
+
+#: 
+msgid "Phone"
+msgstr "Telefon"
+
+#: 
+msgid "Email"
+msgstr "Email"
+
+#: 
+msgid "Credit Card"
+msgstr "Krediitkaart"
+
+#: 
+msgid "Backup Database"
+msgstr "Varunda andmebaas"
+
+#: 
+msgid "This tool will assist you in manually backing up the ChurchCRM database."
+msgstr "See tööriist aitab sul kokku pakkida ChurchCRM andmebaasi."
+
+#: 
+msgid "You should make a manual backup at least once a week unless you already have a regular backup procedule for your systems."
+msgstr "Sa peaksid tegema käsitsi varukoopia oma andmebaasist vähemalt kord nädalas, kui just su süsteem ei tee seda automaatselt."
+
+#: 
+msgid "After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site."
+msgstr "Peale varu andmebaasi allalaadimist, peaksid tgeema veel 2 koopiat. Pane üks tulekindlasse seifi oma serveris ja teise kuskile väljaspoole oma lehte."
+
+#: 
+msgid "If you are concerned about confidentiality of data stored in the ChurchCRM database, you should encrypt the backup data if it will be stored somewhere potentially accessible to others"
+msgstr "Kui sa oled mures oma andmete konfidentsiaalsuses ChurchCRM andmebaasis, siis sa pekasid krüptima oma varukoopia ja asetama ta sinna kuhu keegi ligi ei saa."
+
+#: 
+msgid "Select archive type"
+msgstr "Vali arhiveerimise tüüp"
+
+#: 
+msgid "Encrypt backup file with a password?"
+msgstr "Krüpteeri tagavara fail parooliga?"
+
+#: 
+msgid "Re-type Password"
+msgstr "Korda parooli"
+
+#: 
+msgid "Generate and Ship Backup to External Storage"
+msgstr "Genereeri ja saada tagavarakoopia välisele seadmele"
+
+#: 
+msgid "Batch Winner Entry"
+msgstr "Sisesta Võitja"
+
+#: 
+msgid "Winner"
+msgstr "Võitja"
+
+#: 
+msgid "Price"
+msgstr "Auhind"
+
+#: 
+msgid "Enter Winners"
+msgstr "Sisesta võitjad"
+
+#: 
+msgid "CSV Export"
+msgstr "CSV eksport"
+
+#: 
+msgid "Field Selection"
+msgstr "Välja valija"
+
+#: 
+msgid "Last Name"
+msgstr "Perekonnanimi"
+
+#: 
+msgid "Required"
+msgstr "Kohustuslik"
+
+#: 
+msgid "First Name"
+msgstr "Eesnimi"
+
+#: 
+msgid "Middle Name"
+msgstr "Keskmine nimi"
+
+#: 
+msgid "Zip"
+msgstr "Indeks"
+
+#: 
+msgid "Envelope"
+msgstr "Ümbrik"
+
+#: 
+msgid "Work/Other Email"
+msgstr "Töö/teine E-mail"
+
+#: 
+msgid "Membership Date"
+msgstr "Liikmelisuse algus"
+
+#: 
+msgid "Birth / Anniversary Date"
+msgstr "Sünni / Pulmaaastapäev"
+
+#: 
+msgid "Age / Years Married"
+msgstr "Vanus / Aastaid abielus"
+
+#: 
+msgid "Family Role"
+msgstr "Roll perekonnas"
+
+#: 
+msgid "Depends whether using person or family output method"
+msgstr "Oleneb kas kaustada isikut või perekonda väljaspool meetodit"
+
+#: 
+msgid "Custom Field Selection"
+msgstr "Muudetava välja valik"
+
+#: 
+msgid "Custom Person Fields"
+msgstr "Muudetav Isiku väli"
+
+#: 
+msgid "Custom Family Fields"
+msgstr "Muudetav perekonna väli"
+
+#: 
+msgid "Filters"
+msgstr "Filter"
+
+#: 
+msgid "Records to export"
+msgstr "Valikud eksportimiseks"
+
+#: 
+msgid "Based on filters below.."
+msgstr "Vastavalt valitud filtitele"
+
+#: 
+msgid "People in Cart (filters ignored)"
+msgstr "Valitud inimesed"
+
+#: 
+msgid "Use Ctrl Key to select multiple"
+msgstr "Kasuta Ctrl klahvi mitme valikuks"
+
+#: 
+msgid "Don't Filter"
+msgstr "Ära kasuta filtrit"
+
+#: 
+msgid "Male"
+msgstr "Mees"
+
+#: 
+msgid "Female"
+msgstr "Naine"
+
+#: 
+msgid "Group Membership"
+msgstr "Liikmelisuse grupp"
+
+#: 
+msgid "From:"
+msgstr "Kellelt:"
+
+#: 
+msgid "To:"
+msgstr "Kellele:"
+
+#: 
+msgid "Birthday Date"
+msgstr "Sünnikuupäev"
+
+#: 
+msgid "Anniversary Date"
+msgstr "Pulmaaastapäev"
+
+#: 
+msgid "Output Method:"
+msgstr "Väljastus meetod:"
+
+#: 
+msgid "CSV Individual Records"
+msgstr "CSV individuaalsed kirjed"
+
+#: 
+msgid "CSV Combine Families"
+msgstr "CSV kombineeritud perekonnad"
+
+#: 
+msgid "Add Individuals to Cart"
+msgstr "Lisa individuaalsed korvi"
+
+#: 
+msgid "Skip records with incomplete mail address"
+msgstr "Jäta vahele mittetäielikud e-maili aadressiga kirjed"
+
+#: 
+msgid "Create File"
+msgstr "Koosta fail"
+
+#: 
+msgid "No file selected for upload."
+msgstr "Ühtegi faili pole üleslaadimiseks valitud"
+
+#: 
+msgid "Total number of rows in the CSV file:"
+msgstr "CSV on kokku ridu:"
+
+#: 
+msgid "Ignore this Field"
+msgstr "Jäta see vahele"
+
+#: 
+msgid "Title"
+msgstr "Pealkiri"
+
+#: 
+msgid "Suffix"
+msgstr "Eesliide"
+
+#: 
+msgid "Gender"
+msgstr "Sugu"
+
+#: 
+msgid "Donation Envelope"
+msgstr "Annetuse ümbrik"
+
+#: 
+msgid "Home Phone"
+msgstr "Kodu telefon"
+
+#: 
+msgid "Work Phone"
+msgstr "Töö telefon"
+
+#: 
+msgid "Mobile Phone"
+msgstr "Mobiil"
+
+#: 
+msgid "Work / Other Email"
+msgstr "Töö / muu email"
+
+#: 
+msgid "Birth Date"
+msgstr "Sünni kuupäev"
+
+#: 
+msgid "Wedding Date"
+msgstr "Pulma - laulatuse kuupäev"
+
+#: 
+msgid "Ignore first CSV row (to exclude a header)"
+msgstr "Jäta CSV esimene rida vahele"
+
+#: 
+msgid "Make Family records based on last name and address"
+msgstr "Koosta uus perekond perekonnanime ja aadressi järgi"
+
+#: 
+msgid "Patriarch"
+msgstr "Perekonnapea (Isa)"
+
+#: 
+msgid "Matriarch"
+msgstr "Perekonnapea (ema)"
+
+#: 
+msgid "Family Type: used with Make Family records... option above"
+msgstr "Perekonna liik: kasutatakse perekonna faili loomisel ... valikuline"
+
+#: 
+msgid "NOTE: Separators (dashes, etc.) or lack thereof do not matter"
+msgstr "MÄRKUS: Eraldajad (komad, jne.) ei oma tähtsust"
+
+#: 
+msgid "Default country if none specified otherwise"
+msgstr "Pemine riik kui ei ole määratud teisiti"
+
+#: 
+msgid "Classification"
+msgstr "Klassifikaator"
+
+#: 
+msgid "Perform Import"
+msgstr "Valmista import"
+
+#: 
+msgid "ERROR: the uploaded CSV file no longer exists!"
+msgstr "VIGA: üleslaetud CSV faili ei ole enam!"
+
+#: 
+msgid "Data Cleared Successfully!"
+msgstr "Andmed on edukalt puhastatud!"
+
+#: 
+msgid "Upload CSV File"
+msgstr "Lae CSV fail üles"
+
+#: 
+msgid "Clear Persons and Families"
+msgstr "Puhasta inimestest ja perekondadest"
+
+#: 
+msgid "Warning!  Do not select this option if you plan to add to an existing database.<br/>"
+msgstr "Hoiatus! Ära vali seda võimalust, kui sa plaanid lisada olemasolevasse andmebaasi.<br/>"
+
+#: 
+msgid "Use only if unsatisfied with initial import.  All person and member data will be destroyed!"
+msgstr "Kasuta vaid kui sa ei ole rahul olemasoleva impordiga. Kõik inimesed ja perekondade andmed kustutatakse!"
+
+#: 
+msgid "Data import successful."
+msgstr "Andmete import õnnestus."
+
+#: 
+msgid "persons were imported"
+msgstr "inimest imporditi"
+
+#: 
+msgid "Not confirmed."
+msgstr "Pole  kinnitatud"
+
+#: 
+msgid "Set default fiscal year"
+msgstr "Määra peamine aruandlus aasta"
+
+#: 
+msgid "Check to confirm"
+msgstr "Kinnita"
+
+#: 
+msgid "Not Interested Report"
+msgstr "Huvipakkuvaid aruandeid ei ole"
+
+#: 
+msgid "Positive"
+msgstr "Positiivne"
+
+#: 
+msgid "Critical"
+msgstr "Kriitiline"
+
+#: 
+msgid "Insightful"
+msgstr "Tähtsusetu"
+
+#: 
+msgid "Financial"
+msgstr "Rahanduslik"
+
+#: 
+msgid "Suggestions"
+msgstr "Ettepanekud"
+
+#: 
+msgid "Not Interested"
+msgstr "Pole huvitatud"
+
+#: 
+msgid "Why Not Interested?"
+msgstr "Miks ei ole huvitatud?"
+
+#: 
+msgid "Add Cart to Event"
+msgstr "Lisa korv üritusele"
+
+#: 
+msgid "Select the event to which you would like to add your cart"
+msgstr "Vali üritus millele sa soovid lisada korvi"
+
+#: 
+msgid "OR"
+msgstr "VÕI"
+
+#: 
+msgid "Add New Event"
+msgstr "Lisa uus sündmus"
+
+#: 
+msgid "Your cart is empty!"
+msgstr "Su korv on tühi"
+
+#: 
+msgid "No family name entered!"
+msgstr "Ühtegi perekonnanime pole lisatud"
+
+#: 
+msgid "Add Cart to Family"
+msgstr "Lisa perekond korvi"
+
+#: 
+msgid "Name"
+msgstr "Nimi"
+
+#: 
+msgid "Assign Role"
+msgstr "Määra roll"
+
+#: 
+msgid "Already in a family"
+msgstr "Juba on perekond"
+
+#: 
+msgid "Create new family"
+msgstr "Loo uus perekond"
+
+#: 
+msgid "If adding a new family, enter data below."
+msgstr "Kui lisad uue perekonna, siis lisa andmed allapoole"
+
+#: 
+msgid "Use address/contact data from"
+msgstr "Kasuta aadressi/kontakdi andme vormi"
+
+#: 
+msgid "Only the new data below"
+msgstr "Lisa ainult uued andmed allapoole"
+
+#: 
+msgid "(Use the textbox for countries other than US and Canada)"
+msgstr "(Kasuta teksti kasti peale USA ja Kanada riigi sisestamiseks)"
+
+#: 
+msgid "Do not auto-format"
+msgstr "Ära formaadi automaatselt"
+
+#: 
+msgid "Add to Family"
+msgstr "Lisa perekonnale"
+
+#: 
+msgid "Add Cart to Group"
+msgstr "Lisa korv grupile"
+
+#: 
+msgid "Select the group to which you would like to add your cart"
+msgstr "Vali grupp millele sa soovid lisada korvi"
+
+#: 
+msgid "Select Group"
+msgstr "Vali grupp"
+
+#: 
+msgid "No Group Selected"
+msgstr "Ühtegi gruppi pole valitud"
+
+#: 
+msgid "Add to Group"
+msgstr "Lisa grupp"
+
+#: 
+msgid "View Your Cart"
+msgstr "Vaata oma korvi"
+
+#: 
+msgid "You have no items in your cart."
+msgstr "Su korv on tühi"
+
+#: 
+msgid "Back to Menu"
+msgstr "Tagasi menüüsse"
+
+#: 
+msgid "Empty Cart"
+msgstr "Tühjenda korv"
+
+#: 
+msgid "Empty Cart to Group"
+msgstr "Tühjenda grupi korv"
+
+#: 
+msgid "Empty Cart to Family"
+msgstr "Tühjenda pere korv"
+
+#: 
+msgid "Empty Cart to Event"
+msgstr "Tühjenda Sündmuse korv"
+
+#: 
+msgid "Name Tags"
+msgstr "Nime Tag"
+

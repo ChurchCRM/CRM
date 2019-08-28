@@ -43,7 +43,7 @@ class Person extends BasePerson implements iPhoto
     {
         return $this->getGender() == 2;
     }
-    
+
     public function getGenderName()
     {
       switch (strtolower($this->getGender())) {
@@ -120,6 +120,26 @@ class Person extends BasePerson implements iPhoto
         return $roleName;
     }
 
+    public function getClassification()
+    {
+      $classification = null;
+      $clsId = $this->getClsId();
+      if (!empty($clsId)) {
+        $classification = ListOptionQuery::create()->filterById(1)->filterByOptionId($clsId)->findOne();
+      }
+      return $classification;
+    }
+
+    public function getClassificationName()
+    {
+      $classificationName = '';
+      $classification = $this->getClassification();
+      if (!is_null($classification)) {
+        $classificationName = $classification->getOptionName();
+      }
+      return $classificationName;
+    }
+
     public function postInsert(ConnectionInterface $con = null)
     {
       $this->createTimeLineNote('create');
@@ -167,19 +187,6 @@ class Person extends BasePerson implements iPhoto
         $user = UserQuery::create()->findPk($this->getId());
 
         return !is_null($user);
-    }
-
-    public function getOtherFamilyMembers()
-    {
-        $familyMembers = $this->getFamily()->getPeople();
-        $otherFamilyMembers = [];
-        foreach ($familyMembers as $member) {
-            if ($member->getId() != $this->getId()) {
-                array_push($otherFamilyMembers, $member);
-            }
-        }
-
-        return $otherFamilyMembers;
     }
 
     /**
@@ -503,6 +510,24 @@ class Person extends BasePerson implements iPhoto
       return $ageValue. " ".$ageSuffix;
 
     }
+    
+    public function getNumericAge() {
+      $birthDate = $this->getBirthDate();
+      if ($this->hideAge())
+      {
+        return false;
+      }
+      if (empty($now)) {
+        $now = date_create('today');
+      }
+      $age = date_diff($now,$birthDate);
+       if ($age->y < 1) {
+        $ageValue = 0;
+      } else {
+        $ageValue = $age->y;
+      }
+      return $ageValue;
+    }
 
     /* Philippe Logel 2017 */
     public function getFullNameWithAge()
@@ -510,11 +535,27 @@ class Person extends BasePerson implements iPhoto
        return $this->getFullName()." ".$this->getAge();
     }
 
-    public function toArray()
+    public function toArray($keyType = TableMap::TYPE_PHPNAME, $includeLazyLoadColumns = true, $alreadyDumpedObjects = array(), $includeForeignObjects = false)
     {
         $array = parent::toArray();
         $array['Address']=$this->getAddress();
         return $array;
+    }
+
+    public function getThumbnailURL() {
+      return SystemURLs::getRootPath() . '/api/person/' . $this->getId() . '/thumbnail';
+    }
+
+    public function getEmail() {
+      if (parent::getEmail() == null)
+      {
+        $family = $this->getFamily();
+        if ($family != null)
+        {
+          return $family->getEmail();
+        }
+      }
+      return parent::getEmail();
     }
 
 }

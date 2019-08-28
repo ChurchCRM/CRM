@@ -99,29 +99,39 @@ class User extends BaseUser
         return hash('sha256', $password . $this->getPersonId());
     }
 
+    public function isAddEventEnabled() // TODO: Create permission to manag event deletion see https://github.com/ChurchCRM/CRM/issues/4726
+    {
+        return $this->isAddEvent();
+    }
+
     public function isAddEvent()
     {
-        return $this->isEnabledSecurity('bAddEvent');
+        return $this->isAdmin() || $this->isEnabledSecurity('bAddEvent');
+    }
+
+    public function isCSVExportEnabled()
+    {
+        return $this->isCSVExport();
     }
 
     public function isCSVExport()
     {
-        return $this->isEnabledSecurity('bExportCSV');
+        return $this->isAdmin() || $this->isEnabledSecurity('bExportCSV');
     }
 
     public function isEmailEnabled()
     {
-        return $this->isEnabledSecurity('bEmailMailto');
+        return $this->isAdmin() || $this->isEnabledSecurity('bEmailMailto');
     }
 
     public function isCreateDirectoryEnabled()
     {
-        return $this->isEnabledSecurity('bCreateDirectory');
+        return $this->isAdmin() || $this->isEnabledSecurity('bCreateDirectory');
     }
 
     public function isbUSAddressVerificationEnabled()
     {
-        return $this->isEnabledSecurity('bUSAddressVerification');
+        return $this->isAdmin() || $this->isEnabledSecurity('bUSAddressVerification');
     }
 
 
@@ -199,8 +209,43 @@ class User extends BaseUser
         $note->save();
     }
 
-    public function isEnabledSecurity($securityConfigName){
+    public function isEnabledSecurity($securityConfigName) {
         if ($this->isAdmin()) {
+            return true;
+        } else if ($securityConfigName == "bAdmin") {
+            return false;
+        }
+
+        if ($securityConfigName == "bAll") {
+            return true;
+        }
+
+
+        if ($securityConfigName == "bAddRecords" && $this->isAddRecordsEnabled()) {
+            return true;
+        }
+
+        if ($securityConfigName == "bEditRecords" && $this->isEditRecordsEnabled()) {
+            return true;
+        }
+
+        if ($securityConfigName == "bDeleteRecords" && $this->isDeleteRecordsEnabled()) {
+            return true;
+        }
+
+        if ($securityConfigName == "bManageGroups" && $this->isManageGroupsEnabled()) {
+            return true;
+        }
+
+        if ($securityConfigName == "bFinance" && $this->isFinanceEnabled()) {
+            return true;
+        }
+
+        if ($securityConfigName == "bNotes" && $this->isNotesEnabled()) {
+            return true;
+        }
+
+        if ($securityConfigName == "bCanvasser" && $this->isCanvasserEnabled()) {
             return true;
         }
 
@@ -210,5 +255,13 @@ class User extends BaseUser
             }
         }
         return false;
+    }
+
+    public function getUserConfigString($userConfigName) {
+      foreach ($this->getUserConfigs() as $userConfig) {
+        if ($userConfig->getName() == $userConfigName) {
+          return $userConfig->getValue();
+        }
+      }
     }
 }

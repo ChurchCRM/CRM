@@ -117,6 +117,8 @@ if (array_key_exists('Number', $_GET)) {
     $tmpUser->setSearchLimit(InputUtils::LegacyFilterInput($_GET['Number'], 'int'));
     $tmpUser->setSearchfamily($sMode != 'person');
     $tmpUser->save();
+    
+    $_SESSION['user'] = $tmpUser;
 }
 
 if (array_key_exists('PersonColumn3', $_GET)) {
@@ -535,7 +537,7 @@ if ($iMode == 1) {
 <input type="text" name="Filter" value="<?= $sFilter ?>">
 <input type="hidden" name="mode" value="<?= $sMode ?>">
 <input type="hidden" name="Letter" value="<?= $sLetter ?>">
-<input type="submit" class="btn" value="<?= gettext('Apply Filter') ?>">
+<input type="submit" class="btn btn-default" value="<?= gettext('Apply Filter') ?>">
 
 </td></tr>
 <?php
@@ -755,7 +757,7 @@ if ($iMode == 1) {
     }
 } ?>
 
-<input type="button" class="btn" value="<?= gettext('Clear Filters') ?>" onclick="javascript:document.location='SelectList.php?mode=<?= $sMode ?>&amp;Sort=<?= $sSort ?>&amp;type=<?= $iGroupTypeMissing ?>'"><BR><BR>
+<input type="button" class="btn btn-default" value="<?= gettext('Clear Filters') ?>" onclick="javascript:document.location='SelectList.php?mode=<?= $sMode ?>&amp;Sort=<?= $sSort ?>&amp;type=<?= $iGroupTypeMissing ?>'"><BR><BR>
 <a id="AddAllToCart" class="btn btn-primary" ><?= gettext('Add All to Cart') ?></a>
 <input name="IntersectCart" type="submit" class="btn btn-warning" value="<?= gettext('Intersect with Cart') ?>">&nbsp;
 <a id="RemoveAllFromCart" class="btn btn-danger" ><?= gettext('Remove All from Cart') ?></a>
@@ -1153,13 +1155,13 @@ while ($aRow = mysqli_fetch_array($rsPersons)) {
 
     echo '<td>';
     // Phone number or zip code
-    if ($sPersonColumn5 == 'Home Phone') {
+    if ($sPersonColumn5 == gettext('Home Phone')) {
         echo SelectWhichInfo(ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy),
                 ExpandPhoneNumber($per_HomePhone, $fam_Country, $dummy), true);
-    } elseif ($sPersonColumn5 == 'Work Phone') {
+    } elseif ($sPersonColumn5 == gettext('Work Phone')) {
         echo SelectWhichInfo(ExpandPhoneNumber($per_WorkPhone, $fam_Country, $dummy),
                 ExpandPhoneNumber($fam_WorkPhone, $fam_Country, $dummy), true);
-    } elseif ($sPersonColumn5 == 'Mobile Phone') {
+    } elseif ($sPersonColumn5 == gettext('Mobile Phone')) {
         echo SelectWhichInfo(ExpandPhoneNumber($per_CellPhone, $fam_Country, $dummy),
                 ExpandPhoneNumber($fam_CellPhone, $fam_Country, $dummy), true);
     } else {
