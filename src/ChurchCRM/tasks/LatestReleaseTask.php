@@ -14,7 +14,7 @@ class LatestReleaseTask implements iTask
 
   public function __construct()
   {
-    $this->installedVersion = ChurchCRMRelease::FromString("3.2.4");#$_SESSION['sSoftwareInstalledVersion']);
+    $this->installedVersion = ChurchCRMRelease::FromString($_SESSION['sSoftwareInstalledVersion']);
   }
 
   public function isActive()
