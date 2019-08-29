@@ -74,4 +74,36 @@ $(document).ready(function () {
         });
     });
 
+
+    $("#activateDeactivate").click(function () {
+        popupTitle = (window.CRM.currentActive == true ? i18next.t('Confirm Deactivation') : i18next.t("Confirm Activation" ));
+        if (window.CRM.currentActive == true) {
+            popupMessage = i18next.t("Please confirm deactivation of family") +  ': '  + window.CRM.currentFamilyName;
+        }
+        else {
+            popupMessage = i18next.t('Please confirm activation of family') + ': ' + window.CRM.currentFamilyName;
+        }
+
+        bootbox.confirm({
+            title: popupTitle,
+            message: '<p style="color: red">' + popupMessage + '</p>',
+            callback: function (result) {
+                if (result) {
+                    window.CRM.APIRequest({
+                        method: "POST",
+                        path: "families/" + window.CRM.currentFamily + "/activate/" + !window.CRM.currentActive
+                    }).done(function (data) {
+                        if (data.success == true)
+                            if (window.CRM.currentFamilyView == 1) {
+                                window.location.href = window.CRM.root + "/FamilyView.php?FamilyID=" + window.CRM.currentFamily;
+                            } else {
+                                window.location.href = window.CRM.root + "/v2/family/" + window.CRM.currentFamily + "/view";
+                            }
+                    });
+                }
+            }
+        });
+    });
+
+
 });
