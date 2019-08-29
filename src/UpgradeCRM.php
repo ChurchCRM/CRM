@@ -34,7 +34,7 @@ Header_body_scripts();
 
     <?php
      $taskService = new TaskService();
-     $preUpgradeTasks = $taskService->getPreUpgradeTasks();
+     $preUpgradeTasks = $taskService->getActivePreUpgradeTasks();
       if (count($preUpgradeTasks) > 0) {
           ?>
     <li>

@@ -85,9 +85,9 @@ class TaskService
         return $tasks;
     }
 
-    public function getPreUpgradeTasks() {
+    public function getActivePreUpgradeTasks()  {
         return array_filter($this->taskClasses, function($k) {
-            return $k instanceof iPreUpgradeTask;
+            return $k instanceof iPreUpgradeTask && $k->isActive();
         });
     }
 
