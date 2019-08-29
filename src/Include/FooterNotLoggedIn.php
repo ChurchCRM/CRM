@@ -1,6 +1,7 @@
 <?php
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\SystemService;
+use ChurchCRM\Bootstrapper;
 
 ?>
     <div style="background-color: white; padding-top: 5px; padding-bottom: 5px; text-align: center; position: fixed; bottom: 0; width: 100%">
@@ -23,9 +24,9 @@ use ChurchCRM\Service\SystemService;
   <script src="<?= SystemURLs::getRootPath() ?>/skin/external/inputmask/inputmask.date.extensions.min.js"></script>
   <script src="<?= SystemURLs::getRootPath() ?>/skin/external/inputmask/inputmask.extensions.min.js" ></script>
   <script src="<?= SystemURLs::getRootPath() ?>/skin/external/bootstrap-datepicker/bootstrap-datepicker.min.js" ></script>
-
-  <!-- Bootbox -->
   <script src="<?= SystemURLs::getRootPath() ?>/skin/external/bootbox/bootbox.min.js"></script>
+  <script src="<?= SystemURLs::getRootPath() ?>/skin/external/i18next/i18next.min.js"></script>
+  <script src="<?= SystemURLs::getRootPath() ?>/locale/js/<?= Bootstrapper::GetCurrentLocale()->getLocale() ?>.js"></script>
 
   <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     $(function () {
@@ -35,6 +36,21 @@ use ChurchCRM\Service\SystemService;
         increaseArea: '20%' // optional
       });
     });
+
+    i18nextOpt = {
+      lng:window.CRM.shortLocale,
+      nsSeparator: false,
+      keySeparator: false,
+      pluralSeparator:false,
+      contextSeparator:false,
+      fallbackLng: false,
+      resources: { }
+    };
+
+    i18nextOpt.resources[window.CRM.shortLocale] = {
+      translation: window.CRM.i18keys
+    };
+    i18next.init(i18nextOpt);
   </script>
   <?php
 
