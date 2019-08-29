@@ -25,4 +25,16 @@ Class ChurchCRMRelease {
     public function equals(ChurchCRMRelease $b) {
         return $this->MAJOR == $b->MAJOR && $this->MINOR == $b->MINOR && $this->PATCH == $b->PATCH;
     }
+
+    public function __toString()
+    {
+        try 
+        {
+            return (string) $this->MAJOR.".".$this->MINOR.".".$this->PATCH;
+        } 
+        catch (Exception $exception) 
+        {
+            return '';
+        }
+    }
 }
