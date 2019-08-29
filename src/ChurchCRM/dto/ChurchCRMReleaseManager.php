@@ -68,7 +68,7 @@ class ChurchCRMReleaseManager {
         });
         
         if (count($eligibleUpgradeTargetReleases) == 0 ) {
-            throw new \Exception("No eligibile releases to upgrade, but we're running a different version than the latest");
+            throw new \Exception("Could not identify a suitable upgrade target release.  Current software version: " . $currentRelease . ".  Highest available release: " . $rs[0] ) ;
         }
 
         if ($currentRelease->equals($eligibleUpgradeTargetReleases[0])) {
