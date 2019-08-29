@@ -49,21 +49,21 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
     $(document).ready(function () {
         bootbox.prompt({
             title: i18next.t("Warning!!!"),
-            message: i18next.t("Clearing and delete operations are irreversible. Ensure that you no longer need the data or data source before you proceed with this operation.") + '<br/> <br/>' + i18next.t("Please type ") + "<b>" + i18next.t("I AGREE") + "</b>" + i18next.t(" to move forward"),
+            message: i18next.t("This page contains operations that reset the ChurchCRM database. The operations available on this page are irreversible. Ensure that you no longer need the data or data source before you proceed with any operation on this page.") + '<br/> <br/>' + i18next.t("Please type ") + "<b>" + i18next.t("I AGREE") + "</b>" + i18next.t(" to access the database reset functions page."),
             size: 'large',
             className: 'rubberBand animated',
             buttons: {
                 confirm: {
-                    label: 'Let me in',
+                    label: i18next.t('OK'),
                     className: 'btn-success'
                 },
                 cancel: {
-                    label: 'Cancel',
+                    label: i18next.t('Cancel'),
                     className: 'btn-danger'
                 }
             },
             callback: function (result) {
-                if (result !== "I AGREE") {
+                if (result !== i18next.t("I AGREE")) {
                     window.location.href = window.CRM.root + "/";
                 }
             }

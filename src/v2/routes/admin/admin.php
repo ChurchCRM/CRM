@@ -40,7 +40,7 @@ function dbResetPage(Request $request, Response $response, array $args) {
 
     $pageArgs = [
         'sRootPath' => SystemURLs::getRootPath(),
-        'sPageTitle' => gettext('Reset System Database')
+        'sPageTitle' => gettext('Database Reset Functions')
     ];
 
     return $renderer->render($response, 'database-reset.php', $pageArgs);
