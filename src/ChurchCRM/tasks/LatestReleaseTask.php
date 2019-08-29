@@ -1,7 +1,6 @@
 <?php
 
 namespace ChurchCRM\Tasks;
-use ChurchCRM\dto\ChurchCRMRelease;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\ChurchCRMReleaseManager;
 use ChurchCRM\Utils\LoggerUtils;
@@ -14,7 +13,7 @@ class LatestReleaseTask implements iTask
 
   public function __construct()
   {
-    $this->installedVersion = ChurchCRMRelease::FromString($_SESSION['sSoftwareInstalledVersion']);
+    $this->installedVersion = ChurchCRMReleaseManager::GetReleaseFromString($_SESSION['sSoftwareInstalledVersion']);
   }
 
   public function isActive()

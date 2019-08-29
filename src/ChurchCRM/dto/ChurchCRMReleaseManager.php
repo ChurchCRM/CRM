@@ -4,11 +4,26 @@ namespace ChurchCRM\Utils;
 
 use ChurchCRM\dto\ChurchCRMRelease;
 use Github\Client;
-
-use function GuzzleHttp\json_encode;
+use ChurchCRM\dto\SystemURLs;
 
 class ChurchCRMReleaseManager {
 
+    public static function GetReleaseFromString(string $releaseString): ChurchCRMRelease { 
+        
+        try {
+            // TODO: Make this use the release cache, instead of hit the API every time.
+            $client = new Client();
+            LoggerUtils::getAppLogger()->addInfo("Fetching release info for: " .$releaseString);
+            $releases = $client->api('repo')->releases()->tag('churchcrm', 'crm', $releaseString);
+            LoggerUtils::getAppLogger()->addInfo("got from githib: " . count($releases));
+            return new ChurchCRMRelease($releases);
+        }
+        catch (\Exception $e) {
+            LoggerUtils::getAppLogger()->addWarning("Failed fetching release info for: " . $releaseString . ". Returning partial release object");
+            return new ChurchCRMRelease(@["name" => $releaseString]);
+        }
+        
+    }
 
     private static function populateReleases() {
         $client = new Client();
@@ -73,13 +88,42 @@ class ChurchCRMReleaseManager {
 
         if ($currentRelease->equals($eligibleUpgradeTargetReleases[0])) {
             // the current release is the same as the most recent patch release from github, so let's return the most recent overall release from GitHub
-            $nextStepRelease = ChurchCRMRelease::FromString($currentRelease->MAJOR . "." . ($currentRelease->MINOR+1) . ".0");
+            $nextStepRelease = ChurchCRMReleaseManager::GetReleaseFromString($currentRelease->MAJOR . "." . ($currentRelease->MINOR+1) . ".0");
             LoggerUtils::getAppLogger()->addInfo("The current release (".$currentRelease.") is the highest release of it's Major/Minor combination.");
             LoggerUtils::getAppLogger()->addInfo("Looking for releases in series: " . $nextStepRelease);
             return self::getNextReleaseStep($nextStepRelease); 
         }
         LoggerUtils::getAppLogger()->addInfo("Next upgrade step for " . $currentRelease. " is : " . $eligibleUpgradeTargetReleases[0]);
         return $eligibleUpgradeTargetReleases[0];
+    }
+
+
+    public static function downloadLatestRelease()
+    {
+        // this is a proxy function.  For now, just download the nest step release
+        $releaseToDownload =  ChurchCRMReleaseManager::getNextReleaseStep(ChurchCRMReleaseManager::GetReleaseFromString($_SESSION['sSoftwareInstalledVersion']));
+        return ChurchCRMReleaseManager::downloadRelease($releaseToDownload);
+    }
+    public static function downloadRelease(ChurchCRMRelease $release)
+    {
+        LoggerUtils::getAppLogger()->addInfo("Downloading release: " . $release);
+        $logger = LoggerUtils::getAppLogger();
+        $UpgradeDir = SystemURLs::getDocumentRoot() . '/Upgrade';
+        $url = $release->GetDownloadURL();
+        $logger->debug("Creating upgrade directory: " . $UpgradeDir);
+        mkdir($UpgradeDir);
+        $logger->info("Downloading release from: " . $url . " to: ". $UpgradeDir . '/' . basename($url));
+        $executionTime = new ExecutionTime();
+        file_put_contents($UpgradeDir . '/' . basename($url), file_get_contents($url));
+        $logger->info("Finished downloading file.  Execution time: " .$executionTime->getMiliseconds()." ms");
+        $returnFile = [];
+        $returnFile['fileName'] = basename($url);
+        $returnFile['releaseNotes'] = $release->GetReleaseNotes();
+        $returnFile['fullPath'] = $UpgradeDir . '/' . basename($url);
+        $returnFile['sha1'] = sha1_file($UpgradeDir . '/' . basename($url));
+        $logger->info("SHA1 hash for ". $returnFile['fullPath'] .": " . $returnFile['sha1']);
+        $logger->info("Release notes: " . $returnFile['releaseNotes'] );
+        return $returnFile;
     }
     
 }

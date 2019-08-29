@@ -233,33 +233,6 @@ class SystemService
         LoggerUtils::getAppLogger()->addInfo("Finished background job processing");
     }
 
-    public function downloadLatestRelease()
-    {
-      $logger = LoggerUtils::getAppLogger();
-      $logger->debug("Querying for latest release");
-      $release = self::getLatestRelease();
-      $logger->debug("Query result: " . print_r($release,true));
-      $UpgradeDir = SystemURLs::getDocumentRoot() . '/Upgrade';
-      foreach ($release['assets'] as $asset) {
-        if ($asset['name'] == "ChurchCRM-" . $release['name'] . ".zip") {
-          $url = $asset['browser_download_url'];
-        }
-      }
-      $logger->debug("Creating upgrade directory: " . $UpgradeDir);
-      mkdir($UpgradeDir);
-      $logger->info("Downloading release from: " . $url . " to: ". $UpgradeDir . '/' . basename($url));
-      $executionTime = new ExecutionTime();
-      file_put_contents($UpgradeDir . '/' . basename($url), file_get_contents($url));
-      $logger->info("Finished downloading file.  Execution time: " .$executionTime->getMiliseconds()." ms");
-      $returnFile = [];
-      $returnFile['fileName'] = basename($url);
-      $returnFile['releaseNotes'] = $release['body'];
-      $returnFile['fullPath'] = $UpgradeDir . '/' . basename($url);
-      $returnFile['sha1'] = sha1_file($UpgradeDir . '/' . basename($url));
-      $logger->info("SHA1 hash for ". $returnFile['fullPath'] .": " . $returnFile['sha1']);
-      $logger->info("Release notes: " . $returnFile['releaseNotes'] );
-      return $returnFile;
-    }
 
     public function moveDir($src, $dest)
     {
