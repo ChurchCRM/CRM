@@ -25,19 +25,6 @@ require SystemURLs::getDocumentRoot() . '/vendor/ifsnop/mysqldump-php/src/Ifsnop
 class SystemService
 {
 
-    private static function getLatestPatchVersion() {
-      $versionToCheck = "3.2.0";
-      LoggerUtils::getAppLogger()->addInfo("Checking for latest ChurchCRM patches for " . $versionToCheck);
-      $nextVersionStep = ChurchCRMReleaseManager::getNextReleaseStep(ChurchCRMRelease::FromString($versionToCheck));//self::getInstalledVersion());
-      LoggerUtils::getAppLogger()->addInfo("Next upgrade step for " . $versionToCheck. " is : " . json_encode($nextVersionStep));
-    }
-    
-    public static function getLatestRelease()
-    {
-        self::getLatestPatchVersion();
-
-        return $release;
-    }
 
     static public function getInstalledVersion()
     {
@@ -237,8 +224,10 @@ class SystemService
                 }
         }
         if (self::IsTimerThresholdExceeded(SystemConfig::getValue('sLastSoftwareUpdateCheckTimeStamp'),SystemConfig::getValue('iSoftwareUpdateCheckInterval'))) {
-          LoggerUtils::getAppLogger()->addInfo("Starting software update check");
-          $_SESSION['latestVersion'] = self::getLatestRelease();
+          // Since checking for updates from GitHub is a potentailly expensive operation,
+          // Run this task as part of the "background jobs" API call
+          // Inside ChurchCRMReleaseManager, the restults are stored to the $_SESSION
+          ChurchCRMReleaseManager::CheckForUpdates();
         }
 
         LoggerUtils::getAppLogger()->addInfo("Finished background job processing");
