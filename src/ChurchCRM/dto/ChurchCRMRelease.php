@@ -45,7 +45,13 @@ Class ChurchCRMRelease {
         return $url;
     }
 
-    public function getReleaseNotes() {
+    public function getReleaseNotes(): string {
         return $this->rawRelease['body'];
+    }
+
+    public function isPreRelease(): bool {
+        // yeah, it's a boolean in the JSON, but 
+        // let's check it to be sure this function returns a boolean.
+        return $this->rawRelease['prerelease'] == true;
     }
 }
