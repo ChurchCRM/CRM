@@ -44,7 +44,7 @@ class ChurchCRMReleaseManager {
         $eligibleReleases = array();
         LoggerUtils::getAppLogger()->addDebug("Querying GitHub '".ChurchCRMReleaseManager::GITHUB_USER_NAME."/".ChurchCRMReleaseManager::GITHUB_REPOSITORY_NAME."' for ChurchCRM Releases");
         $gitHubReleases = $client->api('repo')->releases()->all(ChurchCRMReleaseManager::GITHUB_USER_NAME, ChurchCRMReleaseManager::GITHUB_REPOSITORY_NAME);
-        LoggerUtils::getAppLogger()->addDebug("Received ". count($gitHubReleases) . " ChurchCRM releases on GitHub");
+        LoggerUtils::getAppLogger()->addDebug("Received ". count($gitHubReleases) . " ChurchCRM releases from GitHub");
         foreach($gitHubReleases as $r)
         {
             $release = new ChurchCRMRelease($r);
@@ -64,13 +64,15 @@ class ChurchCRMReleaseManager {
             
            
         }
+
+        usort($eligibleReleases, function(ChurchCRMRelease $a, ChurchCRMRelease $b){
+            return $a->compareTo($b) < 0;
+        });
+
         LoggerUtils::getAppLogger()->addDebug("Found " . count($eligibleReleases) . " eligible ChurchCRM releases on GitHub");
         return $eligibleReleases;
     }
 
-    /**
-     * @return ChurchCRMRelease[]
-     */
 
 
     public static function checkForUpdates() {
@@ -87,7 +89,9 @@ class ChurchCRMReleaseManager {
 
         }
         else {
-            return $_SESSION['ChurchCRMReleases'][0]->equals($Release);
+            $CurrentRelease = $_SESSION['ChurchCRMReleases'][0];
+            LoggerUtils::getAppLogger()->addDebug("Determining if ".$Release." is current by checking if equals: " . $CurrentRelease);
+            return $CurrentRelease->equals($Release);
         }
         
     }
@@ -110,7 +114,7 @@ class ChurchCRMReleaseManager {
         }));
 
         usort($eligibleUpgradeTargetReleases, function(ChurchCRMRelease $a, ChurchCRMRelease $b){
-            return $a->PATCH < $b->PATCH;
+            return $a->compareTo($b) < 0;
         });
         
         if (count($eligibleUpgradeTargetReleases) == 0 ) {
