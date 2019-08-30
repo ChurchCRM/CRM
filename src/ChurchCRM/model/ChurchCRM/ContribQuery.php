@@ -16,17 +16,4 @@ use ChurchCRM\Base\ContribQuery as BaseContribQuery;
  */
 class ContribQuery extends BaseContribQuery
 {
-    public function preSelect(\Propel\Runtime\Connection\ConnectionInterface $con)
-    {
-        // $this->leftJoinPerson();
-        // $this->withColumn("per_ID", "per_ID");
-        // $this->withColumn("per_FirstName", "FirstName");
-        // $this->withColumn("per_LastName", "LastName");
-        // $this->withColumn("per_Envelope", "Envelope");
-        // $this->leftJoinContribSplit();
-        // $this->withColumn("spl_FundId", "spl_FundId");
-        // $this->groupById();
-        // $this->withColumn('SUM(contrib_split.spl_Amount)', 'totalAmount');
-        // parent::preSelect($con);
-    }
 }

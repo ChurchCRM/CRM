@@ -64,7 +64,7 @@ $app->group('/deposits', function () {
 
     $this->get('/{id:[0-9]+}/csv', function ($request, $response, $args) {
         $id = $args['id'];
-        // fix
+        // some cleanup required here
         header('Content-Disposition: attachment; filename=ChurchCRM-Deposit-' . $id . '-' . date(SystemConfig::getValue("sDateFilenameFormat")) . '.csv');
         echo DepositQuery::create()
             ->useContribQuery()

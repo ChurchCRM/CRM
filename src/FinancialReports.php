@@ -113,7 +113,7 @@ if ($sReportType == '') {
     echo '<tr><td><h3>'.gettext('Filters').'</h3></td></tr>';
 
     // Filter by Classification and Families
-    if ($sReportType == 'Giving Report' || $sReportType == 'Pledge Reminders' || $sReportType == 'Pledge Family Summary' || $sReportType == 'Advanced Deposit Report' || $sReportType == 'Canadian Tax Receipt') {
+    if ($sReportType == 'Giving Report' || $sReportType == 'Pledge Reminders' || $sReportType == 'Pledge Family Summary' || $sReportType == 'Canadian Tax Receipt') {
 
         //Get Classifications for the drop-down
         $sSQL = 'SELECT * FROM list_lst WHERE lst_ID = 1 ORDER BY lst_OptionSequence';
@@ -140,7 +140,7 @@ if ($sReportType == '') {
         </td></tr>
         <?php
         // hide families for canadian tax receipt
-        if ($sReportType == 'Canadian Tax Receipt') {
+        if ($sReportType == 'Canadian Tax Receipt' || $sReportType == 'Advanced Deposit Report') {
             // show person for Canadian Tax receipt
             $rsPeople = PersonQuery::create()->orderByLastName()->find();
 
@@ -218,7 +218,7 @@ if ($sReportType == '') {
             <td class=TextColumn><input type=text name=DateStart class='date-picker' maxlength=10 id=DateStart size=11 value='$today'></td></tr>";
         echo '<tr><td class=LabelColumn>'.gettext('Report End Date:')."</td>
             <td class=TextColumn><input type=text name=DateEnd class='date-picker' maxlength=10 id=DateEnd size=11 value='$today'></td></tr>";
-        if ($sReportType == 'Giving Report' || $sReportType == 'Advanced Deposit Report') {
+        if ($sReportType == 'Giving Report') {
             echo '<tr><td class=LabelColumn>'.gettext('Apply Report Dates To:').'</td>';
             echo "<td class=TextColumnWithBottomBorder><input name=datetype type=radio checked value='Deposit'>".gettext('Deposit Date (Default)');
             echo " &nbsp; <input name=datetype type=radio value='Payment'>".gettext('Payment Date').'</tr>';
@@ -254,7 +254,7 @@ if ($sReportType == '') {
     }
 
     // Filter by Account
-    if ($sReportType == 'Pledge Summary' || $sReportType == 'Pledge Family Summary' || $sReportType == 'Giving Report' || $sReportType == 'Advanced Deposit Report' || $sReportType == 'Pledge Reminders' || $sReportType == 'Canadian Tax Receipt') {
+    if ($sReportType == 'Pledge Summary' || $sReportType == 'Pledge Family Summary' || $sReportType == 'Giving Report' || $sReportType == 'Pledge Reminders' || $sReportType == 'Canadian Tax Receipt') {
         $sSQL = 'SELECT fun_ID, fun_Name, fun_Active FROM donationfund_fun ORDER BY fun_Active, fun_Name';
         $rsFunds = RunQuery($sSQL); ?>
 
@@ -279,21 +279,21 @@ if ($sReportType == '') {
 
         <?php
     }
-
+    // May implement this for Giving Report/ Canadian Tax Receipt
     // Filter by Payment Method
-    if ($sReportType == 'Advanced Deposit Report') {
-        echo '<tr><td class=LabelColumn>'.gettext('Filter by Payment Type:').'<br></td>';
-        echo '<td class=TextColumnWithBottomBorder><div class=SmallText>'
-            .gettext('Use Ctrl Key to select multiple');
-        echo '</div><select name=method[] size=5 multiple>';
-        echo '<option value=0 selected>'.gettext('All Methods');
-        echo "<option value='CHECK'>".gettext('Check')
-            ."<option value='CASH'>".gettext('Cash')
-            ."<option value='CREDITCARD'>".gettext('Credit Card')
-            ."<option value='BANKDRAFT'>".gettext('Bank Draft')
-            ."<option value='EGIVE'>".gettext('eGive');
-        echo '</select></td></tr>';
-    }
+    // if ($sReportType == 'Advanced Deposit Report') {
+    //     echo '<tr><td class=LabelColumn>'.gettext('Filter by Payment Type:').'<br></td>';
+    //     echo '<td class=TextColumnWithBottomBorder><div class=SmallText>'
+    //         .gettext('Use Ctrl Key to select multiple');
+    //     echo '</div><select name=method[] size=5 multiple>';
+    //     echo '<option value=0 selected>'.gettext('All Methods');
+    //     echo "<option value='CHECK'>".gettext('Check')
+    //         ."<option value='CASH'>".gettext('Cash')
+    //         ."<option value='CREDITCARD'>".gettext('Credit Card')
+    //         ."<option value='BANKDRAFT'>".gettext('Bank Draft')
+    //         ."<option value='EGIVE'>".gettext('eGive');
+    //     echo '</select></td></tr>';
+    // }
 
     if ($sReportType == 'Giving Report' || $sReportType == 'Canadian Tax Receipt') {
         echo '<tr><td class=LabelColumn>'.gettext('Minimun Total Amount:').'</td>'
@@ -331,16 +331,16 @@ if ($sReportType == '') {
             ." <input name=remittance type=radio value='no' checked>".gettext('No').'</td></tr>';
     }
 
-    if ($sReportType == 'Advanced Deposit Report') {
-        echo '<tr><td class=LabelColumn>'.gettext('Sort Data by:').'</td>'
-            ."<td class=TextColumnWithBottomBorder><input name=sort type=radio value='deposit' checked>".gettext('Deposit')
-            ." &nbsp;<input name=sort type=radio value='fund'>".gettext('Fund')
-            ." &nbsp;<input name=sort type=radio value='family'>".gettext('Family').'</td></tr>';
-        echo '<tr><td class=LabelColumn>'.gettext('Report Type:').'</td>'
-            ."<td class=TextColumnWithBottomBorder><input name=detail_level type=radio value='detail' checked>".gettext('All Data')
-            ." <input name=detail_level type=radio value='medium'>".gettext('Moderate Detail')
-            ." <input name=detail_level type=radio value='summary'>".gettext('Summary Data').'</td></tr>';
-    }
+    // if ($sReportType == 'Advanced Deposit Report') {
+    //     echo '<tr><td class=LabelColumn>'.gettext('Sort Data by:').'</td>'
+    //         ."<td class=TextColumnWithBottomBorder><input name=sort type=radio value='deposit' checked>".gettext('Deposit')
+    //         ." &nbsp;<input name=sort type=radio value='fund'>".gettext('Fund')
+    //         ." &nbsp;<input name=sort type=radio value='family'>".gettext('Family').'</td></tr>';
+    //     echo '<tr><td class=LabelColumn>'.gettext('Report Type:').'</td>'
+    //         ."<td class=TextColumnWithBottomBorder><input name=detail_level type=radio value='detail' checked>".gettext('All Data')
+    //         ." <input name=detail_level type=radio value='medium'>".gettext('Moderate Detail')
+    //         ." <input name=detail_level type=radio value='summary'>".gettext('Summary Data').'</td></tr>';
+    // }
 
     if ($sReportType == 'Voting Members') {
         echo '<tr><td class=LabelColumn>'.gettext('Voting members must have made<br> a donation within this many years<br> (0 to not require a donation):').'</td>';

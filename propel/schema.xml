@@ -920,7 +920,6 @@
         <column name="con_TypeOfMbr" phpName="TypeOfMbr" type="TINYINT" size="3" sqlType="tinyint(3) unsigned" required="true"
                 defaultValue="0"/> 
         <column name="con_Date" phpName="Date" type="DATE"/>
-        <!-- <column name="con_Amount" phpName="Amount" type="DECIMAL" size="8" scale="2"/> -->
         <column name="con_method" phpName="Method" type="CHAR" sqlType="enum('CREDITCARD','CHECK','CASH','BANKDRAFT','EGIVE')"/>
         <column name="con_Comment" phpName="Comment" type="LONGVARCHAR"/>
 
@@ -930,9 +929,7 @@
         <column name="con_DateLastEdited" phpName="Datelastedited" type="TIMESTAMP"/>
         <column name="con_EditedBy" phpName="Editedby" type="SMALLINT" size="9" defaultValue="0"/>
         <column name="con_CheckNo" phpName="Checkno" type="BIGINT" size="16" sqlType="bigint(16) unsigned"/>
-        <!-- <index name="con_ContribID">
-            <index-column name="con_ContribID"/>
-        </index> -->
+ 
         <foreign-key foreignTable="person_per">
             <reference local="con_ContribID" foreign="per_ID"/>
         </foreign-key>

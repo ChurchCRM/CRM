@@ -57,14 +57,11 @@ if (!empty($_POST['funds'])) {
     }
 }
 
-// Filter by Family
+// Filter by Person
 if (!empty($_POST['person'])) {
     $filterById = true;
-    // $count = 0;
     foreach ($_POST['person'] as $famID) {
-        // $count++;
-        $fam[$count] = InputUtils::LegacyFilterInput($famID, 'int');
-        // $fam[$count] = $famID;
+        $fam[] = InputUtils::LegacyFilterInput($famID, 'int');
     }
 }
 
@@ -79,7 +76,7 @@ $contributions = ContribSplitQuery::create()
             ->withColumn("con_Comment", "Comment")
             ->withColumn("con_Date", "Date")
             ->usePersonQuery()
-            ->withColumn("per_Id","perId")
+                ->withColumn("per_Id","perId")
                 ->withColumn("per_FirstName","FirstName")
                 ->withColumn("per_MiddleName","MiddleName")
                 ->withColumn("per_LastName","LastName")

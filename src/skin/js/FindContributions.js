@@ -1,60 +1,5 @@
 var dataT = 0;
 
-// $(document).ready(function () {
-  // $("#contribDate").datepicker({format: 'yyyy-mm-dd', language: window.CRM.lang}).datepicker("setDate", new Date());
-  // $("#addNewContrib").click(function (e) {
-  //   var newContribution = {
-  //     //'depositType': $("#depositType option:selected").val(),
-  //     // 'contribComment': $("#contribComment").val(),
-  //     // 'contribDate': $("#contribDate").val()
-  //   };
-  // $("#addNewContrib").click(function (e) {
-  //   var newContribution = {
-  //     //'depositType': $("#depositType option:selected").val(),
-  //     // 'contribComment': $("#contribComment").val(),
-  //     // 'contribDate': $("#contribDate").val()
-  //   };
-  //   if(!$("#contribComment").val().trim()){
-  //       bootbox.confirm({
-  //            title: i18next.t('Add New Deposit'),
-  //            message: i18next.t('You are about to add a new deposit without a comment'),
-  //            buttons: {
-  //               cancel: {
-  //                   label: i18next.t('Cancel')
-  //               },
-  //               confirm: {
-  //                   label: i18next.t('Confirm')
-  //               }
-  //           },
-  //            callback: function (result) {
-  //                if(result == true){
-  //                       addNewContributionRequest(newContribution);
-  //                }
-  //            }
-  //       });
-
-  //   }else{
-  //           addNewContributionRequest(newContribution);
-  //   }
-
-  // });
-
-  // function addNewContributionRequest(newContribution){
-  //   //console.log(window.CRM.root);
-  //   $.ajax({
-  //     method: "POST",
-  //     url: window.CRM.root + "/api/contrib",
-  //     data: JSON.stringify(newContribution),
-  //     contentType: "application/json; charset=utf-8",
-  //     dataType: "json"
-  //   }).done(function (data) {
-  //     data.totalAmount = '';
-  //     dataT.row.add(data);
-  //     dataT.rows().invalidate().draw(true);
-  //   });
-  // };
-
-
   $('#cancel').click(function() {
     document.location = window.CRM.root + "/" + slinkBack;
   });
@@ -180,8 +125,8 @@ var dataT = 0;
       $("#deleteSelectedRows").text("Delete (" + selectedRows + ") Selected Rows");
       // $("#exportSelectedRows").prop('disabled', !(selectedRows));
       // $("#exportSelectedRows").html("<i class=\"fa fa-download\"></i> Export (" + selectedRows + ") Selected Rows (OFX)");
-      $("#exportSelectedRowsCSV").prop('disabled', !(selectedRows));
-      $("#exportSelectedRowsCSV").html("<i class=\"fa fa-download\"></i> Export (" + selectedRows + ") Selected Rows (CSV)");
+      // $("#exportSelectedRowsCSV").prop('disabled', !(selectedRows));
+      // $("#exportSelectedRowsCSV").html("<i class=\"fa fa-download\"></i> Export (" + selectedRows + ") Selected Rows (CSV)");
       // $("#generateDepositSlip").prop('disabled', !(selectedRows));
       // $("#generateDepositSlip").html("<i class=\"fa fa-download\"></i> Generate Deposit Split for Selected (" + selectedRows + ") Rows (PDF)");
     });

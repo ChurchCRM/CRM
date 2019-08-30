@@ -16,15 +16,4 @@ use ChurchCRM\Base\Contrib as BaseContrib;
  */
 class Contrib extends BaseContrib
 {
-    // public function toArray()
-    // {
-    //   $array = parent::toArray();
-    //   //$family = $this->getFamily();
-    //   $person = PersonQuery::create()->findPk($this->con_ContribID, $con);
-    //   if($person) {
-    //     $array['PersonString']=$person->getFormattedName(SystemConfig::getValue('iPersonNameStyle')) . " - " . $person->getAddress();
-    //   }
-
-    //   return $array;
-    // }
 }

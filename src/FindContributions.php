@@ -53,8 +53,8 @@ $linkBack = InputUtils::LegacyFilterInput($_GET['linkBack'], 'string');
                   disabled> <?= gettext('Delete Selected Rows') ?> </button>
           <!-- <button type="button" id="exportSelectedRows" class="btn btn-success exportButton" data-exportType="ofx"
                   disabled><i class="fa fa-download"></i> < ?= gettext('Export Selected Rows (OFX)') ?></button> -->
-          <button type="button" id="exportSelectedRowsCSV" class="btn btn-success exportButton" data-exportType="csv"
-                  disabled><i class="fa fa-download"></i> <?= gettext('Export Selected Rows (CSV)') ?></button>
+          <!-- <button type="button" id="exportSelectedRowsCSV" class="btn btn-success exportButton" data-exportType="csv"
+                  disabled><i class="fa fa-download"></i> < ?= gettext('Export Selected Rows (CSV)') ?></button> -->
           <!-- <button type="button" id="generateDepositSlip" class="btn btn-success exportButton" data-exportType="pdf"
                   disabled> < ?= gettext('Generate Deposit Slip for Selected Rows (PDF)') ?></button> -->
           <!-- <button type="button" id="AddAllToCart" class="btn btn-primary">< ?= gettext('Add All to Cart') ?></button>
