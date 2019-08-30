@@ -5,6 +5,7 @@ namespace ChurchCRM\Utils;
 use ChurchCRM\dto\ChurchCRMRelease;
 use Github\Client;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\dto\SystemConfig;
 
 class ChurchCRMReleaseManager {
 
@@ -30,14 +31,31 @@ class ChurchCRMReleaseManager {
 
     private static function populateReleases() {
         $client = new Client();
-        $releases = array();
-        LoggerUtils::getAppLogger()->addDebug("Querying GitHub for ChurchCRM Releases");
-        foreach($client->api('repo')->releases()->all(ChurchCRMReleaseManager::GITHUB_USER_NAME, ChurchCRMReleaseManager::GITHUB_REPOSITORY_NAME) as $release)
+        $eligibleReleases = array();
+        LoggerUtils::getAppLogger()->addDebug("Querying GitHub '".ChurchCRMReleaseManager::GITHUB_USER_NAME."/".ChurchCRMReleaseManager::GITHUB_REPOSITORY_NAME."' for ChurchCRM Releases");
+        $gitHubReleases = $client->api('repo')->releases()->all(ChurchCRMReleaseManager::GITHUB_USER_NAME, ChurchCRMReleaseManager::GITHUB_REPOSITORY_NAME);
+        LoggerUtils::getAppLogger()->addDebug("Received ". count($gitHubReleases) . " ChurchCRM releases on GitHub");
+        foreach($gitHubReleases as $r)
         {
-            array_push($releases,new ChurchCRMRelease($release));
+            $release = new ChurchCRMRelease($r);
+            if ($release->isPreRelease()){
+                if (SystemConfig::getBooleanValue("bAllowPrereleaseUpgrade")){
+                    LoggerUtils::getAppLogger()->addDebug("bAllowPrereleaseUpgrade allows upgrade to a pre-release version.  Including ".$release." for consideration");
+                    array_push($eligibleReleases,$release);
+                }
+                else {
+                    LoggerUtils::getAppLogger()->addDebug("bAllowPrereleaseUpgrade disallows upgrade to a pre-release version.  Not including ".$release." for consideration");
+                }
+            }
+            else {
+                LoggerUtils::getAppLogger()->addDebug($release." is not a pre-release version. Including for consideration");
+                array_push($eligibleReleases, $release);
+            }
+            
+           
         }
-        LoggerUtils::getAppLogger()->addDebug("Found " . count($releases) . " ChurchCRM releases on GitHub");
-        return $releases;
+        LoggerUtils::getAppLogger()->addDebug("Found " . count($eligibleReleases) . " eligible ChurchCRM releases on GitHub");
+        return $eligibleReleases;
     }
 
     /**
