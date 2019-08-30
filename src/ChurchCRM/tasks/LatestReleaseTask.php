@@ -4,11 +4,15 @@ namespace ChurchCRM\Tasks;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\ChurchCRMReleaseManager;
 use ChurchCRM\Utils\LoggerUtils;
+use ChurchCRM\dto\ChurchCRMRelease;
 
 
 class LatestReleaseTask implements iTask
 {
   private $installedVersion;
+  /**
+   * @var ChurchCRMRelease
+   */
   private $latestVersion;
 
   public function __construct()
