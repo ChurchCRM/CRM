@@ -62,9 +62,9 @@ $linkBack = InputUtils::LegacyFilterInput($_GET['linkBack'], 'string');
           
         </div>
         <div id="depositButton" style="display:none">
-          <button type="button" id="AddToDeposit" class="btn btn-primary"><?= gettext('Add to Deposit (#' . $iDepositSlipID . ')' ) ?></button>
+          <button type="button" id="AddToDeposit" class="btn btn-primary"><?= gettext('Add to Deposit (#' . $iDepositSlipID . ')') ?></button>
           <button type="button" id="AddSelectedToDeposit" class="btn btn-primary"><?= gettext('Add Selected Rows') ?></button>
-          <button type="button" id="cancel" class="btn btn-danger"><?= gettext('Cancel' ) ?></button>
+          <button type="button" id="cancel" class="btn btn-danger"><?= gettext('Cancel') ?></button>
         </div>
     </div>
   </div>
