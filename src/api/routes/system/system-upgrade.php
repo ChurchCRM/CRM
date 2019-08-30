@@ -12,7 +12,7 @@ $app->group('/systemupgrade', function () {
 
     $this->post('/doupgrade', function ($request, $response, $args) {
         $input = (object)$request->getParsedBody();
-        $upgradeResult = $this->SystemService->doUpgrade($input->fullPath, $input->sha1);
+        $upgradeResult = ChurchCRMReleaseManager::doUpgrade($input->fullPath, $input->sha1);
         return $response->withJson($upgradeResult);
     });
 })->add(new AdminRoleAuthMiddleware());

@@ -251,38 +251,6 @@ class SystemService
         return rmdir($src);
     }
 
-    public function doUpgrade($zipFilename, $sha1)
-    {
-      $logger = LoggerUtils::getAppLogger();
-      $logger->info("Beginnging upgrade process");
-      $logger->info("PHP max_execution_time is now: " . ini_get("max_execution_time"));
-      $logger->info("Beginning hash validation on " . $zipFilename);
-      if ($sha1 == sha1_file($zipFilename)) {
-        $logger->info("Hash validation succeeded on " . $zipFilename . " Got: " . sha1_file($zipFilename));
-        $zip = new \ZipArchive();
-        if ($zip->open($zipFilename) == true) {
-          $logger->info("Extracting " . $zipFilename." to: " . SystemURLs::getDocumentRoot() . '/Upgrade');
-          $executionTime = new ExecutionTime();
-          $zip->extractTo(SystemURLs::getDocumentRoot() . '/Upgrade');
-          $zip->close();
-          $logger->info("Extraction completed.  Took:" . $executionTime->getMiliseconds());
-          $logger->info("Moving extracted zip into place");
-          $executionTime = new ExecutionTime();
-          $this->moveDir(SystemURLs::getDocumentRoot() . '/Upgrade/churchcrm', SystemURLs::getDocumentRoot());
-          $logger->info("Move completed.  Took:" . $executionTime->getMiliseconds());
-        }
-        $logger->info("Deleting zip archive: ".$zipFilename);
-        unlink($zipFilename);
-        SystemConfig::setValue('sLastIntegrityCheckTimeStamp', null);
-        $logger->debug("Set sLastIntegrityCheckTimeStamp to null");
-        $logger->info("Upgrade process complete");
-        return 'success';
-      } else {
-        $logger->err("Hash validation failed on " . $zipFilename.". Expected: ".$sha1. ". Got: ".sha1_file($zipFilename));
-        return 'hash validation failure';
-      }
-    }
-
         // Returns a file size limit in bytes based on the PHP upload_max_filesize
     // and post_max_size
     public static function getMaxUploadFileSize($humanFormat=true) {

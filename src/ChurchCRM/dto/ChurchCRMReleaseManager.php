@@ -32,8 +32,8 @@ class ChurchCRMReleaseManager {
             }
             else {
                 throw new \Exception("Provided string matched more than one ChurchCRM Release: " . \json_encode($requestedRelease));
-        }
-        }
+            }
+        }        
     }
 
     /**
@@ -159,6 +159,65 @@ class ChurchCRMReleaseManager {
         $logger->info("SHA1 hash for ". $returnFile['fullPath'] .": " . $returnFile['sha1']);
         $logger->info("Release notes: " . $returnFile['releaseNotes'] );
         return $returnFile;
+    }
+    
+    public static function preShutdown() {
+        // this is kind of code-smell
+        // since this callback will be invoked upon PHP timeout
+        // we aren't guaranteed any of Slim's error handling
+        // so we need to echo a JSON document that "looks like"
+        // an exception the client-side JS can display to the user
+        // so they know it actually timed out.
+        $logger = LoggerUtils::getAppLogger();
+        $logger->addWarning("Maximum execution time threshold exceeded: " . ini_get("max_execution_time"));
+        
+        echo \json_encode([
+            'code' => 500,
+            'message' => "Maximum execution time threshold exceeded: " . ini_get("max_execution_time") . ".  This ChurchCRM installation may now be in an unstable state.  Please review the documentation at https://github.com/ChurchCRM/CRM/wiki/Recovering-from-a-failed-update"
+        ]);
+    }
+    public static function doUpgrade($zipFilename, $sha1)
+    {
+        // temporarily disable PHP's error display so that
+        // our custom timeout handler can display parsable JSON 
+        // in the event this upgrade job times-out the 
+        // PHP instance's max_execution_time
+        $displayErrors = ini_get('display_errors');
+        ini_set('display_errors',0);
+        register_shutdown_function(function() { 
+            return ChurchCRMReleaseManager::preShutdown();
+        });
+        
+        $logger = LoggerUtils::getAppLogger();
+        $logger->info("Beginnging upgrade process");
+        $logger->info("PHP max_execution_time is now: " . ini_get("max_execution_time"));
+        $logger->info("Beginning hash validation on " . $zipFilename);
+        if ($sha1 == sha1_file($zipFilename)) {
+            $logger->info("Hash validation succeeded on " . $zipFilename . " Got: " . sha1_file($zipFilename));
+            $zip = new \ZipArchive();
+            if ($zip->open($zipFilename) == true) {
+            $logger->info("Extracting " . $zipFilename." to: " . SystemURLs::getDocumentRoot() . '/Upgrade');
+            $executionTime = new ExecutionTime();
+            $zip->extractTo(SystemURLs::getDocumentRoot() . '/Upgrade');
+            $zip->close();
+            $logger->info("Extraction completed.  Took:" . $executionTime->getMiliseconds());
+            $logger->info("Moving extracted zip into place");
+            $executionTime = new ExecutionTime();
+            $this->moveDir(SystemURLs::getDocumentRoot() . '/Upgrade/churchcrm', SystemURLs::getDocumentRoot());
+            $logger->info("Move completed.  Took:" . $executionTime->getMiliseconds());
+            }
+            $logger->info("Deleting zip archive: ".$zipFilename);
+            unlink($zipFilename);
+            SystemConfig::setValue('sLastIntegrityCheckTimeStamp', null);
+            $logger->debug("Set sLastIntegrityCheckTimeStamp to null");
+            $logger->info("Upgrade process complete");
+            ini_set('display_errors',$displayErrors);
+            return 'success';
+        } else {
+            ini_set('display_errors',$displayErrors);
+            $logger->err("Hash validation failed on " . $zipFilename.". Expected: ".$sha1. ". Got: ".sha1_file($zipFilename));
+            return 'hash validation failure';
+        }
     }
     
 }
