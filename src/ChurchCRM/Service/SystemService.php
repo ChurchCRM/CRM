@@ -228,6 +228,8 @@ class SystemService
           // Run this task as part of the "background jobs" API call
           // Inside ChurchCRMReleaseManager, the restults are stored to the $_SESSION
           ChurchCRMReleaseManager::checkForUpdates();
+          $now = new \DateTime();  // update the LastBackupTimeStamp.
+          SystemConfig::setValue('sLastSoftwareUpdateCheckTimeStamp', $now->format(SystemConfig::getValue('sDateFilenameFormat')));
         }
 
         LoggerUtils::getAppLogger()->addInfo("Finished background job processing");
