@@ -19,7 +19,7 @@ class ChurchCRMReleaseManager {
             $client = new Client();
             LoggerUtils::getAppLogger()->addInfo("Fetching release info for: " .$releaseString);
             $releases = $client->api('repo')->releases()->tag(ChurchCRMReleaseManager::GITHUB_USER_NAME, ChurchCRMReleaseManager::GITHUB_REPOSITORY_NAME, $releaseString);
-            LoggerUtils::getAppLogger()->addInfo("got from githib: " . count($releases));
+            LoggerUtils::getAppLogger()->addInfo("Found " . count($releases) . " Releases on GitHub");
             return new ChurchCRMRelease($releases);
         }
         catch (\Exception $e) {
