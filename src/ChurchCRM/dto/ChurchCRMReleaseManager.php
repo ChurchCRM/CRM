@@ -36,7 +36,10 @@ class ChurchCRMReleaseManager {
         }
     }
 
-    private static function populateReleases() {
+    /**
+     * @return ChurchCRMRelease[]
+     */
+    private static function populateReleases(): array{
         $client = new Client();
         $eligibleReleases = array();
         LoggerUtils::getAppLogger()->addDebug("Querying GitHub '".ChurchCRMReleaseManager::GITHUB_USER_NAME."/".ChurchCRMReleaseManager::GITHUB_REPOSITORY_NAME."' for ChurchCRM Releases");
