@@ -13,20 +13,27 @@ class ChurchCRMReleaseManager {
     private const GITHUB_REPOSITORY_NAME = 'crm';
 
     public static function getReleaseFromString(string $releaseString): ChurchCRMRelease { 
-        
-        try {
-            // TODO: Make this use the release cache, instead of hit the API every time.
-            $client = new Client();
-            LoggerUtils::getAppLogger()->addInfo("Fetching release info for: " .$releaseString);
-            $releases = $client->api('repo')->releases()->tag(ChurchCRMReleaseManager::GITHUB_USER_NAME, ChurchCRMReleaseManager::GITHUB_REPOSITORY_NAME, $releaseString);
-            LoggerUtils::getAppLogger()->addInfo("Found " . count($releases) . " Releases on GitHub");
-            return new ChurchCRMRelease($releases);
-        }
-        catch (\Exception $e) {
-            LoggerUtils::getAppLogger()->addWarning("Failed fetching release info for: " . $releaseString . ". Returning partial release object");
+        if ( empty($_SESSION['ChurchCRMReleases']  )) {
+            // The ChurchCRM releases have not yet been populated.
+            // Since populating the release list can be an expensive operation
+            // don't do it here, but rather wait for SystemServer TimerJobs to take care of it
+            // just give the requestor a skeleton object
+            LoggerUtils::getAppLogger()->addDebug("Query for release string " . $releaseString . " ocurred before GitHub releases were populated.  Providing skeleton release object");
             return new ChurchCRMRelease(@["name" => $releaseString]);
         }
-        
+        else {
+            LoggerUtils::getAppLogger()->addDebug("Attempting to service query for release string " . $releaseString . " from GitHub release cache");
+            $requestedRelease = array_values(array_filter($_SESSION['ChurchCRMReleases'],function($r) use ($releaseString) {
+                return $r->__toString() == $releaseString;
+            }));
+            if (count($requestedRelease) == 1 && $requestedRelease[0] instanceof ChurchCRMRelease){
+                LoggerUtils::getAppLogger()->addDebug("Query for release string " . $releaseString . " serviced from GitHub release cache");
+                return $requestedRelease[0];
+            }
+            else {
+                throw new \Exception("Provided string matched more than one ChurchCRM Release: " . \json_encode($requestedRelease));
+        }
+        }
     }
 
     private static function populateReleases() {
