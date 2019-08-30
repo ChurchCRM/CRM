@@ -146,7 +146,7 @@ if ($sReportType == '') {
 
             echo '<tr><td class=LabelColumn>' . gettext('Filter by Person') . ':<br></td>';
             echo '<td class=TextColumnWithBottomBorder>';
-                echo '<select name="person[]" id="person" multiple style="width:100%">';
+            echo '<select name="person[]" id="person" multiple style="width:100%">';
             
             foreach ($rsPeople as $person) {
                 echo '<option value=' . $person->getId() . '>' . $person->getFormattedName(9);
@@ -160,14 +160,12 @@ if ($sReportType == '') {
             echo '<button type="button" id="addAllPeople" class="btn btn-default">' . gettext('Add All People') . '</button>';
             echo '<button type="button" id="clearAllPeople" class="btn btn-default">' . gettext('Clear All People') . '</button><br/><br/>';
             echo '</td></tr>';
-
         } else {
-
             $sSQL = 'SELECT fam_ID, fam_Name, fam_Address1, fam_City, fam_State FROM family_fam ORDER BY fam_Name';
             $rsFamilies = RunQuery($sSQL);
             echo '<tr><td class=LabelColumn>' . gettext('Filter by Family') . ':<br></td>';
             echo '<td class=TextColumnWithBottomBorder>';
-                echo '<select name="family[]" id="family" multiple style="width:100%">';
+            echo '<select name="family[]" id="family" multiple style="width:100%">';
             
             // Build Criteria for Head of Household
             if (!$sDirRoleHead) {
@@ -303,7 +301,7 @@ if ($sReportType == '') {
     }
 
     // add requirements for Canadian Tax Receipts
-    if ($sReportType == 'Canadian Tax Receipt'){
+    if ($sReportType == 'Canadian Tax Receipt') {
         echo '<tr><td class=LabelColumn>'.gettext('Start Serial #:').'</td>'
             .'<td class=TextColumnWithBottomBorder>'
             ."<input name=serialnum type=text value='100' size=8></td></tr>";

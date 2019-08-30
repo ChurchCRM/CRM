@@ -42,26 +42,25 @@ if (!$_SESSION['user']->isAdmin() && SystemConfig::getValue('bCSVAdminOnly') && 
 if (!empty($_POST['deposit'])) {
     $filterByDepId = true;
     $iDepID = InputUtils::LegacyFilterInput($_POST['deposit'], 'int');
-
 }
 
 // build query based on user selected options
 $rsReport = ContribQuery::create()
     ->useDepositQuery()
         // ->withcolumn('Dep_Id','DepId')
-        ->withColumn('dep_Date','DepDate')
-        ->withColumn('dep_Type','Type')
-        ->withcolumn('dep_Comment','DepComment')
+        ->withColumn('dep_Date', 'DepDate')
+        ->withColumn('dep_Type', 'Type')
+        ->withcolumn('dep_Comment', 'DepComment')
     ->endUse()
     ->useContribSplitQuery()
         ->withColumn('SUM(contrib_split.spl_Amount)', 'totalAmount')
     ->endUse()
     ->usePersonQuery()
-        ->withColumn("per_Id","perId")
-        ->withColumn("per_LastName","FirstName")
-        ->withColumn("per_MiddleName","MiddleName")
-        ->withColumn("per_LastName","LastName")
-        ->withColumn("per_Address1","Address1")
+        ->withColumn("per_Id", "perId")
+        ->withColumn("per_LastName", "FirstName")
+        ->withColumn("per_MiddleName", "MiddleName")
+        ->withColumn("per_LastName", "LastName")
+        ->withColumn("per_Address1", "Address1")
     ->endUse()
     ->groupByConId()
     ->groupByDepId()
@@ -196,7 +195,7 @@ if ($output == 'pdf') {
 
     $curY = $pdf->Headings($curY);
 
-    foreach($rsReport as $aRow) {
+    foreach ($rsReport as $aRow) {
         $fam_ID = $aRow->getperId();
         $dep_Date = $aRow->getDepDate();
         $plg_depID = $aRow->getDepId();
@@ -299,18 +298,18 @@ if ($output == 'pdf') {
         $currentDepositDate = $dep_Date;
     }
 
-        // Print Deposit Summary
-        if ($countDeposit > 1) {
-            $item = gettext('items');
-        } else {
-            $item = gettext('item');
-        }
-        $sDepositSummary = "Deposit #$currentDepositID Total - $countDeposit $item:   $".number_format($currentDepositAmount, 2, '.', ',');
-        $pdf->SetXY(20, $curY);
-        $pdf->SetFont('Times', 'B', 10);
-        $pdf->Cell(175, $summaryIntervalY, $sDepositSummary, 0, 0, 'R');
-        $curY += 2 * $summaryIntervalY;
-        $page = $pdf->PageBreak($page);
+    // Print Deposit Summary
+    if ($countDeposit > 1) {
+        $item = gettext('items');
+    } else {
+        $item = gettext('item');
+    }
+    $sDepositSummary = "Deposit #$currentDepositID Total - $countDeposit $item:   $".number_format($currentDepositAmount, 2, '.', ',');
+    $pdf->SetXY(20, $curY);
+    $pdf->SetFont('Times', 'B', 10);
+    $pdf->Cell(175, $summaryIntervalY, $sDepositSummary, 0, 0, 'R');
+    $curY += 2 * $summaryIntervalY;
+    $page = $pdf->PageBreak($page);
      
 
     // Print Report Summary
@@ -343,22 +342,22 @@ if ($output == 'pdf') {
         ->useContribQuery()
         ->endUse();
 
-        if ($filterByDepId) {
-            $fundList->useContribQuery()->useDepositQuery()->filterById($iDepID)->endUse()->endUse();
-        } else {
-            $fundList->useContribQuery()->useDepositQuery()->filterByDate(array("min" => $sDateStart . " 00:00:00", "max" => $sDateEnd . " 23:59:59"))->endUse()->endUse();
-        }
+    if ($filterByDepId) {
+        $fundList->useContribQuery()->useDepositQuery()->filterById($iDepID)->endUse()->endUse();
+    } else {
+        $fundList->useContribQuery()->useDepositQuery()->filterByDate(array("min" => $sDateStart . " 00:00:00", "max" => $sDateEnd . " 23:59:59"))->endUse()->endUse();
+    }
     
-        $fundList->find();
+    $fundList->find();
 
-        foreach($fundList as $fund) {
-            $pdf->SetXY(22, $curY);
-            $pdf->Cell(45, $summaryIntervalY, $fund->getName());
-            $pdf->Cell(25, $summaryIntervalY, number_format($fund->gettotalAmount(), 2, '.', ','), 0, 0, 'R');
-            $curY += $summaryIntervalY;
-        }
+    foreach ($fundList as $fund) {
+        $pdf->SetXY(22, $curY);
+        $pdf->Cell(45, $summaryIntervalY, $fund->getName());
+        $pdf->Cell(25, $summaryIntervalY, number_format($fund->gettotalAmount(), 2, '.', ','), 0, 0, 'R');
+        $curY += $summaryIntervalY;
+    }
 
-        $page = $pdf->PageBreak($page);
+    $page = $pdf->PageBreak($page);
 
 
     $pdf->FinishPage($page);
@@ -384,7 +383,7 @@ if ($output == 'pdf') {
     $buffer = mb_substr($buffer, 0, -1).$eol;
 
     // Add data
-    foreach($rsReport as $row) {
+    foreach ($rsReport as $row) {
         // quote data rather than removing ','
         $buffer .= $row->getDepId().$delimiter.$row->getDepDate().$delimiter.$row->getCheckNo().$delimiter.$row->getLastName().$delimiter.$row->getFirstName().$delimiter.$row->getMiddleName().$delimiter.$row->getAddress1().$delimiter;
         $buffer .= '"'.$row->getComment().'"'.$delimiter.$row->gettotalAmount().$eol;
