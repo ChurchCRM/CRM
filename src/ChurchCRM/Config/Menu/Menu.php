@@ -204,6 +204,7 @@ class Menu
         $menu->addSubMenu(new MenuItem(gettext("Kiosk Manager"), "KioskManager.php",SessionUser::isAdmin()));
         $menu->addSubMenu(new MenuItem(gettext("Debug"), "v2/admin/debug",SessionUser::isAdmin()));
         $menu->addSubMenu(new MenuItem(gettext("Custom Menus"), "v2/admin/menus",SessionUser::isAdmin()));
+        $menu->addSubMenu(new MenuItem(gettext("Reset System"), "v2/admin/database/reset",SessionUser::isAdmin()));
         return $menu;
     }
 
