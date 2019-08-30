@@ -24,6 +24,36 @@ Class ChurchCRMRelease {
         return $this->MAJOR == $b->MAJOR && $this->MINOR == $b->MINOR && $this->PATCH == $b->PATCH;
     }
 
+    public function compareTo(ChurchCRMRelease $b) {
+        if ($this->MAJOR < $b->MAJOR )
+        {
+            return -1;
+        }
+        elseif ($this->MAJOR > $b->MAJOR ) {
+            return 1;
+        }
+        elseif ($this->MAJOR  ==  $b->MAJOR ) {
+            if ($this->MINOR < $b->MINOR) {
+                return -1;
+            }
+            elseif ($this->MINOR > $b->MINOR) {
+                return 1;
+            }
+            elseif ($this->MINOR == $b->MINOR) {
+                if ($this->PATCH < $b->PATCH)
+                {
+                    return -1;
+                }
+                else if ($this->patch > $b->PATCH) {
+                    return 1;
+                }
+                else if($this->PATCH == $b->PATCH) {
+                    return 0;
+                }
+            }
+        }
+    }
+
     public function __toString()
     {
         try 
