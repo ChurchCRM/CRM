@@ -2,7 +2,7 @@
 /*******************************************************************************
  *
  *  filename    : FinancialReports.php
- *  last change : 2005-03-26
+ *  last change : 2019-08-19 by Troy Smith, add support for Canadian Tax Receipt
  *  description : form to invoke financial reports
   *
  ******************************************************************************/
@@ -14,6 +14,7 @@ require 'Include/Functions.php';
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\PersonQuery;
 
 // Security
 if (!$_SESSION['user']->isFinanceEnabled()) {
@@ -59,6 +60,7 @@ if ($sReportType == '') {
     echo "<option value='Pledge Reminders'>".gettext('Pledge Reminders').'</option>';
     echo "<option value='Voting Members'>".gettext('Voting Members').'</option>';
     echo "<option value='Giving Report'>".gettext('Giving Report (Tax Statements)').'</option>';
+    echo "<option value='Canadian Tax Receipt'>".gettext('Canadian Tax Receipt').'</option>';
     echo "<option value='Zero Givers'>".gettext('Zero Givers').'</option>';
     echo "<option value='Individual Deposit Report'>".gettext('Individual Deposit Report').'</option>';
     echo "<option value='Advanced Deposit Report'>".gettext('Advanced Deposit Report').'</option>';
@@ -79,6 +81,9 @@ if ($sReportType == '') {
     switch ($sReportType) {
         case 'Giving Report':
             $action = 'Reports/TaxReport.php';
+        break;
+        case 'Canadian Tax Receipt':
+            $action = 'Reports/TaxReportCanadian.php';
         break;
         case 'Zero Givers':
             $action = 'Reports/ZeroGivers.php';
@@ -108,7 +113,7 @@ if ($sReportType == '') {
     echo '<tr><td><h3>'.gettext('Filters').'</h3></td></tr>';
 
     // Filter by Classification and Families
-    if ($sReportType == 'Giving Report' || $sReportType == 'Pledge Reminders' || $sReportType == 'Pledge Family Summary' || $sReportType == 'Advanced Deposit Report') {
+    if ($sReportType == 'Giving Report' || $sReportType == 'Pledge Reminders' || $sReportType == 'Pledge Family Summary' || $sReportType == 'Canadian Tax Receipt') {
 
         //Get Classifications for the drop-down
         $sSQL = 'SELECT * FROM list_lst WHERE lst_ID = 1 ORDER BY lst_OptionSequence';
@@ -134,63 +139,86 @@ if ($sReportType == '') {
         <button type="button" id="clearAllClasses" class="btn btn-default"><?= gettext('Clear All Classes') ?></button><br/><br/>
         </td></tr>
         <?php
+        // hide families for canadian tax receipt
+        if ($sReportType == 'Canadian Tax Receipt' || $sReportType == 'Advanced Deposit Report') {
+            // show person for Canadian Tax receipt
+            $rsPeople = PersonQuery::create()->orderByLastName()->find();
 
-        $sSQL = 'SELECT fam_ID, fam_Name, fam_Address1, fam_City, fam_State FROM family_fam ORDER BY fam_Name';
-        $rsFamilies = RunQuery($sSQL); ?>
-        <tr><td class=LabelColumn><?= gettext('Filter by Family') ?>:<br></td>
-        <td class=TextColumnWithBottomBorder>
-            <select name="family[]" id="family" multiple style="width:100%">
-        <?php
-        // Build Criteria for Head of Household
-        if (!$sDirRoleHead) {
-            $sDirRoleHead = '1';
-        }
-        $head_criteria = ' per_fmr_ID = '.$sDirRoleHead;
-        // If more than one role assigned to Head of Household, add OR
-        $head_criteria = str_replace(',', ' OR per_fmr_ID = ', $head_criteria);
-        // Add Spouse to criteria
-        if (intval($sDirRoleSpouse) > 0) {
-            $head_criteria .= " OR per_fmr_ID = $sDirRoleSpouse";
-        }
-        // Build array of Head of Households and Spouses with fam_ID as the key
-        $sSQL = 'SELECT per_FirstName, per_fam_ID FROM person_per WHERE per_fam_ID > 0 AND ('.$head_criteria.') ORDER BY per_fam_ID';
-        $rs_head = RunQuery($sSQL);
-        $aHead = [];
-        while (list($head_firstname, $head_famid) = mysqli_fetch_row($rs_head)) {
-            if ($head_firstname && array_key_exists($head_famid, $aHead)) {
-                $aHead[$head_famid] .= ' & '.$head_firstname;
-            } elseif ($head_firstname) {
-                $aHead[$head_famid] = $head_firstname;
+            echo '<tr><td class=LabelColumn>' . gettext('Filter by Person') . ':<br></td>';
+            echo '<td class=TextColumnWithBottomBorder>';
+                echo '<select name="person[]" id="person" multiple style="width:100%">';
+            
+            foreach ($rsPeople as $person) {
+                echo '<option value=' . $person->getId() . '>' . $person->getFormattedName(9);
             }
-        }
-        while ($aRow = mysqli_fetch_array($rsFamilies)) {
-            extract($aRow);
-            echo "<option value=$fam_ID>$fam_Name";
-            if (array_key_exists($fam_ID, $aHead)) {
-                echo ', '.$aHead[$fam_ID];
+
+            echo '</select></td></tr>';
+            echo '<tr>';
+            echo '<td></td>';
+            echo '<td>';
+            echo '<br/>';
+            echo '<button type="button" id="addAllPeople" class="btn btn-default">' . gettext('Add All People') . '</button>';
+            echo '<button type="button" id="clearAllPeople" class="btn btn-default">' . gettext('Clear All People') . '</button><br/><br/>';
+            echo '</td></tr>';
+
+        } else {
+
+            $sSQL = 'SELECT fam_ID, fam_Name, fam_Address1, fam_City, fam_State FROM family_fam ORDER BY fam_Name';
+            $rsFamilies = RunQuery($sSQL);
+            echo '<tr><td class=LabelColumn>' . gettext('Filter by Family') . ':<br></td>';
+            echo '<td class=TextColumnWithBottomBorder>';
+                echo '<select name="family[]" id="family" multiple style="width:100%">';
+            
+            // Build Criteria for Head of Household
+            if (!$sDirRoleHead) {
+                $sDirRoleHead = '1';
             }
-            echo ' '.FormatAddressLine($fam_Address1, $fam_City, $fam_State);
+            $head_criteria = ' per_fmr_ID = '.$sDirRoleHead;
+            // If more than one role assigned to Head of Household, add OR
+            $head_criteria = str_replace(',', ' OR per_fmr_ID = ', $head_criteria);
+            // Add Spouse to criteria
+            if (intval($sDirRoleSpouse) > 0) {
+                $head_criteria .= " OR per_fmr_ID = $sDirRoleSpouse";
+            }
+            // Build array of Head of Households and Spouses with fam_ID as the key
+            $sSQL = 'SELECT per_FirstName, per_fam_ID FROM person_per WHERE per_fam_ID > 0 AND ('.$head_criteria.') ORDER BY per_fam_ID';
+            $rs_head = RunQuery($sSQL);
+            $aHead = [];
+            while (list($head_firstname, $head_famid) = mysqli_fetch_row($rs_head)) {
+                if ($head_firstname && array_key_exists($head_famid, $aHead)) {
+                    $aHead[$head_famid] .= ' & '.$head_firstname;
+                } elseif ($head_firstname) {
+                    $aHead[$head_famid] = $head_firstname;
+                }
+            }
+            while ($aRow = mysqli_fetch_array($rsFamilies)) {
+                extract($aRow);
+                echo "<option value=$fam_ID>$fam_Name";
+                if (array_key_exists($fam_ID, $aHead)) {
+                    echo ', '.$aHead[$fam_ID];
+                }
+                echo ' '.FormatAddressLine($fam_Address1, $fam_City, $fam_State);
+            }
+
+            echo '</select></td></tr>';
+            echo '<tr>';
+            echo '<td></td>';
+            echo '<td>';
+            echo '<br/>';
+            echo '<button type="button" id="addAllFamilies" class="btn btn-default">' . gettext('Add All Families') . '</button>';
+            echo '<button type="button" id="clearAllFamilies" class="btn btn-default">' . gettext('Clear All Families') . '</button><br/><br/>';
+            echo '</td></tr>';
         }
-
-        echo '</select></td></tr>'; ?>
-        <tr>
-        <td></td>
-        <td>
-        <br/>
-        <button type="button" id="addAllFamilies" class="btn btn-default"><?= gettext('Add All Families') ?></button>
-        <button type="button" id="clearAllFamilies" class="btn btn-default"><?= gettext('Clear All Families') ?></button><br/><br/>
-        </td></tr>
-        <?php
-    }
-
+    } // end hide families
+    
     // Starting and Ending Dates for Report
-    if ($sReportType == 'Giving Report' || $sReportType == 'Advanced Deposit Report' || $sReportType == 'Zero Givers') {
+    if ($sReportType == 'Giving Report' || $sReportType == 'Advanced Deposit Report' || $sReportType == 'Zero Givers' || $sReportType == 'Canadian Tax Receipt') {
         $today = date('Y-m-d');
         echo '<tr><td class=LabelColumn>'.gettext('Report Start Date:')."</td>
             <td class=TextColumn><input type=text name=DateStart class='date-picker' maxlength=10 id=DateStart size=11 value='$today'></td></tr>";
         echo '<tr><td class=LabelColumn>'.gettext('Report End Date:')."</td>
             <td class=TextColumn><input type=text name=DateEnd class='date-picker' maxlength=10 id=DateEnd size=11 value='$today'></td></tr>";
-        if ($sReportType == 'Giving Report' || $sReportType == 'Advanced Deposit Report') {
+        if ($sReportType == 'Giving Report') {
             echo '<tr><td class=LabelColumn>'.gettext('Apply Report Dates To:').'</td>';
             echo "<td class=TextColumnWithBottomBorder><input name=datetype type=radio checked value='Deposit'>".gettext('Deposit Date (Default)');
             echo " &nbsp; <input name=datetype type=radio value='Payment'>".gettext('Payment Date').'</tr>';
@@ -226,7 +254,7 @@ if ($sReportType == '') {
     }
 
     // Filter by Account
-    if ($sReportType == 'Pledge Summary' || $sReportType == 'Pledge Family Summary' || $sReportType == 'Giving Report' || $sReportType == 'Advanced Deposit Report' || $sReportType == 'Pledge Reminders') {
+    if ($sReportType == 'Pledge Summary' || $sReportType == 'Pledge Family Summary' || $sReportType == 'Giving Report' || $sReportType == 'Pledge Reminders' || $sReportType == 'Canadian Tax Receipt') {
         $sSQL = 'SELECT fun_ID, fun_Name, fun_Active FROM donationfund_fun ORDER BY fun_Active, fun_Name';
         $rsFunds = RunQuery($sSQL); ?>
 
@@ -251,27 +279,34 @@ if ($sReportType == '') {
 
         <?php
     }
-
+    // May implement this for Giving Report/ Canadian Tax Receipt
     // Filter by Payment Method
-    if ($sReportType == 'Advanced Deposit Report') {
-        echo '<tr><td class=LabelColumn>'.gettext('Filter by Payment Type:').'<br></td>';
-        echo '<td class=TextColumnWithBottomBorder><div class=SmallText>'
-            .gettext('Use Ctrl Key to select multiple');
-        echo '</div><select name=method[] size=5 multiple>';
-        echo '<option value=0 selected>'.gettext('All Methods');
-        echo "<option value='CHECK'>".gettext('Check')
-            ."<option value='CASH'>".gettext('Cash')
-            ."<option value='CREDITCARD'>".gettext('Credit Card')
-            ."<option value='BANKDRAFT'>".gettext('Bank Draft')
-            ."<option value='EGIVE'>".gettext('eGive');
-        echo '</select></td></tr>';
-    }
+    // if ($sReportType == 'Advanced Deposit Report') {
+    //     echo '<tr><td class=LabelColumn>'.gettext('Filter by Payment Type:').'<br></td>';
+    //     echo '<td class=TextColumnWithBottomBorder><div class=SmallText>'
+    //         .gettext('Use Ctrl Key to select multiple');
+    //     echo '</div><select name=method[] size=5 multiple>';
+    //     echo '<option value=0 selected>'.gettext('All Methods');
+    //     echo "<option value='CHECK'>".gettext('Check')
+    //         ."<option value='CASH'>".gettext('Cash')
+    //         ."<option value='CREDITCARD'>".gettext('Credit Card')
+    //         ."<option value='BANKDRAFT'>".gettext('Bank Draft')
+    //         ."<option value='EGIVE'>".gettext('eGive');
+    //     echo '</select></td></tr>';
+    // }
 
-    if ($sReportType == 'Giving Report') {
+    if ($sReportType == 'Giving Report' || $sReportType == 'Canadian Tax Receipt') {
         echo '<tr><td class=LabelColumn>'.gettext('Minimun Total Amount:').'</td>'
             .'<td class=TextColumnWithBottomBorder><div class=SmallText>'
             .gettext('0 - No Minimum').'</div>'
             ."<input name=minimum type=text value='0' size=8></td></tr>";
+    }
+
+    // add requirements for Canadian Tax Receipts
+    if ($sReportType == 'Canadian Tax Receipt'){
+        echo '<tr><td class=LabelColumn>'.gettext('Start Serial #:').'</td>'
+            .'<td class=TextColumnWithBottomBorder>'
+            ."<input name=serialnum type=text value='100' size=8></td></tr>";
     }
 
     // Other Settings
@@ -296,16 +331,16 @@ if ($sReportType == '') {
             ." <input name=remittance type=radio value='no' checked>".gettext('No').'</td></tr>';
     }
 
-    if ($sReportType == 'Advanced Deposit Report') {
-        echo '<tr><td class=LabelColumn>'.gettext('Sort Data by:').'</td>'
-            ."<td class=TextColumnWithBottomBorder><input name=sort type=radio value='deposit' checked>".gettext('Deposit')
-            ." &nbsp;<input name=sort type=radio value='fund'>".gettext('Fund')
-            ." &nbsp;<input name=sort type=radio value='family'>".gettext('Family').'</td></tr>';
-        echo '<tr><td class=LabelColumn>'.gettext('Report Type:').'</td>'
-            ."<td class=TextColumnWithBottomBorder><input name=detail_level type=radio value='detail' checked>".gettext('All Data')
-            ." <input name=detail_level type=radio value='medium'>".gettext('Moderate Detail')
-            ." <input name=detail_level type=radio value='summary'>".gettext('Summary Data').'</td></tr>';
-    }
+    // if ($sReportType == 'Advanced Deposit Report') {
+    //     echo '<tr><td class=LabelColumn>'.gettext('Sort Data by:').'</td>'
+    //         ."<td class=TextColumnWithBottomBorder><input name=sort type=radio value='deposit' checked>".gettext('Deposit')
+    //         ." &nbsp;<input name=sort type=radio value='fund'>".gettext('Fund')
+    //         ." &nbsp;<input name=sort type=radio value='family'>".gettext('Family').'</td></tr>';
+    //     echo '<tr><td class=LabelColumn>'.gettext('Report Type:').'</td>'
+    //         ."<td class=TextColumnWithBottomBorder><input name=detail_level type=radio value='detail' checked>".gettext('All Data')
+    //         ." <input name=detail_level type=radio value='medium'>".gettext('Moderate Detail')
+    //         ." <input name=detail_level type=radio value='summary'>".gettext('Summary Data').'</td></tr>';
+    // }
 
     if ($sReportType == 'Voting Members') {
         echo '<tr><td class=LabelColumn>'.gettext('Voting members must have made<br> a donation within this many years<br> (0 to not require a donation):').'</td>';
@@ -313,7 +348,7 @@ if ($sReportType == '') {
     }
 
     if ((($_SESSION['user']->isAdmin() && $bCSVAdminOnly) || !$bCSVAdminOnly)
-        && ($sReportType == 'Pledge Summary' || $sReportType == 'Giving Report' || $sReportType == 'Individual Deposit Report' || $sReportType == 'Advanced Deposit Report' || $sReportType == 'Zero Givers')) {
+        && ($sReportType == 'Pledge Summary' || $sReportType == 'Giving Report' || $sReportType == 'Individual Deposit Report' || $sReportType == 'Advanced Deposit Report' || $sReportType == 'Zero Givers' || $sReportType == 'Canadian Tax Receipt')) {
         echo '<tr><td class=LabelColumn>'.gettext('Output Method:').'</td>';
         echo "<td class=TextColumnWithBottomBorder><input name=output type=radio checked value='pdf'>PDF";
         echo " <input name=output type=radio value='csv'>".gettext('CSV').'</tr>';
@@ -341,6 +376,18 @@ $(document).ready(function() {
   });
   $("#clearAllFamilies").click(function () {
         $("#family").val(null).trigger("change");
+  });
+
+  $("#person").select2();
+  $("#addAllPeople").click(function () {
+  var all = [];
+      $("#person > option").each(function () {
+          all.push(this.value);
+      });
+       $("#person").val(all).trigger("change");
+  });
+  $("#clearAllPeople").click(function () {
+        $("#person").val(null).trigger("change");
   });
 
   $("#classList").select2();

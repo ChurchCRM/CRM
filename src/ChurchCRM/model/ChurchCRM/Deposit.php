@@ -171,12 +171,12 @@ class Deposit extends BaseDeposit
         $thisReport->curX = $thisReport->QBDepositTicketParameters->leftX + $thisReport->QBDepositTicketParameters->lineItemInterval->x;
         $thisReport->curY = $thisReport->QBDepositTicketParameters->topY;
 
-        $pledges = \ChurchCRM\PledgeQuery::create()
-            ->filterByDepid($this->getId())
-            ->groupByGroupkey()
-            ->withColumn('SUM(Pledge.Amount)', 'sumAmount')
-            ->joinFamily(null, Criteria::LEFT_JOIN)
-            ->withColumn('Family.Name')
+        $pledges = ContribQuery::create()
+            ->filterByDepId($this->getId())
+            ->useContribSplitQuery()
+                ->withColumn('SUM(contrib_split.spl_Amount)', 'sumAmount')
+            ->endUse()
+            ->groupByConId()
             ->find();
         foreach ($pledges as $pledge) {
             // then all of the checks in key-value pairs, in 3 separate columns.  Left to right, then top to bottom.
@@ -280,17 +280,17 @@ class Deposit extends BaseDeposit
         $totalAmount = 0;
 
         //while ($aRow = mysqli_fetch_array($rsPledges))
-        foreach ($this->getPledges() as $payment) {
+        foreach ($this->getContribs() as $payment) {
             $thisReport->pdf->SetFont('Times', '', 10);
 
             // Format Data
             $checkNo = $payment->getCheckno();
-            $fundName = DonationFundQuery::create()->findOneById($payment->getFundid())->getName();
+            // $fundName = DonationFundQuery::create()->findOneById($payment->getFundid())->getName();
             $comment = $payment->getComment();
             //$family = FamilyQuery::create()->findOneById($payment->getFamId());
-            $family = $payment->getFamily();
+            $family = $payment->getPerson();
             if (!is_null($family)) {
-                $familyName = $payment->getFamily()->getName();
+                $familyName = $payment->getPerson()->getFormattedName(9);
             } else {
                 $familyName = gettext('Anonymous');
             }
@@ -323,7 +323,7 @@ class Deposit extends BaseDeposit
 
             $thisReport->pdf->SetFont('Courier', '', 8);
 
-            $thisReport->pdf->PrintRightJustified($thisReport->curX + $thisReport->depositSummaryParameters->summary->AmountX, $thisReport->curY, $payment->getAmount());
+            $thisReport->pdf->PrintRightJustified($thisReport->curX + $thisReport->depositSummaryParameters->summary->AmountX, $thisReport->curY, $this->getPersonAmount($payment->getPerson()->getId()));
 
             $thisReport->curY += $thisReport->depositSummaryParameters->summary->intervalY;
 
@@ -390,7 +390,7 @@ class Deposit extends BaseDeposit
     {
         requireUserGroupMembership('bFinance');
         $Report = new \stdClass();
-        if (count($this->getPledges()) == 0) {
+        if (count($this->getContribs()) == 0) {
             throw new \Exception('No Payments on this Deposit', 404);
         }
 
@@ -418,6 +418,13 @@ class Deposit extends BaseDeposit
 
     public function getCountContribs() {
         $countContribs = ContribQuery::create()
+            ->leftJoinPerson()
+            ->withColumn("per_ID", "per_ID")
+            ->withColumn("per_FirstName", "FirstName")
+            ->withColumn("per_LastName", "LastName")
+            ->withColumn("per_Envelope", "Envelope")
+            ->leftJoinContribSplit()
+            ->withColumn("spl_FundId", "spl_FundId")
             ->filterByDepid($this->getId())
             ->groupById()
             ->find()
@@ -426,10 +433,34 @@ class Deposit extends BaseDeposit
         return $countContribs;
     }
 
+    public function getPersonAmount($perID)
+    {
+        // return $this->getVirtualColumn('totalAmount');
+        $totalCash = ContribQuery::create()
+        ->usePersonQuery()
+            ->filterById($perID) // filter by person here fix me
+        ->endUse()
+        ->leftJoinContribSplit()
+        ->withColumn("spl_FundId", "spl_FundId")
+            ->filterByDepId($this->getId())
+            ->groupByDepId()
+            ->withColumn('SUM(contrib_split.spl_Amount)', 'totalAmount')
+            ->find()
+            ->getColumnValues('totalAmount')[0];
+        return $totalCash;
+    }
+
     public function getTotalAmount()
     {
         // return $this->getVirtualColumn('totalAmount');
         $totalCash = ContribQuery::create()
+        ->leftJoinPerson()
+        ->withColumn("per_ID", "per_ID")
+        ->withColumn("per_FirstName", "FirstName")
+        ->withColumn("per_LastName", "LastName")
+        ->withColumn("per_Envelope", "Envelope")
+        ->leftJoinContribSplit()
+        ->withColumn("spl_FundId", "spl_FundId")
             ->filterByDepId($this->getId())
             ->groupByDepId()
             ->withColumn('SUM(contrib_split.spl_Amount)', 'totalAmount')
@@ -441,6 +472,13 @@ class Deposit extends BaseDeposit
     public function getTotalChecks()
     {
         $totalCash = ContribQuery::create()
+        ->leftJoinPerson()
+        ->withColumn("per_ID", "per_ID")
+        ->withColumn("per_FirstName", "FirstName")
+        ->withColumn("per_LastName", "LastName")
+        ->withColumn("per_Envelope", "Envelope")
+        ->leftJoinContribSplit()
+        ->withColumn("spl_FundId", "spl_FundId")
             ->filterByMethod('CHECK')
             ->filterByDepId($this->getId())
             ->groupByDepId()
@@ -453,6 +491,13 @@ class Deposit extends BaseDeposit
     public function getTotalCash()
     {
         $totalCash = ContribQuery::create()
+        ->leftJoinPerson()
+        ->withColumn("per_ID", "per_ID")
+        ->withColumn("per_FirstName", "FirstName")
+        ->withColumn("per_LastName", "LastName")
+        ->withColumn("per_Envelope", "Envelope")
+        ->leftJoinContribSplit()
+        ->withColumn("spl_FundId", "spl_FundId")
             ->filterByMethod('CASH')
             ->filterByDepId($this->getId())
             ->groupByDepId()
@@ -466,6 +511,13 @@ class Deposit extends BaseDeposit
     public function getCountChecks()
     {
         $countCash = ContribQuery::create()
+        ->leftJoinPerson()
+        ->withColumn("per_ID", "per_ID")
+        ->withColumn("per_FirstName", "FirstName")
+        ->withColumn("per_LastName", "LastName")
+        ->withColumn("per_Envelope", "Envelope")
+        ->leftJoinContribSplit()
+        ->withColumn("spl_FundId", "spl_FundId")
             ->filterByDepid($this->getId())
             ->filterByMethod('CHECK')
             ->groupById()
@@ -478,6 +530,13 @@ class Deposit extends BaseDeposit
     public function getCountCash()
     {
         $countCash = ContribQuery::create()
+        ->leftJoinPerson()
+        ->withColumn("per_ID", "per_ID")
+        ->withColumn("per_FirstName", "FirstName")
+        ->withColumn("per_LastName", "LastName")
+        ->withColumn("per_Envelope", "Envelope")
+        ->leftJoinContribSplit()
+        ->withColumn("spl_FundId", "spl_FundId")
             ->filterByDepid($this->getId())
             ->filterByMethod('CASH')
             ->groupById()

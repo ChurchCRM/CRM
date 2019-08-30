@@ -5,6 +5,7 @@ use ChurchCRM\DepositQuery;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Slim\Middleware\Request\Auth\FinanceRoleAuthMiddleware;
 use ChurchCRM\ContribQuery;
+use ChurchCRM\Contrib;
 
 $app->group('/deposits', function () {
     $this->post('', function ($request, $response, $args) {
@@ -63,23 +64,31 @@ $app->group('/deposits', function () {
 
     $this->get('/{id:[0-9]+}/csv', function ($request, $response, $args) {
         $id = $args['id'];
-        //echo DepositQuery::create()->findOneById($id)->toCSV();
+        // some cleanup required here
         header('Content-Disposition: attachment; filename=ChurchCRM-Deposit-' . $id . '-' . date(SystemConfig::getValue("sDateFilenameFormat")) . '.csv');
-        echo ChurchCRM\PledgeQuery::create()->filterByDepid($id)
-            ->joinDonationFund()->useDonationFundQuery()
-            ->withColumn('DonationFund.Name', 'DonationFundName')
+        echo DepositQuery::create()
+            ->useContribQuery()
+                ->useContribSplitQuery()
+                    ->withColumn('SUM(contrib_split.spl_Amount)', 'totalAmount')
+                ->endUse()
             ->endUse()
-            ->joinFamily()->useFamilyQuery()
-            ->withColumn('Family.Name', 'FamilyName')
-            ->endUse()
-            ->find()
+            ->findOneById($id)
             ->toCSV();
     });
 
     $this->delete('/{id:[0-9]+}', function ($request, $response, $args) {
         $id = $args['id'];
+        // delete deposit
         DepositQuery::create()->findOneById($id)->delete();
+
+        // update deposit id to null on contributions, but do not delete!
+        $contribs = ContribQuery::create()->filterByDepId($id)->find();
+        foreach ($contribs as $row) {
+            $row->setDepID(null);
+            $row->save();
+        }
         echo json_encode(['success' => true]);
+
     });
 
     $this->get('/{id:[0-9]+}/pledges', function ($request, $response, $args) {

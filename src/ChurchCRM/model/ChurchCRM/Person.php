@@ -308,7 +308,7 @@ class Person extends BasePerson implements iPhoto
      * $Style = 4  :  "FirstName MiddleName LastName"
      * $Style = 5  :  "Title FirstName LastName"
      * $Style = 6  :  "LastName, Title FirstName"
-     *
+     * $Style = 9  :  "FirstName MiddleInitial. LastName"
      * @param $Style
      * @return string
      */
@@ -409,12 +409,21 @@ class Person extends BasePerson implements iPhoto
                 }
                 $nameString .= $this->getFirstName();
                 break;
-             case 7:
+            case 7:
                 if ($this->getLastName()) {
                     $nameString .= $this->getLastName() . ' ';
                 }
                 if ($this->getFirstName() ){
                     $nameString .= $this->getFirstName();
+                }
+                break;
+            case 9:
+                $nameString = $this->getFirstName();
+                if ($this->getMiddleName()) {
+                    $nameString .= ' ' . strtoupper(mb_substr($this->getMiddleName(), 0, 1, 'UTF-8')) . '.';
+                }
+                if ($this->getLastName()) {
+                    $nameString .= ' ' . $this->getLastName();
                 }
                 break;
             default:

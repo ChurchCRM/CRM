@@ -88,7 +88,7 @@ class ChurchInfoReport extends FPDF
         $this->MultiCell($wid, 4, $strconv, 1);
     }
 
-    public function StartLetterPage($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $letterhead = '')
+    public function StartLetterPage($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $letterhead = '',$sReportType, $iSerialNum)
     {
         $this->AddPage();
 
@@ -101,20 +101,34 @@ class ChurchInfoReport extends FPDF
             $this->WriteAt(170, $curY, date(SystemConfig::getValue("sDateFormatLong")));
         } else {
             $dateX = 170;
-            $dateY = 25;
-            $this->WriteAt($dateX, $dateY, date(SystemConfig::getValue("sDateFormatLong")));
+            $dateY = 20;
             $curY = 20;
             $this->WriteAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sChurchName'));
             $curY += SystemConfig::getValue('incrementY');
             $this->WriteAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sChurchAddress'));
             $curY += SystemConfig::getValue('incrementY');
             $this->WriteAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sChurchCity').', '.SystemConfig::getValue('sChurchState').'  '.SystemConfig::getValue('sChurchZip'));
-            $curY += SystemConfig::getValue('incrementY');
-            $curY += SystemConfig::getValue('incrementY'); // Skip another line before the phone/email
-      $this->WriteAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sChurchPhone').'  '.SystemConfig::getValue('sChurchEmail'));
+            // $curY += SystemConfig::getValue('incrementY');
+            $curY += SystemConfig::getValue('incrementY'); // Skip another line before the phone
+            $this->WriteAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sChurchPhone'));
+            $curY += SystemConfig::getValue('incrementY'); // Skip another line before the email
+            $this->WriteAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sChurchEmail'));
+            if ($sReportType == 'Canadian Tax Receipt'){
+                $curY += SystemConfig::getValue('incrementY'); // Skip another line before the TaxID
+                $this->WriteAt(SystemConfig::getValue('leftX'), $curY, 'TaxID: '.SystemConfig::getValue('sChurchTaxID'));
+            } else {
+                
+                $this->WriteAt($dateX, $dateY, date(SystemConfig::getValue("sDateFormatLong")));
+            }
             $curY += 25; // mm to move to the second window
         }
-        $this->WriteAt(SystemConfig::getValue('leftX'), $curY, $this->MakeSalutation($fam_ID));
+
+        if ($sReportType == 'Canadian Tax Receipt'){
+            // $this->SetTextColor(255,0,0);
+            $this->WriteAt($dateX, $curY, gettext('Serial #:').$iSerialNum);
+            // $this->SetTextColor(0, 0, 0);
+        }    
+        $this->WriteAt(SystemConfig::getValue('leftX'), $curY, $fam_Name);
         $curY += SystemConfig::getValue('incrementY');
         if ($fam_Address1 != '') {
             $this->WriteAt(SystemConfig::getValue('leftX'), $curY, $fam_Address1);
@@ -134,8 +148,8 @@ class ChurchInfoReport extends FPDF
     return $curY;
     }
 
-    public function MakeSalutation($famID)
-    {
-        return MakeSalutationUtility($famID);
-    }
+    // public function MakeSalutation($famID)
+    // {
+    //     return MakeSalutationUtility($famID);
+    // }
 }

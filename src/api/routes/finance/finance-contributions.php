@@ -52,6 +52,13 @@ $app->group('/contrib', function () {
         echo ContribQuery::create()
             ->groupById()
             ->withColumn('SUM(contrib_split.spl_Amount)', 'totalAmount')
+            ->leftJoinPerson()
+            ->withColumn("per_ID", "per_ID")
+            ->withColumn("per_FirstName", "FirstName")
+            ->withColumn("per_LastName", "LastName")
+            ->withColumn("per_Envelope", "Envelope")
+            ->leftJoinContribSplit()
+            ->withColumn("spl_FundId", "spl_FundId")
             ->find()
             ->toJSON();
     });
@@ -60,7 +67,13 @@ $app->group('/contrib', function () {
         $id = $args['id'];
         echo ContribQuery::create()
             ->withColumn('SUM(contrib_split.spl_Amount)', 'totalAmount')
-            // ->groupById()
+            // ->leftJoinPerson()
+            // ->withColumn("per_ID", "per_ID")
+            // ->withColumn("per_FirstName", "FirstName")
+            // ->withColumn("per_LastName", "LastName")
+            // ->withColumn("per_Envelope", "Envelope")
+            ->leftJoinContribSplit()
+            ->withColumn("spl_FundId", "spl_FundId")
             ->findOneById($id)
             ->toJSON();
     });
@@ -68,16 +81,32 @@ $app->group('/contrib', function () {
     $this->get('/{id:[0-9]+/person}', function ($request, $response, $args) {
         $id = $args['id'];
         echo ContribQuery::create()
+            ->withColumn('SUM(contrib_split.spl_Amount)', 'totalAmount')
+            // ->leftJoinPerson()
+            // ->withColumn("per_ID", "per_ID")
+            // ->withColumn("per_FirstName", "FirstName")
+            // ->withColumn("per_LastName", "LastName")
+            // ->withColumn("per_Envelope", "Envelope")
+            ->leftJoinContribSplit()
+            // ->withColumn("spl_FundId", "spl_FundId")
             ->filterByConId($id)
-            // ->groupById()
+            ->groupById()
             ->find()
             ->toJSON();
+            
     });
 
     // get a list of contribtions associated with a deposit single
     $this->get('/{id:[0-9]+/deposit}', function ($request, $response, $args) {
         $id = $args['id'];
-        echo ContribQuery::create()
+        echo ContribQuery::create()            
+            ->leftJoinPerson()
+            // ->withColumn("per_ID", "per_ID")
+            ->withColumn("per_FirstName", "FirstName")
+            ->withColumn("per_LastName", "LastName")
+            // ->withColumn("per_Envelope", "Envelope")
+            ->leftJoinContribSplit()
+            // ->withColumn("spl_FundId", "spl_FundId")
             ->filterByDepId($id)
             ->groupById()
             ->withColumn('SUM(contrib_split.spl_Amount)', 'totalAmount')
@@ -88,7 +117,14 @@ $app->group('/contrib', function () {
     // get a list of contribtions NOT associated with a deposit
     $this->get('/deposit', function ($request, $response, $args) {
         //$id = $args['id'];
-        echo ContribQuery::create()
+        echo ContribQuery::create()            
+            ->leftJoinPerson()
+            // ->withColumn("per_ID", "per_ID")
+            ->withColumn("per_FirstName", "FirstName")
+            ->withColumn("per_LastName", "LastName")
+            ->withColumn("per_Envelope", "Envelope")
+            ->leftJoinContribSplit()
+            // ->withColumn("spl_FundId", "spl_FundId")
             ->filterByDepId(null)
             ->groupById()
             ->withColumn('SUM(contrib_split.spl_Amount)', 'totalAmount')
@@ -107,20 +143,24 @@ $app->group('/contrib', function () {
     //     ContribQuery::create()->findOneById($id)->getPDF();
     // });
 
-    // $this->get('/{id:[0-9]+}/csv', function ($request, $response, $args) {
-    //     $id = $args['id'];
-    //     //echo ContribQuery::create()->findOneById($id)->toCSV();
-    //     header('Content-Disposition: attachment; filename=ChurchCRM-Deposit-' . $id . '-' . date(SystemConfig::getValue("sDateFilenameFormat")) . '.csv');
-    //     // echo ChurchCRM\PledgeQuery::create()->filterByDepid($id)
-    //     //     ->joinDonationFund()->useDonationFundQuery()
-    //     //     ->withColumn('DonationFund.Name', 'DonationFundName')
-    //     //     ->endUse()
-    //     //     ->joinFamily()->useFamilyQuery()
-    //     //     ->withColumn('Family.Name', 'FamilyName')
-    //     //     ->endUse()
-    //     //     ->find()
-    //     //     ->toCSV();
-    // });
+    $this->get('/{id:[0-9]+}/csv', function ($request, $response, $args) {
+        $id = $args['id'];
+        // fix
+        header('Content-Disposition: attachment; filename=ChurchCRM-Contribution-' . $id . '-' . date(SystemConfig::getValue("sDateFilenameFormat")) . '.csv');
+        echo ContribQuery::create()
+        ->select(['con_ID','con_Date', 'con_Comment', 'con_Method', 'con_CheckNo'])
+        ->usePersonQuery()
+            ->withColumn("per_FirstName", "FirstName")
+            ->withColumn("per_LastName", "LastName")
+            ->withColumn("per_Envelope", "Envelope")
+        ->endUse()
+        ->useContribSplitQuery()
+            ->withColumn('SUM(contrib_split.spl_Amount)', 'Total')
+        ->endUse()
+        ->filterById($id)
+        ->find()
+        ->toCSV();
+    });
     // delete single contribution and associated splits
     $this->delete('/{id:[0-9]+}', function ($request, $response, $args) {
         $id = $args['id'];
