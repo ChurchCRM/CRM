@@ -227,7 +227,7 @@ class SystemService
           // Since checking for updates from GitHub is a potentailly expensive operation,
           // Run this task as part of the "background jobs" API call
           // Inside ChurchCRMReleaseManager, the restults are stored to the $_SESSION
-          ChurchCRMReleaseManager::CheckForUpdates();
+          ChurchCRMReleaseManager::checkForUpdates();
         }
 
         LoggerUtils::getAppLogger()->addInfo("Finished background job processing");

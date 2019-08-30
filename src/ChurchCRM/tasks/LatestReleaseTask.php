@@ -13,7 +13,7 @@ class LatestReleaseTask implements iTask
 
   public function __construct()
   {
-    $this->installedVersion = ChurchCRMReleaseManager::GetReleaseFromString($_SESSION['sSoftwareInstalledVersion']);
+    $this->installedVersion = ChurchCRMReleaseManager::getReleaseFromString($_SESSION['sSoftwareInstalledVersion']);
   }
 
   public function isActive()
@@ -58,7 +58,7 @@ class LatestReleaseTask implements iTask
 
   public function getDesc()
   {
-    return $this->latestVersion;
+    return $this->latestVersion->GetReleaseNotes();
   }
 
 }

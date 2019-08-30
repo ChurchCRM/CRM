@@ -36,7 +36,7 @@ Class ChurchCRMRelease {
         }
     }
 
-    public function GetDownloadURL() {
+    public function getDownloadURL() {
         foreach ($this->rawRelease['assets'] as $asset) {
             if ($asset['name'] == "ChurchCRM-" . $this->rawRelease['name'] . ".zip") {
             $url = $asset['browser_download_url'];
@@ -45,7 +45,7 @@ Class ChurchCRMRelease {
         return $url;
     }
 
-    public function GetReleaseNotes() {
+    public function getReleaseNotes() {
         return $this->rawRelease['body'];
     }
 }

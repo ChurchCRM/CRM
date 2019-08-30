@@ -8,7 +8,7 @@ use ChurchCRM\dto\SystemURLs;
 
 class ChurchCRMReleaseManager {
 
-    public static function GetReleaseFromString(string $releaseString): ChurchCRMRelease { 
+    public static function getReleaseFromString(string $releaseString): ChurchCRMRelease { 
         
         try {
             // TODO: Make this use the release cache, instead of hit the API every time.
@@ -42,7 +42,7 @@ class ChurchCRMReleaseManager {
      */
 
 
-    public static function CheckForUpdates() {
+    public static function checkForUpdates() {
         $_SESSION['ChurchCRMReleases'] = self::populateReleases();
     }
 
@@ -88,7 +88,7 @@ class ChurchCRMReleaseManager {
 
         if ($currentRelease->equals($eligibleUpgradeTargetReleases[0])) {
             // the current release is the same as the most recent patch release from github, so let's return the most recent overall release from GitHub
-            $nextStepRelease = ChurchCRMReleaseManager::GetReleaseFromString($currentRelease->MAJOR . "." . ($currentRelease->MINOR+1) . ".0");
+            $nextStepRelease = ChurchCRMReleaseManager::getReleaseFromString($currentRelease->MAJOR . "." . ($currentRelease->MINOR+1) . ".0");
             LoggerUtils::getAppLogger()->addInfo("The current release (".$currentRelease.") is the highest release of it's Major/Minor combination.");
             LoggerUtils::getAppLogger()->addInfo("Looking for releases in series: " . $nextStepRelease);
             return self::getNextReleaseStep($nextStepRelease); 
@@ -101,7 +101,7 @@ class ChurchCRMReleaseManager {
     public static function downloadLatestRelease()
     {
         // this is a proxy function.  For now, just download the nest step release
-        $releaseToDownload =  ChurchCRMReleaseManager::getNextReleaseStep(ChurchCRMReleaseManager::GetReleaseFromString($_SESSION['sSoftwareInstalledVersion']));
+        $releaseToDownload =  ChurchCRMReleaseManager::getNextReleaseStep(ChurchCRMReleaseManager::getReleaseFromString($_SESSION['sSoftwareInstalledVersion']));
         return ChurchCRMReleaseManager::downloadRelease($releaseToDownload);
     }
     public static function downloadRelease(ChurchCRMRelease $release)
@@ -109,7 +109,7 @@ class ChurchCRMReleaseManager {
         LoggerUtils::getAppLogger()->addInfo("Downloading release: " . $release);
         $logger = LoggerUtils::getAppLogger();
         $UpgradeDir = SystemURLs::getDocumentRoot() . '/Upgrade';
-        $url = $release->GetDownloadURL();
+        $url = $release->getDownloadURL();
         $logger->debug("Creating upgrade directory: " . $UpgradeDir);
         mkdir($UpgradeDir);
         $logger->info("Downloading release from: " . $url . " to: ". $UpgradeDir . '/' . basename($url));
@@ -118,7 +118,7 @@ class ChurchCRMReleaseManager {
         $logger->info("Finished downloading file.  Execution time: " .$executionTime->getMiliseconds()." ms");
         $returnFile = [];
         $returnFile['fileName'] = basename($url);
-        $returnFile['releaseNotes'] = $release->GetReleaseNotes();
+        $returnFile['releaseNotes'] = $release->getReleaseNotes();
         $returnFile['fullPath'] = $UpgradeDir . '/' . basename($url);
         $returnFile['sha1'] = sha1_file($UpgradeDir . '/' . basename($url));
         $logger->info("SHA1 hash for ". $returnFile['fullPath'] .": " . $returnFile['sha1']);
