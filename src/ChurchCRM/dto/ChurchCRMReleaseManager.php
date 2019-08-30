@@ -8,13 +8,16 @@ use ChurchCRM\dto\SystemURLs;
 
 class ChurchCRMReleaseManager {
 
+    private const GITHUB_USER_NAME = 'churchcrm';
+    private const GITHUB_REPOSITORY_NAME = 'crm';
+
     public static function getReleaseFromString(string $releaseString): ChurchCRMRelease { 
         
         try {
             // TODO: Make this use the release cache, instead of hit the API every time.
             $client = new Client();
             LoggerUtils::getAppLogger()->addInfo("Fetching release info for: " .$releaseString);
-            $releases = $client->api('repo')->releases()->tag('churchcrm', 'crm', $releaseString);
+            $releases = $client->api('repo')->releases()->tag(ChurchCRMReleaseManager::GITHUB_USER_NAME, ChurchCRMReleaseManager::GITHUB_REPOSITORY_NAME, $releaseString);
             LoggerUtils::getAppLogger()->addInfo("got from githib: " . count($releases));
             return new ChurchCRMRelease($releases);
         }
@@ -29,7 +32,7 @@ class ChurchCRMReleaseManager {
         $client = new Client();
         $releases = array();
         LoggerUtils::getAppLogger()->addDebug("Querying GitHub for ChurchCRM Releases");
-        foreach($client->api('repo')->releases()->all('churchcrm', 'crm') as $release)
+        foreach($client->api('repo')->releases()->all(ChurchCRMReleaseManager::GITHUB_USER_NAME, ChurchCRMReleaseManager::GITHUB_REPOSITORY_NAME) as $release)
         {
             array_push($releases,new ChurchCRMRelease($release));
         }
