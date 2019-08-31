@@ -167,6 +167,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
     $iBirthDay = InputUtils::LegacyFilterInput($_POST['BirthDay'], 'int');
     $iBirthYear = InputUtils::LegacyFilterInput($_POST['BirthYear'], 'int');
     $bHideAge = isset($_POST['HideAge']);
+    $bInactive = isset($_POST['Inactive']);
     // Philippe Logel
     $dFriendDate = InputUtils::FilterDate($_POST['FriendDate']);
     $dMembershipDate = InputUtils::FilterDate($_POST['MembershipDate']);
@@ -325,7 +326,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         if ($iPersonID < 1) {
             $iEnvelope = 0;
 
-            $sSQL = "INSERT INTO person_per (per_Title, per_FirstName, per_MiddleName, per_LastName, per_Suffix, per_Gender, per_Address1, per_Address2, per_City, per_State, per_Zip, per_Country, per_HomePhone, per_WorkPhone, per_CellPhone, per_Email, per_WorkEmail, per_BirthMonth, per_BirthDay, per_BirthYear, per_Envelope, per_fam_ID, per_fmr_ID, per_MembershipDate, per_cls_ID, per_DateEntered, per_EnteredBy, per_FriendDate, per_Flags, per_FacebookID, per_Twitter, per_LinkedIn)
+            $sSQL = "INSERT INTO person_per (per_Title, per_FirstName, per_MiddleName, per_LastName, per_Suffix, per_Gender, per_Address1, per_Address2, per_City, per_State, per_Zip, per_Country, per_HomePhone, per_WorkPhone, per_CellPhone, per_Email, per_WorkEmail, per_BirthMonth, per_BirthDay, per_BirthYear, per_Envelope, per_fam_ID, per_fmr_ID, per_MembershipDate, per_cls_ID, per_DateEntered, per_EnteredBy, per_FriendDate, per_Flags, per_FacebookID, per_Twitter, per_LinkedIn, per_inactive)
 			         VALUES ('".$sTitle."','".$sFirstName."','".$sMiddleName."','".$sLastName."','".$sSuffix."',".$iGender.",'".$sAddress1."','".$sAddress2."','".$sCity."','".$sState."','".$sZip."','".$sCountry."','".$sHomePhone."','".$sWorkPhone."','".$sCellPhone."','".$sEmail."','".$sWorkEmail."',".$iBirthMonth.','.$iBirthDay.','.$iBirthYear.','.$iEnvelope.','.$iFamily.','.$iFamilyRole.',';
             if (strlen($dMembershipDate) > 0) {
                 $sSQL .= '"'.$dMembershipDate.'"';
@@ -344,6 +345,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
             $sSQL .= ', '. $iFacebook;
             $sSQL .= ', "'. $sTwitter.'"';
             $sSQL .= ', "'. $sLinkedIn.'"';
+            $sSQL .= ", '$bInactive'";
             $sSQL .= ')';
 
             $bGetKeyBack = true;
@@ -374,9 +376,10 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
             $sSQL .= ', per_FacebookID='. $iFacebook;
             $sSQL .= ', per_Twitter="'. $sTwitter.'"';
             $sSQL .= ', per_LinkedIn="'. $sLinkedIn.'"';
+            $sSQL .= ", per_inactive='$bInactive'";
 
             $sSQL .= ' WHERE per_ID = '.$iPersonID;
-
+            // echo $sSQL;
             $bGetKeyBack = false;
         }
 
@@ -483,6 +486,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         $iBirthDay = $per_BirthDay;
         $iBirthYear = $per_BirthYear;
         $bHideAge = ($per_Flags & 1) != 0;
+        $bInactive = $per_inactive;
         $iOriginalFamily = $per_fam_ID;
         $iFamily = $per_fam_ID;
         $iFamilyRole = $per_fmr_ID;
@@ -548,6 +552,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         $iBirthDay = 0;
         $iBirthYear = 0;
         $bHideAge = 0;
+        $bInactive = 0;
         $iOriginalFamily = 0;
         $iFamily = '0';
         $iFamilyRole = '0';
@@ -765,6 +770,12 @@ require 'Include/Header.php';
                     <div class="col-md-2">
                         <label><?= gettext('Hide Age') ?></label><br/>
                         <input type="checkbox" name="HideAge" value="1" <?php if ($bHideAge) {
+        echo ' checked';
+    } ?> />
+                    </div>
+                    <div class="col-md-2">
+                        <label><?= gettext('Inactive') ?></label><br/>
+                        <input type="checkbox" name="Inactive" value="0" <?php if ($bInactive) {
         echo ' checked';
     } ?> />
                     </div>
