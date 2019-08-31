@@ -33,7 +33,7 @@ $latestMembers = $dashboardService->getLatestMembers(12);
 
 $depositData = false;  //Determine whether or not we should display the deposit line graph
 if ($_SESSION['user']->isFinanceEnabled()) {
-    $deposits = DepositQuery::create()->filterByDate(['min' =>date('Y-m-d', strtotime('-90 days'))])->find();
+    $deposits = DepositQuery::create()->useContribQuery()->useContribSplitQuery()->withColumn('SUM(contrib_split.spl_Amount)', 'totalAmount')->endUse()->endUse()->filterByDate(['min' =>date('Y-m-d', strtotime('-90 days'))])->find();
     if (count($deposits) > 0) {
         $depositData = $deposits->toJSON();
     }
