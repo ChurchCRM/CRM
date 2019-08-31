@@ -27,10 +27,18 @@ class ChurchCRMReleaseManager {
                 return $r->__toString() == $releaseString;
             }));
             if (count($requestedRelease) == 1 && $requestedRelease[0] instanceof ChurchCRMRelease){
+                // this should be the case 99% of the time - the current version of the software has exactly one release on the GitHub account
                 LoggerUtils::getAppLogger()->addDebug("Query for release string " . $releaseString . " serviced from GitHub release cache");
                 return $requestedRelease[0];
             }
+            elseif (count($requestedRelease) == 0) {
+                // this will generally happen on dev or demo site instances 
+                // where the currently running software has not yet been released / tagged on GitHun
+                LoggerUtils::getAppLogger()->addDebug("Query for release string " . $releaseString . " did not match any GitHub releases.  Providing skeleton release object");
+                return new ChurchCRMRelease(@["name" => $releaseString]);
+            }
             else {
+                // This should _never_ happen.
                 throw new \Exception("Provided string matched more than one ChurchCRM Release: " . \json_encode($requestedRelease));
             }
         }        
