@@ -33,6 +33,19 @@ require 'Include/Header.php';
 // Get the person ID from the querystring
 $iPersonID = InputUtils::LegacyFilterInput($_GET['PersonID'], 'int');
 
+//Deactivate/Activate Person
+if ($_SESSION['user']->isDeleteRecordsEnabled() && !empty($_POST['FID']) && !empty($_POST['Action'])) {
+    $family = FamilyQuery::create()->findOneById($_POST['FID']);
+    if ($_POST['Action'] == "Deactivate") {
+        $family->deactivate();
+    } elseif ($_POST['Action'] == "Activate") {
+        $family->activate();
+    }
+    $family->save();
+    RedirectUtils::Redirect("FamilyView.php?FamilyID=" . $_POST['FID']);
+    exit;
+}
+
 $iRemoveVO = 0;
 if (array_key_exists('RemoveVO', $_GET)) {
     $iRemoveVO = InputUtils::LegacyFilterInput($_GET['RemoveVO'], 'int');
@@ -73,6 +86,7 @@ if (empty($person)) {
     exit;
 }
 
+$bInactive = (empty($person->getInactive()) ? 'false' : 'true');
 $assignedProperties = $person->getProperties();
 
 // Get the lists of custom person fields
@@ -413,6 +427,13 @@ $bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() ||
             <?php
             } ?>
             <a class="btn btn-app" role="button" href="<?= SystemURLs::getRootPath() ?>/SelectList.php?mode=person"><i class="fa fa-list"></i> <?= gettext("List Members") ?></span></a>
+            <?php if ($bOkToEdit) {
+                    ?>
+                    <button class="btn btn-app bg-orange" id="activateDeactivate">
+                        <i class="fa <?= (($bInactive == 'true') ? 'fa-check-circle-o' : 'fa-times-circle-o') ?> "></i><?php echo((($bInactive == 'true') ? _('Activate') : _('Deactivate')) . _(' this Person')); ?>
+                    </button>
+                    <?php
+                } ?>
         </div>
     </div>
     <div class="col-lg-9 col-md-9 col-sm-9">
@@ -958,7 +979,34 @@ $bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() ||
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/PersonView.js"></script>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     window.CRM.currentPersonID = <?= $iPersonID ?>;
+    window.CRM.currentInActive = <?= $bInactive ?>;
+    $("#activateDeactivate").click(function () {
+            console.log("click activateDeactivate");
+            popupTitle = (window.CRM.currentInActive == true ? "<?= gettext('Confirm Deactivation') ?>" : "<?= gettext('Confirm Activation') ?>" );
+            if (window.CRM.currentInActive == false) {
+                popupMessage = "<?= gettext('Please confirm deactivation of person') . ': ' . $person->getFullName() ?>";
+            }
+            else {
+                popupMessage = "<?= gettext('Please confirm activation of person') . ': ' . $person->getFullName() ?>";
+            }
 
+            bootbox.confirm({
+                title: popupTitle,
+                message: '<p style="color: red">' + popupMessage + '</p>',
+                callback: function (result) {
+                    if (result) {
+                        window.CRM.APIRequest({
+                            method: "POST",
+                            path: "person/" + window.CRM.currentPersonID + "/activate/" + !window.CRM.currentInActive
+                        }).done(function (data) {
+                            if (data.success == true)
+                                window.location.href = window.CRM.root + "/PersonView.php?PersonID=" + window.CRM.currentPersonID;
+
+                        });
+                    }
+                }
+            });
+        });
 
     $("#deletePhoto").click (function () {
         window.CRM.APIRequest({

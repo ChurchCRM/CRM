@@ -34,6 +34,7 @@ $sDateStart = InputUtils::LegacyFilterInput($_POST['DateStart'], 'date');
 $sDateEnd = InputUtils::LegacyFilterInput($_POST['DateEnd'], 'date');
 $iMinimum = InputUtils::LegacyFilterInput($_POST['minimum'], 'int');
 $iSerialNum = InputUtils::LegacyFilterInput($_POST['serialnum'], 'int');
+$Nondeductible = InputUtils::LegacyFilterInput($_POST['nondeductible'], 'int');
 
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
 if (!$_SESSION['user']->isAdmin() && SystemConfig::getValue('bCSVAdminOnly') && $output != 'pdf') {
@@ -60,14 +61,43 @@ if (!empty($_POST['funds'])) {
 // Filter by Person
 if (!empty($_POST['person'])) {
     $filterById = true;
-    foreach ($_POST['person'] as $famID) {
-        $fam[] = InputUtils::LegacyFilterInput($famID, 'int');
+    foreach ($_POST['person'] as $perID) {
+        $per[] = InputUtils::LegacyFilterInput($perID, 'int');
     }
 }
 
+// filter by Non-deductible;
+if (!empty($_POST['nondeductible'])) {
+    $filterByNondeductible = true;
+}
+
+// get list of people id's with total contribution < amount specified
+// Mariadb 10.2 supports OVER clause making it possable to combine with the next query
+// this is a temopary work around
+if (!empty($_POST['minimum'])) {
+    $filterByAmount = true;
+    $minimum = InputUtils::LegacyFilterInput($_POST['minimum'], 'int');
+  
+    // get list of people ID who's contribution total is < minimum
+    $contribList = ContribSplitQuery::create()
+            ->useContribQuery()
+                ->filterByDate(array("min" => $sDateStart . " 00:00:00", "max" => $sDateEnd . " 23:59:59"))
+            ->endUse()
+        // ->select("contrib_split.spl_ConID", "ConId")
+        // ->withColumn('SUM(contrib_split.spl_Amount)', 'totalAmount')
+        ->filterByNonDeductible(false)
+        ->having('SUM(contrib_split.spl_Amount) < ?',$minimum)
+        ->groupByConId()
+        ->find();
+
+    $filter = [];
+    foreach ($contribList as $con){
+        $filter[] = $con->getConId();
+    }
+}
+// echo print_r($min);
 // build query based on user selected options
 $contributions = ContribSplitQuery::create()
-    // ->withColumn('SUM(contrib_split.spl_Amount)', 'totalAmount')
         ->useContribQuery()
             ->filterByDate(array("min" => $sDateStart . " 00:00:00", "max" => $sDateEnd . " 23:59:59"))
             ->withColumn("con_Date", "Date")
@@ -96,16 +126,23 @@ $contributions = ContribSplitQuery::create()
     ->groupByFundId()
     ->groupById()
     ->orderByLastName();
-     
-
+    
+    // apply user defined filters
+    if (!$filterByNondeductible){
+        // filter out Non-deductible by default
+        $contributions->filterByNonDeductible(false); 
+    }
     if ($filterById) {
-        $contributions->filterById([$fam]);
+        $contributions->filterById([$per]);
     }
     if ($filterByClsId) {
         $contributions->useContribQuery()->usePersonQuery()->filterByClsId($classList)->endUse()->endUse();
     }
     if ($filterByFundId) {
         $contributions->joinDonationFund()->useDonationFundQuery()->filterById($fundID)->endUse();
+    }
+    if ($filterByAmount) {
+        $contributions->where('contrib_split.spl_ConID NOT IN ?', $filter);
     }
     $contributions->find();
 
@@ -339,7 +376,7 @@ if ($output == 'pdf') {
             $pdf->Cell(25, $summaryIntervalY, 'Amount', 0, 1, 'R');
             //$curY = $pdf->GetY();
             $totalAmount = 0;
-            $totalNonDeductible = 0;
+            // $totalNonDeductible = 0;
             $cnt = 0;
             $currentFamilyID = $fam_ID;
         }
@@ -355,13 +392,21 @@ if ($output == 'pdf') {
         if (strlen($plg_comment) > 25) {
             $plg_comment = mb_substr($plg_comment, 0, 25).'...';
         }
-        // Print Gift Data
+        // fill every other row
         if ($cnt % 2 == 0) {
             $fill=true;
             $pdf->setFillColor(230, 230, 230);
         } else {
             $fill=false;
         }
+        // identify non-deductible
+        if ($plg_NonDeductible) {
+            $pdf->SetTextColor(255,0,0);
+        } else {
+            $pdf->SetTextColor(0,0,0);
+        }
+
+        // Print Gift Data
         $pdf->SetFont('Times', '', 10);
         $pdf->Cell(20, $summaryIntervalY, $plg_date, 0, 0, '', $fill);
         $pdf->Cell(20, $summaryIntervalY, $plg_CheckNo, 0, 0, 'R', $fill);
@@ -370,8 +415,9 @@ if ($output == 'pdf') {
         $pdf->Cell(40, $summaryIntervalY, $plg_comment, 0, 0, '', $fill);
         // $pdf->SetFont('Courier', '', 9);
         $pdf->Cell(25, $summaryIntervalY, $plg_amount, 0, 1, 'R', $fill);
+
         $totalAmount += $plg_amount;
-        $totalNonDeductible += $plg_NonDeductible;
+        // $totalNonDeductible += $plg_NonDeductible;
         $cnt += 1;
         $curY = $pdf->GetY();
 
@@ -394,6 +440,8 @@ if ($output == 'pdf') {
         $prev_fam_State = $fam_State;
         $prev_fam_Zip = $fam_Zip;
         $prev_fam_Country = $fam_Country;
+        // insure text color
+        $pdf->SetTextColor(0,0,0);
     }
 
     // Finish Last Report

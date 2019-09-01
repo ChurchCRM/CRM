@@ -128,8 +128,8 @@ require 'Include/Header.php';
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-primary" data-dismiss="modal" id="submitContrib"><?= gettext('Submit') ?></button>
-                        <button type="button" class="btn btn-primary" id="addAnotherSplit"><?= gettext('Add Split') ?></button>
-                        <button type="button" class="btn btn-primary" id="addAnotherContribution"><?= gettext('Add Contribution') ?></button>
+                        <button type="button" class="btn btn-primary" id="addAnotherSplit"><?= gettext('Add New Split') ?></button>
+                        <!-- <button type="button" class="btn btn-primary" id="addAnotherContribution">< ?= gettext('Add Contribution') ?></button> -->
                     </div>
                     <div class="modal-footer">
                         
@@ -151,6 +151,7 @@ require 'Include/Header.php';
       <input type="hidden" name="ContributionID" id="ContributionID" value= <?= $iContributionID ?> >
         <input type="hidden" name="ContributorID" id="ContributorID" value= <?= $iContributorID ?> >
         <input type="hidden" name="TypeOfMbr" id="TypeOfMbr">
+        <!-- <input type="hidden" name="DepId" id="DepId"> -->
         <div class="col-lg-12">
           <label for="ContributorName"><?= gettext('Contributor') ?></label>
           <select class="form-control" id="ContributorName" name="ContributorName" >
@@ -188,7 +189,7 @@ require 'Include/Header.php';
     <div class="col-lg-12">
     <!-- < ?php if (!$dep_Closed) {
         ?> -->
-        <input class="btn " value="<?= gettext('Save') ?>" id="PledgeSubmit" name="PledgeSubmit" <?= $iContributionID ? 'enabled' : 'disabled' ?> />
+        <input class="btn btn-primary" value="<?= gettext('Save') ?>" id="PledgeSubmit" name="PledgeSubmit" <?= $iContributionID ? 'enabled' : 'disabled' ?> />
         <?php if ($_SESSION['user']->isAddRecordsEnabled()) {
         echo '<input class="btn btn-primary" value="'.gettext('New Contribution').'" id="PledgeSubmitAdd" disabled>';
     } ?>
@@ -224,7 +225,7 @@ require 'Include/Header.php';
       </tfoot> -->
       </table>
 
-      <button type="button" id="deleteSelectedRows" class="btn btn-danger"
+      <button style="display:none" type="button" id="deleteSelectedRows" class="btn btn-danger"
               disabled> <?= gettext('Delete Selected Rows') ?> </button>
       <!-- <button type="button" id="exportSelectedRows" class="btn btn-success exportButton" data-exportType="ofx"
               disabled><i class="fa fa-download"></i> < ?= gettext('Export Selected Rows (OFX)') ?></button>
@@ -447,7 +448,7 @@ require 'Include/Header.php';
   function hasSplit() {
     return Boolean(dataT.data().count());
   }
-
+   
   });
 
 </script>

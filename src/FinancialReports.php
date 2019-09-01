@@ -301,7 +301,13 @@ if ($sReportType == '') {
     }
 
     // add requirements for Canadian Tax Receipts
-    if ($sReportType == 'Canadian Tax Receipt') {
+    if ($sReportType == 'Canadian Tax Receipt'){
+        // show Non-deductiable
+        echo '<tr><td class=LabelColumn>'.gettext('Show Non-deductible:').'</td>'
+        .'<td class=TextColumnWithBottomBorder>'
+        ."<input name=nondeductible type=checkbox size=8></td></tr>";
+
+        // show starting serial
         echo '<tr><td class=LabelColumn>'.gettext('Start Serial #:').'</td>'
             .'<td class=TextColumnWithBottomBorder>'
             ."<input name=serialnum type=text value='100' size=8></td></tr>";

@@ -119,6 +119,19 @@ function initPaymentTable()
         $("[name=ContributorID]").val(contrib.ConId);
         $("[name=TotalAmount]").val(contrib.totalAmount);
         $('[name=contribComment').val(contrib.Comment);
+        $("#PledgeSubmitAdd").prop('disabled', false);
+
+        // disable buttons if associated with deposit
+        if (contrib.DepId){
+          // buttons
+          $("[name=PledgeSubmit]").prop('disabled', true);
+          $("#PledgeSubmitAdd").prop('disabled', true);
+          // $("#deleteSelectedRows").hide();
+          $("#addNewContrib").prop('disabled', true);
+        } else{
+          $("#deleteSelectedRows").show();
+        }
+
       }
       );
   }
@@ -279,7 +292,7 @@ function initPaymentTable()
         $("[name=AddComment]").val('');
         $("[name=AddNonDeductible]").val('');
         $("#PledgeSubmit").prop('disabled', false);
-        $("PledgeSubmitAdd").prop('disabled', false);
+        $("#PledgeSubmitAdd").prop('disabled', false);
         // $("[name=TotalAmount]").val(total);
     });
   }
