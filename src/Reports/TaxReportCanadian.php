@@ -106,16 +106,16 @@ $contributions = ContribSplitQuery::create()
             ->withColumn("con_Comment", "Comment")
             ->withColumn("con_Date", "Date")
             ->usePersonQuery()
-                ->withColumn("per_Id","perId")
-                ->withColumn("per_FirstName","FirstName")
-                ->withColumn("per_MiddleName","MiddleName")
-                ->withColumn("per_LastName","LastName")
-                ->withColumn("per_Address1","Address1")
-                ->withColumn("per_Address2","Address2")
-                ->withColumn("per_City","City")
-                ->withColumn("per_State","State")
-                ->withColumn("per_Zip","Zip")
-                ->withColumn("per_Country","Country")
+                ->withColumn("per_Id", "perId")
+                ->withColumn("per_FirstName", "FirstName")
+                ->withColumn("per_MiddleName", "MiddleName")
+                ->withColumn("per_LastName", "LastName")
+                ->withColumn("per_Address1", "Address1")
+                ->withColumn("per_Address2", "Address2")
+                ->withColumn("per_City", "City")
+                ->withColumn("per_State", "State")
+                ->withColumn("per_Zip", "Zip")
+                ->withColumn("per_Country", "Country")
                 ->withColumn("per_Envelope", "Envelope")
                 ->groupById()
             ->endUse()
@@ -213,7 +213,7 @@ if ($output == 'pdf') {
             $curY += 4 * SystemConfig::getValue('incrementY');
             $this->WriteAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sTaxSigner'));
             if (is_readable(SystemConfig::getValue('sTaxSignerImg'))) {
-                $this->Image(SystemConfig::getValue('sTaxSignerImg'),$this->GetX()+5,$curY-3,50,10);
+                $this->Image(SystemConfig::getValue('sTaxSignerImg'), $this->GetX()+5, $curY-3, 50, 10);
             }
 
             // if ($remittance == 'yes') {
@@ -271,17 +271,18 @@ if ($output == 'pdf') {
             // }
         }
 
-        public function Footer() {
+        public function Footer()
+        {
             global $sReportType;
             // Position at 1.5 cm from bottom
             $this->SetY(-15);
             // Arial italic 8
-            $this->SetFont('Arial','I',8);
+            $this->SetFont('Arial', 'I', 8);
             // line
             $this->Line(SystemConfig::getValue('leftX'), $this->GetPageHeight()-15, 210-SystemConfig::getValue('leftX'), $this->GetPageHeight()-15); // 20mm from each edge
             // report name
-            $this->WriteAt(SystemConfig::getValue('leftX'),$this->GetPageHeight()-15,$sReportType);
-            $this->WriteAt($this->GetPageWidth()-SystemConfig::getValue('leftX')*2-2,$this->GetPageHeight()-15,date(SystemConfig::getValue("sDatePickerFormat")));
+            $this->WriteAt(SystemConfig::getValue('leftX'), $this->GetPageHeight()-15, $sReportType);
+            $this->WriteAt($this->GetPageWidth()-SystemConfig::getValue('leftX')*2-2, $this->GetPageHeight()-15, date(SystemConfig::getValue("sDatePickerFormat")));
             // Page number
             // $this->Cell(0,10,'Page '.$this->PageNo() ,0,0,'C');
         }
@@ -294,8 +295,7 @@ if ($output == 'pdf') {
     // Loop through result array
     $sum=0;
     $currentFamilyID = 0;
-    foreach ($contributions as $row) { 
-
+    foreach ($contributions as $row) {
         $fam_ID = $row->getperId();
         $fam_Name = PersonQuery::create()->filterById($fam_ID)->findOne()->getFormattedName(9);
         $fam_Address1 = $row->getAddress1();
@@ -395,10 +395,11 @@ if ($output == 'pdf') {
         // fill every other row
         if ($cnt % 2 == 0) {
             $fill=true;
-            $pdf->setFillColor(230,230,230);
+            $pdf->setFillColor(230, 230, 230);
         } else {
             $fill=false;
         }
+        // identify non-deductible
         if ($plg_NonDeductible) {
             $pdf->SetTextColor(255,0,0);
         } else {
@@ -407,15 +408,14 @@ if ($output == 'pdf') {
 
         // Print Gift Data
         $pdf->SetFont('Times', '', 10);
-        $pdf->Cell(20, $summaryIntervalY, $plg_date,0,0,'',$fill);
-        $pdf->Cell(20, $summaryIntervalY, $plg_CheckNo, 0, 0, 'R',$fill);
-        $pdf->Cell(25, $summaryIntervalY, $plg_method,0,0,'',$fill);
-        $pdf->Cell(40, $summaryIntervalY, $fun_Name,0,0,'',$fill);
-        $pdf->Cell(40, $summaryIntervalY, $plg_comment,0,0,'',$fill);
+        $pdf->Cell(20, $summaryIntervalY, $plg_date, 0, 0, '', $fill);
+        $pdf->Cell(20, $summaryIntervalY, $plg_CheckNo, 0, 0, 'R', $fill);
+        $pdf->Cell(25, $summaryIntervalY, $plg_method, 0, 0, '', $fill);
+        $pdf->Cell(40, $summaryIntervalY, $fun_Name, 0, 0, '', $fill);
+        $pdf->Cell(40, $summaryIntervalY, $plg_comment, 0, 0, '', $fill);
         // $pdf->SetFont('Courier', '', 9);
-        // identify non-deductible
+        $pdf->Cell(25, $summaryIntervalY, $plg_amount, 0, 1, 'R', $fill);
 
-        $pdf->Cell(25, $summaryIntervalY, $plg_amount, 0, 1, 'R',$fill);
         $totalAmount += $plg_amount;
         // $totalNonDeductible += $plg_NonDeductible;
         $cnt += 1;
