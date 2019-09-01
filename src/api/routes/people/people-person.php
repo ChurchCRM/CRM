@@ -12,6 +12,7 @@ use ChurchCRM\Person;
 use ChurchCRM\PersonQuery;
 use Slim\Http\Request;
 use Slim\Http\Response;
+use ChurchCRM\Note;
 
 // This group does not load the person via middleware (to speed up the page loads)
 $app->group('/person/{personId:[0-9]+}', function () {
@@ -57,6 +58,36 @@ $app->group('/person/{personId:[0-9]+}', function () {
     })->add(new DeleteRecordRoleAuthMiddleware());
 
     $this->post('/role/{roleId:[0-9]+}', 'setPersonRoleAPI')->add(new EditRecordsRoleAuthMiddleware());
+
+    /**
+     * Update the person to activated or deactivated with :personId and :status true/false.
+     * Pass true to activate and false to deactivate.     *
+     */
+    $this->post('/activate/{status}', function ($request, $response, $args) {
+        $personId = $args["personId"];
+        $newStatus = $args["status"];
+
+        $person = PersonQuery::create()->findPk($personId);
+        $person->setInactive($newStatus);
+        $person->save();
+
+        //Create a note to record the status change
+        $note = new Note();
+        $note->setPerId($personId);
+
+        if ($newStatus == 'true') {
+            $note->setText(gettext('Deactivated the Person'));
+        } else {
+            $note->setText(gettext('Activated the Person'));
+        }
+
+        $note->setType('edit');
+        $note->setEntered($_SESSION['user']->getId());
+        $note->save();
+
+        return $response->withJson(['success' => true]);
+
+    });
 
     $this->post('/addToCart', function ($request, $response, $args) {
         Cart::AddPerson($args['personId']);

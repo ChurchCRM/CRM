@@ -34,7 +34,7 @@ var dataT = 0;
           data: 'DepId',
           render: function (data, type, full, meta) {
             if (type === 'display') {
-              return '<a href=\'DepositSlipEditor.php?DepositSlipID=' + full.DepId + '&linkBack=FindContributions.php\'><span class="fa-stack"><i class="fa fa-square fa-stack-2x"></i><i class="fa fa-search-plus fa-stack-1x fa-inverse"></i></span></a>' + full.DepId;
+              return '<a href=\'DepositSlipEditor.php?DepositSlipID=' + full.DepId + '&linkBack=FindContributions.php\'><span class="fa-stack"><i class="fa fa-square fa-stack-2x"></i><i class="fa fa-search-plus fa-stack-1x fa-inverse"></i></span></a>' + parseInt(full.DepId);
             }
             else {
               return parseInt(full.DepId);
