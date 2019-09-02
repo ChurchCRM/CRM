@@ -119,7 +119,7 @@ $app->group('/contrib', function () {
         //$id = $args['id'];
         echo ContribQuery::create()            
             ->leftJoinPerson()
-            // ->withColumn("per_ID", "per_ID")
+            ->withColumn("per_ID", "per_ID")
             ->withColumn("per_FirstName", "FirstName")
             ->withColumn("per_LastName", "LastName")
             ->withColumn("per_Envelope", "Envelope")

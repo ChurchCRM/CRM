@@ -108,12 +108,12 @@ $(document).ready(function () {
           depositError();
         } 
         else {
-          deleteContrib(selectedRows.length);
+          deleteContrib(selectedRows,selectedRows.length);
         }
       });
     });
 
-  function deleteContrib(len) {
+  function deleteContrib(selectedRows,len) {
     bootbox.confirm({
         title:'<?= gettext("Confirm Delete") ?>',
         message: '<p><?= gettext("Are you sure you want to delete the selected"); ?> '+ len + ' <?= gettext("Contribution(s)"); ?>?' +
@@ -131,7 +131,7 @@ $(document).ready(function () {
         callback: function (result) {
           if ( result )
           {
-            $.each(deletedRows, function (index, value) {
+            $.each(selectedRows, function (index, value) {
               window.CRM.APIRequest({
                 method: 'DELETE',
                 path: 'contrib/' + value.Id

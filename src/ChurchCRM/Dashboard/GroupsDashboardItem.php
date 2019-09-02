@@ -18,7 +18,7 @@ class GroupsDashboardItem implements DashboardItemInterface {
           INNER JOIN person2group2role_p2g2r ON p2g2r_per_ID = per_ID
           INNER JOIN group_grp ON grp_ID = p2g2r_grp_ID
           LEFT JOIN family_fam ON fam_ID = per_fam_ID
-          where fam_DateDeactivated is  null and
+          where family_fam.fam_DateDeactivated is  null and
 	            p2g2r_rle_ID = 2 and grp_Type = 4) as SundaySchoolKidsCount
         from dual ;
         ';

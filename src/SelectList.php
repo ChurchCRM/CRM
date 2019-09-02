@@ -142,7 +142,7 @@ if ($sMode == 'person') {
     // Set the page title
     $sPageTitle = gettext('Person Listing');
     $iMode = 1;
-
+    
     if (array_key_exists('Classification', $_GET) && $_GET['Classification'] != '') {
         $iClassification = InputUtils::LegacyFilterInput($_GET['Classification'], 'int');
     }
@@ -333,7 +333,7 @@ if (isset($sLetter)) {
 
 $sGroupBySQL = ' GROUP BY per_ID';
 
-$activeFamiliesWhereExt = ' AND fam_DateDeactivated is null';
+$activeFamiliesWhereExt = ' AND family_fam.fam_DateDeactivated is null';
 $sWhereExt = $sGroupWhereExt . $sFilterWhereExt . $sClassificationWhereExt .
     $sFamilyRoleWhereExt . $sGenderWhereExt . $sLetterWhereExt . $sPersonPropertyWhereExt . $activeFamiliesWhereExt;
 

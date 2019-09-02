@@ -28,14 +28,14 @@ $ageStats = $dashboardService->getAgeStats();
 $demographicStats = ListOptionQuery::create()->filterByID('2')->find();
 
 $sSQL = 'select count(*) as numb, per_Gender from person_per, family_fam
-        where fam_ID =per_fam_ID and fam_DateDeactivated is  null
+        where fam_ID =per_fam_ID and family_fam.fam_DateDeactivated is  null
         and per_Gender in (1,2) and
         per_fmr_ID not in (' . SystemConfig::getValue('sDirRoleChild') . ')
         group by per_Gender ;';
 $rsAdultsGender = RunQuery($sSQL);
 
 $sSQL = 'select count(*) as numb, per_Gender from person_per , family_fam
-          where fam_ID =per_fam_ID and fam_DateDeactivated is  null
+          where fam_ID =per_fam_ID and family_fam.fam_DateDeactivated is  null
           and per_Gender in (1,2)
           and per_fmr_ID in (' . SystemConfig::getValue('sDirRoleChild') . ')
           group by per_Gender ;';
@@ -51,7 +51,7 @@ while (list($lst_OptionID, $lst_OptionName) = mysqli_fetch_row($rsClassification
 $sSQL = "SELECT per_Email, fam_Email, lst_OptionName as virt_RoleName FROM person_per
           LEFT JOIN family_fam ON per_fam_ID = family_fam.fam_ID
           INNER JOIN list_lst on lst_ID=1 AND per_cls_ID = lst_OptionID
-          WHERE fam_DateDeactivated is  null
+          WHERE family_fam.fam_DateDeactivated is  null
 			 AND per_ID NOT IN
           (SELECT per_ID
               FROM person_per
