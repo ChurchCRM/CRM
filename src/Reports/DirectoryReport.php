@@ -143,7 +143,7 @@ if (!empty($_POST['GroupID'])) {
 
 //Exclude inactive families
 if ($bExcludeInactive) {
-    $sWhereExt .= ' AND fam_DateDeactivated is null';
+    $sWhereExt .= ' AND family_fam.fam_DateDeactivated is null';
 }
 
 if (array_key_exists('cartdir', $_POST)) {
