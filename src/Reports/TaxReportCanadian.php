@@ -86,12 +86,12 @@ if (!empty($_POST['minimum'])) {
         // ->select("contrib_split.spl_ConID", "ConId")
         // ->withColumn('SUM(contrib_split.spl_Amount)', 'totalAmount')
         ->filterByNonDeductible(false)
-        ->having('SUM(contrib_split.spl_Amount) < ?',$minimum)
+        ->having('SUM(contrib_split.spl_Amount) < ?', $minimum)
         ->groupByConId()
         ->find();
 
     $filter = [];
-    foreach ($contribList as $con){
+    foreach ($contribList as $con) {
         $filter[] = $con->getConId();
     }
 }
@@ -128,9 +128,9 @@ $contributions = ContribSplitQuery::create()
     ->orderByLastName();
     
     // apply user defined filters
-    if (!$filterByNondeductible){
+    if (!$filterByNondeductible) {
         // filter out Non-deductible by default
-        $contributions->filterByNonDeductible(false); 
+        $contributions->filterByNonDeductible(false);
     }
     if ($filterById) {
         $contributions->filterById([$per]);
@@ -401,9 +401,9 @@ if ($output == 'pdf') {
         }
         // identify non-deductible
         if ($plg_NonDeductible) {
-            $pdf->SetTextColor(255,0,0);
+            $pdf->SetTextColor(255, 0, 0);
         } else {
-            $pdf->SetTextColor(0,0,0);
+            $pdf->SetTextColor(0, 0, 0);
         }
 
         // Print Gift Data
@@ -441,7 +441,7 @@ if ($output == 'pdf') {
         $prev_fam_Zip = $fam_Zip;
         $prev_fam_Country = $fam_Country;
         // insure text color
-        $pdf->SetTextColor(0,0,0);
+        $pdf->SetTextColor(0, 0, 0);
     }
 
     // Finish Last Report
