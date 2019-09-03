@@ -428,12 +428,12 @@ $bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() ||
             } ?>
             <a class="btn btn-app" role="button" href="<?= SystemURLs::getRootPath() ?>/SelectList.php?mode=person"><i class="fa fa-list"></i> <?= gettext("List Members") ?></span></a>
             <?php if ($bOkToEdit) {
-                    ?>
+                ?>
                     <button class="btn btn-app bg-orange" id="activateDeactivate">
                         <i class="fa <?= (($bInactive == 'true') ? 'fa-check-circle-o' : 'fa-times-circle-o') ?> "></i><?php echo((($bInactive == 'true') ? _('Activate') : _('Deactivate')) . _(' this Person')); ?>
                     </button>
                     <?php
-                } ?>
+            } ?>
         </div>
     </div>
     <div class="col-lg-9 col-md-9 col-sm-9">
