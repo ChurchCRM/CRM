@@ -11,68 +11,20 @@ use ChurchCRM\Base\Family as BaseFamily;
 use ChurchCRM\Base\PersonQuery;
 use ChurchCRM\Contrib;
 use ChurchCRM\ContribSplit;
+use ChurchCRM\Utils\LoggerUtils;
 
-// // create typeofmbr table
-$sSQL = "CREATE TABLE IF NOT EXISTS `typeofmbr` (
-    `typeid` tinyint(3) NOT NULL,
-    `Name` tinytext NOT NULL,
-    PRIMARY KEY (`typeid`)
-  ) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
-  
- $bval = RunQuery($sSQL);
+// $connection = Propel::getConnection();
+// $logger = LoggerUtils::getAppLogger();
 
- //echo "<script>alert('Create typeofmbr " . $bval . "');</script>";
+// $logger->info("Upgrade person contributions started ");
+echo "Upgrade person contributions started<br>";
+//Include the function library
+// require '../../Include/Config.php';
+// require '../../Include/Functions.php';
 
- // 
-$sSQL = "IF NOT EXISTS (SELECT * FROM typeofmbr LIMIT 1)
-        THEN
-            INSERT INTO `typeofmbr` (`typeid`, `Name`) VALUES (1, 'Business'), (2, 'Family'), (3, 'Person');
-        END IF";
-
-$bval = RunQuery($sSQL);
-
-// create table to hold contributions
-$sSQL = "CREATE TABLE IF NOT EXISTS `contrib_con` (
-  `con_ID` mediumint(9) unsigned NOT NULL AUTO_INCREMENT,
-  `con_ContribID` mediumint(9) unsigned NOT NULL,
-  `con_TypeOfMbr` enum('0','1','2','3') COLLATE utf8_unicode_ci DEFAULT NULL,
-  `con_DepID` mediumint(9) unsigned DEFAULT NULL,
-  `con_Date` date DEFAULT NULL,
-  `con_Method` enum('CREDITCARD','CHECK','CASH','BANKDRAFT','EGIVE'),
-  `con_CheckNo` bigint(16) unsigned,
-  `con_Comment` text COLLATE utf8_unicode_ci,
-  `con_DateEntered` datetime DEFAULT NULL,
-  `con_EnteredBy` mediumint(9) unsigned DEFAULT NULL,
-  `con_DateLastEdited` datetime DEFAULT NULL,
-  `con_EditedBy` mediumint(9) unsigned DEFAULT NULL,
-  PRIMARY KEY (`con_ID`)
-  ) ENGINE=InnoDB DEFAULT CHARSET=utf8";
-
- $bval = RunQuery($sSQL);
-
-// create table to hold splits
-$sSQL = "CREATE TABLE IF NOT EXISTS `contrib_split` (
-  `spl_ID` mediumint(9) unsigned NOT NULL AUTO_INCREMENT,
-  `spl_ConID` mediumint(9) unsigned NOT NULL,
-  `spl_FundID` tinyint(3) unsigned NOT NULL,
-  `spl_Amount` decimal(8,2) unsigned NOT NULL,
-  `spl_Comment` text COLLATE utf8_unicode_ci,
-  `spl_NonDeductible` tinyint(1) unsigned NOT NULL DEFAULT 0,
-  PRIMARY KEY (`spl_ID`)
-  ) ENGINE=InnoDB DEFAULT CHARSET=utf8";
-  
- $bval = RunQuery($sSQL);
-
-// add 'active' option to person table
-$sSQL = "ALTER TABLE person_per
-  ADD per_inactive tinyint(1) NOT NULL DEFAULT 0";
-
-$bval = RunQuery($sSQL);
-
-
-// move pledge from family to person
+// copy pledge from family to person
 $plgGroup = PledgeQuery::create()->filterByPledgeOrPayment('Payment')->groupByGroupkey()->find();
-
+echo "Ran PledgeQuery<br>";
 
   foreach ($plgGroup as $grp) {
     // create contribution
@@ -131,3 +83,6 @@ $plgGroup = PledgeQuery::create()->filterByPledgeOrPayment('Payment')->groupByGr
     }
   }
 }
+// $logger->info("Pledge data copied to contrib_con");
+// $logger->info("Upgrade to person contributions finished ");
+echo "Upgrade person contribtuions finished";
