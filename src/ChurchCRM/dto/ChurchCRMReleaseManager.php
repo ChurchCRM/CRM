@@ -9,8 +9,9 @@ use ChurchCRM\dto\SystemConfig;
 
 class ChurchCRMReleaseManager {
 
-    private const GITHUB_USER_NAME = 'churchcrm';
-    private const GITHUB_REPOSITORY_NAME = 'crm';
+    // todo: make these const variables private after deprecating PHP7.0 #4948
+    const GITHUB_USER_NAME = 'churchcrm';
+    const GITHUB_REPOSITORY_NAME = 'crm';
 
     public static function getReleaseFromString(string $releaseString): ChurchCRMRelease { 
         if ( empty($_SESSION['ChurchCRMReleases']  )) {

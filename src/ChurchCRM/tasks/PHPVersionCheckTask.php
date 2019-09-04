@@ -8,7 +8,8 @@ use ChurchCRM\dto\SystemURLs;
 
 class PHPVersionCheckTask implements iTask, iPreUpgradeTask
 {
-  private const REQUIRED_PHP_VERSION = '7.1.0';
+  // todo: make these const variables private after deprecating PHP7.0 #4948
+  const REQUIRED_PHP_VERSION = '7.1.0';
   public function isActive()
   {
     return version_compare(PHP_VERSION, $this::REQUIRED_PHP_VERSION, '<');
