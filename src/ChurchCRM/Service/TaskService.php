@@ -23,6 +23,7 @@ use ChurchCRM\Tasks\iPreUpgradeTask;
 use ChurchCRM\Tasks\PHPVersionCheckTask;
 use ChurchCRM\Tasks\UnsupportedDepositCheck;
 use ChurchCRM\Tasks\UnsupportedPaymentDataCheck;
+use ChurchCRM\Tasks\PHPZipArchiveCheckTask;
 
 class TaskService
 {
@@ -51,7 +52,8 @@ class TaskService
             new CheckExecutionTimeTask(),
             new UnsupportedDepositCheck(),
             new UnsupportedPaymentDataCheck(),
-            new PHPVersionCheckTask()
+            new PHPVersionCheckTask(),
+            new PHPZipArchiveCheckTask()
         ];
 
         $this->notificationClasses = [
