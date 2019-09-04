@@ -26,7 +26,7 @@ use ChurchCRM\Backup\BackupDownloader;
 
 $app->group('/database', function () {
 
-    $this->post('/reset', 'resetDatabase');
+    $this->delete('/reset', 'resetDatabase');
     $this->delete('/people/clear', 'clearPeopleTables');
 
     $this->post('/backup', function ($request, $response, $args) {
