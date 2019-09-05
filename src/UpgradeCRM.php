@@ -9,6 +9,7 @@ require_once 'Include/Header-function.php';
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Service\AppIntegrityService;
+use ChurchCRM\Service\TaskService;
 
 // Set the page title and include HTML header
 $sPageTitle = gettext('Upgrade ChurchCRM');
@@ -30,6 +31,39 @@ Header_body_scripts();
             <?= gettext('Upgrade ChurchCRM') ?>
         </span>
     </li>
+
+    <?php
+     $taskService = new TaskService();
+     $preUpgradeTasks = $taskService->getActivePreUpgradeTasks();
+      if (count($preUpgradeTasks) > 0) {
+          ?>
+    <li>
+      <i class="fa fa-bomb bg-red"></i>
+      <div class="timeline-item" >
+        <h3 class="timeline-header"><?= gettext('Warning: Pre-Upgrade Tasks Detected') ?> <span id="status1"></span></h3>
+        <div class="timeline-body" id="preUpgradeCheckWarning">
+          <p><?= gettext("Some conditions have been identified wich may prevent a successful upgrade")?></b></p>
+          <p><?= gettext("Please review and mitigate these tasks before continuing with the upgrade:")?></p>
+          <div>
+            <ul>
+              <?php
+                foreach ($preUpgradeTasks as $preUpgradeTask) {
+                    ?>
+                    <li><?= $preUpgradeTask->getTitle() ?>: <?= $preUpgradeTask->getDesc()?></li>
+                  <?php
+                } ?>
+
+            </ul>
+              
+          </div>
+          <p></p>
+          <input type="button" class="btn btn-primary" id="acceptUpgradeTaskWarking" <?= 'value="'.gettext('I Understand').'"' ?>>
+        </div>
+      </div>
+    </li>
+    <?php
+      }
+    ?>
     <?php
       if (AppIntegrityService::getIntegrityCheckStatus() == gettext("Failed")) {
           ?>
@@ -37,7 +71,7 @@ Header_body_scripts();
       <i class="fa fa-bomb bg-red"></i>
       <div class="timeline-item" >
         <h3 class="timeline-header"><?= gettext('Warning: Signature mismatch') ?> <span id="status1"></span></h3>
-        <div class="timeline-body" id="integrityCheckWarning">
+        <div class="timeline-body" id="integrityCheckWarning" <?= count($preUpgradeTasks) > 0 ? 'style="display:none"' : '' ?>>
           <p><?= gettext("Some ChurchCRM system files may have been modified since the last installation.")?><b><?= gettext("This upgrade will completely destroy any customizations made to the following files by reverting the files to the official version.")?></b></p>
           <p><?= gettext("If you wish to maintain your changes to these files, please take a manual backup of these files before proceeding with this upgrade, and then manually restore the files after the upgrade is complete.")?></p>
           <div>
@@ -138,6 +172,11 @@ Header_body_scripts();
       responsive: true,
       paging:false,
       searching: false
+    });
+
+    $("#acceptUpgradeTaskWarking").click(function() {
+      $("#preUpgradeCheckWarning").slideUp();
+      $("#integrityCheckWarning").show("slow");
     });
 
     $("#acceptIntegrityCheckWarking").click(function() {
