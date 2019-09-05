@@ -70,24 +70,35 @@ $familyAddress = $family->getAddress();
                 <div class="col-lg-8">
                     <div class="box">
                         <br/>
+                        <div class="text-center">
+                        <a class="btn btn-app" id="lastFamily"><i
+                                    class="fa fa-hand-o-left"></i><?= gettext('Previous Family') ?></a>
+
+                        <a class="btn btn-app btn-danger" role="button" href="<?= SystemURLs::getRootPath()?>/v2/family"><i
+                                    class="fa fa-list-ul"></i><?= gettext('Family List') ?></a>
+
+                        <a class="btn btn-app" role="button" id="nextFamily" ><i
+                                    class="fa fa-hand-o-right"></i><?= gettext('Next Family') ?> </a>
+                        </div>
+                        <hr/>
                         <a class="btn btn-app" href="#" data-toggle="modal" data-target="#confirm-verify"><i
                                 class="fa fa-check-square"></i> <?= gettext("Verify Info") ?></a>
                         <a class="btn btn-app bg-olive"
                            href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?FamilyID=<?=$family->getId()?>"><i
                                 class="fa fa-plus-square"></i> <?= gettext('Add New Member') ?></a>
-                        <a class="btn btn-app btn-danger" role="button"
-                           href="<?=SystemURLs::getRootPath()?>/v2/family"><i
-                                class="fa fa-list-ul"></i><?= gettext('Family List') ?></a>
-                        <?php if (SessionUser::getUser()->isDeleteRecordsEnabled()) {
+
+                        <?php if (SessionUser::getUser()->isEditRecordsEnabled()) { ?>
+                            <button class="btn btn-app bg-orange" id="activateDeactivate">
+                                <i class="fa <?= (empty($family->isActive()) ? 'fa-times-circle-o' : 'fa-check-circle-o') ?> "></i><?php echo(($family->isActive() ? _('Deactivate') : _('Activate')) . _(' this Family')); ?>
+                            </button>
+                        <?php }
+                        if (SessionUser::getUser()->isDeleteRecordsEnabled()) {
                             ?>
                             <a class="btn btn-app bg-maroon"
                                href="<?= SystemURLs::getRootPath() ?>/SelectDelete.php?FamilyID=<?=$family->getId()?>"><i
-                                    class="fa fa-trash-o"></i><?= gettext('Delete this Family') ?></a>
+                                        class="fa fa-trash-o"></i><?= gettext('Delete this Family') ?></a>
                             <?php
-                        } ?>
-
-
-                        <?php
+                        }
                         if (SessionUser::getUser()->isNotesEnabled()) {
                             ?>
                             <a class="btn btn-app"
@@ -97,13 +108,6 @@ $familyAddress = $family->getAddress();
                         } ?>
                         <a class="btn btn-app" id="AddFamilyToCart" data-familyid="<?= $family->getId() ?>"> <i
                                 class="fa fa-cart-plus"></i> <?= gettext("Add All Family Members to Cart") ?></a>
-
-                        <?php if (SessionUser::getUser()->isEditRecordsEnabled()) { ?>
-                            <button class="btn btn-app bg-orange" id="activateDeactivate">
-                                <i class="fa <?= (empty($family->isActive()) ? 'fa-times-circle-o' : 'fa-check-circle-o') ?> "></i><?php echo(($family->isActive() ? _('Deactivate') : _('Activate')) . _(' this Family')); ?>
-                            </button>
-                        <?php } ?>
-
                     </div>
                 </div>
             </div>

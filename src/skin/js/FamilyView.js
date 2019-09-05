@@ -4,6 +4,23 @@ $(document).ready(function () {
         $("#family-deactivated").removeClass("hide");
     }
 
+    $.ajax({
+        url: window.CRM.root + "/api/family/" + window.CRM.currentFamily + "/nav",
+        encode: true,
+        dataType: 'json'
+    }).done(function (data) {
+        if (data["PreFamilyId"]) {
+            $("#lastFamily").attr("href", window.CRM.root + "/v2/family/" + data["PreFamilyId"] + "/view");
+        } else {
+            $("#lastFamily").addClass("hidden");
+        }
+        if (data["NextFamilyId"]) {
+            $("#nextFamily").attr("href", window.CRM.root + "/v2/family/" + data["NextFamilyId"] + "/view");
+        } else {
+            $("#nextFamily").addClass("hidden");
+        }
+    });
+
     $("#pledge-payment-table").DataTable(window.CRM.plugin.dataTable);
 
 
