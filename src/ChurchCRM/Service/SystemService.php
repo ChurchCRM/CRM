@@ -7,7 +7,6 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\FileSystemUtils;
 use ChurchCRM\SQLUtils;
 use Exception;
-use Github\Client;
 use Ifsnop\Mysqldump\Mysqldump;
 use PharData;
 use Propel\Runtime\Propel;
@@ -17,23 +16,15 @@ use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\ExecutionTime;
 use ChurchCRM\Backup\BackupJob;
 use ChurchCRM\Backup\BackupType;
+use ChurchCRM\Utils\ChurchCRMReleaseManager;
+use ChurchCRM\dto\ChurchCRMRelease;
 
 require SystemURLs::getDocumentRoot() . '/vendor/ifsnop/mysqldump-php/src/Ifsnop/Mysqldump/Mysqldump.php';
 
 
 class SystemService
 {
-    public function getLatestRelease()
-    {
-        $client = new Client();
-        $release = null;
-        try {
-            $release = $client->api('repo')->releases()->latest('churchcrm', 'crm');
-        } catch (\Exception $e) {
-        }
 
-        return $release;
-    }
 
     static public function getInstalledVersion()
     {
@@ -232,36 +223,18 @@ class SystemService
                   LoggerUtils::getAppLogger()->addInfo("Not starting application integrity check.  Last application integrity check run: ".SystemConfig::getValue('sLastIntegrityCheckTimeStamp'));
                 }
         }
+        if (self::IsTimerThresholdExceeded(SystemConfig::getValue('sLastSoftwareUpdateCheckTimeStamp'),SystemConfig::getValue('iSoftwareUpdateCheckInterval'))) {
+          // Since checking for updates from GitHub is a potentailly expensive operation,
+          // Run this task as part of the "background jobs" API call
+          // Inside ChurchCRMReleaseManager, the restults are stored to the $_SESSION
+          ChurchCRMReleaseManager::checkForUpdates();
+          $now = new \DateTime();  // update the LastBackupTimeStamp.
+          SystemConfig::setValue('sLastSoftwareUpdateCheckTimeStamp', $now->format(SystemConfig::getValue('sDateFilenameFormat')));
+        }
+
         LoggerUtils::getAppLogger()->addInfo("Finished background job processing");
     }
 
-    public function downloadLatestRelease()
-    {
-      $logger = LoggerUtils::getAppLogger();
-      $logger->debug("Querying for latest release");
-      $release = $this->getLatestRelease();
-      $logger->debug("Query result: " . print_r($release,true));
-      $UpgradeDir = SystemURLs::getDocumentRoot() . '/Upgrade';
-      foreach ($release['assets'] as $asset) {
-        if ($asset['name'] == "ChurchCRM-" . $release['name'] . ".zip") {
-          $url = $asset['browser_download_url'];
-        }
-      }
-      $logger->debug("Creating upgrade directory: " . $UpgradeDir);
-      mkdir($UpgradeDir);
-      $logger->info("Downloading release from: " . $url . " to: ". $UpgradeDir . '/' . basename($url));
-      $executionTime = new ExecutionTime();
-      file_put_contents($UpgradeDir . '/' . basename($url), file_get_contents($url));
-      $logger->info("Finished downloading file.  Execution time: " .$executionTime->getMiliseconds()." ms");
-      $returnFile = [];
-      $returnFile['fileName'] = basename($url);
-      $returnFile['releaseNotes'] = $release['body'];
-      $returnFile['fullPath'] = $UpgradeDir . '/' . basename($url);
-      $returnFile['sha1'] = sha1_file($UpgradeDir . '/' . basename($url));
-      $logger->info("SHA1 hash for ". $returnFile['fullPath'] .": " . $returnFile['sha1']);
-      $logger->info("Release notes: " . $returnFile['releaseNotes'] );
-      return $returnFile;
-    }
 
     public function moveDir($src, $dest)
     {
@@ -276,38 +249,6 @@ class SystemService
         }
 
         return rmdir($src);
-    }
-
-    public function doUpgrade($zipFilename, $sha1)
-    {
-      $logger = LoggerUtils::getAppLogger();
-      $logger->info("Beginnging upgrade process");
-      $logger->info("PHP max_execution_time is now: " . ini_get("max_execution_time"));
-      $logger->info("Beginning hash validation on " . $zipFilename);
-      if ($sha1 == sha1_file($zipFilename)) {
-        $logger->info("Hash validation succeeded on " . $zipFilename . " Got: " . sha1_file($zipFilename));
-        $zip = new \ZipArchive();
-        if ($zip->open($zipFilename) == true) {
-          $logger->info("Extracting " . $zipFilename." to: " . SystemURLs::getDocumentRoot() . '/Upgrade');
-          $executionTime = new ExecutionTime();
-          $zip->extractTo(SystemURLs::getDocumentRoot() . '/Upgrade');
-          $zip->close();
-          $logger->info("Extraction completed.  Took:" . $executionTime->getMiliseconds());
-          $logger->info("Moving extracted zip into place");
-          $executionTime = new ExecutionTime();
-          $this->moveDir(SystemURLs::getDocumentRoot() . '/Upgrade/churchcrm', SystemURLs::getDocumentRoot());
-          $logger->info("Move completed.  Took:" . $executionTime->getMiliseconds());
-        }
-        $logger->info("Deleting zip archive: ".$zipFilename);
-        unlink($zipFilename);
-        SystemConfig::setValue('sLastIntegrityCheckTimeStamp', null);
-        $logger->debug("Set sLastIntegrityCheckTimeStamp to null");
-        $logger->info("Upgrade process complete");
-        return 'success';
-      } else {
-        $logger->err("Hash validation failed on " . $zipFilename.". Expected: ".$sha1. ". Got: ".sha1_file($zipFilename));
-        return 'hash validation failure';
-      }
     }
 
         // Returns a file size limit in bytes based on the PHP upload_max_filesize

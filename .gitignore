@@ -51,3 +51,5 @@ error.log
 nbproject/*
 /src/skin/js-react/
 .DS_Store
+
+src/Upgrade/*
