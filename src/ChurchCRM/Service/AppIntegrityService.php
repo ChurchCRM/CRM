@@ -26,6 +26,7 @@ class AppIntegrityService
         }
       } else {
         LoggerUtils::getAppLogger()->debug('Integrity check result file not found at: ' . $integrityCheckFile);
+        AppIntegrityService::$IntegrityCheckDetails = new \StdClass;
         AppIntegrityService::$IntegrityCheckDetails->status = 'failure';
         AppIntegrityService::$IntegrityCheckDetails->message = gettext("integrityCheck.json file missing");
       }
@@ -59,7 +60,12 @@ class AppIntegrityService
   }
 
   public static function getFilesFailingIntegrityCheck() {
+    if (isset(AppIntegrityService::getIntegrityCheckData()->files)) {
     return AppIntegrityService::getIntegrityCheckData()->files;
+    }
+    else{
+      return @[];
+    }
   }
   public static function verifyApplicationIntegrity()
   {
