@@ -12,11 +12,46 @@ use Propel\Runtime\ActiveQuery\Criteria;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\SessionUser;
 use ChurchCRM\Bootstrapper;
+use ChurchCRM\ListOptionQuery;
+use ChurchCRM\GroupQuery;
+
+use ChurchCRM\PropertyQuery;
+use ChurchCRM\PersonCustomMasterQuery;
 
 //Set the page title
 $sPageTitle = gettext(ucfirst($sMode)) . ' ' . gettext('Listing');
 include SystemURLs::getDocumentRoot() . '/Include/Header.php';
-/* @var $families ObjectCollection */
+// classification list
+$ListItem =  ListOptionQuery::create()->select('OptionName')->filterById(1)->find()->toArray();
+$ClassificationList[] = "Unassigned";
+foreach($ListItem as $element) {
+    $ClassificationList[] = $element;
+}
+// role list
+$ListItem = ListOptionQuery::create()->select('OptionName')->filterById(2)->find()->toArray();
+$RoleList[] = "Unassigned";
+foreach($ListItem as $element) {
+    $RoleList[] = $element;
+}
+// person properties list
+$ListItem = PropertyQuery::create()->filterByProClass("p")->find();
+$PropertyList[] = "Unassigned";
+foreach($ListItem as $element) {
+    $PropertyList[] = $element->getProName();
+}
+// person custom list
+$ListItem = PersonCustomMasterQuery::create()->select('Name')->find();
+$CustomList[] = "Unassigned";
+foreach ($ListItem as $element) {
+    $CustomList[] = $element->getName();
+}
+// get person group list
+$ListItem = GroupQuery::create()->find();
+$GroupList[] = "Unassigned";
+foreach ($ListItem as $element) {
+    $GroupList[] = $element->getName();
+}
+
 ?>
 
 <div class="box box-primary">
@@ -29,18 +64,19 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <div class="col-lg-6">
                 <div class='external-filter'>
                 <!-- <label>Gender:</label> -->
-                <span style="margin: 5px; display:inline-block;"id="filter-Gender"></span>
+                <select style="visibility: hidden; margin: 5px; display:inline-block; width: 150px;" class="filter-Gender" multiple="multiple"></select>
                 <!-- <label>Classification:</label> -->
-                <span style="margin: 5px; display:inline-block;"id="filter-Classification"></span>
+                <select style="visibility: hidden; margin: 5px; display:inline-block; width: 150px;" class="filter-Classification" multiple="multiple"></select>
                 <!-- <label>Family Role:</label> -->
-                <span style="margin: 5px; display:inline-block;"  id="filter-Role"></span>
-                <!-- <label>Contact Properties:</label> -->
-                <span style="margin: 5px; display:inline-block;"  id="filter-Properties"></span>
+                <select style="visibility: hidden; margin: 5px; display:inline-block; width: 150px;" class="filter-Role"multiple="multiple"></select>
+                <!-- <label>Properties:</label> -->
+                <select style="visibility: hidden; margin: 5px; display:inline-block; width: 150px;" class="filter-Properties" multiple="multiple"></select>
                 <!-- <label>Custom Fields:</label> -->
-                <span style="margin: 5px; display:inline-block;"  id="filter-Custom"></span>
+                <select style="visibility: hidden; margin: 5px; display:inline-block; width: 150px;" class="filter-Custom" multiple="multiple"></select>
                 <!-- <label>Group Types:</label> -->
-                <span style="margin: 5px; display:inline-block;"  id="filter-Group"></span>
+                <select style="visibility: hidden; margin: 5px; display:inline-block; width: 150px;" class="filter-Group" multiple="multiple"></select> 
                 <input style="margin: 20px" id="ClearFilter" type="button" class="btn btn-default" value="<?= gettext('Clear Filter') ?>"><BR><BR>
+
                 </div>
             </div>
 
@@ -58,26 +94,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
 <div class="box box-warning">
     <div class="box-body">
         <table id="members" class="table table-striped table-bordered data-table" cellspacing="0" width="100%">
-            <thead>
-            <tr>
-                <th><?= gettext('Actions') ?></th>
-                <th><?= gettext('Id') ?></th>
-                <th><?= gettext('Last Name') ?></th>
-                <th><?= gettext('First Name') ?></th>
-                <th><?= gettext('Address') ?></th>
-                <th><?= gettext('Home Phone') ?></th>
-                <th><?= gettext('Cell Phone') ?></th>
-                <th><?= gettext('Email') ?></th>
-                <th><?= gettext('Gender') ?></th>
-                <th><?= gettext('Classification') ?></th>
-                <th><?= gettext('Roles') ?></th>
-                <th><?= gettext('Properties') ?></th>
-                <th><?= gettext('Custom') ?></th>
-                <th><?= gettext('Group Types') ?></th>
-            </tr>
-            </thead>
             <tbody>
-
             <!--Populate the table with person details -->
             <?php foreach ($members as $person) {
               /* @var $members ChurchCRM\people */
@@ -145,13 +162,6 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
     var oTable;
 
     $(document).ready(function() {
-        // get $fp array from people.php
-        var FamilyProperties = JSON.parse('<?= $fp ?>');
-
-        // get $cL array from people.php
-        var CustomFields = JSON.parse('<?= $cl ?>');
-
-        var GroupTypes = JSON.parse('<?= $gl ?>');
 
         // setup filters
         var filterByClsId = '<?= $filterByClsId ?>';
@@ -163,7 +173,59 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
         var bVisible = parseInt("<?= SystemConfig::getValue('bHidePersonAddress') ? 0 : 1 ?>");
 
         oTable = $('#members').DataTable({
-            columns: [null,{visible:false},null,null,{visible:bVisible},null,null,null,null,null,null,{visible:false},{visible:false},{visible:false}],
+            deferRender: true,
+            search: {
+            regex: true,
+                  },
+            columns: [
+                {
+                    title:i18next.t('Actions'), 
+                },
+                {
+                    title:i18next.t('Id'),
+                    visible:false
+                },
+                {
+                    title:i18next.t('Last Name'),
+                },
+                {
+                    title:i18next.t('First Name'),
+                },
+                {
+                    title:i18next.t('Address'),
+                    visible:bVisible
+                },
+                {
+                    title:i18next.t('Home Phone'),
+                },
+                {
+                    title:i18next.t('Cell Phone'),
+                },
+                {
+                    title:i18next.t('Email'),
+                },
+                {
+                    title:i18next.t('Gender'),
+                },
+                {
+                    title:i18next.t('Classification'),
+                },
+                {
+                    title:i18next.t('Roles'),
+                },
+                {
+                    title:i18next.t('Properties'),
+                    visible:false
+                },
+                {
+                    title:i18next.t('Custom'),
+                    visible:false
+                },
+                {
+                    title:i18next.t('Group'),
+                    visible:false
+                }
+            ],
             "language": {
                 url: "<?= SystemURLs::getRootPath() . '/locale/datatables/' . Bootstrapper::GetCurrentLocale()->getDataTables() ?>.json"
             },
@@ -176,81 +238,143 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                 "<'row'<'col-sm-4'l><'col-sm-4'i><'col-sm-4'p>>",
         });
 
-        yadcf.init(oTable, [{
-            column_number: [8],
-            filter_type: 'multi_select',
-            select_type: 'select2',
-            filter_container_id: 'filter-Gender',
-            filter_default_label: 'Gender',
-            filter_match_mode : "exact",
-            select_type_options: {width: '190px'}
-        }, {
-            column_number: [9],
-            filter_type: 'multi_select',
-            select_type: 'select2',
-            filter_container_id: 'filter-Classification',
-            filter_default_label: 'Classification',
-            filter_match_mode : "exact",
-            select_type_options: {width: '190px'}
-        }, {
-            column_number: [10],
-            filter_type: 'multi_select',
-            select_type: 'select2',
-            filter_container_id: 'filter-Role',
-            filter_default_label: 'Family Role',
-            filter_match_mode : "exact",
-            select_type_options: {width: '190px'}
-        }, {
-            column_number: [11],
-            filter_container_id: 'filter-Properties',
-            filter_type: 'multi_select',
-            select_type: 'select2', 
-            data: FamilyProperties, 
-            filter_default_label: "Family Properties",
-            select_type_options: {width: '190px'}
-        }, {
-            column_number: [12],
-            filter_container_id: 'filter-Custom',
-            filter_type: 'multi_select',
-            select_type: 'select2',
-            data: CustomFields, 
-            filter_default_label: "Custom Field",
-            select_type_options: {width: '190px'}
-        }, {
-            column_number: [13],
-            filter_container_id: 'filter-Group',
-            filter_type: 'multi_select',
-            select_type: 'select2',
-            data: GroupTypes, 
-            filter_default_label: "Group Types",
-            select_type_options: {width: '190px'}
+         
+        $('.filter-Gender').select2({
+            multiple: true,
+            placeholder: "Select Gender",
+        });
+        $('.filter-Classification').select2({
+            multiple: true,
+            placeholder: "Select Classification"
+        });
+        $('.filter-Role').select2({
+            multiple: true,
+            placeholder: "Select Role"
+        });
+        $('.filter-Properties').select2({
+            multiple: true,
+            placeholder: "Select Properties"
+        });
+        $('.filter-Custom').select2({
+            multiple: true,
+            placeholder: "Select Custom"
+        });
+        $('.filter-Group').select2({
+            multiple: true,
+            placeholder: "Select Group"
+        });
+
+        $('.filter-Gender').on("change", function() {
+            filterColumn(8, $(this).select2('data'), true);
+        });
+        $('.filter-Classification').on("change", function() {
+            filterColumn(9, $(this).select2('data'), true);
+        });
+        $('.filter-Role').on("change", function() {
+            filterColumn(10, $(this).select2('data'), true);
+        });
+        $('.filter-Properties').on("change", function() {
+            filterColumn(11, $(this).select2('data'), false);
+        });
+        $('.filter-Custom').on("change", function() {
+            filterColumn(12, $(this).select2('data'), false);
+        });
+        $('.filter-Group').on("change", function() {
+            filterColumn(13, $(this).select2('data'), false);
+        });
+
+        // apply filters
+        function filterColumn(col, search, regEx) {
+            if (search.length === 0) {
+                tmp = [''];
+            } else {
+                var tmp = [];
+                if (regEx) {
+                    search.forEach(function(item) {
+                        tmp.push('^'+item.text+'$')});
+                } else {
+                    search.forEach(function(item) {
+                    tmp.push(item.text)});
+                }
+            }
+            
+
+            // join array into string with regex or (|)
+                var val = tmp.join('|');
+            // apply search
+            oTable.column(col).search(val, 1, 0).draw();
+        
+            
         }
-    ]);
 
-    // I'm getting the following error when the filters below are executed.
-    // jquery.min.js:2 [Report Only] Refused to execute inline event handler because it violates the following Content Security Policy directive: 
-    // "script-src 'unsafe-eval' 'self' 'nonce-GYZDHvtTpRPW9UHIGF8NyQ==' browser-update.org". Either the 'unsafe-inline' keyword, a hash ('sha256-...'), 
-    // or a nonce ('nonce-...') is required to enable inline execution.
+        // the following is an example of how we can fill the gender list from the table data
+        // client processing can only be done with visible columns in this case because of combined data
+        // oTable.columns(8).data().eq(0).unique().sort().each( function ( d, j ) {
+        //     $('.filter-Gender').append('<option>'+d+'</option>');
+        // });
 
-    // filter by gender
-    if (filterByGender != '') {
-        yadcf.exFilterColumn(oTable, [[8, filterByGender]]);
-    }
+        // setup external DataTable filters
+        var Gender = ['Male', 'Female', 'Unassigned'];
+        for (var i = 0; i < Gender.length; i++) {
+            if (filterByGender == Gender[i]) {
+                $('.filter-Gender').val(Gender[i]);
+                $('.filter-Gender').append('<option selected value='+i+'>'+Gender[i]+'</option>');
+                $('.filter-Gender').trigger('change')
+            } else { 
+            $('.filter-Gender').append('<option value='+i+'>'+Gender[i]+'</option>');
+            }
+        }
+        var ClassificationList = JSON.parse('<?= json_encode($ClassificationList) ?>');
+        for (var i = 0; i < ClassificationList.length; i++) {
+            // apply initinal filters if applicable
+            if (filterByClsId == ClassificationList[i]) {
+                $('.filter-Classification').val(ClassificationList[i]);
+                $('.filter-Classification').append('<option selected value='+i+'>'+ClassificationList[i]+'</option>');
+                $('.filter-Classification').trigger('change')
+            } else {
+               $('.filter-Classification').append('<option value='+i+'>'+ClassificationList[i]+'</option>'); 
+            }
+        }
+        
+        var RoleList = JSON.parse('<?= json_encode($RoleList) ?>');
+        for (var i = 0; i < RoleList.length; i++) {
+            if (filterByFmrId == RoleList[i]) {
+                $('.filter-Role').val(RoleList[i]);
+                $('.filter-Role').append('<option selected value='+i+'>'+RoleList[i]+'</option>');
+                $('.filter-Role').trigger('change')
+            } else {
+                $('.filter-Role').append('<option value='+i+'>'+RoleList[i]+'</option>');
+            }
+        }
+        var PropertyList = JSON.parse('<?= json_encode($PropertyList) ?>');
+        for (var i = 0; i < PropertyList.length; i++) {
+            $('.filter-Properties').append('<option value='+i+'>'+PropertyList[i]+'</option>');
+        }
+        var CustomList = JSON.parse('<?= json_encode($CustomList) ?>');
+        for (var i = 0; i < CustomList.length; i++) {
+            $('.filter-Custom').append('<option value='+i+'>'+CustomList[i]+'</option>');
+        }
+        var GroupList = JSON.parse('<?= json_encode($GroupList) ?>');
+        for (var i = 0; i < GroupList.length; i++) {
+            $('.filter-Group').append('<option value='+i+'>'+GroupList[i]+'</option>');
+        }
 
-    // filter by Classification
-    if (filterByClsId != '') {
-        yadcf.exFilterColumn(oTable, [[9, filterByClsId]]);
-    }
+        // apply initinal filters if applicable
+        // $('.filter-Classification').val(filterByClsId);
+        // $('.filter-Classification').trigger('change')
 
-    // filter by Family Role
-    if (filterByFmrId != '') {
-        yadcf.exFilterColumn(oTable, [[10, filterByFmrId]]);
-    }
-    
-    });
+        // clear external filters
+        document.getElementById("ClearFilter").addEventListener("click", function() {
+            
+            $('.filter-Gender').val([]).trigger('change')
+            $('.filter-Classification').val([]).trigger('change')
+            $('.filter-Role').val([]).trigger('change')
+            $('.filter-Properties').val([]).trigger('change')
+            $('.filter-Custom').val([]).trigger('change')
+            $('.filter-Group').val([]).trigger('change')
+        });
+    }); // end document ready
 
-    document.getElementById("ClearFilter").addEventListener("click", function() {yadcf.exResetAllFilters(oTable,true);});
-    
     document.getElementById("AddAllToCart").addEventListener("click", function() {
         var listPeople = [];
         var table = $('#members').DataTable().rows( { filter: 'applied' } ).every( function () {

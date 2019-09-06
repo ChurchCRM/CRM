@@ -47,36 +47,6 @@ function viewPeopleVerify(Request $request, Response $response, array $args)
 
 function listPeople(Request $request, Response $response, array $args)
 {
-    // get list of family properties so we can filter on person-list.php
-    $pL = [];
-    $pP = PropertyQuery::create()
-        ->filterByProClass("p")
-        ->find();
-
-    $pL[] = "Unassigned";
-    foreach($pP as $element) {
-        $pL[] = $element->getProName();
-    }
-
-    // get person custom list so we can filter on  person-list.php
-    $cL = [];
-    $cM = PersonCustomMasterQuery::create()
-        ->find();
-    
-    $cL[] = "Unassigned";
-    foreach ($cM as $element) {
-        $cL[] = $element->getName();
-    }
-
-    // get person group list so we can filter on  person-list.php
-    $gL = [];
-    $gQ = GroupQuery::create()
-        ->find();
-    
-    $gL[] = "Unassigned";
-    foreach ($gQ as $element) {
-        $gL[] = $element->getName();
-    }
 
     $renderer = new PhpRenderer('templates/people/');
     // Filter received user input as needed
@@ -136,10 +106,7 @@ function listPeople(Request $request, Response $response, array $args)
         'members' => $members,
         'filterByClsId' => $filterByClsId,
         'filterByFmrId' => $filterByFmrId,
-        'filterByGender' => $filterByGender,
-        'fp' => json_encode($pL), // FamilyProperties
-        'cl' => json_encode($cL), // CustomFields
-        'gl' => json_encode($gL) // GroupList
+        'filterByGender' => $filterByGender
     ];
 
     return $renderer->render($response, 'person-list.php', $pageArgs);
