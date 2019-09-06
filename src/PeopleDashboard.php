@@ -166,7 +166,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
       <div class="icon">
         <i class="fa fa-user"></i>
       </div>
-      <a href="<?= SystemURLs::getRootPath() ?>/v2/people" class="small-box-footer">
+      <a href="<?= SystemURLs::getRootPath() ?>/v2/people?inActive=false" class="small-box-footer">
         <?= gettext('See All People') ?> <i class="fa fa-arrow-circle-right"></i>
       </a>
     </div>
@@ -284,7 +284,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
         <?php foreach ($personStats as $key => $value) {
             ?>
           <tr>
-            <td><a href='v2/people?Classification=<?= $classifications->$key ?>'><?= gettext($key) ?></a></td> 
+            <td><a href='v2/people?inActive=false&Classification=<?= $classifications->$key ?>'><?= gettext($key) ?></a></td> 
             <td>
               <div class="progress progress-xs progress-striped active">
                 <div class="progress-bar progress-bar-success"

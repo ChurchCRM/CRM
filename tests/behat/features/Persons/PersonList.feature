@@ -13,12 +13,12 @@ Feature: Person List
   Scenario: Add and remove all persons to cart
     Given I am authenticated as "admin" using "changeme"
     And I am on "/v2/people"
-    Then I should see "0" in the "#iconCount" element
+    Then I should see "0"
     And I click the "#AddAllToCart" element
     And I wait for AJAX to finish
-    Then I should not see "0" in the "#iconCount" element
+    Then I should not see "0"
     And I click the "#RemoveAllFromCart" element
     And I wait for AJAX to finish
-    Then I should see "0" in the "#iconCount" element
+    Then I should see "0" 
 
    

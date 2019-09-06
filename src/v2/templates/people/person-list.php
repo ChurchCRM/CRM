@@ -375,7 +375,7 @@ foreach ($ListItem as $element) {
         });
     }); // end document ready
 
-    document.getElementById("AddAllToCart").addEventListener("click", function() {
+    $("#AddAllToCart").click(function(){
         var listPeople = [];
         var table = $('#members').DataTable().rows( { filter: 'applied' } ).every( function () {
         // fill array
@@ -386,7 +386,7 @@ foreach ($ListItem as $element) {
         window.CRM.cart.addPerson(listPeople);
     });
 
-    document.getElementById("RemoveAllFromCart").addEventListener("click", function() {
+    $("#RemoveAllFromCart").click(function(){
         var listPeople = [];
         var table = $('#members').DataTable().rows( { filter: 'applied' } ).every( function () {
         // fill array
