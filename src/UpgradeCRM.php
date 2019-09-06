@@ -20,7 +20,7 @@ if (!$_SESSION['user']->isAdmin()) {
 }
 $expertMode = false;
 if (isset($_GET['expertmode'])) {
-  $expertMode = true;
+    $expertMode = true;
 }
 
 require 'Include/HeaderNotLoggedIn.php';
