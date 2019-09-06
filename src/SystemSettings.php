@@ -117,7 +117,7 @@ require 'Include/Header.php';
     ?>
               <li class="<?php if ($category == 'Church Information') {
         echo 'active';
-    } ?>"><a href="#<?= str_replace(" ", '', $category) ?>" data-toggle="tab" aria-expanded="false">
+    } ?>"><a href="#<?= InputUtils::cleanString($category) ?>" data-toggle="tab" aria-expanded="false">
                       <?= gettext($category) ?>
                   </a>
               </li>
@@ -133,7 +133,7 @@ require 'Include/Header.php';
 
             <div class="tab-pane <?php if ($category == 'Church Information') {
                     echo 'active';
-                } ?>" id="<?= str_replace(" ", '', $category) ?>">
+                } ?>" id="<?= InputUtils::cleanString($category) ?>">
                 <div class="table-responsive">
               <table class="table table-striped">
                 <tr>
