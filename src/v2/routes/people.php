@@ -62,8 +62,14 @@ function listPeople(Request $request, Response $response, array $args)
     if (isset($_GET['Classification'])) {
         $id = InputUtils::LegacyFilterInput($_GET['Classification']);
         $option =  ListOptionQuery::create()->filterById(1)->filterByOptionId($id)->findOne();
-        $filterByClsId = $option->getOptionName(); 
-        $sMode = $filterByClsId;
+        if ($id == 0) {
+            $filterByClsId = gettext('Unassigned');
+            $sMode = $filterByClsId; 
+        } else {
+           $filterByClsId = $option->getOptionName(); 
+            $sMode = $filterByClsId; 
+        }
+        
     }
 
     $filterByFmrId = '';
