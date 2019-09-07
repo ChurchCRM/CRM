@@ -19,5 +19,10 @@ Feature: Person View
     And I fill in select2 input "targetRoleSelection" with "Student" and select "Student"
     And I press "OK"
 
+  Scenario: Person Not Found
+    Given I am authenticated as "admin" using "changeme"
+    And I am on "/v2/person/not-found?id=9999"
+    Then Oops! PERSON 9999 Not Found"
+
 
    
