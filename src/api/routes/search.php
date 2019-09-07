@@ -14,6 +14,7 @@ use ChurchCRM\Search\FinanceDepositSearchResultProvider;
 use ChurchCRM\Search\FinancePaymentSearchResultProvider;
 use ChurchCRM\Search\PersonSearchResultProvider;
 use ChurchCRM\Search\GroupSearchResultProvider;
+use ChurchCRM\Search\CalendarEventSearchResultProvider;
 
 // Routes search
 
@@ -28,5 +29,6 @@ $app->get('/search/{query}', function ($request, $response, $args) {
     array_push($resultsArray,GroupSearchResultProvider::getSearchResults($query));
     array_push($resultsArray,FinanceDepositSearchResultProvider::getSearchResults($query));
     array_push($resultsArray,FinancePaymentSearchResultProvider::getSearchResults($query));
+    array_push($resultsArray,CalendarEventSearchResultProvider::getSearchResults($query));
     return $response->withJson(array_values(array_filter($resultsArray)));
 });
