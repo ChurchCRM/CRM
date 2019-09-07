@@ -6,7 +6,7 @@ Feature: Family View
   Scenario: Person Not Found
     Given I am authenticated as "admin" using "changeme"
     And I am on "/v2/family/not-found?id=9999"
-    Then Oops! FAMILY 9999 Not Found"
+    Then I should see "Oops! FAMILY 9999 Not Found"
 
 
    

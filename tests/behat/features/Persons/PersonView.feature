@@ -22,7 +22,7 @@ Feature: Person View
   Scenario: Person Not Found
     Given I am authenticated as "admin" using "changeme"
     And I am on "/v2/person/not-found?id=9999"
-    Then Oops! PERSON 9999 Not Found"
+    Then I should see "Oops! PERSON 9999 Not Found"
 
 
    
