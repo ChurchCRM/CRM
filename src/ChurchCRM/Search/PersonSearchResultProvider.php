@@ -10,20 +10,21 @@ use ChurchCRM\Search\SearchResult;
 use ChurchCRM\Search\SearchResultGroup;
 use ChurchCRM\dto\SystemConfig;
 
-class PersonSearchResultProvider implements iSearchResultProvider {
-
-    public static function getSearchResults(string $SearchQuery) {
-        if (SystemConfig::getBooleanValue("bSearchIncludePersons")) {
-            $searchResults = self::getPersonSearchResultsByPartialName($SearchQuery);
-        }
-
-        if (!empty($searchResults)) {
-            return new SearchResultGroup(gettext('Persons')." (". count($searchResults).")", $searchResults);
-        }
-        return null;
+class PersonSearchResultProvider extends BaseSearchResultProvider  {
+    public function __construct()
+    {
+        $this->pluralNoun = "Persons";
+        parent::__construct();
     }
 
-    private static function getPersonSearchResultsByPartialName(string $SearchQuery) {
+    public function getSearchResults(string $SearchQuery) {
+        if (SystemConfig::getBooleanValue("bSearchIncludePersons")) {
+            $this->addSearchResults($this->getPersonSearchResultsByPartialName($SearchQuery));
+        }
+        return $this->formatSearchGroup();
+    }
+
+    private function getPersonSearchResultsByPartialName(string $SearchQuery) {
         $searchResults = array();
         $id = 0;
         try {

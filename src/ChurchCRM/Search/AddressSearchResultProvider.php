@@ -3,27 +3,27 @@
 namespace ChurchCRM\Search;
 
 use ChurchCRM\FamilyQuery;
-use ChurchCRM\Family;
 use Propel\Runtime\ActiveQuery\Criteria;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Search\SearchResult;
-use ChurchCRM\Search\SearchResultGroup;
+use ChurchCRM\Search\BaseSearchResultProvider;
 use ChurchCRM\dto\SystemConfig;
 
-class AddressSearchResultProvider implements iSearchResultProvider {
-
-    public static function getSearchResults(string $SearchQuery) {
-        if (SystemConfig::getBooleanValue("bSearchIncludeAddresses")) {
-            $searchResults = self::getPersonSearchResultsByPartialAddress($SearchQuery);
-        }
-
-        if (!empty($searchResults)) {
-            return new SearchResultGroup(gettext('Address')." (". count($searchResults).")", $searchResults);
-        }
-        return null;
+class AddressSearchResultProvider extends BaseSearchResultProvider {
+    public function __construct()
+    {
+        $this->pluralNoun = "Address";
+        parent::__construct();
     }
 
-    private static function getPersonSearchResultsByPartialAddress(string $SearchQuery) {
+    public function getSearchResults(string $SearchQuery) {
+        if (SystemConfig::getBooleanValue("bSearchIncludeAddresses")) {
+             $this->addSearchResults($this->getPersonSearchResultsByPartialAddress($SearchQuery));
+        }
+        return $this->formatSearchGroup();
+    }
+
+    private function getPersonSearchResultsByPartialAddress(string $SearchQuery) {
         $searchResults = array();
         $id = 0;
         try {

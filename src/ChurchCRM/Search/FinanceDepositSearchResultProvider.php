@@ -10,22 +10,24 @@ use ChurchCRM\Search\SearchResultGroup;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 
-class FinanceDepositSearchResultProvider implements iSearchResultProvider {
-
-    public static function getSearchResults(string $SearchQuery) {
-        if ($_SESSION['user']->isFinanceEnabled()) {
-            if (SystemConfig::getBooleanValue("bSearchIncludeDeposits")) {
-                $searchResults = self::getDepositSearchResults($SearchQuery);
-            }
-
-            if (!empty($searchResults)) {
-                return new SearchResultGroup(gettext('Deposits')." (". count($searchResults).")", $searchResults);
-            }
-        }
-        return null;
+class FinanceDepositSearchResultProvider extends BaseSearchResultProvider  {
+    public function __construct()
+    {
+        $this->pluralNoun = "Deposits";
+        parent::__construct();
     }
 
-    private static function getDepositSearchResults(string $SearchQuery) {
+    public function getSearchResults(string $SearchQuery) {
+        if ($_SESSION['user']->isFinanceEnabled()) {
+            if (SystemConfig::getBooleanValue("bSearchIncludeDeposits")) {
+                $this->addSearchResults($this->getDepositSearchResults($SearchQuery));
+            }
+
+        }
+        return $this->formatSearchGroup();
+    }
+
+    private function getDepositSearchResults(string $SearchQuery) {
         $searchResults = array();
         $id = 0;
         try {

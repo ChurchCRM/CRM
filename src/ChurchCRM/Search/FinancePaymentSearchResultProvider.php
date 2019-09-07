@@ -10,27 +10,27 @@ use ChurchCRM\PledgeQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
 use ChurchCRM\dto\SystemURLs;
 
-class FinancePaymentSearchResultProvider implements iSearchResultProvider {
-
-    public static function getSearchResults(string $SearchQuery) {
-        if ($_SESSION['user']->isFinanceEnabled()) {
-            $searchResults = array();
-            if (SystemConfig::getBooleanValue("bSearchIncludePayments")) {
-                $searchResults = self::getPaymentSearchResults($SearchQuery);
-                if (count(explode("-",$SearchQuery)) == 2 ) {
-                    $range = explode("-",$SearchQuery);
-                    $searchResults = array_merge(self::getPaymentsWithValuesInRange((int)$range[0],(int)$range[1]));
-                }
-            }
-
-            if (!empty($searchResults)) {
-                return new SearchResultGroup(gettext('Payments') ." (". count($searchResults).")", $searchResults);
-            }
-        }
-        return null;
+class FinancePaymentSearchResultProvider extends BaseSearchResultProvider  {
+    public function __construct()
+    {
+        $this->pluralNoun = "Payments";
+        parent::__construct();
     }
 
-    private static function getPaymentsWithValuesInRange(int $min, int $max) {
+    public function getSearchResults(string $SearchQuery) {
+        if ($_SESSION['user']->isFinanceEnabled()) {
+            if (SystemConfig::getBooleanValue("bSearchIncludePayments")) {
+                $this->addSearchResults($this->getPaymentSearchResults($SearchQuery));
+                if (count(explode("-",$SearchQuery)) == 2 ) {
+                    $range = explode("-",$SearchQuery);
+                    $this->addSearchResults($this->getPaymentsWithValuesInRange((int)$range[0],(int)$range[1]));
+                }
+            }
+        }
+        return $this->formatSearchGroup();
+    }
+
+    private function getPaymentsWithValuesInRange(int $min, int $max) {
         $searchResults = array();
         $id = 0;
         if ($max == 0) 
@@ -63,7 +63,7 @@ class FinancePaymentSearchResultProvider implements iSearchResultProvider {
         return array_slice($searchResults,0,SystemConfig::getValue("bSearchIncludePaymentsMax")); // since Propel ORM won't handle limit() nicely, do it in PHP
     }
 
-    private static function getPaymentSearchResults(string $SearchQuery) {
+    private function getPaymentSearchResults(string $SearchQuery) {
         $searchResults = array();
         $id = 0;
         try {

@@ -15,6 +15,7 @@ use ChurchCRM\Search\FinancePaymentSearchResultProvider;
 use ChurchCRM\Search\PersonSearchResultProvider;
 use ChurchCRM\Search\GroupSearchResultProvider;
 use ChurchCRM\Search\CalendarEventSearchResultProvider;
+use ChurchCRM\Search\iSearchResultProvider;
 
 // Routes search
 
@@ -22,13 +23,21 @@ use ChurchCRM\Search\CalendarEventSearchResultProvider;
 $app->get('/search/{query}', function ($request, $response, $args) {
     $query = $args['query'];
     $resultsArray = [];
+    $resultsProviders = [
+        new PersonSearchResultProvider(),
+        new AddressSearchResultProvider(),
+        new FamilySearchResultProvider(),
+        new GroupSearchResultProvider(),
+        new FinanceDepositSearchResultProvider(),
+        new FinancePaymentSearchResultProvider(),
+        new CalendarEventSearchResultProvider()
+    ]; 
 
-    array_push($resultsArray,PersonSearchResultProvider::getSearchResults($query));
-    array_push($resultsArray,AddressSearchResultProvider::getSearchResults($query));
-    array_push($resultsArray,FamilySearchResultProvider::getSearchResults($query));
-    array_push($resultsArray,GroupSearchResultProvider::getSearchResults($query));
-    array_push($resultsArray,FinanceDepositSearchResultProvider::getSearchResults($query));
-    array_push($resultsArray,FinancePaymentSearchResultProvider::getSearchResults($query));
-    array_push($resultsArray,CalendarEventSearchResultProvider::getSearchResults($query));
+    foreach($resultsProviders as $provider)
+    {
+        /* @var $provider iSearchResultProvider */
+        array_push($resultsArray,$provider->getSearchResults($query));
+
+    }
     return $response->withJson(array_values(array_filter($resultsArray)));
 });

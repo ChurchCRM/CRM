@@ -10,25 +10,26 @@ use ChurchCRM\Search\SearchResult;
 use ChurchCRM\Search\SearchResultGroup;
 use ChurchCRM\dto\SystemConfig;
 
-class FamilySearchResultProvider implements iSearchResultProvider {
-
-    public static function getSearchResults(string $SearchQuery) {
-        $searchResults = array();
-        if (SystemConfig::getBooleanValue("bSearchIncludeFamilies")) {
-            $searchResults = array_merge($searchResults, self::getFamilySearchResultsByPartialName($SearchQuery));
-        }
-        if (SystemConfig::getBooleanValue("bSearchIncludeFamilyCustomProperties")) {
-            $searchResults = array_merge($searchResults, self::getFamilySearchResultsByCustomProperties($SearchQuery));
-        }
-
-        if (!empty($searchResults)) {
-            return new SearchResultGroup(gettext('Families')." (". count($searchResults).")", $searchResults);
-        }
-        
-        return null;
+class FamilySearchResultProvider extends BaseSearchResultProvider  {
+    public function __construct()
+    {
+        $this->pluralNoun = "Families";
+        parent::__construct();
     }
 
-    private static function getFamilySearchResultsByPartialName(string $SearchQuery) {
+    public function getSearchResults(string $SearchQuery) {
+        $searchResults = array();
+        if (SystemConfig::getBooleanValue("bSearchIncludeFamilies")) {
+            $this->addSearchResults($this->getFamilySearchResultsByPartialName($SearchQuery));
+        }
+        if (SystemConfig::getBooleanValue("bSearchIncludeFamilyCustomProperties")) {
+            $this->addSearchResults($this->getFamilySearchResultsByCustomProperties($SearchQuery));
+        }
+
+        return $this->formatSearchGroup();
+    }
+
+    private function getFamilySearchResultsByPartialName(string $SearchQuery) {
         $searchResults = array();
         $id = 0;
         try {
@@ -54,7 +55,7 @@ class FamilySearchResultProvider implements iSearchResultProvider {
             LoggerUtils::getAppLogger()->warn($e->getMessage());
         }
     }
-    private static function getFamilySearchResultsByCustomProperties(string $SearchQuery) {
+    private function getFamilySearchResultsByCustomProperties(string $SearchQuery) {
         $searchResults = array();
         $id = 0;
         try {
