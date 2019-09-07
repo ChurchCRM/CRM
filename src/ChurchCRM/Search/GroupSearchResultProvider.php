@@ -18,7 +18,7 @@ class GroupSearchResultProvider implements iSearchResultProvider {
         }
 
         if (!empty($searchResults)) {
-            return new SearchResultGroup(gettext('Groups'), $searchResults);
+            return new SearchResultGroup(gettext('Groups')." (". count($searchResults).")", $searchResults);
         }
         return null;
     }

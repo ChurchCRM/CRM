@@ -22,7 +22,7 @@ class FamilySearchResultProvider implements iSearchResultProvider {
         }
 
         if (!empty($searchResults)) {
-            return new SearchResultGroup(gettext('Families'), $searchResults);
+            return new SearchResultGroup(gettext('Families')." (". count($searchResults).")", $searchResults);
         }
         
         return null;

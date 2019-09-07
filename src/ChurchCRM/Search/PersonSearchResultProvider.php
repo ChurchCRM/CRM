@@ -18,7 +18,7 @@ class PersonSearchResultProvider implements iSearchResultProvider {
         }
 
         if (!empty($searchResults)) {
-            return new SearchResultGroup(gettext('Persons'), $searchResults);
+            return new SearchResultGroup(gettext('Persons')." (". count($searchResults).")", $searchResults);
         }
         return null;
     }

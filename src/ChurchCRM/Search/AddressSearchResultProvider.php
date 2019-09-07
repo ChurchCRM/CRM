@@ -18,7 +18,7 @@ class AddressSearchResultProvider implements iSearchResultProvider {
         }
 
         if (!empty($searchResults)) {
-            return new SearchResultGroup(gettext('Address'), $searchResults);
+            return new SearchResultGroup(gettext('Address')." (". count($searchResults).")", $searchResults);
         }
         return null;
     }

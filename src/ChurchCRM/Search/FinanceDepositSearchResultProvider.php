@@ -19,7 +19,7 @@ class FinanceDepositSearchResultProvider implements iSearchResultProvider {
             }
 
             if (!empty($searchResults)) {
-                return new SearchResultGroup(gettext('Deposits'), $searchResults);
+                return new SearchResultGroup(gettext('Deposits')." (". count($searchResults).")", $searchResults);
             }
         }
         return null;
