@@ -7,9 +7,11 @@ Feature: Person List
     Given I am authenticated as "admin" using "changeme"
     And I am on "/v2/people"
     Then I should see "Person Listing"
-    And I should see "Admin, Church"
-    And I should see "Barker, Bob"
-    
+    And I should see "Admin"
+    And I should see "Church"
+    And I should see "Barker"
+    And I should see "Bob"
+
   Scenario: Add and remove all persons to cart
     Given I am authenticated as "admin" using "changeme"
     And I am on "/v2/people"
