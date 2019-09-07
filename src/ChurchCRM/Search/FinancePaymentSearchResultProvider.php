@@ -42,7 +42,7 @@ class FinancePaymentSearchResultProvider implements iSearchResultProvider {
             ->withColumn('SUM(Pledge.Amount)', 'GroupAmount')
             ->withColumn('CONCAT("#",Pledge.Id)', 'displayName')
             ->withColumn('CONCAT("' . SystemURLs::getRootPath() . '/DepositSlipEditor.php?DepositSlipID=",Pledge.Depid)', 'uri')
-            ->limit(SystemConfig::getValue("bSearchIncludePaymentsMax"))
+            #->limit(SystemConfig::getValue("bSearchIncludePaymentsMax")) // this can't be limited here due to how Propel ORM doesn't handle HAVING clause nicely, so we do it in PHP
             ->groupByGroupkey()
             ->find();
 
@@ -60,7 +60,7 @@ class FinancePaymentSearchResultProvider implements iSearchResultProvider {
         } catch (Exception $e) {
             LoggerUtils::getAppLogger()->warn($e->getMessage());
         }
-        return $searchResults;
+        return array_slice($searchResults,0,SystemConfig::getValue("bSearchIncludePaymentsMax")); // since Propel ORM won't handle limit() nicely, do it in PHP
     }
 
     private static function getPaymentSearchResults(string $SearchQuery) {
