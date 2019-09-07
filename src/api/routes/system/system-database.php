@@ -26,14 +26,14 @@ use ChurchCRM\Backup\BackupDownloader;
 
 $app->group('/database', function () {
 
-    $this->post('/reset', 'resetDatabase');
+    $this->delete('/reset', 'resetDatabase');
     $this->delete('/people/clear', 'clearPeopleTables');
 
     $this->post('/backup', function ($request, $response, $args) {
         $input = (object)$request->getParsedBody();
         $BaseName = preg_replace('/[^a-zA-Z0-9\-_]/','', SystemConfig::getValue('sChurchName')). "-" . date(SystemConfig::getValue("sDateFilenameFormat"));
         $BackupType = $input->BackupType;
-        $Backup = new BackupJob($BaseName, $BackupType, SystemConfig::getValue('bBackupExtraneousImages'), $input->EncryptBackup, $input->BackupPassword);
+        $Backup = new BackupJob($BaseName, $BackupType, SystemConfig::getValue('bBackupExtraneousImages'), isset($input->EncryptBackup) ? $input->EncryptBackup : "", isset($input->BackupPassword) ? $input->BackupPassword : "");
         $Backup->Execute();
         return $response->withJSON($Backup);
     });

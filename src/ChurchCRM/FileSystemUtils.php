@@ -17,7 +17,7 @@ namespace ChurchCRM
                     unlink($file);
                 }
             }
-            if (!$retainParentFolderAndFiles) {
+            if (!$retainParentFolderAndFiles && is_dir($directory)) {
                 rmdir($directory);
             }
         }
