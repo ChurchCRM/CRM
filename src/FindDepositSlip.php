@@ -91,7 +91,7 @@ require 'Include/Header.php';
     bootbox.confirm({
       title:'<?= gettext("Confirm Delete") ?>',
       message: '<p><?= gettext("Are you sure you want to delete the selected"); ?> '+ deletedRows.length + ' <?= gettext("Deposit(s)"); ?>?' +
-        '</p><p><?= gettext("This will also delete all payments associated with this deposit"); ?></p>'+
+        '</p><p><?= gettext("This will also remove all payments associated with this deposit"); ?></p>'+
         '<p><?= gettext("This action CANNOT be undone, and may have legal implications!") ?></p>'+
         '<p><?= gettext("Please ensure this what you want to do.") ?></p>',
       buttons: {

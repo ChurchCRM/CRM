@@ -118,7 +118,7 @@ require 'Include/Header.php';
                             </div>
                             <div class="row">
                                 <div class="col-xl-3">
-                                    <label for="AddNonDeductible"><?= gettext('Non-Deductible') ?></label>
+                                    <label id= "AddNonDeductibleLabel" for="AddNonDeductible"><?= gettext('Non-Deductible') ?></label>
                                 </div>
                                 <div class="col-xl-3">
                                     <input type="checkbox" name="AddNonDeductible" id="AddNonDeductible" />
@@ -142,97 +142,93 @@ require 'Include/Header.php';
 
 <form>
 <div class="row">
-  <div class="col-lg-6">
+  <div class="col-lg-12">
     <div class="box">
       <div class="box-header with-border">
         <h3 class="box-title"><?= gettext("Contribution Details") ?></h3>
       </div>
-      <div class="box-body">
+
       <input type="hidden" name="ContributionID" id="ContributionID" value= <?= $iContributionID ?> >
-        <input type="hidden" name="ContributorID" id="ContributorID" value= <?= $iContributorID ?> >
-        <input type="hidden" name="TypeOfMbr" id="TypeOfMbr">
-        <!-- <input type="hidden" name="DepId" id="DepId"> -->
-        <div class="col-lg-12">
-          <label for="ContributorName"><?= gettext('Contributor') ?></label>
-          <select class="form-control" id="ContributorName" name="ContributorName" >
-            <!-- <option selected >< ?= $iContributorName ?></option> -->
-          </select>
+      <input type="hidden" name="ContributorID" id="ContributorID" value= <?= $iContributorID ?> >
+      <input type="hidden" name="TypeOfMbr" id="TypeOfMbr">
+
+      <div class="box-body">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-lg-4">
+              <label for="ContributorName"><?= gettext('Contributor') ?></label>
+              <select class="form-control" id="ContributorName" name="ContributorName" ></select>
+            </div>
+
+            <div class="col-lg-2">
+              <label for="contribDate"><?= gettext('Contribution Date') ?></label>
+              <input class="form-control" name="contribDate" id="contribDate" style="width:100%" class="date-picker">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-3">
+              <label for="contribComment"><?= gettext('Comment') ?></label>
+                <input class="form-control" name="contribComment" id="contribComment" style="width:100%">
+            </div>
+
+            <div class="col-lg-3">
+              <?php if (SystemConfig::getValue('bUseDonationEnvelopes')) { ?>
+                <label for="Envelope"><?= gettext('Envelope Number') ?></label>
+                <input  class="form-control" type="number" name="Envelope" size=8 id="Envelope" disabled />   
+                <!-- <input class="form-control" type="submit" class="btn btn-default" value="< ?= gettext('Find family->') ?>" name="MatchEnvelope"> -->
+              <?php } ?>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-3">
+              <label for="TotalAmount"><?= gettext('Total $') ?></label>
+              <input class="form-control"  type="number" step="any" name="TotalAmount" id="TotalAmount" disabled />
+            </div>
+          </div>
         </div>
 
-        <div class="col-lg-6">
-          <?php	if (!$dDate) {
-    $dDate = $dep_Date;
-} ?>
-          <label for="contribDate"><?= gettext('Contribution Date') ?></label>
-            <input class="form-control" name="contribDate" id="contribDate" style="width:100%" class="date-picker">
-          <label for="contribComment"><?= gettext('Comment') ?></label>
-            <input class="form-control" name="contribComment" id="contribComment" style="width:100%">
-          
-          <?php if (SystemConfig::getValue('bUseDonationEnvelopes')) {
-    ?>
-          <label for="Envelope"><?= gettext('Envelope Number') ?></label>
-          <input  class="form-control" type="number" name="Envelope" size=8 id="Envelope" disabled />   
-             <!-- <input class="form-control" type="submit" class="btn btn-default" value="< ?= gettext('Find family->') ?>" name="MatchEnvelope"> -->
-        <?php
-} ?>
+        <p>
+          <div class="row">
+            <div class="col-lg-3">
+              <input type="button" class="btn btn-primary" value="<?= gettext('Save') ?>" id="PledgeSubmit" name="PledgeSubmit" <?= $iContributionID ? 'enabled' : 'disabled' ?> />
+            </div>
 
+            
+            <div class="col-lg-3">
+              <?php if ($_SESSION['user']->isAddRecordsEnabled()) { ?>
+                <input type="button" class="btn btn-primary" value="<?= gettext('New Contribution') ?>" id="PledgeSubmitAdd" disabled />
+              <?php } ?>
+            </div>
+          </div>
 
-
+        </p>
       </div>
-
-
-      <div class="col-lg-6">
-        <label for="TotalAmount"><?= gettext('Total $') ?></label>
-        <input class="form-control"  type="number" step="any" name="TotalAmount" id="TotalAmount" disabled />
-    </div>
-
-    <div class="col-lg-12">
-    <!-- < ?php if (!$dep_Closed) {
-        ?> -->
-        <input class="btn btn-primary" value="<?= gettext('Save') ?>" id="PledgeSubmit" name="PledgeSubmit" <?= $iContributionID ? 'enabled' : 'disabled' ?> />
-        <?php if ($_SESSION['user']->isAddRecordsEnabled()) {
-        echo '<input class="btn btn-primary" value="'.gettext('New Contribution').'" id="PledgeSubmitAdd" disabled>';
-    } ?>
-          <!-- < ?php
-    } ?> -->
-    <?php if (!$dep_Closed) {
-        $cancelText = 'Cancel';
-    } else {
-        $cancelText = 'Return';
-    } ?>
-    <!-- <input type="button" class="btn btn-danger" value="< ?= gettext($cancelText) ?>" id="PledgeCancel" name="PledgeCancel" /> -->
     </div>
   </div>
-</div>
-  </div>
-
 </div>
 
 <div class="box">
   <div class="box-header with-border">
-    <h3 class="box-title"><?php echo gettext('Contribution Splits: '); ?></h3>
+    <h3 class="box-title"><?= gettext('Contribution Splits:') ?></h3>
       <div class="pull-right">
       <!-- <button type="button" class="btn btn-primary" id="addNewContrib2">< ?= gettext('Add New Split') ?></button> -->
       <button disabled id="addNewContrib" type="button" class="btn btn-primary" data-toggle="modal" data-target="#addNewContribModal"><?= gettext('Add New Split') ?></button>
-
       </div>
   </div>
-  <div class="box-body">
-    <div class="container-fluid">
-      <table class="display responsive nowrap data-table table table-striped table-hover" id="splitTable" width="100%">
-      <!-- <tfoot align="right">
-        <tr><th></th><th></th><th></th><th></th><th></th><th></th></tr>
-      </tfoot> -->
-      </table>
+    <div class="box-body">
+      <div class="container-fluid">
+        <table class="display responsive nowrap data-table table table-striped table-hover" id="splitTable" width="100%"></table>
 
-      <button style="display:none" type="button" id="deleteSelectedRows" class="btn btn-danger"
-              disabled> <?= gettext('Delete Selected Rows') ?> </button>
-      <!-- <button type="button" id="exportSelectedRows" class="btn btn-success exportButton" data-exportType="ofx"
-              disabled><i class="fa fa-download"></i> < ?= gettext('Export Selected Rows (OFX)') ?></button>
-      <button type="button" id="exportSelectedRowsCSV" class="btn btn-success exportButton" data-exportType="csv"
-              disabled><i class="fa fa-download"></i> < ?= gettext('Export Selected Rows (CSV)') ?></button>
-      <button type="button" id="generateDepositSlip" class="btn btn-success exportButton" data-exportType="pdf"
-              disabled> < ?= gettext('Generate Deposit Slip for Selected Rows (PDF)') ?></button> -->
+        <button style="display:none" type="button" id="deleteSelectedRows" class="btn btn-danger"
+                disabled> <?= gettext('Delete Selected Rows') ?> </button>
+        <!-- <button type="button" id="exportSelectedRows" class="btn btn-success exportButton" data-exportType="ofx"
+                disabled><i class="fa fa-download"></i> < ?= gettext('Export Selected Rows (OFX)') ?></button>
+        <button type="button" id="exportSelectedRowsCSV" class="btn btn-success exportButton" data-exportType="csv"
+                disabled><i class="fa fa-download"></i> < ?= gettext('Export Selected Rows (CSV)') ?></button>
+        <button type="button" id="generateDepositSlip" class="btn btn-success exportButton" data-exportType="pdf"
+                disabled> < ?= gettext('Generate Deposit Slip for Selected Rows (PDF)') ?></button> -->
     </div>
   </div>
 </div>
@@ -242,13 +238,12 @@ require 'Include/Header.php';
 <script  src="<?= SystemURLs::getRootPath() ?>/skin/js/ContributionEditor.js"></script>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>" >
 
-// var sDatePickerPlaceHolder = "< ?= $sDatePickerPlaceHolder ?>";
-    var linkBack = "<?= $linkBack ?>";
-    var iContributorID = <?= $iContributorID ?>;
-    var iContributionID = <?= $iContributionID ?>;
-    // var iContributorName = < ?= $iContributorName ?>;
-    var CurrentUser = <?= $_SESSION['user']->getId() ?>;
-
+  var linkBack = "<?= $linkBack ?>";
+  var iContributorID = <?= $iContributorID ?>;
+  var iContributionID = <?= $iContributionID ?>;
+  // var iContributorName = < ?= $iContributorName ?>;
+  var CurrentUser = <?= $_SESSION['user']->getId() ?>;
+  var EnableNonDeductible = <?= $bEnableNonDeductible ?>;
 
   $(document).ready(function() {
     // setfocus on name
@@ -405,8 +400,8 @@ require 'Include/Header.php';
         AddSplit();
       }
   });
-    // modal submit contribution and start new contribution
-    $("#addAnotherContribution").on('click', function () {
+  // modal submit contribution and start new contribution
+  $("#addAnotherContribution").on('click', function () {
     if (IsNewContribution()) {
         // add contribution first to generate ConID to link split, AddSplit() will be called after the contribution has been created
         AddContribution();
@@ -418,10 +413,8 @@ require 'Include/Header.php';
         document.location= window.CRM.root + "/ContributionEditor.php?linkBack=findContributions.php";
       }
   });
-
-    // submit contribution and/ or split
-    $("#PledgeSubmitAdd").on('click', function () {
-      
+  // submit contribution and/ or split
+  $("#PledgeSubmitAdd").on('click', function () {
       // if hasSplit, save and move to new
       if (hasSplit()) {
         UpdateContribution(true);
@@ -431,6 +424,13 @@ require 'Include/Header.php';
         alert('Contribution must have at least one split!');
       }
   });
+
+  // hide based on system settings
+  if (!EnableNonDeductible) {
+    $("#AddNonDeductible").hide();
+    $("#AddNonDeductibleLabel").hide();
+  }
+
   // set focus
   // $("addNewContribModal").on('shown'), function () {
   //   $("#AddFund").focus();
@@ -449,7 +449,7 @@ require 'Include/Header.php';
     return Boolean(dataT.data().count());
   }
    
-  });
+});
 
 </script>
 
