@@ -12,7 +12,7 @@ use ChurchCRM\Utils\GeoUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use DateTime;
 use Propel\Runtime\Connection\ConnectionInterface;
-
+use Propel\Runtime\Propel;
 /**
  * Skeleton subclass for representing a row from the 'person_per' table.
  *
@@ -226,6 +226,66 @@ class Person extends BasePerson implements iPhoto
     }
 
     /**
+     * Get name of a person family.
+     * @return string
+     */
+    public function getFamilyName()
+    {
+      if ($this->getFamily()) {
+          return $this->getFamily()
+              ->getName();
+      }
+      //if it reaches here, no family name found. return empty family name
+      return "";
+    }
+
+    /**
+     * Get name of a person family.
+     * @return string
+     */
+    public function getFamilyCountry()
+    {
+      if ($this->getFamily()) {
+          return $this->getFamily()
+              ->getCountry();
+      }
+      //if it reaches here, no country found. return empty country
+      return "";
+    }
+
+     /**
+     * Get Phone of a person family.
+     * 0 = Home
+     * 1 = Work
+     * 2 = Cell
+     * @return string
+     */
+    public function getFamilyPhone($type)
+    {
+      switch ($type) {
+        case 0:
+          if($this->getFamily()) {
+          return $this->getFamily()
+              ->getHomePhone();
+          }
+          break;
+        case 1:
+        if($this->getFamily()) {
+          return $this->getFamily()
+              ->getWorkPhone();
+          }
+          break;
+        case 2:
+        if($this->getFamily()) {
+          return $this->getFamily()
+              ->getCellPhone();
+          }
+          break;
+      }
+      //if it reaches here, no phone found. return empty phone
+      return "";
+    }
+    /**
      * * If person address found, return latitude and Longitude of person address
      * else return family latitude and Longitude
      * @return array
@@ -308,6 +368,8 @@ class Person extends BasePerson implements iPhoto
      * $Style = 4  :  "FirstName MiddleName LastName"
      * $Style = 5  :  "Title FirstName LastName"
      * $Style = 6  :  "LastName, Title FirstName"
+     * $Style = 7  :  "LastName FirstName"
+     * $Style = 8  :  "LastName, FirstName Middlename"
      *
      * @param $Style
      * @return string
@@ -400,6 +462,7 @@ class Person extends BasePerson implements iPhoto
                     $nameString .= ' ' . $this->getLastName();
                 }
                 break;
+
             case 6:
                 if ($this->getLastName()) {
                     $nameString .= $this->getLastName() . ', ';
@@ -409,16 +472,36 @@ class Person extends BasePerson implements iPhoto
                 }
                 $nameString .= $this->getFirstName();
                 break;
-             case 7:
+
+            case 7:
                 if ($this->getLastName()) {
                     $nameString .= $this->getLastName() . ' ';
                 }
                 if ($this->getFirstName() ){
                     $nameString .= $this->getFirstName();
+                } else {
+                    $nameString = trim($nameString);
+                }
+                break;
+                
+            case 8:
+                if ($this->getLastName()) {
+                    $nameString .= $this->getLastName();
+                }
+                if ($this->getFirstName()) {
+                  if (!$nameString) { // no first name
+                    $nameString = $this->getFirstName();
+                  } else {
+                    $nameString .= ', ' . $this->getFirstName();
+                  }
+                    
+                }
+                if ($this->getMiddleName()) {
+                    $nameString .= ' ' . $this->getMiddleName();
                 }
                 break;
             default:
-                $nameString = $this->getFullName();
+                $nameString = trim($this->getFullName());
 
         }
         return $nameString;
@@ -460,12 +543,68 @@ class Person extends BasePerson implements iPhoto
     }
 
     public function getProperties() {
-        $personProperties = PropertyQuery::create()
-            ->filterByProClass("p")
-            ->useRecordPropertyQuery()
-            ->filterByRecordId($this->getId())
-            ->find();
-        return $personProperties;
+      $personProperties = PropertyQuery::create()
+          ->filterByProClass("p")
+          ->useRecordPropertyQuery()
+          ->filterByRecordId($this->getId())
+          ->find();
+      return $personProperties;
+    }
+
+    //  return list of person properties seperated by ', '
+    // created for the person-list.php datatable
+    public function getPropertiesString() {
+      $personProperties = PropertyQuery::create()
+          ->filterByProClass("p")
+          ->leftJoinRecordProperty()
+          ->where('r2p_record_ID='.$this->getId())
+          ->find();
+
+      $PropertiesList = "";
+      foreach($personProperties as $element) {
+          $PropertiesList .= $element->getProName() . ", ";
+      }
+      return rtrim($PropertiesList, ", ");
+    }
+
+    // return list of person custom fields seperated by ', '
+    // created for the person-list.php datatable
+    public function getCustomFields() {
+      // get list of custom field column names
+      $allPersonCustomFields = PersonCustomMasterQuery::create()->find();
+
+      // add custom fields to person_custom table since they are not defined in the propel schema
+      $rawQry =  PersonCustomQuery::create();
+      foreach ($allPersonCustomFields as $customfield ) {
+          $rawQry->withColumn($customfield->getId());
+      }
+      $thisPersonCustomFields = $rawQry->findOneByPerId($this->getId());
+
+      // get custom column names and values
+      $personCustom = "";
+      if ($rawQry->count() > 0) {
+        foreach ($allPersonCustomFields as $customfield ) {
+            $value = $thisPersonCustomFields->getVirtualColumn($customfield->getId());
+            if (!empty($value)) {
+                $personCustom .= $customfield->getName() . ": " . $value . ", ";
+            }
+        }        
+      }
+      return rtrim($personCustom, ", ");
+    }
+
+    public function getGroups() {
+      $GroupList = GroupQuery::create()
+      ->leftJoinPerson2group2roleP2g2r()
+      ->where('p2g2r_per_ID='.$this->getId())
+      ->find();
+
+
+      $group = "";
+      foreach($GroupList as $element) {
+        $group .= $element->getName() . ", ";
+      }
+      return rtrim($group, ", ");
     }
 
     public function getNumericCellPhone()

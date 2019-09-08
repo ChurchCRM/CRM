@@ -61,7 +61,7 @@ class Menu
         $peopleMenu = new MenuItem(gettext("People"), "", true, 'fa-users');
         $peopleMenu->addSubMenu(new MenuItem(gettext("Dashboard"), "PeopleDashboard.php"));
         $peopleMenu->addSubMenu(new MenuItem(gettext("Add New Person"), "PersonEditor.php", SessionUser::getUser()->isAddRecordsEnabled()));
-        $peopleMenu->addSubMenu(new MenuItem(gettext("View All Persons"), "SelectList.php?mode=person"));
+        $peopleMenu->addSubMenu(new MenuItem(gettext("View All Persons"), "v2/people"));
         $peopleMenu->addSubMenu(new MenuItem(gettext("Add New Family"), "FamilyEditor.php", SessionUser::getUser()->isAddRecordsEnabled()));
         $peopleMenu->addSubMenu(new MenuItem(gettext("View Active Families"), "v2/family"));
         $peopleMenu->addSubMenu(new MenuItem(gettext("View Inactive Families"), "v2/family?mode=inactive"));
@@ -83,7 +83,6 @@ class Menu
     {
         $groupMenu = new MenuItem(gettext("Groups"), "", true, 'fa-tag');
         $groupMenu->addSubMenu(new MenuItem(gettext("List Groups"), "GroupList.php"));
-        $groupMenu->addSubMenu(new MenuItem(gettext("Group Assignment Helper"), "SelectList.php?mode=groupassign"));
 
         $listOptions = ListOptionQuery::Create()->filterById(3)->orderByOptionSequence()->find();
 

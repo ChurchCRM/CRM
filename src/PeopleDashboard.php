@@ -83,7 +83,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
     <h3 class="box-title"><?= gettext('People Functions') ?></h3>
   </div>
   <div class="box-body">
-    <a href="<?= SystemURLs::getRootPath() ?>/SelectList.php?mode=person" class="btn btn-app"><i class="fa fa-user"></i><?= gettext('All People') ?></a>
+    <a href="<?= SystemURLs::getRootPath() ?>/v2/people" class="btn btn-app"><i class="fa fa-user"></i><?= gettext('All People') ?></a>
     <a href="<?= SystemURLs::getRootPath() ?>/v2/people/verify" class="btn btn-app"><i class="fa fa-check-square-o"></i><?= gettext('Verify People') ?></a>
     <?php
     if ($sEmailLink) {
@@ -166,7 +166,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
       <div class="icon">
         <i class="fa fa-user"></i>
       </div>
-      <a href="<?= SystemURLs::getRootPath() ?>/SelectList.php?mode=person" class="small-box-footer">
+      <a href="<?= SystemURLs::getRootPath() ?>/v2/people?inActive=false" class="small-box-footer">
         <?= gettext('See All People') ?> <i class="fa fa-arrow-circle-right"></i>
       </a>
     </div>
@@ -284,7 +284,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
         <?php foreach ($personStats as $key => $value) {
             ?>
           <tr>
-            <td><a href='SelectList.php?Sort=name&Filter=&mode=person&Classification=<?= $classifications->$key ?>'><?= gettext($key) ?></a></td>
+            <td><a href='v2/people?inActive=false&Classification=<?= $classifications->$key ?>'><?= gettext($key) ?></a></td> 
             <td>
               <div class="progress progress-xs progress-striped active">
                 <div class="progress-bar progress-bar-success"
@@ -331,7 +331,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
             if ($countMale != 0) {
                 ?>
 <tr>
-<td><a href="SelectList.php?mode=person&Gender=1&FamilyRole=<?= $demStatId ?>"><?= $demStatName ?> - <?= gettext('Male') ?></a></td>
+<td><a href="v2/people?Gender=1&FamilyRole=<?= $demStatId ?>"><?= $demStatName ?> - <?= gettext('Male') ?></a></td>
 <td>
 <div class="progress progress-xs progress-striped active">
 <div class="progress-bar progress-bar-success" style="width: <?= round(($countMale / $genPop) * 100)?>%" title="<?= round(($countMale / $genPop) * 100)?>%"></div>
@@ -344,7 +344,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
             if ($countFemale != 0) {
                 ?>
 <tr>
-<td><a href="SelectList.php?mode=person&Gender=2&FamilyRole=<?= $demStatId ?>"><?= $demStatName ?> - <?= gettext('Female') ?></a></td>
+<td><a href="v2/people?Gender=2&FamilyRole=<?= $demStatId ?>"><?= $demStatName ?> - <?= gettext('Female') ?></a></td>
 <td>
 <div class="progress progress-xs progress-striped active">
 <div class="progress-bar progress-bar-success" style="width: <?= round(($countFemale / $genPop) * 100)?>%" title="<?= round(($countFemale / $genPop) * 100)?>%"></div>
@@ -357,7 +357,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
             if ($countUnknown != 0) {
                 ?>
 <tr>
-<td><a href="SelectList.php?mode=person&Gender=0&FamilyRole=<?= $demStatId ?>"><?= $demStatName ?> - <?= gettext('Unknown') ?></a></td>
+<td><a href="v2/people?Gender=0&FamilyRole=<?= $demStatId ?>"><?= $demStatName ?> - <?= gettext('Unassigned') ?></a></td>
 <td>
 <div class="progress progress-xs progress-striped active">
 <div class="progress-bar progress-bar-success" style="width: <?= round(($countUnknown / $genPop) * 100)?>%" title="<?= round(($countUnknown / $genPop) * 100)?>%"></div>
@@ -376,7 +376,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
             if ($countUnknownMale != 0) {
                 ?>
 <tr>
-<td><a href="SelectList.php?mode=person&Gender=1&FamilyRole=0"><?= gettext('Unknown') ?> - <?= gettext('Male') ?></a></td>
+<td><a href="v2/people?Gender=1&FamilyRole=0"><?= gettext('Unassigned') ?> - <?= gettext('Male') ?></a></td>
 <td>
 <div class="progress progress-xs progress-striped active">
 <div class="progress-bar progress-bar-success" style="width: <?= round(($countUnknownMale / $genPop) * 100)?>%" title="<?= round(($countUnknownMale / $genPop) * 100)?>%"></div>
@@ -389,7 +389,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
             if ($countUnknownFemale != 0) {
                 ?>
 <tr>
-<td><a href="SelectList.php?mode=person&Gender=2&FamilyRole=0"><?= gettext('Unknown') ?> - <?= gettext('Female') ?></a></td>
+<td><a href="v2/people?Gender=2&FamilyRole=0"><?= gettext('Unassigned') ?> - <?= gettext('Female') ?></a></td>
 <td>
 <div class="progress progress-xs progress-striped active">
 <div class="progress-bar progress-bar-success" style="width: <?= round(($countUnknownFemale / $genPop) * 100)?>%" title="<?= round(($countUnknownFemale / $genPop) * 100)?>%"></div>
@@ -402,7 +402,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
             if ($countUnknwonRoleUnknownGender != 0) {
                 ?>
 <tr>
-<td><a href="SelectList.php?mode=person&Gender=0&FamilyRole=0"><?= gettext('Unknown') ?> - <?= gettext('Unknown') ?></a></td>
+<td><a href="v2/people?Gender=0&FamilyRole=0"><?= gettext('Unassigned') ?> - <?= gettext('Unassigned') ?></a></td>
 <td>
 <div class="progress progress-xs progress-striped active">
 <div class="progress-bar progress-bar-success" style="width: <?= round(($countUnknwonRoleUnknownGender / $genPop) * 100)?>%" title="<?= round(($countUnknwonRoleUnknownGender / $genPop) * 100)?>%"></div>
