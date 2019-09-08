@@ -1,6 +1,5 @@
 function initPaymentTable()
 {
-  
  var dataTableConfig = {
     ajax:{
       url :window.CRM.root+"/api/split/" + iContributionID + "/splits",
@@ -41,6 +40,7 @@ function initPaymentTable()
         className: 'dt-body-center',
         // type: "checkbox",
         orderable: false,
+        visible: EnableNonDeductible,
   
         render: function ( data, type, row ) {
         if ( type === 'display' ) {
@@ -54,44 +54,8 @@ function initPaymentTable()
         }
       },
       ],
-    //   footerCallback: function ( row, data, start, end, display ) {
-    //     var api = this.api(), data;
-
-    //     // Remove the formatting to get integer data for summation
-    //     var intVal = function ( i ) {
-    //         return typeof i === 'string' ?
-    //             i.replace(/[\$,]/g, '')*1 :
-    //             typeof i === 'number' ?
-    //                 i : 0;
-    //     };
-
-    //     // Total over all pages
-    //     var total = api
-    //         .column( 3 )
-    //         .data()
-    //         .reduce( function (a, b) {
-    //             return intVal(a) + intVal(b);
-    //         }, 0 );
-
-    //     // Total over this page
-    //     var pageTotal = api
-    //         .column( 3, { page: 'current'} )
-    //         .data()
-    //         .reduce( function (a, b) {
-    //             return intVal(a) + intVal(b);
-    //         }, 0 );
-
-    //     // Update footer
-    //     $( api.column( 3 ).footer() ).html(
-    //         '$'+pageTotal +' ( $'+ total +' total)'
-    //     );
-    // }
-      // order: [0, 'asc']
     }
  
-
-
-
     $.extend(dataTableConfig, window.CRM.plugin.dataTable);
     dataT = $("#splitTable").DataTable(dataTableConfig);
     dataT.on( 'xhr', function () {
@@ -106,11 +70,6 @@ function initPaymentTable()
         type: "GET",
         url: window.CRM.root + '/api/contrib/'+iContributionID+'/contribution',
         data: "",
-        
-        // success: function (data) {
-
-
-        // }
       }).done( function(data) {
         var contrib = JSON.parse(data)
           
@@ -131,7 +90,6 @@ function initPaymentTable()
         } else{
           $("#deleteSelectedRows").show();
         }
-
       }
       );
   }
@@ -141,10 +99,6 @@ function initPaymentTable()
         type: "GET",
         url: window.CRM.root + '/api/person/'+iContributorID+'/search2',
         data: "Person",
-
-        // success: function (data) {
-
-        // }
       }).done( function(data) {
         var person = JSON.parse(data).Person
          
@@ -166,10 +120,6 @@ function initPaymentTable()
       type: "GET",
       url: window.CRM.root + '/api/activefunds',
       data: "DonationFunds",
-
-      // success: function (data) {
-
-      // }
     }).done(function(data){
       var FundList = JSON.parse(data).DonationFunds
       

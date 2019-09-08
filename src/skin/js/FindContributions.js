@@ -14,7 +14,10 @@ var dataT = 0;
         url: window.CRM.root + url,
         dataSrc: "Contribs"
       },
-      "deferRender": true,
+      initComplete: function() {
+        filterFill()
+      },
+      deferRender: true,
       columns: [
         {
           title:i18next.t( 'Contribution ID'),
@@ -106,12 +109,29 @@ var dataT = 0;
           title:i18next.t( 'CheckNo'),
           data: 'Checkno',
           searchable: true,
+        },
+        {
+          title:i18next.t( 'PerId'),
+          data: 'ConId',
+          searchable: true,
+          visible: false,
         }
       ],
       order: [0, 'desc']
     }
     $.extend(dataTableConfig, window.CRM.plugin.dataTable);
     dataT = $("#contribTable").DataTable(dataTableConfig);
+  }
+  
+  function filterFill() {
+    console.log('filterFill');
+    dataT.columns(5).data().eq(0).unique().sort().each( function ( d, j ) {
+        $('.filter-Date').append('<option>'+moment(d).format('YYYY-MM-DD')+'</option>');
+    });
+
+    dataT.columns(7).data().eq(0).unique().sort().each( function ( d, j ) {
+        $('.filter-Comment').append('<option>'+d+'</option>');
+    });
   }
 
   function initButtons() {
