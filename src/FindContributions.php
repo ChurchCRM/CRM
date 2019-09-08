@@ -37,7 +37,36 @@ if (array_key_exists('DepositSlipID', $_GET)) {
 $linkBack = InputUtils::LegacyFilterInput($_GET['linkBack'], 'string');
 
 ?>
+<div class="box box-primary">
+    <div class="box-header">
+        <?= gettext('Filter:') ?>
+    </div>
+    
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class='external-filter'>
+                <!-- <label>Gender:</label> -->
+                <select style="visibility: hidden; margin: 5px; display:inline-block; width: 150px;" class="filter-Date" multiple="multiple"></select>
+                <!-- <label>Classification:</label> -->
+                <select style="visibility: hidden; margin: 5px; display:inline-block; width: 150px;" class="filter-Comment" multiple="multiple"></select>
+ 
+                <input style="margin: 20px" id="ClearFilter" type="button" class="btn btn-default" value="<?= gettext('Clear Filter') ?>"><BR><BR>
 
+                </div>
+            </div>
+
+            <div class= "col-lg-6">
+                <a class="btn btn-success" role="button" href="<?= SystemURLs::getRootPath()?>/PersonEditor.php"><span class="fa fa-plus" aria-hidden="true"></span><?= gettext('Add Person') ?></a>
+                <a id="AddAllToCart" class="btn btn-primary" ><?= gettext('Add All to Cart') ?></a>
+                <!-- <input name="IntersectCart" type="submit" class="btn btn-warning" value="< ?= gettext('Intersect with Cart') ?>">&nbsp; -->
+                <a id="RemoveAllFromCart" class="btn btn-danger" ><?= gettext('Remove All from Cart') ?></a>
+            </div>
+        </div>
+    </div>
+
+</div>
+<p><br/><br/></p>
 <div class="box">
   <div class="box-header with-border">
     <h3 class="box-title"><?php echo gettext('Contributions: '); ?></h3>
@@ -153,7 +182,72 @@ $(document).ready(function () {
       });
   }
 
+  $('.filter-Date').select2({
+      multiple: true,
+      placeholder: "Select Date",
+  });
+  $('.filter-Comment').select2({
+      multiple: true,
+      placeholder: "Select Comment"
+  });
+
+  $('.filter-Date').on("change", function() {
+      filterColumn(5, $(this).select2('data'), false);
+  });
+  $('.filter-Comment').on("change", function() {
+      filterColumn(7, $(this).select2('data'), true);
+  });
+
+  // clear external filters
+  // document.getElementById("ClearFilter").addEventListener("click", function() {
+  $('#ClearFilter').on("click", function() {
+    $('.filter-Date').val([]).trigger('change')
+    $('.filter-Comment').val([]).trigger('change')
+  });
+
+  $("#AddAllToCart").click(function(){
+        var listPeople = [];
+        dataT.rows( { filter: 'applied' } ).every( function () {
+        // fill array
+        var row = this.data();
+        listPeople.push(row.ConId);
+    });
+        // bypass SelectList.js
+        window.CRM.cart.addPerson(listPeople);
+    });
+
+    $("#RemoveAllFromCart").click(function(){
+        var listPeople = [];
+        dataT.rows( { filter: 'applied' } ).every( function () {
+        // fill array
+        var row = this.data();
+        listPeople.push(row.ConId);
+    });
+        // bypass SelectList.js
+        window.CRM.cart.removePerson(listPeople);
+    });
+
+  // apply filters
+  function filterColumn(col, search, regEx) {
+    if (search.length === 0) {
+        tmp = [''];
+    } else {
+        var tmp = [];
+        if (regEx) {
+            search.forEach(function(item) {
+                tmp.push('^'+item.text+'$')});
+        } else {
+            search.forEach(function(item) {
+            tmp.push(item.text)});
+        }
+    }
+    // join array into string with regex or (|)
+        var val = tmp.join('|');
+    // apply search
+    dataT.column(col).search(val, 1, 0).draw();
+  }
 });
+
 </script>
 
 <?php require "Include/Footer.php" ?>
