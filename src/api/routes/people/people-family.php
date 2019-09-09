@@ -29,7 +29,7 @@ $app->group('/family/{familyId:[0-9]+}', function () {
 $app->group('/family/{familyId:[0-9]+}', function () {
     $this->get('', function ($request, $response, $args) {
         $family = $request->getAttribute("family");
-        return $response->withJSON($family->toArray());
+        return $response->withHeader('Content-Type: application/json')->write($family->exportTo('JSON'));
     });
 
     $this->get('/geolocation', function ($request, $response, $args) {
