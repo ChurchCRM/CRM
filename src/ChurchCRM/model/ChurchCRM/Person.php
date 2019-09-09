@@ -576,7 +576,9 @@ class Person extends BasePerson implements iPhoto
       // add custom fields to person_custom table since they are not defined in the propel schema
       $rawQry =  PersonCustomQuery::create();
       foreach ($allPersonCustomFields as $customfield ) {
-          $rawQry->withColumn($customfield->getId());
+          if (SessionUser::getUser()->isEnabledSecurity($customfield->getFieldSecurity())) {
+            $rawQry->withColumn($customfield->getId());
+          }
       }
       $thisPersonCustomFields = $rawQry->findOneByPerId($this->getId());
 
@@ -584,9 +586,11 @@ class Person extends BasePerson implements iPhoto
       $personCustom = "";
       if ($rawQry->count() > 0) {
         foreach ($allPersonCustomFields as $customfield ) {
-            $value = $thisPersonCustomFields->getVirtualColumn($customfield->getId());
-            if (!empty($value)) {
-                $personCustom .= $customfield->getName() . ": " . $value . ", ";
+            if (SessionUser::getUser()->isEnabledSecurity($customfield->getFieldSecurity())) {
+                $value = $thisPersonCustomFields->getVirtualColumn($customfield->getId());
+                if (!empty($value)) {
+                    $personCustom .= $customfield->getName() . ": " . $value . ", ";
+                }
             }
         }        
       }
