@@ -551,7 +551,7 @@ class Person extends BasePerson implements iPhoto
       return $personProperties;
     }
 
-    //  return list of person properties seperated by ', '
+    //  return array of person properties 
     // created for the person-list.php datatable
     public function getPropertiesString() {
       $personProperties = PropertyQuery::create()
@@ -560,14 +560,14 @@ class Person extends BasePerson implements iPhoto
           ->where('r2p_record_ID='.$this->getId())
           ->find();
 
-      $PropertiesList = "";
+      $PropertiesList = [];
       foreach($personProperties as $element) {
-          $PropertiesList .= $element->getProName() . ", ";
+          $PropertiesList[] = $element->getProName();
       }
-      return rtrim($PropertiesList, ", ");
+      return $PropertiesList;
     }
 
-    // return list of person custom fields seperated by ', '
+    // return array of person custom fields
     // created for the person-list.php datatable
     public function getCustomFields() {
       // get list of custom field column names
@@ -583,32 +583,32 @@ class Person extends BasePerson implements iPhoto
       $thisPersonCustomFields = $rawQry->findOneByPerId($this->getId());
 
       // get custom column names and values
-      $personCustom = "";
+      $personCustom = [];
       if ($rawQry->count() > 0) {
         foreach ($allPersonCustomFields as $customfield ) {
             if (SessionUser::getUser()->isEnabledSecurity($customfield->getFieldSecurity())) {
                 $value = $thisPersonCustomFields->getVirtualColumn($customfield->getId());
                 if (!empty($value)) {
-                    $personCustom .= $customfield->getName() . ": " . $value . ", ";
+                    $personCustom[] = $customfield->getName();
                 }
             }
         }        
       }
-      return rtrim($personCustom, ", ");
+      return $personCustom;
     }
-
+    // return array of person groups
+    // created for the person-list.php datatable
     public function getGroups() {
       $GroupList = GroupQuery::create()
       ->leftJoinPerson2group2roleP2g2r()
       ->where('p2g2r_per_ID='.$this->getId())
       ->find();
 
-
-      $group = "";
+      $group = [];
       foreach($GroupList as $element) {
-        $group .= $element->getName() . ", ";
+        $group[] = $element->getName();
       }
-      return rtrim($group, ", ");
+      return $group;
     }
 
     public function getNumericCellPhone()

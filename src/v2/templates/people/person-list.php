@@ -146,9 +146,9 @@ foreach ($ListItem as $element) {
                 <td><?= empty($person->getGenderName()) ? 'Unassigned': $person->getGenderName() ?></td>
                 <td><?= empty($person->getClassificationName()) ? 'Unassigned' : $person->getClassificationName() ?></td>
                 <td><?= empty($person->getFamilyRoleName()) ? 'Unassigned': $person->getFamilyRoleName() ?></td>
-                <td><?= empty($person->getPropertiesString()) ? 'Unassigned': $person->getPropertiesString() ?></td>
-                <td><?= empty($person->getCustomFields()) ? 'Unassigned': $person->getCustomFields() ?></td>
-                <td><?= empty($person->getGroups()) ? 'Unassigned': $person->getGroups() ?></td>
+                <td><?= empty($person->getPropertiesString()) ? 'Unassigned': json_encode($person->getPropertiesString()) ?></td>
+                <td><?= empty($person->getCustomFields()) ? 'Unassigned': json_encode($person->getCustomFields()) ?></td>
+                <td><?= empty($person->getGroups()) ? 'Unassigned': json_encode($person->getGroups()) ?></td>
                 <?php
 }
                 ?>
@@ -295,17 +295,14 @@ foreach ($ListItem as $element) {
                         tmp.push('^'+item.text+'$')});
                 } else {
                     search.forEach(function(item) {
-                    tmp.push(item.text)});
+                    tmp.push('"'+item.text+'"')});
                 }
             }
-            
-
             // join array into string with regex or (|)
-                var val = tmp.join('|');
+            var val = tmp.join('|');
+            console.log(val);
             // apply search
-            oTable.column(col).search(val, 1, 0).draw();
-        
-            
+            oTable.column(col).search(val, 1, 0, 1).draw();
         }
 
         // the following is an example of how we can fill the gender list from the table data
