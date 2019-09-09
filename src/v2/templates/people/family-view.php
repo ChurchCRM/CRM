@@ -113,6 +113,15 @@ $familyAddress = $family->getAddress();
                             <a class="btn btn-app" href="<?= SystemURLs::getRootPath()?>/CanvassEditor.php?FamilyID=<?= $family->getId() ?>&amp;FYID=<?= $_SESSION['idefaultFY'] ?>&amp;linkBack=v2/family/<?= $family->getId() ?>/view">
                                 <i class="fa fa-refresh"></i><?= MakeFYString($_SESSION['idefaultFY']) . gettext(" Canvass Entry") ?></a>
                         <?php } ?>
+
+                        <?php if (SessionUser::getUser()->isFinanceEnabled()) { ?>
+                            <a class="btn btn-app"
+                               href="<?= SystemURLs::getRootPath()?>/PledgeEditor.php?FamilyID=<?= $fam_ID ?>&amp;linkBack=v2/family/<?= $family->getId() ?>/view&amp;PledgeOrPayment=Pledge">
+                                <i class="fa fa-check-circle-o"></i><?= gettext("Add a new pledge") ?></a>
+                            <a class="btn btn-app"
+                               href="<?= SystemURLs::getRootPath()?>/PledgeEditor.php?FamilyID=<?= $fam_ID ?>&amp;linkBack=v2/family/<?= $family->getId() ?>/view&amp;PledgeOrPayment=Payment">
+                                <i class="fa fa-money"></i><?= gettext("Add a new payment") ?></a>
+                        <?php } ?>
                     </div>
                 </div>
             </div>
