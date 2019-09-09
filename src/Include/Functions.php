@@ -541,7 +541,7 @@ function ExpandPhoneNumber($sPhoneNumber, $sPhoneCountry, &$bWeird)
     $length = strlen($sPhoneNumber);
 
     switch ($sPhoneCountry) {
-    case 'United States':
+    case 'United States' || 'Canada':
       if ($length == 0) {
           return '';
       } // 7 digit phone # with extension
@@ -561,7 +561,7 @@ function ExpandPhoneNumber($sPhoneNumber, $sPhoneCountry, &$bWeird)
           return $sPhoneNumber;
       }
       break;
-
+    
     // If the country is unknown, we don't know how to format it, so leave it untouched
     default:
       return $sPhoneNumber;

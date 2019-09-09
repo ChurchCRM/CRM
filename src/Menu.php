@@ -194,8 +194,8 @@ if ($showBanner && ($peopleWithBirthDaysCount > 0 || $AnniversariesCount > 0)) {
             <div class="icon">
                 <i class="fa fa-user"></i>
             </div>
-            <a href="<?= SystemURLs::getRootPath() ?>/SelectList.php?mode=person" class="small-box-footer">
-                <?= gettext('See All People') ?> <i class="fa fa-arrow-circle-right"></i>
+            <a href="<?= SystemURLs::getRootPath() ?>/v2/people" class="small-box-footer">
+                <?= gettext('See all People') ?> <i class="fa fa-arrow-circle-right"></i>
             </a>
         </div>
     </div><!-- ./col -->
