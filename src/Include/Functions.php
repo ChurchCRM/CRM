@@ -10,7 +10,7 @@
 
  ******************************************************************************/
 
-use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\Cart;
 use ChurchCRM\Service\PersonService;
@@ -227,8 +227,9 @@ function RunQuery($sSQL, $bStopOnError = true)
     if ($result = mysqli_query($cnInfoCentral, $sSQL)) {
         return $result;
     } elseif ($bStopOnError) {
+        LoggerUtils::getAppLogger()->error(gettext('Cannot execute query.')." " . $sSQL . " -|- " . mysqli_error($cnInfoCentral));
         if (SystemConfig::getValue('sLogLevel') == "100") { // debug level
-            die(gettext('Cannot execute query.')."<p>$sSQL<p>".mysqli_error());
+            die(gettext('Cannot execute query.')."<p>$sSQL<p>".mysqli_error($cnInfoCentral));
         } else {
             die('Database error or invalid data');
         }
