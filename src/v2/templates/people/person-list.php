@@ -40,10 +40,12 @@ foreach($ListItem as $element) {
     $PropertyList[] = $element->getProName();
 }
 // person custom list
-$ListItem = PersonCustomMasterQuery::create()->select('Name')->find();
+$ListItem = PersonCustomMasterQuery::create()->select(['Name', 'FieldSecurity'])->find();
 $CustomList[] = "Unassigned";
 foreach ($ListItem as $element) {
-    $CustomList[] = $element->getName();
+    if (SessionUser::getUser()->isEnabledSecurity($element["FieldSecurity"])) {
+        $CustomList[] = $element["Name"];
+    }
 }
 // get person group list
 $ListItem = GroupQuery::create()->find();
