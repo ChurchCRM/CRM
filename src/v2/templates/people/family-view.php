@@ -196,52 +196,6 @@ $familyAddress = $family->getAddress();
             </div>
         </div>
 
-
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="box">
-                    <div class="box-header">
-                        <i class="fa fa-map"></i>
-                        <h3 class="box-title"><?= gettext("Address") ?></h3>
-                        <div class="box-tools pull-right">
-                            <button type="button" class="btn btn-box-tool edit-family"><i
-                                    class="fa fa-edit"></i>
-                            </button>
-                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
-                                    class="fa fa-minus"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="box-body">
-                        <a href="http://maps.google.com/?q=<?= $familyAddress ?>"
-                           target="_blank"><?= $familyAddress ?></a></span>
-                        <p/>
-                        <!-- Maps Start -->
-                        <?php if (!empty($family->getLatitude())) : ?>
-                            <div class="border-right border-left">
-                                <section id="map">
-                                    <div id="map1"></div>
-                                </section>
-                            </div>
-                            <!-- Map Scripts -->
-                            <script
-                                src="//maps.googleapis.com/maps/api/js?key=<?= SystemConfig::getValue("sGoogleMapKey") ?>&sensor=false"></script>
-                            <script>
-                                var LatLng = new google.maps.LatLng(<?= $family->getLatitude() ?>, <?= $family->getLongitude() ?>)
-                            </script>
-                            <script src="<?= SystemURLs::getRootPath() ?>/skin/js/Map.js"></script>
-                            <style>
-                                #map1 {
-                                    height: 200px;
-                                }
-                            </style>
-                        <?php endif; ?>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Maps End -->
-
         <div class="row">
             <div class="col-lg-12">
                 <div class="box">
@@ -420,6 +374,51 @@ $familyAddress = $family->getAddress();
                 } ?>
             </div>
         </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="box">
+                    <div class="box-header">
+                        <i class="fa fa-map"></i>
+                        <h3 class="box-title"><?= gettext("Address") ?></h3>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool edit-family"><i
+                                        class="fa fa-edit"></i>
+                            </button>
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                        class="fa fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <a href="http://maps.google.com/?q=<?= $familyAddress ?>"
+                           target="_blank"><?= $familyAddress ?></a></span>
+                        <p/>
+                        <!-- Maps Start -->
+                        <?php if (!empty($family->getLatitude())) : ?>
+                            <div class="border-right border-left">
+                                <section id="map">
+                                    <div id="map1"></div>
+                                </section>
+                            </div>
+                            <!-- Map Scripts -->
+                            <script
+                                    src="//maps.googleapis.com/maps/api/js?key=<?= SystemConfig::getValue("sGoogleMapKey") ?>&sensor=false"></script>
+                            <script>
+                                var LatLng = new google.maps.LatLng(<?= $family->getLatitude() ?>, <?= $family->getLongitude() ?>)
+                            </script>
+                            <script src="<?= SystemURLs::getRootPath() ?>/skin/js/Map.js"></script>
+                            <style>
+                                #map1 {
+                                    height: 200px;
+                                }
+                            </style>
+                        <?php endif; ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Maps End -->
         <div class="box">
             <div class="box-header">
                 <i class="fa fa-history"></i>
