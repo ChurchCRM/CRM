@@ -8,7 +8,6 @@
 ******************************************************************************/
 
 use ChurchCRM\dto\SystemConfig;
-use Propel\Runtime\ActiveQuery\Criteria;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\SessionUser;
 use ChurchCRM\Bootstrapper;
