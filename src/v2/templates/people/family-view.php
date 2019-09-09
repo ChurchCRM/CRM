@@ -503,6 +503,135 @@ $familyAddress = $family->getAddress();
     </div>
 </div>
 
+<?php if (SessionUser::getUser()->isFinanceEnabled()) {
+?>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="row">
+            <div class="col-lg-12">
+            <div class="box">
+                <div class="box-header">
+                    <i class="fa fa-map"></i>
+                    <h3 class="box-title"><?= gettext("Pledges and Payments") ?></h3>
+                    <div class="box-tools pull-right">
+                        <input type="checkbox" name="ShowPledges"
+                               value="1" <?= SessionUser::getUser()->getShowPledges() ? "checked" : "" ?>> <?= gettext("Show Pledges") ?>
+                        <input type="checkbox" name="ShowPayments"
+                               value="1" <?= SessionUser::getUser()->getShowPayments() ? "checked" : "" ?>> <?= gettext("Show Payments") ?>
+                        <label for="ShowSinceDate"><?= gettext("Since") ?>:</label>
+                        <input type="text" class="date-picker" Name="ShowSinceDate"
+                               value="<?= SessionUser::getUser()->getFormattedShowSince() ?>" maxlength="10" id="ShowSinceDate" size="15">
+                    </div>
+                </div>
+                <div class="box-body">
+                    <table id="pledge-payment-table" class="table table-condensed dt-responsive" >
+                        <thead>
+                        <tr>
+                            <th><?= gettext("Pledge or Payment") ?></th>
+                            <th><?= gettext("Fund") ?></th>
+                            <th><?= gettext("Fiscal Year") ?></th>
+                            <th><?= gettext("Date") ?></th>
+                            <th><?= gettext("Amount") ?></th>
+                            <th><?= gettext("NonDeductible") ?></th>
+                            <th><?= gettext("Schedule") ?></th>
+                            <th><?= gettext("Method") ?></th>
+                            <th><?= gettext("Comment") ?></th>
+                            <th><?= gettext("Edit") ?></th>
+                            <th><?= gettext("Delete") ?></th>
+                            <th><?= gettext("Date Updated") ?></th>
+                            <th><?= gettext("Updated By") ?></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        <?php
+                        $tog = 0;
+
+                        if ($_SESSION['sshowPledges'] || $_SESSION['sshowPayments']) {
+                            //Loop through all pledges
+                            while ($aRow = mysqli_fetch_array($rsPledges)) {
+                                $tog = (!$tog);
+
+                                $plg_FYID = "";
+                                $plg_date = "";
+                                $plg_amount = "";
+                                $plg_schedule = "";
+                                $plg_method = "";
+                                $plg_comment = "";
+                                $plg_plgID = 0;
+                                $plg_DateLastEdited = "";
+                                $plg_EditedBy = "";
+
+                                extract($aRow);
+
+                                //Display the pledge or payment if appropriate
+                                if ((($_SESSION['sshowPledges'] && $plg_PledgeOrPayment == 'Pledge') ||
+                                        ($_SESSION['sshowPayments'] && $plg_PledgeOrPayment == 'Payment')
+                                    ) &&
+                                    (empty($_SESSION['user']->getShowSince()) || DateTime::createFromFormat("Y-m-d", $plg_date) > $_SESSION['user']->getShowSince())
+                                ) {
+                                    ?>
+
+                                    <tr>
+                                        <td>
+                                            <?= $plg_PledgeOrPayment ?>&nbsp;
+                                        </td>
+                                        <td>
+                                            <?= $fundName ?>&nbsp;
+                                        </td>
+                                        <td>
+                                            <?= MakeFYString($plg_FYID) ?>&nbsp;
+                                        </td>
+                                        <td>
+                                            <?= $plg_date ?>&nbsp;
+                                        </td>
+                                        <td align=center>
+                                            <?= $plg_amount ?>&nbsp;
+                                        </td>
+                                        <td align=center>
+                                            <?= $plg_NonDeductible ?>&nbsp;
+                                        </td>
+                                        <td>
+                                            <?= $plg_schedule ?>&nbsp;
+                                        </td>
+                                        <td>
+                                            <?= $plg_method ?>&nbsp;
+                                        </td>
+                                        <td>
+                                            <?= $plg_comment ?>&nbsp;
+                                        </td>
+                                        <td>
+                                            <a
+                                                    href="PledgeEditor.php?GroupKey=<?= $plg_GroupKey ?>&amp;linkBack=FamilyView.php?FamilyID=<?= $iFamilyID ?>">Edit</a>
+                                        </td>
+                                        <td>
+                                            <a
+                                                    href="PledgeDelete.php?GroupKey=<?= $plg_GroupKey ?>&amp;linkBack=FamilyView.php?FamilyID=<?= $iFamilyID ?>">Delete</a>
+                                        </td>
+                                        <td>
+                                            <?= $plg_DateLastEdited ?>&nbsp;
+                                        </td>
+                                        <td>
+                                            <?= $EnteredFirstName . " " . $EnteredLastName ?>&nbsp;
+                                        </td>
+                                    </tr>
+                                    <?php
+                                }
+                            }
+                        } // if bShowPledges
+
+                        ?>
+                        </tbody>
+                    </table>
+                    <?php } ?>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+
+
 
 
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/MemberView.js"></script>
