@@ -267,4 +267,12 @@ class User extends BaseUser
         }
       }
     }
+
+    public function getFormattedShowSince() {
+        $showSince = "";
+        if ($this->getShowSince() != null) {
+            $showSince = $this->getShowSince()->format('Y-m-d');
+        }
+        return $showSince;
+    }
 }
