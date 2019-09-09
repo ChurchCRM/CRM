@@ -411,7 +411,7 @@ $bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() ||
                 <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= $iPersonID ?>"><i class="fa fa-eye"></i> <?= gettext('View User') ?></a>
             <?php
             } ?>
-            <a class="btn btn-app" role="button" href="<?= SystemURLs::getRootPath() ?>/SelectList.php?mode=person"><i class="fa fa-list"></i> <?= gettext("List Members") ?></span></a>
+            <a class="btn btn-app" role="button" href="<?= SystemURLs::getRootPath() ?>/v2/people"><i class="fa fa-list"></i> <?= gettext("List Members") ?></span></a>
         </div>
     </div>
     <div class="col-lg-9 col-md-9 col-sm-9">
