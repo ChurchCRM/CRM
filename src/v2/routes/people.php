@@ -5,14 +5,9 @@ use Slim\Http\Response;
 use ChurchCRM\dto\SystemURLs;
 use Slim\Views\PhpRenderer;
 use ChurchCRM\PersonQuery;
-use ChurchCRM\Service\TimelineService;
-use ChurchCRM\PropertyQuery;
 use ChurchCRM\Utils\InputUtils;
-use Propel\Runtime\ActiveQuery\Criteria;
 
-use ChurchCRM\PersonCustomMasterQuery;
 use ChurchCRM\ListOptionQuery;
-use ChurchCRM\GroupQuery;
 
 
 // entity can be a person, family, or business
