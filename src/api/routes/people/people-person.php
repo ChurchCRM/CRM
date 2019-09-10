@@ -31,7 +31,7 @@ $app->group('/person/{personId:[0-9]+}', function () {
 
     $this->get('', function ($request, $response, $args) {
         $person = $request->getAttribute("person");
-        return $response->withJSON($person->toArray());
+        return $response->withHeader('Content-Type: application/json')->write($person->exportTo('JSON'));
     });
 
     $this->delete('', function ($request, $response, $args) {
