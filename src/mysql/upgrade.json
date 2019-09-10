@@ -220,11 +220,12 @@
     },
     "current": {
         "versions": [
-            "3.4.0"
+            "3.4.0",
+            "3.5.0"
         ],
         "scripts": [
             "/mysql/upgrade/3.5.0.sql"
         ],
-        "dbVersion": "3.5.0"
+        "dbVersion": "3.5.1"
     }
 }
