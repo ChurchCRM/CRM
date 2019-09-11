@@ -54,20 +54,20 @@ if (array_key_exists('ContributorID', $_GET)) {
 // new contribtion
 $dDate = InputUtils::LegacyFilterInput($_POST['contribDate']);
 if (!$dDate) {
-  if (array_key_exists('idefaultDate', $_SESSION)) {
-      $dDate = $_SESSION['idefaultDate'];
-  } else {
-      $dDate = date('Y-m-d');
-  }
+    if (array_key_exists('idefaultDate', $_SESSION)) {
+        $dDate = $_SESSION['idefaultDate'];
+    } else {
+        $dDate = date('Y-m-d');
+    }
 }
 
 $iMethod = InputUtils::LegacyFilterInput($_POST['contribType']);
 if (!$iMethod) {
-  if (array_key_exists('idefaultDate', $_SESSION)) {
-      $iMethod = $_SESSION['idefaultDate'];
-  } else {
-      $iMethod = 'Cash';
-  }
+    if (array_key_exists('idefaultDate', $_SESSION)) {
+        $iMethod = $_SESSION['idefaultDate'];
+    } else {
+        $iMethod = 'Cash';
+    }
 }
 
 $linkBack = InputUtils::LegacyFilterInput($_GET['linkBack'], 'string');
