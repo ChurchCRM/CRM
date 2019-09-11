@@ -44,7 +44,7 @@ Class ChurchCRMRelease {
                 {
                     return -1;
                 }
-                else if ($this->patch > $b->PATCH) {
+                else if ($this->PATCH > $b->PATCH) {
                     return 1;
                 }
                 else if($this->PATCH == $b->PATCH) {

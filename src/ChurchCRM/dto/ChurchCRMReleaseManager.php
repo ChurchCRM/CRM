@@ -6,12 +6,16 @@ use ChurchCRM\dto\ChurchCRMRelease;
 use Github\Client;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\FileSystemUtils;
 
 class ChurchCRMReleaseManager {
 
     // todo: make these const variables private after deprecating PHP7.0 #4948
     const GITHUB_USER_NAME = 'churchcrm';
     const GITHUB_REPOSITORY_NAME = 'crm';
+
+    /** @var bool true when an upgrade is in progress */
+    private static $isUpgradeInProgress;
 
     public static function getReleaseFromString(string $releaseString): ChurchCRMRelease { 
         if ( empty($_SESSION['ChurchCRMReleases']  )) {
@@ -155,7 +159,9 @@ class ChurchCRMReleaseManager {
         $UpgradeDir = SystemURLs::getDocumentRoot() . '/Upgrade';
         $url = $release->getDownloadURL();
         $logger->debug("Creating upgrade directory: " . $UpgradeDir);
-        mkdir($UpgradeDir);
+        if (!is_dir($UpgradeDir)){
+            mkdir($UpgradeDir);
+        }
         $logger->info("Downloading release from: " . $url . " to: ". $UpgradeDir . '/' . basename($url));
         $executionTime = new ExecutionTime();
         file_put_contents($UpgradeDir . '/' . basename($url), file_get_contents($url));
@@ -177,16 +183,20 @@ class ChurchCRMReleaseManager {
         // so we need to echo a JSON document that "looks like"
         // an exception the client-side JS can display to the user
         // so they know it actually timed out.
-        $logger = LoggerUtils::getAppLogger();
-        $logger->addWarning("Maximum execution time threshold exceeded: " . ini_get("max_execution_time"));
-        
-        echo \json_encode([
-            'code' => 500,
-            'message' => "Maximum execution time threshold exceeded: " . ini_get("max_execution_time") . ".  This ChurchCRM installation may now be in an unstable state.  Please review the documentation at https://github.com/ChurchCRM/CRM/wiki/Recovering-from-a-failed-update"
-        ]);
+        if (self::$isUpgradeInProgress){
+            // the PHP script was stopped while an upgrade was still in progress.
+            $logger = LoggerUtils::getAppLogger();
+            $logger->addWarning("Maximum execution time threshold exceeded: " . ini_get("max_execution_time"));
+            
+            echo \json_encode([
+                'code' => 500,
+                'message' => "Maximum execution time threshold exceeded: " . ini_get("max_execution_time") . ".  This ChurchCRM installation may now be in an unstable state.  Please review the documentation at https://github.com/ChurchCRM/CRM/wiki/Recovering-from-a-failed-update"
+            ]);
+        }
     }
     public static function doUpgrade($zipFilename, $sha1)
     {
+        self::$isUpgradeInProgress = true;
         // temporarily disable PHP's error display so that
         // our custom timeout handler can display parsable JSON 
         // in the event this upgrade job times-out the 
@@ -212,7 +222,7 @@ class ChurchCRMReleaseManager {
             $logger->info("Extraction completed.  Took:" . $executionTime->getMiliseconds());
             $logger->info("Moving extracted zip into place");
             $executionTime = new ExecutionTime();
-            $this->moveDir(SystemURLs::getDocumentRoot() . '/Upgrade/churchcrm', SystemURLs::getDocumentRoot());
+            FileSystemUtils::moveDir(SystemURLs::getDocumentRoot() . '/Upgrade/churchcrm', SystemURLs::getDocumentRoot());
             $logger->info("Move completed.  Took:" . $executionTime->getMiliseconds());
             }
             $logger->info("Deleting zip archive: ".$zipFilename);
@@ -221,12 +231,14 @@ class ChurchCRMReleaseManager {
             $logger->debug("Set sLastIntegrityCheckTimeStamp to null");
             $logger->info("Upgrade process complete");
             ini_set('display_errors',$displayErrors);
+            self::$isUpgradeInProgress = false;
             return 'success';
         } else {
+            self::$isUpgradeInProgress = false;
             ini_set('display_errors',$displayErrors);
             $logger->err("Hash validation failed on " . $zipFilename.". Expected: ".$sha1. ". Got: ".sha1_file($zipFilename));
             return 'hash validation failure';
         }
     }
-    
+
 }
