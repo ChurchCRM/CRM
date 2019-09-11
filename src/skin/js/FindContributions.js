@@ -130,7 +130,10 @@ var dataT = 0;
     });
 
     dataT.columns(7).data().eq(0).unique().sort().each( function ( d, j ) {
-        $('.filter-Comment').append('<option>'+d+'</option>');
+        if(d) {
+          $('.filter-Comment').append('<option>'+d+'</option>');
+        }
+        
     });
   }
 
