@@ -12,7 +12,8 @@ addons:
   sauce_connect: true
 
 sudo: required
-dist: trusty
+# dist: trusty
+dist: xenial
 group: edge
 
 notifications:
@@ -28,7 +29,7 @@ env:
   - DB=mysql
 
 before_install:
- #- sudo apt-get update
+ - sudo apt-get update
  - sudo apt-get install ruby-full
  - sudo gem install sass -v 3.4.25
  - chmod +x ./travis-ci/*.sh
