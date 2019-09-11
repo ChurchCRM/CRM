@@ -28,6 +28,7 @@ env:
   - DB=mysql
 
 before_install:
+ - sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 762E3157
  - sudo apt-get update
  - sudo apt-get install ruby-full
  - sudo gem install sass -v 3.4.25
