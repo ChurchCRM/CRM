@@ -224,7 +224,8 @@
             "3.5.0"
         ],
         "scripts": [
-            "/mysql/upgrade/3.5.0.sql"
+            "/mysql/upgrade/3.5.0.sql",
+            "/mysql/upgrade/3.5.0.php"
         ],
         "dbVersion": "3.5.1"
     }
