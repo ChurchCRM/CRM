@@ -159,7 +159,9 @@ class ChurchCRMReleaseManager {
         $UpgradeDir = SystemURLs::getDocumentRoot() . '/Upgrade';
         $url = $release->getDownloadURL();
         $logger->debug("Creating upgrade directory: " . $UpgradeDir);
-        mkdir($UpgradeDir);
+        if (!is_dir($UpgradeDir)){
+            mkdir($UpgradeDir);
+        }
         $logger->info("Downloading release from: " . $url . " to: ". $UpgradeDir . '/' . basename($url));
         $executionTime = new ExecutionTime();
         file_put_contents($UpgradeDir . '/' . basename($url), file_get_contents($url));
