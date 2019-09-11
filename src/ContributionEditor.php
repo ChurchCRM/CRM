@@ -36,15 +36,11 @@ if (!$_SESSION['user']->isFinanceEnabled()) {
 
 // get user defined system settings
 $sDateFormat = SystemConfig::getValue('sDateFormatLong');
+$sDatePickerFormat = SystemConfig::getValue('sDatePickerFormat');
 // $sDatePickerPlaceHolder = SystemConfig::getValue('sDatePickerPlaceHolder');
 $bEnableNonDeductible = SystemConfig::getValue('bEnableNonDeductible');
 
 // Handle URL via _GET first
-// $iContributorName = 0;
-// if (array_key_exists('ContributorName', $_GET)) {
-//     $iContributorName = InputUtils::LegacyFilterInput($_GET['ContributorName'], 'int');
-// }
-
 $iContributionID = 0;
 if (array_key_exists('ContributionID', $_GET)) {
     $iContributionID = InputUtils::LegacyFilterInput($_GET['ContributionID'], 'int');
@@ -55,24 +51,26 @@ if (array_key_exists('ContributorID', $_GET)) {
     $iContributorID = InputUtils::LegacyFilterInput($_GET['ContributorID'], 'int');
 }
 
-$linkBack = InputUtils::LegacyFilterInput($_GET['linkBack'], 'string');
-
-
-// new contribution, get default values
-if (!$iContributionID) { // add new contribtion
-
-    if (array_key_exists('idefaultDate', $_SESSION) && !($_SESSION['idefaultDate'])) {
-        $dDate = $_SESSION['idefaultDate'];
-    } else {
-        $dDate = date($sDateFormat);
-    }
-
-    if (array_key_exists('idefaultPaymentMethod', $_SESSION) && !($_SESSION['idefaultPaymentMethod'])) {
-        $iMethod = $_SESSION['idefaultPaymentMethod'];
-    } else {
-        $iMethod = 'Cash';
-    }
+// new contribtion
+$dDate = InputUtils::LegacyFilterInput($_POST['contribDate']);
+if (!$dDate) {
+  if (array_key_exists('idefaultDate', $_SESSION)) {
+      $dDate = $_SESSION['idefaultDate'];
+  } else {
+      $dDate = date('Y-m-d');
+  }
 }
+
+$iMethod = InputUtils::LegacyFilterInput($_POST['contribType']);
+if (!$iMethod) {
+  if (array_key_exists('idefaultDate', $_SESSION)) {
+      $iMethod = $_SESSION['idefaultDate'];
+  } else {
+      $iMethod = 'Cash';
+  }
+}
+
+$linkBack = InputUtils::LegacyFilterInput($_GET['linkBack'], 'string');
 
 require 'Include/Header.php';
 
@@ -90,6 +88,7 @@ require 'Include/Header.php';
                     </div>
                     <div class="modal-body">
                         <div class="container-fluid">
+
                             <div class="row">
                                 <div class="col-xl-3">
                                     <label for="AddFund"><?= gettext('Fund') ?> </label>
@@ -99,15 +98,16 @@ require 'Include/Header.php';
                                     </select>
                                 </div>
                             </div>
+
                             <div class="row">
                                 <div class="col-xl-3">
                                     <label for="AddAmount"><?= gettext('Amount') ?></label>
                                 </div>
                                 <div class="col-xl-3">
                                     <input class="FundAmount"  type="number" step="any" name="AddAmount" id="AddAmount" />
-                                    
                                 </div>
                             </div>
+
                             <div class="row">
                                 <div class="col-xl-3">
                                     <label for="AddComment"><?= gettext('Comment') ?></label>
@@ -116,6 +116,7 @@ require 'Include/Header.php';
                                     <input type="text" size=40 name="AddComment" id="AddComment" />
                                 </div>
                             </div>
+
                             <div class="row">
                                 <div class="col-xl-3">
                                     <label id= "AddNonDeductibleLabel" for="AddNonDeductible"><?= gettext('Non-Deductible') ?></label>
@@ -124,6 +125,7 @@ require 'Include/Header.php';
                                     <input type="checkbox" name="AddNonDeductible" id="AddNonDeductible" />
                                 </div>
                             </div>
+
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -140,7 +142,7 @@ require 'Include/Header.php';
     </div>
     <!-- End Add Split Modal -->
 
-<form>
+<form id="MainForm" method="POST" action="ContributionEditor.php?linkBack=findContributions.php">
 <div class="row">
   <div class="col-lg-12">
     <div class="box">
@@ -156,34 +158,49 @@ require 'Include/Header.php';
         <div class="container-fluid">
           <div class="row">
             <div class="col-lg-4">
-              <label for="ContributorName"><?= gettext('Contributor') ?></label>
-              <select class="form-control" id="ContributorName" name="ContributorName" ></select>
+              <label for="ContributorName"  class="text-nowrap" ><?= gettext('Contributor') ?></label>
+              <select class="form-control" id="ContributorName" name="ContributorName" style="width:100%" ></select>
             </div>
 
             <div class="col-lg-2">
-              <label for="contribDate"><?= gettext('Contribution Date') ?></label>
+              <label for="contribDate"  class="text-nowrap" ><?= gettext('Date') ?></label>
               <input class="form-control" name="contribDate" id="contribDate" style="width:100%" class="date-picker">
             </div>
+
+            <div class="col-lg-2">
+              <label for="contribType"><?= gettext('Payment by') ?></label>
+              <select class="form-control" id="contribType" name="contribType"  style="width:100%" >
+                <option>Bank Draft</option>
+                <option selected>Cash</option>
+                <option>Check</option>
+                <option>Credit Card</option>
+                <option>eGive</option>
+                <option>Other</option>
+              </select>
+            </div>
+
+            <div class="col-lg-2">
+              <label for="contribCheck" class="text-nowrap" ><?= gettext('Check #') ?> </label>
+              <input class="form-control" name="contribCheck" id="contribCheck" style="width:100%">
+            </div>
+
           </div>
 
           <div class="row">
-            <div class="col-lg-3">
-              <label for="contribComment"><?= gettext('Comment') ?></label>
+            <div class="col-lg-4">
+              <label for="contribComment" class="text-nowrap" ><?= gettext('Comment') ?></label>
                 <input class="form-control" name="contribComment" id="contribComment" style="width:100%">
             </div>
 
-            <div class="col-lg-3">
+            <div class="col-lg-2">
               <?php if (SystemConfig::getValue('bUseDonationEnvelopes')) { ?>
-                <label for="Envelope"><?= gettext('Envelope Number') ?></label>
-                <input  class="form-control" type="number" name="Envelope" size=8 id="Envelope" disabled />   
-                <!-- <input class="form-control" type="submit" class="btn btn-default" value="< ?= gettext('Find family->') ?>" name="MatchEnvelope"> -->
+                <label for="Envelope" class="text-nowrap" ><?= gettext('Envelope Number') ?></label>
+                <input  class="form-control" type="number" name="Envelope" size=8 id="Envelope" disabled />
               <?php } ?>
             </div>
-          </div>
 
-          <div class="row">
-            <div class="col-lg-3">
-              <label for="TotalAmount"><?= gettext('Total $') ?></label>
+            <div class="col-lg-2">
+              <label for="TotalAmount" class="text-nowrap" ><?= gettext('Total $') ?></label>
               <input class="form-control"  type="number" step="any" name="TotalAmount" id="TotalAmount" disabled />
             </div>
           </div>
@@ -191,12 +208,12 @@ require 'Include/Header.php';
 
         <p>
           <div class="row">
-            <div class="col-lg-3">
+            <div class="col-lg-1">
               <input type="button" class="btn btn-primary" value="<?= gettext('Save') ?>" id="PledgeSubmit" name="PledgeSubmit" <?= $iContributionID ? 'enabled' : 'disabled' ?> />
             </div>
 
             
-            <div class="col-lg-3">
+            <div class="col-lg-1">
               <?php if ($_SESSION['user']->isAddRecordsEnabled()) { ?>
                 <input type="button" class="btn btn-primary" value="<?= gettext('New Contribution') ?>" id="PledgeSubmitAdd" disabled />
               <?php } ?>
@@ -241,22 +258,16 @@ require 'Include/Header.php';
   var linkBack = "<?= $linkBack ?>";
   var iContributorID = <?= $iContributorID ?>;
   var iContributionID = <?= $iContributionID ?>;
-  // var iContributorName = < ?= $iContributorName ?>;
   var CurrentUser = <?= $_SESSION['user']->getId() ?>;
   var EnableNonDeductible = <?= $bEnableNonDeductible ?>;
-
+  var dDate = "<?= $dDate ?>";
+  var iMethod = "<?= $iMethod ?>";
+  
   $(document).ready(function() {
     // setfocus on name
 
-
-    // $("#contribDate").datepicker({format: 'yyyy-mm-dd', language: window.CRM.lang});
     initPaymentTable();
     initFundList();
-
-    // update contributor name if available
-    // if (iContributorName) {
-    //   initContributor();
-    // }
 
     if (iContributorID) { // edit contributions
       $("#addNewContrib").prop('disabled',false);
@@ -264,11 +275,33 @@ require 'Include/Header.php';
       initContributor();
       // $("#AddFund").focus();
     } else { // if new contribution
-      // get previouse sunday since data entry normally occurs later
-      var PreviousSunday = new Date()
-      PreviousSunday.setDate(PreviousSunday.getDate() - PreviousSunday.getDay());
-      $("#contribDate").datepicker({format: window.CRM.datePickerformat, language: window.CRM.lang}).datepicker("setDate", new Date(PreviousSunday));
+      // get previouse sunday since data entry normally occurs later if dDate not set
+      if (dDate == '') {
+        dDate = new Date()
+        dDate.setDate(dDate.getDate() - dDate.getDay());
+      }
+      
+      $("#contribDate").datepicker({format: window.CRM.datePickerformat, language: window.CRM.lang}).datepicker("setDate", dDate);
+      // set payment type
+      $('#contribType').val(iMethod);
     }
+
+    // submit contribution and/ or split
+    // $("#contribDate").on('click', function (e) {
+    //   // carry date forward
+    //   // $_SESSION['idefaultDate'] = $(this).val();
+    //   // sense shift key
+    //   ctrl = e.ctrlKey;
+    //   console.log(ctrl);
+    // });
+
+    // submit contribution and/ or split
+    // $("#contribDate").change(function (e) {
+    //   // carry date forward
+    //   // $_SESSION['idefaultDate'] = $(this).val();
+    //   // sense shift key
+      
+    // });
 
     // search for contributors
     $("#ContributorName").select2({
@@ -415,14 +448,9 @@ require 'Include/Header.php';
   });
   // submit contribution and/ or split
   $("#PledgeSubmitAdd").on('click', function () {
-      // if hasSplit, save and move to new
-      if (hasSplit()) {
+      // save and move to new
         UpdateContribution(true);
-        // alert(hasSplit());
-        document.location= window.CRM.root + "/ContributionEditor.php?linkBack=findContributions.php";
-      } else {
-        alert('Contribution must have at least one split!');
-      }
+        $("#MainForm").submit();
   });
 
   // hide based on system settings

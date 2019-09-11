@@ -11,20 +11,8 @@ Feature: Deposit Editor
 
   Scenario: Add Payments
     Given I am authenticated as "admin" using "changeme"
-    And  I am on "/DepositSlipEditor.php?DepositSlipID=5"
-    And I press "Add Payment"
-    Then I should see "Payment Editor"
-    And I should see "Payment Details"
-    And I fill in select2 input "FamilyName" with "Berry" and select "Berry: Salvador - 1931 Edwards Rd Riverside, PA United States"
-    And I select "Check" from "Method"
-    And I fill in "CheckNo" with "867"
-    And I fill in "1_Amount" with "1000"
-    And I press "Save"
-    # This scope of validation could be improved
-    # Instead of checking the whole table for each component of this payments
-    # We should try to find _the payment_ and make sure all values match
+    And I am on "/DepositSlipEditor.php?DepositSlipID=5"
+    And I press "Add Contributions"
+    And I press "Add to Deposit (#5)"
     And I wait for AJAX to finish
-    Then I should see "Berry: Salvador - 1931 Edwards Rd Riverside, PA United States" in the "#paymentsTable" element
-    And I should see "1000.00" in the "#paymentsTable" element
-    And I should see "867" in the "#paymentsTable" element
-    And I should see "CHECK" in the "#paymentsTable" element
+    Then I should see "Showing 1 to 3 of 3 entries"
