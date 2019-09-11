@@ -181,7 +181,7 @@ require 'Include/Header.php';
 
             <div class="col-lg-2">
               <label for="contribCheck" class="text-nowrap" ><?= gettext('Check #') ?> </label>
-              <input class="form-control" name="contribCheck" id="contribCheck" style="width:100%" style="width:100%">
+              <input class="form-control" name="contribCheck" id="contribCheck" style="width:100%">
             </div>
 
           </div>
@@ -258,7 +258,6 @@ require 'Include/Header.php';
   var linkBack = "<?= $linkBack ?>";
   var iContributorID = <?= $iContributorID ?>;
   var iContributionID = <?= $iContributionID ?>;
-  // var iContributorName = < ?= $iContributorName ?>;
   var CurrentUser = <?= $_SESSION['user']->getId() ?>;
   var EnableNonDeductible = <?= $bEnableNonDeductible ?>;
   var dDate = "<?= $dDate ?>";
@@ -269,11 +268,6 @@ require 'Include/Header.php';
 
     initPaymentTable();
     initFundList();
-
-    // update contributor name if available
-    // if (iContributorName) {
-    //   initContributor();
-    // }
 
     if (iContributorID) { // edit contributions
       $("#addNewContrib").prop('disabled',false);
