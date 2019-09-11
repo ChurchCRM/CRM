@@ -6,6 +6,7 @@ use ChurchCRM\dto\ChurchCRMRelease;
 use Github\Client;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\FileSystemUtils;
 
 class ChurchCRMReleaseManager {
 
@@ -212,7 +213,7 @@ class ChurchCRMReleaseManager {
             $logger->info("Extraction completed.  Took:" . $executionTime->getMiliseconds());
             $logger->info("Moving extracted zip into place");
             $executionTime = new ExecutionTime();
-            $this->moveDir(SystemURLs::getDocumentRoot() . '/Upgrade/churchcrm', SystemURLs::getDocumentRoot());
+            FileSystemUtils::moveDir(SystemURLs::getDocumentRoot() . '/Upgrade/churchcrm', SystemURLs::getDocumentRoot());
             $logger->info("Move completed.  Took:" . $executionTime->getMiliseconds());
             }
             $logger->info("Deleting zip archive: ".$zipFilename);
