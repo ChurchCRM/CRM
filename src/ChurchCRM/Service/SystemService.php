@@ -236,20 +236,7 @@ class SystemService
     }
 
 
-    public function moveDir($src, $dest)
-    {
-        $files = array_diff(scandir($src), ['.', '..']);
-        foreach ($files as $file) {
-            if (is_dir("$src/$file")) {
-                mkdir("$dest/$file");
-                $this->moveDir("$src/$file", "$dest/$file");
-            } else {
-                rename("$src/$file", "$dest/$file");
-            }
-        }
 
-        return rmdir($src);
-    }
 
         // Returns a file size limit in bytes based on the PHP upload_max_filesize
     // and post_max_size
