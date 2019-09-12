@@ -348,7 +348,7 @@ $bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() ||
                     while ($Row = mysqli_fetch_array($rsCustomFields)) {
                         extract($Row);
                         $currentData = trim($aCustomData[$custom_Field]);
-                        $displayIcon = "fa-tag";
+                        $displayIcon = "fa fa-tag";
                         $displayLink = "";
                         if ($currentData != '') {
                             if ($type_ID == 9) {
