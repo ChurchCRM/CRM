@@ -356,7 +356,7 @@ $bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() ||
                             $temp_string=nl2br((displayCustomField($type_ID, $currentData, $custom_Special)));
                             if ($type_ID == 11) {
                                 echo "<a href=\"tel:" . $temp_string . "\">" . $temp_string . "</a>";
-                            } else if ($type_ID == 9) {
+                            } elseif ($type_ID == 9) {
                                 echo "<a href=\"" . SystemURLs::getRootPath() .'/PersonView.php?PersonID=' . $currentData . "\">" . $temp_string . "</a>";
                             } else {
                                 echo $temp_string;
