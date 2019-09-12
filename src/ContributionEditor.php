@@ -159,7 +159,7 @@ require 'Include/Header.php';
           <div class="row">
             <div class="col-lg-4">
               <label for="ContributorName"  class="text-nowrap" ><?= gettext('Contributor') ?></label>
-              <select class="form-control" id="ContributorName" name="ContributorName" style="width:100%" ></select>
+              <select name="ContributorName" class="form-control choiceSelectBox" data-placeholder="<?= gettext('Select a Contributor') ?>" id="ContributorName" style="width:100%" ></select>
             </div>
 
             <div class="col-lg-2">
