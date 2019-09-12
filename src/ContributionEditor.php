@@ -57,7 +57,8 @@ if (!$dDate) {
   if (array_key_exists('idefaultDate', $_SESSION)) {
       $dDate = $_SESSION['idefaultDate'];
   } else {
-      $dDate = date('Y-m-d');
+      // get previous sunday since data entry normally occurs later if dDate not set
+      $dDate = date($sDatePickerFormat, strtotime('last Sunday', time()));
   }
 }
 
@@ -275,11 +276,11 @@ require 'Include/Header.php';
       initContributor();
       // $("#AddFund").focus();
     } else { // if new contribution
-      // get previouse sunday since data entry normally occurs later if dDate not set
-      if (dDate == '') {
-        dDate = new Date()
-        dDate.setDate(dDate.getDate() - dDate.getDay());
-      }
+      // get previous sunday since data entry normally occurs later if dDate not set
+      // if (dDate == '') {
+      //   dDate = new Date()
+      //   dDate.setDate(dDate.getDate() - dDate.getDay());
+      // }
       
       $("#contribDate").datepicker({format: window.CRM.datePickerformat, language: window.CRM.lang}).datepicker("setDate", dDate);
       // set payment type
