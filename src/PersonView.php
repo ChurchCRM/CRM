@@ -348,16 +348,20 @@ $bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() ||
                     while ($Row = mysqli_fetch_array($rsCustomFields)) {
                         extract($Row);
                         $currentData = trim($aCustomData[$custom_Field]);
+                        $displayIcon = "fa-tag";
+                        $displayLink = "";
                         if ($currentData != '') {
-                            if ($type_ID == 11) {
+                            if ($type_ID == 9) {
+                                $displayLink = SystemURLs::getRootPath() .'/PersonView.php?PersonID=' . $currentData;
+                            } else  if ($type_ID == 11) {
                                 $custom_Special = $sPhoneCountry;
+                                $displayIcon = "fa-phone";
+                                $displayLink = "tel:".$temp_string;
                             }
-                            echo '<li><i class="fa-li '.(($type_ID == 11)?'fa fa-phone':'fa fa-tag').'"></i>'.$custom_Name.': <span>';
+                            echo '<li><i class="fa-li ' . $displayIcon . '"></i>'.$custom_Name.': <span>';
                             $temp_string=nl2br((displayCustomField($type_ID, $currentData, $custom_Special)));
-                            if ($type_ID == 11) {
-                                echo "<a href=\"tel:" . $temp_string . "\">" . $temp_string . "</a>";
-                            } else if ($type_ID == 9) {
-                                echo "<a href=\"" . SystemURLs::getRootPath() .'/PersonView.php?PersonID=' . $currentData . "\">" . $temp_string . "</a>";
+                            if ($displayLink) {
+                                echo "<a href=\"" . $displayLink . "\">" . $temp_string . "</a>";
                             } else {
                                 echo $temp_string;
                             }
