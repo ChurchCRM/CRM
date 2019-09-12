@@ -285,7 +285,7 @@ $bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() || ($_SESSION['user']->i
                 if ($type_ID == 9) {
                     $displayIcon = "fa fa-user";
                     $displayLink = SystemURLs::getRootPath() .'/PersonView.php?PersonID=' . $currentData;
-                } else  if ($type_ID == 11) {
+                } elseif ($type_ID == 11) {
                     $custom_Special = $sPhoneCountry;
                     $displayIcon = "fa fa-phone";
                     $displayLink = "tel:".$currentData;
