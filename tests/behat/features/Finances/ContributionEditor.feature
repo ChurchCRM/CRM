@@ -23,4 +23,4 @@ Feature: Contribution Editor
     #And I press "submitContrib"
     #And I wait for AJAX to finish
     #Then I should see "Showing 1 to 1 of 1 entries"
-    Then I should see "Showing 0 to 0 of 0 entries"
+    And I should see "Showing 0 to 0 of 0 entries" in the "#splitTable" element

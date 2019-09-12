@@ -16,4 +16,4 @@ Feature: Deposit Editor
     And I press "Add to Deposit (#5)"
     And I wait for AJAX to finish
     #Then I should see "Showing 1 to 3 of 3 entries"
-    Then I should see "Showing 1 to 2 of 2 entries"
+    Then I should see "Showing 1 to 2 of 2 entries" in the "#paymentsTable" element
