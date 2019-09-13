@@ -196,7 +196,6 @@ $familyAddress = $family->getAddress();
                             }
                             foreach ($familyCustom as $customField) {
                                 echo '<li><i class="fa-li ' . $customField->getIcon() . '"></i>'. $customField->getDisplayValue().': <span>';
-                                //$temp_string=nl2br((displayCustomField($type_ID, $currentData, $fam_custom_Special)));
                                 if ($customField->getLink()) {
                                     echo "<a href=\"" . $customField->getLink() . "\">" . $customField->getFormattedValue() . "</a>";
                                 } else {
