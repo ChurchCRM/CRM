@@ -70,6 +70,7 @@ require __DIR__ . '/routes/geocoder.php';
 require __DIR__ . '/routes/kiosks.php';
 require __DIR__ . '/routes/search.php';
 require __DIR__ . '/routes/users/users-admin.php';
+require __DIR__ . '/routes/users/user-current.php';
 
 // Run app
 $app->run();
