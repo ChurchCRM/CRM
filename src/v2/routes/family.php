@@ -11,6 +11,8 @@ use ChurchCRM\Utils\InputUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 use ChurchCRM\FamilyCustomMasterQuery;
 use ChurchCRM\FamilyCustomQuery;
+use ChurchCRM\dto\PeopleCustomField;
+use ChurchCRM\SessionUser;
 
 $app->group('/family', function () {
     $this->get('','listFamilies');
@@ -88,9 +90,12 @@ function viewFamily(Request $request, Response $response, array $args)
     if ($thisFamilyCustomFields) {
         $familyCustom = [];
         foreach ($allFamilyCustomFields as $customfield ) {
-            $value = $thisFamilyCustomFields->getVirtualColumn($customfield->getField());
-            if (!empty($value)) {
-                array_push($familyCustom, $customfield->getName() . ": " . $value);
+            if (SessionUser::getUser()->isEnabledSecurity($customfield->getFieldSecurity())) {
+                $value = $thisFamilyCustomFields->getVirtualColumn($customfield->getField());
+                if (!empty($value)) {
+                    $item = new PeopleCustomField($customfield, $value);
+                    array_push($familyCustom, $item);
+                }
             }
         }
     }
