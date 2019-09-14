@@ -7,7 +7,6 @@ use ChurchCRM\UserQuery;
 use ChurchCRM\Utils\RedirectUtils;
 
 if (!empty($_SESSION['user'])) {
-
     $currentUser = UserQuery::create()->findPk($_SESSION['user']->getId());
     if (!empty($currentUser)) {
         $currentUser->setDefaultFY($_SESSION['idefaultFY']);
