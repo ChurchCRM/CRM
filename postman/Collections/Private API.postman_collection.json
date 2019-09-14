@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "d5b77aa8-989c-4f95-be01-a36dcd68835c",
+		"_postman_id": "98a4b313-105e-4994-96a8-024e085da9db",
 		"name": "Private API",
 		"description": "# Introduction\nWhat does your API do?\n\n# Overview\nThings that the developers should know about\n\n# Authentication\nWhat is the preferred way of using the API?\n\n# Error Codes\nWhat errors and status codes can a user expect?\n\n# Rate limit\nIs there a limit to the number of requests an user can send?",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -8,7 +8,6 @@
 	"item": [
 		{
 			"name": "Events",
-			"description": null,
 			"item": [
 				{
 					"name": "Events: get by Id",
@@ -20,10 +19,6 @@
 								"value": "{{api-key}}"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{host}}/api/calendars/3/events",
 							"host": [
@@ -49,10 +44,6 @@
 								"value": "{{api-key}}"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{host}}/api/events/",
 							"host": [
@@ -106,10 +97,6 @@
 								"value": "{{api-key}}"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{host}}/api/events/",
 							"host": [
@@ -128,7 +115,6 @@
 		},
 		{
 			"name": "Calendars",
-			"description": null,
 			"item": [
 				{
 					"name": "New Calendar",
@@ -190,17 +176,14 @@
 		},
 		{
 			"name": "Cart",
-			"description": null,
 			"item": []
 		},
 		{
 			"name": "Dashboard",
-			"description": null,
 			"item": []
 		},
 		{
 			"name": "Emails",
-			"description": null,
 			"item": [
 				{
 					"name": "Email: Debug",
@@ -212,10 +195,6 @@
 								"value": "{{api-key}}"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{host}}/api/email/debug",
 							"host": [
@@ -234,17 +213,14 @@
 		},
 		{
 			"name": "Finance",
-			"description": null,
 			"item": [
 				{
 					"name": "Deposits",
-					"description": null,
 					"item": [],
 					"_postman_isSubFolder": true
 				},
 				{
 					"name": "Payments",
-					"description": null,
 					"item": [],
 					"_postman_isSubFolder": true
 				}
@@ -252,12 +228,10 @@
 		},
 		{
 			"name": "Geocoder",
-			"description": null,
 			"item": []
 		},
 		{
 			"name": "Groups",
-			"description": null,
 			"item": [
 				{
 					"name": "Group: Get Group by ID",
@@ -269,10 +243,6 @@
 								"value": "{{api-key}}"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{host}}/api/group/9",
 							"host": [
@@ -288,7 +258,6 @@
 					},
 					"response": [
 						{
-							"id": "7db43367-f579-4e5d-a38c-5952d67b7ab0",
 							"name": "Persons: Get Photo by ID",
 							"originalRequest": {
 								"method": "GET",
@@ -298,10 +267,6 @@
 										"value": "ajGwpy8Pdai22XDUpqjC5Ob04v0eG7EGgb4vz2bD2juT8YDmfM"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
 								"url": {
 									"raw": "{{host}}/api/persons/2/photo",
 									"host": [
@@ -393,10 +358,6 @@
 								"value": "{{api-key}}"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{host}}/api/groups/9/members",
 							"host": [
@@ -417,16 +378,13 @@
 		},
 		{
 			"name": "Kiosks",
-			"description": null,
 			"item": []
 		},
 		{
 			"name": "People",
-			"description": null,
 			"item": [
 				{
 					"name": "Person",
-					"description": "",
 					"item": [
 						{
 							"name": "Person: Get by ID",
@@ -438,10 +396,6 @@
 										"value": "{{api-key}}"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
 								"url": {
 									"raw": "{{host}}/api/person/105",
 									"host": [
@@ -457,7 +411,6 @@
 							},
 							"response": [
 								{
-									"id": "4d952957-54b3-4afa-89a6-a2db7b0dd60a",
 									"name": "Persons: Get Photo by ID",
 									"originalRequest": {
 										"method": "GET",
@@ -467,10 +420,6 @@
 												"value": "ajGwpy8Pdai22XDUpqjC5Ob04v0eG7EGgb4vz2bD2juT8YDmfM"
 											}
 										],
-										"body": {
-											"mode": "raw",
-											"raw": ""
-										},
 										"url": {
 											"raw": "{{host}}/api/persons/2/photo",
 											"host": [
@@ -622,10 +571,6 @@
 										"value": "{{api-key}}"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
 								"url": {
 									"raw": "{{host}}/api/person/2/photo",
 									"host": [
@@ -642,7 +587,6 @@
 							},
 							"response": [
 								{
-									"id": "b63926e8-1e61-4fb2-9894-76d4d7a6f64d",
 									"name": "Persons: Get Photo by ID",
 									"originalRequest": {
 										"method": "GET",
@@ -652,10 +596,6 @@
 												"value": "ajGwpy8Pdai22XDUpqjC5Ob04v0eG7EGgb4vz2bD2juT8YDmfM"
 											}
 										],
-										"body": {
-											"mode": "raw",
-											"raw": ""
-										},
 										"url": {
 											"raw": "{{host}}/api/persons/2/photo",
 											"host": [
@@ -747,10 +687,6 @@
 										"value": "{{api-key}}"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
 								"url": {
 									"raw": "{{host}}/api/person/2/thumbnail",
 									"host": [
@@ -832,7 +768,6 @@
 				},
 				{
 					"name": "Persons",
-					"description": null,
 					"item": [
 						{
 							"name": "Persons: Roles",
@@ -844,10 +779,6 @@
 										"value": "{{api-key}}"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
 								"url": {
 									"raw": "{{host}}/api/persons/roles",
 									"host": [
@@ -873,10 +804,6 @@
 										"value": "{{api-key}}"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
 								"url": {
 									"raw": "{{host}}/api/persons/search/admin",
 									"host": [
@@ -903,10 +830,6 @@
 										"value": "{{api-key}}"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
 								"url": {
 									"raw": "{{host}}/api/persons/duplicate/emails",
 									"host": [
@@ -988,7 +911,6 @@
 				},
 				{
 					"name": "Families",
-					"description": null,
 					"item": [
 						{
 							"name": "Families byCheckNumber",
@@ -1000,10 +922,6 @@
 										"value": "{{api-key}}"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
 								"url": {
 									"raw": "{{host}}/api//families/byCheckNumber/5",
 									"host": [
@@ -1031,10 +949,6 @@
 										"value": "{{api-key}}"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
 								"url": {
 									"raw": "{{host}}/api/families/search/Kennedy",
 									"host": [
@@ -1061,10 +975,6 @@
 										"value": "{{api-key}}"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
 								"url": {
 									"raw": "{{host}}/api/families/lastedited",
 									"host": [
@@ -1090,10 +1000,6 @@
 										"value": "{{api-key}}"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
 								"url": {
 									"raw": "{{host}}/api/families/numbers",
 									"host": [
@@ -1118,10 +1024,6 @@
 										"value": "{{api-key}}"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
 								"url": {
 									"raw": "{{host}}/api/families/self-register",
 									"host": [
@@ -1146,10 +1048,6 @@
 										"value": "{{api-key}}"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
 								"url": {
 									"raw": "{{host}}/api/families/self-verify",
 									"host": [
@@ -1174,10 +1072,6 @@
 										"value": "{{api-key}}"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
 								"url": {
 									"raw": "{{host}}/api/families/pending-self-verify",
 									"host": [
@@ -1228,7 +1122,6 @@
 				},
 				{
 					"name": "Family",
-					"description": "",
 					"item": [
 						{
 							"name": "Family: Get by ID",
@@ -1240,10 +1133,6 @@
 										"value": "{{api-key}}"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
 								"url": {
 									"raw": "{{host}}/api/family/21",
 									"host": [
@@ -1268,10 +1157,6 @@
 										"value": "{{api-key}}"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
 								"url": {
 									"raw": "{{host}}/api/family/2/geolocation",
 									"host": [
@@ -1297,10 +1182,6 @@
 										"value": "{{api-key}}"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
 								"url": {
 									"raw": "{{host}}/api/family/2/photo",
 									"host": [
@@ -1355,10 +1236,6 @@
 										"value": "{{api-key}}"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
 								"url": {
 									"raw": "{{host}}/api/family/2/thumbnail",
 									"host": [
@@ -1440,7 +1317,6 @@
 		},
 		{
 			"name": "Search",
-			"description": null,
 			"item": [
 				{
 					"name": "Search: All",
@@ -1452,10 +1328,6 @@
 								"value": "{{api-key}}"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{host}}/api/search/Smith",
 							"host": [
@@ -1475,11 +1347,9 @@
 		},
 		{
 			"name": "System",
-			"description": null,
 			"item": [
 				{
 					"name": "Config",
-					"description": "",
 					"item": [
 						{
 							"name": "System: Set System Config",
@@ -1524,10 +1394,6 @@
 										"value": "{{api-key}}"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
 								"url": {
 									"raw": "{{host}}/api/system/config/sDefaultCountry",
 									"host": [
@@ -1548,7 +1414,6 @@
 				},
 				{
 					"name": "Database",
-					"description": null,
 					"item": [
 						{
 							"name": "Database - Reset",
@@ -1614,7 +1479,6 @@
 				},
 				{
 					"name": "Debug",
-					"description": null,
 					"item": [
 						{
 							"name": "System: Debug URLs",
@@ -1626,10 +1490,6 @@
 										"value": "{{api-key}}"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
 								"url": {
 									"raw": ""
 								}
@@ -1641,13 +1501,11 @@
 				},
 				{
 					"name": "Issues",
-					"description": null,
 					"item": [],
 					"_postman_isSubFolder": true
 				},
 				{
 					"name": "Menu Links",
-					"description": null,
 					"item": [
 						{
 							"name": "MenuLink: Get All",
@@ -1659,10 +1517,6 @@
 										"value": "{{api-key}}"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
 								"url": {
 									"raw": "{{host}}/api/system/menu",
 									"host": [
@@ -1744,7 +1598,6 @@
 				},
 				{
 					"name": "Upgrade",
-					"description": null,
 					"item": [],
 					"_postman_isSubFolder": true
 				},
@@ -1758,10 +1611,6 @@
 								"value": "{{api-key}}"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{host}}/api/system/notification",
 							"host": [
@@ -1781,11 +1630,9 @@
 		},
 		{
 			"name": "Users",
-			"description": null,
 			"item": [
 				{
 					"name": "Email",
-					"description": null,
 					"item": [],
 					"_postman_isSubFolder": true
 				},
