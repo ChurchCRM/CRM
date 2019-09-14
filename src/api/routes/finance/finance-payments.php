@@ -20,14 +20,14 @@ $app->group('/payments', function () {
     $this->get('/family/{familyId:[0-9]+}/list', function (Request $request, Response $response, array $args) {
         $familyId = $request->getAttribute("route")->getArgument("familyId");
         $query = PledgeQuery::create()->filterByFamId($familyId);
-        if (!empty(SessionUser::getUser()->getFormattedShowSince())) {
-            $query->filterByDate(SessionUser::getUser()->getFormattedShowSince(), Criteria::GREATER_EQUAL);
+        if (!empty(SessionUser::getUser()->getShowSince())) {
+            $query->filterByDate(SessionUser::getUser()->getShowSince(), Criteria::GREATER_EQUAL);
         }
         if (!SessionUser::getUser()->isShowPayments()) {
-            $query->filterByPledgeorpayment("Payment", Criteria::NOT_EQUAL);
+            $query->filterByPledgeOrPayment("Payment", Criteria::NOT_EQUAL);
         }
         if (!SessionUser::getUser()->isShowPledges()) {
-            $query->filterByPledgeorpayment("Pledge", Criteria::NOT_EQUAL);
+            $query->filterByPledgeOrPayment("Pledge", Criteria::NOT_EQUAL);
         }
         $data = $query->find();
         return $response->withHeader('Content-Type: application/json')->write($data->exportTo("JSON"));
