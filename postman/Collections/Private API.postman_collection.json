@@ -226,9 +226,25 @@
 							"name": "Get Pledges by Family",
 							"request": {
 								"method": "GET",
-								"header": [],
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{api-key}}",
+										"type": "text"
+									}
+								],
 								"url": {
-									"raw": ""
+									"raw": "{{host}}/api/payments/family/20/list",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"payments",
+										"family",
+										"20",
+										"list"
+									]
 								}
 							},
 							"response": []
