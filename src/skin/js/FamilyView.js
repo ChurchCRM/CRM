@@ -122,5 +122,31 @@ $(document).ready(function () {
         });
     });
 
+    $("#ShowPledges").click(function () {
+        updateUserFinanceData();
+    });
 
+    $("#ShowPayments").click(function () {
+        updateUserFinanceData();
+    });
+
+    $("#ShowSinceDate").change(function () {
+        updateUserFinanceData();
+    });
+
+    function updateUserFinanceData(){
+        var finData = {
+            "pledges": $("#ShowPledges").prop("checked") ? "true" : "false",
+            "payments": $("#ShowPayments").prop("checked") ? "true" : "false",
+            "since": $("#ShowSinceDate").val()
+        };
+
+        window.CRM.APIRequest({
+            method: "POST",
+            path: "/user/current/settings/show/finance",
+            dataType: 'json',
+            data: JSON.stringify(finData)
+        });
+
+    }
 });
