@@ -18,7 +18,7 @@ class FinancialService
     public function deletePayment($groupKey)
     {
         requireUserGroupMembership('bFinance');
-        PledgeQuery::create()->findOneByGroupkey($groupKey)->delete();
+        PledgeQuery::create()->findOneByGroupKey($groupKey)->delete();
     }
 
     public function getMemberByScanString($sstrnig)
