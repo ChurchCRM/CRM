@@ -24,7 +24,7 @@ function registerFamilyAPI(Request $request, Response $response, array $args)
 
     if ($family->validate()) {
         $family->save();
-        return $response->withJson($family->toArray());
+        return $response->withHeader('Content-Type: application/json')->write($family->exportTo('JSON'));
     }
 
     return $response->withStatus(401)->withJson(["error" => gettext("Validation Error"),
@@ -42,7 +42,7 @@ function registerPersonAPI(Request $request, Response $response, array $args)
     $person->setDateEntered(new \DateTime());
     if ($person->validate()) {
         $person->save();
-        return $response->withJson($person->toArray());
+        return $response->withHeader('Content-Type: application/json')->write($person->exportTo('JSON'));
     }
 
     return $response->withStatus(401)->withJson(["error" => gettext("Validation Error"),
