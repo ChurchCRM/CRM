@@ -1173,6 +1173,31 @@
 							"response": []
 						},
 						{
+							"name": "Family: Nav",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{api-key}}"
+									}
+								],
+								"url": {
+									"raw": "{{host}}/api/family/2/nav",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"family",
+										"2",
+										"nav"
+									]
+								}
+							},
+							"response": []
+						},
+						{
 							"name": "Family: Get Photo by ID",
 							"request": {
 								"method": "GET",
@@ -1423,11 +1448,17 @@
 									{
 										"key": "x-api-key",
 										"value": "{{api-key}}"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
 									}
 								],
 								"body": {
-									"mode": "raw",
-									"raw": ""
+									"mode": "urlencoded",
+									"urlencoded": []
 								},
 								"url": {
 									"raw": "{{host}}/api/database/reset",
