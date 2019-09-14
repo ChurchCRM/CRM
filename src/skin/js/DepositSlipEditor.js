@@ -14,7 +14,7 @@ function initPaymentTable()
     {
       width: 'auto',
       title:i18next.t('Check Number'),
-      data:'Checkno'
+      data:'CheckNo'
     },
     {
       width: 'auto',
@@ -72,7 +72,7 @@ function initDepositSlipEditor()
             '</tr>' +
             '<tr>' +
             '<td>Fiscal Year:</td>' +
-            '<td>' + d.Fyid + '</td>' +
+            '<td>' + d.FyId + '</td>' +
             '</tr>' +
             '<tr>' +
             '<td>Fund(s):</td>' +

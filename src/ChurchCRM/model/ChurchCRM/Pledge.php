@@ -25,7 +25,7 @@ class Pledge extends BasePledge
      */
     public function preDelete(ConnectionInterface $con = null)
     {
-        $deposit = DepositQuery::create()->findOneById($this->getDepid());
+        $deposit = DepositQuery::create()->findOneById($this->getDepId());
         if (!$deposit->getClosed()) {
             return parent::preDelete($con);
         } else {
