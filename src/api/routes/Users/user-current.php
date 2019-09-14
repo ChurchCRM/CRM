@@ -20,6 +20,8 @@ function updateSessionFinance(Request $request, Response $response, array $args)
     $user->setShowSince(($setting->since));
     $user->save();
 
+    $_SESSION['user'] = $user;
+
     return $response->withJson([
         "user" => $user->getName(),
         "userId" => $user->getId(),

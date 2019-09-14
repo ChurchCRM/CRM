@@ -526,24 +526,8 @@ $familyAddress = $family->getAddress();
                     </div>
                 </div>
                 <div class="box-body">
-                    <table id="pledge-payment-table" class="table table-condensed responsive" >
-                        <thead>
-                        <tr>
-                            <th><?= gettext("Pledge or Payment") ?></th>
-                            <th><?= gettext("Fund") ?></th>
-                            <th><?= gettext("Fiscal Year") ?></th>
-                            <th><?= gettext("Date") ?></th>
-                            <th><?= gettext("Amount") ?></th>
-                            <th><?= gettext("NonDeductible") ?></th>
-                            <th><?= gettext("Schedule") ?></th>
-                            <th><?= gettext("Method") ?></th>
-                            <th><?= gettext("Comment") ?></th>
-                            <th><?= gettext("Edit") ?></th>
-                            <th><?= gettext("Delete") ?></th>
-                            <th><?= gettext("Date Updated") ?></th>
-                            <th><?= gettext("Updated By") ?></th>
-                        </tr>
-                        </thead>
+                    <table id="pledge-payment-table" class="table table-striped table-bordered table-responsive data-table">
+                        <tbody></tbody>
                     </table>
                     <?php } ?>
                 </div>

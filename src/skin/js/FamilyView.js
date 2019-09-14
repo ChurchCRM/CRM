@@ -21,8 +21,69 @@ $(document).ready(function () {
         }
     });
 
-    $("#pledge-payment-table").DataTable(window.CRM.plugin.dataTable);
-
+    var dataTableConfig = {
+        ajax: {
+            url: window.CRM.root + "/api/payments/family/"+ window.CRM.currentFamily +"/list",
+            dataSrc: "data"
+        },
+        columns: [
+            {
+                title: i18next.t('Pledge or Payment'),
+                data: 'PledgeOrPayment'
+            },
+            {
+                title: i18next.t('Fund'),
+                data: 'FundId'
+            },
+            {
+                title: i18next.t('Fiscal Year'),
+                data: 'FyId'
+            },
+            {
+                title: i18next.t('Date'),
+                data: 'Date'
+            },
+            {
+                title: i18next.t('Amount'),
+                data: 'Amount'
+            },
+            {
+                title: i18next.t('NonDeductible'),
+                data: 'Nondeductible'
+            },
+            {
+                title: i18next.t('Schedule'),
+                data: 'Schedule'
+            },
+            {
+                title: i18next.t('Method'),
+                data: 'Method'
+            },
+            {
+                title: i18next.t('Comment'),
+                data: 'Comment'
+            },
+            {
+                title: i18next.t('Edit'),
+                data: 'FyId'
+            },
+            {
+                title: i18next.t('Delete'),
+                data: 'FyId'
+            },
+            {
+                title: i18next.t('Date Updated'),
+                data: 'DateLastEdited'
+            },
+            {
+                title: i18next.t('Updated By'),
+                data: 'EditedBy'
+            }
+        ],
+        order: [[1, "asc"]]
+    };
+    $.extend(dataTableConfig, window.CRM.plugin.dataTable);
+    $("#pledge-payment-table").DataTable(dataTableConfig);
 
     $("#onlineVerify").click(function () {
         window.CRM.APIRequest({
@@ -146,7 +207,8 @@ $(document).ready(function () {
             path: "/user/current/settings/show/finance",
             dataType: 'json',
             data: JSON.stringify(finData)
+        }).done(function () {
+            $("#pledge-payment-table").DataTable().ajax.reload();
         });
-
     }
 });

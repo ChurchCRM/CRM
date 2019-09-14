@@ -686,7 +686,7 @@ $bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() || ($_SESSION['user']->i
                                        style="font-size: 8pt;">
                             </form>
 
-                            <table id="pledge-payment-table" class="table table-condensed dt-responsive" width="100%">
+                            <table id="pledge-payment-table.old" class="table table-condensed dt-responsive" width="100%">
                                 <thead>
                                 <tr>
                                     <th><?= gettext("Pledge or Payment") ?></th>
