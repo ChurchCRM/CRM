@@ -23,6 +23,12 @@ $app->group('/payments', function () {
         if (!empty(SessionUser::getUser()->getFormattedShowSince())) {
             $query->filterByDate(SessionUser::getUser()->getFormattedShowSince(), Criteria::GREATER_EQUAL);
         }
+        if (!SessionUser::getUser()->isShowPayments()) {
+            $query->filterByPledgeorpayment("Payment", Criteria::NOT_EQUAL);
+        }
+        if (!SessionUser::getUser()->isShowPledges()) {
+            $query->filterByPledgeorpayment("Pledge", Criteria::NOT_EQUAL);
+        }
         $data = $query->find();
         return $response->withHeader('Content-Type: application/json')->write($data->exportTo("JSON"));
 
