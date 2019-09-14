@@ -28,27 +28,50 @@ $(document).ready(function () {
         },
         columns: [
             {
+                width: '15px',
+                sortable: false,
+                title: i18next.t('Edit'),
+                data: 'GroupKey',
+                render: function (data, type, row) {
+                    return '<a class="btn btn-default" href="'+window.CRM.root+'/PledgeEditor.php?GroupKey='+ row.GroupKey + '&amp;linkBack=FamilyView.php?FamilyID='+window.CRM.currentFamily+'"><i class="fa fa-pencil bg-info"></i></a>';
+                },
+                searchable: false
+            },
+            {
+                width: '15px',
+                sortable: false,
+                title: i18next.t('Delete'),
+                data: 'GroupKey',
+                render: function (data, type, row) {
+                    return '<a class="btn btn-default" href="'+window.CRM.root+'/PledgeDelete.php?GroupKey='+ row.GroupKey + '&amp;linkBack=FamilyView.php?FamilyID='+window.CRM.currentFamily+'"><i class="fa fa-trash bg-red"></i></a>';
+                },
+                searchable: false
+            },
+            {
                 title: i18next.t('Pledge or Payment'),
                 data: 'PledgeOrPayment'
             },
             {
                 title: i18next.t('Fund'),
-                data: 'FundId'
+                data: 'Fund'
             },
             {
                 title: i18next.t('Fiscal Year'),
-                data: 'FyId'
+                data: 'FormatedFY'
             },
             {
                 title: i18next.t('Date'),
+                type: 'date',
                 data: 'Date'
             },
             {
                 title: i18next.t('Amount'),
+                type: 'num',
                 data: 'Amount'
             },
             {
                 title: i18next.t('NonDeductible'),
+                type: 'num',
                 data: 'Nondeductible'
             },
             {
@@ -64,15 +87,8 @@ $(document).ready(function () {
                 data: 'Comment'
             },
             {
-                title: i18next.t('Edit'),
-                data: 'FyId'
-            },
-            {
-                title: i18next.t('Delete'),
-                data: 'FyId'
-            },
-            {
                 title: i18next.t('Date Updated'),
+                type: 'date',
                 data: 'DateLastEdited'
             },
             {
@@ -80,7 +96,7 @@ $(document).ready(function () {
                 data: 'EditedBy'
             }
         ],
-        order: [[1, "asc"]]
+        order: [[5, "asc"]]
     };
     $.extend(dataTableConfig, window.CRM.plugin.dataTable);
     $("#pledge-payment-table").DataTable(dataTableConfig);
