@@ -15,6 +15,7 @@ Feature: Family Self-Registration
     And I fill in "familyHomePhone" with "555-555-5555"
     And I fill in "familyCount" with "2"
     And I press "familySubmit"
+    And I should see "Family Member #2"
     And I should see "Register Self-Reg-Family Family Members"
     And I fill in "memberFirstName-1" with "Mark"
     And I fill in "memberLastName-1" with "Hanna"
@@ -24,6 +25,7 @@ Feature: Family Self-Registration
     And I fill in "memberLastName-2" with "Hanna"
     And I fill in "memberEmail-2" with "email2@test.com"
     And I fill in "memberPhone-2" with "555-999-0000"
+    And I fill in "memberPhoneType-2" with "work"
     And I press "familyMemberSubmit"
 
 
