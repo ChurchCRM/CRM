@@ -81,10 +81,10 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
             <option>8</option>
           </select>
         </div>
-        <div class="form-group has-feedback">
+        <div class="form-group">
           <hr/>
         </div>
-        <div class="form-group has-feedback">
+        <div class="form-group">
           <div class="checkbox">
             <label>
               <input type="checkbox" name="familyPrimaryChurch" checked>&nbsp;
@@ -94,7 +94,7 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
         </div>
         <div class="row">
           <div class="col-xs-12 text-center">
-            <button type="submit" class="btn bg-olive"><?= gettext('Next'); ?></button>
+            <button id="familySubmit" type="submit" class="btn bg-olive"><?= gettext('Next'); ?></button>
           </div>
           <!-- /.col -->
         </div>
