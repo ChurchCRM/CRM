@@ -105,7 +105,7 @@ function Header_body_scripts()
                             "<'row'<'col-sm-4'l><'col-sm-4'i><'col-sm-4'p>>"
                 }
             },
-            PageName:"<?= $_SERVER['REQUEST_URI'];?>"
+            PageName:"<?= $_SERVER['REQUEST_URI']; ?>"
         };
     </script>
     <script src="<?= SystemURLs::getRootPath() ?>/skin/js/CRMJSOM.js"></script>
