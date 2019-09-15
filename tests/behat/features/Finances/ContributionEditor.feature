@@ -13,7 +13,7 @@ Feature: Contribution Editor
     Given I am authenticated as "admin" using "changeme"
     And I am on "/ContributionEditor.php"
     And I wait for AJAX to finish
-    And I fill in select2 input "ContributorName" with "Smith" and select "Smith Paul - 5572 Robinson Rd Santa Clarita, KY USA"
+    Then I fill in select2 input "ContributorName" with "Smith" and select "Smith Paul - 5572 Robinson Rd Santa Clarita, KY USA"
     And I fill in select2 input "contribType" with "Check" and select "Check"
     And I fill in "contribCheck" with "867"
     And I press "Add New Split"
