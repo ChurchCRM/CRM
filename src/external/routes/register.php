@@ -97,6 +97,7 @@ $app->group('/register', function () {
                 $family->addPerson($person);
                 array_push($familyMembers, $person);
             }
+            $family->save();
             $_SESSION['familyMembers'] = $familyMembers;
 
             $pageObjects = ['sRootPath' => SystemURLs::getRootPath(), 'family' => $family, 'familyClass' => $_SESSION['regFamilyClass']];
