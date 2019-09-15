@@ -61,7 +61,7 @@ class FamilyDashboardItem implements DashboardItemInterface {
   }
 
   public static function shouldInclude($PageName) {
-    return $PageName=="/Menu.php" || $PageName=="/menu";
+    return $PageName == "/Menu.php" || $PageName == "/menu";
   }
 
 }
