@@ -12,14 +12,16 @@ Feature: Contribution Editor
   Scenario: Add Payments
     Given I am authenticated as "admin" using "changeme"
     And I am on "/ContributionEditor.php"
-    And I wait for AJAX to finish
+    Then I should see "Contribution Details"
+    And the "Save" button should be disabled
     
     
-    Then I fill in "Check #" with "867"
-    And I fill in select2 input "contribType" with "Check" and select "Check"
+    And I fill in "Check #" with "867"
+    And I fill in "Payment by" with "Check"
     And I fill in select2 input "ContributorName" with "Smith" and select "Smith Paul - 5572 Robinson Rd Santa Clarita, KY USA"
     And I press "Add New Split"
     And I wait for AJAX to finish
+
     And I fill in select2 input "AddFund" with "New" and select "New Building Fund"
     And I fill in "AddAmount" with "1000.00"
     And I press "Submit"
