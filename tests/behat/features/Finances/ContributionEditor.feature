@@ -18,7 +18,7 @@ Feature: Contribution Editor
     
     And I fill in "Check #" with "867"
     And I fill in "Payment by" with "Check"
-    And I fill in select2 input "#ContributorName" with "Smith" and select "Smith Paul - 5572 Robinson Rd Santa Clarita, KY USA"
+    And I fill in select2 input "ContributorName" with "Smith" and select "Smith Paul - 5572 Robinson Rd Santa Clarita, KY USA"
     And I press "Add New Split"
     And I wait for AJAX to finish
 
