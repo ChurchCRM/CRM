@@ -53,7 +53,7 @@ function registerFamilyAPI(Request $request, Response $response, array $args)
             $person->setWorkPhone($personMetaData["workPhone"]);
             $person->setFlags($personMetaData["hideAge"] ? "1" : 0);
 
-            $birthday = $personMetaData->birthday;
+            $birthday = $personMetaData["birthday"];
             if (!empty($birthday)) {
                 $birthdayDate = \DateTime::createFromFormat('m/d/Y', $birthday);
                 $person->setBirthDay($birthdayDate->format('d'));
