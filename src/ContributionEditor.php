@@ -483,6 +483,21 @@ require 'Include/Header.php';
     $("#AddFund").focus();
   });
 
+  // enable/ disable Check #
+  $("#contribType").on('change', function () {
+    if ($(this).val() == 'Check') {
+      $("#contribCheck").prop('disabled', false);
+    } else {
+      $("#contribCheck").prop('disabled', true);
+    }
+  });
+
+  if ($("#contribType").val() == 'Check') {
+    $("#contribCheck").prop('disabled', false);
+  } else {
+    $("#contribCheck").prop('disabled', true);
+  }
+
   function IsNewContribution() {
     if (iContributionID === 0) {
       return true;
