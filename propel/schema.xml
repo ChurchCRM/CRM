@@ -184,7 +184,7 @@
         <column name="fam_custom_Special" phpName="CustomSpecial" type="SMALLINT" size="8"
                 sqlType="mediumint(8) unsigned"/>
         <column name="fam_custom_FieldSec" phpName="FieldSecurity" type="TINYINT" required="true" defaultValue="1"/>
-        <column name="type_ID" phpName="Id" type="TINYINT" required="true" defaultValue="0"/>
+        <column name="type_ID" phpName="TypeId" type="TINYINT" required="true" defaultValue="0"/>
         <vendor type="mysql">
             <parameter name="Engine" value="InnoDB"/>
         </vendor>

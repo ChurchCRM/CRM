@@ -279,10 +279,26 @@ $bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() || ($_SESSION['user']->i
         extract($Row);
         if (SessionUser::getUser()->isEnabledSecurity($aSecurityType[$fam_custom_FieldSec])) {
             $currentData = trim($aFamCustomData[$fam_custom_Field]);
-            if ($type_ID == 11) {
-                $fam_custom_Special = $sPhoneCountry;
+            $displayIcon = "fa fa-tag";
+            $displayLink = "";
+            if ($currentData != '') {
+                if ($type_ID == 9) {
+                    $displayIcon = "fa fa-user";
+                    $displayLink = SystemURLs::getRootPath() .'/PersonView.php?PersonID=' . $currentData;
+                } elseif ($type_ID == 11) {
+                    $custom_Special = $sPhoneCountry;
+                    $displayIcon = "fa fa-phone";
+                    $displayLink = "tel:".$currentData;
+                }
+                echo '<li><i class="fa-li ' . $displayIcon . '"></i>'.$fam_custom_Name.': <span>';
+                $temp_string=nl2br((displayCustomField($type_ID, $currentData, $fam_custom_Special)));
+                if ($displayLink) {
+                    echo "<a href=\"" . $displayLink . "\">" . $temp_string . "</a>";
+                } else {
+                    echo $temp_string;
+                }
+                echo '</span></li>';
             }
-            echo "<li><i class=\"fa-li fa fa-tag\"></i>" . $fam_custom_Name . ": <span>" . displayCustomField($type_ID, $currentData, $fam_custom_Special) . "</span></li>";
         }
     } ?>
                 </ul>
