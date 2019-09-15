@@ -13,7 +13,11 @@ Feature: Deposit Editor
     Given I am authenticated as "admin" using "changeme"
     And I am on "/DepositSlipEditor.php?DepositSlipID=5"
     And I press "Add Contributions"
-    And I press "Add to Deposit (#5)"
     And I wait for AJAX to finish
-    #Then I should see "Showing 1 to 3 of 3 entries"
-    Then I should see "Showing 1 to 2 of 2 entries" in the "#paymentsTable_info" element
+    Then I should see "Contribution Listing"
+    And I should see "Contributions"
+    Then I press "Add to Deposit (#5)"
+    And I wait for AJAX to finish
+    Then I should see "Paul"
+    And I should see "Smith"
+    And I shoould see "1000.00"

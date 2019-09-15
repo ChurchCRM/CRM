@@ -13,14 +13,15 @@ Feature: Contribution Editor
     Given I am authenticated as "admin" using "changeme"
     And I am on "/ContributionEditor.php"
     And I wait for AJAX to finish
-    #And I fill in select2 input "ContributorName" with "Smith" and select "Smith Paul - 5572 Robinson Rd Santa Clarita, KY USA"
-    #And I fill in select2 input "contribType" with "Ch" and select "Check"
-    #And I fill in "contribCheck" with "867"
-    #And I press "Add New Split"
-    #And I wait for AJAX to finish
-    #And I fill in select2 input "AddFund" with "New" and select "New Building Fund"
-    #And I fill in "AddAmount" with "1000"
-    #And I press "submitContrib"
-    #And I wait for AJAX to finish
-    #Then I should see "Showing 1 to 1 of 1 entries"
-    Then I should see "Showing 0 to 0 of 0 entries" in the "#splitTable_info" element
+    And I fill in select2 input "#ContributorName" with "Smith" and select "Smith Paul - 5572 Robinson Rd Santa Clarita, KY USA"
+    And I fill in select2 input "#contribType" with "Check" and select "Check"
+    And I fill in "#contribCheck" with "867"
+    And I press "Add New Split"
+    And I wait for AJAX to finish
+    And I fill in select2 input "#AddFund" with "New" and select "New Building Fund"
+    And I fill in "AddAmount" with "1000.00"
+    And I press "#submitContrib"
+    And I wait for AJAX to finish
+    Then I should see "New Building Fund"
+    And I should see "867"
+    And I should see "Check"
