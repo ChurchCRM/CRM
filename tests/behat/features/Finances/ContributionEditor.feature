@@ -15,8 +15,8 @@ Feature: Contribution Editor
     And I wait for AJAX to finish
     
     
-    Then I fill in "contribCheck" with "867"
-    And I fill in select2 input "contribType" with "Check" and select "Check"
+    Then I fill in "Check #" with "867"
+    And I fill in select2 input "Payment by" with "Check" and select "Check"
     And I fill in select2 input "ContributorName" with "Smith" and select "Smith Paul - 5572 Robinson Rd Santa Clarita, KY USA"
     And I press "Add New Split"
     And I wait for AJAX to finish
