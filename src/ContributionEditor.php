@@ -489,6 +489,7 @@ require 'Include/Header.php';
       $("#contribCheck").prop('disabled', false);
     } else {
       $("#contribCheck").prop('disabled', true);
+      $("#contribCheck").val('');
     }
   });
 

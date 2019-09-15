@@ -16,8 +16,13 @@ Feature: Contribution Editor
     And the "Save" button should be disabled
     
     
+<<<<<<< HEAD
     And I fill in "Check #" with "867"
     And I fill in "Payment by" with "Check"
+=======
+    Then I fill in "Check #" with "867"
+    And I fill in select2 input "Payment by" with "Check" and select "Check"
+>>>>>>> parent of 6f86ad57c... Update ContributionEditor.feature
     And I fill in select2 input "ContributorName" with "Smith" and select "Smith Paul - 5572 Robinson Rd Santa Clarita, KY USA"
     And I press "Add New Split"
     And I wait for AJAX to finish
