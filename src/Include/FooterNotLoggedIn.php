@@ -29,14 +29,6 @@ use ChurchCRM\Bootstrapper;
   <script src="<?= SystemURLs::getRootPath() ?>/locale/js/<?= Bootstrapper::GetCurrentLocale()->getLocale() ?>.js"></script>
 
   <script nonce="<?= SystemURLs::getCSPNonce() ?>">
-    $(function () {
-      $('input').iCheck({
-        checkboxClass: 'icheckbox_square-blue',
-        radioClass: 'iradio_square-blue',
-        increaseArea: '20%' // optional
-      });
-    });
-
     i18nextOpt = {
       lng:window.CRM.shortLocale,
       nsSeparator: false,
