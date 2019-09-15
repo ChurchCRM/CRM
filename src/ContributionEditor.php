@@ -76,9 +76,6 @@ $linkBack = InputUtils::LegacyFilterInput($_GET['linkBack'], 'string');
 require 'Include/Header.php';
 
 ?>
-              <label for="ContributorName"  >Contributor</label>
-              <select name="ContributorName"  data-placeholder="Select a Contributor" id="ContributorName" style="width:100%" ></select>
-
     <!-- Add Split Modal -->
     <div id="addNewContribModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
@@ -162,8 +159,8 @@ require 'Include/Header.php';
         <div class="container-fluid">
           <div class="row">
             <div class="col-lg-4">
-
-
+              <label for="ContributorName"  class="text-nowrap" ><?= gettext('Contributor') ?></label>
+              <select name="ContributorName" class="form-control choiceSelectBox" data-placeholder="<?= gettext('Select a Contributor') ?>" id="ContributorName" style="width:100%" ></select>
             </div>
 
             <div class="col-lg-2">
@@ -436,6 +433,24 @@ require 'Include/Header.php';
         // only add split if contribution already exists
         AddSplit();
       }
+      // return focus to Fund
+      $("#AddFund").focus();
+  });
+  // keep tab in modal window
+  $("#addAnotherSplit").on('keydown', function (e) {
+    // return focus to Fund
+    if ((e.which === 9 && !e.shiftKey)) {
+      e.preventDefault();
+      $("#AddFund").focus();
+    }
+  });
+  // keep tab in modal window
+  $("#AddFund").on('keydown', function (e) {
+    // return focus to Fund
+    if ((e.which === 9 && e.shiftKey)) {
+      e.preventDefault();
+      $("#addAnotherSplit").focus();
+    }
   });
   // modal submit contribution and start new contribution
   $("#addAnotherContribution").on('click', function () {
@@ -464,9 +479,9 @@ require 'Include/Header.php';
   }
 
   // set focus (Bootstrap 3)
-  // $("#addNewContribModal").on('shown.bs.modal', function () {
-  //   $("#AddFund").focus();
-  // });
+  $("#addNewContribModal").on('shown.bs.modal', function () {
+    $("#AddFund").focus();
+  });
 
   function IsNewContribution() {
     if (iContributionID === 0) {
