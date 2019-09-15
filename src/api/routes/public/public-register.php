@@ -4,8 +4,10 @@ use ChurchCRM\Family;
 use ChurchCRM\Person;
 use ChurchCRM\Slim\Middleware\Request\Setting\PublicRegistrationAuthMiddleware;
 use ChurchCRM\Utils\ORMUtils;
+use ChurchCRM\Utils\LoggerUtils;
 use Slim\Http\Request;
 use Slim\Http\Response;
+
 
 $app->group('/public/register', function () {
     $this->post('/family', 'registerFamilyAPI');
@@ -31,38 +33,56 @@ function registerFamilyAPI(Request $request, Response $response, array $args)
     $family->setWorkPhone($familyMetadata->WorkPhone);
     $family->setCellPhone($familyMetadata->CellPhone);
     $family->setEmail($familyMetadata->Email);
-
-
-    $birthday = $body['memberBirthday-' . $x];
-    if (!empty($birthday)) {
-        $birthdayDate = \DateTime::createFromFormat('m/d/Y', $birthday);
-        $person->setBirthDay($birthdayDate->format('d'));
-        $person->setBirthMonth($birthdayDate->format('m'));
-        $person->setBirthYear($birthdayDate->format('Y'));
-    }
-
-    if (!empty($body['memberHideAge-' . $x])) {
-        $person->setFlags(1);
-    }
-
-    $person->setEnteredBy(Person::SELF_REGISTER);
-    $person->setDateEntered(new \DateTime());
-
-    $familyRole = $body['memberRole-' . $x];
-    $person->setFamily($family);
-    $person->setFmrId($familyRole);
-
-
     $family->setEnteredBy(Person::SELF_REGISTER);
     $family->setDateEntered(new \DateTime());
 
+    $familyMembers = [];
+
     if ($family->validate()) {
-        $family->save();
-        return $response->withHeader('Content-Type: application/json')->write($family->exportTo('JSON'));
+        foreach ($familyMetadata->people as $personMetaData) {
+            $person = new Person();
+            $person->setEnteredBy(Person::SELF_REGISTER);
+            $person->setDateEntered(new \DateTime());
+            $person->setFirstName($personMetaData["firstName"]);
+            $person->setLastName($personMetaData["lastName"]);
+            $person->setGender($personMetaData["gender"]);
+            $person->setFmrId($personMetaData["role"]);
+            $person->setEmail($personMetaData["email"]);
+            $person->setCellPhone($personMetaData["cellPhone"]);
+            $person->setHomePhone($personMetaData["homePhone"]);
+            $person->setWorkPhone($personMetaData["workPhone"]);
+            $person->setFlags($personMetaData["hideAge"] ? "1" : 0);
+
+            $birthday = $personMetaData->birthday;
+            if (!empty($birthday)) {
+                $birthdayDate = \DateTime::createFromFormat('m/d/Y', $birthday);
+                $person->setBirthDay($birthdayDate->format('d'));
+                $person->setBirthMonth($birthdayDate->format('m'));
+                $person->setBirthYear($birthdayDate->format('Y'));
+            }
+
+            if (!$person->validate()) {
+                LoggerUtils::getAppLogger()->error("Public Reg Error with the following data: " . json_encode($personMetaData));
+                return $response->withStatus(401)->withJson(["error" => gettext("Validation Error"),
+                    "failures" => ORMUtils::getValidationErrors($person->getValidationFailures())]);
+            }
+            array_push($familyMembers, $person);
+        }
+
+    } else {
+        return $response->withStatus(401)->withJson(["error" => gettext("Validation Error"),
+            "failures" => ORMUtils::getValidationErrors($family->getValidationFailures())]);
     }
 
-    return $response->withStatus(401)->withJson(["error" => gettext("Validation Error"),
-        "failures" => ORMUtils::getValidationErrors($family->getValidationFailures())]);
+    $family->save();
+    foreach ($familyMembers as $person) {
+        $person->setFamily($family);
+        $family->addPerson($person);
+        $person->save();
+    }
+    $family->save();
+
+    return $response->withHeader('Content-Type: application/json')->write($family->exportTo('JSON'));
 
 }
 
