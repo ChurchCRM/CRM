@@ -17,8 +17,42 @@ $app->group('/public/register', function () {
 function registerFamilyAPI(Request $request, Response $response, array $args)
 {
     $family = new Family();
-    $family->fromJSON($request->getBody());
-    $family->setId();  //ignore any ID set in the payload
+
+    $familyMetadata = (object)$request->getParsedBody();
+
+    $family->setName($familyMetadata->Name);
+    $family->setAddress1($familyMetadata->Address1);
+    $family->setAddress2($familyMetadata->Address2);
+    $family->setCity($familyMetadata->City);
+    $family->setState($familyMetadata->State);
+    $family->setCountry($familyMetadata->Country);
+    $family->setZip($familyMetadata->Zip);
+    $family->setHomePhone($familyMetadata->HomePhone);
+    $family->setWorkPhone($familyMetadata->WorkPhone);
+    $family->setCellPhone($familyMetadata->CellPhone);
+    $family->setEmail($familyMetadata->Email);
+
+
+    $birthday = $body['memberBirthday-' . $x];
+    if (!empty($birthday)) {
+        $birthdayDate = \DateTime::createFromFormat('m/d/Y', $birthday);
+        $person->setBirthDay($birthdayDate->format('d'));
+        $person->setBirthMonth($birthdayDate->format('m'));
+        $person->setBirthYear($birthdayDate->format('Y'));
+    }
+
+    if (!empty($body['memberHideAge-' . $x])) {
+        $person->setFlags(1);
+    }
+
+    $person->setEnteredBy(Person::SELF_REGISTER);
+    $person->setDateEntered(new \DateTime());
+
+    $familyRole = $body['memberRole-' . $x];
+    $person->setFamily($family);
+    $person->setFmrId($familyRole);
+
+
     $family->setEnteredBy(Person::SELF_REGISTER);
     $family->setDateEntered(new \DateTime());
 
