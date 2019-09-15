@@ -76,11 +76,9 @@ $linkBack = InputUtils::LegacyFilterInput($_GET['linkBack'], 'string');
 require 'Include/Header.php';
 
 ?>
-            <div class="col-lg-4">
               <label for="ContributorName"  class="text-nowrap" ><?= gettext('Contributor') ?></label>
               <select name="ContributorName" class="form-control choiceSelectBox" data-placeholder="<?= gettext('Select a Contributor') ?>" id="ContributorName" style="width:100%" ></select>
-            </div>
-            
+              
     <!-- Add Split Modal -->
     <div id="addNewContribModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
@@ -163,7 +161,10 @@ require 'Include/Header.php';
       <div class="box-body">
         <div class="container-fluid">
           <div class="row">
+            <div class="col-lg-4">
 
+
+            </div>
 
             <div class="col-lg-2">
               <label for="contribDate"  class="text-nowrap" ><?= gettext('Date') ?></label>
