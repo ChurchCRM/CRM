@@ -165,6 +165,7 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
 
                 <div class="text-center">
                     <a href="<?= SystemURLs::getRootPath() ?>/" class="btn btn-success"> <?= gettext ("Done") ?> </a>
+                    <button type="button" id="regFamilyNPeople" href="<?= SystemURLs::getRootPath() ?>/" class="btn btn-success"> <?= gettext ("Done") ?> </button>
                 </div>
             </div>
 
@@ -208,6 +209,15 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
           <?php } ?>
 
           alert(JSON.stringify(completeFamilyData));
+
+          window.CRM.APIRequest({
+              method: "POST",
+              path: "public/register/family",
+              data: JSON.stringify(completeFamilyData)
+              success: function (data) {
+                  alert("Done");
+              }
+          });
       })
   });
 </script>
