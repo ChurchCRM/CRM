@@ -164,7 +164,6 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
                 <p/>
 
                 <div class="text-center">
-                    <a href="<?= SystemURLs::getRootPath() ?>/" class="btn btn-success"> <?= gettext ("Done") ?> </a>
                     <button type="button" id="regFamilyNPeople" href="<?= SystemURLs::getRootPath() ?>/" class="btn btn-success"> <?= gettext ("Done") ?> </button>
                 </div>
             </div>
