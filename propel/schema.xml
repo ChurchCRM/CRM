@@ -74,8 +74,6 @@
             <parameter name="rule2" value="{column: per_firstname, validator: Length, options: {max: 50}}" />
             <parameter name="rule3" value="{column: per_lastname, validator: NotNull}" />
             <parameter name="rule4" value="{column: per_lastname, validator: Length, options: {max: 50}}" />
-            <parameter name="rule5" value="{column: per_email, validator: NotNull}" />
-            <parameter name="rule6" value="{column: per_email, validator: Email}" />
         </behavior>
     </table>
 
