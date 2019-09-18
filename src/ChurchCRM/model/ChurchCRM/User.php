@@ -66,7 +66,10 @@ class User extends BaseUser
 
     public function isFinanceEnabled()
     {
+        if (SystemConfig::getBooleanValue("bEnabledFinance")) {
         return $this->isAdmin() || $this->isFinance();
+    }
+        return false;
     }
 
     public function isNotesEnabled()
@@ -263,5 +266,13 @@ class User extends BaseUser
           return $userConfig->getValue();
         }
       }
+    }
+
+    public function getFormattedShowSince() {
+        $showSince = "";
+        if ($this->getShowSince() != null) {
+            $showSince = $this->getShowSince()->format('Y-m-d');
+        }
+        return $showSince;
     }
 }

@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "98a4b313-105e-4994-96a8-024e085da9db",
+		"_postman_id": "e66fd426-4ab0-4b0c-bdb5-4e7958412cf1",
 		"name": "Private API",
 		"description": "# Introduction\nWhat does your API do?\n\n# Overview\nThings that the developers should know about\n\n# Authentication\nWhat is the preferred way of using the API?\n\n# Error Codes\nWhat errors and status codes can a user expect?\n\n# Rate limit\nIs there a limit to the number of requests an user can send?",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -1695,6 +1695,44 @@
 							]
 						},
 						"description": "login and get api token back"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Curent User Display / Search finance settings",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"pledges\": \"true\",\n\t\"payments\": \"true\",\n\t\"since\": \"2019-01-01\"\n}"
+						},
+						"url": {
+							"raw": "{{host}}/api/user/current/settings/show/finance",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"current",
+								"settings",
+								"show",
+								"finance"
+							]
+						}
 					},
 					"response": []
 				}
