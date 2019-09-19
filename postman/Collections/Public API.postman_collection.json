@@ -49,7 +49,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"Name\": \"Smith\",\n  \"Address1\" : \"123 Main St\",\n  \"Address2\" : \"Unit 10\",\n  \"City\": \"Seattle\",\n  \"Country\": \"US\",\n  \"Zip\": \"98121\",\n  \"State\": \"WA\",\n  \"Email\": \"me@work.com\",\n  \"CellPhone\" : \"(555) 123 - 4567\",\n  \"WorkPhone\" : \"(555) 123 - 9967\",\n  \"HomePhone\" : \"(455) 212 - 2342\"\n}"
+							"raw": "{\n   \"Name\":\"Sinbad\",\n   \"Address1\":\"107 N. Nevada Avenue\",\n   \"City\":\"Colorado Springs\",\n   \"State\":\"Colorado\",\n   \"Country\":\"United States\",\n   \"Zip\":\"80903\",\n   \"HomePhone\":\"(555) 640-9215\",\n   \"people\":[\n      {\n         \"role\":\"1\",\n         \"gender\":\"1\",\n         \"firstName\":\"George\",\n         \"lastName\":\"Sinbad\",\n         \"email\":\"george@Sinbad.com\",\n         \"birthday\":\"10/02/2000\",\n         \"hideAge\":false,\n         \"cellPhone\":\"(120) 640-9215\"\n      },\n      {\n         \"role\":\"2\",\n         \"gender\":\"1\",\n         \"firstName\":\"Christina\",\n         \"lastName\":\"Sinbad\",\n         \"email\":\"christina@Sinbad.com\",\n         \"birthday\":\"09/10/2019\",\n         \"hideAge\":true,\n         \"workPhone\":\"(206) 310-0000\"\n      },\n      {\n         \"role\":\"3\",\n         \"gender\":\"1\",\n         \"firstName\":\"Jerry\",\n         \"lastName\":\"Sinbad\",\n         \"hideAge\":false,\n         \"homePhone\": \"(206) 000-3333\"\n      },\n      {\n         \"role\":\"3\",\n         \"gender\":\"1\",\n         \"firstName\":\"Ehab\",\n         \"lastName\":\"Sinbad\"\n      }\n   ]\n}"
 						},
 						"url": {
 							"raw": "{{host}}/api/public/register/family",
