@@ -31,8 +31,3 @@ function updateSessionFinance(Request $request, Response $response, array $args)
     ]);
 
 }
-
-
-
-
-
