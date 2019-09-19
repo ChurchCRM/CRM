@@ -30,7 +30,7 @@ class GroupsDashboardItem implements DashboardItemInterface {
   }
 
   public static function shouldInclude($PageName) {
-    return $PageName=="/Menu.php";
+      return $PageName == "/Menu.php" || $PageName == "/menu";
   }
 
 }

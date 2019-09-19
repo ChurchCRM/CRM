@@ -27,7 +27,7 @@ class AuthMiddleware {
                     session_destroy();
                 }
             }
-            if (empty($this->user)) {
+            if (empty($this->user) && array_key_exists("user", $_SESSION)) {
                 $this->user = $_SESSION['user'];
             } else {
                 $_SESSION['user'] = $this->user;
