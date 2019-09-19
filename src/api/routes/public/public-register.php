@@ -4,6 +4,7 @@ use ChurchCRM\Family;
 use ChurchCRM\Person;
 use ChurchCRM\Slim\Middleware\Request\Setting\PublicRegistrationAuthMiddleware;
 use ChurchCRM\Utils\ORMUtils;
+use ChurchCRM\Utils\LoggerUtils;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
@@ -78,10 +79,9 @@ function registerFamilyAPI(Request $request, Response $response, array $args)
         $family->addPerson($person);
         $person->save();
     }
-        $family->save();
-
-        return $response->withHeader('Content-Type: application/json')->write($family->exportTo('JSON'));
-
+    
+    $family->save();
+    return $response->withHeader('Content-Type: application/json')->write($family->exportTo('JSON'));
 }
 
 function registerPersonAPI(Request $request, Response $response, array $args)
