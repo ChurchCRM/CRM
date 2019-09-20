@@ -12,15 +12,15 @@ $app->group('/user/current', function () {
 
 function updateSessionFinance(Request $request, Response $response, array $args)
 {
-    $setting = (object)$request->getParsedBody();
-
     $user = UserQuery::create()->findPk(SessionUser::getId());
-    $user->setShowPledges(ConvertToBoolean($setting->pledges));
-    $user->setShowPayments(ConvertToBoolean($setting->payments));
-    $user->setShowSince(($setting->since));
-    $user->save();
 
-    $_SESSION['user'] = $user;
+    if ($request->getContentLength() > 0) {
+        $setting = (object)$request->getParsedBody();
+        $user->setShowPledges(ConvertToBoolean($setting->pledges));
+        $user->setShowPayments(ConvertToBoolean($setting->payments));
+        $user->setShowSince(($setting->since));
+        $user->save();
+    }
 
     return $response->withJson([
         "user" => $user->getName(),
