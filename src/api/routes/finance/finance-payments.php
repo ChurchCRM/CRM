@@ -30,6 +30,7 @@ $app->group('/payments', function () {
             $query->filterByPledgeOrPayment("Pledge", Criteria::NOT_EQUAL);
         }
         $data = $query->find();
+
         $rows = [];
 
         foreach ($data as $row) {
