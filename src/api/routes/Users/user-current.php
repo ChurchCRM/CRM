@@ -18,7 +18,7 @@ function updateSessionFinance(Request $request, Response $response, array $args)
         $setting = (object)$request->getParsedBody();
         $user->setShowPledges(ConvertToBoolean($setting->pledges));
         $user->setShowPayments(ConvertToBoolean($setting->payments));
-        $user->setShowSince(($setting->since));
+        $user->setShowSince($setting->since);
         $user->save();
         $_SESSION['user'] = $user;
     }
