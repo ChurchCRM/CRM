@@ -34,18 +34,18 @@ $app->group('/payments', function () {
         $rows = [];
 
         foreach ($data as $row) {
-            $newRow[FormatedFY] = $row->getFormattedFY();
-            $newRow[GroupKey] = $row->getGroupKey();
-            $newRow[Amount] = $row->getAmount();
-            $newRow[Nondeductible] = $row->getNondeductible();
-            $newRow[Schedule] = $row->getSchedule();
-            $newRow[Method] = $row->getMethod();
-            $newRow[Comment] = $row->getComment();
-            $newRow[PledgeOrPayment] = $row->getPledgeOrPayment();
-            $newRow[Date] = $row->getDate("Y-m-d");
-            $newRow[DateLastEdited] = $row->getDateLastEdited("Y-m-d");
-            $newRow[EditedBy] = $row->getPerson()->getFullName();
-            $newRow[Fund] = $row->getDonationFund()->getName();
+            $newRow["FormattedFY"] = $row->getFormattedFY();
+            $newRow["GroupKey"] = $row->getGroupKey();
+            $newRow["Amount"] = $row->getAmount();
+            $newRow["Nondeductible"] = $row->getNondeductible();
+            $newRow["Schedule"] = $row->getSchedule();
+            $newRow["Method"] = $row->getMethod();
+            $newRow["Comment"] = $row->getComment();
+            $newRow["PledgeOrPayment"] = $row->getPledgeOrPayment();
+            $newRow["Date"] = $row->getDate("Y-m-d");
+            $newRow["DateLastEdited"] = $row->getDateLastEdited("Y-m-d");
+            $newRow["EditedBy"] = $row->getPerson()->getFullName();
+            $newRow["Fund"] = $row->getDonationFund()->getName();
             array_push($rows, $newRow);
         }
 
