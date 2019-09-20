@@ -20,6 +20,7 @@ function updateSessionFinance(Request $request, Response $response, array $args)
         $user->setShowPayments(ConvertToBoolean($setting->payments));
         $user->setShowSince(($setting->since));
         $user->save();
+        $_SESSION['user'] = $user;
     }
 
     return $response->withJson([
