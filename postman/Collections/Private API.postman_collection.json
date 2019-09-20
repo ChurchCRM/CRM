@@ -221,7 +221,35 @@
 				},
 				{
 					"name": "Payments",
-					"item": [],
+					"item": [
+						{
+							"name": "Get Pledges by Family",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{api-key}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{host}}/api/payments/family/20/list",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"payments",
+										"family",
+										"20",
+										"list"
+									]
+								}
+							},
+							"response": []
+						}
+					],
 					"_postman_isSubFolder": true
 				}
 			]
@@ -1717,7 +1745,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"pledges\": \"true\",\n\t\"payments\": \"true\",\n\t\"since\": \"2019-01-01\"\n}"
+							"raw": "{\n\t\"pledges\": \"true\",\n\t\"payments\": \"true\",\n\t\"since\": \"2018-03-04\"\n}"
 						},
 						"url": {
 							"raw": "{{host}}/api/user/current/settings/show/finance",

@@ -42,9 +42,9 @@ class FinancePaymentSearchResultProvider extends BaseSearchResultProvider  {
             $Payments = PledgeQuery::create()
             ->withColumn('SUM(Pledge.Amount)', 'GroupAmount')
             ->withColumn('CONCAT("#",Pledge.Id)', 'displayName')
-            ->withColumn('CONCAT("' . SystemURLs::getRootPath() . '/DepositSlipEditor.php?DepositSlipID=",Pledge.Depid)', 'uri')
+            ->withColumn('CONCAT("' . SystemURLs::getRootPath() . '/DepositSlipEditor.php?DepositSlipID=",Pledge.DepId)', 'uri')
             #->limit(SystemConfig::getValue("bSearchIncludePaymentsMax")) // this can't be limited here due to how Propel ORM doesn't handle HAVING clause nicely, so we do it in PHP
-            ->groupByGroupkey()
+            ->groupByGroupKey()
             ->find();
 
             if (!empty($Payments)) {
@@ -69,17 +69,17 @@ class FinancePaymentSearchResultProvider extends BaseSearchResultProvider  {
         $id = 0;
         try {
             $Payments = PledgeQuery::create()
-            ->filterByCheckno("$SearchQuery", Criteria::EQUAL)
+            ->filterByCheckNo("$SearchQuery", Criteria::EQUAL)
             ->withColumn('CONCAT("#",Pledge.Id)', 'displayName')
-            ->withColumn('CONCAT("' . SystemURLs::getRootPath() . '/DepositSlipEditor.php?DepositSlipID=",Pledge.Depid)', 'uri')
+            ->withColumn('CONCAT("' . SystemURLs::getRootPath() . '/DepositSlipEditor.php?DepositSlipID=",Pledge.DepId)', 'uri')
             ->limit(SystemConfig::getValue("bSearchIncludePaymentsMax"))
-            ->groupByGroupkey()
+            ->groupByGroupKey()
             ->find();
 
             if (!empty($Payments)) {
                 $id++;
                 foreach ($Payments as $Payment) {
-                    array_push($searchResults, new SearchResult("finance-payment-".$id,  "Check ".$Payment->getCheckno()." on Deposit " . $Payment->getDepid(), $Payment->getVirtualColumn('uri')));
+                    array_push($searchResults, new SearchResult("finance-payment-".$id,  "Check ".$Payment->getCheckNo()." on Deposit " . $Payment->getDepId(), $Payment->getVirtualColumn('uri')));
                 }
             }
 
