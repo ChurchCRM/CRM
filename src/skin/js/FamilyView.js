@@ -57,7 +57,7 @@ $(document).ready(function () {
             },
             {
                 title: i18next.t('Fiscal Year'),
-                data: 'FormatedFY'
+                data: 'FormattedFY'
             },
             {
                 title: i18next.t('Date'),
@@ -99,7 +99,7 @@ $(document).ready(function () {
         order: [[5, "asc"]]
     };
     $.extend(dataTableConfig, window.CRM.plugin.dataTable);
-    $("#pledge-payment-table").DataTable(dataTableConfig);
+    $("#pledge-payment-v2-table").DataTable(dataTableConfig);
 
     $("#onlineVerify").click(function () {
         window.CRM.APIRequest({
