@@ -30,7 +30,7 @@ $app->group('/payments', function () {
             $query->filterByPledgeOrPayment("Pledge", Criteria::NOT_EQUAL);
         }
         $data = $query->find();
-        return $response->withHeader('Content-Type: application/json')->write($data->exportTo("JSON"));
+        return $response->withHeader('Content-Type','application/json')->write($data->exportTo("JSON"));
 
     });
 
