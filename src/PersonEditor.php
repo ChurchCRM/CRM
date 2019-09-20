@@ -799,7 +799,7 @@ require 'Include/Header.php';
 
             <div class="form-group col-md-6">
                 <label><?= gettext('Family'); ?>:</label>
-                <select name="Family" size="8" class="form-control">
+                <select name="Family" id="famailyId" class="form-control">
                     <option value="0" selected><?= gettext('Unassigned') ?></option>
                     <option value="-1"><?= gettext('Create a new family (using last name)') ?></option>
                     <option value="0" disabled>-----------------------</option>
@@ -1240,6 +1240,7 @@ require 'Include/Header.php';
 <script nonce="<?= SystemURLs::getCSPNonce() ?>" >
 	$(function() {
 		$("[data-mask]").inputmask();
+		$("#famailyId").select2();;
 	});
 </script>
 
