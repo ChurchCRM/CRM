@@ -115,10 +115,10 @@ $familyAddress = $family->getAddress();
 
                         <?php if (SessionUser::getUser()->isFinanceEnabled()) { ?>
                             <a class="btn btn-app"
-                               href="<?= SystemURLs::getRootPath()?>/PledgeEditor.php?FamilyID=<?= $fam_ID ?>&amp;linkBack=v2/family/<?= $family->getId() ?>/view&amp;PledgeOrPayment=Pledge">
+                               href="<?= SystemURLs::getRootPath()?>/PledgeEditor.php?FamilyID=<?= $family->getId() ?>&amp;linkBack=v2/family/<?= $family->getId() ?>/view&amp;PledgeOrPayment=Pledge">
                                 <i class="fa fa-check-circle-o"></i><?= gettext("Add a new pledge") ?></a>
                             <a class="btn btn-app"
-                               href="<?= SystemURLs::getRootPath()?>/PledgeEditor.php?FamilyID=<?= $fam_ID ?>&amp;linkBack=v2/family/<?= $family->getId() ?>/view&amp;PledgeOrPayment=Payment">
+                               href="<?= SystemURLs::getRootPath()?>/PledgeEditor.php?FamilyID=<?= $family->getId() ?>&amp;linkBack=v2/family/<?= $family->getId() ?>/view&amp;PledgeOrPayment=Payment">
                                 <i class="fa fa-money"></i><?= gettext("Add a new payment") ?></a>
                         <?php } ?>
                     </div>
@@ -526,7 +526,7 @@ $familyAddress = $family->getAddress();
                     </div>
                 </div>
                 <div class="box-body">
-                    <table id="pledge-payment-table" class="table table-striped table-bordered table-responsive data-table">
+                    <table id="pledge-payment-v2-table" class="table table-striped table-bordered table-responsive data-table">
                         <tbody></tbody>
                     </table>
                     <?php } ?>
