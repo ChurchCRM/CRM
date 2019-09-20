@@ -14,3 +14,9 @@ Feature: Family View
     Then I should see "Black - Family"
     And I wait for AJAX to finish
     And I should see "New Building Fund"   
+
+  Scenario: Family View 2
+    Given I am authenticated as "admin" using "changeme"
+    And I am on "/FamilyView.php?FamilyID=7"
+    Then I should see "Stewart - Family"
+    And I should see "Scouts"
