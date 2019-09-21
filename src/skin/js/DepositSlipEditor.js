@@ -8,13 +8,13 @@ function initPaymentTable()
       render: function(data, type, full, meta) {
         var familyName = data ? data : i18next.t('Anonymous');
         return '<a href=\'PledgeEditor.php?linkBack=DepositSlipEditor.php?DepositSlipID=' + depositSlipID +
-            '&GroupKey=' + full.Groupkey + '\'><span class="fa-stack"><i class="fa fa-square fa-stack-2x"></i><i class="fa '+  (isDepositClosed ? "fa-search-plus": "fa-pencil" ) +' fa-stack-1x fa-inverse"></i></span></a>' + familyName;
+            '&GroupKey=' + full.GroupKey + '\'><span class="fa-stack"><i class="fa fa-square fa-stack-2x"></i><i class="fa '+  (isDepositClosed ? "fa-search-plus": "fa-pencil" ) +' fa-stack-1x fa-inverse"></i></span></a>' + familyName;
       }
     },
     {
       width: 'auto',
       title:i18next.t('Check Number'),
-      data:'Checkno'
+      data:'CheckNo'
     },
     {
       width: 'auto',
@@ -72,7 +72,7 @@ function initDepositSlipEditor()
             '</tr>' +
             '<tr>' +
             '<td>Fiscal Year:</td>' +
-            '<td>' + d.Fyid + '</td>' +
+            '<td>' + d.FyId + '</td>' +
             '</tr>' +
             '<tr>' +
             '<td>Fund(s):</td>' +
