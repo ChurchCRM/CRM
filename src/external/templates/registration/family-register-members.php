@@ -70,7 +70,7 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
               <div class="form-group has-feedback">
                 <div class="row">
                   <div class="col-lg-6">
-                    <input id="memberFirstName-<?= $x ?>" class="form-control" maxlength="50"
+                    <input id="memberFirstName-<?= $x ?>" class="form-control required" maxlength="50"
                            placeholder="<?= gettext('First Name') ?>" required>
                   </div>
                   <div class="col-lg-6">
@@ -184,8 +184,9 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
       $("#familyMemberSubmit").click(function () {
           var completeFamilyData = tempFamilyData;
           completeFamilyData["people"] = [];
-          <?php for ($x = 1; $x <= $familyCount; $x++) { ?>
-          let person = {
+      <?php for ($x = 1; $x <= $familyCount; $x++) { ?>
+
+          let person<?= $x ?> = {
               role: $("#<?= "memberRole-" . $x ?>").val(),
               gender: $("#<?= "memberGender-" . $x ?>").val(),
               firstName: $("#<?= "memberFirstName-" . $x ?>").val(),
@@ -195,27 +196,32 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
               hideAge: $("#<?= "memberHideAge-" . $x ?>").prop('checked')
           };
 
-          let phoneType = $("#<?= "memberPhoneType-" . $x ?>").val();
-          let phoneNumber = $("#<?= "memberPhone-" . $x ?>").val();
-          if (phoneType == "mobile") {
-              person["cellPhone"] = phoneNumber;
+          let phoneType<?= $x ?> = $("#<?= "memberPhoneType-" . $x ?>").val();
+          let phoneNumber<?= $x ?> = $("#<?= "memberPhone-" . $x ?>").val();
+          if (phoneType<?= $x ?> == "mobile") {
+              person<?= $x ?>["cellPhone"] = phoneNumber<?= $x ?>;
           } else if (phoneType == "work") {
-              person["workPhone"] = phoneNumber;
+              person<?= $x ?>["workPhone"] = phoneNumber<?= $x ?>;
           } else if (phoneType == "home") {
-              person["homePhone"] = phoneNumber;
+              person<?= $x ?>["homePhone"] = phoneNumber<?= $x ?>;
           }
-          completeFamilyData["people"].push(person);
+          completeFamilyData["people"].push(person<?= $x ?>);
+
           <?php } ?>
 
-          alert(JSON.stringify(completeFamilyData));
-
-          window.CRM.APIRequest({
+          $.ajax({
               method: "POST",
-              path: "public/register/family",
-              data: JSON.stringify(completeFamilyData)
-              success: function (data) {
-                  alert("Done");
-              }
+              url: window.CRM.root + "/api/public/register/family",
+              dataType: "json",
+              encode: true,
+              data: completeFamilyData
+          }).done(function (data) {
+              alert(JSON.stringify(completeFamilyData));
+          }).fail(function (data) {
+              bootbox.alert({
+                  title: "Sorry, we are unable to process your request at this point in time.",
+                  message: data.responseText
+              });
           });
       })
   });
