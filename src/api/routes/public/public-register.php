@@ -70,7 +70,7 @@ function registerFamilyAPI(Request $request, Response $response, array $args)
         }
 
     } else {
-        return $response->withStatus(401)->withJson(["error" => gettext("Validation Error"),
+        return $response->withStatus(400)->withJson(["error" => gettext("Validation Error"),
             "failures" => ORMUtils::getValidationErrors($family->getValidationFailures())]);
     }
 
@@ -98,6 +98,6 @@ function registerPersonAPI(Request $request, Response $response, array $args)
         return $response->withHeader('Content-Type','application/json')->write($person->exportTo('JSON'));
     }
 
-    return $response->withStatus(401)->withJson(["error" => gettext("Validation Error"),
+    return $response->withStatus(400)->withJson(["error" => gettext("Validation Error"),
         "failures" => ORMUtils::getValidationErrors($person->getValidationFailures())]);
 }
