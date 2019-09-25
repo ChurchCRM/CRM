@@ -20,14 +20,15 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
             </div>
         </div>
     </div>
-    <div class="col-lg-3">
+    <div class="col-lg-9">
         <div class="box">
             <div class="box-header">
-                <h4>Api Key</h4>
+                <h4>2 Factor Authentication Secret</h4>
             </div>
             <div class="box-body">
-                <b><?= gettext("2FA Secret") ?>:</b><img id="2fakey" src="<?= $user->getTwoFactorAuthQRCode()->writeDataUri() ?>"/>
-                <a id="regen2faKey" class="btn btn-warning"><i class="fa fa-repeat"></i> Regen API Key </a>
+                </b><img id="2fakey" src="<?= $user->getTwoFactorAuthQRCode()->writeDataUri() ?>"/>
+                <br/>
+                <a id="regen2faKey" class="btn btn-warning"><i class="fa fa-repeat"></i><?= gettext("Regenerate 2 Factor Authentication Secret") ?></a>
             </div>
         </div>
     </div>
