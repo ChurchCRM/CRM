@@ -284,7 +284,16 @@ class User extends BaseUser
         $this->save();
     }
 
+    public function remove2FAKey() {
+        $this->setTwoFactorAuthSecret(null);
+        $this->save();
+    }
+
     public function getTwoFactorAuthQRCode() {
+        if (empty($this->getTwoFactorAuthSecret()))
+        {
+            return null;
+        }
         $google2fa = new Google2FA();
         $g2faUrl = $google2fa->getQRCodeUrl(
             SystemConfig::getValue("s2FAApplicationName"),
@@ -294,5 +303,14 @@ class User extends BaseUser
         $qrCode = new QrCode($g2faUrl );
         $qrCode->setSize(300);
         return $qrCode;
+    }
+
+    public function getTwoFactorAuthQRCodeDataUri() {
+        $qrCode =  $this->getTwoFactorAuthQRCode();
+        if ($qrCode)
+        {
+            return $qrCode->writeDataUri();
+        }
+        return null;
     }
 }

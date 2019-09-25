@@ -26,9 +26,11 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <h4>2 Factor Authentication Secret</h4>
             </div>
             <div class="box-body">
-                </b><img id="2fakey" src="<?= $user->getTwoFactorAuthQRCode()->writeDataUri() ?>"/>
+                </b><img id="2fakey" src="<?= $user->getTwoFactorAuthQRCodeDataUri() ?>"/>
                 <br/>
                 <a id="regen2faKey" class="btn btn-warning"><i class="fa fa-repeat"></i><?= gettext("Regenerate 2 Factor Authentication Secret") ?></a>
+                <a id="remove2faKey" class="btn btn-warning"><i class="fa fa-repeat"></i><?= gettext("Remove 2 Factor Authentication Secret") ?></a>
+
             </div>
         </div>
     </div>
@@ -39,6 +41,19 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
         $.ajax({
             type: 'POST',
             url: window.CRM.root + '/api/user/current/refresh2fasecret'
+        })
+            .done(function (data, textStatus, xhr) {
+                if (xhr.status == 200) {
+                    $("#2fakey").attr("src",data.TwoFAQRCodeDataUri);
+                } else {
+                    showGlobalMessage(i18next.t("Failed generate a new API Key"), "danger")
+                }
+            });
+    });
+    $("#remove2faKey").click(function () {
+        $.ajax({
+            type: 'POST',
+            url: window.CRM.root + '/api/user/current/remove2fasecret'
         })
             .done(function (data, textStatus, xhr) {
                 if (xhr.status == 200) {

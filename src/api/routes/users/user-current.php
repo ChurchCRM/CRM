@@ -9,6 +9,7 @@ use ChurchCRM\UserQuery;
 $app->group('/user/current', function () {
     $this->post("/settings/show/finance", "updateSessionFinance");
     $this->post("/refresh2fasecret", "refresh2fasecret");
+    $this->post("/remove2fasecret", "remove2fasecret");
     $this->get("/get2faqrcode",'get2faqrcode');
 });
 
@@ -39,7 +40,14 @@ function refresh2fasecret(Request $request, Response $response, array $args)
 {
     $user = SessionUser::getUser();
     $user->Regenerate2FAKey();
-    return $response->withJson(["TwoFAQRCodeDataUri" => $user->getTwoFactorAuthQRCode()->writeDataUri()]);
+    return $response->withJson(["TwoFAQRCodeDataUri" => $user->getTwoFactorAuthQRCodeDataUri()]);
+}
+
+function remove2fasecret(Request $request, Response $response, array $args)
+{
+    $user = SessionUser::getUser();
+    $user->remove2FAKey();
+    return $response->withJson(["TwoFAQRCodeDataUri" => $user->getTwoFactorAuthQRCodeDataUri()]);
 }
 
 function get2faqrcode(Request $request, Response $response, array $args)
