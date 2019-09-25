@@ -33,7 +33,6 @@ $app->get('/begin', 'beginSession');
 
 function beginSession(Request $request, Response $response, array $args)
 {
-
     $renderer = new PhpRenderer('templates/');
     $curUser = SessionUser::getUser();
 
@@ -46,8 +45,7 @@ function beginSession(Request $request, Response $response, array $args)
     # Defermine if approprirate to pre-fill the username field
     if (isset($_GET['username'])) {
         $pageArgs['prefilledUserName'] = $_GET['username'];
-    }
-    elseif (isset($_SESSION['user'])) {
+    } elseif (isset($_SESSION['user'])) {
         $user = $_SESSION['user'];
         $pageArgs['prefilledUserName'] = $user->getUserName();
     } elseif (isset($_SESSION['username'])) {
