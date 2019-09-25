@@ -313,4 +313,8 @@ class User extends BaseUser
         }
         return null;
     }
+
+    public function is2FactorAuthEnabled() {
+        return !empty($this->getTwoFactorAuthSecret());
+    }
 }

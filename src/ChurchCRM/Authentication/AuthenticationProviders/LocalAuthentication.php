@@ -73,6 +73,10 @@ class LocalAuthentication implements IAuthenticationProvider
             $authenticationResult->message = gettext('Invalid login or password');
             $authenticationResult->nextStepURL = SystemURLs::getRootPath()."/session/begin?location=" . urlencode(substr($_SERVER['REQUEST_URI'], 1));
             return $authenticationResult;
+        } elseif($currentUser->is2FactorAuthEnabled()) {
+          $authenticationResult->isAuthenticated = false;
+          $authenticationResult->nextStepURL = SystemURLs::getRootPath()."/session/two-factor";
+          return $authenticationResult;
         } else {
             // Set the LastLogin and Increment the LoginCount
             $date = new DateTime('now', new DateTimeZone(SystemConfig::getValue('sTimeZone')));
