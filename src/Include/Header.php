@@ -94,7 +94,7 @@ $MenuFirst = 1;
 
             </a>
             <ul class="hidden-xxs dropdown-menu">
-              <li class="user-header" id="yourElement" style="height:205px">
+              <li class="user-header" id="yourElement" style="height:250px">
                 <table border=0 width="100%">
                 <tr style="border-bottom: 1pt solid white;">
                 <td valign="middle" width=110>
@@ -107,6 +107,9 @@ $MenuFirst = 1;
                       <p ><i class="fa fa-key"></i> <?= gettext('Change Password') ?></p></a>
                   <a href="<?= SystemURLs::getRootPath() ?>/SettingsIndividual.php" class="item_link">
                       <p ><i class="fa fa-gear"></i> <?= gettext('Change Settings') ?></p></a>
+                  <a href="<?= SystemURLs::getRootPath() ?>/v2/user/current/enroll2fa" class="item_link">
+                      <p ><i class="fa fa-gear"></i> <?= gettext("Manage 2 Factor Authentication") ?></p></a>
+                      
                   <a href="Login.php?session=Lock" class="item_link">
                       <p ><i class="fa fa-pause"></i> <?= gettext('Lock') ?></p></a>
                   <a href="<?= SystemURLs::getRootPath() ?>/Logoff.php" class="item_link">
