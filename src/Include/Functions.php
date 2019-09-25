@@ -29,7 +29,7 @@ $_SESSION['sSoftwareInstalledVersion'] = SystemService::getInstalledVersion();
 //
 
 if (empty($bSuppressSessionTests)) {  // This is used for the login page only.
-    AuthenticationManager::Authencticate();
+    AuthenticationManager::IsAuthenticated();
 }
 // End of basic security checks
 

@@ -112,7 +112,7 @@ $MenuFirst = 1;
                       
                   <a href="Login.php?session=Lock" class="item_link">
                       <p ><i class="fa fa-pause"></i> <?= gettext('Lock') ?></p></a>
-                  <a href="<?= SystemURLs::getRootPath() ?>/Logoff.php" class="item_link">
+                  <a href="<?= SystemURLs::getRootPath() ?>/session/end" class="item_link">
                       <p ><i class="fa fa-sign-out"></i> <?= gettext('Sign out') ?></p></a>
                 </td>
                 </tr>

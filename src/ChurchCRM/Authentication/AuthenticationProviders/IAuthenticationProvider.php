@@ -3,6 +3,6 @@
 namespace ChurchCRM\Authentication\AuthenticationProviders {
 
     interface IAuthenticationProvider {
-        public function Authenticate();
+        public function Authenticate(object $AuthenticationRequest);
     }
 }

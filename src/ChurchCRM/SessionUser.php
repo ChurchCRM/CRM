@@ -14,7 +14,9 @@ class SessionUser
      */
     public static function getUser()
     {
-        return $_SESSION['user'];
+        if (array_key_exists("user", $_SESSION)) {
+            return $_SESSION['user'];
+        }
     }
 
     public static function isAdmin()

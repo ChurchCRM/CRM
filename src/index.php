@@ -45,7 +45,7 @@ if (strtolower($shortName) == 'index.php' || strtolower($fileName) == 'index.php
     exit;
 } elseif (!$hasSession) {
     // Must show login form if no session
-    require 'Login.php';
+    header('Location: session/begin');
 } elseif (file_exists($shortName)) {
     // Try actual path
     require $shortName;

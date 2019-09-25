@@ -35,7 +35,7 @@ require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
         }
         ?>
 
-        <form class="form-signin" role="form" method="post" name="LoginForm" action="<?= SystemURLs::getRootPath()?>/session/begin-local-login">
+        <form class="form-signin" role="form" method="post" name="LoginForm" action="<?= SystemURLs::getRootPath()?>/session/process-local-login">
             <div class="form-group has-feedback">
                 <input type="text" id="UserBox" name="User" class="form-control" value="<?= $prefilledUserName ?>"
                    placeholder="<?= gettext('Email/Username') ?>" required autofocus>
