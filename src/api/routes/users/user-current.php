@@ -5,9 +5,11 @@ use Slim\Http\Response;
 use ChurchCRM\SessionUser;
 use ChurchCRM\UserQuery;
 
-$app->group('/user/current', function () {
 
+$app->group('/user/current', function () {
     $this->post("/settings/show/finance", "updateSessionFinance");
+    $this->post("/refresh2fasecret", "refresh2fasecret");
+    $this->get("/get2faqrcode",'get2faqrcode');
 });
 
 function updateSessionFinance(Request $request, Response $response, array $args)
@@ -30,4 +32,19 @@ function updateSessionFinance(Request $request, Response $response, array $args)
         "showSince" => $user->getFormattedShowSince()
     ]);
 
+}
+
+
+function refresh2fasecret(Request $request, Response $response, array $args)
+{
+    $user = SessionUser::getUser();
+    $user->Regenerate2FAKey();
+    return $response->withJson(["TwoFAQRCodeDataUri" => $user->getTwoFactorAuthQRCode()->writeDataUri()]);
+}
+
+function get2faqrcode(Request $request, Response $response, array $args)
+{
+    $user = SessionUser::getUser();
+    $response = $response->withHeader("Content-Type", "image/png");
+    return $response->write($user->getTwoFactorAuthQRCode()->writeString());
 }

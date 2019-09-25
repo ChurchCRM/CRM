@@ -6,6 +6,8 @@ use ChurchCRM\Base\User as BaseUser;
 use ChurchCRM\dto\SystemConfig;
 use Propel\Runtime\Connection\ConnectionInterface;
 use ChurchCRM\Utils\MiscUtils;
+use Endroid\QrCode\QrCode;
+use PragmaRX\Google2FA\Google2FA;
 
 /**
  * Skeleton subclass for representing a row from the 'user_usr' table.
@@ -274,5 +276,23 @@ class User extends BaseUser
             $showSince = $this->getShowSince()->format('Y-m-d');
         }
         return $showSince;
+    }
+
+    public function regenerate2FAKey() {
+        $google2fa = new Google2FA();
+        $this->setTwoFactorAuthSecret($google2fa->generateSecretKey());
+        $this->save();
+    }
+
+    public function getTwoFactorAuthQRCode() {
+        $google2fa = new Google2FA();
+        $g2faUrl = $google2fa->getQRCodeUrl(
+            SystemConfig::getValue("s2FAApplicationName"),
+            $this->getUserName(),
+            $this->getTwoFactorAuthSecret()
+        );
+        $qrCode = new QrCode($g2faUrl );
+        $qrCode->setSize(300);
+        return $qrCode;
     }
 }
