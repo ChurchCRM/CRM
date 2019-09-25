@@ -10,6 +10,7 @@
 
  ******************************************************************************/
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\Cart;
@@ -28,49 +29,7 @@ $_SESSION['sSoftwareInstalledVersion'] = SystemService::getInstalledVersion();
 //
 
 if (empty($bSuppressSessionTests)) {  // This is used for the login page only.
-    // Basic security: If the UserID isn't set (no session), redirect to the login page
-
-    if (!isset($_SESSION['user'])) {
-        $LoginLocation = '?location='. urlencode(substr($_SERVER['REQUEST_URI'], 1));
-        RedirectUtils::Redirect('Login.php'.$LoginLocation);
-        exit;
-    }
-
-    try {
-        $_SESSION['user']->reload();
-    } catch (\Exception $exc) {
-        RedirectUtils::Redirect('Login.php');
-        exit;
-    }
-
-
-    // Check for login timeout.  If login has expired, redirect to login page
-    if (SystemConfig::getValue('iSessionTimeout') > 0) {
-        if ((time() - $_SESSION['tLastOperation']) > SystemConfig::getValue('iSessionTimeout')) {
-            $LoginLocation = '?location='. urlencode(substr($_SERVER['REQUEST_URI'], 1));
-            RedirectUtils::Redirect('Login.php'.$LoginLocation);
-            exit;
-        } else {
-            $_SESSION['tLastOperation'] = time();
-        }
-    }
-
-    // If this user needs to change password, send to that page
-    if ($_SESSION['user']->getNeedPasswordChange() && !isset($bNoPasswordRedirect)) {
-        RedirectUtils::Redirect('UserPasswordChange.php?PersonID='.$_SESSION['user']->getId());
-        exit;
-    }
-
-    // Check if https is required
-
-  // Note: PHP has limited ability to access the address bar
-  // url.  PHP depends on Apache or other web server
-  // to provide this information.  The web server
-  // may or may not be configured to pass the address bar url
-  // to PHP.  As a workaround this security check is now performed
-  // by the browser using javascript.  The browser always has
-  // access to the address bar url.  Search for basic security checks
-  // in Include/Header-functions.php
+    AuthenticationManager::Authencticate();
 }
 // End of basic security checks
 
