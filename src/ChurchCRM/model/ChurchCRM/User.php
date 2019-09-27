@@ -317,4 +317,10 @@ class User extends BaseUser
     public function is2FactorAuthEnabled() {
         return !empty($this->getTwoFactorAuthSecret());
     }
+
+    public function isTwoFACodeValid($twoFACode) {
+        $google2fa = new Google2FA();
+        $window = 8;
+        return $google2fa->verifyKey($this->getTwoFactorAuthSecret(), $twoFACode, $window);
+    }
 }

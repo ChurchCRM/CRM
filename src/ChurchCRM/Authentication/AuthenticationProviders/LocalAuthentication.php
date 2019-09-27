@@ -9,6 +9,7 @@ namespace ChurchCRM\Authentication\AuthenticationProviders {
   use ChurchCRM\SessionUser;
   use ChurchCRM\Utils\InputUtils;
   use ChurchCRM\UserQuery;
+  use ChurchCRM\User;
   use DateTime;
   use DateTimeZone;
 
@@ -40,6 +41,37 @@ class LocalAuthentication implements IAuthenticationProvider
       $_COOKIE = [];
       $_SESSION = [];
       session_destroy();
+    }
+
+    private function prepareSuccessfulLoginOperations(User $currentUser) {
+      // Set the LastLogin and Increment the LoginCount
+      $date = new DateTime('now', new DateTimeZone(SystemConfig::getValue('sTimeZone')));
+      $currentUser->setLastLogin($date->format('Y-m-d H:i:s'));
+      $currentUser->setLoginCount($currentUser->getLoginCount() + 1);
+      $currentUser->setFailedLogins(0);
+      $currentUser->save();
+
+      $_SESSION['user'] = $currentUser;
+
+      $_SESSION['bManageGroups'] = $currentUser->isManageGroupsEnabled();
+      $_SESSION['bFinance'] = $currentUser->isFinanceEnabled();
+
+      // Create the Cart
+      $_SESSION['aPeopleCart'] = [];
+
+      // Create the variable for the Global Message
+      $_SESSION['sGlobalMessage'] = '';
+
+      // Initialize the last operation time
+      $_SESSION['tLastOperation'] = time();
+
+      $_SESSION['bHasMagicQuotes'] = 0;
+
+      // Pledge and payment preferences
+      $_SESSION['sshowPledges'] = $currentUser->getShowPledges();
+      $_SESSION['sshowPayments'] = $currentUser->getShowPayments();
+      //$_SESSION['idefaultFY'] = CurrentFY(); // Improve the chance of getting the correct fiscal year assigned to new transactions
+      $_SESSION['iCurrentDeposit'] = $currentUser->getCurrentDeposit();
     }
 
     public function Authenticate(object $AuthenticationRequest) {
@@ -76,44 +108,33 @@ class LocalAuthentication implements IAuthenticationProvider
         } elseif($currentUser->is2FactorAuthEnabled()) {
           $authenticationResult->isAuthenticated = false;
           $authenticationResult->nextStepURL = SystemURLs::getRootPath()."/session/two-factor";
+          $_SESSION['TwoFAUser'] = $currentUser;
           return $authenticationResult;
         } else {
-            // Set the LastLogin and Increment the LoginCount
-            $date = new DateTime('now', new DateTimeZone(SystemConfig::getValue('sTimeZone')));
-            $currentUser->setLastLogin($date->format('Y-m-d H:i:s'));
-            $currentUser->setLoginCount($currentUser->getLoginCount() + 1);
-            $currentUser->setFailedLogins(0);
-            $currentUser->save();
-    
-            $_SESSION['user'] = $currentUser;
-    
-            $_SESSION['bManageGroups'] = $currentUser->isManageGroupsEnabled();
-            $_SESSION['bFinance'] = $currentUser->isFinanceEnabled();
-    
-            // Create the Cart
-            $_SESSION['aPeopleCart'] = [];
-    
-            // Create the variable for the Global Message
-            $_SESSION['sGlobalMessage'] = '';
-    
-            // Initialize the last operation time
-            $_SESSION['tLastOperation'] = time();
-    
-            $_SESSION['bHasMagicQuotes'] = 0;
-    
-            // Pledge and payment preferences
-            $_SESSION['sshowPledges'] = $currentUser->getShowPledges();
-            $_SESSION['sshowPayments'] = $currentUser->getShowPayments();
-            //$_SESSION['idefaultFY'] = CurrentFY(); // Improve the chance of getting the correct fiscal year assigned to new transactions
-            $_SESSION['iCurrentDeposit'] = $currentUser->getCurrentDeposit();
-
-
+            $this->prepareSuccessfulLoginOperations($currentUser);
             $authenticationResult->isAuthenticated = true;
             $redirectLocation = $_SESSION['location'];
             $authenticationResult->nextStepURL = isset($redirectLocation) ? $redirectLocation : 'Menu.php';
             return $authenticationResult;
           }
         }
+        elseif(isset($AuthenticationRequest->TwoFACode) && array_key_exists('TwoFAUser', $_SESSION)) {
+          $currentUser = $_SESSION['TwoFAUser'];
+          if ($currentUser->isTwoFACodeValid($AuthenticationRequest->TwoFACode)) {
+            $this->prepareSuccessfulLoginOperations($currentUser);
+            $authenticationResult->isAuthenticated = true;
+            $redirectLocation = $_SESSION['location'];
+            $authenticationResult->nextStepURL = isset($redirectLocation) ? $redirectLocation : 'Menu.php';
+            return $authenticationResult;
+          }
+          else {
+            $authenticationResult->isAuthenticated = false;
+            $authenticationResult->nextStepURL = SystemURLs::getRootPath()."/session/two-factor";
+            $_SESSION['TwoFAUser'] = $currentUser;
+            return $authenticationResult;
+          }
+        }
+
     }
 
     public function isAuthenticated() : AuthenticationResult

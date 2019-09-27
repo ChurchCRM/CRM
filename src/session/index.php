@@ -32,6 +32,28 @@ require __DIR__.'/../Include/slim/error-handler.php';
 $app->get('/begin', 'beginSession');
 $app->get('/end', 'endSession');
 $app->post("/process-local-login","processLocalLogin");
+$app->get('/two-factor', 'processTwoFactorGet');
+$app->post('/two-factor', 'processTwoFactorPost');
+
+function processTwoFactorGet(Request $request, Response $response, array $args)
+{
+    $renderer = new PhpRenderer('templates/');
+    $curUser = SessionUser::getUser();
+
+    $pageArgs = [
+        'sRootPath' => SystemURLs::getRootPath(),
+        'user' => $curUser
+    ];
+    
+    return $renderer->render($response, 'two-factor.php', $pageArgs);
+}
+
+
+function processTwoFactorPost(Request $request, Response $response, array $args)
+{
+    $loginRequestBody = (object)$request->getParsedBody();
+    AuthenticationManager::Authenticate($loginRequestBody);
+}
 
 function endSession(Request $request, Response $response, array $args)
 {
