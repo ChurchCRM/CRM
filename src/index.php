@@ -1,6 +1,8 @@
 <?php
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\MiscUtils;
 
 header("CRM: would redirect");
 
@@ -14,33 +16,19 @@ if (file_exists('Include/Config.php')) {
 /* Set internal character encoding to UTF-8 */
 mb_internal_encoding("UTF-8");
 
-function dashesToCamelCase($string, $capitalizeFirstCharacter = false)
-{
-    $str = str_replace(' ', '', ucwords(str_replace('-', ' ', $string)));
-
-    if (!$capitalizeFirstCharacter) {
-        $str[0] = strtolower($str[0]);
-    }
-
-    return $str;
-}
-
-
-$hasSession = isset($_SESSION['user']);
-$redirectTo = ($hasSession) ? '/menu' : '/login';
 
 // Get the current request path and convert it into a magic filename
 // e.g. /list-events => /ListEvents.php
 $shortName = str_replace(SystemURLs::getRootPath().'/', '', $_SERVER['REQUEST_URI']);
 $fileName = MiscUtils::dashesToCamelCase($shortName, true).'.php';
 
-if (strtolower($shortName) == 'index.php' || strtolower($fileName) == 'index.php') {
-    // Index.php -> Menu.php or Login.php
-    header('Location: '.SystemURLs::getRootPath().$redirectTo);
-    exit;
-} elseif (!$hasSession) {
+if (!AuthenticationManager::IsAuthenticated()) {
     // Must show login form if no session
     header('Location: session/begin');
+} elseif (strtolower($shortName) == 'index.php' || strtolower($fileName) == 'index.php') {
+        // Index.php -> Menu.php or Login.php
+        header('Location: '.SystemURLs::getRootPath()."/Menu");
+        exit;
 } elseif (file_exists($shortName)) {
     // Try actual path
     require $shortName;
