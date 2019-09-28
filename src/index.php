@@ -26,8 +26,8 @@ if (!AuthenticationManager::IsAuthenticated()) {
     // Must show login form if no session
     header('Location: session/begin');
 } elseif (strtolower($shortName) == 'index.php' || strtolower($fileName) == 'index.php') {
-        // Index.php -> Menu.php or Login.php
-        header('Location: '.SystemURLs::getRootPath()."/Menu");
+        // Index.php -> Menu.php
+        header('Location: '.SystemURLs::getRootPath()."/Menu.php");
         exit;
 } elseif (file_exists($shortName)) {
     // Try actual path

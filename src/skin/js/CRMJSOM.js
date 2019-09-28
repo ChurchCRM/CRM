@@ -520,7 +520,7 @@
       },
       'handlejQAJAXError': function (jqXHR, textStatus, errorThrown, suppressErrorDialog) {
         if (jqXHR.status === 401) {
-          window.location = window.CRM.root + "/Login.php?location="+window.location.pathname;
+          window.location = window.CRM.root + "/session/begin?location="+window.location.pathname;
         }
         try {
           var CRMResponse = JSON.parse(jqXHR.responseText);
