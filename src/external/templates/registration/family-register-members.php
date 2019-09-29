@@ -138,42 +138,6 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
   </div>
 </div>
 
-<!-- Done UI -->
-<div id="doneUI" class="hidden">
-    <div class="register-box" style="width: 600px;">
-        <div class="register-logo">
-            <a href="<?= SystemURLs::getRootPath() ?>/"><b>Church</b>CRM</a>
-        </div>
-
-        <div class="register-box-body">
-
-            <div class="box box-solid">
-
-                <h3><?= gettext('Registration Complete') ?></h3>
-
-
-                <div class="box-header with-border">
-                    <h3
-                            class="box-title"><?= gettext('Thank you for registering your family.'); ?></h3>
-                </div>
-                <div class="box-body">
-                    <h3><?= $family["Name"].' '.gettext('Family')?></h3>
-                    <b><?= gettext('Address') ?></b>: <?= $family["Address1"]; ?><br/>
-                </div>
-
-                <p/>
-
-                <div class="text-center">
-                    <button type="button" id="regFamilyNPeople" href="<?= SystemURLs::getRootPath() ?>/" class="btn btn-success"> <?= gettext ("Done") ?> </button>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- /.form-box -->
-    </div>
-</div>
-
 <script nonce="<?= SystemURLs::getCSPNonce() ?>" >
   $(document).ready(function () {
       $(".inputDatePicker").datepicker({
