@@ -132,7 +132,7 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
         <?php } ?>
       </div>
       <div class="box-footer">
-        <button id="familyMemberSubmit" type="submit" class="btn btn-primary btn-block btn-flat"><?= gettext('Next'); ?></button>
+        <button id="familyMemberSubmit" type="submit" class="btn btn-primary btn-block btn-flat"><?= gettext('Complete'); ?></button>
       </div>
     </div>
   </div>
