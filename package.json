@@ -54,17 +54,17 @@
         "webpack-cli": "^2.1.4"
     },
     "dependencies": {
-        "admin-lte": "^2.4.10",
-        "bootbox": "^5.1.3",
+        "admin-lte": "^2.4.18",
+        "bootbox": "^5.3.2",
         "bootstrap-datepicker": "^1.9.0",
         "bootstrap-notify": "^3.1.3",
-        "bootstrap-show-password": "^1.1.2",
-        "bootstrap-toggle": "^2.2.*",
-        "bootstrap-validator": "^0.11.*",
+        "bootstrap-show-password": "^1.2.1",
+        "bootstrap-toggle": "^2.2.2",
+        "bootstrap-validator": "^0.11.9",
         "chart.js": "^1.1.*",
-        "ckeditor": "^4.11.4",
+        "ckeditor": "^4.12.1",
         "font-awesome": "^4.7.0",
-        "fullcalendar": "^3.9.0",
+        "fullcalendar": "^3.10.1",
         "i18n": "^0.8.3",
         "i18next": "8.2.1",
         "initial-js": "0.3.4",
@@ -76,7 +76,7 @@
         "pace-js": "^1.0.2",
         "react-datepicker": "^2.7.0",
         "react-select": "^2.4.4",
-        "select2": "^4.0.7"
+        "select2": "^4.0.10"
     },
     "scripts": {
         "install": "grunt clean && grunt updateVersions && grunt curl-dir && grunt copy && grunt sass && grunt lineending",
