@@ -210,13 +210,16 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
           <?php } ?>
 
           $.ajax({
-              method: "POST",
               url: window.CRM.root + "/api/public/register/family",
-              dataType: "json",
-              encode: true,
-              data: completeFamilyData
+              type: "POST",
+              dataType: 'json',
+              contentType: 'application/json',
+              data: JSON.stringify(completeFamilyData)
           }).done(function (data) {
-              alert(JSON.stringify(completeFamilyData));
+              bootbox.alert({
+                  title: "Family Registered Successfully",
+                  message: data.Id
+              });
           }).fail(function (data) {
               bootbox.alert({
                   title: "Sorry, we are unable to process your request at this point in time.",
