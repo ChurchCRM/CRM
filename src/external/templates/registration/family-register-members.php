@@ -216,9 +216,25 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
               contentType: 'application/json',
               data: JSON.stringify(completeFamilyData)
           }).done(function (data) {
-              bootbox.alert({
-                  title: "Family Registered Successfully",
-                  message: data.Id
+              bootbox.dialog({
+                  title: "Registration Complete",
+                  message: "Thank you for registering your family",
+                  buttons: {
+                      new: {
+                          label: "Register another family!",
+                          className: 'btn-default',
+                          callback: function(){
+                              window.location.href = window.CRM.root + "/external/register/";
+                          }
+                      },
+                      done: {
+                          label: "Done, show me the homepage!",
+                          className: 'btn-info',
+                          callback: function(){
+                              window.location.href = "<?= SystemConfig::getValue("sChurchWebSite")?>";
+                          }
+                      }
+                  }
               });
           }).fail(function (data) {
               bootbox.alert({
