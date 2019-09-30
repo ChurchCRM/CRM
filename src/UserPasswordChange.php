@@ -13,10 +13,9 @@ use ChurchCRM\Authentication\AuthenticationProviders\LocalAuthentication;
 
 // Include the function library
 require 'Include/Config.php';
-if ( AuthenticationManager::GetCurrentAuthenticationProvider() instanceof LocalAuthentication) {
+if (AuthenticationManager::GetCurrentAuthenticationProvider() instanceof LocalAuthentication) {
     AuthenticationManager::GetCurrentAuthenticationProvider()->DisablePasswordChangeRedirect();
-}
-else {
+} else {
     // This code path isn't currently reachable until non-local auth providers are created
     // non-local auth providers should not allow password changes.
     //$sPageTitle = gettext('User Password Change');
