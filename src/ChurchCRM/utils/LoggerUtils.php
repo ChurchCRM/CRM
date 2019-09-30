@@ -6,12 +6,16 @@ use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\RemoteAddress;
+use ChurchCRM\Authentication\AuthenticationManager;
 
 class LoggerUtils
 {
     private static $appLogger;
     private static $appLogHandler;
-    private static $cspLogger; 
+    private static $cspLogger;
+    private static $authLogger;
+    private static $authLogHandler;
     public static function getLogLevel()
     {
         return intval(SystemConfig::getValue("sLogLevel"));
@@ -38,10 +42,16 @@ class LoggerUtils
         //hold a reference to the handler object so that ResetAppLoggerLevel can be called later on
         self::$appLogHandler = new StreamHandler(self::buildLogFilePath("app"), $level);
         self::$appLogger->pushHandler(self::$appLogHandler);
+        self::$appLogger->pushProcessor(function ($entry) {
+          $entry['extra']['url'] = $_SERVER['REQUEST_URI'];
+          $entry['extra']['remote_ip'] = $_SERVER['REMOTE_ADDR'];
+          $entry['extra']['correlation_id'] = AuthenticationManager::GetCorrelationId();
+          return $entry;
+        });
       }
       return self::$appLogger;
     }
-    
+
     /**
      * @return Logger
      */
