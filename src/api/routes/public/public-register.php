@@ -8,7 +8,6 @@ use ChurchCRM\Utils\LoggerUtils;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
-
 $app->group('/public/register', function () {
     $this->post('/family', 'registerFamilyAPI');
     $this->post('/family/', 'registerFamilyAPI');
