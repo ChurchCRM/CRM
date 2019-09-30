@@ -33,11 +33,28 @@ class AuthenticationManager
       NotificationService::updateNotifications();
     }
     
-    public static function IsAuthenticated()
+    public static function GetAuthenticationStatus()
     {
       self::initializeAuthentication();
+      $result = self::$authenticationProviders[0]->GetAuthenticationStatus();
       $result = self::$authenticationProviders[0]->isAuthenticated();
       if (null !== $result->nextStepURL){
+      return $result;
+    }
+
+
+    public static function EnsureAuthentication() {
+      // This function differs from the sematinc `GetAuthenticationStatus` in that it will
+      // take corrective action to redirect the user to an appropriate login location
+      // if the current session is not actuall authenticated
+      $result = self:: GetAuthenticationStatus();
+
+      // Auth providers will always include a `nextStepURL` if authentication fails.
+      // Sometimes other actions may require a `nextStepURL` that should be enforced with 
+      // an autentication request (2FA, Expired Password, etc).
+      if (!$result->isAuthenticated){
+        RedirectUtils::Redirect(self::GetSessionBeginURL());
+      }elseif(null !== $result->nextStepURL){
         RedirectUtils::Redirect($result->nextStepURL);
       } 
     }
