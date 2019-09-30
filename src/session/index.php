@@ -30,8 +30,8 @@ require __DIR__.'/../Include/slim/error-handler.php';
 
 
 $app->get('/begin', 'beginSession');
+$app->post("/begin", "beginSession");
 $app->get('/end', 'endSession');
-$app->post("/process-local-login", "processLocalLogin");
 $app->get('/two-factor', 'processTwoFactorGet');
 $app->post('/two-factor', 'processTwoFactorPost');
 
@@ -60,23 +60,25 @@ function endSession(Request $request, Response $response, array $args)
     AuthenticationManager::EndSession();
 }
 
-function processLocalLogin(Request $request, Response $response, array $args)
-{
-    $loginRequestBody = (object)$request->getParsedBody();
-    AuthenticationManager::Authenticate($loginRequestBody);
-}
 
 function beginSession(Request $request, Response $response, array $args)
 {
+    $pageArgs = [
+        'sRootPath' => SystemURLs::getRootPath(),
+        'localAuthNextStepURL' => AuthenticationManager::GetSessionBeginURL() 
+    ];
+
+    if ($request->getMethod() == "POST") {
+        $loginRequestBody = (object)$request->getParsedBody();
+        $authenticationResult = AuthenticationManager::Authenticate($loginRequestBody);
+        $pageArgs['sErrorText'] = $authenticationResult->message;
+    }
+
     $renderer = new PhpRenderer('templates/');
     $curUser = SessionUser::getUser();
 
-    $pageArgs = [
-        'sRootPath' => SystemURLs::getRootPath(),
-        'user' => $curUser
-    ];
+    $pageArgs['user'] = $curUser;
     
-
     $pageArgs['prefilledUserName'] = "";
     # Defermine if approprirate to pre-fill the username field
     if (isset($_GET['username'])) {

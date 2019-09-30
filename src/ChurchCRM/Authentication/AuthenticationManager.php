@@ -41,5 +41,9 @@ class AuthenticationManager
         RedirectUtils::Redirect($result->nextStepURL);
       } 
     }
+
+    public static function GetSessionBeginURL() {
+      return SystemURLs::getRootPath() . "/session/begin";
+    }
   }
 }
