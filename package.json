@@ -1,6 +1,6 @@
 {
     "name": "ChurchCRM",
-    "version": "3.5.3",
+    "version": "3.5.4",
     "description": "Free Church CRM Software",
     "repository": {
         "type": "git",
@@ -47,11 +47,11 @@
         "react-bootstrap": "^0.32.1",
         "react-dom": "^16.8.6",
         "react-modal": "^3.3.2",
+        "tar": "^4.4.10",
         "ts-loader": "^4.1.0",
         "typescript": "^2.8.1",
-        "tar": "^4.4.10",
         "webpack": "4.19.1",
-        "webpack-cli": "^2.1.4"
+        "webpack-cli": "^3.3.9"
     },
     "dependencies": {
         "admin-lte": "^2.4.10",
