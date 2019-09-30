@@ -65,7 +65,7 @@ function beginSession(Request $request, Response $response, array $args)
 {
     $pageArgs = [
         'sRootPath' => SystemURLs::getRootPath(),
-        'localAuthNextStepURL' => AuthenticationManager::GetSessionBeginURL() 
+        'localAuthNextStepURL' => AuthenticationManager::GetSessionBeginURL()
     ];
 
     if ($request->getMethod() == "POST") {
