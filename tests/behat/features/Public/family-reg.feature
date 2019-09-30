@@ -26,6 +26,4 @@ Feature: Family Self-Registration
     And I fill in "memberEmail-2" with "email2@test.com"
     And I fill in "memberPhone-2" with "555-999-0000"
     And I fill in "memberPhoneType-2" with "work"
-    And I press "Done"
-
-
+    And I press "familyMemberSubmit"
