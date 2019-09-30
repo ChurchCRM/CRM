@@ -12,6 +12,7 @@ namespace ChurchCRM\Authentication\AuthenticationProviders {
   use ChurchCRM\User;
   use DateTime;
   use DateTimeZone;
+  use ChurchCRM\Utils\LoggerUtils;
 
 
 class LocalAuthentication implements IAuthenticationProvider
@@ -45,6 +46,7 @@ class LocalAuthentication implements IAuthenticationProvider
       $_COOKIE = [];
       $_SESSION = [];
       session_destroy();
+      LoggerUtils::getAuthLogger()->addInfo("Ended Local session for user " . $currentUser->getName());
     }
 
     private function prepareSuccessfulLoginOperations(User $currentUser) {
@@ -82,33 +84,31 @@ class LocalAuthentication implements IAuthenticationProvider
       $authenticationResult = new AuthenticationResult();
 
       if (isset($AuthenticationRequest->User)) {
+        LoggerUtils::getAuthLogger()->addDebug("Processing local login for" . $AuthenticationRequest->User);
         // Get the information for the selected user
         $currentUser = UserQuery::create()->findOneByUserName($AuthenticationRequest->User);
         if ($currentUser == null) {
-            // Set the error text
-            $authenticationResult->isAuthenticated = false;
-            $authenticationResult->message = gettext('Invalid login or password');
-            $authenticationResult->nextStepURL = SystemURLs::getRootPath()."/session/begin?location=" . urlencode(substr($_SERVER['REQUEST_URI'], 1));
-            return $authenticationResult;
+          // Set the error text
+          $authenticationResult->isAuthenticated = false;
+          $authenticationResult->message = gettext('Invalid login or password');
+          return $authenticationResult;
         } // Block the login if a maximum login failure count has been reached
         elseif ($currentUser->isLocked()) {
           $authenticationResult->isAuthenticated = false;
           $authenticationResult->message = gettext('Too many failed logins: your account has been locked.  Please contact an administrator.');
-          $authenticationResult->nextStepURL = SystemURLs::getRootPath()."/session/begin?location=" . urlencode(substr($_SERVER['REQUEST_URI'], 1));
           return $authenticationResult;
         } // Does the password match?
         elseif (!$currentUser->isPasswordValid($AuthenticationRequest->Password)) {
-            // Increment the FailedLogins
-            $currentUser->setFailedLogins($currentUser->getFailedLogins() + 1);
-            $currentUser->save();
-            if (!empty($currentUser->getEmail()) && $currentUser->isLocked()) {
-                $lockedEmail = new LockedEmail($currentUser);
-                $lockedEmail->send();
-            }
-            $authenticationResult->isAuthenticated = false;
-            $authenticationResult->message = gettext('Invalid login or password');
-            $authenticationResult->nextStepURL = SystemURLs::getRootPath()."/session/begin?location=" . urlencode(substr($_SERVER['REQUEST_URI'], 1));
-            return $authenticationResult;
+          // Increment the FailedLogins
+          $currentUser->setFailedLogins($currentUser->getFailedLogins() + 1);
+          $currentUser->save();
+          if (!empty($currentUser->getEmail()) && $currentUser->isLocked()) {
+              $lockedEmail = new LockedEmail($currentUser);
+              $lockedEmail->send();
+          }
+          $authenticationResult->isAuthenticated = false;
+          $authenticationResult->message = gettext('Invalid login or password');
+          return $authenticationResult;
         } elseif($currentUser->is2FactorAuthEnabled()) {
           $authenticationResult->isAuthenticated = false;
           $authenticationResult->nextStepURL = SystemURLs::getRootPath()."/session/two-factor";
@@ -117,8 +117,6 @@ class LocalAuthentication implements IAuthenticationProvider
         } else {
             $this->prepareSuccessfulLoginOperations($currentUser);
             $authenticationResult->isAuthenticated = true;
-            $redirectLocation = $_SESSION['location'];
-            $authenticationResult->nextStepURL = isset($redirectLocation) ? $redirectLocation : 'Menu.php';
             return $authenticationResult;
           }
         }
@@ -127,8 +125,7 @@ class LocalAuthentication implements IAuthenticationProvider
           if ($currentUser->isTwoFACodeValid($AuthenticationRequest->TwoFACode)) {
             $this->prepareSuccessfulLoginOperations($currentUser);
             $authenticationResult->isAuthenticated = true;
-            $redirectLocation = $_SESSION['location'];
-            $authenticationResult->nextStepURL = isset($redirectLocation) ? $redirectLocation : 'Menu.php';
+           
             return $authenticationResult;
           }
           else {
@@ -144,26 +141,29 @@ class LocalAuthentication implements IAuthenticationProvider
       $this->bNoPasswordRedirect = true;
     }
 
-    public function isAuthenticated() : AuthenticationResult
+    public function GetAuthenticationStatus() : AuthenticationResult
     {
 
       $authenticationResult = new AuthenticationResult();
 
-      // Basic security: If the UserID isn't set (no session), redirect to the login page
-
       // First check to see if a `user` key exists on the session.
       if (!array_key_exists('user',$_SESSION) || null == $_SESSION['user']) {
         $authenticationResult->isAuthenticated = false;
-        $authenticationResult->nextStepURL = SystemURLs::getRootPath()."/session/begin?location=" . urlencode(substr($_SERVER['REQUEST_URI'], 1));
+        LoggerUtils::getAuthLogger()->addDebug("No active user session.");
         return $authenticationResult;
       }
 
+      $currentUser = $_SESSION['user'];
+      
+      LoggerUtils::getAuthLogger()->addDebug("Processing session for user: " . $currentUser->getName());
+
       // Next, make sure the user in the sesion still exists in the database.
       try {
-        $_SESSION['user']->reload();
+        $currentUser->reload();
       } catch (\Exception $exc) {
+        LoggerUtils::getAuthLogger()->addDebug("User with active session no longer exists in the database.  Expiring session");
+        $this->EndSession();
         $authenticationResult->isAuthenticated = false;
-        $authenticationResult->nextStepURL = SystemURLs::getRootPath()."/session/begin?location=" . urlencode(substr($_SERVER['REQUEST_URI'], 1));
         return $authenticationResult;
       }
 
@@ -171,23 +171,24 @@ class LocalAuthentication implements IAuthenticationProvider
       // Next, check for login timeout.  If login has expired, redirect to login page
       if (SystemConfig::getValue('iSessionTimeout') > 0) {
         if ((time() - $_SESSION['tLastOperation']) > SystemConfig::getValue('iSessionTimeout')) {
+          LoggerUtils::getAuthLogger()->addDebug("User session timed out");
           $authenticationResult->isAuthenticated = false;
-          $authenticationResult->nextStepURL = SystemURLs::getRootPath()."/session/begin?location=" . urlencode(substr($_SERVER['REQUEST_URI'], 1));
           return $authenticationResult;
         } else {
           $_SESSION['tLastOperation'] = time();
         }
       }
-
       // Next, if this user needs to change password, send to that page
-      if ($_SESSION['user']->getNeedPasswordChange() && !isset($bNoPasswordRedirect)) {
+      if ($currentUser->getNeedPasswordChange() && !$this->bNoPasswordRedirect ) {
+        LoggerUtils::getAuthLogger()->addDebug("User needs password change; redirecting to password change");
         $authenticationResult->isAuthenticated = false;
-        $authenticationResult->nextStepURL = 'UserPasswordChange.php?PersonID=' . $_SESSION['user']->getId();
+        $authenticationResult->nextStepURL = 'UserPasswordChange.php?PersonID=' .$currentUser->getId();
       }
 
       
       // Finally, if the above tests pass, this user "is authenticated"
       $authenticationResult->isAuthenticated = true;
+      LoggerUtils::getAuthLogger()->addDebug("Session validated for user: " . $currentUser->getName());
       return $authenticationResult;
     }
   }
