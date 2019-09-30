@@ -14,6 +14,7 @@ $app->group('/register', function () {
     if ($enableSelfReg) {
         $this->get('/', function ($request, $response, $args) {
             $renderer = new PhpRenderer('templates/registration/');
+            
             return $renderer->render($response, 'family-register.php', ['sRootPath' => SystemURLs::getRootPath()]);
         });
 
