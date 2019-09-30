@@ -16,6 +16,10 @@ namespace ChurchCRM\Authentication\AuthenticationProviders {
 
 class LocalAuthentication implements IAuthenticationProvider
 {
+    private $bNoPasswordRedirect;
+    public function __construct() {
+      $this->bNoPasswordRedirect = false;
+    }
 
     public function EndSession() {
       
@@ -134,7 +138,10 @@ class LocalAuthentication implements IAuthenticationProvider
             return $authenticationResult;
           }
         }
+    }
 
+    public function DisablePasswordChangeRedirect() {
+      $this->bNoPasswordRedirect = true;
     }
 
     public function isAuthenticated() : AuthenticationResult
