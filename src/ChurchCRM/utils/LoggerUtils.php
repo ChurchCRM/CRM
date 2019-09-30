@@ -42,6 +42,32 @@ class LoggerUtils
       return self::$appLogger;
     }
     
+    /**
+     * @return Logger
+     */
+    public static function getAuthLogger($level=null)
+    {
+      if (is_null(self::$authLogger)){
+        // if $level is null 
+        // (meaning this function was invoked without explicitly setting the level),
+        //  then get the level from the database
+        if (is_null($level)) {
+          $level = self::getLogLevel();
+        }
+        self::$authLogger = new Logger('authLogger');
+        //hold a reference to the handler object so that ResetAppLoggerLevel can be called later on
+        self::$authLogHandler = new StreamHandler(self::buildLogFilePath("auth"), $level);
+        self::$authLogger->pushHandler(self::$authLogHandler);
+        self::$authLogger->pushProcessor(function ($entry) {
+          $entry['extra']['url'] = $_SERVER['REQUEST_URI'];
+          $entry['extra']['remote_ip'] = $_SERVER['REMOTE_ADDR'];
+          $entry['extra']['correlation_id'] = AuthenticationManager::GetCorrelationId();
+          return $entry;
+        });
+      }
+      return self::$authLogger;
+    }
+    
     public static function ResetAppLoggerLevel() {
       // if the app log hander was initialized (in the boostrapper) to a specific level
       // before the database initialization occurred
