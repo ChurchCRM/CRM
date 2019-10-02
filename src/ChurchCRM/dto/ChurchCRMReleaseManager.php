@@ -109,7 +109,7 @@ class ChurchCRMReleaseManager {
         
     }
 
-    private static function getHighestReleaseInArray (array $eligibleUpgradeTargetReleases) : ?ChurchCRMRelease  {
+    private static function getHighestReleaseInArray (array $eligibleUpgradeTargetReleases)  {
         if (count($eligibleUpgradeTargetReleases) >0 ) {
             usort($eligibleUpgradeTargetReleases, function(ChurchCRMRelease $a, ChurchCRMRelease $b){
                 return $a->compareTo($b) < 0;
@@ -119,7 +119,7 @@ class ChurchCRMReleaseManager {
         return null;
     }
 
-    private static function getReleaseNextPatch(array $rs, ChurchCRMRelease $currentRelease) : ?ChurchCRMRelease {
+    private static function getReleaseNextPatch(array $rs, ChurchCRMRelease $currentRelease) {
         $eligibleUpgradeTargetReleases = array_values(array_filter($rs , function(ChurchCRMRelease $r) use ($currentRelease) {
             $isSameMajorAndMinorWithGreaterPatch = ($r->MAJOR == $currentRelease->MAJOR) && ($r->MINOR == $currentRelease->MINOR) && ($r->PATCH > $currentRelease->PATCH);
             LoggerUtils::getAppLogger()->addDebug("Release " . $r . " is" . ($isSameMajorAndMinorWithGreaterPatch ? " ":" not ")  . "a possible patch upgrade target");
@@ -128,7 +128,7 @@ class ChurchCRMReleaseManager {
         return self::getHighestReleaseInArray($eligibleUpgradeTargetReleases);
     }
 
-    private static function getReleaseNextMinor(array $rs, ChurchCRMRelease $currentRelease) : ?ChurchCRMRelease {
+    private static function getReleaseNextMinor(array $rs, ChurchCRMRelease $currentRelease) {
         $eligibleUpgradeTargetReleases = array_values(array_filter($rs , function(ChurchCRMRelease $r) use ($currentRelease) {
             $isSameMajorAndMinorWithGreaterPatch = ($r->MAJOR == $currentRelease->MAJOR) && ($r->MINOR > $currentRelease->MINOR);
             LoggerUtils::getAppLogger()->addDebug("Release " . $r . " is" . ($isSameMajorAndMinorWithGreaterPatch ? " ":" not ")  . "a possible minor upgrade target");
@@ -137,7 +137,7 @@ class ChurchCRMReleaseManager {
         return self::getHighestReleaseInArray($eligibleUpgradeTargetReleases);
     }
 
-    private static function getReleaseNextMajor(array $rs, ChurchCRMRelease $currentRelease) : ?ChurchCRMRelease {
+    private static function getReleaseNextMajor(array $rs, ChurchCRMRelease $currentRelease) {
         $eligibleUpgradeTargetReleases = array_values(array_filter($rs , function(ChurchCRMRelease $r) use ($currentRelease) {
             $isSameMajorAndMinorWithGreaterPatch = ($r->MAJOR > $currentRelease->MAJOR);
             LoggerUtils::getAppLogger()->addDebug("Release " . $r . " is" . ($isSameMajorAndMinorWithGreaterPatch ? " ":" not ")  . "a possible major upgrade target");
