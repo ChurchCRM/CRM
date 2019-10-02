@@ -212,8 +212,7 @@ function DoQuery()
                         $fieldInfo = mysqli_fetch_field_direct($rsQueryResults, $iCount);
                         if ($fieldInfo->name != 'AddToCart') {
                             echo '<th>'.$fieldInfo->name.'</th>';
-                        }
-                        else {
+                        } else {
                             echo '<th></th>';
                         }
                     } ?>
