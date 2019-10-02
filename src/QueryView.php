@@ -213,6 +213,9 @@ function DoQuery()
                         if ($fieldInfo->name != 'AddToCart') {
                             echo '<th>'.$fieldInfo->name.'</th>';
                         }
+                        else {
+                            echo '<th></th>';
+                        }
                     } ?>
             </thead>
             <tbody>
@@ -230,6 +233,12 @@ function DoQuery()
             //If this field is called "AddToCart", add this to the hidden form field...
             $fieldInfo = mysqli_fetch_field_direct($rsQueryResults, $iCount);
             if ($fieldInfo->name == 'AddToCart') {
+                ?>
+                <td><a class="btn btn-app AddToPeopleCart" id="AddPersonToCart" data-cartpersonid="<?= $aRow[$iCount] ?>">
+                    <i class="fa fa-cart-plus"></i><span class="cartActionDescription"><?= gettext("Add to Cart") ?></span>
+                </a></td>
+                <?php
+
                 $aHiddenFormField[] = $aRow[$iCount];
             }
             //...otherwise just render the field
