@@ -208,7 +208,7 @@ function DoQuery()
                 <?php
                     //Loop through the fields and write the header row
                     for ($iCount = 0; $iCount < mysqli_num_fields($rsQueryResults); $iCount++) {
-                        //If this field is called "AddToCart", don't display this field...
+                        //If this field is called "AddToCart", provision a headerless column to hold the cart action buttons
                         $fieldInfo = mysqli_fetch_field_direct($rsQueryResults, $iCount);
                         if ($fieldInfo->name != 'AddToCart') {
                             echo '<th>'.$fieldInfo->name.'</th>';
@@ -220,7 +220,7 @@ function DoQuery()
             </thead>
             <tbody>
 <?php
-    $aHiddenFormField = [];
+    $aAddToCartIDs = [];
 
     while ($aRow = mysqli_fetch_array($rsQueryResults)) {
         //Alternate the background color of the row
@@ -230,16 +230,21 @@ function DoQuery()
 
         //Loop through the fields and write each one
         for ($iCount = 0; $iCount < mysqli_num_fields($rsQueryResults); $iCount++) {
-            //If this field is called "AddToCart", add this to the hidden form field...
+            // If this field is called "AddToCart", add a cart button to the form
             $fieldInfo = mysqli_fetch_field_direct($rsQueryResults, $iCount);
             if ($fieldInfo->name == 'AddToCart') {
                 ?>
-                <td><a class="btn btn-app AddToPeopleCart" id="AddPersonToCart" data-cartpersonid="<?= $aRow[$iCount] ?>">
-                    <i class="fa fa-cart-plus"></i><span class="cartActionDescription"><?= gettext("Add to Cart") ?></span>
-                </a></td>
+                <td>
+                    <a class="AddToPeopleCart"  data-cartpersonid="<?= $aRow[$iCount] ?>">
+                        <span class="fa-stack">
+                        <i class="fa fa-square fa-stack-2x"></i>
+                        <i class="fa fa-cart-plus fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                </td>
                 <?php
 
-                $aHiddenFormField[] = $aRow[$iCount];
+                $aAddToCartIDs[] = $aRow[$iCount];
             }
             //...otherwise just render the field
             else {
@@ -257,16 +262,28 @@ function DoQuery()
 
     <div class="box-footer">
         <p>
-        <?php if (count($aHiddenFormField)): //TODO Don't post to CartView'?>
-            <form method="post" action="CartView.php">
+        <?php if (count($aAddToCartIDs)) { ?>
+            
             <div class="col-sm-offset-1">
-                <input type="hidden" value="<?= implode(',', $aHiddenFormField) ?>" name="BulkAddToCart">
-                <input type="submit" class="btn btn-primary btn-sm" name="AddToCartSubmit" value="<?= gettext('Add To Cart') ?>">
-                <input type="submit" class="btn btn-warning btn-sm" name="AndToCartSubmit" value="<?= gettext('Intersect With Cart') ?>">
-                <input type="submit" class="btn btn-danger btn-sm" name="NotToCartSubmit" value="<?= gettext('Remove From Cart') ?>">
+                <input type="hidden" value="<?= implode(',', $aAddToCartIDs) ?>" name="BulkAddToCart">
+                <button type="button" id="addResultsToCart" class="btn btn-success" > <?= gettext('Add Results to Cart') ?></button>
+                <!-- TODO: #5049 create cart intersect API <input type="submit" class="btn btn-warning btn-sm" name="AndToCartSubmit" value="<?= gettext('Intersect With Cart') ?>"> -->
+                <button type="button" id="removeResultsFromCart" class="btn btn-danger" > <?= gettext('Remove Results from Cart') ?></button>
             </div>
-            </form>
-        <?php endif; ?>
+            <script>
+                $("#addResultsToCart").click(function () {
+                    var selectedPersons = <?= json_encode($aAddToCartIDs) ?>;
+                    window.CRM.cart.addPerson(selectedPersons);
+                });
+
+                $("#removeResultsFromCart").click(function(){
+                    var selectedPersons = <?= json_encode($aAddToCartIDs) ?>;
+                    window.CRM.cart.removePerson(selectedPersons);
+                });
+
+            </script>
+
+        <?php } ?>
         </p>
 
         <p class="text-right">
@@ -413,6 +430,7 @@ if (mysqli_num_rows($rsParameters)) {
     </div>
 
 </div>
+
 <?php
 }
 
