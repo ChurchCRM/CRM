@@ -710,6 +710,10 @@ msgstr "Veranstaltung auswählen zu der Teilnehmer angemeldet werden sollen"
 msgid "Select Event"
 msgstr "Veranstaltung auswählen"
 
+#: external/templates/verify/verify-family-info.php:145
+msgid "Verify"
+msgstr "Überprüfen"
+
 #: 
 msgid "Add Visitor"
 msgstr "Besucher hinzufügen"
@@ -3978,6 +3982,14 @@ msgstr "Zugesagt"
 msgid "M/F"
 msgstr "M/F"
 
+#: Reports/ClassAttendance.php:103 Reports/ClassList.php:79
+msgid "Teacher"
+msgstr "Lehrer"
+
+#: Reports/ClassAttendance.php:110 Reports/ClassList.php:127
+msgid "Student"
+msgstr "Student"
+
 #: 
 msgid "Liaison"
 msgstr "Freundschaft"
@@ -4301,6 +4313,10 @@ msgstr "Systembenutzer"
 #: 
 msgid "Calendar"
 msgstr "Kalender"
+
+#: 
+msgid "Members"
+msgstr "Mitglieder"
 
 #: 
 msgid "Add New Person"

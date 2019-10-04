@@ -639,6 +639,10 @@ msgstr "Pilih Acara yang akan diisi daftar kehadirannya"
 msgid "Select Event"
 msgstr "Pilih Acara"
 
+#: external/templates/verify/verify-family-info.php:145
+msgid "Verify"
+msgstr "Periksa"
+
 #: 
 msgid "Add Visitor"
 msgstr "Tambahkan pengunjung"
