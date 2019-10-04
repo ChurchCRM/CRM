@@ -674,6 +674,10 @@ msgstr "Выберите событие, к которому вы хотели �
 msgid "Select Event"
 msgstr "Выберите событие"
 
+#: external/templates/verify/verify-family-info.php:145
+msgid "Verify"
+msgstr "Проверить"
+
 #: 
 msgid "Add Visitor"
 msgstr "Добавить Посетитель"
@@ -3358,6 +3362,14 @@ msgstr "Заложенные"
 #: 
 msgid "M/F"
 msgstr "M / F"
+
+#: Reports/ClassAttendance.php:103 Reports/ClassList.php:79
+msgid "Teacher"
+msgstr "Учител"
+
+#: Reports/ClassAttendance.php:110 Reports/ClassList.php:127
+msgid "Student"
+msgstr "Студен"
 
 #: 
 msgid "Liaison"
