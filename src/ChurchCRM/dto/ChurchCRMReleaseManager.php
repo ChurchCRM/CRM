@@ -109,6 +109,43 @@ class ChurchCRMReleaseManager {
         
     }
 
+    private static function getHighestReleaseInArray (array $eligibleUpgradeTargetReleases)  {
+        if (count($eligibleUpgradeTargetReleases) >0 ) {
+            usort($eligibleUpgradeTargetReleases, function(ChurchCRMRelease $a, ChurchCRMRelease $b){
+                return $a->compareTo($b) < 0;
+            });
+            return $eligibleUpgradeTargetReleases[0];
+        }
+        return null;
+    }
+
+    private static function getReleaseNextPatch(array $rs, ChurchCRMRelease $currentRelease) {
+        $eligibleUpgradeTargetReleases = array_values(array_filter($rs , function(ChurchCRMRelease $r) use ($currentRelease) {
+            $isSameMajorAndMinorWithGreaterPatch = ($r->MAJOR == $currentRelease->MAJOR) && ($r->MINOR == $currentRelease->MINOR) && ($r->PATCH > $currentRelease->PATCH);
+            LoggerUtils::getAppLogger()->addDebug("Release " . $r . " is" . ($isSameMajorAndMinorWithGreaterPatch ? " ":" not ")  . "a possible patch upgrade target");
+            return $isSameMajorAndMinorWithGreaterPatch; 
+        }));
+        return self::getHighestReleaseInArray($eligibleUpgradeTargetReleases);
+    }
+
+    private static function getReleaseNextMinor(array $rs, ChurchCRMRelease $currentRelease) {
+        $eligibleUpgradeTargetReleases = array_values(array_filter($rs , function(ChurchCRMRelease $r) use ($currentRelease) {
+            $isSameMajorAndMinorWithGreaterPatch = ($r->MAJOR == $currentRelease->MAJOR) && ($r->MINOR > $currentRelease->MINOR);
+            LoggerUtils::getAppLogger()->addDebug("Release " . $r . " is" . ($isSameMajorAndMinorWithGreaterPatch ? " ":" not ")  . "a possible minor upgrade target");
+            return $isSameMajorAndMinorWithGreaterPatch; 
+        }));
+        return self::getHighestReleaseInArray($eligibleUpgradeTargetReleases);
+    }
+
+    private static function getReleaseNextMajor(array $rs, ChurchCRMRelease $currentRelease) {
+        $eligibleUpgradeTargetReleases = array_values(array_filter($rs , function(ChurchCRMRelease $r) use ($currentRelease) {
+            $isSameMajorAndMinorWithGreaterPatch = ($r->MAJOR > $currentRelease->MAJOR);
+            LoggerUtils::getAppLogger()->addDebug("Release " . $r . " is" . ($isSameMajorAndMinorWithGreaterPatch ? " ":" not ")  . "a possible major upgrade target");
+            return $isSameMajorAndMinorWithGreaterPatch; 
+        }));
+        return self::getHighestReleaseInArray($eligibleUpgradeTargetReleases);
+    }
+
     public static function getNextReleaseStep(ChurchCRMRelease $currentRelease) : ChurchCRMRelease {
 
         LoggerUtils::getAppLogger()->addDebug("Determining the next-step release step for " . $currentRelease);
@@ -120,29 +157,23 @@ class ChurchCRMReleaseManager {
         // Of these releases, if there is one with a newer PATCH version,
         // We should use the newest patch.
         LoggerUtils::getAppLogger()->addDebug("Evaluating next-step release eligibility based on " . count($_SESSION['ChurchCRMReleases']) . " available releases ");
-        $eligibleUpgradeTargetReleases = array_values(array_filter($rs , function(ChurchCRMRelease $r) use ($currentRelease) {
-            $isSameMajorAndMinor = ($r->MAJOR == $currentRelease->MAJOR) && ($r->MINOR == $currentRelease->MINOR);
-            LoggerUtils::getAppLogger()->addDebug("Release " . $r . " is" . ($isSameMajorAndMinor ? " ":" not ")  . "a possible upgrade target");
-            return $isSameMajorAndMinor; 
-        }));
-
-        usort($eligibleUpgradeTargetReleases, function(ChurchCRMRelease $a, ChurchCRMRelease $b){
-            return $a->compareTo($b) < 0;
-        });
         
-        if (count($eligibleUpgradeTargetReleases) == 0 ) {
+        $nextStepRelease = self::getReleaseNextPatch($rs,$currentRelease);
+
+        if (null == $nextStepRelease)  {
+            $nextStepRelease = self::getReleaseNextMinor($rs,$currentRelease);
+        }
+
+        if (null == $nextStepRelease)  {
+            $nextStepRelease = self::getReleaseNextMajor($rs,$currentRelease);
+        }
+
+        if (null == $nextStepRelease)  {
             throw new \Exception("Could not identify a suitable upgrade target release.  Current software version: " . $currentRelease . ".  Highest available release: " . $rs[0] ) ;
         }
-
-        if ($currentRelease->equals($eligibleUpgradeTargetReleases[0])) {
-            // the current release is the same as the most recent patch release from github, so let's return the most recent overall release from GitHub
-            $nextStepRelease = ChurchCRMReleaseManager::getReleaseFromString($currentRelease->MAJOR . "." . ($currentRelease->MINOR+1) . ".0");
-            LoggerUtils::getAppLogger()->addInfo("The current release (".$currentRelease.") is the highest release of it's Major/Minor combination.");
-            LoggerUtils::getAppLogger()->addInfo("Looking for releases in series: " . $nextStepRelease);
-            return self::getNextReleaseStep($nextStepRelease); 
-        }
-        LoggerUtils::getAppLogger()->addInfo("Next upgrade step for " . $currentRelease. " is : " . $eligibleUpgradeTargetReleases[0]);
-        return $eligibleUpgradeTargetReleases[0];
+    
+        LoggerUtils::getAppLogger()->addInfo("Next upgrade step for " . $currentRelease. " is : " . $nextStepRelease);
+        return $nextStepRelease;
     }
 
 
