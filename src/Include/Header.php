@@ -107,9 +107,9 @@ $MenuFirst = 1;
                       <p ><i class="fa fa-key"></i> <?= gettext('Change Password') ?></p></a>
                   <a href="<?= SystemURLs::getRootPath() ?>/SettingsIndividual.php" class="item_link">
                       <p ><i class="fa fa-gear"></i> <?= gettext('Change Settings') ?></p></a>
-                  <?php 
-                    if(SystemConfig::getBooleanValue("bEnable2FA")) {
-                  ?>
+                  <?php
+                    if (SystemConfig::getBooleanValue("bEnable2FA")) {
+                        ?>
                   <a href="<?= SystemURLs::getRootPath() ?>/v2/user/current/enroll2fa" class="item_link">
                       <p ><i class="fa fa-gear"></i> <?= gettext("Manage 2 Factor Authentication") ?></p></a>
                   <?php
