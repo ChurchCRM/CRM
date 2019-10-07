@@ -114,6 +114,10 @@ class LocalAuthentication implements IAuthenticationProvider
           $authenticationResult->nextStepURL = SystemURLs::getRootPath()."/session/two-factor";
           $_SESSION['TwoFAUser'] = $currentUser;
           return $authenticationResult;
+        } elseif(SystemConfig::getBooleanValue("bRequire2FA") && ! $currentUser->is2FactorAuthEnabled()) {
+          $authenticationResult->isAuthenticated = false;
+          $authenticationResult->message = gettext('Invalid login or password');
+          return $authenticationResult;
         } else {
             $this->prepareSuccessfulLoginOperations($currentUser);
             $authenticationResult->isAuthenticated = true;
