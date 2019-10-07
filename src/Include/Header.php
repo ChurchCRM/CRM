@@ -94,7 +94,7 @@ $MenuFirst = 1;
 
             </a>
             <ul class="hidden-xxs dropdown-menu">
-              <li class="user-header" id="yourElement" style="height:225px">
+              <li class="user-header" id="yourElement" style="height:auto">
                 <table border=0 width="100%">
                 <tr style="border-bottom: 1pt solid white;">
                 <td valign="middle" width=110>
@@ -107,8 +107,14 @@ $MenuFirst = 1;
                       <p ><i class="fa fa-key"></i> <?= gettext('Change Password') ?></p></a>
                   <a href="<?= SystemURLs::getRootPath() ?>/SettingsIndividual.php" class="item_link">
                       <p ><i class="fa fa-gear"></i> <?= gettext('Change Settings') ?></p></a>
+                  <?php 
+                    if(SystemConfig::getBooleanValue("bEnable2FA")) {
+                  ?>
                   <a href="<?= SystemURLs::getRootPath() ?>/v2/user/current/enroll2fa" class="item_link">
                       <p ><i class="fa fa-gear"></i> <?= gettext("Manage 2 Factor Authentication") ?></p></a>
+                  <?php
+                    }
+                  ?>
                   <a href="<?= SystemURLs::getRootPath() ?>/session/end" class="item_link">
                       <p ><i class="fa fa-sign-out"></i> <?= gettext('Sign out') ?></p></a>
                 </td>
