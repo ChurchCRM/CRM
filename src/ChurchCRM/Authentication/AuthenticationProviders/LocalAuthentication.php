@@ -96,6 +96,7 @@ class LocalAuthentication implements IAuthenticationProvider
         elseif ($currentUser->isLocked()) {
           $authenticationResult->isAuthenticated = false;
           $authenticationResult->message = gettext('Too many failed logins: your account has been locked.  Please contact an administrator.');
+          LoggerUtils::getAuthLogger()->addWarning("Authentication attempt for locked account: " . $currentUser->getUserName());
           return $authenticationResult;
         } // Does the password match?
         elseif (!$currentUser->isPasswordValid($AuthenticationRequest->Password)) {
@@ -103,13 +104,17 @@ class LocalAuthentication implements IAuthenticationProvider
           $currentUser->setFailedLogins($currentUser->getFailedLogins() + 1);
           $currentUser->save();
           if (!empty($currentUser->getEmail()) && $currentUser->isLocked()) {
+              LoggerUtils::getAuthLogger()->addWarning("Too many failed logins for: " . $currentUser->getUserName() . ". The account has been locked");
               $lockedEmail = new LockedEmail($currentUser);
               $lockedEmail->send();
           }
           $authenticationResult->isAuthenticated = false;
           $authenticationResult->message = gettext('Invalid login or password');
+          LoggerUtils::getAuthLogger()->addWarning("Invalid login attempt for: " . $currentUser->getUserName());
           return $authenticationResult;
-        } elseif($currentUser->is2FactorAuthEnabled()) {
+        } elseif(SystemConfig::getBooleanValue("bEnable2FA") && $currentUser->is2FactorAuthEnabled()) {
+          // Only redirect the user to the 2FA sign-ing page if it's 
+          // enabled both at system AND user level. 
           $authenticationResult->isAuthenticated = false;
           $authenticationResult->nextStepURL = SystemURLs::getRootPath()."/session/two-factor";
           $_SESSION['TwoFAUser'] = $currentUser;
@@ -117,10 +122,12 @@ class LocalAuthentication implements IAuthenticationProvider
         } elseif(SystemConfig::getBooleanValue("bRequire2FA") && ! $currentUser->is2FactorAuthEnabled()) {
           $authenticationResult->isAuthenticated = false;
           $authenticationResult->message = gettext('Invalid login or password');
+          LoggerUtils::getAuthLogger()->addWarning("User attempted login with valid credentials, but missing mandatory 2FA enrollment.  Denying access for user: " . $currentUser->getUserName());
           return $authenticationResult;
         } else {
             $this->prepareSuccessfulLoginOperations($currentUser);
             $authenticationResult->isAuthenticated = true;
+            LoggerUtils::getAuthLogger()->addInfo("User succefully logged in without 2FA: " . $currentUser->getUserName());
             return $authenticationResult;
           }
         }
@@ -129,7 +136,7 @@ class LocalAuthentication implements IAuthenticationProvider
           if ($currentUser->isTwoFACodeValid($AuthenticationRequest->TwoFACode)) {
             $this->prepareSuccessfulLoginOperations($currentUser);
             $authenticationResult->isAuthenticated = true;
-           
+            LoggerUtils::getAuthLogger()->addInfo("User succefully logged in with 2FA: " . $currentUser->getUserName());
             return $authenticationResult;
           }
           else {
