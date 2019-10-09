@@ -16,8 +16,6 @@ class AuthenticationManager
 
     private static $authenticationProviders;
 
-    private static $correlationId;
-
     public static function EndSession() {
       self::initializeAuthentication();
       $result =self::$authenticationProviders[0]->EndSession();
@@ -26,7 +24,6 @@ class AuthenticationManager
 
     private static function initializeAuthentication() {
       if ( empty( self::$authenticationProviders )) {
-        self::$correlationId = uniqid();
         self::$authenticationProviders = array();
         array_push(self::$authenticationProviders, new LocalAuthentication());
       }
@@ -48,11 +45,6 @@ class AuthenticationManager
        
       }
       return $result;
-    }
-
-    public static function GetCorrelationId() {
-      self::initializeAuthentication();
-      return self::$correlationId;
     }
     
     public static function GetAuthenticationStatus()

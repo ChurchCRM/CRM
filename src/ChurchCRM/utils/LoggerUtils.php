@@ -16,6 +16,15 @@ class LoggerUtils
     private static $cspLogger;
     private static $authLogger;
     private static $authLogHandler;
+    private static $correlationId;
+
+    public static function GetCorrelationId() {
+      if ( empty( self::$correlationId )) {
+        self::$correlationId = uniqid();
+      }
+      return self::$correlationId;
+    }
+
     public static function getLogLevel()
     {
         return intval(SystemConfig::getValue("sLogLevel"));
@@ -45,7 +54,7 @@ class LoggerUtils
         self::$appLogger->pushProcessor(function ($entry) {
           $entry['extra']['url'] = $_SERVER['REQUEST_URI'];
           $entry['extra']['remote_ip'] = $_SERVER['REMOTE_ADDR'];
-          $entry['extra']['correlation_id'] = AuthenticationManager::GetCorrelationId();
+          $entry['extra']['correlation_id'] = self::GetCorrelationId();
           return $entry;
         });
       }
@@ -71,7 +80,7 @@ class LoggerUtils
         self::$authLogger->pushProcessor(function ($entry) {
           $entry['extra']['url'] = $_SERVER['REQUEST_URI'];
           $entry['extra']['remote_ip'] = $_SERVER['REMOTE_ADDR'];
-          $entry['extra']['correlation_id'] = AuthenticationManager::GetCorrelationId();
+          $entry['extra']['correlation_id'] = self::GetCorrelationId();
           return $entry;
         });
       }
