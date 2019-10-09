@@ -61,6 +61,15 @@ class LoggerUtils
       return self::$appLogger;
     }
 
+    private static function getCaller() {
+      $callers = debug_backtrace();
+      $call = $callers[5];
+      return [
+        "ContextClass"=>$call['class'],
+        "ContextMethod"=> $call['function']
+      ];
+    }
+
     /**
      * @return Logger
      */
@@ -81,6 +90,8 @@ class LoggerUtils
           $entry['extra']['url'] = $_SERVER['REQUEST_URI'];
           $entry['extra']['remote_ip'] = $_SERVER['REMOTE_ADDR'];
           $entry['extra']['correlation_id'] = self::GetCorrelationId();
+          $entry['extra']['context'] = self::getCaller();
+
           return $entry;
         });
       }
