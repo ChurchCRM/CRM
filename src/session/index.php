@@ -71,7 +71,7 @@ function beginSession(Request $request, Response $response, array $args)
 
     if ($request->getMethod() == "POST") {
         $loginRequestBody = (object)$request->getParsedBody();
-        $authenticationResult = AuthenticationManager::Authenticate(new LocalAuthentication(),$loginRequestBody);
+        $authenticationResult = AuthenticationManager::Authenticate(new LocalAuthentication(), $loginRequestBody);
         $pageArgs['sErrorText'] = $authenticationResult->message;
     }
 
