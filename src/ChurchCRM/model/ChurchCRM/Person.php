@@ -634,24 +634,10 @@ class Person extends BasePerson implements iPhoto
       }
       $age = date_diff($now,$birthDate);
 
-      if ($age->y < 1) {
-        $ageValue = $age->m;
-        if ($age->m > 1) {
-          $ageSuffix = gettext('mos old');
-        } else {
-          $ageSuffix = gettext('mo old');
-        }
-      } else {
-        $ageValue = $age->y;
-        if ($age->y > 1) {
-          $ageSuffix = gettext('yrs old');
-        } else {
-          $ageSuffix = gettext('yr old');
-        }
-      }
+      if ($age->y < 1)
+        return printf(ngettext('%d month old', '%d months old', $age->m), $age->m);
 
-      return $ageValue. " ".$ageSuffix;
-
+      return printf(ngettext('%d year old', '%d years old', $age->y), $age->y);
     }
     
     public function getNumericAge() {
