@@ -37,10 +37,10 @@ Feature: AddPerson
     And I fill in "BirthYear" with "1992"
     And I click the "#PersonSaveButton" element
     Then I should see "Birth Date: 03/04/1992"
-    And I should see "yrs old"
+    And I should see "years old"
 
     Then I click the "#EditPerson" element
     And I fill in "HideAge" with "checked"
     And I click the "#PersonSaveButton" element
     Then I should see "Birth Date: 03/04"
-    And I should not see "yrs old"
+    And I should not see "years old"
