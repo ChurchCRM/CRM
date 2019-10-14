@@ -544,6 +544,10 @@ msgstr "Không"
 msgid "Select Event"
 msgstr "Lựa chọn sự kiện"
 
+#: external/templates/verify/verify-family-info.php:145
+msgid "Verify"
+msgstr "Xác thực"
+
 #: 
 msgid "Add Visitor"
 msgstr "Thêm người truy cập"
@@ -2232,6 +2236,14 @@ msgstr "yêu cầu"
 msgid "Home"
 msgstr "Trang chủ"
 
+#: Reports/ClassAttendance.php:103 Reports/ClassList.php:79
+msgid "Teacher"
+msgstr "Giáo viên"
+
+#: Reports/ClassAttendance.php:110 Reports/ClassList.php:127
+msgid "Student"
+msgstr "Học viên"
+
 #: 
 msgid "Liaison"
 msgstr "Liên lạc"
@@ -2371,6 +2383,10 @@ msgstr "Hệ thống thành viên"
 #: 
 msgid "Calendar"
 msgstr "Lịch"
+
+#: 
+msgid "Members"
+msgstr "Thành viên"
 
 #: 
 msgid "Add New Person"

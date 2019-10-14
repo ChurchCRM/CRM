@@ -670,6 +670,10 @@ msgstr "Wybierz Wydarzenie do którego chciałbyś dodać Osoby"
 msgid "Select Event"
 msgstr "Wybierz Wydarzenie"
 
+#: external/templates/verify/verify-family-info.php:145
+msgid "Verify"
+msgstr "Potwierdź"
+
 #: 
 msgid "Add Visitor"
 msgstr "Dodaj Gościa"
@@ -3387,6 +3391,14 @@ msgstr "Datek (Pledged)"
 #: 
 msgid "M/F"
 msgstr "K/M"
+
+#: Reports/ClassAttendance.php:103 Reports/ClassList.php:79
+msgid "Teacher"
+msgstr "Nauczyciel"
+
+#: Reports/ClassAttendance.php:110 Reports/ClassList.php:127
+msgid "Student"
+msgstr "Uczeń"
 
 #: 
 msgid "Liaison"

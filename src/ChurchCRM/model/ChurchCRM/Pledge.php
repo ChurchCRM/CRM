@@ -17,6 +17,9 @@ use Propel\Runtime\Connection\ConnectionInterface;
  */
 class Pledge extends BasePledge
 {
+    public function getFormattedFY() {
+        return MakeFYString($this->getFyId());
+    }
 
    /**
      * Code to be run before deleting the object in database

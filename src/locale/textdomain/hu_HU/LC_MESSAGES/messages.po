@@ -663,6 +663,10 @@ msgstr "Válassza ki az eseményt, amelyre szeretné, hogy ellenőrizze az ember
 msgid "Select Event"
 msgstr "Válassza Event"
 
+#: external/templates/verify/verify-family-info.php:145
+msgid "Verify"
+msgstr "Ellenőrzése"
+
 #: 
 msgid "Add Visitor"
 msgstr "Add Visitor"
@@ -3364,6 +3368,14 @@ msgstr "Elzálogosított"
 #: 
 msgid "M/F"
 msgstr "M / F"
+
+#: Reports/ClassAttendance.php:103 Reports/ClassList.php:79
+msgid "Teacher"
+msgstr "Tanár"
+
+#: Reports/ClassAttendance.php:110 Reports/ClassList.php:127
+msgid "Student"
+msgstr "Diák"
 
 #: 
 msgid "Liaison"

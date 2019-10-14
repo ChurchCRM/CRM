@@ -709,6 +709,10 @@ msgstr "Selezionare l'evento a cui si desidera effettuare il check in per le per
 msgid "Select Event"
 msgstr "Seleziona Evento"
 
+#: external/templates/verify/verify-family-info.php:145
+msgid "Verify"
+msgstr "Verificare"
+
 #: 
 msgid "Add Visitor"
 msgstr "Aggiungi Visitatore"
@@ -3951,6 +3955,14 @@ msgstr "Pegno"
 msgid "M/F"
 msgstr "M / F"
 
+#: Reports/ClassAttendance.php:103 Reports/ClassList.php:79
+msgid "Teacher"
+msgstr "Insegnante"
+
+#: Reports/ClassAttendance.php:110 Reports/ClassList.php:127
+msgid "Student"
+msgstr "Studente"
+
 #: 
 msgid "Liaison"
 msgstr "Collegamento"
@@ -4274,6 +4286,10 @@ msgstr "Utenti di Sistema"
 #: 
 msgid "Calendar"
 msgstr "Calendario"
+
+#: 
+msgid "Members"
+msgstr "Membri"
 
 #: 
 msgid "Add New Person"
@@ -8275,6 +8291,10 @@ msgstr "Twitter"
 #: 
 msgid "LinkedIn"
 msgstr "LinkedIn"
+
+#: 
+msgid "Visitors"
+msgstr "I visitatori"
 
 #: 
 msgid "Move Event"

@@ -729,6 +729,10 @@ msgstr "Selecione o evento ao qual as pessoas serão adicionadas"
 msgid "Select Event"
 msgstr "Selecione o evento"
 
+#: external/templates/verify/verify-family-info.php:145
+msgid "Verify"
+msgstr "Verificar"
+
 #: 
 msgid "Add Visitor"
 msgstr "Adicionar visitante"
@@ -1441,7 +1445,7 @@ msgstr "Dia"
 
 #: 
 msgid "Select Gender"
-msgstr "Selecione o gênero"
+msgstr "Selecione o genero"
 
 #: 
 msgid "Select Role"
@@ -2559,7 +2563,7 @@ msgstr "Gerar relatório que compara todos os endereços da família dos EUA com
 
 #: 
 msgid "Role / Gender"
-msgstr "Função /Gênero"
+msgstr "Função /Genero"
 
 #: 
 msgid "Count"
@@ -3474,7 +3478,7 @@ msgstr "Por favor, confirme a remoção do status de utilizador de:"
 
 #: 
 msgid "User Editor"
-msgstr "Editor de Usuários"
+msgstr "Editor de Utilizadores"
 
 #: 
 msgid "Note: Changes will not take effect until next logon."
@@ -3498,7 +3502,7 @@ msgstr "Nome de login"
 #: 
 #, fuzzy
 msgid "Add Records"
-msgstr "Adicionar Registros"
+msgstr "Adicionar Registos"
 
 #: 
 #, fuzzy
@@ -3562,7 +3566,7 @@ msgstr "Definir permissão verdadeira para dar novos utilizadores a capacidade d
 
 #: 
 msgid "User Listing"
-msgstr "Lista de Usuários"
+msgstr "Lista de Utilizadores"
 
 #: 
 msgid "New User"
@@ -3829,7 +3833,7 @@ msgstr "Lista Suspensa Personalizado"
 
 #: 
 msgid "Thank you for registering your ChurchCRM installation."
-msgstr "Obrigado por registrar a sua instalação do ChurchCRM."
+msgstr "Obrigado por registar a sua instalação do ChurchCRM."
 
 #: 
 msgid "PDFs successfully emailed "
@@ -4089,6 +4093,14 @@ msgstr "Vinculados"
 #: 
 msgid "M/F"
 msgstr "M/F"
+
+#: Reports/ClassAttendance.php:103 Reports/ClassList.php:79
+msgid "Teacher"
+msgstr "Professor"
+
+#: Reports/ClassAttendance.php:110 Reports/ClassList.php:127
+msgid "Student"
+msgstr "Estudante"
 
 #: 
 msgid "Liaison"
@@ -4419,11 +4431,15 @@ msgstr "Criar controle de freqüência"
 
 #: 
 msgid "System Users"
-msgstr "Usuários do Sistema"
+msgstr "Utilizadores do Sistema"
 
 #: 
 msgid "Calendar"
 msgstr "Calendário"
+
+#: 
+msgid "Members"
+msgstr "Membros"
 
 #: 
 msgid "Add New Person"
@@ -4569,7 +4585,7 @@ msgstr "Informações da Igreja"
 
 #: 
 msgid "User setup"
-msgstr "Usuários"
+msgstr "Utilizadores"
 
 #: 
 msgid "Email Setup"
@@ -4725,7 +4741,7 @@ msgstr "Inserir o Nome"
 
 #: 
 msgid "Register Software"
-msgstr "Registrar o Software"
+msgstr "Registar o Software"
 
 #: 
 msgid "Update Church Info"
@@ -4809,7 +4825,7 @@ msgstr "Registo Completo"
 
 #: 
 msgid "Thank you for registering your family."
-msgstr "Obrigado por registrar sua família."
+msgstr "Obrigado por registar sua família."
 
 #: 
 msgid "Member(s)"
@@ -4821,7 +4837,7 @@ msgstr "Registo"
 
 #: 
 msgid "Register your family"
-msgstr "Registrar sua família"
+msgstr "Registar sua família"
 
 #: 
 msgid "How many people are in your family"
@@ -5266,7 +5282,7 @@ msgstr "Defina verdadeiro para habilitar o auto-registo de família."
 
 #: 
 msgid "ChurchCRM has been registered.  The ChurchCRM team uses registration information to track usage.  This information is kept confidential and never released or sold.  If this field is true the registration option in the admin menu changes to update registration."
-msgstr "ChurchCRM foi registrado. A equipe ChurchCRM usa informações de registo para rastrear o uso. Esta informação é mantida confidencial e nunca revelada ou vendida. Se este campo for assinalado verdadeiro a opção de registo no menu administrador muda para atualizar o registo."
+msgstr "ChurchCRM foi registado. A equipe ChurchCRM usa informações de registo para rastrear o uso. Esta informação é mantida confidencial e nunca revelada ou vendida. Se este campo for assinalado verdadeiro a opção de registo no menu administrador muda para actualizar o registo."
 
 #: 
 msgid "Left Margin (1 = 1/100th inch)"
@@ -5418,7 +5434,7 @@ msgstr "Relatórios de Depósitos"
 
 #: 
 msgid "Edit Deposit Slip"
-msgstr "Editar Depósito Errado"
+msgstr "Editar Depósito"
 
 #: 
 msgid "View All Fundraisers"
@@ -5450,7 +5466,7 @@ msgstr "Menu de consulta"
 
 #: 
 msgid "CSV Export Records"
-msgstr "Exportar Registros em CSV"
+msgstr "Exportar Registos em CSV"
 
 #: 
 msgid "People Properties"
@@ -5566,7 +5582,7 @@ msgstr "A idade máxima para a qual você deseja recuperar registos."
 
 #: 
 msgid "The desired gender to search the database for."
-msgstr "Gênero desejado para buscar na base de dados:"
+msgstr "Genero desejado para buscar na base de dados:"
 
 #: 
 msgid "Select the desired family role."
@@ -5574,7 +5590,7 @@ msgstr "Selecione o papel familiar desejado"
 
 #: 
 msgid "The gender for which you would like records returned."
-msgstr "Gênero do qual você deseja obter registos. "
+msgstr "Genero do qual você deseja obter registos. "
 
 #: 
 msgid "The property for which you would like person records returned."
@@ -5670,11 +5686,11 @@ msgstr "Pessoas por idade"
 
 #: 
 msgid "Total By Gender"
-msgstr "Total por Gênero"
+msgstr "Total por Genero"
 
 #: 
 msgid "Person by Role and Gender"
-msgstr "Pessoas por Papel e Gênero"
+msgstr "Pessoas por Papel e Genero"
 
 #: 
 msgid "Person by Property"
@@ -5742,15 +5758,15 @@ msgstr "Retornar qualquer registo de pessoas com idades entre as duas idades dad
 
 #: 
 msgid "Total of records matching a given gender."
-msgstr "Total de registos combinando com um dado gênero"
+msgstr "Total de registos combinando com um dado genero"
 
 #: 
 msgid "Selects person records with the family role and gender specified."
-msgstr "Selecionar registos pessoais com função familiar ou gênero especificados."
+msgstr "Seleccionar registos pessoais com função familiar ou genero especificados."
 
 #: 
 msgid "Returns person records which are assigned the given property."
-msgstr "Selecionar registos pessoais com função familiar ou gênero especificados."
+msgstr "Seleccionar registos pessoais com função familiar ou genero especificados."
 
 #: 
 msgid "Search by any part of Name, City, State, Zip, Home Phone, Email, or Work Email."
@@ -7124,11 +7140,11 @@ msgstr "Classificação de dados perdida para algumas pessoas"
 #: 
 #, fuzzy
 msgid "Missing Gender Data"
-msgstr "Dado de gênero perdido"
+msgstr "Dado de genero perdido"
 
 #: 
 msgid "Missing Gender Data for Some People"
-msgstr "Dado de gênero perdido para algumas pessoas"
+msgstr "Dado de genero perdido para algumas pessoas"
 
 #: 
 #, fuzzy
@@ -7935,7 +7951,7 @@ msgstr "Uma nova senha foi enviada para você. Por favor cheque seu e-mail."
 
 #: 
 msgid "Kiosk Manager"
-msgstr "Gerenciador de quiosque"
+msgstr "Gestão modo quiosque"
 
 #: 
 msgid "Your Cart"
@@ -8452,6 +8468,10 @@ msgid "LinkedIn"
 msgstr "LinkedIn"
 
 #: 
+msgid "Visitors"
+msgstr "Visitantes"
+
+#: 
 msgid "Move Event"
 msgstr "Mais eventos"
 
@@ -8765,7 +8785,7 @@ msgstr "As pessoas e famílias foram removidas da base de dados."
 
 #: 
 msgid "Self Registrations"
-msgstr "Próprios Registros"
+msgstr "Próprios Registos"
 
 #: 
 msgid "Public Calendar"
@@ -8897,7 +8917,7 @@ msgstr "Funções de E-mail"
 
 #: 
 msgid "Debug"
-msgstr "Depurar"
+msgstr "Informações"
 
 #: 
 msgid "Family Custom Fields"
@@ -9017,7 +9037,7 @@ msgstr "Ausente"
 
 #: 
 msgid "User must have Edit Records permission"
-msgstr "O utilizador deve ter permissão para editar Registros"
+msgstr "O utilizador deve ter permissão para editar Registos"
 
 #: 
 msgid "User must have Finance permission"
@@ -9142,7 +9162,7 @@ msgstr "Registo"
 
 #: 
 msgid "Records"
-msgstr "Registros"
+msgstr "Registos"
 
 #: 
 msgid "Emptied into Event ID"

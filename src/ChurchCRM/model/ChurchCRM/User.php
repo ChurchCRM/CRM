@@ -69,8 +69,8 @@ class User extends BaseUser
     public function isFinanceEnabled()
     {
         if (SystemConfig::getBooleanValue("bEnabledFinance")) {
-        return $this->isAdmin() || $this->isFinance();
-    }
+            return $this->isAdmin() || $this->isFinance();
+        }
         return false;
     }
 
