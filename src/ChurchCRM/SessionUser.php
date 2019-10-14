@@ -6,7 +6,7 @@ class SessionUser
 {
     public static function isActive()
     {
-        return isset($_SESSION['user']);
+        return isset($_SESSION['user']) && $_SESSION['user'] instanceof User;
     }
 
     /**
