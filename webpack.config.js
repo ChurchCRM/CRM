@@ -2,7 +2,8 @@ const path = require('path');
 module.exports = {
   mode: "development",
   entry: {
-    'calendar-event-editor' : './react/calendar-event-editor.tsx'
+    'calendar-event-editor' : './react/calendar-event-editor.tsx',
+    'two-factor-enrollment' : './react/two-factor-enrollment.tsx'
   },
   output: {
     path:path.resolve('./src/skin/js-react'),
