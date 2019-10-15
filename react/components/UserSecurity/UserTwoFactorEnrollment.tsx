@@ -1,6 +1,7 @@
 import * as React from 'react';
+import CRMRoot from '../../window-context-service.jsx';
 
-const TwoFAEnrollmentWelcome: React.FunctionComponent<{}> = ({ }) => {
+const TwoFAEnrollmentWelcome: React.FunctionComponent<{nextButtonEventHandler: Function}> = ({ nextButtonEventHandler}) => {
     return (
         <div>
              <div className="col-lg-12">
@@ -27,6 +28,7 @@ const TwoFAEnrollmentWelcome: React.FunctionComponent<{}> = ({ }) => {
                             <div className="callout callout-info">
                                 <p>{window.i18next.t("ChurchCRM Two factor supports any TOTP authenticator app, so you're free to choose between Microsoft Authenticator, Google Authenticator, Authy, LastPass, and others")}</p>
                             </div>
+                            <button className="btn btn-success" onClick={() => {nextButtonEventHandler()}}>{window.i18next.t("Begin Two Factor Authentication Enrollment")}</button>
                     </div>
                 </div>
             </div>
@@ -35,7 +37,7 @@ const TwoFAEnrollmentWelcome: React.FunctionComponent<{}> = ({ }) => {
     )
 }
 
-const TwoFAEnrollmentGetQR: React.FunctionComponent<{}> = ({ }) => {
+const TwoFAEnrollmentGetQR: React.FunctionComponent<{TwoFAQRCodeDataUri: string, newQRCode:Function}> = ({TwoFAQRCodeDataUri, newQRCode}) => {
     return (
         <div>
              <div className="col-lg-12">
@@ -44,9 +46,10 @@ const TwoFAEnrollmentGetQR: React.FunctionComponent<{}> = ({ }) => {
                             <h4>{window.i18next.t("2 Factor Authentication Secret")}</h4>
                         </div>
                         <div className="box-body">
-                    <img id="2fakey" src="<?= $user->getTwoFactorAuthQRCodeDataUri() ?>" />
+                          <img src={TwoFAQRCodeDataUri} />
                         <br />
-                        <a id="regen2faKey" className="btn btn-warning"><i className="fa fa-repeat"></i>{window.i18next.t("Regenerate 2 Factor Authentication Secret")}</a>
+                        <button className="btn btn-warning" onClick={() => {newQRCode()}}>{window.i18next.t("Regenerate 2 Factor Authentication Secret")}</button>
+                       
                         <a id="remove2faKey" className="btn btn-warning"><i className="fa fa-repeat"></i>{window.i18next.t("Remove 2 Factor Authentication Secret")}</a>
                         </div>
                     </div>
@@ -56,25 +59,69 @@ const TwoFAEnrollmentGetQR: React.FunctionComponent<{}> = ({ }) => {
 }
 
 
-const UserTwoFactorEnrollment: React.FunctionComponent<{}> = ({ }) => {
-    if (true) {
-        return (
-            <div>
-                <div className="row">
-                    <TwoFAEnrollmentWelcome />                    
-                </div>
-            </div >
-        );
+class UserTwoFactorEnrollment extends React.Component<TwoFactorEnrollmentProps, TwoFactorEnrollmentState> {
+    constructor(props: TwoFactorEnrollmentProps) {
+      super(props);
+
+      this.state = {
+        currentView: "intro",
+        TwoFAQRCodeDataUri: ""
+      }
+
+      this.nextButtonEventHandler = this.nextButtonEventHandler.bind(this);
+      this.requestNew2FABarcode = this.requestNew2FABarcode.bind(this);
     }
-    else {
-        return (
-            <div>
-                
-                <div className="row">
-                    <TwoFAEnrollmentGetQR />               
-                </div>
-            </div >
-        );
+
+    nextButtonEventHandler() {
+      this.setState({
+        currentView:"BeginEnroll"
+      });
     }
+
+    requestNew2FABarcode() {
+      fetch(CRMRoot + '/api/user/current/refresh2fasecret', {
+        credentials: "include",
+        method: "POST",
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+      })
+        .then(response => response.json())
+        .then(data => {
+          this.setState({ TwoFAQRCodeDataUri: data.TwoFAQRCodeDataUri })
+        });
+    }
+
+    render() {  
+        if (this.state.currentView === "intro") {
+            return (
+                <div>
+                    <div className="row">
+                        <TwoFAEnrollmentWelcome nextButtonEventHandler = { this.nextButtonEventHandler}  />                    
+                    </div>
+                </div >
+            );
+        }
+        else {
+            return (
+                <div>
+                    
+                    <div className="row">
+                        <TwoFAEnrollmentGetQR TwoFAQRCodeDataUri={this.state.TwoFAQRCodeDataUri} newQRCode={this.requestNew2FABarcode} />               
+                    </div>
+                </div >
+            );
+        }
+    }
+}
+
+interface TwoFactorEnrollmentProps {
+
+}
+
+interface TwoFactorEnrollmentState {
+  currentView: string,
+  TwoFAQRCodeDataUri?: string
 }
 export default UserTwoFactorEnrollment;
