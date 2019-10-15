@@ -37,7 +37,7 @@ const TwoFAEnrollmentWelcome: React.FunctionComponent<{nextButtonEventHandler: F
     )
 }
 
-const TwoFAEnrollmentGetQR: React.FunctionComponent<{TwoFAQRCodeDataUri: string, newQRCode:Function}> = ({TwoFAQRCodeDataUri, newQRCode}) => {
+const TwoFAEnrollmentGetQR: React.FunctionComponent<{TwoFAQRCodeDataUri: string, newQRCode:Function, remove2FA:Function}> = ({TwoFAQRCodeDataUri, newQRCode, remove2FA}) => {
     return (
         <div>
              <div className="col-lg-12">
@@ -49,8 +49,8 @@ const TwoFAEnrollmentGetQR: React.FunctionComponent<{TwoFAQRCodeDataUri: string,
                           <img src={TwoFAQRCodeDataUri} />
                         <br />
                         <button className="btn btn-warning" onClick={() => {newQRCode()}}>{window.i18next.t("Regenerate 2 Factor Authentication Secret")}</button>
-                       
-                        <a id="remove2faKey" className="btn btn-warning"><i className="fa fa-repeat"></i>{window.i18next.t("Remove 2 Factor Authentication Secret")}</a>
+
+                        <button className="btn btn-warning" onClick={() => {remove2FA()}}>{window.i18next.t("Remove 2 Factor Authentication Secret")}</button>
                         </div>
                     </div>
                 </div>
@@ -70,6 +70,8 @@ class UserTwoFactorEnrollment extends React.Component<TwoFactorEnrollmentProps, 
 
       this.nextButtonEventHandler = this.nextButtonEventHandler.bind(this);
       this.requestNew2FABarcode = this.requestNew2FABarcode.bind(this);
+      this.remove2FAForuser = this.remove2FAForuser.bind(this);
+      this.ensureNew2FAIsValid = this.ensureNew2FAIsValid.bind(this);
     }
 
     nextButtonEventHandler() {
@@ -93,6 +95,28 @@ class UserTwoFactorEnrollment extends React.Component<TwoFactorEnrollmentProps, 
         });
     }
 
+    remove2FAForuser() {
+      fetch(CRMRoot + '/api/user/current/remove2fasecret', {
+        credentials: "include",
+        method: "POST",
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+      })
+        .then(response => response.json())
+        .then(data => {
+          this.setState({ 
+            TwoFAQRCodeDataUri: "",
+            currentView: "intro"
+          })
+        });
+    }
+
+    ensureNew2FAIsValid() {
+
+    }
+
     render() {  
         if (this.state.currentView === "intro") {
             return (
@@ -108,7 +132,7 @@ class UserTwoFactorEnrollment extends React.Component<TwoFactorEnrollmentProps, 
                 <div>
                     
                     <div className="row">
-                        <TwoFAEnrollmentGetQR TwoFAQRCodeDataUri={this.state.TwoFAQRCodeDataUri} newQRCode={this.requestNew2FABarcode} />               
+                        <TwoFAEnrollmentGetQR TwoFAQRCodeDataUri={this.state.TwoFAQRCodeDataUri} newQRCode={this.requestNew2FABarcode} remove2FA={this.remove2FAForuser} />               
                     </div>
                 </div >
             );
