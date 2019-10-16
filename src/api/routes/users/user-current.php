@@ -10,6 +10,7 @@ $app->group('/user/current', function () {
     $this->post("/settings/show/finance", "updateSessionFinance");
     $this->post("/refresh2fasecret", "refresh2fasecret");
     $this->post("/remove2fasecret", "remove2fasecret");
+    $this->post("/test2FAEnrollmentCode", "test2FAEnrollmentCode");
     $this->get("/get2faqrcode",'get2faqrcode');
 });
 
@@ -56,4 +57,11 @@ function get2faqrcode(Request $request, Response $response, array $args)
     $user = SessionUser::getUser();
     $response = $response->withHeader("Content-Type", "image/png");
     return $response->write($user->getTwoFactorAuthQRCode()->writeString());
+}
+
+function test2FAEnrollmentCode(Request $request, Response $response, array $args)
+{
+    $requestParsedBody = (object)$request->getParsedBody();
+    $user = SessionUser::getUser();
+    return $response->withJson(["IsEnrollmentCodeValid" => $user->isTwoFACodeValid($requestParsedBody->enrollmentCode)]);
 }
