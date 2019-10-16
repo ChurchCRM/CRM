@@ -37,6 +37,7 @@ $app->group('/users', function () {
         } else {
             return $response->withStatus(404, gettext("Bad userId"));
         }
+        return $response->withStatus(200);
     });
 
     $this->post('/{userId:[0-9]+}/login/reset', function ($request, $response, $args) {

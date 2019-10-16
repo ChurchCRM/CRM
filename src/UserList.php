@@ -201,11 +201,8 @@ require 'Include/Header.php';
                     $.ajax({
                         method: "POST",
                         url: window.CRM.root + "/api/users/" + userId + "/disableTwoFactor",
-                        dataType: "json",
-                        encode: true,
                     }).done(function (data) {
-                        if (data.status == "success")
-                            showGlobalMessage('<?= gettext("Two Factor Auth disabled for") ?> ' + userName, "success");
+                        window.location.href = window.CRM.root + "/UserList.php";
                     });
                 }
             }
