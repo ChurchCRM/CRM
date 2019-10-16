@@ -30,6 +30,15 @@ $app->group('/users', function () {
         }
     });
 
+    $this->post('/{userId:[0-9]+}/disableTwoFactor', function ($request, $response, $args) {
+        $user = UserQuery::create()->findPk($args['userId']);
+        if (!is_null($user)) {
+           $user->disableTwoFactorAuthentication();
+        } else {
+            return $response->withStatus(404, gettext("Bad userId"));
+        }
+    });
+
     $this->post('/{userId:[0-9]+}/login/reset', function ($request, $response, $args) {
         $user = UserQuery::create()->findPk($args['userId']);
         if (!is_null($user)) {

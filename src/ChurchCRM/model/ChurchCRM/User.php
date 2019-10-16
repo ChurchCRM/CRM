@@ -299,6 +299,12 @@ class User extends BaseUser
         return explode(",",Crypto::decryptWithPassword($this->getTwoFactorAuthRecoveryCodes(), KeyManager::GetTwoFASecretKey()));
     }
 
+    public function disableTwoFactorAuthentication() {
+        $this->setTwoFactorAuthRecoveryCodes(null);
+        $this->setTwoFactorAuthSecret(null);
+        $this->save();
+    }
+
     public function getTwoFactorAuthQRCode() {
         if (empty($this->getTwoFactorAuthSecret()))
         {

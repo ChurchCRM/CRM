@@ -56,6 +56,7 @@ require 'Include/Header.php';
                 <th align="center"><?= gettext('Total Logins') ?></th>
                 <th align="center"><?= gettext('Failed Logins') ?></th>
                 <th align="center"><?= gettext('Password') ?></th>
+                <th align="center"><?= gettext('Two Factor Status') ?></th>
 
             </tr>
             </thead>
@@ -104,7 +105,16 @@ require 'Include/Header.php';
                             <?php
     } ?>
                     </td>
-
+                    <td>
+                        <?= $user->is2FactorAuthEnabled() ? gettext("Enabled") : gettext("Disabled") ?>
+                        <?php
+                            if ($user->is2FactorAuthEnabled()) { 
+                                ?>
+                                <a onclick="disableUserTwoFactorAuth(<?= $user->getId() ?>, '<?= $user->getPerson()->getFullName() ?>')">Disable</a>
+                            <?php
+                            }
+                        ?>
+                    </td>
                 </tr>
                 <?php
 } ?>
@@ -175,6 +185,27 @@ require 'Include/Header.php';
                     }).done(function (data) {
                         if (data.status == "success")
                             showGlobalMessage('<?= gettext("Password reset for") ?> ' + userName, "success");
+                    });
+                }
+            }
+        });
+    }
+
+    function disableUserTwoFactorAuth(userId, userName) {
+        bootbox.confirm({
+            title: "<?= gettext("Action Confirmation") ?>",
+            message: '<p style="color: red">' +
+            "<?= gettext("Please confirm disabling 2 Factor Auth for this user") ?>: <b>" + userName + "</b></p>",
+            callback: function (result) {
+                if (result) {
+                    $.ajax({
+                        method: "POST",
+                        url: window.CRM.root + "/api/users/" + userId + "/disableTwoFactor",
+                        dataType: "json",
+                        encode: true,
+                    }).done(function (data) {
+                        if (data.status == "success")
+                            showGlobalMessage('<?= gettext("Two Factor Auth disabled for") ?> ' + userName, "success");
                     });
                 }
             }
