@@ -37,7 +37,7 @@ const TwoFAEnrollmentWelcome: React.FunctionComponent<{nextButtonEventHandler: F
     )
 }
 
-const TwoFAEnrollmentGetQR: React.FunctionComponent<{TwoFAQRCodeDataUri: string, newQRCode:Function, remove2FA:Function}> = ({TwoFAQRCodeDataUri, newQRCode, remove2FA}) => {
+const TwoFAEnrollmentGetQR: React.FunctionComponent<{TwoFAQRCodeDataUri: string, newQRCode:Function, remove2FA:Function, validationCodeChangeHandler:(event: React.ChangeEvent<HTMLInputElement>) => void, currentTwoFAPin?:string, currentTwoFAPinStatus:string }> = ({TwoFAQRCodeDataUri, newQRCode, remove2FA, validationCodeChangeHandler, currentTwoFAPin, currentTwoFAPinStatus}) => {
     return (
         <div>
              <div className="col-lg-12">
@@ -46,11 +46,28 @@ const TwoFAEnrollmentGetQR: React.FunctionComponent<{TwoFAQRCodeDataUri: string,
                             <h4>{window.i18next.t("2 Factor Authentication Secret")}</h4>
                         </div>
                         <div className="box-body">
-                          <img src={TwoFAQRCodeDataUri} />
-                        <br />
-                        <button className="btn btn-warning" onClick={() => {newQRCode()}}>{window.i18next.t("Regenerate 2 Factor Authentication Secret")}</button>
-
-                        <button className="btn btn-warning" onClick={() => {remove2FA()}}>{window.i18next.t("Remove 2 Factor Authentication Secret")}</button>
+                          <div className="col-lg-6">
+                            <img src={TwoFAQRCodeDataUri} />
+                          </div>
+                          <div className="col-lg-6">
+                            <div className="row">
+                              <div className="col-lg-6">
+                                <button className="btn btn-warning" onClick={() => {newQRCode()}}>{window.i18next.t("Regenerate 2 Factor Authentication Secret")}</button>
+                              </div>
+                              <div className="col-lg-6">
+                                <button className="btn btn-warning" onClick={() => {remove2FA()}}>{window.i18next.t("Remove 2 Factor Authentication Secret")}</button>
+                              </div>
+                            </div>
+                            <div className="row">
+                              <div className="col-lg-12">
+                                <label>
+                                  {window.i18next.t("Enter TOTP code to confirm enrollment")}:
+                                  <input onChange={validationCodeChangeHandler} value={currentTwoFAPin} />
+                                </label>
+                                <p>{currentTwoFAPinStatus}</p>
+                              </div>
+                            </div>
+                          </div>
                         </div>
                     </div>
                 </div>
@@ -65,16 +82,18 @@ class UserTwoFactorEnrollment extends React.Component<TwoFactorEnrollmentProps, 
 
       this.state = {
         currentView: "intro",
-        TwoFAQRCodeDataUri: ""
+        TwoFARecoveryCodes: []
       }
 
       this.nextButtonEventHandler = this.nextButtonEventHandler.bind(this);
       this.requestNew2FABarcode = this.requestNew2FABarcode.bind(this);
       this.remove2FAForuser = this.remove2FAForuser.bind(this);
-      this.ensureNew2FAIsValid = this.ensureNew2FAIsValid.bind(this);
+      this.validationCodeChangeHandler = this.validationCodeChangeHandler.bind(this);
+      this.requestNew2FARecoveryCodes = this.requestNew2FARecoveryCodes.bind(this);
     }
 
     nextButtonEventHandler() {
+      this.requestNew2FABarcode();
       this.setState({
         currentView:"BeginEnroll"
       });
@@ -92,6 +111,21 @@ class UserTwoFactorEnrollment extends React.Component<TwoFactorEnrollmentProps, 
         .then(response => response.json())
         .then(data => {
           this.setState({ TwoFAQRCodeDataUri: data.TwoFAQRCodeDataUri })
+        });
+    }
+
+    requestNew2FARecoveryCodes() {
+      fetch(CRMRoot + '/api/user/current/refresh2farecoverycodes', {
+        credentials: "include",
+        method: "POST",
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+      })
+        .then(response => response.json())
+        .then(data => {
+          this.setState({ TwoFARecoveryCodes: data.TwoFARecoveryCodes })
         });
     }
 
@@ -113,9 +147,48 @@ class UserTwoFactorEnrollment extends React.Component<TwoFactorEnrollmentProps, 
         });
     }
 
-    ensureNew2FAIsValid() {
+    validationCodeChangeHandler(event: React.ChangeEvent<HTMLInputElement> ) {
+      this.setState({
+        currentTwoFAPin: event.currentTarget.value
+      });
+      if(event.currentTarget.value.length == 6) {
+        console.log("Checking for valid pin");
+        fetch(CRMRoot + "/api/user/current/test2FAEnrollmentCode", {
+          credentials: "include",
+          method: "POST",
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({enrollmentCode: event.currentTarget.value})
+        })
+        .then(response => response.json())
+        .then(data => {
+          if (data.IsEnrollmentCodeValid ) {
+            this.requestNew2FARecoveryCodes();
+            this.setState({
+              currentView: "success"
+            });
+          }
+          else{
+            this.setState({
+              currentTwoFAPinStatus: "invalid"
+            });
+          }
+         
+        });
+        this.setState({
+          currentTwoFAPinStatus: "pending"
+        })
 
+      }
+      else{
+        this.setState({
+          currentTwoFAPinStatus: "incomplete"
+        })
+      }
     }
+    
 
     render() {  
         if (this.state.currentView === "intro") {
@@ -127,15 +200,28 @@ class UserTwoFactorEnrollment extends React.Component<TwoFactorEnrollmentProps, 
                 </div >
             );
         }
-        else {
+        else if(this.state.currentView === "BeginEnroll") {
             return (
                 <div>
                     
                     <div className="row">
-                        <TwoFAEnrollmentGetQR TwoFAQRCodeDataUri={this.state.TwoFAQRCodeDataUri} newQRCode={this.requestNew2FABarcode} remove2FA={this.remove2FAForuser} />               
+                        <TwoFAEnrollmentGetQR TwoFAQRCodeDataUri={this.state.TwoFAQRCodeDataUri} newQRCode={this.requestNew2FABarcode} remove2FA={this.remove2FAForuser}  validationCodeChangeHandler={this.validationCodeChangeHandler } currentTwoFAPin={this.state.currentTwoFAPin} currentTwoFAPinStatus={this.state.currentTwoFAPinStatus} />               
                     </div>
                 </div >
             );
+        }
+        else if(this.state.currentView === "success") {
+          return (
+            <div>
+              <h4>Success</h4>
+              <ul>{this.state.TwoFARecoveryCodes.length ? (this.state.TwoFARecoveryCodes.map((code) => <li>{code}</li>)) : <p>waiting</p>}</ul>
+            </div>
+          )
+        }
+        else {
+          return (
+            <h4>Uh-oh</h4>
+          )
         }
     }
 }
@@ -146,6 +232,9 @@ interface TwoFactorEnrollmentProps {
 
 interface TwoFactorEnrollmentState {
   currentView: string,
-  TwoFAQRCodeDataUri?: string
+  TwoFAQRCodeDataUri?: string,
+  currentTwoFAPin?: string,
+  currentTwoFAPinStatus?: string,
+  TwoFARecoveryCodes: string[]
 }
 export default UserTwoFactorEnrollment;
