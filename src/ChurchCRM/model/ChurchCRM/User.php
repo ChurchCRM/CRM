@@ -291,6 +291,10 @@ class User extends BaseUser
         $this->save();
     }
 
+    private function getDecryptedTwoFactorAuthSecret() {
+        return Crypto::decryptWithPassword($this->getTwoFactorAuthSecret(), KeyManager::GetTwoFASecretKey());
+    }
+
     public function getTwoFactorAuthQRCode() {
         if (empty($this->getTwoFactorAuthSecret()))
         {
@@ -300,7 +304,7 @@ class User extends BaseUser
         $g2faUrl = $google2fa->getQRCodeUrl(
             SystemConfig::getValue("s2FAApplicationName"),
             $this->getUserName(),
-            Crypto::decryptWithPassword($this->getTwoFactorAuthSecret(), KeyManager::GetTwoFASecretKey())
+            $this->getDecryptedTwoFactorAuthSecret()
         );
         $qrCode = new QrCode($g2faUrl );
         $qrCode->setSize(300);
@@ -323,6 +327,6 @@ class User extends BaseUser
     public function isTwoFACodeValid($twoFACode) {
         $google2fa = new Google2FA();
         $window = 2; //TODO: make this a system config
-        return $google2fa->verifyKey(Crypto::decryptWithPassword($this->getTwoFactorAuthSecret(), KeyManager::GetTwoFASecretKey()), $twoFACode, $window);
+        return $google2fa->verifyKey($this->getDecryptedTwoFactorAuthSecret(), $twoFACode, $window);
     }
 }
