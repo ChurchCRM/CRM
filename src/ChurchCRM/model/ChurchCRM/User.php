@@ -6,6 +6,7 @@ use ChurchCRM\Base\User as BaseUser;
 use ChurchCRM\dto\SystemConfig;
 use Propel\Runtime\Connection\ConnectionInterface;
 use ChurchCRM\Utils\MiscUtils;
+use Defuse\Crypto\Crypto;
 use Endroid\QrCode\QrCode;
 use PragmaRX\Google2FA\Google2FA;
 
@@ -280,7 +281,8 @@ class User extends BaseUser
 
     public function regenerate2FAKey() {
         $google2fa = new Google2FA();
-        $this->setTwoFactorAuthSecret($google2fa->generateSecretKey());
+        $encryptedSecret = Crypto::encryptWithPassword($google2fa->generateSecretKey(), KeyManager::GetTwoFASecretKey());
+        $this->setTwoFactorAuthSecret($encryptedSecret);
         $this->save();
     }
 
@@ -298,7 +300,7 @@ class User extends BaseUser
         $g2faUrl = $google2fa->getQRCodeUrl(
             SystemConfig::getValue("s2FAApplicationName"),
             $this->getUserName(),
-            $this->getTwoFactorAuthSecret()
+            Crypto::decryptWithPassword($this->getTwoFactorAuthSecret(), KeyManager::GetTwoFASecretKey())
         );
         $qrCode = new QrCode($g2faUrl );
         $qrCode->setSize(300);
@@ -320,7 +322,7 @@ class User extends BaseUser
 
     public function isTwoFACodeValid($twoFACode) {
         $google2fa = new Google2FA();
-        $window = 8;
-        return $google2fa->verifyKey($this->getTwoFactorAuthSecret(), $twoFACode, $window);
+        $window = 2; //TODO: make this a system config
+        return $google2fa->verifyKey(Crypto::decryptWithPassword($this->getTwoFactorAuthSecret(), KeyManager::GetTwoFASecretKey()), $twoFACode, $window);
     }
 }
