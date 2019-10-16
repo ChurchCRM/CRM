@@ -88,6 +88,23 @@ const TwoFAEnrollmentGetQR: React.FunctionComponent<{TwoFAQRCodeDataUri: string,
     )
 }
 
+const TwoFAEnrollmentSuccess: React.FunctionComponent<{TwoFARecoveryCodes?: string[]}> = ({ TwoFARecoveryCodes}) => {
+  return (
+    <div className="col-lg-12">
+      <div className="box">
+        <div className="box-header">
+          <h4>{window.i18next.t("2 Factor Authentication Enrollment Success")}</h4>
+        </div>
+        <div className="box-body">
+          <p>{window.i18next.t("Please store these recovery codes in a safe location")}</p>
+          <p>{window.i18next.t("If you ever lose access to your newly enrolled authenticator app, you'll need to use a recovery code to gain access to your account")}</p>
+          <ul>{TwoFARecoveryCodes.length ? (TwoFARecoveryCodes.map((code) => <li>{code}</li>)) : <p>waiting</p>}</ul>
+        </div>
+      </div>
+    </div>
+  )
+};
+
 
 class UserTwoFactorEnrollment extends React.Component<TwoFactorEnrollmentProps, TwoFactorEnrollmentState> {
     constructor(props: TwoFactorEnrollmentProps) {
@@ -225,10 +242,7 @@ class UserTwoFactorEnrollment extends React.Component<TwoFactorEnrollmentProps, 
         }
         else if(this.state.currentView === "success") {
           return (
-            <div>
-              <h4>Success</h4>
-              <ul>{this.state.TwoFARecoveryCodes.length ? (this.state.TwoFARecoveryCodes.map((code) => <li>{code}</li>)) : <p>waiting</p>}</ul>
-            </div>
+           <TwoFAEnrollmentSuccess TwoFARecoveryCodes={this.state.TwoFARecoveryCodes} />
           )
         }
         else {
