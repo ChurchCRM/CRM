@@ -108,7 +108,7 @@ require 'Include/Header.php';
                     <td>
                         <?= $user->is2FactorAuthEnabled() ? gettext("Enabled") : gettext("Disabled") ?>
                         <?php
-                            if ($user->is2FactorAuthEnabled()) { 
+                            if ($user->is2FactorAuthEnabled()) {
                                 ?>
                                 <a onclick="disableUserTwoFactorAuth(<?= $user->getId() ?>, '<?= $user->getPerson()->getFullName() ?>')">Disable</a>
                             <?php
