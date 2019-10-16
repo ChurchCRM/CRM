@@ -295,6 +295,10 @@ class User extends BaseUser
         return Crypto::decryptWithPassword($this->getTwoFactorAuthSecret(), KeyManager::GetTwoFASecretKey());
     }
 
+    private function getDecryptedTwoFactorAuthRecoveryCodes() {
+        return explode(",",Crypto::decryptWithPassword($this->getTwoFactorAuthRecoveryCodes(), KeyManager::GetTwoFASecretKey()));
+    }
+
     public function getTwoFactorAuthQRCode() {
         if (empty($this->getTwoFactorAuthSecret()))
         {
@@ -324,9 +328,34 @@ class User extends BaseUser
         return !empty($this->getTwoFactorAuthSecret());
     }
 
+    public function getNewTwoFARecoveryCodes() {
+        // generate an array of 2FA recovery codes, and store as an encrypted, comma-seperated list
+        $recoveryCodes = array();
+        for($i=0; $i < 12; $i++) {
+            $recoveryCodes[$i] = base64_encode(random_bytes(10));
+        }
+        $recoveryCodesString = implode(",",$recoveryCodes);
+        $this->setTwoFactorAuthRecoveryCodes(Crypto::encryptWithPassword($recoveryCodesString, KeyManager::GetTwoFASecretKey()));
+        $this->save();
+        return $recoveryCodes;
+    }
+
     public function isTwoFACodeValid($twoFACode) {
         $google2fa = new Google2FA();
         $window = 2; //TODO: make this a system config
         return $google2fa->verifyKey($this->getDecryptedTwoFactorAuthSecret(), $twoFACode, $window);
+    }
+
+    public function isTwoFaRecoveryCodeValid($twoFaRecoveryCode) {
+        // checks for validity of a 2FA recovery code
+        // if the specified code was valid, the code is also removed.
+        $codes = $this->getDecryptedTwoFactorAuthRecoveryCodes();
+        if (($key = array_search($twoFaRecoveryCode, $codes)) !== false) {
+            unset($codes[$key]);
+            $recoveryCodesString = implode(",",$codes);
+            $this->setTwoFactorAuthRecoveryCodes(Crypto::encryptWithPassword($recoveryCodesString, KeyManager::GetTwoFASecretKey()));
+            return true;
+        }
+        return false;
     }
 }
