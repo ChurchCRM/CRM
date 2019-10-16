@@ -139,6 +139,13 @@ class LocalAuthentication implements IAuthenticationProvider
             LoggerUtils::getAuthLogger()->addInfo("User succefully logged in with 2FA: " . $currentUser->getUserName());
             return $authenticationResult;
           }
+          elseif($currentUser->isTwoFaRecoveryCodeValid($AuthenticationRequest->TwoFACode)){
+            LoggerUtils::getAuthLogger()->addInfo("testing recovery code" . $AuthenticationRequest->TwoFACode);
+            $this->prepareSuccessfulLoginOperations($currentUser);
+            $authenticationResult->isAuthenticated = true;
+            LoggerUtils::getAuthLogger()->addInfo("User succefully logged in with 2FA Recovery Code: " . $currentUser->getUserName());
+            return $authenticationResult;
+          }
           else {
             $authenticationResult->isAuthenticated = false;
             $authenticationResult->nextStepURL = SystemURLs::getRootPath()."/session/two-factor";
