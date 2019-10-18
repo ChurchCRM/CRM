@@ -623,6 +623,7 @@
         <column name="usr_UserName" phpName="UserName" type="VARCHAR" size="32" required="true"/>
         <column name="usr_ApiKey" phpName="ApiKey" type="VARCHAR" size="255" />
         <column name="usr_TwoFactorAuthSecret" phpName="TwoFactorAuthSecret" type="VARCHAR" size="255" />
+        <column name="usr_TwoFactorAuthLastKeyTimestamp" phpName="TwoFactorAuthLastKeyTimestamp" type="SMALLINT" size="9" />
         <column name="usr_TwoFactorAuthRecoveryCodes" phpName="TwoFactorAuthRecoveryCodes" type="LONGVARCHAR"/>
         <column name="usr_EditSelf" phpName="EditSelf" type="BOOLEAN" size="1" sqlType="tinyint(1) unsigned" required="true" defaultValue="0"/>
         <column name="usr_CalStart" phpName="CalStart" type="DATE"/>
