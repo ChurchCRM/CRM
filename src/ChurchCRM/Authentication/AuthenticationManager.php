@@ -15,7 +15,7 @@ class AuthenticationManager
     // Currently, only local auth is implemented; hence the zero-indexed array elements.
 
     public static function GetAuthenticationProvider() {
-      return $_SESSION['AuthenticationProvider'];
+      return key_exists("AuthenticationProvider", $_SESSION) ? $_SESSION['AuthenticationProvider'] : null;
     }
 
     private static function SetAuthenticationProvider(IAuthenticationProvider $AuthenticationProvider) {
