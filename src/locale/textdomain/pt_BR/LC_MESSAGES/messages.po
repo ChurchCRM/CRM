@@ -729,6 +729,10 @@ msgstr "Selecione o evento ao qual as pessoas serão adicionadas"
 msgid "Select Event"
 msgstr "Selecione o evento"
 
+#: external/templates/verify/verify-family-info.php:145
+msgid "Verify"
+msgstr "Verificar"
+
 #: 
 msgid "Add Visitor"
 msgstr "Adicionar visitante"
@@ -4094,6 +4098,14 @@ msgstr "Vinculados"
 msgid "M/F"
 msgstr "M/F"
 
+#: Reports/ClassAttendance.php:103 Reports/ClassList.php:79
+msgid "Teacher"
+msgstr "Professor"
+
+#: Reports/ClassAttendance.php:110 Reports/ClassList.php:127
+msgid "Student"
+msgstr "Estudante"
+
 #: 
 msgid "Liaison"
 msgstr "Ligação"
@@ -4428,6 +4440,10 @@ msgstr "Usuários do Sistema"
 #: 
 msgid "Calendar"
 msgstr "Calendário"
+
+#: 
+msgid "Members"
+msgstr "Membros"
 
 #: 
 msgid "Add New Person"
@@ -8456,6 +8472,10 @@ msgstr "Twitter"
 #: 
 msgid "LinkedIn"
 msgstr "LinkedIn"
+
+#: 
+msgid "Visitors"
+msgstr "Visitantes"
 
 #: 
 msgid "Move Event"

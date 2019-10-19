@@ -74,7 +74,7 @@ class UpgradeService
           return true;
         }
         catch (\Exception $exc){
-           $logger->error(gettext("Databse upgrade failed").": " . $exc->getMessage());
+           $logger->error(gettext("Database upgrade failed").": " . $exc->getMessage());
            throw $exc; //allow the method requesting the upgrade to handle this failure also.
         }
     }

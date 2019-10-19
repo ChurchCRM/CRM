@@ -26,7 +26,7 @@ class Cart
       throw new \Exception (gettext("PersonID for Cart must be numeric"),400);
     }
     if ($PersonID !== null && !in_array($PersonID, $_SESSION['aPeopleCart'], false)) {
-      array_push($_SESSION['aPeopleCart'], $PersonID);
+      array_push($_SESSION['aPeopleCart'], (int)$PersonID);
     }
   }
 

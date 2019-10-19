@@ -595,6 +595,10 @@ msgstr "حدد الحدث الذي تريد إضافة سلة التسوق إل�
 msgid "Select Event"
 msgstr "حدد الحدث"
 
+#: external/templates/verify/verify-family-info.php:145
+msgid "Verify"
+msgstr "تحقق"
+
 #: 
 msgid "Add Visitor"
 msgstr "إضافة زائر"

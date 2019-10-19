@@ -670,6 +670,10 @@ msgstr "Selectați evenimentul la care doriți să verificați de persoane din p
 msgid "Select Event"
 msgstr "Selectați Eveniment"
 
+#: external/templates/verify/verify-family-info.php:145
+msgid "Verify"
+msgstr "Verifica"
+
 #: 
 msgid "Add Visitor"
 msgstr "Adauga vizitatorilor"
@@ -3357,6 +3361,14 @@ msgstr "Angajat"
 #: 
 msgid "M/F"
 msgstr "M / F"
+
+#: Reports/ClassAttendance.php:103 Reports/ClassList.php:79
+msgid "Teacher"
+msgstr "Profesor"
+
+#: Reports/ClassAttendance.php:110 Reports/ClassList.php:127
+msgid "Student"
+msgstr "Student"
 
 #: 
 msgid "Liaison"

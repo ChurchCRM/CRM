@@ -740,6 +740,10 @@ msgstr "選擇事件時，你要檢查的人"
 msgid "Select Event"
 msgstr "選擇活動"
 
+#: external/templates/verify/verify-family-info.php:145
+msgid "Verify"
+msgstr "確認"
+
 #: 
 msgid "Add Visitor"
 msgstr "添加訪客"
@@ -4060,6 +4064,14 @@ msgstr "已抵押"
 msgid "M/F"
 msgstr "M / F"
 
+#: Reports/ClassAttendance.php:103 Reports/ClassList.php:79
+msgid "Teacher"
+msgstr "老師"
+
+#: Reports/ClassAttendance.php:110 Reports/ClassList.php:127
+msgid "Student"
+msgstr "學生"
+
 #: 
 msgid "Liaison"
 msgstr "聯絡"
@@ -4393,6 +4405,10 @@ msgstr "系統用戶"
 #: 
 msgid "Calendar"
 msgstr "日曆"
+
+#: 
+msgid "Members"
+msgstr "成員"
 
 #: 
 msgid "Add New Person"
@@ -8421,6 +8437,10 @@ msgstr "Twitter"
 #: 
 msgid "LinkedIn"
 msgstr "LinkedIn"
+
+#: 
+msgid "Visitors"
+msgstr "受訪者"
 
 #: 
 msgid "Move Event"
