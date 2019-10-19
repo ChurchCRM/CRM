@@ -1,6 +1,8 @@
 <?php
 
 namespace ChurchCRM\Authentication\AuthenticationProviders {
+
+  use ChurchCRM\Authentication\AuthenticationManager;
   use ChurchCRM\dto\SystemConfig;
   use ChurchCRM\Utils\RedirectUtils;
   use ChurchCRM\Authentication\AuthenticationProviders;
@@ -42,7 +44,6 @@ class LocalAuthentication implements IAuthenticationProvider
               $_SESSION['sshowPayments'] = 0;
           }
       
-          $this->currentUser = $this->currentUser->getId();
           if (!empty($this->currentUser)) {
               $this->currentUser->setShowPledges($_SESSION['sshowPledges']);
               $this->currentUser->setShowPayments($_SESSION['sshowPayments']);
@@ -51,13 +52,9 @@ class LocalAuthentication implements IAuthenticationProvider
       
               $this->currentUser->save();
           }
+          $this->currentUser = null;
       }
-      
-      $_COOKIE = [];
-      $_SESSION = [];
-      session_destroy();
-      LoggerUtils::getAuthLogger()->addInfo("Ended Local session for user " . $this->currentUser->getName());
-    }
+   }
 
     private function prepareSuccessfulLoginOperations() {
       // Set the LastLogin and Increment the LoginCount
@@ -185,7 +182,7 @@ class LocalAuthentication implements IAuthenticationProvider
         $this->currentUser->reload();
       } catch (\Exception $exc) {
         LoggerUtils::getAuthLogger()->addDebug("User with active session no longer exists in the database.  Expiring session");
-        $this->EndSession();
+        AuthenticationManager::EndSession();
         $authenticationResult->isAuthenticated = false;
         return $authenticationResult;
       }

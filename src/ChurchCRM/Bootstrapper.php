@@ -211,7 +211,7 @@ namespace ChurchCRM
           $version->save();
           self::$bootStrapLogger->info("Installed ChurchCRM Schema version: " . SystemService::getInstalledVersion());
       }
-      private static function initSession()
+      public static function initSession()
       {
           // Initialize the session
           $sessionName = 'CRM@'.SystemURLs::getRootPath();

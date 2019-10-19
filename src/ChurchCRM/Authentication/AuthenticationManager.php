@@ -7,6 +7,7 @@ namespace ChurchCRM\Authentication {
   use ChurchCRM\Utils\LoggerUtils;
   use ChurchCRM\dto\SystemURLs;
   use ChurchCRM\Authentication\AuthenticationProviders\IAuthenticationProvider;
+    use ChurchCRM\Bootstrapper;
 
 class AuthenticationManager
   {
@@ -15,7 +16,12 @@ class AuthenticationManager
     // Currently, only local auth is implemented; hence the zero-indexed array elements.
 
     public static function GetAuthenticationProvider() {
-      return key_exists("AuthenticationProvider", $_SESSION) ? $_SESSION['AuthenticationProvider'] : null;
+      if ( key_exists("AuthenticationProvider", $_SESSION) && $_SESSION['AuthenticationProvider'] instanceof IAuthenticationProvider) {
+        return  $_SESSION['AuthenticationProvider'];
+      }
+      else {
+        throw new \Exception("Not active authentication provider");
+      }
     }
 
     private static function SetAuthenticationProvider(IAuthenticationProvider $AuthenticationProvider) {
@@ -28,8 +34,28 @@ class AuthenticationManager
 
 
     public static function EndSession() {
-      $result = self::GetAuthenticationProvider()->EndSession();
-      RedirectUtils::Redirect(self::GetSessionBeginURL());
+      $currentSessionUserName = "";
+      try {
+        $currentSessionUserName = self::GetCurrentUser()->getName();
+      }
+      catch(\Exception $e) {
+        //unable to get name of user logging out. Don't really care.
+        $currentSessionUserName = "Unknown";
+      }
+      try {
+        $result = self::GetAuthenticationProvider()->EndSession();
+        $_COOKIE = [];
+        $_SESSION = [];
+        session_destroy();
+        Bootstrapper::initSession();
+        LoggerUtils::getAuthLogger()->addInfo("Ended Local session for user " . $currentSessionUserName);
+      }
+      catch(\Exception $e) {
+        LoggerUtils::getAuthLogger()->addWarning("Error destroying session: " . $e);
+      }
+      finally {
+        RedirectUtils::Redirect(self::GetSessionBeginURL());
+      }
     }
 
     public static function Authenticate(IAuthenticationProvider $AuthenticationProvider, object $AuthenticationRequest) {
