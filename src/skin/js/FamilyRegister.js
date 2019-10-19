@@ -72,6 +72,21 @@ $(document).ready(function () {
                 $("#displayFamilyAddress").text(familyAddress);
                 $("#displayFamilyPhone").text(family.HomePhone);
 
+                let familyCount = $("#familyCount").val();
+                for (let i = parseInt(familyCount)+1; i <= 8; i++) {
+                    $("#displayFamilyPerson"+i).hide()
+                }
+
+                let num = 1;
+                family.people.forEach(function(person) {
+                    $("#displayFamilyPersonFName"+num).text(person.firstName);
+                    $("#displayFamilyPersonLName"+num).text(person.lastName);
+                    $("#displayFamilyPersonEmail"+num).text(person.email);
+                    $("#displayFamilyPersonPhone"+num).text(person.phoneNumber);
+                    $("#displayFamilyPersonBDay"+num).text(person.birthday);
+                    num++;
+                })
+
             }
 
         },
@@ -103,7 +118,7 @@ $(document).ready(function () {
                             label: "Done, show me the homepage!",
                             className: 'btn-info',
                             callback: function(){
-                                window.location.href = "http://cnn.com";
+                                window.location.href = window.CRM.churchWebSite;
                             }
                         }
                     }

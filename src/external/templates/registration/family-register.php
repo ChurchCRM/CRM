@@ -193,8 +193,19 @@ if (!empty($sHeader)) {
                     <strong><?= gettext("Address")?>:</strong> <span id="displayFamilyAddress"></span> <br/>
                     <strong><?= gettext("Phone")?>:</strong> <span id="displayFamilyPhone"></span> <br/>
                 </p>
-
-
+                <br/>
+                
+                <table class="table table-striped table-bordered table-responsive">
+                    <?php for ($x = 1; $x <= 8; $x++) { ?>
+                        <tr id="displayFamilyPerson<?= $x ?>">
+                            <td><span id="displayFamilyPersonFName<?= $x ?>"></span></td>
+                            <td><span id="displayFamilyPersonLName<?= $x ?>"></span></td>
+                            <td><span id="displayFamilyPersonEmail<?= $x ?>"></span></td>
+                            <td><span id="displayFamilyPersonPhone<?= $x ?>"></span></td>
+                            <td><span id="displayFamilyPersonBDay<?= $x ?>"></span></td>
+                        </tr>
+                    <?php } ?>
+                </table>
 
             </section>
         </div>
