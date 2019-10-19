@@ -2,7 +2,7 @@
 
 use Slim\Http\Request;
 use Slim\Http\Response;
-use ChurchCRM\SessionUser;
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\UserQuery;
 
 
@@ -17,7 +17,7 @@ $app->group('/user/current', function () {
 
 function updateSessionFinance(Request $request, Response $response, array $args)
 {
-    $user = UserQuery::create()->findPk(SessionUser::getId());
+    $user = AuthenticationManager::GetCurrentUser();
 
     if ($request->getContentLength() > 0) {
         $setting = (object)$request->getParsedBody();
@@ -25,7 +25,6 @@ function updateSessionFinance(Request $request, Response $response, array $args)
         $user->setShowPayments(ConvertToBoolean($setting->payments));
         $user->setShowSince($setting->since);
         $user->save();
-        $_SESSION['user'] = $user;
     }
 
     return $response->withJson([
@@ -41,27 +40,27 @@ function updateSessionFinance(Request $request, Response $response, array $args)
 
 function refresh2fasecret(Request $request, Response $response, array $args)
 {
-    $user = SessionUser::getUser();
+    $user = AuthenticationManager::GetCurrentUser();
     $user->Regenerate2FAKey();
     return $response->withJson(["TwoFAQRCodeDataUri" => $user->getTwoFactorAuthQRCodeDataUri()]);
 }
 
 function refresh2farecoverycodes(Request $request, Response $response, array $args)
 {
-    $user = SessionUser::getUser();
+    $user = AuthenticationManager::GetCurrentUser();
     return $response->withJson(["TwoFARecoveryCodes" => $user->getNewTwoFARecoveryCodes()]);
 }
 
 function remove2fasecret(Request $request, Response $response, array $args)
 {
-    $user = SessionUser::getUser();
+    $user = AuthenticationManager::GetCurrentUser();
     $user->remove2FAKey();
     return $response->withJson(["TwoFAQRCodeDataUri" => $user->getTwoFactorAuthQRCodeDataUri()]);
 }
 
 function get2faqrcode(Request $request, Response $response, array $args)
 {
-    $user = SessionUser::getUser();
+    $user = AuthenticationManager::GetCurrentUser();
     $response = $response->withHeader("Content-Type", "image/png");
     return $response->write($user->getTwoFactorAuthQRCode()->writeString());
 }
@@ -69,6 +68,6 @@ function get2faqrcode(Request $request, Response $response, array $args)
 function test2FAEnrollmentCode(Request $request, Response $response, array $args)
 {
     $requestParsedBody = (object)$request->getParsedBody();
-    $user = SessionUser::getUser();
+    $user = AuthenticationManager::GetCurrentUser();
     return $response->withJson(["IsEnrollmentCodeValid" => $user->isTwoFACodeValid($requestParsedBody->enrollmentCode)]);
 }

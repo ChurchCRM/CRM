@@ -2,7 +2,7 @@
 <?php
 
 use ChurchCRM\dto\Cart;
-use ChurchCRM\SessionUser;
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 ?>
@@ -26,7 +26,7 @@ use ChurchCRM\dto\SystemURLs;
     <a href="<?= SystemURLs::getRootPath()."/CartToEvent.php"?>" class="btn btn-app"><i
         class="fa fa-ticket"></i><?= gettext('Empty Cart to Event') ?></a>
 
-    <?php if (SessionUser::getUser()->isCSVExport()) {
+    <?php if (AuthenticationManager::GetCurrentUser()->isCSVExport()) {
       ?>
       <a href="<?= SystemURLs::getRootPath()."/CSVExport.php?Source=cart" ?>" class="btn btn-app"><i
           class="fa fa-file-excel-o"></i><?= gettext('CSV Export') ?></a>
@@ -38,7 +38,7 @@ use ChurchCRM\dto\SystemURLs;
         class="fa fa-file-pdf-o"></i><?= gettext('Name Tags') ?></a>
       <?php
      
-          if (SessionUser::getUser()->isEmailEnabled()) { // Does user have permission to email groups
+          if (AuthenticationManager::GetCurrentUser()->isEmailEnabled()) { // Does user have permission to email groups
             // Display link
             echo "<a href='mailto:" . $sEmailLink . "' class='btn btn-app'><i class='fa fa-send-o'></i>" . gettext('Email Cart') . '</a>';
             echo "<a href='mailto:?bcc=" . $sEmailLink . "' class='btn btn-app'><i class='fa fa-send'></i>" . gettext('Email (BCC)') . '</a>';

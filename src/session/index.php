@@ -11,7 +11,6 @@ use Slim\App;
 use Slim\Http\Request;
 use Slim\Http\Response;
 use Slim\Views\PhpRenderer;
-use ChurchCRM\SessionUser;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Slim\Middleware\VersionMiddleware;
 
@@ -39,7 +38,7 @@ $app->post('/two-factor', 'processTwoFactorPost');
 function processTwoFactorGet(Request $request, Response $response, array $args)
 {
     $renderer = new PhpRenderer('templates/');
-    $curUser = SessionUser::getUser();
+    $curUser = AuthenticationManager::GetCurrentUser();
 
     $pageArgs = [
         'sRootPath' => SystemURLs::getRootPath(),
@@ -76,7 +75,7 @@ function beginSession(Request $request, Response $response, array $args)
     }
 
     $renderer = new PhpRenderer('templates/');
-    $curUser = SessionUser::getUser();
+    $curUser = AuthenticationManager::GetCurrentUser();
 
     $pageArgs['user'] = $curUser;
     

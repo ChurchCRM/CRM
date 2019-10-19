@@ -23,6 +23,7 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\MenuEventsCount;
+use ChurchCRM\Authentication\AuthenticationManager;
 
 $dashboardService = new DashboardService();
 
@@ -32,7 +33,7 @@ $updatedMembers = $dashboardService->getUpdatedMembers(12);
 $latestMembers = $dashboardService->getLatestMembers(12);
 
 $depositData = false;  //Determine whether or not we should display the deposit line graph
-if ($_SESSION['user']->isFinanceEnabled()) {
+if (AuthenticationManager::GetCurrentUser()->isFinanceEnabled()) {
     $deposits = DepositQuery::create()->filterByDate(['min' =>date('Y-m-d', strtotime('-90 days'))])->find();
     if (count($deposits) > 0) {
         $depositData = $deposits->toJSON();

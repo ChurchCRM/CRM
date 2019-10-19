@@ -13,6 +13,8 @@ use ChurchCRM\Utils\LoggerUtils;
 use DateTime;
 use Propel\Runtime\Connection\ConnectionInterface;
 use Propel\Runtime\Propel;
+use ChurchCRM\Authentication\AuthenticationManager;
+
 /**
  * Skeleton subclass for representing a row from the 'person_per' table.
  *
@@ -576,7 +578,7 @@ class Person extends BasePerson implements iPhoto
       // add custom fields to person_custom table since they are not defined in the propel schema
       $rawQry =  PersonCustomQuery::create();
       foreach ($allPersonCustomFields as $customfield ) {
-          if (SessionUser::getUser()->isEnabledSecurity($customfield->getFieldSecurity())) {
+          if (AuthenticationManager::GetCurrentUser()->isEnabledSecurity($customfield->getFieldSecurity())) {
             $rawQry->withColumn($customfield->getId());
           }
       }
@@ -586,7 +588,7 @@ class Person extends BasePerson implements iPhoto
       $personCustom = [];
       if ($rawQry->count() > 0) {
         foreach ($allPersonCustomFields as $customfield ) {
-            if (SessionUser::getUser()->isEnabledSecurity($customfield->getFieldSecurity())) {
+            if (AuthenticationManager::GetCurrentUser()->isEnabledSecurity($customfield->getFieldSecurity())) {
                 $value = $thisPersonCustomFields->getVirtualColumn($customfield->getId());
                 if (!empty($value)) {
                     $personCustom[] = $customfield->getName();

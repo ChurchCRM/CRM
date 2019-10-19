@@ -9,7 +9,7 @@ use ChurchCRM\Search\SearchResult;
 use ChurchCRM\Search\SearchResultGroup;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\SessionUser;
+use ChurchCRM\Authentication\AuthenticationManager;
 
 class FinanceDepositSearchResultProvider extends BaseSearchResultProvider  {
     public function __construct()
@@ -19,7 +19,7 @@ class FinanceDepositSearchResultProvider extends BaseSearchResultProvider  {
     }
 
     public function getSearchResults(string $SearchQuery) {
-        if (SessionUser::getUser()->isFinanceEnabled()) {
+        if (AuthenticationManager::GetCurrentUser()->isFinanceEnabled()) {
             if (SystemConfig::getBooleanValue("bSearchIncludeDeposits")) {
                 $this->addSearchResults($this->getDepositSearchResults($SearchQuery));
             }

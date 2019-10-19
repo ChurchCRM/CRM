@@ -3,7 +3,7 @@
 use Slim\Http\Request;
 use Slim\Http\Response;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\SessionUser;
+use ChurchCRM\Authentication\AuthenticationManager;
 use Slim\Views\PhpRenderer;
 use ChurchCRM\UserQuery;
 
@@ -16,7 +16,7 @@ $app->group('/user/current', function () {
 function enroll2fa(Request $request, Response $response, array $args)
 {
     $renderer = new PhpRenderer('templates/user/');
-    $curUser = SessionUser::getUser();
+    $curUser = AuthenticationManager::GetCurrentUser();
 
     $pageArgs = [
         'sRootPath' => SystemURLs::getRootPath(),

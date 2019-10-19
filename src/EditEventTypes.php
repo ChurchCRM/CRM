@@ -18,8 +18,9 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Authentication\AuthenticationManager;
 
-if (!$_SESSION['user']->isAdmin()) {
+if (!AuthenticationManager::GetCurrentUser()->isAdmin()) {
     header('Location: Menu.php');
 }
 $sPageTitle = gettext('Edit Event Types');

@@ -9,7 +9,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\PledgeQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\SessionUser;
+use ChurchCRM\Authentication\AuthenticationManager;
 
 class FinancePaymentSearchResultProvider extends BaseSearchResultProvider  {
     public function __construct()
@@ -19,7 +19,7 @@ class FinancePaymentSearchResultProvider extends BaseSearchResultProvider  {
     }
 
     public function getSearchResults(string $SearchQuery) {
-        if (SessionUser::getUser()->isFinanceEnabled()) {
+        if (AuthenticationManager::GetCurrentUser()->isFinanceEnabled()) {
             if (SystemConfig::getBooleanValue("bSearchIncludePayments")) {
                 $this->addSearchResults($this->getPaymentSearchResults($SearchQuery));
                 if (count(explode("-",$SearchQuery)) == 2 ) {

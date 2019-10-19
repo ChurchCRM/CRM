@@ -18,7 +18,6 @@ use ChurchCRM\Service\PersonService;
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
-use ChurchCRM\SessionUser;
 
 $personService = new PersonService();
 $systemService = new SystemService();
@@ -1612,7 +1611,7 @@ function requireUserGroupMembership($allowedRoles = null)
     if (!$allowedRoles) {
         throw new Exception('Role(s) must be defined for the function which you are trying to access.  End users should never see this error unless something went horribly wrong.');
     }
-    if ($_SESSION[$allowedRoles] || $_SESSION['user']->isAdmin()) {  //most of the time the API endpoint will specify a single permitted role, or the user is an admin
+    if ($_SESSION[$allowedRoles] || AuthenticationManager::GetCurrentUser()->isAdmin()) {  //most of the time the API endpoint will specify a single permitted role, or the user is an admin
         return true;
     } elseif (is_array($allowedRoles)) {  //sometimes we might have an array of allowed roles.
         foreach ($allowedRoles as $role) {
@@ -1639,7 +1638,7 @@ function random_color()
 
 function generateGroupRoleEmailDropdown($roleEmails, $href)
 {
-    $sMailtoDelimiter = SessionUser::getUser()->getUserConfigString("sMailtoDelimiter");
+    $sMailtoDelimiter = AuthenticationManager::GetCurrentUser()->getUserConfigString("sMailtoDelimiter");
     foreach ($roleEmails as $role => $Email) {
         if (SystemConfig::getValue('sToEmailAddress') != '' && !stristr($Email, SystemConfig::getValue('sToEmailAddress'))) {
             $Email .= $sMailtoDelimiter.SystemConfig::getValue('sToEmailAddress');

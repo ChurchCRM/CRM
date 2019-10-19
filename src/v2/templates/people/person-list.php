@@ -9,7 +9,7 @@
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\SessionUser;
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Bootstrapper;
 use ChurchCRM\ListOptionQuery;
 use ChurchCRM\GroupQuery;
@@ -42,7 +42,7 @@ foreach($ListItem as $element) {
 $ListItem = PersonCustomMasterQuery::create()->select(['Name', 'FieldSecurity'])->find();
 $CustomList[] = "Unassigned";
 foreach ($ListItem as $element) {
-    if (SessionUser::getUser()->isEnabledSecurity($element["FieldSecurity"])) {
+    if (AuthenticationManager::GetCurrentUser()->isEnabledSecurity($element["FieldSecurity"])) {
         $CustomList[] = $element["Name"];
     }
 }
@@ -234,7 +234,7 @@ foreach ($ListItem as $element) {
             // sortby name
             order: [[ 2, "asc" ]],
             // setup location of table control elements
-            dom: "<'row'<'col-sm-4'<?= SessionUser::getUser()->isCSVExport() ? "B" : "" ?>><'col-sm-4'r><'col-sm-4 searchStyle'f>>" +
+            dom: "<'row'<'col-sm-4'<?= AuthenticationManager::GetCurrentUser()->isCSVExport() ? "B" : "" ?>><'col-sm-4'r><'col-sm-4 searchStyle'f>>" +
                                 "<'row'<'col-sm-12't>>" +
                                 "<'row'<'col-sm-4'l><'col-sm-4'i><'col-sm-4'p>>",
         });

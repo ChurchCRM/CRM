@@ -22,6 +22,10 @@ class AuthenticationManager
       $_SESSION['AuthenticationProvider'] = $AuthenticationProvider;
     }
 
+    public static function GetCurrentUser() {
+      return self::GetAuthenticationProvider()->GetCurrentUser();
+    }
+
 
     public static function EndSession() {
       $result = self::GetAuthenticationProvider()->EndSession();
@@ -29,8 +33,8 @@ class AuthenticationManager
     }
 
     public static function Authenticate(IAuthenticationProvider $AuthenticationProvider, object $AuthenticationRequest) {
-      self::SetAuthenticationProvider($AuthenticationProvider);
       $result = $AuthenticationProvider->Authenticate($AuthenticationRequest);
+      self::SetAuthenticationProvider($AuthenticationProvider);
       if (null !== $result->nextStepURL){
         LoggerUtils::getAuthLogger()->addDebug("Authentication requires additional step: " . $result->nextStepURL);
         RedirectUtils::Redirect($result->nextStepURL);
@@ -44,6 +48,18 @@ class AuthenticationManager
        
       }
       return $result;
+    }
+
+    public static function GetIsAuthenticated() {
+      try {
+        $result = self::GetAuthenticationProvider()->GetAuthenticationStatus();
+        return $result->isAuthenticated;
+
+      }
+      catch (\Throwable $error){
+        LoggerUtils::getAuthLogger()->addDebug("Error determining session authentication status." . $error);
+        return false;
+      }
     }
     
     public static function EnsureAuthentication() {

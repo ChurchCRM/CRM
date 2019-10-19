@@ -5,6 +5,7 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\ChurchCRMReleaseManager;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\dto\ChurchCRMRelease;
+use ChurchCRM\Authentication\AuthenticationManager;
 
 
 class LatestReleaseTask implements iTask
@@ -48,7 +49,7 @@ class LatestReleaseTask implements iTask
 
   public function getLink()
   {
-    if ($_SESSION['user']->isAdmin()) {
+    if (AuthenticationManager::GetCurrentUser()->isAdmin()) {
       return SystemURLs::getRootPath() . '/UpgradeCRM.php';
     } else {
       return 'https://github.com/ChurchCRM/CRM/releases/latest';

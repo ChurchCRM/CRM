@@ -2,6 +2,7 @@
 
 namespace ChurchCRM\Service;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\Authentication\AuthenticationManager;
 
 class NotificationService
 {
@@ -36,7 +37,7 @@ class NotificationService
       {
         if($message->targetVersion == $_SESSION['sSoftwareInstalledVersion'])
         {
-          if (! $message->adminOnly ||  $_SESSION['user']->isAdmin())
+          if (! $message->adminOnly ||  AuthenticationManager::GetCurrentUser()->isAdmin())
           {
             array_push($notifications, $message);
           }

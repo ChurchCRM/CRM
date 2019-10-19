@@ -9,6 +9,7 @@ use ChurchCRM\Utils\MiscUtils;
 use Defuse\Crypto\Crypto;
 use Endroid\QrCode\QrCode;
 use PragmaRX\Google2FA\Google2FA;
+use ChurchCRM\Authentication\AuthenticationManager;
 
 /**
  * Skeleton subclass for representing a row from the 'user_usr' table.
@@ -185,7 +186,7 @@ class User extends BaseUser
     {
         $note = new Note();
         $note->setPerId($this->getPersonId());
-        $note->setEntered($_SESSION['user']->getId());
+        $note->setEntered(AuthenticationManager::GetCurrentUser()->getId());
         $note->setType('user');
 
         switch ($type) {

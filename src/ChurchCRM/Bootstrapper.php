@@ -15,7 +15,7 @@ namespace ChurchCRM
   use Propel\Runtime\Propel;
   use ChurchCRM\Utils\LoggerUtils;
   use ChurchCRM\Utils\RedirectUtils;
-  use ChurchCRM\SessionUser;
+  use ChurchCRM\Authentication\AuthenticationManager;
 
   class Bootstrapper
   {
@@ -267,11 +267,11 @@ namespace ChurchCRM
       private static function configureUserEnvironment()  // TODO: This function needs to stop creating global variable-variables.
       {
           global $cnInfoCentral;
-          if (SessionUser::isActive()) {      // set on POST to /session/begin
+          if (AuthenticationManager::GetIsAuthenticated()) {      // set on POST to /session/begin
               // Load user variables from user config table.
               // **************************************************
               $sSQL = 'SELECT ucfg_name, ucfg_value AS value '
-              ."FROM userconfig_ucfg WHERE ucfg_per_ID='".SessionUser::getId()."'";
+              ."FROM userconfig_ucfg WHERE ucfg_per_ID='".AuthenticationManager::GetCurrentUser()->getId()."'";
               $rsConfig = mysqli_query($cnInfoCentral, $sSQL);     // Can't use RunQuery -- not defined yet
               if ($rsConfig) {
                   while (list($ucfg_name, $value) = mysqli_fetch_row($rsConfig)) {

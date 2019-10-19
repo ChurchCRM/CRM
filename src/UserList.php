@@ -22,11 +22,11 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\UserQuery;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\RedirectUtils;
-use ChurchCRM\SessionUser;
+use ChurchCRM\Authentication\AuthenticationManager;
 
 // Security: User must be an Admin to access this page.
 // Otherwise, re-direct them to the main menu.
-if (!SessionUser::isAdmin()) {
+if (!AuthenticationManager::GetCurrentUser()->isAdmin()) {
     RedirectUtils::SecurityRedirect("Admin");
 }
 
@@ -68,7 +68,7 @@ require 'Include/Header.php';
                                                                                    aria-hidden="true"></i></a>&nbsp;&nbsp;
                         <a href="v2/user/<?= $user->getId() ?>"><i class="fa fa-eye"
                                                                                    aria-hidden="true"></i></a>&nbsp;&nbsp;
-                        <?php if ($user->getId() != $_SESSION['user']->getId()) {
+                        <?php if ($user->getId() != AuthenticationManager::GetCurrentUser()->getId()) {
     ?>
                             <a onclick="deleteUser(<?= $user->getId() ?>, '<?= $user->getPerson()->getFullName() ?>')"><i
                                         class="fa fa-trash-o" aria-hidden="true"></i></a>
@@ -98,7 +98,7 @@ require 'Include/Header.php';
                     <td>
                         <a href="UserPasswordChange.php?PersonID=<?= $user->getId() ?>&FromUserList=True"><i
                                     class="fa fa-wrench" aria-hidden="true"></i></a>&nbsp;&nbsp;
-                        <?php if ($user->getId() != $_SESSION['user']->getId() && !empty($user->getEmail())) {
+                        <?php if ($user->getId() != AuthenticationManager::GetCurrentUser()->getId() && !empty($user->getEmail())) {
         ?>
                             <a onclick="resetUserPassword(<?= $user->getId() ?>, '<?= $user->getPerson()->getFullName() ?>')"><i
                                         class="fa fa-send-o" aria-hidden="true"></i></a>

@@ -21,8 +21,9 @@ require 'Include/Functions.php';
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\Authentication\AuthenticationManager;
 
-if (!$_SESSION['user']->isAddEvent()) {
+if (!AuthenticationManager::GetCurrentUser()->isAddEvent()) {
     header('Location: Menu.php');
 }
 
