@@ -74,10 +74,7 @@ function beginSession(Request $request, Response $response, array $args)
         $pageArgs['sErrorText'] = $authenticationResult->message;
     }
 
-    $renderer = new PhpRenderer('templates/');
-    $curUser = AuthenticationManager::GetCurrentUser();
-
-    $pageArgs['user'] = $curUser;
+    $renderer = new PhpRenderer('templates/');    
     
     $pageArgs['prefilledUserName'] = "";
     # Defermine if approprirate to pre-fill the username field
