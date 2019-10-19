@@ -30,11 +30,11 @@ if (!empty($sHeader)) {
 <div class="register-box" style="width: 600px;">
     <div class="register-logo">
         <a href="<?= SystemURLs::getRootPath() ?>/"><?= $headerHTML ?></a>
-        <h3>Register your family</h3>
+        <h3><?= gettext("Register your family") ?></h3>
     </div>
     <form id="registration-form">
         <div id="wizard">
-            <h2>Family Info</h2>
+            <h2><?= gettext("Family Info") ?></h2>
             <section>
                 <div class="form-group has-feedback">
                     <span class="fa fa-user form-control-feedback"></span>
@@ -77,8 +77,8 @@ if (!empty($sHeader)) {
                     <select id="familyCount" name="familyCount" class="form-control">
                         <option>1</option>
                         <option>2</option>
-                        <option>3</option>
-                        <option selected>4</option>
+                        <option selected>3</option>
+                        <option>4</option>
                         <option>5</option>
                         <option>6</option>
                         <option>7</option>
@@ -86,7 +86,7 @@ if (!empty($sHeader)) {
                     </select>
                 </div>
             </section>
-            <h2>Members</h2>
+            <h2><?= gettext("Members") ?></h2>
             <section>
                 <?php for ($x = 1; $x <= 8; $x++) { ?>
                     <div id="memberBox<?= $x ?>" class="box">
@@ -186,7 +186,7 @@ if (!empty($sHeader)) {
                     </div>
                 <?php } ?>
             </section>
-            <h2>Review</h2>
+            <h2><?= gettext("Review")?></h2>
             <section>
                 <h3 class="text-center"><span id="displayFamilyName"></span> <?= gettext("Family")?> </h3>
                 <p>
@@ -194,7 +194,7 @@ if (!empty($sHeader)) {
                     <strong><?= gettext("Phone")?>:</strong> <span id="displayFamilyPhone"></span> <br/>
                 </p>
                 <br/>
-                
+
                 <table class="table table-striped table-bordered table-responsive">
                     <?php for ($x = 1; $x <= 8; $x++) { ?>
                         <tr id="displayFamilyPerson<?= $x ?>">

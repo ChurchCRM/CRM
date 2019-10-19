@@ -16,16 +16,9 @@ $(document).ready(function () {
         headerTag: "h2",
         bodyTag: "section",
         transitionEffect: "slideLeft",
-      //  enableCancelButton: true,
 
         labels: {
-            cancel: "Exit",
-            current: "current step:",
-            pagination: "Pagination",
-            finish: "Register",
-            next: "Next",
-            previous: "Previous",
-            loading: "Loading ..."
+            finish: i18next.t("Register")
         },
 
         onCanceled: function (event) {
@@ -104,18 +97,18 @@ $(document).ready(function () {
                 data: JSON.stringify(buildFamilyObject())
             }).done(function (data) {
                 bootbox.dialog({
-                    title: "Registration Complete",
-                    message: "Thank you for registering your family",
+                    title: i18next.t("Registration Complete"),
+                    message: i18next.t("Thank you for registering your family"),
                     buttons: {
                         new: {
-                            label: "Register another family!",
+                            label: i18next.t("Register another family!"),
                             className: 'btn-default',
                             callback: function(){
                                 window.location.href = window.CRM.root + "/external/register/";
                             }
                         },
                         done: {
-                            label: "Done, show me the homepage!",
+                            label: i18next.t("Done, show me the homepage!"),
                             className: 'btn-info',
                             callback: function(){
                                 window.location.href = window.CRM.churchWebSite;
@@ -125,7 +118,7 @@ $(document).ready(function () {
                 });
             }).fail(function (data) {
                 bootbox.alert({
-                    title: "Sorry, we are unable to process your request at this point in time.",
+                    title: i18next.t("Sorry, we are unable to process your request at this point in time."),
                     message: data.responseText
                 });
             });
