@@ -240,7 +240,7 @@ class SystemConfig
         "sLastSoftwareUpdateCheckTimeStamp" => new ConfigItem(2064, "sLastSoftwareUpdateCheckTimeStamp", "text", "", gettext("Last Software Update Check Timestamp")),
         "bAllowPrereleaseUpgrade" => new ConfigItem(2065, "bAllowPrereleaseUpgrade", "boolean", "0", gettext("Allow system upgrades to release marked as 'pre release' on GitHub")),
         "bSearchIncludeCalendarEvents" => new ConfigItem(2066, "bSearchIncludeCalendarEvents", "boolean", "1", gettext("Search Calendar Events")),
-        "bSearchIncludeCalendarEventsMax" => new ConfigItem(2067, "bSearchIncludeCalendarEventsMax", "text", "15", gettext("Maximum number of Calendar Events")),  
+        "bSearchIncludeCalendarEventsMax" => new ConfigItem(2067, "bSearchIncludeCalendarEventsMax", "text", "15", gettext("Maximum number of Calendar Events")),
         );
   }
 
