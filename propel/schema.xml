@@ -71,11 +71,9 @@
         </vendor>
         <behavior name="validate">
             <parameter name="rule1" value="{column: per_firstname, validator: NotNull}" />
-            <parameter name="rule2" value="{column: per_firstname, validator: NotBlank}" />
-            <parameter name="rule3" value="{column: per_firstname, validator: Length, options: {min:2, max: 50}}" />
-            <parameter name="rule4" value="{column: per_lastname, validator: NotNull}" />
-            <parameter name="rule5" value="{column: per_lastname, validator: NotBlank}" />
-            <parameter name="rule6" value="{column: per_lastname, validator: Length, options: {min:2, max: 50}}" />
+            <parameter name="rule2" value="{column: per_firstname, validator: Length, options: {max: 50}}" />
+            <parameter name="rule3" value="{column: per_lastname, validator: NotNull}" />
+            <parameter name="rule4" value="{column: per_lastname, validator: Length, options: {max: 50}}" />
         </behavior>
     </table>
 
@@ -90,9 +88,9 @@
         </index>
         <behavior name="validate">
             <parameter name="rule1" value="{column: linkname, validator: NotNull}" />
-            <parameter name="rule2" value="{column: linkname, validator: NotBlank}" />
-            <parameter name="rule3" value="{column: linkname, validator: Length, options: {min:2, max: 50}}" />
-            <parameter name="rule4" value="{column: linkuri, validator: Url}" />
+            <parameter name="rule2" value="{column: linkname, validator: Length, options: {max: 50}}" />
+            <parameter name="rule3" value="{column: linkuri, validator: NotNull}" />
+            <parameter name="rule4" value="{column: linkuri, validator: Length, options: {max: 500}}" />
         </behavior>
     </table>
 
@@ -174,8 +172,7 @@
         </vendor>
         <behavior name="validate">
             <parameter name="rule1" value="{column: fam_name, validator: NotNull}" />
-            <parameter name="rule2" value="{column: fam_name, validator: NotBlank}" />
-            <parameter name="rule3" value="{column: fam_name, validator: Length, options: {min: 2, max: 50}}" />
+            <parameter name="rule2" value="{column: fam_name, validator: Length, options: {max: 50}}" />
         </behavior>
     </table>
     <table name="family_custom_master" idMethod="native" phpName="FamilyCustomMaster">
@@ -509,7 +506,7 @@
         <column name="primary_contact_person_id" phpName="PrimaryContactPersonId" type="INTEGER" required="true" defaultValue="0"/>
         <column name="secondary_contact_person_id" phpName="SecondaryContactPersonId" type="INTEGER" required="true" defaultValue="0"/>
         <column name="event_url" phpName="URL" type="LONGVARCHAR"/>
-        
+
         <foreign-key foreignTable="event_types" name="EventType" refPhpName="EventType">
             <reference local="event_type" foreign="type_id"/>
         </foreign-key>
