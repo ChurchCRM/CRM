@@ -140,7 +140,7 @@ if (!empty($sHeader)) {
                                     <div class="input-group-addon">
                                         <i class="fa fa-envelope"></i>
                                     </div>
-                                    <input id="memberEmail-<?= $x ?>" class="form-control" maxlength="50" placeholder="<?= gettext('Email') ?>">
+                                    <input id="memberEmail-<?= $x ?>" class="form-control" maxlength="50" placeholder="<?= gettext('Email') ?>" type="email">
                                 </div>
                             </div>
                             <div class="form-group has-feedback">
