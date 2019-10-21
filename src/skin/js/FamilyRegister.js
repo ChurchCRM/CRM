@@ -1,8 +1,4 @@
 $(document).ready(function () {
-    $(".inputDatePicker").datepicker({
-        autoclose: true
-    });
-    $("[data-mask]").inputmask();
 
     let registerWizard = $("#registration-form");
 
@@ -124,6 +120,12 @@ $(document).ready(function () {
             });
         }
     });
+
+    $(".inputDatePicker").datepicker({
+        autoclose: true
+    });
+
+    $("[data-mask]").inputmask();
 
     function buildFamilyObject() {
         let family = {};
