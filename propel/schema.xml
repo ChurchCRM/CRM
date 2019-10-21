@@ -509,7 +509,7 @@
         <column name="primary_contact_person_id" phpName="PrimaryContactPersonId" type="INTEGER" required="true" defaultValue="0"/>
         <column name="secondary_contact_person_id" phpName="SecondaryContactPersonId" type="INTEGER" required="true" defaultValue="0"/>
         <column name="event_url" phpName="URL" type="LONGVARCHAR"/>
-        
+
         <foreign-key foreignTable="event_types" name="EventType" refPhpName="EventType">
             <reference local="event_type" foreign="type_id"/>
         </foreign-key>
