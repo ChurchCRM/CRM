@@ -10,8 +10,7 @@ Welcome to Church Web CRM
 [![StyleCI](https://styleci.io/repos/30856851/shield?branch=master)](https://styleci.io/repos/30856851)
 [![POEditor](https://img.shields.io/badge/Languages-22-green.svg)](https://poeditor.com/join/project/RABdnDSqAt)
 
-
-[JetBrain PHP Storm IDE](https://www.jetbrains.com/?from=ChurchCRM)
+Thanks to Jetbrains for providing a free license for their excellent [JetBrain PHP Storm IDE](https://www.jetbrains.com/?from=ChurchCRM)
 
 
 ### Docker
