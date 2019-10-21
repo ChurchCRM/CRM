@@ -28,7 +28,9 @@ class AuthMiddleware {
                     session_destroy();
                 }
             }
-            else if (AuthenticationManager::GetIsAuthenticated()) {
+            // validate the user session; however, do not update tLastOperation if the requested path is "/background"
+            // since /background operations do not connotate user activity.
+            else if (AuthenticationManager::ValidateUserSessionIsActive(!$this->isPath( $request, "background"))) {
                 $this->user = AuthenticationManager::GetCurrentUser();
             }
             else {
@@ -37,25 +39,6 @@ class AuthMiddleware {
             return $next( $request, $response )->withHeader( "CRM_USER_ID", $this->user->getId());
         }
         return $next( $request, $response );
-    }
-
-    private function isUserSessionValid(Request $request) {
-      if (empty($this->user)) {
-        return false;
-      }
-      if (SystemConfig::getValue('iSessionTimeout') > 0) {
-        if ((time() - $_SESSION['tLastOperation']) > SystemConfig::getValue('iSessionTimeout')) {
-           return false;
-        } else {
-          if(!$this->isPath( $request, "background"))
-          {
-            //Only update tLastOperation if the request was an actual user request.
-            //Background requests should not update tLastOperation
-            $_SESSION['tLastOperation'] = time();
-          }
-        }
-      }
-      return true;
     }
 
     private function isPath(Request $request, $pathPart) {

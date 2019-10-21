@@ -162,7 +162,7 @@ class LocalAuthentication implements IAuthenticationProvider
       $this->bNoPasswordRedirect = true;
     }
 
-    public function GetAuthenticationStatus() : AuthenticationResult
+    public function ValidateUserSessionIsActive($updateLastOperationTimestamp) : AuthenticationResult
     {
 
       $authenticationResult = new AuthenticationResult();
@@ -173,8 +173,6 @@ class LocalAuthentication implements IAuthenticationProvider
         LoggerUtils::getAuthLogger()->addDebug("No active user session.");
         return $authenticationResult;
       }
-
-      
       LoggerUtils::getAuthLogger()->addDebug("Processing session for user: " . $this->currentUser->getName());
 
       // Next, make sure the user in the sesion still exists in the database.
@@ -187,14 +185,13 @@ class LocalAuthentication implements IAuthenticationProvider
         return $authenticationResult;
       }
 
-
       // Next, check for login timeout.  If login has expired, redirect to login page
       if (SystemConfig::getValue('iSessionTimeout') > 0) {
         if ((time() - $_SESSION['tLastOperation']) > SystemConfig::getValue('iSessionTimeout')) {
           LoggerUtils::getAuthLogger()->addDebug("User session timed out");
           $authenticationResult->isAuthenticated = false;
           return $authenticationResult;
-        } else {
+        } else if( $updateLastOperationTimestamp ) {
           $_SESSION['tLastOperation'] = time();
         }
       }

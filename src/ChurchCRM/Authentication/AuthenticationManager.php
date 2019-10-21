@@ -76,9 +76,9 @@ class AuthenticationManager
       return $result;
     }
 
-    public static function GetIsAuthenticated() {
+    public static function ValidateUserSessionIsActive($updateLastOperationTimestamp = true) {
       try {
-        $result = self::GetAuthenticationProvider()->GetAuthenticationStatus();
+        $result = self::GetAuthenticationProvider()->ValidateUserSessionIsActive($updateLastOperationTimestamp);
         return $result->isAuthenticated;
 
       }
@@ -89,12 +89,12 @@ class AuthenticationManager
     }
     
     public static function EnsureAuthentication() {
-      // This function differs from the sematinc `GetAuthenticationStatus` in that it will
+      // This function differs from the sematinc `ValidateUserSessionIsActive` in that it will
       // take corrective action to redirect the user to an appropriate login location
       // if the current session is not actuall authenticated
 
       try {
-        $result = self::GetAuthenticationProvider()->GetAuthenticationStatus();
+        $result = self::GetAuthenticationProvider()->ValidateUserSessionIsActive(true);
         // Auth providers will always include a `nextStepURL` if authentication fails.
         // Sometimes other actions may require a `nextStepURL` that should be enforced with 
         // an autentication request (2FA, Expired Password, etc).

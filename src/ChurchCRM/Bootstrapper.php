@@ -267,7 +267,7 @@ namespace ChurchCRM
       private static function configureUserEnvironment()  // TODO: This function needs to stop creating global variable-variables.
       {
           global $cnInfoCentral;
-          if (AuthenticationManager::GetIsAuthenticated()) {      // set on POST to /session/begin
+          if (AuthenticationManager::ValidateUserSessionIsActive(false)) {      // set on POST to /session/begin
               // Load user variables from user config table.
               // **************************************************
               $sSQL = 'SELECT ucfg_name, ucfg_value AS value '
