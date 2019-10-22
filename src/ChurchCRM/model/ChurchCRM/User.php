@@ -350,7 +350,14 @@ class User extends BaseUser
     public function isTwoFACodeValid($twoFACode) {
         $google2fa = new Google2FA();
         $window = 2; //TODO: make this a system config
-        return $google2fa->verifyKey($this->getDecryptedTwoFactorAuthSecret(), $twoFACode, $window);
+        $timestamp = $google2fa->verifyKeyNewer($this->getDecryptedTwoFactorAuthSecret(), $twoFACode, $this->getTwoFactorAuthLastKeyTimestamp(), $window);
+        if ($timestamp !== false) {
+            $this->setTwoFactorAuthLastKeyTimestamp($timestamp);
+            $this->save();
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public function isTwoFaRecoveryCodeValid($twoFaRecoveryCode) {
