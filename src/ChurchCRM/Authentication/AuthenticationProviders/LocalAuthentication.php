@@ -24,6 +24,7 @@ class LocalAuthentication implements IAuthenticationProvider
      */
     private $currentUser;
     private $bPendingTwoFactorAuth;
+    private $tLastOperationTimestamp;
 
     public function __construct() {
       $this->bNoPasswordRedirect = false;
@@ -74,7 +75,7 @@ class LocalAuthentication implements IAuthenticationProvider
       $_SESSION['sGlobalMessage'] = '';
 
       // Initialize the last operation time
-      $_SESSION['tLastOperation'] = time();
+      $this->tLastOperationTimestamp = time();
 
       $_SESSION['bHasMagicQuotes'] = 0;
 
@@ -187,12 +188,12 @@ class LocalAuthentication implements IAuthenticationProvider
 
       // Next, check for login timeout.  If login has expired, redirect to login page
       if (SystemConfig::getValue('iSessionTimeout') > 0) {
-        if ((time() - $_SESSION['tLastOperation']) > SystemConfig::getValue('iSessionTimeout')) {
+        if ((time() - $this->tLastOperationTimestamp) > SystemConfig::getValue('iSessionTimeout')) {
           LoggerUtils::getAuthLogger()->addDebug("User session timed out");
           $authenticationResult->isAuthenticated = false;
           return $authenticationResult;
         } else if( $updateLastOperationTimestamp ) {
-          $_SESSION['tLastOperation'] = time();
+          $this->tLastOperationTimestamp = time();
         }
       }
       // Next, if this user needs to change password, send to that page
