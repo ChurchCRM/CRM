@@ -112,6 +112,15 @@ $familyAddress = $family->getAddress();
                             <a class="btn btn-app" href="<?= SystemURLs::getRootPath()?>/CanvassEditor.php?FamilyID=<?= $family->getId() ?>&amp;FYID=<?= $_SESSION['idefaultFY'] ?>&amp;linkBack=v2/family/<?= $family->getId() ?>/view">
                                 <i class="fa fa-refresh"></i><?= MakeFYString($_SESSION['idefaultFY']) . gettext(" Canvass Entry") ?></a>
                         <?php } ?>
+
+                        <?php if (SessionUser::getUser()->isFinanceEnabled()) { ?>
+                            <a class="btn btn-app"
+                               href="<?= SystemURLs::getRootPath()?>/PledgeEditor.php?FamilyID=<?= $family->getId() ?>&amp;linkBack=v2/family/<?= $family->getId() ?>/view&amp;PledgeOrPayment=Pledge">
+                                <i class="fa fa-check-circle-o"></i><?= gettext("Add a new pledge") ?></a>
+                            <a class="btn btn-app"
+                               href="<?= SystemURLs::getRootPath()?>/PledgeEditor.php?FamilyID=<?= $family->getId() ?>&amp;linkBack=v2/family/<?= $family->getId() ?>/view&amp;PledgeOrPayment=Payment">
+                                <i class="fa fa-money"></i><?= gettext("Add a new payment") ?></a>
+                        <?php } ?>
                     </div>
                 </div>
             </div>
@@ -199,52 +208,6 @@ $familyAddress = $family->getAddress();
                 </div>
             </div>
         </div>
-
-
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="box">
-                    <div class="box-header">
-                        <i class="fa fa-map"></i>
-                        <h3 class="box-title"><?= gettext("Address") ?></h3>
-                        <div class="box-tools pull-right">
-                            <button type="button" class="btn btn-box-tool edit-family"><i
-                                    class="fa fa-edit"></i>
-                            </button>
-                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
-                                    class="fa fa-minus"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="box-body">
-                        <a href="http://maps.google.com/?q=<?= $familyAddress ?>"
-                           target="_blank"><?= $familyAddress ?></a></span>
-                        <p/>
-                        <!-- Maps Start -->
-                        <?php if (!empty($family->getLatitude())) : ?>
-                            <div class="border-right border-left">
-                                <section id="map">
-                                    <div id="map1"></div>
-                                </section>
-                            </div>
-                            <!-- Map Scripts -->
-                            <script
-                                src="//maps.googleapis.com/maps/api/js?key=<?= SystemConfig::getValue("sGoogleMapKey") ?>&sensor=false"></script>
-                            <script>
-                                var LatLng = new google.maps.LatLng(<?= $family->getLatitude() ?>, <?= $family->getLongitude() ?>)
-                            </script>
-                            <script src="<?= SystemURLs::getRootPath() ?>/skin/js/Map.js"></script>
-                            <style>
-                                #map1 {
-                                    height: 200px;
-                                }
-                            </style>
-                        <?php endif; ?>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Maps End -->
 
         <div class="row">
             <div class="col-lg-12">
@@ -424,6 +387,51 @@ $familyAddress = $family->getAddress();
                 } ?>
             </div>
         </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="box">
+                    <div class="box-header">
+                        <i class="fa fa-map"></i>
+                        <h3 class="box-title"><?= gettext("Address") ?></h3>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool edit-family"><i
+                                        class="fa fa-edit"></i>
+                            </button>
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                        class="fa fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <a href="http://maps.google.com/?q=<?= $familyAddress ?>"
+                           target="_blank"><?= $familyAddress ?></a></span>
+                        <p/>
+                        <!-- Maps Start -->
+                        <?php if (!empty($family->getLatitude())) : ?>
+                            <div class="border-right border-left">
+                                <section id="map">
+                                    <div id="map1"></div>
+                                </section>
+                            </div>
+                            <!-- Map Scripts -->
+                            <script
+                                    src="//maps.googleapis.com/maps/api/js?key=<?= SystemConfig::getValue("sGoogleMapKey") ?>&sensor=false"></script>
+                            <script>
+                                var LatLng = new google.maps.LatLng(<?= $family->getLatitude() ?>, <?= $family->getLongitude() ?>)
+                            </script>
+                            <script src="<?= SystemURLs::getRootPath() ?>/skin/js/Map.js"></script>
+                            <style>
+                                #map1 {
+                                    height: 200px;
+                                }
+                            </style>
+                        <?php endif; ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Maps End -->
         <div class="box">
             <div class="box-header">
                 <i class="fa fa-history"></i>
@@ -498,6 +506,37 @@ $familyAddress = $family->getAddress();
         </div>
     </div>
 </div>
+
+<?php if (SessionUser::getUser()->isFinanceEnabled()) {
+?>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="row">
+            <div class="col-lg-12">
+            <div class="box">
+                <div class="box-header">
+                    <i class="fa fa-map"></i>
+                    <h3 class="box-title"><?= gettext("Pledges and Payments") ?></h3>
+                    <div class="box-tools pull-right">
+                        <input type="checkbox" id="ShowPledges" <?= SessionUser::getUser()->getShowPledges() ? "checked" : "" ?>> <?= gettext("Show Pledges") ?>
+                        <input type="checkbox" id="ShowPayments" <?= SessionUser::getUser()->getShowPayments() ? "checked" : "" ?>> <?= gettext("Show Payments") ?>
+                        <label for="ShowSinceDate"><?= gettext("Since") ?>:</label>
+                        <input type="text" class="date-picker" id="ShowSinceDate"
+                               value="<?= SessionUser::getUser()->getFormattedShowSince() ?>" maxlength="10" id="ShowSinceDate" size="15">
+                    </div>
+                </div>
+                <div class="box-body">
+                    <table id="pledge-payment-v2-table" class="table table-striped table-bordered table-responsive data-table">
+                        <tbody></tbody>
+                    </table>
+                    <?php } ?>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+
 
 
 

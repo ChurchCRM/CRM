@@ -1,7 +1,7 @@
 import * as React from 'react';
-import CRMEvent from '../interfaces/CRMEvent';
-import Calendar from '../interfaces/Calendar';
-import EventType from '../interfaces/EventType';
+import CRMEvent from '../../interfaces/CRMEvent';
+import Calendar from '../../interfaces/Calendar';
+import EventType from '../../interfaces/EventType';
 
 const EventPropertiesViewer: React.FunctionComponent<{ event: CRMEvent, calendars: Array<Calendar>, eventTypes: Array<EventType> }> = ({ event, calendars, eventTypes }) => { 
   return (

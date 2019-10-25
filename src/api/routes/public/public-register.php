@@ -69,7 +69,7 @@ function registerFamilyAPI(Request $request, Response $response, array $args)
         }
 
     } else {
-        return $response->withStatus(401)->withJson(["error" => gettext("Validation Error"),
+        return $response->withStatus(400)->withJson(["error" => gettext("Validation Error"),
             "failures" => ORMUtils::getValidationErrors($family->getValidationFailures())]);
     }
 
@@ -81,7 +81,7 @@ function registerFamilyAPI(Request $request, Response $response, array $args)
     }
     
     $family->save();
-    return $response->withHeader('Content-Type: application/json')->write($family->exportTo('JSON'));
+    return $response->withHeader('Content-Type','application/json')->write($family->exportTo('JSON'));
 }
 
 function registerPersonAPI(Request $request, Response $response, array $args)
@@ -94,9 +94,9 @@ function registerPersonAPI(Request $request, Response $response, array $args)
     $person->setDateEntered(new \DateTime());
     if ($person->validate()) {
         $person->save();
-        return $response->withHeader('Content-Type: application/json')->write($person->exportTo('JSON'));
+        return $response->withHeader('Content-Type','application/json')->write($person->exportTo('JSON'));
     }
 
-    return $response->withStatus(401)->withJson(["error" => gettext("Validation Error"),
+    return $response->withStatus(400)->withJson(["error" => gettext("Validation Error"),
         "failures" => ORMUtils::getValidationErrors($person->getValidationFailures())]);
 }
