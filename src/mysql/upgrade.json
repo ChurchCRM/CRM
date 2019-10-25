@@ -220,7 +220,7 @@
     },
     "pre-3.5.0": {
         "versions": [
-            "3.4.0",
+            "3.4.0"
         ],
         "scripts": [
             "/mysql/upgrade/3.5.0.sql",
