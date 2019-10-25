@@ -348,14 +348,21 @@ $bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() ||
                     while ($Row = mysqli_fetch_array($rsCustomFields)) {
                         extract($Row);
                         $currentData = trim($aCustomData[$custom_Field]);
+                        $displayIcon = "fa fa-tag";
+                        $displayLink = "";
                         if ($currentData != '') {
-                            if ($type_ID == 11) {
+                            if ($type_ID == 9) {
+                                $displayIcon = "fa fa-user";
+                                $displayLink = SystemURLs::getRootPath() .'/PersonView.php?PersonID=' . $currentData;
+                            } elseif ($type_ID == 11) {
                                 $custom_Special = $sPhoneCountry;
+                                $displayIcon = "fa-phone";
+                                $displayLink = "tel:".$temp_string;
                             }
-                            echo '<li><i class="fa-li '.(($type_ID == 11)?'fa fa-phone':'fa fa-tag').'"></i>'.$custom_Name.': <span>';
+                            echo '<li><i class="fa-li ' . $displayIcon . '"></i>'.$custom_Name.': <span>';
                             $temp_string=nl2br((displayCustomField($type_ID, $currentData, $custom_Special)));
-                            if ($type_ID == 11) {
-                                echo "<a href=\"tel:".$temp_string."\">".$temp_string."</a>";
+                            if ($displayLink) {
+                                echo "<a href=\"" . $displayLink . "\">" . $temp_string . "</a>";
                             } else {
                                 echo $temp_string;
                             }
@@ -411,7 +418,7 @@ $bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() ||
                 <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= $iPersonID ?>"><i class="fa fa-eye"></i> <?= gettext('View User') ?></a>
             <?php
             } ?>
-            <a class="btn btn-app" role="button" href="<?= SystemURLs::getRootPath() ?>/SelectList.php?mode=person"><i class="fa fa-list"></i> <?= gettext("List Members") ?></span></a>
+            <a class="btn btn-app" role="button" href="<?= SystemURLs::getRootPath() ?>/v2/people"><i class="fa fa-list"></i> <?= gettext("List Members") ?></span></a>
         </div>
     </div>
     <div class="col-lg-9 col-md-9 col-sm-9">

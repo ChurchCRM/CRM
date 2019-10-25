@@ -708,6 +708,10 @@ msgstr "Selecteer de activiteit waarvoor u personen wilt inboeken"
 msgid "Select Event"
 msgstr "Selecteer de activiteit"
 
+#: external/templates/verify/verify-family-info.php:145
+msgid "Verify"
+msgstr "Controleren"
+
 #: 
 msgid "Add Visitor"
 msgstr "Voeg bezoeker toe"
@@ -3945,6 +3949,14 @@ msgstr "Bijgedragen"
 msgid "M/F"
 msgstr "M/V"
 
+#: Reports/ClassAttendance.php:103 Reports/ClassList.php:79
+msgid "Teacher"
+msgstr "Leraar"
+
+#: Reports/ClassAttendance.php:110 Reports/ClassList.php:127
+msgid "Student"
+msgstr "Leerling"
+
 #: 
 msgid "Liaison"
 msgstr "Liaison"
@@ -4269,6 +4281,10 @@ msgstr "Gebruikers"
 #: 
 msgid "Calendar"
 msgstr "Kalender"
+
+#: 
+msgid "Members"
+msgstr "Leden"
 
 #: 
 msgid "Add New Person"
@@ -6706,6 +6722,10 @@ msgstr "Twitter"
 #: 
 msgid "LinkedIn"
 msgstr "LinkedIn"
+
+#: 
+msgid "Visitors"
+msgstr "Bezoekers"
 
 #: 
 msgid "Move Event"

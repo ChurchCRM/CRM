@@ -663,6 +663,10 @@ msgstr "Velg hendelsen som du ønsker å kontrollere folk i for"
 msgid "Select Event"
 msgstr "Velg hendelse"
 
+#: external/templates/verify/verify-family-info.php:145
+msgid "Verify"
+msgstr "Verifisere"
+
 #: 
 msgid "Add Visitor"
 msgstr "Legg besøkende"
@@ -3400,6 +3404,14 @@ msgstr "Pantsatt"
 #: 
 msgid "M/F"
 msgstr "M / F"
+
+#: Reports/ClassAttendance.php:103 Reports/ClassList.php:79
+msgid "Teacher"
+msgstr "Lærer"
+
+#: Reports/ClassAttendance.php:110 Reports/ClassList.php:127
+msgid "Student"
+msgstr "Student"
 
 #: 
 msgid "Liaison"

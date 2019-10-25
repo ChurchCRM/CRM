@@ -652,6 +652,10 @@ msgstr "Zgjidhni ngjarje për të cilën ju do të donte për të kontrolluar nj
 msgid "Select Event"
 msgstr "Zgjidhni Event"
 
+#: external/templates/verify/verify-family-info.php:145
+msgid "Verify"
+msgstr "Verifikoj"
+
 #: 
 msgid "Add Visitor"
 msgstr "Shto Vizitor"
@@ -3227,6 +3231,14 @@ msgstr "U zotua"
 msgid "M/F"
 msgstr "M / F"
 
+#: Reports/ClassAttendance.php:103 Reports/ClassList.php:79
+msgid "Teacher"
+msgstr "Mësues"
+
+#: Reports/ClassAttendance.php:110 Reports/ClassList.php:127
+msgid "Student"
+msgstr "Student"
+
 #: 
 msgid "Liaison"
 msgstr "Ndërlidhje"
@@ -3407,6 +3419,10 @@ msgstr "Krijo Lista Class"
 #: 
 msgid "Create Attendance Sheet"
 msgstr "Krijo Pjesëmarrja Sheet"
+
+#: 
+msgid "Members"
+msgstr "Anëtarët"
 
 #: 
 msgid "Add New Person"

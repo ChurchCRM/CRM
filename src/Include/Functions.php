@@ -10,7 +10,7 @@
 
  ******************************************************************************/
 
-use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\Cart;
 use ChurchCRM\Service\PersonService;
@@ -227,8 +227,9 @@ function RunQuery($sSQL, $bStopOnError = true)
     if ($result = mysqli_query($cnInfoCentral, $sSQL)) {
         return $result;
     } elseif ($bStopOnError) {
+        LoggerUtils::getAppLogger()->error(gettext('Cannot execute query.')." " . $sSQL . " -|- " . mysqli_error($cnInfoCentral));
         if (SystemConfig::getValue('sLogLevel') == "100") { // debug level
-            die(gettext('Cannot execute query.')."<p>$sSQL<p>".mysqli_error());
+            die(gettext('Cannot execute query.')."<p>$sSQL<p>".mysqli_error($cnInfoCentral));
         } else {
             die('Database error or invalid data');
         }
@@ -541,7 +542,7 @@ function ExpandPhoneNumber($sPhoneNumber, $sPhoneCountry, &$bWeird)
     $length = strlen($sPhoneNumber);
 
     switch ($sPhoneCountry) {
-    case 'United States':
+    case 'United States' || 'Canada':
       if ($length == 0) {
           return '';
       } // 7 digit phone # with extension
@@ -561,7 +562,7 @@ function ExpandPhoneNumber($sPhoneNumber, $sPhoneCountry, &$bWeird)
           return $sPhoneNumber;
       }
       break;
-
+    
     // If the country is unknown, we don't know how to format it, so leave it untouched
     default:
       return $sPhoneNumber;

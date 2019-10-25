@@ -11,6 +11,8 @@ use ChurchCRM\Utils\InputUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 use ChurchCRM\FamilyCustomMasterQuery;
 use ChurchCRM\FamilyCustomQuery;
+use ChurchCRM\dto\PeopleCustomField;
+use ChurchCRM\SessionUser;
 
 $app->group('/family', function () {
     $this->get('','listFamilies');
@@ -81,15 +83,20 @@ function viewFamily(Request $request, Response $response, array $args)
     // get family with all the extra columns created
     $rawQry =  FamilyCustomQuery::create();
     foreach ($allFamilyCustomFields as $customfield ) {
-        $rawQry->withColumn($customfield->getCustomField());
+        $rawQry->withColumn($customfield->getField());
     }
     $thisFamilyCustomFields = $rawQry->findOneByFamId($familyId);
 
-    $familyCustom = [];
-    foreach ($allFamilyCustomFields as $customfield ) {
-        $value = $thisFamilyCustomFields->getVirtualColumn($customfield->getCustomField());
-        if (!empty($value)) {
-            array_push($familyCustom, $customfield->getCustomName() . ": " . $value);
+    if ($thisFamilyCustomFields) {
+        $familyCustom = [];
+        foreach ($allFamilyCustomFields as $customfield ) {
+            if (SessionUser::getUser()->isEnabledSecurity($customfield->getFieldSecurity())) {
+                $value = $thisFamilyCustomFields->getVirtualColumn($customfield->getField());
+                if (!empty($value)) {
+                    $item = new PeopleCustomField($customfield, $value);
+                    array_push($familyCustom, $item);
+                }
+            }
         }
     }
 

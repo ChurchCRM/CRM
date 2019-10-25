@@ -6,12 +6,16 @@ use ChurchCRM\dto\ChurchCRMRelease;
 use Github\Client;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\FileSystemUtils;
 
 class ChurchCRMReleaseManager {
 
     // todo: make these const variables private after deprecating PHP7.0 #4948
     const GITHUB_USER_NAME = 'churchcrm';
     const GITHUB_REPOSITORY_NAME = 'crm';
+
+    /** @var bool true when an upgrade is in progress */
+    private static $isUpgradeInProgress;
 
     public static function getReleaseFromString(string $releaseString): ChurchCRMRelease { 
         if ( empty($_SESSION['ChurchCRMReleases']  )) {
@@ -105,6 +109,43 @@ class ChurchCRMReleaseManager {
         
     }
 
+    private static function getHighestReleaseInArray (array $eligibleUpgradeTargetReleases)  {
+        if (count($eligibleUpgradeTargetReleases) >0 ) {
+            usort($eligibleUpgradeTargetReleases, function(ChurchCRMRelease $a, ChurchCRMRelease $b){
+                return $a->compareTo($b) < 0;
+            });
+            return $eligibleUpgradeTargetReleases[0];
+        }
+        return null;
+    }
+
+    private static function getReleaseNextPatch(array $rs, ChurchCRMRelease $currentRelease) {
+        $eligibleUpgradeTargetReleases = array_values(array_filter($rs , function(ChurchCRMRelease $r) use ($currentRelease) {
+            $isSameMajorAndMinorWithGreaterPatch = ($r->MAJOR == $currentRelease->MAJOR) && ($r->MINOR == $currentRelease->MINOR) && ($r->PATCH > $currentRelease->PATCH);
+            LoggerUtils::getAppLogger()->addDebug("Release " . $r . " is" . ($isSameMajorAndMinorWithGreaterPatch ? " ":" not ")  . "a possible patch upgrade target");
+            return $isSameMajorAndMinorWithGreaterPatch; 
+        }));
+        return self::getHighestReleaseInArray($eligibleUpgradeTargetReleases);
+    }
+
+    private static function getReleaseNextMinor(array $rs, ChurchCRMRelease $currentRelease) {
+        $eligibleUpgradeTargetReleases = array_values(array_filter($rs , function(ChurchCRMRelease $r) use ($currentRelease) {
+            $isSameMajorAndMinorWithGreaterPatch = ($r->MAJOR == $currentRelease->MAJOR) && ($r->MINOR > $currentRelease->MINOR);
+            LoggerUtils::getAppLogger()->addDebug("Release " . $r . " is" . ($isSameMajorAndMinorWithGreaterPatch ? " ":" not ")  . "a possible minor upgrade target");
+            return $isSameMajorAndMinorWithGreaterPatch; 
+        }));
+        return self::getHighestReleaseInArray($eligibleUpgradeTargetReleases);
+    }
+
+    private static function getReleaseNextMajor(array $rs, ChurchCRMRelease $currentRelease) {
+        $eligibleUpgradeTargetReleases = array_values(array_filter($rs , function(ChurchCRMRelease $r) use ($currentRelease) {
+            $isSameMajorAndMinorWithGreaterPatch = ($r->MAJOR > $currentRelease->MAJOR);
+            LoggerUtils::getAppLogger()->addDebug("Release " . $r . " is" . ($isSameMajorAndMinorWithGreaterPatch ? " ":" not ")  . "a possible major upgrade target");
+            return $isSameMajorAndMinorWithGreaterPatch; 
+        }));
+        return self::getHighestReleaseInArray($eligibleUpgradeTargetReleases);
+    }
+
     public static function getNextReleaseStep(ChurchCRMRelease $currentRelease) : ChurchCRMRelease {
 
         LoggerUtils::getAppLogger()->addDebug("Determining the next-step release step for " . $currentRelease);
@@ -116,29 +157,23 @@ class ChurchCRMReleaseManager {
         // Of these releases, if there is one with a newer PATCH version,
         // We should use the newest patch.
         LoggerUtils::getAppLogger()->addDebug("Evaluating next-step release eligibility based on " . count($_SESSION['ChurchCRMReleases']) . " available releases ");
-        $eligibleUpgradeTargetReleases = array_values(array_filter($rs , function(ChurchCRMRelease $r) use ($currentRelease) {
-            $isSameMajorAndMinor = ($r->MAJOR == $currentRelease->MAJOR) && ($r->MINOR == $currentRelease->MINOR);
-            LoggerUtils::getAppLogger()->addDebug("Release " . $r . " is" . ($isSameMajorAndMinor ? " ":" not ")  . "a possible upgrade target");
-            return $isSameMajorAndMinor; 
-        }));
-
-        usort($eligibleUpgradeTargetReleases, function(ChurchCRMRelease $a, ChurchCRMRelease $b){
-            return $a->compareTo($b) < 0;
-        });
         
-        if (count($eligibleUpgradeTargetReleases) == 0 ) {
+        $nextStepRelease = self::getReleaseNextPatch($rs,$currentRelease);
+
+        if (null == $nextStepRelease)  {
+            $nextStepRelease = self::getReleaseNextMinor($rs,$currentRelease);
+        }
+
+        if (null == $nextStepRelease)  {
+            $nextStepRelease = self::getReleaseNextMajor($rs,$currentRelease);
+        }
+
+        if (null == $nextStepRelease)  {
             throw new \Exception("Could not identify a suitable upgrade target release.  Current software version: " . $currentRelease . ".  Highest available release: " . $rs[0] ) ;
         }
-
-        if ($currentRelease->equals($eligibleUpgradeTargetReleases[0])) {
-            // the current release is the same as the most recent patch release from github, so let's return the most recent overall release from GitHub
-            $nextStepRelease = ChurchCRMReleaseManager::getReleaseFromString($currentRelease->MAJOR . "." . ($currentRelease->MINOR+1) . ".0");
-            LoggerUtils::getAppLogger()->addInfo("The current release (".$currentRelease.") is the highest release of it's Major/Minor combination.");
-            LoggerUtils::getAppLogger()->addInfo("Looking for releases in series: " . $nextStepRelease);
-            return self::getNextReleaseStep($nextStepRelease); 
-        }
-        LoggerUtils::getAppLogger()->addInfo("Next upgrade step for " . $currentRelease. " is : " . $eligibleUpgradeTargetReleases[0]);
-        return $eligibleUpgradeTargetReleases[0];
+    
+        LoggerUtils::getAppLogger()->addInfo("Next upgrade step for " . $currentRelease. " is : " . $nextStepRelease);
+        return $nextStepRelease;
     }
 
 
@@ -155,7 +190,9 @@ class ChurchCRMReleaseManager {
         $UpgradeDir = SystemURLs::getDocumentRoot() . '/Upgrade';
         $url = $release->getDownloadURL();
         $logger->debug("Creating upgrade directory: " . $UpgradeDir);
-        mkdir($UpgradeDir);
+        if (!is_dir($UpgradeDir)){
+            mkdir($UpgradeDir);
+        }
         $logger->info("Downloading release from: " . $url . " to: ". $UpgradeDir . '/' . basename($url));
         $executionTime = new ExecutionTime();
         file_put_contents($UpgradeDir . '/' . basename($url), file_get_contents($url));
@@ -177,16 +214,20 @@ class ChurchCRMReleaseManager {
         // so we need to echo a JSON document that "looks like"
         // an exception the client-side JS can display to the user
         // so they know it actually timed out.
-        $logger = LoggerUtils::getAppLogger();
-        $logger->addWarning("Maximum execution time threshold exceeded: " . ini_get("max_execution_time"));
-        
-        echo \json_encode([
-            'code' => 500,
-            'message' => "Maximum execution time threshold exceeded: " . ini_get("max_execution_time") . ".  This ChurchCRM installation may now be in an unstable state.  Please review the documentation at https://github.com/ChurchCRM/CRM/wiki/Recovering-from-a-failed-update"
-        ]);
+        if (self::$isUpgradeInProgress){
+            // the PHP script was stopped while an upgrade was still in progress.
+            $logger = LoggerUtils::getAppLogger();
+            $logger->addWarning("Maximum execution time threshold exceeded: " . ini_get("max_execution_time"));
+            
+            echo \json_encode([
+                'code' => 500,
+                'message' => "Maximum execution time threshold exceeded: " . ini_get("max_execution_time") . ".  This ChurchCRM installation may now be in an unstable state.  Please review the documentation at https://github.com/ChurchCRM/CRM/wiki/Recovering-from-a-failed-update"
+            ]);
+        }
     }
     public static function doUpgrade($zipFilename, $sha1)
     {
+        self::$isUpgradeInProgress = true;
         // temporarily disable PHP's error display so that
         // our custom timeout handler can display parsable JSON 
         // in the event this upgrade job times-out the 
@@ -212,7 +253,7 @@ class ChurchCRMReleaseManager {
             $logger->info("Extraction completed.  Took:" . $executionTime->getMiliseconds());
             $logger->info("Moving extracted zip into place");
             $executionTime = new ExecutionTime();
-            $this->moveDir(SystemURLs::getDocumentRoot() . '/Upgrade/churchcrm', SystemURLs::getDocumentRoot());
+            FileSystemUtils::moveDir(SystemURLs::getDocumentRoot() . '/Upgrade/churchcrm', SystemURLs::getDocumentRoot());
             $logger->info("Move completed.  Took:" . $executionTime->getMiliseconds());
             }
             $logger->info("Deleting zip archive: ".$zipFilename);
@@ -221,12 +262,14 @@ class ChurchCRMReleaseManager {
             $logger->debug("Set sLastIntegrityCheckTimeStamp to null");
             $logger->info("Upgrade process complete");
             ini_set('display_errors',$displayErrors);
+            self::$isUpgradeInProgress = false;
             return 'success';
         } else {
+            self::$isUpgradeInProgress = false;
             ini_set('display_errors',$displayErrors);
             $logger->err("Hash validation failed on " . $zipFilename.". Expected: ".$sha1. ". Got: ".sha1_file($zipFilename));
             return 'hash validation failure';
         }
     }
-    
+
 }

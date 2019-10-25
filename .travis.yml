@@ -1,7 +1,6 @@
 # see http://about.travis-ci.org/docs/user/languages/php/ for more hints
 language: php
 php:
-  - 7.1.18
   - 7.2
   - 7.3
 
@@ -68,5 +67,5 @@ deploy:
   script: npm run demosite
   on:
     all_branches: true
-    php: 7.0
+    php: 7.3
     condition: "$TRAVIS_BRANCH == 'master' || $TRAVIS_BRANCH = 'develop'"
