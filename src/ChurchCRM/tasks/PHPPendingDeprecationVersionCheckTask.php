@@ -6,13 +6,14 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 
 
-class PHPVersionCheckTask implements iTask, iPreUpgradeTask
+class PHPPendingDeprecationVersionCheckTask implements iTask, iPreUpgradeTask
 {
-  // todo: make these const variables private after deprecating PHP7.0 #4948
-  const REQUIRED_PHP_VERSION = '7.1.0';
+  private const REQUIRED_PHP_VERSION = '7.1.0';
   public function isActive()
   {
-    return version_compare(PHP_VERSION, $this::REQUIRED_PHP_VERSION, '<');
+    return false;
+    // There are no versions of PHP scheduled for deprecation
+    //return version_compare(PHP_VERSION, $this::REQUIRED_PHP_VERSION, '<');
   }
 
   public function isAdmin()
