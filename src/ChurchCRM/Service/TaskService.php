@@ -20,7 +20,7 @@ use ChurchCRM\Tasks\RegisteredTask;
 use ChurchCRM\Tasks\UpdateFamilyCoordinatesTask;
 use ChurchCRM\Tasks\CheckExecutionTimeTask;
 use ChurchCRM\Tasks\iPreUpgradeTask;
-use ChurchCRM\Tasks\PHPVersionCheckTask;
+use ChurchCRM\Tasks\PHPPendingDeprecationVersionCheckTask;
 use ChurchCRM\Tasks\UnsupportedDepositCheck;
 use ChurchCRM\Tasks\UnsupportedPaymentDataCheck;
 use ChurchCRM\Tasks\PHPZipArchiveCheckTask;
@@ -52,7 +52,7 @@ class TaskService
             new CheckExecutionTimeTask(),
             new UnsupportedDepositCheck(),
             new UnsupportedPaymentDataCheck(),
-            new PHPVersionCheckTask(),
+            new PHPPendingDeprecationVersionCheckTask(),
             new PHPZipArchiveCheckTask()
         ];
 
