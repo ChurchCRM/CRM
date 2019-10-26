@@ -5,6 +5,7 @@ use Slim\Http\Response;
 use ChurchCRM\dto\SystemURLs;
 use Slim\Views\PhpRenderer;
 use ChurchCRM\UserQuery;
+use ChurchCRM\Authentication\AuthenticationManager;
 
 $app->group('/user', function () {
     $this->get('/not-found', 'viewUserNotFound');
@@ -29,7 +30,7 @@ function viewUserNotFound(Request $request, Response $response, array $args)
 function viewUser(Request $request, Response $response, array $args)
 {
     $renderer = new PhpRenderer('templates/admin/');
-    $curUser = $_SESSION['user'];
+    $curUser = AuthenticationManager::GetCurrentUser();
     $userId = $args["id"];
 
     if (!$curUser->isAdmin() && $curUser->getId() != $userId) {

@@ -6,6 +6,7 @@ use ChurchCRM\Note;
 use ChurchCRM\Person2group2roleP2g2rQuery;
 use ChurchCRM\PersonQuery;
 use ChurchCRM\Slim\Middleware\Request\Auth\ManageGroupRoleAuthMiddleware;
+use ChurchCRM\Authentication\AuthenticationManager;
 
 $app->group('/groups', function () {
     $this->get('/', function () {
@@ -134,7 +135,7 @@ $app->group('/groups', function () {
                 $note = new Note();
                 $note->setText(gettext("Deleted from group") . ": " . $group->getName());
                 $note->setType("group");
-                $note->setEntered($_SESSION['user']->getId());
+                $note->setEntered(AuthenticationManager::GetCurrentUser()->getId());
                 $note->setPerId($person->getId());
                 $note->save();
             }
@@ -163,7 +164,7 @@ $app->group('/groups', function () {
         $note = new Note();
         $note->setText(gettext("Added to group") . ": " . $group->getName());
         $note->setType("group");
-        $note->setEntered($_SESSION['user']->getId());
+        $note->setEntered(AuthenticationManager::GetCurrentUser()->getId());
         $note->setPerId($person->getId());
         $note->save();
         $members = ChurchCRM\Person2group2roleP2g2rQuery::create()

@@ -12,12 +12,12 @@ use ChurchCRM\dto\SystemURLs;
   </div>
   <div class="box-body">
     <a href="#" id="emptyCart" class="btn btn-app emptyCart"><i class="fa fa-trash"></i><?= gettext('Empty Cart') ?></a>
-    <?php if ($_SESSION['user']->isManageGroupsEnabled()) {
+    <?php if (AuthenticationManager::GetCurrentUser()->isManageGroupsEnabled()) {
       ?>
       <a id="emptyCartToGroup" class="btn btn-app"><i class="fa fa-object-ungroup"></i><?= gettext('Empty Cart to Group') ?></a>
       <?php
     }
-    if ($_SESSION['user']->isAddRecordsEnabled()) {
+    if (AuthenticationManager::GetCurrentUser()->isAddRecordsEnabled()) {
       ?>
       <a href="<?= SystemURLs::getRootPath()."/CartToFamily.php"?>" class="btn btn-app"><i
           class="fa fa-users"></i><?= gettext('Empty Cart to Family') ?></a>
