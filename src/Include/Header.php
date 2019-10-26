@@ -17,6 +17,7 @@ use ChurchCRM\dto\Cart;
 use ChurchCRM\Service\TaskService;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\Authentication\AuthenticationProviders\LocalAuthentication;
 
 $taskService = new TaskService();
 
@@ -109,7 +110,7 @@ $MenuFirst = 1;
                   <a href="<?= SystemURLs::getRootPath() ?>/SettingsIndividual.php" class="item_link">
                       <p ><i class="fa fa-gear"></i> <?= gettext('Change Settings') ?></p></a>
                   <?php
-                    if (SystemConfig::getBooleanValue("bEnable2FA")) {
+                    if (LocalAuthentication::GetIsTwoFactorAuthSupported()) {
                         ?>
                   <a href="<?= SystemURLs::getRootPath() ?>/v2/user/current/enroll2fa" class="item_link">
                       <p ><i class="fa fa-gear"></i> <?= gettext("Manage 2 Factor Authentication") ?></p></a>

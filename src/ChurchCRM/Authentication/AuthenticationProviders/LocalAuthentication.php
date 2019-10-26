@@ -14,6 +14,7 @@ namespace ChurchCRM\Authentication\AuthenticationProviders {
   use DateTime;
   use DateTimeZone;
   use ChurchCRM\Utils\LoggerUtils;
+  use ChurchCRM\KeyManager;
 
 
 class LocalAuthentication implements IAuthenticationProvider
@@ -25,6 +26,10 @@ class LocalAuthentication implements IAuthenticationProvider
     private $currentUser;
     private $bPendingTwoFactorAuth;
     private $tLastOperationTimestamp;
+
+    public static function GetIsTwoFactorAuthSupported() {
+      return SystemConfig::getBooleanValue("bEnable2FA") && KeyManager::GetAreAllSecretsDefined();
+    }
 
     public function __construct() {
       $this->bNoPasswordRedirect = false;

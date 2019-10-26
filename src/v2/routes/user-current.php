@@ -4,6 +4,7 @@ use Slim\Http\Request;
 use Slim\Http\Response;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\Authentication\AuthenticationProviders\LocalAuthentication;
 use Slim\Views\PhpRenderer;
 use ChurchCRM\UserQuery;
 
@@ -23,6 +24,13 @@ function enroll2fa(Request $request, Response $response, array $args)
         'user' => $curUser,
     ];
 
-    return $renderer->render($response, 'manage-2fa.php', $pageArgs);
+    if (LocalAuthentication::GetIsTwoFactorAuthSupported()) {
+        return $renderer->render($response, 'manage-2fa.php', $pageArgs);
+    }
+    else {
+        return $renderer->render($response, 'unsupported-2fa.php', $pageArgs); 
+    }
+
+    
 
 }
