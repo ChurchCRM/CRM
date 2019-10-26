@@ -75,7 +75,7 @@ const TwoFAEnrollmentGetQR: React.FunctionComponent<{TwoFAQRCodeDataUri: string,
                               <div className="col-lg-12">
                                 <label>
                                   {window.i18next.t("Enter TOTP code to confirm enrollment")}:
-                                  <input onChange={validationCodeChangeHandler} value={currentTwoFAPin} />
+                                  <input onChange={validationCodeChangeHandler} value={currentTwoFAPin} autoFocus  />
                                 </label>
                                 <p>{currentTwoFAPinStatus}</p>
                               </div>
