@@ -1,5 +1,6 @@
 <?php
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\dto\SystemConfig;
 
 require_once 'Header-Security.php';
 
@@ -29,6 +30,7 @@ require_once 'Header-Security.php';
 
   <script nonce="<?= SystemURLs::getCSPNonce() ?>"  >
     window.CRM = {
-      root: "<?= SystemURLs::getRootPath() ?>"
+      root: "<?= SystemURLs::getRootPath() ?>",
+      churchWebSite:"<?= SystemConfig::getValue('sChurchWebSite') ?>"
     };
   </script>

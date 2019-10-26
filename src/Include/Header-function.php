@@ -90,6 +90,7 @@ function Header_body_scripts()
             maxUploadSize: "<?= SystemService::getMaxUploadFileSize(true) ?>",
             maxUploadSizeBytes: "<?= SystemService::getMaxUploadFileSize(false) ?>",
             datePickerformat:"<?= SystemConfig::getValue('sDatePickerPlaceHolder') ?>",
+            churchWebSite:"<?= SystemConfig::getValue('sChurchWebSite') ?>",
             systemConfigs: {
               sDateTimeFormat: "<?= PHPToMomentJSConverter::ConvertFormatString(SystemConfig::getValue('sDateTimeFormat'))?>",
             },

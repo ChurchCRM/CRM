@@ -1,13 +1,13 @@
 {
-    "name": "ChurchCRM/CRM",
-    "version": "3.6.0",
+    "name": "churchcrm/crm",
+    "version": "4.0.0",
     "type": "project",
     "keywords": [
         "church",
         "crm"
     ],
     "homepage": "http://www.churchcrm.io",
-    "time": "2019-09-24 20:09:96",
+    "time": "2019-10-25 19:10:22",
     "license": "MIT",
     "authors": [
         {
@@ -29,7 +29,7 @@
         "docs": "https://github.com/ChurchCRM/CRM/wiki"
     },
     "require": {
-        "php": ">=5.6.0",
+        "php": ">=7.2.0",
         "drewm/mailchimp-api": "^2.5",
         "slim/slim": "3.9.2",
         "slim/php-view": "2.2",
