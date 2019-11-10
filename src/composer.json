@@ -47,7 +47,9 @@
         "nexmo/client": "@beta",
         "slim/http-cache": "^0.4.0",
         "azuyalabs/yasumi": "^1.8",
-        "defuse/php-encryption": "^2.2"
+        "defuse/php-encryption": "^2.2",
+        "pragmarx/google2fa": "^6.1",
+        "endroid/qr-code": "^3.6"
     },
     "autoload": {
         "classmap": [
