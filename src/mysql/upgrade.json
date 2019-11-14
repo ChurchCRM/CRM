@@ -237,7 +237,9 @@
             "3.5.4",
             "3.5.5"
         ],
-        "scripts": [],
+        "scripts": [
+            "/mysql/upgrade/TwoFactorAuth.sql"
+        ],
         "dbVersion": "4.0.0"
     },
     "current": {
