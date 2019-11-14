@@ -1,6 +1,7 @@
 {
   "name": "churchcrm/crm-tests",
   "require": {
+      "php": "^7.2 ^7.3",
       "behat/symfony2-extension": "*",
       "behat/mink-goutte-driver": "*",
       "behat/mink-selenium2-driver": "*",

@@ -29,7 +29,7 @@
         "docs": "https://github.com/ChurchCRM/CRM/wiki"
     },
     "require": {
-        "php": ">=7.2.0",
+        "php": "^7.2 ^7.3",
         "drewm/mailchimp-api": "^2.5",
         "slim/slim": "3.9.2",
         "slim/php-view": "2.2",
