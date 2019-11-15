@@ -19,10 +19,19 @@ function GetDemoKey() {
     }
 }
 
-$buildVersion= $buildconfigs = \json_decode(file_get_contents("package.json"), true)['version'];
-$uploadFile="target/ChurchCRM-".$buildVersion.".zip";
-$currentBranch= exec("git rev-parse --abbrev-ref HEAD");
-$commitHash=exec("git log --pretty=format:%H -n 1");
+function GetBranchName() {
+    if (!empty(getenv("TRAVIS_BRANCH"))) {
+        return getenv("TRAVIS_BRANCH");
+    }
+    else {
+        return exec("git rev-parse --abbrev-ref HEAD");
+    }
+}
+
+$buildVersion = $buildconfigs = \json_decode(file_get_contents("package.json"), true)['version'];
+$uploadFile = "target/ChurchCRM-".$buildVersion.".zip";
+$currentBranch = GetBranchName();
+$commitHash = exec("git log --pretty=format:%H -n 1");
 
 ConsoleWriteLine("Uploading $uploadFile to demosite as $currentBranch with hash: $commitHash");
 // initialise the curl request
