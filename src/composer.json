@@ -28,8 +28,12 @@
         "source": "https://github.com/ChurchCRM/CRM",
         "docs": "https://github.com/ChurchCRM/CRM/wiki"
     },
+    "config": {
+        "platform": {
+            "php":"7.2"
+        }
+    },
     "require": {
-        "php": ">=7.2.0",
         "drewm/mailchimp-api": "^2.5",
         "slim/slim": "3.9.2",
         "slim/php-view": "2.2",
@@ -49,7 +53,8 @@
         "azuyalabs/yasumi": "^1.8",
         "defuse/php-encryption": "^2.2",
         "pragmarx/google2fa": "^6.1",
-        "endroid/qr-code": "^3.6"
+        "endroid/qr-code": "^3.6",
+        "symfony/yaml":"^3.4"
     },
     "autoload": {
         "classmap": [
