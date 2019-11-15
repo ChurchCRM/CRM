@@ -87,7 +87,7 @@
         "locale-download": "grunt updateFromPOeditor && grunt genLocaleJSFiles",
         "update-signatures": "grunt generateSignatures",
         "package": "grunt generateSignatures && grunt compress",
-        "demosite": "scripts/demosite.sh",
+        "demosite": "php scripts/update-demo-site.php",
         "changelog-gen": "grunt exec:updatechangelog",
         "orm-gen": "php src/vendor/propel/propel/bin/propel.php --config-dir=propel model:build && cd src/ && composer dump-autoload",
         "sql-gen": "php src/vendor/propel/propel/bin/propel.php --config-dir=propel sql:build",
