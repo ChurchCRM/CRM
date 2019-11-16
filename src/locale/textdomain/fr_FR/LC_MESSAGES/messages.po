@@ -6,6 +6,7 @@ msgstr ""
 "X-Generator: POEditor.com\n"
 "Project-Id-Version: ChurchCRM\n"
 "Language: fr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: 
 msgid "Cannot execute query."
@@ -712,10 +713,6 @@ msgstr "Sélectionner l&#39;événement pour lequel vous voulez inscrire des per
 msgid "Select Event"
 msgstr "Sélectionner Événement"
 
-#: external/templates/verify/verify-family-info.php:145
-msgid "Verify"
-msgstr "Vérifier"
-
 #: 
 msgid "Add Visitor"
 msgstr "Ajouter un visiteur"
@@ -1278,24 +1275,12 @@ msgid "Security Option"
 msgstr "Option de sécurité"
 
 #: 
-msgid "Family-View Side"
-msgstr "Vue de famille latérale"
-
-#: 
 msgid "You must select a group."
 msgstr "Vous devez sélectionner un groupe."
 
 #: 
 msgid "Edit List Options"
 msgstr "Modifier la liste des options"
-
-#: 
-msgid "Left"
-msgstr "Gauche"
-
-#: 
-msgid "Right"
-msgstr "Droite"
 
 #: 
 msgid "Help on types.."
@@ -1308,10 +1293,6 @@ msgstr "Vous devez entrer un nom"
 #: 
 msgid "That field name already exists."
 msgstr "Ce nom de champ existe déjà."
-
-#: 
-msgid "Side"
-msgstr "Côté"
 
 #: 
 msgid "Add New Field"
@@ -1484,10 +1465,6 @@ msgstr "Créé"
 #: 
 msgid "Edited"
 msgstr "Modifié"
-
-#: 
-msgid " of church<br>"
-msgstr " de l'église<br>"
 
 #: 
 msgid "Latitude/Longitude"
@@ -2655,10 +2632,6 @@ msgid "No custom person fields have been added yet"
 msgstr "Aucun champ personnalisé Personne n'a été ajouté"
 
 #: 
-msgid "Person-View Side"
-msgstr "Personne - Fiche Associée"
-
-#: 
 msgid "Person Editor"
 msgstr "Gestionnaire d'individu"
 
@@ -2733,10 +2706,6 @@ msgstr "Information sur l'adhésion"
 #: 
 msgid "Friend Date"
 msgstr "Date d'amitié"
-
-#: 
-msgid "Add Person to Group"
-msgstr "Ajouter une personne au groupe"
 
 #: 
 msgid "Select the group to add this person to"
@@ -3235,68 +3204,12 @@ msgid "Filter and Cart"
 msgstr "Filtre et Panier"
 
 #: 
-msgid "Show people <b>not</b> in this group type:"
-msgstr "Afficher les personnes qui <b>ne sont pas</b> dans ce type de groupe:"
-
-#: 
-msgid "Sort order"
-msgstr "Trier par"
-
-#: 
-msgid "By Name"
-msgstr "Par Nom"
-
-#: 
-msgid "By Family"
-msgstr "Par Famille"
-
-#: 
-msgid "By Newest Entries"
-msgstr "Par Entrées les plus récentes"
-
-#: 
-msgid "By Recently Edited"
-msgstr "Par Récemment Modifié "
-
-#: 
-msgid "Apply Filter"
-msgstr "Appliquer le Filtre"
-
-#: 
-msgid "Male & Female"
-msgstr "Homme & Femme"
-
-#: 
-msgid "All Classifications"
-msgstr "Toutes les catégories"
-
-#: 
 msgid "All Family Roles"
 msgstr "Tous les Rôles de Famille"
 
 #: 
-msgid "All Contact Properties"
-msgstr "Toutes les propriétés des Contacts"
-
-#: 
-msgid "All Group Types"
-msgstr "Tous les types de groupes"
-
-#: 
-msgid "All Groups"
-msgstr "Tous les Groupes"
-
-#: 
-msgid "All Roles"
-msgstr "Tous les Rôles"
-
-#: 
 msgid "Listing"
 msgstr "Liste"
-
-#: 
-msgid "View All"
-msgstr "Tout afficher"
 
 #: 
 msgid "Cart"
@@ -3757,10 +3670,6 @@ msgstr " "
 #: 
 msgid "am"
 msgstr " "
-
-#: 
-msgid "yrs old"
-msgstr "ans"
 
 #: 
 msgid "Invalid Editor ID!"
@@ -4924,18 +4833,6 @@ msgid "Assign a New Property:"
 msgstr "Attribuer une Nouvelle Propriété:"
 
 #: 
-msgid "mos old"
-msgstr "âgé de (en mois)"
-
-#: 
-msgid "mo old"
-msgstr "âgé de (en mois)"
-
-#: 
-msgid "yr old"
-msgstr "ans"
-
-#: 
 msgid "There was a problem retrieving the requested object"
 msgstr "Il y a eu un problème lors de la récupération de l'objet demandé"
 
@@ -5642,10 +5539,6 @@ msgstr "Comparer les contributions entre deux années fiscales."
 #: 
 msgid "Find people who pledged one year but not another"
 msgstr "Rechercher les Personnes qui ont contribué une année mais plus par la suite"
-
-#: 
-msgid "People who are configured to pay by credit card."
-msgstr "Les personnes qui sont configurées pour payer par carte de crédit."
 
 #: 
 msgid "Pledge summary by family name for each fund for the selected fiscal year"
@@ -6934,10 +6827,6 @@ msgstr "Zambie"
 #: 
 msgid "Zimbabwe"
 msgstr "Zimbabwe"
-
-#: 
-msgid "By Zip Code"
-msgstr "Par Code Postal"
 
 #: 
 msgid "Please verify your family's information"
@@ -8457,14 +8346,6 @@ msgid "Remove All from Cart"
 msgstr "Tout supprimer du Panier"
 
 #: 
-msgid " record returned"
-msgstr "␣enregistrement retourné"
-
-#: 
-msgid " records returned"
-msgstr "␣enregistrements retourné"
-
-#: 
 msgid "records(s) successfully deleted from the selected Group."
 msgstr "Les enregistrement(s) du groupe sélectionné ont supprimé avec succès."
 
@@ -8523,10 +8404,6 @@ msgstr "Retourner au tableau de bord des personnes"
 #: 
 msgid "User must have MenuOptions permission"
 msgstr "L'utilisateur doit avoir l'autorisation MenuOptions"
-
-#: 
-msgid "Try out the Beta family view"
-msgstr "Essayez la nouvelle vue Famille (beta)"
 
 #: 
 msgid "SMTP Host is not setup, please visit the settings page"
@@ -8747,10 +8624,6 @@ msgstr "Fichier de mise à jour invalide"
 #: 
 msgid "Failure executing upgrade script"
 msgstr "Erreur lors de l'exécution du script de mise à jour"
-
-#: 
-msgid "Databse upgrade failed"
-msgstr "Erreur lors de la mise à jour de la base de données"
 
 #: 
 msgid "logged via API Key."

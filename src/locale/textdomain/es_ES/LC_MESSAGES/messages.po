@@ -6,6 +6,7 @@ msgstr ""
 "X-Generator: POEditor.com\n"
 "Project-Id-Version: ChurchCRM\n"
 "Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: 
 msgid "Cannot execute query."
@@ -708,10 +709,6 @@ msgstr "Seleccione el evento al que desea ingresar personas"
 msgid "Select Event"
 msgstr "Seleccionar Evento"
 
-#: external/templates/verify/verify-family-info.php:145
-msgid "Verify"
-msgstr "Verificar"
-
 #: 
 msgid "Add Visitor"
 msgstr "Agregar Visitante"
@@ -1273,24 +1270,12 @@ msgid "Security Option"
 msgstr "Opción de Seguridad"
 
 #: 
-msgid "Family-View Side"
-msgstr "Vista de la Familia"
-
-#: 
 msgid "You must select a group."
 msgstr "Debe seleccionar un grupo."
 
 #: 
 msgid "Edit List Options"
 msgstr "Editar lista de Opciones"
-
-#: 
-msgid "Left"
-msgstr "Izquierda"
-
-#: 
-msgid "Right"
-msgstr "Derecha"
 
 #: 
 msgid "Help on types.."
@@ -1303,10 +1288,6 @@ msgstr "Debe ingresar un nombre"
 #: 
 msgid "That field name already exists."
 msgstr "El nombre del Campo, ya existe"
-
-#: 
-msgid "Side"
-msgstr "Lado"
 
 #: 
 msgid "Add New Field"
@@ -1479,10 +1460,6 @@ msgstr "Creada"
 #: 
 msgid "Edited"
 msgstr "Editada"
-
-#: 
-msgid " of church<br>"
-msgstr " de iglesia<br>"
 
 #: 
 msgid "Latitude/Longitude"
@@ -2653,10 +2630,6 @@ msgid "No custom person fields have been added yet"
 msgstr "Aún no han sido añadidos campos peronalizados"
 
 #: 
-msgid "Person-View Side"
-msgstr "Vista de personas"
-
-#: 
 msgid "Person Editor"
 msgstr "Editor de personas"
 
@@ -2731,10 +2704,6 @@ msgstr "Información de Membresía"
 #: 
 msgid "Friend Date"
 msgstr "Fecha de Amistad"
-
-#: 
-msgid "Add Person to Group"
-msgstr "Añadir Persona a Grupo"
 
 #: 
 msgid "Select the group to add this person to"
@@ -3233,68 +3202,12 @@ msgid "Filter and Cart"
 msgstr "Filtrar y Separar"
 
 #: 
-msgid "Show people <b>not</b> in this group type:"
-msgstr "Mostrar personas que <b>no</b> están en este tipo de grupo"
-
-#: 
-msgid "Sort order"
-msgstr "Orden de clasificación"
-
-#: 
-msgid "By Name"
-msgstr "Por Nombre"
-
-#: 
-msgid "By Family"
-msgstr "Por Familia"
-
-#: 
-msgid "By Newest Entries"
-msgstr "Por Entradas Más Recientes"
-
-#: 
-msgid "By Recently Edited"
-msgstr "Por Editados Recientemente"
-
-#: 
-msgid "Apply Filter"
-msgstr "Aplicar filtro"
-
-#: 
-msgid "Male & Female"
-msgstr "Por sexo"
-
-#: 
-msgid "All Classifications"
-msgstr "Todas las clasificaciones"
-
-#: 
 msgid "All Family Roles"
 msgstr "Todos los Roles Familiares"
 
 #: 
-msgid "All Contact Properties"
-msgstr "Todos las propiedades de contactos"
-
-#: 
-msgid "All Group Types"
-msgstr "Todos los tipos de grupos"
-
-#: 
-msgid "All Groups"
-msgstr "Todos los grupos"
-
-#: 
-msgid "All Roles"
-msgstr "Todos los Roles"
-
-#: 
 msgid "Listing"
 msgstr "Listando"
-
-#: 
-msgid "View All"
-msgstr "Mostrar todos"
 
 #: 
 msgid "Cart"
@@ -3756,10 +3669,6 @@ msgstr "pm"
 #: 
 msgid "am"
 msgstr "am"
-
-#: 
-msgid "yrs old"
-msgstr "años"
 
 #: 
 msgid "Invalid Editor ID!"
@@ -4922,18 +4831,6 @@ msgid "Assign a New Property:"
 msgstr "Asignar una nueva propiedad"
 
 #: 
-msgid "mos old"
-msgstr "meses"
-
-#: 
-msgid "mo old"
-msgstr "meses"
-
-#: 
-msgid "yr old"
-msgstr "años"
-
-#: 
 msgid "There was a problem retrieving the requested object"
 msgstr "Hubo un problema al obtener el objeto solicitado"
 
@@ -5646,10 +5543,6 @@ msgstr "Comparación de las promesas entre dos años fiscales"
 #: 
 msgid "Find people who pledged one year but not another"
 msgstr "Find people who pledged one year but not another "
-
-#: 
-msgid "People who are configured to pay by credit card."
-msgstr "Personas que están configuradas para pagar con tarjeta de crédito."
 
 #: 
 msgid "Pledge summary by family name for each fund for the selected fiscal year"
@@ -6939,10 +6832,6 @@ msgstr "Zambia"
 #: 
 msgid "Zimbabwe"
 msgstr "Zimbabue"
-
-#: 
-msgid "By Zip Code"
-msgstr "Por Codigo Postal"
 
 #: 
 msgid "Please verify your family's information"
@@ -8492,14 +8381,6 @@ msgid "Remove All from Cart"
 msgstr "Remover Todo de Separador"
 
 #: 
-msgid " record returned"
-msgstr " registro regresado"
-
-#: 
-msgid " records returned"
-msgstr " registros regresados"
-
-#: 
 msgid "records(s) successfully deleted from the selected Group."
 msgstr "registros exitosamente borrados del Grupo seleccionado."
 
@@ -8558,11 +8439,6 @@ msgstr "volver al Dashboard de Personas"
 #: 
 msgid "User must have MenuOptions permission"
 msgstr "Usuario debe tener permiso MenuOptions"
-
-#: 
-#, fuzzy
-msgid "Try out the Beta family view"
-msgstr "Pruebe la Beta de vista de familia"
 
 #: 
 msgid "SMTP Host is not setup, please visit the settings page"
@@ -8783,11 +8659,6 @@ msgstr "Archivo de actualización inválido"
 #: 
 msgid "Failure executing upgrade script"
 msgstr "Falla al ejecutar script de actualización"
-
-#. Database
-#: 
-msgid "Databse upgrade failed"
-msgstr "Falla al actualizar la base de datos"
 
 #: 
 msgid "logged via API Key."

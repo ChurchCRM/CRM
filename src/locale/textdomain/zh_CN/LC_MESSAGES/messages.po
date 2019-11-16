@@ -6,6 +6,7 @@ msgstr ""
 "X-Generator: POEditor.com\n"
 "Project-Id-Version: ChurchCRM\n"
 "Language: zh-CN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 
 #: 
 msgid "Cannot execute query."
@@ -730,10 +731,6 @@ msgstr "选择事件时，你要检查的人"
 msgid "Select Event"
 msgstr "选择事件"
 
-#: external/templates/verify/verify-family-info.php:145
-msgid "Verify"
-msgstr "验证"
-
 #: 
 msgid "Add Visitor"
 msgstr "添加访客"
@@ -1309,24 +1306,12 @@ msgid "Security Option"
 msgstr "“安全选项”"
 
 #: 
-msgid "Family-View Side"
-msgstr "家庭观看侧"
-
-#: 
 msgid "You must select a group."
 msgstr "您必须选择一个组。"
 
 #: 
 msgid "Edit List Options"
 msgstr "编辑列表选项"
-
-#: 
-msgid "Left"
-msgstr "左"
-
-#: 
-msgid "Right"
-msgstr "权"
 
 #: 
 msgid "Help on types.."
@@ -1339,11 +1324,6 @@ msgstr "您必须输入一个名称"
 #: 
 msgid "That field name already exists."
 msgstr "该字段名称已经存在。"
-
-#: 
-#, fuzzy
-msgid "Side"
-msgstr "方"
 
 #: 
 msgid "Add New Field"
@@ -1519,10 +1499,6 @@ msgstr "已建立"
 #: 
 msgid "Edited"
 msgstr "已编辑"
-
-#: 
-msgid " of church<br>"
-msgstr "教会的"
 
 #: 
 msgid "Latitude/Longitude"
@@ -2716,10 +2692,6 @@ msgid "No custom person fields have been added yet"
 msgstr "目前没有自定义的人字段添加"
 
 #: 
-msgid "Person-View Side"
-msgstr "人观看侧"
-
-#: 
 msgid "Person Editor"
 msgstr "人编辑器"
 
@@ -2796,10 +2768,6 @@ msgstr "成员信息"
 #, fuzzy
 msgid "Friend Date"
 msgstr "友情日期"
-
-#: 
-msgid "Add Person to Group"
-msgstr "添加联系人到组“"
 
 #: 
 #, fuzzy
@@ -3307,69 +3275,12 @@ msgid "Filter and Cart"
 msgstr "删选及购物车；"
 
 #: 
-msgid "Show people <b>not</b> in this group type:"
-msgstr "人<b>不在</b>此组类型："
-
-#: 
-#, fuzzy
-msgid "Sort order"
-msgstr "排序顺序"
-
-#: 
-msgid "By Name"
-msgstr "按产品名称"
-
-#: 
-msgid "By Family"
-msgstr "通过家庭"
-
-#: 
-msgid "By Newest Entries"
-msgstr "通过最新文章"
-
-#: 
-msgid "By Recently Edited"
-msgstr "最近编辑"
-
-#: 
-msgid "Apply Filter"
-msgstr "应用过滤器"
-
-#: 
-msgid "Male & Female"
-msgstr "男性和女性"
-
-#: 
-msgid "All Classifications"
-msgstr "“所有分类”"
-
-#: 
 msgid "All Family Roles"
 msgstr "所有的家庭角色"
 
 #: 
-msgid "All Contact Properties"
-msgstr "所有的联系人属性"
-
-#: 
-msgid "All Group Types"
-msgstr "所有组类型"
-
-#: 
-msgid "All Groups"
-msgstr "所有组"
-
-#: 
-msgid "All Roles"
-msgstr "所有角色"
-
-#: 
 msgid "Listing"
 msgstr "列表"
-
-#: 
-msgid "View All"
-msgstr "查看全部"
 
 #: 
 msgid "Cart"
@@ -5693,10 +5604,6 @@ msgid "Compare pledges between two fiscal years"
 msgstr "比较两个财政年度之间的承诺"
 
 #: 
-msgid "People who are configured to pay by credit card."
-msgstr "配置为使用信用卡付款的人。"
-
-#: 
 msgid "Pledge summary by family name for each fund for the selected fiscal year"
 msgstr "通过姓氏删选所选会计年度基金的承诺摘要"
 
@@ -6971,10 +6878,6 @@ msgstr "赞比亚"
 #: 
 msgid "Zimbabwe"
 msgstr "津巴布韦"
-
-#: 
-msgid "By Zip Code"
-msgstr "按邮政编码"
 
 #: 
 msgid "Please verify your family's information"
@@ -8468,14 +8371,6 @@ msgid "Remove All from Cart"
 msgstr "从购物车中删除全部"
 
 #: 
-msgid " record returned"
-msgstr "记录已返回"
-
-#: 
-msgid " records returned"
-msgstr "记录已返回"
-
-#: 
 msgid "records(s) successfully deleted from the selected Group."
 msgstr "顺利将纪绿从所选的群组中删除"
 
@@ -8534,10 +8429,6 @@ msgstr "返回人员仪表盘"
 #: 
 msgid "User must have MenuOptions permission"
 msgstr "用户必须具有MenuOptions权限"
-
-#: 
-msgid "Try out the Beta family view"
-msgstr "试用Beta系列视图"
 
 #: 
 msgid "SMTP Host is not setup, please visit the settings page"
@@ -8758,10 +8649,6 @@ msgstr "指定的升级文件无效"
 #: 
 msgid "Failure executing upgrade script"
 msgstr "执行升级脚本失败"
-
-#: 
-msgid "Databse upgrade failed"
-msgstr "数据库升级失败"
 
 #: 
 msgid "logged via API Key."

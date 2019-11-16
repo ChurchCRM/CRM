@@ -6,6 +6,7 @@ msgstr ""
 "X-Generator: POEditor.com\n"
 "Project-Id-Version: ChurchCRM\n"
 "Language: ar\n"
+"Plural-Forms: nplurals=6; plural= n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
 
 #: 
 msgid "Cannot execute query."
@@ -594,10 +595,6 @@ msgstr "حدد الحدث الذي تريد إضافة سلة التسوق إل�
 #: 
 msgid "Select Event"
 msgstr "حدد الحدث"
-
-#: external/templates/verify/verify-family-info.php:145
-msgid "Verify"
-msgstr "تحقق"
 
 #: 
 msgid "Add Visitor"

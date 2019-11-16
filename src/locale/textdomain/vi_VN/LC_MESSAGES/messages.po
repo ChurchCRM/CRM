@@ -6,6 +6,7 @@ msgstr ""
 "X-Generator: POEditor.com\n"
 "Project-Id-Version: ChurchCRM\n"
 "Language: vi\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 
 #: 
 msgid "Cannot execute query."
@@ -544,10 +545,6 @@ msgstr "Không"
 msgid "Select Event"
 msgstr "Lựa chọn sự kiện"
 
-#: external/templates/verify/verify-family-info.php:145
-msgid "Verify"
-msgstr "Xác thực"
-
 #: 
 msgid "Add Visitor"
 msgstr "Thêm người truy cập"
@@ -905,14 +902,6 @@ msgid "You must select a group."
 msgstr "Bạn cần lựa một Ban/Mục vụ"
 
 #: 
-msgid "Left"
-msgstr "Trái"
-
-#: 
-msgid "Right"
-msgstr "Phải"
-
-#: 
 msgid "Help on types.."
 msgstr "Xem hướng dẫn"
 
@@ -923,10 +912,6 @@ msgstr "Bạn cần nhập tên vào"
 #: 
 msgid "That field name already exists."
 msgstr "Tên trường này đã tồn tại"
-
-#: 
-msgid "Side"
-msgstr "Bên"
 
 #: 
 msgid "Add New Field"
@@ -1669,10 +1654,6 @@ msgid "Custom Person Fields Editor"
 msgstr "Chỉnh sửa trường tùy chọn"
 
 #: 
-msgid "Person-View Side"
-msgstr "Vị trí hiển thị"
-
-#: 
 msgid "Person Editor"
 msgstr "Chỉnh sửa thành viên"
 
@@ -1723,10 +1704,6 @@ msgstr "Thông tin thành viên"
 #: 
 msgid "Friend Date"
 msgstr "Ngày đến Hội Thánh"
-
-#: 
-msgid "Add Person to Group"
-msgstr "Thêm thành viên vào Ban/Mục vụ"
 
 #: 
 msgid "Select the group to add this person to"
@@ -1953,68 +1930,12 @@ msgid "Filter and Cart"
 msgstr "Bộ lọc và giỏ"
 
 #: 
-msgid "Show people <b>not</b> in this group type:"
-msgstr "Hiển thị thành viên <b>KHÔNG</b> có trong thể loại Ban/Mục vụ"
-
-#: 
-msgid "Sort order"
-msgstr "Sắp xếp theo"
-
-#: 
-msgid "By Name"
-msgstr "Theo tên"
-
-#: 
-msgid "By Family"
-msgstr "Theo gia đình"
-
-#: 
-msgid "By Newest Entries"
-msgstr "Theo bài mới nhất"
-
-#: 
-msgid "By Recently Edited"
-msgstr "Theo lần chỉnh sửa mới nhất"
-
-#: 
-msgid "Apply Filter"
-msgstr "Bắt đầu lọc"
-
-#: 
-msgid "Male & Female"
-msgstr "Nam và Nữ"
-
-#: 
-msgid "All Classifications"
-msgstr "Tất cả các loại"
-
-#: 
 msgid "All Family Roles"
-msgstr "Tất cả các vai trò"
-
-#: 
-msgid "All Contact Properties"
-msgstr "Tất cả thuộc tính liên hệ"
-
-#: 
-msgid "All Group Types"
-msgstr "Tất cả loại Ban/Mục vụ"
-
-#: 
-msgid "All Groups"
-msgstr "Tất cả các Ban"
-
-#: 
-msgid "All Roles"
 msgstr "Tất cả các vai trò"
 
 #: 
 msgid "Listing"
 msgstr "Danh sách"
-
-#: 
-msgid "View All"
-msgstr "Xem tất cả"
 
 #: 
 msgid "Cart"
@@ -2917,10 +2838,6 @@ msgid "kilometers"
 msgstr "Km"
 
 #: 
-msgid "By Zip Code"
-msgstr "Theo mã bưu chính"
-
-#: 
 msgid "Church Address is not Set."
 msgstr "Địa chỉ Hội thánh chưa được thiết lập"
 
@@ -3249,14 +3166,6 @@ msgid "Remove All from Cart"
 msgstr "Xóa tất cả trong giỏ"
 
 #: 
-msgid " record returned"
-msgstr " bảng ghi được hiển thị"
-
-#: 
-msgid " records returned"
-msgstr " bản ghi được tìm thấy"
-
-#: 
 msgid "Database Only (.sql)"
 msgstr "Chỉ cần bảng dữ liệu (.sql)"
 
@@ -3275,10 +3184,6 @@ msgstr "Đã thêm vào Ban/Mục vụ"
 #: 
 msgid "return to People Dashboard"
 msgstr "Quay lại Bảng điều khiển thành viên"
-
-#: 
-msgid "Try out the Beta family view"
-msgstr "Dùng thử phiên bản mới hiển thị Gia đình"
 
 #: 
 msgid "This Family is Deactivated"

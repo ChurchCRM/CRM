@@ -6,6 +6,7 @@ msgstr ""
 "X-Generator: POEditor.com\n"
 "Project-Id-Version: ChurchCRM\n"
 "Language: ru\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: 
 msgid "Cannot execute query."
@@ -674,10 +675,6 @@ msgstr "Выберите событие, к которому вы хотели �
 msgid "Select Event"
 msgstr "Выберите событие"
 
-#: external/templates/verify/verify-family-info.php:145
-msgid "Verify"
-msgstr "Проверить"
-
 #: 
 msgid "Add Visitor"
 msgstr "Добавить Посетитель"
@@ -1177,24 +1174,12 @@ msgid "Security Option"
 msgstr "Вариант безопасности"
 
 #: 
-msgid "Family-View Side"
-msgstr "Семейный с боковым видом"
-
-#: 
 msgid "You must select a group."
 msgstr "Вы должны выбрать группу."
 
 #: 
 msgid "Edit List Options"
 msgstr "Изменить список Опции"
-
-#: 
-msgid "Left"
-msgstr "Слева"
-
-#: 
-msgid "Right"
-msgstr "Справа"
 
 #: 
 msgid "Help on types.."
@@ -1207,11 +1192,6 @@ msgstr "Введите имя"
 #: 
 msgid "That field name already exists."
 msgstr "Это имя поля уже существует."
-
-#: 
-#, fuzzy
-msgid "Side"
-msgstr "Сторона"
 
 #: 
 msgid "Add New Field"
@@ -2275,10 +2255,6 @@ msgid "No custom person fields have been added yet"
 msgstr "Нет таможенных человек поля не были добавлены еще"
 
 #: 
-msgid "Person-View Side"
-msgstr "Человек-Вид сбоку"
-
-#: 
 msgid "Person Editor"
 msgstr "Человек редактор"
 
@@ -2323,10 +2299,6 @@ msgstr "Создать новую семью (с использованием ф
 #, fuzzy
 msgid "Friend Date"
 msgstr "Друг Дата"
-
-#: 
-msgid "Add Person to Group"
-msgstr "Добавить человека в группу"
 
 #: 
 #, fuzzy
@@ -2782,65 +2754,8 @@ msgid "Group Assignment Helper"
 msgstr "Назначение группы Helper"
 
 #: 
-msgid "Show people <b>not</b> in this group type:"
-msgstr "Показать людям <B> не </ B> в этом типе группы:"
-
-#: 
-#, fuzzy
-msgid "Sort order"
-msgstr "Упорядочить по"
-
-#: 
-msgid "By Name"
-msgstr "Подписал: (имя)"
-
-#: 
-msgid "By Family"
-msgstr "Под Семьей"
-
-#: 
-msgid "By Newest Entries"
-msgstr "По новейшим записей"
-
-#: 
-msgid "By Recently Edited"
-msgstr "По Недавно редакцией"
-
-#: 
-msgid "Apply Filter"
-msgstr "Применить фильтр"
-
-#: 
-msgid "Male & Female"
-msgstr "Мужчины и женщины"
-
-#: 
-msgid "All Classifications"
-msgstr "Все классификации"
-
-#: 
 msgid "All Family Roles"
 msgstr "Все семейные роли"
-
-#: 
-msgid "All Contact Properties"
-msgstr "Все контактные Свойства"
-
-#: 
-msgid "All Group Types"
-msgstr "Все типы групп"
-
-#: 
-msgid "All Groups"
-msgstr "Все группы"
-
-#: 
-msgid "All Roles"
-msgstr "Все роли"
-
-#: 
-msgid "View All"
-msgstr "Посмотреть все"
 
 #: 
 msgid "Cart"

@@ -6,6 +6,7 @@ msgstr ""
 "X-Generator: POEditor.com\n"
 "Project-Id-Version: ChurchCRM\n"
 "Language: de\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: 
 msgid "Cannot execute query."
@@ -710,10 +711,6 @@ msgstr "Veranstaltung auswählen zu der Teilnehmer angemeldet werden sollen"
 msgid "Select Event"
 msgstr "Veranstaltung auswählen"
 
-#: external/templates/verify/verify-family-info.php:145
-msgid "Verify"
-msgstr "Überprüfen"
-
 #: 
 msgid "Add Visitor"
 msgstr "Besucher hinzufügen"
@@ -1279,24 +1276,12 @@ msgid "Security Option"
 msgstr "Sicherheitsoption"
 
 #: 
-msgid "Family-View Side"
-msgstr "Familienansicht Seite"
-
-#: 
 msgid "You must select a group."
 msgstr "Du musst eine Gruppe auswählen."
 
 #: 
 msgid "Edit List Options"
 msgstr "Bearbeiten der Listenoptionen"
-
-#: 
-msgid "Left"
-msgstr "Links"
-
-#: 
-msgid "Right"
-msgstr "Rechts"
 
 #: 
 msgid "Help on types.."
@@ -1309,11 +1294,6 @@ msgstr "Du musst einen Namen eingeben"
 #: 
 msgid "That field name already exists."
 msgstr "Dieses Feldname existiert bereits."
-
-#: 
-#, fuzzy
-msgid "Side"
-msgstr "Seite"
 
 #: 
 msgid "Add New Field"
@@ -1489,10 +1469,6 @@ msgstr "Erstellt"
 #: 
 msgid "Edited"
 msgstr "Editiert"
-
-#: 
-msgid " of church<br>"
-msgstr " der Gemeinde<br>"
 
 #: 
 msgid "Latitude/Longitude"
@@ -2662,10 +2638,6 @@ msgid "No custom person fields have been added yet"
 msgstr "Es wurden bisher kein"
 
 #: 
-msgid "Person-View Side"
-msgstr "Personen-Ansicht Seite"
-
-#: 
 msgid "Person Editor"
 msgstr "Personen Editor"
 
@@ -2742,10 +2714,6 @@ msgstr "Mitgliedschaftsinformationen"
 #, fuzzy
 msgid "Friend Date"
 msgstr "Eintrittsdatum"
-
-#: 
-msgid "Add Person to Group"
-msgstr "Person zur Gruppe hinzufügen"
 
 #: 
 #, fuzzy
@@ -3254,69 +3222,12 @@ msgid "Filter and Cart"
 msgstr "Filtern und dem Wagen hinzufügen"
 
 #: 
-msgid "Show people <b>not</b> in this group type:"
-msgstr "Leute anzeigen, die <b>nicht</b>in diesem Gruppentyp sind:"
-
-#: 
-#, fuzzy
-msgid "Sort order"
-msgstr "Sortierungsart"
-
-#: 
-msgid "By Name"
-msgstr "Nach Namen"
-
-#: 
-msgid "By Family"
-msgstr "Nach Familie"
-
-#: 
-msgid "By Newest Entries"
-msgstr "Nach Neueintritt"
-
-#: 
-msgid "By Recently Edited"
-msgstr "Nach kürzlich geändert"
-
-#: 
-msgid "Apply Filter"
-msgstr "Filter anwenden"
-
-#: 
-msgid "Male & Female"
-msgstr "männlich & weiblich"
-
-#: 
-msgid "All Classifications"
-msgstr "Alle Einordnungen"
-
-#: 
 msgid "All Family Roles"
 msgstr "Alle Rollen in der Familie:"
 
 #: 
-msgid "All Contact Properties"
-msgstr "Alle Eigenschaften von Kontakten"
-
-#: 
-msgid "All Group Types"
-msgstr "Alle Gruppentypen"
-
-#: 
-msgid "All Groups"
-msgstr "Alle Gruppen"
-
-#: 
-msgid "All Roles"
-msgstr "Alle Rollen"
-
-#: 
 msgid "Listing"
 msgstr "Liste"
-
-#: 
-msgid "View All"
-msgstr "Alle anschauen"
 
 #: 
 msgid "Cart"
@@ -3798,10 +3709,6 @@ msgstr "pm"
 #: 
 msgid "am"
 msgstr "abends"
-
-#: 
-msgid "yrs old"
-msgstr "Jahre alt"
 
 #: 
 msgid "Invalid Editor ID!"
@@ -4861,10 +4768,6 @@ msgstr "Geschätzter Wert"
 #: 
 msgid "Group Properties"
 msgstr "Gruppeneinstellungen"
-
-#: 
-msgid "yr old"
-msgstr "jahre alt"
 
 #: 
 msgid "There was a problem retrieving the requested object"

@@ -6,6 +6,7 @@ msgstr ""
 "X-Generator: POEditor.com\n"
 "Project-Id-Version: ChurchCRM\n"
 "Language: sq\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: 
 msgid "Cannot execute query."
@@ -652,10 +653,6 @@ msgstr "Zgjidhni ngjarje për të cilën ju do të donte për të kontrolluar nj
 msgid "Select Event"
 msgstr "Zgjidhni Event"
 
-#: external/templates/verify/verify-family-info.php:145
-msgid "Verify"
-msgstr "Verifikoj"
-
 #: 
 msgid "Add Visitor"
 msgstr "Shto Vizitor"
@@ -1143,24 +1140,12 @@ msgid "Security Option"
 msgstr "Opcioni i Sigurimit"
 
 #: 
-msgid "Family-View Side"
-msgstr "Family-Shiko Side"
-
-#: 
 msgid "You must select a group."
 msgstr "Ju duhet të zgjidhni një grup."
 
 #: 
 msgid "Edit List Options"
 msgstr "Edit Lista Options"
-
-#: 
-msgid "Left"
-msgstr "Majtas"
-
-#: 
-msgid "Right"
-msgstr "E drejtë"
 
 #: 
 msgid "Help on types.."
@@ -2198,10 +2183,6 @@ msgid "No custom person fields have been added yet"
 msgstr "Nuk fusha personi me porosi janë shtuar ende"
 
 #: 
-msgid "Person-View Side"
-msgstr "Person-Shiko Side"
-
-#: 
 msgid "Person Editor"
 msgstr "Person Editor"
 
@@ -2244,10 +2225,6 @@ msgstr "Krijo një familje të re (duke përdorur emrin e kaluar)"
 #: 
 msgid "Friend Date"
 msgstr "Mik Data"
-
-#: 
-msgid "Add Person to Group"
-msgstr "Shto person të Grupit"
 
 #: 
 msgid "Select the group to add this person to"
@@ -2687,64 +2664,8 @@ msgid "Group Assignment Helper"
 msgstr "Grupi Caktimi Helper"
 
 #: 
-msgid "Show people <b>not</b> in this group type:"
-msgstr "Shfaq njerëzit nuk <b> </ b> në këtë lloj grup:"
-
-#: 
-msgid "Sort order"
-msgstr "Renditur urdhërojë"
-
-#: 
-msgid "By Name"
-msgstr "Nga Emri"
-
-#: 
-msgid "By Family"
-msgstr "By Family"
-
-#: 
-msgid "By Newest Entries"
-msgstr "Nga Entries rejat"
-
-#: 
-msgid "By Recently Edited"
-msgstr "Duke Redaktuar Kohët e fundit"
-
-#: 
-msgid "Apply Filter"
-msgstr "Aplikoni Filter"
-
-#: 
-msgid "Male & Female"
-msgstr "Meshkuj & Femra"
-
-#: 
-msgid "All Classifications"
-msgstr "Të gjitha Klasifikimet"
-
-#: 
 msgid "All Family Roles"
 msgstr "Të gjitha Rolet familjare"
-
-#: 
-msgid "All Contact Properties"
-msgstr "Të gjitha Prona Kontakt"
-
-#: 
-msgid "All Group Types"
-msgstr "Të gjitha Llojet e grupit"
-
-#: 
-msgid "All Groups"
-msgstr "Të gjitha grupet"
-
-#: 
-msgid "All Roles"
-msgstr "Të gjitha Rolet"
-
-#: 
-msgid "View All"
-msgstr "Shiko të gjitha"
 
 #: 
 msgid "Cart"
