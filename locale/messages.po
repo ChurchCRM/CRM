@@ -10,7 +10,7 @@ msgstr ""
 "#-#-#-#-#  messages.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-19 22:50+0000\n"
+"POT-Creation-Date: 2019-11-16 00:29+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,8 +25,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2019-10-19T22:50:23.542Z\n"
-"PO-Revision-Date: 2019-10-19T22:50:23.542Z\n"
+"POT-Creation-Date: 2019-11-16T00:29:30.203Z\n"
+"PO-Revision-Date: 2019-11-16T00:29:30.203Z\n"
 
 msgid "Invalid request: Missing calendar id"
 msgstr ""
@@ -1349,6 +1349,18 @@ msgstr ""
 msgid "Maximum number of Calendar Events"
 msgstr ""
 
+msgid "Allow users to self-enroll in 2 factor authentication"
+msgstr ""
+
+msgid "Requires users to self-enroll in 2 factor authentication"
+msgstr ""
+
+msgid "ChurchCRM"
+msgstr ""
+
+msgid "Specify the application name to be displayed in authenticator app"
+msgstr ""
+
 msgid "Church Information"
 msgstr ""
 
@@ -1787,6 +1799,9 @@ msgid "Register Software"
 msgstr ""
 
 msgid "Let us know that you are using the software"
+msgstr ""
+
+msgid "Secret Keys missing from Config.php"
 msgstr ""
 
 msgid "Unsupported Deposit Types Detected"
@@ -2564,22 +2579,16 @@ msgstr ""
 msgid "A new password was sent to you. Please check your email"
 msgstr ""
 
-msgid "Registration Complete"
+msgid "Register your family"
 msgstr ""
 
-msgid "Thank you for registering your family."
+msgid "Family Info"
 msgstr ""
 
-msgid "Member(s)"
+msgid "How many people are in your family"
 msgstr ""
 
-msgid "Done"
-msgstr ""
-
-msgid "Register"
-msgstr ""
-
-msgid "Family Members"
+msgid "Members"
 msgstr ""
 
 msgid "Family Member"
@@ -2594,19 +2603,13 @@ msgstr ""
 msgid "Hide Age"
 msgstr ""
 
-msgid "Next"
-msgstr ""
-
-msgid "Register your family"
-msgstr ""
-
-msgid "How many people are in your family"
-msgstr ""
-
-msgid "This will be my primary church."
+msgid "Review"
 msgstr ""
 
 msgid "Please enter the following to start your family's verification"
+msgstr ""
+
+msgid "Next"
 msgstr ""
 
 msgid "Family Verification"
@@ -2713,9 +2716,6 @@ msgstr ""
 msgid "Updated via Family"
 msgstr ""
 
-msgid "Family Info"
-msgstr ""
-
 msgid "None US/CND State"
 msgstr ""
 
@@ -2747,6 +2747,9 @@ msgid "Envelope Number"
 msgstr ""
 
 msgid "Custom Fields"
+msgstr ""
+
+msgid "Family Members"
 msgstr ""
 
 msgid ""
@@ -4022,19 +4025,22 @@ msgstr ""
 msgid "Verify People"
 msgstr ""
 
-msgid "Email All"
-msgstr ""
-
-msgid "Email All (BCC)"
-msgstr ""
-
-msgid "Family Geographic"
+msgid "Self Register"
 msgstr ""
 
 msgid "Family Map"
 msgstr ""
 
+msgid "Family Geographic"
+msgstr ""
+
 msgid "Update All Family Coordinates"
+msgstr ""
+
+msgid "Email All"
+msgstr ""
+
+msgid "Email All (BCC)"
 msgstr ""
 
 msgid "See All People"
@@ -4044,9 +4050,6 @@ msgid "Sunday School Kids"
 msgstr ""
 
 msgid "Reports"
-msgstr ""
-
-msgid "Self Register"
 msgstr ""
 
 msgid "List families that were created via self registration."
@@ -4585,6 +4588,9 @@ msgid "item"
 msgstr ""
 
 msgid "Canvass Progress Report"
+msgstr ""
+
+msgid "Done"
 msgstr ""
 
 msgid "Assigned"
@@ -6941,6 +6947,21 @@ msgid "Check Number"
 msgstr ""
 
 msgid "Details"
+msgstr ""
+
+msgid "Register"
+msgstr ""
+
+msgid "Registration Complete"
+msgstr ""
+
+msgid "Thank you for registering your family"
+msgstr ""
+
+msgid "Register another family!"
+msgstr ""
+
+msgid "Done, show me the homepage!"
 msgstr ""
 
 msgid "Pledge or Payment"
