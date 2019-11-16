@@ -6,6 +6,7 @@ msgstr ""
 "X-Generator: POEditor.com\n"
 "Project-Id-Version: ChurchCRM\n"
 "Language: ro\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < 20)) ? 1 : 2);\n"
 
 #: 
 msgid "Cannot execute query."
@@ -730,10 +731,6 @@ msgstr "Selectați evenimentul la care doriți să verificați de persoane din p
 msgid "Select Event"
 msgstr "Selectați Eveniment"
 
-#: external/templates/verify/verify-family-info.php:145
-msgid "Verify"
-msgstr "Verifica"
-
 #: 
 msgid "Add Visitor"
 msgstr "Adauga vizitatorilor"
@@ -1309,24 +1306,12 @@ msgid "Security Option"
 msgstr "Opțiunea de securitate"
 
 #: 
-msgid "Family-View Side"
-msgstr "Familie-Side View"
-
-#: 
 msgid "You must select a group."
 msgstr "Trebuie să selectați un grup."
 
 #: 
 msgid "Edit List Options"
 msgstr "Edita lista de opțiuni"
-
-#: 
-msgid "Left"
-msgstr "Stânga"
-
-#: 
-msgid "Right"
-msgstr "Dreapta"
 
 #: 
 msgid "Help on types.."
@@ -1339,10 +1324,6 @@ msgstr "Trebuie să introduceți un nume"
 #: 
 msgid "That field name already exists."
 msgstr "Că numele de câmp există deja."
-
-#: 
-msgid "Side"
-msgstr "Parte"
 
 #: 
 msgid "Add New Field"
@@ -1520,14 +1501,6 @@ msgid "Edited"
 msgstr "editată"
 
 #: 
-msgid " of church<br>"
-msgstr "din biserică <br>"
-
-#: 
-msgid "Latitude/Longitude"
-msgstr "Latitudine / Longitudine"
-
-#: 
 msgid "Envelope Number"
 msgstr "Numărul de plic"
 
@@ -1663,6 +1636,18 @@ msgstr "Închide"
 #: 
 msgid "Confirm Delete"
 msgstr "Confirmați ștergerea"
+
+#: 
+msgid "You are about to delete the profile photo, this procedure is irreversible."
+msgstr "Urmează să ștergeți poza de profil, nu puteți reveni"
+
+#: 
+msgid "Do you want to proceed?"
+msgstr "Mergeți mai departe"
+
+#: 
+msgid "You are about to email copy of the family information to the following emails"
+msgstr "Urmează să trimiteți informați informațiile familiei către următoarele adrese de email"
 
 #: 
 msgid "Financial Reports"
@@ -1855,6 +1840,10 @@ msgid "Summary Data"
 msgstr "Date sumare"
 
 #: 
+msgid "Voting members must have made<br> a donation within this many years<br> (0 to not require a donation):"
+msgstr "Membrii votanți trebuie să fi făcut o donație de <br> în acești ani <br> (0 pentru a nu necesita o donație):"
+
+#: 
 msgid "CSV"
 msgstr "CSV"
 
@@ -1869,6 +1858,26 @@ msgstr "A crea un raport"
 #: 
 msgid "Deposit Listing"
 msgstr "Listarea depozit"
+
+#: 
+msgid "Add New Deposit"
+msgstr "Adaudă depozit nou"
+
+#: 
+msgid "Deposits: "
+msgstr "Depozite"
+
+#: 
+msgid "Delete Selected Rows"
+msgstr "Șterge liniile selectate"
+
+#: 
+msgid "Export Selected Rows (OFX)"
+msgstr "Exportă liniile selectate (OFX)"
+
+#: 
+msgid "Export Selected Rows (CSV)"
+msgstr "Exportă liniile selectate (CSV)"
 
 #: 
 msgid "Fundraiser Listing"
@@ -2034,6 +2043,10 @@ msgid "Group Editor"
 msgstr "Group Editor"
 
 #: 
+msgid "Group Settings"
+msgstr "Setări grup"
+
+#: 
 #, fuzzy
 msgid "Type of Group"
 msgstr "Tipul Grupa"
@@ -2058,8 +2071,24 @@ msgid "Select a group"
 msgstr "Selectați un grup"
 
 #: 
+msgid "Group Specific Properties: "
+msgstr "Proprietăți specifice grupului :"
+
+#: 
+msgid "Enabled"
+msgstr "Activat"
+
+#: 
 msgid "Edit Group-Specific Properties Form"
 msgstr "Editare grup proprietăți specifice Form"
+
+#: 
+msgid "Disabled"
+msgstr "Dezactivat"
+
+#: 
+msgid "Enable Group Specific Properties"
+msgstr "Activează setări specifice grupului"
 
 #: 
 #, fuzzy
@@ -2067,13 +2096,25 @@ msgid "Group Roles"
 msgstr "Roluri de grup"
 
 #: 
+msgid "Group role name changes are saved as soon as the box loses focus"
+msgstr "Schimbările de nume ale rolului grupului sunt salvate imediat ce caseta pierde focalizarea"
+
+#: 
 #, fuzzy
 msgid "New Role"
 msgstr "Noul rol"
 
 #: 
+msgid "Add New Role"
+msgstr "Adaugă rog nou"
+
+#: 
 msgid "Group Listing"
 msgstr "Listarea grup"
+
+#: 
+msgid "Add New Group"
+msgstr "Adaugă grup nou"
 
 #: 
 msgid "Submit"
@@ -2129,6 +2170,10 @@ msgid "Select the group you would like to report"
 msgstr "Selectați grupul pe care doriți să raporteze"
 
 #: 
+msgid "No Role Selected"
+msgstr "Nici un rol selectat"
+
+#: 
 #, fuzzy
 msgid "Only cart persons?"
 msgstr "Cosul de numai persoanele?"
@@ -2177,12 +2222,20 @@ msgid "Group View"
 msgstr "Group Vezi"
 
 #: 
+msgid "Group Functions"
+msgstr "Funcțiile grupului"
+
+#: 
 msgid "Edit this Group"
 msgstr "Editează acest grup"
 
 #: 
 msgid "Delete this Group"
 msgstr "Șterge acest grup"
+
+#: 
+msgid "Confirm Delete Group"
+msgstr "Confirmă ștergere grup"
 
 #: 
 #, fuzzy
@@ -2421,8 +2474,24 @@ msgid "Families"
 msgstr "Familiile"
 
 #: 
+msgid "See all Families"
+msgstr "Vezii toate familiile"
+
+#: 
 msgid "People"
 msgstr "Oameni"
+
+#: 
+msgid "See All People"
+msgstr "Vezi toți membrii"
+
+#: 
+msgid "Sunday School Kids"
+msgstr "Copii școala duminicală"
+
+#: 
+msgid "More info"
+msgstr "Mai multe informații"
 
 #: 
 msgid "Reports on groups and roles"
@@ -2439,6 +2508,18 @@ msgstr "Genera scrisori și etichete poștale."
 #: 
 msgid "US Address Verification Report"
 msgstr "SUA Raportul de verificare Adresa"
+
+#: 
+msgid "Generate report comparing all US family addresses with United States Postal Service Standard Address Format.<br>"
+msgstr "Generați un raport care compară toate adresele familiei americane cu formatul de adresă standard al serviciului poștal din Statele Unite"
+
+#: 
+msgid "Role / Gender"
+msgstr "Rol / Sex"
+
+#: 
+msgid "Count"
+msgstr "Contor"
 
 #: 
 msgid "Family Name"
@@ -2562,10 +2643,6 @@ msgid "No custom person fields have been added yet"
 msgstr "Nu câmpuri persoană personalizate au fost încă adăugate"
 
 #: 
-msgid "Person-View Side"
-msgstr "Persoana-Side View"
-
-#: 
 msgid "Person Editor"
 msgstr "Persoana Editor"
 
@@ -2612,17 +2689,12 @@ msgid "Friend Date"
 msgstr "Prieten Data"
 
 #: 
-msgid "Add Person to Group"
-msgstr "Adauga Persoana de grup"
-
-#: 
-#, fuzzy
-msgid "Select the group to add this person to"
-msgstr "Selectați grupul de a adăuga această persoană la"
-
-#: 
 msgid "Not assigned"
 msgstr "Nu este alocat"
+
+#: 
+msgid "About Me"
+msgstr "Despre mine"
 
 #: 
 msgid "Printable Page"
@@ -2645,8 +2717,24 @@ msgid "Edit User"
 msgstr "Editare utilizator"
 
 #: 
+msgid "List Members"
+msgstr "Listează membri"
+
+#: 
 msgid "No group assignments."
 msgstr "Nu misiuni de grup."
+
+#: 
+msgid "Change Role"
+msgstr "Schimbă rol"
+
+#: 
+msgid "Update Properties"
+msgstr "Actualizează proprietăți"
+
+#: 
+msgid "Assign New Group"
+msgstr "Alocă grup nou"
 
 #: 
 msgid "No volunteer opportunity assignments."
@@ -2700,6 +2788,10 @@ msgstr "Editor de plata - Modificare plată existente"
 #: 
 msgid "Payment Editor - New Deposit Slip Will Be Created"
 msgstr "Editor de plata - chitanța de depunere Vor fi create noi"
+
+#: 
+msgid "Deposit closed"
+msgstr "Depozit închis"
 
 #: 
 msgid "Find family->"
@@ -2907,6 +2999,10 @@ msgid "Please confirm removal of this property from this"
 msgstr "Vă rugăm să confirmați eliminarea această proprietate din această"
 
 #: 
+msgid "Unassigning"
+msgstr "Dezasociază"
+
+#: 
 msgid "Yes, unassign this Property"
 msgstr "Da, anulați această proprietate"
 
@@ -2995,6 +3091,10 @@ msgid "Execute Query"
 msgstr "Executa interogări"
 
 #: 
+msgid "Software Registration"
+msgstr "Înregistrare software"
+
+#: 
 msgid "Please register your copy of ChurchCRM by checking over this information and pressing the Send button.  "
 msgstr "Vă rugăm să înregistrați copia dvs. de ChurchCRM prin verificarea pe aceste informații și apăsând butonul Trimite."
 
@@ -3009,6 +3109,14 @@ msgstr "Trimite"
 #: 
 msgid "Pledge Reminder Report"
 msgstr "Raportul Memento gaj"
+
+#: 
+msgid "Event Attendance Reports"
+msgstr "Raport participanți eveniment "
+
+#: 
+msgid "Restore Database"
+msgstr "Restaurează bază de date"
 
 #: 
 msgid "All donations from this family have been moved to another family."
@@ -3064,77 +3172,12 @@ msgid "Delete Family Record AND Family Members"
 msgstr "Șterge livret de familie și membrii familiilor"
 
 #: 
-msgid "Person Listing"
-msgstr "Listarea persoană"
+msgid "Filter and Cart"
+msgstr "Filtru și coș"
 
 #: 
-msgid "Group Assignment Helper"
-msgstr "Grupa Helper Temă"
-
-#: 
-msgid "Show people <b>not</b> in this group type:"
-msgstr "Arata oamenii <b>nu</b> în acest tip de grup:"
-
-#: 
-#, fuzzy
-msgid "Sort order"
-msgstr "Ordine de sortare"
-
-#: 
-msgid "By Name"
-msgstr "După nume"
-
-#: 
-msgid "By Family"
-msgstr "De familie"
-
-#: 
-msgid "By Newest Entries"
-msgstr "Dupa cele mai noi intrări"
-
-#: 
-msgid "By Recently Edited"
-msgstr "De editat recent"
-
-#: 
-msgid "Apply Filter"
-msgstr "Aplica filtrul"
-
-#: 
-msgid "Male & Female"
-msgstr "Masculin & Feminin"
-
-#: 
-msgid "All Classifications"
-msgstr "Toate Clasificări"
-
-#: 
-msgid "All Family Roles"
-msgstr "Toate rolurilor în familie"
-
-#: 
-msgid "All Contact Properties"
-msgstr "Toate Proprietăți Contact"
-
-#: 
-msgid "All Group Types"
-msgstr "Toate Tipurile grupului"
-
-#: 
-msgid "All Groups"
-msgstr "Toate grupurile"
-
-#: 
-msgid "All Roles"
-msgstr "Toate rolurile"
-
-#: 
-msgid "View All"
-msgstr "Vezi toate"
-
-#: 
-msgid "Cart"
-msgstr "Cart"
+msgid "Listing"
+msgstr "Listare"
 
 #: 
 msgid "My User Settings"
@@ -3165,6 +3208,14 @@ msgid "Permission"
 msgstr "Permisiune"
 
 #: 
+msgid "Base URL"
+msgstr "URL de bază"
+
+#: 
+msgid "System Settings"
+msgstr "Setări system"
+
+#: 
 msgid "Tax Report"
 msgstr "Darea de seamă fiscală"
 
@@ -3176,6 +3227,10 @@ msgstr "An calendaristic"
 #: 
 msgid "US Address Verification"
 msgstr "SUA Adresa de verificare"
+
+#: 
+msgid "Update Latitude & Longitude"
+msgstr "Actualizează latitudine și longitudine"
 
 #: 
 msgid "User Delete Confirmation"
@@ -3202,6 +3257,10 @@ msgstr "Persoana pentru a face Utilizator"
 #, fuzzy
 msgid "User"
 msgstr "Utilizator"
+
+#: 
+msgid "Login Name"
+msgstr "Nume acces"
 
 #: 
 #, fuzzy
@@ -3252,6 +3311,10 @@ msgid "(Canvass volunteer.)"
 msgstr "(Cercetați voluntar.)"
 
 #: 
+msgid "Admin"
+msgstr "Administrator"
+
+#: 
 msgid "(Grants all privileges.)"
 msgstr "(Granturi toate privilegiile.)"
 
@@ -3261,8 +3324,16 @@ msgid "Style"
 msgstr "Stil"
 
 #: 
+msgid "Set Permission True to give this user the ability to change their current value."
+msgstr "Alege permisiuni DA pentru a permite acestui utilizatori să schimbe valoarea curentă"
+
+#: 
 msgid "User Listing"
 msgstr "Listarea utilizator"
+
+#: 
+msgid "New User"
+msgstr "Utilizator nou"
 
 #: 
 msgid "Last Login"
@@ -3581,6 +3652,46 @@ msgid " Bold"
 msgstr "Îndrăzneț"
 
 #: 
+msgid "When you click \"submit,\" an error report will be posted to the ChurchCRM GitHub Issue tracker."
+msgstr "Când faceți clic pe „trimite”, un raport de eroare va fi publicat în trackerul problemei ChurchCRM GitHub"
+
+#: 
+msgid "Please do not include any confidential information."
+msgstr "Nu scrieți aici informații confidențiale"
+
+#: 
+msgid "Some general information about your system will be submitted along with the request such as Server version and browser headers."
+msgstr "Unele informații generale despre sistemul dvs. vor fi trimise împreună cu solicitarea, cum ar fi versiunea serverului și anteturile browserului."
+
+#: 
+msgid "No personally identifiable information will be submitted unless you purposefully include it."
+msgstr "Nicio informație de identificare personală nu va fi transmisă decât dacă o includeți în mod intenționat."
+
+#: 
+msgid "Dashboard"
+msgstr "Panou de bord"
+
+#: 
+msgid "Toggle navigation"
+msgstr "Comutare navigare"
+
+#: 
+msgid "Change Password"
+msgstr "Schimbă parola"
+
+#: 
+msgid "You have"
+msgstr "Tu ai"
+
+#: 
+msgid "task(s)"
+msgstr "activitate(ăți)"
+
+#: 
+msgid "Home"
+msgstr "Acasă"
+
+#: 
 #, fuzzy
 msgid "Font"
 msgstr "Font"
@@ -3606,6 +3717,10 @@ msgstr "Grupate în funcție de familie"
 #, fuzzy
 msgid "To the parents of"
 msgstr "Pentru părinții:"
+
+#: 
+msgid "Start Row"
+msgstr "Start rând"
 
 #: 
 #, fuzzy
@@ -3641,14 +3756,6 @@ msgstr "Angajat"
 #: 
 msgid "M/F"
 msgstr "M / F"
-
-#: Reports/ClassAttendance.php:103 Reports/ClassList.php:79
-msgid "Teacher"
-msgstr "Profesor"
-
-#: Reports/ClassAttendance.php:110 Reports/ClassList.php:127
-msgid "Student"
-msgstr "Student"
 
 #: 
 msgid "Liaison"
@@ -3800,6 +3907,54 @@ msgid "Gift Designation:"
 msgstr "Cadou Denumire:"
 
 #: 
+msgid "Sunday School"
+msgstr "Școală duminicală"
+
+#: 
+msgid "Sunday School Class Functions"
+msgstr "Funcții școală duminicală"
+
+#: 
+msgid "Toggle Dropdown"
+msgstr "Comută meniu"
+
+#: 
+msgid "Teachers"
+msgstr "Învățători"
+
+#: 
+msgid "Send Message"
+msgstr "Trimite mesaj"
+
+#: 
+msgid "View Profile"
+msgstr "Vezi profil"
+
+#: 
+msgid "Quick Status"
+msgstr "Situație rapidă"
+
+#: 
+msgid "Birthdays by Month"
+msgstr "ZIle de naștere în funcție de lună"
+
+#: 
+msgid "Students"
+msgstr "Stundeți"
+
+#: 
+msgid "Mobile"
+msgstr "Mobil"
+
+#: 
+msgid "Home Address"
+msgstr "Adresă casă"
+
+#: 
+msgid "Dad Name"
+msgstr "Nume tată"
+
+#: 
 msgid "Sunday School Reports"
 msgstr "Rapoarte de Școală Duminicală"
 
@@ -3848,4 +4003,80 @@ msgstr "Creați Clasa Lista"
 #: 
 msgid "Create Attendance Sheet"
 msgstr "Creați foaia de prezență"
+
+#: 
+msgid "Calendar"
+msgstr "Calendar"
+
+#: 
+msgid "Members"
+msgstr "Membri"
+
+#: 
+msgid "Add New Person"
+msgstr "Adaguă membru nou"
+
+#: 
+msgid "View All Persons"
+msgstr "Vezi toți membri"
+
+#: 
+msgid "Add New Family"
+msgstr "Adaugă familie nouă"
+
+#: 
+msgid "Events"
+msgstr "Evenimente"
+
+#: 
+msgid "Fundraiser"
+msgstr "Fundraiser"
+
+#: 
+msgid "Email Export"
+msgstr "Export email"
+
+#: 
+msgid "List"
+msgstr "Listă"
+
+#: 
+msgid "Import Data"
+msgstr "Import date"
+
+#: 
+msgid "Clear Data"
+msgstr "Șterge date"
+
+#: 
+msgid "Are you sure you want to DELETE this person from Event ID: "
+msgstr "Sigur vreți să eliminați această persoană de la id eveniment:"
+
+#: 
+msgid "Date Range"
+msgstr "Interval dată"
+
+#: 
+msgid "Deleting this event TYPE will NOT delete any existing Events or Attendance Counts.  Are you sure you want to DELETE Event Type ID: "
+msgstr "Ștergerea acestui eveniment TIP NU va șterge niciun eveniment existent sau număr de prezență. Sigur doriți să Ștergeți ID de tip eveniment:"
+
+#: 
+msgid "Are you sure you want to delete the selected"
+msgstr "Sunteți sigur că vrețis ă ștergeți selecția "
+
+#: 
+msgid "Deposit(s)"
+msgstr "Depozit(te)"
+
+#: 
+msgid "This will also delete all payments associated with this deposit"
+msgstr "Aceasta va șterge și toate plățile legat de depozit"
+
+#: 
+msgid "This action CANNOT be undone, and may have legal implications!"
+msgstr "Această acțiune NU poate fi anulată și poate avea implicații legale!"
+
+#: 
+msgid "Please ensure this what you want to do."
+msgstr "Verificați că "
 

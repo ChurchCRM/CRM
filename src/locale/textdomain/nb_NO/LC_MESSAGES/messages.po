@@ -6,6 +6,7 @@ msgstr ""
 "X-Generator: POEditor.com\n"
 "Project-Id-Version: ChurchCRM\n"
 "Language: nb\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: 
 msgid "Cannot execute query."
@@ -663,10 +664,6 @@ msgstr "Velg hendelsen som du ønsker å kontrollere folk i for"
 msgid "Select Event"
 msgstr "Velg hendelse"
 
-#: external/templates/verify/verify-family-info.php:145
-msgid "Verify"
-msgstr "Verifisere"
-
 #: 
 msgid "Add Visitor"
 msgstr "Legg besøkende"
@@ -1181,24 +1178,12 @@ msgid "Security Option"
 msgstr "Sikkerhet Option"
 
 #: 
-msgid "Family-View Side"
-msgstr "Familie-View Side"
-
-#: 
 msgid "You must select a group."
 msgstr "Du må velge en gruppe."
 
 #: 
 msgid "Edit List Options"
 msgstr "Redigere Liste alternativer"
-
-#: 
-msgid "Left"
-msgstr "Venstre"
-
-#: 
-msgid "Right"
-msgstr "Høyre"
 
 #: 
 msgid "Help on types.."
@@ -1350,10 +1335,6 @@ msgstr "Desember"
 #: 
 msgid "Unk"
 msgstr "Unk"
-
-#: 
-msgid "Latitude/Longitude"
-msgstr "Breddegrad / lengdegrad"
 
 #: 
 msgid "Envelope Number"
@@ -2295,10 +2276,6 @@ msgid "No custom person fields have been added yet"
 msgstr "Ingen egendefinerte person felt er lagt til ennå"
 
 #: 
-msgid "Person-View Side"
-msgstr "Person-View Side"
-
-#: 
 msgid "Person Editor"
 msgstr "Person Editor"
 
@@ -2343,15 +2320,6 @@ msgstr "Opprett en ny familie (med etternavn)"
 #, fuzzy
 msgid "Friend Date"
 msgstr "Venn Dato"
-
-#: 
-msgid "Add Person to Group"
-msgstr "Legg til person i gruppen"
-
-#: 
-#, fuzzy
-msgid "Select the group to add this person to"
-msgstr "Velg gruppen for å legge til denne personen"
 
 #: 
 msgid "Not assigned"
@@ -2807,79 +2775,6 @@ msgstr "Slett Family Record KUN"
 #: 
 msgid "Delete Family Record AND Family Members"
 msgstr "Slett Family Record og familiemedlemmer"
-
-#: 
-msgid "Person Listing"
-msgstr "Person Listing"
-
-#: 
-msgid "Group Assignment Helper"
-msgstr "Gruppeoppgave Helper"
-
-#: 
-msgid "Show people <b>not</b> in this group type:"
-msgstr "Vis folk <b>som ikke er</b> i denne gruppen type:"
-
-#: 
-#, fuzzy
-msgid "Sort order"
-msgstr "Sorteringsrekkefølge"
-
-#: 
-msgid "By Name"
-msgstr "Etter navn"
-
-#: 
-msgid "By Family"
-msgstr "Av Family"
-
-#: 
-msgid "By Newest Entries"
-msgstr "Av Nyeste innlegg"
-
-#: 
-msgid "By Recently Edited"
-msgstr "Ved Nylig Redigert"
-
-#: 
-msgid "Apply Filter"
-msgstr "Apply Filter"
-
-#: 
-msgid "Male & Female"
-msgstr "Mann & Kvinne"
-
-#: 
-msgid "All Classifications"
-msgstr "Alle Klassifikasjoner"
-
-#: 
-msgid "All Family Roles"
-msgstr "Alle Familie Roller"
-
-#: 
-msgid "All Contact Properties"
-msgstr "All kontakt Properties"
-
-#: 
-msgid "All Group Types"
-msgstr "Alle konsernets typer"
-
-#: 
-msgid "All Groups"
-msgstr "Alle grupper"
-
-#: 
-msgid "All Roles"
-msgstr "Alle Roller"
-
-#: 
-msgid "View All"
-msgstr "Vis alle"
-
-#: 
-msgid "Cart"
-msgstr "Cart"
 
 #: 
 msgid "My User Settings"
@@ -3404,14 +3299,6 @@ msgstr "Pantsatt"
 #: 
 msgid "M/F"
 msgstr "M / F"
-
-#: Reports/ClassAttendance.php:103 Reports/ClassList.php:79
-msgid "Teacher"
-msgstr "Lærer"
-
-#: Reports/ClassAttendance.php:110 Reports/ClassList.php:127
-msgid "Student"
-msgstr "Student"
 
 #: 
 msgid "Liaison"
