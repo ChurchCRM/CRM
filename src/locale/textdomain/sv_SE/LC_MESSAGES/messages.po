@@ -1403,10 +1403,6 @@ msgid "Edited"
 msgstr "Ändrad"
 
 #: 
-msgid "Latitude/Longitude"
-msgstr "Latitud/Longitud"
-
-#: 
 msgid "Envelope Number"
 msgstr "Kuvertnummer"
 
@@ -2400,11 +2396,6 @@ msgid "Friend Date"
 msgstr "Vän datum"
 
 #: 
-#, fuzzy
-msgid "Select the group to add this person to"
-msgstr "Välj gruppen att lägga personen till"
-
-#: 
 msgid "Not assigned"
 msgstr "Inte tilldelad"
 
@@ -2858,22 +2849,6 @@ msgstr "Radera familj post ONLY"
 #: 
 msgid "Delete Family Record AND Family Members"
 msgstr "Radera familj post och familj medlemmar"
-
-#: 
-msgid "Person Listing"
-msgstr "Person lista"
-
-#: 
-msgid "Group Assignment Helper"
-msgstr "Grupp tilldelnings-verktyg"
-
-#: 
-msgid "All Family Roles"
-msgstr "Alla familj roller"
-
-#: 
-msgid "Cart"
-msgstr "Korg"
 
 #: 
 msgid "My User Settings"
@@ -3403,14 +3378,6 @@ msgstr "Gav bidragslöfte"
 #: 
 msgid "M/F"
 msgstr "M/K"
-
-#: Reports/ClassAttendance.php:103 Reports/ClassList.php:79
-msgid "Teacher"
-msgstr "Lärare"
-
-#: Reports/ClassAttendance.php:110 Reports/ClassList.php:127
-msgid "Student"
-msgstr "Student"
 
 #: 
 msgid "Liaison"

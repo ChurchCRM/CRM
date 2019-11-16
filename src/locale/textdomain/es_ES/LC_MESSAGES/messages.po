@@ -1462,10 +1462,6 @@ msgid "Edited"
 msgstr "Editada"
 
 #: 
-msgid "Latitude/Longitude"
-msgstr "Latitud/Longitud"
-
-#: 
 msgid "Envelope Number"
 msgstr "Número de sobre"
 
@@ -2706,10 +2702,6 @@ msgid "Friend Date"
 msgstr "Fecha de Amistad"
 
 #: 
-msgid "Select the group to add this person to"
-msgstr "Selecciona a que grupo se añadirá esta persona"
-
-#: 
 msgid "Person Profile"
 msgstr "Perfil de Persona"
 
@@ -3190,32 +3182,12 @@ msgid "Delete Family Record AND Family Members"
 msgstr "Borrar registros de familia y sus miembros"
 
 #: 
-msgid "Person Listing"
-msgstr "Listado de personas"
-
-#: 
-msgid "Group Assignment Helper"
-msgstr "Ayudante de Asignación de Grupos"
-
-#: 
 msgid "Filter and Cart"
 msgstr "Filtrar y Separar"
 
 #: 
-msgid "All Family Roles"
-msgstr "Todos los Roles Familiares"
-
-#: 
 msgid "Listing"
 msgstr "Listando"
-
-#: 
-msgid "Cart"
-msgstr "Separador"
-
-#: 
-msgid "Print"
-msgstr "Imprimir"
 
 #: 
 msgid "My User Settings"
@@ -3853,14 +3825,6 @@ msgstr "Prometido"
 #: 
 msgid "M/F"
 msgstr "M/F"
-
-#: Reports/ClassAttendance.php:103 Reports/ClassList.php:79
-msgid "Teacher"
-msgstr "Maestro"
-
-#: Reports/ClassAttendance.php:110 Reports/ClassList.php:127
-msgid "Student"
-msgstr "Estudiante"
 
 #: 
 msgid "Liaison"
@@ -4571,14 +4535,6 @@ msgid "Registration Complete"
 msgstr "Registro Completado"
 
 #: 
-msgid "Thank you for registering your family."
-msgstr "Gracias por registrar su familia."
-
-#: 
-msgid "Member(s)"
-msgstr "Miembro(s)"
-
-#: 
 msgid "Register"
 msgstr "Registrar"
 
@@ -4589,10 +4545,6 @@ msgstr "Registrar a su familia"
 #: 
 msgid "How many people are in your family"
 msgstr "Cuántas personas hay en su familia"
-
-#: 
-msgid "This will be my primary church."
-msgstr "Esta será mi iglesia primaria"
 
 #: 
 msgid "Add All Classes"
@@ -5466,10 +5418,6 @@ msgstr "Comparación de promesas"
 #: 
 msgid "Missing pledges"
 msgstr "Promesas faltantes"
-
-#: 
-msgid "Credit Card People"
-msgstr "Tarjeta de crédito"
 
 #: 
 msgid "Family Pledge by Fiscal Year"
@@ -7157,10 +7105,6 @@ msgid "Please ensure this what you want to do.</p>"
 msgstr "Por favor asegúrese de que esto es lo que quiere hacer. </p>"
 
 #: 
-msgid " This Family is Deactivated"
-msgstr " Esta Familia está Desactivada"
-
-#: 
 msgid " this Family"
 msgstr " esta Familia"
 
@@ -7193,16 +7137,8 @@ msgid "Coordinate data base file name:"
 msgstr "Coordinar nombre de archivo base de datos:"
 
 #: 
-msgid "Add To Cart"
-msgstr "Añadir a Separador"
-
-#: 
 msgid "Intersect With Cart"
 msgstr "Cruzar Con Separador"
-
-#: 
-msgid "Remove From Cart"
-msgstr "Quitar De Separador"
 
 #: 
 msgid "Family Member"
@@ -8065,14 +8001,6 @@ msgid "Show type of group:"
 msgstr "Mostrar tipo de grupo:"
 
 #: 
-msgid "Deposits"
-msgstr "Depósitos"
-
-#: 
-msgid "Payments"
-msgstr "Pagos"
-
-#: 
 msgid "Add Students"
 msgstr "Agregar Estudiantes"
 
@@ -8195,10 +8123,6 @@ msgstr "Twitter"
 #: 
 msgid "LinkedIn"
 msgstr "LinkedIn"
-
-#: 
-msgid "Visitors"
-msgstr "Visitantes"
 
 #: 
 msgid "Move Event"
@@ -8950,10 +8874,6 @@ msgstr "Se han detectado Datos de Pago Almacenados no soportados"
 #: 
 msgid "Support for stored payment data has been removed. This data will soon be removed from your database"
 msgstr "Se ha removido el soporte para almacenar los datos de pagos. Estos datos serán  borrados pronto de su base de datos."
-
-#: 
-msgid "Classifcation"
-msgstr "Clasificación"
 
 #: 
 msgid "Estonian"

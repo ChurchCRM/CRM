@@ -1338,10 +1338,6 @@ msgid "Unk"
 msgstr "Unk"
 
 #: 
-msgid "Latitude/Longitude"
-msgstr "Latitude / Longitude"
-
-#: 
 msgid "Envelope Number"
 msgstr "Boríték száma"
 
@@ -2305,11 +2301,6 @@ msgid "Friend Date"
 msgstr "Ismerős Date"
 
 #: 
-#, fuzzy
-msgid "Select the group to add this person to"
-msgstr "Válassza ki a csoportot, hogy adjunk ennek a személynek, hogy"
-
-#: 
 msgid "Not assigned"
 msgstr "Nincs hozzárendelve"
 
@@ -2756,22 +2747,6 @@ msgstr "Törlés Family Record CSAK"
 #: 
 msgid "Delete Family Record AND Family Members"
 msgstr "Törlés Family Record és a családtagok"
-
-#: 
-msgid "Person Listing"
-msgstr "Személy Listing"
-
-#: 
-msgid "Group Assignment Helper"
-msgstr "Csoportos Megbízás Helper"
-
-#: 
-msgid "All Family Roles"
-msgstr "Minden családi szerepek"
-
-#: 
-msgid "Cart"
-msgstr "Kosár"
 
 #: 
 msgid "My User Settings"
@@ -3288,14 +3263,6 @@ msgstr "Elzálogosított"
 #: 
 msgid "M/F"
 msgstr "M / F"
-
-#: Reports/ClassAttendance.php:103 Reports/ClassList.php:79
-msgid "Teacher"
-msgstr "Tanár"
-
-#: Reports/ClassAttendance.php:110 Reports/ClassList.php:127
-msgid "Student"
-msgstr "Diák"
 
 #: 
 msgid "Liaison"

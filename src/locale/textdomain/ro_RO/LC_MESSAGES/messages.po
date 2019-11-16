@@ -1501,10 +1501,6 @@ msgid "Edited"
 msgstr "editată"
 
 #: 
-msgid "Latitude/Longitude"
-msgstr "Latitudine / Longitudine"
-
-#: 
 msgid "Envelope Number"
 msgstr "Numărul de plic"
 
@@ -2693,11 +2689,6 @@ msgid "Friend Date"
 msgstr "Prieten Data"
 
 #: 
-#, fuzzy
-msgid "Select the group to add this person to"
-msgstr "Selectați grupul de a adăuga această persoană la"
-
-#: 
 msgid "Not assigned"
 msgstr "Nu este alocat"
 
@@ -3181,32 +3172,12 @@ msgid "Delete Family Record AND Family Members"
 msgstr "Șterge livret de familie și membrii familiilor"
 
 #: 
-msgid "Person Listing"
-msgstr "Listarea persoană"
-
-#: 
-msgid "Group Assignment Helper"
-msgstr "Grupa Helper Temă"
-
-#: 
 msgid "Filter and Cart"
 msgstr "Filtru și coș"
 
 #: 
-msgid "All Family Roles"
-msgstr "Toate rolurilor în familie"
-
-#: 
 msgid "Listing"
 msgstr "Listare"
-
-#: 
-msgid "Cart"
-msgstr "Cart"
-
-#: 
-msgid "Print"
-msgstr "Imprimă"
 
 #: 
 msgid "My User Settings"
@@ -3785,14 +3756,6 @@ msgstr "Angajat"
 #: 
 msgid "M/F"
 msgstr "M / F"
-
-#: Reports/ClassAttendance.php:103 Reports/ClassList.php:79
-msgid "Teacher"
-msgstr "Profesor"
-
-#: Reports/ClassAttendance.php:110 Reports/ClassList.php:127
-msgid "Student"
-msgstr "Student"
 
 #: 
 msgid "Liaison"

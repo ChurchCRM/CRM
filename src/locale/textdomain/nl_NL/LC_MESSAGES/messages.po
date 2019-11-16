@@ -1464,10 +1464,6 @@ msgid "Edited"
 msgstr "Gewijzigd"
 
 #: 
-msgid "Latitude/Longitude"
-msgstr "Beedte/Lengte"
-
-#: 
 msgid "Envelope Number"
 msgstr "Envelop Nummer"
 
@@ -2709,10 +2705,6 @@ msgid "Friend Date"
 msgstr "Betrokkenheid is gewijzigd sinds"
 
 #: 
-msgid "Select the group to add this person to"
-msgstr "Selecteer de groep om deze persoon aan toe te voegen"
-
-#: 
 msgid "Person Profile"
 msgstr "Persoonlijk profiel"
 
@@ -3194,32 +3186,12 @@ msgid "Delete Family Record AND Family Members"
 msgstr "Verwijdeer Familie EN Familie Leden"
 
 #: 
-msgid "Person Listing"
-msgstr "Overzicht personen"
-
-#: 
-msgid "Group Assignment Helper"
-msgstr "Koppel aan groepen"
-
-#: 
 msgid "Filter and Cart"
 msgstr "Filter en mandje"
 
 #: 
-msgid "All Family Roles"
-msgstr "Alle gezinsrollen"
-
-#: 
 msgid "Listing"
 msgstr "Weergave"
-
-#: 
-msgid "Cart"
-msgstr "Mandje"
-
-#: 
-msgid "Print"
-msgstr "Print"
 
 #: 
 msgid "My User Settings"
@@ -3857,14 +3829,6 @@ msgstr "Bijgedragen"
 #: 
 msgid "M/F"
 msgstr "M/V"
-
-#: Reports/ClassAttendance.php:103 Reports/ClassList.php:79
-msgid "Teacher"
-msgstr "Leraar"
-
-#: Reports/ClassAttendance.php:110 Reports/ClassList.php:127
-msgid "Student"
-msgstr "Leerling"
 
 #: 
 msgid "Liaison"
@@ -4579,14 +4543,6 @@ msgid "Registration Complete"
 msgstr "Registratie voltooid"
 
 #: 
-msgid "Thank you for registering your family."
-msgstr "Dank u voor het registreren van uw gezin."
-
-#: 
-msgid "Member(s)"
-msgstr "Leden"
-
-#: 
 msgid "Register"
 msgstr "Registreer"
 
@@ -4597,10 +4553,6 @@ msgstr "Registreer je gezin"
 #: 
 msgid "How many people are in your family"
 msgstr "Hoeveel personen telt je gezin?"
-
-#: 
-msgid "This will be my primary church."
-msgstr "Dit wordt mijn eerste gemeente"
 
 #: 
 msgid "Add All Classes"
@@ -5351,10 +5303,6 @@ msgstr "Vergelijk toezeggingen"
 #: 
 msgid "Missing pledges"
 msgstr "Ontbrekende toezeggingen"
-
-#: 
-msgid "Credit Card People"
-msgstr "Personen met een creditcard"
 
 #: 
 msgid "Family Pledge by Fiscal Year"
@@ -6529,10 +6477,6 @@ msgid "Show type of group:"
 msgstr "Groepscategorie"
 
 #: 
-msgid "Payments"
-msgstr "Betalingen"
-
-#: 
 msgid "Add Students"
 msgstr "Leerlingen toevoegen"
 
@@ -6619,10 +6563,6 @@ msgstr "Twitter"
 #: 
 msgid "LinkedIn"
 msgstr "LinkedIn"
-
-#: 
-msgid "Visitors"
-msgstr "Bezoekers"
 
 #: 
 msgid "Move Event"
@@ -7261,10 +7201,6 @@ msgstr "Niet-ondersteunde opgeslagen betalingsgegevens gedetecteerd."
 #: 
 msgid "Support for stored payment data has been removed. This data will soon be removed from your database"
 msgstr "Ondersteuning voor opgeslagen betalingsgegevens is verwijderd. Deze gegevens zullen binnenkort worden verwijderd uit de database"
-
-#: 
-msgid "Classifcation"
-msgstr "Ingeschreven als soort lid"
 
 #: 
 msgid "Estonian"

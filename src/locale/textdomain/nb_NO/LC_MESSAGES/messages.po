@@ -1337,10 +1337,6 @@ msgid "Unk"
 msgstr "Unk"
 
 #: 
-msgid "Latitude/Longitude"
-msgstr "Breddegrad / lengdegrad"
-
-#: 
 msgid "Envelope Number"
 msgstr "Konvolutt nummer"
 
@@ -2326,11 +2322,6 @@ msgid "Friend Date"
 msgstr "Venn Dato"
 
 #: 
-#, fuzzy
-msgid "Select the group to add this person to"
-msgstr "Velg gruppen for å legge til denne personen"
-
-#: 
 msgid "Not assigned"
 msgstr "Ikke tildelt"
 
@@ -2784,22 +2775,6 @@ msgstr "Slett Family Record KUN"
 #: 
 msgid "Delete Family Record AND Family Members"
 msgstr "Slett Family Record og familiemedlemmer"
-
-#: 
-msgid "Person Listing"
-msgstr "Person Listing"
-
-#: 
-msgid "Group Assignment Helper"
-msgstr "Gruppeoppgave Helper"
-
-#: 
-msgid "All Family Roles"
-msgstr "Alle Familie Roller"
-
-#: 
-msgid "Cart"
-msgstr "Cart"
 
 #: 
 msgid "My User Settings"
@@ -3324,14 +3299,6 @@ msgstr "Pantsatt"
 #: 
 msgid "M/F"
 msgstr "M / F"
-
-#: Reports/ClassAttendance.php:103 Reports/ClassList.php:79
-msgid "Teacher"
-msgstr "Lærer"
-
-#: Reports/ClassAttendance.php:110 Reports/ClassList.php:127
-msgid "Student"
-msgstr "Student"
 
 #: 
 msgid "Liaison"

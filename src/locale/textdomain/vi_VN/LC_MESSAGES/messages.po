@@ -1050,10 +1050,6 @@ msgid "Edited"
 msgstr "Đã sửa"
 
 #: 
-msgid "Latitude/Longitude"
-msgstr "Vĩ độ/Kinh độ"
-
-#: 
 msgid "Verify Info"
 msgstr "Xác nhận thông tin"
 
@@ -1706,10 +1702,6 @@ msgid "Friend Date"
 msgstr "Ngày đến Hội Thánh"
 
 #: 
-msgid "Select the group to add this person to"
-msgstr "Lựa chọn Ban/Mục vụ để thêm thành viên vào"
-
-#: 
 msgid "Person Profile"
 msgstr "Hồ sơ cá nhân"
 
@@ -1918,32 +1910,12 @@ msgid "Delete Family Record AND Family Members"
 msgstr "Xóa bỏ bản ghi gia đình VÀ thành viên gia đình"
 
 #: 
-msgid "Person Listing"
-msgstr "Danh sách các thành viên"
-
-#: 
-msgid "Group Assignment Helper"
-msgstr "Thêm vào Ban/Mục vụ"
-
-#: 
 msgid "Filter and Cart"
 msgstr "Bộ lọc và giỏ"
 
 #: 
-msgid "All Family Roles"
-msgstr "Tất cả các vai trò"
-
-#: 
 msgid "Listing"
 msgstr "Danh sách"
-
-#: 
-msgid "Cart"
-msgstr "Giỏ"
-
-#: 
-msgid "Print"
-msgstr "In ấn"
 
 #: 
 msgid "My User Settings"
@@ -2156,14 +2128,6 @@ msgstr "yêu cầu"
 #: 
 msgid "Home"
 msgstr "Trang chủ"
-
-#: Reports/ClassAttendance.php:103 Reports/ClassList.php:79
-msgid "Teacher"
-msgstr "Giáo viên"
-
-#: Reports/ClassAttendance.php:110 Reports/ClassList.php:127
-msgid "Student"
-msgstr "Học viên"
 
 #: 
 msgid "Liaison"
@@ -2522,14 +2486,6 @@ msgid "No Backup Running"
 msgstr "Không có bản sao lưu nào"
 
 #: 
-msgid "Thank you for registering your family."
-msgstr "Cảm ơn bạn đã đăng ký cho gia đình."
-
-#: 
-msgid "Member(s)"
-msgstr "Thành viên"
-
-#: 
 msgid "Register"
 msgstr "Đăng ký"
 
@@ -2878,10 +2834,6 @@ msgid "Profile Image uploaded"
 msgstr "Đã cập nhật hình ảnh đại diện"
 
 #: 
-msgid " This Family is Deactivated"
-msgstr " Gia đình này đã bị hủy kích hoạt"
-
-#: 
 msgid " this Family"
 msgstr " gia đình này"
 
@@ -2894,16 +2846,8 @@ msgid "Please select a Family."
 msgstr "Vui lòng lựa chọn gia đình."
 
 #: 
-msgid "Add To Cart"
-msgstr "Thêm vào giỏ"
-
-#: 
 msgid "Intersect With Cart"
 msgstr "Giao với giỏ"
-
-#: 
-msgid "Remove From Cart"
-msgstr "Xóa khỏi giỏ"
 
 #: 
 msgid "Family Member"

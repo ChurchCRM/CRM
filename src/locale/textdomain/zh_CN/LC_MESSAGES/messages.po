@@ -1501,10 +1501,6 @@ msgid "Edited"
 msgstr "已编辑"
 
 #: 
-msgid "Latitude/Longitude"
-msgstr "纬度/经度"
-
-#: 
 msgid "Envelope Number"
 msgstr "信封号码"
 
@@ -2770,11 +2766,6 @@ msgid "Friend Date"
 msgstr "友情日期"
 
 #: 
-#, fuzzy
-msgid "Select the group to add this person to"
-msgstr "选择要添加的组人"
-
-#: 
 msgid "Person Profile"
 msgstr "人员档案"
 
@@ -3263,32 +3254,12 @@ msgid "Delete Family Record AND Family Members"
 msgstr "删除家庭记录及家庭成员的"
 
 #: 
-msgid "Person Listing"
-msgstr "人上市"
-
-#: 
-msgid "Group Assignment Helper"
-msgstr "集团转让助手"
-
-#: 
 msgid "Filter and Cart"
 msgstr "删选及购物车；"
 
 #: 
-msgid "All Family Roles"
-msgstr "所有的家庭角色"
-
-#: 
 msgid "Listing"
 msgstr "列表"
-
-#: 
-msgid "Cart"
-msgstr "大车"
-
-#: 
-msgid "Print"
-msgstr "打印"
 
 #: 
 msgid "My User Settings"
@@ -3947,14 +3918,6 @@ msgstr "已抵押"
 #: 
 msgid "M/F"
 msgstr "M / F"
-
-#: Reports/ClassAttendance.php:103 Reports/ClassList.php:79
-msgid "Teacher"
-msgstr "老师"
-
-#: Reports/ClassAttendance.php:110 Reports/ClassList.php:127
-msgid "Student"
-msgstr "学生"
 
 #: 
 msgid "Liaison"
@@ -4672,14 +4635,6 @@ msgid "Registration Complete"
 msgstr "注册完成"
 
 #: 
-msgid "Thank you for registering your family."
-msgstr "感谢您为您的家人注册。"
-
-#: 
-msgid "Member(s)"
-msgstr "会员"
-
-#: 
 msgid "Register"
 msgstr "注册"
 
@@ -4690,10 +4645,6 @@ msgstr "注册家人"
 #: 
 msgid "How many people are in your family"
 msgstr "你有几个家庭成员"
-
-#: 
-msgid "This will be my primary church."
-msgstr "这将是我的主要教堂。"
 
 #: 
 msgid "Add All Classes"
@@ -5530,10 +5481,6 @@ msgstr "比较承诺"
 #: 
 msgid "Missing pledges"
 msgstr "遗失承诺"
-
-#: 
-msgid "Credit Card People"
-msgstr "信用卡人员"
 
 #: 
 msgid "Family Pledge by Fiscal Year"
@@ -7172,10 +7119,6 @@ msgid "Please ensure this what you want to do.</p>"
 msgstr "请确认这是你想要做的。"
 
 #: 
-msgid " This Family is Deactivated"
-msgstr "这个家庭已停用"
-
-#: 
 msgid " this Family"
 msgstr "这个家庭"
 
@@ -7206,14 +7149,6 @@ msgstr "请选择一个家庭。"
 #: 
 msgid "Coordinate data base file name:"
 msgstr "协调数据库文件名："
-
-#: 
-msgid "Add To Cart"
-msgstr "添加至购物车"
-
-#: 
-msgid "Remove From Cart"
-msgstr "从购物车中删除"
 
 #: 
 msgid "Family Member"
@@ -8065,14 +8000,6 @@ msgid "Show type of group:"
 msgstr "显示组的类型："
 
 #: 
-msgid "Deposits"
-msgstr "存款"
-
-#: 
-msgid "Payments"
-msgstr "支付"
-
-#: 
 msgid "Add Students"
 msgstr "添加学生"
 
@@ -8196,10 +8123,6 @@ msgstr "Twitter"
 #: 
 msgid "LinkedIn"
 msgstr "LinkedIn"
-
-#: 
-msgid "Visitors"
-msgstr "受访者"
 
 #: 
 msgid "Move Event"

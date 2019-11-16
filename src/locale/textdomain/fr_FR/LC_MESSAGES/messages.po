@@ -1467,10 +1467,6 @@ msgid "Edited"
 msgstr "Modifié"
 
 #: 
-msgid "Latitude/Longitude"
-msgstr "Latitude / Longitude"
-
-#: 
 msgid "Envelope Number"
 msgstr "Numéro de l'enveloppe"
 
@@ -2708,10 +2704,6 @@ msgid "Friend Date"
 msgstr "Date d'amitié"
 
 #: 
-msgid "Select the group to add this person to"
-msgstr "Sélectionner un groupe pour y ajouter une personne"
-
-#: 
 msgid "Person Profile"
 msgstr "Profil de la Personne"
 
@@ -3192,32 +3184,12 @@ msgid "Delete Family Record AND Family Members"
 msgstr "Supprimer les données de la famille ET ses membres."
 
 #: 
-msgid "Person Listing"
-msgstr "Liste des Personnes"
-
-#: 
-msgid "Group Assignment Helper"
-msgstr "Aide assignements au groupe"
-
-#: 
 msgid "Filter and Cart"
 msgstr "Filtre et Panier"
 
 #: 
-msgid "All Family Roles"
-msgstr "Tous les Rôles de Famille"
-
-#: 
 msgid "Listing"
 msgstr "Liste"
-
-#: 
-msgid "Cart"
-msgstr "Panier"
-
-#: 
-msgid "Print"
-msgstr "Imprimer"
 
 #: 
 msgid "My User Settings"
@@ -3854,14 +3826,6 @@ msgstr "Contribué"
 #: 
 msgid "M/F"
 msgstr "H / F"
-
-#: Reports/ClassAttendance.php:103 Reports/ClassList.php:79
-msgid "Teacher"
-msgstr "Moniteur"
-
-#: Reports/ClassAttendance.php:110 Reports/ClassList.php:127
-msgid "Student"
-msgstr "Étudiant"
 
 #: 
 msgid "Liaison"
@@ -4573,14 +4537,6 @@ msgid "Registration Complete"
 msgstr "Inscription terminée."
 
 #: 
-msgid "Thank you for registering your family."
-msgstr "Merci d&#39;avoir inscrit votre famille."
-
-#: 
-msgid "Member(s)"
-msgstr "Membre(s)"
-
-#: 
 msgid "Register"
 msgstr "S'inscrire"
 
@@ -4591,10 +4547,6 @@ msgstr "Inscrire votre famille"
 #: 
 msgid "How many people are in your family"
 msgstr "Combien de personnes êtes vous dans votre famille"
-
-#: 
-msgid "This will be my primary church."
-msgstr "Ce sera mon église principale."
 
 #: 
 msgid "Add All Classes"
@@ -5463,10 +5415,6 @@ msgstr "Comparaison de contribution"
 #: 
 msgid "Missing pledges"
 msgstr "Contributions manquantes"
-
-#: 
-msgid "Credit Card People"
-msgstr "Personne ayant une Carte de crédit"
 
 #: 
 msgid "Family Pledge by Fiscal Year"
@@ -7125,10 +7073,6 @@ msgid "Please ensure this what you want to do.</p>"
 msgstr "Vérifier que c'est ce que vous voulez faire.</p>"
 
 #: 
-msgid " This Family is Deactivated"
-msgstr " Cette famille est désactivée"
-
-#: 
 msgid " this Family"
 msgstr " cette famille"
 
@@ -7161,16 +7105,8 @@ msgid "Coordinate data base file name:"
 msgstr "Nom du fichier de la base de données de coordonnées :"
 
 #: 
-msgid "Add To Cart"
-msgstr "Ajouter au Panier"
-
-#: 
 msgid "Intersect With Cart"
 msgstr "Croisement avec le Panier"
-
-#: 
-msgid "Remove From Cart"
-msgstr "Retirer du panier"
 
 #: 
 msgid "Family Member"
@@ -8030,14 +7966,6 @@ msgid "Show type of group:"
 msgstr "Visualiser le type de groupes :"
 
 #: 
-msgid "Deposits"
-msgstr "Dépôts"
-
-#: 
-msgid "Payments"
-msgstr "Paiements"
-
-#: 
 msgid "Add Students"
 msgstr "Ajouter des étudiants"
 
@@ -8160,10 +8088,6 @@ msgstr "Twitter"
 #: 
 msgid "LinkedIn"
 msgstr "LinkedIn"
-
-#: 
-msgid "Visitors"
-msgstr "Visiteurs"
 
 #: 
 msgid "Move Event"
@@ -8888,10 +8812,6 @@ msgstr "Je comprends"
 #: 
 msgid "Unsupported Deposit Types Detected"
 msgstr "Types de dépôts incorrects"
-
-#: 
-msgid "Classifcation"
-msgstr "Catégorisation"
 
 #: 
 msgid "Estonian"

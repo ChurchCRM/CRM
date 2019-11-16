@@ -1471,10 +1471,6 @@ msgid "Edited"
 msgstr "Editiert"
 
 #: 
-msgid "Latitude/Longitude"
-msgstr "Breitengrad/Längengrad"
-
-#: 
 msgid "Envelope Number"
 msgstr "Nr. des Briefumschlags"
 
@@ -2716,11 +2712,6 @@ msgid "Friend Date"
 msgstr "Eintrittsdatum"
 
 #: 
-#, fuzzy
-msgid "Select the group to add this person to"
-msgstr "Wähle eine Gruppe aus um diese Person hinzuzufügen"
-
-#: 
 msgid "Person Profile"
 msgstr "Personenprofil"
 
@@ -3210,32 +3201,12 @@ msgid "Delete Family Record AND Family Members"
 msgstr "Lösche Familieneinträge und Familienmitglieder"
 
 #: 
-msgid "Person Listing"
-msgstr "Auflistung der Personen"
-
-#: 
-msgid "Group Assignment Helper"
-msgstr "Gruppen Assistent"
-
-#: 
 msgid "Filter and Cart"
 msgstr "Filtern und dem Wagen hinzufügen"
 
 #: 
-msgid "All Family Roles"
-msgstr "Alle Rollen in der Familie:"
-
-#: 
 msgid "Listing"
 msgstr "Liste"
-
-#: 
-msgid "Cart"
-msgstr "Korb"
-
-#: 
-msgid "Print"
-msgstr "Drucken"
 
 #: 
 msgid "My User Settings"
@@ -3900,14 +3871,6 @@ msgstr "Zugesagt"
 #: 
 msgid "M/F"
 msgstr "M/F"
-
-#: Reports/ClassAttendance.php:103 Reports/ClassList.php:79
-msgid "Teacher"
-msgstr "Lehrer"
-
-#: Reports/ClassAttendance.php:110 Reports/ClassList.php:127
-msgid "Student"
-msgstr "Student"
 
 #: 
 msgid "Liaison"
@@ -4574,14 +4537,6 @@ msgid "Registration Complete"
 msgstr "Registrierung vollständig."
 
 #: 
-msgid "Thank you for registering your family."
-msgstr "Vielen Dank, dass Du Deine Familie registriert hast."
-
-#: 
-msgid "Member(s)"
-msgstr "Mitglied(er)"
-
-#: 
 msgid "Register"
 msgstr "Registrieren"
 
@@ -4592,10 +4547,6 @@ msgstr "Registriere Deine Familie"
 #: 
 msgid "How many people are in your family"
 msgstr "Wie viele Personen sind in Deiner Familie"
-
-#: 
-msgid "This will be my primary church."
-msgstr "Das ist meine Hauptgemeinde"
 
 #: 
 msgid "Add All Classes"
@@ -5912,10 +5863,6 @@ msgid "Please ensure this what you want to do.</p>"
 msgstr "Bitte stelle sicher, dass Du dies tun möchtest.<p>"
 
 #: 
-msgid " This Family is Deactivated"
-msgstr " Diese Familie ist deaktiviert."
-
-#: 
 msgid " this Family"
 msgstr " diese Familie"
 
@@ -5944,16 +5891,8 @@ msgid "Please select a Family."
 msgstr "Bitte wähle eine Familie."
 
 #: 
-msgid "Add To Cart"
-msgstr "Zum Wagen hinzufügen"
-
-#: 
 msgid "Intersect With Cart"
 msgstr "Schnittmenge mit Wagen"
-
-#: 
-msgid "Remove From Cart"
-msgstr "Aus dem Wagen entfernen"
 
 #: 
 msgid "Family Member"
@@ -6288,10 +6227,6 @@ msgid "LinkedIn"
 msgstr "LinkedIn"
 
 #: 
-msgid "Visitors"
-msgstr "Besucher"
-
-#: 
 msgid "Move Event"
 msgstr "Veranstaltung verschieben"
 
@@ -6546,10 +6481,6 @@ msgstr "Integritäts-Check-Details:"
 #: 
 msgid "I Understand"
 msgstr "Ich akzeptiere"
-
-#: 
-msgid "Classifcation"
-msgstr "Klassifizierung"
 
 #: 
 msgid "Generate Backup"

@@ -1367,10 +1367,6 @@ msgid "Edited"
 msgstr "Disunting"
 
 #: 
-msgid "Latitude/Longitude"
-msgstr "lintang/bujur"
-
-#: 
 msgid "Envelope Number"
 msgstr "No Surat"
 

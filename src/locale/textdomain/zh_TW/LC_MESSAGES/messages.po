@@ -1513,10 +1513,6 @@ msgid "Edited"
 msgstr "已編輯"
 
 #: 
-msgid "Latitude/Longitude"
-msgstr "緯度/經度"
-
-#: 
 msgid "Envelope Number"
 msgstr "信封號碼"
 
@@ -2785,11 +2781,6 @@ msgid "Friend Date"
 msgstr "友情日期"
 
 #: 
-#, fuzzy
-msgid "Select the group to add this person to"
-msgstr "選擇要添加的組人"
-
-#: 
 msgid "Person Profile"
 msgstr "人員檔案"
 
@@ -3281,33 +3272,12 @@ msgid "Delete Family Record AND Family Members"
 msgstr "刪除家庭記錄及家庭成員的"
 
 #: 
-msgid "Person Listing"
-msgstr "人上市"
-
-#: 
-msgid "Group Assignment Helper"
-msgstr "集團轉讓助手"
-
-#: 
 msgid "Filter and Cart"
 msgstr "刪選及購物車；"
 
 #: 
-msgid "All Family Roles"
-msgstr "所有的家庭角色"
-
-#: 
 msgid "Listing"
 msgstr "列表"
-
-#: 
-#, fuzzy
-msgid "Cart"
-msgstr "購物車"
-
-#: 
-msgid "Print"
-msgstr "打印"
 
 #: 
 msgid "My User Settings"
@@ -3970,14 +3940,6 @@ msgstr "已抵押"
 #: 
 msgid "M/F"
 msgstr "M / F"
-
-#: Reports/ClassAttendance.php:103 Reports/ClassList.php:79
-msgid "Teacher"
-msgstr "老師"
-
-#: Reports/ClassAttendance.php:110 Reports/ClassList.php:127
-msgid "Student"
-msgstr "學生"
 
 #: 
 msgid "Liaison"
@@ -4705,14 +4667,6 @@ msgid "Registration Complete"
 msgstr "註冊完成"
 
 #: 
-msgid "Thank you for registering your family."
-msgstr "感謝您為您的家人註冊。"
-
-#: 
-msgid "Member(s)"
-msgstr "會員"
-
-#: 
 msgid "Register"
 msgstr "註冊"
 
@@ -4723,10 +4677,6 @@ msgstr "註冊家人"
 #: 
 msgid "How many people are in your family"
 msgstr "你有幾個家庭成員"
-
-#: 
-msgid "This will be my primary church."
-msgstr "這將是我的主要教堂。"
 
 #: 
 msgid "Add All Classes"
@@ -5611,10 +5561,6 @@ msgstr "比較承諾"
 #: 
 msgid "Missing pledges"
 msgstr "遺失承諾"
-
-#: 
-msgid "Credit Card People"
-msgstr "信用卡人員"
 
 #: 
 msgid "Family Pledge by Fiscal Year"
@@ -7279,10 +7225,6 @@ msgid "Please ensure this what you want to do.</p>"
 msgstr "請確認這是你想要做的。"
 
 #: 
-msgid " This Family is Deactivated"
-msgstr "這個家庭已停用"
-
-#: 
 msgid " this Family"
 msgstr "這個家庭"
 
@@ -7315,17 +7257,9 @@ msgid "Coordinate data base file name:"
 msgstr "協調數據庫文件名："
 
 #: 
-msgid "Add To Cart"
-msgstr "添加至購物車"
-
-#: 
 #, fuzzy
 msgid "Intersect With Cart"
 msgstr "與購物車交集"
-
-#: 
-msgid "Remove From Cart"
-msgstr "從購物車中刪除"
 
 #: 
 msgid "Family Member"
@@ -8191,14 +8125,6 @@ msgid "Show type of group:"
 msgstr "顯示組的類型："
 
 #: 
-msgid "Deposits"
-msgstr "存款"
-
-#: 
-msgid "Payments"
-msgstr "支付"
-
-#: 
 msgid "Add Students"
 msgstr "添加學生"
 
@@ -8322,10 +8248,6 @@ msgstr "Twitter"
 #: 
 msgid "LinkedIn"
 msgstr "LinkedIn"
-
-#: 
-msgid "Visitors"
-msgstr "受訪者"
 
 #: 
 msgid "Move Event"
@@ -9110,11 +9032,6 @@ msgstr "檢測到不支持的存儲付款數據"
 #: 
 msgid "Support for stored payment data has been removed. This data will soon be removed from your database"
 msgstr "已刪除對存儲的付款數據的支持。這些數據很快就會從您的資料庫中刪除"
-
-#: 
-#, fuzzy
-msgid "Classifcation"
-msgstr "分類"
 
 #: 
 #, fuzzy

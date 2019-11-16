@@ -1333,10 +1333,6 @@ msgid "Unk"
 msgstr "Unk"
 
 #: 
-msgid "Latitude/Longitude"
-msgstr "Широта / Долгота"
-
-#: 
 msgid "Envelope Number"
 msgstr "Конверт Количество"
 
@@ -2301,11 +2297,6 @@ msgid "Friend Date"
 msgstr "Друг Дата"
 
 #: 
-#, fuzzy
-msgid "Select the group to add this person to"
-msgstr "Выберите группу, чтобы добавить этого человека"
-
-#: 
 msgid "Not assigned"
 msgstr "Не назначен"
 
@@ -2744,22 +2735,6 @@ msgstr "Удалить семейные записи ТОЛЬКО"
 #: 
 msgid "Delete Family Record AND Family Members"
 msgstr "Удалить семейные записи и членов их семей"
-
-#: 
-msgid "Person Listing"
-msgstr "Человек Листинг"
-
-#: 
-msgid "Group Assignment Helper"
-msgstr "Назначение группы Helper"
-
-#: 
-msgid "All Family Roles"
-msgstr "Все семейные роли"
-
-#: 
-msgid "Cart"
-msgstr "Корзина"
 
 #: 
 msgid "My User Settings"
@@ -3277,14 +3252,6 @@ msgstr "Заложенные"
 #: 
 msgid "M/F"
 msgstr "M / F"
-
-#: Reports/ClassAttendance.php:103 Reports/ClassList.php:79
-msgid "Teacher"
-msgstr "Учител"
-
-#: Reports/ClassAttendance.php:110 Reports/ClassList.php:127
-msgid "Student"
-msgstr "Студен"
 
 #: 
 msgid "Liaison"

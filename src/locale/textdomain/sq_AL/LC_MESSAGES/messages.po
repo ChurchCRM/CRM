@@ -1296,10 +1296,6 @@ msgid "Unk"
 msgstr "Unk"
 
 #: 
-msgid "Latitude/Longitude"
-msgstr "Latitude / Longitude"
-
-#: 
 msgid "Envelope Number"
 msgstr "Zarf Numri"
 
@@ -2227,10 +2223,6 @@ msgid "Friend Date"
 msgstr "Mik Data"
 
 #: 
-msgid "Select the group to add this person to"
-msgstr "Zgjidh grupin për të shtuar këtë person të"
-
-#: 
 msgid "Not assigned"
 msgstr "Nuk është caktuar"
 
@@ -2654,22 +2646,6 @@ msgstr "Fshij Record Family VETEM"
 #: 
 msgid "Delete Family Record AND Family Members"
 msgstr "Fshij Record familjare dhe anëtarët e familjes"
-
-#: 
-msgid "Person Listing"
-msgstr "Person Listing"
-
-#: 
-msgid "Group Assignment Helper"
-msgstr "Grupi Caktimi Helper"
-
-#: 
-msgid "All Family Roles"
-msgstr "Të gjitha Rolet familjare"
-
-#: 
-msgid "Cart"
-msgstr "Qerre"
 
 #: 
 msgid "My User Settings"
@@ -3151,14 +3127,6 @@ msgstr "U zotua"
 #: 
 msgid "M/F"
 msgstr "M / F"
-
-#: Reports/ClassAttendance.php:103 Reports/ClassList.php:79
-msgid "Teacher"
-msgstr "Mësues"
-
-#: Reports/ClassAttendance.php:110 Reports/ClassList.php:127
-msgid "Student"
-msgstr "Student"
 
 #: 
 msgid "Liaison"
