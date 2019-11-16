@@ -16,6 +16,7 @@
             "to the .feature files",
             "features/System/SystemSettings.feature"
         ]
-    }
+    },
+    "demoKey": ""
     
 }

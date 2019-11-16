@@ -7,7 +7,7 @@
         "crm"
     ],
     "homepage": "http://www.churchcrm.io",
-    "time": "2019-10-25 19:10:22",
+    "time": "2019-11-16 05:11:78",
     "license": "MIT",
     "authors": [
         {
@@ -30,7 +30,7 @@
     },
     "config": {
         "platform": {
-            "php":"7.2"
+            "php": "7.2"
         }
     },
     "require": {
@@ -54,7 +54,7 @@
         "defuse/php-encryption": "^2.2",
         "pragmarx/google2fa": "^6.1",
         "endroid/qr-code": "^3.6",
-        "symfony/yaml":"^3.4"
+        "symfony/yaml": "^3.4"
     },
     "autoload": {
         "classmap": [
