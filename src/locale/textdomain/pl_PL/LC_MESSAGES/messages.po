@@ -6,6 +6,7 @@ msgstr ""
 "X-Generator: POEditor.com\n"
 "Project-Id-Version: ChurchCRM\n"
 "Language: pl\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: 
 msgid "Cannot execute query."
@@ -670,10 +671,6 @@ msgstr "Wybierz Wydarzenie do którego chciałbyś dodać Osoby"
 msgid "Select Event"
 msgstr "Wybierz Wydarzenie"
 
-#: external/templates/verify/verify-family-info.php:145
-msgid "Verify"
-msgstr "Potwierdź"
-
 #: 
 msgid "Add Visitor"
 msgstr "Dodaj Gościa"
@@ -1185,24 +1182,12 @@ msgid "Security Option"
 msgstr "Uprawnienia"
 
 #: 
-msgid "Family-View Side"
-msgstr "Strona - Widok Rodziny"
-
-#: 
 msgid "You must select a group."
 msgstr "Musisz wybrać Grupę."
 
 #: 
 msgid "Edit List Options"
 msgstr "Edytuj opcje Listy"
-
-#: 
-msgid "Left"
-msgstr "Lewo"
-
-#: 
-msgid "Right"
-msgstr "Prawo"
 
 #: 
 msgid "Help on types.."
@@ -1215,11 +1200,6 @@ msgstr "Musisz podać Nazwę"
 #: 
 msgid "That field name already exists."
 msgstr "Tak nazwane Pole już istnieje."
-
-#: 
-#, fuzzy
-msgid "Side"
-msgstr "Strona"
 
 #: 
 msgid "Add New Field"
@@ -1359,10 +1339,6 @@ msgstr "Grudzień"
 #: 
 msgid "Unk"
 msgstr "NN"
-
-#: 
-msgid "Latitude/Longitude"
-msgstr "Szer. / Gł. Geograficzna"
 
 #: 
 msgid "Envelope Number"
@@ -2287,10 +2263,6 @@ msgid "No custom person fields have been added yet"
 msgstr "Nie dodano jeszcze żadnych dodatkowych pól"
 
 #: 
-msgid "Person-View Side"
-msgstr "Widok Osoby"
-
-#: 
 msgid "Person Editor"
 msgstr "Edytor Osób"
 
@@ -2335,15 +2307,6 @@ msgstr "Utwórz Nową Rodzinę (używając Nazwiska)"
 #, fuzzy
 msgid "Friend Date"
 msgstr "Przyjaciel Od"
-
-#: 
-msgid "Add Person to Group"
-msgstr "Dodaj Osobę do Grupy"
-
-#: 
-#, fuzzy
-msgid "Select the group to add this person to"
-msgstr "Wybierz Grupę do której dodać tę Osobę"
 
 #: 
 msgid "Not assigned"
@@ -2792,79 +2755,6 @@ msgstr "Usuń TYLKO Wpis Rodziny"
 #: 
 msgid "Delete Family Record AND Family Members"
 msgstr "Usuń Wpis Rodziny ORAZ Członków Rodziny"
-
-#: 
-msgid "Person Listing"
-msgstr "Lista Osób"
-
-#: 
-msgid "Group Assignment Helper"
-msgstr "Asystem Przypiswyania Grup"
-
-#: 
-msgid "Show people <b>not</b> in this group type:"
-msgstr "Pokaż Osoby <b>nie</b> należących do tego typu grupy:"
-
-#: 
-#, fuzzy
-msgid "Sort order"
-msgstr "Sortuj"
-
-#: 
-msgid "By Name"
-msgstr "wg. Nazwy"
-
-#: 
-msgid "By Family"
-msgstr "wg. Rodziny"
-
-#: 
-msgid "By Newest Entries"
-msgstr "wg. Najnowszych Wpisów"
-
-#: 
-msgid "By Recently Edited"
-msgstr "wg. Ostatnio Zmienione"
-
-#: 
-msgid "Apply Filter"
-msgstr "Dodaj Filtr"
-
-#: 
-msgid "Male & Female"
-msgstr "Kobieta i Meżczyzna"
-
-#: 
-msgid "All Classifications"
-msgstr "Wszystkie Klasyfikacje"
-
-#: 
-msgid "All Family Roles"
-msgstr "Wszystkie Role w Rodzinie"
-
-#: 
-msgid "All Contact Properties"
-msgstr "Wszystkie Dane Kontaktowe "
-
-#: 
-msgid "All Group Types"
-msgstr "Wszystkie Typy Grup"
-
-#: 
-msgid "All Groups"
-msgstr "Wszystkie Grupy"
-
-#: 
-msgid "All Roles"
-msgstr "Wszystkie Role"
-
-#: 
-msgid "View All"
-msgstr "Pokaż Wszystko"
-
-#: 
-msgid "Cart"
-msgstr "Koszyk"
 
 #: 
 msgid "My User Settings"
@@ -3391,14 +3281,6 @@ msgstr "Datek (Pledged)"
 #: 
 msgid "M/F"
 msgstr "K/M"
-
-#: Reports/ClassAttendance.php:103 Reports/ClassList.php:79
-msgid "Teacher"
-msgstr "Nauczyciel"
-
-#: Reports/ClassAttendance.php:110 Reports/ClassList.php:127
-msgid "Student"
-msgstr "Uczeń"
 
 #: 
 msgid "Liaison"

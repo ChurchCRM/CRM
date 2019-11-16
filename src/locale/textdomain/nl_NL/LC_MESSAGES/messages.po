@@ -6,6 +6,7 @@ msgstr ""
 "X-Generator: POEditor.com\n"
 "Project-Id-Version: ChurchCRM\n"
 "Language: nl\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: 
 msgid "Cannot execute query."
@@ -708,10 +709,6 @@ msgstr "Selecteer de activiteit waarvoor u personen wilt inboeken"
 msgid "Select Event"
 msgstr "Selecteer de activiteit"
 
-#: external/templates/verify/verify-family-info.php:145
-msgid "Verify"
-msgstr "Controleren"
-
 #: 
 msgid "Add Visitor"
 msgstr "Voeg bezoeker toe"
@@ -1275,24 +1272,12 @@ msgid "Security Option"
 msgstr "Beveiligings optie"
 
 #: 
-msgid "Family-View Side"
-msgstr "Gezinnen"
-
-#: 
 msgid "You must select a group."
 msgstr "U moet een groep selecteren."
 
 #: 
 msgid "Edit List Options"
 msgstr "Bewerk Lijst Opties"
-
-#: 
-msgid "Left"
-msgstr "Links"
-
-#: 
-msgid "Right"
-msgstr "Rechts"
 
 #: 
 msgid "Help on types.."
@@ -1305,10 +1290,6 @@ msgstr "U moet een naam invoeren"
 #: 
 msgid "That field name already exists."
 msgstr "De naam van dit veld bestaat al."
-
-#: 
-msgid "Side"
-msgstr "Zijkant"
 
 #: 
 msgid "Add New Field"
@@ -1481,14 +1462,6 @@ msgstr "Aangemaakt"
 #: 
 msgid "Edited"
 msgstr "Gewijzigd"
-
-#: 
-msgid " of church<br>"
-msgstr "van kerk"
-
-#: 
-msgid "Latitude/Longitude"
-msgstr "Beedte/Lengte"
 
 #: 
 msgid "Envelope Number"
@@ -2656,10 +2629,6 @@ msgid "No custom person fields have been added yet"
 msgstr "Aanpasbare persoons-velden zijn nog niet toegevoegd"
 
 #: 
-msgid "Person-View Side"
-msgstr "Bekijk-Persoon Kant"
-
-#: 
 msgid "Person Editor"
 msgstr "Beheer personen"
 
@@ -2734,14 +2703,6 @@ msgstr "Lidmaatschapsgegevens"
 #: 
 msgid "Friend Date"
 msgstr "Betrokkenheid is gewijzigd sinds"
-
-#: 
-msgid "Add Person to Group"
-msgstr "Voeg persoon toe aan Groep"
-
-#: 
-msgid "Select the group to add this person to"
-msgstr "Selecteer de groep om deze persoon aan toe te voegen"
 
 #: 
 msgid "Person Profile"
@@ -3225,88 +3186,12 @@ msgid "Delete Family Record AND Family Members"
 msgstr "Verwijdeer Familie EN Familie Leden"
 
 #: 
-msgid "Person Listing"
-msgstr "Overzicht personen"
-
-#: 
-msgid "Group Assignment Helper"
-msgstr "Koppel aan groepen"
-
-#: 
 msgid "Filter and Cart"
 msgstr "Filter en mandje"
 
 #: 
-msgid "Show people <b>not</b> in this group type:"
-msgstr "Overzicht van personen buiten dit groepstype"
-
-#: 
-msgid "Sort order"
-msgstr "Sorteer volgorde"
-
-#: 
-msgid "By Name"
-msgstr "Op Naam"
-
-#: 
-msgid "By Family"
-msgstr "Per gezin"
-
-#: 
-msgid "By Newest Entries"
-msgstr "Op Nieuwste toevoegingen"
-
-#: 
-msgid "By Recently Edited"
-msgstr "Op onlangs Bewerkt"
-
-#: 
-msgid "Apply Filter"
-msgstr "Zet Filter"
-
-#: 
-msgid "Male & Female"
-msgstr "Man & Vrouw"
-
-#: 
-msgid "All Classifications"
-msgstr "Alle kenmerken"
-
-#: 
-msgid "All Family Roles"
-msgstr "Alle gezinsrollen"
-
-#: 
-msgid "All Contact Properties"
-msgstr "Alle contact kenmerken"
-
-#: 
-msgid "All Group Types"
-msgstr "Alle Groepskenmerken"
-
-#: 
-msgid "All Groups"
-msgstr "Alle groepskenmerken"
-
-#: 
-msgid "All Roles"
-msgstr "Alle Rollen"
-
-#: 
 msgid "Listing"
 msgstr "Weergave"
-
-#: 
-msgid "View All"
-msgstr "Bekijk Alles"
-
-#: 
-msgid "Cart"
-msgstr "Mandje"
-
-#: 
-msgid "Print"
-msgstr "Print"
 
 #: 
 msgid "My User Settings"
@@ -3762,10 +3647,6 @@ msgid "am"
 msgstr "Overdag"
 
 #: 
-msgid "yrs old"
-msgstr "jr oud"
-
-#: 
 msgid "Invalid Editor ID!"
 msgstr "Ongeldig beheer ID!"
 
@@ -3948,14 +3829,6 @@ msgstr "Bijgedragen"
 #: 
 msgid "M/F"
 msgstr "M/V"
-
-#: Reports/ClassAttendance.php:103 Reports/ClassList.php:79
-msgid "Teacher"
-msgstr "Leraar"
-
-#: Reports/ClassAttendance.php:110 Reports/ClassList.php:127
-msgid "Student"
-msgstr "Leerling"
 
 #: 
 msgid "Liaison"
@@ -4670,14 +4543,6 @@ msgid "Registration Complete"
 msgstr "Registratie voltooid"
 
 #: 
-msgid "Thank you for registering your family."
-msgstr "Dank u voor het registreren van uw gezin."
-
-#: 
-msgid "Member(s)"
-msgstr "Leden"
-
-#: 
 msgid "Register"
 msgstr "Registreer"
 
@@ -4688,10 +4553,6 @@ msgstr "Registreer je gezin"
 #: 
 msgid "How many people are in your family"
 msgstr "Hoeveel personen telt je gezin?"
-
-#: 
-msgid "This will be my primary church."
-msgstr "Dit wordt mijn eerste gemeente"
 
 #: 
 msgid "Add All Classes"
@@ -4929,18 +4790,6 @@ msgstr "Groepsgegevens"
 #: 
 msgid "Assign a New Property:"
 msgstr "Koppel een nieuwe waarde"
-
-#: 
-msgid "mos old"
-msgstr "Oude mos"
-
-#: 
-msgid "mo old"
-msgstr "Oude mo"
-
-#: 
-msgid "yr old"
-msgstr "oude jaar"
 
 #: 
 msgid "There was a problem retrieving the requested object"
@@ -5454,10 +5303,6 @@ msgstr "Vergelijk toezeggingen"
 #: 
 msgid "Missing pledges"
 msgstr "Ontbrekende toezeggingen"
-
-#: 
-msgid "Credit Card People"
-msgstr "Personen met een creditcard"
 
 #: 
 msgid "Family Pledge by Fiscal Year"
@@ -6632,10 +6477,6 @@ msgid "Show type of group:"
 msgstr "Groepscategorie"
 
 #: 
-msgid "Payments"
-msgstr "Betalingen"
-
-#: 
 msgid "Add Students"
 msgstr "Leerlingen toevoegen"
 
@@ -6722,10 +6563,6 @@ msgstr "Twitter"
 #: 
 msgid "LinkedIn"
 msgstr "LinkedIn"
-
-#: 
-msgid "Visitors"
-msgstr "Bezoekers"
 
 #: 
 msgid "Move Event"
@@ -6860,10 +6697,6 @@ msgid "Remove All from Cart"
 msgstr "Alles uit het karretje verwijderen"
 
 #: 
-msgid " records returned"
-msgstr " weergegeven rijen"
-
-#: 
 msgid "Not Found"
 msgstr "Niet gevonden"
 
@@ -6906,10 +6739,6 @@ msgstr "Terug naar het menu personen"
 #: 
 msgid "User must have MenuOptions permission"
 msgstr "De gebruiker heeft toegang nodig voor de menu opties"
-
-#: 
-msgid "Try out the Beta family view"
-msgstr "Probeerde beta versie \"overzicht gezinnen\""
 
 #: 
 msgid "Debug Email Connection"
@@ -7086,10 +6915,6 @@ msgstr "Giften"
 #: 
 msgid "Unable to open file"
 msgstr "Kan bestand niet openen"
-
-#: 
-msgid "Databse upgrade failed"
-msgstr "De upgrade van de database is mislukt"
 
 #: 
 msgid "logged via API Key."
@@ -7376,10 +7201,6 @@ msgstr "Niet-ondersteunde opgeslagen betalingsgegevens gedetecteerd."
 #: 
 msgid "Support for stored payment data has been removed. This data will soon be removed from your database"
 msgstr "Ondersteuning voor opgeslagen betalingsgegevens is verwijderd. Deze gegevens zullen binnenkort worden verwijderd uit de database"
-
-#: 
-msgid "Classifcation"
-msgstr "Ingeschreven als soort lid"
 
 #: 
 msgid "Estonian"
