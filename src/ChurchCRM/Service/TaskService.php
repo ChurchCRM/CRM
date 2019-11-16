@@ -19,8 +19,12 @@ use ChurchCRM\Tasks\PrerequisiteCheckTask;
 use ChurchCRM\Tasks\RegisteredTask;
 use ChurchCRM\Tasks\UpdateFamilyCoordinatesTask;
 use ChurchCRM\Tasks\CheckExecutionTimeTask;
+use ChurchCRM\Tasks\iPreUpgradeTask;
+use ChurchCRM\Tasks\PHPPendingDeprecationVersionCheckTask;
 use ChurchCRM\Tasks\UnsupportedDepositCheck;
 use ChurchCRM\Tasks\UnsupportedPaymentDataCheck;
+use ChurchCRM\Tasks\PHPZipArchiveCheckTask;
+use ChurchCRM\Tasks\SecretsConfigurationCheckTask;
 
 class TaskService
 {
@@ -48,7 +52,10 @@ class TaskService
             new CheckUploadSizeTask(),
             new CheckExecutionTimeTask(),
             new UnsupportedDepositCheck(),
-            new UnsupportedPaymentDataCheck()
+            new UnsupportedPaymentDataCheck(),
+            new SecretsConfigurationCheckTask(),
+            new PHPPendingDeprecationVersionCheckTask(),
+            new PHPZipArchiveCheckTask()
         ];
 
         $this->notificationClasses = [
@@ -80,6 +87,12 @@ class TaskService
             }
         }
         return $tasks;
+    }
+
+    public function getActivePreUpgradeTasks()  {
+        return array_filter($this->taskClasses, function($k) {
+            return $k instanceof iPreUpgradeTask && $k->isActive();
+        });
     }
 
 }

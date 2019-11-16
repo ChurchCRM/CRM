@@ -18,7 +18,7 @@ class FinancialService
     public function deletePayment($groupKey)
     {
         requireUserGroupMembership('bFinance');
-        PledgeQuery::create()->findOneByGroupkey($groupKey)->delete();
+        PledgeQuery::create()->findOneByGroupKey($groupKey)->delete();
     }
 
     public function getMemberByScanString($sstrnig)
@@ -139,57 +139,6 @@ class FinancialService
         }
 
         return $payments;
-    }
-
-    public function searchDeposits($searchTerm)
-    {
-        requireUserGroupMembership('bFinance');
-        $fetch = 'SELECT dep_ID, dep_Comment, dep_Date, dep_EnteredBy, dep_Type
-            FROM deposit_dep
-            LEFT JOIN pledge_plg ON
-                pledge_plg.plg_depID = deposit_dep.dep_ID
-                AND
-                plg_CheckNo LIKE \'%'.$searchTerm.'%\'
-            WHERE  
-            dep_Comment LIKE \'%'.$searchTerm.'%\'
-            OR 
-            dep_Date LIKE \'%'.$searchTerm.'%\'
-            OR
-            plg_CheckNo LIKE \'%'.$searchTerm.'%\'
-            LIMIT 15';
-        $result = mysqli_query($cnInfoCentral, $fetch);
-        $deposits = [];
-        while ($row = mysqli_fetch_array($result)) {
-            $row_array['id'] = $row['dep_ID'];
-            $row_array['displayName'] = $row['dep_Comment'].' - '.$row['dep_Date'];
-            $row_array['uri'] = $this->getViewURI($row['dep_ID']);
-            array_push($deposits, $row_array);
-        }
-
-        return $deposits;
-    }
-
-    public function searchPayments($searchTerm)
-    {
-        requireUserGroupMembership('bFinance');
-        $fetch = 'SELECT dep_ID, dep_Comment, dep_Date, dep_EnteredBy, dep_Type, plg_FamID, plg_amount, plg_CheckNo, plg_plgID, plg_GroupKey
-            FROM deposit_dep
-            LEFT JOIN pledge_plg ON
-                pledge_plg.plg_depID = deposit_dep.dep_ID
-            WHERE 
-            plg_CheckNo LIKE \'%'.$searchTerm.'%\'
-            LIMIT 15';
-        $result = mysqli_query($cnInfoCentral, $fetch);
-        $deposits = [];
-        while ($row = mysqli_fetch_array($result)) {
-            $family = FamilyQuery::create()->findOneById($row['plg_FamID']);
-            $row_array['id'] = $row['dep_ID'];
-            $row_array['displayName'] = 'Check #'.$row['plg_CheckNo'].': '.$family->getName().' - '.$row['dep_Date'];
-            $row_array['uri'] = $this->getPaymentViewURI($row['plg_GroupKey']);
-            array_push($deposits, $row_array);
-        }
-
-        return $deposits;
     }
 
     public function getPaymentViewURI($groupKey)

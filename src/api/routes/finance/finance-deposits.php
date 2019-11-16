@@ -2,6 +2,7 @@
 
 use ChurchCRM\Deposit;
 use ChurchCRM\DepositQuery;
+use ChurchCRM\PledgeQuery;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Slim\Middleware\Request\Auth\FinanceRoleAuthMiddleware;
 
@@ -53,7 +54,7 @@ $app->group('/deposits', function () {
         $id = $args['id'];
         //echo DepositQuery::create()->findOneById($id)->toCSV();
         header('Content-Disposition: attachment; filename=ChurchCRM-Deposit-' . $id . '-' . date(SystemConfig::getValue("sDateFilenameFormat")) . '.csv');
-        echo ChurchCRM\PledgeQuery::create()->filterByDepid($id)
+        echo PledgeQuery::create()->filterByDepId($id)
             ->joinDonationFund()->useDonationFundQuery()
             ->withColumn('DonationFund.Name', 'DonationFundName')
             ->endUse()
@@ -72,9 +73,9 @@ $app->group('/deposits', function () {
 
     $this->get('/{id:[0-9]+}/pledges', function ($request, $response, $args) {
         $id = $args['id'];
-        $Pledges = \ChurchCRM\PledgeQuery::create()
-            ->filterByDepid($id)
-            ->groupByGroupkey()
+        $Pledges = PledgeQuery::create()
+            ->filterByDepId($id)
+            ->groupByGroupKey()
             ->withColumn('SUM(Pledge.Amount)', 'sumAmount')
             ->joinDonationFund()
             ->withColumn('DonationFund.Name')

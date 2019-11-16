@@ -6,6 +6,7 @@ msgstr ""
 "X-Generator: POEditor.com\n"
 "Project-Id-Version: ChurchCRM\n"
 "Language: id\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 
 #: 
 msgid "Cannot execute query."
@@ -225,7 +226,7 @@ msgstr "Tanggal Lahir"
 
 #: 
 msgid "Anniversary Date"
-msgstr "Tanggal Jadian"
+msgstr "Tanggal Pernikahan"
 
 #: 
 msgid "Output Method:"
@@ -1198,24 +1199,12 @@ msgid "Security Option"
 msgstr "Pilihan Keamanan"
 
 #: 
-msgid "Family-View Side"
-msgstr "Keluarga-Lihat dari Samping"
-
-#: 
 msgid "You must select a group."
 msgstr "Kamu harus memilih sebuah grup"
 
 #: 
 msgid "Edit List Options"
 msgstr "Sunting data pilihan"
-
-#: 
-msgid "Left"
-msgstr "kiri"
-
-#: 
-msgid "Right"
-msgstr "kanan"
 
 #: 
 msgid "Help on types.."
@@ -1228,10 +1217,6 @@ msgstr "Anda harus memasukan sebuah nama"
 #: 
 msgid "That field name already exists."
 msgstr "Nama field itu sudah digunakan"
-
-#: 
-msgid "Side"
-msgstr "samping"
 
 #: 
 msgid "Add New Field"
@@ -1380,14 +1365,6 @@ msgstr "Diciptakan"
 #: 
 msgid "Edited"
 msgstr "Disunting"
-
-#: 
-msgid " of church<br>"
-msgstr "dari gereja <br>"
-
-#: 
-msgid "Latitude/Longitude"
-msgstr "lintang/bujur"
 
 #: 
 msgid "Envelope Number"
@@ -1859,6 +1836,22 @@ msgid "Lock"
 msgstr "Kunci"
 
 #: 
+msgid "Invalid User/Password"
+msgstr "Salah User/Sandi"
+
+#: 
+msgid "HTML URL"
+msgstr "HTML URL"
+
+#: 
+msgid "Missing"
+msgstr "Hilang"
+
+#: 
+msgid "Can't delete yourself"
+msgstr "Tidak bisa menghapus diri sendiri"
+
+#: 
 msgid "success"
 msgstr "Sukses"
 
@@ -1925,4 +1918,8 @@ msgstr "Nama negara yang tidak valid diberikan"
 #: 
 msgid "Holidays"
 msgstr "Liburan"
+
+#: 
+msgid "Holiday"
+msgstr "Hari libur"
 

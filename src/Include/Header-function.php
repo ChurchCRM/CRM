@@ -90,6 +90,7 @@ function Header_body_scripts()
             maxUploadSize: "<?= SystemService::getMaxUploadFileSize(true) ?>",
             maxUploadSizeBytes: "<?= SystemService::getMaxUploadFileSize(false) ?>",
             datePickerformat:"<?= SystemConfig::getValue('sDatePickerPlaceHolder') ?>",
+            churchWebSite:"<?= SystemConfig::getValue('sChurchWebSite') ?>",
             systemConfigs: {
               sDateTimeFormat: "<?= PHPToMomentJSConverter::ConvertFormatString(SystemConfig::getValue('sDateTimeFormat'))?>",
             },
@@ -105,7 +106,7 @@ function Header_body_scripts()
                             "<'row'<'col-sm-4'l><'col-sm-4'i><'col-sm-4'p>>"
                 }
             },
-            PageName:"<?= $_SERVER['PHP_SELF']?>"
+            PageName:"<?= $_SERVER['REQUEST_URI']; ?>"
         };
     </script>
     <script src="<?= SystemURLs::getRootPath() ?>/skin/js/CRMJSOM.js"></script>

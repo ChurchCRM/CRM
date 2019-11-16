@@ -17,7 +17,7 @@ namespace ChurchCRM
                     unlink($file);
                 }
             }
-            if (!$retainParentFolderAndFiles) {
+            if (!$retainParentFolderAndFiles && is_dir($directory)) {
                 rmdir($directory);
             }
         }
@@ -50,6 +50,20 @@ namespace ChurchCRM
                     UNLINK($filename);
                 }
             }
+        }
+
+        public static function moveDir($src, $dest)
+        {
+            $files = array_diff(scandir($src), ['.', '..']);
+            foreach ($files as $file) {
+                if (is_dir("$src/$file")) {
+                    mkdir("$dest/$file");
+                    self::moveDir("$src/$file", "$dest/$file");
+                } else {
+                    rename("$src/$file", "$dest/$file");
+                }
+            }
+            return rmdir($src);
         }
     }
 }

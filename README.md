@@ -5,11 +5,12 @@ Welcome to Church Web CRM
 
 ### Development 
 [![GitHub contributors](https://img.shields.io/github/contributors/churchcrm/crm.svg)]()
-[![Stories in Ready](https://badge.waffle.io/ChurchCRM/CRM.png?label=in%20Review&title=In+Review)](https://waffle.io/ChurchCRM/CRM)
 [![Join the chat at https://gitter.im/ChurchCRM/CRM](https://badges.gitter.im/ChurchCRM/CRM.svg)](https://gitter.im/ChurchCRM/CRM?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Build Status](https://travis-ci.org/ChurchCRM/CRM.svg?branch=master)](https://travis-ci.org/ChurchCRM/CRM)
 [![StyleCI](https://styleci.io/repos/30856851/shield?branch=master)](https://styleci.io/repos/30856851)
 [![POEditor](https://img.shields.io/badge/Languages-22-green.svg)](https://poeditor.com/join/project/RABdnDSqAt)
+
+Thanks to Jetbrains for providing a free license for their excellent [JetBrain PHP Storm IDE](https://www.jetbrains.com/?from=ChurchCRM)
 
 
 ### Docker
@@ -27,9 +28,7 @@ Welcome to Church Web CRM
 
 ## Project Metrics 
 
-[![Throughput Graph](https://graphs.waffle.io/ChurchCRM/CRM/throughput.svg)](https://waffle.io/ChurchCRM/CRM/metrics/throughput)
-
-see [Download Stats](http://www.somsubhra.com/github-release-stats/?username=churchcrm&repository=CRM)
+[Download Stats](http://www.somsubhra.com/github-release-stats/?username=churchcrm&repository=CRM)
 
 ##  Change Log
 

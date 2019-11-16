@@ -1,11 +1,17 @@
 {
-  "name": "ChurchCRM/CRM-Tests",
-  "require":{
+  "name": "churchcrm/crm-tests",
+  "config": {
+    "platform": {
+      "php":"7.2"
+    }
+  },
+  "require": {
       "behat/symfony2-extension": "*",
       "behat/mink-goutte-driver": "*",
-      "behat/mink-selenium2-driver": "1.2.*@dev",
+      "behat/mink-selenium2-driver": "*",
       "behat/mink-extension": "*",
       "behat/mink-browserkit-driver": "*",
-      "novaway/common-contexts": "~2.0"
-    }
+      "novaway/common-contexts": "*",
+      "crossan007/php-sauceconnect": "dev-master"
+    } 
 }

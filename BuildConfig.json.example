@@ -4,5 +4,19 @@
     },
     "GitHub": {
         "token": ""
-    }
+    },
+    "SeleniumTests": {
+        "TestURL": "http://127.0.0.1",
+        "SeleniumTestHostType": 1,
+        "SauceUsername":"",
+        "SauceAccessKey":"",
+        "_BehatTestsToRun": [
+            "Remove the underscore from this key to specify feature tests to run",
+            "this list must contain only strings representing the relative path",
+            "to the .feature files",
+            "features/System/SystemSettings.feature"
+        ]
+    },
+    "demoKey": ""
+    
 }

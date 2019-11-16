@@ -3,6 +3,7 @@
 namespace ChurchCRM;
 
 use ChurchCRM\Base\Group as BaseGroup;
+use ChurchCRM\dto\SystemURLs;
 
 /**
  * Skeleton subclass for representing a row from the 'group_grp' table.
@@ -117,5 +118,10 @@ class Group extends BaseGroup
         }
 
         return false;
+    }
+
+    public function getViewURI()
+    {
+        return SystemURLs::getRootPath() . '/GroupView.php?GroupID=' . $this->getId();
     }
 }
