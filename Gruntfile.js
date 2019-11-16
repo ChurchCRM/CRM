@@ -47,11 +47,12 @@ module.exports = function (grunt) {
             '!vendor/**/example/**',
             '!vendor/**/tests/**',
             '!vendor/**/docs/**',
-            '!Images/{Family,Person}/thumbnails/*.{jpg,jpeg,png}',
+            '!Images/{Family,Person}/**/*.{jpg,jpeg,png}',
             '!composer.lock',
             '!Include/Config.php',
             '!integrityCheck.json',
-            '!logs/*.log'
+            '!logs/*.log',
+            '!vendor/endroid/qr-code/assets/fonts/noto_sans.otf' // This closes #5099, but TODO: when https://github.com/endroid/qr-code/issues/224 is fixed, we can remove this exclusion.
         ],
         clean: {
             skin: ["src/skin/external"],
