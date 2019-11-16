@@ -47,7 +47,7 @@ module.exports = function (grunt) {
             '!vendor/**/example/**',
             '!vendor/**/tests/**',
             '!vendor/**/docs/**',
-            '!Images/{Family,Person}/thumbnails/*.{jpg,jpeg,png}',
+            '!Images/{Family,Person}/**/*.{jpg,jpeg,png}',
             '!composer.lock',
             '!Include/Config.php',
             '!integrityCheck.json',
