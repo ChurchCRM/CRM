@@ -443,18 +443,7 @@ function FormatDate($dDate, $bWithTime = false)
         $LocalReplaceArray[$i] = str_replace("-", "_", $LocalReplaceArray[$i]);
     }
 
-    $LocalMergeArray = array_merge($localeInfo->getLocaleArray(), $LocalReplaceArray);
-
-    if (PHP_VERSION_ID >= 40300) {
-        setlocale(LC_ALL, $LocalMergeArray);
-    } else {
-        foreach ($LocalMergeArray as $l) {
-            $result = setlocale(LC_ALL, $l);
-            if ($result) {
-                break;
-            }
-        }
-    }
+    setlocale(LC_ALL, array_merge($localeInfo->getLocaleArray(), $LocalReplaceArray));
 
     if ($bWithTime) {
         return utf8_encode(strftime("$fmt %H:%M $sAMPM", strtotime($dDate)));

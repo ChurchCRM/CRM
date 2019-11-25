@@ -108,18 +108,7 @@ namespace ChurchCRM
               $LocalReplaceArray[$i] = str_replace("-", "_", $LocalReplaceArray[$i]);
           }
 
-          $LocalMergeArray = array_merge($localeInfo->getLocaleArray(), $LocalReplaceArray);
-
-          if (PHP_VERSION_ID >= 40300) {
-              setlocale(LC_ALL, $LocalMergeArray);
-          } else {
-              foreach ($LocalMergeArray as $l) {
-                  $result = setlocale(LC_ALL, $l);
-                  if ($result) {
-                      break;
-                  }
-              }
-          }
+          setlocale(LC_ALL, array_merge($localeInfo->getLocaleArray(), $LocalReplaceArray));
 
           // Get numeric and monetary locale settings.
           $aLocaleInfo = $localeInfo->getLocaleInfo();
