@@ -439,7 +439,7 @@ function FormatDate($dDate, $bWithTime = false)
 
     $LocalReplaceArray = $localeInfo->getLocaleArray();
 
-    for($i = 0; $i < count($LocalReplaceArray); $i++) {
+    for ($i = 0; $i < count($LocalReplaceArray); $i++) {
         $LocalReplaceArray[$i] = str_replace("-", "_", $LocalReplaceArray[$i]);
     }
 
@@ -447,11 +447,12 @@ function FormatDate($dDate, $bWithTime = false)
 
     if (PHP_VERSION_ID >= 40300) {
         setlocale(LC_ALL, $LocalMergeArray);
-    }
-    else {
+    } else {
         foreach ($LocalMergeArray as $l) {
             $result = setlocale(LC_ALL, $l);
-            if ($result) break;
+            if ($result) {
+                break;
+            }
         }
     }
 
