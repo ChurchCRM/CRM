@@ -102,7 +102,23 @@ namespace ChurchCRM
 
           $localeInfo = Bootstrapper::GetCurrentLocale();
           self::$bootStrapLogger->debug("Setting locale to: " . $localeInfo->getLocale());
-          setlocale(LC_ALL, $localeInfo->getLocale());
+          $LocalReplaceArray = $localeInfo->getLocaleArray();
+
+          for($i = 0; $i < count($LocalReplaceArray); $i++) {
+              $LocalReplaceArray[$i] = str_replace("-", "_", $LocalReplaceArray[$i]);
+          }
+
+          $LocalMergeArray = array_merge($localeInfo->getLocaleArray(), $LocalReplaceArray);
+
+          if (PHP_VERSION_ID >= 40300) {
+              setlocale(LC_ALL, $LocalMergeArray);
+          }
+          else {
+              foreach ($LocalMergeArray as $l) {
+                  $result = setlocale(LC_ALL, $l);
+                  if ($result) break;
+              }
+          }
 
           // Get numeric and monetary locale settings.
           $aLocaleInfo = $localeInfo->getLocaleInfo();

@@ -11,6 +11,7 @@
  ******************************************************************************/
 
 use ChurchCRM\Utils\LoggerUtils;
+use ChurchCRM\dto\LocaleInfo;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\Cart;
 use ChurchCRM\Service\PersonService;
@@ -436,7 +437,23 @@ function FormatDate($dDate, $bWithTime = false)
 
     $fmt = FormatDateOutput();
 
-    setlocale(LC_ALL, SystemConfig::getValue("sLanguage"));
+    $LocalReplaceArray = $localeInfo->getLocaleArray();
+
+    for($i = 0; $i < count($LocalReplaceArray); $i++) {
+        $LocalReplaceArray[$i] = str_replace("-", "_", $LocalReplaceArray[$i]);
+    }
+
+    $LocalMergeArray = array_merge($localeInfo->getLocaleArray(), $LocalReplaceArray);
+
+    if (PHP_VERSION_ID >= 40300) {
+        setlocale(LC_ALL, $LocalMergeArray);
+    }
+    else {
+        foreach ($LocalMergeArray as $l) {
+            $result = setlocale(LC_ALL, $l);
+            if ($result) break;
+        }
+    }
 
     if ($bWithTime) {
         return utf8_encode(strftime("$fmt %H:%M $sAMPM", strtotime($dDate)));
@@ -562,7 +579,7 @@ function ExpandPhoneNumber($sPhoneNumber, $sPhoneCountry, &$bWeird)
           return $sPhoneNumber;
       }
       break;
-    
+
     // If the country is unknown, we don't know how to format it, so leave it untouched
     default:
       return $sPhoneNumber;
