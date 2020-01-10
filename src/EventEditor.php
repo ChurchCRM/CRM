@@ -25,10 +25,11 @@ require 'Include/Functions.php';
 
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Authentication\AuthenticationManager;
 
 $sPageTitle = gettext('Church Event Editor');
 
-if (!$_SESSION['user']->isAddEvent()) {
+if (!AuthenticationManager::GetCurrentUser()->isAddEvent()) {
     header('Location: Menu.php');
 }
 

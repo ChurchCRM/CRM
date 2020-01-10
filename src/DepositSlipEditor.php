@@ -16,6 +16,7 @@ use ChurchCRM\DepositQuery;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\Authentication\AuthenticationManager;
 
 $iDepositSlipID = 0;
 $thisDeposit = 0;
@@ -38,7 +39,7 @@ if ($iDepositSlipID) {
     }
 
     // Security: User must have finance permission or be the one who created this deposit
-    if (!($_SESSION['user']->isFinanceEnabled() || $_SESSION['user']->getId() == $thisDeposit->getEnteredby())) {
+    if (!(AuthenticationManager::GetCurrentUser()->isFinanceEnabled() || AuthenticationManager::GetCurrentUser()->getId() == $thisDeposit->getEnteredby())) {
         RedirectUtils::Redirect('Menu.php');
         exit;
     }
@@ -62,7 +63,7 @@ if (isset($_POST['DepositSlipLoadAuthorized'])) {
 $_SESSION['iCurrentDeposit'] = $iDepositSlipID;  // Probably redundant
 
 /* @var $currentUser User */
-$currentUser = $_SESSION['user'];
+$currentUser = AuthenticationManager::GetCurrentUser();
 $currentUser->setCurrentDeposit($iDepositSlipID);
 $currentUser->save();
 

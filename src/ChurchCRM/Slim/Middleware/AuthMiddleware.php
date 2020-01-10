@@ -7,6 +7,7 @@ use Slim\Http\Request;
 use Slim\Http\Response;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Utils\LoggerUtils;
+use ChurchCRM\Authentication\AuthenticationManager;
 
 class AuthMiddleware {
 
@@ -27,40 +28,17 @@ class AuthMiddleware {
                     session_destroy();
                 }
             }
-            if (empty($this->user) && array_key_exists("user", $_SESSION)) {
-                $this->user = $_SESSION['user'];
-            } else {
-                $_SESSION['user'] = $this->user;
-                $_SESSION['tLastOperation'] = time();
+            // validate the user session; however, do not update tLastOperation if the requested path is "/background"
+            // since /background operations do not connotate user activity.
+            else if (AuthenticationManager::ValidateUserSessionIsActive(!$this->isPath( $request, "background"))) {
+                $this->user = AuthenticationManager::GetCurrentUser();
             }
-
-            if (!$this->isUserSessionValid($request)) {
+            else {
                 return $response->withStatus(401, gettext('No logged in user'));
             }
-
-
             return $next( $request, $response )->withHeader( "CRM_USER_ID", $this->user->getId());
         }
         return $next( $request, $response );
-    }
-
-    private function isUserSessionValid(Request $request) {
-      if (empty($this->user)) {
-        return false;
-      }
-      if (SystemConfig::getValue('iSessionTimeout') > 0) {
-        if ((time() - $_SESSION['tLastOperation']) > SystemConfig::getValue('iSessionTimeout')) {
-           return false;
-        } else {
-          if(!$this->isPath( $request, "background"))
-          {
-            //Only update tLastOperation if the request was an actual user request.
-            //Background requests should not update tLastOperation
-            $_SESSION['tLastOperation'] = time();
-          }
-        }
-      }
-      return true;
     }
 
     private function isPath(Request $request, $pathPart) {

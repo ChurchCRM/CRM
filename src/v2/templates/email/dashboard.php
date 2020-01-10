@@ -1,7 +1,7 @@
 <?php
 
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\SessionUser;
+use ChurchCRM\Authentication\AuthenticationManager;
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
@@ -14,7 +14,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <a href="<?= SystemURLs::getRootPath()?>/email/MemberEmailExport.php" class="btn btn-app"><i class="fa fa-table"></i><?= gettext('Email Export') ?></a>
         <a href="<?= SystemURLs::getRootPath()?>/v2/email/duplicate" class="btn btn-app"><i class="fa fa-exclamation-triangle"></i><?= gettext('Find Duplicate Emails') ?></a>
         <a href="<?= SystemURLs::getRootPath()?>/v2/email/missing" class="btn btn-app"><i class="fa fa-bell-slash"></i><?= gettext('Families Without Emails') ?></a>
-        <?php if (SessionUser::isAdmin()) { ?>
+        <?php if (AuthenticationManager::GetCurrentUser()->isAdmin()) { ?>
         <a href="<?= SystemURLs::getRootPath()?>/v2/email/debug" class="btn btn-app"><i class="fa fa-stethoscope"></i><?= gettext('Debug') ?></a>
         <?php } ?>
     </div>

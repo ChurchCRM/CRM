@@ -9,6 +9,7 @@ use ChurchCRM\UserConfigQuery;
 use ChurchCRM\UserQuery;
 use Slim\Http\Request;
 use Slim\Http\Response;
+use ChurchCRM\Authentication\AuthenticationManager;
 
 $app->group('/users', function () {
 
@@ -28,6 +29,16 @@ $app->group('/users', function () {
         } else {
             return $response->withStatus(404, gettext("Bad userId"));
         }
+    });
+
+    $this->post('/{userId:[0-9]+}/disableTwoFactor', function ($request, $response, $args) {
+        $user = UserQuery::create()->findPk($args['userId']);
+        if (!is_null($user)) {
+           $user->disableTwoFactorAuthentication();
+        } else {
+            return $response->withStatus(404, gettext("Bad userId"));
+        }
+        return $response->withStatus(200);
     });
 
     $this->post('/{userId:[0-9]+}/login/reset', function ($request, $response, $args) {
@@ -69,7 +80,7 @@ $app->group('/users', function () {
 })->add(new AdminRoleAuthMiddleware());
 
 $app->post('/users/{userId:[0-9]+}/apikey/regen', function ($request, $response, $args) {
-    $curUser = $_SESSION['user'];
+    $curUser = AuthenticationManager::GetCurrentUser();
     $userId = $args['userId'];
     if (!$curUser->isAdmin() && $curUser->getId() != $userId) {
         return $response->withStatus(403);

@@ -4,7 +4,7 @@ use ChurchCRM\dto\Cart;
 use ChurchCRM\dto\Photo;
 use ChurchCRM\ListOptionQuery;
 use ChurchCRM\Slim\Middleware\Request\PersonAPIMiddleware;
-use ChurchCRM\SessionUser;
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Slim\Middleware\Request\Auth\DeleteRecordRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\EditRecordsRoleAuthMiddleware;
 use ChurchCRM\Utils\MiscUtils;
@@ -36,7 +36,7 @@ $app->group('/person/{personId:[0-9]+}', function () {
 
     $this->delete('', function ($request, $response, $args) {
         $person = $request->getAttribute("person");
-        if (SessionUser::getId() == $person->getId()) {
+        if (AuthenticationManager::GetCurrentUser()->getId() == $person->getId()) {
             return $response->withStatus(403, gettext("Can't delete yourself"));
         }
         $person->delete();

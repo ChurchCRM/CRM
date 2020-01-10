@@ -8,9 +8,21 @@
  *
  ******************************************************************************/
 
+use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\Authentication\AuthenticationProviders\LocalAuthentication;
+
 // Include the function library
 require 'Include/Config.php';
-$bNoPasswordRedirect = true; // Subdue UserPasswordChange redirect to prevent looping
+if (AuthenticationManager::GetCurrentAuthenticationProvider() instanceof LocalAuthentication) {
+    AuthenticationManager::GetCurrentAuthenticationProvider()->DisablePasswordChangeRedirect();
+} else {
+    // This code path isn't currently reachable until non-local auth providers are created
+    // non-local auth providers should not allow password changes.
+    //$sPageTitle = gettext('User Password Change');
+    //require 'Include/Header.php';
+    //require 'Include/Footer.php';
+    //exit;
+}
 require 'Include/Functions.php';
 
 use ChurchCRM\UserQuery;
@@ -19,6 +31,7 @@ use ChurchCRM\Emails\PasswordChangeEmail;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\Authentication\AuthenticationManager;
 
 $bAdminOtherUser = false;
 $bAdminOther = false;
@@ -27,13 +40,13 @@ $sOldPasswordError = false;
 $sNewPasswordError = false;
 
 // Get the PersonID out of the querystring if they are an admin user; otherwise, use session.
-if ($_SESSION['user']->isAdmin() && isset($_GET['PersonID'])) {
+if (AuthenticationManager::GetCurrentUser()->isAdmin() && isset($_GET['PersonID'])) {
     $iPersonID = InputUtils::LegacyFilterInput($_GET['PersonID'], 'int');
-    if ($iPersonID != $_SESSION['user']->getId()) {
+    if ($iPersonID != AuthenticationManager::GetCurrentUser()->getId()) {
         $bAdminOtherUser = true;
     }
 } else {
-    $iPersonID = $_SESSION['user']->getId();
+    $iPersonID = AuthenticationManager::GetCurrentUser()->getId();
 }
 
 // Was the form submitted?
@@ -142,7 +155,7 @@ if (isset($_POST['Submit'])) {
             $curUser->updatePassword($sNewPassword1);
             $curUser->setNeedPasswordChange(false);
             $curUser->save();
-            $_SESSION['user'] = $curUser;
+            AuthenticationManager::GetCurrentUser() = $curUser;
             $curUser->createTimeLineNote("password-changed");
 
             // Route back to the list
@@ -164,7 +177,7 @@ if (isset($_POST['Submit'])) {
 $sPageTitle = gettext('User Password Change');
 require 'Include/Header.php';
 
-if ($_SESSION['user']->getNeedPasswordChange()) {
+if (AuthenticationManager::GetCurrentUser()->getNeedPasswordChange()) {
     ?>
     <div class="alert alert-danger alert-dismissible">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
