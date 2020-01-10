@@ -239,7 +239,7 @@ require 'Include/Header.php';
             $.each(deletedRows, function(index, value) {
               window.CRM.APIRequest({
                 method: 'DELETE',
-                path: 'payments/' + value.Groupkey,
+                path: 'payments/' + value.GroupKey,
               })
               .done(function(data) {
                 dataT.rows('.selected').remove().draw(false);
