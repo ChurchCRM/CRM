@@ -6,6 +6,9 @@ use ChurchCRM\Base\User as BaseUser;
 use ChurchCRM\dto\SystemConfig;
 use Propel\Runtime\Connection\ConnectionInterface;
 use ChurchCRM\Utils\MiscUtils;
+use Defuse\Crypto\Crypto;
+use Endroid\QrCode\QrCode;
+use PragmaRX\Google2FA\Google2FA;
 
 /**
  * Skeleton subclass for representing a row from the 'user_usr' table.
@@ -274,5 +277,98 @@ class User extends BaseUser
             $showSince = $this->getShowSince()->format('Y-m-d');
         }
         return $showSince;
+    }
+
+    public function regenerate2FAKey() {
+        $google2fa = new Google2FA();
+        $encryptedSecret = Crypto::encryptWithPassword($google2fa->generateSecretKey(), KeyManager::GetTwoFASecretKey());
+        $this->setTwoFactorAuthSecret($encryptedSecret);
+        $this->save();
+    }
+
+    public function remove2FAKey() {
+        $this->setTwoFactorAuthSecret(null);
+        $this->save();
+    }
+
+    private function getDecryptedTwoFactorAuthSecret() {
+        return Crypto::decryptWithPassword($this->getTwoFactorAuthSecret(), KeyManager::GetTwoFASecretKey());
+    }
+
+    private function getDecryptedTwoFactorAuthRecoveryCodes() {
+        return explode(",",Crypto::decryptWithPassword($this->getTwoFactorAuthRecoveryCodes(), KeyManager::GetTwoFASecretKey()));
+    }
+
+    public function disableTwoFactorAuthentication() {
+        $this->setTwoFactorAuthRecoveryCodes(null);
+        $this->setTwoFactorAuthSecret(null);
+        $this->save();
+    }
+
+    public function getTwoFactorAuthQRCode() {
+        if (empty($this->getTwoFactorAuthSecret()))
+        {
+            return null;
+        }
+        $google2fa = new Google2FA();
+        $g2faUrl = $google2fa->getQRCodeUrl(
+            SystemConfig::getValue("s2FAApplicationName"),
+            $this->getUserName(),
+            $this->getDecryptedTwoFactorAuthSecret()
+        );
+        $qrCode = new QrCode($g2faUrl );
+        $qrCode->setSize(300);
+        return $qrCode;
+    }
+
+    public function getTwoFactorAuthQRCodeDataUri() {
+        $qrCode =  $this->getTwoFactorAuthQRCode();
+        if ($qrCode)
+        {
+            return $qrCode->writeDataUri();
+        }
+        return null;
+    }
+
+    public function is2FactorAuthEnabled() {
+        return !empty($this->getTwoFactorAuthSecret());
+    }
+
+    public function getNewTwoFARecoveryCodes() {
+        // generate an array of 2FA recovery codes, and store as an encrypted, comma-seperated list
+        $recoveryCodes = array();
+        for($i=0; $i < 12; $i++) {
+            $recoveryCodes[$i] = base64_encode(random_bytes(10));
+        }
+        $recoveryCodesString = implode(",",$recoveryCodes);
+        $this->setTwoFactorAuthRecoveryCodes(Crypto::encryptWithPassword($recoveryCodesString, KeyManager::GetTwoFASecretKey()));
+        $this->save();
+        return $recoveryCodes;
+    }
+
+    public function isTwoFACodeValid($twoFACode) {
+        $google2fa = new Google2FA();
+        $window = 2; //TODO: make this a system config
+        $timestamp = $google2fa->verifyKeyNewer($this->getDecryptedTwoFactorAuthSecret(), $twoFACode, $this->getTwoFactorAuthLastKeyTimestamp(), $window);
+        if ($timestamp !== false) {
+            $this->setTwoFactorAuthLastKeyTimestamp($timestamp);
+            $this->save();
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function isTwoFaRecoveryCodeValid($twoFaRecoveryCode) {
+        // checks for validity of a 2FA recovery code
+        // if the specified code was valid, the code is also removed.
+        $codes = $this->getDecryptedTwoFactorAuthRecoveryCodes();
+        if (($key = array_search($twoFaRecoveryCode, $codes)) !== false) {
+            unset($codes[$key]);
+            $recoveryCodesString = implode(",",$codes);
+            $this->setTwoFactorAuthRecoveryCodes(Crypto::encryptWithPassword($recoveryCodesString, KeyManager::GetTwoFASecretKey()));
+            return true;
+        }
+        return false;
     }
 }

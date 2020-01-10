@@ -24,6 +24,7 @@ use ChurchCRM\Tasks\PHPPendingDeprecationVersionCheckTask;
 use ChurchCRM\Tasks\UnsupportedDepositCheck;
 use ChurchCRM\Tasks\UnsupportedPaymentDataCheck;
 use ChurchCRM\Tasks\PHPZipArchiveCheckTask;
+use ChurchCRM\Tasks\SecretsConfigurationCheckTask;
 
 class TaskService
 {
@@ -52,6 +53,7 @@ class TaskService
             new CheckExecutionTimeTask(),
             new UnsupportedDepositCheck(),
             new UnsupportedPaymentDataCheck(),
+            new SecretsConfigurationCheckTask(),
             new PHPPendingDeprecationVersionCheckTask(),
             new PHPZipArchiveCheckTask()
         ];

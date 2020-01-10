@@ -33,7 +33,7 @@ function run_security_tests() {
     }
     passthru("php security-checker.phar security:check ../../src/composer.lock", $security_tests_return_value);
     if ($security_tests_return_value){
-        //exit($security_tests_return_value);
+        exit($security_tests_return_value);
     }
 }
 

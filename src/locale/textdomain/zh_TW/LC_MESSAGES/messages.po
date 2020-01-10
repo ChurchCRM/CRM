@@ -6,6 +6,7 @@ msgstr ""
 "X-Generator: POEditor.com\n"
 "Project-Id-Version: ChurchCRM\n"
 "Language: zh-TW\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 
 #: 
 msgid "Cannot execute query."
@@ -740,10 +741,6 @@ msgstr "選擇事件時，你要檢查的人"
 msgid "Select Event"
 msgstr "選擇活動"
 
-#: external/templates/verify/verify-family-info.php:145
-msgid "Verify"
-msgstr "確認"
-
 #: 
 msgid "Add Visitor"
 msgstr "添加訪客"
@@ -1320,24 +1317,12 @@ msgid "Security Option"
 msgstr "“安全選項”"
 
 #: 
-msgid "Family-View Side"
-msgstr "家庭觀看側"
-
-#: 
 msgid "You must select a group."
 msgstr "您必須選擇一個組。"
 
 #: 
 msgid "Edit List Options"
 msgstr "編輯列表選項"
-
-#: 
-msgid "Left"
-msgstr "左"
-
-#: 
-msgid "Right"
-msgstr "權"
 
 #: 
 msgid "Help on types.."
@@ -1350,11 +1335,6 @@ msgstr "您必須輸入一個名稱"
 #: 
 msgid "That field name already exists."
 msgstr "該字段名稱已經存在。"
-
-#: 
-#, fuzzy
-msgid "Side"
-msgstr "方"
 
 #: 
 msgid "Add New Field"
@@ -1531,14 +1511,6 @@ msgstr "已建立"
 #: 
 msgid "Edited"
 msgstr "已編輯"
-
-#: 
-msgid " of church<br>"
-msgstr "教會的"
-
-#: 
-msgid "Latitude/Longitude"
-msgstr "緯度/經度"
 
 #: 
 msgid "Envelope Number"
@@ -2557,8 +2529,9 @@ msgid "Generate report comparing all US family addresses with United States Post
 msgstr "生成報告，將所有美國家庭地址與美國郵政服務標準地址格式進行比較。"
 
 #: 
+#, fuzzy
 msgid "Role / Gender"
-msgstr "角式/性別"
+msgstr "角色/性別"
 
 #: 
 msgid "Count"
@@ -2730,10 +2703,6 @@ msgid "No custom person fields have been added yet"
 msgstr "目前沒有自定義的人字段添加"
 
 #: 
-msgid "Person-View Side"
-msgstr "人觀看側"
-
-#: 
 msgid "Person Editor"
 msgstr "人編輯器"
 
@@ -2810,15 +2779,6 @@ msgstr "成員信息"
 #, fuzzy
 msgid "Friend Date"
 msgstr "友情日期"
-
-#: 
-msgid "Add Person to Group"
-msgstr "添加聯繫人到組“"
-
-#: 
-#, fuzzy
-msgid "Select the group to add this person to"
-msgstr "選擇要添加的組人"
 
 #: 
 msgid "Person Profile"
@@ -3312,90 +3272,12 @@ msgid "Delete Family Record AND Family Members"
 msgstr "刪除家庭記錄及家庭成員的"
 
 #: 
-msgid "Person Listing"
-msgstr "人上市"
-
-#: 
-msgid "Group Assignment Helper"
-msgstr "集團轉讓助手"
-
-#: 
 msgid "Filter and Cart"
 msgstr "刪選及購物車；"
 
 #: 
-msgid "Show people <b>not</b> in this group type:"
-msgstr "人<b>不在</b>此組類型："
-
-#: 
-#, fuzzy
-msgid "Sort order"
-msgstr "排序順序"
-
-#: 
-msgid "By Name"
-msgstr "按產品名稱"
-
-#: 
-msgid "By Family"
-msgstr "通過家庭"
-
-#: 
-msgid "By Newest Entries"
-msgstr "通過最新文章"
-
-#: 
-msgid "By Recently Edited"
-msgstr "最近編輯"
-
-#: 
-msgid "Apply Filter"
-msgstr "應用過濾器"
-
-#: 
-msgid "Male & Female"
-msgstr "男性和女性"
-
-#: 
-msgid "All Classifications"
-msgstr "“所有分類”"
-
-#: 
-msgid "All Family Roles"
-msgstr "所有的家庭角色"
-
-#: 
-msgid "All Contact Properties"
-msgstr "所有的聯繫人屬性"
-
-#: 
-msgid "All Group Types"
-msgstr "所有組類型"
-
-#: 
-msgid "All Groups"
-msgstr "所有組"
-
-#: 
-msgid "All Roles"
-msgstr "所有角色"
-
-#: 
 msgid "Listing"
 msgstr "列表"
-
-#: 
-msgid "View All"
-msgstr "查看全部"
-
-#: 
-#, fuzzy
-msgid "Cart"
-msgstr "購物車"
-
-#: 
-msgid "Print"
-msgstr "打印"
 
 #: 
 msgid "My User Settings"
@@ -3869,11 +3751,6 @@ msgid "am"
 msgstr "我"
 
 #: 
-#, fuzzy
-msgid "yrs old"
-msgstr "歲"
-
-#: 
 msgid "Invalid Editor ID!"
 msgstr "無效的編輯器ID！"
 
@@ -4063,14 +3940,6 @@ msgstr "已抵押"
 #: 
 msgid "M/F"
 msgstr "M / F"
-
-#: Reports/ClassAttendance.php:103 Reports/ClassList.php:79
-msgid "Teacher"
-msgstr "老師"
-
-#: Reports/ClassAttendance.php:110 Reports/ClassList.php:127
-msgid "Student"
-msgstr "學生"
 
 #: 
 msgid "Liaison"
@@ -4798,14 +4667,6 @@ msgid "Registration Complete"
 msgstr "註冊完成"
 
 #: 
-msgid "Thank you for registering your family."
-msgstr "感謝您為您的家人註冊。"
-
-#: 
-msgid "Member(s)"
-msgstr "會員"
-
-#: 
 msgid "Register"
 msgstr "註冊"
 
@@ -4816,10 +4677,6 @@ msgstr "註冊家人"
 #: 
 msgid "How many people are in your family"
 msgstr "你有幾個家庭成員"
-
-#: 
-msgid "This will be my primary church."
-msgstr "這將是我的主要教堂。"
 
 #: 
 msgid "Add All Classes"
@@ -5056,21 +4913,6 @@ msgstr "組屬性"
 #: 
 msgid "Assign a New Property:"
 msgstr "分配新屬性："
-
-#: 
-#, fuzzy
-msgid "mos old"
-msgstr "月"
-
-#: 
-#, fuzzy
-msgid "mo old"
-msgstr "月"
-
-#: 
-#, fuzzy
-msgid "yr old"
-msgstr "歲"
 
 #: 
 msgid "There was a problem retrieving the requested object"
@@ -5721,10 +5563,6 @@ msgid "Missing pledges"
 msgstr "遺失承諾"
 
 #: 
-msgid "Credit Card People"
-msgstr "信用卡人員"
-
-#: 
 msgid "Family Pledge by Fiscal Year"
 msgstr "財政年度的家庭承諾"
 
@@ -5797,10 +5635,6 @@ msgstr "比較兩個財政年度之間的承諾"
 #, fuzzy
 msgid "Find people who pledged one year but not another"
 msgstr "搜尋僅認獻一年者"
-
-#: 
-msgid "People who are configured to pay by credit card."
-msgstr "配置為使用信用卡付款的人。"
 
 #: 
 msgid "Pledge summary by family name for each fund for the selected fiscal year"
@@ -7092,10 +6926,6 @@ msgid "Zimbabwe"
 msgstr "津巴布韋"
 
 #: 
-msgid "By Zip Code"
-msgstr "按郵政編碼"
-
-#: 
 msgid "Please verify your family's information"
 msgstr "請驗證您的家人的信息"
 
@@ -7395,10 +7225,6 @@ msgid "Please ensure this what you want to do.</p>"
 msgstr "請確認這是你想要做的。"
 
 #: 
-msgid " This Family is Deactivated"
-msgstr "這個家庭已停用"
-
-#: 
 msgid " this Family"
 msgstr "這個家庭"
 
@@ -7431,17 +7257,9 @@ msgid "Coordinate data base file name:"
 msgstr "協調數據庫文件名："
 
 #: 
-msgid "Add To Cart"
-msgstr "添加至購物車"
-
-#: 
 #, fuzzy
 msgid "Intersect With Cart"
 msgstr "與購物車交集"
-
-#: 
-msgid "Remove From Cart"
-msgstr "從購物車中刪除"
 
 #: 
 msgid "Family Member"
@@ -8092,8 +7910,9 @@ msgid "Your Church's Facebook Page"
 msgstr "您的教會的Facebook頁面"
 
 #: 
+#, fuzzy
 msgid "Your Church's Twitter Page"
-msgstr "您的會的Facebook頁面"
+msgstr "您的教會的Twitter頁面"
 
 #: 
 msgid "lookup user images on Google when no local image is present"
@@ -8121,7 +7940,7 @@ msgstr "印尼語 - 印尼"
 
 #: 
 msgid "POST to cart requires a Persons array, FamilyID, or GroupID"
-msgstr "過賬到購物車需要Persons array，家庭ID或組ID"
+msgstr "投遞到購物車需要是人員陣列，家庭ID或組ID"
 
 #: 
 msgid "records(s) successfully added to selected Group."
@@ -8306,14 +8125,6 @@ msgid "Show type of group:"
 msgstr "顯示組的類型："
 
 #: 
-msgid "Deposits"
-msgstr "存款"
-
-#: 
-msgid "Payments"
-msgstr "支付"
-
-#: 
 msgid "Add Students"
 msgstr "添加學生"
 
@@ -8331,7 +8142,7 @@ msgstr "請為會員選擇目標角色"
 
 #: 
 msgid "GroupID required for role selection prompt"
-msgstr "角色選擇提示需要GroupID"
+msgstr "角色選擇提示需要群組ID"
 
 #: 
 msgid "Select Group and Role"
@@ -8437,10 +8248,6 @@ msgstr "Twitter"
 #: 
 msgid "LinkedIn"
 msgstr "LinkedIn"
-
-#: 
-msgid "Visitors"
-msgstr "受訪者"
 
 #: 
 msgid "Move Event"
@@ -8630,14 +8437,6 @@ msgid "Remove All from Cart"
 msgstr "從購物車中刪除全部"
 
 #: 
-msgid " record returned"
-msgstr "記錄已返回"
-
-#: 
-msgid " records returned"
-msgstr "記錄已返回"
-
-#: 
 msgid "records(s) successfully deleted from the selected Group."
 msgstr "順利將紀綠從所選的群組中刪除"
 
@@ -8697,10 +8496,6 @@ msgstr "返回人員儀錶盤"
 #: 
 msgid "User must have MenuOptions permission"
 msgstr "用戶必須具有MenuOptions權限"
-
-#: 
-msgid "Try out the Beta family view"
-msgstr "試用Beta系列視圖"
 
 #: 
 msgid "SMTP Host is not setup, please visit the settings page"
@@ -8924,10 +8719,6 @@ msgstr "指定的升級文件無效"
 #: 
 msgid "Failure executing upgrade script"
 msgstr "執行升級腳本失敗"
-
-#: 
-msgid "Databse upgrade failed"
-msgstr "數據庫升級失敗"
 
 #: 
 msgid "logged via API Key."
@@ -9244,11 +9035,6 @@ msgstr "已刪除對存儲的付款數據的支持。這些數據很快就會從
 
 #: 
 #, fuzzy
-msgid "Classifcation"
-msgstr "分類"
-
-#: 
-#, fuzzy
 msgid "Estonian"
 msgstr "愛沙尼亞語"
 
@@ -9402,4 +9188,176 @@ msgstr "請查看日誌以獲取更多信息"
 #, fuzzy
 msgid "Verification URL"
 msgstr "驗證網址"
+
+#: 
+#, fuzzy
+msgid "Reset System"
+msgstr "系統重置"
+
+#: 
+#, fuzzy
+msgid "Unexpected Person Id"
+msgstr "不預期的人員代碼"
+
+#: 
+#, fuzzy
+msgid "LastName, FirstName MiddleName:8"
+msgstr "名,姓,中間名:8"
+
+#: 
+#, fuzzy
+msgid "Interval in Hours for software update check"
+msgstr "軟件更新檢查的間隔小時"
+
+#: 
+#, fuzzy
+msgid "Last Software Update Check Timestamp"
+msgstr "上次軟件更新檢查時間戳"
+
+#: 
+#, fuzzy
+msgid "Allow system upgrades to release marked as 'pre release' on GitHub"
+msgstr "允許在GitHub上標記為預發佈的系統升級版本發佈"
+
+#: 
+#, fuzzy
+msgid "Search Calendar Events"
+msgstr "搜索日曆事件"
+
+#: 
+#, fuzzy
+msgid "Maximum number of Calendar Events"
+msgstr "日曆活動的最大數量"
+
+#: 
+msgid "%d month old"
+msgid_plural "%d months old"
+msgstr[0] "％d個月大\n"
+"Plural: ％d個月大"
+
+#: 
+msgid "%d year old"
+msgid_plural "%d years old"
+msgstr[0] "%d歲大\n"
+"Plural: %d歲大"
+
+#: 
+#, fuzzy
+msgid "Database upgrade failed"
+msgstr "資料庫升級失敗"
+
+#: 
+#, fuzzy
+msgid "Unsupported PHP Version"
+msgstr "不支援的PHP版本"
+
+#: 
+#, fuzzy
+msgid "Support for this PHP version will soon be removed.  Current PHP Version: "
+msgstr "很快將不再支持此PHP版本。當前的PHP版本： "
+
+#: 
+#, fuzzy
+msgid "Missing PHP ZipArchive"
+msgstr "缺少PHP ZipArchive"
+
+#: 
+#, fuzzy
+msgid "PHP ZipArchive required to support upgrade"
+msgstr "需要PHP ZipArchive以支援升級"
+
+#: 
+#, fuzzy
+msgid "See all People"
+msgstr "查看所有人"
+
+#: 
+#, fuzzy
+msgid "Add Results to Cart"
+msgstr "將結果添加到購物車"
+
+#: 
+#, fuzzy
+msgid "Remove Results from Cart"
+msgstr "從購物車中刪除結果"
+
+#: 
+#, fuzzy
+msgid "Warning: Pre-Upgrade Tasks Detected"
+msgstr "警告：檢測到預升級任務"
+
+#: 
+#, fuzzy
+msgid "Some conditions have been identified wich may prevent a successful upgrade"
+msgstr "已確定某些情況，可能會阻止成功升級"
+
+#: 
+#, fuzzy
+msgid "Please review and mitigate these tasks before continuing with the upgrade:"
+msgstr "在繼續升級之前，請查看並減少以下任務："
+
+#: 
+#, fuzzy
+msgid "Database Reset Functions"
+msgstr "資料庫重置功能"
+
+#: 
+#, fuzzy
+msgid "Reset Members"
+msgstr "重置會員"
+
+#: 
+#, fuzzy
+msgid "This will remove all the member data, people, and families and can't be undone."
+msgstr "這將刪除所有會員數據，人員和家庭，並且無法撤消。"
+
+#: 
+#, fuzzy
+msgid "Reset Families/People"
+msgstr "重置家庭/人"
+
+#: 
+#, fuzzy
+msgid "Reset Database"
+msgstr "重置資料庫"
+
+#: 
+#, fuzzy
+msgid "This will reset the system data and will restart the system as a new install."
+msgstr "這將重置系統資料，並以新安裝的方式重新啟動系統。"
+
+#: 
+#, fuzzy
+msgid "Clear Filter"
+msgstr "清除篩選"
+
+#: 
+#, fuzzy
+msgid "Add Person"
+msgstr "新增人員"
+
+#: 
+#, fuzzy
+msgid "Select the desired event"
+msgstr "選擇所需的事件"
+
+#: 
+#, fuzzy
+msgid "Missing people"
+msgstr "失蹤人員"
+
+#: 
+#, fuzzy
+msgid "Find people who didn't attend an event"
+msgstr "查找未參加活動的人"
+
+#: 
+#, fuzzy
+msgid "Portuguese - Portugal"
+msgstr "葡萄牙語-葡萄牙"
+
+#: 
+#, fuzzy
+msgid "Holiday"
+msgstr "假日"
 
