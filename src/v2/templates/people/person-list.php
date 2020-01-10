@@ -284,6 +284,10 @@ foreach ($ListItem as $element) {
             filterColumn(13, $(this).select2('data'), false);
         });
 
+        function escapeRegExp(string) {
+            return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
+        }
+
         // apply filters
         function filterColumn(col, search, regEx) {
             if (search.length === 0) {
@@ -292,15 +296,14 @@ foreach ($ListItem as $element) {
                 var tmp = [];
                 if (regEx) {
                     search.forEach(function(item) {
-                        tmp.push('^'+item.text+'$')});
+                        tmp.push('^'+escapeRegExp(item.text)+'$')});
                 } else {
                     search.forEach(function(item) {
-                    tmp.push('"'+item.text+'"')});
+                    tmp.push('"'+escapeRegExp(item.text)+'"')});
                 }
             }
             // join array into string with regex or (|)
             var val = tmp.join('|');
-            console.log(val);
             // apply search
             oTable.column(col).search(val, 1, 0, 1).draw();
         }
