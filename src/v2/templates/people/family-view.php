@@ -241,7 +241,7 @@ $familyAddress = $family->getAddress();
                                                 <button type="button" class="btn btn-xs btn-primary"><i class="fa fa-cart-plus"></i></button>
                                             </a>
 
-                                            <a href="../../index.php" class="table-link">
+                                            <a href="<?= SystemURLs::getRootPath()?>/PersonEditor.php?PersonID=<?= $person->getID()?>" class="table-link">
                                                 <button type="button" class="btn btn-xs btn-primary"><i class="fa fa-pencil"></i></button>
                                             </a>
                                             <a class="delete-person" data-person_name="<?= $person->getFullName() ?>"
