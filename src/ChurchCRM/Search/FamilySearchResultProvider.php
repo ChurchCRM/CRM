@@ -65,17 +65,18 @@ class FamilySearchResultProvider extends BaseSearchResultProvider  {
                     ->useFamilyCustomQuery();
             foreach($customFields as $customField)
             {
-            $familyQuery->where($customField->getCustomField()." LIKE ?","%$SearchQuery%", PDO::PARAM_STR );
-            $familyQuery->_or();
+                // search the `family_custom` table for the supplied query using all available `c_` fields obtained from `family_custom_master`
+                $familyQuery->where($customField->getField()." LIKE ?","%$SearchQuery%",\PDO::PARAM_STR );
+                $familyQuery->_or();
             }
             $families = $familyQuery->endUse()->find();
             foreach ($families as $family) {
                 $id++;
                 array_push($searchResults, new SearchResult("family-custom-prop-".$id, $family->getFamilyString(SystemConfig::getBooleanValue("bSearchIncludeFamilyHOH")),$family->getViewURI()));
             }
-            return $searchResults;
         } catch (Exception $e) {
             LoggerUtils::getAppLogger()->warn($e->getMessage());
         }
+        return $searchResults;
     }
 }
