@@ -35,7 +35,7 @@ class AnniversariesCalendar implements SystemCalendar {
     return gettext("Anniversaries");
   }
     
-  public function getEvents() {
+  public function getEvents($start,$end) {
     $families = FamilyQuery::create()
             ->filterByWeddingdate('', Criteria::NOT_EQUAL)
             ->find();
