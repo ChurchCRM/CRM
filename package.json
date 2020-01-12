@@ -50,7 +50,7 @@
         "tar": "^4.4.13",
         "ts-loader": "^4.1.0",
         "typescript": "^2.8.1",
-        "webpack": "4.19.1",
+        "webpack": "^4.41.5",
         "webpack-cli": "^3.3.10"
     },
     "dependencies": {
