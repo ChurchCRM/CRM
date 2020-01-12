@@ -45,11 +45,9 @@ class UnpinnedEvents implements SystemCalendar {
   }
   
   public function getEventById($Id) {
-    $people = PersonQuery::create()
-            ->filterByBirthDay('', Criteria::NOT_EQUAL)
-            ->filterById($Id)
-            ->find();
-    return $this->peopleCollectionToEvents($people);  
+    $Event = EventQuery::create()
+      ->findOneById($Id);
+    return $Event;
   }
   
 }

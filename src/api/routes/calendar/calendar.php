@@ -56,7 +56,7 @@ function getSystemCalendarEventById(Request $request, Response $response, array 
 
     if ($Calendar) {
         $event = $Calendar->getEventById($args['eventid']);
-        return $response->withJson($Calendar->toJSON());
+        return $response->withJson($event->toJSON());
     }
 }
 
