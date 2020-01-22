@@ -23,6 +23,9 @@ use ChurchCRM\Authentication\AuthenticationManager;
 class User extends BaseUser
 {
 
+
+    private $provisional2FAKey; 
+
     public function getId()
     {
         return $this->getPersonId();
@@ -280,11 +283,30 @@ class User extends BaseUser
         return $showSince;
     }
 
-    public function regenerate2FAKey() {
+    public function provisionNew2FAKey() {
         $google2fa = new Google2FA();
-        $encryptedSecret = Crypto::encryptWithPassword($google2fa->generateSecretKey(), KeyManager::GetTwoFASecretKey());
-        $this->setTwoFactorAuthSecret($encryptedSecret);
+        $key = $google2fa->generateSecretKey();
+        // store the temporary 2FA key in a private variable on this User object
+        // we don't want to update the database with the new key until we've confirmed 
+        // that the user is capapble of generating valid 2FA codes
+        // encrypt the 2FA key since this object and its properties are serialized into the $_SESSION store
+        // which is generally written to disk.
+        $this->provisional2FAKey = Crypto::encryptWithPassword($key, KeyManager::GetTwoFASecretKey());
+        return $key;
+    }
+
+    public function confirmProvisional2FACode($twoFACode) {
+        $google2fa = new Google2FA();
+        $window = 2; //TODO: make this a system config
+        $pw = Crypto::decryptWithPassword($this->provisional2FAKey, KeyManager::GetTwoFASecretKey());
+        $isKeyValid = $google2fa->verifyKey($pw, $twoFACode, $window);
+        if ($isKeyValid) {
+            $this->setTwoFactorAuthSecret($this->provisional2FAKey);
         $this->save();
+            return true;
+    }
+        return $isKeyValid;
+
     }
 
     public function remove2FAKey() {

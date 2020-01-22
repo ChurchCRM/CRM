@@ -4,7 +4,7 @@ use Slim\Http\Request;
 use Slim\Http\Response;
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\UserQuery;
-
+use ChurchCRM\Utils\LoggerUtils;
 
 $app->group('/user/current', function () {
     $this->post("/settings/show/finance", "updateSessionFinance");
@@ -41,8 +41,9 @@ function updateSessionFinance(Request $request, Response $response, array $args)
 function refresh2fasecret(Request $request, Response $response, array $args)
 {
     $user = AuthenticationManager::GetCurrentUser();
-    $user->Regenerate2FAKey();
-    return $response->withJson(["TwoFAQRCodeDataUri" => $user->getTwoFactorAuthQRCodeDataUri()]);
+    $secret = $user->provisionNew2FAKey();
+    LoggerUtils::getAuthLogger()->addInfo("Began 2FA enrollment for user: " . $user->getUserName());
+    return $response->withJson(["TwoFAQRCodeDataUri" => LocalAuthentication::GetTwoFactorQRCode($user->getUserName(),$secret)->writeDataUri()]);
 }
 
 function refresh2farecoverycodes(Request $request, Response $response, array $args)
@@ -69,5 +70,12 @@ function test2FAEnrollmentCode(Request $request, Response $response, array $args
 {
     $requestParsedBody = (object)$request->getParsedBody();
     $user = AuthenticationManager::GetCurrentUser();
-    return $response->withJson(["IsEnrollmentCodeValid" => $user->isTwoFACodeValid($requestParsedBody->enrollmentCode)]);
+    $result = $user->confirmProvisional2FACode($requestParsedBody->enrollmentCode);
+    if ($result) {
+        LoggerUtils::getAuthLogger()->addInfo("Completed 2FA enrollment for user: " . $user->getUserName());
+    }
+    else {
+        LoggerUtils::getAuthLogger()->addNotice("Unsuccessful 2FA enrollment for user: " . $user->getUserName());
+    }
+    return $response->withJson(["IsEnrollmentCodeValid" => $result]);
 }
