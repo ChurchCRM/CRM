@@ -3,6 +3,7 @@
 use Slim\Http\Request;
 use Slim\Http\Response;
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\Authentication\AuthenticationProviders\LocalAuthentication;
 use ChurchCRM\UserQuery;
 use ChurchCRM\Utils\LoggerUtils;
 
@@ -56,14 +57,14 @@ function remove2fasecret(Request $request, Response $response, array $args)
 {
     $user = AuthenticationManager::GetCurrentUser();
     $user->remove2FAKey();
-    return $response->withJson(["TwoFAQRCodeDataUri" => $user->getTwoFactorAuthQRCodeDataUri()]);
+    return $response->withJson([]);
 }
 
 function get2faqrcode(Request $request, Response $response, array $args)
 {
     $user = AuthenticationManager::GetCurrentUser();
     $response = $response->withHeader("Content-Type", "image/png");
-    return $response->write($user->getTwoFactorAuthQRCode()->writeString());
+    return $response->write(LocalAuthentication::GetTwoFactorQRCode($user->getUserName(),$user->getDecryptedTwoFactorAuthSecret())->writeString());
 }
 
 function test2FAEnrollmentCode(Request $request, Response $response, array $args)

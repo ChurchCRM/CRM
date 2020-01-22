@@ -15,6 +15,8 @@ namespace ChurchCRM\Authentication\AuthenticationProviders {
   use DateTimeZone;
   use ChurchCRM\Utils\LoggerUtils;
   use ChurchCRM\KeyManager;
+  use PragmaRX\Google2FA\Google2FA;
+  use Endroid\QrCode\QrCode;
 
 
 class LocalAuthentication implements IAuthenticationProvider
@@ -29,6 +31,18 @@ class LocalAuthentication implements IAuthenticationProvider
 
     public static function GetIsTwoFactorAuthSupported() {
       return SystemConfig::getBooleanValue("bEnable2FA") && KeyManager::GetAreAllSecretsDefined();
+    }
+
+    public static function GetTwoFactorQRCode($username,$secret):QrCode {
+      $google2fa = new Google2FA();
+      $g2faUrl = $google2fa->getQRCodeUrl(
+          SystemConfig::getValue("s2FAApplicationName"),
+          $username,
+          $secret
+      );
+      $qrCode = new QrCode($g2faUrl );
+      $qrCode->setSize(300);
+      return $qrCode;
     }
 
     public function __construct() {
