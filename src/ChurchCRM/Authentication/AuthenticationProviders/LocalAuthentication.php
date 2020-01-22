@@ -143,6 +143,7 @@ class LocalAuthentication implements IAuthenticationProvider
           $authenticationResult->isAuthenticated = false;
           $authenticationResult->nextStepURL = SystemURLs::getRootPath()."/session/two-factor";
           $this->bPendingTwoFactorAuth = true;
+          LoggerUtils::getAuthLogger()->addInfo("User partially authenticated, pending 2FA: " . $this->currentUser->getUserName());
           return $authenticationResult;
         } elseif(SystemConfig::getBooleanValue("bRequire2FA") && ! $this->currentUser->is2FactorAuthEnabled()) {
           $authenticationResult->isAuthenticated = false;
@@ -165,7 +166,6 @@ class LocalAuthentication implements IAuthenticationProvider
             return $authenticationResult;
           }
           elseif($this->currentUser->isTwoFaRecoveryCodeValid($AuthenticationRequest->TwoFACode)){
-            LoggerUtils::getAuthLogger()->addInfo("testing recovery code" . $AuthenticationRequest->TwoFACode);
             $this->prepareSuccessfulLoginOperations();
             $authenticationResult->isAuthenticated = true;
             $this->bPendingTwoFactorAuth = false;
@@ -173,6 +173,7 @@ class LocalAuthentication implements IAuthenticationProvider
             return $authenticationResult;
           }
           else {
+            LoggerUtils::getAuthLogger()->addInfo("Invalid 2FA code provided by partially authenticated user: " . $this->currentUser->getUserName());
             $authenticationResult->isAuthenticated = false;
             $authenticationResult->nextStepURL = SystemURLs::getRootPath()."/session/two-factor";
             return $authenticationResult;
