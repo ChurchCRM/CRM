@@ -36,14 +36,15 @@ class AuthenticationManager
     }
 
 
-    public static function EndSession() {
-      $currentSessionUserName = "";
+    public static function EndSession($preventRedirect=false) {
+      $currentSessionUserName = "Unknown";
       try {
-        $currentSessionUserName = self::GetCurrentUser()->getName();
+        if (self::GetCurrentUser() != null) {
+          $currentSessionUserName = self::GetCurrentUser()->getName();
+        }
       }
       catch(\Exception $e) {
         //unable to get name of user logging out. Don't really care.
-        $currentSessionUserName = "Unknown";
       }
       try {
         $result = self::GetAuthenticationProvider()->EndSession();
@@ -57,7 +58,9 @@ class AuthenticationManager
         LoggerUtils::getAuthLogger()->addWarning("Error destroying session: " . $e);
       }
       finally {
-        RedirectUtils::Redirect(self::GetSessionBeginURL());
+        if(!$preventRedirect) {
+          RedirectUtils::Redirect(self::GetSessionBeginURL());
+        }
       }
     }
 
