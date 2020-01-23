@@ -65,7 +65,7 @@ class LoggerUtils
       $callers = debug_backtrace();
       $call = $callers[5];
       return [
-        "ContextClass"=>$call['class'],
+        "ContextClass"=> array_key_exists("class",$call) ? $call['class'] : "",
         "ContextMethod"=> $call['function']
       ];
     }
