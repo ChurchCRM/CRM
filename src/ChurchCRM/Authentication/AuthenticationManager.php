@@ -32,9 +32,15 @@ class AuthenticationManager
     }
 
     public static function GetCurrentUser() {
-      return self::GetAuthenticationProvider()->GetCurrentUser();
+      try {
+        return self::GetAuthenticationProvider()->GetCurrentUser();
+      }
+      catch (\Exception $e){
+        LoggerUtils::getAppLogger()->addWarning("Failed to get current user: " . $e);
+        return null;
+      }
+ 
     }
-
 
     public static function EndSession($preventRedirect=false) {
       $currentSessionUserName = "Unknown";
