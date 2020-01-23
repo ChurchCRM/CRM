@@ -4,13 +4,13 @@ namespace ChurchCRM\Authentication\AuthenticationProviders {
 
   use ChurchCRM\Authentication\AuthenticationManager;
   use ChurchCRM\dto\SystemConfig;
-  use ChurchCRM\Utils\RedirectUtils;
-  use ChurchCRM\Authentication\AuthenticationProviders;
   use ChurchCRM\Authentication\AuthenticationResult;
+  use ChurchCRM\Authentication\Requests\AuthenticationRequest;
+  use ChurchCRM\Authentication\Requests\LocalTwoFactorTokenRequest;
+  use ChurchCRM\Authentication\Requests\LocalUserAuthenticationRequest;
+  use ChurchCRM\Authentication\Requests\LocalUsernamePasswordRequest;
   use ChurchCRM\dto\SystemURLs;
-  use ChurchCRM\Utils\InputUtils;
   use ChurchCRM\UserQuery;
-  use ChurchCRM\User;
   use DateTime;
   use DateTimeZone;
   use ChurchCRM\Utils\LoggerUtils;
@@ -105,13 +105,19 @@ class LocalAuthentication implements IAuthenticationProvider
       $_SESSION['iCurrentDeposit'] = $this->currentUser->getCurrentDeposit();
     }
 
-    public function Authenticate(object $AuthenticationRequest) {
+    public function Authenticate(AuthenticationRequest $AuthenticationRequest) {
+
+      if (!($AuthenticationRequest instanceof LocalUsernamePasswordRequest  || $AuthenticationRequest instanceof LocalTwoFactorTokenRequest)) {
+        throw new \Exception ("Unable to process request as LocalUsernamePasswordRequest or LocalTwoFactorTokenRequest");
+    }
+
+
       $authenticationResult = new AuthenticationResult();
 
-      if (isset($AuthenticationRequest->User)) {
-        LoggerUtils::getAuthLogger()->addDebug("Processing local login for" . $AuthenticationRequest->User);
+      if ($AuthenticationRequest instanceof LocalUsernamePasswordRequest) {
+        LoggerUtils::getAuthLogger()->addDebug("Processing local login for" . $AuthenticationRequest->username);
         // Get the information for the selected user
-        $this->currentUser = UserQuery::create()->findOneByUserName($AuthenticationRequest->User);
+        $this->currentUser = UserQuery::create()->findOneByUserName($AuthenticationRequest->username);
         if ($this->currentUser == null) {
           // Set the error text
           $authenticationResult->isAuthenticated = false;
@@ -124,7 +130,7 @@ class LocalAuthentication implements IAuthenticationProvider
           LoggerUtils::getAuthLogger()->addWarning("Authentication attempt for locked account: " . $this->currentUser->getUserName());
           return $authenticationResult;
         } // Does the password match?
-        elseif (!$this->currentUser->isPasswordValid($AuthenticationRequest->Password)) {
+        elseif (!$this->currentUser->isPasswordValid($AuthenticationRequest->password)) {
           // Increment the FailedLogins
           $this->currentUser->setFailedLogins($this->currentUser->getFailedLogins() + 1);
           $this->currentUser->save();
@@ -157,7 +163,7 @@ class LocalAuthentication implements IAuthenticationProvider
             return $authenticationResult;
           }
         }
-        elseif(isset($AuthenticationRequest->TwoFACode) && $this->bPendingTwoFactorAuth) {
+        elseif($AuthenticationRequest instanceof LocalTwoFactorTokenRequest && $this->bPendingTwoFactorAuth) {
           if ($this->currentUser->isTwoFACodeValid($AuthenticationRequest->TwoFACode)) {
             $this->prepareSuccessfulLoginOperations();
             $authenticationResult->isAuthenticated = true;

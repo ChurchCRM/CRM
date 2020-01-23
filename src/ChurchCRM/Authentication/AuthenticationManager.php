@@ -7,7 +7,9 @@ namespace ChurchCRM\Authentication {
   use ChurchCRM\Utils\LoggerUtils;
   use ChurchCRM\dto\SystemURLs;
   use ChurchCRM\Authentication\AuthenticationProviders\IAuthenticationProvider;
-    use ChurchCRM\Bootstrapper;
+  use ChurchCRM\Bootstrapper;
+  use ChurchCRM\Authentication\Requests\AuthenticationRequest;
+  use ChurchCRM\Authentication\AuthenticationProviders\LocalAuthentication;
 
 class AuthenticationManager
   {
@@ -58,9 +60,29 @@ class AuthenticationManager
       }
     }
 
-    public static function Authenticate(IAuthenticationProvider $AuthenticationProvider, object $AuthenticationRequest) {
-      $result = $AuthenticationProvider->Authenticate($AuthenticationRequest);
-      self::SetAuthenticationProvider($AuthenticationProvider);
+    public static function Authenticate(AuthenticationRequest $AuthenticationRequest) {
+      switch (get_class($AuthenticationRequest)){
+       
+        case "ChurchCRM\Authentication\Requests\LocalUsernamePasswordRequest":
+          $AuthenticationProvider = new LocalAuthentication();
+          self::SetAuthenticationProvider($AuthenticationProvider);
+        break;
+        case "ChurchCRM\Authentication\Requests\LocalTwoFactorTokenRequest":
+          try {
+            self::GetAuthenticationProvider();
+          }
+          catch (\Exception $e)
+          {
+            LoggerUtils::getAppLogger()->addWarning("Tried to supply two factor authentication code, but didn't have an existing session.  This shouldn't ever happen");
+          }
+        break;
+        default:
+          LoggerUtils::getAppLogger()->addCritical("Unknown AuthenticationRequest type supplied");
+        break;
+      }
+
+      $result = self::GetAuthenticationProvider()->Authenticate($AuthenticationRequest);
+
       if (null !== $result->nextStepURL){
         LoggerUtils::getAuthLogger()->addDebug("Authentication requires additional step: " . $result->nextStepURL);
         RedirectUtils::Redirect($result->nextStepURL);

@@ -5,7 +5,8 @@ require '../Include/Config.php';
 require_once dirname(__FILE__).'/../vendor/autoload.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
-use ChurchCRM\Authentication\AuthenticationProviders\LocalAuthentication;
+use ChurchCRM\Authentication\Requests\LocalUsernamePasswordRequest;
+use ChurchCRM\Authentication\Requests\LocalTwoFactorTokenRequest;
 use Slim\Container;
 use Slim\App;
 use Slim\Http\Request;
@@ -52,7 +53,8 @@ function processTwoFactorGet(Request $request, Response $response, array $args)
 function processTwoFactorPost(Request $request, Response $response, array $args)
 {
     $loginRequestBody = (object)$request->getParsedBody();
-    AuthenticationManager::Authenticate(AuthenticationManager::GetAuthenticationProvider(), $loginRequestBody);
+    $request = new LocalTwoFactorTokenRequest($loginRequestBody->TwoFACode);
+    AuthenticationManager::Authenticate($request);
 }
 
 function endSession(Request $request, Response $response, array $args)
@@ -70,7 +72,8 @@ function beginSession(Request $request, Response $response, array $args)
 
     if ($request->getMethod() == "POST") {
         $loginRequestBody = (object)$request->getParsedBody();
-        $authenticationResult = AuthenticationManager::Authenticate(new LocalAuthentication(), $loginRequestBody);
+        $request = new LocalUsernamePasswordRequest($loginRequestBody->User,$loginRequestBody->Password);
+        $authenticationResult = AuthenticationManager::Authenticate($request);
         $pageArgs['sErrorText'] = $authenticationResult->message;
     }
 
