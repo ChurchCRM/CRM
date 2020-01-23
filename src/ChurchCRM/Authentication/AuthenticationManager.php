@@ -20,7 +20,7 @@ class AuthenticationManager
         return  $_SESSION['AuthenticationProvider'];
       }
       else {
-        throw new \Exception("Not active authentication provider");
+        throw new \Exception("No active authentication provider");
       }
     }
 
