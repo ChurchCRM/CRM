@@ -6,5 +6,6 @@ namespace ChurchCRM\Authentication\AuthenticationProviders {
         public function Authenticate(AuthenticationRequest $AuthenticationRequest);
         public function ValidateUserSessionIsActive(bool $updateLastOperationTimestamp);
         public function GetCurrentUser();
+        public function EndSession();
     }
 }
