@@ -6,6 +6,7 @@ namespace ChurchCRM\Authentication {
         public $isAuthenticated;
         public $nextStepURL;
         public $message;
+        public $preventRedirect;
     }
 
 }

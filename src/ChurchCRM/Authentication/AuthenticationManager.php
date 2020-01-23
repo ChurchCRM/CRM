@@ -101,7 +101,7 @@ class AuthenticationManager
         RedirectUtils::Redirect($result->nextStepURL);
       }
       
-      if ($result->isAuthenticated) {
+      if ($result->isAuthenticated && ! $result->preventRedirect) {
         $redirectLocation = array_key_exists("location", $_SESSION) ? $_SESSION['location'] : 'Menu.php';
         NotificationService::updateNotifications();
         LoggerUtils::getAuthLogger()->addDebug("Authentication Successful; redirecting to: " . $redirectLocation);
