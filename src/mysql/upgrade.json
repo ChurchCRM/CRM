@@ -238,7 +238,7 @@
             "3.5.5"
         ],
         "scripts": [
-            "/mysql/upgrade/TwoFactorAuth.sql"
+            "/mysql/upgrade/4.0.0-TwoFactorAuth.sql"
         ],
         "dbVersion": "4.0.0"
     },
