@@ -8,35 +8,34 @@ use Slim\Http\Response;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\Authentication\Requests\APITokenAuthenticationRequest;
+use ChurchCRM\Authentication\AuthenticationProviders\APITokenAuthentication;
 
 class AuthMiddleware {
-
-    private $user;
-    private $apiKey;
 
     public function __invoke( Request $request, Response $response, callable $next )
     {
         if (!$this->isPath( $request, "public")) {
-            $this->apiKey = $request->getHeader("x-api-key");
-            if (!empty($this->apiKey)) {
-                $user = UserQuery::create()->findOneByApiKey($this->apiKey);
-                if (!empty($user)) {
-                    LoggerUtils::getAppLogger()->debug($user->getName() . " : " . gettext("logged via API Key."));
-                    $this->user = $user;
-                } else {
-                    LoggerUtils::getAppLogger()->warn(gettext("logged via InValid API Key."));
-                    session_destroy();
-                }
+            $apiKey = $request->getHeader("x-api-key");
+            if (!empty($apiKey)) {
+              
+                $authenticationResult = AuthenticationManager::Authenticate(new APITokenAuthenticationRequest($apiKey[0]));
+                if (! $authenticationResult->isAuthenticated) {
+                    AuthenticationManager::EndSession(true);
+                    return $response->withStatus(401, gettext('No logged in user'));
+                }        
             }
             // validate the user session; however, do not update tLastOperation if the requested path is "/background"
             // since /background operations do not connotate user activity.
             else if (AuthenticationManager::ValidateUserSessionIsActive(!$this->isPath( $request, "background"))) {
-                $this->user = AuthenticationManager::GetCurrentUser();
+                // User with an active browser session is still authenticated.
+                // don't really need to do anything here... 
             }
             else {
                 return $response->withStatus(401, gettext('No logged in user'));
             }
-            return $next( $request, $response )->withHeader( "CRM_USER_ID", $this->user->getId());
+
+            return $next( $request, $response )->withHeader( "CRM_USER_ID", AuthenticationManager::GetCurrentUser()->getId());
         }
         return $next( $request, $response );
     }

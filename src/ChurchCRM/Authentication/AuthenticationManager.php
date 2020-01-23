@@ -10,6 +10,7 @@ namespace ChurchCRM\Authentication {
   use ChurchCRM\Bootstrapper;
   use ChurchCRM\Authentication\Requests\AuthenticationRequest;
   use ChurchCRM\Authentication\AuthenticationProviders\LocalAuthentication;
+  use ChurchCRM\Authentication\AuthenticationProviders\APITokenAuthentication;
 
 class AuthenticationManager
   {
@@ -62,7 +63,10 @@ class AuthenticationManager
 
     public static function Authenticate(AuthenticationRequest $AuthenticationRequest) {
       switch (get_class($AuthenticationRequest)){
-       
+        case "ChurchCRM\Authentication\Requests\APITokenAuthenticationRequest":
+          $AuthenticationProvider = new APITokenAuthentication();
+          self::SetAuthenticationProvider($AuthenticationProvider);
+        break;
         case "ChurchCRM\Authentication\Requests\LocalUsernamePasswordRequest":
           $AuthenticationProvider = new LocalAuthentication();
           self::SetAuthenticationProvider($AuthenticationProvider);
