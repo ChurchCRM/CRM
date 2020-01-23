@@ -115,9 +115,8 @@ class AuthenticationManager
       try {
         $result = self::GetAuthenticationProvider()->ValidateUserSessionIsActive($updateLastOperationTimestamp);
         return $result->isAuthenticated;
-
       }
-      catch (\Throwable $error){
+      catch (\Exception $error){
         LoggerUtils::getAuthLogger()->addDebug("Error determining session authentication status." . $error);
         return false;
       }
