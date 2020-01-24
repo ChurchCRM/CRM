@@ -433,6 +433,16 @@ module.exports = function (grunt) {
         grunt.log.writeln(sha1(grunt.file.read(arg1, {encoding: null})));
     });
 
+    grunt.registerTask('patchDataTablesCSS', 'Patches Absolute paths in DataTables CSS to relative Paths', function () {
+        var filePath = "src/skin/external/datatables/datatables.min.css";
+        var fileContents = grunt.file.read(filePath);
+        const pattern = /url\(\"\//gi
+        fileContents = fileContents.replace(pattern,'url("')
+        console.log("patched files");
+        grunt.file.write(filePath, fileContents);
+    });
+
+
     grunt.registerMultiTask('generateSignatures', 'Generates SHA1 signatures of the release archive', function () {
         var sha1 = require('node-sha1');
         var signatures = {
