@@ -54,7 +54,7 @@ class SystemConfig
                 gettext("Title FirstName LastName").":5",
                 gettext("LastName, Title FirstName").":6",
                 gettext("LastName FirstName").":7",
-                gettext("LastName, FirstName MiddleName". ":8")
+                gettext("LastName, FirstName MiddleName").":8"
             ]
         ];
     }
