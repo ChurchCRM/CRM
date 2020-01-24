@@ -73,7 +73,7 @@
         "jquery-photo-uploader": "^1.0.13",
         "jquery-steps": "^1.1.0",
         "jquery-validation": "^1.19.1",
-        "node-sass": "^4.13.0",
+        "node-sass": "^4.13.1",
         "pace-js": "^1.0.2",
         "react-datepicker": "^2.10.0",
         "react-select": "^2.4.4",
