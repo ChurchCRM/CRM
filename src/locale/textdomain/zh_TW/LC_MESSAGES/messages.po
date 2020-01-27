@@ -122,9 +122,8 @@ msgid "Field Selection"
 msgstr "欄位選擇"
 
 #: 
-#, fuzzy
 msgid "Last Name"
-msgstr "姓氐"
+msgstr "姓氏"
 
 #: 
 msgid "Required"
@@ -574,8 +573,9 @@ msgid "Your cart is empty!"
 msgstr "您的購物車是空的！"
 
 #: 
+#, fuzzy
 msgid "No family name entered!"
-msgstr "沒有輸入家族姓氐！"
+msgstr "沒有輸入家族姓氏！"
 
 #: 
 msgid "Add Cart to Family"
@@ -9360,4 +9360,49 @@ msgstr "葡萄牙語-葡萄牙"
 #, fuzzy
 msgid "Holiday"
 msgstr "假日"
+
+#: 
+#, fuzzy
+msgid "Allow users to self-enroll in 2 factor authentication"
+msgstr "允許用戶自行註冊兩因素身份驗證"
+
+#: 
+#, fuzzy
+msgid "Requires users to self-enroll in 2 factor authentication"
+msgstr "要求用戶自行註冊兩因素身份驗證"
+
+#: 
+#, fuzzy
+msgid "ChurchCRM"
+msgstr "ChurchCRM"
+
+#: 
+#, fuzzy
+msgid "Specify the application name to be displayed in authenticator app"
+msgstr "指定要在驗證器應用程序中顯示的應用程序名稱"
+
+#: 
+#, fuzzy
+msgid "Secret Keys missing from Config.php"
+msgstr "Config.php中缺少密鑰"
+
+#: 
+#, fuzzy
+msgid "Review"
+msgstr "檢閱"
+
+#: 
+#, fuzzy
+msgid "Thank you for registering your family"
+msgstr "感謝您為家人註冊"
+
+#: 
+#, fuzzy
+msgid "Register another family!"
+msgstr "註冊另一個家庭！"
+
+#: 
+#, fuzzy
+msgid "Done, show me the homepage!"
+msgstr "完成，轉至主頁！"
 

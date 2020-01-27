@@ -26,7 +26,7 @@
     "Enter Winners": "輸入獲獎者",
     "CSV Export": "CSV出口",
     "Field Selection": "欄位選擇",
-    "Last Name": "姓氐",
+    "Last Name": "姓氏",
     "Required": "需要",
     "First Name": "名字",
     "Middle Name": "中間名",
@@ -133,7 +133,7 @@
     "OR": "或",
     "Add New Event": "添加新活動",
     "Your cart is empty!": "您的購物車是空的！",
-    "No family name entered!": "沒有輸入家族姓氐！",
+    "No family name entered!": "沒有輸入家族姓氏！",
     "Add Cart to Family": "添加家庭至購物車",
     "Name": "名稱",
     "Assign Role": "分配角色",
@@ -2270,5 +2270,14 @@
     "Missing people": "失蹤人員",
     "Find people who didn't attend an event": "查找未參加活動的人",
     "Portuguese - Portugal": "葡萄牙語-葡萄牙",
-    "Holiday": "假日"
+    "Holiday": "假日",
+    "Allow users to self-enroll in 2 factor authentication": "允許用戶自行註冊兩因素身份驗證",
+    "Requires users to self-enroll in 2 factor authentication": "要求用戶自行註冊兩因素身份驗證",
+    "ChurchCRM": "ChurchCRM",
+    "Specify the application name to be displayed in authenticator app": "指定要在驗證器應用程序中顯示的應用程序名稱",
+    "Secret Keys missing from Config.php": "Config.php中缺少密鑰",
+    "Review": "檢閱",
+    "Thank you for registering your family": "感謝您為家人註冊",
+    "Register another family!": "註冊另一個家庭！",
+    "Done, show me the homepage!": "完成，轉至主頁！"
 }

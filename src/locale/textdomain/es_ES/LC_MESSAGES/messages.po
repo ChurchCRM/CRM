@@ -9011,3 +9011,180 @@ msgstr "Para mayor información por favor revise los logs"
 msgid "Verification URL"
 msgstr "URL de verificación"
 
+#: 
+msgid "Reset System"
+msgstr "Restablecer Sistema"
+
+#: 
+msgid "Unexpected Person Id"
+msgstr "Id de Persona Inesperado"
+
+#. There is an 8 trailing
+#: 
+msgid "LastName, FirstName MiddleName:8"
+msgstr "Apellido, PrimerNombre, SegundoNombre"
+
+#: 
+msgid "Interval in Hours for software update check"
+msgstr "Intervalo en Horas para comprobar actualizaciones de software"
+
+#: 
+msgid "Last Software Update Check Timestamp"
+msgstr "Marca de Tiempo de Última Comprobación de Actualización de Software"
+
+#: 
+msgid "Allow system upgrades to release marked as 'pre release' on GitHub"
+msgstr "Permitir actualizaciones de sistema marcadas como 'pre-release' en GitHub"
+
+#: 
+msgid "Search Calendar Events"
+msgstr "Buscar Eventos de Calendario"
+
+#: 
+msgid "Maximum number of Calendar Events"
+msgstr "Número máximo de Eventos de Calendario"
+
+#: 
+msgid "%d month old"
+msgid_plural "%d months old"
+msgstr[0] "%d mes de edad"
+msgstr[1] "%d meses de edad"
+
+#: 
+msgid "%d year old"
+msgid_plural "%d years old"
+msgstr[0] "%d año de edad"
+msgstr[1] "%d años de edad"
+
+#: 
+msgid "Database upgrade failed"
+msgstr "Actualización de Base de Datos Falló"
+
+#: 
+msgid "Unsupported PHP Version"
+msgstr "Versión de PHP no soportada"
+
+#: 
+msgid "Support for this PHP version will soon be removed.  Current PHP Version: "
+msgstr "El soporte para esta versión de PHP va a ser terminado. Versión actual de PHP: "
+
+#: 
+msgid "Missing PHP ZipArchive"
+msgstr "Archivo Zip de PHP Falta"
+
+#: 
+msgid "PHP ZipArchive required to support upgrade"
+msgstr "Archivo Zip de PHP es requerido para actualizar"
+
+#: 
+msgid "See all People"
+msgstr "Ver todas las Personas"
+
+#: 
+msgid "Add Results to Cart"
+msgstr "Agregar Resultados al Separador"
+
+#: 
+msgid "Remove Results from Cart"
+msgstr "Remover Resultados del Separador"
+
+#: 
+msgid "Warning: Pre-Upgrade Tasks Detected"
+msgstr "Advertencia: Tareas de Pre-Actualización Detectadas"
+
+#: 
+msgid "Some conditions have been identified wich may prevent a successful upgrade"
+msgstr "Algunas condiciones han sido identificadas, las que pueden evitar una actualización satisfactoria."
+
+#: 
+msgid "Please review and mitigate these tasks before continuing with the upgrade:"
+msgstr "Por favor revise estas tareas antes de continuar con la actualización:"
+
+#: 
+msgid "Database Reset Functions"
+msgstr "Funciones de Restablecimiento de Base de Datos"
+
+#: 
+msgid "Reset Members"
+msgstr "Restablecer Miembros"
+
+#: 
+msgid "This will remove all the member data, people, and families and can't be undone."
+msgstr "Esto eliminará todos los datos de miembros, personas y familias, no puede ser revertido."
+
+#: 
+msgid "Reset Families/People"
+msgstr "Restablecer Familias/Personas"
+
+#: 
+msgid "Reset Database"
+msgstr "Restablecer Base de Datos"
+
+#: 
+msgid "This will reset the system data and will restart the system as a new install."
+msgstr "Esto restablecerá los datos del sistema y lo reiniciará como una nueva instalación."
+
+#: 
+msgid "Clear Filter"
+msgstr "Borrar Filtro"
+
+#: 
+msgid "Add Person"
+msgstr "Agregar Persona"
+
+#: 
+msgid "Select the desired event"
+msgstr "Seleccione el evento deseado"
+
+#: 
+msgid "Missing people"
+msgstr "Personas faltantes"
+
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "Encuentre personas que no asistieron al evento"
+
+#: 
+msgid "Portuguese - Portugal"
+msgstr "Portugués - Portugal"
+
+#: 
+msgid "Holiday"
+msgstr "Día Festivo"
+
+#: 
+msgid "Allow users to self-enroll in 2 factor authentication"
+msgstr "Permitir que usuarios se enrolen con autenticación de 2 factores"
+
+#: 
+msgid "Requires users to self-enroll in 2 factor authentication"
+msgstr "Requiere que usuarios se enrolen con autenticación de 2 factores"
+
+#: 
+msgid "ChurchCRM"
+msgstr "ChurchCRM"
+
+#: 
+msgid "Specify the application name to be displayed in authenticator app"
+msgstr "Especifique el nombre de aplicación que será mostrado en la app de autenticación"
+
+#: 
+msgid "Secret Keys missing from Config.php"
+msgstr "Faltan Secret Keys en Config.php"
+
+#: 
+msgid "Review"
+msgstr "Revisar"
+
+#: 
+msgid "Thank you for registering your family"
+msgstr "Gracias por registrar a su familia"
+
+#: 
+msgid "Register another family!"
+msgstr "Registre otra familia!"
+
+#: 
+msgid "Done, show me the homepage!"
+msgstr "Listo, muéstrame la página de inicio!"
+

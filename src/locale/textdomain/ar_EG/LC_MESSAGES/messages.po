@@ -381,6 +381,14 @@ msgid "Check to confirm"
 msgstr "تحقق للتأكد"
 
 #: 
+msgid "Enable Canvass for All Families"
+msgstr "تفعيل الافتقاد لكل العائلات"
+
+#: 
+msgid "Disable Canvass for All Families"
+msgstr "تعطيل الافتقاد لكل العائلات"
+
+#: 
 msgid "Briefing Sheets"
 msgstr "أوراق الإحاطة"
 
@@ -395,6 +403,10 @@ msgstr "تقرير ملخص"
 #: 
 msgid "Not Interested Report"
 msgstr "تقرير غير مهتم"
+
+#: 
+msgid "Canvasser"
+msgstr "خادم افتقاد"
 
 #: 
 msgid "Positive"
@@ -601,8 +613,20 @@ msgid "Add Visitor"
 msgstr "إضافة زائر"
 
 #: 
+msgid "CheckIn"
+msgstr "حضور"
+
+#: 
 msgid "CheckOut"
 msgstr "الخروج"
+
+#: 
+msgid "Checked In Time"
+msgstr "وقت الحضور"
+
+#: 
+msgid "Checked Out Time"
+msgstr "وقت الانصراف"
 
 #: 
 msgid "Action"
@@ -615,6 +639,10 @@ msgstr "الأعضاء"
 #: 
 msgid " of the"
 msgstr " لأن"
+
+#: 
+msgid "(No assigned family)"
+msgstr "لا يوجد أسرة مخصصة"
 
 #: 
 msgid "Convert Individuals to Families"
@@ -1033,6 +1061,1142 @@ msgid "Optional"
 msgstr "اختياري"
 
 #: 
+msgid "Edit List Options"
+msgstr "تعديل اختيارات القائمة"
+
+#: 
+msgid "You must enter a name"
+msgstr "يجب ادخال اسم"
+
+#: 
+msgid "That field name already exists."
+msgstr "حقل الاسم موجود بالفعل"
+
+#: 
+msgid "Add New Field"
+msgstr "إضافة حقل جديد"
+
+#: 
+msgid "Family Editor"
+msgstr "تعديل العائلة"
+
+#: 
+msgid "First name must be entered"
+msgstr "يجب ادخال الاسم الاول"
+
+#: 
+msgid "Invalid Year: allowable values are 1901 to 2155"
+msgstr "السنة غير صحيحة : القيمة المسموحة من 1901 حتى 2155"
+
+#: 
+msgid "Invalid Birth Date."
+msgstr "تاريخ الميلاد غير صحيح"
+
+#: 
+msgid "Not a valid Wedding Date"
+msgstr "تاريخ الزواج غير صحيح"
+
+#: 
+msgid "Email is Not Valid"
+msgstr "الايميل غسر صحيح"
+
+#: 
+msgid "Family Info"
+msgstr "بيانات العائلة"
+
+#: 
+msgid "Contact Info"
+msgstr "بيانات الاتصال"
+
+#: 
+msgid "Other Info"
+msgstr "بيانات اخرى"
+
+#: 
+msgid "Envelope Info"
+msgstr "معلومات المظروف"
+
+#: 
+msgid "Custom Fields"
+msgstr "حقول خاصة"
+
+#: 
+msgid "Family Members"
+msgstr "اعضاء العائلة"
+
+#: 
+msgid "First"
+msgstr "الاول"
+
+#: 
+msgid "Middle"
+msgstr "الاوسط"
+
+#: 
+msgid "Last"
+msgstr "اسم العائلة"
+
+#: 
+msgid "Role"
+msgstr "الادوار"
+
+#: 
+msgid "Day"
+msgstr "يوم"
+
+#: 
+msgid "Select Gender"
+msgstr "اختيار الجنس"
+
+#: 
+msgid "Unknown"
+msgstr "عير معروف"
+
+#: 
+msgid "January"
+msgstr "يناير"
+
+#: 
+msgid "February"
+msgstr "فبراير"
+
+#: 
+msgid "March"
+msgstr "مارس"
+
+#: 
+msgid "April"
+msgstr "ابريل"
+
+#: 
+msgid "May"
+msgstr "مايو"
+
+#: 
+msgid "June"
+msgstr "يونية"
+
+#: 
+msgid "July"
+msgstr "يوايو"
+
+#: 
+msgid "August"
+msgstr "أغسطس"
+
+#: 
+msgid "September"
+msgstr "سبتمبر"
+
+#: 
+msgid "October"
+msgstr "اكتوبر"
+
+#: 
+msgid "November"
+msgstr "نوفمبر"
+
+#: 
+msgid "December"
+msgstr "ديسمبر"
+
+#: 
+msgid "Family List"
+msgstr "قائمة العائلة"
+
+#: 
+msgid "Add Family"
+msgstr "اضافة عائلة"
+
+#: 
+msgid "Created"
+msgstr "انشاء"
+
+#: 
+msgid "Edited"
+msgstr "تعديل"
+
+#: 
+msgid "Envelope Number"
+msgstr "رقم المظروف"
+
+#: 
+msgid "Add New Member"
+msgstr "اضافة عضو جديد"
+
+#: 
+msgid "Previous Family"
+msgstr "العائلة السابقة"
+
+#: 
+msgid "Delete this Family"
+msgstr "مسح الهائلة"
+
+#: 
+msgid "Upload Photo"
+msgstr "تحميل الصورة"
+
+#: 
+msgid "Delete Photo"
+msgstr "مسح الصورة"
+
+#: 
+msgid "Add a Note"
+msgstr "اضافة ملحوظة"
+
+#: 
+msgid "Since"
+msgstr "منذ"
+
+#: 
+msgid "Update"
+msgstr "تحديث"
+
+#: 
+msgid "Date"
+msgstr "التاريخ"
+
+#: 
+msgid "Schedule"
+msgstr "جدول"
+
+#: 
+msgid "Comment"
+msgstr "تعليق"
+
+#: 
+msgid "Close"
+msgstr "غلق"
+
+#: 
+msgid "Confirm Delete"
+msgstr "تاكيد المسح"
+
+#: 
+msgid "Report Type:"
+msgstr "نوع التقرير"
+
+#: 
+msgid "Next"
+msgstr "التالى"
+
+#: 
+msgid "Payment Date"
+msgstr "تاريخ الدفع"
+
+#: 
+msgid "Cash"
+msgstr "نقداً"
+
+#: 
+msgid "Include:"
+msgstr "يتضمن:"
+
+#: 
+msgid "All Payments"
+msgstr "كل المدفوعات"
+
+#: 
+msgid "All Families"
+msgstr "كل العائلات"
+
+#: 
+msgid "All Data"
+msgstr "كل البيانات"
+
+#: 
+msgid "Summary Data"
+msgstr "ملخص البيانات"
+
+#: 
+msgid "Back"
+msgstr "عودة"
+
+#: 
+msgid "Create Report"
+msgstr "انشاء تقرير"
+
+#: 
+msgid "Date Start"
+msgstr "من تاريخ"
+
+#: 
+msgid "Apply Filters"
+msgstr "تطبيق الفلتر"
+
+#: 
+msgid "Date End"
+msgstr "الي تاريخ"
+
+#: 
+msgid "Clear Filters"
+msgstr "مسح الفلتر"
+
+#: 
+msgid "Previous Page"
+msgstr "السابقة"
+
+#: 
+msgid "Next Page"
+msgstr "التالبة"
+
+#: 
+msgid "Display:"
+msgstr "عرض:"
+
+#: 
+msgid "Number"
+msgstr "رقم"
+
+#: 
+msgid "Minimum Price"
+msgstr "اقل سعر"
+
+#: 
+msgid "Select Family:"
+msgstr "اختر أسرة:"
+
+#: 
+msgid "Maximum distance"
+msgstr "المسافة القصوي"
+
+#: 
+msgid "Show Neighbors"
+msgstr "عرض الجيران"
+
+#: 
+msgid "Distance"
+msgstr "المسافة"
+
+#: 
+msgid "Type of Group"
+msgstr "نوع المجموعة"
+
+#: 
+msgid "Select a group"
+msgstr "اختيار مجموعه"
+
+#: 
+msgid "Enabled"
+msgstr "متاح"
+
+#: 
+msgid "Disabled"
+msgstr "غير متاح"
+
+#: 
+msgid "Editing"
+msgstr "تعديل"
+
+#: 
+msgid "Other Email"
+msgstr "ايميل اخر"
+
+#: 
+msgid "Delete this Group"
+msgstr "مسح المجموعه"
+
+#: 
+msgid "Confirm Delete Group"
+msgstr "تاكيد مسح المجموعه"
+
+#: 
+msgid "Total Members"
+msgstr "مجموع الاعضاء"
+
+#: 
+msgid "Group Members:"
+msgstr "اعضاء المجموعه"
+
+#: 
+msgid "Attendees"
+msgstr "الحضور"
+
+#: 
+msgid "Password"
+msgstr "كلمة السر"
+
+#: 
+msgid "Login"
+msgstr "دخول"
+
+#: 
+msgid "Confirm"
+msgstr "تاكيد"
+
+#: 
+msgid "Sort by"
+msgstr "ترتيب ب"
+
+#: 
+msgid "Zero"
+msgstr "صفر"
+
+#: 
+msgid "Families"
+msgstr "العائلات"
+
+#: 
+msgid "See all Families"
+msgstr "اظهار كل العائلات"
+
+#: 
+msgid "People"
+msgstr "الاشخاص"
+
+#: 
+msgid "See All People"
+msgstr "اظهار كل الاشخاص"
+
+#: 
+msgid "Count"
+msgstr "عد"
+
+#: 
+msgid "Men"
+msgstr "الرجال"
+
+#: 
+msgid "Women"
+msgstr "السيدات"
+
+#: 
+msgid "Boys"
+msgstr "الاولاد"
+
+#: 
+msgid "Girls"
+msgstr "البنات"
+
+#: 
+msgid "Sunday School Classes"
+msgstr "فصول التربية الكنسية"
+
+#: 
+msgid "Family Name"
+msgstr "اسم العائلة"
+
+#: 
+msgid "Updated Families"
+msgstr "تحديث العائلات"
+
+#: 
+msgid "Updated"
+msgstr "تم التحديث"
+
+#: 
+msgid "Yes, delete this record"
+msgstr "نعم , امسح هذا السجل"
+
+#: 
+msgid "Private"
+msgstr "خاص"
+
+#: 
+msgid "Person"
+msgstr "شخص"
+
+#: 
+msgid "Group"
+msgstr "مجموعة"
+
+#: 
+msgid "Option"
+msgstr "اختيار"
+
+#: 
+msgid "Exit"
+msgstr "اغلاق"
+
+#: 
+msgid "Add New"
+msgstr "اضافة جديد"
+
+#: 
+msgid "Select all"
+msgstr "تظليل الكل"
+
+#: 
+msgid "Add Buyer"
+msgstr "اضافة بائع"
+
+#: 
+msgid "Select"
+msgstr "اختيار"
+
+#: 
+msgid "Work Email is Not Valid"
+msgstr "ايميل العمل غير صحيح"
+
+#: 
+msgid "Red text"
+msgstr "نص احمر"
+
+#: 
+msgid "Hide Age"
+msgstr "اخفاء العمر"
+
+#: 
+msgid "Create a new family (using last name)"
+msgstr "انشاء عائلة جديدة باستخدام اسم العائلة"
+
+#: 
+msgid "Delete this Record"
+msgstr "امسح هذا السجل"
+
+#: 
+msgid "List Members"
+msgstr "قائمة الاعضاء"
+
+#: 
+msgid "Deposit closed"
+msgstr "الايداع مغلق"
+
+#: 
+msgid "Find family->"
+msgstr "بحت عن عائلة"
+
+#: 
+msgid "Payment Schedule"
+msgstr "جدول السداد"
+
+#: 
+msgid "Select Schedule"
+msgstr "اختيار جدول"
+
+#: 
+msgid "Weekly"
+msgstr "اسبوعى"
+
+#: 
+msgid "Monthly"
+msgstr "شهرى"
+
+#: 
+msgid "Quarterly"
+msgstr "رع سنوى"
+
+#: 
+msgid "Once"
+msgstr "مرة واحده"
+
+#: 
+msgid "Other"
+msgstr "اخرى"
+
+#: 
+msgid "Payment by"
+msgstr "الدفع بواسطة"
+
+#: 
+msgid "Age"
+msgstr "العمر"
+
+#: 
+msgid "Notes:"
+msgstr "ملاحظات"
+
+#: 
+msgid "by"
+msgstr "بواسطة"
+
+#: 
+msgid "A"
+msgstr "أ"
+
+#: 
+msgid "Add a New"
+msgstr "اضافة جديد"
+
+#: 
+msgid "Warning"
+msgstr "تحذير"
+
+#: 
+msgid "Class"
+msgstr "فصل"
+
+#: 
+msgid "Properties"
+msgstr "خواص"
+
+#: 
+msgid "Unassigning"
+msgstr "غير معين"
+
+#: 
+msgid "Query Listing"
+msgstr "قائمة الاستعلام"
+
+#: 
+msgid "Return to Query Menu"
+msgstr "العودة الى قائمة الاستعلام"
+
+#: 
+msgid "This value must be numeric."
+msgstr "القيمة يجب ان تكون رقمية"
+
+#: 
+msgid "Software Registration"
+msgstr "تسجيل البرمجيات"
+
+#: 
+msgid "Send"
+msgstr "ارسال"
+
+#: 
+msgid "Restore Database"
+msgstr "استعادة قاعدة البيانات"
+
+#: 
+msgid "Family Delete Confirmation"
+msgstr "تاكيد مسح العائلة"
+
+#: 
+msgid "Current Value"
+msgstr "القيمة الحالية"
+
+#: 
+msgid "User"
+msgstr "مستخدم"
+
+#: 
+msgid "Login Name"
+msgstr "اسم المستخدم"
+
+#: 
+msgid "Add Records"
+msgstr "اضافة سجل"
+
+#: 
+msgid "Edit Records"
+msgstr "تعديل السجل"
+
+#: 
+msgid "Delete Records"
+msgstr "مسح سجلات"
+
+#: 
+msgid "Admin"
+msgstr "ادمن"
+
+#: 
+msgid "New User"
+msgstr "مستخدم جديد"
+
+#: 
+msgid "Invalid password"
+msgstr "كلمة السر غير صحيحة"
+
+#: 
+msgid "Your new password must be at least"
+msgstr "يجب ان لاتقل كلمة السر الجديدة عن"
+
+#: 
+msgid "characters"
+msgstr "حروف"
+
+#: 
+msgid "Old Password"
+msgstr "كلمة السر القديمة"
+
+#: 
+msgid "New Password"
+msgstr "كلمة السر الجديدة"
+
+#: 
+msgid "Confirm New Password"
+msgstr "تاكيد كلمة السر الجديدة"
+
+#: 
+msgid "Yes, delete this Volunteer Opportunity"
+msgstr "نعم ، احذف فرصة التطوع هذه"
+
+#: 
+msgid "Why did you come to the church?"
+msgstr "لماذا تاتى الى الكنيسة؟"
+
+#: 
+msgid "Do you have any suggestions for us?"
+msgstr "هل لديك اى اقتراحات لنا؟"
+
+#: 
+msgid "Version"
+msgstr "اصدار"
+
+#: 
+msgid "Copyright"
+msgstr "حقوق الطبع"
+
+#: 
+msgid "All rights reserved"
+msgstr "كل الحقوق محفوظة"
+
+#: 
+msgid "Season"
+msgstr "فصل"
+
+#: 
+msgid "Phone Number"
+msgstr "رقم التليفون"
+
+#: 
+msgid "Select Fiscal Year"
+msgstr "اختر السنة المالية"
+
+#: 
+msgid "pm"
+msgstr "مساءا"
+
+#: 
+msgid "am"
+msgstr "صباحا"
+
+#: 
+msgid "Winter"
+msgstr "الشتاء"
+
+#: 
+msgid "Spring"
+msgstr "الربيع"
+
+#: 
+msgid "Summer"
+msgstr "الصيف"
+
+#: 
+msgid "Fall"
+msgstr "الخريف"
+
+#: 
+msgid "Not a valid date"
+msgstr "تاريخ غير صحيح"
+
+#: 
+msgid "Invalid Year"
+msgstr "السنة غير صحيحة"
+
+#: 
+msgid " Bold Italic"
+msgstr "ثقيل/مائل"
+
+#: 
+msgid " Italic"
+msgstr "مائل"
+
+#: 
+msgid " Bold"
+msgstr "ثقيل"
+
+#: 
+msgid "Please do not include any confidential information."
+msgstr "يرجى عدم تضمين أي معلومات سرية."
+
+#: 
+msgid "Change Password"
+msgstr "تغيير كلمة السر"
+
+#: 
+msgid "Home"
+msgstr "الرئيسية"
+
+#: 
+msgid "Font"
+msgstr "الخط"
+
+#: 
+msgid "All Individuals"
+msgstr "كل الافراد"
+
+#: 
+msgid "M/F"
+msgstr "مذكر/مؤنث"
+
+#: 
+msgid "Member Name"
+msgstr "اسم العضو"
+
+#: 
+msgid "Cell Phone"
+msgstr "رقم الموبايل"
+
+#: 
+msgid "Work"
+msgstr "العمل"
+
+#: 
+msgid "Purchased Items:"
+msgstr "قائمة المشتريات"
+
+#: 
+msgid "Total purchases: $"
+msgstr "اجمالى المشتريات"
+
+#: 
+msgid "Totals"
+msgstr "الاجمالى"
+
+#: 
+msgid "Page"
+msgstr "صفحة"
+
+#: 
+msgid "Wedding"
+msgstr "زواج"
+
+#: 
+msgid "and"
+msgstr "و"
+
+#: 
+msgid "Gift Amount:"
+msgstr "قيمة الهدية"
+
+#: 
+msgid "Sunday School"
+msgstr "التربية الكنسية"
+
+#: 
+msgid "Teachers"
+msgstr "الخدام"
+
+#: 
+msgid "Send Message"
+msgstr "ارسال رساله"
+
+#: 
+msgid "Birthdays by Month"
+msgstr "تاريخ الميلاد بالشهر"
+
+#: 
+msgid "Mobile"
+msgstr "موبايل"
+
+#: 
+msgid "Home Address"
+msgstr "عنوان المنزل"
+
+#: 
+msgid "Dad Email"
+msgstr "ايميل الاب"
+
+#: 
+msgid "Mom Name"
+msgstr "اسم الام"
+
+#: 
+msgid "Mom Mobile"
+msgstr "موبايل الام"
+
+#: 
+msgid "Mom Email"
+msgstr "ايميل الام"
+
+#: 
+msgid "Parents Emails"
+msgstr "ايميل الوالدين"
+
+#: 
+msgid "Teachers Emails"
+msgstr "ايميل الخدام"
+
+#: 
+msgid "Attachment"
+msgstr "مرفقات"
+
+#: 
+msgid "Classes"
+msgstr "الفصول"
+
+#: 
+msgid "Sunday School Reports"
+msgstr "تقارير التربية الكنسية"
+
+#: 
+msgid "Students not in a Sunday School Class"
+msgstr "المخدومين ليسوا مسجلين فى فصول التربية الكنسية"
+
+#: 
+msgid "Report Details"
+msgstr "تفاصيل التقارير"
+
+#: 
+msgid "First Sunday"
+msgstr "الاحد الاول"
+
+#: 
+msgid "Last Sunday"
+msgstr "الاحد الاخير"
+
+#: 
+msgid "View All Persons"
+msgstr "عرض جميع الاشخاص"
+
+#: 
+msgid "Add New Family"
+msgstr "اضافة عائلة جديدة"
+
+#: 
+msgid "Events"
+msgstr "مناسبة"
+
+#: 
+msgid "Import Data"
+msgstr "ادخال بيانات"
+
+#: 
+msgid "Clear Data"
+msgstr "ازالة البيانات"
+
+#: 
+msgid "Deposit(s)"
+msgstr "الايداعات"
+
+#: 
+msgid "Deposit Type"
+msgstr "نوع الايداع"
+
+#: 
+msgid "Deposit Date"
+msgstr "تاريخ الايداع"
+
+#: 
+msgid "Details:"
+msgstr "التفاصيل:"
+
+#: 
+msgid "File Missing"
+msgstr "الملف مفقود"
+
+#: 
 msgid "Welcome to"
 msgstr "مرحبا بك في"
+
+#: 
+msgid "Default Value"
+msgstr "القيمة الافتراضية"
+
+#: 
+msgid "Generate Database Backup"
+msgstr "انشاء نسخة احتياطية من قاعدة البيانات"
+
+#: 
+msgid "Add"
+msgstr "اضافة"
+
+#: 
+msgid "Enter Name"
+msgstr "ادخل الاسم"
+
+#: 
+msgid "Deactivate"
+msgstr "غير نشط"
+
+#: 
+msgid "Activate"
+msgstr "نشط"
+
+#: 
+msgid "Details"
+msgstr "التفاصيل"
+
+#: 
+msgid "Remove all"
+msgstr "ازالة الكل"
+
+#: 
+msgid "Add all"
+msgstr "اضافة الكل"
+
+#: 
+msgid "Spouse"
+msgstr "الزوج/الزوجة"
+
+#: 
+msgid "Child"
+msgstr "ابن/ابنه"
+
+#: 
+msgid "Arabic - Egypt"
+msgstr "عربى- مصر"
+
+#: 
+msgid "Search Family"
+msgstr "بحث بالعائلة"
+
+#: 
+msgid "Search Groups"
+msgstr "بحث بالمجموعات"
+
+#: 
+msgid "Quick Search"
+msgstr "بحث سريع"
+
+#: 
+msgid "Search Addresses"
+msgstr "بحث بالعنوان"
+
+#: 
+msgid "All Members"
+msgstr "كل الاعضاء"
+
+#: 
+msgid "Facebook"
+msgstr "فيس بوك"
+
+#: 
+msgid "Twitter"
+msgstr "تويتر"
+
+#: 
+msgid "LinkedIn"
+msgstr "لينك دلن"
+
+#: 
+msgid "Unknown Type"
+msgstr "نوع غير معروف"
+
+#: 
+msgid "Church Services"
+msgstr "خدمات الكنيسة"
+
+#: 
+msgid "Help & Support"
+msgstr "المساعدة &والدعم الفنى"
+
+#: 
+msgid "Lock"
+msgstr "مغلق"
+
+#: 
+msgid "Not Found"
+msgstr "غير موجود"
+
+#: 
+msgid "User must be an Admin"
+msgstr "المستخدم يجب ان يكون ادمن"
+
+#: 
+msgid "not found"
+msgstr "غير موجود"
+
+#: 
+msgid "Deleted from group"
+msgstr "تم مسحة من المجموعه"
+
+#: 
+msgid "Added to group"
+msgstr "تم اضافتة الى المجموعه"
+
+#: 
+msgid "Public Calendar"
+msgstr "اجندة عامة"
+
+#: 
+msgid "Private Calendar"
+msgstr "اجندة خاصة"
+
+#: 
+msgid "Username"
+msgstr "اسم المستخدم"
+
+#: 
+msgid "from"
+msgstr "من"
+
+#: 
+msgid "to"
+msgstr "الى"
+
+#: 
+msgid "Background Color"
+msgstr "لون الخلفية"
+
+#: 
+msgid "Links"
+msgstr "الروابط"
+
+#: 
+msgid "Follow us on Twitter"
+msgstr "تابعونا على تويتر"
+
+#: 
+msgid "Updated Persons"
+msgstr "تحديث الاشخاص"
+
+#: 
+msgid "Custom Menus"
+msgstr "قوائم خاصة"
+
+#: 
+msgid "Missing"
+msgstr "مفقود"
+
+#: 
+msgid "Can't delete yourself"
+msgstr "لا تستطيع مسح نفسك"
+
+#: 
+msgid "Add Menu"
+msgstr "اضافة قائمة"
+
+#: 
+msgid "Menu Name"
+msgstr "اسم القائمة"
+
+#: 
+msgid "Link Address"
+msgstr "اربط العنوان"
+
+#: 
+msgid "Menus"
+msgstr "القوائم"
+
+#: 
+msgid "Database"
+msgstr "قاعدة البيانات"
+
+#: 
+msgid "Database Version"
+msgstr "اصدار قاعدة البيانات"
+
+#: 
+msgid "LastName FirstName"
+msgstr "الاسم الاخير، الاسم الاول"
+
+#: 
+msgid "Holidays"
+msgstr "الاجازات"
+
+#: 
+msgid "Person Name"
+msgstr "اسم الشخص"
+
+#: 
+msgid "Families Without Emails"
+msgstr "عائلات بدون ايميل"
+
+#: 
+msgid "Record"
+msgstr "سجل"
+
+#: 
+msgid "Records"
+msgstr "سجلات"
+
+#: 
+msgid "LastName, FirstName MiddleName:8"
+msgstr "اسم العائلة،الاسم الاول،الاسم الاوسط"
+
+#: 
+msgid "Add Person"
+msgstr "اضافة فرد"
+
+#: 
+msgid "Portuguese - Portugal"
+msgstr "برتغالى - برتغال"
+
+#: 
+msgid "Holiday"
+msgstr "اجازة"
 
