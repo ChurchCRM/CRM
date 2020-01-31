@@ -9406,3 +9406,75 @@ msgstr "註冊另一個家庭！"
 msgid "Done, show me the homepage!"
 msgstr "完成，轉至主頁！"
 
+#: 
+msgid "User authenticated via API Key: "
+msgstr "用戶通過API密鑰進行身份驗證: "
+
+#: 
+msgid "Unsuccessful API Key authentication attempt"
+msgstr "API密鑰身份驗證嘗試失敗"
+
+#: 
+msgid "Unpinned Events"
+msgstr "未釘選事件"
+
+#: 
+msgid "LastName, FirstName MiddleName"
+msgstr "姓, 名 中間名"
+
+#: 
+msgid "Manage 2 Factor Authentication"
+msgstr "管理雙重認證"
+
+#: 
+msgid "Two Factor Status"
+msgstr "雙重認證狀態"
+
+#: 
+msgid "Please confirm disabling 2 Factor Auth for this user"
+msgstr "請確認為此用戶禁用雙重認證"
+
+#: 
+msgid "Please enter 2FA code"
+msgstr "請輸入雙重認證代碼"
+
+#: 
+msgid "2FA Code"
+msgstr "雙重認證代碼"
+
+#: 
+msgid "2 Factor Authentication enrollment"
+msgstr "雙重認證代碼註冊"
+
+#: 
+msgid "Unsupported Two Factor Authentication Configuration"
+msgstr "不支持的雙重認證配置"
+
+#: 
+msgid "Unable To Begin Two Factor Authentication Enrollment"
+msgstr "無法開始雙重認證註冊"
+
+#: 
+msgid "Two factor authentication requires ChurchCRM administrators to configure a few parameters"
+msgstr "雙重認證要求ChurchCRM管理員配置一些參數"
+
+#: 
+msgid "System configuration "
+msgstr "系統配置 "
+
+#: 
+msgid "Must be set to 'true'"
+msgstr "必須設置為'true'"
+
+#: 
+msgid "Include/Config.php must define an encryption key for storing 2FA secret keys in the database by setting a value for"
+msgstr "Include / Config.php必須通過為以下項設置值來定義用於在數據庫中存儲雙重認證秘密密鑰的加密密鑰"
+
+#: 
+msgid "Credit Card People"
+msgstr "信用卡人"
+
+#: 
+msgid "People who are configured to pay by credit card."
+msgstr "配置為通過信用卡付款的人。"
+
