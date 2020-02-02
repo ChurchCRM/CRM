@@ -105,7 +105,7 @@ $MenuFirst = 1;
                 <td valign="middle" align="left" >
                   <a href="<?= SystemURLs::getRootPath()?>/PersonView.php?PersonID=<?= AuthenticationManager::GetCurrentUser()->getPersonId() ?>" class="item_link">
                       <p ><i class="fa fa-home"></i> <?= gettext("Profile") ?></p></a>
-                  <a href="<?= SystemURLs::getRootPath() ?>/UserPasswordChange.php" class="item_link">
+                  <a href="<?= SystemURLs::getRootPath() ?>/v2/user/current/changepassword" class="item_link" id="change-password">
                       <p ><i class="fa fa-key"></i> <?= gettext('Change Password') ?></p></a>
                   <a href="<?= SystemURLs::getRootPath() ?>/SettingsIndividual.php" class="item_link">
                       <p ><i class="fa fa-gear"></i> <?= gettext('Change Settings') ?></p></a>

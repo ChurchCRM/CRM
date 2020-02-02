@@ -7,5 +7,6 @@ namespace ChurchCRM\Authentication\AuthenticationProviders {
         public function ValidateUserSessionIsActive(bool $updateLastOperationTimestamp);
         public function GetCurrentUser();
         public function EndSession();
+        public function GetPasswordChangeURL();
     }
 }

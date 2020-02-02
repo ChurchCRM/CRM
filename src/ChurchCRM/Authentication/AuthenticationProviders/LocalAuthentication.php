@@ -29,6 +29,12 @@ class LocalAuthentication implements IAuthenticationProvider
     private $bPendingTwoFactorAuth;
     private $tLastOperationTimestamp;
 
+    public function GetPasswordChangeURL(){
+      // this shouln't really be called, but it's necessarty to implement the IAuthenticationProvider interface
+      return;
+    }
+
+
     public static function GetIsTwoFactorAuthSupported() {
       return SystemConfig::getBooleanValue("bEnable2FA") && KeyManager::GetAreAllSecretsDefined();
     }
@@ -228,7 +234,7 @@ class LocalAuthentication implements IAuthenticationProvider
       if ($this->currentUser->getNeedPasswordChange() && !$this->bNoPasswordRedirect ) {
         LoggerUtils::getAuthLogger()->addDebug("User needs password change; redirecting to password change");
         $authenticationResult->isAuthenticated = false;
-        $authenticationResult->nextStepURL = 'UserPasswordChange.php?PersonID=' .$this->currentUser->getId();
+        $authenticationResult->nextStepURL = SystemURLs::getRootPath() . '/v2/user/current/changepassword';
       }
 
       
