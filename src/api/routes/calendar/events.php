@@ -109,7 +109,6 @@ function getEventAudience($request, Response $response, $args)
 function newEvent($request, $response, $args)
 {
     $input = (object)$request->getParsedBody();
-    $eventTypeName = "";
 
     //fetch all related event objects before committing this event.
     $type = EventTypeQuery::Create()
