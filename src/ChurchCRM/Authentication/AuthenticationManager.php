@@ -11,6 +11,7 @@ namespace ChurchCRM\Authentication {
   use ChurchCRM\Authentication\Requests\AuthenticationRequest;
   use ChurchCRM\Authentication\AuthenticationProviders\LocalAuthentication;
   use ChurchCRM\Authentication\AuthenticationProviders\APITokenAuthentication;
+    use ChurchCRM\User;
 
 class AuthenticationManager
   {
@@ -31,7 +32,7 @@ class AuthenticationManager
       $_SESSION['AuthenticationProvider'] = $AuthenticationProvider;
     }
 
-    public static function GetCurrentUser() {
+    public static function GetCurrentUser() : User {
       try {
         return self::GetAuthenticationProvider()->GetCurrentUser();
       }
