@@ -22,7 +22,6 @@ namespace ChurchCRM\Authentication\AuthenticationProviders {
 
 class LocalAuthentication implements IAuthenticationProvider
 {
-    private $bNoPasswordRedirect;
     /*** 
      * @var ChurchCRM\User
      */
@@ -89,7 +88,6 @@ class LocalAuthentication implements IAuthenticationProvider
     }
 
     public function __construct() {
-      $this->bNoPasswordRedirect = false;
     }
 
     public function GetCurrentUser()
@@ -230,10 +228,6 @@ class LocalAuthentication implements IAuthenticationProvider
         }
     }
 
-    public function DisablePasswordChangeRedirect() {
-      $this->bNoPasswordRedirect = true;
-    }
-
     public function ValidateUserSessionIsActive($updateLastOperationTimestamp) : AuthenticationResult
     {
 
@@ -267,8 +261,9 @@ class LocalAuthentication implements IAuthenticationProvider
           $this->tLastOperationTimestamp = time();
         }
       }
+
       // Next, if this user needs to change password, send to that page
-      if ($this->currentUser->getNeedPasswordChange() && !$this->bNoPasswordRedirect ) {
+      if ($this->currentUser->getNeedPasswordChange() && $_SERVER["REQUEST_URI"] != SystemURLs::getRootPath().'/v2/user/current/changepassword' ) {
         LoggerUtils::getAuthLogger()->addDebug("User needs password change; redirecting to password change");
         $authenticationResult->isAuthenticated = false;
         $authenticationResult->nextStepURL = SystemURLs::getRootPath() . '/v2/user/current/changepassword';
