@@ -5,6 +5,7 @@ namespace ChurchCRM\Authentication\AuthenticationProviders {
   use ChurchCRM\Authentication\AuthenticationManager;
   use ChurchCRM\dto\SystemConfig;
   use ChurchCRM\Authentication\AuthenticationResult;
+  use ChurchCRM\Authentication\Exceptions\PasswordChangeException;
   use ChurchCRM\Authentication\Requests\AuthenticationRequest;
   use ChurchCRM\Authentication\Requests\LocalTwoFactorTokenRequest;
   use ChurchCRM\Authentication\Requests\LocalUserAuthenticationRequest;
@@ -33,7 +34,43 @@ class LocalAuthentication implements IAuthenticationProvider
       // this shouln't really be called, but it's necessarty to implement the IAuthenticationProvider interface
       return;
     }
+    public function ChangeUserPassword($sOldPassword,$sNewPassword) {
 
+      if (! $this->currentUser->isPasswordValid($sOldPassword)) {
+        throw new PasswordChangeException("Old",gettext('Incorrect password supplied for current user'));
+      }
+
+      if (! $this->GetIsPasswordPermissible($sNewPassword)) {
+        throw new PasswordChangeException("New",gettext('Your password choice is too obvious. Please choose something else.'));
+      }
+      
+      if (strlen($sNewPassword) < SystemConfig::getValue('iMinPasswordLength')) {
+      throw new PasswordChangeException("New",gettext('Your new password must be at least').' '.SystemConfig::getValue('iMinPasswordLength').' '.gettext('characters'));
+      }
+
+      if ($sNewPassword == $sOldPassword) {
+        throw new PasswordChangeException("New",gettext('Your new password must not match your old one.'));
+      }
+      
+      if (levenshtein(strtolower($sNewPassword), strtolower($sOldPassword)) < SystemConfig::getValue('iMinPasswordChange')) {
+        throw new PasswordChangeException("New",gettext('Your new password is too similar to your old one.'));
+      }
+
+      $this->currentUser->updatePassword($sNewPassword);
+      $this->currentUser->setNeedPasswordChange(false);
+      $this->currentUser->save();
+      $this->currentUser->createTimeLineNote("password-changed");
+      return;
+      
+    }
+
+    private function GetIsPasswordPermissible($newPassword) {
+      $aBadPasswords = explode(',', strtolower(SystemConfig::getValue('aDisallowedPasswords')));
+      $aBadPasswords[] = strtolower($this->currentUser->getPerson()->getFirstName());
+      $aBadPasswords[] = strtolower($this->currentUser->getPerson()->getMiddleName());
+      $aBadPasswords[] = strtolower($this->currentUser->getPerson()->getLastName());
+      return ! in_array(strtolower($newPassword), $aBadPasswords);
+    }
 
     public static function GetIsTwoFactorAuthSupported() {
       return SystemConfig::getBooleanValue("bEnable2FA") && KeyManager::GetAreAllSecretsDefined();
