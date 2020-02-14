@@ -1,5 +1,6 @@
 Feature: User Self-Service Password Change
-    Scenario: user-initiated self password change to new password
+
+    Scenario: User initiated password change failes because new password is insufficient
         Given I am authenticated as "admin" using "changeme"
         And I click ".user-menu"
         And I click "#change-password"
@@ -29,6 +30,10 @@ Feature: User Self-Service Password Change
         And I fill in "NewPassword2" with "changeyou"
         And I press "Save"
         Then I should see "Your new password is too similar to your old one"
+
+     Scenario: User initiated password change with sufficient new password
+        Given I am authenticated as "admin" using "changeme"
+        And I am on "v2/user/current/changepassword"
         And I fill in "OldPassword" with "changeme" 
         And I fill in "NewPassword1" with "SomeThingsAreBetterLeftUnChangedJustKidding"
         And I fill in "NewPassword2" with "SomeThingsAreBetterLeftUnChangedJustKidding"
@@ -45,11 +50,7 @@ Feature: User Self-Service Password Change
         And I fill in "NewPassword2" with "changeme"
         And I press "Save"
         Then I should see "Password Change Successful"
-
-
-#    Scenario: user-initiated self password change to previously used password
-
-#    Scenario: user-initiated self password change to new weak password    
+ 
 
 #Feature: User Password Expired 
 #    Scenario: Force Change at Login
