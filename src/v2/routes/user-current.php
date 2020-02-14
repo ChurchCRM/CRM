@@ -51,7 +51,7 @@ function changepassword(Request $request, Response $response, array $args)
             $loginRequestBody = (object)$request->getParsedBody();
             try {
                 $curUser->userChangePassword($loginRequestBody->OldPassword, $loginRequestBody->NewPassword1);
-                return $renderer->render($response,"comon/success-changepassword.php",$pageArgs);
+                return $renderer->render($response,"common/success-changepassword.php",$pageArgs);
             }
             catch (PasswordChangeException $pwChangeExc) {
                 $pageArgs['s'.$pwChangeExc->AffectedPassword.'PasswordError'] =  $pwChangeExc->getMessage();
