@@ -96,7 +96,7 @@ require 'Include/Header.php';
     } ?>
                     </td>
                     <td>
-                        <a href="UserPasswordChange.php?PersonID=<?= $user->getId() ?>&FromUserList=True"><i
+                        <a href="v2/user/<?= $user->getId() ?>/changePassword"><i
                                     class="fa fa-wrench" aria-hidden="true"></i></a>&nbsp;&nbsp;
                         <?php if ($user->getId() != AuthenticationManager::GetCurrentUser()->getId() && !empty($user->getEmail())) {
         ?>

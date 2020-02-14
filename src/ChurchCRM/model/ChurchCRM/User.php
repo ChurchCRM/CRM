@@ -369,6 +369,16 @@ class User extends BaseUser
         }
         return false;
     }
+
+    public function adminSetUserPassword($newPassword)
+    {
+        $this->updatePassword($newPassword);
+        $this->setNeedPasswordChange(false);
+        $this->save();
+        $this->createTimeLineNote("password-changed-admin");
+        return;
+    }
+
     public function userChangePassword($oldPassword, $newPassword)
     {
         if (!$this->isPasswordValid($oldPassword)) {

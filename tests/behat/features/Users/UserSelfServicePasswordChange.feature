@@ -56,6 +56,3 @@ Feature: User Self-Service Password Change
 #    Scenario: Force Change at Login
 
 #    Scenario: Force Change During Active Session
-
-#Feature: Administrator Change Other User Password
-#    Scenario: Administratively set other user's password
