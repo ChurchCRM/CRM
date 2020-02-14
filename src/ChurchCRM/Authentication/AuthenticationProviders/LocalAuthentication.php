@@ -31,7 +31,7 @@ class LocalAuthentication implements IAuthenticationProvider
 
     public function GetPasswordChangeURL(){
       // this shouln't really be called, but it's necessarty to implement the IAuthenticationProvider interface
-      return;
+      return SystemURLs::getRootPath().'/v2/user/current/changepassword';
     }
 
     public static function GetIsTwoFactorAuthSupported() {
@@ -226,10 +226,12 @@ class LocalAuthentication implements IAuthenticationProvider
       }
 
       // Next, if this user needs to change password, send to that page
-      if ($this->currentUser->getNeedPasswordChange() && $_SERVER["REQUEST_URI"] != SystemURLs::getRootPath().'/v2/user/current/changepassword' ) {
+      // but don't redirect them if they're already on the passsword change page
+      $IsUserOnPasswordChangePageNow = $_SERVER["REQUEST_URI"] == $this->GetPasswordChangeURL();
+      if ($this->currentUser->getNeedPasswordChange() && ! $IsUserOnPasswordChangePageNow ) {
         LoggerUtils::getAuthLogger()->addDebug("User needs password change; redirecting to password change");
         $authenticationResult->isAuthenticated = false;
-        $authenticationResult->nextStepURL = SystemURLs::getRootPath() . '/v2/user/current/changepassword';
+        $authenticationResult->nextStepURL = $this->GetPasswordChangeURL();
       }
 
       
