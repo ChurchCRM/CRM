@@ -50,7 +50,7 @@ function changepassword(Request $request, Response $response, array $args)
         if ($request->getMethod() == "POST") {
             $loginRequestBody = (object)$request->getParsedBody();
             try {
-                $authenticationProvider->ChangeUserPassword($loginRequestBody->OldPassword, $loginRequestBody->NewPassword1);
+                $curUser->userChangePassword($loginRequestBody->OldPassword, $loginRequestBody->NewPassword1);
                 return $renderer->render($response,"success-changepassword.php",$pageArgs);
             }
             catch (PasswordChangeException $pwChangeExc) {
