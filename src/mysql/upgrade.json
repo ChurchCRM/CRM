@@ -243,8 +243,10 @@
         "dbVersion": "4.0.0"
     },
     "current": {
-        "versions": [],
+        "versions": [
+            "4.0.0"
+        ],
         "scripts": [],
-        "dbVersion": "4.0.0"
+        "dbVersion": "4.0.1"
     }
 }
