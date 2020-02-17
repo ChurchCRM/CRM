@@ -52,6 +52,8 @@ Feature: User Self-Service Password Change
         Then I should see "Password Change Successful"
  
 
+# TODO: Implement test clauses to manipulate database
+# TODO: Implement this test after fixing #5158
 #Feature: User Password Expired 
 #    Scenario: Force Change at Login
 
