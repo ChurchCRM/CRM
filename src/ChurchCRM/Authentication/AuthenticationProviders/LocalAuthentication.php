@@ -5,6 +5,7 @@ namespace ChurchCRM\Authentication\AuthenticationProviders {
   use ChurchCRM\Authentication\AuthenticationManager;
   use ChurchCRM\dto\SystemConfig;
   use ChurchCRM\Authentication\AuthenticationResult;
+
   use ChurchCRM\Authentication\Requests\AuthenticationRequest;
   use ChurchCRM\Authentication\Requests\LocalTwoFactorTokenRequest;
   use ChurchCRM\Authentication\Requests\LocalUserAuthenticationRequest;
@@ -21,13 +22,17 @@ namespace ChurchCRM\Authentication\AuthenticationProviders {
 
 class LocalAuthentication implements IAuthenticationProvider
 {
-    private $bNoPasswordRedirect;
     /*** 
      * @var ChurchCRM\User
      */
     private $currentUser;
     private $bPendingTwoFactorAuth;
     private $tLastOperationTimestamp;
+
+    public function GetPasswordChangeURL(){
+      // this shouln't really be called, but it's necessarty to implement the IAuthenticationProvider interface
+      return SystemURLs::getRootPath().'/v2/user/current/changepassword';
+    }
 
     public static function GetIsTwoFactorAuthSupported() {
       return SystemConfig::getBooleanValue("bEnable2FA") && KeyManager::GetAreAllSecretsDefined();
@@ -46,7 +51,6 @@ class LocalAuthentication implements IAuthenticationProvider
     }
 
     public function __construct() {
-      $this->bNoPasswordRedirect = false;
     }
 
     public function GetCurrentUser()
@@ -187,10 +191,6 @@ class LocalAuthentication implements IAuthenticationProvider
         }
     }
 
-    public function DisablePasswordChangeRedirect() {
-      $this->bNoPasswordRedirect = true;
-    }
-
     public function ValidateUserSessionIsActive($updateLastOperationTimestamp) : AuthenticationResult
     {
 
@@ -224,11 +224,14 @@ class LocalAuthentication implements IAuthenticationProvider
           $this->tLastOperationTimestamp = time();
         }
       }
+
       // Next, if this user needs to change password, send to that page
-      if ($this->currentUser->getNeedPasswordChange() && !$this->bNoPasswordRedirect ) {
+      // but don't redirect them if they're already on the passsword change page
+      $IsUserOnPasswordChangePageNow = $_SERVER["REQUEST_URI"] == $this->GetPasswordChangeURL();
+      if ($this->currentUser->getNeedPasswordChange() && ! $IsUserOnPasswordChangePageNow ) {
         LoggerUtils::getAuthLogger()->addDebug("User needs password change; redirecting to password change");
         $authenticationResult->isAuthenticated = false;
-        $authenticationResult->nextStepURL = 'UserPasswordChange.php?PersonID=' .$this->currentUser->getId();
+        $authenticationResult->nextStepURL = $this->GetPasswordChangeURL();
       }
 
       

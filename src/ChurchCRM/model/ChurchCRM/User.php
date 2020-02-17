@@ -9,6 +9,7 @@ use ChurchCRM\Utils\MiscUtils;
 use Defuse\Crypto\Crypto;
 use PragmaRX\Google2FA\Google2FA;
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\Authentication\Exceptions\PasswordChangeException;
 
 /**
  * Skeleton subclass for representing a row from the 'user_usr' table.
@@ -368,4 +369,49 @@ class User extends BaseUser
         }
         return false;
     }
+
+    public function adminSetUserPassword($newPassword)
+    {
+        $this->updatePassword($newPassword);
+        $this->setNeedPasswordChange(false);
+        $this->save();
+        $this->createTimeLineNote("password-changed-admin");
+        return;
+    }
+
+    public function userChangePassword($oldPassword, $newPassword)
+    {
+        if (!$this->isPasswordValid($oldPassword)) {
+            throw new PasswordChangeException("Old", gettext('Incorrect password supplied for current user'));
+        }
+
+        if (!$this->GetIsPasswordPermissible($newPassword)) {
+            throw new PasswordChangeException("New", gettext('Your password choice is too obvious. Please choose something else.'));
+        }
+
+        if (strlen($newPassword) < SystemConfig::getValue('iMinPasswordLength')) {
+            throw new PasswordChangeException("New", gettext('Your new password must be at least') . ' ' . SystemConfig::getValue('iMinPasswordLength') . ' ' . gettext('characters'));
+        }
+
+        if ($newPassword == $oldPassword) {
+            throw new PasswordChangeException("New", gettext('Your new password must not match your old one.'));
+        }
+
+        if (levenshtein(strtolower($newPassword), strtolower($oldPassword)) < SystemConfig::getValue('iMinPasswordChange')) {
+            throw new PasswordChangeException("New", gettext('Your new password is too similar to your old one.'));
+        }
+
+        $this->updatePassword($newPassword);
+        $this->setNeedPasswordChange(false);
+        $this->save();
+        $this->createTimeLineNote("password-changed");
+        return;
+    }
+    private function GetIsPasswordPermissible($newPassword) {
+        $aBadPasswords = explode(',', strtolower(SystemConfig::getValue('aDisallowedPasswords')));
+        $aBadPasswords[] = strtolower($this->getPerson()->getFirstName());
+        $aBadPasswords[] = strtolower($this->getPerson()->getMiddleName());
+        $aBadPasswords[] = strtolower($this->getPerson()->getLastName());
+        return ! in_array(strtolower($newPassword), $aBadPasswords);
+      }
 }
