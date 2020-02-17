@@ -1,7 +1,5 @@
 <?php
 
-
-use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 
 //Set the page title
@@ -27,7 +25,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     </div>
                     <div class="form-group">
                         <label for="NewPassword2"><?= gettext('Confirm New Password') ?>:</label>
-                        <input type="password" name="NewPassword2" id="NewPassword2"  class="form-control" value="<?= $sNewPassword2 ?>"><?= $sNewPasswordError ?>
+                        <input type="password" name="NewPassword2" id="NewPassword2"  class="form-control" value="<?= $sNewPassword2 ?>"><span id="NewPasswordError" class="form-field-error"><?= $sNewPasswordError ?></span>
                     </div>
                 </div>
                 <!-- /.box-body -->
@@ -39,5 +37,5 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
         </div>
     </div>
 </div>
-
+<script src="<?= SystemURLs::getRootPath() ?>/skin/js/PasswordChange.js"></script>
 <?php include SystemURLs::getDocumentRoot() . '/Include/Footer.php'; ?>

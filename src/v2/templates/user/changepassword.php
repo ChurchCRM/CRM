@@ -23,7 +23,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <div class="box-body">
                     <div class="form-group">
                         <label for="OldPassword"><?= gettext('Old Password') ?>:</label>
-                        <input type="password" name="OldPassword" id="OldPassword" class="form-control" value="<?= $sOldPassword ?>" autofocus><?= $sOldPasswordError ?>
+                        <input type="password" name="OldPassword" id="OldPassword" class="form-control" value="<?= $sOldPassword ?>" autofocus><span id="oldPasswordError" class="form-field-error"><?= $sOldPasswordError ?></span>
                     </div>
                     <div class="form-group">
                             <label for="NewPassword1"><?= gettext('New Password') ?>:</label>
@@ -31,7 +31,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     </div>
                     <div class="form-group">
                         <label for="NewPassword2"><?= gettext('Confirm New Password') ?>:</label>
-                        <input type="password" name="NewPassword2" id="NewPassword2"  class="form-control" value="<?= $sNewPassword2 ?>"><?= $sNewPasswordError ?>
+                        <input type="password" name="NewPassword2" id="NewPassword2"  class="form-control" value="<?= $sNewPassword2 ?>"><span id="NewPasswordError" class="form-field-error"><?= $sNewPasswordError ?></span>
                     </div>
                 </div>
                 <!-- /.box-body -->
@@ -43,5 +43,5 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
         </div>
     </div>
 </div>
-
+<script src="<?= SystemURLs::getRootPath() ?>/skin/js/PasswordChange.js"></script>
 <?php include SystemURLs::getDocumentRoot() . '/Include/Footer.php'; ?>
