@@ -4825,6 +4825,86 @@ msgid "Start Date: "
 msgstr "Dată start:"
 
 #: 
+msgid "End Date: "
+msgstr "Dată final:"
+
+#: 
+msgid "Members:"
+msgstr "Membri:"
+
+#: 
+msgid "Edit General Settings"
+msgstr "Editează setări generale"
+
+#: 
+msgid "There were "
+msgstr "Au fost"
+
+#: 
+msgid "Inactive"
+msgstr "Inactiv"
+
+#: 
+msgid "Start Time"
+msgstr "Timp start"
+
+#: 
+msgid "Filter by Fund"
+msgstr "Filtrare după fond"
+
+#: 
+msgid "Add New Deposit: "
+msgstr "Adăugă depozit nou"
+
+#: 
+msgid "Estimated value"
+msgstr "Valoare estimată"
+
+#: 
+msgid "Disable Group Specific Properties"
+msgstr "Dezactivează proprietățile specifice grupului"
+
+#: 
+msgid "'Default Option'"
+msgstr "'Implicit'"
+
+#: 
+msgid "Text Group"
+msgstr "Grup text"
+
+#: 
+msgid "Group Properties"
+msgstr "Proprietăți grup"
+
+#: 
+msgid "Assign a New Property:"
+msgstr "Adaugă proprietate nouă"
+
+#: 
+msgid "There was a problem retrieving the requested object"
+msgstr "A apărut o problemă la preluare obiectului solicitat"
+
+#: 
+msgid "All"
+msgstr "Toate"
+
+#: 
+msgid "Family Map"
+msgstr "Hartă familie"
+
+#: 
+msgid "Groups"
+msgstr "Grupuri"
+
+#: 
+msgid "Error: You must enter a name"
+msgstr "Eroare: Trebuie să introduceți un nume"
+
+#: 
+msgid " Since:"
+msgstr "De la :"
+
+#: 
 msgid "Total $"
 msgstr "Total Lei"
 
@@ -5065,6 +5145,86 @@ msgid "Enable Remote Backups to Cloud Services"
 msgstr "Activați copii de rezervă la distanță către un serviciu cloud"
 
 #: 
+msgid "Cloud Service Type (Supported values: WebDAV, Local)"
+msgstr "Tip serviciu cloud (WebDAV, Local, etc.)"
+
+#: 
+msgid "Remote Backup Username"
+msgstr "Utilizator copie rezervă la distanță"
+
+#: 
+msgid "Remote Backup Password"
+msgstr "Parolă copie rezervă la distanță"
+
+#: 
+msgid "Interval in Hours for Automatic Remote Backups"
+msgstr "Interval orar copie de rezervă la distanță"
+
+#: 
+msgid "Last Backup Timestamp"
+msgstr "Data ultimei copii de rezervă"
+
+#: 
+msgid "QuickBooks Deposit Ticket Settings"
+msgstr "Setări pentru bilete de depozit QuickBooks"
+
+#: 
+msgid "Enable Integrity Check"
+msgstr "Activați verificarea de integritate"
+
+#: 
+msgid "Interval in Hours for Integrity Check"
+msgstr "Interval orar verificare de integritate"
+
+#: 
+msgid "Last Integrity Check Timestamp"
+msgstr "Data ultimei verificări de integritate"
+
+#: 
+msgid "List Groups"
+msgstr "Listează grupurile"
+
+#: 
+msgid "List Church Events"
+msgstr "Listează evenimentele Bisericii"
+
+#: 
+msgid "Add Church Event"
+msgstr "Adaugă event al Bisericii"
+
+#: 
+msgid "List Event Types"
+msgstr "Listează tipurile de eveniment"
+
+#: 
+msgid "Check-in and Check-out"
+msgstr "Intrare și ieșire"
+
+#: 
+msgid "View All Deposits"
+msgstr "Vezi toate depozitele"
+
+#: 
+msgid "Deposit Reports"
+msgstr "Rapoarte depozit"
+
+#: 
+msgid "Edit Deposit Slip"
+msgstr "Editați foaia de depozit"
+
+#: 
+msgid "View All Fundraisers"
+msgstr "Vizualizați toți colectorii"
+
+#: 
+msgid "Create New Fundraiser"
+msgstr "Crează colector nou"
+
+#: 
+msgid "Edit Fundraiser"
+msgstr "Editează colector"
+
+#: 
 msgid "View Buyers"
 msgstr "Vizualizare cumpărători"
 
@@ -5287,6 +5447,26 @@ msgstr "A 2-a alegere de oportunitate a voluntarilor"
 #: 
 msgid "Choose customer person field"
 msgstr "Alegeți câmpul persoană client"
+
+#: 
+msgid "Match custom field to this value"
+msgstr "Potriviți câmpul personalizat cu această valoare"
+
+#: 
+msgid "Family Member Count"
+msgstr "Numărul membrilor familiei"
+
+#: 
+msgid "Person by Age"
+msgstr "Persoane pe vârste"
+
+#: 
+msgid "Total By Gender"
+msgstr "Total pe gen"
+
+#: 
+msgid "Person by Role and Gender"
+msgstr "Persoană după rol și gen"
 
 #: 
 msgid "Total of records matching a given gender."
