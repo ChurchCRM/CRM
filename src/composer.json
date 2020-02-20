@@ -1,13 +1,13 @@
 {
     "name": "churchcrm/crm",
-    "version": "4.0.2",
+    "version": "4.0.3",
     "type": "project",
     "keywords": [
         "church",
         "crm"
     ],
     "homepage": "http://www.churchcrm.io",
-    "time": "2020-02-17 11:02:68",
+    "time": "2020-02-20 18:02:02",
     "license": "MIT",
     "authors": [
         {
