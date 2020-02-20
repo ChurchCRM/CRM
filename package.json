@@ -98,6 +98,7 @@
         "tests-install": "cd tests && composer install",
         "test": "php tests/run.php",
         "build-react": "webpack",
-        "restore-demo-db": "php scripts/restore-demo-db.php"
+        "restore-demo-db": "php scripts/restore-db.php demo",
+        "restore-empty-db": "php scripts/restore-db.php"
     }
 }
