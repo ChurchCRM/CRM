@@ -13,8 +13,9 @@ class HttpsTask implements iTask
   public function isAdmin(){
     return true;
   }
-  public function getLink(){
-    return SystemURLs::getSupportURL("ssl");
+  public function getLink()
+  {
+    return SystemURLs::getSupportURL(array_pop(explode('\\', __CLASS__)));
   }
   public function getTitle(){
     return gettext('Configure HTTPS');

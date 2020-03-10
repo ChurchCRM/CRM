@@ -4,6 +4,7 @@ namespace ChurchCRM\Tasks;
 
 use ChurchCRM\DepositQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
+use ChurchCRM\dto\SystemURLs;
 
 class UnsupportedDepositCheck implements iTask
 {
@@ -29,7 +30,7 @@ class UnsupportedDepositCheck implements iTask
 
     public function getLink()
     {
-        return 'https://github.com/ChurchCRM/CRM/wiki/Finances';
+        return SystemURLs::getSupportURL(array_pop(explode('\\', __CLASS__)));
     }
 
     public function getTitle()
