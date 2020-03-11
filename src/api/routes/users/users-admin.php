@@ -11,6 +11,7 @@ use Slim\Http\Request;
 use Slim\Http\Response;
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\Utils\LoggerUtils;
 
 $app->group('/users', function () {
 
@@ -24,7 +25,7 @@ $app->group('/users', function () {
             if ($email->send()) {
                 return $response->withStatus(200);
             } else {
-                $this->Logger->error($email->getError());
+                LoggerUtils::getAppLogger()->error($email->getError());
                 throw new \Exception($email->getError());
             }
         } else {
@@ -50,7 +51,7 @@ $app->group('/users', function () {
             $user->createTimeLineNote("login-reset");
             $email = new UnlockedEmail($user);
             if (!$email->send()) {
-                $this->Logger->warn($email->getError());
+                LoggerUtils::getAppLogger()->warn($email->getError());
             }
             return $response->withStatus(200);
         } else {
@@ -70,7 +71,7 @@ $app->group('/users', function () {
             if (SystemConfig::getBooleanValue("bSendUserDeletedEmail")) {
                 $email = new AccountDeletedEmail($user);
                 if (!$email->send()) {
-                    $this->Logger->warn($email->getError());
+                    LoggerUtils::getAppLogger()->warn($email->getError());
                 }
             }
             return $response->withJson([]);
