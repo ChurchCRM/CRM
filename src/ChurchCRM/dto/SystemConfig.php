@@ -244,6 +244,7 @@ class SystemConfig
         "bEnable2FA" => new ConfigItem(2068,"bEnable2FA", "boolean","1",gettext("Allow users to self-enroll in 2 factor authentication")),
         "bRequire2FA" => new ConfigItem(2069,"bRequire2FA", "boolean","0",gettext("Requires users to self-enroll in 2 factor authentication")),
         "s2FAApplicationName" => new ConfigItem(2070,"s2FAApplicationName", "text",gettext("ChurchCRM"),gettext("Specify the application name to be displayed in authenticator app")),
+        "bSendUserDeletedEmail" => new ConfigItem(2071,"bSendUserDeletedEmail", "boolean","0",gettext("Send an email notifying users when their account has been deleted")),
         );
   }
 
@@ -251,7 +252,7 @@ class SystemConfig
   {
     return array (
       gettext('Church Information') =>["sChurchName","sChurchAddress","sChurchCity","sChurchState","sChurchZip","sChurchCountry","sChurchPhone","sChurchEmail","sHomeAreaCode","sTimeZone","iChurchLatitude","iChurchLongitude", "sChurchWebSite","sChurchFB", "sChurchTwitter"],
-      gettext('User setup') => ["iMinPasswordLength","iMinPasswordChange","iMaxFailedLogins","iSessionTimeout","aDisallowedPasswords","bEnableLostPassword","bEnable2FA","bRequire2FA","s2FAApplicationName"],
+      gettext('User setup') => ["iMinPasswordLength","iMinPasswordChange","iMaxFailedLogins","iSessionTimeout","aDisallowedPasswords","bEnableLostPassword","bEnable2FA","bRequire2FA","s2FAApplicationName","bSendUserDeletedEmail"],
       gettext('Email Setup')  => ["sSMTPHost","bSMTPAuth","sSMTPUser","sSMTPPass", "iSMTPTimeout","sToEmailAddress", "bPHPMailerAutoTLS","sPHPMailerSMTPSecure"],
       gettext('People Setup')  => ["sDirClassifications","sDirRoleHead","sDirRoleSpouse","sDirRoleChild","sDefaultCity","sDefaultState","sDefaultCountry","bShowFamilyData","bHidePersonAddress","bHideFriendDate","bHideFamilyNewsletter","bHideWeddingDate","bHideLatLon","bForceUppercaseZip","bEnableSelfRegistration", "bAllowEmptyLastName", "iPersonNameStyle", "iProfilePictureListSize", "sNewPersonNotificationRecipientIDs", "IncludeDataInNewPersonNotifications","sGreeterCustomMsg1","sGreeterCustomMsg2"],
       gettext('Enabled Features')  => ["bEnabledFinance", "bEnabledSundaySchool","bEnabledEvents","bEnabledCalendar","bEnabledFundraiser","bEnabledEmail", "bEnabledMenuLinks"],

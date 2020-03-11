@@ -10,6 +10,7 @@ use ChurchCRM\UserQuery;
 use Slim\Http\Request;
 use Slim\Http\Response;
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\dto\SystemConfig;
 
 $app->group('/users', function () {
 
@@ -64,10 +65,13 @@ $app->group('/users', function () {
             if (!is_null($userConfig)) {
                 $userConfig->delete();
             }
-            $email = new AccountDeletedEmail($user);
+            
             $user->delete();
-            if (!$email->send()) {
-                $this->Logger->warn($email->getError());
+            if (SystemConfig::getBooleanValue("bSendUserDeletedEmail")) {
+                $email = new AccountDeletedEmail($user);
+                if (!$email->send()) {
+                    $this->Logger->warn($email->getError());
+                }
             }
             return $response->withJson([]);
         } else {
