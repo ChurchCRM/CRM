@@ -32,6 +32,7 @@ if (SystemConfig::getBooleanValue('bEnableLostPassword')) {
                     $token->save();
                     $password = $user->resetPasswordToRandom();
                     $user->save();
+                    LoggerUtils::getAuthLogger()->addInfo("Password reset for user ". $user->getUserName());
                     $email = new ResetPasswordEmail($user, $password);
                     if ($email->send()) {
                         return $renderer->render($response, 'password-check-email.php', ['sRootPath' => SystemURLs::getRootPath()]);
@@ -73,6 +74,7 @@ function userPasswordReset(Request $request, Response $response, array $args)
             if (!$email->send()) {
                 LoggerUtils::getAppLogger()->error($email->getError());
             }
+            LoggerUtils::getAuthLogger()->addInfo("Password reset token for ". $user->getUserName() . " sent to email address: " . $user->getEmail());
             return $response->withStatus(200);
         } else {
             return $response->withStatus(404, gettext("User") . " [" . $userName . "] ". gettext("no found or user without an email"));
