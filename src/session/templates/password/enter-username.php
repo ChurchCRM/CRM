@@ -52,7 +52,7 @@ require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
                 $("#resetStatusText").html(i18next.t('Requesting Password Reset')+'<i class="fa fa-circle-o-notch fa-spin"></i>');
                 $.ajax({
                     method: "POST",
-                    url: window.CRM.root + "/api/public/user/password/reset/",
+                    url: "<?= $PasswordResetXHREndpoint ?>",
                     data: JSON.stringify({ 'userName': userName })
                 }).done(function (data) {
                     $("#resetStatusText").html("");

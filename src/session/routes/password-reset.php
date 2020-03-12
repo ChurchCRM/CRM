@@ -1,5 +1,6 @@
 <?php
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
 use Slim\Views\PhpRenderer;
 use ChurchCRM\UserQuery;
@@ -8,13 +9,16 @@ use ChurchCRM\Emails\ResetPasswordTokenEmail;
 use ChurchCRM\Emails\ResetPasswordEmail;
 use ChurchCRM\TokenQuery;
 use ChurchCRM\dto\SystemConfig;
+use Slim\Http\Request;
+use Slim\Http\Response;
+use ChurchCRM\Utils\LoggerUtils;
 
 if (SystemConfig::getBooleanValue('bEnableLostPassword')) {
 
     $app->group('/forgot-password', function () {
 
-        $this->get('/', "forgotPassword");
-        $this->get('', "forgotPassword");
+        $this->get('/reset-request', "forgotPassword");
+        $this->post('/reset-request', 'userPasswordReset');
 
         $this->get('/set/{token}', function ($request, $response, $args) {
             $renderer = new PhpRenderer('templates/password/');
@@ -46,5 +50,33 @@ if (SystemConfig::getBooleanValue('bEnableLostPassword')) {
 
 function forgotPassword($request, $response, $args) {
     $renderer = new PhpRenderer('templates/password/');
-    return $renderer->render($response, 'enter-username.php', ['sRootPath' => SystemURLs::getRootPath()]);
+    $pageArgs = [
+        'sRootPath' => SystemURLs::getRootPath(),
+        "PasswordResetXHREndpoint" => AuthenticationManager::GetForgotPasswordURL()
+    ];
+    return $renderer->render($response, 'enter-username.php', $pageArgs);
+}
+
+
+function userPasswordReset(Request $request, Response $response, array $args)
+{
+    $logger = LoggerUtils::getAppLogger();
+    $body = json_decode($request->getBody());
+    $userName = strtolower(trim($body->userName));
+    if (!empty($userName)) {
+        $user = UserQuery::create()->findOneByUserName($userName);
+        if (!empty($user) && !empty($user->getEmail())) {
+            $token = new Token();
+            $token->build("password", $user->getId());
+            $token->save();
+            $email = new ResetPasswordTokenEmail($user, $token->getToken());
+            if (!$email->send()) {
+                LoggerUtils::getAppLogger()->error($email->getError());
+            }
+            return $response->withStatus(200);
+        } else {
+            return $response->withStatus(404, gettext("User") . " [" . $userName . "] ". gettext("no found or user without an email"));
+        }
+    }
+    return $response->withStatus(400, gettext("UserName not set"));
 }

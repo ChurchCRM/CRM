@@ -28,7 +28,7 @@ $app->add(new VersionMiddleware());
 // Set up
 require __DIR__.'/../Include/slim/error-handler.php';
 
-require __DIR__ . '/routes/password.php';
+require __DIR__ . '/routes/password-reset.php';
 
 
 $app->get('/begin', 'beginSession');
