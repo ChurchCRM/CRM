@@ -41,10 +41,9 @@ function processTwoFactorGet(Request $request, Response $response, array $args)
 {
     $renderer = new PhpRenderer('templates/');
     $curUser = AuthenticationManager::GetCurrentUser();
-
     $pageArgs = [
         'sRootPath' => SystemURLs::getRootPath(),
-        'user' => $curUser
+        'user' => $curUser,
     ];
     
     return $renderer->render($response, 'two-factor.php', $pageArgs);
@@ -68,7 +67,8 @@ function beginSession(Request $request, Response $response, array $args)
 {
     $pageArgs = [
         'sRootPath' => SystemURLs::getRootPath(),
-        'localAuthNextStepURL' => AuthenticationManager::GetSessionBeginURL()
+        'localAuthNextStepURL' => AuthenticationManager::GetSessionBeginURL(),
+        'forgotPasswordURL' => AuthenticationManager::GetForgotPasswordURL()
     ];
 
     if ($request->getMethod() == "POST") {

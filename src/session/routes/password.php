@@ -11,12 +11,10 @@ use ChurchCRM\dto\SystemConfig;
 
 if (SystemConfig::getBooleanValue('bEnableLostPassword')) {
 
-    $app->group('/password', function () {
+    $app->group('/forgot-password', function () {
 
-        $this->get('/', function ($request, $response, $args) {
-            $renderer = new PhpRenderer('templates/password/');
-            return $renderer->render($response, 'enter-username.php', ['sRootPath' => SystemURLs::getRootPath()]);
-        });
+        $this->get('/', "forgotPassword");
+        $this->get('', "forgotPassword");
 
         $this->get('/set/{token}', function ($request, $response, $args) {
             $renderer = new PhpRenderer('templates/password/');
@@ -44,4 +42,9 @@ if (SystemConfig::getBooleanValue('bEnableLostPassword')) {
         });
 
     });
+}
+
+function forgotPassword($request, $response, $args) {
+    $renderer = new PhpRenderer('templates/password/');
+    return $renderer->render($response, 'enter-username.php', ['sRootPath' => SystemURLs::getRootPath()]);
 }

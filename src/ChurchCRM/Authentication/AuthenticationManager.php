@@ -150,5 +150,9 @@ class AuthenticationManager
     public static function GetSessionBeginURL() {
       return SystemURLs::getRootPath() . "/session/begin";
     }
+
+    public static function GetForgotPasswordURL() {
+      return SystemURLs::getRootPath() . "/session/forgot-password";
+    }
   }
 }

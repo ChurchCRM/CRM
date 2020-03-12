@@ -47,7 +47,7 @@ require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
                 <?php if (SystemConfig::getBooleanValue('bEnableLostPassword')) {
             ?>
                     <span class="text-right"><a
-                                href="external/password/"><?= gettext("I forgot my password") ?></a></span>
+                                href="<?= $forgotPasswordURL ?>"><?= gettext("I forgot my password") ?></a></span>
                     <?php
         } ?>
             </div>
