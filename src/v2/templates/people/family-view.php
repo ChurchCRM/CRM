@@ -416,7 +416,7 @@ $familyAddress = $family->getAddress();
                             </div>
                             <!-- Map Scripts -->
                             <script
-                                    src="//maps.googleapis.com/maps/api/js?key=<?= SystemConfig::getValue("sGoogleMapKey") ?>&sensor=false"></script>
+                                    src="//maps.googleapis.com/maps/api/js?key=<?= SystemConfig::getValue("sGoogleMapsRenderKey") ?>&sensor=false"></script>
                             <script>
                                 var LatLng = new google.maps.LatLng(<?= $family->getLatitude() ?>, <?= $family->getLongitude() ?>)
                             </script>
