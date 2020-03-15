@@ -13,15 +13,13 @@ use Slim\Http\Request;
 use Slim\Http\Response;
 use ChurchCRM\Utils\LoggerUtils;
 
-if (SystemConfig::getBooleanValue('bEnableLostPassword')) {
 
-    $app->group('/forgot-password', function () {
-
+$app->group('/forgot-password', function () {
+    if (SystemConfig::getBooleanValue('bEnableLostPassword')) {
         $this->get('/reset-request', "forgotPassword");
         $this->post('/reset-request', 'userPasswordReset');
-
         $this->get('/set/{token}', function ($request, $response, $args) {
-            $renderer = new PhpRenderer('templates/password/');
+            $renderer = new PhpRenderer('templates');
             $token = TokenQuery::create()->findPk($args['token']);
             $haveUser = false;
             if ($token != null && $token->isPasswordResetToken() && $token->isValid()) {
@@ -35,7 +33,7 @@ if (SystemConfig::getBooleanValue('bEnableLostPassword')) {
                     LoggerUtils::getAuthLogger()->addInfo("Password reset for user ". $user->getUserName());
                     $email = new ResetPasswordEmail($user, $password);
                     if ($email->send()) {
-                        return $renderer->render($response, 'password-check-email.php', ['sRootPath' => SystemURLs::getRootPath()]);
+                        return $renderer->render($response, 'password/password-check-email.php', ['sRootPath' => SystemURLs::getRootPath()]);
                     } else {
                         $this->Logger->error($email->getError());
                         throw new \Exception($email->getError());
@@ -43,11 +41,17 @@ if (SystemConfig::getBooleanValue('bEnableLostPassword')) {
                 }
             }
 
-            return $renderer->render($response, "/../404.php", array("message" => gettext("Unable to reset password")));
+            return $renderer->render($response, "error.php", array("message" => gettext("Unable to reset password")));
         });
+    }
+    else {
+        $this->get('/{foo:.*}', function ($request, $response, $args) {
+            $renderer = new PhpRenderer('templates');
+            return $renderer->render($response, '/error.php', array("message" => gettext("Password reset not availble.  Please contact your system administrator")));
+        });
+    }
+});
 
-    });
-}
 
 function forgotPassword($request, $response, $args) {
     $renderer = new PhpRenderer('templates/password/');
