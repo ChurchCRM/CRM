@@ -18,7 +18,6 @@ $settings = require __DIR__ . '/../Include/slim/settings.php';
 
 // routes
 require __DIR__ . '/routes/register.php';
-require __DIR__ . '/routes/password.php';
 require __DIR__ . '/routes/verify.php';
 require __DIR__ . '/routes/calendar.php';
 

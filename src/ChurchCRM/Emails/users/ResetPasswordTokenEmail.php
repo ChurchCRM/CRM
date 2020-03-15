@@ -2,6 +2,8 @@
 
 namespace ChurchCRM\Emails;
 
+use ChurchCRM\dto\SystemURLs;
+
 class ResetPasswordTokenEmail extends BaseUserEmail
 {
 
@@ -25,8 +27,10 @@ class ResetPasswordTokenEmail extends BaseUserEmail
     public function getTokens()
     {
         $parentTokens = parent::getTokens();
-        $myTokens = ["passwordToken" => $this->token,
-            "resetPasswordText" => gettext('Reset Password')];
+        $myTokens = [
+            "resetPasswordText" => gettext('Reset Password'),
+            "passwordResetLinkURL" => SystemURLs::getURL() . "/session/forgot-password/set/".$this->token
+        ];
         return array_merge($parentTokens, $myTokens);
     }
 }

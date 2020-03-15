@@ -55,11 +55,11 @@
                 <a href="{{churchCRMURL}}external/verify/{{verificationToken}}" target="_blank">{{churchCRMURL}}external/verify/{{verificationToken}}</a>
             </p>
             {{/ verificationToken}}
-            {{# passwordToken}}
+            {{# passwordResetLinkURL}}
             <p>
-                <a href="{{churchCRMURL}}external/password/set/{{passwordToken}}" target="_blank">{{resetPasswordText}}</a>
+                <a href="{{passwordResetLinkURL}}" target="_blank">{{resetPasswordText}}</a>
             </p>
-            {{/ passwordToken}}
+            {{/ passwordResetLinkURL}}
             
             {{# familyLink }}
               {{# IncludeDataInNewPersonNotifications }}

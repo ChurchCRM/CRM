@@ -229,7 +229,7 @@ class LocalAuthentication implements IAuthenticationProvider
       // but don't redirect them if they're already on the passsword change page
       $IsUserOnPasswordChangePageNow = $_SERVER["REQUEST_URI"] == $this->GetPasswordChangeURL();
       if ($this->currentUser->getNeedPasswordChange() && ! $IsUserOnPasswordChangePageNow ) {
-        LoggerUtils::getAuthLogger()->addDebug("User needs password change; redirecting to password change");
+        LoggerUtils::getAuthLogger()->addInfo("User needs password change; redirecting to password change");
         $authenticationResult->isAuthenticated = false;
         $authenticationResult->nextStepURL = $this->GetPasswordChangeURL();
       }

@@ -4,7 +4,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 
 // Set the page title and include HTML header
-$sPageTitle = gettext("Family Registration");
+$sPageTitle = gettext("Password Reset");
 require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
 ?>
 
@@ -37,6 +37,11 @@ require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
                 </div>
                 <!-- /.col -->
             </div>
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    <span id="resetStatusText"></span>
+                </div>
+            </div>
         </div>
         <!-- /.form-box -->
     </div>
@@ -44,17 +49,20 @@ require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
         $("#resetPassword").click(function (e) {
             var userName = $("#username").val();
             if (userName) {
+                $("#resetStatusText").html(i18next.t('Requesting Password Reset')+'<i class="fa fa-circle-o-notch fa-spin"></i>');
                 $.ajax({
                     method: "POST",
-                    url: window.CRM.root + "/api/public/user/password/reset/",
+                    url: "<?= $PasswordResetXHREndpoint ?>",
                     data: JSON.stringify({ 'userName': userName })
                 }).done(function (data) {
-                    bootbox.alert("<?= gettext("Check your email for a password reset link")?>",
+                    $("#resetStatusText").html("");
+                    bootbox.alert(i18next.t('Check your email for a password reset link'),
                         function () {
                             window.location.href = window.CRM.root + "/";
                         }
                     );
                 }).fail(function () {
+                    $("#resetStatusText").html("");
                     bootbox.alert("<?= gettext("Sorry, we are unable to process your request at this point in time.")?>");
                 });
             } else {
