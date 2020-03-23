@@ -72,9 +72,15 @@ class SystemURLs
       
     }
 
-  public static function getURL($index = 0)
+    public static function getURL($index = 0)
     {
-        return self::$urls[$index];
+        // Return the URL configured for this server from Include/Config.php
+        // Trim any trailing slashes from the configured URL
+        $URL = self::$urls[$index];
+        if (substr($URL,-1,1) == "/") {
+            return substr($URL,0,-1);
+        }
+        return $URL;
     }
 
     private static function isValidRootPath()
