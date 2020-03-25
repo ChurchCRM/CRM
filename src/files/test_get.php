@@ -14,17 +14,15 @@ $file = $files->find();
 
 if ($files != null) {
     echo "found file.  Contents:<br>";
-    foreach($files as $file){
+    foreach ($files as $file) {
         echo "File: " . $file->getFileName()."  Created: ". $file->getCreated()->format(SystemConfig::getValue("sDateTimeFormat")) ." Modified: " .$file->getModified()->format(SystemConfig::getValue("sDateTimeFormat")) ."<br>Content:<br>";
         try {
             echo $file->getContent();
-        }
-        catch(\Exception $e) {
+        } catch (\Exception $e) {
             echo $e;
         }
         echo "<br><br>";
     }
-}
-else {
+} else {
     echo "couldn't find file";
 }
