@@ -64,11 +64,12 @@ namespace ChurchCRM
                 }
             }
             return rmdir($src);
-        } 
+        }
 
-        public static function ensureDir($path) {
-            if(! is_dir($path) ) {
-                mkdir($path,0777,true);
+        public static function ensureDir($path)
+        {
+            if (! is_dir($path)) {
+                mkdir($path, 0777, true);
             }
         }
     }
