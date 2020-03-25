@@ -53,3 +53,5 @@ nbproject/*
 .DS_Store
 
 src/Upgrade/*
+
+src/UserData/*
