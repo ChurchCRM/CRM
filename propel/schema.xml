@@ -902,6 +902,18 @@
       </vendor>
     </table>
 
+    <table name="files" idMethod="native" phpName="File"  description="Table containing metadata for ChurchCRM File attachments">
+      <column name="file_id" phpName="Id" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" autoIncrement="true" required="true"  primaryKey="true"/>
+      <column name="file_sha256" phpName="Hash" type="VARCHAR" size="64" required="true"/>
+      <column name="file_name" phpName="FileName" type="VARCHAR" size="255"/>
+      <column name="file_created" phpName="Created" type="TIMESTAMP"/>
+      <column name="file_modified" phpName="Modified" type="TIMESTAMP"/>
+
+      <vendor type="mysql">
+          <parameter name="Engine" value="InnoDB"/>
+      </vendor>
+    </table>
+
     <!--
  <table name="istlookup_lu" idMethod="native" phpName="IstlookupLu" >
    <column name="lu_fam_ID" phpName="LuFamId" type="SMALLINT" size="9" primaryKey="true" required="true" defaultValue="0"/>

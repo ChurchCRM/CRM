@@ -39,6 +39,11 @@ class SystemURLs
     {
         return self::$documentRoot;
     }
+
+    public static function getUserDataRoot()
+    {
+        return self::$documentRoot."/UserData"; 
+    }
     
     public static function getImagesRoot()
     {
