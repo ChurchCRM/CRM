@@ -54,7 +54,8 @@
         "defuse/php-encryption": "^2.2",
         "pragmarx/google2fa": "^6.1",
         "endroid/qr-code": "^3.6",
-        "symfony/yaml": "^3.4"
+        "symfony/yaml": "^3.4",
+        "sabre/dav": "~3.2.0"
     },
     "autoload": {
         "classmap": [
