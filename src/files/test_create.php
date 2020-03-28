@@ -12,8 +12,9 @@ use ChurchCRM\PersonQuery;
 use ChurchCRM\Utils\MiscUtils;
 use ChurchCRM\Utils\ExecutionTime;
 
-function getRandomContents() {
-    $length = rand(100000,1000000);
+function getRandomContents()
+{
+    $length = rand(100000, 1000000);
     $contents =  MiscUtils::random_word($length);
     return $contents;
 }
@@ -63,4 +64,3 @@ $fileAssociation = new FileAssociation();
 $fileAssociation->setFile($file);
 $fileAssociation->setFamily($family);
 $fileAssociation->save();
-

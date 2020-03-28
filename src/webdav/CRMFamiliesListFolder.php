@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 
 
@@ -11,61 +11,53 @@ require './CRMFamilyFilesFolder.php';
 use ChurchCRM\FamilyQuery;
 use Sabre\DAV;
 
-class CRMFamiliesListFolder extends DAV\Collection {
+class CRMFamiliesListFolder extends DAV\Collection
+{
+    private $myPath;
 
-  private $myPath;
-
-  function __construct($myPath) {
-
-    $this->myPath = $myPath;
-
-  }
-
-  function getChildren() {
-    $children = array();
-    $families = FamilyQuery::create() ->find();
-    foreach($families as $family) 
+    public function __construct($myPath)
     {
-      $children[] = new CRMFamilyFilesFolder($family->getFamilyString());
+        $this->myPath = $myPath;
     }
-    return $children;
 
-  }
+    public function getChildren()
+    {
+        $children = array();
+        $families = FamilyQuery::create() ->find();
+        foreach ($families as $family) {
+            $children[] = new CRMFamilyFilesFolder($family->getFamilyString());
+        }
+        return $children;
+    }
 
-  function getChild($name) {
+    public function getChild($name)
+    {
+        $path = $this->myPath . '/' . $name;
 
-      $path = $this->myPath . '/' . $name;
+        // We have to throw a NotFound exception if the file didn't exist
+        if (!file_exists($path)) {
+            throw new DAV\Exception\NotFound('The file with name: ' . $name . ' could not be found');
+        }
 
-      // We have to throw a NotFound exception if the file didn't exist
-      if (!file_exists($path)) {
-        throw new DAV\Exception\NotFound('The file with name: ' . $name . ' could not be found');
-      }
+        // Some added security
+        if ($name[0]=='.') {
+            throw new DAV\Exception\NotFound('Access denied');
+        }
 
-      // Some added security
-      if ($name[0]=='.')  throw new DAV\Exception\NotFound('Access denied');
+        if (is_dir($path)) {
+            return new MyDirectory($path);
+        } else {
+            return new MyFile($path);
+        }
+    }
 
-      if (is_dir($path)) {
-
-          return new MyDirectory($path);
-
-      } else {
-
-          return new MyFile($path);
-
-      }
-
-  }
-
-  function childExists($name) {
-
+    public function childExists($name)
+    {
         return file_exists($this->myPath . '/' . $name);
+    }
 
-  }
-
-  function getName() {
-
-      return basename($this->myPath);
-
-  }
-
+    public function getName()
+    {
+        return basename($this->myPath);
+    }
 }
