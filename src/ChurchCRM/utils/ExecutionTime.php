@@ -10,12 +10,12 @@ class ExecutionTime
   private $startR;
   private $endR;
   public function __construct(){
-    $this->startTime = microtime(TRUE);
+    $this->startTime = self::getNow();
     $this->startR = getrusage();
   }
 
   public function End(){
-    $this->endTime = microtime(TRUE);
+    $this->endTime = self::getNow();
     $this->endR = getrusage();
   }
   
@@ -23,7 +23,7 @@ class ExecutionTime
     // if End() has not yet been called, this returns the current number of running seconds.  
     // Otherwise, returns the ending number of seconds
     if (is_null($this->endTime)){
-      $value = (microtime(TRUE) - $this->startTime)*1000;
+      $value = (self::getNow() - $this->startTime)*1000;
     }
     else {
       $value = ($this->endTime - $this->startTime)*1000;
@@ -31,14 +31,30 @@ class ExecutionTime
     return round($value,2);
   }
 
-  private function runTime($ru, $rus, $index) {
-      return ($ru["ru_$index.tv_sec"]*1000 + intval($ru["ru_$index.tv_usec"]/1000))
-  -  ($rus["ru_$index.tv_sec"]*1000 + intval($rus["ru_$index.tv_usec"]/1000));
+  public static function getNow() {
+    if (version_compare(PHP_VERSION, '7.3.0', '>=')) {
+      return hrtime(TRUE);
+    }
+    else {
+      return microtime(TRUE);
+    }
+  }
+
+  private function runTime($rEnd, $rStart, $index) {
+      return self::microseconsToMiliseconds($rEnd["$index"] - $rStart["$index"]);
   }    
 
   public function __toString(){
-      return "This process used " . $this->runTime($this->endTime, $this->startTime, "utime") .
-     " ms for its computations\nIt spent " . $this->runTime($this->endTime, $this->startTime, "stime") .
-     " ms in system calls\n";
+      return "This process used " . $this->runTime($this->endR, $this->startR, "ru_utime.tv_usec") ." ms for its computations\n".
+      "It spent " . $this->runTime($this->endR, $this->startR, "ru_stime.tv_usec") ." ms in system calls\n".
+      "Real time used(ms) : " . self::nanosecondsToMiliseconds($this->endTime - $this->startTime);
+  }
+
+  private static function nanosecondsToMiliseconds($nanos) {
+    return $nanos/1000000;
+  }
+
+  private static function microseconsToMiliseconds($micros) {
+    return $micros/1000;
   }
 }
