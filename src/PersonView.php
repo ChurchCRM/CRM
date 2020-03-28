@@ -21,6 +21,8 @@ use ChurchCRM\Service\MailChimpService;
 use ChurchCRM\Service\TimelineService;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\FileAssociationQuery;
+use ChurchCRM\FileSystemUtils;
 
 $timelineService = new TimelineService();
 $mailchimp = new MailChimpService();
@@ -432,6 +434,7 @@ $bOkToEdit = (AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled() ||
                 <li role="presentation"><a href="#properties" aria-controls="properties" role="tab" data-toggle="tab"><?= gettext('Assigned Properties') ?></a></li>
                 <li role="presentation"><a href="#volunteer" aria-controls="volunteer" role="tab" data-toggle="tab"><?= gettext('Volunteer Opportunities') ?></a></li>
                 <li role="presentation"><a href="#notes" aria-controls="notes" role="tab" data-toggle="tab"><?= gettext('Notes') ?></a></li>
+                <li role="presentation"><a href="#files" aria-controls="files" role="tab" data-toggle="tab"><?= gettext('Files') ?></a></li>
             </ul>
 
             <!-- Tab panes -->
@@ -919,6 +922,21 @@ $bOkToEdit = (AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled() ||
                             <?php
                                                         } ?>
                         <!-- END timeline item -->
+                    </ul>
+                </div>
+                <div role="tab-pane fade" class="tab-pane" id="files">
+                    <ul class="files">
+
+                        <!-- file item -->
+                        <?php foreach (FileAssociationQuery::create()->findByPersonId($iPersonID) as $file) {
+                            ?>
+                            <li>
+                                <a href="<?= SystemURLs::getRootPath().'/api/person/'.$person->getId().'/files/'.$file->getFileId() ?>">
+                                <?= $file->getFile()->getFileName()?></a> (<?= FileSystemUtils::human_filesize($file->getFile()->getSize()) ?>)
+                            </li>
+                            <?php
+                                                        } ?>
+                        <!-- END files item -->
                     </ul>
                 </div>
             </div>
