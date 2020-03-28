@@ -5,6 +5,7 @@ namespace ChurchCRM;
 use ChurchCRM\Base\File as BaseFile;
 use ChurchCRM\dto\SystemURLs;
 use DateTime;
+use Slim\Http\Response;
 
 class File extends BaseFile
 {
@@ -60,5 +61,15 @@ class File extends BaseFile
     private function getFilesystemPath() {
         $hash = $this->getHash();
         return SystemURLs::getUserDataRoot().DIRECTORY_SEPARATOR.substr($hash,0,1).DIRECTORY_SEPARATOR.substr($hash,1,1).DIRECTORY_SEPARATOR.$hash;
+    }
+
+    public function serveRequest(Response $response) {
+        return $response
+            ->write($this->getContent())
+            ->withHeader('Content-type', 'application/octet-stream')
+            ->withHeader('Content-Disposition', 'attachment; filename='.$this->getFileName())
+            ->withHeader('Content-Transfer-Encoding', 'binary')
+            ->withHeader('Expires','0')
+            ->withHeader('Cache-Contro', 'must-revalidate, post-check=0, pre-check=0');
     }
 }

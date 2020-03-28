@@ -26,20 +26,15 @@ $app->group('/person/{personId:[0-9]+}', function () {
         $photo = new Photo("Person", $args['personId']);
         return $res->write($photo->getPhotoBytes())->withHeader('Content-type', $photo->getPhotoContentType());
     });
+
     $this->get('/files/{fileId:[0-9]+}', function (Request $request, Response $response, array $args) {
-        $res = $this->cache->withExpires($response, MiscUtils::getPhotoCacheExpirationTimestamp());
+        $response = $this->cache->withExpires($response, MiscUtils::getPhotoCacheExpirationTimestamp());
         $files = FileAssociationQuery::create() ->filterByPersonId($args['personId'])->filterByFileId($args['fileId'])->find();
         if (count($files) != 1) {
             return $response->withStatus(404, gettext("File does not exist"));
         }
-        $file = $files->getFirst();
-        return $res
-            ->write($file->getFile()->getContent())
-            ->withHeader('Content-type', 'application/octet-stream')
-            ->withHeader('Content-Disposition', 'attachment; filename='.$file->getFile()->getFileName())
-            ->withHeader('Content-Transfer-Encoding', 'binary')
-            ->withHeader('Expires','0')
-            ->withHeader('Cache-Contro', 'must-revalidate, post-check=0, pre-check=0');
+        $file = $files->getFirst()->getFile();
+        return $file->serveRequest($response);
     });
 
 });
