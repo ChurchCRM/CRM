@@ -250,7 +250,7 @@ class SystemService
       // return the smallest of them, this defines the real limit
       if ($humanFormat)
       {
-        return SystemService::human_filesize(min($max_upload, $max_post, $memory_limit));
+        return FileSystemUtils::human_filesize(min($max_upload, $max_post, $memory_limit));
       }
       else
       {
@@ -270,9 +270,5 @@ class SystemService
       }
     }
 
-    static function human_filesize($bytes, $decimals = 2) {
-      $size = array('B','kB','MB','GB','TB','PB','EB','ZB','YB');
-      $factor = floor((strlen($bytes) - 1) / 3);
-      return sprintf("%.{$decimals}f", $bytes / pow(1024, $factor)) . @$size[$factor];
-    }
+
 }
