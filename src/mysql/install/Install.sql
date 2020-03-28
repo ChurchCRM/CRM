@@ -1269,6 +1269,7 @@ CREATE TABLE `files`
     `file_name` VARCHAR(255),
     `file_created` DATETIME,
     `file_modified` DATETIME,
+    `file_size` mediumint(10) unsigned,
     PRIMARY KEY (`file_id`)
 ) ENGINE=InnoDB COMMENT='Table containing metadata for ChurchCRM File attachments';
 

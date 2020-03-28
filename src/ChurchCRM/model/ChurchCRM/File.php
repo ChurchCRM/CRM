@@ -13,6 +13,7 @@ class File extends BaseFile
     public function preInsert(\Propel\Runtime\Connection\ConnectionInterface $con = null)
     {
         $this->setCreated(new DateTime());
+        $this->setSize(mb_strlen($this->getContent()));
         parent::preSave($con);
 
         return true;
@@ -21,6 +22,7 @@ class File extends BaseFile
     public function preSave(\Propel\Runtime\Connection\ConnectionInterface $con = null)
     {
         $this->setModified(new DateTime());
+        $this->setSize(mb_strlen($this->getContent()));
         parent::preUpdate($con);
 
         return true;

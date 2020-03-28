@@ -908,6 +908,8 @@
       <column name="file_name" phpName="FileName" type="VARCHAR" size="255"/>
       <column name="file_created" phpName="Created" type="TIMESTAMP"/>
       <column name="file_modified" phpName="Modified" type="TIMESTAMP"/>
+      <column name="file_size" phpName="Size" type="SMALLINT" size="10" sqlType="mediumint(10) unsigned"/>
+
 
       <vendor type="mysql">
           <parameter name="Engine" value="InnoDB"/>
