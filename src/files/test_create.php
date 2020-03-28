@@ -10,14 +10,29 @@ use ChurchCRM\File as File;
 use ChurchCRM\FileAssociation;
 use ChurchCRM\PersonQuery;
 use ChurchCRM\Utils\MiscUtils;
+use ChurchCRM\Utils\ExecutionTime;
+
+function getRandomContents() {
+    $length = rand(100000,1000000);
+    $contents =  MiscUtils::random_word($length);
+    return $contents;
+}
 
 $file = new File();
 
+$time = new ExecutionTime();
 $filename = MiscUtils::random_word();
-$contents = MiscUtils::random_word().MiscUtils::random_word().MiscUtils::random_word();
 $file->setFileName($filename.".txt");
-$file->setContent($contents);
+$file->setContent(getRandomContents());
+$time->End();
+echo "first file generate: " . $time->__toString()."<br>";
+
+$time = new ExecutionTime();
 $file->save();
+$time->End();
+echo "first file write: " . $time->__toString()."<br>";
+
+
 
 $Person = PersonQuery::create()->findOneById(1);
 
@@ -27,14 +42,20 @@ $fileAssociation->setPerson($Person);
 $fileAssociation->save();
 
 
-
 $file = new File();
+$time = new ExecutionTime();
 
 $filename = MiscUtils::random_word();
-$contents = MiscUtils::random_word().MiscUtils::random_word().MiscUtils::random_word();
+
 $file->setFileName($filename.".txt");
-$file->setContent($contents);
+$file->setContent(getRandomContents());
+$time->End();
+echo "second file generate: " . $time->__toString()."<br>";
+
+$time = new ExecutionTime();
 $file->save();
+$time->End();
+echo "second file write: " . $time->__toString()."<br>";
 
 $family = FamilyQuery::create()->findOneById(1);
 
@@ -42,3 +63,4 @@ $fileAssociation = new FileAssociation();
 $fileAssociation->setFile($file);
 $fileAssociation->setFamily($family);
 $fileAssociation->save();
+
