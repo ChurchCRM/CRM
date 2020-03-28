@@ -929,7 +929,7 @@ $bOkToEdit = (AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled() ||
 
                         <!-- file item -->
                         <?php foreach (FileAssociationQuery::create()->findByPersonId($iPersonID) as $file) {
-                            ?>
+                                                            ?>
                             <li>
                                 <a href="<?= SystemURLs::getRootPath().'/api/person/'.$person->getId().'/files/'.$file->getFileId() ?>">
                                 <?= $file->getFile()->getFileName()?></a> (<?= FileSystemUtils::human_filesize($file->getFile()->getSize()) ?>)
