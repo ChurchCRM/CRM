@@ -30,5 +30,12 @@ services:
       - churchcrm
     volumes:
       - source:/var/www/html
+
+  mailserver:
+    #  Reference: https://blog.mailtrap.io/mailhog-explained/
+    image: mailhog/mailhog
+    ports:
+      - 1025:1025
+      - 8025:8025
 volumes:
   source:
