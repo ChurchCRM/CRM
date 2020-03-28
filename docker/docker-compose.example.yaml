@@ -1,0 +1,28 @@
+# This is an example docker-compose.yaml file. You can run ChurchCRM from
+# this file by first filling in your password and db info in the .env file
+# and then running "docker-compose -f docker-compose.example.yaml up -d"
+# in your terminal.
+version: "3"
+services:
+  database:
+    image: mariadb
+    env_file:
+      - .env
+  churchcrm:
+    image: churchcrm/crm
+    volumes:
+      - source:/var/www/html
+    env_file:
+      - .env
+    links:
+      - database
+  webserver:
+    image: churchcrm/nginx
+    ports:
+      - "8080:80"
+    links:
+      - churchcrm
+    volumes:
+      - source:/var/www/html
+volumes:
+  source:

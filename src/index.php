@@ -9,7 +9,7 @@ header("CRM: would redirect");
 if (file_exists('Include/Config.php')) {
     require_once 'Include/Config.php';
 } else {
-    header('Location: setup');
+    header('Location: /setup/index.php');
     exit();
 }
 
