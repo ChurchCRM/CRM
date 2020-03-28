@@ -5,6 +5,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\Classification;
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\FileSystemUtils;
 
 //Set the page title
 $sPageTitle =  $family->getName() . " - " . gettext("Family");
@@ -504,6 +505,37 @@ $familyAddress = $family->getAddress();
                 </ul>
             </div>
         </div>
+        <!-- begin files --> 
+        <div class="box">
+            <div class="box-header">
+                <i class="fa fa-paperclip"></i>
+                <h3 class="box-title"><?= gettext("Files") ?></h3>
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                            class="fa fa-minus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="box-body">
+                <ul class="files">
+                    <!-- files item -->
+                    <?php foreach ($familyFiles as $file) {
+                        if ($curYear != $item['year']) {
+                            $curYear = $item['year']; ?>
+                            <li class="time-label"><span class="bg-green"><?= $curYear ?></span></li>
+                            <?php
+                        } ?>
+                        <li>
+                            <a href="<?= SystemURLs::getRootPath().'/api/family/'.$family->getId().'/files/'.$file->getFileId() ?>">
+                            <?= $file->getFile()->getFileName()?></a> (<?= FileSystemUtils::human_filesize($file->getFile()->getSize()) ?>)
+                        </li>
+                        <?php
+                    } ?>
+                    <!-- END file item -->
+                </ul>
+            </div>
+        </div>
+        <!-- end files -->
     </div>
 </div>
 

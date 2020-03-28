@@ -13,8 +13,22 @@ use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\FamilyQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
+use ChurchCRM\Base\FileAssociationQuery;
+use Slim\Http\Request;
+use Slim\Http\Response;
 
 $app->group('/family/{familyId:[0-9]+}', function () {
+
+    $this->get('/files/{fileId:[0-9]+}', function (Request $request, Response $response, array $args) {
+        $response = $this->cache->withExpires($response, MiscUtils::getPhotoCacheExpirationTimestamp());
+        $files = FileAssociationQuery::create() ->filterByFamilyId($args['familyId'])->filterByFileId($args['fileId'])->find();
+        if (count($files) != 1) {
+            return $response->withStatus(404, gettext("File does not exist"));
+        }
+        $file = $files->getFirst()->getFile();
+        return $file->serveRequest($response);
+    });
+
     $this->get('/photo', function ($request, $response, $args) {
         $res = $this->cache->withExpires($response, MiscUtils::getPhotoCacheExpirationTimestamp());
         $photo = new Photo("Family", $args['familyId']);

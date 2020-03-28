@@ -13,6 +13,7 @@ use ChurchCRM\FamilyCustomMasterQuery;
 use ChurchCRM\FamilyCustomQuery;
 use ChurchCRM\dto\PeopleCustomField;
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\FileAssociationQuery;
 
 $app->group('/family', function () {
     $this->get('','listFamilies');
@@ -104,6 +105,7 @@ function viewFamily(Request $request, Response $response, array $args)
         'sRootPath' => SystemURLs::getRootPath(),
         'family' => $family,
         'familyTimeline' => $timelineService->getForFamily($family->getId()),
+        'familyFiles' => FileAssociationQuery::Create() -> findByFamilyId($family->getId()),
         'allFamilyProperties' => $allFamilyProperties,
         'familyCustom' => $familyCustom
     ];
