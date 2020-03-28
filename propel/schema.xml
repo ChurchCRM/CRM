@@ -918,13 +918,19 @@
 
     <table name="file_associations" idMethod="native" phpName="FileAssociation" isCrossRef="true" description="This is a join-table to link files with other types">
       <column name="file_id" phpName="FileId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true"  primaryKey="true"/>
-      <column name="person_id" phpName="PersonId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="false"  primaryKey="true"/>
+      <column name="person_id" phpName="PersonId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="false"  />
+      <column name="family_id" phpName="FamilyId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="false"  />
 
       <foreign-key foreignTable="files">
         <reference local="file_id" foreign="file_id"/>
       </foreign-key>
+
       <foreign-key foreignTable="person_per">
         <reference local="person_id" foreign="per_ID"/>
+      </foreign-key>
+
+       <foreign-key foreignTable="family_fam">
+        <reference local="family_id" foreign="fam_ID"/>
       </foreign-key>
 
       <vendor type="mysql">
