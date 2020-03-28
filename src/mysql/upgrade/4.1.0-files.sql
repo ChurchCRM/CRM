@@ -13,6 +13,5 @@ CREATE TABLE `files`
     `file_modified` DATETIME,
     PRIMARY KEY (`file_id`)
 ) ENGINE=InnoDB COMMENT='Table containing metadata for ChurchCRM File attachments';
-
 # This restores the fkey checks, after having unset them earlier
 SET FOREIGN_KEY_CHECKS = 1;

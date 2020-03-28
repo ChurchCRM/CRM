@@ -246,9 +246,12 @@
         "versions": [
             "4.0.0",
             "4.0.1",
-            "4.0.2"
+            "4.0.2",
+            "4.0.3"
         ],
-        "scripts": [],
-        "dbVersion": "4.0.3"
+        "scripts": [
+            "/mysql/upgrade/4.1.0-files.sql"
+        ],
+        "dbVersion": "4.1.0"
     }
 }
