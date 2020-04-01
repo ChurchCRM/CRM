@@ -3453,20 +3453,8 @@ msgid "Failed Logins"
 msgstr "登入失敗次數"
 
 #: 
-msgid "You must enter a password in both boxes"
-msgstr "您必須輸入一個密碼，這兩個框"
-
-#: 
 msgid "You must enter the same password in both boxes"
 msgstr "您必須在兩個框中輸入相同的密碼"
-
-#: 
-msgid "Invalid password"
-msgstr "無效的密碼"
-
-#: 
-msgid "You must enter your new password in both boxes"
-msgstr "在這兩個框，您必須輸入您的新密碼"
 
 #: 
 msgid "Your password choice is too obvious. Please choose something else."
@@ -3481,32 +3469,12 @@ msgid "characters"
 msgstr "字符"
 
 #: 
-msgid "You need to actually change your password (nice try, though!)"
-msgstr "您需要更改您的密碼（不錯的嘗試，但！）"
-
-#: 
-msgid "Your new password is too similar to your old one.  Be more creative!"
-msgstr "您的新密碼是你的舊太相似了。更多的創意！"
-
-#: 
-msgid "User Password Change"
-msgstr "用戶密碼更改"
-
-#: 
-msgid "Your account record indicates that you need to change your password before proceding."
-msgstr "您的帳戶記錄表明操作前，您需要更改您的密碼。"
-
-#: 
 msgid "Enter your current password, then your new password twice.  Passwords must be at least"
 msgstr "請輸入您的當前密碼，然後兩次新密碼。密碼必須至少"
 
 #: 
 msgid "characters in length."
 msgstr "字符的長度。"
-
-#: 
-msgid "Enter a new password for this user."
-msgstr "輸入此用戶的密碼。"
 
 #: 
 #, fuzzy
@@ -7165,10 +7133,6 @@ msgid "The previous integrity check passed.  All system file hashes match the ex
 msgstr "已通過完整性檢查。所有系統文件都與預期值哈希匹配。"
 
 #: 
-msgid "Google map API requires a unique key"
-msgstr "Google地圖API需要唯一的密鑰"
-
-#: 
 msgid "Church Checking Account Number"
 msgstr "教堂檢查帳號"
 
@@ -7718,10 +7682,6 @@ msgstr "無法重置密碼"
 #: 
 msgid "Reset your password"
 msgstr "重置你的密碼"
-
-#: 
-msgid "Check your email for a password reset link"
-msgstr "請檢查您的電子郵件以獲取密碼重置鏈接"
 
 #: 
 msgid "Sorry, we are unable to process your request at this point in time."
@@ -8407,20 +8367,6 @@ msgid "Set the encryption system to use - ssl (deprecated) or tls"
 msgstr "將加密系統設置為使用 - ssl（不建議使用）或tls"
 
 #: 
-msgid "Lock"
-msgstr "鎖"
-
-#: 
-#, fuzzy
-msgid "Enter your password to retrieve your session"
-msgstr "輸入您的密碼來恢復瀏覽"
-
-#: 
-#, fuzzy
-msgid "Or sign in as a different user"
-msgstr "或以其他用戶身份登入"
-
-#: 
 msgid "Dashboard Service dynamic asynchronous refresh interval, default 60 second"
 msgstr "儀表板服務動態異步刷新間隔，默認為60秒"
 
@@ -8719,14 +8665,6 @@ msgstr "指定的升級文件無效"
 #: 
 msgid "Failure executing upgrade script"
 msgstr "執行升級腳本失敗"
-
-#: 
-msgid "logged via API Key."
-msgstr "通過API密鑰記錄。"
-
-#: 
-msgid "logged via InValid API Key."
-msgstr "通過無效的API密鑰記錄。"
 
 #: 
 msgid "Missing calendar access token"
@@ -9201,11 +9139,6 @@ msgstr "不預期的人員代碼"
 
 #: 
 #, fuzzy
-msgid "LastName, FirstName MiddleName:8"
-msgstr "名,姓,中間名:8"
-
-#: 
-#, fuzzy
 msgid "Interval in Hours for software update check"
 msgstr "軟件更新檢查的間隔小時"
 
@@ -9469,12 +9402,4 @@ msgstr "必須設置為'true'"
 #: 
 msgid "Include/Config.php must define an encryption key for storing 2FA secret keys in the database by setting a value for"
 msgstr "Include / Config.php必須通過為以下項設置值來定義用於在數據庫中存儲雙重認證秘密密鑰的加密密鑰"
-
-#: 
-msgid "Credit Card People"
-msgstr "信用卡人"
-
-#: 
-msgid "People who are configured to pay by credit card."
-msgstr "配置為通過信用卡付款的人。"
 

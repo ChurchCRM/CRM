@@ -2776,20 +2776,8 @@ msgid "Failed Logins"
 msgstr "Logins dështuara"
 
 #: 
-msgid "You must enter a password in both boxes"
-msgstr "Ju duhet të hyjë në një fjalëkalim në të dy kutitë"
-
-#: 
 msgid "You must enter the same password in both boxes"
 msgstr "Ju duhet të hyjë në të njëjtin fjalëkalim në të dy kutitë"
-
-#: 
-msgid "Invalid password"
-msgstr "Regjistrohu Invalid"
-
-#: 
-msgid "You must enter your new password in both boxes"
-msgstr "Ju duhet të shkruani fjalëkalimin tuaj të re në të dy kutitë"
 
 #: 
 msgid "Your password choice is too obvious. Please choose something else."
@@ -2804,32 +2792,12 @@ msgid "characters"
 msgstr "karaktere"
 
 #: 
-msgid "You need to actually change your password (nice try, though!)"
-msgstr "Ju duhet të vërtetë të ndryshuar fjalëkalimin tuaj (të mirë provoni, pse!)"
-
-#: 
-msgid "Your new password is too similar to your old one.  Be more creative!"
-msgstr "Fjalëkalimi juaj i ri është shumë i ngjashëm me një tuaj të vjetër. Të jetë më kreative!"
-
-#: 
-msgid "User Password Change"
-msgstr "Ndryshimi i përdoruesit Fjalëkalimi"
-
-#: 
-msgid "Your account record indicates that you need to change your password before proceding."
-msgstr "Të dhënat tuaja të llogarisë tregon se ju duhet të ndryshoni fjalëkalimin tuaj para proceding."
-
-#: 
 msgid "Enter your current password, then your new password twice.  Passwords must be at least"
 msgstr "Shkruani fjalëkalimin tuaj të tanishme, atëherë fjalëkalimin tuaj të ri dy herë. Fjalëkalimet duhet të jetë të paktën"
 
 #: 
 msgid "characters in length."
 msgstr "karaktere në gjatësi."
-
-#: 
-msgid "Enter a new password for this user."
-msgstr "Futni një fjalëkalim të ri për këtë përdorues."
 
 #: 
 msgid "Old Password"

@@ -2006,10 +2006,6 @@ msgid "Failed Logins"
 msgstr "Đăng nhập thất bại"
 
 #: 
-msgid "User Password Change"
-msgstr "Thay đổi mật khẩu thành viên"
-
-#: 
 msgid "Enter your current password, then your new password twice.  Passwords must be at least"
 msgstr "Nhập mật khẩu hiện tại, sau đó nhập mật khẩu mới hai lần. Mật khẩu phải có ít nhất 6 ký tự."
 
@@ -3096,10 +3092,6 @@ msgstr "Cập nhật dữ liệu"
 #: 
 msgid "Birthdates of the day"
 msgstr "Ngày sinh nhật"
-
-#: 
-msgid "Lock"
-msgstr "Khóa phiên đăng nhập"
 
 #: 
 msgid "Add All to Cart"

@@ -3350,20 +3350,8 @@ msgid "Failed Logins"
 msgstr "Ingresos fallidos"
 
 #: 
-msgid "You must enter a password in both boxes"
-msgstr "Debe entrar una contraseña en ambos espacios"
-
-#: 
 msgid "You must enter the same password in both boxes"
 msgstr "Debe entrar la misma contraseña en ambos espacios"
-
-#: 
-msgid "Invalid password"
-msgstr "Contraseña inválida"
-
-#: 
-msgid "You must enter your new password in both boxes"
-msgstr "Debe entrar su nueva contraseña en ambos espacios"
 
 #: 
 msgid "Your password choice is too obvious. Please choose something else."
@@ -3378,32 +3366,12 @@ msgid "characters"
 msgstr "caracteres"
 
 #: 
-msgid "You need to actually change your password (nice try, though!)"
-msgstr "necesita cambiar su contraseña (buen intento)"
-
-#: 
-msgid "Your new password is too similar to your old one.  Be more creative!"
-msgstr "Su nueva contraseña en muy similiar a la anterior. Sea más creativo!"
-
-#: 
-msgid "User Password Change"
-msgstr "Cambio de contraseña"
-
-#: 
-msgid "Your account record indicates that you need to change your password before proceding."
-msgstr "El registro de su cuenta indica que debe cambiar su contraseña antes de proceder"
-
-#: 
 msgid "Enter your current password, then your new password twice.  Passwords must be at least"
 msgstr "Introduzca su contraseña actual, luego su nueva contraseña dos veces. Las contraseñas deben tener al menos"
 
 #: 
 msgid "characters in length."
 msgstr "caracteres de largo."
-
-#: 
-msgid "Enter a new password for this user."
-msgstr "introduzca una nueva contraseña para este usuario"
 
 #: 
 msgid "Old Password"
@@ -7044,11 +7012,6 @@ msgid "The previous integrity check passed.  All system file hashes match the ex
 msgstr "Las evaluaciones de integridad previas pasaron. Todos los hash de archivos del sistema coinciden con los valores esperados."
 
 #: 
-#, fuzzy
-msgid "Google map API requires a unique key"
-msgstr "La API de Google maps requiere una clave única de https://developers.google.com/maps/documentation/javascript/get-api-key"
-
-#: 
 msgid "Church Checking Account Number"
 msgstr "Número de Cuenta Corriente de Iglesia"
 
@@ -7596,10 +7559,6 @@ msgstr "No es posible restablecer la contraseña"
 #: 
 msgid "Reset your password"
 msgstr "Restablecer su contraseña"
-
-#: 
-msgid "Check your email for a password reset link"
-msgstr "Revise su email para un enlace de restablecimiento de contraseña"
 
 #: 
 msgid "Sorry, we are unable to process your request at this point in time."
@@ -8277,18 +8236,6 @@ msgid "Set the encryption system to use - ssl (deprecated) or tls"
 msgstr "Establecer el sistema de cifrado a usar - ssl (deprecado) o tls"
 
 #: 
-msgid "Lock"
-msgstr "bloquear"
-
-#: 
-msgid "Enter your password to retrieve your session"
-msgstr "Ingrese su contraseña para obtener su sesión"
-
-#: 
-msgid "Or sign in as a different user"
-msgstr "O ingresar como un usuario diferente"
-
-#: 
 msgid "Dashboard Service dynamic asynchronous refresh interval, default 60 second"
 msgstr "Intervalo de actualización del Servicio de Dashboard, 60 segundos por defecto"
 
@@ -8583,15 +8530,6 @@ msgstr "Archivo de actualización inválido"
 #: 
 msgid "Failure executing upgrade script"
 msgstr "Falla al ejecutar script de actualización"
-
-#: 
-msgid "logged via API Key."
-msgstr "conectado vía Llave de API."
-
-#. Invalid
-#: 
-msgid "logged via InValid API Key."
-msgstr "conectado vía Llave de API invalida."
 
 #: 
 msgid "Missing calendar access token"
@@ -9018,11 +8956,6 @@ msgstr "Restablecer Sistema"
 #: 
 msgid "Unexpected Person Id"
 msgstr "Id de Persona Inesperado"
-
-#. There is an 8 trailing
-#: 
-msgid "LastName, FirstName MiddleName:8"
-msgstr "Apellido, PrimerNombre, SegundoNombre"
 
 #: 
 msgid "Interval in Hours for software update check"

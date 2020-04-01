@@ -219,11 +219,11 @@ msgstr "Nicht filtern"
 
 #: 
 msgid "Male"
-msgstr "Mann"
+msgstr "männlich"
 
 #: 
 msgid "Female"
-msgstr "Frau"
+msgstr "weiblich"
 
 #: 
 #, fuzzy
@@ -470,7 +470,7 @@ msgstr "Informationsblatt"
 
 #: 
 msgid "Generate a PDF containing briefing sheets for all Families, sorted by canvasser."
-msgstr "Erstelle ein PDF das alle Informationsblätter für alle Familein enthält, sortiert nach Aktionsmitarbeitern."
+msgstr "Erstelle ein PDF das alle Informationsblätter für alle Familien enthält, sortiert nach Aktionsmitarbeitern."
 
 #: 
 msgid "Progress Report"
@@ -1249,7 +1249,7 @@ msgstr "Veranstaltungsart hinzufügen"
 
 #: 
 msgid "Custom Family Fields Editor"
-msgstr "Editor für selbstdefinierte Famileinfelder"
+msgstr "Editor für selbstdefinierte Familienfelder"
 
 #: 
 msgid "Default Option"
@@ -1533,7 +1533,7 @@ msgstr "Wert bearbeiten"
 #: 
 #, fuzzy
 msgid "Assign a New Property"
-msgstr "Neue Eingenschaft festlegen"
+msgstr "Neue Eigenschaft zuweisen"
 
 #: 
 msgid "Assign"
@@ -2383,7 +2383,7 @@ msgstr "Zuweisung beginnt bei #"
 
 #: 
 msgid "Unable to display map due to missing Church Latitude or Longitude. Please update the church Address in the settings menu."
-msgstr "Diese Karte konnte nicht angezeigt werden, da die Längen- und Breitenangaben der Kirche fehlen. Bitte aktualisiere die Kirchenadresse in den Einstellungen."
+msgstr "Diese Karte konnte nicht angezeigt werden, da die Längen- und Breitenangaben der Gemeinde fehlen. Bitte aktualisiere die Adresse der Gemeinde in den Einstellungen."
 
 #: 
 msgid "Google Map API key is not set. The Map will work for smaller set of locations. Please create a Key in the maps sections of the setting menu."
@@ -2484,6 +2484,10 @@ msgid "Count"
 msgstr "Anzahl"
 
 #: 
+msgid "Gender Demographics"
+msgstr "Geschlechter-Diagramm"
+
+#: 
 msgid "Men"
 msgstr "Männer"
 
@@ -2498,6 +2502,10 @@ msgstr "Jungen"
 #: 
 msgid "Girls"
 msgstr "Mädchen"
+
+#: 
+msgid "Sunday School Classes"
+msgstr "Sonntagsschulklassen"
 
 #: 
 msgid "Latest Families"
@@ -2930,7 +2938,7 @@ msgstr "Bitte bestätige das Löschen dieser Eigenschaft"
 
 #: 
 msgid "Deleting this Property will also delete all assignments of this Property to any People, Family, or Group records."
-msgstr "Wenn du diese Eingenschaft löscht werden auch alle Festlegungen dieser Eingschaft bezüglich aller Personen, Familien und Gruppen gelöscht."
+msgstr "Das Löschen dieser Eigenschaft führt auch zum Löschen aller Zuordnungen dieser Eigenschaft zu allen Personen, Familien und Gruppen."
 
 #: 
 msgid "No, cancel this deletion"
@@ -2959,7 +2967,7 @@ msgstr "Die Eingabe eines Promptwertes wird die Verknüpfung eines freien Formwe
 
 #: 
 msgid "Property List"
-msgstr "Eingenschaftsliste:"
+msgstr "Liste der Eigenschaften"
 
 #: 
 msgid "Add a New"
@@ -2983,7 +2991,7 @@ msgstr "Warnung"
 
 #: 
 msgid "This property type is still being used by at least one property."
-msgstr "Dieser Eingenschaftstyp wird gerade von midestens einer Eingeschaft benutzt."
+msgstr "Dieser Eigenschaftstyp wird von mindestens einer Eigenschaft benutzt."
 
 #: 
 msgid "If you delete this type, you will also remove all properties using"
@@ -2991,12 +2999,12 @@ msgstr "Wenn du diesen Typ löscht, wirst du auch alle benutzten Eingschaften l�
 
 #: 
 msgid "it and lose any corresponding property assignments."
-msgstr "und alle verknüpften Eingenschaften."
+msgstr "und alle verknüpften Eigenschaften."
 
 #: 
 #, fuzzy
 msgid "Please confirm deletion of this Property Type"
-msgstr "Bitte bestätige die Löschung dieses Eingenschaftstyps"
+msgstr "Bitte bestätige die Löschung dieses Eigenschaftstyps"
 
 #: 
 msgid "Property Type Editor"
@@ -3190,7 +3198,7 @@ msgstr "Bitte bestätige die Löschung der Familieneinträge:"
 
 #: 
 msgid "Note: This will also delete all Notes associated with this Family record."
-msgstr "Hinweis: Dies wird auch alle Notizen löschen, die mit dem Famileineintrag verknüpft sind."
+msgstr "Hinweis: Dies wird auch alle Notizen löschen, die mit dem Familieneintrag verknüpft sind."
 
 #: 
 msgid "Delete Family Record ONLY"
@@ -3382,20 +3390,8 @@ msgid "Failed Logins"
 msgstr "Fehlgschlagene Logins"
 
 #: 
-msgid "You must enter a password in both boxes"
-msgstr "Du musst ein Passwort in beide Felder eintragen"
-
-#: 
 msgid "You must enter the same password in both boxes"
 msgstr "Du musst dasselbe Passwort in beide Felder eintragen"
-
-#: 
-msgid "Invalid password"
-msgstr "Ungültiges Passwort"
-
-#: 
-msgid "You must enter your new password in both boxes"
-msgstr "Du musst ein neues Passwort in beide Felder eintragen"
 
 #: 
 msgid "Your password choice is too obvious. Please choose something else."
@@ -3410,32 +3406,12 @@ msgid "characters"
 msgstr "Stellen haben"
 
 #: 
-msgid "You need to actually change your password (nice try, though!)"
-msgstr "Du musst dein Passwort ändern (war aber ein guter Versuch!)"
-
-#: 
-msgid "Your new password is too similar to your old one.  Be more creative!"
-msgstr "Das neue Passwort ist dem Alten zu ähnlich. Bitte etwas kreativer!"
-
-#: 
-msgid "User Password Change"
-msgstr "Benutzerpasswort ändern"
-
-#: 
-msgid "Your account record indicates that you need to change your password before proceding."
-msgstr "Deine Kontoaufzeichnung zeigt, dass du dein Passwort ändern musst bevor es weiter gehen kann."
-
-#: 
 msgid "Enter your current password, then your new password twice.  Passwords must be at least"
 msgstr "Gib dein aktuelles Pass"
 
 #: 
 msgid "characters in length."
 msgstr "Stellen lang sein."
-
-#: 
-msgid "Enter a new password for this user."
-msgstr "Gib ein neues Passwort für diesen Benutzer ein."
 
 #: 
 #, fuzzy
@@ -3494,7 +3470,7 @@ msgstr "Neuen Fähigkeit hinzufügen"
 
 #: 
 msgid "\"Why Came\" notes for "
-msgstr "Anmerkungen zu \"Warum Kirchenbesuch\""
+msgstr "Besuchsgrund"
 
 #: 
 msgid "Why did you come to the church?"
@@ -3510,7 +3486,7 @@ msgstr "Haben sie Vorschläge für uns?"
 
 #: 
 msgid "How did you learn of the church?"
-msgstr "Wie haben sie die Kirche kennengelernt?"
+msgstr "Wie haben sie die Gemeinde kennengelernt?"
 
 #: 
 msgid "eGive Import"
@@ -4030,6 +4006,10 @@ msgid "Sunday School"
 msgstr "Sonntagsschule"
 
 #: 
+msgid "Toggle Dropdown"
+msgstr "Dropdown ein-/ausklappen"
+
+#: 
 msgid "Teachers"
 msgstr "Lehrer"
 
@@ -4249,6 +4229,10 @@ msgid "Are you sure you want to delete the selected"
 msgstr "Sind Sie sicher, dass Sie die gewählten löschen möchten?"
 
 #: 
+msgid "This action CANNOT be undone, and may have legal implications!"
+msgstr "Diese Aktion kann NICHT rückgängig gemacht werden und kann rechtliche Folgen haben!"
+
+#: 
 msgid "Please ensure this what you want to do."
 msgstr "Bitte bestätige, dass Du dies tun willst."
 
@@ -4309,6 +4293,14 @@ msgid "No Restore Running"
 msgstr "Keine Wiederherstellung läuft"
 
 #: 
+msgid "Restore Complete"
+msgstr "Vollständig wiederherstellen"
+
+#: 
+msgid "Login to restored Database"
+msgstr "An wiederhergestellte Datenbank anmelden"
+
+#: 
 msgid "Restore Error."
 msgstr "Fehler beim Wiederherstellen"
 
@@ -4327,6 +4319,10 @@ msgstr "E-Mail-Einstellungen"
 #: 
 msgid "Map Settings"
 msgstr "Karteneinstellungen"
+
+#: 
+msgid "Report Settings"
+msgstr "Berichteinstellungen"
 
 #: 
 msgid "Localization"
@@ -4371,6 +4367,14 @@ msgstr "Bitte erstellen Sie ein Datenbank Backup bevor Sie den Upgrade Prozess b
 #: 
 msgid "Generate Database Backup"
 msgstr "Datenbank Backup erstellen"
+
+#: 
+msgid "Step 2: Fetch Update Package on Server"
+msgstr "Schritt 2: Update-Paket vom Server holen"
+
+#: 
+msgid "Fetch the latest files from the ChurchCRM GitHub release page"
+msgstr "Hole die neusten Dateien von der ChurchCRM-GitHub-Seite"
 
 #: 
 msgid "Fetch Update Files"
@@ -4479,6 +4483,10 @@ msgstr "E-Mail-Einstellungen festlegen"
 #: 
 msgid "New Release"
 msgstr "Neues Release"
+
+#: 
+msgid "Application Integrity Check Failed"
+msgstr "Der Integritätscheck der Anwendung ist fehlgeschlagen"
 
 #: 
 msgid "Restore Status:"
@@ -4797,6 +4805,14 @@ msgid "First month of the fiscal year"
 msgstr "Erster Monat des Steuerjahres"
 
 #: 
+msgid "Latitude of the church, used to center the Google map"
+msgstr "Breitengrad der Gemeinde, der zur Zentrierung der Google-Karte verwendet wird"
+
+#: 
+msgid "Longitude of the church, used to center the Google map"
+msgstr "Längengrad der Kirche, der zur Zentrierung der Google-Karte verwendet wird"
+
+#: 
 msgid "Set true to enable use of donation envelopes"
 msgstr "Setze auf true um Spendenbriefumschläge zu aktivieren."
 
@@ -4822,7 +4838,7 @@ msgstr "Telefonnummer der Gemeinde"
 
 #: 
 msgid "Home area code of the church"
-msgstr "Stammgebiet der Kirche"
+msgstr "Ortsvorwahl der Gemeinde"
 
 #: 
 msgid "Enable Integrity Check"
@@ -4842,11 +4858,11 @@ msgstr "Liste Gruppen"
 
 #: 
 msgid "List Church Events"
-msgstr "Kirchenveranstaltungen auflisten"
+msgstr "Veranstaltungen anzeigen"
 
 #: 
 msgid "Add Church Event"
-msgstr "Kirchenveranstaltung hinzufügen"
+msgstr "Veranstaltung hinzufügen"
 
 #: 
 msgid "View All Fundraisers"
@@ -5029,6 +5045,30 @@ msgid "Recent friends"
 msgstr "Neue Freunde"
 
 #: 
+msgid "CustomSearch"
+msgstr "Benutzerdefinierte Suche"
+
+#: 
+msgid "People with birthdays in a particular month"
+msgstr "Personen mit Geburtstagen in einem bestimmten Monat"
+
+#: 
+msgid "Find Registered students"
+msgstr "Registrierte Studenten suchen"
+
+#: 
+msgid "Members who joined in a particular month"
+msgstr "Mitglieder, welche in einem bestimmten Monat beigetreten sind"
+
+#: 
+msgid "People who are registered as database users"
+msgstr "Personen, welche als Datenbankbenutzer registriert sind"
+
+#: 
+msgid "People who are members"
+msgstr "Personen, welche Mitglieder sind"
+
+#: 
 msgid "Last Edited"
 msgstr "Zuletzt geändert"
 
@@ -5134,15 +5174,15 @@ msgstr "Familienrollen Editieren"
 
 #: 
 msgid "Person Classification"
-msgstr "Personenklassen"
+msgstr "Personen-Einordnung"
 
 #: 
 msgid "Person Classifications"
-msgstr "Personenklassen"
+msgstr "Personen-Einordnungen"
 
 #: 
 msgid "Person Classifications Editor"
-msgstr "Personenklassen Editieren"
+msgstr "Personen-Einordnungen bearbeiten"
 
 #: 
 msgid "Group Type"
@@ -5167,6 +5207,22 @@ msgstr "sind nicht erlaubt."
 #: 
 msgid "Imported"
 msgstr "Importiert"
+
+#: 
+msgid "Created via Family"
+msgstr "Über Familie erstellt"
+
+#: 
+msgid "Updated via Family"
+msgstr "Über Familie aktualisiert"
+
+#: 
+msgid "Family Data Verified"
+msgstr "Familiendaten überprüft"
+
+#: 
+msgid "Profile Image Deleted"
+msgstr "Profilbild gelöscht"
 
 #: 
 msgid "miles"
@@ -5735,6 +5791,26 @@ msgid "Wallis and Futuna"
 msgstr "Wallis und Futuna"
 
 #: 
+msgid "Missing Classification Data"
+msgstr "Fehlende Einordnungsdaten"
+
+#: 
+msgid "Missing Classification Data for Some People"
+msgstr "Einordnung bei einigen Personen nicht eingetragen"
+
+#: 
+msgid "Missing Gender Data"
+msgstr "Geschlecht nicht eingetragen"
+
+#: 
+msgid "Missing Gender Data for Some People"
+msgstr "Geschlecht bei einigen Personen nicht eingetragen"
+
+#: 
+msgid "Missing Role Data"
+msgstr "Fehlende Rollen"
+
+#: 
 msgid "No Changes"
 msgstr "Keine Änderungen"
 
@@ -5769,6 +5845,14 @@ msgstr "Online-Verifizierung"
 #: 
 msgid "None State"
 msgstr "Kein Status"
+
+#: 
+msgid "Missing Coordinates"
+msgstr "Fehlende Koordinaten"
+
+#: 
+msgid "Google Analytics Tracking Code"
+msgstr "Google-Analytics-Code"
 
 #: 
 msgid "English - Australia"
@@ -5855,6 +5939,14 @@ msgid "Failed"
 msgstr "Fehlgeschlagen"
 
 #: 
+msgid "PHP Max File size too small"
+msgstr "PHP Max File size zu klein"
+
+#: 
+msgid "Deactivated the Family"
+msgstr "Familie deaktiviert"
+
+#: 
 msgid "Profile Image uploaded"
 msgstr "Profilbild hochgeladen"
 
@@ -5917,6 +6009,30 @@ msgstr "Diese Eigenschaft ist schon zugewiesen."
 #: 
 msgid "The property is successfully assigned."
 msgstr "Die Eigenschaft wurde zugewiesen."
+
+#: 
+msgid "Select event"
+msgstr "Veranstaltung auswählen"
+
+#: 
+msgid "Person's Name"
+msgstr "Name der Person"
+
+#: 
+msgid "Adult Name(Optional)"
+msgstr "Name des Erwachsenen (optional)"
+
+#: 
+msgid "Checked in By(Optional)"
+msgstr "Eingecheckt von (optional)"
+
+#: 
+msgid "Person has been already checked in for this event"
+msgstr "Person wurde für dieses Event bereits eingecheckt"
+
+#: 
+msgid "Adult Name (Optional)"
+msgstr "Name des Erwachsenen (optional)"
 
 #: 
 msgid "Account Locked"
@@ -6003,6 +6119,10 @@ msgid "Actions"
 msgstr "Aktionen"
 
 #: 
+msgid "Password reset for"
+msgstr "Passwort wurde zurückgesetzt für"
+
+#: 
 msgid "View Active Families"
 msgstr "Aktive Familien anzeigen"
 
@@ -6011,8 +6131,48 @@ msgid "View Inactive Families"
 msgstr "Inaktive Familien anzeigen"
 
 #: 
+msgid "Exclude Inactive Families"
+msgstr "Inaktive Familien ausschließen"
+
+#: 
+msgid "The role is already assigned."
+msgstr "Diese Rolle ist bereits zugewiesen."
+
+#: 
+msgid "The role is successfully assigned."
+msgstr "Die Rolle wurde zugewiesen."
+
+#: 
+msgid "The role could not be assigned."
+msgstr "Die Rolle konnte nicht zugewiesen werden."
+
+#: 
+msgid "Bing map API requires a unique key"
+msgstr "Bing Maps API benötigt einen eindeutigen Schlüssel."
+
+#: 
+msgid "Google Maps Zoom"
+msgstr "Google Maps Zoom"
+
+#: 
+msgid "Your ChurchCRM account was locked."
+msgstr "Dein ChurchCRM-Account wurde gesperrt."
+
+#: 
 msgid "A ChurchCRM account was created for you"
 msgstr "Ein ChurchCRM-Account wurde für Sie erstellt"
+
+#: 
+msgid "Your ChurchCRM password was changed"
+msgstr "Dein ChurchCRM-Passwort wurde geändert."
+
+#: 
+msgid "You can reset your ChurchCRM password by clicking this link"
+msgstr "Du kannst dein ChurchCRM-Passwort zurücksetzen, indem du auf diesen Link klickst."
+
+#: 
+msgid "Your ChurchCRM account was unlocked."
+msgstr "Dein ChurchCRM-Account wurde wieder freigegeben."
 
 #: 
 msgid "system user created"
@@ -6029,6 +6189,18 @@ msgstr "Systembenutzer gelöscht"
 #: 
 msgid "system user changed password"
 msgstr "Systembenutzer Passwort geändert"
+
+#: 
+msgid "Missing Families? Update Family Latitude or Longitude now."
+msgstr "Nicht alle Familien sichtba? Jetzt Koordinaten aktualisieren."
+
+#: 
+msgid "Families without Geo Info"
+msgstr "Familien ohne Koordinaten"
+
+#: 
+msgid "Notification for"
+msgstr "Benachrichtigung für"
 
 #: 
 msgid "INFO"
@@ -6095,12 +6267,40 @@ msgid "OpenLP URL"
 msgstr "OpenLP-URL"
 
 #: 
+msgid "Reset Password"
+msgstr "Passwort zurücksetzen"
+
+#: 
+msgid "Unable to reset password"
+msgstr "Das Passwort konnte nicht zurückgesetzt werden"
+
+#: 
+msgid "Reset your password"
+msgstr "Passwort zurücksetzen"
+
+#: 
+msgid "Your Cart"
+msgstr "Dein Wagen"
+
+#: 
+msgid "Your settings and more"
+msgstr "Deine Einstellungen und mehr"
+
+#: 
+msgid "Report an issue"
+msgstr "Ein Problem melden"
+
+#: 
 msgid "Your tasks"
 msgstr "Ihre Aufgaben"
 
 #: 
 msgid "I forgot my password"
 msgstr "Ich habe mein Passwort vergessen"
+
+#: 
+msgid "Text Cart"
+msgstr "Textnachricht"
 
 #: 
 msgid "Your Church's Website"
@@ -6121,6 +6321,10 @@ msgstr "Stacktrace"
 #: 
 msgid "Role Name"
 msgstr "Rollenname"
+
+#: 
+msgid "Sequence"
+msgstr "Liste"
 
 #: 
 msgid "Remove all"
@@ -6289,10 +6493,6 @@ msgstr "Heutige Geburtstage"
 #: 
 msgid "Anniversaries of the day"
 msgstr "Heutige Jahrestage"
-
-#: 
-msgid "Lock"
-msgstr "Sperren"
 
 #: 
 msgid "Not Found"
@@ -6513,4 +6713,8 @@ msgstr "Fehler beim Versenden der E-Mail(s)"
 #: 
 msgid "Please check logs for more information"
 msgstr "Überprüfen Sie die Logs für weitere Informationen"
+
+#: 
+msgid "See all People"
+msgstr "Alle Personen anzeigen"
 

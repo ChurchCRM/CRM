@@ -2889,20 +2889,8 @@ msgid "Failed Logins"
 msgstr "Sikertelen bejelentkezések"
 
 #: 
-msgid "You must enter a password in both boxes"
-msgstr "Meg kell adnod egy jelszót mindkét dobozok"
-
-#: 
 msgid "You must enter the same password in both boxes"
 msgstr "Meg kell adni ugyanazt a jelszót mindkét dobozok"
-
-#: 
-msgid "Invalid password"
-msgstr "Érvénytelen jelszó"
-
-#: 
-msgid "You must enter your new password in both boxes"
-msgstr "Meg kell adnia az új jelszót mindkét dobozok"
 
 #: 
 msgid "Your password choice is too obvious. Please choose something else."
@@ -2917,32 +2905,12 @@ msgid "characters"
 msgstr "karakterek"
 
 #: 
-msgid "You need to actually change your password (nice try, though!)"
-msgstr "Be kell, hogy tényleg változtassa meg a jelszavát (szép próbálkozás, de!)"
-
-#: 
-msgid "Your new password is too similar to your old one.  Be more creative!"
-msgstr "Az új jelszó túl hasonló a régit. Légy kreatív!"
-
-#: 
-msgid "User Password Change"
-msgstr "User Password Change"
-
-#: 
-msgid "Your account record indicates that you need to change your password before proceding."
-msgstr "Fiókja eredménye azt jelzi, hogy meg kell, hogy változtassa meg a jelszavát, mielőtt proceding."
-
-#: 
 msgid "Enter your current password, then your new password twice.  Passwords must be at least"
 msgstr "Adja meg jelenlegi jelszavát, majd az új jelszót kétszer. Jelszavak legalább"
 
 #: 
 msgid "characters in length."
 msgstr "karakter hosszú."
-
-#: 
-msgid "Enter a new password for this user."
-msgstr "Adjon meg egy új jelszót a felhasználó számára."
 
 #: 
 #, fuzzy

@@ -9,11 +9,16 @@
     "State": "State",
     "Country": "Country",
     "Zip": "Postcode",
+    "Load Authorized Transactions": "Load Authorised Transactions",
     "Family Cell Phone": "Family Mobile",
     "Personal Cell Phone": "Personal Mobile",
     "Check": "Cheque",
+    "GPS Visualizer": "GPS Visualiser",
     "City, State, Zip": "Suburb, State, Post Code",
     "Cell Phone": "Mobile Phone",
     "Cell": "Mobile",
-    "Cell phone": "Mobile phone"
+    "Localization": "Localisation",
+    "Cell phone": "Mobile phone",
+    "Internationalization (I18n) support": "Internationalisation (I18n) support",
+    "This upgrade will completely destroy any customizations made to the following files by reverting the files to the official version.": "This upgrade will completely destroy any customisations made to the following files by reverting the files to the official version."
 }

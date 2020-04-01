@@ -3361,20 +3361,8 @@ msgid "Failed Logins"
 msgstr "Login falliti"
 
 #: 
-msgid "You must enter a password in both boxes"
-msgstr "Devi inserire la stessa password in entrambi i campi"
-
-#: 
 msgid "You must enter the same password in both boxes"
 msgstr "Devi inserire la stessa password in entrambi i campi"
-
-#: 
-msgid "Invalid password"
-msgstr "Password non valida"
-
-#: 
-msgid "You must enter your new password in both boxes"
-msgstr "Devi inserire la tua nuova password in entrambi i campi"
 
 #: 
 msgid "Your password choice is too obvious. Please choose something else."
@@ -3389,32 +3377,12 @@ msgid "characters"
 msgstr "caratteri"
 
 #: 
-msgid "You need to actually change your password (nice try, though!)"
-msgstr "Devi realmente cambiare la tua password (bel tentativo, comunque)"
-
-#: 
-msgid "Your new password is too similar to your old one.  Be more creative!"
-msgstr "La tua nuova password è troppo simile a quella vecchia.  Sii più creativo!"
-
-#: 
-msgid "User Password Change"
-msgstr "Modifica password utente"
-
-#: 
-msgid "Your account record indicates that you need to change your password before proceding."
-msgstr "La tua scheda di account indica che devi cambiare la password prima di procedere."
-
-#: 
 msgid "Enter your current password, then your new password twice.  Passwords must be at least"
 msgstr "Inserisci la tua password attuale, poi la tua nuova password due volte. La password deve essere almeno"
 
 #: 
 msgid "characters in length."
 msgstr "caratteri."
-
-#: 
-msgid "Enter a new password for this user."
-msgstr "Inserisci una nuova password per questo utente."
 
 #: 
 msgid "Old Password"
@@ -7034,10 +7002,6 @@ msgid "The previous integrity check passed.  All system file hashes match the ex
 msgstr "Passato il controllo dell'integrità precedente Tutti gli hash dei file di sistema corrispondono ai valori previsti."
 
 #: 
-msgid "Google map API requires a unique key"
-msgstr "L'API della mappa di Google richiede una chiave univoca"
-
-#: 
 msgid "Church Checking Account Number"
 msgstr "Numero di conto corrente della Chiesa"
 
@@ -7584,10 +7548,6 @@ msgstr "Impossibile reimpostare la password"
 #: 
 msgid "Reset your password"
 msgstr "Reimposta la Tua Password"
-
-#: 
-msgid "Check your email for a password reset link"
-msgstr "Controlla la tua email per un link di reimpostazione della password"
 
 #: 
 msgid "Sorry, we are unable to process your request at this point in time."
@@ -8262,18 +8222,6 @@ msgid "Set the encryption system to use - ssl (deprecated) or tls"
 msgstr "Imposta il sistema di crittografia da utilizzare: SSL (deprecato) o TLS"
 
 #: 
-msgid "Lock"
-msgstr "Blocca"
-
-#: 
-msgid "Enter your password to retrieve your session"
-msgstr "Inserisci la tua password per recuperare la sessione"
-
-#: 
-msgid "Or sign in as a different user"
-msgstr "O accedi come un altro utente"
-
-#: 
 msgid "Dashboard Service dynamic asynchronous refresh interval, default 60 second"
 msgstr "Intervallo di aggiornamento asincrono dinamico del servizio Dashboard, 60 secondi predefiniti"
 
@@ -8568,14 +8516,6 @@ msgstr "File di aggiornamento non valido"
 #: 
 msgid "Failure executing upgrade script"
 msgstr "Errore durante l'esecuzione dello script di aggiornamento"
-
-#: 
-msgid "logged via API Key."
-msgstr "registrato tramite chiave API."
-
-#: 
-msgid "logged via InValid API Key."
-msgstr "registrato tramite chiave API InValid."
 
 #: 
 msgid "Missing calendar access token"

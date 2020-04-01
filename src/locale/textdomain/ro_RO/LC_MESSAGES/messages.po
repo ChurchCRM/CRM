@@ -3432,20 +3432,8 @@ msgid "Failed Logins"
 msgstr "Conectări nereușite"
 
 #: 
-msgid "You must enter a password in both boxes"
-msgstr "Trebuie să introduceți o parolă în ambele casete"
-
-#: 
 msgid "You must enter the same password in both boxes"
 msgstr "Trebuie să introduceți aceeași parolă în ambele casete"
-
-#: 
-msgid "Invalid password"
-msgstr "Parola invalid"
-
-#: 
-msgid "You must enter your new password in both boxes"
-msgstr "Trebuie să introduceți noua parolă în ambele casete"
 
 #: 
 msgid "Your password choice is too obvious. Please choose something else."
@@ -3460,32 +3448,12 @@ msgid "characters"
 msgstr "caractere"
 
 #: 
-msgid "You need to actually change your password (nice try, though!)"
-msgstr "Aveți nevoie pentru a schimba de fapt, parola (Bună încercare, totuși!)"
-
-#: 
-msgid "Your new password is too similar to your old one.  Be more creative!"
-msgstr "Noua parolă este prea similar cu cel vechi. Fii mai creativ!"
-
-#: 
-msgid "User Password Change"
-msgstr "Utilizator Parola Schimbare"
-
-#: 
-msgid "Your account record indicates that you need to change your password before proceding."
-msgstr "Înregistrarea contului dumneavoastră indică faptul că aveți nevoie pentru a schimba parola înainte precedat."
-
-#: 
 msgid "Enter your current password, then your new password twice.  Passwords must be at least"
 msgstr "Introduceți parola curentă, apoi noua parolă de două ori. Parolele trebuie să fie de cel puțin"
 
 #: 
 msgid "characters in length."
 msgstr "caractere în lungime."
-
-#: 
-msgid "Enter a new password for this user."
-msgstr "Introduceți o nouă parolă pentru acest utilizator."
 
 #: 
 #, fuzzy
@@ -5469,6 +5437,66 @@ msgid "Person by Role and Gender"
 msgstr "Persoană după rol și gen"
 
 #: 
+msgid "Person by Property"
+msgstr "Persoană după proprietate"
+
+#: 
+msgid "Advanced Search"
+msgstr "Căutare avansată"
+
+#: 
+msgid "Birthdays"
+msgstr "Zile de naștere"
+
+#: 
+msgid "Membership anniversaries"
+msgstr "Aniversări membri"
+
+#: 
+msgid "Select database users"
+msgstr "Selectează utilizatori bază de date"
+
+#: 
+msgid "Select all members"
+msgstr "Selectează toți membrii"
+
+#: 
+msgid "Volunteers"
+msgstr "Voluntari"
+
+#: 
+msgid "Recent friends"
+msgstr "Prieteni recenți"
+
+#: 
+msgid "Families to Canvass"
+msgstr "Familii pe afișaj"
+
+#: 
+msgid "Pledge comparison"
+msgstr "Comparație gaj"
+
+#: 
+msgid "Missing pledges"
+msgstr "Gaj-ul lipsește"
+
+#: 
+msgid "Family Pledge by Fiscal Year"
+msgstr "Gajul familiei pe anul fiscal"
+
+#: 
+msgid "CustomSearch"
+msgstr "Căutare personalizată"
+
+#: 
+msgid "Returns each family and the total number of people assigned to them."
+msgstr "Returnează fiecare familie și numărul de persoane alocate ei"
+
+#: 
+msgid "Returns any person records with ages between two given ages."
+msgstr "Returnează membrii cu vârsta între limitele de ani"
+
+#: 
 msgid "Total of records matching a given gender."
 msgstr "Numărul de înregistrări care corespund unui gen"
 
@@ -5483,4 +5511,776 @@ msgstr "Returnează înregistrările persoanei cărora li se atribuie proprietat
 #: 
 msgid "Search by any part of Name, City, State, Zip, Home Phone, Email, or Work Email."
 msgstr "Căutați prin orice parte din:  nume, oraș, județ, cod poștal, telefon fix, e-mail sau e-mail de serviciu."
+
+#: 
+msgid "People with birthdays in a particular month"
+msgstr "Membri cu aniversarea într-o anumită lună"
+
+#: 
+msgid "Find Registered students"
+msgstr "Caută studenți înregistrați"
+
+#: 
+msgid "Members who joined in a particular month"
+msgstr "Membri care au aderat într-o anumită lună"
+
+#: 
+msgid "People who are registered as database users"
+msgstr "Persoane care sunt înregistrați ca utilizatori de bază de date"
+
+#: 
+msgid "People who are members"
+msgstr "Persoane care sunt membri"
+
+#: 
+msgid "Find volunteers for a particular opportunity"
+msgstr "Caută voluntari pentru o anumită oportunitate"
+
+#: 
+msgid "Friends who signed up in previous months"
+msgstr "Prieteni înregistrați luna trecută"
+
+#: 
+msgid "People in families that are ok to canvass."
+msgstr "Oameni care acceptă să facă evanghelizare"
+
+#: 
+msgid "Compare pledges between two fiscal years"
+msgstr "Compară angajamentele de donație între doi ani fiscali"
+
+#: 
+msgid "Find people who pledged one year but not another"
+msgstr "Caută oameni care au făcut angajament de donație într-un an dar nu și în următorul"
+
+#: 
+msgid "Pledge summary by family name for each fund for the selected fiscal year"
+msgstr "Rezumatul angajamentului după numele de familie pentru fiecare fond pentru anul fiscal selectat"
+
+#: 
+msgid "Find volunteers for who match two specific opportunity codes"
+msgstr "Caută voluntare cu care se potrivesc 2 coduri de oportunitate"
+
+#: 
+msgid "Find people with a custom field value"
+msgstr "Caută oameni cu o valoare personalizată"
+
+#: 
+msgid "Last Edited"
+msgstr "Ultima editare"
+
+#: 
+msgid "User permission to send email via mailto: links"
+msgstr "Permisiunea utilizatorului de a trimite email prin mailto:"
+
+#: 
+msgid "Delimiter to separate emails in mailto: links"
+msgstr "Delimitator pentru separarea adreselor de email în destinatar"
+
+#: 
+msgid "User permission to create directories"
+msgstr "Permisiunea utilizatorului de a create directoare"
+
+#: 
+msgid "User permission to export CSV files"
+msgstr "Permisiunea utilizatorului de a exporta fișiere CSV"
+
+#: 
+msgid "User permission to use IST Address Verification"
+msgstr "Permisiunea utilizatorului de a folosi validarea IST a adresei"
+
+#: 
+msgid "Allow user to add new event"
+msgstr "Permite utilizatorului să adauge un eveniment nou"
+
+#: 
+msgid "Canvass Progress Report"
+msgstr "Raport stadiu evanghelizare"
+
+#: 
+msgid "Done"
+msgstr "Finalizat"
+
+#: 
+msgid "Assigned"
+msgstr "Alocat"
+
+#: 
+msgid "Percent"
+msgstr "Procent"
+
+#: 
+msgid "Total"
+msgstr "Total"
+
+#: 
+msgid "Pledge status"
+msgstr "Stadiu gaj"
+
+#: 
+msgid "Canvass Summary Report"
+msgstr "Raport sumarizat tablou"
+
+#: 
+msgid "Suggestion"
+msgstr "Sugestie"
+
+#: 
+msgid "WhyNotInterested"
+msgstr "De ce nu este interesat"
+
+#: 
+msgid "Comments"
+msgstr "Comentarii"
+
+#: 
+msgid "Canvass Not Interested Report"
+msgstr "Tablou de raport neinteresați"
+
+#: 
+msgid "Weekly on"
+msgstr "Săptămânal pe"
+
+#: 
+msgid "s"
+msgstr "s"
+
+#: 
+msgid "Monthly on"
+msgstr "Lunar pe"
+
+#: 
+msgid "Yearly on"
+msgstr "Anual pe"
+
+#: 
+msgid "All Events of Type"
+msgstr "Toate evenimentele de acest tip"
+
+#: 
+msgid "There is"
+msgstr "Exitstă"
+
+#: 
+msgid "There are"
+msgstr "Sunt"
+
+#: 
+msgid "event"
+msgstr "eveniment"
+
+#: 
+msgid "events"
+msgstr "evenimente"
+
+#: 
+msgid " in this category."
+msgstr "în această categorie."
+
+#: 
+msgid "There currently is"
+msgstr "Există acum"
+
+#: 
+msgid "There currently are"
+msgstr "Sunt acum"
+
+#: 
+msgid "custom event type"
+msgstr "tip eveniment personalizat"
+
+#: 
+msgid "custom event types"
+msgstr "tip evenimente personalizat"
+
+#: 
+msgid "Family Custom List Options Editor"
+msgstr "Editor de opțiuni de listă personalizată pentru familie"
+
+#: 
+msgid "are not allowed."
+msgstr "nu sunt permise."
+
+#: 
+msgid "Name for New"
+msgstr "Nume pentru nou"
+
+#: 
+msgid "Imported"
+msgstr "Importat"
+
+#: 
+msgid "Created via Family"
+msgstr "Creat prin Familie"
+
+#: 
+msgid "Updated via Family"
+msgstr "Actualizat prin Familie"
+
+#: 
+msgid "Family Data Verified"
+msgstr "Date Familie verificate"
+
+#: 
+msgid "Profile Image Deleted"
+msgstr "Imagine de profil ștearsă"
+
+#: 
+msgid "miles"
+msgstr "mile"
+
+#: 
+msgid "kilometers"
+msgstr "kilometri"
+
+#: 
+msgid "WebDAV"
+msgstr "WebDAV"
+
+#: 
+msgid "Local"
+msgstr "Local"
+
+#: 
+msgid "Afghanistan (‫افغانستان‬‎)"
+msgstr "Afghanistan"
+
+#: 
+msgid "Åland Islands (Åland)"
+msgstr "Aland ISlands"
+
+#: 
+msgid "Albania (Shqipëri)"
+msgstr "Albania"
+
+#: 
+msgid "Algeria (‫الجزائر‬‎)"
+msgstr "Algeria"
+
+#: 
+msgid "American Samoa"
+msgstr "American SAmoa"
+
+#: 
+msgid "Andorra"
+msgstr "Andorra"
+
+#: 
+msgid "Angola"
+msgstr "Angola"
+
+#: 
+msgid "Anguilla"
+msgstr "Anquilla"
+
+#: 
+msgid "Antarctica"
+msgstr "Antarctica"
+
+#: 
+msgid "Antigua and Barbuda"
+msgstr "Antigua și Barbuda"
+
+#: 
+msgid "Argentina"
+msgstr "Argentina"
+
+#: 
+msgid "Armenia (Հայաստան)"
+msgstr "Armenia"
+
+#: 
+msgid "Aruba"
+msgstr "Aruba"
+
+#: 
+msgid "Ascension Island"
+msgstr "Ascension Island"
+
+#: 
+msgid "Australia"
+msgstr "Australia"
+
+#: 
+msgid "Bulgaria (България)"
+msgstr "Bulagria"
+
+#: 
+msgid "Burkina Faso"
+msgstr "Burkina Faso"
+
+#: 
+msgid "Burundi (Uburundi)"
+msgstr "Burundi"
+
+#: 
+msgid "Cambodia (កម្ពុជា)"
+msgstr "Cambodia"
+
+#: 
+msgid "Cameroon (Cameroun)"
+msgstr "Camerron"
+
+#: 
+msgid "Canada"
+msgstr "Canada"
+
+#: 
+msgid "Canary Islands (islas Canarias)"
+msgstr "Canary Islands"
+
+#: 
+msgid "Cape Verde (Kabu Verdi)"
+msgstr "Cape Verde"
+
+#: 
+msgid "Caribbean Netherlands"
+msgstr "Caribbean Netherlands"
+
+#: 
+msgid "Cayman Islands"
+msgstr "Cayman Islands"
+
+#: 
+msgid "Central African Republic (République centrafricaine)"
+msgstr "Central Afican Republic"
+
+#: 
+msgid "Ceuta and Melilla (Ceuta y Melilla)"
+msgstr "Ceuta and Melilla"
+
+#: 
+msgid "Chad (Tchad)"
+msgstr "Chad"
+
+#: 
+msgid "Chile"
+msgstr "Chile"
+
+#: 
+msgid "China (中国)"
+msgstr "China"
+
+#: 
+msgid "Christmas Island"
+msgstr "Chistmans Island"
+
+#: 
+msgid "Clipperton Island"
+msgstr "Clipperton Island"
+
+#: 
+msgid "Cocos (Keeling) Islands (Kepulauan Cocos (Keeling))"
+msgstr "Cocos"
+
+#: 
+msgid "Colombia"
+msgstr "Colombia"
+
+#: 
+msgid "Comoros (‫جزر القمر‬‎)"
+msgstr "Comoros"
+
+#: 
+msgid "Estonia (Eesti)"
+msgstr "Estonia"
+
+#: 
+msgid "Ethiopia"
+msgstr "Ethiopia"
+
+#: 
+msgid "Falkland Islands (Islas Malvinas)"
+msgstr "Falkland Islands"
+
+#: 
+msgid "Faroe Islands (Føroyar)"
+msgstr "Faroe Islands"
+
+#: 
+msgid "Fiji"
+msgstr "Fiji"
+
+#: 
+msgid "Finland (Suomi)"
+msgstr "Finalnd"
+
+#: 
+msgid "France"
+msgstr "Fance"
+
+#: 
+msgid "French Guiana (Guyane française)"
+msgstr "French Guiana"
+
+#: 
+msgid "French Polynesia (Polynésie française)"
+msgstr "French Polynesia"
+
+#: 
+msgid "French Southern Territories (Terres australes françaises)"
+msgstr "French Southern Territories"
+
+#: 
+msgid "Gabon"
+msgstr "Gabon"
+
+#: 
+msgid "Gambia"
+msgstr "Gambia"
+
+#: 
+msgid "Georgia (საქართველო)"
+msgstr "Georgia"
+
+#: 
+msgid "Germany (Deutschland)"
+msgstr "Germany"
+
+#: 
+msgid "Ghana (Gaana)"
+msgstr "Ghana"
+
+#: 
+msgid "Gibraltar"
+msgstr "Gibraltar"
+
+#: 
+msgid "Greece (Ελλάδα)"
+msgstr "Greece"
+
+#: 
+msgid "Greenland (Kalaallit Nunaat)"
+msgstr "Geenland"
+
+#: 
+msgid "Grenada"
+msgstr "Grenada"
+
+#: 
+msgid "Guadeloupe"
+msgstr "Guadeloupe"
+
+#: 
+msgid "Jamaica"
+msgstr "Jamaica"
+
+#: 
+msgid "Japan (日本)"
+msgstr "Japan"
+
+#: 
+msgid "Jersey"
+msgstr "Jersey"
+
+#: 
+msgid "Jordan (‫الأردن‬‎)"
+msgstr "Jordan"
+
+#: 
+msgid "Kazakhstan (Казахстан)"
+msgstr "Kazakhstan"
+
+#: 
+msgid "Kenya"
+msgstr "Kenya"
+
+#: 
+msgid "Kiribati"
+msgstr "Kiribati"
+
+#: 
+msgid "Kosovo (Kosovë)"
+msgstr "Kosova"
+
+#: 
+msgid "Kuwait (‫الكويت‬‎)"
+msgstr "Kuwait"
+
+#: 
+msgid "Kyrgyzstan (Кыргызстан)"
+msgstr "Kyrgyzstan"
+
+#: 
+msgid "Laos (ລາວ)"
+msgstr "Laos"
+
+#: 
+msgid "Lebanon (‫لبنان‬‎)"
+msgstr "Lebanon"
+
+#: 
+msgid "Lesotho"
+msgstr "Lesotho"
+
+#: 
+msgid "Liberia"
+msgstr "Liberia"
+
+#: 
+msgid "Libya (‫ليبيا‬‎)"
+msgstr "Libya"
+
+#: 
+msgid "Liechtenstein"
+msgstr "Liechtenstein"
+
+#: 
+msgid "Lithuania (Lietuva)"
+msgstr "Lithuania"
+
+#: 
+msgid "Luxembourg"
+msgstr "Luxembourg"
+
+#: 
+msgid "Macau (澳門)"
+msgstr "Macau"
+
+#: 
+msgid "Macedonia (FYROM) (Македонија)"
+msgstr "Macedonia"
+
+#: 
+msgid "Myanmar (Burma) (မြန်မာ)"
+msgstr "Myanmar"
+
+#: 
+msgid "Namibia (Namibië)"
+msgstr "Namibia"
+
+#: 
+msgid "Nauru"
+msgstr "Nauru"
+
+#: 
+msgid "Nepal (नेपाल)"
+msgstr "Nepal"
+
+#: 
+msgid "Netherlands (Nederland)"
+msgstr "Netherlands"
+
+#: 
+msgid "New Caledonia (Nouvelle-Calédonie)"
+msgstr "New Caledonia"
+
+#: 
+msgid "New Zealand"
+msgstr "New Zealand"
+
+#: 
+msgid "Nicaragua"
+msgstr "Nicaragua"
+
+#: 
+msgid "Niger (Nijar)"
+msgstr "Niger"
+
+#: 
+msgid "Nigeria"
+msgstr "Nigeria"
+
+#: 
+msgid "Niue"
+msgstr "Niue"
+
+#: 
+msgid "Norfolk Island"
+msgstr "Norfolk Island"
+
+#: 
+msgid "Northern Mariana Islands"
+msgstr "Northen Mariana Islands"
+
+#: 
+msgid "North Korea (조선 민주주의 인민 공화국)"
+msgstr "North Korea"
+
+#: 
+msgid "Norway (Norge)"
+msgstr "Norway"
+
+#: 
+msgid "Oman (‫عُمان‬‎)"
+msgstr "Oman"
+
+#: 
+msgid "Pakistan (‫پاکستان‬‎)"
+msgstr "Pakistan"
+
+#: 
+msgid "Palau"
+msgstr "Palau"
+
+#: 
+msgid "Palestine (‫فلسطين‬‎)"
+msgstr "Palestine"
+
+#: 
+msgid "Panama (Panamá)"
+msgstr "Panama"
+
+#: 
+msgid "San Marino"
+msgstr "San Marino"
+
+#: 
+msgid "São Tomé and Príncipe (São Tomé e Príncipe)"
+msgstr "Sao Tome și Principe"
+
+#: 
+msgid "Saudi Arabia (‫المملكة العربية السعودية‬‎)"
+msgstr "Saudi Arabia"
+
+#: 
+msgid "Senegal (Sénégal)"
+msgstr "Senegal"
+
+#: 
+msgid "Serbia (Србија)"
+msgstr "Serbia"
+
+#: 
+msgid "Seychelles"
+msgstr "Seychelles"
+
+#: 
+msgid "Sierra Leone"
+msgstr "Sierra Leone"
+
+#: 
+msgid "Singapore"
+msgstr "Singapore"
+
+#: 
+msgid "Sint Maarten"
+msgstr "Sint Maarten"
+
+#: 
+msgid "Slovakia (Slovensko)"
+msgstr "Slovakia"
+
+#: 
+msgid "Slovenia (Slovenija)"
+msgstr "Slovenia"
+
+#: 
+msgid "Solomon Islands"
+msgstr "Solomon Islands"
+
+#: 
+msgid "Somalia (Soomaaliya)"
+msgstr "Somalia"
+
+#: 
+msgid "South Africa"
+msgstr "South Africa"
+
+#: 
+msgid "South Georgia & South Sandwich Islands"
+msgstr "South Georgia și South Sandwich Islands"
+
+#: 
+msgid "South Korea (대한민국)"
+msgstr "South Korea"
+
+#: 
+msgid "South Sudan (‫جنوب السودان‬‎)"
+msgstr "South Sudan"
+
+#: 
+msgid "Spain (España)"
+msgstr "Spain"
+
+#: 
+msgid "Sri Lanka (ශ්‍රී ලංකාව)"
+msgstr "Sri Lanka"
+
+#: 
+msgid "St. Vincent & Grenadines"
+msgstr "St. Vincent și Grenadines"
+
+#: 
+msgid "Turks and Caicos Islands"
+msgstr "Turks și Caicos Islands"
+
+#: 
+msgid "Tuvalu"
+msgstr "Tuvalu"
+
+#: 
+msgid "U.S. Outlying Islands"
+msgstr "U.S. Outlying Islands"
+
+#: 
+msgid "U.S. Virgin Islands"
+msgstr "U.S. Virgin Islands"
+
+#: 
+msgid "Uganda"
+msgstr "Uganda"
+
+#: 
+msgid "Ukraine (Україна)"
+msgstr "Ukraine"
+
+#: 
+msgid "United Arab Emirates (‫الإمارات العربية المتحدة‬‎)"
+msgstr "Emiratele Arabe Unite"
+
+#: 
+msgid "United Kingdom"
+msgstr "Regatul Unit"
+
+#: 
+msgid "United States"
+msgstr "Statele Unite"
+
+#: 
+msgid "Uruguay"
+msgstr "Uruguay"
+
+#: 
+msgid "Uzbekistan (Oʻzbekiston)"
+msgstr "Uzbekistan"
+
+#: 
+msgid "Vanuatu"
+msgstr "Vanuatu"
+
+#: 
+msgid "Vatican City (Città del Vaticano)"
+msgstr "Vatican City"
+
+#: 
+msgid "Venezuela"
+msgstr "Venezuela"
+
+#: 
+msgid "Vietnam (Việt Nam)"
+msgstr "Vietnam"
+
+#: 
+msgid "Wallis and Futuna"
+msgstr "Wallis și Futura"
+
+#: 
+msgid "Western Sahara (‫الصحراء الغربية‬‎)"
+msgstr "Western Sahara"
+
+#: 
+msgid "Yemen (‫اليمن‬‎)"
+msgstr "Temen"
+
+#: 
+msgid "Zambia"
+msgstr "Zambia"
+
+#: 
+msgid "Zimbabwe"
+msgstr "Zimbabwe"
+
+#: 
+msgid "Your verification request is complete"
+msgstr "Varificare ta este finalizată"
 
