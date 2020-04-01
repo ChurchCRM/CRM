@@ -2,34 +2,30 @@
 # from this file by first filling in your password and db info in the .env
 # file and then running "docker-compose -f docker-compose.develop.yaml build", and
 # "docker-compose -f docker-compose.develop.yaml up" in your terminal.
-version: "3"
+version: "3.6"
 services:
   database:
     image: mariadb
     env_file:
-      - .env
-  churchcrm:
-    build:
-      context: .
-      dockerfile: Dockerfile.churchcrm
-    # ports:
-    #   - "9000:9000"
-    volumes:
-      - source:/var/www/html
-    env_file:
-      - .env
-    links:
-      - database
+      - .env  
+    
   webserver:
+    ## Look into: https://hub.docker.com/r/nimmis/apache-php7
     build:
       context: .
-      dockerfile: Dockerfile.nginx
+      dockerfile: Dockerfile.apache
     ports:
-      - "8080:8080"
+      - "80:80"
     links:
       - churchcrm
     volumes:
-      - source:/var/www/html
+      - ../src:/var/www/html
+      - ..:/home/ChurchCRM
+    links:
+      - database
+      - mailserver
+    env_file:
+      - .env
 
   mailserver:
     #  Reference: https://blog.mailtrap.io/mailhog-explained/
@@ -37,5 +33,3 @@ services:
     ports:
       - 1025:1025
       - 8025:8025
-volumes:
-  source:
