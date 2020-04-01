@@ -10,7 +10,7 @@ msgstr ""
 "#-#-#-#-#  messages.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-24 14:11-0500\n"
+"POT-Creation-Date: 2020-04-01 00:33+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,8 +25,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2020-01-24T19:11:55.601Z\n"
-"PO-Revision-Date: 2020-01-24T19:11:55.601Z\n"
+"POT-Creation-Date: 2020-04-01T00:33:31.595Z\n"
+"PO-Revision-Date: 2020-04-01T00:33:31.595Z\n"
 
 msgid "Backup Database"
 msgstr ""
@@ -1216,7 +1216,7 @@ msgstr ""
 msgid "First month of the fiscal year"
 msgstr ""
 
-msgid "Google map API requires a unique key"
+msgid "Google Maps API Key used for Geocoding addresses"
 msgstr ""
 
 msgid "Bing map API requires a unique key"
@@ -1674,6 +1674,12 @@ msgstr ""
 msgid "Specify the application name to be displayed in authenticator app"
 msgstr ""
 
+msgid "Send an email notifying users when their account has been deleted"
+msgstr ""
+
+msgid "Google Maps API Key used for rendering maps in browser"
+msgstr ""
+
 msgid "Church Information"
 msgstr ""
 
@@ -1786,6 +1792,24 @@ msgid "system user password changed by admin"
 msgstr ""
 
 msgid "system user login reset"
+msgstr ""
+
+msgid "Incorrect password supplied for current user"
+msgstr ""
+
+msgid "Your password choice is too obvious. Please choose something else."
+msgstr ""
+
+msgid "Your new password must be at least"
+msgstr ""
+
+msgid "characters"
+msgstr ""
+
+msgid "Your new password must not match your old one."
+msgstr ""
+
+msgid "Your new password is too similar to your old one."
 msgstr ""
 
 msgid "PHP Max Execution Time is too Short"
@@ -4877,58 +4901,6 @@ msgstr ""
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr ""
 
-msgid "You must enter a password in both boxes"
-msgstr ""
-
-msgid "You must enter the same password in both boxes"
-msgstr ""
-
-msgid "Invalid password"
-msgstr ""
-
-msgid "You must enter your new password in both boxes"
-msgstr ""
-
-msgid "Your password choice is too obvious. Please choose something else."
-msgstr ""
-
-msgid "Your new password must be at least"
-msgstr ""
-
-msgid "characters"
-msgstr ""
-
-msgid "You need to actually change your password (nice try, though!)"
-msgstr ""
-
-msgid "Your new password is too similar to your old one.  Be more creative!"
-msgstr ""
-
-msgid "User Password Change"
-msgstr ""
-
-msgid ""
-"Your account record indicates that you need to change your password before "
-"proceding."
-msgstr ""
-
-msgid ""
-"Enter your current password, then your new password twice.  Passwords must "
-"be at least"
-msgstr ""
-
-msgid "characters in length."
-msgstr ""
-
-msgid "Enter a new password for this user."
-msgstr ""
-
-msgid "Old Password"
-msgstr ""
-
-msgid "Confirm New Password"
-msgstr ""
-
 msgid "Volunteer Opportunity Delete Confirmation"
 msgstr ""
 
@@ -5069,12 +5041,6 @@ msgstr ""
 msgid "Invalid User/Password"
 msgstr ""
 
-msgid "no found or user without an email"
-msgstr ""
-
-msgid "UserName not set"
-msgstr ""
-
 msgid "Link Not found"
 msgstr ""
 
@@ -5117,9 +5083,6 @@ msgstr ""
 msgid "Fatal error in eGive API datastream: '"
 msgstr ""
 
-msgid "Unable to reset password"
-msgstr ""
-
 msgid "Unable to load verification info"
 msgstr ""
 
@@ -5133,21 +5096,6 @@ msgid "Oops! Page not found."
 msgstr ""
 
 msgid "Family Registration"
-msgstr ""
-
-msgid "Reset your password"
-msgstr ""
-
-msgid "Check your email for a password reset link"
-msgstr ""
-
-msgid "Sorry, we are unable to process your request at this point in time."
-msgstr ""
-
-msgid "Login Name is Required"
-msgstr ""
-
-msgid "A new password was sent to you. Please check your email"
 msgstr ""
 
 msgid "Register your family"
@@ -5213,6 +5161,18 @@ msgstr ""
 msgid "Private Calendar"
 msgstr ""
 
+msgid "Unable to reset password"
+msgstr ""
+
+msgid "Password reset not availble.  Please contact your system administrator"
+msgstr ""
+
+msgid "no found or user without an email"
+msgstr ""
+
+msgid "UserName not set"
+msgstr ""
+
 msgid "Login"
 msgstr ""
 
@@ -5226,6 +5186,21 @@ msgid "I forgot my password"
 msgstr ""
 
 msgid "Register a new Family"
+msgstr ""
+
+msgid "Authentication Issue"
+msgstr ""
+
+msgid "Reset your password"
+msgstr ""
+
+msgid "Sorry, we are unable to process your request at this point in time."
+msgstr ""
+
+msgid "Login Name is Required"
+msgstr ""
+
+msgid "A new password was sent to you. Please check your email"
 msgstr ""
 
 msgid "Please enter 2FA code"
@@ -5398,6 +5373,14 @@ msgid "PDFs successfully emailed "
 msgstr ""
 
 msgid "families"
+msgstr ""
+
+msgid ""
+"Enter new user password. Administratively set passwords are not subject to "
+"length or complexity requirements"
+msgstr ""
+
+msgid "Confirm New Password"
 msgstr ""
 
 msgid "Reset Members"
@@ -5701,6 +5684,17 @@ msgstr ""
 msgid "Add Person"
 msgstr ""
 
+msgid ""
+"Enter your current password, then your new password twice.  Passwords must "
+"be at least"
+msgstr ""
+
+msgid "characters in length."
+msgstr ""
+
+msgid "Old Password"
+msgstr ""
+
 msgid "2 Factor Authentication enrollment"
 msgstr ""
 
@@ -5771,13 +5765,13 @@ msgstr ""
 msgid "Missing pledges"
 msgstr ""
 
-msgid "Credit Card People"
-msgstr ""
-
 msgid "Family Pledge by Fiscal Year"
 msgstr ""
 
 msgid "CustomSearch"
+msgstr ""
+
+msgid "Missing people"
 msgstr ""
 
 msgid "Returns each family and the total number of people assigned to them."
@@ -5830,9 +5824,6 @@ msgstr ""
 msgid "Find people who pledged one year but not another"
 msgstr ""
 
-msgid "People who are configured to pay by credit card."
-msgstr ""
-
 msgid ""
 "Pledge summary by family name for each fund for the selected fiscal year"
 msgstr ""
@@ -5841,6 +5832,9 @@ msgid "Find volunteers for who match two specific opportunity codes"
 msgstr ""
 
 msgid "Find people with a custom field value"
+msgstr ""
+
+msgid "Find people who didn't attend an event"
 msgstr ""
 
 msgid "Zip Code"
@@ -5907,6 +5901,9 @@ msgid "Custom field"
 msgstr ""
 
 msgid "Field value"
+msgstr ""
+
+msgid "Event"
 msgstr ""
 
 msgid "The minimum age for which you want records returned."
@@ -5993,6 +5990,9 @@ msgid "Choose customer person field"
 msgstr ""
 
 msgid "Match custom field to this value"
+msgstr ""
+
+msgid "Select the desired event"
 msgstr ""
 
 msgid "Afghanistan (‫افغانستان‬‎)"
@@ -7098,6 +7098,9 @@ msgid ""
 msgstr ""
 
 msgid "Data Cleared Successfully!"
+msgstr ""
+
+msgid "You must enter the same password in both boxes"
 msgstr ""
 
 msgid "Are you sure you want to remove this person's membership from"
