@@ -1,12 +1,13 @@
 <?php
 
+$db_server="localhost";
 $db_username = 'churchcrm';
 $db_password = 'churchcrm';
 $db_name = 'churchcrm';
 $stringsDir = 'db-strings';
 $stringFiles = [];
 
-$db = new PDO('mysql:host=localhost;dbname='.$db_name.';charset=utf8mb4', $db_username, $db_password);
+$db = new PDO('mysql:host='.$db_server.';dbname='.$db_name.';charset=utf8mb4', $db_username, $db_password);
 $query = 'select DISTINCT ucfg_tooltip as term, "" as translation, "userconfig_ucfg" as cntx from userconfig_ucfg
 union all
 select DISTINCT qry_Name as term, "" as translation, "query_qry" as cntx   from query_qry
