@@ -6,8 +6,12 @@ version: "3.6"
 services:
   database:
     image: mariadb
+    ports:
+      - "3306:3306"
     env_file:
-      - .env  
+      - .env
+    networks:
+      - default
     
   webserver:
     ## Look into: https://hub.docker.com/r/nimmis/apache-php7
