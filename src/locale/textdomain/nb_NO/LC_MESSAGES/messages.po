@@ -2919,20 +2919,8 @@ msgid "Failed Logins"
 msgstr "Mislykkede pålogginger"
 
 #: 
-msgid "You must enter a password in both boxes"
-msgstr "Du må skrive inn et passord i begge boksene"
-
-#: 
 msgid "You must enter the same password in both boxes"
 msgstr "Du må angi det samme passordet i begge boksene"
-
-#: 
-msgid "Invalid password"
-msgstr "Ugyldig passord"
-
-#: 
-msgid "You must enter your new password in both boxes"
-msgstr "Du må angi nytt passord i begge boksene"
 
 #: 
 msgid "Your password choice is too obvious. Please choose something else."
@@ -2947,32 +2935,12 @@ msgid "characters"
 msgstr "tegn"
 
 #: 
-msgid "You need to actually change your password (nice try, though!)"
-msgstr "Du må faktisk endre passordet ditt (godt forsøk, though!)"
-
-#: 
-msgid "Your new password is too similar to your old one.  Be more creative!"
-msgstr "Ditt nye passord er for lik den gamle. Bli mer kreativ!"
-
-#: 
-msgid "User Password Change"
-msgstr "Bruker Passord Change"
-
-#: 
-msgid "Your account record indicates that you need to change your password before proceding."
-msgstr "Din firmapost indikerer at du trenger å endre passordet ditt før du fortsetter."
-
-#: 
 msgid "Enter your current password, then your new password twice.  Passwords must be at least"
 msgstr "Skriv inn gjeldende passord, så ditt nye passord to ganger. Passord må være minst"
 
 #: 
 msgid "characters in length."
 msgstr "tegn."
-
-#: 
-msgid "Enter a new password for this user."
-msgstr "Tast inn et nytt passord for denne brukeren."
 
 #: 
 #, fuzzy

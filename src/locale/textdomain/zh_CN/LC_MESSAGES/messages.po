@@ -3436,20 +3436,8 @@ msgid "Failed Logins"
 msgstr "登录失败"
 
 #: 
-msgid "You must enter a password in both boxes"
-msgstr "您必须输入一个密码，这两个框"
-
-#: 
 msgid "You must enter the same password in both boxes"
 msgstr "您必须在两个框中输入相同的密码"
-
-#: 
-msgid "Invalid password"
-msgstr "无效的密码"
-
-#: 
-msgid "You must enter your new password in both boxes"
-msgstr "在这两个框，您必须输入您的新密码"
 
 #: 
 msgid "Your password choice is too obvious. Please choose something else."
@@ -3464,32 +3452,12 @@ msgid "characters"
 msgstr "字符"
 
 #: 
-msgid "You need to actually change your password (nice try, though!)"
-msgstr "您需要更改您的密码（不错的尝试，但！）"
-
-#: 
-msgid "Your new password is too similar to your old one.  Be more creative!"
-msgstr "您的新密码是你的旧太相似了。更多的创意！"
-
-#: 
-msgid "User Password Change"
-msgstr "用户密码更改"
-
-#: 
-msgid "Your account record indicates that you need to change your password before proceding."
-msgstr "您的帐户记录表明操作前，您需要更改您的密码。"
-
-#: 
 msgid "Enter your current password, then your new password twice.  Passwords must be at least"
 msgstr "请输入您的当前密码，然后两次新密码。密码必须至少"
 
 #: 
 msgid "characters in length."
 msgstr "字符的长度。"
-
-#: 
-msgid "Enter a new password for this user."
-msgstr "输入此用户的密码。"
 
 #: 
 #, fuzzy
@@ -7059,10 +7027,6 @@ msgid "The previous integrity check passed.  All system file hashes match the ex
 msgstr "已通过完整性检查。所有系统文件都与预期值哈希匹配。"
 
 #: 
-msgid "Google map API requires a unique key"
-msgstr "Google地图API需要唯一的密钥"
-
-#: 
 msgid "Church Checking Account Number"
 msgstr "教堂检查账号"
 
@@ -7601,10 +7565,6 @@ msgstr "无法重置密码"
 #: 
 msgid "Reset your password"
 msgstr "重置你的密码"
-
-#: 
-msgid "Check your email for a password reset link"
-msgstr "请检查您的电子邮件以获取密码重置链接"
 
 #: 
 msgid "Sorry, we are unable to process your request at this point in time."
@@ -8266,18 +8226,6 @@ msgid "Set the encryption system to use - ssl (deprecated) or tls"
 msgstr "将加密系统设置为使用 - ssl（不建议使用）或tls"
 
 #: 
-msgid "Lock"
-msgstr "锁"
-
-#: 
-msgid "Enter your password to retrieve your session"
-msgstr "输入您的密码以检索您的会话"
-
-#: 
-msgid "Or sign in as a different user"
-msgstr "或以其他用户身份登录"
-
-#: 
 msgid "Dashboard Service dynamic asynchronous refresh interval, default 60 second"
 msgstr "仪表板服务动态异步刷新间隔，默认为60秒"
 
@@ -8572,14 +8520,6 @@ msgstr "指定的升级文件无效"
 #: 
 msgid "Failure executing upgrade script"
 msgstr "执行升级脚本失败"
-
-#: 
-msgid "logged via API Key."
-msgstr "通过API密钥记录。"
-
-#: 
-msgid "logged via InValid API Key."
-msgstr "通过无效的API密钥记录。"
 
 #: 
 msgid "Missing calendar access token"

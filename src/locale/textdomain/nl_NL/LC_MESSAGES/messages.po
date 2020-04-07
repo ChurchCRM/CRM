@@ -3354,20 +3354,8 @@ msgid "Failed Logins"
 msgstr "Mislukte Logins"
 
 #: 
-msgid "You must enter a password in both boxes"
-msgstr "U moet een wachtwoord intypen in beide vensters"
-
-#: 
 msgid "You must enter the same password in both boxes"
 msgstr "U moet in beide vensters een identiek wachtwoord invoeren"
-
-#: 
-msgid "Invalid password"
-msgstr "Ongeldig wachtwoord"
-
-#: 
-msgid "You must enter your new password in both boxes"
-msgstr "U moet uw wachtwoord intypen in beide vensters"
 
 #: 
 msgid "Your password choice is too obvious. Please choose something else."
@@ -3382,32 +3370,12 @@ msgid "characters"
 msgstr "karakters"
 
 #: 
-msgid "You need to actually change your password (nice try, though!)"
-msgstr "U moet echt uw wachtwoord wijzigen (Leuk geprobeerd hoor!)"
-
-#: 
-msgid "Your new password is too similar to your old one.  Be more creative!"
-msgstr "U nieuwe wachtwoord is bijna identiek aan het oude. Wees meer creatief!"
-
-#: 
-msgid "User Password Change"
-msgstr "Gebruikers Wachtwoord Wijziging"
-
-#: 
-msgid "Your account record indicates that you need to change your password before proceding."
-msgstr "Uw acount gegevens geven aan dat uw wachtwoord gewijzigd moet worden voordat u verder kan gaan."
-
-#: 
 msgid "Enter your current password, then your new password twice.  Passwords must be at least"
 msgstr "Voer uw oude wachtwoord in, vervolgens 2x uw nieuwe wachtwoord. Wachtwoorden moeten op zijn minst"
 
 #: 
 msgid "characters in length."
 msgstr "karakters lang zijn."
-
-#: 
-msgid "Enter a new password for this user."
-msgstr "Type een nieuw wachtwoord voor deze gebruiker."
 
 #: 
 msgid "Old Password"
@@ -6053,10 +6021,6 @@ msgid "Chinese - Taiwan"
 msgstr "Chinese - Taiwan"
 
 #: 
-msgid "Google map API requires a unique key"
-msgstr "Google map API vereist een unieke code"
-
-#: 
 msgid "Deactivated the Family"
 msgstr "deactiveer dit gezin"
 
@@ -6677,18 +6641,6 @@ msgid "Anniversaries of the day"
 msgstr "jubilea van vandaag"
 
 #: 
-msgid "Lock"
-msgstr "Geblokeerd"
-
-#: 
-msgid "Enter your password to retrieve your session"
-msgstr "Voer je password in om toegang te krijgen"
-
-#: 
-msgid "Or sign in as a different user"
-msgstr "Of log in met een andere gebruikerscode"
-
-#: 
 msgid "Add All to Cart"
 msgstr "Alles in het karretje zetten"
 
@@ -6915,14 +6867,6 @@ msgstr "Giften"
 #: 
 msgid "Unable to open file"
 msgstr "Kan bestand niet openen"
-
-#: 
-msgid "logged via API Key."
-msgstr "Opgeslagen via API key"
-
-#: 
-msgid "logged via InValid API Key."
-msgstr "Opgeslagen met een ongeldig API sleutel"
 
 #: 
 msgid "Missing calendar access token"

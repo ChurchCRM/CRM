@@ -3471,19 +3471,7 @@ msgid "Failed Logins"
 msgstr "Logins fracassados"
 
 #: 
-msgid "You must enter a password in both boxes"
-msgstr "Entre com a senha em ambos os campos"
-
-#: 
 msgid "You must enter the same password in both boxes"
-msgstr "Entre com a senha em ambos os campos"
-
-#: 
-msgid "Invalid password"
-msgstr "Senha inválida"
-
-#: 
-msgid "You must enter your new password in both boxes"
 msgstr "Entre com a senha em ambos os campos"
 
 #: 
@@ -3499,32 +3487,12 @@ msgid "characters"
 msgstr "caracteres"
 
 #: 
-msgid "You need to actually change your password (nice try, though!)"
-msgstr "Você precisa mudar sua senha"
-
-#: 
-msgid "Your new password is too similar to your old one.  Be more creative!"
-msgstr "Sua nova senha é similar à antiga. Seja mais criativo!"
-
-#: 
-msgid "User Password Change"
-msgstr "Mudar senha de utilizador"
-
-#: 
-msgid "Your account record indicates that you need to change your password before proceding."
-msgstr "Seu registo de conta indica que você precisa mudar sua senha antes de proceder."
-
-#: 
 msgid "Enter your current password, then your new password twice.  Passwords must be at least"
 msgstr "Digite sua senha atual e sua nova senha duas vezes. As senhas devem ter pelo menos"
 
 #: 
 msgid "characters in length."
 msgstr "número de carateres "
-
-#: 
-msgid "Enter a new password for this user."
-msgstr "Entre uma nova senha para este utilizador"
 
 #: 
 #, fuzzy
@@ -7203,11 +7171,6 @@ msgid "The previous integrity check passed.  All system file hashes match the ex
 msgstr "A verificação de integridade anterior passou. Todos os hashes de ficheiros de sistema correspondem aos valores esperados."
 
 #: 
-#, fuzzy
-msgid "Google map API requires a unique key"
-msgstr "A API do Google Map requer uma chave única obtida em https://developers.google.com/maps/documentation/javascript/get-api-key"
-
-#: 
 msgid "Church Checking Account Number"
 msgstr "Número da Conta de Verificação da Igreja"
 
@@ -7754,10 +7717,6 @@ msgstr "Impossível resetar a sua senha"
 #: 
 msgid "Reset your password"
 msgstr "Resetar a sua senha"
-
-#: 
-msgid "Check your email for a password reset link"
-msgstr "Verifique o link de resete da senha no seu E-mail!"
 
 #: 
 msgid "Sorry, we are unable to process your request at this point in time."
@@ -8434,18 +8393,6 @@ msgid "Set the encryption system to use - ssl (deprecated) or tls"
 msgstr "Definir o sistema de criptografia para usar - SSL (reprovado) ou TSL"
 
 #: 
-msgid "Lock"
-msgstr "Bloqueio"
-
-#: 
-msgid "Enter your password to retrieve your session"
-msgstr "Digite sua senha para retornar sua sessão"
-
-#: 
-msgid "Or sign in as a different user"
-msgstr "ou entre como um utilizador diferente"
-
-#: 
 msgid "Dashboard Service dynamic asynchronous refresh interval, default 60 second"
 msgstr "Intervalo de atualização assíncrona dinâmica do Serviço do Painel. Padrão 60 segundos"
 
@@ -8740,14 +8687,6 @@ msgstr "Arquivo de atualização inválido"
 #: 
 msgid "Failure executing upgrade script"
 msgstr "Falha ao executar o script de atualização"
-
-#: 
-msgid "logged via API Key."
-msgstr "logado via API Key."
-
-#: 
-msgid "logged via InValid API Key."
-msgstr "logado via InValid API Key."
 
 #: 
 msgid "Missing calendar access token"

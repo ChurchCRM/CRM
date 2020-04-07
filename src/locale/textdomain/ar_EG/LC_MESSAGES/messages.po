@@ -3345,20 +3345,8 @@ msgid "Failed Logins"
 msgstr "تسجيلات الدخول الفاشلة"
 
 #: 
-msgid "You must enter a password in both boxes"
-msgstr "يجب عليك إدخال كلمة المرور في مربعي"
-
-#: 
 msgid "You must enter the same password in both boxes"
 msgstr "يجب عليك إدخال كلمة المرور نفسها في مربعي"
-
-#: 
-msgid "Invalid password"
-msgstr "كلمة السر غير صحيحة"
-
-#: 
-msgid "You must enter your new password in both boxes"
-msgstr "يجب عليك إدخال كلمة المرور الجديدة في مربعي"
 
 #: 
 msgid "Your password choice is too obvious. Please choose something else."
@@ -3373,32 +3361,12 @@ msgid "characters"
 msgstr "حروف"
 
 #: 
-msgid "You need to actually change your password (nice try, though!)"
-msgstr "كنت بحاجة إلى تغيير الواقع كلمة السر الخاصة بك (ولكن ل، على الرغم من!)"
-
-#: 
-msgid "Your new password is too similar to your old one.  Be more creative!"
-msgstr "كلمة المرور الجديدة هي مشابهة جدا لواحدة القديم الخاص بك. كن أكثر إبداعا!"
-
-#: 
-msgid "User Password Change"
-msgstr "تغيير كلمة المرور المستخدم"
-
-#: 
-msgid "Your account record indicates that you need to change your password before proceding."
-msgstr "يشير سجل حسابك التي تحتاج إلى تغيير كلمة المرور الخاصة بك قبل proceding."
-
-#: 
 msgid "Enter your current password, then your new password twice.  Passwords must be at least"
 msgstr "أدخل كلمة المرور الحالية، ثم كلمة السر الخاصة بك جديدة مرتين. يجب أن تكون كلمات السر على الأقل"
 
 #: 
 msgid "characters in length."
 msgstr "حرفا."
-
-#: 
-msgid "Enter a new password for this user."
-msgstr "إدخال كلمة مرور جديدة لهذا المستخدم."
 
 #: 
 msgid "Old Password"
@@ -7005,10 +6973,6 @@ msgid "The previous integrity check passed.  All system file hashes match the ex
 msgstr "مرت التحقق من التكامل السابق. كل التجزئة ملف نظام تطابق القيم المتوقعة."
 
 #: 
-msgid "Google map API requires a unique key"
-msgstr "خريطة جوجل API يتطلب مفتاح فريد"
-
-#: 
 msgid "Church Checking Account Number"
 msgstr "الكنيسة التحقق من رقم الحساب"
 
@@ -7555,10 +7519,6 @@ msgstr "غير قادر على إعادة تعيين كلمة المرور"
 #: 
 msgid "Reset your password"
 msgstr "اعد ضبط كلمه السر"
-
-#: 
-msgid "Check your email for a password reset link"
-msgstr "تحقق من بريدك الالكتروني للحصول على رابط إعادة تعيين كلمة المرور"
 
 #: 
 msgid "Sorry, we are unable to process your request at this point in time."
@@ -8233,18 +8193,6 @@ msgid "Set the encryption system to use - ssl (deprecated) or tls"
 msgstr "ضبط نظام التشفير الاستخدام - خدمة تصميم المواقع (إهمال) أو TLS"
 
 #: 
-msgid "Lock"
-msgstr "مغلق"
-
-#: 
-msgid "Enter your password to retrieve your session"
-msgstr "أدخل كلمة المرور لاسترداد جلسة العمل الخاصة بك"
-
-#: 
-msgid "Or sign in as a different user"
-msgstr "أو تسجيل الدخول كمستخدم مختلف"
-
-#: 
 msgid "Dashboard Service dynamic asynchronous refresh interval, default 60 second"
 msgstr "خدمة لوحة القيادة الديناميكية الفاصل الزمني للتحديث غير متزامن، الافتراضي 60 ثانية"
 
@@ -8539,14 +8487,6 @@ msgstr "ملف ترقية صالح المحدد"
 #: 
 msgid "Failure executing upgrade script"
 msgstr "فشل تنفيذ البرنامج النصي ترقية"
-
-#: 
-msgid "logged via API Key."
-msgstr "تسجيل الدخول عن طريق مفتاح API."
-
-#: 
-msgid "logged via InValid API Key."
-msgstr "تسجيل الدخول عن طريق غير صالح API مفتاح."
 
 #: 
 msgid "Missing calendar access token"
@@ -8962,10 +8902,6 @@ msgid "Unexpected Person Id"
 msgstr "غير متوقع شخص معرف"
 
 #: 
-msgid "LastName, FirstName MiddleName:8"
-msgstr "اسم العائلة،الاسم الاول،الاسم الاوسط"
-
-#: 
 msgid "Interval in Hours for software update check"
 msgstr "الفاصل الزمني في ساعات لفحص تحديث البرامج"
 
@@ -9200,12 +9136,4 @@ msgstr "يجب أن يتم تعيين إلى 'true'"
 #: 
 msgid "Include/Config.php must define an encryption key for storing 2FA secret keys in the database by setting a value for"
 msgstr "وتشمل / ملف config.php يجب تحديد مفتاح التشفير لتخزين 2FA المفاتيح السرية في قاعدة البيانات عن طريق تحديد قيمة لل"
-
-#: 
-msgid "Credit Card People"
-msgstr "بطاقة الائتمان الشعب"
-
-#: 
-msgid "People who are configured to pay by credit card."
-msgstr "الناس الذين تم تكوينها لالدفع بواسطة بطاقة الائتمان."
 

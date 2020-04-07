@@ -2907,20 +2907,8 @@ msgid "Failed Logins"
 msgstr "Błędnych Logowań"
 
 #: 
-msgid "You must enter a password in both boxes"
-msgstr "Musisz wpisać hasło w obu polach"
-
-#: 
 msgid "You must enter the same password in both boxes"
 msgstr "Musisz wpisać jednakowe hasło w obydwu polach"
-
-#: 
-msgid "Invalid password"
-msgstr "Nieprawidłowe hasło"
-
-#: 
-msgid "You must enter your new password in both boxes"
-msgstr "Musisz wpisać nowe hasło w obu polach"
 
 #: 
 msgid "Your password choice is too obvious. Please choose something else."
@@ -2935,32 +2923,12 @@ msgid "characters"
 msgstr "zanaków"
 
 #: 
-msgid "You need to actually change your password (nice try, though!)"
-msgstr "Musisz ZMIENIĆ swoje hasło (niezła próba)"
-
-#: 
-msgid "Your new password is too similar to your old one.  Be more creative!"
-msgstr "Twoje hasło jest zbyt bardzo podobne do poprzedniego. Wykaż się twórczością!"
-
-#: 
-msgid "User Password Change"
-msgstr "Zmieniono Hasło Użytkownika"
-
-#: 
-msgid "Your account record indicates that you need to change your password before proceding."
-msgstr "Twoje konto wymaga zmiany hasła zanim będzie można kontunuować"
-
-#: 
 msgid "Enter your current password, then your new password twice.  Passwords must be at least"
 msgstr "Podaj swoje hasło, potem wpisz nowe hasło dwa razy. Hasło musi mieć przynajmniej "
 
 #: 
 msgid "characters in length."
 msgstr "znaków"
-
-#: 
-msgid "Enter a new password for this user."
-msgstr "Wprowadź nowe hasło dla Użytkownika."
 
 #: 
 #, fuzzy

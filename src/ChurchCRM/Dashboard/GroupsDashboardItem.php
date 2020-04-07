@@ -12,7 +12,7 @@ class GroupsDashboardItem implements DashboardItemInterface {
 
   public static function getDashboardItemValue() {
        $sSQL = 'select
-        (select count(*) from group_grp) as Groups,
+        (select count(*) from group_grp) as Group_cnt,
         (select count(*) from group_grp where grp_Type = 4 ) as SundaySchoolClasses,
         (Select count(*) from person_per
           INNER JOIN person2group2role_p2g2r ON p2g2r_per_ID = per_ID
@@ -24,7 +24,7 @@ class GroupsDashboardItem implements DashboardItemInterface {
         ';
         $rsQuickStat = RunQuery($sSQL);
         $row = mysqli_fetch_array($rsQuickStat);
-        $data = ['groups' => $row['Groups'] - $row['SundaySchoolClasses'], 'sundaySchoolClasses' => $row['SundaySchoolClasses'], 'sundaySchoolkids' => $row['SundaySchoolKidsCount']];
+        $data = ['groups' => $row['Group_cnt'] - $row['SundaySchoolClasses'], 'sundaySchoolClasses' => $row['SundaySchoolClasses'], 'sundaySchoolkids' => $row['SundaySchoolKidsCount']];
 
         return $data;
   }
