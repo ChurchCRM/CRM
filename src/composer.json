@@ -55,7 +55,8 @@
         "pragmarx/google2fa": "^6.1",
         "endroid/qr-code": "^3.6",
         "symfony/yaml": "^3.4",
-        "sabre/dav": "~3.2.0"
+        "sabre/dav": "~3.2.0",
+        "symfony/translation": "^4.4"
     },
     "autoload": {
         "classmap": [
