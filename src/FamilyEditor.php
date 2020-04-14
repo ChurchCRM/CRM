@@ -1082,7 +1082,6 @@ require 'Include/Header.php';
                 } else {
                     $UpdateBirthYear = 0;
                 } ?>
-				&nbsp;
 			</td>
 			<td>
 				<select name="Classification<?php echo $iCount ?>">
