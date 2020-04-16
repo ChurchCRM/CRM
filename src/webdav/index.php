@@ -5,6 +5,7 @@ require '../vendor/autoload.php';
 require_once './CRMRoot.php';
 
 use Sabre\DAV;
+use ChurchCRM\dto\SystemURLs;
 
 error_reporting(E_ERROR);
 // Now we're creating a whole bunch of objects
@@ -15,7 +16,7 @@ $server = new DAV\Server($rootDirectory);
 
 // If your server is not on your webroot, make sure the following line has the
 // correct information
-$server->setBaseUri('/CRM/webdav');
+$server->setBaseUri(SystemURLs::getRootPath().'/webdav');
 
 // The lock manager is reponsible for making sure users don't overwrite
 // each others changes.
