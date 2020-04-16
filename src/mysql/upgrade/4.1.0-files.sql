@@ -1,3 +1,6 @@
+SET FOREIGN_KEY_CHECKS=0; -- to disable them  TODO: Maybe this should be in the upgrade class instead of per-file
+
+
 -- ---------------------------------------------------------------------
 -- files
 -- ---------------------------------------------------------------------
@@ -37,6 +40,8 @@ CREATE TABLE `file_associations`
         FOREIGN KEY (`person_id`)
         REFERENCES `person_per` (`per_ID`),
     CONSTRAINT `file_associations_fk_15a2d6`
-        FOREIGN KEY (`family_id`)
+        FOREIGN KEY (`family_id`) 
         REFERENCES `family_fam` (`fam_ID`)
 ) ENGINE=InnoDB COMMENT='This is a join-table to link files with other types';
+
+SET FOREIGN_KEY_CHECKS=1; -- to re-enable them
