@@ -517,6 +517,36 @@ $familyAddress = $family->getAddress();
                 </div>
             </div>
             <div class="box-body">
+                <!-- upload of a single file -->
+                <form id="fileuploads" method="post" enctype="multipart/form-data">
+                <p>
+                    <label>Add file (single): </label><br/>
+                    <input type="file" name="file1" id="file1"/>
+                    <button type="submit" class="btn btn-primary"><?= gettext('Upload Files') ?></button>
+
+                </p>
+                </form>
+                <script>
+                $('#fileuploads').submit(function (event) {
+                    event.preventDefault();
+
+                    var formData = new FormData($(this)[0]);
+
+                    $.ajax({
+                    url : window.CRM.root + "/api/family/" + window.CRM.currentFamily + "/files" ,
+                    type : 'POST',
+                    data : formData,
+                    processData: false,
+                    contentType: false,
+                    enctype: 'multipart/form-data',
+                    dataType: 'json',
+                    success : function(data) {
+                        // success
+                        console.log("success");
+                    }
+                    });
+                });
+                </script>
                 <ul class="files">
                     <!-- files item -->
                     <?php foreach ($familyFiles as $file) {

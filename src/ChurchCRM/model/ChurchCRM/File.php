@@ -6,6 +6,9 @@ use ChurchCRM\Base\File as BaseFile;
 use ChurchCRM\dto\SystemURLs;
 use DateTime;
 use Slim\Http\Response;
+use Slim\Http\Request;
+use Slim\Http\UploadedFile;
+use Symfony\Component\Filesystem\Filesystem;
 
 class File extends BaseFile
 {
@@ -14,7 +17,7 @@ class File extends BaseFile
     public function preInsert(\Propel\Runtime\Connection\ConnectionInterface $con = null)
     {
         $this->setCreated(new DateTime());
-        $this->setSize(mb_strlen($this->getContent()));
+        $this->setSize(filesize($this->getFilesystemPath()));
         parent::preSave($con);
 
         return true;
@@ -23,7 +26,7 @@ class File extends BaseFile
     public function preSave(\Propel\Runtime\Connection\ConnectionInterface $con = null)
     {
         $this->setModified(new DateTime());
-        $this->setSize(mb_strlen($this->getContent()));
+        $this->setSize(filesize($this->getFilesystemPath()));
         parent::preUpdate($con);
 
         return true;
@@ -43,8 +46,31 @@ class File extends BaseFile
         $this->save();
     }
 
-    public function fromUpload($uploadedFilePath) {
+    public static function fromSlimRequest(Request $request) {
+        $uploadedFiles = $request->getUploadedFiles();
+        $CRMFiles = array();
+        foreach ($uploadedFiles as $uploadedFile) {
+            $file = File::fromTempUpload($uploadedFile);
+            array_push($CRMFiles, $file);
+        }
+        return $CRMFiles;
+    }
 
+    private static function fromTempUpload(UploadedFile $uploadedFile) {
+
+        $file = new File();
+        $fileHash = hash_file(File::CRM_FILE_HASH_ALGO,$uploadedFile->file);
+        $file->setHash($fileHash);
+        $file->setFileName($uploadedFile->getClientFilename());
+        if (is_file($file->getFilesystemPath()))
+        {
+            throw new \Exception("This file already exists");
+        }
+        FileSystemUtils::ensureDir(dirname($file->getFilesystemPath()));
+        //echo "Would upload to " . $file->getFilesystemPath();
+        rename($uploadedFile->file,$file->getFilesystemPath());
+        $file->save();
+        return $file;
     }
 
     public function getContent(){
