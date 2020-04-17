@@ -153,8 +153,6 @@ function initCharts(pledgeLabels,
 		    fundBackgroundColor)
 {
   var pieOptions = {
-    //String - Point label font colour
-    pointLabelFontColor: "#666",
     //Boolean - Whether we should show a stroke on each segment
     segmentShowStroke: true,
     //String - The colour of each segment stroke
@@ -169,8 +167,6 @@ function initCharts(pledgeLabels,
     responsive: true,
     // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
     maintainAspectRatio: true,
-    //String - A legend template
-    //legendTemplate: "<% for (var i=0; i<segments.length; i++){%><span style=\"color: white;padding-right: 4px;padding-left: 2px;background-color:<%=segments[i].fillColor%>\"><%if(segments[i].label){%><%=segments[i].label%><%}%></span> <%}%></ul>"
   };
 
   var ctx = document.getElementById("type-donut").getContext('2d');
