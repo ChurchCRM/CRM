@@ -76,7 +76,7 @@ require 'Include/Header.php';
         <h3 class="box-title"><?php echo gettext('Deposit Details: '); ?></h3>
       </div>
       <div class="box-body">
-        <form method="post" action="#" name="NewDepositSlipEditor" id="DepositSlipEditor">
+        <form method="post" action="#" name="DepositSlipEditor" id="DepositSlipEditor">
           <div class="row">
             <div class="col-lg-4">
               <label for="Date"><?= gettext('Date'); ?>:</label>
@@ -150,9 +150,9 @@ require 'Include/Header.php';
       <?php
       if ($iDepositSlipID and $thisDeposit->getType() and !$thisDeposit->getClosed()) {
           if ($thisDeposit->getType() == 'eGive') {
-              echo '<input type=button class=btn value="'.gettext('Import eGive')."\" name=ImporteGive onclick=\"javascript:document.location='eGive.php?DepositSlipID=$iDepositSlipID&linkBack=NewDepositSlipEditor.php?DepositSlipID=$iDepositSlipID&PledgeOrPayment=Payment&CurrentDeposit=$iDepositSlipID';\">";
+              echo '<input type=button class=btn value="'.gettext('Import eGive')."\" name=ImporteGive onclick=\"javascript:document.location='eGive.php?DepositSlipID=$iDepositSlipID&linkBack=DepositSlipEditor.php?DepositSlipID=$iDepositSlipID&PledgeOrPayment=Payment&CurrentDeposit=$iDepositSlipID';\">";
           } else {
-              echo '<input type=button class="btn btn-success" value="'.gettext('Add Payment')."\" name=AddPayment onclick=\"javascript:document.location='PledgeEditor.php?CurrentDeposit=$iDepositSlipID&PledgeOrPayment=Payment&linkBack=NewDepositSlipEditor.php?DepositSlipID=$iDepositSlipID&PledgeOrPayment=Payment&CurrentDeposit=$iDepositSlipID';\">";
+              echo '<input type=button class="btn btn-success" value="'.gettext('Add Payment')."\" name=AddPayment onclick=\"javascript:document.location='PledgeEditor.php?CurrentDeposit=$iDepositSlipID&PledgeOrPayment=Payment&linkBack=DepositSlipEditor.php?DepositSlipID=$iDepositSlipID&PledgeOrPayment=Payment&CurrentDeposit=$iDepositSlipID';\">";
           }
           if ($thisDeposit->getType() == 'BankDraft' || $thisDeposit->getType() == 'CreditCard') {
               ?>
@@ -185,8 +185,8 @@ require 'Include/Header.php';
   $fundData = [];
   $fundBackgroundColor = [];
   foreach ($thisDeposit->getFundTotals() as $tmpfund) {
-    $label = new StdClass();
-    $data = new StdClass();
+    //$label = new StdClass();
+    //$data = new StdClass();
     $backgroundColor = new StdClass();
     $label= $tmpfund['Name'];
     $data= $tmpfund['Total'];
@@ -197,26 +197,11 @@ require 'Include/Header.php';
   }
 
   $pledgeData = [];
-  $data = new StdClass();
   $data = $thisDeposit->getTotalamount() ? $thisDeposit->getTotalCash() : '0';
   array_push($pledgeData, $data);
-  $data = new StdClass();
   $data = $thisDeposit->getTotalamount() ? $thisDeposit->getTotalChecks() : '0';
   array_push($pledgeData, $data);
 
-  $pledgeTypeData = [];
-  $t1 = new stdClass();
-  $t1->value = $thisDeposit->getTotalamount() ? $thisDeposit->getTotalCash() : '0';
-  $t1->color = '#197A05';
-  $t1->highlight = '#4AFF23';
-  $t1->labels = 'Cash';
-  array_push($pledgeTypeData, $t1);
-  $t1 = new stdClass();
-  $t1->value = $thisDeposit->getTotalamount() ? $thisDeposit->getTotalChecks() : '0';
-  $t1->color = '#003399';
-  $t1->highlight = '#3366ff';
-  $t1->label = 'Checks';
-  array_push($pledgeTypeData, $t1);
 ?>
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
@@ -232,9 +217,6 @@ require 'Include/Header.php';
   $(document).ready(function() {
     initPaymentTable();
     var pledgeLabels = <?= json_encode(array_values($fundData)); ?>;
-    //console.log("Labels: ", fundLabels);
-    //console.log("Debug fund: ", fundData);
-    console.log("Debug pledge: ", pledgeData);
     initCharts(pledgeLables,
                pledgeData,
                pledgeBackgroundColor,
