@@ -146,11 +146,11 @@ function initDepositSlipEditor()
 }
 
 function initCharts(pledgeLabels,
-		    pledgeChartData,
-		    pledgeBackgroundColor,
-		    fundLabels,
-		    fundChartData,
-		    fundBackgroundColor)
+                    pledgeChartData,
+                    pledgeBackgroundColor,
+                    fundLabels,
+                    fundChartData,
+                    fundBackgroundColor)
 {
   var pieOptions = {
     //Boolean - Whether we should show a stroke on each segment
@@ -177,7 +177,7 @@ function initCharts(pledgeLabels,
           datasets:[{
               data: pledgeData,
               backgroundColor: pledgeBackgroundColor
-	  }],
+          }],
       },
       options: pieOptions
   });
@@ -187,7 +187,7 @@ function initCharts(pledgeLabels,
       type: 'doughnut',
       data: {
         labels: fundLabels,
-	datasets:[{
+        datasets:[{
           data: fundData,
           backgroundColor: fundBackgroundColor
         }]
