@@ -429,12 +429,7 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
     <div class="box box-info">
       <div class="box-header">
         <i class="fa fa-address-card-o"></i>
-
         <h3 class="box-title"><?= gettext('Gender Demographics') ?></h3>
-
-        <div class="box-tools pull-right">
-          <div id="gender-donut-legend" class="chart-legend"></div>
-        </div>
       </div>
       <!-- /.box-header -->
       <div class="box-body">
@@ -445,10 +440,6 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
       <div class="box-header">
         <i class="fa fa-birthday-cake"></i>
         <h3 class="box-title"><?= gettext('Age Histogram') ?></h3>
-
-        <div class="box-tools pull-right">
-          <div id="age-stats-bar-legend" class="chart-legend"></div>
-        </div>
       </div>
       <!-- /.box-header -->
       <div class="box-body">
