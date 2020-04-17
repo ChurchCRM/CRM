@@ -185,9 +185,6 @@ require 'Include/Header.php';
   $fundData = [];
   $fundBackgroundColor = [];
   foreach ($thisDeposit->getFundTotals() as $tmpfund) {
-    //$label = new StdClass();
-    //$data = new StdClass();
-    $backgroundColor = new StdClass();
     $label= $tmpfund['Name'];
     $data= $tmpfund['Total'];
     $backgroundColor = '#'.random_color();
