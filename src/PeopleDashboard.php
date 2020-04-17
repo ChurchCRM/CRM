@@ -474,10 +474,10 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
             <?php while ($row = mysqli_fetch_array($rsAdultsGender)) {
                 if ($row['per_Gender'] == 1) {
                     echo $row['numb'] . ',';
-                    }
+                }
                 if ($row['per_Gender'] == 2) {
                     echo $row['numb'] . ',';
-                    }
+                }
             }
             while ($row = mysqli_fetch_array($rsKidsGender)) {
                 if ($row['per_Gender'] == 1) {
@@ -498,8 +498,6 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
         title: {
             display: false
         },
-        //String - Point label font colour
-        //pointLabelFontColor: "#666",
         //Boolean - Whether we should show a stroke on each segment
         segmentShowStroke: true,
         //String - The colour of each segment stroke
@@ -514,8 +512,6 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
         responsive: true,
         // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
         maintainAspectRatio: false,
-        //String - A legend template
-        //legendTemplate: "<% for (var i=0; i<segments.length; i++){%><span style=\"color: white;padding-right: 4px;padding-left: 2px;background-color:<%=segments[i].fillColor%>\"><%if(segments[i].label){%><%=segments[i].label%><%}%></span> <%}%></ul>"
     };
 
     var ctx = document.getElementById("gender-donut").getContext('2d');
@@ -524,12 +520,6 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
         data: pieData,
         options: pieOptions
     });
-
-    //then you just need to generate the legend
-    //var legend = pieChart.generateLegend();
-
-    //and append it to your page somewher
-    //document.getElementById('gender-donut-legend').innerHTML = legend;
 
     //Age Histogram
     var ageLabels = <?= json_encode(array_keys($ageStats)); ?>;
