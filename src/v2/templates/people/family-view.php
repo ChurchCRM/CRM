@@ -526,42 +526,59 @@ $familyAddress = $family->getAddress();
 
                 </p>
                 </form>
-                <script>
-                $('#fileuploads').submit(function (event) {
-                    event.preventDefault();
+                <script nonce="<?= SystemURLs::getCSPNonce() ?>">
+                    $(document).ready(function () {
+                        var dataTableConfig = {
+                            ajax: {
+                                url: window.CRM.root + "/api/family/" + window.CRM.currentFamily  + "/files",
+                                dataSrc: 'files'
+                            },
+                            columns: [
+                                {
+                                    title: i18next.t('File Name'),
+                                    data: 'FileName',
+                                    searchable: true,
+                                    render: function (data, type, full, meta) {
+                                        return '<a href=' + window.CRM.root + '/api/family/'  + window.CRM.currentFamily + "/files/"+ full.FileId + '>' + data + '</a>';
+                                    }
+                                },
+                                {
+                                    title: i18next.t('File Size'),
+                                    data: 'Size'
+                                }
+                            ],
+                            buttons: [],
+                            responsive: false
+                        };
 
-                    var formData = new FormData($(this)[0]);
+                        $.extend(dataTableConfig, window.CRM.plugin.dataTable);
 
-                    $.ajax({
-                    url : window.CRM.root + "/api/family/" + window.CRM.currentFamily + "/files" ,
-                    type : 'POST',
-                    data : formData,
-                    processData: false,
-                    contentType: false,
-                    enctype: 'multipart/form-data',
-                    dataType: 'json',
-                    success : function(data) {
-                        // success
-                        console.log("success");
-                    }
+                        window.CRM.currentFamilyFiles = $("#familyFiles").DataTable(dataTableConfig);
+                        $('#fileuploads').submit(function (event) {
+                            event.preventDefault();
+                            var formData = new FormData($(this)[0]);
+                            $.ajax({
+                                url : window.CRM.root + "/api/family/" + window.CRM.currentFamily + "/files" ,
+                                type : 'POST',
+                                data : formData,
+                                processData: false,
+                                contentType: false,
+                                enctype: 'multipart/form-data',
+                                dataType: 'json',
+                                success : function(data) {
+                                    window.CRM.currentFamilyFiles.ajax.reload();
+                                }
+                            });
+                        });
                     });
-                });
                 </script>
                 <ul class="files">
-                    <!-- files item -->
-                    <?php foreach ($familyFiles as $file) {
-                        if ($curYear != $item['year']) {
-                            $curYear = $item['year']; ?>
-                            <li class="time-label"><span class="bg-green"><?= $curYear ?></span></li>
-                            <?php
-                        } ?>
-                        <li>
-                            <a href="<?= SystemURLs::getRootPath().'/api/family/'.$family->getId().'/files/'.$file->getFileId() ?>">
-                            <?= $file->getFile()->getFileName()?></a> (<?= FileSystemUtils::human_filesize($file->getFile()->getSize()) ?>)
-                        </li>
-                        <?php
-                    } ?>
-                    <!-- END file item -->
+                    <table id="familyFiles" >
+                        <tr>
+                            <th>File Name</th>
+                            <th>File Size</th>
+                        </tr>
+                    </table>
                 </ul>
             </div>
         </div>

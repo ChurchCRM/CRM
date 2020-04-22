@@ -14,12 +14,23 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\FamilyQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
 use ChurchCRM\Base\FileAssociationQuery;
+use ChurchCRM\Base\FileQuery;
 use ChurchCRM\File;
 use ChurchCRM\FileAssociation;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
 $app->group('/family/{familyId:[0-9]+}', function () {
+    
+    $this->get('/files', function (Request $request, Response $response, array $args) {
+        $files = FileQuery::create()->joinFileAssociation()
+        ->useFileAssociationQuery()
+         -> filterByFamilyId($args['familyId'])
+        ->endUse()
+        ->find();
+        $filesResponse = ["files" => $files->toArray()];
+        return $response->withJson($filesResponse);
+    });
 
     $this->get('/files/{fileId:[0-9]+}', function (Request $request, Response $response, array $args) {
         $response = $this->cache->withExpires($response, MiscUtils::getPhotoCacheExpirationTimestamp());
@@ -38,7 +49,7 @@ $app->group('/family/{familyId:[0-9]+}', function () {
             $fa->setFamilyId($args['familyId']);
             $fa->setFile($newFile);
             $fa->save();
-            echo "Created new file association: " . print_r($fa, true);
+            return $response->withJson(["status"=>"success"]);
         }
     });
 
