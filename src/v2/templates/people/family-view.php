@@ -567,6 +567,7 @@ $familyAddress = $family->getAddress();
                                 dataType: 'json',
                                 success : function(data) {
                                     window.CRM.currentFamilyFiles.ajax.reload();
+                                    $("#file1").val('');
                                 }
                             });
                         });
