@@ -539,7 +539,7 @@ $familyAddress = $family->getAddress();
                                     data: 'FileName',
                                     searchable: true,
                                     render: function (data, type, full, meta) {
-                                        return '<a href=' + window.CRM.root + '/api/family/'  + window.CRM.currentFamily + "/files/"+ full.FileId + '>' + data + '</a>';
+                                        return '<a href=' + window.CRM.root + '/api/family/'  + window.CRM.currentFamily + "/files/"+ full.Id + '>' + data + '</a>';
                                     }
                                 },
                                 {
