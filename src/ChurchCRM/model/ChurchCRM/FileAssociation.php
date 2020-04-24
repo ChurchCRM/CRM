@@ -17,4 +17,14 @@ use ChurchCRM\Base\FileAssociation as BaseFileAssociation;
 class FileAssociation extends BaseFileAssociation
 {
 
+    public function postDelete(\Propel\Runtime\Connection\ConnectionInterface $con = null)
+    {
+        $otherAssociations = FileAssociationQuery::create()
+          ->filterByFile($this->getFile())
+          ->find();
+        if (count($otherAssociations) == 0 ) {
+           $this->getFile()->delete();
+        }
+        return true;
+    }
 }

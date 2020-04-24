@@ -42,6 +42,16 @@ $app->group('/family/{familyId:[0-9]+}', function () {
         return $file->serveRequest($response);
     });
 
+    $this->delete('/files/{fileId:[0-9]+}', function (Request $request, Response $response, array $args) {
+        $FileAssociation = FileAssociationQuery::create() ->filterByFamilyId($args['familyId'])->filterByFileId($args['fileId'])->findOne();
+        if (count($FileAssociation) != 1) {
+            return $response->withStatus(404, gettext("File does not exist"));
+        }
+
+        $FileAssociation->delete();
+        return $response->withJson(["status"=>"success"]);
+    });
+
     $this->post('/files', function(Request $request, Response $response, array $args) {
         $newFiles = File::fromSlimRequest($request);
         foreach($newFiles as $newFile) {

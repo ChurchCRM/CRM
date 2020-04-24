@@ -32,6 +32,17 @@ class File extends BaseFile
         return true;
     }
 
+    public function preDelete(\Propel\Runtime\Connection\ConnectionInterface $con = null)
+    {
+        $identicalFiles = FileQuery::create() 
+          ->filterByHash($this->getHash())
+          ->find();
+        if (count($identicalFiles) == 1 ) {
+            unlink($this->getFilesystemPath());
+        }
+        return true;
+    }
+
     public function setContent($content){
         $hash = hash(File::CRM_FILE_HASH_ALGO,$content);
         $this->setHash($hash);

@@ -535,6 +535,12 @@ $familyAddress = $family->getAddress();
                             },
                             columns: [
                                 {
+                                    title: i18next.t('File Actions'),
+                                    render: function (data, type, full, meta) {
+                                        return '<a class="deleteFile" data-fileid="' + full.Id + '" data-familyid="' +  window.CRM.currentFamily + '"><i class="fa fa-trash-o"></i></a>';
+                                    }
+                                },
+                                {
                                     title: i18next.t('File Name'),
                                     data: 'FileName',
                                     searchable: true,
@@ -548,10 +554,25 @@ $familyAddress = $family->getAddress();
                                 }
                             ],
                             buttons: [],
-                            responsive: false
                         };
 
+                        $(document).on("click",".deleteFile",function(event) { 
+                            familyId =  $(event.currentTarget).data("familyid");
+                            fileId = $(event.currentTarget).data("fileid");
+
+                            $.ajax({
+                                url : window.CRM.root + "/api/family/" + familyId + "/files/"+ fileId,
+                                type : 'DELETE',
+                                dataType: 'json',
+                                success : function(data) {
+                                    window.CRM.currentFamilyFiles.ajax.reload();
+                                }
+                            });
+
+                        });
+
                         $.extend(dataTableConfig, window.CRM.plugin.dataTable);
+                        dataTableConfig.responsive = false;
 
                         window.CRM.currentFamilyFiles = $("#familyFiles").DataTable(dataTableConfig);
                         $('#fileuploads').submit(function (event) {
@@ -576,6 +597,7 @@ $familyAddress = $family->getAddress();
                 <ul class="files">
                     <table id="familyFiles" >
                         <tr>
+                            <th>Actions</th>
                             <th>File Name</th>
                             <th>File Size</th>
                         </tr>
