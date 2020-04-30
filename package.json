@@ -69,7 +69,7 @@
         "i18next": "8.2.1",
         "initial-js": "0.3.4",
         "inputmask": "^4.0.9",
-        "jquery": "^3.4.1",
+        "jquery": "^3.5.0",
         "jquery-photo-uploader": "^1.0.13",
         "jquery-steps": "^1.1.0",
         "jquery-validation": "^1.19.1",
