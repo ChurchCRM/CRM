@@ -944,9 +944,9 @@ require 'Include/Header.php';
 			<th><?= gettext('Suffix') ?></th>
 			<th><?= gettext('Gender') ?></th>
 			<th><?= gettext('Role') ?></th>
-			<th><?= gettext('Month') ?></th>
-			<th><?= gettext('Day') ?></th>
-			<th><?= gettext('Year') ?></th>
+			<th><?= gettext('Birth Month') ?></th>
+			<th><?= gettext('Birth Day') ?></th>
+			<th><?= gettext('Birth Year') ?></th>
 			<th><?= gettext('Classification') ?></th>
 		</tr>
 		</thead>
@@ -1082,7 +1082,6 @@ require 'Include/Header.php';
                 } else {
                     $UpdateBirthYear = 0;
                 } ?>
-				&nbsp;
 			</td>
 			<td>
 				<select name="Classification<?php echo $iCount ?>">
