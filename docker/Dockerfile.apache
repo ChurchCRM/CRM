@@ -16,7 +16,9 @@ RUN apt-get update && \
         libmcrypt-dev \
         libpng-dev \
         libjpeg-dev \
-        libpng-dev
+        libpng-dev \
+        npm
+
 RUN docker-php-ext-install -j$(nproc) xml exif pdo_mysql gettext iconv mysqli zip
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg
 
@@ -25,6 +27,9 @@ RUN    docker-php-ext-install -j$(nproc) gd
 COPY ./apache/default.conf /etc/apache2/apache2.conf
 
 RUN a2enmod  rewrite
+
+RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+RUN php composer-setup.php --install-dir=/usr/local/bin --filename=composer
 
 # Configure PHP
 RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
