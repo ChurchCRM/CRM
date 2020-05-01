@@ -925,19 +925,92 @@ $bOkToEdit = (AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled() ||
                     </ul>
                 </div>
                 <div role="tab-pane fade" class="tab-pane" id="files">
-                    <ul class="files">
+                    <!-- upload of a single file -->
+                <form id="fileuploads" method="post" enctype="multipart/form-data">
+                <p>
+                    <label>Add file (single): </label><br/>
+                    <input type="file" name="file1" id="file1"/>
+                    <button type="submit" class="btn btn-primary"><?= gettext('Upload Files') ?></button>
 
-                        <!-- file item -->
-                        <?php foreach (FileAssociationQuery::create()->findByPersonId($iPersonID) as $file) {
-                                                            ?>
-                            <li>
-                                <a href="<?= SystemURLs::getRootPath().'/api/person/'.$person->getId().'/files/'.$file->getFileId() ?>">
-                                <?= $file->getFile()->getFileName()?></a> (<?= FileSystemUtils::human_filesize($file->getFile()->getSize()) ?>)
-                            </li>
-                            <?php
-                                                        } ?>
-                        <!-- END files item -->
-                    </ul>
+                </p>
+                </form>
+                <script nonce="<?= SystemURLs::getCSPNonce() ?>">
+                    $(document).ready(function () {
+                        var dataTableConfig = {
+                            ajax: {
+                                url: window.CRM.root + "/api/person/" + window.CRM.currentPersonID + "/files",
+                                dataSrc: 'files'
+                            },
+                            columns: [
+                                {
+                                    title: i18next.t('File Actions'),
+                                    render: function (data, type, full, meta) {
+                                        return '<a class="deleteFile" data-fileid="' + full.Id + '" data-personid="' +  window.CRM.currentPersonID + '"><i class="fa fa-trash-o"></i></a>';
+                                    }
+                                },
+                                {
+                                    title: i18next.t('File Name'),
+                                    data: 'FileName',
+                                    searchable: true,
+                                    render: function (data, type, full, meta) {
+                                        return '<a href=' + window.CRM.root + '/api/person/'  + window.CRM.currentPersonID + "/files/"+ full.Id + '>' + data + '</a>';
+                                    }
+                                },
+                                {
+                                    title: i18next.t('File Size'),
+                                    data: 'Size'
+                                }
+                            ],
+                            buttons: [],
+                        };
+
+                        $(document).on("click",".deleteFile",function(event) { 
+                            personid =  $(event.currentTarget).data("personid");
+                            fileId = $(event.currentTarget).data("fileid");
+
+                            $.ajax({
+                                url : window.CRM.root + "/api/person/" + personid + "/files/"+ fileId,
+                                type : 'DELETE',
+                                dataType: 'json',
+                                success : function(data) {
+                                    window.CRM.currentPersonFiles.ajax.reload();
+                                }
+                            });
+
+                        });
+
+                        $.extend(dataTableConfig, window.CRM.plugin.dataTable);
+                        dataTableConfig.responsive = false;
+
+                        window.CRM.currentPersonFiles = $("#personFiles").DataTable(dataTableConfig);
+                        $('#fileuploads').submit(function (event) {
+                            event.preventDefault();
+                            var formData = new FormData($(this)[0]);
+                            $.ajax({
+                                url : window.CRM.root + "/api/person/" + window.CRM.currentPersonID + "/files" ,
+                                type : 'POST',
+                                data : formData,
+                                processData: false,
+                                contentType: false,
+                                enctype: 'multipart/form-data',
+                                dataType: 'json',
+                                success : function(data) {
+                                    window.CRM.currentPersonFiles.ajax.reload();
+                                    $("#file1").val('');
+                                }
+                            });
+                        });
+                    });
+                </script>
+                <ul class="files">
+                    <table id="personFiles" >
+                        <tr>
+                            <th>Actions</th>
+                            <th>File Name</th>
+                            <th>File Size</th>
+                        </tr>
+                    </table>
+                </ul>
                 </div>
             </div>
         </div>

@@ -11,6 +11,9 @@ use ChurchCRM\Slim\Middleware\Request\Auth\EditRecordsRoleAuthMiddleware;
 use ChurchCRM\Utils\MiscUtils;
 use Slim\Http\Request;
 use Slim\Http\Response;
+use ChurchCRM\FileQuery;
+use ChurchCRM\FileAssociation;
+use ChurchCRM\File;
 
 // This group does not load the person via middleware (to speed up the page loads)
 $app->group('/person/{personId:[0-9]+}', function () {
@@ -27,6 +30,16 @@ $app->group('/person/{personId:[0-9]+}', function () {
         return $res->write($photo->getPhotoBytes())->withHeader('Content-type', $photo->getPhotoContentType());
     });
 
+    $this->get('/files', function (Request $request, Response $response, array $args) {
+        $files = FileQuery::create()->joinFileAssociation()
+        ->useFileAssociationQuery()
+         -> filterByPersonId($args['personId'])
+        ->endUse()
+        ->find();
+        $filesResponse = ["files" => $files->toArray()];
+        return $response->withJson($filesResponse);
+    });
+
     $this->get('/files/{fileId:[0-9]+}', function (Request $request, Response $response, array $args) {
         $response = $this->cache->withExpires($response, MiscUtils::getPhotoCacheExpirationTimestamp());
         $files = FileAssociationQuery::create() ->filterByPersonId($args['personId'])->filterByFileId($args['fileId'])->find();
@@ -36,6 +49,28 @@ $app->group('/person/{personId:[0-9]+}', function () {
         $file = $files->getFirst()->getFile();
         return $file->serveRequest($response);
     });
+
+    $this->delete('/files/{fileId:[0-9]+}', function (Request $request, Response $response, array $args) {
+        $FileAssociation = FileAssociationQuery::create() ->filterByPersonId($args['personId'])->filterByFileId($args['fileId'])->findOne();
+        if (count($FileAssociation) != 1) {
+            return $response->withStatus(404, gettext("File does not exist"));
+        }
+
+        $FileAssociation->delete();
+        return $response->withJson(["status"=>"success"]);
+    });
+
+    $this->post('/files', function(Request $request, Response $response, array $args) {
+        $newFiles = File::fromSlimRequest($request);
+        foreach($newFiles as $newFile) {
+            $fa = new FileAssociation();
+            $fa->setPersonId($args['personId']);
+            $fa->setFile($newFile);
+            $fa->save();
+            return $response->withJson(["status"=>"success"]);
+        }
+    });
+
 
 });
 
