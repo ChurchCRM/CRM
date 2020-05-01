@@ -34,13 +34,16 @@ class AuthenticationManager
 
     public static function GetCurrentUser() : User {
       try {
-        return self::GetAuthenticationProvider()->GetCurrentUser();
+        $currentUser = self::GetAuthenticationProvider()->GetCurrentUser();
+        if (empty($currentUser)) {
+          throw new \Exception("No current user provided by current authentication provider: " . get_class(self::GetAuthenticationProvider()));
+        }
+        return $currentUser;
       }
       catch (\Exception $e){
         LoggerUtils::getAppLogger()->addWarning("Failed to get current user: " . $e);
-        return null;
+        throw $e;
       }
- 
     }
 
     public static function EndSession($preventRedirect=false) {
