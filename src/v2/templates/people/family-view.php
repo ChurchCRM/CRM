@@ -536,6 +536,7 @@ $familyAddress = $family->getAddress();
                             columns: [
                                 {
                                     title: i18next.t('File Actions'),
+                                    width: "15%",
                                     render: function (data, type, full, meta) {
                                         return '<a class="deleteFile" data-fileid="' + full.Id + '" data-familyid="' +  window.CRM.currentFamily + '"><i class="fa fa-trash-o"></i></a>';
                                     }
@@ -595,7 +596,7 @@ $familyAddress = $family->getAddress();
                     });
                 </script>
                 <ul class="files">
-                    <table id="familyFiles" >
+                    <table id="familyFiles"  style="width:100%">
                         <tr>
                             <th>Actions</th>
                             <th>File Name</th>

@@ -944,6 +944,7 @@ $bOkToEdit = (AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled() ||
                             columns: [
                                 {
                                     title: i18next.t('File Actions'),
+                                    width: "15%",
                                     render: function (data, type, full, meta) {
                                         return '<a class="deleteFile" data-fileid="' + full.Id + '" data-personid="' +  window.CRM.currentPersonID + '"><i class="fa fa-trash-o"></i></a>';
                                     }
@@ -1003,7 +1004,7 @@ $bOkToEdit = (AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled() ||
                     });
                 </script>
                 <ul class="files">
-                    <table id="personFiles" >
+                    <table id="personFiles"  style="width:100%">
                         <tr>
                             <th>Actions</th>
                             <th>File Name</th>
