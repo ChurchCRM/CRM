@@ -517,15 +517,6 @@ $familyAddress = $family->getAddress();
                 </div>
             </div>
             <div class="box-body">
-                <!-- upload of a single file -->
-                <form id="fileuploads" method="post" enctype="multipart/form-data">
-                <p>
-                    <label>Add file (single): </label><br/>
-                    <input type="file" name="file1" id="file1"/>
-                    <button type="submit" class="btn btn-primary"><?= gettext('Upload Files') ?></button>
-
-                </p>
-                </form>
                 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
                     $(document).ready(function () {
                         var dataTableConfig = {
@@ -554,7 +545,14 @@ $familyAddress = $family->getAddress();
                                     data: 'Size'
                                 }
                             ],
-                            buttons: [],
+                            buttons: [
+                                {
+                                    text: i18next.t("Upload File"),
+                                    action: function() {
+                                        window.CRM.uploadNewFamilyfile();
+                                    }
+                                }
+                            ]
                         };
 
                         $(document).on("click",".deleteFile",function(event) { 
@@ -576,23 +574,45 @@ $familyAddress = $family->getAddress();
                         dataTableConfig.responsive = false;
 
                         window.CRM.currentFamilyFiles = $("#familyFiles").DataTable(dataTableConfig);
-                        $('#fileuploads').submit(function (event) {
-                            event.preventDefault();
-                            var formData = new FormData($(this)[0]);
+
+                        window.CRM.uploadNewFamilyfile = function() {
+                            options = {}
+                            options.title = i18next.t("Upload File");
+                            options.message = '<form id="fileuploads" method="post" enctype="multipart/form-data">' +
+                                '<p><label>Add file (single): </label><br/>' +
+                                '<input type="file" name="file1" id="file1"/>' +
+                                '</form>';
+                            options.buttons = {
+                                confirm: {
+                                    label: i18next.t('Upload Files'),
+                                    className: 'btn-success'
+                                },
+                                cancel: {
+                                    label: i18next.t('Cancel'),
+                                    className: 'btn-danger'
+                                }
+                            }
+                            options.buttons.confirm.callback = function() {
+                                var formData = new FormData($("#fileuploads")[0]);
                             $.ajax({
-                                url : window.CRM.root + "/api/family/" + window.CRM.currentFamily + "/files" ,
-                                type : 'POST',
-                                data : formData,
+                                    url: window.CRM.root + "/api/family/" + window.CRM.currentFamily + "/files",
+                                    type: 'POST',
+                                    data: formData,
                                 processData: false,
                                 contentType: false,
                                 enctype: 'multipart/form-data',
                                 dataType: 'json',
-                                success : function(data) {
+                                    success: function(data) {
+                                        window.CRM.familyFileUploadDialogBox.modal('hide')
                                     window.CRM.currentFamilyFiles.ajax.reload();
-                                    $("#file1").val('');
                                 }
                             });
-                        });
+                                $(window.CRM.familyFileUploadDialogBox).find(".bootbox-body").html("uploading...");
+                                return false;
+                            };
+                            window.CRM.familyFileUploadDialogBox = bootbox.dialog(options)
+                            window.CRM.familyFileUploadDialogBox.show();
+                        }
                     });
                 </script>
                 <ul class="files">
