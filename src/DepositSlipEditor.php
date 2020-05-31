@@ -185,12 +185,12 @@ require 'Include/Header.php';
   $fundData = [];
   $fundBackgroundColor = [];
   foreach ($thisDeposit->getFundTotals() as $tmpfund) {
-    $label = $tmpfund['Name'];
-    $data = $tmpfund['Total'];
-    $backgroundColor = '#'.random_color();
-    array_push($fundLabels, $label);
-    array_push($fundData, $data);
-    array_push($fundBackgroundColor, $backgroundColor);
+      $label = $tmpfund['Name'];
+      $data = $tmpfund['Total'];
+      $backgroundColor = '#'.random_color();
+      array_push($fundLabels, $label);
+      array_push($fundData, $data);
+      array_push($fundBackgroundColor, $backgroundColor);
   }
 
   $pledgeData = [];
