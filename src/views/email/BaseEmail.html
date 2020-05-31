@@ -44,7 +44,7 @@
             </p>
             {{# userName}}
             <p>
-                {{userNameText}}: <a href="{{churchCRMURL}}Login.php?username={{userName}}" target="_blank">{{userName}}</a><br/>
+                {{userNameText}}: <a href="{{churchCRMURL}}/session/begin?username={{userName}}" target="_blank">{{userName}}</a><br/>
                 {{# password}}
                 {{passwordText}}: {{password}}
                 {{/ password}}
@@ -52,14 +52,14 @@
             {{/ userName}}
             {{# verificationToken}}
             <p>
-                <a href="{{churchCRMURL}}external/verify/{{verificationToken}}" target="_blank">{{churchCRMURL}}external/verify/{{verificationToken}}</a>
+                <a href="{{churchCRMURL}}/external/verify/{{verificationToken}}" target="_blank">{{churchCRMURL}}/external/verify/{{verificationToken}}</a>
             </p>
             {{/ verificationToken}}
-            {{# passwordToken}}
+            {{# passwordResetLinkURL}}
             <p>
-                <a href="{{churchCRMURL}}external/password/set/{{passwordToken}}" target="_blank">{{resetPasswordText}}</a>
+                <a href="{{passwordResetLinkURL}}" target="_blank">{{resetPasswordText}}</a>
             </p>
-            {{/ passwordToken}}
+            {{/ passwordResetLinkURL}}
             
             {{# familyLink }}
               {{# IncludeDataInNewPersonNotifications }}

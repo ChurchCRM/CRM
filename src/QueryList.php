@@ -12,6 +12,8 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
+use ChurchCRM\Authentication\AuthenticationManager;
+
 //Set the page title
 $sPageTitle = gettext('Query Listing');
 
@@ -27,7 +29,7 @@ require 'Include/Header.php';
     <div class="box-body">
         <p class="text-right">
             <?php
-                if ($_SESSION['user']->isAdmin()) {
+                if (AuthenticationManager::GetCurrentUser()->isAdmin()) {
                     echo '<a href="QuerySQL.php" class="text-red">'.gettext('Run a Free-Text Query').'</a>';
                 }
             ?>
@@ -41,7 +43,7 @@ require 'Include/Header.php';
                     extract($aRow);
 
                     // Filter out finance-related queries if the user doesn't have finance permissions
-                    if ($_SESSION['user']->isFinanceEnabled() || !in_array($qry_ID, $aFinanceQueries)) {
+                    if (AuthenticationManager::GetCurrentUser()->isFinanceEnabled() || !in_array($qry_ID, $aFinanceQueries)) {
                         // Display the query name and description
                         echo '<a href="QueryView.php?QueryID='.$qry_ID.'">'.gettext($qry_Name).'</a>:';
                         echo '<br>';

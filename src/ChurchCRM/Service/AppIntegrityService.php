@@ -26,6 +26,7 @@ class AppIntegrityService
         }
       } else {
         LoggerUtils::getAppLogger()->debug('Integrity check result file not found at: ' . $integrityCheckFile);
+        AppIntegrityService::$IntegrityCheckDetails = new \StdClass;
         AppIntegrityService::$IntegrityCheckDetails->status = 'failure';
         AppIntegrityService::$IntegrityCheckDetails->message = gettext("integrityCheck.json file missing");
       }
@@ -59,7 +60,12 @@ class AppIntegrityService
   }
 
   public static function getFilesFailingIntegrityCheck() {
+    if (isset(AppIntegrityService::getIntegrityCheckData()->files)) {
     return AppIntegrityService::getIntegrityCheckData()->files;
+    }
+    else{
+      return @[];
+    }
   }
   public static function verifyApplicationIntegrity()
   {
@@ -114,7 +120,7 @@ class AppIntegrityService
   {
 
     $prerequisites = array(
-      new Prerequisite('PHP 7.0+', function() { return version_compare(PHP_VERSION, '7.0.0', '>='); }),
+      new Prerequisite('PHP 7.2+', function() { return version_compare(PHP_VERSION, '7.2.0', '>='); }),
       new Prerequisite('PCRE and UTF-8 Support', function() { return function_exists('preg_match') && @preg_match('/^.$/u', 'ñ') && @preg_match('/^\pL$/u', 'ñ'); }),
       new Prerequisite('Multibyte Encoding', function() { return extension_loaded('mbstring'); }),
       new Prerequisite('PHP Phar', function() { return extension_loaded('phar'); }),
@@ -124,9 +130,10 @@ class AppIntegrityService
       new Prerequisite('PHP iconv', function() { return extension_loaded('iconv'); }),
       new Prerequisite('Mod Rewrite', function() { return AppIntegrityService::hasModRewrite(); }),
       new Prerequisite('GD Library for image manipulation', function() { return (extension_loaded('gd') && function_exists('gd_info')); }),
+      new Prerequisite('FreeType Library', function() { return function_exists('imagettftext'); }),
       new Prerequisite('FileInfo Extension for image manipulation', function() { return extension_loaded('fileinfo'); }),
       new Prerequisite('cURL', function() { return function_exists('curl_version'); }),
-      new Prerequisite('locale gettext', function() { return function_exists('bindtextdomain'); }),
+      new Prerequisite('locale gettext', function() { return (function_exists('bindtextdomain') && function_exists("gettext")); }),
       new Prerequisite('Include/Config file is writeable', function() { return is_writable(SystemURLs::getDocumentRoot().'/Include/') || is_writable(SystemURLs::getDocumentRoot().'/Include/Config.php'); }),
       new Prerequisite('Images directory is writeable', function() { return AppIntegrityService::testImagesWriteable(); }),
       new Prerequisite('PHP ZipArchive', function() { return extension_loaded('zip'); }),

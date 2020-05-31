@@ -28,7 +28,7 @@ class GeoUtils
         try {
             switch (SystemConfig::getValue("sGeoCoderProvider")) {
                 case "GoogleMaps":
-                    $provider = new GoogleMaps($adapter, null, SystemConfig::getValue("sGoogleMapKey"));
+                    $provider = new GoogleMaps($adapter, null, SystemConfig::getValue("sGoogleMapsGeocodeKey"));
                     break;
                 case "BingMaps":
                     $provider = new BingMaps($adapter, SystemConfig::getValue("sBingMapKey"));

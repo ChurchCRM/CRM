@@ -6,7 +6,7 @@ use ChurchCRM\PersonQuery;
 use ChurchCRM\GroupQuery;
 use ChurchCRM\Map\PersonTableMap;
 use Propel\Runtime\ActiveQuery\Criteria;
-use ChurchCRM\SessionUser;
+use ChurchCRM\Authentication\AuthenticationManager;
 
 class Cart
 {
@@ -26,7 +26,7 @@ class Cart
       throw new \Exception (gettext("PersonID for Cart must be numeric"),400);
     }
     if ($PersonID !== null && !in_array($PersonID, $_SESSION['aPeopleCart'], false)) {
-      array_push($_SESSION['aPeopleCart'], $PersonID);
+      array_push($_SESSION['aPeopleCart'], (int)$PersonID);
     }
   }
 
@@ -207,7 +207,7 @@ class Cart
         array_push($emailAddressArray, $cartPerson->getEmail());
       }
     }
-    $delimiter = SessionUser::getUser()->getUserConfigString("sMailtoDelimiter");
+    $delimiter = AuthenticationManager::GetCurrentUser()->getUserConfigString("sMailtoDelimiter");
     $sEmailLink = implode($delimiter, array_unique(array_filter($emailAddressArray)));
     if (!empty(SystemConfig::getValue('sToEmailAddress')) && !stristr($sEmailLink, SystemConfig::getValue('sToEmailAddress'))) {
       $sEmailLink .= $delimiter . SystemConfig::getValue('sToEmailAddress');

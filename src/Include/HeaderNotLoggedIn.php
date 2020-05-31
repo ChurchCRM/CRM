@@ -1,5 +1,6 @@
 <?php
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\dto\SystemConfig;
 
 require_once 'Header-Security.php';
 
@@ -30,6 +31,6 @@ require_once 'Header-Security.php';
   <script nonce="<?= SystemURLs::getCSPNonce() ?>"  >
     window.CRM = {
       root: "<?= SystemURLs::getRootPath() ?>",
-      iLoginType: "<?= $_SESSION['iLoginType'] ?>"
+      churchWebSite:"<?= SystemConfig::getValue('sChurchWebSite') ?>"
     };
   </script>

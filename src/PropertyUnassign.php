@@ -14,10 +14,11 @@ require 'Include/Functions.php';
 
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\Authentication\AuthenticationManager;
 
 // Security: User must have Manage Groups or Edit Records permissions
 // Otherwise, re-direct them to the main menu.
-if (!$_SESSION['user']->isManageGroupsEnabled() && !$_SESSION['user']->isEditRecordsEnabled()) {
+if (!AuthenticationManager::GetCurrentUser()->isManageGroupsEnabled() && !AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled()) {
     RedirectUtils::Redirect('Menu.php');
     exit;
 }
@@ -26,7 +27,7 @@ if (!$_SESSION['user']->isManageGroupsEnabled() && !$_SESSION['user']->isEditRec
 $iPropertyID = InputUtils::LegacyFilterInput($_GET['PropertyID'], 'int');
 
 // Is there a PersonID in the querystring?
-if (isset($_GET['PersonID']) && $_SESSION['user']->isEditRecordsEnabled()) {
+if (isset($_GET['PersonID']) && AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled()) {
     $iPersonID = InputUtils::LegacyFilterInput($_GET['PersonID'], 'int');
     $iRecordID = $iPersonID;
     $sQuerystring = '?PersonID='.$iPersonID;
@@ -41,7 +42,7 @@ if (isset($_GET['PersonID']) && $_SESSION['user']->isEditRecordsEnabled()) {
 }
 
 // Is there a GroupID in the querystring?
-elseif (isset($_GET['GroupID']) && $_SESSION['user']->isManageGroupsEnabled()) {
+elseif (isset($_GET['GroupID']) && AuthenticationManager::GetCurrentUser()->isManageGroupsEnabled()) {
     $iGroupID = InputUtils::LegacyFilterInput($_GET['GroupID'], 'int');
     $iRecordID = $iGroupID;
     $sQuerystring = '?GroupID='.$iGroupID;
@@ -56,7 +57,7 @@ elseif (isset($_GET['GroupID']) && $_SESSION['user']->isManageGroupsEnabled()) {
 }
 
 // Is there a FamilyID in the querystring?
-elseif (isset($_GET['FamilyID']) && $_SESSION['user']->isEditRecordsEnabled()) {
+elseif (isset($_GET['FamilyID']) && AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled()) {
     $iFamilyID = InputUtils::LegacyFilterInput($_GET['FamilyID'], 'int');
     $iRecordID = $iFamilyID;
     $sQuerystring = '?FamilyID='.$iFamilyID;

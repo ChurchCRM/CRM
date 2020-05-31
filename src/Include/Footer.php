@@ -13,8 +13,9 @@
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\Bootstrapper;
+use ChurchCRM\Authentication\AuthenticationManager;
 
-$isAdmin = $_SESSION['user']->isAdmin();
+$isAdmin = AuthenticationManager::GetCurrentUser()->isAdmin();
 ?>
 </section><!-- /.content -->
 
@@ -83,7 +84,6 @@ $isAdmin = $_SESSION['user']->isAdmin();
 
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/bootstrap-daterangepicker/daterangepicker.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/external/bootstrap-timepicker/bootstrap-timepicker.min.js"></script>
 
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/datatables/pdfmake.min.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/datatables/vfs_fonts.js"></script>

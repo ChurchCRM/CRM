@@ -5,7 +5,7 @@
  *  last change : 2014-12-14
  *  website     : http://www.churchcrm.io
  *  copyright   : Copyright 2001, 2002, 2003-2014 Deane Barker, Chris Gebhardt, Michael Wilt
-  *
+ *
  ******************************************************************************/
 
 //Include the function library
@@ -16,6 +16,7 @@ use ChurchCRM\DepositQuery;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\Authentication\AuthenticationManager;
 
 $iDepositSlipID = 0;
 $thisDeposit = 0;
@@ -38,7 +39,7 @@ if ($iDepositSlipID) {
     }
 
     // Security: User must have finance permission or be the one who created this deposit
-    if (!($_SESSION['user']->isFinanceEnabled() || $_SESSION['user']->getId() == $thisDeposit->getEnteredby())) {
+    if (!(AuthenticationManager::GetCurrentUser()->isFinanceEnabled() || AuthenticationManager::GetCurrentUser()->getId() == $thisDeposit->getEnteredby())) {
         RedirectUtils::Redirect('Menu.php');
         exit;
     }
@@ -62,7 +63,7 @@ if (isset($_POST['DepositSlipLoadAuthorized'])) {
 $_SESSION['iCurrentDeposit'] = $iDepositSlipID;  // Probably redundant
 
 /* @var $currentUser User */
-$currentUser = $_SESSION['user'];
+$currentUser = AuthenticationManager::GetCurrentUser();
 $currentUser->setCurrentDeposit($iDepositSlipID);
 $currentUser->save();
 
@@ -115,7 +116,7 @@ require 'Include/Header.php';
       </div>
       <div class="box-body">
         <div class="col-lg-6">
-          <canvas id="type-donut" style="height:250px"></canvas>
+          <canvas id="type-donut" style="height: 250px;"></canvas>
           <ul style="margin:0px; border:0px; padding:0px;">
           <?php
           // Get deposit totals
@@ -180,40 +181,45 @@ require 'Include/Header.php';
 
 <script  src="<?= SystemURLs::getRootPath() ?>/skin/js/DepositSlipEditor.js"></script>
 <?php
+  $fundLabels = [];
   $fundData = [];
+  $fundBackgroundColor = [];
   foreach ($thisDeposit->getFundTotals() as $tmpfund) {
-      $fund = new StdClass();
-      $fund->color = '#'.random_color();
-      $fund->highlight = '#'.random_color();
-      $fund->label = $tmpfund['Name'];
-      $fund->value = $tmpfund['Total'];
-      array_push($fundData, $fund);
+      $label = $tmpfund['Name'];
+      $data = $tmpfund['Total'];
+      $backgroundColor = '#'.random_color();
+      array_push($fundLabels, $label);
+      array_push($fundData, $data);
+      array_push($fundBackgroundColor, $backgroundColor);
   }
-  $pledgeTypeData = [];
-  $t1 = new stdClass();
-  $t1->value = $thisDeposit->getTotalamount() ? $thisDeposit->getTotalCash() : '0';
-  $t1->color = '#197A05';
-  $t1->highlight = '#4AFF23';
-  $t1->label = 'Cash';
-  array_push($pledgeTypeData, $t1);
-  $t1 = new stdClass();
-  $t1->value = $thisDeposit->getTotalamount() ? $thisDeposit->getTotalChecks() : '0';
-  $t1->color = '#003399';
-  $t1->highlight = '#3366ff';
-  $t1->label = 'Checks';
-  array_push($pledgeTypeData, $t1);
+
+  $pledgeData = [];
+  $data = $thisDeposit->getTotalamount() ? $thisDeposit->getTotalCash() : '0';
+  array_push($pledgeData, $data);
+  $data = $thisDeposit->getTotalamount() ? $thisDeposit->getTotalChecks() : '0';
+  array_push($pledgeData, $data);
+
 ?>
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
   var depositType = '<?php echo $thisDeposit->getType(); ?>';
   var depositSlipID = <?php echo $iDepositSlipID; ?>;
   var isDepositClosed = Boolean(<?=  $thisDeposit->getClosed(); ?>);
-  var fundData = <?= json_encode($fundData) ?>;
-  var pledgeData = <?= json_encode($pledgeTypeData) ?>;
-
+  var fundLabels = <?= json_encode(array_values($fundLabels)) ?>;
+  var fundData = <?= json_encode(array_values($fundData)) ?>;
+  var fundBackgroundColor = <?= json_encode(array_values($fundBackgroundColor)) ?>;
+  var pledgeLables = ['Cash', 'Check'];
+  var pledgeData = <?= json_encode($pledgeData) ?>;
+  var pledgeBackgroundColor = ['#197A05','#003399'];
   $(document).ready(function() {
     initPaymentTable();
-    initCharts(pledgeData, fundData);
+    var pledgeLabels = <?= json_encode(array_values($fundData)); ?>;
+    initCharts(pledgeLables,
+               pledgeData,
+               pledgeBackgroundColor,
+               fundLabels,
+               fundData,
+               fundBackgroundColor);
     initDepositSlipEditor();
 
     $('#deleteSelectedRows').click(function() {
@@ -238,7 +244,7 @@ require 'Include/Header.php';
             $.each(deletedRows, function(index, value) {
               window.CRM.APIRequest({
                 method: 'DELETE',
-                path: 'payments/' + value.Groupkey,
+                path: 'payments/' + value.GroupKey,
               })
               .done(function(data) {
                 dataT.rows('.selected').remove().draw(false);

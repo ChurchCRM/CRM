@@ -13,6 +13,7 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Authentication\AuthenticationManager;
 
 //Set the page title
 $sPageTitle = gettext('Fundraiser Listing');
@@ -101,7 +102,7 @@ require 'Include/Header.php';
 // Save record limit if changed
 if (isset($_GET['Number'])) {
     /* @var $currentUser \ChurchCRM\User */
-    $currentUser = $_SESSION['user'];
+    $currentUser = AuthenticationManager::GetCurrentUser();
     $currentUser->setSearchLimit(InputUtils::LegacyFilterInput($_GET['Number'], 'int'));
     $currentUser->save();
 }
@@ -117,7 +118,7 @@ switch ($sSort) {
 }
 
 // Append a LIMIT clause to the SQL statement
-$iPerPage = $_SESSION['user']->getSearchLimit();
+$iPerPage = AuthenticationManager::GetCurrentUser()->getSearchLimit();
 if (empty($_GET['Result_Set'])) {
     $Result_Set = 0;
 } else {

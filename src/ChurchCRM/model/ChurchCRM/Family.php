@@ -11,6 +11,7 @@ use ChurchCRM\Utils\GeoUtils;
 use DateTime;
 use ChurchCRM\Emails\NewPersonOrFamilyEmail;
 use ChurchCRM\Utils\LoggerUtils;
+use ChurchCRM\Authentication\AuthenticationManager;
 
 /**
  * Skeleton subclass for representing a row from the 'family_fam' table.
@@ -186,15 +187,15 @@ class Family extends BaseFamily implements iPhoto
                 break;
             case "verify":
                 $note->setText(gettext('Family Data Verified'));
-                $note->setEnteredBy($_SESSION['user']->getId());
+                $note->setEnteredBy(AuthenticationManager::GetCurrentUser()->getId());
                 break;
             case "verify-link":
               $note->setText(gettext('Verification email sent'));
-              $note->setEnteredBy($_SESSION['user']->getId());
+              $note->setEnteredBy(AuthenticationManager::GetCurrentUser()->getId());
               break;
             case "verify-URL":
                 $note->setText(gettext('Verification URL created'));
-                $note->setEnteredBy($_SESSION['user']->getId());
+                $note->setEnteredBy(AuthenticationManager::GetCurrentUser()->getId());
                 break;
         }
 
@@ -254,13 +255,13 @@ class Family extends BaseFamily implements iPhoto
 
     public function deletePhoto()
     {
-      if ($_SESSION['user']->isDeleteRecordsEnabled() ) {
+      if (AuthenticationManager::GetCurrentUser()->isDeleteRecordsEnabled() ) {
         if ( $this->getPhoto()->delete() )
         {
           $note = new Note();
           $note->setText(gettext("Profile Image Deleted"));
           $note->setType("photo");
-          $note->setEntered($_SESSION['user']->getId());
+          $note->setEntered(AuthenticationManager::GetCurrentUser()->getId());
           $note->setPerId($this->getId());
           $note->save();
           return true;
@@ -269,11 +270,11 @@ class Family extends BaseFamily implements iPhoto
       return false;
     }
     public function setImageFromBase64($base64) {
-      if ($_SESSION['user']->isEditRecordsEnabled() ) {
+      if (AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled() ) {
         $note = new Note();
         $note->setText(gettext("Profile Image uploaded"));
         $note->setType("photo");
-        $note->setEntered($_SESSION['user']->getId());
+        $note->setEntered(AuthenticationManager::GetCurrentUser()->getId());
         $this->getPhoto()->setImageFromBase64($base64);
         $note->setFamId($this->getId());
         $note->save();

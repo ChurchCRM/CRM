@@ -17,6 +17,7 @@ require 'Include/Functions.php';
 
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\Authentication\AuthenticationManager;
 
 $mode = trim($_GET['mode']);
 
@@ -24,7 +25,7 @@ $mode = trim($_GET['mode']);
 switch ($mode) {
     case 'famroles':
     case 'classes':
-        if (!$_SESSION['user']->isMenuOptionsEnabled()) {
+        if (!AuthenticationManager::GetCurrentUser()->isMenuOptionsEnabled()) {
             RedirectUtils::Redirect('Menu.php');
             exit;
         }
@@ -33,7 +34,7 @@ switch ($mode) {
     case 'grptypes':
     case 'grproles':
     case 'groupcustom':
-        if (!$_SESSION['user']->isManageGroupsEnabled()) {
+        if (!AuthenticationManager::GetCurrentUser()->isManageGroupsEnabled()) {
             RedirectUtils::Redirect('Menu.php');
             exit;
         }
@@ -42,7 +43,7 @@ switch ($mode) {
     case 'custom':
     case 'famcustom':
     case 'securitygrp':
-        if (!$_SESSION['user']->isAdmin()) {
+        if (!AuthenticationManager::GetCurrentUser()->isAdmin()) {
             RedirectUtils::Redirect('Menu.php');
             exit;
         }

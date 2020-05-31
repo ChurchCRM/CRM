@@ -1,0 +1,22 @@
+default:
+  suites:
+    default:
+      filters:
+        tags: "~@wip"
+      contexts:
+        - nwcontext:form
+        - nwcontext:formstone
+        - nwcontext:select2
+        - FeatureContext
+  extensions:
+    Novaway\CommonContexts\Extension: ~
+    Behat\MinkExtension:
+      base_url: {URL}
+      selenium2:
+        wd_host: {WD_HOST}
+        browser: chrome
+        capabilities:
+          browserName: "chrome"
+          extra_capabilities:
+            chromeOptions:
+              w3c: false

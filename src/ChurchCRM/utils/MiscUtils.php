@@ -65,23 +65,10 @@ class MiscUtils {
       $now = date_create('today');
       $age = date_diff($now,$birthDate);
 
-      if ($age->y < 1) {
-        $ageValue = $age->m;
-        if ($age->m > 1) {
-          $ageSuffix = gettext('mos old');
-        } else {
-          $ageSuffix = gettext('mo old');
-        }
-      } else {
-        $ageValue = $age->y;
-        if ($age->y > 1) {
-          $ageSuffix = gettext('yrs old');
-        } else {
-          $ageSuffix = gettext('yr old');
-        }
-      }
+      if ($age->y < 1)
+        return sprintf(ngettext('%d month old', '%d months old', $age->m), $age->m);
 
-      return $ageValue. " ".$ageSuffix;
+      return sprintf(ngettext('%d year old', '%d years old', $age->y), $age->y);
     }
 
   // Format a BirthDate
@@ -123,5 +110,17 @@ class MiscUtils {
     $anchor = str_replace(" ", "-", $anchor);
     return $anchor;
   }
+
+  public static function dashesToCamelCase($string, $capitalizeFirstCharacter = false)
+  {
+      $str = str_replace(' ', '', ucwords(str_replace('-', ' ', $string)));
+
+      if (!$capitalizeFirstCharacter) {
+          $str[0] = strtolower($str[0]);
+      }
+
+      return $str;
+  }
 }
+
 ?>

@@ -6,6 +6,10 @@ use ChurchCRM\Base\User as BaseUser;
 use ChurchCRM\dto\SystemConfig;
 use Propel\Runtime\Connection\ConnectionInterface;
 use ChurchCRM\Utils\MiscUtils;
+use Defuse\Crypto\Crypto;
+use PragmaRX\Google2FA\Google2FA;
+use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\Authentication\Exceptions\PasswordChangeException;
 
 /**
  * Skeleton subclass for representing a row from the 'user_usr' table.
@@ -18,6 +22,9 @@ use ChurchCRM\Utils\MiscUtils;
  */
 class User extends BaseUser
 {
+
+
+    private $provisional2FAKey; 
 
     public function getId()
     {
@@ -66,7 +73,10 @@ class User extends BaseUser
 
     public function isFinanceEnabled()
     {
-        return $this->isAdmin() || $this->isFinance();
+        if (SystemConfig::getBooleanValue("bEnabledFinance")) {
+            return $this->isAdmin() || $this->isFinance();
+        }
+        return false;
     }
 
     public function isNotesEnabled()
@@ -179,7 +189,7 @@ class User extends BaseUser
     {
         $note = new Note();
         $note->setPerId($this->getPersonId());
-        $note->setEntered($_SESSION['user']->getId());
+        $note->setEntered(AuthenticationManager::GetCurrentUser()->getId());
         $note->setType('user');
 
         switch ($type) {
@@ -264,4 +274,144 @@ class User extends BaseUser
         }
       }
     }
+
+    public function getFormattedShowSince() {
+        $showSince = "";
+        if ($this->getShowSince() != null) {
+            $showSince = $this->getShowSince()->format('Y-m-d');
+        }
+        return $showSince;
+    }
+
+    public function provisionNew2FAKey() {
+        $google2fa = new Google2FA();
+        $key = $google2fa->generateSecretKey();
+        // store the temporary 2FA key in a private variable on this User object
+        // we don't want to update the database with the new key until we've confirmed 
+        // that the user is capapble of generating valid 2FA codes
+        // encrypt the 2FA key since this object and its properties are serialized into the $_SESSION store
+        // which is generally written to disk.
+        $this->provisional2FAKey = Crypto::encryptWithPassword($key, KeyManager::GetTwoFASecretKey());
+        return $key;
+    }
+
+    public function confirmProvisional2FACode($twoFACode) {
+        $google2fa = new Google2FA();
+        $window = 2; //TODO: make this a system config
+        $pw = Crypto::decryptWithPassword($this->provisional2FAKey, KeyManager::GetTwoFASecretKey());
+        $isKeyValid = $google2fa->verifyKey($pw, $twoFACode, $window);
+        if ($isKeyValid) {
+            $this->setTwoFactorAuthSecret($this->provisional2FAKey);
+            $this->save();
+            return true;
+        }
+        return $isKeyValid;
+       
+    }
+
+    public function remove2FAKey() {
+        $this->setTwoFactorAuthSecret(null);
+        $this->save();
+    }
+
+    public function getDecryptedTwoFactorAuthSecret() {
+        return Crypto::decryptWithPassword($this->getTwoFactorAuthSecret(), KeyManager::GetTwoFASecretKey());
+    }
+
+    private function getDecryptedTwoFactorAuthRecoveryCodes() {
+        return explode(",",Crypto::decryptWithPassword($this->getTwoFactorAuthRecoveryCodes(), KeyManager::GetTwoFASecretKey()));
+    }
+
+    public function disableTwoFactorAuthentication() {
+        $this->setTwoFactorAuthRecoveryCodes(null);
+        $this->setTwoFactorAuthSecret(null);
+        $this->save();
+    }
+
+    public function is2FactorAuthEnabled() {
+        return !empty($this->getTwoFactorAuthSecret());
+    }
+
+    public function getNewTwoFARecoveryCodes() {
+        // generate an array of 2FA recovery codes, and store as an encrypted, comma-seperated list
+        $recoveryCodes = array();
+        for($i=0; $i < 12; $i++) {
+            $recoveryCodes[$i] = base64_encode(random_bytes(10));
+        }
+        $recoveryCodesString = implode(",",$recoveryCodes);
+        $this->setTwoFactorAuthRecoveryCodes(Crypto::encryptWithPassword($recoveryCodesString, KeyManager::GetTwoFASecretKey()));
+        $this->save();
+        return $recoveryCodes;
+    }
+
+    public function isTwoFACodeValid($twoFACode) {
+        $google2fa = new Google2FA();
+        $window = 2; //TODO: make this a system config
+        $timestamp = $google2fa->verifyKeyNewer($this->getDecryptedTwoFactorAuthSecret(), $twoFACode, $this->getTwoFactorAuthLastKeyTimestamp(), $window);
+        if ($timestamp !== false) {
+            $this->setTwoFactorAuthLastKeyTimestamp($timestamp);
+            $this->save();
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function isTwoFaRecoveryCodeValid($twoFaRecoveryCode) {
+        // checks for validity of a 2FA recovery code
+        // if the specified code was valid, the code is also removed.
+        $codes = $this->getDecryptedTwoFactorAuthRecoveryCodes();
+        if (($key = array_search($twoFaRecoveryCode, $codes)) !== false) {
+            unset($codes[$key]);
+            $recoveryCodesString = implode(",",$codes);
+            $this->setTwoFactorAuthRecoveryCodes(Crypto::encryptWithPassword($recoveryCodesString, KeyManager::GetTwoFASecretKey()));
+            return true;
+        }
+        return false;
+    }
+
+    public function adminSetUserPassword($newPassword)
+    {
+        $this->updatePassword($newPassword);
+        $this->setNeedPasswordChange(false);
+        $this->save();
+        $this->createTimeLineNote("password-changed-admin");
+        return;
+    }
+
+    public function userChangePassword($oldPassword, $newPassword)
+    {
+        if (!$this->isPasswordValid($oldPassword)) {
+            throw new PasswordChangeException("Old", gettext('Incorrect password supplied for current user'));
+        }
+
+        if (!$this->GetIsPasswordPermissible($newPassword)) {
+            throw new PasswordChangeException("New", gettext('Your password choice is too obvious. Please choose something else.'));
+        }
+
+        if (strlen($newPassword) < SystemConfig::getValue('iMinPasswordLength')) {
+            throw new PasswordChangeException("New", gettext('Your new password must be at least') . ' ' . SystemConfig::getValue('iMinPasswordLength') . ' ' . gettext('characters'));
+        }
+
+        if ($newPassword == $oldPassword) {
+            throw new PasswordChangeException("New", gettext('Your new password must not match your old one.'));
+        }
+
+        if (levenshtein(strtolower($newPassword), strtolower($oldPassword)) < SystemConfig::getValue('iMinPasswordChange')) {
+            throw new PasswordChangeException("New", gettext('Your new password is too similar to your old one.'));
+        }
+
+        $this->updatePassword($newPassword);
+        $this->setNeedPasswordChange(false);
+        $this->save();
+        $this->createTimeLineNote("password-changed");
+        return;
+    }
+    private function GetIsPasswordPermissible($newPassword) {
+        $aBadPasswords = explode(',', strtolower(SystemConfig::getValue('aDisallowedPasswords')));
+        $aBadPasswords[] = strtolower($this->getPerson()->getFirstName());
+        $aBadPasswords[] = strtolower($this->getPerson()->getMiddleName());
+        $aBadPasswords[] = strtolower($this->getPerson()->getLastName());
+        return ! in_array(strtolower($newPassword), $aBadPasswords);
+      }
 }

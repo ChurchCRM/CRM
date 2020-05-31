@@ -4,6 +4,7 @@ namespace ChurchCRM\Tasks;
 
 use \ChurchCRM\Service\SystemService;
 use Propel\Runtime\Propel;
+use ChurchCRM\dto\SystemURLs;
 
 class UnsupportedPaymentDataCheck implements iTask
 {
@@ -34,7 +35,7 @@ class UnsupportedPaymentDataCheck implements iTask
 
     public function getLink()
     {
-        return 'https://github.com/ChurchCRM/CRM/wiki/Finances';
+        return SystemURLs::getSupportURL(array_pop(explode('\\', __CLASS__)));
     }
 
     public function getTitle()

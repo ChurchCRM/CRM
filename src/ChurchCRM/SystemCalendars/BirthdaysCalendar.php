@@ -35,7 +35,7 @@ class BirthdaysCalendar implements SystemCalendar {
     return gettext("Birthdays");
   }
     
-  public function getEvents() {
+  public function getEvents($start,$end) {
     $people = PersonQuery::create()
             ->filterByBirthDay('', Criteria::NOT_EQUAL)
             ->find();

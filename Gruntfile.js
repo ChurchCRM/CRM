@@ -47,11 +47,12 @@ module.exports = function (grunt) {
             '!vendor/**/example/**',
             '!vendor/**/tests/**',
             '!vendor/**/docs/**',
-            '!Images/{Family,Person}/thumbnails/*.{jpg,jpeg,png}',
+            '!Images/{Family,Person}/**/*.{jpg,jpeg,png}',
             '!composer.lock',
             '!Include/Config.php',
             '!integrityCheck.json',
-            '!logs/*.log'
+            '!logs/*.log',
+            '!vendor/endroid/qr-code/assets/fonts/noto_sans.otf' // This closes #5099, but TODO: when https://github.com/endroid/qr-code/issues/224 is fixed, we can remove this exclusion.
         ],
         clean: {
             skin: ["src/skin/external"],
@@ -131,22 +132,8 @@ module.exports = function (grunt) {
                         expand: true,
                         filter: 'isFile',
                         flatten: true,
-                        src: ['node_modules/admin-lte/plugins/iCheck/icheck.min.js', 'node_modules/admin-lte/plugins/iCheck/square/blue.**'],
-                        dest: 'src/skin/external/iCheck/'
-                    },
-                    {
-                        expand: true,
-                        filter: 'isFile',
-                        flatten: true,
                         src: ['node_modules/bootstrap-toggle/css/bootstrap-toggle.css', 'node_modules/bootstrap-toggle/js/bootstrap-toggle.js'],
                         dest: 'src/skin/external/bootstrap-toggle/'
-                    },
-                    {
-                        expand: true,
-                        filter: 'isFile',
-                        flatten: true,
-                        src: ['node_modules/bootstrap-timepicker/css/bootstrap-timepicker.min.css', 'node_modules/bootstrap-timepicker/js/bootstrap-timepicker.min.js'],
-                        dest: 'src/skin/external/bootstrap-timepicker/'
                     },
                     {
                         expand: true,
@@ -248,7 +235,7 @@ module.exports = function (grunt) {
                         expand: true,
                         filter: 'isFile',
                         flatten: true,
-                        src: ['node_modules/select2/dist/js/select2.min.js',
+                        src: ['node_modules/select2/dist/js/select2.full.min.js',
                         'node_modules/select2/dist/css/select2.min.css'],
                         dest: 'src/skin/external/select2'
                     },
@@ -445,6 +432,16 @@ module.exports = function (grunt) {
         var sha1 = require('node-sha1');
         grunt.log.writeln(sha1(grunt.file.read(arg1, {encoding: null})));
     });
+
+    grunt.registerTask('patchDataTablesCSS', 'Patches Absolute paths in DataTables CSS to relative Paths', function () {
+        var filePath = "src/skin/external/datatables/datatables.min.css";
+        var fileContents = grunt.file.read(filePath);
+        const pattern = /url\(\"\//gi
+        fileContents = fileContents.replace(pattern,'url("')
+        console.log("patched files");
+        grunt.file.write(filePath, fileContents);
+    });
+
 
     grunt.registerMultiTask('generateSignatures', 'Generates SHA1 signatures of the release archive', function () {
         var sha1 = require('node-sha1');

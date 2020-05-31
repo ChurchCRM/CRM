@@ -186,7 +186,7 @@ class SystemService
               // if there was no previous backup, or if the interval suggests we do a backup now.
               LoggerUtils::getAppLogger()->addInfo("Starting a backup job.  Last backup run: ".SystemConfig::getValue('sLastBackupTimeStamp'));
               $BaseName = preg_replace('/[^a-zA-Z0-9\-_]/','', SystemConfig::getValue('sChurchName')). "-" . date(SystemConfig::getValue("sDateFilenameFormat"));
-              $Backup = new BackupJob($BaseName, BackupType::FullBackup, SystemConfig::getValue('bBackupExtraneousImages'));
+              $Backup = new BackupJob($BaseName, BackupType::FullBackup, SystemConfig::getValue('bBackupExtraneousImages'),false,'');
               $Backup->Execute();
               $Backup->CopyToWebDAV(SystemConfig::getValue('sExternalBackupEndpoint'), SystemConfig::getValue('sExternalBackupUsername'), SystemConfig::getValue('sExternalBackupPassword'));
               $now = new \DateTime();  // update the LastBackupTimeStamp.
@@ -236,20 +236,7 @@ class SystemService
     }
 
 
-    public function moveDir($src, $dest)
-    {
-        $files = array_diff(scandir($src), ['.', '..']);
-        foreach ($files as $file) {
-            if (is_dir("$src/$file")) {
-                mkdir("$dest/$file");
-                $this->moveDir("$src/$file", "$dest/$file");
-            } else {
-                rename("$src/$file", "$dest/$file");
-            }
-        }
 
-        return rmdir($src);
-    }
 
         // Returns a file size limit in bytes based on the PHP upload_max_filesize
     // and post_max_size

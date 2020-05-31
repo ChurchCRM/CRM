@@ -15,10 +15,10 @@ require '../Include/ReportFunctions.php';
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Reports\PDF_AddressReport;
 use ChurchCRM\Utils\RedirectUtils;
-use ChurchCRM\SessionUser;
+use ChurchCRM\Authentication\AuthenticationManager;
 
 // If user does not have permission redirect to the menu.
-if (!SessionUser::getUser()->isbUSAddressVerificationEnabled()) {
+if (!AuthenticationManager::GetCurrentUser()->isbUSAddressVerificationEnabled()) {
     RedirectUtils::Redirect('Menu.php');
     exit;
 }
