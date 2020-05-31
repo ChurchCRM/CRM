@@ -235,7 +235,7 @@ module.exports = function (grunt) {
                         expand: true,
                         filter: 'isFile',
                         flatten: true,
-                        src: ['node_modules/select2/dist/js/select2.min.js',
+                        src: ['node_modules/select2/dist/js/select2.full.min.js',
                         'node_modules/select2/dist/css/select2.min.css'],
                         dest: 'src/skin/external/select2'
                     },
