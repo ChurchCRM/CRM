@@ -41,7 +41,7 @@
         "knplabs/github-api": "~1.4",
         "propel/propel": "~2.0@dev",
         "setasign/fpdf": "1.8.1",
-        "phpmailer/phpmailer": "6.0.*",
+        "phpmailer/phpmailer": "6.1.*",
         "verot/class.upload.php": "dev-master",
         "ifsnop/mysqldump-php": "2.*",
         "php-http/message": "1.6.0",
