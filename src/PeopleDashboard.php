@@ -463,16 +463,16 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
         datasets: [{
             data: [
             <?php while ($row = mysqli_fetch_array($rsAdultsGender)) {
-                if ($row['per_Gender'] == 1) {
-                    echo $row['numb'] . ',';
-                }
-                if ($row['per_Gender'] == 2) {
-                    echo $row['numb'] . ',';
-                }
-            }
+                  if ($row['per_Gender'] == 1) {
+                      echo $row['numb'] . ',';
+                  }
+                  if ($row['per_Gender'] == 2) {
+                      echo $row['numb'] . ',';
+                  }
+              }
             while ($row = mysqli_fetch_array($rsKidsGender)) {
                 if ($row['per_Gender'] == 1) {
-                   echo $row['numb'] . ',';
+                    echo $row['numb'] . ',';
                 }
                 if ($row['per_Gender'] == 2) {
                     echo $row['numb'];
