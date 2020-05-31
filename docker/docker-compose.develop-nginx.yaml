@@ -12,24 +12,37 @@ services:
       - .env
     networks:
       - default
+
+  churchcrm:
+    build:
+      context: .
+      dockerfile: Dockerfile.churchcrm-fpm-dev-debian
+    volumes:
+      - ../src:/var/www/html
+      - ..:/home/ChurchCRM
+    env_file:
+      - .env
+    links:
+      - database
     
   webserver:
     ## Look into: https://hub.docker.com/r/nimmis/apache-php7
     build:
       context: .
-      dockerfile: Dockerfile.churchcrm-apache-dev-debian
+      dockerfile: Dockerfile.nginx
     ports:
       - "80:80"
     links:
       - churchcrm
     volumes:
       - ../src:/var/www/html
-      - ..:/home/ChurchCRM
     links:
       - database
       - mailserver
     env_file:
       - .env
+    links:
+      - churchcrm
 
   mailserver:
     #  Reference: https://blog.mailtrap.io/mailhog-explained/
