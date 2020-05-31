@@ -158,9 +158,9 @@ class AppIntegrityService
   public static function hasApacheModule($module)
   {
       if (function_exists('apache_get_modules')) {
+          LoggerUtils::getAppLogger()->addDebug("looking for apache module $module using PHP's apache_get_modules");
           return in_array($module, apache_get_modules());
       }
-
       return false;
   }
 
@@ -173,39 +173,48 @@ class AppIntegrityService
     //   and check for a header that would only be present if .htaccess was processed.
     //   This header comes from index.php (which is the target of .htaccess for invalid URLs)
 
-    $check = AppIntegrityService::hasApacheModule('mod_rewrite');
+    $check = false;
+    $logger = LoggerUtils::getAppLogger();
 
-    if (!$check && function_exists('shell_exec')) {
-      if (strpos($_SERVER['SERVER_SOFTWARE'], 'Apache') !== false) {
-        $check = strpos(shell_exec('/usr/local/apache/bin/apachectl -l'), 'mod_rewrite') !== false;
-      }
+    if (stristr($_SERVER["SERVER_SOFTWARE"],"apache") != false) {
+      $logger->addDebug("PHP is running through Apache; look for mod_rewrite");
+      $check = AppIntegrityService::hasApacheModule('mod_rewrite');
+      $logger->addDebug("Apache mod_rewrite check status: $check");
     }
-
-    if ( function_exists('curl_version')) {
-        $ch = curl_init();
-        $request_url_parser = parse_url($_SERVER['HTTP_REFERER']);
-        $request_scheme = isset($request_url_parser['scheme']) ? $request_url_parser['scheme'] : 'http';
-        $rewrite_chk_url = $request_scheme ."://". $_SERVER['HTTP_HOST'] . SystemURLs::getRootPath()."/INVALID";
-        curl_setopt($ch, CURLOPT_URL, $rewrite_chk_url);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($ch, CURLOPT_HEADER, 1);
-        curl_setopt($ch, CURLOPT_NOBODY, 1);
-        $output = curl_exec($ch);
-        curl_close($ch);
-        $headers=array();
-        $data=explode("\n",$output);
-        $headers['status']=$data[0];
-        array_shift($data);
-        foreach($data as $part){
-            if (strpos($part, ":"))
-            {
-              $middle=explode(":",$part);
-              $headers[trim($middle[0])] = trim($middle[1]);
-            }
+    else {
+      $logger->addDebug("PHP is not running through Apache");
+    }
+    
+    if ($check == false){
+      $logger->addDebug("Previous rewrite checks failed");
+      if ( function_exists('curl_version')) {
+          $ch = curl_init();
+          $request_url_parser = parse_url($_SERVER['HTTP_REFERER']);
+          $request_scheme = isset($request_url_parser['scheme']) ? $request_url_parser['scheme'] : 'http';
+          $rewrite_chk_url = $request_scheme ."://". $_SERVER['SERVER_ADDR'] . SystemURLs::getRootPath()."/INVALID";
+          $logger->addDebug("Testing CURL loopback check to: $rewrite_chk_url");
+          curl_setopt($ch, CURLOPT_URL, $rewrite_chk_url);
+          curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+          curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+          curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+          curl_setopt($ch, CURLOPT_HEADER, 1);
+          curl_setopt($ch, CURLOPT_NOBODY, 1);
+          $output = curl_exec($ch);
+          curl_close($ch);
+          $headers=array();
+          $data=explode("\n",$output);
+          $headers['status']=$data[0];
+          array_shift($data);
+          foreach($data as $part){
+              if (strpos($part, ":"))
+              {
+                $middle=explode(":",$part);
+                $headers[trim($middle[0])] = trim($middle[1]);
+              }
+          }
+          $check =  $headers['CRM'] == "would redirect";
+          $logger->addDebug("CURL loopback check headers observed: ".($check?'true':'false'));
         }
-        $check =  $headers['CRM'] == "would redirect";
       }
 
       return $check;
