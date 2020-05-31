@@ -128,7 +128,7 @@ class AppIntegrityService
       new Prerequisite('PHP XML', function() { return extension_loaded('xml'); }),
       new Prerequisite('PHP EXIF', function() { return extension_loaded('exif'); }),
       new Prerequisite('PHP iconv', function() { return extension_loaded('iconv'); }),
-      new Prerequisite('Mod Rewrite', function() { return AppIntegrityService::hasModRewrite(); }),
+      new Prerequisite('Mod Rewrite or Equivalent', function() { return AppIntegrityService::hasModRewrite(); }),
       new Prerequisite('GD Library for image manipulation', function() { return (extension_loaded('gd') && function_exists('gd_info')); }),
       new Prerequisite('FreeType Library', function() { return function_exists('imagettftext'); }),
       new Prerequisite('FileInfo Extension for image manipulation', function() { return extension_loaded('fileinfo'); }),
