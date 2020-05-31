@@ -12,6 +12,8 @@ services:
       - .env
     networks:
       - default
+    volumes:
+      - ../demo:/docker-entrypoint-initdb.d # auto-load the demo database as per: https://hub.docker.com/_/mariadb
 
   churchcrm:
     build:
