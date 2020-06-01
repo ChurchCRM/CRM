@@ -30,7 +30,7 @@ module.exports = function (grunt) {
     grunt.initConfig({
         package: grunt.file.readJSON('package.json'),
         pkg: grunt.file.readJSON('package.json'),
-        buildConfig: (function() { 
+        buildConfig: (function() {
             try {
                 grunt.log.writeln("Using BuildConfig.json");
                 return grunt.file.readJSON('BuildConfig.json');
@@ -400,7 +400,7 @@ module.exports = function (grunt) {
                 }
             },
             options: {
-                project_id: '77079',
+                project_id: '<%= buildConfig.POEditor.id %>',
                 languages: poLocales(),
                 api_token: '<%= buildConfig.POEditor.token %>'
             }
@@ -413,6 +413,9 @@ module.exports = function (grunt) {
         exec: {
             updatechangelog: {
                 cmd: "gren changelog --generate --override --token=<%= buildConfig.GitHub.token %>"
+            },
+            downloadPOEditorStats: {
+                cmd: "curl -X POST https://api.poeditor.com/v2/languages/list -d api_token=<%= buildConfig.POEditor.token %> -d id=<%= buildConfig.POEditor.id %> -o locale/poeditor.json -s"
             }
         },
         lineending: {
