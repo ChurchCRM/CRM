@@ -1417,10 +1417,6 @@ msgid "Role"
 msgstr "Rol"
 
 #: 
-msgid "Day"
-msgstr "Zi"
-
-#: 
 msgid "Select Gender"
 msgstr "Selectați de gen"
 
@@ -4723,10 +4719,6 @@ msgstr "Rulează restaurarea, vă rog așteptați"
 #: 
 msgid "Family Members:"
 msgstr "Membri familie:"
-
-#: 
-msgid "Event"
-msgstr "Eveniment"
 
 #: 
 msgid "Anniversary"

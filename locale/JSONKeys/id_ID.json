@@ -341,7 +341,6 @@
     "Middle": "nama tengah",
     "Last": "nama akhir",
     "Role": "Peran",
-    "Day": "hari",
     "Select Gender": "pilih jenis kelamin",
     "Select Role": "pilih peran",
     "Unknown": "tidak diketahui",
@@ -1152,7 +1151,6 @@
     "Voting members ": "Member voting ",
     "Restore Running, Please wait.": "Pulihkan Lari, Harap tunggu.",
     "Family Members:": "Anggota keluarga:",
-    "Event": "Peristiwa",
     "Anniversary": "Ulang tahun",
     "Notes": "Catatan",
     "Reports": "Laporan",
@@ -2250,9 +2248,6 @@
     "This will reset the system data and will restart the system as a new install.": "Ini akan mengatur ulang data sistem dan akan memulai ulang sistem sebagai pemasangan baru.",
     "Clear Filter": "Bersihkan Filter",
     "Add Person": "Tambahkan Orang",
-    "Select the desired event": "Pilih acara yang diinginkan",
-    "Missing people": "Orang hilang",
-    "Find people who didn't attend an event": "Temukan orang yang tidak menghadiri acara",
     "Portuguese - Portugal": "Portugis - Portugal",
     "Holiday": "Hari libur",
     "Allow users to self-enroll in 2 factor authentication": "Izinkan pengguna mendaftar sendiri dalam otentikasi 2 faktor",
@@ -2279,5 +2274,7 @@
     "Two factor authentication requires ChurchCRM administrators to configure a few parameters": "Otentikasi dua faktor memerlukan administrator ChurchCRM untuk mengonfigurasi beberapa parameter",
     "System configuration ": "Sistem konfigurasi ",
     "Must be set to 'true'": "Harus disetel ke 'benar'",
-    "Include/Config.php must define an encryption key for storing 2FA secret keys in the database by setting a value for": "Sertakan / Config.php harus menetapkan kunci enkripsi untuk menyimpan kunci rahasia 2FA dalam database dengan menetapkan nilai"
+    "Include/Config.php must define an encryption key for storing 2FA secret keys in the database by setting a value for": "Sertakan / Config.php harus menetapkan kunci enkripsi untuk menyimpan kunci rahasia 2FA dalam database dengan menetapkan nilai",
+    "Credit Card People": "Orang Kartu Kredit",
+    "People who are configured to pay by credit card.": "Orang yang dikonfigurasi untuk membayar dengan kartu kredit."
 }

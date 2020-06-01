@@ -1387,10 +1387,6 @@ msgid "Role"
 msgstr "Rolle"
 
 #: 
-msgid "Day"
-msgstr "Tag"
-
-#: 
 msgid "Select Gender"
 msgstr "Geschlecht auswählen"
 
@@ -4635,10 +4631,6 @@ msgstr "Wiederherstellung läuft. Bitte warte."
 #: 
 msgid "Family Members:"
 msgstr "Familienmitglieder:"
-
-#: 
-msgid "Event"
-msgstr "Ereignis"
 
 #: 
 msgid "Anniversary"

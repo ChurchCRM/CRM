@@ -1379,10 +1379,6 @@ msgid "Role"
 msgstr "Peran"
 
 #: 
-msgid "Day"
-msgstr "hari"
-
-#: 
 msgid "Select Gender"
 msgstr "pilih jenis kelamin"
 
@@ -4622,10 +4618,6 @@ msgstr "Pulihkan Lari, Harap tunggu."
 #: 
 msgid "Family Members:"
 msgstr "Anggota keluarga:"
-
-#: 
-msgid "Event"
-msgstr "Peristiwa"
 
 #: 
 msgid "Anniversary"
@@ -9011,18 +9003,6 @@ msgid "Add Person"
 msgstr "Tambahkan Orang"
 
 #: 
-msgid "Select the desired event"
-msgstr "Pilih acara yang diinginkan"
-
-#: 
-msgid "Missing people"
-msgstr "Orang hilang"
-
-#: 
-msgid "Find people who didn't attend an event"
-msgstr "Temukan orang yang tidak menghadiri acara"
-
-#: 
 msgid "Portuguese - Portugal"
 msgstr "Portugis - Portugal"
 
@@ -9129,4 +9109,12 @@ msgstr "Harus disetel ke 'benar'"
 #: 
 msgid "Include/Config.php must define an encryption key for storing 2FA secret keys in the database by setting a value for"
 msgstr "Sertakan / Config.php harus menetapkan kunci enkripsi untuk menyimpan kunci rahasia 2FA dalam database dengan menetapkan nilai"
+
+#: 
+msgid "Credit Card People"
+msgstr "Orang Kartu Kredit"
+
+#: 
+msgid "People who are configured to pay by credit card."
+msgstr "Orang yang dikonfigurasi untuk membayar dengan kartu kredit."
 
