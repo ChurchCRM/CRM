@@ -1270,10 +1270,6 @@ msgid "Role"
 msgstr "Szerep"
 
 #: 
-msgid "Day"
-msgstr "Nap"
-
-#: 
 msgid "Select Gender"
 msgstr "Válassza a nemek"
 

@@ -1420,10 +1420,6 @@ msgid "Role"
 msgstr "Papel"
 
 #: 
-msgid "Day"
-msgstr "Dia"
-
-#: 
 msgid "Select Gender"
 msgstr "Selecione o genero"
 
@@ -4785,10 +4781,6 @@ msgstr "Restauração Rodando, por favor espere."
 #: 
 msgid "Family Members:"
 msgstr "Membros da Família:"
-
-#: 
-msgid "Event"
-msgstr "Evento"
 
 #: 
 msgid "Anniversary"

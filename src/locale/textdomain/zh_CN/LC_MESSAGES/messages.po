@@ -1417,10 +1417,6 @@ msgid "Role"
 msgstr "角色"
 
 #: 
-msgid "Day"
-msgstr "日"
-
-#: 
 msgid "Select Gender"
 msgstr "选择性别"
 
@@ -4725,10 +4721,6 @@ msgstr "正在恢复运行，请稍候。"
 #: 
 msgid "Family Members:"
 msgstr "家庭成员："
-
-#: 
-msgid "Event"
-msgstr "活动"
 
 #: 
 msgid "Anniversary"

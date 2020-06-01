@@ -341,7 +341,6 @@
     "Middle": "Andra förnamn",
     "Last": "Efternamn",
     "Role": "Roll",
-    "Day": "Dag",
     "Select Gender": "Välj kön",
     "Select Role": "Välj roll",
     "Unknown": "Okänd",
@@ -1152,7 +1151,6 @@
     "Voting members ": "Rösta medlemmar",
     "Restore Running, Please wait.": "Återställ igång, vänta.",
     "Family Members:": "Familjemedlemmar:",
-    "Event": "Händelse",
     "Anniversary": "Årsdag",
     "Notes": "Anteckningar",
     "Reports": "Rapporter",
@@ -2252,9 +2250,6 @@
     "This will reset the system data and will restart the system as a new install.": "Detta återställer systemdata och startar om systemet som en ny installation.",
     "Clear Filter": "Rensa filtret",
     "Add Person": "Lägg till person",
-    "Select the desired event": "Välj önskad händelse",
-    "Missing people": "Saknade personer",
-    "Find people who didn't attend an event": "Hitta personer som inte deltog i ett evenemang",
     "Portuguese - Portugal": "Portugisiska - Portugal",
     "Holiday": "Semester",
     "Allow users to self-enroll in 2 factor authentication": "Låt användarna självregistrera sig för tvåfaktorautentisering",
@@ -2281,5 +2276,7 @@
     "Two factor authentication requires ChurchCRM administrators to configure a few parameters": "Tvåfaktorautentisering kräver att ChurchCRM-administratörer konfigurerar några parametrar",
     "System configuration ": "Systemkonfiguration ",
     "Must be set to 'true'": "Måste vara inställd på \"sant\"",
-    "Include/Config.php must define an encryption key for storing 2FA secret keys in the database by setting a value for": "Include/Config.php måste definiera en krypteringsnyckel för att lagra 2FA hemliga nycklar i databasen genom att ställa in ett värde för"
+    "Include/Config.php must define an encryption key for storing 2FA secret keys in the database by setting a value for": "Include/Config.php måste definiera en krypteringsnyckel för att lagra 2FA hemliga nycklar i databasen genom att ställa in ett värde för",
+    "Credit Card People": "Kreditkortfolk",
+    "People who are configured to pay by credit card.": "Personer som är konfigurerade att betala med kreditkort."
 }

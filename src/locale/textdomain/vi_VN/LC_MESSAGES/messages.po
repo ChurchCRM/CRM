@@ -970,10 +970,6 @@ msgid "Role"
 msgstr "Vai trò"
 
 #: 
-msgid "Day"
-msgstr "Ngày"
-
-#: 
 msgid "Select Gender"
 msgstr "Lựa chọn giới tính"
 
@@ -2528,10 +2524,6 @@ msgstr "Đang khôi phục, vui lòng chờ đợi."
 #: 
 msgid "Family Members:"
 msgstr "Thành viên trong gia đình:"
-
-#: 
-msgid "Event"
-msgstr "Sự kiện"
 
 #: 
 msgid "Anniversary"
