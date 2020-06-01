@@ -9,7 +9,7 @@ use ChurchCRM\Bootstrapper;
     </div>
 
 
-  <script src="<?= SystemURLs::getRootPath() ?>/skin/external/select2/select2.min.js"></script>
+  <script src="<?= SystemURLs::getRootPath() ?>/skin/external/select2/select2.full.min.js"></script>
 
   <!-- Bootstrap 3.3.5 -->
   <script src="<?= SystemURLs::getRootPath() ?>/skin/external/bootstrap/bootstrap.min.js"></script>
