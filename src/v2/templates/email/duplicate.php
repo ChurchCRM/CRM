@@ -63,7 +63,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             ]
         }
         $.extend(dataTableConfig, window.CRM.plugin.dataTable);
-        $("#dupEmails").DataTable();
+        $("#dupEmails").DataTable(dataTableConfig);
     });
 
     function peopleToString(people) {
