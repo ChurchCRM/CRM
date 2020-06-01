@@ -475,9 +475,28 @@ module.exports = function (grunt) {
         grunt.task.run(['poeditor']);
     });
 
+
+    grunt.registerTask('genLocaleAudit', '', function () {
+        let locales = grunt.file.readJSON("src/locale/locales.json");
+
+        let supportedPOEditorCodes = [];
+        for (let key in locales ) {
+            supportedPOEditorCodes.push( locales[key]["poEditor"].toLowerCase());
+        }
+
+        let poLocales = grunt.file.readJSON("locale/poeditor.json");
+        let poEditorLocales = poLocales.result.languages;
+        let poEditorLocalesCodes = [];
+        for (let key in poEditorLocales ) {
+            let curCode =  poEditorLocales[key]["code"].toLowerCase();
+            if ( supportedPOEditorCodes.indexOf(curCode) === -1) {
+                console.log(curCode + ' missing ');
+            }
+        }
+    });
+
     grunt.registerTask('genLocaleJSFiles', '', function () {
         var locales = grunt.file.readJSON("src/locale/locales.json");
-        var poEditorLocales = {};
         for (var key in locales ) {
             var localeConfig = locales[key];
             var locale = localeConfig["locale"];
