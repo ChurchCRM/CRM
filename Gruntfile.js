@@ -486,11 +486,13 @@ module.exports = function (grunt) {
 
         let poLocales = grunt.file.readJSON("locale/poeditor.json");
         let poEditorLocales = poLocales.result.languages;
-        let poEditorLocalesCodes = [];
+
         for (let key in poEditorLocales ) {
+            let name =  poEditorLocales[key]["name"];
             let curCode =  poEditorLocales[key]["code"].toLowerCase();
-            if ( supportedPOEditorCodes.indexOf(curCode) === -1) {
-                console.log(curCode + ' missing ');
+            let percentage = poEditorLocales[key]["percentage"];
+            if ( supportedPOEditorCodes.indexOf(curCode) === -1 && percentage > 0) {
+                console.log("Missing " + name + ' (' + curCode + ') but has ' + percentage + ' percentage');
             }
         }
     });
