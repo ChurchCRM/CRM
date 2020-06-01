@@ -1273,10 +1273,6 @@ msgid "Role"
 msgstr "Rola"
 
 #: 
-msgid "Day"
-msgstr "Dzień"
-
-#: 
 msgid "Select Gender"
 msgstr "Wybierz Płeć"
 

@@ -30,7 +30,7 @@ module.exports = function (grunt) {
     grunt.initConfig({
         package: grunt.file.readJSON('package.json'),
         pkg: grunt.file.readJSON('package.json'),
-        buildConfig: (function() { 
+        buildConfig: (function() {
             try {
                 grunt.log.writeln("Using BuildConfig.json");
                 return grunt.file.readJSON('BuildConfig.json');
@@ -182,7 +182,7 @@ module.exports = function (grunt) {
                         expand: true,
                         filter: 'isFile',
                         flatten: true,
-                        src: ['node_modules/chart.js/Chart.min.js'],
+                        src: ['node_modules/chart.js/dist/Chart.js'],
                         dest: 'src/skin/external/chartjs/'
                     },
                     {
@@ -235,7 +235,7 @@ module.exports = function (grunt) {
                         expand: true,
                         filter: 'isFile',
                         flatten: true,
-                        src: ['node_modules/select2/dist/js/select2.min.js',
+                        src: ['node_modules/select2/dist/js/select2.full.min.js',
                         'node_modules/select2/dist/css/select2.min.css'],
                         dest: 'src/skin/external/select2'
                     },

@@ -1383,10 +1383,6 @@ msgid "Role"
 msgstr "Rôle"
 
 #: 
-msgid "Day"
-msgstr "Jour"
-
-#: 
 msgid "Select Gender"
 msgstr "Sélectionner le sexe"
 
@@ -4627,10 +4623,6 @@ msgstr "Restauration en cours, veuillez patienter."
 #: 
 msgid "Family Members:"
 msgstr "Membres de la Famille:"
-
-#: 
-msgid "Event"
-msgstr "Evénement"
 
 #: 
 msgid "Anniversary"
@@ -8823,6 +8815,10 @@ msgid "Verification recorded"
 msgstr "Vérification enregistrée"
 
 #: 
+msgid "Verification URL created"
+msgstr "URL de vérification créée"
+
+#: 
 msgid "URL"
 msgstr "URL"
 
@@ -8841,4 +8837,100 @@ msgstr "Regardez dans les traces (logs) pour plus d'information"
 #: 
 msgid "Verification URL"
 msgstr "URL de vérification"
+
+#: 
+msgid "Reset System"
+msgstr "Réinitialisation"
+
+#: 
+msgid "Unexpected Person Id"
+msgstr "Identifiant incorrect"
+
+#: 
+msgid "Interval in Hours for software update check"
+msgstr "Périodicité de vérification de mises à jour"
+
+#: 
+msgid "Last Software Update Check Timestamp"
+msgstr "Dernière mise à jour"
+
+#: 
+msgid "%d month old"
+msgid_plural "%d months old"
+msgstr[0] "il y a %d mois"
+msgstr[1] "il y a %d mois"
+
+#: 
+msgid "%d year old"
+msgid_plural "%d years old"
+msgstr[0] "il y a %d an"
+msgstr[1] "il y a %d ans"
+
+#: 
+msgid "Database upgrade failed"
+msgstr "Mise à jour de la base de données échouée"
+
+#: 
+msgid "Unsupported PHP Version"
+msgstr "Version de PHP non supportée"
+
+#: 
+msgid "See all People"
+msgstr "Voir tout le monde"
+
+#: 
+msgid "Add Results to Cart"
+msgstr "Ajouter les résultats au panier"
+
+#: 
+msgid "Remove Results from Cart"
+msgstr "Enlever les résultats du panier"
+
+#: 
+msgid "Reset Families/People"
+msgstr "Réinitialiser les familles/individus"
+
+#: 
+msgid "Reset Database"
+msgstr "Réinitialiser la base"
+
+#: 
+msgid "This will reset the system data and will restart the system as a new install."
+msgstr "Ceci réinitialisera le système et redémarrera comme une nouvelle installation"
+
+#: 
+msgid "Clear Filter"
+msgstr "Supprimer filtres"
+
+#: 
+msgid "Add Person"
+msgstr "Ajouter un individu"
+
+#: 
+msgid "Portuguese - Portugal"
+msgstr "Portugais - Portugal"
+
+#: 
+msgid "Holiday"
+msgstr "Vacances"
+
+#: 
+msgid "ChurchCRM"
+msgstr "ChurchCRM"
+
+#: 
+msgid "2 Factor Authentication enrollment"
+msgstr "Souscrire à l'authentification à 2 facteurs"
+
+#: 
+msgid "Unsupported Two Factor Authentication Configuration"
+msgstr "Authentification à 2 facteurs non supportée"
+
+#: 
+msgid "Unable To Begin Two Factor Authentication Enrollment"
+msgstr "Impossible de démarrer le souscription de l'authentification à 2 facteurs"
+
+#: 
+msgid "Two factor authentication requires ChurchCRM administrators to configure a few parameters"
+msgstr "L'authentification à 2 facteurs nécessite une intervention de l'administrateur ChurchCRM"
 

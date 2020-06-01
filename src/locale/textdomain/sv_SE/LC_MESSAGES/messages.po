@@ -1423,10 +1423,6 @@ msgid "Role"
 msgstr "Roll"
 
 #: 
-msgid "Day"
-msgstr "Dag"
-
-#: 
 msgid "Select Gender"
 msgstr "Välj kön"
 
@@ -4767,10 +4763,6 @@ msgstr "Återställ igång, vänta."
 #: 
 msgid "Family Members:"
 msgstr "Familjemedlemmar:"
-
-#: 
-msgid "Event"
-msgstr "Händelse"
 
 #: 
 msgid "Anniversary"
@@ -9167,18 +9159,6 @@ msgid "Add Person"
 msgstr "Lägg till person"
 
 #: 
-msgid "Select the desired event"
-msgstr "Välj önskad händelse"
-
-#: 
-msgid "Missing people"
-msgstr "Saknade personer"
-
-#: 
-msgid "Find people who didn't attend an event"
-msgstr "Hitta personer som inte deltog i ett evenemang"
-
-#: 
 msgid "Portuguese - Portugal"
 msgstr "Portugisiska - Portugal"
 
@@ -9285,4 +9265,12 @@ msgstr "Måste vara inställd på \"sant\""
 #: 
 msgid "Include/Config.php must define an encryption key for storing 2FA secret keys in the database by setting a value for"
 msgstr "Include/Config.php måste definiera en krypteringsnyckel för att lagra 2FA hemliga nycklar i databasen genom att ställa in ett värde för"
+
+#: 
+msgid "Credit Card People"
+msgstr "Kreditkortfolk"
+
+#: 
+msgid "People who are configured to pay by credit card."
+msgstr "Personer som är konfigurerade att betala med kreditkort."
 

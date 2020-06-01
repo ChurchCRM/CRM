@@ -1380,10 +1380,6 @@ msgid "Role"
 msgstr "Gezinsrol"
 
 #: 
-msgid "Day"
-msgstr "Dag"
-
-#: 
 msgid "Select Gender"
 msgstr "Selecteer Geslacht"
 
@@ -4633,10 +4629,6 @@ msgstr "Herstel is bezig. Svp even wachten."
 #: 
 msgid "Family Members:"
 msgstr "Gezinsleden"
-
-#: 
-msgid "Event"
-msgstr "Activiteit"
 
 #: 
 msgid "Anniversary"

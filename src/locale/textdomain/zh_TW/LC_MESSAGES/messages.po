@@ -1428,10 +1428,6 @@ msgid "Role"
 msgstr "角色"
 
 #: 
-msgid "Day"
-msgstr "日"
-
-#: 
 msgid "Select Gender"
 msgstr "選擇性別"
 
@@ -4757,10 +4753,6 @@ msgstr "正在恢復運行，請稍候。"
 #: 
 msgid "Family Members:"
 msgstr "家庭成員："
-
-#: 
-msgid "Event"
-msgstr "活動"
 
 #: 
 msgid "Anniversary"
@@ -9271,21 +9263,6 @@ msgstr "新增人員"
 
 #: 
 #, fuzzy
-msgid "Select the desired event"
-msgstr "選擇所需的事件"
-
-#: 
-#, fuzzy
-msgid "Missing people"
-msgstr "失蹤人員"
-
-#: 
-#, fuzzy
-msgid "Find people who didn't attend an event"
-msgstr "查找未參加活動的人"
-
-#: 
-#, fuzzy
 msgid "Portuguese - Portugal"
 msgstr "葡萄牙語-葡萄牙"
 
@@ -9402,4 +9379,57 @@ msgstr "必須設置為'true'"
 #: 
 msgid "Include/Config.php must define an encryption key for storing 2FA secret keys in the database by setting a value for"
 msgstr "Include / Config.php必須通過為以下項設置值來定義用於在數據庫中存儲雙重認證秘密密鑰的加密密鑰"
+
+#: 
+msgid "Credit Card People"
+msgstr "信用卡人"
+
+#: 
+msgid "People who are configured to pay by credit card."
+msgstr "配置為通過信用卡付款的人。"
+
+#: 
+#, fuzzy
+msgid "Google Maps API Key used for Geocoding addresses"
+msgstr "用於地址解析的Google Maps API密鑰"
+
+#: 
+#, fuzzy
+msgid "Send an email notifying users when their account has been deleted"
+msgstr "發送電子郵件通知用戶帳戶被刪除"
+
+#: 
+#, fuzzy
+msgid "Google Maps API Key used for rendering maps in browser"
+msgstr "Google Maps API密鑰用於在瀏覽器中呈現地圖"
+
+#: 
+#, fuzzy
+msgid "Incorrect password supplied for current user"
+msgstr "當前用戶提供的密碼不正確"
+
+#: 
+#, fuzzy
+msgid "Your new password must not match your old one."
+msgstr "您的新密碼與舊密碼不匹配。"
+
+#: 
+#, fuzzy
+msgid "Your new password is too similar to your old one."
+msgstr "您的新密碼與舊密碼過於相似。"
+
+#: 
+#, fuzzy
+msgid "Password reset not availble.  Please contact your system administrator"
+msgstr "密碼重置不可用。請聯繫您的系統管理員"
+
+#: 
+#, fuzzy
+msgid "Authentication Issue"
+msgstr "認證問題"
+
+#: 
+#, fuzzy
+msgid "Enter new user password. Administratively set passwords are not subject to length or complexity requirements"
+msgstr "輸入新的用戶密碼。管理設置的密碼不受長度或複雜性要求的限制"
 
