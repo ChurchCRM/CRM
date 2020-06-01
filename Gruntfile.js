@@ -415,7 +415,7 @@ module.exports = function (grunt) {
                 cmd: "gren changelog --generate --override --token=<%= buildConfig.GitHub.token %>"
             },
             downloadPOEditorStats: {
-                cmd: "curl -X POST https://api.poeditor.com/v2/languages/list -d api_token=<%= buildConfig.POEditor.token %> -d id=<%= buildConfig.POEditor.id %> -o locale/poeditor.json -s"
+                cmd: "curl -X POST https://api.poeditor.com/v2/languages/list -d api_token=<%= buildConfig.POEditor.token %> -d id=<%= buildConfig.POEditor.id %> -o src/locale/poeditor.json -s"
             }
         },
         lineending: {
@@ -484,7 +484,7 @@ module.exports = function (grunt) {
             supportedPOEditorCodes.push( locales[key]["poEditor"].toLowerCase());
         }
 
-        let poLocales = grunt.file.readJSON("locale/poeditor.json");
+        let poLocales = grunt.file.readJSON("src/locale/poeditor.json");
         let poEditorLocales = poLocales.result.languages;
 
         for (let key in poEditorLocales ) {
