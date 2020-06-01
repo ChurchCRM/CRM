@@ -1269,10 +1269,6 @@ msgid "Role"
 msgstr "Rolle"
 
 #: 
-msgid "Day"
-msgstr "Dag"
-
-#: 
 msgid "Select Gender"
 msgstr "Velg Kjønn"
 
