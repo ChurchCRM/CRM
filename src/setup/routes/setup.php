@@ -1,5 +1,6 @@
 <?php
 
+use ChurchCRM\Bootstrapper;
 use ChurchCRM\dto\SystemURLs;
 use Slim\Views\PhpRenderer;
 use ChurchCRM\Service\AppIntegrityService;
@@ -22,6 +23,12 @@ $app->group('/', function () {
     $this->get('SystemPrerequisiteCheck', function ($request, $response, $args) {
         $required = AppIntegrityService::getApplicationPrerequisites();
         return $response->withJson($required);
+    });
+
+    $this->post('DatabasePrerequisiteCheck', function ($request, $response, $args) {
+        $body = json_decode($request->getBody());
+        $database_test_result = Bootstrapper::TestDatabaseConnection($body->DB_SERVER_NAME, $body->DB_SERVER_PORT, $body->DB_NAME, $body->DB_USER, $body->DB_PASSWORD);
+        return $response->withJson($database_test_result);
     });
 
     $this->post('', function ($request, $response, $args) {

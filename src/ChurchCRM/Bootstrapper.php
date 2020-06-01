@@ -16,8 +16,10 @@ namespace ChurchCRM
   use ChurchCRM\Utils\LoggerUtils;
   use ChurchCRM\Utils\RedirectUtils;
   use ChurchCRM\Authentication\AuthenticationManager;
+    use ChurchCRM\dto\DatabaseConnectionCheckStatus;
+    use ChurchCRM\Exceptions\AppException;
 
-  class Bootstrapper
+class Bootstrapper
   {
       private static $manager;
       private static $dbClassName;
@@ -35,6 +37,7 @@ namespace ChurchCRM
        */
       private static $bootStrapLogger;
       private static $serviceContainer;
+      CONST DB_PRIVS_REQUIRED = "SELECT,INSERT,UPDATE,DELETE,CREATE,DROP,ALTER,CREATE VIEW";
 
       public static function init($sSERVERNAME, $dbPort, $sUSER, $sPASSWORD, $sDATABASE, $sRootPath, $bLockURL, $URL)
       {
@@ -49,38 +52,39 @@ namespace ChurchCRM
           self::$allowableURLs = $URL;
 
           try {
-              SystemURLs::init($sRootPath, $URL, dirname(dirname(__FILE__)));
+            SystemURLs::init($sRootPath, $URL, dirname(dirname(__FILE__)));
+         
+            if ($debugBootstrapper) {
+                self::$bootStrapLogger = LoggerUtils::getAppLogger(Logger::DEBUG);
+            } else {
+                self::$bootStrapLogger = LoggerUtils::getAppLogger(Logger::INFO);
+            }
+
+            self::$bootStrapLogger->debug("Starting ChurchCRM");
+            SystemURLs::checkAllowedURL($bLockURL, $URL);
+            self::initMySQLI();
+            self::initPropel();
+
+            if (self::isDatabaseEmpty()) {
+                self::installChurchCRMSchema();
+            }
+            self::initSession();
+            SystemConfig::init(ConfigQuery::create()->find());
+            self::configureLogging();
+            self::configureUserEnvironment();
+            self::ConfigureLocale();
+            if (!self::isDBCurrent()) {
+                if (!strpos($_SERVER['SCRIPT_NAME'], "SystemDBUpdate")) {
+                    self::$bootStrapLogger->info("Database is not current, redirecting to SystemDBUpdate");
+                    RedirectUtils::Redirect('SystemDBUpdate.php');
+                } else {
+                    self::$bootStrapLogger->debug("Database is not current, not redirecting to SystemDBUpdate since we're already on it");
+                }
+            }
+            LoggerUtils::ResetAppLoggerLevel();
           } catch (\Exception $e) {
-              Bootstrapper::system_failure($e->getMessage());
+            Bootstrapper::system_failure($e->getMessage());
           }
-          if ($debugBootstrapper) {
-              self::$bootStrapLogger = LoggerUtils::getAppLogger(Logger::DEBUG);
-          } else {
-              self::$bootStrapLogger = LoggerUtils::getAppLogger(Logger::INFO);
-          }
-
-          self::$bootStrapLogger->debug("Starting ChurchCRM");
-          SystemURLs::checkAllowedURL($bLockURL, $URL);
-          self::initMySQLI();
-          self::initPropel();
-
-          if (self::isDatabaseEmpty()) {
-              self::installChurchCRMSchema();
-          }
-          self::initSession();
-          SystemConfig::init(ConfigQuery::create()->find());
-          self::configureLogging();
-          self::configureUserEnvironment();
-          self::ConfigureLocale();
-          if (!self::isDBCurrent()) {
-              if (!strpos($_SERVER['SCRIPT_NAME'], "SystemDBUpdate")) {
-                  self::$bootStrapLogger->info("Database is not current, redirecting to SystemDBUpdate");
-                  RedirectUtils::Redirect('SystemDBUpdate.php');
-              } else {
-                  self::$bootStrapLogger->debug("Database is not current, not redirecting to SystemDBUpdate since we're already on it");
-              }
-          }
-          LoggerUtils::ResetAppLoggerLevel();
       }
       /***
        * Gets a LocaleInfo object for the currently configured system sLanguage
@@ -142,10 +146,29 @@ namespace ChurchCRM
           self::testMYSQLI();
           mysqli_set_charset($cnInfoCentral, 'utf8mb4');
           self::$bootStrapLogger->debug("Selecting database: " . self::$databaseName);
-          mysqli_select_db($cnInfoCentral, self::$databaseName)
-      or Bootstrapper::system_failure('Could not connect to the MySQL database <strong>'.self::$databaseName.'</strong>. Please check the settings in <strong>Include/Config.php</strong>.<br/>MySQL Error: '.mysqli_error($cnInfoCentral));
+          if (! mysqli_select_db($cnInfoCentral, self::$databaseName)) {
+            throw new AppException('Could not connect to the MySQL database <strong>'.self::$databaseName.'</strong>. Please check the settings in <strong>Include/Config.php</strong>.<br/>MySQL Error: '.mysqli_error($cnInfoCentral));
+          } 
           self::$bootStrapLogger->debug("Database selected: " . self::$databaseName);
       }
+      private static function getCurrentUserGrants() { 
+        global $cnInfoCentral; // need to stop using this everywhere....
+        $grants = "";
+        $sSQL = 'show grants';
+        $rsConfig = mysqli_query($cnInfoCentral, $sSQL);     // Can't use RunQuery -- not defined yet
+        $grants = @[];
+        if ($rsConfig) {
+            $grants = "found: ";
+            while (list($value) = mysqli_fetch_row($rsConfig)) {
+                if (!stristr($value,"GRANT USAGE")) {
+                    preg_match('/GRANT(.*?)\sON\s/',$value, $matches);
+                    $grants = array_map('trim',explode(",",trim($matches[1])));
+                }
+            }
+        }
+        return $grants;
+      }
+
       private static function testMYSQLI()
       {
           global $cnInfoCentral; // need to stop using this everywhere....
@@ -166,7 +189,7 @@ namespace ChurchCRM
               }
               // Log the error to the application log, and show an error page to user.
               LoggerUtils::getAppLogger()->error("ERROR connecting to database at '".self::$databaseServerName."' on port '".self::$databasePort."' as user '".self::$databaseUser."' -  MySQL Error: '".$sMYSQLERROR."'");
-              Bootstrapper::system_failure('Could not connect to MySQL on <strong>'.self::$databaseServerName.'</strong> on port <strong>'.self::$databasePort.'</strong> as <strong>'.self::$databaseUser.'</strong>. Please check the settings in <strong>Include/Config.php</strong>.<br/>MySQL Error: '.$sMYSQLERROR, 'Database Connection Failure');
+              throw new AppException('Could not connect to MySQL on <strong>'.self::$databaseServerName.'</strong> on port <strong>'.self::$databasePort.'</strong> as <strong>'.self::$databaseUser.'</strong>. Please check the settings in <strong>Include/Config.php</strong>.<br/>MySQL Error: '.$sMYSQLERROR, 'Database Connection Failure');
           }
       }
       private static function initPropel()
@@ -202,13 +225,18 @@ namespace ChurchCRM
       private static function installChurchCRMSchema()
       {
           self::$bootStrapLogger->info("Installing ChurchCRM Schema");
-          $connection = Propel::getConnection();
-          $version = new Version();
-          $version->setVersion(SystemService::getInstalledVersion());
-          $version->setUpdateStart(new \DateTime());
-          SQLUtils::sqlImport(SystemURLs::getDocumentRoot().'/mysql/install/Install.sql', $connection);
-          $version->setUpdateEnd(new \DateTime());
-          $version->save();
+          try {
+            $connection = Propel::getConnection();
+            $version = new Version();
+            $version->setVersion(SystemService::getInstalledVersion());
+            $version->setUpdateStart(new \DateTime());
+            SQLUtils::sqlImport(SystemURLs::getDocumentRoot().'/mysql/install/Install.sql', $connection);
+            $version->setUpdateEnd(new \DateTime());
+            $version->save();
+          }
+          catch (\Exception $e) {
+            throw new AppException("Error installing ChurchCRM: " . $e);
+          }
           self::$bootStrapLogger->info("Installed ChurchCRM Schema version: " . SystemService::getInstalledVersion());
       }
       public static function initSession()
@@ -309,6 +337,35 @@ namespace ChurchCRM
               self::$bootStrapLogger->debug("Database version does not match installed version: " . SystemService::getDBVersion(). " == " .SystemService::getInstalledVersion());
               return false;
           }
+      }
+
+      public static function TestDatabaseConnection($DB_SERVER_NAME, $DB_SERVER_PORT, $DB_NAME, $DB_USER, $DB_PASSWORD) {
+        self::$bootStrapLogger = LoggerUtils::getAppLogger(Logger::DEBUG);
+        self::$databaseServerName = $DB_SERVER_NAME;
+        self::$databaseUser = $DB_USER;
+        self::$databasePassword = $DB_PASSWORD;
+        self::$databasePort = $DB_SERVER_PORT;
+        self::$databaseName = $DB_NAME;
+        $status =  new DatabaseConnectionCheckStatus();
+        try {
+            self::initMySQLI();
+            $grants = self::getCurrentUserGrants();
+            $status->status = "success";
+            if (! in_array("ALL PRIVILEGES",$grants)) {
+                // if the current MySQL user doens't have ALL PRIVILEGES, then we should check against what we know the app will need
+                $required = explode(",",self::DB_PRIVS_REQUIRED);
+                $diff = array_diff($required,$grants);
+                if (count($diff) >0 ) {
+                    $status->status = "warning";
+                    $status->message = gettext("Warning").": ".gettext("Missing MySQL user permissions").": " . implode(",",$diff);
+                }
+            }
+        }
+        catch (AppException $e) {
+            $status->status = "failure";
+            $status->message = $e->getMessage();
+        }
+        return $status;
       }
   }
 }

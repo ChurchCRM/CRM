@@ -11,7 +11,8 @@ require '../Include/HeaderNotLoggedIn.php';
     window.CRM = {
         root: "<?= SystemURLs::getRootPath() ?>",
         prerequisites : [],
-        prerequisitesStatus : false //TODO this is not correct we need 2 flags
+        prerequisitesStatus : false, //TODO this is not correct we need 2 flags
+        databaseConfigurationStatus: false
     };
 </script>
 <style>
@@ -129,6 +130,7 @@ require '../Include/HeaderNotLoggedIn.php';
                        aria-describedby="DB_PASSWORD2_HELP" required>
                 <small id="DB_PASSWORD2_HELP" class="form-text text-muted"></small>
             </div>
+            <div class="callout callout-default" id="database-war" style="visibility: hidden"></div>
         </section>
         <!--
         <h2>Church Info</h2>
