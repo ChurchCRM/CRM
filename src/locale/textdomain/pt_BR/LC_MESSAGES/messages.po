@@ -1422,10 +1422,6 @@ msgid "Role"
 msgstr "Papel"
 
 #: 
-msgid "Day"
-msgstr "Dia"
-
-#: 
 msgid "Select Gender"
 msgstr "Selecione o gênero"
 
@@ -4790,10 +4786,6 @@ msgstr "Restauração Rodando, por favor espere."
 #: 
 msgid "Family Members:"
 msgstr "Membros da Família:"
-
-#: 
-msgid "Event"
-msgstr "Evento"
 
 #: 
 msgid "Anniversary"
@@ -9020,4 +9012,96 @@ msgstr "Por favor, atualize as informações da minha família com o seguinte"
 #: 
 msgid "Age Histogram"
 msgstr "Histograma de Idade"
+
+#: 
+msgid "Missing event id"
+msgstr "Falta ID do evento"
+
+#: 
+msgid "Event not found"
+msgstr "Evento não existe"
+
+#: 
+msgid "Session timeout length in seconds\n"
+"Set to zero to disable session timeouts."
+msgstr "Duração do tempo limite da sessão em segundos Defina como zero para desativar os tempos limite da sessão."
+
+#: 
+msgid "Minimum amount that a new password must differ from the old one (# of characters changed)\n"
+"Set to zero to disable this feature"
+msgstr "Quantidade mínima que uma nova senha deve diferir da antiga\n"
+"(# de caracteres alterados)\n"
+"Defina zero para remover esse recurso"
+
+#: 
+msgid "Maximum number of failed logins to allow before a user account is locked.\n"
+"Once the maximum has been reached, an administrator must re-enable the account.\n"
+"This feature helps to protect against automated password guessing attacks.\n"
+"Set to zero to disable this feature."
+msgstr "O número máximo de logins com falha para permitir que uma conta de usuário seja bloqueada.\n"
+"Quando o máximo para ativar, um administrador pode reativar uma conta.\n"
+"Esse recurso ajuda a proteger contra ataques automatizados de identificação de senha.\n"
+"Defina zero para remover esse recurso."
+
+#: 
+msgid "PDF handling mode.\n"
+"1 = Save File dialog\n"
+"2 = Open in current browser window"
+msgstr "Modo de manipulação de PDF.\n"
+"1 = caixa de diálogo Gravar arquivo\n"
+"2 = Abrir na janela atual do navegador"
+
+#: 
+msgid "Unavailable person info inherited from assigned family for display?\n"
+"This option causes certain info from a person's assigned family record to be\n"
+"displayed IF the corresponding info has NOT been entered for that person. "
+msgstr "Informações sobre pessoas não disponíveis herdadas da família designada para exibição? Essa opção faz com que as informações do registro familiar sejam atribuídas por uma pessoa que esteja usando SE a informação correspondente NÃO foi inserido por essa pessoa. "
+
+#: 
+msgid "Press CTRL + C to copy all group members\\' phone numbers"
+msgstr "Pressione CTRL + C para copiar os números de telefone de todos os membros do grupo"
+
+#: 
+msgid "Verify People"
+msgstr "Verificar pessoas"
+
+#: 
+msgid "People Verify Dashboard"
+msgstr "Painel para verificar pessoas"
+
+#: 
+msgid "Download family letters"
+msgstr "Baixar cartas da família"
+
+#: 
+msgid "Send family email"
+msgstr "Enviar email à familia"
+
+#: 
+msgid "Verification recorded"
+msgstr "Verificação registrada"
+
+#: 
+msgid "Verification URL created"
+msgstr "URL de verificação criada"
+
+#: 
+msgid "URL"
+msgstr "URL"
+
+#: 
+msgid "PDF"
+msgstr "PDF"
+
+#: 
+msgid "Error sending email(s)"
+msgstr "Erro ao enviar email (s)"
+
+#: 
+msgid "Please check logs for more information"
+msgstr "Analisar logs para mais informações"
+
+#: 
+msgid "Verification URL"
+msgstr "Verificar o URL"
 

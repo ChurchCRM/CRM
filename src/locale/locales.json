@@ -124,6 +124,16 @@
     "datePicker": true,
     "select2": true
   },
+  "Hebrew": {
+    "poEditor": "he",
+    "locale": "he_IL",
+    "languageCode": "he",
+    "countryCode": "HE",
+    "dataTables": "Hebrew",
+    "fullCalendar" : true,
+    "datePicker": true,
+    "select2": true
+  },
   "Hungarian": {
     "poEditor": "hu",
     "locale": "hu_HU",

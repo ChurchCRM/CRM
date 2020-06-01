@@ -10,7 +10,7 @@ msgstr ""
 "#-#-#-#-#  messages.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-01 00:33+0000\n"
+"POT-Creation-Date: 2020-05-31 16:56-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,8 +25,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2020-04-01T00:33:31.595Z\n"
-"PO-Revision-Date: 2020-04-01T00:33:31.595Z\n"
+"POT-Creation-Date: 2020-05-31T23:56:30.590Z\n"
+"PO-Revision-Date: 2020-05-31T23:56:30.590Z\n"
 
 msgid "Backup Database"
 msgstr ""
@@ -2558,13 +2558,13 @@ msgstr ""
 msgid "Role"
 msgstr ""
 
-msgid "Month"
+msgid "Birth Month"
 msgstr ""
 
-msgid "Day"
+msgid "Birth Day"
 msgstr ""
 
-msgid "Year"
+msgid "Birth Year"
 msgstr ""
 
 msgid "Select Gender"
@@ -3261,6 +3261,9 @@ msgstr ""
 msgid "Text Field (long)"
 msgstr ""
 
+msgid "Year"
+msgstr ""
+
 msgid "Season"
 msgstr ""
 
@@ -3903,19 +3906,10 @@ msgstr ""
 msgid "Jr., Sr., III"
 msgstr ""
 
-msgid "Birth Month"
-msgstr ""
-
 msgid "Select Month"
 msgstr ""
 
-msgid "Birth Day"
-msgstr ""
-
 msgid "Select Day"
-msgstr ""
-
-msgid "Birth Year"
 msgstr ""
 
 msgid "Hide Age"
@@ -5765,13 +5759,13 @@ msgstr ""
 msgid "Missing pledges"
 msgstr ""
 
+msgid "Credit Card People"
+msgstr ""
+
 msgid "Family Pledge by Fiscal Year"
 msgstr ""
 
 msgid "CustomSearch"
-msgstr ""
-
-msgid "Missing people"
 msgstr ""
 
 msgid "Returns each family and the total number of people assigned to them."
@@ -5824,6 +5818,9 @@ msgstr ""
 msgid "Find people who pledged one year but not another"
 msgstr ""
 
+msgid "People who are configured to pay by credit card."
+msgstr ""
+
 msgid ""
 "Pledge summary by family name for each fund for the selected fiscal year"
 msgstr ""
@@ -5832,9 +5829,6 @@ msgid "Find volunteers for who match two specific opportunity codes"
 msgstr ""
 
 msgid "Find people with a custom field value"
-msgstr ""
-
-msgid "Find people who didn't attend an event"
 msgstr ""
 
 msgid "Zip Code"
@@ -5885,6 +5879,9 @@ msgstr ""
 msgid "Field"
 msgstr ""
 
+msgid "Month"
+msgstr ""
+
 msgid "Volunteer opportunities"
 msgstr ""
 
@@ -5901,9 +5898,6 @@ msgid "Custom field"
 msgstr ""
 
 msgid "Field value"
-msgstr ""
-
-msgid "Event"
 msgstr ""
 
 msgid "The minimum age for which you want records returned."
@@ -5990,9 +5984,6 @@ msgid "Choose customer person field"
 msgstr ""
 
 msgid "Match custom field to this value"
-msgstr ""
-
-msgid "Select the desired event"
 msgstr ""
 
 msgid "Afghanistan (‫افغانستان‬‎)"

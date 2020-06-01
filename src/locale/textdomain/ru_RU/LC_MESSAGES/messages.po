@@ -73,6 +73,10 @@ msgid "After you download the backup file, you should make two copies. Put one o
 msgstr "После загрузки файл резервной копии, вы должны сделать две копии. Положите одну из них в несгораемый сейф на месте, и другой в безопасном месте вне."
 
 #: 
+msgid "If you are concerned about confidentiality of data stored in the ChurchCRM database, you should encrypt the backup data if it will be stored somewhere potentially accessible to others"
+msgstr "Если вас беспокоит конфиденциальность данных, хранящихся в базе данных ChurchCRM, вы должны зашифровать данные резервного копии, если она будет храниться в потенциально доступном для других месте"
+
+#: 
 #, fuzzy
 msgid "Select archive type"
 msgstr "Выберите Тип архива"
@@ -85,6 +89,10 @@ msgstr "Зашифровать файл резервной копии с пар�
 #, fuzzy
 msgid "Re-type Password"
 msgstr "Введите пароль еще раз"
+
+#: 
+msgid "Generate and Ship Backup to External Storage"
+msgstr "Создать резервную копии на внешнем хранилище"
 
 #: 
 msgid "Batch Winner Entry"
@@ -105,6 +113,10 @@ msgstr "Введите победителей"
 #: 
 msgid "CSV Export"
 msgstr "CSV экспорт"
+
+#: 
+msgid "Field Selection"
+msgstr "Выбор поля"
 
 #: 
 #, fuzzy
@@ -164,6 +176,10 @@ msgstr "Роль семьи"
 #, fuzzy
 msgid "Depends whether using person or family output method"
 msgstr "Зависит ли с помощью человека или выходной семья метод"
+
+#: 
+msgid "Custom Field Selection"
+msgstr "Выбор пользовательского поля"
 
 #: 
 msgid "Custom Person Fields"
@@ -418,20 +434,44 @@ msgid "Assign Canvassers"
 msgstr "Назначение агитаторов"
 
 #: 
+msgid "Randomly assign canvassers to all Families.  The Canvassers are taken from the &quot;Canvassers&quot; Group."
+msgstr "Случайно присвоить агитаторы всем семьям. Агитаторы взяты из группы qquot;Агитаторы'quot; ."
+
+#: 
 msgid "Assign To Non Pledging"
 msgstr "Связать лицам, не являющимся по объявлению взносов"
+
+#: 
+msgid "Randomly assign canvassers to non-pledging Families.  The Canvassers are taken from the &quot;BraveCanvassers&quot; Group."
+msgstr "Случайно присвоить агитаторы не жертвующим семьям. Агитаторы взяты из группы &quot;BraveCanvassers&quot;."
 
 #: 
 msgid "Clear Canvasser Assignments"
 msgstr "Очистить представитель фирмы Задания"
 
 #: 
+msgid "Clear all the canvasser assignments for all families."
+msgstr "Очистить все агитаторы для всех семей."
+
+#: 
+msgid "Important note: this will lose any canvasser assignments that have been made by hand."
+msgstr "Важное примечание: это приведет к утере назначений агитаторов, сделаных вручную."
+
+#: 
 msgid "Enable Canvass for All Families"
 msgstr "Включить полотно для всех семей"
 
 #: 
+msgid "Turn on the &quot;Ok To Canvass&quot; field for all Families."
+msgstr "Включите поле &quot;Ok To Canvass &quot; для всех семей ."
+
+#: 
 msgid "Disable Canvass for All Families"
 msgstr "Отключить полотно для всех семей"
+
+#: 
+msgid "Turn off the &quot;Ok To Canvass&quot; field for all Families"
+msgstr "Выключите поле &quot;Ok To Canvass &quot; для всех семей"
 
 #: 
 msgid "Briefing Sheets"
@@ -446,12 +486,24 @@ msgid "Progress Report"
 msgstr "Отчет о проделанной работе"
 
 #: 
+msgid "Generate a PDF containing a progress report.  The progress report includes information on the overall progress of the canvass, and the progress of individual canvassers."
+msgstr "Генерировать PDF, содержащий отчет о ходе работы. Отчет о ходе работы включает информацию об общем прогрессе агитации и ходе работы отдельных агитаторов."
+
+#: 
 msgid "Summary Report"
 msgstr "Краткий отчет"
 
 #: 
+msgid "Generate a PDF containing a summary report.  The summary report includes comments extracted from the canvass data."
+msgstr "Генерировать PDF, содержащий сводный отчет. Сводный отчет включает комментарии, извлеченные из данных агитации."
+
+#: 
 msgid "Not Interested Report"
 msgstr "Не интересует Сообщить"
+
+#: 
+msgid "Generate a PDF containing a report of the families marked &quot;Not Interested&quot; by the canvasser."
+msgstr "Генерировать PDF, содержащий отчет о семьях, отмеченных как &quot;Не заинтересован&quot;."
 
 #: 
 msgid " Canvass Input for the "
@@ -663,6 +715,10 @@ msgid "No"
 msgstr "Нет"
 
 #: 
+msgid "Developer Chat"
+msgstr "Чат разработчика"
+
+#: 
 msgid "Event Checkin"
 msgstr "Событие заезда"
 
@@ -712,6 +768,10 @@ msgid "No Attendees Assigned to Event"
 msgstr "Нет Участники назначенного событию"
 
 #: 
+msgid "Member"
+msgstr "Член"
+
+#: 
 msgid " of the"
 msgstr " из"
 
@@ -736,6 +796,10 @@ msgid "Deposit Slip Number: "
 msgstr "Депозит номер накладной: "
 
 #: 
+msgid "Deposit Details: "
+msgstr "Детали депозита: "
+
+#: 
 msgid "Close deposit slip (remember to press Save)"
 msgstr "Закрыть квитанции (не забудьте нажать Сохранить)"
 
@@ -746,6 +810,10 @@ msgstr "Квитанции Сообщить"
 #: 
 msgid "Important note: failed transactions will be deleted permanantly when the deposit slip is closed."
 msgstr "Важное замечание: не удалось сделки будут удалены них постоянно, когда квитанции закрыт."
+
+#: 
+msgid "Deposit Summary: "
+msgstr "Резюме депозита: "
 
 #: 
 msgid "Payments on this deposit slip:"
@@ -921,12 +989,20 @@ msgid "Description"
 msgstr "Описание"
 
 #: 
+msgid "Picture URL"
+msgstr "URL-адрес изображения"
+
+#: 
 msgid "Donation Fund Editor"
 msgstr "Пожертвование Фонд редактор"
 
 #: 
 msgid "Are you sure you want to delete this fund?"
 msgstr "Вы уверены, что хотите удалить этот фонд?"
+
+#: 
+msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using a delete or 'add new' button!"
+msgstr "Предупреждение: изменения поля не будут сохранены, если вы не нажмете 'Сохранить изменения' перед нажатием кнопки \"Удалить\" или \"Добавить\"!"
 
 #: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
@@ -976,6 +1052,14 @@ msgstr "Recurrance Pattern"
 #: 
 msgid "Attendance Counts"
 msgstr "Посещений Графы"
+
+#: 
+msgid "Add counter"
+msgstr "Добавить счетчик"
+
+#: 
+msgid "Return to Event Types"
+msgstr "Вернуться к Типам событий"
 
 #: 
 msgid "Family"
@@ -1071,6 +1155,14 @@ msgid "There are no Records"
 msgstr "Там нет записей"
 
 #: 
+msgid "Create Event"
+msgstr "Создать Событие"
+
+#: 
+msgid "Create a new Event"
+msgstr "Создать новое событие"
+
+#: 
 msgid "Editing Event ID: "
 msgstr "Редактирование события: "
 
@@ -1085,6 +1177,14 @@ msgstr "Элементы с "
 #: 
 msgid " are required"
 msgstr " требуется"
+
+#: 
+msgid "Select your event type"
+msgstr "Выберите тип события"
+
+#: 
+msgid "You must pick an event type."
+msgstr "Вы должны выбрать тип события."
 
 #: 
 #, fuzzy
@@ -1108,6 +1208,10 @@ msgstr "Проповедь события"
 #, fuzzy
 msgid "Event Status"
 msgstr "Статус события"
+
+#: 
+msgid "Return to Events"
+msgstr "Вернуться к Событиям"
 
 #: 
 msgid "EVENT TYPE NAME"
@@ -1142,8 +1246,16 @@ msgid "Saturdays"
 msgstr "По субботам"
 
 #: 
+msgid "DEFAULT START TIME"
+msgstr "ВРЕМЯ НАЧАЛА ПО УМОЛЧАНИЮ"
+
+#: 
 msgid "ATTENDANCE COUNTS"
 msgstr "УЧАСТНИКИ COUNTS"
+
+#: 
+msgid "Optional"
+msgstr "По желанию"
 
 #: 
 msgid "Add Event Type"
@@ -1263,10 +1375,6 @@ msgstr "Последний"
 #: 
 msgid "Role"
 msgstr "Роль"
-
-#: 
-msgid "Day"
-msgstr "День"
 
 #: 
 msgid "Select Gender"
