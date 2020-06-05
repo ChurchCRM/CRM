@@ -5685,6 +5685,86 @@ msgid "custom event types"
 msgstr "tip evenimente personalizat"
 
 #: 
+msgid "Family Roles Editor"
+msgstr "Editor roluri familie"
+
+#: 
+msgid "Person Classification"
+msgstr "Clasificăre persoană"
+
+#: 
+msgid "Person Classifications"
+msgstr "Clarisificări persoană"
+
+#: 
+msgid "Person Classifications Editor"
+msgstr "Editor clasificări persoană"
+
+#: 
+msgid "Group Type"
+msgstr "Tip grup"
+
+#: 
+msgid "Group Types"
+msgstr "Tipuri grup"
+
+#: 
+msgid "Group Types Editor"
+msgstr "Editor tipuri grup"
+
+#: 
+msgid "Security Group"
+msgstr "Grup securitate"
+
+#: 
+msgid "Security Groups"
+msgstr "Grupuri securitate"
+
+#: 
+msgid "Security Groups Editor"
+msgstr "Editor grupuri securitate"
+
+#: 
+msgid "Group Member Role"
+msgstr "Rolul mer"
+
+#: 
+msgid "Group Member Roles Editor"
+msgstr "Editor roluri membri grup"
+
+#: 
+msgid "Person Custom List Option"
+msgstr "Opțiune listă personalizată persoană"
+
+#: 
+msgid "Person Custom List Options"
+msgstr "Opțiuni listă personalizată persoană"
+
+#: 
+msgid "Person Custom List Options Editor"
+msgstr "Editor opțiuni listă personalizată persoană"
+
+#: 
+msgid "Custom List Option"
+msgstr "Opțiune listă personalizată"
+
+#: 
+msgid "Custom List Options"
+msgstr "Opțiuni listă personalizată"
+
+#: 
+msgid "Custom List Options Editor"
+msgstr "Editor opțiuni listă personalizată"
+
+#: 
+msgid "Family Custom List Option"
+msgstr "Opțiune listă personalizată familie"
+
+#: 
+msgid "Family Custom List Options"
+msgstr "Opțiuni listă personalizată familie"
+
+#: 
 msgid "Family Custom List Options Editor"
 msgstr "Editor de opțiuni de listă personalizată pentru familie"
 
@@ -5793,6 +5873,50 @@ msgid "Australia"
 msgstr "Australia"
 
 #: 
+msgid "Austria (Österreich)"
+msgstr "Austria"
+
+#: 
+msgid "Azerbaijan (Azərbaycan)"
+msgstr "Azerbaijan"
+
+#: 
+msgid "Bahamas"
+msgstr "Bahamas"
+
+#: 
+msgid "Bahrain (‫البحرين‬‎)"
+msgstr "Bahrain"
+
+#: 
+msgid "Bangladesh (বাংলাদেশ)"
+msgstr "Bangladesh"
+
+#: 
+msgid "Barbados"
+msgstr "Barbados"
+
+#: 
+msgid "Belarus (Беларусь)"
+msgstr "Belarus"
+
+#: 
+msgid "Belgium (België)"
+msgstr "Belgia"
+
+#: 
+msgid "Belize"
+msgstr "Belize"
+
+#: 
+msgid "Benin (Bénin)"
+msgstr "Benin"
+
+#: 
+msgid "Bermuda"
+msgstr "Bermuda"
+
+#: 
 msgid "Bulgaria (България)"
 msgstr "Bulagria"
 
@@ -5871,6 +5995,42 @@ msgstr "Colombia"
 #: 
 msgid "Comoros (‫جزر القمر‬‎)"
 msgstr "Comoros"
+
+#: 
+msgid "Diego Garcia"
+msgstr "Diego Garcia"
+
+#: 
+msgid "Djibouti"
+msgstr "Djibouti"
+
+#: 
+msgid "Dominica"
+msgstr "Dominica"
+
+#: 
+msgid "Dominican Republic (República Dominicana)"
+msgstr "Republica Dominicană"
+
+#: 
+msgid "Ecuador"
+msgstr "Ecuador"
+
+#: 
+msgid "Egypt (‫مصر‬‎)"
+msgstr "Egipt"
+
+#: 
+msgid "El Salvador"
+msgstr "El Salvador"
+
+#: 
+msgid "Equatorial Guinea (Guinea Ecuatorial)"
+msgstr "Guinea Ecuatorială"
+
+#: 
+msgid "Eritrea"
+msgstr "Eritrea"
 
 #: 
 msgid "Estonia (Eesti)"
@@ -5953,6 +6113,50 @@ msgid "Guadeloupe"
 msgstr "Guadeloupe"
 
 #: 
+msgid "Guam"
+msgstr "Guam"
+
+#: 
+msgid "Guatemala"
+msgstr "Guatemala"
+
+#: 
+msgid "Guernsey"
+msgstr "Guernsey"
+
+#: 
+msgid "Guinea (Guinée)"
+msgstr "Guinea"
+
+#: 
+msgid "Guinea-Bissau (Guiné Bissau)"
+msgstr "Guinea-Bissau"
+
+#: 
+msgid "Guyana"
+msgstr "Guyana"
+
+#: 
+msgid "Haiti"
+msgstr "Haiti"
+
+#: 
+msgid "Heard & McDonald Islands"
+msgstr "Hear & McDonald Islands"
+
+#: 
+msgid "Honduras"
+msgstr "Honduras"
+
+#: 
+msgid "Hong Kong (香港)"
+msgstr "Hong Kong"
+
+#: 
+msgid "Hungary (Magyarország)"
+msgstr "Ungaria"
+
+#: 
 msgid "Jamaica"
 msgstr "Jamaica"
 
@@ -6031,6 +6235,42 @@ msgstr "Macau"
 #: 
 msgid "Macedonia (FYROM) (Македонија)"
 msgstr "Macedonia"
+
+#: 
+msgid "Mexico (México)"
+msgstr "Mexic"
+
+#: 
+msgid "Micronesia"
+msgstr "Micronesia"
+
+#: 
+msgid "Moldova (Republica Moldova)"
+msgstr "Republica Moldova"
+
+#: 
+msgid "Monaco"
+msgstr "Mona"
+
+#: 
+msgid "Mongolia (Монгол)"
+msgstr "Mongolia"
+
+#: 
+msgid "Montenegro (Crna Gora)"
+msgstr "Montenegro"
+
+#: 
+msgid "Montserrat"
+msgstr "Montserrat"
+
+#: 
+msgid "Morocco (‫المغرب‬‎)"
+msgstr "Maroc"
+
+#: 
+msgid "Mozambique (Moçambique)"
+msgstr "Mozambique"
 
 #: 
 msgid "Myanmar (Burma) (မြန်မာ)"
@@ -6113,6 +6353,50 @@ msgid "Panama (Panamá)"
 msgstr "Panama"
 
 #: 
+msgid "Papua New Guinea"
+msgstr "Papa Nou Guinee"
+
+#: 
+msgid "Paraguay"
+msgstr "Paraguay"
+
+#: 
+msgid "Peru (Perú)"
+msgstr "Peru"
+
+#: 
+msgid "Philippines"
+msgstr "Filipine"
+
+#: 
+msgid "Pitcairn Islands"
+msgstr "Pitcairn Islands"
+
+#: 
+msgid "Poland (Polska)"
+msgstr "Polonia"
+
+#: 
+msgid "Portugal"
+msgstr "Portugalia"
+
+#: 
+msgid "Puerto Rico"
+msgstr "Puerto Rico"
+
+#: 
+msgid "Qatar (‫قطر‬‎)"
+msgstr "Qatar"
+
+#: 
+msgid "Réunion (La Réunion)"
+msgstr "Reunion"
+
+#: 
+msgid "Romania (România)"
+msgstr "România"
+
+#: 
 msgid "San Marino"
 msgstr "San Marino"
 
@@ -6193,6 +6477,42 @@ msgid "St. Vincent & Grenadines"
 msgstr "St. Vincent și Grenadines"
 
 #: 
+msgid "Timor-Leste"
+msgstr "Timor-Leste"
+
+#: 
+msgid "Togo"
+msgstr "Togo"
+
+#: 
+msgid "Tokelau"
+msgstr "Tokelau"
+
+#: 
+msgid "Tonga"
+msgstr "Tonga"
+
+#: 
+msgid "Trinidad and Tobago"
+msgstr "Trinidad and Tobango"
+
+#: 
+msgid "Tristan da Cunha"
+msgstr "Tristan da Cunha"
+
+#: 
+msgid "Tunisia (‫تونس‬‎)"
+msgstr "Tunisia"
+
+#: 
+msgid "Turkey (Türkiye)"
+msgstr "Turcia"
+
+#: 
+msgid "Turkmenistan"
+msgstr "Turkmenistan"
+
+#: 
 msgid "Turks and Caicos Islands"
 msgstr "Turks și Caicos Islands"
 
@@ -6271,6 +6591,10 @@ msgstr "Zambia"
 #: 
 msgid "Zimbabwe"
 msgstr "Zimbabwe"
+
+#: 
+msgid "Please verify your family's information"
+msgstr "Vă rugăm verificați informațiile legat de familie"
 
 #: 
 msgid "Your verification request is complete"
