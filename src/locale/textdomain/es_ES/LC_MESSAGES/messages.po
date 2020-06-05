@@ -1378,10 +1378,6 @@ msgid "Role"
 msgstr "Cargo"
 
 #: 
-msgid "Day"
-msgstr "Día"
-
-#: 
 msgid "Select Gender"
 msgstr "Seleccione Género"
 
@@ -4627,10 +4623,6 @@ msgid "Family Members:"
 msgstr "Miembros"
 
 #: 
-msgid "Event"
-msgstr "Evento"
-
-#: 
 msgid "Anniversary"
 msgstr "Aniversario"
 
@@ -6798,7 +6790,7 @@ msgstr "Háganos saber que esta usando este software"
 
 #: 
 msgid "Unable to load verification info"
-msgstr "No es posible cargar la información de verificación"
+msgstr "No fue posible cargar la información de verificación"
 
 #: 
 msgid "No Changes"
@@ -7554,7 +7546,7 @@ msgstr "Como parte de la restauración, respaldos externos han sido inhabilitado
 
 #: 
 msgid "Unable to reset password"
-msgstr "No es posible restablecer la contraseña"
+msgstr "No fue posible restablecer la contraseña"
 
 #: 
 msgid "Reset your password"
@@ -8521,7 +8513,7 @@ msgstr "Fondos de Donaciones"
 
 #: 
 msgid "Unable to open file"
-msgstr "No es posible abrir el archivo"
+msgstr "No fue posible abrir el archivo"
 
 #: 
 msgid "Invalid upgrade file specified"
@@ -9066,18 +9058,6 @@ msgid "Add Person"
 msgstr "Agregar Persona"
 
 #: 
-msgid "Select the desired event"
-msgstr "Seleccione el evento deseado"
-
-#: 
-msgid "Missing people"
-msgstr "Personas faltantes"
-
-#: 
-msgid "Find people who didn't attend an event"
-msgstr "Encuentre personas que no asistieron al evento"
-
-#: 
 msgid "Portuguese - Portugal"
 msgstr "Portugués - Portugal"
 
@@ -9120,4 +9100,113 @@ msgstr "Registre otra familia!"
 #: 
 msgid "Done, show me the homepage!"
 msgstr "Listo, muéstrame la página de inicio!"
+
+#: 
+msgid "User authenticated via API Key: "
+msgstr "Usuario autenticado via API Key: "
+
+#: 
+msgid "Unsuccessful API Key authentication attempt"
+msgstr "Intento de autenticación via API KEY fallido"
+
+#: 
+msgid "Unpinned Events"
+msgstr "Eventos Desanclados"
+
+#: 
+msgid "LastName, FirstName MiddleName"
+msgstr "Apellido, PrimerNombre SegundoNombre"
+
+#: 
+msgid "Manage 2 Factor Authentication"
+msgstr "Gestionar Autenticación de 2 Factores"
+
+#: 
+msgid "Two Factor Status"
+msgstr "Estado de 2 Factores"
+
+#: 
+msgid "Please confirm disabling 2 Factor Auth for this user"
+msgstr "Por favor confirme la deshabilitación de la Autenticación de 2 Factores para este usuario"
+
+#: 
+msgid "Please enter 2FA code"
+msgstr "Por favor ingrese el código 2FA"
+
+#: 
+msgid "2FA Code"
+msgstr "Código 2FA"
+
+#: 
+msgid "2 Factor Authentication enrollment"
+msgstr "Enrolamiento de Autenticación de 2 Factores"
+
+#: 
+msgid "Unsupported Two Factor Authentication Configuration"
+msgstr "Configuración de Autenticación de 2 Factores no soportada"
+
+#: 
+msgid "Unable To Begin Two Factor Authentication Enrollment"
+msgstr "No fue posible comenzar con el enrolamiento con Autenticación de 2 Factores"
+
+#: 
+msgid "Two factor authentication requires ChurchCRM administrators to configure a few parameters"
+msgstr "La  Autenticación de 2 Factores requiere que administradores de ChurchCRM configuren algunos parámetros"
+
+#: 
+msgid "System configuration "
+msgstr "Configuración de Sistema "
+
+#: 
+msgid "Must be set to 'true'"
+msgstr "Debe estar ajustado a 'true'"
+
+#: 
+msgid "Include/Config.php must define an encryption key for storing 2FA secret keys in the database by setting a value for"
+msgstr "Include/Config.php debe definir una llave de encriptación para almacenar las llaves secretas de 2FA en la base de datos"
+
+#: 
+msgid "Credit Card People"
+msgstr "Personas con Tarjetas de Crédito"
+
+#: 
+msgid "People who are configured to pay by credit card."
+msgstr "Personas configuradas para pagar con tarjeta de crédito"
+
+#: 
+msgid "Google Maps API Key used for Geocoding addresses"
+msgstr "API Key de Google Maps usada para georeferenciar direcciones"
+
+#: 
+msgid "Send an email notifying users when their account has been deleted"
+msgstr "Enviar un correo notificando a usuarios cuando se les haya borrado su cuenta"
+
+#: 
+msgid "Google Maps API Key used for rendering maps in browser"
+msgstr "API Key de Google Maps usada para mostrar mapas en el navegador"
+
+#: 
+msgid "Incorrect password supplied for current user"
+msgstr "Contraseña para el usuario actual incorrecta"
+
+#: 
+msgid "Your new password must not match your old one."
+msgstr "Su nueva contraseña no debe ser igual a la anterior."
+
+#: 
+msgid "Your new password is too similar to your old one."
+msgstr "Su nueva contraseña es demasiado similar a la anterior."
+
+#. Availble
+#: 
+msgid "Password reset not availble.  Please contact your system administrator"
+msgstr "Restablecimiento de Contraseña no disponible. Por favor contacte al administrador de su sistema."
+
+#: 
+msgid "Authentication Issue"
+msgstr "Problema de Autenticación"
+
+#: 
+msgid "Enter new user password. Administratively set passwords are not subject to length or complexity requirements"
+msgstr "Ingrese una nueva contraseña de usuario. Contraseñas establecidas administrativamente no están sujetas a requerimientos de extensión o complejidad."
 

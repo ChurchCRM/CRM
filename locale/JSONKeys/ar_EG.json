@@ -341,7 +341,6 @@
     "Middle": "الاوسط",
     "Last": "اسم العائلة",
     "Role": "الادوار",
-    "Day": "يوم",
     "Select Gender": "اختيار الجنس",
     "Select Role": "حدد دور",
     "Unknown": "عير معروف",
@@ -1152,7 +1151,6 @@
     "Voting members ": "أعضاء التصويت",
     "Restore Running, Please wait.": "استعادة تشغيل، الرجاء الانتظار.",
     "Family Members:": "أفراد الأسرة:",
-    "Event": "حدث",
     "Anniversary": "ذكرى سنوية",
     "Notes": "ملاحظات",
     "Reports": "تقارير",
@@ -2260,9 +2258,6 @@
     "This will reset the system data and will restart the system as a new install.": "هذا وسوف إعادة تعيين بيانات النظام وسيتم إعادة تشغيل النظام وتثبيت جديد.",
     "Clear Filter": "مرشح واضح",
     "Add Person": "اضافة فرد",
-    "Select the desired event": "حدد الحدث المطلوب",
-    "Missing people": "أشخاص مفقودون",
-    "Find people who didn't attend an event": "تجد الناس الذين لم يحضروا هذا الحدث",
     "Portuguese - Portugal": "برتغالى - برتغال",
     "Holiday": "اجازة",
     "Allow users to self-enroll in 2 factor authentication": "السماح للمستخدمين للتسجيل الذاتي في 2 عامل التوثيق",
@@ -2289,5 +2284,7 @@
     "Two factor authentication requires ChurchCRM administrators to configure a few parameters": "يتطلب اثنين عامل التوثيق الإداريين ChurchCRM لتكوين عدد قليل من المعالم",
     "System configuration ": "أعدادات النظام",
     "Must be set to 'true'": "يجب أن يتم تعيين إلى 'true'",
-    "Include/Config.php must define an encryption key for storing 2FA secret keys in the database by setting a value for": "وتشمل / ملف config.php يجب تحديد مفتاح التشفير لتخزين 2FA المفاتيح السرية في قاعدة البيانات عن طريق تحديد قيمة لل"
+    "Include/Config.php must define an encryption key for storing 2FA secret keys in the database by setting a value for": "وتشمل / ملف config.php يجب تحديد مفتاح التشفير لتخزين 2FA المفاتيح السرية في قاعدة البيانات عن طريق تحديد قيمة لل",
+    "Credit Card People": "بطاقة الائتمان الشعب",
+    "People who are configured to pay by credit card.": "الناس الذين تم تكوينها لالدفع بواسطة بطاقة الائتمان."
 }
