@@ -400,7 +400,7 @@ module.exports = function (grunt) {
                 }
             },
             options: {
-                project_id: '77079',
+                project_id: '<%= buildConfig.POEditor.id %>',
                 languages: poLocales(),
                 api_token: '<%= buildConfig.POEditor.token %>'
             }
@@ -413,6 +413,9 @@ module.exports = function (grunt) {
         exec: {
             updatechangelog: {
                 cmd: "gren changelog --generate --override --token=<%= buildConfig.GitHub.token %>"
+            },
+            downloadPOEditorStats: {
+                cmd: "curl -X POST https://api.poeditor.com/v2/languages/list -d api_token=<%= buildConfig.POEditor.token %> -d id=<%= buildConfig.POEditor.id %> -o src/locale/poeditor.json -s"
             }
         },
         lineending: {
@@ -472,9 +475,30 @@ module.exports = function (grunt) {
         grunt.task.run(['poeditor']);
     });
 
+
+    grunt.registerTask('genLocaleAudit', '', function () {
+        let locales = grunt.file.readJSON("src/locale/locales.json");
+
+        let supportedPOEditorCodes = [];
+        for (let key in locales ) {
+            supportedPOEditorCodes.push( locales[key]["poEditor"].toLowerCase());
+        }
+
+        let poLocales = grunt.file.readJSON("src/locale/poeditor.json");
+        let poEditorLocales = poLocales.result.languages;
+
+        for (let key in poEditorLocales ) {
+            let name =  poEditorLocales[key]["name"];
+            let curCode =  poEditorLocales[key]["code"].toLowerCase();
+            let percentage = poEditorLocales[key]["percentage"];
+            if ( supportedPOEditorCodes.indexOf(curCode) === -1 && percentage > 0) {
+                console.log("Missing " + name + ' (' + curCode + ') but has ' + percentage + ' percentage');
+            }
+        }
+    });
+
     grunt.registerTask('genLocaleJSFiles', '', function () {
         var locales = grunt.file.readJSON("src/locale/locales.json");
-        var poEditorLocales = {};
         for (var key in locales ) {
             var localeConfig = locales[key];
             var locale = localeConfig["locale"];
