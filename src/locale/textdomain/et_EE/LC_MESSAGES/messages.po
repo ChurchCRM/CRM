@@ -385,6 +385,14 @@ msgid "Check to confirm"
 msgstr "Kinnita"
 
 #: 
+msgid "Briefing Sheets"
+msgstr "Infolehed"
+
+#: 
+msgid "Summary Report"
+msgstr "Kokkuvõtlik aruanne"
+
+#: 
 msgid "Not Interested Report"
 msgstr "Huvipakkuvaid aruandeid ei ole"
 
@@ -533,6 +541,1705 @@ msgid "Empty Cart to Event"
 msgstr "Tühjenda Sündmuse korv"
 
 #: 
+msgid "Map Cart"
+msgstr "Kaardikogu"
+
+#: 
 msgid "Name Tags"
 msgstr "Nime Tag"
+
+#: 
+msgid "Generate Labels"
+msgstr "Genereeri kleebised"
+
+#: 
+msgid "persons from"
+msgstr "isikud alates"
+
+#: 
+msgid "Remove"
+msgstr "Eemalda"
+
+#: 
+msgid "Yes"
+msgstr "Jah"
+
+#: 
+msgid "No"
+msgstr "Ei"
+
+#: 
+msgid "Event Checkin"
+msgstr "Ürituste registreerimine"
+
+#: 
+msgid "Checked Out By"
+msgstr "Kontrollitud"
+
+#: 
+msgid "Action"
+msgstr "Tegevus"
+
+#: 
+msgid "No Attendees Assigned to Event"
+msgstr "Üritusele pole määratud ühtegi osavõtjat"
+
+#: 
+msgid "Member"
+msgstr "Liige"
+
+#: 
+msgid "(No assigned family)"
+msgstr "(Pole määratud perekonda)"
+
+#: 
+msgid "Convert Individuals to Families"
+msgstr "Teisendage üksikisikud perekondadeks"
+
+#: 
+msgid "Convert Next"
+msgstr "Teisenda järgmine"
+
+#: 
+msgid "Convert All"
+msgstr "Teisenda kõik"
+
+#: 
+msgid "Deposit Slip Number: "
+msgstr "Deposiidi number:"
+
+#: 
+msgid "Deposit Details: "
+msgstr "Deposiidi üksikasjad:"
+
+#: 
+msgid "Close deposit slip (remember to press Save)"
+msgstr "Sulge sissemakseleht (ärge unustage vajutada nuppu Salvesta)"
+
+#: 
+msgid "Deposit Slip Report"
+msgstr "Deposiidi teatis"
+
+#: 
+msgid "Important note: failed transactions will be deleted permanantly when the deposit slip is closed."
+msgstr "Oluline märkus: ebaõnnestunud tehingud kustutatakse jäädavalt, kui deposiidipilet suletakse."
+
+#: 
+msgid "Deposit Summary: "
+msgstr "Deposiidi kokkuvõte:"
+
+#: 
+msgid "Payments on this deposit slip:"
+msgstr "Selle sissemakse sedelid:"
+
+#: 
+msgid "Import eGive"
+msgstr "Impordi e-annetused"
+
+#: 
+msgid "Add Payment"
+msgstr "Lisage makse"
+
+#: 
+msgid "Load Authorized Transactions"
+msgstr "Laadige volitatud tehinguid"
+
+#: 
+msgid "Run Transactions"
+msgstr "Käivitage tehingud"
+
+#: 
+msgid "Paper Size"
+msgstr "Paberi suurus"
+
+#: 
+msgid "Font Size"
+msgstr "Fondi suurus"
+
+#: 
+msgid "Title page"
+msgstr "Tiitelleht"
+
+#: 
+msgid "Use Title Page"
+msgstr "Kasutage tiitellehte"
+
+#: 
+msgid "Church Name"
+msgstr "Koguduse nimi"
+
+#: 
+msgid "Disclaimer"
+msgstr "Kohustustest loobumine"
+
+#: 
+msgid "Create Directory"
+msgstr "Loo kataloog"
+
+#: 
+msgid "Donated Item Editor"
+msgstr "Kingitud esemete redigeerija"
+
+#: 
+msgid "Save and Add"
+msgstr "Salvesta ja lisa"
+
+#: 
+msgid "Item"
+msgstr "Ese"
+
+#: 
+msgid "Multiple items"
+msgstr "Mitu eset"
+
+#: 
+msgid "Sell to everyone"
+msgstr "Müüge kõigile"
+
+#: 
+msgid "Estimated Price"
+msgstr "Eeldatav hind"
+
+#: 
+msgid "Multiple"
+msgstr "Paljunda"
+
+#: 
+msgid "Final Price"
+msgstr "Lõpphind"
+
+#: 
+msgid "Replicate item"
+msgstr "Korda eset"
+
+#: 
+msgid "Go"
+msgstr "Mine"
+
+#: 
+msgid "Description"
+msgstr "Kirjeldus"
+
+#: 
+msgid "Picture URL"
+msgstr "Pildi URL"
+
+#: 
+msgid "Donation Fund Editor"
+msgstr "Annetusfondi toimetaja"
+
+#: 
+msgid "Fund"
+msgstr "Fond"
+
+#: 
+msgid "Bank"
+msgstr "Pank"
+
+#: 
+msgid "Month"
+msgstr "Kuu"
+
+#: 
+msgid "Year"
+msgstr "Aasta"
+
+#: 
+msgid "Edit"
+msgstr "Redigeeri"
+
+#: 
+msgid "Message"
+msgstr "Sõnum"
+
+#: 
+msgid "Event Attendees"
+msgstr "Üritustel osalejad"
+
+#: 
+msgid "Event Nonattendees"
+msgstr "Üritusel mitteosalenud"
+
+#: 
+msgid "Event Guests"
+msgstr "Ürituse külalised"
+
+#: 
+msgid "Back to Report Menu"
+msgstr "Tagasi aruande menüüsse "
+
+#: 
+msgid "There "
+msgstr "Seal"
+
+#: 
+msgid "Event Title"
+msgstr "Ürituse pealkiri"
+
+#: 
+msgid "Event Date"
+msgstr "Ürituse kuupäev"
+
+#: 
+msgid "Generate Report"
+msgstr "Loo aruanne"
+
+#: 
+msgid "Attending Members"
+msgstr "Osalevad liikmed"
+
+#: 
+msgid "Non-Attending Members"
+msgstr "Mitteosalevad liikmed"
+
+#: 
+msgid "Guests"
+msgstr "Külalised"
+
+#: 
+msgid "There are no events in this category"
+msgstr "Selles kategoorias pole ühtegi üritust"
+
+#: 
+msgid "There are no Records"
+msgstr "Rekordid puuduvad"
+
+#: 
+msgid "Create Event"
+msgstr "Loo sündmus"
+
+#: 
+msgid "Saturdays"
+msgstr "Laupäeviti"
+
+#: 
+msgid "DEFAULT START TIME"
+msgstr "VAIKIMISE ALGUAEG"
+
+#: 
+msgid "ATTENDANCE COUNTS"
+msgstr "OSALEMISE LOENDUR"
+
+#: 
+msgid "Optional"
+msgstr "Valikuline"
+
+#: 
+msgid "Enter a list of the attendance counts you want to include with this event."
+msgstr "Sisestage osalejate arvu loend, mida soovite selle sündmusega kaasata."
+
+#: 
+msgid "Separate each count_name with a comma. e.g. Members, Visitors, Campus, Children"
+msgstr "Eraldage iga loendusnimi komaga. nt. Liikmed, külastajad, ülikoolilinnak, lapsed"
+
+#: 
+msgid "Every event type includes a Total count, you do not need to include it."
+msgstr "Iga sündmuse tüüp sisaldab koguarvu, te ei pea seda lisama."
+
+#: 
+msgid "Add Event Type"
+msgstr "Lisage sündmuse tüüp"
+
+#: 
+msgid "Custom Family Fields Editor"
+msgstr "Kohandatud perekonna väljade redaktor"
+
+#: 
+msgid "Default Option"
+msgstr "Vaikevalik"
+
+#: 
+msgid "Warning:  By deleting this field, you will irrevokably lose all family data assigned for this field!"
+msgstr "Hoiatus: selle välja kustutamisega kaotate pöördumatult kõik sellele väljale määratud perekonnaandmed!"
+
+#: 
+msgid "Warning: Arrow and delete buttons take effect immediately.  Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!"
+msgstr "Hoiatus: noole- ja kustutamisnupud jõustuvad kohe. Välja nime muudatused lähevad kaotsi, kui te ei kasuta nuppu Salvesta muudatused enne üles, alla, kustutamist ega uue lisamise nuppu!"
+
+#: 
+msgid "No custom Family fields have been added yet"
+msgstr "Kohandatud perekonna välju pole veel lisatud"
+
+#: 
+msgid "Special option"
+msgstr "Spetsiaalne võimalus"
+
+#: 
+msgid "Security Option"
+msgstr "Turvalisuse võimalus"
+
+#: 
+msgid "You must select a group."
+msgstr "Peate valima rühma."
+
+#: 
+msgid "Edit List Options"
+msgstr "Redigeeri loendi suvandeid"
+
+#: 
+msgid "Help on types.."
+msgstr "Abi tüüpide osas .."
+
+#: 
+msgid "You must enter a name"
+msgstr "Peate sisestama nime"
+
+#: 
+msgid "That field name already exists."
+msgstr "See välja nimi on juba olemas."
+
+#: 
+msgid "NNE"
+msgstr "NNE"
+
+#: 
+msgid "NNW"
+msgstr "NNW"
+
+#: 
+msgid "NW"
+msgstr "NW"
+
+#: 
+msgid "S"
+msgstr "S"
+
+#: 
+msgid "SE"
+msgstr "SE"
+
+#: 
+msgid "SSW"
+msgstr "SSW"
+
+#: 
+msgid "SW"
+msgstr "SW"
+
+#: 
+msgid "W"
+msgstr "W"
+
+#: 
+msgid "WNW"
+msgstr "WNW"
+
+#: 
+msgid "WSW"
+msgstr "WSW"
+
+#: 
+msgid "Persons"
+msgstr "Isikud"
+
+#: 
+msgid "Search Family"
+msgstr "Otsi perekonda"
+
+#: 
+msgid "Show Family Head of House Names"
+msgstr "Näita perepea perekonnanime"
+
+#: 
+msgid "Search Groups"
+msgstr "Otsi gruppi"
+
+#: 
+msgid "Search Deposits"
+msgstr "Otsi deposiiti"
+
+#: 
+msgid "Search Payments"
+msgstr "Otsi tasumisi"
+
+#: 
+msgid "Quick Search"
+msgstr "Kiirotsing"
+
+#: 
+msgid "Search Addresses"
+msgstr "Otsi aadressi"
+
+#: 
+msgid "Maximum number of Families"
+msgstr "Perede maksimaalne arv"
+
+#: 
+msgid "Maximum number of Family H.O.H Names"
+msgstr "Perekonna H.O.H nime maksimaalne arv"
+
+#: 
+msgid "Maximum number of Groups"
+msgstr "Gruppide maksimaalne arv"
+
+#: 
+msgid "Maximum number of Deposits"
+msgstr "Hoiuste maksimaalne arv"
+
+#: 
+msgid "Maximum number of Payments"
+msgstr "Maksimaalne arv makseid"
+
+#: 
+msgid "Maximum number of Addresses"
+msgstr "Aadresside maksimaalne arv"
+
+#: 
+msgid "Show type of group:"
+msgstr "Kuva rühma tüüp:"
+
+#: 
+msgid "Add Students"
+msgstr "Lisage õpilased"
+
+#: 
+msgid "Edit this Class"
+msgstr "Muutke seda klassi"
+
+#: 
+msgid "OK"
+msgstr "OK"
+
+#: 
+msgid "Please select target Role for members"
+msgstr "Valige liikmetele sihtroll"
+
+#: 
+msgid "GroupID required for role selection prompt"
+msgstr "Rollivaliku küsimiseks on vajalik GroupID"
+
+#: 
+msgid "Select Group and Role"
+msgstr "Valige Rühm ja roll"
+
+#: 
+msgid "Are you sure you want to remove this person's membership from"
+msgstr "Kas soovite kindlasti selle inimese liikmesuse eemaldada?"
+
+#: 
+msgid "All Members"
+msgstr "Kõik liikmed"
+
+#: 
+msgid "PhotoBook"
+msgstr "Fotoraamat"
+
+#: 
+msgid "With Photos"
+msgstr "Fotodega"
+
+#: 
+msgid "Create PhotoBook"
+msgstr "Looge fotoraamat"
+
+#: 
+msgid "SSE"
+msgstr "SSE"
+
+#: 
+msgid "Height to use for images"
+msgstr "Piltide jaoks kasutatav kõrgus"
+
+#: 
+msgid "Width to use for images"
+msgstr "Piltide jaoks kasutatav laius"
+
+#: 
+msgid "Width to use for thumbnails"
+msgstr "Pisipiltide jaoks kasutatav laius"
+
+#: 
+msgid "Point size to use for initials thumbnails"
+msgstr "Initsiaalide pisipiltide jaoks kasutatav punkti suurus"
+
+#: 
+msgid "Client cache seconds for images"
+msgstr "Kliendi vahemälu sekundid piltide jaoks"
+
+#: 
+msgid "Server cache time for remote images"
+msgstr "Serveri vahemälu aeg kaugpiltide jaoks"
+
+#: 
+msgid "Recipient Naming Method"
+msgstr "Kviitungi Saaja nimetamise meetod"
+
+#: 
+msgid "Salutation Utility"
+msgstr "Tervituste kasulikkus"
+
+#: 
+msgid "Add A Group Name"
+msgstr "Lisage rühma nimi"
+
+#: 
+msgid "Default Name Group"
+msgstr "Grupi Vaikenimi"
+
+#: 
+msgid "Group Role"
+msgstr "Grupi roll"
+
+#: 
+msgid "Members from group"
+msgstr "Grupuliikmed"
+
+#: 
+msgid "Members to another group"
+msgstr "Teise grupi liikmed"
+
+#: 
+msgid "Members to cart"
+msgstr "Liikmed korvis"
+
+#: 
+msgid "OR Create a Group and add the CART in ONE ACTION"
+msgstr "VÕI looge grupp ja lisage KORVI ÜHES TEGEVUSES"
+
+#: 
+msgid "Create Group + ADD Cart"
+msgstr "Loo grupp + LISA KORVI"
+
+#: 
+msgid "Facebook"
+msgstr "Facebook"
+
+#: 
+msgid "Twitter"
+msgstr "Twitter"
+
+#: 
+msgid "LinkedIn"
+msgstr "LinkedIn"
+
+#: 
+msgid "Move Event"
+msgstr "Teisalda sündmus"
+
+#: 
+msgid "Resize Event"
+msgstr "Muutke sündmuse suurust"
+
+#: 
+msgid "Text from"
+msgstr "Tekst on pärit"
+
+#: 
+msgid "Profile"
+msgstr "Profiiil"
+
+#: 
+msgid "Sign out"
+msgstr "Logi välja"
+
+#: 
+msgid "Sermon Text"
+msgstr "Jutluse tekst"
+
+#: 
+msgid "Change Settings"
+msgstr "Muuda seadeid"
+
+#: 
+msgid "Unknown Type"
+msgstr "Tundmatu tüüp"
+
+#: 
+msgid "PersonID for Cart must be numeric"
+msgstr "Person ID korvis peab olema numbriline"
+
+#: 
+msgid "GroupID for Cart must be numeric"
+msgstr "GroupID korvis peab olema numbriline"
+
+#: 
+msgid "FamilyID for Cart must be numeric"
+msgstr "Pere korvi ID peab olema numbriline"
+
+#: 
+msgid "Search People"
+msgstr "Otsige inimesi"
+
+#: 
+msgid "Maximum number of People"
+msgstr "Maksimaalne inimeste arv"
+
+#: 
+msgid "Field where Father Of Confession is listed, must be a people of group type"
+msgstr "Väli, kus on loetletud pastorid, peab olema rühma tüüpi inimesed"
+
+#: 
+msgid "Field where last Confession is stored, must be a date type"
+msgstr "Viimane tunnistus salvestatud väli peab olema kuupäeva tüüp"
+
+#: 
+msgid "Require that this ChurchCRM Database is accessed over HTTPS"
+msgstr "Nõuab, et sellele ChurchCRM-i andmebaasile avataks juurdepääs HTTPS-i kaudu"
+
+#: 
+msgid "People Setup"
+msgstr "Inimeste seadistamine"
+
+#: 
+msgid "Church Services"
+msgstr "Jumalateenistused"
+
+#: 
+msgid "People Reports"
+msgstr "Inimeste aruanded"
+
+#: 
+msgid "People Dashboard"
+msgstr "Inimeste juhtpaneel"
+
+#: 
+msgid "People Functions"
+msgstr "Inimeste funktsioonid"
+
+#: 
+msgid "People Directory"
+msgstr "Inimeste kataloog"
+
+#: 
+msgid "Printable directory of all people, grouped by family where assigned"
+msgstr "Kõigi inimeste prinditav kataloog, rühmitatud perede kaupa"
+
+#: 
+msgid "of People"
+msgstr "inimestest"
+
+#: 
+msgid "System Upgrade"
+msgstr "Süsteemi uuendamine"
+
+#: 
+msgid "Upgrade Required"
+msgstr "Uuendamine on vajalik"
+
+#: 
+msgid "Current DB Version: "
+msgstr "Praegune DB versioon:"
+
+#: 
+msgid "Current Software Version: "
+msgstr "Praegune tarkvara versioon:"
+
+#: 
+msgid "Upgrade database"
+msgstr "Täiendage andmebaasi"
+
+#: 
+msgid "Show Birthdates Anniversaries on start up of the CRM"
+msgstr "Näita sünnikuupäevi juubeleid CRM-i käivitamisel"
+
+#: 
+msgid "Number of seconds after page load until the banner disappears, default 10 seconds"
+msgstr "Sekundite arv pärast lehe laadimist kuni ribareklaami kadumiseni, vaikimisi 10 sekundit"
+
+#: 
+msgid "Help & Support"
+msgstr "Abi ja tugi"
+
+#: 
+msgid "Help & Manual"
+msgstr "Abi ja juhend"
+
+#: 
+msgid "Contributing"
+msgstr "Toetama"
+
+#: 
+msgid "Birthdates of the day"
+msgstr "Päeva sünnipäevad"
+
+#: 
+msgid "Anniversaries of the day"
+msgstr "Päeva juubelid"
+
+#: 
+msgid "Automatically enable SMTP encryption if offered by the relaying server."
+msgstr "Luba SMTP krüptimine automaatselt, kui ülekandeserver seda pakub."
+
+#: 
+msgid "Set the encryption system to use - ssl (deprecated) or tls"
+msgstr "Seadistage krüptimissüsteem kasutamiseks - ssl (aegunud) või tls"
+
+#: 
+msgid "Dashboard Service dynamic asynchronous refresh interval, default 60 second"
+msgstr "Juhtpaneeli teenuse dünaamiline asünkroonne värskendusintervall, vaikimisi 60 sekundit"
+
+#: 
+msgid "Generate Deposit Slip for Selected Rows (PDF)"
+msgstr "Genereerige valitud ridade jaoks deposiidi tõend (PDF)"
+
+#: 
+msgid "Add All to Cart"
+msgstr "Lisa kõik korvi"
+
+#: 
+msgid "Remove All from Cart"
+msgstr "Eemalda kõik ostukorvist"
+
+#: 
+msgid "records(s) successfully deleted from the selected Group."
+msgstr "kirjed / kirjed valitud grupist edukalt kustutatud."
+
+#: 
+msgid "Not Found"
+msgstr "Ei leitud"
+
+#: 
+msgid "Oops!"
+msgstr "Vabandust!"
+
+#: 
+msgid "Meanwhile, you may"
+msgstr "Vahepeal võite"
+
+#: 
+msgid "Database Only (.sql)"
+msgstr "Ainult andmebaas (.sql)"
+
+#: 
+msgid "Database and Photos (.tar.gz)"
+msgstr "Andmebaas ja fotod (.tar.gz)"
+
+#: 
+msgid "User must be an Admin"
+msgstr "Kasutaja peab olema administraator"
+
+#: 
+msgid "No logged in user"
+msgstr "Kasutajat pole"
+
+#: 
+msgid "Set the standard profile picture icon size in pixels to be used in people lists, default 85 pixels."
+msgstr "Seadke inimeste loendites kasutatav tavapärane profiilipildi ikooni suurus pikslites, vaikimisi 85 pikslit."
+
+#: 
+msgid "not found"
+msgstr "ei leitud"
+
+#: 
+msgid "Deleted from group"
+msgstr "Kustutatud grupist"
+
+#: 
+msgid "Added to group"
+msgstr "Lisati gruppi"
+
+#: 
+msgid "We could not find the person(s) you were looking for."
+msgstr "Me ei leidnud inimest / inimesi, keda otsisite."
+
+#: 
+msgid "return to People Dashboard"
+msgstr "naasege inimeste juhtpaneelile"
+
+#: 
+msgid "User must have MenuOptions permission"
+msgstr "Kasutajal peab olema MenuOptions(menüüde valikud) luba"
+
+#: 
+msgid "SMTP Host is not setup, please visit the settings page"
+msgstr "SMTP-host pole häälestatud, külastage seadete lehte"
+
+#: 
+msgid "Debug Email Connection"
+msgstr "Siluri e-posti ühendus"
+
+#: 
+msgid "This Family is Deactivated"
+msgstr "See perekond on mitteaktiivne (välja lülitatud)"
+
+#: 
+msgid "Metadata"
+msgstr "Metaandmed"
+
+#: 
+msgid "The database has been cleared."
+msgstr "Andmebaas on kustutatud."
+
+#: 
+msgid "User must have bAddEvent permissions"
+msgstr "Kasutajal peavad olema bAddEvent õigused"
+
+#: 
+msgid "Anniversaries"
+msgstr "Tähtpäevad"
+
+#: 
+msgid "New Family Notification Email Error"
+msgstr "Uue perekonna teavituse e-posti viga"
+
+#: 
+msgid "New Person Notification Email Error"
+msgstr "Uue isiku teavituse e-posti viga"
+
+#: 
+msgid "View User"
+msgstr "Kuva kasutaja"
+
+#: 
+msgid "Invalid request: Missing calendar id"
+msgstr "Vale taotlus: puudub kalendri ID"
+
+#: 
+msgid "Not Found: Unknown calendar id"
+msgstr "Pole leitud: Tundmatu kalendri ID"
+
+#: 
+msgid "no found or user without an email"
+msgstr "ei leitud ega kasuta ilma e-kirjata"
+
+#: 
+msgid "UserName not set"
+msgstr "Kasutajanimi pole määratud"
+
+#: 
+msgid "The people and families has been cleared from the database."
+msgstr "Inimesed ja perekonnad on andmebaasist kustutatud."
+
+#: 
+msgid "Self Registrations"
+msgstr "Enda registreerimised"
+
+#: 
+msgid "Public Calendar"
+msgstr "Avalik kalender"
+
+#: 
+msgid "Private Calendar"
+msgstr "Privaatne kalender"
+
+#: 
+msgid "Username"
+msgstr "Kasutajanimi"
+
+#: 
+msgid "Are you sure you want to move"
+msgstr "Kas soovite kindlasti kolida?"
+
+#: 
+msgid "from"
+msgstr "alates"
+
+#: 
+msgid "to"
+msgstr "kuni"
+
+#: 
+msgid "Are you sure you want to change the end time for "
+msgstr "Kas olete kindel, et soovite muuta lõpuaega?"
+
+#: 
+msgid "Access Token"
+msgstr "Juurdepääsuluba"
+
+#: 
+msgid "New Access Token"
+msgstr "Uus juurdepääsuluba"
+
+#: 
+msgid "Delete Access Token"
+msgstr "Kustutage juurdepääsuluba"
+
+#: 
+msgid "ICS URL"
+msgstr "ICS URL"
+
+#: 
+msgid "JSON URL"
+msgstr "JSON URL"
+
+#: 
+msgid "Foreground Color"
+msgstr "Esiplaani värv"
+
+#: 
+msgid "Background Color"
+msgstr "Taustavärv"
+
+#: 
+msgid "Delete Calendar"
+msgstr "Kustuta kalender"
+
+#: 
+msgid "Invalid Entry"
+msgstr "Vale sisestus"
+
+#: 
+msgid "Calendar Name"
+msgstr "Kalendri nimi"
+
+#: 
+msgid "New Calendar"
+msgstr "Uus kalender"
+
+#: 
+msgid "Warning: bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
+msgstr "Hoiatus: bEnableExternalCalendarAPI on keelatud, kuid mõnel kalendril on juurdepääsumärgid"
+
+#: 
+msgid "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token"
+msgstr "Kalendrite jagamiseks peab lisaks konkreetsele juurdepääsuõigusele vastava kalendriga olema lubatud ka säte bEnableExternalCalendarAPI."
+
+#: 
+msgid "Links"
+msgstr "Lingid"
+
+#: 
+msgid "Show custom links on the left menu."
+msgstr "Kuva vasakpoolses menüüs kohandatud lingid."
+
+#: 
+msgid "Enable Sunday School left menu."
+msgstr "Luba pühapäevakool vasak menüü."
+
+#: 
+msgid "Enable Finance menu"
+msgstr "Luba menüü Finants"
+
+#: 
+msgid "Enable Events menu."
+msgstr "Luba menüü Sündmused."
+
+#: 
+msgid "Enable Calendar menu."
+msgstr "Luba menüü Kalender."
+
+#: 
+msgid "Enable Fundraiser menu."
+msgstr "Luba raha kogumise menüü."
+
+#: 
+msgid "Enable Email menu."
+msgstr "Luba menüü E-post."
+
+#: 
+msgid "Enabled Features"
+msgstr "Lubatud funktsioonid"
+
+#: 
+msgid "Validation Error"
+msgstr "Valideerimisviga"
+
+#: 
+msgid "Link Not found"
+msgstr "Linki ei leitud"
+
+#: 
+msgid "Email Functions"
+msgstr "E-posti funktsioonid"
+
+#: 
+msgid "Debug"
+msgstr "Silumine"
+
+#: 
+msgid "Family Custom Fields"
+msgstr "Perekonna kohandatud väljad"
+
+#: 
+msgid "Person Custom Fields"
+msgstr "Isiku kohandatud väljad"
+
+#: 
+msgid "Donation Funds"
+msgstr "Annetusfondid"
+
+#: 
+msgid "Unable to open file"
+msgstr "Faili ei saa avada"
+
+#: 
+msgid "Invalid upgrade file specified"
+msgstr "Määratud kehtetu versioonifail"
+
+#: 
+msgid "Failure executing upgrade script"
+msgstr "Uuendamise skripti käivitamine ebaõnnestus"
+
+#: 
+msgid "Missing calendar access token"
+msgstr "Puudub kalendri juurdepääsuluba"
+
+#: 
+msgid "Calendar access token not found"
+msgstr "Kalendri juurdepääsuluba ei leitud"
+
+#: 
+msgid "User must have Delete Records permission"
+msgstr "Kasutajal peab olema Kustutamise kirjete luba"
+
+#: 
+msgid "ChurchCRM Central Notifications URL"
+msgstr "ChurchCRM-i keskseadete URL"
+
+#: 
+msgid "Follow us on Twitter"
+msgstr "Jälgi meid Twitteris"
+
+#: 
+msgid "invalid event type id"
+msgstr "kehtetu sündmuse tüübi ID"
+
+#: 
+msgid "invalid calendar pinning"
+msgstr "kehtetu kalendri kinnitamine"
+
+#: 
+msgid "invalid group id"
+msgstr "vale grupi ID"
+
+#: 
+msgid "invalid status value"
+msgstr "kehtetu oleku väärtus"
+
+#: 
+msgid "invalid export value"
+msgstr "vigane ekspordiväärtus"
+
+#: 
+msgid "Invalid User/Password"
+msgstr "Vale kasutaja / parool"
+
+#: 
+msgid "Bad userId"
+msgstr "Halb kasutajatunnus"
+
+#: 
+msgid "Find Duplicate Emails"
+msgstr "Duplikaatide leidmine"
+
+#: 
+msgid "Duplicate Emails"
+msgstr "Kopeerivad e-kirjad"
+
+#: 
+msgid "HTML URL"
+msgstr "HTML-i URL"
+
+#: 
+msgid "Latest Persons"
+msgstr "Viimased isikud"
+
+#: 
+msgid "Updated Persons"
+msgstr "Uuendatud isikud"
+
+#: 
+msgid "Custom Menus"
+msgstr "Kohandatud menüüd"
+
+#: 
+msgid "User must have Manage Groups permission"
+msgstr "Kasutajal peab olema Gruppide haldamise luba"
+
+#: 
+msgid "Missing"
+msgstr "Puudub"
+
+#: 
+msgid "User must have Edit Records permission"
+msgstr "Kasutajal peab olema muudetud kirjete luba"
+
+#: 
+msgid "User must have Finance permission"
+msgstr "Kasutajal peab olema rahandusluba"
+
+#: 
+msgid "Can't delete yourself"
+msgstr "Ei saa ennast kustutada"
+
+#: 
+msgid "success"
+msgstr "edu"
+
+#: 
+msgid "The role could not be found."
+msgstr "Rolli ei leitud."
+
+#: 
+msgid "Add Menu"
+msgstr "Lisage menüü"
+
+#: 
+msgid "Menu Name"
+msgstr "Menüü nimi"
+
+#: 
+msgid "Max 20 char"
+msgstr "Max 20 char"
+
+#: 
+msgid "Link Address"
+msgstr "Lingi aadress"
+
+#: 
+msgid "Start with http:// or https://"
+msgstr "Alustage tähega http: // või https: //"
+
+#: 
+msgid "Menus"
+msgstr "Menüüd"
+
+#: 
+msgid "is disabled"
+msgstr "on keelatud"
+
+#: 
+msgid "System Information"
+msgstr "Süsteemi info"
+
+#: 
+msgid "Software Version"
+msgstr "Tarkvara versioon"
+
+#: 
+msgid "Valid Mail Server Settings"
+msgstr "Kehtivad e-posti serveri sätted"
+
+#: 
+msgid "Database"
+msgstr "Andmebaas"
+
+#: 
+msgid "Database Version"
+msgstr "Andmebaasi versioon"
+
+#: 
+msgid "Application Prerequisites"
+msgstr "Rakenduse eeltingimused"
+
+#: 
+msgid "WebServer Modules"
+msgstr "WebServeri moodulid"
+
+#: 
+msgid "Invalid country name supplied"
+msgstr "Sisestatud on kehtetu riiginimi"
+
+#: 
+msgid "LastName FirstName"
+msgstr "Perekonnanimi Eesnimi"
+
+#: 
+msgid "Holidays"
+msgstr "Pühad"
+
+#: 
+msgid "Person Name"
+msgstr "Isiku nimi"
+
+#: 
+msgid "Custom message for church greeter email 1, max 255 characters"
+msgstr "Kohandatud koguduse tervitav e-post aadressile 1, maksimaalselt 255 tähemärki"
+
+#: 
+msgid "Custom message for church greeter email 2, max 255 characters"
+msgstr "Kohandatud koguduse tervitav e-post aadressile 2, maksimaalselt 255 tähemärki"
+
+#: 
+msgid "Include contact and demographic data in new member email notification body"
+msgstr "Lisage kontaktandmed ja demograafilised andmed uue liikme e-posti teavituskehasse"
+
+#: 
+msgid "Include family custom properties in global search."
+msgstr "Lisage perekonna kohandatud omadused globaalsesse otsingusse."
+
+#: 
+msgid "Latvia (Latvija)"
+msgstr "Läti"
+
+#: 
+msgid "You are about to add a new deposit without a comment"
+msgstr "Kavatsete lisada uue tagatisraha ilma kommentaarita"
+
+#: 
+msgid "Families Without Emails"
+msgstr "Ilma e-kirjadeta pered"
+
+#: 
+msgid "Record"
+msgstr "Kirje"
+
+#: 
+msgid "Records"
+msgstr "Kirjed"
+
+#: 
+msgid "Emptied into Event ID"
+msgstr "Eemaldatud sündmuse ID-ks"
+
+#: 
+msgid "integrityCheck.json file missing"
+msgstr "terviklikkuse Cheek.jsoni fail puudub"
+
+#: 
+msgid "Passed"
+msgstr "Surnud"
+
+#: 
+msgid "PHP Max Execution Time is too Short"
+msgstr "PHP maksimaalne täitmisaeg on liiga lühike"
+
+#: 
+msgid "Increase the PHP execution time limit to allow for backup and restore."
+msgstr "Varundamise ja taastamise võimaldamiseks suurendage PHP täitmise tähtaega."
+
+#: 
+msgid "Application Integrity Check"
+msgstr "Rakenduse terviklikkuse kontroll"
+
+#: 
+msgid "Focus"
+msgstr "Fookus"
+
+#: 
+msgid "Unfocus"
+msgstr "Keskendumata"
+
+#: 
+msgid "Warning: Signature mismatch"
+msgstr "Hoiatus: allkirjade sobimatus"
+
+#: 
+msgid "Some ChurchCRM system files may have been modified since the last installation."
+msgstr "Mõnda ChurchCRM-i süsteemi faili võidi pärast viimast installimist muuta."
+
+#: 
+msgid "This upgrade will completely destroy any customizations made to the following files by reverting the files to the official version."
+msgstr "See versiooniuuendus hävitab täielikult kõigi järgmiste failide kohandamised, taastades need ametlikule versioonile."
+
+#: 
+msgid "If you wish to maintain your changes to these files, please take a manual backup of these files before proceeding with this upgrade, and then manually restore the files after the upgrade is complete."
+msgstr "Kui soovite säilitada nende failide muudatused, võtke enne nende versiooniuuendustega jätkamist nendest failidest käsitsi varukoopia ja taastage failid käsitsi pärast täiendamise lõppu käsitsi."
+
+#: 
+msgid "Integrity Check Details:"
+msgstr "Terviklikkuse kontrollimise üksikasjad:"
+
+#: 
+msgid "I Understand"
+msgstr "Ma saan aru"
+
+#: 
+msgid "Unsupported Deposit Types Detected"
+msgstr "Tuvastatud toetamata hoiuse tüübid"
+
+#: 
+msgid "Support for eGive, Credit Card, and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions."
+msgstr "EGive'i, krediitkaardi- ja pangaveebimaksete tugi on aegunud. Olemasolevatele pangavälistele aruannetele ei pruugi tulevastes versioonides enam juurdepääs olla."
+
+#: 
+msgid "Unsupported Stored Payment Data Detected"
+msgstr "Tuvastatud toetamata salvestatud makseandmed"
+
+#: 
+msgid "Support for stored payment data has been removed. This data will soon be removed from your database"
+msgstr "Salvestatud makseandmete tugi on eemaldatud. Need andmed eemaldatakse peagi teie andmebaasist"
+
+#: 
+msgid "Estonian"
+msgstr "Eesti"
+
+#: 
+msgid "Error decoding integrity check result file"
+msgstr "Viga terviklikkuse kontrollimise tulemuse faili dekodeerimisel"
+
+#: 
+msgid "Error decoding signature definition file"
+msgstr "Viga allkirja määratlusfaili dekodeerimisel"
+
+#: 
+msgid "Generate Backup"
+msgstr "Genereerige varundus"
+
+#: 
+msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
+msgstr "Kaugvarunduse lõpp-punkt. Kui WebDAV, tuleb see URL kodeerida."
+
+#: 
+msgid "Include initials image files, remote image files (gravatar), and thumbnails in backup.  These files are generally able to be reproduced after a restore and add very little value to the backup archive at a large expense of execution time and storage"
+msgstr "Lisage varukoopiasse initsiaalide pildifailid, kaugpildifailid (gravatar) ja pisipildid. Neid faile on pärast taastamist üldjuhul võimalik reprodutseerida ja need annavad varunduse arhiivile väga vähe lisaväärtust, kulutades märkimisväärselt täitmisaega ja salvestusruumi"
+
+#: 
+msgid "Password (if any)"
+msgstr "Parool (kui on)"
+
+#: 
+msgid "All information on this page is correct."
+msgstr "Kogu teave sellel lehel on õige."
+
+#: 
+msgid "Please update the my family information with the following"
+msgstr "Palun värskendage minu perekonna teavet järgmiselt"
+
+#: 
+msgid "Age Histogram"
+msgstr "Vanuse histogramm"
+
+#: 
+msgid "Missing event id"
+msgstr "Puudub sündmuse ID"
+
+#: 
+msgid "Event not found"
+msgstr "Sündmust ei leitud"
+
+#: 
+msgid "Session timeout length in seconds\n"
+"Set to zero to disable session timeouts."
+msgstr "Seansi ajalõpu pikkus sekundites\n"
+"Seansi ajalõpu keelamiseks seadke null."
+
+#: 
+msgid "Minimum amount that a new password must differ from the old one (# of characters changed)\n"
+"Set to zero to disable this feature"
+msgstr "Minimaalne summa, mis uus parool peab vanast erinema (tähemärkide arvu muudetud)\n"
+"Selle funktsiooni keelamiseks seadke null"
+
+#: 
+msgid "Maximum number of failed logins to allow before a user account is locked.\n"
+"Once the maximum has been reached, an administrator must re-enable the account.\n"
+"This feature helps to protect against automated password guessing attacks.\n"
+"Set to zero to disable this feature."
+msgstr "Maksimaalne ebaõnnestunud sisselogimiste arv enne kasutajakonto lukustamist.\n"
+"Kui maksimum on saavutatud, peab administraator konto uuesti lubama.\n"
+"See funktsioon aitab kaitsta paroolide automatiseeritud äraarvamise rünnakute eest.\n"
+"Selle funktsiooni keelamiseks seadke null."
+
+#: 
+msgid "PDF handling mode.\n"
+"1 = Save File dialog\n"
+"2 = Open in current browser window"
+msgstr "PDF-i käitlemisrežiim.\n"
+"1 = dialoogiboks Salvesta fail\n"
+"2 = Ava praeguses brauseriaknas"
+
+#: 
+msgid "Unavailable person info inherited from assigned family for display?\n"
+"This option causes certain info from a person's assigned family record to be\n"
+"displayed IF the corresponding info has NOT been entered for that person. "
+msgstr "Määratud perekonna kuvamise kohta pole saadaval teavet?\n"
+"See valik põhjustab teatud teabe isiku määratud perekonnakirjest\n"
+"kuvatakse, kui vastavat teavet EI ole selle inimese kohta sisestatud."
+
+#: 
+msgid "Press CTRL + C to copy all group members\\' phone numbers"
+msgstr "Kõigi grupiliikmete telefoninumbrite kopeerimiseks vajutage CTRL + C"
+
+#: 
+msgid "Verify People"
+msgstr "Kinnitage inimesi"
+
+#: 
+msgid "People Verify Dashboard"
+msgstr "Inimesed kontrollivad juhtpaneeli"
+
+#: 
+msgid "Download family letters"
+msgstr "Laadige alla perekonna tähed"
+
+#: 
+msgid "Send family email"
+msgstr "Saada perekonna e-kiri"
+
+#: 
+msgid "Verification recorded"
+msgstr "Kontroll registreeriti"
+
+#: 
+msgid "Verification URL created"
+msgstr "Kinnitus URL on loodud"
+
+#: 
+msgid "URL"
+msgstr "URL"
+
+#: 
+msgid "PDF"
+msgstr "PDF"
+
+#: 
+msgid "Error sending email(s)"
+msgstr "Viga e-kirjade saatmisel"
+
+#: 
+msgid "Please check logs for more information"
+msgstr "Lisateabe saamiseks kontrollige logisid"
+
+#: 
+msgid "Verification URL"
+msgstr "Kinnituse URL"
+
+#: 
+msgid "Reset System"
+msgstr "Lähtesta süsteem"
+
+#: 
+msgid "Unexpected Person Id"
+msgstr "Ootamatu inimese ID"
+
+#: 
+msgid "Interval in Hours for software update check"
+msgstr "Tarkvara värskenduse kontrollimise intervall tundides"
+
+#: 
+msgid "Last Software Update Check Timestamp"
+msgstr "Viimane tarkvaravärskendus Kontrolli ajatemplit"
+
+#: 
+msgid "Allow system upgrades to release marked as 'pre release' on GitHub"
+msgstr "Luba süsteemiuuendustel GitHubis vabastada kui eelväljalase"
+
+#: 
+msgid "Search Calendar Events"
+msgstr "Otsi kalendrisündmusi"
+
+#: 
+msgid "Maximum number of Calendar Events"
+msgstr "Kalendrisündmuste maksimaalne arv"
+
+#: 
+msgid "%d month old"
+msgid_plural "%d months old"
+msgstr[0] "% kuune"
+msgstr[1] "Mitmuses:%  kuud vana"
+
+#: 
+msgid "%d year old"
+msgid_plural "%d years old"
+msgstr[0] "% aastane"
+msgstr[1] "Mitmuses:% t aastat vana"
+
+#: 
+msgid "Database upgrade failed"
+msgstr "Andmebaasi uuendamine nurjus"
+
+#: 
+msgid "Unsupported PHP Version"
+msgstr "Toetamata PHP versioon"
+
+#: 
+msgid "Support for this PHP version will soon be removed.  Current PHP Version: "
+msgstr "Selle PHP versiooni tugi eemaldatakse peagi. Praegune PHP versioon:"
+
+#: 
+msgid "Missing PHP ZipArchive"
+msgstr "Puudub PHP Zip Arhiiv"
+
+#: 
+msgid "PHP ZipArchive required to support upgrade"
+msgstr "Uuendamise toetamiseks on vaja PHP ZipArhiiv'i"
+
+#: 
+msgid "See all People"
+msgstr "Vaadake kõiki inimesi"
+
+#: 
+msgid "Add Results to Cart"
+msgstr "Lisage tulemused korvi"
+
+#: 
+msgid "Remove Results from Cart"
+msgstr "Eemalda tulemused korvist"
+
+#: 
+msgid "Warning: Pre-Upgrade Tasks Detected"
+msgstr "Hoiatus: tuvastatud on täiendamiseelsed ülesanded"
+
+#: 
+msgid "Some conditions have been identified wich may prevent a successful upgrade"
+msgstr "On kindlaks tehtud mõned tingimused, mis võivad takistada edukat täiendamist"
+
+#: 
+msgid "Please review and mitigate these tasks before continuing with the upgrade:"
+msgstr "Enne täiendamise jätkamist vaadake need ülesanded üle ja täiendage neid:"
+
+#: 
+msgid "Database Reset Functions"
+msgstr "Andmebaasi lähtestamise funktsioonid"
+
+#: 
+msgid "Reset Members"
+msgstr "Lähtesta liikmed"
+
+#: 
+msgid "This will remove all the member data, people, and families and can't be undone."
+msgstr "See eemaldab kõik liikmete andmed, inimesed ja perekonnad ning seda ei saa tagasi võtta."
+
+#: 
+msgid "Reset Families/People"
+msgstr "Lähtestage pered / inimesed"
+
+#: 
+msgid "Reset Database"
+msgstr "Lähtesta andmebaas"
+
+#: 
+msgid "This will reset the system data and will restart the system as a new install."
+msgstr "See lähtestab süsteemi andmed ja taaskäivitab süsteemi uue installina."
+
+#: 
+msgid "Clear Filter"
+msgstr "Kustuta filter"
+
+#: 
+msgid "Add Person"
+msgstr "Lisage inimene"
+
+#: 
+msgid "Portuguese - Portugal"
+msgstr "Portugali keel - Portugal"
+
+#. need contect, can be püha, vaba päev, puhkus
+#: 
+msgid "Holiday"
+msgstr "Püha"
+
+#: 
+msgid "Allow users to self-enroll in 2 factor authentication"
+msgstr "Luba kasutajatel registreeruda kahefaktorilises autentimises"
+
+#: 
+msgid "Requires users to self-enroll in 2 factor authentication"
+msgstr "Nõuab, et kasutajad registreeruksid ise kahefaktorilises autentimises"
+
+#: 
+msgid "ChurchCRM"
+msgstr "ChurchCRM"
+
+#: 
+msgid "Specify the application name to be displayed in authenticator app"
+msgstr "Määrake autentimisrakenduses kuvatav rakenduse nimi"
+
+#: 
+msgid "Secret Keys missing from Config.php"
+msgstr "Salajased võtmed puuduvad Config.php-st"
+
+#: 
+msgid "Review"
+msgstr "Ülevaade"
+
+#: 
+msgid "Thank you for registering your family"
+msgstr "Täname et lisasite oma pere"
+
+#: 
+msgid "Register another family!"
+msgstr "Lisa teine pere!"
+
+#: 
+msgid "Done, show me the homepage!"
+msgstr "Valmis, näita mulle kodulehte!"
+
+#: 
+msgid "User authenticated via API Key: "
+msgstr "Kasutaja autentimine API-võtme kaudu:"
+
+#: 
+msgid "Unsuccessful API Key authentication attempt"
+msgstr "Ebaõnnestunud API võtme autentimiskatse"
+
+#: 
+msgid "Unpinned Events"
+msgstr "Ühendamata sündmused"
+
+#: 
+msgid "LastName, FirstName MiddleName"
+msgstr "Perekonnanimi, eesnimi keskminenimi"
+
+#: 
+msgid "Manage 2 Factor Authentication"
+msgstr "Halda kahefaktorilist autentimist"
+
+#: 
+msgid "Two Factor Status"
+msgstr "Kahe faktori staatus"
+
+#: 
+msgid "Please confirm disabling 2 Factor Auth for this user"
+msgstr "Palun kinnitage, et keelataa selle kasutaja 2 Faktori Autoriseerimine"
+
+#: 
+msgid "Please enter 2FA code"
+msgstr "Sisestage 2FA-kood"
+
+#: 
+msgid "2FA Code"
+msgstr "2FA kood"
+
+#: 
+msgid "2 Factor Authentication enrollment"
+msgstr "2 Faktoriga autentimise registreerimine"
+
+#: 
+msgid "Unsupported Two Factor Authentication Configuration"
+msgstr "Toetamata kahefaktorilise autentimise konfiguratsioon"
+
+#: 
+msgid "Unable To Begin Two Factor Authentication Enrollment"
+msgstr "Kahe teguri autentimise registreerimist ei saa alustada"
+
+#: 
+msgid "Two factor authentication requires ChurchCRM administrators to configure a few parameters"
+msgstr "Kahefaktoriline autentimine nõuab ChurchCRM-i administraatoritelt mõne parameetri konfigureerimist"
+
+#: 
+msgid "System configuration "
+msgstr "Süsteemi konfiguratsioon"
+
+#: 
+msgid "Must be set to 'true'"
+msgstr "Peab olema seatud väärtusele „tõene”"
+
+#: 
+msgid "Include/Config.php must define an encryption key for storing 2FA secret keys in the database by setting a value for"
+msgstr "Include / Config.php peab määratlema krüpteerimisvõtme 2FA salajaste võtmete hoidmiseks andmebaasis, määrates väärtuse"
+
+#: 
+msgid "Credit Card People"
+msgstr "Krediitkaardiga inimesed"
+
+#: 
+msgid "People who are configured to pay by credit card."
+msgstr "Inimesed, kes on seadistatud maksma krediitkaardiga."
+
+#: 
+msgid "Google Maps API Key used for Geocoding addresses"
+msgstr "Aadresside geokoodeerimiseks kasutatav Google Mapsi API-võti"
+
+#: 
+msgid "Send an email notifying users when their account has been deleted"
+msgstr "Saatke meilisõnum kasutajatele, kui nende konto on kustutatud"
+
+#: 
+msgid "Google Maps API Key used for rendering maps in browser"
+msgstr "Google Mapsi API-võti, mida kasutatakse kaartide sirvimiseks brauseris"
+
+#: 
+msgid "Incorrect password supplied for current user"
+msgstr "Praeguse kasutaja jaoks on sisestatud vale parool"
+
+#: 
+msgid "Your new password must not match your old one."
+msgstr "Teie uus parool ei tohi ühtida vanaga."
+
+#: 
+msgid "Your new password is too similar to your old one."
+msgstr "Teie uus parool on liiga sarnane vanaga."
+
+#: 
+msgid "Password reset not availble.  Please contact your system administrator"
+msgstr "Parooli lähtestamine pole saadaval. Palun pöörduge oma süsteemi administraatori poole"
+
+#: 
+msgid "Authentication Issue"
+msgstr "Autentimise probleem"
+
+#: 
+msgid "Enter new user password. Administratively set passwords are not subject to length or complexity requirements"
+msgstr "Sisestage uus kasutaja parool. Administratiivselt määratud paroolidele ei kehti pikkuse ega keerukuse nõuded"
 
