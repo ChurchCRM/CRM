@@ -11,6 +11,7 @@ use PHPMailer\PHPMailer\Exception;
 class MailChimpService
 {
     private $hasKey = false;
+    private $isActive = false;
     private $myMailchimp;
 
     public function __construct()
@@ -23,9 +24,13 @@ class MailChimpService
 
     public function isActive()
     {
+        if ($this->isActive) {
+            return true;
+        }
         if ($this->hasKey) {
             $rootAPI = $this->myMailchimp->get("");
             if ( $rootAPI["total_subscribers"] > 0 ) {
+                $this->isActive = true;
                 return true;
             }
         }
