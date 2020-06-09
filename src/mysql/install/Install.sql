@@ -31,8 +31,7 @@ CREATE TABLE `canvassdata_can` (
   `can_Suggestion` text,
   `can_NotInterested` tinyint(1) NOT NULL default '0',
   `can_WhyNotInterested` text,
-  PRIMARY KEY  (`can_ID`),
-  UNIQUE KEY `can_ID` (`can_ID`)
+  PRIMARY KEY  (`can_ID`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 --
@@ -53,8 +52,7 @@ CREATE TABLE `config_cfg` (
   `cfg_name` varchar(50) NOT NULL default '',
   `cfg_value` text,
   PRIMARY KEY  (`cfg_id`),
-  UNIQUE KEY `cfg_name` (`cfg_name`),
-  KEY `cfg_id` (`cfg_id`)
+  UNIQUE KEY `cfg_name` (`cfg_name`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
 --
@@ -87,8 +85,7 @@ CREATE TABLE `donationfund_fun` (
   `fun_Active` enum('true','false') NOT NULL default 'true',
   `fun_Name` varchar(30) default NULL,
   `fun_Description` varchar(100) default NULL,
-  PRIMARY KEY  (`fun_ID`),
-  UNIQUE KEY `fun_ID` (`fun_ID`)
+  PRIMARY KEY  (`fun_ID`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci  AUTO_INCREMENT=2 ;
 
 --
@@ -364,8 +361,7 @@ CREATE TABLE `family_fam` (
   `fam_Latitude` double default NULL,
   `fam_Longitude` double default NULL,
   `fam_Envelope` mediumint(9) NOT NULL default '0',
-  PRIMARY KEY  (`fam_ID`),
-  KEY `fam_ID` (`fam_ID`)
+  PRIMARY KEY  (`fam_ID`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 --
@@ -411,9 +407,7 @@ CREATE TABLE `group_grp` (
   `grp_hasSpecialProps` BOOLEAN NOT NULL default 0,
   `grp_active` BOOLEAN NOT NULL default 1,
   `grp_include_email_export` BOOLEAN NOT NULL default 1,
-  PRIMARY KEY  (`grp_ID`),
-  UNIQUE KEY `grp_ID` (`grp_ID`),
-  KEY `grp_ID_2` (`grp_ID`)
+  PRIMARY KEY  (`grp_ID`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 --
@@ -566,8 +560,7 @@ CREATE TABLE `person2volunteeropp_p2vo` (
   `p2vo_ID` mediumint(9) NOT NULL auto_increment,
   `p2vo_per_ID` mediumint(9) default NULL,
   `p2vo_vol_ID` mediumint(9) default NULL,
-  PRIMARY KEY  (`p2vo_ID`),
-  UNIQUE KEY `p2vo_ID` (`p2vo_ID`)
+  PRIMARY KEY  (`p2vo_ID`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 --
@@ -654,8 +647,7 @@ CREATE TABLE `person_per` (
   `per_FacebookID` bigint(20) unsigned default NULL,
   `per_Twitter` varchar(50) default NULL,
   `per_LinkedIn` varchar(50) default NULL,
-  PRIMARY KEY  (`per_ID`),
-  KEY `per_ID` (`per_ID`)
+  PRIMARY KEY  (`per_ID`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci  AUTO_INCREMENT=2 ;
 
 --
@@ -712,9 +704,7 @@ CREATE TABLE `propertytype_prt` (
   `prt_Class` varchar(10) NOT NULL default '',
   `prt_Name` varchar(50) NOT NULL default '',
   `prt_Description` text NOT NULL,
-  PRIMARY KEY  (`prt_ID`),
-  UNIQUE KEY `prt_ID` (`prt_ID`),
-  KEY `prt_ID_2` (`prt_ID`)
+  PRIMARY KEY  (`prt_ID`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci  AUTO_INCREMENT=4 ;
 
 --
@@ -739,9 +729,7 @@ CREATE TABLE `property_pro` (
   `pro_Name` varchar(200) NOT NULL default '0',
   `pro_Description` text NOT NULL,
   `pro_Prompt` varchar(255) default NULL,
-  PRIMARY KEY  (`pro_ID`),
-  UNIQUE KEY `pro_ID` (`pro_ID`),
-  KEY `pro_ID_2` (`pro_ID`)
+  PRIMARY KEY  (`pro_ID`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci  AUTO_INCREMENT=4 ;
 
 --
@@ -764,8 +752,7 @@ CREATE TABLE `queryparameteroptions_qpo` (
   `qpo_qrp_ID` mediumint(8) unsigned NOT NULL default '0',
   `qpo_Display` varchar(50) NOT NULL default '',
   `qpo_Value` varchar(255) NOT NULL default '',
-  PRIMARY KEY  (`qpo_ID`),
-  UNIQUE KEY `qpo_ID` (`qpo_ID`)
+  PRIMARY KEY  (`qpo_ID`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci  AUTO_INCREMENT=28 ;
 
 --
@@ -833,8 +820,6 @@ CREATE TABLE `queryparameters_qrp` (
   `qrp_AlphaMinLength` int(11) default NULL,
   `qrp_AlphaMaxLength` int(11) default NULL,
   PRIMARY KEY  (`qrp_ID`),
-  UNIQUE KEY `qrp_ID` (`qrp_ID`),
-  KEY `qrp_ID_2` (`qrp_ID`),
   KEY `qrp_qry_ID` (`qrp_qry_ID`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci  AUTO_INCREMENT=102 ;
 
@@ -886,9 +871,7 @@ CREATE TABLE `query_qry` (
   `qry_Name` varchar(255) NOT NULL default '',
   `qry_Description` text NOT NULL,
   `qry_Count` tinyint(1) unsigned NOT NULL default '0',
-  PRIMARY KEY  (`qry_ID`),
-  UNIQUE KEY `qry_ID` (`qry_ID`),
-  KEY `qry_ID_2` (`qry_ID`)
+  PRIMARY KEY  (`qry_ID`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci  AUTO_INCREMENT=101 ;
 
 --
@@ -1049,8 +1032,7 @@ CREATE TABLE `user_usr` (
   `usr_TwoFactorAuthRecoveryCodes` TEXT NULL,
   PRIMARY KEY  (`usr_per_ID`),
   UNIQUE KEY `usr_UserName` (`usr_UserName`),
-  UNIQUE KEY `usr_apiKey` (`usr_apiKey`),
-  KEY `usr_per_ID` (`usr_per_ID`)
+  UNIQUE KEY `usr_apiKey` (`usr_apiKey`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
 --
@@ -1081,8 +1063,7 @@ CREATE TABLE `volunteeropportunity_vol` (
   `vol_Active` enum('true','false') NOT NULL default 'true',
   `vol_Name` varchar(30) default NULL,
   `vol_Description` varchar(100) default NULL,
-  PRIMARY KEY  (`vol_ID`),
-  UNIQUE KEY `vol_ID` (`vol_ID`)
+  PRIMARY KEY  (`vol_ID`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 --
@@ -1115,8 +1096,7 @@ CREATE TABLE `paddlenum_pn` (
   `pn_fr_ID` mediumint(9) unsigned,
   `pn_Num` mediumint(9) unsigned,
   `pn_per_ID` mediumint(9) NOT NULL default '0',
-  PRIMARY KEY  (`pn_ID`),
-  UNIQUE KEY `pn_ID` (`pn_ID`)
+  PRIMARY KEY  (`pn_ID`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 CREATE TABLE `fundraiser_fr` (
@@ -1146,8 +1126,7 @@ CREATE TABLE `donateditem_di` (
   `di_EnteredBy` smallint(5) unsigned NOT NULL default '0',
   `di_EnteredDate` date NOT NULL,
   `di_picture` text,
-  PRIMARY KEY  (`di_ID`),
-  UNIQUE KEY `di_ID` (`di_ID`)
+  PRIMARY KEY  (`di_ID`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 CREATE TABLE `multibuy_mb` (
@@ -1155,8 +1134,7 @@ CREATE TABLE `multibuy_mb` (
   `mb_per_ID` mediumint(9) NOT NULL default '0',
   `mb_item_ID` mediumint(9) NOT NULL default '0',
   `mb_count` decimal(8,0) default NULL,
-  PRIMARY KEY  (`mb_ID`),
-  UNIQUE KEY `mb_ID` (`mb_ID`)
+  PRIMARY KEY  (`mb_ID`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 CREATE TABLE `egive_egv` (
@@ -1177,8 +1155,7 @@ CREATE TABLE `kioskdevice_kdev` (
   `kdev_Accepted` BOOLEAN,
   `kdev_PendingCommands` varchar(50),
 
-  PRIMARY KEY  (`kdev_ID`),
-  UNIQUE KEY `kdev_ID` (`kdev_ID`)
+  PRIMARY KEY  (`kdev_ID`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
 CREATE TABLE `kioskassginment_kasm` (
@@ -1203,7 +1180,7 @@ CREATE TABLE `tokens` (
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
 CREATE TABLE `locations` (
-  `location_id` INT NOT NULL,
+  `location_id` INT NOT NULL AUTO_INCREMENT,
   `location_typeId` INT NOT NULL,
   `location_name` VARCHAR(256) NOT NULL,
   `location_address` VARCHAR(45) NOT NULL,
