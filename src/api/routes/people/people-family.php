@@ -13,6 +13,7 @@ use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\FamilyQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
+use ChurchCRM\Service\MailChimpService;
 
 $app->group('/family/{familyId:[0-9]+}', function () {
     $this->get('/photo', function ($request, $response, $args) {
@@ -104,6 +105,17 @@ $app->group('/family/{familyId:[0-9]+}', function () {
         return $response->withJSON(["message" => "Success"]);
     });
 
+    $this->get('/mailchimp', function ($request, $response, $args) {
+        $family = $request->getAttribute("family");
+        $service = new MailChimpService();
+        $emailToLists = [];
+        if (!empty($family->getEmail())) {
+            array_push($emailToLists, ["email" => $family->getEmail(), "emailMD5" => md5($family->getEmail()),
+                "list" => $service->isEmailInMailChimp($family->getEmail())]);
+        }
+
+        return $response->withJson($emailToLists);
+    });
 
 })->add(new FamilyAPIMiddleware());
 
