@@ -34,9 +34,14 @@ class MailChimpService
             $lists = $this->myMailchimp->get("lists")['lists'];
             LoggerUtils::getAppLogger()->debug("MailChimp list enumeration took: " . $time->getMiliseconds() . " ms.  Found " . count($lists) . " lists");
             foreach ($lists as &$list) {
-                $listmembers = $this->myMailchimp->get('lists/' . $list['id'] . '/members', ['count' => $list['stats']["member_count"]]);
+                $listmembers = $this->myMailchimp->get('lists/' . $list['id'] . '/members',
+                    [
+                        'count' => $list['stats']["member_count"],
+                        "fields" => "members.email_address",
+                        "status" => "subscribed"
+                    ]);
                 $list['members'] = $listmembers['members'];
-                LoggerUtils::getAppLogger()->debug("MailChimp list ". $list['id'] . " membership ". count($list['members'] ) . "update took: " . $time->getMiliseconds() . " ms");
+                LoggerUtils::getAppLogger()->debug("MailChimp list ". $list['id'] . " membership ". count($list['members']));
 
             }
             LoggerUtils::getAppLogger()->debug("MailChimp list and membership update took: " . $time->getMiliseconds() . " ms");
