@@ -231,7 +231,7 @@ $(document).ready(function () {
     $.ajax({
         type: 'GET',
         dataType: 'json',
-        url: window.CRM.root + '/api/family/' + window.CRM.currentFamily + '/mailchimp',
+        url: window.CRM.root + '/api/mailchimp/family/' + window.CRM.currentFamily,
         success: function (data, status, xmlHttpReq) {
             for (emailData of data) {
                 let htmlVal = "";

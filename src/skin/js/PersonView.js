@@ -170,7 +170,7 @@ $(document).ready(function () {
    $.ajax({
        type: 'GET',
        dataType: 'json',
-       url: window.CRM.root + '/api/person/' + window.CRM.currentPersonID + '/mailchimp',
+       url: window.CRM.root + '/api/mailchimp/person/' + window.CRM.currentPersonID,
        success: function (data, status, xmlHttpReq) {
            for (emailData of data) {
                let htmlVal = "";
