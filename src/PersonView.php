@@ -306,11 +306,7 @@ $bOkToEdit = (AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled() ||
     if ($sEmail != '') {
         ?>
             <li><i class="fa-li fa fa-envelope"></i><?= gettext('Email') ?>: <span><a href="mailto:<?= $sUnformattedEmail ?>"><?= $sEmail ?></a></span></li>
-            <?php if ($mailchimp->isActive()) {
-            ?>
-              <li><i class="fa-li fa fa-send"></i>MailChimp: <span><?= $mailchimp->isEmailInMailChimp($sEmail); ?></span></li>
             <?php
-        }
     }
     if ($sWorkPhone) {
         ?>
@@ -320,11 +316,7 @@ $bOkToEdit = (AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled() ||
           <?php if ($per_WorkEmail != '') {
         ?>
             <li><i class="fa-li fa fa-envelope"></i><?= gettext('Work/Other Email') ?>: <span><a href="mailto:<?= $per_WorkEmail ?>"><?= $per_WorkEmail ?></a></span></li>
-            <?php if ($mailchimp->isActive()) {
-            ?>
-              <li><i class="fa-li fa fa-send"></i>MailChimp: <span><?= $mailchimp->isEmailInMailChimp($per_WorkEmail); ?></span></li>
               <?php
-        }
     }
 
     if ($per_FacebookID > 0) {
@@ -428,6 +420,9 @@ $bOkToEdit = (AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled() ||
             <ul class="nav nav-tabs" role="tablist">
                 <li role="presentation" class="active"><a href="#timeline" aria-controls="timeline" role="tab" data-toggle="tab"><?= gettext('Timeline') ?></a></li>
                 <li role="presentation"><a href="#family" aria-controls="family" role="tab" data-toggle="tab"><?= gettext('Family') ?></a></li>
+                <?php if ($mailchimp->isActive()) { ?>
+                <li role="presentation"><a href="#mailchimp" aria-controls="mailchimp" role="tab" data-toggle="tab" id="mailchimptab"><?= gettext('Mailchimp') ?></a></li>
+                <?php } ?>
                 <li role="presentation"><a href="#groups" aria-controls="groups" role="tab" data-toggle="tab"><?= gettext('Assigned Groups') ?></a></li>
                 <li role="presentation"><a href="#properties" aria-controls="properties" role="tab" data-toggle="tab"><?= gettext('Assigned Properties') ?></a></li>
                 <li role="presentation"><a href="#volunteer" aria-controls="volunteer" role="tab" data-toggle="tab"><?= gettext('Volunteer Opportunities') ?></a></li>
@@ -577,6 +572,25 @@ $bOkToEdit = (AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled() ||
           </table>
                           <?php
                       } ?>
+                </div>
+                <div role="tab-pane fade" class="tab-pane" id="mailchimp">
+                    <table class="table">
+                       <tr>
+                           <th>Type</th>
+                           <th>Email</th>
+                           <th>Lists</th>
+                       </tr>
+                        <tr>
+                            <td>Home</td>
+                            <td><?= $person->getEmail() ?></td>
+                            <td id="<?= md5($person->getEmail())?>"></td>
+                        </tr>
+                        <tr>
+                            <td>Work</td>
+                            <td><?= $person->getWorkEmail() ?></td>
+                            <td id="<?=md5($person->getWorkEmail())?>"></td>
+                        </tr>
+                    </table>
                 </div>
                 <div role="tab-pane fade" class="tab-pane" id="groups">
                     <div class="main-box clearfix">
