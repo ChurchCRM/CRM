@@ -183,6 +183,9 @@ $(document).ready(function () {
                        htmlVal = htmlVal + '<li>' + listName + " (" + listStatus + ") - " + listOpenRate + "% "+  i18next.t("open rate") + " </li>";
                    }
                }
+               if (htmlVal === "") {
+                   htmlVal = i18next.t("Not Subscribed ");
+               }
                $('#'+ eamilMD5).html(htmlVal);
            }
        }
