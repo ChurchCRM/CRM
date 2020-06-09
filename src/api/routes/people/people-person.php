@@ -4,6 +4,7 @@ use ChurchCRM\dto\Cart;
 use ChurchCRM\dto\Photo;
 use ChurchCRM\ListOptionQuery;
 use ChurchCRM\Slim\Middleware\Request\PersonAPIMiddleware;
+use ChurchCRM\Slim\Middleware\MailChimpMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\DeleteRecordRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\EditRecordsRoleAuthMiddleware;
 use ChurchCRM\Utils\MiscUtils;
@@ -64,18 +65,18 @@ $app->group('/person/{personId:[0-9]+}', function () {
 
     $this->get('/mailchimp', function ($request, $response, $args) {
         $person = $request->getAttribute("person");
-        $service = new MailChimpService();
+        $mailchimpService = $request->getAttribute("mailchimpService");
         $emailToLists = [];
         if (!empty($person->getEmail())) {
             array_push($emailToLists, ["email" => $person->getEmail(), "emailMD5" => md5($person->getEmail()),
-                "list" => $service->isEmailInMailChimp($person->getEmail())]);
+                "list" => $mailchimpService->isEmailInMailChimp($person->getEmail())]);
         }
         if (!empty($person->getWorkEmail())) {
             array_push($emailToLists, ["email" => $person->getWorkEmail(), "emailMD5" => md5($person->getWorkEmail()),
-                "list" => $service->isEmailInMailChimp($person->getWorkEmail())]);
+                "list" => $mailchimpService->isEmailInMailChimp($person->getWorkEmail())]);
         }
         return $response->withJson($emailToLists);
-    });
+    })->add(new MailChimpMiddleware());
 
 })->add(new PersonAPIMiddleware());
 

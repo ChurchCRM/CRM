@@ -1,6 +1,7 @@
 <?php
 
 use ChurchCRM\Slim\Middleware\Request\FamilyAPIMiddleware;
+use ChurchCRM\Slim\Middleware\MailChimpMiddleware;
 use ChurchCRM\Utils\GeoUtils;
 use ChurchCRM\Utils\MiscUtils;
 use ChurchCRM\dto\Photo;
@@ -107,15 +108,15 @@ $app->group('/family/{familyId:[0-9]+}', function () {
 
     $this->get('/mailchimp', function ($request, $response, $args) {
         $family = $request->getAttribute("family");
-        $service = new MailChimpService();
+        $mailchimpService = $request->getAttribute("mailchimpService");
         $emailToLists = [];
         if (!empty($family->getEmail())) {
             array_push($emailToLists, ["email" => $family->getEmail(), "emailMD5" => md5($family->getEmail()),
-                "list" => $service->isEmailInMailChimp($family->getEmail())]);
+                "list" => $mailchimpService->isEmailInMailChimp($family->getEmail())]);
         }
 
         return $response->withJson($emailToLists);
-    });
+    })->add(new MailChimpMiddleware());
 
 })->add(new FamilyAPIMiddleware());
 
