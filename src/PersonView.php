@@ -576,20 +576,22 @@ $bOkToEdit = (AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled() ||
                 <div role="tab-pane fade" class="tab-pane" id="mailchimp">
                     <table class="table">
                        <tr>
-                           <th>Type</th>
-                           <th>Email</th>
-                           <th>Lists</th>
+                           <th><?= gettext("Type")?></th>
+                           <th><?= gettext("Email")?></th>
+                           <th><?= gettext("Lists")?></th>
                        </tr>
                         <tr>
                             <td>Home</td>
                             <td><?= $person->getEmail() ?></td>
-                            <td id="<?= md5($person->getEmail())?>"></td>
+                            <td id="<?= md5($person->getEmail())?>"> ... <?= gettext("loading")?> ... </td>
                         </tr>
+                        <?php if (!empty($person->getWorkEmail())) { ?>
                         <tr>
                             <td>Work</td>
                             <td><?= $person->getWorkEmail() ?></td>
-                            <td id="<?=md5($person->getWorkEmail())?>"></td>
+                            <td id="<?=md5($person->getWorkEmail())?>"> ... <?= gettext("loading")?> ... </td>
                         </tr>
+                        <?php } ?>
                     </table>
                 </div>
                 <div role="tab-pane fade" class="tab-pane" id="groups">
