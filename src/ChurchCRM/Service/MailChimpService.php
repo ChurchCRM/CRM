@@ -10,20 +10,26 @@ use PHPMailer\PHPMailer\Exception;
 
 class MailChimpService
 {
-    private $isActive = false;
+    private $hasKey = false;
     private $myMailchimp;
 
     public function __construct()
     {
         if (!empty(SystemConfig::getValue('sMailChimpApiKey'))) {
-            $this->isActive = true;
+            $this->hasKey = true;
             $this->myMailchimp = new MailChimp(SystemConfig::getValue('sMailChimpApiKey'));
         }
     }
 
     public function isActive()
     {
-        return $this->isActive;
+        if ($this->hasKey) {
+            $rootAPI = $this->myMailchimp->get("");
+            if ( $rootAPI["total_subscribers"] > 0 ) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private function getListsFromCache()
@@ -34,13 +40,16 @@ class MailChimpService
             $lists = $this->myMailchimp->get("lists")['lists'];
             LoggerUtils::getAppLogger()->debug("MailChimp list enumeration took: " . $time->getMiliseconds() . " ms.  Found " . count($lists) . " lists");
             foreach ($lists as &$list) {
+                $list['members'] = [];
                 $listmembers = $this->myMailchimp->get('lists/' . $list['id'] . '/members',
                     [
                         'count' => $list['stats']["member_count"],
                         "fields" => "members.email_address",
                         "status" => "subscribed"
                     ]);
-                $list['members'] = $listmembers['members'];
+                foreach ($listmembers['members'] as $member) {
+                    array_push($list['members'], strtolower($member["email_address"]));
+                }
                 LoggerUtils::getAppLogger()->debug("MailChimp list ". $list['id'] . " membership ". count($list['members']));
 
             }
@@ -58,7 +67,7 @@ class MailChimpService
             return new Exception(gettext('No email passed in'));
         }
 
-        if (!$this->isActive) {
+        if (!$this->hasKey) {
             return new Exception(gettext('Mailchimp is not active'));
         }
 
@@ -74,9 +83,19 @@ class MailChimpService
 
     public function getLists()
     {
-        if (!$this->isActive) {
+        if (!$this->hasKey) {
             return new Exception(gettext('Mailchimp is not active'));
         }
         return $this->getListsFromCache();
+    }
+
+    public function getListMembers($listId) {
+        $mailchimpLists = $this->getLists();
+        foreach ($mailchimpLists as $mailchimpList) {
+            if ($listId == $mailchimpList["id"]) {
+                LoggerUtils::getAppLogger()->debug("MailChimp list ". $listId . " has ". count($mailchimpList["members"]) . " members");
+                return $mailchimpList["members"];
+            }
+        }
     }
 }
