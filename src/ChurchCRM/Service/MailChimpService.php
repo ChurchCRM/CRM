@@ -67,7 +67,7 @@ class MailChimpService
             return new Exception(gettext('No email passed in'));
         }
 
-        if (!$this->hasKey) {
+        if (!$this->isActive()) {
             return new Exception(gettext('Mailchimp is not active'));
         }
 
@@ -83,7 +83,7 @@ class MailChimpService
 
     public function getLists()
     {
-        if (!$this->hasKey) {
+        if (!$this->isActive()) {
             return new Exception(gettext('Mailchimp is not active'));
         }
         return $this->getListsFromCache();
