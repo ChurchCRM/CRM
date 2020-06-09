@@ -4,6 +4,7 @@
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\Classification;
+use ChurchCRM\Service\MailChimpService;
 use ChurchCRM\Authentication\AuthenticationManager;
 
 //Set the page title
@@ -12,6 +13,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 $curYear = (new DateTime)->format("Y");
 $familyAddress = $family->getAddress();
+$mailchimp = new MailChimpService();
 ?>
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
@@ -186,13 +188,10 @@ $familyAddress = $family->getAddress();
                                 <li><i class="fa-li fa fa-envelope"></i><?= gettext("Email") ?>:<a
                                         href="mailto:<?= $family->getEmail() ?>">
                                         <span><?= $family->getEmail() ?></span></a></li>
-                                <?php /**if ($mailchimp->isActive()) {
-                                 * ?>
-                                 * <li><i class="fa-li fa fa-send"></i><?= gettext("Email") ?>:
-                                 * <span><?= $mailchimp->isEmailInMailChimp($family->getEmail()) ?></span>
-                                 * </a></li>
-                                 * <?php
-                                 * }*/
+                                <?php if ($mailchimp->isActive()) { ?>
+                                 <li><i class="fa-li fa fa-send"></i><?= gettext("Mailchimp") ?>:
+                                 <span id="<?= md5($family->getEmail())?>">... <?= gettext("loading")?> ...</span></a></li>
+                                <?php }
                             }
                             foreach ($familyCustom as $customField) {
                                 echo '<li><i class="fa-li ' . $customField->getIcon() . '"></i>'. $customField->getDisplayValue().': <span>';
