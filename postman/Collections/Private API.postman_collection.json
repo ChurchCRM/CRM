@@ -422,13 +422,14 @@
 							}
 						],
 						"url": {
-							"raw": "{{host}}/api/mailchimp/c84848f505/missing",
+							"raw": "{{host}}/api/mailchimp/list/c84848f505/missing",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"api",
 								"mailchimp",
+								"list",
 								"c84848f505",
 								"missing"
 							]
@@ -537,13 +538,14 @@
 							}
 						],
 						"url": {
-							"raw": "{{host}}/api/mailchimp/c84848f505/not-subscribed",
+							"raw": "{{host}}/api/mailchimp/list/c84848f505/not-subscribed",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
 								"api",
 								"mailchimp",
+								"list",
 								"c84848f505",
 								"not-subscribed"
 							]

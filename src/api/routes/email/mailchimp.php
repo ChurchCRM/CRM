@@ -10,8 +10,8 @@ use Slim\Http\Request;
 use Slim\Http\Response;
 
 $app->group('/mailchimp/', function () {
-    $this->get('{id}/missing', 'getMailchimpEmailNotInCRM');
-    $this->get('{id}/not-subscribed', 'getMailChimpMissingSubscribed');
+    $this->get('list/{id}/missing', 'getMailchimpEmailNotInCRM');
+    $this->get('list/{id}/not-subscribed', 'getMailChimpMissingSubscribed');
     $this->get('person/{personId}', 'getPersonStatus')->add(new PersonAPIMiddleware());
     $this->get('family/{familyId}', 'getFamilyStatus')->add(new FamilyAPIMiddleware());
 })->add(new MailChimpMiddleware());
