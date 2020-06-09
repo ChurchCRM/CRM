@@ -106,17 +106,5 @@ $app->group('/family/{familyId:[0-9]+}', function () {
         return $response->withJSON(["message" => "Success"]);
     });
 
-    $this->get('/mailchimp', function ($request, $response, $args) {
-        $family = $request->getAttribute("family");
-        $mailchimpService = $request->getAttribute("mailchimpService");
-        $emailToLists = [];
-        if (!empty($family->getEmail())) {
-            array_push($emailToLists, ["email" => $family->getEmail(), "emailMD5" => md5($family->getEmail()),
-                "list" => $mailchimpService->isEmailInMailChimp($family->getEmail())]);
-        }
-
-        return $response->withJson($emailToLists);
-    })->add(new MailChimpMiddleware());
-
 })->add(new FamilyAPIMiddleware());
 

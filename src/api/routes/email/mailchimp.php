@@ -3,6 +3,8 @@
 use ChurchCRM\PersonQuery;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Slim\Middleware\MailChimpMiddleware;
+use ChurchCRM\Slim\Middleware\Request\PersonAPIMiddleware;
+use ChurchCRM\Slim\Middleware\Request\FamilyAPIMiddleware;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Slim\Http\Request;
 use Slim\Http\Response;
@@ -10,7 +12,8 @@ use Slim\Http\Response;
 $app->group('/mailchimp/', function () {
     $this->get('{id}/missing', 'getMailchimpEmailNotInCRM');
     $this->get('{id}/not-subscribed', 'getMailChimpMissingSubscribed');
-
+    $this->get('person/{personId}', 'getPersonStatus')->add(new PersonAPIMiddleware());
+    $this->get('family/{familyId}', 'getFamilyStatus')->add(new FamilyAPIMiddleware());
 })->add(new MailChimpMiddleware());
 
 function getMailchimpEmailNotInCRM(Request $request, Response $response, array $args) {
@@ -86,4 +89,30 @@ function getMailChimpMissingSubscribed(Request $request, Response $response, arr
     LoggerUtils::getAppLogger()->debug("MailChimp list ". $listId . " now has ". count($mailchimpListMembers) . " members");
 
     return $response->withJson($personsNotInMailchimp);
+}
+
+function getFamilyStatus(Request $request, Response $response, array $args) {
+        $family = $request->getAttribute("family");
+        $mailchimpService = $request->getAttribute("mailchimpService");
+        $emailToLists = [];
+        if (!empty($family->getEmail())) {
+            array_push($emailToLists, ["email" => $family->getEmail(), "emailMD5" => md5($family->getEmail()),
+                "list" => $mailchimpService->isEmailInMailChimp($family->getEmail())]);
+        }
+        return $response->withJson($emailToLists);
+}
+
+function getPersonStatus(Request $request, Response $response, array $args) {
+    $person = $request->getAttribute("person");
+    $mailchimpService = $request->getAttribute("mailchimpService");
+    $emailToLists = [];
+    if (!empty($person->getEmail())) {
+        array_push($emailToLists, ["email" => $person->getEmail(), "emailMD5" => md5($person->getEmail()),
+            "list" => $mailchimpService->isEmailInMailChimp($person->getEmail())]);
+    }
+    if (!empty($person->getWorkEmail())) {
+        array_push($emailToLists, ["email" => $person->getWorkEmail(), "emailMD5" => md5($person->getWorkEmail()),
+            "list" => $mailchimpService->isEmailInMailChimp($person->getWorkEmail())]);
+    }
+    return $response->withJson($emailToLists);
 }

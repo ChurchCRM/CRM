@@ -63,21 +63,6 @@ $app->group('/person/{personId:[0-9]+}', function () {
         return $response->withJson(['success' => $person->deletePhoto()]);
     })->add(new DeleteRecordRoleAuthMiddleware());
 
-    $this->get('/mailchimp', function ($request, $response, $args) {
-        $person = $request->getAttribute("person");
-        $mailchimpService = $request->getAttribute("mailchimpService");
-        $emailToLists = [];
-        if (!empty($person->getEmail())) {
-            array_push($emailToLists, ["email" => $person->getEmail(), "emailMD5" => md5($person->getEmail()),
-                "list" => $mailchimpService->isEmailInMailChimp($person->getEmail())]);
-        }
-        if (!empty($person->getWorkEmail())) {
-            array_push($emailToLists, ["email" => $person->getWorkEmail(), "emailMD5" => md5($person->getWorkEmail()),
-                "list" => $mailchimpService->isEmailInMailChimp($person->getWorkEmail())]);
-        }
-        return $response->withJson($emailToLists);
-    })->add(new MailChimpMiddleware());
-
 })->add(new PersonAPIMiddleware());
 
 
