@@ -9105,3 +9105,271 @@ msgstr "Analisar logs para mais informações"
 msgid "Verification URL"
 msgstr "Verificar o URL"
 
+#: 
+msgid "Reset System"
+msgstr "Resetar o sistema"
+
+#: 
+msgid "Unexpected Person Id"
+msgstr "ID inesperado"
+
+#: 
+msgid "Interval in Hours for software update check"
+msgstr "Intervalo para verificação de atualização"
+
+#: 
+msgid "Last Software Update Check Timestamp"
+msgstr "Data e hora da última atualização"
+
+#: 
+msgid "Allow system upgrades to release marked as 'pre release' on GitHub"
+msgstr "Permitir atualizações marcadas como \"Pre release\" no GitHub"
+
+#: 
+msgid "Search Calendar Events"
+msgstr "Buscar eventos no calendário"
+
+#: 
+msgid "Maximum number of Calendar Events"
+msgstr "Número máximo de eventos no calendário"
+
+#: 
+msgid "%d month old"
+msgid_plural "%d months old"
+msgstr[0] "%d mês atrás"
+msgstr[1] "%d meses atrás"
+
+#: 
+msgid "%d year old"
+msgid_plural "%d years old"
+msgstr[0] "%d ano atrás"
+msgstr[1] "%d anos atrás"
+
+#: 
+msgid "Database upgrade failed"
+msgstr "Falha ao atualizar banco de dados"
+
+#: 
+msgid "Unsupported PHP Version"
+msgstr "Versão do PHP não suportada"
+
+#: 
+msgid "Support for this PHP version will soon be removed.  Current PHP Version: "
+msgstr "Suporte com esta versão do PHP será removida em breve. Versão atual:"
+
+#: 
+msgid "Missing PHP ZipArchive"
+msgstr "PHP Zip ausente"
+
+#: 
+msgid "PHP ZipArchive required to support upgrade"
+msgstr "PHP Zip é necessário para atualização"
+
+#: 
+msgid "See all People"
+msgstr "Enviar para todos"
+
+#: 
+msgid "Add Results to Cart"
+msgstr "Adicionar resultados ao carrinho"
+
+#: 
+msgid "Remove Results from Cart"
+msgstr "Remover resultados do carrinho"
+
+#: 
+msgid "Warning: Pre-Upgrade Tasks Detected"
+msgstr "Atenção: Tarefas de atualização detectadas"
+
+#: 
+msgid "Some conditions have been identified wich may prevent a successful upgrade"
+msgstr "Foram identificadas algumas condições que podem impedir uma atualização bem-sucedida"
+
+#: 
+msgid "Please review and mitigate these tasks before continuing with the upgrade:"
+msgstr "Revise estas tarefas antes de continuar com a atualização:"
+
+#: 
+msgid "Database Reset Functions"
+msgstr "Função de redefinição da base de dados"
+
+#: 
+msgid "Reset Members"
+msgstr "Resetar membros"
+
+#: 
+msgid "This will remove all the member data, people, and families and can't be undone."
+msgstr "Isto vai remover todos os dados do membro, pessoas, e famílias. Não pode ser desfeito."
+
+#: 
+msgid "Reset Families/People"
+msgstr "Resetar Famílias/Pessoas"
+
+#: 
+msgid "Reset Database"
+msgstr "Resetar base de dados"
+
+#: 
+msgid "This will reset the system data and will restart the system as a new install."
+msgstr "Isto vai limpar os dados do sistema e reiniciá-lo como uma nova instalação"
+
+#: 
+msgid "Clear Filter"
+msgstr "Limpar filtro"
+
+#: 
+msgid "Add Person"
+msgstr "Adicionar pessoa"
+
+#: 
+msgid "Portuguese - Portugal"
+msgstr "Postuguês - Portugal"
+
+#: 
+msgid "Holiday"
+msgstr "Feriado"
+
+#: 
+msgid "Allow users to self-enroll in 2 factor authentication"
+msgstr "Permitir que usuários se cadastrem usando autenticação de 2 fatores"
+
+#: 
+msgid "Requires users to self-enroll in 2 factor authentication"
+msgstr "Obrigar usuários a se cadastrarem usando autenticação de 2 fatores"
+
+#: 
+msgid "ChurchCRM"
+msgstr "ChurchCRM"
+
+#: 
+msgid "Specify the application name to be displayed in authenticator app"
+msgstr "Especifique o nome do aplicativo a ser exibido na janela de autenticação"
+
+#: 
+msgid "Secret Keys missing from Config.php"
+msgstr "Chaves secretas ausentes no Config.php"
+
+#: 
+msgid "Review"
+msgstr "Revisar"
+
+#: 
+msgid "Thank you for registering your family"
+msgstr "Obrigado por registrar sua família"
+
+#: 
+msgid "Register another family!"
+msgstr "Registrar outra família"
+
+#: 
+msgid "Done, show me the homepage!"
+msgstr "Pronto, voltar para a homepage!"
+
+#: 
+msgid "User authenticated via API Key: "
+msgstr "Usuário autenticado via API Key"
+
+#: 
+msgid "Unsuccessful API Key authentication attempt"
+msgstr "Erro na tentativa de autenticar via API Key"
+
+#: 
+msgid "Unpinned Events"
+msgstr "Eventos não fixados"
+
+#: 
+msgid "LastName, FirstName MiddleName"
+msgstr "Sobrenome, Primeiro Nome, Nome do meio"
+
+#: 
+msgid "Manage 2 Factor Authentication"
+msgstr "Gerenciar autenticação de 2 fatores"
+
+#: 
+msgid "Two Factor Status"
+msgstr "Status da autenticação de dois fatores"
+
+#: 
+msgid "Please confirm disabling 2 Factor Auth for this user"
+msgstr "por favor confirme se deseja desabilitar a autenticação de 2 fatores para esse usuário."
+
+#: 
+msgid "Please enter 2FA code"
+msgstr "Insira o código 2FA"
+
+#: 
+msgid "2FA Code"
+msgstr "Código 2FA"
+
+#: 
+msgid "2 Factor Authentication enrollment"
+msgstr "Regsitro de autenticação de 2 fatores"
+
+#: 
+msgid "Unsupported Two Factor Authentication Configuration"
+msgstr "Configuração de 2 fatores não suportada"
+
+#: 
+msgid "Unable To Begin Two Factor Authentication Enrollment"
+msgstr "Não é possível iniciar oregistro da autenticação de 2 fatores"
+
+#: 
+msgid "Two factor authentication requires ChurchCRM administrators to configure a few parameters"
+msgstr "Autenticação de 2 fatores precisa de usuários administradores para configurar alguns parametros"
+
+#: 
+msgid "System configuration "
+msgstr "Configuração do sistema"
+
+#: 
+msgid "Must be set to 'true'"
+msgstr "Defina como verdadeiro"
+
+#: 
+msgid "Include/Config.php must define an encryption key for storing 2FA secret keys in the database by setting a value for"
+msgstr "include/Config.php deve ser encriptado com uma chave de 2 fatores na base de dados."
+
+#: 
+msgid "Credit Card People"
+msgstr "Titular do Cartão de crédito"
+
+#: 
+msgid "People who are configured to pay by credit card."
+msgstr "Um titular deve ser configurado para pagamentos com cartão de crédito"
+
+#: 
+msgid "Google Maps API Key used for Geocoding addresses"
+msgstr "Google maps usa API Key para geocódigos de endereços"
+
+#: 
+msgid "Send an email notifying users when their account has been deleted"
+msgstr "Envie um email notificando o usuário quando a conta for deletada"
+
+#: 
+msgid "Google Maps API Key used for rendering maps in browser"
+msgstr "Google maps usa API Key para renderizar mapas no navegador"
+
+#: 
+msgid "Incorrect password supplied for current user"
+msgstr "Senha incorreta "
+
+#: 
+msgid "Your new password must not match your old one."
+msgstr "Sua nova senha precisa ser diferente da antiga"
+
+#: 
+msgid "Your new password is too similar to your old one."
+msgstr "sua nova senha é muito parecida com a antiga"
+
+#: 
+msgid "Password reset not availble.  Please contact your system administrator"
+msgstr "Reset de senha não disponível. Entre em contato com o administrador do sistema"
+
+#: 
+msgid "Authentication Issue"
+msgstr "Problemas com a autenticação"
+
+#: 
+msgid "Enter new user password. Administratively set passwords are not subject to length or complexity requirements"
+msgstr "Digite a nova senha do usuário. As senhas feitas por administrador não estão sujeitas a requisitos de comprimento ou complexidade"
+

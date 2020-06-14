@@ -233,7 +233,7 @@ require 'Include/Header.php';
                       <td>
                         <?php if (!empty($setting->getTooltip())) {
                           ?>
-                          <a data-toggle="popover" title="<?= $setting->getTooltip() ?>" target="_blank"><i class="fa fa-fw fa-question-circle"></i></a>
+                          <a class="setting-tip" data-tip="<?= $setting->getTooltip() ?>"><i class="fa fa-fw fa-question-circle"></i></a>
                         <?php
                       }
                       if (!empty($setting->getUrl())) {
