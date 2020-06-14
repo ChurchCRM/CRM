@@ -71,3 +71,11 @@ $(".jsonSettingsClose").on("click",function(event){
    $("#JSONSettingsModal").modal("hide");
    $("input[name=save]").click();
 });
+
+$(".setting-tip").click(function() {
+    bootbox.alert({
+        message: $(this).data('tip'),
+        backdrop: true,
+        className: 'setting-tip-box'
+    })
+});
