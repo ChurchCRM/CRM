@@ -49,11 +49,17 @@ class MailChimpService
                 $listmembers = $this->myMailchimp->get('lists/' . $list['id'] . '/members',
                     [
                         'count' => $list['stats']["member_count"],
-                        "fields" => "members.id,members.email_address,members.merge_fields",
+                        "fields" => "members.id,members.email_address,members.status,members.merge_fields",
                         "status" => "subscribed"
                     ]);
                 foreach ($listmembers['members'] as $member) {
-                    array_push($list['members'], ["email" =>$member["email_address"], "first" => $member["merge_fields"]["FNAME"], "last" => $member["merge_fields"]["LNAME"] ]);
+                    array_push($list['members'], [
+                        "email" => strtolower($member["email_address"]),
+                        "first" => $member["merge_fields"]["FNAME"],
+                        "last" => $member["merge_fields"]["LNAME"],
+                        "status" => $member["status"]
+                        ]
+                    );
                 }
                 LoggerUtils::getAppLogger()->debug("MailChimp list ". $list['id'] . " membership ". count($list['members']));
 
