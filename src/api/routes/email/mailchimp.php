@@ -10,11 +10,24 @@ use Slim\Http\Request;
 use Slim\Http\Response;
 
 $app->group('/mailchimp/', function () {
+    $this->get('list/{id}', 'getMailchimpList');
     $this->get('list/{id}/missing', 'getMailchimpEmailNotInCRM');
     $this->get('list/{id}/not-subscribed', 'getMailChimpMissingSubscribed');
     $this->get('person/{personId}', 'getPersonStatus')->add(new PersonAPIMiddleware());
     $this->get('family/{familyId}', 'getFamilyStatus')->add(new FamilyAPIMiddleware());
 })->add(new MailChimpMiddleware());
+
+
+function getMailchimpList(Request $request, Response $response, array $args)
+{
+
+    $listId = $args['id'];
+
+    $mailchimpService = $request->getAttribute("mailchimpService");
+    $list = $mailchimpService->getList($listId);
+
+    return $response->withJson(["list" => $list]);
+}
 
 function getMailchimpEmailNotInCRM(Request $request, Response $response, array $args)
 {
@@ -26,27 +39,20 @@ function getMailchimpEmailNotInCRM(Request $request, Response $response, array $
     if ($list) {
         $mailchimpListMembers = $list["members"];
 
-        $People = PersonQuery::create()
-            ->filterByEmail(null, Criteria::NOT_EQUAL)
-            ->_or()
-            ->filterByWorkEmail(null, Criteria::NOT_EQUAL)
-            ->find();
-
-
-        foreach ($People as $Person) {
-            $key = array_search(strtolower($Person->getEmail()), $mailchimpListMembers);
-            if ($key > 0) {
-                LoggerUtils::getAppLogger()->debug("found " . $Person->getEmail());
-                array_splice($mailchimpListMembers, $key, 1);
-            }
-            $key = array_search($Person->getWorkEmail(), $mailchimpListMembers);
-            if ($key > 0) {
-                array_splice($mailchimpListMembers, $key, 1);
+        foreach (getPeopleWithEmails() as $person) {
+            $inList = checkEmailInList($person->getEmail(), $mailchimpListMembers);
+            if ($inList > 0) {
+                array_splice($mailchimpListMembers, $inList, 1);
+            } else {
+                $inList = $inList = checkEmailInList($person->getWorkEmail(), $mailchimpListMembers);
+                if ($inList > 0) {
+                    array_splice($mailchimpListMembers, $inList, 1);
+                }
             }
         }
         LoggerUtils::getAppLogger()->debug("MailChimp list " . $listId . " now has " . count($mailchimpListMembers) . " members");
 
-        return $response->withJson(["members" => $mailchimpListMembers]);
+        return $response->withJson(["id" => $list["id"], "name" => $list["name"], "members" => $mailchimpListMembers]);
     } else {
         return $response->withStatus(404, gettext("List not found"));
     }
@@ -60,44 +66,38 @@ function getMailChimpMissingSubscribed(Request $request, Response $response, arr
     $list = $mailchimpService->getList($listId);
     if ($list) {
         $mailchimpListMembers = $list["members"];
-
-        $People = PersonQuery::create()
-            ->filterByEmail(null, Criteria::NOT_EQUAL)
-            ->_or()
-            ->filterByWorkEmail(null, Criteria::NOT_EQUAL)
-            ->find();
-
         $personsNotInMailchimp = [];
-        foreach ($People as $Person) {
-            $found = false;
-            $key = array_search(strtolower($Person->getEmail()), $mailchimpListMembers);
-            if ($key > 0) {
-                $found = true;
-            }
-            $key = array_search($Person->getWorkEmail(), $mailchimpListMembers);
-            if ($key > 0) {
-                $found = true;
-            }
+        foreach (getPeopleWithEmails() as $person) {
+            if (!empty($person->getEmail()) || !empty($person->getWorkEmail())) {
+                $inList = false;
+                if (!empty($person->getEmail()) && checkEmailInList($person->getEmail(), $mailchimpListMembers)) {
+                    $inList = true;
+                }
 
-            if (!$found) {
-                $emails = [];
-                if (!empty($Person->getEmail())) {
-                    array_push($emails, $Person->getEmail());
+                if (!found && !empty($person->getWorkEmail())) {
+                    $inList = checkEmailInList($person->getWorkEmail(), $mailchimpListMembers);
                 }
-                if (!empty($Person->getWorkEmail())) {
-                    array_push($emails, $Person->getWorkEmail());
+
+                if (!$inList) {
+                    $emails = [];
+                    if (!empty($person->getEmail())) {
+                        array_push($emails, $person->getEmail());
+                    }
+                    if (!empty($person->getWorkEmail())) {
+                        array_push($emails, $person->getWorkEmail());
+                    }
+                    array_push($personsNotInMailchimp, ["id" => $person->getId(),
+                        "name" => $person->getFullName(),
+                        "emails" => $emails
+                    ]);
                 }
-                array_push($personsNotInMailchimp, ["id" => $Person->getId(),
-                    "name" => $Person->getFullName(),
-                    "emails" => $emails
-                ]);
             }
         }
         LoggerUtils::getAppLogger()->debug("MailChimp list " . $listId . " now has " . count($mailchimpListMembers) . " members");
 
-        return $response->withJson(["members" =>$personsNotInMailchimp]);
+        return $response->withJson(["id" => $list["id"], "name" => $list["name"] ,"members" =>$personsNotInMailchimp]);
     } else {
-        return $response->withStatus(404, gettext("List not found"));
+        return $response->withStatus(404, gettext("List not inList"));
     }
 }
 
@@ -127,4 +127,24 @@ function getPersonStatus(Request $request, Response $response, array $args)
             "list" => $mailchimpService->isEmailInMailChimp($person->getWorkEmail())]);
     }
     return $response->withJson($emailToLists);
+}
+
+function getPeopleWithEmails() {
+    $list = PersonQuery::create()
+        ->filterByEmail(null, Criteria::NOT_EQUAL)
+        ->_or()
+        ->filterByWorkEmail(null, Criteria::NOT_EQUAL)
+        ->orderById()
+        ->find();
+
+    return $list;
+}
+
+function checkEmailInList($email, $memberList) {
+    $email = trim(strtolower($email));
+    $key = array_search($email, array_column($memberList, "email"));
+    if ($key > 0) {
+        return true;
+    }
+    return false;
 }
