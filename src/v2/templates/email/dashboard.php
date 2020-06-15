@@ -30,16 +30,40 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         <h3 class="box-title"><?= gettext('List') ?>: <?= $list['name'] ?></h3>
                     </div>
                     <div class="box-body">
-                        <?php
-                        echo "<table width='300px'>";
-                        echo '<tr><td><b>' . gettext('Members:') . '</b> </td><td>' . $list['stats']['member_count'] . '</td></tr>';
-                        echo '<tr><td><b>' . gettext('Campaigns:') . '</b> </td><td>' . $list['stats']['campaign_count'] . '</td></tr>';
-                        echo '<tr><td><b>' . gettext('Unsubscribed count:') . '</b> </td><td>' . $list['stats']['unsubscribe_count'] . '</td></tr>';
-                        echo '<tr><td><b>' . gettext('Unsubscribed count since last send:') . '</b> </td><td>' . $list['stats']['unsubscribe_count_since_send'] . '</td></tr>';
-                        echo '<tr><td><b>' . gettext('Cleaned count:') . '</b> </td><td>' . $list['stats']['cleaned_count'] . '</td></tr>';
-                        echo '<tr><td><b>' . gettext('Cleaned count since last send:') . '</b> </td><td>' . $list['stats']['cleaned_count_since_send'] . '</td></tr>';
-                        echo '</tr></table>'; ?>
-
+                        <table width='300px'>
+                            <tr>
+                                <td><b><?= gettext('Members:') ?></b></td>
+                                <td><?= $list['stats']['member_count'] ?></td>
+                            </tr>
+                            <tr>
+                                <td><b><?= gettext('Campaigns:') ?></b></td>
+                                <td><?= $list['stats']['campaign_count'] ?></td>
+                            </tr>
+                            <tr>
+                                <td><b><?= gettext('Unsubscribed count:') ?></b></td>
+                                <td><?= $list['stats']['unsubscribe_count'] ?></td>
+                            </tr>
+                            <tr>
+                                <td><b><?= gettext('Unsubscribed count since last send:') ?></b></td>
+                                <td><?= $list['stats']['unsubscribe_count_since_send'] ?></td>
+                            </tr>
+                            <tr>
+                                <td><b><?= gettext('Cleaned count:') ?></b></td>
+                                <td><?= $list['stats']['cleaned_count'] ?></td>
+                            </tr>
+                            <tr>
+                                <td><b><?= gettext('Cleaned count since last send:') ?></b></td>
+                                <td><?= $list['stats']['cleaned_count_since_send'] ?></td>
+                            </tr>
+                        </table>
+                        <hr>
+                        <p>
+                            <strong><?= gettext("List maintenance")?>:</strong>
+                        <ul>
+                            <li><a href="<?= SystemURLs::getRootPath()?>/v2/email/mailchimp/<?= $list['id']?>/unsubscribed"> <?= gettext("People not in list")?></a></li>
+                            <li><a href="<?= SystemURLs::getRootPath()?>/v2/email/mailchimp/<?= $list['id']?>/missing"> <?= gettext("Audience not in the CRM")?></a></li>
+                        </ul>
+                        </p>
                     </div>
                 </div>
             </div>
