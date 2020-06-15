@@ -9,7 +9,6 @@ use PHPMailer\PHPMailer\PHPMailer;
 use Slim\Http\Request;
 use Slim\Http\Response;
 use Slim\Views\PhpRenderer;
-use Propel\Runtime\ActiveQuery\Criteria;
 
 $app->group('/email', function () {
     $this->get('/debug', 'testEmailConnectionMVC')->add(new AdminRoleAuthMiddleware());
@@ -18,6 +17,8 @@ $app->group('/email', function () {
     $this->get('/dashboard', 'getEmailDashboardMVC');
     $this->get('/duplicate', 'getDuplicateEmailsMVC');
     $this->get('/missing', 'getFamiliesWithoutEmailsMVC');
+    $this->get('/mailchimp/{listId}/unsubscribed', 'getMailListUnSubscribersMVC');
+    $this->get('/mailchimp/{listId}/missing', 'getMailListMissingMVC');
 });
 
 function getEmailDashboardMVC(Request $request, Response $response, array $args)
@@ -82,4 +83,36 @@ function getDuplicateEmailsMVC(Request $request, Response $response, array $args
 function getFamiliesWithoutEmailsMVC(Request $request, Response $response, array $args)
 {
     return renderPage($response,'templates/email/',  'without.php', _("Families Without Emails"));
+}
+
+function getMailListUnSubscribersMVC(Request $request, Response $response, array $args)
+{
+    $mailchimpService = new MailChimpService();
+    $list = $mailchimpService->getList($args['listId']);
+    if ($list) {
+        $renderer = new PhpRenderer('templates/email/');
+        $pageArgs = [
+            'sRootPath' => SystemURLs::getRootPath(),
+            'sPageTitle' => _("People not in"). " ".  $list["name"],
+            'listId' => $list["id"]
+        ];
+        return $renderer->render($response, 'mailchimp-unsubscribers.php', $pageArgs);
+    }
+    return $response->withStatus(404, gettext("Invalid List id") . ": " . $args['listId']);
+}
+
+function getMailListMissingMVC(Request $request, Response $response, array $args)
+{
+    $mailchimpService = new MailChimpService();
+    $list = $mailchimpService->getList($args['listId']);
+    if ($list) {
+        $renderer = new PhpRenderer('templates/email/');
+        $pageArgs = [
+            'sRootPath' => SystemURLs::getRootPath(),
+            'sPageTitle' => $list["name"] . " " . _("Audience not in the ChurchCRM"),
+            'listId' => $list["id"]
+        ];
+        return $renderer->render($response, 'mailchimp-missing.php', $pageArgs);
+    }
+    return $response->withStatus(404, gettext("Invalid List id") . ": " . $args['listId']);
 }
