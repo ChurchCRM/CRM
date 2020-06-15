@@ -39,6 +39,10 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     title: i18next.t('email'),
                     data: 'email',
                 },
+                {
+                    title: i18next.t('Status'),
+                    data: 'status',
+                },
             ]
         }
         $.extend(dataTableConfig, window.CRM.plugin.dataTable);
