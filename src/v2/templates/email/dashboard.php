@@ -39,27 +39,12 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         echo '<tr><td><b>' . gettext('Cleaned count:') . '</b> </td><td>' . $list['stats']['cleaned_count'] . '</td></tr>';
                         echo '<tr><td><b>' . gettext('Cleaned count since last send:') . '</b> </td><td>' . $list['stats']['cleaned_count_since_send'] . '</td></tr>';
                         echo '</tr></table>'; ?>
+
                     </div>
                 </div>
             </div>
             <?php
         } ?>
-    </div>
-    <div class="row">
-        <div class="col-lg-4 col-md-2 col-sm-2">
-            <div class="box">
-                <div class="box-header">
-                    <h3 class="box-title">MailChimp</h3>
-                </div>
-                <div class="box-body">
-                    <ul>
-                        <li>
-                            <a href="<?= SystemURLs::getRootPath()?>/v2/email/missingfrommailchimp"><?= gettext('Missing emails report') ?> </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
     </div>
     <?php
 } else {
