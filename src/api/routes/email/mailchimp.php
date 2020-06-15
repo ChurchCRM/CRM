@@ -46,7 +46,7 @@ function getMailchimpEmailNotInCRM(Request $request, Response $response, array $
         }
         LoggerUtils::getAppLogger()->debug("MailChimp list " . $listId . " now has " . count($mailchimpListMembers) . " members");
 
-        return $response->withJson($mailchimpListMembers);
+        return $response->withJson(["members" => $mailchimpListMembers]);
     } else {
         return $response->withStatus(404, gettext("List not found"));
     }
@@ -95,7 +95,7 @@ function getMailChimpMissingSubscribed(Request $request, Response $response, arr
         }
         LoggerUtils::getAppLogger()->debug("MailChimp list " . $listId . " now has " . count($mailchimpListMembers) . " members");
 
-        return $response->withJson($personsNotInMailchimp);
+        return $response->withJson(["members" =>$personsNotInMailchimp]);
     } else {
         return $response->withStatus(404, gettext("List not found"));
     }
