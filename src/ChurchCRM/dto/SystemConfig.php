@@ -240,7 +240,7 @@ class SystemConfig
         "sLastSoftwareUpdateCheckTimeStamp" => new ConfigItem(2064, "sLastSoftwareUpdateCheckTimeStamp", "text", "", gettext("Last Software Update Check Timestamp")),
         "bAllowPrereleaseUpgrade" => new ConfigItem(2065, "bAllowPrereleaseUpgrade", "boolean", "0", gettext("Allow system upgrades to release marked as 'pre release' on GitHub")),
         "bSearchIncludeCalendarEvents" => new ConfigItem(2066, "bSearchIncludeCalendarEvents", "boolean", "1", gettext("Search Calendar Events")),
-        "bSearchIncludeCalendarEventsMax" => new ConfigItem(2067, "bSearchIncludeCalendarEventsMax", "text", "15", gettext("Maximum number of Calendar Events")),  
+        "bSearchIncludeCalendarEventsMax" => new ConfigItem(2067, "bSearchIncludeCalendarEventsMax", "text", "15", gettext("Maximum number of Calendar Events")),
         "bEnable2FA" => new ConfigItem(2068,"bEnable2FA", "boolean","1",gettext("Allow users to self-enroll in 2 factor authentication")),
         "bRequire2FA" => new ConfigItem(2069,"bRequire2FA", "boolean","0",gettext("Requires users to self-enroll in 2 factor authentication")),
         "s2FAApplicationName" => new ConfigItem(2070,"s2FAApplicationName", "text",gettext("ChurchCRM"),gettext("Specify the application name to be displayed in authenticator app")),
@@ -261,13 +261,13 @@ class SystemConfig
       gettext('Map Settings')  => ["sGeoCoderProvider","sGoogleMapsGeocodeKey","sGoogleMapsRenderKey","sBingMapKey","sGMapIcons", "iMapZoom","sISTusername","sISTpassword"],
       gettext('Report Settings')  => ["sQBDTSettings","leftX","incrementY","sTaxReport1","sTaxReport2","sTaxReport3","sTaxSigner","sReminder1","sReminderSigner","sReminderNoPledge","sReminderNoPayments","sConfirm1","sConfirm2","sConfirm3","sConfirm4","sConfirm5","sConfirm6","sDear","sConfirmSincerely","sConfirmSigner","sPledgeSummary1","sPledgeSummary2","sDirectoryDisclaimer1","sDirectoryDisclaimer2","bDirLetterHead","sZeroGivers","sZeroGivers2","sZeroGivers3", "iPDFOutputType"],
       gettext('Financial Settings') => ["sDepositSlipType","iChecksPerDepositForm","bDisplayBillCounts","bUseScannedChecks","bEnableNonDeductible","iFYMonth","bUseDonationEnvelopes","aFinanceQueries"],
-      gettext('System Settings')  => ["sLogLevel", "bRegistered","bCSVAdminOnly","sHeader","bEnableIntegrityCheck","iIntegrityCheckInterval","sLastIntegrityCheckTimeStamp", "iPhotoClientCacheDuration","bHSTSEnable", "iDasbhoardServiceIntervalTime","iSoftwareUpdateCheckInterval","sLastSoftwareUpdateCheckTimeStamp","bAllowPrereleaseUpgrade"],
       gettext('Quick Search') => ["bSearchIncludePersons","bSearchIncludePersonsMax","bSearchIncludeAddresses", "bSearchIncludeAddressesMax", "bSearchIncludeFamilies","bSearchIncludeFamiliesMax","bSearchIncludeFamilyHOH","bSearchIncludeFamilyHOHMax","bSearchIncludeGroups","bSearchIncludeGroupsMax","bSearchIncludeDeposits", "bSearchIncludeDepositsMax", "bSearchIncludePayments", "bSearchIncludePaymentsMax", "bSearchIncludeFamilyCustomProperties","bSearchIncludeCalendarEvents","bSearchIncludeCalendarEventsMax"],
-      gettext('Backup')  => ["sLastBackupTimeStamp","bEnableExternalBackupTarget","sExternalBackupType","sExternalBackupAutoInterval","sExternalBackupEndpoint","sExternalBackupUsername","sExternalBackupPassword","bBackupExtraneousImages"],
       gettext('Localization')  => ["sLanguage","sDistanceUnit","sPhoneFormat","sPhoneFormatWithExt","sPhoneFormatCell","sDateFormatLong","sDateFormatNoYear","sDateFormatShort","sDateTimeFormat","sDateFilenameFormat","sCSVExportDelemiter","sCSVExportCharset","sDatePickerFormat","sDatePickerPlaceHolder"],
       gettext('Integration')  => ["sMailChimpApiKey","sGoogleTrackingID","bEnableGravatarPhotos","bEnableGooglePhotos","iRemotePhotoCacheDuration","sNexmoAPIKey","sNexmoAPISecret","sNexmoFromNumber","sOLPURL","sOLPUserName","sOLPPassword"],
       gettext('Church Services')  => ["iPersonConfessionFatherCustomField","iPersonConfessionDateCustomField"],
-      gettext('Events')  => ["bEnableExternalCalendarAPI","bEventsOnDashboardPresence","iEventsOnDashboardPresenceTimeOut"]
+      gettext('Events')  => ["bEnableExternalCalendarAPI","bEventsOnDashboardPresence","iEventsOnDashboardPresenceTimeOut"],
+      gettext('Backup')  => ["sLastBackupTimeStamp","bEnableExternalBackupTarget","sExternalBackupType","sExternalBackupAutoInterval","sExternalBackupEndpoint","sExternalBackupUsername","sExternalBackupPassword","bBackupExtraneousImages"],
+      gettext('System Settings')  => ["sLogLevel", "bRegistered","bCSVAdminOnly","sHeader","bEnableIntegrityCheck","iIntegrityCheckInterval","sLastIntegrityCheckTimeStamp", "iPhotoClientCacheDuration","bHSTSEnable", "iDasbhoardServiceIntervalTime","iSoftwareUpdateCheckInterval","sLastSoftwareUpdateCheckTimeStamp","bAllowPrereleaseUpgrade"]
     );
   }
 
