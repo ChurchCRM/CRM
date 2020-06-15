@@ -94,12 +94,11 @@ class MailChimpService
         return $this->getListsFromCache();
     }
 
-    public function getListMembers($listId) {
+    public function getList($listId) {
         $mailchimpLists = $this->getLists();
         foreach ($mailchimpLists as $mailchimpList) {
             if ($listId == $mailchimpList["id"]) {
-                LoggerUtils::getAppLogger()->debug("MailChimp list ". $listId . " has ". count($mailchimpList["members"]) . " members");
-                return $mailchimpList["members"];
+                return $mailchimpList;
             }
         }
     }
