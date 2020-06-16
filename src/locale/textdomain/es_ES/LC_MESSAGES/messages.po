@@ -3474,10 +3474,6 @@ msgid "eMail Dashboard"
 msgstr "Dashboard de Email"
 
 #: 
-msgid "People not in Mailchimp"
-msgstr "Personas que no están en Mailchimp"
-
-#: 
 msgid "No families need canvassers assigned"
 msgstr "No hay familias que necesiten ser asignadas a escrutadores"
 
@@ -4389,10 +4385,6 @@ msgstr "Cantidad de limpiados:"
 #: 
 msgid "Cleaned count since last send:"
 msgstr "Cantidad de limpiados desde último enviado:"
-
-#: 
-msgid "Missing emails report"
-msgstr "Reporte de emails faltan"
 
 #: 
 msgid "Functions"
@@ -8676,10 +8668,6 @@ msgid "Application Prerequisites"
 msgstr "Prerequisitos de Aplicación"
 
 #: 
-msgid "WebServer Modules"
-msgstr "Módules de Servidor Web"
-
-#: 
 msgid "Invalid country name supplied"
 msgstr "Nombre de país provisto es inválido"
 
@@ -8796,14 +8784,6 @@ msgstr "Se han detectado Tipos de Depósito no soportados"
 #: 
 msgid "Support for eGive, Credit Card, and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions."
 msgstr "Se ha abandonado el soporte para pagos en eGive, Tarjetas de Crédito y Giros Bancarios. Reportes no bancarios podrían no estar accesibles en futuras versiones."
-
-#: 
-msgid "Unsupported Stored Payment Data Detected"
-msgstr "Se han detectado Datos de Pago Almacenados no soportados"
-
-#: 
-msgid "Support for stored payment data has been removed. This data will soon be removed from your database"
-msgstr "Se ha removido el soporte para almacenar los datos de pagos. Estos datos serán  borrados pronto de su base de datos."
 
 #: 
 msgid "Estonian"

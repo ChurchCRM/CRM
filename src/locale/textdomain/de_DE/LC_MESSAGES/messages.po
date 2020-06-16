@@ -3521,10 +3521,6 @@ msgid "eMail Dashboard"
 msgstr "eMail-Dashboard"
 
 #: 
-msgid "People not in Mailchimp"
-msgstr "Personen, welche nicht in Mailchimp verfügbar sind"
-
-#: 
 msgid "No families need canvassers assigned"
 msgstr "Familien müssen nicht Aktionsmitarbeitern zugewiesen werden"
 
@@ -4435,10 +4431,6 @@ msgstr "Gesäuberte Anzahl:"
 #: 
 msgid "Cleaned count since last send:"
 msgstr "Gesäuberte Anzahl seit letztem Versand:"
-
-#: 
-msgid "Missing emails report"
-msgstr "Fehlende Mails Report"
 
 #: 
 msgid "Functions"

@@ -3476,10 +3476,6 @@ msgid "eMail Dashboard"
 msgstr "Tableau de bord eMail"
 
 #: 
-msgid "People not in Mailchimp"
-msgstr "Les Personnes qui ne se trouvent pas dans Mailchimp"
-
-#: 
 msgid "No families need canvassers assigned"
 msgstr "Aucun besoin d'affecter un solliciteur pour les familles"
 
@@ -4391,10 +4387,6 @@ msgstr "Compte nettoyé :"
 #: 
 msgid "Cleaned count since last send:"
 msgstr "Comptes nettoyés depuis  la dernière fois :"
-
-#: 
-msgid "Missing emails report"
-msgstr "Rapport d&#39;emails manquant"
 
 #: 
 msgid "Functions"
@@ -8636,10 +8628,6 @@ msgstr "Version de la base de données"
 #: 
 msgid "Application Prerequisites"
 msgstr "Prérequis pour l'application"
-
-#: 
-msgid "WebServer Modules"
-msgstr "Modules du serveur web"
 
 #: 
 msgid "Invalid country name supplied"
