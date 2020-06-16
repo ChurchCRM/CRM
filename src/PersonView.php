@@ -373,7 +373,7 @@ $bOkToEdit = (AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled() ||
         <div class="box box-primary box-body">
             <?php if ($per_ID == AuthenticationManager::GetCurrentUser()->getPersonId()) {
                         ?>
-                <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/SettingsIndividual.php"><i class="fa fa-cog"></i> <?= gettext("Change Settings") ?></a>
+                <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= $iPersonID ?>/"><i class="fa fa-cog"></i> <?= gettext("Change Settings") ?></a>
                 <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/v2/user/current/changepassword"><i class="fa fa-key"></i> <?= gettext("Change Password") ?></a>
                 <?php
                     } ?>
