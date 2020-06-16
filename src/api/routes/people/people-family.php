@@ -83,7 +83,7 @@ $app->group('/family/{familyId:[0-9]+}', function () {
         $email = new FamilyVerificationEmail($family->getEmails(), $family->getName(), $token->getToken());
         if ($email->send()) {
             $family->createTimeLineNote("verify-link");
-            return $response->withStatus(200);
+            return $response->withJSON(["message" => "Success"]);
         } else {
             LoggerUtils::getAppLogger()->error($email->getError());
             return $response->withStatus(500)->withJSON(['message' => gettext("Error sending email(s)") . " - " . gettext("Please check logs for more information"), "trace" => $email->getError()]);
