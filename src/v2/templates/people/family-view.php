@@ -111,16 +111,16 @@ $mailchimp = new MailChimpService();
                         <a class="btn btn-app" id="AddFamilyToCart" data-familyid="<?= $family->getId() ?>"> <i
                                 class="fa fa-cart-plus"></i> <?= gettext("Add All Family Members to Cart") ?></a>
                         <?php if (AuthenticationManager::GetCurrentUser()->isCanvasserEnabled()) { ?>
-                            <a class="btn btn-app" href="<?= SystemURLs::getRootPath()?>/CanvassEditor.php?FamilyID=<?= $family->getId() ?>&amp;FYID=<?= $_SESSION['idefaultFY'] ?>&amp;linkBack=v2/family/<?= $family->getId() ?>/view">
+                            <a class="btn btn-app" href="<?= SystemURLs::getRootPath()?>/CanvassEditor.php?FamilyID=<?= $family->getId() ?>&amp;FYID=<?= $_SESSION['idefaultFY'] ?>&amp;linkBack=v2/family/<?= $family->getId() ?>">
                                 <i class="fa fa-refresh"></i><?= MakeFYString($_SESSION['idefaultFY']) . gettext(" Canvass Entry") ?></a>
                         <?php } ?>
 
                         <?php if (AuthenticationManager::GetCurrentUser()->isFinanceEnabled()) { ?>
                             <a class="btn btn-app"
-                               href="<?= SystemURLs::getRootPath()?>/PledgeEditor.php?FamilyID=<?= $family->getId() ?>&amp;linkBack=v2/family/<?= $family->getId() ?>/view&amp;PledgeOrPayment=Pledge">
+                               href="<?= SystemURLs::getRootPath()?>/PledgeEditor.php?FamilyID=<?= $family->getId() ?>&amp;linkBack=v2/family/<?= $family->getId() ?>&amp;PledgeOrPayment=Pledge">
                                 <i class="fa fa-check-circle-o"></i><?= gettext("Add a new pledge") ?></a>
                             <a class="btn btn-app"
-                               href="<?= SystemURLs::getRootPath()?>/PledgeEditor.php?FamilyID=<?= $family->getId() ?>&amp;linkBack=v2/family/<?= $family->getId() ?>/view&amp;PledgeOrPayment=Payment">
+                               href="<?= SystemURLs::getRootPath()?>/PledgeEditor.php?FamilyID=<?= $family->getId() ?>&amp;linkBack=v2/family/<?= $family->getId() ?>&amp;PledgeOrPayment=Payment">
                                 <i class="fa fa-money"></i><?= gettext("Add a new payment") ?></a>
                         <?php } ?>
                     </div>

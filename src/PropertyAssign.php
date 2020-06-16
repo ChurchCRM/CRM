@@ -72,7 +72,7 @@ elseif (isset($_GET['FamilyID']) && AuthenticationManager::GetCurrentUser()->isE
     $iRecordID = $iFamilyID;
     $sQuerystring = '?FamilyID='.$iFamilyID;
     $sTypeName = gettext('Family');
-    $sBackPage = 'FamilyView.php?FamilyID='.$iFamilyID;
+    $sBackPage = 'v2/family/'.$iFamilyID;
 
     // Get the name of the family
     $sSQL = 'SELECT fam_Name FROM family_fam WHERE fam_ID = '.$iFamilyID;
