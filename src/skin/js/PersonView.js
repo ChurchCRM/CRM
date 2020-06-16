@@ -1,19 +1,19 @@
 $(document).ready(function () {
-  
+
   $('.changeRole').click(function(event) {
     var GroupID = $(this).data("groupid");
     window.CRM.groups.promptSelection({Type:window.CRM.groups.selectTypes.Role,GroupID:GroupID},function(selection){
       window.CRM.groups.addPerson(GroupID,window.CRM.currentPersonID,selection.RoleID).done(function(){
         location.reload();
       })
-      
+
     });
   });
 
   $(".groupRemove").click(function(event){
     var targetGroupID = event.currentTarget.dataset.groupid;
     var targetGroupName = event.currentTarget.dataset.groupname;
-    
+
     bootbox.confirm({
       message: i18next.t("Are you sure you want to remove this person's membership from") + " " + targetGroupName + "?",
       buttons: {
@@ -34,7 +34,7 @@ $(document).ready(function () {
             function(){
               location.reload()
             }
-          ); 
+          );
         }
       }
     });
@@ -48,7 +48,7 @@ $(document).ready(function () {
       );
     });
   });
-  
+
     $("#input-person-properties").on("select2:select", function (event) {
         promptBox = $("#prompt-box");
         promptBox.removeClass('form-group').html('');
@@ -114,14 +114,14 @@ $(document).ready(function () {
         });
 
     });
-    
+
     $('#edit-role-btn').click(function (event) {
         event.preventDefault();
         var thisLink = $(this);
         var personId = thisLink.data('person_id');
         var familyRoleId = thisLink.data('family_role_id');
         var familyRole = thisLink.data('family_role');
-        
+
         $.ajax({
             type: 'GET',
             dataType: 'json',
@@ -133,13 +133,13 @@ $(document).ready(function () {
                         if (data[i].OptionId == familyRoleId) {
                             continue;
                         }
-                        
+
                         roles[roles.length] = {
                             text: data[i].OptionName,
                             value: data[i].OptionId
                         };
                     }
-                    
+
                     bootbox.prompt({
                         title:i18next.t( 'Change role'),
                         inputType: 'select',
@@ -157,16 +157,38 @@ $(document).ready(function () {
                                     }
                                 });
                             }
-                            
+
                         }
                     });
-                    
+
                 }
             }
         });
-        
+
     });
-    
-    
-    
+
+   $.ajax({
+       type: 'GET',
+       dataType: 'json',
+       url: window.CRM.root + '/api/mailchimp/person/' + window.CRM.currentPersonID,
+       success: function (data, status, xmlHttpReq) {
+           for (emailData of data) {
+               let htmlVal = "";
+               let eamilMD5 = emailData["emailMD5"];
+               for (list of emailData["list"]) {
+                   let listName = list["name"];
+                   let listStatus = list["status"];
+                   if (listStatus != 404) {
+                       let listOpenRate = list["stats"]["avg_open_rate"]*100;
+                       htmlVal = htmlVal + '<li>' + listName + " (" + listStatus + ") - " + listOpenRate + "% "+  i18next.t("open rate") + " </li>";
+                   }
+               }
+               if (htmlVal === "") {
+                   htmlVal = i18next.t("Not Subscribed ");
+               }
+               $('#'+ eamilMD5).html(htmlVal);
+           }
+       }
+   });
+
 });

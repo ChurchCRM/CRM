@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "e66fd426-4ab0-4b0c-bdb5-4e7958412cf1",
+		"_postman_id": "27e8d46d-03e7-4744-9218-5549605e8fa3",
 		"name": "Private API",
 		"description": "# Introduction\nWhat does your API do?\n\n# Overview\nThings that the developers should know about\n\n# Authentication\nWhat is the preferred way of using the API?\n\n# Error Codes\nWhat errors and status codes can a user expect?\n\n# Rate limit\nIs there a limit to the number of requests an user can send?",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -407,6 +407,590 @@
 		{
 			"name": "Kiosks",
 			"item": []
+		},
+		{
+			"name": "Mailchimp",
+			"item": [
+				{
+					"name": "MailChimp: Get Subscribed in MailChimp but not in CRM",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/api/mailchimp/list/c84848f505/missing",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"mailchimp",
+								"list",
+								"c84848f505",
+								"missing"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Persons: Get Photo by ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "ajGwpy8Pdai22XDUpqjC5Ob04v0eG7EGgb4vz2bD2juT8YDmfM"
+									}
+								],
+								"url": {
+									"raw": "{{host}}/api/persons/2/photo",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"persons",
+										"2",
+										"photo"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "CRM_USER_ID",
+									"value": "1",
+									"name": "CRM_USER_ID",
+									"description": "Custom header"
+								},
+								{
+									"key": "CRM_VERSION",
+									"value": "3.0.0",
+									"name": "CRM_VERSION",
+									"description": "Custom header"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"name": "Connection",
+									"description": "Options that are desired for the connection"
+								},
+								{
+									"key": "Content-Length",
+									"value": "98",
+									"name": "Content-Length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html;charset=UTF-8",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 24 Feb 2018 19:02:53 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=15",
+									"name": "Keep-Alive",
+									"description": "Custom header"
+								},
+								{
+									"key": "Server",
+									"value": "nginx",
+									"name": "Server",
+									"description": "A name for the server"
+								}
+							],
+							"cookie": [
+								{
+									"expires": "Invalid Date",
+									"httpOnly": false,
+									"domain": "demo.churchcrm.io",
+									"path": "/",
+									"secure": false,
+									"value": "r9fr05tpmoo6tu2242kquji0b5",
+									"key": "CRM%40%2Fmaster"
+								}
+							],
+							"body": "Can't find route for GET on http://demo.churchcrm.io/master/api/persons/%7B%7BpersonId%7D%7D/photo"
+						}
+					]
+				},
+				{
+					"name": "MailChimp: Get Unsubscribed in MailChimp",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/api/mailchimp/list/c84848f505/not-subscribed",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"mailchimp",
+								"list",
+								"c84848f505",
+								"not-subscribed"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Persons: Get Photo by ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "ajGwpy8Pdai22XDUpqjC5Ob04v0eG7EGgb4vz2bD2juT8YDmfM"
+									}
+								],
+								"url": {
+									"raw": "{{host}}/api/persons/2/photo",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"persons",
+										"2",
+										"photo"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "CRM_USER_ID",
+									"value": "1",
+									"name": "CRM_USER_ID",
+									"description": "Custom header"
+								},
+								{
+									"key": "CRM_VERSION",
+									"value": "3.0.0",
+									"name": "CRM_VERSION",
+									"description": "Custom header"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"name": "Connection",
+									"description": "Options that are desired for the connection"
+								},
+								{
+									"key": "Content-Length",
+									"value": "98",
+									"name": "Content-Length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html;charset=UTF-8",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 24 Feb 2018 19:02:53 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=15",
+									"name": "Keep-Alive",
+									"description": "Custom header"
+								},
+								{
+									"key": "Server",
+									"value": "nginx",
+									"name": "Server",
+									"description": "A name for the server"
+								}
+							],
+							"cookie": [
+								{
+									"expires": "Invalid Date",
+									"httpOnly": false,
+									"domain": "demo.churchcrm.io",
+									"path": "/",
+									"secure": false,
+									"value": "r9fr05tpmoo6tu2242kquji0b5",
+									"key": "CRM%40%2Fmaster"
+								}
+							],
+							"body": "Can't find route for GET on http://demo.churchcrm.io/master/api/persons/%7B%7BpersonId%7D%7D/photo"
+						}
+					]
+				},
+				{
+					"name": "MailChimp: Get List",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/api/mailchimp/list/c84848f505",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"mailchimp",
+								"list",
+								"c84848f505"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Persons: Get Photo by ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "ajGwpy8Pdai22XDUpqjC5Ob04v0eG7EGgb4vz2bD2juT8YDmfM"
+									}
+								],
+								"url": {
+									"raw": "{{host}}/api/persons/2/photo",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"persons",
+										"2",
+										"photo"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "CRM_USER_ID",
+									"value": "1",
+									"name": "CRM_USER_ID",
+									"description": "Custom header"
+								},
+								{
+									"key": "CRM_VERSION",
+									"value": "3.0.0",
+									"name": "CRM_VERSION",
+									"description": "Custom header"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"name": "Connection",
+									"description": "Options that are desired for the connection"
+								},
+								{
+									"key": "Content-Length",
+									"value": "98",
+									"name": "Content-Length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html;charset=UTF-8",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 24 Feb 2018 19:02:53 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=15",
+									"name": "Keep-Alive",
+									"description": "Custom header"
+								},
+								{
+									"key": "Server",
+									"value": "nginx",
+									"name": "Server",
+									"description": "A name for the server"
+								}
+							],
+							"cookie": [
+								{
+									"expires": "Invalid Date",
+									"httpOnly": false,
+									"domain": "demo.churchcrm.io",
+									"path": "/",
+									"secure": false,
+									"value": "r9fr05tpmoo6tu2242kquji0b5",
+									"key": "CRM%40%2Fmaster"
+								}
+							],
+							"body": "Can't find route for GET on http://demo.churchcrm.io/master/api/persons/%7B%7BpersonId%7D%7D/photo"
+						}
+					]
+				},
+				{
+					"name": "MailChimp: Get Family status",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/api/mailchimp/family/21",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"mailchimp",
+								"family",
+								"21"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Persons: Get Photo by ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "ajGwpy8Pdai22XDUpqjC5Ob04v0eG7EGgb4vz2bD2juT8YDmfM"
+									}
+								],
+								"url": {
+									"raw": "{{host}}/api/persons/2/photo",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"persons",
+										"2",
+										"photo"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "CRM_USER_ID",
+									"value": "1",
+									"name": "CRM_USER_ID",
+									"description": "Custom header"
+								},
+								{
+									"key": "CRM_VERSION",
+									"value": "3.0.0",
+									"name": "CRM_VERSION",
+									"description": "Custom header"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"name": "Connection",
+									"description": "Options that are desired for the connection"
+								},
+								{
+									"key": "Content-Length",
+									"value": "98",
+									"name": "Content-Length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html;charset=UTF-8",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 24 Feb 2018 19:02:53 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=15",
+									"name": "Keep-Alive",
+									"description": "Custom header"
+								},
+								{
+									"key": "Server",
+									"value": "nginx",
+									"name": "Server",
+									"description": "A name for the server"
+								}
+							],
+							"cookie": [
+								{
+									"expires": "Invalid Date",
+									"httpOnly": false,
+									"domain": "demo.churchcrm.io",
+									"path": "/",
+									"secure": false,
+									"value": "r9fr05tpmoo6tu2242kquji0b5",
+									"key": "CRM%40%2Fmaster"
+								}
+							],
+							"body": "Can't find route for GET on http://demo.churchcrm.io/master/api/persons/%7B%7BpersonId%7D%7D/photo"
+						}
+					]
+				},
+				{
+					"name": "MailChimp: Get Person status",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/api/mailchimp/person/105",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"mailchimp",
+								"person",
+								"105"
+							]
+						},
+						"description": "return perosn by Id"
+					},
+					"response": [
+						{
+							"name": "Persons: Get Photo by ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "ajGwpy8Pdai22XDUpqjC5Ob04v0eG7EGgb4vz2bD2juT8YDmfM"
+									}
+								],
+								"url": {
+									"raw": "{{host}}/api/persons/2/photo",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"persons",
+										"2",
+										"photo"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "CRM_USER_ID",
+									"value": "1",
+									"name": "CRM_USER_ID",
+									"description": "Custom header"
+								},
+								{
+									"key": "CRM_VERSION",
+									"value": "3.0.0",
+									"name": "CRM_VERSION",
+									"description": "Custom header"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"name": "Connection",
+									"description": "Options that are desired for the connection"
+								},
+								{
+									"key": "Content-Length",
+									"value": "98",
+									"name": "Content-Length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html;charset=UTF-8",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 24 Feb 2018 19:02:53 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=15",
+									"name": "Keep-Alive",
+									"description": "Custom header"
+								},
+								{
+									"key": "Server",
+									"value": "nginx",
+									"name": "Server",
+									"description": "A name for the server"
+								}
+							],
+							"cookie": [
+								{
+									"expires": "Invalid Date",
+									"httpOnly": false,
+									"domain": "demo.churchcrm.io",
+									"path": "/",
+									"secure": false,
+									"value": "r9fr05tpmoo6tu2242kquji0b5",
+									"key": "CRM%40%2Fmaster"
+								}
+							],
+							"body": "Can't find route for GET on http://demo.churchcrm.io/master/api/persons/%7B%7BpersonId%7D%7D/photo"
+						}
+					]
+				}
+			],
+			"protocolProfileBehavior": {}
 		},
 		{
 			"name": "People",
@@ -1362,6 +1946,121 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "Family: Get by ID - MailChimp",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{api-key}}"
+									}
+								],
+								"url": {
+									"raw": "{{host}}/api/family/21/mailchimp",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"family",
+										"21",
+										"mailchimp"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Persons: Get Photo by ID",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "x-api-key",
+												"value": "ajGwpy8Pdai22XDUpqjC5Ob04v0eG7EGgb4vz2bD2juT8YDmfM"
+											}
+										],
+										"url": {
+											"raw": "{{host}}/api/persons/2/photo",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"api",
+												"persons",
+												"2",
+												"photo"
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "html",
+									"header": [
+										{
+											"key": "CRM_USER_ID",
+											"value": "1",
+											"name": "CRM_USER_ID",
+											"description": "Custom header"
+										},
+										{
+											"key": "CRM_VERSION",
+											"value": "3.0.0",
+											"name": "CRM_VERSION",
+											"description": "Custom header"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive",
+											"name": "Connection",
+											"description": "Options that are desired for the connection"
+										},
+										{
+											"key": "Content-Length",
+											"value": "98",
+											"name": "Content-Length",
+											"description": "The length of the response body in octets (8-bit bytes)"
+										},
+										{
+											"key": "Content-Type",
+											"value": "text/html;charset=UTF-8",
+											"name": "Content-Type",
+											"description": "The mime type of this content"
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 24 Feb 2018 19:02:53 GMT",
+											"name": "Date",
+											"description": "The date and time that the message was sent"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=15",
+											"name": "Keep-Alive",
+											"description": "Custom header"
+										},
+										{
+											"key": "Server",
+											"value": "nginx",
+											"name": "Server",
+											"description": "A name for the server"
+										}
+									],
+									"cookie": [
+										{
+											"expires": "Invalid Date",
+											"httpOnly": false,
+											"domain": "demo.churchcrm.io",
+											"path": "/",
+											"secure": false,
+											"value": "r9fr05tpmoo6tu2242kquji0b5",
+											"key": "CRM%40%2Fmaster"
+										}
+									],
+									"body": "Can't find route for GET on http://demo.churchcrm.io/master/api/persons/%7B%7BpersonId%7D%7D/photo"
+								}
+							]
 						}
 					],
 					"_postman_isSubFolder": true
