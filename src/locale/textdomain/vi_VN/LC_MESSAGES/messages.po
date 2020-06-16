@@ -3253,7 +3253,3 @@ msgstr "Phiên bản dữ liệu"
 msgid "Application Prerequisites"
 msgstr "Điều kiện yêu cầu bắt buộc"
 
-#: 
-msgid "WebServer Modules"
-msgstr "Các mô-đun máy chủ"
-

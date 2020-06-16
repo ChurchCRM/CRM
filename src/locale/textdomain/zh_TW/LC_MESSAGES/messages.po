@@ -3581,10 +3581,6 @@ msgid "eMail Dashboard"
 msgstr "電子郵件儀錶板"
 
 #: 
-msgid "People not in Mailchimp"
-msgstr "聯繫人不在Mailchimp中"
-
-#: 
 msgid "No families need canvassers assigned"
 msgstr "沒有家庭需要分配拉票"
 
@@ -4521,10 +4517,6 @@ msgstr "清理計數："
 #: 
 msgid "Cleaned count since last send:"
 msgstr "自上次發送以來清理的計數："
-
-#: 
-msgid "Missing emails report"
-msgstr "電子郵件缺失報告"
 
 #: 
 msgid "Functions"
@@ -8813,10 +8805,6 @@ msgid "Application Prerequisites"
 msgstr "應用程序的先決條件"
 
 #: 
-msgid "WebServer Modules"
-msgstr "網頁服務器模塊"
-
-#: 
 msgid "Invalid country name supplied"
 msgstr "提供的國家名稱無效"
 
@@ -8953,15 +8941,6 @@ msgstr "檢測到不支持的存款類型"
 #, fuzzy
 msgid "Support for eGive, Credit Card, and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions."
 msgstr "已棄用對eGive，信用卡和銀行匯票付款的支持。在將來的版本中可能無法再訪問現有的非銀行報告。"
-
-#: 
-#, fuzzy
-msgid "Unsupported Stored Payment Data Detected"
-msgstr "檢測到不支持的存儲付款數據"
-
-#: 
-msgid "Support for stored payment data has been removed. This data will soon be removed from your database"
-msgstr "已刪除對存儲的付款數據的支持。這些數據很快就會從您的資料庫中刪除"
 
 #: 
 #, fuzzy
