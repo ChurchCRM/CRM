@@ -3,7 +3,7 @@
 -- Host: localhost	Database: churchcrm
 -- ------------------------------------------------------
 -- Server version 	5.7.26
--- Date: Tue, 16 Jun 2020 13:11:46 -0400
+-- Date: Tue, 16 Jun 2020 17:07:34 -0400
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -199,7 +199,7 @@ CREATE TABLE `config_cfg` (
 LOCK TABLES `config_cfg` WRITE;
 /*!40000 ALTER TABLE `config_cfg` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `config_cfg` VALUES (10,'aFinanceQueries','28,30,31,32'),(21,'sDefaultCity','Kansas City'),(22,'sDefaultState','MO'),(23,'sDefaultCountry','United States'),(27,'sSMTPHost','smtp.mailtrap.io:2525'),(28,'bSMTPAuth','1'),(29,'sSMTPUser','c58d4ec1a5a021'),(30,'sSMTPPass','3cfab2ee59990c'),(45,'iChurchLatitude','39.1111974'),(46,'iChurchLongitude','-94.5838009'),(48,'bHideFriendDate',''),(49,'bHideFamilyNewsletter',''),(50,'bHideWeddingDate',''),(51,'bHideLatLon',''),(52,'bUseDonationEnvelopes',''),(58,'bUseScannedChecks',''),(65,'sTimeZone','America/Detroit'),(67,'bForceUppercaseZip',''),(72,'bEnableNonDeductible',''),(80,'bEnableSelfRegistration','1'),(999,'bRegistered',''),(1003,'sChurchName','Main St. Cathedral'),(1004,'sChurchAddress','123 Main St'),(1005,'sChurchCity','Kansas City'),(1006,'sChurchState','MO'),(1007,'sChurchZip','64106'),(1008,'sChurchPhone','555 123 4234'),(1009,'sChurchEmail','demo@churchcrm.io'),(1010,'sHomeAreaCode','555'),(1014,'sTaxSigner','Elder Joe Smith'),(1016,'sReminderSigner','Elder Joe Smith'),(1025,'sConfirmSigner','Elder Joe Smith'),(1027,'sPledgeSummary2','as of'),(1028,'sDirectoryDisclaimer1','Every effort was made to insure the accuracy of this directory.  If there are any errors or omissions, please contact the church office.This directory is for the use of the people of'),(1034,'sChurchChkAcctNum','111111111'),(1035,'bEnableGravatarPhotos','1'),(1037,'sExternalBackupType','WebDAV'),(1046,'sLastIntegrityCheckTimeStamp','20200616-131138'),(1047,'sChurchCountry','United States'),(2010,'bAllowEmptyLastName',''),(2017,'bEnableExternalCalendarAPI',''),(2045,'bPHPMailerAutoTLS',''),(2046,'sPHPMailerSMTPSecure',''),(2064,'sLastSoftwareUpdateCheckTimeStamp','20200616-131139'),(20142,'bHSTSEnable','');
+INSERT INTO `config_cfg` VALUES (10,'aFinanceQueries','28,30,31,32'),(21,'sDefaultCity','Kansas City'),(22,'sDefaultState','MO'),(23,'sDefaultCountry','United States'),(27,'sSMTPHost','smtp.mailtrap.io:2525'),(28,'bSMTPAuth','1'),(29,'sSMTPUser','c58d4ec1a5a021'),(30,'sSMTPPass','3cfab2ee59990c'),(45,'iChurchLatitude','39.1111974'),(46,'iChurchLongitude','-94.5838009'),(48,'bHideFriendDate',''),(49,'bHideFamilyNewsletter',''),(50,'bHideWeddingDate',''),(51,'bHideLatLon',''),(52,'bUseDonationEnvelopes',''),(58,'bUseScannedChecks',''),(65,'sTimeZone','America/Detroit'),(67,'bForceUppercaseZip',''),(72,'bEnableNonDeductible',''),(80,'bEnableSelfRegistration','1'),(999,'bRegistered',''),(1003,'sChurchName','Main St. Cathedral'),(1004,'sChurchAddress','123 Main St'),(1005,'sChurchCity','Kansas City'),(1006,'sChurchState','MO'),(1007,'sChurchZip','64106'),(1008,'sChurchPhone','555 123 4234'),(1009,'sChurchEmail','demo@churchcrm.io'),(1010,'sHomeAreaCode','555'),(1014,'sTaxSigner','Elder Joe Smith'),(1016,'sReminderSigner','Elder Joe Smith'),(1025,'sConfirmSigner','Elder Joe Smith'),(1027,'sPledgeSummary2','as of'),(1028,'sDirectoryDisclaimer1','Every effort was made to insure the accuracy of this directory.  If there are any errors or omissions, please contact the church office.This directory is for the use of the people of'),(1034,'sChurchChkAcctNum','111111111'),(1035,'bEnableGravatarPhotos','1'),(1037,'sExternalBackupType','WebDAV'),(1046,'sLastIntegrityCheckTimeStamp','20200616-170136'),(1047,'sChurchCountry','United States'),(2010,'bAllowEmptyLastName',''),(2017,'bEnableExternalCalendarAPI',''),(2045,'bPHPMailerAutoTLS',''),(2046,'sPHPMailerSMTPSecure',''),(2064,'sLastSoftwareUpdateCheckTimeStamp','20200616-131139'),(20142,'bHSTSEnable','');
 /*!40000 ALTER TABLE `config_cfg` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
@@ -1655,8 +1655,6 @@ CREATE TABLE `user_usr` (
   `usr_Finance` tinyint(3) unsigned NOT NULL DEFAULT '0',
   `usr_Notes` tinyint(3) unsigned NOT NULL DEFAULT '0',
   `usr_Admin` tinyint(3) unsigned NOT NULL DEFAULT '0',
-  `usr_Workspacewidth` smallint(6) DEFAULT NULL,
-  `usr_BaseFontSize` tinyint(4) DEFAULT NULL,
   `usr_SearchLimit` tinyint(4) DEFAULT '10',
   `usr_Style` varchar(50) COLLATE utf8_unicode_ci DEFAULT 'Style.css',
   `usr_showPledges` tinyint(1) NOT NULL DEFAULT '0',
@@ -1695,7 +1693,7 @@ CREATE TABLE `user_usr` (
 LOCK TABLES `user_usr` WRITE;
 /*!40000 ALTER TABLE `user_usr` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `user_usr` VALUES (1,'4bdf3fba58c956fc3991a1fde84929223f968e2853de596e49ae80a91499609b',0,'2020-06-16 13:11:22',35,0,0,0,0,0,0,0,0,1,580,9,10,'skin-red',1,1,'2016-01-01',23,2,'Admin','ajGwpy8Pdai22XDUpqjC5Ob04v0eG7EGgb4vz2bD2juT8YDmfM',0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,NULL,NULL,NULL),(3,'598e1814d6b8493f2ad688c634c8b22bb31ac7539b3f79438b91aab2470f574f',0,'2019-09-08 22:04:35',13,0,1,1,1,1,1,0,1,0,NULL,NULL,10,'skin-green',0,0,'2016-01-01',23,0,'tony.wade@example.com',NULL,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,NULL,NULL,NULL),(76,'e57a2fc7529930d46edee4d20ee17e70001fd51a267c11768f9a0dc6dab2fdc1',1,'0000-00-00 00:00:00',2,0,0,0,0,1,0,0,0,0,NULL,NULL,10,'skin-blue',0,0,'2016-01-01',20,0,'leroy.larson@example.com',NULL,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL),(95,'ea1a2d06bbb09a6ea84f918fdb18ac17615365afa5ff09ac73eaf6e68cb5352f',1,'0000-00-00 00:00:00',1,6,1,1,0,0,0,0,0,0,NULL,NULL,10,'skin-blue',0,0,'2016-01-01',20,0,'judith.matthews@example.com',NULL,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL);
+INSERT INTO `user_usr` VALUES (1,'4bdf3fba58c956fc3991a1fde84929223f968e2853de596e49ae80a91499609b',0,'2020-06-16 13:11:22',35,0,0,0,0,0,0,0,0,1,10,'skin-red',1,1,'2016-01-01',23,2,'Admin','ajGwpy8Pdai22XDUpqjC5Ob04v0eG7EGgb4vz2bD2juT8YDmfM',0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,NULL,NULL,NULL),(3,'598e1814d6b8493f2ad688c634c8b22bb31ac7539b3f79438b91aab2470f574f',0,'2019-09-08 22:04:35',13,0,1,1,1,1,1,0,1,0,10,'skin-green',0,0,'2016-01-01',23,0,'tony.wade@example.com',NULL,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,NULL,NULL,NULL),(76,'e57a2fc7529930d46edee4d20ee17e70001fd51a267c11768f9a0dc6dab2fdc1',1,'0000-00-00 00:00:00',2,0,0,0,0,1,0,0,0,0,10,'skin-blue',0,0,'2016-01-01',20,0,'leroy.larson@example.com',NULL,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL),(95,'ea1a2d06bbb09a6ea84f918fdb18ac17615365afa5ff09ac73eaf6e68cb5352f',1,'0000-00-00 00:00:00',1,6,1,1,0,0,0,0,0,0,10,'skin-blue',0,0,'2016-01-01',20,0,'judith.matthews@example.com',NULL,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `user_usr` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
@@ -1833,47 +1831,6 @@ COMMIT;
 -- Dumped table `whycame_why` with 0 row(s)
 --
 
---
--- Stand-In structure for view `email_count`
---
-
-DROP TABLE IF EXISTS `email_count`;
-/*!50001 DROP VIEW IF EXISTS `email_count`*/;
-CREATE TABLE IF NOT EXISTS `email_count` (
-`email` varchar(100)
-,`total` bigint(21)
-);
---
--- Stand-In structure for view `email_list`
---
-
-DROP TABLE IF EXISTS `email_list`;
-/*!50001 DROP VIEW IF EXISTS `email_list`*/;
-CREATE TABLE IF NOT EXISTS `email_list` (
-`email` varchar(100)
-,`type` varchar(11)
-,`id` mediumint(9) unsigned
-);
---
--- View structure for view `email_count`
---
-
-DROP TABLE IF EXISTS `email_count`;
-/*!50001 DROP VIEW IF EXISTS `email_count`*/;
-/*!50001 CREATE ALGORITHM=UNDEFINED */
-/*!50013 DEFINER=`churchcrm`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `email_count` AS select `email_list`.`email` AS `email`,count(0) AS `total` from `email_list` group by `email_list`.`email` */;
-
---
--- View structure for view `email_list`
---
-
-DROP TABLE IF EXISTS `email_list`;
-/*!50001 DROP VIEW IF EXISTS `email_list`*/;
-/*!50001 CREATE ALGORITHM=UNDEFINED */
-/*!50013 DEFINER=`churchcrm`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `email_list` AS select `family_fam`.`fam_Email` AS `email`,'family' AS `type`,`family_fam`.`fam_ID` AS `id` from `family_fam` where ((`family_fam`.`fam_Email` is not null) and (`family_fam`.`fam_Email` <> '')) union select `person_per`.`per_Email` AS `email`,'person_home' AS `type`,`person_per`.`per_ID` AS `id` from `person_per` where ((`person_per`.`per_Email` is not null) and (`person_per`.`per_Email` <> '')) union select `person_per`.`per_WorkEmail` AS `email`,'person_work' AS `type`,`person_per`.`per_ID` AS `id` from `person_per` where ((`person_per`.`per_WorkEmail` is not null) and (`person_per`.`per_WorkEmail` <> '')) */;
-
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
@@ -1883,4 +1840,4 @@ DROP TABLE IF EXISTS `email_list`;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on: Tue, 16 Jun 2020 13:11:47 -0400
+-- Dump completed on: Tue, 16 Jun 2020 17:07:34 -0400
