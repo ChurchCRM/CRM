@@ -19,9 +19,10 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Bootstrapper;
+use ChurchCRM\Authentication\AuthenticationManager;
 
 // Security
-if (!$_SESSION['user']->isAdmin()) {
+if (!AuthenticationManager::GetCurrentUser()->isAdmin()) {
     RedirectUtils::Redirect('Menu.php');
     exit;
 }
@@ -232,7 +233,7 @@ require 'Include/Header.php';
                       <td>
                         <?php if (!empty($setting->getTooltip())) {
                           ?>
-                          <a data-toggle="popover" title="<?= $setting->getTooltip() ?>" target="_blank"><i class="fa fa-fw fa-question-circle"></i></a>
+                          <a class="setting-tip" data-tip="<?= $setting->getTooltip() ?>"><i class="fa fa-fw fa-question-circle"></i></a>
                         <?php
                       }
                       if (!empty($setting->getUrl())) {

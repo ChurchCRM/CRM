@@ -1,13 +1,13 @@
 {
     "name": "churchcrm/crm",
-    "version": "4.0.0",
+    "version": "4.1.0",
     "type": "project",
     "keywords": [
         "church",
         "crm"
     ],
     "homepage": "http://www.churchcrm.io",
-    "time": "2019-11-16 05:11:78",
+    "time": "2020-06-08 19:06:41",
     "license": "MIT",
     "authors": [
         {
@@ -41,7 +41,7 @@
         "knplabs/github-api": "~1.4",
         "propel/propel": "~2.0@dev",
         "setasign/fpdf": "1.8.1",
-        "phpmailer/phpmailer": "6.0.*",
+        "phpmailer/phpmailer": "6.1.*",
         "verot/class.upload.php": "dev-master",
         "ifsnop/mysqldump-php": "2.*",
         "php-http/message": "1.6.0",
@@ -54,7 +54,8 @@
         "defuse/php-encryption": "^2.2",
         "pragmarx/google2fa": "^6.1",
         "endroid/qr-code": "^3.6",
-        "symfony/yaml": "^3.4"
+        "symfony/yaml": "^3.4",
+        "symfony/translation": "^4.4"
     },
     "autoload": {
         "classmap": [

@@ -4,7 +4,7 @@ use ChurchCRM\Slim\Middleware\Request\Auth\FinanceRoleAuthMiddleware;
 use Slim\Http\Request;
 use Slim\Http\Response;
 use ChurchCRM\PledgeQuery;
-use ChurchCRM\SessionUser;
+use ChurchCRM\Authentication\AuthenticationManager;
 use Propel\Runtime\ActiveQuery\Criteria;
 
 $app->group('/payments', function () {
@@ -20,13 +20,13 @@ $app->group('/payments', function () {
     $this->get('/family/{familyId:[0-9]+}/list', function (Request $request, Response $response, array $args) {
         $familyId = $request->getAttribute("route")->getArgument("familyId");
         $query = PledgeQuery::create()->filterByFamId($familyId);
-        if (!empty(SessionUser::getUser()->getShowSince())) {
-            $query->filterByDate(SessionUser::getUser()->getShowSince(), Criteria::GREATER_EQUAL);
+        if (!empty(AuthenticationManager::GetCurrentUser()->getShowSince())) {
+            $query->filterByDate(AuthenticationManager::GetCurrentUser()->getShowSince(), Criteria::GREATER_EQUAL);
         }
-        if (!SessionUser::getUser()->isShowPayments()) {
+        if (!AuthenticationManager::GetCurrentUser()->isShowPayments()) {
             $query->filterByPledgeOrPayment("Payment", Criteria::NOT_EQUAL);
         }
-        if (!SessionUser::getUser()->isShowPledges()) {
+        if (!AuthenticationManager::GetCurrentUser()->isShowPledges()) {
             $query->filterByPledgeOrPayment("Pledge", Criteria::NOT_EQUAL);
         }
         $data = $query->find();

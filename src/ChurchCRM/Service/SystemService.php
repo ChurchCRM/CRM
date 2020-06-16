@@ -186,7 +186,7 @@ class SystemService
               // if there was no previous backup, or if the interval suggests we do a backup now.
               LoggerUtils::getAppLogger()->addInfo("Starting a backup job.  Last backup run: ".SystemConfig::getValue('sLastBackupTimeStamp'));
               $BaseName = preg_replace('/[^a-zA-Z0-9\-_]/','', SystemConfig::getValue('sChurchName')). "-" . date(SystemConfig::getValue("sDateFilenameFormat"));
-              $Backup = new BackupJob($BaseName, BackupType::FullBackup, SystemConfig::getValue('bBackupExtraneousImages'));
+              $Backup = new BackupJob($BaseName, BackupType::FullBackup, SystemConfig::getValue('bBackupExtraneousImages'),false,'');
               $Backup->Execute();
               $Backup->CopyToWebDAV(SystemConfig::getValue('sExternalBackupEndpoint'), SystemConfig::getValue('sExternalBackupUsername'), SystemConfig::getValue('sExternalBackupPassword'));
               $now = new \DateTime();  // update the LastBackupTimeStamp.

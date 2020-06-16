@@ -26,7 +26,7 @@ msgstr "Gravar"
 
 #: 
 msgid "Unassigned"
-msgstr "Não atribuido"
+msgstr "Não atribuído"
 
 #: 
 msgid "None"
@@ -135,7 +135,7 @@ msgstr "Primeiro Nome"
 #: 
 #, fuzzy
 msgid "Middle Name"
-msgstr "Nome do Meio"
+msgstr "Nome"
 
 #: 
 #, fuzzy
@@ -150,7 +150,7 @@ msgstr "Envelope"
 #: 
 #, fuzzy
 msgid "Work/Other Email"
-msgstr "Outro E-mail "
+msgstr "Trabalho/Outro E-mail"
 
 #: 
 #, fuzzy
@@ -170,7 +170,7 @@ msgstr "Idade/Tempo de Casado"
 #: 
 #, fuzzy
 msgid "Family Role"
-msgstr "Papel na Família"
+msgstr "Grau de Parentesco"
 
 #: 
 msgid "Depends whether using person or family output method"
@@ -241,7 +241,7 @@ msgstr "Data de Nascimento"
 #: 
 #, fuzzy
 msgid "Anniversary Date"
-msgstr "Data de Aniversário"
+msgstr "Aniversário"
 
 #: 
 msgid "Output Method:"
@@ -1172,7 +1172,7 @@ msgstr "Editando evento ID:"
 
 #: 
 msgid " errors. Please see below"
-msgstr "erros. Por favor, veja abaixo"
+msgstr " erros. Por favor, veja abaixo"
 
 #: 
 #, fuzzy
@@ -1182,7 +1182,7 @@ msgstr "Itens nº"
 #: 
 #, fuzzy
 msgid " are required"
-msgstr "Este valor é obrigatório."
+msgstr " este valor é obrigatório."
 
 #: 
 msgid "Select your event type"
@@ -1420,10 +1420,6 @@ msgid "Role"
 msgstr "Papel"
 
 #: 
-msgid "Day"
-msgstr "Dia"
-
-#: 
 msgid "Select Gender"
 msgstr "Selecione o genero"
 
@@ -1494,7 +1490,7 @@ msgstr "Lista de Famílias"
 
 #: 
 msgid "Add Family"
-msgstr "   Adicionar Família"
+msgstr "Adicionar Família"
 
 #: 
 msgid "Created"
@@ -2882,11 +2878,11 @@ msgstr "Editor de Pagamento:"
 
 #: 
 msgid " Deposit Slip #"
-msgstr "Erro de Deposito nº"
+msgstr " Erro de Deposito nº"
 
 #: 
 msgid " more entries will fit."
-msgstr "pode registar outras entradas"
+msgstr " pode registar outras entradas"
 
 #: 
 msgid "Payment Editor - Modify Existing Payment"
@@ -2984,7 +2980,7 @@ msgstr "Notas:"
 
 #: 
 msgid "Entered:"
-msgstr " Atribuído:"
+msgstr "Atribuído:"
 
 #: 
 msgid "by"
@@ -2996,7 +2992,7 @@ msgstr "Propriedade atribuída com sucesso."
 
 #: 
 msgid " Property Assignment"
-msgstr "Atribuição de propriedade"
+msgstr " Atribuição de propriedade"
 
 #: 
 #, fuzzy
@@ -3189,7 +3185,7 @@ msgstr "Este valor não pode ser maior que "
 
 #: 
 msgid " characters long"
-msgstr " caracteres"
+msgstr " caracteres a mais"
 
 #: 
 msgid "This value cannot be less than "
@@ -3471,19 +3467,7 @@ msgid "Failed Logins"
 msgstr "Logins fracassados"
 
 #: 
-msgid "You must enter a password in both boxes"
-msgstr "Entre com a senha em ambos os campos"
-
-#: 
 msgid "You must enter the same password in both boxes"
-msgstr "Entre com a senha em ambos os campos"
-
-#: 
-msgid "Invalid password"
-msgstr "Senha inválida"
-
-#: 
-msgid "You must enter your new password in both boxes"
 msgstr "Entre com a senha em ambos os campos"
 
 #: 
@@ -3499,32 +3483,12 @@ msgid "characters"
 msgstr "caracteres"
 
 #: 
-msgid "You need to actually change your password (nice try, though!)"
-msgstr "Você precisa mudar sua senha"
-
-#: 
-msgid "Your new password is too similar to your old one.  Be more creative!"
-msgstr "Sua nova senha é similar à antiga. Seja mais criativo!"
-
-#: 
-msgid "User Password Change"
-msgstr "Mudar senha de utilizador"
-
-#: 
-msgid "Your account record indicates that you need to change your password before proceding."
-msgstr "Seu registo de conta indica que você precisa mudar sua senha antes de proceder."
-
-#: 
 msgid "Enter your current password, then your new password twice.  Passwords must be at least"
 msgstr "Digite sua senha atual e sua nova senha duas vezes. As senhas devem ter pelo menos"
 
 #: 
 msgid "characters in length."
 msgstr "número de carateres "
-
-#: 
-msgid "Enter a new password for this user."
-msgstr "Entre uma nova senha para este utilizador"
 
 #: 
 #, fuzzy
@@ -3617,15 +3581,15 @@ msgstr "Dados importados com sucesso."
 #: 
 #, fuzzy
 msgid " gifts were imported, "
-msgstr "pessoas importadas"
+msgstr " pessoas importadas"
 
 #: 
 msgid " gifts unchanged, and "
-msgstr "presentes inalterada e"
+msgstr " presentes inalterado, e"
 
 #: 
 msgid " gifts not imported due to problems"
-msgstr "presentes não importados devido a problemas"
+msgstr " presentes não importados devido a problemas"
 
 #: 
 #, fuzzy
@@ -3832,15 +3796,15 @@ msgstr "Quantidade de dinheiro muito grande. Máxima é de 999.999.999,99 dólar
 
 #: 
 msgid " Bold Italic"
-msgstr "Negrito Itálico"
+msgstr " Negrito Itálico"
 
 #: 
 msgid " Italic"
-msgstr "Itálico"
+msgstr " Itálico"
 
 #: 
 msgid " Bold"
-msgstr "Negrito"
+msgstr " Negrito"
 
 #: 
 #, fuzzy
@@ -4817,10 +4781,6 @@ msgstr "Restauração Rodando, por favor espere."
 #: 
 msgid "Family Members:"
 msgstr "Membros da Família:"
-
-#: 
-msgid "Event"
-msgstr "Evento"
 
 #: 
 msgid "Anniversary"
@@ -7203,11 +7163,6 @@ msgid "The previous integrity check passed.  All system file hashes match the ex
 msgstr "A verificação de integridade anterior passou. Todos os hashes de ficheiros de sistema correspondem aos valores esperados."
 
 #: 
-#, fuzzy
-msgid "Google map API requires a unique key"
-msgstr "A API do Google Map requer uma chave única obtida em https://developers.google.com/maps/documentation/javascript/get-api-key"
-
-#: 
 msgid "Church Checking Account Number"
 msgstr "Número da Conta de Verificação da Igreja"
 
@@ -7265,7 +7220,7 @@ msgstr "Por favor, assegure-se que é isso que você pretende fazer. </ P>"
 
 #: 
 msgid " this Family"
-msgstr "esta família"
+msgstr " esta família"
 
 #: 
 msgid "Confirm Deactivation"
@@ -7754,10 +7709,6 @@ msgstr "Impossível resetar a sua senha"
 #: 
 msgid "Reset your password"
 msgstr "Resetar a sua senha"
-
-#: 
-msgid "Check your email for a password reset link"
-msgstr "Verifique o link de resete da senha no seu E-mail!"
 
 #: 
 msgid "Sorry, we are unable to process your request at this point in time."
@@ -8434,18 +8385,6 @@ msgid "Set the encryption system to use - ssl (deprecated) or tls"
 msgstr "Definir o sistema de criptografia para usar - SSL (reprovado) ou TSL"
 
 #: 
-msgid "Lock"
-msgstr "Bloqueio"
-
-#: 
-msgid "Enter your password to retrieve your session"
-msgstr "Digite sua senha para retornar sua sessão"
-
-#: 
-msgid "Or sign in as a different user"
-msgstr "ou entre como um utilizador diferente"
-
-#: 
 msgid "Dashboard Service dynamic asynchronous refresh interval, default 60 second"
 msgstr "Intervalo de atualização assíncrona dinâmica do Serviço do Painel. Padrão 60 segundos"
 
@@ -8740,14 +8679,6 @@ msgstr "Arquivo de atualização inválido"
 #: 
 msgid "Failure executing upgrade script"
 msgstr "Falha ao executar o script de atualização"
-
-#: 
-msgid "logged via API Key."
-msgstr "logado via API Key."
-
-#: 
-msgid "logged via InValid API Key."
-msgstr "logado via InValid API Key."
 
 #: 
 msgid "Missing calendar access token"
@@ -9162,4 +9093,272 @@ msgstr "Analisar logs para mais informações"
 #: 
 msgid "Verification URL"
 msgstr "Verificar o URL"
+
+#: 
+msgid "Reset System"
+msgstr "Reiniciar o sistema"
+
+#: 
+msgid "Unexpected Person Id"
+msgstr "ID inesperado da pessoa"
+
+#: 
+msgid "Interval in Hours for software update check"
+msgstr "Intervalo em horas para verificar actualizações"
+
+#: 
+msgid "Last Software Update Check Timestamp"
+msgstr "Data e hora da última actualização"
+
+#: 
+msgid "Allow system upgrades to release marked as 'pre release' on GitHub"
+msgstr "Permitir actualizações de pré-lançamento' no GitHub"
+
+#: 
+msgid "Search Calendar Events"
+msgstr "Pesquisar eventos do calendário"
+
+#: 
+msgid "Maximum number of Calendar Events"
+msgstr "Número máximo de eventos do calendário"
+
+#: 
+msgid "%d month old"
+msgid_plural "%d months old"
+msgstr[0] "%d mês idade"
+msgstr[1] "%d meses idade"
+
+#: 
+msgid "%d year old"
+msgid_plural "%d years old"
+msgstr[0] "%d ano idade"
+msgstr[1] "%d anos idade"
+
+#: 
+msgid "Database upgrade failed"
+msgstr "Falha na atualização da base de dados"
+
+#: 
+msgid "Unsupported PHP Version"
+msgstr "Versão PHP não suportada"
+
+#: 
+msgid "Support for this PHP version will soon be removed.  Current PHP Version: "
+msgstr "O suporte para esta versão do PHP será removido em breve. Versão atual do PHP: "
+
+#: 
+msgid "Missing PHP ZipArchive"
+msgstr "Falta o ZipArchive do PHP"
+
+#: 
+msgid "PHP ZipArchive required to support upgrade"
+msgstr "É necessário o PHP ZipArchive para dar suporte à atualização"
+
+#: 
+msgid "See all People"
+msgstr "Veja todas as pessoas"
+
+#: 
+msgid "Add Results to Cart"
+msgstr "Adicionar resultados ao carrinho"
+
+#: 
+msgid "Remove Results from Cart"
+msgstr "Remover resultados do carrinho"
+
+#: 
+msgid "Warning: Pre-Upgrade Tasks Detected"
+msgstr "Aviso: tarefas de pré-atualização detectadas"
+
+#: 
+msgid "Some conditions have been identified wich may prevent a successful upgrade"
+msgstr "Foram identificadas algumas condições que podem impedir uma atualização bem-sucedida"
+
+#: 
+msgid "Please review and mitigate these tasks before continuing with the upgrade:"
+msgstr "Rever estas tarefas antes de continuar com a atualização:"
+
+#: 
+msgid "Database Reset Functions"
+msgstr "Funções de redefinição da base de dados"
+
+#: 
+msgid "Reset Members"
+msgstr "Redefinir membros"
+
+#: 
+msgid "This will remove all the member data, people, and families and can't be undone."
+msgstr "Isso removerá todos os dados, pessoas e famílias dos membros e não poderá ser desfeito."
+
+#: 
+msgid "Reset Families/People"
+msgstr "Redefinir famílias / pessoas"
+
+#: 
+msgid "Reset Database"
+msgstr "Redefinir Base de Dados"
+
+#: 
+msgid "This will reset the system data and will restart the system as a new install."
+msgstr "Redefinirá os dados do sistema e reiniciará o sistema como uma nova instalação"
+
+#: 
+msgid "Clear Filter"
+msgstr "Filtro limpo"
+
+#: 
+msgid "Add Person"
+msgstr "Adicionar pessoa"
+
+#: 
+msgid "Portuguese - Portugal"
+msgstr "Portuguese - Portugal"
+
+#: 
+msgid "Holiday"
+msgstr "Feriado"
+
+#: 
+msgid "Allow users to self-enroll in 2 factor authentication"
+msgstr "Permitir que os utilizadores se inscrevam automaticamente na autenticação por dois fatores"
+
+#: 
+msgid "Requires users to self-enroll in 2 factor authentication"
+msgstr "Requer que os utilizadores se inscrevam automaticamente na autenticação por dois fatores"
+
+#: 
+msgid "ChurchCRM"
+msgstr "ChurchCRM"
+
+#: 
+msgid "Specify the application name to be displayed in authenticator app"
+msgstr "Especifique o nome da aplicação a ser exibido ao autenticar"
+
+#: 
+msgid "Secret Keys missing from Config.php"
+msgstr "Chaves secretas ausentes no Config.php"
+
+#: 
+msgid "Review"
+msgstr "Rever"
+
+#: 
+msgid "Thank you for registering your family"
+msgstr "Obrigado por registar sua família"
+
+#: 
+msgid "Register another family!"
+msgstr "Registe outra família!"
+
+#: 
+msgid "Done, show me the homepage!"
+msgstr "Feito, mostre-me a página inicial!"
+
+#: 
+msgid "User authenticated via API Key: "
+msgstr "Utilizador autenticado via API Key: "
+
+#: 
+msgid "Unsuccessful API Key authentication attempt"
+msgstr "Tentativa de autenticação de chave de API mal sucedida"
+
+#: 
+msgid "Unpinned Events"
+msgstr "Eventos não fixados"
+
+#: 
+msgid "LastName, FirstName MiddleName"
+msgstr "Sobrenome, Nome"
+
+#: 
+msgid "Manage 2 Factor Authentication"
+msgstr "Autenticação por 2 fatores"
+
+#: 
+msgid "Two Factor Status"
+msgstr "Status de dois fatores"
+
+#: 
+msgid "Please confirm disabling 2 Factor Auth for this user"
+msgstr "Confirme a desactivação da autenticação de 2 factores para este utilizador"
+
+#: 
+msgid "Please enter 2FA code"
+msgstr "Digite o código 2FA"
+
+#: 
+msgid "2FA Code"
+msgstr "2FA Code"
+
+#: 
+msgid "2 Factor Authentication enrollment"
+msgstr "Registo de autenticação por 2 factores"
+
+#: 
+msgid "Unsupported Two Factor Authentication Configuration"
+msgstr "Configuração de autenticação de dois factores não suportada"
+
+#: 
+msgid "Unable To Begin Two Factor Authentication Enrollment"
+msgstr "Não é possível iniciar a inscrição de autenticação por dois factores"
+
+#: 
+msgid "Two factor authentication requires ChurchCRM administrators to configure a few parameters"
+msgstr "A autenticação por dois factores requer que os administradores do ChurchCRM configurem alguns parâmetros"
+
+#: 
+msgid "System configuration "
+msgstr "Configuração do sistema "
+
+#: 
+msgid "Must be set to 'true'"
+msgstr "Deve ser definido como 'verdadeiro'"
+
+#: 
+msgid "Include/Config.php must define an encryption key for storing 2FA secret keys in the database by setting a value for"
+msgstr "Include / Config.php deve definir uma chave de criptografia para armazenar chaves secretas 2FA na base de dados, definindo um valor para"
+
+#: 
+msgid "Credit Card People"
+msgstr "Pessoas com de cartão de crédito"
+
+#: 
+msgid "People who are configured to pay by credit card."
+msgstr "Pessoas que estão configuradas para pagar com cartão de crédito."
+
+#: 
+msgid "Google Maps API Key used for Geocoding addresses"
+msgstr "Chave da API do Google Maps usada para endereços de geocodificação"
+
+#: 
+msgid "Send an email notifying users when their account has been deleted"
+msgstr "Enviar um e-mail notificando os utilizadores quando sua conta foi excluída"
+
+#: 
+msgid "Google Maps API Key used for rendering maps in browser"
+msgstr "Chave da API do Google Maps usada para renderizar mapas no navegador"
+
+#: 
+msgid "Incorrect password supplied for current user"
+msgstr "Senha incorrecta fornecida para o utilizador actual"
+
+#: 
+msgid "Your new password must not match your old one."
+msgstr "Sua nova senha não deve igual à antiga."
+
+#: 
+msgid "Your new password is too similar to your old one."
+msgstr "Sua nova senha é muito semelhante à antiga."
+
+#: 
+msgid "Password reset not availble.  Please contact your system administrator"
+msgstr "A redefinição de senha não está disponível. Entre em contacto com o administrador do sistema"
+
+#: 
+msgid "Authentication Issue"
+msgstr "Problema de autenticação"
+
+#: 
+msgid "Enter new user password. Administratively set passwords are not subject to length or complexity requirements"
+msgstr "Digite a nova senha do utilizador. As senhas definidas administrativamente não estão sujeitas a requisitos de comprimento ou complexidade"
 

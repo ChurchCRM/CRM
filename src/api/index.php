@@ -70,6 +70,7 @@ require __DIR__ . '/routes/cart.php';
 require __DIR__ . '/routes/background.php';
 require __DIR__ . '/routes/geocoder.php';
 require __DIR__ . '/routes/kiosks.php';
+require __DIR__ . '/routes/email/mailchimp.php';
 require __DIR__ . '/routes/search.php';
 require __DIR__ . '/routes/users/users-admin.php';
 require __DIR__ . '/routes/users/user-current.php';

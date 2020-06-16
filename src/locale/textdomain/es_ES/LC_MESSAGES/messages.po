@@ -1378,10 +1378,6 @@ msgid "Role"
 msgstr "Cargo"
 
 #: 
-msgid "Day"
-msgstr "Día"
-
-#: 
 msgid "Select Gender"
 msgstr "Seleccione Género"
 
@@ -3350,20 +3346,8 @@ msgid "Failed Logins"
 msgstr "Ingresos fallidos"
 
 #: 
-msgid "You must enter a password in both boxes"
-msgstr "Debe entrar una contraseña en ambos espacios"
-
-#: 
 msgid "You must enter the same password in both boxes"
 msgstr "Debe entrar la misma contraseña en ambos espacios"
-
-#: 
-msgid "Invalid password"
-msgstr "Contraseña inválida"
-
-#: 
-msgid "You must enter your new password in both boxes"
-msgstr "Debe entrar su nueva contraseña en ambos espacios"
 
 #: 
 msgid "Your password choice is too obvious. Please choose something else."
@@ -3378,32 +3362,12 @@ msgid "characters"
 msgstr "caracteres"
 
 #: 
-msgid "You need to actually change your password (nice try, though!)"
-msgstr "necesita cambiar su contraseña (buen intento)"
-
-#: 
-msgid "Your new password is too similar to your old one.  Be more creative!"
-msgstr "Su nueva contraseña en muy similiar a la anterior. Sea más creativo!"
-
-#: 
-msgid "User Password Change"
-msgstr "Cambio de contraseña"
-
-#: 
-msgid "Your account record indicates that you need to change your password before proceding."
-msgstr "El registro de su cuenta indica que debe cambiar su contraseña antes de proceder"
-
-#: 
 msgid "Enter your current password, then your new password twice.  Passwords must be at least"
 msgstr "Introduzca su contraseña actual, luego su nueva contraseña dos veces. Las contraseñas deben tener al menos"
 
 #: 
 msgid "characters in length."
 msgstr "caracteres de largo."
-
-#: 
-msgid "Enter a new password for this user."
-msgstr "introduzca una nueva contraseña para este usuario"
 
 #: 
 msgid "Old Password"
@@ -4657,10 +4621,6 @@ msgstr "Restauración Corriendo, Por favor espere."
 #: 
 msgid "Family Members:"
 msgstr "Miembros"
-
-#: 
-msgid "Event"
-msgstr "Evento"
 
 #: 
 msgid "Anniversary"
@@ -6830,7 +6790,7 @@ msgstr "Háganos saber que esta usando este software"
 
 #: 
 msgid "Unable to load verification info"
-msgstr "No es posible cargar la información de verificación"
+msgstr "No fue posible cargar la información de verificación"
 
 #: 
 msgid "No Changes"
@@ -7042,11 +7002,6 @@ msgstr "Falló"
 #: 
 msgid "The previous integrity check passed.  All system file hashes match the expected values."
 msgstr "Las evaluaciones de integridad previas pasaron. Todos los hash de archivos del sistema coinciden con los valores esperados."
-
-#: 
-#, fuzzy
-msgid "Google map API requires a unique key"
-msgstr "La API de Google maps requiere una clave única de https://developers.google.com/maps/documentation/javascript/get-api-key"
 
 #: 
 msgid "Church Checking Account Number"
@@ -7591,15 +7546,11 @@ msgstr "Como parte de la restauración, respaldos externos han sido inhabilitado
 
 #: 
 msgid "Unable to reset password"
-msgstr "No es posible restablecer la contraseña"
+msgstr "No fue posible restablecer la contraseña"
 
 #: 
 msgid "Reset your password"
 msgstr "Restablecer su contraseña"
-
-#: 
-msgid "Check your email for a password reset link"
-msgstr "Revise su email para un enlace de restablecimiento de contraseña"
 
 #: 
 msgid "Sorry, we are unable to process your request at this point in time."
@@ -8277,18 +8228,6 @@ msgid "Set the encryption system to use - ssl (deprecated) or tls"
 msgstr "Establecer el sistema de cifrado a usar - ssl (deprecado) o tls"
 
 #: 
-msgid "Lock"
-msgstr "bloquear"
-
-#: 
-msgid "Enter your password to retrieve your session"
-msgstr "Ingrese su contraseña para obtener su sesión"
-
-#: 
-msgid "Or sign in as a different user"
-msgstr "O ingresar como un usuario diferente"
-
-#: 
 msgid "Dashboard Service dynamic asynchronous refresh interval, default 60 second"
 msgstr "Intervalo de actualización del Servicio de Dashboard, 60 segundos por defecto"
 
@@ -8574,7 +8513,7 @@ msgstr "Fondos de Donaciones"
 
 #: 
 msgid "Unable to open file"
-msgstr "No es posible abrir el archivo"
+msgstr "No fue posible abrir el archivo"
 
 #: 
 msgid "Invalid upgrade file specified"
@@ -8583,15 +8522,6 @@ msgstr "Archivo de actualización inválido"
 #: 
 msgid "Failure executing upgrade script"
 msgstr "Falla al ejecutar script de actualización"
-
-#: 
-msgid "logged via API Key."
-msgstr "conectado vía Llave de API."
-
-#. Invalid
-#: 
-msgid "logged via InValid API Key."
-msgstr "conectado vía Llave de API invalida."
 
 #: 
 msgid "Missing calendar access token"
@@ -9010,4 +8940,273 @@ msgstr "Para mayor información por favor revise los logs"
 #: 
 msgid "Verification URL"
 msgstr "URL de verificación"
+
+#: 
+msgid "Reset System"
+msgstr "Restablecer Sistema"
+
+#: 
+msgid "Unexpected Person Id"
+msgstr "Id de Persona Inesperado"
+
+#: 
+msgid "Interval in Hours for software update check"
+msgstr "Intervalo en Horas para comprobar actualizaciones de software"
+
+#: 
+msgid "Last Software Update Check Timestamp"
+msgstr "Marca de Tiempo de Última Comprobación de Actualización de Software"
+
+#: 
+msgid "Allow system upgrades to release marked as 'pre release' on GitHub"
+msgstr "Permitir actualizaciones de sistema marcadas como 'pre-release' en GitHub"
+
+#: 
+msgid "Search Calendar Events"
+msgstr "Buscar Eventos de Calendario"
+
+#: 
+msgid "Maximum number of Calendar Events"
+msgstr "Número máximo de Eventos de Calendario"
+
+#: 
+msgid "%d month old"
+msgid_plural "%d months old"
+msgstr[0] "%d mes de edad"
+msgstr[1] "%d meses de edad"
+
+#: 
+msgid "%d year old"
+msgid_plural "%d years old"
+msgstr[0] "%d año de edad"
+msgstr[1] "%d años de edad"
+
+#: 
+msgid "Database upgrade failed"
+msgstr "Actualización de Base de Datos Falló"
+
+#: 
+msgid "Unsupported PHP Version"
+msgstr "Versión de PHP no soportada"
+
+#: 
+msgid "Support for this PHP version will soon be removed.  Current PHP Version: "
+msgstr "El soporte para esta versión de PHP va a ser terminado. Versión actual de PHP: "
+
+#: 
+msgid "Missing PHP ZipArchive"
+msgstr "Archivo Zip de PHP Falta"
+
+#: 
+msgid "PHP ZipArchive required to support upgrade"
+msgstr "Archivo Zip de PHP es requerido para actualizar"
+
+#: 
+msgid "See all People"
+msgstr "Ver todas las Personas"
+
+#: 
+msgid "Add Results to Cart"
+msgstr "Agregar Resultados al Separador"
+
+#: 
+msgid "Remove Results from Cart"
+msgstr "Remover Resultados del Separador"
+
+#: 
+msgid "Warning: Pre-Upgrade Tasks Detected"
+msgstr "Advertencia: Tareas de Pre-Actualización Detectadas"
+
+#: 
+msgid "Some conditions have been identified wich may prevent a successful upgrade"
+msgstr "Algunas condiciones han sido identificadas, las que pueden evitar una actualización satisfactoria."
+
+#: 
+msgid "Please review and mitigate these tasks before continuing with the upgrade:"
+msgstr "Por favor revise estas tareas antes de continuar con la actualización:"
+
+#: 
+msgid "Database Reset Functions"
+msgstr "Funciones de Restablecimiento de Base de Datos"
+
+#: 
+msgid "Reset Members"
+msgstr "Restablecer Miembros"
+
+#: 
+msgid "This will remove all the member data, people, and families and can't be undone."
+msgstr "Esto eliminará todos los datos de miembros, personas y familias, no puede ser revertido."
+
+#: 
+msgid "Reset Families/People"
+msgstr "Restablecer Familias/Personas"
+
+#: 
+msgid "Reset Database"
+msgstr "Restablecer Base de Datos"
+
+#: 
+msgid "This will reset the system data and will restart the system as a new install."
+msgstr "Esto restablecerá los datos del sistema y lo reiniciará como una nueva instalación."
+
+#: 
+msgid "Clear Filter"
+msgstr "Borrar Filtro"
+
+#: 
+msgid "Add Person"
+msgstr "Agregar Persona"
+
+#: 
+msgid "Portuguese - Portugal"
+msgstr "Portugués - Portugal"
+
+#: 
+msgid "Holiday"
+msgstr "Día Festivo"
+
+#: 
+msgid "Allow users to self-enroll in 2 factor authentication"
+msgstr "Permitir que usuarios se enrolen con autenticación de 2 factores"
+
+#: 
+msgid "Requires users to self-enroll in 2 factor authentication"
+msgstr "Requiere que usuarios se enrolen con autenticación de 2 factores"
+
+#: 
+msgid "ChurchCRM"
+msgstr "ChurchCRM"
+
+#: 
+msgid "Specify the application name to be displayed in authenticator app"
+msgstr "Especifique el nombre de aplicación que será mostrado en la app de autenticación"
+
+#: 
+msgid "Secret Keys missing from Config.php"
+msgstr "Faltan Secret Keys en Config.php"
+
+#: 
+msgid "Review"
+msgstr "Revisar"
+
+#: 
+msgid "Thank you for registering your family"
+msgstr "Gracias por registrar a su familia"
+
+#: 
+msgid "Register another family!"
+msgstr "Registre otra familia!"
+
+#: 
+msgid "Done, show me the homepage!"
+msgstr "Listo, muéstrame la página de inicio!"
+
+#: 
+msgid "User authenticated via API Key: "
+msgstr "Usuario autenticado via API Key: "
+
+#: 
+msgid "Unsuccessful API Key authentication attempt"
+msgstr "Intento de autenticación via API KEY fallido"
+
+#: 
+msgid "Unpinned Events"
+msgstr "Eventos Desanclados"
+
+#: 
+msgid "LastName, FirstName MiddleName"
+msgstr "Apellido, PrimerNombre SegundoNombre"
+
+#: 
+msgid "Manage 2 Factor Authentication"
+msgstr "Gestionar Autenticación de 2 Factores"
+
+#: 
+msgid "Two Factor Status"
+msgstr "Estado de 2 Factores"
+
+#: 
+msgid "Please confirm disabling 2 Factor Auth for this user"
+msgstr "Por favor confirme la deshabilitación de la Autenticación de 2 Factores para este usuario"
+
+#: 
+msgid "Please enter 2FA code"
+msgstr "Por favor ingrese el código 2FA"
+
+#: 
+msgid "2FA Code"
+msgstr "Código 2FA"
+
+#: 
+msgid "2 Factor Authentication enrollment"
+msgstr "Enrolamiento de Autenticación de 2 Factores"
+
+#: 
+msgid "Unsupported Two Factor Authentication Configuration"
+msgstr "Configuración de Autenticación de 2 Factores no soportada"
+
+#: 
+msgid "Unable To Begin Two Factor Authentication Enrollment"
+msgstr "No fue posible comenzar con el enrolamiento con Autenticación de 2 Factores"
+
+#: 
+msgid "Two factor authentication requires ChurchCRM administrators to configure a few parameters"
+msgstr "La  Autenticación de 2 Factores requiere que administradores de ChurchCRM configuren algunos parámetros"
+
+#: 
+msgid "System configuration "
+msgstr "Configuración de Sistema "
+
+#: 
+msgid "Must be set to 'true'"
+msgstr "Debe estar ajustado a 'true'"
+
+#: 
+msgid "Include/Config.php must define an encryption key for storing 2FA secret keys in the database by setting a value for"
+msgstr "Include/Config.php debe definir una llave de encriptación para almacenar las llaves secretas de 2FA en la base de datos"
+
+#: 
+msgid "Credit Card People"
+msgstr "Personas con Tarjetas de Crédito"
+
+#: 
+msgid "People who are configured to pay by credit card."
+msgstr "Personas configuradas para pagar con tarjeta de crédito"
+
+#: 
+msgid "Google Maps API Key used for Geocoding addresses"
+msgstr "API Key de Google Maps usada para georeferenciar direcciones"
+
+#: 
+msgid "Send an email notifying users when their account has been deleted"
+msgstr "Enviar un correo notificando a usuarios cuando se les haya borrado su cuenta"
+
+#: 
+msgid "Google Maps API Key used for rendering maps in browser"
+msgstr "API Key de Google Maps usada para mostrar mapas en el navegador"
+
+#: 
+msgid "Incorrect password supplied for current user"
+msgstr "Contraseña para el usuario actual incorrecta"
+
+#: 
+msgid "Your new password must not match your old one."
+msgstr "Su nueva contraseña no debe ser igual a la anterior."
+
+#: 
+msgid "Your new password is too similar to your old one."
+msgstr "Su nueva contraseña es demasiado similar a la anterior."
+
+#. Availble
+#: 
+msgid "Password reset not availble.  Please contact your system administrator"
+msgstr "Restablecimiento de Contraseña no disponible. Por favor contacte al administrador de su sistema."
+
+#: 
+msgid "Authentication Issue"
+msgstr "Problema de Autenticación"
+
+#: 
+msgid "Enter new user password. Administratively set passwords are not subject to length or complexity requirements"
+msgstr "Ingrese una nueva contraseña de usuario. Contraseñas establecidas administrativamente no están sujetas a requerimientos de extensión o complejidad."
 

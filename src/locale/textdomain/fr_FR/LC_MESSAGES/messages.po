@@ -1383,10 +1383,6 @@ msgid "Role"
 msgstr "Rôle"
 
 #: 
-msgid "Day"
-msgstr "Jour"
-
-#: 
 msgid "Select Gender"
 msgstr "Sélectionner le sexe"
 
@@ -3352,20 +3348,8 @@ msgid "Failed Logins"
 msgstr "Échec de Connexion"
 
 #: 
-msgid "You must enter a password in both boxes"
-msgstr "Vous devez entrer un mot de passe dans les deux champs"
-
-#: 
 msgid "You must enter the same password in both boxes"
 msgstr "Vous devez entrer le même mot de passe dans des les deux champs"
-
-#: 
-msgid "Invalid password"
-msgstr "Mot de passe invalide"
-
-#: 
-msgid "You must enter your new password in both boxes"
-msgstr "Vous devez entrer votre nouveau mot de passe dans les deux champs"
 
 #: 
 msgid "Your password choice is too obvious. Please choose something else."
@@ -3380,32 +3364,12 @@ msgid "characters"
 msgstr "caractères"
 
 #: 
-msgid "You need to actually change your password (nice try, though!)"
-msgstr "Vous devez réellement changer votre mot de passe (bien tenté quand même!)"
-
-#: 
-msgid "Your new password is too similar to your old one.  Be more creative!"
-msgstr "Votre nouveau mot de passe est trop similaire à l'ancien. Soyez plus créatif!"
-
-#: 
-msgid "User Password Change"
-msgstr "Changement du Mot de Passe Utilisateur"
-
-#: 
-msgid "Your account record indicates that you need to change your password before proceding."
-msgstr "Les données de votre compte indiquent que vous devez changer votre mot de passe avant de continuer."
-
-#: 
 msgid "Enter your current password, then your new password twice.  Passwords must be at least"
 msgstr "Entrer votre mot de passe actuel, puis votre nouveau mot de passe deux fois.  Les mots de passe doivent avoir au moins"
 
 #: 
 msgid "characters in length."
 msgstr "caractères."
-
-#: 
-msgid "Enter a new password for this user."
-msgstr "Entrez un nouveau mot de passe pour cet utilisateur."
 
 #: 
 msgid "Old Password"
@@ -4659,10 +4623,6 @@ msgstr "Restauration en cours, veuillez patienter."
 #: 
 msgid "Family Members:"
 msgstr "Membres de la Famille:"
-
-#: 
-msgid "Event"
-msgstr "Evénement"
 
 #: 
 msgid "Anniversary"
@@ -7013,10 +6973,6 @@ msgid "The previous integrity check passed.  All system file hashes match the ex
 msgstr "La vérification d'intégrité précédentes est validée. Tout le système de hash de fichier correspondent aux conditions requises."
 
 #: 
-msgid "Google map API requires a unique key"
-msgstr "Api Google requière une clé unique"
-
-#: 
 msgid "Church Checking Account Number"
 msgstr "Vérification du numéro de compte de l'église"
 
@@ -7564,10 +7520,6 @@ msgstr "Impossible de réinitialiser le Mot de Passe"
 #: 
 msgid "Reset your password"
 msgstr "Réinitialiser votre Mot de Passe"
-
-#: 
-msgid "Check your email for a password reset link"
-msgstr "Veuillez vérifier votre boîte mail pour un lien de réinitialisation de votre Mot de Passe."
 
 #: 
 msgid "Sorry, we are unable to process your request at this point in time."
@@ -8242,18 +8194,6 @@ msgid "Set the encryption system to use - ssl (deprecated) or tls"
 msgstr "Activer le système de cryptage pour utiliser SSL (deprecated) ou TLS"
 
 #: 
-msgid "Lock"
-msgstr "Verrouiller la session"
-
-#: 
-msgid "Enter your password to retrieve your session"
-msgstr "Saisir votre mot de passe pour revenir à votre session"
-
-#: 
-msgid "Or sign in as a different user"
-msgstr "Ou choisir un autre utilisateur afin de vous vous connecter"
-
-#: 
 msgid "Dashboard Service dynamic asynchronous refresh interval, default 60 second"
 msgstr "Intervalle de rafraîchissement asynchrone dynamique du Tableau de Bord, 60 secondes par défaut"
 
@@ -8548,14 +8488,6 @@ msgstr "Fichier de mise à jour invalide"
 #: 
 msgid "Failure executing upgrade script"
 msgstr "Erreur lors de l'exécution du script de mise à jour"
-
-#: 
-msgid "logged via API Key."
-msgstr "connecté avec une clé API."
-
-#: 
-msgid "logged via InValid API Key."
-msgstr "connecté avec une clé API invalide."
 
 #: 
 msgid "Missing calendar access token"
@@ -8883,6 +8815,10 @@ msgid "Verification recorded"
 msgstr "Vérification enregistrée"
 
 #: 
+msgid "Verification URL created"
+msgstr "URL de vérification créée"
+
+#: 
 msgid "URL"
 msgstr "URL"
 
@@ -8901,4 +8837,100 @@ msgstr "Regardez dans les traces (logs) pour plus d'information"
 #: 
 msgid "Verification URL"
 msgstr "URL de vérification"
+
+#: 
+msgid "Reset System"
+msgstr "Réinitialisation"
+
+#: 
+msgid "Unexpected Person Id"
+msgstr "Identifiant incorrect"
+
+#: 
+msgid "Interval in Hours for software update check"
+msgstr "Périodicité de vérification de mises à jour"
+
+#: 
+msgid "Last Software Update Check Timestamp"
+msgstr "Dernière mise à jour"
+
+#: 
+msgid "%d month old"
+msgid_plural "%d months old"
+msgstr[0] "il y a %d mois"
+msgstr[1] "il y a %d mois"
+
+#: 
+msgid "%d year old"
+msgid_plural "%d years old"
+msgstr[0] "il y a %d an"
+msgstr[1] "il y a %d ans"
+
+#: 
+msgid "Database upgrade failed"
+msgstr "Mise à jour de la base de données échouée"
+
+#: 
+msgid "Unsupported PHP Version"
+msgstr "Version de PHP non supportée"
+
+#: 
+msgid "See all People"
+msgstr "Voir tout le monde"
+
+#: 
+msgid "Add Results to Cart"
+msgstr "Ajouter les résultats au panier"
+
+#: 
+msgid "Remove Results from Cart"
+msgstr "Enlever les résultats du panier"
+
+#: 
+msgid "Reset Families/People"
+msgstr "Réinitialiser les familles/individus"
+
+#: 
+msgid "Reset Database"
+msgstr "Réinitialiser la base"
+
+#: 
+msgid "This will reset the system data and will restart the system as a new install."
+msgstr "Ceci réinitialisera le système et redémarrera comme une nouvelle installation"
+
+#: 
+msgid "Clear Filter"
+msgstr "Supprimer filtres"
+
+#: 
+msgid "Add Person"
+msgstr "Ajouter un individu"
+
+#: 
+msgid "Portuguese - Portugal"
+msgstr "Portugais - Portugal"
+
+#: 
+msgid "Holiday"
+msgstr "Vacances"
+
+#: 
+msgid "ChurchCRM"
+msgstr "ChurchCRM"
+
+#: 
+msgid "2 Factor Authentication enrollment"
+msgstr "Souscrire à l'authentification à 2 facteurs"
+
+#: 
+msgid "Unsupported Two Factor Authentication Configuration"
+msgstr "Authentification à 2 facteurs non supportée"
+
+#: 
+msgid "Unable To Begin Two Factor Authentication Enrollment"
+msgstr "Impossible de démarrer le souscription de l'authentification à 2 facteurs"
+
+#: 
+msgid "Two factor authentication requires ChurchCRM administrators to configure a few parameters"
+msgstr "L'authentification à 2 facteurs nécessite une intervention de l'administrateur ChurchCRM"
 

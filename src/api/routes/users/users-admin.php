@@ -9,6 +9,9 @@ use ChurchCRM\UserConfigQuery;
 use ChurchCRM\UserQuery;
 use Slim\Http\Request;
 use Slim\Http\Response;
+use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\Utils\LoggerUtils;
 
 $app->group('/users', function () {
 
@@ -22,12 +25,22 @@ $app->group('/users', function () {
             if ($email->send()) {
                 return $response->withStatus(200);
             } else {
-                $this->Logger->error($email->getError());
+                LoggerUtils::getAppLogger()->error($email->getError());
                 throw new \Exception($email->getError());
             }
         } else {
             return $response->withStatus(404, gettext("Bad userId"));
         }
+    });
+
+    $this->post('/{userId:[0-9]+}/disableTwoFactor', function ($request, $response, $args) {
+        $user = UserQuery::create()->findPk($args['userId']);
+        if (!is_null($user)) {
+           $user->disableTwoFactorAuthentication();
+        } else {
+            return $response->withStatus(404, gettext("Bad userId"));
+        }
+        return $response->withStatus(200);
     });
 
     $this->post('/{userId:[0-9]+}/login/reset', function ($request, $response, $args) {
@@ -38,7 +51,7 @@ $app->group('/users', function () {
             $user->createTimeLineNote("login-reset");
             $email = new UnlockedEmail($user);
             if (!$email->send()) {
-                $this->Logger->warn($email->getError());
+                LoggerUtils::getAppLogger()->warn($email->getError());
             }
             return $response->withStatus(200);
         } else {
@@ -53,10 +66,13 @@ $app->group('/users', function () {
             if (!is_null($userConfig)) {
                 $userConfig->delete();
             }
-            $email = new AccountDeletedEmail($user);
+            
             $user->delete();
-            if (!$email->send()) {
-                $this->Logger->warn($email->getError());
+            if (SystemConfig::getBooleanValue("bSendUserDeletedEmail")) {
+                $email = new AccountDeletedEmail($user);
+                if (!$email->send()) {
+                    LoggerUtils::getAppLogger()->warn($email->getError());
+                }
             }
             return $response->withJson([]);
         } else {
@@ -69,7 +85,7 @@ $app->group('/users', function () {
 })->add(new AdminRoleAuthMiddleware());
 
 $app->post('/users/{userId:[0-9]+}/apikey/regen', function ($request, $response, $args) {
-    $curUser = $_SESSION['user'];
+    $curUser = AuthenticationManager::GetCurrentUser();
     $userId = $args['userId'];
     if (!$curUser->isAdmin() && $curUser->getId() != $userId) {
         return $response->withStatus(403);

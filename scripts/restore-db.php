@@ -8,6 +8,7 @@ $sUSER = "";
 $sPASSWORD = "";
 $sDATABASE = "";
 $dbPort = "";
+$restoreDemoDb = $argv[1] == "demo";
 
 function extract_config_values($value){
 
@@ -61,10 +62,21 @@ try {
           $mysqli->query('DROP TABLE IF EXISTS '.$row[0]);
       }
   }
+  //  this is a bit hacky, but anything left in TABLES here must be a view
+  if ($result = $mysqli->query("SHOW TABLES"))
+  {
+      while($row = $result->fetch_array(MYSQLI_NUM))
+      {
+          $mysqli->query('DROP VIEW IF EXISTS '.$row[0]);
+      }
+  }
   $mysqli->query('SET foreign_key_checks = 1');
-  echo "Tables deleted, restoring demo db\n";
-  SQLUtils::sqlImport(dirname(__FILE__)."/../demo/ChurchCRM-Database.sql", $mysqli);
-  echo "Demo db restored\n\n";
+  echo "Tables deleted\n";
+  if ($restoreDemoDb) {
+    echo "restoring demo db\n";
+    SQLUtils::sqlImport(dirname(__FILE__)."/../demo/ChurchCRM-Database.sql", $mysqli);
+    echo "Demo db restored\n\n";
+  }
 }
 catch (\Exception $e) {
   echo "Error restoring database: $e";

@@ -9,7 +9,7 @@
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\SessionUser;
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Bootstrapper;
 use ChurchCRM\ListOptionQuery;
 use ChurchCRM\GroupQuery;
@@ -42,7 +42,7 @@ foreach($ListItem as $element) {
 $ListItem = PersonCustomMasterQuery::create()->select(['Name', 'FieldSecurity'])->find();
 $CustomList[] = "Unassigned";
 foreach ($ListItem as $element) {
-    if (SessionUser::getUser()->isEnabledSecurity($element["FieldSecurity"])) {
+    if (AuthenticationManager::GetCurrentUser()->isEnabledSecurity($element["FieldSecurity"])) {
         $CustomList[] = $element["Name"];
     }
 }
@@ -234,7 +234,7 @@ foreach ($ListItem as $element) {
             // sortby name
             order: [[ 2, "asc" ]],
             // setup location of table control elements
-            dom: "<'row'<'col-sm-4'<?= SessionUser::getUser()->isCSVExport() ? "B" : "" ?>><'col-sm-4'r><'col-sm-4 searchStyle'f>>" +
+            dom: "<'row'<'col-sm-4'<?= AuthenticationManager::GetCurrentUser()->isCSVExport() ? "B" : "" ?>><'col-sm-4'r><'col-sm-4 searchStyle'f>>" +
                                 "<'row'<'col-sm-12't>>" +
                                 "<'row'<'col-sm-4'l><'col-sm-4'i><'col-sm-4'p>>",
         });
@@ -284,6 +284,10 @@ foreach ($ListItem as $element) {
             filterColumn(13, $(this).select2('data'), false);
         });
 
+        function escapeRegExp(string) {
+            return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
+        }
+
         // apply filters
         function filterColumn(col, search, regEx) {
             if (search.length === 0) {
@@ -292,15 +296,14 @@ foreach ($ListItem as $element) {
                 var tmp = [];
                 if (regEx) {
                     search.forEach(function(item) {
-                        tmp.push('^'+item.text+'$')});
+                        tmp.push('^'+escapeRegExp(item.text)+'$')});
                 } else {
                     search.forEach(function(item) {
-                    tmp.push('"'+item.text+'"')});
+                    tmp.push('"'+escapeRegExp(item.text)+'"')});
                 }
             }
             // join array into string with regex or (|)
             var val = tmp.join('|');
-            console.log(val);
             // apply search
             oTable.column(col).search(val, 1, 0, 1).draw();
         }
@@ -322,7 +325,7 @@ foreach ($ListItem as $element) {
             $('.filter-Gender').append('<option value='+i+'>'+Gender[i]+'</option>');
             }
         }
-        var ClassificationList = JSON.parse('<?= json_encode($ClassificationList) ?>');
+        var ClassificationList = <?= json_encode($ClassificationList) ?>;
         for (var i = 0; i < ClassificationList.length; i++) {
             // apply initinal filters if applicable
             if (filterByClsId == ClassificationList[i]) {
@@ -334,7 +337,7 @@ foreach ($ListItem as $element) {
             }
         }
         
-        var RoleList = JSON.parse('<?= json_encode($RoleList) ?>');
+        var RoleList = <?= json_encode($RoleList) ?>;
         for (var i = 0; i < RoleList.length; i++) {
             if (filterByFmrId == RoleList[i]) {
                 $('.filter-Role').val(RoleList[i]);
@@ -344,15 +347,15 @@ foreach ($ListItem as $element) {
                 $('.filter-Role').append('<option value='+i+'>'+RoleList[i]+'</option>');
             }
         }
-        var PropertyList = JSON.parse('<?= json_encode($PropertyList) ?>');
+        var PropertyList = <?= json_encode($PropertyList) ?>;
         for (var i = 0; i < PropertyList.length; i++) {
             $('.filter-Properties').append('<option value='+i+'>'+PropertyList[i]+'</option>');
         }
-        var CustomList = JSON.parse('<?= json_encode($CustomList) ?>');
+        var CustomList = <?=  json_encode($CustomList) ?>;
         for (var i = 0; i < CustomList.length; i++) {
             $('.filter-Custom').append('<option value='+i+'>'+CustomList[i]+'</option>');
         }
-        var GroupList = JSON.parse('<?= json_encode($GroupList) ?>');
+        var GroupList = <?= json_encode($GroupList) ?>;
         for (var i = 0; i < GroupList.length; i++) {
             $('.filter-Group').append('<option value='+i+'>'+GroupList[i]+'</option>');
         }

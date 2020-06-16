@@ -122,9 +122,8 @@ msgid "Field Selection"
 msgstr "欄位選擇"
 
 #: 
-#, fuzzy
 msgid "Last Name"
-msgstr "姓氐"
+msgstr "姓氏"
 
 #: 
 msgid "Required"
@@ -574,8 +573,9 @@ msgid "Your cart is empty!"
 msgstr "您的購物車是空的！"
 
 #: 
+#, fuzzy
 msgid "No family name entered!"
-msgstr "沒有輸入家族姓氐！"
+msgstr "沒有輸入家族姓氏！"
 
 #: 
 msgid "Add Cart to Family"
@@ -1426,10 +1426,6 @@ msgstr "最後"
 #: 
 msgid "Role"
 msgstr "角色"
-
-#: 
-msgid "Day"
-msgstr "日"
 
 #: 
 msgid "Select Gender"
@@ -3453,20 +3449,8 @@ msgid "Failed Logins"
 msgstr "登入失敗次數"
 
 #: 
-msgid "You must enter a password in both boxes"
-msgstr "您必須輸入一個密碼，這兩個框"
-
-#: 
 msgid "You must enter the same password in both boxes"
 msgstr "您必須在兩個框中輸入相同的密碼"
-
-#: 
-msgid "Invalid password"
-msgstr "無效的密碼"
-
-#: 
-msgid "You must enter your new password in both boxes"
-msgstr "在這兩個框，您必須輸入您的新密碼"
 
 #: 
 msgid "Your password choice is too obvious. Please choose something else."
@@ -3481,32 +3465,12 @@ msgid "characters"
 msgstr "字符"
 
 #: 
-msgid "You need to actually change your password (nice try, though!)"
-msgstr "您需要更改您的密碼（不錯的嘗試，但！）"
-
-#: 
-msgid "Your new password is too similar to your old one.  Be more creative!"
-msgstr "您的新密碼是你的舊太相似了。更多的創意！"
-
-#: 
-msgid "User Password Change"
-msgstr "用戶密碼更改"
-
-#: 
-msgid "Your account record indicates that you need to change your password before proceding."
-msgstr "您的帳戶記錄表明操作前，您需要更改您的密碼。"
-
-#: 
 msgid "Enter your current password, then your new password twice.  Passwords must be at least"
 msgstr "請輸入您的當前密碼，然後兩次新密碼。密碼必須至少"
 
 #: 
 msgid "characters in length."
 msgstr "字符的長度。"
-
-#: 
-msgid "Enter a new password for this user."
-msgstr "輸入此用戶的密碼。"
 
 #: 
 #, fuzzy
@@ -4789,10 +4753,6 @@ msgstr "正在恢復運行，請稍候。"
 #: 
 msgid "Family Members:"
 msgstr "家庭成員："
-
-#: 
-msgid "Event"
-msgstr "活動"
 
 #: 
 msgid "Anniversary"
@@ -7165,10 +7125,6 @@ msgid "The previous integrity check passed.  All system file hashes match the ex
 msgstr "已通過完整性檢查。所有系統文件都與預期值哈希匹配。"
 
 #: 
-msgid "Google map API requires a unique key"
-msgstr "Google地圖API需要唯一的密鑰"
-
-#: 
 msgid "Church Checking Account Number"
 msgstr "教堂檢查帳號"
 
@@ -7718,10 +7674,6 @@ msgstr "無法重置密碼"
 #: 
 msgid "Reset your password"
 msgstr "重置你的密碼"
-
-#: 
-msgid "Check your email for a password reset link"
-msgstr "請檢查您的電子郵件以獲取密碼重置鏈接"
 
 #: 
 msgid "Sorry, we are unable to process your request at this point in time."
@@ -8407,20 +8359,6 @@ msgid "Set the encryption system to use - ssl (deprecated) or tls"
 msgstr "將加密系統設置為使用 - ssl（不建議使用）或tls"
 
 #: 
-msgid "Lock"
-msgstr "鎖"
-
-#: 
-#, fuzzy
-msgid "Enter your password to retrieve your session"
-msgstr "輸入您的密碼來恢復瀏覽"
-
-#: 
-#, fuzzy
-msgid "Or sign in as a different user"
-msgstr "或以其他用戶身份登入"
-
-#: 
 msgid "Dashboard Service dynamic asynchronous refresh interval, default 60 second"
 msgstr "儀表板服務動態異步刷新間隔，默認為60秒"
 
@@ -8719,14 +8657,6 @@ msgstr "指定的升級文件無效"
 #: 
 msgid "Failure executing upgrade script"
 msgstr "執行升級腳本失敗"
-
-#: 
-msgid "logged via API Key."
-msgstr "通過API密鑰記錄。"
-
-#: 
-msgid "logged via InValid API Key."
-msgstr "通過無效的API密鑰記錄。"
 
 #: 
 msgid "Missing calendar access token"
@@ -9201,11 +9131,6 @@ msgstr "不預期的人員代碼"
 
 #: 
 #, fuzzy
-msgid "LastName, FirstName MiddleName:8"
-msgstr "名,姓,中間名:8"
-
-#: 
-#, fuzzy
 msgid "Interval in Hours for software update check"
 msgstr "軟件更新檢查的間隔小時"
 
@@ -9338,21 +9263,6 @@ msgstr "新增人員"
 
 #: 
 #, fuzzy
-msgid "Select the desired event"
-msgstr "選擇所需的事件"
-
-#: 
-#, fuzzy
-msgid "Missing people"
-msgstr "失蹤人員"
-
-#: 
-#, fuzzy
-msgid "Find people who didn't attend an event"
-msgstr "查找未參加活動的人"
-
-#: 
-#, fuzzy
 msgid "Portuguese - Portugal"
 msgstr "葡萄牙語-葡萄牙"
 
@@ -9360,4 +9270,166 @@ msgstr "葡萄牙語-葡萄牙"
 #, fuzzy
 msgid "Holiday"
 msgstr "假日"
+
+#: 
+#, fuzzy
+msgid "Allow users to self-enroll in 2 factor authentication"
+msgstr "允許用戶自行註冊兩因素身份驗證"
+
+#: 
+#, fuzzy
+msgid "Requires users to self-enroll in 2 factor authentication"
+msgstr "要求用戶自行註冊兩因素身份驗證"
+
+#: 
+#, fuzzy
+msgid "ChurchCRM"
+msgstr "ChurchCRM"
+
+#: 
+#, fuzzy
+msgid "Specify the application name to be displayed in authenticator app"
+msgstr "指定要在驗證器應用程序中顯示的應用程序名稱"
+
+#: 
+#, fuzzy
+msgid "Secret Keys missing from Config.php"
+msgstr "Config.php中缺少密鑰"
+
+#: 
+#, fuzzy
+msgid "Review"
+msgstr "檢閱"
+
+#: 
+#, fuzzy
+msgid "Thank you for registering your family"
+msgstr "感謝您為家人註冊"
+
+#: 
+#, fuzzy
+msgid "Register another family!"
+msgstr "註冊另一個家庭！"
+
+#: 
+#, fuzzy
+msgid "Done, show me the homepage!"
+msgstr "完成，轉至主頁！"
+
+#: 
+msgid "User authenticated via API Key: "
+msgstr "用戶通過API密鑰進行身份驗證: "
+
+#: 
+msgid "Unsuccessful API Key authentication attempt"
+msgstr "API密鑰身份驗證嘗試失敗"
+
+#: 
+msgid "Unpinned Events"
+msgstr "未釘選事件"
+
+#: 
+msgid "LastName, FirstName MiddleName"
+msgstr "姓, 名 中間名"
+
+#: 
+msgid "Manage 2 Factor Authentication"
+msgstr "管理雙重認證"
+
+#: 
+msgid "Two Factor Status"
+msgstr "雙重認證狀態"
+
+#: 
+msgid "Please confirm disabling 2 Factor Auth for this user"
+msgstr "請確認為此用戶禁用雙重認證"
+
+#: 
+msgid "Please enter 2FA code"
+msgstr "請輸入雙重認證代碼"
+
+#: 
+msgid "2FA Code"
+msgstr "雙重認證代碼"
+
+#: 
+msgid "2 Factor Authentication enrollment"
+msgstr "雙重認證代碼註冊"
+
+#: 
+msgid "Unsupported Two Factor Authentication Configuration"
+msgstr "不支持的雙重認證配置"
+
+#: 
+msgid "Unable To Begin Two Factor Authentication Enrollment"
+msgstr "無法開始雙重認證註冊"
+
+#: 
+msgid "Two factor authentication requires ChurchCRM administrators to configure a few parameters"
+msgstr "雙重認證要求ChurchCRM管理員配置一些參數"
+
+#: 
+msgid "System configuration "
+msgstr "系統配置 "
+
+#: 
+msgid "Must be set to 'true'"
+msgstr "必須設置為'true'"
+
+#: 
+msgid "Include/Config.php must define an encryption key for storing 2FA secret keys in the database by setting a value for"
+msgstr "Include / Config.php必須通過為以下項設置值來定義用於在數據庫中存儲雙重認證秘密密鑰的加密密鑰"
+
+#: 
+msgid "Credit Card People"
+msgstr "信用卡人"
+
+#: 
+msgid "People who are configured to pay by credit card."
+msgstr "配置為通過信用卡付款的人。"
+
+#: 
+#, fuzzy
+msgid "Google Maps API Key used for Geocoding addresses"
+msgstr "用於地址解析的Google Maps API密鑰"
+
+#: 
+#, fuzzy
+msgid "Send an email notifying users when their account has been deleted"
+msgstr "發送電子郵件通知用戶帳戶被刪除"
+
+#: 
+#, fuzzy
+msgid "Google Maps API Key used for rendering maps in browser"
+msgstr "Google Maps API密鑰用於在瀏覽器中呈現地圖"
+
+#: 
+#, fuzzy
+msgid "Incorrect password supplied for current user"
+msgstr "當前用戶提供的密碼不正確"
+
+#: 
+#, fuzzy
+msgid "Your new password must not match your old one."
+msgstr "您的新密碼與舊密碼不匹配。"
+
+#: 
+#, fuzzy
+msgid "Your new password is too similar to your old one."
+msgstr "您的新密碼與舊密碼過於相似。"
+
+#: 
+#, fuzzy
+msgid "Password reset not availble.  Please contact your system administrator"
+msgstr "密碼重置不可用。請聯繫您的系統管理員"
+
+#: 
+#, fuzzy
+msgid "Authentication Issue"
+msgstr "認證問題"
+
+#: 
+#, fuzzy
+msgid "Enter new user password. Administratively set passwords are not subject to length or complexity requirements"
+msgstr "輸入新的用戶密碼。管理設置的密碼不受長度或複雜性要求的限制"
 

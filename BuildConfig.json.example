@@ -1,5 +1,6 @@
 {
     "POEditor": {
+        "id": "77079",
         "token": ""
     },
     "GitHub": {
@@ -17,6 +18,16 @@
             "features/System/SystemSettings.feature"
         ]
     },
-    "demoKey": ""
-    
+    "demoKey": "",
+    "Env": {
+            "local": {
+                "database": {
+                    "server": "localhost",
+                    "port" : "3309",
+                    "database": "churchcrm",
+                    "user":"churchcrm",
+                    "password": "churchcrm"
+                }
+            }
+        }
 }

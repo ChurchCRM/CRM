@@ -238,13 +238,22 @@
             "3.5.5"
         ],
         "scripts": [
-            "/mysql/upgrade/TwoFactorAuth.sql"
+            "/mysql/upgrade/4.0.0-TwoFactorAuth.sql"
         ],
         "dbVersion": "4.0.0"
     },
     "current": {
-        "versions": [],
-        "scripts": [],
-        "dbVersion": "4.0.0"
+        "versions": [
+            "4.0.0",
+            "4.0.1",
+            "4.0.2",
+            "4.0.3",
+            "4.0.4",
+            "4.0.5"
+        ],
+        "scripts": [
+            "/mysql/upgrade/4.1.0-cleanup.sql"
+        ],
+        "dbVersion": "4.1.0"
     }
 }

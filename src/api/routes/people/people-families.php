@@ -10,6 +10,7 @@ use ChurchCRM\Person;
 use ChurchCRM\Token;
 use ChurchCRM\TokenQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
+use ChurchCRM\Authentication\AuthenticationManager;
 
 $app->group('/families', function () {
 
@@ -121,7 +122,7 @@ $app->group('/families', function () {
                 $note->setText(gettext('Activated the Family'));
             }
             $note->setType('edit');
-            $note->setEntered($_SESSION['user']->getId());
+            $note->setEntered(AuthenticationManager::GetCurrentUser()->getId());
             $note->save();
         }
         return $response->withJson(['success' => true]);

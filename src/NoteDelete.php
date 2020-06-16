@@ -15,10 +15,11 @@ require 'Include/Functions.php';
 use ChurchCRM\NoteQuery;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\Authentication\AuthenticationManager;
 
 // Security: User must have Notes permission
 // Otherwise, re-direct them to the main menu.
-if (!$_SESSION['user']->isNotesEnabled()) {
+if (!AuthenticationManager::GetCurrentUser()->isNotesEnabled()) {
     RedirectUtils::Redirect('Menu.php');
     exit;
 }

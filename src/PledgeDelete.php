@@ -14,6 +14,7 @@ require 'Include/Functions.php';
 
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\Authentication\AuthenticationManager;
 
 //Set the page title
 $sPageTitle = gettext('Confirm Delete');
@@ -23,7 +24,7 @@ $sGroupKey = InputUtils::LegacyFilterInput($_GET['GroupKey'], 'string');
 
 // Security: User must have Add or Edit Records permission to use this form in those manners
 // Clean error handling: (such as somebody typing an incorrect URL ?PersonID= manually)
-if (!$_SESSION['user']->isDeleteRecordsEnabled()) {
+if (!AuthenticationManager::GetCurrentUser()->isDeleteRecordsEnabled()) {
     RedirectUtils::Redirect('Menu.php');
     exit;
 }
