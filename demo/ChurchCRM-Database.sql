@@ -3,7 +3,7 @@
 -- Host: localhost	Database: churchcrm
 -- ------------------------------------------------------
 -- Server version 	5.7.26
--- Date: Fri, 20 Sep 2019 02:12:42 -0400
+-- Date: Tue, 16 Jun 2020 13:11:46 -0400
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -42,6 +42,9 @@ INSERT INTO `calendar_events` VALUES (2,1),(2,2),(2,3);
 UNLOCK TABLES;
 COMMIT;
 
+-- Dumped table `calendar_events` with 3 row(s)
+--
+
 --
 -- Table structure for table `calendars`
 --
@@ -71,6 +74,9 @@ INSERT INTO `calendars` VALUES (1,'Public Calendar',NULL,'FFFFFF','00AA00'),(2,'
 UNLOCK TABLES;
 COMMIT;
 
+-- Dumped table `calendars` with 2 row(s)
+--
+
 --
 -- Table structure for table `canvassdata_can`
 --
@@ -91,8 +97,7 @@ CREATE TABLE `canvassdata_can` (
   `can_Suggestion` text COLLATE utf8_unicode_ci,
   `can_NotInterested` tinyint(1) NOT NULL DEFAULT '0',
   `can_WhyNotInterested` text COLLATE utf8_unicode_ci,
-  PRIMARY KEY (`can_ID`),
-  UNIQUE KEY `can_ID` (`can_ID`)
+  PRIMARY KEY (`can_ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -107,6 +112,9 @@ INSERT INTO `canvassdata_can` VALUES (1,17,0,23,'2019-09-09','asdsd','asdf','saf
 /*!40000 ALTER TABLE `canvassdata_can` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
+
+-- Dumped table `canvassdata_can` with 1 row(s)
+--
 
 --
 -- Table structure for table `church_location_person`
@@ -135,6 +143,9 @@ SET autocommit=0;
 UNLOCK TABLES;
 COMMIT;
 
+-- Dumped table `church_location_person` with 0 row(s)
+--
+
 --
 -- Table structure for table `church_location_role`
 --
@@ -162,6 +173,9 @@ SET autocommit=0;
 UNLOCK TABLES;
 COMMIT;
 
+-- Dumped table `church_location_role` with 0 row(s)
+--
+
 --
 -- Table structure for table `config_cfg`
 --
@@ -174,8 +188,7 @@ CREATE TABLE `config_cfg` (
   `cfg_name` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `cfg_value` text COLLATE utf8_unicode_ci,
   PRIMARY KEY (`cfg_id`),
-  UNIQUE KEY `cfg_name` (`cfg_name`),
-  KEY `cfg_id` (`cfg_id`)
+  UNIQUE KEY `cfg_name` (`cfg_name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -186,10 +199,13 @@ CREATE TABLE `config_cfg` (
 LOCK TABLES `config_cfg` WRITE;
 /*!40000 ALTER TABLE `config_cfg` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `config_cfg` VALUES (10,'aFinanceQueries','28,30,31,32'),(21,'sDefaultCity','Kansas City'),(22,'sDefaultState','MO'),(23,'sDefaultCountry','United States'),(27,'sSMTPHost','smtp.mailtrap.io:2525'),(28,'bSMTPAuth','1'),(29,'sSMTPUser','c58d4ec1a5a021'),(30,'sSMTPPass','3cfab2ee59990c'),(45,'iChurchLatitude','39.1111974'),(46,'iChurchLongitude','-94.5838009'),(48,'bHideFriendDate',''),(49,'bHideFamilyNewsletter',''),(50,'bHideWeddingDate',''),(51,'bHideLatLon',''),(52,'bUseDonationEnvelopes',''),(58,'bUseScannedChecks',''),(65,'sTimeZone','America/Detroit'),(67,'bForceUppercaseZip',''),(72,'bEnableNonDeductible',''),(80,'bEnableSelfRegistration','1'),(999,'bRegistered',''),(1003,'sChurchName','Main St. Cathedral'),(1004,'sChurchAddress','123 Main St'),(1005,'sChurchCity','Kansas City'),(1006,'sChurchState','MO'),(1007,'sChurchZip','64106'),(1008,'sChurchPhone','555 123 4234'),(1009,'sChurchEmail','demo@churchcrm.io'),(1010,'sHomeAreaCode','555'),(1014,'sTaxSigner','Elder Joe Smith'),(1016,'sReminderSigner','Elder Joe Smith'),(1025,'sConfirmSigner','Elder Joe Smith'),(1027,'sPledgeSummary2','as of'),(1028,'sDirectoryDisclaimer1','Every effort was made to insure the accuracy of this directory.  If there are any errors or omissions, please contact the church office.This directory is for the use of the people of'),(1034,'sChurchChkAcctNum','111111111'),(1035,'bEnableGravatarPhotos','1'),(1037,'sExternalBackupType','WebDAV'),(1046,'sLastIntegrityCheckTimeStamp','20190908-212128'),(1047,'sChurchCountry','United States'),(2010,'bAllowEmptyLastName',''),(2017,'bEnableExternalCalendarAPI',''),(2045,'bPHPMailerAutoTLS',''),(2046,'sPHPMailerSMTPSecure',''),(2064,'sLastSoftwareUpdateCheckTimeStamp','20190911-230001'),(20142,'bHSTSEnable','');
+INSERT INTO `config_cfg` VALUES (10,'aFinanceQueries','28,30,31,32'),(21,'sDefaultCity','Kansas City'),(22,'sDefaultState','MO'),(23,'sDefaultCountry','United States'),(27,'sSMTPHost','smtp.mailtrap.io:2525'),(28,'bSMTPAuth','1'),(29,'sSMTPUser','c58d4ec1a5a021'),(30,'sSMTPPass','3cfab2ee59990c'),(45,'iChurchLatitude','39.1111974'),(46,'iChurchLongitude','-94.5838009'),(48,'bHideFriendDate',''),(49,'bHideFamilyNewsletter',''),(50,'bHideWeddingDate',''),(51,'bHideLatLon',''),(52,'bUseDonationEnvelopes',''),(58,'bUseScannedChecks',''),(65,'sTimeZone','America/Detroit'),(67,'bForceUppercaseZip',''),(72,'bEnableNonDeductible',''),(80,'bEnableSelfRegistration','1'),(999,'bRegistered',''),(1003,'sChurchName','Main St. Cathedral'),(1004,'sChurchAddress','123 Main St'),(1005,'sChurchCity','Kansas City'),(1006,'sChurchState','MO'),(1007,'sChurchZip','64106'),(1008,'sChurchPhone','555 123 4234'),(1009,'sChurchEmail','demo@churchcrm.io'),(1010,'sHomeAreaCode','555'),(1014,'sTaxSigner','Elder Joe Smith'),(1016,'sReminderSigner','Elder Joe Smith'),(1025,'sConfirmSigner','Elder Joe Smith'),(1027,'sPledgeSummary2','as of'),(1028,'sDirectoryDisclaimer1','Every effort was made to insure the accuracy of this directory.  If there are any errors or omissions, please contact the church office.This directory is for the use of the people of'),(1034,'sChurchChkAcctNum','111111111'),(1035,'bEnableGravatarPhotos','1'),(1037,'sExternalBackupType','WebDAV'),(1046,'sLastIntegrityCheckTimeStamp','20200616-131138'),(1047,'sChurchCountry','United States'),(2010,'bAllowEmptyLastName',''),(2017,'bEnableExternalCalendarAPI',''),(2045,'bPHPMailerAutoTLS',''),(2046,'sPHPMailerSMTPSecure',''),(2064,'sLastSoftwareUpdateCheckTimeStamp','20200616-131139'),(20142,'bHSTSEnable','');
 /*!40000 ALTER TABLE `config_cfg` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
+
+-- Dumped table `config_cfg` with 45 row(s)
+--
 
 --
 -- Table structure for table `deposit_dep`
@@ -221,6 +237,9 @@ INSERT INTO `deposit_dep` VALUES (1,'2018-02-11','',NULL,0,'Bank'),(2,'2018-02-1
 UNLOCK TABLES;
 COMMIT;
 
+-- Dumped table `deposit_dep` with 5 row(s)
+--
+
 --
 -- Table structure for table `donateditem_di`
 --
@@ -244,8 +263,7 @@ CREATE TABLE `donateditem_di` (
   `di_EnteredBy` smallint(5) unsigned NOT NULL DEFAULT '0',
   `di_EnteredDate` date NOT NULL,
   `di_picture` text COLLATE utf8_unicode_ci,
-  PRIMARY KEY (`di_ID`),
-  UNIQUE KEY `di_ID` (`di_ID`)
+  PRIMARY KEY (`di_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -260,6 +278,9 @@ SET autocommit=0;
 UNLOCK TABLES;
 COMMIT;
 
+-- Dumped table `donateditem_di` with 0 row(s)
+--
+
 --
 -- Table structure for table `donationfund_fun`
 --
@@ -272,8 +293,7 @@ CREATE TABLE `donationfund_fun` (
   `fun_Active` enum('true','false') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'true',
   `fun_Name` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
   `fun_Description` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`fun_ID`),
-  UNIQUE KEY `fun_ID` (`fun_ID`)
+  PRIMARY KEY (`fun_ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -288,6 +308,9 @@ INSERT INTO `donationfund_fun` VALUES (1,'true','Pledges','Pledge income for the
 /*!40000 ALTER TABLE `donationfund_fun` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
+
+-- Dumped table `donationfund_fun` with 3 row(s)
+--
 
 --
 -- Table structure for table `egive_egv`
@@ -317,6 +340,9 @@ SET autocommit=0;
 UNLOCK TABLES;
 COMMIT;
 
+-- Dumped table `egive_egv` with 0 row(s)
+--
+
 --
 -- Table structure for table `email_message_pending_emp`
 --
@@ -345,6 +371,9 @@ SET autocommit=0;
 UNLOCK TABLES;
 COMMIT;
 
+-- Dumped table `email_message_pending_emp` with 0 row(s)
+--
+
 --
 -- Table structure for table `email_recipient_pending_erp`
 --
@@ -371,6 +400,9 @@ SET autocommit=0;
 /*!40000 ALTER TABLE `email_recipient_pending_erp` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
+
+-- Dumped table `email_recipient_pending_erp` with 0 row(s)
+--
 
 --
 -- Table structure for table `event_attend`
@@ -404,6 +436,9 @@ INSERT INTO `event_attend` VALUES (1,3,104,'2017-04-15 17:23:46',26,NULL,NULL);
 UNLOCK TABLES;
 COMMIT;
 
+-- Dumped table `event_attend` with 1 row(s)
+--
+
 --
 -- Table structure for table `event_audience`
 --
@@ -428,6 +463,9 @@ SET autocommit=0;
 /*!40000 ALTER TABLE `event_audience` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
+
+-- Dumped table `event_audience` with 0 row(s)
+--
 
 --
 -- Table structure for table `event_types`
@@ -462,6 +500,9 @@ INSERT INTO `event_types` VALUES (1,'Church Service','10:30:00','weekly','Sunday
 UNLOCK TABLES;
 COMMIT;
 
+-- Dumped table `event_types` with 2 row(s)
+--
+
 --
 -- Table structure for table `eventcountnames_evctnm`
 --
@@ -491,6 +532,9 @@ INSERT INTO `eventcountnames_evctnm` VALUES (1,1,'Total',''),(2,1,'Members',''),
 UNLOCK TABLES;
 COMMIT;
 
+-- Dumped table `eventcountnames_evctnm` with 6 row(s)
+--
+
 --
 -- Table structure for table `eventcounts_evtcnt`
 --
@@ -519,6 +563,9 @@ INSERT INTO `eventcounts_evtcnt` VALUES (1,4,'Total',25,''),(1,5,'Members',10,''
 /*!40000 ALTER TABLE `eventcounts_evtcnt` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
+
+-- Dumped table `eventcounts_evtcnt` with 9 row(s)
+--
 
 --
 -- Table structure for table `events_event`
@@ -557,6 +604,9 @@ INSERT INTO `events_event` VALUES (1,2,'Sunday School Class Changes','This is wh
 UNLOCK TABLES;
 COMMIT;
 
+-- Dumped table `events_event` with 3 row(s)
+--
+
 --
 -- Table structure for table `family_custom`
 --
@@ -584,6 +634,9 @@ INSERT INTO `family_custom` VALUES (10,79,'9999000000','spring');
 /*!40000 ALTER TABLE `family_custom` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
+
+-- Dumped table `family_custom` with 1 row(s)
+--
 
 --
 -- Table structure for table `family_custom_master`
@@ -613,6 +666,9 @@ INSERT INTO `family_custom_master` VALUES (1,'c1','Sponser',9,1,9),(2,'c2','Emer
 /*!40000 ALTER TABLE `family_custom_master` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
+
+-- Dumped table `family_custom_master` with 3 row(s)
+--
 
 --
 -- Table structure for table `family_fam`
@@ -648,8 +704,7 @@ CREATE TABLE `family_fam` (
   `fam_Latitude` double DEFAULT NULL,
   `fam_Longitude` double DEFAULT NULL,
   `fam_Envelope` mediumint(9) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`fam_ID`),
-  KEY `fam_ID` (`fam_ID`)
+  PRIMARY KEY (`fam_ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -665,6 +720,9 @@ INSERT INTO `family_fam` VALUES (1,'Campbell','3259 Daisy Dr','','Denton','AR','
 UNLOCK TABLES;
 COMMIT;
 
+-- Dumped table `family_fam` with 19 row(s)
+--
+
 --
 -- Table structure for table `fundraiser_fr`
 --
@@ -679,8 +737,7 @@ CREATE TABLE `fundraiser_fr` (
   `fr_description` text COLLATE utf8_unicode_ci,
   `fr_EnteredBy` smallint(5) unsigned NOT NULL DEFAULT '0',
   `fr_EnteredDate` date NOT NULL,
-  PRIMARY KEY (`fr_ID`),
-  UNIQUE KEY `fr_ID` (`fr_ID`)
+  PRIMARY KEY (`fr_ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -695,6 +752,9 @@ INSERT INTO `fundraiser_fr` VALUES (1,'2016-11-19','zczxc','zxczxczxc',1,'2016-1
 /*!40000 ALTER TABLE `fundraiser_fr` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
+
+-- Dumped table `fundraiser_fr` with 1 row(s)
+--
 
 --
 -- Table structure for table `group_grp`
@@ -713,9 +773,7 @@ CREATE TABLE `group_grp` (
   `grp_hasSpecialProps` tinyint(1) NOT NULL DEFAULT '0',
   `grp_active` tinyint(1) NOT NULL DEFAULT '1',
   `grp_include_email_export` tinyint(1) NOT NULL DEFAULT '1',
-  PRIMARY KEY (`grp_ID`),
-  UNIQUE KEY `grp_ID` (`grp_ID`),
-  KEY `grp_ID_2` (`grp_ID`)
+  PRIMARY KEY (`grp_ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -730,6 +788,9 @@ INSERT INTO `group_grp` VALUES (1,4,13,2,'Angels class',NULL,0,1,1),(2,4,14,2,'C
 /*!40000 ALTER TABLE `group_grp` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
+
+-- Dumped table `group_grp` with 11 row(s)
+--
 
 --
 -- Table structure for table `groupprop_master`
@@ -760,6 +821,9 @@ SET autocommit=0;
 /*!40000 ALTER TABLE `groupprop_master` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
+
+-- Dumped table `groupprop_master` with 0 row(s)
+--
 
 --
 -- Table structure for table `istlookup_lu`
@@ -801,6 +865,9 @@ SET autocommit=0;
 UNLOCK TABLES;
 COMMIT;
 
+-- Dumped table `istlookup_lu` with 0 row(s)
+--
+
 --
 -- Table structure for table `kioskassginment_kasm`
 --
@@ -829,6 +896,9 @@ SET autocommit=0;
 UNLOCK TABLES;
 COMMIT;
 
+-- Dumped table `kioskassginment_kasm` with 0 row(s)
+--
+
 --
 -- Table structure for table `kioskdevice_kdev`
 --
@@ -844,8 +914,7 @@ CREATE TABLE `kioskdevice_kdev` (
   `kdev_lastHeartbeat` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `kdev_Accepted` tinyint(1) DEFAULT NULL,
   `kdev_PendingCommands` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`kdev_ID`),
-  UNIQUE KEY `kdev_ID` (`kdev_ID`)
+  PRIMARY KEY (`kdev_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -859,6 +928,9 @@ SET autocommit=0;
 /*!40000 ALTER TABLE `kioskdevice_kdev` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
+
+-- Dumped table `kioskdevice_kdev` with 0 row(s)
+--
 
 --
 -- Table structure for table `list_lst`
@@ -887,6 +959,9 @@ INSERT INTO `list_lst` VALUES (1,1,1,'Member'),(1,2,2,'Regular Attender'),(1,3,3
 UNLOCK TABLES;
 COMMIT;
 
+-- Dumped table `list_lst` with 58 row(s)
+--
+
 --
 -- Table structure for table `locations`
 --
@@ -895,7 +970,7 @@ DROP TABLE IF EXISTS `locations`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `locations` (
-  `location_id` int(11) NOT NULL,
+  `location_id` int(11) NOT NULL AUTO_INCREMENT,
   `location_typeId` int(11) NOT NULL,
   `location_name` varchar(256) COLLATE utf8_unicode_ci NOT NULL,
   `location_address` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
@@ -920,6 +995,9 @@ SET autocommit=0;
 /*!40000 ALTER TABLE `locations` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
+
+-- Dumped table `locations` with 0 row(s)
+--
 
 --
 -- Table structure for table `menu_links`
@@ -949,6 +1027,9 @@ INSERT INTO `menu_links` VALUES (1,'CNN','https://www.cnn.com',0),(2,'Google','h
 UNLOCK TABLES;
 COMMIT;
 
+-- Dumped table `menu_links` with 2 row(s)
+--
+
 --
 -- Table structure for table `multibuy_mb`
 --
@@ -961,8 +1042,7 @@ CREATE TABLE `multibuy_mb` (
   `mb_per_ID` mediumint(9) NOT NULL DEFAULT '0',
   `mb_item_ID` mediumint(9) NOT NULL DEFAULT '0',
   `mb_count` decimal(8,0) DEFAULT NULL,
-  PRIMARY KEY (`mb_ID`),
-  UNIQUE KEY `mb_ID` (`mb_ID`)
+  PRIMARY KEY (`mb_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -976,6 +1056,9 @@ SET autocommit=0;
 /*!40000 ALTER TABLE `multibuy_mb` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
+
+-- Dumped table `multibuy_mb` with 0 row(s)
+--
 
 --
 -- Table structure for table `note_nte`
@@ -1011,6 +1094,9 @@ INSERT INTO `note_nte` VALUES (1,0,1,0,'Created','2016-01-01 00:00:00','2009-12-
 UNLOCK TABLES;
 COMMIT;
 
+-- Dumped table `note_nte` with 296 row(s)
+--
+
 --
 -- Table structure for table `paddlenum_pn`
 --
@@ -1023,8 +1109,7 @@ CREATE TABLE `paddlenum_pn` (
   `pn_fr_ID` mediumint(9) unsigned DEFAULT NULL,
   `pn_Num` mediumint(9) unsigned DEFAULT NULL,
   `pn_per_ID` mediumint(9) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`pn_ID`),
-  UNIQUE KEY `pn_ID` (`pn_ID`)
+  PRIMARY KEY (`pn_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1038,6 +1123,9 @@ SET autocommit=0;
 /*!40000 ALTER TABLE `paddlenum_pn` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
+
+-- Dumped table `paddlenum_pn` with 0 row(s)
+--
 
 --
 -- Table structure for table `person2group2role_p2g2r`
@@ -1067,6 +1155,9 @@ INSERT INTO `person2group2role_p2g2r` VALUES (2,9,1),(2,11,1),(4,1,1),(5,1,2),(7
 UNLOCK TABLES;
 COMMIT;
 
+-- Dumped table `person2group2role_p2g2r` with 33 row(s)
+--
+
 --
 -- Table structure for table `person2volunteeropp_p2vo`
 --
@@ -1078,8 +1169,7 @@ CREATE TABLE `person2volunteeropp_p2vo` (
   `p2vo_ID` mediumint(9) NOT NULL AUTO_INCREMENT,
   `p2vo_per_ID` mediumint(9) DEFAULT NULL,
   `p2vo_vol_ID` mediumint(9) DEFAULT NULL,
-  PRIMARY KEY (`p2vo_ID`),
-  UNIQUE KEY `p2vo_ID` (`p2vo_ID`)
+  PRIMARY KEY (`p2vo_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1093,6 +1183,9 @@ SET autocommit=0;
 /*!40000 ALTER TABLE `person2volunteeropp_p2vo` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
+
+-- Dumped table `person2volunteeropp_p2vo` with 0 row(s)
+--
 
 --
 -- Table structure for table `person_custom`
@@ -1121,6 +1214,9 @@ INSERT INTO `person_custom` VALUES (50,NULL,NULL,'Law School'),(78,2,NULL,NULL),
 /*!40000 ALTER TABLE `person_custom` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
+
+-- Dumped table `person_custom` with 3 row(s)
+--
 
 --
 -- Table structure for table `person_custom_master`
@@ -1151,6 +1247,9 @@ INSERT INTO `person_custom_master` VALUES (1,'c1','Father of confession',11,2,9)
 /*!40000 ALTER TABLE `person_custom_master` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
+
+-- Dumped table `person_custom_master` with 3 row(s)
+--
 
 --
 -- Table structure for table `person_per`
@@ -1195,8 +1294,7 @@ CREATE TABLE `person_per` (
   `per_FacebookID` bigint(20) unsigned DEFAULT NULL,
   `per_Twitter` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `per_LinkedIn` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`per_ID`),
-  KEY `per_ID` (`per_ID`)
+  PRIMARY KEY (`per_ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=108 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1211,6 +1309,9 @@ INSERT INTO `person_per` VALUES (1,NULL,'Church',NULL,'Admin',NULL,NULL,NULL,NUL
 /*!40000 ALTER TABLE `person_per` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
+
+-- Dumped table `person_per` with 100 row(s)
+--
 
 --
 -- Table structure for table `pledge_plg`
@@ -1257,6 +1358,9 @@ INSERT INTO `pledge_plg` VALUES (1,13,22,'2018-03-04',30.00,'Once','CASH','','20
 UNLOCK TABLES;
 COMMIT;
 
+-- Dumped table `pledge_plg` with 21 row(s)
+--
+
 --
 -- Table structure for table `property_pro`
 --
@@ -1271,9 +1375,7 @@ CREATE TABLE `property_pro` (
   `pro_Name` varchar(200) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
   `pro_Description` text COLLATE utf8_unicode_ci NOT NULL,
   `pro_Prompt` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`pro_ID`),
-  UNIQUE KEY `pro_ID` (`pro_ID`),
-  KEY `pro_ID_2` (`pro_ID`)
+  PRIMARY KEY (`pro_ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1289,6 +1391,9 @@ INSERT INTO `property_pro` VALUES (1,'p',1,'Disabled','has a disability.','What 
 UNLOCK TABLES;
 COMMIT;
 
+-- Dumped table `property_pro` with 4 row(s)
+--
+
 --
 -- Table structure for table `propertytype_prt`
 --
@@ -1301,9 +1406,7 @@ CREATE TABLE `propertytype_prt` (
   `prt_Class` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `prt_Name` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `prt_Description` text COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`prt_ID`),
-  UNIQUE KEY `prt_ID` (`prt_ID`),
-  KEY `prt_ID_2` (`prt_ID`)
+  PRIMARY KEY (`prt_ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1319,6 +1422,9 @@ INSERT INTO `propertytype_prt` VALUES (1,'p','General','General Person Propertie
 UNLOCK TABLES;
 COMMIT;
 
+-- Dumped table `propertytype_prt` with 3 row(s)
+--
+
 --
 -- Table structure for table `query_qry`
 --
@@ -1332,9 +1438,7 @@ CREATE TABLE `query_qry` (
   `qry_Name` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `qry_Description` text COLLATE utf8_unicode_ci NOT NULL,
   `qry_Count` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  PRIMARY KEY (`qry_ID`),
-  UNIQUE KEY `qry_ID` (`qry_ID`),
-  KEY `qry_ID_2` (`qry_ID`)
+  PRIMARY KEY (`qry_ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=201 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1350,6 +1454,9 @@ INSERT INTO `query_qry` VALUES (3,'SELECT CONCAT(\'<a href=FamilyView.php?Family
 UNLOCK TABLES;
 COMMIT;
 
+-- Dumped table `query_qry` with 20 row(s)
+--
+
 --
 -- Table structure for table `queryparameteroptions_qpo`
 --
@@ -1362,8 +1469,7 @@ CREATE TABLE `queryparameteroptions_qpo` (
   `qpo_qrp_ID` mediumint(8) unsigned NOT NULL DEFAULT '0',
   `qpo_Display` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `qpo_Value` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  PRIMARY KEY (`qpo_ID`),
-  UNIQUE KEY `qpo_ID` (`qpo_ID`)
+  PRIMARY KEY (`qpo_ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1378,6 +1484,9 @@ INSERT INTO `queryparameteroptions_qpo` VALUES (1,4,'Male','1'),(2,4,'Female','2
 /*!40000 ALTER TABLE `queryparameteroptions_qpo` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
+
+-- Dumped table `queryparameteroptions_qpo` with 36 row(s)
+--
 
 --
 -- Table structure for table `queryparameters_qrp`
@@ -1403,8 +1512,6 @@ CREATE TABLE `queryparameters_qrp` (
   `qrp_AlphaMinLength` int(11) DEFAULT NULL,
   `qrp_AlphaMaxLength` int(11) DEFAULT NULL,
   PRIMARY KEY (`qrp_ID`),
-  UNIQUE KEY `qrp_ID` (`qrp_ID`),
-  KEY `qrp_ID_2` (`qrp_ID`),
   KEY `qrp_qry_ID` (`qrp_qry_ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=202 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -1420,6 +1527,9 @@ INSERT INTO `queryparameters_qrp` VALUES (1,4,0,NULL,'Minimum Age','The minimum 
 /*!40000 ALTER TABLE `queryparameters_qrp` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
+
+-- Dumped table `queryparameters_qrp` with 29 row(s)
+--
 
 --
 -- Table structure for table `record2property_r2p`
@@ -1446,6 +1556,9 @@ INSERT INTO `record2property_r2p` VALUES (4,7,''),(4,8,''),(1,59,'N/A');
 /*!40000 ALTER TABLE `record2property_r2p` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
+
+-- Dumped table `record2property_r2p` with 3 row(s)
+--
 
 --
 -- Table structure for table `result_res`
@@ -1486,6 +1599,9 @@ SET autocommit=0;
 UNLOCK TABLES;
 COMMIT;
 
+-- Dumped table `result_res` with 0 row(s)
+--
+
 --
 -- Table structure for table `tokens`
 --
@@ -1513,6 +1629,9 @@ SET autocommit=0;
 /*!40000 ALTER TABLE `tokens` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
+
+-- Dumped table `tokens` with 0 row(s)
+--
 
 --
 -- Table structure for table `user_usr`
@@ -1560,10 +1679,12 @@ CREATE TABLE `user_usr` (
   `usr_CalNoSchool8` date DEFAULT NULL,
   `usr_SearchFamily` tinyint(3) DEFAULT NULL,
   `usr_Canvasser` tinyint(3) NOT NULL DEFAULT '0',
+  `usr_TwoFactorAuthSecret` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `usr_TwoFactorAuthLastKeyTimestamp` int(11) DEFAULT NULL,
+  `usr_TwoFactorAuthRecoveryCodes` text COLLATE utf8_unicode_ci,
   PRIMARY KEY (`usr_per_ID`),
   UNIQUE KEY `usr_UserName` (`usr_UserName`),
-  UNIQUE KEY `usr_apiKey_unique` (`usr_apiKey`),
-  KEY `usr_per_ID` (`usr_per_ID`)
+  UNIQUE KEY `usr_apiKey_unique` (`usr_apiKey`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1574,10 +1695,13 @@ CREATE TABLE `user_usr` (
 LOCK TABLES `user_usr` WRITE;
 /*!40000 ALTER TABLE `user_usr` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `user_usr` VALUES (1,'4bdf3fba58c956fc3991a1fde84929223f968e2853de596e49ae80a91499609b',0,'2019-09-20 02:12:00',34,0,0,0,0,0,0,0,0,1,580,9,10,'skin-red',1,1,'2016-01-01',23,2,'Admin','ajGwpy8Pdai22XDUpqjC5Ob04v0eG7EGgb4vz2bD2juT8YDmfM',0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0),(3,'598e1814d6b8493f2ad688c634c8b22bb31ac7539b3f79438b91aab2470f574f',0,'2019-09-08 22:04:35',13,0,1,1,1,1,1,0,1,0,NULL,NULL,10,'skin-green',0,0,'2016-01-01',23,0,'tony.wade@example.com',NULL,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0),(76,'e57a2fc7529930d46edee4d20ee17e70001fd51a267c11768f9a0dc6dab2fdc1',1,'0000-00-00 00:00:00',2,0,0,0,0,1,0,0,0,0,NULL,NULL,10,'skin-blue',0,0,'2016-01-01',20,0,'leroy.larson@example.com',NULL,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0),(95,'ea1a2d06bbb09a6ea84f918fdb18ac17615365afa5ff09ac73eaf6e68cb5352f',1,'0000-00-00 00:00:00',1,6,1,1,0,0,0,0,0,0,NULL,NULL,10,'skin-blue',0,0,'2016-01-01',20,0,'judith.matthews@example.com',NULL,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0);
+INSERT INTO `user_usr` VALUES (1,'4bdf3fba58c956fc3991a1fde84929223f968e2853de596e49ae80a91499609b',0,'2020-06-16 13:11:22',35,0,0,0,0,0,0,0,0,1,580,9,10,'skin-red',1,1,'2016-01-01',23,2,'Admin','ajGwpy8Pdai22XDUpqjC5Ob04v0eG7EGgb4vz2bD2juT8YDmfM',0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,NULL,NULL,NULL),(3,'598e1814d6b8493f2ad688c634c8b22bb31ac7539b3f79438b91aab2470f574f',0,'2019-09-08 22:04:35',13,0,1,1,1,1,1,0,1,0,NULL,NULL,10,'skin-green',0,0,'2016-01-01',23,0,'tony.wade@example.com',NULL,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,NULL,NULL,NULL),(76,'e57a2fc7529930d46edee4d20ee17e70001fd51a267c11768f9a0dc6dab2fdc1',1,'0000-00-00 00:00:00',2,0,0,0,0,1,0,0,0,0,NULL,NULL,10,'skin-blue',0,0,'2016-01-01',20,0,'leroy.larson@example.com',NULL,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL),(95,'ea1a2d06bbb09a6ea84f918fdb18ac17615365afa5ff09ac73eaf6e68cb5352f',1,'0000-00-00 00:00:00',1,6,1,1,0,0,0,0,0,0,NULL,NULL,10,'skin-blue',0,0,'2016-01-01',20,0,'judith.matthews@example.com',NULL,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `user_usr` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
+
+-- Dumped table `user_usr` with 4 row(s)
+--
 
 --
 -- Table structure for table `userconfig_ucfg`
@@ -1611,6 +1735,9 @@ INSERT INTO `userconfig_ucfg` VALUES (0,0,'bEmailMailto','1','boolean','User per
 UNLOCK TABLES;
 COMMIT;
 
+-- Dumped table `userconfig_ucfg` with 29 row(s)
+--
+
 --
 -- Table structure for table `version_ver`
 --
@@ -1625,7 +1752,7 @@ CREATE TABLE `version_ver` (
   `ver_update_end` datetime DEFAULT NULL,
   PRIMARY KEY (`ver_ID`),
   UNIQUE KEY `ver_version` (`ver_version`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1635,10 +1762,13 @@ CREATE TABLE `version_ver` (
 LOCK TABLES `version_ver` WRITE;
 /*!40000 ALTER TABLE `version_ver` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `version_ver` VALUES (1,'3.5.0','2019-02-10 20:14:23',NULL),(2,'3.5.2','2019-09-10 22:54:56','2019-09-10 22:54:56'),(3,'3.5.4','2019-10-11 22:45:35','2019-10-11 22:45:35');
+INSERT INTO `version_ver` VALUES (1,'3.5.0','2019-02-10 20:14:23',NULL),(2,'3.5.2','2019-09-10 22:54:56','2019-09-10 22:54:56'),(3,'3.5.4','2019-10-11 22:45:35','2019-10-11 22:45:35'),(4,'4.0.0','2020-06-16 13:11:20','2020-06-16 13:11:20'),(5,'4.1.0','2020-06-16 13:11:20','2020-06-16 13:11:21');
 /*!40000 ALTER TABLE `version_ver` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
+
+-- Dumped table `version_ver` with 5 row(s)
+--
 
 --
 -- Table structure for table `volunteeropportunity_vol`
@@ -1653,8 +1783,7 @@ CREATE TABLE `volunteeropportunity_vol` (
   `vol_Active` enum('true','false') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'true',
   `vol_Name` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
   `vol_Description` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`vol_ID`),
-  UNIQUE KEY `vol_ID` (`vol_ID`)
+  PRIMARY KEY (`vol_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -1668,6 +1797,9 @@ SET autocommit=0;
 /*!40000 ALTER TABLE `volunteeropportunity_vol` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
+
+-- Dumped table `volunteeropportunity_vol` with 0 row(s)
+--
 
 --
 -- Table structure for table `whycame_why`
@@ -1697,6 +1829,9 @@ SET autocommit=0;
 /*!40000 ALTER TABLE `whycame_why` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
+
+-- Dumped table `whycame_why` with 0 row(s)
+--
 
 --
 -- Stand-In structure for view `email_count`
@@ -1748,4 +1883,4 @@ DROP TABLE IF EXISTS `email_list`;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on: Fri, 20 Sep 2019 02:12:42 -0400
+-- Dump completed on: Tue, 16 Jun 2020 13:11:47 -0400
