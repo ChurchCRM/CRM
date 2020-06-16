@@ -10,7 +10,7 @@ msgstr ""
 "#-#-#-#-#  messages.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-31 16:56-0700\n"
+"POT-Creation-Date: 2020-06-16 10:14-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,8 +25,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2020-05-31T23:56:30.590Z\n"
-"PO-Revision-Date: 2020-05-31T23:56:30.590Z\n"
+"POT-Creation-Date: 2020-06-16T17:14:25.161Z\n"
+"PO-Revision-Date: 2020-06-16T17:14:25.161Z\n"
 
 msgid "Backup Database"
 msgstr ""
@@ -975,6 +975,12 @@ msgstr ""
 msgid "Check number not valid for 'CASH' payment"
 msgstr ""
 
+msgid "No email passed in"
+msgstr ""
+
+msgid "Mailchimp is not active"
+msgstr ""
+
 msgid "Part"
 msgstr ""
 
@@ -1704,13 +1710,7 @@ msgstr ""
 msgid "Financial Settings"
 msgstr ""
 
-msgid "System Settings"
-msgstr ""
-
 msgid "Quick Search"
-msgstr ""
-
-msgid "Backup"
 msgstr ""
 
 msgid "Localization"
@@ -1720,6 +1720,12 @@ msgid "Integration"
 msgstr ""
 
 msgid "Church Services"
+msgstr ""
+
+msgid "Backup"
+msgstr ""
+
+msgid "System Settings"
 msgstr ""
 
 msgid "An invalid configuration name has been requested"
@@ -1906,14 +1912,6 @@ msgid ""
 "Support for eGive, Credit Card, and Bank Draft payments has been "
 "deprecated.  Existing non-bank reports may no longer be accessible in future "
 "versions."
-msgstr ""
-
-msgid "Unsupported Stored Payment Data Detected"
-msgstr ""
-
-msgid ""
-"Support for stored payment data has been removed. This data will soon be "
-"removed from your database"
 msgstr ""
 
 msgid "Missing Coordinates"
@@ -3996,10 +3994,19 @@ msgstr ""
 msgid "Timeline"
 msgstr ""
 
+msgid "Mailchimp"
+msgstr ""
+
 msgid "Assigned Groups"
 msgstr ""
 
 msgid "Notes"
+msgstr ""
+
+msgid "Lists"
+msgstr ""
+
+msgid "loading"
 msgstr ""
 
 msgid "No group assignments."
@@ -4966,6 +4973,12 @@ msgstr ""
 msgid "Your cart has been successfully emptied"
 msgstr ""
 
+msgid "List not found"
+msgstr ""
+
+msgid "List not inList"
+msgstr ""
+
 msgid "Deactivated the Family"
 msgstr ""
 
@@ -5360,7 +5373,13 @@ msgstr ""
 msgid "Families Without Emails"
 msgstr ""
 
-msgid "People not in Mailchimp"
+msgid "People not in"
+msgstr ""
+
+msgid "Invalid List id"
+msgstr ""
+
+msgid "Audience not in the ChurchCRM"
 msgstr ""
 
 msgid "PDFs successfully emailed "
@@ -5395,19 +5414,34 @@ msgid ""
 "This will reset the system data and will restart the system as a new install."
 msgstr ""
 
-msgid "System Information"
+msgid "ChurchCRM Installation Information"
 msgstr ""
 
 msgid "Software Version"
 msgstr ""
 
-msgid "Valid Mail Server Settings"
+msgid "System Information"
 msgstr ""
 
 msgid "Database"
 msgstr ""
 
 msgid "Database Version"
+msgstr ""
+
+msgid "Database Server Version"
+msgstr ""
+
+msgid "Web Server"
+msgstr ""
+
+msgid "Server Software"
+msgstr ""
+
+msgid "Email Information"
+msgstr ""
+
+msgid "Valid Mail Server Settings"
 msgstr ""
 
 msgid "Application Prerequisites"
@@ -5417,9 +5451,6 @@ msgid "Application Integrity Check"
 msgstr ""
 
 msgid "Details:"
-msgstr ""
-
-msgid "WebServer Modules"
 msgstr ""
 
 msgid "Add Menu"
@@ -5545,7 +5576,13 @@ msgstr ""
 msgid "Cleaned count since last send:"
 msgstr ""
 
-msgid "Missing emails report"
+msgid "List maintenance"
+msgstr ""
+
+msgid "People not in list"
+msgstr ""
+
+msgid "Audience not in the CRM"
 msgstr ""
 
 msgid "is not configured"
@@ -6790,6 +6827,9 @@ msgstr ""
 msgid "German - Germany"
 msgstr ""
 
+msgid "Hebrew"
+msgstr ""
+
 msgid "Hungarian"
 msgstr ""
 
@@ -7008,6 +7048,12 @@ msgid "Please confirm deactivation of family"
 msgstr ""
 
 msgid "Please confirm activation of family"
+msgstr ""
+
+msgid "open rate"
+msgstr ""
+
+msgid "Not Subscribed "
 msgstr ""
 
 msgid "You are about to add a new deposit without a comment"

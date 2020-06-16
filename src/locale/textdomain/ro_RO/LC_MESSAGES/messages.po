@@ -3559,10 +3559,6 @@ msgid "eMail Dashboard"
 msgstr "Panou eMail"
 
 #: 
-msgid "People not in Mailchimp"
-msgstr "Oameni care nu sunt în Mailchimp"
-
-#: 
 msgid "No families need canvassers assigned"
 msgstr "Nu familii au nevoie de colportori atribuite"
 
@@ -4487,10 +4483,6 @@ msgstr "Contor resetat:"
 #: 
 msgid "Cleaned count since last send:"
 msgstr "Contor resetat de la ultima trimitere:"
-
-#: 
-msgid "Missing emails report"
-msgstr "Lipsă raport email-uri"
 
 #: 
 msgid "Functions"

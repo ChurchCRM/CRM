@@ -864,7 +864,6 @@
     "Back to Deposit Slip": "回到存款单",
     "Fatal error in eGive API datastream: '": "在eGive API数据流的致命错误：",
     "eMail Dashboard": "电子邮件仪表板",
-    "People not in Mailchimp": "联系人不在Mailchimp中",
     "No families need canvassers assigned": "没有家庭需要分配拉票",
     "Canvassers assigned at random to %d families.": "检查工作在随机分配到％d的家庭。",
     "Canvassers assigned at random to %d non-pledging families.": "％d个非质押家庭随机分配的检查工作。",
@@ -1092,7 +1091,6 @@
     "Unsubscribed count since last send:": "自上次发送以来未订阅的计数：",
     "Cleaned count:": "清理计数：",
     "Cleaned count since last send:": "自上次发送以来清理的计数：",
-    "Missing emails report": "电子邮件缺失报告",
     "Functions": "功能",
     "Add New Class": "添加新课室",
     "Export to CSV": "导出到CSV",
@@ -2135,7 +2133,6 @@
     "Database": "数据库",
     "Database Version": "数据库版本",
     "Application Prerequisites": "应用程序的先决条件",
-    "WebServer Modules": "网页服务器模块",
     "Invalid country name supplied": "提供的国家名称无效",
     "LastName FirstName": "姓氏 名字",
     "Holidays": "假日"

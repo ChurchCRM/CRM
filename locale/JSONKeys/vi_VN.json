@@ -805,6 +805,5 @@
     "Valid Mail Server Settings": "Cài đặt giá trị máy chủ Email",
     "Database": "Dữ liệu",
     "Database Version": "Phiên bản dữ liệu",
-    "Application Prerequisites": "Điều kiện yêu cầu bắt buộc",
-    "WebServer Modules": "Các mô-đun máy chủ"
+    "Application Prerequisites": "Điều kiện yêu cầu bắt buộc"
 }
