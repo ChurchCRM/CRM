@@ -60,7 +60,6 @@ require 'Include/Header.php';
                 <li class="active"><a href="#tab_1" data-toggle="tab"><?= _("General")?></a></li>
                 <li><a href="#tab_2" data-toggle="tab"><?= _("Passwords")?></a></li>
                 <li><a href="#tab_3" data-toggle="tab"><?= _("2FA")?></a></li>
-                <li><a href="#tab_4" data-toggle="tab"><?= _("Default Permission")?></a></li>
             </ul>
             <div class="tab-content">
                 <div class="tab-pane active" id="tab_1">
@@ -95,7 +94,7 @@ require 'Include/Header.php';
                         </tr>
                         <tr>
                             <?php $config = SystemConfig::getConfigItem("bSendUserDeletedEmail"); ?>
-                            <td width="350px"><b><?= _("Send email to deleted users")?></b>:
+                            <td width="350px"><b><?= _("Send email to Deleted Users")?></b>:
                                 <a class="setting-tip" data-tip="<?= $config->getTooltip() ?>"><i class="fa fa-fw fa-question-circle"></i></a>
                             </td>
                             <td>
@@ -109,7 +108,7 @@ require 'Include/Header.php';
                     <table class="table table-hover">
                         <tr>
                         <?php $config = SystemConfig::getConfigItem("iMinPasswordLength"); ?>
-                            <td width="350px"><b><?= _("Min Password length")?></b>:
+                            <td width="350px"><b><?= _("Min Password Length")?></b>:
                                 <a class="setting-tip" data-tip="<?= $config->getTooltip() ?>"><i class="fa fa-fw fa-question-circle"></i></a>
                             </td>
                             <td>
@@ -174,15 +173,6 @@ require 'Include/Header.php';
                     </tr>
 
                     </table>
-                </div>
-                <!-- /.tab-pane -->
-                <div class="tab-pane" id="tab_4">
-                    - allow user to change<br/><br/>
-                    - - bEmailMailto<br/>
-                    - - sMailtoDelimiter<br/>
-                    -- bCreateDirectory <br/>
-                    -- bExportCSV <br/>
-                    -- bUSAddressVerification
                 </div>
                 <!-- /.tab-pane -->
             </div>
