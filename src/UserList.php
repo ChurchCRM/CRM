@@ -34,7 +34,7 @@ if (!AuthenticationManager::GetCurrentUser()->isAdmin()) {
 $rsUsers = UserQuery::create()->find();
 
 // Set the page title and include HTML header
-$sPageTitle = gettext('User Listing');
+$sPageTitle = gettext('System Users');
 require 'Include/Header.php';
 
 ?>
@@ -47,11 +47,11 @@ require 'Include/Header.php';
 </div>
 <div class="box "> <!--collapsed-box-->
     <div class="box-header">
-        <h3 class="box-title"><?= _("Global User Settings")?></h3>
+        <b class="box-title"><?= _("Global User Settings")?></b>
             <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
             </div>
-        </h3>
+        </b>
     </div>
     <div class="box-body">
         <!-- Custom Tabs -->
@@ -144,7 +144,7 @@ require 'Include/Header.php';
                     <table class="table table-hover">
                     <tr>
                         <?php $config = SystemConfig::getConfigItem("bEnable2FA"); ?>
-                        <td>
+                        <td width="350px">
                             <b><?= _("Enable 2FA")?></b>:
                             <a class="setting-tip" data-tip="<?= $config->getTooltip() ?>"><i class="fa fa-fw fa-question-circle"></i></a>
                         </td>
@@ -194,6 +194,13 @@ require 'Include/Header.php';
 </div>
 
 <div class="box">
+    <div class="box-header">
+        <b class="box-title"><?= _("User Listing")?></b>
+        <div class="box-tools pull-right">
+            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
+        </div>
+        </h3>
+    </div>
     <div class="box-body">
         <table class="table table-hover dt-responsive" id="user-listing-table" style="width:100%;">
             <thead>
