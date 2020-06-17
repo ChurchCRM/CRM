@@ -30,3 +30,11 @@ ALTER TABLE `kioskdevice_kdev` DROP INDEX `kdev_ID`;
   Missing auto increment for the table
  */
 ALTER TABLE `locations` CHANGE `location_id` `location_id` INT(11) NOT NULL AUTO_INCREMENT;
+
+/**
+    User config table cleanup
+ */
+
+ ALTER TABLE `userconfig_ucfg` DROP PRIMARY KEY, ADD PRIMARY KEY (`ucfg_per_id`, `ucfg_name`) USING BTREE;
+
+ ALTER TABLE `userconfig_ucfg` DROP `ucfg_id`;

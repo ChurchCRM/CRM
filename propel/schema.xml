@@ -504,7 +504,7 @@
         <column name="event_start" phpName="Start" type="TIMESTAMP" required="true"/>
         <column name="event_end" phpName="End" type="TIMESTAMP" required="true"/>
         <column name="inactive" phpName="InActive" type="INTEGER" size="1" required="true" defaultValue="0"/>
-        <!-- 
+        <!--
             event_typename is deprecated, and should be removed with 4.1.0.
             https://github.com/ChurchCRM/CRM/issues/5149
             This field denormalizes the event type data by storing a string representation of the event type name
@@ -665,8 +665,7 @@
 
     <table name="userconfig_ucfg" idMethod="native" phpName="UserConfig">
         <column name="ucfg_per_id" phpName="PeronId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" primaryKey="true" required="true"/>
-        <column name="ucfg_id" phpName="Id" type="INTEGER" primaryKey="true" required="true" defaultValue="0"/>
-        <column name="ucfg_name" phpName="Name" type="VARCHAR" size="50" required="true" defaultValue=""/>
+        <column name="ucfg_name" phpName="Name" type="VARCHAR" size="50" required="true" primaryKey="true"/>
         <column name="ucfg_value" phpName="Value" type="LONGVARCHAR"/>
         <column name="ucfg_type" phpName="Type" type="CHAR" sqlType="enum('text','number','date','boolean','textarea')" required="true" defaultValue="text"/>
         <column name="ucfg_tooltip" phpName="Tooltip" type="LONGVARCHAR" required="true"/>

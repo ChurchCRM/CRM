@@ -956,33 +956,32 @@ CREATE TABLE `result_res` (
 
 CREATE TABLE `userconfig_ucfg` (
   `ucfg_per_id` mediumint(9) unsigned NOT NULL,
-  `ucfg_id` int(11) NOT NULL default '0',
   `ucfg_name` varchar(50) NOT NULL default '',
   `ucfg_value` text,
   `ucfg_type` enum('text','number','date','boolean','textarea') NOT NULL default 'text',
   `ucfg_tooltip` text NOT NULL,
   `ucfg_permission` enum('FALSE','TRUE') NOT NULL default 'FALSE',
   `ucfg_cat` varchar(20) NOT NULL,
-  PRIMARY KEY  (`ucfg_per_id`,`ucfg_id`)
+  PRIMARY KEY  (`ucfg_per_id`,`ucfg_name`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
 --
 -- Dumping data for table `userconfig_ucfg`
 --
 
-INSERT INTO `userconfig_ucfg` (`ucfg_per_id`, `ucfg_id`, `ucfg_name`, `ucfg_value`, `ucfg_type`, `ucfg_tooltip`, `ucfg_permission`, `ucfg_cat`) VALUES
+INSERT INTO `userconfig_ucfg` (`ucfg_per_id`, `ucfg_name`, `ucfg_value`, `ucfg_type`, `ucfg_tooltip`, `ucfg_permission`, `ucfg_cat`) VALUES
 
-  (0, 0, 'bEmailMailto', '1', 'boolean', 'User permission to send email via mailto: links', 'TRUE', ''),
-  (0, 1, 'sMailtoDelimiter', ',', 'text', 'Delimiter to separate emails in mailto: links', 'TRUE', ''),
-  (0, 5, 'bCreateDirectory', '0', 'boolean', 'User permission to create directories', 'FALSE', 'SECURITY'),
-  (0, 6, 'bExportCSV', '0', 'boolean', 'User permission to export CSV files', 'FALSE', 'SECURITY'),
-  (0, 7, 'bUSAddressVerification', '0', 'boolean', 'User permission to use IST Address Verification', 'FALSE', ''),
-  (0, 10, 'bAddEvent', '0', 'boolean', 'Allow user to add new event', 'FALSE', 'SECURITY'),
-  (1, 0, 'bEmailMailto', '1', 'boolean', 'User permission to send email via mailto: links', 'TRUE', ''),
-  (1, 1, 'sMailtoDelimiter', ',', 'text', 'user permission to send email via mailto: links', 'TRUE', ''),
-  (1, 5, 'bCreateDirectory', '1', 'boolean', 'User permission to create directories', 'TRUE', ''),
-  (1, 6, 'bExportCSV', '1', 'boolean', 'User permission to export CSV files', 'TRUE', ''),
-  (1, 7, 'bUSAddressVerification', '1', 'boolean', 'User permission to use IST Address Verification', 'TRUE', '');
+  (0, 'bEmailMailto', '1', 'boolean', 'User permission to send email via mailto: links', 'TRUE', ''),
+  (0, 'sMailtoDelimiter', ',', 'text', 'Delimiter to separate emails in mailto: links', 'TRUE', ''),
+  (0, 'bCreateDirectory', '0', 'boolean', 'User permission to create directories', 'FALSE', 'SECURITY'),
+  (0, 'bExportCSV', '0', 'boolean', 'User permission to export CSV files', 'FALSE', 'SECURITY'),
+  (0, 'bUSAddressVerification', '0', 'boolean', 'User permission to use IST Address Verification', 'FALSE', ''),
+  (0, 'bAddEvent', '0', 'boolean', 'Allow user to add new event', 'FALSE', 'SECURITY'),
+  (1, 'bEmailMailto', '1', 'boolean', 'User permission to send email via mailto: links', 'TRUE', ''),
+  (1, 'sMailtoDelimiter', ',', 'text', 'user permission to send email via mailto: links', 'TRUE', ''),
+  (1, 'bCreateDirectory', '1', 'boolean', 'User permission to create directories', 'TRUE', ''),
+  (1, 'bExportCSV', '1', 'boolean', 'User permission to export CSV files', 'TRUE', ''),
+  (1, 'bUSAddressVerification', '1', 'boolean', 'User permission to use IST Address Verification', 'TRUE', '');
 
 -- --------------------------------------------------------
 
