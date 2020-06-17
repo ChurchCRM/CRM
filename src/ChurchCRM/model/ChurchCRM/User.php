@@ -281,15 +281,6 @@ class User extends BaseUser
                 return $userConfig->setValue($value);
             }
         }
-/*        $userConfig = new UserConfig();
-        $userConfig->setUser($this);
-        $userConfig->setName($userConfigName);
-        $userConfig->setValue($value);
-        $userConfig->setId(99);
-        $userConfig->setType("text");
-        $userConfig->setTooltip("text");
-        $userConfig->setCat("text");
-        $userConfig->save();*/
     }
 
     public function getFormattedShowSince() {
