@@ -45,7 +45,7 @@ require 'Include/Header.php';
         <a href="SettingsUser.php" class="btn btn-app"><i class="fa fa-wrench"></i><?= gettext('User Settings') ?></a>
     </div>
 </div>
-<div class="box "> <!--collapsed-box-->
+<div class="box collapsed-box">
     <div class="box-header">
         <b class="box-title"><?= _("Global User Settings")?></b>
             <div class="box-tools pull-right">
@@ -70,7 +70,7 @@ require 'Include/Header.php';
                                 <a class="setting-tip" data-tip="<?= $config->getTooltip() ?>"><i class="fa fa-fw fa-question-circle"></i></a>
                             </td>
                             <td>
-                                <input type="text" class="system-setting form-control" data-setting="<?= $config->getName()?>" data-default-value="<?= $config->getDefault()?>" value="<?= $config->getValue()?>">
+                                <input disabled type="text" class="system-setting form-control" data-setting="<?= $config->getName()?>" data-default-value="<?= $config->getDefault()?>" value="<?= $config->getValue()?>">
                             </td>
                         </tr>
                         <tr>
@@ -80,7 +80,7 @@ require 'Include/Header.php';
                                 <a class="setting-tip" data-tip="<?= $config->getTooltip() ?>"><i class="fa fa-fw fa-question-circle"></i></a>
                             </td>
                             <td>
-                                <input type="text" class="system-setting form-control" data-setting="<?= $config->getName()?>" data-default-value="<?= $config->getDefault()?>" value="<?= $config->getValue()?>">
+                                <input disabled type="text" class="system-setting form-control" data-setting="<?= $config->getName()?>" data-default-value="<?= $config->getDefault()?>" value="<?= $config->getValue()?>">
                             </td>
                         </tr>
                         <tr>
@@ -89,7 +89,7 @@ require 'Include/Header.php';
                                 <a class="setting-tip" data-tip="<?= $config->getTooltip() ?>"><i class="fa fa-fw fa-question-circle"></i></a>
                             </td>
                             <td>
-                                <input type="checkbox" class="system-setting " data-setting="<?= $config->getName()?>" data-default-value="<?= $config->getDefault()?>" <?= $config->getBooleanValue() ? "checked" : "" ?>>
+                                <input disabled type="checkbox" class="system-setting " data-setting="<?= $config->getName()?>" data-default-value="<?= $config->getDefault()?>" <?= $config->getBooleanValue() ? "checked" : "" ?>>
                             </td>
                         </tr>
                         <tr>
@@ -98,7 +98,7 @@ require 'Include/Header.php';
                                 <a class="setting-tip" data-tip="<?= $config->getTooltip() ?>"><i class="fa fa-fw fa-question-circle"></i></a>
                             </td>
                             <td>
-                                <input type="checkbox" class="system-setting " data-setting="<?= $config->getName()?>" data-default-value="<?= $config->getDefault()?>" <?= $config->getBooleanValue() ? "checked" : "" ?>>
+                                <input disabled type="checkbox" class="system-setting " data-setting="<?= $config->getName()?>" data-default-value="<?= $config->getDefault()?>" <?= $config->getBooleanValue() ? "checked" : "" ?>>
                             </td>
                         </tr>
                     </table>
@@ -112,7 +112,7 @@ require 'Include/Header.php';
                                 <a class="setting-tip" data-tip="<?= $config->getTooltip() ?>"><i class="fa fa-fw fa-question-circle"></i></a>
                             </td>
                             <td>
-                                <input type="text" class="system-setting form-control" data-setting="<?= $config->getName()?>" data-default-value="<?= $config->getDefault()?>" value="<?= $config->getValue()?>">
+                                <input disabled type="text" class="system-setting form-control" data-setting="<?= $config->getName()?>" data-default-value="<?= $config->getDefault()?>" value="<?= $config->getValue()?>">
                             </td>
                         </tr>
                         <tr>
@@ -122,7 +122,7 @@ require 'Include/Header.php';
                             <a class="setting-tip" data-tip="<?= $config->getTooltip() ?>"><i class="fa fa-fw fa-question-circle"></i></a>
                         </td>
                         <td>
-                            <input type="text" class="system-setting form-control" data-setting="<?= $config->getName()?>" data-default-value="<?= $config->getDefault()?>" value="<?= $config->getValue()?>">
+                            <input disabled type="text" class="system-setting form-control" data-setting="<?= $config->getName()?>" data-default-value="<?= $config->getDefault()?>" value="<?= $config->getValue()?>">
                         </td>
                     </tr>
                     <tr>
@@ -132,7 +132,7 @@ require 'Include/Header.php';
                             <a class="setting-tip" data-tip="<?= $config->getTooltip() ?>"><i class="fa fa-fw fa-question-circle"></i></a>
                         </td>
                         <td>
-                            <input type="text" class="system-setting form-control" data-setting="<?= $config->getName()?>" data-default-value="<?= $config->getDefault()?>" value="<?= $config->getValue()?>" width="300px">
+                            <input disabled type="text" class="system-setting form-control" data-setting="<?= $config->getName()?>" data-default-value="<?= $config->getDefault()?>" value="<?= $config->getValue()?>" width="300px">
                         </td>
                     </tr>
 
@@ -148,7 +148,7 @@ require 'Include/Header.php';
                             <a class="setting-tip" data-tip="<?= $config->getTooltip() ?>"><i class="fa fa-fw fa-question-circle"></i></a>
                         </td>
                         <td>
-                            <input type="checkbox" class="system-setting " data-setting="<?= $config->getName()?>" data-default-value="<?= $config->getDefault()?>" <?= $config->getBooleanValue() ? "checked" : "" ?>
+                            <input disabled type="checkbox" class="system-setting " data-setting="<?= $config->getName()?>" data-default-value="<?= $config->getDefault()?>" <?= $config->getBooleanValue() ? "checked" : "" ?>
                         </td>
                     </tr>
                     <tr>
@@ -158,7 +158,7 @@ require 'Include/Header.php';
                             <a class="setting-tip" data-tip="<?= $config->getTooltip() ?>"><i class="fa fa-fw fa-question-circle"></i></a>
                         </td>
                         <td>
-                            <input type="checkbox" class="system-setting " data-setting="<?= $config->getName()?>" data-default-value="<?= $config->getDefault()?>" <?= $config->getBooleanValue() ? "checked" : "" ?>
+                            <input disabled type="checkbox" class="system-setting " data-setting="<?= $config->getName()?>" data-default-value="<?= $config->getDefault()?>" <?= $config->getBooleanValue() ? "checked" : "" ?>
                         </td>
                     </tr>
                     <tr>
@@ -168,7 +168,7 @@ require 'Include/Header.php';
                             <a class="setting-tip" data-tip="<?= $config->getTooltip() ?>"><i class="fa fa-fw fa-question-circle"></i></a>
                         </td>
                         <td>
-                            <input type="text" class="system-setting form-control" data-setting="<?= $config->getName()?>" data-default-value="<?= $config->getDefault()?>" value="<?= $config->getValue()?>">
+                            <input disabled type="text" class="system-setting form-control" data-setting="<?= $config->getName()?>" data-default-value="<?= $config->getDefault()?>" value="<?= $config->getValue()?>">
                         </td>
                     </tr>
 
