@@ -230,8 +230,8 @@ require 'Include/Header.php';
                         <?php if ($user->isLocked()) { ?>
                             <span class="text-red"><?= $user->getFailedLogins() ?></span>
                         <?php } else {
-                            echo $user->getFailedLogins();
-                            }
+    echo $user->getFailedLogins();
+}
                             if ($user->getFailedLogins() > 0) { ?>
                                 <a onclick="restUserLoginCount(<?= $user->getId() ?>, '<?= $user->getPerson()->getFullName() ?>')">
                                     <i class="fa fa-eraser" aria-hidden="true"></i>
@@ -242,11 +242,11 @@ require 'Include/Header.php';
                         <a href="v2/user/<?= $user->getId() ?>/changePassword"><i
                                     class="fa fa-wrench" aria-hidden="true"></i></a>&nbsp;&nbsp;
                         <?php if ($user->getId() != AuthenticationManager::GetCurrentUser()->getId() && !empty($user->getEmail())) {
-        ?>
+                                ?>
                             <a onclick="resetUserPassword(<?= $user->getId() ?>, '<?= $user->getPerson()->getFullName() ?>')"><i
                                         class="fa fa-send-o" aria-hidden="true"></i></a>
                             <?php
-    } ?>
+                            } ?>
                     </td>
                     <td>
                         <?= $user->is2FactorAuthEnabled() ? gettext("Enabled") : gettext("Disabled") ?>
