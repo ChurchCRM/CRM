@@ -10,12 +10,12 @@ $(document).ready(function () {
         dataType: 'json'
     }).done(function (data) {
         if (data["PreFamilyId"]) {
-            $("#lastFamily").attr("href", window.CRM.root + "/v2/family/" + data["PreFamilyId"] + "/view");
+            $("#lastFamily").attr("href", window.CRM.root + "/v2/family/" + data["PreFamilyId"]);
         } else {
             $("#lastFamily").addClass("hidden");
         }
         if (data["NextFamilyId"]) {
-            $("#nextFamily").attr("href", window.CRM.root + "/v2/family/" + data["NextFamilyId"] + "/view");
+            $("#nextFamily").attr("href", window.CRM.root + "/v2/family/" + data["NextFamilyId"]);
         } else {
             $("#nextFamily").addClass("hidden");
         }
@@ -33,7 +33,7 @@ $(document).ready(function () {
                 title: i18next.t('Edit'),
                 data: 'GroupKey',
                 render: function (data, type, row) {
-                    return '<a class="btn btn-default" href="'+window.CRM.root+'/PledgeEditor.php?GroupKey='+ row.GroupKey + '&amp;linkBack=FamilyView.php?FamilyID='+window.CRM.currentFamily+'"><i class="fa fa-pencil bg-info"></i></a>';
+                    return '<a class="btn btn-default" href="'+window.CRM.root+'/PledgeEditor.php?GroupKey='+ row.GroupKey + '&amp;linkBack=v2/family/'+window.CRM.currentFamily+'"><i class="fa fa-pencil bg-info"></i></a>';
                 },
                 searchable: false
             },
@@ -43,7 +43,7 @@ $(document).ready(function () {
                 title: i18next.t('Delete'),
                 data: 'GroupKey',
                 render: function (data, type, row) {
-                    return '<a class="btn btn-default" href="'+window.CRM.root+'/PledgeDelete.php?GroupKey='+ row.GroupKey + '&amp;linkBack=FamilyView.php?FamilyID='+window.CRM.currentFamily+'"><i class="fa fa-trash bg-red"></i></a>';
+                    return '<a class="btn btn-default" href="'+window.CRM.root+'/PledgeDelete.php?GroupKey='+ row.GroupKey + '&amp;linkBack=v2/family/'+window.CRM.currentFamily+'"><i class="fa fa-trash bg-red"></i></a>';
                 },
                 searchable: false
             },
@@ -187,12 +187,9 @@ $(document).ready(function () {
                         method: "POST",
                         path: "families/" + window.CRM.currentFamily + "/activate/" + !window.CRM.currentActive
                     }).done(function (data) {
-                        if (data.success == true)
-                            if (window.CRM.currentFamilyView == 1) {
-                                window.location.href = window.CRM.root + "/FamilyView.php?FamilyID=" + window.CRM.currentFamily;
-                            } else {
-                                window.location.href = window.CRM.root + "/v2/family/" + window.CRM.currentFamily + "/view";
-                            }
+                        if (data.success == true) {
+                            window.location.href = window.CRM.root + "/v2/family/" + window.CRM.currentFamily;
+                        }
                     });
                 }
             }

@@ -18,8 +18,7 @@ $app->group('/family', function () {
     $this->get('','listFamilies');
     $this->get('/','listFamilies');
     $this->get('/not-found', 'viewFamilyNotFound');
-    $this->get('/{id}/view', 'viewFamily');
-    $this->get('/{id}/view/', 'viewFamily');
+    $this->get('/{id}', 'viewFamily');
 });
 
 function listFamilies(Request $request, Response $response, array $args)

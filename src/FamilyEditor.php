@@ -286,20 +286,20 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
         }
         if ($iFamilyID < 1) {
             $sSQL = "INSERT INTO family_fam (
-						fam_Name, 
-						fam_Address1, 
-						fam_Address2, 
-						fam_City, 
-						fam_State, 
-						fam_Zip, 
-						fam_Country, 
-						fam_HomePhone, 
-						fam_WorkPhone, 
-						fam_CellPhone, 
-						fam_Email, 
-						fam_WeddingDate, 
-						fam_DateEntered, 
-						fam_EnteredBy, 
+						fam_Name,
+						fam_Address1,
+						fam_Address2,
+						fam_City,
+						fam_State,
+						fam_Zip,
+						fam_Country,
+						fam_HomePhone,
+						fam_WorkPhone,
+						fam_CellPhone,
+						fam_Email,
+						fam_WeddingDate,
+						fam_DateEntered,
+						fam_EnteredBy,
 						fam_SendNewsLetter,
 						fam_OkToCanvass,
 						fam_Canvasser,
@@ -499,7 +499,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
         //Which submit button did they press?
         if (isset($_POST['FamilySubmit'])) {
             //Send to the view of this person
-            RedirectUtils::Redirect('FamilyView.php?FamilyID='.$iFamilyID);
+            RedirectUtils::Redirect('v2/family/'.$iFamilyID);
         } else {
             //Reload to editor to add another record
             RedirectUtils::Redirect('FamilyEditor.php');
@@ -1119,7 +1119,7 @@ require 'Include/Header.php';
     }
     echo ' <input type="button" class="btn btn-default" value="'.gettext('Cancel').'" Name="FamilyCancel"';
     if ($iFamilyID > 0) {
-        echo " onclick=\"javascript:document.location='FamilyView.php?FamilyID=$iFamilyID';\">";
+        echo " onclick=\"javascript:document.location='v2/family/$iFamilyID';\">";
     } else {
         echo " onclick=\"javascript:document.location='".SystemURLs::getRootPath()."/v2/family';\">";
     }
