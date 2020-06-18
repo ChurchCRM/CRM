@@ -5,7 +5,7 @@ Feature: FamilyDeactivate
 
   Scenario: Entering a new Family
     Given I am authenticated as "admin" using "changeme"
-    And I am on "/v2/family/21/view"
+    And I am on "/v2/family/21"
     Then I should see "Smith - Family"
     And I should not see "This Family is Deactivated"
     Then I press "Deactivate this Family"

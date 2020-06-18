@@ -34,7 +34,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     title: i18next.t('Family'),
                     data: 'Name',
                     render: function ( data, type, row ){
-                        return "<a href='"+ window.CRM.root + "/FamilyView.php?FamilyID=" + row.Id + "' target='family' />"+ data + "</a></li>";
+                        return "<a href='"+ window.CRM.root + "/v2/family/" + row.Id + "' target='family' />"+ data + "</a></li>";
                     },
                     searchable: true
                 },
