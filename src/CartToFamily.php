@@ -116,7 +116,7 @@ if (isset($_POST['Submit']) && count($_SESSION['aPeopleCart']) > 0) {
 
         $sGlobalMessage = $iCount.' records(s) successfully added to selected Family.';
 
-        RedirectUtils::Redirect('FamilyView.php?FamilyID='.$iFamilyID.'&Action=EmptyCart');
+        RedirectUtils::Redirect('v2/family/'.$iFamilyID.'&Action=EmptyCart');
     }
 }
 
