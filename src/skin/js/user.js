@@ -37,19 +37,21 @@ function changeSkin(cls) {
 $('[data-skin]').on('click', function (e) {
     $.ajax({
         type: 'POST',
-        url: window.CRM.root + '/api/users/' + window.CRM.userId + '/setting/style',
+        url: window.CRM.root + '/api/users/' + window.CRM.viewUserId + '/setting/style',
         data: {"value": $(this).data('skin')}
     })
-    if ($(this).hasClass('knob'))
-        return
-    e.preventDefault()
-    changeSkin($(this).data('skin'))
+    if (window.CRM.viewUserId == window.CRM.userId) {
+        if ($(this).hasClass('knob'))
+            return
+        e.preventDefault()
+        changeSkin($(this).data('skin'))
+    }
 })
 
 $("#regenApiKey").click(function () {
     $.ajax({
         type: 'POST',
-        url: window.CRM.root + '/api/users/' + window.CRM.userId + '/apikey/regen'
+        url: window.CRM.root + '/api/users/' + window.CRM.viewUserId + '/apikey/regen'
     })
         .done(function (data, textStatus, xhr) {
             if (xhr.status == 200) {
