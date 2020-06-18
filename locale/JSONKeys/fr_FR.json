@@ -1810,7 +1810,6 @@
     "Actions": "Actions",
     "Action Confirmation": "Action confirmée",
     "Please confirm reset failed login count": "Veuillez confirmer l'échec de la réinitialisation de l'identifiant",
-    "Password reset for": "Réinitialisation du Mot de Passe pour",
     "View Active Families": "Voir les familles actives",
     "View Inactive Families": "Voir les familles désactivées",
     "SMTP Server timeout in sec": "Timeout en sec. du serveur SMTP",

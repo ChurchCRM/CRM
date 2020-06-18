@@ -6987,9 +6987,10 @@ msgstr "El archivo seleccionado excede el máximo tamaño de carga del servidor 
 msgid "Unmet Application Prerequisites"
 msgstr "Prerequisitos de Aplicación No Satisfechos"
 
+#. In the context of a software examination
 #: 
 msgid "Failed"
-msgstr "Falló"
+msgstr "Fracasó"
 
 #: 
 msgid "The previous integrity check passed.  All system file hashes match the expected values."
@@ -7290,10 +7291,6 @@ msgstr "Confirmación de Acción"
 #: 
 msgid "Please confirm reset failed login count"
 msgstr "Por favor confirme restablecer la cuenta de ingresos fallidos"
-
-#: 
-msgid "Password reset for"
-msgstr "Restablecer contraseña para"
 
 #: 
 msgid "View Active Families"
@@ -8731,7 +8728,7 @@ msgstr "falta archivo integrityCheck.json"
 
 #: 
 msgid "Passed"
-msgstr "Pasó"
+msgstr "Aprobado"
 
 #: 
 msgid "PHP Max Execution Time is too Short"
@@ -9189,4 +9186,89 @@ msgstr "Problema de Autenticación"
 #: 
 msgid "Enter new user password. Administratively set passwords are not subject to length or complexity requirements"
 msgstr "Ingrese una nueva contraseña de usuario. Contraseñas establecidas administrativamente no están sujetas a requerimientos de extensión o complejidad."
+
+#: 
+msgid "No email passed in"
+msgstr "Emails no entregados"
+
+#: 
+msgid "Mailchimp is not active"
+msgstr "Mailchimp no está activo"
+
+#: 
+msgid "Mailchimp"
+msgstr "Mailchimp"
+
+#: 
+msgid "Lists"
+msgstr "Listas"
+
+#: 
+msgid "loading"
+msgstr "cargando"
+
+#: 
+msgid "List not found"
+msgstr "Lista no encontrada"
+
+#: 
+msgid "List not inList"
+msgstr "Lista no enlistada"
+
+#. I don't find a proper short translation. I'll keep it simple.
+#: 
+msgid "People not in"
+msgstr "Personas no en"
+
+#: 
+msgid "Invalid List id"
+msgstr "id de Lista Inválido"
+
+#: 
+msgid "Audience not in the ChurchCRM"
+msgstr "Audiencia no en ChurchCRM"
+
+#: 
+msgid "ChurchCRM Installation Information"
+msgstr "Información de Instalación de ChurchCRM"
+
+#: 
+msgid "Database Server Version"
+msgstr "Versión de Servidor de Base de Datos"
+
+#: 
+msgid "Web Server"
+msgstr "Servidor Web"
+
+#: 
+msgid "Server Software"
+msgstr "Software de Servidor"
+
+#: 
+msgid "Email Information"
+msgstr "Información de Email"
+
+#: 
+msgid "List maintenance"
+msgstr "Mantenimiento de Lista"
+
+#: 
+msgid "People not in list"
+msgstr "Personas no en la lista"
+
+#: 
+msgid "Audience not in the CRM"
+msgstr "Audiencia no en CRM"
+
+#: 
+msgid "Hebrew"
+msgstr "Hebreo"
+
+#: 
+msgid "open rate"
+msgstr "tasa de apertura"
+
+#: 
+msgid "Not Subscribed "
+msgstr "No Suscrito"
 

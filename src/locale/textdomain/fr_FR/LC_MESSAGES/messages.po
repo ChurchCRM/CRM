@@ -7260,10 +7260,6 @@ msgstr "Action confirmée"
 msgid "Please confirm reset failed login count"
 msgstr "Veuillez confirmer l'échec de la réinitialisation de l'identifiant"
 
-#: 
-msgid "Password reset for"
-msgstr "Réinitialisation du Mot de Passe pour"
-
 #. "Voir" est plus court que "Afficher" (sinon, on ne voit pas dans le menu)
 #: 
 msgid "View Active Families"

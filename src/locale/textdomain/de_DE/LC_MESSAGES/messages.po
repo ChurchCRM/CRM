@@ -6103,10 +6103,6 @@ msgid "Actions"
 msgstr "Aktionen"
 
 #: 
-msgid "Password reset for"
-msgstr "Passwort wurde zurückgesetzt für"
-
-#: 
 msgid "View Active Families"
 msgstr "Aktive Familien anzeigen"
 
