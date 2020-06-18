@@ -7282,10 +7282,6 @@ msgid "Please confirm reset failed login count"
 msgstr "Conferma il reset del conteggio degli accessi fallito"
 
 #: 
-msgid "Password reset for"
-msgstr "Ripristino password per"
-
-#: 
 msgid "View Active Families"
 msgstr "Visualizza famiglie attive"
 

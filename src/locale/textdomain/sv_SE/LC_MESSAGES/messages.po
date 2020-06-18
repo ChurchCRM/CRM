@@ -7401,10 +7401,6 @@ msgid "Please confirm reset failed login count"
 msgstr "Bekräfta återställningen av inloggningsantalet"
 
 #: 
-msgid "Password reset for"
-msgstr "Återställ lösenord för"
-
-#: 
 msgid "View Active Families"
 msgstr "Visa aktiva familjer"
 
@@ -9253,4 +9249,124 @@ msgstr "Kreditkortfolk"
 #: 
 msgid "People who are configured to pay by credit card."
 msgstr "Personer som är konfigurerade att betala med kreditkort."
+
+#: 
+msgid "Google Maps API Key used for Geocoding addresses"
+msgstr "Google Maps API-nyckel som används för geokodningsadresser"
+
+#: 
+msgid "Send an email notifying users when their account has been deleted"
+msgstr "Skicka ett e-postmeddelande för användare när deras konto har tagits bort"
+
+#: 
+msgid "Google Maps API Key used for rendering maps in browser"
+msgstr "Google Maps API-nyckel som används för att rendera kartor i webbläsaren"
+
+#: 
+msgid "Incorrect password supplied for current user"
+msgstr "Felaktigt lösenord levereras för den aktuella användaren"
+
+#: 
+msgid "Your new password must not match your old one."
+msgstr "Ditt nya lösenord får inte matcha ditt gamla."
+
+#: 
+msgid "Your new password is too similar to your old one."
+msgstr "Ditt nya lösenord liknar det gamla."
+
+#: 
+msgid "Password reset not availble.  Please contact your system administrator"
+msgstr "Återställning av lösenord är inte tillgängligt. Kontakta din systemadministratör"
+
+#: 
+msgid "Authentication Issue"
+msgstr "Autentiseringsproblem"
+
+#: 
+msgid "Enter new user password. Administratively set passwords are not subject to length or complexity requirements"
+msgstr "Ange nytt användarlösenord. Administrativt inställda lösenord omfattas inte av krav på längd eller komplexitet"
+
+#: 
+msgid "No email passed in"
+msgstr "Inget e-postmeddelande har skickats in"
+
+#: 
+msgid "Mailchimp is not active"
+msgstr "Mailchimp är inte aktivt"
+
+#: 
+msgid "Mailchimp"
+msgstr "MailChimp"
+
+#: 
+msgid "Lists"
+msgstr "Listor"
+
+#: 
+msgid "loading"
+msgstr "läser in"
+
+#: 
+msgid "List not found"
+msgstr "Listan hittades inte"
+
+#: 
+msgid "List not inList"
+msgstr "Lista inte inList"
+
+#: 
+msgid "People not in"
+msgstr "Människor inte i"
+
+#: 
+msgid "Invalid List id"
+msgstr "Ogiltig lista-id"
+
+#: 
+msgid "Audience not in the ChurchCRM"
+msgstr "Publiken inte i ChurchCRM"
+
+#: 
+msgid "ChurchCRM Installation Information"
+msgstr "ChurchCRM installationsinformation"
+
+#: 
+msgid "Database Server Version"
+msgstr "Databaseserverversion"
+
+#: 
+msgid "Web Server"
+msgstr "Webbserver"
+
+#: 
+msgid "Server Software"
+msgstr "Serverprogramvara"
+
+#: 
+msgid "Email Information"
+msgstr "E-postinformation"
+
+#: 
+msgid "List maintenance"
+msgstr "Lista underhåll"
+
+#: 
+msgid "People not in list"
+msgstr "Människor som inte är i listan"
+
+#: 
+msgid "Audience not in the CRM"
+msgstr "Publiken inte i CRM"
+
+#: 
+msgid "Hebrew"
+msgstr "Hebreiska"
+
+#: 
+msgid "open rate"
+msgstr "öppen kostnad"
+
+#: 
+msgid "Not Subscribed "
+msgstr "Inte prenumererad "
 
