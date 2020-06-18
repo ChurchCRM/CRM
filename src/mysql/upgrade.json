@@ -242,7 +242,7 @@
         ],
         "dbVersion": "4.0.0"
     },
-    "current": {
+    "pre-4.1.0": {
         "versions": [
             "4.0.0",
             "4.0.1",
@@ -255,5 +255,14 @@
             "/mysql/upgrade/4.1.0-cleanup.sql"
         ],
         "dbVersion": "4.1.0"
+    },
+    "current": {
+        "versions": [
+        "4.1.0"
+        ],
+        "scripts": [
+            "/mysql/upgrade/4.2.0-perms.sql"
+        ],
+        "dbVersion": "4.2.0"
     }
 }
