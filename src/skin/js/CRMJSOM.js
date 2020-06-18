@@ -565,7 +565,7 @@
                 {
                   data: 'Name',
                   render: function (data, type, row, meta) {
-                    return '<a href=' + window.CRM.root + '/FamilyView.php?FamilyID=' + row.Id + '>' + data + '</a>';
+                    return '<a href=' + window.CRM.root + '/v2/family/' + row.Id + '>' + data + '</a>';
                   }
                 },
                 {data: 'Address1'},
@@ -593,7 +593,7 @@
                 {
                   data: 'Name',
                   render: function (data, type, row, meta) {
-                    return '<a href=' + window.CRM.root + '/FamilyView.php?FamilyID=' + row.Id + '>' + data + '</a>';
+                    return '<a href=' + window.CRM.root + '/v2/family/' + row.Id + '>' + data + '</a>';
                   }
                 },
                 {data: 'Address1'},

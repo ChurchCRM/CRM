@@ -10,7 +10,7 @@ use ChurchCRM\dto\SystemURLs;
 class NewPersonOrFamilyEmail extends BaseEmail
 {
     private $relatedObject;
-    
+
     public function __construct($RelatedObject)
     {
       $this->relatedObject = $RelatedObject;
@@ -23,7 +23,7 @@ class NewPersonOrFamilyEmail extends BaseEmail
         if(!empty($Person)) {
           $email = $Person->getEmail();
           if (!empty($email)) {
-            array_push($toAddresses,$email);   
+            array_push($toAddresses,$email);
           }
         }
       }
@@ -44,9 +44,9 @@ class NewPersonOrFamilyEmail extends BaseEmail
       {
         return gettext("New Family Added");
       }
-        
+
     }
-   
+
      public function getTokens()
     {
         $myTokens =  [
@@ -56,12 +56,12 @@ class NewPersonOrFamilyEmail extends BaseEmail
         {
           /* @var $family ChurchCRM\Family */
           $family = $this->relatedObject;
-          $myTokens['body'] = gettext("New Family Added")."\r\n". 
+          $myTokens['body'] = gettext("New Family Added")."\r\n".
             gettext("Family Name").": ". $family->getName();
           $myTokens['FamilyEmail'] =  $family->getEmail();
           $myTokens['FamilyPhone'] = $family->getCellPhone();
           $myTokens['FamilyAddress'] =  $family->getAddress();
-          $myTokens["familyLink"] = SystemURLs::getURL()."/FamilyView.php?FamilyID=".$this->relatedObject->getId();
+          $myTokens["familyLink"] = SystemURLs::getURL()."/v2/family/".$this->relatedObject->getId();
         }
         elseif (get_class($this->relatedObject) == "ChurchCRM\Person")
         {
@@ -78,7 +78,7 @@ class NewPersonOrFamilyEmail extends BaseEmail
         $myTokens['IncludeDataInNewPersonNotifications'] = SystemConfig::getBooleanValue("IncludeDataInNewPersonNotifications");
         $myTokens['sGreeterCustomMsg1'] = SystemConfig::getValue("sGreeterCustomMsg1");
         $myTokens['sGreeterCustomMsg2'] = SystemConfig::getValue("sGreeterCustomMsg2");
-          
+
         return array_merge($this->getCommonTokens(), $myTokens);
     }
 }
