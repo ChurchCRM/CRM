@@ -5909,6 +5909,43 @@ msgid "Bermuda"
 msgstr "Bermuda"
 
 #: 
+msgid "Bhutan (འབྲུག)"
+msgstr "Bhutan"
+
+#: 
+msgid "Bolivia"
+msgstr "Bolivia"
+
+#: 
+msgid "Bosnia and Herzegovina (Босна и Херцеговина)"
+msgstr "Bosnia și Herzegovina"
+
+#: 
+msgid "Botswana"
+msgstr "Botswana"
+
+#: 
+msgid "Bouvet Island"
+msgstr "Insula bouvent"
+
+#: 
+msgid "Brazil (Brasil)"
+msgstr "Brazilia"
+
+#: 
+msgid "British Indian Ocean Territory"
+msgstr "Teritoriul oceanului indian britanic"
+
+#: 
+msgid "British Virgin Islands"
+msgstr "Insulele virgine"
+
+#: 
+msgid "Brunei"
+msgstr "Brunei\n"
+""
+
+#: 
 msgid "Bulgaria (България)"
 msgstr "Bulagria"
 
@@ -5987,6 +6024,50 @@ msgstr "Colombia"
 #: 
 msgid "Comoros (‫جزر القمر‬‎)"
 msgstr "Comoros"
+
+#: 
+msgid "Congo (DRC) (Jamhuri ya Kidemokrasia ya Kongo)"
+msgstr "Congo"
+
+#: 
+msgid "Congo (Republic) (Congo-Brazzaville)"
+msgstr "Republica Congo"
+
+#: 
+msgid "Cook Islands"
+msgstr "Insulele Cook"
+
+#: 
+msgid "Costa Rica"
+msgstr "Costa Rica"
+
+#: 
+msgid "Côte d’Ivoire"
+msgstr "Cote d'lvoire"
+
+#: 
+msgid "Croatia (Hrvatska)"
+msgstr "Croația"
+
+#: 
+msgid "Cuba"
+msgstr "Cuba"
+
+#: 
+msgid "Curaçao"
+msgstr "Curacao"
+
+#: 
+msgid "Cyprus (Κύπρος)"
+msgstr "Cipru"
+
+#: 
+msgid "Czech Republic (Česká republika)"
+msgstr "Republica Chehă"
+
+#: 
+msgid "Denmark (Danmark)"
+msgstr "Danemarca"
 
 #: 
 msgid "Diego Garcia"
@@ -6389,6 +6470,42 @@ msgid "Romania (România)"
 msgstr "România"
 
 #: 
+msgid "Russia (Россия)"
+msgstr "Rusia"
+
+#: 
+msgid "Rwanda"
+msgstr "Ruanda"
+
+#: 
+msgid "Saint Barthélemy (Saint-Barthélemy)"
+msgstr "Saint Barthelemy"
+
+#: 
+msgid "Saint Helena"
+msgstr "Saint Helena"
+
+#: 
+msgid "Saint Kitts and Nevis"
+msgstr "Saint Kitts and Nevis"
+
+#: 
+msgid "Saint Lucia"
+msgstr "Sait Lucia"
+
+#: 
+msgid "Saint Martin (Saint-Martin (partie française))"
+msgstr "Saint Martin"
+
+#: 
+msgid "Saint Pierre and Miquelon (Saint-Pierre-et-Miquelon)"
+msgstr "Saint Pierre and Miquelon"
+
+#: 
+msgid "Samoa"
+msgstr "Samoa"
+
+#: 
 msgid "San Marino"
 msgstr "San Marino"
 
@@ -6467,6 +6584,50 @@ msgstr "Sri Lanka"
 #: 
 msgid "St. Vincent & Grenadines"
 msgstr "St. Vincent și Grenadines"
+
+#: 
+msgid "Sudan (‫السودان‬‎)"
+msgstr "Sudan"
+
+#: 
+msgid "Suriname"
+msgstr "Suriname"
+
+#: 
+msgid "Svalbard and Jan Mayen (Svalbard og Jan Mayen)"
+msgstr "Svalbard and Jan Mayen"
+
+#: 
+msgid "Swaziland"
+msgstr "Swaziland"
+
+#: 
+msgid "Sweden (Sverige)"
+msgstr "Suedia"
+
+#: 
+msgid "Switzerland (Schweiz)"
+msgstr "Elveția"
+
+#: 
+msgid "Syria (‫سوريا‬‎)"
+msgstr "Siria"
+
+#: 
+msgid "Taiwan (台灣)"
+msgstr "Taiwan"
+
+#: 
+msgid "Tajikistan"
+msgstr "Tajkistan"
+
+#: 
+msgid "Tanzania"
+msgstr "Tanzania"
+
+#: 
+msgid "Thailand (ไทย)"
+msgstr "Tailanda"
 
 #: 
 msgid "Timor-Leste"
@@ -6591,4 +6752,164 @@ msgstr "Vă rugăm verificați informațiile legat de familie"
 #: 
 msgid "Your verification request is complete"
 msgstr "Varificare ta este finalizată"
+
+#: 
+msgid "Visit our Site"
+msgstr "Visitează pagina noastră"
+
+#: 
+msgid "Request Family Info Verification"
+msgstr "Solicită verificare informațiilor familiei"
+
+#: 
+msgid "Select how do you want to request the family information to be verified"
+msgstr "Selectează cum vrei să fie verificate informațiile familie"
+
+#: 
+msgid "Online Verification"
+msgstr "Verificare online"
+
+#: 
+msgid "Verified In Person"
+msgstr "Verificare în persoană"
+
+#: 
+msgid "None State"
+msgstr "Fără stadiu"
+
+#: 
+msgid "Backup archive does not contain a database"
+msgstr "Copia de rezervă nu conține baza de date"
+
+#: 
+msgid "Missing Coordinates"
+msgstr "Lipsă coordonate"
+
+#: 
+msgid "Family Coordinates Data for Some Families"
+msgstr "Coordonatele familiei pentru unele familii"
+
+#: 
+msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database."
+msgstr "Transformă codurile poștale introduse de user în litere CAPITALIZAT la salvarea în baza de date"
+
+#: 
+msgid "Used to end a letter before Signer"
+msgstr "Folosit pentru a încheia o scrisoare înainte de semnare"
+
+#: 
+msgid "Google Analytics Tracking Code"
+msgstr "Cod urmărire Google Analytics"
+
+#: 
+msgid "English - United States"
+msgstr "Engleză - Statele Unite"
+
+#: 
+msgid "English - Canada"
+msgstr "Engleză - Canada"
+
+#: 
+msgid "English - Australia"
+msgstr "Engleză - Australia"
+
+#: 
+msgid "English - Great Britain"
+msgstr "Engleză - Maria Britanie"
+
+#: 
+msgid "German - Germany"
+msgstr "Germană - Germania"
+
+#: 
+msgid "Spanish - Spain"
+msgstr "Spaniolă - Spania"
+
+#: 
+msgid "French - France"
+msgstr "Franceză - Franța"
+
+#: 
+msgid "Hungarian"
+msgstr "Maghiară"
+
+#: 
+msgid "Increase the php upload limits to allow for mobile photo upload, and backup restore."
+msgstr "Măriți limitele de încărcare php pentru a permite încărcarea de fotografii mobile și restaurarea copiilor de rezervă."
+
+#: 
+msgid "Deactivated the Family"
+msgstr "Dezactivează familia"
+
+#: 
+msgid "Activated the Family"
+msgstr "Activează familia"
+
+#: 
+msgid "families"
+msgstr "familii"
+
+#: 
+msgid "Deposit ticket type.  QBDT - Quickbooks"
+msgstr "Tip thichet de depozit - QBDT - Quickbooks"
+
+#: 
+msgid "Financial Settings"
+msgstr "Setări financiare"
+
+#: 
+msgid "An invalid configuration name has been requested"
+msgstr "A fost solicitat un nume de configurare nevalid"
+
+#: 
+msgid "An invalid configuration id has been requested"
+msgstr "A fost solicitat un id de configurare nevalid"
+
+#: 
+msgid "Profile Image uploaded"
+msgstr "Fotografie profil încărcată"
+
+#: 
+msgid "payments(s)?"
+msgstr "plată(ți)?"
+
+#: 
+msgid "Please ensure this what you want to do.</p>"
+msgstr "Verificați dacă asta vreți să faceți </p>"
+
+#: 
+msgid " this Family"
+msgstr "this Family"
+
+#: 
+msgid "Confirm Deactivation"
+msgstr "Confirmați dezactivarea"
+
+#: 
+msgid "Confirm Activation"
+msgstr "Confirmați activarea"
+
+#: 
+msgid "Please confirm deactivation of family"
+msgstr "Confirmați dezactivarea familiei"
+
+#: 
+msgid "Please confirm activation of family"
+msgstr "Confirmați activarea familiei"
+
+#: 
+msgid "Show neighbors with these classifications:"
+msgstr "Afișați vecini cu aceste clasificări"
+
+#: 
+msgid "Please select a Family."
+msgstr "Alegeți o familie."
+
+#: 
+msgid "Coordinate data base file name:"
+msgstr "Nume fișiere coordonate în baza de date"
+
+#: 
+msgid "Intersect With Cart"
+msgstr "Intersecție cu grafic"
 

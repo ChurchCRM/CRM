@@ -7299,10 +7299,6 @@ msgid "Please confirm reset failed login count"
 msgstr "请确认重置登录失败次数"
 
 #: 
-msgid "Password reset for"
-msgstr "密码重置为"
-
-#: 
 msgid "View Active Families"
 msgstr "查看活跃家庭"
 

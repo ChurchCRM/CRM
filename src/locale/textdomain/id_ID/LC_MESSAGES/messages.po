@@ -7256,10 +7256,6 @@ msgid "Please confirm reset failed login count"
 msgstr "Harap konfirmasi atur ulang jumlah login gagal"
 
 #: 
-msgid "Password reset for"
-msgstr "Reset kata sandi untuk"
-
-#: 
 msgid "View Active Families"
 msgstr "Lihat Keluarga Aktif"
 

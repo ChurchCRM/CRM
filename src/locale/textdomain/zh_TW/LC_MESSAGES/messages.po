@@ -7416,10 +7416,6 @@ msgid "Please confirm reset failed login count"
 msgstr "請確認重置登入失敗次數"
 
 #: 
-msgid "Password reset for"
-msgstr "密碼重置為"
-
-#: 
 msgid "View Active Families"
 msgstr "查看活躍家庭"
 
@@ -9411,4 +9407,89 @@ msgstr "認證問題"
 #, fuzzy
 msgid "Enter new user password. Administratively set passwords are not subject to length or complexity requirements"
 msgstr "輸入新的用戶密碼。管理設置的密碼不受長度或複雜性要求的限制"
+
+#: 
+msgid "No email passed in"
+msgstr "沒有傳入電子郵件"
+
+#: 
+msgid "Mailchimp is not active"
+msgstr "Mailchimp無效"
+
+#: 
+msgid "Mailchimp"
+msgstr "Mailchimp"
+
+#: 
+msgid "Lists"
+msgstr "清單"
+
+#: 
+msgid "loading"
+msgstr "載入中"
+
+#: 
+msgid "List not found"
+msgstr "找不到清單"
+
+#: 
+msgid "List not inList"
+msgstr "清單不在列表中"
+
+#: 
+msgid "People not in"
+msgstr "不在其中的人員"
+
+#: 
+msgid "Invalid List id"
+msgstr "無效的清單代碼"
+
+#: 
+msgid "Audience not in the ChurchCRM"
+msgstr "ChurchCRM沒有Audience"
+
+#: 
+msgid "ChurchCRM Installation Information"
+msgstr "ChurchCRM安裝資訊"
+
+#: 
+msgid "Database Server Version"
+msgstr "資料庫伺服器版本"
+
+#: 
+msgid "Web Server"
+msgstr "網頁伺服器"
+
+#: 
+msgid "Server Software"
+msgstr "伺服器軟體"
+
+#: 
+msgid "Email Information"
+msgstr "電子郵件資訊"
+
+#: 
+msgid "List maintenance"
+msgstr "清單維護"
+
+#: 
+msgid "People not in list"
+msgstr "不在清單中的人員"
+
+#: 
+msgid "Audience not in the CRM"
+msgstr "CRM沒有Audience"
+
+#: 
+msgid "Hebrew"
+msgstr "希伯來書"
+
+#: 
+msgid "open rate"
+msgstr "開放率"
+
+#: 
+#, fuzzy
+msgid "Not Subscribed "
+msgstr "未訂閱 "
 

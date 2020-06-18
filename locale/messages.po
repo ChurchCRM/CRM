@@ -10,7 +10,7 @@ msgstr ""
 "#-#-#-#-#  messages.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-16 10:14-0700\n"
+"POT-Creation-Date: 2020-06-17 22:50-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,8 +25,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2020-06-16T17:14:25.161Z\n"
-"PO-Revision-Date: 2020-06-16T17:14:25.161Z\n"
+"POT-Creation-Date: 2020-06-18T05:50:03.568Z\n"
+"PO-Revision-Date: 2020-06-18T05:50:03.568Z\n"
 
 msgid "Backup Database"
 msgstr ""
@@ -4857,13 +4857,55 @@ msgid ""
 "value."
 msgstr ""
 
-msgid "User Listing"
-msgstr ""
-
 msgid "New User"
 msgstr ""
 
 msgid "User Settings"
+msgstr ""
+
+msgid "Global User Settings"
+msgstr ""
+
+msgid "General"
+msgstr ""
+
+msgid "Passwords"
+msgstr ""
+
+msgid "2FA"
+msgstr ""
+
+msgid "Session Timeout"
+msgstr ""
+
+msgid "Max Failed Login"
+msgstr ""
+
+msgid "Enable Password Reset"
+msgstr ""
+
+msgid "Send email to Deleted Users"
+msgstr ""
+
+msgid "Min Password Length"
+msgstr ""
+
+msgid "Min Password Characters Delta"
+msgstr ""
+
+msgid "Disallowed Passwords"
+msgstr ""
+
+msgid "Enable 2FA"
+msgstr ""
+
+msgid "Require 2FA"
+msgstr ""
+
+msgid "2FA Application Name"
+msgstr ""
+
+msgid "User Listing"
 msgstr ""
 
 msgid "Actions"
@@ -4879,27 +4921,6 @@ msgid "Failed Logins"
 msgstr ""
 
 msgid "Two Factor Status"
-msgstr ""
-
-msgid "User Delete Confirmation"
-msgstr ""
-
-msgid "Please confirm removal of user status from:"
-msgstr ""
-
-msgid "Action Confirmation"
-msgstr ""
-
-msgid "Please confirm reset failed login count"
-msgstr ""
-
-msgid "Please confirm the password reset of this user"
-msgstr ""
-
-msgid "Password reset for"
-msgstr ""
-
-msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr ""
 
 msgid "Volunteer Opportunity Delete Confirmation"
@@ -7144,4 +7165,22 @@ msgid "Are you sure you want to remove this person's membership from"
 msgstr ""
 
 msgid "Are you sure you want to unassign this property?"
+msgstr ""
+
+msgid "User Delete Confirmation"
+msgstr ""
+
+msgid "Please confirm removal of user status from:"
+msgstr ""
+
+msgid "Action Confirmation"
+msgstr ""
+
+msgid "Please confirm reset failed login count"
+msgstr ""
+
+msgid "Please confirm the password reset of this user"
+msgstr ""
+
+msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr ""
