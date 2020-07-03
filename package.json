@@ -20,7 +20,7 @@
     "devDependencies": {
         "@types/jquery": "^3.3.38",
         "@types/react": "^16.9.35",
-        "@types/react-bootstrap": "^1.0.1",
+        "@types/react-bootstrap": "^0.32.0",
         "@types/react-dom": "^16.9.8",
         "@types/react-modal": "^3.10.5",
         "babel-cli": "^6.26.0",
@@ -44,7 +44,7 @@
         "i18next-xhr-backend": "^3.2.2",
         "node-sha1": "^1.0.1",
         "react": "^16.13.1",
-        "react-bootstrap": "^1.0.1",
+        "react-bootstrap": "^0.32.4",
         "react-dom": "^16.13.1",
         "react-modal": "^3.11.2",
         "tar": "^6.0.2",
