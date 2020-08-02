@@ -686,8 +686,14 @@ function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComp
         if ($mode == 'fam') {
             $aName = GroupBySalutation($aRow['per_fam_ID'], $aAdultRole, $aChildRole);
         } else {
-            $sName = FormatFullName($aRow['per_Title'], $aRow['per_FirstName'], '',
-                $aRow['per_LastName'], $aRow['per_Suffix'], 1);
+            $sName = FormatFullName(
+                $aRow['per_Title'],
+                $aRow['per_FirstName'],
+                '',
+                $aRow['per_LastName'],
+                $aRow['per_Suffix'],
+                1
+            );
 
             $bChild = false;
             foreach ($aChildRole as $value) {
@@ -739,22 +745,38 @@ function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComp
         $zipLabels = ZipBundleSort($sLabelList);
         if ($iBulkMailPresort == 2) {
             while (list($i, $sLT) = each($zipLabels)) {
-                $pdf->Add_PDF_Label(sprintf("%s\n%s\n%s\n%s, %s %s",
-                            $sLT['Note'], $sLT['Name'], $sLT['Address'],
-                            $sLT['City'], $sLT['State'], $sLT['Zip']));
+                $pdf->Add_PDF_Label(sprintf(
+                    "%s\n%s\n%s\n%s, %s %s",
+                    $sLT['Note'],
+                    $sLT['Name'],
+                    $sLT['Address'],
+                    $sLT['City'],
+                    $sLT['State'],
+                    $sLT['Zip']
+                ));
             } // end while
         } else {
             while (list($i, $sLT) = each($zipLabels)) {
-                $pdf->Add_PDF_Label(sprintf("%s\n%s\n%s, %s %s",
-                            $sLT['Name'], $sLT['Address'],
-                            $sLT['City'], $sLT['State'], $sLT['Zip']));
+                $pdf->Add_PDF_Label(sprintf(
+                    "%s\n%s\n%s, %s %s",
+                    $sLT['Name'],
+                    $sLT['Address'],
+                    $sLT['City'],
+                    $sLT['State'],
+                    $sLT['Zip']
+                ));
             } // end while
         } // end of if ($BulkMailPresort == 2)
     } else {
         while (list($i, $sLT) = each($sLabelList)) {
-            $pdf->Add_PDF_Label(sprintf("%s\n%s\n%s, %s %s",
-                            $sLT['Name'], $sLT['Address'],
-                            $sLT['City'], $sLT['State'], $sLT['Zip']));
+            $pdf->Add_PDF_Label(sprintf(
+                "%s\n%s\n%s, %s %s",
+                $sLT['Name'],
+                $sLT['Address'],
+                $sLT['City'],
+                $sLT['State'],
+                $sLT['Zip']
+            ));
         } // end while
     } // end of if($iBulkMailPresort)
 
@@ -836,7 +858,8 @@ $bOnlyComplete = ($_GET['onlyfull'] == 1);
 $sFileType = InputUtils::LegacyFilterInput($_GET['filetype'], 'char', 4);
 
 $aLabelList = unserialize(
-                GenerateLabels($pdf, $mode, $iBulkCode, $bToParents, $bOnlyComplete));
+    GenerateLabels($pdf, $mode, $iBulkCode, $bToParents, $bOnlyComplete)
+);
 
 if ($sFileType == 'PDF') {
     header('Pragma: public');  // Needed for IE when using a shared SSL certificate
