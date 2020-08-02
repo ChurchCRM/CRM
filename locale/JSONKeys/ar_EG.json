@@ -2278,7 +2278,5 @@
     "Two factor authentication requires ChurchCRM administrators to configure a few parameters": "يتطلب اثنين عامل التوثيق الإداريين ChurchCRM لتكوين عدد قليل من المعالم",
     "System configuration ": "أعدادات النظام",
     "Must be set to 'true'": "يجب أن يتم تعيين إلى 'true'",
-    "Include/Config.php must define an encryption key for storing 2FA secret keys in the database by setting a value for": "وتشمل / ملف config.php يجب تحديد مفتاح التشفير لتخزين 2FA المفاتيح السرية في قاعدة البيانات عن طريق تحديد قيمة لل",
-    "Credit Card People": "بطاقة الائتمان الشعب",
-    "People who are configured to pay by credit card.": "الناس الذين تم تكوينها لالدفع بواسطة بطاقة الائتمان."
+    "Include/Config.php must define an encryption key for storing 2FA secret keys in the database by setting a value for": "وتشمل / ملف config.php يجب تحديد مفتاح التشفير لتخزين 2FA المفاتيح السرية في قاعدة البيانات عن طريق تحديد قيمة لل"
 }
