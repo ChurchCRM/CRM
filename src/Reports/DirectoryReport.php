@@ -104,8 +104,10 @@ $numCustomFields = mysqli_num_rows($rsCustomFields);
 
 if ($numCustomFields > 0) {
     while ($rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQLI_ASSOC)) {
-        $pdf->AddCustomField($rowCustomField['custom_Order'], isset($_POST['bCustom'.$rowCustomField['custom_Order']])
-                            );
+        $pdf->AddCustomField(
+            $rowCustomField['custom_Order'],
+            isset($_POST['bCustom'.$rowCustomField['custom_Order']])
+        );
     }
 }
 

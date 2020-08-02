@@ -169,10 +169,26 @@ for ($i = 0; $i < $nGrps; $i++) {
             $y += 4;
         }
 
-        $y = $pdf->DrawAttendanceCalendar($nameX, $y + 6, $aStudents, gettext('Students'), $iExtraStudents,
-                                   $tFirstSunday, $tLastSunday,
-                                   $tNoSchool1, $tNoSchool2, $tNoSchool3, $tNoSchool4,
-                                                 $tNoSchool5, $tNoSchool6, $tNoSchool7, $tNoSchool8, $reportHeader, $aStudentsIMG, $withPictures);
+        $y = $pdf->DrawAttendanceCalendar(
+            $nameX,
+            $y + 6,
+            $aStudents,
+            gettext('Students'),
+            $iExtraStudents,
+            $tFirstSunday,
+            $tLastSunday,
+            $tNoSchool1,
+            $tNoSchool2,
+            $tNoSchool3,
+            $tNoSchool4,
+            $tNoSchool5,
+            $tNoSchool6,
+            $tNoSchool7,
+            $tNoSchool8,
+            $reportHeader,
+            $aStudentsIMG,
+            $withPictures
+        );
         
         
         // we start a new page
@@ -181,10 +197,26 @@ for ($i = 0; $i < $nGrps; $i++) {
         }
                                                                         
         $y = $yTeachers;
-        $pdf->DrawAttendanceCalendar($nameX, $y + 6, $aTeachers, gettext('Teachers'), $iExtraTeachers,
-                                                                    $tFirstSunday, $tLastSunday,
-                                                                    $tNoSchool1, $tNoSchool2, $tNoSchool3, $tNoSchool4,
-                                                                    $tNoSchool5, $tNoSchool6, $tNoSchool7, $tNoSchool8, '', $aTeachersIMG, $withPictures);
+        $pdf->DrawAttendanceCalendar(
+            $nameX,
+            $y + 6,
+            $aTeachers,
+            gettext('Teachers'),
+            $iExtraTeachers,
+            $tFirstSunday,
+            $tLastSunday,
+            $tNoSchool1,
+            $tNoSchool2,
+            $tNoSchool3,
+            $tNoSchool4,
+            $tNoSchool5,
+            $tNoSchool6,
+            $tNoSchool7,
+            $tNoSchool8,
+            '',
+            $aTeachersIMG,
+            $withPictures
+        );
     } else {
         //
         // print all roles on the attendance sheet
@@ -204,10 +236,26 @@ for ($i = 0; $i < $nGrps; $i++) {
 
         $y = $yTeachers;
 
-        $y = $pdf->DrawAttendanceCalendar($nameX, $y + 6, $aStudents, gettext('All Members'), $iExtraStudents+$iExtraTeachers,
-                                                                             $tFirstSunday, $tLastSunday,
-                                                                             $tNoSchool1, $tNoSchool2, $tNoSchool3, $tNoSchool4,
-                                                                             $tNoSchool5, $tNoSchool6, $tNoSchool7, $tNoSchool8, $reportHeader, $aStudentsIMG, $withPictures);
+        $y = $pdf->DrawAttendanceCalendar(
+            $nameX,
+            $y + 6,
+            $aStudents,
+            gettext('All Members'),
+            $iExtraStudents+$iExtraTeachers,
+            $tFirstSunday,
+            $tLastSunday,
+            $tNoSchool1,
+            $tNoSchool2,
+            $tNoSchool3,
+            $tNoSchool4,
+            $tNoSchool5,
+            $tNoSchool6,
+            $tNoSchool7,
+            $tNoSchool8,
+            $reportHeader,
+            $aStudentsIMG,
+            $withPictures
+        );
     }
 }
         
