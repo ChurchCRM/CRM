@@ -10,7 +10,7 @@ msgstr ""
 "#-#-#-#-#  messages.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-17 22:50-0700\n"
+"POT-Creation-Date: 2020-08-02 12:04-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,8 +25,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2020-06-18T05:50:03.568Z\n"
-"PO-Revision-Date: 2020-06-18T05:50:03.568Z\n"
+"POT-Creation-Date: 2020-08-02T19:04:23.849Z\n"
+"PO-Revision-Date: 2020-08-02T19:04:23.849Z\n"
 
 msgid "Backup Database"
 msgstr ""
@@ -5081,6 +5081,15 @@ msgstr ""
 msgid "Bad userId"
 msgstr ""
 
+msgid "Unsupported user config"
+msgstr ""
+
+msgid "Invalid userId"
+msgstr ""
+
+msgid "Unsupported user setting - "
+msgstr ""
+
 msgid "eGive Import"
 msgstr ""
 
@@ -5492,9 +5501,6 @@ msgstr ""
 msgid "Menus"
 msgstr ""
 
-msgid "Username"
-msgstr ""
-
 msgid "You have no items in your cart."
 msgstr ""
 
@@ -5772,6 +5778,27 @@ msgid ""
 "in the database by setting a value for"
 msgstr ""
 
+msgid "Login Info"
+msgstr ""
+
+msgid "Username"
+msgstr ""
+
+msgid "Login Count"
+msgstr ""
+
+msgid "Failed Login"
+msgstr ""
+
+msgid "Permissions"
+msgstr ""
+
+msgid "Manage Notes"
+msgstr ""
+
+msgid "Skins"
+msgstr ""
+
 msgid "Family Member Count"
 msgstr ""
 
@@ -5817,13 +5844,13 @@ msgstr ""
 msgid "Missing pledges"
 msgstr ""
 
-msgid "Credit Card People"
-msgstr ""
-
 msgid "Family Pledge by Fiscal Year"
 msgstr ""
 
 msgid "CustomSearch"
+msgstr ""
+
+msgid "Missing people"
 msgstr ""
 
 msgid "Returns each family and the total number of people assigned to them."
@@ -5876,9 +5903,6 @@ msgstr ""
 msgid "Find people who pledged one year but not another"
 msgstr ""
 
-msgid "People who are configured to pay by credit card."
-msgstr ""
-
 msgid ""
 "Pledge summary by family name for each fund for the selected fiscal year"
 msgstr ""
@@ -5887,6 +5911,9 @@ msgid "Find volunteers for who match two specific opportunity codes"
 msgstr ""
 
 msgid "Find people with a custom field value"
+msgstr ""
+
+msgid "Find people who didn't attend an event"
 msgstr ""
 
 msgid "Zip Code"
@@ -5956,6 +5983,9 @@ msgid "Custom field"
 msgstr ""
 
 msgid "Field value"
+msgstr ""
+
+msgid "Event"
 msgstr ""
 
 msgid "The minimum age for which you want records returned."
@@ -6042,6 +6072,9 @@ msgid "Choose customer person field"
 msgstr ""
 
 msgid "Match custom field to this value"
+msgstr ""
+
+msgid "Select the desired event"
 msgstr ""
 
 msgid "Afghanistan (‫افغانستان‬‎)"
@@ -7165,6 +7198,9 @@ msgid "Are you sure you want to remove this person's membership from"
 msgstr ""
 
 msgid "Are you sure you want to unassign this property?"
+msgstr ""
+
+msgid "Failed generate a new API Key"
 msgstr ""
 
 msgid "User Delete Confirmation"
