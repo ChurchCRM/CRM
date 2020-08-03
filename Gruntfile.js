@@ -487,14 +487,25 @@ module.exports = function (grunt) {
         let poLocales = grunt.file.readJSON("src/locale/poeditor.json");
         let poEditorLocales = poLocales.result.languages;
 
+        let localeData = [];
+
         for (let key in poEditorLocales ) {
             let name =  poEditorLocales[key]["name"];
             let curCode =  poEditorLocales[key]["code"].toLowerCase();
             let percentage = poEditorLocales[key]["percentage"];
             if ( supportedPOEditorCodes.indexOf(curCode) === -1 && percentage > 0) {
                 console.log("Missing " + name + ' (' + curCode + ') but has ' + percentage + ' percentage');
+            } else {
+                localeData.push({"code" :curCode, "percentage": percentage, "translations": poEditorLocales[key]["translations"]});
             }
         }
+
+        console.log("\n");
+        console.log("Locale | Translations | Percentage\n");
+        console.log("-- | -- | --\n");
+        localeData.forEach(function (locale) {
+            console.log(locale.code + " | " + locale.translations + " | " + locale.percentage +"%");
+        })
     });
 
     grunt.registerTask('genLocaleJSFiles', '', function () {

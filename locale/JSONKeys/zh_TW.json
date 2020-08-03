@@ -2269,8 +2269,6 @@
     "System configuration ": "系統配置 ",
     "Must be set to 'true'": "必須設置為'true'",
     "Include/Config.php must define an encryption key for storing 2FA secret keys in the database by setting a value for": "Include / Config.php必須通過為以下項設置值來定義用於在數據庫中存儲雙重認證秘密密鑰的加密密鑰",
-    "Credit Card People": "信用卡人",
-    "People who are configured to pay by credit card.": "配置為通過信用卡付款的人。",
     "Google Maps API Key used for Geocoding addresses": "用於地址解析的Google Maps API密鑰",
     "Send an email notifying users when their account has been deleted": "發送電子郵件通知用戶帳戶被刪除",
     "Google Maps API Key used for rendering maps in browser": "Google Maps API密鑰用於在瀏覽器中呈現地圖",

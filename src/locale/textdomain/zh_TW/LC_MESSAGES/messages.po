@@ -9356,14 +9356,6 @@ msgid "Include/Config.php must define an encryption key for storing 2FA secret k
 msgstr "Include / Config.php必須通過為以下項設置值來定義用於在數據庫中存儲雙重認證秘密密鑰的加密密鑰"
 
 #: 
-msgid "Credit Card People"
-msgstr "信用卡人"
-
-#: 
-msgid "People who are configured to pay by credit card."
-msgstr "配置為通過信用卡付款的人。"
-
-#: 
 #, fuzzy
 msgid "Google Maps API Key used for Geocoding addresses"
 msgstr "用於地址解析的Google Maps API密鑰"
