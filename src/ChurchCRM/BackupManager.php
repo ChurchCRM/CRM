@@ -102,12 +102,13 @@ namespace ChurchCRM\Backup
           $this->shouldEncrypt = $EncryptBackup;
           $this->BackupPassword = $BackupPassword;
           LoggerUtils::getAppLogger()->debug(
-                  "Backup job created; ready to execute: Type: '" .
+              "Backup job created; ready to execute: Type: '" .
                   $this->BackupType .
                   "' Temp Folder: '" .
                   $this->TempFolder .
                   "' BaseName: '" . $this->BackupFileBaseName.
-                  "' Include extra files: '". ($this->IncludeExtraneousFiles ? 'true':'false') ."'");
+                  "' Include extra files: '". ($this->IncludeExtraneousFiles ? 'true':'false') ."'"
+          );
       }
 
       public function CopyToWebDAV($Endpoint, $Username, $Password)

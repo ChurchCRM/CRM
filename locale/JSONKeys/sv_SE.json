@@ -2271,8 +2271,6 @@
     "System configuration ": "Systemkonfiguration ",
     "Must be set to 'true'": "Måste vara inställd på \"sant\"",
     "Include/Config.php must define an encryption key for storing 2FA secret keys in the database by setting a value for": "Include/Config.php måste definiera en krypteringsnyckel för att lagra 2FA hemliga nycklar i databasen genom att ställa in ett värde för",
-    "Credit Card People": "Kreditkortfolk",
-    "People who are configured to pay by credit card.": "Personer som är konfigurerade att betala med kreditkort.",
     "Google Maps API Key used for Geocoding addresses": "Google Maps API-nyckel som används för geokodningsadresser",
     "Send an email notifying users when their account has been deleted": "Skicka ett e-postmeddelande för användare när deras konto har tagits bort",
     "Google Maps API Key used for rendering maps in browser": "Google Maps API-nyckel som används för att rendera kartor i webbläsaren",

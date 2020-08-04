@@ -2,7 +2,7 @@
 
 ## Supported Versions
 
-| Vers ion | Supported          | PHP Version | 
+| Version | Supported          | PHP Version | 
 | ------- | ------------------ | ------------
 | 4.0.x   | :white_check_mark: | 7.2.x 7.3.x |
 | 3.0.x   | :x:                | 7.x |

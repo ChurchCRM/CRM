@@ -9143,14 +9143,6 @@ msgid "Include/Config.php must define an encryption key for storing 2FA secret k
 msgstr "Include/Config.php debe definir una llave de encriptación para almacenar las llaves secretas de 2FA en la base de datos"
 
 #: 
-msgid "Credit Card People"
-msgstr "Personas con Tarjetas de Crédito"
-
-#: 
-msgid "People who are configured to pay by credit card."
-msgstr "Personas configuradas para pagar con tarjeta de crédito"
-
-#: 
 msgid "Google Maps API Key used for Geocoding addresses"
 msgstr "API Key de Google Maps usada para georeferenciar direcciones"
 
