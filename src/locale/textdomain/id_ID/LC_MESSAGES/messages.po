@@ -9086,11 +9086,3 @@ msgstr "Harus disetel ke 'benar'"
 msgid "Include/Config.php must define an encryption key for storing 2FA secret keys in the database by setting a value for"
 msgstr "Sertakan / Config.php harus menetapkan kunci enkripsi untuk menyimpan kunci rahasia 2FA dalam database dengan menetapkan nilai"
 
-#: 
-msgid "Credit Card People"
-msgstr "Orang Kartu Kredit"
-
-#: 
-msgid "People who are configured to pay by credit card."
-msgstr "Orang yang dikonfigurasi untuk membayar dengan kartu kredit."
-

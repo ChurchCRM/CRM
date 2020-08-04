@@ -2268,7 +2268,5 @@
     "Two factor authentication requires ChurchCRM administrators to configure a few parameters": "Otentikasi dua faktor memerlukan administrator ChurchCRM untuk mengonfigurasi beberapa parameter",
     "System configuration ": "Sistem konfigurasi ",
     "Must be set to 'true'": "Harus disetel ke 'benar'",
-    "Include/Config.php must define an encryption key for storing 2FA secret keys in the database by setting a value for": "Sertakan / Config.php harus menetapkan kunci enkripsi untuk menyimpan kunci rahasia 2FA dalam database dengan menetapkan nilai",
-    "Credit Card People": "Orang Kartu Kredit",
-    "People who are configured to pay by credit card.": "Orang yang dikonfigurasi untuk membayar dengan kartu kredit."
+    "Include/Config.php must define an encryption key for storing 2FA secret keys in the database by setting a value for": "Sertakan / Config.php harus menetapkan kunci enkripsi untuk menyimpan kunci rahasia 2FA dalam database dengan menetapkan nilai"
 }

@@ -2271,8 +2271,6 @@
     "System configuration ": "Configuração do sistema ",
     "Must be set to 'true'": "Deve ser definido como 'verdadeiro'",
     "Include/Config.php must define an encryption key for storing 2FA secret keys in the database by setting a value for": "Include / Config.php deve definir uma chave de criptografia para armazenar chaves secretas 2FA na base de dados, definindo um valor para",
-    "Credit Card People": "Pessoas com de cartão de crédito",
-    "People who are configured to pay by credit card.": "Pessoas que estão configuradas para pagar com cartão de crédito.",
     "Google Maps API Key used for Geocoding addresses": "Chave da API do Google Maps usada para endereços de geocodificação",
     "Send an email notifying users when their account has been deleted": "Enviar um e-mail notificando os utilizadores quando sua conta foi excluída",
     "Google Maps API Key used for rendering maps in browser": "Chave da API do Google Maps usada para renderizar mapas no navegador",

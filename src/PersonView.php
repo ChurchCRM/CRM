@@ -155,18 +155,36 @@ $sCountry = SelectWhichInfo($per_Country, $fam_Country, true);
 $formattedMailingAddress = $person->getAddress();
 
 $sPhoneCountry = SelectWhichInfo($per_Country, $fam_Country, false);
-$sHomePhone = SelectWhichInfo(ExpandPhoneNumber($per_HomePhone, $sPhoneCountry, $dummy),
-    ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy), true);
-$sHomePhoneUnformatted = SelectWhichInfo(ExpandPhoneNumber($per_HomePhone, $sPhoneCountry, $dummy),
-    ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy), false);
-$sWorkPhone = SelectWhichInfo(ExpandPhoneNumber($per_WorkPhone, $sPhoneCountry, $dummy),
-    ExpandPhoneNumber($fam_WorkPhone, $fam_Country, $dummy), true);
-$sWorkPhoneUnformatted = SelectWhichInfo(ExpandPhoneNumber($per_WorkPhone, $sPhoneCountry, $dummy),
-    ExpandPhoneNumber($fam_WorkPhone, $fam_Country, $dummy), false);
-$sCellPhone = SelectWhichInfo(ExpandPhoneNumber($per_CellPhone, $sPhoneCountry, $dummy),
-    ExpandPhoneNumber($fam_CellPhone, $fam_Country, $dummy), true);
-$sCellPhoneUnformatted = SelectWhichInfo(ExpandPhoneNumber($per_CellPhone, $sPhoneCountry, $dummy),
-    ExpandPhoneNumber($fam_CellPhone, $fam_Country, $dummy), false);
+$sHomePhone = SelectWhichInfo(
+    ExpandPhoneNumber($per_HomePhone, $sPhoneCountry, $dummy),
+    ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy),
+    true
+);
+$sHomePhoneUnformatted = SelectWhichInfo(
+    ExpandPhoneNumber($per_HomePhone, $sPhoneCountry, $dummy),
+    ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy),
+    false
+);
+$sWorkPhone = SelectWhichInfo(
+    ExpandPhoneNumber($per_WorkPhone, $sPhoneCountry, $dummy),
+    ExpandPhoneNumber($fam_WorkPhone, $fam_Country, $dummy),
+    true
+);
+$sWorkPhoneUnformatted = SelectWhichInfo(
+    ExpandPhoneNumber($per_WorkPhone, $sPhoneCountry, $dummy),
+    ExpandPhoneNumber($fam_WorkPhone, $fam_Country, $dummy),
+    false
+);
+$sCellPhone = SelectWhichInfo(
+    ExpandPhoneNumber($per_CellPhone, $sPhoneCountry, $dummy),
+    ExpandPhoneNumber($fam_CellPhone, $fam_Country, $dummy),
+    true
+);
+$sCellPhoneUnformatted = SelectWhichInfo(
+    ExpandPhoneNumber($per_CellPhone, $sPhoneCountry, $dummy),
+    ExpandPhoneNumber($fam_CellPhone, $fam_Country, $dummy),
+    false
+);
 $sEmail = SelectWhichInfo($per_Email, $fam_Email, true);
 $sUnformattedEmail = SelectWhichInfo($per_Email, $fam_Email, false);
 
@@ -178,7 +196,8 @@ if ($per_Envelope > 0) {
 
 $iTableSpacerWidth = 10;
 
-$bOkToEdit = (AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled() ||
+$bOkToEdit = (
+    AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled() ||
     (AuthenticationManager::GetCurrentUser()->isEditSelfEnabled() && $per_ID == AuthenticationManager::GetCurrentUser()->getId()) ||
     (AuthenticationManager::GetCurrentUser()->isEditSelfEnabled() && $per_fam_ID == AuthenticationManager::GetCurrentUser()->getPerson()->getFamId())
 );
