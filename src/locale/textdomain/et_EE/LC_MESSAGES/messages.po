@@ -10,7 +10,7 @@ msgstr ""
 
 #: 
 msgid "Cannot execute query."
-msgstr "Ei saa käsklust käivitada"
+msgstr "Ei saa käsklust käivitada."
 
 #: 
 msgid "Delete"
@@ -74,7 +74,7 @@ msgstr "Peale varu andmebaasi allalaadimist, peaksid tgeema veel 2 koopiat. Pane
 
 #: 
 msgid "If you are concerned about confidentiality of data stored in the ChurchCRM database, you should encrypt the backup data if it will be stored somewhere potentially accessible to others"
-msgstr "Kui sa oled mures oma andmete konfidentsiaalsuses ChurchCRM andmebaasis, siis sa pekasid krüptima oma varukoopia ja asetama ta sinna kuhu keegi ligi ei saa."
+msgstr "Kui sa oled mures oma andmete konfidentsiaalsuses ChurchCRM andmebaasis, siis sa pekasid krüptima oma varukoopia ja asetama ta sinna kuhu keegi ligi ei saa"
 
 #: 
 msgid "Select archive type"
@@ -186,7 +186,7 @@ msgstr "Valikud eksportimiseks"
 
 #: 
 msgid "Based on filters below.."
-msgstr "Vastavalt valitud filtitele"
+msgstr "Vastavalt valitud filtritele.."
 
 #: 
 msgid "People in Cart (filters ignored)"
@@ -254,7 +254,7 @@ msgstr "Koosta fail"
 
 #: 
 msgid "No file selected for upload."
-msgstr "Ühtegi faili pole üleslaadimiseks valitud"
+msgstr "Ühtegi faili pole üleslaadimiseks valitud."
 
 #: 
 msgid "Total number of rows in the CSV file:"
@@ -378,7 +378,7 @@ msgstr "Tugiisiku automatiseerimine"
 
 #: 
 msgid "Not confirmed."
-msgstr "Pole  kinnitatud"
+msgstr "Pole kinnitatud."
 
 #: 
 msgid "Canvassers"
@@ -454,7 +454,7 @@ msgstr "Keela tugiisik kõigi perede jaoks"
 
 #: 
 msgid "Turn off the &quot;Ok To Canvass&quot; field for all Families"
-msgstr "Lülitage välja &quot;Ok Tugiisik&quot; väli kõigile peredele."
+msgstr "Lülitage välja &quot;Ok Tugiisik&quot; väli kõigile peredele"
 
 #: 
 msgid "Briefing Sheets"
@@ -462,7 +462,7 @@ msgstr "Infolehed"
 
 #: 
 msgid "Generate a PDF containing briefing sheets for all Families, sorted by canvasser."
-msgstr "Genereerige PDF-fail, mis sisaldab tutvustuslehti kõigi perede jaoks, sorteerituna tugiisiku järgi"
+msgstr "Genereerige PDF-fail, mis sisaldab tutvustuslehti kõigi perede jaoks, sorteerituna tugiisiku järgi."
 
 #: 
 msgid "Progress Report"
@@ -486,7 +486,7 @@ msgstr "Huvipakkuvaid aruandeid ei ole"
 
 #: 
 msgid "Generate a PDF containing a report of the families marked &quot;Not Interested&quot; by the canvasser."
-msgstr "Genereerige PDF-fail, mis sisaldab tugiisiku poolt märgitud perekondade aruannet &quot;Pole huvitatud&quot; "
+msgstr "Genereerige PDF-fail, mis sisaldab tugiisiku poolt märgitud perekondade aruannet &quot;Pole huvitatud&quot;."
 
 #: 
 msgid " Canvass Input for the "
@@ -542,11 +542,11 @@ msgstr "Lisa uus sündmus"
 
 #: 
 msgid "Your cart is empty!"
-msgstr "Su korv on tühi"
+msgstr "Su korv on tühi!"
 
 #: 
 msgid "No family name entered!"
-msgstr "Ühtegi perekonnanime pole lisatud"
+msgstr "Ühtegi perekonnanime pole lisatud!"
 
 #: 
 msgid "Add Cart to Family"
@@ -570,7 +570,7 @@ msgstr "Loo uus perekond"
 
 #: 
 msgid "If adding a new family, enter data below."
-msgstr "Kui lisad uue perekonna, siis lisa andmed allapoole"
+msgstr "Kui lisad uue perekonna, siis lisa andmed allapoole."
 
 #: 
 msgid "Use address/contact data from"
@@ -618,7 +618,7 @@ msgstr "Vaata oma korvi"
 
 #: 
 msgid "You have no items in your cart."
-msgstr "Su korv on tühi"
+msgstr "Sul ei ole korvis midagi."
 
 #: 
 msgid "Back to Menu"
@@ -750,7 +750,7 @@ msgstr "Liige"
 
 #: 
 msgid " of the"
-msgstr "selle"
+msgstr "selle "
 
 #: 
 msgid "(No assigned family)"
@@ -770,11 +770,11 @@ msgstr "Teisenda kõik"
 
 #: 
 msgid "Deposit Slip Number: "
-msgstr "Deposiidi number:"
+msgstr "Deposiidi number: "
 
 #: 
 msgid "Deposit Details: "
-msgstr "Deposiidi üksikasjad:"
+msgstr "Deposiidi üksikasjad: "
 
 #: 
 msgid "Close deposit slip (remember to press Save)"
@@ -790,7 +790,7 @@ msgstr "Oluline märkus: ebaõnnestunud tehingud kustutatakse jäädavalt, kui d
 
 #: 
 msgid "Deposit Summary: "
-msgstr "Deposiidi kokkuvõte:"
+msgstr "Deposiidi kokkuvõte:  "
 
 #: 
 msgid "Payments on this deposit slip:"
@@ -1086,11 +1086,11 @@ msgstr "Ürituse külalised"
 
 #: 
 msgid "Back to Report Menu"
-msgstr "Tagasi aruande menüüsse "
+msgstr "Tagasi aruande menüüsse"
 
 #: 
 msgid "There "
-msgstr "Seal"
+msgstr "Seal "
 
 #: 
 msgid "Event Title"
@@ -1166,7 +1166,7 @@ msgstr "Ühtegi osalemisarvestust ei registreeritud"
 
 #: 
 msgid "Attendance Notes: "
-msgstr "Osalemise märkused:"
+msgstr "Osalemise märkused: "
 
 #: 
 msgid "Event Sermon"
@@ -1506,7 +1506,7 @@ msgstr "Annetused ja maksed"
 
 #: 
 msgid "No property assignments."
-msgstr "Omadus puudub"
+msgstr "Omadus puudub."
 
 #: 
 msgid "Value"
@@ -1530,7 +1530,7 @@ msgstr "Värskendamise kuupäev"
 
 #: 
 msgid "Updated By"
-msgstr "Uuendas:"
+msgstr "Uuendas"
 
 #: 
 msgid "Show Pledges"
@@ -1582,7 +1582,7 @@ msgstr "Lisage uus makse"
 
 #: 
 msgid " Canvass Entry"
-msgstr "Tugiisiku kanne"
+msgstr "  Tugiisikiku kanne"
 
 #: 
 msgid "Close"
@@ -1802,7 +1802,7 @@ msgstr "CSV"
 
 #: 
 msgid "Back"
-msgstr "tagasi"
+msgstr "Tagasi"
 
 #: 
 msgid "Create Report"
@@ -1818,7 +1818,7 @@ msgstr "Lisage uus deposiit"
 
 #: 
 msgid "Deposits: "
-msgstr "Hoiused:"
+msgstr "Hoiused: "
 
 #: 
 msgid "Delete Selected Rows"
@@ -2018,7 +2018,7 @@ msgstr "Valige rühm"
 
 #: 
 msgid "Group Specific Properties: "
-msgstr "Grupi spetsiifilised omadused:"
+msgstr "Grupi spetsiifilised omadused: "
 
 #: 
 msgid "Enabled"
@@ -2094,7 +2094,7 @@ msgstr "Ühtegi atribuuti pole veel lisatud"
 
 #: 
 msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete, or 'add new' button!"
-msgstr "Hoiatus: välja muudatused lähevad kaotsi, kui te ei kasuta nuppu Salvesta muudatused enne üles, alla, kustutamist ega uue lisamist."
+msgstr "Hoiatus: välja muudatused lähevad kaotsi, kui te ei kasuta nuppu Salvesta muudatused enne üles, alla, kustutamist ega uue lisamist!"
 
 #: 
 msgid "Show in"
@@ -2230,7 +2230,7 @@ msgstr "Grupi liikmed:"
 
 #: 
 msgid "Group members: "
-msgstr "Grupi liikmed:"
+msgstr "Grupi liikmed: "
 
 #: 
 msgid "Remove Selected Members from group"
@@ -2834,7 +2834,7 @@ msgstr "Muu"
 
 #: 
 msgid "Payment by"
-msgstr "Makse:"
+msgstr "Makse"
 
 #: 
 msgid "Scan check"
@@ -2882,7 +2882,7 @@ msgstr "Sisestatud:"
 
 #: 
 msgid "by"
-msgstr "Kelle poolt"
+msgstr "kelle poolt"
 
 #: 
 msgid "Property successfully assigned."
@@ -3034,11 +3034,11 @@ msgstr "Käivitage SQL"
 
 #: 
 msgid "An error occured: "
-msgstr "Ilmnes viga:"
+msgstr "Ilmnes viga: "
 
 #: 
 msgid " record(s) returned"
-msgstr "-kirjet (id) tagastatud"
+msgstr " kirjet (id) tagastatud"
 
 #: 
 msgid "Add Results To Cart"
@@ -3178,7 +3178,7 @@ msgstr "Filter ja korv"
 
 #: 
 msgid "Listing"
-msgstr "nimekiri"
+msgstr "Nimekiri"
 
 #: 
 msgid "My User Settings"
@@ -3434,7 +3434,7 @@ msgstr "Kuidas sa kuulsid kogudusest?"
 
 #: 
 msgid "eGive Import"
-msgstr "E-andmise import"
+msgstr "E-andmise import "
 
 #: 
 msgid "Re-import to selected family"
@@ -3542,7 +3542,7 @@ msgstr "Täname, et registreerisite oma ChurchCRM-i installi."
 
 #: 
 msgid "PDFs successfully emailed "
-msgstr "PDF-ide saatmine e-postiga õnnestus"
+msgstr "PDF-ide saatmine e-postiga õnnestus "
 
 #: 
 msgid "PDF successfully emailed to family members."
@@ -3675,6 +3675,18 @@ msgstr "Väljaannete aruanne!"
 #: 
 msgid "Enter a Title for your bug / feature report"
 msgstr "Sisestage vea- / funktsiooniaruande pealkiri"
+
+#: 
+msgid "What were you doing when you noticed the bug / feature opportunity?"
+msgstr "Mida te tegite, kui märkasite viga / funktsiooni võimalust?"
+
+#: 
+msgid "When you click \"submit,\" an error report will be posted to the ChurchCRM GitHub Issue tracker."
+msgstr "Kui klõpsate nupul „Esita”, postitatakse veaaruanne ChurchCRM GitHub Issue jälgimisse."
+
+#: 
+msgid "Please do not include any confidential information."
+msgstr "Ärge lisage konfidentsiaalset teavet."
 
 #: 
 msgid "Some general information about your system will be submitted along with the request such as Server version and browser headers."
@@ -3810,7 +3822,7 @@ msgstr "Mobiil"
 
 #: 
 msgid "Estimated value "
-msgstr "Eeldatav väärtus"
+msgstr "Eeldatav väärtus "
 
 #: 
 msgid "Donated by "
@@ -3822,7 +3834,83 @@ msgstr "Pakkumine"
 
 #: 
 msgid "Minimum bid "
-msgstr "Minimaalne pakkumine"
+msgstr "Minimaalne pakkumine "
+
+#: 
+msgid "All Funds"
+msgstr "Kõik fondid"
+
+#: 
+msgid " for all funds"
+msgstr "kõigi fondide jaoks"
+
+#: 
+msgid " for fund "
+msgstr "fondi jaoks"
+
+#: 
+msgid "for funds "
+msgstr "rahaliste vahendite jaoks"
+
+#: 
+msgid "Donated Items:"
+msgstr "Kingitud esemed:"
+
+#: 
+msgid "Purchased Items:"
+msgstr "Ostetud kaubad:"
+
+#: 
+msgid "Total of all purchases: $"
+msgstr "Kõigi ostude kogusumma: $"
+
+#: 
+msgid "Total purchases: $"
+msgstr "Ostud kokku: $"
+
+#: 
+msgid "Amount paid: ________________"
+msgstr "Makstud summa: ________________"
+
+#: 
+msgid "Paid by (  ) Cash    (  ) Check    (  ) Credit card __ __ __ __    __ __ __ __    __ __ __ __    __ __ __ __  Exp __ / __"
+msgstr "Tasunud () Sularaha () Tšekk () Krediitkaart __ __ __ __ __ __ __ __ __ __ __ __ __ __ __ Exp. __ / __"
+
+#: 
+msgid "                                        Signature ________________________________________________________________"
+msgstr "Allkiri ________________________________________________________________"
+
+#: 
+msgid "Totals"
+msgstr "Kogusummad"
+
+#: 
+msgid "Certificate of Ownership"
+msgstr "Omanditunnistus"
+
+#: 
+msgid "Directory"
+msgstr "Kataloog"
+
+#: 
+msgid "Page"
+msgstr "Leht"
+
+#: 
+msgid "Wedding"
+msgstr "Pulmad"
+
+#: 
+msgid "and"
+msgstr "ja"
+
+#: 
+msgid "Group Directory"
+msgstr "Rühma kataloog"
+
+#: 
+msgid "Please detach this slip and mail with your next gift."
+msgstr "Eemaldage see leht ja postitage oma järgmine kingitus."
 
 #: 
 msgid "Please mail you next gift to "
@@ -3883,6 +3971,406 @@ msgstr "Kodu aadress"
 #: 
 msgid "Dad Name"
 msgstr "Isa nimi"
+
+#: 
+msgid "Dad Mobile"
+msgstr "Isa mobiil"
+
+#: 
+msgid "Dad Email"
+msgstr "Isa email"
+
+#: 
+msgid "Mom Name"
+msgstr "Ema nimi"
+
+#: 
+msgid "Mom Mobile"
+msgstr "Ema Mobiil"
+
+#: 
+msgid "Mom Email"
+msgstr "Ema email"
+
+#: 
+msgid "Compose New Message"
+msgstr "Koosta uus sõnum"
+
+#: 
+msgid "Kids Emails"
+msgstr "Lastele mõeldud e-kirjad"
+
+#: 
+msgid "Parents Emails"
+msgstr "Vanemate e-kirjad"
+
+#: 
+msgid "Teachers Emails"
+msgstr "Õpetajate e-kirjad"
+
+#: 
+msgid "Attachment"
+msgstr "Manus"
+
+#: 
+msgid "Max. 32MB"
+msgstr "Max. 32MB"
+
+#: 
+msgid "Discard"
+msgstr "Loobuge"
+
+#: 
+msgid "Sunday School Dashboard"
+msgstr "Pühapäevakooli töölaud"
+
+#: 
+msgid "Classes"
+msgstr "Klassid"
+
+#: 
+msgid "Sunday School Reports"
+msgstr "Pühapäevakooli auanded"
+
+#: 
+msgid "Generate class lists and attendance sheets"
+msgstr "Genereerige klasside nimekirjad ja osalemislehed"
+
+#: 
+msgid "Export All Classes, Kids, and Parent to CSV file"
+msgstr "Ekspordi CSV-faili kõik klassid, lapsed ja lapsevanemad"
+
+#: 
+msgid "Students not in a Sunday School Class"
+msgstr "Õpilased, kes ei käi pühapäevakooli klassis"
+
+#: 
+msgid "At least one group must be selected to make class lists or attendance sheets."
+msgstr "Klasside või osalemislehtede koostamiseks tuleb valida vähemalt üks rühm."
+
+#: 
+msgid "Report Details"
+msgstr "Aruande üksikasjad"
+
+#: 
+msgid "To select multiple hold CTL"
+msgstr "Mitme ootel CTL valimiseks"
+
+#: 
+msgid "Multiple groups will have a Page Break between Groups<br>"
+msgstr "Mitmel rühmal on rühmadevaheline leheküljepaus <br>"
+
+#: 
+msgid "List all Roles (unchecked will list Teacher/Student roles only)"
+msgstr "Loetle kõik rollid (märkimata loend sisaldab ainult õpetaja / õpilase rolle)"
+
+#: 
+msgid "First Sunday"
+msgstr "Esimene pühapäev"
+
+#: 
+msgid "Last Sunday"
+msgstr "Eelmisel pühapäeval"
+
+#: 
+msgid "No Sunday School"
+msgstr "Pühapäevakooli pole"
+
+#: 
+msgid "Extra Students"
+msgstr "Lisaõpilased"
+
+#: 
+msgid "Extra Teachers"
+msgstr "Lisaõpetajad"
+
+#: 
+msgid "Create Class List"
+msgstr "Loo klassiloend"
+
+#: 
+msgid "Create Attendance Sheet"
+msgstr "Koostage osalemisleht"
+
+#: 
+msgid "System Users"
+msgstr "Süsteemi kasutajad"
+
+#: 
+msgid "Calendar"
+msgstr "Kalender"
+
+#: 
+msgid "Members"
+msgstr "Liikmed"
+
+#: 
+msgid "Add New Person"
+msgstr "Lisage uus inimene"
+
+#: 
+msgid "View All Persons"
+msgstr "Kuva kõik isikud"
+
+#: 
+msgid "Add New Family"
+msgstr "Lisage uus pere"
+
+#: 
+msgid "Events"
+msgstr "Üritused"
+
+#: 
+msgid "Fundraiser"
+msgstr "korjandused"
+
+#: 
+msgid "Email Export"
+msgstr "E-posti eksport"
+
+#: 
+msgid "List"
+msgstr "Nimekiri"
+
+#: 
+msgid "Import Data"
+msgstr "Andmete importimine"
+
+#: 
+msgid "Clear Data"
+msgstr "Kustuta andmed"
+
+#: 
+msgid "Are you sure you want to DELETE this person from Event ID: "
+msgstr "Kas soovite kindlasti selle inimese kustutada sündmuse ID-st:"
+
+#: 
+msgid "Date Range"
+msgstr "Kuupäevavahemik"
+
+#: 
+msgid "Deleting this event TYPE will NOT delete any existing Events or Attendance Counts.  Are you sure you want to DELETE Event Type ID: "
+msgstr "Selle sündmuse TÜÜBI kustutamine EI kustuta ühtegi olemasolevat sündmust ega osalemisarvestust. Kas olete kindel, et soovite kustutada sündmuse tüübi ID:"
+
+#: 
+msgid "Are you sure you want to delete the selected"
+msgstr "Kas soovite kindlasti valitud valitud kustutada?"
+
+#: 
+msgid "Deposit(s)"
+msgstr "Sissemakse (d)"
+
+#: 
+msgid "This will also delete all payments associated with this deposit"
+msgstr "Sellega kustutatakse ka kõik selle sissemaksega seotud maksed"
+
+#: 
+msgid "This action CANNOT be undone, and may have legal implications!"
+msgstr "Seda toimingut EI SAA tagasi võtta ja sellel võib olla juriidiline tähendus!"
+
+#: 
+msgid "Please ensure this what you want to do."
+msgstr "Palun kontrollige seda, mida soovite teha."
+
+#: 
+msgid "Deposit Type"
+msgstr "Deposiidi tüüp"
+
+#: 
+msgid "Deposit Date"
+msgstr "Deposiidi kuupäev"
+
+#: 
+msgid "Details:"
+msgstr "Üksikasjad:"
+
+#: 
+msgid "File Missing"
+msgstr "Fail puudub"
+
+#: 
+msgid "This will overwrite the family envelope numbers in the database with those selected on this page.  Continue?"
+msgstr "See kirjutab andmebaasi pereümbrike numbrid üle sellel lehel valitud numbritega. Kas jätkata?"
+
+#: 
+msgid "Family Select"
+msgstr "Perekonna valik"
+
+#: 
+msgid "with at least one:"
+msgstr "vähemalt ühega:"
+
+#: 
+msgid "Welcome to"
+msgstr "Tere tulemast"
+
+#: 
+msgid "Select Database Files"
+msgstr "Valige Andmebaasifailid"
+
+#: 
+msgid "Select a backup file to restore"
+msgstr "Valige taastamiseks varufail"
+
+#: 
+msgid "CAUTION: This will completely erase the existing database, and replace it with the backup"
+msgstr "ETTEVAATUST. See kustutab olemasoleva andmebaasi täielikult ja asendab selle varukoopiaga"
+
+#: 
+msgid "If you upload a backup from ChurchInfo, or a previous version of ChurchCRM, it will be automatically upgraded to the current database schema"
+msgstr "Kui laadite varukoopia üles ChurchInfo või ChurchCRM-i eelmisest versioonist, uuendatakse see automaatselt praegusele andmebaasiskeemile"
+
+#: 
+msgid "Upload Files"
+msgstr "Faile üles laadima"
+
+#: 
+msgid "No Restore Running"
+msgstr "Ühtegi taastus ei käi"
+
+#: 
+msgid "Restore Complete"
+msgstr "Taastamine lõpetatud"
+
+#: 
+msgid "Login to restored Database"
+msgstr "Logi sisse taastatud andmebaasi"
+
+#: 
+msgid "Restore Error."
+msgstr "Taasta viga."
+
+#: 
+msgid "Church Information"
+msgstr "Koguduse teave"
+
+#: 
+msgid "User setup"
+msgstr "Kasutaja seadistamine"
+
+#: 
+msgid "Email Setup"
+msgstr "E-posti seadistamine"
+
+#: 
+msgid "Map Settings"
+msgstr "Kaardiseaded"
+
+#: 
+msgid "Report Settings"
+msgstr "Aruandeseaded"
+
+#: 
+msgid "Localization"
+msgstr "Lokaliseerimine"
+
+#: 
+msgid "Setting saved"
+msgstr "Seade on salvestatud"
+
+#: 
+msgid "Edit JSON Settings"
+msgstr "Redigeeri JSON-i sätteid"
+
+#: 
+msgid "Default Value"
+msgstr "Vaikeväärtus"
+
+#: 
+msgid "False"
+msgstr "Vale"
+
+#: 
+msgid "True"
+msgstr "Õige"
+
+#: 
+msgid "Edit Settings"
+msgstr "Redigeeri seadeid"
+
+#: 
+msgid "Upgrade ChurchCRM"
+msgstr "Uuendage ChurchCRM"
+
+#: 
+msgid "Step 1: Backup Database"
+msgstr "1. samm: varunda andmebaas"
+
+#: 
+msgid "Please create a database backup before beginning the upgrade process."
+msgstr "Enne täiendusprotsessi alustamist looge varukoopia andmebaasist."
+
+#: 
+msgid "Generate Database Backup"
+msgstr "Genereerige andmebaasi varukoopia"
+
+#: 
+msgid "Step 2: Fetch Update Package on Server"
+msgstr "2. samm: hankige värskenduste pakett serverisse"
+
+#: 
+msgid "Fetch the latest files from the ChurchCRM GitHub release page"
+msgstr "Tooge uusimad failid ChurchCRM GitHubi väljalaske lehelt"
+
+#: 
+msgid "Fetch Update Files"
+msgstr "Too värskendusfailid"
+
+#: 
+msgid "Step 3: Apply Update Package on Server"
+msgstr "3. samm: rakendage serverile värskenduste pakett"
+
+#: 
+msgid "Extract the upgrade archive, and apply the new files"
+msgstr "Pakkige lahti täiendusarhiiv ja rakendage uued failid"
+
+#: 
+msgid "Full Path:"
+msgstr "Täielik tee:"
+
+#: 
+msgid "SHA1:"
+msgstr "SHA1:"
+
+#: 
+msgid "Upgrade System"
+msgstr "Täiendage süsteemi"
+
+#: 
+msgid "Step 4: Login"
+msgstr "4. samm: sisselogimine"
+
+#: 
+msgid "Login to Upgraded System"
+msgstr "Logi sisse täiendatud süsteemi"
+
+#: 
+msgid "Backup Complete, Ready for Download."
+msgstr "Varundatud, allalaadimiseks valmis."
+
+#: 
+msgid "Backup Error."
+msgstr "Varundusviga."
+
+#: 
+msgid "Backup Downloaded, Copy on server removed"
+msgstr "Varundus alla laaditud, koopia serverist eemaldatud"
+
+#: 
+msgid "Campaigns:"
+msgstr "Kampaaniad:"
+
+#: 
+msgid "Unsubscribed count:"
+msgstr "Tellimusest loobunute arv:"
+
+#: 
+msgid "Unsubscribed count since last send:"
+msgstr "Tellimustest loobunute arv alates viimasest saatmisest:"
+
+#: 
+msgid "Cleaned count:"
+msgstr "Puhastatud arv:"
 
 #: 
 msgid "Cleaned count since last send:"
@@ -3965,6 +4453,86 @@ msgid "is not configured"
 msgstr "pole konfigureeritud"
 
 #: 
+msgid "Please update the"
+msgstr "Palun värskendage"
+
+#: 
+msgid "API key in Setting->"
+msgstr "API võti seadistuses->"
+
+#: 
+msgid "then update"
+msgstr "siis värskenda"
+
+#: 
+msgid "For more info see our "
+msgstr "Lisateavet leiate meie lehelt"
+
+#: 
+msgid "support docs."
+msgstr "abikumendid."
+
+#: 
+msgid "Yearly"
+msgstr "Aastas"
+
+#: 
+msgid "Registration Complete"
+msgstr "Registreerimine on lõpule viidud"
+
+#: 
+msgid "Register"
+msgstr "Registreeri"
+
+#: 
+msgid "Register your family"
+msgstr "Registreeri oma pere"
+
+#: 
+msgid "How many people are in your family"
+msgstr "Kui palju inimesi teie peres on"
+
+#: 
+msgid "Add All Classes"
+msgstr "Lisage kõik klassid"
+
+#: 
+msgid "Clear All Classes"
+msgstr "Kustuta kõik klassid"
+
+#: 
+msgid "Add All Families"
+msgstr "Lisage kõik pered"
+
+#: 
+msgid "Clear All Families"
+msgstr "Kustuta kõik pered"
+
+#: 
+msgid "Add All Funds"
+msgstr "Lisage kõik fondid"
+
+#: 
+msgid "Clear All Funds"
+msgstr "Kustuta kõik fondid"
+
+#: 
+msgid "Deposit Comment"
+msgstr "Deposiidi kommentaar"
+
+#: 
+msgid "Your previous session timed out.  Please login again."
+msgstr "Teie eelmine seanss aegus. Palun logi uuesti sisse."
+
+#: 
+msgid "Register a new Family"
+msgstr "Registreeri uus pere"
+
+#: 
+msgid "If you need to make changes to registration data, go to "
+msgstr "Kui peate registreerimisandmetes muudatusi tegema, minge aadressile"
+
+#: 
 msgid "Admin->Edit General Settings"
 msgstr "Administraator-> Redigeeri üldsätteid"
 
@@ -4014,7 +4582,7 @@ msgstr "------------------------------------------------------------------------
 
 #: 
 msgid "Buyer # "
-msgstr "Ostja #"
+msgstr "Ostja # "
 
 #: 
 msgid "Envelope:"
@@ -4022,7 +4590,7 @@ msgstr "Ümbrik:"
 
 #: 
 msgid ", Phone: "
-msgstr ", Telefon:"
+msgstr ", Telefon: "
 
 #: 
 msgid "Voting members "
@@ -4043,6 +4611,86 @@ msgstr "Aastapäev"
 #: 
 msgid "Notes"
 msgstr "Märkused"
+
+#: 
+msgid "Reports"
+msgstr "Aruanded"
+
+#: 
+msgid "File Name:"
+msgstr "File Name:"
+
+#: 
+msgid "http://www.intelligentsearch.com/address_verification/verify_address.html"
+msgstr "http://www.intelligentsearch.com/address_verification/verify_address.html"
+
+#: 
+msgid "Fiscal Year:"
+msgstr "Majandusaasta:"
+
+#: 
+msgid "Important note: this will lose any &quot;Ok To Canvass&quot; fields that have been set by hand."
+msgstr "Oluline märkus: see kaotab kõik &quot;Ok tugiisikud&quot; käsitsi seatud väljad."
+
+#: 
+msgid "Canvasser:"
+msgstr "Tugiisik:"
+
+#: 
+msgid "Add Attendees for Event"
+msgstr "Lisage sündmusel osalejad"
+
+#: 
+msgid "family"
+msgstr "perekond"
+
+#: 
+msgid "Anniversary Date:"
+msgstr "Aastapäeva kuupäev:"
+
+#: 
+msgid "Date Entered:"
+msgstr "Sisestamise kuupäev:"
+
+#: 
+msgid "CSV Import"
+msgstr "CSV Import"
+
+#: 
+msgid "Comment:"
+msgstr "Kommentaar:"
+
+#: 
+msgid "Closed:"
+msgstr "Suletud:"
+
+#: 
+msgid "Start Date: "
+msgstr "Algus kuupäev:"
+
+#: 
+msgid "End Date: "
+msgstr "Lõppkuupäev:"
+
+#: 
+msgid "Members:"
+msgstr "Liikmed:"
+
+#: 
+msgid "Edit General Settings"
+msgstr "Redigeeri üldsätteid"
+
+#: 
+msgid "There were "
+msgstr "Seal olid"
+
+#: 
+msgid "Inactive"
+msgstr "Mitteaktiivne"
+
+#: 
+msgid "Start Time"
+msgstr "Algusaeg"
 
 #: 
 msgid "Filter by Fund"
@@ -4123,6 +4771,562 @@ msgstr "Lisage kataloogi ainult need klassifikatsioonid, eraldades need komadega
 #: 
 msgid "These are the family role numbers designated as head of house"
 msgstr "Need on perekonnapead tähistavad perekonnanumbrid"
+
+#: 
+msgid "These are the family role numbers designated as spouse"
+msgstr "Need on perekonnanumbrid, mis on mõeldud abikaasaks"
+
+#: 
+msgid "These are the family role numbers designated as child"
+msgstr "Need perekonnanumbrid on mõeldud lapsena"
+
+#: 
+msgid "Queries for which user must have finance permissions to use:"
+msgstr "Päringud, mille kasutamiseks peab kasutajal olema finantside luba:"
+
+#: 
+msgid "Should only administrators have access to the CSV export system and directory report?"
+msgstr "Kas CSV-eksportimissüsteemile ja kataloogiaruandele peaks olema juurdepääs ainult administraatoritel?"
+
+#: 
+msgid "Minimum length a user may set their password to"
+msgstr "Minimaalne pikkus, mille kasutaja võib parooliks seada"
+
+#: 
+msgid "A comma-seperated list of disallowed (too obvious) passwords."
+msgstr "Komaga eraldatud nimekiri keelatud (liiga ilmsetest) paroolidest."
+
+#: 
+msgid "Default City"
+msgstr "Vaikimisi linn"
+
+#: 
+msgid "Default State - Must be 2-letter abbreviation!"
+msgstr "Vaikimisi maakond - peab olema kahe täheline lühend!"
+
+#: 
+msgid "Default account for receiving a copy of all emails"
+msgstr "Kõigi e-kirjade koopiate vastuvõtmise vaikekonto"
+
+#: 
+msgid "SMTP Server Address (mail.server.com:25)"
+msgstr "SMTP-serveri aadress (mail.server.com:25)"
+
+#: 
+msgid "Does your SMTP server require auththentication (username/password)?"
+msgstr "Kas teie SMTP-server nõuab autentimist (kasutajanimi / parool)?"
+
+#: 
+msgid "SMTP Username"
+msgstr "SMTP kasutajanimi"
+
+#: 
+msgid "SMTP Password"
+msgstr "SMTP parool"
+
+#: 
+msgid "Internationalization (I18n) support"
+msgstr "Rahvusvahelistumise (I18n) toetus"
+
+#: 
+msgid "First month of the fiscal year"
+msgstr "Majandusaasta esimene kuu"
+
+#: 
+msgid "Latitude of the church, used to center the Google map"
+msgstr "Koguduse laiuskraad, mida kasutatakse Google'i kaardi keskel"
+
+#: 
+msgid "Longitude of the church, used to center the Google map"
+msgstr "Kiriku pikkuskraad, mida kasutatakse Google'i kaardi keskel"
+
+#: 
+msgid "Set true to disable entering addresses in Person Editor.  Set false to enable entering addresses in Person Editor."
+msgstr "Määrake tõeseks, et keelata isiku aadressiredaktori sisestamine. Määrake vale, et lubada aadressiredaktorites isiku sisestamine."
+
+#: 
+msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
+msgstr "Valige tõeseks, et keelata sõbrakuupäeva sisestamine isikuredaktorisse. Valige Sõbrakuupäeva isikuredaktorisse sisestamise lubamiseks vale."
+
+#: 
+msgid "Set true to disable management of newsletter subscriptions in the Family Editor."
+msgstr "Määrake väärtus, et keelata uudiskirja tellimuste haldamine pereredaktoris."
+
+#: 
+msgid "Set true to disable entering Wedding Date in Family Editor.  Set false to enable entering Wedding Date in Family Editor."
+msgstr "Kui valite Pereredaktoris pulmakuupäeva sisestamise, keelake see. Määrake vale, et lubada pereredaktorisse pulmakuupäeva sisestamine."
+
+#: 
+msgid "Set true to disable entering Latitude and Longitude in Family Editor.  Set false to enable entering Latitude and Longitude in Family Editor.  Lookups are still performed, just not displayed."
+msgstr "Määrake tõeline, et keelata Pereredaktoris laius- ja pikkuskraadide sisestamine. Valige Pereredaktorisse laius- ja pikkuskraadide sisestamise lubamiseks vale. Otsinguid tehakse endiselt, lihtsalt ei kuvata."
+
+#: 
+msgid "Set true to enable use of donation envelopes"
+msgstr "Annetusümbrike kasutamise lubamiseks määrake see tõene"
+
+#: 
+msgid "Enter in HTML code which will be displayed as a header at the top of each page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A SECOND TIME to view the new header."
+msgstr "Sisestage HTML-kood, mis kuvatakse iga lehe ülaservas päisena. Sulgege kindlasti oma sildid! Märkus. Uue päise kuvamiseks peate oma brauserit värskendama juba teist korda."
+
+#: 
+msgid "Intelligent Search Technolgy, Ltd. CorrectAddress Username"
+msgstr "Intelligent Search Technology, Ltd. Õige aadressi kasutajanimi"
+
+#: 
+msgid "Intelligent Search Technolgy, Ltd. CorrectAddress Password"
+msgstr "Intelligent Search Technology, Ltd. Õige aadressi parool"
+
+#: 
+msgid "Number of checks for Deposit Slip Report"
+msgstr "Deposiidi teatise kontrollide arv"
+
+#: 
+msgid "Set true to enable use of scanned checks"
+msgstr "Luba skaneeritud tšekkide kasutamise lubamiseks tõene"
+
+#: 
+msgid "Unit used to measure distance, miles or km."
+msgstr "Ühik, mida kasutatakse vahemaa, miili või km mõõtmiseks."
+
+#: 
+msgid "Names of markers for Google Maps in order of classification"
+msgstr "Google Mapsi markerite nimed klassifitseerimise järjekorras"
+
+#: 
+msgid "Enable non-deductible payments"
+msgstr "Mahaarvatavate maksete lubamine"
+
+#: 
+msgid "Set true to enable family self registration."
+msgstr "Määrake tõeline, et võimaldada perekonna enese registreerimist."
+
+#: 
+msgid "ChurchCRM has been registered.  The ChurchCRM team uses registration information to track usage.  This information is kept confidential and never released or sold.  If this field is true the registration option in the admin menu changes to update registration."
+msgstr "ChurchCRM on registreeritud. ChurchCRM-i meeskond kasutab registreerimise teavet kasutamise jälgimiseks. Seda teavet hoitakse konfidentsiaalsena ega avaldata ega müüda kunagi. Kui see väli vastab tõele, muutub administraatori menüüs registreerimise suvand registreerimise värskendamiseks."
+
+#: 
+msgid "Left Margin (1 = 1/100th inch)"
+msgstr "Vasak varu (1 = 1/100 tolli)"
+
+#: 
+msgid "Line Thickness (1 = 1/100th inch"
+msgstr "Joone paksus (1 = 1/100 tolli"
+
+#: 
+msgid "Church City"
+msgstr "Koguduse linn"
+
+#: 
+msgid "Church State"
+msgstr "Koguduse maakond"
+
+#: 
+msgid "Church Zip"
+msgstr "Koguduse indeks"
+
+#: 
+msgid "Church Phone"
+msgstr "Koguduse telefon"
+
+#: 
+msgid "Home area code of the church"
+msgstr "Koguduse koduala kood"
+
+#: 
+msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
+msgstr "Sõnastus maksuraporti ülemise rea jaoks. Kuupäevad lisatakse selle rea lõppu."
+
+#: 
+msgid "Verbage for bottom line of tax report."
+msgstr "Sõnastus maksuaruande alumise rea jaoks."
+
+#: 
+msgid "Tax Report signer"
+msgstr "Maksuaruande allkirjastaja"
+
+#: 
+msgid "Verbage for the pledge reminder report"
+msgstr "Sõnastus annetuste meeldetuletuse aruandele"
+
+#: 
+msgid "Pledge Reminder Signer"
+msgstr "Annetuste meeldetuletuse allkirjastaja"
+
+#: 
+msgid "Verbage for the pledge reminder report - No record of a pledge"
+msgstr "Sõnastus annetuste meeldetuletuse aruandele - Ühtegi kirjet ei ole"
+
+#: 
+msgid "Verbage for the pledge reminder report - No record of payments"
+msgstr "Sõnastus annetuste meeldetuletuse aruandele - Ühtegi kirjet ei ole"
+
+#: 
+msgid "Verbage for the database information confirmation and correction report"
+msgstr "Sõnastus andmebaasi teabe kinnituse ja paranduste aruande jaoks"
+
+#: 
+msgid "Database information confirmation and correction report signer"
+msgstr "Andmebaasi teabe kinnitus ja paranduste aruande allkirjastaja"
+
+#: 
+msgid "Verbage for the pledge summary report"
+msgstr "Sõnastus annetuste aruande kohta"
+
+#: 
+msgid "Verbage for the directory report"
+msgstr "Sõnastus kataloogiaruande jaoks"
+
+#: 
+msgid "Church Letterhead path and file"
+msgstr "Koguduse peagablanketti asukoha rada ja fail"
+
+#: 
+msgid "lookup user images on Gravatar when no local image is present"
+msgstr "otsige Gravataris kasutajapilte, kui kohalikku pilti pole"
+
+#: 
+msgid "Enable Remote Backups to Cloud Services"
+msgstr "Pilveteenuste kaugvarunduste lubamine"
+
+#: 
+msgid "Cloud Service Type (Supported values: WebDAV, Local)"
+msgstr "Pilveteenuse tüüp (toetatud väärtused: WebDAV, kohalik)"
+
+#: 
+msgid "Remote Backup Username"
+msgstr "Kaugvarundamise kasutajanimi"
+
+#: 
+msgid "Remote Backup Password"
+msgstr "Kaug-varundusparool"
+
+#: 
+msgid "Interval in Hours for Automatic Remote Backups"
+msgstr "Automaatsete kaugvarunduste intervall tundides"
+
+#: 
+msgid "Last Backup Timestamp"
+msgstr "Viimane varundamise ajatempel"
+
+#: 
+msgid "QuickBooks Deposit Ticket Settings"
+msgstr "QuickBooksi sissemakse pileti seaded"
+
+#: 
+msgid "Enable Integrity Check"
+msgstr "Luba täielik kontrollimine"
+
+#: 
+msgid "Interval in Hours for Integrity Check"
+msgstr "Täieliku kontrollimise intervall tundides"
+
+#: 
+msgid "Last Integrity Check Timestamp"
+msgstr "Viimase täieliku kontrollimise ajatempel"
+
+#: 
+msgid "List Groups"
+msgstr "Gruppide nimekiri"
+
+#: 
+msgid "List Church Events"
+msgstr "Koguduse sündmuste nimekiri"
+
+#: 
+msgid "Add Church Event"
+msgstr "Lisa koguduse sündmus"
+
+#: 
+msgid "List Event Types"
+msgstr "Sündmuste tüüpide nimekiri"
+
+#: 
+msgid "Check-in and Check-out"
+msgstr "Sisse- ja väljaregistreerimine"
+
+#: 
+msgid "View All Deposits"
+msgstr "Kuva kõik hoiused"
+
+#: 
+msgid "Deposit Reports"
+msgstr "Deposiidi aruanded"
+
+#: 
+msgid "Edit Deposit Slip"
+msgstr "Redigeerige sissemakse sedeleid"
+
+#: 
+msgid "View All Fundraisers"
+msgstr "Vaadake kõiki korjandusi"
+
+#: 
+msgid "Create New Fundraiser"
+msgstr "Looge uus korjandus"
+
+#: 
+msgid "Edit Fundraiser"
+msgstr "Muuda korjandust"
+
+#: 
+msgid "View Buyers"
+msgstr "Vaadake ostjaid"
+
+#: 
+msgid "Add Donors to Buyer List"
+msgstr "Lisage ostjate nimekirja annetajad"
+
+#: 
+msgid "Data/Reports"
+msgstr "Andmed / aruanded"
+
+#: 
+msgid "Query Menu"
+msgstr "Päringumenüü"
+
+#: 
+msgid "CSV Export Records"
+msgstr "CSV ekspordikirjed"
+
+#: 
+msgid "People Properties"
+msgstr "Inimeste omadused"
+
+#: 
+msgid "Family Properties"
+msgstr "Perekonna omadused"
+
+#: 
+msgid "Property Types"
+msgstr "Omandi tüübid"
+
+#: 
+msgid "Zip Code"
+msgstr "Postiindeks"
+
+#: 
+msgid "2012/2013"
+msgstr "2012/2013"
+
+#: 
+msgid "2013/2014"
+msgstr "2013/2014"
+
+#: 
+msgid "2014/2015"
+msgstr "2014/2015"
+
+#: 
+msgid "2015/2016"
+msgstr "2015/2016"
+
+#: 
+msgid "WorkEmail"
+msgstr "TööEmail"
+
+#: 
+msgid "Regular Attender"
+msgstr "Regular Attender"
+
+#: 
+msgid "Guest"
+msgstr "Külaline"
+
+#: 
+msgid "Non-Attender"
+msgstr "Mitteosaleja"
+
+#: 
+msgid "Non-Attender (staff)"
+msgstr "Mitteosaleja (personal)"
+
+#: 
+msgid "Minimum Age"
+msgstr "Minimaalne vanus"
+
+#: 
+msgid "Maximum Age"
+msgstr "Maksimaalne vanus"
+
+#: 
+msgid "Beginning Date"
+msgstr "Alguskuupäev"
+
+#: 
+msgid "Ending Date"
+msgstr "Lõppkuupäev"
+
+#: 
+msgid "Search"
+msgstr "Otsing"
+
+#: 
+msgid "Field"
+msgstr "Väli"
+
+#: 
+msgid "Registered students"
+msgstr "Registreeritud õpilased"
+
+#: 
+msgid "Volunteer opportunities"
+msgstr "Vabatahtlike võimalused"
+
+#: 
+msgid "Months"
+msgstr "Kuud"
+
+#: 
+msgid "First Fiscal Year"
+msgstr "Esimene majandusaasta"
+
+#: 
+msgid "Second Fiscal Year"
+msgstr "Teine majandusaasta"
+
+#: 
+msgid "Custom field"
+msgstr "Kohandatud väli"
+
+#: 
+msgid "Field value"
+msgstr "Välja väärtus"
+
+#: 
+msgid "The minimum age for which you want records returned."
+msgstr "Minimaalne vanus, mille kohta soovite kirjed tagasi saata."
+
+#: 
+msgid "The maximum age for which you want records returned."
+msgstr "Maksimaalne vanus, mille kohta soovite kirjed tagasi saata."
+
+#: 
+msgid "The desired gender to search the database for."
+msgstr "Soovitud sugu andmebaasist otsimiseks."
+
+#: 
+msgid "Select the desired family role."
+msgstr "Valige soovitud pereroll."
+
+#: 
+msgid "The gender for which you would like records returned."
+msgstr "Sugu, mille kohta soovite tagasi saada kirjed."
+
+#: 
+msgid "The property for which you would like person records returned."
+msgstr "Omand, mille kohta soovite isikuandmeid näidata."
+
+#: 
+msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that conatain donations."
+msgstr "Iga liikme kogupanuse arvutamiseks vali alguskuupäev (s.o. AAAA-KK-PP). MÄRKUS. Saate valida ainult annetusi sisaldavaid kuupäevi."
+
+#: 
+msgid "Please enter the last date to calculate total contributions for each member (i.e. YYYY-MM-DD)."
+msgstr "Sisestage iga liikme kogupanuse arvutamiseks viimane kuupäev (st. AAAA-KK-PP)."
+
+#: 
+msgid "Enter any part of the following: Name, City, State, Zip, Home Phone, Email, or Work Email."
+msgstr "Sisestage mõni järgmistest osadest: nimi, linn, osariik, postiindeks, kodutelefon, e-post või tööaadress."
+
+#: 
+msgid "Select field to search for."
+msgstr "Valige otsitav väli."
+
+#: 
+msgid "The birthday month for which you would like records returned."
+msgstr "Sünnipäevakuu, mille kohta soovite kirjed tagasi saata."
+
+#: 
+msgid "The sunday school class for which you would like records returned."
+msgstr "Pühapäevakooli klass, mille kohta soovite teavet saada."
+
+#: 
+msgid "Group of registered students"
+msgstr "Registreeritud õpilaste rühm"
+
+#: 
+msgid "The membership anniversary month for which you would like records returned."
+msgstr "Liikmelisuse aastapäev, mille kohta soovite teavet saada."
+
+#: 
+msgid "Choose a volunteer opportunity"
+msgstr "Valige vabatahtliku võimalus"
+
+#: 
+msgid "Number of months since becoming a friend"
+msgstr "Kuude arv alates sõbraks saamisest"
+
+#: 
+msgid "First fiscal year for comparison"
+msgstr "Esimene majandusaasta võrdluseks"
+
+#: 
+msgid "Second fiscal year for comparison"
+msgstr "Teine majandusaasta võrdluseks"
+
+#: 
+msgid "Pledged this year"
+msgstr "Sel aastal lubatud"
+
+#: 
+msgid "but not this year"
+msgstr "kuid mitte sel aastal"
+
+#: 
+msgid "Fiscal Year."
+msgstr "Majandusaasta"
+
+#: 
+msgid "Member, Regular Attender, etc."
+msgstr "Liige, tavaline osaleja jne."
+
+#: 
+msgid "First volunteer opportunity choice"
+msgstr "Esimene vabatahtliku võimaluse valik"
+
+#: 
+msgid "Second volunteer opportunity choice"
+msgstr "Teine vabatahtliku võimaluse valik"
+
+#: 
+msgid "Choose customer person field"
+msgstr "Valige kliendi isiku väli"
+
+#: 
+msgid "Match custom field to this value"
+msgstr "Sobitage kohandatud väli selle väärtusega"
+
+#: 
+msgid "Family Member Count"
+msgstr "Pereliikme loend"
+
+#: 
+msgid "Person by Age"
+msgstr "Isik vanuse järgi"
+
+#: 
+msgid "Total By Gender"
+msgstr "Kokku soo järgi"
+
+#: 
+msgid "Person by Role and Gender"
+msgstr "Isik rolli ja soo järgi"
+
+#: 
+msgid "Person by Property"
+msgstr "Isik vara järgi"
+
+#: 
+msgid "Advanced Search"
+msgstr "Täpsem otsing"
+
+#: 
+msgid "Birthdays"
+msgstr "Sünnipäevad"
+
+#: 
+msgid "Membership anniversaries"
+msgstr "Liikmelisuse tähtpäevad"
 
 #: 
 msgid "NNE"
@@ -4250,7 +5454,7 @@ msgstr "Valige Rühm ja roll"
 
 #: 
 msgid "Are you sure you want to remove this person's membership from"
-msgstr "Kas soovite kindlasti selle inimese liikmesuse eemaldada?"
+msgstr "Kas soovite kindlasti selle inimese liikmelisuse eemaldada"
 
 #: 
 msgid "All Members"
@@ -4454,11 +5658,11 @@ msgstr "Uuendamine on vajalik"
 
 #: 
 msgid "Current DB Version: "
-msgstr "Praegune DB versioon:"
+msgstr "Praegune DB versioon: "
 
 #: 
 msgid "Current Software Version: "
-msgstr "Praegune tarkvara versioon:"
+msgstr "Praegune tarkvara versioon: "
 
 #: 
 msgid "Upgrade database"
@@ -4654,7 +5858,7 @@ msgstr "Kasutajanimi"
 
 #: 
 msgid "Are you sure you want to move"
-msgstr "Kas soovite kindlasti kolida?"
+msgstr "Kas soovite kindlasti kolida"
 
 #: 
 msgid "from"
@@ -4666,7 +5870,7 @@ msgstr "kuni"
 
 #: 
 msgid "Are you sure you want to change the end time for "
-msgstr "Kas olete kindel, et soovite muuta lõpuaega?"
+msgstr "Kas olete kindel, et soovite muuta lõpuaega "
 
 #: 
 msgid "Access Token"
@@ -4718,7 +5922,7 @@ msgstr "Hoiatus: bEnableExternalCalendarAPI on keelatud, kuid mõnel kalendril o
 
 #: 
 msgid "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token"
-msgstr "Kalendrite jagamiseks peab lisaks konkreetsele juurdepääsuõigusele vastava kalendriga olema lubatud ka säte bEnableExternalCalendarAPI."
+msgstr "Kalendrite jagamiseks peab lisaks konkreetsele juurdepääsuõigusele vastava kalendriga olema lubatud ka säte bEnableExternalCalendarAPI. "
 
 #: 
 msgid "Links"
@@ -5082,7 +6286,7 @@ msgstr "Genereerige varundus"
 
 #: 
 msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
-msgstr "Kaugvarunduse lõpp-punkt. Kui WebDAV, tuleb see URL kodeerida."
+msgstr "Kaugvarunduse lõpp-punkt. Kui WebDAV, tuleb see URL kodeerida. "
 
 #: 
 msgid "Include initials image files, remote image files (gravatar), and thumbnails in backup.  These files are generally able to be reproduced after a restore and add very little value to the backup archive at a large expense of execution time and storage"
@@ -5148,7 +6352,7 @@ msgid "Unavailable person info inherited from assigned family for display?\n"
 "displayed IF the corresponding info has NOT been entered for that person. "
 msgstr "Määratud perekonna kuvamise kohta pole saadaval teavet?\n"
 "See valik põhjustab teatud teabe isiku määratud perekonnakirjest\n"
-"kuvatakse, kui vastavat teavet EI ole selle inimese kohta sisestatud."
+"kuvatakse, kui vastavat teavet EI ole selle inimese kohta sisestatud. "
 
 #: 
 msgid "Press CTRL + C to copy all group members\\' phone numbers"
@@ -5248,7 +6452,7 @@ msgstr "Toetamata PHP versioon"
 
 #: 
 msgid "Support for this PHP version will soon be removed.  Current PHP Version: "
-msgstr "Selle PHP versiooni tugi eemaldatakse peagi. Praegune PHP versioon:"
+msgstr "Selle PHP versiooni tugi eemaldatakse peagi.  Praegune PHP versioon: "
 
 #: 
 msgid "Missing PHP ZipArchive"
@@ -5361,7 +6565,7 @@ msgstr "Valmis, näita mulle kodulehte!"
 
 #: 
 msgid "User authenticated via API Key: "
-msgstr "Kasutaja autentimine API-võtme kaudu:"
+msgstr "Kasutaja autentimine API-võtme kaudu: "
 
 #: 
 msgid "Unsuccessful API Key authentication attempt"
@@ -5413,7 +6617,7 @@ msgstr "Kahefaktoriline autentimine nõuab ChurchCRM-i administraatoritelt mõne
 
 #: 
 msgid "System configuration "
-msgstr "Süsteemi konfiguratsioon"
+msgstr "Süsteemi konfiguratsioon "
 
 #: 
 msgid "Must be set to 'true'"
