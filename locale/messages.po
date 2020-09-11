@@ -10,7 +10,7 @@ msgstr ""
 "#-#-#-#-#  messages.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-02 12:04-0700\n"
+"POT-Creation-Date: 2020-09-10 22:15-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,8 +25,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2020-08-02T19:04:23.849Z\n"
-"PO-Revision-Date: 2020-08-02T19:04:23.849Z\n"
+"POT-Creation-Date: 2020-09-11T05:15:11.806Z\n"
+"PO-Revision-Date: 2020-09-11T05:15:11.806Z\n"
 
 msgid "Backup Database"
 msgstr ""
@@ -37,7 +37,7 @@ msgstr ""
 
 msgid ""
 "You should make a manual backup at least once a week unless you already have "
-"a regular backup procedule for your systems."
+"a regular backup procedure for your systems."
 msgstr ""
 
 msgid ""
@@ -4464,6 +4464,21 @@ msgstr ""
 msgid "for funds "
 msgstr ""
 
+msgid "Pledge Summary By Family"
+msgstr ""
+
+msgid "Method"
+msgstr ""
+
+msgid "Pledge"
+msgstr ""
+
+msgid "Paid"
+msgstr ""
+
+msgid "Owe"
+msgstr ""
+
 msgid "Donated Items:"
 msgstr ""
 
@@ -4594,9 +4609,6 @@ msgid "CURRENT FAMILY WITH DONATIONS"
 msgstr ""
 
 msgid "Schedule"
-msgstr ""
-
-msgid "Method"
 msgstr ""
 
 msgid "Date Updated"
