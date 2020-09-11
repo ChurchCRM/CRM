@@ -65,7 +65,8 @@ msgid "This tool will assist you in manually backing up the ChurchCRM database."
 msgstr "Esta herramienta lo asistirá para respaldar manualmente la base de datos de ChurchCRM."
 
 #: 
-msgid "You should make a manual backup at least once a week unless you already have a regular backup procedule for your systems."
+#, fuzzy
+msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
 msgstr "Usted debe hacer una copia de seguridad manual por lo menos una vez a la semana a menos que usted ya tenga una copia de seguridad programada para sus sistemas."
 
 #: 
@@ -2847,7 +2848,7 @@ msgstr "Escanear Cheque"
 
 #: 
 msgid "find family from check account #"
-msgstr "encontrar familia desde la cuenta de cheque #"
+msgstr "Encontrar familia desde la cuenta de cheque #"
 
 #: 
 msgid "Set default check account number for family"
@@ -5409,8 +5410,7 @@ msgstr "ersonas con cumpleaños en un mes en particular"
 
 #: 
 msgid "Find Registered students"
-msgstr "\n"
-"Buscar estudiantes registrados"
+msgstr "Buscar estudiantes registrados"
 
 #: 
 msgid "Members who joined in a particular month"
@@ -5426,7 +5426,7 @@ msgstr "Personas que son miembros"
 
 #: 
 msgid "Find volunteers for a particular opportunity"
-msgstr "Encuentre voluntarios para una oportunidad en particular"
+msgstr "Encontrar voluntarios para una oportunidad en particular"
 
 #: 
 msgid "Friends who signed up in previous months"
@@ -5442,7 +5442,7 @@ msgstr "Comparación de las promesas entre dos años fiscales"
 
 #: 
 msgid "Find people who pledged one year but not another"
-msgstr "Find people who pledged one year but not another "
+msgstr "Encontrar personas que donaron un año pero no otro"
 
 #: 
 msgid "Pledge summary by family name for each fund for the selected fiscal year"
@@ -5450,7 +5450,7 @@ msgstr "Resumen de promesas por nombre de familia para cada fondo por el año fi
 
 #: 
 msgid "Find volunteers for who match two specific opportunity codes"
-msgstr "Encuentre voluntarios que coincidan con dos códigos de oportunidad específicos"
+msgstr "Encontrar voluntarios que coincidan con dos códigos de oportunidad específicos"
 
 #: 
 msgid "Find people with a custom field value"
@@ -9263,4 +9263,116 @@ msgstr "tasa de apertura"
 #: 
 msgid "Not Subscribed "
 msgstr "No Suscrito"
+
+#: 
+msgid "Global User Settings"
+msgstr "Configuración global de usuario"
+
+#: 
+msgid "General"
+msgstr "General"
+
+#: 
+msgid "Passwords"
+msgstr "Contraseñas"
+
+#: 
+msgid "2FA"
+msgstr "A2F"
+
+#: 
+msgid "Session Timeout"
+msgstr "Tiempo de sesión expirado"
+
+#: 
+msgid "Max Failed Login"
+msgstr "Máximo de Ingresos Fallidos"
+
+#: 
+msgid "Enable Password Reset"
+msgstr "Habilitar restablecer  contraseña"
+
+#: 
+msgid "Send email to Deleted Users"
+msgstr "Enviar correo electrónico a usuarios eliminados"
+
+#: 
+msgid "Min Password Length"
+msgstr "Longitud mínima de la contraseña"
+
+#: 
+msgid "Min Password Characters Delta"
+msgstr "Margen Mínimo de Caracteres en Constaseña"
+
+#: 
+msgid "Disallowed Passwords"
+msgstr "Contraseñas No Permitidas"
+
+#: 
+msgid "Enable 2FA"
+msgstr "Activar 2FA"
+
+#: 
+msgid "Require 2FA"
+msgstr "Requiere 2FA"
+
+#: 
+msgid "2FA Application Name"
+msgstr "Nombre de la aplicación 2FA"
+
+#: 
+msgid "Unsupported user config"
+msgstr "Configuración de usuario no soportada"
+
+#: 
+msgid "Invalid userId"
+msgstr "Id de usuario inválido"
+
+#: 
+msgid "Unsupported user setting - "
+msgstr "Ajuste de usuario no soportado - "
+
+#: 
+msgid "Login Info"
+msgstr "Información de Ingreso"
+
+#: 
+msgid "Login Count"
+msgstr "Recuento de Ingresos"
+
+#: 
+msgid "Failed Login"
+msgstr "Ingresos Fallidos"
+
+#: 
+msgid "Permissions"
+msgstr "Permisos"
+
+#: 
+msgid "Manage Notes"
+msgstr "Administrar Notas"
+
+#: 
+msgid "Skins"
+msgstr "Máscaras"
+
+#: 
+msgid "Missing people"
+msgstr "Personas Faltantes"
+
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "Encontrar personas que no asistieron a un evento"
+
+#: 
+msgid "Event"
+msgstr "Evento"
+
+#: 
+msgid "Select the desired event"
+msgstr "Seleccione el evento deseado"
+
+#: 
+msgid "Failed generate a new API Key"
+msgstr "Falla al generar una nueva llave de API"
 
