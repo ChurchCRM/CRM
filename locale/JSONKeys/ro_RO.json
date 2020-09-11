@@ -13,7 +13,7 @@
     "Credit Card": "Card de credit",
     "Backup Database": "Baza de date de rezervă",
     "This tool will assist you in manually backing up the ChurchCRM database.": "Această unealtă vă va asista în crearea manuală a unei copii de rezervăd pentru baza de date ChurchCRM ",
-    "You should make a manual backup at least once a week unless you already have a regular backup procedule for your systems.": "Tu ar trebui să facă o copie de rezervă manual, cel puțin o dată pe săptămână, dacă nu aveți deja un procedeu de backup regulat pentru sistemele dvs..",
+    "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems.": "Tu ar trebui să facă o copie de rezervă manual, cel puțin o dată pe săptămână, dacă nu aveți deja un procedeu de backup regulat pentru sistemele dvs..",
     "After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site.": "După ce descărcați fișierul copie de rezervă, ar trebui să facă două copii. Pune-unul dintre ele într-un incendiu-dovadă în condiții de siguranță la fața locului, iar celălalt într-un loc sigur în afara amplasamentului.",
     "If you are concerned about confidentiality of data stored in the ChurchCRM database, you should encrypt the backup data if it will be stored somewhere potentially accessible to others": "Dacă aveți greji vis-a-vis de confidențialitatea datelor stocare în baza de date ChurchCRM ar trebui să le criptați mai ales dacă ele sunt stocate într-un loc în care și alții le-ar putea accesa",
     "Select archive type": "Selectați tipul arhivă",

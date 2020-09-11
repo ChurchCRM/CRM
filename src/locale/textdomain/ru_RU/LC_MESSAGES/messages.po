@@ -65,7 +65,8 @@ msgid "This tool will assist you in manually backing up the ChurchCRM database."
 msgstr "Этот инструмент поможет вам вручную сделать резервное копирования базы данных."
 
 #: 
-msgid "You should make a manual backup at least once a week unless you already have a regular backup procedule for your systems."
+#, fuzzy
+msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
 msgstr "Вы должны сделать ручное резервное копирование по крайней мере, один раз в неделю, если у вас уже есть регулярное создание резервных копий procedule для ваших систем."
 
 #: 

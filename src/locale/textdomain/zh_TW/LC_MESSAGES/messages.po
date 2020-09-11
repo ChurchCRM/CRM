@@ -67,7 +67,7 @@ msgstr "這工具將會協助您手動備份ChurchCRM資料庫"
 
 #: 
 #, fuzzy
-msgid "You should make a manual backup at least once a week unless you already have a regular backup procedule for your systems."
+msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
 msgstr "你應該進行手動備份，每週至少一次，除非你已經有一個的定期備份系統程序。"
 
 #: 
