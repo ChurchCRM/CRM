@@ -12,7 +12,7 @@
     "Email": "E-posta",
     "Credit Card": "Karta e kreditit",
     "Backup Database": "Databaza e kopjes rezervë",
-    "You should make a manual backup at least once a week unless you already have a regular backup procedule for your systems.": "Ju duhet të bëni një backup manual të paktën një herë në javë nëse ju tashmë keni një procedule rregullt rezervë për sistemet tuaja.",
+    "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems.": "Ju duhet të bëni një backup manual të paktën një herë në javë nëse ju tashmë keni një procedule rregullt rezervë për sistemet tuaja.",
     "After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site.": "Pasi ta shkarkoni file backup, ju duhet të bëjë dy kopje. Vendos një prej tyre në një zjarr-provë të sigurt në vend dhe të tjera në një vend të sigurt off-site.",
     "Encrypt backup file with a password?": "Fotografi Encrypt backup me një fjalëkalim?",
     "Re-type Password": "Re-lloj Fjalëkalimi",

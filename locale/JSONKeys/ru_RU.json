@@ -13,7 +13,7 @@
     "Credit Card": "Кредитная карта",
     "Backup Database": "Резервное копирование базы данных",
     "This tool will assist you in manually backing up the ChurchCRM database.": "Этот инструмент поможет вам вручную сделать резервное копирования базы данных.",
-    "You should make a manual backup at least once a week unless you already have a regular backup procedule for your systems.": "Вы должны сделать ручное резервное копирование по крайней мере, один раз в неделю, если у вас уже есть регулярное создание резервных копий procedule для ваших систем.",
+    "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems.": "Вы должны сделать ручное резервное копирование по крайней мере, один раз в неделю, если у вас уже есть регулярное создание резервных копий procedule для ваших систем.",
     "After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site.": "После загрузки файл резервной копии, вы должны сделать две копии. Положите одну из них в несгораемый сейф на месте, и другой в безопасном месте вне.",
     "If you are concerned about confidentiality of data stored in the ChurchCRM database, you should encrypt the backup data if it will be stored somewhere potentially accessible to others": "Если вас беспокоит конфиденциальность данных, хранящихся в базе данных ChurchCRM, вы должны зашифровать данные резервного копии, если она будет храниться в потенциально доступном для других месте",
     "Select archive type": "Выберите Тип архива",

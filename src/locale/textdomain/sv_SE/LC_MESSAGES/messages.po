@@ -65,7 +65,8 @@ msgid "This tool will assist you in manually backing up the ChurchCRM database."
 msgstr "Detta verktyg hjälper dig att manuellt säkerhetskopiera ChurchCRM-databasen."
 
 #: 
-msgid "You should make a manual backup at least once a week unless you already have a regular backup procedule for your systems."
+#, fuzzy
+msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
 msgstr "Du borde säkerhetskopiera databasen minst en gång i veckan om du inte redan har en annan säkerhetskopieringssystem igång"
 
 #: 
@@ -9361,4 +9362,116 @@ msgstr "öppen kostnad"
 #: 
 msgid "Not Subscribed "
 msgstr "Inte prenumererad "
+
+#: 
+msgid "Global User Settings"
+msgstr "Globala användarinställningar"
+
+#: 
+msgid "General"
+msgstr "Allmän"
+
+#: 
+msgid "Passwords"
+msgstr "Lösenord"
+
+#: 
+msgid "2FA"
+msgstr "2FA"
+
+#: 
+msgid "Session Timeout"
+msgstr "Sessionen tidsgräns"
+
+#: 
+msgid "Max Failed Login"
+msgstr "Maximal misslyckad inloggningar"
+
+#: 
+msgid "Enable Password Reset"
+msgstr "Aktivera återställning av lösenord"
+
+#: 
+msgid "Send email to Deleted Users"
+msgstr "Skicka e-post till borttagna användare"
+
+#: 
+msgid "Min Password Length"
+msgstr "Minimal lösenordslängd"
+
+#: 
+msgid "Min Password Characters Delta"
+msgstr "Minimal lösenordstecken Delta"
+
+#: 
+msgid "Disallowed Passwords"
+msgstr "Otillåtna lösenord"
+
+#: 
+msgid "Enable 2FA"
+msgstr "Aktivera 2FA"
+
+#: 
+msgid "Require 2FA"
+msgstr "Kräva 2FA"
+
+#: 
+msgid "2FA Application Name"
+msgstr "2FA-applikationsnamn"
+
+#: 
+msgid "Unsupported user config"
+msgstr "Användarkonfigurering som inte stöds"
+
+#: 
+msgid "Invalid userId"
+msgstr "Ogiltig användare Id"
+
+#: 
+msgid "Unsupported user setting - "
+msgstr "Användarinställning som inte stöds - "
+
+#: 
+msgid "Login Info"
+msgstr "Inloggningsinfo"
+
+#: 
+msgid "Login Count"
+msgstr "Inloggningsantal"
+
+#: 
+msgid "Failed Login"
+msgstr "Misslyckad inloggning"
+
+#: 
+msgid "Permissions"
+msgstr "Behörigheter"
+
+#: 
+msgid "Manage Notes"
+msgstr "Hantera anteckningar"
+
+#: 
+msgid "Skins"
+msgstr "Skal"
+
+#: 
+msgid "Missing people"
+msgstr "Saknade personer"
+
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "Hitta personer som inte deltog i ett evenemang"
+
+#: 
+msgid "Event"
+msgstr "Händelse"
+
+#: 
+msgid "Select the desired event"
+msgstr "Välj önskad händelse"
+
+#: 
+msgid "Failed generate a new API Key"
+msgstr "Det gick inte att generera en ny API-nyckel"
 
