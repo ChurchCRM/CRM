@@ -8,6 +8,8 @@ class LocaleInfo
     public $language;
     public $country;
     public $dataTables;
+    private $name;
+    private $poLocaleId;
 
     public function __construct($locale)
     {
@@ -16,11 +18,29 @@ class LocaleInfo
         $locales = json_decode($localesFile, true);
         foreach ($locales as $key => $value) {
             if ($value["locale"] == $locale) {
+                $this->name = $key;
                 $this->language = $value["languageCode"];
                 $this->country = $value["countryCode"];
                 $this->dataTables = $value["dataTables"];
+                $this->poLocaleId = $value["poEditor"];
             }
         }
+    }
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPoLocaleId()
+    {
+        return $this->poLocaleId;
     }
 
     public function getLocale()
