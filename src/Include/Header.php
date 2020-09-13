@@ -84,8 +84,17 @@ $MenuFirst = 1;
                     <i class="flag-icon flag-icon-squared"></i>
                 </a>
                 <ul class="dropdown-menu">
-                    <li class="header"><i id="translationInfo"></i></li>
-                    <li class="header"><i id="translationPer"></i> <?= gettext("of translation completed")?></li>
+                    <li class="header">
+                        <span>
+                            <span id="translationInfo"></span>
+                            <?php if (AuthenticationManager::GetCurrentUser()->isAdmin()) { ?>
+                            <a href="<?= SystemURLs::getRootPath()?>/SystemSettings.php"> <i class="fa fa-pencil"></i></a>
+                            <?php } ?>
+                        </span>
+                    </li>
+                    <li id="localePer" class="header hidden">
+                        <span id="translationPer"></span> <?= gettext("of translation completed")?>
+                    </li>
                     <li class="footer">
                         <a href="https://poeditor.com/join/project?hash=RABdnDSqAt" target="poeditor"><?= gettext("Help translate this project")?></a>
                     </li>
