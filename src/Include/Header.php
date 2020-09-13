@@ -79,6 +79,18 @@ $MenuFirst = 1;
 
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
+            <li class="dropdown tasks-menu">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                    <i class="flag-icon flag-icon-squared"></i>
+                </a>
+                <ul class="dropdown-menu">
+                    <li class="header"><i id="translationInfo"></i></li>
+                    <li class="header"><i id="translationPer"></i> <?= gettext("translation progress completed")?></li>
+                    <li class="footer">
+                        <a href="https://poeditor.com/join/project?hash=RABdnDSqAt" target="poeditor"><?= gettext("Help translate this project")?></a>
+                    </li>
+                </ul>
+            </li>
             <!-- Cart Functions: style can be found in dropdown.less -->
             <li id="CartBlock" class="dropdown notifications-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" title="<?= gettext('Your Cart') ?>">
