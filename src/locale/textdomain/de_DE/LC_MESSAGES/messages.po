@@ -2207,8 +2207,7 @@ msgstr "Diese Aktion wird alle Rollen und gruppenspezifischen Daten und Einstell
 
 #: 
 msgid "All group membership and properties will be destroyed.  The group members themselves will not be altered."
-msgstr "Alle Gruppenmitgliedschaften und Eigenschaften werden gelöscht.\n"
-"Die Gruppenmitglieder selbst werden nicht geändert."
+msgstr "Alle Gruppenmitgliedschaften und Eigenschaften werden gelöscht. Die Gruppenmitglieder selbst werden nicht geändert."
 
 #: 
 msgid "Please select target group for members"

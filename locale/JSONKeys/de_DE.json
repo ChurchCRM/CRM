@@ -531,7 +531,7 @@
     "Confirm Delete Group": "Gruppe löschen bestätigen",
     "Please confirm deletion of this group record": "Bitte bestätige die Löschung der Gruppeneinträge",
     "This will also delete all Roles and Group-Specific Property data associated with this Group record.": "Diese Aktion wird alle Rollen und gruppenspezifischen Daten und Einstellungen löschen.",
-    "All group membership and properties will be destroyed.  The group members themselves will not be altered.": "Alle Gruppenmitgliedschaften und Eigenschaften werden gelöscht.\nDie Gruppenmitglieder selbst werden nicht geändert.",
+    "All group membership and properties will be destroyed.  The group members themselves will not be altered.": "Alle Gruppenmitgliedschaften und Eigenschaften werden gelöscht. Die Gruppenmitglieder selbst werden nicht geändert.",
     "Please select target group for members": "Bitte wählen Sie eine Zielgruppe für Mitglieder aus",
     "Add Group Members to Cart": "Gruppenmitglieder dem Korb hinzufügen",
     "Map this group": "Diese Gruppe in Karte anzeigen",
