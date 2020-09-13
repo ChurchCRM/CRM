@@ -79,6 +79,27 @@ $MenuFirst = 1;
 
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
+            <li class="dropdown tasks-menu">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                    <i class="flag-icon flag-icon-squared"></i>
+                </a>
+                <ul class="dropdown-menu">
+                    <li class="header">
+                        <span>
+                            <span id="translationInfo"></span>
+                            <?php if (AuthenticationManager::GetCurrentUser()->isAdmin()) { ?>
+                            <a href="<?= SystemURLs::getRootPath()?>/SystemSettings.php"> <i class="fa fa-pencil"></i></a>
+                            <?php } ?>
+                        </span>
+                    </li>
+                    <li id="localePer" class="header hidden">
+                        <span id="translationPer"></span> <?= gettext("of translation completed")?>
+                    </li>
+                    <li class="footer">
+                        <a href="https://poeditor.com/join/project?hash=RABdnDSqAt" target="poeditor"><?= gettext("Help translate this project")?></a>
+                    </li>
+                </ul>
+            </li>
             <!-- Cart Functions: style can be found in dropdown.less -->
             <li id="CartBlock" class="dropdown notifications-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" title="<?= gettext('Your Cart') ?>">

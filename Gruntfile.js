@@ -245,6 +245,17 @@ module.exports = function (grunt) {
                         flatten: true,
                         src: ['node_modules/react-datepicker/dist/react-datepicker.min.css'],
                         dest: 'src/skin/external/react-datepicker'
+                    },
+                    {
+                        expand: true,
+                        filter: 'isFile',
+                        flatten: false,
+                        cwd: 'node_modules/flag-icon-css',
+                        src: [
+                            'flags/**',
+                            'css/flag-icon.css',
+                        ],
+                        dest: 'src/skin/external/flag-icon-css/'
                     }
                 ]
             }
