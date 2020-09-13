@@ -85,7 +85,7 @@ $MenuFirst = 1;
                 </a>
                 <ul class="dropdown-menu">
                     <li class="header"><i id="translationInfo"></i></li>
-                    <li class="header"><i id="translationPer"></i> <?= gettext("translation progress completed")?></li>
+                    <li class="header"><i id="translationPer"></i> <?= gettext("of translation completed")?></li>
                     <li class="footer">
                         <a href="https://poeditor.com/join/project?hash=RABdnDSqAt" target="poeditor"><?= gettext("Help translate this project")?></a>
                     </li>
