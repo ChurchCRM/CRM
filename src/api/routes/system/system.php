@@ -6,10 +6,12 @@ use ChurchCRM\Service\NotificationService;
 use ChurchCRM\dto\Notification\UiNotification;
 use ChurchCRM\Service\TaskService;
 use ChurchCRM\Utils\LoggerUtils;
+use ChurchCRM\dto\LocaleInfo;
 
 $app->group('/system', function () {
     $this->get('/notification', 'getUiNotificationAPI');
     $this->post('/background/csp-report', 'logCSPReportAPI');
+    $this->get('/locale/{localeCode}', 'getLocaleInfo');
 });
 
 function logCSPReportAPI(Request $request, Response $response, array $args)
@@ -35,4 +37,16 @@ function getUiNotificationAPI(Request $request, Response $response, array $args)
     $notifications = array_merge($notifications, $taskSrv->getTaskNotifications());
 
     return $response->withJson(["notifications" => $notifications]);
+}
+
+function getLocaleInfo(Request $request, Response $response, array $args)
+{
+    $localeInfo = new LocaleInfo($args['localeCode']);
+
+    $data["name"] = $localeInfo->getName();
+    $data["code"] = $localeInfo->getLocale();
+    $data["countryFlagCode"] = strtolower($localeInfo->getCountryCode());
+    $data["poPerComplete"] = "TBD";
+
+    return $response->withJson($data);
 }
