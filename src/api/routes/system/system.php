@@ -1,5 +1,6 @@
 <?php
 
+use ChurchCRM\dto\SystemURLs;
 use Slim\Http\Request;
 use Slim\Http\Response;
 use ChurchCRM\Service\NotificationService;
@@ -46,7 +47,19 @@ function getLocaleInfo(Request $request, Response $response, array $args)
     $data["name"] = $localeInfo->getName();
     $data["code"] = $localeInfo->getLocale();
     $data["countryFlagCode"] = strtolower($localeInfo->getCountryCode());
-    $data["poPerComplete"] = "TBD";
+
+    $poLocalesFile = file_get_contents(SystemURLs::getDocumentRoot() . "/locale/poeditor.json");
+    $poLocales = json_decode($poLocalesFile, true);
+    $rawPOData = $poLocales["result"]["languages"];
+    foreach ($rawPOData as $poLocale) {
+        if ($localeInfo->getPoLocaleId() == $poLocale["code"]) {
+            $data["poPerComplete"] = $poLocale["percentage"];
+            $data["poLastUpdated"] = $poLocale["updated"];
+            break;
+        }
+    }
+
+
 
     return $response->withJson($data);
 }
