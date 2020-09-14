@@ -52,15 +52,11 @@ if (array_key_exists('Action', $_POST) && $_POST['Action'] == 'Retrieve' && !emp
 
     //I change textt from All $_GET['Type'] Events to All Events of type . $_GET['Type'], because it don´t work for protuguese, spanish, french and so on
     $sPageTitle = gettext('All Events of Type').': '.$_GET['Type'];
+} else {
+    $sSQL = 'SELECT * FROM events_event ORDER BY event_start';
 }
 require 'Include/Header.php';
-?>
-<table cellpadding="4" align="center" cellspacing="0" width="100%">
-  <tr>
-    <td align="center"><input type="button" class="btn btn-default" value="<?= gettext('Back to Report Menu') ?>" Name="Exit" onclick="javascript:document.location='ReportList.php';"></td>
-  </tr>
-</table>
-<?php
+
 // Get data for the form as it now exists..
 $rsOpps = RunQuery($sSQL);
 $numRows = mysqli_num_rows($rsOpps);
@@ -88,6 +84,33 @@ for ($row = 1; $row <= $numRows; $row++) {
 
 // Construct the form
 ?>
+
+
+<p>
+    <span class="MediumText"><u><?php echo gettext("Event Attendance"); ?></u></span>
+    <br>
+    <?php echo gettext("Generate attendance -AND- non-attendance reports for events"); ?>
+    <br>
+    <?php
+    //$sSQL = "SELECT * FROM event_types";
+    $sSQL = "SELECT DISTINCT event_types.* FROM event_types RIGHT JOIN events_event ON event_types.type_id=events_event.event_type ORDER BY type_id ";
+    $rsOpps = RunQuery($sSQL);
+    $numRows = mysqli_num_rows($rsOpps);
+
+    // List all events
+    for ($row = 1; $row <= $numRows; $row++)
+    {
+        $aRow = mysqli_fetch_array($rsOpps);
+        extract($aRow);
+        echo '&nbsp;&nbsp;&nbsp;<a href="EventAttendance.php?Action=List&Event='.
+            $type_id.'&Type='.gettext($type_name).'" title="List All '.
+            gettext($type_name).' Events"><strong>'.gettext($type_name).
+            '</strong></a>'."<br>\n";
+    }
+    ?>
+</p>
+
+
 <table cellpadding="4" align="center" cellspacing="0" width="60%">
 
 <?php
