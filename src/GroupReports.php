@@ -79,14 +79,12 @@ require 'Include/Header.php';
                     <div class="row">
                         <div class="col-xs-6">
                             <input type="submit" class="btn btn-default" name="Submit" value="<?= gettext('Next') ?>">
-                            <input type="button" class="btn btn-default" name="Cancel" value="<?= gettext('Cancel') ?>" onclick="javascript:document.location = 'ReportList.php';">
-
                         </div>
                     </div>
                 </form>
             </div>
         </div>
-    
+
         </div>
     </div>
     <?php
