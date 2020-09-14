@@ -98,8 +98,7 @@ for ($row = 1; $row <= $numRows; $row++) {
     $numRows = mysqli_num_rows($rsOpps);
 
     // List all events
-    for ($row = 1; $row <= $numRows; $row++)
-    {
+    for ($row = 1; $row <= $numRows; $row++) {
         $aRow = mysqli_fetch_array($rsOpps);
         extract($aRow);
         echo '&nbsp;&nbsp;&nbsp;<a href="EventAttendance.php?Action=List&Event='.
@@ -115,7 +114,7 @@ for ($row = 1; $row <= $numRows; $row++) {
 
 <?php
 if (array_key_exists('Action', $_GET) && $_GET['Action'] == 'List' && $numRows > 0) {
-    ?>
+        ?>
        <caption>
 	       <h3><?= ($numRows == 1 ? gettext('There is') : gettext('There are')).' '.$numRows.' '.($numRows == 1 ? gettext('event') : gettext('events')).gettext(' in this category.') ?></h3>
        </caption>
@@ -128,12 +127,12 @@ if (array_key_exists('Action', $_GET) && $_GET['Action'] == 'List' && $numRows >
          //Set the initial row color
          $sRowClass = 'RowColorA';
 
-    for ($row = 1; $row <= $numRows; $row++) {
+        for ($row = 1; $row <= $numRows; $row++) {
 
          //Alternate the row color
-        $sRowClass = AlternateRowStyle($sRowClass);
+            $sRowClass = AlternateRowStyle($sRowClass);
 
-        //Display the row?>
+            //Display the row?>
          <tr class="<?= $sRowClass ?>">
            <td class="TextColumn"><?= $aEventTitle[$row] ?></td>
            <td class="TextColumn"><?= FormatDate($aEventStartDateTime[$row], 1) ?></td>
@@ -147,13 +146,13 @@ if (array_key_exists('Action', $_GET) && $_GET['Action'] == 'List' && $numRows >
 $cSQL = 'SELECT COUNT(per_ID) AS cCount
          FROM person_per as t1, events_event as t2, event_attend as t3
          WHERE t1.per_ID = t3.person_id AND t2.event_id = t3.event_id AND t3.event_id = '.$aEventID[$row]." AND per_cls_ID IN ('1','2','5')";
-        $cOpps = RunQuery($cSQL);
-        $cNumAttend = mysqli_fetch_row($cOpps)[0];
-        $tSQL = "SELECT COUNT(per_ID) AS tCount
+            $cOpps = RunQuery($cSQL);
+            $cNumAttend = mysqli_fetch_row($cOpps)[0];
+            $tSQL = "SELECT COUNT(per_ID) AS tCount
          FROM person_per
          WHERE per_cls_ID IN ('1','2','5')";
-        $tOpps = RunQuery($tSQL);
-        $tNumTotal = mysqli_fetch_row($tOpps)[0]; ?>
+            $tOpps = RunQuery($tSQL);
+            $tNumTotal = mysqli_fetch_row($tOpps)[0]; ?>
                <input type="submit" name="Type" value="<?= gettext('Attending Members').' ['.$cNumAttend.']' ?>" class="btn btn-default">
              </form>
            </td>
@@ -178,17 +177,17 @@ $cSQL = 'SELECT COUNT(per_ID) AS cCount
 $gSQL = 'SELECT COUNT(per_ID) AS gCount
          FROM person_per as t1, events_event as t2, event_attend as t3
          WHERE t1.per_ID = t3.person_id AND t2.event_id = t3.event_id AND t3.event_id = '.$aEventID[$row].' AND per_cls_ID = 3';
-        $gOpps = RunQuery($gSQL);
-        $gNumGuestAttend = mysqli_fetch_row($gOpps)[0]; ?>
+            $gOpps = RunQuery($gSQL);
+            $gNumGuestAttend = mysqli_fetch_row($gOpps)[0]; ?>
                <input <?= ($gNumGuestAttend == 0 ? 'type="button"' : 'type="submit"') ?> name="Type" value="<?= gettext('Guests').' ['.$gNumGuestAttend.']' ?>" class="btn btn-default">
              </form>
            </td>
          </tr>
 <?php
-    } ?>
+        } ?>
          <tr><td colspan="5">&nbsp;</td></tr>
 <?php
-} elseif ($_POST['Action'] == 'Retrieve' && $numRows > 0) {
+    } elseif ($_POST['Action'] == 'Retrieve' && $numRows > 0) {
         ?>
        <caption>
          <h3><?= gettext('There '.($numRows == 1 ? 'was '.$numRows.' '.$_POST['Choice'] : 'were '.$numRows.' '.$_POST['Choice'])).' for this Event' ?></h3>
