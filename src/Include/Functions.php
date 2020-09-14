@@ -187,9 +187,9 @@ function RunQuery($sSQL, $bStopOnError = true)
     } elseif ($bStopOnError) {
         LoggerUtils::getAppLogger()->error(gettext('Cannot execute query.')." " . $sSQL . " -|- " . mysqli_error($cnInfoCentral));
         if (SystemConfig::getValue('sLogLevel') == "100") { // debug level
-            die(gettext('Cannot execute query.')."<p>$sSQL<p>".mysqli_error($cnInfoCentral));
+            throw new Exception(gettext('Cannot execute query.')."<p>$sSQL<p>".mysqli_error($cnInfoCentral));
         } else {
-            die('Database error or invalid data');
+            throw new Exception('Database error or invalid data, change sLogLevel to debug to see more.');
         }
     } else {
         return false;
@@ -520,7 +520,7 @@ function ExpandPhoneNumber($sPhoneNumber, $sPhoneCountry, &$bWeird)
           return $sPhoneNumber;
       }
       break;
-    
+
     // If the country is unknown, we don't know how to format it, so leave it untouched
     default:
       return $sPhoneNumber;
