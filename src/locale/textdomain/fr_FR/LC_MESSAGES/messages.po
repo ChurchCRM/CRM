@@ -1092,10 +1092,6 @@ msgid "Event Guests"
 msgstr "Invités de l&#39;événement"
 
 #: 
-msgid "Back to Report Menu"
-msgstr "Retour au menu rapport"
-
-#: 
 msgid "There "
 msgstr "Là"
 

@@ -1120,10 +1120,6 @@ msgid "Event Guests"
 msgstr "事件客人"
 
 #: 
-msgid "Back to Report Menu"
-msgstr "返回报告菜单"
-
-#: 
 msgid "There "
 msgstr "那里"
 

@@ -1087,10 +1087,6 @@ msgid "Event Guests"
 msgstr "Invitados a Evento"
 
 #: 
-msgid "Back to Report Menu"
-msgstr "Regresar al Menu de Reportes"
-
-#: 
 msgid "There "
 msgstr "Donde␣"
 
@@ -9355,22 +9351,6 @@ msgstr "Administrar Notas"
 #: 
 msgid "Skins"
 msgstr "Máscaras"
-
-#: 
-msgid "Missing people"
-msgstr "Personas Faltantes"
-
-#: 
-msgid "Find people who didn't attend an event"
-msgstr "Encontrar personas que no asistieron a un evento"
-
-#: 
-msgid "Event"
-msgstr "Evento"
-
-#: 
-msgid "Select the desired event"
-msgstr "Seleccione el evento deseado"
 
 #: 
 msgid "Failed generate a new API Key"

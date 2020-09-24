@@ -10,7 +10,7 @@ msgstr ""
 "#-#-#-#-#  messages.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-10 23:03-0700\n"
+"POT-Creation-Date: 2020-09-24 07:07-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,16 +25,16 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2020-09-11T06:03:10.625Z\n"
-"PO-Revision-Date: 2020-09-11T06:03:10.625Z\n"
+"POT-Creation-Date: 2020-09-24T14:07:01.672Z\n"
+"PO-Revision-Date: 2020-09-24T14:07:01.672Z\n"
 "#-#-#-#-#  react-js-strings.po (i18next-conv)  #-#-#-#-#\n"
 "Project-Id-Version: i18next-conv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2020-09-11T06:03:10.813Z\n"
-"PO-Revision-Date: 2020-09-11T06:03:10.813Z\n"
+"POT-Creation-Date: 2020-09-24T14:07:01.926Z\n"
+"PO-Revision-Date: 2020-09-24T14:07:01.926Z\n"
 
 msgid "Backup Database"
 msgstr ""
@@ -2261,7 +2261,10 @@ msgstr ""
 msgid "All Events of Type"
 msgstr ""
 
-msgid "Back to Report Menu"
+msgid "Event Attendance"
+msgstr ""
+
+msgid "Generate attendance -AND- non-attendance reports for events"
 msgstr ""
 
 msgid "There is"
@@ -3403,6 +3406,12 @@ msgid "Submit"
 msgstr ""
 
 msgid "Toggle navigation"
+msgstr ""
+
+msgid "of translation completed"
+msgstr ""
+
+msgid "Help translate this project"
 msgstr ""
 
 msgid "Your Cart"
@@ -5864,13 +5873,13 @@ msgstr ""
 msgid "Missing pledges"
 msgstr ""
 
+msgid "Credit Card People"
+msgstr ""
+
 msgid "Family Pledge by Fiscal Year"
 msgstr ""
 
 msgid "CustomSearch"
-msgstr ""
-
-msgid "Missing people"
 msgstr ""
 
 msgid "Returns each family and the total number of people assigned to them."
@@ -5923,6 +5932,9 @@ msgstr ""
 msgid "Find people who pledged one year but not another"
 msgstr ""
 
+msgid "People who are configured to pay by credit card."
+msgstr ""
+
 msgid ""
 "Pledge summary by family name for each fund for the selected fiscal year"
 msgstr ""
@@ -5931,9 +5943,6 @@ msgid "Find volunteers for who match two specific opportunity codes"
 msgstr ""
 
 msgid "Find people with a custom field value"
-msgstr ""
-
-msgid "Find people who didn't attend an event"
 msgstr ""
 
 msgid "Zip Code"
@@ -6003,9 +6012,6 @@ msgid "Custom field"
 msgstr ""
 
 msgid "Field value"
-msgstr ""
-
-msgid "Event"
 msgstr ""
 
 msgid "The minimum age for which you want records returned."
@@ -6092,9 +6098,6 @@ msgid "Choose customer person field"
 msgstr ""
 
 msgid "Match custom field to this value"
-msgstr ""
-
-msgid "Select the desired event"
 msgstr ""
 
 msgid "Afghanistan (‫افغانستان‬‎)"
