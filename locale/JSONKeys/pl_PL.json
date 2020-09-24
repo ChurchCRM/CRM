@@ -252,7 +252,6 @@
     "Event Attendees": "Uczestnicy",
     "Event Nonattendees": "Nieobecni-Nie biorący udziału",
     "Event Guests": "Goście",
-    "Back to Report Menu": "Spowrotem do Menu Raportu",
     "There ": "Tam",
     "Event Title": "Tytuł Wydarzenia",
     "Event Date": "Data Wydarzenia",
@@ -1190,9 +1189,5 @@
     "Permissions": "Uprawnienia",
     "Manage Notes": "Zarządzaj Notatkami",
     "Skins": "Powłoki",
-    "Missing people": "\"Zagubione\" osoby",
-    "Find people who didn't attend an event": "Wyszukaj osoby które nie brały udziału w wydarzeniu",
-    "Event": "Wydarzenie",
-    "Select the desired event": "Wybierz porządane wydarzenie",
     "Failed generate a new API Key": "Bład tworzenia klucza API"
 }

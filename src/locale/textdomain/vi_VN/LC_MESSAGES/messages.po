@@ -747,10 +747,6 @@ msgid "Event Guests"
 msgstr "Khách sự kiện"
 
 #: 
-msgid "Back to Report Menu"
-msgstr "Quay trở lại menu báo cáo"
-
-#: 
 msgid "There "
 msgstr "tại đây␣"
 

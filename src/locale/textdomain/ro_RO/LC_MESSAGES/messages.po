@@ -1120,10 +1120,6 @@ msgid "Event Guests"
 msgstr "Eveniment Vizitatori"
 
 #: 
-msgid "Back to Report Menu"
-msgstr "Înapoi la Raport Meniu"
-
-#: 
 msgid "There "
 msgstr "Acolo"
 

@@ -997,10 +997,6 @@ msgid "Event Guests"
 msgstr "Guests Event"
 
 #: 
-msgid "Back to Report Menu"
-msgstr "Mbrapsht në Njoftoni Menu"
-
-#: 
 msgid "There "
 msgstr "Jane "
 

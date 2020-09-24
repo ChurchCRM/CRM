@@ -1116,10 +1116,6 @@ msgid "Event Guests"
 msgstr "Гости события"
 
 #: 
-msgid "Back to Report Menu"
-msgstr "Вернуться к Пожаловаться Меню"
-
-#: 
 msgid "There "
 msgstr "Вот об этом (Вот) "
 

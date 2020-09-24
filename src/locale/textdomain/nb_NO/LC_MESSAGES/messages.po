@@ -1030,10 +1030,6 @@ msgid "Event Guests"
 msgstr "Hendelsesgjester"
 
 #: 
-msgid "Back to Report Menu"
-msgstr "Tilbake til rapport Meny"
-
-#: 
 msgid "There "
 msgstr "Det"
 
