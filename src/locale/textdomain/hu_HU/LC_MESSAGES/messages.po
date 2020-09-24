@@ -1029,10 +1029,6 @@ msgid "Event Guests"
 msgstr "Esemény vendégek"
 
 #: 
-msgid "Back to Report Menu"
-msgstr "Vissza a jelentése Menu"
-
-#: 
 msgid "There "
 msgstr "Ott"
 

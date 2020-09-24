@@ -268,7 +268,6 @@
     "Event Attendees": "Tamu yang hadir",
     "Event Nonattendees": "Tamu yang tidak hadir",
     "Event Guests": "Tamu undangan",
-    "Back to Report Menu": "Kembali kepada menu laporan",
     "There ": "Di sana",
     "Event Title": "Judul kegiatan",
     "Event Date": "Tanggal kegiatan",
@@ -2322,9 +2321,5 @@
     "Permissions": "Izin",
     "Manage Notes": "Kelola Catatan",
     "Skins": "Tampilan",
-    "Missing people": "Orang Hilang",
-    "Find people who didn't attend an event": "Temukan orang yang tidak menghadiri acara",
-    "Event": "Acara",
-    "Select the desired event": "Pilih acara yang diinginkan",
     "Failed generate a new API Key": "Gagal membuat Kunci API baru"
 }

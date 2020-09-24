@@ -1120,10 +1120,6 @@ msgid "Event Guests"
 msgstr "Visitantes no evento"
 
 #: 
-msgid "Back to Report Menu"
-msgstr "Retornar ao menu de relatórios"
-
-#: 
 msgid "There "
 msgstr "Existe "
 

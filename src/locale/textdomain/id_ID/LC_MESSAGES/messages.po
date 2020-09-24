@@ -1087,10 +1087,6 @@ msgid "Event Guests"
 msgstr "Tamu undangan"
 
 #: 
-msgid "Back to Report Menu"
-msgstr "Kembali kepada menu laporan"
-
-#: 
 msgid "There "
 msgstr "Di sana"
 
@@ -9298,22 +9294,6 @@ msgstr "Kelola Catatan"
 #: 
 msgid "Skins"
 msgstr "Tampilan"
-
-#: 
-msgid "Missing people"
-msgstr "Orang Hilang"
-
-#: 
-msgid "Find people who didn't attend an event"
-msgstr "Temukan orang yang tidak menghadiri acara"
-
-#: 
-msgid "Event"
-msgstr "Acara"
-
-#: 
-msgid "Select the desired event"
-msgstr "Pilih acara yang diinginkan"
 
 #: 
 msgid "Failed generate a new API Key"

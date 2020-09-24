@@ -1086,10 +1086,6 @@ msgid "Event Guests"
 msgstr "Ürituse külalised"
 
 #: 
-msgid "Back to Report Menu"
-msgstr "Tagasi aruande menüüsse"
-
-#: 
 msgid "There "
 msgstr "Seal "
 
