@@ -737,8 +737,7 @@ $bOkToEdit = (
                                     while ($aRow = mysqli_fetch_array($rsAssignedProperties)) {
                                         $pro_Prompt = '';
                                         $r2p_Value = '';
-                                        extract($aRow);
-                                        ?>
+                                        extract($aRow); ?>
                                         <tr>
                                         <td><?= $prt_Name?></td>
                                         <td><?= $pro_Name?></td>
