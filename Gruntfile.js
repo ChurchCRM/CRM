@@ -146,8 +146,7 @@ module.exports = function (grunt) {
                         expand: true,
                         filter: 'isFile',
                         flatten: true,
-                        src: ['node_modules/inputmask/dist/min/jquery.inputmask.bundle.min.js', 'node_modules/inputmask/dist/min/inputmask/inputmask.date.extensions.min.js',
-                        'node_modules/inputmask/dist/min/inputmask/inputmask.extensions.min.js'],
+                        src: ['node_modules/inputmask/dist/jquery.inputmask.min.js', 'node_modules/inputmask/dist/bindings/inputmask.binding.js'],
                         dest: 'src/skin/external/inputmask/'
                     },
                     {
