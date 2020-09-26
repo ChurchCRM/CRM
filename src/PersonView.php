@@ -738,17 +738,20 @@ $bOkToEdit = (
                                         $pro_Prompt = '';
                                         $r2p_Value = '';
                                         extract($aRow);
-
-                                        echo '<tr>';
-                                        echo '<td>'.$prt_Name.'</td>';
-                                        echo '<td>'.$pro_Name.'</td>';
-                                        echo '<td>'.$r2p_Value.'</td>';
-                                        if ($bOkToEdit) {
-                                            $attributes = "data-property_id=\"{$pro_ID}\" data-person_id=\"{$iPersonID}\" class=\"remove-property-btn\" ";
-                                            echo '<td><a '.$attributes.'>'.gettext('Remove').'</a></td>';
-                                        }
-                                        echo '</tr>';
-
+                                        ?>
+                                        <tr>
+                                        <td><?= $prt_Name?></td>
+                                        <td><?= $pro_Name?></td>
+                                        <td><?= $r2p_Value?></td>
+                                        <?php if ($bOkToEdit) { ?>
+                                            <td>
+                                                <a class="btn remove-property-btn" data-property_id="<?= $pro_ID?>">
+                                                    <i class="fa fa-trash"></i>
+                                                </a>
+                                            </td>
+                                        <?php } ?>
+                                        </tr>
+                                    <?php
                                         $sAssignedProperties .= $pro_ID.',';
                                     } ?>
                                     </tbody>
@@ -761,7 +764,6 @@ $bOkToEdit = (
                                         <h4><strong><?= gettext('Assign a New Property') ?>:</strong></h4>
 
                                         <form method="post" action="<?= SystemURLs::getRootPath(). '/api/properties/persons/assign' ?>" id="assign-property-form">
-                                            <input type="hidden" name="PersonId" value="<?= $person->getId() ?>" >
                                             <div class="row">
                                                 <div class="form-group col-xs-12 col-md-7">
                                                     <select name="PropertyId" id="input-person-properties" class="form-control select2"
@@ -797,7 +799,7 @@ $bOkToEdit = (
 
                                                 </div>
                                                 <div class="form-group col-xs-12 col-md-7">
-                                                    <input id="assign-property-btn" type="submit" class="btn btn-primary" value="<?= gettext('Assign') ?>" name="Submit">
+                                                    <input id="assign-property-btn" type="button" class="btn btn-primary" value="<?= gettext('Assign') ?>" name="Submit">
                                                 </div>
                                             </div>
                                         </form>
