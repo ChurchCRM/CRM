@@ -1,6 +1,7 @@
 <?php
 
 
+use ChurchCRM\Person;
 use ChurchCRM\PropertyQuery;
 use ChurchCRM\RecordProperty;
 use ChurchCRM\RecordPropertyQuery;
@@ -19,8 +20,8 @@ $app->group('/people/properties', function () {
     $this->post('/person/{personId}/{propertyId}', 'addPropertyToPerson')->add(new PersonAPIMiddleware())->add(new PropertyAPIMiddleware("p"));
     $this->delete('/person/{personId}/{propertyId}', 'removePropertyFromPerson')->add(new PersonAPIMiddleware())->add(new PropertyAPIMiddleware("p"));
     $this->get('/family', 'getAllFamilyProperties');
-    $this->post('/family/{familyId}/{propertyId}', 'addPropertyToPerson')->add(new FamilyAPIMiddleware())->add(new PropertyAPIMiddleware("f"));
-    $this->delete('/family/{familyId}/{propertyId}', 'removePropertyFromPerson')->add(new FamilyAPIMiddleware())->add(new PropertyAPIMiddleware("f"));
+    $this->post('/family/{familyId}/{propertyId}', 'addPropertyToFamily')->add(new FamilyAPIMiddleware())->add(new PropertyAPIMiddleware("f"));
+    $this->delete('/family/{familyId}/{propertyId}', 'removePropertyFromFamily')->add(new FamilyAPIMiddleware())->add(new PropertyAPIMiddleware("f"));
 
 
 })->add(new MenuOptionsRoleAuthMiddleware());
@@ -79,6 +80,7 @@ function addPropertyToPerson (Request $request, Response $response, array $args)
 
 function removePropertyFromPerson ($request, $response, $args) {
 
+    /* @var person Person */
     $person = $request->getAttribute("person");
     $personId = $person->getId();
 
@@ -112,10 +114,10 @@ function getAllFamilyProperties(Request $request, Response $response, array $arg
 }
 
 function addPropertyToFamily (Request $request, Response $response, array $args) {
-
+    return $response->withStatus(500, gettext('Under development.'));
 }
 
 function removePropertyFromFamily ($request, $response, $args)
 {
-    return $response->withStatus(500, gettext('The property could not be unassigned.'));
+    return $response->withStatus(500, gettext('Under development.'));
 }
