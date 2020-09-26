@@ -6,6 +6,7 @@ use ChurchCRM\RecordProperty;
 use ChurchCRM\RecordPropertyQuery;
 use ChurchCRM\Slim\Middleware\Request\Auth\MenuOptionsRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Request\PersonAPIMiddleware;
+use ChurchCRM\Slim\Middleware\Request\FamilyAPIMiddleware;
 use ChurchCRM\Slim\Middleware\Request\PropertyAPIMiddleware;
 use ChurchCRM\Utils\LoggerUtils;
 use Slim\Http\Request;
@@ -18,7 +19,9 @@ $app->group('/people/properties', function () {
     $this->post('/person/{personId}/{propertyId}', 'addPropertyToPerson')->add(new PersonAPIMiddleware())->add(new PropertyAPIMiddleware("p"));
     $this->delete('/person/{personId}/{propertyId}', 'removePropertyFromPerson')->add(new PersonAPIMiddleware())->add(new PropertyAPIMiddleware("p"));
     $this->get('/family', 'getAllFamilyProperties');
-    //$this->post('/family/{familyId}', 'addPropertyToPerson');
+    $this->post('/family/{familyId}/{propertyId}', 'addPropertyToPerson')->add(new FamilyAPIMiddleware())->add(new PropertyAPIMiddleware("f"));
+    $this->delete('/family/{familyId}/{propertyId}', 'removePropertyFromPerson')->add(new FamilyAPIMiddleware())->add(new PropertyAPIMiddleware("f"));
+
 
 })->add(new MenuOptionsRoleAuthMiddleware());
 
@@ -60,7 +63,7 @@ function addPropertyToPerson (Request $request, Response $response, array $args)
         if ($personProperty->save()) {
             return $response->withJson(['success' => true, 'msg' => gettext('The property is successfully assigned.')]);
         } else {
-            return $response->withJson(['success' => false, 'msg' => gettext('The property could not be assigned.')]);
+            return $response->withStatus(500, gettext('The property could not be assigned.'));
         }
     } else {
         $personProperty = new RecordProperty();
@@ -71,7 +74,7 @@ function addPropertyToPerson (Request $request, Response $response, array $args)
         return $response->withJson(['success' => true, 'msg' => gettext('The property is successfully assigned.')]);
     }
 
-    return $response->withStatus(500)->withJson(['success' => false, 'msg' => gettext('The property could not be assigned.')]);
+    return $response->withStatus(500, gettext('The property could not be assigned.'));
 }
 
 function removePropertyFromPerson ($request, $response, $args) {
@@ -95,7 +98,7 @@ function removePropertyFromPerson ($request, $response, $args) {
     if ($personProperty->isDeleted()) {
         return $response->withJson(['success' => true, 'msg' => gettext('The property is successfully unassigned.')]);
     } else {
-        return $response->withStatus(500)->withJson(['success' => false, 'msg' => gettext('The property could not be unassigned.')]);
+        return $response->withStatus(500, gettext('The property could not be unassigned.'));
     }
 
 }
@@ -106,4 +109,13 @@ function getAllFamilyProperties(Request $request, Response $response, array $arg
         ->filterByProClass("f")
         ->find();
     return $response->withJson($properties->toArray());
+}
+
+function addPropertyToFamily (Request $request, Response $response, array $args) {
+
+}
+
+function removePropertyFromFamily ($request, $response, $args)
+{
+    return $response->withStatus(500, gettext('The property could not be unassigned.'));
 }
