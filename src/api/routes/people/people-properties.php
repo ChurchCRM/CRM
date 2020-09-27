@@ -40,17 +40,45 @@ function getAllPersonProperties(Request $request, Response $response, array $arg
     return $response->withJson($properties->toArray());
 }
 
-function addPropertyToPerson (Request $request, Response $response, array $args) {
-
+function addPropertyToPerson (Request $request, Response $response, array $args)
+{
     $person = $request->getAttribute("person");
-    $personId = $person->getId();
+    return addProperty($response, $request, $person->getId(), $request->getAttribute("property"));
+}
 
-    $property = $request->getAttribute("property");
-    $propertyId = $property->getProId();
+
+
+function removePropertyFromPerson ($request, $response, $args)
+{
+    $person = $request->getAttribute("person");
+    return removeProperty($response, $person->getId(), $request->getAttribute("property"));
+}
+
+
+function getAllFamilyProperties(Request $request, Response $response, array $args)
+{
+    $properties = PropertyQuery::create()
+        ->filterByProClass("f")
+        ->find();
+    return $response->withJson($properties->toArray());
+}
+
+function addPropertyToFamily (Request $request, Response $response, array $args) {
+    $family = $request->getAttribute("family");
+    return addProperty($request, $response, $family->getId(), $request->getAttribute("property"));
+}
+
+function removePropertyFromFamily ($request, $response, $args)
+{
+    $family = $request->getAttribute("family");
+    return removeProperty($response, $family->getId(), $request->getAttribute("property"));
+}
+
+function addProperty(Request $request, Response $response, $id, $property) {
 
     $personProperty = RecordPropertyQuery::create()
-        ->filterByRecordId($personId)
-        ->filterByPropertyId($propertyId)
+        ->filterByRecordId($id)
+        ->filterByPropertyId($property->getProId())
         ->findOne();
 
     $propertyValue = "";
@@ -74,19 +102,13 @@ function addPropertyToPerson (Request $request, Response $response, array $args)
     } else {
         $personProperty = new RecordProperty();
         $personProperty->setPropertyId($property->getProId());
-        $personProperty->setRecordId($person->getId());
+        $personProperty->setRecordId($id);
         $personProperty->setPropertyValue($propertyValue);
         $personProperty->save();
         return $response->withJson(['success' => true, 'msg' => gettext('The property is successfully assigned.')]);
     }
 
     return $response->withStatus(500, gettext('The property could not be assigned.'));
-}
-
-function removePropertyFromPerson ($request, $response, $args)
-{
-    $person = $request->getAttribute("person");
-    return removeProperty($response, $person->getId(), $request->getAttribute("property"));
 }
 
 function removeProperty($response, $id, $property) {
@@ -106,22 +128,4 @@ function removeProperty($response, $id, $property) {
     } else {
         return $response->withStatus(500, gettext('The property could not be unassigned.'));
     }
-}
-
-function getAllFamilyProperties(Request $request, Response $response, array $args)
-{
-    $properties = PropertyQuery::create()
-        ->filterByProClass("f")
-        ->find();
-    return $response->withJson($properties->toArray());
-}
-
-function addPropertyToFamily (Request $request, Response $response, array $args) {
-    return $response->withStatus(500, gettext('Under development.'));
-}
-
-function removePropertyFromFamily ($request, $response, $args)
-{
-    $family = $request->getAttribute("family");
-    return removeProperty($response, $family->getId(), $request->getAttribute("property"));
 }
