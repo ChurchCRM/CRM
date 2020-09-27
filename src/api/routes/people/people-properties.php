@@ -1,7 +1,6 @@
 <?php
 
 
-use ChurchCRM\Person;
 use ChurchCRM\PropertyQuery;
 use ChurchCRM\RecordProperty;
 use ChurchCRM\RecordPropertyQuery;
@@ -16,12 +15,18 @@ use Slim\Http\Response;
 
 $app->group('/people/properties', function () {
 
+    $personPropertyAPIMiddleware = new PropertyAPIMiddleware("p");
+    $personAPIMiddleware = new PersonAPIMiddleware();
+    $familyPropertyAPIMiddleware = new PropertyAPIMiddleware("f");
+    $familyAPIMiddleware = new FamilyAPIMiddleware();
+
+
     $this->get('/person', 'getAllPersonProperties');
-    $this->post('/person/{personId}/{propertyId}', 'addPropertyToPerson')->add(new PersonAPIMiddleware())->add(new PropertyAPIMiddleware("p"));
-    $this->delete('/person/{personId}/{propertyId}', 'removePropertyFromPerson')->add(new PersonAPIMiddleware())->add(new PropertyAPIMiddleware("p"));
+    $this->post('/person/{personId}/{propertyId}', 'addPropertyToPerson')->add($personAPIMiddleware)->add($personPropertyAPIMiddleware);
+    $this->delete('/person/{personId}/{propertyId}', 'removePropertyFromPerson')->add($personAPIMiddleware)->add($personPropertyAPIMiddleware);
     $this->get('/family', 'getAllFamilyProperties');
-    $this->post('/family/{familyId}/{propertyId}', 'addPropertyToFamily')->add(new FamilyAPIMiddleware())->add(new PropertyAPIMiddleware("f"));
-    $this->delete('/family/{familyId}/{propertyId}', 'removePropertyFromFamily')->add(new FamilyAPIMiddleware())->add(new PropertyAPIMiddleware("f"));
+    $this->post('/family/{familyId}/{propertyId}', 'addPropertyToFamily')->add($familyAPIMiddleware)->add($familyPropertyAPIMiddleware);
+    $this->delete('/family/{familyId}/{propertyId}', 'removePropertyFromFamily')->add($familyAPIMiddleware)->add($familyPropertyAPIMiddleware);
 
 
 })->add(new MenuOptionsRoleAuthMiddleware());
@@ -78,18 +83,17 @@ function addPropertyToPerson (Request $request, Response $response, array $args)
     return $response->withStatus(500, gettext('The property could not be assigned.'));
 }
 
-function removePropertyFromPerson ($request, $response, $args) {
-
-    /* @var person Person */
+function removePropertyFromPerson ($request, $response, $args)
+{
     $person = $request->getAttribute("person");
-    $personId = $person->getId();
+    return removeProperty($response, $person->getId(), $request->getAttribute("property"));
+}
 
-    $property = $request->getAttribute("property");
-    $propertyId = $property->getProId();
+function removeProperty($response, $id, $property) {
 
     $personProperty = RecordPropertyQuery::create()
-        ->filterByRecordId($personId)
-        ->filterByPropertyId($propertyId)
+        ->filterByRecordId($id)
+        ->filterByPropertyId($property->getProId())
         ->findOne();
 
     if ($personProperty == null) {
@@ -102,7 +106,6 @@ function removePropertyFromPerson ($request, $response, $args) {
     } else {
         return $response->withStatus(500, gettext('The property could not be unassigned.'));
     }
-
 }
 
 function getAllFamilyProperties(Request $request, Response $response, array $args)
@@ -119,5 +122,6 @@ function addPropertyToFamily (Request $request, Response $response, array $args)
 
 function removePropertyFromFamily ($request, $response, $args)
 {
-    return $response->withStatus(500, gettext('Under development.'));
+    $family = $request->getAttribute("family");
+    return removeProperty($response, $family->getId(), $request->getAttribute("property"));
 }
