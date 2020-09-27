@@ -22,9 +22,11 @@ $app->group('/people/properties', function () {
 
 
     $this->get('/person', 'getAllPersonProperties');
+    $this->get('/person/{personId}', 'getPersonProperties')->add($personAPIMiddleware);
     $this->post('/person/{personId}/{propertyId}', 'addPropertyToPerson')->add($personAPIMiddleware)->add($personPropertyAPIMiddleware);
     $this->delete('/person/{personId}/{propertyId}', 'removePropertyFromPerson')->add($personAPIMiddleware)->add($personPropertyAPIMiddleware);
     $this->get('/family', 'getAllFamilyProperties');
+    $this->get('/family/{familyId}', 'getFamilyProperties')->add($familyAPIMiddleware);
     $this->post('/family/{familyId}/{propertyId}', 'addPropertyToFamily')->add($familyAPIMiddleware)->add($familyPropertyAPIMiddleware);
     $this->delete('/family/{familyId}/{propertyId}', 'removePropertyFromFamily')->add($familyAPIMiddleware)->add($familyPropertyAPIMiddleware);
 
@@ -43,10 +45,8 @@ function getAllPersonProperties(Request $request, Response $response, array $arg
 function addPropertyToPerson (Request $request, Response $response, array $args)
 {
     $person = $request->getAttribute("person");
-    return addProperty($response, $request, $person->getId(), $request->getAttribute("property"));
+    return addProperty($request, $response, $person->getId(), $request->getAttribute("property"));
 }
-
-
 
 function removePropertyFromPerson ($request, $response, $args)
 {
@@ -54,13 +54,42 @@ function removePropertyFromPerson ($request, $response, $args)
     return removeProperty($response, $person->getId(), $request->getAttribute("property"));
 }
 
-
 function getAllFamilyProperties(Request $request, Response $response, array $args)
 {
     $properties = PropertyQuery::create()
         ->filterByProClass("f")
         ->find();
     return $response->withJson($properties->toArray());
+}
+
+function getPersonProperties(Request $request, Response $response, array $args)
+{
+    $person = $request->getAttribute("person");
+    return getProperties($response, "p", $person->getId());
+}
+
+
+function getFamilyProperties(Request $request, Response $response, array $args)
+{
+    $family = $request->getAttribute("family");
+    return getProperties($response, "f", $family->getId());
+}
+
+
+function getProperties(Response $response, $type, $id) {
+    $properties = RecordPropertyQuery::create()
+        ->filterByRecordId($id)
+        ->find();
+
+    $finalProperties = [];
+
+    foreach ($properties as $property) {
+        if ($property->getProperty()->getProClass() == $type) {
+            array_push($finalProperties, $property->toArray());
+        }
+    }
+
+    return $response->withJson($finalProperties);
 }
 
 function addPropertyToFamily (Request $request, Response $response, array $args) {
