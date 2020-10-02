@@ -317,46 +317,26 @@ $mailchimp = new MailChimpService();
                 </div>
             </div>
             <div class="box-body">
-                <?php
-                $familyProperties = $family->getProperties();
 
-                if (empty($familyProperties->count())) {
-                    ?>
-                    <br>
-                    <div class="alert alert-warning">
-                        <i class="fa fa-question-circle fa-fw fa-lg"></i>
-                        <span><?= gettext("No property assignments.") ?></span>
-                    </div>
-                    <?php
-                } else {
-                    ?>
-                    <table class="table table-striped table-bordered data-table" cellspacing="0" width="100%">
-                    <tr>
-                        <th></th>
-                        <th><?= gettext("Name") ?></th>
-                        <th><?= gettext("Value") ?></th>
-                    </tr>
+                <div id="family-property-loading" class="col-xs-12 text-center">
+                    <i class="btn btn-default btn-lrg ajax">
+                        <i class="fa fa-spin fa-refresh"></i>&nbsp; <?= gettext("Loading") ?>
+                    </i>
+                </div>
 
-                    <?php
-                    //Loop through the rows
-                    foreach ($familyProperties as $familyProperty) {?>
-                        <tr>
-                            <td>
-                            <?php if (AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled()) {
-                                if (!empty($familyProperty->getProperty()->getProPrompt())) { ?>
-                                    <a href="<?=SystemURLs::getRootPath()?>/PropertyAssign.php?FamilyID=<?= $family->getId()?>&PropertyID=<?=$familyProperty->getPropertyId() ?>"><button type="button" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></button></a>
-                                <?php } ?>
-                                <a href="<?=SystemURLs::getRootPath()?>/PropertyUnassign.php?FamilyID=<?= $family->getId()?>&PropertyID=<?=$familyProperty->getPropertyId() ?>"><button type="button" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i></button></a></td>
-                            <?php } ?>
-                            </td>
-                            <td><?= $familyProperty->getProperty()->getProName() ?></td>
-                            <td><b><?= $familyProperty->getPropertyValue() ?></b></td>
-                        </tr>
+                <div id="family-property-no-data" class="alert alert-warning hidden">
+                    <i class="fa fa-question-circle fa-fw fa-lg"></i>
+                    <span><?= gettext("No property assignments.") ?></span>
+                </div>
 
-                    <?php } ?>
-                    </table>
-                <?php } ?>
-                <p/>
+                <table id="family-property-table" class="table table-striped table-bordered data-table hidden" cellspacing="0" width="100%">
+                <tr>
+                    <th></th>
+                    <th class="text-center"><?= gettext("Name") ?></th>
+                    <th class="text-center"><?= gettext("Value") ?></th>
+                </tr>
+                </table>
+            <p/>
                 <?php if (AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled()) { ?>
                     <div class="hide" id="family-add-property">
                         <div>
