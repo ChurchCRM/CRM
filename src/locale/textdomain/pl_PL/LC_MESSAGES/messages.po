@@ -3649,7 +3649,7 @@ msgstr "Wyśli Newsletter"
 
 #: 
 msgid "Member Name"
-msgstr "Inię Członka"
+msgstr "Imię Członka"
 
 #: 
 msgid "Adult/Child"
