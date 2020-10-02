@@ -1,4 +1,15 @@
 {
+    "Afrikaans": {
+        "poEditor": "af",
+        "locale": "af_ZA",
+        "languageCode": "af",
+        "countryCode": "ZA",
+        "dataTables": "Afrikaans",
+        "fullCalendar" : true,
+        "fullCalendarLocale" : "af",
+        "datePicker": false,
+        "select2": false
+    },
   "Albanian": {
     "poEditor": "sq",
     "locale": "sq_AL",
