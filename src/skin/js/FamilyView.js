@@ -22,6 +22,7 @@ $(document).ready(function () {
     });
 
     let masterFamilyProperties = {};
+    let selectedFamilyProperties = []
     window.CRM.APIRequest({
         path: 'people/properties/family',
     }).done(function(data) {
@@ -43,15 +44,58 @@ $(document).ready(function () {
                     let propId = prop.id;
                     let editIcon = "";
                     let deleteIcon = "";
+                    let propName = prop.name;
+                    let propVal = prop.value;
+                    selectedFamilyProperties.push(propId);
                     if (prop.allowEdit) {
                         editIcon = "<a href='"+ window.CRM.root  +"/PropertyAssign.php?FamilyID="+ window.CRM.currentFamily +"&PropertyID=" + propId +"'><button type='button' class='btn btn-xs btn-primary'><i class='fa fa-edit'></i></button></a>";
                     }
                     if (prop.allowDelete) {
-                        deleteIcon = "<a href='"+ window.CRM.root  +"/PropertyUnassign.php?FamilyID="+ window.CRM.currentFamily +"&PropertyID=" + propId +"'><button type='button' class='btn btn-xs btn-danger'><i class='fa fa-trash'></i></button></a>";
+                        deleteIcon = "<div class='btn btn-xs btn-danger delete-property' data-property-id='" + propId +"' data-property-name='"+propName+"'><i class='fa fa-trash'></i></div>";
                     }
-                    let propName = prop.name;
-                    let propVal = prop.value;
+
                     $('#family-property-table tr:last').after('<tr><td>' + deleteIcon + " " + editIcon  + '</td><td>' + propName + '</td><td>' + propVal + '</td></tr>');
+                });
+                $(".delete-property").click(function (){
+                    let propId = $(this).attr("data-property-id");
+                    bootbox.confirm({
+                        title: i18next.t("Family Property Unassignment"),
+                        message: i18next.t("Do you want to remove") + " " + $(this).attr("data-property-name") + " " +  "property" ,
+                        locale: window.CRM.locale,
+                        callback: function (result) {
+                            if(result) {
+                                window.CRM.APIRequest({
+                                    path: 'people/properties/family/'+ window.CRM.currentFamily+"/"+ propId,
+                                    method: 'DELETE',
+                                }).done(function(data) {
+                                    location.reload();
+                                });
+                            }
+                        }
+                    });
+                });
+            }
+        });
+    });
+
+    $("#add-family-property").click(function (){
+        let inputOptions = [];
+        $.each(masterFamilyProperties, function (index, masterProp){
+            if ($.inArray(masterProp.ProId, selectedFamilyProperties) == -1){
+                inputOptions.push({text: masterProp.ProName, value: masterProp.ProId})
+            }
+        });
+        bootbox.prompt({
+            title: i18next.t("Assign a New Property"),
+            locale: window.CRM.locale,
+            inputType: 'select',
+            inputOptions: inputOptions,
+            callback: function (result) {
+                window.CRM.APIRequest({
+                    path: 'people/properties/family/'+ window.CRM.currentFamily+"/"+result,
+                    method: 'POST',
+                }).done(function(data) {
+                    location.reload();
                 });
             }
         });
