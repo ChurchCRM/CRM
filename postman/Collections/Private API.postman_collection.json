@@ -1457,66 +1457,6 @@
 								"description": "Find where an email address is used more than once"
 							},
 							"response": []
-						},
-						{
-							"name": "Persons: Property Assign",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "x-api-key",
-										"value": "{{api-key}}"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n  \"PersonId\": 2,\n  \"PropertyId\": 3,\n  \"PropertyValue\": \"yep\"\n}"
-								},
-								"url": {
-									"raw": "{{host}}/api/persons/properties/",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"api",
-										"persons",
-										"properties",
-										""
-									]
-								},
-								"description": "added a property to a person with a value"
-							},
-							"response": []
-						},
-						{
-							"name": "Persons: Property Remove",
-							"request": {
-								"method": "DELETE",
-								"header": [
-									{
-										"key": "x-api-key",
-										"value": "{{api-key}}"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n  \"PersonId\": 2,\n  \"PropertyId\": 3\n}"
-								},
-								"url": {
-									"raw": "{{host}}/api/persons/properties/",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"api",
-										"persons",
-										"properties",
-										""
-									]
-								},
-								"description": "remove a property to a person with a value"
-							},
-							"response": []
 						}
 					],
 					"_postman_isSubFolder": true
@@ -2064,6 +2004,203 @@
 						}
 					],
 					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Properties",
+					"item": [
+						{
+							"name": "Persons: get Properties",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"type": "text",
+										"value": "{{api-key}}"
+									}
+								],
+								"url": {
+									"raw": "{{host}}/api/people/properties/person",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"people",
+										"properties",
+										"person"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Person: Property Assign",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{api-key}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"value\": \"acc on 1.0.5 ss s\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/api/people/properties/person/3/1",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"people",
+										"properties",
+										"person",
+										"3",
+										"1"
+									]
+								},
+								"description": "added a property to a person with a value"
+							},
+							"response": []
+						},
+						{
+							"name": "Person: Property Remove",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{api-key}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"PersonId\": 2,\n  \"PropertyId\": 3\n}"
+								},
+								"url": {
+									"raw": "{{host}}/api/people/properties/person/3/1",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"people",
+										"properties",
+										"person",
+										"3",
+										"1"
+									]
+								},
+								"description": "remove a property to a person with a value"
+							},
+							"response": []
+						},
+						{
+							"name": "Family: get Properties",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{api-key}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{host}}/api/people/properties/family",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"people",
+										"properties",
+										"family"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Family: Property Assign",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{api-key}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"value\": \"ye222p\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/api/people/properties/family/3/2",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"people",
+										"properties",
+										"family",
+										"3",
+										"2"
+									]
+								},
+								"description": "added a property to a person with a value"
+							},
+							"response": []
+						},
+						{
+							"name": "Family: Property Remove",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{api-key}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"PersonId\": 2,\n  \"PropertyId\": 3\n}"
+								},
+								"url": {
+									"raw": "{{host}}/api/people/properties/family/3/2",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"people",
+										"properties",
+										"family",
+										"3",
+										"2"
+									]
+								},
+								"description": "remove a property to a person with a value"
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
 				}
 			]
 		},
@@ -2383,6 +2520,32 @@
 						"description": "get all notitication to show the user"
 					},
 					"response": []
+				},
+				{
+					"name": "System: UI Locale",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/api/system/locale/zh_TW",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"system",
+								"locale",
+								"zh_TW"
+							]
+						},
+						"description": "get all notitication to show the user"
+					},
+					"response": []
 				}
 			]
 		},
@@ -2473,7 +2636,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"value\": \",\"\n}",
+							"raw": "{\n    \"value\": \"skin-green\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -2481,7 +2644,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/api/users/1/config/sMailtoDelimiter",
+							"raw": "{{host}}/api/users/1/setting/style",
 							"host": [
 								"{{host}}"
 							],
@@ -2489,8 +2652,8 @@
 								"api",
 								"users",
 								"1",
-								"config",
-								"sMailtoDelimiter"
+								"setting",
+								"style"
 							]
 						},
 						"description": "login and get api token back"
