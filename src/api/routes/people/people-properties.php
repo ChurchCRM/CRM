@@ -4,6 +4,7 @@
 use ChurchCRM\PropertyQuery;
 use ChurchCRM\RecordProperty;
 use ChurchCRM\RecordPropertyQuery;
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Slim\Middleware\Request\Auth\MenuOptionsRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Request\PersonAPIMiddleware;
 use ChurchCRM\Slim\Middleware\Request\FamilyAPIMiddleware;
@@ -84,8 +85,20 @@ function getProperties(Response $response, $type, $id) {
     $finalProperties = [];
 
     foreach ($properties as $property) {
-        if ($property->getProperty()->getProClass() == $type) {
-            array_push($finalProperties, $property->toArray());
+        $rawProp =$property->getProperty();
+        if ($rawProp->getProClass() == $type) {
+            $tempProp = [];
+            $tempProp["id"] = $property->getPropertyId();
+            $tempProp["name"] = $rawProp->getProName();
+            $tempProp["value"] = $property->getPropertyValue();
+            if (AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled()) {
+                $tempProp["allowEdit"] = !empty(trim($rawProp->getProPrompt()));
+                $tempProp["allowDelete"] = true;
+            }  else {
+                $tempProp["allowEdit"] = false;
+                $tempProp["allowDelete"] = false;
+            }
+            array_push($finalProperties, $tempProp);
         }
     }
 
