@@ -21,6 +21,31 @@ $(document).ready(function () {
         }
     });
 
+    window.CRM.APIRequest({
+        path: 'people/properties/family/'+ window.CRM.currentFamily,
+    }).done(function(data) {
+        $("#family-property-loading").addClass("hidden");
+        if (data.length == 0) {
+            $("#family-property-no-data").removeClass("hidden");
+        } else {
+            $("#family-property-table").removeClass("hidden");
+            $.each(data, function (key, prop) {
+                let propId = prop.id;
+                let editIcon = "";
+                let deleteIcon = "";
+                if (prop.allowEdit) {
+                    editIcon = "<a href='"+ window.CRM.root  +"/PropertyAssign.php?FamilyID="+ window.CRM.currentFamily +"&PropertyID=" + propId +"'><button type='button' class='btn btn-xs btn-primary'><i class='fa fa-edit'></i></button></a>";
+                }
+                if (prop.allowDelete) {
+                    deleteIcon = "<a href='"+ window.CRM.root  +"/PropertyUnassign.php?FamilyID="+ window.CRM.currentFamily +"&PropertyID=" + propId +"'><button type='button' class='btn btn-xs btn-danger'><i class='fa fa-trash'></i></button></a>";
+                }
+                let propName = prop.name;
+                let propVal = prop.value;
+                $('#family-property-table tr:last').after('<tr><td>' + deleteIcon + " " + editIcon  + '</td><td>' + propName + '</td><td>' + propVal + '</td></tr>');
+            });
+        }
+    });
+
     var dataTableConfig = {
         ajax: {
             url: window.CRM.root + "/api/payments/family/"+ window.CRM.currentFamily +"/list",
