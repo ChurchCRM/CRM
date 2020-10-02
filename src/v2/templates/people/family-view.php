@@ -308,7 +308,7 @@ $mailchimp = new MailChimpService();
                 <h3 class="box-title"><?= gettext("Properties") ?></h3>
                 <div class="box-tools pull-right">
                     <?php if (AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled()) { ?>
-                    <button id="add-family-property" type="button" class="btn btn-box-tool"><i class="fa fa-plus-circle text-blue"></i></button>
+                    <button id="add-family-property" type="button" class="btn btn-box-tool hidden"><i class="fa fa-plus-circle text-blue"></i></button>
                     <?php } ?>
 
                     <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
@@ -338,7 +338,7 @@ $mailchimp = new MailChimpService();
                 </table>
             <p/>
                 <?php if (AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled()) { ?>
-                    <div class="hide" id="family-add-property">
+                    <div class="hidden" id="family-add-property">
                         <div>
                             <strong><?= gettext("Assign a New Property") ?>:</strong>
                             <p/>
