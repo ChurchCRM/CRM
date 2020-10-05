@@ -12,12 +12,17 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-        with:
-          ref: build/${{github.event.inputs.ver}}
       - name: Setup Node
         uses: actions/setup-node@v1
         with:
           node-version: '12'
+      - name: get-npm-version
+        id: package-version
+        uses: martinbeentjes/npm-get-version-action@master
+        
+      - name: create new branch
+        run: git checkout -b build/${{steps.package-version.outputs.current-version}}
+        
       - name: Update package version
         run: npm version ${{github.event.inputs.ver}}
         
