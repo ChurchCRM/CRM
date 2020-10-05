@@ -1,4 +1,4 @@
-name: Manually triggered workflow
+name: Download From POEditor 
 on:
   workflow_dispatch:
     inputs:
