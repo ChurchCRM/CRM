@@ -1,5 +1,5 @@
 name: Update Version 
-description: 'Asks user for new software version number, then update package file and update all other versions."
+description: 'Asks user for new software version number, then update package file and update all other versions.'
 on:
   workflow_dispatch:
     inputs:
