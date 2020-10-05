@@ -1,30 +1,44 @@
-name: Update Version 
+name: Update Version and Branch
+
 on:
   workflow_dispatch:
     inputs:
-      ver:
-        description: 'release types (patch, minor, or major)'
+      newversion:
+        description: 'Semantic Version Bump Type (major minor patch)'
         required: true
-        default: patch
+
+env:
+  node_version: 14
+
 jobs:
-  update_versions:
+  version_and_release:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Setup Node
-        uses: actions/setup-node@v1
-        with:
-          node-version: '12'
-      - name: get-npm-version
-        id: package-version
-        uses: martinbeentjes/npm-get-version-action@master
+    - uses: actions/checkout@v2.3.2
+      with:
+        # fetch full history so things like auto-changelog work properly
+        fetch-depth: 0
+    - name: Use Node.js ${{ env.node_version }}
+      uses: actions/setup-node@v2.1.1
+      with:
+        node-version: ${{ env.node_version }}
+        # setting a registry enables the NODE_AUTH_TOKEN env variable where we can set an npm token.  REQUIRED
+        registry-url: 'https://registry.npmjs.org'
         
-      - name: create new branch
-        run: git checkout -b build/${{steps.package-version.outputs.current-version}}
-        
-      - name: Update package version
-        run: npm version ${{github.event.inputs.ver}}
-        
-      - name: Update Other versions
-        run: npm run updateVersions
+    - name: Update Other versions
+      run: npm run updateVersions
+
+    - name: Add changes to Git tracking
+      run: git add -A .
+
+    - name: Commit changes
+      run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git commit -m 'Updates version files'
+          
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        base: master
