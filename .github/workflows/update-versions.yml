@@ -7,12 +7,17 @@ on:
         required: true
         default: patch
 jobs:
-  say_hello:
+  update_versions:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Setup Node
+        uses: actions/setup-node@v1
         with:
           node-version: '12'
-      - run: npm version ${{ github.event.inputs.ver }}
-      - run: npm install
+      - name: Update package version
+        run: npm version ${{ github.event.inputs.ver }}
+        
+      - name: Update Other versions
+        run: npm run updateVersions
