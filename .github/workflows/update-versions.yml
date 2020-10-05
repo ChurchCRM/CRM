@@ -12,12 +12,14 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+        with:
+          ref: build/${{ github.event.inputs.ver}}
       - name: Setup Node
         uses: actions/setup-node@v1
         with:
           node-version: '12'
       - name: Update package version
-        run: npm version ${{ github.event.inputs.ver }}
+        run: npm version ${{ github.event.inputs.ver}}
         
       - name: Update Other versions
         run: npm run updateVersions
