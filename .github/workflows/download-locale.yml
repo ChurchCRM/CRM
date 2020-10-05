@@ -1,16 +1,19 @@
-name: Download latest POEditor locales
+name: Manually triggered workflow
 on:
   workflow_dispatch:
     inputs:
-      logLevel:
-        description: 'Log level'     
+      name:
+        description: 'Person to greet'
         required: true
-        default: 'warning'
+        default: 'Mona the Octocat'
+      home:
+        description: 'location'
+        required: false
+
 jobs:
-  check-bats-version:
+  say_hello:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-      - run: npm install
-      - run: npm run locale-download
+    - run: |
+        echo "Hello ${{ github.event.inputs.name }}!"
+        echo "- in ${{ github.event.inputs.home }}!"
