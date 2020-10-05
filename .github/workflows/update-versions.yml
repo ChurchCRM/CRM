@@ -26,7 +26,8 @@ jobs:
         registry-url: 'https://registry.npmjs.org'
         
     - name: Update Other versions
-      run: npm run updateVersions
+      run: |
+        npm install
 
     - name: Add changes to Git tracking
       run: git add -A .
