@@ -27,11 +27,12 @@ jobs:
       run: npm audit fix --only=prod --audit-level=high
     
     - name: Update JS & PHP 
+      run: |
         npm install
         npm run composer-install
         
     - name: ORM Tasks 
-        npm run orm-gen
+      run: npm run orm-gen
         
     - name: Add changes to Git tracking
       run: git add -A .
