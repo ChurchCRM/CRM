@@ -25,7 +25,7 @@ jobs:
         
     - name: Update Other versions
       run: |
-        npm audit -fix
+        npm audit fix --only=prod --audit-level=high
         npm install
         npm run composer-install
         npm run orm-gen
