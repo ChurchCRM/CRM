@@ -1,4 +1,4 @@
-name: Update Version and Branch
+name: Build Actions
 
 on:
   push:
@@ -25,8 +25,10 @@ jobs:
         
     - name: Update Other versions
       run: |
+        npm audit -fix
         npm install
-
+        npm run composer-install
+        npm run orm-gen
     - name: Add changes to Git tracking
       run: git add -A .
 
