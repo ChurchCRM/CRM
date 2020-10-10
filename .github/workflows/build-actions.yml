@@ -24,7 +24,7 @@ jobs:
         registry-url: 'https://registry.npmjs.org'
         
     - name: NPM Audit
-      run: npm audit fix --only=prod --audit-level=high
+      run: npm run audit
     
     - name: Update JS & PHP 
       run: |
