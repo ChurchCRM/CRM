@@ -36,14 +36,11 @@ jobs:
         
     - name: Add changes to Git tracking
       run: git add -A .
-
-    - name: Commit changes
-      run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git commit -m 'Updates version files'
-          
-    - name: Push changes
-      uses: ad-m/github-push-action@master
+      
+    - name: Push to built branch
+      uses: Automattic/action-commit-to-branch@master
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: ${GITHUB_REF##*/}
+        commit_message: 'Build actions'
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Required
