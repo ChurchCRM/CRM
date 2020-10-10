@@ -9,7 +9,7 @@ env:
   node_version: 14
 
 jobs:
-  version_and_release:
+  npm_tasks:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2.3.2
@@ -23,12 +23,16 @@ jobs:
         # setting a registry enables the NODE_AUTH_TOKEN env variable where we can set an npm token.  REQUIRED
         registry-url: 'https://registry.npmjs.org'
         
-    - name: Update Other versions
-      run: |
-        npm audit fix --only=prod --audit-level=high
+    - name: NPM Audit
+      run: npm audit fix --only=prod --audit-level=high
+    
+    - name: Update JS & PHP 
         npm install
         npm run composer-install
+        
+    - name: ORM Tasks 
         npm run orm-gen
+        
     - name: Add changes to Git tracking
       run: git add -A .
 
