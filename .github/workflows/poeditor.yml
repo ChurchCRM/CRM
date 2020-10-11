@@ -25,6 +25,9 @@ jobs:
       id: package-version
       uses: martinbeentjes/npm-get-version-action@master
 
+    - name: install locale tools
+      run: npm install i18next-extract-gettext
+
     - name: Gen Locales
       run: npm run locale-gen
       
