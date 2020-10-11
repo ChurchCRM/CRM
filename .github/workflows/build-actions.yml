@@ -23,6 +23,11 @@ jobs:
         # setting a registry enables the NODE_AUTH_TOKEN env variable where we can set an npm token.  REQUIRED
         registry-url: 'https://registry.npmjs.org'
         
+    - name: Declare some variables
+      id: vars
+      shell: bash
+      run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+        
     - name: NPM Audit
       run: npm run audit
     
@@ -33,14 +38,11 @@ jobs:
         
     - name: ORM Tasks 
       run: npm run orm-gen
-        
-    - name: Add changes to Git tracking
-      run: git add -A .
       
     - name: Push to built branch
       uses: Automattic/action-commit-to-branch@master
       with:
-        branch: ${GITHUB_REF##*/}
+        branch: ${{ steps.vars.outputs.branch }}
         commit_message: 'Build actions'
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Required
