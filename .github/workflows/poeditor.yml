@@ -1,6 +1,9 @@
 name: POEditor Locales
 
-on: [push]
+on:
+  push:
+    branches:    
+    - 'master'
 
 env:
   node_version: 14
@@ -24,6 +27,10 @@ jobs:
     - name: get-npm-version
       id: package-version
       uses: martinbeentjes/npm-get-version-action@master
+
+    - name: Get current date
+      id: date
+      run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
 
     - name: install locale tools
       run: |
