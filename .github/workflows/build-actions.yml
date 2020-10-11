@@ -55,7 +55,6 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
         branch: ${{ steps.vars.outputs.branch }}
         base: master
-        delete-branch: true
         title: "${{ steps.package-version.outputs.current-version}} Build Updates"
         commit-message: |
           What's this PR do?
