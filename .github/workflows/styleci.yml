@@ -1,23 +1,17 @@
-name: Style Checking
-
-on: [push]
-
+name: StyleCI
+on: [push, pull_request]
 jobs:
-  Check:
-    # The type of runner that the job will run on
+  Analyze:
     runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
-
-      - name: StyleCI CLI
-        uses: nathane/styleci-action@latest
-        with:
-          # your StyleCI API key, available at https://github.styleci.io/profile.
-          styleci_api_key: ${{secrets.STYLECI_API_KEY}}
-          # set the command options for your StyleCI CLI.
-          options: --no-interaction
-          # specify the directory to analyze.
-          directory: src
+    - name: Checkout Repo
+      uses: actions/checkout@v2
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: "7.4"
+        extensions: curl
+    - name: analyze code with StyleCI
+      uses: nathane/styleci-action@latest # Available tags: "@0.9", "@v0.9.0"
+      with:
+        styleci_api_key: ${{ secrets.STYLECI_API_KEY }} # required
