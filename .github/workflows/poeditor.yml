@@ -1,0 +1,44 @@
+name: POEditor Locales
+
+on: [workflow_dispatch]
+
+env:
+  node_version: 14
+
+jobs:
+
+  Setup System:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2.3.2
+      with:
+        # fetch full history so things like auto-changelog work properly
+        fetch-depth: 0
+    - name: Use Node.js ${{ env.node_version }}
+      uses: actions/setup-node@v2.1.1
+      with:
+        node-version: ${{ env.node_version }}
+        # setting a registry enables the NODE_AUTH_TOKEN env variable where we can set an npm token.  REQUIRED
+        registry-url: 'https://registry.npmjs.org'
+        
+        
+  Generate file
+    needs: Setup System:
+    - name: Gen Locales
+      run: npm run locale-gen
+      
+ 
+   POEditor Update
+      needs: Gen Locale
+      name: Echo Config
+      run: echo 'with tag xxxx'
+      
+      
+  POEditor Download
+      needs: POEditor Update
+      name: Echo Config
+      run: echo 'with tag xxxx'
+      
+      
+      
+    
