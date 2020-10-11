@@ -42,8 +42,7 @@ jobs:
     - name: ORM Tasks
       run: npm run orm-gen
 
-
-  - name: Push changes to ${{ steps.vars.outputs.branch }} and PR
+    - name: Push changes to ${{ steps.vars.outputs.branch }} and PR
       uses: peter-evans/create-pull-request@v3
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
