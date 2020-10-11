@@ -83,6 +83,9 @@
     },
     "scripts": {
         "install": "grunt clean && grunt updateVersions && grunt curl-dir && grunt copy && grunt sass && grunt lineending && grunt patchDataTablesCSS",
+        "build": "npm run composer-install && npm run orm-gen &&  npm run build-react",
+        "audit": "npm audit fix --only=prod --audit-level=high",
+        "deploy": "npm install && npm run build",
         "updateVersions": "grunt updateVersions",
         "postinstall": "grunt genLocaleJSFiles",
         "locale-gen": "locale/update-locale.sh",
@@ -102,6 +105,7 @@
         "test": "php tests/run.php",
         "build-react": "webpack",
         "restore-demo-db": "php scripts/restore-db.php demo",
-        "restore-empty-db": "php scripts/restore-db.php"
+        "restore-empty-db": "php scripts/restore-db.php",
+        "heroku-postbuild": "npm run deploy"
     }
 }
