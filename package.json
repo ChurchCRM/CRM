@@ -66,7 +66,7 @@
         "ckeditor": "^4.12.1",
         "flag-icon-css": "^3.5.0",
         "font-awesome": "^4.7.0",
-        "fullcalendar": "^5.3.2",
+        "fullcalendar": "3.10.2",
         "i18n": "^0.13.2",
         "i18next": "19.8.2",
         "initial-js": "0.3.4",
