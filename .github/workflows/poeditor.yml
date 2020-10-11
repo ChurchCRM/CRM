@@ -1,9 +1,6 @@
 name: POEditor Locales
 
-on:
-  push:
-    branches:    
-    - 'master'
+on: [push]
 
 env:
   node_version: 14
