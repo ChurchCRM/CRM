@@ -49,16 +49,15 @@ jobs:
     - name: ORM Tasks
       run: npm run orm-gen
 
-    - name: Push changes to ${{ steps.vars.outputs.branch }} and PR
-      uses: peter-evans/create-pull-request@v3
+    - name: Push to built branch
+      uses: Automattic/action-commit-to-branch@master
       with:
-        token: ${{ secrets.GITHUB_TOKEN }}
         branch: ${{ steps.vars.outputs.branch }}
-        base: master
-        title: "${{ steps.package-version.outputs.current-version}} Build Updates"
         commit-message: |
           What's this PR do?
           - npm update
           - composer update
           - npm audit fix
           - updated versions, if needed
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Required
