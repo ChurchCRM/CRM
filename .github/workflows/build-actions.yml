@@ -28,15 +28,15 @@ jobs:
       shell: bash
       run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
 
-    - name: NPM Audit
-      run: npm run audit fix --only=prod --audit-level=high
-
     - name: Update JS & PHP
       run: |
         npm install
         npm run composer-install
         npm run orm-gen
         npm run build-react
+
+    - name: NPM Audit
+      run: npm run audit
 
     - name: ORM Tasks
       run: npm run orm-gen
