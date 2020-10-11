@@ -8895,6 +8895,18 @@ msgid "Maximum number of Calendar Events"
 msgstr "Maksimum aantal kalendergeleenthede"
 
 #: 
+msgid "%d month old"
+msgid_plural "%d months old"
+msgstr[0] " %d maand oud"
+msgstr[1] " %d maande oud"
+
+#: 
+msgid "%d year old"
+msgid_plural "%d years old"
+msgstr[0] "% d jaar oud"
+msgstr[1] "% d jare oud"
+
+#: 
 msgid "Database upgrade failed"
 msgstr "Kon nie databasis opgradeer nie"
 
@@ -9437,4 +9449,24 @@ msgstr "Kredietkaartmense"
 #: 
 msgid "People who are configured to pay by credit card."
 msgstr "Mense wat ingestel is om per kredietkaart te betaal."
+
+#: 
+msgid "Afrikaans"
+msgstr "Afrikaans"
+
+#: 
+msgid " has a type mismatch"
+msgstr " het 'n tikfout begaan"
+
+#: 
+msgid "Loading"
+msgstr "Besig om te laai"
+
+#: 
+msgid "Family Property Unassignment"
+msgstr "Gesins eiendom ontoegeken"
+
+#: 
+msgid "Do you want to remove"
+msgstr "Is jy seker jy wil dit verwyder"
 

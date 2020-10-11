@@ -2216,6 +2216,14 @@
     "Allow system upgrades to release marked as 'pre release' on GitHub": "Laat toe dat stelselopgraderings vrygestel word, gemerk as 'pre release' op GitHub",
     "Search Calendar Events": "Soek Kalendergebeurtenisse",
     "Maximum number of Calendar Events": "Maksimum aantal kalendergeleenthede",
+    "%d month old": {
+        "one": " %d maand oud",
+        "other": " %d maande oud"
+    },
+    "%d year old": {
+        "one": "% d jaar oud",
+        "other": "% d jare oud"
+    },
     "Database upgrade failed": "Kon nie databasis opgradeer nie",
     "Unsupported PHP Version": "Nie-ondersteunde PHP-weergawe",
     "Support for this PHP version will soon be removed.  Current PHP Version: ": "Ondersteuning vir hierdie PHP-weergawe sal binnekort verwyder word. Huidige PHP-weergawe: ",
@@ -2351,5 +2359,10 @@
     "of translation completed": "van vertaling voltooi",
     "Help translate this project": "Help om hierdie projek te vertaal",
     "Credit Card People": "Kredietkaartmense",
-    "People who are configured to pay by credit card.": "Mense wat ingestel is om per kredietkaart te betaal."
+    "People who are configured to pay by credit card.": "Mense wat ingestel is om per kredietkaart te betaal.",
+    "Afrikaans": "Afrikaans",
+    " has a type mismatch": " het 'n tikfout begaan",
+    "Loading": "Besig om te laai",
+    "Family Property Unassignment": "Gesins eiendom ontoegeken",
+    "Do you want to remove": "Is jy seker jy wil dit verwyder"
 }
