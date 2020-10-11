@@ -37,19 +37,7 @@ class SystemService
 
     static public function getCopyrightDate()
     {
-        $composerFile = file_get_contents(SystemURLs::getDocumentRoot() . '/composer.json');
-        $composerJson = json_decode($composerFile, true);
-        $buildTime = new \DateTime();
-
-        if ((!empty($composerJson)) && array_key_exists('time', $composerJson) && (!empty($composerJson['time'])))
-        {
-            try{ 
-                $buildTime = new \DateTime($composerJson['time']);
-            } catch (Exception $e) {
-                // will use default
-            }
-        }
-        return $buildTime->format("Y");
+        return (new \DateTime())->format("Y");
     }
 
     public function getConfigurationSetting($settingName, $settingValue)
