@@ -33,14 +33,11 @@ jobs:
         
     - name: ORM Tasks 
       run: npm run orm-gen
-        
-    - name: Add changes to Git tracking
-      run: git add -A .
       
     - name: Push to built branch
       uses: Automattic/action-commit-to-branch@master
       with:
-        branch: ${GITHUB_REF##*/}
+        branch: ${{GITHUB_REF##*/}} 
         commit_message: 'Build actions'
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Required
