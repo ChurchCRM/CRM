@@ -7,7 +7,7 @@ env:
 
 jobs:
 
-  Setup System
+  Setup System:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2.3.2
@@ -20,24 +20,32 @@ jobs:
         node-version: ${{ env.node_version }}
         # setting a registry enables the NODE_AUTH_TOKEN env variable where we can set an npm token.  REQUIRED
         registry-url: 'https://registry.npmjs.org'
+
+    - name: get-npm-version
+      id: package-version
+      uses: martinbeentjes/npm-get-version-action@master
+              
         
-        
-  Generate file
-    needs: Setup System:
+  Generate, Upload & Download:
+    needs: Setup System
+    runs-on: ubuntu-latest
+    steps:
     - name: Gen Locales
       run: npm run locale-gen
       
- 
-   POEditor Update
-      needs: Gen Locale
-      name: Echo Config
-      run: echo 'with tag xxxx'
+    - name: Echo Config
+      run: echo 'upload file with tag ${{ steps.package-version.outputs.current-version}}'
       
-      
-  POEditor Download
-      needs: POEditor Update
-      name: Echo Config
-      run: echo 'with tag xxxx'
+    - name: Echo Config
+      run: npm run locale-download
+    
+    - name: Push to built branch
+      uses: Automattic/action-commit-to-branch@master
+      with:
+        branch: 'locale/${{ steps.package-version.outputs.current-version}}'
+        commit_message: 'Loacle Gen & Download on ${{ steps.date.outputs.date }}'
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       
       
       
