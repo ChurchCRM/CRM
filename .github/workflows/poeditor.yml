@@ -26,15 +26,17 @@ jobs:
       uses: martinbeentjes/npm-get-version-action@master
 
     - name: install locale tools
-      run: npm install i18next-extract-gettext
+      run: |
+        npm install i18next-extract-gettext
+        apt-get install gettext
 
     - name: Gen Locales
       run: npm run locale-gen
       
-    - name: Echo Config
+    - name: Upload & Tag Locale file 
       run: echo 'upload file with tag ${{ steps.package-version.outputs.current-version}}'
       
-    - name: Echo Config
+    - name: Download locales from POEditor
       run: npm run locale-download
     
     - name: Push to built branch
