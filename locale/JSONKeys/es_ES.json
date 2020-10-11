@@ -2353,5 +2353,16 @@
     "Enter TOTP code to confirm enrollment": "Ingrese código TOTP para confirmar enrolamiento",
     "2 Factor Authentication Enrollment Success": "Enrolamiento para Autenticación de 2 Factores Exitoso",
     "Please store these recovery codes in a safe location": "Por favor almacene estos códigos de recuperación en un lugar seguro",
-    "If you ever lose access to your newly enrolled authenticator app, you'll need to use a recovery code to gain access to your account": "Si pierde alguna vez acceso a su app de autenticación recién enrolada, deberá usar un código de recuperación para acceder a su cuenta"
+    "If you ever lose access to your newly enrolled authenticator app, you'll need to use a recovery code to gain access to your account": "Si pierde alguna vez acceso a su app de autenticación recién enrolada, deberá usar un código de recuperación para acceder a su cuenta",
+    "Event Attendance": "Asistencia a Evento",
+    "Generate attendance -AND- non-attendance reports for events": "Generar reportes de asistencia -Y- de no asistencia para eventos",
+    "of translation completed": "de traducción completada",
+    "Help translate this project": "Ayudar a traducir este proyecto",
+    "Credit Card People": "Personas de Tarjeta de Crédito",
+    "People who are configured to pay by credit card.": "Personas configuradas para pagar con tarjeta de crédito.",
+    "Afrikaans": "Afrikaans",
+    " has a type mismatch": " tiene una discrepancia de tipos",
+    "Loading": "Cargando",
+    "Family Property Unassignment": "Desasignación de Propiedad de Familia",
+    "Do you want to remove": "Desea remover?"
 }
