@@ -1255,6 +1255,18 @@ msgid "Optional"
 msgstr "По желанию"
 
 #: 
+msgid "Enter a list of the attendance counts you want to include with this event."
+msgstr "Введите список показателей посещаемости, который вы хотите добавить в это мероприятие."
+
+#: 
+msgid "Separate each count_name with a comma. e.g. Members, Visitors, Campus, Children"
+msgstr "Разделите каждую категорию комой: участник, посетитель, комплекс, ребенок"
+
+#: 
+msgid "Every event type includes a Total count, you do not need to include it."
+msgstr "Каждый тип события включает общий подсчет, вам не нужно его включать."
+
+#: 
 msgid "Add Event Type"
 msgstr "Добавить Тип события"
 
@@ -1268,7 +1280,11 @@ msgstr "По умолчанию Параметр"
 
 #: 
 msgid "Warning:  By deleting this field, you will irrevokably lose all family data assigned for this field!"
-msgstr "Внимание: При удалении этого поля, вы irrevokably потерять все семейные данных, определенных для этого местах!"
+msgstr "Внимание: При удалении этого поля, вы безвозвратно потеряете все связанные данные, определенные для этого места!"
+
+#: 
+msgid "Warning: Arrow and delete buttons take effect immediately.  Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!"
+msgstr "Внимание: Кнопки со стрелками и кнопки удаления вступают в силу немедленно. Изменения имени поля будут потеряны, если вы не нажмете кнопку «Сохранить изменения» перед использованием кнопки «вверх», «вниз», «удалить» или «добавить новый»!"
 
 #: 
 msgid "No custom Family fields have been added yet"
@@ -1329,6 +1345,18 @@ msgstr "Не действует Дата свадьбы"
 #: 
 msgid "Email is Not Valid"
 msgstr "Email не действительны"
+
+#: 
+msgid "Family Info"
+msgstr "Информация о семье "
+
+#: 
+msgid "Contact Info"
+msgstr "Контактная информация"
+
+#: 
+msgid "Other Info"
+msgstr "Другая информация"
 
 #: 
 #, fuzzy
@@ -1438,8 +1466,32 @@ msgid "Unk"
 msgstr "Unk"
 
 #: 
+msgid "Family List"
+msgstr "Семейный список"
+
+#: 
+msgid "Add Family"
+msgstr "Добавить семью"
+
+#: 
+msgid "Created"
+msgstr "Создано "
+
+#: 
+msgid "Edited"
+msgstr "Отредактировано"
+
+#: 
 msgid "Envelope Number"
 msgstr "Конверт Количество"
+
+#: 
+msgid "Verify Info"
+msgstr "Проверить информацию"
+
+#: 
+msgid "Add New Member"
+msgstr "Добавить нового участника"
 
 #: 
 msgid "Previous Family"
@@ -1450,12 +1502,28 @@ msgid "Next Family"
 msgstr "Следующая Семья"
 
 #: 
+msgid "Delete this Family"
+msgstr "Удалить эту семью"
+
+#: 
 msgid "Upload Photo"
 msgstr "Идет загрузка фото"
 
 #: 
 msgid "Delete Photo"
 msgstr "Удалить фотографию"
+
+#: 
+msgid "Add a Note"
+msgstr "Добавить примечание "
+
+#: 
+msgid "Add All Family Members to Cart"
+msgstr "Добавить свех членов семьи в  Cart"
+
+#: 
+msgid "Timeline"
+msgstr "Лента новостей"
 
 #: 
 msgid "Pledges and Payments"
@@ -1499,6 +1567,10 @@ msgid "Show Payments"
 msgstr "Показать платежи"
 
 #: 
+msgid "Since"
+msgstr "с тех пор"
+
+#: 
 msgid "Update"
 msgstr "Обновить"
 
@@ -1539,8 +1611,26 @@ msgid " Canvass Entry"
 msgstr " Canvass запись"
 
 #: 
+msgid "Close"
+msgstr "Закрыть\n"
+""
+
+#: 
 msgid "Confirm Delete"
 msgstr "Подтвердить удаление"
+
+#: 
+msgid "You are about to delete the profile photo, this procedure is irreversible."
+msgstr "Вы хотите удалить фотографию профайла, эта процедура необратима"
+
+#: 
+msgid "Do you want to proceed?"
+msgstr "Хотите продолжить?\n"
+""
+
+#: 
+msgid "You are about to email copy of the family information to the following emails"
+msgstr "Вы собираетесь отправить копию семейной информации на следующие электронные письма"
 
 #: 
 msgid "Financial Reports"
@@ -1749,6 +1839,26 @@ msgid "Deposit Listing"
 msgstr "Депозит Листинг"
 
 #: 
+msgid "Add New Deposit"
+msgstr "Добавить новый депозит"
+
+#: 
+msgid "Deposits: "
+msgstr "Депозиты"
+
+#: 
+msgid "Delete Selected Rows"
+msgstr "Удалить выделенные строки"
+
+#: 
+msgid "Export Selected Rows (OFX)"
+msgstr "Экспорт выбранных строк (OFX)"
+
+#: 
+msgid "Export Selected Rows (CSV)"
+msgstr "Экспорт выбранных строк (CSV)"
+
+#: 
 msgid "Fundraiser Listing"
 msgstr "Кампания по сбору средств Листинг"
 
@@ -1912,6 +2022,10 @@ msgid "Group Editor"
 msgstr "Редактор группы"
 
 #: 
+msgid "Group Settings"
+msgstr "Групповые настройки"
+
+#: 
 #, fuzzy
 msgid "Type of Group"
 msgstr "Тип группы"
@@ -1936,8 +2050,24 @@ msgid "Select a group"
 msgstr "Выбор группы"
 
 #: 
+msgid "Group Specific Properties: "
+msgstr "Особые свойства группы:"
+
+#: 
+msgid "Enabled"
+msgstr "Включен"
+
+#: 
 msgid "Edit Group-Specific Properties Form"
 msgstr "Edit Group-Specific Properties Форма"
+
+#: 
+msgid "Disabled"
+msgstr "Отключен"
+
+#: 
+msgid "Enable Group Specific Properties"
+msgstr "Включить специальные свойства группы"
 
 #: 
 #, fuzzy
@@ -1945,13 +2075,25 @@ msgid "Group Roles"
 msgstr "Группа Роли"
 
 #: 
+msgid "Group role name changes are saved as soon as the box loses focus"
+msgstr "Изменения названия категории группы сохраняются, как только поле теряет фокус"
+
+#: 
 #, fuzzy
 msgid "New Role"
-msgstr "Новая роль"
+msgstr "Новый образец"
+
+#: 
+msgid "Add New Role"
+msgstr "Добавить новый образец"
 
 #: 
 msgid "Group Listing"
 msgstr "Группа Листинг"
+
+#: 
+msgid "Add New Group"
+msgstr "Добавить новую группу"
 
 #: 
 msgid "Submit"
@@ -1986,6 +2128,10 @@ msgid "No properties have been added yet"
 msgstr "Нет свойства, которые были добавлены еще"
 
 #: 
+msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete, or 'add new' button!"
+msgstr "Предупреждение: изменения полей будут потеряны, если вы не нажмете кнопку «Сохранить изменения» перед использованием кнопки «вверх», «вниз», «удалить» или «добавить новый»!"
+
+#: 
 msgid "Show in"
 msgstr "Показать в"
 
@@ -2001,6 +2147,10 @@ msgstr "Доклады Группа"
 #, fuzzy
 msgid "Select the group you would like to report"
 msgstr "Выберите группу, которую вы хотели бы сообщить"
+
+#: 
+msgid "No Role Selected"
+msgstr "Роль не выбрана"
 
 #: 
 #, fuzzy
@@ -2051,12 +2201,20 @@ msgid "Group View"
 msgstr "Вид группы"
 
 #: 
+msgid "Group Functions"
+msgstr "Функции группы"
+
+#: 
 msgid "Edit this Group"
 msgstr "Редактировать этот группу"
 
 #: 
 msgid "Delete this Group"
 msgstr "Удалить эту группу"
+
+#: 
+msgid "Confirm Delete Group"
+msgstr "Подтвердите удаление группы"
 
 #: 
 #, fuzzy
@@ -2066,6 +2224,14 @@ msgstr "Пожалуйста, подтвердите удаление этой �
 #: 
 msgid "This will also delete all Roles and Group-Specific Property data associated with this Group record."
 msgstr "Это приведет к удалению всех ролей и определенных групп данных объектов, связанных с этой записью группы."
+
+#: 
+msgid "All group membership and properties will be destroyed.  The group members themselves will not be altered."
+msgstr "Все членство в группах и свойства будут уничтожены. Сами участники группы изменены не будут."
+
+#: 
+msgid "Please select target group for members"
+msgstr "Пожалуйста, выберите целевую группу для участников"
 
 #: 
 msgid "Add Group Members to Cart"
@@ -2108,16 +2274,44 @@ msgid "Group Members:"
 msgstr "Участники группы:"
 
 #: 
+msgid "Group members: "
+msgstr "Участники группы:"
+
+#: 
+msgid "Remove Selected Members from group"
+msgstr "Удалить выбранных участников из группы"
+
+#: 
+msgid "Add Selected Members to Cart"
+msgstr "Добавить выбранных участников в корзину"
+
+#: 
+msgid "Add Selected Members to Group"
+msgstr "Добавить выбранных участников в группу"
+
+#: 
+msgid "Move Selected Members to Group"
+msgstr "Переместить выбранных участников в группу"
+
+#: 
+msgid "Add Group Member: "
+msgstr "Добавить участника группы"
+
+#: 
 msgid "Letters and Mailing Labels"
 msgstr "Письма и почтовые наклейки"
 
 #: 
 msgid "Newsletter labels"
-msgstr "Информационный бюллетень этикетки"
+msgstr "Ярлыки для информационных бюллетеней"
 
 #: 
 msgid "Confirm data labels"
 msgstr "Подтвердите метки данных"
+
+#: 
+msgid "Listing Events of Type = "
+msgstr "Список событий типа"
 
 #: 
 msgid "Listing All Church Events"
@@ -2161,6 +2355,10 @@ msgid "Please Login"
 msgstr "Пожалуйста, войдите"
 
 #: 
+msgid "Email/Username"
+msgstr "Электронная почта / Имя пользователя"
+
+#: 
 msgid "Password"
 msgstr "Пароль"
 
@@ -2175,6 +2373,10 @@ msgstr "Конверт менеджер"
 #: 
 msgid "Update Family Records"
 msgstr "Обновление Family Records"
+
+#: 
+msgid "Update Envelopes"
+msgstr "Обновить обложку"
 
 #: 
 msgid "Confirm"
@@ -2193,6 +2395,14 @@ msgid "Assign starting at #"
 msgstr "Связать начиная с #"
 
 #: 
+msgid "Unable to display map due to missing Church Latitude or Longitude. Please update the church Address in the settings menu."
+msgstr "Невозможно отобразить карту из-за отсутствия широты или долготы церкви. Пожалуйста, обновите адрес церкви в меню настроек."
+
+#: 
+msgid "Google Map API key is not set. The Map will work for smaller set of locations. Please create a Key in the maps sections of the setting menu."
+msgstr "Ключ API карты Google не задан. Карта будет работать для меньшего набора локаций. Пожалуйста, создайте ключ в разделах карт меню настроек."
+
+#: 
 msgid "Member Role Change"
 msgstr "Участник Роль Изменить"
 
@@ -2207,16 +2417,61 @@ msgid "Current Role"
 msgstr "Текущая роль"
 
 #: 
+msgid "All People"
+msgstr "Все люди"
+
+#: 
+msgid "Classifications Manager"
+msgstr "Менеджер по классификациям"
+
+#: 
+msgid "Email All"
+msgstr "Отправить всем по электронной почте"
+
+#: 
+msgid "Email All (BCC)"
+msgstr "Отправить всем по электронной почте (BCC)"
+
+#: 
+msgid "Family Roles"
+msgstr "Семейные роли"
+
+#: 
+msgid "Family Geographic"
+msgstr "География семей "
+
+#: 
 msgid "Update All Family Coordinates"
-msgstr "Обновление всей семьи Координаты"
+msgstr "Обновить все семейные координаты"
+
+#: 
+msgid "Volunteer Opportunities"
+msgstr "\n"
+"Возможности волонтеров"
 
 #: 
 msgid "Families"
 msgstr "Семьи"
 
 #: 
+msgid "See all Families"
+msgstr "Просмотреть все семьи"
+
+#: 
 msgid "People"
 msgstr "Люди"
+
+#: 
+msgid "See All People"
+msgstr "Посмотреть всех людей"
+
+#: 
+msgid "Sunday School Kids"
+msgstr "Дети Воскресной школы"
+
+#: 
+msgid "More info"
+msgstr "Больше информации"
 
 #: 
 msgid "Reports on groups and roles"
@@ -2235,8 +2490,60 @@ msgid "US Address Verification Report"
 msgstr "Адрес в США доклад о проверке"
 
 #: 
+msgid "Generate report comparing all US family addresses with United States Postal Service Standard Address Format.<br>"
+msgstr "Создание отчета, в котором сравниваются все семейные адреса в США со стандартным форматом адресов почтовой службы США. <br>"
+
+#: 
+msgid "Count"
+msgstr "Подсчет"
+
+#: 
+msgid "People Classification"
+msgstr "Классификация людей"
+
+#: 
+msgid "Gender Demographics"
+msgstr "Гендерная демография"
+
+#: 
+msgid "Men"
+msgstr "Мужчины"
+
+#: 
+msgid "Women"
+msgstr "Женщины"
+
+#: 
+msgid "Boys"
+msgstr "Мальчики"
+
+#: 
+msgid "Girls"
+msgstr "Девочки"
+
+#: 
+msgid "Sunday School Classes"
+msgstr "Классы Воскресной школы"
+
+#: 
+msgid "Deposit Tracking"
+msgstr "Отслеживание депозитов"
+
+#: 
+msgid "Latest Families"
+msgstr "Последние семьи"
+
+#: 
 msgid "Family Name"
 msgstr "Фамилия"
+
+#: 
+msgid "Updated Families"
+msgstr "Обновленные семьи "
+
+#: 
+msgid "Updated"
+msgstr "Обновлено"
 
 #: 
 msgid "Note Delete Confirmation"
@@ -2382,6 +2689,14 @@ msgstr "Красный текст"
 #: 
 msgid "indicates items inherited from the associated family record."
 msgstr "Указывает на элементы, унаследованные от соответствующего семьи записи."
+
+#: 
+msgid "Personal Info"
+msgstr "Личная информация"
+
+#: 
+msgid "Mr., Mrs., Dr., Rev."
+msgstr "Мистер, миссис, доктор, преподобный."
 
 #: 
 #, fuzzy
