@@ -1,0 +1,46 @@
+name: Build Actions
+
+on:
+  push:
+    branches:    
+    - 'build/**'
+
+env:
+  node_version: 14
+
+jobs:
+  npm_tasks:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2.3.2
+      with:
+        # fetch full history so things like auto-changelog work properly
+        fetch-depth: 0
+    - name: Use Node.js ${{ env.node_version }}
+      uses: actions/setup-node@v2.1.1
+      with:
+        node-version: ${{ env.node_version }}
+        # setting a registry enables the NODE_AUTH_TOKEN env variable where we can set an npm token.  REQUIRED
+        registry-url: 'https://registry.npmjs.org'
+        
+    - name: NPM Audit
+      run: npm run audit
+    
+    - name: Update JS & PHP 
+      run: |
+        npm install
+        npm run composer-install
+        
+    - name: ORM Tasks 
+      run: npm run orm-gen
+        
+    - name: Add changes to Git tracking
+      run: git add -A .
+      
+    - name: Push to built branch
+      uses: Automattic/action-commit-to-branch@master
+      with:
+        branch: ${GITHUB_REF##*/}
+        commit_message: 'Build actions'
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Required
