@@ -40,7 +40,7 @@ jobs:
       uses: jsdaniell/create-json@1.1.2
       with:
         name: "BuildConfig.json"
-        json: '{"POEditor": { "id": 77079", "token": "${{ secrets.POEDITOR_TOKEN }}"}}' 
+        json: '{"POEditor": { "id": "77079", "token": "${{ secrets.POEDITOR_TOKEN }}"}}' 
     
     - name: Download locales from POEditor
       run: |
