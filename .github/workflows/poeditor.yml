@@ -47,14 +47,9 @@ jobs:
         npm install grunt-cli
         npm run locale-download
     
-    - name: Push to built branch
-      uses: Automattic/action-commit-to-branch@master
+    - name: Push changes to ${{ steps.package-version.outputs.current-version}} locale branch
+      uses: peter-evans/create-or-update-project-card@v1
       with:
+        token: ${{ secrets.GITHUB_TOKEN }}
         branch: 'locale/${{ steps.package-version.outputs.current-version}}'
-        commit_message: 'Loacle Gen & Download on ${{ steps.date.outputs.date }}'
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      
-      
-      
-    
+        commit-message: 'Loacle Gen & Download on ${{ steps.date.outputs.date }}'
