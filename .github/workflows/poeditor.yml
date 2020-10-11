@@ -43,7 +43,9 @@ jobs:
         json: '{"POEditor": { "id": 77079", "token": "${{ secrets.POEDITOR_TOKEN }}"}}' 
     
     - name: Download locales from POEditor
-      run: npm run locale-download
+      run: |
+        npm install grunt-cli
+        npm run locale-download
     
     - name: Push to built branch
       uses: Automattic/action-commit-to-branch@master
