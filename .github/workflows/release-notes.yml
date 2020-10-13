@@ -13,13 +13,13 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         OUTPUT_FOLDER: temp_release_notes
         USE_MILESTONE_TITLE: "true"
-    - name: Upload Release Notes to Wiki
-      uses: docker://decathlon/wiki-page-creator-action:latest
-      env:
-        ACTION_MAIL: dawoudio@users.noreply.github.com
-        ACTION_NAME: Release Note
-        GH_PAT: ${{ secrets.GITHUB_TOKEN }}
-        MD_FOLDER: temp_release_notes
-        OWNER: ChurchCRM
-        REPO_NAME: CRM
-        SKIP_MD: README.md
+   
+   
+    - name: Push changes to ${{ steps.package-version.outputs.current-version}} locale branch
+      uses: peter-evans/create-pull-request@v3
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        branch: 'release-notes'
+        delete-branch: true
+        title: "Updated Release Notes"
+        commit-message: 'via release-notes-generator-action'
