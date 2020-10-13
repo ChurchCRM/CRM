@@ -65,7 +65,8 @@ msgid "This tool will assist you in manually backing up the ChurchCRM database."
 msgstr "Dieses Werkzeug hilft Ihnen, um ein manuelles Backup der ChurchCRM Datenbank zu erstellen."
 
 #: 
-msgid "You should make a manual backup at least once a week unless you already have a regular backup procedule for your systems."
+#, fuzzy
+msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
 msgstr "Sie sollten mindestens einmal pro Woche ein manuelles Backup erstellen, es sei denn, Sie haben bereits ein regelmäßiges Backup-Verfahren für Ihre Systeme."
 
 #: 
@@ -1095,10 +1096,6 @@ msgstr "besuchen keine Veranstaltung"
 #: 
 msgid "Event Guests"
 msgstr "Veranstaltungsgäste"
-
-#: 
-msgid "Back to Report Menu"
-msgstr "Zurück zum Berichtsmenü"
 
 #: 
 msgid "There "
@@ -2206,8 +2203,7 @@ msgstr "Diese Aktion wird alle Rollen und gruppenspezifischen Daten und Einstell
 
 #: 
 msgid "All group membership and properties will be destroyed.  The group members themselves will not be altered."
-msgstr "Alle Gruppenmitgliedschaften und Eigenschaften werden gelöscht.\n"
-"Die Gruppenmitglieder selbst werden nicht geändert."
+msgstr "Alle Gruppenmitgliedschaften und Eigenschaften werden gelöscht. Die Gruppenmitglieder selbst werden nicht geändert."
 
 #: 
 msgid "Please select target group for members"

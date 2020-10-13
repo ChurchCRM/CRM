@@ -65,7 +65,8 @@ msgid "This tool will assist you in manually backing up the ChurchCRM database."
 msgstr "See tööriist aitab sul kokku pakkida ChurchCRM andmebaasi."
 
 #: 
-msgid "You should make a manual backup at least once a week unless you already have a regular backup procedule for your systems."
+#, fuzzy
+msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
 msgstr "Sa peaksid tegema käsitsi varukoopia oma andmebaasist vähemalt kord nädalas, kui just su süsteem ei tee seda automaatselt."
 
 #: 
@@ -1083,10 +1084,6 @@ msgstr "Üritusel mitteosalenud"
 #: 
 msgid "Event Guests"
 msgstr "Ürituse külalised"
-
-#: 
-msgid "Back to Report Menu"
-msgstr "Tagasi aruande menüüsse"
 
 #: 
 msgid "There "

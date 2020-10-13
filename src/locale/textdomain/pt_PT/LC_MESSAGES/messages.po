@@ -65,7 +65,8 @@ msgid "This tool will assist you in manually backing up the ChurchCRM database."
 msgstr "Esta ferramenta vai te ajudar a fazer o backup manual da base de dados."
 
 #: 
-msgid "You should make a manual backup at least once a week unless you already have a regular backup procedule for your systems."
+#, fuzzy
+msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
 msgstr "Você deve fazer um backup manual, pelo menos uma vez por semana, a menos que você programe um backup automático."
 
 #: 
@@ -1117,10 +1118,6 @@ msgstr "Faltaram ao evento"
 #: 
 msgid "Event Guests"
 msgstr "Visitantes no evento"
-
-#: 
-msgid "Back to Report Menu"
-msgstr "Retornar ao menu de relatórios"
 
 #: 
 msgid "There "

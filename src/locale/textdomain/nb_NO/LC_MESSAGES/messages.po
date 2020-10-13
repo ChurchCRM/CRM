@@ -61,7 +61,8 @@ msgid "Backup Database"
 msgstr "Backup Database"
 
 #: 
-msgid "You should make a manual backup at least once a week unless you already have a regular backup procedule for your systems."
+#, fuzzy
+msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
 msgstr "Du bør foreta en manuell backup minst en gang i uken, med mindre du allerede har en vanlig backup procedule for dine systemer."
 
 #: 
@@ -1027,10 +1028,6 @@ msgstr "Event Nonattendees"
 #: 
 msgid "Event Guests"
 msgstr "Hendelsesgjester"
-
-#: 
-msgid "Back to Report Menu"
-msgstr "Tilbake til rapport Meny"
 
 #: 
 msgid "There "

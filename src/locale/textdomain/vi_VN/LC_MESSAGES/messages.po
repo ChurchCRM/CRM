@@ -65,7 +65,8 @@ msgid "This tool will assist you in manually backing up the ChurchCRM database."
 msgstr "Công cụ này sẽ giúp bạn tự sao lưu cơ sở dữ liệu của Hệ Thống Quản Lý Hội Thánh"
 
 #: 
-msgid "You should make a manual backup at least once a week unless you already have a regular backup procedule for your systems."
+#, fuzzy
+msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
 msgstr "Bạn nên thực hiện một sao lưu thủ công ít nhất một lần một tuần, trừ khi bạn đã có một lịch sao lưu thường xuyên cho hệ thống của bạn."
 
 #: 
@@ -744,10 +745,6 @@ msgstr "Người không tham dự sự kiện"
 #: 
 msgid "Event Guests"
 msgstr "Khách sự kiện"
-
-#: 
-msgid "Back to Report Menu"
-msgstr "Quay trở lại menu báo cáo"
 
 #: 
 msgid "There "

@@ -146,8 +146,7 @@ module.exports = function (grunt) {
                         expand: true,
                         filter: 'isFile',
                         flatten: true,
-                        src: ['node_modules/inputmask/dist/min/jquery.inputmask.bundle.min.js', 'node_modules/inputmask/dist/min/inputmask/inputmask.date.extensions.min.js',
-                        'node_modules/inputmask/dist/min/inputmask/inputmask.extensions.min.js'],
+                        src: ['node_modules/inputmask/dist/jquery.inputmask.min.js', 'node_modules/inputmask/dist/bindings/inputmask.binding.js'],
                         dest: 'src/skin/external/inputmask/'
                     },
                     {
@@ -245,6 +244,17 @@ module.exports = function (grunt) {
                         flatten: true,
                         src: ['node_modules/react-datepicker/dist/react-datepicker.min.css'],
                         dest: 'src/skin/external/react-datepicker'
+                    },
+                    {
+                        expand: true,
+                        filter: 'isFile',
+                        flatten: false,
+                        cwd: 'node_modules/flag-icon-css',
+                        src: [
+                            'flags/**',
+                            'css/flag-icon.css',
+                        ],
+                        dest: 'src/skin/external/flag-icon-css/'
                     }
                 ]
             }
@@ -562,7 +572,6 @@ module.exports = function (grunt) {
 
         var curFile = grunt.file.readJSON(file);
         curFile.version = version;
-        curFile.time =  moment().format("YYYY-MM-DD HH:MM:SS");
         var stringFile = JSON.stringify(curFile, null, 4);
         grunt.file.write(file, stringFile);
 
