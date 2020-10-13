@@ -1,0 +1,36 @@
+sections:
+  - title: "Feature Requests"
+    emoji: ":pray:"
+    labels: ["Feature Request"]
+  - title: "Enhancements"
+    emoji: ":star:"
+    labels: ["enhancement"]
+  - title: "Core Functionality"
+    emoji: ":tada:"
+    labels: [
+          "Feature: Events", 
+          "Feature: Financial", 
+          "Feature: Groups", 
+          "Feature: Members", 
+          "Feature: Reports", 
+          "Feature: Sunday School", 
+          "Feature: Users",
+          "Installation / Upgrade",
+          "API",
+          "Configuration",
+          "Data: Custom Field Promotion",
+          "Feature: Data Import / Export",
+          "Feature: Emails",
+          "Feature: SMS",
+          "Feature: Social",
+          "Mobile"
+        ]
+  - title: "Localization"
+    emoji: ":speech_balloon:"
+    labels: ["Localization"]
+  - title: "Bugs"
+    emoji: ":beetle:"
+    labels: ["bug", "P0 - Urgent"]
+  - title: "Inner Beauty"
+    emoji: ":gear:"
+    labels: ["development","build", "Backend System", "Code Smell"]
