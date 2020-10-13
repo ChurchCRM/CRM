@@ -13,6 +13,27 @@ Released on (06.18.2020)
 # 4.0.5
 Released on (06.05.2020)
 
+## :tada: Core Functionality
+
+- Bug update select2 to select2.full needed [#5221](https://github.com/ChurchCRM/CRM/issues/5221)
+
+## :speech_balloon: Localization
+
+- Support Hebrew Locale [#5396](https://github.com/ChurchCRM/CRM/issues/5396)
+- Logging Timezones not consistent [#5135](https://github.com/ChurchCRM/CRM/issues/5135)
+
+## :gear: Inner Beauty
+
+- May 2020 Security updates [#5397](https://github.com/ChurchCRM/CRM/issues/5397)
+
+## :heart: Contributors
+
+We'd like to thank all the contributors who worked on this release!
+
+- [@rbeerster](https://github.com/rbeerster)
+- [@DawoudIO](https://github.com/DawoudIO)
+- [@crossan007](https://github.com/crossan007)
+
 # 4.0.4
 Released on (04.20.2020)
 
