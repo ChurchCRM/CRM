@@ -1,18 +1,48 @@
-# 4.1.4 (10.10.2020)
+# 4.1.4
+Released on (10.10.2020)
 
-# 4.1.2 (09.24.2020)
+# 4.1.2
+Released on (09.24.2020)
 
-# 4.1.1 (08.08.2020)
+# 4.1.1
+Released on (08.08.2020)
 
-# 4.1.0 (06.18.2020)
+# 4.1.0
+Released on (06.18.2020)
 
-# 4.0.5 (06.05.2020)
+# 4.0.5
+Released on (06.05.2020)
 
-# 4.0.4 (04.20.2020)
+# 4.0.4
+Released on (04.20.2020)
 
-# 4.0.3 (03.31.2020)
+# 4.0.3
+Released on (03.31.2020)
 
-# 4.0.2 (02.20.2020)
+## :star: Enhancements
+
+- Logitude Latitude necessary for mapping function to work?  Available outside of US? [#5174](https://github.com/ChurchCRM/CRM/issues/5174)
+
+## :tada: Core Functionality
+
+- Family demographic verification process URL error [#5184](https://github.com/ChurchCRM/CRM/issues/5184)
+- Delete of system user works but gives a large error message [#5175](https://github.com/ChurchCRM/CRM/issues/5175)
+- Unable to automatically update the Geo LAT and Long said 0 missing [#5107](https://github.com/ChurchCRM/CRM/issues/5107)
+
+## :beetle: Bugs
+
+- MySQL Reserved Word Error [#5205](https://github.com/ChurchCRM/CRM/issues/5205)
+- "I forgot my password" at the log in fails with error message [#5173](https://github.com/ChurchCRM/CRM/issues/5173)
+
+## :heart: Contributors
+
+We'd like to thank all the contributors who worked on this release!
+
+- [@rbeerster](https://github.com/rbeerster)
+- [@crossan007](https://github.com/crossan007)
+
+# 4.0.2
+Released on (02.20.2020)
 
 ## :star: Enhancements
 
@@ -24,7 +54,8 @@
 - Backup Timerjobs API throwing error 500 preventing uprgade [#5159](https://github.com/ChurchCRM/CRM/issues/5159)
 - The installer does not recognize file permissions Include/Config and Images, when fixed and finished the installer login got stuck on the page localhost/setup [#5146](https://github.com/ChurchCRM/CRM/issues/5146)
 
-# 4.0.1 (02.17.2020)
+# 4.0.1
+Released on (02.17.2020)
 
 ## :tada: Core Functionality
 
@@ -40,7 +71,8 @@ We'd like to thank all the contributors who worked on this release!
 
 - [@crossan007](https://github.com/crossan007)
 
-# 4.0.0 (01.30.2020)
+# 4.0.0
+Released on (01.30.2020)
 
 ## :star: Enhancements
 
