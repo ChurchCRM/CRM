@@ -4,8 +4,41 @@ Released on (10.10.2020)
 # 4.1.2
 Released on (09.24.2020)
 
+## :tada: Core Functionality
+
+- Display locale % and links to POEditor in the system so that people can help update [#5337](https://github.com/ChurchCRM/CRM/issues/5337)
+- Event Attendance Reports not working [#4790](https://github.com/ChurchCRM/CRM/issues/4790)
+
+## :speech_balloon: Localization
+
+- Typo / Localization  [#5331](https://github.com/ChurchCRM/CRM/issues/5331)
+- Use lipis/flag-icon-css [#5322](https://github.com/ChurchCRM/CRM/issues/5322)
+- Select Gender can't change in my language [#5320](https://github.com/ChurchCRM/CRM/issues/5320)
+- Missing translations in reports. [#5311](https://github.com/ChurchCRM/CRM/issues/5311)
+- GroupView not working with \"Localization > sLanguage=de_DE\" [#5220](https://github.com/ChurchCRM/CRM/issues/5220)
+- React JS terms are not captured in upload to POEditor [#5139](https://github.com/ChurchCRM/CRM/issues/5139)
+
+## :heart: Contributors
+
+We'd like to thank all the contributors who worked on this release!
+
+- [@DawoudIO](https://github.com/DawoudIO)
+
 # 4.1.1
 Released on (08.08.2020)
+
+## :beetle: Bugs
+
+- Wrong Bootstrap version in react-bootstrap [#5292](https://github.com/ChurchCRM/CRM/issues/5292)
+- Calendar Broken [#5291](https://github.com/ChurchCRM/CRM/issues/5291)
+- Create events from Calendar broken [#5287](https://github.com/ChurchCRM/CRM/issues/5287)
+
+## :heart: Contributors
+
+We'd like to thank all the contributors who worked on this release!
+
+- [@DawoudIO](https://github.com/DawoudIO)
+- [@crossan007](https://github.com/crossan007)
 
 # 4.1.0
 Released on (06.18.2020)
