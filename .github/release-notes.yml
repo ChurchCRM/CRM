@@ -1,5 +1,4 @@
-releasenotes:
-  sections:
+sections:
   - title: "Feature Requests"
     emoji: ":pray:"
     labels: ["Feature Request"]
