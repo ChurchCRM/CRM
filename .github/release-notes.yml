@@ -6,10 +6,10 @@ releasenotes:
   - title: "Enhancements"
     emoji: ":star:"
     labels: ["enhancement"]
- - title: "Core Functionality"	
+  - title: "Core Functionality"	
     emoji: ":tada:"	
     labels: ["Feature Events", "Feature Financial", "Feature Groups", "Feature Members", "Feature Reports", "Feature Sunday School", "API", "Feature Users", "Installation and Upgrade","Configuration","Data Custom Field Promotion", "Feature Data Import and Export","Feature Emails","Feature SMS","Feature Social","Mobile" ]
- - title: "Localization"
+  - title: "Localization"
     emoji: ":speech_balloon:"
     labels: ["Localization"]
   - title: "Bugs"
