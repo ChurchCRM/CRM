@@ -16,6 +16,26 @@ Released on (06.05.2020)
 # 4.0.4
 Released on (04.20.2020)
 
+## :star: Enhancements
+
+- API_Request failed [#5224](https://github.com/ChurchCRM/CRM/issues/5224)
+
+## :beetle: Bugs
+
+- Slim application error doing Self Registration [#5179](https://github.com/ChurchCRM/CRM/issues/5179)
+
+## :gear: Inner Beauty
+
+- Bump jquery from 3.4.1 to 3.5.0 [#5229](https://github.com/ChurchCRM/CRM/pull/5229)
+
+## :heart: Contributors
+
+We'd like to thank all the contributors who worked on this release!
+
+- [@meichthys](https://github.com/meichthys)
+- [@crossan007](https://github.com/crossan007)
+- [@dependabot[bot]](https://github.com/apps/dependabot)
+
 # 4.0.3
 Released on (03.31.2020)
 
