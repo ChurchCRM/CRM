@@ -10,6 +10,31 @@ Released on (08.08.2020)
 # 4.1.0
 Released on (06.18.2020)
 
+## :star: Enhancements
+
+- Move to MailChimp v3 APIs [#998](https://github.com/ChurchCRM/CRM/issues/998)
+
+## :tada: Core Functionality
+
+- MailChimp is blank [#5269](https://github.com/ChurchCRM/CRM/issues/5269)
+- Bug/mailchip ajax cleanup [#5267](https://github.com/ChurchCRM/CRM/pull/5267)
+
+## :beetle: Bugs
+
+- Mailchimp is missing [#5268](https://github.com/ChurchCRM/CRM/issues/5268)
+
+## :gear: Inner Beauty
+
+- Chart.JS is way out of date [#4690](https://github.com/ChurchCRM/CRM/issues/4690)
+- Remove redundant indexes for MySQL [#2561](https://github.com/ChurchCRM/CRM/issues/2561)
+
+## :heart: Contributors
+
+We'd like to thank all the contributors who worked on this release!
+
+- [@DawoudIO](https://github.com/DawoudIO)
+- [@crossan007](https://github.com/crossan007)
+
 # 4.0.5
 Released on (06.05.2020)
 
