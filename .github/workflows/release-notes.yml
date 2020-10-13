@@ -1,16 +1,25 @@
-# Trigger the workflow on milestone events
 on: 
   milestone:
     types: [closed]
 name: Milestone Closure
 jobs:
-  create-release-notes:
+  release-notes:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
     - name: Create Release Notes
-      uses: docker://decathlon/release-notes-generator-action:2.0.1
+      uses: docker://decathlon/release-notes-generator-action:2.0.0
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         OUTPUT_FOLDER: temp_release_notes
         USE_MILESTONE_TITLE: "true"
+    - name: Upload Release Notes to Wiki
+      uses: docker://decathlon/wiki-page-creator-action:latest
+      env:
+        ACTION_MAIL: dawoudio@users.noreply.github.com
+        ACTION_NAME: Release Note
+        GH_PAT: ${{ secrets.GITHUB_TOKEN }}
+        MD_FOLDER: temp_release_notes
+        OWNER: ChurchCRM
+        REPO_NAME: CRM
+        SKIP_MD: README.md
