@@ -34,7 +34,7 @@
     },
     "require": {
         "drewm/mailchimp-api": "^2.5",
-        "slim/slim": "3.9.2",
+        "slim/slim": "3.12.3",
         "slim/php-view": "2.2",
         "monolog/monolog": "^1.17",
         "knplabs/github-api": "~1.4",
