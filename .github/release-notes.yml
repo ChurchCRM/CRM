@@ -2,30 +2,10 @@ releasenotes:
   sections:
   - title: "Feature Requests"
     emoji: ":pray:"
-    labels: ["Feature Request"]
+    labels: ["Feature Request", "new"]
   - title: "Enhancements"
     emoji: ":star:"
     labels: ["enhancement"]
-  - title: "Core Functionality"
-    emoji: ":tada:"
-    labels: [
-          "Feature: Events", 
-          "Feature: Financial", 
-          "Feature: Groups", 
-          "Feature: Members", 
-          "Feature: Reports", 
-          "Feature: Sunday School", 
-          "Feature: Users",
-          "Installation / Upgrade",
-          "API",
-          "Configuration",
-          "Data: Custom Field Promotion",
-          "Feature: Data Import / Export",
-          "Feature: Emails",
-          "Feature: SMS",
-          "Feature: Social",
-          "Mobile"
-        ]
   - title: "Localization"
     emoji: ":speech_balloon:"
     labels: ["Localization"]
