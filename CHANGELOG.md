@@ -1,6 +1,23 @@
 # 4.1.4
 Released on (10.10.2020)
 
+## :speech_balloon: Localization
+
+- Support Afrikaans as a locale [#5354](https://github.com/ChurchCRM/CRM/issues/5354)
+
+## :beetle: Bugs
+
+- Fresh install reloads login page [#5363](https://github.com/ChurchCRM/CRM/issues/5363)
+- 404 for Inputmask files [#5350](https://github.com/ChurchCRM/CRM/issues/5350)
+- Family Properties Problems [#5347](https://github.com/ChurchCRM/CRM/issues/5347)
+
+## :heart: Contributors
+
+We'd like to thank all the contributors who worked on this release!
+
+- [@DawoudIO](https://github.com/DawoudIO)
+
+
 # 4.1.2
 Released on (09.24.2020)
 
