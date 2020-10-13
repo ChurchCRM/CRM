@@ -5,10 +5,11 @@ releasenotes:
     labels: ["Feature Request", "new"]
   - title: "Enhancements"
     emoji: ":star:"
-    labels: ["enhancement"]
+    labels: ["enhancement", "UI", "API"]
   - title: "Core Functionality"
     emoji: ":tada:"
-    labels: ["Feature: Events", "Feature: Financial", "Feature: Groups", "Feature: Members", "Feature: Reports", "Feature: Sunday School", "API", "Feature: Users", "Installation and Upgrade","Configuration","Data: Custom Field Promotion", "Feature: Data Import and Export","Feature: Emails","Feature: SMS","Feature: Social","Mobile"]  
+    labels: ["Feature: 
+    ", "Feature: Financial", "Feature: Groups", "Feature: Members", "Feature: Reports", "Feature: Sunday School", "Feature: Users", "Installation and Upgrade","Configuration","Data: Custom Field Promotion", "Feature: Data Import and Export","Feature: Emails","Feature: SMS","Feature: Social","Mobile"]  
   - title: "Localization"
     emoji: ":speech_balloon:"
     labels: ["Localization"]
@@ -17,4 +18,4 @@ releasenotes:
     labels: ["bug", "P0 - Urgent"]
   - title: "Inner Beauty"
     emoji: ":gear:"
-    labels: ["development","build", "Backend System", "Code Smell"]
+    labels: ["development","build", "Backend System", "Code Smell", "Package Dependencies"]
