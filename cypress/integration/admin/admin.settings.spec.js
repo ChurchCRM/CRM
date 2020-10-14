@@ -2,7 +2,7 @@
 
 context('Actions', () => {
     before(() => {
-        cy.login("admin", "changeme");
+        cy.loginAdmin();
         cy.visit("/SystemSettings.php");
         cy.location('pathname').should('include', "/SystemSettings.php");
     })
