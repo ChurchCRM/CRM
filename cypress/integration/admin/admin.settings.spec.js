@@ -7,8 +7,9 @@ context('Actions', () => {
 
     it('Visit Settings', () => {
         cy.visit("/SystemSettings.php");
-        cy.location('pathname').should('eq', "/SystemSettings.php");
+        cy.location('pathname').should('include', "/SystemSettings.php");
     });
+
 
 });
 
