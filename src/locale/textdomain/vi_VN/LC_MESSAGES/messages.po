@@ -2351,7 +2351,8 @@ msgid "Church Information"
 msgstr "Hội Thánh"
 
 #: 
-msgid "User setup"
+#, fuzzy
+msgid "User Setup"
 msgstr "Thành viên"
 
 #: 
