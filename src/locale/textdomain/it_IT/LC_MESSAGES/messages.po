@@ -4263,7 +4263,8 @@ msgid "Church Information"
 msgstr "Informazioni sulla Chiesa"
 
 #: 
-msgid "User setup"
+#, fuzzy
+msgid "User Setup"
 msgstr "Configurazione dell'utente"
 
 #: 

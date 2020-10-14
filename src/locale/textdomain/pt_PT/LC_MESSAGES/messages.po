@@ -4411,7 +4411,8 @@ msgid "Church Information"
 msgstr "Informações da Igreja"
 
 #: 
-msgid "User setup"
+#, fuzzy
+msgid "User Setup"
 msgstr "Utilizadores"
 
 #: 

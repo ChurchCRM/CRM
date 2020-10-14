@@ -4242,7 +4242,8 @@ msgid "Church Information"
 msgstr "Koguduse teave"
 
 #: 
-msgid "User setup"
+#, fuzzy
+msgid "User Setup"
 msgstr "Kasutaja seadistamine"
 
 #: 

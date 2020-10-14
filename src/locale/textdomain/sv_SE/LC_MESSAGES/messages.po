@@ -4394,7 +4394,8 @@ msgid "Church Information"
 msgstr "Kyrklig information"
 
 #: 
-msgid "User setup"
+#, fuzzy
+msgid "User Setup"
 msgstr "Användarinställning"
 
 #: 
