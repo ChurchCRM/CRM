@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-context('Actions', () => {
+context('Sunday School', () => {
 
     it('View Sunday School dashboard', () => {
         cy.loginStandard();

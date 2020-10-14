@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-context('Actions', () => {
+context('Admin Settings', () => {
     before(() => {
         cy.loginAdmin();
         cy.visit("/SystemSettings.php");

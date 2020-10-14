@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-context('Actions', () => {
+context('Admin Debug', () => {
     it('View system debug', () => {
         cy.loginAdmin();
         cy.visit("/v2/admin/debug");

@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-context('Actions', () => {
+context('Login', () => {
 
     it('Bad password', () => {
         cy.login("admin", "badpassword", false);
