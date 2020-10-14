@@ -21,7 +21,7 @@ context('Admin Settings', () => {
         cy.contains('Backup');
     });
 
-  /*  For some reason this resets the user session
+  /*  TODO For some reason this resets the user session
 
         it('Update Church Name', () => {
         let newValue = "New Church -  " + Cypress._.random(0, 1e6)

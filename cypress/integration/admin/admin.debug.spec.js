@@ -8,7 +8,9 @@ context('Admin Debug', () => {
         cy.contains('Database');
     });
 
-    /*it('can not View system debug', () => {
+    /* TODO 403 testing
+
+    it('can not View system debug', () => {
         cy.loginStandard();
         cy.visit("/v2/admin/debug")
             .should((response) => {
