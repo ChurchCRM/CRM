@@ -10,7 +10,7 @@ context('Admin Debug', () => {
 
     /*it('can not View system debug', () => {
         cy.loginStandard();
-        cy.request("/v2/admin/debug")
+        cy.visit("/v2/admin/debug")
             .should((response) => {
                 expect(response.status).to.eq(403);
             })
