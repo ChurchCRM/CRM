@@ -11,6 +11,16 @@ context('Family', () => {
         cy.contains('Campbell - Family');
         cy.contains('Darren Campbell');
         cy.contains('Music Ministry');
+
+        cy.visit("v2/family/20");
+        cy.contains('Black - Family');
+        cy.contains('New Building Fund');
+    });
+
+    it('View invalid Family', () => {
+        cy.loginAdmin();
+        cy.visit("v2/family/9999");
+        cy.contains('Oops! FAMILY 9999 Not Found');
     });
 
     it('Entering a new Family', () => {
