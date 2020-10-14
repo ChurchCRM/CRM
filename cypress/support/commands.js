@@ -20,6 +20,7 @@ Cypress.Commands.add("loginStandard", (username, password, assertLoggedIn = true
 
 Cypress.Commands.add("login", (username, password, assertLoggedIn = true) => {
     cy.visit("/");
+    cy.wait(150);
     cy.get("#UserBox").type(username);
     cy.get("#PasswordBox").type(password);
     cy.get("form").submit();
