@@ -5,6 +5,31 @@ context('Family', () => {
 
     })
 
+    it('View Family List', () => {
+        cy.loginAdmin();
+        cy.visit("v2/family");
+        cy.contains('Active Family List');
+    });
+
+    it('View Inactive Family List', () => {
+        cy.loginAdmin();
+        cy.visit("v2/family?mode=inactive");
+        cy.contains('Inactive Family List');
+        cy.contains('Lewis').should('not.exist');
+        cy.visit("v2/family/3");
+        cy.get("#activateDeactivate").click();
+        cy.get("body > div.bootbox.modal.fade.bootbox-confirm.in > div > div > div.modal-footer > button.btn.btn-primary.bootbox-accept").click();
+        cy.visit("v2/family?mode=inactive");
+        cy.contains('Lewis');
+        cy.visit("v2/family/3");
+        cy.get("#activateDeactivate").click();
+        cy.get("body > div.bootbox.modal.fade.bootbox-confirm.in > div > div > div.modal-footer > button.btn.btn-primary.bootbox-accept").click();
+        cy.visit("v2/family?mode=inactive");
+        cy.contains('Lewis').should('not.exist');
+
+    });
+
+
     it('View a Family', () => {
         cy.loginAdmin();
         cy.visit("v2/family/1");
@@ -25,7 +50,7 @@ context('Family', () => {
 
     it('Entering a new Family', () => {
         cy.loginStandard();
-        cy.visit("/FamilyEditor.php");
+        cy.visit("FamilyEditor.php");
         cy.contains('Family Info');
         cy.get('#FamilyName').type("Troy");
         cy.get('input[name="Address1"').type("4222 Clinton Way");
