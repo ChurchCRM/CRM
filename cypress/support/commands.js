@@ -16,7 +16,7 @@
      cy.get("#PasswordBox").type(password);
      cy.get("form").submit();
      if (assertLoggedIn) {
-         cy.location('pathname').should('eq', Cypress.env('base_path') + "/Menu.php");
+         cy.location('pathname').should('include', "/Menu.php");
      }
  })
 
