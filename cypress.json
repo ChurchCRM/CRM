@@ -1,3 +1,4 @@
 {
-    "baseUrl": "https://demo.churchcrm.io/master"
+    "baseUrl": "https://demo.churchcrm.io/master",
+    "pageLoadTimeout": 100000
 }
