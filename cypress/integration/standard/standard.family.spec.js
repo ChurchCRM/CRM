@@ -1,55 +1,21 @@
 /// <reference types="cypress" />
 
 context('Family', () => {
-    beforeEach(() => {
-
+    before(() => {
+        cy.loginStandard();
     })
 
     it('View Family List', () => {
-        cy.loginAdmin();
         cy.visit("v2/family");
         cy.contains('Active Family List');
     });
 
-    it('View Inactive Family List', () => {
-        cy.loginAdmin();
-        cy.visit("v2/family?mode=inactive");
-        cy.contains('Inactive Family List');
-        cy.contains('Lewis').should('not.exist');
-        cy.visit("v2/family/3");
-        cy.get("#activateDeactivate").click();
-        cy.get("body > div.bootbox.modal.fade.bootbox-confirm.in > div > div > div.modal-footer > button.btn.btn-primary.bootbox-accept").click();
-        cy.visit("v2/family?mode=inactive");
-        cy.contains('Lewis');
-        cy.visit("v2/family/3");
-        cy.get("#activateDeactivate").click();
-        cy.get("body > div.bootbox.modal.fade.bootbox-confirm.in > div > div > div.modal-footer > button.btn.btn-primary.bootbox-accept").click();
-        cy.visit("v2/family?mode=inactive");
-        cy.contains('Lewis').should('not.exist');
-
-    });
-
-
-    it('View a Family', () => {
-        cy.loginAdmin();
-        cy.visit("v2/family/1");
-        cy.contains('Campbell - Family');
-        cy.contains('Darren Campbell');
-        cy.contains('Music Ministry');
-
-        cy.visit("v2/family/20");
-        cy.contains('Black - Family');
-        cy.contains('New Building Fund');
-    });
-
     it('View invalid Family', () => {
-        cy.loginAdmin();
         cy.visit("v2/family/9999");
         cy.contains('Oops! FAMILY 9999 Not Found');
     });
 
     it('Entering a new Family', () => {
-        cy.loginStandard();
         cy.visit("FamilyEditor.php");
         cy.contains('Family Info');
         cy.get('#FamilyName').type("Troy");
