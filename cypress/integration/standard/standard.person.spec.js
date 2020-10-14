@@ -6,7 +6,7 @@ context('People', () => {
     })
 
     it('Open the People Dashboard', () => {
-        cy.visit("/PeopleDashboard.php");
+        cy.visit("PeopleDashboard.php");
         cy.contains('People Dashboard');
         cy.contains('People Functions');
         cy.contains('Reports');
@@ -16,7 +16,7 @@ context('People', () => {
     });
 
     it('Listing all persons', () => {
-        cy.visit("/v2/people");
+        cy.visit("v2/people");
         cy.contains('Admin');
         cy.contains('Church');
         cy.contains('Joel');
@@ -24,7 +24,7 @@ context('People', () => {
     });
 
     it('Listing all persons with gender filter', () => {
-        cy.visit("/v2/people?Gender=0");
+        cy.visit("v2/people?Gender=0");
         cy.contains('Admin');
         cy.contains('Church');
         cy.contains('Kennedy');
@@ -33,7 +33,7 @@ context('People', () => {
     });
 
     it('Person Not Found', () => {
-        cy.visit("/v2/person/not-found?id=9999");
+        cy.visit("PersonView.php?PersonID=9999");
         cy.contains('Oops! PERSON 9999 Not Found');
     });
 
