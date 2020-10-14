@@ -32,5 +32,10 @@ context('People', () => {
         cy.contains('Emma').should('not.exist');
     });
 
+    it('Person Not Found', () => {
+        cy.visit("/v2/person/not-found?id=9999");
+        cy.contains('Oops! PERSON 9999 Not Found');
+    });
+
 });
 
