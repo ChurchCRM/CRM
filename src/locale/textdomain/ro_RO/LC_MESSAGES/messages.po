@@ -65,7 +65,8 @@ msgid "This tool will assist you in manually backing up the ChurchCRM database."
 msgstr "Această unealtă vă va asista în crearea manuală a unei copii de rezervăd pentru baza de date ChurchCRM "
 
 #: 
-msgid "You should make a manual backup at least once a week unless you already have a regular backup procedule for your systems."
+#, fuzzy
+msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
 msgstr "Tu ar trebui să facă o copie de rezervă manual, cel puțin o dată pe săptămână, dacă nu aveți deja un procedeu de backup regulat pentru sistemele dvs.."
 
 #: 
@@ -1117,10 +1118,6 @@ msgstr "Nonattendees eveniment"
 #: 
 msgid "Event Guests"
 msgstr "Eveniment Vizitatori"
-
-#: 
-msgid "Back to Report Menu"
-msgstr "Înapoi la Raport Meniu"
 
 #: 
 msgid "There "
@@ -4353,7 +4350,8 @@ msgid "Church Information"
 msgstr "Informații biserică"
 
 #: 
-msgid "User setup"
+#, fuzzy
+msgid "User Setup"
 msgstr "Setări utilizatori"
 
 #: 

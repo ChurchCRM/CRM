@@ -13,7 +13,7 @@
     "Credit Card": "بطاقة ائتمان",
     "Backup Database": "النسخ الاحتياطي لقاعدة البيانات",
     "This tool will assist you in manually backing up the ChurchCRM database.": "هذه الأداة سوف تساعدك في النسخ الاحتياطي لقاعدة بيانات ChurchCRM يدويا.",
-    "You should make a manual backup at least once a week unless you already have a regular backup procedule for your systems.": "يجب عليك إجراء نسخة احتياطية يدوياً مرة واحدة في الأسبوع على الأقل , ما لم يكن لديك بالفعل إجراء نسخ احتياطي منتظم لأنظمتك.",
+    "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems.": "يجب عليك إجراء نسخة احتياطية يدوياً مرة واحدة في الأسبوع على الأقل , ما لم يكن لديك بالفعل إجراء نسخ احتياطي منتظم لأنظمتك.",
     "After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site.": "بعد تحميل ملف النسخ الاحتياطي، يجب إجراء نسختين. احتفظ بواحد منهم في حافظة واقية من الحريق في الموقع والآخر في مكان آمن خارج الموقع.",
     "If you are concerned about confidentiality of data stored in the ChurchCRM database, you should encrypt the backup data if it will be stored somewhere potentially accessible to others": "إذا كنت تشعر بالقلق إزاء سرية البيانات المخزنة في قاعدة البيانات ChurchCRM، يجب أن تشفير البيانات الاحتياطية إذا كان سيتم تخزينها في مكان ما يحتمل أن تكون في متناول الآخرين",
     "Select archive type": "حدد نوع الأرشيف",
@@ -268,7 +268,6 @@
     "Event Attendees": "حضور الحدث",
     "Event Nonattendees": "عدم حضور الحدث",
     "Event Guests": "ضيوف الحدث",
-    "Back to Report Menu": "العودة إلى قائمة التقرير",
     "There ": "هناك ",
     "Event Title": "عنوان الحدث",
     "Event Date": "تاريخ الحدث",
@@ -1059,7 +1058,7 @@
     "Login to restored Database": "تسجيل الدخول إلى قاعدة بيانات استعادة",
     "Restore Error.": "استعادة خطأ.",
     "Church Information": "معلومات كنيسة",
-    "User setup": "إعداد المستخدم",
+    "User Setup": "إعداد المستخدم",
     "Email Setup": "إعداد البريد الإلكتروني",
     "Map Settings": "إعدادات خريطة",
     "Report Settings": "إعدادات تقرير",
@@ -2278,7 +2277,5 @@
     "Two factor authentication requires ChurchCRM administrators to configure a few parameters": "يتطلب اثنين عامل التوثيق الإداريين ChurchCRM لتكوين عدد قليل من المعالم",
     "System configuration ": "أعدادات النظام",
     "Must be set to 'true'": "يجب أن يتم تعيين إلى 'true'",
-    "Include/Config.php must define an encryption key for storing 2FA secret keys in the database by setting a value for": "وتشمل / ملف config.php يجب تحديد مفتاح التشفير لتخزين 2FA المفاتيح السرية في قاعدة البيانات عن طريق تحديد قيمة لل",
-    "Credit Card People": "بطاقة الائتمان الشعب",
-    "People who are configured to pay by credit card.": "الناس الذين تم تكوينها لالدفع بواسطة بطاقة الائتمان."
+    "Include/Config.php must define an encryption key for storing 2FA secret keys in the database by setting a value for": "وتشمل / ملف config.php يجب تحديد مفتاح التشفير لتخزين 2FA المفاتيح السرية في قاعدة البيانات عن طريق تحديد قيمة لل"
 }

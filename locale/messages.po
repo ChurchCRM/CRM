@@ -10,7 +10,7 @@ msgstr ""
 "#-#-#-#-#  messages.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-17 22:50-0700\n"
+"POT-Creation-Date: 2020-10-02 00:41-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,8 +25,16 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2020-06-18T05:50:03.568Z\n"
-"PO-Revision-Date: 2020-06-18T05:50:03.568Z\n"
+"POT-Creation-Date: 2020-10-02T07:41:16.220Z\n"
+"PO-Revision-Date: 2020-10-02T07:41:16.220Z\n"
+"#-#-#-#-#  react-js-strings.po (i18next-conv)  #-#-#-#-#\n"
+"Project-Id-Version: i18next-conv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"POT-Creation-Date: 2020-10-02T07:41:16.430Z\n"
+"PO-Revision-Date: 2020-10-02T07:41:16.430Z\n"
 
 msgid "Backup Database"
 msgstr ""
@@ -37,7 +45,7 @@ msgstr ""
 
 msgid ""
 "You should make a manual backup at least once a week unless you already have "
-"a regular backup procedule for your systems."
+"a regular backup procedure for your systems."
 msgstr ""
 
 msgid ""
@@ -2253,7 +2261,10 @@ msgstr ""
 msgid "All Events of Type"
 msgstr ""
 
-msgid "Back to Report Menu"
+msgid "Event Attendance"
+msgstr ""
+
+msgid "Generate attendance -AND- non-attendance reports for events"
 msgstr ""
 
 msgid "There is"
@@ -3397,6 +3408,12 @@ msgstr ""
 msgid "Toggle navigation"
 msgstr ""
 
+msgid "of translation completed"
+msgstr ""
+
+msgid "Help translate this project"
+msgstr ""
+
 msgid "Your Cart"
 msgstr ""
 
@@ -4464,6 +4481,21 @@ msgstr ""
 msgid "for funds "
 msgstr ""
 
+msgid "Pledge Summary By Family"
+msgstr ""
+
+msgid "Method"
+msgstr ""
+
+msgid "Pledge"
+msgstr ""
+
+msgid "Paid"
+msgstr ""
+
+msgid "Owe"
+msgstr ""
+
 msgid "Donated Items:"
 msgstr ""
 
@@ -4594,9 +4626,6 @@ msgid "CURRENT FAMILY WITH DONATIONS"
 msgstr ""
 
 msgid "Schedule"
-msgstr ""
-
-msgid "Method"
 msgstr ""
 
 msgid "Date Updated"
@@ -5081,6 +5110,15 @@ msgstr ""
 msgid "Bad userId"
 msgstr ""
 
+msgid "Unsupported user config"
+msgstr ""
+
+msgid "Invalid userId"
+msgstr ""
+
+msgid "Unsupported user setting - "
+msgstr ""
+
 msgid "eGive Import"
 msgstr ""
 
@@ -5492,9 +5530,6 @@ msgstr ""
 msgid "Menus"
 msgstr ""
 
-msgid "Username"
-msgstr ""
-
 msgid "You have no items in your cart."
 msgstr ""
 
@@ -5770,6 +5805,27 @@ msgstr ""
 msgid ""
 "Include/Config.php must define an encryption key for storing 2FA secret keys "
 "in the database by setting a value for"
+msgstr ""
+
+msgid "Login Info"
+msgstr ""
+
+msgid "Username"
+msgstr ""
+
+msgid "Login Count"
+msgstr ""
+
+msgid "Failed Login"
+msgstr ""
+
+msgid "Permissions"
+msgstr ""
+
+msgid "Manage Notes"
+msgstr ""
+
+msgid "Skins"
 msgstr ""
 
 msgid "Family Member Count"
@@ -6812,6 +6868,9 @@ msgstr ""
 msgid "Zimbabwe"
 msgstr ""
 
+msgid "Afrikaans"
+msgstr ""
+
 msgid "Albanian"
 msgstr ""
 
@@ -7167,6 +7226,9 @@ msgstr ""
 msgid "Are you sure you want to unassign this property?"
 msgstr ""
 
+msgid "Failed generate a new API Key"
+msgstr ""
+
 msgid "User Delete Confirmation"
 msgstr ""
 
@@ -7183,4 +7245,107 @@ msgid "Please confirm the password reset of this user"
 msgstr ""
 
 msgid "Please confirm disabling 2 Factor Auth for this user"
+msgstr ""
+
+msgid "Start Date"
+msgstr ""
+
+msgid "End Date"
+msgstr ""
+
+msgid "Pinned Calendars"
+msgstr ""
+
+msgid "This field is required"
+msgstr ""
+
+msgid "Text"
+msgstr ""
+
+msgid "Event Description"
+msgstr ""
+
+msgid ""
+"Enrolling your ChurchCRM user account in Two Factor Authention provides an "
+"additional layer of defense against bad actors trying to access your account."
+msgstr ""
+
+msgid ""
+"ChurchCRM Two factor supports any TOTP authenticator app, so you're free to "
+"choose between Microsoft Authenticator, Google Authenticator, Authy, "
+"LastPass, and others"
+msgstr ""
+
+msgid ""
+"When you sign in to ChurchCRM, you'll still enter your username and password "
+"like normal"
+msgstr ""
+
+msgid ""
+"However, you'll also need to supply a one-time code from your authenticator "
+"device to complete your login"
+msgstr ""
+
+msgid ""
+"After successfully entering both your credentials, and the one-time code, "
+"you'll be logged in as normal"
+msgstr ""
+
+msgid ""
+"To prevent being locked out of your ChurchCRM account, please ensure you're "
+"ready to complete two factor enrollment before clicking begin"
+msgstr ""
+
+msgid ""
+"Beginning enrollment will invalidate any previously enrolled 2 factor "
+"devices and recovery codes."
+msgstr ""
+
+msgid ""
+"When you click next, you'll be prompted to scan a QR code to enroll your "
+"authenticator app."
+msgstr ""
+
+msgid ""
+"To confirm enrollment, you'll need to enter the code generated by your "
+"authenticator app"
+msgstr ""
+
+msgid ""
+"After confirming app enrollment, single-use recovery codes will be generated "
+"and displayed."
+msgstr ""
+
+msgid ""
+"Recovery codes can be used instead of a code generated from your "
+"authenticator app."
+msgstr ""
+
+msgid "Store these in a secure location"
+msgstr ""
+
+msgid "Begin Two Factor Authentication Enrollment"
+msgstr ""
+
+msgid "2 Factor Authentication Secret"
+msgstr ""
+
+msgid "Regenerate 2 Factor Authentication Secret"
+msgstr ""
+
+msgid "Remove 2 Factor Authentication Secret"
+msgstr ""
+
+msgid "Enter TOTP code to confirm enrollment"
+msgstr ""
+
+msgid "2 Factor Authentication Enrollment Success"
+msgstr ""
+
+msgid "Please store these recovery codes in a safe location"
+msgstr ""
+
+msgid ""
+"If you ever lose access to your newly enrolled authenticator app, you'll "
+"need to use a recovery code to gain access to your account"
 msgstr ""

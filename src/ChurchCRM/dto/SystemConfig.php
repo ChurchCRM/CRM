@@ -86,7 +86,7 @@ class SystemConfig
         "sSMTPUser" => new ConfigItem(29, "sSMTPUser", "text", "", gettext("SMTP Username")),
         "sSMTPPass" => new ConfigItem(30, "sSMTPPass", "password", "", gettext("SMTP Password")),
         "bShowFamilyData" => new ConfigItem(33, "bShowFamilyData", "boolean", "1", gettext("Unavailable person info inherited from assigned family for display?\rThis option causes certain info from a person's assigned family record to be\rdisplayed IF the corresponding info has NOT been entered for that person. ")),
-        "sLanguage" => new ConfigItem(39, "sLanguage", "choice", "en_US", gettext("Internationalization (I18n) support"), "", json_encode(SystemConfig::getSupportedLocales())),
+        "sLanguage" => new ConfigItem(39, "sLanguage", "choice", "en_US", gettext("Internationalization (I18n) support"), "https://poeditor.com/join/project?hash=RABdnDSqAt", json_encode(SystemConfig::getSupportedLocales())),
         "iFYMonth" => new ConfigItem(40, "iFYMonth", "choice", "1", gettext("First month of the fiscal year"),"",'{"Choices":["1","2","3","4","5","6","7","8","9","10","11","12"]}'),
         "sGoogleMapsGeocodeKey" => new ConfigItem(44, "sGoogleMapsGeocodeKey", "text", "", gettext("Google Maps API Key used for Geocoding addresses") , "https://developers.google.com/maps/documentation/javascript/get-api-key"),
         "sBingMapKey" => new ConfigItem(10000, "sBingMapKey", "text", "", gettext("Bing map API requires a unique key") , "https://www.microsoft.com/maps/create-a-bing-maps-key.aspx"),
@@ -254,7 +254,7 @@ class SystemConfig
   {
     return array (
       gettext('Church Information') =>["sChurchName","sChurchAddress","sChurchCity","sChurchState","sChurchZip","sChurchCountry","sChurchPhone","sChurchEmail","sHomeAreaCode","sTimeZone","iChurchLatitude","iChurchLongitude", "sChurchWebSite","sChurchFB", "sChurchTwitter"],
-      gettext('User setup') => ["iMinPasswordLength","iMinPasswordChange","iMaxFailedLogins","iSessionTimeout","aDisallowedPasswords","bEnableLostPassword","bEnable2FA","bRequire2FA","s2FAApplicationName","bSendUserDeletedEmail"],
+      gettext('User Setup') => ["iMinPasswordLength","iMinPasswordChange","iMaxFailedLogins","iSessionTimeout","aDisallowedPasswords","bEnableLostPassword","bEnable2FA","bRequire2FA","s2FAApplicationName","bSendUserDeletedEmail"],
       gettext('Email Setup')  => ["sSMTPHost","bSMTPAuth","sSMTPUser","sSMTPPass", "iSMTPTimeout","sToEmailAddress", "bPHPMailerAutoTLS","sPHPMailerSMTPSecure"],
       gettext('People Setup')  => ["sDirClassifications","sDirRoleHead","sDirRoleSpouse","sDirRoleChild","sDefaultCity","sDefaultState","sDefaultCountry","bShowFamilyData","bHidePersonAddress","bHideFriendDate","bHideFamilyNewsletter","bHideWeddingDate","bHideLatLon","bForceUppercaseZip","bEnableSelfRegistration", "bAllowEmptyLastName", "iPersonNameStyle", "iProfilePictureListSize", "sNewPersonNotificationRecipientIDs", "IncludeDataInNewPersonNotifications","sGreeterCustomMsg1","sGreeterCustomMsg2"],
       gettext('Enabled Features')  => ["bEnabledFinance", "bEnabledSundaySchool","bEnabledEvents","bEnabledCalendar","bEnabledFundraiser","bEnabledEmail", "bEnabledMenuLinks"],

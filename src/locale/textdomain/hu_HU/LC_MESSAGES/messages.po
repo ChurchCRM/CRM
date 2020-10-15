@@ -65,7 +65,8 @@ msgid "This tool will assist you in manually backing up the ChurchCRM database."
 msgstr "Ez az eszköz segít neked mauális biztonsági mentést csinálni a ChurchCRM adatbázisról."
 
 #: 
-msgid "You should make a manual backup at least once a week unless you already have a regular backup procedule for your systems."
+#, fuzzy
+msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
 msgstr "Meg kell, hogy egy kézi mentés legalább egyszer egy héten, kivéve, ha már van egy rendszeres biztonsági mentés procedule a rendszerek."
 
 #: 
@@ -1026,10 +1027,6 @@ msgstr "Event Nonattendees"
 #: 
 msgid "Event Guests"
 msgstr "Esemény vendégek"
-
-#: 
-msgid "Back to Report Menu"
-msgstr "Vissza a jelentése Menu"
 
 #: 
 msgid "There "

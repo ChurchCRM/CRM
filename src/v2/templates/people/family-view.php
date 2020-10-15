@@ -21,6 +21,7 @@ $mailchimp = new MailChimpService();
     window.CRM.currentFamilyName = "<?= $family->getName() ?>";
     window.CRM.currentActive = <?= $family->isActive() ? "true" : "false" ?>;
     window.CRM.currentFamilyView = 2;
+    window.CRM.plugin.mailchimp = <?= $mailchimp->isActive()? "true" : "false" ?>;
 </script>
 
 
@@ -308,9 +309,7 @@ $mailchimp = new MailChimpService();
                 <h3 class="box-title"><?= gettext("Properties") ?></h3>
                 <div class="box-tools pull-right">
                     <?php if (AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled()) { ?>
-                    <button type="button" class="btn btn-box-tool"><i
-                            class="fa fa-plus-circle"></i>
-                    </button>
+                    <button id="add-family-property" type="button" class="btn btn-box-tool hidden"><i class="fa fa-plus-circle text-blue"></i></button>
                     <?php } ?>
 
                     <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
@@ -319,71 +318,28 @@ $mailchimp = new MailChimpService();
                 </div>
             </div>
             <div class="box-body">
-                <?php
-                $familyProperties = $family->getProperties();
 
-                if (empty($familyProperties->count())) {
-                    ?>
-                    <br>
-                    <div class="alert alert-warning">
-                        <i class="fa fa-question-circle fa-fw fa-lg"></i>
-                        <span><?= gettext("No property assignments.") ?></span>
-                    </div>
-                    <?php
-                } else {
-                    ?>
-                    <table class="table table-striped table-bordered data-table" cellspacing="0" width="100%">
-                    <tr>
-                        <th></th>
-                        <th><?= gettext("Name") ?></th>
-                        <th><?= gettext("Value") ?></th>
-                    </tr>
+                <div id="family-property-loading" class="col-xs-12 text-center">
+                    <i class="btn btn-default btn-lrg ajax">
+                        <i class="fa fa-spin fa-refresh"></i>&nbsp; <?= gettext("Loading") ?>
+                    </i>
+                </div>
 
-                    <?php
-                    //Loop through the rows
-                    foreach ($familyProperties as $familyProperty) {?>
-                        <tr>
-                            <td>
-                            <?php if (AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled()) {
-                                if (!empty($familyProperty->getProperty()->getProPrompt())) { ?>
-                                    <a href="<?=SystemURLs::getRootPath()?>/PropertyAssign.php?FamilyID=<?= $family->getId()?>&PropertyID=<?=$familyProperty->getPropertyId() ?>"><button type="button" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></button></a>
-                                <?php } ?>
-                                <a href="<?=SystemURLs::getRootPath()?>/PropertyUnassign.php?FamilyID=<?= $family->getId()?>&PropertyID=<?=$familyProperty->getPropertyId() ?>"><button type="button" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i></button></a></td>
-                            <?php } ?>
-                            </td>
-                            <td><?= $familyProperty->getProperty()->getProName() ?></td>
-                            <td><b><?= $familyProperty->getPropertyValue() ?></b></td>
-                        </tr>
+                <div id="family-property-no-data" class="alert alert-warning hidden">
+                    <i class="fa fa-question-circle fa-fw fa-lg"></i>
+                    <span><?= gettext("No property assignments.") ?></span>
+                </div>
 
-                    <?php } ?>
-                    </table>
-                <?php } ?>
-                <p/>
-                <?php if (AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled()) { ?>
-                    <div class="hide" id="family-add-property">
-                        <div>
-                            <strong><?= gettext("Assign a New Property") ?>:</strong>
-                            <p/>
-                            <form method="post" action="<?=SystemURLs::getRootPath()?>/index.php">
-                                <div class="row">
-                                    <div class="form-group col-md-7 col-lg-7 col-sm-12 col-xs-12">
-                                        <select name="PropertyID" class="form-control">
-                                            <option selected disabled> -- <?= gettext('select an option') ?>--</option>
-                                            <?php foreach ($allFamilyProperties as $property) { ?>
-                                                <option value="<?= $property->getProId()?>"><?= $property->getProName()?></option>
-                                            <?php } ?>
-                                        </select>
-                                    </div>
-                                    <div class="form-group col-lg-7 col-md-7 col-sm-12 col-xs-12">
-                                        <input type="submit" class="btn btn-primary"
-                                               value="<?= gettext("Assign") ?>" name="Submit2">
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                    <?php
-                } ?>
+                <table id="family-property-table" class="table table-striped table-bordered data-table hidden" cellspacing="0" width="100%">
+                    <thead>
+                <tr>
+                    <th width="50"></th>
+                    <th width="250" class="text-center"><?= gettext("Name") ?></th>
+                    <th class="text-center"><?= gettext("Value") ?></th>
+                </tr>
+                    </thead>
+                </table>
+            <p/>
             </div>
         </div>
 

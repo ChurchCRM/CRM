@@ -59,7 +59,7 @@ foreach ($ListItem as $element) {
     <div class="box-header">
         <?= gettext('Filter and Cart') ?>
     </div>
-    
+
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-6">
@@ -75,7 +75,7 @@ foreach ($ListItem as $element) {
                 <!-- <label>Custom Fields:</label> -->
                 <select style="visibility: hidden; margin: 5px; display:inline-block; width: 150px;" class="filter-Custom" multiple="multiple"></select>
                 <!-- <label>Group Types:</label> -->
-                <select style="visibility: hidden; margin: 5px; display:inline-block; width: 150px;" class="filter-Group" multiple="multiple"></select> 
+                <select style="visibility: hidden; margin: 5px; display:inline-block; width: 150px;" class="filter-Group" multiple="multiple"></select>
                 <input style="margin: 20px" id="ClearFilter" type="button" class="btn btn-default" value="<?= gettext('Clear Filter') ?>"><BR><BR>
 
                 </div>
@@ -180,7 +180,7 @@ foreach ($ListItem as $element) {
                   },
             columns: [
                 {
-                    title:i18next.t('Actions'), 
+                    title:i18next.t('Actions'),
                 },
                 {
                     title:i18next.t('Id'),
@@ -239,30 +239,30 @@ foreach ($ListItem as $element) {
                                 "<'row'<'col-sm-4'l><'col-sm-4'i><'col-sm-4'p>>",
         });
 
-         
+
         $('.filter-Gender').select2({
             multiple: true,
-            placeholder: "Select Gender",
-        });
+            placeholder: i18next.t('Select') + " " + i18next.t('Gender')
+         });
         $('.filter-Classification').select2({
             multiple: true,
-            placeholder: "Select Classification"
+            placeholder: i18next.t('Select') + " " + i18next.t('Classification')
         });
         $('.filter-Role').select2({
             multiple: true,
-            placeholder: "Select Role"
+            placeholder: i18next.t('Select') + " " + i18next.t('Role')
         });
         $('.filter-Properties').select2({
             multiple: true,
-            placeholder: "Select Properties"
+            placeholder: i18next.t('Select') + " " + i18next.t('Properties')
         });
         $('.filter-Custom').select2({
             multiple: true,
-            placeholder: "Select Custom"
+            placeholder: i18next.t('Select') + " " + i18next.t('Custom')
         });
         $('.filter-Group').select2({
             multiple: true,
-            placeholder: "Select Group"
+            placeholder: i18next.t('Select') + " " + i18next.t('Group')
         });
 
         $('.filter-Gender').on("change", function() {
@@ -318,11 +318,11 @@ foreach ($ListItem as $element) {
         var Gender = ['Male', 'Female', 'Unassigned'];
         for (var i = 0; i < Gender.length; i++) {
             if (filterByGender == Gender[i]) {
-                $('.filter-Gender').val(Gender[i]);
-                $('.filter-Gender').append('<option selected value='+i+'>'+Gender[i]+'</option>');
+                $('.filter-Gender').val(i18next.t(Gender[i]));
+                $('.filter-Gender').append('<option selected value='+i+'>'+i18next.t(Gender[i])+'</option>');
                 $('.filter-Gender').trigger('change')
-            } else { 
-            $('.filter-Gender').append('<option value='+i+'>'+Gender[i]+'</option>');
+            } else {
+            $('.filter-Gender').append('<option value='+i+'>'+i18next.t(Gender[i])+'</option>');
             }
         }
         var ClassificationList = <?= json_encode($ClassificationList) ?>;
@@ -333,10 +333,10 @@ foreach ($ListItem as $element) {
                 $('.filter-Classification').append('<option selected value='+i+'>'+ClassificationList[i]+'</option>');
                 $('.filter-Classification').trigger('change')
             } else {
-               $('.filter-Classification').append('<option value='+i+'>'+ClassificationList[i]+'</option>'); 
+               $('.filter-Classification').append('<option value='+i+'>'+ClassificationList[i]+'</option>');
             }
         }
-        
+
         var RoleList = <?= json_encode($RoleList) ?>;
         for (var i = 0; i < RoleList.length; i++) {
             if (filterByFmrId == RoleList[i]) {
@@ -366,7 +366,7 @@ foreach ($ListItem as $element) {
 
         // clear external filters
         document.getElementById("ClearFilter").addEventListener("click", function() {
-            
+
             $('.filter-Gender').val([]).trigger('change')
             $('.filter-Classification').val([]).trigger('change')
             $('.filter-Role').val([]).trigger('change')

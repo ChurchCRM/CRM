@@ -13,7 +13,7 @@
     "Credit Card": "כרטיס אשראי",
     "Backup Database": "גבה מסד נתונים",
     "This tool will assist you in manually backing up the ChurchCRM database.": "כלי זה יסייע לך ביצירת גיבוי ידני של מסד הנתונים של ChurchCRM",
-    "You should make a manual backup at least once a week unless you already have a regular backup procedule for your systems.": "עליך לבצע גיבוי ידני, לפחות פעם בשבוע, אלא אם המערכת שלך מבצעת גיבוי אוטומטי בשיגרה",
+    "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems.": "עליך לבצע גיבוי ידני, לפחות פעם בשבוע, אלא אם המערכת שלך מבצעת גיבוי אוטומטי בשיגרה",
     "After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site.": "לאחר הורדת קובץ הגיבוי, צור שני עותקים.\nאחסן אחד מהם בכספת חסינת אש באתר, ועותק נוסף - באתר אחר.",
     "If you are concerned about confidentiality of data stored in the ChurchCRM database, you should encrypt the backup data if it will be stored somewhere potentially accessible to others": "אם אתה מודאג לגבי מידע רגיש, המאוחסן במערכת ChurchCRM, עליך לבצע הצפנה לקובץ הגיבוי, במידה שהוא מאוחסן במקום הנגיש לאחרים",
     "Select archive type": "בחר סוג ארכיון",
