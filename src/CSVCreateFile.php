@@ -438,7 +438,7 @@ if ($sFormat == 'addtocart') {
                     $sString .= '","'.$per_ID.'",';
                     $sString .= '"'.$per_LastName;
                     if (isset($_POST['Title'])) {
-                        $sString .= '","'.$delimiter.'"'.InputUtils::translate_special_charset($per_Title);
+                        $sString .= '"'.$delimiter.'"'.InputUtils::translate_special_charset($per_Title);
                     }
                     if (isset($_POST['FirstName'])) {
                         $sString .= '"'.$delimiter.'"'.InputUtils::translate_special_charset($per_FirstName);
