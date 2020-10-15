@@ -120,7 +120,7 @@ class AppIntegrityService
   {
 
     $prerequisites = array(
-      new Prerequisite('PHP 7.2+', function() { return version_compare(PHP_VERSION, '7.2.0', '>='); }),
+      new Prerequisite('PHP 7.3+', function() { return version_compare(PHP_VERSION, '7.3.0', '>='); }),
       new Prerequisite('PCRE and UTF-8 Support', function() { return function_exists('preg_match') && @preg_match('/^.$/u', 'ñ') && @preg_match('/^\pL$/u', 'ñ'); }),
       new Prerequisite('Multibyte Encoding', function() { return extension_loaded('mbstring'); }),
       new Prerequisite('PHP Phar', function() { return extension_loaded('phar'); }),
@@ -139,7 +139,7 @@ class AppIntegrityService
       new Prerequisite('PHP ZipArchive', function() { return extension_loaded('zip'); }),
       new Prerequisite('Mysqli Functions', function() { return function_exists('mysqli_connect'); })
     );
-    
+
     return $prerequisites;
   }
 
@@ -184,7 +184,7 @@ class AppIntegrityService
     else {
       $logger->addDebug("PHP is not running through Apache");
     }
-    
+
     if ($check == false){
       $logger->addDebug("Previous rewrite checks failed");
       if ( function_exists('curl_version')) {
