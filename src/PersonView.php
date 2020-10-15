@@ -992,7 +992,7 @@ $bOkToEdit = (
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/PersonView.js"></script>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     window.CRM.currentPersonID = <?= $iPersonID ?>;
-    window.CRM.plugin.mailchimp = <?= $mailchimp->isActive(false)? "true" : "false" ?>;
+    window.CRM.plugin.mailchimp = <?= $mailchimp->isActive()? "true" : "false" ?>;
 
 
     $("#deletePhoto").click (function () {
