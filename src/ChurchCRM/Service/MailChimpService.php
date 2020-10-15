@@ -22,20 +22,17 @@ class MailChimpService
         }
     }
 
-    public function isActive($keyActiveCheck = true)
+    public function isActive()
     {
         if ($this->isActive) {
             return true;
         }
         if ($this->hasKey) {
-            if ($keyActiveCheck) {
-                $rootAPI = $this->myMailchimp->get("");
-                if ( $rootAPI["total_subscribers"] > 0 ) {
-                    $this->isActive = true;
-                    return true;
-                }
+            $rootAPI = $this->myMailchimp->get("");
+            if ( $rootAPI["total_subscribers"] > 0 ) {
+                $this->isActive = true;
+                return true;
             }
-            return true;
         }
         return false;
     }
