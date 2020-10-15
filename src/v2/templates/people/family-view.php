@@ -21,6 +21,7 @@ $mailchimp = new MailChimpService();
     window.CRM.currentFamilyName = "<?= $family->getName() ?>";
     window.CRM.currentActive = <?= $family->isActive() ? "true" : "false" ?>;
     window.CRM.currentFamilyView = 2;
+    window.CRM.plugin.mailchimp = <? $mailchimp->isActive(false) ?>;
 </script>
 
 
