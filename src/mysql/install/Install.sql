@@ -1224,12 +1224,6 @@ CREATE TABLE `menu_links` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Database: `churchcrm`
---
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `permissions`
 --
 
