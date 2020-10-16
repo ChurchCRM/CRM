@@ -1,8 +1,3 @@
---
--- Database: `churchcrm`
---
-
--- --------------------------------------------------------
 
 --
 -- Table structure for table `permissions`
