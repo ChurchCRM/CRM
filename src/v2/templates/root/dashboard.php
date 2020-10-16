@@ -1,11 +1,115 @@
 <?php
 
-
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 
 //Set the page title
 include SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
+
+
+<!-- Small boxes (Stat box) -->
+<div class="row">
+    <div class="col-lg-2 col-xs-4">
+        <!-- small box -->
+        <div class="small-box bg-aqua">
+            <div class="inner">
+                <h3 id="familyCountDashboard">
+                    <?= $dashboardCounts["families"] ?>
+                </h3>
+                <p>
+                    <?= gettext('Families') ?>
+                </p>
+            </div>
+            <div class="icon">
+                <i class="fa fa-users"></i>
+            </div>
+            <a href="<?= SystemURLs::getRootPath() ?>/v2/family" class="small-box-footer">
+                <?= gettext('See all Families') ?> <i class="fa fa-arrow-circle-right"></i>
+            </a>
+        </div>
+    </div><!-- ./col -->
+    <div class="col-lg-2 col-xs-4">
+        <!-- small box -->
+        <div class="small-box bg-green">
+            <div class="inner">
+                <h3 id="peopleStatsDashboard">
+                    <?= $dashboardCounts["People"] ?>
+                </h3>
+                <p>
+                    <?= gettext('People') ?>
+                </p>
+            </div>
+            <div class="icon">
+                <i class="fa fa-user"></i>
+            </div>
+            <a href="<?= SystemURLs::getRootPath() ?>/v2/people" class="small-box-footer">
+                <?= gettext('See all People') ?> <i class="fa fa-arrow-circle-right"></i>
+            </a>
+        </div>
+    </div><!-- ./col -->
+    <?php if ($sundaySchoolEnabled) {
+        ?>
+        <div class="col-lg-2 col-xs-4">
+            <!-- small box -->
+            <div class="small-box bg-yellow">
+                <div class="inner">
+                    <h3 id="groupStatsSundaySchool">
+                        <?= $dashboardCounts["SundaySchool"] ?>
+                    </h3>
+                    <p>
+                        <?= gettext('Sunday School Classes') ?>
+                    </p>
+                </div>
+                <div class="icon">
+                    <i class="fa fa-child"></i>
+                </div>
+                <a href="<?= SystemURLs::getRootPath() ?>/sundayschool/SundaySchoolDashboard.php" class="small-box-footer">
+                    <?= gettext('More info') ?> <i class="fa fa-arrow-circle-right"></i>
+                </a>
+            </div>
+        </div><!-- ./col -->
+        <?php
+    } ?>
+    <div class="col-lg-2 col-xs-4">
+        <!-- small box -->
+        <div class="small-box bg-red">
+            <div class="inner">
+                <h3 id="groupsCountDashboard">
+                    <?= $dashboardCounts["Groups"] ?>
+                </h3>
+                <p>
+                    <?= gettext('Groups') ?>
+                </p>
+            </div>
+            <div class="icon">
+                <i class="fa fa-gg"></i>
+            </div>
+            <a href="<?= SystemURLs::getRootPath() ?>/GroupList.php" class="small-box-footer">
+                <?= gettext('More info') ?>  <i class="fa fa-arrow-circle-right"></i>
+            </a>
+        </div>
+    </div><!-- ./col -->
+    <div class="col-lg-2 col-xs-4">
+        <!-- small box -->
+        <div class="small-box bg-yellow">
+            <div class="inner">
+                <h3>
+                    <?= $dashboardCounts["events"] ?>
+                </h3>
+                <p>
+                    <?= gettext('Attendees Checked In') ?>
+                </p>
+            </div>
+            <div class="icon">
+                <i class="fa fa-gg"></i>
+            </div>
+            <a href="<?= SystemURLs::getRootPath() ?>/ListEvents.php" class="small-box-footer">
+                <?= gettext('More info') ?>  <i class="fa fa-arrow-circle-right"></i>
+            </a>
+        </div>
+    </div><!-- ./col -->
+</div><!-- /.row -->
 
 <div class="box">
     <div class="box-header with-border">

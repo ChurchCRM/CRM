@@ -1,11 +1,16 @@
 <?php
 
+use ChurchCRM\dto\ChurchMetaData;
+use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\EventAttendQuery;
+use ChurchCRM\FamilyQuery;
+use ChurchCRM\GroupQuery;
+use ChurchCRM\PersonQuery;
+use ChurchCRM\dto\SystemConfig;
+use Propel\Runtime\ActiveQuery\Criteria;
 use Slim\Http\Request;
 use Slim\Http\Response;
-use ChurchCRM\dto\SystemURLs;
 use Slim\Views\PhpRenderer;
-use ChurchCRM\dto\ChurchMetaData;
-use ChurchCRM\Service\DashboardService;
 
 $app->group('', function () {
     $this->get('/dashboard', 'viewDashboard');
@@ -16,14 +21,38 @@ function viewDashboard(Request $request, Response $response, array $args)
 {
     $renderer = new PhpRenderer('templates/root/');
 
-//    $dashboardService = new DashboardService();
 
+    $dashboardCounts = [];
 
+    $dashboardCounts["families"] = FamilyQuery::Create()
+        ->filterByDateDeactivated()
+        ->count();
+
+    $dashboardCounts["People"] =  PersonQuery::create()
+        ->leftJoinWithFamily()
+        ->where('Family.DateDeactivated is null')
+        ->count();
+
+    $dashboardCounts["SundaySchool"] =  GroupQuery::create()
+        ->filterByType(4)
+        ->count();
+
+    $dashboardCounts["Groups"] =  GroupQuery::create()
+        ->filterByType(4, Criteria::NOT_EQUAL)
+        ->count();
+
+    $dashboardCounts["events"] = EventAttendQuery::create()
+        ->filterByCheckinDate(null, Criteria::NOT_EQUAL)
+        ->filterByCheckoutDate(null, Criteria::EQUAL)
+        ->find()
+        ->count();
 
 
     $pageArgs = [
         'sRootPath' => SystemURLs::getRootPath(),
-        'sPageTitle' => gettext('Welcome to').' '. ChurchMetaData::getChurchName()
+        'sPageTitle' => gettext('Welcome to').' '. ChurchMetaData::getChurchName(),
+        'dashboardCounts' => $dashboardCounts,
+        'sundaySchoolEnabled' => SystemConfig::getBooleanValue("bEnabledSundaySchool")
     ];
 
     return $renderer->render($response, 'dashboard.php', $pageArgs);
