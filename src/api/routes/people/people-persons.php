@@ -9,12 +9,16 @@ use Propel\Runtime\Propel;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Slim\Http\Request;
 use Slim\Http\Response;
+use ChurchCRM\dto\SystemConfig;
 
 $app->group('/persons', function () {
 
     $this->get('/roles', 'getAllRolesAPI');
     $this->get('/roles/', 'getAllRolesAPI');
     $this->get('/duplicate/emails', 'getEmailDupesAPI');
+
+    $this->get('/latest', 'getLatestPersons');
+    $this->get('/updated', 'getUpdatedPersons');
 
     // search person by Name
     $this->get('/search/{query}', function ($request, $response, $args) {
@@ -95,4 +99,47 @@ function getEmailDupesAPI(Request $request, Response $response, array $args)
     }
 
     return $response->withJson(["emails" => $emails]);
+}
+
+function getLatestPersons(Request $request, Response $response, array $p_args)
+{
+    $people = PersonQuery::create()
+    ->leftJoinWithFamily()
+    ->where('Family.DateDeactivated is null')
+    ->orderByDateEntered('DESC')
+    ->limit(10)
+    ->find();
+
+    return $response->withJson(buildFormatedPersonList($people));
+}
+
+function getUpdatedPersons(Request $request, Response $response, array $p_args)
+{
+    $people = PersonQuery::create()
+        ->leftJoinWithFamily()
+        ->where('Family.DateDeactivated is null')
+        ->orderByDateLastEdited('DESC')
+        ->limit(10)
+        ->find();
+
+    $formattedList = buildFormatedPersonList($people);
+
+    return $response->withJson($formattedList);
+}
+
+function buildFormatedPersonList($people)
+{
+    $formattedList = [];
+
+    foreach ($people as $person) {
+        $formattedPerson = [];
+        $formattedPerson["PersonId"] = $person->getId();
+        $formattedPerson["FirstName"] = $person->getFirstName();
+        $formattedPerson["LastName"] = $person->getLastName();
+        $formattedPerson["Email"] = $person->getEmail();
+        $formattedPerson["LastEdited"] = date_format($person->getDateLastEdited(), SystemConfig::getValue('sDateFormatShort'));;
+
+        array_push($formattedList, $formattedPerson);
+    }
+    return $formattedList;
 }
