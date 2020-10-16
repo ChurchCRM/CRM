@@ -136,6 +136,29 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
     </div>
 </div>
 
+<?php
+if ($depositEnabled) { // If the user has Finance permissions, then let's display the deposit line chart
+    ?>
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            <div class="box box-info">
+                <div class="box-header">
+                    <i class="fa fa-money"></i>
+                    <h3 class="box-title"><?= gettext('Deposit Tracking') ?></h3>
+                    <div class="box-tools pull-right">
+                        <div id="deposit-graph" class="chart-legend"></div>
+                    </div>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                    <canvas id="deposit-lineGraph" style="height:125px; width:100%"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php
+}  //END IF block for Finance permissions to include HTML for Deposit Chart
+?>
+
 <div class="box">
     <div class="box-header with-border">
         <h3 class="box-title"><?= gettext('People') ?></h3>

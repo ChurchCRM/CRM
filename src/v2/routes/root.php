@@ -1,12 +1,13 @@
 <?php
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\ChurchMetaData;
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\EventAttendQuery;
 use ChurchCRM\FamilyQuery;
 use ChurchCRM\GroupQuery;
 use ChurchCRM\PersonQuery;
-use ChurchCRM\dto\SystemConfig;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Slim\Http\Request;
 use Slim\Http\Response;
@@ -52,7 +53,8 @@ function viewDashboard(Request $request, Response $response, array $args)
         'sRootPath' => SystemURLs::getRootPath(),
         'sPageTitle' => gettext('Welcome to').' '. ChurchMetaData::getChurchName(),
         'dashboardCounts' => $dashboardCounts,
-        'sundaySchoolEnabled' => SystemConfig::getBooleanValue("bEnabledSundaySchool")
+        'sundaySchoolEnabled' => SystemConfig::getBooleanValue("bEnabledSundaySchool"),
+        'depositEnabled' => AuthenticationManager::GetCurrentUser()->isFinanceEnabled()
     ];
 
     return $renderer->render($response, 'dashboard.php', $pageArgs);
