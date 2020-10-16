@@ -19,6 +19,7 @@ $app->group('/families', function () {
 
     $this->get('/latest', 'getLatestFamilies');
     $this->get('/updated', 'getUpdatedFamilies');
+    $this->get('/anniversaries', 'getFamiliesWithAnniversaries');
 
     $this->get('/email/without', function ($request, $response, $args) {
         $families = FamilyQuery::create()->joinWithPerson()->find();
@@ -138,6 +139,18 @@ $app->group('/families', function () {
 });
 
 
+function getFamiliesWithAnniversaries(Request $request, Response $response, array $p_args)
+{
+    $families = FamilyQuery::create()
+        ->filterByDateDeactivated(null)
+        ->filterByWeddingdate(null, Criteria::NOT_EQUAL)
+        ->addUsingAlias(FamilyTableMap::COL_FAM_WEDDINGDATE,"MONTH(". FamilyTableMap::COL_FAM_WEDDINGDATE .") =" . date('m'),Criteria::CUSTOM)
+        ->orderByDateEntered('DESC')
+        ->find();
+
+    return $response->withJson(buildFormattedFamilies($families, false, false, true));
+
+}
 function getLatestFamilies(Request $request, Response $response, array $p_args)
 {
     $families = FamilyQuery::create()
@@ -146,7 +159,7 @@ function getLatestFamilies(Request $request, Response $response, array $p_args)
         ->limit(10)
         ->find();
 
-    return $response->withJson(buildFormattedFamilies($families, true));
+    return $response->withJson(buildFormattedFamilies($families, true, false, false));
 }
 
 function getUpdatedFamilies(Request $request, Response $response, array $p_args)
@@ -157,12 +170,12 @@ function getUpdatedFamilies(Request $request, Response $response, array $p_args)
         ->limit(10)
         ->find();
 
-    $formattedList = buildFormattedFamilies($families, false);
+    $formattedList = buildFormattedFamilies($families, false, true, false);
 
     return $response->withJson($formattedList);
 }
 
-function buildFormattedFamilies($families, $created)
+function buildFormattedFamilies($families, $created, $edited, $weeding)
 {
     $formattedList = [];
 
@@ -173,8 +186,14 @@ function buildFormattedFamilies($families, $created)
         $formattedFamily["Address"] = $family->getAddress();
         if ($created) {
             $formattedFamily["Created"] = date_format($family->getDateEntered(), SystemConfig::getValue('sDateFormatLong'));
-        } else {
+        }
+
+        if ($edited) {
             $formattedFamily["LastEdited"] = date_format($family->getDateLastEdited(), SystemConfig::getValue('sDateFormatLong'));
+        }
+
+        if ($weeding) {
+            $formattedFamily["WeddingDate"] = date_format($family->getWeddingdate(), SystemConfig::getValue('sDateFormatLong'));
         }
 
         array_push($formattedList, $formattedFamily);
