@@ -40,6 +40,58 @@ $(document).ready(function () {
     $.extend(dataTableConfig, dataTableDashboardDefaults);
     $("#latestFamiliesDashboardItem").DataTable(dataTableConfig);
 
+    dataTableConfig = {
+        ajax: {
+            url: window.CRM.root + "/api/persons/birthday",
+            dataSrc: "people"
+        },
+        columns: [
+            {
+                title: i18next.t('Name'),
+                data: 'FirstName',
+                render: function (data, type, row) {
+                    return '<a href="' + window.CRM.root + '/PersonView.php?PersonID=' + row.PersonId + '">'+ row.FormattedName +'</a> '
+                }
+            },
+            {
+                title: i18next.t('email'),
+                data: 'Email',
+                render: function (data, type, row) {
+                    return buildRenderEmail(data);
+                }
+            },
+            {
+                title: i18next.t('Birthday'),
+                data: 'Birthday'
+            }
+        ]
+    }
+    $.extend(dataTableConfig, window.CRM.plugin.dataTable);
+    $.extend(dataTableConfig, dataTableDashboardDefaults);
+    $("#PersonBirthdayDashboardItem").DataTable(dataTableConfig);
+
+    dataTableConfig = {
+        ajax: {
+            url: window.CRM.root + "/api/families/anniversaries",
+            dataSrc: "families"
+        },
+        columns: [
+            {
+                title: i18next.t('Name'),
+                data: 'Name',
+                render: function (data, type, row) {
+                    return '<a href="' + window.CRM.root + '/v2/family/' + row.FamilyId + '">'+ data +'</a> '
+                }
+            },
+            {
+                title: i18next.t('Anniversary'),
+                data: 'WeddingDate'
+            }
+        ]
+    }
+    $.extend(dataTableConfig, window.CRM.plugin.dataTable);
+    $.extend(dataTableConfig, dataTableDashboardDefaults);
+    $("#FamiliesWithAnniversariesDashboardItem").DataTable(dataTableConfig);
 
     dataTableConfig = {
         ajax: {

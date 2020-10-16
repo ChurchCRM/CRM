@@ -131,6 +131,7 @@ function getPersonsWithBirthdays(Request $request, Response $response, array $p_
 {
     $people = PersonQuery::create()
         ->filterByBirthMonth(date('m'))
+        ->filterByBirthDay(date('d'))
         ->find();
 
     return $response->withJson(buildFormattedPersonList($people, false, false, true));
@@ -145,6 +146,7 @@ function buildFormattedPersonList($people, $created, $edited, $birthday)
         $formattedPerson["PersonId"] = $person->getId();
         $formattedPerson["FirstName"] = $person->getFirstName();
         $formattedPerson["LastName"] = $person->getLastName();
+        $formattedPerson["FormattedName"] = $person->getFullName();
         $formattedPerson["Email"] = $person->getEmail();
         if ($created) {
             $formattedPerson["Created"] = date_format($person->getDateEntered(), SystemConfig::getValue('sDateFormatLong'));
@@ -155,7 +157,7 @@ function buildFormattedPersonList($people, $created, $edited, $birthday)
         }
 
         if ($birthday) {
-            $formattedPerson["birthday"] = date_format($person->getBirthDate(), SystemConfig::getValue('sDateFormatLong'));
+            $formattedPerson["Birthday"] = date_format($person->getBirthDate(), SystemConfig::getValue('sDateFormatLong'));
         }
 
 

@@ -112,6 +112,31 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
 </div><!-- /.row -->
 
 <div class="box">
+    <div class="box-body">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="box box-solid">
+                    <h3 class="box-header"><h4><?= gettext("Today's Birthdays") ?></h4></h3>
+                    <div class="box-body">
+                        <table class="table table-striped" width="100%" id="PersonBirthdayDashboardItem"></table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="box box-solid">
+                    <h3 class="box-header"><h4><?= gettext("Today's Wedding Anniversaries") ?></h4></h3>
+                    <div class="box-body">
+                        <table class="table table-striped" width="100%" id="FamiliesWithAnniversariesDashboardItem"></table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="box">
     <div class="box-header with-border">
         <h3 class="box-title"><?= gettext('People') ?></h3>
         <div class="pull-right">
