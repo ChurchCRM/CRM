@@ -138,12 +138,12 @@ function buildFormattedPersonList($people, $created)
         $formattedPerson["LastName"] = $person->getLastName();
         $formattedPerson["Email"] = $person->getEmail();
         if ($created) {
-            $formattedPerson["Created"] = date_format($person->getDateEntered(), SystemConfig::getValue('sDateFormatShort'));
+            $formattedPerson["Created"] = date_format($person->getDateEntered(), SystemConfig::getValue('sDateFormatLong'));
         } else {
-            $formattedPerson["LastEdited"] = date_format($person->getDateLastEdited(), SystemConfig::getValue('sDateFormatShort'));
+            $formattedPerson["LastEdited"] = date_format($person->getDateLastEdited(), SystemConfig::getValue('sDateFormatLong'));
         }
 
         array_push($formattedList, $formattedPerson);
     }
-    return $formattedList;
+    return ["people" => $formattedList];
 }

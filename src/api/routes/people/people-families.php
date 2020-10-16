@@ -170,13 +170,14 @@ function buildFormattedFamilies($families, $created)
         $formattedFamily = [];
         $formattedFamily["FamilyId"] = $family->getId();
         $formattedFamily["Name"] = $family->getName();
+        $formattedFamily["Address"] = $family->getAddress();
         if ($created) {
-            $formattedFamily["Created"] = date_format($family->getDateEntered(), SystemConfig::getValue('sDateFormatShort'));
+            $formattedFamily["Created"] = date_format($family->getDateEntered(), SystemConfig::getValue('sDateFormatLong'));
         } else {
-            $formattedFamily["LastEdited"] = date_format($family->getDateLastEdited(), SystemConfig::getValue('sDateFormatShort'));
+            $formattedFamily["LastEdited"] = date_format($family->getDateLastEdited(), SystemConfig::getValue('sDateFormatLong'));
         }
 
         array_push($formattedList, $formattedFamily);
     }
-    return $formattedList;
+    return ["families" => $formattedList];
 }
