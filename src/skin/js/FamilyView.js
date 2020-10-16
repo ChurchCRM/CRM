@@ -305,27 +305,29 @@ $(document).ready(function () {
         });
     }
 
-    $.ajax({
-        type: 'GET',
-        dataType: 'json',
-        url: window.CRM.root + '/api/mailchimp/family/' + window.CRM.currentFamily,
-        success: function (data, status, xmlHttpReq) {
-            for (emailData of data) {
-                let htmlVal = "";
-                let eamilMD5 = emailData["emailMD5"];
-                for (list of emailData["list"]) {
-                    let listName = list["name"];
-                    let listStatus = list["status"];
-                    if (listStatus != 404) {
-                        let listOpenRate = list["stats"]["avg_open_rate"]*100;
-                        htmlVal = htmlVal + listName + " (" + listStatus + ") - " + listOpenRate + "% "+  i18next.t("open rate");
+    if (window.CRM.plugin.mailchimp) {
+        $.ajax({
+            type: 'GET',
+            dataType: 'json',
+            url: window.CRM.root + '/api/mailchimp/family/' + window.CRM.currentFamily,
+            success: function (data, status, xmlHttpReq) {
+                for (emailData of data) {
+                    let htmlVal = "";
+                    let eamilMD5 = emailData["emailMD5"];
+                    for (list of emailData["list"]) {
+                        let listName = list["name"];
+                        let listStatus = list["status"];
+                        if (listStatus != 404) {
+                            let listOpenRate = list["stats"]["avg_open_rate"]*100;
+                            htmlVal = htmlVal + listName + " (" + listStatus + ") - " + listOpenRate + "% "+  i18next.t("open rate");
+                        }
                     }
+                    if (htmlVal === "") {
+                        htmlVal = i18next.t("Not Subscribed ");
+                    }
+                    $('#'+ eamilMD5).html(htmlVal);
                 }
-                if (htmlVal === "") {
-                    htmlVal = i18next.t("Not Subscribed ");
-                }
-                $('#'+ eamilMD5).html(htmlVal);
             }
-        }
-    });
+        });
+    }
 });

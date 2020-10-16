@@ -4883,6 +4883,30 @@ msgid "Set true to disable entering addresses in Person Editor.  Set false to en
 msgstr "Установите true, чтобы запретить ввод адресов в редакторе субъекта. Установите false, чтобы разрешить ввод адресов в Редакторе субъекта."
 
 #: 
+msgid "Number of checks for Deposit Slip Report"
+msgstr "Количество чеков для отчета о депозите"
+
+#: 
+msgid "Set true to enable use of scanned checks"
+msgstr "Установите верно, чтобы разрешить использование отсканированных чеков"
+
+#: 
+msgid "Unit used to measure distance, miles or km."
+msgstr "Единица измерения расстояния, мили или км."
+
+#: 
+msgid "Names of markers for Google Maps in order of classification"
+msgstr "Названия маркеров для Google Maps в порядке классификации"
+
+#: 
+msgid "Enable non-deductible payments"
+msgstr "Разрешить невычитаемые платежи"
+
+#: 
+msgid "Set true to enable family self registration."
+msgstr "Установите значение true, чтобы разрешить саморегистрацию семьи."
+
+#: 
 msgid "People Dashboard"
 msgstr "Панель Управления Людей"
 
