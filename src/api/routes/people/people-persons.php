@@ -1,15 +1,15 @@
 <?php
 
 use ChurchCRM\dto\MenuEventsCount;
+use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\FamilyQuery;
 use ChurchCRM\ListOptionQuery;
 use ChurchCRM\Person;
 use ChurchCRM\PersonQuery;
-use ChurchCRM\FamilyQuery;
-use Propel\Runtime\Propel;
 use Propel\Runtime\ActiveQuery\Criteria;
+use Propel\Runtime\Propel;
 use Slim\Http\Request;
 use Slim\Http\Response;
-use ChurchCRM\dto\SystemConfig;
 
 $app->group('/persons', function () {
 
@@ -110,7 +110,7 @@ function getLatestPersons(Request $request, Response $response, array $p_args)
     ->limit(10)
     ->find();
 
-    return $response->withJson(buildFormatedPersonList($people));
+    return $response->withJson(buildFormattedPersonList($people, true));
 }
 
 function getUpdatedPersons(Request $request, Response $response, array $p_args)
@@ -122,12 +122,12 @@ function getUpdatedPersons(Request $request, Response $response, array $p_args)
         ->limit(10)
         ->find();
 
-    $formattedList = buildFormatedPersonList($people);
+    $formattedList = buildFormattedPersonList($people, false);
 
     return $response->withJson($formattedList);
 }
 
-function buildFormatedPersonList($people)
+function buildFormattedPersonList($people, $created)
 {
     $formattedList = [];
 
@@ -137,7 +137,11 @@ function buildFormatedPersonList($people)
         $formattedPerson["FirstName"] = $person->getFirstName();
         $formattedPerson["LastName"] = $person->getLastName();
         $formattedPerson["Email"] = $person->getEmail();
-        $formattedPerson["LastEdited"] = date_format($person->getDateLastEdited(), SystemConfig::getValue('sDateFormatShort'));;
+        if ($created) {
+            $formattedPerson["Created"] = date_format($person->getDateEntered(), SystemConfig::getValue('sDateFormatShort'));
+        } else {
+            $formattedPerson["LastEdited"] = date_format($person->getDateLastEdited(), SystemConfig::getValue('sDateFormatShort'));
+        }
 
         array_push($formattedList, $formattedPerson);
     }

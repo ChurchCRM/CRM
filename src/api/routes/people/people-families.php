@@ -1,6 +1,8 @@
 <?php
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\MenuEventsCount;
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\FamilyQuery;
 use ChurchCRM\Map\FamilyTableMap;
 use ChurchCRM\Map\TokenTableMap;
@@ -10,9 +12,13 @@ use ChurchCRM\Person;
 use ChurchCRM\Token;
 use ChurchCRM\TokenQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
-use ChurchCRM\Authentication\AuthenticationManager;
+use Slim\Http\Request;
+use Slim\Http\Response;
 
 $app->group('/families', function () {
+
+    $this->get('/latest', 'getLatestFamilies');
+    $this->get('/updated', 'getUpdatedFamilies');
 
     $this->get('/email/without', function ($request, $response, $args) {
         $families = FamilyQuery::create()->joinWithPerson()->find();
@@ -129,6 +135,48 @@ $app->group('/families', function () {
 
     });
 
-
-
 });
+
+
+function getLatestFamilies(Request $request, Response $response, array $p_args)
+{
+    $families = FamilyQuery::create()
+        ->filterByDateDeactivated(null)
+        ->orderByDateEntered('DESC')
+        ->limit(10)
+        ->find();
+
+    return $response->withJson(buildFormattedFamilies($families, true));
+}
+
+function getUpdatedFamilies(Request $request, Response $response, array $p_args)
+{
+    $families = FamilyQuery::create()
+        ->filterByDateDeactivated(null)
+        ->orderByDateLastEdited('DESC')
+        ->limit(10)
+        ->find();
+
+    $formattedList = buildFormattedFamilies($families, false);
+
+    return $response->withJson($formattedList);
+}
+
+function buildFormattedFamilies($families, $created)
+{
+    $formattedList = [];
+
+    foreach ($families as $family) {
+        $formattedFamily = [];
+        $formattedFamily["FamilyId"] = $family->getId();
+        $formattedFamily["Name"] = $family->getName();
+        if ($created) {
+            $formattedFamily["Created"] = date_format($family->getDateEntered(), SystemConfig::getValue('sDateFormatShort'));
+        } else {
+            $formattedFamily["LastEdited"] = date_format($family->getDateLastEdited(), SystemConfig::getValue('sDateFormatShort'));
+        }
+
+        array_push($formattedList, $formattedFamily);
+    }
+    return $formattedList;
+}
