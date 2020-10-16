@@ -7,7 +7,7 @@ class NewDashboardService
     public static function getDashboardItems($PageName)
     {
         $DashboardItems = array(
-            "ChurchCRM\Dashboard\EventsDashboardItem",
+            "ChurchCRM\Dashboard\EventsMenuItems",
             "ChurchCRM\Dashboard\ClassificationDashboardItem",
             "ChurchCRM\Dashboard\CurrentLocaleMetadata"
         );

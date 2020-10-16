@@ -8,7 +8,7 @@ use ChurchCRM\Map\FamilyTableMap;
 use ChurchCRM\PersonQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
 
-class EventsDashboardItem implements DashboardItemInterface {
+class EventsMenuItems implements DashboardItemInterface {
 
   public static function getDashboardItemName() {
     return "EventsCounters";
