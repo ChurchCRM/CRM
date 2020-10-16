@@ -145,7 +145,8 @@ function getFamiliesWithAnniversaries(Request $request, Response $response, arra
         ->filterByDateDeactivated(null)
         ->filterByWeddingdate(null, Criteria::NOT_EQUAL)
         ->addUsingAlias(FamilyTableMap::COL_FAM_WEDDINGDATE,"MONTH(". FamilyTableMap::COL_FAM_WEDDINGDATE .") =" . date('m'),Criteria::CUSTOM)
-        ->orderByDateEntered('DESC')
+        ->addUsingAlias(FamilyTableMap::COL_FAM_WEDDINGDATE,"DAY(". FamilyTableMap::COL_FAM_WEDDINGDATE .") =" . date('d'),Criteria::CUSTOM)
+        ->orderByWeddingdate('DESC')
         ->find();
 
     return $response->withJson(buildFormattedFamilies($families, false, false, true));
