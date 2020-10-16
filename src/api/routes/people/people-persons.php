@@ -19,6 +19,7 @@ $app->group('/persons', function () {
 
     $this->get('/latest', 'getLatestPersons');
     $this->get('/updated', 'getUpdatedPersons');
+    $this->get('/birthday', 'getPersonsWithBirthdays');
 
     // search person by Name
     $this->get('/search/{query}', function ($request, $response, $args) {
@@ -110,7 +111,7 @@ function getLatestPersons(Request $request, Response $response, array $p_args)
     ->limit(10)
     ->find();
 
-    return $response->withJson(buildFormattedPersonList($people, true));
+    return $response->withJson(buildFormattedPersonList($people, true ));
 }
 
 function getUpdatedPersons(Request $request, Response $response, array $p_args)
@@ -122,12 +123,22 @@ function getUpdatedPersons(Request $request, Response $response, array $p_args)
         ->limit(10)
         ->find();
 
-    $formattedList = buildFormattedPersonList($people, false);
-
-    return $response->withJson($formattedList);
+    return $response->withJson(buildFormattedPersonList($people, false, true));
 }
 
-function buildFormattedPersonList($people, $created)
+
+function getPersonsWithBirthdays(Request $request, Response $response, array $p_args)
+{
+    $people = PersonQuery::create()
+        ->filterByBirthMonth(date('m'))
+        ->filterByBirthDay(date('d'))
+        ->find();
+
+    return $response->withJson(buildFormattedPersonList($people, false, false, true));
+}
+
+
+function buildFormattedPersonList($people, $created, $edited, $birthday)
 {
     $formattedList = [];
 
@@ -139,9 +150,16 @@ function buildFormattedPersonList($people, $created)
         $formattedPerson["Email"] = $person->getEmail();
         if ($created) {
             $formattedPerson["Created"] = date_format($person->getDateEntered(), SystemConfig::getValue('sDateFormatLong'));
-        } else {
+        }
+
+        if ($edited) {
             $formattedPerson["LastEdited"] = date_format($person->getDateLastEdited(), SystemConfig::getValue('sDateFormatLong'));
         }
+
+        if ($birthday) {
+            $formattedPerson["birthday"] = date_format($person->getBirthDate(), SystemConfig::getValue('sDateFormatLong'));
+        }
+
 
         array_push($formattedList, $formattedPerson);
     }
