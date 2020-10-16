@@ -227,34 +227,36 @@ $(document).ready(function () {
             '<a href="' + window.CRM.root + '/PersonView.php?PersonID=' + personId + '><button class="btn btn-default"><i class="fa fa-pencil"></i></button></a>';
     }
 
-    window.CRM.APIRequest({
-        method: 'GET',
-        path: 'deposits/dashboard'
-    }).done(function(data) {
-        let lineDataRaw = data;
-        let lineData = {
-            labels: [],
-            datasets: [
-                {
-                    label: "Value",
-                    data: []
-                }
-            ]
-        };
-        $.each(lineDataRaw, function(i, val) {
-            lineData.labels.push(moment(val.Date).format("MM-DD-YY"));
-            lineData.datasets[0].data.push(val.totalAmount);
-        });
+    if ($('#depositChartRow').length > 0) {
+        window.CRM.APIRequest({
+            method: 'GET',
+            path: 'deposits/dashboard'
+        }).done(function (data) {
+            let lineDataRaw = data;
+            let lineData = {
+                labels: [],
+                datasets: [
+                    {
+                        label: "Value",
+                        data: []
+                    }
+                ]
+            };
+            $.each(lineDataRaw, function (i, val) {
+                lineData.labels.push(moment(val.Date).format("MM-DD-YY"));
+                lineData.datasets[0].data.push(val.totalAmount);
+            });
 
-        new Chart($("#deposit-lineGraph").get(0).getContext("2d"), {
-                type: 'line',
-                data: lineData,
-                options: {
-                    responsive:true,
-                    maintainAspectRatio:false
+            new Chart($("#deposit-lineGraph").get(0).getContext("2d"), {
+                    type: 'line',
+                    data: lineData,
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false
+                    }
                 }
-            }
-        );
-    });
+            );
+        });
+    }
 
 });

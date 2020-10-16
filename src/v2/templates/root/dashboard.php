@@ -139,7 +139,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
 <?php
 if ($depositEnabled) { // If the user has Finance permissions, then let's display the deposit line chart
     ?>
-    <div class="row">
+    <div class="row" id="depositChartRow">
         <div class="col-lg-12 col-md-12 col-sm-12">
             <div class="box box-info">
                 <div class="box-header">
