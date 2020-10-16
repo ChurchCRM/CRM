@@ -111,7 +111,7 @@ function getLatestPersons(Request $request, Response $response, array $p_args)
     ->limit(10)
     ->find();
 
-    return $response->withJson(buildFormattedPersonList($people, true ));
+    return $response->withJson(buildFormattedPersonList($people, true, false, false ));
 }
 
 function getUpdatedPersons(Request $request, Response $response, array $p_args)
@@ -123,7 +123,7 @@ function getUpdatedPersons(Request $request, Response $response, array $p_args)
         ->limit(10)
         ->find();
 
-    return $response->withJson(buildFormattedPersonList($people, false, true));
+    return $response->withJson(buildFormattedPersonList($people, false, true, false));
 }
 
 
@@ -131,12 +131,10 @@ function getPersonsWithBirthdays(Request $request, Response $response, array $p_
 {
     $people = PersonQuery::create()
         ->filterByBirthMonth(date('m'))
-        ->filterByBirthDay(date('d'))
         ->find();
 
     return $response->withJson(buildFormattedPersonList($people, false, false, true));
 }
-
 
 function buildFormattedPersonList($people, $created, $edited, $birthday)
 {
