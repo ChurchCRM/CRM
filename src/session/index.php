@@ -17,6 +17,7 @@ use ChurchCRM\Slim\Middleware\VersionMiddleware;
 use ChurchCRM\dto\SystemConfig;
 use Monolog\Logger;
 
+// Instantiate the app
 $container = new Container;
 if (SystemConfig::getValue("sLogLevel") == Logger::DEBUG) {
     $container["settings"]['displayErrorDetails'] = true;

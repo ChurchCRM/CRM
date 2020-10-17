@@ -12,6 +12,7 @@ use Slim\App;
 use Slim\Container;
 use Slim\HttpCache\CacheProvider;
 
+// Instantiate the app
 $container = new Container;
 $container['cache'] = function () {
     return new CacheProvider();
