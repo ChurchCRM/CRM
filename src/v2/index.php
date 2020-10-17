@@ -9,11 +9,13 @@ use Slim\Container;
 use Slim\App;
 use ChurchCRM\Slim\Middleware\VersionMiddleware;
 use ChurchCRM\Slim\Middleware\AuthMiddleware;
-
-// Instantiate the app
-$settings = require __DIR__.'/../Include/slim/settings.php';
+use ChurchCRM\dto\SystemConfig;
+use Monolog\Logger;
 
 $container = new Container;
+if (SystemConfig::getValue("sLogLevel") == Logger::DEBUG) {
+    $container["settings"]['displayErrorDetails'] = true;
+}
 
 // Add middleware to the application
 $app = new App($container);
