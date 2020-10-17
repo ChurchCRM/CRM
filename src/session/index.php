@@ -14,12 +14,14 @@ use Slim\Http\Response;
 use Slim\Views\PhpRenderer;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Slim\Middleware\VersionMiddleware;
+use ChurchCRM\dto\SystemConfig;
+use Monolog\Logger;
 
 // Instantiate the app
-$settings = require __DIR__.'/../Include/slim/settings.php';
-
 $container = new Container;
-
+if (SystemConfig::getValue("sLogLevel") == Logger::DEBUG) {
+    $container["settings"]['displayErrorDetails'] = true;
+}
 // Add middleware to the application
 $app = new App($container);
 
@@ -45,7 +47,7 @@ function processTwoFactorGet(Request $request, Response $response, array $args)
         'sRootPath' => SystemURLs::getRootPath(),
         'user' => $curUser,
     ];
-    
+
     return $renderer->render($response, 'two-factor.php', $pageArgs);
 }
 
@@ -79,7 +81,7 @@ function beginSession(Request $request, Response $response, array $args)
     }
 
     $renderer = new PhpRenderer('templates/');
-    
+
     $pageArgs['prefilledUserName'] = "";
     # Defermine if approprirate to pre-fill the username field
     if (isset($_GET['username'])) {
