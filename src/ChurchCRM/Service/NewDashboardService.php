@@ -3,15 +3,15 @@
 namespace ChurchCRM\Service;
 class NewDashboardService
 {
-  
+
   public static function getDashboardItems($PageName) {
      $DashboardItems = array (
-       "ChurchCRM\Dashboard\EventsDashboardItem",
+       "ChurchCRM\Dashboard\EventsMenuItems",
        "ChurchCRM\Dashboard\ClassificationDashboardItem",
        "ChurchCRM\Dashboard\FamilyDashboardItem",
        "ChurchCRM\Dashboard\GroupsDashboardItem",
        "ChurchCRM\Dashboard\PersonDashboardItem",
-       // "ChurchCRM\Dashboard\PersonDemographicDashboardItem",
+       "ChurchCRM\Dashboard\CurrentLocaleMetadata"
     );
     $ReturnValues = array ();
     Foreach ($DashboardItems as $DashboardItem) {
@@ -20,7 +20,7 @@ class NewDashboardService
       }
     }
     return $ReturnValues;
-    
+
   }
   public static function getValues($PageName) {
     $ReturnValues = array ();
