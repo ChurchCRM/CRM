@@ -176,7 +176,7 @@ function getUpdatedFamilies(Request $request, Response $response, array $p_args)
     return $response->withJson($formattedList);
 }
 
-function buildFormattedFamilies($families, $created, $edited, $weeding)
+function buildFormattedFamilies($families, $created, $edited, $wedding)
 {
     $formattedList = [];
 
@@ -193,7 +193,7 @@ function buildFormattedFamilies($families, $created, $edited, $weeding)
             $formattedFamily["LastEdited"] = date_format($family->getDateLastEdited(), SystemConfig::getValue('sDateFormatLong'));
         }
 
-        if ($weeding) {
+        if ($wedding) {
             $formattedFamily["WeddingDate"] = date_format($family->getWeddingdate(), SystemConfig::getValue('sDateFormatLong'));
         }
 
