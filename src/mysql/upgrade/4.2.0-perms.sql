@@ -2,6 +2,7 @@
 --
 -- Table structure for table `permissions`
 --
+DROP TABLE IF EXISTS `permissions`;
 
 CREATE TABLE `permissions` (
   `permission_id` int(11) NOT NULL,
@@ -38,6 +39,7 @@ INSERT INTO `permissions` (`permission_id`, `permission_name`, `permission_desc`
 -- Table structure for table `person_permission`
 --
 
+DROP TABLE IF EXISTS `person_permission`;
 CREATE TABLE `person_permission` (
   `per_id` int(11) NOT NULL,
   `permission_id` int(11) NOT NULL
@@ -48,7 +50,7 @@ CREATE TABLE `person_permission` (
 --
 -- Table structure for table `person_roles`
 --
-
+DROP TABLE IF EXISTS `person_roles`;
 CREATE TABLE `person_roles` (
   `per_id` int(11) NOT NULL,
   `role_id` int(11) NOT NULL
@@ -59,7 +61,7 @@ CREATE TABLE `person_roles` (
 --
 -- Table structure for table `roles`
 --
-
+DROP TABLE IF EXISTS `roles`;
 CREATE TABLE `roles` (
   `role_id` int(11) NOT NULL,
   `role_name` varchar(50) NOT NULL,
