@@ -54,7 +54,7 @@ $(document).ready(function () {
                 }
             },
             {
-                title: i18next.t('email'),
+                title: i18next.t('Email'),
                 data: 'Email',
                 render: function (data, type, row) {
                     return buildRenderEmail(data);
@@ -157,7 +157,7 @@ $(document).ready(function () {
                 data: 'LastName'
             },
             {
-                title: i18next.t('email'),
+                title: i18next.t('Email'),
                 data: 'Email',
                 render: function (data, type, row) {
                     return buildRenderEmail(data);
@@ -199,7 +199,7 @@ $(document).ready(function () {
                 data: 'LastName'
             },
             {
-                title: i18next.t('email'),
+                title: i18next.t('Email'),
                 data: 'Email',
                 render: function (data, type, row) {
                     return buildRenderEmail(data);
