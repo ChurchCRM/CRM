@@ -548,6 +548,14 @@
             document.getElementById('EventsNumber').innerText = data.Events;
           }
         },
+          PageLocale: function (data) {
+              $(".flag-icon").addClass("flag-icon-" + data.countryFlagCode);
+              $("#translationInfo").html(data.name + " [" + window.CRM.locale + "]");
+              if (data.countryFlagCode != "us") {
+                  $("#translationPer").html(data.poPerComplete + "%");
+                  $("#localePer").removeClass("hidden");
+              }
+          },
         FamilyCount: function (data) {
           var dashBoardFam = document.getElementById('familyCountDashboard');
 
@@ -630,7 +638,7 @@
       refresh: function () {
         window.CRM.APIRequest({
           method: 'GET',
-          path: 'background/dashboard/page?currentpagename=' + window.CRM.PageName.replace(window.CRM.root,''),
+          path: 'background/page?name=' + window.CRM.PageName.replace(window.CRM.root,''),
           suppressErrorDialog: true
         }).done(function (data) {
           for (var key in data) {
