@@ -2,7 +2,7 @@
   "name": "churchcrm/crm-tests",
   "config": {
     "platform": {
-      "php":"7.2"
+      "php":"7.3"
     }
   },
   "require": {
@@ -13,5 +13,5 @@
       "behat/mink-browserkit-driver": "*",
       "novaway/common-contexts": "*",
       "crossan007/php-sauceconnect": "dev-master"
-    } 
+    }
 }
