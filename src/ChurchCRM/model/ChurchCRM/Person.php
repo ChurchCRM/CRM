@@ -61,7 +61,7 @@ class Person extends BasePerson implements iPhoto
         return $this->getFlags() == 1 || $this->getBirthYear() == '' || $this->getBirthYear() == '0';
     }
 
-    private function getBirthDate()
+    public function getBirthDate()
     {
         if (!is_null($this->getBirthDay()) && $this->getBirthDay() != '' &&
             !is_null($this->getBirthMonth()) && $this->getBirthMonth() != ''
@@ -485,7 +485,7 @@ class Person extends BasePerson implements iPhoto
                     $nameString = trim($nameString);
                 }
                 break;
-                
+
             case 8:
                 if ($this->getLastName()) {
                     $nameString .= $this->getLastName();
@@ -496,7 +496,7 @@ class Person extends BasePerson implements iPhoto
                   } else {
                     $nameString .= ', ' . $this->getFirstName();
                   }
-                    
+
                 }
                 if ($this->getMiddleName()) {
                     $nameString .= ' ' . $this->getMiddleName();
@@ -553,7 +553,7 @@ class Person extends BasePerson implements iPhoto
       return $personProperties;
     }
 
-    //  return array of person properties 
+    //  return array of person properties
     // created for the person-list.php datatable
     public function getPropertiesString() {
       $personProperties = PropertyQuery::create()
@@ -594,7 +594,7 @@ class Person extends BasePerson implements iPhoto
                     $personCustom[] = $customfield->getName();
                 }
             }
-        }        
+        }
       }
       return $personCustom;
     }
@@ -641,7 +641,7 @@ class Person extends BasePerson implements iPhoto
 
       return sprintf(ngettext('%d year old', '%d years old', $age->y), $age->y);
     }
-    
+
     public function getNumericAge() {
       $birthDate = $this->getBirthDate();
       if ($this->hideAge())
