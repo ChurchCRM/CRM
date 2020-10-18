@@ -25,7 +25,7 @@ Cypress.Commands.add("login", (username, password, assertLoggedIn = true) => {
     cy.get("#PasswordBox").type(password);
     cy.get("form").submit();
     if (assertLoggedIn) {
-        cy.location('pathname').should('include', "/Menu.php");
+        cy.location('pathname').should('include', "/v2/dashboard");
     }
 });
 
