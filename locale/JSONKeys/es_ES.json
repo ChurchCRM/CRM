@@ -2364,5 +2364,9 @@
     " has a type mismatch": " tiene una discrepancia de tipos",
     "Loading": "Cargando",
     "Family Property Unassignment": "Desasignación de Propiedad de Familia",
-    "Do you want to remove": "Desea remover?"
+    "Do you want to remove": "Desea remover?",
+    "View Active Persons": "Ver personas activas",
+    "View Inactive Persons": "Ver personas inactivas",
+    "Today's Birthdays": "Cumpleaños de hoy",
+    "Today's Wedding Anniversaries": "Aniversarios de bodas de hoy"
 }
