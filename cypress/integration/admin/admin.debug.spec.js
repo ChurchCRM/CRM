@@ -1,21 +1,25 @@
 /// <reference types="cypress" />
 
 context('Admin Debug', () => {
-    it('View system debug', () => {
+    beforeEach(() => {
         cy.loginAdmin();
+    })
+
+    it('View system debug', () => {
         cy.visit("v2/admin/debug");
         cy.contains('ChurchCRM Installation Information');
         cy.contains('Database');
     });
 
-    /* TODO 403 testing
+    it('View email debug', () => {
+        cy.visit("v2/email/debug");
+        cy.contains('Debug Email Connection');
+    });
 
-    it('can not View system debug', () => {
-        cy.loginStandard();
-        cy.visit("/v2/admin/debug")
-            .should((response) => {
-                expect(response.status).to.eq(403);
-            })
-    });*/
+    it('View system settings', () => {
+        cy.visit("SystemSettings.php");
+        cy.location('pathname').should('include', "/SystemSettings.php");
+    });
+
 });
 
