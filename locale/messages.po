@@ -10,7 +10,7 @@ msgstr ""
 "#-#-#-#-#  messages.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-16 21:45-0700\n"
+"POT-Creation-Date: 2020-10-17 17:34-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,16 +25,16 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2020-10-17T04:45:37.856Z\n"
-"PO-Revision-Date: 2020-10-17T04:45:37.856Z\n"
+"POT-Creation-Date: 2020-10-18T00:34:56.696Z\n"
+"PO-Revision-Date: 2020-10-18T00:34:56.696Z\n"
 "#-#-#-#-#  react-js-strings.po (i18next-conv)  #-#-#-#-#\n"
 "Project-Id-Version: i18next-conv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2020-10-17T04:45:38.070Z\n"
-"PO-Revision-Date: 2020-10-17T04:45:38.070Z\n"
+"POT-Creation-Date: 2020-10-18T00:34:56.893Z\n"
+"PO-Revision-Date: 2020-10-18T00:34:56.893Z\n"
 
 msgid "Backup Database"
 msgstr ""
@@ -813,21 +813,6 @@ msgstr ""
 msgid "Links"
 msgstr ""
 
-msgid "Unknown"
-msgstr ""
-
-msgid "Other"
-msgstr ""
-
-msgid "Head of Household"
-msgstr ""
-
-msgid "Spouse"
-msgstr ""
-
-msgid "Child"
-msgstr ""
-
 msgid "New Person Added"
 msgstr ""
 
@@ -990,6 +975,9 @@ msgid "Mailchimp is not active"
 msgstr ""
 
 msgid "Part"
+msgstr ""
+
+msgid "Unknown"
 msgstr ""
 
 msgid "Self Registration"
@@ -4109,6 +4097,9 @@ msgid "Quarterly"
 msgstr ""
 
 msgid "Once"
+msgstr ""
+
+msgid "Other"
 msgstr ""
 
 msgid "Payment by"
