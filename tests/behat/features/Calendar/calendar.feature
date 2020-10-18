@@ -20,12 +20,13 @@ Feature: Calendar
     And I press "Save"
     And I wait for AJAX to finish
     Then I should see "Test Calendar"
-      
+
+  @wip   
   Scenario: Create a new event;
     Given I am authenticated as "admin" using "changeme"
     And  I am on "/v2/calendar"
     And I wait for AJAX to finish
-    Then I click on "#calendar > div.fc-view-container > div > table > tbody > tr > td > div > div > div:nth-child(3) > div.fc-content-skeleton > table > tbody > tr:nth-child(1) > td:nth-child(3)"
+    Then I click on "#calendar > div.fc-view-container > div > table > tbody > tr > td > div > div > div:nth-child(2) > div.fc-bg > table > tbody > tr > td.fc-day.fc-widget-content.fc-fri.fc-today"
     And I wait for AJAX to finish
     Then I should see "Save"
     And the "Save" button should be disabled

@@ -4,7 +4,8 @@
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\Classification;
-use ChurchCRM\SessionUser;
+use ChurchCRM\Service\MailChimpService;
+use ChurchCRM\Authentication\AuthenticationManager;
 
 //Set the page title
 $sPageTitle =  $family->getName() . " - " . gettext("Family");
@@ -12,6 +13,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 $curYear = (new DateTime)->format("Y");
 $familyAddress = $family->getAddress();
+$mailchimp = new MailChimpService();
 ?>
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
@@ -19,6 +21,7 @@ $familyAddress = $family->getAddress();
     window.CRM.currentFamilyName = "<?= $family->getName() ?>";
     window.CRM.currentActive = <?= $family->isActive() ? "true" : "false" ?>;
     window.CRM.currentFamilyView = 2;
+    window.CRM.plugin.mailchimp = <?= $mailchimp->isActive()? "true" : "false" ?>;
 </script>
 
 
@@ -49,7 +52,7 @@ $familyAddress = $family->getAddress();
                                     <a id="view-larger-image-btn" href="#" title="<?= gettext("View Photo") ?>">
                                         <i class="fa fa-search-plus"></i>
                                     </a>
-                                    <?php if (SessionUser::getUser()->isEditRecordsEnabled()): ?>
+                                    <?php if (AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled()): ?>
                                         &nbsp;
                                         <a href="#" data-toggle="modal" data-target="#upload-image"
                                            title="<?= gettext("Upload Photo") ?>">
@@ -87,19 +90,19 @@ $familyAddress = $family->getAddress();
                            href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?FamilyID=<?=$family->getId()?>"><i
                                 class="fa fa-plus-square"></i> <?= gettext('Add New Member') ?></a>
 
-                        <?php if (SessionUser::getUser()->isEditRecordsEnabled()) { ?>
+                        <?php if (AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled()) { ?>
                             <button class="btn btn-app bg-orange" id="activateDeactivate">
                                 <i class="fa <?= (empty($family->isActive()) ? 'fa-times-circle-o' : 'fa-check-circle-o') ?> "></i><?php echo(($family->isActive() ? _('Deactivate') : _('Activate')) . _(' this Family')); ?>
                             </button>
                         <?php }
-                        if (SessionUser::getUser()->isDeleteRecordsEnabled()) {
+                        if (AuthenticationManager::GetCurrentUser()->isDeleteRecordsEnabled()) {
                             ?>
                             <a class="btn btn-app bg-maroon"
                                href="<?= SystemURLs::getRootPath() ?>/SelectDelete.php?FamilyID=<?=$family->getId()?>"><i
                                         class="fa fa-trash-o"></i><?= gettext('Delete this Family') ?></a>
                             <?php
                         }
-                        if (SessionUser::getUser()->isNotesEnabled()) {
+                        if (AuthenticationManager::GetCurrentUser()->isNotesEnabled()) {
                             ?>
                             <a class="btn btn-app"
                                href="<?= SystemURLs::getRootPath() ?>/NoteEditor.php?FamilyID=<?= $family->getId()?>"><i
@@ -108,17 +111,17 @@ $familyAddress = $family->getAddress();
                         } ?>
                         <a class="btn btn-app" id="AddFamilyToCart" data-familyid="<?= $family->getId() ?>"> <i
                                 class="fa fa-cart-plus"></i> <?= gettext("Add All Family Members to Cart") ?></a>
-                        <?php if (SessionUser::getUser()->isCanvasserEnabled()) { ?>
-                            <a class="btn btn-app" href="<?= SystemURLs::getRootPath()?>/CanvassEditor.php?FamilyID=<?= $family->getId() ?>&amp;FYID=<?= $_SESSION['idefaultFY'] ?>&amp;linkBack=v2/family/<?= $family->getId() ?>/view">
+                        <?php if (AuthenticationManager::GetCurrentUser()->isCanvasserEnabled()) { ?>
+                            <a class="btn btn-app" href="<?= SystemURLs::getRootPath()?>/CanvassEditor.php?FamilyID=<?= $family->getId() ?>&amp;FYID=<?= $_SESSION['idefaultFY'] ?>&amp;linkBack=v2/family/<?= $family->getId() ?>">
                                 <i class="fa fa-refresh"></i><?= MakeFYString($_SESSION['idefaultFY']) . gettext(" Canvass Entry") ?></a>
                         <?php } ?>
 
-                        <?php if (SessionUser::getUser()->isFinanceEnabled()) { ?>
+                        <?php if (AuthenticationManager::GetCurrentUser()->isFinanceEnabled()) { ?>
                             <a class="btn btn-app"
-                               href="<?= SystemURLs::getRootPath()?>/PledgeEditor.php?FamilyID=<?= $family->getId() ?>&amp;linkBack=v2/family/<?= $family->getId() ?>/view&amp;PledgeOrPayment=Pledge">
+                               href="<?= SystemURLs::getRootPath()?>/PledgeEditor.php?FamilyID=<?= $family->getId() ?>&amp;linkBack=v2/family/<?= $family->getId() ?>&amp;PledgeOrPayment=Pledge">
                                 <i class="fa fa-check-circle-o"></i><?= gettext("Add a new pledge") ?></a>
                             <a class="btn btn-app"
-                               href="<?= SystemURLs::getRootPath()?>/PledgeEditor.php?FamilyID=<?= $family->getId() ?>&amp;linkBack=v2/family/<?= $family->getId() ?>/view&amp;PledgeOrPayment=Payment">
+                               href="<?= SystemURLs::getRootPath()?>/PledgeEditor.php?FamilyID=<?= $family->getId() ?>&amp;linkBack=v2/family/<?= $family->getId() ?>&amp;PledgeOrPayment=Payment">
                                 <i class="fa fa-money"></i><?= gettext("Add a new payment") ?></a>
                         <?php } ?>
                     </div>
@@ -186,13 +189,10 @@ $familyAddress = $family->getAddress();
                                 <li><i class="fa-li fa fa-envelope"></i><?= gettext("Email") ?>:<a
                                         href="mailto:<?= $family->getEmail() ?>">
                                         <span><?= $family->getEmail() ?></span></a></li>
-                                <?php /**if ($mailchimp->isActive()) {
-                                 * ?>
-                                 * <li><i class="fa-li fa fa-send"></i><?= gettext("Email") ?>:
-                                 * <span><?= $mailchimp->isEmailInMailChimp($family->getEmail()) ?></span>
-                                 * </a></li>
-                                 * <?php
-                                 * }*/
+                                <?php if ($mailchimp->isActive()) { ?>
+                                 <li><i class="fa-li fa fa-send"></i><?= gettext("Mailchimp") ?>:
+                                 <span id="<?= md5($family->getEmail())?>">... <?= gettext("loading")?> ...</span></a></li>
+                                <?php }
                             }
                             foreach ($familyCustom as $customField) {
                                 echo '<li><i class="fa-li ' . $customField->getIcon() . '"></i>'. $customField->getDisplayValue().': <span>';
@@ -241,7 +241,7 @@ $familyAddress = $family->getAddress();
                                                 <button type="button" class="btn btn-xs btn-primary"><i class="fa fa-cart-plus"></i></button>
                                             </a>
 
-                                            <a href="../../index.php" class="table-link">
+                                            <a href="<?= SystemURLs::getRootPath()?>/PersonEditor.php?PersonID=<?= $person->getID()?>" class="table-link">
                                                 <button type="button" class="btn btn-xs btn-primary"><i class="fa fa-pencil"></i></button>
                                             </a>
                                             <a class="delete-person" data-person_name="<?= $person->getFullName() ?>"
@@ -308,10 +308,8 @@ $familyAddress = $family->getAddress();
                 <i class="fa fa-hashtag"></i>
                 <h3 class="box-title"><?= gettext("Properties") ?></h3>
                 <div class="box-tools pull-right">
-                    <?php if (SessionUser::getUser()->isEditRecordsEnabled()) { ?>
-                    <button type="button" class="btn btn-box-tool"><i
-                            class="fa fa-plus-circle"></i>
-                    </button>
+                    <?php if (AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled()) { ?>
+                    <button id="add-family-property" type="button" class="btn btn-box-tool hidden"><i class="fa fa-plus-circle text-blue"></i></button>
                     <?php } ?>
 
                     <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
@@ -320,71 +318,28 @@ $familyAddress = $family->getAddress();
                 </div>
             </div>
             <div class="box-body">
-                <?php
-                $familyProperties = $family->getProperties();
 
-                if (empty($familyProperties->count())) {
-                    ?>
-                    <br>
-                    <div class="alert alert-warning">
-                        <i class="fa fa-question-circle fa-fw fa-lg"></i>
-                        <span><?= gettext("No property assignments.") ?></span>
-                    </div>
-                    <?php
-                } else {
-                    ?>
-                    <table class="table table-striped table-bordered data-table" cellspacing="0" width="100%">
-                    <tr>
-                        <th></th>
-                        <th><?= gettext("Name") ?></th>
-                        <th><?= gettext("Value") ?></th>
-                    </tr>
+                <div id="family-property-loading" class="col-xs-12 text-center">
+                    <i class="btn btn-default btn-lrg ajax">
+                        <i class="fa fa-spin fa-refresh"></i>&nbsp; <?= gettext("Loading") ?>
+                    </i>
+                </div>
 
-                    <?php
-                    //Loop through the rows
-                    foreach ($familyProperties as $familyProperty) {?>
-                        <tr>
-                            <td>
-                            <?php if (SessionUser::getUser()->isEditRecordsEnabled()) {
-                                if (!empty($familyProperty->getProperty()->getProPrompt())) { ?>
-                                    <a href="<?=SystemURLs::getRootPath()?>/PropertyAssign.php?FamilyID=<?= $family->getId()?>&PropertyID=<?=$familyProperty->getPropertyId() ?>"><button type="button" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></button></a>
-                                <?php } ?>
-                                <a href="<?=SystemURLs::getRootPath()?>/PropertyUnassign.php?FamilyID=<?= $family->getId()?>&PropertyID=<?=$familyProperty->getPropertyId() ?>"><button type="button" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i></button></a></td>
-                            <?php } ?>
-                            </td>
-                            <td><?= $familyProperty->getProperty()->getProName() ?></td>
-                            <td><b><?= $familyProperty->getPropertyValue() ?></b></td>
-                        </tr>
+                <div id="family-property-no-data" class="alert alert-warning hidden">
+                    <i class="fa fa-question-circle fa-fw fa-lg"></i>
+                    <span><?= gettext("No property assignments.") ?></span>
+                </div>
 
-                    <?php } ?>
-                    </table>
-                <?php } ?>
-                <p/>
-                <?php if (SessionUser::getUser()->isEditRecordsEnabled()) { ?>
-                    <div class="hide" id="family-add-property">
-                        <div>
-                            <strong><?= gettext("Assign a New Property") ?>:</strong>
-                            <p/>
-                            <form method="post" action="<?=SystemURLs::getRootPath()?>/index.php">
-                                <div class="row">
-                                    <div class="form-group col-md-7 col-lg-7 col-sm-12 col-xs-12">
-                                        <select name="PropertyID" class="form-control">
-                                            <option selected disabled> -- <?= gettext('select an option') ?>--</option>
-                                            <?php foreach ($allFamilyProperties as $property) { ?>
-                                                <option value="<?= $property->getProId()?>"><?= $property->getProName()?></option>
-                                            <?php } ?>
-                                        </select>
-                                    </div>
-                                    <div class="form-group col-lg-7 col-md-7 col-sm-12 col-xs-12">
-                                        <input type="submit" class="btn btn-primary"
-                                               value="<?= gettext("Assign") ?>" name="Submit2">
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                    <?php
-                } ?>
+                <table id="family-property-table" class="table table-striped table-bordered data-table hidden" cellspacing="0" width="100%">
+                    <thead>
+                <tr>
+                    <th width="50"></th>
+                    <th width="250" class="text-center"><?= gettext("Name") ?></th>
+                    <th class="text-center"><?= gettext("Value") ?></th>
+                </tr>
+                    </thead>
+                </table>
+            <p/>
             </div>
         </div>
 
@@ -416,7 +371,7 @@ $familyAddress = $family->getAddress();
                             </div>
                             <!-- Map Scripts -->
                             <script
-                                    src="//maps.googleapis.com/maps/api/js?key=<?= SystemConfig::getValue("sGoogleMapKey") ?>&sensor=false"></script>
+                                    src="//maps.googleapis.com/maps/api/js?key=<?= SystemConfig::getValue("sGoogleMapsRenderKey") ?>&sensor=false"></script>
                             <script>
                                 var LatLng = new google.maps.LatLng(<?= $family->getLatitude() ?>, <?= $family->getLongitude() ?>)
                             </script>
@@ -460,7 +415,7 @@ $familyAddress = $family->getAddress();
                             <i class="fa <?= $item['style'] ?>"></i>
                             <div class="timeline-item">
                                 <span class="time">
-                                    <?php if (SessionUser::getUser()->isNotesEnabled() && (isset($item["editLink"]) || isset($item["deleteLink"]))) {
+                                    <?php if (AuthenticationManager::GetCurrentUser()->isNotesEnabled() && (isset($item["editLink"]) || isset($item["deleteLink"]))) {
                                     ?>
                                         <?php if (isset($item["editLink"])) { ?>
                                             <a href="<?= $item["editLink"] ?>"><button type="button" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></button></a>
@@ -507,7 +462,7 @@ $familyAddress = $family->getAddress();
     </div>
 </div>
 
-<?php if (SessionUser::getUser()->isFinanceEnabled()) {
+<?php if (AuthenticationManager::GetCurrentUser()->isFinanceEnabled()) {
 ?>
 <div class="row">
     <div class="col-lg-12">
@@ -518,11 +473,11 @@ $familyAddress = $family->getAddress();
                     <i class="fa fa-map"></i>
                     <h3 class="box-title"><?= gettext("Pledges and Payments") ?></h3>
                     <div class="box-tools pull-right">
-                        <input type="checkbox" id="ShowPledges" <?= SessionUser::getUser()->getShowPledges() ? "checked" : "" ?>> <?= gettext("Show Pledges") ?>
-                        <input type="checkbox" id="ShowPayments" <?= SessionUser::getUser()->getShowPayments() ? "checked" : "" ?>> <?= gettext("Show Payments") ?>
+                        <input type="checkbox" id="ShowPledges" <?= AuthenticationManager::GetCurrentUser()->getShowPledges() ? "checked" : "" ?>> <?= gettext("Show Pledges") ?>
+                        <input type="checkbox" id="ShowPayments" <?= AuthenticationManager::GetCurrentUser()->getShowPayments() ? "checked" : "" ?>> <?= gettext("Show Payments") ?>
                         <label for="ShowSinceDate"><?= gettext("Since") ?>:</label>
                         <input type="text" class="date-picker" id="ShowSinceDate"
-                               value="<?= SessionUser::getUser()->getFormattedShowSince() ?>" maxlength="10" id="ShowSinceDate" size="15">
+                               value="<?= AuthenticationManager::GetCurrentUser()->getFormattedShowSince() ?>" maxlength="10" id="ShowSinceDate" size="15">
                     </div>
                 </div>
                 <div class="box-body">

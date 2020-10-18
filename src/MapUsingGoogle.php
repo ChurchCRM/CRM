@@ -33,7 +33,7 @@ $iGroupID = InputUtils::LegacyFilterInput($_GET['GroupID'], 'int');
     </div>
     <?php
 } else {
-        if (SystemConfig::getValue('sGoogleMapKey') == '') {
+        if (SystemConfig::getValue('sGoogleMapsRenderKey') == '') {
             ?>
         <div class="callout callout-warning">
           <a href="<?= SystemURLs::getRootPath() ?>/SystemSettings.php"><?= gettext('Google Map API key is not set. The Map will work for smaller set of locations. Please create a Key in the maps sections of the setting menu.') ?></a>
@@ -80,7 +80,7 @@ $iGroupID = InputUtils::LegacyFilterInput($_GET['GroupID'], 'int');
 
     <!--Google Map Scripts -->
     <script
-        src="https://maps.googleapis.com/maps/api/js?key=<?= SystemConfig::getValue('sGoogleMapKey') ?>">
+        src="https://maps.googleapis.com/maps/api/js?key=<?= SystemConfig::getValue('sGoogleMapsRenderKey') ?>">
     </script>
 
     <div class="box">
@@ -137,8 +137,8 @@ $iGroupID = InputUtils::LegacyFilterInput($_GET['GroupID'], 'int');
 
     <script nonce="<?= SystemURLs::getCSPNonce() ?>" >
 
-        $(document).ready(function() { 
-            $(".legenditem-checkbox").change(function(e){ 
+        $(document).ready(function() {
+            $(".legenditem-checkbox").change(function(e){
                 var category = $(this).parent().data("classification");
                 var checked = $(this).prop("checked");
                 window.CRM.map.setClassificationVisible(category,checked);
@@ -287,7 +287,7 @@ $iGroupID = InputUtils::LegacyFilterInput($_GET['GroupID'], 'int');
                 //Infowindow Content
                 var imghref, contentString;
                 if (bPlotFamily) {
-                    imghref = "FamilyView.php?FamilyID=" + window.CRM.map.plotArray[i].ID;
+                    imghref = "v2/family/" + window.CRM.map.plotArray[i].ID;
                 } else {
                     imghref = "PersonView.php?PersonID=" + window.CRM.map.plotArray[i].ID;
                 }

@@ -20,6 +20,7 @@ use ChurchCRM\Reports\ChurchInfoReport;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\PersonQuery;
 use ChurchCRM\Utils\MiscUtils;
+use ChurchCRM\Authentication\AuthenticationManager;
 
 // Get the person ID from the querystring
 $iPersonID = InputUtils::LegacyFilterInput($_GET['PersonID'], 'int');
@@ -56,7 +57,7 @@ $sSQL = $sSQL.'FROM note_nte ';
 $sSQL = $sSQL.'LEFT JOIN person_per a ON nte_EnteredBy = a.per_ID ';
 $sSQL = $sSQL.'LEFT JOIN person_per b ON nte_EditedBy = b.per_ID ';
 $sSQL = $sSQL.'WHERE nte_per_ID = '.$iPersonID.' ';
-$sSQL = $sSQL.'AND (nte_Private = 0 OR nte_Private = '.$_SESSION['user']->getId().')';
+$sSQL = $sSQL.'AND (nte_Private = 0 OR nte_Private = '.AuthenticationManager::GetCurrentUser()->getId().')';
 $rsNotes = RunQuery($sSQL);
 
 // Get the Groups this Person is assigned to
@@ -113,12 +114,21 @@ $sState = SelectWhichInfo($per_State, $fam_State, false);
 $sZip = SelectWhichInfo($per_Zip, $fam_Zip, false);
 $sCountry = SelectWhichInfo($per_Country, $fam_Country, false);
 
-$sHomePhone = SelectWhichInfo(ExpandPhoneNumber($per_HomePhone, $sCountry, $dummy),
-  ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy), false);
-$sWorkPhone = SelectWhichInfo(ExpandPhoneNumber($per_WorkPhone, $sCountry, $dummy),
-  ExpandPhoneNumber($fam_WorkPhone, $fam_Country, $dummy), false);
-$sCellPhone = SelectWhichInfo(ExpandPhoneNumber($per_CellPhone, $sCountry, $dummy),
-  ExpandPhoneNumber($fam_CellPhone, $fam_Country, $dummy), false);
+$sHomePhone = SelectWhichInfo(
+    ExpandPhoneNumber($per_HomePhone, $sCountry, $dummy),
+    ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy),
+    false
+);
+$sWorkPhone = SelectWhichInfo(
+    ExpandPhoneNumber($per_WorkPhone, $sCountry, $dummy),
+    ExpandPhoneNumber($fam_WorkPhone, $fam_Country, $dummy),
+    false
+);
+$sCellPhone = SelectWhichInfo(
+    ExpandPhoneNumber($per_CellPhone, $sCountry, $dummy),
+    ExpandPhoneNumber($fam_CellPhone, $fam_Country, $dummy),
+    false
+);
 
 $sUnformattedEmail = SelectWhichInfo($per_Email, $fam_Email, false);
 
@@ -484,7 +494,7 @@ if (mysqli_num_rows($rsAssignedProperties) == 0) {
     echo '</table>';
 }
 
-if ($_SESSION['user']->isNotesEnabled()) {
+if (AuthenticationManager::GetCurrentUser()->isNotesEnabled()) {
     echo '<p><b>'.gettext('Notes:').'</b></p>';
 
     // Loop through all the notes

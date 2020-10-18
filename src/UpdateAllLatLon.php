@@ -8,6 +8,7 @@
  ******************************************************************************/
 
 use ChurchCRM\FamilyQuery;
+use Propel\Runtime\ActiveQuery\Criteria;
 
 require 'Include/Config.php';
 require 'Include/Functions.php';
@@ -17,7 +18,12 @@ require 'Include/Header.php';
 
 echo '<div class="box box-body box-info">';
 
-$families = FamilyQuery::create()->filterByLongitude(0)->limit(250)->find();
+$families = FamilyQuery::create()
+    ->filterByLongitude(array(null,0), Criteria::IN)
+    ->_or()
+    ->filterByLatitude(array(null,0), Criteria::IN)
+    ->limit(250)
+    ->find();
 
 echo '<h4>' . gettext('Families without Geo Info') . ": " . $families->count() .'</h4>';
 

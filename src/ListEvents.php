@@ -22,7 +22,7 @@ require 'Include/Functions.php';
 
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\SessionUser;
+use ChurchCRM\Authentication\AuthenticationManager;
 
 $eType = 'All';
 $ThisYear = date('Y');
@@ -54,7 +54,7 @@ if (isset($_POST['WhichYear'])) {
 ///////////////////////
 require 'Include/Header.php';
 
-if (isset($_POST['Action']) && isset($_POST['EID']) && SessionUSer::getUser()->isAddEvent()) {
+if (isset($_POST['Action']) && isset($_POST['EID']) && AuthenticationManager::GetCurrentUser()->isAddEvent()) {
     $eID = InputUtils::LegacyFilterInput($_POST['EID'], 'int');
     $action = InputUtils::LegacyFilterInput($_POST['Action']);
     if ($action == 'Delete' && $eID) {
@@ -176,7 +176,7 @@ foreach ($allMonths as $mKey => $mVal) {
         extract($aRow);
 
         $aEventID[$row] = $event_id;
-        $aEventType[$row] = $event_typename;
+        $aEventType[$row] = $type_name;
         $aEventTitle[$row] = htmlentities(stripslashes($event_title), ENT_NOQUOTES, 'UTF-8');
         $aEventDesc[$row] = htmlentities(stripslashes($event_desc), ENT_NOQUOTES, 'UTF-8');
         $aEventText[$row] = htmlentities(stripslashes($event_text), ENT_NOQUOTES, 'UTF-8');
@@ -203,7 +203,7 @@ foreach ($allMonths as $mKey => $mVal) {
   <table id="listEvents" class='table data-table table-striped table-bordered table-responsive'>
     <thead>
       <tr class="TableHeader">
-        <?php if (SessionUSer::getUser()->isAddEvent()) {
+        <?php if (AuthenticationManager::GetCurrentUser()->isAddEvent()) {
             ?> 
         <th><?= gettext('Action') ?></th>
         <?php
@@ -220,7 +220,7 @@ foreach ($allMonths as $mKey => $mVal) {
         for ($row = 1; $row <= $numRows; $row++) {
             ?>
           <tr>
-            <?php if (SessionUSer::getUser()->isAddEvent()) {
+            <?php if (AuthenticationManager::GetCurrentUser()->isAddEvent()) {
                 ?>
               <td>
               <table class='table-responsive'>

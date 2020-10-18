@@ -1,12 +1,13 @@
 <?php
 
 use ChurchCRM\dto\MenuEventsCount;
+use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\FamilyQuery;
 use ChurchCRM\ListOptionQuery;
 use ChurchCRM\Person;
 use ChurchCRM\PersonQuery;
-use ChurchCRM\FamilyQuery;
-use Propel\Runtime\Propel;
 use Propel\Runtime\ActiveQuery\Criteria;
+use Propel\Runtime\Propel;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
@@ -15,6 +16,10 @@ $app->group('/persons', function () {
     $this->get('/roles', 'getAllRolesAPI');
     $this->get('/roles/', 'getAllRolesAPI');
     $this->get('/duplicate/emails', 'getEmailDupesAPI');
+
+    $this->get('/latest', 'getLatestPersons');
+    $this->get('/updated', 'getUpdatedPersons');
+    $this->get('/birthday', 'getPersonsWithBirthdays');
 
     // search person by Name
     $this->get('/search/{query}', function ($request, $response, $args) {
@@ -69,7 +74,7 @@ function getAllRolesAPI(Request $request, Response $response, array $p_args)
 function getEmailDupesAPI(Request $request, Response $response, array $args)
 {
     $connection = Propel::getConnection();
-    $dupEmailsSQL = "SELECT email, total FROM email_count where total > 1";
+    $dupEmailsSQL = "select email, total from ( SELECT email, COUNT(*) AS total FROM ( SELECT fam_Email AS email, 'family' AS type, fam_id AS id FROM family_fam WHERE fam_email IS NOT NULL AND fam_email != '' UNION SELECT per_email AS email, 'person_home' AS type, per_id AS id FROM person_per WHERE per_email IS NOT NULL AND per_email != '' UNION SELECT per_WorkEmail AS email, 'person_work' AS type, per_id AS id FROM person_per WHERE per_WorkEmail IS NOT NULL AND per_WorkEmail != '') as allEmails group by email) as dupEmails where total > 1";
     $statement = $connection->prepare($dupEmailsSQL);
     $statement->execute();
     $dupEmails = $statement->fetchAll();
@@ -95,4 +100,68 @@ function getEmailDupesAPI(Request $request, Response $response, array $args)
     }
 
     return $response->withJson(["emails" => $emails]);
+}
+
+function getLatestPersons(Request $request, Response $response, array $p_args)
+{
+    $people = PersonQuery::create()
+    ->leftJoinWithFamily()
+    ->where('Family.DateDeactivated is null')
+    ->orderByDateEntered('DESC')
+    ->limit(10)
+    ->find();
+
+    return $response->withJson(buildFormattedPersonList($people, true, false, false ));
+}
+
+function getUpdatedPersons(Request $request, Response $response, array $p_args)
+{
+    $people = PersonQuery::create()
+        ->leftJoinWithFamily()
+        ->where('Family.DateDeactivated is null')
+        ->orderByDateLastEdited('DESC')
+        ->limit(10)
+        ->find();
+
+    return $response->withJson(buildFormattedPersonList($people, false, true, false));
+}
+
+
+function getPersonsWithBirthdays(Request $request, Response $response, array $p_args)
+{
+    $people = PersonQuery::create()
+        ->filterByBirthMonth(date('m'))
+        ->filterByBirthDay(date('d'))
+        ->find();
+
+    return $response->withJson(buildFormattedPersonList($people, false, false, true));
+}
+
+function buildFormattedPersonList($people, $created, $edited, $birthday)
+{
+    $formattedList = [];
+
+    foreach ($people as $person) {
+        $formattedPerson = [];
+        $formattedPerson["PersonId"] = $person->getId();
+        $formattedPerson["FirstName"] = $person->getFirstName();
+        $formattedPerson["LastName"] = $person->getLastName();
+        $formattedPerson["FormattedName"] = $person->getFullName();
+        $formattedPerson["Email"] = $person->getEmail();
+        if ($created) {
+            $formattedPerson["Created"] = date_format($person->getDateEntered(), SystemConfig::getValue('sDateFormatLong'));
+        }
+
+        if ($edited) {
+            $formattedPerson["LastEdited"] = date_format($person->getDateLastEdited(), SystemConfig::getValue('sDateFormatLong'));
+        }
+
+        if ($birthday) {
+            $formattedPerson["Birthday"] = date_format($person->getBirthDate(), SystemConfig::getValue('sDateFormatLong'));
+        }
+
+
+        array_push($formattedList, $formattedPerson);
+    }
+    return ["people" => $formattedList];
 }

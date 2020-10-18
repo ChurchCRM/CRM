@@ -13,6 +13,8 @@ use ChurchCRM\Utils\LoggerUtils;
 use DateTime;
 use Propel\Runtime\Connection\ConnectionInterface;
 use Propel\Runtime\Propel;
+use ChurchCRM\Authentication\AuthenticationManager;
+
 /**
  * Skeleton subclass for representing a row from the 'person_per' table.
  *
@@ -59,7 +61,7 @@ class Person extends BasePerson implements iPhoto
         return $this->getFlags() == 1 || $this->getBirthYear() == '' || $this->getBirthYear() == '0';
     }
 
-    private function getBirthDate()
+    public function getBirthDate()
     {
         if (!is_null($this->getBirthDay()) && $this->getBirthDay() != '' &&
             !is_null($this->getBirthMonth()) && $this->getBirthMonth() != ''
@@ -320,12 +322,12 @@ class Person extends BasePerson implements iPhoto
 
     public function deletePhoto()
     {
-        if ($_SESSION['user']->isDeleteRecordsEnabled()) {
+        if (AuthenticationManager::GetCurrentUser()->isDeleteRecordsEnabled()) {
             if ($this->getPhoto()->delete()) {
                 $note = new Note();
                 $note->setText(gettext("Profile Image Deleted"));
                 $note->setType("photo");
-                $note->setEntered($_SESSION['user']->getId());
+                $note->setEntered(AuthenticationManager::GetCurrentUser()->getId());
                 $note->setPerId($this->getId());
                 $note->save();
                 return true;
@@ -345,11 +347,11 @@ class Person extends BasePerson implements iPhoto
 
     public function setImageFromBase64($base64)
     {
-        if ($_SESSION['user']->isEditRecordsEnabled()) {
+        if (AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled()) {
             $note = new Note();
             $note->setText(gettext("Profile Image uploaded"));
             $note->setType("photo");
-            $note->setEntered($_SESSION['user']->getId());
+            $note->setEntered(AuthenticationManager::GetCurrentUser()->getId());
             $this->getPhoto()->setImageFromBase64($base64);
             $note->setPerId($this->getId());
             $note->save();
@@ -483,7 +485,7 @@ class Person extends BasePerson implements iPhoto
                     $nameString = trim($nameString);
                 }
                 break;
-                
+
             case 8:
                 if ($this->getLastName()) {
                     $nameString .= $this->getLastName();
@@ -494,7 +496,7 @@ class Person extends BasePerson implements iPhoto
                   } else {
                     $nameString .= ', ' . $this->getFirstName();
                   }
-                    
+
                 }
                 if ($this->getMiddleName()) {
                     $nameString .= ' ' . $this->getMiddleName();
@@ -551,7 +553,7 @@ class Person extends BasePerson implements iPhoto
       return $personProperties;
     }
 
-    //  return array of person properties 
+    //  return array of person properties
     // created for the person-list.php datatable
     public function getPropertiesString() {
       $personProperties = PropertyQuery::create()
@@ -576,7 +578,7 @@ class Person extends BasePerson implements iPhoto
       // add custom fields to person_custom table since they are not defined in the propel schema
       $rawQry =  PersonCustomQuery::create();
       foreach ($allPersonCustomFields as $customfield ) {
-          if (SessionUser::getUser()->isEnabledSecurity($customfield->getFieldSecurity())) {
+          if (AuthenticationManager::GetCurrentUser()->isEnabledSecurity($customfield->getFieldSecurity())) {
             $rawQry->withColumn($customfield->getId());
           }
       }
@@ -586,13 +588,13 @@ class Person extends BasePerson implements iPhoto
       $personCustom = [];
       if ($rawQry->count() > 0) {
         foreach ($allPersonCustomFields as $customfield ) {
-            if (SessionUser::getUser()->isEnabledSecurity($customfield->getFieldSecurity())) {
+            if (AuthenticationManager::GetCurrentUser()->isEnabledSecurity($customfield->getFieldSecurity())) {
                 $value = $thisPersonCustomFields->getVirtualColumn($customfield->getId());
                 if (!empty($value)) {
                     $personCustom[] = $customfield->getName();
                 }
             }
-        }        
+        }
       }
       return $personCustom;
     }
@@ -639,7 +641,7 @@ class Person extends BasePerson implements iPhoto
 
       return sprintf(ngettext('%d year old', '%d years old', $age->y), $age->y);
     }
-    
+
     public function getNumericAge() {
       $birthDate = $this->getBirthDate();
       if ($this->hideAge())

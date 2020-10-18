@@ -302,20 +302,19 @@ function initializeCalendar() {
     eventClick: function(eventData) {
       var eventSourceParams = eventData.source.url.split("/");
       var eventSourceType = eventSourceParams[eventSourceParams.length-3];
-      if (eventSourceType == "systemcalendars") {
-        // this is a birthday, anniversary, or holiday
+        // this event has a URL, so we should redirect the user to that URL
         if (eventData.url) {
           window.open(eventData.url);
+        }
+        // this event is "Editable", so we should display the edit form.
+        else if (eventData.editable) {
+          window.showEventForm(eventData); // This starts the React app 
         }
         else {
           // but holidays don't currently have a URL from the backend #4962
           alert(i18next.t("Holiday") +": " + eventData.title);
         }
         return false;
-      }
-      // this is a normal event
-      window.showEventForm(eventData); // This starts the React app 
-      return false;
     }, 
     locale: window.CRM.lang,
     loading: function(isLoading, view){ 

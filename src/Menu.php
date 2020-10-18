@@ -23,6 +23,7 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\MenuEventsCount;
+use ChurchCRM\Authentication\AuthenticationManager;
 
 $dashboardService = new DashboardService();
 
@@ -32,7 +33,7 @@ $updatedMembers = $dashboardService->getUpdatedMembers(12);
 $latestMembers = $dashboardService->getLatestMembers(12);
 
 $depositData = false;  //Determine whether or not we should display the deposit line graph
-if ($_SESSION['user']->isFinanceEnabled()) {
+if (AuthenticationManager::GetCurrentUser()->isFinanceEnabled()) {
     $deposits = DepositQuery::create()->filterByDate(['min' =>date('Y-m-d', strtotime('-90 days'))])->find();
     if (count($deposits) > 0) {
         $depositData = $deposits->toJSON();
@@ -200,7 +201,7 @@ if ($showBanner && ($peopleWithBirthDaysCount > 0 || $AnniversariesCount > 0)) {
         </div>
     </div><!-- ./col -->
     <?php if (SystemConfig::getValue('bEnabledSundaySchool')) {
-        ?> 
+        ?>
     <div class="col-lg-3 col-xs-6">
         <!-- small box -->
         <div class="small-box bg-yellow">
@@ -431,31 +432,33 @@ if ($depositData) { // If the user has Finance permissions, then let's display t
     //---------------
     //- LINE CHART  -
     //---------------
-    var lineDataRaw = <?= $depositData ?>;
-
-    var lineData = {
+    let lineDataRaw = <?= $depositData ?>;
+    let lineData = {
         labels: [],
         datasets: [
             {
+                label: "Value",
                 data: []
             }
         ]
     };
 
+    $( document ).ready(function() {
+        $.each(lineDataRaw.Deposits, function(i, val) {
+            lineData.labels.push(moment(val.Date).format("MM-DD-YY"));
+            lineData.datasets[0].data.push(val.totalAmount);
+        });
 
-  $( document ).ready(function() {
-    $.each(lineDataRaw.Deposits, function(i, val) {
-        lineData.labels.push(moment(val.Date).format("MM-DD-YY"));
-        lineData.datasets[0].data.push(val.totalAmount);
+        new Chart($("#deposit-lineGraph").get(0).getContext("2d"), {
+            type: 'line',
+            data: lineData,
+            options: {
+                responsive:true,
+                maintainAspectRatio:false
+            }
+        }
+        );
     });
-    options = {
-      responsive:true,
-      maintainAspectRatio:false
-    };
-    var lineChartCanvas = $("#deposit-lineGraph").get(0).getContext("2d");
-    var lineChart = new Chart(lineChartCanvas).Line(lineData,options);
-
-  });
 <?php
                         }  //END IF block for Finance permissions to include JS for Deposit Chart
 ?>

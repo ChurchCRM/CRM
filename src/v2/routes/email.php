@@ -9,7 +9,6 @@ use PHPMailer\PHPMailer\PHPMailer;
 use Slim\Http\Request;
 use Slim\Http\Response;
 use Slim\Views\PhpRenderer;
-use Propel\Runtime\ActiveQuery\Criteria;
 
 $app->group('/email', function () {
     $this->get('/debug', 'testEmailConnectionMVC')->add(new AdminRoleAuthMiddleware());
@@ -18,7 +17,8 @@ $app->group('/email', function () {
     $this->get('/dashboard', 'getEmailDashboardMVC');
     $this->get('/duplicate', 'getDuplicateEmailsMVC');
     $this->get('/missing', 'getFamiliesWithoutEmailsMVC');
-    $this->get('/missingfrommailchimp', 'getEmailsNotInMailChimp');
+    $this->get('/mailchimp/{listId}/unsubscribed', 'getMailListUnSubscribersMVC');
+    $this->get('/mailchimp/{listId}/missing', 'getMailListMissingMVC');
 });
 
 function getEmailDashboardMVC(Request $request, Response $response, array $args)
@@ -85,35 +85,34 @@ function getFamiliesWithoutEmailsMVC(Request $request, Response $response, array
     return renderPage($response,'templates/email/',  'without.php', _("Families Without Emails"));
 }
 
-function getEmailsNotInMailChimp(Request $request, Response $response, array $args)
+function getMailListUnSubscribersMVC(Request $request, Response $response, array $args)
 {
-    $renderer = new PhpRenderer('templates/email/');
-    
-    $mailchimp = new MailChimpService();
-    if (!$mailchimp->isActive())
-    {
-      return $response->withRedirect(SystemURLs::getRootPath() . "/v2/email");
+    $mailchimpService = new MailChimpService();
+    $list = $mailchimpService->getList($args['listId']);
+    if ($list) {
+        $renderer = new PhpRenderer('templates/email/');
+        $pageArgs = [
+            'sRootPath' => SystemURLs::getRootPath(),
+            'sPageTitle' => _("People not in"). " ".  $list["name"],
+            'listId' => $list["id"]
+        ];
+        return $renderer->render($response, 'mailchimp-unsubscribers.php', $pageArgs);
     }
-    $People = \ChurchCRM\PersonQuery::create()
-            ->filterByEmail(null, Criteria::NOT_EQUAL)
-            ->orderByDateLastEdited(Criteria::DESC)
-            ->find();
-    
-    $missingEmailInMailChimp = array();
-    foreach($People as $Person)
-    {
-        $mailchimpList = $mailchimp->isEmailInMailChimp($Person->getEmail());
-        if ($mailchimpList == '') {
-           array_push($missingEmailInMailChimp, $Person);
-        }
+    return $response->withStatus(404, gettext("Invalid List id") . ": " . $args['listId']);
+}
+
+function getMailListMissingMVC(Request $request, Response $response, array $args)
+{
+    $mailchimpService = new MailChimpService();
+    $list = $mailchimpService->getList($args['listId']);
+    if ($list) {
+        $renderer = new PhpRenderer('templates/email/');
+        $pageArgs = [
+            'sRootPath' => SystemURLs::getRootPath(),
+            'sPageTitle' => $list["name"] . " " . _("Audience not in the ChurchCRM"),
+            'listId' => $list["id"]
+        ];
+        return $renderer->render($response, 'mailchimp-missing.php', $pageArgs);
     }
-          
-
-    $pageArgs = [
-        'sRootPath' => SystemURLs::getRootPath(),
-        'sPageTitle' => gettext('People not in Mailchimp'),
-        'missingEmailInMailChimp' => $missingEmailInMailChimp
-    ];
-
-    return $renderer->render($response, 'not-in-mailchimp.php', $pageArgs);
+    return $response->withStatus(404, gettext("Invalid List id") . ": " . $args['listId']);
 }

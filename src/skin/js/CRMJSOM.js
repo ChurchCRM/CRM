@@ -520,7 +520,7 @@
       },
       'handlejQAJAXError': function (jqXHR, textStatus, errorThrown, suppressErrorDialog) {
         if (jqXHR.status === 401) {
-          window.location = window.CRM.root + "/Login.php?location="+window.location.pathname;
+          window.location = window.CRM.root + "/session/begin?location="+window.location.pathname;
         }
         try {
           var CRMResponse = JSON.parse(jqXHR.responseText);
@@ -548,6 +548,14 @@
             document.getElementById('EventsNumber').innerText = data.Events;
           }
         },
+          PageLocale: function (data) {
+              $(".flag-icon").addClass("flag-icon-" + data.countryFlagCode);
+              $("#translationInfo").html(data.name + " [" + window.CRM.locale + "]");
+              if (data.countryFlagCode != "us") {
+                  $("#translationPer").html(data.poPerComplete + "%");
+                  $("#localePer").removeClass("hidden");
+              }
+          },
         FamilyCount: function (data) {
           var dashBoardFam = document.getElementById('familyCountDashboard');
 
@@ -565,7 +573,7 @@
                 {
                   data: 'Name',
                   render: function (data, type, row, meta) {
-                    return '<a href=' + window.CRM.root + '/FamilyView.php?FamilyID=' + row.Id + '>' + data + '</a>';
+                    return '<a href=' + window.CRM.root + '/v2/family/' + row.Id + '>' + data + '</a>';
                   }
                 },
                 {data: 'Address1'},
@@ -593,7 +601,7 @@
                 {
                   data: 'Name',
                   render: function (data, type, row, meta) {
-                    return '<a href=' + window.CRM.root + '/FamilyView.php?FamilyID=' + row.Id + '>' + data + '</a>';
+                    return '<a href=' + window.CRM.root + '/v2/family/' + row.Id + '>' + data + '</a>';
                   }
                 },
                 {data: 'Address1'},
@@ -630,7 +638,7 @@
       refresh: function () {
         window.CRM.APIRequest({
           method: 'GET',
-          path: 'background/dashboard/page?currentpagename=' + window.CRM.PageName.replace(window.CRM.root,''),
+          path: 'background/page?name=' + window.CRM.PageName.replace(window.CRM.root,''),
           suppressErrorDialog: true
         }).done(function (data) {
           for (var key in data) {

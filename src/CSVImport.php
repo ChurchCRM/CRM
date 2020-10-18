@@ -19,8 +19,9 @@ use ChurchCRM\Note;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\Authentication\AuthenticationManager;
 
-if (!$_SESSION['user']->isAdmin()) {
+if (!AuthenticationManager::GetCurrentUser()->isAdmin()) {
     RedirectUtils::Redirect('Menu.php');
     exit;
 }
@@ -546,7 +547,7 @@ if (isset($_POST['DoImport'])) {
 
             // Finish up the person_per SQL..
             $sSQLpersonData .= $iClassID.",'".addslashes($sCountry)."',";
-            $sSQLpersonData .= "'".date('YmdHis')."',".$_SESSION['user']->getId();
+            $sSQLpersonData .= "'".date('YmdHis')."',".AuthenticationManager::GetCurrentUser()->getId();
             $sSQLpersonData .= ')';
 
             $sSQLpersonFields .= 'per_cls_ID, per_Country, per_DateEntered, per_EnteredBy';
@@ -589,12 +590,14 @@ if (isset($_POST['DoImport'])) {
                     extract(mysqli_fetch_array($rsExistingFamily));
                     $famid = $fam_ID;
                     if (array_key_exists($famid, $Families)) {
-                        $Families[$famid]->AddMember($per_ID,
-                                                     $iGender,
-                                                     GetAge($iBirthMonth, $iBirthDay, $iBirthYear),
-                                                     $dWedding,
-                                                     $per_HomePhone,
-                                                     $iEnvelope);
+                        $Families[$famid]->AddMember(
+                            $per_ID,
+                            $iGender,
+                            GetAge($iBirthMonth, $iBirthDay, $iBirthYear),
+                            $dWedding,
+                            $per_HomePhone,
+                            $iEnvelope
+                        );
                     }
                 } else {
                     $sSQL = 'INSERT INTO family_fam (fam_ID,
@@ -624,7 +627,7 @@ if (isset($_POST['DoImport'])) {
                                      '"'.$per_CellPhone.'", '.
                                      '"'.$per_Email.'",'.
                                      '"'.date('YmdHis').'",'.
-                                     '"'.$_SESSION['user']->getId().'");';
+                                     '"'.AuthenticationManager::GetCurrentUser()->getId().'");';
                     RunQuery($sSQL);
 
                     $sSQL = 'SELECT LAST_INSERT_ID()';
@@ -635,18 +638,20 @@ if (isset($_POST['DoImport'])) {
                     $note->setFamId($famid);
                     $note->setText(gettext('Imported'));
                     $note->setType('create');
-                    $note->setEntered($_SESSION['user']->getId());
+                    $note->setEntered(AuthenticationManager::GetCurrentUser()->getId());
                     $note->save();
                     $sSQL = "INSERT INTO `family_custom` (`fam_ID`) VALUES ('".$famid."')";
                     RunQuery($sSQL);
 
                     $fFamily = new Family(InputUtils::LegacyFilterInput($_POST['FamilyMode'], 'int'));
-                    $fFamily->AddMember($per_ID,
-                                        $iGender,
-                                        GetAge($iBirthMonth, $iBirthDay, $iBirthYear),
-                                        $dWedding,
-                                        $per_HomePhone,
-                                        $iEnvelope);
+                    $fFamily->AddMember(
+                        $per_ID,
+                        $iGender,
+                        GetAge($iBirthMonth, $iBirthDay, $iBirthYear),
+                        $dWedding,
+                        $per_HomePhone,
+                        $iEnvelope
+                    );
                     $Families[$famid] = $fFamily;
                 }
                 $sSQL = 'UPDATE person_per SET per_fam_ID = '.$famid.' WHERE per_ID = '.$per_ID;
@@ -708,7 +713,7 @@ if (isset($_POST['DoImport'])) {
             $note->setPerId($iPersonID);
             $note->setText(gettext('Imported'));
             $note->setType('create');
-            $note->setEntered($_SESSION['user']->getId());
+            $note->setEntered(AuthenticationManager::GetCurrentUser()->getId());
             $note->save();
             if ($bHasCustom) {
                 $sSQL = "INSERT INTO `person_custom` (`per_ID`) VALUES ('".$iPersonID."')";

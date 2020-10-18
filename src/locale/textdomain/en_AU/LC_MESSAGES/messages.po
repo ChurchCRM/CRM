@@ -6,6 +6,7 @@ msgstr ""
 "X-Generator: POEditor.com\n"
 "Project-Id-Version: ChurchCRM\n"
 "Language: en-au\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: 
 msgid "Cannot execute query."
@@ -49,6 +50,22 @@ msgid "Zip"
 msgstr "Postcode"
 
 #: 
+msgid "Use Ctrl Key to select multiple"
+msgstr "Use Ctrl Key (Mac: ⌘ ) to select multiple"
+
+#: 
+msgid "CheckIn"
+msgstr "Check In"
+
+#: 
+msgid "CheckOut"
+msgstr "Check Out"
+
+#: 
+msgid "Load Authorized Transactions"
+msgstr "Load Authorised Transactions"
+
+#: 
 msgid "Family Cell Phone"
 msgstr "Family Mobile"
 
@@ -59,6 +76,10 @@ msgstr "Personal Mobile"
 #: 
 msgid "Check"
 msgstr "Cheque"
+
+#: 
+msgid "GPS Visualizer"
+msgstr "GPS Visualiser"
 
 #: 
 msgid "City, State, Zip"
@@ -73,6 +94,18 @@ msgid "Cell"
 msgstr "Mobile"
 
 #: 
+msgid "Localization"
+msgstr "Localisation"
+
+#: 
 msgid "Cell phone"
 msgstr "Mobile phone"
+
+#: 
+msgid "Internationalization (I18n) support"
+msgstr "Internationalisation (I18n) support"
+
+#: 
+msgid "This upgrade will completely destroy any customizations made to the following files by reverting the files to the official version."
+msgstr "This upgrade will completely destroy any customisations made to the following files by reverting the files to the official version."
 

@@ -1,0 +1,20 @@
+releasenotes:
+  sections:
+  - title: "Feature Requests"
+    emoji: ":pray:"
+    labels: ["Feature Request", "new"]
+  - title: "Enhancements"
+    emoji: ":star:"
+    labels: ["enhancement", "UI", "API"]
+  - title: "Core Functionality"
+    emoji: ":tada:"
+    labels: ["Installation and Upgrade","Configuration"]  
+  - title: "Localization"
+    emoji: ":speech_balloon:"
+    labels: ["Localization"]
+  - title: "Bugs"
+    emoji: ":beetle:"
+    labels: ["bug", "P0 - Urgent"]
+  - title: "Inner Beauty"
+    emoji: ":gear:"
+    labels: ["development","build", "Backend System", "Code Smell", "Package Dependencies"]

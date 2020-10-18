@@ -17,9 +17,10 @@ require 'Include/Functions.php';
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\Authentication\AuthenticationManager;
 
 // Security: User must have add records permission
-if (!$_SESSION['user']->isAddRecordsEnabled()) {
+if (!AuthenticationManager::GetCurrentUser()->isAddRecordsEnabled()) {
     RedirectUtils::Redirect('Menu.php');
     exit;
 }
@@ -84,7 +85,7 @@ if (isset($_POST['Submit']) && count($_SESSION['aPeopleCart']) > 0) {
             $sError = '<p class="callout callout-warning" align="center" style="color:red;">'.gettext('No family name entered!').'</p>';
             $bError = true;
         } else {
-            $sSQL = "INSERT INTO family_fam (fam_Name, fam_Address1, fam_Address2, fam_City, fam_State, fam_Zip, fam_Country, fam_HomePhone, fam_WorkPhone, fam_CellPhone, fam_Email, fam_WeddingDate, fam_DateEntered, fam_EnteredBy) VALUES ('".$sFamilyName."','".$sAddress1."','".$sAddress2."','".$sCity."','".$sState."','".$sZip."','".$sCountry."','".$sHomePhone."','".$sWorkPhone."','".$sCellPhone."','".$sEmail."',".$dWeddingDate.",'".date('YmdHis')."',".$_SESSION['user']->getId().')';
+            $sSQL = "INSERT INTO family_fam (fam_Name, fam_Address1, fam_Address2, fam_City, fam_State, fam_Zip, fam_Country, fam_HomePhone, fam_WorkPhone, fam_CellPhone, fam_Email, fam_WeddingDate, fam_DateEntered, fam_EnteredBy) VALUES ('".$sFamilyName."','".$sAddress1."','".$sAddress2."','".$sCity."','".$sState."','".$sZip."','".$sCountry."','".$sHomePhone."','".$sWorkPhone."','".$sCellPhone."','".$sEmail."',".$dWeddingDate.",'".date('YmdHis')."',".AuthenticationManager::GetCurrentUser()->getId().')';
             RunQuery($sSQL);
 
             //Get the key back
@@ -115,7 +116,7 @@ if (isset($_POST['Submit']) && count($_SESSION['aPeopleCart']) > 0) {
 
         $sGlobalMessage = $iCount.' records(s) successfully added to selected Family.';
 
-        RedirectUtils::Redirect('FamilyView.php?FamilyID='.$iFamilyID.'&Action=EmptyCart');
+        RedirectUtils::Redirect('v2/family/'.$iFamilyID.'&Action=EmptyCart');
     }
 }
 

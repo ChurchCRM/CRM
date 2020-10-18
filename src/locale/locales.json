@@ -1,4 +1,15 @@
 {
+    "Afrikaans": {
+        "poEditor": "af",
+        "locale": "af_ZA",
+        "languageCode": "af",
+        "countryCode": "ZA",
+        "dataTables": "Afrikaans",
+        "fullCalendar" : true,
+        "fullCalendarLocale" : "af",
+        "datePicker": false,
+        "select2": false
+    },
   "Albanian": {
     "poEditor": "sq",
     "locale": "sq_AL",
@@ -120,6 +131,16 @@
     "languageCode": "de",
     "countryCode": "DE",
     "dataTables": "German",
+    "fullCalendar" : true,
+    "datePicker": true,
+    "select2": true
+  },
+  "Hebrew": {
+    "poEditor": "he",
+    "locale": "he_IL",
+    "languageCode": "he",
+    "countryCode": "HE",
+    "dataTables": "Hebrew",
     "fullCalendar" : true,
     "datePicker": true,
     "select2": true

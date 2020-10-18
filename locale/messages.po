@@ -10,7 +10,7 @@ msgstr ""
 "#-#-#-#-#  messages.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-19 22:50+0000\n"
+"POT-Creation-Date: 2020-10-16 21:45-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,125 +25,16 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2019-10-19T22:50:23.542Z\n"
-"PO-Revision-Date: 2019-10-19T22:50:23.542Z\n"
-
-msgid "Invalid request: Missing calendar id"
-msgstr ""
-
-msgid "Not Found: Unknown calendar id"
-msgstr ""
-
-msgid "invalid event type id"
-msgstr ""
-
-msgid "invalid calendar pinning"
-msgstr ""
-
-msgid "POST to cart requires a Persons array, FamilyID, or GroupID"
-msgstr ""
-
-msgid "records(s) successfully added to selected Group."
-msgstr ""
-
-msgid "records(s) successfully deleted from the selected Group."
-msgstr ""
-
-msgid "Your cart is empty"
-msgstr ""
-
-msgid "Your cart has been successfully emptied"
-msgstr ""
-
-msgid "Deactivated the Family"
-msgstr ""
-
-msgid "Activated the Family"
-msgstr ""
-
-msgid "Error sending email(s)"
-msgstr ""
-
-msgid "Please check logs for more information"
-msgstr ""
-
-msgid "Deleted from group"
-msgstr ""
-
-msgid "Added to group"
-msgstr ""
-
-msgid "invalid group id"
-msgstr ""
-
-msgid "invalid status value"
-msgstr ""
-
-msgid "invalid export value"
-msgstr ""
-
-msgid "Can't delete yourself"
-msgstr ""
-
-msgid "success"
-msgstr ""
-
-msgid "The role could not be found."
-msgstr ""
-
-msgid "The role is already assigned."
-msgstr ""
-
-msgid "The role is successfully assigned."
-msgstr ""
-
-msgid "The role could not be assigned."
-msgstr ""
-
-msgid "The record could not be found."
-msgstr ""
-
-msgid "The property is already assigned."
-msgstr ""
-
-msgid "The property is successfully assigned."
-msgstr ""
-
-msgid "The property could not be assigned."
-msgstr ""
-
-msgid "The property is successfully unassigned."
-msgstr ""
-
-msgid "The property could not be unassigned."
-msgstr ""
-
-msgid "Validation Error"
-msgstr ""
-
-msgid "Invalid User/Password"
-msgstr ""
-
-msgid "User"
-msgstr ""
-
-msgid "no found or user without an email"
-msgstr ""
-
-msgid "UserName not set"
-msgstr ""
-
-msgid "Link Not found"
-msgstr ""
-
-msgid "The database has been cleared."
-msgstr ""
-
-msgid "The people and families has been cleared from the database."
-msgstr ""
-
-msgid "Bad userId"
-msgstr ""
+"POT-Creation-Date: 2020-10-17T04:45:37.856Z\n"
+"PO-Revision-Date: 2020-10-17T04:45:37.856Z\n"
+"#-#-#-#-#  react-js-strings.po (i18next-conv)  #-#-#-#-#\n"
+"Project-Id-Version: i18next-conv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"POT-Creation-Date: 2020-10-17T04:45:38.070Z\n"
+"PO-Revision-Date: 2020-10-17T04:45:38.070Z\n"
 
 msgid "Backup Database"
 msgstr ""
@@ -154,7 +45,7 @@ msgstr ""
 
 msgid ""
 "You should make a manual backup at least once a week unless you already have "
-"a regular backup procedule for your systems."
+"a regular backup procedure for your systems."
 msgstr ""
 
 msgid ""
@@ -217,6 +108,225 @@ msgid "Enter Winners"
 msgstr ""
 
 msgid "Cancel"
+msgstr ""
+
+msgid "CSV Export"
+msgstr ""
+
+msgid "Field Selection"
+msgstr ""
+
+msgid "Last Name"
+msgstr ""
+
+msgid "Required"
+msgstr ""
+
+msgid "Title"
+msgstr ""
+
+msgid "First Name"
+msgstr ""
+
+msgid "Middle Name"
+msgstr ""
+
+msgid "Suffix"
+msgstr ""
+
+msgid "Address"
+msgstr ""
+
+msgid "City"
+msgstr ""
+
+msgid "State"
+msgstr ""
+
+msgid "Zip"
+msgstr ""
+
+msgid "Envelope"
+msgstr ""
+
+msgid "Country"
+msgstr ""
+
+msgid "Home Phone"
+msgstr ""
+
+msgid "Work Phone"
+msgstr ""
+
+msgid "Mobile Phone"
+msgstr ""
+
+msgid "Email"
+msgstr ""
+
+msgid "Work/Other Email"
+msgstr ""
+
+msgid "Membership Date"
+msgstr ""
+
+msgid "Birth / Anniversary Date"
+msgstr ""
+
+msgid "Age / Years Married"
+msgstr ""
+
+msgid "Classification"
+msgstr ""
+
+msgid "Family Role"
+msgstr ""
+
+msgid "Gender"
+msgstr ""
+
+msgid "Depends whether using person or family output method"
+msgstr ""
+
+msgid "Custom Field Selection"
+msgstr ""
+
+msgid "Custom Person Fields"
+msgstr ""
+
+msgid "Custom Family Fields"
+msgstr ""
+
+msgid "Filters"
+msgstr ""
+
+msgid "Records to export"
+msgstr ""
+
+msgid "Based on filters below.."
+msgstr ""
+
+msgid "People in Cart (filters ignored)"
+msgstr ""
+
+msgid "Use Ctrl Key to select multiple"
+msgstr ""
+
+msgid "Don't Filter"
+msgstr ""
+
+msgid "Male"
+msgstr ""
+
+msgid "Female"
+msgstr ""
+
+msgid "Group Membership"
+msgstr ""
+
+msgid "From:"
+msgstr ""
+
+msgid "To:"
+msgstr ""
+
+msgid "Birthday Date"
+msgstr ""
+
+msgid "Anniversary Date:"
+msgstr ""
+
+msgid "Date Entered:"
+msgstr ""
+
+msgid "Output Method:"
+msgstr ""
+
+msgid "CSV Individual Records"
+msgstr ""
+
+msgid "CSV Combine Families"
+msgstr ""
+
+msgid "Add Individuals to Cart"
+msgstr ""
+
+msgid "Skip records with incomplete mail address"
+msgstr ""
+
+msgid "Create File"
+msgstr ""
+
+msgid "CSV Import"
+msgstr ""
+
+msgid "Import Data"
+msgstr ""
+
+msgid "No file selected for upload."
+msgstr ""
+
+msgid "Total number of rows in the CSV file:"
+msgstr ""
+
+msgid "Ignore this Field"
+msgstr ""
+
+msgid "Donation Envelope"
+msgstr ""
+
+msgid "Work / Other Email"
+msgstr ""
+
+msgid "Birth Date"
+msgstr ""
+
+msgid "Wedding Date"
+msgstr ""
+
+msgid "Ignore first CSV row (to exclude a header)"
+msgstr ""
+
+msgid "Make Family records based on last name and address"
+msgstr ""
+
+msgid "Patriarch"
+msgstr ""
+
+msgid "Matriarch"
+msgstr ""
+
+msgid "Family Type: used with Make Family records... option above"
+msgstr ""
+
+msgid "NOTE: Separators (dashes, etc.) or lack thereof do not matter"
+msgstr ""
+
+msgid "Default country if none specified otherwise"
+msgstr ""
+
+msgid "Perform Import"
+msgstr ""
+
+msgid "Imported"
+msgstr ""
+
+msgid "ERROR: the uploaded CSV file no longer exists!"
+msgstr ""
+
+msgid "Upload CSV File"
+msgstr ""
+
+msgid "Clear Data"
+msgstr ""
+
+msgid "Clear Persons and Families"
+msgstr ""
+
+msgid "Data import successful."
+msgstr ""
+
+msgid "persons were imported"
 msgstr ""
 
 msgid "Canvass Automation"
@@ -410,46 +520,16 @@ msgstr ""
 msgid "Family Name"
 msgstr ""
 
-msgid "Wedding Date"
-msgstr ""
-
 msgid "Use address/contact data from"
 msgstr ""
 
 msgid "Only the new data below"
 msgstr ""
 
-msgid "Address"
-msgstr ""
-
-msgid "City"
-msgstr ""
-
-msgid "State"
-msgstr ""
-
 msgid "(Use the textbox for countries other than US and Canada)"
 msgstr ""
 
-msgid "Zip"
-msgstr ""
-
-msgid "Country"
-msgstr ""
-
-msgid "Home Phone"
-msgstr ""
-
 msgid "Do not auto-format"
-msgstr ""
-
-msgid "Work Phone"
-msgstr ""
-
-msgid "Mobile Phone"
-msgstr ""
-
-msgid "Email"
 msgstr ""
 
 msgid "Add Cart to Group"
@@ -552,6 +632,20 @@ msgid "family"
 msgstr ""
 
 msgid "(No assigned family)"
+msgstr ""
+
+msgid "User authenticated via API Key: "
+msgstr ""
+
+msgid "Unsuccessful API Key authentication attempt"
+msgstr ""
+
+msgid "Invalid login or password"
+msgstr ""
+
+msgid ""
+"Too many failed logins: your account has been locked.  Please contact an "
+"administrator."
 msgstr ""
 
 msgid "Backup archive does not contain a database"
@@ -701,9 +795,6 @@ msgstr ""
 msgid "Restore Database"
 msgstr ""
 
-msgid "CSV Import"
-msgstr ""
-
 msgid "CSV Export Records"
 msgstr ""
 
@@ -725,12 +816,6 @@ msgstr ""
 msgid "Unknown"
 msgstr ""
 
-msgid "Male"
-msgstr ""
-
-msgid "Female"
-msgstr ""
-
 msgid "Other"
 msgstr ""
 
@@ -741,6 +826,257 @@ msgid "Spouse"
 msgstr ""
 
 msgid "Child"
+msgstr ""
+
+msgid "New Person Added"
+msgstr ""
+
+msgid "New Family Added"
+msgstr ""
+
+msgid "Church Greeter"
+msgstr ""
+
+msgid "Person Name"
+msgstr ""
+
+msgid "Notification"
+msgstr ""
+
+msgid "Guardian(s) of"
+msgstr ""
+
+msgid "A notification was triggered by the classroom teacher at"
+msgstr ""
+
+msgid "Please go to this location"
+msgstr ""
+
+msgid "Your Account was Deleted"
+msgstr ""
+
+msgid "Your ChurchCRM Account was Deleted."
+msgstr ""
+
+msgid "Email/Username"
+msgstr ""
+
+msgid "Account Locked"
+msgstr ""
+
+msgid "Your ChurchCRM account was locked."
+msgstr ""
+
+msgid "Your New Account"
+msgstr ""
+
+msgid "A ChurchCRM account was created for you"
+msgstr ""
+
+msgid "New Password"
+msgstr ""
+
+msgid "Password Changed"
+msgstr ""
+
+msgid "Your ChurchCRM password was changed"
+msgstr ""
+
+msgid "Password Reset"
+msgstr ""
+
+msgid "You ChurchCRM updated password has been changed"
+msgstr ""
+
+msgid "Password Reset Link"
+msgstr ""
+
+msgid "You can reset your ChurchCRM password by clicking this link"
+msgstr ""
+
+msgid "Reset Password"
+msgstr ""
+
+msgid "Account Unlocked"
+msgstr ""
+
+msgid "Your ChurchCRM account was unlocked."
+msgstr ""
+
+msgid "Please verify your family's information"
+msgstr ""
+
+msgid "Family"
+msgstr ""
+
+msgid "Totals"
+msgstr ""
+
+msgid "Certificate of Ownership"
+msgstr ""
+
+msgid "Directory"
+msgstr ""
+
+msgid "Page"
+msgstr ""
+
+msgid "Phone"
+msgstr ""
+
+msgid "Work"
+msgstr ""
+
+msgid "Cell"
+msgstr ""
+
+msgid "Wedding"
+msgstr ""
+
+msgid "and"
+msgstr ""
+
+msgid "Group Directory"
+msgstr ""
+
+msgid "Unable to open file"
+msgstr ""
+
+msgid "Error decoding integrity check result file"
+msgstr ""
+
+msgid "integrityCheck.json file missing"
+msgstr ""
+
+msgid "Failed"
+msgstr ""
+
+msgid "Passed"
+msgstr ""
+
+msgid ""
+"The previous integrity check passed.  All system file hashes match the "
+"expected values."
+msgstr ""
+
+msgid "Error decoding signature definition file"
+msgstr ""
+
+msgid "Signature definition file signature failed validation"
+msgstr ""
+
+msgid "Signature definition File Missing"
+msgstr ""
+
+msgid "One or more files failed signature validation"
+msgstr ""
+
+msgid "NonDeductible amount can't be greater than total amount."
+msgstr ""
+
+msgid "At least one fund must have a non-zero amount."
+msgstr ""
+
+msgid "Must specify non-zero check number"
+msgstr ""
+
+msgid "Check number not valid for 'CASH' payment"
+msgstr ""
+
+msgid "No email passed in"
+msgstr ""
+
+msgid "Mailchimp is not active"
+msgstr ""
+
+msgid "Part"
+msgstr ""
+
+msgid "Self Registration"
+msgstr ""
+
+msgid "Self Verification"
+msgstr ""
+
+msgid "by"
+msgstr ""
+
+msgid "Invalid upgrade file specified"
+msgstr ""
+
+msgid "Failure executing upgrade script"
+msgstr ""
+
+msgid "Database upgrade failed"
+msgstr ""
+
+msgid "No logged in user"
+msgstr ""
+
+msgid "Missing event id"
+msgstr ""
+
+msgid "Event not found"
+msgstr ""
+
+msgid "User must have bAddEvent permissions"
+msgstr ""
+
+msgid "User must be an Admin"
+msgstr ""
+
+msgid "User must have Delete Records permission"
+msgstr ""
+
+msgid "User must have Edit Records permission"
+msgstr ""
+
+msgid "User must have Finance permission"
+msgstr ""
+
+msgid "User must have Manage Groups permission"
+msgstr ""
+
+msgid "User must have MenuOptions permission"
+msgstr ""
+
+msgid "Missing"
+msgstr ""
+
+msgid "not found"
+msgstr ""
+
+msgid " has a type mismatch"
+msgstr ""
+
+msgid "External Calendar API is disabled"
+msgstr ""
+
+msgid "Missing calendar access token"
+msgstr ""
+
+msgid "Calendar access token not found"
+msgstr ""
+
+msgid "is disabled"
+msgstr ""
+
+msgid "Anniversaries"
+msgstr ""
+
+msgid "Anniversary"
+msgstr ""
+
+msgid "Birthdays"
+msgstr ""
+
+msgid "Birthday"
+msgstr ""
+
+msgid "Holidays"
+msgstr ""
+
+msgid "Unpinned Events"
 msgstr ""
 
 msgid "Invalid country name supplied"
@@ -759,12 +1095,6 @@ msgid "Notification for"
 msgstr ""
 
 msgid "Unexpected Person Id"
-msgstr ""
-
-msgid "Passed"
-msgstr ""
-
-msgid "Failed"
 msgstr ""
 
 msgid "DEBUG"
@@ -815,7 +1145,7 @@ msgstr ""
 msgid "LastName FirstName"
 msgstr ""
 
-msgid "LastName, FirstName MiddleName:8"
+msgid "LastName, FirstName MiddleName"
 msgstr ""
 
 msgid "Event Log severity to write, used by ORM and App Logs"
@@ -903,7 +1233,7 @@ msgstr ""
 msgid "First month of the fiscal year"
 msgstr ""
 
-msgid "Google map API requires a unique key"
+msgid "Google Maps API Key used for Geocoding addresses"
 msgstr ""
 
 msgid "Bing map API requires a unique key"
@@ -1349,10 +1679,28 @@ msgstr ""
 msgid "Maximum number of Calendar Events"
 msgstr ""
 
+msgid "Allow users to self-enroll in 2 factor authentication"
+msgstr ""
+
+msgid "Requires users to self-enroll in 2 factor authentication"
+msgstr ""
+
+msgid "ChurchCRM"
+msgstr ""
+
+msgid "Specify the application name to be displayed in authenticator app"
+msgstr ""
+
+msgid "Send an email notifying users when their account has been deleted"
+msgstr ""
+
+msgid "Google Maps API Key used for rendering maps in browser"
+msgstr ""
+
 msgid "Church Information"
 msgstr ""
 
-msgid "User setup"
+msgid "User Setup"
 msgstr ""
 
 msgid "Email Setup"
@@ -1373,13 +1721,7 @@ msgstr ""
 msgid "Financial Settings"
 msgstr ""
 
-msgid "System Settings"
-msgstr ""
-
 msgid "Quick Search"
-msgstr ""
-
-msgid "Backup"
 msgstr ""
 
 msgid "Localization"
@@ -1391,91 +1733,16 @@ msgstr ""
 msgid "Church Services"
 msgstr ""
 
+msgid "Backup"
+msgstr ""
+
+msgid "System Settings"
+msgstr ""
+
 msgid "An invalid configuration name has been requested"
 msgstr ""
 
 msgid "An invalid configuration id has been requested"
-msgstr ""
-
-msgid "New Person Added"
-msgstr ""
-
-msgid "New Family Added"
-msgstr ""
-
-msgid "Church Greeter"
-msgstr ""
-
-msgid "Person Name"
-msgstr ""
-
-msgid "Notification"
-msgstr ""
-
-msgid "Guardian(s) of"
-msgstr ""
-
-msgid "A notification was triggered by the classroom teacher at"
-msgstr ""
-
-msgid "Please go to this location"
-msgstr ""
-
-msgid "Your Account was Deleted"
-msgstr ""
-
-msgid "Your ChurchCRM Account was Deleted."
-msgstr ""
-
-msgid "Email/Username"
-msgstr ""
-
-msgid "Account Locked"
-msgstr ""
-
-msgid "Your ChurchCRM account was locked."
-msgstr ""
-
-msgid "Your New Account"
-msgstr ""
-
-msgid "A ChurchCRM account was created for you"
-msgstr ""
-
-msgid "New Password"
-msgstr ""
-
-msgid "Password Changed"
-msgstr ""
-
-msgid "Your ChurchCRM password was changed"
-msgstr ""
-
-msgid "Password Reset"
-msgstr ""
-
-msgid "You ChurchCRM updated password has been changed"
-msgstr ""
-
-msgid "Password Reset Link"
-msgstr ""
-
-msgid "You can reset your ChurchCRM password by clicking this link"
-msgstr ""
-
-msgid "Reset Password"
-msgstr ""
-
-msgid "Account Unlocked"
-msgstr ""
-
-msgid "Your ChurchCRM account was unlocked."
-msgstr ""
-
-msgid "Please verify your family's information"
-msgstr ""
-
-msgid "Family"
 msgstr ""
 
 msgid "Anonymous"
@@ -1544,165 +1811,22 @@ msgstr ""
 msgid "system user login reset"
 msgstr ""
 
-msgid "Totals"
+msgid "Incorrect password supplied for current user"
 msgstr ""
 
-msgid "Certificate of Ownership"
+msgid "Your password choice is too obvious. Please choose something else."
 msgstr ""
 
-msgid "Directory"
+msgid "Your new password must be at least"
 msgstr ""
 
-msgid "Page"
+msgid "characters"
 msgstr ""
 
-msgid "Phone"
+msgid "Your new password must not match your old one."
 msgstr ""
 
-msgid "Work"
-msgstr ""
-
-msgid "Cell"
-msgstr ""
-
-msgid "Wedding"
-msgstr ""
-
-msgid "and"
-msgstr ""
-
-msgid "Work/Other Email"
-msgstr ""
-
-msgid "Group Directory"
-msgstr ""
-
-msgid "Error decoding integrity check result file"
-msgstr ""
-
-msgid "integrityCheck.json file missing"
-msgstr ""
-
-msgid ""
-"The previous integrity check passed.  All system file hashes match the "
-"expected values."
-msgstr ""
-
-msgid "Error decoding signature definition file"
-msgstr ""
-
-msgid "Signature definition file signature failed validation"
-msgstr ""
-
-msgid "Signature definition File Missing"
-msgstr ""
-
-msgid "One or more files failed signature validation"
-msgstr ""
-
-msgid "NonDeductible amount can't be greater than total amount."
-msgstr ""
-
-msgid "At least one fund must have a non-zero amount."
-msgstr ""
-
-msgid "Must specify non-zero check number"
-msgstr ""
-
-msgid "Check number not valid for 'CASH' payment"
-msgstr ""
-
-msgid "Part"
-msgstr ""
-
-msgid "Self Registration"
-msgstr ""
-
-msgid "Self Verification"
-msgstr ""
-
-msgid "by"
-msgstr ""
-
-msgid "Invalid upgrade file specified"
-msgstr ""
-
-msgid "Failure executing upgrade script"
-msgstr ""
-
-msgid "Database upgrade failed"
-msgstr ""
-
-msgid "logged via API Key."
-msgstr ""
-
-msgid "logged via InValid API Key."
-msgstr ""
-
-msgid "No logged in user"
-msgstr ""
-
-msgid "Missing event id"
-msgstr ""
-
-msgid "Event not found"
-msgstr ""
-
-msgid "User must have bAddEvent permissions"
-msgstr ""
-
-msgid "User must be an Admin"
-msgstr ""
-
-msgid "User must have Delete Records permission"
-msgstr ""
-
-msgid "User must have Edit Records permission"
-msgstr ""
-
-msgid "User must have Finance permission"
-msgstr ""
-
-msgid "User must have Manage Groups permission"
-msgstr ""
-
-msgid "User must have MenuOptions permission"
-msgstr ""
-
-msgid "Missing"
-msgstr ""
-
-msgid "not found"
-msgstr ""
-
-msgid "External Calendar API is disabled"
-msgstr ""
-
-msgid "Missing calendar access token"
-msgstr ""
-
-msgid "Calendar access token not found"
-msgstr ""
-
-msgid "is disabled"
-msgstr ""
-
-msgid "Unable to open file"
-msgstr ""
-
-msgid "Anniversaries"
-msgstr ""
-
-msgid "Anniversary"
-msgstr ""
-
-msgid "Birthdays"
-msgstr ""
-
-msgid "Birthday"
-msgstr ""
-
-msgid "Holidays"
+msgid "Your new password is too similar to your old one."
 msgstr ""
 
 msgid "PHP Max Execution Time is too Short"
@@ -1749,6 +1873,19 @@ msgstr ""
 msgid "New Release"
 msgstr ""
 
+msgid "Unsupported PHP Version"
+msgstr ""
+
+msgid ""
+"Support for this PHP version will soon be removed.  Current PHP Version: "
+msgstr ""
+
+msgid "Missing PHP ZipArchive"
+msgstr ""
+
+msgid "PHP ZipArchive required to support upgrade"
+msgstr ""
+
 msgid "Missing Classification Data"
 msgstr ""
 
@@ -1767,19 +1904,6 @@ msgstr ""
 msgid "Missing Role Data for Some People"
 msgstr ""
 
-msgid "Unsupported PHP Version"
-msgstr ""
-
-msgid ""
-"Support for this PHP version will soon be removed.  Current PHP Version: "
-msgstr ""
-
-msgid "Missing PHP ZipArchive"
-msgstr ""
-
-msgid "PHP ZipArchive required to support upgrade"
-msgstr ""
-
 msgid "Unmet Application Prerequisites"
 msgstr ""
 
@@ -1789,6 +1913,9 @@ msgstr ""
 msgid "Let us know that you are using the software"
 msgstr ""
 
+msgid "Secret Keys missing from Config.php"
+msgstr ""
+
 msgid "Unsupported Deposit Types Detected"
 msgstr ""
 
@@ -1796,14 +1923,6 @@ msgid ""
 "Support for eGive, Credit Card, and Bank Draft payments has been "
 "deprecated.  Existing non-bank reports may no longer be accessible in future "
 "versions."
-msgstr ""
-
-msgid "Unsupported Stored Payment Data Detected"
-msgstr ""
-
-msgid ""
-"Support for stored payment data has been removed. This data will soon be "
-"removed from your database"
 msgstr ""
 
 msgid "Missing Coordinates"
@@ -1867,183 +1986,6 @@ msgid "Convert Next"
 msgstr ""
 
 msgid "Convert All"
-msgstr ""
-
-msgid "CSV Export"
-msgstr ""
-
-msgid "Field Selection"
-msgstr ""
-
-msgid "Last Name"
-msgstr ""
-
-msgid "Required"
-msgstr ""
-
-msgid "Title"
-msgstr ""
-
-msgid "First Name"
-msgstr ""
-
-msgid "Middle Name"
-msgstr ""
-
-msgid "Suffix"
-msgstr ""
-
-msgid "Envelope"
-msgstr ""
-
-msgid "Membership Date"
-msgstr ""
-
-msgid "Birth / Anniversary Date"
-msgstr ""
-
-msgid "Age / Years Married"
-msgstr ""
-
-msgid "Classification"
-msgstr ""
-
-msgid "Family Role"
-msgstr ""
-
-msgid "Gender"
-msgstr ""
-
-msgid "Depends whether using person or family output method"
-msgstr ""
-
-msgid "Custom Field Selection"
-msgstr ""
-
-msgid "Custom Person Fields"
-msgstr ""
-
-msgid "Custom Family Fields"
-msgstr ""
-
-msgid "Filters"
-msgstr ""
-
-msgid "Records to export"
-msgstr ""
-
-msgid "Based on filters below.."
-msgstr ""
-
-msgid "People in Cart (filters ignored)"
-msgstr ""
-
-msgid "Use Ctrl Key to select multiple"
-msgstr ""
-
-msgid "Don't Filter"
-msgstr ""
-
-msgid "Group Membership"
-msgstr ""
-
-msgid "From:"
-msgstr ""
-
-msgid "To:"
-msgstr ""
-
-msgid "Birthday Date"
-msgstr ""
-
-msgid "Anniversary Date:"
-msgstr ""
-
-msgid "Date Entered:"
-msgstr ""
-
-msgid "Output Method:"
-msgstr ""
-
-msgid "CSV Individual Records"
-msgstr ""
-
-msgid "CSV Combine Families"
-msgstr ""
-
-msgid "Add Individuals to Cart"
-msgstr ""
-
-msgid "Skip records with incomplete mail address"
-msgstr ""
-
-msgid "Create File"
-msgstr ""
-
-msgid "Import Data"
-msgstr ""
-
-msgid "No file selected for upload."
-msgstr ""
-
-msgid "Total number of rows in the CSV file:"
-msgstr ""
-
-msgid "Ignore this Field"
-msgstr ""
-
-msgid "Donation Envelope"
-msgstr ""
-
-msgid "Work / Other Email"
-msgstr ""
-
-msgid "Birth Date"
-msgstr ""
-
-msgid "Ignore first CSV row (to exclude a header)"
-msgstr ""
-
-msgid "Make Family records based on last name and address"
-msgstr ""
-
-msgid "Patriarch"
-msgstr ""
-
-msgid "Matriarch"
-msgstr ""
-
-msgid "Family Type: used with Make Family records... option above"
-msgstr ""
-
-msgid "NOTE: Separators (dashes, etc.) or lack thereof do not matter"
-msgstr ""
-
-msgid "Default country if none specified otherwise"
-msgstr ""
-
-msgid "Perform Import"
-msgstr ""
-
-msgid "Imported"
-msgstr ""
-
-msgid "ERROR: the uploaded CSV file no longer exists!"
-msgstr ""
-
-msgid "Upload CSV File"
-msgstr ""
-
-msgid "Clear Data"
-msgstr ""
-
-msgid "Clear Persons and Families"
-msgstr ""
-
-msgid "Data import successful."
-msgstr ""
-
-msgid "persons were imported"
 msgstr ""
 
 msgid "Deposit Slip Number: "
@@ -2310,36 +2252,6 @@ msgstr ""
 msgid "Return to Event Types"
 msgstr ""
 
-msgid "eGive Import"
-msgstr ""
-
-msgid "Start Date: "
-msgstr ""
-
-msgid "End Date: "
-msgstr ""
-
-msgid "Re-import to selected family"
-msgstr ""
-
-msgid "Data import results: "
-msgstr ""
-
-msgid " gifts were imported, "
-msgstr ""
-
-msgid " gifts unchanged, and "
-msgstr ""
-
-msgid " gifts not imported due to problems"
-msgstr ""
-
-msgid "Back to Deposit Slip"
-msgstr ""
-
-msgid "Fatal error in eGive API datastream: '"
-msgstr ""
-
 msgid "Event Attendees"
 msgstr ""
 
@@ -2352,7 +2264,10 @@ msgstr ""
 msgid "All Events of Type"
 msgstr ""
 
-msgid "Back to Report Menu"
+msgid "Event Attendance"
+msgstr ""
+
+msgid "Generate attendance -AND- non-attendance reports for events"
 msgstr ""
 
 msgid "There is"
@@ -2528,123 +2443,6 @@ msgstr ""
 msgid "Add Event Type"
 msgstr ""
 
-msgid "Unable to reset password"
-msgstr ""
-
-msgid "Unable to load verification info"
-msgstr ""
-
-msgid "No Changes"
-msgstr ""
-
-msgid "Page not fond"
-msgstr ""
-
-msgid "Oops! Page not found."
-msgstr ""
-
-msgid "Family Registration"
-msgstr ""
-
-msgid "Reset your password"
-msgstr ""
-
-msgid "Login Name"
-msgstr ""
-
-msgid "Check your email for a password reset link"
-msgstr ""
-
-msgid "Sorry, we are unable to process your request at this point in time."
-msgstr ""
-
-msgid "Login Name is Required"
-msgstr ""
-
-msgid "A new password was sent to you. Please check your email"
-msgstr ""
-
-msgid "Registration Complete"
-msgstr ""
-
-msgid "Thank you for registering your family."
-msgstr ""
-
-msgid "Member(s)"
-msgstr ""
-
-msgid "Done"
-msgstr ""
-
-msgid "Register"
-msgstr ""
-
-msgid "Family Members"
-msgstr ""
-
-msgid "Family Member"
-msgstr ""
-
-msgid "Mobile"
-msgstr ""
-
-msgid "Home"
-msgstr ""
-
-msgid "Hide Age"
-msgstr ""
-
-msgid "Next"
-msgstr ""
-
-msgid "Register your family"
-msgstr ""
-
-msgid "How many people are in your family"
-msgstr ""
-
-msgid "This will be my primary church."
-msgstr ""
-
-msgid "Please enter the following to start your family's verification"
-msgstr ""
-
-msgid "Family Verification"
-msgstr ""
-
-msgid "Confirm"
-msgstr ""
-
-msgid "Home Address"
-msgstr ""
-
-msgid "Send Newsletter"
-msgstr ""
-
-msgid "Family Member(s)"
-msgstr ""
-
-msgid "Work Email"
-msgstr ""
-
-msgid "All information on this page is correct."
-msgstr ""
-
-msgid "Please update the my family information with the following"
-msgstr ""
-
-msgid "Your verification request is complete"
-msgstr ""
-
-msgid "We encountered an error submitting with your verification data"
-msgstr ""
-
-msgid "Send"
-msgstr ""
-
-msgid "Visit our Site"
-msgstr ""
-
 msgid "Custom Family Fields Editor"
 msgstr ""
 
@@ -2728,6 +2526,9 @@ msgstr ""
 msgid "Contact Info"
 msgstr ""
 
+msgid "Send Newsletter"
+msgstr ""
+
 msgid "Other Info"
 msgstr ""
 
@@ -2749,6 +2550,9 @@ msgstr ""
 msgid "Custom Fields"
 msgstr ""
 
+msgid "Family Members"
+msgstr ""
+
 msgid ""
 "You may create family members now or add them later.  All entries will "
 "become <i>new</i> person records."
@@ -2766,13 +2570,13 @@ msgstr ""
 msgid "Role"
 msgstr ""
 
-msgid "Month"
+msgid "Birth Month"
 msgstr ""
 
-msgid "Day"
+msgid "Birth Day"
 msgstr ""
 
-msgid "Year"
+msgid "Birth Year"
 msgstr ""
 
 msgid "Select Gender"
@@ -2851,6 +2655,9 @@ msgid "Individual Deposit Report"
 msgstr ""
 
 msgid "Advanced Deposit Report"
+msgstr ""
+
+msgid "Next"
 msgstr ""
 
 msgid "Add All Classes"
@@ -3436,13 +3243,13 @@ msgstr ""
 msgid "Assigned envelope numbers to all families."
 msgstr ""
 
+msgid "Version"
+msgstr ""
+
 msgid "Copyright"
 msgstr ""
 
 msgid "All rights reserved"
-msgstr ""
-
-msgid "Version"
 msgstr ""
 
 msgid "Follow us on Twitter"
@@ -3464,6 +3271,9 @@ msgid "Text Field (100 char)"
 msgstr ""
 
 msgid "Text Field (long)"
+msgstr ""
+
+msgid "Year"
 msgstr ""
 
 msgid "Season"
@@ -3601,6 +3411,12 @@ msgstr ""
 msgid "Toggle navigation"
 msgstr ""
 
+msgid "of translation completed"
+msgstr ""
+
+msgid "Help translate this project"
+msgstr ""
+
 msgid "Your Cart"
 msgstr ""
 
@@ -3616,7 +3432,7 @@ msgstr ""
 msgid "Change Settings"
 msgstr ""
 
-msgid "Lock"
+msgid "Manage 2 Factor Authentication"
 msgstr ""
 
 msgid "Sign out"
@@ -3721,35 +3537,6 @@ msgstr ""
 msgid " Monthly Averages"
 msgstr ""
 
-msgid "Invalid login or password"
-msgstr ""
-
-msgid ""
-"Too many failed logins: your account has been locked.  Please contact an "
-"administrator."
-msgstr ""
-
-msgid "Login"
-msgstr ""
-
-msgid "Please Login"
-msgstr ""
-
-msgid "Your previous session timed out.  Please login again."
-msgstr ""
-
-msgid "I forgot my password"
-msgstr ""
-
-msgid "Register a new Family"
-msgstr ""
-
-msgid "Enter your password to retrieve your session"
-msgstr ""
-
-msgid "Or sign in as a different user"
-msgstr ""
-
 msgid "Update Family Records"
 msgstr ""
 
@@ -3759,6 +3546,9 @@ msgstr ""
 msgid ""
 "This will overwrite the family envelope numbers in the database with those "
 "selected on this page.  Continue?"
+msgstr ""
+
+msgid "Confirm"
 msgstr ""
 
 msgid "Family Select"
@@ -3810,15 +3600,6 @@ msgstr ""
 msgid "Update"
 msgstr ""
 
-msgid "Self Registrations"
-msgstr ""
-
-msgid "Families"
-msgstr ""
-
-msgid "Persons"
-msgstr ""
-
 msgid "Welcome to"
 msgstr ""
 
@@ -3826,6 +3607,9 @@ msgid "Birthdates of the day"
 msgstr ""
 
 msgid "Anniversaries of the day"
+msgstr ""
+
+msgid "Families"
 msgstr ""
 
 msgid "See all Families"
@@ -3856,12 +3640,6 @@ msgid "Latest Persons"
 msgstr ""
 
 msgid "Updated Persons"
-msgstr ""
-
-msgid "Public Calendar"
-msgstr ""
-
-msgid "Private Calendar"
 msgstr ""
 
 msgid "Note Delete Confirmation"
@@ -4022,19 +3800,22 @@ msgstr ""
 msgid "Verify People"
 msgstr ""
 
-msgid "Email All"
-msgstr ""
-
-msgid "Email All (BCC)"
-msgstr ""
-
-msgid "Family Geographic"
+msgid "Self Register"
 msgstr ""
 
 msgid "Family Map"
 msgstr ""
 
+msgid "Family Geographic"
+msgstr ""
+
 msgid "Update All Family Coordinates"
+msgstr ""
+
+msgid "Email All"
+msgstr ""
+
+msgid "Email All (BCC)"
 msgstr ""
 
 msgid "See All People"
@@ -4044,9 +3825,6 @@ msgid "Sunday School Kids"
 msgstr ""
 
 msgid "Reports"
-msgstr ""
-
-msgid "Self Register"
 msgstr ""
 
 msgid "List families that were created via self registration."
@@ -4146,19 +3924,13 @@ msgstr ""
 msgid "Jr., Sr., III"
 msgstr ""
 
-msgid "Birth Month"
-msgstr ""
-
 msgid "Select Month"
-msgstr ""
-
-msgid "Birth Day"
 msgstr ""
 
 msgid "Select Day"
 msgstr ""
 
-msgid "Birth Year"
+msgid "Hide Age"
 msgstr ""
 
 msgid "Create a new family (using last name)"
@@ -4242,10 +4014,19 @@ msgstr ""
 msgid "Timeline"
 msgstr ""
 
+msgid "Mailchimp"
+msgstr ""
+
 msgid "Assigned Groups"
 msgstr ""
 
 msgid "Notes"
+msgstr ""
+
+msgid "Lists"
+msgstr ""
+
+msgid "loading"
 msgstr ""
 
 msgid "No group assignments."
@@ -4477,10 +4258,10 @@ msgstr ""
 msgid "Unassigning"
 msgstr ""
 
-msgid "Yes, unassign this Property"
+msgid "No, retain this assignment"
 msgstr ""
 
-msgid "No, retain this assignment"
+msgid "Yes, unassign this Property"
 msgstr ""
 
 msgid "Query Listing"
@@ -4575,6 +4356,9 @@ msgstr ""
 msgid "Message"
 msgstr ""
 
+msgid "Send"
+msgstr ""
+
 msgid "Pledge Reminder Report"
 msgstr ""
 
@@ -4585,6 +4369,9 @@ msgid "item"
 msgstr ""
 
 msgid "Canvass Progress Report"
+msgstr ""
+
+msgid "Done"
 msgstr ""
 
 msgid "Assigned"
@@ -4641,6 +4428,12 @@ msgstr ""
 msgid "All Members"
 msgstr ""
 
+msgid "Address 1"
+msgstr ""
+
+msgid "Address 2"
+msgstr ""
+
 msgid "City, State, Zip"
 msgstr ""
 
@@ -4653,33 +4446,15 @@ msgstr ""
 msgid "Adult/Child"
 msgstr ""
 
-msgid "Member/Friend"
-msgstr ""
-
-msgid "Address 1"
-msgstr ""
-
-msgid "Address 2"
-msgstr ""
-
 msgid "Cell phone"
+msgstr ""
+
+msgid "Member/Friend"
 msgstr ""
 
 msgid ""
 "This option requires at least version 3.22 of MySQL!  Hit browser back "
 "button to return to ChurchCRM."
-msgstr ""
-
-msgid "All Funds"
-msgstr ""
-
-msgid " for all funds"
-msgstr ""
-
-msgid " for fund "
-msgstr ""
-
-msgid "for funds "
 msgstr ""
 
 msgid "Estimated value "
@@ -4695,6 +4470,33 @@ msgid "Bid"
 msgstr ""
 
 msgid "Minimum bid "
+msgstr ""
+
+msgid "All Funds"
+msgstr ""
+
+msgid " for all funds"
+msgstr ""
+
+msgid " for fund "
+msgstr ""
+
+msgid "for funds "
+msgstr ""
+
+msgid "Pledge Summary By Family"
+msgstr ""
+
+msgid "Method"
+msgstr ""
+
+msgid "Pledge"
+msgstr ""
+
+msgid "Paid"
+msgstr ""
+
+msgid "Owe"
 msgstr ""
 
 msgid "Donated Items:"
@@ -4829,9 +4631,6 @@ msgstr ""
 msgid "Schedule"
 msgstr ""
 
-msgid "Method"
-msgstr ""
-
 msgid "Date Updated"
 msgstr ""
 
@@ -4881,6 +4680,602 @@ msgid ""
 msgstr ""
 
 msgid "Permission"
+msgstr ""
+
+msgid "System Upgrade"
+msgstr ""
+
+msgid "Upgrade Required"
+msgstr ""
+
+msgid "Current DB Version: "
+msgstr ""
+
+msgid "Current Software Version: "
+msgstr ""
+
+msgid "Upgrade database"
+msgstr ""
+
+msgid "Setting saved"
+msgstr ""
+
+msgid "Edit JSON Settings"
+msgstr ""
+
+msgid "Default Value"
+msgstr ""
+
+msgid "Edit Settings"
+msgstr ""
+
+msgid "Unknown Type"
+msgstr ""
+
+msgid "Tax Report"
+msgstr ""
+
+msgid "Calendar Year"
+msgstr ""
+
+msgid "US Address Verification"
+msgstr ""
+
+msgid ""
+"http://www.intelligentsearch.com/address_verification/verify_address.html"
+msgstr ""
+
+msgid "Update Latitude & Longitude"
+msgstr ""
+
+msgid "Families without Geo Info"
+msgstr ""
+
+msgid "No coordinates found"
+msgstr ""
+
+msgid "Upgrade ChurchCRM"
+msgstr ""
+
+msgid "Warning: Pre-Upgrade Tasks Detected"
+msgstr ""
+
+msgid ""
+"Some conditions have been identified wich may prevent a successful upgrade"
+msgstr ""
+
+msgid ""
+"Please review and mitigate these tasks before continuing with the upgrade:"
+msgstr ""
+
+msgid "I Understand"
+msgstr ""
+
+msgid "Warning: Signature mismatch"
+msgstr ""
+
+msgid ""
+"Some ChurchCRM system files may have been modified since the last "
+"installation."
+msgstr ""
+
+msgid ""
+"This upgrade will completely destroy any customizations made to the "
+"following files by reverting the files to the official version."
+msgstr ""
+
+msgid ""
+"If you wish to maintain your changes to these files, please take a manual "
+"backup of these files before proceeding with this upgrade, and then manually "
+"restore the files after the upgrade is complete."
+msgstr ""
+
+msgid "Integrity Check Details:"
+msgstr ""
+
+msgid "Files failing integrity check"
+msgstr ""
+
+msgid "File Missing"
+msgstr ""
+
+msgid "Step 1: Backup Database"
+msgstr ""
+
+msgid "Please create a database backup before beginning the upgrade process."
+msgstr ""
+
+msgid "Generate Database Backup"
+msgstr ""
+
+msgid "Step 2: Fetch Update Package on Server"
+msgstr ""
+
+msgid "Fetch the latest files from the ChurchCRM GitHub release page"
+msgstr ""
+
+msgid "Fetch Update Files"
+msgstr ""
+
+msgid "Step 3: Apply Update Package on Server"
+msgstr ""
+
+msgid "Extract the upgrade archive, and apply the new files"
+msgstr ""
+
+msgid "Release Notes"
+msgstr ""
+
+msgid "File Name:"
+msgstr ""
+
+msgid "Full Path:"
+msgstr ""
+
+msgid "SHA1:"
+msgstr ""
+
+msgid "Upgrade System"
+msgstr ""
+
+msgid "Step 4: Login"
+msgstr ""
+
+msgid "Login to Upgraded System"
+msgstr ""
+
+msgid "Backup Complete, Ready for Download."
+msgstr ""
+
+msgid "Backup Error."
+msgstr ""
+
+msgid "Backup Downloaded, Copy on server removed"
+msgstr ""
+
+msgid "User Editor"
+msgstr ""
+
+msgid "Note: Changes will not take effect until next logon."
+msgstr ""
+
+msgid "Person to Make User"
+msgstr ""
+
+msgid "User"
+msgstr ""
+
+msgid "Login Name"
+msgstr ""
+
+msgid "(Grants all privileges.)"
+msgstr ""
+
+msgid "Add Records"
+msgstr ""
+
+msgid "Edit Records"
+msgstr ""
+
+msgid "Delete Records"
+msgstr ""
+
+msgid "Manage Properties and Classifications"
+msgstr ""
+
+msgid "Manage Groups and Roles"
+msgstr ""
+
+msgid "Manage Donations and Finance"
+msgstr ""
+
+msgid "View, Add and Edit Notes"
+msgstr ""
+
+msgid "Edit Self"
+msgstr ""
+
+msgid "(Edit own family only.)"
+msgstr ""
+
+msgid "(Canvass volunteer.)"
+msgstr ""
+
+msgid "Style"
+msgstr ""
+
+msgid ""
+"Set Permission True to give this user the ability to change their current "
+"value."
+msgstr ""
+
+msgid "New User"
+msgstr ""
+
+msgid "User Settings"
+msgstr ""
+
+msgid "Global User Settings"
+msgstr ""
+
+msgid "General"
+msgstr ""
+
+msgid "Passwords"
+msgstr ""
+
+msgid "2FA"
+msgstr ""
+
+msgid "Session Timeout"
+msgstr ""
+
+msgid "Max Failed Login"
+msgstr ""
+
+msgid "Enable Password Reset"
+msgstr ""
+
+msgid "Send email to Deleted Users"
+msgstr ""
+
+msgid "Min Password Length"
+msgstr ""
+
+msgid "Min Password Characters Delta"
+msgstr ""
+
+msgid "Disallowed Passwords"
+msgstr ""
+
+msgid "Enable 2FA"
+msgstr ""
+
+msgid "Require 2FA"
+msgstr ""
+
+msgid "2FA Application Name"
+msgstr ""
+
+msgid "User Listing"
+msgstr ""
+
+msgid "Actions"
+msgstr ""
+
+msgid "Last Login"
+msgstr ""
+
+msgid "Total Logins"
+msgstr ""
+
+msgid "Failed Logins"
+msgstr ""
+
+msgid "Two Factor Status"
+msgstr ""
+
+msgid "Volunteer Opportunity Delete Confirmation"
+msgstr ""
+
+msgid "Please confirm deletion of"
+msgstr ""
+
+msgid "There are people assigned to this Volunteer Opportunity."
+msgstr ""
+
+msgid "Volunteer Opportunity will be unassigned for the following people."
+msgstr ""
+
+msgid "Yes, delete this Volunteer Opportunity"
+msgstr ""
+
+msgid "Volunteer Opportunity Editor"
+msgstr ""
+
+msgid "No volunteer opportunities have been added yet"
+msgstr ""
+
+msgid ""
+"NOTE: ADD, Delete, and Ordering changes are immediate.  Changes to Name or "
+"Desc fields must be saved by pressing 'Save Changes'"
+msgstr ""
+
+msgid "Add New Opportunity"
+msgstr ""
+
+msgid "\"Why Came\" notes for "
+msgstr ""
+
+msgid "Why did you come to the church?"
+msgstr ""
+
+msgid "Why do you keep coming?"
+msgstr ""
+
+msgid "Do you have any suggestions for us?"
+msgstr ""
+
+msgid "How did you learn of the church?"
+msgstr ""
+
+msgid "Invalid request: Missing calendar id"
+msgstr ""
+
+msgid "Not Found: Unknown calendar id"
+msgstr ""
+
+msgid "invalid event type id"
+msgstr ""
+
+msgid "invalid calendar pinning"
+msgstr ""
+
+msgid "POST to cart requires a Persons array, FamilyID, or GroupID"
+msgstr ""
+
+msgid "records(s) successfully added to selected Group."
+msgstr ""
+
+msgid "records(s) successfully deleted from the selected Group."
+msgstr ""
+
+msgid "Your cart is empty"
+msgstr ""
+
+msgid "Your cart has been successfully emptied"
+msgstr ""
+
+msgid "List not found"
+msgstr ""
+
+msgid "List not inList"
+msgstr ""
+
+msgid "Deactivated the Family"
+msgstr ""
+
+msgid "Activated the Family"
+msgstr ""
+
+msgid "Error sending email(s)"
+msgstr ""
+
+msgid "Please check logs for more information"
+msgstr ""
+
+msgid "Deleted from group"
+msgstr ""
+
+msgid "Added to group"
+msgstr ""
+
+msgid "invalid group id"
+msgstr ""
+
+msgid "invalid status value"
+msgstr ""
+
+msgid "invalid export value"
+msgstr ""
+
+msgid "Can't delete yourself"
+msgstr ""
+
+msgid "success"
+msgstr ""
+
+msgid "The role could not be found."
+msgstr ""
+
+msgid "The role is already assigned."
+msgstr ""
+
+msgid "The role is successfully assigned."
+msgstr ""
+
+msgid "The role could not be assigned."
+msgstr ""
+
+msgid "The property is already assigned."
+msgstr ""
+
+msgid "The property is successfully assigned."
+msgstr ""
+
+msgid "The property could not be assigned."
+msgstr ""
+
+msgid "The record could not be found."
+msgstr ""
+
+msgid "The property is successfully unassigned."
+msgstr ""
+
+msgid "The property could not be unassigned."
+msgstr ""
+
+msgid "Validation Error"
+msgstr ""
+
+msgid "Invalid User/Password"
+msgstr ""
+
+msgid "Link Not found"
+msgstr ""
+
+msgid "The database has been cleared."
+msgstr ""
+
+msgid "The people and families has been cleared from the database."
+msgstr ""
+
+msgid "Bad userId"
+msgstr ""
+
+msgid "Unsupported user config"
+msgstr ""
+
+msgid "Invalid userId"
+msgstr ""
+
+msgid "Unsupported user setting - "
+msgstr ""
+
+msgid "eGive Import"
+msgstr ""
+
+msgid "Start Date: "
+msgstr ""
+
+msgid "End Date: "
+msgstr ""
+
+msgid "Re-import to selected family"
+msgstr ""
+
+msgid "Data import results: "
+msgstr ""
+
+msgid " gifts were imported, "
+msgstr ""
+
+msgid " gifts unchanged, and "
+msgstr ""
+
+msgid " gifts not imported due to problems"
+msgstr ""
+
+msgid "Back to Deposit Slip"
+msgstr ""
+
+msgid "Fatal error in eGive API datastream: '"
+msgstr ""
+
+msgid "Unable to load verification info"
+msgstr ""
+
+msgid "No Changes"
+msgstr ""
+
+msgid "Page not fond"
+msgstr ""
+
+msgid "Oops! Page not found."
+msgstr ""
+
+msgid "Family Registration"
+msgstr ""
+
+msgid "Register your family"
+msgstr ""
+
+msgid "How many people are in your family"
+msgstr ""
+
+msgid "Members"
+msgstr ""
+
+msgid "Family Member"
+msgstr ""
+
+msgid "Mobile"
+msgstr ""
+
+msgid "Home"
+msgstr ""
+
+msgid "Review"
+msgstr ""
+
+msgid "Please enter the following to start your family's verification"
+msgstr ""
+
+msgid "Family Verification"
+msgstr ""
+
+msgid "Home Address"
+msgstr ""
+
+msgid "Family Member(s)"
+msgstr ""
+
+msgid "Work Email"
+msgstr ""
+
+msgid "All information on this page is correct."
+msgstr ""
+
+msgid "Please update the my family information with the following"
+msgstr ""
+
+msgid "Your verification request is complete"
+msgstr ""
+
+msgid "We encountered an error submitting with your verification data"
+msgstr ""
+
+msgid "Visit our Site"
+msgstr ""
+
+msgid "Self Registrations"
+msgstr ""
+
+msgid "Persons"
+msgstr ""
+
+msgid "Public Calendar"
+msgstr ""
+
+msgid "Private Calendar"
+msgstr ""
+
+msgid "Unable to reset password"
+msgstr ""
+
+msgid "Password reset not availble.  Please contact your system administrator"
+msgstr ""
+
+msgid "no found or user without an email"
+msgstr ""
+
+msgid "UserName not set"
+msgstr ""
+
+msgid "Login"
+msgstr ""
+
+msgid "Please Login"
+msgstr ""
+
+msgid "Your previous session timed out.  Please login again."
+msgstr ""
+
+msgid "I forgot my password"
+msgstr ""
+
+msgid "Register a new Family"
+msgstr ""
+
+msgid "Authentication Issue"
+msgstr ""
+
+msgid "Reset your password"
+msgstr ""
+
+msgid "Sorry, we are unable to process your request at this point in time."
+msgstr ""
+
+msgid "Login Name is Required"
+msgstr ""
+
+msgid "A new password was sent to you. Please check your email"
+msgstr ""
+
+msgid "Please enter 2FA code"
+msgstr ""
+
+msgid "2FA Code"
 msgstr ""
 
 msgid "Sunday School Class Functions"
@@ -5019,298 +5414,6 @@ msgstr ""
 msgid "Create PhotoBook"
 msgstr ""
 
-msgid "System Upgrade"
-msgstr ""
-
-msgid "Upgrade Required"
-msgstr ""
-
-msgid "Current DB Version: "
-msgstr ""
-
-msgid "Current Software Version: "
-msgstr ""
-
-msgid "Upgrade database"
-msgstr ""
-
-msgid "Setting saved"
-msgstr ""
-
-msgid "Edit JSON Settings"
-msgstr ""
-
-msgid "Default Value"
-msgstr ""
-
-msgid "Edit Settings"
-msgstr ""
-
-msgid "Unknown Type"
-msgstr ""
-
-msgid "Tax Report"
-msgstr ""
-
-msgid "Calendar Year"
-msgstr ""
-
-msgid "Update Latitude & Longitude"
-msgstr ""
-
-msgid "Families without Geo Info"
-msgstr ""
-
-msgid "No coordinates found"
-msgstr ""
-
-msgid "Upgrade ChurchCRM"
-msgstr ""
-
-msgid "Warning: Pre-Upgrade Tasks Detected"
-msgstr ""
-
-msgid ""
-"Some conditions have been identified wich may prevent a successful upgrade"
-msgstr ""
-
-msgid ""
-"Please review and mitigate these tasks before continuing with the upgrade:"
-msgstr ""
-
-msgid "I Understand"
-msgstr ""
-
-msgid "Warning: Signature mismatch"
-msgstr ""
-
-msgid ""
-"Some ChurchCRM system files may have been modified since the last "
-"installation."
-msgstr ""
-
-msgid ""
-"This upgrade will completely destroy any customizations made to the "
-"following files by reverting the files to the official version."
-msgstr ""
-
-msgid ""
-"If you wish to maintain your changes to these files, please take a manual "
-"backup of these files before proceeding with this upgrade, and then manually "
-"restore the files after the upgrade is complete."
-msgstr ""
-
-msgid "Integrity Check Details:"
-msgstr ""
-
-msgid "Files failing integrity check"
-msgstr ""
-
-msgid "File Missing"
-msgstr ""
-
-msgid "Step 1: Backup Database"
-msgstr ""
-
-msgid "Please create a database backup before beginning the upgrade process."
-msgstr ""
-
-msgid "Generate Database Backup"
-msgstr ""
-
-msgid "Step 2: Fetch Update Package on Server"
-msgstr ""
-
-msgid "Fetch the latest files from the ChurchCRM GitHub release page"
-msgstr ""
-
-msgid "Fetch Update Files"
-msgstr ""
-
-msgid "Step 3: Apply Update Package on Server"
-msgstr ""
-
-msgid "Extract the upgrade archive, and apply the new files"
-msgstr ""
-
-msgid "Release Notes"
-msgstr ""
-
-msgid "File Name:"
-msgstr ""
-
-msgid "Full Path:"
-msgstr ""
-
-msgid "SHA1:"
-msgstr ""
-
-msgid "Upgrade System"
-msgstr ""
-
-msgid "Step 4: Login"
-msgstr ""
-
-msgid "Login to Upgraded System"
-msgstr ""
-
-msgid "Backup Complete, Ready for Download."
-msgstr ""
-
-msgid "Backup Error."
-msgstr ""
-
-msgid "Backup Downloaded, Copy on server removed"
-msgstr ""
-
-msgid "User Editor"
-msgstr ""
-
-msgid "Note: Changes will not take effect until next logon."
-msgstr ""
-
-msgid "Person to Make User"
-msgstr ""
-
-msgid "(Grants all privileges.)"
-msgstr ""
-
-msgid "Add Records"
-msgstr ""
-
-msgid "Edit Records"
-msgstr ""
-
-msgid "Delete Records"
-msgstr ""
-
-msgid "Manage Properties and Classifications"
-msgstr ""
-
-msgid "Manage Groups and Roles"
-msgstr ""
-
-msgid "Manage Donations and Finance"
-msgstr ""
-
-msgid "View, Add and Edit Notes"
-msgstr ""
-
-msgid "Edit Self"
-msgstr ""
-
-msgid "(Edit own family only.)"
-msgstr ""
-
-msgid "(Canvass volunteer.)"
-msgstr ""
-
-msgid "Style"
-msgstr ""
-
-msgid ""
-"Set Permission True to give this user the ability to change their current "
-"value."
-msgstr ""
-
-msgid "User Listing"
-msgstr ""
-
-msgid "New User"
-msgstr ""
-
-msgid "User Settings"
-msgstr ""
-
-msgid "Actions"
-msgstr ""
-
-msgid "Last Login"
-msgstr ""
-
-msgid "Total Logins"
-msgstr ""
-
-msgid "Failed Logins"
-msgstr ""
-
-msgid "User Delete Confirmation"
-msgstr ""
-
-msgid "Please confirm removal of user status from:"
-msgstr ""
-
-msgid "Action Confirmation"
-msgstr ""
-
-msgid "Please confirm reset failed login count"
-msgstr ""
-
-msgid "Please confirm the password reset of this user"
-msgstr ""
-
-msgid "Password reset for"
-msgstr ""
-
-msgid "You must enter a password in both boxes"
-msgstr ""
-
-msgid "You must enter the same password in both boxes"
-msgstr ""
-
-msgid "Invalid password"
-msgstr ""
-
-msgid "You must enter your new password in both boxes"
-msgstr ""
-
-msgid "Your password choice is too obvious. Please choose something else."
-msgstr ""
-
-msgid "Your new password must be at least"
-msgstr ""
-
-msgid "characters"
-msgstr ""
-
-msgid "You need to actually change your password (nice try, though!)"
-msgstr ""
-
-msgid "Your new password is too similar to your old one.  Be more creative!"
-msgstr ""
-
-msgid "User Password Change"
-msgstr ""
-
-msgid ""
-"Your account record indicates that you need to change your password before "
-"proceding."
-msgstr ""
-
-msgid ""
-"Enter your current password, then your new password twice.  Passwords must "
-"be at least"
-msgstr ""
-
-msgid "characters in length."
-msgstr ""
-
-msgid "Enter a new password for this user."
-msgstr ""
-
-msgid "Old Password"
-msgstr ""
-
-msgid "Confirm New Password"
-msgstr ""
-
-msgid "US Address Verification"
-msgstr ""
-
-msgid ""
-"http://www.intelligentsearch.com/address_verification/verify_address.html"
-msgstr ""
-
 msgid "Database Reset Functions"
 msgstr ""
 
@@ -5332,13 +5435,27 @@ msgstr ""
 msgid "Families Without Emails"
 msgstr ""
 
-msgid "People not in Mailchimp"
+msgid "People not in"
+msgstr ""
+
+msgid "Invalid List id"
+msgstr ""
+
+msgid "Audience not in the ChurchCRM"
 msgstr ""
 
 msgid "PDFs successfully emailed "
 msgstr ""
 
 msgid "families"
+msgstr ""
+
+msgid ""
+"Enter new user password. Administratively set passwords are not subject to "
+"length or complexity requirements"
+msgstr ""
+
+msgid "Confirm New Password"
 msgstr ""
 
 msgid "Reset Members"
@@ -5359,19 +5476,34 @@ msgid ""
 "This will reset the system data and will restart the system as a new install."
 msgstr ""
 
-msgid "System Information"
+msgid "ChurchCRM Installation Information"
 msgstr ""
 
 msgid "Software Version"
 msgstr ""
 
-msgid "Valid Mail Server Settings"
+msgid "System Information"
 msgstr ""
 
 msgid "Database"
 msgstr ""
 
 msgid "Database Version"
+msgstr ""
+
+msgid "Database Server Version"
+msgstr ""
+
+msgid "Web Server"
+msgstr ""
+
+msgid "Server Software"
+msgstr ""
+
+msgid "Email Information"
+msgstr ""
+
+msgid "Valid Mail Server Settings"
 msgstr ""
 
 msgid "Application Prerequisites"
@@ -5381,9 +5513,6 @@ msgid "Application Integrity Check"
 msgstr ""
 
 msgid "Details:"
-msgstr ""
-
-msgid "WebServer Modules"
 msgstr ""
 
 msgid "Add Menu"
@@ -5402,9 +5531,6 @@ msgid "Start with http:// or https://"
 msgstr ""
 
 msgid "Menus"
-msgstr ""
-
-msgid "Username"
 msgstr ""
 
 msgid "You have no items in your cart."
@@ -5509,7 +5635,13 @@ msgstr ""
 msgid "Cleaned count since last send:"
 msgstr ""
 
-msgid "Missing emails report"
+msgid "List maintenance"
+msgstr ""
+
+msgid "People not in list"
+msgstr ""
+
+msgid "Audience not in the CRM"
 msgstr ""
 
 msgid "is not configured"
@@ -5581,6 +5713,9 @@ msgstr ""
 msgid "Metadata"
 msgstr ""
 
+msgid "Loading"
+msgstr ""
+
 msgid "Pledges and Payments"
 msgstr ""
 
@@ -5642,48 +5777,184 @@ msgstr ""
 msgid "Add Person"
 msgstr ""
 
-msgid "Volunteer Opportunity Delete Confirmation"
+msgid "Today's Birthdays"
 msgstr ""
 
-msgid "Please confirm deletion of"
-msgstr ""
-
-msgid "There are people assigned to this Volunteer Opportunity."
-msgstr ""
-
-msgid "Volunteer Opportunity will be unassigned for the following people."
-msgstr ""
-
-msgid "Yes, delete this Volunteer Opportunity"
-msgstr ""
-
-msgid "Volunteer Opportunity Editor"
-msgstr ""
-
-msgid "No volunteer opportunities have been added yet"
+msgid "Today's Wedding Anniversaries"
 msgstr ""
 
 msgid ""
-"NOTE: ADD, Delete, and Ordering changes are immediate.  Changes to Name or "
-"Desc fields must be saved by pressing 'Save Changes'"
+"Enter your current password, then your new password twice.  Passwords must "
+"be at least"
 msgstr ""
 
-msgid "Add New Opportunity"
+msgid "characters in length."
 msgstr ""
 
-msgid "\"Why Came\" notes for "
+msgid "Old Password"
 msgstr ""
 
-msgid "Why did you come to the church?"
+msgid "2 Factor Authentication enrollment"
 msgstr ""
 
-msgid "Why do you keep coming?"
+msgid "Unsupported Two Factor Authentication Configuration"
 msgstr ""
 
-msgid "Do you have any suggestions for us?"
+msgid "Unable To Begin Two Factor Authentication Enrollment"
 msgstr ""
 
-msgid "How did you learn of the church?"
+msgid ""
+"Two factor authentication requires ChurchCRM administrators to configure a "
+"few parameters"
+msgstr ""
+
+msgid "System configuration "
+msgstr ""
+
+msgid "Must be set to 'true'"
+msgstr ""
+
+msgid ""
+"Include/Config.php must define an encryption key for storing 2FA secret keys "
+"in the database by setting a value for"
+msgstr ""
+
+msgid "Login Info"
+msgstr ""
+
+msgid "Username"
+msgstr ""
+
+msgid "Login Count"
+msgstr ""
+
+msgid "Failed Login"
+msgstr ""
+
+msgid "Permissions"
+msgstr ""
+
+msgid "Manage Notes"
+msgstr ""
+
+msgid "Skins"
+msgstr ""
+
+msgid "Family Member Count"
+msgstr ""
+
+msgid "Person by Age"
+msgstr ""
+
+msgid "Total By Gender"
+msgstr ""
+
+msgid "Person by Role and Gender"
+msgstr ""
+
+msgid "Person by Property"
+msgstr ""
+
+msgid "Advanced Search"
+msgstr ""
+
+msgid "Registered students"
+msgstr ""
+
+msgid "Membership anniversaries"
+msgstr ""
+
+msgid "Select database users"
+msgstr ""
+
+msgid "Select all members"
+msgstr ""
+
+msgid "Volunteers"
+msgstr ""
+
+msgid "Recent friends"
+msgstr ""
+
+msgid "Families to Canvass"
+msgstr ""
+
+msgid "Pledge comparison"
+msgstr ""
+
+msgid "Missing pledges"
+msgstr ""
+
+msgid "Credit Card People"
+msgstr ""
+
+msgid "Family Pledge by Fiscal Year"
+msgstr ""
+
+msgid "CustomSearch"
+msgstr ""
+
+msgid "Returns each family and the total number of people assigned to them."
+msgstr ""
+
+msgid "Returns any person records with ages between two given ages."
+msgstr ""
+
+msgid "Total of records matching a given gender."
+msgstr ""
+
+msgid "Selects person records with the family role and gender specified."
+msgstr ""
+
+msgid "Returns person records which are assigned the given property."
+msgstr ""
+
+msgid ""
+"Search by any part of Name, City, State, Zip, Home Phone, Email, or Work "
+"Email."
+msgstr ""
+
+msgid "People with birthdays in a particular month"
+msgstr ""
+
+msgid "Find Registered students"
+msgstr ""
+
+msgid "Members who joined in a particular month"
+msgstr ""
+
+msgid "People who are registered as database users"
+msgstr ""
+
+msgid "People who are members"
+msgstr ""
+
+msgid "Find volunteers for a particular opportunity"
+msgstr ""
+
+msgid "Friends who signed up in previous months"
+msgstr ""
+
+msgid "People in families that are ok to canvass."
+msgstr ""
+
+msgid "Compare pledges between two fiscal years"
+msgstr ""
+
+msgid "Find people who pledged one year but not another"
+msgstr ""
+
+msgid "People who are configured to pay by credit card."
+msgstr ""
+
+msgid ""
+"Pledge summary by family name for each fund for the selected fiscal year"
+msgstr ""
+
+msgid "Find volunteers for who match two specific opportunity codes"
+msgstr ""
+
+msgid "Find people with a custom field value"
 msgstr ""
 
 msgid "Zip Code"
@@ -5734,7 +6005,7 @@ msgstr ""
 msgid "Field"
 msgstr ""
 
-msgid "Registered students"
+msgid "Month"
 msgstr ""
 
 msgid "Volunteer opportunities"
@@ -5753,9 +6024,6 @@ msgid "Custom field"
 msgstr ""
 
 msgid "Field value"
-msgstr ""
-
-msgid "Event"
 msgstr ""
 
 msgid "The minimum age for which you want records returned."
@@ -5842,123 +6110,6 @@ msgid "Choose customer person field"
 msgstr ""
 
 msgid "Match custom field to this value"
-msgstr ""
-
-msgid "Select the desired event"
-msgstr ""
-
-msgid "Family Member Count"
-msgstr ""
-
-msgid "Person by Age"
-msgstr ""
-
-msgid "Total By Gender"
-msgstr ""
-
-msgid "Person by Role and Gender"
-msgstr ""
-
-msgid "Person by Property"
-msgstr ""
-
-msgid "Advanced Search"
-msgstr ""
-
-msgid "Membership anniversaries"
-msgstr ""
-
-msgid "Select database users"
-msgstr ""
-
-msgid "Select all members"
-msgstr ""
-
-msgid "Volunteers"
-msgstr ""
-
-msgid "Recent friends"
-msgstr ""
-
-msgid "Families to Canvass"
-msgstr ""
-
-msgid "Pledge comparison"
-msgstr ""
-
-msgid "Missing pledges"
-msgstr ""
-
-msgid "Family Pledge by Fiscal Year"
-msgstr ""
-
-msgid "CustomSearch"
-msgstr ""
-
-msgid "Missing people"
-msgstr ""
-
-msgid "Returns each family and the total number of people assigned to them."
-msgstr ""
-
-msgid "Returns any person records with ages between two given ages."
-msgstr ""
-
-msgid "Total of records matching a given gender."
-msgstr ""
-
-msgid "Selects person records with the family role and gender specified."
-msgstr ""
-
-msgid "Returns person records which are assigned the given property."
-msgstr ""
-
-msgid ""
-"Search by any part of Name, City, State, Zip, Home Phone, Email, or Work "
-"Email."
-msgstr ""
-
-msgid "People with birthdays in a particular month"
-msgstr ""
-
-msgid "Find Registered students"
-msgstr ""
-
-msgid "Members who joined in a particular month"
-msgstr ""
-
-msgid "People who are registered as database users"
-msgstr ""
-
-msgid "People who are members"
-msgstr ""
-
-msgid "Find volunteers for a particular opportunity"
-msgstr ""
-
-msgid "Friends who signed up in previous months"
-msgstr ""
-
-msgid "People in families that are ok to canvass."
-msgstr ""
-
-msgid "Compare pledges between two fiscal years"
-msgstr ""
-
-msgid "Find people who pledged one year but not another"
-msgstr ""
-
-msgid ""
-"Pledge summary by family name for each fund for the selected fiscal year"
-msgstr ""
-
-msgid "Find volunteers for who match two specific opportunity codes"
-msgstr ""
-
-msgid "Find people with a custom field value"
-msgstr ""
-
-msgid "Find people who didn't attend an event"
 msgstr ""
 
 msgid "Afghanistan (‫افغانستان‬‎)"
@@ -6729,6 +6880,9 @@ msgstr ""
 msgid "Zimbabwe"
 msgstr ""
 
+msgid "Afrikaans"
+msgstr ""
+
 msgid "Albanian"
 msgstr ""
 
@@ -6763,6 +6917,9 @@ msgid "French - France"
 msgstr ""
 
 msgid "German - Germany"
+msgstr ""
+
+msgid "Hebrew"
 msgstr ""
 
 msgid "Hungarian"
@@ -6943,6 +7100,27 @@ msgstr ""
 msgid "Details"
 msgstr ""
 
+msgid "Register"
+msgstr ""
+
+msgid "Registration Complete"
+msgstr ""
+
+msgid "Thank you for registering your family"
+msgstr ""
+
+msgid "Register another family!"
+msgstr ""
+
+msgid "Done, show me the homepage!"
+msgstr ""
+
+msgid "Family Property Unassignment"
+msgstr ""
+
+msgid "Do you want to remove"
+msgstr ""
+
 msgid "Pledge or Payment"
 msgstr ""
 
@@ -6968,6 +7146,12 @@ msgid "Please confirm deactivation of family"
 msgstr ""
 
 msgid "Please confirm activation of family"
+msgstr ""
+
+msgid "open rate"
+msgstr ""
+
+msgid "Not Subscribed "
 msgstr ""
 
 msgid "You are about to add a new deposit without a comment"
@@ -7051,8 +7235,135 @@ msgstr ""
 msgid "Data Cleared Successfully!"
 msgstr ""
 
+msgid "You must enter the same password in both boxes"
+msgstr ""
+
 msgid "Are you sure you want to remove this person's membership from"
 msgstr ""
 
 msgid "Are you sure you want to unassign this property?"
+msgstr ""
+
+msgid "Failed generate a new API Key"
+msgstr ""
+
+msgid "User Delete Confirmation"
+msgstr ""
+
+msgid "Please confirm removal of user status from:"
+msgstr ""
+
+msgid "Action Confirmation"
+msgstr ""
+
+msgid "Please confirm reset failed login count"
+msgstr ""
+
+msgid "Please confirm the password reset of this user"
+msgstr ""
+
+msgid "Please confirm disabling 2 Factor Auth for this user"
+msgstr ""
+
+msgid "Start Date"
+msgstr ""
+
+msgid "End Date"
+msgstr ""
+
+msgid "Pinned Calendars"
+msgstr ""
+
+msgid "This field is required"
+msgstr ""
+
+msgid "Text"
+msgstr ""
+
+msgid "Event Description"
+msgstr ""
+
+msgid ""
+"Enrolling your ChurchCRM user account in Two Factor Authention provides an "
+"additional layer of defense against bad actors trying to access your account."
+msgstr ""
+
+msgid ""
+"ChurchCRM Two factor supports any TOTP authenticator app, so you're free to "
+"choose between Microsoft Authenticator, Google Authenticator, Authy, "
+"LastPass, and others"
+msgstr ""
+
+msgid ""
+"When you sign in to ChurchCRM, you'll still enter your username and password "
+"like normal"
+msgstr ""
+
+msgid ""
+"However, you'll also need to supply a one-time code from your authenticator "
+"device to complete your login"
+msgstr ""
+
+msgid ""
+"After successfully entering both your credentials, and the one-time code, "
+"you'll be logged in as normal"
+msgstr ""
+
+msgid ""
+"To prevent being locked out of your ChurchCRM account, please ensure you're "
+"ready to complete two factor enrollment before clicking begin"
+msgstr ""
+
+msgid ""
+"Beginning enrollment will invalidate any previously enrolled 2 factor "
+"devices and recovery codes."
+msgstr ""
+
+msgid ""
+"When you click next, you'll be prompted to scan a QR code to enroll your "
+"authenticator app."
+msgstr ""
+
+msgid ""
+"To confirm enrollment, you'll need to enter the code generated by your "
+"authenticator app"
+msgstr ""
+
+msgid ""
+"After confirming app enrollment, single-use recovery codes will be generated "
+"and displayed."
+msgstr ""
+
+msgid ""
+"Recovery codes can be used instead of a code generated from your "
+"authenticator app."
+msgstr ""
+
+msgid "Store these in a secure location"
+msgstr ""
+
+msgid "Begin Two Factor Authentication Enrollment"
+msgstr ""
+
+msgid "2 Factor Authentication Secret"
+msgstr ""
+
+msgid "Regenerate 2 Factor Authentication Secret"
+msgstr ""
+
+msgid "Remove 2 Factor Authentication Secret"
+msgstr ""
+
+msgid "Enter TOTP code to confirm enrollment"
+msgstr ""
+
+msgid "2 Factor Authentication Enrollment Success"
+msgstr ""
+
+msgid "Please store these recovery codes in a safe location"
+msgstr ""
+
+msgid ""
+"If you ever lose access to your newly enrolled authenticator app, you'll "
+"need to use a recovery code to gain access to your account"
 msgstr ""

@@ -134,21 +134,3 @@ function showGlobalMessage(message, callOutClass) {
         }
     });
 }
-
-function suspendSession(){
-  $.ajax({
-        method: 'HEAD',
-        url: window.CRM.root + "/api/session/lock",
-        statusCode: {
-          200: function() {
-            window.open(window.CRM.root + "/Login.php");
-          },
-          404: function() {
-            window.CRM.DisplayErrorMessage(url, {message: error});
-          },
-          500: function() {
-            window.CRM.DisplayErrorMessage(url, {message: error});
-          }
-        }
-      });
-};

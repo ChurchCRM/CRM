@@ -14,7 +14,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
     </div>
     <div class="box-body">
         <a href="<?= SystemURLs::getRootPath()?>/Reports/ConfirmReport.php" class="btn btn-app"><i class="fa fa-file-pdf-o"></i><?= gettext('Download family letters') ?></a>
-        <a href="<?= SystemURLs::getRootPath()?>/Reports/ConfirmReportEmail.php" class="btn btn-app"><i class="fa  fa-envelope-o"></i><?= gettext('Send family email') ?></a>
+        <div class="btn btn-app" id="verifyEmail"><i class="fa  fa-envelope-o"></i><?= gettext('Send family email') ?></div>
     </div>
 </div>
 
@@ -53,6 +53,26 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     $(document).ready(function () {
 
+        $("#verifyEmail").click(function() {
+            bootbox.confirm({
+                title: i18next.t("Send Family Verification Emails Now?"),
+                message: i18next.t("Send data verification request emails to all people in database?")+"<br/><br/>"+i18next.t("This process can take a while depending on the size of your database."),
+                buttons: {
+                    cancel : {
+                        label: i18next.t("Cancel")
+                    },
+                    confirm: {
+                        label: i18next.t("Send Emails")
+                    }
+                },
+                callback: function(result) {
+                    if (result) {
+                        window.location= window.CRM.root + "/Reports/ConfirmReportEmail.php";
+                    }
+                }
+            });
+        });
+
         var dataTableConfig = {
             ajax: {
                 url: window.CRM.root + "/api/families/self-verify",
@@ -64,7 +84,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     data: 'Family.Id',
                     searchable: false,
                     render: function (data, type, full, meta) {
-                        return '<a href=' + window.CRM.root + '/FamilyView.php?FamilyID=' + data + '>' + data + '</a>';
+                        return '<a href=' + window.CRM.root + '/v2/family/' + data + '>' + data + '</a>';
                     }
                 },
                 {
@@ -103,7 +123,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     data: 'FamilyId',
                     searchable: false,
                     render: function (data, type, full, meta) {
-                        return '<a href=' + window.CRM.root + '/FamilyView.php?FamilyID=' + data + '>' + data + '</a>';
+                        return '<a href=' + window.CRM.root + '/v2/family/' + data + '>' + data + '</a>';
                     }
                 },
                 {

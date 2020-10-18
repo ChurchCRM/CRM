@@ -1,19 +1,19 @@
 $(document).ready(function () {
-  
+
   $('.changeRole').click(function(event) {
     var GroupID = $(this).data("groupid");
     window.CRM.groups.promptSelection({Type:window.CRM.groups.selectTypes.Role,GroupID:GroupID},function(selection){
       window.CRM.groups.addPerson(GroupID,window.CRM.currentPersonID,selection.RoleID).done(function(){
         location.reload();
       })
-      
+
     });
   });
 
   $(".groupRemove").click(function(event){
     var targetGroupID = event.currentTarget.dataset.groupid;
     var targetGroupName = event.currentTarget.dataset.groupname;
-    
+
     bootbox.confirm({
       message: i18next.t("Are you sure you want to remove this person's membership from") + " " + targetGroupName + "?",
       buttons: {
@@ -34,7 +34,7 @@ $(document).ready(function () {
             function(){
               location.reload()
             }
-          ); 
+          );
         }
       }
     });
@@ -48,7 +48,7 @@ $(document).ready(function () {
       );
     });
   });
-  
+
     $("#input-person-properties").on("select2:select", function (event) {
         promptBox = $("#prompt-box");
         promptBox.removeClass('form-group').html('');
@@ -68,60 +68,48 @@ $(document).ready(function () {
 
     });
 
-    $('#assign-property-form').submit(function (event) {
-        event.preventDefault();
-        var thisForm = $(this);
-        var url = thisForm.attr('action');
-        var dataToSend = thisForm.serialize();
-
-        $.ajax({
-            type: 'POST',
-            url: url,
-            data: dataToSend,
-            dataType: 'json',
-            success: function (data, status, xmlHttpReq) {
-                if (data && data.success) {
-                    location.reload();
-                }
+    $('#assign-property-btn').click(function (event) {
+        let propertyId = "";
+        let value = "";
+        let dataToSend = $('#assign-property-form').serializeArray();
+        $.each(dataToSend, function (key, field) {
+            if (field.name == "PropertyId") {
+                propertyId = field.value;
+            } else if (field.name == "PropertyValue") {
+                value = field.value;
             }
         });
-
+        window.CRM.APIRequest({
+            method: 'POST',
+            path: 'people/properties/person/'+ window.CRM.currentPersonID + '/' + propertyId,
+            data: JSON.stringify({"value":  value})
+        }).done(function(data) {
+            location.reload();
+        });
     });
 
     $('.remove-property-btn').click(function (event) {
-        event.preventDefault();
-        var thisLink = $(this);
-        var dataToSend = {
-            PersonId: thisLink.data('person_id'),
-            PropertyId: thisLink.data('property_id')
-        };
-        var url = window.CRM.root + '/api/properties/persons/unassign';
-
+        let propertyId = $(this).data('property_id');
         bootbox.confirm(i18next.t('Are you sure you want to unassign this property?'), function (result) {
             if (result) {
-                $.ajax({
-                    type: 'DELETE',
-                    url: url,
-                    data: dataToSend,
-                    dataType: 'json',
-                    success: function (data, status, xmlHttpReq) {
-                        if (data && data.success) {
-                            location.reload();
-                        }
-                    }
+                window.CRM.APIRequest({
+                    method: 'DELETE',
+                    path: 'people/properties/person/'+ window.CRM.currentPersonID + '/' + propertyId,
+                }).done(function(data) {
+                    location.reload();
                 });
             }
         });
 
     });
-    
+
     $('#edit-role-btn').click(function (event) {
         event.preventDefault();
         var thisLink = $(this);
         var personId = thisLink.data('person_id');
         var familyRoleId = thisLink.data('family_role_id');
         var familyRole = thisLink.data('family_role');
-        
+
         $.ajax({
             type: 'GET',
             dataType: 'json',
@@ -133,13 +121,13 @@ $(document).ready(function () {
                         if (data[i].OptionId == familyRoleId) {
                             continue;
                         }
-                        
+
                         roles[roles.length] = {
                             text: data[i].OptionName,
                             value: data[i].OptionId
                         };
                     }
-                    
+
                     bootbox.prompt({
                         title:i18next.t( 'Change role'),
                         inputType: 'select',
@@ -157,16 +145,40 @@ $(document).ready(function () {
                                     }
                                 });
                             }
-                            
+
                         }
                     });
-                    
+
                 }
             }
         });
-        
+
     });
-    
-    
-    
+
+    if (window.CRM.plugin.mailchimp) {
+        $.ajax({
+            type: 'GET',
+            dataType: 'json',
+            url: window.CRM.root + '/api/mailchimp/person/' + window.CRM.currentPersonID,
+            success: function (data, status, xmlHttpReq) {
+                for (emailData of data) {
+                    let htmlVal = "";
+                    let eamilMD5 = emailData["emailMD5"];
+                    for (list of emailData["list"]) {
+                        let listName = list["name"];
+                        let listStatus = list["status"];
+                        if (listStatus != 404) {
+                            let listOpenRate = list["stats"]["avg_open_rate"] * 100;
+                            htmlVal = htmlVal + '<li>' + listName + " (" + listStatus + ") - " + listOpenRate + "% " + i18next.t("open rate") + " </li>";
+                        }
+                    }
+                    if (htmlVal === "") {
+                        htmlVal = i18next.t("Not Subscribed ");
+                    }
+                    $('#' + eamilMD5).html(htmlVal);
+                }
+            }
+        });
+    }
+
 });

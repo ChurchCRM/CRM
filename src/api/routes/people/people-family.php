@@ -1,6 +1,7 @@
 <?php
 
 use ChurchCRM\Slim\Middleware\Request\FamilyAPIMiddleware;
+use ChurchCRM\Slim\Middleware\MailChimpMiddleware;
 use ChurchCRM\Utils\GeoUtils;
 use ChurchCRM\Utils\MiscUtils;
 use ChurchCRM\dto\Photo;
@@ -12,6 +13,7 @@ use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\FamilyQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
+use ChurchCRM\Service\MailChimpService;
 
 $app->group('/family/{familyId:[0-9]+}', function () {
     $this->get('/photo', function ($request, $response, $args) {
@@ -89,7 +91,7 @@ $app->group('/family/{familyId:[0-9]+}', function () {
         $token->build("verifyFamily", $family->getId());
         $token->save();
         $family->createTimeLineNote("verify-URL");
-        return $response->withJSON(["url" => SystemURLs::getURL() . "external/verify/" . $token->getToken()]);
+        return $response->withJSON(["url" => SystemURLs::getURL() . "/external/verify/" . $token->getToken()]);
     });
 
     $this->post('/verify/now', function ($request, $response, $args) {
@@ -97,7 +99,6 @@ $app->group('/family/{familyId:[0-9]+}', function () {
         $family->verify();
         return $response->withJSON(["message" => "Success"]);
     });
-
 
 })->add(new FamilyAPIMiddleware());
 

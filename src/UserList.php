@@ -22,11 +22,11 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\UserQuery;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\RedirectUtils;
-use ChurchCRM\SessionUser;
+use ChurchCRM\Authentication\AuthenticationManager;
 
 // Security: User must be an Admin to access this page.
 // Otherwise, re-direct them to the main menu.
-if (!SessionUser::isAdmin()) {
+if (!AuthenticationManager::GetCurrentUser()->isAdmin()) {
     RedirectUtils::SecurityRedirect("Admin");
 }
 
@@ -34,7 +34,7 @@ if (!SessionUser::isAdmin()) {
 $rsUsers = UserQuery::create()->find();
 
 // Set the page title and include HTML header
-$sPageTitle = gettext('User Listing');
+$sPageTitle = gettext('System Users');
 require 'Include/Header.php';
 
 ?>
@@ -45,7 +45,152 @@ require 'Include/Header.php';
         <a href="SettingsUser.php" class="btn btn-app"><i class="fa fa-wrench"></i><?= gettext('User Settings') ?></a>
     </div>
 </div>
+<div class="box collapsed-box">
+    <div class="box-header">
+        <b class="box-title"><?= _("Global User Settings")?></b>
+            <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
+            </div>
+        </b>
+    </div>
+    <div class="box-body">
+        <!-- Custom Tabs -->
+        <div class="nav-tabs-custom">
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#tab_1" data-toggle="tab"><?= _("General")?></a></li>
+                <li><a href="#tab_2" data-toggle="tab"><?= _("Passwords")?></a></li>
+                <li><a href="#tab_3" data-toggle="tab"><?= _("2FA")?></a></li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane active" id="tab_1">
+                    <table class="table table-hover">
+                        <tr>
+                            <?php $config = SystemConfig::getConfigItem("iSessionTimeout"); ?>
+                            <td width="350px"><b><?= _("Session Timeout")?></b>:
+                                <a class="setting-tip" data-tip="<?= $config->getTooltip() ?>"><i class="fa fa-fw fa-question-circle"></i></a>
+                            </td>
+                            <td>
+                                <input disabled type="text" class="system-setting form-control" data-setting="<?= $config->getName()?>" data-default-value="<?= $config->getDefault()?>" value="<?= $config->getValue()?>">
+                            </td>
+                        </tr>
+                        <tr>
+                            <?php $config = SystemConfig::getConfigItem("iMaxFailedLogins"); ?>
+                            <td width="350px">
+                                <b><?= _("Max Failed Login")?></b>:
+                                <a class="setting-tip" data-tip="<?= $config->getTooltip() ?>"><i class="fa fa-fw fa-question-circle"></i></a>
+                            </td>
+                            <td>
+                                <input disabled type="text" class="system-setting form-control" data-setting="<?= $config->getName()?>" data-default-value="<?= $config->getDefault()?>" value="<?= $config->getValue()?>">
+                            </td>
+                        </tr>
+                        <tr>
+                            <?php $config = SystemConfig::getConfigItem("bEnableLostPassword"); ?>
+                            <td width="350px"><b><?= _("Enable Password Reset")?></b>:
+                                <a class="setting-tip" data-tip="<?= $config->getTooltip() ?>"><i class="fa fa-fw fa-question-circle"></i></a>
+                            </td>
+                            <td>
+                                <input disabled type="checkbox" class="system-setting " data-setting="<?= $config->getName()?>" data-default-value="<?= $config->getDefault()?>" <?= $config->getBooleanValue() ? "checked" : "" ?>>
+                            </td>
+                        </tr>
+                        <tr>
+                            <?php $config = SystemConfig::getConfigItem("bSendUserDeletedEmail"); ?>
+                            <td width="350px"><b><?= _("Send email to Deleted Users")?></b>:
+                                <a class="setting-tip" data-tip="<?= $config->getTooltip() ?>"><i class="fa fa-fw fa-question-circle"></i></a>
+                            </td>
+                            <td>
+                                <input disabled type="checkbox" class="system-setting " data-setting="<?= $config->getName()?>" data-default-value="<?= $config->getDefault()?>" <?= $config->getBooleanValue() ? "checked" : "" ?>>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <!-- /.tab-pane -->
+                <div class="tab-pane" id="tab_2">
+                    <table class="table table-hover">
+                        <tr>
+                        <?php $config = SystemConfig::getConfigItem("iMinPasswordLength"); ?>
+                            <td width="350px"><b><?= _("Min Password Length")?></b>:
+                                <a class="setting-tip" data-tip="<?= $config->getTooltip() ?>"><i class="fa fa-fw fa-question-circle"></i></a>
+                            </td>
+                            <td>
+                                <input disabled type="text" class="system-setting form-control" data-setting="<?= $config->getName()?>" data-default-value="<?= $config->getDefault()?>" value="<?= $config->getValue()?>">
+                            </td>
+                        </tr>
+                        <tr>
+                        <?php $config = SystemConfig::getConfigItem("iMinPasswordChange"); ?>
+                        <td>
+                            <b><?= _("Min Password Characters Delta")?></b>:
+                            <a class="setting-tip" data-tip="<?= $config->getTooltip() ?>"><i class="fa fa-fw fa-question-circle"></i></a>
+                        </td>
+                        <td>
+                            <input disabled type="text" class="system-setting form-control" data-setting="<?= $config->getName()?>" data-default-value="<?= $config->getDefault()?>" value="<?= $config->getValue()?>">
+                        </td>
+                    </tr>
+                    <tr>
+                        <?php $config = SystemConfig::getConfigItem("aDisallowedPasswords"); ?>
+                        <td>
+                            <b><?= _("Disallowed Passwords")?></b>:
+                            <a class="setting-tip" data-tip="<?= $config->getTooltip() ?>"><i class="fa fa-fw fa-question-circle"></i></a>
+                        </td>
+                        <td>
+                            <input disabled type="text" class="system-setting form-control" data-setting="<?= $config->getName()?>" data-default-value="<?= $config->getDefault()?>" value="<?= $config->getValue()?>" width="300px">
+                        </td>
+                    </tr>
+
+                    </table>
+                </div>
+                <!-- /.tab-pane -->
+                <div class="tab-pane" id="tab_3">
+                    <table class="table table-hover">
+                    <tr>
+                        <?php $config = SystemConfig::getConfigItem("bEnable2FA"); ?>
+                        <td width="350px">
+                            <b><?= _("Enable 2FA")?></b>:
+                            <a class="setting-tip" data-tip="<?= $config->getTooltip() ?>"><i class="fa fa-fw fa-question-circle"></i></a>
+                        </td>
+                        <td>
+                            <input disabled type="checkbox" class="system-setting " data-setting="<?= $config->getName()?>" data-default-value="<?= $config->getDefault()?>" <?= $config->getBooleanValue() ? "checked" : "" ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <?php $config = SystemConfig::getConfigItem("bRequire2FA"); ?>
+                        <td>
+                            <b><?= _("Require 2FA")?></b>:
+                            <a class="setting-tip" data-tip="<?= $config->getTooltip() ?>"><i class="fa fa-fw fa-question-circle"></i></a>
+                        </td>
+                        <td>
+                            <input disabled type="checkbox" class="system-setting " data-setting="<?= $config->getName()?>" data-default-value="<?= $config->getDefault()?>" <?= $config->getBooleanValue() ? "checked" : "" ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <?php $config = SystemConfig::getConfigItem("s2FAApplicationName"); ?>
+                        <td>
+                            <b><?= _("2FA Application Name")?></b>:
+                            <a class="setting-tip" data-tip="<?= $config->getTooltip() ?>"><i class="fa fa-fw fa-question-circle"></i></a>
+                        </td>
+                        <td>
+                            <input disabled type="text" class="system-setting form-control" data-setting="<?= $config->getName()?>" data-default-value="<?= $config->getDefault()?>" value="<?= $config->getValue()?>">
+                        </td>
+                    </tr>
+
+                    </table>
+                </div>
+                <!-- /.tab-pane -->
+            </div>
+            <!-- /.tab-content -->
+        </div>
+        <!-- nav-tabs-custom -->
+    </div>
+
+</div>
+
 <div class="box">
+    <div class="box-header">
+        <b class="box-title"><?= _("User Listing")?></b>
+        <div class="box-tools pull-right">
+            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
+        </div>
+        </h3>
+    </div>
     <div class="box-body">
         <table class="table table-hover dt-responsive" id="user-listing-table" style="width:100%;">
             <thead>
@@ -56,23 +201,25 @@ require 'Include/Header.php';
                 <th align="center"><?= gettext('Total Logins') ?></th>
                 <th align="center"><?= gettext('Failed Logins') ?></th>
                 <th align="center"><?= gettext('Password') ?></th>
+                <th align="center"><?= gettext('Two Factor Status') ?></th>
 
             </tr>
             </thead>
             <tbody>
-            <?php foreach ($rsUsers as $user) { //Loop through the person?>
+            <?php foreach ($rsUsers as $user) { //Loop through the users?>
                 <tr>
                     <td>
-                        <a href="UserEditor.php?PersonID=<?= $user->getId() ?>"><i class="fa fa-pencil"
-                                                                                   aria-hidden="true"></i></a>&nbsp;&nbsp;
-                        <a href="v2/user/<?= $user->getId() ?>"><i class="fa fa-eye"
-                                                                                   aria-hidden="true"></i></a>&nbsp;&nbsp;
-                        <?php if ($user->getId() != $_SESSION['user']->getId()) {
-    ?>
-                            <a onclick="deleteUser(<?= $user->getId() ?>, '<?= $user->getPerson()->getFullName() ?>')"><i
-                                        class="fa fa-trash-o" aria-hidden="true"></i></a>
-                            <?php
-} ?>
+                        <a href="UserEditor.php?PersonID=<?= $user->getId() ?>">
+                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                        </a>&nbsp;&nbsp;
+                        <a href="v2/user/<?= $user->getId() ?>">
+                            <i class="fa fa-eye" aria-hidden="true"></i>
+                        </a>&nbsp;&nbsp;
+                        <?php if ($user->getId() != AuthenticationManager::GetCurrentUser()->getId()) { ?>
+                            <a onclick="deleteUser(<?= $user->getId() ?>, '<?= $user->getPerson()->getFullName() ?>')">
+                                <i class="fa fa-trash-o" aria-hidden="true"></i>
+                            </a>
+                        <?php } ?>
                     </td>
                     <td>
                         <a href="PersonView.php?PersonID=<?= $user->getId() ?>"> <?= $user->getPerson()->getFullName() ?></a>
@@ -80,31 +227,37 @@ require 'Include/Header.php';
                     <td align="center"><?= $user->getLastLogin(SystemConfig::getValue('sDateTimeFormat')) ?></td>
                     <td align="center"><?= $user->getLoginCount() ?></td>
                     <td align="center">
-                        <?php if ($user->isLocked()) {
-        ?>
+                        <?php if ($user->isLocked()) { ?>
                             <span class="text-red"><?= $user->getFailedLogins() ?></span>
-                            <?php
-    } else {
-        echo $user->getFailedLogins();
-    }
-    if ($user->getFailedLogins() > 0) {
-        ?>
-                            <a onclick="restUserLoginCount(<?= $user->getId() ?>, '<?= $user->getPerson()->getFullName() ?>')"><i
-                                        class="fa fa-eraser" aria-hidden="true"></i></a>
-                            <?php
-    } ?>
+                        <?php } else {
+    echo $user->getFailedLogins();
+}
+                            if ($user->getFailedLogins() > 0) { ?>
+                                <a onclick="restUserLoginCount(<?= $user->getId() ?>, '<?= $user->getPerson()->getFullName() ?>')">
+                                    <i class="fa fa-eraser" aria-hidden="true"></i>
+                                </a>
+                            <?php } ?>
                     </td>
                     <td>
-                        <a href="UserPasswordChange.php?PersonID=<?= $user->getId() ?>&FromUserList=True"><i
+                        <a href="v2/user/<?= $user->getId() ?>/changePassword"><i
                                     class="fa fa-wrench" aria-hidden="true"></i></a>&nbsp;&nbsp;
-                        <?php if ($user->getId() != $_SESSION['user']->getId() && !empty($user->getEmail())) {
-        ?>
+                        <?php if ($user->getId() != AuthenticationManager::GetCurrentUser()->getId() && !empty($user->getEmail())) {
+                                ?>
                             <a onclick="resetUserPassword(<?= $user->getId() ?>, '<?= $user->getPerson()->getFullName() ?>')"><i
                                         class="fa fa-send-o" aria-hidden="true"></i></a>
                             <?php
-    } ?>
+                            } ?>
                     </td>
-
+                    <td>
+                        <?= $user->is2FactorAuthEnabled() ? gettext("Enabled") : gettext("Disabled") ?>
+                        <?php
+                            if ($user->is2FactorAuthEnabled()) {
+                                ?>
+                                <a onclick="disableUserTwoFactorAuth(<?= $user->getId() ?>, '<?= $user->getPerson()->getFullName() ?>')">Disable</a>
+                            <?php
+                            }
+                        ?>
+                    </td>
                 </tr>
                 <?php
 } ?>
@@ -115,71 +268,6 @@ require 'Include/Header.php';
 </div>
 <!-- /.box -->
 
-<script nonce="<?= SystemURLs::getCSPNonce() ?>" >
-    $(document).ready(function () {
-        $("#user-listing-table").DataTable(window.CRM.plugin.dataTable);
-    });
-
-    function deleteUser(userId, userName) {
-        bootbox.confirm({
-            title: "<?= gettext("User Delete Confirmation") ?>",
-            message: '<p style="color: red">' +
-            '<?= gettext("Please confirm removal of user status from:") ?> <b>' + userName + '</b></p>',
-            callback: function (result) {
-                if (result) {
-                    window.CRM.APIRequest({
-                        method: "DELETE",
-                        path: "users/" + userId,
-                        data: {"_METHOD": "DELETE"}
-                    }).done(function () {
-                        window.location.href = window.CRM.root + "/UserList.php";
-                    });
-                }
-            }
-        });
-    }
-
-    function restUserLoginCount(userId, userName) {
-        bootbox.confirm({
-            title: "<?= gettext("Action Confirmation") ?>",
-            message: '<p style="color: red">' +
-            "<?= gettext("Please confirm reset failed login count") ?>: <b>" + userName + "</b></p>",
-            callback: function (result) {
-                if (result) {
-                    $.ajax({
-                        method: "POST",
-                        url: window.CRM.root + "/api/users/" + userId + "/login/reset",
-                        dataType: "json",
-                        encode: true,
-                    }).done(function (data) {
-                        if (data.status == "success")
-                            window.location.href = window.CRM.root + "/UserList.php";
-                    });
-                }
-            }
-        });
-    }
-
-    function resetUserPassword(userId, userName) {
-        bootbox.confirm({
-            title: "<?= gettext("Action Confirmation") ?>",
-            message: '<p style="color: red">' +
-            "<?= gettext("Please confirm the password reset of this user") ?>: <b>" + userName + "</b></p>",
-            callback: function (result) {
-                if (result) {
-                    $.ajax({
-                        method: "POST",
-                        url: window.CRM.root + "/api/users/" + userId + "/password/reset",
-                        dataType: "json",
-                        encode: true,
-                    }).done(function (data) {
-                        if (data.status == "success")
-                            showGlobalMessage('<?= gettext("Password reset for") ?> ' + userName, "success");
-                    });
-                }
-            }
-        });
-    }
-</script>
-
+<script src="<?= SystemURLs::getRootPath() ?>/skin/js/Tooltips.js" ></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/js/users.js" ></script>
 <?php require 'Include/Footer.php' ?>

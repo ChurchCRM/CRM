@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "e66fd426-4ab0-4b0c-bdb5-4e7958412cf1",
+		"_postman_id": "27e8d46d-03e7-4744-9218-5549605e8fa3",
 		"name": "Private API",
 		"description": "# Introduction\nWhat does your API do?\n\n# Overview\nThings that the developers should know about\n\n# Authentication\nWhat is the preferred way of using the API?\n\n# Error Codes\nWhat errors and status codes can a user expect?\n\n# Rate limit\nIs there a limit to the number of requests an user can send?",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -216,7 +216,33 @@
 			"item": [
 				{
 					"name": "Deposits",
-					"item": [],
+					"item": [
+						{
+							"name": "Deposiits: Dashbaord data",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{api-key}}"
+									}
+								],
+								"url": {
+									"raw": "{{host}}/api/deposits/dashboard",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"deposits",
+										"dashboard"
+									]
+								},
+								"description": "Find where an email address is used more than once"
+							},
+							"response": []
+						}
+					],
 					"_postman_isSubFolder": true
 				},
 				{
@@ -407,6 +433,590 @@
 		{
 			"name": "Kiosks",
 			"item": []
+		},
+		{
+			"name": "Mailchimp",
+			"item": [
+				{
+					"name": "MailChimp: Get Subscribed in MailChimp but not in CRM",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/api/mailchimp/list/c84848f505/missing",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"mailchimp",
+								"list",
+								"c84848f505",
+								"missing"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Persons: Get Photo by ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "ajGwpy8Pdai22XDUpqjC5Ob04v0eG7EGgb4vz2bD2juT8YDmfM"
+									}
+								],
+								"url": {
+									"raw": "{{host}}/api/persons/2/photo",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"persons",
+										"2",
+										"photo"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "CRM_USER_ID",
+									"value": "1",
+									"name": "CRM_USER_ID",
+									"description": "Custom header"
+								},
+								{
+									"key": "CRM_VERSION",
+									"value": "3.0.0",
+									"name": "CRM_VERSION",
+									"description": "Custom header"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"name": "Connection",
+									"description": "Options that are desired for the connection"
+								},
+								{
+									"key": "Content-Length",
+									"value": "98",
+									"name": "Content-Length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html;charset=UTF-8",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 24 Feb 2018 19:02:53 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=15",
+									"name": "Keep-Alive",
+									"description": "Custom header"
+								},
+								{
+									"key": "Server",
+									"value": "nginx",
+									"name": "Server",
+									"description": "A name for the server"
+								}
+							],
+							"cookie": [
+								{
+									"expires": "Invalid Date",
+									"httpOnly": false,
+									"domain": "demo.churchcrm.io",
+									"path": "/",
+									"secure": false,
+									"value": "r9fr05tpmoo6tu2242kquji0b5",
+									"key": "CRM%40%2Fmaster"
+								}
+							],
+							"body": "Can't find route for GET on http://demo.churchcrm.io/master/api/persons/%7B%7BpersonId%7D%7D/photo"
+						}
+					]
+				},
+				{
+					"name": "MailChimp: Get Unsubscribed in MailChimp",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/api/mailchimp/list/c84848f505/not-subscribed",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"mailchimp",
+								"list",
+								"c84848f505",
+								"not-subscribed"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Persons: Get Photo by ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "ajGwpy8Pdai22XDUpqjC5Ob04v0eG7EGgb4vz2bD2juT8YDmfM"
+									}
+								],
+								"url": {
+									"raw": "{{host}}/api/persons/2/photo",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"persons",
+										"2",
+										"photo"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "CRM_USER_ID",
+									"value": "1",
+									"name": "CRM_USER_ID",
+									"description": "Custom header"
+								},
+								{
+									"key": "CRM_VERSION",
+									"value": "3.0.0",
+									"name": "CRM_VERSION",
+									"description": "Custom header"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"name": "Connection",
+									"description": "Options that are desired for the connection"
+								},
+								{
+									"key": "Content-Length",
+									"value": "98",
+									"name": "Content-Length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html;charset=UTF-8",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 24 Feb 2018 19:02:53 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=15",
+									"name": "Keep-Alive",
+									"description": "Custom header"
+								},
+								{
+									"key": "Server",
+									"value": "nginx",
+									"name": "Server",
+									"description": "A name for the server"
+								}
+							],
+							"cookie": [
+								{
+									"expires": "Invalid Date",
+									"httpOnly": false,
+									"domain": "demo.churchcrm.io",
+									"path": "/",
+									"secure": false,
+									"value": "r9fr05tpmoo6tu2242kquji0b5",
+									"key": "CRM%40%2Fmaster"
+								}
+							],
+							"body": "Can't find route for GET on http://demo.churchcrm.io/master/api/persons/%7B%7BpersonId%7D%7D/photo"
+						}
+					]
+				},
+				{
+					"name": "MailChimp: Get List",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/api/mailchimp/list/c84848f505",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"mailchimp",
+								"list",
+								"c84848f505"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Persons: Get Photo by ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "ajGwpy8Pdai22XDUpqjC5Ob04v0eG7EGgb4vz2bD2juT8YDmfM"
+									}
+								],
+								"url": {
+									"raw": "{{host}}/api/persons/2/photo",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"persons",
+										"2",
+										"photo"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "CRM_USER_ID",
+									"value": "1",
+									"name": "CRM_USER_ID",
+									"description": "Custom header"
+								},
+								{
+									"key": "CRM_VERSION",
+									"value": "3.0.0",
+									"name": "CRM_VERSION",
+									"description": "Custom header"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"name": "Connection",
+									"description": "Options that are desired for the connection"
+								},
+								{
+									"key": "Content-Length",
+									"value": "98",
+									"name": "Content-Length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html;charset=UTF-8",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 24 Feb 2018 19:02:53 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=15",
+									"name": "Keep-Alive",
+									"description": "Custom header"
+								},
+								{
+									"key": "Server",
+									"value": "nginx",
+									"name": "Server",
+									"description": "A name for the server"
+								}
+							],
+							"cookie": [
+								{
+									"expires": "Invalid Date",
+									"httpOnly": false,
+									"domain": "demo.churchcrm.io",
+									"path": "/",
+									"secure": false,
+									"value": "r9fr05tpmoo6tu2242kquji0b5",
+									"key": "CRM%40%2Fmaster"
+								}
+							],
+							"body": "Can't find route for GET on http://demo.churchcrm.io/master/api/persons/%7B%7BpersonId%7D%7D/photo"
+						}
+					]
+				},
+				{
+					"name": "MailChimp: Get Family status",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/api/mailchimp/family/21",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"mailchimp",
+								"family",
+								"21"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Persons: Get Photo by ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "ajGwpy8Pdai22XDUpqjC5Ob04v0eG7EGgb4vz2bD2juT8YDmfM"
+									}
+								],
+								"url": {
+									"raw": "{{host}}/api/persons/2/photo",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"persons",
+										"2",
+										"photo"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "CRM_USER_ID",
+									"value": "1",
+									"name": "CRM_USER_ID",
+									"description": "Custom header"
+								},
+								{
+									"key": "CRM_VERSION",
+									"value": "3.0.0",
+									"name": "CRM_VERSION",
+									"description": "Custom header"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"name": "Connection",
+									"description": "Options that are desired for the connection"
+								},
+								{
+									"key": "Content-Length",
+									"value": "98",
+									"name": "Content-Length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html;charset=UTF-8",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 24 Feb 2018 19:02:53 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=15",
+									"name": "Keep-Alive",
+									"description": "Custom header"
+								},
+								{
+									"key": "Server",
+									"value": "nginx",
+									"name": "Server",
+									"description": "A name for the server"
+								}
+							],
+							"cookie": [
+								{
+									"expires": "Invalid Date",
+									"httpOnly": false,
+									"domain": "demo.churchcrm.io",
+									"path": "/",
+									"secure": false,
+									"value": "r9fr05tpmoo6tu2242kquji0b5",
+									"key": "CRM%40%2Fmaster"
+								}
+							],
+							"body": "Can't find route for GET on http://demo.churchcrm.io/master/api/persons/%7B%7BpersonId%7D%7D/photo"
+						}
+					]
+				},
+				{
+					"name": "MailChimp: Get Person status",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/api/mailchimp/person/105",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"mailchimp",
+								"person",
+								"105"
+							]
+						},
+						"description": "return perosn by Id"
+					},
+					"response": [
+						{
+							"name": "Persons: Get Photo by ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "ajGwpy8Pdai22XDUpqjC5Ob04v0eG7EGgb4vz2bD2juT8YDmfM"
+									}
+								],
+								"url": {
+									"raw": "{{host}}/api/persons/2/photo",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"persons",
+										"2",
+										"photo"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "CRM_USER_ID",
+									"value": "1",
+									"name": "CRM_USER_ID",
+									"description": "Custom header"
+								},
+								{
+									"key": "CRM_VERSION",
+									"value": "3.0.0",
+									"name": "CRM_VERSION",
+									"description": "Custom header"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"name": "Connection",
+									"description": "Options that are desired for the connection"
+								},
+								{
+									"key": "Content-Length",
+									"value": "98",
+									"name": "Content-Length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html;charset=UTF-8",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 24 Feb 2018 19:02:53 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=15",
+									"name": "Keep-Alive",
+									"description": "Custom header"
+								},
+								{
+									"key": "Server",
+									"value": "nginx",
+									"name": "Server",
+									"description": "A name for the server"
+								}
+							],
+							"cookie": [
+								{
+									"expires": "Invalid Date",
+									"httpOnly": false,
+									"domain": "demo.churchcrm.io",
+									"path": "/",
+									"secure": false,
+									"value": "r9fr05tpmoo6tu2242kquji0b5",
+									"key": "CRM%40%2Fmaster"
+								}
+							],
+							"body": "Can't find route for GET on http://demo.churchcrm.io/master/api/persons/%7B%7BpersonId%7D%7D/photo"
+						}
+					]
+				}
+			],
+			"protocolProfileBehavior": {}
 		},
 		{
 			"name": "People",
@@ -823,6 +1433,56 @@
 							"response": []
 						},
 						{
+							"name": "Persons: Updated",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{api-key}}"
+									}
+								],
+								"url": {
+									"raw": "{{host}}/api/persons/updated",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"persons",
+										"updated"
+									]
+								},
+								"description": "Find where an email address is used more than once"
+							},
+							"response": []
+						},
+						{
+							"name": "Persons: Latest",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{api-key}}"
+									}
+								],
+								"url": {
+									"raw": "{{host}}/api/persons/latest",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"persons",
+										"latest"
+									]
+								},
+								"description": "Find where an email address is used more than once"
+							},
+							"response": []
+						},
+						{
 							"name": "Persons: Search",
 							"request": {
 								"method": "GET",
@@ -875,62 +1535,27 @@
 							"response": []
 						},
 						{
-							"name": "Persons: Property Assign",
+							"name": "Persons: Birthdate",
 							"request": {
-								"method": "POST",
+								"method": "GET",
 								"header": [
 									{
 										"key": "x-api-key",
 										"value": "{{api-key}}"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n  \"PersonId\": 2,\n  \"PropertyId\": 3,\n  \"PropertyValue\": \"yep\"\n}"
-								},
 								"url": {
-									"raw": "{{host}}/api/persons/properties/",
+									"raw": "{{host}}/api/persons/birthday",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
 										"api",
 										"persons",
-										"properties",
-										""
+										"birthday"
 									]
 								},
-								"description": "added a property to a person with a value"
-							},
-							"response": []
-						},
-						{
-							"name": "Persons: Property Remove",
-							"request": {
-								"method": "DELETE",
-								"header": [
-									{
-										"key": "x-api-key",
-										"value": "{{api-key}}"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n  \"PersonId\": 2,\n  \"PropertyId\": 3\n}"
-								},
-								"url": {
-									"raw": "{{host}}/api/persons/properties/",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"api",
-										"persons",
-										"properties",
-										""
-									]
-								},
-								"description": "remove a property to a person with a value"
+								"description": "Find where an email address is used more than once"
 							},
 							"response": []
 						}
@@ -1142,6 +1767,81 @@
 									]
 								},
 								"description": "Update the family status to activated or deactivated with :familyId and :status true/false.\nPass true to activate and false to deactivate."
+							},
+							"response": []
+						},
+						{
+							"name": "Families: Latest",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{api-key}}"
+									}
+								],
+								"url": {
+									"raw": "{{host}}/api/families/latest",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"families",
+										"latest"
+									]
+								},
+								"description": "Find where an email address is used more than once"
+							},
+							"response": []
+						},
+						{
+							"name": "Families: Updated",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{api-key}}"
+									}
+								],
+								"url": {
+									"raw": "{{host}}/api/families/updated",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"families",
+										"updated"
+									]
+								},
+								"description": "Find where an email address is used more than once"
+							},
+							"response": []
+						},
+						{
+							"name": "Families: Anniversaries",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{api-key}}"
+									}
+								],
+								"url": {
+									"raw": "{{host}}/api/families/anniversaries",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"families",
+										"anniversaries"
+									]
+								},
+								"description": "Find where an email address is used more than once"
 							},
 							"response": []
 						}
@@ -1362,8 +2062,372 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "Family: Get by ID - MailChimp",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{api-key}}"
+									}
+								],
+								"url": {
+									"raw": "{{host}}/api/family/21/mailchimp",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"family",
+										"21",
+										"mailchimp"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Persons: Get Photo by ID",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "x-api-key",
+												"value": "ajGwpy8Pdai22XDUpqjC5Ob04v0eG7EGgb4vz2bD2juT8YDmfM"
+											}
+										],
+										"url": {
+											"raw": "{{host}}/api/persons/2/photo",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"api",
+												"persons",
+												"2",
+												"photo"
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "html",
+									"header": [
+										{
+											"key": "CRM_USER_ID",
+											"value": "1",
+											"name": "CRM_USER_ID",
+											"description": "Custom header"
+										},
+										{
+											"key": "CRM_VERSION",
+											"value": "3.0.0",
+											"name": "CRM_VERSION",
+											"description": "Custom header"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive",
+											"name": "Connection",
+											"description": "Options that are desired for the connection"
+										},
+										{
+											"key": "Content-Length",
+											"value": "98",
+											"name": "Content-Length",
+											"description": "The length of the response body in octets (8-bit bytes)"
+										},
+										{
+											"key": "Content-Type",
+											"value": "text/html;charset=UTF-8",
+											"name": "Content-Type",
+											"description": "The mime type of this content"
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 24 Feb 2018 19:02:53 GMT",
+											"name": "Date",
+											"description": "The date and time that the message was sent"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=15",
+											"name": "Keep-Alive",
+											"description": "Custom header"
+										},
+										{
+											"key": "Server",
+											"value": "nginx",
+											"name": "Server",
+											"description": "A name for the server"
+										}
+									],
+									"cookie": [
+										{
+											"expires": "Invalid Date",
+											"httpOnly": false,
+											"domain": "demo.churchcrm.io",
+											"path": "/",
+											"secure": false,
+											"value": "r9fr05tpmoo6tu2242kquji0b5",
+											"key": "CRM%40%2Fmaster"
+										}
+									],
+									"body": "Can't find route for GET on http://demo.churchcrm.io/master/api/persons/%7B%7BpersonId%7D%7D/photo"
+								}
+							]
 						}
 					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Properties",
+					"item": [
+						{
+							"name": "Persons: get Properties",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"type": "text",
+										"value": "{{api-key}}"
+									}
+								],
+								"url": {
+									"raw": "{{host}}/api/people/properties/person",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"people",
+										"properties",
+										"person"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Person: get Properties",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"type": "text",
+										"value": "{{api-key}}"
+									}
+								],
+								"url": {
+									"raw": "{{host}}/api/people/properties/person/3",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"people",
+										"properties",
+										"person",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Person: Property Assign",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{api-key}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"value\": \"acc on 1.0.5 ss s\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/api/people/properties/person/3/1",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"people",
+										"properties",
+										"person",
+										"3",
+										"1"
+									]
+								},
+								"description": "added a property to a person with a value"
+							},
+							"response": []
+						},
+						{
+							"name": "Person: Property Remove",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{api-key}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"PersonId\": 2,\n  \"PropertyId\": 3\n}"
+								},
+								"url": {
+									"raw": "{{host}}/api/people/properties/person/3/1",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"people",
+										"properties",
+										"person",
+										"3",
+										"1"
+									]
+								},
+								"description": "remove a property to a person with a value"
+							},
+							"response": []
+						},
+						{
+							"name": "Family: get Properties",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{api-key}}"
+									}
+								],
+								"url": {
+									"raw": "{{host}}/api/people/properties/family",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"people",
+										"properties",
+										"family"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Family: get Property",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{api-key}}"
+									}
+								],
+								"url": {
+									"raw": "{{host}}/api/people/properties/family/3",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"people",
+										"properties",
+										"family",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Family: Property Assign",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{api-key}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"value\": \"family 5\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/api/people/properties/family/3/5",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"people",
+										"properties",
+										"family",
+										"3",
+										"5"
+									]
+								},
+								"description": "added a property to a person with a value"
+							},
+							"response": []
+						},
+						{
+							"name": "Family: Property Remove",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{api-key}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"PersonId\": 2,\n  \"PropertyId\": 3\n}"
+								},
+								"url": {
+									"raw": "{{host}}/api/people/properties/family/3/2",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"people",
+										"properties",
+										"family",
+										"3",
+										"2"
+									]
+								},
+								"description": "remove a property to a person with a value"
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
 					"_postman_isSubFolder": true
 				}
 			]
@@ -1471,7 +2535,7 @@
 						{
 							"name": "Database - Reset",
 							"request": {
-								"method": "POST",
+								"method": "DELETE",
 								"header": [
 									{
 										"key": "x-api-key",
@@ -1551,6 +2615,39 @@
 								],
 								"url": {
 									"raw": ""
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "System: Set System Level to Debug",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{api-key}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"value\": \"100\"\n}"
+								},
+								"url": {
+									"raw": "{{host}}/api/system/config/sLogLevel",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"system",
+										"config",
+										"sLogLevel"
+									]
 								}
 							},
 							"response": []
@@ -1661,6 +2758,44 @@
 					"_postman_isSubFolder": true
 				},
 				{
+					"name": "background",
+					"item": [
+						{
+							"name": "Background: Page",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{api-key}}"
+									}
+								],
+								"url": {
+									"raw": "{{host}}/api/background/page?name=anypage",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"background",
+										"page"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "anypage"
+										}
+									]
+								},
+								"description": "get all notitication to show the user"
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
 					"name": "System: UI Notification",
 					"request": {
 						"method": "GET",
@@ -1720,6 +2855,78 @@
 								"1",
 								"apikey",
 								"regen"
+							]
+						},
+						"description": "login and get api token back"
+					},
+					"response": []
+				},
+				{
+					"name": "User: Set User Config",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{api-key}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"value\": \",\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/users/1/config/sMailtoDelimiter",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"1",
+								"config",
+								"sMailtoDelimiter"
+							]
+						},
+						"description": "login and get api token back"
+					},
+					"response": []
+				},
+				{
+					"name": "User: Set User Setting",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{api-key}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"value\": \"skin-green\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/users/1/setting/style",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"1",
+								"setting",
+								"style"
 							]
 						},
 						"description": "login and get api token back"

@@ -14,10 +14,11 @@ require 'Include/Functions.php';
 
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\Authentication\AuthenticationManager;
 
 // Security: User must have Manage Groups or Edit Records permissions
 // Otherwise, re-direct them to the main menu.
-if (!$_SESSION['user']->isManageGroupsEnabled() && !$_SESSION['user']->isEditRecordsEnabled()) {
+if (!AuthenticationManager::GetCurrentUser()->isManageGroupsEnabled() && !AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled()) {
     RedirectUtils::Redirect('Menu.php');
     exit;
 }
@@ -26,7 +27,7 @@ if (!$_SESSION['user']->isManageGroupsEnabled() && !$_SESSION['user']->isEditRec
 $iPropertyID = InputUtils::LegacyFilterInput($_GET['PropertyID'], 'int');
 
 // Is there a PersonID in the querystring?
-if (isset($_GET['PersonID']) && $_SESSION['user']->isEditRecordsEnabled()) {
+if (isset($_GET['PersonID']) && AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled()) {
     $iPersonID = InputUtils::LegacyFilterInput($_GET['PersonID'], 'int');
     $iRecordID = $iPersonID;
     $sQuerystring = '?PersonID='.$iPersonID;
@@ -41,7 +42,7 @@ if (isset($_GET['PersonID']) && $_SESSION['user']->isEditRecordsEnabled()) {
 }
 
 // Is there a GroupID in the querystring?
-elseif (isset($_GET['GroupID']) && $_SESSION['user']->isManageGroupsEnabled()) {
+elseif (isset($_GET['GroupID']) && AuthenticationManager::GetCurrentUser()->isManageGroupsEnabled()) {
     $iGroupID = InputUtils::LegacyFilterInput($_GET['GroupID'], 'int');
     $iRecordID = $iGroupID;
     $sQuerystring = '?GroupID='.$iGroupID;
@@ -56,12 +57,12 @@ elseif (isset($_GET['GroupID']) && $_SESSION['user']->isManageGroupsEnabled()) {
 }
 
 // Is there a FamilyID in the querystring?
-elseif (isset($_GET['FamilyID']) && $_SESSION['user']->isEditRecordsEnabled()) {
+elseif (isset($_GET['FamilyID']) && AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled()) {
     $iFamilyID = InputUtils::LegacyFilterInput($_GET['FamilyID'], 'int');
     $iRecordID = $iFamilyID;
     $sQuerystring = '?FamilyID='.$iFamilyID;
     $sTypeName = 'Family';
-    $sBackPage = 'FamilyView.php?FamilyID='.$iFamilyID;
+    $sBackPage = 'v2/family/'.$iFamilyID;
 
     // Get the name of the family
     $sSQL = 'SELECT fam_Name FROM family_fam WHERE fam_ID = '.$iFamilyID;
@@ -101,22 +102,21 @@ require 'Include/Header.php';
 <?= gettext('Please confirm removal of this property from this').' '.$sTypeName ?>:
 
 
-<table cellpadding="4">
+<table class="table table-striped">
 	<tr>
-		<td align="right"><b><?php echo $sTypeName ?>:</b></td>
+		<td><b><?php echo $sTypeName ?>:</b></td>
 		<td><?= $sName ?></td>
 	</tr>
 	<tr>
-		<td align="right"><b><?= gettext('Unassigning') ?>:</b></td>
+		<td><b><?= gettext('Unassigning') ?>:</b></td>
 		<td><?= $sPropertyName ?></td>
 	</tr>
 </table>
 
-<p>
-	<a href="PropertyUnassign.php<?= $sQuerystring.'&PropertyID='.$iPropertyID.'&Confirmed=Yes' ?>"><?= gettext('Yes, unassign this Property') ?></a>
-</p>
-<p>
-	<a href="<?= $sBackPage ?>"><?= gettext('No, retain this assignment') ?></a>
-</p>
+<div class="text-center">
+	<a class="btn btn-default" href="<?= $sBackPage ?>"><?= gettext('No, retain this assignment') ?></a>
+
+    <a class="btn btn-danger" href="PropertyUnassign.php<?= $sQuerystring.'&PropertyID='.$iPropertyID.'&Confirmed=Yes' ?>"><?= gettext('Yes, unassign this Property') ?></a>
+</div>
 
 <?php require 'Include/Footer.php' ?>

@@ -14,6 +14,7 @@ require 'Include/Functions.php';
 
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\Authentication\AuthenticationManager;
 
 $linkBack = InputUtils::LegacyFilterInputArr($_GET, 'linkBack');
 $iFundRaiserID = InputUtils::LegacyFilterInputArr($_GET, 'FundRaiserID');
@@ -59,11 +60,11 @@ if (isset($_POST['FundRaiserSubmit'])) {
         // New deposit slip
         if ($iFundRaiserID <= 0) {
             $sSQL = 'INSERT INTO fundraiser_fr (fr_date, fr_title, fr_description, fr_EnteredBy, fr_EnteredDate) VALUES ('.
-            "'".$dDate."','".$sTitle."','".$sDescription."',".$_SESSION['user']->getId().",'".date('YmdHis')."')";
+            "'".$dDate."','".$sTitle."','".$sDescription."',".AuthenticationManager::GetCurrentUser()->getId().",'".date('YmdHis')."')";
             $bGetKeyBack = true;
         // Existing record (update)
         } else {
-            $sSQL = "UPDATE fundraiser_fr SET fr_date = '".$dDate."', fr_title = '".$sTitle."', fr_description = '".$sDescription."', fr_EnteredBy = ".$_SESSION['user']->getId().", fr_EnteredDate='".date('YmdHis')."' WHERE fr_ID = ".$iFundRaiserID.';';
+            $sSQL = "UPDATE fundraiser_fr SET fr_date = '".$dDate."', fr_title = '".$sTitle."', fr_description = '".$sDescription."', fr_EnteredBy = ".AuthenticationManager::GetCurrentUser()->getId().", fr_EnteredDate='".date('YmdHis')."' WHERE fr_ID = ".$iFundRaiserID.';';
             $bGetKeyBack = false;
         }
         //Execute the SQL

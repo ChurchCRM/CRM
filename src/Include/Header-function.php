@@ -17,7 +17,7 @@ use ChurchCRM\Service\SystemService;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\MenuConfigQuery;
-use ChurchCRM\SessionUser;
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Utils\PHPToMomentJSConverter;
 use ChurchCRM\Bootstrapper;
 
@@ -85,6 +85,7 @@ function Header_body_scripts()
             root: "<?= SystemURLs::getRootPath() ?>",
             fullURL:"<?= SystemURLs::getURL() ?>",
             lang: "<?= $localeInfo->getLanguageCode() ?>",
+            userId: "<?= AuthenticationManager::GetCurrentUser()->getId() ?>",
             locale: "<?= $localeInfo->getLocale() ?>",
             shortLocale: "<?= $localeInfo->getShortLocale() ?>",
             maxUploadSize: "<?= SystemService::getMaxUploadFileSize(true) ?>",
@@ -101,7 +102,7 @@ function Header_body_scripts()
                         "url": "<?= SystemURLs::getRootPath() ?>/locale/datatables/<?= $localeInfo->getDataTables() ?>.json"
                     },
                     responsive: true,
-                    dom: "<'row'<'col-sm-4'<?= SessionUser::getUser()->isCSVExport() ? "B" : "" ?>><'col-sm-4'r><'col-sm-4 searchStyle'f>>" +
+                    dom: "<'row'<'col-sm-4'<?= AuthenticationManager::GetCurrentUser()->isCSVExport() ? "B" : "" ?>><'col-sm-4'r><'col-sm-4 searchStyle'f>>" +
                             "<'row'<'col-sm-12't>>" +
                             "<'row'<'col-sm-4'l><'col-sm-4'i><'col-sm-4'p>>"
                 }
