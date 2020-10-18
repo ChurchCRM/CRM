@@ -10,7 +10,7 @@ msgstr ""
 "#-#-#-#-#  messages.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-16 21:45-0700\n"
+"POT-Creation-Date: 2020-10-18 16:05-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,16 +25,16 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2020-10-17T04:45:37.856Z\n"
-"PO-Revision-Date: 2020-10-17T04:45:37.856Z\n"
+"POT-Creation-Date: 2020-10-18T23:05:50.618Z\n"
+"PO-Revision-Date: 2020-10-18T23:05:50.618Z\n"
 "#-#-#-#-#  react-js-strings.po (i18next-conv)  #-#-#-#-#\n"
 "Project-Id-Version: i18next-conv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2020-10-17T04:45:38.070Z\n"
-"PO-Revision-Date: 2020-10-17T04:45:38.070Z\n"
+"POT-Creation-Date: 2020-10-18T23:05:50.838Z\n"
+"PO-Revision-Date: 2020-10-18T23:05:50.838Z\n"
 
 msgid "Backup Database"
 msgstr ""
@@ -669,6 +669,12 @@ msgstr ""
 msgid "Add New Person"
 msgstr ""
 
+msgid "View Active Persons"
+msgstr ""
+
+msgid "View Inactive Persons"
+msgstr ""
+
 msgid "View All Persons"
 msgstr ""
 
@@ -811,21 +817,6 @@ msgid "Reset System"
 msgstr ""
 
 msgid "Links"
-msgstr ""
-
-msgid "Unknown"
-msgstr ""
-
-msgid "Other"
-msgstr ""
-
-msgid "Head of Household"
-msgstr ""
-
-msgid "Spouse"
-msgstr ""
-
-msgid "Child"
 msgstr ""
 
 msgid "New Person Added"
@@ -990,6 +981,9 @@ msgid "Mailchimp is not active"
 msgstr ""
 
 msgid "Part"
+msgstr ""
+
+msgid "Unknown"
 msgstr ""
 
 msgid "Self Registration"
@@ -1695,6 +1689,9 @@ msgid "Send an email notifying users when their account has been deleted"
 msgstr ""
 
 msgid "Google Maps API Key used for rendering maps in browser"
+msgstr ""
+
+msgid "Enable New Dashboard"
 msgstr ""
 
 msgid "Church Information"
@@ -4109,6 +4106,9 @@ msgid "Quarterly"
 msgstr ""
 
 msgid "Once"
+msgstr ""
+
+msgid "Other"
 msgstr ""
 
 msgid "Payment by"
