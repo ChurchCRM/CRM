@@ -4260,7 +4260,8 @@ msgid "Church Information"
 msgstr "Over de gemeente"
 
 #: 
-msgid "User setup"
+#, fuzzy
+msgid "User Setup"
 msgstr "Instellingen"
 
 #: 

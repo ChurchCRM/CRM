@@ -4380,7 +4380,8 @@ msgid "Church Information"
 msgstr "教會信息"
 
 #: 
-msgid "User setup"
+#, fuzzy
+msgid "User Setup"
 msgstr "用戶設置"
 
 #: 

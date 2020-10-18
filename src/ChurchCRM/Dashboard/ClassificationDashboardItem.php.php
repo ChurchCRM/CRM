@@ -1,7 +1,6 @@
 <?php
 
 namespace ChurchCRM\Dashboard;
-use ChurchCRM\Dashboard\DashboardItemInterface;
 
 class ClassificationDashboardItem implements DashboardItemInterface {
 

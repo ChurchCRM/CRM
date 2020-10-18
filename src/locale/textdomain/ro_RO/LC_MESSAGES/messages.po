@@ -4350,7 +4350,8 @@ msgid "Church Information"
 msgstr "Informații biserică"
 
 #: 
-msgid "User setup"
+#, fuzzy
+msgid "User Setup"
 msgstr "Setări utilizatori"
 
 #: 
@@ -6227,6 +6228,42 @@ msgid "Hungary (Magyarország)"
 msgstr "Ungaria"
 
 #: 
+msgid "Iceland (Ísland)"
+msgstr "Islanda"
+
+#: 
+msgid "India (भारत)"
+msgstr "India"
+
+#: 
+msgid "Indonesia"
+msgstr "Indonezia"
+
+#: 
+msgid "Iran (‫ایران‬‎)"
+msgstr "Iran"
+
+#: 
+msgid "Iraq (‫العراق‬‎)"
+msgstr "Iraq"
+
+#: 
+msgid "Ireland"
+msgstr "Irlanda"
+
+#: 
+msgid "Isle of Man"
+msgstr "Insulele Man"
+
+#: 
+msgid "Israel (‫ישראל‬‎)"
+msgstr "Israel"
+
+#: 
+msgid "Italy (Italia)"
+msgstr "Italia"
+
+#: 
 msgid "Jamaica"
 msgstr "Jamaica"
 
@@ -6305,6 +6342,50 @@ msgstr "Macau"
 #: 
 msgid "Macedonia (FYROM) (Македонија)"
 msgstr "Macedonia"
+
+#: 
+msgid "Madagascar (Madagasikara)"
+msgstr "Madagascar"
+
+#: 
+msgid "Malawi"
+msgstr "Malawi"
+
+#: 
+msgid "Malaysia"
+msgstr "Malaezia"
+
+#: 
+msgid "Maldives"
+msgstr "Maldive"
+
+#: 
+msgid "Mali"
+msgstr "Mali"
+
+#: 
+msgid "Malta"
+msgstr "Malta"
+
+#: 
+msgid "Marshall Islands"
+msgstr "Insulele Marshall"
+
+#: 
+msgid "Martinique"
+msgstr "Martinica"
+
+#: 
+msgid "Mauritania (‫موريتانيا‬‎)"
+msgstr "Mauritania"
+
+#: 
+msgid "Mauritius (Moris)"
+msgstr "Mauritius"
+
+#: 
+msgid "Mayotte"
+msgstr "Mayotte"
 
 #: 
 msgid "Mexico (México)"
@@ -6831,6 +6912,86 @@ msgid "Hungarian"
 msgstr "Maghiară"
 
 #: 
+msgid "Italian - Italy"
+msgstr "Italian"
+
+#: 
+msgid "Norwegian"
+msgstr "Norvegian"
+
+#: 
+msgid "Dutch - Netherlands"
+msgstr "Olandez"
+
+#: 
+msgid "Polish"
+msgstr "Polon"
+
+#: 
+msgid "Portuguese - Brazil"
+msgstr "Portugez"
+
+#: 
+msgid "Romanian - Romania"
+msgstr "Român"
+
+#: 
+msgid "Russian"
+msgstr "Rus"
+
+#: 
+msgid "Sami (Northern) (Sweden)"
+msgstr "Suedez"
+
+#: 
+msgid "Albanian"
+msgstr "Albanez"
+
+#: 
+msgid "Vietnamese"
+msgstr "Vitnamez"
+
+#: 
+msgid "Chinese - China"
+msgstr "Chinez"
+
+#: 
+msgid "Chinese - Taiwan"
+msgstr "Taivanez"
+
+#: 
+msgid "Maximum upload size"
+msgstr "Mărime maximă încărcare"
+
+#: 
+msgid "The selected file exceeds this servers maximum upload size of"
+msgstr "Fișierul selectat depășește mărimea maximă acceptată de server"
+
+#: 
+msgid "Unmet Application Prerequisites"
+msgstr "Specificații aplicație neîndeplinite"
+
+#: 
+msgid "Failed"
+msgstr "Eșuat"
+
+#: 
+msgid "The previous integrity check passed.  All system file hashes match the expected values."
+msgstr "Verificarea anterioară a integrității a trecut. Toate hashurile fișierelor de sistem se potrivesc valorilor așteptate."
+
+#: 
+msgid "Church Checking Account Number"
+msgstr "Numărul contului de verificare al Bisericii"
+
+#: 
+msgid "Missing Role Data for Some People"
+msgstr "Rol nespecificat pentru unii oameni"
+
+#: 
+msgid "PHP Max File size too small"
+msgstr "PHP Max File prea mic"
+
+#: 
 msgid "Increase the php upload limits to allow for mobile photo upload, and backup restore."
 msgstr "Măriți limitele de încărcare php pentru a permite încărcarea de fotografii mobile și restaurarea copiilor de rezervă."
 
@@ -6909,4 +7070,256 @@ msgstr "Nume fișiere coordonate în baza de date"
 #: 
 msgid "Intersect With Cart"
 msgstr "Intersecție cu grafic"
+
+#: 
+msgid "Set true to allow empty lastname in Person Editor.  Set false to validate last name and inherit from family when left empty."
+msgstr "Setați true pentru a permite numele de familie necompletat în Editorul de persoane. Setați false pentru a valida numele de familie și a moșteni de la familie atunci când este necompletat."
+
+#: 
+msgid "Display bill counts on deposit slip"
+msgstr "Afișarea numărului de facturi pe bonul de depozit"
+
+#: 
+msgid "ChurchCRM Cloud Access URL"
+msgstr "Adresa URL de acces la ChurchCRM Cloud"
+
+#: 
+msgid "Your Account was Deleted"
+msgstr "Contul tău a fost șters"
+
+#: 
+msgid "Your ChurchCRM Account was Deleted."
+msgstr "Contul tău CurchCRM a fost șters "
+
+#: 
+msgid "Account Locked"
+msgstr "Cont blocat"
+
+#: 
+msgid "Your New Account"
+msgstr "Noul tău cont"
+
+#: 
+msgid "Password Changed"
+msgstr "Parolă schimbată"
+
+#: 
+msgid "Password Reset"
+msgstr "Parolă resetată"
+
+#: 
+msgid "Account Unlocked"
+msgstr "Cont deblocat"
+
+#: 
+msgid "Part"
+msgstr "Parte"
+
+#: 
+msgid "View Photo"
+msgstr "Vezi foto"
+
+#: 
+msgid "Family Photo"
+msgstr "Foto familie"
+
+#: 
+msgid "Quick Settings"
+msgstr "Setări rapide"
+
+#: 
+msgid "Status"
+msgstr "Stadiu"
+
+#: 
+msgid "Email export"
+msgstr "Export email"
+
+#: 
+msgid "Include"
+msgstr "Include"
+
+#: 
+msgid "Exclude"
+msgstr "Exclude"
+
+#: 
+msgid "No property assignments"
+msgstr "Fără alocări de proprietăți"
+
+#: 
+msgid "View Cart"
+msgstr "Vezi coș"
+
+#: 
+msgid "Select GeoCoder Provider"
+msgstr "Selectați furnizor GeoCode"
+
+#: 
+msgid "Your ChurchCRM account was locked."
+msgstr "Contul tău ChurchCRM a fost blocat."
+
+#: 
+msgid "A ChurchCRM account was created for you"
+msgstr "Un cont CurchCRM a fost creat pentru tine"
+
+#: 
+msgid "Your ChurchCRM password was changed"
+msgstr "Parola pentru contul CurchCRM a fost schimbată"
+
+#: 
+msgid "You can reset your ChurchCRM password by clicking this link"
+msgstr "Poți reseta parola contului CurchCRM folosind acest link"
+
+#: 
+msgid "Your ChurchCRM account was unlocked."
+msgstr "Contul tău CurchCRM a fost deblocat."
+
+#: 
+msgid "system user created"
+msgstr "utilizator system creat"
+
+#: 
+msgid "system user updated"
+msgstr "utilizator system actualizat"
+
+#: 
+msgid "system user deleted"
+msgstr "utilizator system șters"
+
+#: 
+msgid "system user password reset"
+msgstr "resetare parolă utilizator system"
+
+#: 
+msgid "system user changed password"
+msgstr "schimbare parolă utilizator system"
+
+#: 
+msgid "system user password changed by admin"
+msgstr "parolă utilizator de rețea schimbată de către admin"
+
+#: 
+msgid "system user login reset"
+msgstr "resetare autentificare utilizator system"
+
+#: 
+msgid "Missing Families? Update Family Latitude or Longitude now."
+msgstr "Familia nu există? Actualizează latitudinea și longitudinea pentru familie"
+
+#: 
+msgid "Families without Geo Info"
+msgstr "Familii fără informații de localizare"
+
+#: 
+msgid "Notification for"
+msgstr "Notificări de la"
+
+#: 
+msgid "DEBUG"
+msgstr "DEBUG"
+
+#: 
+msgid "INFO"
+msgstr "INFO"
+
+#: 
+msgid "NOTICE"
+msgstr "NOTICE"
+
+#: 
+msgid "WARNING"
+msgstr "AVERTIZARE"
+
+#: 
+msgid "Show/Hide Lost Password Link on the login screen"
+msgstr "Afișează/Ascunde link pentru resetare parolă în meniul de autentificare"
+
+#: 
+msgid "Backup"
+msgstr "Copie de rezervă"
+
+#: 
+msgid "Integration"
+msgstr "Integrare"
+
+#: 
+msgid "Notification"
+msgstr "Notificare"
+
+#: 
+msgid "Guardian(s) of"
+msgstr "Gardian(eni) pentru"
+
+#: 
+msgid "A notification was triggered by the classroom teacher at"
+msgstr "O notificare a fost trimisă de către profesor la"
+
+#: 
+msgid "Please go to this location"
+msgstr "Navigați la această locație"
+
+#: 
+msgid "You ChurchCRM updated password has been changed"
+msgstr "Parola ta schimbată pentru CurchCRM a fost actualizată"
+
+#: 
+msgid "Password Reset Link"
+msgstr "Link restare parolă"
+
+#: 
+msgid "Reset Password"
+msgstr "Resetează parola"
+
+#: 
+msgid "As part of the restore, external backups have been disabled.  If you wish to continue automatic backups, you must manuall re-enable the bEnableExternalBackupTarget setting."
+msgstr "Ca parte a restaurării, copiile de rezervă externe au fost dezactivate. Dacă doriți să continuați copiile de siguranță automate, trebuie să reactivați manual setarea bEnableExternalBackupTarget."
+
+#: 
+msgid "Unable to reset password"
+msgstr "Parola nu a putut fi resetată"
+
+#: 
+msgid "Reset your password"
+msgstr "Resetează-ți parola"
+
+#: 
+msgid "Sorry, we are unable to process your request at this point in time."
+msgstr "Ne pare rău, nu am putut procesa solicitarea"
+
+#: 
+msgid "Login Name is Required"
+msgstr "Este necesar Login Name"
+
+#: 
+msgid "A new password was sent to you. Please check your email"
+msgstr "O nouă parolă a fost trimisă. Verifică email-ul"
+
+#: 
+msgid "Kiosk Manager"
+msgstr "Kiosk Manager"
+
+#: 
+msgid "Your Cart"
+msgstr "Coșul tău"
+
+#: 
+msgid "Your settings and more"
+msgstr "Setările tale și altele"
+
+#: 
+msgid "Report an issue"
+msgstr "Rapoartează o eroare"
+
+#: 
+msgid "Checking Cart Status"
+msgstr "Verificăm stadiul coșului"
+
+#: 
+msgid "All members of this group are in the cart"
+msgstr "Toți membrii acestui grup sunt în coș"
+
+#: 
+msgid "Remove all"
+msgstr "Elimină tot"
 

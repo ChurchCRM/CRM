@@ -10,7 +10,6 @@ use ChurchCRM\Person2group2roleP2g2rQuery;
 use ChurchCRM\PersonCustomQuery;
 use ChurchCRM\PersonQuery;
 use ChurchCRM\PersonVolunteerOpportunityQuery;
-use ChurchCRM\Service\SystemService;
 use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
 use ChurchCRM\UserQuery;
 use ChurchCRM\Utils\LoggerUtils;
@@ -20,9 +19,9 @@ use Slim\Http\Request;
 use Slim\Http\Response;
 use ChurchCRM\Backup\BackupJob;
 use ChurchCRM\Backup\RestoreJob;
-use ChurchCRM\Backup\BackupType;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Backup\BackupDownloader;
+use ChurchCRM\Authentication\AuthenticationManager;
 
 $app->group('/database', function () {
 
@@ -103,7 +102,7 @@ function clearPeopleTables(Request $request, Response $response, array $p_args)
 {
     $connection = Propel::getConnection();
     $logger = LoggerUtils::getAppLogger();
-    $curUserId = $_SESSION["user"]->getId();
+    $curUserId = AuthenticationManager::GetCurrentUser()->getId();
     $logger->info("People DB Clear started ");
 
 

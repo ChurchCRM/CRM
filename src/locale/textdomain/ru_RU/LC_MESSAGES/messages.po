@@ -4322,7 +4322,8 @@ msgid "Church Information"
 msgstr "Информация о церкви"
 
 #: 
-msgid "User setup"
+#, fuzzy
+msgid "User Setup"
 msgstr "Информация о церкви"
 
 #: 
@@ -4880,6 +4881,666 @@ msgstr "Долгота церкви, используемая для центр�
 #: 
 msgid "Set true to disable entering addresses in Person Editor.  Set false to enable entering addresses in Person Editor."
 msgstr "Установите true, чтобы запретить ввод адресов в редакторе субъекта. Установите false, чтобы разрешить ввод адресов в Редакторе субъекта."
+
+#: 
+msgid "Number of checks for Deposit Slip Report"
+msgstr "Количество чеков для отчета о депозите"
+
+#: 
+msgid "Set true to enable use of scanned checks"
+msgstr "Установите верно, чтобы разрешить использование отсканированных чеков"
+
+#: 
+msgid "Unit used to measure distance, miles or km."
+msgstr "Единица измерения расстояния, мили или км."
+
+#: 
+msgid "Names of markers for Google Maps in order of classification"
+msgstr "Названия маркеров для Google Maps в порядке классификации"
+
+#: 
+msgid "Enable non-deductible payments"
+msgstr "Разрешить невычитаемые платежи"
+
+#: 
+msgid "Set true to enable family self registration."
+msgstr "Установите значение true, чтобы разрешить саморегистрацию семьи."
+
+#: 
+msgid "ChurchCRM has been registered.  The ChurchCRM team uses registration information to track usage.  This information is kept confidential and never released or sold.  If this field is true the registration option in the admin menu changes to update registration."
+msgstr "ChurchCRM зарегистрирован. Команда ChurchCRM использует регистрационную информацию для отслеживания использования. Эта информация является конфиденциальной и никогда не разглашается и не продается. Если это поле верно, опция регистрации в меню администратора изменится на обновление регистрации."
+
+#: 
+msgid "Left Margin (1 = 1/100th inch)"
+msgstr "Левое поле (1 = 1/100 дюйма)"
+
+#: 
+msgid "Line Thickness (1 = 1/100th inch"
+msgstr "Толщина линии (1 = 1/100 дюйма"
+
+#: 
+msgid "Church City"
+msgstr "В каком городе находится церковь"
+
+#: 
+msgid "Church State"
+msgstr "В какой области находится церковь"
+
+#: 
+msgid "Church Zip"
+msgstr "Почтовый индекс"
+
+#: 
+msgid "Church Phone"
+msgstr "Номер телеофна церкви"
+
+#: 
+msgid "Home area code of the church"
+msgstr "Домашний код города церкви"
+
+#: 
+msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
+msgstr "Вербаж к верхней строке налоговой отчетности. Даты будут добавлены в конец этой строки."
+
+#: 
+msgid "Verbage for bottom line of tax report."
+msgstr "Вербаж для итогов налоговой отчетности."
+
+#: 
+msgid "Tax Report signer"
+msgstr "Лицо, подписывающее налоговый отчет"
+
+#: 
+msgid "Verbage for the pledge reminder report"
+msgstr "Вербаж для отчета с напоминанием о залоге"
+
+#: 
+msgid "Pledge Reminder Signer"
+msgstr "Подписчик напоминания о залоге"
+
+#: 
+msgid "Verbage for the pledge reminder report - No record of a pledge"
+msgstr "Вербаж для отчета с напоминанием о залоге - Нет записи о залоге"
+
+#: 
+msgid "Verbage for the pledge reminder report - No record of payments"
+msgstr "Вербаж для отчета с напоминанием о залоге - Нет записи о платежах"
+
+#: 
+msgid "Verbage for the database information confirmation and correction report"
+msgstr "Вербаж  для подтверждения информации базы данных и отчета об исправлениях"
+
+#: 
+msgid "Database information confirmation and correction report signer"
+msgstr "Подписчик отчета о подтверждении и исправлении информации в базе данных"
+
+#: 
+msgid "Verbage for the pledge summary report"
+msgstr "Вербаж для сводного отчета о залоге"
+
+#: 
+msgid "Verbage for the directory report"
+msgstr "Вербаж для отчета каталога"
+
+#: 
+msgid "lookup user images on Gravatar when no local image is present"
+msgstr "искать пользовательские изображения на Gravatar, когда нет локального изображения"
+
+#: 
+msgid "Enable Remote Backups to Cloud Services"
+msgstr "Включить удаленное резервное копирование в облачные службы"
+
+#: 
+msgid "Cloud Service Type (Supported values: WebDAV, Local)"
+msgstr "Тип облачной службы (поддерживаемые значения: WebDAV, локальный)"
+
+#: 
+msgid "Remote Backup Username"
+msgstr "Имя пользователя удаленного резервного копирования"
+
+#: 
+msgid "Remote Backup Password"
+msgstr "Пароль удаленного резервного копирования"
+
+#: 
+msgid "Interval in Hours for Automatic Remote Backups"
+msgstr "Интервал в часах для автоматического удаленного резервного копирования"
+
+#: 
+msgid "Last Backup Timestamp"
+msgstr "Отметка времени последнего резервного копирования"
+
+#: 
+msgid "QuickBooks Deposit Ticket Settings"
+msgstr "Настройки депозитного билета QuickBooks"
+
+#: 
+msgid "Enable Integrity Check"
+msgstr "Включить проверку целостности"
+
+#: 
+msgid "Interval in Hours for Integrity Check"
+msgstr "Интервал в часах для проверки целостности"
+
+#: 
+msgid "Last Integrity Check Timestamp"
+msgstr "Отметка времени последней проверки целостности"
+
+#: 
+msgid "List Groups"
+msgstr "Список групп"
+
+#: 
+msgid "List Church Events"
+msgstr "Список церковных событий"
+
+#: 
+msgid "Add Church Event"
+msgstr "Добавить церковное событие"
+
+#: 
+msgid "List Event Types"
+msgstr "Список типов событий"
+
+#: 
+msgid "Check-in and Check-out"
+msgstr "Заезд и выезд"
+
+#: 
+msgid "View All Deposits"
+msgstr "Просмотреть все депозиты"
+
+#: 
+msgid "Deposit Reports"
+msgstr "Отчеты о депозитах"
+
+#: 
+msgid "Edit Deposit Slip"
+msgstr "Редактировать квитанцию ​​о депозите"
+
+#: 
+msgid "View All Fundraisers"
+msgstr "Просмотреть всех сфандрайзеров (сборщиков денег)"
+
+#: 
+msgid "Create New Fundraiser"
+msgstr "Создать нового фандрайзера (сборщика денег)"
+
+#: 
+msgid "Edit Fundraiser"
+msgstr "Редактировать фандрайзера (сборщика денег)"
+
+#: 
+msgid "View Buyers"
+msgstr "Посмотреть покупателей"
+
+#: 
+msgid "Add Donors to Buyer List"
+msgstr "Добавить доноров в список покупателей"
+
+#: 
+msgid "Data/Reports"
+msgstr "Данные / отчеты"
+
+#: 
+msgid "Query Menu"
+msgstr "Меню запросов"
+
+#: 
+msgid "CSV Export Records"
+msgstr "CSV экспортные записи"
+
+#: 
+msgid "People Properties"
+msgstr "Свойства людей"
+
+#: 
+msgid "Family Properties"
+msgstr "Семейные свойства"
+
+#: 
+msgid "Property Types"
+msgstr "Типы собственности"
+
+#: 
+msgid "Zip Code"
+msgstr "Почтовый индекс"
+
+#: 
+msgid "WorkEmail"
+msgstr "Рабочий адрес электронной почты"
+
+#: 
+msgid "Regular Attender"
+msgstr "Постоянный посетитель"
+
+#: 
+msgid "Guest"
+msgstr "Гость"
+
+#: 
+msgid "Non-Attender"
+msgstr "Не присутствующий"
+
+#: 
+msgid "Non-Attender (staff)"
+msgstr "Не присутствующий (персонал)"
+
+#: 
+msgid "Minimum Age"
+msgstr "Минимальный возраст"
+
+#: 
+msgid "Maximum Age"
+msgstr "Максимальный возвраст"
+
+#: 
+msgid "Beginning Date"
+msgstr "Дата начала"
+
+#: 
+msgid "Ending Date"
+msgstr "Дата окончания"
+
+#: 
+msgid "Search"
+msgstr "Поиск"
+
+#: 
+msgid "Field"
+msgstr "Поле"
+
+#: 
+msgid "Registered students"
+msgstr "Зарегистрированные студенты"
+
+#: 
+msgid "Volunteer opportunities"
+msgstr "Возможности волонтерства"
+
+#: 
+msgid "Months"
+msgstr "Месяцы"
+
+#: 
+msgid "First Fiscal Year"
+msgstr "Первый финансовый год"
+
+#: 
+msgid "Second Fiscal Year"
+msgstr "Второй финансовый год"
+
+#: 
+msgid "Custom field"
+msgstr "Пользовательское поле"
+
+#: 
+msgid "Field value"
+msgstr "Значение поля"
+
+#: 
+msgid "The minimum age for which you want records returned."
+msgstr "Минимальный возраст, для которого вы хотите вернуть записи."
+
+#: 
+msgid "The maximum age for which you want records returned."
+msgstr "Максимальный возраст, для которого вы хотите вернуть записи."
+
+#: 
+msgid "The desired gender to search the database for."
+msgstr "Желаемый пол для поиска в базе данных."
+
+#: 
+msgid "Select the desired family role."
+msgstr "Выберите желаемую семейную роль."
+
+#: 
+msgid "The gender for which you would like records returned."
+msgstr "Пол, для которого вы хотите вернуть записи."
+
+#: 
+msgid "The property for which you would like person records returned."
+msgstr "Свойство, для которого вы хотите вернуть личные записи."
+
+#: 
+msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that conatain donations."
+msgstr "Пожалуйста, выберите дату начала для расчета общих взносов для каждого члена (например, ГГГГ-ММ-ДД). ПРИМЕЧАНИЕ. Вы можете выбирать только даты, в которые поступают пожертвования."
+
+#: 
+msgid "Please enter the last date to calculate total contributions for each member (i.e. YYYY-MM-DD)."
+msgstr "Пожалуйста, введите последнюю дату для расчета общих взносов для каждого участника (например, ГГГГ-ММ-ДД)."
+
+#: 
+msgid "Enter any part of the following: Name, City, State, Zip, Home Phone, Email, or Work Email."
+msgstr "Введите любую часть следующего: имя, город, область, почтовый индекс, домашний телефон, адрес электронной почты или рабочий адрес электронной почты."
+
+#: 
+msgid "Select field to search for."
+msgstr "Выберите поле для поиска."
+
+#: 
+msgid "The birthday month for which you would like records returned."
+msgstr "Месяц дня рождения, для которого вы хотите вернуть записи."
+
+#: 
+msgid "The sunday school class for which you would like records returned."
+msgstr "Класс воскресной школы, по которому вы хотите вернуть записи."
+
+#: 
+msgid "Group of registered students"
+msgstr "Группа зарегистрированных студентов"
+
+#: 
+msgid "The membership anniversary month for which you would like records returned."
+msgstr "Месяц годовщины членства, за который вы хотите вернуть записи."
+
+#: 
+msgid "Choose a volunteer opportunity"
+msgstr "Выберите возможность стать волонтером"
+
+#: 
+msgid "First fiscal year for comparison"
+msgstr "Первый финансовый год для сравнения"
+
+#: 
+msgid "Pledged this year"
+msgstr "Залог в этом году"
+
+#: 
+msgid "but not this year"
+msgstr "но не в этом году"
+
+#: 
+msgid "Fiscal Year."
+msgstr "Отчетный год"
+
+#: 
+msgid "Member, Regular Attender, etc."
+msgstr "Участник, постоянный посетитель и т. Д."
+
+#: 
+msgid "First volunteer opportunity choice"
+msgstr "Выбор первой возможности волонтера"
+
+#: 
+msgid "Choose customer person field"
+msgstr "Выберите поле клиента"
+
+#: 
+msgid "Match custom field to this value"
+msgstr "Соответствие настраиваемого поля этому значению"
+
+#: 
+msgid "Family Member Count"
+msgstr "Количество членов семьи"
+
+#: 
+msgid "Person by Age"
+msgstr "Человек по возрасту"
+
+#: 
+msgid "Total By Gender"
+msgstr "Всего по полу"
+
+#: 
+msgid "Person by Role and Gender"
+msgstr "Человек по ролям и полу"
+
+#: 
+msgid "Advanced Search"
+msgstr "Расширенный поиск"
+
+#: 
+msgid "Birthdays"
+msgstr "Дни рождения"
+
+#: 
+msgid "Membership anniversaries"
+msgstr "Годовщины членства"
+
+#: 
+msgid "Select database users"
+msgstr "Выберите пользователей базы данных"
+
+#: 
+msgid "Select all members"
+msgstr "Выберите всех участников"
+
+#: 
+msgid "Volunteers"
+msgstr "Волонтеры"
+
+#: 
+msgid "Families to Canvass"
+msgstr "Семьи для обсуждения"
+
+#: 
+msgid "Pledge comparison"
+msgstr "Сравнение залога"
+
+#: 
+msgid "Missing pledges"
+msgstr "Недостающие залоги"
+
+#: 
+msgid "CustomSearch"
+msgstr "Пользовательский поиск"
+
+#: 
+msgid "Returns each family and the total number of people assigned to them."
+msgstr "Возвращает каждую семью и общее количество назначенных ей людей."
+
+#: 
+msgid "Returns any person records with ages between two given ages."
+msgstr "Возвращает записи любого человека с возрастом между двумя заданными возрастами."
+
+#: 
+msgid "Total of records matching a given gender."
+msgstr "Общее количество записей, соответствующих данному полу."
+
+#: 
+msgid "Selects person records with the family role and gender specified."
+msgstr "Выберите записи о людях с указанием семейной роли и пола."
+
+#: 
+msgid "Returns person records which are assigned the given property."
+msgstr "Возвращает записи о людях, которым присвоено данное свойство."
+
+#: 
+msgid "Search by any part of Name, City, State, Zip, Home Phone, Email, or Work Email."
+msgstr "Поиск по любой части имени, города, области, почтового индекса, домашнего телефона, электронной или рабочей электронной почты."
+
+#: 
+msgid "People with birthdays in a particular month"
+msgstr "Люди с днями рождения в определенном месяце"
+
+#: 
+msgid "Find Registered students"
+msgstr "Найти зарегистрированных студентов"
+
+#: 
+msgid "Members who joined in a particular month"
+msgstr "Участники, которые присоединились в конкретный месяц"
+
+#: 
+msgid "People who are registered as database users"
+msgstr "Люди, которые зарегистрированы как пользователи базы данных"
+
+#: 
+msgid "People who are members"
+msgstr "Люди, которые являются участниками"
+
+#: 
+msgid "Find volunteers for a particular opportunity"
+msgstr "Найти волонтеров для конкретного случая"
+
+#: 
+msgid "Friends who signed up in previous months"
+msgstr "Друзья, которые регистрировались в предыдущие месяцы"
+
+#: 
+msgid "People in families that are ok to canvass."
+msgstr "Люди в семьях, которые могут проводить агитацию."
+
+#: 
+msgid "Compare pledges between two fiscal years"
+msgstr "Сравните взносы за два финансовых года"
+
+#: 
+msgid "Find people who pledged one year but not another"
+msgstr "Найдите людей, которые обещали один год, а другой нет"
+
+#: 
+msgid "Pledge summary by family name for each fund for the selected fiscal year"
+msgstr "Сводка обещаний с указанием фамилии для каждого фонда за выбранный финансовый год"
+
+#: 
+msgid "Find volunteers for who match two specific opportunity codes"
+msgstr "Найдите добровольцев, которые соответствуют двум конкретным кодам возможностей"
+
+#: 
+msgid "Find people with a custom field value"
+msgstr "Найдите людей со значением настраиваемого поля"
+
+#: 
+msgid "Last Edited"
+msgstr "Последнее редактирование"
+
+#: 
+msgid "User permission to send email via mailto: links"
+msgstr "Разрешение пользователя на отправку электронной почты через mailto: ссылки"
+
+#: 
+msgid "Delimiter to separate emails in mailto: links"
+msgstr "Разделитель для разделения писем в mailto: ссылки"
+
+#: 
+msgid "User permission to create directories"
+msgstr "Разрешение пользователя на создание каталогов"
+
+#: 
+msgid "User permission to export CSV files"
+msgstr "Разрешение пользователя на экспорт файлов CSV"
+
+#: 
+msgid "User permission to use IST Address Verification"
+msgstr "Разрешение пользователя на использование проверки адреса IST"
+
+#: 
+msgid "Allow user to add new event"
+msgstr "Разрешить пользователю добавлять новое событие"
+
+#: 
+msgid "Canvass Progress Report"
+msgstr "Отчет о проделанной работе"
+
+#: 
+msgid "Done"
+msgstr "Готово"
+
+#: 
+msgid "Assigned"
+msgstr "Назначено"
+
+#: 
+msgid "Percent"
+msgstr "Процент"
+
+#: 
+msgid "Total"
+msgstr "Всего"
+
+#: 
+msgid "Pledge status"
+msgstr "Статус залога"
+
+#: 
+msgid "Canvass Summary Report"
+msgstr "Обсуждение итогового отчета "
+
+#: 
+msgid "Suggestion"
+msgstr "Suggestion"
+
+#: 
+msgid "WhyNotInterested"
+msgstr "Почему не заинтересован "
+
+#: 
+msgid "Comments"
+msgstr "комментарии"
+
+#: 
+msgid "Weekly on"
+msgstr "Еженедельно на"
+
+#: 
+msgid "Monthly on"
+msgstr "Ежемесячно на"
+
+#: 
+msgid "Yearly on"
+msgstr "Ежегодно на"
+
+#: 
+msgid "All Events of Type"
+msgstr "Все события типа"
+
+#: 
+msgid "event"
+msgstr "событие"
+
+#: 
+msgid "events"
+msgstr "события"
+
+#: 
+msgid " in this category."
+msgstr "в этой категории"
+
+#: 
+msgid "There currently is"
+msgstr "Там в настоящее время"
+
+#: 
+msgid "There currently are"
+msgstr "Там в настоящее время"
+
+#: 
+msgid "custom event type"
+msgstr "тип настраиваемого события"
+
+#: 
+msgid "custom event types"
+msgstr "настраиваемые типы событий"
+
+#: 
+msgid "Family Roles Editor"
+msgstr "Редактор семейных ролей"
+
+#: 
+msgid "Person Classification"
+msgstr "Классификация лиц"
+
+#: 
+msgid "Person Classifications"
+msgstr "Классификация людей"
+
+#: 
+msgid "Person Classifications Editor"
+msgstr "Редактор классификации людей"
+
+#: 
+msgid "Group Type"
+msgstr "Тип группы"
+
+#: 
+msgid "Group Types"
+msgstr "Типы групп"
+
+#: 
+msgid "Group Types Editor"
+msgstr "Редактор типов групп"
 
 #: 
 msgid "People Dashboard"

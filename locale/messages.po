@@ -10,7 +10,7 @@ msgstr ""
 "#-#-#-#-#  messages.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-02 00:41-0700\n"
+"POT-Creation-Date: 2020-10-17 17:34-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,16 +25,16 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2020-10-02T07:41:16.220Z\n"
-"PO-Revision-Date: 2020-10-02T07:41:16.220Z\n"
+"POT-Creation-Date: 2020-10-18T00:34:02.489Z\n"
+"PO-Revision-Date: 2020-10-18T00:34:02.489Z\n"
 "#-#-#-#-#  react-js-strings.po (i18next-conv)  #-#-#-#-#\n"
 "Project-Id-Version: i18next-conv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2020-10-02T07:41:16.430Z\n"
-"PO-Revision-Date: 2020-10-02T07:41:16.430Z\n"
+"POT-Creation-Date: 2020-10-18T00:34:02.681Z\n"
+"PO-Revision-Date: 2020-10-18T00:34:02.681Z\n"
 
 msgid "Backup Database"
 msgstr ""
@@ -669,6 +669,12 @@ msgstr ""
 msgid "Add New Person"
 msgstr ""
 
+msgid "View Active Persons"
+msgstr ""
+
+msgid "View Inactive Persons"
+msgstr ""
+
 msgid "View All Persons"
 msgstr ""
 
@@ -811,21 +817,6 @@ msgid "Reset System"
 msgstr ""
 
 msgid "Links"
-msgstr ""
-
-msgid "Unknown"
-msgstr ""
-
-msgid "Other"
-msgstr ""
-
-msgid "Head of Household"
-msgstr ""
-
-msgid "Spouse"
-msgstr ""
-
-msgid "Child"
 msgstr ""
 
 msgid "New Person Added"
@@ -992,6 +983,9 @@ msgstr ""
 msgid "Part"
 msgstr ""
 
+msgid "Unknown"
+msgstr ""
+
 msgid "Self Registration"
 msgstr ""
 
@@ -1044,6 +1038,9 @@ msgid "Missing"
 msgstr ""
 
 msgid "not found"
+msgstr ""
+
+msgid " has a type mismatch"
 msgstr ""
 
 msgid "External Calendar API is disabled"
@@ -1697,7 +1694,7 @@ msgstr ""
 msgid "Church Information"
 msgstr ""
 
-msgid "User setup"
+msgid "User Setup"
 msgstr ""
 
 msgid "Email Setup"
@@ -4108,6 +4105,9 @@ msgstr ""
 msgid "Once"
 msgstr ""
 
+msgid "Other"
+msgstr ""
+
 msgid "Payment by"
 msgstr ""
 
@@ -4255,10 +4255,10 @@ msgstr ""
 msgid "Unassigning"
 msgstr ""
 
-msgid "Yes, unassign this Property"
+msgid "No, retain this assignment"
 msgstr ""
 
-msgid "No, retain this assignment"
+msgid "Yes, unassign this Property"
 msgstr ""
 
 msgid "Query Listing"
@@ -5074,9 +5074,6 @@ msgstr ""
 msgid "The role could not be assigned."
 msgstr ""
 
-msgid "The record could not be found."
-msgstr ""
-
 msgid "The property is already assigned."
 msgstr ""
 
@@ -5084,6 +5081,9 @@ msgid "The property is successfully assigned."
 msgstr ""
 
 msgid "The property could not be assigned."
+msgstr ""
+
+msgid "The record could not be found."
 msgstr ""
 
 msgid "The property is successfully unassigned."
@@ -5710,6 +5710,9 @@ msgstr ""
 msgid "Metadata"
 msgstr ""
 
+msgid "Loading"
+msgstr ""
+
 msgid "Pledges and Payments"
 msgstr ""
 
@@ -5769,6 +5772,12 @@ msgid "Clear Filter"
 msgstr ""
 
 msgid "Add Person"
+msgstr ""
+
+msgid "Today's Birthdays"
+msgstr ""
+
+msgid "Today's Wedding Anniversaries"
 msgstr ""
 
 msgid ""
@@ -7101,6 +7110,12 @@ msgid "Register another family!"
 msgstr ""
 
 msgid "Done, show me the homepage!"
+msgstr ""
+
+msgid "Family Property Unassignment"
+msgstr ""
+
+msgid "Do you want to remove"
 msgstr ""
 
 msgid "Pledge or Payment"
