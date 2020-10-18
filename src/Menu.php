@@ -17,13 +17,19 @@
 // Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
+
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\DepositQuery;
-use ChurchCRM\Service\DashboardService;
-use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\MenuEventsCount;
-use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Service\DashboardService;
+use ChurchCRM\Utils\RedirectUtils;
+
+if (SystemConfig::getBooleanValue("bEnabledDashboardV2")) {
+    RedirectUtils::Redirect('v2/dashboard');
+}
 
 $dashboardService = new DashboardService();
 
