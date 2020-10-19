@@ -39,7 +39,7 @@ context('Family', () => {
     it('Entering a new Family', () => {
         cy.visit("FamilyEditor.php");
         cy.contains('Family Info');
-        cy.get('#FamilyName').type("Troy");
+        cy.get('#FamilyName').type("Troy" + Cypress._.random(0, 1e6));
         cy.get('input[name="Address1"').type("4222 Clinton Way");
         cy.get('input[name="City"]').clear().type("Los Angelas");
         cy.get('select[name="State"]').select("CA", { force: true });
