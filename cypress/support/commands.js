@@ -29,3 +29,9 @@ Cypress.Commands.add("login", (username, password, assertLoggedIn = true) => {
     }
 });
 
+
+Cypress.Commands.add("buildRandom", (prefixString) => {
+    let rand = Math.random().toString(36).substring(7);
+    return prefixString.concat(" - ", rand);
+});
+
