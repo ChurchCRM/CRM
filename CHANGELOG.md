@@ -1,4 +1,4 @@
-#4.2.0
+# 4.2.0
 Released on (10.19.2020)
 
 ## :exclamation: Support Alert
