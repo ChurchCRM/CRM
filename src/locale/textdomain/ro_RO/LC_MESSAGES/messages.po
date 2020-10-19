@@ -6828,8 +6828,88 @@ msgid "Please verify your family's information"
 msgstr "Vă rugăm verificați informațiile legat de familie"
 
 #: 
+msgid "Church Address is not Set."
+msgstr "Adresa biserica nu este stabilită"
+
+#: 
+msgid "Church Name is set to default value"
+msgstr "Numele bisericii este stabilit la valoarea implicită"
+
+#: 
+msgid "SMTP Server info are blank"
+msgstr "Server SMTP este gol"
+
+#: 
+msgid "Your system could be more secure by installing an TLS/SSL Cert."
+msgstr "Systemul ar putea fi mai sigur dacă instalați un certificat TLS/SSL"
+
+#: 
+msgid "Missing Classification Data"
+msgstr "Date de clasificare lipsă"
+
+#: 
+msgid "Missing Classification Data for Some People"
+msgstr "Date de clasificare lipsă pentru anumite persoane"
+
+#: 
+msgid "Missing Gender Data"
+msgstr "Date de gen lipsă"
+
+#: 
+msgid "Missing Gender Data for Some People"
+msgstr "Date de gen lipsă pentru anumite persoane"
+
+#: 
+msgid "Missing Role Data"
+msgstr "Date de rog lipsă"
+
+#: 
+msgid "Let us know that you are using the software"
+msgstr "Spuneți-ne că utilizați software-ul"
+
+#: 
+msgid "Unable to load verification info"
+msgstr "Informațiile de verificare nu pot fi încărcate"
+
+#: 
+msgid "No Changes"
+msgstr "Fără schimbări"
+
+#: 
+msgid "Page not fond"
+msgstr "Pagină negăsită"
+
+#: 
+msgid "Oops! Page not found."
+msgstr "Oops! Pagină negăsită"
+
+#: 
+msgid "Family Registration"
+msgstr "Înregistrare familie"
+
+#: 
+msgid "Please enter the following to start your family's verification"
+msgstr "Introduceți următoarele pentru a începe verificarea familiei"
+
+#: 
+msgid "Family Verification"
+msgstr "Verificare familie"
+
+#: 
+msgid "Family Member(s)"
+msgstr "Membru(ri) familie"
+
+#: 
+msgid "Work Email"
+msgstr "Email de muncă"
+
+#: 
 msgid "Your verification request is complete"
 msgstr "Varificare ta este finalizată"
+
+#: 
+msgid "We encountered an error submitting with your verification data"
+msgstr "Am întâmpinat o eroare la trimiterea datelor de verificare"
 
 #: 
 msgid "Visit our Site"
@@ -7152,6 +7232,86 @@ msgid "View Cart"
 msgstr "Vezi coș"
 
 #: 
+msgid "Your Cart is Empty"
+msgstr "Coșul tău este gol"
+
+#: 
+msgid "View on Map"
+msgstr "Vizualizare pe hartă"
+
+#: 
+msgid "Legend"
+msgstr "Legendă"
+
+#: 
+msgid "assigned"
+msgstr "alocat"
+
+#: 
+msgid "Photo"
+msgstr "Foto"
+
+#: 
+msgid "Payment Details"
+msgstr "Detalii plată"
+
+#: 
+msgid "Fund Split"
+msgstr "Împărțirea fondului"
+
+#: 
+msgid "Showing students with birthdays in"
+msgstr "Se afișează studenții cu zile de naștere în"
+
+#: 
+msgid "Actions"
+msgstr "Actiuni"
+
+#: 
+msgid "Action Confirmation"
+msgstr "Confirmare actiune"
+
+#: 
+msgid "Please confirm reset failed login count"
+msgstr "Vă rugăm să confirmați resetarea numărului de conectări eșuat"
+
+#: 
+msgid "View Active Families"
+msgstr "Vizualizați familiile active"
+
+#: 
+msgid "View Inactive Families"
+msgstr "Vizualizați familii inactive"
+
+#: 
+msgid "SMTP Server timeout in sec"
+msgstr "Server SMTP timeout în secunde"
+
+#: 
+msgid "Exclude Inactive Families"
+msgstr "Exclude familii inactive"
+
+#: 
+msgid "The role is already assigned."
+msgstr "Rolul este deja alocat"
+
+#: 
+msgid "The role is successfully assigned."
+msgstr "Rolul a fost alocal cu succes"
+
+#: 
+msgid "The role could not be assigned."
+msgstr "Rolul nu a putut fi alocat"
+
+#: 
+msgid "Bing map API requires a unique key"
+msgstr "Harta BING solicită o chie unică"
+
+#: 
+msgid "Google Maps Zoom"
+msgstr "Zoom hărți google"
+
+#: 
 msgid "Select GeoCoder Provider"
 msgstr "Selectați furnizor GeoCode"
 
@@ -7312,6 +7472,86 @@ msgid "Report an issue"
 msgstr "Rapoartează o eroare"
 
 #: 
+msgid "Your tasks"
+msgstr "Sarcinile tale"
+
+#: 
+msgid "Enable New Kiosk Registration"
+msgstr "Activați înregistrarea chioșcului nou"
+
+#: 
+msgid "Active Kiosks"
+msgstr "Chioșcuri active"
+
+#: 
+msgid "I forgot my password"
+msgstr "Mi-am uitat parola"
+
+#: 
+msgid "Attendees Checked In"
+msgstr "Participanții s-au înregistrat"
+
+#: 
+msgid "Text Cart"
+msgstr "Text coș"
+
+#: 
+msgid "Your Church's Website"
+msgstr "Adresă web biserică"
+
+#: 
+msgid "Self Verification"
+msgstr "Auto verificare"
+
+#: 
+msgid "Deactivate"
+msgstr "Dezactivare"
+
+#: 
+msgid "Activate"
+msgstr "Activare"
+
+#: 
+msgid "Stack Trace"
+msgstr "Stack Trace"
+
+#: 
+msgid "Check Number"
+msgstr "Număr verificare"
+
+#: 
+msgid "Details"
+msgstr "Detalii"
+
+#: 
+msgid "Verification email sent"
+msgstr "Email de verificare trimis"
+
+#: 
+msgid "Confirm Enable Group Specific Properties"
+msgstr "Confirmați Activarea proprietăților specifice grupului"
+
+#: 
+msgid "This will create a group-specific properties table for this group.  You should then add needed properties with the Group-Specific Properties Form Editor."
+msgstr "Aceasta va crea un tabel de proprietăți specifice grupului pentru acest grup. Apoi ar trebui să adăugați proprietățile necesare cu Editorul formularului de proprietăți specifice grupului."
+
+#: 
+msgid "Confirm Disable Group Specific Properties"
+msgstr "Confirmați Dezactivați proprietățile specifice grupului"
+
+#: 
+msgid "Are you sure you want to remove the group-specific person properties?  All group member properties data will be lost!"
+msgstr "Sigur doriți să eliminați proprietățile persoanei specifice grupului? Toate datele proprietăților membrilor grupului se vor pierde!"
+
+#: 
+msgid "Role Name"
+msgstr "Nume role"
+
+#: 
+msgid "Sequence"
+msgstr "Secvență"
+
+#: 
 msgid "Checking Cart Status"
 msgstr "Verificăm stadiul coșului"
 
@@ -7322,4 +7562,132 @@ msgstr "Toți membrii acestui grup sunt în coș"
 #: 
 msgid "Remove all"
 msgstr "Elimină tot"
+
+#: 
+msgid "Pending Self Verify"
+msgstr "În așteptarea auto-verificării"
+
+#: 
+msgid "Self Verify"
+msgstr "Auto verificare"
+
+#: 
+msgid "Indonesian - Indonesia"
+msgstr "Indonezia"
+
+#: 
+msgid "POST to cart requires a Persons array, FamilyID, or GroupID"
+msgstr "POST în coș necesită o matrice Persons, FamilyID sau GroupID"
+
+#: 
+msgid "records(s) successfully added to selected Group."
+msgstr "înregistrări adăugate cu succes grupului selectat."
+
+#: 
+msgid "To export to another For european CharSet use ;"
+msgstr "Pentru a exporta în altul Pentru utilizare CharSet european;"
+
+#: 
+msgid "Default is UTF-8, For european CharSet use Windows-1252 for example for French language."
+msgstr "Implicit este UTF-8, pentru CharSet european folosiți Windows-1252 de exemplu pentru limba franceză."
+
+#: 
+msgid "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example."
+msgstr "Pentru definirea datei în Data-Picker, implicit: aaaa-ll-zz, în franceză: zz / ll / aaaa de exemplu."
+
+#: 
+msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/m/Y for example."
+msgstr "Pentru definirea datei în Data-Picker, în mod implicit: Y-m-d, în franceză: d / m / Y de exemplu."
+
+#: 
+msgid "Comma Separated list of PersonIDs of people to notify when a new family or person is added"
+msgstr "Listă separată prin virgulă a PersonID-urilor de persoane care trebuie notificate când se adaugă o nouă familie sau persoană"
+
+#: 
+msgid "Allow unauthenticated reads of events from the external calendar API"
+msgstr "Permiteți citirile neautentificat ale evenimentelor din API-ul calendarului extern"
+
+#: 
+msgid "New Person Added"
+msgstr "Persoană nouă adăugată"
+
+#: 
+msgid "New Family Added"
+msgstr "Familie nouă adăugată"
+
+#: 
+msgid "Church Greeter"
+msgstr "Salut biserică"
+
+#: 
+msgid "External Calendar API is disabled"
+msgstr "Api calendar dezactivat"
+
+#: 
+msgid "Special Group Settings : Sunday School Type"
+msgstr "Setări speciale de grup: tipul școlii duminicale"
+
+#: 
+msgid "Sunday School group can't be modified, only in this two cases :"
+msgstr "Grupul Școlii duminicale nu poate fi modificat, doar în aceste două cazuri:"
+
+#: 
+msgid "You can create/delete sunday school group. "
+msgstr "Puteți crea / șterge grupul școlii de duminică."
+
+#: 
+msgid "Add new roles, but not modify or rename the Student and the Teacher roles."
+msgstr "Adăugați roluri noi, dar nu modificați sau redenumiți rolurile Student și Profesor."
+
+#: 
+msgid "E"
+msgstr "E"
+
+#: 
+msgid "Quick Search"
+msgstr "Căutare rapidă"
+
+#: 
+msgid "Search Addresses"
+msgstr "Caută adrese"
+
+#: 
+msgid "Maximum number of Families"
+msgstr "Număr maxim de familii"
+
+#: 
+msgid "Maximum number of Family H.O.H Names"
+msgstr "Numărul maxim de nume de familie H.O.H."
+
+#: 
+msgid "Maximum number of Groups"
+msgstr "Număr maxim de grupuri"
+
+#: 
+msgid "Maximum number of Deposits"
+msgstr "Numărul maxim de depozite"
+
+#: 
+msgid "Maximum number of Payments"
+msgstr "Numărul maxim de plăți"
+
+#: 
+msgid "Maximum number of Addresses"
+msgstr "Număr mare de adrese"
+
+#: 
+msgid "Show type of group:"
+msgstr "Arată tipul grupului:"
+
+#: 
+msgid "Add Students"
+msgstr "Adaugă studenți"
+
+#: 
+msgid "Edit this Class"
+msgstr "Editează clasa"
+
+#: 
+msgid "OK"
+msgstr "OK"
 
