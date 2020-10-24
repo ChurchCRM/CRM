@@ -6,7 +6,6 @@ namespace ChurchCRM\Dashboard;
 use ChurchCRM\dto\LocaleInfo;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Bootstrapper;
-use ChurchCRM\Utils\LoggerUtils;
 
 class CurrentLocaleMetadata implements DashboardItemInterface
 {
