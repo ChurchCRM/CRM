@@ -1,7 +1,6 @@
 <?php
 
 use ChurchCRM\dto\SystemConfig;
-use Monolog\Logger;
 
 require '../Include/Config.php';
 //require '../Include/Functions.php';

@@ -15,7 +15,6 @@ use Slim\Views\PhpRenderer;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Slim\Middleware\VersionMiddleware;
 use ChurchCRM\dto\SystemConfig;
-use Monolog\Logger;
 
 // Instantiate the app
 $container = new Container;
