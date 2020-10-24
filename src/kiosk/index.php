@@ -6,12 +6,11 @@ require '../Include/Config.php';
 require_once dirname(__FILE__) . '/../vendor/autoload.php';
 
 use ChurchCRM\dto\SystemConfig;
-use Monolog\Logger;
 
 // Instantiate the app
 $app = new App();
 $container = $app->getContainer();
-if (SystemConfig::getValue("sLogLevel") == Logger::DEBUG) {
+if (SystemConfig::debugEnabled()) {
     $container["settings"]['displayErrorDetails'] = true;
 }
 
