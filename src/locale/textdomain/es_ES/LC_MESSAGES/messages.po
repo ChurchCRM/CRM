@@ -9521,3 +9521,23 @@ msgstr "Desasignación de Propiedad de Familia"
 msgid "Do you want to remove"
 msgstr "Desea remover?"
 
+#: 
+msgid "View Active Persons"
+msgstr "Ver personas activas"
+
+#: 
+msgid "View Inactive Persons"
+msgstr "Ver personas inactivas"
+
+#: 
+msgid "Today's Birthdays"
+msgstr "Cumpleaños de hoy"
+
+#: 
+msgid "Today's Wedding Anniversaries"
+msgstr "Aniversarios de bodas de hoy"
+
+#: 
+msgid "Enable New Dashboard"
+msgstr "Activar Nuevo Dashboard"
+

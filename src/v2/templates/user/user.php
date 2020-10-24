@@ -9,24 +9,12 @@ $sPageTitle = gettext("User") . " - " . $user->getFullName();
 include SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
 <div class="row">
-    <div class="col-lg-4">
+    <div class="col-lg-6">
         <div class="box">
             <div class="box-header">
-                <h4>Api Key</h4>
-            </div>
-            <div class="box-body">
-                <form>
-                    <input id="apiKey" class="form-control" type="text" readonly value="<?= $user->getApiKey() ?>"/>
-                </form>
-                <br/>
-                <p/>
-                <a id="regenApiKey" class="btn btn-warning"><i class="fa fa-repeat"></i> Regen API Key </a>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-3">
-        <div class="box">
-            <div class="box-header">
+                <div class="pull-right">
+                    <a href="<?= SystemURLs::getRootPath() ?>/SettingsIndividual.php" class="btn btn-primary"><i class="fa fa-pencil-square-o"></i> <?= _("Edit") ?> </a>
+                </div>
                 <h4><?= _("Login Info") ?></h4>
             </div>
             <div class="box-body">
@@ -34,9 +22,20 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <li><b><?= gettext("Login Count") ?>:</b> <?= $user->getLoginCount() ?></li>
                 <li><b><?= gettext("Failed Login") ?>:</b> <?= $user->getFailedLogins() ?></li>
             </div>
+            <div class="box-header">
+                <h4><?= _("Api Key") ?></h4>
+            </div>
+            <div class="box-body">
+                <form>
+                    <input id="apiKey" class="form-control" type="text" readonly value="<?= $user->getApiKey() ?>"/>
+                </form>
+                <br/>
+                <p/>
+                <a id="regenApiKey" class="btn btn-warning"><i class="fa fa-repeat"></i> <?= _("Regen API Key")?> </a>
+            </div>
         </div>
     </div>
-    <div class="col-lg-4">
+    <div class="col-lg-6">
         <div class="box">
             <div class="box-header">
                 <h4><?= _("Permissions") ?></h4>
@@ -56,7 +55,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
     </div>
 </div>
 <div class="row">
-    <div class="col-lg-4">
+    <div class="col-lg-6">
         <div class="box">
             <div class="box-header">
                 <h4><?= _("Skins") ?></h4>
