@@ -17,7 +17,7 @@ $container = new Container;
 $container['cache'] = function () {
     return new CacheProvider();
 };
-if (SystemConfig::getValue("sLogLevel") == Logger::DEBUG) {
+if (SystemConfig::debugEnabled()) {
     $container["settings"]['displayErrorDetails'] = true;
 }
 

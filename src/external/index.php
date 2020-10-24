@@ -12,7 +12,7 @@ require_once dirname(__FILE__) . '/../vendor/autoload.php';
 // Instantiate the app
 $app = new \Slim\App();
 $container = $app->getContainer();
-if (SystemConfig::getValue("sLogLevel") == Logger::DEBUG) {
+if (SystemConfig::debugEnabled()) {
     $container["settings"]['displayErrorDetails'] = true;
 }
 

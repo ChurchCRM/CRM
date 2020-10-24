@@ -11,7 +11,7 @@ use Monolog\Logger;
 // Instantiate the app
 $app = new App();
 $container = $app->getContainer();
-if (SystemConfig::getValue("sLogLevel") == Logger::DEBUG) {
+if (SystemConfig::debugEnabled()) {
     $container["settings"]['displayErrorDetails'] = true;
 }
 

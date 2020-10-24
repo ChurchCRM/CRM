@@ -19,7 +19,7 @@ use Monolog\Logger;
 
 // Instantiate the app
 $container = new Container;
-if (SystemConfig::getValue("sLogLevel") == Logger::DEBUG) {
+if (SystemConfig::debugEnabled()) {
     $container["settings"]['displayErrorDetails'] = true;
 }
 // Add middleware to the application

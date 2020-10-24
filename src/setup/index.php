@@ -19,7 +19,7 @@ if (file_exists('../Include/Config.php')) {
 
     $app = new \Slim\App();
     $container = $app->getContainer();
-    if (SystemConfig::getValue("sLogLevel") == Logger::DEBUG) {
+    if (SystemConfig::debugEnabled()) {
         $container["settings"]['displayErrorDetails'] = true;
     }
 
