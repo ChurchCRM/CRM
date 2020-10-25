@@ -1,17 +1,11 @@
 <?php
-/*******************************************************************************
- *
- *  filename    : Include/Header-Short.php
- *  last change : 2003-05-29
- *  description : page header (simplified version with no menubar)
- *
- *  http://www.churchcrm.io/
- *  Copyright 2001-2002 Phillip Hullquist, Deane Barker
-  *
- ******************************************************************************/
+
+use ChurchCRM\dto\SystemConfig;
 
 require_once 'Header-function.php';
-require_once 'Header-Security.php';
+if (SystemConfig::debugEnabled()) {
+    require_once 'Header-Security.php';
+}
 
 // Turn ON output buffering
 ob_start();
