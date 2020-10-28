@@ -1,5 +1,26 @@
 # 4.2.1
-:construction_worker: Work in progress
+Released on (10.28.2020)
+
+## :star: Enhancements
+
+- User Menu: Change Settings updated [#5471](https://github.com/ChurchCRM/CRM/pull/5471)
+
+## :speech_balloon: Localization
+
+- Locale/2.4.1v1 [#5467](https://github.com/ChurchCRM/CRM/pull/5467)
+- 4.2.1: Locale Update [#5466](https://github.com/ChurchCRM/CRM/issues/5466)
+- Locale % broken post 4.2.0 upgrade [#5463](https://github.com/ChurchCRM/CRM/issues/5463)
+
+## :gear: Inner Beauty
+
+- Log CSP Error/Events only if the system is in debug mode [#5473](https://github.com/ChurchCRM/CRM/pull/5473)
+- Removed initial-js as it was not used [#5470](https://github.com/ChurchCRM/CRM/pull/5470)
+
+## :heart: Contributors
+
+We'd like to thank all the contributors who worked on this release!
+
+- [@DawoudIO](https://github.com/DawoudIO)
 
 # 4.2.0
 Released on (10.19.2020)
