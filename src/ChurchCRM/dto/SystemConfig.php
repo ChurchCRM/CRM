@@ -3,8 +3,8 @@
 namespace ChurchCRM\dto;
 
 use ChurchCRM\Config;
-use ChurchCRM\dto\ConfigItem;
 use ChurchCRM\data\Countries;
+use Monolog\Logger;
 
 class SystemConfig
 {
@@ -30,14 +30,14 @@ class SystemConfig
     {
         return [
             "Choices" => [
-                gettext("DEBUG").":100",
-                gettext("INFO").":200",
-                gettext("NOTICE").":250",
-                gettext("WARNING").":300",
-                gettext("ERROR").":400",
-                gettext("CRITICAL").":500",
-                gettext("ALERT").":550",
-                gettext("EMERGENCY").":600"
+                gettext("DEBUG").":".Logger::DEBUG,
+                gettext("INFO").":".Logger::INFO,
+                gettext("NOTICE").":".Logger::NOTICE,
+                gettext("WARNING").":".Logger::WARNING,
+                gettext("ERROR").":".Logger::ERROR,
+                gettext("CRITICAL").":".Logger::CRITICAL,
+                gettext("ALERT").":".Logger::ALERT,
+                gettext("EMERGENCY").":".Logger::EMERGENCY
             ]
         ];
     }
@@ -391,4 +391,11 @@ class SystemConfig
        return (!empty(self::getValue("sOLPURL")));
     }
 
+
+    public static function debugEnabled() {
+        if (self::getValue("sLogLevel") == Logger::DEBUG) {
+            return true;
+        }
+        return false;
+    }
 }
