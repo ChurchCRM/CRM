@@ -269,14 +269,13 @@
             "/mysql/upgrade/4.2.0-perms.sql"
         ],
         "dbVersion": "4.2.0"
-    }, 
+    },
     "current": {
         "versions": [
-            "4.2.0"
+            "4.2.0",
+            "4.2.1"
         ],
-        "scripts": [
-
-        ],
-        "dbVersion": "4.2.1"
+        "scripts": [],
+        "dbVersion": "4.2.2"
     }
 }
