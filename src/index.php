@@ -1,5 +1,9 @@
 <?php
 
+if (version_compare(phpversion(), "7.2.0", "<")) {
+    header("Location: php-error.html");
+}
+
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\MiscUtils;
@@ -24,7 +28,7 @@ $fileName = MiscUtils::dashesToCamelCase($shortName, true).'.php';
 
 // First, ensure that the user is authenticated.
 AuthenticationManager::EnsureAuthentication();
- 
+
 if (strtolower($shortName) == 'index.php' || strtolower($fileName) == 'index.php') {
     // Index.php -> Menu.php
     header('Location: '.SystemURLs::getRootPath()."/Menu.php");
