@@ -1,21 +1,10 @@
 <?php
-/*******************************************************************************
- *
- *  filename    : Include/Header.php
- *  website     : http://www.churchcrm.io
- *  description : page header used for most pages
- *
- *  Copyright 2001-2004 Phillip Hullquist, Deane Barker, Chris Gebhardt, Michael Wilt
- *  Copyright 2017 Philippe Logel
- ******************************************************************************/
 
-use ChurchCRM\Service\SystemService;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\view\MenuRenderer;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\Cart;
 use ChurchCRM\Service\TaskService;
-use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Authentication\AuthenticationProviders\LocalAuthentication;
 
@@ -26,7 +15,9 @@ $taskService = new TaskService();
 ob_start();
 
 require_once 'Header-function.php';
-require_once 'Header-Security.php';
+if (SystemConfig::debugEnabled()) {
+    require_once 'Header-Security.php';
+}
 
 // Top level menu index counter
 $MenuFirst = 1;

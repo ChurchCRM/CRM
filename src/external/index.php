@@ -1,7 +1,6 @@
 <?php
 
 use ChurchCRM\dto\SystemConfig;
-use Monolog\Logger;
 
 require '../Include/Config.php';
 //require '../Include/Functions.php';
@@ -12,7 +11,7 @@ require_once dirname(__FILE__) . '/../vendor/autoload.php';
 // Instantiate the app
 $app = new \Slim\App();
 $container = $app->getContainer();
-if (SystemConfig::getValue("sLogLevel") == Logger::DEBUG) {
+if (SystemConfig::debugEnabled()) {
     $container["settings"]['displayErrorDetails'] = true;
 }
 
