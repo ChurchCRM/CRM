@@ -1,3 +1,89 @@
+# 4.2.1
+Released on (10.28.2020)
+
+## :star: Enhancements
+
+- User Menu: Change Settings updated [#5471](https://github.com/ChurchCRM/CRM/pull/5471)
+
+## :speech_balloon: Localization
+
+- Locale/2.4.1v1 [#5467](https://github.com/ChurchCRM/CRM/pull/5467)
+- 4.2.1: Locale Update [#5466](https://github.com/ChurchCRM/CRM/issues/5466)
+- Locale % broken post 4.2.0 upgrade [#5463](https://github.com/ChurchCRM/CRM/issues/5463)
+
+## :gear: Inner Beauty
+
+- Log CSP Error/Events only if the system is in debug mode [#5473](https://github.com/ChurchCRM/CRM/pull/5473)
+- Removed initial-js as it was not used [#5470](https://github.com/ChurchCRM/CRM/pull/5470)
+
+## :heart: Contributors
+
+We'd like to thank all the contributors who worked on this release!
+
+- [@DawoudIO](https://github.com/DawoudIO)
+
+# 4.2.0
+Released on (10.19.2020)
+
+## :exclamation: Support Alert
+> We are no longer testing with PHP 7.2; [End of life in Nov 2020](https://www.php.net/supported-versions.php)
+
+## :star: Enhancements
+
+- New: /v2/dashbaord page [#5446](https://github.com/ChurchCRM/CRM/pull/5446)
+- Feature/enable v2 dashboard via settings [#5459](https://github.com/ChurchCRM/CRM/pull/5459)
+- API reduction / speed  [#5447](https://github.com/ChurchCRM/CRM/pull/5447)
+- Created new APIs for use on Main Dashbaord [#5443](https://github.com/ChurchCRM/CRM/pull/5443)
+- Export to CVS does not include family/person ids [#5404](https://github.com/ChurchCRM/CRM/issues/5404)
+- Active/Inactive Persons [#5088](https://github.com/ChurchCRM/CRM/issues/5088)
+- Application Prerequisites: PHP 7.3+  [#5424](https://github.com/ChurchCRM/CRM/pull/5424)
+- Add PHP 7.4 for Travis Testing [#5426](https://github.com/ChurchCRM/CRM/pull/5426)
+
+
+## :speech_balloon: Localization
+
+- 4.2.0 Update locale from POEditor [#5398](https://github.com/ChurchCRM/CRM/issues/5398)
+
+## :beetle: Bugs
+
+- Bug/list active people links [#5454](https://github.com/ChurchCRM/CRM/pull/5454)
+- Fix $_SESSION["user"] usage [#5418](https://github.com/ChurchCRM/CRM/pull/5418)
+- Error with Person view for non-admin [#5417](https://github.com/ChurchCRM/CRM/issues/5417)
+- 4.2.0 POEditor Update - 2020-10-14 [#5416](https://github.com/ChurchCRM/CRM/pull/5416)
+- User Setup tab case issue [#5415](https://github.com/ChurchCRM/CRM/issues/5415)
+- fix JS error #5412 [#5414](https://github.com/ChurchCRM/CRM/pull/5414)
+- JS error on Family View [#5412](https://github.com/ChurchCRM/CRM/issues/5412)
+- MailChimp: 412 (Precondition Failed) [#5411](https://github.com/ChurchCRM/CRM/issues/5411)
+- replaced broken chat JS with new version [#5410](https://github.com/ChurchCRM/CRM/pull/5410)
+- Deposit Tracking - Chart broken [#5408](https://github.com/ChurchCRM/CRM/issues/5408)
+- 404 - pdfmake.min.js.map [#5432](https://github.com/ChurchCRM/CRM/issues/5432)
+
+## :gear: Inner Beauty
+
+
+- Github Action: update & audit npm and composer  [#5401](https://github.com/ChurchCRM/CRM/issues/5401)
+- Github Action: Automate POEditor file download [#5400](https://github.com/ChurchCRM/CRM/issues/5400)
+- Github Action: Generate Release notes from milesone [#5399](https://github.com/ChurchCRM/CRM/issues/5399)
+- Build: PHP composer lib updates [#5451](https://github.com/ChurchCRM/CRM/pull/5451)
+- Upgrade of Travis CI Build/Test Env [#5449](https://github.com/ChurchCRM/CRM/pull/5449)
+- Fix SLIM displayErrorDetails setting [#5444](https://github.com/ChurchCRM/CRM/pull/5444)
+- Remove PHP 7.2 support  [#5403](https://github.com/ChurchCRM/CRM/issues/5403)
+- 4.2.0 Upgrade JS and PHP libs to latest minor/patch [#5402](https://github.com/ChurchCRM/CRM/issues/5402)
+- CHANGELOG.md is out of date [#5395](https://github.com/ChurchCRM/CRM/issues/5395)
+- Create Release Notes via Actions [#5389](https://github.com/ChurchCRM/CRM/pull/5389)
+- Build Updates [#5382](https://github.com/ChurchCRM/CRM/pull/5382)
+- Action to Automate POEditor Update and Download [#5370](https://github.com/ChurchCRM/CRM/pull/5370)
+- Test support for PHP 7.4 [#5334](https://github.com/ChurchCRM/CRM/issues/5334)
+
+## :heart: Contributors
+
+We'd like to thank all the contributors who worked on this release!
+
+- [@DawoudIO](https://github.com/DawoudIO)
+- [@crossan007](https://github.com/crossan007)
+- [@MrClever](https://github.com/MrClever) 
+- [POEditor.com Localization Team](https://poeditor.com/contributors/?id_project=77079)
+
 # 4.1.4
 Released on (10.10.2020)
 

@@ -1,15 +1,9 @@
 <?php
-/*******************************************************************************
- *
- *  filename    : Include/Header-Minimal.php
- *  last change : 2003-05-29
- *  description : page header (Bare minimum, not for use with Footer.php)
- *
- *  http://www.churchcrm.io/
- *  Copyright 2003 Chris Gebhardt
-  *
- ******************************************************************************/
-require_once 'Header-Security.php';
+use ChurchCRM\dto\SystemConfig;
+
+if (SystemConfig::debugEnabled()) {
+    require_once 'Header-Security.php';
+}
 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">

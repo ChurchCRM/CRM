@@ -2364,5 +2364,9 @@
     " has a type mismatch": " har en typavvikelse",
     "Loading": "Läser in",
     "Family Property Unassignment": "Familjeegendom av-tilldelning",
-    "Do you want to remove": "Vill du ta bort"
+    "Do you want to remove": "Vill du ta bort",
+    "View Active Persons": "Visa aktiva personer",
+    "View Inactive Persons": "Visa inaktiva personer",
+    "Today's Birthdays": "Dagens födelsedagar",
+    "Today's Wedding Anniversaries": "Dagens bröllopsdagar"
 }

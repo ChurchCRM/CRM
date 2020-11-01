@@ -1,5 +1,9 @@
 <?php
 
+if (version_compare(phpversion(), "7.2.0", "<")) {
+    header("Location: php-error.html");
+}
+
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\MiscUtils;
@@ -22,9 +26,13 @@ mb_internal_encoding("UTF-8");
 $shortName = str_replace(SystemURLs::getRootPath().'/', '', $_SERVER['REQUEST_URI']);
 $fileName = MiscUtils::dashesToCamelCase($shortName, true).'.php';
 
+if (!empty($_GET["location"])) {
+    $_SESSION['location'] = $_GET["location"];
+}
+
 // First, ensure that the user is authenticated.
 AuthenticationManager::EnsureAuthentication();
- 
+
 if (strtolower($shortName) == 'index.php' || strtolower($fileName) == 'index.php') {
     // Index.php -> Menu.php
     header('Location: '.SystemURLs::getRootPath()."/Menu.php");

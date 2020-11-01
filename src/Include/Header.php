@@ -1,21 +1,10 @@
 <?php
-/*******************************************************************************
- *
- *  filename    : Include/Header.php
- *  website     : http://www.churchcrm.io
- *  description : page header used for most pages
- *
- *  Copyright 2001-2004 Phillip Hullquist, Deane Barker, Chris Gebhardt, Michael Wilt
- *  Copyright 2017 Philippe Logel
- ******************************************************************************/
 
-use ChurchCRM\Service\SystemService;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\view\MenuRenderer;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\Cart;
 use ChurchCRM\Service\TaskService;
-use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Authentication\AuthenticationProviders\LocalAuthentication;
 
@@ -26,7 +15,9 @@ $taskService = new TaskService();
 ob_start();
 
 require_once 'Header-function.php';
-require_once 'Header-Security.php';
+if (SystemConfig::debugEnabled()) {
+    require_once 'Header-Security.php';
+}
 
 // Top level menu index counter
 $MenuFirst = 1;
@@ -128,7 +119,7 @@ $MenuFirst = 1;
                       <p ><i class="fa fa-home"></i> <?= gettext("Profile") ?></p></a>
                   <a href="<?= SystemURLs::getRootPath() ?>/v2/user/current/changepassword" class="item_link" id="change-password">
                       <p ><i class="fa fa-key"></i> <?= gettext('Change Password') ?></p></a>
-                  <a href="<?= SystemURLs::getRootPath() ?>/SettingsIndividual.php" class="item_link">
+                  <a href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= AuthenticationManager::GetCurrentUser()->getPersonId() ?>" class="item_link">
                       <p ><i class="fa fa-gear"></i> <?= gettext('Change Settings') ?></p></a>
                   <?php
                     if (LocalAuthentication::GetIsTwoFactorAuthSupported()) {

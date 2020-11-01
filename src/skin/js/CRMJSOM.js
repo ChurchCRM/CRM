@@ -551,7 +551,7 @@
           PageLocale: function (data) {
               $(".flag-icon").addClass("flag-icon-" + data.countryFlagCode);
               $("#translationInfo").html(data.name + " [" + window.CRM.locale + "]");
-              if (data.countryFlagCode != "us") {
+              if (data.displayPerCompleted) {
                   $("#translationPer").html(data.poPerComplete + "%");
                   $("#localePer").removeClass("hidden");
               }

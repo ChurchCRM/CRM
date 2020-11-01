@@ -9620,3 +9620,19 @@ msgstr "Familjeegendom av-tilldelning"
 msgid "Do you want to remove"
 msgstr "Vill du ta bort"
 
+#: 
+msgid "View Active Persons"
+msgstr "Visa aktiva personer"
+
+#: 
+msgid "View Inactive Persons"
+msgstr "Visa inaktiva personer"
+
+#: 
+msgid "Today's Birthdays"
+msgstr "Dagens födelsedagar"
+
+#: 
+msgid "Today's Wedding Anniversaries"
+msgstr "Dagens bröllopsdagar"
+

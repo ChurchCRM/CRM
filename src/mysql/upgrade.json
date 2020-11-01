@@ -256,7 +256,7 @@
         ],
         "dbVersion": "4.1.0"
     },
-    "current": {
+    "pre-4.2.0": {
         "versions": [
             "4.1.0",
             "4.1.1",
@@ -269,5 +269,13 @@
             "/mysql/upgrade/4.2.0-perms.sql"
         ],
         "dbVersion": "4.2.0"
+    },
+    "current": {
+        "versions": [
+            "4.2.0",
+            "4.2.1"
+        ],
+        "scripts": [],
+        "dbVersion": "4.2.2"
     }
 }
