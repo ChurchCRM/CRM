@@ -1,12 +1,9 @@
 /// <reference types="cypress" />
 
-context('People Admin', () => {
-    beforeEach(() => {
-        cy.loginAdmin();
-    });
+context('Admin People', () => {
 
     it('Update Lat & Long ', () => {
-        cy.visit('/UpdateAllLatLon.php');
+        cy.loginAdmin('UpdateAllLatLon.php');
         cy.contains("Update Latitude & Longitude");
     });
 });

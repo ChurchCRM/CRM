@@ -2,9 +2,7 @@
 
 context('Admin Settings', () => {
     before(() => {
-        cy.loginAdmin();
-        cy.visit("SystemSettings.php");
-        cy.location('pathname').should('include', "/SystemSettings.php");
+        cy.loginAdmin("SystemSettings.php");
     })
 
     it('View system settings', () => {
