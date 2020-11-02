@@ -1,14 +1,10 @@
 /// <reference types="cypress" />
 
-context('Calendar', () => {
-    beforeEach(() => {
-        cy.loginStandard();
-    });
-
+context('Standard Calendar', () => {
 
     it('Create New Event', () => {
         let title = "My New Event - " + Cypress._.random(0, 1e6);
-        cy.visit("v2/calendar");
+        cy.loginStandard("v2/calendar");
         cy.get('.fc-row:nth-child(1) > .fc-content-skeleton .fc-thu').click();
         cy.get('.modal-header > input').click();
         cy.get('.modal-header > input').type(title);
