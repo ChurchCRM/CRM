@@ -1,13 +1,10 @@
 /// <reference types="cypress" />
 
-context('Groups', () => {
-    beforeEach(() => {
-        cy.loginStandard();
-    });
+context('Standard Groups', () => {
 
     it('Group Report', () => {
 
-        cy.visit('GroupReports.php');
+        cy.loginStandard('GroupReports.php');
         cy.contains("Group reports");
         cy.contains("Select the group you would like to report")
         cy.get('.box-body > form').submit();
