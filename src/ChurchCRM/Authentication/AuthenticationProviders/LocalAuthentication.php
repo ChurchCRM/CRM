@@ -12,6 +12,7 @@ namespace ChurchCRM\Authentication\AuthenticationProviders {
   use ChurchCRM\Authentication\Requests\LocalUsernamePasswordRequest;
   use ChurchCRM\dto\SystemURLs;
   use ChurchCRM\UserQuery;
+  use ChurchCRM\Emails\LockedEmail;
   use DateTime;
   use DateTimeZone;
   use ChurchCRM\Utils\LoggerUtils;
@@ -22,7 +23,7 @@ namespace ChurchCRM\Authentication\AuthenticationProviders {
 
 class LocalAuthentication implements IAuthenticationProvider
 {
-    /*** 
+    /***
      * @var ChurchCRM\User
      */
     private $currentUser;
@@ -59,7 +60,7 @@ class LocalAuthentication implements IAuthenticationProvider
     }
 
     public function EndSession() {
-      
+
       if (!empty($this->currentUser)) {
           if (!isset($_SESSION['sshowPledges']) || ($_SESSION['sshowPledges'] == '')) {
               $_SESSION['sshowPledges'] = 0;
@@ -67,13 +68,13 @@ class LocalAuthentication implements IAuthenticationProvider
           if (!isset($_SESSION['sshowPayments']) || ($_SESSION['sshowPayments'] == '')) {
               $_SESSION['sshowPayments'] = 0;
           }
-      
+
           if (!empty($this->currentUser)) {
               $this->currentUser->setShowPledges($_SESSION['sshowPledges']);
               $this->currentUser->setShowPayments($_SESSION['sshowPayments']);
               //$this->currentUser->setDefaultFY($_SESSION['idefaultFY']);
               $this->currentUser->setCurrentDeposit($_SESSION['iCurrentDeposit']);
-      
+
               $this->currentUser->save();
           }
           $this->currentUser = null;
@@ -148,8 +149,8 @@ class LocalAuthentication implements IAuthenticationProvider
           LoggerUtils::getAuthLogger()->addWarning("Invalid login attempt for: " . $this->currentUser->getUserName());
           return $authenticationResult;
         } elseif(SystemConfig::getBooleanValue("bEnable2FA") && $this->currentUser->is2FactorAuthEnabled()) {
-          // Only redirect the user to the 2FA sign-ing page if it's 
-          // enabled both at system AND user level. 
+          // Only redirect the user to the 2FA sign-ing page if it's
+          // enabled both at system AND user level.
           $authenticationResult->isAuthenticated = false;
           $authenticationResult->nextStepURL = SystemURLs::getRootPath()."/session/two-factor";
           $this->bPendingTwoFactorAuth = true;
@@ -234,7 +235,7 @@ class LocalAuthentication implements IAuthenticationProvider
         $authenticationResult->nextStepURL = $this->GetPasswordChangeURL();
       }
 
-      
+
       // Finally, if the above tests pass, this user "is authenticated"
       $authenticationResult->isAuthenticated = true;
       LoggerUtils::getAuthLogger()->addDebug("Session validated for user: " . $this->currentUser->getName());
