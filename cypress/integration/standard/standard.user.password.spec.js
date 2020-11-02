@@ -1,12 +1,9 @@
 /// <reference types="cypress" />
 
-context('User Password', () => {
-    beforeEach(() => {
-        cy.loginStandard();
-    });
+context('Standard User Password', () => {
 
     it('Change with invalid password', () => {
-        cy.visit('/v2/user/current/changepassword');
+        cy.loginStandard('v2/user/current/changepassword');
         cy.get('#OldPassword').type('ILikePancakes');
         cy.get('#NewPassword1').type('changeyou');
         cy.get('#NewPassword2').type('changeyou');
@@ -16,7 +13,7 @@ context('User Password', () => {
     });
 
     it('Change with simple password', () => {
-        cy.visit('/v2/user/current/changepassword');
+        cy.loginStandard('v2/user/current/changepassword');
         cy.get('#OldPassword').type('abc123');
         cy.get('#NewPassword1').type('password');
         cy.get('#NewPassword2').type('password');
@@ -27,7 +24,7 @@ context('User Password', () => {
 
 
     it('Change with old password', () => {
-        cy.visit('/v2/user/current/changepassword');
+        cy.loginStandard('v2/user/current/changepassword');
         cy.get('#OldPassword').type('abc123');
         cy.get('#NewPassword1').type('abc123');
         cy.get('#NewPassword2').type('abc123');
@@ -37,7 +34,7 @@ context('User Password', () => {
     });
 
     it('Change with like old password', () => {
-        cy.visit('/v2/user/current/changepassword');
+        cy.loginStandard('v2/user/current/changepassword');
         cy.get('#OldPassword').type('abc123');
         cy.get('#NewPassword1').type('abc1234');
         cy.get('#NewPassword2').type('abc1234');
@@ -47,13 +44,15 @@ context('User Password', () => {
     });
 
     it('Change then back', () => {
-        cy.visit('/v2/user/current/changepassword');
+        cy.loginStandard('v2/user/current/changepassword');
         cy.get('#OldPassword').type('abc123');
         cy.get('#NewPassword1').type('SomeThingsAreBetterLeftUnChangedJustKidding');
         cy.get('#NewPassword2').type('SomeThingsAreBetterLeftUnChangedJustKidding');
         cy.get('#passwordChangeForm').submit();
         cy.url().should('contains', '/v2/user/current/changepassword');
         cy.contains("Password Change Successful")
+
+        cy.url().should('contains', '/v2/user/current/changepassword');
         cy.get('#OldPassword').type('SomeThingsAreBetterLeftUnChangedJustKidding');
         cy.get('#NewPassword1').type('abc123');
         cy.get('#NewPassword2').type('abc123');
