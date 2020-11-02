@@ -10,21 +10,21 @@
 
 
 // -- This is a login command --
-Cypress.Commands.add("loginAdmin", (location) => {
-    cy.login("admin", "changeme", location);
+Cypress.Commands.add("loginAdmin", (location, checkMatchingLocation = true) => {
+    cy.login("admin", "changeme", location, checkMatchingLocation);
 });
 
-Cypress.Commands.add("loginStandard", (location) => {
-    cy.login("tony.wade@example.com", "abc123", location);
+Cypress.Commands.add("loginStandard", (location, checkMatchingLocation = true) => {
+    cy.login("tony.wade@example.com", "abc123", location, checkMatchingLocation);
 });
 
-Cypress.Commands.add("login", (username, password, location) => {
+Cypress.Commands.add("login", (username, password, location, checkMatchingLocation = true) => {
     cy.visit("/?location=/" + location);
     cy.wait(150);
     cy.get("#UserBox").type(username);
     cy.get("#PasswordBox").type(password);
     cy.get("form").submit();
-    if (location) {
+    if (location && checkMatchingLocation) {
         cy.location('pathname').should('include', location);
     }
 });
