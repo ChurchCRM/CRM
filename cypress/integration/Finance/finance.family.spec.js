@@ -1,12 +1,9 @@
 /// <reference types="cypress" />
 
-context('Family', () => {
-    beforeEach(() => {
-        cy.loginAdmin();
-    })
+context('Finance Family', () => {
 
     it('View a Family', () => {
-        cy.visit("v2/family/1");
+        cy.loginAdmin("v2/family/1");
         cy.contains('Campbell - Family');
         cy.contains('Darren Campbell');
         cy.contains('Music Ministry');
