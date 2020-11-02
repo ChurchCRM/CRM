@@ -1,43 +1,44 @@
 /// <reference types="cypress" />
 
-context('Family', () => {
-    beforeEach(() => {
-        cy.loginStandard();
-    })
+context('Standard Family', () => {
 
-    it('View Family List', () => {
-        cy.visit("v2/family");
+
+    it('View Family Lists', () => {
+        cy.loginStandard("v2/family");
         cy.contains('Active Family List');
-    });
 
-    it('View Inactive Family List', () => {
         cy.visit("v2/family?mode=inactive");
         cy.contains('Inactive Family List');
         cy.contains('Lewis').should('not.exist');
+
         cy.visit("v2/family/3");
         cy.contains('This Family is Deactivated').should('not.be.visible');
         cy.get("#activateDeactivate").click();
         cy.get("body > div.bootbox.modal.fade.bootbox-confirm.in > div > div > div.modal-footer > button.btn.btn-primary.bootbox-accept").click();
         cy.wait(2000);
+
         cy.visit("v2/family?mode=inactive");
         cy.contains('Lewis');
+
         cy.visit("v2/family/3");
         cy.contains('This Family is Deactivated').should('be.visible');
         cy.get("#activateDeactivate").click();
         cy.get("body > div.bootbox.modal.fade.bootbox-confirm.in > div > div > div.modal-footer > button.btn.btn-primary.bootbox-accept").click();
         cy.wait(2000);
+
         cy.visit("v2/family?mode=inactive");
         cy.contains('Lewis').should('not.exist');
     });
 
 
     it('View invalid Family', () => {
-        cy.visit("v2/family/9999");
+        cy.loginStandard("v2/family/9999", false);
+        cy.location('pathname').should('include', "family/not-found");
         cy.contains('Oops! FAMILY 9999 Not Found');
     });
 
     it('Entering a new Family', () => {
-        cy.visit("FamilyEditor.php");
+        cy.loginStandard("FamilyEditor.php");
         cy.contains('Family Info');
         cy.get('#FamilyName').type("Troy" + Cypress._.random(0, 1e6));
         cy.get('input[name="Address1"').type("4222 Clinton Way");
