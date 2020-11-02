@@ -1,12 +1,9 @@
 /// <reference types="cypress" />
 
-context('People', () => {
-    beforeEach(() => {
-        cy.loginStandard();
-    })
+context('Standard People', () => {
 
     it('Open the People Dashboard', () => {
-        cy.visit("PeopleDashboard.php");
+        cy.loginStandard("PeopleDashboard.php");
         cy.contains('People Dashboard');
         cy.contains('People Functions');
         cy.contains('Reports');
@@ -16,7 +13,7 @@ context('People', () => {
     });
 
     it('Listing all persons', () => {
-        cy.visit("v2/people");
+        cy.loginStandard("v2/people");
         cy.contains('Admin');
         cy.contains('Church');
         cy.contains('Joel');
@@ -24,7 +21,7 @@ context('People', () => {
     });
 
     it('Listing all persons with gender filter', () => {
-        cy.visit("v2/people?Gender=0");
+        cy.loginStandard("v2/people?Gender=0", false);
         cy.contains('Admin');
         cy.contains('Church');
         cy.contains('Kennedy');
@@ -33,7 +30,8 @@ context('People', () => {
     });
 
     it('Person Not Found', () => {
-        cy.visit("PersonView.php?PersonID=9999");
+        cy.loginStandard("PersonView.php?PersonID=9999", false);
+        cy.location('pathname').should('include', "person/not-found");
         cy.contains('Oops! PERSON 9999 Not Found');
     });
 
