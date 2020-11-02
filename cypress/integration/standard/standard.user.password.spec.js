@@ -52,7 +52,8 @@ context('Standard User Password', () => {
         cy.url().should('contains', '/v2/user/current/changepassword');
         cy.contains("Password Change Successful")
 
-        cy.visit('v2/user/current/changepassword');
+        cy.visit("/session/end");
+        cy.login("tony.wade@example.com", "SomeThingsAreBetterLeftUnChangedJustKidding", "v2/user/current/changepassword");
         cy.get('#OldPassword').type('SomeThingsAreBetterLeftUnChangedJustKidding');
         cy.get('#NewPassword1').type('abc123');
         cy.get('#NewPassword2').type('abc123');
