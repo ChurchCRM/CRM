@@ -36,7 +36,7 @@
         "drewm/mailchimp-api": "^2.5.4",
         "slim/slim": "3.12.3",
         "slim/php-view": "2.2.1",
-        "monolog/monolog": "^1.25.5",
+        "monolog/monolog": "^2.1",
         "knplabs/github-api": "1.7.1",
         "propel/propel": "~2.0@dev",
         "setasign/fpdf": "1.8.1",
