@@ -2368,5 +2368,8 @@
     "View Active Persons": "Visa aktiva personer",
     "View Inactive Persons": "Visa inaktiva personer",
     "Today's Birthdays": "Dagens födelsedagar",
-    "Today's Wedding Anniversaries": "Dagens bröllopsdagar"
+    "Today's Wedding Anniversaries": "Dagens bröllopsdagar",
+    "Enable New Dashboard": "Aktivera ny instrumentpanel",
+    "Api Key": "Api Nyckel",
+    "Regen API Key": "Regen API-nyckel"
 }

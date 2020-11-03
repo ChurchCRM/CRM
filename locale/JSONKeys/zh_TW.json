@@ -2367,5 +2367,7 @@
     "View Inactive Persons": "查看不活躍的人",
     "Today's Birthdays": "今天生日",
     "Today's Wedding Anniversaries": "今天結婚週年紀念日",
-    "Enable New Dashboard": "啟用新儀錶盤"
+    "Enable New Dashboard": "啟用新儀錶盤",
+    "Api Key": "API金鑰",
+    "Regen API Key": "再生API金鑰"
 }
