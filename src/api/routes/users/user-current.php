@@ -43,7 +43,7 @@ function refresh2fasecret(Request $request, Response $response, array $args)
 {
     $user = AuthenticationManager::GetCurrentUser();
     $secret = $user->provisionNew2FAKey();
-    LoggerUtils::getAuthLogger()->addInfo("Began 2FA enrollment for user: " . $user->getUserName());
+    LoggerUtils::getAuthLogger()->info("Began 2FA enrollment for user: " . $user->getUserName());
     return $response->withJson(["TwoFAQRCodeDataUri" => LocalAuthentication::GetTwoFactorQRCode($user->getUserName(),$secret)->writeDataUri()]);
 }
 
@@ -73,10 +73,10 @@ function test2FAEnrollmentCode(Request $request, Response $response, array $args
     $user = AuthenticationManager::GetCurrentUser();
     $result = $user->confirmProvisional2FACode($requestParsedBody->enrollmentCode);
     if ($result) {
-        LoggerUtils::getAuthLogger()->addInfo("Completed 2FA enrollment for user: " . $user->getUserName());
+        LoggerUtils::getAuthLogger()->info("Completed 2FA enrollment for user: " . $user->getUserName());
     }
     else {
-        LoggerUtils::getAuthLogger()->addNotice("Unsuccessful 2FA enrollment for user: " . $user->getUserName());
+        LoggerUtils::getAuthLogger()->notice("Unsuccessful 2FA enrollment for user: " . $user->getUserName());
     }
     return $response->withJson(["IsEnrollmentCodeValid" => $result]);
 }
