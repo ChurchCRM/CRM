@@ -41,7 +41,7 @@ class AuthenticationManager
         return $currentUser;
       }
       catch (\Exception $e){
-        LoggerUtils::getAppLogger()->addWarning("Failed to get current user: " . $e);
+        LoggerUtils::getAppLogger()->warning("Failed to get current user: " . $e);
         throw $e;
       }
     }
@@ -62,10 +62,10 @@ class AuthenticationManager
         $_SESSION = [];
         session_destroy();
         Bootstrapper::initSession();
-        LoggerUtils::getAuthLogger()->addInfo("Ended Local session for user " . $currentSessionUserName);
+        LoggerUtils::getAuthLogger()->info("Ended Local session for user " . $currentSessionUserName);
       }
       catch(\Exception $e) {
-        LoggerUtils::getAuthLogger()->addWarning("Error destroying session: " . $e);
+        LoggerUtils::getAuthLogger()->warning("Error destroying session: " . $e);
       }
       finally {
         if(!$preventRedirect) {
@@ -90,27 +90,27 @@ class AuthenticationManager
           }
           catch (\Exception $e)
           {
-            LoggerUtils::getAppLogger()->addWarning("Tried to supply two factor authentication code, but didn't have an existing session.  This shouldn't ever happen");
+            LoggerUtils::getAppLogger()->warning("Tried to supply two factor authentication code, but didn't have an existing session.  This shouldn't ever happen");
           }
         break;
         default:
-          LoggerUtils::getAppLogger()->addCritical("Unknown AuthenticationRequest type supplied");
+          LoggerUtils::getAppLogger()->critical("Unknown AuthenticationRequest type supplied");
         break;
       }
 
       $result = self::GetAuthenticationProvider()->Authenticate($AuthenticationRequest);
 
       if (null !== $result->nextStepURL){
-        LoggerUtils::getAuthLogger()->addDebug("Authentication requires additional step: " . $result->nextStepURL);
+        LoggerUtils::getAuthLogger()->debug("Authentication requires additional step: " . $result->nextStepURL);
         RedirectUtils::Redirect($result->nextStepURL);
       }
-      
+
       if ($result->isAuthenticated && ! $result->preventRedirect) {
         $redirectLocation = array_key_exists("location", $_SESSION) ? $_SESSION['location'] : 'Menu.php';
         NotificationService::updateNotifications();
-        LoggerUtils::getAuthLogger()->addDebug("Authentication Successful; redirecting to: " . $redirectLocation);
+        LoggerUtils::getAuthLogger()->debug("Authentication Successful; redirecting to: " . $redirectLocation);
         RedirectUtils::Redirect($redirectLocation);
-       
+
       }
       return $result;
     }
@@ -121,11 +121,11 @@ class AuthenticationManager
         return $result->isAuthenticated;
       }
       catch (\Exception $error){
-        LoggerUtils::getAuthLogger()->addDebug("Error determining session authentication status." . $error);
+        LoggerUtils::getAuthLogger()->debug("Error determining session authentication status." . $error);
         return false;
       }
     }
-    
+
     public static function EnsureAuthentication() {
       // This function differs from the sematinc `ValidateUserSessionIsActive` in that it will
       // take corrective action to redirect the user to an appropriate login location
@@ -134,18 +134,18 @@ class AuthenticationManager
       try {
         $result = self::GetAuthenticationProvider()->ValidateUserSessionIsActive(true);
         // Auth providers will always include a `nextStepURL` if authentication fails.
-        // Sometimes other actions may require a `nextStepURL` that should be enforced with 
+        // Sometimes other actions may require a `nextStepURL` that should be enforced with
         // an autentication request (2FA, Expired Password, etc).
         if (!$result->isAuthenticated){
-          LoggerUtils::getAuthLogger()->addDebug("Session not authenticated.  Redirecting to login page");
+          LoggerUtils::getAuthLogger()->debug("Session not authenticated.  Redirecting to login page");
           RedirectUtils::Redirect(self::GetSessionBeginURL());
         }elseif(null !== $result->nextStepURL){
-          LoggerUtils::getAuthLogger()->addDebug("Session authenticated, but redirect requested by authentication provider.");
+          LoggerUtils::getAuthLogger()->debug("Session authenticated, but redirect requested by authentication provider.");
           RedirectUtils::Redirect($result->nextStepURL);
         }
-        LoggerUtils::getAuthLogger()->addDebug("Session valid");
+        LoggerUtils::getAuthLogger()->debug("Session valid");
       } catch (\Throwable $error){
-        LoggerUtils::getAuthLogger()->addDebug("Error determining session authentication status.  Redirecting to login page. " . $error);
+        LoggerUtils::getAuthLogger()->debug("Error determining session authentication status.  Redirecting to login page. " . $error);
         RedirectUtils::Redirect(self::GetSessionBeginURL());
       }
     }

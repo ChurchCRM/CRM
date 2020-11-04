@@ -9825,3 +9825,13 @@ msgstr "今天結婚週年紀念日"
 msgid "Enable New Dashboard"
 msgstr "啟用新儀錶盤"
 
+#: 
+#, fuzzy
+msgid "Api Key"
+msgstr "API金鑰"
+
+#: 
+#, fuzzy
+msgid "Regen API Key"
+msgstr "再生API金鑰"
+

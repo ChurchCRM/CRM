@@ -120,7 +120,7 @@ class LocalAuthentication implements IAuthenticationProvider
       $authenticationResult = new AuthenticationResult();
 
       if ($AuthenticationRequest instanceof LocalUsernamePasswordRequest) {
-        LoggerUtils::getAuthLogger()->addDebug("Processing local login for" . $AuthenticationRequest->username);
+        LoggerUtils::getAuthLogger()->debug("Processing local login for" . $AuthenticationRequest->username);
         // Get the information for the selected user
         $this->currentUser = UserQuery::create()->findOneByUserName($AuthenticationRequest->username);
         if ($this->currentUser == null) {
@@ -132,7 +132,7 @@ class LocalAuthentication implements IAuthenticationProvider
         elseif ($this->currentUser->isLocked()) {
           $authenticationResult->isAuthenticated = false;
           $authenticationResult->message = gettext('Too many failed logins: your account has been locked.  Please contact an administrator.');
-          LoggerUtils::getAuthLogger()->addWarning("Authentication attempt for locked account: " . $this->currentUser->getUserName());
+          LoggerUtils::getAuthLogger()->warning("Authentication attempt for locked account: " . $this->currentUser->getUserName());
           return $authenticationResult;
         } // Does the password match?
         elseif (!$this->currentUser->isPasswordValid($AuthenticationRequest->password)) {
@@ -140,13 +140,13 @@ class LocalAuthentication implements IAuthenticationProvider
           $this->currentUser->setFailedLogins($this->currentUser->getFailedLogins() + 1);
           $this->currentUser->save();
           if (!empty($this->currentUser->getEmail()) && $this->currentUser->isLocked()) {
-              LoggerUtils::getAuthLogger()->addWarning("Too many failed logins for: " . $this->currentUser->getUserName() . ". The account has been locked");
+              LoggerUtils::getAuthLogger()->warning("Too many failed logins for: " . $this->currentUser->getUserName() . ". The account has been locked");
               $lockedEmail = new LockedEmail($this->currentUser);
               $lockedEmail->send();
           }
           $authenticationResult->isAuthenticated = false;
           $authenticationResult->message = gettext('Invalid login or password');
-          LoggerUtils::getAuthLogger()->addWarning("Invalid login attempt for: " . $this->currentUser->getUserName());
+          LoggerUtils::getAuthLogger()->warning("Invalid login attempt for: " . $this->currentUser->getUserName());
           return $authenticationResult;
         } elseif(SystemConfig::getBooleanValue("bEnable2FA") && $this->currentUser->is2FactorAuthEnabled()) {
           // Only redirect the user to the 2FA sign-ing page if it's
@@ -154,17 +154,17 @@ class LocalAuthentication implements IAuthenticationProvider
           $authenticationResult->isAuthenticated = false;
           $authenticationResult->nextStepURL = SystemURLs::getRootPath()."/session/two-factor";
           $this->bPendingTwoFactorAuth = true;
-          LoggerUtils::getAuthLogger()->addInfo("User partially authenticated, pending 2FA: " . $this->currentUser->getUserName());
+          LoggerUtils::getAuthLogger()->info("User partially authenticated, pending 2FA: " . $this->currentUser->getUserName());
           return $authenticationResult;
         } elseif(SystemConfig::getBooleanValue("bRequire2FA") && ! $this->currentUser->is2FactorAuthEnabled()) {
           $authenticationResult->isAuthenticated = false;
           $authenticationResult->message = gettext('Invalid login or password');
-          LoggerUtils::getAuthLogger()->addWarning("User attempted login with valid credentials, but missing mandatory 2FA enrollment.  Denying access for user: " . $this->currentUser->getUserName());
+          LoggerUtils::getAuthLogger()->warning("User attempted login with valid credentials, but missing mandatory 2FA enrollment.  Denying access for user: " . $this->currentUser->getUserName());
           return $authenticationResult;
         } else {
             $this->prepareSuccessfulLoginOperations();
             $authenticationResult->isAuthenticated = true;
-            LoggerUtils::getAuthLogger()->addInfo("User succefully logged in without 2FA: " . $this->currentUser->getUserName());
+            LoggerUtils::getAuthLogger()->info("User succefully logged in without 2FA: " . $this->currentUser->getUserName());
             return $authenticationResult;
           }
         }
@@ -173,18 +173,18 @@ class LocalAuthentication implements IAuthenticationProvider
             $this->prepareSuccessfulLoginOperations();
             $authenticationResult->isAuthenticated = true;
             $this->bPendingTwoFactorAuth = false;
-            LoggerUtils::getAuthLogger()->addInfo("User succefully logged in with 2FA: " . $this->currentUser->getUserName());
+            LoggerUtils::getAuthLogger()->info("User succefully logged in with 2FA: " . $this->currentUser->getUserName());
             return $authenticationResult;
           }
           elseif($this->currentUser->isTwoFaRecoveryCodeValid($AuthenticationRequest->TwoFACode)){
             $this->prepareSuccessfulLoginOperations();
             $authenticationResult->isAuthenticated = true;
             $this->bPendingTwoFactorAuth = false;
-            LoggerUtils::getAuthLogger()->addInfo("User succefully logged in with 2FA Recovery Code: " . $this->currentUser->getUserName());
+            LoggerUtils::getAuthLogger()->info("User succefully logged in with 2FA Recovery Code: " . $this->currentUser->getUserName());
             return $authenticationResult;
           }
           else {
-            LoggerUtils::getAuthLogger()->addInfo("Invalid 2FA code provided by partially authenticated user: " . $this->currentUser->getUserName());
+            LoggerUtils::getAuthLogger()->info("Invalid 2FA code provided by partially authenticated user: " . $this->currentUser->getUserName());
             $authenticationResult->isAuthenticated = false;
             $authenticationResult->nextStepURL = SystemURLs::getRootPath()."/session/two-factor";
             return $authenticationResult;
@@ -200,16 +200,16 @@ class LocalAuthentication implements IAuthenticationProvider
       // First check to see if a `user` key exists on the session.
       if (null == $this->currentUser) {
         $authenticationResult->isAuthenticated = false;
-        LoggerUtils::getAuthLogger()->addDebug("No active user session.");
+        LoggerUtils::getAuthLogger()->debug("No active user session.");
         return $authenticationResult;
       }
-      LoggerUtils::getAuthLogger()->addDebug("Processing session for user: " . $this->currentUser->getName());
+      LoggerUtils::getAuthLogger()->debug("Processing session for user: " . $this->currentUser->getName());
 
       // Next, make sure the user in the sesion still exists in the database.
       try {
         $this->currentUser->reload();
       } catch (\Exception $exc) {
-        LoggerUtils::getAuthLogger()->addDebug("User with active session no longer exists in the database.  Expiring session");
+        LoggerUtils::getAuthLogger()->debug("User with active session no longer exists in the database.  Expiring session");
         AuthenticationManager::EndSession();
         $authenticationResult->isAuthenticated = false;
         return $authenticationResult;
@@ -218,7 +218,7 @@ class LocalAuthentication implements IAuthenticationProvider
       // Next, check for login timeout.  If login has expired, redirect to login page
       if (SystemConfig::getValue('iSessionTimeout') > 0) {
         if ((time() - $this->tLastOperationTimestamp) > SystemConfig::getValue('iSessionTimeout')) {
-          LoggerUtils::getAuthLogger()->addDebug("User session timed out");
+          LoggerUtils::getAuthLogger()->debug("User session timed out");
           $authenticationResult->isAuthenticated = false;
           return $authenticationResult;
         } else if( $updateLastOperationTimestamp ) {
@@ -230,7 +230,7 @@ class LocalAuthentication implements IAuthenticationProvider
       // but don't redirect them if they're already on the passsword change page
       $IsUserOnPasswordChangePageNow = $_SERVER["REQUEST_URI"] == $this->GetPasswordChangeURL();
       if ($this->currentUser->getNeedPasswordChange() && ! $IsUserOnPasswordChangePageNow ) {
-        LoggerUtils::getAuthLogger()->addInfo("User needs password change; redirecting to password change");
+        LoggerUtils::getAuthLogger()->info("User needs password change; redirecting to password change");
         $authenticationResult->isAuthenticated = false;
         $authenticationResult->nextStepURL = $this->GetPasswordChangeURL();
       }
@@ -238,7 +238,7 @@ class LocalAuthentication implements IAuthenticationProvider
 
       // Finally, if the above tests pass, this user "is authenticated"
       $authenticationResult->isAuthenticated = true;
-      LoggerUtils::getAuthLogger()->addDebug("Session validated for user: " . $this->currentUser->getName());
+      LoggerUtils::getAuthLogger()->debug("Session validated for user: " . $this->currentUser->getName());
       return $authenticationResult;
     }
   }
