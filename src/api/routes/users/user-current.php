@@ -4,7 +4,6 @@ use Slim\Http\Request;
 use Slim\Http\Response;
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Authentication\AuthenticationProviders\LocalAuthentication;
-use ChurchCRM\UserQuery;
 use ChurchCRM\Utils\LoggerUtils;
 
 $app->group('/user/current', function () {
