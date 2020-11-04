@@ -24,8 +24,9 @@ Cypress.Commands.add("login", (username, password, location, checkMatchingLocati
     cy.get("#UserBox").type(username);
     cy.get("#PasswordBox").type(password);
     cy.get("form").submit();
+
     if (location && checkMatchingLocation) {
-        cy.location('pathname').should('include', location);
+        cy.location('pathname').should('include', location.split("?")[0]);
     }
 });
 
