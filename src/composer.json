@@ -54,8 +54,7 @@
         "azuyalabs/yasumi": "^2.3",
         "endroid/qr-code": "^3.9",
         "vonage/client": "^2.4",
-        "symfony/translation": "^5.1",
-        "php-di/php-di": "^6.3"
+        "symfony/translation": "^5.1"
     },
     "autoload": {
         "classmap": [
