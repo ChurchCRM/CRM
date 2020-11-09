@@ -6283,18 +6283,6 @@ msgid "Remove all"
 msgstr "Verwijder alles"
 
 #: 
-msgid "Head of Household"
-msgstr "Hoofd van een gezin"
-
-#: 
-msgid "Spouse"
-msgstr "Echtgenoot"
-
-#: 
-msgid "Child"
-msgstr "Kind"
-
-#: 
 msgid "Select a family"
 msgstr "Selecteer een gezin"
 

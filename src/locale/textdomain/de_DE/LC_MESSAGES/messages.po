@@ -6978,18 +6978,6 @@ msgid "Are you sure you want to unassign this property?"
 msgstr "Sind Sie sicher, dass Sie die Zuweisung diese Winstellung aufheben möchten?"
 
 #: 
-msgid "Head of Household"
-msgstr "Familienhaupt"
-
-#: 
-msgid "Spouse"
-msgstr "Ehepartner"
-
-#: 
-msgid "Child"
-msgstr "Kind"
-
-#: 
 msgid "Select a family"
 msgstr "Wählen Sie eine Familie"
 
