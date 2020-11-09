@@ -7693,18 +7693,6 @@ msgid "Are you sure you want to unassign this property?"
 msgstr "您确定要取消分配此属性吗？"
 
 #: 
-msgid "Head of Household"
-msgstr "户主"
-
-#: 
-msgid "Spouse"
-msgstr "伴侣"
-
-#: 
-msgid "Child"
-msgstr "孩子"
-
-#: 
 msgid "Select a family"
 msgstr "选择一个家庭"
 

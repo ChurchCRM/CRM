@@ -7845,18 +7845,6 @@ msgid "Are you sure you want to unassign this property?"
 msgstr "Tem certeza de que deseja desatribuir essa propriedade?"
 
 #: 
-msgid "Head of Household"
-msgstr "Chefe de família"
-
-#: 
-msgid "Spouse"
-msgstr "Esposa"
-
-#: 
-msgid "Child"
-msgstr "Filho"
-
-#: 
 msgid "Select a family"
 msgstr "Selecione a família"
 
