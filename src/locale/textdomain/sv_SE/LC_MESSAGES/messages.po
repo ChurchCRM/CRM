@@ -7795,18 +7795,6 @@ msgid "Are you sure you want to unassign this property?"
 msgstr "Är du säker på att du vill ta bort tilldelningen av den här egenskapen?"
 
 #: 
-msgid "Head of Household"
-msgstr "Chef för hushållet"
-
-#: 
-msgid "Spouse"
-msgstr "Make"
-
-#: 
-msgid "Child"
-msgstr "Barn"
-
-#: 
 msgid "Select a family"
 msgstr "Välj en familj"
 
@@ -9619,4 +9607,32 @@ msgstr "Familjeegendom av-tilldelning"
 #: 
 msgid "Do you want to remove"
 msgstr "Vill du ta bort"
+
+#: 
+msgid "View Active Persons"
+msgstr "Visa aktiva personer"
+
+#: 
+msgid "View Inactive Persons"
+msgstr "Visa inaktiva personer"
+
+#: 
+msgid "Today's Birthdays"
+msgstr "Dagens födelsedagar"
+
+#: 
+msgid "Today's Wedding Anniversaries"
+msgstr "Dagens bröllopsdagar"
+
+#: 
+msgid "Enable New Dashboard"
+msgstr "Aktivera ny instrumentpanel"
+
+#: 
+msgid "Api Key"
+msgstr "Api Nyckel"
+
+#: 
+msgid "Regen API Key"
+msgstr "Regen API-nyckel"
 

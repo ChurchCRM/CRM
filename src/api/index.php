@@ -7,7 +7,6 @@ require_once dirname(__FILE__) . '/../vendor/autoload.php';
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Slim\Middleware\AuthMiddleware;
 use ChurchCRM\Slim\Middleware\VersionMiddleware;
-use Monolog\Logger;
 use Slim\App;
 use Slim\Container;
 use Slim\HttpCache\CacheProvider;
@@ -17,7 +16,7 @@ $container = new Container;
 $container['cache'] = function () {
     return new CacheProvider();
 };
-if (SystemConfig::getValue("sLogLevel") == Logger::DEBUG) {
+if (SystemConfig::debugEnabled()) {
     $container["settings"]['displayErrorDetails'] = true;
 }
 

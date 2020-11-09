@@ -130,7 +130,7 @@ class Menu
         $eventsMenu = new MenuItem(gettext("Events"), "", SystemConfig::getBooleanValue("bEnabledEvents"), 'fa-ticket');
         $eventsMenu->addSubMenu(new MenuItem(gettext("Add Church Event"), "EventEditor.php", AuthenticationManager::GetCurrentUser()->isAddEventEnabled()));
         $eventsMenu->addSubMenu(new MenuItem(gettext("List Church Events"), "ListEvents.php"));
-        $eventsMenu->addSubMenu(new MenuItem(gettext("List Event Types"), "EventNames.php"));
+        $eventsMenu->addSubMenu(new MenuItem(gettext("List Event Types"), "EventNames.php", AuthenticationManager::GetCurrentUser()->isAddEventEnabled()));
         $eventsMenu->addSubMenu(new MenuItem(gettext("Check-in and Check-out"), "Checkin.php"));
         $eventsMenu->addSubMenu(new MenuItem(gettext('Event Attendance Reports'), "EventAttendance.php"));
         return $eventsMenu;
