@@ -47,7 +47,7 @@
         "geocoder-php/google-maps-provider": "4.5.0",
         "geocoder-php/bing-maps-provider": "4.0.0",
         "mustache/mustache": "v2.13.0",
-        "nexmo/client": "@beta",
+        "vonage/client": "^2.4",
         "slim/http-cache": "^1.0.0",
         "azuyalabs/yasumi": "^1.8.1",
         "defuse/php-encryption": "^2.2.1",
