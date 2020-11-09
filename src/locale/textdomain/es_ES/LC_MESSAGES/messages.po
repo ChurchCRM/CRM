@@ -7686,19 +7686,6 @@ msgstr "Desea eliminar a esta persona? Esto no puede deshacerse."
 msgid "Are you sure you want to unassign this property?"
 msgstr "¿Está seguro de que desea desasignar esta propiedad?"
 
-#. Cabeza is more neutral than jefe i think
-#: 
-msgid "Head of Household"
-msgstr "Cabeza del Hogar"
-
-#: 
-msgid "Spouse"
-msgstr "Cónyuge"
-
-#: 
-msgid "Child"
-msgstr "Niño"
-
 #: 
 msgid "Select a family"
 msgstr "Seleccione una familia"

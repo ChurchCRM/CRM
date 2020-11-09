@@ -7795,18 +7795,6 @@ msgid "Are you sure you want to unassign this property?"
 msgstr "Är du säker på att du vill ta bort tilldelningen av den här egenskapen?"
 
 #: 
-msgid "Head of Household"
-msgstr "Chef för hushållet"
-
-#: 
-msgid "Spouse"
-msgstr "Make"
-
-#: 
-msgid "Child"
-msgstr "Barn"
-
-#: 
 msgid "Select a family"
 msgstr "Välj en familj"
 

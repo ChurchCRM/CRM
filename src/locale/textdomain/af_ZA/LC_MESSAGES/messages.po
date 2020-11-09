@@ -7646,18 +7646,6 @@ msgid "Are you sure you want to unassign this property?"
 msgstr "Is u seker dat u hierdie eiendom wil toewys?"
 
 #: 
-msgid "Head of Household"
-msgstr "Hoof van die huishouding"
-
-#: 
-msgid "Spouse"
-msgstr "Eggenoot"
-
-#: 
-msgid "Child"
-msgstr "Kind"
-
-#: 
 msgid "Select a family"
 msgstr "Kies 'n gesin"
 
