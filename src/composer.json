@@ -30,7 +30,8 @@
     "config": {
         "platform": {
             "php": "7.3"
-        }
+        },
+        "sort-packages": true
     },
     "require": {
         "drewm/mailchimp-api": "^2.5",
