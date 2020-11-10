@@ -16,6 +16,8 @@ jobs:
 
       - name: PHP Security
         uses: symfonycorp/security-checker-action@v2
+        with:
+          lock: src/composer.lock
 
       - name: Node Security
         id: njsscan
