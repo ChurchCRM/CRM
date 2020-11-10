@@ -1,0 +1,16 @@
+name: Security Actions
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  install_n_gen:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2.3.2
+        with:
+          fetch-depth: 0
+
+      - name: Sensio Labs Security Checker
+        uses: umutphp/sensiolabs-security-checker-action@v1
