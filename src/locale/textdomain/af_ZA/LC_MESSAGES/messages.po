@@ -4109,7 +4109,8 @@ msgid "Add New Person"
 msgstr "Voeg nuwe persoon by"
 
 #: 
-msgid "View All Persons"
+#, fuzzy
+msgid "View All People"
 msgstr "Bekyk alle persone"
 
 #: 
