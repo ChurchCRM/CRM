@@ -4273,7 +4273,8 @@ msgid "Add New Person"
 msgstr "Nova Pessoa"
 
 #: 
-msgid "View All Persons"
+#, fuzzy
+msgid "View All People"
 msgstr "Ver Pessoas"
 
 #: 

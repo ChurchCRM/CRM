@@ -4258,7 +4258,8 @@ msgid "Add New Person"
 msgstr "Lägg till ny person"
 
 #: 
-msgid "View All Persons"
+#, fuzzy
+msgid "View All People"
 msgstr "Visa alla personer"
 
 #: 
@@ -9609,11 +9610,13 @@ msgid "Do you want to remove"
 msgstr "Vill du ta bort"
 
 #: 
-msgid "View Active Persons"
+#, fuzzy
+msgid "View Active People"
 msgstr "Visa aktiva personer"
 
 #: 
-msgid "View Inactive Persons"
+#, fuzzy
+msgid "View Inactive People"
 msgstr "Visa inaktiva personer"
 
 #: 
