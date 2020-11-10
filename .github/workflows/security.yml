@@ -18,6 +18,7 @@ jobs:
         uses: symfonycorp/security-checker-action@v2
 
       - name: Node Security
-          uses: ajinabraham/njsscan-action@v5
-          with:
-            args: '.'
+        id: njsscan
+        uses: ajinabraham/njsscan-action@v5
+        with:
+          args: '.'
