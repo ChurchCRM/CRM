@@ -65,7 +65,8 @@ msgid "This tool will assist you in manually backing up the ChurchCRM database."
 msgstr "Wizard voor het maken van een handmatige backup van de database"
 
 #: 
-msgid "You should make a manual backup at least once a week unless you already have a regular backup procedule for your systems."
+#, fuzzy
+msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
 msgstr "U zou minstens een keer in de week een back-up moeten maken, tenzij u al een regelmatige back-up procedure van uw applicatie heeft."
 
 #: 
@@ -1086,10 +1087,6 @@ msgstr "Niet deelnemers activiteit"
 #: 
 msgid "Event Guests"
 msgstr "Gasten van deze activiteit"
-
-#: 
-msgid "Back to Report Menu"
-msgstr "Terug naar rapportages"
 
 #: 
 msgid "There "
@@ -3478,10 +3475,6 @@ msgid "eMail Dashboard"
 msgstr "E-mail menu"
 
 #: 
-msgid "People not in Mailchimp"
-msgstr "personen die niet in Mailchimp staan"
-
-#: 
 msgid "No families need canvassers assigned"
 msgstr "Geen gezinnen hebben een koppeling nodig met een enquêteur"
 
@@ -4128,7 +4121,8 @@ msgid "Add New Person"
 msgstr "Personen toevoegen"
 
 #: 
-msgid "View All Persons"
+#, fuzzy
+msgid "View All People"
 msgstr "Personen overzicht"
 
 #: 
@@ -4267,7 +4261,8 @@ msgid "Church Information"
 msgstr "Over de gemeente"
 
 #: 
-msgid "User setup"
+#, fuzzy
+msgid "User Setup"
 msgstr "Instellingen"
 
 #: 
@@ -4397,10 +4392,6 @@ msgstr "Opgeschoonde telling"
 #: 
 msgid "Cleaned count since last send:"
 msgstr "Opgeschoonde telling sinds de laatste verzending:"
-
-#: 
-msgid "Missing emails report"
-msgstr "Ontbrekende e-mails melden"
 
 #: 
 msgid "Functions"
@@ -6293,18 +6284,6 @@ msgid "Remove all"
 msgstr "Verwijder alles"
 
 #: 
-msgid "Head of Household"
-msgstr "Hoofd van een gezin"
-
-#: 
-msgid "Spouse"
-msgstr "Echtgenoot"
-
-#: 
-msgid "Child"
-msgstr "Kind"
-
-#: 
 msgid "Select a family"
 msgstr "Selecteer een gezin"
 
@@ -7013,10 +6992,6 @@ msgid "Application Prerequisites"
 msgstr "Minimale eisen voor het ingebruikname van de applicatie"
 
 #: 
-msgid "WebServer Modules"
-msgstr "Webserver modules"
-
-#: 
 msgid "Invalid country name supplied"
 msgstr "Niet geldige landnaam gegeven"
 
@@ -7129,14 +7104,6 @@ msgstr "Niet-ondersteunde Deposit Types gedetecteerd."
 #: 
 msgid "Support for eGive, Credit Card, and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions."
 msgstr "Ondersteuning voor eGive, Credit Card, en Bank Draft betalingen is verouderd. Bestaande niet-bancaire verslagen kunnen niet meer toegankelijk in toekomstige versies zijn."
-
-#: 
-msgid "Unsupported Stored Payment Data Detected"
-msgstr "Niet-ondersteunde opgeslagen betalingsgegevens gedetecteerd."
-
-#: 
-msgid "Support for stored payment data has been removed. This data will soon be removed from your database"
-msgstr "Ondersteuning voor opgeslagen betalingsgegevens is verwijderd. Deze gegevens zullen binnenkort worden verwijderd uit de database"
 
 #: 
 msgid "Estonian"

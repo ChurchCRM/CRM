@@ -137,8 +137,8 @@ $iGroupID = InputUtils::LegacyFilterInput($_GET['GroupID'], 'int');
 
     <script nonce="<?= SystemURLs::getCSPNonce() ?>" >
 
-        $(document).ready(function() { 
-            $(".legenditem-checkbox").change(function(e){ 
+        $(document).ready(function() {
+            $(".legenditem-checkbox").change(function(e){
                 var category = $(this).parent().data("classification");
                 var checked = $(this).prop("checked");
                 window.CRM.map.setClassificationVisible(category,checked);
@@ -287,7 +287,7 @@ $iGroupID = InputUtils::LegacyFilterInput($_GET['GroupID'], 'int');
                 //Infowindow Content
                 var imghref, contentString;
                 if (bPlotFamily) {
-                    imghref = "FamilyView.php?FamilyID=" + window.CRM.map.plotArray[i].ID;
+                    imghref = "v2/family/" + window.CRM.map.plotArray[i].ID;
                 } else {
                     imghref = "PersonView.php?PersonID=" + window.CRM.map.plotArray[i].ID;
                 }

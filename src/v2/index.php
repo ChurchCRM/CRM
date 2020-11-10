@@ -9,11 +9,12 @@ use Slim\Container;
 use Slim\App;
 use ChurchCRM\Slim\Middleware\VersionMiddleware;
 use ChurchCRM\Slim\Middleware\AuthMiddleware;
-
-// Instantiate the app
-$settings = require __DIR__.'/../Include/slim/settings.php';
+use ChurchCRM\dto\SystemConfig;
 
 $container = new Container;
+if (SystemConfig::debugEnabled()) {
+    $container["settings"]['displayErrorDetails'] = true;
+}
 
 // Add middleware to the application
 $app = new App($container);
@@ -31,6 +32,8 @@ require __DIR__.'/routes/admin/admin.php';
 require __DIR__.'/routes/user.php';
 
 // people routes
+require __DIR__.'/routes/root.php';
+
 require __DIR__.'/routes/people.php';
 require __DIR__.'/routes/family.php';
 require __DIR__.'/routes/person.php';

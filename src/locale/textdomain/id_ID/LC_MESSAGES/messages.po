@@ -65,7 +65,8 @@ msgid "This tool will assist you in manually backing up the ChurchCRM database."
 msgstr "Fungsi ini akan menolongmu dalam backup manual database ChurchCRM."
 
 #: 
-msgid "You should make a manual backup at least once a week unless you already have a regular backup procedule for your systems."
+#, fuzzy
+msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
 msgstr "Anda harus buat backup manual setidaknya seminggu sekali kecuali jika Anda sudah memiliki prosedur backup reguler."
 
 #: 
@@ -1084,10 +1085,6 @@ msgstr "Tamu yang tidak hadir"
 #: 
 msgid "Event Guests"
 msgstr "Tamu undangan"
-
-#: 
-msgid "Back to Report Menu"
-msgstr "Kembali kepada menu laporan"
 
 #: 
 msgid "There "
@@ -3472,10 +3469,6 @@ msgid "eMail Dashboard"
 msgstr "Dasbor Surel"
 
 #: 
-msgid "People not in Mailchimp"
-msgstr "Orang tidak terdapat di Mailchimp"
-
-#: 
 msgid "No families need canvassers assigned"
 msgstr "Tidak ada keluarga yang membutuhkan canvasser"
 
@@ -4120,7 +4113,8 @@ msgid "Add New Person"
 msgstr "Tambahkan Orang Baru"
 
 #: 
-msgid "View All Persons"
+#, fuzzy
+msgid "View All People"
 msgstr "Lihat semua Orang"
 
 #: 
@@ -4256,7 +4250,8 @@ msgid "Church Information"
 msgstr "Informasi Gereja"
 
 #: 
-msgid "User setup"
+#, fuzzy
+msgid "User Setup"
 msgstr "Pengaturan pengguna"
 
 #: 
@@ -4386,10 +4381,6 @@ msgstr "Jumlah yang dibersihkan:"
 #: 
 msgid "Cleaned count since last send:"
 msgstr "Dihitung sejak pengiriman terakhir:"
-
-#: 
-msgid "Missing emails report"
-msgstr "Laporan email tidak ada"
 
 #: 
 msgid "Functions"
@@ -7264,10 +7255,6 @@ msgid "Please confirm reset failed login count"
 msgstr "Harap konfirmasi atur ulang jumlah login gagal"
 
 #: 
-msgid "Password reset for"
-msgstr "Reset kata sandi untuk"
-
-#: 
 msgid "View Active Families"
 msgstr "Lihat Keluarga Aktif"
 
@@ -7662,18 +7649,6 @@ msgstr "Apakah Anda ingin menghapus orang ini? Ini tidak dapat dibatalkan."
 #: 
 msgid "Are you sure you want to unassign this property?"
 msgstr "Apakah Anda yakin ingin membatalkan penetapan properti ini?"
-
-#: 
-msgid "Head of Household"
-msgstr "Kepala rumah tangga"
-
-#: 
-msgid "Spouse"
-msgstr "Pasangan"
-
-#: 
-msgid "Child"
-msgstr "Anak"
 
 #: 
 msgid "Select a family"
@@ -8636,10 +8611,6 @@ msgid "Application Prerequisites"
 msgstr "Prasyarat Aplikasi"
 
 #: 
-msgid "WebServer Modules"
-msgstr "Modul WebServer"
-
-#: 
 msgid "Invalid country name supplied"
 msgstr "Nama negara yang tidak valid diberikan"
 
@@ -8754,14 +8725,6 @@ msgstr "Jenis Deposit Tidak Didukung Terdeteksi"
 #: 
 msgid "Support for eGive, Credit Card, and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions."
 msgstr "Dukungan untuk pembayaran eGive, Kartu Kredit, dan Bank Draft telah ditinggalkan. Laporan non-bank yang ada mungkin tidak lagi dapat diakses di versi mendatang."
-
-#: 
-msgid "Unsupported Stored Payment Data Detected"
-msgstr "Data Pembayaran Tersimpan yang Tidak Didukung Terdeteksi"
-
-#: 
-msgid "Support for stored payment data has been removed. This data will soon be removed from your database"
-msgstr "Dukungan untuk data pembayaran tersimpan telah dihapus. Data ini akan segera dihapus dari basis data Anda"
 
 #: 
 msgid "Estonian"
@@ -9111,10 +9074,218 @@ msgid "Include/Config.php must define an encryption key for storing 2FA secret k
 msgstr "Sertakan / Config.php harus menetapkan kunci enkripsi untuk menyimpan kunci rahasia 2FA dalam database dengan menetapkan nilai"
 
 #: 
-msgid "Credit Card People"
-msgstr "Orang Kartu Kredit"
+msgid "Google Maps API Key used for Geocoding addresses"
+msgstr "Kunci API Google Maps digunakan untuk alamat Geocoding"
 
 #: 
-msgid "People who are configured to pay by credit card."
-msgstr "Orang yang dikonfigurasi untuk membayar dengan kartu kredit."
+msgid "Send an email notifying users when their account has been deleted"
+msgstr "Kirim email pemberitahuan ketika akun pengguna telah dihapus"
+
+#: 
+msgid "Google Maps API Key used for rendering maps in browser"
+msgstr "Kunci API Google Maps digunakan untuk menampilkan peta di browser"
+
+#: 
+msgid "Incorrect password supplied for current user"
+msgstr "Kata sandi yang diberikan salah untuk pengguna saat ini"
+
+#: 
+msgid "Your new password must not match your old one."
+msgstr "Kata sandi baru Anda tidak boleh sama dengan kata sandi lama Anda."
+
+#: 
+msgid "Your new password is too similar to your old one."
+msgstr "Kata sandi baru anda mirip dengan kata sandi yang lama"
+
+#: 
+msgid "Password reset not availble.  Please contact your system administrator"
+msgstr "Penyetelan ulang kata sandi tidak tersedia. Silahkan menghubungi administrator sistem anda"
+
+#: 
+msgid "Authentication Issue"
+msgstr "Masalah Otentikasi"
+
+#: 
+msgid "Enter new user password. Administratively set passwords are not subject to length or complexity requirements"
+msgstr "Masukkan kata sandi pengguna baru. Kata sandi yang diatur secara administratif tidak tergantung pada persyaratan panjang atau kompleksitas"
+
+#: 
+msgid "No email passed in"
+msgstr "Tidak ada email yang masuk"
+
+#: 
+msgid "Mailchimp is not active"
+msgstr "Mailchimp tidak aktif"
+
+#: 
+msgid "Mailchimp"
+msgstr "Mailchimp"
+
+#: 
+msgid "Lists"
+msgstr "Daftar"
+
+#: 
+msgid "loading"
+msgstr "Memuat"
+
+#: 
+msgid "List not found"
+msgstr "Daftar tidak ditemukan"
+
+#: 
+msgid "List not inList"
+msgstr "Tidak ada dalam daftar"
+
+#: 
+msgid "People not in"
+msgstr "Orang tidak masuk"
+
+#: 
+msgid "Invalid List id"
+msgstr "Daftar id Tidak Valid"
+
+#: 
+msgid "Audience not in the ChurchCRM"
+msgstr "Peserta tidak ada di ChurchCRM"
+
+#: 
+msgid "ChurchCRM Installation Information"
+msgstr "Informasi Instalasi ChurchCRM"
+
+#: 
+msgid "Database Server Version"
+msgstr "Versi Database Server"
+
+#: 
+msgid "Web Server"
+msgstr "Web Server"
+
+#: 
+msgid "Server Software"
+msgstr "Server Perangkat Lunak"
+
+#: 
+msgid "Email Information"
+msgstr "Informasi Email"
+
+#: 
+msgid "List maintenance"
+msgstr "Daftar maintenance"
+
+#: 
+msgid "People not in list"
+msgstr "Orang tidak terdaftar"
+
+#: 
+msgid "Audience not in the CRM"
+msgstr "Peserta tidak ada didalam CRM"
+
+#: 
+msgid "Hebrew"
+msgstr "Ibrani"
+
+#: 
+msgid "open rate"
+msgstr "Buka Kurs"
+
+#: 
+msgid "Not Subscribed "
+msgstr "Tidak Berlangganan"
+
+#: 
+msgid "Global User Settings"
+msgstr "Pengaturan Pengguna Global"
+
+#: 
+msgid "General"
+msgstr "Umum"
+
+#: 
+msgid "Passwords"
+msgstr "Kata Sandi"
+
+#: 
+msgid "2FA"
+msgstr "2FA"
+
+#: 
+msgid "Session Timeout"
+msgstr "Waktu sesi habis"
+
+#: 
+msgid "Max Failed Login"
+msgstr "Maks Gagal Masuk"
+
+#: 
+msgid "Enable Password Reset"
+msgstr "Aktifkan Reset Kata Sandi"
+
+#: 
+msgid "Send email to Deleted Users"
+msgstr "Kirim email untuk menghapus pengguna"
+
+#: 
+msgid "Min Password Length"
+msgstr "Min Panjang Kata Sandi"
+
+#: 
+msgid "Min Password Characters Delta"
+msgstr "Min Karakter Delta Kata Sandi"
+
+#: 
+msgid "Disallowed Passwords"
+msgstr "Larang Kata Sandi"
+
+#: 
+msgid "Enable 2FA"
+msgstr "Aktifkan 2FA"
+
+#: 
+msgid "Require 2FA"
+msgstr "Diperlukan 2FA"
+
+#: 
+msgid "2FA Application Name"
+msgstr "2FA Nama Aplikasi"
+
+#: 
+msgid "Unsupported user config"
+msgstr "Konfigurasi pengguna tidak didukung"
+
+#: 
+msgid "Invalid userId"
+msgstr "userId tidak valid"
+
+#: 
+msgid "Unsupported user setting - "
+msgstr "Pengaturan Pengguna tidak didukung"
+
+#: 
+msgid "Login Info"
+msgstr "Info Masuk"
+
+#: 
+msgid "Login Count"
+msgstr "Jumlah Masuk"
+
+#: 
+msgid "Failed Login"
+msgstr "Gagal Masuk"
+
+#: 
+msgid "Permissions"
+msgstr "Izin"
+
+#: 
+msgid "Manage Notes"
+msgstr "Kelola Catatan"
+
+#: 
+msgid "Skins"
+msgstr "Tampilan"
+
+#: 
+msgid "Failed generate a new API Key"
+msgstr "Gagal membuat Kunci API baru"
 

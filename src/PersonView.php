@@ -155,18 +155,36 @@ $sCountry = SelectWhichInfo($per_Country, $fam_Country, true);
 $formattedMailingAddress = $person->getAddress();
 
 $sPhoneCountry = SelectWhichInfo($per_Country, $fam_Country, false);
-$sHomePhone = SelectWhichInfo(ExpandPhoneNumber($per_HomePhone, $sPhoneCountry, $dummy),
-    ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy), true);
-$sHomePhoneUnformatted = SelectWhichInfo(ExpandPhoneNumber($per_HomePhone, $sPhoneCountry, $dummy),
-    ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy), false);
-$sWorkPhone = SelectWhichInfo(ExpandPhoneNumber($per_WorkPhone, $sPhoneCountry, $dummy),
-    ExpandPhoneNumber($fam_WorkPhone, $fam_Country, $dummy), true);
-$sWorkPhoneUnformatted = SelectWhichInfo(ExpandPhoneNumber($per_WorkPhone, $sPhoneCountry, $dummy),
-    ExpandPhoneNumber($fam_WorkPhone, $fam_Country, $dummy), false);
-$sCellPhone = SelectWhichInfo(ExpandPhoneNumber($per_CellPhone, $sPhoneCountry, $dummy),
-    ExpandPhoneNumber($fam_CellPhone, $fam_Country, $dummy), true);
-$sCellPhoneUnformatted = SelectWhichInfo(ExpandPhoneNumber($per_CellPhone, $sPhoneCountry, $dummy),
-    ExpandPhoneNumber($fam_CellPhone, $fam_Country, $dummy), false);
+$sHomePhone = SelectWhichInfo(
+    ExpandPhoneNumber($per_HomePhone, $sPhoneCountry, $dummy),
+    ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy),
+    true
+);
+$sHomePhoneUnformatted = SelectWhichInfo(
+    ExpandPhoneNumber($per_HomePhone, $sPhoneCountry, $dummy),
+    ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy),
+    false
+);
+$sWorkPhone = SelectWhichInfo(
+    ExpandPhoneNumber($per_WorkPhone, $sPhoneCountry, $dummy),
+    ExpandPhoneNumber($fam_WorkPhone, $fam_Country, $dummy),
+    true
+);
+$sWorkPhoneUnformatted = SelectWhichInfo(
+    ExpandPhoneNumber($per_WorkPhone, $sPhoneCountry, $dummy),
+    ExpandPhoneNumber($fam_WorkPhone, $fam_Country, $dummy),
+    false
+);
+$sCellPhone = SelectWhichInfo(
+    ExpandPhoneNumber($per_CellPhone, $sPhoneCountry, $dummy),
+    ExpandPhoneNumber($fam_CellPhone, $fam_Country, $dummy),
+    true
+);
+$sCellPhoneUnformatted = SelectWhichInfo(
+    ExpandPhoneNumber($per_CellPhone, $sPhoneCountry, $dummy),
+    ExpandPhoneNumber($fam_CellPhone, $fam_Country, $dummy),
+    false
+);
 $sEmail = SelectWhichInfo($per_Email, $fam_Email, true);
 $sUnformattedEmail = SelectWhichInfo($per_Email, $fam_Email, false);
 
@@ -178,7 +196,8 @@ if ($per_Envelope > 0) {
 
 $iTableSpacerWidth = 10;
 
-$bOkToEdit = (AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled() ||
+$bOkToEdit = (
+    AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled() ||
     (AuthenticationManager::GetCurrentUser()->isEditSelfEnabled() && $per_ID == AuthenticationManager::GetCurrentUser()->getId()) ||
     (AuthenticationManager::GetCurrentUser()->isEditSelfEnabled() && $per_fam_ID == AuthenticationManager::GetCurrentUser()->getPerson()->getFamId())
 );
@@ -256,7 +275,7 @@ $bOkToEdit = (AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled() ||
               <?php
               if ($fam_ID != '') {
                   ?>
-                  <a href="<?= SystemURLs::getRootPath() ?>/FamilyView.php?FamilyID=<?= $fam_ID ?>"><?= $fam_Name ?> </a>
+                  <a href="<?= SystemURLs::getRootPath() ?>/v2/family/<?= $fam_ID ?>"><?= $fam_Name ?> </a>
                   <a href="<?= SystemURLs::getRootPath() ?>/FamilyEditor.php?FamilyID=<?= $fam_ID ?>" class="table-link">
                   <span class="fa-stack">
                     <i class="fa fa-square fa-stack-2x"></i>
@@ -406,7 +425,7 @@ $bOkToEdit = (AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled() ||
                     <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= $iPersonID ?>"><i class="fa fa-eye"></i> <?= gettext('View User') ?></a>
                     <?php
                 }
-            } elseif ($person->isUser() && $person->getId() == $_SESSION["user"]->getId()) {
+            } elseif ($person->isUser() && $person->getId() == AuthenticationManager::GetCurrentUser()->getId()) {
                 ?>
                 <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= $iPersonID ?>"><i class="fa fa-eye"></i> <?= gettext('View User') ?></a>
             <?php
@@ -718,18 +737,20 @@ $bOkToEdit = (AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled() ||
                                     while ($aRow = mysqli_fetch_array($rsAssignedProperties)) {
                                         $pro_Prompt = '';
                                         $r2p_Value = '';
-                                        extract($aRow);
-
-                                        echo '<tr>';
-                                        echo '<td>'.$prt_Name.'</td>';
-                                        echo '<td>'.$pro_Name.'</td>';
-                                        echo '<td>'.$r2p_Value.'</td>';
-                                        if ($bOkToEdit) {
-                                            $attributes = "data-property_id=\"{$pro_ID}\" data-person_id=\"{$iPersonID}\" class=\"remove-property-btn\" ";
-                                            echo '<td><a '.$attributes.'>'.gettext('Remove').'</a></td>';
-                                        }
-                                        echo '</tr>';
-
+                                        extract($aRow); ?>
+                                        <tr>
+                                        <td><?= $prt_Name?></td>
+                                        <td><?= $pro_Name?></td>
+                                        <td><?= $r2p_Value?></td>
+                                        <?php if ($bOkToEdit) { ?>
+                                            <td>
+                                                <a class="btn remove-property-btn" data-property_id="<?= $pro_ID?>">
+                                                    <i class="fa fa-trash"></i>
+                                                </a>
+                                            </td>
+                                        <?php } ?>
+                                        </tr>
+                                    <?php
                                         $sAssignedProperties .= $pro_ID.',';
                                     } ?>
                                     </tbody>
@@ -742,7 +763,6 @@ $bOkToEdit = (AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled() ||
                                         <h4><strong><?= gettext('Assign a New Property') ?>:</strong></h4>
 
                                         <form method="post" action="<?= SystemURLs::getRootPath(). '/api/properties/persons/assign' ?>" id="assign-property-form">
-                                            <input type="hidden" name="PersonId" value="<?= $person->getId() ?>" >
                                             <div class="row">
                                                 <div class="form-group col-xs-12 col-md-7">
                                                     <select name="PropertyId" id="input-person-properties" class="form-control select2"
@@ -778,7 +798,7 @@ $bOkToEdit = (AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled() ||
 
                                                 </div>
                                                 <div class="form-group col-xs-12 col-md-7">
-                                                    <input id="assign-property-btn" type="submit" class="btn btn-primary" value="<?= gettext('Assign') ?>" name="Submit">
+                                                    <input id="assign-property-btn" type="button" class="btn btn-primary" value="<?= gettext('Assign') ?>" name="Submit">
                                                 </div>
                                             </div>
                                         </form>
@@ -972,6 +992,7 @@ $bOkToEdit = (AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled() ||
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/PersonView.js"></script>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     window.CRM.currentPersonID = <?= $iPersonID ?>;
+    window.CRM.plugin.mailchimp = <?= $mailchimp->isActive()? "true" : "false" ?>;
 
 
     $("#deletePhoto").click (function () {

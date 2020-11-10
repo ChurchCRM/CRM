@@ -548,89 +548,19 @@
             document.getElementById('EventsNumber').innerText = data.Events;
           }
         },
-        FamilyCount: function (data) {
-          var dashBoardFam = document.getElementById('familyCountDashboard');
-
-          if (dashBoardFam) { // we have to test if we are on the dashboard or not
-            dashBoardFam.innerText = data.familyCount;
-            latestFamiliesTable = $('#latestFamiliesDashboardItem').DataTable({
-              retrieve: true,
-              responsive: true,
-              paging: false,
-              ordering: false,
-              searching: false,
-              scrollX: false,
-              info: false,
-              'columns': [
-                {
-                  data: 'Name',
-                  render: function (data, type, row, meta) {
-                    return '<a href=' + window.CRM.root + '/FamilyView.php?FamilyID=' + row.Id + '>' + data + '</a>';
-                  }
-                },
-                {data: 'Address1'},
-                {
-                  data: 'DateEntered',
-                  render: function (data, type, row, meta) {
-                    return moment(data).format(window.CRM.systemConfigs.sDateTimeFormat);
-                  }
-                }
-              ]
-            });
-            latestFamiliesTable.clear();
-            latestFamiliesTable.rows.add(data.LatestFamilies);
-            latestFamiliesTable.draw(true);
-
-            updatedFamiliesTable = $('#updatedFamiliesDashboardItem').DataTable({
-              retrieve: true,
-              responsive: true,
-              paging: false,
-              ordering: false,
-              searching: false,
-              scrollX: false,
-              info: false,
-              'columns': [
-                {
-                  data: 'Name',
-                  render: function (data, type, row, meta) {
-                    return '<a href=' + window.CRM.root + '/FamilyView.php?FamilyID=' + row.Id + '>' + data + '</a>';
-                  }
-                },
-                {data: 'Address1'},
-                {
-                  data: 'DateLastEdited',
-                  render: function (data, type, row, meta) {
-                    return moment(data).format(window.CRM.systemConfigs.sDateTimeFormat);
-                  }
-                }
-              ]
-            });
-            updatedFamiliesTable.clear();
-            updatedFamiliesTable.rows.add(data.UpdatedFamilies);
-            updatedFamiliesTable.draw(true);
-          }
-        }, GroupsDisplay: function (data) {
-          var dashBoardStatsSundaySchool = document.getElementById('groupStatsSundaySchool');
-          if (dashBoardStatsSundaySchool) {// We have to check if we are on the dashboard menu
-            dashBoardStatsSundaySchool.innerText = data.sundaySchoolClasses;
-          }
-
-          var dashBoardGroupsCountDashboard = document.getElementById('groupsCountDashboard');
-
-          if (dashBoardGroupsCountDashboard) {// We have to check if we are on the dashboard menu
-	          dashBoardGroupsCountDashboard.innerText = data.groups;
-	        }
-        }, PersonCount: function (data) {
-          var dashBoardPeopleStats = document.getElementById('peopleStatsDashboard');
-          if (dashBoardPeopleStats) {
-            dashBoardPeopleStats.innerText = data.personCount;
-          }
+        PageLocale: function (data) {
+            $(".flag-icon").addClass("flag-icon-" + data.countryFlagCode);
+            $("#translationInfo").html(data.name + " [" + window.CRM.locale + "]");
+            if (data.countryFlagCode != "us") {
+                $("#translationPer").html(data.poPerComplete + "%");
+                $("#localePer").removeClass("hidden");
+            }
         }
       },
       refresh: function () {
         window.CRM.APIRequest({
           method: 'GET',
-          path: 'background/dashboard/page?currentpagename=' + window.CRM.PageName.replace(window.CRM.root,''),
+          path: 'background/page?name=' + window.CRM.PageName.replace(window.CRM.root,''),
           suppressErrorDialog: true
         }).done(function (data) {
           for (var key in data) {

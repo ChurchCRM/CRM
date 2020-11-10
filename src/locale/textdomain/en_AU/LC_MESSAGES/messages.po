@@ -50,6 +50,18 @@ msgid "Zip"
 msgstr "Postcode"
 
 #: 
+msgid "Use Ctrl Key to select multiple"
+msgstr "Use Ctrl Key (Mac: ⌘ ) to select multiple"
+
+#: 
+msgid "CheckIn"
+msgstr "Check In"
+
+#: 
+msgid "CheckOut"
+msgstr "Check Out"
+
+#: 
 msgid "Load Authorized Transactions"
 msgstr "Load Authorised Transactions"
 

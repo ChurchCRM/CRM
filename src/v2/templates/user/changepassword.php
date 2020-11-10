@@ -19,7 +19,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form method="post" action="<?= SystemURLs::getRootPath()?>/v2/user/current/changepassword">
+            <form method="post" action="<?= SystemURLs::getRootPath()?>/v2/user/current/changepassword" id="passwordChangeForm">
                 <div class="box-body">
                     <div class="form-group">
                         <label for="OldPassword"><?= gettext('Old Password') ?>:</label>

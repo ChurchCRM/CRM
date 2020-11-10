@@ -48,17 +48,26 @@ function listPeople(Request $request, Response $response, array $args)
     // Classification
     // Gender
     // FamilyRole
-  
+
     $members = PersonQuery::create();
     // set default sMode
     $sMode = "Person";
-    // show || hide inActive
-    if (isset($_GET['inActive'])) {
-        $id = InputUtils::LegacyFilterInput($_GET['inActive']);
-        if ($id == 'false') {
-            $members->leftJoinFamily()->where('family_fam.fam_DateDeactivated is null');
+    // by default show only active families
+    $familyActiveStatus = "active";
+    if ($_GET['familyActiveStatus'] == "inactive") {
+        $familyActiveStatus = "inactive";
+    } else if ($_GET['familyActiveStatus'] == "all") {
+        $familyActiveStatus = "all";
+    }
+
+    if ($familyActiveStatus == "active") {
+        $members->leftJoinFamily()->where('family_fam.fam_DateDeactivated is null');
+    } else {
+        if ($familyActiveStatus == "inactive") {
+            $members->leftJoinFamily()->where('family_fam.fam_DateDeactivated is not null');
         }
     }
+
     $members->find();
 
     $filterByClsId = '';
@@ -67,19 +76,19 @@ function listPeople(Request $request, Response $response, array $args)
         $option =  ListOptionQuery::create()->filterById(1)->filterByOptionId($id)->findOne();
         if ($id == 0) {
             $filterByClsId = gettext('Unassigned');
-            $sMode = $filterByClsId; 
+            $sMode = $filterByClsId;
         } else {
-           $filterByClsId = $option->getOptionName(); 
-            $sMode = $filterByClsId; 
+           $filterByClsId = $option->getOptionName();
+            $sMode = $filterByClsId;
         }
-        
+
     }
 
     $filterByFmrId = '';
     if (isset($_GET['FamilyRole'])) {
         $id = InputUtils::LegacyFilterInput($_GET['FamilyRole']);
         $option =  ListOptionQuery::create()->filterById(2)->filterByOptionId($id)->findOne();
-        
+
         if ($id == 0) {
             $filterByFmrId = gettext('Unassigned');
             $sMode = $filterByFmrId;

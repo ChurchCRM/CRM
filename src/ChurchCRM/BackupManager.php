@@ -32,13 +32,13 @@ namespace ChurchCRM\Backup
         * @var BackupType
         */
       protected $BackupType;
-      
+
       /**
        *
        * @var String
        */
       protected $TempFolder;
-   
+
       protected function CreateEmptyTempFolder()
       {
           // both backup and restore operations require a clean temporary working folder.  Create it.
@@ -51,7 +51,7 @@ namespace ChurchCRM\Backup
           return $TempFolder;
       }
   }
-  
+
   class BackupJob extends JobBase
   {
       /**
@@ -79,14 +79,14 @@ namespace ChurchCRM\Backup
        * @var Boolean
        */
       public $shouldEncrypt;
-      
+
       /**
        *
        * @var String
        */
       public $BackupPassword;
-      
-      
+
+
       /**
        *
        * @param String $BaseName
@@ -102,12 +102,13 @@ namespace ChurchCRM\Backup
           $this->shouldEncrypt = $EncryptBackup;
           $this->BackupPassword = $BackupPassword;
           LoggerUtils::getAppLogger()->debug(
-                  "Backup job created; ready to execute: Type: '" .
+              "Backup job created; ready to execute: Type: '" .
                   $this->BackupType .
                   "' Temp Folder: '" .
                   $this->TempFolder .
                   "' BaseName: '" . $this->BackupFileBaseName.
-                  "' Include extra files: '". ($this->IncludeExtraneousFiles ? 'true':'false') ."'");
+                  "' Include extra files: '". ($this->IncludeExtraneousFiles ? 'true':'false') ."'"
+          );
       }
 
       public function CopyToWebDAV($Endpoint, $Username, $Password)
@@ -133,18 +134,18 @@ namespace ChurchCRM\Backup
               }
               curl_close($ch);
               fclose($fh);
-              
+
               if (isset($error_msg)) {
                   throw new \Exception("Error backing up to remote: ". $error_msg);
               }
               LoggerUtils::getAppLogger()->debug("File send complete.  Took: " . $time->getMiliseconds() . "ms");
           } catch (\Exception $e) {
-              LoggerUtils::getAppLogger()->err("Error copying backup: " . $e);
+              LoggerUtils::getAppLogger()->error("Error copying backup: " . $e);
           }
           LoggerUtils::getAppLogger()->info("Backup copy completed.  Curl result: " . $result);
           return $result;
       }
-    
+
       private function CaptureSQLFile(\SplFileInfo $SqlFilePath)
       {
           global $sSERVERNAME, $sDATABASE, $sUSER, $sPASSWORD;
@@ -159,16 +160,16 @@ namespace ChurchCRM\Backup
               throw new Exception($message, 500);
           }
       }
-    
+
       private function ShouldBackupImageFile(SplFileInfo $ImageFile)
       {
           $isExtraneousFile = strpos($ImageFile->getFileName(), "-initials") != false ||
         strpos($ImageFile->getFileName(), "-remote") != false ||
         strpos($ImageFile->getPathName(), "thumbnails") != false;
-      
+
           return $ImageFile->isFile() && !(!$this->IncludeExtraneousFiles && $isExtraneousFile); //todo: figure out this logic
       }
-    
+
       private function CreateFullArchive()
       {
           $imagesAddedToArchive = array();
@@ -176,7 +177,7 @@ namespace ChurchCRM\Backup
           $phar = new PharData($this->BackupFile->getPathname());
           LoggerUtils::getAppLogger()->debug("Archive opened at: ".$this->BackupFile->getPathname());
           $phar->startBuffering();
-   
+
           $SqlFile =  new \SplFileInfo($this->TempFolder."/".'ChurchCRM-Database.sql');
           $this->CaptureSQLFile($SqlFile);
           $phar->addFile($SqlFile, 'ChurchCRM-Database.sql');
@@ -202,7 +203,7 @@ namespace ChurchCRM\Backup
           unlink($SqlFile);
           LoggerUtils::getAppLogger()->debug("Temp Database backup deleted: " . $SqlFile);
       }
-    
+
       private function CreateGZSql()
       {
           $SqlFile =  new \SplFileInfo($this->TempFolder."/".'ChurchCRM-Database.sql');
@@ -213,7 +214,7 @@ namespace ChurchCRM\Backup
           gzclose($gzf);
           unlink($SqlFile->getPathname());
       }
-      
+
       private function EncryptBackupFile()
       {
           LoggerUtils::getAppLogger()->info("Encrypting backup file: ".$this->BackupFile);
@@ -239,16 +240,16 @@ namespace ChurchCRM\Backup
           }
           $time->End();
           $percentExecutionTime = (($time->getMiliseconds()/1000)/ini_get('max_execution_time'))*100;
-          LoggerUtils::getAppLogger()->addInfo("Completed backup job.  Took : " . $time->getMiliseconds()."ms. ".$percentExecutionTime."% of max_execution_time");
+          LoggerUtils::getAppLogger()->info("Completed backup job.  Took : " . $time->getMiliseconds()."ms. ".$percentExecutionTime."% of max_execution_time");
           if ($percentExecutionTime > 80) {
               // if the backup took more than 80% of the max_execution_time, then write a warning to the log
-              LoggerUtils::getAppLogger()->addWarning("Backup task took more than 80% of max_execution_time (".ini_get('max_execution_time').").  Consider increasing this time to avoid a failure");
+              LoggerUtils::getAppLogger()->warning("Backup task took more than 80% of max_execution_time (".ini_get('max_execution_time').").  Consider increasing this time to avoid a failure");
           }
           $this->BackupDownloadFileName  = $this->BackupFile->getFilename();
           return true;
       }
   }
-  
+
   class RestoreJob extends JobBase
   {
       /**
@@ -256,7 +257,7 @@ namespace ChurchCRM\Backup
        * @var SplFileInfo
        */
       private $RestoreFile;
-      
+
       /**
        *
        * @var Array
@@ -272,13 +273,13 @@ namespace ChurchCRM\Backup
        * @var String
        */
       private $restorePassword;
-      
+
       private function IsIncomingFileFailed()
       {
           // Not actually sure what this is supposed to do, but it was working before??
           return $_SERVER['REQUEST_METHOD'] == 'POST' && empty($_POST) && empty($_FILES) && $_SERVER['CONTENT_LENGTH'] > 0;
       }
-      
+
       public function __construct()
       {
           LoggerUtils::getAppLogger()->info("Beginning to process incoming archvie for restoration");
@@ -298,13 +299,13 @@ namespace ChurchCRM\Backup
           LoggerUtils::getAppLogger()->debug("Detected backup type: " . $this->BackupType);
           LoggerUtils::getAppLogger()->info("Restore job created; ready to execute");
       }
-   
+
       private function DecryptBackup()
       {
           LoggerUtils::getAppLogger()->info("Decrypting file: " . $this->RestoreFile);
           $this->restorePassword = InputUtils::FilterString($_POST['restorePassword']);
           $tempfile = new \SplFileInfo($this->RestoreFile->getPathname()."temp");
-        
+
           try {
               File::decryptFileWithPassword($this->RestoreFile, $tempfile, $this->restorePassword);
               rename($tempfile, $this->RestoreFile);
@@ -334,7 +335,7 @@ namespace ChurchCRM\Backup
             break;
         }
       }
-      
+
       private function RestoreSQLBackup($SQLFileInfo)
       {
           $connection = Propel::getConnection();
@@ -342,7 +343,7 @@ namespace ChurchCRM\Backup
           SQLUtils::sqlImport($SQLFileInfo, $connection);
           LoggerUtils::getAppLogger()->debug("Finished restoring SQL table");
       }
-      
+
       private function RestoreFullBackup()
       {
           LoggerUtils::getAppLogger()->debug("Restoring full archive");
@@ -364,7 +365,7 @@ namespace ChurchCRM\Backup
           }
           LoggerUtils::getAppLogger()->debug("Finished restoring full archive");
       }
-      
+
       private function RestoreGZSQL()
       {
           LoggerUtils::getAppLogger()->debug("Decompressing gzipped SQL file: ". $this->RestoreFile);
@@ -381,7 +382,7 @@ namespace ChurchCRM\Backup
           unlink($this->RestoreFile);
           unlink($SqlFile->getPathname());
       }
-      
+
       private function PostRestoreCleanup()
       {
           //When restoring a database, do NOT let the database continue to create remote backups.
@@ -392,7 +393,7 @@ namespace ChurchCRM\Backup
           SystemConfig::setValue('sLastIntegrityCheckTimeStamp', null);
           LoggerUtils::getAppLogger()->debug("Reset System Settings for: bEnableExternalBackupTarget and sLastIntegrityCheckTimeStamp");
       }
-    
+
       public function Execute()
       {
           LoggerUtils::getAppLogger()->info("Executing restore job");
@@ -471,11 +472,11 @@ namespace ChurchCRM\Backup
               LoggerUtils::getAppLogger()->debug("Removed backup file from server filesystem");
           } else {
               $message = "Requested download does not exist: " . $path;
-              LoggerUtils::getAppLogger()->err($message);
+              LoggerUtils::getAppLogger()->error($message);
               throw new \Exception($message, 500);
           }
       }
   }
-  
-  
+
+
 }

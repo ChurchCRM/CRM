@@ -42,7 +42,7 @@ if ($nte_per_ID > 0) {
 
 //If deleting a note for a family, set the FamilyView page as the redirect
 elseif ($nte_fam_ID > 0) {
-    $sReroute = 'FamilyView.php?FamilyID='.$nte_fam_ID;
+    $sReroute = 'v2/family/'.$nte_fam_ID;
 }
 
 //Do we have confirmation?

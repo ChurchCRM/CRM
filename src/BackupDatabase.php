@@ -37,7 +37,7 @@ require 'Include/Header.php';
     </div>
     <div class="box-body">
         <ul>
-        <li><?= gettext('You should make a manual backup at least once a week unless you already have a regular backup procedule for your systems.') ?></li><br>
+        <li><?= gettext('You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems.') ?></li><br>
         <li><?= gettext('After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site.') ?></li><br>
         <li><?= gettext('If you are concerned about confidentiality of data stored in the ChurchCRM database, you should encrypt the backup data if it will be stored somewhere potentially accessible to others') ?></li><br>
         </ul>

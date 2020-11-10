@@ -65,7 +65,8 @@ msgid "This tool will assist you in manually backing up the ChurchCRM database."
 msgstr "这工具将会协助您手动备份ChurchCRM数据库"
 
 #: 
-msgid "You should make a manual backup at least once a week unless you already have a regular backup procedule for your systems."
+#, fuzzy
+msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
 msgstr "你应该进行手动备份，每周至少一次，除非你已经有一个的定期备份procedule为您的系统。"
 
 #: 
@@ -1117,10 +1118,6 @@ msgstr "事件Nonattendees"
 #: 
 msgid "Event Guests"
 msgstr "事件客人"
-
-#: 
-msgid "Back to Report Menu"
-msgstr "返回报告菜单"
 
 #: 
 msgid "There "
@@ -3564,10 +3561,6 @@ msgid "eMail Dashboard"
 msgstr "电子邮件仪表板"
 
 #: 
-msgid "People not in Mailchimp"
-msgstr "联系人不在Mailchimp中"
-
-#: 
 msgid "No families need canvassers assigned"
 msgstr "没有家庭需要分配拉票"
 
@@ -4223,7 +4216,8 @@ msgid "Add New Person"
 msgstr "添加新成员"
 
 #: 
-msgid "View All Persons"
+#, fuzzy
+msgid "View All People"
 msgstr "查看所有成员"
 
 #: 
@@ -4359,7 +4353,8 @@ msgid "Church Information"
 msgstr "教会信息"
 
 #: 
-msgid "User setup"
+#, fuzzy
+msgid "User Setup"
 msgstr "用户设置"
 
 #: 
@@ -4489,10 +4484,6 @@ msgstr "清理计数："
 #: 
 msgid "Cleaned count since last send:"
 msgstr "自上次发送以来清理的计数："
-
-#: 
-msgid "Missing emails report"
-msgstr "电子邮件缺失报告"
 
 #: 
 msgid "Functions"
@@ -7307,10 +7298,6 @@ msgid "Please confirm reset failed login count"
 msgstr "请确认重置登录失败次数"
 
 #: 
-msgid "Password reset for"
-msgstr "密码重置为"
-
-#: 
 msgid "View Active Families"
 msgstr "查看活跃家庭"
 
@@ -7705,18 +7692,6 @@ msgstr "你想删除此人吗？这不能被撤消。"
 #: 
 msgid "Are you sure you want to unassign this property?"
 msgstr "您确定要取消分配此属性吗？"
-
-#: 
-msgid "Head of Household"
-msgstr "户主"
-
-#: 
-msgid "Spouse"
-msgstr "伴侣"
-
-#: 
-msgid "Child"
-msgstr "孩子"
 
 #: 
 msgid "Select a family"
@@ -8664,10 +8639,6 @@ msgstr "数据库版本"
 #: 
 msgid "Application Prerequisites"
 msgstr "应用程序的先决条件"
-
-#: 
-msgid "WebServer Modules"
-msgstr "网页服务器模块"
 
 #: 
 msgid "Invalid country name supplied"

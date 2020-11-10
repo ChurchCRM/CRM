@@ -27,6 +27,7 @@ $isAdmin = AuthenticationManager::GetCurrentUser()->isAdmin();
     </div>
     <strong><?= gettext('Copyright') ?> &copy; <?= SystemService::getCopyrightDate() ?> <a href="http://www.churchcrm.io" target="_blank"><b>Church</b>CRM</a>.</strong> <?= gettext('All rights reserved') ?>.
     | <a href="https://twitter.com/church_crm" target="_blank"><i class="fa fa-twitter"></i> <?= gettext("Follow us on Twitter") ?></a>
+    | <span class="flag-icon flag-icon-squared"></span>
 </footer>
 
 <!-- The Right Sidebar -->
@@ -78,9 +79,8 @@ $isAdmin = AuthenticationManager::GetCurrentUser()->isAdmin();
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/adminlte/adminlte.min.js"></script>
 
 <!-- InputMask -->
-<script src="<?= SystemURLs::getRootPath() ?>/skin/external/inputmask/jquery.inputmask.bundle.min.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/external/inputmask/inputmask.date.extensions.min.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/external/inputmask/inputmask.extensions.min.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/external/inputmask/jquery.inputmask.min.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/external/inputmask/inputmask.binding.js"></script>
 
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/bootstrap-daterangepicker/daterangepicker.js"></script>

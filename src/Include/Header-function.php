@@ -85,6 +85,7 @@ function Header_body_scripts()
             root: "<?= SystemURLs::getRootPath() ?>",
             fullURL:"<?= SystemURLs::getURL() ?>",
             lang: "<?= $localeInfo->getLanguageCode() ?>",
+            userId: "<?= AuthenticationManager::GetCurrentUser()->getId() ?>",
             locale: "<?= $localeInfo->getLocale() ?>",
             shortLocale: "<?= $localeInfo->getShortLocale() ?>",
             maxUploadSize: "<?= SystemService::getMaxUploadFileSize(true) ?>",

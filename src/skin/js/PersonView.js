@@ -68,47 +68,35 @@ $(document).ready(function () {
 
     });
 
-    $('#assign-property-form').submit(function (event) {
-        event.preventDefault();
-        var thisForm = $(this);
-        var url = thisForm.attr('action');
-        var dataToSend = thisForm.serialize();
-
-        $.ajax({
-            type: 'POST',
-            url: url,
-            data: dataToSend,
-            dataType: 'json',
-            success: function (data, status, xmlHttpReq) {
-                if (data && data.success) {
-                    location.reload();
-                }
+    $('#assign-property-btn').click(function (event) {
+        let propertyId = "";
+        let value = "";
+        let dataToSend = $('#assign-property-form').serializeArray();
+        $.each(dataToSend, function (key, field) {
+            if (field.name == "PropertyId") {
+                propertyId = field.value;
+            } else if (field.name == "PropertyValue") {
+                value = field.value;
             }
         });
-
+        window.CRM.APIRequest({
+            method: 'POST',
+            path: 'people/properties/person/'+ window.CRM.currentPersonID + '/' + propertyId,
+            data: JSON.stringify({"value":  value})
+        }).done(function(data) {
+            location.reload();
+        });
     });
 
     $('.remove-property-btn').click(function (event) {
-        event.preventDefault();
-        var thisLink = $(this);
-        var dataToSend = {
-            PersonId: thisLink.data('person_id'),
-            PropertyId: thisLink.data('property_id')
-        };
-        var url = window.CRM.root + '/api/properties/persons/unassign';
-
+        let propertyId = $(this).data('property_id');
         bootbox.confirm(i18next.t('Are you sure you want to unassign this property?'), function (result) {
             if (result) {
-                $.ajax({
-                    type: 'DELETE',
-                    url: url,
-                    data: dataToSend,
-                    dataType: 'json',
-                    success: function (data, status, xmlHttpReq) {
-                        if (data && data.success) {
-                            location.reload();
-                        }
-                    }
+                window.CRM.APIRequest({
+                    method: 'DELETE',
+                    path: 'people/properties/person/'+ window.CRM.currentPersonID + '/' + propertyId,
+                }).done(function(data) {
+                    location.reload();
                 });
             }
         });
@@ -167,28 +155,30 @@ $(document).ready(function () {
 
     });
 
-   $.ajax({
-       type: 'GET',
-       dataType: 'json',
-       url: window.CRM.root + '/api/mailchimp/person/' + window.CRM.currentPersonID,
-       success: function (data, status, xmlHttpReq) {
-           for (emailData of data) {
-               let htmlVal = "";
-               let eamilMD5 = emailData["emailMD5"];
-               for (list of emailData["list"]) {
-                   let listName = list["name"];
-                   let listStatus = list["status"];
-                   if (listStatus != 404) {
-                       let listOpenRate = list["stats"]["avg_open_rate"]*100;
-                       htmlVal = htmlVal + '<li>' + listName + " (" + listStatus + ") - " + listOpenRate + "% "+  i18next.t("open rate") + " </li>";
-                   }
-               }
-               if (htmlVal === "") {
-                   htmlVal = i18next.t("Not Subscribed ");
-               }
-               $('#'+ eamilMD5).html(htmlVal);
-           }
-       }
-   });
+    if (window.CRM.plugin.mailchimp) {
+        $.ajax({
+            type: 'GET',
+            dataType: 'json',
+            url: window.CRM.root + '/api/mailchimp/person/' + window.CRM.currentPersonID,
+            success: function (data, status, xmlHttpReq) {
+                for (emailData of data) {
+                    let htmlVal = "";
+                    let eamilMD5 = emailData["emailMD5"];
+                    for (list of emailData["list"]) {
+                        let listName = list["name"];
+                        let listStatus = list["status"];
+                        if (listStatus != 404) {
+                            let listOpenRate = list["stats"]["avg_open_rate"] * 100;
+                            htmlVal = htmlVal + '<li>' + listName + " (" + listStatus + ") - " + listOpenRate + "% " + i18next.t("open rate") + " </li>";
+                        }
+                    }
+                    if (htmlVal === "") {
+                        htmlVal = i18next.t("Not Subscribed ");
+                    }
+                    $('#' + eamilMD5).html(htmlVal);
+                }
+            }
+        });
+    }
 
 });

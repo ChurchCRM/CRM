@@ -1,15 +1,15 @@
 # see http://about.travis-ci.org/docs/user/languages/php/ for more hints
 language: php
 php:
-  - 7.2
   - 7.3
-
-rvm:
-  - 2.2
+  - 7.4
 
 sudo: required
-dist: trusty
+dist: xenial
 group: edge
+
+services:
+  - mysql
 
 notifications:
   webhooks:
@@ -24,8 +24,6 @@ env:
   - DB=mysql
 
 before_install:
- - sudo apt-get update
- - sudo apt-get install ruby-full
  - sudo gem install sass -v 3.4.25
  - chmod +x ./travis-ci/*.sh
  - chmod +x ./scripts/*.sh
@@ -33,17 +31,13 @@ before_install:
 
 # prepare travis ci for the build process
 install:
- - npm install
- - npm run composer-install
- - npm run orm-gen
- - npm run build-react
+ - npm run deploy
  - npm run tests-install
 
 # linters
 before_script:
  - ./travis-ci/setup-db.sh
  - cp $TRAVIS_BUILD_DIR/travis-ci/Config.php $TRAVIS_BUILD_DIR/src/Include/Config.php
- - sudo apt-get update
  - sudo apt-get install apache2 libapache2-mod-fastcgi
  - sudo cp ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf.default ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf
  - sudo cp $TRAVIS_BUILD_DIR/travis-ci/www.conf ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.d/www.conf

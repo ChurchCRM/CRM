@@ -62,7 +62,7 @@ elseif (isset($_GET['FamilyID']) && AuthenticationManager::GetCurrentUser()->isE
     $iRecordID = $iFamilyID;
     $sQuerystring = '?FamilyID='.$iFamilyID;
     $sTypeName = 'Family';
-    $sBackPage = 'FamilyView.php?FamilyID='.$iFamilyID;
+    $sBackPage = 'v2/family/'.$iFamilyID;
 
     // Get the name of the family
     $sSQL = 'SELECT fam_Name FROM family_fam WHERE fam_ID = '.$iFamilyID;
@@ -102,22 +102,21 @@ require 'Include/Header.php';
 <?= gettext('Please confirm removal of this property from this').' '.$sTypeName ?>:
 
 
-<table cellpadding="4">
+<table class="table table-striped">
 	<tr>
-		<td align="right"><b><?php echo $sTypeName ?>:</b></td>
+		<td><b><?php echo $sTypeName ?>:</b></td>
 		<td><?= $sName ?></td>
 	</tr>
 	<tr>
-		<td align="right"><b><?= gettext('Unassigning') ?>:</b></td>
+		<td><b><?= gettext('Unassigning') ?>:</b></td>
 		<td><?= $sPropertyName ?></td>
 	</tr>
 </table>
 
-<p>
-	<a href="PropertyUnassign.php<?= $sQuerystring.'&PropertyID='.$iPropertyID.'&Confirmed=Yes' ?>"><?= gettext('Yes, unassign this Property') ?></a>
-</p>
-<p>
-	<a href="<?= $sBackPage ?>"><?= gettext('No, retain this assignment') ?></a>
-</p>
+<div class="text-center">
+	<a class="btn btn-default" href="<?= $sBackPage ?>"><?= gettext('No, retain this assignment') ?></a>
+
+    <a class="btn btn-danger" href="PropertyUnassign.php<?= $sQuerystring.'&PropertyID='.$iPropertyID.'&Confirmed=Yes' ?>"><?= gettext('Yes, unassign this Property') ?></a>
+</div>
 
 <?php require 'Include/Footer.php' ?>

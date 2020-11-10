@@ -65,7 +65,8 @@ msgid "This tool will assist you in manually backing up the ChurchCRM database."
 msgstr "Questo strumento ti assisterà nel salvataggio del database del ChurchCRM."
 
 #: 
-msgid "You should make a manual backup at least once a week unless you already have a regular backup procedule for your systems."
+#, fuzzy
+msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
 msgstr "Dovresti eseguire un backup manuale almeno una volta alla settimana, a meno che questa procedura non sia già automatizzata"
 
 #: 
@@ -1087,10 +1088,6 @@ msgstr "Evento Nonattendees"
 #: 
 msgid "Event Guests"
 msgstr "Evento Ospiti"
-
-#: 
-msgid "Back to Report Menu"
-msgstr "Torna al Menu Rapporto"
 
 #: 
 msgid "There "
@@ -3485,10 +3482,6 @@ msgid "eMail Dashboard"
 msgstr "eMail Dashboard"
 
 #: 
-msgid "People not in Mailchimp"
-msgstr "Persone non in Mailchimp"
-
-#: 
 msgid "No families need canvassers assigned"
 msgstr "Non ci sono le famiglie hanno bisogno procacciatori assegnati"
 
@@ -4133,7 +4126,8 @@ msgid "Add New Person"
 msgstr "Aggiungi Persona"
 
 #: 
-msgid "View All Persons"
+#, fuzzy
+msgid "View All People"
 msgstr "Visualizza tutte le persone"
 
 #: 
@@ -4270,7 +4264,8 @@ msgid "Church Information"
 msgstr "Informazioni sulla Chiesa"
 
 #: 
-msgid "User setup"
+#, fuzzy
+msgid "User Setup"
 msgstr "Configurazione dell'utente"
 
 #: 
@@ -4400,10 +4395,6 @@ msgstr "Conteggio pulito:"
 #: 
 msgid "Cleaned count since last send:"
 msgstr "Conteggio pulito dall'ultimo invio:"
-
-#: 
-msgid "Missing emails report"
-msgstr "Rapporto sulle email mancanti"
 
 #: 
 msgid "Functions"
@@ -7290,10 +7281,6 @@ msgid "Please confirm reset failed login count"
 msgstr "Conferma il reset del conteggio degli accessi fallito"
 
 #: 
-msgid "Password reset for"
-msgstr "Ripristino password per"
-
-#: 
 msgid "View Active Families"
 msgstr "Visualizza famiglie attive"
 
@@ -7688,18 +7675,6 @@ msgstr "Vuoi cancellare questa persona? Questo non può essere annullato."
 #: 
 msgid "Are you sure you want to unassign this property?"
 msgstr "Sei sicuro di voler annullare l'assegnazione di questa proprietà?"
-
-#: 
-msgid "Head of Household"
-msgstr "Capofamiglia"
-
-#: 
-msgid "Spouse"
-msgstr "Moglie"
-
-#: 
-msgid "Child"
-msgstr "Figlio/a"
 
 #: 
 msgid "Select a family"
@@ -8662,10 +8637,6 @@ msgid "Application Prerequisites"
 msgstr "Prerequisiti dell'applicazione"
 
 #: 
-msgid "WebServer Modules"
-msgstr "Moduli WebServer"
-
-#: 
 msgid "Invalid country name supplied"
 msgstr "Nome del paese non valido"
 
@@ -8781,14 +8752,6 @@ msgstr "Rilevati tipi di deposito non supportati"
 #: 
 msgid "Support for eGive, Credit Card, and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions."
 msgstr "Il supporto per i pagamenti di eGive, carta di credito e assegno circolare è stato dichiarato obsoleto. I rapporti non bancari esistenti potrebbero non essere più accessibili nelle versioni future."
-
-#: 
-msgid "Unsupported Stored Payment Data Detected"
-msgstr "Rilevati dati di pagamento non supportati"
-
-#: 
-msgid "Support for stored payment data has been removed. This data will soon be removed from your database"
-msgstr "Il supporto per i dati di pagamento memorizzati è stato rimosso. Questi dati saranno presto rimossi dal tuo database"
 
 #: 
 msgid "Estonian"

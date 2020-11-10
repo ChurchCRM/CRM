@@ -1,13 +1,12 @@
 {
     "name": "churchcrm/crm",
-    "version": "4.1.0",
+    "version": "4.2.3",
     "type": "project",
     "keywords": [
         "church",
         "crm"
     ],
     "homepage": "http://www.churchcrm.io",
-    "time": "2020-06-08 19:06:41",
     "license": "MIT",
     "authors": [
         {
@@ -30,32 +29,32 @@
     },
     "config": {
         "platform": {
-            "php": "7.2"
+            "php": "7.3"
         }
     },
     "require": {
-        "drewm/mailchimp-api": "^2.5",
-        "slim/slim": "3.9.2",
-        "slim/php-view": "2.2",
-        "monolog/monolog": "^1.17",
-        "knplabs/github-api": "~1.4",
+        "drewm/mailchimp-api": "^2.5.4",
+        "slim/slim": "3.12.3",
+        "slim/php-view": "2.2.1",
+        "monolog/monolog": "^2.1",
+        "knplabs/github-api": "1.7.1",
         "propel/propel": "~2.0@dev",
         "setasign/fpdf": "1.8.1",
-        "phpmailer/phpmailer": "6.1.*",
+        "phpmailer/phpmailer": "6.1.8",
         "verot/class.upload.php": "dev-master",
-        "ifsnop/mysqldump-php": "2.*",
-        "php-http/message": "1.6.0",
-        "geocoder-php/google-maps-provider": "4.2.0",
+        "ifsnop/mysqldump-php": "v2.9",
+        "php-http/message": "1.8.0",
+        "geocoder-php/google-maps-provider": "4.5.0",
         "geocoder-php/bing-maps-provider": "4.0.0",
-        "mustache/mustache": "~2.5",
-        "nexmo/client": "@beta",
-        "slim/http-cache": "^0.4.0",
-        "azuyalabs/yasumi": "^1.8",
-        "defuse/php-encryption": "^2.2",
-        "pragmarx/google2fa": "^6.1",
-        "endroid/qr-code": "^3.6",
-        "symfony/yaml": "^3.4",
-        "symfony/translation": "^4.4"
+        "mustache/mustache": "v2.13.0",
+        "vonage/client": "^2.4",
+        "slim/http-cache": "^1.0.0",
+        "azuyalabs/yasumi": "^1.8.1",
+        "defuse/php-encryption": "^2.2.1",
+        "pragmarx/google2fa": "^6.1.3",
+        "endroid/qr-code": "^3.9.3",
+        "symfony/yaml": "^3.4.45",
+        "symfony/translation": "^4.4.15"
     },
     "autoload": {
         "classmap": [

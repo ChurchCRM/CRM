@@ -10,15 +10,95 @@ $(document).ready(function () {
         dataType: 'json'
     }).done(function (data) {
         if (data["PreFamilyId"]) {
-            $("#lastFamily").attr("href", window.CRM.root + "/v2/family/" + data["PreFamilyId"] + "/view");
+            $("#lastFamily").attr("href", window.CRM.root + "/v2/family/" + data["PreFamilyId"]);
         } else {
             $("#lastFamily").addClass("hidden");
         }
         if (data["NextFamilyId"]) {
-            $("#nextFamily").attr("href", window.CRM.root + "/v2/family/" + data["NextFamilyId"] + "/view");
+            $("#nextFamily").attr("href", window.CRM.root + "/v2/family/" + data["NextFamilyId"]);
         } else {
             $("#nextFamily").addClass("hidden");
         }
+    });
+
+    let masterFamilyProperties = {};
+    let selectedFamilyProperties = []
+    window.CRM.APIRequest({
+        path: 'people/properties/family',
+    }).done(function(data) {
+        masterFamilyProperties = data;
+
+        window.CRM.APIRequest({
+            path: 'people/properties/family/'+ window.CRM.currentFamily,
+        }).done(function(data) {
+            if (masterFamilyProperties.length > data.length) {
+                $("#add-family-property").removeClass("hidden");
+            }
+
+            $("#family-property-loading").addClass("hidden");
+            if (data.length == 0) {
+                $("#family-property-no-data").removeClass("hidden");
+            } else {
+                $("#family-property-table").removeClass("hidden");
+                $.each(data, function (key, prop) {
+                    let propId = prop.id;
+                    let editIcon = "";
+                    let deleteIcon = "";
+                    let propName = prop.name;
+                    let propVal = prop.value;
+                    selectedFamilyProperties.push(propId);
+                    if (prop.allowEdit) {
+                        editIcon = "<a href='"+ window.CRM.root  +"/PropertyAssign.php?FamilyID="+ window.CRM.currentFamily +"&PropertyID=" + propId +"'><button type='button' class='btn btn-xs btn-primary'><i class='fa fa-edit'></i></button></a>";
+                    }
+                    if (prop.allowDelete) {
+                        deleteIcon = "<div class='btn btn-xs btn-danger delete-property' data-property-id='" + propId +"' data-property-name='"+propName+"'><i class='fa fa-trash'></i></div>";
+                    }
+
+                    $('#family-property-table tr:last').after('<tr><td>' + deleteIcon + " " + editIcon  + '</td><td>' + propName + '</td><td>' + propVal + '</td></tr>');
+                });
+                $(".delete-property").click(function (){
+                    let propId = $(this).attr("data-property-id");
+                    bootbox.confirm({
+                        title: i18next.t("Family Property Unassignment"),
+                        message: i18next.t("Do you want to remove") + " " + $(this).attr("data-property-name") + " " +  "property" ,
+                        locale: window.CRM.locale,
+                        callback: function (result) {
+                            if(result) {
+                                window.CRM.APIRequest({
+                                    path: 'people/properties/family/'+ window.CRM.currentFamily+"/"+ propId,
+                                    method: 'DELETE',
+                                }).done(function(data) {
+                                    location.reload();
+                                });
+                            }
+                        }
+                    });
+                });
+            }
+        });
+    });
+
+    $("#add-family-property").click(function (){
+        let inputOptions = [];
+        $.each(masterFamilyProperties, function (index, masterProp){
+            if ($.inArray(masterProp.ProId, selectedFamilyProperties) == -1){
+                inputOptions.push({text: masterProp.ProName, value: masterProp.ProId})
+            }
+        });
+        bootbox.prompt({
+            title: i18next.t("Assign a New Property"),
+            locale: window.CRM.locale,
+            inputType: 'select',
+            inputOptions: inputOptions,
+            callback: function (result) {
+                window.CRM.APIRequest({
+                    path: 'people/properties/family/'+ window.CRM.currentFamily+"/"+result,
+                    method: 'POST',
+                }).done(function(data) {
+                    location.reload();
+                });
+            }
+        });
     });
 
     var dataTableConfig = {
@@ -33,7 +113,7 @@ $(document).ready(function () {
                 title: i18next.t('Edit'),
                 data: 'GroupKey',
                 render: function (data, type, row) {
-                    return '<a class="btn btn-default" href="'+window.CRM.root+'/PledgeEditor.php?GroupKey='+ row.GroupKey + '&amp;linkBack=FamilyView.php?FamilyID='+window.CRM.currentFamily+'"><i class="fa fa-pencil bg-info"></i></a>';
+                    return '<a class="btn btn-default" href="'+window.CRM.root+'/PledgeEditor.php?GroupKey='+ row.GroupKey + '&amp;linkBack=v2/family/'+window.CRM.currentFamily+'"><i class="fa fa-pencil bg-info"></i></a>';
                 },
                 searchable: false
             },
@@ -43,7 +123,7 @@ $(document).ready(function () {
                 title: i18next.t('Delete'),
                 data: 'GroupKey',
                 render: function (data, type, row) {
-                    return '<a class="btn btn-default" href="'+window.CRM.root+'/PledgeDelete.php?GroupKey='+ row.GroupKey + '&amp;linkBack=FamilyView.php?FamilyID='+window.CRM.currentFamily+'"><i class="fa fa-trash bg-red"></i></a>';
+                    return '<a class="btn btn-default" href="'+window.CRM.root+'/PledgeDelete.php?GroupKey='+ row.GroupKey + '&amp;linkBack=v2/family/'+window.CRM.currentFamily+'"><i class="fa fa-trash bg-red"></i></a>';
                 },
                 searchable: false
             },
@@ -187,12 +267,9 @@ $(document).ready(function () {
                         method: "POST",
                         path: "families/" + window.CRM.currentFamily + "/activate/" + !window.CRM.currentActive
                     }).done(function (data) {
-                        if (data.success == true)
-                            if (window.CRM.currentFamilyView == 1) {
-                                window.location.href = window.CRM.root + "/FamilyView.php?FamilyID=" + window.CRM.currentFamily;
-                            } else {
-                                window.location.href = window.CRM.root + "/v2/family/" + window.CRM.currentFamily + "/view";
-                            }
+                        if (data.success == true) {
+                            window.location.href = window.CRM.root + "/v2/family/" + window.CRM.currentFamily;
+                        }
                     });
                 }
             }
@@ -228,27 +305,29 @@ $(document).ready(function () {
         });
     }
 
-    $.ajax({
-        type: 'GET',
-        dataType: 'json',
-        url: window.CRM.root + '/api/mailchimp/family/' + window.CRM.currentFamily,
-        success: function (data, status, xmlHttpReq) {
-            for (emailData of data) {
-                let htmlVal = "";
-                let eamilMD5 = emailData["emailMD5"];
-                for (list of emailData["list"]) {
-                    let listName = list["name"];
-                    let listStatus = list["status"];
-                    if (listStatus != 404) {
-                        let listOpenRate = list["stats"]["avg_open_rate"]*100;
-                        htmlVal = htmlVal + listName + " (" + listStatus + ") - " + listOpenRate + "% "+  i18next.t("open rate");
+    if (window.CRM.plugin.mailchimp) {
+        $.ajax({
+            type: 'GET',
+            dataType: 'json',
+            url: window.CRM.root + '/api/mailchimp/family/' + window.CRM.currentFamily,
+            success: function (data, status, xmlHttpReq) {
+                for (emailData of data) {
+                    let htmlVal = "";
+                    let eamilMD5 = emailData["emailMD5"];
+                    for (list of emailData["list"]) {
+                        let listName = list["name"];
+                        let listStatus = list["status"];
+                        if (listStatus != 404) {
+                            let listOpenRate = list["stats"]["avg_open_rate"]*100;
+                            htmlVal = htmlVal + listName + " (" + listStatus + ") - " + listOpenRate + "% "+  i18next.t("open rate");
+                        }
                     }
+                    if (htmlVal === "") {
+                        htmlVal = i18next.t("Not Subscribed ");
+                    }
+                    $('#'+ eamilMD5).html(htmlVal);
                 }
-                if (htmlVal === "") {
-                    htmlVal = i18next.t("Not Subscribed ");
-                }
-                $('#'+ eamilMD5).html(htmlVal);
             }
-        }
-    });
+        });
+    }
 });

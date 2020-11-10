@@ -3,8 +3,8 @@
 namespace ChurchCRM\dto;
 
 use ChurchCRM\Config;
-use ChurchCRM\dto\ConfigItem;
 use ChurchCRM\data\Countries;
+use Monolog\Logger;
 
 class SystemConfig
 {
@@ -30,14 +30,14 @@ class SystemConfig
     {
         return [
             "Choices" => [
-                gettext("DEBUG").":100",
-                gettext("INFO").":200",
-                gettext("NOTICE").":250",
-                gettext("WARNING").":300",
-                gettext("ERROR").":400",
-                gettext("CRITICAL").":500",
-                gettext("ALERT").":550",
-                gettext("EMERGENCY").":600"
+                gettext("DEBUG").":".Logger::DEBUG,
+                gettext("INFO").":".Logger::INFO,
+                gettext("NOTICE").":".Logger::NOTICE,
+                gettext("WARNING").":".Logger::WARNING,
+                gettext("ERROR").":".Logger::ERROR,
+                gettext("CRITICAL").":".Logger::CRITICAL,
+                gettext("ALERT").":".Logger::ALERT,
+                gettext("EMERGENCY").":".Logger::EMERGENCY
             ]
         ];
     }
@@ -86,7 +86,7 @@ class SystemConfig
         "sSMTPUser" => new ConfigItem(29, "sSMTPUser", "text", "", gettext("SMTP Username")),
         "sSMTPPass" => new ConfigItem(30, "sSMTPPass", "password", "", gettext("SMTP Password")),
         "bShowFamilyData" => new ConfigItem(33, "bShowFamilyData", "boolean", "1", gettext("Unavailable person info inherited from assigned family for display?\rThis option causes certain info from a person's assigned family record to be\rdisplayed IF the corresponding info has NOT been entered for that person. ")),
-        "sLanguage" => new ConfigItem(39, "sLanguage", "choice", "en_US", gettext("Internationalization (I18n) support"), "", json_encode(SystemConfig::getSupportedLocales())),
+        "sLanguage" => new ConfigItem(39, "sLanguage", "choice", "en_US", gettext("Internationalization (I18n) support"), "https://poeditor.com/join/project?hash=RABdnDSqAt", json_encode(SystemConfig::getSupportedLocales())),
         "iFYMonth" => new ConfigItem(40, "iFYMonth", "choice", "1", gettext("First month of the fiscal year"),"",'{"Choices":["1","2","3","4","5","6","7","8","9","10","11","12"]}'),
         "sGoogleMapsGeocodeKey" => new ConfigItem(44, "sGoogleMapsGeocodeKey", "text", "", gettext("Google Maps API Key used for Geocoding addresses") , "https://developers.google.com/maps/documentation/javascript/get-api-key"),
         "sBingMapKey" => new ConfigItem(10000, "sBingMapKey", "text", "", gettext("Bing map API requires a unique key") , "https://www.microsoft.com/maps/create-a-bing-maps-key.aspx"),
@@ -246,7 +246,7 @@ class SystemConfig
         "s2FAApplicationName" => new ConfigItem(2070,"s2FAApplicationName", "text",gettext("ChurchCRM"),gettext("Specify the application name to be displayed in authenticator app")),
         "bSendUserDeletedEmail" => new ConfigItem(2071,"bSendUserDeletedEmail", "boolean","0",gettext("Send an email notifying users when their account has been deleted")),
         "sGoogleMapsRenderKey" => new ConfigItem(2072, "sGoogleMapsRenderKey", "text", "", gettext("Google Maps API Key used for rendering maps in browser") , "https://developers.google.com/maps/documentation/javascript/get-api-key"),
-
+        "bEnabledDashboardV2" => new ConfigItem(2073, "bEnabledDashboardV2", "boolean", "0", gettext("Enable New Dashboard")),
         );
   }
 
@@ -254,10 +254,10 @@ class SystemConfig
   {
     return array (
       gettext('Church Information') =>["sChurchName","sChurchAddress","sChurchCity","sChurchState","sChurchZip","sChurchCountry","sChurchPhone","sChurchEmail","sHomeAreaCode","sTimeZone","iChurchLatitude","iChurchLongitude", "sChurchWebSite","sChurchFB", "sChurchTwitter"],
-      gettext('User setup') => ["iMinPasswordLength","iMinPasswordChange","iMaxFailedLogins","iSessionTimeout","aDisallowedPasswords","bEnableLostPassword","bEnable2FA","bRequire2FA","s2FAApplicationName","bSendUserDeletedEmail"],
+      gettext('User Setup') => ["iMinPasswordLength","iMinPasswordChange","iMaxFailedLogins","iSessionTimeout","aDisallowedPasswords","bEnableLostPassword","bEnable2FA","bRequire2FA","s2FAApplicationName","bSendUserDeletedEmail"],
       gettext('Email Setup')  => ["sSMTPHost","bSMTPAuth","sSMTPUser","sSMTPPass", "iSMTPTimeout","sToEmailAddress", "bPHPMailerAutoTLS","sPHPMailerSMTPSecure"],
       gettext('People Setup')  => ["sDirClassifications","sDirRoleHead","sDirRoleSpouse","sDirRoleChild","sDefaultCity","sDefaultState","sDefaultCountry","bShowFamilyData","bHidePersonAddress","bHideFriendDate","bHideFamilyNewsletter","bHideWeddingDate","bHideLatLon","bForceUppercaseZip","bEnableSelfRegistration", "bAllowEmptyLastName", "iPersonNameStyle", "iProfilePictureListSize", "sNewPersonNotificationRecipientIDs", "IncludeDataInNewPersonNotifications","sGreeterCustomMsg1","sGreeterCustomMsg2"],
-      gettext('Enabled Features')  => ["bEnabledFinance", "bEnabledSundaySchool","bEnabledEvents","bEnabledCalendar","bEnabledFundraiser","bEnabledEmail", "bEnabledMenuLinks"],
+      gettext('Enabled Features')  => ["bEnabledFinance", "bEnabledSundaySchool","bEnabledEvents","bEnabledCalendar","bEnabledFundraiser","bEnabledEmail", "bEnabledMenuLinks", "bEnabledDashboardV2"],
       gettext('Map Settings')  => ["sGeoCoderProvider","sGoogleMapsGeocodeKey","sGoogleMapsRenderKey","sBingMapKey","sGMapIcons", "iMapZoom","sISTusername","sISTpassword"],
       gettext('Report Settings')  => ["sQBDTSettings","leftX","incrementY","sTaxReport1","sTaxReport2","sTaxReport3","sTaxSigner","sReminder1","sReminderSigner","sReminderNoPledge","sReminderNoPayments","sConfirm1","sConfirm2","sConfirm3","sConfirm4","sConfirm5","sConfirm6","sDear","sConfirmSincerely","sConfirmSigner","sPledgeSummary1","sPledgeSummary2","sDirectoryDisclaimer1","sDirectoryDisclaimer2","bDirLetterHead","sZeroGivers","sZeroGivers2","sZeroGivers3", "iPDFOutputType"],
       gettext('Financial Settings') => ["sDepositSlipType","iChecksPerDepositForm","bDisplayBillCounts","bUseScannedChecks","bEnableNonDeductible","iFYMonth","bUseDonationEnvelopes","aFinanceQueries"],
@@ -391,4 +391,11 @@ class SystemConfig
        return (!empty(self::getValue("sOLPURL")));
     }
 
+
+    public static function debugEnabled() {
+        if (self::getValue("sLogLevel") == Logger::DEBUG) {
+            return true;
+        }
+        return false;
+    }
 }

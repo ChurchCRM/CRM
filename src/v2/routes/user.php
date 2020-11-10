@@ -32,7 +32,7 @@ function viewUserNotFound(Request $request, Response $response, array $args)
 
 function viewUser(Request $request, Response $response, array $args)
 {
-    $renderer = new PhpRenderer('templates/admin/');
+    $renderer = new PhpRenderer('templates/user/');
     $curUser = AuthenticationManager::GetCurrentUser();
     $userId = $args["id"];
 
@@ -60,8 +60,8 @@ function adminChangeUserPassword(Request $request, Response $response, array $ar
     $renderer = new PhpRenderer('templates/');
     $userId = $args["id"];
     $curUser = AuthenticationManager::GetCurrentUser();
-    
-    // make sure that the currently logged in user has 
+
+    // make sure that the currently logged in user has
     // admin permissions to change other users' passwords
     if (!$curUser->isAdmin()) {
         return $response->withStatus(403);
@@ -74,7 +74,7 @@ function adminChangeUserPassword(Request $request, Response $response, array $ar
     }
 
     if ($user->equals($curUser)) {
-        // Don't allow the current user (if admin) to set their new password 
+        // Don't allow the current user (if admin) to set their new password
         // make the user go through the "self-service" password change procedure
         return $response->withRedirect(SystemURLs::getRootPath() . "/v2/user/current/changepassword");
     }
@@ -92,9 +92,9 @@ function adminChangeUserPassword(Request $request, Response $response, array $ar
         }
         catch (PasswordChangeException $pwChangeExc) {
             $pageArgs['s'.$pwChangeExc->AffectedPassword.'PasswordError'] =  $pwChangeExc->getMessage();
-        }            
+        }
     }
 
     return $renderer->render($response, 'admin/adminchangepassword.php', $pageArgs);
-   
+
 }

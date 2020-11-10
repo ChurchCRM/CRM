@@ -61,7 +61,8 @@ msgid "Backup Database"
 msgstr "Databaza e kopjes rezervë"
 
 #: 
-msgid "You should make a manual backup at least once a week unless you already have a regular backup procedule for your systems."
+#, fuzzy
+msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
 msgstr "Ju duhet të bëni një backup manual të paktën një herë në javë nëse ju tashmë keni një procedule rregullt rezervë për sistemet tuaja."
 
 #: 
@@ -994,10 +995,6 @@ msgstr "Nonattendees Event"
 #: 
 msgid "Event Guests"
 msgstr "Guests Event"
-
-#: 
-msgid "Back to Report Menu"
-msgstr "Mbrapsht në Njoftoni Menu"
 
 #: 
 msgid "There "
@@ -3282,7 +3279,8 @@ msgid "Add New Person"
 msgstr "Shto person i ri"
 
 #: 
-msgid "View All Persons"
+#, fuzzy
+msgid "View All People"
 msgstr "Shiko të gjitha Persona"
 
 #: 

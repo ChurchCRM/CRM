@@ -65,7 +65,8 @@ msgid "This tool will assist you in manually backing up the ChurchCRM database."
 msgstr "Cet outil vous aidera à effectuer une sauvegarde manuelle de la base de données de ChurchCRM"
 
 #: 
-msgid "You should make a manual backup at least once a week unless you already have a regular backup procedule for your systems."
+#, fuzzy
+msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
 msgstr "Vous devriez faire une sauvegarde manuelle au moins une fois par semaine à moins que vous n'ayez déjà une procédure de sauvegarde régulière pour vos systèmes."
 
 #: 
@@ -1089,10 +1090,6 @@ msgstr "Les non participants à l&#39;événements"
 #: 
 msgid "Event Guests"
 msgstr "Invités de l&#39;événement"
-
-#: 
-msgid "Back to Report Menu"
-msgstr "Retour au menu rapport"
 
 #: 
 msgid "There "
@@ -3476,10 +3473,6 @@ msgid "eMail Dashboard"
 msgstr "Tableau de bord eMail"
 
 #: 
-msgid "People not in Mailchimp"
-msgstr "Les Personnes qui ne se trouvent pas dans Mailchimp"
-
-#: 
 msgid "No families need canvassers assigned"
 msgstr "Aucun besoin d'affecter un solliciteur pour les familles"
 
@@ -4125,7 +4118,8 @@ msgid "Add New Person"
 msgstr "Ajouter une personne"
 
 #: 
-msgid "View All Persons"
+#, fuzzy
+msgid "View All People"
 msgstr "Afficher toutes les personnes"
 
 #: 
@@ -4261,7 +4255,8 @@ msgid "Church Information"
 msgstr "Information de l'église"
 
 #: 
-msgid "User setup"
+#, fuzzy
+msgid "User Setup"
 msgstr "Réglages utilisateur"
 
 #: 
@@ -4391,10 +4386,6 @@ msgstr "Compte nettoyé :"
 #: 
 msgid "Cleaned count since last send:"
 msgstr "Comptes nettoyés depuis  la dernière fois :"
-
-#: 
-msgid "Missing emails report"
-msgstr "Rapport d&#39;emails manquant"
 
 #: 
 msgid "Functions"
@@ -7268,10 +7259,6 @@ msgstr "Action confirmée"
 msgid "Please confirm reset failed login count"
 msgstr "Veuillez confirmer l'échec de la réinitialisation de l'identifiant"
 
-#: 
-msgid "Password reset for"
-msgstr "Réinitialisation du Mot de Passe pour"
-
 #. "Voir" est plus court que "Afficher" (sinon, on ne voit pas dans le menu)
 #: 
 msgid "View Active Families"
@@ -7668,18 +7655,6 @@ msgstr "Voulez-vous supprimer cette personne ? Cette action ne pourra être annu
 #: 
 msgid "Are you sure you want to unassign this property?"
 msgstr "Êtes vous sûr de vouloir retirer cette propriété ?"
-
-#: 
-msgid "Head of Household"
-msgstr "Chef de famille"
-
-#: 
-msgid "Spouse"
-msgstr "Épou(x)se"
-
-#: 
-msgid "Child"
-msgstr "Enfant"
 
 #: 
 msgid "Select a family"
@@ -8636,10 +8611,6 @@ msgstr "Version de la base de données"
 #: 
 msgid "Application Prerequisites"
 msgstr "Prérequis pour l'application"
-
-#: 
-msgid "WebServer Modules"
-msgstr "Modules du serveur web"
 
 #: 
 msgid "Invalid country name supplied"

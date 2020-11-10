@@ -36,7 +36,7 @@ class PersonService
                     } else {
                         $familyRole .= gettext('Part');
                     }
-                    $familyRole .= gettext(' of the') . ' <a href="FamilyView.php?FamilyID=' . $values['familyID'] . '">' . $person->getFamily()->getName() . '</a> ' . gettext('family') . ' )';
+                    $familyRole .= gettext(' of the') . ' <a href="v2/family/' . $values['familyID'] . '">' . $person->getFamily()->getName() . '</a> ' . gettext('family') . ' )';
                 } else {
                     $familyRole = gettext('(No assigned family)');
                 }

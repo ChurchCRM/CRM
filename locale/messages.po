@@ -10,7 +10,7 @@ msgstr ""
 "#-#-#-#-#  messages.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-31 16:56-0700\n"
+"POT-Creation-Date: 2020-11-01 14:00-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,8 +25,16 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2020-05-31T23:56:30.590Z\n"
-"PO-Revision-Date: 2020-05-31T23:56:30.590Z\n"
+"POT-Creation-Date: 2020-11-01T22:00:10.279Z\n"
+"PO-Revision-Date: 2020-11-01T22:00:10.279Z\n"
+"#-#-#-#-#  react-js-strings.po (i18next-conv)  #-#-#-#-#\n"
+"Project-Id-Version: i18next-conv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"POT-Creation-Date: 2020-11-01T22:00:10.482Z\n"
+"PO-Revision-Date: 2020-11-01T22:00:10.482Z\n"
 
 msgid "Backup Database"
 msgstr ""
@@ -37,7 +45,7 @@ msgstr ""
 
 msgid ""
 "You should make a manual backup at least once a week unless you already have "
-"a regular backup procedule for your systems."
+"a regular backup procedure for your systems."
 msgstr ""
 
 msgid ""
@@ -661,6 +669,12 @@ msgstr ""
 msgid "Add New Person"
 msgstr ""
 
+msgid "View Active Persons"
+msgstr ""
+
+msgid "View Inactive Persons"
+msgstr ""
+
 msgid "View All Persons"
 msgstr ""
 
@@ -803,21 +817,6 @@ msgid "Reset System"
 msgstr ""
 
 msgid "Links"
-msgstr ""
-
-msgid "Unknown"
-msgstr ""
-
-msgid "Other"
-msgstr ""
-
-msgid "Head of Household"
-msgstr ""
-
-msgid "Spouse"
-msgstr ""
-
-msgid "Child"
 msgstr ""
 
 msgid "New Person Added"
@@ -975,7 +974,16 @@ msgstr ""
 msgid "Check number not valid for 'CASH' payment"
 msgstr ""
 
+msgid "No email passed in"
+msgstr ""
+
+msgid "Mailchimp is not active"
+msgstr ""
+
 msgid "Part"
+msgstr ""
+
+msgid "Unknown"
 msgstr ""
 
 msgid "Self Registration"
@@ -1030,6 +1038,9 @@ msgid "Missing"
 msgstr ""
 
 msgid "not found"
+msgstr ""
+
+msgid " has a type mismatch"
 msgstr ""
 
 msgid "External Calendar API is disabled"
@@ -1680,10 +1691,13 @@ msgstr ""
 msgid "Google Maps API Key used for rendering maps in browser"
 msgstr ""
 
+msgid "Enable New Dashboard"
+msgstr ""
+
 msgid "Church Information"
 msgstr ""
 
-msgid "User setup"
+msgid "User Setup"
 msgstr ""
 
 msgid "Email Setup"
@@ -1704,13 +1718,7 @@ msgstr ""
 msgid "Financial Settings"
 msgstr ""
 
-msgid "System Settings"
-msgstr ""
-
 msgid "Quick Search"
-msgstr ""
-
-msgid "Backup"
 msgstr ""
 
 msgid "Localization"
@@ -1720,6 +1728,12 @@ msgid "Integration"
 msgstr ""
 
 msgid "Church Services"
+msgstr ""
+
+msgid "Backup"
+msgstr ""
+
+msgid "System Settings"
 msgstr ""
 
 msgid "An invalid configuration name has been requested"
@@ -1906,14 +1920,6 @@ msgid ""
 "Support for eGive, Credit Card, and Bank Draft payments has been "
 "deprecated.  Existing non-bank reports may no longer be accessible in future "
 "versions."
-msgstr ""
-
-msgid "Unsupported Stored Payment Data Detected"
-msgstr ""
-
-msgid ""
-"Support for stored payment data has been removed. This data will soon be "
-"removed from your database"
 msgstr ""
 
 msgid "Missing Coordinates"
@@ -2255,7 +2261,10 @@ msgstr ""
 msgid "All Events of Type"
 msgstr ""
 
-msgid "Back to Report Menu"
+msgid "Event Attendance"
+msgstr ""
+
+msgid "Generate attendance -AND- non-attendance reports for events"
 msgstr ""
 
 msgid "There is"
@@ -3399,6 +3408,12 @@ msgstr ""
 msgid "Toggle navigation"
 msgstr ""
 
+msgid "of translation completed"
+msgstr ""
+
+msgid "Help translate this project"
+msgstr ""
+
 msgid "Your Cart"
 msgstr ""
 
@@ -3996,10 +4011,19 @@ msgstr ""
 msgid "Timeline"
 msgstr ""
 
+msgid "Mailchimp"
+msgstr ""
+
 msgid "Assigned Groups"
 msgstr ""
 
 msgid "Notes"
+msgstr ""
+
+msgid "Lists"
+msgstr ""
+
+msgid "loading"
 msgstr ""
 
 msgid "No group assignments."
@@ -4082,6 +4106,9 @@ msgid "Quarterly"
 msgstr ""
 
 msgid "Once"
+msgstr ""
+
+msgid "Other"
 msgstr ""
 
 msgid "Payment by"
@@ -4231,10 +4258,10 @@ msgstr ""
 msgid "Unassigning"
 msgstr ""
 
-msgid "Yes, unassign this Property"
+msgid "No, retain this assignment"
 msgstr ""
 
-msgid "No, retain this assignment"
+msgid "Yes, unassign this Property"
 msgstr ""
 
 msgid "Query Listing"
@@ -4457,6 +4484,21 @@ msgstr ""
 msgid "for funds "
 msgstr ""
 
+msgid "Pledge Summary By Family"
+msgstr ""
+
+msgid "Method"
+msgstr ""
+
+msgid "Pledge"
+msgstr ""
+
+msgid "Paid"
+msgstr ""
+
+msgid "Owe"
+msgstr ""
+
 msgid "Donated Items:"
 msgstr ""
 
@@ -4587,9 +4629,6 @@ msgid "CURRENT FAMILY WITH DONATIONS"
 msgstr ""
 
 msgid "Schedule"
-msgstr ""
-
-msgid "Method"
 msgstr ""
 
 msgid "Date Updated"
@@ -4850,13 +4889,55 @@ msgid ""
 "value."
 msgstr ""
 
-msgid "User Listing"
-msgstr ""
-
 msgid "New User"
 msgstr ""
 
 msgid "User Settings"
+msgstr ""
+
+msgid "Global User Settings"
+msgstr ""
+
+msgid "General"
+msgstr ""
+
+msgid "Passwords"
+msgstr ""
+
+msgid "2FA"
+msgstr ""
+
+msgid "Session Timeout"
+msgstr ""
+
+msgid "Max Failed Login"
+msgstr ""
+
+msgid "Enable Password Reset"
+msgstr ""
+
+msgid "Send email to Deleted Users"
+msgstr ""
+
+msgid "Min Password Length"
+msgstr ""
+
+msgid "Min Password Characters Delta"
+msgstr ""
+
+msgid "Disallowed Passwords"
+msgstr ""
+
+msgid "Enable 2FA"
+msgstr ""
+
+msgid "Require 2FA"
+msgstr ""
+
+msgid "2FA Application Name"
+msgstr ""
+
+msgid "User Listing"
 msgstr ""
 
 msgid "Actions"
@@ -4872,27 +4953,6 @@ msgid "Failed Logins"
 msgstr ""
 
 msgid "Two Factor Status"
-msgstr ""
-
-msgid "User Delete Confirmation"
-msgstr ""
-
-msgid "Please confirm removal of user status from:"
-msgstr ""
-
-msgid "Action Confirmation"
-msgstr ""
-
-msgid "Please confirm reset failed login count"
-msgstr ""
-
-msgid "Please confirm the password reset of this user"
-msgstr ""
-
-msgid "Password reset for"
-msgstr ""
-
-msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr ""
 
 msgid "Volunteer Opportunity Delete Confirmation"
@@ -4966,6 +5026,12 @@ msgstr ""
 msgid "Your cart has been successfully emptied"
 msgstr ""
 
+msgid "List not found"
+msgstr ""
+
+msgid "List not inList"
+msgstr ""
+
 msgid "Deactivated the Family"
 msgstr ""
 
@@ -5011,9 +5077,6 @@ msgstr ""
 msgid "The role could not be assigned."
 msgstr ""
 
-msgid "The record could not be found."
-msgstr ""
-
 msgid "The property is already assigned."
 msgstr ""
 
@@ -5021,6 +5084,9 @@ msgid "The property is successfully assigned."
 msgstr ""
 
 msgid "The property could not be assigned."
+msgstr ""
+
+msgid "The record could not be found."
 msgstr ""
 
 msgid "The property is successfully unassigned."
@@ -5045,6 +5111,15 @@ msgid "The people and families has been cleared from the database."
 msgstr ""
 
 msgid "Bad userId"
+msgstr ""
+
+msgid "Unsupported user config"
+msgstr ""
+
+msgid "Invalid userId"
+msgstr ""
+
+msgid "Unsupported user setting - "
 msgstr ""
 
 msgid "eGive Import"
@@ -5360,7 +5435,13 @@ msgstr ""
 msgid "Families Without Emails"
 msgstr ""
 
-msgid "People not in Mailchimp"
+msgid "People not in"
+msgstr ""
+
+msgid "Invalid List id"
+msgstr ""
+
+msgid "Audience not in the ChurchCRM"
 msgstr ""
 
 msgid "PDFs successfully emailed "
@@ -5395,19 +5476,34 @@ msgid ""
 "This will reset the system data and will restart the system as a new install."
 msgstr ""
 
-msgid "System Information"
+msgid "ChurchCRM Installation Information"
 msgstr ""
 
 msgid "Software Version"
 msgstr ""
 
-msgid "Valid Mail Server Settings"
+msgid "System Information"
 msgstr ""
 
 msgid "Database"
 msgstr ""
 
 msgid "Database Version"
+msgstr ""
+
+msgid "Database Server Version"
+msgstr ""
+
+msgid "Web Server"
+msgstr ""
+
+msgid "Server Software"
+msgstr ""
+
+msgid "Email Information"
+msgstr ""
+
+msgid "Valid Mail Server Settings"
 msgstr ""
 
 msgid "Application Prerequisites"
@@ -5417,9 +5513,6 @@ msgid "Application Integrity Check"
 msgstr ""
 
 msgid "Details:"
-msgstr ""
-
-msgid "WebServer Modules"
 msgstr ""
 
 msgid "Add Menu"
@@ -5438,9 +5531,6 @@ msgid "Start with http:// or https://"
 msgstr ""
 
 msgid "Menus"
-msgstr ""
-
-msgid "Username"
 msgstr ""
 
 msgid "You have no items in your cart."
@@ -5545,7 +5635,13 @@ msgstr ""
 msgid "Cleaned count since last send:"
 msgstr ""
 
-msgid "Missing emails report"
+msgid "List maintenance"
+msgstr ""
+
+msgid "People not in list"
+msgstr ""
+
+msgid "Audience not in the CRM"
 msgstr ""
 
 msgid "is not configured"
@@ -5617,6 +5713,9 @@ msgstr ""
 msgid "Metadata"
 msgstr ""
 
+msgid "Loading"
+msgstr ""
+
 msgid "Pledges and Payments"
 msgstr ""
 
@@ -5678,6 +5777,12 @@ msgstr ""
 msgid "Add Person"
 msgstr ""
 
+msgid "Today's Birthdays"
+msgstr ""
+
+msgid "Today's Wedding Anniversaries"
+msgstr ""
+
 msgid ""
 "Enter your current password, then your new password twice.  Passwords must "
 "be at least"
@@ -5712,6 +5817,33 @@ msgstr ""
 msgid ""
 "Include/Config.php must define an encryption key for storing 2FA secret keys "
 "in the database by setting a value for"
+msgstr ""
+
+msgid "Login Info"
+msgstr ""
+
+msgid "Username"
+msgstr ""
+
+msgid "Login Count"
+msgstr ""
+
+msgid "Failed Login"
+msgstr ""
+
+msgid "Api Key"
+msgstr ""
+
+msgid "Regen API Key"
+msgstr ""
+
+msgid "Permissions"
+msgstr ""
+
+msgid "Manage Notes"
+msgstr ""
+
+msgid "Skins"
 msgstr ""
 
 msgid "Family Member Count"
@@ -6754,6 +6886,9 @@ msgstr ""
 msgid "Zimbabwe"
 msgstr ""
 
+msgid "Afrikaans"
+msgstr ""
+
 msgid "Albanian"
 msgstr ""
 
@@ -6788,6 +6923,9 @@ msgid "French - France"
 msgstr ""
 
 msgid "German - Germany"
+msgstr ""
+
+msgid "Hebrew"
 msgstr ""
 
 msgid "Hungarian"
@@ -6983,6 +7121,12 @@ msgstr ""
 msgid "Done, show me the homepage!"
 msgstr ""
 
+msgid "Family Property Unassignment"
+msgstr ""
+
+msgid "Do you want to remove"
+msgstr ""
+
 msgid "Pledge or Payment"
 msgstr ""
 
@@ -7008,6 +7152,12 @@ msgid "Please confirm deactivation of family"
 msgstr ""
 
 msgid "Please confirm activation of family"
+msgstr ""
+
+msgid "open rate"
+msgstr ""
+
+msgid "Not Subscribed "
 msgstr ""
 
 msgid "You are about to add a new deposit without a comment"
@@ -7098,4 +7248,128 @@ msgid "Are you sure you want to remove this person's membership from"
 msgstr ""
 
 msgid "Are you sure you want to unassign this property?"
+msgstr ""
+
+msgid "Failed generate a new API Key"
+msgstr ""
+
+msgid "User Delete Confirmation"
+msgstr ""
+
+msgid "Please confirm removal of user status from:"
+msgstr ""
+
+msgid "Action Confirmation"
+msgstr ""
+
+msgid "Please confirm reset failed login count"
+msgstr ""
+
+msgid "Please confirm the password reset of this user"
+msgstr ""
+
+msgid "Please confirm disabling 2 Factor Auth for this user"
+msgstr ""
+
+msgid "Start Date"
+msgstr ""
+
+msgid "End Date"
+msgstr ""
+
+msgid "Pinned Calendars"
+msgstr ""
+
+msgid "This field is required"
+msgstr ""
+
+msgid "Text"
+msgstr ""
+
+msgid "Event Description"
+msgstr ""
+
+msgid ""
+"Enrolling your ChurchCRM user account in Two Factor Authention provides an "
+"additional layer of defense against bad actors trying to access your account."
+msgstr ""
+
+msgid ""
+"ChurchCRM Two factor supports any TOTP authenticator app, so you're free to "
+"choose between Microsoft Authenticator, Google Authenticator, Authy, "
+"LastPass, and others"
+msgstr ""
+
+msgid ""
+"When you sign in to ChurchCRM, you'll still enter your username and password "
+"like normal"
+msgstr ""
+
+msgid ""
+"However, you'll also need to supply a one-time code from your authenticator "
+"device to complete your login"
+msgstr ""
+
+msgid ""
+"After successfully entering both your credentials, and the one-time code, "
+"you'll be logged in as normal"
+msgstr ""
+
+msgid ""
+"To prevent being locked out of your ChurchCRM account, please ensure you're "
+"ready to complete two factor enrollment before clicking begin"
+msgstr ""
+
+msgid ""
+"Beginning enrollment will invalidate any previously enrolled 2 factor "
+"devices and recovery codes."
+msgstr ""
+
+msgid ""
+"When you click next, you'll be prompted to scan a QR code to enroll your "
+"authenticator app."
+msgstr ""
+
+msgid ""
+"To confirm enrollment, you'll need to enter the code generated by your "
+"authenticator app"
+msgstr ""
+
+msgid ""
+"After confirming app enrollment, single-use recovery codes will be generated "
+"and displayed."
+msgstr ""
+
+msgid ""
+"Recovery codes can be used instead of a code generated from your "
+"authenticator app."
+msgstr ""
+
+msgid "Store these in a secure location"
+msgstr ""
+
+msgid "Begin Two Factor Authentication Enrollment"
+msgstr ""
+
+msgid "2 Factor Authentication Secret"
+msgstr ""
+
+msgid "Regenerate 2 Factor Authentication Secret"
+msgstr ""
+
+msgid "Remove 2 Factor Authentication Secret"
+msgstr ""
+
+msgid "Enter TOTP code to confirm enrollment"
+msgstr ""
+
+msgid "2 Factor Authentication Enrollment Success"
+msgstr ""
+
+msgid "Please store these recovery codes in a safe location"
+msgstr ""
+
+msgid ""
+"If you ever lose access to your newly enrolled authenticator app, you'll "
+"need to use a recovery code to gain access to your account"
 msgstr ""
