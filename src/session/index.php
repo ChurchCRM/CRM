@@ -15,11 +15,10 @@ use Slim\Views\PhpRenderer;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Slim\Middleware\VersionMiddleware;
 use ChurchCRM\dto\SystemConfig;
-use Monolog\Logger;
 
 // Instantiate the app
 $container = new Container;
-if (SystemConfig::getValue("sLogLevel") == Logger::DEBUG) {
+if (SystemConfig::debugEnabled()) {
     $container["settings"]['displayErrorDetails'] = true;
 }
 // Add middleware to the application

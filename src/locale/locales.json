@@ -196,7 +196,7 @@
     "select2": true
   },
   "Portuguese - Brazil": {
-    "poEditor": "pt-BR",
+    "poEditor": "pt-br",
     "locale": "pt_BR",
     "languageCode": "pt-BR",
     "countryCode": "BR",

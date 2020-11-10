@@ -2,7 +2,6 @@
 
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\SystemConfig;
-use Monolog\Logger;
 
 error_reporting(E_ALL);
 ini_set('log_errors', 1);
@@ -19,7 +18,7 @@ if (file_exists('../Include/Config.php')) {
 
     $app = new \Slim\App();
     $container = $app->getContainer();
-    if (SystemConfig::getValue("sLogLevel") == Logger::DEBUG) {
+    if (SystemConfig::debugEnabled()) {
         $container["settings"]['displayErrorDetails'] = true;
     }
 
