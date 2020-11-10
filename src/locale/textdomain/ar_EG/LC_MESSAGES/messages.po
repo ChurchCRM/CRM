@@ -4110,7 +4110,8 @@ msgid "Add New Person"
 msgstr "إضافة شخص جديد"
 
 #: 
-msgid "View All Persons"
+#, fuzzy
+msgid "View All People"
 msgstr "عرض جميع الاشخاص"
 
 #: 
@@ -7645,18 +7646,6 @@ msgstr "هل تريد حذف هذا الشخص؟ هذا لا يمكن الترا
 #: 
 msgid "Are you sure you want to unassign this property?"
 msgstr "هل أنت متأكد أنك تريد إلغاء تعيين هذا العقار؟"
-
-#: 
-msgid "Head of Household"
-msgstr "رب الأسرة"
-
-#: 
-msgid "Spouse"
-msgstr "الزوج/الزوجة"
-
-#: 
-msgid "Child"
-msgstr "ابن/ابنه"
 
 #: 
 msgid "Select a family"

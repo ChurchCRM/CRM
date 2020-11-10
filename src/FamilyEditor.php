@@ -639,7 +639,7 @@ require 'Include/Header.php';
 
 ?>
 
-<form method="post" action="FamilyEditor.php?FamilyID=<?php echo $iFamilyID ?>">
+<form method="post" action="FamilyEditor.php?FamilyID=<?php echo $iFamilyID ?>" id="familyEditor">
 	<input type="hidden" Name="iFamilyID" value="<?= $iFamilyID ?>">
 	<input type="hidden" name="FamCount" value="<?= $iFamilyMemberRows ?>">
 	<div class="box box-info clearfix">
@@ -1113,7 +1113,7 @@ require 'Include/Header.php';
     echo '<td colspan="2" align="center">';
     echo '<input type="hidden" Name="UpdateBirthYear" value="'.$UpdateBirthYear.'">';
 
-    echo '<input type="submit" class="btn btn-primary" value="'.gettext('Save').'" Name="FamilySubmit"> ';
+    echo '<input type="submit" class="btn btn-primary" value="'.gettext('Save').'" Name="FamilySubmit" id="FamilySubmitBottom"> ';
     if (AuthenticationManager::GetCurrentUser()->isAddRecordsEnabled()) {
         echo ' <input type="submit" class="btn btn-info" value="'.gettext('Save and Add').'" name="FamilySubmitAndAdd"> ';
     }

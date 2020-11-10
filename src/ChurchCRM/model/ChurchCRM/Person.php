@@ -75,7 +75,6 @@ class Person extends BasePerson implements iPhoto
         }
         return false;
 
-
     }
 
     public function getFormattedBirthDate()

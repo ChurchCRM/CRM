@@ -45,7 +45,7 @@ class GeoUtils
                 $long = $coordinates->getLongitude();
             }
         } catch (\Exception $exception) {
-            $logger->warn("issue creating geoCoder " . $exception->getMessage());
+            $logger->warning("issue creating geoCoder " . $exception->getMessage());
         }
 
         return array(

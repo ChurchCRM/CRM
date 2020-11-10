@@ -111,7 +111,7 @@ require 'Include/Header.php';
 <div class="row">
   <div class="col-lg-12">
     <div class="box box-body">
-      <form method=post action=SystemSettings.php>
+      <form name="SystemSettingsForm" method=post action=SystemSettings.php>
         <div class="nav-tabs-custom">
           <ul class="nav nav-tabs">
             <?php foreach (SystemConfig::getCategories() as $category=>$settings) {

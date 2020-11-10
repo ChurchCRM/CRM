@@ -4277,7 +4277,8 @@ msgid "Add New Person"
 msgstr "Nova Pessoa"
 
 #: 
-msgid "View All Persons"
+#, fuzzy
+msgid "View All People"
 msgstr "Ver Pessoas"
 
 #: 
@@ -7848,18 +7849,6 @@ msgstr "Deseja  excluir esta pessoa? Isso não pode ser desfeito."
 #: 
 msgid "Are you sure you want to unassign this property?"
 msgstr "Tem certeza de que deseja desatribuir essa propriedade?"
-
-#: 
-msgid "Head of Household"
-msgstr "Chefe de família"
-
-#: 
-msgid "Spouse"
-msgstr "Esposa"
-
-#: 
-msgid "Child"
-msgstr "Filho"
 
 #: 
 msgid "Select a family"

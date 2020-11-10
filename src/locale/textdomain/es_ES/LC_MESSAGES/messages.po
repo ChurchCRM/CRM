@@ -4116,7 +4116,8 @@ msgid "Add New Person"
 msgstr "Añadir Nueva Persona"
 
 #: 
-msgid "View All Persons"
+#, fuzzy
+msgid "View All People"
 msgstr "Ver todas las Personas"
 
 #: 
@@ -7686,19 +7687,6 @@ msgstr "Desea eliminar a esta persona? Esto no puede deshacerse."
 msgid "Are you sure you want to unassign this property?"
 msgstr "¿Está seguro de que desea desasignar esta propiedad?"
 
-#. Cabeza is more neutral than jefe i think
-#: 
-msgid "Head of Household"
-msgstr "Cabeza del Hogar"
-
-#: 
-msgid "Spouse"
-msgstr "Cónyuge"
-
-#: 
-msgid "Child"
-msgstr "Niño"
-
 #: 
 msgid "Select a family"
 msgstr "Seleccione una familia"
@@ -9522,11 +9510,13 @@ msgid "Do you want to remove"
 msgstr "Desea remover?"
 
 #: 
-msgid "View Active Persons"
+#, fuzzy
+msgid "View Active People"
 msgstr "Ver personas activas"
 
 #: 
-msgid "View Inactive Persons"
+#, fuzzy
+msgid "View Inactive People"
 msgstr "Ver personas inactivas"
 
 #: 
@@ -9540,4 +9530,12 @@ msgstr "Aniversarios de bodas de hoy"
 #: 
 msgid "Enable New Dashboard"
 msgstr "Activar Nuevo Dashboard"
+
+#: 
+msgid "Api Key"
+msgstr "Llave de API"
+
+#: 
+msgid "Regen API Key"
+msgstr "Regenerar llave de API"
 

@@ -4240,7 +4240,8 @@ msgid "Add New Person"
 msgstr "添加新成員"
 
 #: 
-msgid "View All Persons"
+#, fuzzy
+msgid "View All People"
 msgstr "查看所有成員"
 
 #: 
@@ -7811,18 +7812,6 @@ msgid "Are you sure you want to unassign this property?"
 msgstr "您確定要取消分配此屬性嗎？"
 
 #: 
-msgid "Head of Household"
-msgstr "戶主"
-
-#: 
-msgid "Spouse"
-msgstr "伴侶"
-
-#: 
-msgid "Child"
-msgstr "孩子"
-
-#: 
 msgid "Select a family"
 msgstr "選擇一個家庭"
 
@@ -9802,12 +9791,12 @@ msgstr "您要刪除嗎"
 
 #: 
 #, fuzzy
-msgid "View Active Persons"
+msgid "View Active People"
 msgstr "查看活躍的人"
 
 #: 
 #, fuzzy
-msgid "View Inactive Persons"
+msgid "View Inactive People"
 msgstr "查看不活躍的人"
 
 #: 
