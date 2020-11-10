@@ -34,17 +34,19 @@
         "sort-packages": true
     },
     "require": {
-        "azuyalabs/yasumi": "^1.8.1",
-        "defuse/php-encryption": "^2.2.1",
-        "drewm/mailchimp-api": "^2.5.4",
-        "endroid/qr-code": "^3.9.3",
-        "geocoder-php/bing-maps-provider": "4.0.0",
-        "geocoder-php/google-maps-provider": "4.5.0",
+        "azuyalabs/yasumi": "^2.3.0",
+        "defuse/php-encryption": "^2.2",
+        "drewm/mailchimp-api": "^2.5",
+        "endroid/qr-code": "^3.9",
+        "geocoder-php/bing-maps-provider": "^4.1",
+        "geocoder-php/google-maps-provider": "^4.5",
+        "guzzlehttp/guzzle": "^6.5.5",
         "ifsnop/mysqldump-php": "v2.9",
         "knplabs/github-api": "1.7.1",
         "monolog/monolog": "^2.1",
         "mustache/mustache": "v2.13.0",
         "php-http/message": "1.8.0",
+        "php-http/guzzle6-adapter": "v2.0.1",
         "phpmailer/phpmailer": "6.1.8",
         "pragmarx/google2fa": "^6.1.3",
         "propel/propel": "~2.0@dev",
@@ -55,7 +57,7 @@
         "symfony/translation": "^4.4.15",
         "symfony/yaml": "^3.4.45",
         "verot/class.upload.php": "dev-master",
-        "vonage/client": "^2.4"
+        "vonage/client": "^2.3"
     },
     "autoload": {
         "classmap": [

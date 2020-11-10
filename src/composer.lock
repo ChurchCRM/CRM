@@ -4,30 +4,34 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8036049d98fdbb5bc1bc271133593672",
+    "content-hash": "f47dd80d24763e74346f30ca06f7443e",
     "packages": [
         {
             "name": "azuyalabs/yasumi",
-            "version": "1.8.1",
+            "version": "2.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/azuyalabs/yasumi.git",
-                "reference": "845041d89a9e2dca198a8275903287999e7d4d77"
+                "reference": "e2f37e6de3b15642b83275a24bbfe101cd5c7791"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/azuyalabs/yasumi/zipball/845041d89a9e2dca198a8275903287999e7d4d77",
-                "reference": "845041d89a9e2dca198a8275903287999e7d4d77",
+                "url": "https://api.github.com/repos/azuyalabs/yasumi/zipball/e2f37e6de3b15642b83275a24bbfe101cd5c7791",
+                "reference": "e2f37e6de3b15642b83275a24bbfe101cd5c7791",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.6.0"
+                "ext-json": "*",
+                "php": ">=7.2"
             },
             "require-dev": {
-                "friendsofphp/php-cs-fixer": "^2.6",
-                "fzaninotto/faker": "~1.7",
-                "mikey179/vfsstream": "~1.6",
-                "phpunit/phpunit": "~5.7"
+                "friendsofphp/php-cs-fixer": "^2.16",
+                "fzaninotto/faker": "^1.9",
+                "mikey179/vfsstream": "^1.6",
+                "phpunit/phpunit": "^8.5"
+            },
+            "suggest": {
+                "ext-calendar": "For calculating the date of Easter"
             },
             "type": "library",
             "autoload": {
@@ -42,10 +46,12 @@
             "authors": [
                 {
                     "name": "Sacha Telgenhof",
-                    "email": "me@sachatelgenhof.com"
+                    "email": "me@sachatelgenhof.com",
+                    "role": "Maintainer"
                 }
             ],
-            "description": "Yasumi is an easy PHP Library for calculating national holidays.",
+            "description": "The easy PHP Library for calculating holidays.",
+            "homepage": "https://www.yasumi.dev",
             "keywords": [
                 "Bank",
                 "calculation",
@@ -58,10 +64,17 @@
                 "time"
             ],
             "support": {
+                "docs": "https://www.yasumi.dev",
                 "issues": "https://github.com/azuyalabs/yasumi/issues",
-                "source": "https://github.com/azuyalabs/yasumi/tree/support/1.8.x"
+                "source": "https://github.com/azuyalabs/yasumi"
             },
-            "time": "2019-01-11T07:54:19+00:00"
+            "funding": [
+                {
+                    "url": "https://www.buymeacoffee.com/sachatelgenhof",
+                    "type": "other"
+                }
+            ],
+            "time": "2020-06-22T12:46:20+00:00"
         },
         {
             "name": "bacon/bacon-qr-code",
@@ -494,21 +507,21 @@
         },
         {
             "name": "geocoder-php/bing-maps-provider",
-            "version": "4.0.0",
+            "version": "4.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/geocoder-php/bing-maps-provider.git",
-                "reference": "bcbe769ce53c8bbadad2226ddf4d5b7e3c772015"
+                "reference": "c328da1670a634e50440c5a6cf36b302e4d90e89"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/geocoder-php/bing-maps-provider/zipball/bcbe769ce53c8bbadad2226ddf4d5b7e3c772015",
-                "reference": "bcbe769ce53c8bbadad2226ddf4d5b7e3c772015",
+                "url": "https://api.github.com/repos/geocoder-php/bing-maps-provider/zipball/c328da1670a634e50440c5a6cf36b302e4d90e89",
+                "reference": "c328da1670a634e50440c5a6cf36b302e4d90e89",
                 "shasum": ""
             },
             "require": {
                 "geocoder-php/common-http": "^4.0",
-                "php": "^7.0",
+                "php": "^7.2",
                 "willdurand/geocoder": "^4.0"
             },
             "provide": {
@@ -516,10 +529,9 @@
             },
             "require-dev": {
                 "geocoder-php/provider-integration-tests": "^1.0",
-                "nyholm/psr7": "^0.2.2",
                 "php-http/curl-client": "^1.7",
                 "php-http/message": "^1.0",
-                "phpunit/phpunit": "^6.1"
+                "phpunit/phpunit": "^7.5"
             },
             "type": "library",
             "extra": {
@@ -541,16 +553,16 @@
             ],
             "authors": [
                 {
-                    "name": "William DURAND",
+                    "name": "William Durand",
                     "email": "william.durand1@gmail.com"
                 }
             ],
             "description": "Geocoder BigMaps adapter",
             "homepage": "http://geocoder-php.org/Geocoder/",
             "support": {
-                "source": "https://github.com/geocoder-php/bing-maps-provider/tree/master"
+                "source": "https://github.com/geocoder-php/bing-maps-provider/tree/4.1.0"
             },
-            "time": "2017-06-30T06:41:22+00:00"
+            "time": "2020-07-04T13:18:10+00:00"
         },
         {
             "name": "geocoder-php/common-http",
@@ -1580,126 +1592,6 @@
             "time": "2020-02-14T08:15:52+00:00"
         },
         {
-            "name": "nexmo/client",
-            "version": "2.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Nexmo/nexmo-php-complete.git",
-                "reference": "664082abac14f6ab9ceec9abaf2e00aeb7c17333"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Nexmo/nexmo-php-complete/zipball/664082abac14f6ab9ceec9abaf2e00aeb7c17333",
-                "reference": "664082abac14f6ab9ceec9abaf2e00aeb7c17333",
-                "shasum": ""
-            },
-            "require": {
-                "nexmo/client-core": "^2.0",
-                "php": ">=7.1",
-                "php-http/guzzle6-adapter": "^2.0"
-            },
-            "type": "library",
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Tim Lytle",
-                    "email": "tim@nexmo.com",
-                    "homepage": "http://twitter.com/tjlytle",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Michael Heap",
-                    "email": "michael.heap@vonage.com",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Lorna Mitchell",
-                    "email": "lorna.mitchell@vonage.com",
-                    "role": "Developer"
-                }
-            ],
-            "description": "PHP Client for using Nexmo's API.",
-            "support": {
-                "email": "devrel@nexmo.com",
-                "source": "https://github.com/Nexmo/nexmo-php-complete/tree/2.0.0"
-            },
-            "time": "2019-08-20T16:06:03+00:00"
-        },
-        {
-            "name": "nexmo/client-core",
-            "version": "2.4.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Nexmo/nexmo-php.git",
-                "reference": "e44d21793eba4298629a20b5cd04eb3415ded123"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Nexmo/nexmo-php/zipball/e44d21793eba4298629a20b5cd04eb3415ded123",
-                "reference": "e44d21793eba4298629a20b5cd04eb3415ded123",
-                "shasum": ""
-            },
-            "require": {
-                "laminas/laminas-diactoros": "^1.8.4 || ^2.0",
-                "lcobucci/jwt": "^3.2",
-                "ocramius/package-versions": "^1.4",
-                "php": ">=7.2",
-                "psr/container": "^1.0",
-                "psr/http-client-implementation": "^1.0",
-                "vonage/nexmo-bridge": "^0.1.0"
-            },
-            "require-dev": {
-                "estahn/phpunit-json-assertions": "^3.0.0",
-                "guzzlehttp/guzzle": "^7.0",
-                "php-http/mock-client": "^1.4",
-                "phpstan/phpstan": "^0.12.11",
-                "phpunit/phpunit": "^7.4 || ^8.0",
-                "squizlabs/php_codesniffer": "^3.1"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Vonage\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Tim Lytle",
-                    "email": "tim@nexmo.com",
-                    "homepage": "http://twitter.com/tjlytle",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Michael Heap",
-                    "email": "michael.heap@vonage.com",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Lorna Mitchell",
-                    "email": "lorna.mitchell@vonage.com",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Chris Tankersley",
-                    "email": "chris.tankersley@vonage.com",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Deprecated PHP Client for using Vonage's API - please use vonage/client-core",
-            "support": {
-                "email": "devrel@nexmo.com",
-                "source": "https://github.com/Nexmo/nexmo-php/tree/2.4.1"
-            },
-            "time": "2020-10-02T19:23:18+00:00"
-        },
-        {
             "name": "nikic/fast-route",
             "version": "v1.3.0",
             "source": {
@@ -2444,12 +2336,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/propelorm/Propel2.git",
-                "reference": "2877f26677cdecab17f8290c702522ca7aaf10a2"
+                "reference": "4f1d0050b148eda9aa187d10a9b5e3b5f787bccb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/propelorm/Propel2/zipball/2877f26677cdecab17f8290c702522ca7aaf10a2",
-                "reference": "2877f26677cdecab17f8290c702522ca7aaf10a2",
+                "url": "https://api.github.com/repos/propelorm/Propel2/zipball/4f1d0050b148eda9aa187d10a9b5e3b5f787bccb",
+                "reference": "4f1d0050b148eda9aa187d10a9b5e3b5f787bccb",
                 "shasum": ""
             },
             "require": {
@@ -2468,7 +2360,8 @@
                 "ext-pdo": "*",
                 "monolog/monolog": "^1.3",
                 "phpstan/phpstan": "^0.12.4",
-                "phpunit/phpunit": "^7.5.15",
+                "phpunit/phpunit": "^8.0.0||^9.0.0",
+                "psalm/phar": "^4.1.0",
                 "spryker/code-sniffer": "^0.15.6"
             },
             "suggest": {
@@ -2510,7 +2403,7 @@
                 "issues": "https://github.com/propelorm/Propel2/issues",
                 "source": "https://github.com/propelorm/Propel2/tree/master"
             },
-            "time": "2020-10-26T14:02:50+00:00"
+            "time": "2020-11-10T09:26:07+00:00"
         },
         {
             "name": "psr/container",
@@ -4989,6 +4882,133 @@
             "time": "2020-01-16T12:02:46+00:00"
         },
         {
+            "name": "vonage/client",
+            "version": "2.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Vonage/vonage-php-sdk.git",
+                "reference": "e9c1492a9f1572124143e6fa963da417bb20d9ae"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Vonage/vonage-php-sdk/zipball/e9c1492a9f1572124143e6fa963da417bb20d9ae",
+                "reference": "e9c1492a9f1572124143e6fa963da417bb20d9ae",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "php-http/guzzle6-adapter": "^2.0",
+                "vonage/client-core": "^2.0"
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tim Lytle",
+                    "email": "tim@nexmo.com",
+                    "homepage": "http://twitter.com/tjlytle",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Michael Heap",
+                    "email": "michael.heap@vonage.com",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Lorna Mitchell",
+                    "email": "lorna.mitchell@vonage.com",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Chris Tankersley",
+                    "email": "chris.tankersley@vonage.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "PHP Client for using Vonage's API.",
+            "support": {
+                "email": "devrel@nexmo.com",
+                "issues": "https://github.com/Vonage/vonage-php-sdk/issues",
+                "source": "https://github.com/Vonage/vonage-php-sdk/tree/master"
+            },
+            "time": "2020-08-24T14:20:39+00:00"
+        },
+        {
+            "name": "vonage/client-core",
+            "version": "2.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Vonage/vonage-php-sdk-core.git",
+                "reference": "7c9c78f697ac425eb48a0ad6c40e76ae7b41548a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Vonage/vonage-php-sdk-core/zipball/7c9c78f697ac425eb48a0ad6c40e76ae7b41548a",
+                "reference": "7c9c78f697ac425eb48a0ad6c40e76ae7b41548a",
+                "shasum": ""
+            },
+            "require": {
+                "composer/package-versions-deprecated": "^1.11",
+                "laminas/laminas-diactoros": "^1.8.4 || ^2.0",
+                "lcobucci/jwt": "^3.2",
+                "php": ">=7.2",
+                "psr/container": "^1.0",
+                "psr/http-client-implementation": "^1.0",
+                "vonage/nexmo-bridge": "^0.1.0"
+            },
+            "require-dev": {
+                "estahn/phpunit-json-assertions": "^3.0.0",
+                "guzzlehttp/guzzle": "^7.0",
+                "php-http/mock-client": "^1.4",
+                "phpstan/phpstan": "^0.12.11",
+                "phpunit/phpunit": "^7.4 || ^8.0",
+                "squizlabs/php_codesniffer": "^3.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Vonage\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tim Lytle",
+                    "email": "tim@nexmo.com",
+                    "homepage": "http://twitter.com/tjlytle",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Michael Heap",
+                    "email": "michael.heap@vonage.com",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Lorna Mitchell",
+                    "email": "lorna.mitchell@vonage.com",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Chris Tankersley",
+                    "email": "chris.tankersley@vonage.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "PHP Client for using Vonage's API.",
+            "support": {
+                "email": "devrel@nexmo.com",
+                "issues": "https://github.com/Vonage/vonage-php-sdk-core/issues",
+                "source": "https://github.com/Vonage/vonage-php-sdk-core/tree/2.5.0"
+            },
+            "time": "2020-10-28T15:21:42+00:00"
+        },
+        {
             "name": "vonage/nexmo-bridge",
             "version": "0.1.0",
             "source": {
@@ -5104,8 +5124,7 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "propel/propel": 20,
-        "verot/class.upload.php": 20,
-        "nexmo/client": 10
+        "verot/class.upload.php": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
