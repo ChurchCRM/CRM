@@ -1,6 +1,10 @@
 name: Security Actions
 
-on: [push, pull_request]
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
 
 jobs:
   security_checker:
@@ -10,5 +14,11 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Symfony Corp Security Checker
+      - name: PHP Security
         uses: symfonycorp/security-checker-action@v2
+
+      - name: Node Security
+          id: njsscan
+          uses: ajinabraham/njsscan-action@v5
+          with:
+            args: '.'
