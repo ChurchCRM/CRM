@@ -49,6 +49,9 @@ jobs:
     - name: ORM Tasks
       run: npm run orm-gen
 
+    - name: Secuirty Test
+      uses: umutphp/sensiolabs-security-checker-action@v1
+
     - name: Push to built branch
       uses: Automattic/action-commit-to-branch@master
       with:
