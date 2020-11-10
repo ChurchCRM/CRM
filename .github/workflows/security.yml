@@ -3,7 +3,7 @@ name: Security Actions
 on: [push, pull_request]
 
 jobs:
-  install_n_gen:
+  security_checker:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2.3.2
