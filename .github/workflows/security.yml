@@ -12,5 +12,5 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Sensio Labs Security Checker
-        uses: umutphp/sensiolabs-security-checker-action@v1
+      - name: Symfony Corp Security Checker
+        uses: symfonycorp/security-checker-action@v2
