@@ -1,8 +1,6 @@
 name: Security Actions
 
-on:
-  push:
-    branches: [ master ]
+on: [push, pull_request]
 
 jobs:
   install_n_gen:
