@@ -245,9 +245,8 @@ class SystemConfig
         "bRequire2FA" => new ConfigItem(2069,"bRequire2FA", "boolean","0",gettext("Requires users to self-enroll in 2 factor authentication")),
         "s2FAApplicationName" => new ConfigItem(2070,"s2FAApplicationName", "text",gettext("ChurchCRM"),gettext("Specify the application name to be displayed in authenticator app")),
         "bSendUserDeletedEmail" => new ConfigItem(2071,"bSendUserDeletedEmail", "boolean","0",gettext("Send an email notifying users when their account has been deleted")),
-        "sGoogleMapsRenderKey" => new ConfigItem(2072, "sGoogleMapsRenderKey", "text", "", gettext("Google Maps API Key used for rendering maps in browser") , "https://developers.google.com/maps/documentation/javascript/get-api-key"),
-        "bEnabledDashboardV2" => new ConfigItem(2073, "bEnabledDashboardV2", "boolean", "0", gettext("Enable New Dashboard")),
-        );
+        "sGoogleMapsRenderKey" => new ConfigItem(2072, "sGoogleMapsRenderKey", "text", "", gettext("Google Maps API Key used for rendering maps in browser") , "https://developers.google.com/maps/documentation/javascript/get-api-key")
+    );
   }
 
   private static function buildCategories()
@@ -257,7 +256,7 @@ class SystemConfig
       gettext('User Setup') => ["iMinPasswordLength","iMinPasswordChange","iMaxFailedLogins","iSessionTimeout","aDisallowedPasswords","bEnableLostPassword","bEnable2FA","bRequire2FA","s2FAApplicationName","bSendUserDeletedEmail"],
       gettext('Email Setup')  => ["sSMTPHost","bSMTPAuth","sSMTPUser","sSMTPPass", "iSMTPTimeout","sToEmailAddress", "bPHPMailerAutoTLS","sPHPMailerSMTPSecure"],
       gettext('People Setup')  => ["sDirClassifications","sDirRoleHead","sDirRoleSpouse","sDirRoleChild","sDefaultCity","sDefaultState","sDefaultCountry","bShowFamilyData","bHidePersonAddress","bHideFriendDate","bHideFamilyNewsletter","bHideWeddingDate","bHideLatLon","bForceUppercaseZip","bEnableSelfRegistration", "bAllowEmptyLastName", "iPersonNameStyle", "iProfilePictureListSize", "sNewPersonNotificationRecipientIDs", "IncludeDataInNewPersonNotifications","sGreeterCustomMsg1","sGreeterCustomMsg2"],
-      gettext('Enabled Features')  => ["bEnabledFinance", "bEnabledSundaySchool","bEnabledEvents","bEnabledCalendar","bEnabledFundraiser","bEnabledEmail", "bEnabledMenuLinks", "bEnabledDashboardV2"],
+      gettext('Enabled Features')  => ["bEnabledFinance", "bEnabledSundaySchool","bEnabledEvents","bEnabledCalendar","bEnabledFundraiser","bEnabledEmail", "bEnabledMenuLinks"],
       gettext('Map Settings')  => ["sGeoCoderProvider","sGoogleMapsGeocodeKey","sGoogleMapsRenderKey","sBingMapKey","sGMapIcons", "iMapZoom","sISTusername","sISTpassword"],
       gettext('Report Settings')  => ["sQBDTSettings","leftX","incrementY","sTaxReport1","sTaxReport2","sTaxReport3","sTaxSigner","sReminder1","sReminderSigner","sReminderNoPledge","sReminderNoPayments","sConfirm1","sConfirm2","sConfirm3","sConfirm4","sConfirm5","sConfirm6","sDear","sConfirmSincerely","sConfirmSigner","sPledgeSummary1","sPledgeSummary2","sDirectoryDisclaimer1","sDirectoryDisclaimer2","bDirLetterHead","sZeroGivers","sZeroGivers2","sZeroGivers3", "iPDFOutputType"],
       gettext('Financial Settings') => ["sDepositSlipType","iChecksPerDepositForm","bDisplayBillCounts","bUseScannedChecks","bEnableNonDeductible","iFYMonth","bUseDonationEnvelopes","aFinanceQueries"],
