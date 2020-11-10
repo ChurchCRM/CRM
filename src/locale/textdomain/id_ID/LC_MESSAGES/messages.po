@@ -7650,18 +7650,6 @@ msgid "Are you sure you want to unassign this property?"
 msgstr "Apakah Anda yakin ingin membatalkan penetapan properti ini?"
 
 #: 
-msgid "Head of Household"
-msgstr "Kepala rumah tangga"
-
-#: 
-msgid "Spouse"
-msgstr "Pasangan"
-
-#: 
-msgid "Child"
-msgstr "Anak"
-
-#: 
 msgid "Select a family"
 msgstr "Pilih satu keluarga"
 

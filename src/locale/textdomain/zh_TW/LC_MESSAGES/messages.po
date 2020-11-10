@@ -7811,18 +7811,6 @@ msgid "Are you sure you want to unassign this property?"
 msgstr "您確定要取消分配此屬性嗎？"
 
 #: 
-msgid "Head of Household"
-msgstr "戶主"
-
-#: 
-msgid "Spouse"
-msgstr "伴侶"
-
-#: 
-msgid "Child"
-msgstr "孩子"
-
-#: 
 msgid "Select a family"
 msgstr "選擇一個家庭"
 
@@ -9824,4 +9812,14 @@ msgstr "今天結婚週年紀念日"
 #, fuzzy
 msgid "Enable New Dashboard"
 msgstr "啟用新儀錶盤"
+
+#: 
+#, fuzzy
+msgid "Api Key"
+msgstr "API金鑰"
+
+#: 
+#, fuzzy
+msgid "Regen API Key"
+msgstr "再生API金鑰"
 
