@@ -6,6 +6,7 @@ context('Finance Family', () => {
         cy.loginAdmin("v2/family/1");
         cy.contains('Campbell - Family');
         cy.contains('Darren Campbell');
+        cy.wait(1000);
         cy.contains('Music Ministry');
 
         cy.visit("v2/family/20");
