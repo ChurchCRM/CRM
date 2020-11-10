@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "82a0b16c40938eabf9799d2f03287e02",
+    "content-hash": "29513016e816a15bc277cbec34e992ed",
     "packages": [
         {
             "name": "azuyalabs/yasumi",
@@ -1035,16 +1035,16 @@
         },
         {
             "name": "knplabs/github-api",
-            "version": "v2.15.0",
+            "version": "v2.16.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/KnpLabs/php-github-api.git",
-                "reference": "03445f26843ec44319fe1f3c2a8ef6fcd545a154"
+                "reference": "e1c5dca1b7d2abeb218a041c29e522d62f7c6a7f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/KnpLabs/php-github-api/zipball/03445f26843ec44319fe1f3c2a8ef6fcd545a154",
-                "reference": "03445f26843ec44319fe1f3c2a8ef6fcd545a154",
+                "url": "https://api.github.com/repos/KnpLabs/php-github-api/zipball/e1c5dca1b7d2abeb218a041c29e522d62f7c6a7f",
+                "reference": "e1c5dca1b7d2abeb218a041c29e522d62f7c6a7f",
                 "shasum": ""
             },
             "require": {
@@ -1102,7 +1102,7 @@
             ],
             "support": {
                 "issues": "https://github.com/KnpLabs/php-github-api/issues",
-                "source": "https://github.com/KnpLabs/php-github-api/tree/2.x"
+                "source": "https://github.com/KnpLabs/php-github-api/tree/v2.16.0"
             },
             "funding": [
                 {
@@ -1110,7 +1110,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-07-11T16:45:45+00:00"
+            "time": "2020-11-08T13:42:56+00:00"
         },
         {
             "name": "laminas/laminas-diactoros",
