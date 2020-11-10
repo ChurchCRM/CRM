@@ -332,11 +332,11 @@ $mailchimp = new MailChimpService();
 
                 <table id="family-property-table" class="table table-striped table-bordered data-table hidden" cellspacing="0" width="100%">
                     <thead>
-                <tr>
-                    <th width="50"></th>
-                    <th width="250" class="text-center"><?= gettext("Name") ?></th>
-                    <th class="text-center"><?= gettext("Value") ?></th>
-                </tr>
+                        <tr>
+                            <th width="50"></th>
+                            <th width="250" class="text-center"><?= gettext("Name") ?></th>
+                            <th class="text-center"><?= gettext("Value") ?></th>
+                        </tr>
                     </thead>
                 </table>
             <p/>

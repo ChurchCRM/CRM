@@ -28,6 +28,7 @@
         "babel-loader": "^8.1.0",
         "babel-preset-react": "^6.24.1",
         "cryptiles": "^4.1.3",
+        "cypress": "^5.5.0",
         "grunt": "^1.3.0",
         "grunt-cli": "^1.3.2",
         "grunt-confirm": "^1.0.8",
@@ -100,11 +101,14 @@
         "datadictionary": "php src/vendor/propel/propel/bin/propel.php --config-dir=propel datadictionary:generate",
         "composer-install": "cd src/ && composer install && cd .. && grunt lineending",
         "composer-update": " cd src/ && composer update && composer dump-autoload && cd ../tests/ && composer update && cd .. && grunt lineending",
-        "tests-install": "cd tests && composer install",
         "test": "php tests/run.php",
         "build-react": "webpack",
         "restore-demo-db": "php scripts/restore-db.php demo",
         "restore-empty-db": "php scripts/restore-db.php",
-        "heroku-postbuild": "npm run deploy"
+        "heroku-postbuild": "npm run deploy",
+        "cy:open": "node_modules/cypress/bin/cypress open",
+        "cy:open:local": "node_modules/cypress/bin/cypress open --config baseUrl=https://churchcrm:8890",
+        "cy:ci:local": "node_modules/cypress/bin/cypress run --config baseUrl=https://churchcrm:8890",
+        "cy:run": "node_modules/cypress/bin/cypress run"
     }
 }

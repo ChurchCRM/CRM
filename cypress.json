@@ -1,0 +1,9 @@
+{
+    "baseUrl": "https://demo.churchcrm.io/master",
+    "pageLoadTimeout": 100000,
+    "viewportHeight": 1080,
+    "viewportWidth": 1920,
+    "env": {
+        "admin.api.key": "ajGwpy8Pdai22XDUpqjC5Ob04v0eG7EGgb4vz2bD2juT8YDmfM"
+    }
+}

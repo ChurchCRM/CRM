@@ -53,3 +53,6 @@ nbproject/*
 .DS_Store
 
 src/Upgrade/*
+
+cypress/screenshots
+cypress/videos
