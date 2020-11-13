@@ -42,6 +42,7 @@ cache:
 
 before_install:
  - npm --v
+ - nvm use 14
  - node -v
  - sudo gem install sass -v 3.4.25
  - chmod +x ./travis-ci/*.sh
