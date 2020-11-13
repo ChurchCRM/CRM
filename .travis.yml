@@ -4,6 +4,9 @@ php:
   - 7.3
   - 7.4
 
+node_js:
+  - 14
+
 sudo: required
 dist: xenial
 group: edge
@@ -23,6 +26,12 @@ notifications:
 env:
   - DB=mysql
 
+addons:
+  apt:
+    packages:
+      - apache2
+      - libapache2-mod-fastcgi
+
 before_install:
  - sudo gem install sass -v 3.4.25
  - chmod +x ./travis-ci/*.sh
@@ -38,7 +47,6 @@ install:
 before_script:
  - ./travis-ci/setup-db.sh
  - cp $TRAVIS_BUILD_DIR/travis-ci/Config.php $TRAVIS_BUILD_DIR/src/Include/Config.php
- - sudo apt-get install apache2 libapache2-mod-fastcgi
  - sudo cp ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf.default ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf
  - sudo cp $TRAVIS_BUILD_DIR/travis-ci/www.conf ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.d/www.conf
  - sudo a2enmod rewrite proxy_fcgi
