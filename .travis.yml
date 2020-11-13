@@ -5,7 +5,7 @@ php:
   - 7.4
 
 node_js:
-  - 14
+  - "lts/*"
 
 sudo: required
 dist: xenial
@@ -31,6 +31,14 @@ addons:
     packages:
       - apache2
       - libapache2-mod-fastcgi
+
+cache:
+  # Caches $HOME/.npm when npm ci is default script command
+  # Caches node_modules in all other cases
+  npm: true
+  directories:
+    # we also need to cache folder with Cypress binary
+    - ~/.cache
 
 before_install:
  - sudo gem install sass -v 3.4.25
