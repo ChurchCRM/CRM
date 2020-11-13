@@ -5,7 +5,7 @@ php:
   - 7.4
 
 node_js:
-  - "lts/*"
+  - 14
 
 sudo: required
 dist: xenial
