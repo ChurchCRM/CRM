@@ -21,7 +21,7 @@
         "install": "grunt clean && grunt updateVersions && grunt curl-dir && grunt copy && grunt sass && grunt lineending && grunt patchDataTablesCSS",
         "build": "npm run composer-install && npm run orm-gen &&  npm run build-react",
         "audit": "npm audit fix --only=prod --audit-level=high",
-        "deploy": "npm install && npm run build",
+        "deploy": "npm ci && npm run build",
         "updateVersions": "grunt updateVersions",
         "postinstall": "grunt genLocaleJSFiles",
         "locale-gen": "locale/update-locale.sh",
