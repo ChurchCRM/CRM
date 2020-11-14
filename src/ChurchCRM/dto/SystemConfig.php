@@ -246,7 +246,7 @@ class SystemConfig
         "s2FAApplicationName" => new ConfigItem(2070,"s2FAApplicationName", "text",gettext("ChurchCRM"),gettext("Specify the application name to be displayed in authenticator app")),
         "bSendUserDeletedEmail" => new ConfigItem(2071,"bSendUserDeletedEmail", "boolean","0",gettext("Send an email notifying users when their account has been deleted")),
         "sGoogleMapsRenderKey" => new ConfigItem(2072, "sGoogleMapsRenderKey", "text", "", gettext("Google Maps API Key used for rendering maps in browser") , "https://developers.google.com/maps/documentation/javascript/get-api-key")
-    );
+        );
   }
 
   private static function buildCategories()
