@@ -52,6 +52,7 @@ install:
 before_script:
  - ./travis-ci/setup-db.sh
  - cp $TRAVIS_BUILD_DIR/travis-ci/Config.php $TRAVIS_BUILD_DIR/src/Include/Config.php
+ - cp $TRAVIS_BUILD_DIR/travis-ci/cypress.json $TRAVIS_BUILD_DIR/cypress.json
  - sudo cp ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf.default ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf
  - sudo cp $TRAVIS_BUILD_DIR/travis-ci/www.conf ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.d/www.conf
  - sudo a2enmod rewrite proxy_fcgi
