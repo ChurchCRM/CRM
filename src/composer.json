@@ -53,7 +53,7 @@
         "setasign/fpdf": "^1.8.2",
         "slim/http-cache": "^1.0.0",
         "slim/php-view": "2.2.1",
-        "slim/slim": "3.12.3",
+        "slim/slim": "^3.12.3",
         "symfony/translation": "^4.4.15",
         "symfony/yaml": "^3.4.45",
         "verot/class.upload.php": "dev-master",
