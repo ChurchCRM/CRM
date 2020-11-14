@@ -41,7 +41,7 @@
         "geocoder-php/bing-maps-provider": "^4.1",
         "geocoder-php/google-maps-provider": "^4.5",
         "guzzlehttp/guzzle": "^6.5.5",
-        "ifsnop/mysqldump-php": "v2.9",
+        "ifsnop/mysqldump-php": "^v2.9",
         "knplabs/github-api": "1.7.1",
         "monolog/monolog": "^2.1",
         "mustache/mustache": "v2.13.0",
@@ -57,7 +57,7 @@
         "symfony/translation": "^4.4.15",
         "symfony/yaml": "^3.4.45",
         "verot/class.upload.php": "dev-master",
-        "vonage/client": "^2.3"
+        "vonage/client": "^2.4.0"
     },
     "autoload": {
         "classmap": [
