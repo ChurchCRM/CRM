@@ -44,7 +44,7 @@ jobs:
         npm run orm-gen
 
     - name: NPM Audit
-      run: npm run audit
+      run: npm run audit fix --only=prod
 
     - name: ORM Tasks
       run: npm run orm-gen
@@ -53,7 +53,7 @@ jobs:
       uses: Automattic/action-commit-to-branch@master
       with:
         branch: ${{ steps.vars.outputs.branch }}
-        commit-message: |
+        commit_message: |
           What's this PR do?
           - npm update
           - composer update
