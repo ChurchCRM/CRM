@@ -56,3 +56,4 @@ src/Upgrade/*
 
 cypress/screenshots
 cypress/videos
+cypress.json
