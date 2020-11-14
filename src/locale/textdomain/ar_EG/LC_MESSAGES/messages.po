@@ -1475,7 +1475,7 @@ msgstr "الأسرة التالية"
 
 #: 
 msgid "Delete this Family"
-msgstr "مسح الهائلة"
+msgstr "مسح العائلة"
 
 #: 
 msgid "Upload Photo"
@@ -9079,4 +9079,16 @@ msgstr "يجب أن يتم تعيين إلى 'true'"
 #: 
 msgid "Include/Config.php must define an encryption key for storing 2FA secret keys in the database by setting a value for"
 msgstr "وتشمل / ملف config.php يجب تحديد مفتاح التشفير لتخزين 2FA المفاتيح السرية في قاعدة البيانات عن طريق تحديد قيمة لل"
+
+#: 
+msgid "Send an email notifying users when their account has been deleted"
+msgstr "ارسال رساله الي الأعضاء عند مسح حساباتهم من البرنامج"
+
+#: 
+msgid "Incorrect password supplied for current user"
+msgstr "كلمه المرور غير صحيحه لهذا المستخدم"
+
+#: 
+msgid "Your new password must not match your old one."
+msgstr "كلمه المرور الجديده يجب ان تكون مختلفه عن كلمه المرور القديمه"
 
