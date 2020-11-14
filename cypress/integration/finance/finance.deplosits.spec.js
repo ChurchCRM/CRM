@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
 context('Finance Deposits', () => {
-/* TODO: Hidden to test Travis CI 
+
 
     it('Create a new Deposit', () => {
         cy.loginAdmin("FindDepositSlip.php");
@@ -37,8 +37,6 @@ context('Finance Deposits', () => {
         cy.url().should('contains', 'DepositSlipEditor.php');
 
     });
-*/
-
 
 });
 
