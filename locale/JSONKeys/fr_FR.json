@@ -2214,14 +2214,4 @@
     "Remove Results from Cart": "Enlever les résultats du panier",
     "Reset Families/People": "Réinitialiser les familles/individus",
     "Reset Database": "Réinitialiser la base",
-    "This will reset the system data and will restart the system as a new install.": "Ceci réinitialisera le système et redémarrera comme une nouvelle installation",
-    "Clear Filter": "Supprimer filtres",
-    "Add Person": "Ajouter un individu",
-    "Portuguese - Portugal": "Portugais - Portugal",
-    "Holiday": "Vacances",
-    "ChurchCRM": "ChurchCRM",
-    "2 Factor Authentication enrollment": "Souscrire à l'authentification à 2 facteurs",
-    "Unsupported Two Factor Authentication Configuration": "Authentification à 2 facteurs non supportée",
-    "Unable To Begin Two Factor Authentication Enrollment": "Impossible de démarrer le souscription de l'authentification à 2 facteurs",
-    "Two factor authentication requires ChurchCRM administrators to configure a few parameters": "L'authentification à 2 facteurs nécessite une intervention de l'administrateur ChurchCRM"
-}
+    "This will reset the system data and will restart the system as a new install.": "Ceci réinitial
