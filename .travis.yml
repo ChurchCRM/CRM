@@ -74,4 +74,6 @@ deploy:
   provider: script
   script: npm run demosite
   on:
-    php: 7.4
+    all_branches: true
+    php: 7.3
+    condition: "$TRAVIS_BRANCH == 'master' || $TRAVIS_BRANCH = 'develop'"
