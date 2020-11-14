@@ -72,10 +72,10 @@
         <behavior name="validate">
             <parameter name="rule1" value="{column: per_firstname, validator: NotNull}" />
             <parameter name="rule2" value="{column: per_firstname, validator: NotBlank}" />
-            <parameter name="rule3" value="{column: per_firstname, validator: Length, options: {min:2, max: 50}}" />
+            <parameter name="rule3" value="{column: per_firstname, validator: Length, options: {min: 2, max: 50}}" />
             <parameter name="rule4" value="{column: per_lastname, validator: NotNull}" />
             <parameter name="rule5" value="{column: per_lastname, validator: NotBlank}" />
-            <parameter name="rule6" value="{column: per_lastname, validator: Length, options: {min:2, max: 50}}" />
+            <parameter name="rule6" value="{column: per_lastname, validator: Length, options: {min: 2, max: 50}}" />
         </behavior>
     </table>
 
@@ -91,7 +91,7 @@
         <behavior name="validate">
             <parameter name="rule1" value="{column: linkname, validator: NotNull}" />
             <parameter name="rule2" value="{column: linkname, validator: NotBlank}" />
-            <parameter name="rule3" value="{column: linkname, validator: Length, options: {min:2, max: 50}}" />
+            <parameter name="rule3" value="{column: linkname, validator: Length, options: {min: 2, max: 50}}" />
             <parameter name="rule4" value="{column: linkuri, validator: Url}" />
         </behavior>
     </table>
@@ -504,7 +504,7 @@
         <column name="event_start" phpName="Start" type="TIMESTAMP" required="true"/>
         <column name="event_end" phpName="End" type="TIMESTAMP" required="true"/>
         <column name="inactive" phpName="InActive" type="INTEGER" size="1" required="true" defaultValue="0"/>
-        <!-- 
+        <!--
             event_typename is deprecated, and should be removed with 4.1.0.
             https://github.com/ChurchCRM/CRM/issues/5149
             This field denormalizes the event type data by storing a string representation of the event type name
