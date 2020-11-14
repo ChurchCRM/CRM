@@ -1,5 +1,6 @@
 {
-    "baseUrl": "https://demo.churchcrm.io/master",
+    "baseUrl": "http://127.0.0.1",
+    "chromeWebSecurity": false,
     "pageLoadTimeout": 1000000,
     "defaultCommandTimeout": 200000,
     "requestTimeout": 200000,
