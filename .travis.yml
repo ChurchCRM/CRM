@@ -65,6 +65,7 @@ before_script:
 # execute tests
 script:
 # - npm test
+  - echo "Skip tests :("
 
 before_deploy:
  - npm run package
