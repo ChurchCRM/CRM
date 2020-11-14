@@ -1,5 +1,4 @@
-# see http://about.travis-ci.org/docs/user/languages/php/ for more hints
-language: php
+language: node_js
 php:
   - 7.3
   - 7.4
@@ -42,7 +41,6 @@ cache:
 
 before_install:
  - npm --v
- - nvm use 14.15.0
  - node -v
  - sudo gem install sass -v 3.4.25
  - chmod +x ./travis-ci/*.sh
