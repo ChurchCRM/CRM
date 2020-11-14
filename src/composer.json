@@ -43,7 +43,7 @@
         "ifsnop/mysqldump-php": "^2.9",
         "knplabs/github-api": "^2.16.0",
         "monolog/monolog": "^2.1",
-        "mustache/mustache": "^2.13.0",
+        "mustache/mustache": "^v2.13.0",
         "php-http/guzzle7-adapter": "^0.1.1",
         "php-http/message": "^1.9.1",
         "phpmailer/phpmailer": "^6.1.8",
