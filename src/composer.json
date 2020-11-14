@@ -41,7 +41,7 @@
         "geocoder-php/bing-maps-provider": "^4.1",
         "geocoder-php/google-maps-provider": "^4.5",
         "ifsnop/mysqldump-php": "^v2.9",
-        "knplabs/github-api": "^2.16.0",
+        "knplabs/github-api": "^2.17.0",
         "monolog/monolog": "^2.1",
         "mustache/mustache": "^v2.13.0",
         "php-http/guzzle7-adapter": "^0.1.1",
