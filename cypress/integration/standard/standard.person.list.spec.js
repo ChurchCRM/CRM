@@ -21,7 +21,7 @@ context('Standard People', () => {
     });
 
     it('Listing all persons with gender filter', () => {
-        cy.loginStandard("v2/people?Gender=0", false);
+        cy.loginStandard("v2/people?Gender=0");
         cy.contains('Admin');
         cy.contains('Church');
         cy.contains('Kennedy');

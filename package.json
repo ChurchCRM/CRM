@@ -37,15 +37,12 @@
         "datadictionary": "php src/vendor/propel/propel/bin/propel.php --config-dir=propel datadictionary:generate",
         "composer-install": "cd src/ && composer install && cd .. && grunt lineending",
         "composer-update": " cd src/ && composer update && grunt lineending",
-        "test": "node_modules/cypress/bin/cypress run --config baseUrl=http://127.0.0.1",
+        "test": "node_modules/cypress/bin/cypress run",
         "build-react": "webpack",
         "restore-demo-db": "php scripts/restore-db.php demo",
         "restore-empty-db": "php scripts/restore-db.php",
         "heroku-postbuild": "npm run deploy",
-        "cy:open": "node_modules/cypress/bin/cypress open",
-        "cy:open:local": "node_modules/cypress/bin/cypress open --config baseUrl=https://churchcrm:8890",
-        "cy:ci:local": "node_modules/cypress/bin/cypress run --config baseUrl=https://churchcrm:8890",
-        "cy:run": "node_modules/cypress/bin/cypress run"
+        "test-ui": "node_modules/cypress/bin/cypress open"
     },
     "dependencies": {
         "admin-lte": "^2.4.18",
