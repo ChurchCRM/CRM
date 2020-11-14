@@ -51,7 +51,7 @@ $app->group('/users', function () {
             $user->createTimeLineNote("login-reset");
             $email = new UnlockedEmail($user);
             if (!$email->send()) {
-                LoggerUtils::getAppLogger()->warn($email->getError());
+                LoggerUtils::getAppLogger()->warning($email->getError());
             }
             return $response->withStatus(200);
         } else {
@@ -71,7 +71,7 @@ $app->group('/users', function () {
             if (SystemConfig::getBooleanValue("bSendUserDeletedEmail")) {
                 $email = new AccountDeletedEmail($user);
                 if (!$email->send()) {
-                    LoggerUtils::getAppLogger()->warn($email->getError());
+                    LoggerUtils::getAppLogger()->warning($email->getError());
                 }
             }
             return $response->withJson([]);

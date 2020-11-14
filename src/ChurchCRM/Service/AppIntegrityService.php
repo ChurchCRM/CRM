@@ -20,7 +20,7 @@ class AppIntegrityService
         AppIntegrityService::$IntegrityCheckDetails = json_decode(file_get_contents($integrityCheckFile));
         if (is_null(AppIntegrityService::$IntegrityCheckDetails))
         {
-          LoggerUtils::getAppLogger()->warn("Error decoding integrity check result file: " . $integrityCheckFile);
+          LoggerUtils::getAppLogger()->warning("Error decoding integrity check result file: " . $integrityCheckFile);
           AppIntegrityService::$IntegrityCheckDetails->status = 'failure';
           AppIntegrityService::$IntegrityCheckDetails->message = gettext("Error decoding integrity check result file");
         }
@@ -75,7 +75,7 @@ class AppIntegrityService
       LoggerUtils::getAppLogger()->info('Signature file found at: ' . $signatureFile);
       $signatureData = json_decode(file_get_contents($signatureFile));
       if (is_null($signatureData)){
-        LoggerUtils::getAppLogger()->warn('Error decoding signature definition file: ' . $signatureFile);
+        LoggerUtils::getAppLogger()->warning('Error decoding signature definition file: ' . $signatureFile);
         return ['status' => 'failure', 'message' => gettext('Error decoding signature definition file')];
       }
       if (sha1(json_encode($signatureData->files, JSON_UNESCAPED_SLASHES)) == $signatureData->sha1) {
@@ -84,20 +84,20 @@ class AppIntegrityService
           if (file_exists($currentFile)) {
             $actualHash = sha1_file($currentFile);
             if ($actualHash != $file->sha1) {
-              LoggerUtils::getAppLogger()->warn('File hash mismatch: ' . $file->filename . ". Expected: " . $file->sha1. "; Got: " . $actualHash);
+              LoggerUtils::getAppLogger()->warning('File hash mismatch: ' . $file->filename . ". Expected: " . $file->sha1. "; Got: " . $actualHash);
               array_push($signatureFailures, ['filename' => $file->filename, 'status' => 'Hash Mismatch', 'expectedhash' => $file->sha1, 'actualhash' => $actualHash]);
             }
           } else {
-            LoggerUtils::getAppLogger()->warn('File Missing: ' . $file->filename);
+            LoggerUtils::getAppLogger()->warning('File Missing: ' . $file->filename);
             array_push($signatureFailures, ['filename' => $file->filename, 'status' => 'File Missing']);
           }
         }
       } else {
-        LoggerUtils::getAppLogger()->warn('Signature definition file signature failed validation');
+        LoggerUtils::getAppLogger()->warning('Signature definition file signature failed validation');
         return ['status' => 'failure', 'message' => gettext('Signature definition file signature failed validation')];
       }
     } else {
-      LoggerUtils::getAppLogger()->warn('Signature definition file not found at: ' . $signatureFile);
+      LoggerUtils::getAppLogger()->warning('Signature definition file not found at: ' . $signatureFile);
       return ['status' => 'failure', 'message' => gettext('Signature definition File Missing')];
     }
 

@@ -34,7 +34,7 @@ class FinancePaymentSearchResultProvider extends BaseSearchResultProvider  {
     private function getPaymentsWithValuesInRange(int $min, int $max) {
         $searchResults = array();
         $id = 0;
-        if ($max == 0) 
+        if ($max == 0)
         {
             $max = PHP_INT_MAX;
         }
@@ -50,8 +50,8 @@ class FinancePaymentSearchResultProvider extends BaseSearchResultProvider  {
             if (!empty($Payments)) {
                 $id++;
                 foreach ($Payments as $Payment) {
-                    // I can't seem to get the SQL HAVING clause to work through Propel ORM to use 
-                    // both MIN and MAX value.  Just filter it in PHP 
+                    // I can't seem to get the SQL HAVING clause to work through Propel ORM to use
+                    // both MIN and MAX value.  Just filter it in PHP
                     if ($Payment->getVirtualColumn("GroupAmount") >= $min && $Payment->getVirtualColumn("GroupAmount") <= $max){
                         array_push($searchResults, new SearchResult("finance-payment-".$id,  "\$".$Payment->getVirtualColumn("GroupAmount")." Payment on Deposit " . $Payment->getDepid(), $Payment->getVirtualColumn('uri')));
                     }
@@ -59,7 +59,7 @@ class FinancePaymentSearchResultProvider extends BaseSearchResultProvider  {
             }
 
         } catch (Exception $e) {
-            LoggerUtils::getAppLogger()->warn($e->getMessage());
+            LoggerUtils::getAppLogger()->warning($e->getMessage());
         }
         return array_slice($searchResults,0,SystemConfig::getValue("bSearchIncludePaymentsMax")); // since Propel ORM won't handle limit() nicely, do it in PHP
     }
@@ -84,7 +84,7 @@ class FinancePaymentSearchResultProvider extends BaseSearchResultProvider  {
             }
 
         } catch (Exception $e) {
-            LoggerUtils::getAppLogger()->warn($e->getMessage());
+            LoggerUtils::getAppLogger()->warning($e->getMessage());
         }
         return $searchResults;
     }

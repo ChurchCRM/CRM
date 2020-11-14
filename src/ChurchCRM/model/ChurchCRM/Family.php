@@ -89,7 +89,7 @@ class Family extends BaseFamily implements iPhoto
         {
           $NotificationEmail = new NewPersonOrFamilyEmail($this);
           if (!$NotificationEmail->send()) {
-              LoggerUtils::getAppLogger()->warn(gettext("New Family Notification Email Error"). " :". $NotificationEmail->getError());
+              LoggerUtils::getAppLogger()->warning(gettext("New Family Notification Email Error"). " :". $NotificationEmail->getError());
           }
         }
     }

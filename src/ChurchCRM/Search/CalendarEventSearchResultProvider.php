@@ -42,7 +42,7 @@ class CalendarEventSearchResultProvider extends BaseSearchResultProvider  {
                 }
             }
         } catch (Exception $e) {
-            LoggerUtils::getAppLogger()->warn($e->getMessage());
+            LoggerUtils::getAppLogger()->warning($e->getMessage());
         }
         return $searchResults;
     }

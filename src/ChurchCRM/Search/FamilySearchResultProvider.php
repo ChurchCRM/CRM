@@ -41,7 +41,7 @@ class FamilySearchResultProvider extends BaseSearchResultProvider  {
             _or()->filterByWorkPhone("%$SearchQuery%", Criteria::LIKE)->
             limit(SystemConfig::getValue("bSearchIncludeFamiliesMax"))->find();
 
-            
+
 
             if (!empty($families)) {
                 $id++;
@@ -49,10 +49,10 @@ class FamilySearchResultProvider extends BaseSearchResultProvider  {
                     array_push($searchResults, new SearchResult("family-name-".$id, $family->getFamilyString(SystemConfig::getBooleanValue("bSearchIncludeFamilyHOH")),$family->getViewURI()));
                 }
             }
-            
+
             return $searchResults;
         } catch (Exception $e) {
-            LoggerUtils::getAppLogger()->warn($e->getMessage());
+            LoggerUtils::getAppLogger()->warning($e->getMessage());
         }
     }
     private function getFamilySearchResultsByCustomProperties(string $SearchQuery) {
@@ -75,7 +75,7 @@ class FamilySearchResultProvider extends BaseSearchResultProvider  {
                 array_push($searchResults, new SearchResult("family-custom-prop-".$id, $family->getFamilyString(SystemConfig::getBooleanValue("bSearchIncludeFamilyHOH")),$family->getViewURI()));
             }
         } catch (Exception $e) {
-            LoggerUtils::getAppLogger()->warn($e->getMessage());
+            LoggerUtils::getAppLogger()->warning($e->getMessage());
         }
         return $searchResults;
     }
