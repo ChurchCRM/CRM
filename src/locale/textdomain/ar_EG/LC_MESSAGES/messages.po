@@ -65,7 +65,8 @@ msgid "This tool will assist you in manually backing up the ChurchCRM database."
 msgstr "هذه الأداة سوف تساعدك في النسخ الاحتياطي لقاعدة بيانات ChurchCRM يدويا."
 
 #: 
-msgid "You should make a manual backup at least once a week unless you already have a regular backup procedule for your systems."
+#, fuzzy
+msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
 msgstr "يجب عليك إجراء نسخة احتياطية يدوياً مرة واحدة في الأسبوع على الأقل , ما لم يكن لديك بالفعل إجراء نسخ احتياطي منتظم لأنظمتك."
 
 #: 
@@ -1085,10 +1086,6 @@ msgid "Event Guests"
 msgstr "ضيوف الحدث"
 
 #: 
-msgid "Back to Report Menu"
-msgstr "العودة إلى قائمة التقرير"
-
-#: 
 msgid "There "
 msgstr "هناك "
 
@@ -1478,7 +1475,7 @@ msgstr "الأسرة التالية"
 
 #: 
 msgid "Delete this Family"
-msgstr "مسح الهائلة"
+msgstr "مسح العائلة"
 
 #: 
 msgid "Upload Photo"
@@ -3469,10 +3466,6 @@ msgid "eMail Dashboard"
 msgstr "أرسل لوحة"
 
 #: 
-msgid "People not in Mailchimp"
-msgstr "الناس لا في ميل تشيمب"
-
-#: 
 msgid "No families need canvassers assigned"
 msgstr "لا تحتاج الأسر فيقومون تعيين"
 
@@ -4117,7 +4110,8 @@ msgid "Add New Person"
 msgstr "إضافة شخص جديد"
 
 #: 
-msgid "View All Persons"
+#, fuzzy
+msgid "View All People"
 msgstr "عرض جميع الاشخاص"
 
 #: 
@@ -4253,7 +4247,8 @@ msgid "Church Information"
 msgstr "معلومات كنيسة"
 
 #: 
-msgid "User setup"
+#, fuzzy
+msgid "User Setup"
 msgstr "إعداد المستخدم"
 
 #: 
@@ -4383,10 +4378,6 @@ msgstr "عدد تنظيفها:"
 #: 
 msgid "Cleaned count since last send:"
 msgstr "عدد تنظيفها منذ الإرسال الماضي:"
-
-#: 
-msgid "Missing emails report"
-msgstr "تقرير المفقودين رسائل البريد الإلكتروني"
 
 #: 
 msgid "Functions"
@@ -7261,10 +7252,6 @@ msgid "Please confirm reset failed login count"
 msgstr "يرجى فشلت إعادة تأكيد تسجيل الدخول العد"
 
 #: 
-msgid "Password reset for"
-msgstr "إعادة تعيين كلمة المرور"
-
-#: 
 msgid "View Active Families"
 msgstr "عرض عائلات النشطة"
 
@@ -7659,18 +7646,6 @@ msgstr "هل تريد حذف هذا الشخص؟ هذا لا يمكن الترا
 #: 
 msgid "Are you sure you want to unassign this property?"
 msgstr "هل أنت متأكد أنك تريد إلغاء تعيين هذا العقار؟"
-
-#: 
-msgid "Head of Household"
-msgstr "رب الأسرة"
-
-#: 
-msgid "Spouse"
-msgstr "الزوج/الزوجة"
-
-#: 
-msgid "Child"
-msgstr "ابن/ابنه"
 
 #: 
 msgid "Select a family"
@@ -8633,10 +8608,6 @@ msgid "Application Prerequisites"
 msgstr "تطبيق المتطلبات الأساسية"
 
 #: 
-msgid "WebServer Modules"
-msgstr "خادم الويب وحدات"
-
-#: 
 msgid "Invalid country name supplied"
 msgstr "اسم بلد غير صالح الموردة"
 
@@ -8751,14 +8722,6 @@ msgstr "أنواع غير معتمد الإيداع التي تم اكتشافه
 #: 
 msgid "Support for eGive, Credit Card, and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions."
 msgstr "لقد تم إهمال دعم eGive، وبطاقات الائتمان، ومشروع الدفعات المصرفية. قد لا تكون التقارير غير المصرفية الحالية يمكن الوصول إليها في الإصدارات المستقبل."
-
-#: 
-msgid "Unsupported Stored Payment Data Detected"
-msgstr "غير معتمد مخزنة الدفع الكشف عن البيانات"
-
-#: 
-msgid "Support for stored payment data has been removed. This data will soon be removed from your database"
-msgstr "تمت إزالة الدعم عن البيانات المخزنة دفع. سيتم قريبا إزالة هذه البيانات من قاعدة البيانات الخاصة بك"
 
 #: 
 msgid "Estonian"
@@ -9118,10 +9081,14 @@ msgid "Include/Config.php must define an encryption key for storing 2FA secret k
 msgstr "وتشمل / ملف config.php يجب تحديد مفتاح التشفير لتخزين 2FA المفاتيح السرية في قاعدة البيانات عن طريق تحديد قيمة لل"
 
 #: 
-msgid "Credit Card People"
-msgstr "بطاقة الائتمان الشعب"
+msgid "Send an email notifying users when their account has been deleted"
+msgstr "ارسال رساله الي الأعضاء عند مسح حساباتهم من البرنامج"
 
 #: 
-msgid "People who are configured to pay by credit card."
-msgstr "الناس الذين تم تكوينها لالدفع بواسطة بطاقة الائتمان."
+msgid "Incorrect password supplied for current user"
+msgstr "كلمه المرور غير صحيحه لهذا المستخدم"
+
+#: 
+msgid "Your new password must not match your old one."
+msgstr "كلمه المرور الجديده يجب ان تكون مختلفه عن كلمه المرور القديمه"
 

@@ -227,10 +227,12 @@ if ($sFormat == 'addtocart') {
     $rsLabelsToWrite = RunQuery($sSQL);
 
     //Produce Header Based on Selected Fields
+    $headerString = '"'.InputUtils::translate_special_charset("Family").' ID "'.$delimiter;
     if ($sFormat == 'rollup') {
-        $headerString = '"'.InputUtils::translate_special_charset("Name").'"'.$delimiter;
+        $headerString .= '"'.InputUtils::translate_special_charset("Name").'"'.$delimiter;
     } else {
-        $headerString = '"'.InputUtils::translate_special_charset("Last Name").'"'.$delimiter;
+        $headerString .= '"'.InputUtils::translate_special_charset("Person").' Id"'.$delimiter;
+        $headerString .= '"'.InputUtils::translate_special_charset("Last Name").'"'.$delimiter;
         if (!empty($_POST['Title'])) {
             $headerString .= '"'.InputUtils::translate_special_charset("Title").'"'.$delimiter;
         }
@@ -431,8 +433,10 @@ if ($sFormat == 'addtocart') {
             // ** should move this to the WHERE clause
             if (!($bSkipNoEnvelope && (strlen($fam_Envelope) == 0))) {
                 // If we are doing family roll-up, we use a single, formatted name field
+                $sString = '"'.($fam_ID? $fam_ID : "");
                 if ($sFormat == 'default') {
-                    $sString = '"'.$per_LastName;
+                    $sString .= '","'.$per_ID.'",';
+                    $sString .= '"'.$per_LastName;
                     if (isset($_POST['Title'])) {
                         $sString .= '"'.$delimiter.'"'.InputUtils::translate_special_charset($per_Title);
                     }
@@ -447,9 +451,9 @@ if ($sFormat == 'addtocart') {
                     }
                 } elseif ($sFormat == 'rollup') {
                     if ($memberCount > 1) {
-                        $sString = '"'.MakeSalutationUtility($fam_ID);
+                        $sString .= '","'.MakeSalutationUtility($fam_ID);
                     } else {
-                        $sString = '"'.$per_LastName.', '.$per_FirstName;
+                        $sString .= '","'.$per_LastName.', '.$per_FirstName;
                     }
                 }
 

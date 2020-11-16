@@ -146,8 +146,7 @@ module.exports = function (grunt) {
                         expand: true,
                         filter: 'isFile',
                         flatten: true,
-                        src: ['node_modules/inputmask/dist/min/jquery.inputmask.bundle.min.js', 'node_modules/inputmask/dist/min/inputmask/inputmask.date.extensions.min.js',
-                        'node_modules/inputmask/dist/min/inputmask/inputmask.extensions.min.js'],
+                        src: ['node_modules/inputmask/dist/jquery.inputmask.min.js', 'node_modules/inputmask/dist/bindings/inputmask.binding.js'],
                         dest: 'src/skin/external/inputmask/'
                     },
                     {
@@ -245,6 +244,17 @@ module.exports = function (grunt) {
                         flatten: true,
                         src: ['node_modules/react-datepicker/dist/react-datepicker.min.css'],
                         dest: 'src/skin/external/react-datepicker'
+                    },
+                    {
+                        expand: true,
+                        filter: 'isFile',
+                        flatten: false,
+                        cwd: 'node_modules/flag-icon-css',
+                        src: [
+                            'flags/**',
+                            'css/flag-icon.css',
+                        ],
+                        dest: 'src/skin/external/flag-icon-css/'
                     }
                 ]
             }
@@ -253,6 +263,7 @@ module.exports = function (grunt) {
             datatables: {
                 src: [
                     "https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js",
+                    "https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js.map",
                     "https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js",
                     "https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-"+datatTablesVer+"/b-1.5.4/b-html5-1.5.4/b-print-1.5.4/r-2.2.2/sl-1.2.6/datatables.min.css",
                     "https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-"+datatTablesVer+"/b-1.5.4/b-html5-1.5.4/b-print-1.5.4/r-2.2.2/sl-1.2.6/datatables.min.js"
@@ -487,14 +498,25 @@ module.exports = function (grunt) {
         let poLocales = grunt.file.readJSON("src/locale/poeditor.json");
         let poEditorLocales = poLocales.result.languages;
 
+        let localeData = [];
+
         for (let key in poEditorLocales ) {
             let name =  poEditorLocales[key]["name"];
             let curCode =  poEditorLocales[key]["code"].toLowerCase();
             let percentage = poEditorLocales[key]["percentage"];
             if ( supportedPOEditorCodes.indexOf(curCode) === -1 && percentage > 0) {
                 console.log("Missing " + name + ' (' + curCode + ') but has ' + percentage + ' percentage');
+            } else {
+                localeData.push({"code" :curCode, "percentage": percentage, "translations": poEditorLocales[key]["translations"]});
             }
         }
+
+        console.log("\n");
+        console.log("Locale | Translations | Percentage\n");
+        console.log("-- | -- | --\n");
+        localeData.forEach(function (locale) {
+            console.log(locale.code + " | " + locale.translations + " | " + locale.percentage +"%");
+        })
     });
 
     grunt.registerTask('genLocaleJSFiles', '', function () {
@@ -551,7 +573,6 @@ module.exports = function (grunt) {
 
         var curFile = grunt.file.readJSON(file);
         curFile.version = version;
-        curFile.time =  moment().format("YYYY-MM-DD HH:MM:SS");
         var stringFile = JSON.stringify(curFile, null, 4);
         grunt.file.write(file, stringFile);
 

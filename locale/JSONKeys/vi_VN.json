@@ -13,7 +13,7 @@
     "Credit Card": "Thẻ tín dụng",
     "Backup Database": "Sao lưu dữ liệu",
     "This tool will assist you in manually backing up the ChurchCRM database.": "Công cụ này sẽ giúp bạn tự sao lưu cơ sở dữ liệu của Hệ Thống Quản Lý Hội Thánh",
-    "You should make a manual backup at least once a week unless you already have a regular backup procedule for your systems.": "Bạn nên thực hiện một sao lưu thủ công ít nhất một lần một tuần, trừ khi bạn đã có một lịch sao lưu thường xuyên cho hệ thống của bạn.",
+    "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems.": "Bạn nên thực hiện một sao lưu thủ công ít nhất một lần một tuần, trừ khi bạn đã có một lịch sao lưu thường xuyên cho hệ thống của bạn.",
     "After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site.": "Sau khi bạn tải về các tập tin sao lưu, bạn nên làm cho hai bản sao. Đặt một trong số tập tin này vào nơi an toàn trong máy chủ và ngoài máy chủ.",
     "If you are concerned about confidentiality of data stored in the ChurchCRM database, you should encrypt the backup data if it will be stored somewhere potentially accessible to others": "Nếu bạn lo lắng về tính bảo mật của dữ liệu được lưu trữ trong cơ sở dữ liệu của Hệ Thống Quản Lý Hội Thánh, bạn nên mã hóa dữ liệu sao lưu nếu nó sẽ được lưu trữ ở đâu đó có khả năng tiếp cận với những người khác",
     "Select archive type": "Chọn loại lưu trữ",
@@ -179,7 +179,6 @@
     "Event Attendees": "Người tham dự sự kiện",
     "Event Nonattendees": "Người không tham dự sự kiện",
     "Event Guests": "Khách sự kiện",
-    "Back to Report Menu": "Quay trở lại menu báo cáo",
     "There ": "tại đây␣",
     "Event Title": "Tiêu đề sự kiện",
     "Event Date": "Ngày sự kiện",
@@ -560,7 +559,7 @@
     "Calendar": "Lịch",
     "Members": "Thành viên",
     "Add New Person": "Thêm thành viên mới",
-    "View All Persons": "Danh sách Thành viên",
+    "View All People": "Danh sách Thành viên",
     "Add New Family": "Thêm gia đình mới",
     "Events": "Sự kiện",
     "Fundraiser": "Người gây quỹ",
@@ -581,7 +580,7 @@
     "Login to restored Database": "Đăng nhập để phục hồi cơ sở dữ liệu",
     "Restore Error.": "Khôi phục bị lỗi",
     "Church Information": "Hội Thánh",
-    "User setup": "Thành viên",
+    "User Setup": "Thành viên",
     "Email Setup": "Email",
     "Map Settings": "Bản đồ",
     "Report Settings": "Báo cáo",
@@ -805,6 +804,5 @@
     "Valid Mail Server Settings": "Cài đặt giá trị máy chủ Email",
     "Database": "Dữ liệu",
     "Database Version": "Phiên bản dữ liệu",
-    "Application Prerequisites": "Điều kiện yêu cầu bắt buộc",
-    "WebServer Modules": "Các mô-đun máy chủ"
+    "Application Prerequisites": "Điều kiện yêu cầu bắt buộc"
 }

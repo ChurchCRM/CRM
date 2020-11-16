@@ -4,10 +4,12 @@ use ChurchCRM\dto\Cart;
 use ChurchCRM\dto\Photo;
 use ChurchCRM\ListOptionQuery;
 use ChurchCRM\Slim\Middleware\Request\PersonAPIMiddleware;
-use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\Slim\Middleware\MailChimpMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\DeleteRecordRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\EditRecordsRoleAuthMiddleware;
 use ChurchCRM\Utils\MiscUtils;
+use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\Service\MailChimpService;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
@@ -31,7 +33,7 @@ $app->group('/person/{personId:[0-9]+}', function () {
 
     $this->get('', function ($request, $response, $args) {
         $person = $request->getAttribute("person");
-        return $response->withHeader('Content-Type','application/json')->write($person->exportTo('JSON'));
+        return $response->withHeader('Content-Type', 'application/json')->write($person->exportTo('JSON'));
     });
 
     $this->delete('', function ($request, $response, $args) {

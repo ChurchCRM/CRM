@@ -1,6 +1,7 @@
 <?php
 
 use ChurchCRM\Slim\Middleware\Request\FamilyAPIMiddleware;
+use ChurchCRM\Slim\Middleware\MailChimpMiddleware;
 use ChurchCRM\Utils\GeoUtils;
 use ChurchCRM\Utils\MiscUtils;
 use ChurchCRM\dto\Photo;
@@ -13,6 +14,7 @@ use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\FamilyQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
+use ChurchCRM\Service\MailChimpService;
 
 $app->group('/family/{familyId:[0-9]+}', function () {
     $this->get('/photo', function ($request, $response, $args) {
@@ -81,7 +83,7 @@ $app->group('/family/{familyId:[0-9]+}', function () {
         $email = new FamilyVerificationEmail($family->getEmails(), $family->getName(), $token->getToken());
         if ($email->send()) {
             $family->createTimeLineNote("verify-link");
-            return $response->withStatus(200);
+            return $response->withJSON(["message" => "Success"]);
         } else {
             LoggerUtils::getAppLogger()->error($email->getError());
             return $response->withStatus(500)->withJSON(['message' => gettext("Error sending email(s)") . " - " . gettext("Please check logs for more information"), "trace" => $email->getError()]);
@@ -103,7 +105,6 @@ $app->group('/family/{familyId:[0-9]+}', function () {
         $family->verify();
         return $response->withJSON(["message" => "Success"]);
     });
-
 
 })->add(new FamilyAPIMiddleware());
 

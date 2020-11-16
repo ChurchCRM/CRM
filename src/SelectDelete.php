@@ -47,7 +47,7 @@ if (!empty($_GET['mode'])) {
 }
 
 if (isset($_GET['CancelFamily'])) {
-    RedirectUtils::Redirect("FamilyView.php?FamilyID=$iFamilyID");
+    RedirectUtils::Redirect("v2/family/$iFamilyID");
     exit;
 }
 
@@ -144,7 +144,7 @@ require 'Include/Header.php';
         if ($bIsDonor && !AuthenticationManager::GetCurrentUser()->isFinanceEnabled()) {
             // Donations from Family. Current user not authorized for Finance
             echo '<p class="LargeText">' . gettext('Sorry, there are records of donations from this family. This family may not be deleted.') . '<br><br>';
-            echo '<a href="FamilyView.php?FamilyID=' . $iFamilyID . '">' . gettext('Return to Family View') . '</a></p>';
+            echo '<a href="v2/family/' . $iFamilyID . '">' . gettext('Return to Family View') . '</a></p>';
         } elseif ($bIsDonor && AuthenticationManager::GetCurrentUser()->isFinanceEnabled()) {
             // Donations from Family. Current user authorized for Finance.
             // Select another family to move donations to.
@@ -205,9 +205,9 @@ require 'Include/Header.php';
             // -----------------------------------
             echo '<br><br>';
             //Get the pledges for this family
-            $sSQL = 'SELECT plg_plgID, plg_FYID, plg_date, plg_amount, plg_schedule, plg_method, 
+            $sSQL = 'SELECT plg_plgID, plg_FYID, plg_date, plg_amount, plg_schedule, plg_method,
 		         plg_comment, plg_DateLastEdited, plg_PledgeOrPayment, a.per_FirstName AS EnteredFirstName, a.Per_LastName AS EnteredLastName, b.fun_Name AS fundName
-				 FROM pledge_plg 
+				 FROM pledge_plg
 				 LEFT JOIN person_per a ON plg_EditedBy = a.per_ID
 				 LEFT JOIN donationfund_fun b ON plg_fundID = b.fun_ID
 				 WHERE plg_famID = ' . $iFamilyID . ' ORDER BY pledge_plg.plg_date';
@@ -292,7 +292,7 @@ require 'Include/Header.php';
             echo '</ul></div>';
             echo "<p class=\"text-center\"><a class='btn btn-danger' href=\"SelectDelete.php?Confirmed=Yes&FamilyID=" . $iFamilyID . '">' . gettext('Delete Family Record ONLY') . '</a> ';
             echo "<a class='btn btn-danger' href=\"SelectDelete.php?Confirmed=Yes&Members=Yes&FamilyID=" . $iFamilyID . '">' . gettext('Delete Family Record AND Family Members') . '</a> ';
-            echo "<a class='btn btn-info' href=\"FamilyView.php?FamilyID=" . $iFamilyID . '">' . gettext('No, cancel this deletion') . '</a></p>';
+            echo "<a class='btn btn-info' href=\"v2/family/" . $iFamilyID . '">' . gettext('No, cancel this deletion') . '</a></p>';
         }
             ?>
     </div>

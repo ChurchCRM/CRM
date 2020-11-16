@@ -1,0 +1,63 @@
+name: Build
+
+on:
+  push:
+    branches:
+    - 'build/**'
+
+env:
+  node_version: 14
+
+jobs:
+  install_n_gen:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2.3.2
+      with:
+        # fetch full history so things like auto-changelog work properly
+        fetch-depth: 0
+    - name: Use Node.js ${{ env.node_version }}
+      uses: actions/setup-node@v2.1.1
+      with:
+        node-version: ${{ env.node_version }}
+        # setting a registry enables the NODE_AUTH_TOKEN env variable where we can set an npm token.  REQUIRED
+        registry-url: 'https://registry.npmjs.org'
+
+    - name: Declare some variables
+      id: vars
+      shell: bash
+      run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+
+    - name: get-npm-version
+      id: package-version
+      uses: martinbeentjes/npm-get-version-action@master
+
+    - name: Update JS
+      run: |
+        npm install
+        npm run build-react
+
+    - name: Update PHP
+      run: |
+        npm run composer-install
+        npm run composer-update
+        npm run orm-gen
+
+    - name: NPM Audit
+      run: npm run audit fix --only=prod
+
+    - name: ORM Tasks
+      run: npm run orm-gen
+
+    - name: Push to built branch
+      uses: Automattic/action-commit-to-branch@master
+      with:
+        branch: ${{ steps.vars.outputs.branch }}
+        commit_message: |
+          What's this PR do?
+          - npm update
+          - composer update
+          - npm audit fix
+          - updated versions, if needed
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Required

@@ -7,7 +7,7 @@ use ChurchCRM\dto\LocaleInfo;
 use Geocoder\Provider\BingMaps\BingMaps;
 use Geocoder\Provider\GoogleMaps\GoogleMaps;
 use Geocoder\StatefulGeocoder;
-use Http\Adapter\Guzzle6\Client;
+use Http\Adapter\Guzzle7\Client;
 use Geocoder\Query\GeocodeQuery;
 use ChurchCRM\Bootstrapper;
 
@@ -45,7 +45,7 @@ class GeoUtils
                 $long = $coordinates->getLongitude();
             }
         } catch (\Exception $exception) {
-            $logger->warn("issue creating geoCoder " . $exception->getMessage());
+            $logger->warning("issue creating geoCoder " . $exception->getMessage());
         }
 
         return array(

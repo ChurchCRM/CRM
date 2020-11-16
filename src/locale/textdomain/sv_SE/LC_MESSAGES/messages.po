@@ -65,7 +65,8 @@ msgid "This tool will assist you in manually backing up the ChurchCRM database."
 msgstr "Detta verktyg hjälper dig att manuellt säkerhetskopiera ChurchCRM-databasen."
 
 #: 
-msgid "You should make a manual backup at least once a week unless you already have a regular backup procedule for your systems."
+#, fuzzy
+msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
 msgstr "Du borde säkerhetskopiera databasen minst en gång i veckan om du inte redan har en annan säkerhetskopieringssystem igång"
 
 #: 
@@ -1121,10 +1122,6 @@ msgstr "Evenemang icke deltagare"
 #: 
 msgid "Event Guests"
 msgstr "Evenemanggäster"
-
-#: 
-msgid "Back to Report Menu"
-msgstr "Tillbaka till rapport meny"
 
 #: 
 msgid "There "
@@ -2556,7 +2553,7 @@ msgstr "Pojkar"
 
 #: 
 msgid "Girls"
-msgstr "flickor"
+msgstr "Flickor"
 
 #: 
 msgid "Sunday School Classes"
@@ -3599,10 +3596,6 @@ msgid "eMail Dashboard"
 msgstr "E-post instrumentbräda"
 
 #: 
-msgid "People not in Mailchimp"
-msgstr "Personer som inte är i Mailchimp"
-
-#: 
 msgid "No families need canvassers assigned"
 msgstr "Inga familjer behöver insamlingskampanj arbetare tilldelad"
 
@@ -4265,7 +4258,8 @@ msgid "Add New Person"
 msgstr "Lägg till ny person"
 
 #: 
-msgid "View All Persons"
+#, fuzzy
+msgid "View All People"
 msgstr "Visa alla personer"
 
 #: 
@@ -4401,7 +4395,8 @@ msgid "Church Information"
 msgstr "Kyrklig information"
 
 #: 
-msgid "User setup"
+#, fuzzy
+msgid "User Setup"
 msgstr "Användarinställning"
 
 #: 
@@ -4531,10 +4526,6 @@ msgstr "Rengört antal:"
 #: 
 msgid "Cleaned count since last send:"
 msgstr "Rengört antal sedan sist skickat:"
-
-#: 
-msgid "Missing emails report"
-msgstr "Rapporten saknas e-post"
 
 #: 
 msgid "Functions"
@@ -7409,10 +7400,6 @@ msgid "Please confirm reset failed login count"
 msgstr "Bekräfta återställningen av inloggningsantalet"
 
 #: 
-msgid "Password reset for"
-msgstr "Återställ lösenord för"
-
-#: 
 msgid "View Active Families"
 msgstr "Visa aktiva familjer"
 
@@ -7807,18 +7794,6 @@ msgstr "Vill du ta bort den här personen? Detta kan inte göras ogjort."
 #: 
 msgid "Are you sure you want to unassign this property?"
 msgstr "Är du säker på att du vill ta bort tilldelningen av den här egenskapen?"
-
-#: 
-msgid "Head of Household"
-msgstr "Chef för hushållet"
-
-#: 
-msgid "Spouse"
-msgstr "Make"
-
-#: 
-msgid "Child"
-msgstr "Barn"
 
 #: 
 msgid "Select a family"
@@ -8781,10 +8756,6 @@ msgid "Application Prerequisites"
 msgstr "Förutsättningar för tillämpning"
 
 #: 
-msgid "WebServer Modules"
-msgstr "WebServer-moduler"
-
-#: 
 msgid "Invalid country name supplied"
 msgstr "Ogiltigt landnamn angav"
 
@@ -8899,14 +8870,6 @@ msgstr "Ostödda insättningstyper har upptäckts"
 #: 
 msgid "Support for eGive, Credit Card, and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions."
 msgstr "Stöd för betalningar för eGive, kreditkort och bankutkast har skrivits ut. Befintliga rapporter utanför banken kanske inte längre är tillgängliga i framtida versioner."
-
-#: 
-msgid "Unsupported Stored Payment Data Detected"
-msgstr "Ostödda lagrade betalningsuppgifter har upptäckts"
-
-#: 
-msgid "Support for stored payment data has been removed. This data will soon be removed from your database"
-msgstr "Support för lagrade betalningsdata har tagits bort. Dessa data kommer snart att tas bort från din databas"
 
 #: 
 msgid "Estonian"
@@ -9267,10 +9230,412 @@ msgid "Include/Config.php must define an encryption key for storing 2FA secret k
 msgstr "Include/Config.php måste definiera en krypteringsnyckel för att lagra 2FA hemliga nycklar i databasen genom att ställa in ett värde för"
 
 #: 
+msgid "Google Maps API Key used for Geocoding addresses"
+msgstr "Google Maps API-nyckel som används för geokodningsadresser"
+
+#: 
+msgid "Send an email notifying users when their account has been deleted"
+msgstr "Skicka ett e-postmeddelande för användare när deras konto har tagits bort"
+
+#: 
+msgid "Google Maps API Key used for rendering maps in browser"
+msgstr "Google Maps API-nyckel som används för att rendera kartor i webbläsaren"
+
+#: 
+msgid "Incorrect password supplied for current user"
+msgstr "Felaktigt lösenord levereras för den aktuella användaren"
+
+#: 
+msgid "Your new password must not match your old one."
+msgstr "Ditt nya lösenord får inte matcha ditt gamla."
+
+#: 
+msgid "Your new password is too similar to your old one."
+msgstr "Ditt nya lösenord liknar det gamla."
+
+#: 
+msgid "Password reset not availble.  Please contact your system administrator"
+msgstr "Återställning av lösenord är inte tillgängligt. Kontakta din systemadministratör"
+
+#: 
+msgid "Authentication Issue"
+msgstr "Autentiseringsproblem"
+
+#: 
+msgid "Enter new user password. Administratively set passwords are not subject to length or complexity requirements"
+msgstr "Ange nytt användarlösenord. Administrativt inställda lösenord omfattas inte av krav på längd eller komplexitet"
+
+#: 
+msgid "No email passed in"
+msgstr "Inget e-postmeddelande har skickats in"
+
+#: 
+msgid "Mailchimp is not active"
+msgstr "Mailchimp är inte aktivt"
+
+#: 
+msgid "Mailchimp"
+msgstr "MailChimp"
+
+#: 
+msgid "Lists"
+msgstr "Listor"
+
+#: 
+msgid "loading"
+msgstr "läser in"
+
+#: 
+msgid "List not found"
+msgstr "Listan hittades inte"
+
+#: 
+msgid "List not inList"
+msgstr "Lista inte inList"
+
+#: 
+msgid "People not in"
+msgstr "Människor inte i"
+
+#: 
+msgid "Invalid List id"
+msgstr "Ogiltig lista-id"
+
+#: 
+msgid "Audience not in the ChurchCRM"
+msgstr "Publiken inte i ChurchCRM"
+
+#: 
+msgid "ChurchCRM Installation Information"
+msgstr "ChurchCRM installationsinformation"
+
+#: 
+msgid "Database Server Version"
+msgstr "Databaseserverversion"
+
+#: 
+msgid "Web Server"
+msgstr "Webbserver"
+
+#: 
+msgid "Server Software"
+msgstr "Serverprogramvara"
+
+#: 
+msgid "Email Information"
+msgstr "E-postinformation"
+
+#: 
+msgid "List maintenance"
+msgstr "Lista underhåll"
+
+#: 
+msgid "People not in list"
+msgstr "Människor som inte är i listan"
+
+#: 
+msgid "Audience not in the CRM"
+msgstr "Publiken inte i CRM"
+
+#: 
+msgid "Hebrew"
+msgstr "Hebreiska"
+
+#: 
+msgid "open rate"
+msgstr "öppen kostnad"
+
+#: 
+msgid "Not Subscribed "
+msgstr "Inte prenumererad "
+
+#: 
+msgid "Global User Settings"
+msgstr "Globala användarinställningar"
+
+#: 
+msgid "General"
+msgstr "Allmän"
+
+#: 
+msgid "Passwords"
+msgstr "Lösenord"
+
+#: 
+msgid "2FA"
+msgstr "2FA"
+
+#: 
+msgid "Session Timeout"
+msgstr "Sessionen tidsgräns"
+
+#: 
+msgid "Max Failed Login"
+msgstr "Maximal misslyckad inloggningar"
+
+#: 
+msgid "Enable Password Reset"
+msgstr "Aktivera återställning av lösenord"
+
+#: 
+msgid "Send email to Deleted Users"
+msgstr "Skicka e-post till borttagna användare"
+
+#: 
+msgid "Min Password Length"
+msgstr "Minimal lösenordslängd"
+
+#: 
+msgid "Min Password Characters Delta"
+msgstr "Minimal lösenordstecken Delta"
+
+#: 
+msgid "Disallowed Passwords"
+msgstr "Otillåtna lösenord"
+
+#: 
+msgid "Enable 2FA"
+msgstr "Aktivera 2FA"
+
+#: 
+msgid "Require 2FA"
+msgstr "Kräva 2FA"
+
+#: 
+msgid "2FA Application Name"
+msgstr "2FA-applikationsnamn"
+
+#: 
+msgid "Unsupported user config"
+msgstr "Användarkonfigurering som inte stöds"
+
+#: 
+msgid "Invalid userId"
+msgstr "Ogiltig användare Id"
+
+#: 
+msgid "Unsupported user setting - "
+msgstr "Användarinställning som inte stöds - "
+
+#: 
+msgid "Login Info"
+msgstr "Inloggningsinfo"
+
+#: 
+msgid "Login Count"
+msgstr "Inloggningsantal"
+
+#: 
+msgid "Failed Login"
+msgstr "Misslyckad inloggning"
+
+#: 
+msgid "Permissions"
+msgstr "Behörigheter"
+
+#: 
+msgid "Manage Notes"
+msgstr "Hantera anteckningar"
+
+#: 
+msgid "Skins"
+msgstr "Skal"
+
+#: 
+msgid "Failed generate a new API Key"
+msgstr "Det gick inte att generera en ny API-nyckel"
+
+#: 
+msgid "Pledge Summary By Family"
+msgstr "Löften Sammanfattning efter familj"
+
+#: 
+msgid "Pledge"
+msgstr "Löften"
+
+#: 
+msgid "Paid"
+msgstr "Betald"
+
+#: 
+msgid "Owe"
+msgstr "Skyldig"
+
+#: 
+msgid "Start Date"
+msgstr "Start datum"
+
+#: 
+msgid "End Date"
+msgstr "Slutdatum"
+
+#: 
+msgid "Pinned Calendars"
+msgstr "Utvalde kalendrar"
+
+#: 
+msgid "This field is required"
+msgstr "Detta fält krävs"
+
+#: 
+msgid "Text"
+msgstr "Text"
+
+#: 
+msgid "Event Description"
+msgstr "Händelsebeskrivning"
+
+#: 
+msgid "Enrolling your ChurchCRM user account in Two Factor Authention provides an additional layer of defense against bad actors trying to access your account."
+msgstr "Registrering av ditt ChurchCRM-användarkonto i Two Factor Authention ger ytterligare ett försvar mot dåliga aktörer som försöker komma åt ditt konto."
+
+#: 
+msgid "ChurchCRM Two factor supports any TOTP authenticator app, so you're free to choose between Microsoft Authenticator, Google Authenticator, Authy, LastPass, and others"
+msgstr "ChurchCRM Two factor stöder alla TOTP-autentiseringsappar, så du kan välja mellan Microsoft Authenticator, Google Authenticator, Authy, LastPass och andra"
+
+#: 
+msgid "When you sign in to ChurchCRM, you'll still enter your username and password like normal"
+msgstr "När du loggar in på ChurchCRM anger du fortfarande ditt användarnamn och lösenord som vanligt"
+
+#: 
+msgid "However, you'll also need to supply a one-time code from your authenticator device to complete your login"
+msgstr "Du måste dock också ange en engångskod från din autentiseringsenhet för att slutföra din inloggning"
+
+#: 
+msgid "After successfully entering both your credentials, and the one-time code, you'll be logged in as normal"
+msgstr "När du har angett både dina autentiseringsuppgifter och engångskoden är du inloggad som vanligt"
+
+#: 
+msgid "To prevent being locked out of your ChurchCRM account, please ensure you're ready to complete two factor enrollment before clicking begin"
+msgstr "För att förhindra att du låses ut ur ditt ChurchCRM-konto, se till att du är redo att slutföra tvåfaktorsregistrering innan du klickar på"
+
+#: 
+msgid "Beginning enrollment will invalidate any previously enrolled 2 factor devices and recovery codes."
+msgstr "Från början av registreringen ogiltigförklaras tidigare registrerade 2-faktor enheter och återställningskoder."
+
+#: 
+msgid "When you click next, you'll be prompted to scan a QR code to enroll your authenticator app."
+msgstr "När du klickar på nästa uppmanas du att skanna en QR-kod för att registrera din autentiseringsapp."
+
+#: 
+msgid "To confirm enrollment, you'll need to enter the code generated by your authenticator app"
+msgstr "För att bekräfta registreringen måste du ange koden som genereras av din autentiseringsapp"
+
+#: 
+msgid "After confirming app enrollment, single-use recovery codes will be generated and displayed."
+msgstr "Efter bekräftelse av appregistrering genereras och visas återställningskoder för engångsbruk."
+
+#: 
+msgid "Recovery codes can be used instead of a code generated from your authenticator app."
+msgstr "Återställningskoder kan användas istället för en kod som genereras från din autentiseringsapp."
+
+#: 
+msgid "Store these in a secure location"
+msgstr "Förvara dessa på en säker plats"
+
+#: 
+msgid "Begin Two Factor Authentication Enrollment"
+msgstr "Börja inregistrering av tvåfaktorautentisering"
+
+#: 
+msgid "2 Factor Authentication Secret"
+msgstr "2 Factor Authentication Secret"
+
+#: 
+msgid "Regenerate 2 Factor Authentication Secret"
+msgstr "Regenerera 2-faktor-autentiseringshemlighet"
+
+#: 
+msgid "Remove 2 Factor Authentication Secret"
+msgstr "Ta bort 2 Factor Authentication Secret"
+
+#: 
+msgid "Enter TOTP code to confirm enrollment"
+msgstr "Ange TOTP-kod för att bekräfta registreringen"
+
+#: 
+msgid "2 Factor Authentication Enrollment Success"
+msgstr "2 Factor Authentication Enrollment Success"
+
+#: 
+msgid "Please store these recovery codes in a safe location"
+msgstr "Förvara dessa återställningskoder på en säker plats"
+
+#: 
+msgid "If you ever lose access to your newly enrolled authenticator app, you'll need to use a recovery code to gain access to your account"
+msgstr "Om du någonsin tappar åtkomst till din nyregistrerade autentiseringsapp måste du använda en återställningskod för att få åtkomst till ditt konto"
+
+#: 
+msgid "Event Attendance"
+msgstr "Deltagande i evenemang"
+
+#: 
+msgid "Generate attendance -AND- non-attendance reports for events"
+msgstr "Skapa närvaro-OCH- rapporter om närvaro för evenemang"
+
+#: 
+msgid "of translation completed"
+msgstr "av översättningen är klar"
+
+#: 
+msgid "Help translate this project"
+msgstr "Hjälpa till att översätta detta projekt"
+
+#: 
 msgid "Credit Card People"
-msgstr "Kreditkortfolk"
+msgstr "Kreditkortsmänniskor"
 
 #: 
 msgid "People who are configured to pay by credit card."
-msgstr "Personer som är konfigurerade att betala med kreditkort."
+msgstr "Människor som är konfigurerade att betala med kreditkort."
+
+#: 
+msgid "Afrikaans"
+msgstr "afrikaans"
+
+#: 
+msgid " has a type mismatch"
+msgstr " har en typavvikelse"
+
+#: 
+msgid "Loading"
+msgstr "Läser in"
+
+#: 
+msgid "Family Property Unassignment"
+msgstr "Familjeegendom av-tilldelning"
+
+#: 
+msgid "Do you want to remove"
+msgstr "Vill du ta bort"
+
+#: 
+#, fuzzy
+msgid "View Active People"
+msgstr "Visa aktiva personer"
+
+#: 
+#, fuzzy
+msgid "View Inactive People"
+msgstr "Visa inaktiva personer"
+
+#: 
+msgid "Today's Birthdays"
+msgstr "Dagens födelsedagar"
+
+#: 
+msgid "Today's Wedding Anniversaries"
+msgstr "Dagens bröllopsdagar"
+
+#: 
+msgid "Enable New Dashboard"
+msgstr "Aktivera ny instrumentpanel"
+
+#: 
+msgid "Api Key"
+msgstr "Api Nyckel"
+
+#: 
+msgid "Regen API Key"
+msgstr "Regen API-nyckel"
 

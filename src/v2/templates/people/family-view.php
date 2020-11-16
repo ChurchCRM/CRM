@@ -4,6 +4,7 @@
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\Classification;
+use ChurchCRM\Service\MailChimpService;
 use ChurchCRM\Authentication\AuthenticationManager;
 
 //Set the page title
@@ -12,6 +13,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 $curYear = (new DateTime)->format("Y");
 $familyAddress = $family->getAddress();
+$mailchimp = new MailChimpService();
 ?>
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
@@ -19,6 +21,7 @@ $familyAddress = $family->getAddress();
     window.CRM.currentFamilyName = "<?= $family->getName() ?>";
     window.CRM.currentActive = <?= $family->isActive() ? "true" : "false" ?>;
     window.CRM.currentFamilyView = 2;
+    window.CRM.plugin.mailchimp = <?= $mailchimp->isActive()? "true" : "false" ?>;
 </script>
 
 
@@ -109,16 +112,16 @@ $familyAddress = $family->getAddress();
                         <a class="btn btn-app" id="AddFamilyToCart" data-familyid="<?= $family->getId() ?>"> <i
                                 class="fa fa-cart-plus"></i> <?= gettext("Add All Family Members to Cart") ?></a>
                         <?php if (AuthenticationManager::GetCurrentUser()->isCanvasserEnabled()) { ?>
-                            <a class="btn btn-app" href="<?= SystemURLs::getRootPath()?>/CanvassEditor.php?FamilyID=<?= $family->getId() ?>&amp;FYID=<?= $_SESSION['idefaultFY'] ?>&amp;linkBack=v2/family/<?= $family->getId() ?>/view">
+                            <a class="btn btn-app" href="<?= SystemURLs::getRootPath()?>/CanvassEditor.php?FamilyID=<?= $family->getId() ?>&amp;FYID=<?= $_SESSION['idefaultFY'] ?>&amp;linkBack=v2/family/<?= $family->getId() ?>">
                                 <i class="fa fa-refresh"></i><?= MakeFYString($_SESSION['idefaultFY']) . gettext(" Canvass Entry") ?></a>
                         <?php } ?>
 
                         <?php if (AuthenticationManager::GetCurrentUser()->isFinanceEnabled()) { ?>
                             <a class="btn btn-app"
-                               href="<?= SystemURLs::getRootPath()?>/PledgeEditor.php?FamilyID=<?= $family->getId() ?>&amp;linkBack=v2/family/<?= $family->getId() ?>/view&amp;PledgeOrPayment=Pledge">
+                               href="<?= SystemURLs::getRootPath()?>/PledgeEditor.php?FamilyID=<?= $family->getId() ?>&amp;linkBack=v2/family/<?= $family->getId() ?>&amp;PledgeOrPayment=Pledge">
                                 <i class="fa fa-check-circle-o"></i><?= gettext("Add a new pledge") ?></a>
                             <a class="btn btn-app"
-                               href="<?= SystemURLs::getRootPath()?>/PledgeEditor.php?FamilyID=<?= $family->getId() ?>&amp;linkBack=v2/family/<?= $family->getId() ?>/view&amp;PledgeOrPayment=Payment">
+                               href="<?= SystemURLs::getRootPath()?>/PledgeEditor.php?FamilyID=<?= $family->getId() ?>&amp;linkBack=v2/family/<?= $family->getId() ?>&amp;PledgeOrPayment=Payment">
                                 <i class="fa fa-money"></i><?= gettext("Add a new payment") ?></a>
                         <?php } ?>
                     </div>
@@ -186,13 +189,10 @@ $familyAddress = $family->getAddress();
                                 <li><i class="fa-li fa fa-envelope"></i><?= gettext("Email") ?>:<a
                                         href="mailto:<?= $family->getEmail() ?>">
                                         <span><?= $family->getEmail() ?></span></a></li>
-                                <?php /**if ($mailchimp->isActive()) {
-                                 * ?>
-                                 * <li><i class="fa-li fa fa-send"></i><?= gettext("Email") ?>:
-                                 * <span><?= $mailchimp->isEmailInMailChimp($family->getEmail()) ?></span>
-                                 * </a></li>
-                                 * <?php
-                                 * }*/
+                                <?php if ($mailchimp->isActive()) { ?>
+                                 <li><i class="fa-li fa fa-send"></i><?= gettext("Mailchimp") ?>:
+                                 <span id="<?= md5($family->getEmail())?>">... <?= gettext("loading")?> ...</span></a></li>
+                                <?php }
                             }
                             foreach ($familyCustom as $customField) {
                                 echo '<li><i class="fa-li ' . $customField->getIcon() . '"></i>'. $customField->getDisplayValue().': <span>';
@@ -309,9 +309,7 @@ $familyAddress = $family->getAddress();
                 <h3 class="box-title"><?= gettext("Properties") ?></h3>
                 <div class="box-tools pull-right">
                     <?php if (AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled()) { ?>
-                    <button type="button" class="btn btn-box-tool"><i
-                            class="fa fa-plus-circle"></i>
-                    </button>
+                    <button id="add-family-property" type="button" class="btn btn-box-tool hidden"><i class="fa fa-plus-circle text-blue"></i></button>
                     <?php } ?>
 
                     <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
@@ -320,71 +318,28 @@ $familyAddress = $family->getAddress();
                 </div>
             </div>
             <div class="box-body">
-                <?php
-                $familyProperties = $family->getProperties();
 
-                if (empty($familyProperties->count())) {
-                    ?>
-                    <br>
-                    <div class="alert alert-warning">
-                        <i class="fa fa-question-circle fa-fw fa-lg"></i>
-                        <span><?= gettext("No property assignments.") ?></span>
-                    </div>
-                    <?php
-                } else {
-                    ?>
-                    <table class="table table-striped table-bordered data-table" cellspacing="0" width="100%">
-                    <tr>
-                        <th></th>
-                        <th><?= gettext("Name") ?></th>
-                        <th><?= gettext("Value") ?></th>
-                    </tr>
+                <div id="family-property-loading" class="col-xs-12 text-center">
+                    <i class="btn btn-default btn-lrg ajax">
+                        <i class="fa fa-spin fa-refresh"></i>&nbsp; <?= gettext("Loading") ?>
+                    </i>
+                </div>
 
-                    <?php
-                    //Loop through the rows
-                    foreach ($familyProperties as $familyProperty) {?>
+                <div id="family-property-no-data" class="alert alert-warning hidden">
+                    <i class="fa fa-question-circle fa-fw fa-lg"></i>
+                    <span><?= gettext("No property assignments.") ?></span>
+                </div>
+
+                <table id="family-property-table" class="table table-striped table-bordered data-table hidden" cellspacing="0" width="100%">
+                    <thead>
                         <tr>
-                            <td>
-                            <?php if (AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled()) {
-                                if (!empty($familyProperty->getProperty()->getProPrompt())) { ?>
-                                    <a href="<?=SystemURLs::getRootPath()?>/PropertyAssign.php?FamilyID=<?= $family->getId()?>&PropertyID=<?=$familyProperty->getPropertyId() ?>"><button type="button" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></button></a>
-                                <?php } ?>
-                                <a href="<?=SystemURLs::getRootPath()?>/PropertyUnassign.php?FamilyID=<?= $family->getId()?>&PropertyID=<?=$familyProperty->getPropertyId() ?>"><button type="button" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i></button></a></td>
-                            <?php } ?>
-                            </td>
-                            <td><?= $familyProperty->getProperty()->getProName() ?></td>
-                            <td><b><?= $familyProperty->getPropertyValue() ?></b></td>
+                            <th width="50"></th>
+                            <th width="250" class="text-center"><?= gettext("Name") ?></th>
+                            <th class="text-center"><?= gettext("Value") ?></th>
                         </tr>
-
-                    <?php } ?>
-                    </table>
-                <?php } ?>
-                <p/>
-                <?php if (AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled()) { ?>
-                    <div class="hide" id="family-add-property">
-                        <div>
-                            <strong><?= gettext("Assign a New Property") ?>:</strong>
-                            <p/>
-                            <form method="post" action="<?=SystemURLs::getRootPath()?>/index.php">
-                                <div class="row">
-                                    <div class="form-group col-md-7 col-lg-7 col-sm-12 col-xs-12">
-                                        <select name="PropertyID" class="form-control">
-                                            <option selected disabled> -- <?= gettext('select an option') ?>--</option>
-                                            <?php foreach ($allFamilyProperties as $property) { ?>
-                                                <option value="<?= $property->getProId()?>"><?= $property->getProName()?></option>
-                                            <?php } ?>
-                                        </select>
-                                    </div>
-                                    <div class="form-group col-lg-7 col-md-7 col-sm-12 col-xs-12">
-                                        <input type="submit" class="btn btn-primary"
-                                               value="<?= gettext("Assign") ?>" name="Submit2">
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                    <?php
-                } ?>
+                    </thead>
+                </table>
+            <p/>
             </div>
         </div>
 

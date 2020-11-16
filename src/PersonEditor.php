@@ -403,7 +403,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
                 $person = PersonQuery::create()->findOneByID($iPersonID);
                 $NotificationEmail = new NewPersonOrFamilyEmail($person);
                 if (!$NotificationEmail->send()) {
-                    LoggerUtils::getAppLogger()->warn($NotificationEmail->getError());
+                    LoggerUtils::getAppLogger()->warning($NotificationEmail->getError());
                 }
             }
         } else {
@@ -627,7 +627,7 @@ require 'Include/Header.php';
                 <div class="row">
                     <div class="col-md-2">
                         <label><?= gettext('Gender') ?>:</label>
-                        <select name="Gender" class="form-control">
+                        <select id="Gender" name="Gender" class="form-control">
                             <option value="0"><?= gettext('Select Gender') ?></option>
                             <option value="0" disabled>-----------------------</option>
                             <option value="1" <?php if ($iGender == 1) {
@@ -691,7 +691,7 @@ require 'Include/Header.php';
                 <div class="row">
                     <div class="col-md-2">
                         <label><?= gettext('Birth Month') ?>:</label>
-                        <select name="BirthMonth" class="form-control">
+                        <select id="BirthMonth" name="BirthMonth" class="form-control">
                             <option value="0" <?php if ($iBirthMonth == 0) {
         echo 'selected';
     } ?>><?= gettext('Select Month') ?></option>
@@ -735,7 +735,7 @@ require 'Include/Header.php';
                     </div>
                     <div class="col-md-2">
                         <label><?= gettext('Birth Day') ?>:</label>
-                        <select name="BirthDay" class="form-control">
+                        <select id="BirthDay" name="BirthDay" class="form-control">
                             <option value="0"><?= gettext('Select Day') ?></option>
                             <?php for ($x = 1; $x < 32; $x++) {
         if ($x < 10) {
@@ -752,7 +752,7 @@ require 'Include/Header.php';
                     </div>
                     <div class="col-md-2">
                         <label><?= gettext('Birth Year') ?>:</label>
-                        <input type="text" name="BirthYear" value="<?php echo $iBirthYear ?>" maxlength="4" size="5"
+                        <input type="text" id="BirthYear" name="BirthYear" value="<?php echo $iBirthYear ?>" maxlength="4" size="5"
                                placeholder="yyyy" class="form-control">
                         <?php if ($sBirthYearError) {
         ?><font color="red"><br><?php echo $sBirthYearError ?>
@@ -1047,7 +1047,7 @@ require 'Include/Header.php';
                         <div class="input-group-addon">
                             <i class="fa fa-envelope"></i>
                         </div>
-                        <input type="text" name="Email"
+                        <input type="text" name="Email" id="Email"
                                value="<?= htmlentities(stripslashes($sEmail), ENT_NOQUOTES, 'UTF-8') ?>" size="30"
                                maxlength="100" class="form-control">
                         <?php if ($sEmailError) {
@@ -1138,7 +1138,7 @@ require 'Include/Header.php';
             <div class="row">
               <div class="form-group col-md-3 col-lg-3">
                 <label><?= gettext('Classification') ?>:</label>
-                <select name="Classification" class="form-control">
+                <select id="Classification" name="Classification" class="form-control">
                   <option value="0"><?= gettext('Unassigned') ?></option>
                   <option value="0" disabled>-----------------------</option>
                   <?php while ($aRow = mysqli_fetch_array($rsClassifications)) {

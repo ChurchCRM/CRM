@@ -7,7 +7,6 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\ChurchMetaData;
 use Mustache_Engine;
 use Mustache_Loader_FilesystemLoader;
-use Monolog\Logger;
 use PHPMailer\PHPMailer\PHPMailer;
 use ChurchCRM\Service\SystemService;
 
@@ -48,7 +47,7 @@ abstract class BaseEmail
             $this->mail->Username = SystemConfig::getValue("sSMTPUser");
             $this->mail->Password = SystemConfig::getValue("sSMTPPass");
         }
-        if (SystemConfig::getValue("sLogLevel") == Logger::DEBUG) {
+        if (SystemConfig::debugEnabled()) {
             $this->mail->SMTPDebug = 1;
             $this->mail->Debugoutput = "error_log";
         }

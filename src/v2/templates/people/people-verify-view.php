@@ -53,7 +53,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     $(document).ready(function () {
 
-        $("#verifyEmail").click(function() { 
+        $("#verifyEmail").click(function() {
             bootbox.confirm({
                 title: i18next.t("Send Family Verification Emails Now?"),
                 message: i18next.t("Send data verification request emails to all people in database?")+"<br/><br/>"+i18next.t("This process can take a while depending on the size of your database."),
@@ -71,7 +71,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     }
                 }
             });
-        });     
+        });
 
         var dataTableConfig = {
             ajax: {
@@ -84,7 +84,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     data: 'Family.Id',
                     searchable: false,
                     render: function (data, type, full, meta) {
-                        return '<a href=' + window.CRM.root + '/FamilyView.php?FamilyID=' + data + '>' + data + '</a>';
+                        return '<a href=' + window.CRM.root + '/v2/family/' + data + '>' + data + '</a>';
                     }
                 },
                 {
@@ -123,7 +123,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     data: 'FamilyId',
                     searchable: false,
                     render: function (data, type, full, meta) {
-                        return '<a href=' + window.CRM.root + '/FamilyView.php?FamilyID=' + data + '>' + data + '</a>';
+                        return '<a href=' + window.CRM.root + '/v2/family/' + data + '>' + data + '</a>';
                     }
                 },
                 {

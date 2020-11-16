@@ -65,7 +65,8 @@ msgid "This tool will assist you in manually backing up the ChurchCRM database."
 msgstr "Esta ferramenta vai te ajudar a fazer o backup manual da base de dados."
 
 #: 
-msgid "You should make a manual backup at least once a week unless you already have a regular backup procedule for your systems."
+#, fuzzy
+msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
 msgstr "Você deve fazer um backup manual, pelo menos uma vez por semana, a menos que você programe um backup automático."
 
 #: 
@@ -1117,10 +1118,6 @@ msgstr "Faltaram ao evento"
 #: 
 msgid "Event Guests"
 msgstr "Visitantes no evento"
-
-#: 
-msgid "Back to Report Menu"
-msgstr "Retornar ao menu de relatórios"
 
 #: 
 msgid "There "
@@ -3605,10 +3602,6 @@ msgid "eMail Dashboard"
 msgstr "E-MAIL"
 
 #: 
-msgid "People not in Mailchimp"
-msgstr "Pessoas fora do Mailchimp"
-
-#: 
 msgid "No families need canvassers assigned"
 msgstr "Nenhuma família precisa de visitadoes atribuídos"
 
@@ -4280,7 +4273,8 @@ msgid "Add New Person"
 msgstr "Nova Pessoa"
 
 #: 
-msgid "View All Persons"
+#, fuzzy
+msgid "View All People"
 msgstr "Ver Pessoas"
 
 #: 
@@ -4418,7 +4412,8 @@ msgid "Church Information"
 msgstr "Informações da Igreja"
 
 #: 
-msgid "User setup"
+#, fuzzy
+msgid "User Setup"
 msgstr "Utilizadores"
 
 #: 
@@ -4548,10 +4543,6 @@ msgstr "Contadores zerados:"
 #: 
 msgid "Cleaned count since last send:"
 msgstr "Contador desde o último envio:"
-
-#: 
-msgid "Missing emails report"
-msgstr "Relatório de e-mails perdidos"
 
 #: 
 msgid "Functions"
@@ -7459,10 +7450,6 @@ msgid "Please confirm reset failed login count"
 msgstr "Confirme a contagem de login com falha de reset"
 
 #: 
-msgid "Password reset for"
-msgstr "Senha resetada para"
-
-#: 
 msgid "View Active Families"
 msgstr "Famílias Ativas"
 
@@ -7857,18 +7844,6 @@ msgstr "Deseja  excluir esta pessoa? Isso não pode ser desfeito."
 #: 
 msgid "Are you sure you want to unassign this property?"
 msgstr "Tem certeza de que deseja desatribuir essa propriedade?"
-
-#: 
-msgid "Head of Household"
-msgstr "Chefe de família"
-
-#: 
-msgid "Spouse"
-msgstr "Esposa"
-
-#: 
-msgid "Child"
-msgstr "Filho"
 
 #: 
 msgid "Select a family"
@@ -8833,10 +8808,6 @@ msgid "Application Prerequisites"
 msgstr "Pré-requisitos de Aplicativo"
 
 #: 
-msgid "WebServer Modules"
-msgstr "Módulos WebServer"
-
-#: 
 msgid "Invalid country name supplied"
 msgstr "Nome de País Inválido"
 
@@ -8952,14 +8923,6 @@ msgstr "Tipos de depósito não suportados"
 #: 
 msgid "Support for eGive, Credit Card, and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions."
 msgstr "O suporte para pagamentos de eGive, cartão de crédito e emissão de notas bancárias foi descontinuado. Os relatórios não bancários existentes podem não estar mais acessíveis em versões futuras."
-
-#: 
-msgid "Unsupported Stored Payment Data Detected"
-msgstr "Dados de pagamento armazenados não suportados"
-
-#: 
-msgid "Support for stored payment data has been removed. This data will soon be removed from your database"
-msgstr "O suporte para dados de pagamento armazenados foi removido. Em breve, esses dados serão removidos do sua base de dados"
 
 #: 
 msgid "Estonian"
@@ -9317,14 +9280,6 @@ msgstr "Deve ser definido como 'verdadeiro'"
 #: 
 msgid "Include/Config.php must define an encryption key for storing 2FA secret keys in the database by setting a value for"
 msgstr "Include / Config.php deve definir uma chave de criptografia para armazenar chaves secretas 2FA na base de dados, definindo um valor para"
-
-#: 
-msgid "Credit Card People"
-msgstr "Pessoas com de cartão de crédito"
-
-#: 
-msgid "People who are configured to pay by credit card."
-msgstr "Pessoas que estão configuradas para pagar com cartão de crédito."
 
 #: 
 msgid "Google Maps API Key used for Geocoding addresses"

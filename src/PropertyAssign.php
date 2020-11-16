@@ -72,7 +72,7 @@ elseif (isset($_GET['FamilyID']) && AuthenticationManager::GetCurrentUser()->isE
     $iRecordID = $iFamilyID;
     $sQuerystring = '?FamilyID='.$iFamilyID;
     $sTypeName = gettext('Family');
-    $sBackPage = 'FamilyView.php?FamilyID='.$iFamilyID;
+    $sBackPage = 'v2/family/'.$iFamilyID;
 
     // Get the name of the family
     $sSQL = 'SELECT fam_Name FROM family_fam WHERE fam_ID = '.$iFamilyID;
@@ -163,7 +163,7 @@ require 'Include/Header.php';
 <input type="hidden" name="SecondPass" value="True">
 <input type="hidden" name="Action" value="<?= $sAction ?>">
 <div class="table-responsive">
-<table cellpadding="4">
+<table class="table table-striped">
 	<tr>
 		<td align="right"><b><?= $sTypeName ?>:</b></td>
 		<td><?= $sName ?></td>
@@ -174,15 +174,21 @@ require 'Include/Header.php';
 <?php if (strlen($sPrompt)) {
     ?>
 		<tr>
-			<td align="right" valign="top"><b><?= gettext('Value') ?>:</b></td>
-			<td><?= $sPrompt ?><br><textarea name="Value" cols="60" rows="10"><?= $sValue ?></textarea></td>
+			<td align="right" valign="top">
+                <b><?= gettext('Value') ?>:</b>
+            </td>
+            <td>
+                <?= $sPrompt ?>
+                <p><br/></p>
+                <textarea name="Value" cols="60" rows="10"><?= $sValue ?></textarea>
+            </td>
 		</tr>
 <?php
 } ?>
 </table>
 </div>
 
-<p align="center"><input type="submit" class="btn btn-default" <?= 'value="'; if ($sAction == 'add') {
+<p align="center"><input type="submit" class="btn btn-primary" <?= 'value="'; if ($sAction == 'add') {
         echo gettext('Assign');
     } else {
         echo gettext('Update');

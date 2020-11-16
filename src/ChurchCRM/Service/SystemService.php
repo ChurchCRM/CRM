@@ -37,19 +37,7 @@ class SystemService
 
     static public function getCopyrightDate()
     {
-        $composerFile = file_get_contents(SystemURLs::getDocumentRoot() . '/composer.json');
-        $composerJson = json_decode($composerFile, true);
-        $buildTime = new \DateTime();
-
-        if ((!empty($composerJson)) && array_key_exists('time', $composerJson) && (!empty($composerJson['time'])))
-        {
-            try{ 
-                $buildTime = new \DateTime($composerJson['time']);
-            } catch (Exception $e) {
-                // will use default
-            }
-        }
-        return $buildTime->format("Y");
+        return (new \DateTime())->format("Y");
     }
 
     public function getConfigurationSetting($settingName, $settingValue)
@@ -178,33 +166,33 @@ class SystemService
 
     public static function runTimerJobs()
     {
-      LoggerUtils::getAppLogger()->addInfo("Starting background job processing");
+      LoggerUtils::getAppLogger()->info("Starting background job processing");
         //start the external backup timer job
         if (SystemConfig::getBooleanValue('bEnableExternalBackupTarget') && SystemConfig::getValue('sExternalBackupAutoInterval') > 0) {  //if remote backups are enabled, and the interval is greater than zero
           try {
             if (self::IsTimerThresholdExceeded(SystemConfig::getValue('sLastBackupTimeStamp'), SystemConfig::getValue('sExternalBackupAutoInterval'))) {
               // if there was no previous backup, or if the interval suggests we do a backup now.
-              LoggerUtils::getAppLogger()->addInfo("Starting a backup job.  Last backup run: ".SystemConfig::getValue('sLastBackupTimeStamp'));
+              LoggerUtils::getAppLogger()->info("Starting a backup job.  Last backup run: ".SystemConfig::getValue('sLastBackupTimeStamp'));
               $BaseName = preg_replace('/[^a-zA-Z0-9\-_]/','', SystemConfig::getValue('sChurchName')). "-" . date(SystemConfig::getValue("sDateFilenameFormat"));
               $Backup = new BackupJob($BaseName, BackupType::FullBackup, SystemConfig::getValue('bBackupExtraneousImages'),false,'');
               $Backup->Execute();
               $Backup->CopyToWebDAV(SystemConfig::getValue('sExternalBackupEndpoint'), SystemConfig::getValue('sExternalBackupUsername'), SystemConfig::getValue('sExternalBackupPassword'));
               $now = new \DateTime();  // update the LastBackupTimeStamp.
               SystemConfig::setValue('sLastBackupTimeStamp', $now->format(SystemConfig::getValue('sDateFilenameFormat')));
-              LoggerUtils::getAppLogger()->addInfo("Backup job successful");
+              LoggerUtils::getAppLogger()->info("Backup job successful");
             }
             else {
-              LoggerUtils::getAppLogger()->addInfo("Not starting a backup job.  Last backup run: ".SystemConfig::getValue('sLastBackupTimeStamp').".");
+              LoggerUtils::getAppLogger()->info("Not starting a backup job.  Last backup run: ".SystemConfig::getValue('sLastBackupTimeStamp').".");
             }
           } catch (\Exception $exc) {
               // an error in the auto-backup shouldn't prevent the page from loading...
-            LoggerUtils::getAppLogger()->addWarning("Failure executing backup job: ". $exc->getMessage() );
+            LoggerUtils::getAppLogger()->warning("Failure executing backup job: ". $exc->getMessage() );
           }
         }
         if (SystemConfig::getBooleanValue('bEnableIntegrityCheck') && SystemConfig::getValue('iIntegrityCheckInterval') > 0) {
             if (self::IsTimerThresholdExceeded(SystemConfig::getValue('sLastIntegrityCheckTimeStamp'),SystemConfig::getValue('iIntegrityCheckInterval'))) {
                 // if there was no integrity check, or if the interval suggests we do one now.
-                LoggerUtils::getAppLogger()->addInfo("Starting application integrity check");
+                LoggerUtils::getAppLogger()->info("Starting application integrity check");
                 $integrityCheckFile = SystemURLs::getDocumentRoot() . '/integrityCheck.json';
                 $appIntegrity = AppIntegrityService::verifyApplicationIntegrity();
                 file_put_contents($integrityCheckFile, json_encode($appIntegrity));
@@ -212,15 +200,15 @@ class SystemService
                 SystemConfig::setValue('sLastIntegrityCheckTimeStamp', $now->format(SystemConfig::getValue('sDateFilenameFormat')));
                 if ($appIntegrity['status'] == 'success')
                 {
-                  LoggerUtils::getAppLogger()->addInfo("Application integrity check passed");
+                  LoggerUtils::getAppLogger()->info("Application integrity check passed");
                 }
                 else
                 {
-                  LoggerUtils::getAppLogger()->addWarning("Application integrity check failed: ".$appIntegrity['message']);
+                  LoggerUtils::getAppLogger()->warning("Application integrity check failed: ".$appIntegrity['message']);
                 }
             }
              else {
-                  LoggerUtils::getAppLogger()->addInfo("Not starting application integrity check.  Last application integrity check run: ".SystemConfig::getValue('sLastIntegrityCheckTimeStamp'));
+                  LoggerUtils::getAppLogger()->info("Not starting application integrity check.  Last application integrity check run: ".SystemConfig::getValue('sLastIntegrityCheckTimeStamp'));
                 }
         }
         if (self::IsTimerThresholdExceeded(SystemConfig::getValue('sLastSoftwareUpdateCheckTimeStamp'),SystemConfig::getValue('iSoftwareUpdateCheckInterval'))) {
@@ -232,7 +220,7 @@ class SystemService
           SystemConfig::setValue('sLastSoftwareUpdateCheckTimeStamp', $now->format(SystemConfig::getValue('sDateFilenameFormat')));
         }
 
-        LoggerUtils::getAppLogger()->addInfo("Finished background job processing");
+        LoggerUtils::getAppLogger()->info("Finished background job processing");
     }
 
 

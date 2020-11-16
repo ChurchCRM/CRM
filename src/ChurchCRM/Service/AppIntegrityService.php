@@ -20,7 +20,7 @@ class AppIntegrityService
         AppIntegrityService::$IntegrityCheckDetails = json_decode(file_get_contents($integrityCheckFile));
         if (is_null(AppIntegrityService::$IntegrityCheckDetails))
         {
-          LoggerUtils::getAppLogger()->warn("Error decoding integrity check result file: " . $integrityCheckFile);
+          LoggerUtils::getAppLogger()->warning("Error decoding integrity check result file: " . $integrityCheckFile);
           AppIntegrityService::$IntegrityCheckDetails->status = 'failure';
           AppIntegrityService::$IntegrityCheckDetails->message = gettext("Error decoding integrity check result file");
         }
@@ -75,7 +75,7 @@ class AppIntegrityService
       LoggerUtils::getAppLogger()->info('Signature file found at: ' . $signatureFile);
       $signatureData = json_decode(file_get_contents($signatureFile));
       if (is_null($signatureData)){
-        LoggerUtils::getAppLogger()->warn('Error decoding signature definition file: ' . $signatureFile);
+        LoggerUtils::getAppLogger()->warning('Error decoding signature definition file: ' . $signatureFile);
         return ['status' => 'failure', 'message' => gettext('Error decoding signature definition file')];
       }
       if (sha1(json_encode($signatureData->files, JSON_UNESCAPED_SLASHES)) == $signatureData->sha1) {
@@ -84,20 +84,20 @@ class AppIntegrityService
           if (file_exists($currentFile)) {
             $actualHash = sha1_file($currentFile);
             if ($actualHash != $file->sha1) {
-              LoggerUtils::getAppLogger()->warn('File hash mismatch: ' . $file->filename . ". Expected: " . $file->sha1. "; Got: " . $actualHash);
+              LoggerUtils::getAppLogger()->warning('File hash mismatch: ' . $file->filename . ". Expected: " . $file->sha1. "; Got: " . $actualHash);
               array_push($signatureFailures, ['filename' => $file->filename, 'status' => 'Hash Mismatch', 'expectedhash' => $file->sha1, 'actualhash' => $actualHash]);
             }
           } else {
-            LoggerUtils::getAppLogger()->warn('File Missing: ' . $file->filename);
+            LoggerUtils::getAppLogger()->warning('File Missing: ' . $file->filename);
             array_push($signatureFailures, ['filename' => $file->filename, 'status' => 'File Missing']);
           }
         }
       } else {
-        LoggerUtils::getAppLogger()->warn('Signature definition file signature failed validation');
+        LoggerUtils::getAppLogger()->warning('Signature definition file signature failed validation');
         return ['status' => 'failure', 'message' => gettext('Signature definition file signature failed validation')];
       }
     } else {
-      LoggerUtils::getAppLogger()->warn('Signature definition file not found at: ' . $signatureFile);
+      LoggerUtils::getAppLogger()->warning('Signature definition file not found at: ' . $signatureFile);
       return ['status' => 'failure', 'message' => gettext('Signature definition File Missing')];
     }
 
@@ -120,7 +120,7 @@ class AppIntegrityService
   {
 
     $prerequisites = array(
-      new Prerequisite('PHP 7.2+', function() { return version_compare(PHP_VERSION, '7.2.0', '>='); }),
+      new Prerequisite('PHP 7.3+', function() { return version_compare(PHP_VERSION, '7.3.0', '>='); }),
       new Prerequisite('PCRE and UTF-8 Support', function() { return function_exists('preg_match') && @preg_match('/^.$/u', 'ñ') && @preg_match('/^\pL$/u', 'ñ'); }),
       new Prerequisite('Multibyte Encoding', function() { return extension_loaded('mbstring'); }),
       new Prerequisite('PHP Phar', function() { return extension_loaded('phar'); }),
@@ -128,7 +128,7 @@ class AppIntegrityService
       new Prerequisite('PHP XML', function() { return extension_loaded('xml'); }),
       new Prerequisite('PHP EXIF', function() { return extension_loaded('exif'); }),
       new Prerequisite('PHP iconv', function() { return extension_loaded('iconv'); }),
-      new Prerequisite('Mod Rewrite', function() { return AppIntegrityService::hasModRewrite(); }),
+      new Prerequisite('Mod Rewrite or Equivalent', function() { return AppIntegrityService::hasModRewrite(); }),
       new Prerequisite('GD Library for image manipulation', function() { return (extension_loaded('gd') && function_exists('gd_info')); }),
       new Prerequisite('FreeType Library', function() { return function_exists('imagettftext'); }),
       new Prerequisite('FileInfo Extension for image manipulation', function() { return extension_loaded('fileinfo'); }),
@@ -139,7 +139,7 @@ class AppIntegrityService
       new Prerequisite('PHP ZipArchive', function() { return extension_loaded('zip'); }),
       new Prerequisite('Mysqli Functions', function() { return function_exists('mysqli_connect'); })
     );
-    
+
     return $prerequisites;
   }
 
@@ -158,9 +158,9 @@ class AppIntegrityService
   public static function hasApacheModule($module)
   {
       if (function_exists('apache_get_modules')) {
+          LoggerUtils::getAppLogger()->debug("looking for apache module $module using PHP's apache_get_modules");
           return in_array($module, apache_get_modules());
       }
-
       return false;
   }
 
@@ -173,39 +173,48 @@ class AppIntegrityService
     //   and check for a header that would only be present if .htaccess was processed.
     //   This header comes from index.php (which is the target of .htaccess for invalid URLs)
 
-    $check = AppIntegrityService::hasApacheModule('mod_rewrite');
+    $check = false;
+    $logger = LoggerUtils::getAppLogger();
 
-    if (!$check && function_exists('shell_exec')) {
-      if (strpos($_SERVER['SERVER_SOFTWARE'], 'Apache') !== false) {
-        $check = strpos(shell_exec('/usr/local/apache/bin/apachectl -l'), 'mod_rewrite') !== false;
-      }
+    if (stristr($_SERVER["SERVER_SOFTWARE"],"apache") != false) {
+      $logger->debug("PHP is running through Apache; look for mod_rewrite");
+      $check = AppIntegrityService::hasApacheModule('mod_rewrite');
+      $logger->debug("Apache mod_rewrite check status: $check");
+    }
+    else {
+      $logger->debug("PHP is not running through Apache");
     }
 
-    if ( function_exists('curl_version')) {
-        $ch = curl_init();
-        $request_url_parser = parse_url($_SERVER['HTTP_REFERER']);
-        $request_scheme = isset($request_url_parser['scheme']) ? $request_url_parser['scheme'] : 'http';
-        $rewrite_chk_url = $request_scheme ."://". $_SERVER['HTTP_HOST'] . SystemURLs::getRootPath()."/INVALID";
-        curl_setopt($ch, CURLOPT_URL, $rewrite_chk_url);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($ch, CURLOPT_HEADER, 1);
-        curl_setopt($ch, CURLOPT_NOBODY, 1);
-        $output = curl_exec($ch);
-        curl_close($ch);
-        $headers=array();
-        $data=explode("\n",$output);
-        $headers['status']=$data[0];
-        array_shift($data);
-        foreach($data as $part){
-            if (strpos($part, ":"))
-            {
-              $middle=explode(":",$part);
-              $headers[trim($middle[0])] = trim($middle[1]);
-            }
+    if ($check == false){
+      $logger->debug("Previous rewrite checks failed");
+      if ( function_exists('curl_version')) {
+          $ch = curl_init();
+          $request_url_parser = parse_url($_SERVER['HTTP_REFERER']);
+          $request_scheme = isset($request_url_parser['scheme']) ? $request_url_parser['scheme'] : 'http';
+          $rewrite_chk_url = $request_scheme ."://". $_SERVER['SERVER_ADDR'] . SystemURLs::getRootPath()."/INVALID";
+          $logger->debug("Testing CURL loopback check to: $rewrite_chk_url");
+          curl_setopt($ch, CURLOPT_URL, $rewrite_chk_url);
+          curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+          curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+          curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+          curl_setopt($ch, CURLOPT_HEADER, 1);
+          curl_setopt($ch, CURLOPT_NOBODY, 1);
+          $output = curl_exec($ch);
+          curl_close($ch);
+          $headers=array();
+          $data=explode("\n",$output);
+          $headers['status']=$data[0];
+          array_shift($data);
+          foreach($data as $part){
+              if (strpos($part, ":"))
+              {
+                $middle=explode(":",$part);
+                $headers[trim($middle[0])] = trim($middle[1]);
+              }
+          }
+          $check =  $headers['CRM'] == "would redirect";
+          $logger->debug("CURL loopback check headers observed: ".($check?'true':'false'));
         }
-        $check =  $headers['CRM'] == "would redirect";
       }
 
       return $check;

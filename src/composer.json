@@ -1,13 +1,12 @@
 {
     "name": "churchcrm/crm",
-    "version": "4.1.0",
+    "version": "4.2.3",
     "type": "project",
     "keywords": [
         "church",
         "crm"
     ],
     "homepage": "http://www.churchcrm.io",
-    "time": "2020-06-08 19:06:41",
     "license": "MIT",
     "authors": [
         {
@@ -30,32 +29,33 @@
     },
     "config": {
         "platform": {
-            "php": "7.2"
-        }
+            "php": "7.3"
+        },
+        "sort-packages": true
     },
     "require": {
-        "drewm/mailchimp-api": "^2.5",
-        "slim/slim": "3.9.2",
-        "slim/php-view": "2.2",
-        "monolog/monolog": "^1.17",
-        "knplabs/github-api": "~1.4",
-        "propel/propel": "~2.0@dev",
-        "setasign/fpdf": "1.8.1",
-        "phpmailer/phpmailer": "6.1.*",
-        "verot/class.upload.php": "dev-master",
-        "ifsnop/mysqldump-php": "2.*",
-        "php-http/message": "1.6.0",
-        "geocoder-php/google-maps-provider": "4.2.0",
-        "geocoder-php/bing-maps-provider": "4.0.0",
-        "mustache/mustache": "~2.5",
-        "nexmo/client": "@beta",
-        "slim/http-cache": "^0.4.0",
-        "azuyalabs/yasumi": "^1.8",
+        "azuyalabs/yasumi": "^2.3.0",
         "defuse/php-encryption": "^2.2",
-        "pragmarx/google2fa": "^6.1",
-        "endroid/qr-code": "^3.6",
-        "symfony/yaml": "^3.4",
-        "symfony/translation": "^4.4"
+        "drewm/mailchimp-api": "^2.5",
+        "endroid/qr-code": "^3.9",
+        "geocoder-php/bing-maps-provider": "^4.1",
+        "geocoder-php/google-maps-provider": "^4.5",
+        "ifsnop/mysqldump-php": "^v2.9",
+        "knplabs/github-api": "^2.17.0",
+        "monolog/monolog": "^2.1",
+        "mustache/mustache": "^v2.13.0",
+        "php-http/guzzle7-adapter": "^0.1.1",
+        "php-http/message": "^1.9.1",
+        "phpmailer/phpmailer": "^6.1.8",
+        "pragmarx/google2fa": "^8.0.0",
+        "propel/propel": "2.0.0-alpha11",
+        "setasign/fpdf": "^1.8.2",
+        "slim/http-cache": "^1.0.0",
+        "slim/php-view": "^3.0.0",
+        "slim/slim": "^3.12.3",
+        "symfony/translation": "^5.1.8",
+        "verot/class.upload.php": "^2.0.9",
+        "vonage/client": "^2.4.0"
     },
     "autoload": {
         "classmap": [

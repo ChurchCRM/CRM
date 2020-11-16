@@ -51,7 +51,7 @@ $app->group('/users', function () {
             $user->createTimeLineNote("login-reset");
             $email = new UnlockedEmail($user);
             if (!$email->send()) {
-                LoggerUtils::getAppLogger()->warn($email->getError());
+                LoggerUtils::getAppLogger()->warning($email->getError());
             }
             return $response->withStatus(200);
         } else {
@@ -66,12 +66,12 @@ $app->group('/users', function () {
             if (!is_null($userConfig)) {
                 $userConfig->delete();
             }
-            
+
             $user->delete();
             if (SystemConfig::getBooleanValue("bSendUserDeletedEmail")) {
                 $email = new AccountDeletedEmail($user);
                 if (!$email->send()) {
-                    LoggerUtils::getAppLogger()->warn($email->getError());
+                    LoggerUtils::getAppLogger()->warning($email->getError());
                 }
             }
             return $response->withJson([]);
@@ -98,6 +98,54 @@ $app->post('/users/{userId:[0-9]+}/apikey/regen', function ($request, $response,
         return $response->withJson(["apiKey" => $user->getApiKey()]);
     } else {
         return $response->withStatus(404, gettext("Bad userId"));
+    }
+});
+
+$app->post('/users/{userId:[0-9]+}/config/{key}', function ($request, $response, $args) {
+    $curUser = AuthenticationManager::GetCurrentUser();
+    $userId = $args['userId'];
+    if (!$curUser->isAdmin() && $curUser->getId() != $userId) {
+        return $response->withStatus(403);
+    }
+    $user = UserQuery::create()->findPk($userId);
+    if (!is_null($user)) {
+        $userConfigName = $args['key'];
+        $parsedBody = (object) $request->getParsedBody();
+        $newValue = $parsedBody->value;
+        $user->setUserConfigString($userConfigName, $newValue);
+        $user->save();
+        if ($user->getUserConfigString($userConfigName) == $newValue) {
+            return $response->withjson([$userConfigName => $newValue]);
+        }
+        return $response->withStatus(404, gettext("Unsupported user config"));
+    } else {
+        return $response->withStatus(404, gettext("Invalid userId"));
+    }
+});
+
+
+$app->post('/users/{userId:[0-9]+}/setting/{key}', function ($request, $response, $args) {
+    $curUser = AuthenticationManager::GetCurrentUser();
+    $userId = $args['userId'];
+    if (!$curUser->isAdmin() && $curUser->getId() != $userId) {
+        return $response->withStatus(403);
+    }
+    $user = UserQuery::create()->findPk($userId);
+    if (!is_null($user)) {
+        $userSettingName = $args['key'];
+        $parsedBody = (object) $request->getParsedBody();
+        $newValue = $parsedBody->value;
+        switch ($userSettingName) {
+            case "style":
+                $user->setStyle($newValue);
+                break;
+            default:
+                return $response->withStatus(404, gettext("Unsupported user setting" . " - " . $userSettingName));
+        }
+        $user->save();
+        return $response->withjson([$userSettingName => $newValue]);
+    } else {
+        return $response->withStatus(404, gettext("Invalid userId"));
     }
 });
 

@@ -7,6 +7,9 @@ find . -iname '*.php' | sort | grep -v ./vendor | xargs xgettext --no-location -
 # Extract JS Terms
 i18next-extract-gettext --files=skin/js/*.js --output=../locale/js-strings.po
 
+# Extract React Terms
+i18next-extract-gettext --files=../react/**/*.tsx --output=../locale/react-js-strings.po
+
 cd ../locale
 
 # Extract DB Terms
@@ -17,8 +20,9 @@ find . -iname "*.php" | sort | xargs xgettext --no-location --no-wrap --join-exi
 
 # merge PHP & DB & JS Terms
 cd ..
-msgcat messages.po js-strings.po -o messages.po
+msgcat messages.po js-strings.po react-js-strings.po -o messages.po
 
 # Cleanup
 rm js-strings.po
+rm react-js-strings.po
 rm db-strings/*

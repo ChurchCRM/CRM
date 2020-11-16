@@ -57,7 +57,7 @@ class Family extends BaseFamily implements iPhoto
 
     public function getViewURI()
     {
-        return SystemURLs::getRootPath().'/FamilyView.php?FamilyID='.$this->getId();
+        return SystemURLs::getRootPath().'/v2/family/'.$this->getId();
     }
 
     public function getWeddingDay()
@@ -89,7 +89,7 @@ class Family extends BaseFamily implements iPhoto
         {
           $NotificationEmail = new NewPersonOrFamilyEmail($this);
           if (!$NotificationEmail->send()) {
-              LoggerUtils::getAppLogger()->warn(gettext("New Family Notification Email Error"). " :". $NotificationEmail->getError());
+              LoggerUtils::getAppLogger()->warning(gettext("New Family Notification Email Error"). " :". $NotificationEmail->getError());
           }
         }
     }
@@ -345,7 +345,7 @@ class Family extends BaseFamily implements iPhoto
       $searchArray=[
           "Id" => $this->getId(),
           "displayName" => $this->getFamilyString(SystemConfig::getBooleanValue("bSearchIncludeFamilyHOH")),
-          "uri" => SystemURLs::getRootPath() . '/FamilyView.php?FamilyID=' . $this->getId()
+          "uri" => SystemURLs::getRootPath() . '/v2/family/' . $this->getId()
       ];
       return $searchArray;
     }

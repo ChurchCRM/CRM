@@ -24,7 +24,7 @@ class User extends BaseUser
 {
 
 
-    private $provisional2FAKey; 
+    private $provisional2FAKey;
 
     public function getId()
     {
@@ -275,6 +275,14 @@ class User extends BaseUser
       }
     }
 
+    public function setUserConfigString($userConfigName, $value) {
+        foreach ($this->getUserConfigs() as $userConfig) {
+            if ($userConfig->getName() == $userConfigName) {
+                return $userConfig->setValue($value);
+            }
+        }
+    }
+
     public function getFormattedShowSince() {
         $showSince = "";
         if ($this->getShowSince() != null) {
@@ -287,7 +295,7 @@ class User extends BaseUser
         $google2fa = new Google2FA();
         $key = $google2fa->generateSecretKey();
         // store the temporary 2FA key in a private variable on this User object
-        // we don't want to update the database with the new key until we've confirmed 
+        // we don't want to update the database with the new key until we've confirmed
         // that the user is capapble of generating valid 2FA codes
         // encrypt the 2FA key since this object and its properties are serialized into the $_SESSION store
         // which is generally written to disk.
@@ -306,7 +314,7 @@ class User extends BaseUser
             return true;
         }
         return $isKeyValid;
-       
+
     }
 
     public function remove2FAKey() {

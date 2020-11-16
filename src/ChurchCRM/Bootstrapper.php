@@ -242,7 +242,7 @@ namespace ChurchCRM
       public static function initSession()
       {
           // Initialize the session
-          $sessionName = 'CRM@'.SystemURLs::getRootPath();
+          $sessionName = 'CRM-'.hash("md5", SystemURLs::getDocumentRoot());
           session_cache_limiter('private_no_expire:');
           session_name($sessionName);
           session_start();
