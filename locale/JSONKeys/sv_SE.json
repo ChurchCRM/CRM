@@ -1024,7 +1024,7 @@
     "Calendar": "Kalender",
     "Members": "Medlemmar",
     "Add New Person": "Lägg till ny person",
-    "View All Persons": "Visa alla personer",
+    "View All People": "Visa alla personer",
     "Add New Family": "Lägg till ny familj",
     "Events": "Evenemang",
     "Fundraiser": "Välgörenhetsgala",
@@ -1908,9 +1908,6 @@
     "View Issue on GitHub": "Visa problem på GitHub",
     "Do you want to delete this person?  This cannot be undone.": "Vill du ta bort den här personen? Detta kan inte göras ogjort.",
     "Are you sure you want to unassign this property?": "Är du säker på att du vill ta bort tilldelningen av den här egenskapen?",
-    "Head of Household": "Chef för hushållet",
-    "Spouse": "Make",
-    "Child": "Barn",
     "Select a family": "Välj en familj",
     "Release Notes": "Släppanteckningar",
     "Move": "Flytta",
@@ -2365,8 +2362,11 @@
     "Loading": "Läser in",
     "Family Property Unassignment": "Familjeegendom av-tilldelning",
     "Do you want to remove": "Vill du ta bort",
-    "View Active Persons": "Visa aktiva personer",
-    "View Inactive Persons": "Visa inaktiva personer",
+    "View Active People": "Visa aktiva personer",
+    "View Inactive People": "Visa inaktiva personer",
     "Today's Birthdays": "Dagens födelsedagar",
-    "Today's Wedding Anniversaries": "Dagens bröllopsdagar"
+    "Today's Wedding Anniversaries": "Dagens bröllopsdagar",
+    "Enable New Dashboard": "Aktivera ny instrumentpanel",
+    "Api Key": "Api Nyckel",
+    "Regen API Key": "Regen API-nyckel"
 }

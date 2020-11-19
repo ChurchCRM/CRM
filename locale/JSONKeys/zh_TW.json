@@ -1024,7 +1024,7 @@
     "Calendar": "日曆",
     "Members": "成員",
     "Add New Person": "添加新成員",
-    "View All Persons": "查看所有成員",
+    "View All People": "查看所有成員",
     "Add New Family": "添加新家庭",
     "Events": "活動",
     "Fundraiser": "籌款",
@@ -1908,9 +1908,6 @@
     "View Issue on GitHub": "查看GitHub上的問題",
     "Do you want to delete this person?  This cannot be undone.": "你想刪除此人嗎？這不能被撤消。",
     "Are you sure you want to unassign this property?": "您確定要取消分配此屬性嗎？",
-    "Head of Household": "戶主",
-    "Spouse": "伴侶",
-    "Child": "孩子",
     "Select a family": "選擇一個家庭",
     "Release Notes": "釋放說明",
     "Move": "移動",
@@ -2363,9 +2360,11 @@
     "Loading": "載入中",
     "Family Property Unassignment": "未分配的家庭財產",
     "Do you want to remove": "您要刪除嗎",
-    "View Active Persons": "查看活躍的人",
-    "View Inactive Persons": "查看不活躍的人",
+    "View Active People": "查看活躍的人",
+    "View Inactive People": "查看不活躍的人",
     "Today's Birthdays": "今天生日",
     "Today's Wedding Anniversaries": "今天結婚週年紀念日",
-    "Enable New Dashboard": "啟用新儀錶盤"
+    "Enable New Dashboard": "啟用新儀錶盤",
+    "Api Key": "API金鑰",
+    "Regen API Key": "再生API金鑰"
 }

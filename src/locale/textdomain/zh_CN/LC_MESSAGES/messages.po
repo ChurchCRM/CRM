@@ -4216,7 +4216,8 @@ msgid "Add New Person"
 msgstr "添加新成员"
 
 #: 
-msgid "View All Persons"
+#, fuzzy
+msgid "View All People"
 msgstr "查看所有成员"
 
 #: 
@@ -7691,18 +7692,6 @@ msgstr "你想删除此人吗？这不能被撤消。"
 #: 
 msgid "Are you sure you want to unassign this property?"
 msgstr "您确定要取消分配此属性吗？"
-
-#: 
-msgid "Head of Household"
-msgstr "户主"
-
-#: 
-msgid "Spouse"
-msgstr "伴侣"
-
-#: 
-msgid "Child"
-msgstr "孩子"
 
 #: 
 msgid "Select a family"

@@ -4183,7 +4183,8 @@ msgid "Add New Person"
 msgstr "Neue Person hinzufügen"
 
 #: 
-msgid "View All Persons"
+#, fuzzy
+msgid "View All People"
 msgstr "Alle Personen anzeigen"
 
 #: 
@@ -6976,18 +6977,6 @@ msgstr "Wollen Sie diese Person löschen? Diese Aktion kann nicht rückgängig g
 #: 
 msgid "Are you sure you want to unassign this property?"
 msgstr "Sind Sie sicher, dass Sie die Zuweisung diese Winstellung aufheben möchten?"
-
-#: 
-msgid "Head of Household"
-msgstr "Familienhaupt"
-
-#: 
-msgid "Spouse"
-msgstr "Ehepartner"
-
-#: 
-msgid "Child"
-msgstr "Kind"
 
 #: 
 msgid "Select a family"

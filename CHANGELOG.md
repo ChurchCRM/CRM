@@ -1,3 +1,24 @@
+# 4.2.2
+Released on (11.3.2020)
+## :speech_balloon: Localization
+
+- 4.2.2 POEditor Update & Latest Locale download [#5487](https://github.com/ChurchCRM/CRM/issues/5487)
+
+## :beetle: Bugs
+
+- Locked Email Not sending [#5485](https://github.com/ChurchCRM/CRM/issues/5485)
+- Bug: adding location as URL param does not work [#5483](https://github.com/ChurchCRM/CRM/pull/5483)
+
+## :gear: Inner Beauty
+
+- Starting 4.2.2 [#5480](https://github.com/ChurchCRM/CRM/pull/5480)
+
+## :heart: Contributors
+
+We'd like to thank all the contributors who worked on this release!
+
+- [@DawoudIO](https://github.com/DawoudIO)
+
 # 4.2.1
 Released on (10.28.2020)
 

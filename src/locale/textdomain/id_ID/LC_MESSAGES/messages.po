@@ -4113,7 +4113,8 @@ msgid "Add New Person"
 msgstr "Tambahkan Orang Baru"
 
 #: 
-msgid "View All Persons"
+#, fuzzy
+msgid "View All People"
 msgstr "Lihat semua Orang"
 
 #: 
@@ -7648,18 +7649,6 @@ msgstr "Apakah Anda ingin menghapus orang ini? Ini tidak dapat dibatalkan."
 #: 
 msgid "Are you sure you want to unassign this property?"
 msgstr "Apakah Anda yakin ingin membatalkan penetapan properti ini?"
-
-#: 
-msgid "Head of Household"
-msgstr "Kepala rumah tangga"
-
-#: 
-msgid "Spouse"
-msgstr "Pasangan"
-
-#: 
-msgid "Child"
-msgstr "Anak"
 
 #: 
 msgid "Select a family"

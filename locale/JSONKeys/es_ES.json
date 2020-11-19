@@ -1024,7 +1024,7 @@
     "Calendar": "Calendario",
     "Members": "Miembros",
     "Add New Person": "Añadir Nueva Persona",
-    "View All Persons": "Ver todas las Personas",
+    "View All People": "Ver todas las Personas",
     "Add New Family": "Añadir Nueva Familia",
     "Events": "Eventos",
     "Fundraiser": "Recaudación de Fondos",
@@ -1908,9 +1908,6 @@
     "View Issue on GitHub": "Ver Problema en GitHub",
     "Do you want to delete this person?  This cannot be undone.": "Desea eliminar a esta persona? Esto no puede deshacerse.",
     "Are you sure you want to unassign this property?": "¿Está seguro de que desea desasignar esta propiedad?",
-    "Head of Household": "Cabeza del Hogar",
-    "Spouse": "Cónyuge",
-    "Child": "Niño",
     "Select a family": "Seleccione una familia",
     "Release Notes": "Notas de la Versión",
     "Move": "Mover",
@@ -2365,9 +2362,11 @@
     "Loading": "Cargando",
     "Family Property Unassignment": "Desasignación de Propiedad de Familia",
     "Do you want to remove": "Desea remover?",
-    "View Active Persons": "Ver personas activas",
-    "View Inactive Persons": "Ver personas inactivas",
+    "View Active People": "Ver personas activas",
+    "View Inactive People": "Ver personas inactivas",
     "Today's Birthdays": "Cumpleaños de hoy",
     "Today's Wedding Anniversaries": "Aniversarios de bodas de hoy",
-    "Enable New Dashboard": "Activar Nuevo Dashboard"
+    "Enable New Dashboard": "Activar Nuevo Dashboard",
+    "Api Key": "Llave de API",
+    "Regen API Key": "Regenerar llave de API"
 }

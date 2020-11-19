@@ -4258,7 +4258,8 @@ msgid "Add New Person"
 msgstr "Lägg till ny person"
 
 #: 
-msgid "View All Persons"
+#, fuzzy
+msgid "View All People"
 msgstr "Visa alla personer"
 
 #: 
@@ -7795,18 +7796,6 @@ msgid "Are you sure you want to unassign this property?"
 msgstr "Är du säker på att du vill ta bort tilldelningen av den här egenskapen?"
 
 #: 
-msgid "Head of Household"
-msgstr "Chef för hushållet"
-
-#: 
-msgid "Spouse"
-msgstr "Make"
-
-#: 
-msgid "Child"
-msgstr "Barn"
-
-#: 
 msgid "Select a family"
 msgstr "Välj en familj"
 
@@ -9621,11 +9610,13 @@ msgid "Do you want to remove"
 msgstr "Vill du ta bort"
 
 #: 
-msgid "View Active Persons"
+#, fuzzy
+msgid "View Active People"
 msgstr "Visa aktiva personer"
 
 #: 
-msgid "View Inactive Persons"
+#, fuzzy
+msgid "View Inactive People"
 msgstr "Visa inaktiva personer"
 
 #: 
@@ -9635,4 +9626,16 @@ msgstr "Dagens födelsedagar"
 #: 
 msgid "Today's Wedding Anniversaries"
 msgstr "Dagens bröllopsdagar"
+
+#: 
+msgid "Enable New Dashboard"
+msgstr "Aktivera ny instrumentpanel"
+
+#: 
+msgid "Api Key"
+msgstr "Api Nyckel"
+
+#: 
+msgid "Regen API Key"
+msgstr "Regen API-nyckel"
 

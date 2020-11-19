@@ -273,9 +273,10 @@
     "current": {
         "versions": [
             "4.2.0",
-            "4.2.1"
+            "4.2.1",
+            "4.2.2"
         ],
         "scripts": [],
-        "dbVersion": "4.2.2"
+        "dbVersion": "4.2.3"
     }
 }

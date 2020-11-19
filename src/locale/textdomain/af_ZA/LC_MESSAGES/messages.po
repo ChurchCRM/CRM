@@ -4109,7 +4109,8 @@ msgid "Add New Person"
 msgstr "Voeg nuwe persoon by"
 
 #: 
-msgid "View All Persons"
+#, fuzzy
+msgid "View All People"
 msgstr "Bekyk alle persone"
 
 #: 
@@ -7644,18 +7645,6 @@ msgstr "Wil u hierdie persoon uitvee? Dit kan nie ongedaan gemaak word nie."
 #: 
 msgid "Are you sure you want to unassign this property?"
 msgstr "Is u seker dat u hierdie eiendom wil toewys?"
-
-#: 
-msgid "Head of Household"
-msgstr "Hoof van die huishouding"
-
-#: 
-msgid "Spouse"
-msgstr "Eggenoot"
-
-#: 
-msgid "Child"
-msgstr "Kind"
 
 #: 
 msgid "Select a family"

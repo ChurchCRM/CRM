@@ -20,7 +20,7 @@ class AppIntegrityService
         AppIntegrityService::$IntegrityCheckDetails = json_decode(file_get_contents($integrityCheckFile));
         if (is_null(AppIntegrityService::$IntegrityCheckDetails))
         {
-          LoggerUtils::getAppLogger()->warn("Error decoding integrity check result file: " . $integrityCheckFile);
+          LoggerUtils::getAppLogger()->warning("Error decoding integrity check result file: " . $integrityCheckFile);
           AppIntegrityService::$IntegrityCheckDetails->status = 'failure';
           AppIntegrityService::$IntegrityCheckDetails->message = gettext("Error decoding integrity check result file");
         }
@@ -75,7 +75,7 @@ class AppIntegrityService
       LoggerUtils::getAppLogger()->info('Signature file found at: ' . $signatureFile);
       $signatureData = json_decode(file_get_contents($signatureFile));
       if (is_null($signatureData)){
-        LoggerUtils::getAppLogger()->warn('Error decoding signature definition file: ' . $signatureFile);
+        LoggerUtils::getAppLogger()->warning('Error decoding signature definition file: ' . $signatureFile);
         return ['status' => 'failure', 'message' => gettext('Error decoding signature definition file')];
       }
       if (sha1(json_encode($signatureData->files, JSON_UNESCAPED_SLASHES)) == $signatureData->sha1) {
@@ -84,20 +84,20 @@ class AppIntegrityService
           if (file_exists($currentFile)) {
             $actualHash = sha1_file($currentFile);
             if ($actualHash != $file->sha1) {
-              LoggerUtils::getAppLogger()->warn('File hash mismatch: ' . $file->filename . ". Expected: " . $file->sha1. "; Got: " . $actualHash);
+              LoggerUtils::getAppLogger()->warning('File hash mismatch: ' . $file->filename . ". Expected: " . $file->sha1. "; Got: " . $actualHash);
               array_push($signatureFailures, ['filename' => $file->filename, 'status' => 'Hash Mismatch', 'expectedhash' => $file->sha1, 'actualhash' => $actualHash]);
             }
           } else {
-            LoggerUtils::getAppLogger()->warn('File Missing: ' . $file->filename);
+            LoggerUtils::getAppLogger()->warning('File Missing: ' . $file->filename);
             array_push($signatureFailures, ['filename' => $file->filename, 'status' => 'File Missing']);
           }
         }
       } else {
-        LoggerUtils::getAppLogger()->warn('Signature definition file signature failed validation');
+        LoggerUtils::getAppLogger()->warning('Signature definition file signature failed validation');
         return ['status' => 'failure', 'message' => gettext('Signature definition file signature failed validation')];
       }
     } else {
-      LoggerUtils::getAppLogger()->warn('Signature definition file not found at: ' . $signatureFile);
+      LoggerUtils::getAppLogger()->warning('Signature definition file not found at: ' . $signatureFile);
       return ['status' => 'failure', 'message' => gettext('Signature definition File Missing')];
     }
 
@@ -158,7 +158,7 @@ class AppIntegrityService
   public static function hasApacheModule($module)
   {
       if (function_exists('apache_get_modules')) {
-          LoggerUtils::getAppLogger()->addDebug("looking for apache module $module using PHP's apache_get_modules");
+          LoggerUtils::getAppLogger()->debug("looking for apache module $module using PHP's apache_get_modules");
           return in_array($module, apache_get_modules());
       }
       return false;
@@ -177,22 +177,22 @@ class AppIntegrityService
     $logger = LoggerUtils::getAppLogger();
 
     if (stristr($_SERVER["SERVER_SOFTWARE"],"apache") != false) {
-      $logger->addDebug("PHP is running through Apache; look for mod_rewrite");
+      $logger->debug("PHP is running through Apache; look for mod_rewrite");
       $check = AppIntegrityService::hasApacheModule('mod_rewrite');
-      $logger->addDebug("Apache mod_rewrite check status: $check");
+      $logger->debug("Apache mod_rewrite check status: $check");
     }
     else {
-      $logger->addDebug("PHP is not running through Apache");
+      $logger->debug("PHP is not running through Apache");
     }
 
     if ($check == false){
-      $logger->addDebug("Previous rewrite checks failed");
+      $logger->debug("Previous rewrite checks failed");
       if ( function_exists('curl_version')) {
           $ch = curl_init();
           $request_url_parser = parse_url($_SERVER['HTTP_REFERER']);
           $request_scheme = isset($request_url_parser['scheme']) ? $request_url_parser['scheme'] : 'http';
           $rewrite_chk_url = $request_scheme ."://". $_SERVER['SERVER_ADDR'] . SystemURLs::getRootPath()."/INVALID";
-          $logger->addDebug("Testing CURL loopback check to: $rewrite_chk_url");
+          $logger->debug("Testing CURL loopback check to: $rewrite_chk_url");
           curl_setopt($ch, CURLOPT_URL, $rewrite_chk_url);
           curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
           curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
@@ -213,7 +213,7 @@ class AppIntegrityService
               }
           }
           $check =  $headers['CRM'] == "would redirect";
-          $logger->addDebug("CURL loopback check headers observed: ".($check?'true':'false'));
+          $logger->debug("CURL loopback check headers observed: ".($check?'true':'false'));
         }
       }
 

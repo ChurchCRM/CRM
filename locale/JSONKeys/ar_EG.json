@@ -365,7 +365,7 @@
     "Add New Member": "اضافة عضو جديد",
     "Previous Family": "العائلة السابقة",
     "Next Family": "الأسرة التالية",
-    "Delete this Family": "مسح الهائلة",
+    "Delete this Family": "مسح العائلة",
     "Upload Photo": "تحميل الصورة",
     "Delete Photo": "مسح الصورة",
     "Add a Note": "اضافة ملحوظة",
@@ -1024,7 +1024,7 @@
     "Calendar": "التقويم",
     "Members": "أفراد",
     "Add New Person": "إضافة شخص جديد",
-    "View All Persons": "عرض جميع الاشخاص",
+    "View All People": "عرض جميع الاشخاص",
     "Add New Family": "اضافة عائلة جديدة",
     "Events": "مناسبة",
     "Fundraiser": "جمع التبرعات",
@@ -1908,9 +1908,6 @@
     "View Issue on GitHub": "عرض العدد على جيثب",
     "Do you want to delete this person?  This cannot be undone.": "هل تريد حذف هذا الشخص؟ هذا لا يمكن التراجع عنها.",
     "Are you sure you want to unassign this property?": "هل أنت متأكد أنك تريد إلغاء تعيين هذا العقار؟",
-    "Head of Household": "رب الأسرة",
-    "Spouse": "الزوج/الزوجة",
-    "Child": "ابن/ابنه",
     "Select a family": "حدد الأسرة",
     "Release Notes": "ملاحظات الإصدار",
     "Move": "نقل",
@@ -2277,5 +2274,8 @@
     "Two factor authentication requires ChurchCRM administrators to configure a few parameters": "يتطلب اثنين عامل التوثيق الإداريين ChurchCRM لتكوين عدد قليل من المعالم",
     "System configuration ": "أعدادات النظام",
     "Must be set to 'true'": "يجب أن يتم تعيين إلى 'true'",
-    "Include/Config.php must define an encryption key for storing 2FA secret keys in the database by setting a value for": "وتشمل / ملف config.php يجب تحديد مفتاح التشفير لتخزين 2FA المفاتيح السرية في قاعدة البيانات عن طريق تحديد قيمة لل"
+    "Include/Config.php must define an encryption key for storing 2FA secret keys in the database by setting a value for": "وتشمل / ملف config.php يجب تحديد مفتاح التشفير لتخزين 2FA المفاتيح السرية في قاعدة البيانات عن طريق تحديد قيمة لل",
+    "Send an email notifying users when their account has been deleted": "ارسال رساله الي الأعضاء عند مسح حساباتهم من البرنامج",
+    "Incorrect password supplied for current user": "كلمه المرور غير صحيحه لهذا المستخدم",
+    "Your new password must not match your old one.": "كلمه المرور الجديده يجب ان تكون مختلفه عن كلمه المرور القديمه"
 }

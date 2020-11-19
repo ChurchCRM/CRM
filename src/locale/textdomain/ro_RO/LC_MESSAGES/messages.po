@@ -4214,7 +4214,8 @@ msgid "Add New Person"
 msgstr "Adaguă membru nou"
 
 #: 
-msgid "View All Persons"
+#, fuzzy
+msgid "View All People"
 msgstr "Vezi toți membri"
 
 #: 

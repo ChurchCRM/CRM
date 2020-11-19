@@ -30,7 +30,7 @@ function Header_modals()
             <!-- Modal content-->
             <div class="modal-content">
                 <form name="issueReport">
-                    <input type="hidden" name="pageName" value="<?= $_SERVER['SCRIPT_NAME'] ?>"/>
+                    <input type="hidden" name="pageName" value="<?= $_SERVER['REQUEST_URI'] ?>"/>
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title"><?= gettext('Issue Report!') ?></h4>

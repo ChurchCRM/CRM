@@ -2267,7 +2267,8 @@ msgid "Add New Person"
 msgstr "Thêm thành viên mới"
 
 #: 
-msgid "View All Persons"
+#, fuzzy
+msgid "View All People"
 msgstr "Danh sách Thành viên"
 
 #: 

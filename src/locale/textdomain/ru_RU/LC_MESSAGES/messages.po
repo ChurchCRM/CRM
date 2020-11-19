@@ -4190,7 +4190,8 @@ msgid "Add New Person"
 msgstr "Добавить нового человека"
 
 #: 
-msgid "View All Persons"
+#, fuzzy
+msgid "View All People"
 msgstr "Просмотреть всех людей"
 
 #: 
@@ -5541,6 +5542,267 @@ msgstr "Типы групп"
 #: 
 msgid "Group Types Editor"
 msgstr "Редактор типов групп"
+
+#: 
+msgid "Security Group"
+msgstr "Группа безопасности"
+
+#: 
+msgid "Security Groups"
+msgstr "Группы безопасности"
+
+#: 
+msgid "Security Groups Editor"
+msgstr "Редактор групп безопасности"
+
+#: 
+msgid "Group Member Role"
+msgstr "Роль участника группы"
+
+#: 
+msgid "Group Member Roles Editor"
+msgstr "Редактор ролей участников группы"
+
+#: 
+msgid "Person Custom List Option"
+msgstr "Параметр настраиваемого списка лиц"
+
+#: 
+msgid "Person Custom List Options"
+msgstr "Параметры настраиваемого списка лиц"
+
+#: 
+msgid "Person Custom List Options Editor"
+msgstr "Редактор параметров настраиваемого списка пользователей"
+
+#: 
+msgid "Custom List Option"
+msgstr "Пользовательский вариант списка"
+
+#: 
+msgid "Custom List Options"
+msgstr "Параметры настраиваемого списка"
+
+#: 
+msgid "Custom List Options Editor"
+msgstr "Редактор настраиваемых параметров списка"
+
+#: 
+msgid "are not allowed."
+msgstr "не допускаются."
+
+#: 
+msgid "Name for New"
+msgstr "Имя для нового"
+
+#: 
+msgid "Imported"
+msgstr "импортированный"
+
+#: 
+msgid "Profile Image Deleted"
+msgstr "Изображение профиля удалено"
+
+#: 
+msgid "miles"
+msgstr "Мили"
+
+#: 
+msgid "kilometers"
+msgstr "Километры"
+
+#: 
+msgid "Local"
+msgstr "Местный"
+
+#: 
+msgid "Afghanistan (‫افغانستان‬‎)"
+msgstr "Афганистан"
+
+#: 
+msgid "Åland Islands (Åland)"
+msgstr "Аландские острова (Аландские острова)"
+
+#: 
+msgid "Albania (Shqipëri)"
+msgstr "Албания (Шкипери)"
+
+#: 
+msgid "Algeria (‫الجزائر‬‎)"
+msgstr "Алжир\n"
+""
+
+#: 
+msgid "American Samoa"
+msgstr "американское Самоа"
+
+#: 
+msgid "Andorra"
+msgstr "Андорра "
+
+#: 
+msgid "Angola"
+msgstr "Ангола"
+
+#: 
+msgid "Anguilla"
+msgstr "Ангилья"
+
+#: 
+msgid "Antarctica"
+msgstr "Антарктида"
+
+#: 
+msgid "Antigua and Barbuda"
+msgstr "Антигуа и Барбуда"
+
+#: 
+msgid "Argentina"
+msgstr "Аргентина"
+
+#: 
+msgid "Armenia (Հայաստան)"
+msgstr "Армения"
+
+#: 
+msgid "Aruba"
+msgstr "Аруба"
+
+#: 
+msgid "Ascension Island"
+msgstr "Остров Вознесения"
+
+#: 
+msgid "Australia"
+msgstr "Австралия"
+
+#: 
+msgid "Austria (Österreich)"
+msgstr "Австрия (Österreich)"
+
+#: 
+msgid "Azerbaijan (Azərbaycan)"
+msgstr "Азербайджан"
+
+#: 
+msgid "Bahamas"
+msgstr "Багамы "
+
+#: 
+msgid "Bahrain (‫البحرين‬‎)"
+msgstr "Бахрейн"
+
+#: 
+msgid "Bangladesh (বাংলাদেশ)"
+msgstr "Бангладеш"
+
+#: 
+msgid "Barbados"
+msgstr "Барбадос"
+
+#: 
+msgid "Belarus (Беларусь)"
+msgstr "Беларусь"
+
+#: 
+msgid "Belgium (België)"
+msgstr "Бельгия"
+
+#: 
+msgid "Belize"
+msgstr "Белиз "
+
+#: 
+msgid "Benin (Bénin)"
+msgstr "Бенин"
+
+#: 
+msgid "Bermuda"
+msgstr "Бермуды"
+
+#: 
+msgid "Bhutan (འབྲུག)"
+msgstr "Бутан"
+
+#: 
+msgid "Bolivia"
+msgstr "Боливия"
+
+#: 
+msgid "Bosnia and Herzegovina (Босна и Херцеговина)"
+msgstr "Босния и Герцоговина"
+
+#: 
+msgid "Botswana"
+msgstr "Ботсвана"
+
+#: 
+msgid "Bouvet Island"
+msgstr "Остров Буве"
+
+#: 
+msgid "Brazil (Brasil)"
+msgstr "Бразилия"
+
+#: 
+msgid "British Indian Ocean Territory"
+msgstr "Британская территория Индийского океана"
+
+#: 
+msgid "British Virgin Islands"
+msgstr "Британские Виргинские острова"
+
+#: 
+msgid "Brunei"
+msgstr "Бруней"
+
+#: 
+msgid "Bulgaria (България)"
+msgstr "Болгария"
+
+#: 
+msgid "Burkina Faso"
+msgstr "Буркина-Фасо"
+
+#: 
+msgid "Burundi (Uburundi)"
+msgstr "Бурунди (Убурунди)"
+
+#: 
+msgid "Cambodia (កម្ពុជា)"
+msgstr "Камбоджа"
+
+#: 
+msgid "Cameroon (Cameroun)"
+msgstr "Камерун (Камерун)"
+
+#: 
+msgid "Canada"
+msgstr "Канада"
+
+#: 
+msgid "Canary Islands (islas Canarias)"
+msgstr "Канарские острова (islas Canarias)"
+
+#: 
+msgid "Cape Verde (Kabu Verdi)"
+msgstr "Кабо-Верде (Кабу-Верди)"
+
+#: 
+msgid "Caribbean Netherlands"
+msgstr "Карибские Нидерланды"
+
+#: 
+msgid "Cayman Islands"
+msgstr "Кайманские острова"
+
+#: 
+msgid "Central African Republic (République centrafricaine)"
+msgstr "Центральноафриканская Республика (République centrafricaine)"
+
+#: 
+msgid "Ceuta and Melilla (Ceuta y Melilla)"
+msgstr "Сеута и Мелилья (Ceuta y Melilla)"
 
 #: 
 msgid "People Dashboard"

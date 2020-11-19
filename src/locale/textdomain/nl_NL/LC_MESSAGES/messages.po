@@ -4121,7 +4121,8 @@ msgid "Add New Person"
 msgstr "Personen toevoegen"
 
 #: 
-msgid "View All Persons"
+#, fuzzy
+msgid "View All People"
 msgstr "Personen overzicht"
 
 #: 
@@ -6281,18 +6282,6 @@ msgstr "Naam van de rol"
 #: 
 msgid "Remove all"
 msgstr "Verwijder alles"
-
-#: 
-msgid "Head of Household"
-msgstr "Hoofd van een gezin"
-
-#: 
-msgid "Spouse"
-msgstr "Echtgenoot"
-
-#: 
-msgid "Child"
-msgstr "Kind"
 
 #: 
 msgid "Select a family"
