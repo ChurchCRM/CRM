@@ -27,9 +27,8 @@ class PropertyAPIMiddleware
 
         $property = PropertyQuery::create()->findPk($propertyId);
 
-        LoggerUtils::getAppLogger()->debug("Pro Type is " . $property->getPropertyType()->getPrtClass() . " Looking for " . $this->type);
-
         if (empty($property)) {
+            LoggerUtils::getAppLogger()->debug("Pro Type is " . $property->getPropertyType()->getPrtClass() . " Looking for " . $this->type);
             return $response->withStatus(412, "PropertyId : " . $propertyId . " ". gettext("not found"));
         } else if ($property->getPropertyType()->getPrtClass() != $this->type) {
             return $response->withStatus(500, "PropertyId : " . $propertyId . " ". gettext(" has a type mismatch"));
