@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ce6ee5e2e416a4182947f548e760f97d",
+    "content-hash": "fb14c86bc0a1aec767dd7cc06ea4af79",
     "packages": [
         {
             "name": "azuyalabs/yasumi",
