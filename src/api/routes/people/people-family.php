@@ -6,7 +6,6 @@ use ChurchCRM\Utils\GeoUtils;
 use ChurchCRM\Utils\MiscUtils;
 use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\ChurchMetaData;
-use ChurchCRM\Emails\FamilyVerificationEmail;
 use ChurchCRM\Token;
 use ChurchCRM\TokenQuery;
 use ChurchCRM\Slim\Middleware\Request\Auth\EditRecordsRoleAuthMiddleware;
@@ -76,17 +75,12 @@ $app->group('/family/{familyId:[0-9]+}', function () {
 
     $this->post('/verify', function ($request, $response, $args) {
         $family = $request->getAttribute("family");
-        TokenQuery::create()->filterByType("verifyFamily")->filterByReferenceId($family->getId())->delete();
-        $token = new Token();
-        $token->build("verifyFamily", $family->getId());
-        $token->save();
-        $email = new FamilyVerificationEmail($family->getEmails(), $family->getName(), $token->getToken());
-        if ($email->send()) {
-            $family->createTimeLineNote("verify-link");
-            return $response->withJSON(["message" => "Success"]);
-        } else {
-            LoggerUtils::getAppLogger()->error($email->getError());
-            return $response->withStatus(500)->withJSON(['message' => gettext("Error sending email(s)") . " - " . gettext("Please check logs for more information"), "trace" => $email->getError()]);
+        try{
+            $family->sendVerifyEmail();
+            return $response->withStatus(200);
+        } catch (Exception $e ) {
+            LoggerUtils::getAppLogger()->error($e->getMessage());
+            return $response->withStatus(500)->withJSON(['message' => gettext("Error sending email(s)") . " - " . gettext("Please check logs for more information"), "trace" => $e->getMessage()]);
         }
     });
 

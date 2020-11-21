@@ -16,7 +16,7 @@ context('API Public User', () => {
         }).then((resp) => {
             const result = JSON.parse(JSON.stringify(resp.body));
             expect(resp.status).to.eq(200);
-            expect(result.apiKey).to.eq("ajGwpy8Pdai22XDUpqjC5Ob04v0eG7EGgb4vz2bD2juT8YDmfM");
+            expect(result.apiKey).to.eq(Cypress.env('admin.api.key'));
         })
     });
 });

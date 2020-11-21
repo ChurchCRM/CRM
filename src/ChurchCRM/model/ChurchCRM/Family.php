@@ -2,15 +2,16 @@
 
 namespace ChurchCRM;
 
+use ChurchCRM\Base\Family as BaseFamily;
+use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\Base\Family as BaseFamily;
-use Propel\Runtime\Connection\ConnectionInterface;
-use ChurchCRM\dto\Photo;
-use ChurchCRM\Utils\GeoUtils;
-use DateTime;
+use ChurchCRM\Emails\FamilyVerificationEmail;
 use ChurchCRM\Emails\NewPersonOrFamilyEmail;
+use ChurchCRM\Utils\GeoUtils;
 use ChurchCRM\Utils\LoggerUtils;
+use DateTime;
+use Propel\Runtime\Connection\ConnectionInterface;
 use ChurchCRM\Authentication\AuthenticationManager;
 
 /**
@@ -149,7 +150,11 @@ class Family extends BaseFamily implements iPhoto
     return $foundPeople;
   }
 
-  public function getEmails() {
+    /**
+     * @return array
+     * @throws \Propel\Runtime\Exception\PropelException
+     */
+    public function getEmails() {
     $emails = array();
     if (!(empty($this->getEmail()))) {
         array_push($emails, $this->getEmail());
@@ -360,5 +365,28 @@ class Family extends BaseFamily implements iPhoto
             ->useRecordPropertyQuery()
             ->filterByRecordId($this->getId())
             ->find();
+    }
+
+    public function sendVerifyEmail() {
+        $familyEmails = $this->getEmails();
+
+        if (empty($familyEmails)) {
+            throw new \Exception(gettext("Family has no emails to use"));
+        }
+
+        // delete old tokens
+        TokenQuery::create()->filterByType("verifyFamily")->filterByReferenceId($this->getId())->delete();
+
+        // create a new token an send to all emails
+        $token = new Token();
+        $token->build("verifyFamily", $this->getId());
+        $token->save();
+        $email = new FamilyVerificationEmail($familyEmails, $this->getName(), $token);
+        if (!$email->send()) {
+            LoggerUtils::getAppLogger()->error($email->getError());
+            throw new \Exception($email->getError());
+        }
+        $this->createTimeLineNote("verify-link");
+        return true;
     }
 }
