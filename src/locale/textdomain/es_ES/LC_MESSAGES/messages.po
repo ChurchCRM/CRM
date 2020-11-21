@@ -9528,10 +9528,6 @@ msgid "Today's Wedding Anniversaries"
 msgstr "Aniversarios de bodas de hoy"
 
 #: 
-msgid "Enable New Dashboard"
-msgstr "Activar Nuevo Dashboard"
-
-#: 
 msgid "Api Key"
 msgstr "Llave de API"
 
