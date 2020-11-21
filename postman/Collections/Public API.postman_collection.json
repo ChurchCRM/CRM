@@ -254,16 +254,14 @@
 							"raw": "{\n  \"userName\": \"tony.wade@example.com\"\n}"
 						},
 						"url": {
-							"raw": "{{host}}/api/public/user/password/reset",
+							"raw": "{{host}}/session/forgot-password/reset-request",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"api",
-								"public",
-								"user",
-								"password",
-								"reset"
+								"session",
+								"forgot-password",
+								"reset-request"
 							]
 						},
 						"description": "login and get api token back"
