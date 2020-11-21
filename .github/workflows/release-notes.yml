@@ -3,7 +3,7 @@ name: Release Notes
 on:
   milestone:
     types: [closed]
-name: Milestone Closure
+
 jobs:
   release-notes:
     runs-on: ubuntu-latest
