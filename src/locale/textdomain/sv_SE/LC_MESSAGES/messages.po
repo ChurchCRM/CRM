@@ -9628,10 +9628,6 @@ msgid "Today's Wedding Anniversaries"
 msgstr "Dagens bröllopsdagar"
 
 #: 
-msgid "Enable New Dashboard"
-msgstr "Aktivera ny instrumentpanel"
-
-#: 
 msgid "Api Key"
 msgstr "Api Nyckel"
 
