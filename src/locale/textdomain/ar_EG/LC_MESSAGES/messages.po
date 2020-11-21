@@ -319,7 +319,7 @@ msgstr "بطريرك"
 
 #: 
 msgid "Matriarch"
-msgstr "الأم الحاطمة"
+msgstr "الأم الحاكمه"
 
 #: 
 msgid "Family Type: used with Make Family records... option above"
@@ -9091,4 +9091,28 @@ msgstr "كلمه المرور غير صحيحه لهذا المستخدم"
 #: 
 msgid "Your new password must not match your old one."
 msgstr "كلمه المرور الجديده يجب ان تكون مختلفه عن كلمه المرور القديمه"
+
+#: 
+msgid "Your new password is too similar to your old one."
+msgstr "كلمه المرور متشابهه مع كلمه مرور سابقه"
+
+#: 
+msgid "Password reset not availble.  Please contact your system administrator"
+msgstr "لأعاده كلمه المرور برجاء التواصل مع مسئول النظام"
+
+#: 
+msgid "loading"
+msgstr "يتم التحميل "
+
+#: 
+msgid "List not found"
+msgstr "القائمه غير موجوده"
+
+#: 
+msgid "General"
+msgstr "عام"
+
+#: 
+msgid "Enable Password Reset"
+msgstr "تفعيل اعاده تعيين كلمه المرور"
 
