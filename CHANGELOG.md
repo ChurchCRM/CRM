@@ -1,3 +1,49 @@
+# 4.2.3
+Released on (11.21.2020)
+## :star: Enhancements
+
+- Update left menu to use People [#5464](https://github.com/ChurchCRM/CRM/pull/5464)
+- Removed old Menu.php dashboard [#5438](https://github.com/ChurchCRM/CRM/pull/5438)
+
+## :speech_balloon: Localization
+
+| Language |	Translations	| Percentage |
+|---|---|---|
+| Norwegian Bokmål	| 112	| 4.72% |
+| Romanian |	78	| 3.29% |
+| Russian| 	65	| 2.74%|
+| Arabic	| 11| 	0.46%|
+| Spanish	| 2	| 0.08%|
+
+## :beetle: Bugs
+
+- Dashboard: Fix Person/Family button links [#5551](https://github.com/ChurchCRM/CRM/pull/5551)
+- moved log line due to NPE [#5548](https://github.com/ChurchCRM/CRM/pull/5548)
+- NPE: PropertyAPIMiddleware [#5547](https://github.com/ChurchCRM/CRM/issues/5547)
+- pageName is now REQUEST_URI [#5523](https://github.com/ChurchCRM/CRM/pull/5523)
+- Bug report does not work with v2 pages [#5413](https://github.com/ChurchCRM/CRM/issues/5413)
+
+## :gear: Inner Beauty
+
+- Removed bEnabledDashboardV2 Setting [#5517](https://github.com/ChurchCRM/CRM/pull/5517)
+- [Snyk] Upgrade chart.js from 2.9.3 to 2.9.4 [#5515](https://github.com/ChurchCRM/CRM/pull/5515)
+- [Snyk] Upgrade react-datepicker from 2.10.0 to 2.16.0 [#5514](https://github.com/ChurchCRM/CRM/pull/5514)
+
+- Create Automated API Tests [#3998](https://github.com/ChurchCRM/CRM/issues/3998)
+- Build: Fix travis & Cypress tests [#5520](https://github.com/ChurchCRM/CRM/pull/5520)
+- Updated composer platform to 7.3 [#5494](https://github.com/ChurchCRM/CRM/pull/5494)
+- Build: monolog upgrade [#5493](https://github.com/ChurchCRM/CRM/pull/5493)
+- Build fails on composer 2 [#5489](https://github.com/ChurchCRM/CRM/issues/5489)
+
+## :heart: Contributors
+
+We'd like to thank all the contributors who worked on this release!
+
+- [@snyk-bot](https://github.com/snyk-bot)
+- [@dzidek23](https://github.com/dzidek23)
+- [@DawoudIO](https://github.com/DawoudIO)
+- [@github-actions[bot]](https://github.com/apps/github-actions)
+
 # 4.2.2
 Released on (11.3.2020)
 ## :speech_balloon: Localization
@@ -102,7 +148,7 @@ We'd like to thank all the contributors who worked on this release!
 
 - [@DawoudIO](https://github.com/DawoudIO)
 - [@crossan007](https://github.com/crossan007)
-- [@MrClever](https://github.com/MrClever) 
+- [@MrClever](https://github.com/MrClever)
 - [POEditor.com Localization Team](https://poeditor.com/contributors/?id_project=77079)
 
 # 4.1.4
