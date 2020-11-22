@@ -8147,14 +8147,6 @@ msgid "Contributing"
 msgstr "Berkontribusi"
 
 #: 
-msgid "Birthdates of the day"
-msgstr "Tanggal lahir hari itu"
-
-#: 
-msgid "Anniversaries of the day"
-msgstr "Peringatan hari itu"
-
-#: 
 msgid "Automatically enable SMTP encryption if offered by the relaying server."
 msgstr "Secara otomatis mengaktifkan enkripsi SMTP jika ditawarkan oleh server relai."
 

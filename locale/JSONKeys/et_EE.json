@@ -1419,8 +1419,6 @@
     "Help & Support": "Abi ja tugi",
     "Help & Manual": "Abi ja juhend",
     "Contributing": "Toetama",
-    "Birthdates of the day": "Päeva sünnipäevad",
-    "Anniversaries of the day": "Päeva juubelid",
     "Automatically enable SMTP encryption if offered by the relaying server.": "Luba SMTP krüptimine automaatselt, kui ülekandeserver seda pakub.",
     "Set the encryption system to use - ssl (deprecated) or tls": "Seadistage krüptimissüsteem kasutamiseks - ssl (aegunud) või tls",
     "Dashboard Service dynamic asynchronous refresh interval, default 60 second": "Juhtpaneeli teenuse dünaamiline asünkroonne värskendusintervall, vaikimisi 60 sekundit",

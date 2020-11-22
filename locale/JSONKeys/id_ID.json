@@ -2032,8 +2032,6 @@
     "Help & Support": "Bantuan & Support",
     "Help & Manual": "Bantuan & Manual",
     "Contributing": "Berkontribusi",
-    "Birthdates of the day": "Tanggal lahir hari itu",
-    "Anniversaries of the day": "Peringatan hari itu",
     "Automatically enable SMTP encryption if offered by the relaying server.": "Secara otomatis mengaktifkan enkripsi SMTP jika ditawarkan oleh server relai.",
     "Set the encryption system to use - ssl (deprecated) or tls": "Setel sistem enkripsi untuk menggunakan - ssl (usang) atau tls",
     "Dashboard Service dynamic asynchronous refresh interval, default 60 second": "Layanan Dashboard, interval refresh asinkron dinamis, default 60 detik",

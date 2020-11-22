@@ -2032,8 +2032,6 @@
     "Help & Support": "幫助及支援",
     "Help & Manual": "幫助&手冊",
     "Contributing": "奉獻",
-    "Birthdates of the day": "出生日",
-    "Anniversaries of the day": "紀念日",
     "Automatically enable SMTP encryption if offered by the relaying server.": "如果由中繼服務器提供，則自動啟用SMTP加密。",
     "Set the encryption system to use - ssl (deprecated) or tls": "將加密系統設置為使用 - ssl（不建議使用）或tls",
     "Dashboard Service dynamic asynchronous refresh interval, default 60 second": "儀表板服務動態異步刷新間隔，默認為60秒",

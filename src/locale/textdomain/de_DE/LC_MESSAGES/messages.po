@@ -7475,14 +7475,6 @@ msgid "Contributing"
 msgstr "Mitmachen"
 
 #: 
-msgid "Birthdates of the day"
-msgstr "Heutige Geburtstage"
-
-#: 
-msgid "Anniversaries of the day"
-msgstr "Heutige Jahrestage"
-
-#: 
 msgid "Automatically enable SMTP encryption if offered by the relaying server."
 msgstr "Aktivieren Sie automatisch die SMTP-Verschlüsselung, wenn sie vom weiterleitenden Server angeboten wird."
 

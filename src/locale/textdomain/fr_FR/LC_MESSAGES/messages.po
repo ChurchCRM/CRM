@@ -8153,14 +8153,6 @@ msgid "Contributing"
 msgstr "Pour contribuer"
 
 #: 
-msgid "Birthdates of the day"
-msgstr "Anniversaires du jour"
-
-#: 
-msgid "Anniversaries of the day"
-msgstr "Anniversaires de mariage du jour"
-
-#: 
 msgid "Automatically enable SMTP encryption if offered by the relaying server."
 msgstr "Activer automatiquement le cryptage SMTP que le serveur relais peut utiliser."
 

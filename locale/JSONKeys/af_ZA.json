@@ -2032,8 +2032,6 @@
     "Help & Support": "Hulp en ondersteuning",
     "Help & Manual": "Hulp & Handleiding",
     "Contributing": "Bydraende",
-    "Birthdates of the day": "Geboortedatums van die dag",
-    "Anniversaries of the day": "Verjaarsdag van die dag",
     "Automatically enable SMTP encryption if offered by the relaying server.": "Skakel SMTP-kodering outomaties aan as dit aangebied word deur die herbediener.",
     "Set the encryption system to use - ssl (deprecated) or tls": "Stel die koderingstelsel in om te gebruik - ssl (verouderd) of tls",
     "Dashboard Service dynamic asynchronous refresh interval, default 60 second": "Dynamiese asynchrone verversingsinterval op paneelborddiens, standaard 60 sekondes",
