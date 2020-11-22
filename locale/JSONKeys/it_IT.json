@@ -2032,8 +2032,6 @@
     "Help & Support": "Supporto",
     "Help & Manual": "Guida e manuale",
     "Contributing": "contribuire",
-    "Birthdates of the day": "Date di nascita del giorno",
-    "Anniversaries of the day": "Anniversari del giorno",
     "Automatically enable SMTP encryption if offered by the relaying server.": "Abilita automaticamente la crittografia SMTP se offerta dal server Relay.",
     "Set the encryption system to use - ssl (deprecated) or tls": "Imposta il sistema di crittografia da utilizzare: SSL (deprecato) o TLS",
     "Dashboard Service dynamic asynchronous refresh interval, default 60 second": "Intervallo di aggiornamento asincrono dinamico del servizio Dashboard, 60 secondi predefiniti",

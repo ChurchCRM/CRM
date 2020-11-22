@@ -2012,8 +2012,6 @@
     "Help & Support": "帮助及支援",
     "Help & Manual": "帮助&手册",
     "Contributing": "奉献",
-    "Birthdates of the day": "出生日",
-    "Anniversaries of the day": "纪念日",
     "Automatically enable SMTP encryption if offered by the relaying server.": "如果由中继服务器提供，则自动启用SMTP加密。",
     "Set the encryption system to use - ssl (deprecated) or tls": "将加密系统设置为使用 - ssl（不建议使用）或tls",
     "Dashboard Service dynamic asynchronous refresh interval, default 60 second": "仪表板服务动态异步刷新间隔，默认为60秒",

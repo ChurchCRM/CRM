@@ -8292,14 +8292,6 @@ msgid "Contributing"
 msgstr "bidragande"
 
 #: 
-msgid "Birthdates of the day"
-msgstr "Födelsedatum för dagen"
-
-#: 
-msgid "Anniversaries of the day"
-msgstr "Dagens årsdagar"
-
-#: 
 msgid "Automatically enable SMTP encryption if offered by the relaying server."
 msgstr "Aktivera automatiskt SMTP-kryptering om det erbjuds av den vidarebefordrade servern."
 

@@ -5692,14 +5692,6 @@ msgid "Contributing"
 msgstr "Toetama"
 
 #: 
-msgid "Birthdates of the day"
-msgstr "Päeva sünnipäevad"
-
-#: 
-msgid "Anniversaries of the day"
-msgstr "Päeva juubelid"
-
-#: 
 msgid "Automatically enable SMTP encryption if offered by the relaying server."
 msgstr "Luba SMTP krüptimine automaatselt, kui ülekandeserver seda pakub."
 
