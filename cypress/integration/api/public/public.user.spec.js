@@ -19,5 +19,18 @@ context('API Public User', () => {
             expect(result.apiKey).to.eq(Cypress.env('admin.api.key'));
         })
     });
+
+    it('Reset Password', () => {
+        cy.request({
+            method: 'POST',
+            url: '/session/forgot-password/reset-request',
+            headers: {'content-type': 'application/json'},
+            body: {
+                "userName": "tony.wade@example.com"
+            }
+        }).then((resp) => {
+            expect(resp.status).to.eq(200);
+        })
+    });
 });
 
