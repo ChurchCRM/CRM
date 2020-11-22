@@ -219,40 +219,39 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 </div>
             </div>
         </div>
-        <!--<div class="col-lg-6">
+        <div class="col-lg-6">
             <div class="box">
                 <div class="box-header">
-                    <h4><?/*= _("Layout Options") */?></h4>
+                    <h4><?= _("Layout Options") ?></h4>
                 </div>
                 <div class="box-body">
                     <div class="form-group">
-                        <label class="control-sidebar-subheading"><input type="checkbox" data-layout="fixed" class="pull-right"> Fixed layout</label>
+                        <label class="control-sidebar-subheading"><input type="checkbox" data-layout="fixed" class="pull-right"><b> Fixed layout </b></label>
                         <p>Activate the fixed layout. You can't use fixed and boxed layouts together</p>
                     </div>
                     <div class="form-group">
-                        <label class="control-sidebar-subheading"><input type="checkbox" data-layout="layout-boxed" class="pull-right"> Boxed Layout</label>
+                        <label class="control-sidebar-subheading"><input type="checkbox" data-layout="layout-boxed" class="pull-right"> <b>Boxed Layout</b></label>
                         <p>Activate the boxed layout</p>
                     </div>
                     <div class="form-group">
-                        <label class="control-sidebar-subheading"><input type="checkbox" data-layout="sidebar-collapse" class="pull-right"> Toggle Sidebar</label>
+                        <label class="control-sidebar-subheading"><input type="checkbox" data-layout="sidebar-collapse" class="pull-right"> <b>Toggle Sidebar</b></label>
                         <p>Toggle the left sidebar's state (open or collapse)</p>
                     </div>
                     <div class="form-group">
-                        <label class="control-sidebar-subheading"><input type="checkbox" data-enable="expandOnHover" class="pull-right" disabled="disabled"> Sidebar Expand on Hover</label>
+                        <label class="control-sidebar-subheading"><input type="checkbox" data-enable="expandOnHover" class="pull-right" disabled="disabled"> <b>Sidebar Expand on Hover</b></label>
                         <p>Let the sidebar mini expand on hover</p>
                     </div>
                     <div class="form-group">
-                        <label class="control-sidebar-subheading"><input type="checkbox" data-controlsidebar="control-sidebar-open" class="pull-right"> Toggle Right Sidebar
-                            Slide</label>
+                        <label class="control-sidebar-subheading"><input type="checkbox" data-controlsidebar="control-sidebar-open" class="pull-right"> <b>Toggle Right Sidebar Slide</b></label>
                         <p>Toggle between slide over content and push content effects</p>
                     </div>
                     <div class="form-group">
-                        <label class="control-sidebar-subheading"><input type="checkbox" data-sidebarskin="toggle" class="pull-right"> Toggle Right Sidebar Skin</label>
+                        <label class="control-sidebar-subheading"><input type="checkbox" data-sidebarskin="toggle" class="pull-right"> <b>Toggle Right Sidebar Skin</b></label>
                         <p>Toggle between dark and light skins for the right sidebar</p>
                     </div>
                 </div>
             </div>
-        </div>-->
+        </div>
     </div>
 </div>
 
