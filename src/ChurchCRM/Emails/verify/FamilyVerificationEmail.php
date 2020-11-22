@@ -22,7 +22,7 @@ class FamilyVerificationEmail extends BaseEmail
     public function getTokens()
     {
         $myTokens = ["toName" => $this->familyName . " " . gettext("Family"),
-            "verificationToken" => $this->token,
+            "verificationToken" => $this->token->getToken(),
             "body" => SystemConfig::getValue("sConfirm1")
         ];
         return array_merge($this->getCommonTokens(), $myTokens);

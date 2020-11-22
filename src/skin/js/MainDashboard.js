@@ -6,39 +6,58 @@ $(document).ready(function () {
         dom: "<'row'<'col-sm-12't>>"
     }
 
+    let dataTableFamilyColumns = [
+        {
+            width: '15px',
+            sortable: false,
+            title: i18next.t('Edit'),
+            data: 'Id',
+            render: function (data, type, row) {
+                return '<a href="' + window.CRM.root + '/FamilyEditor.php?FamilyID=' + row.FamilyId + '"><button class="btn btn-default"><i class="fa fa-pencil"></i></button></a>';
+            },
+            searchable: false
+        },
+        {
+            title: i18next.t('Name'),
+            data: 'Name',
+            render: function (data, type, row) {
+                return '<a href="' + window.CRM.root + '/v2/family/' + row.FamilyId + '">'+ row.Name +'</a>';
+            },
+        },
+        {
+            title: i18next.t('Address'),
+            data: 'Address'
+        }
+    ];
+
     let dataTableConfig = {
         ajax: {
             url: window.CRM.root + "/api/families/latest",
             dataSrc: "families"
         },
-        columns: [
-            {
-                width: '15px',
-                sortable: false,
-                title: i18next.t('Action'),
-                data: 'Id',
-                render: function (data, type, row) {
-                    return buildFamilyActionButtons(row.FamilyId);
-                },
-                searchable: false
-            },
-            {
-                title: i18next.t('Name'),
-                data: 'Name'
-            },
-            {
-                title: i18next.t('Address'),
-                data: 'Address'
-            },
+        columns: $.extend(dataTableFamilyColumns,
             {
                 title: i18next.t('Created'),
                 data: 'Created'
-            }
-        ]
+            })
     }
     $.extend(dataTableConfig, window.CRM.plugin.dataTable);
     $.extend(dataTableConfig, dataTableDashboardDefaults);
     $("#latestFamiliesDashboardItem").DataTable(dataTableConfig);
+
+    dataTableConfig = {
+        ajax: {
+            url: window.CRM.root + "/api/families/updated",
+            dataSrc: "families"
+        },
+        columns: $.extend(dataTableFamilyColumns,
+            {
+                title: i18next.t('Updated'),
+                data: 'LastEdited'
+            })    }
+    $.extend(dataTableConfig, window.CRM.plugin.dataTable);
+    $.extend(dataTableConfig, dataTableDashboardDefaults);
+    $("#updatedFamiliesDashboardItem").DataTable(dataTableConfig);
 
     dataTableConfig = {
         ajax: {
@@ -93,81 +112,46 @@ $(document).ready(function () {
     $.extend(dataTableConfig, dataTableDashboardDefaults);
     $("#FamiliesWithAnniversariesDashboardItem").DataTable(dataTableConfig);
 
-    dataTableConfig = {
-        ajax: {
-            url: window.CRM.root + "/api/families/updated",
-            dataSrc: "families"
-        },
-        columns: [
-            {
-                width: '15px',
-                sortable: false,
-                title: i18next.t('Action'),
-                data: 'Id',
-                render: function (data, type, row) {
-                    return buildFamilyActionButtons(row.FamilyId);
-                },
-                searchable: false
-            },
-            {
-                title: i18next.t('Name'),
-                data: 'Name'
-            },
-            {
-                title: i18next.t('Address'),
-                data: 'Address'
-            },
-            {
-                title: i18next.t('Updated'),
-                data: 'LastEdited'
-            }
-        ]
-    }
-    $.extend(dataTableConfig, window.CRM.plugin.dataTable);
-    $.extend(dataTableConfig, dataTableDashboardDefaults);
-    $("#updatedFamiliesDashboardItem").DataTable(dataTableConfig);
 
-    function buildFamilyActionButtons(familyId) {
-        return '<a href="' + window.CRM.root + '/v2/family/' + familyId + '><button class="btn btn-default"><i class="fa fa-search-plus"></i></button></a> ' +
-            '<a href="' + window.CRM.root + '/FamilyEditor.php?FamilyID=' + familyId + '><button class="btn btn-default"><i class="fa fa-pencil"></i></button></a>';
-    }
+    let dataTablePersonColumns = [
+        {
+            width: '15px',
+            sortable: false,
+            title: i18next.t('Action'),
+            data: 'Id',
+            render: function (data, type, row) {
+                return '<a href="' + window.CRM.root + '/PersonView.php?PersonID=' + row.PersonId + '"><button class="btn btn-default"><i class="fa fa-search-plus"></i></button></a> ' +
+                    '<a href="' + window.CRM.root + '/PersonView.php?PersonID=' + row.PersonId + '"><button class="btn btn-default"><i class="fa fa-pencil"></i></button></a>';
+            },
+            searchable: false
+        },
+        {
+            title: i18next.t('First Name'),
+            data: 'FirstName'
+        },
+        {
+            title: i18next.t('Last Name'),
+            data: 'LastName'
+        },
+        {
+            title: i18next.t('Email'),
+            data: 'Email',
+            render: function (data, type, row) {
+                return buildRenderEmail(data);
+            }
+        }
+    ];
 
     dataTableConfig = {
         ajax: {
             url: window.CRM.root + "/api/persons/updated",
             dataSrc: "people"
         },
-        columns: [
-            {
-                width: '15px',
-                sortable: false,
-                title: i18next.t('Action'),
-                data: 'Id',
-                render: function (data, type, row) {
-                    return buildPersonActionButtons(row.PersonId);
-                },
-                searchable: false
-            },
-            {
-                title: i18next.t('First Name'),
-                data: 'FirstName'
-            },
-            {
-                title: i18next.t('Last Name'),
-                data: 'LastName'
-            },
-            {
-                title: i18next.t('Email'),
-                data: 'Email',
-                render: function (data, type, row) {
-                    return buildRenderEmail(data);
-                }
-            },
+        columns: $.extend(dataTablePersonColumns,
             {
                 title: i18next.t('Updated'),
                 data: 'LastEdited'
-            }
-        ]
+            })
     }
     $.extend(dataTableConfig, window.CRM.plugin.dataTable);
     $.extend(dataTableConfig, dataTableDashboardDefaults);
@@ -179,37 +163,11 @@ $(document).ready(function () {
             url: window.CRM.root + "/api/persons/latest",
             dataSrc: "people"
         },
-        columns: [
-            {
-                width: '15px',
-                sortable: false,
-                title: i18next.t('Action'),
-                data: 'Id',
-                render: function (data, type, row) {
-                    return buildPersonActionButtons(row.PersonId);
-                },
-                searchable: false
-            },
-            {
-                title: i18next.t('First Name'),
-                data: 'FirstName'
-            },
-            {
-                title: i18next.t('Last Name'),
-                data: 'LastName'
-            },
-            {
-                title: i18next.t('Email'),
-                data: 'Email',
-                render: function (data, type, row) {
-                    return buildRenderEmail(data);
-                }
-            },
+        columns: $.extend(dataTablePersonColumns,
             {
                 title: i18next.t('Created'),
                 data: 'Created'
-            }
-        ]
+            })
     }
     $.extend(dataTableConfig, window.CRM.plugin.dataTable);
     $.extend(dataTableConfig, dataTableDashboardDefaults);
@@ -220,11 +178,6 @@ $(document).ready(function () {
             return "<a href='mailto:"+ email +"''>"+ email + "</a>";
         }
         return "";
-    }
-
-    function buildPersonActionButtons(personId) {
-        return '<a href="' + window.CRM.root + '/PersonView.php?PersonID=' + personId + '><button class="btn btn-default"><i class="fa fa-search-plus"></i></button></a> ' +
-            '<a href="' + window.CRM.root + '/PersonView.php?PersonID=' + personId + '><button class="btn btn-default"><i class="fa fa-pencil"></i></button></a>';
     }
 
     if ($('#depositChartRow').length > 0) {

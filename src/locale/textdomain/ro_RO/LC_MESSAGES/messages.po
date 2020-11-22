@@ -4214,7 +4214,8 @@ msgid "Add New Person"
 msgstr "Adaguă membru nou"
 
 #: 
-msgid "View All Persons"
+#, fuzzy
+msgid "View All People"
 msgstr "Vezi toți membri"
 
 #: 
@@ -7152,6 +7153,86 @@ msgid "Intersect With Cart"
 msgstr "Intersecție cu grafic"
 
 #: 
+msgid "Family Member"
+msgstr "Membru familie"
+
+#: 
+msgid "select an option"
+msgstr "selectează o opțiune"
+
+#: 
+msgid "Direct me"
+msgstr "Direcționează-mă"
+
+#: 
+msgid "Your cart is empty"
+msgstr "Coșul tău este gol"
+
+#: 
+msgid "The record could not be found."
+msgstr "Înregistrarea nu a putut fi găsită"
+
+#: 
+msgid "The property is already assigned."
+msgstr "Proprietatea este deja alocată"
+
+#: 
+msgid "The property is successfully assigned."
+msgstr "Proprietatea a fost alocată cu success"
+
+#: 
+msgid "The property could not be assigned."
+msgstr "Proprietatea nu a putut fi alocată"
+
+#: 
+msgid "The property is successfully unassigned."
+msgstr "Proprietatea a fost ștearsă cu success"
+
+#: 
+msgid "The property could not be unassigned."
+msgstr "Proprietatea nu a putut fi ștearsă"
+
+#: 
+msgid "Select event"
+msgstr "Selectează eveniment"
+
+#: 
+msgid "Person's Name"
+msgstr "Nume persoane"
+
+#: 
+msgid "Adult Name(Optional)"
+msgstr "Nume adult (opțional)"
+
+#: 
+msgid "Checked in By(Optional)"
+msgstr "Verificat de (opțional)"
+
+#: 
+msgid "Person has been already checked in for this event"
+msgstr "Persoana a fost deja înregistrată pentru acest eveniment"
+
+#: 
+msgid "CheckOut Person"
+msgstr "Persoană checkout"
+
+#: 
+msgid "Delete Checkin in Entry"
+msgstr "Șterge înregistrare checkin"
+
+#: 
+msgid "Adult Checking Out Person"
+msgstr "Persoană pentru check-out pentru adulți"
+
+#: 
+msgid "Adult Name (Optional)"
+msgstr "Nume adult (opțional)"
+
+#: 
+msgid "Text before name in emails/reports"
+msgstr "Text înainte de nume în email-uri/rapoarte"
+
+#: 
 msgid "Set true to allow empty lastname in Person Editor.  Set false to validate last name and inherit from family when left empty."
 msgstr "Setați true pentru a permite numele de familie necompletat în Editorul de persoane. Setați false pentru a valida numele de familie și a moșteni de la familie atunci când este necompletat."
 
@@ -7564,6 +7645,74 @@ msgid "Remove all"
 msgstr "Elimină tot"
 
 #: 
+msgid "Not all members of this group are in the cart"
+msgstr "Nu toți membrii din acest grup sunt în coș"
+
+#: 
+msgid "Add all"
+msgstr "Adaugă-i pe toți"
+
+#: 
+msgid "Are you sure you want to remove the selected group members?"
+msgstr "Sigur doriți să eliminați membri selectați din grup?"
+
+#: 
+msgid "Successfully submitted Issue"
+msgstr "Raportare trimisă cu success"
+
+#: 
+msgid "View Issue on GitHub"
+msgstr "Vezi problemele în GitHub"
+
+#: 
+msgid "Do you want to delete this person?  This cannot be undone."
+msgstr "Vreți să ștergeți această persoană? Nu puteți reveni"
+
+#: 
+msgid "Are you sure you want to unassign this property?"
+msgstr "Sigur doriți să anulați atribuirea acestei proprietăți?"
+
+#: 
+msgid "Select a family"
+msgstr "Selectează o famiie"
+
+#: 
+msgid "Release Notes"
+msgstr "Note"
+
+#: 
+msgid "Move"
+msgstr "Mută"
+
+#: 
+msgid "Arabic - Egypt"
+msgstr "arabă - Egypt"
+
+#: 
+msgid "Thai"
+msgstr "Thai"
+
+#: 
+msgid "Your Church's Facebook Page"
+msgstr "Pargina de Facebook bisericii"
+
+#: 
+msgid "Your Church's Twitter Page"
+msgstr "Pargina de Twitter a bisericii"
+
+#: 
+msgid "lookup user images on Google when no local image is present"
+msgstr "căutați imagini ale utilizatorilor pe Google atunci când nu există nicio imagine locală"
+
+#: 
+msgid "Self Register"
+msgstr "Autoînregistrare"
+
+#: 
+msgid "List families that were created via self registration."
+msgstr "Enumerați familiile care au fost create prin autoînregistrare."
+
+#: 
 msgid "Pending Self Verify"
 msgstr "În așteptarea auto-verificării"
 
@@ -7690,4 +7839,156 @@ msgstr "Editează clasa"
 #: 
 msgid "OK"
 msgstr "OK"
+
+#: 
+msgid "Please select target Role for members"
+msgstr "Vă rugăm să selectați rolul țintă pentru membri"
+
+#: 
+msgid "GroupID required for role selection prompt"
+msgstr "ID grup necesar pentru selectarea rolului"
+
+#: 
+msgid "Select Group and Role"
+msgstr "Selectează Grup și Rol"
+
+#: 
+msgid "Are you sure you want to remove this person's membership from"
+msgstr "Sigur doriți să eliminați calitatea de membru al acestei persoane"
+
+#: 
+msgid "All Members"
+msgstr "Toți membrii"
+
+#: 
+msgid "PhotoBook"
+msgstr "Fotoalbum"
+
+#: 
+msgid "With Photos"
+msgstr "Cu poze"
+
+#: 
+msgid "Create PhotoBook"
+msgstr "Crează fotoalbum"
+
+#: 
+msgid "SSE"
+msgstr "SSE"
+
+#: 
+msgid "Height to use for images"
+msgstr "Înălțimea de utilizat pentru imagini"
+
+#: 
+msgid "Width to use for images"
+msgstr "Lățime de utilizat pentru imagini"
+
+#: 
+msgid "Width to use for thumbnails"
+msgstr "Lățime de utilizat pentru miniaturi"
+
+#: 
+msgid "Point size to use for initials thumbnails"
+msgstr "Dimensiunea punctului de utilizat pentru miniaturile inițiale"
+
+#: 
+msgid "Client cache seconds for images"
+msgstr "Secunde de cache ale clientului pentru imagini"
+
+#: 
+msgid "Server cache time for remote images"
+msgstr "Timp cache de server pentru imagini la distanță"
+
+#: 
+msgid "Recipient Naming Method"
+msgstr "Metoda de denumire a destinatarilor"
+
+#: 
+msgid "Salutation Utility"
+msgstr "Utilitar salut"
+
+#: 
+msgid "Add A Group Name"
+msgstr "Adaugă un nume grupului"
+
+#: 
+msgid "Default Name Group"
+msgstr "Nume implicit grup"
+
+#: 
+msgid "Group Role"
+msgstr "Rol grup"
+
+#: 
+msgid "Maximum number of People"
+msgstr "Numărul maxim de persoane"
+
+#: 
+msgid "Require that this ChurchCRM Database is accessed over HTTPS"
+msgstr "Solicitați accesul acestei baze de date ChurchCRM prin HTTPS"
+
+#: 
+msgid "People Setup"
+msgstr "Setări persoane"
+
+#: 
+msgid "Church Services"
+msgstr "Servicii biserică"
+
+#: 
+msgid "People Reports"
+msgstr "Rapoarte persoane"
+
+#: 
+msgid "People Dashboard"
+msgstr "Panou de bord persoane"
+
+#: 
+msgid "People Functions"
+msgstr "Funcții persoane"
+
+#: 
+msgid "People Directory"
+msgstr "Director persoane"
+
+#: 
+msgid "Printable directory of all people, grouped by family where assigned"
+msgstr "Director de imprimat al tuturor persoanelor, grupate în funcție de familie unde au fost atribuite"
+
+#: 
+msgid "of People"
+msgstr "al persoanelor"
+
+#: 
+msgid "System Upgrade"
+msgstr "Actualizare sistem"
+
+#: 
+msgid "Upgrade Required"
+msgstr "Actualizare necesară"
+
+#: 
+msgid "Current DB Version: "
+msgstr "Versiune curendă DB"
+
+#: 
+msgid "Current Software Version: "
+msgstr "Versiune curentă"
+
+#: 
+msgid "Upgrade database"
+msgstr "Actualizează "
+
+#: 
+msgid "Show Birthdates Anniversaries on start up of the CRM"
+msgstr "Arată aniversări la pornirea CRM-ului"
+
+#: 
+msgid "Number of seconds after page load until the banner disappears, default 10 seconds"
+msgstr "Numă de secunde pentru ascunderea banneru-ului la încărcarea paginii (prestabilit 10s)"
+
+#: 
+msgid "Help & Support"
+msgstr "Ajutor"
 

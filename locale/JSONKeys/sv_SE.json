@@ -1024,7 +1024,7 @@
     "Calendar": "Kalender",
     "Members": "Medlemmar",
     "Add New Person": "Lägg till ny person",
-    "View All Persons": "Visa alla personer",
+    "View All People": "Visa alla personer",
     "Add New Family": "Lägg till ny familj",
     "Events": "Evenemang",
     "Fundraiser": "Välgörenhetsgala",
@@ -2362,11 +2362,10 @@
     "Loading": "Läser in",
     "Family Property Unassignment": "Familjeegendom av-tilldelning",
     "Do you want to remove": "Vill du ta bort",
-    "View Active Persons": "Visa aktiva personer",
-    "View Inactive Persons": "Visa inaktiva personer",
+    "View Active People": "Visa aktiva personer",
+    "View Inactive People": "Visa inaktiva personer",
     "Today's Birthdays": "Dagens födelsedagar",
     "Today's Wedding Anniversaries": "Dagens bröllopsdagar",
-    "Enable New Dashboard": "Aktivera ny instrumentpanel",
     "Api Key": "Api Nyckel",
     "Regen API Key": "Regen API-nyckel"
 }

@@ -403,7 +403,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
                 $person = PersonQuery::create()->findOneByID($iPersonID);
                 $NotificationEmail = new NewPersonOrFamilyEmail($person);
                 if (!$NotificationEmail->send()) {
-                    LoggerUtils::getAppLogger()->warn($NotificationEmail->getError());
+                    LoggerUtils::getAppLogger()->warning($NotificationEmail->getError());
                 }
             }
         } else {

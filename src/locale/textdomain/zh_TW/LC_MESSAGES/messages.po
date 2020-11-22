@@ -4240,7 +4240,8 @@ msgid "Add New Person"
 msgstr "添加新成員"
 
 #: 
-msgid "View All Persons"
+#, fuzzy
+msgid "View All People"
 msgstr "查看所有成員"
 
 #: 
@@ -9790,12 +9791,12 @@ msgstr "您要刪除嗎"
 
 #: 
 #, fuzzy
-msgid "View Active Persons"
+msgid "View Active People"
 msgstr "查看活躍的人"
 
 #: 
 #, fuzzy
-msgid "View Inactive Persons"
+msgid "View Inactive People"
 msgstr "查看不活躍的人"
 
 #: 
@@ -9807,11 +9808,6 @@ msgstr "今天生日"
 #, fuzzy
 msgid "Today's Wedding Anniversaries"
 msgstr "今天結婚週年紀念日"
-
-#: 
-#, fuzzy
-msgid "Enable New Dashboard"
-msgstr "啟用新儀錶盤"
 
 #: 
 #, fuzzy

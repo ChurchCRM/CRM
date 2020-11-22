@@ -72,10 +72,10 @@
         <behavior name="validate">
             <parameter name="rule1" value="{column: per_firstname, validator: NotNull}" />
             <parameter name="rule2" value="{column: per_firstname, validator: NotBlank}" />
-            <parameter name="rule3" value="{column: per_firstname, validator: Length, options: {min:2, max: 50}}" />
+            <parameter name="rule3" value="{column: per_firstname, validator: Length, options: {min: 2, max: 50}}" />
             <parameter name="rule4" value="{column: per_lastname, validator: NotNull}" />
             <parameter name="rule5" value="{column: per_lastname, validator: NotBlank}" />
-            <parameter name="rule6" value="{column: per_lastname, validator: Length, options: {min:2, max: 50}}" />
+            <parameter name="rule6" value="{column: per_lastname, validator: Length, options: {min: 2, max: 50}}" />
         </behavior>
     </table>
 
@@ -91,7 +91,7 @@
         <behavior name="validate">
             <parameter name="rule1" value="{column: linkname, validator: NotNull}" />
             <parameter name="rule2" value="{column: linkname, validator: NotBlank}" />
-            <parameter name="rule3" value="{column: linkname, validator: Length, options: {min:2, max: 50}}" />
+            <parameter name="rule3" value="{column: linkname, validator: Length, options: {min: 2, max: 50}}" />
             <parameter name="rule4" value="{column: linkuri, validator: Url}" />
         </behavior>
     </table>

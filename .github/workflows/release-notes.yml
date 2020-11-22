@@ -1,7 +1,9 @@
-on: 
+name: Release Notes
+
+on:
   milestone:
     types: [closed]
-name: Milestone Closure
+
 jobs:
   release-notes:
     runs-on: ubuntu-latest
@@ -13,4 +15,4 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         OUTPUT_FOLDER: release_notes
         USE_MILESTONE_TITLE: "true"
-      
+

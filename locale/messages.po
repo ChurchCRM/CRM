@@ -10,7 +10,7 @@ msgstr ""
 "#-#-#-#-#  messages.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-01 14:00-0800\n"
+"POT-Creation-Date: 2020-11-21 12:21-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,16 +25,16 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2020-11-01T22:00:10.279Z\n"
-"PO-Revision-Date: 2020-11-01T22:00:10.279Z\n"
+"POT-Creation-Date: 2020-11-21T20:21:15.151Z\n"
+"PO-Revision-Date: 2020-11-21T20:21:15.151Z\n"
 "#-#-#-#-#  react-js-strings.po (i18next-conv)  #-#-#-#-#\n"
 "Project-Id-Version: i18next-conv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2020-11-01T22:00:10.482Z\n"
-"PO-Revision-Date: 2020-11-01T22:00:10.482Z\n"
+"POT-Creation-Date: 2020-11-21T20:21:15.364Z\n"
+"PO-Revision-Date: 2020-11-21T20:21:15.364Z\n"
 
 msgid "Backup Database"
 msgstr ""
@@ -669,13 +669,13 @@ msgstr ""
 msgid "Add New Person"
 msgstr ""
 
-msgid "View Active Persons"
+msgid "View Active People"
 msgstr ""
 
-msgid "View Inactive Persons"
+msgid "View Inactive People"
 msgstr ""
 
-msgid "View All Persons"
+msgid "View All People"
 msgstr ""
 
 msgid "Add New Family"
@@ -1691,9 +1691,6 @@ msgstr ""
 msgid "Google Maps API Key used for rendering maps in browser"
 msgstr ""
 
-msgid "Enable New Dashboard"
-msgstr ""
-
 msgid "Church Information"
 msgstr ""
 
@@ -1770,6 +1767,9 @@ msgid "Profile Image Deleted"
 msgstr ""
 
 msgid "Profile Image uploaded"
+msgstr ""
+
+msgid "Family has no emails to use"
 msgstr ""
 
 msgid "New Person Notification Email Error"
@@ -3597,48 +3597,6 @@ msgstr ""
 msgid "Update"
 msgstr ""
 
-msgid "Welcome to"
-msgstr ""
-
-msgid "Birthdates of the day"
-msgstr ""
-
-msgid "Anniversaries of the day"
-msgstr ""
-
-msgid "Families"
-msgstr ""
-
-msgid "See all Families"
-msgstr ""
-
-msgid "See all People"
-msgstr ""
-
-msgid "Sunday School Classes"
-msgstr ""
-
-msgid "More info"
-msgstr ""
-
-msgid "Attendees Checked In"
-msgstr ""
-
-msgid "Deposit Tracking"
-msgstr ""
-
-msgid "Latest Families"
-msgstr ""
-
-msgid "Updated Families"
-msgstr ""
-
-msgid "Latest Persons"
-msgstr ""
-
-msgid "Updated Persons"
-msgstr ""
-
 msgid "Note Delete Confirmation"
 msgstr ""
 
@@ -3815,10 +3773,19 @@ msgstr ""
 msgid "Email All (BCC)"
 msgstr ""
 
+msgid "Families"
+msgstr ""
+
+msgid "See all Families"
+msgstr ""
+
 msgid "See All People"
 msgstr ""
 
 msgid "Sunday School Kids"
+msgstr ""
+
+msgid "More info"
 msgstr ""
 
 msgid "Reports"
@@ -5362,6 +5329,9 @@ msgstr ""
 msgid "Export to CSV"
 msgstr ""
 
+msgid "Sunday School Classes"
+msgstr ""
+
 msgid "Students not in a Sunday School Class"
 msgstr ""
 
@@ -5448,6 +5418,9 @@ msgid "PDFs successfully emailed "
 msgstr ""
 
 msgid "families"
+msgstr ""
+
+msgid "Welcome to"
 msgstr ""
 
 msgid ""
@@ -5777,10 +5750,31 @@ msgstr ""
 msgid "Add Person"
 msgstr ""
 
+msgid "See all People"
+msgstr ""
+
+msgid "Attendees Checked In"
+msgstr ""
+
 msgid "Today's Birthdays"
 msgstr ""
 
 msgid "Today's Wedding Anniversaries"
+msgstr ""
+
+msgid "Deposit Tracking"
+msgstr ""
+
+msgid "Latest Families"
+msgstr ""
+
+msgid "Updated Families"
+msgstr ""
+
+msgid "Latest Persons"
+msgstr ""
+
+msgid "Updated Persons"
 msgstr ""
 
 msgid ""

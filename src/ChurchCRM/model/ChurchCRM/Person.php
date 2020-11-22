@@ -148,7 +148,7 @@ class Person extends BasePerson implements iPhoto
       {
         $NotificationEmail = new NewPersonOrFamilyEmail($this);
         if (!$NotificationEmail->send()) {
-            LoggerUtils::getAppLogger()->warn(gettext("New Person Notification Email Error"). " :". $NotificationEmail->getError());
+            LoggerUtils::getAppLogger()->warning(gettext("New Person Notification Email Error"). " :". $NotificationEmail->getError());
         }
       }
     }
