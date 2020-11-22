@@ -22,39 +22,51 @@ function getUserSetting(Request $request, Response $response, array $args)
 {
 
     $user = AuthenticationManager::GetCurrentUser();
-    $setting = $user->getSetting($args['settingName']);
-
+    $settingName = $args['settingName'];
+    $setting = $user->getSetting($settingName);
+    if (!$setting) {
+       return $response->withStatus(404, "not found: " . $settingName);
+    }
     return $response->withJson(["value" => $setting->getValue()]);
 }
 
 function updateUserSetting(Request $request, Response $response, array $args)
 {
     $user = AuthenticationManager::GetCurrentUser();
-    $user->setSetting("finance.show.pledges", $args['settingName']);
-    $setting = $user->getSetting($args['settingName']);
+    $settingName = $args['settingName'];
 
-    return $response->withJson(["value" => $setting->getValue()]);
+    $input = (object)$request->getParsedBody();
+    $user->setSetting($settingName, $input->value);
+    return $response->withJson(["value" => $user->getSetting($settingName)->getValue()]);
 }
 
 function updateSessionFinance(Request $request, Response $response, array $args)
 {
     $user = AuthenticationManager::GetCurrentUser();
 
-   /* if ($request->getContentLength() > 0) {
+   if ($request->getContentLength() > 0) {
         $setting = (object)$request->getParsedBody();
 
-        $user->setSetting( "finance.show.pledges", ConvertToBoolean($setting->pledges));
-        $user->setSetting( "finance.show.payments", ConvertToBoolean($setting->payments));
-        $user->setSetting( "finance.show.since", ConvertToBoolean($setting->since));
-        $user->save();
-    }*/
+        $user->setSetting( "finance.show.pledges", $setting->pledges);
+        $user->setSetting( "finance.show.payments", $setting->payments);
+        $user->setSetting( "finance.show.since", $setting->since);
+    }
+
+   $tempSetting = $user->getSetting("finance.show.pledges");
+   $pledges = $tempSetting? $tempSetting->getValue() : "";
+
+   $tempSetting = $user->getSetting("finance.show.payments");
+    $payments = $tempSetting? $tempSetting->getValue() : "";
+
+    $tempSetting = $user->getSetting("finance.show.since");
+    $since = $tempSetting? $tempSetting->getValue() : "";
 
     return $response->withJson([
         "user" => $user->getName(),
         "userId" => $user->getId(),
-        "showPledges" => $user->getSetting("finance.show.pledges")->getValue(),
-        "showPayments" => $user->getSetting("finance.show.payments")->getValue(),
-        "showSince" => $user->getSetting("finance.show.since")->getValue()
+        "showPledges" => $pledges,
+        "showPayments" => $payments,
+        "showSince" => $since
     ]);
 
 }
