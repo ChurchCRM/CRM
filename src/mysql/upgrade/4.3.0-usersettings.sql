@@ -40,7 +40,7 @@ insert into user_settings select usr_per_ID as user_id, "ui.search.calendar.end"
 
 /** Finance settings **/
 insert into user_settings select usr_per_ID as user_id, "finance.show.pledges" as  setting_name, usr_showPledges as setting_value from user_usr;
-insert into user_settings select usr_per_ID as user_id, "finance.show.payment" as  setting_name, usr_showPayments as setting_value from user_usr;
+insert into user_settings select usr_per_ID as user_id, "finance.show.payments" as  setting_name, usr_showPayments as setting_value from user_usr;
 insert into user_settings select usr_per_ID as user_id, "finance.show.since" as  setting_name, usr_showSince as setting_value from user_usr;
 insert into user_settings select usr_per_ID as user_id, "finance.FY" as  setting_name, usr_defaultFY as setting_value from user_usr;
 
