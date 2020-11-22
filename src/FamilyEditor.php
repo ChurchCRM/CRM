@@ -438,7 +438,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
             if (!empty(SystemConfig::getValue("sNewPersonNotificationRecipientIDs"))) {
                 $NotificationEmail = new NewPersonOrFamilyEmail($family);
                 if (!$NotificationEmail->send()) {
-                    $logger->warn($NotificationEmail->getError());
+                    $logger->warning($NotificationEmail->getError());
                 }
             }
         } else {

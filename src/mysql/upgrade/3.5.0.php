@@ -13,14 +13,14 @@ try {
   $q1 = "alter table family_custom_master drop column `fam_custom_Side`;";
   $connection->exec($q1);
 } catch (\Exception $e){
-  $logger->warn("Could not remove `family_custom_master.fam_custom_Side`, but this is probably ok");
+  $logger->warning("Could not remove `family_custom_master.fam_custom_Side`, but this is probably ok");
 }
 
 try {
   $q2 = "alter table custom_master drop column `custom_Side`;";
   $connection->exec($q2);
 } catch (\Exception $e){
-  $logger->warn("Could not remove `custom_master.custom_Side`, but this is probably ok");
+  $logger->warning("Could not remove `custom_master.custom_Side`, but this is probably ok");
 }
 
 
@@ -28,7 +28,7 @@ try {
   $q3 = "alter table person_custom_master drop column `custom_Side`;";
   $connection->exec($q3);
 } catch (\Exception $e){
-  $logger->warn("Could not remove `person_custom_master.custom_Side`, but this is probably ok");
+  $logger->warning("Could not remove `person_custom_master.custom_Side`, but this is probably ok");
 }
 
 
