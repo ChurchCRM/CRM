@@ -83,8 +83,8 @@ abstract class BaseEmail
     }
 
     protected function getCommonTokens() {
-        return [
-          "toEmails" => $this->mail->getToAddresses(),
+        $commonTokens = [
+            "toEmails" => $this->mail->getToAddresses(),
             "churchName" => ChurchMetaData::getChurchName(),
             "churchAddress" => ChurchMetaData::getChurchFullAddress(),
             "churchPhone" => ChurchMetaData::getChurchPhone(),
@@ -93,9 +93,24 @@ abstract class BaseEmail
             "dear" => SystemConfig::getValue('sDear'),
             "confirmSincerely" => SystemConfig::getValue('sConfirmSincerely'),
             "confirmSigner" => SystemConfig::getValue('sConfirmSigner'),
-            "copyrightDate" => SystemService::getCopyrightDate()
+            "copyrightDate" => SystemService::getCopyrightDate(),
+            "buttonNotWorkingText" => getText("If that doesn't work, copy and paste the following link in your browser"),
+            "emailErrorText" => getText("You received this email because we received a request for activity on your account. If you didn't request this you can safely delete this email."),
+            "stopEmailText" => getText("To stop receiving these emails, you can email")
         ];
+
+        if (!empty($this->getFullURL())) {
+            $buttonTokens = [
+                "fullURL" => $this->getFullURL(),
+                "buttonText" => $this->getButtonText()
+            ];
+            $commonTokens = array_merge($commonTokens, $buttonTokens);
+        }
+
+        return $commonTokens;
     }
 
     abstract function getTokens();
+    abstract function getFullURL();
+    abstract function getButtonText();
 }
