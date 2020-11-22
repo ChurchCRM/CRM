@@ -4,6 +4,8 @@ namespace ChurchCRM;
 
 use ChurchCRM\Base\User as BaseUser;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\Utils\LoggerUtils;
+use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\Connection\ConnectionInterface;
 use ChurchCRM\Utils\MiscUtils;
 use Defuse\Crypto\Crypto;
@@ -282,6 +284,28 @@ class User extends BaseUser
             }
         }
     }
+
+
+    public function setSetting($name, $value) {
+        $setting = $this->getSetting($name);
+        if (!$setting) {
+            $setting = new UserSetting();
+            $setting->set($this, $name, $value);
+        } else {
+            $setting->setValue($value);
+        }
+        $setting->save();
+    }
+
+    public function getSetting($name) {
+        foreach ($this->getUserSettings() as $userSetting) {
+            if ($userSetting->getName() == $name) {
+                return $userSetting;
+            }
+        }
+        return null;
+    }
+
 
     public function getFormattedShowSince() {
         $showSince = "";

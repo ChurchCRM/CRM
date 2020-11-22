@@ -15,5 +15,14 @@ use ChurchCRM\Base\UserSetting as BaseUserSetting;
  */
 class UserSetting extends BaseUserSetting
 {
+    public function __construct() {
 
+    }
+
+    public function set($user, $name, $value)
+    {
+        $this->setUser($user);
+        $this->setName($name);
+        $this->setValue($value);
+    }
 }
