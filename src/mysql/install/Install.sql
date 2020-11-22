@@ -1051,6 +1051,27 @@ VALUES
   (1, '4bdf3fba58c956fc3991a1fde84929223f968e2853de596e49ae80a91499609b', 1, '2016-01-01 00:00:00', 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 10, 'skin-red', 0, 0, '2016-01-01', 10, 0, 'Admin', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0);
 
 
+--
+-- Table structure for table `user_settings`
+--
+
+CREATE TABLE `user_settings` (
+  `user_id` int(11) NOT NULL,
+  `setting_name` varchar(50) NOT NULL,
+  `setting_value` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `user_settings`
+--
+ALTER TABLE `user_settings`
+  ADD PRIMARY KEY (`user_id`,`setting_name`);
+
+
 -- --------------------------------------------------------
 
 --
