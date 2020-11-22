@@ -425,7 +425,7 @@ $bOkToEdit = (
                     <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= $iPersonID ?>/changePassword"><i class="fa fa-key"></i> <?= gettext("Change Password") ?></a>
                     <?php
                 }
-            } else if ($person->isUser() && $person->getId() == AuthenticationManager::GetCurrentUser()->getId()) {
+            } elseif ($person->isUser() && $person->getId() == AuthenticationManager::GetCurrentUser()->getId()) {
                 ?>
                 <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= $iPersonID ?>"><i class="fa fa-eye"></i> <?= gettext('View User') ?></a>
                 <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/v2/user/current/changepassword"><i class="fa fa-key"></i> <?= gettext("Change Password") ?></a>
