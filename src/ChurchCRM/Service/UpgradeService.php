@@ -57,7 +57,7 @@ class UpgradeService
                   }
                 // increment the number of scripts executed.
                 // If no scripts run, then there is no supported upgrade path defined in the JSON file
-                $upgradeScriptsExecuted ++; 
+                $upgradeScriptsExecuted ++;
               }
             }
             catch (\Exception $exc) {
@@ -65,8 +65,8 @@ class UpgradeService
               throw $exc;
             }
           }
-          if( $upgradeScriptsExecuted === 0 ) { 
-            $logger->warn("No upgrade path for " . SystemService::getDBVersion() . " to " . $_SESSION['sSoftwareInstalledVersion']); 
+          if( $upgradeScriptsExecuted === 0 ) {
+            $logger->warning("No upgrade path for " . SystemService::getDBVersion() . " to " . $_SESSION['sSoftwareInstalledVersion']);
           }
           // always rebuild the views
           SQLUtils::sqlImport(SystemURLs::getDocumentRoot() . '/mysql/upgrade/rebuild_views.sql', $connection);
