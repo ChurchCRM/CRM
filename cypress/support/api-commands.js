@@ -17,7 +17,8 @@ Cypress.Commands.add("makePrivateAPICall", (method, url, body, expectedStatus = 
         headers: {'content-type': 'application/json', "x-api-key": Cypress.env('admin.api.key')},
         body: body
     }).then((resp) => {
+        const result = JSON.parse(JSON.stringify(resp.body));
         expect(resp.status).to.eq(expectedStatus);
-        return JSON.parse(JSON.stringify(resp.body));
+        return result;
     })
 });
