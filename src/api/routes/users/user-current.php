@@ -5,8 +5,11 @@ use Slim\Http\Response;
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Authentication\AuthenticationProviders\LocalAuthentication;
 use ChurchCRM\Utils\LoggerUtils;
+use ChurchCRM\UserSettings;
 
 $app->group('/user/current', function () {
+    $this->get("/settings/{settingName}", "getUserSetting");
+    $this->post("/settings/{settingName}", "updateUserSetting");
     $this->post("/settings/show/finance", "updateSessionFinance");
     $this->post("/refresh2fasecret", "refresh2fasecret");
     $this->post("/refresh2farecoverycodes", "refresh2farecoverycodes");
@@ -15,24 +18,43 @@ $app->group('/user/current', function () {
     $this->get("/get2faqrcode",'get2faqrcode');
 });
 
+function getUserSetting(Request $request, Response $response, array $args)
+{
+
+    $user = AuthenticationManager::GetCurrentUser();
+    $setting = $user->getSetting($args['settingName']);
+
+    return $response->withJson(["value" => $setting->getValue()]);
+}
+
+function updateUserSetting(Request $request, Response $response, array $args)
+{
+    $user = AuthenticationManager::GetCurrentUser();
+    $user->setSetting("finance.show.pledges", $args['settingName']);
+    $setting = $user->getSetting($args['settingName']);
+
+    return $response->withJson(["value" => $setting->getValue()]);
+}
+
 function updateSessionFinance(Request $request, Response $response, array $args)
 {
     $user = AuthenticationManager::GetCurrentUser();
 
-    if ($request->getContentLength() > 0) {
+   /* if ($request->getContentLength() > 0) {
         $setting = (object)$request->getParsedBody();
-        $user->setShowPledges(ConvertToBoolean($setting->pledges));
-        $user->setShowPayments(ConvertToBoolean($setting->payments));
-        $user->setShowSince($setting->since);
+
+        $user->setSetting( "finance.show.pledges", ConvertToBoolean($setting->pledges));
+        $user->setSetting( "finance.show.payments", ConvertToBoolean($setting->payments));
+        $user->setSetting( "finance.show.since", ConvertToBoolean($setting->since));
         $user->save();
-    }
+    }*/
 
     return $response->withJson([
         "user" => $user->getName(),
         "userId" => $user->getId(),
-        "showPledges" => $user->isShowPledges(),
-        "showPayments" => $user->isShowPayments(),
-        "showSince" => $user->getFormattedShowSince()
+        "showPledges" => $user->getSetting("finance.show.pledges")->getValue(),
+        "showPayments" => $user->getSetting("finance.show.payments")->getValue(),
+        "showSince" => $user->getSetting("finance.show.since")->getValue()
     ]);
 
 }
