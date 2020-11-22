@@ -3081,10 +3081,6 @@ msgid "Upgrade database"
 msgstr "Cập nhật dữ liệu"
 
 #: 
-msgid "Birthdates of the day"
-msgstr "Ngày sinh nhật"
-
-#: 
 msgid "Add All to Cart"
 msgstr "Thêm hết vào giỏ"
 

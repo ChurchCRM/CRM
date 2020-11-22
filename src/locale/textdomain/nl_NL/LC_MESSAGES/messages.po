@@ -6604,14 +6604,6 @@ msgid "Contributing"
 msgstr "Draagt bij"
 
 #: 
-msgid "Birthdates of the day"
-msgstr "Verjaardagen van vandaag"
-
-#: 
-msgid "Anniversaries of the day"
-msgstr "jubilea van vandaag"
-
-#: 
 msgid "Add All to Cart"
 msgstr "Alles in het karretje zetten"
 

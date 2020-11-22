@@ -8143,14 +8143,6 @@ msgid "Contributing"
 msgstr "Bydraende"
 
 #: 
-msgid "Birthdates of the day"
-msgstr "Geboortedatums van die dag"
-
-#: 
-msgid "Anniversaries of the day"
-msgstr "Verjaarsdag van die dag"
-
-#: 
 msgid "Automatically enable SMTP encryption if offered by the relaying server."
 msgstr "Skakel SMTP-kodering outomaties aan as dit aangebied word deur die herbediener."
 

@@ -2032,8 +2032,6 @@
     "Help & Support": "Hjälp och support",
     "Help & Manual": "Hjälp och manual",
     "Contributing": "bidragande",
-    "Birthdates of the day": "Födelsedatum för dagen",
-    "Anniversaries of the day": "Dagens årsdagar",
     "Automatically enable SMTP encryption if offered by the relaying server.": "Aktivera automatiskt SMTP-kryptering om det erbjuds av den vidarebefordrade servern.",
     "Set the encryption system to use - ssl (deprecated) or tls": "Ställ in krypteringssystemet att använda - ssl (deprecated) eller tls",
     "Dashboard Service dynamic asynchronous refresh interval, default 60 second": "Instrumentbräda Service dynamiskt asynkron uppdateringsintervall, standard 60 sekunder",

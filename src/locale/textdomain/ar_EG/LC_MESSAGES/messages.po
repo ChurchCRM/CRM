@@ -8144,14 +8144,6 @@ msgid "Contributing"
 msgstr "المساهمة"
 
 #: 
-msgid "Birthdates of the day"
-msgstr "تواريخ ميلاد اليوم"
-
-#: 
-msgid "Anniversaries of the day"
-msgstr "الذكرى السنوية لليوم"
-
-#: 
 msgid "Automatically enable SMTP encryption if offered by the relaying server."
 msgstr "تمكين تلقائيا التشفير SMTP إذا عرضت من قبل الملقم ترحيل."
 

@@ -8354,14 +8354,6 @@ msgstr "\n"
 "Contribuindo"
 
 #: 
-msgid "Birthdates of the day"
-msgstr "Dia do Aniversário"
-
-#: 
-msgid "Anniversaries of the day"
-msgstr "Aniversariantes do dia"
-
-#: 
 msgid "Automatically enable SMTP encryption if offered by the relaying server."
 msgstr "Ativar automaticamente a criptografia SMTP, se oferecido pelo servidor de retransmissão."
 

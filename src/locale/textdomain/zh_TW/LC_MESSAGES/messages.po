@@ -8317,14 +8317,6 @@ msgid "Contributing"
 msgstr "奉獻"
 
 #: 
-msgid "Birthdates of the day"
-msgstr "出生日"
-
-#: 
-msgid "Anniversaries of the day"
-msgstr "紀念日"
-
-#: 
 msgid "Automatically enable SMTP encryption if offered by the relaying server."
 msgstr "如果由中繼服務器提供，則自動啟用SMTP加密。"
 

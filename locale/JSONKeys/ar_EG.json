@@ -2032,8 +2032,6 @@
     "Help & Support": "المساعدة &والدعم الفنى",
     "Help & Manual": "المساعدة ودليل",
     "Contributing": "المساهمة",
-    "Birthdates of the day": "تواريخ ميلاد اليوم",
-    "Anniversaries of the day": "الذكرى السنوية لليوم",
     "Automatically enable SMTP encryption if offered by the relaying server.": "تمكين تلقائيا التشفير SMTP إذا عرضت من قبل الملقم ترحيل.",
     "Set the encryption system to use - ssl (deprecated) or tls": "ضبط نظام التشفير الاستخدام - خدمة تصميم المواقع (إهمال) أو TLS",
     "Dashboard Service dynamic asynchronous refresh interval, default 60 second": "خدمة لوحة القيادة الديناميكية الفاصل الزمني للتحديث غير متزامن، الافتراضي 60 ثانية",

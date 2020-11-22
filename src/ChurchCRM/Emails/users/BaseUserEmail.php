@@ -3,6 +3,7 @@
 namespace ChurchCRM\Emails;
 
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\User;
 
 
@@ -31,6 +32,16 @@ abstract class BaseUserEmail extends BaseEmail
             "body" => $this->buildMessageBody()
         ];
         return array_merge($this->getCommonTokens(), $myTokens);
+    }
+
+    function getFullURL()
+    {
+        return SystemURLs::getURL() . "/session/begin?username=". $this->user->getUserName();
+    }
+
+    function getButtonText()
+    {
+        return $this->user->getUserName();
     }
 
     protected abstract function buildMessageBody();
