@@ -29,7 +29,6 @@ function changeSkin(cls) {
     })
 
     $('body').addClass(cls)
-    store('skin', cls)
     return false
 }
 
@@ -37,7 +36,7 @@ function changeSkin(cls) {
 $('[data-skin]').on('click', function (e) {
     $.ajax({
         type: 'POST',
-        url: window.CRM.root + '/api/users/' + window.CRM.viewUserId + '/setting/style',
+        url: window.CRM.root + '/api/user/' + window.CRM.viewUserId + '/setting/ui.style',
         data: {"value": $(this).data('skin')}
     })
     if (window.CRM.viewUserId == window.CRM.userId) {

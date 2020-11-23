@@ -8,69 +8,12 @@ use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\UserSettings;
 
 $app->group('/user/current', function () {
-    $this->get("/settings/{settingName}", "getUserSetting");
-    $this->post("/settings/{settingName}", "updateUserSetting");
-    $this->post("/settings/show/finance", "updateSessionFinance");
     $this->post("/refresh2fasecret", "refresh2fasecret");
     $this->post("/refresh2farecoverycodes", "refresh2farecoverycodes");
     $this->post("/remove2fasecret", "remove2fasecret");
     $this->post("/test2FAEnrollmentCode", "test2FAEnrollmentCode");
     $this->get("/get2faqrcode",'get2faqrcode');
 });
-
-function getUserSetting(Request $request, Response $response, array $args)
-{
-
-    $user = AuthenticationManager::GetCurrentUser();
-    $settingName = $args['settingName'];
-    $setting = $user->getSetting($settingName);
-    if (!$setting) {
-       return $response->withStatus(404, "not found: " . $settingName);
-    }
-    return $response->withJson(["value" => $setting->getValue()]);
-}
-
-function updateUserSetting(Request $request, Response $response, array $args)
-{
-    $user = AuthenticationManager::GetCurrentUser();
-    $settingName = $args['settingName'];
-
-    $input = (object)$request->getParsedBody();
-    $user->setSetting($settingName, $input->value);
-    return $response->withJson(["value" => $user->getSetting($settingName)->getValue()]);
-}
-
-function updateSessionFinance(Request $request, Response $response, array $args)
-{
-    $user = AuthenticationManager::GetCurrentUser();
-
-   if ($request->getContentLength() > 0) {
-        $setting = (object)$request->getParsedBody();
-
-        $user->setSetting( "finance.show.pledges", $setting->pledges);
-        $user->setSetting( "finance.show.payments", $setting->payments);
-        $user->setSetting( "finance.show.since", $setting->since);
-    }
-
-   $tempSetting = $user->getSetting("finance.show.pledges");
-   $pledges = $tempSetting? $tempSetting->getValue() : "";
-
-   $tempSetting = $user->getSetting("finance.show.payments");
-    $payments = $tempSetting? $tempSetting->getValue() : "";
-
-    $tempSetting = $user->getSetting("finance.show.since");
-    $since = $tempSetting? $tempSetting->getValue() : "";
-
-    return $response->withJson([
-        "user" => $user->getName(),
-        "userId" => $user->getId(),
-        "showPledges" => $pledges,
-        "showPayments" => $payments,
-        "showSince" => $since
-    ]);
-
-}
-
 
 function refresh2fasecret(Request $request, Response $response, array $args)
 {
