@@ -60,3 +60,40 @@ $("#regenApiKey").click(function () {
             }
         });
 });
+
+$(".user-setting-checkbox").click(function () {
+    let thisCheckbox = $(this);
+    let setting = thisCheckbox.data('setting-name');
+    let cssClass = thisCheckbox.data('layout');
+    let targetCSS = thisCheckbox.data('css');
+    let enabled = thisCheckbox.prop("checked") ? cssClass : "";
+    let data = JSON.stringify({ "value":  enabled})
+
+    window.CRM.APIRequest({
+        method: "POST",
+        path: "/user/"+ window.CRM.userId +"/setting/"+ setting,
+        dataType: 'json',
+        data: data
+    }).done(function () {
+        if (enabled !== "") {
+            $(targetCSS).addClass(cssClass);
+        } else {
+            $(targetCSS).removeClass(cssClass);
+        }
+    });
+});
+
+$(document).ready(function () {
+    $(".user-setting-checkbox").each(function (){
+        let thisCheckbox = $(this);
+        let setting = thisCheckbox.data('setting-name');
+        window.CRM.APIRequest({
+            method: "GET",
+            path: "/user/"+ window.CRM.userId +"/setting/"+ setting
+        }).done(function (data) {
+            if (data.value !== "") {
+                thisCheckbox.prop("checked" , true);
+            }
+        });
+    })
+});

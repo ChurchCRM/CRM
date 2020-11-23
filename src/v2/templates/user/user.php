@@ -219,6 +219,24 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
             </div>
         </div>
     </div>
+        <div class="col-lg-6">
+            <div class="box">
+                <div class="box-header">
+                    <h4><?= _("Layout Options") ?></h4>
+                </div>
+                <div class="box-body">
+                    <div class="form-group">
+                        <label class="control-sidebar-subheading"><input type="checkbox" data-layout="layout-boxed" data-css="body" class="pull-right user-setting-checkbox" data-setting-name="ui.boxed"> <b>Boxed Layout</b></label>
+                        <p>Activate the boxed layout</p>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-sidebar-subheading"><input type="checkbox" data-layout="sidebar-collapse" data-css="body" class="pull-right user-setting-checkbox" data-setting-name="ui.sidebar"> <b>Toggle Sidebar</b></label>
+                        <p>Toggle the left sidebar's state (open or collapse)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <script>
     window.CRM.viewUserId = <?= $user->getId() ?>;
