@@ -62,21 +62,9 @@ class LocalAuthentication implements IAuthenticationProvider
     public function EndSession() {
 
       if (!empty($this->currentUser)) {
-          if (!isset($_SESSION['sshowPledges']) || ($_SESSION['sshowPledges'] == '')) {
-              $_SESSION['sshowPledges'] = 0;
-          }
-          if (!isset($_SESSION['sshowPayments']) || ($_SESSION['sshowPayments'] == '')) {
-              $_SESSION['sshowPayments'] = 0;
-          }
-
-          if (!empty($this->currentUser)) {
-              $this->currentUser->setShowPledges($_SESSION['sshowPledges']);
-              $this->currentUser->setShowPayments($_SESSION['sshowPayments']);
-              //$this->currentUser->setDefaultFY($_SESSION['idefaultFY']);
-              $this->currentUser->setCurrentDeposit($_SESSION['iCurrentDeposit']);
-
-              $this->currentUser->save();
-          }
+          //$this->currentUser->setDefaultFY($_SESSION['idefaultFY']);
+          $this->currentUser->setCurrentDeposit($_SESSION['iCurrentDeposit']);
+          $this->currentUser->save();
           $this->currentUser = null;
       }
    }
@@ -104,8 +92,6 @@ class LocalAuthentication implements IAuthenticationProvider
       $_SESSION['bHasMagicQuotes'] = 0;
 
       // Pledge and payment preferences
-      $_SESSION['sshowPledges'] = $this->currentUser->getShowPledges();
-      $_SESSION['sshowPayments'] = $this->currentUser->getShowPayments();
       //$_SESSION['idefaultFY'] = CurrentFY(); // Improve the chance of getting the correct fiscal year assigned to new transactions
       $_SESSION['iCurrentDeposit'] = $this->currentUser->getCurrentDeposit();
     }
