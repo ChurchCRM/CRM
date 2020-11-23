@@ -621,10 +621,6 @@
         <column name="usr_Notes" phpName="Notes" type="BOOLEAN" size="1" sqlType="tinyint(1) unsigned" required="true" defaultValue="0"/>
         <column name="usr_Admin" phpName="Admin" type="BOOLEAN" size="1" sqlType="tinyint(1) unsigned" required="true" defaultValue="0"/>
         <column name="usr_SearchLimit" phpName="SearchLimit" type="TINYINT" defaultValue="10"/>
-        <column name="usr_Style" phpName="Style" type="VARCHAR" size="50" defaultValue="Style.css"/>
-        <column name="usr_showPledges" phpName="ShowPledges" type="BOOLEAN" size="1" required="true" defaultValue="false"/>
-        <column name="usr_showPayments" phpName="ShowPayments" type="BOOLEAN" size="1" required="true" defaultValue="false"/>
-        <column name="usr_showSince" phpName="ShowSince" type="DATE" required="true" defaultValue="2016-01-01"/>
         <column name="usr_defaultFY" phpName="DefaultFY" type="SMALLINT" size="9" required="true" defaultValue="10"/>
         <column name="usr_currentDeposit" phpName="CurrentDeposit" type="SMALLINT" size="9" required="true" defaultValue="0"/>
         <column name="usr_UserName" phpName="UserName" type="VARCHAR" size="32" required="true"/>

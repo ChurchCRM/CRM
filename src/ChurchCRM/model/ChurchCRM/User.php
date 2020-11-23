@@ -4,8 +4,6 @@ namespace ChurchCRM;
 
 use ChurchCRM\Base\User as BaseUser;
 use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\Utils\LoggerUtils;
-use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\Connection\ConnectionInterface;
 use ChurchCRM\Utils\MiscUtils;
 use Defuse\Crypto\Crypto;
@@ -306,11 +304,27 @@ class User extends BaseUser
         return null;
     }
 
+    public function getStyle(){
+        return $this->getSetting(UserSetting::UI_STYLE);
+    }
+
+    public function isShowPledges() {
+        return $this->getSetting(UserSetting::FINANCE_SHOW_PLEDGES)->getValue();
+    }
+
+    public function isShowPayments() {
+        return $this->getSetting(UserSetting::FINANCE_SHOW_PAYMENTS)->getValue();
+    }
+
+    public function getShowSince() {
+        return $this->getSetting(UserSetting::FINANCE_SHOW_SINCE)->getValue();
+    }
 
     public function getFormattedShowSince() {
         $showSince = "";
         if ($this->getShowSince() != null) {
-            $showSince = $this->getShowSince()->format('Y-m-d');
+            $date = new \DateTime(date_create($this->getShowSince()));
+            $showSince = $date->format('Y-m-d');
         }
         return $showSince;
     }
