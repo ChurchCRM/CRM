@@ -17,6 +17,8 @@ class UserSetting extends BaseUserSetting
 {
 
     public const UI_STYLE = "ui.style";
+    public const UI_BOXED = "ui.boxed";
+    public const UI_SIDEBAR = "ui.sidebar";
 
     public const FINANCE_SHOW_PAYMENTS = "finance.show.payments";
     public const FINANCE_SHOW_PLEDGES = "finance.show.pledges";

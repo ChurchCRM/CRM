@@ -305,7 +305,11 @@ class User extends BaseUser
     }
 
     public function getStyle(){
-        return $this->getSetting(UserSetting::UI_STYLE);
+        $cssClasses = [];
+        array_push($cssClasses, $this->getSetting(UserSetting::UI_STYLE));
+        array_push($cssClasses, $this->getSetting(UserSetting::UI_BOXED));
+        array_push($cssClasses, $this->getSetting(UserSetting::UI_SIDEBAR));
+        return implode(" ", $cssClasses);
     }
 
     public function isShowPledges() {
