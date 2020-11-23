@@ -277,29 +277,23 @@ $(document).ready(function () {
     });
 
     $("#ShowPledges").click(function () {
-        updateUserFinanceData();
+        updateUserSetting("finance.show.pledges", $("#ShowPledges").prop("checked") ? "true" : "false");
     });
 
     $("#ShowPayments").click(function () {
-        updateUserFinanceData();
+        updateUserSetting("finance.show.payments", $("#ShowPayments").prop("checked") ? "true" : "false");
     });
 
     $("#ShowSinceDate").change(function () {
-        updateUserFinanceData();
+        updateUserSetting("finance.show.since", $("#ShowSinceDate").val());
     });
 
-    function updateUserFinanceData(){
-        var finData = {
-            "pledges": $("#ShowPledges").prop("checked") ? "true" : "false",
-            "payments": $("#ShowPayments").prop("checked") ? "true" : "false",
-            "since": $("#ShowSinceDate").val()
-        };
-
+    function updateUserSetting(setting, value){
         window.CRM.APIRequest({
             method: "POST",
-            path: "/user/current/settings/show/finance",
+            path: "/user/"+ window.CRM.userId +"/setting/"+ setting,
             dataType: 'json',
-            data: JSON.stringify(finData)
+            data: JSON.stringify({ "value":  value})
         }).done(function () {
             $("#pledge-payment-table").DataTable().ajax.reload();
         });
