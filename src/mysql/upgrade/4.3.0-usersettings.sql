@@ -20,16 +20,6 @@ CREATE TABLE `user_settings` (
 ALTER TABLE `user_settings`
   ADD PRIMARY KEY (`user_id`,`setting_name`);
 
-
-insert into user_settings select usr_per_ID as user_id, "ui.style" as  setting_name, usr_Style as setting_value from user_usr;
-insert into user_settings select usr_per_ID as user_id, "search.limit" as  setting_name, usr_SearchLimit as setting_value from user_usr;
-insert into user_settings select usr_per_ID as user_id, "search.calendar.start" as  setting_name, usr_CalStart as setting_value from user_usr;
-insert into user_settings select usr_per_ID as user_id, "search.calendar.end" as  setting_name, usr_CalEnd as setting_value from user_usr;
-insert into user_settings select usr_per_ID as user_id, "finance.FY" as  setting_name, usr_defaultFY as setting_value from user_usr;
-insert into user_settings select usr_per_ID as user_id, "finance.show.pledges" as  setting_name, usr_showPledges as setting_value from user_usr;
-insert into user_settings select usr_per_ID as user_id, "finance.show.payment" as  setting_name, usr_showPayments as setting_value from user_usr;
-
-
 /** user interface **/
 insert into user_settings select usr_per_ID as user_id, "ui.style" as  setting_name, usr_Style as setting_value from user_usr;
 insert into user_settings select usr_per_ID as user_id, "ui.table.size" as  setting_name, usr_SearchLimit as setting_value from user_usr;
@@ -38,7 +28,7 @@ insert into user_settings select usr_per_ID as user_id, "ui.search.calendar.end"
 
 /** Finance settings **/
 insert into user_settings select usr_per_ID as user_id, "finance.show.pledges" as  setting_name, usr_showPledges as setting_value from user_usr;
-insert into user_settings select usr_per_ID as user_id, "finance.show.payment" as  setting_name, usr_showPayments as setting_value from user_usr;
+insert into user_settings select usr_per_ID as user_id, "finance.show.payments" as  setting_name, usr_showPayments as setting_value from user_usr;
 insert into user_settings select usr_per_ID as user_id, "finance.show.since" as  setting_name, usr_showSince as setting_value from user_usr;
 insert into user_settings select usr_per_ID as user_id, "finance.FY" as  setting_name, usr_defaultFY as setting_value from user_usr;
 
