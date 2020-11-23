@@ -320,15 +320,6 @@ class User extends BaseUser
         return $this->getSetting(UserSetting::FINANCE_SHOW_SINCE)->getValue();
     }
 
-    public function getFormattedShowSince() {
-        $showSince = "";
-        if ($this->getShowSince() != null) {
-            $date = new \DateTime(date_create($this->getShowSince()));
-            $showSince = $date->format('Y-m-d');
-        }
-        return $showSince;
-    }
-
     public function provisionNew2FAKey() {
         $google2fa = new Google2FA();
         $key = $google2fa->generateSecretKey();
