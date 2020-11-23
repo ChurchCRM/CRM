@@ -295,7 +295,8 @@ $(document).ready(function () {
             dataType: 'json',
             data: JSON.stringify({ "value":  value})
         }).done(function () {
-            $("#pledge-payment-table").DataTable().ajax.reload();
+            //TODO NOT WORKING $("#pledge-payment-table").DataTable().ajax.reload();
+            window.location.reload();
         });
     }
 
