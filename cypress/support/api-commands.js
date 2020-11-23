@@ -13,12 +13,13 @@
 Cypress.Commands.add("makePrivateAPICall", (method, url, body, expectedStatus = 200) => {
     cy.request({
         method: method,
+        failOnStatusCode: false,
         url: url,
         headers: {'content-type': 'application/json', "x-api-key": Cypress.env('admin.api.key')},
         body: body
     }).then((resp) => {
-        const result = JSON.parse(JSON.stringify(resp.body));
         expect(resp.status).to.eq(expectedStatus);
+        const result = JSON.parse(JSON.stringify(resp.body));
         return result;
     })
 });
