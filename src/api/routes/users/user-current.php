@@ -5,7 +5,6 @@ use Slim\Http\Response;
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Authentication\AuthenticationProviders\LocalAuthentication;
 use ChurchCRM\Utils\LoggerUtils;
-use ChurchCRM\UserSettings;
 
 $app->group('/user/current', function () {
     $this->post("/refresh2fasecret", "refresh2fasecret");
