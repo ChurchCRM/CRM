@@ -682,6 +682,21 @@
         </vendor>
     </table>
 
+    <table name="user_settings" idMethod="native" phpName="UserSetting">
+        <column name="user_id" phpName="UserId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" primaryKey="true" required="true"/>
+        <column name="setting_name" phpName="Name" type="VARCHAR" size="50" primaryKey="true" required="true"/>
+        <column name="setting_value" phpName="Value" type="VARCHAR" size="50" />
+
+        <foreign-key foreignTable="user_usr">
+            <reference local="user_id" foreign="usr_per_ID"/>
+        </foreign-key>
+
+        <vendor type="mysql">
+            <parameter name="Engine" value="InnoDB"/>
+        </vendor>
+    </table>
+
+
     <table name="volunteeropportunity_vol" idMethod="native" phpName="VolunteerOpportunity" description="This contains the names and descriptions of volunteer opportunities">
         <column name="vol_ID" phpName="Id" type="INTEGER" size="3" primaryKey="true" autoIncrement="true" required="true"/>
         <column name="vol_Order" phpName="Order" type="INTEGER" size="3" required="true" defaultValue="0"/>
