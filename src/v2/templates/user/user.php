@@ -13,7 +13,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <div class="box">
             <div class="box-header">
                 <div class="pull-right">
-                    <a href="<?= SystemURLs::getRootPath() ?>/SettingsIndividual.php" class="btn btn-primary"><i class="fa fa-pencil-square-o"></i> <?= _("Edit") ?> </a>
+                    <a id="editSettings" href="<?= SystemURLs::getRootPath() ?>/SettingsIndividual.php" class="btn btn-primary"><i class="fa fa-pencil-square-o"></i> <?= _("Edit") ?> </a>
                 </div>
                 <h4><?= _("Login Info") ?></h4>
             </div>
@@ -74,7 +74,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                 <span style="display:block; width: 80%; float: left; height: 20px; background: #f4f5f7"></span>
                             </div>
                         </a>
-                        <p class="text-center no-margin">Blue</p>
+                        <p class="text-center no-margin"><?= _("Blue")?></p>
                     </li>
                     <li style="float:left; width: 33.33333%; padding: 5px;">
                         <a href="javascript:void(0)" data-skin="skin-black" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">
@@ -87,7 +87,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                 <span style="display:block; width: 80%; float: left; height: 20px; background: #f4f5f7"></span>
                             </div>
                         </a>
-                        <p class="text-center no-margin">Black</p>
+                        <p class="text-center no-margin"><?= _("Black")?></p>
                     </li>
                     <li style="float:left; width: 33.33333%; padding: 5px;">
                         <a href="javascript:void(0)" data-skin="skin-purple" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">
@@ -99,7 +99,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                 <span style="display:block; width: 80%; float: left; height: 20px; background: #f4f5f7"></span>
                             </div>
                         </a>
-                        <p class="text-center no-margin">Purple</p>
+                        <p class="text-center no-margin"><?= _("Purple")?></p>
                     </li>
                     <li style="float:left; width: 33.33333%; padding: 5px;">
                         <a href="javascript:void(0)" data-skin="skin-green" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">
@@ -112,7 +112,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                 <span style="display:block; width: 80%; float: left; height: 20px; background: #f4f5f7"></span>
                             </div>
                         </a>
-                        <p class="text-center no-margin">Green</p>
+                        <p class="text-center no-margin"><?= _("Green<")?>/p>
                     </li>
                     <li style="float:left; width: 33.33333%; padding: 5px;">
                         <a href="javascript:void(0)" data-skin="skin-red" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">
@@ -125,7 +125,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                 <span style="display:block; width: 80%; float: left; height: 20px; background: #f4f5f7"></span>
                             </div>
                         </a>
-                        <p class="text-center no-margin">Red</p>
+                        <p class="text-center no-margin"><?= _("Red")?></p>
                     </li>
                     <li style="float:left; width: 33.33333%; padding: 5px;">
                         <a href="javascript:void(0)" data-skin="skin-yellow" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">
@@ -136,7 +136,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                 <span style="display:block; width: 80%; float: left; height: 20px; background: #f4f5f7"></span>
                             </div>
                         </a>
-                        <p class="text-center no-margin">Yellow</p>
+                        <p class="text-center no-margin"><?= _("Yellow")?></p>
                     </li>
                     <li style="float:left; width: 33.33333%; padding: 5px;">
                         <a href="javascript:void(0)" data-skin="skin-blue-light" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">
@@ -149,7 +149,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                     style="display:block; width: 80%; float: left; height: 20px; background: #f4f5f7"></span>
                             </div>
                         </a>
-                        <p class="text-center no-margin" style="font-size: 12px">Blue Light</p>
+                        <p class="text-center no-margin" style="font-size: 12px"><?= _("Blue Light")?></p>
                     </li>
                     <li style="float:left; width: 33.33333%; padding: 5px;">
                         <a href="javascript:void(0)" data-skin="skin-black-light" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)"
@@ -162,7 +162,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                 <span style="display:block; width: 80%; float: left; height: 20px; background: #f4f5f7"></span>
                             </div>
                         </a>
-                        <p class="text-center no-margin" style="font-size: 12px">Black Light</p>
+                        <p class="text-center no-margin" style="font-size: 12px"><?= _("Black Light")?></p>
                     </li>
                     <li style="float:left; width: 33.33333%; padding: 5px;">
                         <a href="javascript:void(0)" data-skin="skin-purple-light" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">
@@ -175,7 +175,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                 <span style="display:block; width: 80%; float: left; height: 20px; background: #f4f5f7"></span>
                             </div>
                         </a>
-                        <p class="text-center no-margin" style="font-size: 12px">Purple Light</p>
+                        <p class="text-center no-margin" style="font-size: 12px"><?= _("Purple Light")?></p>
                     </li>
                     <li style="float:left; width: 33.33333%; padding: 5px;">
                         <a href="javascript:void(0)" data-skin="skin-green-light" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">
@@ -188,7 +188,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                 <span style="display:block; width: 80%; float: left; height: 20px; background: #f4f5f7"></span>
                             </div>
                         </a>
-                        <p class="text-center no-margin" style="font-size: 12px">Green Light</p>
+                        <p class="text-center no-margin" style="font-size: 12px"><?= _("Green Light")?></p>
                     </li>
                     <li style="float:left; width: 33.33333%; padding: 5px;">
                         <a href="javascript:void(0)" data-skin="skin-red-light" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">
@@ -201,7 +201,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                 <span style="display:block; width: 80%; float: left; height: 20px; background: #f4f5f7"></span>
                             </div>
                         </a>
-                        <p class="text-center no-margin" style="font-size: 12px">Red Light</p>
+                        <p class="text-center no-margin" style="font-size: 12px"><?= _("Red Light")?></p>
                     </li>
                     <li style="float:left; width: 33.33333%; padding: 5px;">
                         <a href="javascript:void(0)" data-skin="skin-yellow-light" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">
@@ -213,9 +213,27 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                 <span style="display:block; width: 80%; float: left; height: 20px; background: #f4f5f7"></span>
                             </div>
                         </a>
-                        <p class="text-center no-margin" style="font-size: 12px">Yellow Light</p>
+                        <p class="text-center no-margin" style="font-size: 12px"><?= _("Yellow Light")?></p>
                     </li>
                 </ul>
+            </div>
+        </div>
+    </div>
+        <div class="col-lg-6">
+            <div class="box">
+                <div class="box-header">
+                    <h4><?= _("Layout Options") ?></h4>
+                </div>
+                <div class="box-body">
+                    <div class="form-group">
+                        <label class="control-sidebar-subheading"><input type="checkbox" data-layout="layout-boxed" data-css="body" class="pull-right user-setting-checkbox" data-setting-name="ui.boxed"> <b><?= _("Boxed Layout")?></b></label>
+                        <p><?= _("Activate the boxed layout")?></p>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-sidebar-subheading"><input type="checkbox" data-layout="sidebar-collapse" data-css="body" class="pull-right user-setting-checkbox" data-setting-name="ui.sidebar"> <b><?= _("Toggle Sidebar")?></b></label>
+                        <p><?= _("Toggle the left sidebar's state (open or collapse)")?></p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
