@@ -123,32 +123,6 @@ $app->post('/users/{userId:[0-9]+}/config/{key}', function ($request, $response,
     }
 });
 
-
-$app->post('/users/{userId:[0-9]+}/setting/{key}', function ($request, $response, $args) {
-    $curUser = AuthenticationManager::GetCurrentUser();
-    $userId = $args['userId'];
-    if (!$curUser->isAdmin() && $curUser->getId() != $userId) {
-        return $response->withStatus(403);
-    }
-    $user = UserQuery::create()->findPk($userId);
-    if (!is_null($user)) {
-        $userSettingName = $args['key'];
-        $parsedBody = (object) $request->getParsedBody();
-        $newValue = $parsedBody->value;
-        switch ($userSettingName) {
-            case "style":
-                $user->setStyle($newValue);
-                break;
-            default:
-                return $response->withStatus(404, gettext("Unsupported user setting" . " - " . $userSettingName));
-        }
-        $user->save();
-        return $response->withjson([$userSettingName => $newValue]);
-    } else {
-        return $response->withStatus(404, gettext("Invalid userId"));
-    }
-});
-
 function getUserPermissionsAPI(Request $request, Response $response, array $args)
 {
     $userId = $args['userId'];

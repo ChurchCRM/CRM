@@ -29,7 +29,6 @@ function changeSkin(cls) {
     })
 
     $('body').addClass(cls)
-    store('skin', cls)
     return false
 }
 
@@ -37,7 +36,7 @@ function changeSkin(cls) {
 $('[data-skin]').on('click', function (e) {
     $.ajax({
         type: 'POST',
-        url: window.CRM.root + '/api/users/' + window.CRM.viewUserId + '/setting/style',
+        url: window.CRM.root + '/api/user/' + window.CRM.viewUserId + '/setting/ui.style',
         data: {"value": $(this).data('skin')}
     })
     if (window.CRM.viewUserId == window.CRM.userId) {
@@ -60,4 +59,41 @@ $("#regenApiKey").click(function () {
                 showGlobalMessage(i18next.t("Failed generate a new API Key"), "danger")
             }
         });
+});
+
+$(".user-setting-checkbox").click(function () {
+    let thisCheckbox = $(this);
+    let setting = thisCheckbox.data('setting-name');
+    let cssClass = thisCheckbox.data('layout');
+    let targetCSS = thisCheckbox.data('css');
+    let enabled = thisCheckbox.prop("checked") ? cssClass : "";
+    let data = JSON.stringify({ "value":  enabled})
+
+    window.CRM.APIRequest({
+        method: "POST",
+        path: "/user/"+ window.CRM.userId +"/setting/"+ setting,
+        dataType: 'json',
+        data: data
+    }).done(function () {
+        if (enabled !== "") {
+            $(targetCSS).addClass(cssClass);
+        } else {
+            $(targetCSS).removeClass(cssClass);
+        }
+    });
+});
+
+$(document).ready(function () {
+    $(".user-setting-checkbox").each(function (){
+        let thisCheckbox = $(this);
+        let setting = thisCheckbox.data('setting-name');
+        window.CRM.APIRequest({
+            method: "GET",
+            path: "/user/"+ window.CRM.userId +"/setting/"+ setting
+        }).done(function (data) {
+            if (data.value !== "") {
+                thisCheckbox.prop("checked" , true);
+            }
+        });
+    })
 });
