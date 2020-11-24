@@ -324,6 +324,26 @@ class User extends BaseUser
         return $this->getSetting(UserSetting::FINANCE_SHOW_SINCE)->getValue();
     }
 
+    public function setSetting($name, $value) {
+        $setting = $this->getSetting($name);
+        if (!$setting) {
+            $setting = new UserSetting();
+            $setting->set($this, $name, $value);
+        } else {
+            $setting->setValue($value);
+        }
+        $setting->save();
+    }
+
+    public function getSetting($name) {
+        foreach ($this->getUserSettings() as $userSetting) {
+            if ($userSetting->getName() == $name) {
+                return $userSetting;
+            }
+        }
+        return null;
+    }
+
     public function provisionNew2FAKey() {
         $google2fa = new Google2FA();
         $key = $google2fa->generateSecretKey();

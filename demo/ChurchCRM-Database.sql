@@ -3,7 +3,7 @@
 -- Host: localhost	Database: churchcrm
 -- ------------------------------------------------------
 -- Server version 	5.7.26
--- Date: Sat, 17 Oct 2020 01:46:48 -0400
+-- Date: Mon, 23 Nov 2020 18:55:35 -0500
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -199,7 +199,7 @@ CREATE TABLE `config_cfg` (
 LOCK TABLES `config_cfg` WRITE;
 /*!40000 ALTER TABLE `config_cfg` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `config_cfg` VALUES (10,'aFinanceQueries','28,30,31,32'),(21,'sDefaultCity','Kansas City'),(22,'sDefaultState','MO'),(23,'sDefaultCountry','United States'),(27,'sSMTPHost','smtp.mailtrap.io:2525'),(28,'bSMTPAuth','1'),(29,'sSMTPUser','c58d4ec1a5a021'),(30,'sSMTPPass','3cfab2ee59990c'),(45,'iChurchLatitude','39.1111974'),(46,'iChurchLongitude','-94.5838009'),(48,'bHideFriendDate',''),(49,'bHideFamilyNewsletter',''),(50,'bHideWeddingDate',''),(51,'bHideLatLon',''),(52,'bUseDonationEnvelopes',''),(58,'bUseScannedChecks',''),(65,'sTimeZone','America/Detroit'),(67,'bForceUppercaseZip',''),(72,'bEnableNonDeductible',''),(80,'bEnableSelfRegistration','1'),(999,'bRegistered',''),(1003,'sChurchName','Main St. Cathedral'),(1004,'sChurchAddress','123 Main St'),(1005,'sChurchCity','Kansas City'),(1006,'sChurchState','MO'),(1007,'sChurchZip','64106'),(1008,'sChurchPhone','555 123 4234'),(1009,'sChurchEmail','demo@churchcrm.io'),(1010,'sHomeAreaCode','555'),(1014,'sTaxSigner','Elder Joe Smith'),(1016,'sReminderSigner','Elder Joe Smith'),(1025,'sConfirmSigner','Elder Joe Smith'),(1027,'sPledgeSummary2','as of'),(1028,'sDirectoryDisclaimer1','Every effort was made to insure the accuracy of this directory.  If there are any errors or omissions, please contact the church office.This directory is for the use of the people of'),(1034,'sChurchChkAcctNum','111111111'),(1035,'bEnableGravatarPhotos','1'),(1037,'sExternalBackupType','WebDAV'),(1046,'sLastIntegrityCheckTimeStamp','20201017-14646'),(1047,'sChurchCountry','United States'),(2010,'bAllowEmptyLastName',''),(2017,'bEnableExternalCalendarAPI',''),(2045,'bPHPMailerAutoTLS',''),(2046,'sPHPMailerSMTPSecure',''),(2064,'sLastSoftwareUpdateCheckTimeStamp','20201017-14646'),(20142,'bHSTSEnable','');
+INSERT INTO `config_cfg` VALUES (10,'aFinanceQueries','28,30,31,32'),(21,'sDefaultCity','Kansas City'),(22,'sDefaultState','MO'),(23,'sDefaultCountry','United States'),(27,'sSMTPHost','smtp.mailtrap.io:2525'),(28,'bSMTPAuth','1'),(29,'sSMTPUser','c58d4ec1a5a021'),(30,'sSMTPPass','3cfab2ee59990c'),(45,'iChurchLatitude','39.1111974'),(46,'iChurchLongitude','-94.5838009'),(48,'bHideFriendDate',''),(49,'bHideFamilyNewsletter',''),(50,'bHideWeddingDate',''),(51,'bHideLatLon',''),(52,'bUseDonationEnvelopes',''),(58,'bUseScannedChecks',''),(65,'sTimeZone','America/Detroit'),(67,'bForceUppercaseZip',''),(72,'bEnableNonDeductible',''),(80,'bEnableSelfRegistration','1'),(999,'bRegistered',''),(1003,'sChurchName','Main St. Cathedral'),(1004,'sChurchAddress','123 Main St'),(1005,'sChurchCity','Kansas City'),(1006,'sChurchState','MO'),(1007,'sChurchZip','64106'),(1008,'sChurchPhone','555 123 4234'),(1009,'sChurchEmail','demo@churchcrm.io'),(1010,'sHomeAreaCode','555'),(1014,'sTaxSigner','Elder Joe Smith'),(1016,'sReminderSigner','Elder Joe Smith'),(1025,'sConfirmSigner','Elder Joe Smith'),(1027,'sPledgeSummary2','as of'),(1028,'sDirectoryDisclaimer1','Every effort was made to insure the accuracy of this directory.  If there are any errors or omissions, please contact the church office.This directory is for the use of the people of'),(1034,'sChurchChkAcctNum','111111111'),(1035,'bEnableGravatarPhotos','1'),(1037,'sExternalBackupType','WebDAV'),(1046,'sLastIntegrityCheckTimeStamp','20201123-185509'),(1047,'sChurchCountry','United States'),(2010,'bAllowEmptyLastName',''),(2017,'bEnableExternalCalendarAPI',''),(2045,'bPHPMailerAutoTLS',''),(2046,'sPHPMailerSMTPSecure',''),(2064,'sLastSoftwareUpdateCheckTimeStamp','20201123-185510'),(20142,'bHSTSEnable','');
 /*!40000 ALTER TABLE `config_cfg` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
@@ -1751,6 +1751,36 @@ COMMIT;
 --
 
 --
+-- Table structure for table `user_settings`
+--
+
+DROP TABLE IF EXISTS `user_settings`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `user_settings` (
+  `user_id` int(11) NOT NULL,
+  `setting_name` varchar(50) NOT NULL,
+  `setting_value` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`user_id`,`setting_name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user_settings`
+--
+
+LOCK TABLES `user_settings` WRITE;
+/*!40000 ALTER TABLE `user_settings` DISABLE KEYS */;
+SET autocommit=0;
+INSERT INTO `user_settings` VALUES (0,'ui.email.delimiter',','),(1,'finance.FY','23'),(1,'finance.show.payments','1'),(1,'finance.show.pledges','1'),(1,'finance.show.since','2016-01-01'),(1,'ui.email.delimiter',','),(1,'ui.search.calendar.end',NULL),(1,'ui.search.calendar.start',NULL),(1,'ui.style','skin-red'),(1,'ui.table.size','10'),(3,'finance.FY','23'),(3,'finance.show.payments','0'),(3,'finance.show.pledges','0'),(3,'finance.show.since','2016-01-01'),(3,'ui.email.delimiter',','),(3,'ui.search.calendar.end',NULL),(3,'ui.search.calendar.start',NULL),(3,'ui.style','skin-green'),(3,'ui.table.size','10'),(76,'finance.FY','20'),(76,'finance.show.payments','0'),(76,'finance.show.pledges','0'),(76,'finance.show.since','2016-01-01'),(76,'ui.email.delimiter',','),(76,'ui.search.calendar.end',NULL),(76,'ui.search.calendar.start',NULL),(76,'ui.style','skin-blue'),(76,'ui.table.size','10'),(95,'finance.FY','20'),(95,'finance.show.payments','0'),(95,'finance.show.pledges','0'),(95,'finance.show.since','2016-01-01'),(95,'ui.email.delimiter',','),(95,'ui.search.calendar.end',NULL),(95,'ui.search.calendar.start',NULL),(95,'ui.style','skin-blue'),(95,'ui.table.size','10');
+/*!40000 ALTER TABLE `user_settings` ENABLE KEYS */;
+UNLOCK TABLES;
+COMMIT;
+
+-- Dumped table `user_settings` with 37 row(s)
+--
+
+--
 -- Table structure for table `user_usr`
 --
 
@@ -1867,7 +1897,7 @@ CREATE TABLE `version_ver` (
   `ver_update_end` datetime DEFAULT NULL,
   PRIMARY KEY (`ver_ID`),
   UNIQUE KEY `ver_version` (`ver_version`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1877,12 +1907,12 @@ CREATE TABLE `version_ver` (
 LOCK TABLES `version_ver` WRITE;
 /*!40000 ALTER TABLE `version_ver` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `version_ver` VALUES (1,'3.5.0','2019-02-10 20:14:23',NULL),(2,'3.5.2','2019-09-10 22:54:56','2019-09-10 22:54:56'),(3,'3.5.4','2019-10-11 22:45:35','2019-10-11 22:45:35'),(4,'4.0.0','2020-06-16 13:11:20','2020-06-16 13:11:20'),(5,'4.1.0','2020-06-16 13:11:20','2020-06-16 13:11:21'),(6,'4.3.0','2020-10-17 01:46:16','2020-10-17 01:46:16');
+INSERT INTO `version_ver` VALUES (1,'3.5.0','2019-02-10 20:14:23',NULL),(2,'3.5.2','2019-09-10 22:54:56','2019-09-10 22:54:56'),(3,'3.5.4','2019-10-11 22:45:35','2019-10-11 22:45:35'),(4,'4.0.0','2020-06-16 13:11:20','2020-06-16 13:11:20'),(5,'4.1.0','2020-06-16 13:11:20','2020-06-16 13:11:21'),(6,'4.2.3','2020-10-17 01:46:16','2020-10-17 01:46:16'),(7,'4.3.0','2020-11-23 18:55:02','2020-11-23 18:55:02');
 /*!40000 ALTER TABLE `version_ver` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
 
--- Dumped table `version_ver` with 6 row(s)
+-- Dumped table `version_ver` with 7 row(s)
 --
 
 --
@@ -1998,4 +2028,4 @@ DROP TABLE IF EXISTS `email_list`;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on: Sat, 17 Oct 2020 01:46:49 -0400
+-- Dump completed on: Mon, 23 Nov 2020 18:55:35 -0500
