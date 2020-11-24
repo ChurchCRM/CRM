@@ -17,10 +17,11 @@ function getUserSetting(Request $request, Response $response, array $args)
     $user = $request->getAttribute("user");
     $settingName = $args['settingName'];
     $setting = $user->getSetting($settingName);
-    if (!$setting) {
-       return $response->withStatus(404, "not found: " . $settingName);
+    $value = "";
+    if ($setting) {
+        $value = $setting->getValue();
     }
-    return $response->withJson(["value" => $setting->getValue()]);
+    return $response->withJson(["value" => $value]);
 }
 
 function updateUserSetting(Request $request, Response $response, array $args)
