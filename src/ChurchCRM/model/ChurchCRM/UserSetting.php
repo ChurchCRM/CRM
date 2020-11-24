@@ -24,10 +24,6 @@ class UserSetting extends BaseUserSetting
     public const FINANCE_SHOW_PLEDGES = "finance.show.pledges";
     public const FINANCE_SHOW_SINCE = "finance.show.since";
 
-    public function __construct() {
-
-    }
-
     public function set($user, $name, $value)
     {
         $this->setUser($user);
