@@ -5,6 +5,7 @@ namespace ChurchCRM\Slim\Middleware\Request;
 use ChurchCRM\Authentication\AuthenticationManager;
 use Slim\Http\Request;
 use Slim\Http\Response;
+use ChurchCRM\UserQuery;
 
 class UserAPIMiddleware
 {
