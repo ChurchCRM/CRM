@@ -324,6 +324,7 @@ class User extends BaseUser
         return $this->getSetting(UserSetting::FINANCE_SHOW_SINCE)->getValue();
     }
 
+
     public function setSetting($name, $value) {
         $setting = $this->getSetting($name);
         if (!$setting) {
@@ -342,6 +343,14 @@ class User extends BaseUser
             }
         }
         return null;
+    }
+
+    public function getStyle(){
+        $cssClasses = [];
+        array_push($cssClasses, $this->getSetting(UserSetting::UI_STYLE));
+        array_push($cssClasses, $this->getSetting(UserSetting::UI_BOXED));
+        array_push($cssClasses, $this->getSetting(UserSetting::UI_SIDEBAR));
+        return implode(" ", $cssClasses);
     }
 
     public function provisionNew2FAKey() {
