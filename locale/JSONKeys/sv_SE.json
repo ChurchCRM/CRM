@@ -2311,7 +2311,6 @@
     "2FA Application Name": "2FA-applikationsnamn",
     "Unsupported user config": "Användarkonfigurering som inte stöds",
     "Invalid userId": "Ogiltig användare Id",
-    "Unsupported user setting - ": "Användarinställning som inte stöds - ",
     "Login Info": "Inloggningsinfo",
     "Login Count": "Inloggningsantal",
     "Failed Login": "Misslyckad inloggning",

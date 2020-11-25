@@ -473,11 +473,11 @@ $mailchimp = new MailChimpService();
                     <i class="fa fa-map"></i>
                     <h3 class="box-title"><?= gettext("Pledges and Payments") ?></h3>
                     <div class="box-tools pull-right">
-                        <input type="checkbox" id="ShowPledges" <?= AuthenticationManager::GetCurrentUser()->getShowPledges() ? "checked" : "" ?>> <?= gettext("Show Pledges") ?>
-                        <input type="checkbox" id="ShowPayments" <?= AuthenticationManager::GetCurrentUser()->getShowPayments() ? "checked" : "" ?>> <?= gettext("Show Payments") ?>
+                        <input type="checkbox" id="ShowPledges" <?= AuthenticationManager::GetCurrentUser()->isShowPledges() ? "checked" : "" ?>> <?= gettext("Show Pledges") ?>
+                        <input type="checkbox" id="ShowPayments" <?= AuthenticationManager::GetCurrentUser()->isShowPayments() ? "checked" : "" ?>> <?= gettext("Show Payments") ?>
                         <label for="ShowSinceDate"><?= gettext("Since") ?>:</label>
                         <input type="text" class="date-picker" id="ShowSinceDate"
-                               value="<?= AuthenticationManager::GetCurrentUser()->getFormattedShowSince() ?>" maxlength="10" id="ShowSinceDate" size="15">
+                               value="<?= AuthenticationManager::GetCurrentUser()->getShowSince() ?>" maxlength="10" id="ShowSinceDate" size="15">
                     </div>
                 </div>
                 <div class="box-body">

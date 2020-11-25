@@ -9406,10 +9406,6 @@ msgid "Invalid userId"
 msgstr "Ogiltig användare Id"
 
 #: 
-msgid "Unsupported user setting - "
-msgstr "Användarinställning som inte stöds - "
-
-#: 
 msgid "Login Info"
 msgstr "Inloggningsinfo"
 
