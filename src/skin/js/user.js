@@ -83,6 +83,20 @@ $(".user-setting-checkbox").click(function () {
     });
 });
 
+$(".user-setting-select").change(function() {
+    let thisCheckbox = $(this);
+    let optionSelected = $(this).find("option:selected");
+    let setting = thisCheckbox.data('setting-name');
+    let data = JSON.stringify({ "value":  optionSelected.val()})
+
+    window.CRM.APIRequest({
+        method: "POST",
+        path: "/user/"+ window.CRM.userId +"/setting/"+ setting,
+        dataType: 'json',
+        data: data
+    });
+});
+
 $(document).ready(function () {
     $(".user-setting-checkbox").each(function (){
         let thisCheckbox = $(this);
@@ -96,4 +110,18 @@ $(document).ready(function () {
             }
         });
     })
+
+    $(".user-setting-select").each(function () {
+        let thisSelect = $(this);
+        let setting = thisSelect.data('setting-name');
+        window.CRM.APIRequest({
+            method: "GET",
+            path: "/user/"+ window.CRM.userId +"/setting/"+ setting
+        }).done(function (data) {
+            if (data.value !== "") {
+                thisSelect.val(data.value).change();
+            }
+        });
+
+    });
 });

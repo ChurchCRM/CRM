@@ -219,20 +219,43 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
             </div>
         </div>
     </div>
-        <div class="col-lg-6">
-            <div class="box">
-                <div class="box-header">
-                    <h4><?= _("Layout Options") ?></h4>
+    <div class="col-lg-6">
+        <div class="box">
+            <div class="box-header">
+                <h4><?= _("Layout Options") ?></h4>
+            </div>
+            <div class="box-body">
+                <div class="form-group">
+                    <label class="control-sidebar-subheading"><input type="checkbox" data-layout="layout-boxed" data-css="body" class="pull-right user-setting-checkbox" data-setting-name="ui.boxed"> <b><?= _("Boxed Layout")?></b></label>
+                    <p><?= _("Activate the boxed layout")?></p>
                 </div>
-                <div class="box-body">
-                    <div class="form-group">
-                        <label class="control-sidebar-subheading"><input type="checkbox" data-layout="layout-boxed" data-css="body" class="pull-right user-setting-checkbox" data-setting-name="ui.boxed"> <b><?= _("Boxed Layout")?></b></label>
-                        <p><?= _("Activate the boxed layout")?></p>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-sidebar-subheading"><input type="checkbox" data-layout="sidebar-collapse" data-css="body" class="pull-right user-setting-checkbox" data-setting-name="ui.sidebar"> <b><?= _("Toggle Sidebar")?></b></label>
-                        <p><?= _("Toggle the left sidebar's state (open or collapse)")?></p>
-                    </div>
+                <div class="form-group">
+                    <label class="control-sidebar-subheading"><input type="checkbox" data-layout="sidebar-collapse" data-css="body" class="pull-right user-setting-checkbox" data-setting-name="ui.sidebar"> <b><?= _("Toggle Sidebar")?></b></label>
+                    <p><?= _("Toggle the left sidebar's state (open or collapse)")?></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-6">
+        <div class="box">
+            <div class="box-header">
+                <h4><?= _("Tables Settings") ?></h4>
+            </div>
+            <div class="box-body">
+                <div class="form-group">
+                    <label class="control-sidebar-subheading">
+                        <select class="pull-right user-setting-select" data-setting-name="ui.table.size">
+                            <option value="10">10</option>
+                            <option value="25">25</option>
+                            <option value="50">50</option>
+                            <option value="100">100</option>
+                            <option value="-1">All</option>
+                        </select>
+                        <b><?= _("Page length")?></b>
+                    </label>
+                    <p><?= _("Change the initial page length (number of rows per page)")?></p>
                 </div>
             </div>
         </div>
