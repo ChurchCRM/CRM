@@ -173,11 +173,9 @@ foreach ($ListItem as $element) {
         'use strict';
         var bVisible = parseInt("<?= SystemConfig::getValue('bHidePersonAddress') ? 0 : 1 ?>");
 
-        oTable = $('#members').DataTable({
+        let dataTableConfig = {
             deferRender: true,
-            search: {
-            regex: true,
-                  },
+            search: { regex: true },
             columns: [
                 {
                     title:i18next.t('Actions'),
@@ -227,17 +225,13 @@ foreach ($ListItem as $element) {
                     visible:false
                 }
             ],
-            "language": {
-                url: "<?= SystemURLs::getRootPath() . '/locale/datatables/' . Bootstrapper::GetCurrentLocale()->getDataTables() ?>.json"
-            },
-            responsive: true,
             // sortby name
-            order: [[ 2, "asc" ]],
-            // setup location of table control elements
-            dom: "<'row'<'col-sm-4'<?= AuthenticationManager::GetCurrentUser()->isCSVExport() ? "B" : "" ?>><'col-sm-4'r><'col-sm-4 searchStyle'f>>" +
-                                "<'row'<'col-sm-12't>>" +
-                                "<'row'<'col-sm-4'l><'col-sm-4'i><'col-sm-4'p>>",
-        });
+            order: [[ 2, "asc" ]]
+        }
+
+        $.extend(dataTableConfig, window.CRM.plugin.dataTable);
+
+        oTable = $('#members').DataTable(dataTableConfig);
 
 
         $('.filter-Gender').select2({
