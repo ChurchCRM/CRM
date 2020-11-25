@@ -1,7 +1,7 @@
 <?php
 
 
-use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\Bootstrapper;
 use ChurchCRM\dto\SystemURLs;
 
 //Set the page title
@@ -222,7 +222,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
     <div class="col-lg-6">
         <div class="box">
             <div class="box-header">
-                <h4><?= _("Layout Options") ?></h4>
+                <h4><?= _("User Interface") ?></h4>
             </div>
             <div class="box-body">
                 <div class="form-group">
@@ -232,6 +232,13 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <div class="form-group">
                     <label class="control-sidebar-subheading"><input type="checkbox" data-layout="sidebar-collapse" data-css="body" class="pull-right user-setting-checkbox" data-setting-name="ui.sidebar"> <b><?= _("Toggle Sidebar")?></b></label>
                     <p><?= _("Toggle the left sidebar's state (open or collapse)")?></p>
+                </div>
+                <div class="form-group">
+                    <label class="control-sidebar-subheading">
+                        <select id="user-locale-setting" class="pull-right user-setting-select" data-setting-name="ui.locale">
+                        </select>
+                        <b><?= _("Locale")?></b></label>
+                    <p><?= _("Override system locale")?>: <?= Bootstrapper::GetCurrentLocale()->getSystemLocale() ?></p>
                 </div>
             </div>
         </div>
