@@ -11,6 +11,7 @@ context('Finance Family', () => {
 
         cy.visit("v2/family/20");
         cy.contains('Black - Family');
+        cy.wait(1000);
         cy.contains('New Building Fund');
     });
 
