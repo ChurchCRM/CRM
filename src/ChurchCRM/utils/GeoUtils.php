@@ -59,7 +59,7 @@ class GeoUtils
     public static function DrivingDistanceMatrix($address1, $address2)
     {
         $logger = LoggerUtils::getAppLogger();
-        $localeInfo = new LocaleInfo(SystemConfig::getValue('sLanguage'), AuthenticationManager::GetCurrentUser()->getSetting("ui.locale"));
+        $localeInfo = Bootstrapper::GetCurrentLocale();
         $url = "https://maps.googleapis.com/maps/api/distancematrix/json?";
         $url = $url . "language=" . $localeInfo->getShortLocale();
         $url = $url . "&origins=" . urlencode($address1);
