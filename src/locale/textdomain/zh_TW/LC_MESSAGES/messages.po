@@ -9545,11 +9545,6 @@ msgstr "無效的使用者代碼"
 
 #: 
 #, fuzzy
-msgid "Unsupported user setting - "
-msgstr "不支持的用戶設置- "
-
-#: 
-#, fuzzy
 msgid "Login Info"
 msgstr "登錄信息"
 
@@ -9810,4 +9805,24 @@ msgstr "API金鑰"
 #, fuzzy
 msgid "Regen API Key"
 msgstr "再生API金鑰"
+
+#: 
+#, fuzzy
+msgid "View Family Page"
+msgstr "查看家庭頁面"
+
+#: 
+#, fuzzy
+msgid "View Person Page"
+msgstr "查看人員頁面"
+
+#: 
+#, fuzzy
+msgid "Verify"
+msgstr "確認"
+
+#: 
+#, fuzzy
+msgid "Family has no emails to use"
+msgstr "家庭沒有電子郵件可使用"
 
