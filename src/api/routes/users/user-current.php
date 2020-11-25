@@ -7,36 +7,12 @@ use ChurchCRM\Authentication\AuthenticationProviders\LocalAuthentication;
 use ChurchCRM\Utils\LoggerUtils;
 
 $app->group('/user/current', function () {
-    $this->post("/settings/show/finance", "updateSessionFinance");
     $this->post("/refresh2fasecret", "refresh2fasecret");
     $this->post("/refresh2farecoverycodes", "refresh2farecoverycodes");
     $this->post("/remove2fasecret", "remove2fasecret");
     $this->post("/test2FAEnrollmentCode", "test2FAEnrollmentCode");
     $this->get("/get2faqrcode",'get2faqrcode');
 });
-
-function updateSessionFinance(Request $request, Response $response, array $args)
-{
-    $user = AuthenticationManager::GetCurrentUser();
-
-    if ($request->getContentLength() > 0) {
-        $setting = (object)$request->getParsedBody();
-        $user->setShowPledges(ConvertToBoolean($setting->pledges));
-        $user->setShowPayments(ConvertToBoolean($setting->payments));
-        $user->setShowSince($setting->since);
-        $user->save();
-    }
-
-    return $response->withJson([
-        "user" => $user->getName(),
-        "userId" => $user->getId(),
-        "showPledges" => $user->isShowPledges(),
-        "showPayments" => $user->isShowPayments(),
-        "showSince" => $user->getFormattedShowSince()
-    ]);
-
-}
-
 
 function refresh2fasecret(Request $request, Response $response, array $args)
 {
