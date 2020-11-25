@@ -79,7 +79,13 @@ function Header_modals()
 function Header_body_scripts()
 {
     $localeInfo = Bootstrapper::GetCurrentLocale();
-    $systemService = new SystemService(); ?>
+    $tableSizeSetting =  AuthenticationManager::GetCurrentUser()->getSetting("ui.table.size");
+    if (empty($tableSizeSetting)) {
+        $tableSize = 10;
+    } else {
+        $tableSize = $tableSizeSetting->getValue();
+    }
+    ?>
     <script nonce="<?= SystemURLs::getCSPNonce() ?>">
         window.CRM = {
             root: "<?= SystemURLs::getRootPath() ?>",
@@ -98,7 +104,9 @@ function Header_body_scripts()
             iDasbhoardServiceIntervalTime:"<?= SystemConfig::getValue('iDasbhoardServiceIntervalTime') ?>",
             plugin: {
                 dataTable : {
-                   "language": {
+                    "pageLength": "<?= $tableSize  ?>",
+                    "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
+                    "language": {
                         "url": "<?= SystemURLs::getRootPath() ?>/locale/datatables/<?= $localeInfo->getDataTables() ?>.json"
                     },
                     responsive: true,
