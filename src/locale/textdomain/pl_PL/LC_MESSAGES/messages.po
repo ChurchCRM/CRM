@@ -4869,10 +4869,6 @@ msgid "Invalid userId"
 msgstr "Nieprawidłowy 'userId'"
 
 #: 
-msgid "Unsupported user setting - "
-msgstr "Nieprawidłowe ustawienie uzytkownika - "
-
-#: 
 msgid "Login Info"
 msgstr "Informacje Logowania"
 

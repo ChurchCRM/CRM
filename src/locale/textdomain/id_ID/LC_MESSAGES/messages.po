@@ -9250,10 +9250,6 @@ msgid "Invalid userId"
 msgstr "userId tidak valid"
 
 #: 
-msgid "Unsupported user setting - "
-msgstr "Pengaturan Pengguna tidak didukung"
-
-#: 
 msgid "Login Info"
 msgstr "Info Masuk"
 

@@ -9257,10 +9257,6 @@ msgid "Invalid userId"
 msgstr "Ongeldige gebruiker-ID"
 
 #: 
-msgid "Unsupported user setting - "
-msgstr "Nie-ondersteunde gebruikersinstelling - "
-
-#: 
 msgid "Login Info"
 msgstr "Inteken informasie"
 

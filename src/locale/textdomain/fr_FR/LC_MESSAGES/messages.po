@@ -8882,6 +8882,26 @@ msgid "ChurchCRM"
 msgstr "ChurchCRM"
 
 #: 
+#, fuzzy
+msgid "Review"
+msgstr "Passer en revue"
+
+#: 
+#, fuzzy
+msgid "Thank you for registering your family"
+msgstr "Merci d’avoir enregistré votre famille"
+
+#: 
+#, fuzzy
+msgid "Register another family!"
+msgstr "Enregistrer une nouvelle famille"
+
+#: 
+#, fuzzy
+msgid "LastName, FirstName MiddleName"
+msgstr "Nom, Prénoms"
+
+#: 
 msgid "2 Factor Authentication enrollment"
 msgstr "Souscrire à l'authentification à 2 facteurs"
 
@@ -8896,4 +8916,33 @@ msgstr "Impossible de démarrer le souscription de l'authentification à 2 facte
 #: 
 msgid "Two factor authentication requires ChurchCRM administrators to configure a few parameters"
 msgstr "L'authentification à 2 facteurs nécessite une intervention de l'administrateur ChurchCRM"
+
+#: 
+#, fuzzy
+msgid "Today's Birthdays"
+msgstr "Anniversaires du jour"
+
+#: 
+#, fuzzy
+msgid "Today's Wedding Anniversaries"
+msgstr "Anniversaires de mariage du jour"
+
+#: 
+#, fuzzy
+msgid "Api Key"
+msgstr "Clef API"
+
+#: 
+#, fuzzy
+msgid "Regen API Key"
+msgstr "Régénérer la clef API"
+
+#: 
+msgid "Verify"
+msgstr "Vérifier"
+
+#: 
+#, fuzzy
+msgid "Family has no emails to use"
+msgstr "Aucune adresse email renseignée pour cette famille"
 
