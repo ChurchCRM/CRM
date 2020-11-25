@@ -10,7 +10,7 @@ msgstr ""
 "#-#-#-#-#  messages.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-21 12:19-0800\n"
+"POT-Creation-Date: 2020-11-24 11:04-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,16 +25,16 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2020-11-21T20:19:47.375Z\n"
-"PO-Revision-Date: 2020-11-21T20:19:47.375Z\n"
+"POT-Creation-Date: 2020-11-24T19:04:39.410Z\n"
+"PO-Revision-Date: 2020-11-24T19:04:39.411Z\n"
 "#-#-#-#-#  react-js-strings.po (i18next-conv)  #-#-#-#-#\n"
 "Project-Id-Version: i18next-conv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2020-11-21T20:19:47.589Z\n"
-"PO-Revision-Date: 2020-11-21T20:19:47.589Z\n"
+"POT-Creation-Date: 2020-11-24T19:04:39.630Z\n"
+"PO-Revision-Date: 2020-11-24T19:04:39.630Z\n"
 
 msgid "Backup Database"
 msgstr ""
@@ -3969,6 +3969,9 @@ msgstr ""
 msgid "Assign New Group"
 msgstr ""
 
+msgid "List Members"
+msgstr ""
+
 msgid "Delete this Record"
 msgstr ""
 
@@ -3979,9 +3982,6 @@ msgid "Edit User"
 msgstr ""
 
 msgid "View User"
-msgstr ""
-
-msgid "List Members"
 msgstr ""
 
 msgid "Timeline"
@@ -5095,9 +5095,6 @@ msgstr ""
 msgid "Invalid userId"
 msgstr ""
 
-msgid "Unsupported user setting - "
-msgstr ""
-
 msgid "eGive Import"
 msgstr ""
 
@@ -5847,6 +5844,57 @@ msgid "Manage Notes"
 msgstr ""
 
 msgid "Skins"
+msgstr ""
+
+msgid "Blue"
+msgstr ""
+
+msgid "Black"
+msgstr ""
+
+msgid "Purple"
+msgstr ""
+
+msgid "Green<"
+msgstr ""
+
+msgid "Red"
+msgstr ""
+
+msgid "Yellow"
+msgstr ""
+
+msgid "Blue Light"
+msgstr ""
+
+msgid "Black Light"
+msgstr ""
+
+msgid "Purple Light"
+msgstr ""
+
+msgid "Green Light"
+msgstr ""
+
+msgid "Red Light"
+msgstr ""
+
+msgid "Yellow Light"
+msgstr ""
+
+msgid "Layout Options"
+msgstr ""
+
+msgid "Boxed Layout"
+msgstr ""
+
+msgid "Activate the boxed layout"
+msgstr ""
+
+msgid "Toggle Sidebar"
+msgstr ""
+
+msgid "Toggle the left sidebar's state (open or collapse)"
 msgstr ""
 
 msgid "Family Member Count"
