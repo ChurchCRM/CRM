@@ -84,8 +84,7 @@ function Header_body_scripts()
         $tableSize = 10;
     } else {
         $tableSize = $tableSizeSetting->getValue();
-    }
-    ?>
+    } ?>
     <script nonce="<?= SystemURLs::getCSPNonce() ?>">
         window.CRM = {
             root: "<?= SystemURLs::getRootPath() ?>",
