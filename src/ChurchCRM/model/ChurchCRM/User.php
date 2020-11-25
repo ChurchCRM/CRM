@@ -283,7 +283,6 @@ class User extends BaseUser
         }
     }
 
-
     public function setSetting($name, $value) {
         $setting = $this->getSetting($name);
         if (!$setting) {
@@ -322,35 +321,6 @@ class User extends BaseUser
 
     public function getShowSince() {
         return $this->getSetting(UserSetting::FINANCE_SHOW_SINCE)->getValue();
-    }
-
-
-    public function setSetting($name, $value) {
-        $setting = $this->getSetting($name);
-        if (!$setting) {
-            $setting = new UserSetting();
-            $setting->set($this, $name, $value);
-        } else {
-            $setting->setValue($value);
-        }
-        $setting->save();
-    }
-
-    public function getSetting($name) {
-        foreach ($this->getUserSettings() as $userSetting) {
-            if ($userSetting->getName() == $name) {
-                return $userSetting;
-            }
-        }
-        return null;
-    }
-
-    public function getStyle(){
-        $cssClasses = [];
-        array_push($cssClasses, $this->getSetting(UserSetting::UI_STYLE));
-        array_push($cssClasses, $this->getSetting(UserSetting::UI_BOXED));
-        array_push($cssClasses, $this->getSetting(UserSetting::UI_SIDEBAR));
-        return implode(" ", $cssClasses);
     }
 
     public function provisionNew2FAKey() {

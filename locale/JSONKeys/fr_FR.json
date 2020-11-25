@@ -2218,8 +2218,18 @@
     "Portuguese - Portugal": "Portugais - Portugal",
     "Holiday": "Vacances",
     "ChurchCRM": "ChurchCRM",
+    "Review": "Passer en revue",
+    "Thank you for registering your family": "Merci d’avoir enregistré votre famille",
+    "Register another family!": "Enregistrer une nouvelle famille",
+    "LastName, FirstName MiddleName": "Nom, Prénoms",
     "2 Factor Authentication enrollment": "Souscrire à l'authentification à 2 facteurs",
     "Unsupported Two Factor Authentication Configuration": "Authentification à 2 facteurs non supportée",
     "Unable To Begin Two Factor Authentication Enrollment": "Impossible de démarrer le souscription de l'authentification à 2 facteurs",
-    "Two factor authentication requires ChurchCRM administrators to configure a few parameters": "L'authentification à 2 facteurs nécessite une intervention de l'administrateur ChurchCRM"
+    "Two factor authentication requires ChurchCRM administrators to configure a few parameters": "L'authentification à 2 facteurs nécessite une intervention de l'administrateur ChurchCRM",
+    "Today's Birthdays": "Anniversaires du jour",
+    "Today's Wedding Anniversaries": "Anniversaires de mariage du jour",
+    "Api Key": "Clef API",
+    "Regen API Key": "Régénérer la clef API",
+    "Verify": "Vérifier",
+    "Family has no emails to use": "Aucune adresse email renseignée pour cette famille"
 }

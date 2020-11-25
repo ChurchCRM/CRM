@@ -2309,7 +2309,6 @@
     "2FA Application Name": "雙重認證應用程式名稱",
     "Unsupported user config": "不支持的用戶配置",
     "Invalid userId": "無效的使用者代碼",
-    "Unsupported user setting - ": "不支持的用戶設置- ",
     "Login Info": "登錄信息",
     "Login Count": "登錄次數",
     "Failed Login": "登錄失敗",
@@ -2363,5 +2362,9 @@
     "Today's Birthdays": "今天生日",
     "Today's Wedding Anniversaries": "今天結婚週年紀念日",
     "Api Key": "API金鑰",
-    "Regen API Key": "再生API金鑰"
+    "Regen API Key": "再生API金鑰",
+    "View Family Page": "查看家庭頁面",
+    "View Person Page": "查看人員頁面",
+    "Verify": "確認",
+    "Family has no emails to use": "家庭沒有電子郵件可使用"
 }
