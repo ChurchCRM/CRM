@@ -283,14 +283,6 @@ class User extends BaseUser
         }
     }
 
-    public function getFormattedShowSince() {
-        $showSince = "";
-        if ($this->getShowSince() != null) {
-            $showSince = $this->getShowSince()->format('Y-m-d');
-        }
-        return $showSince;
-    }
-
 
     public function setSetting($name, $value) {
         $setting = $this->getSetting($name);
@@ -318,6 +310,18 @@ class User extends BaseUser
         array_push($cssClasses, $this->getSetting(UserSetting::UI_BOXED));
         array_push($cssClasses, $this->getSetting(UserSetting::UI_SIDEBAR));
         return implode(" ", $cssClasses);
+    }
+
+    public function isShowPledges() {
+        return $this->getSetting(UserSetting::FINANCE_SHOW_PLEDGES)->getValue() == "true";
+    }
+
+    public function isShowPayments() {
+        return $this->getSetting(UserSetting::FINANCE_SHOW_PAYMENTS)->getValue() == "true";
+    }
+
+    public function getShowSince() {
+        return $this->getSetting(UserSetting::FINANCE_SHOW_SINCE)->getValue();
     }
 
     public function provisionNew2FAKey() {
