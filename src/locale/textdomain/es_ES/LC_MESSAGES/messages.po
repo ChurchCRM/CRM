@@ -9523,3 +9523,39 @@ msgstr "Llave de API"
 msgid "Regen API Key"
 msgstr "Regenerar llave de API"
 
+#: 
+msgid "View Family Page"
+msgstr "Ver Página de Familia"
+
+#: 
+msgid "View Person Page"
+msgstr "Ver Página de Persona"
+
+#: 
+msgid "Verify"
+msgstr "Verificar"
+
+#: 
+msgid "Blue"
+msgstr "Azul"
+
+#: 
+msgid "Black"
+msgstr "Negro"
+
+#: 
+msgid "Purple"
+msgstr "Púrpura"
+
+#: 
+msgid "Green<"
+msgstr "Verde"
+
+#: 
+msgid "Red"
+msgstr "Rojo"
+
+#: 
+msgid "Yellow"
+msgstr "Amarillo"
+
