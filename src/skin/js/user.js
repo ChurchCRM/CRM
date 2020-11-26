@@ -50,7 +50,7 @@ $('[data-skin]').on('click', function (e) {
 $("#regenApiKey").click(function () {
     $.ajax({
         type: 'POST',
-        url: window.CRM.root + '/api/users/' + window.CRM.viewUserId + '/apikey/regen'
+        url: window.CRM.root + '/api/user/' + window.CRM.viewUserId + '/apikey/regen'
     })
         .done(function (data, textStatus, xhr) {
             if (xhr.status == 200) {

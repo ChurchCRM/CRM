@@ -45,7 +45,7 @@ function restUserLoginCount(userId, userName) {
             if (result) {
                 $.ajax({
                     method: "POST",
-                    url: window.CRM.root + "/api/users/" + userId + "/login/reset",
+                    url: window.CRM.root + "/api/user/" + userId + "/login/reset",
                     dataType: "json",
                     encode: true,
                 }).done(function (data) {
@@ -66,7 +66,7 @@ function resetUserPassword(userId, userName) {
             if (result) {
                 $.ajax({
                     method: "POST",
-                    url: window.CRM.root + "/api/users/" + userId + "/password/reset",
+                    url: window.CRM.root + "/api/user/" + userId + "/password/reset",
                     dataType: "json",
                     encode: true,
                 }).done(function (data) {
@@ -87,7 +87,7 @@ function disableUserTwoFactorAuth(userId, userName) {
             if (result) {
                 $.ajax({
                     method: "POST",
-                    url: window.CRM.root + "/api/users/" + userId + "/disableTwoFactor",
+                    url: window.CRM.root + "/api/user/" + userId + "/disableTwoFactor",
                 }).done(function (data) {
                     window.location.href = window.CRM.root + "/UserList.php";
                 });
