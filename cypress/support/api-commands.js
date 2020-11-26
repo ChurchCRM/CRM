@@ -10,12 +10,20 @@
 
 
 // -- This is a login command --
-Cypress.Commands.add("makePrivateAPICall", (method, url, body, expectedStatus = 200) => {
+Cypress.Commands.add("makePrivateAdminAPICall", (method, url, body, expectedStatus = 200) => {
+    cy.makePrivateAPICall(Cypress.env('admin.api.key'), method, url, body, expectedStatus)
+});
+
+Cypress.Commands.add("makePrivateUserAPICall", (method, url, body, expectedStatus = 200) => {
+    cy.makePrivateAPICall(Cypress.env('user.api.key'), method, url, body, expectedStatus)
+});
+
+Cypress.Commands.add("makePrivateAPICall", (key, method, url, body, expectedStatus = 200) => {
     cy.request({
         method: method,
         failOnStatusCode: false,
         url: url,
-        headers: {'content-type': 'application/json', "x-api-key": Cypress.env('admin.api.key')},
+        headers: {'content-type': 'application/json', "x-api-key": key},
         body: body
     }).then((resp) => {
         expect(resp.status).to.eq(expectedStatus);
@@ -23,3 +31,4 @@ Cypress.Commands.add("makePrivateAPICall", (method, url, body, expectedStatus = 
         return result;
     })
 });
+
