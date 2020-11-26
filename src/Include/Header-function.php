@@ -101,7 +101,7 @@ function Header_body_scripts()
             systemConfigs: {
               sDateTimeFormat: "<?= PHPToMomentJSConverter::ConvertFormatString(SystemConfig::getValue('sDateTimeFormat'))?>",
             },
-            iDasbhoardServiceIntervalTime:"<?= SystemConfig::getValue('iDasbhoardServiceIntervalTime') ?>",
+            iDashboardServiceIntervalTime:"<?= SystemConfig::getValue('iDashboardServiceIntervalTime') ?>",
             plugin: {
                 dataTable : {
                     "pageLength": "<?= $tableSize  ?>",
