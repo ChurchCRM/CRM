@@ -43,7 +43,7 @@ $("document").ready(function(){
         $('.multiSearch').select2("open");
       }
     };
-    
+
     window.CRM.system.runTimerJobs();
 
     $(".date-picker").datepicker({format:window.CRM.datePickerformat, language: window.CRM.lang});
@@ -91,7 +91,7 @@ $("document").ready(function(){
 
     window.CRM.cart.refresh();
     window.CRM.dashboard.refresh();
-    DashboardRefreshTimer=setInterval(window.CRM.dashboard.refresh, window.CRM.iDasbhoardServiceIntervalTime * 1000);
+    DashboardRefreshTimer=setInterval(window.CRM.dashboard.refresh, window.CRM.iDashboardServiceIntervalTime * 1000);
 
     window.CRM.APIRequest({
         path: 'system/notification',

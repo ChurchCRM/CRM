@@ -221,7 +221,7 @@ class SystemConfig
         "iEventsOnDashboardPresenceTimeOut" => new ConfigItem(2043, "iEventsOnDashboardPresenceTimeOut", "number", "10", gettext("Number of seconds after page load until the banner disappears, default 10 seconds")),
         "bPHPMailerAutoTLS" => new ConfigItem(2045, "bPHPMailerAutoTLS", "boolean", "0", gettext("Automatically enable SMTP encryption if offered by the relaying server.")),
         "sPHPMailerSMTPSecure" => new ConfigItem(2046, "sPHPMailerSMTPSecure", "choice", " ", gettext("Set the encryption system to use - ssl (deprecated) or tls"),"",'{"Choices":["None: ","TLS:tls","SSL:ssl"]}'),
-        "iDasbhoardServiceIntervalTime" => new ConfigItem(2047, "iDasbhoardServiceIntervalTime", "number", "60", gettext("Dashboard Service dynamic asynchronous refresh interval, default 60 second")),
+        "iDashboardServiceIntervalTime" => new ConfigItem(2047, "iDashboardServiceIntervalTime", "number", "60", gettext("Dashboard Service dynamic asynchronous refresh interval, default 60 second")),
         "iProfilePictureListSize" => new ConfigItem(2048, "iProfilePictureListSize", "number", "85", gettext("Set the standard profile picture icon size in pixels to be used in people lists, default 85 pixels.")),
         "bEnabledMenuLinks" => new ConfigItem(2050, "bEnabledMenuLinks", "boolean", "0", gettext("Show custom links on the left menu.")),
         "bEnabledSundaySchool" => new ConfigItem(2051, "bEnabledSundaySchool", "boolean", "1", gettext("Enable Sunday School left menu.")),
@@ -266,7 +266,7 @@ class SystemConfig
       gettext('Church Services')  => ["iPersonConfessionFatherCustomField","iPersonConfessionDateCustomField"],
       gettext('Events')  => ["bEnableExternalCalendarAPI","bEventsOnDashboardPresence","iEventsOnDashboardPresenceTimeOut"],
       gettext('Backup')  => ["sLastBackupTimeStamp","bEnableExternalBackupTarget","sExternalBackupType","sExternalBackupAutoInterval","sExternalBackupEndpoint","sExternalBackupUsername","sExternalBackupPassword","bBackupExtraneousImages"],
-      gettext('System Settings')  => ["sLogLevel", "bRegistered","bCSVAdminOnly","sHeader","bEnableIntegrityCheck","iIntegrityCheckInterval","sLastIntegrityCheckTimeStamp", "iPhotoClientCacheDuration","bHSTSEnable", "iDasbhoardServiceIntervalTime","iSoftwareUpdateCheckInterval","sLastSoftwareUpdateCheckTimeStamp","bAllowPrereleaseUpgrade"]
+      gettext('System Settings')  => ["sLogLevel", "bRegistered","bCSVAdminOnly","sHeader","bEnableIntegrityCheck","iIntegrityCheckInterval","sLastIntegrityCheckTimeStamp", "iPhotoClientCacheDuration","bHSTSEnable", "iDashboardServiceIntervalTime","iSoftwareUpdateCheckInterval","sLastSoftwareUpdateCheckTimeStamp","bAllowPrereleaseUpgrade"]
     );
   }
 
