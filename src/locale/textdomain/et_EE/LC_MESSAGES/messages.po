@@ -5332,6 +5332,14 @@ msgid "Select database users"
 msgstr "Vali andmebaasi kasutaja"
 
 #: 
+msgid "Select all members"
+msgstr "Vali liige"
+
+#: 
+msgid "Volunteers"
+msgstr "Vabatahtlikud"
+
+#: 
 msgid "NNE"
 msgstr "NNE"
 
