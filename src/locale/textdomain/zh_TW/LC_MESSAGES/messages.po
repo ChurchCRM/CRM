@@ -9826,3 +9826,113 @@ msgstr "確認"
 msgid "Family has no emails to use"
 msgstr "家庭沒有電子郵件可使用"
 
+#: 
+#, fuzzy
+msgid "Blue"
+msgstr "藍"
+
+#: 
+#, fuzzy
+msgid "Black"
+msgstr "黑"
+
+#: 
+#, fuzzy
+msgid "Purple"
+msgstr "紫"
+
+#: 
+#, fuzzy
+msgid "Green<"
+msgstr "綠<"
+
+#: 
+#, fuzzy
+msgid "Red"
+msgstr "紅"
+
+#: 
+#, fuzzy
+msgid "Yellow"
+msgstr "黃"
+
+#: 
+#, fuzzy
+msgid "Blue Light"
+msgstr "淺藍"
+
+#: 
+#, fuzzy
+msgid "Black Light"
+msgstr "淺黑"
+
+#: 
+#, fuzzy
+msgid "Purple Light"
+msgstr "淺紫"
+
+#: 
+#, fuzzy
+msgid "Green Light"
+msgstr "淺綠"
+
+#: 
+#, fuzzy
+msgid "Red Light"
+msgstr "淺紅"
+
+#: 
+#, fuzzy
+msgid "Yellow Light"
+msgstr "淺黃"
+
+#: 
+#, fuzzy
+msgid "Boxed Layout"
+msgstr "盒裝布局"
+
+#: 
+#, fuzzy
+msgid "Activate the boxed layout"
+msgstr "激活盒裝布局"
+
+#: 
+#, fuzzy
+msgid "Toggle Sidebar"
+msgstr "切換邊欄"
+
+#: 
+#, fuzzy
+msgid "Toggle the left sidebar's state (open or collapse)"
+msgstr "切換左側邊欄的狀態為(打開或折疊)"
+
+#: 
+#, fuzzy
+msgid "Tables Settings"
+msgstr "表格設定"
+
+#: 
+#, fuzzy
+msgid "Page length"
+msgstr "頁面長度"
+
+#: 
+#, fuzzy
+msgid "Change the initial page length (number of rows per page)"
+msgstr "更改初始頁面長度(每頁的行數)"
+
+#: 
+#, fuzzy
+msgid "User Interface"
+msgstr "用戶界面"
+
+#: 
+#, fuzzy
+msgid "Locale"
+msgstr "本地"
+
+#: 
+#, fuzzy
+msgid "Override system locale"
+msgstr "覆蓋系統區域設置"
+
