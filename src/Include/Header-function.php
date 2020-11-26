@@ -91,6 +91,7 @@ function Header_body_scripts()
             fullURL:"<?= SystemURLs::getURL() ?>",
             lang: "<?= $localeInfo->getLanguageCode() ?>",
             userId: "<?= AuthenticationManager::GetCurrentUser()->getId() ?>",
+            systemLocale: "<?= $localeInfo->getSystemLocale() ?>",
             locale: "<?= $localeInfo->getLocale() ?>",
             shortLocale: "<?= $localeInfo->getShortLocale() ?>",
             maxUploadSize: "<?= SystemService::getMaxUploadFileSize(true) ?>",

@@ -2,6 +2,7 @@
 
 namespace ChurchCRM\Utils;
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\LocaleInfo;
 use Geocoder\Provider\BingMaps\BingMaps;
@@ -58,7 +59,7 @@ class GeoUtils
     public static function DrivingDistanceMatrix($address1, $address2)
     {
         $logger = LoggerUtils::getAppLogger();
-        $localeInfo = new LocaleInfo(SystemConfig::getValue('sLanguage'));
+        $localeInfo = Bootstrapper::GetCurrentLocale();
         $url = "https://maps.googleapis.com/maps/api/distancematrix/json?";
         $url = $url . "language=" . $localeInfo->getShortLocale();
         $url = $url . "&origins=" . urlencode($address1);

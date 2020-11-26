@@ -98,6 +98,24 @@ $(".user-setting-select").change(function() {
 });
 
 $(document).ready(function () {
+    let localeOptions = $("#user-locale-setting");
+    $.ajax({
+        url: window.CRM.root + '/locale/locales.json',
+        dataType: 'json',
+        type: 'GET',
+        success: function (data) {
+            $.each(data, function( localeName, localeData ) {
+                let selected = false;
+                if (window.CRM.systemLocale === localeData.locale) {
+                    selected = true;
+                }
+                let newOption = new Option(localeName, localeData.locale, false, selected);
+                localeOptions.append(newOption);
+            });
+            localeOptions.change();
+        }
+    });
+
     $(".user-setting-checkbox").each(function (){
         let thisCheckbox = $(this);
         let setting = thisCheckbox.data('setting-name');
@@ -122,6 +140,7 @@ $(document).ready(function () {
                 thisSelect.val(data.value).change();
             }
         });
+
 
     });
 });

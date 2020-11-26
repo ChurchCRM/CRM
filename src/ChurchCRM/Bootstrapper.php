@@ -2,13 +2,10 @@
 
 namespace ChurchCRM
 {
-  use ChurchCRM\ConfigQuery;
   use ChurchCRM\dto\LocaleInfo;
   use ChurchCRM\dto\SystemConfig;
   use ChurchCRM\dto\SystemURLs;
   use ChurchCRM\Service\SystemService;
-  use ChurchCRM\SQLUtils;
-  use ChurchCRM\Version;
   use Monolog\Handler\StreamHandler;
   use Monolog\Logger;
   use Propel\Runtime\Connection\ConnectionManagerSingle;
@@ -89,7 +86,13 @@ namespace ChurchCRM
        */
       public static function GetCurrentLocale()
       {
-          return new LocaleInfo(SystemConfig::getValue('sLanguage'));
+          $userLocale = "";
+          try {
+              $userLocale=  AuthenticationManager::GetCurrentUser()->getSetting("ui.locale");
+          } catch (\Exception $ex) {
+              //maybe user is logged in
+          }
+          return new LocaleInfo(SystemConfig::getValue('sLanguage'), $userLocale);
       }
 
       private static function ConfigureLocale()
