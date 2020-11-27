@@ -8956,10 +8956,6 @@ msgid "PHP ZipArchive required to support upgrade"
 msgstr "Archivo Zip de PHP es requerido para actualizar"
 
 #: 
-msgid "See all People"
-msgstr "Ver todas las Personas"
-
-#: 
 msgid "Add Results to Cart"
 msgstr "Agregar Resultados al Separador"
 

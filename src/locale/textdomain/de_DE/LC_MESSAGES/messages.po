@@ -8241,10 +8241,6 @@ msgid "PHP ZipArchive required to support upgrade"
 msgstr "PHP-ZipArchiv zur Unterstützung des Upgrades erforderlich"
 
 #: 
-msgid "See all People"
-msgstr "Alle Personen anzeigen"
-
-#: 
 msgid "Add Results to Cart"
 msgstr "Ergebnisse zum Warenkorb hinzufügen"
 

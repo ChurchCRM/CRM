@@ -9058,10 +9058,6 @@ msgid "PHP ZipArchive required to support upgrade"
 msgstr "PHP ZipArchive krävs för att stödja uppgradering"
 
 #: 
-msgid "See all People"
-msgstr "Se alla personer"
-
-#: 
 msgid "Add Results to Cart"
 msgstr "Lägg till resultat i kundvagnen"
 

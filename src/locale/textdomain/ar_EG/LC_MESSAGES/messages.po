@@ -8909,10 +8909,6 @@ msgid "PHP ZipArchive required to support upgrade"
 msgstr "مطلوب PHP ZipArchive لدعم ترقية"
 
 #: 
-msgid "See all People"
-msgstr "الاطلاع على كل الناس"
-
-#: 
 msgid "Add Results to Cart"
 msgstr "إضافة إلى العربة نتائج"
 

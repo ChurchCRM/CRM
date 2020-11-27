@@ -2222,7 +2222,6 @@
     "Support for this PHP version will soon be removed.  Current PHP Version: ": "很快將不再支持此PHP版本。當前的PHP版本： ",
     "Missing PHP ZipArchive": "缺少PHP ZipArchive",
     "PHP ZipArchive required to support upgrade": "需要PHP ZipArchive以支援升級",
-    "See all People": "查看所有人",
     "Add Results to Cart": "將結果添加到購物車",
     "Remove Results from Cart": "從購物車中刪除結果",
     "Warning: Pre-Upgrade Tasks Detected": "警告：檢測到預升級任務",

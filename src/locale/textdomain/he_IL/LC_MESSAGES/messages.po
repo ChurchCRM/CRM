@@ -897,10 +897,6 @@ msgid "Reset System"
 msgstr "איתחול מערכת"
 
 #: 
-msgid "See all People"
-msgstr "הצג את כל האנשים"
-
-#: 
 #, fuzzy
 msgid "Warning: Pre-Upgrade Tasks Detected"
 msgstr "אזהרה: נמצאו משימות מלפני העדכון"

@@ -9146,11 +9146,6 @@ msgstr "需要PHP ZipArchive以支援升級"
 
 #: 
 #, fuzzy
-msgid "See all People"
-msgstr "查看所有人"
-
-#: 
-#, fuzzy
 msgid "Add Results to Cart"
 msgstr "將結果添加到購物車"
 

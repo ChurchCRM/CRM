@@ -4525,10 +4525,6 @@ msgid "PHP ZipArchive required to support upgrade"
 msgstr "PHP ZipArchive jest wymagane do aktualizacji"
 
 #: 
-msgid "See all People"
-msgstr "Zobacz wszystkie Osoby"
-
-#: 
 msgid "Add Results to Cart"
 msgstr "Dodaj Wyniki do Koszyka"
 
