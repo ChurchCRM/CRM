@@ -8,7 +8,7 @@ context('API Private Current User', () => {
 
         cy.request({
             method: 'GET',
-            url: '/api/user/1/setting/ui.style',
+            url: '/api/user/3/setting/ui.style',
             headers: {'content-type': 'application/json', "x-api-key": Cypress.env('admin.api.key')},
         }).then((resp) => {
             expect(resp.status).to.eq(200);
@@ -19,7 +19,7 @@ context('API Private Current User', () => {
 
     it('Admin Set / GET Other User Settings', () => {
         let json = {"value": "skin-yellow-light"};
-        cy.makePrivateAPICall("POST", '/api/user/3/setting/ui.style', json, 200);
+        cy.makePrivateUserAPICall("POST", '/api/user/3/setting/ui.style', json, 200);
 
         cy.request({
             method: 'GET',
@@ -32,8 +32,8 @@ context('API Private Current User', () => {
         });
     });
 
-    it('Admin invalid user ', () => {
-        cy.makePrivateUserAPICall("GET", '/api/user/99999/setting/ui.style', null, 412);
+    it('Unauth get user settings ', () => {
+        cy.makePrivateUserAPICall("GET", '/api/user/1/setting/ui.style', null, 401);
     });
 });
 
