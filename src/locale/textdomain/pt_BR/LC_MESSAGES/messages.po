@@ -9120,10 +9120,6 @@ msgid "PHP ZipArchive required to support upgrade"
 msgstr "PHP Zip é necessário para atualização"
 
 #: 
-msgid "See all People"
-msgstr "Enviar para todos"
-
-#: 
 msgid "Add Results to Cart"
 msgstr "Adicionar resultados ao carrinho"
 

@@ -8909,10 +8909,6 @@ msgid "PHP ZipArchive required to support upgrade"
 msgstr "PHP ZipArchive benodig om opgradering te ondersteun"
 
 #: 
-msgid "See all People"
-msgstr "Sien alle mense"
-
-#: 
 msgid "Add Results to Cart"
 msgstr "Voeg resultate in mandjie"
 

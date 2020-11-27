@@ -2224,7 +2224,6 @@
     "Support for this PHP version will soon be removed.  Current PHP Version: ": "El soporte para esta versión de PHP va a ser terminado. Versión actual de PHP: ",
     "Missing PHP ZipArchive": "Archivo Zip de PHP Falta",
     "PHP ZipArchive required to support upgrade": "Archivo Zip de PHP es requerido para actualizar",
-    "See all People": "Ver todas las Personas",
     "Add Results to Cart": "Agregar Resultados al Separador",
     "Remove Results from Cart": "Remover Resultados del Separador",
     "Warning: Pre-Upgrade Tasks Detected": "Advertencia: Tareas de Pre-Actualización Detectadas",

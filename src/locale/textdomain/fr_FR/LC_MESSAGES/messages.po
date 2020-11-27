@@ -8838,10 +8838,6 @@ msgid "Unsupported PHP Version"
 msgstr "Version de PHP non supportée"
 
 #: 
-msgid "See all People"
-msgstr "Voir tout le monde"
-
-#: 
 msgid "Add Results to Cart"
 msgstr "Ajouter les résultats au panier"
 

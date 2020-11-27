@@ -1613,7 +1613,6 @@
     "Support for this PHP version will soon be removed.  Current PHP Version: ": "Selle PHP versiooni tugi eemaldatakse peagi.  Praegune PHP versioon: ",
     "Missing PHP ZipArchive": "Puudub PHP Zip Arhiiv",
     "PHP ZipArchive required to support upgrade": "Uuendamise toetamiseks on vaja PHP ZipArhiiv'i",
-    "See all People": "Vaadake kõiki inimesi",
     "Add Results to Cart": "Lisage tulemused korvi",
     "Remove Results from Cart": "Eemalda tulemused korvist",
     "Warning: Pre-Upgrade Tasks Detected": "Hoiatus: tuvastatud on täiendamiseelsed ülesanded",

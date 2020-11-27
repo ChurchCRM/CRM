@@ -6466,10 +6466,6 @@ msgid "PHP ZipArchive required to support upgrade"
 msgstr "Uuendamise toetamiseks on vaja PHP ZipArhiiv'i"
 
 #: 
-msgid "See all People"
-msgstr "Vaadake kõiki inimesi"
-
-#: 
 msgid "Add Results to Cart"
 msgstr "Lisage tulemused korvi"
 
