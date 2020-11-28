@@ -38,17 +38,18 @@ $(document).ready(function () {
                 stateSelect.change();
                 $("#stateInputDiv").addClass("hidden");
                 $("#StateTextbox").val("");
+                $("#stateType").val("dropDown");
                 $("#stateOptionDiv").removeClass("hidden");
             } else {
                 $("#stateInputDiv").removeClass("hidden");
                 $("#stateOptionDiv").addClass("hidden");
+                $("#stateType").val("input");
             }
         });
     })
 
-    $(function() {
-        $("[data-mask]").inputmask();
-    });
-
+    $("[data-mask]").inputmask();
+    $("#Country").select2();
+    $("#State").select2();
 
 });

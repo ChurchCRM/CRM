@@ -101,7 +101,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
     $sCountry = InputUtils::LegacyFilterInput($_POST['Country']);
     $iFamilyMemberRows = InputUtils::LegacyFilterInput($_POST['FamCount']);
 
-    if ($_POST['State'] != '') {
+    if (!empty($_POST['stateType'] == "dropDown")) {
         $sState = InputUtils::LegacyFilterInput($_POST['State']);
     } else {
         $sState = InputUtils::LegacyFilterInput($_POST['StateTextbox']);
@@ -636,8 +636,9 @@ require 'Include/Header.php';
 ?>
 
 <form method="post" action="FamilyEditor.php?FamilyID=<?php echo $iFamilyID ?>" id="familyEditor">
-	<input type="hidden" Name="iFamilyID" value="<?= $iFamilyID ?>">
+	<input type="hidden" name="iFamilyID" value="<?= $iFamilyID ?>">
 	<input type="hidden" name="FamCount" value="<?= $iFamilyMemberRows ?>">
+    <input type="hidden" id="stateType" name="stateType" value="">
 	<div class="box box-info clearfix">
 		<div class="box-header">
 			<h3 class="box-title"><?= gettext('Family Info') ?></h3>
@@ -678,11 +679,9 @@ require 'Include/Header.php';
                         <select id="State" name="State" class="form-control select2" id="state-input" data-user-selected="<?= $sState ?>" data-system-default="<?= SystemConfig::getValue('sDefaultState')?>">
                         </select>
                     </div>
-					<div  id="stateInputDiv" class="form-group col-md-3">
-						<label><?= gettext('None US/CND State') ?>:</label>
-						<input id="StateTextbox" type="text"  class="form-control" name="StateTextbox" value="<?php if ($sCountry != 'United States' && $sCountry != 'Canada') {
-        echo htmlentities(stripslashes($sState), ENT_NOQUOTES, 'UTF-8');
-    } ?>" size="20" maxlength="30">
+					<div id="stateInputDiv" class="form-group col-md-3 hidden">
+						<label><?= gettext('State') ?>:</label>
+						<input id="StateTextbox" type="text"  class="form-control" name="StateTextbox" value="<?= htmlentities(stripslashes($sState), ENT_NOQUOTES, 'UTF-8') ?>" size="20" maxlength="30">
 					</div>
 					<div class="form-group col-md-3">
 						<label><?= gettext('Zip')?>:</label>
@@ -718,12 +717,6 @@ require 'Include/Header.php';
 			</div>
 		</div>
 	</div>
-    <script nonce="<?= SystemURLs::getCSPNonce() ?>" >
-        $(document).ready(function() {
-            $("#country-input").select2();
-            $("#state-input").select2();
-        });
-    </script>
 	<div class="box box-info clearfix">
 		<div class="box-header">
 			<h3 class="box-title"><?= gettext('Contact Info') ?></h3>
