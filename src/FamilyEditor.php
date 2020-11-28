@@ -677,11 +677,12 @@ require 'Include/Header.php';
 				</div>
 				<p/>
 				<div class="row">
-					<div class="form-group col-md-3">
+					<div id="stateOptionDiv" class="form-group col-md-3">
 						<label for="StatleTextBox"><?= gettext('State')?>: </label>
-						<?php require 'Include/StateDropDown.php'; ?>
-					</div>
-					<div class="form-group col-md-3">
+                        <select id="State" name="State" class="form-control select2" id="state-input" data-system-default="<?= SystemConfig::getValue('sDefaultState')?>">
+                        </select>
+                    </div>
+					<div  id="stateInputDiv" class="form-group col-md-3">
 						<label><?= gettext('None US/CND State') ?>:</label>
 						<input type="text"  class="form-control" name="StateTextbox" value="<?php if ($sCountry != 'United States' && $sCountry != 'Canada') {
         echo htmlentities(stripslashes($sState), ENT_NOQUOTES, 'UTF-8');
@@ -699,8 +700,9 @@ require 'Include/Header.php';
 					</div>
 					<div class="form-group col-md-3">
 						<label> <?= gettext('Country') ?>:</label>
-						<?php require 'Include/CountryDropDown.php' ?>
-					</div>
+                        <select id="Country" name="Country" class="form-control select2" id="country-input" data-system-default="<?= SystemConfig::getValue('sDefaultCountry')?>">
+                        </select>
+                    </div>
 				</div>
 				<?php if (!SystemConfig::getValue('bHideLatLon')) { /* Lat/Lon can be hidden - General Settings */
                                 if (!$bHaveXML) { // No point entering if values will just be overwritten?>
@@ -1125,11 +1127,6 @@ require 'Include/Header.php';
     }
     echo '</td></tr></form></table>';
 ?>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/js/FamilyEditor.js"></script>
 
-	<script nonce="<?= SystemURLs::getCSPNonce() ?>" >
-		$(function() {
-			$("[data-mask]").inputmask();
-		});
-
-	</script>
 <?php require 'Include/Footer.php' ?>
