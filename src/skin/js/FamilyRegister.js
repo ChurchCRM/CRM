@@ -133,6 +133,7 @@ $(document).ready(function () {
         familyCountry.change();
     });
 
+    $("#familyCountry").select2();
     $("#familyCountry").change(function () {
         $.ajax({
             type: "GET",
