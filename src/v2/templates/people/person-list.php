@@ -7,15 +7,13 @@
 *
 ******************************************************************************/
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\Authentication\AuthenticationManager;
-use ChurchCRM\Bootstrapper;
-use ChurchCRM\ListOptionQuery;
 use ChurchCRM\GroupQuery;
-
-use ChurchCRM\PropertyQuery;
+use ChurchCRM\ListOptionQuery;
 use ChurchCRM\PersonCustomMasterQuery;
+use ChurchCRM\PropertyQuery;
 
 //Set the page title
 $sPageTitle = gettext(ucfirst($sMode)) . ' ' . gettext('Listing');

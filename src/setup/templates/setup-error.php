@@ -1,7 +1,5 @@
 <?php
 
-use ChurchCRM\dto\SystemURLs;
-
 
 $sPageTitle = 'ChurchCRM – Setup Error';
 require '../Include/HeaderNotLoggedIn.php';

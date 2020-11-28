@@ -1,6 +1,5 @@
 <?php
 
-use Propel\Runtime\ActiveQuery\Criteria;
 use ChurchCRM\dto\SystemURLs;
 
 //Set the page title

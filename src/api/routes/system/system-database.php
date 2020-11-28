@@ -1,6 +1,11 @@
 <?php
 
+use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\Backup\BackupDownloader;
+use ChurchCRM\Backup\BackupJob;
+use ChurchCRM\Backup\RestoreJob;
 use ChurchCRM\dto\Photo;
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\FamilyCustomQuery;
 use ChurchCRM\FamilyQuery;
@@ -17,11 +22,6 @@ use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\Propel;
 use Slim\Http\Request;
 use Slim\Http\Response;
-use ChurchCRM\Backup\BackupJob;
-use ChurchCRM\Backup\RestoreJob;
-use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\Backup\BackupDownloader;
-use ChurchCRM\Authentication\AuthenticationManager;
 
 $app->group('/database', function () {
 

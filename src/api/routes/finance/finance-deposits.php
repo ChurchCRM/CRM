@@ -2,8 +2,8 @@
 
 use ChurchCRM\Deposit;
 use ChurchCRM\DepositQuery;
-use ChurchCRM\PledgeQuery;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\PledgeQuery;
 use ChurchCRM\Slim\Middleware\Request\Auth\FinanceRoleAuthMiddleware;
 
 $app->group('/deposits', function () {

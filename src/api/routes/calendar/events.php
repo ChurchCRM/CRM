@@ -5,12 +5,12 @@ use ChurchCRM\Base\EventTypeQuery;
 use ChurchCRM\CalendarQuery;
 use ChurchCRM\Event;
 use ChurchCRM\EventCounts;
-use ChurchCRM\Slim\Middleware\Request\Auth\AddEventsRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\EventsMiddleware;
+use ChurchCRM\Slim\Middleware\Request\Auth\AddEventsRoleAuthMiddleware;
 use ChurchCRM\Utils\InputUtils;
-use Slim\Http\Response;
-use Slim\Http\Request;
 use Propel\Runtime\ActiveQuery\Criteria;
+use Slim\Http\Request;
+use Slim\Http\Response;
 
 $app->group('/events', function () {
 
@@ -140,8 +140,8 @@ function newEvent($request, $response, $args)
 
 function updateEvent($request, $response, $args)
 {
-    
-   
+
+
     $e=new Event();
     //$e->getId();
     $input = $request->getParsedBody();
@@ -153,8 +153,8 @@ function updateEvent($request, $response, $args)
             ->filterById($input['PinnedCalendars'], Criteria::IN)
             ->find();
     $Event->setCalendars($PinnedCalendars);
-   
-    $Event->save();    
+
+    $Event->save();
 }
 
 function setEventTime($request, Response $response, $args)

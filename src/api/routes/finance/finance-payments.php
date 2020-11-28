@@ -1,11 +1,11 @@
 <?php
 
+use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\PledgeQuery;
 use ChurchCRM\Slim\Middleware\Request\Auth\FinanceRoleAuthMiddleware;
+use Propel\Runtime\ActiveQuery\Criteria;
 use Slim\Http\Request;
 use Slim\Http\Response;
-use ChurchCRM\PledgeQuery;
-use ChurchCRM\Authentication\AuthenticationManager;
-use Propel\Runtime\ActiveQuery\Criteria;
 
 $app->group('/payments', function () {
     $this->get('/', function (Request $request, Response $response, array $args) {

@@ -1,10 +1,9 @@
 <!-- BEGIN CART FUNCTIONS -->
 <?php
 
-use ChurchCRM\dto\Cart;
 use ChurchCRM\Authentication\AuthenticationManager;
-use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+
 ?>
 <div class="box">
   <div class="box-header with-border">
@@ -37,17 +36,17 @@ use ChurchCRM\dto\SystemURLs;
     <a href="<?= SystemURLs::getRootPath()."/Reports/NameTags.php?labeltype=74536&labelfont=times&labelfontsize=36"?>" class="btn btn-app"><i
         class="fa fa-file-pdf-o"></i><?= gettext('Name Tags') ?></a>
       <?php
-     
+
           if (AuthenticationManager::GetCurrentUser()->isEmailEnabled()) { // Does user have permission to email groups
             // Display link
             echo "<a href='mailto:" . $sEmailLink . "' class='btn btn-app'><i class='fa fa-send-o'></i>" . gettext('Email Cart') . '</a>';
             echo "<a href='mailto:?bcc=" . $sEmailLink . "' class='btn btn-app'><i class='fa fa-send'></i>" . gettext('Email (BCC)') . '</a>';
-        
+
             // Display link
             echo '<a href="javascript:void(0)" onclick="allPhonesCommaD()" class="btn btn-app"><i class="fa fa-mobile-phone"></i>' . gettext("Text Cart");
             echo '<script nonce="' . SystemURLs::getCSPNonce() . '">function allPhonesCommaD() {prompt("Press CTRL + C to copy all group members\' phone numbers", "' . $sPhoneLink . '")};</script>';
           }
-        
+
         ?>
       <a href="<?= SystemURLs::getRootPath()."/DirectoryReports.php?cartdir=Cart+Directory"?>" class="btn btn-app"><i
           class="fa fa-book"></i><?= gettext('Create Directory From Cart') ?></a>

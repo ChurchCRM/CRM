@@ -1,12 +1,12 @@
 <?php
 
+use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\Authentication\AuthenticationProviders\LocalAuthentication;
+use ChurchCRM\Authentication\Exceptions\PasswordChangeException;
+use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\RedirectUtils;
 use Slim\Http\Request;
 use Slim\Http\Response;
-use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\Authentication\AuthenticationManager;
-use ChurchCRM\Authentication\Exceptions\PasswordChangeException;
-use ChurchCRM\Authentication\AuthenticationProviders\LocalAuthentication;
-use ChurchCRM\Utils\RedirectUtils;
 use Slim\Views\PhpRenderer;
 
 $app->group('/user/current', function () {
@@ -30,7 +30,7 @@ function enroll2fa(Request $request, Response $response, array $args)
         return $renderer->render($response, 'manage-2fa.php', $pageArgs);
     }
     else {
-        return $renderer->render($response, 'unsupported-2fa.php', $pageArgs); 
+        return $renderer->render($response, 'unsupported-2fa.php', $pageArgs);
     }
 }
 
@@ -55,7 +55,7 @@ function changepassword(Request $request, Response $response, array $args)
             }
             catch (PasswordChangeException $pwChangeExc) {
                 $pageArgs['s'.$pwChangeExc->AffectedPassword.'PasswordError'] =  $pwChangeExc->getMessage();
-            }            
+            }
         }
 
         return $renderer->render($response, 'user/changepassword.php', $pageArgs);
@@ -70,6 +70,6 @@ function changepassword(Request $request, Response $response, array $args)
     else {
         // we're not using LocalAuth, and the AuthProvider does not specify a password change url
         // so tell the user we can't help them
-        return $renderer->render($response, 'common/unsupported-changepassword.php', $pageArgs); 
+        return $renderer->render($response, 'common/unsupported-changepassword.php', $pageArgs);
     }
 }

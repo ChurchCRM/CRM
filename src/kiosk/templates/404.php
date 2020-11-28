@@ -1,4 +1,5 @@
 <?php
+
 use ChurchCRM\dto\SystemURLs;
 
 $sPageTitle = gettext("Page not fond");
