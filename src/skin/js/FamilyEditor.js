@@ -7,7 +7,12 @@ $(document).ready(function () {
     }).done(function (data) {
         let familyCountry = $("#Country");
         $.each(data, function( idx, country ) {
-            let selected = familyCountry.data("system-default") == country.name;
+            let selected = false;
+            if (familyCountry.data("user-selected") == "") {
+                selected = familyCountry.data("system-default") == country.name;
+            } else if (familyCountry.data("user-selected") == country.name || familyCountry.data("user-selected") == country.code) {
+                selected = true;
+            }
             familyCountry.append(new Option(country.name, country.code, selected, selected));
         });
         familyCountry.change();
@@ -22,11 +27,17 @@ $(document).ready(function () {
             if (Object.keys(data).length > 0) {
                 stateSelect.empty();
                 $.each(data, function (code, name) {
-                    let selected = stateSelect.data("system-default") == code;
+                    let selected =  false;
+                    if (stateSelect.data("user-selected") == "") {
+                        selected =stateSelect.data("system-default") == name;
+                    } else  if (stateSelect.data("user-selected") == name || stateSelect.data("user-selected") == code) {
+                        selected =  true;
+                    }
                     stateSelect.append(new Option(name, code, selected, selected));
                 });
                 stateSelect.change();
                 $("#stateInputDiv").addClass("hidden");
+                $("#StateTextbox").val("");
                 $("#stateOptionDiv").removeClass("hidden");
             } else {
                 $("#stateInputDiv").removeClass("hidden");

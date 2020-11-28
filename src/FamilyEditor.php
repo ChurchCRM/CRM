@@ -51,10 +51,6 @@ if ($iFamilyID > 0) {
     exit;
 }
 
-// Get the list of funds
-$sSQL = "SELECT fun_ID,fun_Name,fun_Description,fun_Active FROM donationfund_fun WHERE fun_Active = 'true'";
-$rsFunds = RunQuery($sSQL);
-
 // Get the lists of canvassers
 $rsCanvassers = CanvassGetCanvassers(gettext('Canvassers'));
 $rsBraveCanvassers = CanvassGetCanvassers(gettext('BraveCanvassers'));
@@ -105,7 +101,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
     $sCountry = InputUtils::LegacyFilterInput($_POST['Country']);
     $iFamilyMemberRows = InputUtils::LegacyFilterInput($_POST['FamCount']);
 
-    if ($sCountry == 'United States' || $sCountry == 'Canada' || $sCountry == '') {
+    if ($_POST['State'] != '') {
         $sState = InputUtils::LegacyFilterInput($_POST['State']);
     } else {
         $sState = InputUtils::LegacyFilterInput($_POST['StateTextbox']);
@@ -679,12 +675,12 @@ require 'Include/Header.php';
 				<div class="row">
 					<div id="stateOptionDiv" class="form-group col-md-3">
 						<label for="StatleTextBox"><?= gettext('State')?>: </label>
-                        <select id="State" name="State" class="form-control select2" id="state-input" data-system-default="<?= SystemConfig::getValue('sDefaultState')?>">
+                        <select id="State" name="State" class="form-control select2" id="state-input" data-user-selected="<?= $sState ?>" data-system-default="<?= SystemConfig::getValue('sDefaultState')?>">
                         </select>
                     </div>
 					<div  id="stateInputDiv" class="form-group col-md-3">
 						<label><?= gettext('None US/CND State') ?>:</label>
-						<input type="text"  class="form-control" name="StateTextbox" value="<?php if ($sCountry != 'United States' && $sCountry != 'Canada') {
+						<input id="StateTextbox" type="text"  class="form-control" name="StateTextbox" value="<?php if ($sCountry != 'United States' && $sCountry != 'Canada') {
         echo htmlentities(stripslashes($sState), ENT_NOQUOTES, 'UTF-8');
     } ?>" size="20" maxlength="30">
 					</div>
@@ -700,7 +696,7 @@ require 'Include/Header.php';
 					</div>
 					<div class="form-group col-md-3">
 						<label> <?= gettext('Country') ?>:</label>
-                        <select id="Country" name="Country" class="form-control select2" id="country-input" data-system-default="<?= SystemConfig::getValue('sDefaultCountry')?>">
+                        <select id="Country" name="Country" class="form-control select2" id="country-input" data-user-selected="<?= $sCountry ?>" data-system-default="<?= SystemConfig::getValue('sDefaultCountry')?>">
                         </select>
                     </div>
 				</div>
