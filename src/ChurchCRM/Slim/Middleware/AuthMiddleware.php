@@ -2,14 +2,10 @@
 
 namespace ChurchCRM\Slim\Middleware;
 
-use ChurchCRM\UserQuery;
-use Slim\Http\Request;
-use Slim\Http\Response;
-use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Authentication\Requests\APITokenAuthenticationRequest;
-use ChurchCRM\Authentication\AuthenticationProviders\APITokenAuthentication;
+use Slim\Http\Request;
+use Slim\Http\Response;
 
 class AuthMiddleware {
 
@@ -18,18 +14,18 @@ class AuthMiddleware {
         if (!$this->isPath( $request, "public")) {
             $apiKey = $request->getHeader("x-api-key");
             if (!empty($apiKey)) {
-              
+
                 $authenticationResult = AuthenticationManager::Authenticate(new APITokenAuthenticationRequest($apiKey[0]));
                 if (! $authenticationResult->isAuthenticated) {
                     AuthenticationManager::EndSession(true);
                     return $response->withStatus(401, gettext('No logged in user'));
-                }        
+                }
             }
             // validate the user session; however, do not update tLastOperation if the requested path is "/background"
             // since /background operations do not connotate user activity.
             else if (AuthenticationManager::ValidateUserSessionIsActive(!$this->isPath( $request, "background"))) {
                 // User with an active browser session is still authenticated.
-                // don't really need to do anything here... 
+                // don't really need to do anything here...
             }
             else {
                 return $response->withStatus(401, gettext('No logged in user'));

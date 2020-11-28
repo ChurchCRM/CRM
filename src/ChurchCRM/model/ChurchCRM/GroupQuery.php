@@ -3,6 +3,9 @@
 namespace ChurchCRM;
 
 use ChurchCRM\Base\GroupQuery as BaseGroupQuery;
+use Propel\Runtime\ActiveQuery\Criteria;
+use Propel\Runtime\ActiveQuery\Join;
+use Propel\Runtime\Connection\ConnectionInterface;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'group_grp' table.
@@ -13,11 +16,6 @@ use ChurchCRM\Base\GroupQuery as BaseGroupQuery;
  * application requirements.  This class will only be generated as
  * long as it does not already exist in the output directory.
  */
-
-use \Propel\Runtime\Connection\ConnectionInterface;
-use \Propel\Runtime\ActiveQuery\Join;
-use \Propel\Runtime\ActiveQuery\Criteria;
-
 class GroupQuery extends BaseGroupQuery
 {
     public function preSelect(ConnectionInterface $con)

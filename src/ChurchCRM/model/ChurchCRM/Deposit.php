@@ -3,7 +3,6 @@
 namespace ChurchCRM;
 
 use ChurchCRM\Base\Deposit as BaseDeposit;
-use ChurchCRM\PledgeQuery;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Map\DonationFundTableMap;
 use ChurchCRM\Map\PledgeTableMap;

@@ -2,9 +2,9 @@
 
 namespace ChurchCRM\Slim\Middleware\Request;
 
+use ChurchCRM\FamilyQuery;
 use Slim\Http\Request;
 use Slim\Http\Response;
-use ChurchCRM\FamilyQuery;
 
 class FamilyAPIMiddleware
 {

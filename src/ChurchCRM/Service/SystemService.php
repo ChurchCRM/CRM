@@ -4,20 +4,13 @@ namespace ChurchCRM\Service;
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\FileSystemUtils;
-use ChurchCRM\SQLUtils;
-use Exception;
-use Ifsnop\Mysqldump\Mysqldump;
-use PharData;
 use Propel\Runtime\Propel;
 use PDO;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
-use ChurchCRM\Utils\ExecutionTime;
 use ChurchCRM\Backup\BackupJob;
 use ChurchCRM\Backup\BackupType;
 use ChurchCRM\Utils\ChurchCRMReleaseManager;
-use ChurchCRM\dto\ChurchCRMRelease;
 
 require SystemURLs::getDocumentRoot() . '/vendor/ifsnop/mysqldump-php/src/Ifsnop/Mysqldump/Mysqldump.php';
 

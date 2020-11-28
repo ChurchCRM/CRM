@@ -2,16 +2,16 @@
 
 namespace ChurchCRM\Slim\Middleware\Request;
 
-use Slim\Http\Request;
-use Slim\Http\Response;
-use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\CalendarQuery;
 use ChurchCRM\Calendar;
-use DateTime;
-use ChurchCRM\Utils\InputUtils;
-use Propel\Runtime\ActiveQuery\Criteria;
+use ChurchCRM\CalendarQuery;
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\EventQuery;
 use ChurchCRM\Map\EventTableMap;
+use ChurchCRM\Utils\InputUtils;
+use DateTime;
+use Propel\Runtime\ActiveQuery\Criteria;
+use Slim\Http\Request;
+use Slim\Http\Response;
 
 class PublicCalendarAPIMiddleware
 {
@@ -20,12 +20,12 @@ class PublicCalendarAPIMiddleware
         if (!SystemConfig::getBooleanValue("bEnableExternalCalendarAPI")) {
             return $response->withStatus(403, gettext("External Calendar API is disabled"));
         }
-        
+
         $CAT = $request->getAttribute("route")->getArgument("CalendarAccessToken");
         if (empty(trim($CAT))) {
           return $response->withStatus(400)->withJson(["message" => gettext("Missing calendar access token")]);
         }
-        
+
         $calendar = CalendarQuery::create()
             ->filterByAccessToken($CAT)
             ->findOne();
@@ -38,7 +38,7 @@ class PublicCalendarAPIMiddleware
         $request = $request->withAttribute("events", $events);
         return $next($request, $response);
     }
-    
+
     private function getEvents(Request $request, Calendar $calendar)
     {
         $params = $request->getQueryParams();
@@ -48,7 +48,7 @@ class PublicCalendarAPIMiddleware
             $start_date = new DateTime();
         }
         $start_date->setTime(0, 0, 0);
-       
+
         $events = EventQuery::create()
             ->joinCalendarEvent()
             ->useCalendarEventQuery()
