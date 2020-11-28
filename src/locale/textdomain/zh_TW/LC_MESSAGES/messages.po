@@ -1365,10 +1365,6 @@ msgid "Family Info"
 msgstr "家庭資料"
 
 #: 
-msgid "None US/CND State"
-msgstr "無 US/CND 狀態"
-
-#: 
 msgid "Contact Info"
 msgstr "聯絡人資料"
 
@@ -8669,10 +8665,6 @@ msgid "Invalid User/Password"
 msgstr "無效的用戶/密碼"
 
 #: 
-msgid "Bad userId"
-msgstr "用戶ID不好"
-
-#: 
 msgid "Find Duplicate Emails"
 msgstr "查找重複的電子郵件"
 
@@ -9527,16 +9519,6 @@ msgstr "需要雙重認證"
 #, fuzzy
 msgid "2FA Application Name"
 msgstr "雙重認證應用程式名稱"
-
-#: 
-#, fuzzy
-msgid "Unsupported user config"
-msgstr "不支持的用戶配置"
-
-#: 
-#, fuzzy
-msgid "Invalid userId"
-msgstr "無效的使用者代碼"
 
 #: 
 #, fuzzy

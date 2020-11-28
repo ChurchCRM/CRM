@@ -1357,10 +1357,6 @@ msgid "Family Info"
 msgstr "Informação da Família"
 
 #: 
-msgid "None US/CND State"
-msgstr "Distrito"
-
-#: 
 msgid "Contact Info"
 msgstr "Informação de Contacto"
 
@@ -8690,10 +8686,6 @@ msgstr "valor de exportação inválido"
 #: 
 msgid "Invalid User/Password"
 msgstr "Utilizador ou Senha Inválidos"
-
-#: 
-msgid "Bad userId"
-msgstr "ID de utilizador ruim"
 
 #: 
 msgid "Find Duplicate Emails"

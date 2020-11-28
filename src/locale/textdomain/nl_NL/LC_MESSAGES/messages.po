@@ -1321,10 +1321,6 @@ msgid "Family Info"
 msgstr "Adresgegevens gezin"
 
 #: 
-msgid "None US/CND State"
-msgstr "Geen USA staat of Canadese provincie"
-
-#: 
 msgid "Contact Info"
 msgstr "Contact gegevens"
 
@@ -6874,10 +6870,6 @@ msgstr "Ongeldige waarde van de export functie"
 #: 
 msgid "Invalid User/Password"
 msgstr "Ongeldige  inlogcode en/of password"
-
-#: 
-msgid "Bad userId"
-msgstr "Ongeldig gebruikers code"
 
 #: 
 msgid "Find Duplicate Emails"

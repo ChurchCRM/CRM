@@ -1323,10 +1323,6 @@ msgid "Family Info"
 msgstr "Familieninformation"
 
 #: 
-msgid "None US/CND State"
-msgstr "Kein US-/kanadischer Staat"
-
-#: 
 msgid "Contact Info"
 msgstr "Kontaktinformation"
 
@@ -7821,10 +7817,6 @@ msgstr "ungültiger Exportwert"
 #: 
 msgid "Invalid User/Password"
 msgstr "Ungültiger Benutzer/Kennwort"
-
-#: 
-msgid "Bad userId"
-msgstr "Falsche BenutzerId"
 
 #: 
 msgid "Find Duplicate Emails"

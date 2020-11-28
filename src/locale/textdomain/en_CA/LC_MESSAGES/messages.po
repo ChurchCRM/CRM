@@ -17,10 +17,6 @@ msgid "Zip"
 msgstr "Postal Code"
 
 #: 
-msgid "None US/CND State"
-msgstr "None Province"
-
-#: 
 msgid "Check"
 msgstr "Cheque"
 

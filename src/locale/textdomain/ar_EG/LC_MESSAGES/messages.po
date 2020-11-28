@@ -1318,10 +1318,6 @@ msgid "Family Info"
 msgstr "بيانات العائلة"
 
 #: 
-msgid "None US/CND State"
-msgstr "لا شيء الولايات المتحدة CND الدولة /"
-
-#: 
 msgid "Contact Info"
 msgstr "بيانات الاتصال"
 
@@ -8490,10 +8486,6 @@ msgstr "قيمة الصادرات غير صالحة"
 #: 
 msgid "Invalid User/Password"
 msgstr "العضو صالح / كلمة المرور"
-
-#: 
-msgid "Bad userId"
-msgstr "سيئة حاليا"
 
 #: 
 msgid "Find Duplicate Emails"

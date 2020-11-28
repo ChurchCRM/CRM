@@ -1319,10 +1319,6 @@ msgid "Family Info"
 msgstr "Información Familiar"
 
 #: 
-msgid "None US/CND State"
-msgstr "Estado No"
-
-#: 
 msgid "Contact Info"
 msgstr "Información de Contacto"
 
@@ -8534,10 +8530,6 @@ msgid "Invalid User/Password"
 msgstr "Usuario/Contraseña inválidos"
 
 #: 
-msgid "Bad userId"
-msgstr "Id de usuario incorrecto"
-
-#: 
 msgid "Find Duplicate Emails"
 msgstr "Buscar Emails duplicados"
 
@@ -9292,14 +9284,6 @@ msgstr "Requiere 2FA"
 #: 
 msgid "2FA Application Name"
 msgstr "Nombre de la aplicación 2FA"
-
-#: 
-msgid "Unsupported user config"
-msgstr "Configuración de usuario no soportada"
-
-#: 
-msgid "Invalid userId"
-msgstr "Id de usuario inválido"
 
 #: 
 msgid "Login Info"
