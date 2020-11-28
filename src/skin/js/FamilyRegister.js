@@ -139,10 +139,12 @@ $(document).ready(function () {
             url: window.CRM.root + "/api/public/data/countries/"+ this.value.toLowerCase() +"/states"
         }).done(function (data) {
             if (Object.keys(data).length > 0) {
+                $("#familyStateSelect").empty();
                 $.each(data, function (code, name) {
                     let selected = $("#familyStateSelect").data("system-default") == code;
                     $("#familyStateSelect").append(new Option(name, code, selected, selected));
                 });
+                $("#familyStateSelect").change();
                 $("#familyStateInput").addClass("hidden");
                 $("#familyStateSelect").removeClass("hidden");
             } else {
