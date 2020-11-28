@@ -4127,10 +4127,6 @@ msgid "Invalid User/Password"
 msgstr "Błędny Użytkownik lub Hasło"
 
 #: 
-msgid "Bad userId"
-msgstr "Błędny userId"
-
-#: 
 msgid "Find Duplicate Emails"
 msgstr "Znajdź Duplikaty Email"
 
@@ -4855,14 +4851,6 @@ msgstr "Wymagaj 2FA"
 #: 
 msgid "2FA Application Name"
 msgstr "Nazwa Aplikacji 2FA"
-
-#: 
-msgid "Unsupported user config"
-msgstr "Nieobslugiwane ustawienia użytkownika"
-
-#: 
-msgid "Invalid userId"
-msgstr "Nieprawidłowy 'userId'"
 
 #: 
 msgid "Login Info"

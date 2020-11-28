@@ -1361,10 +1361,6 @@ msgid "Family Info"
 msgstr "Familjinfo"
 
 #: 
-msgid "None US/CND State"
-msgstr "Ingen USA / CND-stat"
-
-#: 
 msgid "Contact Info"
 msgstr "Kontaktinformation"
 
@@ -8640,10 +8636,6 @@ msgid "Invalid User/Password"
 msgstr "Ogiltigt användare / lösenord"
 
 #: 
-msgid "Bad userId"
-msgstr "Dålig användareId"
-
-#: 
 msgid "Find Duplicate Emails"
 msgstr "Hitta duplicerade e-postmeddelanden"
 
@@ -9392,14 +9384,6 @@ msgstr "Kräva 2FA"
 #: 
 msgid "2FA Application Name"
 msgstr "2FA-applikationsnamn"
-
-#: 
-msgid "Unsupported user config"
-msgstr "Användarkonfigurering som inte stöds"
-
-#: 
-msgid "Invalid userId"
-msgstr "Ogiltig användare Id"
 
 #: 
 msgid "Login Info"

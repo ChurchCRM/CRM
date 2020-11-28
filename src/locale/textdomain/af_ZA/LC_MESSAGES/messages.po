@@ -1317,10 +1317,6 @@ msgid "Family Info"
 msgstr "Gesinsinligting"
 
 #: 
-msgid "None US/CND State"
-msgstr "Geen VS / CND-staat nie"
-
-#: 
 msgid "Contact Info"
 msgstr "Kontakbesonderhede"
 
@@ -8491,10 +8487,6 @@ msgid "Invalid User/Password"
 msgstr "Ongeldige gebruiker / wagwoord"
 
 #: 
-msgid "Bad userId"
-msgstr "Slegte gebruiker-ID"
-
-#: 
 msgid "Find Duplicate Emails"
 msgstr "Vind dubbele e-posse"
 
@@ -9243,14 +9235,6 @@ msgstr "Vereis 2FA"
 #: 
 msgid "2FA Application Name"
 msgstr "2FA Aansoeknaam"
-
-#: 
-msgid "Unsupported user config"
-msgstr "Nie-ondersteunde gebruikerkonfig"
-
-#: 
-msgid "Invalid userId"
-msgstr "Ongeldige gebruiker-ID"
 
 #: 
 msgid "Login Info"
