@@ -270,92 +270,6 @@ require 'Include/Header.php';
     initPaymentTable();
     initFundList();
 
-    if (iContributorID) { // edit contributions
-      $("#addNewContrib").prop('disabled',false);
-      initContribution();
-      initContributor();
-      // $("#AddFund").focus();
-    } else { // if new contribution
-      // get previous sunday since data entry normally occurs later if dDate not set
-      // if (dDate == '') {
-      //   dDate = new Date()
-      //   dDate.setDate(dDate.getDate() - dDate.getDay());
-      // }
-      
-      $("#contribDate").datepicker({format: window.CRM.datePickerformat, language: window.CRM.lang}).datepicker("setDate", dDate);
-      // set payment type
-      $('#contribType').val(iMethod);
-    }
-
-    // submit contribution and/ or split
-    // $("#contribDate").on('click', function (e) {
-    //   // carry date forward
-    //   // $_SESSION['idefaultDate'] = $(this).val();
-    //   // sense shift key
-    //   ctrl = e.ctrlKey;
-    //   console.log(ctrl);
-    // });
-
-    // submit contribution and/ or split
-    // $("#contribDate").change(function (e) {
-    //   // carry date forward
-    //   // $_SESSION['idefaultDate'] = $(this).val();
-    //   // sense shift key
-      
-    // });
-
-    // search for contributors
-    $("#ContributorName").select2({
-      minimumInputLength: 2,
-      ajax: {
-          url: function (params){
-            var a = window.CRM.root + '/api/persons/search2/'+ params.term;
-            return a;
-          },
-          dataType: 'json',
-          delay: 250,
-          data: "People",
-          processResults: function (data, params) {
-            var results = [];
-            var people = JSON.parse(data).People
-            $.each(people, function(key, object) {
-              results.push({
-                id: object.Id,
-                text: object.displayName,
-                envelope: object.envelope,
-                typeofmbr: object.TypeOfMbr
-              });
-            });
-            
-            return {
-              results: results
-            };
-            
-          }
-        }
-    });
-
-    // after selection from search, upate the following
-    $("#ContributorName").on("select2:select", function (e) {
-      // update Contributor
-      iContributorID = parseInt(e.params.data.id);
-      $('[name=ContributorID]').val(e.params.data.id);
-      $('[name=TypeOfMbr]').val(e.params.data.typeofmbr);
-      $('[name=Envelope]').val(e.params.data.envelope);
-      $("#addNewContrib").prop('disabled', false);
-      // $("#PledgeSubmit").prop('disabled', false)
-    });
-
-    // PledgeSave
-    $("#PledgeSubmit").on("click", function() {
-      UpdateContribution();
-    });
-
-    // PledgeCancel
-    // $("#PledgeCancel").on("click", function() {
-    //   document.location = window.CRM.root+'/findContributions.php'
-    // });
-
     // delete selected rows
     $('#deleteSelectedRows').click(function () {
     var deletedRows = dataT.rows('.selected').data()
@@ -382,7 +296,13 @@ require 'Include/Header.php';
               path: 'split/' + value.Id
             })
               .done(function (data) {
+                
                 dataT.rows('.selected').remove().draw(false);
+                // recalculate total
+                var newTotal = dataT.column(3).data().reduce( function (a,b) {
+                      return parseInt(a) + parseInt(b);
+                  });
+                $('#TotalAmount').val(newTotal);
               });
           });
         }
@@ -390,6 +310,68 @@ require 'Include/Header.php';
     });
   });
 
+  // hide based on system settings
+  if (!EnableNonDeductible) {
+    $("#AddNonDeductible").hide();
+    $("#AddNonDeductibleLabel").hide();
+  }
+  if (iContributorID) { // edit contributions
+    $("#addNewContrib").prop('disabled',false);
+    initContribution();
+    initContributor();
+    // $("#AddFund").focus();
+  } else { // if new contribution
+    // get previous sunday since data entry normally occurs later if dDate not set
+    // if (dDate == '') {
+    //   dDate = new Date()
+    //   dDate.setDate(dDate.getDate() - dDate.getDay());
+    // }
+    
+  $("#contribDate").datepicker({format: window.CRM.datePickerformat, language: window.CRM.lang}).datepicker("setDate", dDate);
+    // set payment type
+    $('#contribType').val(iMethod);
+  }
+  // search for contributors
+  $("#ContributorName").select2({
+    minimumInputLength: 2,
+    ajax: {
+        url: function (params){
+          var a = window.CRM.root + '/api/persons/search2/'+ params.term;
+          return a;
+        },
+        dataType: 'json',
+        delay: 250,
+        data: "People",
+        processResults: function (data, params) {
+          var results = [];
+          var people = JSON.parse(data).People
+          $.each(people, function(key, object) {
+            results.push({
+              id: object.Id,
+              text: object.displayName,
+              envelope: object.envelope,
+              typeofmbr: object.TypeOfMbr
+            });
+          });
+          
+          return {
+            results: results
+          };
+          
+        }
+      }
+  });
+
+  // after selection from search, upate the following
+  $("#ContributorName").on("select2:select", function (e) {
+    // update Contributor
+    iContributorID = parseInt(e.params.data.id);
+    $('[name=ContributorID]').val(e.params.data.id);
+    $('[name=TypeOfMbr]').val(e.params.data.typeofmbr);
+    $('[name=Envelope]').val(e.params.data.envelope);
+    $("#addNewContrib").prop('disabled', false);
+    // $("#PledgeSubmit").prop('disabled', false)
+  });
   // toggle table rows when clicked on
   $("#splitTable tbody").on('click', 'tr', function () {
     $(this).toggleClass('selected');
@@ -403,114 +385,6 @@ require 'Include/Header.php';
     // $("#generateDepositSlip").prop('disabled', !(selectedRows));
     // $("#generateDepositSlip").html("<i class=\"fa fa-download\"></i> Generate Deposit Split for Selected (" + selectedRows + ") Rows (PDF)");
   });
-
-  $('.exportButton').click(function (sender) {
-    var selectedRows = dataT.rows('.selected').data()
-    var type = this.getAttribute("data-exportType");
-    $.each(selectedRows, function (index, value) {
-      window.CRM.VerifyThenLoadAPIContent(window.CRM.root + '/api/contrib/' + value.Id + '/' + type);
-    });
-  });
-
-  // modal submit contribution and/ or split
-  $("#submitContrib").on('click', function () {
-    if (IsNewContribution()) {
-        // add contribution first to generate ConID to link split, AddSplit() will be called after the contribution has been created
-        AddContribution();
-      } else {
-        // only add split if contribution already exists
-        AddSplit();
-        $("#addNewContribModal").hide();
-        // $("#addNewContrib").prop('disabled', false);
-      }
-  });
-  // modal submit contribution and add another split
-  $("#addAnotherSplit").on('click', function () {
-    if (IsNewContribution()) {
-        // add contribution first to generate ConID to link split, AddSplit() will be called after the contribution has been created
-        AddContribution();
-      } else {
-        // only add split if contribution already exists
-        AddSplit();
-      }
-      // return focus to Fund
-      $("#AddFund").focus();
-  });
-  // keep tab in modal window
-  $("#addAnotherSplit").on('keydown', function (e) {
-    // return focus to Fund
-    if ((e.which === 9 && !e.shiftKey)) {
-      e.preventDefault();
-      $("#AddFund").focus();
-    }
-  });
-  // keep tab in modal window
-  $("#AddFund").on('keydown', function (e) {
-    // return focus to Fund
-    if ((e.which === 9 && e.shiftKey)) {
-      e.preventDefault();
-      $("#addAnotherSplit").focus();
-    }
-  });
-  // modal submit contribution and start new contribution
-  $("#addAnotherContribution").on('click', function () {
-    if (IsNewContribution()) {
-        // add contribution first to generate ConID to link split, AddSplit() will be called after the contribution has been created
-        AddContribution();
-      } else {
-        // only add split if contribution already exists
-        AddSplit();
-        $("#addNewContribModal").hide();
-        // $("#addNewContrib").prop('disabled', false);
-        document.location= window.CRM.root + "/ContributionEditor.php?linkBack=findContributions.php";
-      }
-  });
-  // submit contribution and/ or split
-  $("#PledgeSubmitAdd").on('click', function () {
-      // save and move to new
-        UpdateContribution(true);
-        $("#MainForm").submit();
-  });
-
-  // hide based on system settings
-  if (!EnableNonDeductible) {
-    $("#AddNonDeductible").hide();
-    $("#AddNonDeductibleLabel").hide();
-  }
-
-  // set focus (Bootstrap 3)
-  $("#addNewContribModal").on('shown.bs.modal', function () {
-    $("#AddFund").focus();
-  });
-
-  // enable/ disable Check #
-  $("#contribType").on('change', function () {
-    if ($(this).val() == 'Check') {
-      $("#contribCheck").prop('disabled', false);
-    } else {
-      $("#contribCheck").prop('disabled', true);
-      $("#contribCheck").val('');
-    }
-  });
-
-  if ($("#contribType").val() == 'Check') {
-    $("#contribCheck").prop('disabled', false);
-  } else {
-    $("#contribCheck").prop('disabled', true);
-  }
-
-  function IsNewContribution() {
-    if (iContributionID === 0) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  function hasSplit() {
-    return Boolean(dataT.data().count());
-  }
-   
 });
 
 </script>

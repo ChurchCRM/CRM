@@ -483,6 +483,7 @@ if ($output == 'pdf') {
     }
 
     header('Pragma: public');  // Needed for IE when using a shared SSL certificate
+    ob_clean();
     if (SystemConfig::getValue('iPDFOutputType') == 1) {
         $pdf->Output('TaxReport'.date(SystemConfig::getValue("sDateFilenameFormat")).'.pdf', 'D');
     } else {

@@ -246,4 +246,131 @@ function initPaymentTable()
         // $("[name=TotalAmount]").val(total);
     });
   }
- 
+
+  function IsNewContribution() {
+    if (iContributionID === 0) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  function hasSplit() {
+    return Boolean(dataT.data().count());
+  }
+
+  // submit contribution and/ or split
+  // $("#contribDate").on('click', function (e) {
+  //   // carry date forward
+  //   // $_SESSION['idefaultDate'] = $(this).val();
+  //   // sense shift key
+  //   ctrl = e.ctrlKey;
+  //   console.log(ctrl);
+  // });
+
+  // submit contribution and/ or split
+  // $("#contribDate").change(function (e) {
+  //   // carry date forward
+  //   // $_SESSION['idefaultDate'] = $(this).val();
+  //   // sense shift key
+    
+  // });
+
+  // PledgeSave
+  $("#PledgeSubmit").on("click", function() {
+    UpdateContribution();
+  });
+
+
+  $('.exportButton').click(function (sender) {
+    var selectedRows = dataT.rows('.selected').data()
+    var type = this.getAttribute("data-exportType");
+    $.each(selectedRows, function (index, value) {
+      window.CRM.VerifyThenLoadAPIContent(window.CRM.root + '/api/contrib/' + value.Id + '/' + type);
+    });
+  });
+
+  // modal submit contribution and/ or split
+  $("#submitContrib").on('click', function () {
+    if (IsNewContribution()) {
+        // add contribution first to generate ConID to link split, AddSplit() will be called after the contribution has been created
+        AddContribution();
+      } else {
+        // only add split if contribution already exists
+        AddSplit();
+        $("#addNewContribModal").hide();
+        // $("#addNewContrib").prop('disabled', false);
+      }
+  });
+
+  // modal submit contribution and add another split
+  $("#addAnotherSplit").on('click', function () {
+    if (IsNewContribution()) {
+        // add contribution first to generate ConID to link split, AddSplit() will be called after the contribution has been created
+        AddContribution();
+      } else {
+        // only add split if contribution already exists
+        AddSplit();
+      }
+      // return focus to Fund
+      $("#AddFund").focus();
+  });
+
+  // keep tab in modal window
+  $("#addAnotherSplit").on('keydown', function (e) {
+    // return focus to Fund
+    if ((e.which === 9 && !e.shiftKey)) {
+      e.preventDefault();
+      $("#AddFund").focus();
+    }
+  });
+
+  // keep tab in modal window
+  $("#AddFund").on('keydown', function (e) {
+    // return focus to Fund
+    if ((e.which === 9 && e.shiftKey)) {
+      e.preventDefault();
+      $("#addAnotherSplit").focus();
+    }
+  });
+
+  // modal submit contribution and start new contribution
+  $("#addAnotherContribution").on('click', function () {
+    if (IsNewContribution()) {
+        // add contribution first to generate ConID to link split, AddSplit() will be called after the contribution has been created
+        AddContribution();
+      } else {
+        // only add split if contribution already exists
+        AddSplit();
+        $("#addNewContribModal").hide();
+        // $("#addNewContrib").prop('disabled', false);
+        document.location= window.CRM.root + "/ContributionEditor.php?linkBack=findContributions.php";
+      }
+  });
+  // submit contribution and/ or split
+  $("#PledgeSubmitAdd").on('click', function () {
+      // save and move to new
+        UpdateContribution(true);
+        $("#MainForm").submit();
+  });
+
+  // set focus (Bootstrap 3)
+  $("#addNewContribModal").on('shown.bs.modal', function () {
+    $("#AddFund").focus();
+  });
+
+  // enable/ disable Check #
+  $("#contribType").on('change', function () {
+    if ($(this).val() == 'Check') {
+      $("#contribCheck").prop('disabled', false);
+    } else {
+      $("#contribCheck").prop('disabled', true);
+      $("#contribCheck").val('');
+    }
+  });
+
+  if ($("#contribType").val() == 'Check') {
+    $("#contribCheck").prop('disabled', false);
+  } else {
+    $("#contribCheck").prop('disabled', true);
+  }
