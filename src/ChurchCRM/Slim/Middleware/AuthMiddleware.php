@@ -7,60 +7,37 @@ use Slim\Http\Request;
 use Slim\Http\Response;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Utils\LoggerUtils;
+use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\Authentication\Requests\APITokenAuthenticationRequest;
+use ChurchCRM\Authentication\AuthenticationProviders\APITokenAuthentication;
 
 class AuthMiddleware {
-
-    private $user;
-    private $apiKey;
 
     public function __invoke( Request $request, Response $response, callable $next )
     {
         if (!$this->isPath( $request, "public")) {
-            $this->apiKey = $request->getHeader("x-api-key");
-            if (!empty($this->apiKey)) {
-                $user = UserQuery::create()->findOneByApiKey($this->apiKey);
-                if (!empty($user)) {
-                    LoggerUtils::getAppLogger()->debug($user->getName() . " : " . gettext("logged via API Key."));
-                    $this->user = $user;
-                } else {
-                    LoggerUtils::getAppLogger()->warn(gettext("logged via InValid API Key."));
-                    session_destroy();
-                }
+            $apiKey = $request->getHeader("x-api-key");
+            if (!empty($apiKey)) {
+              
+                $authenticationResult = AuthenticationManager::Authenticate(new APITokenAuthenticationRequest($apiKey[0]));
+                if (! $authenticationResult->isAuthenticated) {
+                    AuthenticationManager::EndSession(true);
+                    return $response->withStatus(401, gettext('No logged in user'));
+                }        
             }
-            if (empty($this->user)) {
-                $this->user = $_SESSION['user'];
-            } else {
-                $_SESSION['user'] = $this->user;
-                $_SESSION['tLastOperation'] = time();
+            // validate the user session; however, do not update tLastOperation if the requested path is "/background"
+            // since /background operations do not connotate user activity.
+            else if (AuthenticationManager::ValidateUserSessionIsActive(!$this->isPath( $request, "background"))) {
+                // User with an active browser session is still authenticated.
+                // don't really need to do anything here... 
             }
-
-            if (!$this->isUserSessionValid($request)) {
+            else {
                 return $response->withStatus(401, gettext('No logged in user'));
             }
 
-
-            return $next( $request, $response )->withHeader( "CRM_USER_ID", $this->user->getId());
+            return $next( $request, $response )->withHeader( "CRM_USER_ID", AuthenticationManager::GetCurrentUser()->getId());
         }
         return $next( $request, $response );
-    }
-
-    private function isUserSessionValid(Request $request) {
-      if (empty($this->user)) {
-        return false;
-      }
-      if (SystemConfig::getValue('iSessionTimeout') > 0) {
-        if ((time() - $_SESSION['tLastOperation']) > SystemConfig::getValue('iSessionTimeout')) {
-           return false;
-        } else {
-          if(!$this->isPath( $request, "background"))
-          {
-            //Only update tLastOperation if the request was an actual user request.
-            //Background requests should not update tLastOperation
-            $_SESSION['tLastOperation'] = time();
-          }
-        }
-      }
-      return true;
     }
 
     private function isPath(Request $request, $pathPart) {

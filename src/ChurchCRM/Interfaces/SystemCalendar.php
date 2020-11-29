@@ -9,7 +9,7 @@ interface SystemCalendar {
   public function getAccessToken();
   public function getForegroundColor();  
   public function getBackgroundColor(); 
-  public function getEvents();
+  public function getEvents($start,$end);
   public function getEventById($Id);
   public static function isAvailable();
 }

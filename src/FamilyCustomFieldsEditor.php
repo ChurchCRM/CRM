@@ -20,9 +20,10 @@ require 'Include/Functions.php';
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\Authentication\AuthenticationManager;
 
 // Security: user must be administrator to use this page
-if (!$_SESSION['user']->isAdmin()) {
+if (!AuthenticationManager::GetCurrentUser()->isAdmin()) {
     RedirectUtils::Redirect('Menu.php');
     exit;
 }
@@ -71,7 +72,6 @@ if (isset($_POST['SaveChanges'])) {
             $aNameErrors[$iFieldID] = false;
         }
 
-        $aSideFields[$iFieldID] = $_POST[$iFieldID.'side'];
         $aFieldSecurity[$iFieldID] = $_POST[$iFieldID.'FieldSec'];
 
         if (isset($_POST[$iFieldID.'special'])) {
@@ -89,16 +89,9 @@ if (isset($_POST['SaveChanges'])) {
     // If no errors, then update.
     if (!$bErrorFlag) {
         for ($iFieldID = 1; $iFieldID <= $numRows; $iFieldID++) {
-            if ($aSideFields[$iFieldID] == 0) {
-                $temp = 'left';
-            } else {
-                $temp = 'right';
-            }
-
             $sSQL = "UPDATE family_custom_master
                     SET `fam_custom_Name` = '".$aNameFields[$iFieldID]."',
                         `fam_custom_Special` = ".$aSpecialFields[$iFieldID].",
-                        `fam_custom_Side` = '".$temp."',
                         `fam_custom_FieldSec` = ".$aFieldSecurity[$iFieldID]."
                     WHERE `fam_custom_Field` = '".$aFieldFields[$iFieldID]."';";
 
@@ -110,7 +103,6 @@ if (isset($_POST['SaveChanges'])) {
     if (isset($_POST['AddField'])) {
         $newFieldType = InputUtils::LegacyFilterInput($_POST['newFieldType'], 'int');
         $newFieldName = InputUtils::LegacyFilterInput($_POST['newFieldName']);
-        $newFieldSide = $_POST['newFieldSide'];
         $newFieldSec = $_POST['newFieldSec'];
 
         if (strlen($newFieldName) == 0) {
@@ -144,12 +136,6 @@ if (isset($_POST['SaveChanges'])) {
                 $fieldInfo = mysqli_fetch_field_direct($fields, $last);
                 $newFieldNum = mb_substr($fieldInfo->name, 1) + 1;
 
-                if ($newFieldSide == 0) {
-                    $newFieldSide = 'left';
-                } else {
-                    $newFieldSide = 'right';
-                }
-
                 // If we're inserting a new custom-list type field,
                 // create a new list and get its ID
                 if ($newFieldType == 12) {
@@ -175,8 +161,8 @@ if (isset($_POST['SaveChanges'])) {
                 // Insert into the master table
                 $newOrderID = $last + 1;
                 $sSQL = "INSERT INTO `family_custom_master`
-                        (`fam_custom_Order` , `fam_custom_Field` , `fam_custom_Name` ,  `fam_custom_Special` , `fam_custom_Side` , `fam_custom_FieldSec` , `type_ID`)
-                        VALUES ('".$newOrderID."', 'c".$newFieldNum."', '".$newFieldName."', ".$newSpecial.", '".$newFieldSide."', '".$newFieldSec."', '".$newFieldType."');";
+                        (`fam_custom_Order` , `fam_custom_Field` , `fam_custom_Name` ,  `fam_custom_Special` , `fam_custom_FieldSec` , `type_ID`)
+                        VALUES ('".$newOrderID."', 'c".$newFieldNum."', '".$newFieldName."', ".$newSpecial.", '".$newFieldSec."', '".$newFieldType."');";
                 RunQuery($sSQL);
 
                 // Insert into the custom fields table
@@ -243,7 +229,6 @@ if (isset($_POST['SaveChanges'])) {
         $aSpecialFields[$row] = $fam_custom_Special;
         $aFieldFields[$row] = $fam_custom_Field;
         $aTypeFields[$row] = $type_ID;
-        $aSideFields[$row] = ($fam_custom_Side == 'right');
         $aFieldSecurity[$row] = $fam_custom_FieldSec;
         $aNameErrors[$row] = false;
     }
@@ -320,7 +305,6 @@ if ($numRows == 0) {
             <th><?= gettext('Name') ?></th>
             <th><?= gettext('Special option') ?></th>
             <th><?= gettext('Security Option') ?></th>
-            <th><?= gettext('Family-View Side') ?></th>
             <th><?= gettext('Delete') ?></th>
         </tr>
     <?php
@@ -373,10 +357,6 @@ if ($numRows == 0) {
             </td>
             <td class="TextColumn" align="center" nowrap>
                 <?= GetSecurityList($aSecurityGrp, $row.'FieldSec', $aSecurityType[$aFieldSecurity[$row]]) ?>
-            </td>
-            <td class="TextColumn" align="center" nowrap>
-                <input type="radio" Name="<?= $row ?>side" value="0" <?= !$aSideFields[$row] ? ' checked' : ''?>><?= gettext('Left') ?>
-                <input type="radio" Name="<?= $row ?>side" value="1" <?= $aSideFields[$row] ? ' checked' : ''?>><?= gettext('Right') ?>
             </td>
             <td>
                 <input type="button" class="btn btn-danger" value="<?= gettext('Delete') ?>"   name="delete" onclick="return confirmDeleteField('<?= $aFieldFields[$row] ?>');">
@@ -446,12 +426,6 @@ if ($numRows == 0) {
                     <td valign="top" nowrap>
                         <div><?= gettext('Security Option') ?></div>
                         <?= GetSecurityList($aSecurityGrp, 'newFieldSec') ?>
-                    </td>
-                    <td valign="top" nowrap>
-                        <div><?= gettext('Side') ?>:</div>
-                        <input type="radio" name="newFieldSide" value="0" checked><?= gettext('Left') ?>
-                        <input type="radio" name="newFieldSide" value="1"><?= gettext('Right') ?>
-                        &nbsp;
                     </td>
                     <td>
                         <input type="submit" class="btn btn-primary" <?= 'value="'.gettext('Add New Field').'"' ?> Name="AddField">

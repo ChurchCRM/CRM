@@ -3,7 +3,7 @@
 namespace ChurchCRM;
 
 use ChurchCRM\Base\Deposit as BaseDeposit;
-use ChurchCRM\Base\Pledge;
+use ChurchCRM\PledgeQuery;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Map\DonationFundTableMap;
 use ChurchCRM\Map\PledgeTableMap;
@@ -168,9 +168,9 @@ class Deposit extends BaseDeposit
         $thisReport->curX = $thisReport->QBDepositTicketParameters->leftX + $thisReport->QBDepositTicketParameters->lineItemInterval->x;
         $thisReport->curY = $thisReport->QBDepositTicketParameters->topY;
 
-        $pledges = \ChurchCRM\PledgeQuery::create()
-            ->filterByDepid($this->getId())
-            ->groupByGroupkey()
+        $pledges = PledgeQuery::create()
+            ->filterByDepId($this->getId())
+            ->groupByGroupKey()
             ->withColumn('SUM(Pledge.Amount)', 'sumAmount')
             ->joinFamily(null, Criteria::LEFT_JOIN)
             ->withColumn('Family.Name')
@@ -178,7 +178,7 @@ class Deposit extends BaseDeposit
         foreach ($pledges as $pledge) {
             // then all of the checks in key-value pairs, in 3 separate columns.  Left to right, then top to bottom.
             if ($pledge->getMethod() == 'CHECK') {
-                $thisReport->pdf->PrintRightJustified($thisReport->curX, $thisReport->curY, $pledge->getCheckno());
+                $thisReport->pdf->PrintRightJustified($thisReport->curX, $thisReport->curY, $pledge->getCheckNo());
                 $thisReport->pdf->PrintRightJustified($thisReport->curX + $thisReport->QBDepositTicketParameters->amountOffsetX, $thisReport->curY, $pledge->getsumAmount());
 
                 $thisReport->curX += $thisReport->QBDepositTicketParameters->lineItemInterval->x;
@@ -281,8 +281,8 @@ class Deposit extends BaseDeposit
             $thisReport->pdf->SetFont('Times', '', 10);
 
             // Format Data
-            $checkNo = $payment->getCheckno();
-            $fundName = DonationFundQuery::create()->findOneById($payment->getFundid())->getName();
+            $checkNo = $payment->getCheckNo();
+            $fundName = DonationFundQuery::create()->findOneById($payment->getFundId())->getName();
             $comment = $payment->getComment();
             //$family = FamilyQuery::create()->findOneById($payment->getFamId());
             $family = $payment->getFamily();
@@ -421,7 +421,7 @@ class Deposit extends BaseDeposit
     public function getTotalChecks()
     {
         $totalCash = PledgeQuery::create()
-            ->filterByDepid($this->getId())
+            ->filterByDepId($this->getId())
             ->filterByMethod('CHECK')
             ->withColumn('SUM(Pledge.Amount)', 'sumAmount')
             ->find()
@@ -433,7 +433,7 @@ class Deposit extends BaseDeposit
     public function getTotalCash()
     {
         $totalCash = PledgeQuery::create()
-            ->filterByDepid($this->getId())
+            ->filterByDepId($this->getId())
             ->filterByMethod('CASH')
             ->withColumn('SUM(Pledge.Amount)', 'sumAmount')
             ->find()
@@ -445,8 +445,8 @@ class Deposit extends BaseDeposit
     public function getCountChecks()
     {
         $countCash = PledgeQuery::create()
-            ->filterByDepid($this->getId())
-            ->groupByGroupkey()
+            ->filterByDepId($this->getId())
+            ->groupByGroupKey()
             ->filterByMethod('CHECK')
             ->find()
             ->count();
@@ -457,8 +457,8 @@ class Deposit extends BaseDeposit
     public function getCountCash()
     {
         $countCash = PledgeQuery::create()
-            ->filterByDepid($this->getId())
-            ->groupByGroupkey()
+            ->filterByDepId($this->getId())
+            ->groupByGroupKey()
             ->filterByMethod('CASH')
             ->find()
             ->count();
@@ -469,8 +469,8 @@ class Deposit extends BaseDeposit
     public function getFundTotals()
     {
         $funds = PledgeQuery::create()
-      ->filterByDepid($this->getId())
-      ->groupByFundid()
+      ->filterByDepId($this->getId())
+      ->groupByFundId()
       ->withColumn('SUM('.PledgeTableMap::COL_PLG_AMOUNT.')', 'Total')
       ->joinDonationFund()
       ->withColumn(DonationFundTableMap::COL_FUN_NAME, 'Name')

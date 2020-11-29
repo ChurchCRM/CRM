@@ -6,6 +6,7 @@ msgstr ""
 "X-Generator: POEditor.com\n"
 "Project-Id-Version: ChurchCRM\n"
 "Language: sq\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: 
 msgid "Cannot execute query."
@@ -60,7 +61,8 @@ msgid "Backup Database"
 msgstr "Databaza e kopjes rezervë"
 
 #: 
-msgid "You should make a manual backup at least once a week unless you already have a regular backup procedule for your systems."
+#, fuzzy
+msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
 msgstr "Ju duhet të bëni një backup manual të paktën një herë në javë nëse ju tashmë keni një procedule rregullt rezervë për sistemet tuaja."
 
 #: 
@@ -995,10 +997,6 @@ msgid "Event Guests"
 msgstr "Guests Event"
 
 #: 
-msgid "Back to Report Menu"
-msgstr "Mbrapsht në Njoftoni Menu"
-
-#: 
 msgid "There "
 msgstr "Jane "
 
@@ -1139,24 +1137,12 @@ msgid "Security Option"
 msgstr "Opcioni i Sigurimit"
 
 #: 
-msgid "Family-View Side"
-msgstr "Family-Shiko Side"
-
-#: 
 msgid "You must select a group."
 msgstr "Ju duhet të zgjidhni një grup."
 
 #: 
 msgid "Edit List Options"
 msgstr "Edit Lista Options"
-
-#: 
-msgid "Left"
-msgstr "Majtas"
-
-#: 
-msgid "Right"
-msgstr "E drejtë"
 
 #: 
 msgid "Help on types.."
@@ -1239,10 +1225,6 @@ msgid "Role"
 msgstr "Rol"
 
 #: 
-msgid "Day"
-msgstr "Dita:"
-
-#: 
 msgid "Select Gender"
 msgstr "Zgjidhni Gjinia"
 
@@ -1305,10 +1287,6 @@ msgstr "Dhjetor"
 #: 
 msgid "Unk"
 msgstr "Unk"
-
-#: 
-msgid "Latitude/Longitude"
-msgstr "Latitude / Longitude"
 
 #: 
 msgid "Envelope Number"
@@ -2194,10 +2172,6 @@ msgid "No custom person fields have been added yet"
 msgstr "Nuk fusha personi me porosi janë shtuar ende"
 
 #: 
-msgid "Person-View Side"
-msgstr "Person-Shiko Side"
-
-#: 
 msgid "Person Editor"
 msgstr "Person Editor"
 
@@ -2240,14 +2214,6 @@ msgstr "Krijo një familje të re (duke përdorur emrin e kaluar)"
 #: 
 msgid "Friend Date"
 msgstr "Mik Data"
-
-#: 
-msgid "Add Person to Group"
-msgstr "Shto person të Grupit"
-
-#: 
-msgid "Select the group to add this person to"
-msgstr "Zgjidh grupin për të shtuar këtë person të"
 
 #: 
 msgid "Not assigned"
@@ -2675,78 +2641,6 @@ msgid "Delete Family Record AND Family Members"
 msgstr "Fshij Record familjare dhe anëtarët e familjes"
 
 #: 
-msgid "Person Listing"
-msgstr "Person Listing"
-
-#: 
-msgid "Group Assignment Helper"
-msgstr "Grupi Caktimi Helper"
-
-#: 
-msgid "Show people <b>not</b> in this group type:"
-msgstr "Shfaq njerëzit nuk <b> </ b> në këtë lloj grup:"
-
-#: 
-msgid "Sort order"
-msgstr "Renditur urdhërojë"
-
-#: 
-msgid "By Name"
-msgstr "Nga Emri"
-
-#: 
-msgid "By Family"
-msgstr "By Family"
-
-#: 
-msgid "By Newest Entries"
-msgstr "Nga Entries rejat"
-
-#: 
-msgid "By Recently Edited"
-msgstr "Duke Redaktuar Kohët e fundit"
-
-#: 
-msgid "Apply Filter"
-msgstr "Aplikoni Filter"
-
-#: 
-msgid "Male & Female"
-msgstr "Meshkuj & Femra"
-
-#: 
-msgid "All Classifications"
-msgstr "Të gjitha Klasifikimet"
-
-#: 
-msgid "All Family Roles"
-msgstr "Të gjitha Rolet familjare"
-
-#: 
-msgid "All Contact Properties"
-msgstr "Të gjitha Prona Kontakt"
-
-#: 
-msgid "All Group Types"
-msgstr "Të gjitha Llojet e grupit"
-
-#: 
-msgid "All Groups"
-msgstr "Të gjitha grupet"
-
-#: 
-msgid "All Roles"
-msgstr "Të gjitha Rolet"
-
-#: 
-msgid "View All"
-msgstr "Shiko të gjitha"
-
-#: 
-msgid "Cart"
-msgstr "Qerre"
-
-#: 
 msgid "My User Settings"
 msgstr "Mia User Settings"
 
@@ -2875,20 +2769,8 @@ msgid "Failed Logins"
 msgstr "Logins dështuara"
 
 #: 
-msgid "You must enter a password in both boxes"
-msgstr "Ju duhet të hyjë në një fjalëkalim në të dy kutitë"
-
-#: 
 msgid "You must enter the same password in both boxes"
 msgstr "Ju duhet të hyjë në të njëjtin fjalëkalim në të dy kutitë"
-
-#: 
-msgid "Invalid password"
-msgstr "Regjistrohu Invalid"
-
-#: 
-msgid "You must enter your new password in both boxes"
-msgstr "Ju duhet të shkruani fjalëkalimin tuaj të re në të dy kutitë"
 
 #: 
 msgid "Your password choice is too obvious. Please choose something else."
@@ -2903,32 +2785,12 @@ msgid "characters"
 msgstr "karaktere"
 
 #: 
-msgid "You need to actually change your password (nice try, though!)"
-msgstr "Ju duhet të vërtetë të ndryshuar fjalëkalimin tuaj (të mirë provoni, pse!)"
-
-#: 
-msgid "Your new password is too similar to your old one.  Be more creative!"
-msgstr "Fjalëkalimi juaj i ri është shumë i ngjashëm me një tuaj të vjetër. Të jetë më kreative!"
-
-#: 
-msgid "User Password Change"
-msgstr "Ndryshimi i përdoruesit Fjalëkalimi"
-
-#: 
-msgid "Your account record indicates that you need to change your password before proceding."
-msgstr "Të dhënat tuaja të llogarisë tregon se ju duhet të ndryshoni fjalëkalimin tuaj para proceding."
-
-#: 
 msgid "Enter your current password, then your new password twice.  Passwords must be at least"
 msgstr "Shkruani fjalëkalimin tuaj të tanishme, atëherë fjalëkalimin tuaj të ri dy herë. Fjalëkalimet duhet të jetë të paktën"
 
 #: 
 msgid "characters in length."
 msgstr "karaktere në gjatësi."
-
-#: 
-msgid "Enter a new password for this user."
-msgstr "Futni një fjalëkalim të ri për këtë përdorues."
 
 #: 
 msgid "Old Password"
@@ -3409,11 +3271,16 @@ msgid "Create Attendance Sheet"
 msgstr "Krijo Pjesëmarrja Sheet"
 
 #: 
+msgid "Members"
+msgstr "Anëtarët"
+
+#: 
 msgid "Add New Person"
 msgstr "Shto person i ri"
 
 #: 
-msgid "View All Persons"
+#, fuzzy
+msgid "View All People"
 msgstr "Shiko të gjitha Persona"
 
 #: 

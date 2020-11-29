@@ -7,7 +7,6 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\FileSystemUtils;
 use ChurchCRM\SQLUtils;
 use Exception;
-use Github\Client;
 use Ifsnop\Mysqldump\Mysqldump;
 use PharData;
 use Propel\Runtime\Propel;
@@ -17,23 +16,15 @@ use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\ExecutionTime;
 use ChurchCRM\Backup\BackupJob;
 use ChurchCRM\Backup\BackupType;
+use ChurchCRM\Utils\ChurchCRMReleaseManager;
+use ChurchCRM\dto\ChurchCRMRelease;
 
 require SystemURLs::getDocumentRoot() . '/vendor/ifsnop/mysqldump-php/src/Ifsnop/Mysqldump/Mysqldump.php';
 
 
 class SystemService
 {
-    public function getLatestRelease()
-    {
-        $client = new Client();
-        $release = null;
-        try {
-            $release = $client->api('repo')->releases()->latest('churchcrm', 'crm');
-        } catch (\Exception $e) {
-        }
 
-        return $release;
-    }
 
     static public function getInstalledVersion()
     {
@@ -46,19 +37,7 @@ class SystemService
 
     static public function getCopyrightDate()
     {
-        $composerFile = file_get_contents(SystemURLs::getDocumentRoot() . '/composer.json');
-        $composerJson = json_decode($composerFile, true);
-        $buildTime = new \DateTime();
-
-        if ((!empty($composerJson)) && array_key_exists('time', $composerJson) && (!empty($composerJson['time'])))
-        {
-            try{ 
-                $buildTime = new \DateTime($composerJson['time']);
-            } catch (Exception $e) {
-                // will use default
-            }
-        }
-        return $buildTime->format("Y");
+        return (new \DateTime())->format("Y");
     }
 
     public function getConfigurationSetting($settingName, $settingValue)
@@ -187,33 +166,33 @@ class SystemService
 
     public static function runTimerJobs()
     {
-      LoggerUtils::getAppLogger()->addInfo("Starting background job processing");
+      LoggerUtils::getAppLogger()->info("Starting background job processing");
         //start the external backup timer job
         if (SystemConfig::getBooleanValue('bEnableExternalBackupTarget') && SystemConfig::getValue('sExternalBackupAutoInterval') > 0) {  //if remote backups are enabled, and the interval is greater than zero
           try {
             if (self::IsTimerThresholdExceeded(SystemConfig::getValue('sLastBackupTimeStamp'), SystemConfig::getValue('sExternalBackupAutoInterval'))) {
               // if there was no previous backup, or if the interval suggests we do a backup now.
-              LoggerUtils::getAppLogger()->addInfo("Starting a backup job.  Last backup run: ".SystemConfig::getValue('sLastBackupTimeStamp'));
+              LoggerUtils::getAppLogger()->info("Starting a backup job.  Last backup run: ".SystemConfig::getValue('sLastBackupTimeStamp'));
               $BaseName = preg_replace('/[^a-zA-Z0-9\-_]/','', SystemConfig::getValue('sChurchName')). "-" . date(SystemConfig::getValue("sDateFilenameFormat"));
-              $Backup = new BackupJob($BaseName, BackupType::FullBackup, SystemConfig::getValue('bBackupExtraneousImages'));
+              $Backup = new BackupJob($BaseName, BackupType::FullBackup, SystemConfig::getValue('bBackupExtraneousImages'),false,'');
               $Backup->Execute();
               $Backup->CopyToWebDAV(SystemConfig::getValue('sExternalBackupEndpoint'), SystemConfig::getValue('sExternalBackupUsername'), SystemConfig::getValue('sExternalBackupPassword'));
               $now = new \DateTime();  // update the LastBackupTimeStamp.
               SystemConfig::setValue('sLastBackupTimeStamp', $now->format(SystemConfig::getValue('sDateFilenameFormat')));
-              LoggerUtils::getAppLogger()->addInfo("Backup job successful");
+              LoggerUtils::getAppLogger()->info("Backup job successful");
             }
             else {
-              LoggerUtils::getAppLogger()->addInfo("Not starting a backup job.  Last backup run: ".SystemConfig::getValue('sLastBackupTimeStamp').".");
+              LoggerUtils::getAppLogger()->info("Not starting a backup job.  Last backup run: ".SystemConfig::getValue('sLastBackupTimeStamp').".");
             }
           } catch (\Exception $exc) {
               // an error in the auto-backup shouldn't prevent the page from loading...
-            LoggerUtils::getAppLogger()->addWarning("Failure executing backup job: ". $exc->getMessage() );
+            LoggerUtils::getAppLogger()->warning("Failure executing backup job: ". $exc->getMessage() );
           }
         }
         if (SystemConfig::getBooleanValue('bEnableIntegrityCheck') && SystemConfig::getValue('iIntegrityCheckInterval') > 0) {
             if (self::IsTimerThresholdExceeded(SystemConfig::getValue('sLastIntegrityCheckTimeStamp'),SystemConfig::getValue('iIntegrityCheckInterval'))) {
                 // if there was no integrity check, or if the interval suggests we do one now.
-                LoggerUtils::getAppLogger()->addInfo("Starting application integrity check");
+                LoggerUtils::getAppLogger()->info("Starting application integrity check");
                 $integrityCheckFile = SystemURLs::getDocumentRoot() . '/integrityCheck.json';
                 $appIntegrity = AppIntegrityService::verifyApplicationIntegrity();
                 file_put_contents($integrityCheckFile, json_encode($appIntegrity));
@@ -221,94 +200,31 @@ class SystemService
                 SystemConfig::setValue('sLastIntegrityCheckTimeStamp', $now->format(SystemConfig::getValue('sDateFilenameFormat')));
                 if ($appIntegrity['status'] == 'success')
                 {
-                  LoggerUtils::getAppLogger()->addInfo("Application integrity check passed");
+                  LoggerUtils::getAppLogger()->info("Application integrity check passed");
                 }
                 else
                 {
-                  LoggerUtils::getAppLogger()->addWarning("Application integrity check failed: ".$appIntegrity['message']);
+                  LoggerUtils::getAppLogger()->warning("Application integrity check failed: ".$appIntegrity['message']);
                 }
             }
              else {
-                  LoggerUtils::getAppLogger()->addInfo("Not starting application integrity check.  Last application integrity check run: ".SystemConfig::getValue('sLastIntegrityCheckTimeStamp'));
+                  LoggerUtils::getAppLogger()->info("Not starting application integrity check.  Last application integrity check run: ".SystemConfig::getValue('sLastIntegrityCheckTimeStamp'));
                 }
         }
-        LoggerUtils::getAppLogger()->addInfo("Finished background job processing");
-    }
-
-    public function downloadLatestRelease()
-    {
-      $logger = LoggerUtils::getAppLogger();
-      $logger->debug("Querying for latest release");
-      $release = $this->getLatestRelease();
-      $logger->debug("Query result: " . print_r($release,true));
-      $UpgradeDir = SystemURLs::getDocumentRoot() . '/Upgrade';
-      foreach ($release['assets'] as $asset) {
-        if ($asset['name'] == "ChurchCRM-" . $release['name'] . ".zip") {
-          $url = $asset['browser_download_url'];
-        }
-      }
-      $logger->debug("Creating upgrade directory: " . $UpgradeDir);
-      mkdir($UpgradeDir);
-      $logger->info("Downloading release from: " . $url . " to: ". $UpgradeDir . '/' . basename($url));
-      $executionTime = new ExecutionTime();
-      file_put_contents($UpgradeDir . '/' . basename($url), file_get_contents($url));
-      $logger->info("Finished downloading file.  Execution time: " .$executionTime->getMiliseconds()." ms");
-      $returnFile = [];
-      $returnFile['fileName'] = basename($url);
-      $returnFile['releaseNotes'] = $release['body'];
-      $returnFile['fullPath'] = $UpgradeDir . '/' . basename($url);
-      $returnFile['sha1'] = sha1_file($UpgradeDir . '/' . basename($url));
-      $logger->info("SHA1 hash for ". $returnFile['fullPath'] .": " . $returnFile['sha1']);
-      $logger->info("Release notes: " . $returnFile['releaseNotes'] );
-      return $returnFile;
-    }
-
-    public function moveDir($src, $dest)
-    {
-        $files = array_diff(scandir($src), ['.', '..']);
-        foreach ($files as $file) {
-            if (is_dir("$src/$file")) {
-                mkdir("$dest/$file");
-                $this->moveDir("$src/$file", "$dest/$file");
-            } else {
-                rename("$src/$file", "$dest/$file");
-            }
+        if (self::IsTimerThresholdExceeded(SystemConfig::getValue('sLastSoftwareUpdateCheckTimeStamp'),SystemConfig::getValue('iSoftwareUpdateCheckInterval'))) {
+          // Since checking for updates from GitHub is a potentailly expensive operation,
+          // Run this task as part of the "background jobs" API call
+          // Inside ChurchCRMReleaseManager, the restults are stored to the $_SESSION
+          ChurchCRMReleaseManager::checkForUpdates();
+          $now = new \DateTime();  // update the LastBackupTimeStamp.
+          SystemConfig::setValue('sLastSoftwareUpdateCheckTimeStamp', $now->format(SystemConfig::getValue('sDateFilenameFormat')));
         }
 
-        return rmdir($src);
+        LoggerUtils::getAppLogger()->info("Finished background job processing");
     }
 
-    public function doUpgrade($zipFilename, $sha1)
-    {
-      $logger = LoggerUtils::getAppLogger();
-      $logger->info("Beginnging upgrade process");
-      $logger->info("PHP max_execution_time is now: " . ini_get("max_execution_time"));
-      $logger->info("Beginning hash validation on " . $zipFilename);
-      if ($sha1 == sha1_file($zipFilename)) {
-        $logger->info("Hash validation succeeded on " . $zipFilename . " Got: " . sha1_file($zipFilename));
-        $zip = new \ZipArchive();
-        if ($zip->open($zipFilename) == true) {
-          $logger->info("Extracting " . $zipFilename." to: " . SystemURLs::getDocumentRoot() . '/Upgrade');
-          $executionTime = new ExecutionTime();
-          $zip->extractTo(SystemURLs::getDocumentRoot() . '/Upgrade');
-          $zip->close();
-          $logger->info("Extraction completed.  Took:" . $executionTime->getMiliseconds());
-          $logger->info("Moving extracted zip into place");
-          $executionTime = new ExecutionTime();
-          $this->moveDir(SystemURLs::getDocumentRoot() . '/Upgrade/churchcrm', SystemURLs::getDocumentRoot());
-          $logger->info("Move completed.  Took:" . $executionTime->getMiliseconds());
-        }
-        $logger->info("Deleting zip archive: ".$zipFilename);
-        unlink($zipFilename);
-        SystemConfig::setValue('sLastIntegrityCheckTimeStamp', null);
-        $logger->debug("Set sLastIntegrityCheckTimeStamp to null");
-        $logger->info("Upgrade process complete");
-        return 'success';
-      } else {
-        $logger->err("Hash validation failed on " . $zipFilename.". Expected: ".$sha1. ". Got: ".sha1_file($zipFilename));
-        return 'hash validation failure';
-      }
-    }
+
+
 
         // Returns a file size limit in bytes based on the PHP upload_max_filesize
     // and post_max_size

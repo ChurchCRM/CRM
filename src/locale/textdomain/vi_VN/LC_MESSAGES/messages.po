@@ -6,6 +6,7 @@ msgstr ""
 "X-Generator: POEditor.com\n"
 "Project-Id-Version: ChurchCRM\n"
 "Language: vi\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 
 #: 
 msgid "Cannot execute query."
@@ -64,7 +65,8 @@ msgid "This tool will assist you in manually backing up the ChurchCRM database."
 msgstr "Công cụ này sẽ giúp bạn tự sao lưu cơ sở dữ liệu của Hệ Thống Quản Lý Hội Thánh"
 
 #: 
-msgid "You should make a manual backup at least once a week unless you already have a regular backup procedule for your systems."
+#, fuzzy
+msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
 msgstr "Bạn nên thực hiện một sao lưu thủ công ít nhất một lần một tuần, trừ khi bạn đã có một lịch sao lưu thường xuyên cho hệ thống của bạn."
 
 #: 
@@ -745,10 +747,6 @@ msgid "Event Guests"
 msgstr "Khách sự kiện"
 
 #: 
-msgid "Back to Report Menu"
-msgstr "Quay trở lại menu báo cáo"
-
-#: 
 msgid "There "
 msgstr "tại đây␣"
 
@@ -901,14 +899,6 @@ msgid "You must select a group."
 msgstr "Bạn cần lựa một Ban/Mục vụ"
 
 #: 
-msgid "Left"
-msgstr "Trái"
-
-#: 
-msgid "Right"
-msgstr "Phải"
-
-#: 
 msgid "Help on types.."
 msgstr "Xem hướng dẫn"
 
@@ -919,10 +909,6 @@ msgstr "Bạn cần nhập tên vào"
 #: 
 msgid "That field name already exists."
 msgstr "Tên trường này đã tồn tại"
-
-#: 
-msgid "Side"
-msgstr "Bên"
 
 #: 
 msgid "Add New Field"
@@ -943,10 +929,6 @@ msgstr "Không xác định được Email"
 #: 
 msgid "Family Info"
 msgstr "Thông tin gia đình"
-
-#: 
-msgid "None US/CND State"
-msgstr "Quận/Huyện"
 
 #: 
 msgid "Contact Info"
@@ -979,10 +961,6 @@ msgstr "Họ"
 #: 
 msgid "Role"
 msgstr "Vai trò"
-
-#: 
-msgid "Day"
-msgstr "Ngày"
 
 #: 
 msgid "Select Gender"
@@ -1059,10 +1037,6 @@ msgstr "Đã tạo"
 #: 
 msgid "Edited"
 msgstr "Đã sửa"
-
-#: 
-msgid "Latitude/Longitude"
-msgstr "Vĩ độ/Kinh độ"
 
 #: 
 msgid "Verify Info"
@@ -1665,10 +1639,6 @@ msgid "Custom Person Fields Editor"
 msgstr "Chỉnh sửa trường tùy chọn"
 
 #: 
-msgid "Person-View Side"
-msgstr "Vị trí hiển thị"
-
-#: 
 msgid "Person Editor"
 msgstr "Chỉnh sửa thành viên"
 
@@ -1719,14 +1689,6 @@ msgstr "Thông tin thành viên"
 #: 
 msgid "Friend Date"
 msgstr "Ngày đến Hội Thánh"
-
-#: 
-msgid "Add Person to Group"
-msgstr "Thêm thành viên vào Ban/Mục vụ"
-
-#: 
-msgid "Select the group to add this person to"
-msgstr "Lựa chọn Ban/Mục vụ để thêm thành viên vào"
 
 #: 
 msgid "Person Profile"
@@ -1937,88 +1899,12 @@ msgid "Delete Family Record AND Family Members"
 msgstr "Xóa bỏ bản ghi gia đình VÀ thành viên gia đình"
 
 #: 
-msgid "Person Listing"
-msgstr "Danh sách các thành viên"
-
-#: 
-msgid "Group Assignment Helper"
-msgstr "Thêm vào Ban/Mục vụ"
-
-#: 
 msgid "Filter and Cart"
 msgstr "Bộ lọc và giỏ"
 
 #: 
-msgid "Show people <b>not</b> in this group type:"
-msgstr "Hiển thị thành viên <b>KHÔNG</b> có trong thể loại Ban/Mục vụ"
-
-#: 
-msgid "Sort order"
-msgstr "Sắp xếp theo"
-
-#: 
-msgid "By Name"
-msgstr "Theo tên"
-
-#: 
-msgid "By Family"
-msgstr "Theo gia đình"
-
-#: 
-msgid "By Newest Entries"
-msgstr "Theo bài mới nhất"
-
-#: 
-msgid "By Recently Edited"
-msgstr "Theo lần chỉnh sửa mới nhất"
-
-#: 
-msgid "Apply Filter"
-msgstr "Bắt đầu lọc"
-
-#: 
-msgid "Male & Female"
-msgstr "Nam và Nữ"
-
-#: 
-msgid "All Classifications"
-msgstr "Tất cả các loại"
-
-#: 
-msgid "All Family Roles"
-msgstr "Tất cả các vai trò"
-
-#: 
-msgid "All Contact Properties"
-msgstr "Tất cả thuộc tính liên hệ"
-
-#: 
-msgid "All Group Types"
-msgstr "Tất cả loại Ban/Mục vụ"
-
-#: 
-msgid "All Groups"
-msgstr "Tất cả các Ban"
-
-#: 
-msgid "All Roles"
-msgstr "Tất cả các vai trò"
-
-#: 
 msgid "Listing"
 msgstr "Danh sách"
-
-#: 
-msgid "View All"
-msgstr "Xem tất cả"
-
-#: 
-msgid "Cart"
-msgstr "Giỏ"
-
-#: 
-msgid "Print"
-msgstr "In ấn"
 
 #: 
 msgid "My User Settings"
@@ -2107,10 +1993,6 @@ msgstr "Tổng số lần đăng nhập"
 #: 
 msgid "Failed Logins"
 msgstr "Đăng nhập thất bại"
-
-#: 
-msgid "User Password Change"
-msgstr "Thay đổi mật khẩu thành viên"
 
 #: 
 msgid "Enter your current password, then your new password twice.  Passwords must be at least"
@@ -2373,11 +2255,16 @@ msgid "Calendar"
 msgstr "Lịch"
 
 #: 
+msgid "Members"
+msgstr "Thành viên"
+
+#: 
 msgid "Add New Person"
 msgstr "Thêm thành viên mới"
 
 #: 
-msgid "View All Persons"
+#, fuzzy
+msgid "View All People"
 msgstr "Danh sách Thành viên"
 
 #: 
@@ -2461,7 +2348,8 @@ msgid "Church Information"
 msgstr "Hội Thánh"
 
 #: 
-msgid "User setup"
+#, fuzzy
+msgid "User Setup"
 msgstr "Thành viên"
 
 #: 
@@ -2585,14 +2473,6 @@ msgid "No Backup Running"
 msgstr "Không có bản sao lưu nào"
 
 #: 
-msgid "Thank you for registering your family."
-msgstr "Cảm ơn bạn đã đăng ký cho gia đình."
-
-#: 
-msgid "Member(s)"
-msgstr "Thành viên"
-
-#: 
 msgid "Register"
 msgstr "Đăng ký"
 
@@ -2639,10 +2519,6 @@ msgstr "Đang khôi phục, vui lòng chờ đợi."
 #: 
 msgid "Family Members:"
 msgstr "Thành viên trong gia đình:"
-
-#: 
-msgid "Event"
-msgstr "Sự kiện"
 
 #: 
 msgid "Anniversary"
@@ -2901,10 +2777,6 @@ msgid "kilometers"
 msgstr "Km"
 
 #: 
-msgid "By Zip Code"
-msgstr "Theo mã bưu chính"
-
-#: 
 msgid "Church Address is not Set."
 msgstr "Địa chỉ Hội thánh chưa được thiết lập"
 
@@ -2945,10 +2817,6 @@ msgid "Profile Image uploaded"
 msgstr "Đã cập nhật hình ảnh đại diện"
 
 #: 
-msgid " This Family is Deactivated"
-msgstr " Gia đình này đã bị hủy kích hoạt"
-
-#: 
 msgid " this Family"
 msgstr " gia đình này"
 
@@ -2961,16 +2829,8 @@ msgid "Please select a Family."
 msgstr "Vui lòng lựa chọn gia đình."
 
 #: 
-msgid "Add To Cart"
-msgstr "Thêm vào giỏ"
-
-#: 
 msgid "Intersect With Cart"
 msgstr "Giao với giỏ"
-
-#: 
-msgid "Remove From Cart"
-msgstr "Xóa khỏi giỏ"
 
 #: 
 msgid "Family Member"
@@ -3217,28 +3077,12 @@ msgid "Upgrade database"
 msgstr "Cập nhật dữ liệu"
 
 #: 
-msgid "Birthdates of the day"
-msgstr "Ngày sinh nhật"
-
-#: 
-msgid "Lock"
-msgstr "Khóa phiên đăng nhập"
-
-#: 
 msgid "Add All to Cart"
 msgstr "Thêm hết vào giỏ"
 
 #: 
 msgid "Remove All from Cart"
 msgstr "Xóa tất cả trong giỏ"
-
-#: 
-msgid " record returned"
-msgstr " bảng ghi được hiển thị"
-
-#: 
-msgid " records returned"
-msgstr " bản ghi được tìm thấy"
 
 #: 
 msgid "Database Only (.sql)"
@@ -3259,10 +3103,6 @@ msgstr "Đã thêm vào Ban/Mục vụ"
 #: 
 msgid "return to People Dashboard"
 msgstr "Quay lại Bảng điều khiển thành viên"
-
-#: 
-msgid "Try out the Beta family view"
-msgstr "Dùng thử phiên bản mới hiển thị Gia đình"
 
 #: 
 msgid "This Family is Deactivated"
@@ -3403,8 +3243,4 @@ msgstr "Phiên bản dữ liệu"
 #: 
 msgid "Application Prerequisites"
 msgstr "Điều kiện yêu cầu bắt buộc"
-
-#: 
-msgid "WebServer Modules"
-msgstr "Các mô-đun máy chủ"
 

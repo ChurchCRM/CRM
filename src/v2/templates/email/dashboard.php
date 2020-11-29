@@ -1,7 +1,7 @@
 <?php
 
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\SessionUser;
+use ChurchCRM\Authentication\AuthenticationManager;
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
@@ -14,7 +14,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <a href="<?= SystemURLs::getRootPath()?>/email/MemberEmailExport.php" class="btn btn-app"><i class="fa fa-table"></i><?= gettext('Email Export') ?></a>
         <a href="<?= SystemURLs::getRootPath()?>/v2/email/duplicate" class="btn btn-app"><i class="fa fa-exclamation-triangle"></i><?= gettext('Find Duplicate Emails') ?></a>
         <a href="<?= SystemURLs::getRootPath()?>/v2/email/missing" class="btn btn-app"><i class="fa fa-bell-slash"></i><?= gettext('Families Without Emails') ?></a>
-        <?php if (SessionUser::isAdmin()) { ?>
+        <?php if (AuthenticationManager::GetCurrentUser()->isAdmin()) { ?>
         <a href="<?= SystemURLs::getRootPath()?>/v2/email/debug" class="btn btn-app"><i class="fa fa-stethoscope"></i><?= gettext('Debug') ?></a>
         <?php } ?>
     </div>
@@ -30,36 +30,45 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         <h3 class="box-title"><?= gettext('List') ?>: <?= $list['name'] ?></h3>
                     </div>
                     <div class="box-body">
-                        <?php
-                        echo "<table width='300px'>";
-                        echo '<tr><td><b>' . gettext('Members:') . '</b> </td><td>' . $list['stats']['member_count'] . '</td></tr>';
-                        echo '<tr><td><b>' . gettext('Campaigns:') . '</b> </td><td>' . $list['stats']['campaign_count'] . '</td></tr>';
-                        echo '<tr><td><b>' . gettext('Unsubscribed count:') . '</b> </td><td>' . $list['stats']['unsubscribe_count'] . '</td></tr>';
-                        echo '<tr><td><b>' . gettext('Unsubscribed count since last send:') . '</b> </td><td>' . $list['stats']['unsubscribe_count_since_send'] . '</td></tr>';
-                        echo '<tr><td><b>' . gettext('Cleaned count:') . '</b> </td><td>' . $list['stats']['cleaned_count'] . '</td></tr>';
-                        echo '<tr><td><b>' . gettext('Cleaned count since last send:') . '</b> </td><td>' . $list['stats']['cleaned_count_since_send'] . '</td></tr>';
-                        echo '</tr></table>'; ?>
+                        <table width='300px'>
+                            <tr>
+                                <td><b><?= gettext('Members:') ?></b></td>
+                                <td><?= $list['stats']['member_count'] ?></td>
+                            </tr>
+                            <tr>
+                                <td><b><?= gettext('Campaigns:') ?></b></td>
+                                <td><?= $list['stats']['campaign_count'] ?></td>
+                            </tr>
+                            <tr>
+                                <td><b><?= gettext('Unsubscribed count:') ?></b></td>
+                                <td><?= $list['stats']['unsubscribe_count'] ?></td>
+                            </tr>
+                            <tr>
+                                <td><b><?= gettext('Unsubscribed count since last send:') ?></b></td>
+                                <td><?= $list['stats']['unsubscribe_count_since_send'] ?></td>
+                            </tr>
+                            <tr>
+                                <td><b><?= gettext('Cleaned count:') ?></b></td>
+                                <td><?= $list['stats']['cleaned_count'] ?></td>
+                            </tr>
+                            <tr>
+                                <td><b><?= gettext('Cleaned count since last send:') ?></b></td>
+                                <td><?= $list['stats']['cleaned_count_since_send'] ?></td>
+                            </tr>
+                        </table>
+                        <hr>
+                        <p>
+                            <strong><?= gettext("List maintenance")?>:</strong>
+                        <ul>
+                            <li><a href="<?= SystemURLs::getRootPath()?>/v2/email/mailchimp/<?= $list['id']?>/unsubscribed"> <?= gettext("People not in list")?></a></li>
+                            <li><a href="<?= SystemURLs::getRootPath()?>/v2/email/mailchimp/<?= $list['id']?>/missing"> <?= gettext("Audience not in the CRM")?></a></li>
+                        </ul>
+                        </p>
                     </div>
                 </div>
             </div>
             <?php
         } ?>
-    </div>
-    <div class="row">
-        <div class="col-lg-4 col-md-2 col-sm-2">
-            <div class="box">
-                <div class="box-header">
-                    <h3 class="box-title">MailChimp</h3>
-                </div>
-                <div class="box-body">
-                    <ul>
-                        <li>
-                            <a href="<?= SystemURLs::getRootPath()?>/v2/email/missingfrommailchimp"><?= gettext('Missing emails report') ?> </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
     </div>
     <?php
 } else {

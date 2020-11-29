@@ -19,10 +19,10 @@ use ChurchCRM\Reports\PDF_Directory;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\MiscUtils;
 use ChurchCRM\Utils\RedirectUtils;
-use ChurchCRM\SessionUser;
+use ChurchCRM\Authentication\AuthenticationManager;
 
 // Check for Create Directory user permission.
-if (!SessionUser::getUser()->isCreateDirectoryEnabled()) {
+if (!AuthenticationManager::GetCurrentUser()->isCreateDirectoryEnabled()) {
     RedirectUtils::Redirect('Menu.php');
     exit;
 }
@@ -104,8 +104,10 @@ $numCustomFields = mysqli_num_rows($rsCustomFields);
 
 if ($numCustomFields > 0) {
     while ($rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQLI_ASSOC)) {
-        $pdf->AddCustomField($rowCustomField['custom_Order'], isset($_POST['bCustom'.$rowCustomField['custom_Order']])
-                            );
+        $pdf->AddCustomField(
+            $rowCustomField['custom_Order'],
+            isset($_POST['bCustom'.$rowCustomField['custom_Order']])
+        );
     }
 }
 

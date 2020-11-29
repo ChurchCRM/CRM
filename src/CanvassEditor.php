@@ -14,9 +14,10 @@ require 'Include/Functions.php';
 
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\Authentication\AuthenticationManager;
 
 // Security: User must have canvasser permission to use this form
-if (!$_SESSION['user']->isCanvasserEnabled()) {
+if (!AuthenticationManager::GetCurrentUser()->isCanvasserEnabled()) {
     RedirectUtils::Redirect('Menu.php');
     exit;
 }
@@ -127,7 +128,7 @@ if (isset($_POST['Submit'])) {
         $tWhyNotInterested = $can_WhyNotInterested;
     } else {
         // Set some default values
-        $iCanvasser = $_SESSION['user']->getId();
+        $iCanvasser = AuthenticationManager::GetCurrentUser()->getId();
         $dDate = date('Y-m-d');
 
         $dDate = '';

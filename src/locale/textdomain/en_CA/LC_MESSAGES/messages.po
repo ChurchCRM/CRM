@@ -6,6 +6,7 @@ msgstr ""
 "X-Generator: POEditor.com\n"
 "Project-Id-Version: ChurchCRM\n"
 "Language: en-ca\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: 
 msgid "State"
@@ -16,12 +17,20 @@ msgid "Zip"
 msgstr "Postal Code"
 
 #: 
-msgid "None US/CND State"
-msgstr "None Province"
-
-#: 
 msgid "Check"
 msgstr "Cheque"
+
+#: 
+msgid "Maximum number of neighbors:"
+msgstr "Maximum number of neighbours:"
+
+#: 
+msgid "Neighbor Families"
+msgstr "Neighbour Families"
+
+#: 
+msgid "Show Neighbors"
+msgstr "Show Neighbours"
 
 #: 
 msgid "Scan check"
@@ -54,4 +63,16 @@ msgstr "Enter any part of the following: Name, City, Province, Postal Code, Home
 #: 
 msgid "Search by any part of Name, City, State, Zip, Home Phone, Email, or Work Email."
 msgstr "Search by any part of Name, City, Province, Postal Code, Home Phone, Email, or Work Email."
+
+#: 
+msgid "Show neighbors with these classifications:"
+msgstr "Show neighbours with these classifications:"
+
+#: 
+msgid "Foreground Color"
+msgstr "Foreground Colour"
+
+#: 
+msgid "Background Color"
+msgstr "Background Colour"
 

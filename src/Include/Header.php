@@ -1,21 +1,12 @@
 <?php
-/*******************************************************************************
- *
- *  filename    : Include/Header.php
- *  website     : http://www.churchcrm.io
- *  description : page header used for most pages
- *
- *  Copyright 2001-2004 Phillip Hullquist, Deane Barker, Chris Gebhardt, Michael Wilt
- *  Copyright 2017 Philippe Logel
- ******************************************************************************/
 
-use ChurchCRM\Service\SystemService;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\view\MenuRenderer;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\Cart;
 use ChurchCRM\Service\TaskService;
-use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\Authentication\AuthenticationProviders\LocalAuthentication;
 
 $taskService = new TaskService();
 
@@ -24,7 +15,9 @@ $taskService = new TaskService();
 ob_start();
 
 require_once 'Header-function.php';
-require_once 'Header-Security.php';
+if (SystemConfig::debugEnabled()) {
+    require_once 'Header-Security.php';
+}
 
 // Top level menu index counter
 $MenuFirst = 1;
@@ -39,14 +32,14 @@ $MenuFirst = 1;
   <?php require 'Header-HTML-Scripts.php'; ?>
 </head>
 
-<body class="hold-transition <?= $_SESSION['user']->getStyle() ?> sidebar-mini">
+<body class="hold-transition <?= AuthenticationManager::GetCurrentUser()->getStyle() ?> sidebar-mini">
 <!-- Site wrapper -->
 <div class="wrapper">
   <?php
   Header_modals();
   Header_body_scripts();
 
-  $loggedInUserPhoto = SystemURLs::getRootPath().'/api/person/'.$_SESSION['user']->getId().'/thumbnail';
+  $loggedInUserPhoto = SystemURLs::getRootPath().'/api/person/'.AuthenticationManager::GetCurrentUser()->getId().'/thumbnail';
   $MenuFirst = 1;
   ?>
 
@@ -77,6 +70,27 @@ $MenuFirst = 1;
 
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
+            <li class="dropdown tasks-menu">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                    <i class="flag-icon flag-icon-squared"></i>
+                </a>
+                <ul class="dropdown-menu">
+                    <li class="header">
+                        <span>
+                            <span id="translationInfo"></span>
+                            <?php if (AuthenticationManager::GetCurrentUser()->isAdmin()) { ?>
+                            <a href="<?= SystemURLs::getRootPath()?>/SystemSettings.php"> <i class="fa fa-pencil"></i></a>
+                            <?php } ?>
+                        </span>
+                    </li>
+                    <li id="localePer" class="header hidden">
+                        <span id="translationPer"></span> <?= gettext("of translation completed")?>
+                    </li>
+                    <li class="footer">
+                        <a href="https://poeditor.com/join/project?hash=RABdnDSqAt" target="poeditor"><?= gettext("Help translate this project")?></a>
+                    </li>
+                </ul>
+            </li>
             <!-- Cart Functions: style can be found in dropdown.less -->
             <li id="CartBlock" class="dropdown notifications-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" title="<?= gettext('Your Cart') ?>">
@@ -89,32 +103,38 @@ $MenuFirst = 1;
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" id="dropdown-toggle" data-toggle="dropdown" title="<?= gettext('Your settings and more') ?>">
-              <img src="<?= SystemURLs::getRootPath()?>/api/person/<?= $_SESSION['user']->getPersonId() ?>/thumbnail" class="user-image initials-image" alt="User Image">
-              <span class="hidden-xs"><?= $_SESSION['user']->getName() ?> </span>
+              <img src="<?= SystemURLs::getRootPath()?>/api/person/<?= AuthenticationManager::GetCurrentUser()->getPersonId() ?>/thumbnail" class="user-image initials-image" alt="User Image">
+              <span class="hidden-xs"><?= AuthenticationManager::GetCurrentUser()->getName() ?> </span>
 
             </a>
             <ul class="hidden-xxs dropdown-menu">
-              <li class="user-header" id="yourElement" style="height:205px">
+              <li class="user-header" id="yourElement" style="height:auto">
                 <table border=0 width="100%">
                 <tr style="border-bottom: 1pt solid white;">
                 <td valign="middle" width=110>
-                  <img width="80" src="<?= SystemURLs::getRootPath()?>/api/person/<?= $_SESSION['user']->getPersonId() ?>/thumbnail" class="initials-image img-circle no-border" alt="User Image">
+                  <img width="80" src="<?= SystemURLs::getRootPath()?>/api/person/<?= AuthenticationManager::GetCurrentUser()->getPersonId() ?>/thumbnail" class="initials-image img-circle no-border" alt="User Image">
                 </td>
                 <td valign="middle" align="left" >
-                  <a href="<?= SystemURLs::getRootPath()?>/PersonView.php?PersonID=<?= $_SESSION['user']->getPersonId() ?>" class="item_link">
+                  <a href="<?= SystemURLs::getRootPath()?>/PersonView.php?PersonID=<?= AuthenticationManager::GetCurrentUser()->getPersonId() ?>" class="item_link">
                       <p ><i class="fa fa-home"></i> <?= gettext("Profile") ?></p></a>
-                  <a href="<?= SystemURLs::getRootPath() ?>/UserPasswordChange.php" class="item_link">
+                  <a href="<?= SystemURLs::getRootPath() ?>/v2/user/current/changepassword" class="item_link" id="change-password">
                       <p ><i class="fa fa-key"></i> <?= gettext('Change Password') ?></p></a>
-                  <a href="<?= SystemURLs::getRootPath() ?>/SettingsIndividual.php" class="item_link">
+                  <a href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= AuthenticationManager::GetCurrentUser()->getPersonId() ?>" class="item_link">
                       <p ><i class="fa fa-gear"></i> <?= gettext('Change Settings') ?></p></a>
-                  <a href="Login.php?session=Lock" class="item_link">
-                      <p ><i class="fa fa-pause"></i> <?= gettext('Lock') ?></p></a>
-                  <a href="<?= SystemURLs::getRootPath() ?>/Logoff.php" class="item_link">
+                  <?php
+                    if (LocalAuthentication::GetIsTwoFactorAuthSupported()) {
+                        ?>
+                  <a href="<?= SystemURLs::getRootPath() ?>/v2/user/current/enroll2fa" class="item_link">
+                      <p ><i class="fa fa-gear"></i> <?= gettext("Manage 2 Factor Authentication") ?></p></a>
+                  <?php
+                    }
+                  ?>
+                  <a href="<?= SystemURLs::getRootPath() ?>/session/end" class="item_link">
                       <p ><i class="fa fa-sign-out"></i> <?= gettext('Sign out') ?></p></a>
                 </td>
                 </tr>
                 </table>
-                <p style="color:#fff"><b><?= $_SESSION['user']->getName() ?></b></p>
+                <p style="color:#fff"><b><?= AuthenticationManager::GetCurrentUser()->getName() ?></b></p>
               </li>
             </ul>
           </li>

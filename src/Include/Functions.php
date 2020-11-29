@@ -10,14 +10,14 @@
 
  ******************************************************************************/
 
-use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\Cart;
 use ChurchCRM\Service\PersonService;
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
-use ChurchCRM\SessionUser;
 
 $personService = new PersonService();
 $systemService = new SystemService();
@@ -28,49 +28,7 @@ $_SESSION['sSoftwareInstalledVersion'] = SystemService::getInstalledVersion();
 //
 
 if (empty($bSuppressSessionTests)) {  // This is used for the login page only.
-    // Basic security: If the UserID isn't set (no session), redirect to the login page
-
-    if (!isset($_SESSION['user'])) {
-        $LoginLocation = '?location='. urlencode(substr($_SERVER['REQUEST_URI'], 1));
-        RedirectUtils::Redirect('Login.php'.$LoginLocation);
-        exit;
-    }
-
-    try {
-        $_SESSION['user']->reload();
-    } catch (\Exception $exc) {
-        RedirectUtils::Redirect('Login.php');
-        exit;
-    }
-
-
-    // Check for login timeout.  If login has expired, redirect to login page
-    if (SystemConfig::getValue('iSessionTimeout') > 0) {
-        if ((time() - $_SESSION['tLastOperation']) > SystemConfig::getValue('iSessionTimeout')) {
-            $LoginLocation = '?location='. urlencode(substr($_SERVER['REQUEST_URI'], 1));
-            RedirectUtils::Redirect('Login.php'.$LoginLocation);
-            exit;
-        } else {
-            $_SESSION['tLastOperation'] = time();
-        }
-    }
-
-    // If this user needs to change password, send to that page
-    if ($_SESSION['user']->getNeedPasswordChange() && !isset($bNoPasswordRedirect)) {
-        RedirectUtils::Redirect('UserPasswordChange.php?PersonID='.$_SESSION['user']->getId());
-        exit;
-    }
-
-    // Check if https is required
-
-  // Note: PHP has limited ability to access the address bar
-  // url.  PHP depends on Apache or other web server
-  // to provide this information.  The web server
-  // may or may not be configured to pass the address bar url
-  // to PHP.  As a workaround this security check is now performed
-  // by the browser using javascript.  The browser always has
-  // access to the address bar url.  Search for basic security checks
-  // in Include/Header-functions.php
+    AuthenticationManager::EnsureAuthentication();
 }
 // End of basic security checks
 
@@ -227,10 +185,11 @@ function RunQuery($sSQL, $bStopOnError = true)
     if ($result = mysqli_query($cnInfoCentral, $sSQL)) {
         return $result;
     } elseif ($bStopOnError) {
+        LoggerUtils::getAppLogger()->error(gettext('Cannot execute query.')." " . $sSQL . " -|- " . mysqli_error($cnInfoCentral));
         if (SystemConfig::getValue('sLogLevel') == "100") { // debug level
-            die(gettext('Cannot execute query.')."<p>$sSQL<p>".mysqli_error());
+            throw new Exception(gettext('Cannot execute query.')."<p>$sSQL<p>".mysqli_error($cnInfoCentral));
         } else {
-            die('Database error or invalid data');
+            throw new Exception('Database error or invalid data, change sLogLevel to debug to see more.');
         }
     } else {
         return false;
@@ -541,7 +500,7 @@ function ExpandPhoneNumber($sPhoneNumber, $sPhoneCountry, &$bWeird)
     $length = strlen($sPhoneNumber);
 
     switch ($sPhoneCountry) {
-    case 'United States':
+    case 'United States' || 'Canada':
       if ($length == 0) {
           return '';
       } // 7 digit phone # with extension
@@ -1652,7 +1611,7 @@ function requireUserGroupMembership($allowedRoles = null)
     if (!$allowedRoles) {
         throw new Exception('Role(s) must be defined for the function which you are trying to access.  End users should never see this error unless something went horribly wrong.');
     }
-    if ($_SESSION[$allowedRoles] || $_SESSION['user']->isAdmin()) {  //most of the time the API endpoint will specify a single permitted role, or the user is an admin
+    if ($_SESSION[$allowedRoles] || AuthenticationManager::GetCurrentUser()->isAdmin()) {  //most of the time the API endpoint will specify a single permitted role, or the user is an admin
         return true;
     } elseif (is_array($allowedRoles)) {  //sometimes we might have an array of allowed roles.
         foreach ($allowedRoles as $role) {
@@ -1679,7 +1638,7 @@ function random_color()
 
 function generateGroupRoleEmailDropdown($roleEmails, $href)
 {
-    $sMailtoDelimiter = SessionUser::getUser()->getUserConfigString("sMailtoDelimiter");
+    $sMailtoDelimiter = AuthenticationManager::GetCurrentUser()->getUserConfigString("sMailtoDelimiter");
     foreach ($roleEmails as $role => $Email) {
         if (SystemConfig::getValue('sToEmailAddress') != '' && !stristr($Email, SystemConfig::getValue('sToEmailAddress'))) {
             $Email .= $sMailtoDelimiter.SystemConfig::getValue('sToEmailAddress');

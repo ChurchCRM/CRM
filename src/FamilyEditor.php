@@ -21,6 +21,7 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Emails\NewPersonOrFamilyEmail;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Bootstrapper;
+use ChurchCRM\Authentication\AuthenticationManager;
 
 //Set the page title
 $sPageTitle = gettext('Family Editor');
@@ -35,7 +36,7 @@ if (array_key_exists('FamilyID', $_GET)) {
 // Security: User must have Add or Edit Records permission to use this form in those manners
 // Clean error handling: (such as somebody typing an incorrect URL ?PersonID= manually)
 if ($iFamilyID > 0) {
-    if (!($_SESSION['user']->isEditRecordsEnabled() || ($_SESSION['user']->isEditSelfEnabled() && ($iFamilyID == $_SESSION['user']->getPerson()->getFamId())))) {
+    if (!(AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled() || (AuthenticationManager::GetCurrentUser()->isEditSelfEnabled() && $iFamilyID == AuthenticationManager::GetCurrentUser()->getPerson()->getFamId()))) {
         RedirectUtils::Redirect('Menu.php');
         exit;
     }
@@ -45,7 +46,7 @@ if ($iFamilyID > 0) {
         RedirectUtils::Redirect('Menu.php');
         exit;
     }
-} elseif (!$_SESSION['user']->isAddRecordsEnabled()) {
+} elseif (!AuthenticationManager::GetCurrentUser()->isAddRecordsEnabled()) {
     RedirectUtils::Redirect('Menu.php');
     exit;
 }
@@ -154,7 +155,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
     }
 
     $iCanvasser = 0;
-    if ($_SESSION['user']->isCanvasserEnabled()) { // Only take modifications to this field if the current user is a canvasser
+    if (AuthenticationManager::GetCurrentUser()->isCanvasserEnabled()) { // Only take modifications to this field if the current user is a canvasser
         $bOkToCanvass = isset($_POST['OkToCanvass']);
         if (array_key_exists('Canvasser', $_POST)) {
             $iCanvasser = InputUtils::LegacyFilterInput($_POST['Canvasser']);
@@ -285,20 +286,20 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
         }
         if ($iFamilyID < 1) {
             $sSQL = "INSERT INTO family_fam (
-						fam_Name, 
-						fam_Address1, 
-						fam_Address2, 
-						fam_City, 
-						fam_State, 
-						fam_Zip, 
-						fam_Country, 
-						fam_HomePhone, 
-						fam_WorkPhone, 
-						fam_CellPhone, 
-						fam_Email, 
-						fam_WeddingDate, 
-						fam_DateEntered, 
-						fam_EnteredBy, 
+						fam_Name,
+						fam_Address1,
+						fam_Address2,
+						fam_City,
+						fam_State,
+						fam_Zip,
+						fam_Country,
+						fam_HomePhone,
+						fam_WorkPhone,
+						fam_CellPhone,
+						fam_Email,
+						fam_WeddingDate,
+						fam_DateEntered,
+						fam_EnteredBy,
 						fam_SendNewsLetter,
 						fam_OkToCanvass,
 						fam_Canvasser,
@@ -319,7 +320,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
                         $sEmail."',".
                         $dWeddingDate.",'".
                         date('YmdHis')."',".
-                        $_SESSION['user']->getId().','.
+                        AuthenticationManager::GetCurrentUser()->getId().','.
                         $bSendNewsLetterString.','.
                         $bOkToCanvassString.",'".
                         $iCanvasser."',".
@@ -344,9 +345,9 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
                         'fam_WeddingDate='.$dWeddingDate.','.
                         'fam_Envelope='.$nEnvelope.','.
                         "fam_DateLastEdited='".date('YmdHis')."',".
-                        'fam_EditedBy = '.$_SESSION['user']->getId().','.
+                        'fam_EditedBy = '.AuthenticationManager::GetCurrentUser()->getId().','.
                         'fam_SendNewsLetter = '.$bSendNewsLetterString;
-            if ($_SESSION['user']->isCanvasserEnabled()) {
+            if (AuthenticationManager::GetCurrentUser()->isCanvasserEnabled()) {
                 $sSQL .= ', fam_OkToCanvass = '.$bOkToCanvassString.
                                     ", fam_Canvasser = '".$iCanvasser."'";
             }
@@ -410,7 +411,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
 								$iFamilyID,
 								$aRoles[$iCount],
 								'".date('YmdHis')."',
-								".$_SESSION['user']->getId().",
+								".AuthenticationManager::GetCurrentUser()->getId().",
 								$aGenders[$iCount],
 								$aBirthDays[$iCount],
 								$aBirthMonths[$iCount],
@@ -422,7 +423,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
                     $note->setPerId($dbPersonId);
                     $note->setText(gettext('Created via Family'));
                     $note->setType('create');
-                    $note->setEntered($_SESSION['user']->getId());
+                    $note->setEntered(AuthenticationManager::GetCurrentUser()->getId());
                     $note->save();
                     $sSQL = 'INSERT INTO person_custom (per_ID) VALUES ('
                                 .$dbPersonId.')';
@@ -437,7 +438,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
             if (!empty(SystemConfig::getValue("sNewPersonNotificationRecipientIDs"))) {
                 $NotificationEmail = new NewPersonOrFamilyEmail($family);
                 if (!$NotificationEmail->send()) {
-                    $logger->warn($NotificationEmail->getError());
+                    $logger->warning($NotificationEmail->getError());
                 }
             }
         } else {
@@ -463,7 +464,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
                     $note->setPerId($aPersonIDs[$iCount]);
                     $note->setText(gettext('Updated via Family'));
                     $note->setType('edit');
-                    $note->setEntered($_SESSION['user']->getId());
+                    $note->setEntered(AuthenticationManager::GetCurrentUser()->getId());
                     $note->save();
                 }
             }
@@ -479,7 +480,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
 
             while ($rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQLI_BOTH)) {
                 extract($rowCustomField);
-                if (($aSecurityType[$fam_custom_FieldSec] == 'bAll') || ($_SESSION[$aSecurityType[$fam_custom_FieldSec]])) {
+                if (AuthenticationManager::GetCurrentUser()->isEnabledSecurity($aSecurityType[$fam_custom_FieldSec])) {
                     $currentFieldData = trim($aCustomData[$fam_custom_Field]);
 
                     sqlCustomField($sSQL, $type_ID, $currentFieldData, $fam_custom_Field, $sCountry);
@@ -498,7 +499,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
         //Which submit button did they press?
         if (isset($_POST['FamilySubmit'])) {
             //Send to the view of this person
-            RedirectUtils::Redirect('FamilyView.php?FamilyID='.$iFamilyID);
+            RedirectUtils::Redirect('v2/family/'.$iFamilyID);
         } else {
             //Reload to editor to add another record
             RedirectUtils::Redirect('FamilyEditor.php');
@@ -638,7 +639,7 @@ require 'Include/Header.php';
 
 ?>
 
-<form method="post" action="FamilyEditor.php?FamilyID=<?php echo $iFamilyID ?>">
+<form method="post" action="FamilyEditor.php?FamilyID=<?php echo $iFamilyID ?>" id="familyEditor">
 	<input type="hidden" Name="iFamilyID" value="<?= $iFamilyID ?>">
 	<input type="hidden" name="FamCount" value="<?= $iFamilyMemberRows ?>">
 	<div class="box box-info clearfix">
@@ -813,7 +814,7 @@ require 'Include/Header.php';
 			<?php
                             } /* Wedding date can be hidden - General Settings */ ?>
 			<div class="row">
-				<?php if ($_SESSION['user']->isCanvasserEnabled()) { // Only show this field if the current user is a canvasser?>
+				<?php if (AuthenticationManager::GetCurrentUser()->isCanvasserEnabled()) { // Only show this field if the current user is a canvasser?>
 					<div class="form-group col-md-4">
 						<label><?= gettext('Ok To Canvass') ?>: </label><br/>
 						<input type="checkbox" Name="OkToCanvass" value="1" <?php if ($bOkToCanvass) {
@@ -896,7 +897,7 @@ require 'Include/Header.php';
 		<?php mysqli_data_seek($rsCustomFields, 0);
         while ($rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQLI_BOTH)) {
             extract($rowCustomField);
-            if (($aSecurityType[$fam_custom_FieldSec] == 'bAll') || ($_SESSION[$aSecurityType[$fam_custom_FieldSec]])) {
+            if (AuthenticationManager::GetCurrentUser()->isEnabledSecurity($aSecurityType[$fam_custom_FieldSec])) {
                 ?>
 			<div class="row">
 				<div class="form-group col-md-4">
@@ -943,9 +944,9 @@ require 'Include/Header.php';
 			<th><?= gettext('Suffix') ?></th>
 			<th><?= gettext('Gender') ?></th>
 			<th><?= gettext('Role') ?></th>
-			<th><?= gettext('Month') ?></th>
-			<th><?= gettext('Day') ?></th>
-			<th><?= gettext('Year') ?></th>
+			<th><?= gettext('Birth Month') ?></th>
+			<th><?= gettext('Birth Day') ?></th>
+			<th><?= gettext('Birth Year') ?></th>
 			<th><?= gettext('Classification') ?></th>
 		</tr>
 		</thead>
@@ -1081,7 +1082,6 @@ require 'Include/Header.php';
                 } else {
                     $UpdateBirthYear = 0;
                 } ?>
-				&nbsp;
 			</td>
 			<td>
 				<select name="Classification<?php echo $iCount ?>">
@@ -1113,13 +1113,13 @@ require 'Include/Header.php';
     echo '<td colspan="2" align="center">';
     echo '<input type="hidden" Name="UpdateBirthYear" value="'.$UpdateBirthYear.'">';
 
-    echo '<input type="submit" class="btn btn-primary" value="'.gettext('Save').'" Name="FamilySubmit"> ';
-    if ($_SESSION['user']->isAddRecordsEnabled()) {
+    echo '<input type="submit" class="btn btn-primary" value="'.gettext('Save').'" Name="FamilySubmit" id="FamilySubmitBottom"> ';
+    if (AuthenticationManager::GetCurrentUser()->isAddRecordsEnabled()) {
         echo ' <input type="submit" class="btn btn-info" value="'.gettext('Save and Add').'" name="FamilySubmitAndAdd"> ';
     }
     echo ' <input type="button" class="btn btn-default" value="'.gettext('Cancel').'" Name="FamilyCancel"';
     if ($iFamilyID > 0) {
-        echo " onclick=\"javascript:document.location='FamilyView.php?FamilyID=$iFamilyID';\">";
+        echo " onclick=\"javascript:document.location='v2/family/$iFamilyID';\">";
     } else {
         echo " onclick=\"javascript:document.location='".SystemURLs::getRootPath()."/v2/family';\">";
     }

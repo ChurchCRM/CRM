@@ -2,56 +2,54 @@
 
 namespace ChurchCRM\dto;
 
-use ChurchCRM\Person;
-use ChurchCRM\dto\SystemConfig;
+
 use ChurchCRM\Emails\NotificationEmail;
-use Nexmo\Client;
-use Nexmo\Client\Credentials\Basic as NexmoBasicCred;
-use ChurchCRM\dto\OpenLPNotification;
+use Vonage\Client;
+use Vonage\Client\Credentials\Basic;
 
 class Notification
 {
-  
+
   protected $projectorText;
   protected $recipients;
   protected $person;
- 
+
   public function __construct()
   {
-  
+
   }
-  
+
   public function setRecipients($recipients)
   {
     $this->recipients = $recipients;
-    
+
   }
-  
+
   public function setSMSText($text)
   {
-    
+
   }
-  
+
   public function setEmailText($text)
   {
-    
+
   }
-  
+
   public function setPerson(\ChurchCRM\Person $Person)
   {
     $this->person  = $Person;
   }
-  
+
   public function setProjectorText($text)
   {
     $this->projectorText=$text;
   }
-  
+
   private function sendEmail()
   {
     $emailaddresses = [];
     Foreach ($this->recipients as $recipient)
-    {        
+    {
       array_push($emailaddresses,$recipient->getEmail());
     }
     try
@@ -62,19 +60,19 @@ class Notification
     } catch (Exception $ex) {
       return false;
     }
-    
+
   }
-  
+
   private function sendSMS()
   {
     try
       {
-     
-        $client = new Client(New NexmoBasicCred(SystemConfig::getValue("sNexmoAPIKey"),SystemConfig::getValue("sNexmoAPISecret")));
-        
+
+        $client = new Client(new Basic(SystemConfig::getValue("sNexmoAPIKey"),SystemConfig::getValue("sNexmoAPISecret")));
+
         Foreach ($this->recipients as $recipient)
         {
-          $message = $client->message()->send([
+          $message = $client->message()->sendText([
               'to' => $recipient->getNumericCellPhone(),
               'from' => SystemConfig::getValue("sNexmoFromNumber"),
               'text' => gettext('Notification for') . " " . $this->person->getFullName()
@@ -84,9 +82,9 @@ class Notification
       } catch (Exception $ex) {
         return false;
       }
-      
+
   }
-  
+
   private function sendProjector()
   {
     try
@@ -99,12 +97,12 @@ class Notification
       } catch (Exception $ex) {
         return false;
       }
-       
+
   }
-  
+
   public function send()
   {
-   
+
     $methods = [];
     if(SystemConfig::hasValidMailServerSettings())
     {
@@ -125,9 +123,9 @@ class Notification
         "status"=>"",
         "methods"=>$methods
     ];
-    
+
     return json_encode($sendStatus);
-    
+
   }
-  
+
 }

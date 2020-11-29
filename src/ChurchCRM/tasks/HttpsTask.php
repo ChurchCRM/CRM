@@ -3,17 +3,19 @@
 namespace ChurchCRM\Tasks;
 
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Authentication\AuthenticationManager;
 
 class HttpsTask implements iTask
 {
   public function isActive(){
-    return $_SESSION['user']->isAdmin() && !isset($_SERVER['HTTPS']);
+    return AuthenticationManager::GetCurrentUser()->isAdmin() && !isset($_SERVER['HTTPS']);
   }
   public function isAdmin(){
     return true;
   }
-  public function getLink(){
-    return SystemURLs::getSupportURL("ssl");
+  public function getLink()
+  {
+    return SystemURLs::getSupportURL(array_pop(explode('\\', __CLASS__)));
   }
   public function getTitle(){
     return gettext('Configure HTTPS');

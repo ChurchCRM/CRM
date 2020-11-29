@@ -16,9 +16,10 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Reports\ChurchInfoReport;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\Authentication\AuthenticationManager;
 
 // Security
-if (!$_SESSION['user']->isFinanceEnabled()) {
+if (!AuthenticationManager::GetCurrentUser()->isFinanceEnabled()) {
     RedirectUtils::Redirect('Menu.php');
     exit;
 }
@@ -68,7 +69,7 @@ if (array_key_exists('only_owe', $_POST)) {
 }
 
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
-if (!$_SESSION['user']->isAdmin() && SystemConfig::getValue('bCSVAdminOnly')) {
+if (!AuthenticationManager::GetCurrentUser()->isAdmin() && SystemConfig::getValue('bCSVAdminOnly')) {
     RedirectUtils::Redirect('Menu.php');
     exit;
 }
@@ -211,15 +212,15 @@ $pageTop = 10;
 $y = $pageTop;
 $lineInc = 4;
 
-$pdf->WriteAt($leftX, $y, 'Pledge Summary By Family');
+$pdf->WriteAt($leftX, $y, gettext('Pledge Summary By Family'));
 $y += $lineInc;
 
-$pdf->WriteAtCell($famNameX, $y, $famNameWid, 'Name');
-$pdf->WriteAtCell($famMethodX, $y, $famMethodWid, 'Method');
-$pdf->WriteAtCell($famFundX, $y, $famFundWid, 'Fund');
-$pdf->WriteAtCell($famPledgeX, $y, $famPledgeWid, 'Pledge');
-$pdf->WriteAtCell($famPayX, $y, $famPayWid, 'Paid');
-$pdf->WriteAtCell($famOweX, $y, $famOweWid, 'Owe');
+$pdf->WriteAtCell($famNameX, $y, $famNameWid, gettext('Name'));
+$pdf->WriteAtCell($famMethodX, $y, $famMethodWid, gettext('Method'));
+$pdf->WriteAtCell($famFundX, $y, $famFundWid, gettext('Fund'));
+$pdf->WriteAtCell($famPledgeX, $y, $famPledgeWid, gettext('Pledge'));
+$pdf->WriteAtCell($famPayX, $y, $famPayWid, gettext('Paid'));
+$pdf->WriteAtCell($famOweX, $y, $famOweWid, gettext('Owe'));
 $y += $lineInc;
 
 // Loop through families
@@ -237,7 +238,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
     }
 
     // Get pledges and payments for this family and this fiscal year
-    $sSQL = 'SELECT *, b.fun_Name AS fundName FROM pledge_plg 
+    $sSQL = 'SELECT *, b.fun_Name AS fundName FROM pledge_plg
 			 LEFT JOIN donationfund_fun b ON plg_fundID = b.fun_ID
 			 WHERE plg_FamID = '.$fam_ID.' AND plg_FYID = '.$iFYID.$sSQLFundCriteria.' ORDER BY plg_date';
 
@@ -271,7 +272,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
     }
 
     // Get pledges only
-    $sSQL = 'SELECT *, b.fun_Name AS fundName FROM pledge_plg 
+    $sSQL = 'SELECT *, b.fun_Name AS fundName FROM pledge_plg
 			 LEFT JOIN donationfund_fun b ON plg_fundID = b.fun_ID
 			 WHERE plg_FamID = '.$fam_ID.' AND plg_FYID = '.$iFYID.$sSQLFundCriteria." AND plg_PledgeOrPayment = 'Pledge' ORDER BY plg_date";
     $rsPledges = RunQuery($sSQL);
@@ -299,7 +300,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
     }
 
     // Get payments only
-    $sSQL = 'SELECT *, b.fun_Name AS fundName FROM pledge_plg 
+    $sSQL = 'SELECT *, b.fun_Name AS fundName FROM pledge_plg
 			 LEFT JOIN donationfund_fun b ON plg_fundID = b.fun_ID
 			 WHERE plg_FamID = '.$fam_ID.' AND plg_FYID = '.$iFYID.$sSQLFundCriteria." AND plg_PledgeOrPayment = 'Payment' ORDER BY plg_date";
     $rsPledges = RunQuery($sSQL);

@@ -182,9 +182,9 @@
 	<option value="PE"<?php if ($sState == 'PE') {
     echo ' selected';
 } ?>>Prince Edward Island</option>
-	<option value="NF"<?php if ($sState == 'NF') {
+	<option value="NL"<?php if ($sState == 'NL') {
     echo ' selected';
-} ?>>Newfoundland</option>
+} ?>>Newfoundland and Labrador</option>
 	<option value="YT"<?php if ($sState == 'YT') {
     echo ' selected';
 } ?>>Yukon</option>

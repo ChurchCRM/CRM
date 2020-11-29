@@ -25,10 +25,11 @@ require 'Include/Functions.php';
 
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Authentication\AuthenticationManager;
 
 $sPageTitle = gettext('Church Event Editor');
 
-if (!$_SESSION['user']->isAddEvent()) {
+if (!AuthenticationManager::GetCurrentUser()->isAddEvent()) {
     header('Location: Menu.php');
 }
 
@@ -351,8 +352,7 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
                      `event_text` = '".InputUtils::FilterHTML($sEventText)."',
                      `event_start` = '".InputUtils::LegacyFilterInput($sEventStart)."',
                      `event_end` = '".InputUtils::LegacyFilterInput($sEventEnd)."',
-                     `inactive` = '".InputUtils::LegacyFilterInput($iEventStatus)."',
-                     `event_typename` = '".InputUtils::LegacyFilterInput($sTypeName)."';";
+                     `inactive` = '".InputUtils::LegacyFilterInput($iEventStatus)."';";
             RunQuery($sSQL);
             $iEventID = mysqli_insert_id($cnInfoCentral);
             for ($c = 0; $c < $iNumCounts; $c++) {
@@ -375,9 +375,8 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
                      `event_text` = '".InputUtils::FilterHTML($sEventText)."',
                      `event_start` = '".InputUtils::LegacyFilterInput($sEventStart)."',
                      `event_end` = '".InputUtils::LegacyFilterInput($sEventEnd)."',
-                     `inactive` = '".InputUtils::LegacyFilterInput($iEventStatus)."',
-                     `event_typename` = '".InputUtils::LegacyFilterInput($sTypeName)."'".
-                    " WHERE `event_id` = '".InputUtils::LegacyFilterInput($iEventID)."';";
+                     `inactive` = '".InputUtils::LegacyFilterInput($iEventStatus)."'
+                      WHERE `event_id` = '".InputUtils::LegacyFilterInput($iEventID)."';";
             echo $sSQL;
             RunQuery($sSQL);
             for ($c = 0; $c < $iNumCounts; $c++) {

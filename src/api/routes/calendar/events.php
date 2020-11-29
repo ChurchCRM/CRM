@@ -109,7 +109,6 @@ function getEventAudience($request, Response $response, $args)
 function newEvent($request, $response, $args)
 {
     $input = (object)$request->getParsedBody();
-    $eventTypeName = "";
 
     //fetch all related event objects before committing this event.
     $type = EventTypeQuery::Create()
@@ -128,7 +127,7 @@ function newEvent($request, $response, $args)
     // we have event type and pined calendars.  now create the event.
     $event = new Event;
     $event->setTitle($input->Title);
-    $event->setType($type);
+    $event->setEventType($type);
     $event->setDesc($input->Desc);
     $event->setStart(str_replace("T", " ", $input->Start));
     $event->setEnd(str_replace("T", " ", $input->End));

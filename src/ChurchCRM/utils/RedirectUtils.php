@@ -25,6 +25,12 @@ class RedirectUtils
         header('Location: ' . $finalLocation);
         exit;
     }
+
+    public static function AbsoluteRedirect($sTargetURL) {
+        header('Location: ' . $sTargetURL);
+        exit;
+    }
+    
     
     public static function SecurityRedirect($missingRole) {
         LoggerUtils::getAppLogger()->info("Security Redirect Request due to Role: " . $missingRole);

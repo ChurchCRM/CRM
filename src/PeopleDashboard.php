@@ -12,7 +12,7 @@ use ChurchCRM\Service\DashboardService;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\PersonQuery;
 use ChurchCRM\ListOptionQuery;
-use ChurchCRM\SessionUser;
+use ChurchCRM\Authentication\AuthenticationManager;
 
 // Set the page title
 $sPageTitle = gettext('People Dashboard');
@@ -60,7 +60,7 @@ $sSQL = "SELECT per_Email, fam_Email, lst_OptionName as virt_RoleName FROM perso
 
 $rsEmailList = RunQuery($sSQL);
 $sEmailLink = '';
-$sMailtoDelimiter = SessionUser::getUser()->getUserConfigString("sMailtoDelimiter");
+$sMailtoDelimiter = AuthenticationManager::GetCurrentUser()->getUserConfigString("sMailtoDelimiter");
 $roleEmails = array();
 while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailList)) {
     $sEmail = SelectWhichInfo($per_Email, $fam_Email, false);
@@ -75,6 +75,12 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
     }
 }
 
+$selfRegColor = "bg-red";
+$selfRegText = "Disabled";
+if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
+    $selfRegColor = "bg-green";
+    $selfRegText = "Enabled";
+}
 ?>
 
 <!-- Default box -->
@@ -83,16 +89,24 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
     <h3 class="box-title"><?= gettext('People Functions') ?></h3>
   </div>
   <div class="box-body">
-    <a href="<?= SystemURLs::getRootPath() ?>/SelectList.php?mode=person" class="btn btn-app"><i class="fa fa-user"></i><?= gettext('All People') ?></a>
-    <a href="<?= SystemURLs::getRootPath() ?>/v2/people/verify" class="btn btn-app"><i class="fa fa-check-square-o"></i><?= gettext('Verify People') ?></a>
-    <?php
+      <a href="<?= SystemURLs::getRootPath() ?>/v2/people" class="btn btn-app"><i class="fa fa-user"></i><?= gettext('All People') ?></a>
+      <a href="<?= SystemURLs::getRootPath() ?>/v2/people/verify" class="btn btn-app"><i class="fa fa-check-square-o"></i><?= gettext('Verify People') ?></a>
+      <div class="btn btn-app"><span class="badge <?=$selfRegColor?>"><?= $selfRegText?></span><i class="fa fa-user-plus"></i><?= gettext('Self Register') ?></div>
+      <a href="<?= SystemURLs::getRootPath()?>/v2/family" class="btn btn-app"><i class="fa fa-users"></i><?= gettext('All Families') ?></a>
+      <br/>
+      <a href="MapUsingGoogle.php?GroupID=-1" class="btn btn-app"><i class="fa fa-map"></i><?= gettext('Family Map') ?></a>
+      <a href="GeoPage.php" class="btn btn-app"><i class="fa fa-globe"></i><?= gettext('Family Geographic') ?></a>
+      <a href="UpdateAllLatLon.php" class="btn btn-app"><i class="fa fa-map-pin"></i><?= gettext('Update All Family Coordinates') ?></a>
+      <br/>
+
+      <?php
     if ($sEmailLink) {
         // Add default email if default email has been set and is not already in string
         if (SystemConfig::getValue('sToEmailAddress') != '' && !stristr($sEmailLink, SystemConfig::getValue('sToEmailAddress'))) {
             $sEmailLink .= $sMailtoDelimiter.SystemConfig::getValue('sToEmailAddress');
         }
         $sEmailLink = urlencode($sEmailLink);  // Mailto should comply with RFC 2368
-       if (SessionUser::getUser()->isEmailEnabled()) { // Does user have permission to email groups
+       if (AuthenticationManager::GetCurrentUser()->isEmailEnabled()) { // Does user have permission to email groups
       // Display link
        ?>
         <div class="btn-group">
@@ -119,13 +133,6 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
        }
     }
      ?>
-    <br/>
-    <a href="<?= SystemURLs::getRootPath()?>/v2/family" class="btn btn-app"><i class="fa fa-users"></i><?= gettext('All Families') ?></a>
-    <a href="GeoPage.php" class="btn btn-app"><i class="fa fa-globe"></i><?= gettext('Family Geographic') ?></a>
-    <a href="MapUsingGoogle.php?GroupID=-1" class="btn btn-app"><i class="fa fa-map"></i><?= gettext('Family Map') ?>
-    </a>
-    <a href="UpdateAllLatLon.php" class="btn btn-app"><i
-        class="fa fa-map-pin"></i><?= gettext('Update All Family Coordinates') ?></a>
   </div>
 </div>
 <!-- Small boxes (Stat box) -->
@@ -166,7 +173,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
       <div class="icon">
         <i class="fa fa-user"></i>
       </div>
-      <a href="<?= SystemURLs::getRootPath() ?>/SelectList.php?mode=person" class="small-box-footer">
+      <a href="<?= SystemURLs::getRootPath() ?>/v2/people" class="small-box-footer">
         <?= gettext('See All People') ?> <i class="fa fa-arrow-circle-right"></i>
       </a>
     </div>
@@ -240,7 +247,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
         <br>
         <?php echo gettext('Report on group and roles selected (it may be a multi-page PDF).'); ?>
         </p>
-        <?php if (SessionUser::getUser()->isCreateDirectoryEnabled()) {
+        <?php if (AuthenticationManager::GetCurrentUser()->isCreateDirectoryEnabled()) {
          ?>
           <p><a class="MediumText"
                 href="DirectoryReports.php"><?= gettext('People Directory') ?></a><br><?= gettext('Printable directory of all people, grouped by family where assigned') ?>
@@ -251,7 +258,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
         <br><?php echo gettext('Generate letters and mailing labels.'); ?>
         </p>
         <?php
-        if (SessionUser::getUser()->isbUSAddressVerificationEnabled()) {
+        if (AuthenticationManager::GetCurrentUser()->isbUSAddressVerificationEnabled()) {
             echo '<p>';
             echo '<a class="MediumText" href="USISTAddressVerification.php">';
             echo gettext('US Address Verification Report')."</a><br>\n";
@@ -284,7 +291,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
         <?php foreach ($personStats as $key => $value) {
             ?>
           <tr>
-            <td><a href='SelectList.php?Sort=name&Filter=&mode=person&Classification=<?= $classifications->$key ?>'><?= gettext($key) ?></a></td>
+            <td><a href='v2/people?Classification=<?= $classifications->$key ?>'><?= gettext($key) ?></a></td>
             <td>
               <div class="progress progress-xs progress-striped active">
                 <div class="progress-bar progress-bar-success"
@@ -331,7 +338,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
             if ($countMale != 0) {
                 ?>
 <tr>
-<td><a href="SelectList.php?mode=person&Gender=1&FamilyRole=<?= $demStatId ?>"><?= $demStatName ?> - <?= gettext('Male') ?></a></td>
+<td><a href="v2/people?Gender=1&FamilyRole=<?= $demStatId ?>"><?= $demStatName ?> - <?= gettext('Male') ?></a></td>
 <td>
 <div class="progress progress-xs progress-striped active">
 <div class="progress-bar progress-bar-success" style="width: <?= round(($countMale / $genPop) * 100)?>%" title="<?= round(($countMale / $genPop) * 100)?>%"></div>
@@ -344,7 +351,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
             if ($countFemale != 0) {
                 ?>
 <tr>
-<td><a href="SelectList.php?mode=person&Gender=2&FamilyRole=<?= $demStatId ?>"><?= $demStatName ?> - <?= gettext('Female') ?></a></td>
+<td><a href="v2/people?Gender=2&FamilyRole=<?= $demStatId ?>"><?= $demStatName ?> - <?= gettext('Female') ?></a></td>
 <td>
 <div class="progress progress-xs progress-striped active">
 <div class="progress-bar progress-bar-success" style="width: <?= round(($countFemale / $genPop) * 100)?>%" title="<?= round(($countFemale / $genPop) * 100)?>%"></div>
@@ -357,7 +364,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
             if ($countUnknown != 0) {
                 ?>
 <tr>
-<td><a href="SelectList.php?mode=person&Gender=0&FamilyRole=<?= $demStatId ?>"><?= $demStatName ?> - <?= gettext('Unknown') ?></a></td>
+<td><a href="v2/people?Gender=0&FamilyRole=<?= $demStatId ?>"><?= $demStatName ?> - <?= gettext('Unassigned') ?></a></td>
 <td>
 <div class="progress progress-xs progress-striped active">
 <div class="progress-bar progress-bar-success" style="width: <?= round(($countUnknown / $genPop) * 100)?>%" title="<?= round(($countUnknown / $genPop) * 100)?>%"></div>
@@ -376,7 +383,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
             if ($countUnknownMale != 0) {
                 ?>
 <tr>
-<td><a href="SelectList.php?mode=person&Gender=1&FamilyRole=0"><?= gettext('Unknown') ?> - <?= gettext('Male') ?></a></td>
+<td><a href="v2/people?Gender=1&FamilyRole=0"><?= gettext('Unassigned') ?> - <?= gettext('Male') ?></a></td>
 <td>
 <div class="progress progress-xs progress-striped active">
 <div class="progress-bar progress-bar-success" style="width: <?= round(($countUnknownMale / $genPop) * 100)?>%" title="<?= round(($countUnknownMale / $genPop) * 100)?>%"></div>
@@ -389,7 +396,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
             if ($countUnknownFemale != 0) {
                 ?>
 <tr>
-<td><a href="SelectList.php?mode=person&Gender=2&FamilyRole=0"><?= gettext('Unknown') ?> - <?= gettext('Female') ?></a></td>
+<td><a href="v2/people?Gender=2&FamilyRole=0"><?= gettext('Unassigned') ?> - <?= gettext('Female') ?></a></td>
 <td>
 <div class="progress progress-xs progress-striped active">
 <div class="progress-bar progress-bar-success" style="width: <?= round(($countUnknownFemale / $genPop) * 100)?>%" title="<?= round(($countUnknownFemale / $genPop) * 100)?>%"></div>
@@ -402,7 +409,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
             if ($countUnknwonRoleUnknownGender != 0) {
                 ?>
 <tr>
-<td><a href="SelectList.php?mode=person&Gender=0&FamilyRole=0"><?= gettext('Unknown') ?> - <?= gettext('Unknown') ?></a></td>
+<td><a href="v2/people?Gender=0&FamilyRole=0"><?= gettext('Unassigned') ?> - <?= gettext('Unassigned') ?></a></td>
 <td>
 <div class="progress progress-xs progress-striped active">
 <div class="progress-bar progress-bar-success" style="width: <?= round(($countUnknwonRoleUnknownGender / $genPop) * 100)?>%" title="<?= round(($countUnknwonRoleUnknownGender / $genPop) * 100)?>%"></div>
@@ -422,12 +429,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
     <div class="box box-info">
       <div class="box-header">
         <i class="fa fa-address-card-o"></i>
-
         <h3 class="box-title"><?= gettext('Gender Demographics') ?></h3>
-
-        <div class="box-tools pull-right">
-          <div id="gender-donut-legend" class="chart-legend"></div>
-        </div>
       </div>
       <!-- /.box-header -->
       <div class="box-body">
@@ -438,10 +440,6 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
       <div class="box-header">
         <i class="fa fa-birthday-cake"></i>
         <h3 class="box-title"><?= gettext('Age Histogram') ?></h3>
-
-        <div class="box-tools pull-right">
-          <div id="age-stats-bar-legend" class="chart-legend"></div>
-        </div>
       </div>
       <!-- /.box-header -->
       <div class="box-body">
@@ -454,100 +452,104 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
 <!-- this page specific inline scripts -->
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     $(document).ready(function () {
-        //-------------
-        //- PIE CHART -
-        //-------------
-        // Get context with jQuery - using jQuery's .get() method.
-        var PieData = [
+    //Gender Donut
+    var pieData = {
+        labels: [
+            '<?= gettext('Men') ?>',
+            '<?= gettext('Women') ?>',
+            '<?= gettext('Boys') ?>',
+            '<?= gettext('Girls') ?>'
+        ],
+        datasets: [{
+            data: [
             <?php while ($row = mysqli_fetch_array($rsAdultsGender)) {
                   if ($row['per_Gender'] == 1) {
-                      echo '{value: ' . $row['numb'] . ' , color: "#003399", highlight: "#3366ff", label: "' . gettext('Men') . '" },';
+                      echo $row['numb'] . ',';
                   }
                   if ($row['per_Gender'] == 2) {
-                      echo '{value: ' . $row['numb'] . ' , color: "#9900ff", highlight: "#ff66cc", label: "' . gettext('Women') . '"},';
+                      echo $row['numb'] . ',';
                   }
               }
             while ($row = mysqli_fetch_array($rsKidsGender)) {
                 if ($row['per_Gender'] == 1) {
-                    echo '{value: ' . $row['numb'] . ' , color: "#3399ff", highlight: "#99ccff", label: "' . gettext('Boys') . '"},';
+                    echo $row['numb'] . ',';
                 }
                 if ($row['per_Gender'] == 2) {
-                    echo '{value: ' . $row['numb'] . ' , color: "#009933", highlight: "#99cc00", label: "' . gettext('Girls') . '",}';
+                    echo $row['numb'];
                 }
-            }
-            ?>
-        ];
-        var pieOptions = {
+            }?>
+            ],
+            backgroundColor: ["#003399","#9900ff","#3399ff","#009933"],
+            hoverBackgroundColor: ["#3366ff","#ff66cc","#99ccff","#99cc00"]
+        }]
+    };
 
-            //String - Point label font colour
-            pointLabelFontColor: "#666",
+    var pieOptions = {
+        //Display a title
+        title: {
+            display: false
+        },
+        //Boolean - Whether we should show a stroke on each segment
+        segmentShowStroke: true,
+        //String - The colour of each segment stroke
+        segmentStrokeColor: "#fff",
+        //Number - The width of each segment stroke
+        segmentStrokeWidth: 2,
+        //Number - The percentage of the chart that we cut out of the middle
+        percentageInnerCutout: 50, // This is 0 for Pie charts
+        //Boolean - Whether we animate the rotation of the Doughnut
+        animateRotate: false,
+        //Boolean - whether to make the chart responsive to window resizing
+        responsive: true,
+        // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
+        maintainAspectRatio: false,
+    };
 
-            //Boolean - Whether we should show a stroke on each segment
-            segmentShowStroke: true,
-            //String - The colour of each segment stroke
-            segmentStrokeColor: "#fff",
-            //Number - The width of each segment stroke
-            segmentStrokeWidth: 2,
-            //Number - The percentage of the chart that we cut out of the middle
-            percentageInnerCutout: 50, // This is 0 for Pie charts
-            //Boolean - Whether we animate the rotation of the Doughnut
-            animateRotate: false,
-            //Boolean - whether to make the chart responsive to window resizing
-            responsive: true,
-            // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
-            maintainAspectRatio: true,
-            //String - A legend template
-            legendTemplate: "<% for (var i=0; i<segments.length; i++){%><span style=\"color: white;padding-right: 4px;padding-left: 2px;background-color:<%=segments[i].fillColor%>\"><%if(segments[i].label){%><%=segments[i].label%><%}%></span> <%}%></ul>"
-        };
+    var ctx = document.getElementById("gender-donut").getContext('2d');
+    var pieChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: pieData,
+        options: pieOptions
+    });
 
-        var pieChartCanvas = $("#gender-donut").get(0).getContext("2d");
-        var pieChart = new Chart(pieChartCanvas);
+    //Age Histogram
+    var ageLabels = <?= json_encode(array_keys($ageStats)); ?>;
+    var ageValues = <?= json_encode(array_values($ageStats)); ?>;
 
-
-        //Create pie or douhnut chart
-        // You can switch between pie and douhnut using the method below.
-        pieChart = pieChart.Doughnut(PieData, pieOptions);
-
-        //then you just need to generate the legend
-        var legend = pieChart.generateLegend();
-
-        //and append it to your page somewhere
-        $('#gender-donut-legend').append(legend);
-        var ageLabels = <?php
-          echo json_encode(array_keys($ageStats));
-        ?>;
-        var ageValues = <?php
-          echo json_encode(array_values($ageStats));
-        ?>;
-        var ageStatsCanvas = $("#age-stats-bar").get(0).getContext("2d");
-        var AgeChart = new Chart(ageStatsCanvas);
-        AgeChart.Bar(
-          {
+    var ctx = document.getElementById("age-stats-bar").getContext('2d');
+    var AgeChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
             labels: ageLabels,
-            datasets: [ {
+            datasets: [{
                 label: "Ages",
                 data: ageValues,
-                backgroundColor: 'rgba(255, 99, 132, 1)',
+                backgroundColor: "#3366ff"
             }]
-          },
-          {
+        },
+        options: {
+            maintainAspectRatio: false,
+            responsive: true,
+            legend: {
+                display: true
+            },
+            title: {
+               display: false
+            },
             scales: {
-              xAxes: [{
-                display: false,
-                barPercentage: 1.3,
-                ticks: {
-                  max: 3,
-                }
-             }],
-              yAxes: [{
-                ticks: {
-                  beginAtZero:true
-                }
-              }]
+                xAxes: [{
+                   display: true,
+                }],
+                yAxes: [{
+                   ticks: {
+                   beginAtZero: true,
+                   stepSize: 1
+                   }
+                }]
             }
-          }
-        );
+        }
     });
+});
 </script>
 
 <?php require 'Include/Footer.php' ?>

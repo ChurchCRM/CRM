@@ -6,13 +6,13 @@ use Slim\Http\Response;
 use ChurchCRM\Service\NewDashboardService;
 
 $app->group('/background', function () {
-    $this->get('/dashboard/page', 'getDashboardAPI');
+    $this->get('/page', 'getPageCommonData');
     $this->post('/timerjobs', 'runTimerJobsAPI');
 });
 
-function getDashboardAPI(Request $request, Response $response, array $p_args)
+function getPageCommonData(Request $request, Response $response, array $p_args)
 {
-    $pageName = $request->getQueryParam("currentpagename", "");
+    $pageName = $request->getQueryParam("name", "");
     $DashboardValues = NewDashboardService::getValues($pageName);
     return $response->withJson($DashboardValues);
 }

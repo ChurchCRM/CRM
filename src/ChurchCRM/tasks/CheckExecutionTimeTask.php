@@ -3,6 +3,7 @@
 
 namespace ChurchCRM\Tasks;
 
+use ChurchCRM\dto\SystemURLs;
 
 class CheckExecutionTimeTask
 {
@@ -25,7 +26,7 @@ class CheckExecutionTimeTask
 
     public function getLink()
     {
-        return 'https://github.com/ChurchCRM/CRM/wiki/PHP-Max-Execution-Time';
+        return SystemURLs::getSupportURL(array_pop(explode('\\', __CLASS__)));
     }
 
     public function getTitle()
