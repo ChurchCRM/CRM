@@ -9,6 +9,7 @@ use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
 $app->group('/admin', function () {
     $this->get('/debug', 'debugPage');
     $this->get('/menus', 'menuPage');
+    $this->get('/database/reset', 'dbResetPage');
 })->add(new AdminRoleAuthMiddleware());
 
 function debugPage(Request $request, Response $response, array $args) {
@@ -31,6 +32,18 @@ function menuPage(Request $request, Response $response, array $args) {
     ];
 
     return $renderer->render($response, 'menus.php', $pageArgs);
+}
+
+
+function dbResetPage(Request $request, Response $response, array $args) {
+    $renderer = new PhpRenderer('templates/admin/');
+
+    $pageArgs = [
+        'sRootPath' => SystemURLs::getRootPath(),
+        'sPageTitle' => gettext('Database Reset Functions')
+    ];
+
+    return $renderer->render($response, 'database-reset.php', $pageArgs);
 }
 
 

@@ -9,13 +9,19 @@ require_once 'Include/Header-function.php';
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Service\AppIntegrityService;
+use ChurchCRM\Service\TaskService;
+use ChurchCRM\Authentication\AuthenticationManager;
 
 // Set the page title and include HTML header
 $sPageTitle = gettext('Upgrade ChurchCRM');
 
-if (!$_SESSION['user']->isAdmin()) {
+if (!AuthenticationManager::GetCurrentUser()->isAdmin()) {
     RedirectUtils::Redirect('index.php');
     exit;
+}
+$expertMode = false;
+if (isset($_GET['expertmode'])) {
+    $expertMode = true;
 }
 
 require 'Include/HeaderNotLoggedIn.php';
@@ -30,6 +36,39 @@ Header_body_scripts();
             <?= gettext('Upgrade ChurchCRM') ?>
         </span>
     </li>
+
+    <?php
+     $taskService = new TaskService();
+     $preUpgradeTasks = $taskService->getActivePreUpgradeTasks();
+      if (count($preUpgradeTasks) > 0) {
+          ?>
+    <li>
+      <i class="fa fa-bomb bg-red"></i>
+      <div class="timeline-item" >
+        <h3 class="timeline-header"><?= gettext('Warning: Pre-Upgrade Tasks Detected') ?> <span id="status1"></span></h3>
+        <div class="timeline-body" id="preUpgradeCheckWarning">
+          <p><?= gettext("Some conditions have been identified wich may prevent a successful upgrade")?></b></p>
+          <p><?= gettext("Please review and mitigate these tasks before continuing with the upgrade:")?></p>
+          <div>
+            <ul>
+              <?php
+                foreach ($preUpgradeTasks as $preUpgradeTask) {
+                    ?>
+                    <li><?= $preUpgradeTask->getTitle() ?>: <?= $preUpgradeTask->getDesc()?></li>
+                  <?php
+                } ?>
+
+            </ul>
+              
+          </div>
+          <p></p>
+          <input type="button" class="btn btn-primary" id="acceptUpgradeTaskWarking" <?= 'value="'.gettext('I Understand').'"' ?>>
+        </div>
+      </div>
+    </li>
+    <?php
+      }
+    ?>
     <?php
       if (AppIntegrityService::getIntegrityCheckStatus() == gettext("Failed")) {
           ?>
@@ -37,7 +76,7 @@ Header_body_scripts();
       <i class="fa fa-bomb bg-red"></i>
       <div class="timeline-item" >
         <h3 class="timeline-header"><?= gettext('Warning: Signature mismatch') ?> <span id="status1"></span></h3>
-        <div class="timeline-body" id="integrityCheckWarning">
+        <div class="timeline-body" id="integrityCheckWarning" <?= count($preUpgradeTasks) > 0 ? 'style="display:none"' : '' ?>>
           <p><?= gettext("Some ChurchCRM system files may have been modified since the last installation.")?><b><?= gettext("This upgrade will completely destroy any customizations made to the following files by reverting the files to the official version.")?></b></p>
           <p><?= gettext("If you wish to maintain your changes to these files, please take a manual backup of these files before proceeding with this upgrade, and then manually restore the files after the upgrade is complete.")?></p>
           <div>
@@ -84,7 +123,7 @@ Header_body_scripts();
       <i class="fa fa-database bg-blue"></i>
       <div class="timeline-item" >
         <h3 class="timeline-header"><?= gettext('Step 1: Backup Database') ?> <span id="status1"></span></h3>
-        <div class="timeline-body" id="backupPhase" <?= AppIntegrityService::getIntegrityCheckStatus() == gettext("Failed") ? 'style="display:none"' : '' ?>>
+        <div class="timeline-body" id="backupPhase" <?= (AppIntegrityService::getIntegrityCheckStatus() == gettext("Failed") || count($preUpgradeTasks) > 0) ? 'style="display:none"' : '' ?>>
           <p><?= gettext('Please create a database backup before beginning the upgrade process.')?></p>
           <input type="button" class="btn btn-primary" id="doBackup" <?= 'value="'.gettext('Generate Database Backup').'"' ?>>
           <span id="backupStatus"></span>
@@ -97,7 +136,7 @@ Header_body_scripts();
       <i class="fa fa-cloud-download bg-blue"></i>
       <div class="timeline-item" >
         <h3 class="timeline-header"><?= gettext('Step 2: Fetch Update Package on Server') ?> <span id="status2"></span></h3>
-        <div class="timeline-body" id="fetchPhase" <?= $_GET['expertmode'] ? '':'style="display: none"' ?>>
+        <div class="timeline-body" id="fetchPhase" <?= $expertMode ? '':'style="display: none"' ?>>
           <p><?= gettext('Fetch the latest files from the ChurchCRM GitHub release page')?></p>
           <input type="button" class="btn btn-primary" id="fetchUpdate" <?= 'value="'.gettext('Fetch Update Files').'"' ?> >
         </div>
@@ -107,7 +146,7 @@ Header_body_scripts();
       <i class="fa fa-cogs bg-blue"></i>
       <div class="timeline-item" >
         <h3 class="timeline-header"><?= gettext('Step 3: Apply Update Package on Server') ?> <span id="status3"></span></h3>
-        <div class="timeline-body" id="updatePhase" <?= $_GET['expertmode'] ? '':'style="display: none"' ?>>
+        <div class="timeline-body" id="updatePhase" <?= $expertMode ? '':'style="display: none"' ?>>
           <p><?= gettext('Extract the upgrade archive, and apply the new files')?></p>
           <h4><?= gettext('Release Notes') ?></h4>
           <pre id="releaseNotes"></pre>
@@ -125,7 +164,7 @@ Header_body_scripts();
       <i class="fa fa-sign-in bg-blue"></i>
       <div class="timeline-item" >
         <h3 class="timeline-header"><?= gettext('Step 4: Login') ?></h3>
-        <div class="timeline-body" id="finalPhase" <?= $_GET['expertmode'] ? '':'style="display: none"' ?>>
+        <div class="timeline-body" id="finalPhase" <?= $expertMode ? '':'style="display: none"' ?>>
           <a href="Logoff.php" class="btn btn-primary"><?= gettext('Login to Upgraded System') ?> </a>
         </div>
       </div>
@@ -138,6 +177,11 @@ Header_body_scripts();
       responsive: true,
       paging:false,
       searching: false
+    });
+
+    $("#acceptUpgradeTaskWarking").click(function() {
+      $("#preUpgradeCheckWarning").slideUp();
+      $("#<?= AppIntegrityService::getIntegrityCheckStatus() == gettext("Failed") ? "integrityCheckWarning" : "backupPhase" ?>").show("slow");
     });
 
     $("#acceptIntegrityCheckWarking").click(function() {

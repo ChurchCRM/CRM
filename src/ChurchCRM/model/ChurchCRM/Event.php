@@ -80,11 +80,8 @@ class Event extends BaseEvent
     
   }
   
-  public function getEventURI()
+  public function getViewURI()
   {
-    if($_SESSION['bAddEvent'])
-      return SystemURLs::getRootPath()."EventEditor.php?calendarAction=".$this->getID();
-    else 
-      return '';
+    return SystemURLs::getRootPath()."/EventEditor.php?calendarAction=".$this->getID();
   }
 }

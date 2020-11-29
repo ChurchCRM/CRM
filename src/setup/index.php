@@ -18,9 +18,11 @@ if (file_exists('../Include/Config.php')) {
 
     $app = new \Slim\App();
     $container = $app->getContainer();
+    if (SystemConfig::debugEnabled()) {
+        $container["settings"]['displayErrorDetails'] = true;
+    }
 
     require __DIR__ . '/../Include/slim/error-handler.php';
-    $settings = require __DIR__ . '/../Include/slim/settings.php';
 
     require __DIR__ . '/routes/setup.php';
 

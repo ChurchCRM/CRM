@@ -6,6 +6,7 @@ msgstr ""
 "X-Generator: POEditor.com\n"
 "Project-Id-Version: ChurchCRM\n"
 "Language: nl\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: 
 msgid "Cannot execute query."
@@ -64,7 +65,8 @@ msgid "This tool will assist you in manually backing up the ChurchCRM database."
 msgstr "Wizard voor het maken van een handmatige backup van de database"
 
 #: 
-msgid "You should make a manual backup at least once a week unless you already have a regular backup procedule for your systems."
+#, fuzzy
+msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
 msgstr "U zou minstens een keer in de week een back-up moeten maken, tenzij u al een regelmatige back-up procedure van uw applicatie heeft."
 
 #: 
@@ -1087,10 +1089,6 @@ msgid "Event Guests"
 msgstr "Gasten van deze activiteit"
 
 #: 
-msgid "Back to Report Menu"
-msgstr "Terug naar rapportages"
-
-#: 
 msgid "There "
 msgstr "Daar"
 
@@ -1271,24 +1269,12 @@ msgid "Security Option"
 msgstr "Beveiligings optie"
 
 #: 
-msgid "Family-View Side"
-msgstr "Gezinnen"
-
-#: 
 msgid "You must select a group."
 msgstr "U moet een groep selecteren."
 
 #: 
 msgid "Edit List Options"
 msgstr "Bewerk Lijst Opties"
-
-#: 
-msgid "Left"
-msgstr "Links"
-
-#: 
-msgid "Right"
-msgstr "Rechts"
 
 #: 
 msgid "Help on types.."
@@ -1301,10 +1287,6 @@ msgstr "U moet een naam invoeren"
 #: 
 msgid "That field name already exists."
 msgstr "De naam van dit veld bestaat al."
-
-#: 
-msgid "Side"
-msgstr "Zijkant"
 
 #: 
 msgid "Add New Field"
@@ -1337,10 +1319,6 @@ msgstr "E-mail is niet geldig"
 #: 
 msgid "Family Info"
 msgstr "Adresgegevens gezin"
-
-#: 
-msgid "None US/CND State"
-msgstr "Geen USA staat of Canadese provincie"
 
 #: 
 msgid "Contact Info"
@@ -1393,10 +1371,6 @@ msgstr "Achternaam"
 #: 
 msgid "Role"
 msgstr "Gezinsrol"
-
-#: 
-msgid "Day"
-msgstr "Dag"
 
 #: 
 msgid "Select Gender"
@@ -1477,14 +1451,6 @@ msgstr "Aangemaakt"
 #: 
 msgid "Edited"
 msgstr "Gewijzigd"
-
-#: 
-msgid " of church<br>"
-msgstr "van kerk"
-
-#: 
-msgid "Latitude/Longitude"
-msgstr "Beedte/Lengte"
 
 #: 
 msgid "Envelope Number"
@@ -2652,10 +2618,6 @@ msgid "No custom person fields have been added yet"
 msgstr "Aanpasbare persoons-velden zijn nog niet toegevoegd"
 
 #: 
-msgid "Person-View Side"
-msgstr "Bekijk-Persoon Kant"
-
-#: 
 msgid "Person Editor"
 msgstr "Beheer personen"
 
@@ -2730,14 +2692,6 @@ msgstr "Lidmaatschapsgegevens"
 #: 
 msgid "Friend Date"
 msgstr "Betrokkenheid is gewijzigd sinds"
-
-#: 
-msgid "Add Person to Group"
-msgstr "Voeg persoon toe aan Groep"
-
-#: 
-msgid "Select the group to add this person to"
-msgstr "Selecteer de groep om deze persoon aan toe te voegen"
 
 #: 
 msgid "Person Profile"
@@ -3221,88 +3175,12 @@ msgid "Delete Family Record AND Family Members"
 msgstr "Verwijdeer Familie EN Familie Leden"
 
 #: 
-msgid "Person Listing"
-msgstr "Overzicht personen"
-
-#: 
-msgid "Group Assignment Helper"
-msgstr "Koppel aan groepen"
-
-#: 
 msgid "Filter and Cart"
 msgstr "Filter en mandje"
 
 #: 
-msgid "Show people <b>not</b> in this group type:"
-msgstr "Overzicht van personen buiten dit groepstype"
-
-#: 
-msgid "Sort order"
-msgstr "Sorteer volgorde"
-
-#: 
-msgid "By Name"
-msgstr "Op Naam"
-
-#: 
-msgid "By Family"
-msgstr "Per gezin"
-
-#: 
-msgid "By Newest Entries"
-msgstr "Op Nieuwste toevoegingen"
-
-#: 
-msgid "By Recently Edited"
-msgstr "Op onlangs Bewerkt"
-
-#: 
-msgid "Apply Filter"
-msgstr "Zet Filter"
-
-#: 
-msgid "Male & Female"
-msgstr "Man & Vrouw"
-
-#: 
-msgid "All Classifications"
-msgstr "Alle kenmerken"
-
-#: 
-msgid "All Family Roles"
-msgstr "Alle gezinsrollen"
-
-#: 
-msgid "All Contact Properties"
-msgstr "Alle contact kenmerken"
-
-#: 
-msgid "All Group Types"
-msgstr "Alle Groepskenmerken"
-
-#: 
-msgid "All Groups"
-msgstr "Alle groepskenmerken"
-
-#: 
-msgid "All Roles"
-msgstr "Alle Rollen"
-
-#: 
 msgid "Listing"
 msgstr "Weergave"
-
-#: 
-msgid "View All"
-msgstr "Bekijk Alles"
-
-#: 
-msgid "Cart"
-msgstr "Mandje"
-
-#: 
-msgid "Print"
-msgstr "Print"
 
 #: 
 msgid "My User Settings"
@@ -3465,20 +3343,8 @@ msgid "Failed Logins"
 msgstr "Mislukte Logins"
 
 #: 
-msgid "You must enter a password in both boxes"
-msgstr "U moet een wachtwoord intypen in beide vensters"
-
-#: 
 msgid "You must enter the same password in both boxes"
 msgstr "U moet in beide vensters een identiek wachtwoord invoeren"
-
-#: 
-msgid "Invalid password"
-msgstr "Ongeldig wachtwoord"
-
-#: 
-msgid "You must enter your new password in both boxes"
-msgstr "U moet uw wachtwoord intypen in beide vensters"
 
 #: 
 msgid "Your password choice is too obvious. Please choose something else."
@@ -3493,32 +3359,12 @@ msgid "characters"
 msgstr "karakters"
 
 #: 
-msgid "You need to actually change your password (nice try, though!)"
-msgstr "U moet echt uw wachtwoord wijzigen (Leuk geprobeerd hoor!)"
-
-#: 
-msgid "Your new password is too similar to your old one.  Be more creative!"
-msgstr "U nieuwe wachtwoord is bijna identiek aan het oude. Wees meer creatief!"
-
-#: 
-msgid "User Password Change"
-msgstr "Gebruikers Wachtwoord Wijziging"
-
-#: 
-msgid "Your account record indicates that you need to change your password before proceding."
-msgstr "Uw acount gegevens geven aan dat uw wachtwoord gewijzigd moet worden voordat u verder kan gaan."
-
-#: 
 msgid "Enter your current password, then your new password twice.  Passwords must be at least"
 msgstr "Voer uw oude wachtwoord in, vervolgens 2x uw nieuwe wachtwoord. Wachtwoorden moeten op zijn minst"
 
 #: 
 msgid "characters in length."
 msgstr "karakters lang zijn."
-
-#: 
-msgid "Enter a new password for this user."
-msgstr "Type een nieuw wachtwoord voor deze gebruiker."
 
 #: 
 msgid "Old Password"
@@ -3623,10 +3469,6 @@ msgstr "Fatale fout in eGive API Datastream: &#39;"
 #: 
 msgid "eMail Dashboard"
 msgstr "E-mail menu"
-
-#: 
-msgid "People not in Mailchimp"
-msgstr "personen die niet in Mailchimp staan"
 
 #: 
 msgid "No families need canvassers assigned"
@@ -3756,10 +3598,6 @@ msgstr "s'avonds"
 #: 
 msgid "am"
 msgstr "Overdag"
-
-#: 
-msgid "yrs old"
-msgstr "jr oud"
 
 #: 
 msgid "Invalid Editor ID!"
@@ -4271,11 +4109,16 @@ msgid "Calendar"
 msgstr "Kalender"
 
 #: 
+msgid "Members"
+msgstr "Leden"
+
+#: 
 msgid "Add New Person"
 msgstr "Personen toevoegen"
 
 #: 
-msgid "View All Persons"
+#, fuzzy
+msgid "View All People"
 msgstr "Personen overzicht"
 
 #: 
@@ -4414,7 +4257,8 @@ msgid "Church Information"
 msgstr "Over de gemeente"
 
 #: 
-msgid "User setup"
+#, fuzzy
+msgid "User Setup"
 msgstr "Instellingen"
 
 #: 
@@ -4546,10 +4390,6 @@ msgid "Cleaned count since last send:"
 msgstr "Opgeschoonde telling sinds de laatste verzending:"
 
 #: 
-msgid "Missing emails report"
-msgstr "Ontbrekende e-mails melden"
-
-#: 
 msgid "Functions"
 msgstr "Functies"
 
@@ -4654,14 +4494,6 @@ msgid "Registration Complete"
 msgstr "Registratie voltooid"
 
 #: 
-msgid "Thank you for registering your family."
-msgstr "Dank u voor het registreren van uw gezin."
-
-#: 
-msgid "Member(s)"
-msgstr "Leden"
-
-#: 
 msgid "Register"
 msgstr "Registreer"
 
@@ -4672,10 +4504,6 @@ msgstr "Registreer je gezin"
 #: 
 msgid "How many people are in your family"
 msgstr "Hoeveel personen telt je gezin?"
-
-#: 
-msgid "This will be my primary church."
-msgstr "Dit wordt mijn eerste gemeente"
 
 #: 
 msgid "Add All Classes"
@@ -4788,10 +4616,6 @@ msgstr "Herstel is bezig. Svp even wachten."
 #: 
 msgid "Family Members:"
 msgstr "Gezinsleden"
-
-#: 
-msgid "Event"
-msgstr "Activiteit"
 
 #: 
 msgid "Anniversary"
@@ -4913,18 +4737,6 @@ msgstr "Groepsgegevens"
 #: 
 msgid "Assign a New Property:"
 msgstr "Koppel een nieuwe waarde"
-
-#: 
-msgid "mos old"
-msgstr "Oude mos"
-
-#: 
-msgid "mo old"
-msgstr "Oude mo"
-
-#: 
-msgid "yr old"
-msgstr "oude jaar"
 
 #: 
 msgid "There was a problem retrieving the requested object"
@@ -5438,10 +5250,6 @@ msgstr "Vergelijk toezeggingen"
 #: 
 msgid "Missing pledges"
 msgstr "Ontbrekende toezeggingen"
-
-#: 
-msgid "Credit Card People"
-msgstr "Personen met een creditcard"
 
 #: 
 msgid "Family Pledge by Fiscal Year"
@@ -6192,10 +6000,6 @@ msgid "Chinese - Taiwan"
 msgstr "Chinese - Taiwan"
 
 #: 
-msgid "Google map API requires a unique key"
-msgstr "Google map API vereist een unieke code"
-
-#: 
 msgid "Deactivated the Family"
 msgstr "deactiveer dit gezin"
 
@@ -6476,18 +6280,6 @@ msgid "Remove all"
 msgstr "Verwijder alles"
 
 #: 
-msgid "Head of Household"
-msgstr "Hoofd van een gezin"
-
-#: 
-msgid "Spouse"
-msgstr "Echtgenoot"
-
-#: 
-msgid "Child"
-msgstr "Kind"
-
-#: 
 msgid "Select a family"
 msgstr "Selecteer een gezin"
 
@@ -6614,10 +6406,6 @@ msgstr "Het maximum aantal groepen"
 #: 
 msgid "Show type of group:"
 msgstr "Groepscategorie"
-
-#: 
-msgid "Payments"
-msgstr "Betalingen"
 
 #: 
 msgid "Add Students"
@@ -6812,36 +6600,12 @@ msgid "Contributing"
 msgstr "Draagt bij"
 
 #: 
-msgid "Birthdates of the day"
-msgstr "Verjaardagen van vandaag"
-
-#: 
-msgid "Anniversaries of the day"
-msgstr "jubilea van vandaag"
-
-#: 
-msgid "Lock"
-msgstr "Geblokeerd"
-
-#: 
-msgid "Enter your password to retrieve your session"
-msgstr "Voer je password in om toegang te krijgen"
-
-#: 
-msgid "Or sign in as a different user"
-msgstr "Of log in met een andere gebruikerscode"
-
-#: 
 msgid "Add All to Cart"
 msgstr "Alles in het karretje zetten"
 
 #: 
 msgid "Remove All from Cart"
 msgstr "Alles uit het karretje verwijderen"
-
-#: 
-msgid " records returned"
-msgstr " weergegeven rijen"
 
 #: 
 msgid "Not Found"
@@ -6886,10 +6650,6 @@ msgstr "Terug naar het menu personen"
 #: 
 msgid "User must have MenuOptions permission"
 msgstr "De gebruiker heeft toegang nodig voor de menu opties"
-
-#: 
-msgid "Try out the Beta family view"
-msgstr "Probeerde beta versie \"overzicht gezinnen\""
 
 #: 
 msgid "Debug Email Connection"
@@ -7068,18 +6828,6 @@ msgid "Unable to open file"
 msgstr "Kan bestand niet openen"
 
 #: 
-msgid "Databse upgrade failed"
-msgstr "De upgrade van de database is mislukt"
-
-#: 
-msgid "logged via API Key."
-msgstr "Opgeslagen via API key"
-
-#: 
-msgid "logged via InValid API Key."
-msgstr "Opgeslagen met een ongeldig API sleutel"
-
-#: 
 msgid "Missing calendar access token"
 msgstr "Het certificaat van toegang tot de kalender is afwezig"
 
@@ -7122,10 +6870,6 @@ msgstr "Ongeldige waarde van de export functie"
 #: 
 msgid "Invalid User/Password"
 msgstr "Ongeldige  inlogcode en/of password"
-
-#: 
-msgid "Bad userId"
-msgstr "Ongeldig gebruikers code"
 
 #: 
 msgid "Find Duplicate Emails"
@@ -7230,10 +6974,6 @@ msgstr "Versie van de database"
 #: 
 msgid "Application Prerequisites"
 msgstr "Minimale eisen voor het ingebruikname van de applicatie"
-
-#: 
-msgid "WebServer Modules"
-msgstr "Webserver modules"
 
 #: 
 msgid "Invalid country name supplied"
@@ -7348,18 +7088,6 @@ msgstr "Niet-ondersteunde Deposit Types gedetecteerd."
 #: 
 msgid "Support for eGive, Credit Card, and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions."
 msgstr "Ondersteuning voor eGive, Credit Card, en Bank Draft betalingen is verouderd. Bestaande niet-bancaire verslagen kunnen niet meer toegankelijk in toekomstige versies zijn."
-
-#: 
-msgid "Unsupported Stored Payment Data Detected"
-msgstr "Niet-ondersteunde opgeslagen betalingsgegevens gedetecteerd."
-
-#: 
-msgid "Support for stored payment data has been removed. This data will soon be removed from your database"
-msgstr "Ondersteuning voor opgeslagen betalingsgegevens is verwijderd. Deze gegevens zullen binnenkort worden verwijderd uit de database"
-
-#: 
-msgid "Classifcation"
-msgstr "Ingeschreven als soort lid"
 
 #: 
 msgid "Estonian"

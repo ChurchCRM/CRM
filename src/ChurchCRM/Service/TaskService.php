@@ -3,6 +3,7 @@
 namespace ChurchCRM\Service;
 
 use ChurchCRM\dto\Notification\UiNotification;
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Tasks\CheckUploadSizeTask;
 use ChurchCRM\Tasks\ChurchAddress;
 use ChurchCRM\Tasks\ChurchNameTask;
@@ -18,8 +19,11 @@ use ChurchCRM\Tasks\PrerequisiteCheckTask;
 use ChurchCRM\Tasks\RegisteredTask;
 use ChurchCRM\Tasks\UpdateFamilyCoordinatesTask;
 use ChurchCRM\Tasks\CheckExecutionTimeTask;
+use ChurchCRM\Tasks\iPreUpgradeTask;
+use ChurchCRM\Tasks\PHPPendingDeprecationVersionCheckTask;
 use ChurchCRM\Tasks\UnsupportedDepositCheck;
-use ChurchCRM\Tasks\UnsupportedPaymentDataCheck;
+use ChurchCRM\Tasks\PHPZipArchiveCheckTask;
+use ChurchCRM\Tasks\SecretsConfigurationCheckTask;
 
 class TaskService
 {
@@ -47,7 +51,9 @@ class TaskService
             new CheckUploadSizeTask(),
             new CheckExecutionTimeTask(),
             new UnsupportedDepositCheck(),
-            new UnsupportedPaymentDataCheck()
+            new SecretsConfigurationCheckTask(),
+            new PHPPendingDeprecationVersionCheckTask(),
+            new PHPZipArchiveCheckTask()
         ];
 
         $this->notificationClasses = [
@@ -59,7 +65,7 @@ class TaskService
     {
         $tasks = [];
         foreach ($this->taskClasses as $taskClass) {
-            if ($taskClass->isActive()) {
+            if ($taskClass->isActive() && (!$taskClass->isAdmin() || ($taskClass->isAdmin() && AuthenticationManager::GetCurrentUser()->isAdmin()))) {
                 array_push($tasks, ['title' => $taskClass->getTitle(),
                     'link' => $taskClass->getLink(),
                     'admin' => $taskClass->isAdmin(),
@@ -79,6 +85,12 @@ class TaskService
             }
         }
         return $tasks;
+    }
+
+    public function getActivePreUpgradeTasks()  {
+        return array_filter($this->taskClasses, function($k) {
+            return $k instanceof iPreUpgradeTask && $k->isActive();
+        });
     }
 
 }

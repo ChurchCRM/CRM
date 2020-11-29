@@ -3,7 +3,7 @@
 namespace ChurchCRM;
 
 use ChurchCRM\Base\Deposit as BaseDeposit;
-use ChurchCRM\Base\Pledge;
+use ChurchCRM\PledgeQuery;
 use ChurchCRM\dto\SystemConfig;
 // use ChurchCRM\Map\DonationFundTableMap;
 use ChurchCRM\Map\PledgeTableMap;
@@ -177,11 +177,17 @@ class Deposit extends BaseDeposit
                 ->withColumn('SUM(contrib_split.spl_Amount)', 'sumAmount')
             ->endUse()
             ->groupByConId()
+        // $pledges = PledgeQuery::create()
+        //     ->filterByDepId($this->getId())
+        //     ->groupByGroupKey()
+        //     ->withColumn('SUM(Pledge.Amount)', 'sumAmount')
+        //     ->joinFamily(null, Criteria::LEFT_JOIN)
+        //     ->withColumn('Family.Name')
             ->find();
         foreach ($pledges as $pledge) {
             // then all of the checks in key-value pairs, in 3 separate columns.  Left to right, then top to bottom.
             if ($pledge->getMethod() == 'CHECK') {
-                $thisReport->pdf->PrintRightJustified($thisReport->curX, $thisReport->curY, $pledge->getCheckno());
+                $thisReport->pdf->PrintRightJustified($thisReport->curX, $thisReport->curY, $pledge->getCheckNo());
                 $thisReport->pdf->PrintRightJustified($thisReport->curX + $thisReport->QBDepositTicketParameters->amountOffsetX, $thisReport->curY, $pledge->getsumAmount());
 
                 $thisReport->curX += $thisReport->QBDepositTicketParameters->lineItemInterval->x;
@@ -286,6 +292,8 @@ class Deposit extends BaseDeposit
             // Format Data
             $checkNo = $payment->getCheckno();
             // $fundName = DonationFundQuery::create()->findOneById($payment->getFundid())->getName();
+            // $checkNo = $payment->getCheckNo();
+            // $fundName = DonationFundQuery::create()->findOneById($payment->getFundId())->getName();
             $comment = $payment->getComment();
             //$family = FamilyQuery::create()->findOneById($payment->getFamId());
             $family = $payment->getPerson();
@@ -479,6 +487,8 @@ class Deposit extends BaseDeposit
         ->withColumn("per_Envelope", "Envelope")
         ->leftJoinContribSplit()
         ->withColumn("spl_FundId", "spl_FundId")
+        // $totalCash = PledgeQuery::create()
+        //     ->filterByDepId($this->getId())
             ->filterByMethod('CHECK')
             ->filterByDepId($this->getId())
             ->groupByDepId()
@@ -498,6 +508,8 @@ class Deposit extends BaseDeposit
         ->withColumn("per_Envelope", "Envelope")
         ->leftJoinContribSplit()
         ->withColumn("spl_FundId", "spl_FundId")
+        // $totalCash = PledgeQuery::create()
+        //     ->filterByDepId($this->getId())
             ->filterByMethod('CASH')
             ->filterByDepId($this->getId())
             ->groupByDepId()
@@ -519,6 +531,9 @@ class Deposit extends BaseDeposit
         ->leftJoinContribSplit()
         ->withColumn("spl_FundId", "spl_FundId")
             ->filterByDepid($this->getId())
+        // $countCash = PledgeQuery::create()
+        //     ->filterByDepId($this->getId())
+        //     ->groupByGroupKey()
             ->filterByMethod('CHECK')
             ->groupById()
             ->find()
@@ -538,6 +553,9 @@ class Deposit extends BaseDeposit
         ->leftJoinContribSplit()
         ->withColumn("spl_FundId", "spl_FundId")
             ->filterByDepid($this->getId())
+        // $countCash = PledgeQuery::create()
+        //     ->filterByDepId($this->getId())
+        //     ->groupByGroupKey()
             ->filterByMethod('CASH')
             ->groupById()
             ->find()
@@ -561,6 +579,17 @@ class Deposit extends BaseDeposit
             ->find();   
 
             return $funds;
+    //     $funds = PledgeQuery::create()
+    //   ->filterByDepId($this->getId())
+    //   ->groupByFundId()
+    //   ->withColumn('SUM('.PledgeTableMap::COL_PLG_AMOUNT.')', 'Total')
+    //   ->joinDonationFund()
+    //   ->withColumn(DonationFundTableMap::COL_FUN_NAME, 'Name')
+    //   ->orderBy(DonationFundTableMap::COL_FUN_NAME)
+    //   ->select(['Name', 'Total'])
+    //   ->find();
+
+    //     return $funds;
     }
 
     public function getPledgesJoinAll(Criteria $criteria = null, ConnectionInterface $con = null, $joinBehavior = Criteria::LEFT_JOIN)

@@ -7,6 +7,7 @@ use ChurchCRM\Note;
 use ChurchCRM\NoteQuery;
 use ChurchCRM\Person;
 use ChurchCRM\PersonQuery;
+use ChurchCRM\Authentication\AuthenticationManager;
 
 class TimelineService
 {
@@ -15,7 +16,7 @@ class TimelineService
 
     public function __construct()
     {
-        $this->currentUser = $_SESSION['user'];
+        $this->currentUser = AuthenticationManager::GetCurrentUser();
     }
 
     public function getForFamily($familyID)

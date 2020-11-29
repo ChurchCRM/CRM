@@ -17,6 +17,9 @@ use Propel\Runtime\Connection\ConnectionInterface;
  */
 class Pledge extends BasePledge
 {
+    public function getFormattedFY() {
+        return MakeFYString($this->getFyId());
+    }
 
    /**
      * Code to be run before deleting the object in database
@@ -25,7 +28,7 @@ class Pledge extends BasePledge
      */
     public function preDelete(ConnectionInterface $con = null)
     {
-        $deposit = DepositQuery::create()->findOneById($this->getDepid());
+        $deposit = DepositQuery::create()->findOneById($this->getDepId());
         if (!$deposit->getClosed()) {
             return parent::preDelete($con);
         } else {

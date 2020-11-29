@@ -1,0 +1,11 @@
+{
+    "baseUrl": "https://churchcrm:8890",
+    "pageLoadTimeout": 100000,
+    "viewportHeight": 1080,
+    "viewportWidth": 1920,
+    "video": false,
+    "env": {
+        "admin.api.key": "ajGwpy8Pdai22XDUpqjC5Ob04v0eG7EGgb4vz2bD2juT8YDmfM",
+        "user.api.key": "cjcPihn8wDwVeRIiNnKfpj0HGgCYbcxaD9SaF6BNJKLtVrnGFr"
+    }
+}

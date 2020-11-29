@@ -18,9 +18,10 @@ use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\ContribQuery;
 use ChurchCRM\ContribSplitQuery;
 use ChurchCRM\PersonQuery;
+use ChurchCRM\Authentication\AuthenticationManager;
 
 // Security
-if (!$_SESSION['user']->isFinanceEnabled()) {
+if (!AuthenticationManager::GetCurrentUser()->isFinanceEnabled()) {
     RedirectUtils::Redirect('Menu.php');
     exit;
 }
@@ -33,7 +34,7 @@ $sDateEnd = InputUtils::LegacyFilterInput($_POST['DateEnd'], 'date');
 $iDepID = InputUtils::LegacyFilterInput($_POST['deposit'], 'int');
 
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
-if (!$_SESSION['user']->isAdmin() && SystemConfig::getValue('bCSVAdminOnly') && $output != 'pdf') {
+if (!AuthenticationManager::GetCurrentUser()->isAdmin() && SystemConfig::getValue('bCSVAdminOnly') && $output != 'pdf') {
     RedirectUtils::Redirect('Menu.php');
     exit;
 }

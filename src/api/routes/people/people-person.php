@@ -4,12 +4,14 @@ use ChurchCRM\dto\Cart;
 use ChurchCRM\dto\Photo;
 use ChurchCRM\ListOptionQuery;
 use ChurchCRM\Slim\Middleware\Request\PersonAPIMiddleware;
-use ChurchCRM\SessionUser;
+use ChurchCRM\Slim\Middleware\MailChimpMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\DeleteRecordRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\EditRecordsRoleAuthMiddleware;
 use ChurchCRM\Utils\MiscUtils;
 use ChurchCRM\Person;
 use ChurchCRM\PersonQuery;
+use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\Service\MailChimpService;
 use Slim\Http\Request;
 use Slim\Http\Response;
 use ChurchCRM\Note;
@@ -34,7 +36,7 @@ $app->group('/person/{personId:[0-9]+}', function () {
 
     $this->get('', function ($request, $response, $args) {
         $person = $request->getAttribute("person");
-        return $response->withJSON($person->toArray());
+        return $response->withHeader('Content-Type', 'application/json')->write($person->exportTo('JSON'));
     });
     // search for contributors
     $this->get('/search2', function ($request, $response, $args) {
@@ -50,7 +52,7 @@ $app->group('/person/{personId:[0-9]+}', function () {
 
     $this->delete('', function ($request, $response, $args) {
         $person = $request->getAttribute("person");
-        if (SessionUser::getId() == $person->getId()) {
+        if (AuthenticationManager::GetCurrentUser()->getId() == $person->getId()) {
             return $response->withStatus(403, gettext("Can't delete yourself"));
         }
         $person->delete();

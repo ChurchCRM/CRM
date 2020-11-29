@@ -11,6 +11,7 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\MICRReader;
 use ChurchCRM\PledgeQuery;
 use ChurchCRM\FamilyQuery;
+use ChurchCRM\Authentication\AuthenticationManager;
 
 class FinancialService
 {
@@ -18,7 +19,7 @@ class FinancialService
     public function deletePayment($groupKey)
     {
         requireUserGroupMembership('bFinance');
-        PledgeQuery::create()->findOneByGroupkey($groupKey)->delete();
+        PledgeQuery::create()->findOneByGroupKey($groupKey)->delete();
     }
 
     public function getMemberByScanString($sstrnig)
@@ -46,7 +47,7 @@ class FinancialService
     public function setDeposit($depositType, $depositComment, $depositDate, $iDepositSlipID = null, $depositClosed = false)
     {
         if ($iDepositSlipID) {
-            $sSQL = "UPDATE deposit_dep SET dep_Date = '".$depositDate."', dep_Comment = '".$depositComment."', dep_EnteredBy = ".$_SESSION['user']->getId().', dep_Closed = '.intval($depositClosed).' WHERE dep_ID = '.$iDepositSlipID.';';
+            $sSQL = "UPDATE deposit_dep SET dep_Date = '".$depositDate."', dep_Comment = '".$depositComment."', dep_EnteredBy = ".AuthenticationManager::GetCurrentUser()->getId().', dep_Closed = '.intval($depositClosed).' WHERE dep_ID = '.$iDepositSlipID.';';
             $bGetKeyBack = false;
             if ($depositClosed && ($depositType == 'CreditCard' || $depositType == 'BankDraft')) {
                 // Delete any failed transactions on this deposit slip now that it is closing
@@ -56,7 +57,7 @@ class FinancialService
             RunQuery($sSQL);
         } else {
             $sSQL = "INSERT INTO deposit_dep (dep_Date, dep_Comment, dep_EnteredBy,  dep_Type)
-            VALUES ('".$depositDate."','".$depositComment."',".$_SESSION['user']->getId().",'".$depositType."')";
+            VALUES ('".$depositDate."','".$depositComment."',".AuthenticationManager::GetCurrentUser()->getId().",'".$depositType."')";
             RunQuery($sSQL);
             $sSQL = 'SELECT MAX(dep_ID) AS iDepositSlipID FROM deposit_dep';
             $rsDepositSlipID = RunQuery($sSQL);
@@ -139,57 +140,6 @@ class FinancialService
         }
 
         return $payments;
-    }
-
-    public function searchDeposits($searchTerm)
-    {
-        requireUserGroupMembership('bFinance');
-        $fetch = 'SELECT dep_ID, dep_Comment, dep_Date, dep_EnteredBy, dep_Type
-            FROM deposit_dep
-            LEFT JOIN pledge_plg ON
-                pledge_plg.plg_depID = deposit_dep.dep_ID
-                AND
-                plg_CheckNo LIKE \'%'.$searchTerm.'%\'
-            WHERE  
-            dep_Comment LIKE \'%'.$searchTerm.'%\'
-            OR 
-            dep_Date LIKE \'%'.$searchTerm.'%\'
-            OR
-            plg_CheckNo LIKE \'%'.$searchTerm.'%\'
-            LIMIT 15';
-        $result = mysqli_query($cnInfoCentral, $fetch);
-        $deposits = [];
-        while ($row = mysqli_fetch_array($result)) {
-            $row_array['id'] = $row['dep_ID'];
-            $row_array['displayName'] = $row['dep_Comment'].' - '.$row['dep_Date'];
-            $row_array['uri'] = $this->getViewURI($row['dep_ID']);
-            array_push($deposits, $row_array);
-        }
-
-        return $deposits;
-    }
-
-    public function searchPayments($searchTerm)
-    {
-        requireUserGroupMembership('bFinance');
-        $fetch = 'SELECT dep_ID, dep_Comment, dep_Date, dep_EnteredBy, dep_Type, plg_FamID, plg_amount, plg_CheckNo, plg_plgID, plg_GroupKey
-            FROM deposit_dep
-            LEFT JOIN pledge_plg ON
-                pledge_plg.plg_depID = deposit_dep.dep_ID
-            WHERE 
-            plg_CheckNo LIKE \'%'.$searchTerm.'%\'
-            LIMIT 15';
-        $result = mysqli_query($cnInfoCentral, $fetch);
-        $deposits = [];
-        while ($row = mysqli_fetch_array($result)) {
-            $family = FamilyQuery::create()->findOneById($row['plg_FamID']);
-            $row_array['id'] = $row['dep_ID'];
-            $row_array['displayName'] = 'Check #'.$row['plg_CheckNo'].': '.$family->getName().' - '.$row['dep_Date'];
-            $row_array['uri'] = $this->getPaymentViewURI($row['plg_GroupKey']);
-            array_push($deposits, $row_array);
-        }
-
-        return $deposits;
     }
 
     public function getPaymentViewURI($groupKey)
@@ -338,7 +288,7 @@ class FinancialService
           $payment->iMethod."','".
           $Fund->Comment."','".
           date('YmdHis')."',".
-          $_SESSION['user']->getId().",'".
+          AuthenticationManager::GetCurrentUser()->getId().",'".
           $payment->type."',".
           $Fund->FundID.','.
           $payment->DepositID.','.

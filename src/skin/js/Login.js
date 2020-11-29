@@ -1,26 +1,9 @@
-if (window.CRM.iLoginType)
-{
-  $(document).ready(function () {
-      $("#Login").hide();
-      document.title = 'Lock';
-  });
 
-  $("#Login-div-appear").click(function(){
-    // 200 is the interval in milliseconds for the fade-in/out, we use jQuery's callback feature to fade
-    // in the new div once the first one has faded out
-    $("#Lock").fadeOut(100, function () {
-      $("#Login").fadeIn(300);
-      document.title = 'Login';
-    });
-  });
-}
-else
-{
-  $(document).ready(function () {
-      $("#Lock").hide();
-      document.title = 'Login';
-  });
-}
+$(document).ready(function () {
+    $("#Lock").hide();
+    document.title = 'Login';
+});
+
 
 var $buoop = {vs: {i: 13, f: -2, o: -2, s: 9, c: -2}, unsecure: true, api: 4};
 function $buo_f() {

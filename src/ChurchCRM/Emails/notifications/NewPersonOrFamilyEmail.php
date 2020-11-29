@@ -10,7 +10,7 @@ use ChurchCRM\dto\SystemURLs;
 class NewPersonOrFamilyEmail extends BaseEmail
 {
     private $relatedObject;
-    
+
     public function __construct($RelatedObject)
     {
       $this->relatedObject = $RelatedObject;
@@ -23,7 +23,7 @@ class NewPersonOrFamilyEmail extends BaseEmail
         if(!empty($Person)) {
           $email = $Person->getEmail();
           if (!empty($email)) {
-            array_push($toAddresses,$email);   
+            array_push($toAddresses,$email);
           }
         }
       }
@@ -44,9 +44,9 @@ class NewPersonOrFamilyEmail extends BaseEmail
       {
         return gettext("New Family Added");
       }
-        
+
     }
-   
+
      public function getTokens()
     {
         $myTokens =  [
@@ -56,12 +56,12 @@ class NewPersonOrFamilyEmail extends BaseEmail
         {
           /* @var $family ChurchCRM\Family */
           $family = $this->relatedObject;
-          $myTokens['body'] = gettext("New Family Added")."\r\n". 
+          $myTokens['body'] = gettext("New Family Added")."\r\n".
             gettext("Family Name").": ". $family->getName();
           $myTokens['FamilyEmail'] =  $family->getEmail();
           $myTokens['FamilyPhone'] = $family->getCellPhone();
           $myTokens['FamilyAddress'] =  $family->getAddress();
-          $myTokens["familyLink"] = SystemURLs::getURL()."/FamilyView.php?FamilyID=".$this->relatedObject->getId();
+          $myTokens['IncludeDataInNewFamilyNotifications'] = SystemConfig::getBooleanValue("IncludeDataInNewPersonNotifications");
         }
         elseif (get_class($this->relatedObject) == "ChurchCRM\Person")
         {
@@ -73,12 +73,32 @@ class NewPersonOrFamilyEmail extends BaseEmail
           $myTokens['PersonPhone'] = $person->getCellPhone();
           $myTokens['PersonAddress'] = $person->getAddress();
           $myTokens['PersonAge'] = $person->getAge();
-          $myTokens['personLink'] = SystemURLs::getURL()."/PersonView.php?PersonID=".$person->getId();
+            $myTokens['IncludeDataInNewPersonNotifications'] = SystemConfig::getBooleanValue("IncludeDataInNewPersonNotifications");
         }
-        $myTokens['IncludeDataInNewPersonNotifications'] = SystemConfig::getBooleanValue("IncludeDataInNewPersonNotifications");
         $myTokens['sGreeterCustomMsg1'] = SystemConfig::getValue("sGreeterCustomMsg1");
         $myTokens['sGreeterCustomMsg2'] = SystemConfig::getValue("sGreeterCustomMsg2");
-          
+
         return array_merge($this->getCommonTokens(), $myTokens);
+    }
+
+    function getFullURL()
+    {
+        if (get_class($this->relatedObject) == "ChurchCRM\Family") {
+            return SystemURLs::getURL() . "/v2/family/" . $this->relatedObject->getId();
+        }
+        elseif (get_class($this->relatedObject) == "ChurchCRM\Person") {
+            return SystemURLs::getURL()."/PersonView.php?PersonID=". $this->relatedObject->getId();
+        }
+    }
+
+    function getButtonText()
+    {
+        if (get_class($this->relatedObject) == "ChurchCRM\Family") {
+            return gettext("View Family Page");
+        }
+        elseif (get_class($this->relatedObject) == "ChurchCRM\Person") {
+            return gettext("View Person Page");
+        }
+
     }
 }

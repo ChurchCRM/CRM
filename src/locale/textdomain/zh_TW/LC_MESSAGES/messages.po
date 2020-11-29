@@ -6,6 +6,7 @@ msgstr ""
 "X-Generator: POEditor.com\n"
 "Project-Id-Version: ChurchCRM\n"
 "Language: zh-TW\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 
 #: 
 msgid "Cannot execute query."
@@ -66,7 +67,7 @@ msgstr "這工具將會協助您手動備份ChurchCRM資料庫"
 
 #: 
 #, fuzzy
-msgid "You should make a manual backup at least once a week unless you already have a regular backup procedule for your systems."
+msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
 msgstr "你應該進行手動備份，每週至少一次，除非你已經有一個的定期備份系統程序。"
 
 #: 
@@ -121,9 +122,8 @@ msgid "Field Selection"
 msgstr "欄位選擇"
 
 #: 
-#, fuzzy
 msgid "Last Name"
-msgstr "姓氐"
+msgstr "姓氏"
 
 #: 
 msgid "Required"
@@ -573,8 +573,9 @@ msgid "Your cart is empty!"
 msgstr "您的購物車是空的！"
 
 #: 
+#, fuzzy
 msgid "No family name entered!"
-msgstr "沒有輸入家族姓氐！"
+msgstr "沒有輸入家族姓氏！"
 
 #: 
 msgid "Add Cart to Family"
@@ -1129,10 +1130,6 @@ msgid "Event Guests"
 msgstr "活動訪客"
 
 #: 
-msgid "Back to Report Menu"
-msgstr "返回報告菜單"
-
-#: 
 msgid "There "
 msgstr "那裡"
 
@@ -1316,24 +1313,12 @@ msgid "Security Option"
 msgstr "“安全選項”"
 
 #: 
-msgid "Family-View Side"
-msgstr "家庭觀看側"
-
-#: 
 msgid "You must select a group."
 msgstr "您必須選擇一個組。"
 
 #: 
 msgid "Edit List Options"
 msgstr "編輯列表選項"
-
-#: 
-msgid "Left"
-msgstr "左"
-
-#: 
-msgid "Right"
-msgstr "權"
 
 #: 
 msgid "Help on types.."
@@ -1346,11 +1331,6 @@ msgstr "您必須輸入一個名稱"
 #: 
 msgid "That field name already exists."
 msgstr "該字段名稱已經存在。"
-
-#: 
-#, fuzzy
-msgid "Side"
-msgstr "方"
 
 #: 
 msgid "Add New Field"
@@ -1383,10 +1363,6 @@ msgstr "電子郵件是無效的"
 #: 
 msgid "Family Info"
 msgstr "家庭資料"
-
-#: 
-msgid "None US/CND State"
-msgstr "無 US/CND 狀態"
 
 #: 
 msgid "Contact Info"
@@ -1442,10 +1418,6 @@ msgstr "最後"
 #: 
 msgid "Role"
 msgstr "角色"
-
-#: 
-msgid "Day"
-msgstr "日"
 
 #: 
 msgid "Select Gender"
@@ -1527,14 +1499,6 @@ msgstr "已建立"
 #: 
 msgid "Edited"
 msgstr "已編輯"
-
-#: 
-msgid " of church<br>"
-msgstr "教會的"
-
-#: 
-msgid "Latitude/Longitude"
-msgstr "緯度/經度"
 
 #: 
 msgid "Envelope Number"
@@ -2553,8 +2517,9 @@ msgid "Generate report comparing all US family addresses with United States Post
 msgstr "生成報告，將所有美國家庭地址與美國郵政服務標準地址格式進行比較。"
 
 #: 
+#, fuzzy
 msgid "Role / Gender"
-msgstr "角式/性別"
+msgstr "角色/性別"
 
 #: 
 msgid "Count"
@@ -2726,10 +2691,6 @@ msgid "No custom person fields have been added yet"
 msgstr "目前沒有自定義的人字段添加"
 
 #: 
-msgid "Person-View Side"
-msgstr "人觀看側"
-
-#: 
 msgid "Person Editor"
 msgstr "人編輯器"
 
@@ -2806,15 +2767,6 @@ msgstr "成員信息"
 #, fuzzy
 msgid "Friend Date"
 msgstr "友情日期"
-
-#: 
-msgid "Add Person to Group"
-msgstr "添加聯繫人到組“"
-
-#: 
-#, fuzzy
-msgid "Select the group to add this person to"
-msgstr "選擇要添加的組人"
 
 #: 
 msgid "Person Profile"
@@ -3308,90 +3260,12 @@ msgid "Delete Family Record AND Family Members"
 msgstr "刪除家庭記錄及家庭成員的"
 
 #: 
-msgid "Person Listing"
-msgstr "人上市"
-
-#: 
-msgid "Group Assignment Helper"
-msgstr "集團轉讓助手"
-
-#: 
 msgid "Filter and Cart"
 msgstr "刪選及購物車；"
 
 #: 
-msgid "Show people <b>not</b> in this group type:"
-msgstr "人<b>不在</b>此組類型："
-
-#: 
-#, fuzzy
-msgid "Sort order"
-msgstr "排序順序"
-
-#: 
-msgid "By Name"
-msgstr "按產品名稱"
-
-#: 
-msgid "By Family"
-msgstr "通過家庭"
-
-#: 
-msgid "By Newest Entries"
-msgstr "通過最新文章"
-
-#: 
-msgid "By Recently Edited"
-msgstr "最近編輯"
-
-#: 
-msgid "Apply Filter"
-msgstr "應用過濾器"
-
-#: 
-msgid "Male & Female"
-msgstr "男性和女性"
-
-#: 
-msgid "All Classifications"
-msgstr "“所有分類”"
-
-#: 
-msgid "All Family Roles"
-msgstr "所有的家庭角色"
-
-#: 
-msgid "All Contact Properties"
-msgstr "所有的聯繫人屬性"
-
-#: 
-msgid "All Group Types"
-msgstr "所有組類型"
-
-#: 
-msgid "All Groups"
-msgstr "所有組"
-
-#: 
-msgid "All Roles"
-msgstr "所有角色"
-
-#: 
 msgid "Listing"
 msgstr "列表"
-
-#: 
-msgid "View All"
-msgstr "查看全部"
-
-#: 
-#, fuzzy
-msgid "Cart"
-msgstr "購物車"
-
-#: 
-msgid "Print"
-msgstr "打印"
 
 #: 
 msgid "My User Settings"
@@ -3567,20 +3441,8 @@ msgid "Failed Logins"
 msgstr "登入失敗次數"
 
 #: 
-msgid "You must enter a password in both boxes"
-msgstr "您必須輸入一個密碼，這兩個框"
-
-#: 
 msgid "You must enter the same password in both boxes"
 msgstr "您必須在兩個框中輸入相同的密碼"
-
-#: 
-msgid "Invalid password"
-msgstr "無效的密碼"
-
-#: 
-msgid "You must enter your new password in both boxes"
-msgstr "在這兩個框，您必須輸入您的新密碼"
 
 #: 
 msgid "Your password choice is too obvious. Please choose something else."
@@ -3595,32 +3457,12 @@ msgid "characters"
 msgstr "字符"
 
 #: 
-msgid "You need to actually change your password (nice try, though!)"
-msgstr "您需要更改您的密碼（不錯的嘗試，但！）"
-
-#: 
-msgid "Your new password is too similar to your old one.  Be more creative!"
-msgstr "您的新密碼是你的舊太相似了。更多的創意！"
-
-#: 
-msgid "User Password Change"
-msgstr "用戶密碼更改"
-
-#: 
-msgid "Your account record indicates that you need to change your password before proceding."
-msgstr "您的帳戶記錄表明操作前，您需要更改您的密碼。"
-
-#: 
 msgid "Enter your current password, then your new password twice.  Passwords must be at least"
 msgstr "請輸入您的當前密碼，然後兩次新密碼。密碼必須至少"
 
 #: 
 msgid "characters in length."
 msgstr "字符的長度。"
-
-#: 
-msgid "Enter a new password for this user."
-msgstr "輸入此用戶的密碼。"
 
 #: 
 #, fuzzy
@@ -3729,10 +3571,6 @@ msgstr "在eGive API數據流的致命錯誤："
 #: 
 msgid "eMail Dashboard"
 msgstr "電子郵件儀錶板"
-
-#: 
-msgid "People not in Mailchimp"
-msgstr "聯繫人不在Mailchimp中"
 
 #: 
 msgid "No families need canvassers assigned"
@@ -3863,11 +3701,6 @@ msgstr "下午"
 #: 
 msgid "am"
 msgstr "我"
-
-#: 
-#, fuzzy
-msgid "yrs old"
-msgstr "歲"
 
 #: 
 msgid "Invalid Editor ID!"
@@ -4395,11 +4228,16 @@ msgid "Calendar"
 msgstr "日曆"
 
 #: 
+msgid "Members"
+msgstr "成員"
+
+#: 
 msgid "Add New Person"
 msgstr "添加新成員"
 
 #: 
-msgid "View All Persons"
+#, fuzzy
+msgid "View All People"
 msgstr "查看所有成員"
 
 #: 
@@ -4539,7 +4377,8 @@ msgid "Church Information"
 msgstr "教會信息"
 
 #: 
-msgid "User setup"
+#, fuzzy
+msgid "User Setup"
 msgstr "用戶設置"
 
 #: 
@@ -4674,10 +4513,6 @@ msgid "Cleaned count since last send:"
 msgstr "自上次發送以來清理的計數："
 
 #: 
-msgid "Missing emails report"
-msgstr "電子郵件缺失報告"
-
-#: 
 msgid "Functions"
 msgstr "功能"
 
@@ -4782,14 +4617,6 @@ msgid "Registration Complete"
 msgstr "註冊完成"
 
 #: 
-msgid "Thank you for registering your family."
-msgstr "感謝您為您的家人註冊。"
-
-#: 
-msgid "Member(s)"
-msgstr "會員"
-
-#: 
 msgid "Register"
 msgstr "註冊"
 
@@ -4800,10 +4627,6 @@ msgstr "註冊家人"
 #: 
 msgid "How many people are in your family"
 msgstr "你有幾個家庭成員"
-
-#: 
-msgid "This will be my primary church."
-msgstr "這將是我的主要教堂。"
 
 #: 
 msgid "Add All Classes"
@@ -4916,10 +4739,6 @@ msgstr "正在恢復運行，請稍候。"
 #: 
 msgid "Family Members:"
 msgstr "家庭成員："
-
-#: 
-msgid "Event"
-msgstr "活動"
 
 #: 
 msgid "Anniversary"
@@ -5040,21 +4859,6 @@ msgstr "組屬性"
 #: 
 msgid "Assign a New Property:"
 msgstr "分配新屬性："
-
-#: 
-#, fuzzy
-msgid "mos old"
-msgstr "月"
-
-#: 
-#, fuzzy
-msgid "mo old"
-msgstr "月"
-
-#: 
-#, fuzzy
-msgid "yr old"
-msgstr "歲"
 
 #: 
 msgid "There was a problem retrieving the requested object"
@@ -5705,10 +5509,6 @@ msgid "Missing pledges"
 msgstr "遺失承諾"
 
 #: 
-msgid "Credit Card People"
-msgstr "信用卡人員"
-
-#: 
 msgid "Family Pledge by Fiscal Year"
 msgstr "財政年度的家庭承諾"
 
@@ -5781,10 +5581,6 @@ msgstr "比較兩個財政年度之間的承諾"
 #, fuzzy
 msgid "Find people who pledged one year but not another"
 msgstr "搜尋僅認獻一年者"
-
-#: 
-msgid "People who are configured to pay by credit card."
-msgstr "配置為使用信用卡付款的人。"
 
 #: 
 msgid "Pledge summary by family name for each fund for the selected fiscal year"
@@ -7076,10 +6872,6 @@ msgid "Zimbabwe"
 msgstr "津巴布韋"
 
 #: 
-msgid "By Zip Code"
-msgstr "按郵政編碼"
-
-#: 
 msgid "Please verify your family's information"
 msgstr "請驗證您的家人的信息"
 
@@ -7319,10 +7111,6 @@ msgid "The previous integrity check passed.  All system file hashes match the ex
 msgstr "已通過完整性檢查。所有系統文件都與預期值哈希匹配。"
 
 #: 
-msgid "Google map API requires a unique key"
-msgstr "Google地圖API需要唯一的密鑰"
-
-#: 
 msgid "Church Checking Account Number"
 msgstr "教堂檢查帳號"
 
@@ -7379,10 +7167,6 @@ msgid "Please ensure this what you want to do.</p>"
 msgstr "請確認這是你想要做的。"
 
 #: 
-msgid " This Family is Deactivated"
-msgstr "這個家庭已停用"
-
-#: 
 msgid " this Family"
 msgstr "這個家庭"
 
@@ -7415,17 +7199,9 @@ msgid "Coordinate data base file name:"
 msgstr "協調數據庫文件名："
 
 #: 
-msgid "Add To Cart"
-msgstr "添加至購物車"
-
-#: 
 #, fuzzy
 msgid "Intersect With Cart"
 msgstr "與購物車交集"
-
-#: 
-msgid "Remove From Cart"
-msgstr "從購物車中刪除"
 
 #: 
 msgid "Family Member"
@@ -7632,10 +7408,6 @@ msgstr "確認操作"
 #: 
 msgid "Please confirm reset failed login count"
 msgstr "請確認重置登入失敗次數"
-
-#: 
-msgid "Password reset for"
-msgstr "密碼重置為"
 
 #: 
 msgid "View Active Families"
@@ -7886,10 +7658,6 @@ msgid "Reset your password"
 msgstr "重置你的密碼"
 
 #: 
-msgid "Check your email for a password reset link"
-msgstr "請檢查您的電子郵件以獲取密碼重置鏈接"
-
-#: 
 msgid "Sorry, we are unable to process your request at this point in time."
 msgstr "抱歉，我們目前無法處理您的請求。"
 
@@ -8040,18 +7808,6 @@ msgid "Are you sure you want to unassign this property?"
 msgstr "您確定要取消分配此屬性嗎？"
 
 #: 
-msgid "Head of Household"
-msgstr "戶主"
-
-#: 
-msgid "Spouse"
-msgstr "伴侶"
-
-#: 
-msgid "Child"
-msgstr "孩子"
-
-#: 
 msgid "Select a family"
 msgstr "選擇一個家庭"
 
@@ -8076,8 +7832,9 @@ msgid "Your Church's Facebook Page"
 msgstr "您的教會的Facebook頁面"
 
 #: 
+#, fuzzy
 msgid "Your Church's Twitter Page"
-msgstr "您的會的Facebook頁面"
+msgstr "您的教會的Twitter頁面"
 
 #: 
 msgid "lookup user images on Google when no local image is present"
@@ -8105,7 +7862,7 @@ msgstr "印尼語 - 印尼"
 
 #: 
 msgid "POST to cart requires a Persons array, FamilyID, or GroupID"
-msgstr "過賬到購物車需要Persons array，家庭ID或組ID"
+msgstr "投遞到購物車需要是人員陣列，家庭ID或組ID"
 
 #: 
 msgid "records(s) successfully added to selected Group."
@@ -8290,14 +8047,6 @@ msgid "Show type of group:"
 msgstr "顯示組的類型："
 
 #: 
-msgid "Deposits"
-msgstr "存款"
-
-#: 
-msgid "Payments"
-msgstr "支付"
-
-#: 
 msgid "Add Students"
 msgstr "添加學生"
 
@@ -8315,7 +8064,7 @@ msgstr "請為會員選擇目標角色"
 
 #: 
 msgid "GroupID required for role selection prompt"
-msgstr "角色選擇提示需要GroupID"
+msgstr "角色選擇提示需要群組ID"
 
 #: 
 msgid "Select Group and Role"
@@ -8564,34 +8313,12 @@ msgid "Contributing"
 msgstr "奉獻"
 
 #: 
-msgid "Birthdates of the day"
-msgstr "出生日"
-
-#: 
-msgid "Anniversaries of the day"
-msgstr "紀念日"
-
-#: 
 msgid "Automatically enable SMTP encryption if offered by the relaying server."
 msgstr "如果由中繼服務器提供，則自動啟用SMTP加密。"
 
 #: 
 msgid "Set the encryption system to use - ssl (deprecated) or tls"
 msgstr "將加密系統設置為使用 - ssl（不建議使用）或tls"
-
-#: 
-msgid "Lock"
-msgstr "鎖"
-
-#: 
-#, fuzzy
-msgid "Enter your password to retrieve your session"
-msgstr "輸入您的密碼來恢復瀏覽"
-
-#: 
-#, fuzzy
-msgid "Or sign in as a different user"
-msgstr "或以其他用戶身份登入"
 
 #: 
 msgid "Dashboard Service dynamic asynchronous refresh interval, default 60 second"
@@ -8608,14 +8335,6 @@ msgstr "全部添加至購物車"
 #: 
 msgid "Remove All from Cart"
 msgstr "從購物車中刪除全部"
-
-#: 
-msgid " record returned"
-msgstr "記錄已返回"
-
-#: 
-msgid " records returned"
-msgstr "記錄已返回"
 
 #: 
 msgid "records(s) successfully deleted from the selected Group."
@@ -8677,10 +8396,6 @@ msgstr "返回人員儀錶盤"
 #: 
 msgid "User must have MenuOptions permission"
 msgstr "用戶必須具有MenuOptions權限"
-
-#: 
-msgid "Try out the Beta family view"
-msgstr "試用Beta系列視圖"
 
 #: 
 msgid "SMTP Host is not setup, please visit the settings page"
@@ -8906,18 +8621,6 @@ msgid "Failure executing upgrade script"
 msgstr "執行升級腳本失敗"
 
 #: 
-msgid "Databse upgrade failed"
-msgstr "數據庫升級失敗"
-
-#: 
-msgid "logged via API Key."
-msgstr "通過API密鑰記錄。"
-
-#: 
-msgid "logged via InValid API Key."
-msgstr "通過無效的API密鑰記錄。"
-
-#: 
 msgid "Missing calendar access token"
 msgstr "缺少日曆訪問令牌"
 
@@ -8960,10 +8663,6 @@ msgstr "無效的匯出值"
 #: 
 msgid "Invalid User/Password"
 msgstr "無效的用戶/密碼"
-
-#: 
-msgid "Bad userId"
-msgstr "用戶ID不好"
 
 #: 
 msgid "Find Duplicate Emails"
@@ -9070,10 +8769,6 @@ msgstr "資料庫版本"
 #: 
 msgid "Application Prerequisites"
 msgstr "應用程序的先決條件"
-
-#: 
-msgid "WebServer Modules"
-msgstr "網頁服務器模塊"
 
 #: 
 msgid "Invalid country name supplied"
@@ -9212,20 +8907,6 @@ msgstr "檢測到不支持的存款類型"
 #, fuzzy
 msgid "Support for eGive, Credit Card, and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions."
 msgstr "已棄用對eGive，信用卡和銀行匯票付款的支持。在將來的版本中可能無法再訪問現有的非銀行報告。"
-
-#: 
-#, fuzzy
-msgid "Unsupported Stored Payment Data Detected"
-msgstr "檢測到不支持的存儲付款數據"
-
-#: 
-msgid "Support for stored payment data has been removed. This data will soon be removed from your database"
-msgstr "已刪除對存儲的付款數據的支持。這些數據很快就會從您的資料庫中刪除"
-
-#: 
-#, fuzzy
-msgid "Classifcation"
-msgstr "分類"
 
 #: 
 #, fuzzy
@@ -9382,4 +9063,853 @@ msgstr "請查看日誌以獲取更多信息"
 #, fuzzy
 msgid "Verification URL"
 msgstr "驗證網址"
+
+#: 
+#, fuzzy
+msgid "Reset System"
+msgstr "系統重置"
+
+#: 
+#, fuzzy
+msgid "Unexpected Person Id"
+msgstr "不預期的人員代碼"
+
+#: 
+#, fuzzy
+msgid "Interval in Hours for software update check"
+msgstr "軟件更新檢查的間隔小時"
+
+#: 
+#, fuzzy
+msgid "Last Software Update Check Timestamp"
+msgstr "上次軟件更新檢查時間戳"
+
+#: 
+#, fuzzy
+msgid "Allow system upgrades to release marked as 'pre release' on GitHub"
+msgstr "允許在GitHub上標記為預發佈的系統升級版本發佈"
+
+#: 
+#, fuzzy
+msgid "Search Calendar Events"
+msgstr "搜索日曆事件"
+
+#: 
+#, fuzzy
+msgid "Maximum number of Calendar Events"
+msgstr "日曆活動的最大數量"
+
+#: 
+msgid "%d month old"
+msgid_plural "%d months old"
+msgstr[0] "％d個月大\n"
+"Plural: ％d個月大"
+
+#: 
+msgid "%d year old"
+msgid_plural "%d years old"
+msgstr[0] "%d歲大\n"
+"Plural: %d歲大"
+
+#: 
+#, fuzzy
+msgid "Database upgrade failed"
+msgstr "資料庫升級失敗"
+
+#: 
+#, fuzzy
+msgid "Unsupported PHP Version"
+msgstr "不支援的PHP版本"
+
+#: 
+#, fuzzy
+msgid "Support for this PHP version will soon be removed.  Current PHP Version: "
+msgstr "很快將不再支持此PHP版本。當前的PHP版本： "
+
+#: 
+#, fuzzy
+msgid "Missing PHP ZipArchive"
+msgstr "缺少PHP ZipArchive"
+
+#: 
+#, fuzzy
+msgid "PHP ZipArchive required to support upgrade"
+msgstr "需要PHP ZipArchive以支援升級"
+
+#: 
+#, fuzzy
+msgid "Add Results to Cart"
+msgstr "將結果添加到購物車"
+
+#: 
+#, fuzzy
+msgid "Remove Results from Cart"
+msgstr "從購物車中刪除結果"
+
+#: 
+#, fuzzy
+msgid "Warning: Pre-Upgrade Tasks Detected"
+msgstr "警告：檢測到預升級任務"
+
+#: 
+#, fuzzy
+msgid "Some conditions have been identified wich may prevent a successful upgrade"
+msgstr "已確定某些情況，可能會阻止成功升級"
+
+#: 
+#, fuzzy
+msgid "Please review and mitigate these tasks before continuing with the upgrade:"
+msgstr "在繼續升級之前，請查看並減少以下任務："
+
+#: 
+#, fuzzy
+msgid "Database Reset Functions"
+msgstr "資料庫重置功能"
+
+#: 
+#, fuzzy
+msgid "Reset Members"
+msgstr "重置會員"
+
+#: 
+#, fuzzy
+msgid "This will remove all the member data, people, and families and can't be undone."
+msgstr "這將刪除所有會員數據，人員和家庭，並且無法撤消。"
+
+#: 
+#, fuzzy
+msgid "Reset Families/People"
+msgstr "重置家庭/人"
+
+#: 
+#, fuzzy
+msgid "Reset Database"
+msgstr "重置資料庫"
+
+#: 
+#, fuzzy
+msgid "This will reset the system data and will restart the system as a new install."
+msgstr "這將重置系統資料，並以新安裝的方式重新啟動系統。"
+
+#: 
+#, fuzzy
+msgid "Clear Filter"
+msgstr "清除篩選"
+
+#: 
+#, fuzzy
+msgid "Add Person"
+msgstr "新增人員"
+
+#: 
+#, fuzzy
+msgid "Portuguese - Portugal"
+msgstr "葡萄牙語-葡萄牙"
+
+#: 
+#, fuzzy
+msgid "Holiday"
+msgstr "假日"
+
+#: 
+#, fuzzy
+msgid "Allow users to self-enroll in 2 factor authentication"
+msgstr "允許用戶自行註冊兩因素身份驗證"
+
+#: 
+#, fuzzy
+msgid "Requires users to self-enroll in 2 factor authentication"
+msgstr "要求用戶自行註冊兩因素身份驗證"
+
+#: 
+#, fuzzy
+msgid "ChurchCRM"
+msgstr "ChurchCRM"
+
+#: 
+#, fuzzy
+msgid "Specify the application name to be displayed in authenticator app"
+msgstr "指定要在驗證器應用程序中顯示的應用程序名稱"
+
+#: 
+#, fuzzy
+msgid "Secret Keys missing from Config.php"
+msgstr "Config.php中缺少密鑰"
+
+#: 
+#, fuzzy
+msgid "Review"
+msgstr "檢閱"
+
+#: 
+#, fuzzy
+msgid "Thank you for registering your family"
+msgstr "感謝您為家人註冊"
+
+#: 
+#, fuzzy
+msgid "Register another family!"
+msgstr "註冊另一個家庭！"
+
+#: 
+#, fuzzy
+msgid "Done, show me the homepage!"
+msgstr "完成，轉至主頁！"
+
+#: 
+msgid "User authenticated via API Key: "
+msgstr "用戶通過API密鑰進行身份驗證: "
+
+#: 
+msgid "Unsuccessful API Key authentication attempt"
+msgstr "API密鑰身份驗證嘗試失敗"
+
+#: 
+msgid "Unpinned Events"
+msgstr "未釘選事件"
+
+#: 
+msgid "LastName, FirstName MiddleName"
+msgstr "姓, 名 中間名"
+
+#: 
+msgid "Manage 2 Factor Authentication"
+msgstr "管理雙重認證"
+
+#: 
+msgid "Two Factor Status"
+msgstr "雙重認證狀態"
+
+#: 
+msgid "Please confirm disabling 2 Factor Auth for this user"
+msgstr "請確認為此用戶禁用雙重認證"
+
+#: 
+msgid "Please enter 2FA code"
+msgstr "請輸入雙重認證代碼"
+
+#: 
+msgid "2FA Code"
+msgstr "雙重認證代碼"
+
+#: 
+msgid "2 Factor Authentication enrollment"
+msgstr "雙重認證代碼註冊"
+
+#: 
+msgid "Unsupported Two Factor Authentication Configuration"
+msgstr "不支持的雙重認證配置"
+
+#: 
+msgid "Unable To Begin Two Factor Authentication Enrollment"
+msgstr "無法開始雙重認證註冊"
+
+#: 
+msgid "Two factor authentication requires ChurchCRM administrators to configure a few parameters"
+msgstr "雙重認證要求ChurchCRM管理員配置一些參數"
+
+#: 
+msgid "System configuration "
+msgstr "系統配置 "
+
+#: 
+msgid "Must be set to 'true'"
+msgstr "必須設置為'true'"
+
+#: 
+msgid "Include/Config.php must define an encryption key for storing 2FA secret keys in the database by setting a value for"
+msgstr "Include / Config.php必須通過為以下項設置值來定義用於在數據庫中存儲雙重認證秘密密鑰的加密密鑰"
+
+#: 
+#, fuzzy
+msgid "Google Maps API Key used for Geocoding addresses"
+msgstr "用於地址解析的Google Maps API密鑰"
+
+#: 
+#, fuzzy
+msgid "Send an email notifying users when their account has been deleted"
+msgstr "發送電子郵件通知用戶帳戶被刪除"
+
+#: 
+#, fuzzy
+msgid "Google Maps API Key used for rendering maps in browser"
+msgstr "Google Maps API密鑰用於在瀏覽器中呈現地圖"
+
+#: 
+#, fuzzy
+msgid "Incorrect password supplied for current user"
+msgstr "當前用戶提供的密碼不正確"
+
+#: 
+#, fuzzy
+msgid "Your new password must not match your old one."
+msgstr "您的新密碼與舊密碼不匹配。"
+
+#: 
+#, fuzzy
+msgid "Your new password is too similar to your old one."
+msgstr "您的新密碼與舊密碼過於相似。"
+
+#: 
+#, fuzzy
+msgid "Password reset not availble.  Please contact your system administrator"
+msgstr "密碼重置不可用。請聯繫您的系統管理員"
+
+#: 
+#, fuzzy
+msgid "Authentication Issue"
+msgstr "認證問題"
+
+#: 
+#, fuzzy
+msgid "Enter new user password. Administratively set passwords are not subject to length or complexity requirements"
+msgstr "輸入新的用戶密碼。管理設置的密碼不受長度或複雜性要求的限制"
+
+#: 
+msgid "No email passed in"
+msgstr "沒有傳入電子郵件"
+
+#: 
+msgid "Mailchimp is not active"
+msgstr "Mailchimp無效"
+
+#: 
+msgid "Mailchimp"
+msgstr "Mailchimp"
+
+#: 
+msgid "Lists"
+msgstr "清單"
+
+#: 
+msgid "loading"
+msgstr "載入中"
+
+#: 
+msgid "List not found"
+msgstr "找不到清單"
+
+#: 
+msgid "List not inList"
+msgstr "清單不在列表中"
+
+#: 
+msgid "People not in"
+msgstr "不在其中的人員"
+
+#: 
+msgid "Invalid List id"
+msgstr "無效的清單代碼"
+
+#: 
+msgid "Audience not in the ChurchCRM"
+msgstr "ChurchCRM沒有Audience"
+
+#: 
+msgid "ChurchCRM Installation Information"
+msgstr "ChurchCRM安裝資訊"
+
+#: 
+msgid "Database Server Version"
+msgstr "資料庫伺服器版本"
+
+#: 
+msgid "Web Server"
+msgstr "網頁伺服器"
+
+#: 
+msgid "Server Software"
+msgstr "伺服器軟體"
+
+#: 
+msgid "Email Information"
+msgstr "電子郵件資訊"
+
+#: 
+msgid "List maintenance"
+msgstr "清單維護"
+
+#: 
+msgid "People not in list"
+msgstr "不在清單中的人員"
+
+#: 
+msgid "Audience not in the CRM"
+msgstr "CRM沒有Audience"
+
+#: 
+msgid "Hebrew"
+msgstr "希伯來書"
+
+#: 
+msgid "open rate"
+msgstr "開放率"
+
+#: 
+#, fuzzy
+msgid "Not Subscribed "
+msgstr "未訂閱 "
+
+#: 
+#, fuzzy
+msgid "Global User Settings"
+msgstr "全局用戶設置"
+
+#: 
+#, fuzzy
+msgid "General"
+msgstr "一般"
+
+#: 
+#, fuzzy
+msgid "Passwords"
+msgstr "密碼"
+
+#: 
+#, fuzzy
+msgid "2FA"
+msgstr "雙重認證"
+
+#: 
+#, fuzzy
+msgid "Session Timeout"
+msgstr "連線逾時"
+
+#: 
+#, fuzzy
+msgid "Max Failed Login"
+msgstr "最大登錄失敗次數"
+
+#: 
+#, fuzzy
+msgid "Enable Password Reset"
+msgstr "啟用密碼重置"
+
+#: 
+#, fuzzy
+msgid "Send email to Deleted Users"
+msgstr "發送電子郵件給已刪除的用戶"
+
+#: 
+#, fuzzy
+msgid "Min Password Length"
+msgstr "最小密碼長度"
+
+#: 
+#, fuzzy
+msgid "Min Password Characters Delta"
+msgstr "最小密碼字符增量"
+
+#: 
+#, fuzzy
+msgid "Disallowed Passwords"
+msgstr "不允許的密碼"
+
+#: 
+#, fuzzy
+msgid "Enable 2FA"
+msgstr "啟用雙重認證"
+
+#: 
+#, fuzzy
+msgid "Require 2FA"
+msgstr "需要雙重認證"
+
+#: 
+#, fuzzy
+msgid "2FA Application Name"
+msgstr "雙重認證應用程式名稱"
+
+#: 
+#, fuzzy
+msgid "Login Info"
+msgstr "登錄信息"
+
+#: 
+#, fuzzy
+msgid "Login Count"
+msgstr "登錄次數"
+
+#: 
+#, fuzzy
+msgid "Failed Login"
+msgstr "登錄失敗"
+
+#: 
+#, fuzzy
+msgid "Permissions"
+msgstr "許可權"
+
+#: 
+#, fuzzy
+msgid "Manage Notes"
+msgstr "管理筆記"
+
+#: 
+#, fuzzy
+msgid "Skins"
+msgstr "佈景主題"
+
+#: 
+#, fuzzy
+msgid "Failed generate a new API Key"
+msgstr "生成新的API密鑰失敗"
+
+#: 
+msgid "Pledge Summary By Family"
+msgstr "家庭承諾摘要"
+
+#: 
+#, fuzzy
+msgid "Pledge"
+msgstr "承諾"
+
+#: 
+#, fuzzy
+msgid "Paid"
+msgstr "已付"
+
+#: 
+#, fuzzy
+msgid "Owe"
+msgstr "欠"
+
+#: 
+#, fuzzy
+msgid "Start Date"
+msgstr "開始日期"
+
+#: 
+#, fuzzy
+msgid "End Date"
+msgstr "結束日期"
+
+#: 
+#, fuzzy
+msgid "Pinned Calendars"
+msgstr "釘選日曆"
+
+#: 
+#, fuzzy
+msgid "This field is required"
+msgstr "這是必填欄"
+
+#: 
+#, fuzzy
+msgid "Text"
+msgstr "文本"
+
+#: 
+#, fuzzy
+msgid "Event Description"
+msgstr "活動說明"
+
+#: 
+msgid "Enrolling your ChurchCRM user account in Two Factor Authention provides an additional layer of defense against bad actors trying to access your account."
+msgstr "將ChurchCRM用戶帳戶註冊為雙重認證可為試圖訪問您的帳戶的不良行為者提供額外的防禦。"
+
+#: 
+msgid "ChurchCRM Two factor supports any TOTP authenticator app, so you're free to choose between Microsoft Authenticator, Google Authenticator, Authy, LastPass, and others"
+msgstr "ChurchCRM 雙重認證支持任何TOTP身份驗證器應用程序，因此您可以自由選擇Microsoft Authenticator，Google Authenticator，Authy，LastPass和其他"
+
+#: 
+#, fuzzy
+msgid "When you sign in to ChurchCRM, you'll still enter your username and password like normal"
+msgstr "登錄ChurchCRM時，您仍然會像平常一樣輸入用戶名和密碼"
+
+#: 
+#, fuzzy
+msgid "However, you'll also need to supply a one-time code from your authenticator device to complete your login"
+msgstr "但是，您還需要提供來自身份驗證器設備的一次性代碼以完成登錄"
+
+#: 
+#, fuzzy
+msgid "After successfully entering both your credentials, and the one-time code, you'll be logged in as normal"
+msgstr "成功輸入憑據和一次性代碼後，您將照常登錄"
+
+#: 
+#, fuzzy
+msgid "To prevent being locked out of your ChurchCRM account, please ensure you're ready to complete two factor enrollment before clicking begin"
+msgstr "為防止您的ChurchCRM帳戶被鎖定，請確保您已準備好完成雙重驗證註冊，然後再單擊開始。"
+
+#: 
+#, fuzzy
+msgid "Beginning enrollment will invalidate any previously enrolled 2 factor devices and recovery codes."
+msgstr "開始註冊將使之前已註冊的任何雙重驗證設備和恢復代碼無效。"
+
+#: 
+#, fuzzy
+msgid "When you click next, you'll be prompted to scan a QR code to enroll your authenticator app."
+msgstr "單擊下一步時，系統將提示您掃描QR碼以註冊身份驗證器應用程序。"
+
+#: 
+#, fuzzy
+msgid "To confirm enrollment, you'll need to enter the code generated by your authenticator app"
+msgstr "要確認註冊，您需要輸入您的身份驗證器應用生成的代碼"
+
+#: 
+#, fuzzy
+msgid "After confirming app enrollment, single-use recovery codes will be generated and displayed."
+msgstr "確認應用註冊後，將生成並顯示一次性恢復代碼。"
+
+#: 
+#, fuzzy
+msgid "Recovery codes can be used instead of a code generated from your authenticator app."
+msgstr "可以使用恢復代碼代替從身份驗證器應用程序生成的代碼。"
+
+#: 
+#, fuzzy
+msgid "Store these in a secure location"
+msgstr "將它們存儲在安全的位置"
+
+#: 
+#, fuzzy
+msgid "Begin Two Factor Authentication Enrollment"
+msgstr "開始雙重驗證註冊"
+
+#: 
+msgid "2 Factor Authentication Secret"
+msgstr "雙重認證加密"
+
+#: 
+msgid "Regenerate 2 Factor Authentication Secret"
+msgstr "生成雙重認證加密"
+
+#: 
+msgid "Remove 2 Factor Authentication Secret"
+msgstr "移除雙重認證加密"
+
+#: 
+#, fuzzy
+msgid "Enter TOTP code to confirm enrollment"
+msgstr "輸入一次性密碼以確認註冊"
+
+#: 
+msgid "2 Factor Authentication Enrollment Success"
+msgstr "雙重認證註冊成功"
+
+#: 
+#, fuzzy
+msgid "Please store these recovery codes in a safe location"
+msgstr "請將這些恢復代碼存儲在安全的位置"
+
+#: 
+#, fuzzy
+msgid "If you ever lose access to your newly enrolled authenticator app, you'll need to use a recovery code to gain access to your account"
+msgstr "如果您失去了對新註冊的身份驗證器應用的訪問權限，則需要使用恢復碼來訪問您的帳戶"
+
+#: 
+#, fuzzy
+msgid "Event Attendance"
+msgstr "活動出席"
+
+#: 
+#, fuzzy
+msgid "Generate attendance -AND- non-attendance reports for events"
+msgstr "生成活動的出席-和非出席報告"
+
+#: 
+#, fuzzy
+msgid "of translation completed"
+msgstr "翻譯完成"
+
+#: 
+#, fuzzy
+msgid "Help translate this project"
+msgstr "幫助翻譯此專案"
+
+#: 
+#, fuzzy
+msgid "Credit Card People"
+msgstr "信用卡人"
+
+#: 
+#, fuzzy
+msgid "People who are configured to pay by credit card."
+msgstr "配置為通過信用卡付款的人。"
+
+#: 
+#, fuzzy
+msgid "Afrikaans"
+msgstr "南非語"
+
+#: 
+#, fuzzy
+msgid " has a type mismatch"
+msgstr " 類型不匹配"
+
+#: 
+#, fuzzy
+msgid "Loading"
+msgstr "載入中"
+
+#: 
+#, fuzzy
+msgid "Family Property Unassignment"
+msgstr "未分配的家庭財產"
+
+#: 
+#, fuzzy
+msgid "Do you want to remove"
+msgstr "您要刪除嗎"
+
+#: 
+#, fuzzy
+msgid "View Active People"
+msgstr "查看活躍的人"
+
+#: 
+#, fuzzy
+msgid "View Inactive People"
+msgstr "查看不活躍的人"
+
+#: 
+#, fuzzy
+msgid "Today's Birthdays"
+msgstr "今天生日"
+
+#: 
+#, fuzzy
+msgid "Today's Wedding Anniversaries"
+msgstr "今天結婚週年紀念日"
+
+#: 
+#, fuzzy
+msgid "Api Key"
+msgstr "API金鑰"
+
+#: 
+#, fuzzy
+msgid "Regen API Key"
+msgstr "再生API金鑰"
+
+#: 
+#, fuzzy
+msgid "View Family Page"
+msgstr "查看家庭頁面"
+
+#: 
+#, fuzzy
+msgid "View Person Page"
+msgstr "查看人員頁面"
+
+#: 
+#, fuzzy
+msgid "Verify"
+msgstr "確認"
+
+#: 
+#, fuzzy
+msgid "Family has no emails to use"
+msgstr "家庭沒有電子郵件可使用"
+
+#: 
+#, fuzzy
+msgid "Blue"
+msgstr "藍"
+
+#: 
+#, fuzzy
+msgid "Black"
+msgstr "黑"
+
+#: 
+#, fuzzy
+msgid "Purple"
+msgstr "紫"
+
+#: 
+#, fuzzy
+msgid "Green<"
+msgstr "綠<"
+
+#: 
+#, fuzzy
+msgid "Red"
+msgstr "紅"
+
+#: 
+#, fuzzy
+msgid "Yellow"
+msgstr "黃"
+
+#: 
+#, fuzzy
+msgid "Blue Light"
+msgstr "淺藍"
+
+#: 
+#, fuzzy
+msgid "Black Light"
+msgstr "淺黑"
+
+#: 
+#, fuzzy
+msgid "Purple Light"
+msgstr "淺紫"
+
+#: 
+#, fuzzy
+msgid "Green Light"
+msgstr "淺綠"
+
+#: 
+#, fuzzy
+msgid "Red Light"
+msgstr "淺紅"
+
+#: 
+#, fuzzy
+msgid "Yellow Light"
+msgstr "淺黃"
+
+#: 
+#, fuzzy
+msgid "Boxed Layout"
+msgstr "盒裝布局"
+
+#: 
+#, fuzzy
+msgid "Activate the boxed layout"
+msgstr "激活盒裝布局"
+
+#: 
+#, fuzzy
+msgid "Toggle Sidebar"
+msgstr "切換邊欄"
+
+#: 
+#, fuzzy
+msgid "Toggle the left sidebar's state (open or collapse)"
+msgstr "切換左側邊欄的狀態為(打開或折疊)"
+
+#: 
+#, fuzzy
+msgid "Tables Settings"
+msgstr "表格設定"
+
+#: 
+#, fuzzy
+msgid "Page length"
+msgstr "頁面長度"
+
+#: 
+#, fuzzy
+msgid "Change the initial page length (number of rows per page)"
+msgstr "更改初始頁面長度(每頁的行數)"
+
+#: 
+#, fuzzy
+msgid "User Interface"
+msgstr "用戶界面"
+
+#: 
+#, fuzzy
+msgid "Locale"
+msgstr "本地"
+
+#: 
+#, fuzzy
+msgid "Override system locale"
+msgstr "覆蓋系統區域設置"
 

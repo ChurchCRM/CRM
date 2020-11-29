@@ -22,6 +22,7 @@ require 'Include/Header.php';
 
 use ChurchCRM\ListOptionQuery;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Authentication\AuthenticationManager;
 
 $rsGroupTypes = ListOptionQuery::create()->filterById('3')->find();
 
@@ -47,7 +48,7 @@ $rsGroupTypes = ListOptionQuery::create()->filterById('3')->find();
 <table class="table" id="groupsTable">
 </table>
 <?php
-if ($_SESSION['user']->isManageGroupsEnabled()) {
+if (AuthenticationManager::GetCurrentUser()->isManageGroupsEnabled()) {
       ?>
 
 

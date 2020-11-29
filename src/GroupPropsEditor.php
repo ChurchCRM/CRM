@@ -16,9 +16,10 @@ require 'Include/Functions.php';
 
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\Authentication\AuthenticationManager;
 
 // Security: user must be allowed to edit records to use this page.
-if (!$_SESSION['user']->isEditRecordsEnabled()) {
+if (!AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled()) {
     RedirectUtils::Redirect('Menu.php');
     exit;
 }

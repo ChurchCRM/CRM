@@ -8,7 +8,7 @@ use ChurchCRM\Service\SundaySchoolService;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\MiscUtils;
-use ChurchCRM\SessionUser;
+use ChurchCRM\Authentication\AuthenticationManager;
 
 $sundaySchoolService = new SundaySchoolService();
 
@@ -71,7 +71,7 @@ require '../Include/Header.php';
   </div>
   <div class="box-body">
     <?php
-    $sMailtoDelimiter = SessionUser::getUser()->getUserConfigString("sMailtoDelimiter");
+    $sMailtoDelimiter = AuthenticationManager::GetCurrentUser()->getUserConfigString("sMailtoDelimiter");
     $allEmails = array_unique(array_merge($ParentsEmails, $KidsEmails, $TeachersEmails));
     $roleEmails->Parents = implode($sMailtoDelimiter, $ParentsEmails).',';
     $roleEmails->Teachers = implode($sMailtoDelimiter, $TeachersEmails).',';
@@ -83,7 +83,7 @@ require '../Include/Header.php';
     }
     $sEmailLink = urlencode($sEmailLink);  // Mailto should comply with RFC 2368
 
-    if (SessionUser::getUser()->isEmailEnabled()) { // Does user have permission to email groups
+    if (AuthenticationManager::GetCurrentUser()->isEmailEnabled()) { // Does user have permission to email groups
       // Display link
       ?>
       <div class="btn-group">

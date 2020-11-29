@@ -6,6 +6,7 @@ msgstr ""
 "X-Generator: POEditor.com\n"
 "Project-Id-Version: ChurchCRM\n"
 "Language: nb\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: 
 msgid "Cannot execute query."
@@ -60,12 +61,21 @@ msgid "Backup Database"
 msgstr "Backup Database"
 
 #: 
-msgid "You should make a manual backup at least once a week unless you already have a regular backup procedule for your systems."
+msgid "This tool will assist you in manually backing up the ChurchCRM database."
+msgstr "Dette verktøyet vil hjelpe deg med å manuelt ta backup av ChurchCRM"
+
+#: 
+#, fuzzy
+msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
 msgstr "Du bør foreta en manuell backup minst en gang i uken, med mindre du allerede har en vanlig backup procedule for dine systemer."
 
 #: 
 msgid "After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site."
 msgstr "Når du har lastet sikkerhetskopifilen, bør du lage to kopier. Sette en av dem i en brannsikker safe på stedet, og den andre på et trygt sted utenfor området."
+
+#: 
+msgid "If you are concerned about confidentiality of data stored in the ChurchCRM database, you should encrypt the backup data if it will be stored somewhere potentially accessible to others"
+msgstr "Hvis backup av ChurchCRM skal lages hvor andre kan komme til den, bør denne krypteres av sikkerhensmessige årsaker."
 
 #: 
 #, fuzzy
@@ -77,26 +87,38 @@ msgid "Encrypt backup file with a password?"
 msgstr "Krypter backup-fil med et passord?"
 
 #: 
+msgid "Re-type Password"
+msgstr "Gjenta passord"
+
+#: 
+msgid "Generate and Ship Backup to External Storage"
+msgstr "Sikkerhetskopier og eksporter til ekstern lagring"
+
+#: 
 msgid "Batch Winner Entry"
 msgstr "Batch Vinner Entry"
 
 #: 
 #, fuzzy
 msgid "Winner"
-msgstr "Vinter"
+msgstr "Vinner"
 
 #: 
 #, fuzzy
 msgid "Price"
-msgstr "Provins:"
+msgstr "Pris"
 
 #: 
 msgid "Enter Winners"
-msgstr "Inn Vinnere"
+msgstr "Legg inn vinnere"
 
 #: 
 msgid "CSV Export"
 msgstr "CSV Eksport"
+
+#: 
+msgid "Field Selection"
+msgstr "Velg felt"
 
 #: 
 #, fuzzy
@@ -118,6 +140,10 @@ msgid "Middle Name"
 msgstr "Mellomnavn"
 
 #: 
+msgid "Zip"
+msgstr "Postnr"
+
+#: 
 #, fuzzy
 msgid "Envelope"
 msgstr "Konvolutt"
@@ -125,7 +151,7 @@ msgstr "Konvolutt"
 #: 
 #, fuzzy
 msgid "Work/Other Email"
-msgstr "Arbeid / Other E-post"
+msgstr "Arbeid / Annen E-post"
 
 #: 
 #, fuzzy
@@ -154,11 +180,11 @@ msgstr "Avhengig enten du bruker person eller familie utskriftsmetode"
 
 #: 
 msgid "Custom Person Fields"
-msgstr "Tilpassede Person Fields"
+msgstr "Egendefinerte Person Felt"
 
 #: 
 msgid "Custom Family Fields"
-msgstr "Tilpassede Family Fields"
+msgstr "Egendefinerte Familie Felt"
 
 #: 
 msgid "Filters"
@@ -209,12 +235,12 @@ msgstr "Til:"
 #: 
 #, fuzzy
 msgid "Birthday Date"
-msgstr "Bursdag Dato"
+msgstr "Bursdags Dato"
 
 #: 
 #, fuzzy
 msgid "Anniversary Date"
-msgstr "Jubileum Dato"
+msgstr "Jubileums Dato"
 
 #: 
 msgid "Output Method:"
@@ -411,6 +437,14 @@ msgstr "Tildele til ikke Pantsettelse"
 #: 
 msgid "Clear Canvasser Assignments"
 msgstr "Klare Canvasser Oppdrag"
+
+#: 
+msgid "Clear all the canvasser assignments for all families."
+msgstr "Fjern alle lerreter tildeliger til alle familier"
+
+#: 
+msgid "Important note: this will lose any canvasser assignments that have been made by hand."
+msgstr "Viktig: du vil miste alle lerreter som er laget for hånd"
 
 #: 
 msgid "Enable Canvass for All Families"
@@ -649,6 +683,10 @@ msgstr "Ja"
 #: 
 msgid "No"
 msgstr "Ingen"
+
+#: 
+msgid "Developer Chat"
+msgstr "Utvikler samtale"
 
 #: 
 msgid "Event Checkin"
@@ -914,6 +952,10 @@ msgid "Description"
 msgstr "Beskrivelse"
 
 #: 
+msgid "Picture URL"
+msgstr "Bilde URL"
+
+#: 
 msgid "Donation Fund Editor"
 msgstr "Donasjon Fund Editor"
 
@@ -975,6 +1017,10 @@ msgid "Attendance Counts"
 msgstr "Oppmøte teller"
 
 #: 
+msgid "Add counter"
+msgstr "Legg til teller"
+
+#: 
 msgid "Family"
 msgstr "Familie"
 
@@ -1028,10 +1074,6 @@ msgid "Event Guests"
 msgstr "Hendelsesgjester"
 
 #: 
-msgid "Back to Report Menu"
-msgstr "Tilbake til rapport Meny"
-
-#: 
 msgid "There "
 msgstr "Det"
 
@@ -1068,6 +1110,10 @@ msgid "There are no Records"
 msgstr "Det er ingen Records"
 
 #: 
+msgid "Create Event"
+msgstr "Lag Arrangement"
+
+#: 
 msgid "Editing Event ID: "
 msgstr "Redigerer Event ID:"
 
@@ -1084,6 +1130,14 @@ msgstr "Produkter i handlekurven"
 #, fuzzy
 msgid " are required"
 msgstr "Denne verdien er nødvendig."
+
+#: 
+msgid "Select your event type"
+msgstr "Velg arrangement type"
+
+#: 
+msgid "You must pick an event type."
+msgstr "Du må velge en arrangements type"
 
 #: 
 #, fuzzy
@@ -1107,6 +1161,10 @@ msgstr "Hendelse Sermon"
 #, fuzzy
 msgid "Event Status"
 msgstr "Hendelse Status"
+
+#: 
+msgid "Return to Events"
+msgstr "Tilbake til Arrangement"
 
 #: 
 msgid "EVENT TYPE NAME"
@@ -1141,8 +1199,16 @@ msgid "Saturdays"
 msgstr "Lørdager"
 
 #: 
+msgid "DEFAULT START TIME"
+msgstr "STANDARD START TID"
+
+#: 
 msgid "ATTENDANCE COUNTS"
 msgstr "DELTAKELSE TELLER"
+
+#: 
+msgid "Optional"
+msgstr "Valgfritt"
 
 #: 
 msgid "Add Event Type"
@@ -1177,24 +1243,12 @@ msgid "Security Option"
 msgstr "Sikkerhet Option"
 
 #: 
-msgid "Family-View Side"
-msgstr "Familie-View Side"
-
-#: 
 msgid "You must select a group."
 msgstr "Du må velge en gruppe."
 
 #: 
 msgid "Edit List Options"
 msgstr "Redigere Liste alternativer"
-
-#: 
-msgid "Left"
-msgstr "Venstre"
-
-#: 
-msgid "Right"
-msgstr "Høyre"
 
 #: 
 msgid "Help on types.."
@@ -1237,6 +1291,18 @@ msgid "Email is Not Valid"
 msgstr "E-post er ikke gyldig"
 
 #: 
+msgid "Family Info"
+msgstr "Familie informasjon"
+
+#: 
+msgid "Contact Info"
+msgstr "Kontakt informasjon"
+
+#: 
+msgid "Other Info"
+msgstr "Annen Informasjon"
+
+#: 
 #, fuzzy
 msgid "Ok To Canvass"
 msgstr "Ok å canvass"
@@ -1250,6 +1316,10 @@ msgstr "Tilordne en Canvasser"
 #, fuzzy
 msgid "Assign a Brave Canvasser"
 msgstr "Tildele en Brave Canvasser"
+
+#: 
+msgid "Envelope Info"
+msgstr "Brev Informasjon"
 
 #: 
 msgid "Custom Fields"
@@ -1278,10 +1348,6 @@ msgstr "Siste"
 #: 
 msgid "Role"
 msgstr "Rolle"
-
-#: 
-msgid "Day"
-msgstr "Dag"
 
 #: 
 msgid "Select Gender"
@@ -1348,12 +1414,32 @@ msgid "Unk"
 msgstr "Unk"
 
 #: 
-msgid "Latitude/Longitude"
-msgstr "Breddegrad / lengdegrad"
+msgid "Family List"
+msgstr "Familie Liste"
+
+#: 
+msgid "Add Family"
+msgstr "Legg til Familie"
+
+#: 
+msgid "Created"
+msgstr "Opprettet"
+
+#: 
+msgid "Edited"
+msgstr "Endret"
 
 #: 
 msgid "Envelope Number"
 msgstr "Konvolutt nummer"
+
+#: 
+msgid "Verify Info"
+msgstr "Verifiser Informasjon"
+
+#: 
+msgid "Add New Member"
+msgstr "Legg til nytt Medlem"
 
 #: 
 msgid "Previous Family"
@@ -1364,12 +1450,28 @@ msgid "Next Family"
 msgstr "Neste Family"
 
 #: 
+msgid "Delete this Family"
+msgstr "Slett denne Familien"
+
+#: 
 msgid "Upload Photo"
 msgstr "Last bilde"
 
 #: 
 msgid "Delete Photo"
 msgstr "Slett bilde"
+
+#: 
+msgid "Add a Note"
+msgstr "Legg til Notat"
+
+#: 
+msgid "Add All Family Members to Cart"
+msgstr "Legg Alle Familiemedlemmer i Kurven"
+
+#: 
+msgid "Timeline"
+msgstr "Tidslinje"
 
 #: 
 msgid "Pledges and Payments"
@@ -1413,6 +1515,10 @@ msgid "Show Payments"
 msgstr "Vis betalinger"
 
 #: 
+msgid "Since"
+msgstr "Siden"
+
+#: 
 msgid "Update"
 msgstr "Oppdater"
 
@@ -1453,8 +1559,24 @@ msgid " Canvass Entry"
 msgstr "Canvass Entry"
 
 #: 
+msgid "Close"
+msgstr "Nærme"
+
+#: 
 msgid "Confirm Delete"
 msgstr "Bekreft sletting"
+
+#: 
+msgid "You are about to delete the profile photo, this procedure is irreversible."
+msgstr "Du er i ferd med å slette profilbilde, dette kan ikke omgjøres"
+
+#: 
+msgid "Do you want to proceed?"
+msgstr "Vil du fortsette?"
+
+#: 
+msgid "You are about to email copy of the family information to the following emails"
+msgstr "Du er i ferd med å sende en kopi av familieinformasjonen til følgende eposter:"
 
 #: 
 msgid "Financial Reports"
@@ -1663,6 +1785,18 @@ msgid "Deposit Listing"
 msgstr "Innskudd Listing"
 
 #: 
+msgid "Delete Selected Rows"
+msgstr "Slett Valgte Rader"
+
+#: 
+msgid "Export Selected Rows (OFX)"
+msgstr "Eksporter Valgte Rader (OFX)"
+
+#: 
+msgid "Export Selected Rows (CSV)"
+msgstr "Eksporter Valgte Rader (CSV)"
+
+#: 
 #, fuzzy
 msgid "Fundraiser Listing"
 msgstr "Bruker Liste"
@@ -1832,6 +1966,10 @@ msgid "Group Editor"
 msgstr "Gruppe Editor"
 
 #: 
+msgid "Group Settings"
+msgstr "Gruppe Innstillinger"
+
+#: 
 #, fuzzy
 msgid "Type of Group"
 msgstr "Type Gruppe"
@@ -1856,8 +1994,24 @@ msgid "Select a group"
 msgstr "Velg en gruppe"
 
 #: 
+msgid "Group Specific Properties: "
+msgstr "Gruppe Spesifikke Egenskaper:"
+
+#: 
+msgid "Enabled"
+msgstr "Aktivert"
+
+#: 
 msgid "Edit Group-Specific Properties Form"
 msgstr "Rediger gruppe-spesifikke egenskaper Form"
+
+#: 
+msgid "Disabled"
+msgstr "Deaktivert"
+
+#: 
+msgid "Enable Group Specific Properties"
+msgstr "Aktiver Gruppe Spesifikke Egenskaper"
 
 #: 
 #, fuzzy
@@ -1865,13 +2019,25 @@ msgid "Group Roles"
 msgstr "Gruppe Roller"
 
 #: 
+msgid "Group role name changes are saved as soon as the box loses focus"
+msgstr "Gruppen sitt rolle navn blir lagret så snart boksen mister fokus"
+
+#: 
 #, fuzzy
 msgid "New Role"
 msgstr "Ny rolle"
 
 #: 
+msgid "Add New Role"
+msgstr "Legg til Ny Rolle"
+
+#: 
 msgid "Group Listing"
 msgstr "Gruppe Listing"
+
+#: 
+msgid "Add New Group"
+msgstr "Legg til ny Gruppe"
 
 #: 
 msgid "Submit"
@@ -1927,6 +2093,10 @@ msgid "Select the group you would like to report"
 msgstr "Velg gruppen du ønsker å rapportere"
 
 #: 
+msgid "No Role Selected"
+msgstr "Ingen Rolle Valgt"
+
+#: 
 #, fuzzy
 msgid "Only cart persons?"
 msgstr "Kun cart personer?"
@@ -1975,12 +2145,20 @@ msgid "Group View"
 msgstr "Group Vis"
 
 #: 
+msgid "Group Functions"
+msgstr "Gruppe Funksjoner"
+
+#: 
 msgid "Edit this Group"
 msgstr "Rediger denne gruppen"
 
 #: 
 msgid "Delete this Group"
 msgstr "Slett denne gruppen"
+
+#: 
+msgid "Confirm Delete Group"
+msgstr "Bekreft Sletting av Gruppe"
 
 #: 
 #, fuzzy
@@ -1990,6 +2168,10 @@ msgstr "Vennligst bekrefte sletting av denne gruppen posten"
 #: 
 msgid "This will also delete all Roles and Group-Specific Property data associated with this Group record."
 msgstr "Dette vil også slette alle Roller og Gruppe-spesifikk egenskap data knyttet til denne gruppen posten."
+
+#: 
+msgid "Please select target group for members"
+msgstr "Velg målgruppe for Medlemmer"
 
 #: 
 msgid "Add Group Members to Cart"
@@ -2030,6 +2212,30 @@ msgstr "Tilordnede Egenskaper"
 #: 
 msgid "Group Members:"
 msgstr "Gruppemedlemmer:"
+
+#: 
+msgid "Group members: "
+msgstr "Gruppe Medlemmer:"
+
+#: 
+msgid "Remove Selected Members from group"
+msgstr "Fjern Valge fra Gruppe"
+
+#: 
+msgid "Add Selected Members to Cart"
+msgstr "Legg Valgte Medlemmer i Kurven "
+
+#: 
+msgid "Add Selected Members to Group"
+msgstr "Legg Valgte Medlemmer til Gruppe"
+
+#: 
+msgid "Move Selected Members to Group"
+msgstr "Flytt Valgte Medlemmer til Gruppe:"
+
+#: 
+msgid "Add Group Member: "
+msgstr "Legg til Gruppemedlem"
 
 #: 
 msgid "Letters and Mailing Labels"
@@ -2085,6 +2291,10 @@ msgid "Please Login"
 msgstr "Vennligst Logg inn"
 
 #: 
+msgid "Email/Username"
+msgstr "Epost/Brukernavn"
+
+#: 
 msgid "Password"
 msgstr "Passord"
 
@@ -2100,6 +2310,10 @@ msgstr "Konvolutt leder"
 #, fuzzy
 msgid "Update Family Records"
 msgstr "Legg til en ny familie Record"
+
+#: 
+msgid "Update Envelopes"
+msgstr "Oppdater konvolutter"
 
 #: 
 #, fuzzy
@@ -2136,6 +2350,22 @@ msgid "Current Role"
 msgstr "Nåværende rolle"
 
 #: 
+msgid "All People"
+msgstr "Alle Personer"
+
+#: 
+msgid "Email All"
+msgstr "Send Epost til Alle"
+
+#: 
+msgid "Email All (BCC)"
+msgstr "Send Epostkopi til Alle (BCC)"
+
+#: 
+msgid "Family Roles"
+msgstr "Familie Rolle"
+
+#: 
 msgid "Update All Family Coordinates"
 msgstr "Oppdater alle Family Koordinater"
 
@@ -2144,8 +2374,24 @@ msgid "Families"
 msgstr "Familier"
 
 #: 
+msgid "See all Families"
+msgstr "Se alle Familier"
+
+#: 
 msgid "People"
 msgstr "Folk"
+
+#: 
+msgid "See All People"
+msgstr "Se alle Personer"
+
+#: 
+msgid "Sunday School Kids"
+msgstr "Søndagsskole bard"
+
+#: 
+msgid "More info"
+msgstr "Mer informasjon"
 
 #: 
 msgid "Reports on groups and roles"
@@ -2164,8 +2410,52 @@ msgid "US Address Verification Report"
 msgstr "USA-adressen senderapport"
 
 #: 
+msgid "Role / Gender"
+msgstr "Rolle / Kjønn"
+
+#: 
+msgid "Count"
+msgstr "Telle"
+
+#: 
+msgid "Gender Demographics"
+msgstr "Kjønnsdemografi"
+
+#: 
+msgid "Men"
+msgstr "Man"
+
+#: 
+msgid "Women"
+msgstr "Kvinne"
+
+#: 
+msgid "Boys"
+msgstr "Gutter"
+
+#: 
+msgid "Girls"
+msgstr "Jenter"
+
+#: 
+msgid "Sunday School Classes"
+msgstr "Søndagsskoleklasse"
+
+#: 
+msgid "Latest Families"
+msgstr "Siste Familier"
+
+#: 
 msgid "Family Name"
 msgstr "Etternavn"
+
+#: 
+msgid "Updated Families"
+msgstr "Oppdaterte Familier"
+
+#: 
+msgid "Updated"
+msgstr "Oppdatert"
 
 #: 
 msgid "Note Delete Confirmation"
@@ -2291,10 +2581,6 @@ msgid "No custom person fields have been added yet"
 msgstr "Ingen egendefinerte person felt er lagt til ennå"
 
 #: 
-msgid "Person-View Side"
-msgstr "Person-View Side"
-
-#: 
 msgid "Person Editor"
 msgstr "Person Editor"
 
@@ -2323,6 +2609,26 @@ msgid "indicates items inherited from the associated family record."
 msgstr "indikerer elementer arvet fra den tilknyttede familien posten."
 
 #: 
+msgid "Personal Info"
+msgstr "Personlig Informasjon"
+
+#: 
+msgid "Birth Month"
+msgstr "Fødselsmåned"
+
+#: 
+msgid "Select Month"
+msgstr "Velg Måned"
+
+#: 
+msgid "Birth Day"
+msgstr "Fødselsdag"
+
+#: 
+msgid "Select Day"
+msgstr "Velg Dag"
+
+#: 
 #, fuzzy
 msgid "Birth Year"
 msgstr "Født år"
@@ -2336,22 +2642,25 @@ msgid "Create a new family (using last name)"
 msgstr "Opprett en ny familie (med etternavn)"
 
 #: 
+msgid "Membership Info"
+msgstr "Medlemsinformasjon"
+
+#: 
 #, fuzzy
 msgid "Friend Date"
 msgstr "Venn Dato"
 
 #: 
-msgid "Add Person to Group"
-msgstr "Legg til person i gruppen"
-
-#: 
-#, fuzzy
-msgid "Select the group to add this person to"
-msgstr "Velg gruppen for å legge til denne personen"
+msgid "Person Profile"
+msgstr "Personlig Profil"
 
 #: 
 msgid "Not assigned"
 msgstr "Ikke tildelt"
+
+#: 
+msgid "About Me"
+msgstr "Om Meg"
 
 #: 
 msgid "Printable Page"
@@ -2374,8 +2683,24 @@ msgid "Edit User"
 msgstr "Rediger bruker"
 
 #: 
+msgid "List Members"
+msgstr "List Medlemmer"
+
+#: 
 msgid "No group assignments."
 msgstr "Ingen gruppeoppgaver."
+
+#: 
+msgid "Change Role"
+msgstr "Bytt rolle"
+
+#: 
+msgid "Update Properties"
+msgstr "Oppdater Egenskaper"
+
+#: 
+msgid "Assign New Group"
+msgstr "Angi Ny Gruppe"
 
 #: 
 msgid "No volunteer opportunity assignments."
@@ -2752,6 +3077,10 @@ msgid "Pledge Reminder Report"
 msgstr "Pledge Påminnelse Rapporter"
 
 #: 
+msgid "Restore Database"
+msgstr "Gjenopprett Database"
+
+#: 
 msgid "All donations from this family have been moved to another family."
 msgstr "Alle donasjoner fra denne familien har blitt flyttet til en annen familie."
 
@@ -2805,77 +3134,8 @@ msgid "Delete Family Record AND Family Members"
 msgstr "Slett Family Record og familiemedlemmer"
 
 #: 
-msgid "Person Listing"
-msgstr "Person Listing"
-
-#: 
-msgid "Group Assignment Helper"
-msgstr "Gruppeoppgave Helper"
-
-#: 
-msgid "Show people <b>not</b> in this group type:"
-msgstr "Vis folk <b>som ikke er</b> i denne gruppen type:"
-
-#: 
-#, fuzzy
-msgid "Sort order"
-msgstr "Sorteringsrekkefølge"
-
-#: 
-msgid "By Name"
-msgstr "Etter navn"
-
-#: 
-msgid "By Family"
-msgstr "Av Family"
-
-#: 
-msgid "By Newest Entries"
-msgstr "Av Nyeste innlegg"
-
-#: 
-msgid "By Recently Edited"
-msgstr "Ved Nylig Redigert"
-
-#: 
-msgid "Apply Filter"
-msgstr "Apply Filter"
-
-#: 
-msgid "Male & Female"
-msgstr "Mann & Kvinne"
-
-#: 
-msgid "All Classifications"
-msgstr "Alle Klassifikasjoner"
-
-#: 
-msgid "All Family Roles"
-msgstr "Alle Familie Roller"
-
-#: 
-msgid "All Contact Properties"
-msgstr "All kontakt Properties"
-
-#: 
-msgid "All Group Types"
-msgstr "Alle konsernets typer"
-
-#: 
-msgid "All Groups"
-msgstr "Alle grupper"
-
-#: 
-msgid "All Roles"
-msgstr "Alle Roller"
-
-#: 
-msgid "View All"
-msgstr "Vis alle"
-
-#: 
-msgid "Cart"
-msgstr "Cart"
+msgid "Listing"
+msgstr "Oppføringer"
 
 #: 
 msgid "My User Settings"
@@ -2908,6 +3168,14 @@ msgid "Permission"
 msgstr "Person"
 
 #: 
+msgid "Base URL"
+msgstr "Base URL"
+
+#: 
+msgid "System Settings"
+msgstr "System Innstillinger"
+
+#: 
 msgid "Tax Report"
 msgstr "Skatt Rapporter"
 
@@ -2919,6 +3187,10 @@ msgstr "Kalenderår"
 #: 
 msgid "US Address Verification"
 msgstr "USA Adressebekreftelse"
+
+#: 
+msgid "Update Latitude & Longitude"
+msgstr "Oppdater Lengdegrad & Breddegrad"
 
 #: 
 msgid "User Delete Confirmation"
@@ -2995,6 +3267,10 @@ msgid "(Canvass volunteer.)"
 msgstr "(Canvass frivillig.)"
 
 #: 
+msgid "Admin"
+msgstr "Admin"
+
+#: 
 msgid "(Grants all privileges.)"
 msgstr "(Grants alle privilegier.)"
 
@@ -3006,6 +3282,14 @@ msgstr "Stil"
 #: 
 msgid "User Listing"
 msgstr "Bruker Liste"
+
+#: 
+msgid "New User"
+msgstr "Ny Bruker"
+
+#: 
+msgid "User Settings"
+msgstr "Bruker Innstillinger"
 
 #: 
 msgid "Last Login"
@@ -3020,20 +3304,8 @@ msgid "Failed Logins"
 msgstr "Mislykkede pålogginger"
 
 #: 
-msgid "You must enter a password in both boxes"
-msgstr "Du må skrive inn et passord i begge boksene"
-
-#: 
 msgid "You must enter the same password in both boxes"
 msgstr "Du må angi det samme passordet i begge boksene"
-
-#: 
-msgid "Invalid password"
-msgstr "Ugyldig passord"
-
-#: 
-msgid "You must enter your new password in both boxes"
-msgstr "Du må angi nytt passord i begge boksene"
 
 #: 
 msgid "Your password choice is too obvious. Please choose something else."
@@ -3048,32 +3320,12 @@ msgid "characters"
 msgstr "tegn"
 
 #: 
-msgid "You need to actually change your password (nice try, though!)"
-msgstr "Du må faktisk endre passordet ditt (godt forsøk, though!)"
-
-#: 
-msgid "Your new password is too similar to your old one.  Be more creative!"
-msgstr "Ditt nye passord er for lik den gamle. Bli mer kreativ!"
-
-#: 
-msgid "User Password Change"
-msgstr "Bruker Passord Change"
-
-#: 
-msgid "Your account record indicates that you need to change your password before proceding."
-msgstr "Din firmapost indikerer at du trenger å endre passordet ditt før du fortsetter."
-
-#: 
 msgid "Enter your current password, then your new password twice.  Passwords must be at least"
 msgstr "Skriv inn gjeldende passord, så ditt nye passord to ganger. Passord må være minst"
 
 #: 
 msgid "characters in length."
 msgstr "tegn."
-
-#: 
-msgid "Enter a new password for this user."
-msgstr "Tast inn et nytt passord for denne brukeren."
 
 #: 
 #, fuzzy
@@ -3202,6 +3454,14 @@ msgid "Assigned envelope numbers to all families."
 msgstr "Tilordnet konvolutt nummer til alle familier."
 
 #: 
+msgid "Version"
+msgstr "Versjon"
+
+#: 
+msgid "All rights reserved"
+msgstr "Alle rettigheter reservert"
+
+#: 
 msgid "True / False"
 msgstr "True / False"
 
@@ -3236,6 +3496,22 @@ msgstr "Telefonnummer"
 #: 
 msgid "Custom Drop-Down List"
 msgstr "Custom Rullegardinliste"
+
+#: 
+msgid "Thank you for registering your ChurchCRM installation."
+msgstr "Takk for at du registrerte ChurchCRM "
+
+#: 
+msgid "PDFs successfully emailed "
+msgstr "PDF sending vellykket"
+
+#: 
+msgid "PDF successfully emailed to family members."
+msgstr "PDF sending til familie vellykket"
+
+#: 
+msgid "Failed to email PDF to family members."
+msgstr "PDF sending Feil."
 
 #: 
 msgid "Group successfully added to the Cart."

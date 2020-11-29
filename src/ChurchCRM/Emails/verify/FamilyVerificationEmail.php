@@ -3,6 +3,7 @@
 namespace ChurchCRM\Emails;
 
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\dto\SystemURLs;
 
 class FamilyVerificationEmail extends BaseEmail
 {
@@ -22,10 +23,18 @@ class FamilyVerificationEmail extends BaseEmail
     public function getTokens()
     {
         $myTokens = ["toName" => $this->familyName . " " . gettext("Family"),
-            "verificationToken" => $this->token,
             "body" => SystemConfig::getValue("sConfirm1")
         ];
         return array_merge($this->getCommonTokens(), $myTokens);
     }
 
+    function getFullURL()
+    {
+        return SystemURLs::getURL() . "/external/verify/". $this->token->getToken();
+    }
+
+    function getButtonText()
+    {
+        return gettext("Verify");
+    }
 }

@@ -218,15 +218,78 @@
         ],
         "dbVersion": "3.4.0"
     },
-    "current": {
+    "pre-3.5.0": {
         "versions": [
-            "3.4.0",
-            "3.4.1"
+            "3.4.0"
         ],
         "scripts": [
             "/mysql/upgrade/3.5.0.sql",
-            "/mysql/upgrade/3.5.0-finances.php"
+            "/mysql/upgrade/3.5.0.php"
         ],
         "dbVersion": "3.5.0"
+    },
+    "pre-4.0.0": {
+        "versions": [
+            "3.5.0",
+            "3.5.1",
+            "3.5.2",
+            "3.5.3",
+            "3.5.4",
+            "3.5.5"
+        ],
+        "scripts": [
+            "/mysql/upgrade/4.0.0-TwoFactorAuth.sql"
+        ],
+        "dbVersion": "4.0.0"
+    },
+    "pre-4.1.0": {
+        "versions": [
+            "4.0.0",
+            "4.0.1",
+            "4.0.2",
+            "4.0.3",
+            "4.0.4",
+            "4.0.5"
+        ],
+        "scripts": [
+            "/mysql/upgrade/4.1.0-cleanup.sql"
+        ],
+        "dbVersion": "4.1.0"
+    },
+    "pre-4.2.0": {
+        "versions": [
+            "4.1.0",
+            "4.1.1",
+            "4.1.2",
+            "4.1.3",
+            "4.1.4",
+            "4.1.5"
+        ],
+        "scripts": [
+            "/mysql/upgrade/4.2.0-perms.sql"
+        ],
+        "dbVersion": "4.2.0"
+    },
+    "current": {
+        "versions": [
+//             "3.4.0",
+//             "3.4.1"
+//         ],
+//         "scripts": [
+//             "/mysql/upgrade/3.5.0.sql",
+//             "/mysql/upgrade/3.5.0-finances.php"
+//         ],
+//         "dbVersion": "3.5.0"
+//     }
+// }
+            "4.2.0",
+            "4.2.1",
+            "4.2.2",
+            "4.2.3"
+        ],
+        "scripts": [
+            "/mysql/upgrade/4.3.0-usersettings.sql"
+        ],
+        "dbVersion": "4.3.0"
     }
 }

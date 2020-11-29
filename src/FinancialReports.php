@@ -15,9 +15,10 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\PersonQuery;
+use ChurchCRM\Authentication\AuthenticationManager;
 
 // Security
-if (!$_SESSION['user']->isFinanceEnabled()) {
+if (!AuthenticationManager::GetCurrentUser()->isFinanceEnabled()) {
     RedirectUtils::Redirect('Menu.php');
     exit;
 }
@@ -351,8 +352,10 @@ if ($sReportType == '') {
         echo '<td class=TextColumnWithBottomBorder><input name=RequireDonationYears type=text value=0 size=5></td></tr>';
     }
 
-    if ((($_SESSION['user']->isAdmin() && $bCSVAdminOnly) || !$bCSVAdminOnly)
-        && ($sReportType == 'Pledge Summary' || $sReportType == 'Giving Report' || $sReportType == 'Individual Deposit Report' || $sReportType == 'Advanced Deposit Report' || $sReportType == 'Zero Givers' || $sReportType == 'Canadian Tax Receipt')) {
+    // if ((($_SESSION['user']->isAdmin() && $bCSVAdminOnly) || !$bCSVAdminOnly)
+    //     && ($sReportType == 'Pledge Summary' || $sReportType == 'Giving Report' || $sReportType == 'Individual Deposit Report' || $sReportType == 'Advanced Deposit Report' || $sReportType == 'Zero Givers' || $sReportType == 'Canadian Tax Receipt')) {
+    if (((AuthenticationManager::GetCurrentUser()->isAdmin() && $bCSVAdminOnly) || !$bCSVAdminOnly)
+        && ($sReportType == 'Pledge Summary' || $sReportType == 'Giving Report' || $sReportType == 'Individual Deposit Report' || $sReportType == 'Advanced Deposit Report' || $sReportType == 'Zero Givers'  || $sReportType == 'Canadian Tax Receipt')) {
         echo '<tr><td class=LabelColumn>'.gettext('Output Method:').'</td>';
         echo "<td class=TextColumnWithBottomBorder><input name=output type=radio checked value='pdf'>PDF";
         echo " <input name=output type=radio value='csv'>".gettext('CSV').'</tr>';

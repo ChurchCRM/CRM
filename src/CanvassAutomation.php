@@ -16,12 +16,13 @@ require 'Include/CanvassUtilities.php';
 
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\Authentication\AuthenticationManager;
 
 //Set the page title
 $sPageTitle = gettext('Canvass Automation');
 
 // Security: User must have canvasser permission to use this form
-if (!$_SESSION['user']->isCanvasserEnabled()) {
+if (!AuthenticationManager::GetCurrentUser()->isCanvasserEnabled()) {
     RedirectUtils::Redirect('Menu.php');
     exit;
 }

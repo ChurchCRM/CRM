@@ -45,7 +45,7 @@ class HolidayCalendar implements SystemCalendar {
     return gettext("Holidays");
   }
     
-  public function getEvents() {
+  public function getEvents($start,$end) {
     $Country = Countries::getCountryByName(SystemConfig::getValue("sChurchCountry"));
     $year = date('Y');
     $holidays = Yasumi::create($Country->getCountryNameYasumi(),$year);

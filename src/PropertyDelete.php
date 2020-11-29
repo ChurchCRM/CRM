@@ -14,8 +14,9 @@ require 'Include/Functions.php';
 
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\Authentication\AuthenticationManager;
 
-if (!$_SESSION['user']->isMenuOptionsEnabled()) {
+if (!AuthenticationManager::GetCurrentUser()->isMenuOptionsEnabled()) {
     RedirectUtils::Redirect('Menu.php');
     exit;
 }

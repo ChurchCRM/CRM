@@ -14,7 +14,7 @@ $app->group('/person', function () {
 
 function viewPersonNotFound(Request $request, Response $response, array $args)
 {
-    $renderer = new PhpRenderer('templates/people/');
+    $renderer = new PhpRenderer('templates/common/');
 
     $pageArgs = [
         'sRootPath' => SystemURLs::getRootPath(),

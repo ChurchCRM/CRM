@@ -13,8 +13,9 @@
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\Bootstrapper;
+use ChurchCRM\Authentication\AuthenticationManager;
 
-$isAdmin = $_SESSION['user']->isAdmin();
+$isAdmin = AuthenticationManager::GetCurrentUser()->isAdmin();
 ?>
 </section><!-- /.content -->
 
@@ -26,6 +27,7 @@ $isAdmin = $_SESSION['user']->isAdmin();
     </div>
     <strong><?= gettext('Copyright') ?> &copy; <?= SystemService::getCopyrightDate() ?> <a href="http://www.churchcrm.io" target="_blank"><b>Church</b>CRM</a>.</strong> <?= gettext('All rights reserved') ?>.
     | <a href="https://twitter.com/church_crm" target="_blank"><i class="fa fa-twitter"></i> <?= gettext("Follow us on Twitter") ?></a>
+    | <span class="flag-icon flag-icon-squared"></span>
 </footer>
 
 <!-- The Right Sidebar -->
@@ -77,20 +79,18 @@ $isAdmin = $_SESSION['user']->isAdmin();
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/adminlte/adminlte.min.js"></script>
 
 <!-- InputMask -->
-<script src="<?= SystemURLs::getRootPath() ?>/skin/external/inputmask/jquery.inputmask.bundle.min.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/external/inputmask/inputmask.date.extensions.min.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/external/inputmask/inputmask.extensions.min.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/external/inputmask/jquery.inputmask.min.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/external/inputmask/inputmask.binding.js"></script>
 
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/bootstrap-daterangepicker/daterangepicker.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/external/bootstrap-timepicker/bootstrap-timepicker.min.js"></script>
 
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/datatables/pdfmake.min.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/datatables/vfs_fonts.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/datatables/datatables.min.js"></script>
 
-<script src="<?= SystemURLs::getRootPath() ?>/skin/external/chartjs/Chart.min.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/external/select2/select2.min.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/external/chartjs/Chart.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/external/select2/select2.full.min.js"></script>
 
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/bootstrap-notify/bootstrap-notify.min.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/fullcalendar/fullcalendar.min.js"></script>

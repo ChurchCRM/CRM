@@ -4,23 +4,56 @@ namespace ChurchCRM\dto;
 
 class LocaleInfo
 {
+    public $systemLocale;
     public $locale;
     public $language;
     public $country;
     public $dataTables;
+    private $name;
+    private $poLocaleId;
 
-    public function __construct($locale)
+    public function __construct($locale, $userLocale)
     {
+        $this->systemLocale = $locale;
         $this->locale = $locale;
+        if (!empty($userLocale)) {
+            $this->locale = $userLocale->getValue();
+        }
         $localesFile = file_get_contents(SystemURLs::getDocumentRoot() . "/locale/locales.json");
         $locales = json_decode($localesFile, true);
         foreach ($locales as $key => $value) {
-            if ($value["locale"] == $locale) {
+            if ($value["locale"] == $this->locale) {
+                $this->name = $key;
                 $this->language = $value["languageCode"];
                 $this->country = $value["countryCode"];
                 $this->dataTables = $value["dataTables"];
+                $this->poLocaleId = $value["poEditor"];
             }
         }
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSystemLocale()
+    {
+        return $this->systemLocale;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPoLocaleId()
+    {
+        return $this->poLocaleId;
     }
 
     public function getLocale()

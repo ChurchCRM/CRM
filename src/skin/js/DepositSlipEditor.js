@@ -24,7 +24,7 @@ function initPaymentTable()
     {
       width: 'auto',
       title:i18next.t('Check Number'),
-      data:'Checkno'
+      data:'CheckNo'
     },
     {
       width: 'auto',
@@ -82,7 +82,7 @@ function initDepositSlipEditor()
             '</tr>' +
             '<tr>' +
             '<td>Fiscal Year:</td>' +
-            '<td>' + d.Fyid + '</td>' +
+            '<td>' + d.FyId + '</td>' +
             '</tr>' +
             '<tr>' +
             '<td>Fund(s):</td>' +
@@ -153,11 +153,14 @@ function initDepositSlipEditor()
 
 }
 
-function initCharts(fundChartData, pledgeChartData)
+function initCharts(pledgeLabels,
+                    pledgeChartData,
+                    pledgeBackgroundColor,
+                    fundLabels,
+                    fundChartData,
+                    fundBackgroundColor)
 {
   var pieOptions = {
-    //String - Point label font colour
-    pointLabelFontColor: "#666",
     //Boolean - Whether we should show a stroke on each segment
     segmentShowStroke: true,
     //String - The colour of each segment stroke
@@ -172,20 +175,31 @@ function initCharts(fundChartData, pledgeChartData)
     responsive: true,
     // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
     maintainAspectRatio: true,
-    //String - A legend template
-    legendTemplate: "<% for (var i=0; i<segments.length; i++){%><span style=\"color: white;padding-right: 4px;padding-left: 2px;background-color:<%=segments[i].fillColor%>\"><%if(segments[i].label){%><%=segments[i].label%><%}%></span> <%}%></ul>"
   };
 
-  pieChartCanvas = $("#type-donut").get(0).getContext("2d");
-  var pieChart = new Chart(pieChartCanvas);
-  pieChart = pieChart.Doughnut(fundChartData, pieOptions);
-  var legend = pieChart.generateLegend();
-  $('#type-donut-legend').append(legend);
+  var ctx = document.getElementById("type-donut").getContext('2d');
+  var PieChart = new Chart(ctx, {
+      type: 'doughnut',
+      data: {
+          labels: pledgeLabels,
+          datasets:[{
+              data: pledgeData,
+              backgroundColor: pledgeBackgroundColor
+          }],
+      },
+      options: pieOptions
+  });
 
-  var pieChartCanvas = $("#fund-donut").get(0).getContext("2d");
-  var pieChart = new Chart(pieChartCanvas);
-  pieChart = pieChart.Doughnut(pledgeChartData, pieOptions);
-  var legend = pieChart.generateLegend();
-  $('#fund-donut-legend').append(legend);
-
+  var ctx = document.getElementById("fund-donut").getContext('2d');
+  var PieChart = new Chart(ctx, {
+      type: 'doughnut',
+      data: {
+        labels: fundLabels,
+        datasets:[{
+          data: fundData,
+          backgroundColor: fundBackgroundColor
+        }]
+      },
+      options: pieOptions
+  });
 }

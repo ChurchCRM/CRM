@@ -30,7 +30,16 @@ module.exports = function (grunt) {
     grunt.initConfig({
         package: grunt.file.readJSON('package.json'),
         pkg: grunt.file.readJSON('package.json'),
-        buildConfig: grunt.file.readJSON('BuildConfig.json'),
+        buildConfig: (function() {
+            try {
+                grunt.log.writeln("Using BuildConfig.json");
+                return grunt.file.readJSON('BuildConfig.json');
+            }
+            catch (e) {
+                grunt.log.writeln("BuildConfig.json not found, using defaults");
+                return grunt.file.readJSON('BuildConfig.json.example');
+            }
+        })(),
         projectFiles: [
             '**',
             '**/.*',
@@ -38,11 +47,12 @@ module.exports = function (grunt) {
             '!vendor/**/example/**',
             '!vendor/**/tests/**',
             '!vendor/**/docs/**',
-            '!Images/{Family,Person}/thumbnails/*.{jpg,jpeg,png}',
+            '!Images/{Family,Person}/**/*.{jpg,jpeg,png}',
             '!composer.lock',
             '!Include/Config.php',
             '!integrityCheck.json',
-            '!logs/*.log'
+            '!logs/*.log',
+            '!vendor/endroid/qr-code/assets/fonts/noto_sans.otf' // This closes #5099, but TODO: when https://github.com/endroid/qr-code/issues/224 is fixed, we can remove this exclusion.
         ],
         clean: {
             skin: ["src/skin/external"],
@@ -122,22 +132,8 @@ module.exports = function (grunt) {
                         expand: true,
                         filter: 'isFile',
                         flatten: true,
-                        src: ['node_modules/admin-lte/plugins/iCheck/icheck.min.js', 'node_modules/admin-lte/plugins/iCheck/square/blue.**'],
-                        dest: 'src/skin/external/iCheck/'
-                    },
-                    {
-                        expand: true,
-                        filter: 'isFile',
-                        flatten: true,
                         src: ['node_modules/bootstrap-toggle/css/bootstrap-toggle.css', 'node_modules/bootstrap-toggle/js/bootstrap-toggle.js'],
                         dest: 'src/skin/external/bootstrap-toggle/'
-                    },
-                    {
-                        expand: true,
-                        filter: 'isFile',
-                        flatten: true,
-                        src: ['node_modules/bootstrap-timepicker/css/bootstrap-timepicker.min.css', 'node_modules/bootstrap-timepicker/js/bootstrap-timepicker.min.js'],
-                        dest: 'src/skin/external/bootstrap-timepicker/'
                     },
                     {
                         expand: true,
@@ -150,8 +146,7 @@ module.exports = function (grunt) {
                         expand: true,
                         filter: 'isFile',
                         flatten: true,
-                        src: ['node_modules/inputmask/dist/min/jquery.inputmask.bundle.min.js', 'node_modules/inputmask/dist/min/inputmask/inputmask.date.extensions.min.js',
-                        'node_modules/inputmask/dist/min/inputmask/inputmask.extensions.min.js'],
+                        src: ['node_modules/inputmask/dist/jquery.inputmask.min.js', 'node_modules/inputmask/dist/bindings/inputmask.binding.js'],
                         dest: 'src/skin/external/inputmask/'
                     },
                     {
@@ -186,7 +181,7 @@ module.exports = function (grunt) {
                         expand: true,
                         filter: 'isFile',
                         flatten: true,
-                        src: ['node_modules/chart.js/Chart.min.js'],
+                        src: ['node_modules/chart.js/dist/Chart.js'],
                         dest: 'src/skin/external/chartjs/'
                     },
                     {
@@ -239,7 +234,7 @@ module.exports = function (grunt) {
                         expand: true,
                         filter: 'isFile',
                         flatten: true,
-                        src: ['node_modules/select2/dist/js/select2.min.js',
+                        src: ['node_modules/select2/dist/js/select2.full.min.js',
                         'node_modules/select2/dist/css/select2.min.css'],
                         dest: 'src/skin/external/select2'
                     },
@@ -249,6 +244,17 @@ module.exports = function (grunt) {
                         flatten: true,
                         src: ['node_modules/react-datepicker/dist/react-datepicker.min.css'],
                         dest: 'src/skin/external/react-datepicker'
+                    },
+                    {
+                        expand: true,
+                        filter: 'isFile',
+                        flatten: false,
+                        cwd: 'node_modules/flag-icon-css',
+                        src: [
+                            'flags/**',
+                            'css/flag-icon.css',
+                        ],
+                        dest: 'src/skin/external/flag-icon-css/'
                     }
                 ]
             }
@@ -257,6 +263,7 @@ module.exports = function (grunt) {
             datatables: {
                 src: [
                     "https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js",
+                    "https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js.map",
                     "https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js",
                     "https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-"+datatTablesVer+"/b-1.5.4/b-html5-1.5.4/b-print-1.5.4/r-2.2.2/sl-1.2.6/datatables.min.css",
                     "https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-"+datatTablesVer+"/b-1.5.4/b-html5-1.5.4/b-print-1.5.4/r-2.2.2/sl-1.2.6/datatables.min.js"
@@ -404,7 +411,7 @@ module.exports = function (grunt) {
                 }
             },
             options: {
-                project_id: '77079',
+                project_id: '<%= buildConfig.POEditor.id %>',
                 languages: poLocales(),
                 api_token: '<%= buildConfig.POEditor.token %>'
             }
@@ -417,6 +424,9 @@ module.exports = function (grunt) {
         exec: {
             updatechangelog: {
                 cmd: "gren changelog --generate --override --token=<%= buildConfig.GitHub.token %>"
+            },
+            downloadPOEditorStats: {
+                cmd: "curl -X POST https://api.poeditor.com/v2/languages/list -d api_token=<%= buildConfig.POEditor.token %> -d id=<%= buildConfig.POEditor.id %> -o src/locale/poeditor.json -s"
             }
         },
         lineending: {
@@ -436,6 +446,16 @@ module.exports = function (grunt) {
         var sha1 = require('node-sha1');
         grunt.log.writeln(sha1(grunt.file.read(arg1, {encoding: null})));
     });
+
+    grunt.registerTask('patchDataTablesCSS', 'Patches Absolute paths in DataTables CSS to relative Paths', function () {
+        var filePath = "src/skin/external/datatables/datatables.min.css";
+        var fileContents = grunt.file.read(filePath);
+        const pattern = /url\(\"\//gi
+        fileContents = fileContents.replace(pattern,'url("')
+        console.log("patched files");
+        grunt.file.write(filePath, fileContents);
+    });
+
 
     grunt.registerMultiTask('generateSignatures', 'Generates SHA1 signatures of the release archive', function () {
         var sha1 = require('node-sha1');
@@ -466,9 +486,41 @@ module.exports = function (grunt) {
         grunt.task.run(['poeditor']);
     });
 
+
+    grunt.registerTask('genLocaleAudit', '', function () {
+        let locales = grunt.file.readJSON("src/locale/locales.json");
+
+        let supportedPOEditorCodes = [];
+        for (let key in locales ) {
+            supportedPOEditorCodes.push( locales[key]["poEditor"].toLowerCase());
+        }
+
+        let poLocales = grunt.file.readJSON("src/locale/poeditor.json");
+        let poEditorLocales = poLocales.result.languages;
+
+        let localeData = [];
+
+        for (let key in poEditorLocales ) {
+            let name =  poEditorLocales[key]["name"];
+            let curCode =  poEditorLocales[key]["code"].toLowerCase();
+            let percentage = poEditorLocales[key]["percentage"];
+            if ( supportedPOEditorCodes.indexOf(curCode) === -1 && percentage > 0) {
+                console.log("Missing " + name + ' (' + curCode + ') but has ' + percentage + ' percentage');
+            } else {
+                localeData.push({"code" :curCode, "percentage": percentage, "translations": poEditorLocales[key]["translations"]});
+            }
+        }
+
+        console.log("\n");
+        console.log("Locale | Translations | Percentage\n");
+        console.log("-- | -- | --\n");
+        localeData.forEach(function (locale) {
+            console.log(locale.code + " | " + locale.translations + " | " + locale.percentage +"%");
+        })
+    });
+
     grunt.registerTask('genLocaleJSFiles', '', function () {
         var locales = grunt.file.readJSON("src/locale/locales.json");
-        var poEditorLocales = {};
         for (var key in locales ) {
             var localeConfig = locales[key];
             var locale = localeConfig["locale"];
@@ -521,7 +573,6 @@ module.exports = function (grunt) {
 
         var curFile = grunt.file.readJSON(file);
         curFile.version = version;
-        curFile.time =  moment().format("YYYY-MM-DD HH:MM:SS");
         var stringFile = JSON.stringify(curFile, null, 4);
         grunt.file.write(file, stringFile);
 

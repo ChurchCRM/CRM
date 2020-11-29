@@ -6,6 +6,7 @@ msgstr ""
 "X-Generator: POEditor.com\n"
 "Project-Id-Version: ChurchCRM\n"
 "Language: it\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: 
 msgid "Cannot execute query."
@@ -64,7 +65,8 @@ msgid "This tool will assist you in manually backing up the ChurchCRM database."
 msgstr "Questo strumento ti assisterà nel salvataggio del database del ChurchCRM."
 
 #: 
-msgid "You should make a manual backup at least once a week unless you already have a regular backup procedule for your systems."
+#, fuzzy
+msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
 msgstr "Dovresti eseguire un backup manuale almeno una volta alla settimana, a meno che questa procedura non sia già automatizzata"
 
 #: 
@@ -1088,10 +1090,6 @@ msgid "Event Guests"
 msgstr "Evento Ospiti"
 
 #: 
-msgid "Back to Report Menu"
-msgstr "Torna al Menu Rapporto"
-
-#: 
 msgid "There "
 msgstr "Ci sono␣"
 
@@ -1273,24 +1271,12 @@ msgid "Security Option"
 msgstr "Opzione di Sicurezza"
 
 #: 
-msgid "Family-View Side"
-msgstr "Famiglia Vista laterale"
-
-#: 
 msgid "You must select a group."
 msgstr "Devi selezionare un gruppo."
 
 #: 
 msgid "Edit List Options"
 msgstr "Modifca lista di opzioni"
-
-#: 
-msgid "Left"
-msgstr "Sinistra"
-
-#: 
-msgid "Right"
-msgstr "Destra"
 
 #: 
 msgid "Help on types.."
@@ -1303,10 +1289,6 @@ msgstr "Devi inserire un nome"
 #: 
 msgid "That field name already exists."
 msgstr "Questo nome di campo esiste già."
-
-#: 
-msgid "Side"
-msgstr "Lato"
 
 #: 
 msgid "Add New Field"
@@ -1339,10 +1321,6 @@ msgstr "E-mail non è valido"
 #: 
 msgid "Family Info"
 msgstr "Informazioni Famiglia"
-
-#: 
-msgid "None US/CND State"
-msgstr "Non US/Stato CND"
 
 #: 
 msgid "Contact Info"
@@ -1395,10 +1373,6 @@ msgstr "Cognome"
 #: 
 msgid "Role"
 msgstr "Ruolo"
-
-#: 
-msgid "Day"
-msgstr "Giorno"
 
 #: 
 msgid "Select Gender"
@@ -1479,14 +1453,6 @@ msgstr "Creata"
 #: 
 msgid "Edited"
 msgstr "Modificata"
-
-#: 
-msgid " of church<br>"
-msgstr "_della chiesa<br>"
-
-#: 
-msgid "Latitude/Longitude"
-msgstr "Latitudine / Longitudine"
 
 #: 
 msgid "Envelope Number"
@@ -2655,10 +2621,6 @@ msgid "No custom person fields have been added yet"
 msgstr "Nessun campo personalizzato è ancora stato inserito"
 
 #: 
-msgid "Person-View Side"
-msgstr "Visualizzazione persona"
-
-#: 
 msgid "Person Editor"
 msgstr "Modifica persona"
 
@@ -2737,14 +2699,6 @@ msgstr "Informazioni per l'iscrizione"
 #: 
 msgid "Friend Date"
 msgstr "Data di Amicizia"
-
-#: 
-msgid "Add Person to Group"
-msgstr "Aggiungi la persona al gruppo"
-
-#: 
-msgid "Select the group to add this person to"
-msgstr "Seleziona il gruppo per aggiungere questa persona a"
 
 #: 
 msgid "Person Profile"
@@ -3227,88 +3181,12 @@ msgid "Delete Family Record AND Family Members"
 msgstr "Elimina la scheda della famiglia E ANCHE i suoi membri"
 
 #: 
-msgid "Person Listing"
-msgstr "Lista persone"
-
-#: 
-msgid "Group Assignment Helper"
-msgstr "Assegnazione ai gruppi assistita"
-
-#: 
 msgid "Filter and Cart"
 msgstr "Filtra e aggiungi al carrello"
 
 #: 
-msgid "Show people <b>not</b> in this group type:"
-msgstr "Visualizza le persona <b>non</b> appartenenti a questo tipo di gruppo:"
-
-#: 
-msgid "Sort order"
-msgstr "Ordinamento"
-
-#: 
-msgid "By Name"
-msgstr "Per nome"
-
-#: 
-msgid "By Family"
-msgstr "Per famiglia"
-
-#: 
-msgid "By Newest Entries"
-msgstr "Per iscrizione"
-
-#: 
-msgid "By Recently Edited"
-msgstr "Di recente Modificato"
-
-#: 
-msgid "Apply Filter"
-msgstr "Apllica filtro"
-
-#: 
-msgid "Male & Female"
-msgstr "Maschio & Femmina"
-
-#: 
-msgid "All Classifications"
-msgstr "Tutte le classificazioni"
-
-#: 
-msgid "All Family Roles"
-msgstr "Tutti i ruoli Familiari"
-
-#: 
-msgid "All Contact Properties"
-msgstr "Tutte le proprietà del contatto"
-
-#: 
-msgid "All Group Types"
-msgstr "Tutti i tipi di gruppi"
-
-#: 
-msgid "All Groups"
-msgstr "Tutti i Gruppi"
-
-#: 
-msgid "All Roles"
-msgstr "Tutti i ruoli"
-
-#: 
 msgid "Listing"
 msgstr "Elenco"
-
-#: 
-msgid "View All"
-msgstr "Visualizza tutti"
-
-#: 
-msgid "Cart"
-msgstr "Contenitore"
-
-#: 
-msgid "Print"
-msgstr "Stampa"
 
 #: 
 msgid "My User Settings"
@@ -3472,20 +3350,8 @@ msgid "Failed Logins"
 msgstr "Login falliti"
 
 #: 
-msgid "You must enter a password in both boxes"
-msgstr "Devi inserire la stessa password in entrambi i campi"
-
-#: 
 msgid "You must enter the same password in both boxes"
 msgstr "Devi inserire la stessa password in entrambi i campi"
-
-#: 
-msgid "Invalid password"
-msgstr "Password non valida"
-
-#: 
-msgid "You must enter your new password in both boxes"
-msgstr "Devi inserire la tua nuova password in entrambi i campi"
 
 #: 
 msgid "Your password choice is too obvious. Please choose something else."
@@ -3500,32 +3366,12 @@ msgid "characters"
 msgstr "caratteri"
 
 #: 
-msgid "You need to actually change your password (nice try, though!)"
-msgstr "Devi realmente cambiare la tua password (bel tentativo, comunque)"
-
-#: 
-msgid "Your new password is too similar to your old one.  Be more creative!"
-msgstr "La tua nuova password è troppo simile a quella vecchia.  Sii più creativo!"
-
-#: 
-msgid "User Password Change"
-msgstr "Modifica password utente"
-
-#: 
-msgid "Your account record indicates that you need to change your password before proceding."
-msgstr "La tua scheda di account indica che devi cambiare la password prima di procedere."
-
-#: 
 msgid "Enter your current password, then your new password twice.  Passwords must be at least"
 msgstr "Inserisci la tua password attuale, poi la tua nuova password due volte. La password deve essere almeno"
 
 #: 
 msgid "characters in length."
 msgstr "caratteri."
-
-#: 
-msgid "Enter a new password for this user."
-msgstr "Inserisci una nuova password per questo utente."
 
 #: 
 msgid "Old Password"
@@ -3630,10 +3476,6 @@ msgstr "Errore irreversibile in eGive API flusso di dati: &#39;"
 #: 
 msgid "eMail Dashboard"
 msgstr "eMail Dashboard"
-
-#: 
-msgid "People not in Mailchimp"
-msgstr "Persone non in Mailchimp"
 
 #: 
 msgid "No families need canvassers assigned"
@@ -3762,10 +3604,6 @@ msgstr "pm"
 #: 
 msgid "am"
 msgstr "sono"
-
-#: 
-msgid "yrs old"
-msgstr "Anni"
 
 #: 
 msgid "Invalid Editor ID!"
@@ -4276,11 +4114,16 @@ msgid "Calendar"
 msgstr "Calendario"
 
 #: 
+msgid "Members"
+msgstr "Membri"
+
+#: 
 msgid "Add New Person"
 msgstr "Aggiungi Persona"
 
 #: 
-msgid "View All Persons"
+#, fuzzy
+msgid "View All People"
 msgstr "Visualizza tutte le persone"
 
 #: 
@@ -4417,7 +4260,8 @@ msgid "Church Information"
 msgstr "Informazioni sulla Chiesa"
 
 #: 
-msgid "User setup"
+#, fuzzy
+msgid "User Setup"
 msgstr "Configurazione dell'utente"
 
 #: 
@@ -4549,10 +4393,6 @@ msgid "Cleaned count since last send:"
 msgstr "Conteggio pulito dall'ultimo invio:"
 
 #: 
-msgid "Missing emails report"
-msgstr "Rapporto sulle email mancanti"
-
-#: 
 msgid "Functions"
 msgstr "Funzioni"
 
@@ -4659,14 +4499,6 @@ msgid "Registration Complete"
 msgstr "Registrazione completa"
 
 #: 
-msgid "Thank you for registering your family."
-msgstr "Grazie per aver registrato la tua famiglia."
-
-#: 
-msgid "Member(s)"
-msgstr "Membro (i)"
-
-#: 
 msgid "Register"
 msgstr "Registrare"
 
@@ -4677,10 +4509,6 @@ msgstr "Registra la tua famiglia"
 #: 
 msgid "How many people are in your family"
 msgstr "Quante persone sono nella vostra famiglia"
-
-#: 
-msgid "This will be my primary church."
-msgstr "Questa sarà la mia chiesa principale."
 
 #: 
 msgid "Add All Classes"
@@ -4793,10 +4621,6 @@ msgstr "Ripristino in esecuzione, attendere prego."
 #: 
 msgid "Family Members:"
 msgstr "Membri della famiglia:"
-
-#: 
-msgid "Event"
-msgstr "Evento"
 
 #: 
 msgid "Anniversary"
@@ -4918,18 +4742,6 @@ msgstr "Proprietà del Gruppo"
 #: 
 msgid "Assign a New Property:"
 msgstr "Assegna una nuova proprietà:"
-
-#: 
-msgid "mos old"
-msgstr "Mesi"
-
-#: 
-msgid "mo old"
-msgstr "Mese"
-
-#: 
-msgid "yr old"
-msgstr "Anno"
 
 #: 
 msgid "There was a problem retrieving the requested object"
@@ -5564,10 +5376,6 @@ msgid "Missing pledges"
 msgstr "Impegni mancanti"
 
 #: 
-msgid "Credit Card People"
-msgstr "Persone con carta di credito"
-
-#: 
 msgid "Family Pledge by Fiscal Year"
 msgstr "Family Pledge per Anno Fiscale"
 
@@ -5638,10 +5446,6 @@ msgstr "Confronta gli impegni tra due anni fiscali"
 #: 
 msgid "Find people who pledged one year but not another"
 msgstr "Trova persone che hanno promesso un anno ma non un altro"
-
-#: 
-msgid "People who are configured to pay by credit card."
-msgstr "Persone che sono configurate per pagare con carta di credito."
 
 #: 
 msgid "Pledge summary by family name for each fund for the selected fiscal year"
@@ -6941,10 +6745,6 @@ msgid "Zimbabwe"
 msgstr "Zimbabwe"
 
 #: 
-msgid "By Zip Code"
-msgstr "per CAP"
-
-#: 
 msgid "Please verify your family's information"
 msgstr "Si prega di verificare le informazioni della tua famiglia"
 
@@ -7181,10 +6981,6 @@ msgid "The previous integrity check passed.  All system file hashes match the ex
 msgstr "Passato il controllo dell'integrità precedente Tutti gli hash dei file di sistema corrispondono ai valori previsti."
 
 #: 
-msgid "Google map API requires a unique key"
-msgstr "L'API della mappa di Google richiede una chiave univoca"
-
-#: 
 msgid "Church Checking Account Number"
 msgstr "Numero di conto corrente della Chiesa"
 
@@ -7241,10 +7037,6 @@ msgid "Please ensure this what you want to do.</p>"
 msgstr "Per favore assicurati di ciò che vuoi fare. </ P>"
 
 #: 
-msgid " This Family is Deactivated"
-msgstr " Questa famiglia è disattivata"
-
-#: 
 msgid " this Family"
 msgstr " questa famiglia"
 
@@ -7277,16 +7069,8 @@ msgid "Coordinate data base file name:"
 msgstr "Nome file di base dati di coordinate:"
 
 #: 
-msgid "Add To Cart"
-msgstr "Aggiungi al carrello"
-
-#: 
 msgid "Intersect With Cart"
 msgstr "Interseca con il carrello"
-
-#: 
-msgid "Remove From Cart"
-msgstr "Rimuovi dal carrello"
 
 #: 
 msgid "Family Member"
@@ -7491,10 +7275,6 @@ msgstr "Conferma d'azione"
 #: 
 msgid "Please confirm reset failed login count"
 msgstr "Conferma il reset del conteggio degli accessi fallito"
-
-#: 
-msgid "Password reset for"
-msgstr "Ripristino password per"
 
 #: 
 msgid "View Active Families"
@@ -7745,10 +7525,6 @@ msgid "Reset your password"
 msgstr "Reimposta la Tua Password"
 
 #: 
-msgid "Check your email for a password reset link"
-msgstr "Controlla la tua email per un link di reimpostazione della password"
-
-#: 
 msgid "Sorry, we are unable to process your request at this point in time."
 msgstr "Siamo spiacenti, non siamo in grado di elaborare la tua richiesta in questo momento."
 
@@ -7895,18 +7671,6 @@ msgstr "Vuoi cancellare questa persona? Questo non può essere annullato."
 #: 
 msgid "Are you sure you want to unassign this property?"
 msgstr "Sei sicuro di voler annullare l'assegnazione di questa proprietà?"
-
-#: 
-msgid "Head of Household"
-msgstr "Capofamiglia"
-
-#: 
-msgid "Spouse"
-msgstr "Moglie"
-
-#: 
-msgid "Child"
-msgstr "Figlio/a"
 
 #: 
 msgid "Select a family"
@@ -8143,14 +7907,6 @@ msgstr "Numero massimo di indirizzi"
 #: 
 msgid "Show type of group:"
 msgstr "Mostra il tipo di gruppo:"
-
-#: 
-msgid "Deposits"
-msgstr "depositi"
-
-#: 
-msgid "Payments"
-msgstr "pagamenti"
 
 #: 
 msgid "Add Students"
@@ -8413,32 +8169,12 @@ msgid "Contributing"
 msgstr "contribuire"
 
 #: 
-msgid "Birthdates of the day"
-msgstr "Date di nascita del giorno"
-
-#: 
-msgid "Anniversaries of the day"
-msgstr "Anniversari del giorno"
-
-#: 
 msgid "Automatically enable SMTP encryption if offered by the relaying server."
 msgstr "Abilita automaticamente la crittografia SMTP se offerta dal server Relay."
 
 #: 
 msgid "Set the encryption system to use - ssl (deprecated) or tls"
 msgstr "Imposta il sistema di crittografia da utilizzare: SSL (deprecato) o TLS"
-
-#: 
-msgid "Lock"
-msgstr "Blocca"
-
-#: 
-msgid "Enter your password to retrieve your session"
-msgstr "Inserisci la tua password per recuperare la sessione"
-
-#: 
-msgid "Or sign in as a different user"
-msgstr "O accedi come un altro utente"
 
 #: 
 msgid "Dashboard Service dynamic asynchronous refresh interval, default 60 second"
@@ -8455,14 +8191,6 @@ msgstr "Aggiungi tutto al carrello"
 #: 
 msgid "Remove All from Cart"
 msgstr "Rimuovi tutto dal Carrello"
-
-#: 
-msgid " record returned"
-msgstr "␣record restituito"
-
-#: 
-msgid " records returned"
-msgstr "record restituiti"
 
 #: 
 msgid "records(s) successfully deleted from the selected Group."
@@ -8523,10 +8251,6 @@ msgstr "tornare a People Dashboard"
 #: 
 msgid "User must have MenuOptions permission"
 msgstr "L'utente deve disporre dell'autorizzazione MenuOptions"
-
-#: 
-msgid "Try out the Beta family view"
-msgstr "Prova la visualizzazione della Famiglia Beta"
 
 #: 
 msgid "SMTP Host is not setup, please visit the settings page"
@@ -8749,18 +8473,6 @@ msgid "Failure executing upgrade script"
 msgstr "Errore durante l'esecuzione dello script di aggiornamento"
 
 #: 
-msgid "Databse upgrade failed"
-msgstr "Aggiornamento Database fallito"
-
-#: 
-msgid "logged via API Key."
-msgstr "registrato tramite chiave API."
-
-#: 
-msgid "logged via InValid API Key."
-msgstr "registrato tramite chiave API InValid."
-
-#: 
 msgid "Missing calendar access token"
 msgstr "Gettone di accesso al calendario mancante"
 
@@ -8803,10 +8515,6 @@ msgstr "valore di esportazione non valido"
 #: 
 msgid "Invalid User/Password"
 msgstr "Utente non valido / password"
-
-#: 
-msgid "Bad userId"
-msgstr "ID utente errato"
 
 #: 
 msgid "Find Duplicate Emails"
@@ -8911,10 +8619,6 @@ msgstr "Versione del database"
 #: 
 msgid "Application Prerequisites"
 msgstr "Prerequisiti dell'applicazione"
-
-#: 
-msgid "WebServer Modules"
-msgstr "Moduli WebServer"
 
 #: 
 msgid "Invalid country name supplied"
@@ -9032,18 +8736,6 @@ msgstr "Rilevati tipi di deposito non supportati"
 #: 
 msgid "Support for eGive, Credit Card, and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions."
 msgstr "Il supporto per i pagamenti di eGive, carta di credito e assegno circolare è stato dichiarato obsoleto. I rapporti non bancari esistenti potrebbero non essere più accessibili nelle versioni future."
-
-#: 
-msgid "Unsupported Stored Payment Data Detected"
-msgstr "Rilevati dati di pagamento non supportati"
-
-#: 
-msgid "Support for stored payment data has been removed. This data will soon be removed from your database"
-msgstr "Il supporto per i dati di pagamento memorizzati è stato rimosso. Questi dati saranno presto rimossi dal tuo database"
-
-#: 
-msgid "Classifcation"
-msgstr "Classifcazione"
 
 #: 
 msgid "Estonian"

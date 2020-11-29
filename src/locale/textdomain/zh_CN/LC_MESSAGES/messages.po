@@ -6,6 +6,7 @@ msgstr ""
 "X-Generator: POEditor.com\n"
 "Project-Id-Version: ChurchCRM\n"
 "Language: zh-CN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 
 #: 
 msgid "Cannot execute query."
@@ -64,7 +65,8 @@ msgid "This tool will assist you in manually backing up the ChurchCRM database."
 msgstr "这工具将会协助您手动备份ChurchCRM数据库"
 
 #: 
-msgid "You should make a manual backup at least once a week unless you already have a regular backup procedule for your systems."
+#, fuzzy
+msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
 msgstr "你应该进行手动备份，每周至少一次，除非你已经有一个的定期备份procedule为您的系统。"
 
 #: 
@@ -1118,10 +1120,6 @@ msgid "Event Guests"
 msgstr "事件客人"
 
 #: 
-msgid "Back to Report Menu"
-msgstr "返回报告菜单"
-
-#: 
 msgid "There "
 msgstr "那里"
 
@@ -1305,24 +1303,12 @@ msgid "Security Option"
 msgstr "“安全选项”"
 
 #: 
-msgid "Family-View Side"
-msgstr "家庭观看侧"
-
-#: 
 msgid "You must select a group."
 msgstr "您必须选择一个组。"
 
 #: 
 msgid "Edit List Options"
 msgstr "编辑列表选项"
-
-#: 
-msgid "Left"
-msgstr "左"
-
-#: 
-msgid "Right"
-msgstr "权"
 
 #: 
 msgid "Help on types.."
@@ -1335,11 +1321,6 @@ msgstr "您必须输入一个名称"
 #: 
 msgid "That field name already exists."
 msgstr "该字段名称已经存在。"
-
-#: 
-#, fuzzy
-msgid "Side"
-msgstr "方"
 
 #: 
 msgid "Add New Field"
@@ -1372,10 +1353,6 @@ msgstr "电子邮件是无效的"
 #: 
 msgid "Family Info"
 msgstr "家庭资料"
-
-#: 
-msgid "None US/CND State"
-msgstr "无 US/CND 状态"
 
 #: 
 msgid "Contact Info"
@@ -1431,10 +1408,6 @@ msgstr "最后"
 #: 
 msgid "Role"
 msgstr "角色"
-
-#: 
-msgid "Day"
-msgstr "日"
 
 #: 
 msgid "Select Gender"
@@ -1515,14 +1488,6 @@ msgstr "已建立"
 #: 
 msgid "Edited"
 msgstr "已编辑"
-
-#: 
-msgid " of church<br>"
-msgstr "教会的"
-
-#: 
-msgid "Latitude/Longitude"
-msgstr "纬度/经度"
 
 #: 
 msgid "Envelope Number"
@@ -2712,10 +2677,6 @@ msgid "No custom person fields have been added yet"
 msgstr "目前没有自定义的人字段添加"
 
 #: 
-msgid "Person-View Side"
-msgstr "人观看侧"
-
-#: 
 msgid "Person Editor"
 msgstr "人编辑器"
 
@@ -2792,15 +2753,6 @@ msgstr "成员信息"
 #, fuzzy
 msgid "Friend Date"
 msgstr "友情日期"
-
-#: 
-msgid "Add Person to Group"
-msgstr "添加联系人到组“"
-
-#: 
-#, fuzzy
-msgid "Select the group to add this person to"
-msgstr "选择要添加的组人"
 
 #: 
 msgid "Person Profile"
@@ -3291,89 +3243,12 @@ msgid "Delete Family Record AND Family Members"
 msgstr "删除家庭记录及家庭成员的"
 
 #: 
-msgid "Person Listing"
-msgstr "人上市"
-
-#: 
-msgid "Group Assignment Helper"
-msgstr "集团转让助手"
-
-#: 
 msgid "Filter and Cart"
 msgstr "删选及购物车；"
 
 #: 
-msgid "Show people <b>not</b> in this group type:"
-msgstr "人<b>不在</b>此组类型："
-
-#: 
-#, fuzzy
-msgid "Sort order"
-msgstr "排序顺序"
-
-#: 
-msgid "By Name"
-msgstr "按产品名称"
-
-#: 
-msgid "By Family"
-msgstr "通过家庭"
-
-#: 
-msgid "By Newest Entries"
-msgstr "通过最新文章"
-
-#: 
-msgid "By Recently Edited"
-msgstr "最近编辑"
-
-#: 
-msgid "Apply Filter"
-msgstr "应用过滤器"
-
-#: 
-msgid "Male & Female"
-msgstr "男性和女性"
-
-#: 
-msgid "All Classifications"
-msgstr "“所有分类”"
-
-#: 
-msgid "All Family Roles"
-msgstr "所有的家庭角色"
-
-#: 
-msgid "All Contact Properties"
-msgstr "所有的联系人属性"
-
-#: 
-msgid "All Group Types"
-msgstr "所有组类型"
-
-#: 
-msgid "All Groups"
-msgstr "所有组"
-
-#: 
-msgid "All Roles"
-msgstr "所有角色"
-
-#: 
 msgid "Listing"
 msgstr "列表"
-
-#: 
-msgid "View All"
-msgstr "查看全部"
-
-#: 
-msgid "Cart"
-msgstr "大车"
-
-#: 
-msgid "Print"
-msgstr "打印"
 
 #: 
 msgid "My User Settings"
@@ -3550,20 +3425,8 @@ msgid "Failed Logins"
 msgstr "登录失败"
 
 #: 
-msgid "You must enter a password in both boxes"
-msgstr "您必须输入一个密码，这两个框"
-
-#: 
 msgid "You must enter the same password in both boxes"
 msgstr "您必须在两个框中输入相同的密码"
-
-#: 
-msgid "Invalid password"
-msgstr "无效的密码"
-
-#: 
-msgid "You must enter your new password in both boxes"
-msgstr "在这两个框，您必须输入您的新密码"
 
 #: 
 msgid "Your password choice is too obvious. Please choose something else."
@@ -3578,32 +3441,12 @@ msgid "characters"
 msgstr "字符"
 
 #: 
-msgid "You need to actually change your password (nice try, though!)"
-msgstr "您需要更改您的密码（不错的尝试，但！）"
-
-#: 
-msgid "Your new password is too similar to your old one.  Be more creative!"
-msgstr "您的新密码是你的旧太相似了。更多的创意！"
-
-#: 
-msgid "User Password Change"
-msgstr "用户密码更改"
-
-#: 
-msgid "Your account record indicates that you need to change your password before proceding."
-msgstr "您的帐户记录表明操作前，您需要更改您的密码。"
-
-#: 
 msgid "Enter your current password, then your new password twice.  Passwords must be at least"
 msgstr "请输入您的当前密码，然后两次新密码。密码必须至少"
 
 #: 
 msgid "characters in length."
 msgstr "字符的长度。"
-
-#: 
-msgid "Enter a new password for this user."
-msgstr "输入此用户的密码。"
 
 #: 
 #, fuzzy
@@ -3712,10 +3555,6 @@ msgstr "在eGive API数据流的致命错误："
 #: 
 msgid "eMail Dashboard"
 msgstr "电子邮件仪表板"
-
-#: 
-msgid "People not in Mailchimp"
-msgstr "联系人不在Mailchimp中"
 
 #: 
 msgid "No families need canvassers assigned"
@@ -4365,11 +4204,16 @@ msgid "Calendar"
 msgstr "日历"
 
 #: 
+msgid "Members"
+msgstr "成员"
+
+#: 
 msgid "Add New Person"
 msgstr "添加新成员"
 
 #: 
-msgid "View All Persons"
+#, fuzzy
+msgid "View All People"
 msgstr "查看所有成员"
 
 #: 
@@ -4505,7 +4349,8 @@ msgid "Church Information"
 msgstr "教会信息"
 
 #: 
-msgid "User setup"
+#, fuzzy
+msgid "User Setup"
 msgstr "用户设置"
 
 #: 
@@ -4637,10 +4482,6 @@ msgid "Cleaned count since last send:"
 msgstr "自上次发送以来清理的计数："
 
 #: 
-msgid "Missing emails report"
-msgstr "电子邮件缺失报告"
-
-#: 
 msgid "Functions"
 msgstr "功能"
 
@@ -4745,14 +4586,6 @@ msgid "Registration Complete"
 msgstr "注册完成"
 
 #: 
-msgid "Thank you for registering your family."
-msgstr "感谢您为您的家人注册。"
-
-#: 
-msgid "Member(s)"
-msgstr "会员"
-
-#: 
 msgid "Register"
 msgstr "注册"
 
@@ -4763,10 +4596,6 @@ msgstr "注册家人"
 #: 
 msgid "How many people are in your family"
 msgstr "你有几个家庭成员"
-
-#: 
-msgid "This will be my primary church."
-msgstr "这将是我的主要教堂。"
 
 #: 
 msgid "Add All Classes"
@@ -4879,10 +4708,6 @@ msgstr "正在恢复运行，请稍候。"
 #: 
 msgid "Family Members:"
 msgstr "家庭成员："
-
-#: 
-msgid "Event"
-msgstr "活动"
 
 #: 
 msgid "Anniversary"
@@ -5605,10 +5430,6 @@ msgid "Missing pledges"
 msgstr "遗失承诺"
 
 #: 
-msgid "Credit Card People"
-msgstr "信用卡人员"
-
-#: 
 msgid "Family Pledge by Fiscal Year"
 msgstr "财政年度的家庭承诺"
 
@@ -5675,10 +5496,6 @@ msgstr "家庭中可以参与布道的人。"
 #: 
 msgid "Compare pledges between two fiscal years"
 msgstr "比较两个财政年度之间的承诺"
-
-#: 
-msgid "People who are configured to pay by credit card."
-msgstr "配置为使用信用卡付款的人。"
 
 #: 
 msgid "Pledge summary by family name for each fund for the selected fiscal year"
@@ -6957,10 +6774,6 @@ msgid "Zimbabwe"
 msgstr "津巴布韦"
 
 #: 
-msgid "By Zip Code"
-msgstr "按邮政编码"
-
-#: 
 msgid "Please verify your family's information"
 msgstr "请验证您的家人的信息"
 
@@ -7193,10 +7006,6 @@ msgid "The previous integrity check passed.  All system file hashes match the ex
 msgstr "已通过完整性检查。所有系统文件都与预期值哈希匹配。"
 
 #: 
-msgid "Google map API requires a unique key"
-msgstr "Google地图API需要唯一的密钥"
-
-#: 
 msgid "Church Checking Account Number"
 msgstr "教堂检查账号"
 
@@ -7253,10 +7062,6 @@ msgid "Please ensure this what you want to do.</p>"
 msgstr "请确认这是你想要做的。"
 
 #: 
-msgid " This Family is Deactivated"
-msgstr "这个家庭已停用"
-
-#: 
 msgid " this Family"
 msgstr "这个家庭"
 
@@ -7287,14 +7092,6 @@ msgstr "请选择一个家庭。"
 #: 
 msgid "Coordinate data base file name:"
 msgstr "协调数据库文件名："
-
-#: 
-msgid "Add To Cart"
-msgstr "添加至购物车"
-
-#: 
-msgid "Remove From Cart"
-msgstr "从购物车中删除"
 
 #: 
 msgid "Family Member"
@@ -7495,10 +7292,6 @@ msgstr "确认操作"
 #: 
 msgid "Please confirm reset failed login count"
 msgstr "请确认重置登录失败次数"
-
-#: 
-msgid "Password reset for"
-msgstr "密码重置为"
 
 #: 
 msgid "View Active Families"
@@ -7749,10 +7542,6 @@ msgid "Reset your password"
 msgstr "重置你的密码"
 
 #: 
-msgid "Check your email for a password reset link"
-msgstr "请检查您的电子邮件以获取密码重置链接"
-
-#: 
 msgid "Sorry, we are unable to process your request at this point in time."
 msgstr "抱歉，我们目前无法处理您的请求。"
 
@@ -7899,18 +7688,6 @@ msgstr "你想删除此人吗？这不能被撤消。"
 #: 
 msgid "Are you sure you want to unassign this property?"
 msgstr "您确定要取消分配此属性吗？"
-
-#: 
-msgid "Head of Household"
-msgstr "户主"
-
-#: 
-msgid "Spouse"
-msgstr "伴侣"
-
-#: 
-msgid "Child"
-msgstr "孩子"
 
 #: 
 msgid "Select a family"
@@ -8144,14 +7921,6 @@ msgstr "最大地址数量"
 #: 
 msgid "Show type of group:"
 msgstr "显示组的类型："
-
-#: 
-msgid "Deposits"
-msgstr "存款"
-
-#: 
-msgid "Payments"
-msgstr "支付"
 
 #: 
 msgid "Add Students"
@@ -8404,32 +8173,12 @@ msgid "Contributing"
 msgstr "奉献"
 
 #: 
-msgid "Birthdates of the day"
-msgstr "出生日"
-
-#: 
-msgid "Anniversaries of the day"
-msgstr "纪念日"
-
-#: 
 msgid "Automatically enable SMTP encryption if offered by the relaying server."
 msgstr "如果由中继服务器提供，则自动启用SMTP加密。"
 
 #: 
 msgid "Set the encryption system to use - ssl (deprecated) or tls"
 msgstr "将加密系统设置为使用 - ssl（不建议使用）或tls"
-
-#: 
-msgid "Lock"
-msgstr "锁"
-
-#: 
-msgid "Enter your password to retrieve your session"
-msgstr "输入您的密码以检索您的会话"
-
-#: 
-msgid "Or sign in as a different user"
-msgstr "或以其他用户身份登录"
 
 #: 
 msgid "Dashboard Service dynamic asynchronous refresh interval, default 60 second"
@@ -8446,14 +8195,6 @@ msgstr "全部添加至购物车"
 #: 
 msgid "Remove All from Cart"
 msgstr "从购物车中删除全部"
-
-#: 
-msgid " record returned"
-msgstr "记录已返回"
-
-#: 
-msgid " records returned"
-msgstr "记录已返回"
 
 #: 
 msgid "records(s) successfully deleted from the selected Group."
@@ -8514,10 +8255,6 @@ msgstr "返回人员仪表盘"
 #: 
 msgid "User must have MenuOptions permission"
 msgstr "用户必须具有MenuOptions权限"
-
-#: 
-msgid "Try out the Beta family view"
-msgstr "试用Beta系列视图"
 
 #: 
 msgid "SMTP Host is not setup, please visit the settings page"
@@ -8740,18 +8477,6 @@ msgid "Failure executing upgrade script"
 msgstr "执行升级脚本失败"
 
 #: 
-msgid "Databse upgrade failed"
-msgstr "数据库升级失败"
-
-#: 
-msgid "logged via API Key."
-msgstr "通过API密钥记录。"
-
-#: 
-msgid "logged via InValid API Key."
-msgstr "通过无效的API密钥记录。"
-
-#: 
 msgid "Missing calendar access token"
 msgstr "缺少日历访问令牌"
 
@@ -8794,10 +8519,6 @@ msgstr "无效的汇出值"
 #: 
 msgid "Invalid User/Password"
 msgstr "无效的用户/密码"
-
-#: 
-msgid "Bad userId"
-msgstr "用户ID不好"
 
 #: 
 msgid "Find Duplicate Emails"
@@ -8902,10 +8623,6 @@ msgstr "数据库版本"
 #: 
 msgid "Application Prerequisites"
 msgstr "应用程序的先决条件"
-
-#: 
-msgid "WebServer Modules"
-msgstr "网页服务器模块"
 
 #: 
 msgid "Invalid country name supplied"

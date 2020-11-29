@@ -1,5 +1,6 @@
 <?php
 
+use ChurchCRM\Bootstrapper;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\AppIntegrityService;
@@ -12,7 +13,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
     <div class="col-lg-4">
         <div class="box">
             <div class="box-header">
-                <h4><?= gettext("System Information") ?></h4>
+                <h4><?= gettext("ChurchCRM Installation Information") ?></h4>
             </div>
             <div class="box-body">
                 <table class="table table-striped">
@@ -25,8 +26,39 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         <td><?= SystemURLs::getRootPath() ?></td>
                     </tr>
                     <tr>
-                        <td><?= gettext("Valid Mail Server Settings") ?></td>
-                        <td><?= SystemConfig::hasValidMailServerSettings() ? "true" : "false" ?></td>
+                        <td>DocumentRoot</td>
+                        <td><?= SystemURLs::getDocumentRoot() ?></td>
+                    </tr>
+                    <tr>
+                        <td>ImagesRoot</td>
+                        <td><?= SystemURLs::getImagesRoot() ?></td>
+                    </tr>
+                    <tr>
+                        <td>URL</td>
+                        <td><?= SystemURLs::getURL() ?></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="box">
+            <div class="box-header">
+                <h4><?= gettext("System Information") ?></h4>
+            </div>
+            <div class="box-body">
+                <table class="table table-striped">
+                    <tr>
+                        <td>Server Hostname</td>
+                        <td><?= gethostname() ?></td>
+                    </tr>
+                    <tr>
+                        <td>Server IP</td>
+                        <td><?= $_SERVER['SERVER_ADDR'] ?></td>
+                    </tr>
+                    <tr>
+                        <td>Server Platform</td>
+                        <td><?= php_uname() ?></td>
                     </tr>
                 </table>
             </div>
@@ -44,9 +76,36 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         <td><?= SystemService::getDBVersion() ?></td>
                     </tr>
                     <tr>
-                        <td>MySQL <?= gettext("Database Version") ?></td>
+                        <td><?= gettext("Database Server Version") ?></td>
                         <td><?= SystemService::getDBServerVersion() ?></td>
                     </tr>
+                    <tr>
+                        <td>DSN</td>
+                        <td><?= Bootstrapper::GetDSN() ?></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="box">
+            <div class="box-header">
+                <h4><?= gettext("Web Server") ?></h4>
+            </div>
+            <div class="box-body" style="overflow: scroll-x">
+                <table class="table table-striped">
+                    <tr>
+                        <td><?= gettext("Server Software") ?></td>
+                        <td><?= $_SERVER["SERVER_SOFTWARE"] ?></td>
+                    </tr>
+                    <?php
+                    if (function_exists('apache_get_modules')) {
+                        foreach (apache_get_modules() as $item) { ?>
+                            <tr>
+                                <td><?= $item ?></td>
+                            </tr>
+                        <?php }
+                    } ?>
                 </table>
             </div>
         </div>
@@ -77,6 +136,29 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <tr>
                         <td>PHP Max Exec</td>
                         <td><?= ini_get('max_execution_time') ?></td>
+                    </tr>
+                    <tr>
+                        <td>SAPI Name</td>
+                        <td><?= php_sapi_name()  ?></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="box">
+            <div class="box-header">
+                <h4><?= gettext("Email Information") ?></h4>
+            </div>
+            <div class="box-body">
+                <table class="table table-striped">
+                    <tr>
+                        <td>SMTP Host</td>
+                        <td><?= SystemConfig::getValue("sSMTPHost") ?></td>
+                    </tr>
+                    <tr>
+                        <td><?= gettext("Valid Mail Server Settings") ?></td>
+                        <td><?= SystemConfig::hasValidMailServerSettings() ? "true" : "false" ?></td>
                     </tr>
                 </table>
             </div>
@@ -142,25 +224,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
             </div>
         </div>
     </div>
-    <div class="col-lg-4">
-        <div class="box">
-            <div class="box-header">
-                <h4><?= gettext("WebServer Modules") ?></h4>
-            </div>
-            <div class="box-body" style="overflow: scroll-x">
-                <table class="table table-striped">
-                    <?php
-                    if (function_exists('apache_get_modules')) {
-                        foreach (apache_get_modules() as $item) { ?>
-                            <tr>
-                                <td><?= $item ?></td>
-                            </tr>
-                        <?php }
-                    } ?>
-                </table>
-            </div>
-        </div>
-    </div>
+    
 </div>
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">

@@ -42,9 +42,10 @@ function getSystemCalendars(Request $request, Response $response, array $args)
 function getSystemCalendarEvents(Request $request, Response $response, array $args)
 {
     $Calendar = SystemCalendars::getCalendarById($args['id']);
-
+    $start = $request->getQueryParam("start", "");
+    $end = $request->getQueryParam("end", "");
     if ($Calendar) {
-        $events = $Calendar->getEvents();
+        $events = $Calendar->getEvents($start,$end);
         return $response->withJson($events->toJSON());
     }
 }
@@ -55,7 +56,7 @@ function getSystemCalendarEventById(Request $request, Response $response, array 
 
     if ($Calendar) {
         $event = $Calendar->getEventById($args['eventid']);
-        return $response->withJson($Calendar->toJSON());
+        return $response->withJson($event->toJSON());
     }
 }
 
@@ -63,10 +64,12 @@ function getSystemCalendarEventById(Request $request, Response $response, array 
 function getSystemCalendarFullCalendarEvents($request, Response $response, $args)
 {
     $Calendar = SystemCalendars::getCalendarById($args['id']);
+    $start = $request->getQueryParam("start", "");
+    $end = $request->getQueryParam("end", "");
     if (!$Calendar) {
         return $response->withStatus(404);
     }
-    $Events = $Calendar->getEvents();
+    $Events = $Calendar->getEvents($start,$end);
     if (!$Events) {
         return $response->withStatus(404);
     }
