@@ -275,11 +275,12 @@
             "4.2.0",
             "4.2.1",
             "4.2.2",
-            "4.2.3"
+            "4.2.3",
+            "4.3.0"
         ],
         "scripts": [
             "/mysql/upgrade/4.3.0-usersettings.sql"
         ],
-        "dbVersion": "4.3.0"
+        "dbVersion": "4.3.1"
     }
 }
