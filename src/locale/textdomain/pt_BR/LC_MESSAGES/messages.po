@@ -1359,10 +1359,6 @@ msgid "Family Info"
 msgstr "Informação da Família"
 
 #: 
-msgid "None US/CND State"
-msgstr "Estado"
-
-#: 
 msgid "Contact Info"
 msgstr "Informação de Contato"
 
@@ -8702,10 +8698,6 @@ msgid "Invalid User/Password"
 msgstr "Usuário ou Senha Inválidos"
 
 #: 
-msgid "Bad userId"
-msgstr "ID de usuário ruim"
-
-#: 
 msgid "Find Duplicate Emails"
 msgstr "Encontre E-mails Duplicados"
 
@@ -9454,14 +9446,6 @@ msgstr "Requer Autenticação por dois fatores"
 #: 
 msgid "2FA Application Name"
 msgstr "Aplicativo de Autenticação por dois fatores"
-
-#: 
-msgid "Unsupported user config"
-msgstr "Configuração de usuário não suportada"
-
-#: 
-msgid "Invalid userId"
-msgstr "Id de usuário inválida"
 
 #: 
 msgid "Login Info"

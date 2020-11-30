@@ -1355,10 +1355,6 @@ msgid "Family Info"
 msgstr "家庭资料"
 
 #: 
-msgid "None US/CND State"
-msgstr "无 US/CND 状态"
-
-#: 
 msgid "Contact Info"
 msgstr "联络人资料"
 
@@ -8523,10 +8519,6 @@ msgstr "无效的汇出值"
 #: 
 msgid "Invalid User/Password"
 msgstr "无效的用户/密码"
-
-#: 
-msgid "Bad userId"
-msgstr "用户ID不好"
 
 #: 
 msgid "Find Duplicate Emails"

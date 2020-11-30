@@ -1318,10 +1318,6 @@ msgid "Family Info"
 msgstr "Pereinfo"
 
 #: 
-msgid "None US/CND State"
-msgstr "Puudub USA / CND osariik"
-
-#: 
 msgid "Contact Info"
 msgstr "Kontaktinfo"
 
@@ -6046,10 +6042,6 @@ msgstr "vigane ekspordiväärtus"
 #: 
 msgid "Invalid User/Password"
 msgstr "Vale kasutaja / parool"
-
-#: 
-msgid "Bad userId"
-msgstr "Halb kasutajatunnus"
 
 #: 
 msgid "Find Duplicate Emails"

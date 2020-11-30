@@ -1324,10 +1324,6 @@ msgid "Family Info"
 msgstr "Info sur la famille"
 
 #: 
-msgid "None US/CND State"
-msgstr "Pas d&#39;État US/CND"
-
-#: 
 msgid "Contact Info"
 msgstr "Info sur le contact"
 
@@ -8495,10 +8491,6 @@ msgstr "Valeur d'export incorrecte"
 #: 
 msgid "Invalid User/Password"
 msgstr "Identifiant/Mot de passe incorrect"
-
-#: 
-msgid "Bad userId"
-msgstr "Identifiant utilisateur incorrect"
 
 #: 
 msgid "Find Duplicate Emails"

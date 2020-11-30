@@ -1355,10 +1355,6 @@ msgid "Family Info"
 msgstr "Info familie"
 
 #: 
-msgid "None US/CND State"
-msgstr "În afara Americii"
-
-#: 
 msgid "Contact Info"
 msgstr "Info contact"
 

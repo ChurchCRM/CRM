@@ -931,10 +931,6 @@ msgid "Family Info"
 msgstr "Thông tin gia đình"
 
 #: 
-msgid "None US/CND State"
-msgstr "Quận/Huyện"
-
-#: 
 msgid "Contact Info"
 msgstr "Thông tin liên hệ"
 

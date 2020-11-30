@@ -1320,10 +1320,6 @@ msgid "Family Info"
 msgstr "Informasi keluarga"
 
 #: 
-msgid "None US/CND State"
-msgstr "Bukan negara US/CND"
-
-#: 
 msgid "Contact Info"
 msgstr "Data Kontak"
 
@@ -8495,10 +8491,6 @@ msgid "Invalid User/Password"
 msgstr "Salah User/Sandi"
 
 #: 
-msgid "Bad userId"
-msgstr "UserId salah"
-
-#: 
 msgid "Find Duplicate Emails"
 msgstr "Temukan Duplikat Email"
 
@@ -9236,14 +9228,6 @@ msgstr "Diperlukan 2FA"
 #: 
 msgid "2FA Application Name"
 msgstr "2FA Nama Aplikasi"
-
-#: 
-msgid "Unsupported user config"
-msgstr "Konfigurasi pengguna tidak didukung"
-
-#: 
-msgid "Invalid userId"
-msgstr "userId tidak valid"
 
 #: 
 msgid "Login Info"
