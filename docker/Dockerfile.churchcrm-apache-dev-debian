@@ -1,4 +1,4 @@
-FROM  php:apache
+FROM  php:7.4.13-apache
 LABEL maintainer="crossan007@gmail.com"
 
 ADD https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh /opt/node-install.sh
@@ -35,7 +35,7 @@ RUN php composer-setup.php --install-dir=/usr/local/bin --filename=composer
 # Configure PHP
 RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
 
-RUN sed -i 's/^upload_max_filesize.*$/upload_max_filesize = 2G/g' $PHP_INI_DIR/php.ini 
+RUN sed -i 's/^upload_max_filesize.*$/upload_max_filesize = 2G/g' $PHP_INI_DIR/php.ini
 RUN sed -i 's/^post_max_size.*$/post_max_size = 2G/g' $PHP_INI_DIR/php.ini
 RUN sed -i 's/^memory_limit.*$/memory_limit = 2G/g' $PHP_INI_DIR/php.ini
 RUN sed -i 's/^max_execution_time.*$/max_execution_time = 120/g' $PHP_INI_DIR/php.ini
