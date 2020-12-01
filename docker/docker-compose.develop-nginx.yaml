@@ -39,10 +39,10 @@ services:
     links:
       - database
       - mailserver
+      - churchcrm
     env_file:
       - .env
-    links:
-      - churchcrm
+
 
   mailserver:
     #  Reference: https://blog.mailtrap.io/mailhog-explained/
