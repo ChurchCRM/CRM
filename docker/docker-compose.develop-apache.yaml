@@ -14,7 +14,7 @@ services:
       - default
     volumes:
       - ../demo:/docker-entrypoint-initdb.d # auto-load the demo database as per: https://hub.docker.com/_/mariadb
-    
+
   webserver:
     ## Look into: https://hub.docker.com/r/nimmis/apache-php7
     build:
@@ -22,8 +22,6 @@ services:
       dockerfile: Dockerfile.churchcrm-apache-dev-debian
     ports:
       - "80:80"
-    links:
-      - churchcrm
     volumes:
       - ../src:/var/www/html
       - ..:/home/ChurchCRM
