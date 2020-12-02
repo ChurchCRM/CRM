@@ -10,7 +10,7 @@ msgstr ""
 
 #: 
 msgid "Cannot execute query."
-msgstr "Impossible d'exécuter la requête."
+msgstr "Impossible d'exécuter la requête"
 
 #: 
 msgid "Delete"
@@ -18,7 +18,7 @@ msgstr "Supprimer"
 
 #: 
 msgid "Cancel"
-msgstr "Annuler"
+msgstr "Abandonner"
 
 #: 
 msgid "Save"
@@ -26,7 +26,7 @@ msgstr "Enregistrer"
 
 #: 
 msgid "Unassigned"
-msgstr "Non attribué"
+msgstr "Non assigné"
 
 #: 
 msgid "None"
@@ -54,28 +54,27 @@ msgstr "Email"
 
 #: 
 msgid "Credit Card"
-msgstr "Carte de crédit"
+msgstr "Carte de Crédit"
 
 #: 
 msgid "Backup Database"
-msgstr "Sauvegarder la base"
+msgstr "Base de donnée de secours"
 
 #: 
 msgid "This tool will assist you in manually backing up the ChurchCRM database."
-msgstr "Cet outil vous aidera à effectuer une sauvegarde manuelle de la base de données de ChurchCRM"
+msgstr "Cet assistant va vous aider à sauvegarder manuellement votre base de données ChurchCRM"
 
 #: 
-#, fuzzy
 msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
-msgstr "Vous devriez faire une sauvegarde manuelle au moins une fois par semaine à moins que vous n'ayez déjà une procédure de sauvegarde régulière pour vos systèmes."
+msgstr "Vous devriez effectuer une sauvegarde manuelle au moins une fois par semaine à moins qu'une sauvegarde régulière ne soit déjà en place sur votre système."
 
 #: 
 msgid "After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site."
-msgstr "Après avoir téléchargé le fichier de sauvegarde, vous devriez effectuer deux copies. Placez-en une dans un emplacement sûr et l'autre dans un autre emplacement."
+msgstr "Après avoir téléchargé le fichier de sauvegarde, vous devriez en faire deux copies. Stocker l'une d'elles dans un endroit protégé du feu, sur un site différent."
 
 #: 
 msgid "If you are concerned about confidentiality of data stored in the ChurchCRM database, you should encrypt the backup data if it will be stored somewhere potentially accessible to others"
-msgstr "Si vous êtes inquiets concernant la confidentialité des données enregistrées dans la base de données ChurchCRM, vous devriez crypter les données sauvegardées si elles sont stockées à un endroit accessible à d'autres personnes."
+msgstr "Si vous êtes préoccupé par la confidentialité des données stockées dans la base ChurchCRM, vous devriez chiffrer les données de sauvegarde si ces dernières seront stockées dans un endroit potentiellement accessible par des tiers"
 
 #: 
 msgid "Select archive type"
@@ -83,11 +82,11 @@ msgstr "Sélectionner le type d'archive"
 
 #: 
 msgid "Encrypt backup file with a password?"
-msgstr "Crypter les fichiers de sauvegarde avec un mot de passe ?"
+msgstr "Chiffrer le fichier de sauvegarde avec un mot de passe ?"
 
 #: 
 msgid "Re-type Password"
-msgstr "Entrez à nouveau votre mot de passe"
+msgstr "Retaper le mot de passe"
 
 #: 
 msgid "Generate and Ship Backup to External Storage"
@@ -8830,12 +8829,28 @@ msgid "Unsupported PHP Version"
 msgstr "Version de PHP non supportée"
 
 #: 
+msgid "Missing PHP ZipArchive"
+msgstr "L'archive ZIP PHP est manquante"
+
+#: 
+msgid "PHP ZipArchive required to support upgrade"
+msgstr "L'archive ZIP PHP est requise pour permettre la montée de version"
+
+#: 
 msgid "Add Results to Cart"
 msgstr "Ajouter les résultats au panier"
 
 #: 
 msgid "Remove Results from Cart"
 msgstr "Enlever les résultats du panier"
+
+#: 
+msgid "Warning: Pre-Upgrade Tasks Detected"
+msgstr "Avertissement : Des opérations pré-migrations sont requises"
+
+#: 
+msgid "This will remove all the member data, people, and families and can't be undone."
+msgstr "Cette opération est irréversible, elle supprimera toutes les données des membres, personnes et familles."
 
 #: 
 msgid "Reset Families/People"
@@ -8870,12 +8885,10 @@ msgid "ChurchCRM"
 msgstr "ChurchCRM"
 
 #: 
-#, fuzzy
 msgid "Review"
-msgstr "Passer en revue"
+msgstr "Résumé"
 
 #: 
-#, fuzzy
 msgid "Thank you for registering your family"
 msgstr "Merci d’avoir enregistré votre famille"
 
@@ -8883,6 +8896,10 @@ msgstr "Merci d’avoir enregistré votre famille"
 #, fuzzy
 msgid "Register another family!"
 msgstr "Enregistrer une nouvelle famille"
+
+#: 
+msgid "Done, show me the homepage!"
+msgstr "J'ai fini, dirigez moi vers la page d'acceuil"
 
 #: 
 #, fuzzy
@@ -8906,6 +8923,110 @@ msgid "Two factor authentication requires ChurchCRM administrators to configure 
 msgstr "L'authentification à 2 facteurs nécessite une intervention de l'administrateur ChurchCRM"
 
 #: 
+msgid "Your new password is too similar to your old one."
+msgstr "Le nouveau mot de passe est trop similaire à l'ancien"
+
+#: 
+msgid "Authentication Issue"
+msgstr "Erreur d'authentification"
+
+#: 
+msgid "Mailchimp is not active"
+msgstr "Mailchimp n'est pas activé"
+
+#: 
+msgid "Mailchimp"
+msgstr "Mailchimp"
+
+#: 
+msgid "Lists"
+msgstr "Listes"
+
+#: 
+msgid "loading"
+msgstr "Chargement en cours"
+
+#: 
+msgid "List not found"
+msgstr "Liste introuvable"
+
+#: 
+msgid "People not in"
+msgstr "Person non trouvée"
+
+#: 
+msgid "Database Server Version"
+msgstr "Version de base  de données"
+
+#: 
+msgid "Web Server"
+msgstr "Serveur wen"
+
+#: 
+msgid "Server Software"
+msgstr "Logiciel serveur"
+
+#: 
+msgid "General"
+msgstr "Général"
+
+#: 
+msgid "Passwords"
+msgstr "Mots de passe"
+
+#: 
+msgid "2FA"
+msgstr "A2F"
+
+#: 
+msgid "Session Timeout"
+msgstr "Session expirée"
+
+#: 
+msgid "Enable Password Reset"
+msgstr "Activer la réinitialisation de mot de passe"
+
+#: 
+msgid "Pledge"
+msgstr "Promesses de dons"
+
+#: 
+msgid "Paid"
+msgstr "Payé"
+
+#: 
+msgid "Start Date"
+msgstr "Date de début"
+
+#: 
+msgid "Text"
+msgstr "Texte"
+
+#: 
+msgid "Event Description"
+msgstr "Description de l'événement"
+
+#: 
+msgid "Afrikaans"
+msgstr "Afrikaans"
+
+#: 
+msgid "Loading"
+msgstr "Chargement en cours"
+
+#: 
+msgid "Do you want to remove"
+msgstr "Voulez-vous supprimer"
+
+#: 
+msgid "View Active People"
+msgstr "Voir les personnes actives"
+
+#: 
+msgid "View Inactive People"
+msgstr "Voir les personnes inactives"
+
+#: 
 #, fuzzy
 msgid "Today's Birthdays"
 msgstr "Anniversaires du jour"
@@ -8926,6 +9047,14 @@ msgid "Regen API Key"
 msgstr "Régénérer la clef API"
 
 #: 
+msgid "View Family Page"
+msgstr "Page du foyer"
+
+#: 
+msgid "View Person Page"
+msgstr "Page de la persone"
+
+#: 
 msgid "Verify"
 msgstr "Vérifier"
 
@@ -8933,4 +9062,61 @@ msgstr "Vérifier"
 #, fuzzy
 msgid "Family has no emails to use"
 msgstr "Aucune adresse email renseignée pour cette famille"
+
+#: 
+msgid "Blue"
+msgstr "Bleu"
+
+#: 
+msgid "Black"
+msgstr "Noir"
+
+#: 
+msgid "Purple"
+msgstr "Violet"
+
+#: 
+#, fuzzy
+msgid "Green"
+msgstr "Vert"
+
+#: 
+msgid "Red"
+msgstr "Rouge"
+
+#: 
+msgid "Yellow"
+msgstr "Jaune"
+
+#: 
+msgid "Blue Light"
+msgstr "Bleu clair"
+
+#: 
+msgid "Black Light"
+msgstr "Noir clair"
+
+#: 
+msgid "Purple Light"
+msgstr "Violet clair"
+
+#: 
+msgid "Green Light"
+msgstr "Vert clair"
+
+#: 
+msgid "Red Light"
+msgstr "Rouge clair"
+
+#: 
+msgid "Yellow Light"
+msgstr "Jaune clair"
+
+#: 
+msgid "Boxed Layout"
+msgstr "Disposition en boites"
+
+#: 
+msgid "User Interface"
+msgstr "Interface utilisateur"
 

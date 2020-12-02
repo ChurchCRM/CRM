@@ -50,7 +50,10 @@ if (!empty($sHeader)) {
                             <input id="familyCity" name="familyCity" class="form-control" placeholder="<?= gettext('City') ?>"  required value="<?= SystemConfig::getValue('sDefaultCity') ?>">
                         </div>
                         <div class="col-lg-6">
-                            <input id="familyState" name="familyState" class="form-control" placeholder="<?= gettext('State') ?>" required value="<?= SystemConfig::getValue('sDefaultState') ?>">
+                            <input id="familyStateInput" name="familyState" class="form-control" placeholder="<?= gettext('State') ?>" required value="<?= SystemConfig::getValue('sDefaultState') ?>">
+                            <select id="familyStateSelect" name="familyState" class="form-control select2 hidden" data-system-default="<?= SystemConfig::getValue('sDefaultState')?>">
+                            </select>
+                            </select>
                         </div>
                     </div>
                 </div>
@@ -60,10 +63,7 @@ if (!empty($sHeader)) {
                             <input id="familyZip" name="familyZip" class="form-control" placeholder="<?= gettext('Zip') ?>" required>
                         </div>
                         <div class="col-lg-9">
-                            <select id="familyCountry" name="familyCountry" class="form-control select2">
-                                <?php foreach (Countries::getNames() as $county) { ?>
-                                    <option value="<?= $county ?>" <?= SystemConfig::getValue('sDefaultCountry') == $county ? 'selected' : "" ?>><?= gettext($county) ?></option>
-                                <?php } ?>
+                            <select id="familyCountry" name="familyCountry" class="form-control select2" data-system-default="<?= SystemConfig::getValue('sDefaultCountry')?>">
                             </select>
                         </div>
                     </div>
