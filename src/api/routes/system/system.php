@@ -1,11 +1,11 @@
 <?php
 
-use Slim\Http\Request;
-use Slim\Http\Response;
-use ChurchCRM\Service\NotificationService;
 use ChurchCRM\dto\Notification\UiNotification;
+use ChurchCRM\Service\NotificationService;
 use ChurchCRM\Service\TaskService;
 use ChurchCRM\Utils\LoggerUtils;
+use Slim\Http\Request;
+use Slim\Http\Response;
 
 $app->group('/system', function () {
     $this->get('/notification', 'getUiNotificationAPI');

@@ -1,12 +1,12 @@
 <?php
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Group;
 use ChurchCRM\GroupQuery;
 use ChurchCRM\Note;
 use ChurchCRM\Person2group2roleP2g2rQuery;
 use ChurchCRM\PersonQuery;
 use ChurchCRM\Slim\Middleware\Request\Auth\ManageGroupRoleAuthMiddleware;
-use ChurchCRM\Authentication\AuthenticationManager;
 
 $app->group('/groups', function () {
     $this->get('/', function () {

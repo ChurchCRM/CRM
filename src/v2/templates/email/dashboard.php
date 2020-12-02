@@ -1,7 +1,7 @@
 <?php
 
-use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\dto\SystemURLs;
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 

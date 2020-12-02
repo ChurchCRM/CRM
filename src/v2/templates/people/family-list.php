@@ -2,7 +2,6 @@
 
 
 use ChurchCRM\dto\SystemConfig;
-use Propel\Runtime\ActiveQuery\Criteria;
 use ChurchCRM\dto\SystemURLs;
 
 //Set the page title

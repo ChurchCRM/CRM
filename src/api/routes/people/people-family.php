@@ -1,19 +1,17 @@
 <?php
 
-use ChurchCRM\Slim\Middleware\Request\FamilyAPIMiddleware;
-use ChurchCRM\Slim\Middleware\MailChimpMiddleware;
-use ChurchCRM\Utils\GeoUtils;
-use ChurchCRM\Utils\MiscUtils;
-use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\ChurchMetaData;
-use ChurchCRM\Token;
-use ChurchCRM\TokenQuery;
-use ChurchCRM\Slim\Middleware\Request\Auth\EditRecordsRoleAuthMiddleware;
-use ChurchCRM\Utils\LoggerUtils;
+use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\FamilyQuery;
+use ChurchCRM\Slim\Middleware\Request\Auth\EditRecordsRoleAuthMiddleware;
+use ChurchCRM\Slim\Middleware\Request\FamilyAPIMiddleware;
+use ChurchCRM\Token;
+use ChurchCRM\TokenQuery;
+use ChurchCRM\Utils\GeoUtils;
+use ChurchCRM\Utils\LoggerUtils;
+use ChurchCRM\Utils\MiscUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
-use ChurchCRM\Service\MailChimpService;
 
 $app->group('/family/{familyId:[0-9]+}', function () {
     $this->get('/photo', function ($request, $response, $args) {

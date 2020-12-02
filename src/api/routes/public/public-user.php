@@ -1,9 +1,6 @@
 <?php
 
-use ChurchCRM\Emails\ResetPasswordTokenEmail;
-use ChurchCRM\Token;
 use ChurchCRM\UserQuery;
-use ChurchCRM\Utils\LoggerUtils;
 use Slim\Http\Request;
 use Slim\Http\Response;
 

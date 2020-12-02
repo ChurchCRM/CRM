@@ -1,9 +1,9 @@
 <?php
 
+use ChurchCRM\Service\NewDashboardService;
 use ChurchCRM\Service\SystemService;
 use Slim\Http\Request;
 use Slim\Http\Response;
-use ChurchCRM\Service\NewDashboardService;
 
 $app->group('/background', function () {
     $this->get('/page', 'getPageCommonData');

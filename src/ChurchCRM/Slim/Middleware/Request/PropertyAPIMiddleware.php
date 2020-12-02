@@ -2,10 +2,10 @@
 
 namespace ChurchCRM\Slim\Middleware\Request;
 
-use Slim\Http\Request;
-use Slim\Http\Response;
 use ChurchCRM\PropertyQuery;
 use ChurchCRM\Utils\LoggerUtils;
+use Slim\Http\Request;
+use Slim\Http\Response;
 
 class PropertyAPIMiddleware
 {

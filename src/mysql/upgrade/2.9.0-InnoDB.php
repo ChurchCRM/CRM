@@ -1,7 +1,7 @@
 <?php
 
-use Propel\Runtime\Propel;
 use ChurchCRM\Utils\LoggerUtils;
+use Propel\Runtime\Propel;
 
 $connection = Propel::getConnection();
 $logger = LoggerUtils::getAppLogger();
@@ -19,7 +19,7 @@ $statement->execute();
 $dbTablesSQLs = $statement->fetchAll();
 
 foreach ($dbTablesSQLs as $dbTable) {
-  
+
     $alterSQL = "ALTER TABLE " . $dbTable[0] . " ENGINE=InnoDB;";
     $logger->info("Upgrade: " . $alterSQL);
     $dbAlterStatement = $connection->exec($alterSQL);

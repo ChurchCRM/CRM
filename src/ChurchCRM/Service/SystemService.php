@@ -2,24 +2,15 @@
 
 namespace ChurchCRM\Service;
 
-use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\FileSystemUtils;
-use ChurchCRM\SQLUtils;
-use ChurchCRM\VersionQuery;
-use Exception;
-use Ifsnop\Mysqldump\Mysqldump;
-use PharData;
-use Propel\Runtime\ActiveQuery\Criteria;
-use Propel\Runtime\Propel;
-use PDO;
-use ChurchCRM\Utils\InputUtils;
-use ChurchCRM\Utils\LoggerUtils;
-use ChurchCRM\Utils\ExecutionTime;
 use ChurchCRM\Backup\BackupJob;
 use ChurchCRM\Backup\BackupType;
+use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\ChurchCRMReleaseManager;
-use ChurchCRM\dto\ChurchCRMRelease;
+use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\LoggerUtils;
+use PDO;
+use Propel\Runtime\Propel;
 
 require SystemURLs::getDocumentRoot() . '/vendor/ifsnop/mysqldump-php/src/Ifsnop/Mysqldump/Mysqldump.php';
 
@@ -54,8 +45,13 @@ class SystemService
 
    static public function getDBVersion()
     {
-        $version = VersionQuery::create()->orderByVersion(Criteria::DESC)->findOne();
-        return $version->getVersion();
+        $connection = Propel::getConnection();
+        $query = 'Select * from version_ver';
+        $statement = $connection->prepare($query);
+        $statement->execute();
+        $results = $statement->fetchAll(\PDO::FETCH_ASSOC);
+        rsort($results);
+        return $results[0]['ver_version'];
     }
 
     public static function getDBServerVersion()
@@ -67,6 +63,11 @@ class SystemService
       {
         return "Could not obtain DB Server Version";
       }
+    }
+
+    static public function isDBCurrent()
+    {
+        return SystemService::getDBVersion() == SystemService::getInstalledVersion();
     }
 
     static public function getDBTableExists($tableName) {
