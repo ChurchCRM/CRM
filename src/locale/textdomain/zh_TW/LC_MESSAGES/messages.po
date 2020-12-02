@@ -9820,8 +9820,8 @@ msgstr "紫"
 
 #: 
 #, fuzzy
-msgid "Green<"
-msgstr "綠<"
+msgid "Green"
+msgstr "綠"
 
 #: 
 #, fuzzy

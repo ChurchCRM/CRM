@@ -5,8 +5,7 @@ context('Family Reg', () => {
     it('Family of 2', () => {
         cy.visit('external/register/');
         cy.get('#familyName').type('Master');
-        cy.get('#familyAddress1').type('{backspace}');
-        cy.get('#familyAddress1').type('123 Main St.');
+        cy.get('#familyAddress1').clear().type('123 Main St.');
         cy.get('#familyZip').type('98001');
         cy.get('#familyCount').select('2');
         cy.get('.actions li:nth-child(2) > a').click();

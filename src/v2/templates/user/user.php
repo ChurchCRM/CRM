@@ -112,7 +112,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                 <span style="display:block; width: 80%; float: left; height: 20px; background: #f4f5f7"></span>
                             </div>
                         </a>
-                        <p class="text-center no-margin"><?= _("Green<")?>/p>
+                        <p class="text-center no-margin"><?= _("Green")?>/p>
                     </li>
                     <li style="float:left; width: 33.33333%; padding: 5px;">
                         <a href="javascript:void(0)" data-skin="skin-red" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" class="clearfix full-opacity-hover">

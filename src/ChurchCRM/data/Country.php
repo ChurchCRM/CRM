@@ -1,7 +1,7 @@
 <?php
 namespace ChurchCRM\data;
 
-class Country
+class Country implements \JsonSerializable
 {
   private $countryCode;
   private $countryName;
@@ -12,17 +12,21 @@ class Country
     $this->countryName = $CountryName;
     $this->countryNameYasumi = $CountryNameYasumi;
   }
-  
+
   public function getCountryCode(){
     return $this->countryCode;
   }
-  
+
   public function getCountryName() {
     return $this->countryName;
   }
-  
+
   public function getCountryNameYasumi() {
     return $this->countryNameYasumi;
   }
- 
+
+    public function jsonSerialize()
+    {
+        return ["name" => $this->countryName, "code" => $this->countryCode];
+    }
 }

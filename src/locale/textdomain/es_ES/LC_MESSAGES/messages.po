@@ -9528,7 +9528,8 @@ msgid "Purple"
 msgstr "Púrpura"
 
 #: 
-msgid "Green<"
+#, fuzzy
+msgid "Green"
 msgstr "Verde"
 
 #: 
