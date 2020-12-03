@@ -1,9 +1,6 @@
 <?php
 
-use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\Service\AppIntegrityService;
-use ChurchCRM\Service\SystemService;
 
 //Set the page title
 include SystemURLs::getDocumentRoot() . '/Include/Header.php';

@@ -1,11 +1,11 @@
 <?php
 
 
+use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\dto\Classification;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\dto\Classification;
 use ChurchCRM\Service\MailChimpService;
-use ChurchCRM\Authentication\AuthenticationManager;
 
 //Set the page title
 $sPageTitle =  $family->getName() . " - " . gettext("Family");

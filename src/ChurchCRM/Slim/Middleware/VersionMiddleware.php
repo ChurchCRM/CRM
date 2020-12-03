@@ -2,9 +2,9 @@
 
 namespace ChurchCRM\Slim\Middleware;
 
+use ChurchCRM\Service\SystemService;
 use Slim\Http\Request;
 use Slim\Http\Response;
-use ChurchCRM\Service\SystemService;
 
 class VersionMiddleware {
 

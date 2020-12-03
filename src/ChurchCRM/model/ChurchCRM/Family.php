@@ -2,6 +2,7 @@
 
 namespace ChurchCRM;
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Base\Family as BaseFamily;
 use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemConfig;
@@ -12,7 +13,6 @@ use ChurchCRM\Utils\GeoUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use DateTime;
 use Propel\Runtime\Connection\ConnectionInterface;
-use ChurchCRM\Authentication\AuthenticationManager;
 
 /**
  * Skeleton subclass for representing a row from the 'family_fam' table.

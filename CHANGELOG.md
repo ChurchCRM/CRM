@@ -1,3 +1,51 @@
+# 4.3.0
+Released on (11.29.2020)
+## :pray: Feature Requests
+
+- Feature/country state downdown [#5587](https://github.com/ChurchCRM/CRM/pull/5587)
+- Feature: Individual User locale  [#5577](https://github.com/ChurchCRM/CRM/pull/5577)
+- Feature/user settings tables [#5574](https://github.com/ChurchCRM/CRM/pull/5574)
+- Feature: User settings - DB & API [#5567](https://github.com/ChurchCRM/CRM/pull/5567)
+- Family Verification Email Body [#1723](https://github.com/ChurchCRM/CRM/issues/1723)
+- Store default list size [#5191](https://github.com/ChurchCRM/CRM/issues/5191)
+
+## :star: Enhancements
+
+- Outgoing emails look outdated [#5557](https://github.com/ChurchCRM/CRM/issues/5557)
+- Menu - People -> View all Persons [#5323](https://github.com/ChurchCRM/CRM/issues/5323)
+- Every API request does 2 version checks  [#4992](https://github.com/ChurchCRM/CRM/issues/4992)
+- Use system Country States for UI forms  [#4403](https://github.com/ChurchCRM/CRM/issues/4403)
+- number of items in lists [#2144](https://github.com/ChurchCRM/CRM/issues/2144)
+
+## :speech_balloon: Localization
+
+- 4.2.3 POEditor Update - 2020-11-21 [#5559](https://github.com/ChurchCRM/CRM/pull/5559)
+- See All People Translation issue [#5040](https://github.com/ChurchCRM/CRM/issues/5040)
+- Outgoing Emails are not localized  [#5558](https://github.com/ChurchCRM/CRM/issues/5558)
+
+## :beetle: Bugs
+
+- Feature/user settings fin table [#5572](https://github.com/ChurchCRM/CRM/pull/5572)
+- Bug: fixed older style log methods [#5562](https://github.com/ChurchCRM/CRM/pull/5562)
+- PHP Strict Mode error [#5003](https://github.com/ChurchCRM/CRM/issues/5003)
+
+## :gear: Inner Beauty
+
+- Bug/fix api user key [#5584](https://github.com/ChurchCRM/CRM/pull/5584)
+- Fixed spelling for iDashboardServiceIntervalTime [#5582](https://github.com/ChurchCRM/CRM/pull/5582)
+- Code/refactor admin user api [#5581](https://github.com/ChurchCRM/CRM/pull/5581)
+- moving to vonage from nexmo [#5492](https://github.com/ChurchCRM/CRM/pull/5492)
+- Move Vonage from Nexmo [#5490](https://github.com/ChurchCRM/CRM/issues/5490)
+- Review Usage of initial.js [#5453](https://github.com/ChurchCRM/CRM/issues/5453)
+- Typo in System Setting [#5031](https://github.com/ChurchCRM/CRM/issues/5031)
+- replace userconfig_ucfg usage with User Object methods. [#1466](https://github.com/ChurchCRM/CRM/issues/1466)
+
+## :heart: Contributors
+
+We'd like to thank all the contributors who worked on this release!
+
+- [@DawoudIO](https://github.com/DawoudIO)
+
 # 4.2.3
 Released on (11.21.2020)
 ## :star: Enhancements

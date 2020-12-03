@@ -11,13 +11,12 @@
  ******************************************************************************/
 
 use ChurchCRM\Authentication\AuthenticationManager;
-use ChurchCRM\Utils\LoggerUtils;
-use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\Cart;
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Service\PersonService;
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\Utils\InputUtils;
-use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\Utils\LoggerUtils;
 
 $personService = new PersonService();
 $systemService = new SystemService();

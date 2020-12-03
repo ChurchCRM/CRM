@@ -19,7 +19,7 @@ services:
     ## Look into: https://hub.docker.com/r/nimmis/apache-php7
     build:
       context: .
-      dockerfile: Dockerfile.churchcrm-apache-dev-debian
+      dockerfile: Dockerfile.churchcrm-apache-test-debian
     ports:
       - "80:80"
     volumes:
@@ -27,13 +27,5 @@ services:
       - ..:/home/ChurchCRM
     links:
       - database
-      - mailserver
     env_file:
       - .env
-
-  mailserver:
-    #  Reference: https://blog.mailtrap.io/mailhog-explained/
-    image: mailhog/mailhog
-    ports:
-      - 1025:1025
-      - 8025:8025

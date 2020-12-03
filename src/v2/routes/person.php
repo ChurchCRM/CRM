@@ -1,11 +1,9 @@
 <?php
 
+use ChurchCRM\dto\SystemURLs;
 use Slim\Http\Request;
 use Slim\Http\Response;
-use ChurchCRM\dto\SystemURLs;
 use Slim\Views\PhpRenderer;
-use ChurchCRM\FamilyQuery;
-use ChurchCRM\Service\TimelineService;
 
 $app->group('/person', function () {
     $this->get('/not-found', 'viewPersonNotFound');

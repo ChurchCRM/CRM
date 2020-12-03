@@ -1,4 +1,5 @@
 <?php
+
 use ChurchCRM\dto\SystemConfig;
 
 if (SystemConfig::debugEnabled()) {

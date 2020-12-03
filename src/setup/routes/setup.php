@@ -1,8 +1,8 @@
 <?php
 
 use ChurchCRM\dto\SystemURLs;
-use Slim\Views\PhpRenderer;
 use ChurchCRM\Service\AppIntegrityService;
+use Slim\Views\PhpRenderer;
 
 $app->group('/', function () {
     $this->get('', function ($request, $response, $args) {

@@ -1,7 +1,5 @@
 <?php
 namespace ChurchCRM\data;
-use ChurchCRM\data\Country;
-use Yasumi\Provider;
 
 class Countries
 {

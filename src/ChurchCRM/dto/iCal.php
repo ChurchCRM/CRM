@@ -1,6 +1,6 @@
 <?php
 
-/* 
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -8,12 +8,11 @@
 
     namespace ChurchCRM\dto;
 use ChurchCRM\Event;
-use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\Service\SystemService;
 use Propel\Runtime\Collection\ObjectCollection;
 
 Class iCal {
-  
+
   private $icsHeader;
   private $eventsArray;
 
@@ -27,11 +26,11 @@ Class iCal {
                     "X-WR-CALNAME:".$CalendarName."\r\n".
                     "X-WR-CALDESC:\r\n";
   }
-  
+
   private function eventToVEVENT(Event $event) {
     $now = new \DateTime();
     $UTC = new \DateTimeZone("UTC");
-        
+
     return "BEGIN:VEVENT\r\n".
           "UID:".$event->getId()."@".ChurchMetaData::getChurchName()."\r\n".
           "DTSTAMP:".$now->setTimezone($UTC)->format('Ymd\THis\Z')."\r\n".
@@ -40,7 +39,7 @@ Class iCal {
           "SUMMARY:".$event->getTitle()."\r\n".
           "END:VEVENT\r\n";
   }
-  
+
   public function toString() {
     $iCal = $this->icsHeader;
     foreach ($this->eventsArray as $event){
@@ -48,6 +47,6 @@ Class iCal {
     }
     $iCal .="END:VCALENDAR";
     return $iCal;
-    
+
   }
 }

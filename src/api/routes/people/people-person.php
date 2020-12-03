@@ -1,15 +1,13 @@
 <?php
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\Cart;
 use ChurchCRM\dto\Photo;
 use ChurchCRM\ListOptionQuery;
-use ChurchCRM\Slim\Middleware\Request\PersonAPIMiddleware;
-use ChurchCRM\Slim\Middleware\MailChimpMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\DeleteRecordRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\EditRecordsRoleAuthMiddleware;
+use ChurchCRM\Slim\Middleware\Request\PersonAPIMiddleware;
 use ChurchCRM\Utils\MiscUtils;
-use ChurchCRM\Authentication\AuthenticationManager;
-use ChurchCRM\Service\MailChimpService;
 use Slim\Http\Request;
 use Slim\Http\Response;
 

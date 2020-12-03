@@ -1,18 +1,18 @@
 <?php
 
-use Slim\Http\Request;
-use Slim\Http\Response;
+use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\dto\PeopleCustomField;
 use ChurchCRM\dto\SystemURLs;
-use Slim\Views\PhpRenderer;
-use ChurchCRM\FamilyQuery;
-use ChurchCRM\Service\TimelineService;
-use ChurchCRM\PropertyQuery;
-use ChurchCRM\Utils\InputUtils;
-use Propel\Runtime\ActiveQuery\Criteria;
 use ChurchCRM\FamilyCustomMasterQuery;
 use ChurchCRM\FamilyCustomQuery;
-use ChurchCRM\dto\PeopleCustomField;
-use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\FamilyQuery;
+use ChurchCRM\PropertyQuery;
+use ChurchCRM\Service\TimelineService;
+use ChurchCRM\Utils\InputUtils;
+use Propel\Runtime\ActiveQuery\Criteria;
+use Slim\Http\Request;
+use Slim\Http\Response;
+use Slim\Views\PhpRenderer;
 
 $app->group('/family', function () {
     $this->get('','listFamilies');

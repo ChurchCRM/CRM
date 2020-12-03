@@ -2,7 +2,7 @@
 
 namespace ChurchCRM\dto\Notification;
 use JsonSerializable;
-    
+
 class UiNotification implements JsonSerializable
 {
     private $title;

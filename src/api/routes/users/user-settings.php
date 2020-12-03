@@ -1,9 +1,9 @@
 <?php
 
+use ChurchCRM\Slim\Middleware\Request\UserAPIMiddleware;
+use ChurchCRM\UserSettings;
 use Slim\Http\Request;
 use Slim\Http\Response;
-use ChurchCRM\UserSettings;
-use ChurchCRM\Slim\Middleware\Request\UserAPIMiddleware;
 
 
 $app->group('/user/{userId:[0-9]+}/setting', function () {

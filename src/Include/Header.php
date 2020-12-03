@@ -1,12 +1,12 @@
 <?php
 
-use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\view\MenuRenderer;
-use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\dto\Cart;
-use ChurchCRM\Service\TaskService;
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Authentication\AuthenticationProviders\LocalAuthentication;
+use ChurchCRM\dto\Cart;
+use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Service\TaskService;
+use ChurchCRM\view\MenuRenderer;
 
 $taskService = new TaskService();
 
