@@ -155,8 +155,8 @@ class Menu
 
     private static function getContributionsMenu()
     {
-        $contributionsMenu = new MenuItem(gettext("Contributions"), "", SystemConfig::getBooleanValue("bEnabledFinance") && SessionUser::getUser()->isFinanceEnabled(), 'fa-dollar');
-        $contributionsMenu->addSubMenu(new MenuItem(gettext("View All Contributions"), "FindContributions.php", SessionUser::getUser()->isFinanceEnabled()));
+        $contributionsMenu = new MenuItem(gettext("Contributions"), "", SystemConfig::getBooleanValue("bEnabledFinance") && AuthenticationManager::GetCurrentUser()->isFinanceEnabled(), 'fa-dollar');
+        $contributionsMenu->addSubMenu(new MenuItem(gettext("View All Contributions"), "FindContributions.php", AuthenticationManager::GetCurrentUser()->isFinanceEnabled()));
 
         return $contributionsMenu;
     }

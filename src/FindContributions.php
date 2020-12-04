@@ -2,9 +2,9 @@
 /*******************************************************************************
  *
  *  filename    : FindDepositSlip.php
- *  last change : 2016-02-28
+ *  last change : 2020-11-30
  *  website     : http://www.churchcrm.io
- *  copyright   : Copyright 2016 ChurchCRM
+ *  copyright   : Copyright 2020 ChurchCRM
   *
  ******************************************************************************/
 
@@ -15,6 +15,7 @@ require 'Include/Functions.php';
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Authentication\AuthenticationManager;
 
 // $iDepositSlipID = $_SESSION['iCurrentDeposit'];
 
@@ -22,7 +23,7 @@ use ChurchCRM\Utils\InputUtils;
 $sPageTitle = gettext('Contribution Listing');
 
 // Security: User must have finance permission to use this form
-if (!$_SESSION['user']->isFinanceEnabled()) {
+if (!AuthenticationManager::GetCurrentUser()->isFinanceEnabled()){
     RedirectUtils::Redirect('index.php');
     exit;
 }

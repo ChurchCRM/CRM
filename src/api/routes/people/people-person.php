@@ -84,7 +84,7 @@ $app->group('/person/{personId:[0-9]+}', function () {
         }
 
         $note->setType('edit');
-        $note->setEntered($_SESSION['user']->getId());
+        $note->setEntered(AuthenticationManager::GetCurrentUser()->getId());
         $note->save();
 
         return $response->withJson(['success' => true]);

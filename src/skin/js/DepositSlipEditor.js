@@ -24,7 +24,7 @@ function initPaymentTable()
     {
       width: 'auto',
       title:i18next.t('Check Number'),
-      data:'CheckNo'
+      data:'Checkno'
     },
     {
       width: 'auto',

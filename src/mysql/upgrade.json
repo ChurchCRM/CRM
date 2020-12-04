@@ -272,16 +272,6 @@
     },
     "current": {
         "versions": [
-//             "3.4.0",
-//             "3.4.1"
-//         ],
-//         "scripts": [
-//             "/mysql/upgrade/3.5.0.sql",
-//             "/mysql/upgrade/3.5.0-finances.php"
-//         ],
-//         "dbVersion": "3.5.0"
-//     }
-// }
             "4.2.0",
             "4.2.1",
             "4.2.2",

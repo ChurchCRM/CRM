@@ -20,7 +20,7 @@ use ChurchCRM\ContribSplitQuery;
 use ChurchCRM\PersonQuery;
 
 // Security
-if (!$_SESSION['user']->isFinanceEnabled()) {
+if (!AuthenticationManager::GetCurrentUser()->isFinanceEnabled()) {
     RedirectUtils::Redirect('Menu.php');
     exit;
 }

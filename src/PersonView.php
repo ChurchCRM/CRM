@@ -35,7 +35,7 @@ require 'Include/Header.php';
 $iPersonID = InputUtils::LegacyFilterInput($_GET['PersonID'], 'int');
 
 //Deactivate/Activate Person
-if ($_SESSION['user']->isDeleteRecordsEnabled() && !empty($_POST['FID']) && !empty($_POST['Action'])) {
+if (AuthenticationManager::GetCurrentUser()->isDeleteRecordsEnabled() && !empty($_POST['FID']) && !empty($_POST['Action'])) {
     $family = FamilyQuery::create()->findOneById($_POST['FID']);
     if ($_POST['Action'] == "Deactivate") {
         $family->deactivate();
@@ -973,7 +973,7 @@ $bOkToEdit = (
                         <!-- END timeline item -->
                     </ul>
                 </div>
-                <?php if ($_SESSION['user']->isFinanceEnabled()) {
+                <?php if (AuthenticationManager::GetCurrentUser()->isFinanceEnabled()) {
                                                             ?>
                 <div role="tab-pane fade" class="tab-pane" id="pledges">
                     <div class="main-box clearfix">

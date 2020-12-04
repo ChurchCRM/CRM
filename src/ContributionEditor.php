@@ -27,9 +27,10 @@ use ChurchCRM\ContribSplitQuery;
 use ChurchCRM\Person;
 use ChurchCRM\PersonQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
+use ChurchCRM\Authentication\AuthenticationManager;
 
 // Security: User must have finance permission to use this form
-if (!$_SESSION['user']->isFinanceEnabled()) {
+if (!AuthenticationManager::GetCurrentUser()->isFinanceEnabled()) {
     RedirectUtils::Redirect('index.php');
     exit;
 }
@@ -215,7 +216,7 @@ require 'Include/Header.php';
 
             
             <div class="col-lg-1">
-              <?php if ($_SESSION['user']->isAddRecordsEnabled()) { ?>
+              <?php if (AuthenticationManager::GetCurrentUser()->isAddRecordsEnabled()) { ?>
                 <input type="button" class="btn btn-primary" value="<?= gettext('New Contribution') ?>" id="PledgeSubmitAdd" disabled />
               <?php } ?>
             </div>
@@ -259,7 +260,7 @@ require 'Include/Header.php';
   var linkBack = "<?= $linkBack ?>";
   var iContributorID = <?= $iContributorID ?>;
   var iContributionID = <?= $iContributionID ?>;
-  var CurrentUser = <?= $_SESSION['user']->getId() ?>;
+  var CurrentUser = <?= AuthenticationManager::GetCurrentUser()->getId() ?>;
   var EnableNonDeductible = <?= $bEnableNonDeductible ?>;
   var dDate = "<?= $dDate ?>";
   var iMethod = "<?= $iMethod ?>";

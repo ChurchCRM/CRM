@@ -96,7 +96,7 @@ $app->group('/contrib', function () {
             
     });
 
-    // get a list of contribtions associated with a deposit single
+    // get a list of contribtions associated with a deposit single 
     $this->get('/{id:[0-9]+/deposit}', function ($request, $response, $args) {
         $id = $args['id'];
         echo ContribQuery::create()            
@@ -187,6 +187,7 @@ $app->group('/contrib', function () {
 
 $app->group('/split', function () {
     // get list of splits for a contribtion
+
     $this->get('/{id:[0-9]+}/splits', function ($request, $response, $args) {
         $ConID = $args['id'];
         echo ContribSplitQuery::create()
