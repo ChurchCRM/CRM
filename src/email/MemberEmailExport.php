@@ -3,9 +3,9 @@
 require '../Include/Config.php';
 require '../Include/Functions.php';
 
-use ChurchCRM\Service\SundaySchoolService;
-use ChurchCRM\GroupQuery;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\GroupQuery;
+use ChurchCRM\Service\SundaySchoolService;
 
 $sundaySchoolService = new SundaySchoolService();
 $groups = GroupQuery::create()->filterByActive(true)->filterByIncludeInEmailExport(true)->find();

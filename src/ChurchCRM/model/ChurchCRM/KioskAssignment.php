@@ -2,14 +2,11 @@
 
 namespace ChurchCRM;
 
-use ChurchCRM\dto\KioskAssignmentTypes;
-use ChurchCRM\PersonQuery;
-use ChurchCRM\EventQuery;
-use ChurchCRM\Person2group2roleP2g2r;
 use ChurchCRM\Base\KioskAssignment as BaseKioskAssignment;
+use ChurchCRM\dto\KioskAssignmentTypes;
 use ChurchCRM\Map\ListOptionTableMap;
-use Propel\Runtime\ActiveQuery\Join;
 use Propel\Runtime\ActiveQuery\Criteria;
+use Propel\Runtime\ActiveQuery\Join;
 
 /**
  * Skeleton subclass for representing a row from the 'kioskassginment_kasm' table.
@@ -23,7 +20,7 @@ use Propel\Runtime\ActiveQuery\Criteria;
  */
 class KioskAssignment extends BaseKioskAssignment
 {
-  
+
   private function getActiveEvent()
   {
     if ($this->getAssignmentType() == KioskAssignmentTypes::EVENTATTENDANCEKIOSK)
@@ -40,7 +37,7 @@ class KioskAssignment extends BaseKioskAssignment
       throw new \Exception("This kiosk does not support group attendance");
     }
   }
-  
+
   public function getActiveGroupMembers()
   {
     if ($this->getAssignmentType() == KioskAssignmentTypes::EVENTATTENDANCEKIOSK)

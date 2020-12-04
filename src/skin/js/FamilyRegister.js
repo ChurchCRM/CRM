@@ -121,6 +121,40 @@ $(document).ready(function () {
         }
     });
 
+    $.ajax({
+        type: "GET",
+        url: window.CRM.root + "/api/public/data/countries"
+    }).done(function (data) {
+        let familyCountry = $("#familyCountry");
+        $.each(data, function( idx, country ) {
+            let selected = familyCountry.data("system-default") == country.name;
+            familyCountry.append(new Option(country.name, country.code, selected, selected));
+        });
+        familyCountry.change();
+    });
+
+    $("#familyCountry").select2();
+    $("#familyCountry").change(function () {
+        $.ajax({
+            type: "GET",
+            url: window.CRM.root + "/api/public/data/countries/"+ this.value.toLowerCase() +"/states"
+        }).done(function (data) {
+            if (Object.keys(data).length > 0) {
+                $("#familyStateSelect").empty();
+                $.each(data, function (code, name) {
+                    let selected = $("#familyStateSelect").data("system-default") == code;
+                    $("#familyStateSelect").append(new Option(name, code, selected, selected));
+                });
+                $("#familyStateSelect").change();
+                $("#familyStateInput").addClass("hidden");
+                $("#familyStateSelect").removeClass("hidden");
+            } else {
+                $("#familyStateInput").removeClass("hidden");
+                $("#familyStateSelect").addClass("hidden");
+            }
+        });
+    })
+
     $(".inputDatePicker").datepicker({
         autoclose: true
     });
@@ -132,7 +166,11 @@ $(document).ready(function () {
         family["Name"] = $("#familyName").val();
         family["Address1"] = $("#familyAddress1").val();
         family["City"] = $("#familyCity").val();
-        family["State"] = $("#familyState").val();
+        if ( $("#familyStateSelect").hasClass("hidden")) {
+            family["State"] = $("#familyStateInput").val();
+        } else {
+            family["State"] = $("#familyStateSelect").val();
+        }
         family["Country"] = $("#familyCountry").val();
         family["Zip"] = $("#familyZip").val();
         family["HomePhone"] = $("#familyHomePhone").val();

@@ -2,10 +2,8 @@
 
 namespace ChurchCRM\dto;
 
-use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\PersonQuery;
 use ChurchCRM\FamilyQuery;
+use ChurchCRM\PersonQuery;
 
 class Photo {
   private $photoType;
@@ -124,7 +122,7 @@ class Photo {
     }
     return $sourceGDImage;
   }
-  
+
   private function ensureThumbnailsPath() {
     if( !file_exists($this->thubmnailPath)){
       mkdir($this->thubmnailPath);
@@ -311,9 +309,9 @@ class Photo {
     }
     return strpos($this->photoURI,"initials") !== false;
   }
-  
+
   public function isRemote() {
     return strpos($this->photoURI,"remote")  !== false;
   }
-  
+
 }

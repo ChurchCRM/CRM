@@ -10,10 +10,10 @@
   *
  ******************************************************************************/
 
+use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\Bootstrapper;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\SystemService;
-use ChurchCRM\Bootstrapper;
-use ChurchCRM\Authentication\AuthenticationManager;
 
 $isAdmin = AuthenticationManager::GetCurrentUser()->isAdmin();
 ?>

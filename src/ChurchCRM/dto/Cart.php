@@ -1,16 +1,14 @@
 <?php
 namespace ChurchCRM\dto;
 
+use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\GroupQuery;
 use ChurchCRM\Person2group2roleP2g2rQuery;
 use ChurchCRM\PersonQuery;
-use ChurchCRM\GroupQuery;
-use ChurchCRM\Map\PersonTableMap;
-use Propel\Runtime\ActiveQuery\Criteria;
-use ChurchCRM\Authentication\AuthenticationManager;
 
 class Cart
 {
-  
+
   private static function CheckCart()
   {
     if (!isset($_SESSION['aPeopleCart']))
@@ -36,9 +34,9 @@ class Cart
     {
       Cart::AddPerson($PersonID);
     }
-    
+
   }
-  
+
   public static function AddGroup($GroupID)
   {
     if (!is_numeric($GroupID))
@@ -48,12 +46,12 @@ class Cart
     $GroupMembers = Person2group2roleP2g2rQuery::create()
             ->filterByGroupId($GroupID)
             ->find();
-    foreach ($GroupMembers as $GroupMember) 
+    foreach ($GroupMembers as $GroupMember)
     {
       Cart::AddPerson($GroupMember->getPersonId());
     }
   }
-  
+
   public static function AddFamily($FamilyID)
   {
     if (!is_numeric($FamilyID))
@@ -66,7 +64,7 @@ class Cart
     foreach ($FamilyMembers as $FamilyMember)
     {
       Cart::AddPerson($FamilyMember->getId());
-    }       
+    }
   }
 
   public static function IntersectArrayWithPeopleCart($aIDs)
@@ -89,7 +87,7 @@ class Cart
       $_SESSION['aPeopleCart'] = array_values(array_diff($_SESSION['aPeopleCart'], $aTempArray));
     }
   }
-  
+
   public static function RemovePersonArray($aIDs)
   {
     // make sure the cart array exists
@@ -98,7 +96,7 @@ class Cart
         $_SESSION['aPeopleCart'] = array_values(array_diff($_SESSION['aPeopleCart'], $aIDs));
     }
   }
-  
+
   public static function RemoveGroup($GroupID)
   {
     if (!is_numeric($GroupID))
@@ -108,22 +106,22 @@ class Cart
     $GroupMembers = Person2group2roleP2g2rQuery::create()
             ->filterByGroupId($GroupID)
             ->find();
-    foreach ($GroupMembers as $GroupMember) 
+    foreach ($GroupMembers as $GroupMember)
     {
       Cart::RemovePerson($GroupMember->getPersonId());
     }
   }
-  
+
   public static function HasPeople()
   {
     return array_key_exists('aPeopleCart', $_SESSION) && count($_SESSION['aPeopleCart']) != 0;
   }
-  
+
   public static function CountPeople()
   {
     return count($_SESSION['aPeopleCart']);
   }
-  
+
   public static function ConvertCartToString($aCartArray)
   {
       // Implode the array
@@ -156,23 +154,23 @@ class Cart
     $iCount = 0;
 
     $group = GroupQuery::create()->findOneById($GroupID);
-    
+
     if($RoleID == 0)
     {
       $RoleID = $group->getDefaultRole();
     }
-    
-    while ($element = each($_SESSION['aPeopleCart'])) {      
+
+    while ($element = each($_SESSION['aPeopleCart'])) {
       $personGroupRole = Person2group2roleP2g2rQuery::create()
         ->filterByGroupId($GroupID)
         ->filterByPersonId($_SESSION['aPeopleCart'][$element['key']])
         ->findOneOrCreate()
         ->setRoleId($RoleID)
-        ->save();	
-        
+        ->save();
+
       /*
-      This part of code should be done 
-    	*/	
+      This part of code should be done
+    	*/
     	// Check if this group has special properties
       /*      $sSQL = 'SELECT grp_hasSpecialProps FROM group_grp WHERE grp_ID = '.$iGroupID;
             $rsTemp = RunQuery($sSQL);
@@ -183,21 +181,21 @@ class Cart
                 $sSQL = 'INSERT INTO groupprop_'.$iGroupID." (per_ID) VALUES ('".$iPersonID."')";
                 RunQuery($sSQL);
             }	*/
-			
+
       $iCount += 1;
     }
-    
+
     $_SESSION['aPeopleCart'] = [];
   }
-  
+
   public static function getCartPeople() {
-    
+
     $people = PersonQuery::create()
             ->filterById($_SESSION['aPeopleCart'])
             ->find();
     return $people;
   }
-  
+
   public static function getEmailLink() {
     /* @var $cartPerson ChurchCRM\Person */
     $people = Cart::getCartPeople();
@@ -214,9 +212,9 @@ class Cart
     }
     return $sEmailLink;
   }
-  
+
   public static function getSMSLink() {
-    
+
      /* @var $cartPerson ChurchCRM\Person */
     $people = Cart::getCartPeople();
     $SMSNumberArray = array();
@@ -229,7 +227,7 @@ class Cart
     $sSMSLink = implode(",", $SMSNumberArray);
     return $sSMSLink;
   }
-  
+
   public static function EmptyAll() {
     Cart::RemovePersonArray($_SESSION['aPeopleCart']);
   }

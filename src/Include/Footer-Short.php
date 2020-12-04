@@ -9,10 +9,8 @@
  *  Copyright 2001-2002 Phillip Hullquist, Deane Barker
   *
  ******************************************************************************/
- 
-        use ChurchCRM\dto\SystemURLs;
 
-        ?>
+?>
 					</td>
 				</tr>
 			</table>

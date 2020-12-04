@@ -15,7 +15,7 @@ $app->group('/public/data', function () {
 
 function getCountries(Request $request, Response $response, array $args)
 {
-    return $response->withJson(Countries::getAll());
+    return $response->withJson(array_values(Countries::getAll()));
 }
 
 function getStates(Request $request, Response $response, array $args)

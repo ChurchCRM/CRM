@@ -1,11 +1,10 @@
 <?php
 
+use ChurchCRM\dto\Cart;
+use ChurchCRM\dto\SystemURLs;
 use Slim\Http\Request;
 use Slim\Http\Response;
 use Slim\Views\PhpRenderer;
-use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\dto\Cart;
-use ChurchCRM\dto\SystemConfig;
 
 
 $app->group('/cart', function () {

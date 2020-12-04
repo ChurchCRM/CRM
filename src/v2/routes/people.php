@@ -1,13 +1,12 @@
 <?php
 
-use Slim\Http\Request;
-use Slim\Http\Response;
 use ChurchCRM\dto\SystemURLs;
-use Slim\Views\PhpRenderer;
+use ChurchCRM\ListOptionQuery;
 use ChurchCRM\PersonQuery;
 use ChurchCRM\Utils\InputUtils;
-
-use ChurchCRM\ListOptionQuery;
+use Slim\Http\Request;
+use Slim\Http\Response;
+use Slim\Views\PhpRenderer;
 
 
 // entity can be a person, family, or business

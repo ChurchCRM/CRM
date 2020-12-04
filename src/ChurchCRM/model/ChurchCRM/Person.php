@@ -2,6 +2,7 @@
 
 namespace ChurchCRM;
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Base\Person as BasePerson;
 use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemConfig;
@@ -12,8 +13,6 @@ use ChurchCRM\Utils\GeoUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use DateTime;
 use Propel\Runtime\Connection\ConnectionInterface;
-use Propel\Runtime\Propel;
-use ChurchCRM\Authentication\AuthenticationManager;
 
 /**
  * Skeleton subclass for representing a row from the 'person_per' table.

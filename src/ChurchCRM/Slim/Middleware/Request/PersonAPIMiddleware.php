@@ -2,9 +2,9 @@
 
 namespace ChurchCRM\Slim\Middleware\Request;
 
+use ChurchCRM\PersonQuery;
 use Slim\Http\Request;
 use Slim\Http\Response;
-use ChurchCRM\PersonQuery;
 
 class PersonAPIMiddleware
 {

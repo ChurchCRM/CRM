@@ -1,5 +1,6 @@
 <?php
 
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Emails\AccountDeletedEmail;
 use ChurchCRM\Emails\ResetPasswordEmail;
 use ChurchCRM\Emails\UnlockedEmail;
@@ -7,10 +8,9 @@ use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Request\UserAPIMiddleware;
 use ChurchCRM\UserConfigQuery;
 use ChurchCRM\UserQuery;
+use ChurchCRM\Utils\LoggerUtils;
 use Slim\Http\Request;
 use Slim\Http\Response;
-use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\Utils\LoggerUtils;
 
 $app->group('/user/{userId:[0-9]+}', function () {
     $this->post("/password/reset", "resetPasswordAPI");

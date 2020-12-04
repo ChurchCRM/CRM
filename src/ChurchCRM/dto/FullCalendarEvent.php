@@ -2,18 +2,16 @@
 
 
 namespace ChurchCRM\dto;
-use ChurchCRM\Event;
-use ChurchCRM\Person;
-use ChurchCRM\Family;
 use ChurchCRM\Calendar;
+use ChurchCRM\Event;
 
 
 class FullCalendarEvent {
-  
+
   //the properties of this DTO are designed to align with the JSON object
   //expected by FullCalendar JS: https://fullcalendar.io/docs/event_data/Event_Object/
-  
-  
+
+
   public $title;
   public $start;
   public $backgroundColor;
@@ -23,7 +21,7 @@ class FullCalendarEvent {
   public $url;
   public $id;
   public $editable;
-  
+
   public function __construct() {
     return $this;
   }

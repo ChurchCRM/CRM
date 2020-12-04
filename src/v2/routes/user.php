@@ -1,12 +1,12 @@
 <?php
 
+use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\Authentication\Exceptions\PasswordChangeException;
+use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\UserQuery;
 use Slim\Http\Request;
 use Slim\Http\Response;
-use ChurchCRM\dto\SystemURLs;
 use Slim\Views\PhpRenderer;
-use ChurchCRM\UserQuery;
-use ChurchCRM\Authentication\Exceptions\PasswordChangeException;
-use ChurchCRM\Authentication\AuthenticationManager;
 
 $app->group('/user', function () {
     $this->get('/not-found', 'viewUserNotFound');

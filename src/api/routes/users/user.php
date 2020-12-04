@@ -1,10 +1,10 @@
 <?php
 
-use Slim\Http\Request;
-use Slim\Http\Response;
+use ChurchCRM\Slim\Middleware\Request\UserAPIMiddleware;
 use ChurchCRM\User;
 use ChurchCRM\UserSettings;
-use ChurchCRM\Slim\Middleware\Request\UserAPIMiddleware;
+use Slim\Http\Request;
+use Slim\Http\Response;
 
 $app->group('/user/{userId:[0-9]+}', function () {
     $this->post("/apikey/regen", "genAPIKey");

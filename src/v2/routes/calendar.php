@@ -1,13 +1,13 @@
 <?php
 
+use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\CalendarQuery;
+use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\dto\SystemURLs;
+use Propel\Runtime\ActiveQuery\Criteria;
 use Slim\Http\Request;
 use Slim\Http\Response;
 use Slim\Views\PhpRenderer;
-use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\CalendarQuery;
-use Propel\Runtime\ActiveQuery\Criteria;
-use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\Authentication\AuthenticationManager;
 
 
 $app->group('/calendar', function () {

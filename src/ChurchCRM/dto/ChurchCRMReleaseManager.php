@@ -3,10 +3,10 @@
 namespace ChurchCRM\Utils;
 
 use ChurchCRM\dto\ChurchCRMRelease;
-use Github\Client;
-use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\FileSystemUtils;
+use Github\Client;
 
 class ChurchCRMReleaseManager {
 

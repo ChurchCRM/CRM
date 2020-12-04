@@ -1,13 +1,13 @@
 <?php
 
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\PropertyQuery;
 use ChurchCRM\RecordProperty;
 use ChurchCRM\RecordPropertyQuery;
-use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Slim\Middleware\Request\Auth\MenuOptionsRoleAuthMiddleware;
-use ChurchCRM\Slim\Middleware\Request\PersonAPIMiddleware;
 use ChurchCRM\Slim\Middleware\Request\FamilyAPIMiddleware;
+use ChurchCRM\Slim\Middleware\Request\PersonAPIMiddleware;
 use ChurchCRM\Slim\Middleware\Request\PropertyAPIMiddleware;
 use ChurchCRM\Utils\LoggerUtils;
 use Slim\Http\Request;
