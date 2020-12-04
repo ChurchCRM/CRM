@@ -18,8 +18,9 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\ContribSplitQuery;
 use ChurchCRM\PersonQuery;
+use ChurchCRM\Authentication\AuthenticationManager;
 
-// Security
+// Security 
 if (!AuthenticationManager::GetCurrentUser()->isFinanceEnabled()) {
     RedirectUtils::Redirect('Menu.php');
     exit;
@@ -37,7 +38,7 @@ $iSerialNum = InputUtils::LegacyFilterInput($_POST['serialnum'], 'int');
 $Nondeductible = InputUtils::LegacyFilterInput($_POST['nondeductible'], 'int');
 
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
-if (!$_SESSION['user']->isAdmin() && SystemConfig::getValue('bCSVAdminOnly') && $output != 'pdf') {
+if (!AuthenticationManager::GetCurrentUser()->isAdmin() && SystemConfig::getValue('bCSVAdminOnly') && $output != 'pdf') {
     RedirectUtils::Redirect('Menu.php');
     exit;
 }
@@ -72,7 +73,7 @@ if (!empty($_POST['nondeductible'])) {
 }
 
 // get list of people id's with total contribution < amount specified
-// Mariadb 10.2 supports OVER clause making it possable to combine with the next query
+// Mariadb 10.2 supports OVER clause making it possible to combine with the next query
 // this is a temopary work around
 if (!empty($_POST['minimum'])) {
     $filterByAmount = true;
