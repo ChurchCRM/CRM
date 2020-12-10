@@ -67,7 +67,7 @@ msgstr "Esta ferramenta vai te ajudar a fazer o backup manual do banco de dados.
 #: 
 #, fuzzy
 msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
-msgstr "Você deve fazer um backup manual, pelo menos uma vez por semana, a menos que você programe um backup automático."
+msgstr "Você deve fazer um backup manualmente, pelo menos uma vez por semana, a menos que você programe um backup automático."
 
 #: 
 msgid "After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site."
@@ -131,12 +131,12 @@ msgstr "Requerido"
 #: 
 #, fuzzy
 msgid "First Name"
-msgstr "Primeiro Nome"
+msgstr "Nome"
 
 #: 
 #, fuzzy
 msgid "Middle Name"
-msgstr "Nome do Meio"
+msgstr "Segundo Nome"
 
 #: 
 #, fuzzy
@@ -151,7 +151,7 @@ msgstr "Envelope"
 #: 
 #, fuzzy
 msgid "Work/Other Email"
-msgstr "Outro E-mail "
+msgstr "Outro E-mail"
 
 #: 
 #, fuzzy
@@ -511,7 +511,7 @@ msgstr " Entrada De Visitação para o "
 #: 
 #, fuzzy
 msgid "Canvasser"
-msgstr "Visitador"
+msgstr "Colportor"
 
 #: 
 msgid "Positive"
@@ -668,7 +668,7 @@ msgstr "Mapa carrinho"
 #: 
 #, fuzzy
 msgid "Name Tags"
-msgstr "Nome"
+msgstr "Etiquetas"
 
 #: 
 msgid "Email Cart"
@@ -911,17 +911,17 @@ msgstr "Fotos"
 #: 
 #, fuzzy
 msgid "Number of Columns"
-msgstr "Número de colunas"
+msgstr "Número de Colunas"
 
 #: 
 #, fuzzy
 msgid "Paper Size"
-msgstr "Tamanho do papel"
+msgstr "Tamanho do Papel"
 
 #: 
 #, fuzzy
 msgid "Font Size"
-msgstr "Tamanho da fonte"
+msgstr "Tamanho da Fonte"
 
 #: 
 #, fuzzy
@@ -947,7 +947,7 @@ msgstr "Criar diretório"
 #: 
 #, fuzzy
 msgid "Donated Item Editor"
-msgstr "Editor de Items do Menu"
+msgstr "Editor de Itens Doados"
 
 #: 
 msgid "Save and Add"
@@ -957,7 +957,7 @@ msgstr "Salvar e Adicionar\n"
 #: 
 #, fuzzy
 msgid "Item"
-msgstr "Itens"
+msgstr "Item"
 
 #: 
 #, fuzzy
@@ -1053,7 +1053,7 @@ msgstr "Gravar nome"
 #: 
 #, fuzzy
 msgid "Recurrence Pattern"
-msgstr "Frequência que se repete"
+msgstr "Padrão de Recorrência"
 
 #: 
 msgid "Attendance Counts"
@@ -1180,7 +1180,7 @@ msgstr "Itens nº"
 #: 
 #, fuzzy
 msgid " are required"
-msgstr "Este valor é requerido."
+msgstr " é obrigadtório"
 
 #: 
 msgid "Select your event type"
@@ -1193,7 +1193,7 @@ msgstr "Você deve escolher um tipo de evento."
 #: 
 #, fuzzy
 msgid "Event Desc"
-msgstr "Descrição do evento"
+msgstr "Descrição do Evento"
 
 #: 
 msgid "No Attendance counts recorded"
@@ -1206,12 +1206,12 @@ msgstr "Comentários sobre os presentes: "
 #: 
 #, fuzzy
 msgid "Event Sermon"
-msgstr "Sermão do evento"
+msgstr "Sermão do Evento"
 
 #: 
 #, fuzzy
 msgid "Event Status"
-msgstr "Status do evento"
+msgstr "Status do Evento"
 
 #: 
 msgid "Return to Events"
@@ -8965,43 +8965,44 @@ msgstr "Falta ID do evento"
 
 #: 
 msgid "Event not found"
-msgstr "Evento não existe"
+msgstr "Evento não encontrado"
 
 #: 
 msgid "Session timeout length in seconds\n"
 "Set to zero to disable session timeouts."
-msgstr "Duração do tempo limite da sessão em segundos Defina como zero para desativar os tempos limite da sessão."
+msgstr "Tempo limite da sessão em segundos. Defina 0 para desativar o tempo limite da sessão."
 
 #: 
 msgid "Minimum amount that a new password must differ from the old one (# of characters changed)\n"
 "Set to zero to disable this feature"
-msgstr "Quantidade mínima que uma nova senha deve diferir da antiga\n"
+msgstr "Quantidade mínima que uma nova senha deve diferenciar da antiga\n"
 "(# de caracteres alterados)\n"
-"Defina zero para remover esse recurso"
+"Defina 0 para desativar esse recurso."
 
 #: 
 msgid "Maximum number of failed logins to allow before a user account is locked.\n"
 "Once the maximum has been reached, an administrator must re-enable the account.\n"
 "This feature helps to protect against automated password guessing attacks.\n"
 "Set to zero to disable this feature."
-msgstr "O número máximo de logins com falha para permitir que uma conta de usuário seja bloqueada.\n"
-"Quando o máximo para ativar, um administrador pode reativar uma conta.\n"
-"Esse recurso ajuda a proteger contra ataques automatizados de identificação de senha.\n"
-"Defina zero para remover esse recurso."
+msgstr "Número máximo de tentativas de login permitidas antes da conta ser bloqueada.\n"
+"Quando atingir o máximo, um administrador deve reativar a conta.\n"
+"Esse recurso ajuda a proteger contra ataques de identificação de senha.\n"
+"Defina 0 para desativar esse recurso."
 
 #: 
 msgid "PDF handling mode.\n"
 "1 = Save File dialog\n"
 "2 = Open in current browser window"
 msgstr "Modo de manipulação de PDF.\n"
-"1 = caixa de diálogo Gravar arquivo\n"
+"1 = Salvar Arquivo\n"
 "2 = Abrir na janela atual do navegador"
 
 #: 
 msgid "Unavailable person info inherited from assigned family for display?\n"
 "This option causes certain info from a person's assigned family record to be\n"
 "displayed IF the corresponding info has NOT been entered for that person. "
-msgstr "Informações sobre pessoas não disponíveis herdadas da família designada para exibição? Essa opção faz com que as informações do registro familiar sejam atribuídas por uma pessoa que esteja usando SE a informação correspondente NÃO foi inserido por essa pessoa. "
+msgstr "Informações indisponíveis de uma pessoa de uma família atribuída?\n"
+"Essa opção exibe informações de uma família atribuída a uma pessoa SE a informação correspondente NÃO foi informada para pessoa."
 
 #: 
 msgid "Press CTRL + C to copy all group members\\' phone numbers"
@@ -9021,11 +9022,11 @@ msgstr "Baixar cartas da família"
 
 #: 
 msgid "Send family email"
-msgstr "Enviar email à familia"
+msgstr "Enviar e-mail pra família"
 
 #: 
 msgid "Verification recorded"
-msgstr "Verificação registrada"
+msgstr "Verificação gravada"
 
 #: 
 msgid "Verification URL created"
@@ -9041,7 +9042,7 @@ msgstr "PDF"
 
 #: 
 msgid "Error sending email(s)"
-msgstr "Erro ao enviar email (s)"
+msgstr "Erro ao enviar e-mail(s)"
 
 #: 
 msgid "Please check logs for more information"
@@ -9638,4 +9639,132 @@ msgstr "Remoção de atribuição de propriedade familiar"
 #: 
 msgid "Do you want to remove"
 msgstr "Você quer remover"
+
+#: 
+msgid "View Active People"
+msgstr "Ver Pessoas Ativadas"
+
+#: 
+msgid "View Inactive People"
+msgstr "Ver Pessoas Desativadas"
+
+#: 
+msgid "Today's Birthdays"
+msgstr "Aniversários"
+
+#: 
+msgid "Today's Wedding Anniversaries"
+msgstr "Aniversários de Casamento"
+
+#: 
+msgid "Api Key"
+msgstr "Chave API"
+
+#: 
+msgid "Regen API Key"
+msgstr "Regerar Chave API"
+
+#: 
+msgid "View Family Page"
+msgstr "Ver Página da Família"
+
+#: 
+msgid "View Person Page"
+msgstr "Ver Página Pessoal"
+
+#: 
+msgid "Verify"
+msgstr "Verificar"
+
+#: 
+msgid "Family has no emails to use"
+msgstr "A família não tem e-mails para usar"
+
+#: 
+msgid "Blue"
+msgstr "Azul"
+
+#: 
+msgid "Black"
+msgstr "Preto"
+
+#: 
+msgid "Purple"
+msgstr "Roxo"
+
+#: 
+msgid "Green"
+msgstr "Verde"
+
+#: 
+msgid "Red"
+msgstr "Vermelho"
+
+#: 
+msgid "Yellow"
+msgstr "Amarelo"
+
+#: 
+msgid "Blue Light"
+msgstr "Luz Azul"
+
+#: 
+msgid "Black Light"
+msgstr "Luz Negra"
+
+#: 
+msgid "Purple Light"
+msgstr "Luz Roxa"
+
+#: 
+msgid "Green Light"
+msgstr "Luz Verde"
+
+#: 
+msgid "Red Light"
+msgstr "Luz Vermelha"
+
+#: 
+msgid "Yellow Light"
+msgstr "Luz Amarela"
+
+#: 
+msgid "Boxed Layout"
+msgstr "Layout em Caixa"
+
+#: 
+msgid "Activate the boxed layout"
+msgstr "Ativar Layout em Caixa"
+
+#: 
+msgid "Toggle Sidebar"
+msgstr "Alternar Barra Lateral"
+
+#: 
+msgid "Toggle the left sidebar's state (open or collapse)"
+msgstr "Alternar a barra lateral esquerda (aberta ou encolhida)"
+
+#: 
+msgid "Tables Settings"
+msgstr "Configuração das Tabelas"
+
+#: 
+msgid "Page length"
+msgstr "Cumprimento da Página"
+
+#: 
+msgid "Change the initial page length (number of rows per page)"
+msgstr "Alterar o cumprimento da página inicial (número de linhas por página)"
+
+#: 
+msgid "User Interface"
+msgstr "Interface do Usuário"
+
+#: 
+msgid "Locale"
+msgstr "Local"
+
+#: 
+msgid "Override system locale"
+msgstr "Substituir Local do Sistema"
 
