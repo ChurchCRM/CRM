@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5c006c9636868b0cea06e372be9ac937",
+    "content-hash": "133120c2e2654c19817e5ec04dffb358",
     "packages": [
         {
             "name": "azuyalabs/yasumi",
@@ -1274,16 +1274,16 @@
         },
         {
             "name": "lcobucci/jwt",
-            "version": "3.4.1",
+            "version": "3.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/lcobucci/jwt.git",
-                "reference": "958a9873a63b0244a72f6e354ccc86019ee674a5"
+                "reference": "17cb82dd625ccb17c74bf8f38563d3b260306483"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lcobucci/jwt/zipball/958a9873a63b0244a72f6e354ccc86019ee674a5",
-                "reference": "958a9873a63b0244a72f6e354ccc86019ee674a5",
+                "url": "https://api.github.com/repos/lcobucci/jwt/zipball/17cb82dd625ccb17c74bf8f38563d3b260306483",
+                "reference": "17cb82dd625ccb17c74bf8f38563d3b260306483",
                 "shasum": ""
             },
             "require": {
@@ -1335,7 +1335,7 @@
             ],
             "support": {
                 "issues": "https://github.com/lcobucci/jwt/issues",
-                "source": "https://github.com/lcobucci/jwt/tree/3.4.1"
+                "source": "https://github.com/lcobucci/jwt/tree/3.4.2"
             },
             "funding": [
                 {
@@ -1347,7 +1347,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2020-11-27T01:17:14+00:00"
+            "time": "2020-12-03T13:43:45+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -1606,24 +1606,24 @@
         },
         {
             "name": "paragonie/constant_time_encoding",
-            "version": "v2.3.0",
+            "version": "v2.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/paragonie/constant_time_encoding.git",
-                "reference": "47a1cedd2e4d52688eb8c96469c05ebc8fd28fa2"
+                "reference": "f34c2b11eb9d2c9318e13540a1dbc2a3afbd939c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/paragonie/constant_time_encoding/zipball/47a1cedd2e4d52688eb8c96469c05ebc8fd28fa2",
-                "reference": "47a1cedd2e4d52688eb8c96469c05ebc8fd28fa2",
+                "url": "https://api.github.com/repos/paragonie/constant_time_encoding/zipball/f34c2b11eb9d2c9318e13540a1dbc2a3afbd939c",
+                "reference": "f34c2b11eb9d2c9318e13540a1dbc2a3afbd939c",
                 "shasum": ""
             },
             "require": {
                 "php": "^7|^8"
             },
             "require-dev": {
-                "phpunit/phpunit": "^6|^7",
-                "vimeo/psalm": "^1|^2|^3"
+                "phpunit/phpunit": "^6|^7|^8|^9",
+                "vimeo/psalm": "^1|^2|^3|^4"
             },
             "type": "library",
             "autoload": {
@@ -1669,7 +1669,7 @@
                 "issues": "https://github.com/paragonie/constant_time_encoding/issues",
                 "source": "https://github.com/paragonie/constant_time_encoding"
             },
-            "time": "2019-11-06T19:20:29+00:00"
+            "time": "2020-12-06T15:14:20+00:00"
         },
         {
             "name": "paragonie/random_compat",
@@ -3001,26 +3001,26 @@
         },
         {
             "name": "slim/http-cache",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/slimphp/Slim-HttpCache.git",
-                "reference": "ab0b9fced61fb7845d8ef4c7799ea4e1b4d3d387"
+                "reference": "d1a091aca45695a2159194132872f4a544416bc9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/slimphp/Slim-HttpCache/zipball/ab0b9fced61fb7845d8ef4c7799ea4e1b4d3d387",
-                "reference": "ab0b9fced61fb7845d8ef4c7799ea4e1b4d3d387",
+                "url": "https://api.github.com/repos/slimphp/Slim-HttpCache/zipball/d1a091aca45695a2159194132872f4a544416bc9",
+                "reference": "d1a091aca45695a2159194132872f4a544416bc9",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.2",
+                "php": "^7.2 || ^8.0",
                 "psr/http-message": "^1.0",
                 "psr/http-server-middleware": "^1.0"
             },
             "require-dev": {
                 "phpstan/phpstan": "^0.12.28",
-                "phpunit/phpunit": "^8.5",
+                "phpunit/phpunit": "^8.5.13 || ^9.3.8",
                 "slim/psr7": "^1.1",
                 "squizlabs/php_codesniffer": "^3.5"
             },
@@ -3051,9 +3051,9 @@
             ],
             "support": {
                 "issues": "https://github.com/slimphp/Slim-HttpCache/issues",
-                "source": "https://github.com/slimphp/Slim-HttpCache/tree/1.x"
+                "source": "https://github.com/slimphp/Slim-HttpCache/tree/1.1.0"
             },
-            "time": "2020-06-18T15:37:51+00:00"
+            "time": "2020-12-08T17:32:05+00:00"
         },
         {
             "name": "slim/php-view",
@@ -4900,16 +4900,16 @@
         },
         {
             "name": "vonage/client-core",
-            "version": "v2.7.0",
+            "version": "2.7.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Vonage/vonage-php-sdk-core.git",
-                "reference": "a01a7d40b85fc58ce15a2a9b11f93e6128769def"
+                "reference": "c9bd01868339fc1c74e631d73d7333250b8eccbd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Vonage/vonage-php-sdk-core/zipball/a01a7d40b85fc58ce15a2a9b11f93e6128769def",
-                "reference": "a01a7d40b85fc58ce15a2a9b11f93e6128769def",
+                "url": "https://api.github.com/repos/Vonage/vonage-php-sdk-core/zipball/c9bd01868339fc1c74e631d73d7333250b8eccbd",
+                "reference": "c9bd01868339fc1c74e631d73d7333250b8eccbd",
                 "shasum": ""
             },
             "require": {
@@ -4963,7 +4963,7 @@
                 "issues": "https://github.com/Vonage/vonage-php-sdk-core/issues",
                 "source": "https://github.com/Vonage/vonage-php-sdk-core"
             },
-            "time": "2020-11-26T17:16:39+00:00"
+            "time": "2020-12-08T12:13:16+00:00"
         },
         {
             "name": "vonage/nexmo-bridge",
