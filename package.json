@@ -1,6 +1,6 @@
 {
     "name": "churchcrm",
-    "version": "4.3.1",
+    "version": "4.3.2",
     "description": "Free Church CRM Software",
     "repository": {
         "type": "git",
@@ -58,7 +58,7 @@
         "font-awesome": "^4.7.0",
         "fullcalendar": "3.10.2",
         "i18n": "^0.13.2",
-        "i18next": "19.8.3",
+        "i18next": "19.8.4",
         "inputmask": "^5.0.5",
         "jquery": "^3.5.1",
         "jquery-photo-uploader": "^1.0.13",
