@@ -86,7 +86,7 @@ require 'Include/Header.php';
                     <input type="hidden" name="pageName" value="<?= $_SERVER['SCRIPT_NAME'] ?>"/>
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title"><?= gettext('Add Split') ?></h4>
+                        <h4 id= "modal-title" class="modal-title"><?= gettext('Add Split') ?></h4>
                     </div>
                     <div class="modal-body">
                         <div class="container-fluid">
@@ -242,12 +242,8 @@ require 'Include/Header.php';
 
         <button style="display:none" type="button" id="deleteSelectedRows" class="btn btn-danger"
                 disabled> <?= gettext('Delete Selected Rows') ?> </button>
-        <!-- <button type="button" id="exportSelectedRows" class="btn btn-success exportButton" data-exportType="ofx"
-                disabled><i class="fa fa-download"></i> < ?= gettext('Export Selected Rows (OFX)') ?></button>
-        <button type="button" id="exportSelectedRowsCSV" class="btn btn-success exportButton" data-exportType="csv"
-                disabled><i class="fa fa-download"></i> < ?= gettext('Export Selected Rows (CSV)') ?></button>
-        <button type="button" id="generateDepositSlip" class="btn btn-success exportButton" data-exportType="pdf"
-                disabled> < ?= gettext('Generate Deposit Slip for Selected Rows (PDF)') ?></button> -->
+        <button Style="display:none" type="button" id="editSelected" class="btn btn-primary"
+                disabled> <?= gettext('Edit') ?></button>
     </div>
   </div>
 </div>
@@ -264,6 +260,7 @@ require 'Include/Header.php';
   var EnableNonDeductible = <?= $bEnableNonDeductible ?>;
   var dDate = "<?= $dDate ?>";
   var iMethod = "<?= $iMethod ?>";
+  var iSplitId = 0;
   
   $(document).ready(function() {
     // setfocus on name
@@ -310,7 +307,19 @@ require 'Include/Header.php';
       }
     });
   });
+    // edit selected row
+    $('#editSelected').click(function () {
+      var editRow = dataT.rows('.selected').data();
+      $('.modal-body #AddFund').val(editRow[0].FundId);
+      $('.modal-body #AddAmount').val(editRow[0].Amount);
+      $('.modal-body #AddComment').val(editRow[0].Comment);
+      $('.modal-body #AddNonDeductible').prop('checked', Boolean(Number(editRow[0].Nondeductible)));
+      $('.modal-title').text('<?= gettext("Edit Split"); ?>');
 
+      iSplitId = editRow[0].Id
+      $('#addAnotherSplit').prop('disabled',true);
+      $('#addNewContribModal').modal('show');
+    });
   // hide based on system settings
   if (!EnableNonDeductible) {
     $("#AddNonDeductible").hide();
@@ -379,12 +388,12 @@ require 'Include/Header.php';
     var selectedRows = dataT.rows('.selected').data().length;
     $("#deleteSelectedRows").prop('disabled', !(selectedRows));
     $("#deleteSelectedRows").text("Delete (" + selectedRows + ") Selected Rows");
-    // $("#exportSelectedRows").prop('disabled', !(selectedRows));
-    // $("#exportSelectedRows").html("<i class=\"fa fa-download\"></i> Export (" + selectedRows + ") Selected Rows (OFX)");
-    // $("#exportSelectedRowsCSV").prop('disabled', !(selectedRows));
-    // $("#exportSelectedRowsCSV").html("<i class=\"fa fa-download\"></i> Export (" + selectedRows + ") Selected Rows (CSV)");
-    // $("#generateDepositSlip").prop('disabled', !(selectedRows));
-    // $("#generateDepositSlip").html("<i class=\"fa fa-download\"></i> Generate Deposit Split for Selected (" + selectedRows + ") Rows (PDF)");
+    // enable if only 1 row selected
+    if (selectedRows==1) {
+      $("#editSelected").prop('disabled', false);
+    } else {
+      $("#editSelected").prop('disabled', true);
+    }
   });
 });
 

@@ -187,7 +187,6 @@ $app->group('/contrib', function () {
 
 $app->group('/split', function () {
     // get list of splits for a contribtion
-
     $this->get('/{id:[0-9]+}/splits', function ($request, $response, $args) {
         $ConID = $args['id'];
         echo ContribSplitQuery::create()
@@ -196,6 +195,18 @@ $app->group('/split', function () {
             ->filterByConId($ConID)
             ->find()
             ->toJSON();
+    });
+    // get single split, used to edit single split
+    $this->post('/{id:[0-9]+}/split', function ($request, $response, $args) {
+        $id = $args['id'];
+        $input = (object)$request->getParsedBody();
+        $contribution = ContribSplitQuery::create()->findOneById($id);
+        $contribution->setFundId($input->EditFund);
+        $contribution->setAmount($input->EditAmount);
+        $contribution->setComment($input->EditComment);
+        $contribution->setNondeductible($input->EditNonDeductible);
+        $contribution->save();
+        echo $contribution->toJSON();
     });
     // delete single split
     $this->delete('/{id:[0-9]+}', function ($request, $response, $args) {

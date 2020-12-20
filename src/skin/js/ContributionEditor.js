@@ -9,13 +9,14 @@ function initPaymentTable()
     columns: [
       {
         width: 'auto',
-        title:i18next.t('ConID'),
+        title:i18next.t('Split ID'),
         data:'Id',
       },
       {
         width: 'auto',
-        title:i18next.t('Split ID'),
-        data:'ConId'
+        title:i18next.t('ConID'),
+        data:'ConId',
+        visible: false
       },
       {
         width: 'auto',
@@ -85,10 +86,10 @@ function initPaymentTable()
           // buttons
           $("[name=PledgeSubmit]").prop('disabled', true);
           $("#PledgeSubmitAdd").prop('disabled', true);
-          // $("#deleteSelectedRows").hide();
           $("#addNewContrib").prop('disabled', true);
         } else{
           $("#deleteSelectedRows").show();
+          $("#editSelected").show();
         }
       }
       );
@@ -237,12 +238,52 @@ function initPaymentTable()
         $("#splitTable").DataTable().ajax.url(window.CRM.root+"/api/split/" + iContributionID + "/splits").load();
         initContribution();
         // $("#addNewContribModal").hide();
-        $("[name=AddFund]").val('');
-        $("[name=AddAmount]").val('');
-        $("[name=AddComment]").val('');
-        $("[name=AddNonDeductible]").val('');
-        $("#PledgeSubmit").prop('disabled', false);
-        $("#PledgeSubmitAdd").prop('disabled', false);
+        clearModal();
+        // $("[name=AddFund]").val('');
+        // $("[name=AddAmount]").val('');
+        // $("[name=AddComment]").val('');
+        // $("[name=AddNonDeductible]").val('');
+        // $("#PledgeSubmit").prop('disabled', false);
+        // $("#PledgeSubmitAdd").prop('disabled', false);
+
+        // $("[name=TotalAmount]").val(total);
+    });
+  }
+
+  function EditSplit(iSplitId) {
+    //iSplitID = parseInt($('[name=ContributorID]').val());
+    // iContributionID = parseInt($("#ContributionID").val());
+    var postData = {
+      EditSplitId: iSplitId,
+      EditFund: $("[name=AddFund]").val(),
+      EditAmount: $("[name=AddAmount]").val(),
+      EditComment: $("[name=AddComment]").val(),
+      EditNonDeductible: $("[name=AddNonDeductible]").is(':checked'),
+    };
+      
+    $.ajax({
+      method: "POST",
+      url: window.CRM.root + "/api/split/" + iSplitId + "/split",
+      data: JSON.stringify(postData),
+      contentType: "application/json; charset=utf-8",
+      dataType: "json",
+      // success: function (data) {
+
+        
+      // }
+    }).done(function(data) {
+        // we have to update the datable url for new contributions since the iContributionID variable is empty when initinalized
+        $("#splitTable").DataTable().ajax.url(window.CRM.root+"/api/split/" + iContributionID + "/splits").load();
+        initContribution();
+        // $("#addNewContribModal").hide();
+        clearModal();
+        // $("[name=AddFund]").val('');
+        // $("[name=AddAmount]").val('');
+        // $("[name=AddComment]").val('');
+        // $("[name=AddNonDeductible]").val('');
+        // $("#PledgeSubmit").prop('disabled', false);
+        // $("#PledgeSubmitAdd").prop('disabled', false);
+
         // $("[name=TotalAmount]").val(total);
     });
   }
@@ -276,6 +317,18 @@ function initPaymentTable()
     
   // });
 
+  function clearModal() {
+    // clear modal
+    $("[name=AddFund]").val('');
+    $("[name=AddAmount]").val('');
+    $("[name=AddComment]").val('');
+    $("[name=AddNonDeductible]").val('');
+    $("#PledgeSubmit").prop('disabled', false);
+    $("#PledgeSubmitAdd").prop('disabled', false);
+    $('.modal-body #AddNonDeductible').prop('checked', false);
+    $('#addAnotherSplit').prop('disabled',false);
+  }
+
   // PledgeSave
   $("#PledgeSubmit").on("click", function() {
     UpdateContribution();
@@ -292,14 +345,19 @@ function initPaymentTable()
 
   // modal submit contribution and/ or split
   $("#submitContrib").on('click', function () {
-    if (IsNewContribution()) {
-        // add contribution first to generate ConID to link split, AddSplit() will be called after the contribution has been created
-        AddContribution();
-      } else {
-        // only add split if contribution already exists
-        AddSplit();
-        $("#addNewContribModal").hide();
-        // $("#addNewContrib").prop('disabled', false);
+    if (iSplitId) {
+      EditSplit(iSplitId);
+      iSplitId = 0;
+    } else {
+      if (IsNewContribution()) {
+          // add contribution first to generate ConID to link split, AddSplit() will be called after the contribution has been created
+          AddContribution();
+        } else {
+          // only add split if contribution already exists
+          AddSplit();
+          $("#addNewContribModal").hide();
+          // $("#addNewContrib").prop('disabled', false);
+        }
       }
   });
 
@@ -353,11 +411,21 @@ function initPaymentTable()
         UpdateContribution(true);
         $("#MainForm").submit();
   });
-
+  // addNewContrib
+  $("#addNewContrib").on('click', function () {
+    // show modal, iSplitId = 0; Add New Split
+    iSplitId = 0;
+    $("#addNewContribModal").show();
+});
   // set focus (Bootstrap 3)
   $("#addNewContribModal").on('shown.bs.modal', function () {
     $("#AddFund").focus();
   });
+
+    // set focus (Bootstrap 3)
+    $("#addNewContribModal").on('hidden.bs.modal', function () {
+      clearModal();
+    });
 
   // enable/ disable Check #
   $("#contribType").on('change', function () {
