@@ -312,7 +312,7 @@ msgstr "Мобильный"
 
 #: 
 msgid "Work / Other Email"
-msgstr "Работа / Другая Email"
+msgstr "Работа / Другой Email"
 
 #: 
 msgid "Birth Date"
@@ -360,11 +360,11 @@ msgstr "Выполните импорт"
 
 #: 
 msgid "ERROR: the uploaded CSV file no longer exists!"
-msgstr "ОШИБКА: загружено CSV файл больше не существует!"
+msgstr "ОШИБКА: загруженный CSV файл больше не существует!"
 
 #: 
 msgid "Data Cleared Successfully!"
-msgstr "Данные Снят успешно!"
+msgstr "Данные успешно очищены"
 
 #: 
 msgid "Upload CSV File"
@@ -384,11 +384,11 @@ msgstr "Используйте только если удовлетворены 
 
 #: 
 msgid "Data import successful."
-msgstr "Импорт данных успешным."
+msgstr "Импорт данных успешно."
 
 #: 
 msgid "persons were imported"
-msgstr "человек были импортированы"
+msgstr "люди были импортированы"
 
 #: 
 msgid "Canvass Automation"

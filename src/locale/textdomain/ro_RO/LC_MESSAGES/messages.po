@@ -7469,6 +7469,86 @@ msgid "WARNING"
 msgstr "AVERTIZARE"
 
 #: 
+msgid "ERROR"
+msgstr "Eroare"
+
+#: 
+msgid "CRITICAL"
+msgstr "Critical"
+
+#: 
+msgid "ALERT"
+msgstr "ALERTĂ"
+
+#: 
+msgid "EMERGENCY"
+msgstr "URGENȚĂ"
+
+#: 
+msgid "Title FirstName MiddleName LastName"
+msgstr "Titlu Prenume1 Prenume Nume"
+
+#: 
+msgid "Title FirstName MiddleInitial. LastName"
+msgstr "Titlu Nume Inițială Tată Prenume."
+
+#: 
+msgid "LastName, Title FirstName MiddleName"
+msgstr "Nume, Titlu Prenume Prenume1"
+
+#: 
+msgid "LastName, Title FirstName MiddleInitial"
+msgstr "Nume, Titlu Prenume Inițială Tată"
+
+#: 
+msgid "FirstName MiddleName LastName"
+msgstr "Prenume Prenume1 Nume"
+
+#: 
+msgid "Title FirstName LastName"
+msgstr "Titlu Prenume Nume"
+
+#: 
+msgid "LastName, Title FirstName"
+msgstr "Nume, Titlu Prenume"
+
+#: 
+msgid "Event Log severity to write, used by ORM and App Logs"
+msgstr "Severitatea jurnalului de evenimente pentru a scrie, utilizată de ORM și jurnalele de aplicații"
+
+#: 
+msgid "Time zone"
+msgstr "Fus orar"
+
+#: 
+msgid "Nexmo SMS API Key"
+msgstr "Nexmo SMS API Key"
+
+#: 
+msgid "Nexmo SMS API Secret"
+msgstr "Nexmo SMS API Secret"
+
+#: 
+msgid "Nexmo SMS From Number"
+msgstr "Nexmo SMS număr expeditor"
+
+#: 
+msgid "OpenLP URL"
+msgstr "OpenLP URL"
+
+#: 
+msgid "OpenLP Username"
+msgstr "OpenLP Utilizator"
+
+#: 
+msgid "OpenLP Password"
+msgstr "OpenLp Parolă"
+
+#: 
+msgid "KioskVisibilityTimestamp"
+msgstr "KioskVisibilityTimestamp"
+
+#: 
 msgid "Show/Hide Lost Password Link on the login screen"
 msgstr "Afișează/Ascunde link pentru resetare parolă în meniul de autentificare"
 
@@ -7917,6 +7997,86 @@ msgid "Group Role"
 msgstr "Rol grup"
 
 #: 
+msgid "Members from group"
+msgstr "Membri din grup"
+
+#: 
+msgid "Members to another group"
+msgstr "Membri din alt grup"
+
+#: 
+msgid "Members to cart"
+msgstr "Membri către coș"
+
+#: 
+msgid "OR Create a Group and add the CART in ONE ACTION"
+msgstr "SAU Creați un grup și adăugați coșul într-o singură acțiune"
+
+#: 
+msgid "Create Group + ADD Cart"
+msgstr "Creați grup + ADD coș"
+
+#: 
+msgid "Facebook"
+msgstr "Facebook"
+
+#: 
+msgid "Twitter"
+msgstr "Twitter"
+
+#: 
+msgid "LinkedIn"
+msgstr "LikedIn"
+
+#: 
+msgid "Move Event"
+msgstr "Mută evenimentul"
+
+#: 
+msgid "Resize Event"
+msgstr "Redimensionează evenimentul"
+
+#: 
+msgid "Text from"
+msgstr "Text din"
+
+#: 
+msgid "Profile"
+msgstr "Profil"
+
+#: 
+msgid "Sign out"
+msgstr "Ieșire"
+
+#: 
+msgid "Sermon Text"
+msgstr "Textul predicii"
+
+#: 
+msgid "Change Settings"
+msgstr "Schimbă setările"
+
+#: 
+msgid "Unknown Type"
+msgstr "Tip necunoscut"
+
+#: 
+msgid "PersonID for Cart must be numeric"
+msgstr "PersonalId pentru coș trebuie să fie numeric"
+
+#: 
+msgid "GroupID for Cart must be numeric"
+msgstr "GroupId pentru coș trebuie să fie numeric"
+
+#: 
+msgid "FamilyID for Cart must be numeric"
+msgstr "FamilyID pentru coș trebuie să fie numeric"
+
+#: 
+msgid "Search People"
+msgstr "Caută oameni"
+
+#: 
 msgid "Maximum number of People"
 msgstr "Numărul maxim de persoane"
 
@@ -7987,4 +8147,84 @@ msgstr "Numă de secunde pentru ascunderea banneru-ului la încărcarea paginii 
 #: 
 msgid "Help & Support"
 msgstr "Ajutor"
+
+#: 
+msgid "Deleted from group"
+msgstr "Șterge din grup"
+
+#: 
+msgid "Added to group"
+msgstr "Adăugat la grup"
+
+#: 
+msgid "We could not find the person(s) you were looking for."
+msgstr "Nu am putut găsi persoana(le) căutată(e)"
+
+#: 
+msgid "return to People Dashboard"
+msgstr "revin-o la Panou oameni"
+
+#: 
+msgid "User must have MenuOptions permission"
+msgstr "Utilizatorul trebuie să aibă pemisii pentru MenuOptions"
+
+#: 
+msgid "SMTP Host is not setup, please visit the settings page"
+msgstr "domeniu SMTP nesetat, vizitați pagina de setări"
+
+#: 
+msgid "Debug Email Connection"
+msgstr "Depanare conectare Email"
+
+#: 
+msgid "This Family is Deactivated"
+msgstr "Această familie este dezactivată"
+
+#: 
+msgid "Metadata"
+msgstr "Metadata"
+
+#: 
+msgid "The database has been cleared."
+msgstr "Baza de date a fost șearsă"
+
+#: 
+msgid "User must have bAddEvent permissions"
+msgstr "Utilizator trebuie să aibă permisii bAddEvent "
+
+#: 
+msgid "Anniversaries"
+msgstr "Aniversări"
+
+#: 
+msgid "New Family Notification Email Error"
+msgstr "Eroare la notificarea prin email a unei familii noi"
+
+#: 
+msgid "New Person Notification Email Error"
+msgstr "Eroare la notificarea prijn email a unei persoane noi"
+
+#: 
+msgid "View User"
+msgstr "Vizualizare utilizator"
+
+#: 
+msgid "Invalid request: Missing calendar id"
+msgstr "Solicitare invalidă: Lipsește id calendar"
+
+#: 
+msgid "Not Found: Unknown calendar id"
+msgstr "Negăsit: Id calendar necunoscut"
+
+#: 
+msgid "no found or user without an email"
+msgstr "negăsit sau utilizator fără email"
+
+#: 
+msgid "UserName not set"
+msgstr "UserName nesetat"
+
+#: 
+msgid "The people and families has been cleared from the database."
+msgstr "Persoanele și familiile au fost șterse din baza de date"
 

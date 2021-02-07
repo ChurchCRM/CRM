@@ -1004,6 +1004,10 @@ msgid "Attendance Counts"
 msgstr "Ilość Uczestników"
 
 #: 
+msgid "Return to Event Types"
+msgstr "Powrót do typów wydarzeń"
+
+#: 
 msgid "Family"
 msgstr "Rodzina"
 
@@ -1093,6 +1097,14 @@ msgid "There are no Records"
 msgstr "Brak wpisów"
 
 #: 
+msgid "Create Event"
+msgstr "Utwórz wydarzenie"
+
+#: 
+msgid "Create a new Event"
+msgstr "Utwórz nowe wydarzenie"
+
+#: 
 msgid "Editing Event ID: "
 msgstr "Edytuj ID Wydarzenia:"
 
@@ -1107,6 +1119,14 @@ msgstr "Pola z "
 #: 
 msgid " are required"
 msgstr "są wymagane"
+
+#: 
+msgid "Select your event type"
+msgstr "Wybierz typ wydarzenia"
+
+#: 
+msgid "You must pick an event type."
+msgstr "Musisz wybrać typ wydarzenia"
 
 #: 
 msgid "Event Desc"
@@ -3569,6 +3589,10 @@ msgid " Bold"
 msgstr "Pogrubione"
 
 #: 
+msgid "Dashboard"
+msgstr "Pulpit"
+
+#: 
 #, fuzzy
 msgid "Font"
 msgstr "Czcionka"
@@ -3785,12 +3809,36 @@ msgid "Gift Designation:"
 msgstr "Cel Datku:"
 
 #: 
+msgid "Teachers"
+msgstr "Nauczyciele"
+
+#: 
+msgid "Students"
+msgstr "Uczniowie"
+
+#: 
+msgid "Teachers Emails"
+msgstr "Emaile nauczycieli"
+
+#: 
+msgid "Sunday School Dashboard"
+msgstr "Pulpit szkółki niedzielnej"
+
+#: 
+msgid "Classes"
+msgstr "Klasy"
+
+#: 
 msgid "Sunday School Reports"
 msgstr "Raport Szkoły Niedzielnej"
 
 #: 
 msgid "Generate class lists and attendance sheets"
 msgstr "Wygeneruj listę klas i listy obecności"
+
+#: 
+msgid "Students not in a Sunday School Class"
+msgstr "Uczniowie nie przypisani do klas"
 
 #: 
 msgid "At least one group must be selected to make class lists or attendance sheets."
@@ -3835,12 +3883,32 @@ msgid "Create Attendance Sheet"
 msgstr "Utwórz Listę Obecności"
 
 #: 
+msgid "Calendar"
+msgstr "Kalendarz"
+
+#: 
+msgid "View All People"
+msgstr "Widok wszystkich osób"
+
+#: 
+msgid "Events"
+msgstr "Wydarzenia"
+
+#: 
+msgid "Deleting this event TYPE will NOT delete any existing Events or Attendance Counts.  Are you sure you want to DELETE Event Type ID: "
+msgstr "Skasowanie tego typu wydarzenia nie spowoduje usunięcia wszystkich wydarzeń. Czy na pewno usunąć ten typ wydarzenia?"
+
+#: 
 msgid "False"
 msgstr "False"
 
 #: 
 msgid "True"
 msgstr "True"
+
+#: 
+msgid "Add New Class"
+msgstr "Dodaj nową klasę"
 
 #: 
 msgid "Self Registration"
@@ -3851,8 +3919,28 @@ msgid "Registration Complete"
 msgstr "Rejestracja Zakończona"
 
 #: 
+msgid "How many people are in your family"
+msgstr "Ile osób jest w twojej rodzinie?"
+
+#: 
+msgid "Add All Classes"
+msgstr "Dodaj wszystkie klasy"
+
+#: 
+msgid "Clear All Classes"
+msgstr "Wyczyść wszystkie klasy"
+
+#: 
 msgid "If you need to make changes to registration data, go to "
 msgstr "Jeśli musisz poprawić dane rejestracji, przejdź do "
+
+#: 
+msgid "Add Attendees for Event"
+msgstr "Dodaj uczestników wydarzenia"
+
+#: 
+msgid "Groups"
+msgstr "Grupy"
 
 #: 
 msgid "Include only these classifications in the directory, comma seperated"
@@ -3899,6 +3987,58 @@ msgid "ChurchCRM has been registered.  The ChurchCRM team uses registration info
 msgstr "Zarejestrowano ChurchCRM. Team ChurchCRM używa tych danych, aby śledzić użycie. Dane te są bezpiecznie przechowywane, nie są udostępniane lub sprzedawane. Jeśli to pole jest ustawione True, opcja rejestracji w menu ustawień zmieni się na Uaktualnij Rejestrację."
 
 #: 
+msgid "List Groups"
+msgstr "Lista grup"
+
+#: 
+msgid "List Church Events"
+msgstr "Lista wydarzeń w kościele"
+
+#: 
+msgid "Add Church Event"
+msgstr "Dodaj wydarzenie kościoła"
+
+#: 
+msgid "List Event Types"
+msgstr "Typy wydarzeń"
+
+#: 
+msgid "People Properties"
+msgstr "Osoby - właściwości"
+
+#: 
+msgid "Regular Attender"
+msgstr "Sympatycy"
+
+#: 
+msgid "Member, Regular Attender, etc."
+msgstr "Członkowie, sympatycy itp."
+
+#: 
+msgid "People with birthdays in a particular month"
+msgstr "Osoby urodzone w danym miesiącu"
+
+#: 
+msgid "People who are members"
+msgstr "Osoby będące członkami"
+
+#: 
+msgid "Allow user to add new event"
+msgstr "Zezwól użytkownikom na tworzenie wydarzeń"
+
+#: 
+msgid "All Events of Type"
+msgstr "Wszystkie wydarzenia według typu"
+
+#: 
+msgid "event"
+msgstr "wydarzenie"
+
+#: 
+msgid "events"
+msgstr "wydarzenia"
+
+#: 
 msgid "Person Classification"
 msgstr "Kategoria Osoby"
 
@@ -3927,16 +4067,60 @@ msgid "Show neighbors with these classifications:"
 msgstr "Pokaż sąsiadów w wybranych kategoriach:"
 
 #: 
+msgid "Select event"
+msgstr "Wybierz wydarzenie"
+
+#: 
 msgid "Set true to allow empty lastname in Person Editor.  Set false to validate last name and inherit from family when left empty."
 msgstr "Ustaw True aby zezwolić na brak nazwiska w Edytorze Osoby. False spowoduje weryfikację wpisu i ewentualne użycie nazwiska powiązanej rodziny."
+
+#: 
+msgid "Showing students with birthdays in"
+msgstr "Pokaż uczniów z datami urodzin"
 
 #: 
 msgid "Enable New Kiosk Registration"
 msgstr "Zezwól na Rejestrację Nowego Kiosku"
 
 #: 
+msgid "Self Verification"
+msgstr "Samodzielna weryfikacja"
+
+#: 
+msgid "Self Register"
+msgstr "Samodzielnie zarejestrowani"
+
+#: 
 msgid "List families that were created via self registration."
 msgstr "Nazwiska rodzin, które zostały utworzone przez samodzielną rejestrację."
+
+#: 
+msgid "External Calendar API is disabled"
+msgstr "Zewnętrzny kalendarz API jest wyłączony"
+
+#: 
+msgid "Add Students"
+msgstr "Dadaj ucznia"
+
+#: 
+msgid "Move Event"
+msgstr "Przesuń wydarzenie"
+
+#: 
+msgid "People Dashboard"
+msgstr "Pulpit osób"
+
+#: 
+msgid "return to People Dashboard"
+msgstr "Powrót do pulpitu osób"
+
+#: 
+msgid "Invalid request: Missing calendar id"
+msgstr "Błędne wywołanie: Brak id kalendarza"
+
+#: 
+msgid "Not Found: Unknown calendar id"
+msgstr "Nie znaleziono: nieznane id kalendarza"
 
 #: 
 msgid "Self Registrations"
@@ -4879,4 +5063,12 @@ msgstr "Powłoki"
 #: 
 msgid "Failed generate a new API Key"
 msgstr "Bład tworzenia klucza API"
+
+#: 
+msgid "Today's Birthdays"
+msgstr "Dzisiejsze urodziny"
+
+#: 
+msgid "Today's Wedding Anniversaries"
+msgstr "Dzisiejsze rocznice ślubu"
 
