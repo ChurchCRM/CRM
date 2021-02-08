@@ -71,7 +71,7 @@ msgstr "Sa peaksid tegema käsitsi varukoopia oma andmebaasist vähemalt kord n�
 
 #: 
 msgid "After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site."
-msgstr "Peale varuandmebaasi allalaadimist, peaksid tgeema veel 2 koopiat. Pane üks tulekindlasse seifi oma serveris ja teine kuskile väljaspoole oma lehte."
+msgstr "Peale varu andmebaasi allalaadimist, peaksid tgeema veel 2 koopiat. Pane üks tulekindlasse seifi oma serveris ja teise kuskile väljaspoole oma lehte."
 
 #: 
 msgid "If you are concerned about confidentiality of data stored in the ChurchCRM database, you should encrypt the backup data if it will be stored somewhere potentially accessible to others"
@@ -5336,6 +5336,10 @@ msgid "Volunteers"
 msgstr "Vabatahtlikud"
 
 #: 
+msgid "Recent friends"
+msgstr "Hiljutised sõbrad"
+
+#: 
 msgid "NNE"
 msgstr "NNE"
 
@@ -6435,7 +6439,7 @@ msgstr[1] "Mitmuses:%  kuud vana"
 msgid "%d year old"
 msgid_plural "%d years old"
 msgstr[0] "% aastane"
-msgstr[1] "Mitmuses:% t aastat vana"
+msgstr[1] "% aastane"
 
 #: 
 msgid "Database upgrade failed"
@@ -6653,4 +6657,12 @@ msgstr "Autentimise probleem"
 #: 
 msgid "Enter new user password. Administratively set passwords are not subject to length or complexity requirements"
 msgstr "Sisestage uus kasutaja parool. Administratiivselt määratud paroolidele ei kehti pikkuse ega keerukuse nõuded"
+
+#: 
+msgid "Credit Card People"
+msgstr "Krediitkaardiga inimesed"
+
+#: 
+msgid "People who are configured to pay by credit card."
+msgstr "Inimesed, kes on seadistatud maksma krediitkaardiga."
 
