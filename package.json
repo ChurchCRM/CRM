@@ -25,7 +25,7 @@
         "updateVersions": "grunt updateVersions",
         "postinstall": "grunt genLocaleJSFiles",
         "locale-gen": "locale/update-locale.sh",
-        "locale-download": "grunt updateFromPOeditor && grunt genLocaleJSFiles && npm run loacle-audit",
+        "locale-download": "grunt updateFromPOeditor && grunt genLocaleJSFiles && npm run locale-audit",
         "locale-audit": "grunt exec:downloadPOEditorStats && grunt genLocaleAudit",
         "update-signatures": "grunt generateSignatures",
         "package": "grunt generateSignatures && grunt compress",
