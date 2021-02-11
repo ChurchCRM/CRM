@@ -184,11 +184,11 @@ msgstr "Выбор пользовательского поля"
 
 #: 
 msgid "Custom Person Fields"
-msgstr "Пользовательские лицо Поля"
+msgstr "Пользовательские поля человека"
 
 #: 
 msgid "Custom Family Fields"
-msgstr "Пользовательские Семья Поля"
+msgstr "Пользовательские поля семьи"
 
 #: 
 msgid "Filters"
@@ -213,7 +213,7 @@ msgstr "Используйте клавишу Ctrl, чтобы выбрать н
 
 #: 
 msgid "Don't Filter"
-msgstr "Не Фильтр"
+msgstr "нет фильтра"
 
 #: 
 msgid "Male"
@@ -230,7 +230,7 @@ msgstr "Членство в группах"
 
 #: 
 msgid "From:"
-msgstr "C:"
+msgstr "от куда"
 
 #: 
 msgid "To:"
@@ -372,7 +372,7 @@ msgstr "Загрузить файл CSV"
 
 #: 
 msgid "Clear Persons and Families"
-msgstr "Очистить лиц и семей,"
+msgstr "Очистить людей и семьи,"
 
 #: 
 msgid "Warning!  Do not select this option if you plan to add to an existing database.<br/>"
