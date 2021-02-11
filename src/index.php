@@ -1,6 +1,6 @@
 <?php
 
-if (version_compare(phpversion(), "7.2.0", "<")) {
+if (version_compare(phpversion(), "7.3.0", "<")) {
     header("Location: php-error.html");
 }
 
