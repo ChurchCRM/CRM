@@ -15,7 +15,7 @@ require 'Include/Functions.php';
 
 if (array_key_exists('Action', $_POST) && $_POST['Action'] == 'Retrieve' && !empty($_POST['Event'])) {
     if ($_POST['Choice'] == 'Attendees') {
-        $sSQL = 'SELECT t1.per_ID, t1.per_Title, t1.per_FirstName, t1.per_MiddleName, t1.per_LastName, t1.per_Suffix, t1.per_Email, t1.per_HomePhone, t1.per_Country, t1.per_MembershipDate, t4.fam_HomePhone, t4.fam_Country
+        $sSQL = 'SELECT t1.per_ID, t1.per_Title, t1.per_FirstName, t1.per_MiddleName, t1.per_LastName, t1.per_Suffix, t1.per_Email, t1.per_HomePhone, t1.per_Country, t1.per_MembershipDate, t4.fam_HomePhone, t4.fam_Country, t1.per_Gender
                 FROM person_per AS t1, events_event AS t2, event_attend AS t3, family_fam AS t4
                 WHERE t1.per_ID = t3.person_id AND t2.event_id = t3.event_id AND t3.event_id = '.$_POST['Event']." AND t1.per_fam_ID = t4.fam_ID AND per_cls_ID IN ('1','2','5')
 		ORDER BY t1.per_LastName, t1.per_ID";
@@ -29,19 +29,19 @@ if (array_key_exists('Action', $_POST) && $_POST['Action'] == 'Retrieve' && !emp
         }
         if (count($aArr) > 0) {
             $aArrJoin = implode(',', $aArr);
-            $sSQL = 'SELECT t1.per_ID, t1.per_Title, t1.per_FirstName, t1.per_MiddleName, t1.per_LastName, t1.per_Suffix, t1.per_Email, t1.per_HomePhone, t1.per_Country, t1.per_MembershipDate, t2.fam_HomePhone, t2.fam_Country
+            $sSQL = 'SELECT t1.per_ID, t1.per_Title, t1.per_FirstName, t1.per_MiddleName, t1.per_LastName, t1.per_Suffix, t1.per_Email, t1.per_HomePhone, t1.per_Country, t1.per_MembershipDate, t2.fam_HomePhone, t2.fam_Country, t1.per_Gender
         	        FROM person_per AS t1, family_fam AS t2
                 	WHERE t1.per_fam_ID = t2.fam_ID AND t1.per_ID NOT IN ('.$aArrJoin.") AND per_cls_ID IN ('1','2','5')
 			ORDER BY t1.per_LastName, t1.per_ID";
         } else {
-            $sSQL = "SELECT t1.per_ID, t1.per_Title, t1.per_FirstName, t1.per_MiddleName, t1.per_LastName, t1.per_Suffix, t1.per_Email, t1.per_HomePhone, t1.per_Country, t1.per_MembershipDate, t2.fam_HomePhone, t2.fam_Country
+            $sSQL = "SELECT t1.per_ID, t1.per_Title, t1.per_FirstName, t1.per_MiddleName, t1.per_LastName, t1.per_Suffix, t1.per_Email, t1.per_HomePhone, t1.per_Country, t1.per_MembershipDate, t2.fam_HomePhone, t2.fam_Country, t1.per_Gender
                         FROM person_per AS t1, family_fam AS t2
                         WHERE t1.per_fam_ID = t2.fam_ID AND per_cls_ID IN ('1','2','5')
 			ORDER BY t1.per_LastName, t1.per_ID";
         }
         $sPageTitle = gettext('Event Nonattendees');
     } elseif ($_POST['Choice'] == 'Guests') {
-        $sSQL = 'SELECT t1.per_ID, t1.per_Title, t1.per_FirstName, t1.per_MiddleName, t1.per_LastName, t1.per_Suffix, t1.per_HomePhone, t1.per_Country
+        $sSQL = 'SELECT t1.per_ID, t1.per_Title, t1.per_FirstName, t1.per_MiddleName, t1.per_LastName, t1.per_Suffix, t1.per_HomePhone, t1.per_Country, t1.per_Gender
                 FROM person_per AS t1, events_event AS t2, event_attend AS t3
                 WHERE t1.per_ID = t3.person_id AND t2.event_id = t3.event_id AND t3.event_id = '.$_POST['Event']." AND per_cls_ID IN ('0','3')
 		ORDER BY t1.per_LastName, t1.per_ID";
@@ -78,6 +78,7 @@ for ($row = 1; $row <= $numRows; $row++) {
         $aLastName[$row] = $per_LastName;
         $aSuffix[$row] = $per_Suffix;
         $aEmail[$row] = $per_Email;
+        $aGender[$row] = $per_Gender == 1 ? gettext("Male") : gettext("Female");
         $aHomePhone[$row] = SelectWhichInfo(ExpandPhoneNumber($per_HomePhone, $per_Country, $dummy), ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy), true);
     }
 }
@@ -185,14 +186,16 @@ $cSQL = 'SELECT COUNT(per_ID) AS cCount
        <table class="table table-striped">
          <tr>
             <td width="35%"><strong><?= gettext('Name') ?></strong></td>
-            <td width="25%"><strong><?= gettext('Email') ?></strong></td>
-            <td width="25%"><strong><?= gettext('Home Phone') ?></strong></td>
+            <td><strong><?= gettext('Email') ?></strong></td>
+            <td><strong><?= gettext('Home Phone') ?></strong></td>
+            <td><strong><?= gettext('Gender') ?></strong></td>
         </tr>
         <?php for ($row = 1; $row <= $numRows; $row++) { ?>
          <tr>
            <td ><?= FormatFullName($aTitle[$row], $aFistName[$row], $aMiddleName[$row], $aLastName[$row], $aSuffix[$row], 3) ?></td>
            <td ><?= $aEmail[$row] ? '<a href="mailto:'.$aEmail[$row].'" title="Send Email">'.$aEmail[$row].'</a>' : 'Not Available' ?></td>
            <td ><?= $aHomePhone[$row] ? $aHomePhone[$row] : 'Not Available' ?></td>
+           <td ><?= $aGender[$row] ?></td>
          </tr>
         <?php } ?>
        </table>
