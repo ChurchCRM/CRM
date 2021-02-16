@@ -67,7 +67,7 @@ if (isset($_POST['save'])) {
         // If changing the locale, translate the menu options
         if ($id == 39 && $value != Bootstrapper::GetCurrentLocale()->getLocale()) {
             $localeInfo = new LocaleInfo($value, AuthenticationManager::GetCurrentUser()->getSetting("ui.locale"));
-            setlocale(LC_ALL, $localeInfo->getLocale());
+            setlocale(LC_ALL, $localeInfo->getLocale(), $localeInfo->getLocale().'.UTF-8', $localeInfo->getLocale().'.utf8');
             $aLocaleInfo = $localeInfo->getLocaleInfo();
         }
 
