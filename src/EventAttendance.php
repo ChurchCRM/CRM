@@ -123,11 +123,16 @@ for ($row = 1; $row <= $numRows; $row++) {
     </div>
     <div class="box-body">
         <table class="table table-striped data-table" id="eventsTable">
+            <thead>
          <tr class="TableHeader">
            <td width="33%"><strong><?= gettext('Event Title') ?></strong></td>
            <td width="33%"><strong><?= gettext('Event Date') ?></strong></td>
-           <td colspan="3" width="34%" align="center"><strong><?= gettext('Generate Report') ?></strong></td>
+           <td> </td>
+           <td> </td>
+           <td> </td>
         </tr>
+            </thead>
+            <tbody>
          <?php for ($row = 1; $row <= $numRows; $row++) { ?>
          <tr>
            <td ><?= $aEventTitle[$row] ?></td>
@@ -158,7 +163,7 @@ $cSQL = 'SELECT COUNT(per_ID) AS cCount
                <input type="hidden" name="Type" value="<?= $_GET['Type'] ?>">
                <input type="hidden" name="Action" value="Retrieve">
                <input type="hidden" name="Choice" value="Nonattendees">
-               <input type="submit" name="Type" value="<?= gettext('Non-Attending Members').' ['.($tNumTotal - $cNumAttend).']' ?>" class="btn btn-default">
+               <input id="Non-Attending-<?=$row?>" type="submit" name="Type" value="<?= gettext('Non-Attending Members').' ['.($tNumTotal - $cNumAttend).']' ?>" class="btn btn-default">
              </form>
            </td>
            <td>
@@ -176,9 +181,15 @@ $cSQL = 'SELECT COUNT(per_ID) AS cCount
            </td>
          </tr>
             <?php } ?>
+            </tbody>
         </table>
     </div>
 </div>
+    <script nonce="<?= SystemURLs::getCSPNonce() ?>">
+        $(document).ready(function () {
+            $("#eventsTable").DataTable(window.CRM.plugin.dataTable);
+        });
+    </script>
 <?php } elseif ($_POST['Action'] == 'Retrieve' && $numRows > 0) { ?>
 <div class="box">
    <div class="box-header">
@@ -186,38 +197,38 @@ $cSQL = 'SELECT COUNT(per_ID) AS cCount
    </div>
     <div class="box-body">
        <table class="table table-striped data-table" id="peopleTable">
-           <thead>
+       <thead>
          <tr>
             <td width="35%"><strong><?= gettext('Name') ?></strong></td>
             <td><strong><?= gettext('Email') ?></strong></td>
             <td><strong><?= gettext('Home Phone') ?></strong></td>
             <td><strong><?= gettext('Gender') ?></strong></td>
         </tr>
-           </thead>
-           <tbody>
+       </thead>
+       <tbody>
         <?php for ($row = 1; $row <= $numRows; $row++) { ?>
          <tr>
-           <td ><?= FormatFullName($aTitle[$row], $aFistName[$row], $aMiddleName[$row], $aLastName[$row], $aSuffix[$row], 3) ?></td>
-           <td ><?= $aEmail[$row] ? '<a href="mailto:'.$aEmail[$row].'" title="Send Email">'.$aEmail[$row].'</a>' : '' ?></td>
-           <td ><?= $aHomePhone[$row] ? $aHomePhone[$row] : 'Not Available' ?></td>
-           <td ><?= $aGender[$row] ?></td>
+           <td><?= FormatFullName($aTitle[$row], $aFistName[$row], $aMiddleName[$row], $aLastName[$row], $aSuffix[$row], 3) ?></td>
+           <td><?= $aEmail[$row] ? '<a href="mailto:'.$aEmail[$row].'">'.$aEmail[$row].'</a>' : '' ?></td>
+           <td><?= $aHomePhone[$row] ? $aHomePhone[$row] : '' ?></td>
+           <td><?= $aGender[$row] ?></td>
          </tr>
         <?php } ?>
-           </tbody>
+       </tbody>
        </table>
     </div>
 </div>
+    <script nonce="<?= SystemURLs::getCSPNonce() ?>">
+        $(document).ready(function () {
+            $("#peopleTable").DataTable(window.CRM.plugin.dataTable);
+        });
+    </script>
+
 <?php } else { ?>
     <div class="warning">
         <?= $_GET ? gettext('There are no events in this category') : "" ?>
     </div>
 <?php } ?>
 
-<script nonce="<?= SystemURLs::getCSPNonce() ?>">
-    $(document).ready(function () {
-        $("#eventsTable").DataTable(window.CRM.plugin.dataTable);
-        $("#peopleTable").DataTable(window.CRM.plugin.dataTable);
-    });
-</script>
 
 <?php require 'Include/Footer.php' ?>
