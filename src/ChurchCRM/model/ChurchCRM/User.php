@@ -295,6 +295,11 @@ class User extends BaseUser
         $setting->save();
     }
 
+    public function getSettingValue($name) {
+        $userSetting = $this->getSetting($name);
+        return (is_null($userSetting) ? "" : $userSetting->getValue());
+    }
+
     public function getSetting($name) {
         foreach ($this->getUserSettings() as $userSetting) {
             if ($userSetting->getName() == $name) {
@@ -313,15 +318,15 @@ class User extends BaseUser
     }
 
     public function isShowPledges() {
-        return $this->getSetting(UserSetting::FINANCE_SHOW_PLEDGES)->getValue() == "true";
+        return $this->getSettingValue(UserSetting::FINANCE_SHOW_PLEDGES) == "true";
     }
 
     public function isShowPayments() {
-        return $this->getSetting(UserSetting::FINANCE_SHOW_PAYMENTS)->getValue() == "true";
+        return $this->getSettingValue(UserSetting::FINANCE_SHOW_PAYMENTS) == "true";
     }
 
     public function getShowSince() {
-        return $this->getSetting(UserSetting::FINANCE_SHOW_SINCE)->getValue();
+        return $this->getSettingValue(UserSetting::FINANCE_SHOW_SINCE);
     }
 
     public function provisionNew2FAKey() {
