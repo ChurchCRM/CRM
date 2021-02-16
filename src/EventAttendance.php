@@ -13,6 +13,8 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
+use ChurchCRM\dto\SystemURLs;
+
 if (array_key_exists('Action', $_POST) && $_POST['Action'] == 'Retrieve' && !empty($_POST['Event'])) {
     if ($_POST['Choice'] == 'Attendees') {
         $sSQL = 'SELECT t1.per_ID, t1.per_Title, t1.per_FirstName, t1.per_MiddleName, t1.per_LastName, t1.per_Suffix, t1.per_Email, t1.per_HomePhone, t1.per_Country, t1.per_MembershipDate, t4.fam_HomePhone, t4.fam_Country, t1.per_Gender
@@ -116,11 +118,11 @@ for ($row = 1; $row <= $numRows; $row++) {
 
 <?php  if (array_key_exists('Action', $_GET) && $_GET['Action'] == 'List' && $numRows > 0) { ?>
 <div class="box">
-    <div class="body-header">
+    <div class="box-header">
         <h3> <?= ($numRows == 1 ? gettext('There is') : gettext('There are')).' '.$numRows.' '.($numRows == 1 ? gettext('event') : gettext('events')).gettext(' in this category.') ?></h3>
     </div>
     <div class="box-body">
-        <table class="table table-striped">
+        <table class="table table-striped data-table" id="eventsTable">
          <tr class="TableHeader">
            <td width="33%"><strong><?= gettext('Event Title') ?></strong></td>
            <td width="33%"><strong><?= gettext('Event Date') ?></strong></td>
@@ -183,21 +185,25 @@ $cSQL = 'SELECT COUNT(per_ID) AS cCount
      <h3><?= gettext('There '.($numRows == 1 ? 'was '.$numRows.' '.$_POST['Choice'] : 'were '.$numRows.' '.$_POST['Choice'])).' for this Event' ?></h3>
    </div>
     <div class="box-body">
-       <table class="table table-striped">
+       <table class="table table-striped data-table" id="peopleTable">
+           <thead>
          <tr>
             <td width="35%"><strong><?= gettext('Name') ?></strong></td>
             <td><strong><?= gettext('Email') ?></strong></td>
             <td><strong><?= gettext('Home Phone') ?></strong></td>
             <td><strong><?= gettext('Gender') ?></strong></td>
         </tr>
+           </thead>
+           <tbody>
         <?php for ($row = 1; $row <= $numRows; $row++) { ?>
          <tr>
            <td ><?= FormatFullName($aTitle[$row], $aFistName[$row], $aMiddleName[$row], $aLastName[$row], $aSuffix[$row], 3) ?></td>
-           <td ><?= $aEmail[$row] ? '<a href="mailto:'.$aEmail[$row].'" title="Send Email">'.$aEmail[$row].'</a>' : 'Not Available' ?></td>
+           <td ><?= $aEmail[$row] ? '<a href="mailto:'.$aEmail[$row].'" title="Send Email">'.$aEmail[$row].'</a>' : '' ?></td>
            <td ><?= $aHomePhone[$row] ? $aHomePhone[$row] : 'Not Available' ?></td>
            <td ><?= $aGender[$row] ?></td>
          </tr>
         <?php } ?>
+           </tbody>
        </table>
     </div>
 </div>
@@ -206,5 +212,12 @@ $cSQL = 'SELECT COUNT(per_ID) AS cCount
         <?= $_GET ? gettext('There are no events in this category') : "" ?>
     </div>
 <?php } ?>
+
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
+    $(document).ready(function () {
+        $("#eventsTable").DataTable(window.CRM.plugin.dataTable);
+        $("#peopleTable").DataTable(window.CRM.plugin.dataTable);
+    });
+</script>
 
 <?php require 'Include/Footer.php' ?>
