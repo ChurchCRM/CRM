@@ -2363,10 +2363,13 @@
     "View Family Page": "Ver Página de Familia",
     "View Person Page": "Ver Página de Persona",
     "Verify": "Verificar",
+    "Family has no emails to use": "La familia no tiene emails para usar",
     "Blue": "Azul",
     "Black": "Negro",
     "Purple": "Púrpura",
     "Green": "Verde",
     "Red": "Rojo",
-    "Yellow": "Amarillo"
+    "Yellow": "Amarillo",
+    "Toggle Sidebar": "Cambiar barra lateral",
+    "Toggle the left sidebar's state (open or collapse)": "Cambiar el estado de la barra lateral izquierda (abrir o cerrar)"
 }
