@@ -166,7 +166,7 @@ if ($depositEnabled) { // If the user has Finance permissions, then let's displa
                 <a href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php">
                     <button type="button" class="btn btn-success"><?= gettext('Add New Person') ?></button>
                 </a>
-                <a href="<?= SystemURLs::getRootPath() ?>/FamilyEditor.php"
+                <a href="<?= SystemURLs::getRootPath() ?>/FamilyEditor.php">
                 <button type="button" class="btn btn-success"><?= gettext('Add New Family') ?></button>
                 </a>
             </div>
