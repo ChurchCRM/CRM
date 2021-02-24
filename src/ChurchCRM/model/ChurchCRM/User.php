@@ -310,8 +310,9 @@ class User extends BaseUser
     }
 
     public function getStyle(){
+        $skin = is_null($this->getSetting(UserSetting::UI_STYLE)) ? "skin-red" : $this->getSetting(UserSetting::UI_STYLE);
         $cssClasses = [];
-        array_push($cssClasses, $this->getSetting(UserSetting::UI_STYLE));
+        array_push($cssClasses, $skin);
         array_push($cssClasses, $this->getSetting(UserSetting::UI_BOXED));
         array_push($cssClasses, $this->getSetting(UserSetting::UI_SIDEBAR));
         return implode(" ", $cssClasses);
