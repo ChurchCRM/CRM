@@ -205,12 +205,12 @@ if (count($_SESSION['aPeopleCart']) > 0) {
 
 	<tr>
 		<td class="LabelColumn"><?= gettext('Family Name') ?>:</td>
-		<td class="TextColumnWithBottomBorder"><input type="text" Name="FamilyName" value="<?= $sName ?>" maxlength="48"><font color="red"><?= $sNameError ?></font></td>
+		<td class="TextColumnWithBottomBorder"><input type="text" Name="FamilyName" value="<?= $sName ?>" maxlength="48"><span style="color: red;"><?= $sNameError ?></span></td>
 	</tr>
 
 	<tr>
         <td class="LabelColumn"><?= gettext('Wedding Date') ?>:</td>
-		<td class="TextColumnWithBottomBorder"><input type="text" Name="WeddingDate" value="<?= $dWeddingDate ?>" maxlength="10" id="sel1" size="15"  class="form-control pull-right active date-picker"><font color="red"><?php echo '<BR>'.$sWeddingDateError ?></font></td>
+		<td class="TextColumnWithBottomBorder"><input type="text" Name="WeddingDate" value="<?= $dWeddingDate ?>" maxlength="10" id="sel1" size="15"  class="form-control pull-right active date-picker"><span style="color: red;"><?php echo '<BR>'.$sWeddingDateError ?></span></td>
 	</tr>
 
 	<tr>

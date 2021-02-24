@@ -163,7 +163,7 @@ require 'Include/Header.php';
 		<table cellpadding="3">
 			<tr>
                 <td class="LabelColumn"><?= gettext('Date') ?>:</td>
-				<td class="TextColumn"><input type="text" name="Date" value="<?= $dDate ?>" maxlength="10" id="Date" size="11" class="date-picker"><font color="red"><?php echo $sDateError ?></font></td>
+				<td class="TextColumn"><input type="text" name="Date" value="<?= $dDate ?>" maxlength="10" id="Date" size="11" class="date-picker"><span style="color: red;"><?php echo $sDateError ?></span></td>
 			</tr>
 
 			<tr>

@@ -193,7 +193,7 @@ require 'Include/Header.php';
 
 			<tr>
                 <td class="LabelColumn"><?= gettext('Date') ?>:</td>
-				<td class="TextColumn"><input type="text" name="Date" value="<?= $dDate ?>" maxlength="10" id="sel1" size="11"  class="form-control pull-right active date-picker" ?><font color="red"><?= $sDateError ?></font></td>
+				<td class="TextColumn"><input type="text" name="Date" value="<?= $dDate ?>" maxlength="10" id="sel1" size="11"  class="form-control pull-right active date-picker" ?><span style="color: red;"><?= $sDateError ?></span></td>
 			</tr>
 
 

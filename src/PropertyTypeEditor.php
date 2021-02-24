@@ -43,7 +43,7 @@ if (isset($_POST['Submit'])) {
 
     //Did they enter a name?
     if (strlen($sName) < 1) {
-        $sNameError = '<font color="red">'.gettext('You must enter a name').'</font>';
+        $sNameError = '<span style="color: red;">'.gettext('You must enter a name').'</span>';
         $bError = true;
     }
 
