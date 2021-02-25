@@ -69,13 +69,13 @@ if (isset($_POST['Submit'])) {
 
     //Did they enter a name?
     if (strlen($sName) < 1) {
-        $sNameError = '<br><font color="red">'.gettext('You must enter a name').'</font>';
+        $sNameError = '<br><span style="color: red;">'.gettext('You must enter a name').'</span>';
         $bError = true;
     }
 
     //Did they select a Type
     if (strlen($iClass) < 1) {
-        $sClassError = '<br><font color="red">'.gettext('You must select a type').'</font>';
+        $sClassError = '<br><span style="color: red;">'.gettext('You must select a type').'</span>';
         $bError = true;
     }
 

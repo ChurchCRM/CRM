@@ -66,7 +66,7 @@ if (AuthenticationManager::GetCurrentUser()->isFinanceEnabled() && isset($_GET['
         . "' WHERE egv_famID='$iFamilyID'";
     RunQuery($sSQL);
 
-    $DonationMessage = '<p><b><font color=red>' . gettext('All donations from this family have been moved to another family.') . '</font></b></p>';
+    $DonationMessage = '<p><b><span style="color: red;">' . gettext('All donations from this family have been moved to another family.') . '</span></b></p>';
 }
 
 //Set the Page Title

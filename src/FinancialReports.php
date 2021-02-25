@@ -45,7 +45,7 @@ require 'Include/Header.php';
 
 // No Records Message if previous report returned no records.
 if (array_key_exists('ReturnMessage', $_GET) && $_GET['ReturnMessage'] == 'NoRows') {
-    echo '<h3><font color=red>'.gettext('No records were returned from the previous report.').'</font></h3>';
+    echo '<h3><span style="color: red;">'.gettext('No records were returned from the previous report.').'</span></h3>';
 }
 
 if ($sReportType == '') {
