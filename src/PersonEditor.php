@@ -653,7 +653,7 @@ require 'Include/Header.php';
                                value="<?= htmlentities(stripslashes($sFirstName), ENT_NOQUOTES, 'UTF-8') ?>"
                                class="form-control">
                         <?php if ($sFirstNameError) {
-?><br><span style="color: red;"><?php echo $sFirstNameError ?></span><?php
+        ?><br><span style="color: red;"><?php echo $sFirstNameError ?></span><?php
     } ?>
                     </div>
 
