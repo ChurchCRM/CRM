@@ -42,14 +42,14 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
             </div>
             <div class="box-body">
                 <li><b><?= gettext("Admin") ?>:</b> <?= $user->isAdmin() ? _("Yes") : _("No") ?></li>
-                <li><b><?= gettext("Add Records") ?>:</b> <?= $user->isAddRecords() ? _("Yes") : _("No") ?></li>
-                <li><b><?= gettext("Edit Records") ?>:</b> <?= $user->isEditRecords() ? _("Yes") : _("No") ?></li>
-                <li><b><?= gettext("Delete Records") ?>:</b> <?= $user->isDeleteRecords() ? _("Yes") : _("No") ?></li>
-                <li><b><?= gettext("Manage Properties and Classifications") ?>:</b> <?= $user->isMenuOptions() ? _("Yes") : _("No") ?></li>
-                <li><b><?= gettext("Manage Groups and Roles") ?>:</b> <?= $user->isManageGroups() ? _("Yes") : _("No") ?></li>
-                <li><b><?= gettext("Manage Donations and Finance") ?>:</b> <?= $user->isFinance() ? _("Yes") : _("No") ?></li>
-                <li><b><?= gettext("Manage Notes") ?>:</b> <?= $user->isNotes() ? _("Yes") : _("No") ?></li>
-                <li><b><?= gettext("Canvasser") ?>:</b> <?= $user->isCanvasser() ? _("Yes") : _("No") ?></li>
+                <li><b><?= gettext("Add Records") ?>:</b> <?= $user->isAdmin() || $user->isAddRecords() ? _("Yes") : _("No") ?></li>
+                <li><b><?= gettext("Edit Records") ?>:</b> <?= $user->isAdmin() || $user->isEditRecords() ? _("Yes") : _("No") ?></li>
+                <li><b><?= gettext("Delete Records") ?>:</b> <?= $user->isAdmin() ||  $user->isDeleteRecords() ? _("Yes") : _("No") ?></li>
+                <li><b><?= gettext("Manage Properties and Classifications") ?>:</b> <?= $user->isAdmin() || $user->isMenuOptions() ? _("Yes") : _("No") ?></li>
+                <li><b><?= gettext("Manage Groups and Roles") ?>:</b> <?= $user->isAdmin() || $user->isManageGroups() ? _("Yes") : _("No") ?></li>
+                <li><b><?= gettext("Manage Donations and Finance") ?>:</b> <?= $user->isAdmin() || $user->isFinance() ? _("Yes") : _("No") ?></li>
+                <li><b><?= gettext("Manage Notes") ?>:</b> <?= $user->isAdmin() || $user->isNotes() ? _("Yes") : _("No") ?></li>
+                <li><b><?= gettext("Canvasser") ?>:</b> <?= $user->isAdmin() || $user->isCanvasser() ? _("Yes") : _("No") ?></li>
             </div>
         </div>
     </div>
