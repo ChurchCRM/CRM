@@ -180,7 +180,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         $iupdateBirthYear = InputUtils::LegacyFilterInput($_POST['updateBirthYear'], 'int');
     }
 
-    $iFacebook = InputUtils::FilterInt($_POST['Facebook']);
+    $sFacebook = InputUtils::FilterString($_POST['Facebook']);
     $sTwitter = InputUtils::FilterString($_POST['Twitter']);
     $sLinkedIn = InputUtils::FilterString($_POST['LinkedIn']);
 
@@ -342,7 +342,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
             }
 
             $sSQL .= ', '.$per_Flags;
-            $sSQL .= ', '. $iFacebook;
+            $sSQL .= ', '. $sFacebook;
             $sSQL .= ', "'. $sTwitter.'"';
             $sSQL .= ', "'. $sLinkedIn.'"';
             $sSQL .= ')';
@@ -372,7 +372,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
 
             $sSQL .= ', per_Flags='.$per_Flags;
 
-            $sSQL .= ', per_Facebook='. $iFacebook;
+            $sSQL .= ', per_Facebook="'. $sFacebook.'"';
             $sSQL .= ', per_Twitter="'. $sTwitter.'"';
             $sSQL .= ', per_LinkedIn="'. $sLinkedIn.'"';
 
@@ -492,7 +492,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         $iClassification = $per_cls_ID;
         $iViewAgeFlag = $per_Flags;
 
-        $iFacebookID = $per_Facebook;
+        $sFacebook = $per_Facebook;
         $sTwitter = $per_Twitter;
         $sLinkedIn = $per_LinkedIn;
 
@@ -515,7 +515,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         $bFamilyCellPhone = strlen($fam_CellPhone);
         $bFamilyEmail = strlen($fam_Email);
 
-        $bFacebookID = $per_Facebook != 0;
+        $bFacebook = strlen($per_Facebook);
         $bTwitter =  strlen($per_Twitter);
         $bLinkedIn = strlen($per_LinkedIn);
 
@@ -558,7 +558,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         $iViewAgeFlag = 0;
         $sPhoneCountry = '';
 
-        $iFacebookID = 0;
+        $sFacebook = '';
         $sTwitter = '';
         $sLinkedIn = '';
 
@@ -1068,9 +1068,9 @@ require 'Include/Header.php';
             </div>
             <div class="row">
                 <div class="form-group col-md-4">
-                    <label for="FacebookID">
+                    <label for="Facebook">
                         <?php
-                        if ($bFacebookID) {
+                        if ($bFacebook) {
                             echo '<span style="color: red;">'.gettext('Facebook').':</span></td>';
                         } else {
                             echo gettext('Facebook').':</td>';
@@ -1082,7 +1082,7 @@ require 'Include/Header.php';
                             <i class="fa fa-facebook"></i>
                         </div>
                         <input type="text" name="Facebook"
-                               value="<?= htmlentities(stripslashes($iFacebookID), ENT_NOQUOTES, 'UTF-8') ?>" size="30"
+                               value="<?= htmlentities(stripslashes($sFacebook), ENT_NOQUOTES, 'UTF-8') ?>" size="30"
                                maxlength="100" class="form-control">
                         <?php if ($sFacebookError) {
                             ?><span style="color: red;"><?php echo $sFacebookError ?></span><?php
