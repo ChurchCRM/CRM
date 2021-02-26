@@ -326,7 +326,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         if ($iPersonID < 1) {
             $iEnvelope = 0;
 
-            $sSQL = "INSERT INTO person_per (per_Title, per_FirstName, per_MiddleName, per_LastName, per_Suffix, per_Gender, per_Address1, per_Address2, per_City, per_State, per_Zip, per_Country, per_HomePhone, per_WorkPhone, per_CellPhone, per_Email, per_WorkEmail, per_BirthMonth, per_BirthDay, per_BirthYear, per_Envelope, per_fam_ID, per_fmr_ID, per_MembershipDate, per_cls_ID, per_DateEntered, per_EnteredBy, per_FriendDate, per_Flags, per_FacebookID, per_Twitter, per_LinkedIn)
+            $sSQL = "INSERT INTO person_per (per_Title, per_FirstName, per_MiddleName, per_LastName, per_Suffix, per_Gender, per_Address1, per_Address2, per_City, per_State, per_Zip, per_Country, per_HomePhone, per_WorkPhone, per_CellPhone, per_Email, per_WorkEmail, per_BirthMonth, per_BirthDay, per_BirthYear, per_Envelope, per_fam_ID, per_fmr_ID, per_MembershipDate, per_cls_ID, per_DateEntered, per_EnteredBy, per_FriendDate, per_Flags, per_Facebook, per_Twitter, per_LinkedIn)
 			         VALUES ('".$sTitle."','".$sFirstName."','".$sMiddleName."','".$sLastName."','".$sSuffix."',".$iGender.",'".$sAddress1."','".$sAddress2."','".$sCity."','".$sState."','".$sZip."','".$sCountry."','".$sHomePhone."','".$sWorkPhone."','".$sCellPhone."','".$sEmail."','".$sWorkEmail."',".$iBirthMonth.','.$iBirthDay.','.$iBirthYear.','.$iEnvelope.','.$iFamily.','.$iFamilyRole.',';
             if (strlen($dMembershipDate) > 0) {
                 $sSQL .= '"'.$dMembershipDate.'"';
@@ -372,7 +372,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
 
             $sSQL .= ', per_Flags='.$per_Flags;
 
-            $sSQL .= ', per_FacebookID='. $iFacebook;
+            $sSQL .= ', per_Facebook='. $iFacebook;
             $sSQL .= ', per_Twitter="'. $sTwitter.'"';
             $sSQL .= ', per_LinkedIn="'. $sLinkedIn.'"';
 
@@ -492,7 +492,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         $iClassification = $per_cls_ID;
         $iViewAgeFlag = $per_Flags;
 
-        $iFacebookID = $per_FacebookID;
+        $iFacebookID = $per_Facebook;
         $sTwitter = $per_Twitter;
         $sLinkedIn = $per_LinkedIn;
 
@@ -515,7 +515,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         $bFamilyCellPhone = strlen($fam_CellPhone);
         $bFamilyEmail = strlen($fam_Email);
 
-        $bFacebookID = $per_FacebookID != 0;
+        $bFacebookID = $per_Facebook != 0;
         $bTwitter =  strlen($per_Twitter);
         $bLinkedIn = strlen($per_LinkedIn);
 

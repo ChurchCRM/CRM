@@ -338,9 +338,9 @@ $bOkToEdit = (
               <?php
     }
 
-    if ($per_FacebookID > 0) {
+    if ($per_Facebook > 0) {
         ?>
-              <li><i class="fa-li fa fa-facebook-official"></i><?= gettext('Facebook') ?>: <span><a href="https://www.facebook.com/<?= InputUtils::FilterInt($per_FacebookID) ?> "target="_blank"><?= gettext('Facebook') ?></a></span></li>
+              <li><i class="fa-li fa fa-facebook-official"></i><?= gettext('Facebook') ?>: <span><a href="https://www.facebook.com/<?= InputUtils::FilterInt($per_Facebook) ?> "target="_blank"><?= gettext('Facebook') ?></a></span></li>
           <?php
     }
 
