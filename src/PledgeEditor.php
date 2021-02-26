@@ -648,7 +648,7 @@ require 'Include/Header.php';
         ?>
         <input type="submit" class="btn " value="<?= gettext('Save') ?>" name="PledgeSubmit">
         <?php if (AuthenticationManager::GetCurrentUser()->isAddRecordsEnabled()) {
-            echo '<input type="submit" class="btn btn-primary value="'.gettext('Save and Add').'" name="PledgeSubmitAndAdd">';
+            echo '<input type="submit" class="btn btn-primary" value="'.gettext('Save and Add').'" name="PledgeSubmitAndAdd">';
         } ?>
           <?php
     } ?>
