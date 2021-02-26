@@ -8,9 +8,6 @@
   *
  ******************************************************************************/
 
-// Finds and loads the base JPGraph library and any components specified as arguments
-//
-
 // MakeSalutation: this utility is used to figure out how to address a family
 // for correspondence.
 function MakeSalutationUtility($famID)
