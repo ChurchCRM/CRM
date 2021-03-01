@@ -459,11 +459,11 @@ if ($PledgeOrPayment == 'Pledge') {
     //$checkCount = mysqli_num_rows ($rsChecksThisDep);
     $roomForDeposits = $checksFit - $depositCount;
     if ($roomForDeposits <= 0) {
-        $sPageTitle .= '<font color=red>';
+        $sPageTitle .= '<span style="color: red;">';
     }
     $sPageTitle .= ' ('.$roomForDeposits.gettext(' more entries will fit.').')';
     if ($roomForDeposits <= 0) {
-        $sPageTitle .= '</font>';
+        $sPageTitle .= '</span>';
     }
 } else { // not a plege and a current deposit hasn't been created yet
     if ($sGroupKey) {
@@ -474,7 +474,7 @@ if ($PledgeOrPayment == 'Pledge') {
 } // end if $PledgeOrPayment
 
 if ($dep_Closed && $sGroupKey && $PledgeOrPayment == 'Payment') {
-    $sPageTitle .= ' &nbsp; <font color=red>'.gettext('Deposit closed').'</font>';
+    $sPageTitle .= ' &nbsp; <span style="color: red;">'.gettext('Deposit closed').'</span>';
 }
 
 //$familySelectHtml = buildFamilySelect($iFamily, $sDirRoleHead, $sDirRoleSpouse);
@@ -517,7 +517,7 @@ require 'Include/Header.php';
     $dDate = $dep_Date;
 } ?>
           <label for="Date"><?= gettext('Date') ?></label>
-          <input class="form-control" data-provide="datepicker" data-date-format='yyyy-mm-dd' type="text" name="Date" value="<?= $dDate ?>" ><font color="red"><?= $sDateError ?></font>
+          <input class="form-control" data-provide="datepicker" data-date-format='yyyy-mm-dd' type="text" name="Date" value="<?= $dDate ?>" ><span style="color: red;"><?= $sDateError ?></span>
           <label for="FYID"><?= gettext('Fiscal Year') ?></label>
            <?php PrintFYIDSelect($iFYID, 'FYID') ?>
 
@@ -614,7 +614,7 @@ require 'Include/Header.php';
         ?>
           <div id="checkNumberGroup">
           <label for="CheckNo"><?= gettext('Check') ?> #</label>
-          <input class="form-control" type="number" name="CheckNo" id="CheckNo" value="<?= $iCheckNo ?>"/><font color="red"><?= $sCheckNoError ?></font>
+          <input class="form-control" type="number" name="CheckNo" id="CheckNo" value="<?= $iCheckNo ?>"/><span style="color: red;"><?= $sCheckNoError ?></span>
           </div>
         <?php
     } ?>
@@ -648,7 +648,7 @@ require 'Include/Header.php';
         ?>
         <input type="submit" class="btn " value="<?= gettext('Save') ?>" name="PledgeSubmit">
         <?php if (AuthenticationManager::GetCurrentUser()->isAddRecordsEnabled()) {
-            echo '<input type="submit" class="btn btn-primary value="'.gettext('Save and Add').'" name="PledgeSubmitAndAdd">';
+            echo '<input type="submit" class="btn btn-primary" value="'.gettext('Save and Add').'" name="PledgeSubmitAndAdd">';
         } ?>
           <?php
     } ?>
@@ -692,7 +692,7 @@ require 'Include/Header.php';
                   <td class="TextColumn"><?= $fun_name ?></td>
                   <td class="TextColumn">
                     <input class="FundAmount" type="number" step="any" name="<?= $fun_id ?>_Amount" id="<?= $fun_id ?>_Amount" value="<?= ($nAmount[$fun_id] ? $nAmount[$fun_id] : "") ?>"><br>
-                    <font color="red"><?= $sAmountError[$fun_id] ?></font>
+                    <span style="color: red;"><?= $sAmountError[$fun_id] ?></span>
                   </td>
                   <?php
                     if ($bEnableNonDeductible) {
@@ -700,7 +700,7 @@ require 'Include/Header.php';
                       <td class="TextColumn">
                         <input type="number" step="any" name="<?= $fun_id ?>_NonDeductible" id="<?= $fun_id ?>_NonDeductible" value="<?= ($nNonDeductible[$fun_id] ? $nNonDeductible[$fun_id] : "")?>" />
                         <br>
-                        <font color="red"><?= $sNonDeductibleError[$fun_id]?></font>
+                        <span style="color: red;"><?= $sNonDeductibleError[$fun_id]?></span>
                       </td>
                     <?php
                     } ?>

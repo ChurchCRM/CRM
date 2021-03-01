@@ -151,7 +151,7 @@ class SystemConfig
         "sConfirmSigner" => new ConfigItem(1025, "sConfirmSigner", "text", "", gettext("Database information confirmation and correction report signer")),
         "sPledgeSummary1" => new ConfigItem(1026, "sPledgeSummary1", "text", "Summary of pledges and payments for the fiscal year", gettext("Verbage for the pledge summary report")),
         "sPledgeSummary2" => new ConfigItem(1027, "sPledgeSummary2", "text", " as of", gettext("Verbage for the pledge summary report")),
-        "sDirectoryDisclaimer1" => new ConfigItem(1028, "sDirectoryDisclaimer1", "text", "Every effort was made to insure the accuracy of this directory.  If there are any errors or omissions, please contact the church office.\n\nThis directory is for the use of the people of", gettext("Verbage for the directory report")),
+        "sDirectoryDisclaimer1" => new ConfigItem(1028, "sDirectoryDisclaimer1", "text", "Every effort was made to ensure the accuracy of this directory.  If there are any errors or omissions, please contact the church office.\n\nThis directory is for the use of the people of", gettext("Verbage for the directory report")),
         "sDirectoryDisclaimer2" => new ConfigItem(1029, "sDirectoryDisclaimer2", "text", ", and the information contained in it may not be used for business or commercial purposes.", gettext("Verbage for the directory report")),
         "bDirLetterHead" => new ConfigItem(1030, "bDirLetterHead", "text", "../Images/church_letterhead.jpg", gettext("Church Letterhead path and file")),
         "sZeroGivers" => new ConfigItem(1031, "sZeroGivers", "text", "This letter shows our record of your payments for", gettext("Verbage for top line of tax report. Dates will be appended to the end of this line.")),

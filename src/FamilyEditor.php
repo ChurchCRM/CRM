@@ -653,7 +653,7 @@ require 'Include/Header.php';
 						<label><?= gettext('Family Name') ?>:</label>
 						<input type="text" Name="Name" id="FamilyName" value="<?= htmlentities(stripslashes($sName), ENT_NOQUOTES, 'UTF-8') ?>" maxlength="48"  class="form-control">
 						<?php if ($sNameError) {
-    ?><font color="red"><?= $sNameError ?></font><?php
+    ?><span style="color: red;"><?= $sNameError ?></span><?php
 } ?>
 					</div>
 				</div>
@@ -766,7 +766,7 @@ require 'Include/Header.php';
 						<div class="input-group-addon">
 							<i class="fa fa-envelope"></i>
 						</div>
-						<input type="text" Name="Email" class="form-control" value="<?= htmlentities(stripslashes($sEmail)) ?>" size="30" maxlength="100"><font color="red"><?php echo '<BR>'.$sEmailError ?></font>
+						<input type="text" Name="Email" class="form-control" value="<?= htmlentities(stripslashes($sEmail)) ?>" size="30" maxlength="100"><span style="color: red;"><?php echo '<BR>'.$sEmailError ?></span>
 					</div>
 				</div>
 				<?php if (!SystemConfig::getValue('bHideFamilyNewsletter')) { /* Newsletter can be hidden - General Settings */ ?>
@@ -960,9 +960,9 @@ require 'Include/Header.php';
 		<tr>
 			<td class="TextColumn">
 				<input name="FirstName<?= $iCount ?>" type="text" value="<?= $aFirstNames[$iCount] ?>" size="10">
-				<div><font color="red"><?php if (array_key_exists($iCount, $aFirstNameError)) {
+				<div><span style="color: red;"><?php if (array_key_exists($iCount, $aFirstNameError)) {
                 echo $aFirstNameError[$iCount];
-            } ?></font></div>
+            } ?></span></div>
 			</td>
 			<td class="TextColumn">
 				<input name="MiddleName<?= $iCount ?>" type="text" value="<?= $aMiddleNames[$iCount] ?>" size="10">
@@ -1066,9 +1066,9 @@ require 'Include/Header.php';
 			<?php	if (!array_key_exists($iCount, $aperFlags) || !$aperFlags[$iCount]) {
                     $UpdateBirthYear = 1; ?>
 				<input name="BirthYear<?= $iCount ?>" type="text" value="<?= $aBirthYears[$iCount] ?>" size="4" maxlength="4">
-				<div><font color="red"><?php if (array_key_exists($iCount, $aBirthDateError)) {
+				<div><span style="color: red;"><?php if (array_key_exists($iCount, $aBirthDateError)) {
                         echo $aBirthDateError[$iCount];
-                    } ?></font></div>
+                    } ?></span></div>
 			<?php
                 } else {
                     $UpdateBirthYear = 0;

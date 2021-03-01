@@ -9515,6 +9515,12 @@ msgstr "Ver Página de Persona"
 msgid "Verify"
 msgstr "Verificar"
 
+#. "emails" or "correos electrónicos" ? It depends on how is used it in other places of the software.
+#. "emails" is fine by me, since is a very common word around the Spanish-speakers population
+#: 
+msgid "Family has no emails to use"
+msgstr "La familia no tiene emails para usar"
+
 #: 
 msgid "Blue"
 msgstr "Azul"
@@ -9539,4 +9545,12 @@ msgstr "Rojo"
 #: 
 msgid "Yellow"
 msgstr "Amarillo"
+
+#: 
+msgid "Toggle Sidebar"
+msgstr "Cambiar barra lateral"
+
+#: 
+msgid "Toggle the left sidebar's state (open or collapse)"
+msgstr "Cambiar el estado de la barra lateral izquierda (abrir o cerrar)"
 

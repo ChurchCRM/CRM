@@ -4893,6 +4893,10 @@ msgid "Home area code of the church"
 msgstr "Ortsvorwahl der Gemeinde"
 
 #: 
+msgid "Last Backup Timestamp"
+msgstr "Zeit des letzten Backups"
+
+#: 
 msgid "Enable Integrity Check"
 msgstr "Integritätsprüfung aktivieren"
 
@@ -5017,8 +5021,16 @@ msgid "Minimum Age"
 msgstr "Mindestalter"
 
 #: 
+msgid "Maximum Age"
+msgstr "Maximales Alter"
+
+#: 
 msgid "Beginning Date"
 msgstr "Beginn"
+
+#: 
+msgid "Ending Date"
+msgstr "Enddatum"
 
 #: 
 msgid "Search"
@@ -5037,6 +5049,14 @@ msgid "Months"
 msgstr "Monate"
 
 #: 
+msgid "First Fiscal Year"
+msgstr "Erstes Fiskaljahr"
+
+#: 
+msgid "Second Fiscal Year"
+msgstr "Zweites Fiskaljahr"
+
+#: 
 msgid "Custom field"
 msgstr "Selbsterstelltes Feld"
 
@@ -5047,6 +5067,10 @@ msgstr "Feldwert"
 #: 
 msgid "Select the desired family role."
 msgstr "Wählen Sie die gewünschte Familienrolle"
+
+#: 
+msgid "but not this year"
+msgstr "aber nicht dieses Jahr"
 
 #: 
 msgid "Fiscal Year."
@@ -5221,6 +5245,10 @@ msgid "Pledge status"
 msgstr "Status der Zuwendung"
 
 #: 
+msgid "Suggestion"
+msgstr "Vorschlag"
+
+#: 
 msgid "WhyNotInterested"
 msgstr "WehalbUninteressiert"
 
@@ -5315,6 +5343,14 @@ msgstr "Gruppenarten Editieren"
 #: 
 msgid "Security Group"
 msgstr "Sicherheitsgruppe"
+
+#: 
+msgid "Security Groups"
+msgstr "Sicherheitsgruppen"
+
+#: 
+msgid "Security Groups Editor"
+msgstr "Sicherheitsgruppen-Editor"
 
 #: 
 msgid "Custom List Option"
@@ -5765,6 +5801,18 @@ msgid "Guadeloupe"
 msgstr "Guadeloupe"
 
 #: 
+msgid "Iceland (Ísland)"
+msgstr "Island"
+
+#: 
+msgid "India (भारत)"
+msgstr "Indien"
+
+#: 
+msgid "Ireland"
+msgstr "Irland"
+
+#: 
 msgid "Isle of Man"
 msgstr "Isle of Man"
 
@@ -5839,6 +5887,14 @@ msgstr "Libyen"
 #: 
 msgid "Liechtenstein"
 msgstr "Liechtenstein"
+
+#: 
+msgid "Luxembourg"
+msgstr "Luxemburg"
+
+#: 
+msgid "Maldives"
+msgstr "Malediven"
 
 #: 
 msgid "Montenegro (Crna Gora)"
@@ -8567,4 +8623,48 @@ msgstr "Erfordert 2FA"
 #: 
 msgid "2FA Application Name"
 msgstr "2FA Anwendungsname Name"
+
+#: 
+msgid "Permissions"
+msgstr "Berechtigungen"
+
+#: 
+msgid "Paid"
+msgstr "Bezahlt"
+
+#: 
+msgid "Start Date"
+msgstr "Startdatum"
+
+#: 
+msgid "End Date"
+msgstr "Enddatum"
+
+#: 
+msgid "Pinned Calendars"
+msgstr "Angepinnte Kalender"
+
+#: 
+msgid "Store these in a secure location"
+msgstr "An sicherem Ort speichern"
+
+#: 
+msgid "Loading"
+msgstr "Lädt"
+
+#: 
+msgid "Today's Birthdays"
+msgstr "Heutige Geburtstage"
+
+#: 
+msgid "Verify"
+msgstr "Verifizieren"
+
+#: 
+msgid "Blue"
+msgstr "Blau"
+
+#: 
+msgid "Black"
+msgstr "Schwarz"
 

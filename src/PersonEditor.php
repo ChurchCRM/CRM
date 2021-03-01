@@ -653,8 +653,7 @@ require 'Include/Header.php';
                                value="<?= htmlentities(stripslashes($sFirstName), ENT_NOQUOTES, 'UTF-8') ?>"
                                class="form-control">
                         <?php if ($sFirstNameError) {
-        ?><br><font
-                            color="red"><?php echo $sFirstNameError ?></font><?php
+        ?><br><span style="color: red;"><?php echo $sFirstNameError ?></span><?php
     } ?>
                     </div>
 
@@ -664,8 +663,7 @@ require 'Include/Header.php';
                                value="<?= htmlentities(stripslashes($sMiddleName), ENT_NOQUOTES, 'UTF-8') ?>"
                                class="form-control">
                         <?php if ($sMiddleNameError) {
-        ?><br><font
-                            color="red"><?php echo $sMiddleNameError ?></font><?php
+        ?><br><span style="color: red;"><?php echo $sMiddleNameError ?></span><?php
     } ?>
                     </div>
 
@@ -675,8 +673,7 @@ require 'Include/Header.php';
                                value="<?= htmlentities(stripslashes($sLastName), ENT_NOQUOTES, 'UTF-8') ?>"
                                class="form-control">
                         <?php if ($sLastNameError) {
-        ?><br><font
-                            color="red"><?php echo $sLastNameError ?></font><?php
+        ?><br><span style="color: red;"><?php echo $sLastNameError ?></span><?php
     } ?>
                     </div>
 
@@ -755,12 +752,11 @@ require 'Include/Header.php';
                         <input type="text" id="BirthYear" name="BirthYear" value="<?php echo $iBirthYear ?>" maxlength="4" size="5"
                                placeholder="yyyy" class="form-control">
                         <?php if ($sBirthYearError) {
-        ?><font color="red"><br><?php echo $sBirthYearError ?>
-                            </font><?php
+        ?><span style="color: red;"><br><?php echo $sBirthYearError ?>
+                            </span><?php
     } ?>
                         <?php if ($sBirthDateError) {
-        ?><font
-                            color="red"><?php echo $sBirthDateError ?></font><?php
+        ?><span style="color: red;"><?php echo $sBirthDateError ?></span><?php
     } ?>
                     </div>
                     <div class="col-md-2">
@@ -1051,7 +1047,7 @@ require 'Include/Header.php';
                                value="<?= htmlentities(stripslashes($sEmail), ENT_NOQUOTES, 'UTF-8') ?>" size="30"
                                maxlength="100" class="form-control">
                         <?php if ($sEmailError) {
-                            ?><font color="red"><?php echo $sEmailError ?></font><?php
+                            ?><span style="color: red;"><?php echo $sEmailError ?></span><?php
                         } ?>
                     </div>
                 </div>
@@ -1065,8 +1061,7 @@ require 'Include/Header.php';
                                value="<?= htmlentities(stripslashes($sWorkEmail), ENT_NOQUOTES, 'UTF-8') ?>" size="30"
                                maxlength="100" class="form-control">
                         <?php if ($sWorkEmailError) {
-                            ?><font
-                            color="red"><?php echo $sWorkEmailError ?></font></td><?php
+                            ?><span style="color: red;"><?php echo $sWorkEmailError ?></span></td><?php
                         } ?>
                     </div>
                 </div>
@@ -1090,7 +1085,7 @@ require 'Include/Header.php';
                                value="<?= htmlentities(stripslashes($iFacebookID), ENT_NOQUOTES, 'UTF-8') ?>" size="30"
                                maxlength="100" class="form-control">
                         <?php if ($sFacebookError) {
-                            ?><font color="red"><?php echo $sFacebookError ?></font><?php
+                            ?><span style="color: red;"><?php echo $sFacebookError ?></span><?php
                         } ?>
                     </div>
                 </div>
@@ -1104,8 +1099,7 @@ require 'Include/Header.php';
                                value="<?= htmlentities(stripslashes($sTwitter), ENT_NOQUOTES, 'UTF-8') ?>" size="30"
                                maxlength="100" class="form-control">
                         <?php if ($sTwitterError) {
-                            ?><font
-                            color="red"><?php echo $sTwitterError ?></font></td><?php
+                            ?><span style="color: red;"><?php echo $sTwitterError ?></span></td><?php
                         } ?>
                     </div>
                 </div>
@@ -1119,8 +1113,7 @@ require 'Include/Header.php';
                                  value="<?= htmlentities(stripslashes($sLinkedIn), ENT_NOQUOTES, 'UTF-8') ?>" size="30"
                                  maxlength="100" class="form-control">
                           <?php if ($sLinkedInError) {
-                            ?><font
-                              color="red"><?php echo $sLinkedInError ?></font></td><?php
+                            ?><span style="color: red;"><?php echo $sLinkedInError ?></span></td><?php
                         } ?>
                       </div>
                   </div>
@@ -1162,8 +1155,7 @@ require 'Include/Header.php';
                                value="<?= change_date_for_place_holder($dMembershipDate) ?>" maxlength="10" id="sel1" size="11"
                                placeholder="<?= SystemConfig::getValue("sDatePickerPlaceHolder") ?>">
                         <?php if ($sMembershipDateError) {
-                            ?><font
-                            color="red"><?= $sMembershipDateError ?></font><?php
+                            ?><span style="color: red;"><?= $sMembershipDateError ?></span><?php
                         } ?>
                     </div>
                 </div>
@@ -1178,8 +1170,7 @@ require 'Include/Header.php';
                            value="<?= change_date_for_place_holder($dFriendDate) ?>" maxlength="10" id="sel2" size="10"
                            placeholder="<?= SystemConfig::getValue("sDatePickerPlaceHolder") ?>">
                     <?php if ($sFriendDateError) {
-                            ?><font
-                      color="red"><?php echo $sFriendDateError ?></font><?php
+                            ?><span style="color: red;"><?php echo $sFriendDateError ?></span><?php
                         } ?>
                   </div>
                 </div>
