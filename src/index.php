@@ -2,6 +2,7 @@
 
 if (version_compare(phpversion(), "7.3.0", "<") || version_compare(phpversion(), "8.0.0", ">=")) {
     header("Location: php-error.html");
+    exit;
 }
 
 use ChurchCRM\Authentication\AuthenticationManager;
