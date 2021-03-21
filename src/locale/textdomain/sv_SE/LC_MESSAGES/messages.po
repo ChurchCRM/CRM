@@ -1136,10 +1136,6 @@ msgid "Event Date"
 msgstr "Evenemangdatum"
 
 #: 
-msgid "Generate Report"
-msgstr "Skapa rapport"
-
-#: 
 msgid "Attending Members"
 msgstr "Deltagande medlemmar"
 
@@ -1154,10 +1150,6 @@ msgstr "Gäster"
 #: 
 msgid "There are no events in this category"
 msgstr "Finns inga evenemang i denn kategori"
-
-#: 
-msgid "There are no Records"
-msgstr "Finns inga poster"
 
 #: 
 msgid "Create Event"

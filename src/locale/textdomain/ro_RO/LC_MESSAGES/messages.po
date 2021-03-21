@@ -1132,10 +1132,6 @@ msgid "Event Date"
 msgstr "Data evenimentului"
 
 #: 
-msgid "Generate Report"
-msgstr "Genera un raport"
-
-#: 
 msgid "Attending Members"
 msgstr "Participarea membrilor"
 
@@ -1150,10 +1146,6 @@ msgstr "Vizitatori"
 #: 
 msgid "There are no events in this category"
 msgstr "Nu există evenimente în această categorie"
-
-#: 
-msgid "There are no Records"
-msgstr "Nu există înregistrări"
 
 #: 
 msgid "Create Event"
