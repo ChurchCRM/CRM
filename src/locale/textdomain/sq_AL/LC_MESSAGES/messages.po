@@ -1009,10 +1009,6 @@ msgid "Event Date"
 msgstr "Data Event"
 
 #: 
-msgid "Generate Report"
-msgstr "Generate Raportin"
-
-#: 
 msgid "Attending Members"
 msgstr "Të pranishëm Anëtarët"
 
@@ -1027,10 +1023,6 @@ msgstr "Guests"
 #: 
 msgid "There are no events in this category"
 msgstr "Nuk ka ngjarje në këtë kategori"
-
-#: 
-msgid "There are no Records"
-msgstr "Nuk ka shenime"
 
 #: 
 msgid "Editing Event ID: "

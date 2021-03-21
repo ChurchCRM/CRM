@@ -1128,10 +1128,6 @@ msgid "Event Date"
 msgstr "Дата Событие"
 
 #: 
-msgid "Generate Report"
-msgstr "Создать отчет"
-
-#: 
 msgid "Attending Members"
 msgstr "Посещение Пользователи"
 
@@ -1146,10 +1142,6 @@ msgstr "Гости"
 #: 
 msgid "There are no events in this category"
 msgstr "Там не было никаких событий в этой категории"
-
-#: 
-msgid "There are no Records"
-msgstr "Там нет записей"
 
 #: 
 msgid "Create Event"
