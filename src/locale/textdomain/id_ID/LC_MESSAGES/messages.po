@@ -1099,10 +1099,6 @@ msgid "Event Date"
 msgstr "Tanggal kegiatan"
 
 #: 
-msgid "Generate Report"
-msgstr "Munculkan Pelaporan"
-
-#: 
 msgid "Attending Members"
 msgstr "Jumlah anggota yang hadir"
 
@@ -1117,10 +1113,6 @@ msgstr "Tamu-tamu"
 #: 
 msgid "There are no events in this category"
 msgstr "Tidak ada kegiatan-kegiatan pada kategori ini"
-
-#: 
-msgid "There are no Records"
-msgstr "Tidak ada pencatatan"
 
 #: 
 msgid "Create Event"

@@ -1132,10 +1132,6 @@ msgid "Event Date"
 msgstr "活动日期"
 
 #: 
-msgid "Generate Report"
-msgstr "生成报告"
-
-#: 
 msgid "Attending Members"
 msgstr "出席委员"
 
@@ -1150,10 +1146,6 @@ msgstr "宾客"
 #: 
 msgid "There are no events in this category"
 msgstr "有没有在这个类别的事件"
-
-#: 
-msgid "There are no Records"
-msgstr "没有记录"
 
 #: 
 msgid "Create Event"

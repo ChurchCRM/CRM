@@ -1101,10 +1101,6 @@ msgid "Event Date"
 msgstr "Datum activiteit"
 
 #: 
-msgid "Generate Report"
-msgstr "Genereer Rapportage"
-
-#: 
 msgid "Attending Members"
 msgstr "Aanwezige Leden"
 
@@ -1119,10 +1115,6 @@ msgstr "Gasten"
 #: 
 msgid "There are no events in this category"
 msgstr "Er zijn geen activiteiten in deze categorie"
-
-#: 
-msgid "There are no Records"
-msgstr "Er zijn geen Records"
 
 #: 
 msgid "Create Event"

@@ -816,10 +816,6 @@ msgid "There are no events in this category"
 msgstr "אין אירועים בקטגוריה זאת"
 
 #: 
-msgid "There are no Records"
-msgstr "אין רשומות"
-
-#: 
 msgid "Create Event"
 msgstr "צור אירוע"
 
