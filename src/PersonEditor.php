@@ -180,7 +180,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         $iupdateBirthYear = InputUtils::LegacyFilterInput($_POST['updateBirthYear'], 'int');
     }
 
-    $iFacebook = InputUtils::FilterInt($_POST['Facebook']);
+    $sFacebook = InputUtils::FilterString($_POST['Facebook']);
     $sTwitter = InputUtils::FilterString($_POST['Twitter']);
     $sLinkedIn = InputUtils::FilterString($_POST['LinkedIn']);
 
@@ -326,7 +326,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         if ($iPersonID < 1) {
             $iEnvelope = 0;
 
-            $sSQL = "INSERT INTO person_per (per_Title, per_FirstName, per_MiddleName, per_LastName, per_Suffix, per_Gender, per_Address1, per_Address2, per_City, per_State, per_Zip, per_Country, per_HomePhone, per_WorkPhone, per_CellPhone, per_Email, per_WorkEmail, per_BirthMonth, per_BirthDay, per_BirthYear, per_Envelope, per_fam_ID, per_fmr_ID, per_MembershipDate, per_cls_ID, per_DateEntered, per_EnteredBy, per_FriendDate, per_Flags, per_FacebookID, per_Twitter, per_LinkedIn)
+            $sSQL = "INSERT INTO person_per (per_Title, per_FirstName, per_MiddleName, per_LastName, per_Suffix, per_Gender, per_Address1, per_Address2, per_City, per_State, per_Zip, per_Country, per_HomePhone, per_WorkPhone, per_CellPhone, per_Email, per_WorkEmail, per_BirthMonth, per_BirthDay, per_BirthYear, per_Envelope, per_fam_ID, per_fmr_ID, per_MembershipDate, per_cls_ID, per_DateEntered, per_EnteredBy, per_FriendDate, per_Flags, per_Facebook, per_Twitter, per_LinkedIn)
 			         VALUES ('".$sTitle."','".$sFirstName."','".$sMiddleName."','".$sLastName."','".$sSuffix."',".$iGender.",'".$sAddress1."','".$sAddress2."','".$sCity."','".$sState."','".$sZip."','".$sCountry."','".$sHomePhone."','".$sWorkPhone."','".$sCellPhone."','".$sEmail."','".$sWorkEmail."',".$iBirthMonth.','.$iBirthDay.','.$iBirthYear.','.$iEnvelope.','.$iFamily.','.$iFamilyRole.',';
             if (strlen($dMembershipDate) > 0) {
                 $sSQL .= '"'.$dMembershipDate.'"';
@@ -342,7 +342,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
             }
 
             $sSQL .= ', '.$per_Flags;
-            $sSQL .= ', '. $iFacebook;
+            $sSQL .= ', '. $sFacebook;
             $sSQL .= ', "'. $sTwitter.'"';
             $sSQL .= ', "'. $sLinkedIn.'"';
             $sSQL .= ')';
@@ -372,7 +372,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
 
             $sSQL .= ', per_Flags='.$per_Flags;
 
-            $sSQL .= ', per_FacebookID='. $iFacebook;
+            $sSQL .= ', per_Facebook="'. $sFacebook.'"';
             $sSQL .= ', per_Twitter="'. $sTwitter.'"';
             $sSQL .= ', per_LinkedIn="'. $sLinkedIn.'"';
 
@@ -492,7 +492,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         $iClassification = $per_cls_ID;
         $iViewAgeFlag = $per_Flags;
 
-        $iFacebookID = $per_FacebookID;
+        $sFacebook = $per_Facebook;
         $sTwitter = $per_Twitter;
         $sLinkedIn = $per_LinkedIn;
 
@@ -515,7 +515,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         $bFamilyCellPhone = strlen($fam_CellPhone);
         $bFamilyEmail = strlen($fam_Email);
 
-        $bFacebookID = $per_FacebookID != 0;
+        $bFacebook = strlen($per_Facebook);
         $bTwitter =  strlen($per_Twitter);
         $bLinkedIn = strlen($per_LinkedIn);
 
@@ -558,7 +558,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         $iViewAgeFlag = 0;
         $sPhoneCountry = '';
 
-        $iFacebookID = 0;
+        $sFacebook = '';
         $sTwitter = '';
         $sLinkedIn = '';
 
@@ -1068,9 +1068,9 @@ require 'Include/Header.php';
             </div>
             <div class="row">
                 <div class="form-group col-md-4">
-                    <label for="FacebookID">
+                    <label for="Facebook">
                         <?php
-                        if ($bFacebookID) {
+                        if ($bFacebook) {
                             echo '<span style="color: red;">'.gettext('Facebook').':</span></td>';
                         } else {
                             echo gettext('Facebook').':</td>';
@@ -1082,8 +1082,8 @@ require 'Include/Header.php';
                             <i class="fa fa-facebook"></i>
                         </div>
                         <input type="text" name="Facebook"
-                               value="<?= htmlentities(stripslashes($iFacebookID), ENT_NOQUOTES, 'UTF-8') ?>" size="30"
-                               maxlength="100" class="form-control">
+                               value="<?= htmlentities(stripslashes($sFacebook), ENT_NOQUOTES, 'UTF-8') ?>" size="30"
+                               maxlength="50" class="form-control">
                         <?php if ($sFacebookError) {
                             ?><span style="color: red;"><?php echo $sFacebookError ?></span><?php
                         } ?>
@@ -1097,7 +1097,7 @@ require 'Include/Header.php';
                         </div>
                         <input type="text" name="Twitter"
                                value="<?= htmlentities(stripslashes($sTwitter), ENT_NOQUOTES, 'UTF-8') ?>" size="30"
-                               maxlength="100" class="form-control">
+                               maxlength="50" class="form-control">
                         <?php if ($sTwitterError) {
                             ?><span style="color: red;"><?php echo $sTwitterError ?></span></td><?php
                         } ?>
@@ -1111,7 +1111,7 @@ require 'Include/Header.php';
                           </div>
                           <input type="text" name="LinkedIn"
                                  value="<?= htmlentities(stripslashes($sLinkedIn), ENT_NOQUOTES, 'UTF-8') ?>" size="30"
-                                 maxlength="100" class="form-control">
+                                 maxlength="50" class="form-control">
                           <?php if ($sLinkedInError) {
                             ?><span style="color: red;"><?php echo $sLinkedInError ?></span></td><?php
                         } ?>
