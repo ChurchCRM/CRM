@@ -39,7 +39,7 @@
         "composer-update": " cd src/ && composer update && grunt lineending",
         "test": "echo 'skipping tests'",
         "test-docker": "node_modules/cypress/bin/cypress run",
-        "start": "docker-compose -f docker/docker-compose.test-7.4-apache.yaml up -d",
+        "docker-test-start": "cp docker/Config.php src/Include/Config.php && docker-compose -f docker/docker-compose.test-apache.yaml up -d",
         "build-react": "webpack",
         "restore-demo-db": "php scripts/restore-db.php demo",
         "restore-empty-db": "php scripts/restore-db.php",
