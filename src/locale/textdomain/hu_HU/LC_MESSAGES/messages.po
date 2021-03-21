@@ -1041,10 +1041,6 @@ msgid "Event Date"
 msgstr "Esemény dátuma"
 
 #: 
-msgid "Generate Report"
-msgstr "Jelentés létrehozása"
-
-#: 
 msgid "Attending Members"
 msgstr "Résztvevő tagok"
 
@@ -1059,10 +1055,6 @@ msgstr "Vendégek"
 #: 
 msgid "There are no events in this category"
 msgstr "Nincs esemény Ebben a kategóriában"
-
-#: 
-msgid "There are no Records"
-msgstr "Nincsenek Records"
 
 #: 
 msgid "Editing Event ID: "

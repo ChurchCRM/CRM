@@ -1098,10 +1098,6 @@ msgid "Event Date"
 msgstr "Ürituse kuupäev"
 
 #: 
-msgid "Generate Report"
-msgstr "Loo aruanne"
-
-#: 
 msgid "Attending Members"
 msgstr "Osalevad liikmed"
 
@@ -1116,10 +1112,6 @@ msgstr "Külalised"
 #: 
 msgid "There are no events in this category"
 msgstr "Selles kategoorias pole ühtegi üritust"
-
-#: 
-msgid "There are no Records"
-msgstr "Rekordid puuduvad"
 
 #: 
 msgid "Create Event"

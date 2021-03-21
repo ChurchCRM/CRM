@@ -1110,10 +1110,6 @@ msgid "Event Date"
 msgstr "Datum der Veranstaltung"
 
 #: 
-msgid "Generate Report"
-msgstr "Bericht erstellen"
-
-#: 
 msgid "Attending Members"
 msgstr "Mitglieder in der Veranstaltung"
 
@@ -1128,10 +1124,6 @@ msgstr "Gäste"
 #: 
 msgid "There are no events in this category"
 msgstr "In dieser Kategorie gibt es keine Veranstaltungen"
-
-#: 
-msgid "There are no Records"
-msgstr "Es gibt keine Einträge"
 
 #: 
 msgid "Create Event"

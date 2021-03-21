@@ -1115,10 +1115,6 @@ msgid "Event Date"
 msgstr "Ngày sự kiện"
 
 #: 
-msgid "Generate Report"
-msgstr "Tạo báo cáo"
-
-#: 
 msgid "Attending Members"
 msgstr "Thành viên tham dự"
 
@@ -1133,10 +1129,6 @@ msgstr "Khách"
 #: 
 msgid "There are no events in this category"
 msgstr "Không có sự kiện nào trong chuyên mục này"
-
-#: 
-msgid "There are no Records"
-msgstr "Không có bản ghi nào"
 
 #: 
 msgid "Create Event"
