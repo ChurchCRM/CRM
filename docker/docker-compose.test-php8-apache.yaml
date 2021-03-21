@@ -20,6 +20,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.churchcrm-apache-test-php8-debian
+    image: churchcrm/crm:php8-debian
     ports:
       - "80:80"
     volumes:
