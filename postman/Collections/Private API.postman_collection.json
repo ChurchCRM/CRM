@@ -176,7 +176,33 @@
 		},
 		{
 			"name": "Cart",
-			"item": []
+			"item": [
+				{
+					"name": "Cart: Get",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/api/cart/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"cart",
+								""
+							]
+						},
+						"description": "get all notifications to show to the user"
+					},
+					"response": []
+				}
+			]
 		},
 		{
 			"name": "Dashboard",
@@ -2568,6 +2594,116 @@
 							"response": []
 						},
 						{
+							"name": "Database - ChMeetings Export",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{api-key}}"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "{{host}}/api/database/people/export/chmeetings",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"database",
+										"people",
+										"export",
+										"chmeetings"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Database - ChMeetings Export",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "x-api-key",
+												"value": "{{api-key}}"
+											},
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/x-www-form-urlencoded"
+											}
+										],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": []
+										},
+										"url": {
+											"raw": "{{host}}/api/database/people/export/chmeetings",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"api",
+												"database",
+												"people",
+												"export",
+												"chmeetings"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "html",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Sun, 21 Mar 2021 20:15:23 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "Apache"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/7.3.9"
+										},
+										{
+											"key": "Content-Length",
+											"value": "0"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5, max=100"
+										},
+										{
+											"key": "Connection",
+											"value": "Keep-Alive"
+										},
+										{
+											"key": "Content-Type",
+											"value": "text/html; charset=UTF-8"
+										}
+									],
+									"cookie": [],
+									"body": null
+								}
+							]
+						},
+						{
 							"name": "Database - Clear People",
 							"request": {
 								"method": "POST",
@@ -2790,6 +2926,31 @@
 								"description": "get all notitication to show the user"
 							},
 							"response": []
+						},
+						{
+							"name": "Background: Timer",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{api-key}}"
+									}
+								],
+								"url": {
+									"raw": "{{host}}/api/background/timer",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"background",
+										"timer"
+									]
+								},
+								"description": "get all notifications to show to the user"
+							},
+							"response": []
 						}
 					],
 					"protocolProfileBehavior": {},
@@ -2828,6 +2989,81 @@
 				{
 					"name": "Email",
 					"item": [],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Current User",
+					"item": [
+						{
+							"name": "User: Set Setting",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{api-key}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"value\": true\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/api/user/1/setting/finance.show.payments",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"user",
+										"1",
+										"setting",
+										"finance.show.payments"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "User: get Setting",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{api-key}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{host}}/api/user/1/setting/finance.show.paymentsddddd",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"user",
+										"1",
+										"setting",
+										"finance.show.paymentsddddd"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
 					"_postman_isSubFolder": true
 				},
 				{
@@ -2930,44 +3166,6 @@
 							]
 						},
 						"description": "login and get api token back"
-					},
-					"response": []
-				},
-				{
-					"name": "Update Curent User Display / Search finance settings",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "x-api-key",
-								"value": "{{api-key}}",
-								"type": "text"
-							},
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"pledges\": \"true\",\n\t\"payments\": \"true\",\n\t\"since\": \"2018-03-04\"\n}"
-						},
-						"url": {
-							"raw": "{{host}}/api/user/current/settings/show/finance",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"api",
-								"user",
-								"current",
-								"settings",
-								"show",
-								"finance"
-							]
-						}
 					},
 					"response": []
 				}

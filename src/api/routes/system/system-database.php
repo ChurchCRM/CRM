@@ -28,6 +28,8 @@ $app->group('/database', function () {
     $this->delete('/reset', 'resetDatabase');
     $this->delete('/people/clear', 'clearPeopleTables');
 
+    $this->get('/people/export/chmeetings', 'exportChMeetings');
+
     $this->post('/backup', function ($request, $response, $args) {
         $input = (object)$request->getParsedBody();
         $BaseName = preg_replace('/[^a-zA-Z0-9\-_]/','', SystemConfig::getValue('sChurchName')). "-" . date(SystemConfig::getValue("sDateFilenameFormat"));
@@ -64,6 +66,58 @@ $app->group('/database', function () {
     });
 })->add(new AdminRoleAuthMiddleware());
 
+
+/**
+ * A method that drops all db tables
+ *
+ * @param \Slim\Http\Request $p_request The request.
+ * @param \Slim\Http\Response $p_response The response.
+ * @param array $p_args Arguments
+ * @return \Slim\Http\Response The augmented response.
+ */
+function exportChMeetings(Request $request, Response $response, array $p_args) {
+
+    $header_data=array(
+        'First Name','Last Name','Middle Name','Gender',
+        'Marital Status','Anniversary','Engagement Date',
+        'Birthdate','Mobile Phone','Home Phone','Email',
+        'Facebook','School','Grade','Employer','Job Title','Talents And Hobbies',
+        'Address Line','Address Line 2','City','State','ZIP Code','Notes','Join Date',
+        'Family Id','Family Role',
+        'Baptism Date','Baptism Location','Nickname');
+    $people = PersonQuery::create()->find();
+    $list = array();
+    foreach ($people as $person) {
+        $family = $person->getFamily();
+        $annaversery = ($family ? $family->getWeddingdate(SystemConfig::getValue("sDateFormatShort")) : "");
+        $familyRole = $person->getFamilyRoleName();
+        if ($familyRole == "Head of Household") {
+            $familyRole = "Primary";
+        }
+
+        $chPerson = array($person->getFirstName(), $person->getLastName(), $person->getMiddleName(), $person->getGenderName(),
+            '', $annaversery, "",
+            $person->getFormattedBirthDate(), $person->getCellPhone(), $person->getHomePhone(), $person->getEmail(),
+            $person->getFacebookID(), "","", "", "", "",
+            $person->getAddress1(), $person->getAddress2(), $person->getCity(), $person->getState(),  $person->getZip(), "",  $person->getMembershipDate(SystemConfig::getValue("sDateFormatShort")),
+            ($family? $family->getId(): ""), $familyRole,
+            "", "", "");
+        array_push($list, $chPerson);
+    }
+
+    $stream = fopen('php://memory', 'w+');
+    fputcsv($stream,$header_data);
+    foreach ($list as $fields) {
+        fputcsv($stream, $fields, ',');
+    }
+
+    rewind($stream);
+
+    $response = $response->withHeader('Content-Type', 'text/csv');
+    $response = $response->withHeader('Content-Disposition', 'attachment; filename="ChMeetings-'.date(SystemConfig::getValue("sDateFilenameFormat")).'.csv"');
+
+    return $response->withBody(new \Slim\Http\Stream($stream));
+}
 
 /**
  * A method that drops all db tables

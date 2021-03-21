@@ -57,7 +57,7 @@
                 defaultValue="0"/>
         <column name="per_FriendDate" phpName="FriendDate" type="DATE"/>
         <column name="per_Flags" phpName="Flags" type="SMALLINT" size="9" required="true" defaultValue="0"/>
-        <column name="per_FacebookID" phpName="FacebookID" type="bigint" size="20" Description="FacebookID" />
+        <column name="per_Facebook" phpName="Facebook" type="VARCHAR" size="50" Description="Facebook username" />
         <column name="per_Twitter" phpName="Twitter" type="VARCHAR" size="50" Description="Twitter username" />
         <column name="per_LinkedIn" phpName="LinkedIn" type="VARCHAR" size="50" Description="LinkedIn name" />
         <index name="per_ID">
