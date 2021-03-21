@@ -1083,7 +1083,7 @@ require 'Include/Header.php';
                         </div>
                         <input type="text" name="Facebook"
                                value="<?= htmlentities(stripslashes($sFacebook), ENT_NOQUOTES, 'UTF-8') ?>" size="30"
-                               maxlength="100" class="form-control">
+                               maxlength="50" class="form-control">
                         <?php if ($sFacebookError) {
                             ?><span style="color: red;"><?php echo $sFacebookError ?></span><?php
                         } ?>
@@ -1097,7 +1097,7 @@ require 'Include/Header.php';
                         </div>
                         <input type="text" name="Twitter"
                                value="<?= htmlentities(stripslashes($sTwitter), ENT_NOQUOTES, 'UTF-8') ?>" size="30"
-                               maxlength="100" class="form-control">
+                               maxlength="50" class="form-control">
                         <?php if ($sTwitterError) {
                             ?><span style="color: red;"><?php echo $sTwitterError ?></span></td><?php
                         } ?>
@@ -1111,7 +1111,7 @@ require 'Include/Header.php';
                           </div>
                           <input type="text" name="LinkedIn"
                                  value="<?= htmlentities(stripslashes($sLinkedIn), ENT_NOQUOTES, 'UTF-8') ?>" size="30"
-                                 maxlength="100" class="form-control">
+                                 maxlength="50" class="form-control">
                           <?php if ($sLinkedInError) {
                             ?><span style="color: red;"><?php echo $sLinkedInError ?></span></td><?php
                         } ?>
