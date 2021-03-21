@@ -97,8 +97,7 @@ body {
 }
 
 .subheading {
-    text-align: center;
-    max-width: 480px;
+    max-width: 580px;
     font-size: 1.5em;
     line-height: 1.15em;
     padding: 0 1rem;
