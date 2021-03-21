@@ -198,7 +198,7 @@
 								""
 							]
 						},
-						"description": "get all notitication to show the user"
+						"description": "get all notifications to show to the user"
 					},
 					"response": []
 				}
