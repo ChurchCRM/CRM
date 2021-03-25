@@ -49,7 +49,7 @@
         "test-ui": "node_modules/cypress/bin/cypress open"
     },
     "dependencies": {
-        "admin-lte": "^2.4.18",
+        "admin-lte": "^3.1.0",
         "bootbox": "^5.5.2",
         "bootstrap-datepicker": "^1.9.0",
         "bootstrap-notify": "^3.1.3",
