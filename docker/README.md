@@ -3,7 +3,7 @@ Getting Started with Docker for Development
 
 ** THIS DOCKER CONFIGURATION IS INTENDED FOR DEVLOPMENT & DEVELOPMENT PURPOSES ONLY**
 
-The main diffrance between the Dev and Test dockers is that the Dev has NPM, Node, composer, and Cypress installed and running inside the docker.
+The main difference between the Dev and Test dockers is that the Dev has NPM, Node, composer, and Cypress installed and running inside the docker.
 
 
 Development
