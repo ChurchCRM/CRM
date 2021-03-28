@@ -22,6 +22,7 @@
         "build": "npm run composer-install && npm run orm-gen &&  npm run build-react",
         "audit": "npm audit fix --only=prod --audit-level=high",
         "deploy": "npm install && npm run build",
+        "clean": "rm -rf node_modules/ &&  rm -rf src/vendor/",
         "updateVersions": "grunt updateVersions",
         "postinstall": "grunt genLocaleJSFiles",
         "locale-gen": "locale/update-locale.sh",
