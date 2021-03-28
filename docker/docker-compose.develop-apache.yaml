@@ -20,6 +20,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.churchcrm-apache-dev-debian
+    image: churchcrm/crm:php7.3-debian-dev
     ports:
       - "80:80"
     volumes:
