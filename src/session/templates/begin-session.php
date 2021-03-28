@@ -69,6 +69,7 @@ require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
         <!--<a href="external/family/verify" class="text-center">Verify Family Info</a> -->
 
     </div>
-
 <!-- /.login-box-body -->
 </div>
+<?php
+require SystemURLs::getDocumentRoot() . '/Include/FooterNotLoggedIn.php';
