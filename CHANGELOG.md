@@ -1,3 +1,79 @@
+# 4.3.2
+Relasesed on (3.1.2021)
+## :star: Enhancements
+
+- Pledge Editor Markup [#5673](https://github.com/ChurchCRM/CRM/pull/5673)
+- No default skin [#5664](https://github.com/ChurchCRM/CRM/pull/5664)
+- font color [#5663](https://github.com/ChurchCRM/CRM/pull/5663)
+- Invalid markup on dashboard [#5660](https://github.com/ChurchCRM/CRM/pull/5660)
+- Clarify the display of an admin user permissions [#5658](https://github.com/ChurchCRM/CRM/pull/5658)
+- typo on skin selection [#5656](https://github.com/ChurchCRM/CRM/pull/5656)
+- Ensure not Insure [#5654](https://github.com/ChurchCRM/CRM/pull/5654)
+
+## :speech_balloon: Localization
+
+- Language LOCALE selection improvements  [#5639](https://github.com/ChurchCRM/CRM/pull/5639)
+- Language LOCALE does not work using gettext  but i18n works in javascript.  [#5637](https://github.com/ChurchCRM/CRM/issues/5637)
+- 4.3.2 POEditor Update - 2021-03-01 [#5684](https://github.com/ChurchCRM/CRM/pull/5684)
+- 4.3.2 POEditor Update - 2021-02-23 [#5649](https://github.com/ChurchCRM/CRM/pull/5649)
+- 4.3.2 POEditor Update - 2021-02-21 [#5646](https://github.com/ChurchCRM/CRM/pull/5646)
+- 4.3.2 POEditor Update - 2021-02-16 [#5640](https://github.com/ChurchCRM/CRM/pull/5640)
+- 4.3.2 POEditor Update - 2021-02-11 [#5636](https://github.com/ChurchCRM/CRM/pull/5636)
+- 4.3.2 POEditor Update - 2021-02-07 [#5613](https://github.com/ChurchCRM/CRM/pull/5613)
+- 4.3.2 POEditor Update - 2020-12-10 [#5612](https://github.com/ChurchCRM/CRM/pull/5612)
+
+
+Language | Translations | Percentage
+-- | -- | --
+Vietnamese | 1 581 | 66.40%
+Arabic | 116 | 4.87%
+Indonesian | 73 | 3.07%
+Polish | 48 | 2.02%
+German | 25 | 1.05%
+Slovenian | 16 | 0.67%
+Russian | 10 | 0.42%
+Estonian | 5 | 0.21%
+Spanish | 3 | 0.13%
+
+
+
+
+## :beetle: Bugs
+
+- Family view error [#5625](https://github.com/ChurchCRM/CRM/issues/5625)
+
+## :gear: Inner Beauty
+
+- Delete php.ini_REGISTER_GLOBALS_OFF [#5681](https://github.com/ChurchCRM/CRM/pull/5681)
+- Update ReportFunctions.php [#5679](https://github.com/ChurchCRM/CRM/pull/5679)
+- [Snyk] Security upgrade i18next from 19.8.4 to 19.8.5 [#5643](https://github.com/ChurchCRM/CRM/pull/5643)
+- [Snyk] Upgrade i18next from 19.8.6 to 19.8.7 [#5650](https://github.com/ChurchCRM/CRM/pull/5650)
+- [Snyk] Upgrade i18next from 19.8.5 to 19.8.6 [#5648](https://github.com/ChurchCRM/CRM/pull/5648)
+- [Snyk] Security upgrade jquery-validation from 1.19.2 to 1.19.3 [#5633](https://github.com/ChurchCRM/CRM/pull/5633)
+- [Snyk] Upgrade bootbox from 5.5.1 to 5.5.2 [#5617](https://github.com/ChurchCRM/CRM/pull/5617)
+- Bump ini from 1.3.5 to 1.3.7 [#5615](https://github.com/ChurchCRM/CRM/pull/5615)
+
+
+# 4.3.1
+Relasesed on (12.9.2020)
+## :speech_balloon: Localization
+
+New Terms updated
+
+Language | Translations | Percentage
+-- | -- | --
+French | 68 | 2.86%
+Portuguese (BR) | 57 | 2.39%
+Chinese (TW) | 1 | 0.04%
+
+## :bug: Bug
+- Docker is now using PHP 7.4.13 [#5600](https://github.com/ChurchCRM/CRM/pull/5600)
+
+## :gear: Inner Beauty
+
+- Dev: import optimization and cleanup [#5596](https://github.com/ChurchCRM/CRM/pull/5596)
+
+
 # 4.3.0
 Released on (11.29.2020)
 ## :pray: Feature Requests
