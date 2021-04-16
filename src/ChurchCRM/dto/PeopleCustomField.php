@@ -3,6 +3,7 @@
 namespace ChurchCRM\dto;
 
 use ChurchCRM\PersonQuery;
+use ChurchCRM\ListOptionQuery;
 
 Class PeopleCustomField {
 
@@ -37,6 +38,8 @@ Class PeopleCustomField {
             //$custom_Special = $sPhoneCountry;
             $this->icon = "fa fa-phone";
             $this->link = "tel:".$this->value;
+        } elseif ($masterField->getTypeId() == 12) {
+                $this->formattedValue = ListOptionQuery::create()->filterById($masterField->getCustomSpecial())->filterByOptionId($this->value)->findOne()->getOptionName();
         }
     }
 
