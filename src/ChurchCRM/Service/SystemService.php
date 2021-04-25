@@ -143,7 +143,7 @@ class SystemService
 
     public static function runTimerJobs()
     {
-      LoggerUtils::getAppLogger()->info("Starting background job processing");
+      LoggerUtils::getAppLogger()->debug("Starting background job processing");
         //start the external backup timer job
         if (SystemConfig::getBooleanValue('bEnableExternalBackupTarget') && SystemConfig::getValue('sExternalBackupAutoInterval') > 0) {  //if remote backups are enabled, and the interval is greater than zero
           try {
@@ -185,7 +185,7 @@ class SystemService
                 }
             }
              else {
-                  LoggerUtils::getAppLogger()->info("Not starting application integrity check.  Last application integrity check run: ".SystemConfig::getValue('sLastIntegrityCheckTimeStamp'));
+                  LoggerUtils::getAppLogger()->debug("Not starting application integrity check.  Last application integrity check run: ".SystemConfig::getValue('sLastIntegrityCheckTimeStamp'));
                 }
         }
         if (self::IsTimerThresholdExceeded(SystemConfig::getValue('sLastSoftwareUpdateCheckTimeStamp'),SystemConfig::getValue('iSoftwareUpdateCheckInterval'))) {
@@ -197,7 +197,7 @@ class SystemService
           SystemConfig::setValue('sLastSoftwareUpdateCheckTimeStamp', $now->format(SystemConfig::getValue('sDateFilenameFormat')));
         }
 
-        LoggerUtils::getAppLogger()->info("Finished background job processing");
+        LoggerUtils::getAppLogger()->debug("Finished background job processing");
     }
 
 
