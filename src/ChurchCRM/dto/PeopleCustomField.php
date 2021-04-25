@@ -39,7 +39,12 @@ Class PeopleCustomField {
             $this->icon = "fa fa-phone";
             $this->link = "tel:".$this->value;
         } elseif ($masterField->getTypeId() == 12) {
-                $this->formattedValue = ListOptionQuery::create()->filterById($masterField->getCustomSpecial())->filterByOptionId($this->value)->findOne()->getOptionName();
+            $customOption = ListOptionQuery::create()->filterById($masterField->getCustomSpecial())->filterByOptionId($this->value)->findOne();
+            if ($customOption != null) {
+                $this->formattedValue =  $customOption->getOptionName();
+            } else {
+                $this->formattedValue = $this->value . " ( ". gettext("Deleted") ." )";
+            }
         }
     }
 
