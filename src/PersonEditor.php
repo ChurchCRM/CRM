@@ -342,7 +342,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
             }
 
             $sSQL .= ', '.$per_Flags;
-            $sSQL .= ', '. $sFacebook;
+            $sSQL .= ', "'. $sFacebook. '"';
             $sSQL .= ', "'. $sTwitter.'"';
             $sSQL .= ', "'. $sLinkedIn.'"';
             $sSQL .= ')';
