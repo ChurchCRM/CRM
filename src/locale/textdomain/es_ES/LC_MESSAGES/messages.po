@@ -9546,3 +9546,11 @@ msgstr "Cambiar barra lateral"
 msgid "Toggle the left sidebar's state (open or collapse)"
 msgstr "Cambiar el estado de la barra lateral izquierda (abrir o cerrar)"
 
+#: 
+msgid "Tables Settings"
+msgstr "Propiedades de las tablas"
+
+#: 
+msgid "User Interface"
+msgstr "Interfaz de usuario"
+
