@@ -22,7 +22,8 @@ context('Standard Cart', () => {
         cy.contains('You have no items in your cart');
         cy.visit("v2/family/6")
         cy.get("#AddFamilyToCart").click();
-        cy.wait(2000);
+        cy.intercept({ method: "GET", url: "api/cart"}).as("getCartData");
+        cy.wait("@getCartData");
         cy.visit("v2/cart");
         cy.contains('Kenzi Dixon');
         cy.contains('Cart Functions');
