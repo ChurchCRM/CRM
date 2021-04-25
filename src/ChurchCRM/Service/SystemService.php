@@ -46,7 +46,7 @@ class SystemService
    static public function getDBVersion()
     {
         $connection = Propel::getConnection();
-        $query = 'Select * from version_ver';
+        $query = 'Select * from version_ver order by ver_update_end desc limit 1';
         $statement = $connection->prepare($query);
         $statement->execute();
         $results = $statement->fetchAll(\PDO::FETCH_ASSOC);
@@ -63,22 +63,6 @@ class SystemService
       {
         return "Could not obtain DB Server Version";
       }
-    }
-
-    static public function isDBCurrent()
-    {
-        return SystemService::getDBVersion() == SystemService::getInstalledVersion();
-    }
-
-    static public function getDBTableExists($tableName) {
-      if (!isset($_SESSION['CRM_DB_TABLES']))
-      {
-        $connection = Propel::getConnection();
-        $statement = $connection->prepare("SHOW FULL TABLES;");
-        $statement->execute();
-        $_SESSION['CRM_DB_TABLES'] = array_map(function($table) { return $table[0]; } , $statement->fetchAll());
-      }
-      return in_array($tableName,$_SESSION['CRM_DB_TABLES']);
     }
 
     static public function getPrerequisiteStatus() {
