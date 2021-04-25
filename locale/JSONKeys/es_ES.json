@@ -2369,5 +2369,7 @@
     "Red": "Rojo",
     "Yellow": "Amarillo",
     "Toggle Sidebar": "Cambiar barra lateral",
-    "Toggle the left sidebar's state (open or collapse)": "Cambiar el estado de la barra lateral izquierda (abrir o cerrar)"
+    "Toggle the left sidebar's state (open or collapse)": "Cambiar el estado de la barra lateral izquierda (abrir o cerrar)",
+    "Tables Settings": "Propiedades de las tablas",
+    "User Interface": "Interfaz de usuario"
 }
