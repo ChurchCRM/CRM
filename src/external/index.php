@@ -16,7 +16,6 @@ if (SystemConfig::debugEnabled()) {
 }
 
 // Set up
-require __DIR__.'/dependencies.php';
 require __DIR__ . '/../Include/slim/error-handler.php';
 
 // routes
