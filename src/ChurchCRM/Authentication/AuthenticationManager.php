@@ -41,7 +41,7 @@ class AuthenticationManager
         return $currentUser;
       }
       catch (\Exception $e){
-        LoggerUtils::getAppLogger()->warning("Failed to get current user: " . $e);
+        LoggerUtils::getAppLogger()->debug("Failed to get current user: " . $e);
         throw $e;
       }
     }

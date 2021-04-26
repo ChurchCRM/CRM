@@ -29,6 +29,7 @@ $app->group('/payments', function () {
         if (!AuthenticationManager::GetCurrentUser()->isShowPledges()) {
             $query->filterByPledgeOrPayment("Pledge", Criteria::NOT_EQUAL);
         }
+        $query->innerJoinDonationFund()->withColumn("donationfund_fun.fun_Name" , "PledgeName");
         $data = $query->find();
 
         $rows = [];
@@ -45,7 +46,7 @@ $app->group('/payments', function () {
             $newRow["Date"] = $row->getDate("Y-m-d");
             $newRow["DateLastEdited"] = $row->getDateLastEdited("Y-m-d");
             $newRow["EditedBy"] = $row->getPerson()->getFullName();
-            $newRow["Fund"] = $row->getDonationFund()->getName();
+            $newRow["Fund"] = $row->getPledgeName();
             array_push($rows, $newRow);
         }
 
