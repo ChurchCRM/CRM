@@ -503,7 +503,7 @@ if ($sFormat == 'addtocart') {
                         if ($per_BirthYear != '') {
                             $sString .= $per_BirthYear.'-';
                         } else {
-                            $sString .= '0000-';
+                            $sString .= '';
                         }
                         $sString .= $per_BirthMonth.'-'.$per_BirthDay;
                     }
