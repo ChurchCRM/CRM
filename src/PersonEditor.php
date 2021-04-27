@@ -208,12 +208,12 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
 
     // If they entered a full date, see if it's valid
     if ($iBirthMonth > 0 xor $iBirthDay > 0) {
-                $sBirthDateError = gettext('Invalid Birth Date: Missing birth month or day.');
-                $bErrorFlag = true;
-    } else if (strlen($iBirthYear) > 0 && $iBirthMonth == 0 && $iBirthDay == 0) {
-                $sBirthDateError = gettext('Invalid Birth Date: Missing birth month and day.');
-                $bErrorFlag = true;
-    } else if (strlen($iBirthYear) > 0) {
+        $sBirthDateError = gettext('Invalid Birth Date: Missing birth month or day.');
+        $bErrorFlag = true;
+    } elseif (strlen($iBirthYear) > 0 && $iBirthMonth == 0 && $iBirthDay == 0) {
+        $sBirthDateError = gettext('Invalid Birth Date: Missing birth month and day.');
+        $bErrorFlag = true;
+    } elseif (strlen($iBirthYear) > 0) {
         if ($iBirthYear == 0) { // If zero set to NULL
             $iBirthYear = null;
         } elseif ($iBirthYear > 2155 || $iBirthYear < 1901) {
