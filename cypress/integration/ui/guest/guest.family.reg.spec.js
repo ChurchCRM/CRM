@@ -4,6 +4,7 @@ context('Family Reg', () => {
 
     it('Family of 2', () => {
         cy.visit('external/register/');
+        cy.contains("Main St. Cathedral");
         cy.get('#familyName').type('Master');
         cy.get('#familyAddress1').clear().type('123 Main St.');
         cy.get('#familyZip').type('98001');
