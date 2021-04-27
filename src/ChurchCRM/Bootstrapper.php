@@ -305,14 +305,10 @@ namespace ChurchCRM
       }
       public static function isDBCurrent()
       {
-          $systemVersion = SystemService::getDBVersion();
-          if ($systemVersion == SystemService::getInstalledVersion()) {
-              self::$bootStrapLogger->debug("Database version matches installed version: " . $systemVersion. " == " .SystemService::getInstalledVersion());
-              return true;
-          } else {
-              self::$bootStrapLogger->debug("Database version does not match installed version: " . $systemVersion. " == " .SystemService::getInstalledVersion());
-              return false;
-          }
+          $dbVersion = SystemService::getDBVersion();
+          $installVersion = SystemService::getInstalledVersion();
+          self::$bootStrapLogger->debug("Checking versions: " . $dbVersion. " == " .$installVersion);
+          return $dbVersion == $installVersion;
       }
   }
 }

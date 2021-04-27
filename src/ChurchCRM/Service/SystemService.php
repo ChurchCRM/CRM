@@ -46,7 +46,7 @@ class SystemService
    static public function getDBVersion()
     {
         $connection = Propel::getConnection();
-        $query = 'Select * from version_ver';
+        $query = 'Select * from version_ver order by ver_update_end desc limit 1';
         $statement = $connection->prepare($query);
         $statement->execute();
         $results = $statement->fetchAll(\PDO::FETCH_ASSOC);
@@ -63,22 +63,6 @@ class SystemService
       {
         return "Could not obtain DB Server Version";
       }
-    }
-
-    static public function isDBCurrent()
-    {
-        return SystemService::getDBVersion() == SystemService::getInstalledVersion();
-    }
-
-    static public function getDBTableExists($tableName) {
-      if (!isset($_SESSION['CRM_DB_TABLES']))
-      {
-        $connection = Propel::getConnection();
-        $statement = $connection->prepare("SHOW FULL TABLES;");
-        $statement->execute();
-        $_SESSION['CRM_DB_TABLES'] = array_map(function($table) { return $table[0]; } , $statement->fetchAll());
-      }
-      return in_array($tableName,$_SESSION['CRM_DB_TABLES']);
     }
 
     static public function getPrerequisiteStatus() {
@@ -159,7 +143,7 @@ class SystemService
 
     public static function runTimerJobs()
     {
-      LoggerUtils::getAppLogger()->info("Starting background job processing");
+      LoggerUtils::getAppLogger()->debug("Starting background job processing");
         //start the external backup timer job
         if (SystemConfig::getBooleanValue('bEnableExternalBackupTarget') && SystemConfig::getValue('sExternalBackupAutoInterval') > 0) {  //if remote backups are enabled, and the interval is greater than zero
           try {
@@ -201,7 +185,7 @@ class SystemService
                 }
             }
              else {
-                  LoggerUtils::getAppLogger()->info("Not starting application integrity check.  Last application integrity check run: ".SystemConfig::getValue('sLastIntegrityCheckTimeStamp'));
+                  LoggerUtils::getAppLogger()->debug("Not starting application integrity check.  Last application integrity check run: ".SystemConfig::getValue('sLastIntegrityCheckTimeStamp'));
                 }
         }
         if (self::IsTimerThresholdExceeded(SystemConfig::getValue('sLastSoftwareUpdateCheckTimeStamp'),SystemConfig::getValue('iSoftwareUpdateCheckInterval'))) {
@@ -213,7 +197,7 @@ class SystemService
           SystemConfig::setValue('sLastSoftwareUpdateCheckTimeStamp', $now->format(SystemConfig::getValue('sDateFilenameFormat')));
         }
 
-        LoggerUtils::getAppLogger()->info("Finished background job processing");
+        LoggerUtils::getAppLogger()->debug("Finished background job processing");
     }
 
 

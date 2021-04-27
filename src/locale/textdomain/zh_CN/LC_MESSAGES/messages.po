@@ -3573,6 +3573,10 @@ msgid "Version"
 msgstr "Version"
 
 #: 
+msgid "Copyright"
+msgstr "版权"
+
+#: 
 msgid "All rights reserved"
 msgstr "版权所有"
 
@@ -5030,16 +5034,48 @@ msgid "Home area code of the church"
 msgstr "教会的区号"
 
 #: 
+msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
+msgstr "税收报告第一行的动词。日期将附加到该行的末尾。"
+
+#: 
+msgid "Verbage for bottom line of tax report."
+msgstr "税收报告底线的动词。"
+
+#: 
 msgid "Tax Report signer"
 msgstr "税务报告签名者"
+
+#: 
+msgid "Verbage for the pledge reminder report"
+msgstr "质押提醒报告的动词"
 
 #: 
 msgid "Pledge Reminder Signer"
 msgstr "承诺签名者"
 
 #: 
+msgid "Verbage for the pledge reminder report - No record of a pledge"
+msgstr "质押提醒报告的动词-没有质押记录"
+
+#: 
+msgid "Verbage for the pledge reminder report - No record of payments"
+msgstr "质押提醒报告的动词-没有付款记录"
+
+#: 
+msgid "Verbage for the database information confirmation and correction report"
+msgstr "数据库信息确认和更正报告的动词"
+
+#: 
 msgid "Database information confirmation and correction report signer"
 msgstr "数据库信息确认和更正报告签名者"
+
+#: 
+msgid "Verbage for the pledge summary report"
+msgstr "质押摘要报告的文字"
+
+#: 
+msgid "Verbage for the directory report"
+msgstr "目录报告的动词"
 
 #: 
 msgid "Church Letterhead path and file"
@@ -5490,6 +5526,10 @@ msgid "Compare pledges between two fiscal years"
 msgstr "比较两个财政年度之间的承诺"
 
 #: 
+msgid "Find people who pledged one year but not another"
+msgstr "寻找承诺一年但不承诺一年的人"
+
+#: 
 msgid "Pledge summary by family name for each fund for the selected fiscal year"
 msgstr "通过姓氏删选所选会计年度基金的承诺摘要"
 
@@ -5576,6 +5616,10 @@ msgstr "布道不感兴趣报告"
 #: 
 msgid "Weekly on"
 msgstr "每周"
+
+#: 
+msgid "s"
+msgstr "s"
 
 #: 
 msgid "Monthly on"
@@ -6286,6 +6330,10 @@ msgid "Luxembourg"
 msgstr "卢森堡"
 
 #: 
+msgid "Macau (澳門)"
+msgstr "澳门"
+
+#: 
 msgid "Macedonia (FYROM) (Македонија)"
 msgstr "马其顿（前南斯拉夫马其顿共和国）（Македонија）"
 
@@ -6638,6 +6686,10 @@ msgid "Syria (‫سوريا‬‎)"
 msgstr "叙利亚（سوريا）"
 
 #: 
+msgid "Taiwan (台灣)"
+msgstr "台湾（台湾）"
+
+#: 
 msgid "Tajikistan"
 msgstr "塔吉克斯坦"
 
@@ -6894,6 +6946,10 @@ msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database."
 msgstr "将用户输入的邮编/邮政编码以大写方式保存到数据库。"
 
 #: 
+msgid "Used to end a letter before Signer"
+msgstr "用于在签名者之前结束一封信"
+
+#: 
 msgid "Google Analytics Tracking Code"
 msgstr "Google Analytics跟踪代码"
 
@@ -7086,6 +7142,10 @@ msgid "Coordinate data base file name:"
 msgstr "协调数据库文件名："
 
 #: 
+msgid "Intersect With Cart"
+msgstr "与购物车相交"
+
+#: 
 msgid "Family Member"
 msgstr "家庭成员"
 
@@ -7152,6 +7212,10 @@ msgstr "签退人员"
 #: 
 msgid "Delete Checkin in Entry"
 msgstr "删除条目中的签到"
+
+#: 
+msgid "Adult Checking Out Person"
+msgstr "成人结帐人"
 
 #: 
 msgid "Adult Name (Optional)"
@@ -7867,6 +7931,10 @@ msgid "Search Family"
 msgstr "搜索家庭"
 
 #: 
+msgid "Show Family Head of House Names"
+msgstr "显示姓氏的户主"
+
+#: 
 msgid "Search Groups"
 msgstr "搜索组"
 
@@ -8052,6 +8120,10 @@ msgid "Text from"
 msgstr "文字来自"
 
 #: 
+msgid "Profile"
+msgstr "轮廓"
+
+#: 
 msgid "Sign out"
 msgstr "登出"
 
@@ -8101,6 +8173,10 @@ msgid "Require that this ChurchCRM Database is accessed over HTTPS"
 msgstr "要求通过HTTPS访问此ChurchCRM数据库"
 
 #: 
+msgid "People Setup"
+msgstr "人员设置"
+
+#: 
 msgid "Church Services"
 msgstr "教堂服务"
 
@@ -8123,6 +8199,10 @@ msgstr "人员目录"
 #: 
 msgid "Printable directory of all people, grouped by family where assigned"
 msgstr "所有人员的打印目录，按分配的家庭分组"
+
+#: 
+msgid "of People"
+msgstr "的人"
 
 #: 
 msgid "System Upgrade"
@@ -8627,4 +8707,956 @@ msgstr "姓氏 名字"
 #: 
 msgid "Holidays"
 msgstr "假日"
+
+#: 
+msgid "Person Name"
+msgstr "人名"
+
+#: 
+msgid "Custom message for church greeter email 1, max 255 characters"
+msgstr "教堂迎宾者电子邮件的自定义消息，最多255个字符"
+
+#: 
+msgid "Custom message for church greeter email 2, max 255 characters"
+msgstr "教堂迎宾者电子邮件的自定义消息2，最多255个字符"
+
+#: 
+msgid "Include contact and demographic data in new member email notification body"
+msgstr "在新成员电子邮件通知正文中包括联系人和人口统计数据"
+
+#: 
+msgid "Include family custom properties in global search."
+msgstr "在全局搜索中包括族的自定义属性。"
+
+#: 
+msgid "Latvia (Latvija)"
+msgstr "拉脱维亚（拉脱维亚）"
+
+#: 
+msgid "You are about to add a new deposit without a comment"
+msgstr "您将添加无评论的新存款"
+
+#: 
+msgid "Families Without Emails"
+msgstr "没有电子邮件的家庭"
+
+#: 
+msgid "Record"
+msgstr "记录"
+
+#: 
+msgid "Records"
+msgstr "记录"
+
+#: 
+msgid "Emptied into Event ID"
+msgstr "嵌入事件ID"
+
+#: 
+msgid "integrityCheck.json file missing"
+msgstr "缺少完整性检查.json文件"
+
+#: 
+msgid "Passed"
+msgstr "已通过"
+
+#: 
+msgid "PHP Max Execution Time is too Short"
+msgstr "PHP Max执行时间太短"
+
+#: 
+msgid "Increase the PHP execution time limit to allow for backup and restore."
+msgstr "增加PHP执行时间限制，以允许进行备份和还原。"
+
+#: 
+msgid "Application Integrity Check"
+msgstr "应用完整性检查"
+
+#: 
+msgid "Focus"
+msgstr "重点"
+
+#: 
+msgid "Unfocus"
+msgstr "散焦"
+
+#: 
+msgid "Warning: Signature mismatch"
+msgstr "警告：签名不匹配"
+
+#: 
+msgid "Some ChurchCRM system files may have been modified since the last installation."
+msgstr "自上次安装以来，某些ChurchCRM系统文件可能已被修改。"
+
+#: 
+msgid "This upgrade will completely destroy any customizations made to the following files by reverting the files to the official version."
+msgstr "通过将文件恢复为正式版本，此升级将完全破坏对以下文件的所有自定义设置。"
+
+#: 
+msgid "If you wish to maintain your changes to these files, please take a manual backup of these files before proceeding with this upgrade, and then manually restore the files after the upgrade is complete."
+msgstr "如果您希望保留对这些文件的更改，请在进行此升级之前对这些文件进行手动备份，然后在升级完成后手动还原文件。"
+
+#: 
+msgid "Integrity Check Details:"
+msgstr "完整性检查详细信息："
+
+#: 
+msgid "I Understand"
+msgstr "我明白"
+
+#: 
+msgid "Unsupported Deposit Types Detected"
+msgstr "检测到不支持的存款类型"
+
+#: 
+msgid "Support for eGive, Credit Card, and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions."
+msgstr "已不再支持eGive，信用卡和银行汇票付款。现有的非银行报告在以后的版本中可能不再可用。"
+
+#: 
+msgid "Estonian"
+msgstr "爱沙尼亚语"
+
+#: 
+msgid "Error decoding integrity check result file"
+msgstr "解码完整性检查结果文件时出错"
+
+#: 
+msgid "Error decoding signature definition file"
+msgstr "解码签名定义文件时出错"
+
+#: 
+msgid "Generate Backup"
+msgstr "产生备份"
+
+#: 
+msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
+msgstr "远程备份端点。如果是WebDAV，则必须使用url编码。 "
+
+#: 
+msgid "Include initials image files, remote image files (gravatar), and thumbnails in backup.  These files are generally able to be reproduced after a restore and add very little value to the backup archive at a large expense of execution time and storage"
+msgstr "在备份中包括首字母图像文件，远程图像文件（gravatar）和缩略图。这些文件通常可以在还原后进行复制，并且几乎不增加备份存档的价值，而这会花费大量的执行时间和存储空间"
+
+#: 
+msgid "Password (if any)"
+msgstr "密码（如果有）"
+
+#: 
+msgid "All information on this page is correct."
+msgstr "此页面上的所有信息都是正确的。"
+
+#: 
+msgid "Please update the my family information with the following"
+msgstr "请使用以下内容更新我的家庭信息"
+
+#: 
+msgid "Age Histogram"
+msgstr "年龄直方图"
+
+#: 
+msgid "Missing event id"
+msgstr "缺少事件ID"
+
+#: 
+msgid "Event not found"
+msgstr "找不到活动"
+
+#: 
+msgid "Session timeout length in seconds\n"
+"Set to zero to disable session timeouts."
+msgstr "会话超时时间（以秒为单位）\n"
+"设置为零可禁用会话超时。"
+
+#: 
+msgid "Minimum amount that a new password must differ from the old one (# of characters changed)\n"
+"Set to zero to disable this feature"
+msgstr "新密码必须不同于旧密码的最小数量（已更改的字符数）\n"
+"设置为零以禁用此功能"
+
+#: 
+msgid "Maximum number of failed logins to allow before a user account is locked.\n"
+"Once the maximum has been reached, an administrator must re-enable the account.\n"
+"This feature helps to protect against automated password guessing attacks.\n"
+"Set to zero to disable this feature."
+msgstr "用户帐户锁定之前允许的最大失败登录次数。\n"
+"一旦达到最大值，管理员必须重新启用该帐户。\n"
+"此功能有助于防止自动密码猜测攻击。\n"
+"设置为零以禁用此功能。"
+
+#: 
+msgid "PDF handling mode.\n"
+"1 = Save File dialog\n"
+"2 = Open in current browser window"
+msgstr "PDF处理模式。\n"
+"1 =保存文件对话框\n"
+"2 =在当前浏览器窗口中打开"
+
+#: 
+msgid "Unavailable person info inherited from assigned family for display?\n"
+"This option causes certain info from a person's assigned family record to be\n"
+"displayed IF the corresponding info has NOT been entered for that person. "
+msgstr "从分配的家庭继承来的人信息无法显示？\n"
+"此选项使某人的家庭记录中的某些信息成为\n"
+"如果尚未为该人输入相应信息，则显示。 "
+
+#: 
+msgid "Press CTRL + C to copy all group members\\' phone numbers"
+msgstr "按CTRL + C复制所有组成员的电话号码"
+
+#: 
+msgid "Verify People"
+msgstr "验证人员"
+
+#: 
+msgid "People Verify Dashboard"
+msgstr "人们验证仪表板"
+
+#: 
+msgid "Download family letters"
+msgstr "下载家庭信"
+
+#: 
+msgid "Send family email"
+msgstr "发送家庭电子邮件"
+
+#: 
+msgid "Verification recorded"
+msgstr "验证记录"
+
+#: 
+msgid "Verification URL created"
+msgstr "验证网址已创建"
+
+#: 
+msgid "URL"
+msgstr "网址"
+
+#: 
+msgid "PDF"
+msgstr "PDF格式"
+
+#: 
+msgid "Error sending email(s)"
+msgstr "发送电子邮件时出错"
+
+#: 
+msgid "Please check logs for more information"
+msgstr "请检查日志以获取更多信息"
+
+#: 
+msgid "Verification URL"
+msgstr "验证网址"
+
+#: 
+msgid "Reset System"
+msgstr "重置系统"
+
+#: 
+msgid "Unexpected Person Id"
+msgstr "意外的人ID"
+
+#: 
+msgid "Interval in Hours for software update check"
+msgstr "软件更新检查的时间间隔（以小时为单位）"
+
+#: 
+msgid "Last Software Update Check Timestamp"
+msgstr "上次软件更新检查时间戳记"
+
+#: 
+msgid "Allow system upgrades to release marked as 'pre release' on GitHub"
+msgstr "允许在GitHub上标记为``预发布''的系统升级版本发布"
+
+#: 
+msgid "Search Calendar Events"
+msgstr "搜索日历活动"
+
+#: 
+msgid "Maximum number of Calendar Events"
+msgstr "日历活动的最大数量"
+
+#: 
+msgid "%d month old"
+msgid_plural "%d months old"
+msgstr[0] "％d个月大"
+
+#: 
+msgid "%d year old"
+msgid_plural "%d years old"
+msgstr[0] "％d岁"
+
+#: 
+msgid "Database upgrade failed"
+msgstr "数据库升级失败"
+
+#: 
+msgid "Unsupported PHP Version"
+msgstr "不支持的PHP版本"
+
+#: 
+msgid "Support for this PHP version will soon be removed.  Current PHP Version: "
+msgstr "很快将不再支持此PHP版本。当前的PHP版本： "
+
+#: 
+msgid "Missing PHP ZipArchive"
+msgstr "缺少PHP ZipArchive"
+
+#: 
+msgid "PHP ZipArchive required to support upgrade"
+msgstr "需要PHP ZipArchive支持升级"
+
+#: 
+msgid "Add Results to Cart"
+msgstr "将结果添加到购物车"
+
+#: 
+msgid "Remove Results from Cart"
+msgstr "从购物车中删除结果"
+
+#: 
+msgid "Warning: Pre-Upgrade Tasks Detected"
+msgstr "警告：检测到升级前任务"
+
+#: 
+msgid "Some conditions have been identified wich may prevent a successful upgrade"
+msgstr "已确定某些情况，可能会阻止成功升级"
+
+#: 
+msgid "Please review and mitigate these tasks before continuing with the upgrade:"
+msgstr "在继续升级之前，请检查并减轻以下任务："
+
+#: 
+msgid "Database Reset Functions"
+msgstr "数据库重置功能"
+
+#: 
+msgid "Reset Members"
+msgstr "重设会员"
+
+#: 
+msgid "This will remove all the member data, people, and families and can't be undone."
+msgstr "这将删除所有会员数据，人员和家庭，并且无法撤消。"
+
+#: 
+msgid "Reset Families/People"
+msgstr "重置家庭/人"
+
+#: 
+msgid "Reset Database"
+msgstr "重置数据库"
+
+#: 
+msgid "This will reset the system data and will restart the system as a new install."
+msgstr "这将重置系统数据，并以新安装的方式重新启动系统。"
+
+#: 
+msgid "Clear Filter"
+msgstr "清除筛选"
+
+#: 
+msgid "Add Person"
+msgstr "加人"
+
+#: 
+msgid "Portuguese - Portugal"
+msgstr "葡萄牙语-葡萄牙"
+
+#: 
+msgid "Holiday"
+msgstr "假期"
+
+#: 
+msgid "Allow users to self-enroll in 2 factor authentication"
+msgstr "允许用户自行注册2因子身份验证"
+
+#: 
+msgid "Requires users to self-enroll in 2 factor authentication"
+msgstr "要求用户自行注册2要素身份验证"
+
+#: 
+msgid "ChurchCRM"
+msgstr "教会客户关系管理"
+
+#: 
+msgid "Specify the application name to be displayed in authenticator app"
+msgstr "指定要在身份验证器应用程序中显示的应用程序名称"
+
+#: 
+msgid "Secret Keys missing from Config.php"
+msgstr "Config.php中缺少秘密密钥"
+
+#: 
+msgid "Review"
+msgstr "审查"
+
+#: 
+msgid "Thank you for registering your family"
+msgstr "感谢您为家人注册"
+
+#: 
+msgid "Register another family!"
+msgstr "注册另一个家庭！"
+
+#: 
+msgid "Done, show me the homepage!"
+msgstr "完成，给我看主页！"
+
+#: 
+msgid "User authenticated via API Key: "
+msgstr "用户通过API密钥进行了身份验证： "
+
+#: 
+msgid "Unsuccessful API Key authentication attempt"
+msgstr "API密钥身份验证尝试失败"
+
+#: 
+msgid "Unpinned Events"
+msgstr "未固定事件"
+
+#: 
+msgid "LastName, FirstName MiddleName"
+msgstr "姓，名，中间名"
+
+#: 
+msgid "Manage 2 Factor Authentication"
+msgstr "管理2要素身份验证"
+
+#: 
+msgid "Two Factor Status"
+msgstr "两要素状态"
+
+#: 
+msgid "Please confirm disabling 2 Factor Auth for this user"
+msgstr "请确认为此用户禁用2因子验证"
+
+#: 
+msgid "Please enter 2FA code"
+msgstr "请输入2FA代码"
+
+#: 
+msgid "2FA Code"
+msgstr "2FA代码"
+
+#: 
+msgid "2 Factor Authentication enrollment"
+msgstr "2要素认证注册"
+
+#: 
+msgid "Unsupported Two Factor Authentication Configuration"
+msgstr "不支持的两因素身份验证配置"
+
+#: 
+msgid "Unable To Begin Two Factor Authentication Enrollment"
+msgstr "无法开始两因素身份验证注册"
+
+#: 
+msgid "Two factor authentication requires ChurchCRM administrators to configure a few parameters"
+msgstr "两因素身份验证要求ChurchCRM管理员配置一些参数"
+
+#: 
+msgid "System configuration "
+msgstr "系统配置 "
+
+#: 
+msgid "Must be set to 'true'"
+msgstr "必须设置为“ true”"
+
+#: 
+msgid "Include/Config.php must define an encryption key for storing 2FA secret keys in the database by setting a value for"
+msgstr "Include / Config.php必须通过为以下项设置值来定义用于在数据库中存储2FA秘密密钥的加密密钥："
+
+#: 
+msgid "Google Maps API Key used for Geocoding addresses"
+msgstr "用于地址编码的Google Maps API密钥"
+
+#: 
+msgid "Send an email notifying users when their account has been deleted"
+msgstr "发送电子邮件通知用户帐户被删除的时间"
+
+#: 
+msgid "Google Maps API Key used for rendering maps in browser"
+msgstr "Google Maps API密钥，用于在浏览器中呈现地图"
+
+#: 
+msgid "Incorrect password supplied for current user"
+msgstr "当前用户提供的密码不正确"
+
+#: 
+msgid "Your new password must not match your old one."
+msgstr "您的新密码不能与旧密码匹配。"
+
+#: 
+msgid "Your new password is too similar to your old one."
+msgstr "您的新密码与旧密码太相似。"
+
+#: 
+msgid "Password reset not availble.  Please contact your system administrator"
+msgstr "密码重置不可用。请联系您的系统管理员"
+
+#: 
+msgid "Authentication Issue"
+msgstr "认证问题"
+
+#: 
+msgid "Enter new user password. Administratively set passwords are not subject to length or complexity requirements"
+msgstr "输入新的用户密码。管理设置的密码不受长度或复杂性要求的限制"
+
+#: 
+msgid "No email passed in"
+msgstr "没有传入电子邮件"
+
+#: 
+msgid "Mailchimp is not active"
+msgstr "Mailchimp无效"
+
+#: 
+msgid "Mailchimp"
+msgstr "Mailchimp"
+
+#: 
+msgid "Lists"
+msgstr "清单"
+
+#: 
+msgid "loading"
+msgstr "装货"
+
+#: 
+msgid "List not found"
+msgstr "找不到清单"
+
+#: 
+msgid "List not inList"
+msgstr "列表不在列表中"
+
+#: 
+msgid "People not in"
+msgstr "不在的人"
+
+#: 
+msgid "Invalid List id"
+msgstr "无效的清单编号"
+
+#: 
+msgid "Audience not in the ChurchCRM"
+msgstr "观众不在教堂里"
+
+#: 
+msgid "ChurchCRM Installation Information"
+msgstr "ChurchCRM安装信息"
+
+#: 
+msgid "Database Server Version"
+msgstr "数据库服务器版本"
+
+#: 
+msgid "Web Server"
+msgstr "网络服务器"
+
+#: 
+msgid "Server Software"
+msgstr "服务器软件"
+
+#: 
+msgid "Email Information"
+msgstr "电邮信息"
+
+#: 
+msgid "List maintenance"
+msgstr "清单维护"
+
+#: 
+msgid "People not in list"
+msgstr "不在清单中的人"
+
+#: 
+msgid "Audience not in the CRM"
+msgstr "受众不在CRM中"
+
+#: 
+msgid "Hebrew"
+msgstr "希伯来语"
+
+#: 
+msgid "open rate"
+msgstr "开放率"
+
+#: 
+msgid "Not Subscribed "
+msgstr "未订阅 "
+
+#: 
+msgid "Global User Settings"
+msgstr "全局用户设置"
+
+#: 
+msgid "General"
+msgstr "一般的"
+
+#: 
+msgid "Passwords"
+msgstr "密码输入"
+
+#: 
+msgid "2FA"
+msgstr "2FA"
+
+#: 
+msgid "Session Timeout"
+msgstr "会话超时"
+
+#: 
+msgid "Max Failed Login"
+msgstr "最大登录失败"
+
+#: 
+msgid "Enable Password Reset"
+msgstr "启用密码重置"
+
+#: 
+msgid "Send email to Deleted Users"
+msgstr "发送电子邮件给已删除的用户"
+
+#: 
+msgid "Min Password Length"
+msgstr "最小密码长度"
+
+#: 
+msgid "Min Password Characters Delta"
+msgstr "最小密码字符增量"
+
+#: 
+msgid "Disallowed Passwords"
+msgstr "不允许的密码"
+
+#: 
+msgid "Enable 2FA"
+msgstr "启用2FA"
+
+#: 
+msgid "Require 2FA"
+msgstr "需要2FA"
+
+#: 
+msgid "2FA Application Name"
+msgstr "2FA申请名称"
+
+#: 
+msgid "Login Info"
+msgstr "登录信息"
+
+#: 
+msgid "Login Count"
+msgstr "登录数"
+
+#: 
+msgid "Failed Login"
+msgstr "登录失败"
+
+#: 
+msgid "Permissions"
+msgstr "权限"
+
+#: 
+msgid "Manage Notes"
+msgstr "管理笔记"
+
+#: 
+msgid "Skins"
+msgstr "皮肤"
+
+#: 
+msgid "Failed generate a new API Key"
+msgstr "生成新的API密钥失败"
+
+#: 
+msgid "Pledge Summary By Family"
+msgstr "家庭认捐总结"
+
+#: 
+msgid "Pledge"
+msgstr "保证"
+
+#: 
+msgid "Paid"
+msgstr "有薪酬的"
+
+#: 
+msgid "Owe"
+msgstr "欠"
+
+#: 
+msgid "Start Date"
+msgstr "开始日期"
+
+#: 
+msgid "End Date"
+msgstr "结束日期"
+
+#: 
+msgid "Pinned Calendars"
+msgstr "固定日历"
+
+#: 
+msgid "This field is required"
+msgstr "此字段是必需的"
+
+#: 
+msgid "Text"
+msgstr "文本"
+
+#: 
+msgid "Event Description"
+msgstr "活动说明"
+
+#: 
+msgid "Enrolling your ChurchCRM user account in Two Factor Authention provides an additional layer of defense against bad actors trying to access your account."
+msgstr "将您的ChurchCRM用户帐户注册为“两因素身份验证”可为试图访问您的帐户的不良行为者提供额外的防御。"
+
+#: 
+msgid "ChurchCRM Two factor supports any TOTP authenticator app, so you're free to choose between Microsoft Authenticator, Google Authenticator, Authy, LastPass, and others"
+msgstr "ChurchCRM Two Factor支持任何TOTP身份验证器应用程序，因此您可以在Microsoft身份验证器，Google身份验证器，Authy，LastPass和其他之间自由选择"
+
+#: 
+msgid "When you sign in to ChurchCRM, you'll still enter your username and password like normal"
+msgstr "登录ChurchCRM时，您仍然会像平常一样输入用户名和密码"
+
+#: 
+msgid "However, you'll also need to supply a one-time code from your authenticator device to complete your login"
+msgstr "但是，您还需要提供来自身份验证器设备的一次性代码以完成登录"
+
+#: 
+msgid "After successfully entering both your credentials, and the one-time code, you'll be logged in as normal"
+msgstr "成功输入凭据和一次性代码后，您将照常登录"
+
+#: 
+msgid "To prevent being locked out of your ChurchCRM account, please ensure you're ready to complete two factor enrollment before clicking begin"
+msgstr "为防止您的ChurchCRM帐户被锁定，请确保您已准备好完成两个要素的注册，然后再单击“开始”。"
+
+#: 
+msgid "Beginning enrollment will invalidate any previously enrolled 2 factor devices and recovery codes."
+msgstr "开始注册将使之前已注册的任何2因子设备和恢复代码无效。"
+
+#: 
+msgid "When you click next, you'll be prompted to scan a QR code to enroll your authenticator app."
+msgstr "当您单击下一步时，将提示您扫描QR码以注册您的身份验证器应用程序。"
+
+#: 
+msgid "To confirm enrollment, you'll need to enter the code generated by your authenticator app"
+msgstr "要确认注册，您需要输入您的身份验证器应用生成的代码"
+
+#: 
+msgid "After confirming app enrollment, single-use recovery codes will be generated and displayed."
+msgstr "确认应用注册后，将生成并显示一次性恢复代码。"
+
+#: 
+msgid "Recovery codes can be used instead of a code generated from your authenticator app."
+msgstr "可以使用恢复代码代替从身份验证器应用程序生成的代码。"
+
+#: 
+msgid "Store these in a secure location"
+msgstr "将它们存储在安全的位置"
+
+#: 
+msgid "Begin Two Factor Authentication Enrollment"
+msgstr "开始两因素身份验证注册"
+
+#: 
+msgid "2 Factor Authentication Secret"
+msgstr "2要素身份验证机密"
+
+#: 
+msgid "Regenerate 2 Factor Authentication Secret"
+msgstr "重新生成2因子身份验证机密"
+
+#: 
+msgid "Remove 2 Factor Authentication Secret"
+msgstr "删除2因素身份验证机密"
+
+#: 
+msgid "Enter TOTP code to confirm enrollment"
+msgstr "输入TOTP代码以确认注册"
+
+#: 
+msgid "2 Factor Authentication Enrollment Success"
+msgstr "2要素身份验证注册成功"
+
+#: 
+msgid "Please store these recovery codes in a safe location"
+msgstr "请将这些恢复代码存储在安全的位置"
+
+#: 
+msgid "If you ever lose access to your newly enrolled authenticator app, you'll need to use a recovery code to gain access to your account"
+msgstr "如果您失去了对新注册的身份验证器应用程序的访问权限，则需要使用恢复码来访问您的帐户"
+
+#: 
+msgid "Event Attendance"
+msgstr "活动出席"
+
+#: 
+msgid "Generate attendance -AND- non-attendance reports for events"
+msgstr "生成活动的出席-和非出席报告"
+
+#: 
+msgid "of translation completed"
+msgstr "翻译完成"
+
+#: 
+msgid "Help translate this project"
+msgstr "帮助翻译这个项目"
+
+#: 
+msgid "Credit Card People"
+msgstr "信用卡人"
+
+#: 
+msgid "People who are configured to pay by credit card."
+msgstr "配置为通过信用卡付款的人。"
+
+#: 
+msgid "Afrikaans"
+msgstr "南非语"
+
+#: 
+msgid " has a type mismatch"
+msgstr " 类型不匹配"
+
+#: 
+msgid "Loading"
+msgstr "载入中"
+
+#: 
+msgid "Family Property Unassignment"
+msgstr "家庭财产分配"
+
+#: 
+msgid "Do you want to remove"
+msgstr "您要删除吗"
+
+#: 
+msgid "View Active People"
+msgstr "查看活跃的人"
+
+#: 
+msgid "View Inactive People"
+msgstr "查看不活跃的人"
+
+#: 
+msgid "Today's Birthdays"
+msgstr "今天的生日"
+
+#: 
+msgid "Today's Wedding Anniversaries"
+msgstr "今天的结婚周年纪念日"
+
+#: 
+msgid "Api Key"
+msgstr "api键"
+
+#: 
+msgid "Regen API Key"
+msgstr "再生API密钥"
+
+#: 
+msgid "View Family Page"
+msgstr "查看家庭页面"
+
+#: 
+msgid "View Person Page"
+msgstr "查看人员页面"
+
+#: 
+msgid "Verify"
+msgstr "核实"
+
+#: 
+msgid "Family has no emails to use"
+msgstr "家庭没有电子邮件可以使用"
+
+#: 
+msgid "Blue"
+msgstr "蓝色的"
+
+#: 
+msgid "Black"
+msgstr "黑色的"
+
+#: 
+msgid "Purple"
+msgstr "紫色的"
+
+#: 
+msgid "Green"
+msgstr "绿色的"
+
+#: 
+msgid "Red"
+msgstr "红色的"
+
+#: 
+msgid "Yellow"
+msgstr "黄色的"
+
+#: 
+msgid "Blue Light"
+msgstr "蓝光"
+
+#: 
+msgid "Black Light"
+msgstr "黑光"
+
+#: 
+msgid "Purple Light"
+msgstr "紫光"
+
+#: 
+msgid "Green Light"
+msgstr "绿灯"
+
+#: 
+msgid "Red Light"
+msgstr "红灯"
+
+#: 
+msgid "Yellow Light"
+msgstr "黄光"
+
+#: 
+msgid "Boxed Layout"
+msgstr "盒装版式"
+
+#: 
+msgid "Activate the boxed layout"
+msgstr "激活盒装版式"
+
+#: 
+msgid "Toggle Sidebar"
+msgstr "切换边栏"
+
+#: 
+msgid "Toggle the left sidebar's state (open or collapse)"
+msgstr "切换左侧边栏的状态（打开或折叠）"
+
+#: 
+msgid "Tables Settings"
+msgstr "表格设定"
+
+#: 
+msgid "Page length"
+msgstr "页长"
+
+#: 
+msgid "Change the initial page length (number of rows per page)"
+msgstr "更改初始页面长度（每页的行数）"
+
+#: 
+msgid "User Interface"
+msgstr "用户界面"
+
+#: 
+msgid "Locale"
+msgstr "区域设置"
+
+#: 
+msgid "Override system locale"
+msgstr "覆盖系统区域设置"
 

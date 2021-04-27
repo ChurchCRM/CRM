@@ -9539,10 +9539,66 @@ msgid "Yellow"
 msgstr "Amarillo"
 
 #: 
+msgid "Blue Light"
+msgstr "Luz Azul"
+
+#: 
+msgid "Black Light"
+msgstr "Luz Negra"
+
+#: 
+msgid "Purple Light"
+msgstr "Luz Púrpura"
+
+#: 
+msgid "Green Light"
+msgstr "Luz Verde"
+
+#: 
+msgid "Red Light"
+msgstr "Luz Roja"
+
+#: 
+msgid "Yellow Light"
+msgstr "Luz Amarilla"
+
+#: 
+msgid "Boxed Layout"
+msgstr "Diseño en Cajas"
+
+#: 
+msgid "Activate the boxed layout"
+msgstr "Activar diseño en cajas"
+
+#: 
 msgid "Toggle Sidebar"
-msgstr "Cambiar barra lateral"
+msgstr "Cambiar Barra Lateral"
 
 #: 
 msgid "Toggle the left sidebar's state (open or collapse)"
-msgstr "Cambiar el estado de la barra lateral izquierda (abrir o cerrar)"
+msgstr "Cambiar el estado de la barra lateral izquierda (abierta o cerrada)"
+
+#: 
+msgid "Tables Settings"
+msgstr "Configuración de Tablas"
+
+#: 
+msgid "Page length"
+msgstr "Largo de página"
+
+#: 
+msgid "Change the initial page length (number of rows per page)"
+msgstr "Cambiar el largo de página inicial (número de filas por página)"
+
+#: 
+msgid "User Interface"
+msgstr "Interfaz de Usuario"
+
+#: 
+msgid "Locale"
+msgstr "Localización"
+
+#: 
+msgid "Override system locale"
+msgstr "Sobrescribir localización de sistema"
 
