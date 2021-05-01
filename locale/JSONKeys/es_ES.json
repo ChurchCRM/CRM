@@ -2383,5 +2383,8 @@
     "Change the initial page length (number of rows per page)": "Cambiar el largo de página inicial (número de filas por página)",
     "User Interface": "Interfaz de Usuario",
     "Locale": "Localización",
-    "Override system locale": "Sobrescribir localización de sistema"
+    "Override system locale": "Sobrescribir localización de sistema",
+    "Deleted": "Eliminado",
+    "Invalid Birth Date: Missing birth month or day.": "Fecha de nacimiento inválida: falta el mes o el día de nacimiento.",
+    "Invalid Birth Date: Missing birth month and day.": "Fecha de nacimiento inválida: falta el mes y el día de nacimiento."
 }
