@@ -9602,3 +9602,19 @@ msgstr "Localización"
 msgid "Override system locale"
 msgstr "Sobrescribir localización de sistema"
 
+#. Maybe more context could make it more accurate. If it is a woman or a man record, the translation should be:
+#. "Eliminado/a".
+#. Or could be:
+#. "El registro fue eliminado" (without gender)
+#: 
+msgid "Deleted"
+msgstr "Eliminado"
+
+#: 
+msgid "Invalid Birth Date: Missing birth month or day."
+msgstr "Fecha de nacimiento inválida: falta el mes o el día de nacimiento."
+
+#: 
+msgid "Invalid Birth Date: Missing birth month and day."
+msgstr "Fecha de nacimiento inválida: falta el mes y el día de nacimiento."
+
