@@ -1,3 +1,61 @@
+4.4.1
+
+## :speech_balloon: Localization
+
+- Run POEditor Locales Action Daily  [#5739](https://github.com/ChurchCRM/CRM/issues/5739)
+
+## :beetle: Bugs
+
+- Update to 4.4.0 - database upgrade failed : Unable to execute INSERT statement [#5743](https://github.com/ChurchCRM/CRM/issues/5743)
+
+## :gear: Inner Beauty
+
+- Bump ssri from 6.0.1 to 6.0.2 [#5745](https://github.com/ChurchCRM/CRM/pull/5745)
+- Starting 4.4.1 [#5741](https://github.com/ChurchCRM/CRM/pull/5741)
+
+## :heart: Contributors
+
+We'd like to thank all the contributors who worked on this release!
+
+- [@DawoudIO](https://github.com/DawoudIO)
+- [@dependabot[bot]](https://github.com/apps/dependabot)
+
+# 4.4.0
+
+This is a standard release that addresses small enhancements, localization, security updates, bugs, and testing. Please keep your installation up to date to ensure the software is secure.
+
+## :speech_balloon: Localization
+
+- 4.4.0 POEditor Update - s_ES [#5737](https://github.com/ChurchCRM/CRM/pull/5737)
+- 4.4.0 POEditor Update - zh_CN [#5736](https://github.com/ChurchCRM/CRM/pull/5736)
+- 4.4.0 POEditor Update - Others [#5731](https://github.com/ChurchCRM/CRM/pull/5731) [#5693](https://github.com/ChurchCRM/CRM/pull/5693)
+
+## :beetle: Bugs
+
+- Bigfix/person edit fb [#5730](https://github.com/ChurchCRM/CRM/pull/5730)
+- Bug: Missing footer on login page & show password [#5714](https://github.com/ChurchCRM/CRM/pull/5714)
+
+## :gear: Inner Beauty
+
+- Build: 4.4.0 - JS & PHP Lib updates [#5715](https://github.com/ChurchCRM/CRM/pull/5715)
+- Setup for Docker-based development environment [#5704](https://github.com/ChurchCRM/CRM/issues/5704)
+- Docker/4.4.0 [#5712](https://github.com/ChurchCRM/CRM/pull/5712)
+- Docker testing [#5699](https://github.com/ChurchCRM/CRM/pull/5699)
+- [Snyk] Upgrade jquery from 3.5.1 to 3.6.0 [#5718](https://github.com/ChurchCRM/CRM/pull/5718)
+- [Snyk] Upgrade i18next from 19.8.7 to 19.8.8 [#5694](https://github.com/ChurchCRM/CRM/pull/5694)
+- Bump elliptic from 6.5.2 to 6.5.4 [#5692](https://github.com/ChurchCRM/CRM/pull/5692)
+
+## :heart: Contributors
+
+We'd like to thank all the contributors who worked on this release!
+
+- [@snyk-bot](https://github.com/snyk-bot)
+- [@brianteeman](https://github.com/brianteeman)
+- [@lbridgman](https://github.com/lbridgman)
+- [@DawoudIO](https://github.com/DawoudIO)
+- [@github-actions[bot]](https://github.com/apps/github-actions)
+- [@dependabot[bot]](https://github.com/apps/dependabot)
+
 # 4.3.2
 Relasesed on (3.1.2021)
 ## :star: Enhancements
