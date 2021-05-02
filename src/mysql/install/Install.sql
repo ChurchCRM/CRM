@@ -644,7 +644,7 @@ CREATE TABLE `person_per` (
   `per_EditedBy` smallint(5) unsigned default '0',
   `per_FriendDate` date default NULL,
   `per_Flags` mediumint(9) NOT NULL default '0',
-  `per_Facebook` varchar(50) unsigned default NULL,
+  `per_Facebook` varchar(50) default NULL,
   `per_Twitter` varchar(50) default NULL,
   `per_LinkedIn` varchar(50) default NULL,
   PRIMARY KEY  (`per_ID`)
