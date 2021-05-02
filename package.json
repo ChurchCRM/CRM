@@ -46,7 +46,8 @@
         "docker-test-build": "docker-compose -f docker/docker-compose.test-apache.yaml build",
         "docker-test-down": "docker-compose -f docker/docker-compose.test-apache.yaml down -v",
         "docker-test-stop": "docker-compose -f docker/docker-compose.test-apache.yaml stop",
-        "test-via-docker": "npm run docker-test-down && npm run docker-test-start && cp docker/cypress.json cypress.json && node_modules/cypress/bin/cypress run",
+        "docker-test-restart": "npm run docker-test-down && npm run docker-test-start",
+        "test-via-docker": "npm run docker-test-restart && cp docker/cypress.json cypress.json && node_modules/cypress/bin/cypress run",
         "build-react": "webpack",
         "restore-demo-db": "php scripts/restore-db.php demo",
         "restore-empty-db": "php scripts/restore-db.php",
@@ -117,6 +118,6 @@
         "webpack-cli": "^3.3.12"
     },
     "optionalDependencies": {
-        "cypress": "^7.1.0"
+        "cypress": "^7.2.0"
     }
 }
