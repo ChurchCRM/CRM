@@ -146,8 +146,8 @@ $mailchimp = new MailChimpService();
                             <?php
                             if (!SystemConfig::getBooleanValue("bHideFamilyNewsletter")) { /* Newsletter can be hidden - General Settings */ ?>
                                 <li><i class="fa-li fa fa-hacker-news"></i><?= gettext("Send Newsletter") ?>:
-                                    <span style="color:<?= ($fam_SendNewsLetter == "TRUE" ? "green" : "red") ?>"><i
-                                            class="fa fa-<?= (!$family->getSendNewsletter() ? "check" : "times") ?>"></i></span>
+                                    <span style="color:<?= ($family->isSendNewsletter()? "green" : "red") ?>"><i
+                                            class="fa fa-<?= ($family->isSendNewsletter() ? "check" : "times") ?>"></i></span>
                                 </li>
                                 <?php
                             }

@@ -389,4 +389,9 @@ class Family extends BaseFamily implements iPhoto
         $this->createTimeLineNote("verify-link");
         return true;
     }
+
+    public function isSendNewsletter()
+    {
+        return $this->getSendNewsletter() == 'TRUE';
+    }
 }
