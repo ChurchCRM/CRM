@@ -26,7 +26,7 @@ msgstr "Salvar"
 
 #: 
 msgid "Unassigned"
-msgstr "Não atribuido"
+msgstr "Não atribuído"
 
 #: 
 msgid "None"
@@ -692,7 +692,7 @@ msgstr "Bulk Mail classificar previamente"
 
 #: 
 msgid "Quiet Presort"
-msgstr "Classificar previamente tranquila"
+msgstr "Pré-seleção silenciosa"
 
 #: 
 msgid "Your cart contains"
@@ -9759,4 +9759,16 @@ msgstr "Local"
 #: 
 msgid "Override system locale"
 msgstr "Substituir Local do Sistema"
+
+#: 
+msgid "Deleted"
+msgstr "Excluído"
+
+#: 
+msgid "Invalid Birth Date: Missing birth month or day."
+msgstr "Data de nascimento inválida: faltando o dia ou mês de nascimento."
+
+#: 
+msgid "Invalid Birth Date: Missing birth month and day."
+msgstr "Data de nascimento inválida: faltando o dia e mês de nascimento."
 

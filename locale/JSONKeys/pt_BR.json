@@ -3,7 +3,7 @@
     "Delete": "Apagar",
     "Cancel": "Cancelar",
     "Save": "Salvar",
-    "Unassigned": "Não atribuido",
+    "Unassigned": "Não atribuído",
     "None": "Nenhum",
     "City": "Cidade",
     "State": "Estado",
@@ -164,7 +164,7 @@
     "Create Directory From Cart": "Criar diretório a partir do Carrinho",
     "Generate Labels": "Criar etiquetas",
     "Bulk Mail Presort": "Bulk Mail classificar previamente",
-    "Quiet Presort": "Classificar previamente tranquila",
+    "Quiet Presort": "Pré-seleção silenciosa",
     "Your cart contains": "Seu Carrinho contém",
     "persons from": "pessoas de",
     "Remove": "Remover",
@@ -2383,5 +2383,8 @@
     "Change the initial page length (number of rows per page)": "Alterar o cumprimento da página inicial (número de linhas por página)",
     "User Interface": "Interface do Usuário",
     "Locale": "Local",
-    "Override system locale": "Substituir Local do Sistema"
+    "Override system locale": "Substituir Local do Sistema",
+    "Deleted": "Excluído",
+    "Invalid Birth Date: Missing birth month or day.": "Data de nascimento inválida: faltando o dia ou mês de nascimento.",
+    "Invalid Birth Date: Missing birth month and day.": "Data de nascimento inválida: faltando o dia e mês de nascimento."
 }
