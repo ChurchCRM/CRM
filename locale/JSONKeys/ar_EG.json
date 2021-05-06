@@ -2391,5 +2391,8 @@
     "Change the initial page length (number of rows per page)": "تغيير طول الصفحة البدائي (عدد الأسطر بكل صفحة).",
     "User Interface": "واجهة المستخدم",
     "Locale": "لغة",
-    "Override system locale": "تجاوز لغة النظام"
+    "Override system locale": "تجاوز لغة النظام",
+    "Deleted": "تم المسح",
+    "Invalid Birth Date: Missing birth month or day.": "تاريخ ميلاد خطأ ، شهر الميلاد او اليوم غير صحيح.",
+    "Invalid Birth Date: Missing birth month and day.": "تاريخ ميلاد خطأ ، شهر الميلاد او اليوم غير صحيح."
 }

@@ -943,6 +943,10 @@ msgid "Description"
 msgstr "Opis"
 
 #: 
+msgid "Picture URL"
+msgstr "URL zdjęcia"
+
+#: 
 msgid "Donation Fund Editor"
 msgstr "Edytor Datków (Celu)"
 
@@ -1181,6 +1185,10 @@ msgstr "Soboty"
 #: 
 msgid "ATTENDANCE COUNTS"
 msgstr "LICZBA UCZESTNIKÓW"
+
+#: 
+msgid "Optional"
+msgstr "Opcjonalne"
 
 #: 
 msgid "Add Event Type"
@@ -5063,4 +5071,44 @@ msgstr "Dzisiejsze urodziny"
 #: 
 msgid "Today's Wedding Anniversaries"
 msgstr "Dzisiejsze rocznice ślubu"
+
+#: 
+msgid "Blue"
+msgstr "Niebieski"
+
+#: 
+msgid "Black"
+msgstr "Czarny"
+
+#: 
+msgid "Purple"
+msgstr "Fioletowy"
+
+#: 
+msgid "Green"
+msgstr "Zielony"
+
+#: 
+msgid "Red"
+msgstr "Czerwony"
+
+#: 
+msgid "Yellow"
+msgstr "Żółty"
+
+#: 
+msgid "Blue Light"
+msgstr "Błękitny"
+
+#: 
+msgid "Deleted"
+msgstr "Skasowane"
+
+#: 
+msgid "Invalid Birth Date: Missing birth month or day."
+msgstr "Nieprawidłowa data urodzin. Brak miesiąca lub dnia"
+
+#: 
+msgid "Invalid Birth Date: Missing birth month and day."
+msgstr "Nieprawidłowa data urodzin. Brak miesiąca lub dnia"
 

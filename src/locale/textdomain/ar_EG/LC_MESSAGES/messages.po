@@ -9548,3 +9548,15 @@ msgstr "لغة"
 msgid "Override system locale"
 msgstr "تجاوز لغة النظام"
 
+#: 
+msgid "Deleted"
+msgstr "تم المسح"
+
+#: 
+msgid "Invalid Birth Date: Missing birth month or day."
+msgstr "تاريخ ميلاد خطأ ، شهر الميلاد او اليوم غير صحيح."
+
+#: 
+msgid "Invalid Birth Date: Missing birth month and day."
+msgstr "تاريخ ميلاد خطأ ، شهر الميلاد او اليوم غير صحيح."
+
