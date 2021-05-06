@@ -224,6 +224,7 @@
     "Final Price": "Cena Końcowa",
     "Go": "Idź",
     "Description": "Opis",
+    "Picture URL": "URL zdjęcia",
     "Donation Fund Editor": "Edytor Datków (Celu)",
     "Are you sure you want to delete this fund?": "Czy jesteś pewny że chcesz usunąć ten Cel (Fund)?",
     "Warning: Field changes will be lost if you do not 'Save Changes' before using a delete or 'add new' button!": "Uwaga: Zmiany nie zostaną zapisane do póki nie klikniesz 'Zapisz Zmiany', pamiętaj aby zapisać przed kliknięciem 'Usuń' lub 'Dodaj Nowe'!",
@@ -283,6 +284,7 @@
     "Fridays": "Piątki",
     "Saturdays": "Soboty",
     "ATTENDANCE COUNTS": "LICZBA UCZESTNIKÓW",
+    "Optional": "Opcjonalne",
     "Add Event Type": "Dodaj Rodzaj Wydarzenia",
     "Custom Family Fields Editor": "Edytor Dodatkowych Pól Rodziny",
     "Default Option": "Opcje Domyślne",
@@ -1230,5 +1232,15 @@
     "Skins": "Powłoki",
     "Failed generate a new API Key": "Bład tworzenia klucza API",
     "Today's Birthdays": "Dzisiejsze urodziny",
-    "Today's Wedding Anniversaries": "Dzisiejsze rocznice ślubu"
+    "Today's Wedding Anniversaries": "Dzisiejsze rocznice ślubu",
+    "Blue": "Niebieski",
+    "Black": "Czarny",
+    "Purple": "Fioletowy",
+    "Green": "Zielony",
+    "Red": "Czerwony",
+    "Yellow": "Żółty",
+    "Blue Light": "Błękitny",
+    "Deleted": "Skasowane",
+    "Invalid Birth Date: Missing birth month or day.": "Nieprawidłowa data urodzin. Brak miesiąca lub dnia",
+    "Invalid Birth Date: Missing birth month and day.": "Nieprawidłowa data urodzin. Brak miesiąca lub dnia"
 }
