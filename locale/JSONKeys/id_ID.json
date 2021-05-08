@@ -2381,5 +2381,8 @@
     "Change the initial page length (number of rows per page)": "Ubah panjang halaman awal (jumlah baris per halaman)",
     "User Interface": "Antarmuka Pengguna",
     "Locale": "Locale",
-    "Override system locale": "Timpa locale sistem"
+    "Override system locale": "Timpa locale sistem",
+    "Deleted": "Terhapus",
+    "Invalid Birth Date: Missing birth month or day.": "Tanggal lahir tidak sesuai: Tanggal atau bulan kelahiran tidak ditemukan.",
+    "Invalid Birth Date: Missing birth month and day.": "Tanggal lahir tidak sesuai: Tanggal dan bulan kelahiran tidak ditemukan."
 }
