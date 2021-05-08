@@ -9541,3 +9541,15 @@ msgstr "Locale"
 msgid "Override system locale"
 msgstr "Timpa locale sistem"
 
+#: 
+msgid "Deleted"
+msgstr "Terhapus"
+
+#: 
+msgid "Invalid Birth Date: Missing birth month or day."
+msgstr "Tanggal lahir tidak sesuai: Tanggal atau bulan kelahiran tidak ditemukan."
+
+#: 
+msgid "Invalid Birth Date: Missing birth month and day."
+msgstr "Tanggal lahir tidak sesuai: Tanggal dan bulan kelahiran tidak ditemukan."
+
