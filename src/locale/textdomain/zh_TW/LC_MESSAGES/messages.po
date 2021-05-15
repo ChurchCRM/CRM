@@ -9905,3 +9905,18 @@ msgstr "本地"
 msgid "Override system locale"
 msgstr "覆蓋系統區域設置"
 
+#: 
+#, fuzzy
+msgid "Deleted"
+msgstr "已刪除"
+
+#: 
+#, fuzzy
+msgid "Invalid Birth Date: Missing birth month or day."
+msgstr "無效的出生日期: 缺少出生月份或日期."
+
+#: 
+#, fuzzy
+msgid "Invalid Birth Date: Missing birth month and day."
+msgstr "無效的出生日期: 缺少出生的月份和日期."
+
