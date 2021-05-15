@@ -2381,5 +2381,8 @@
     "Change the initial page length (number of rows per page)": "更改初始頁面長度(每頁的行數)",
     "User Interface": "用戶界面",
     "Locale": "本地",
-    "Override system locale": "覆蓋系統區域設置"
+    "Override system locale": "覆蓋系統區域設置",
+    "Deleted": "已刪除",
+    "Invalid Birth Date: Missing birth month or day.": "無效的出生日期: 缺少出生月份或日期.",
+    "Invalid Birth Date: Missing birth month and day.": "無效的出生日期: 缺少出生的月份和日期."
 }
