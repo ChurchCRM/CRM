@@ -198,7 +198,7 @@
 								""
 							]
 						},
-						"description": "get all notifications to show to the user"
+						"description": "get all notitication to show the user"
 					},
 					"response": []
 				}
@@ -2732,6 +2732,226 @@
 								"description": "Clear all people in the system.\nMust have Admin role"
 							},
 							"response": []
+						},
+						{
+							"name": "Database - ChMeetings Export Copy",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{api-key}}"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "{{host}}/api/database/people/export/chmeetings",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"database",
+										"people",
+										"export",
+										"chmeetings"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Database - ChMeetings Export",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "x-api-key",
+												"value": "{{api-key}}"
+											},
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/x-www-form-urlencoded"
+											}
+										],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": []
+										},
+										"url": {
+											"raw": "{{host}}/api/database/people/export/chmeetings",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"api",
+												"database",
+												"people",
+												"export",
+												"chmeetings"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "html",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Sun, 21 Mar 2021 20:15:23 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "Apache"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/7.3.9"
+										},
+										{
+											"key": "Content-Length",
+											"value": "0"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5, max=100"
+										},
+										{
+											"key": "Connection",
+											"value": "Keep-Alive"
+										},
+										{
+											"key": "Content-Type",
+											"value": "text/html; charset=UTF-8"
+										}
+									],
+									"cookie": [],
+									"body": null
+								}
+							]
+						},
+						{
+							"name": "Database - Locale Terms",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{api-key}}"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "{{host}}/api/database/people/export/chmeetings",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"database",
+										"people",
+										"export",
+										"chmeetings"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Database - ChMeetings Export",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "x-api-key",
+												"value": "{{api-key}}"
+											},
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/x-www-form-urlencoded"
+											}
+										],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": []
+										},
+										"url": {
+											"raw": "{{host}}/api/database/people/export/chmeetings",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"api",
+												"database",
+												"people",
+												"export",
+												"chmeetings"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "html",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Sun, 21 Mar 2021 20:15:23 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "Apache"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/7.3.9"
+										},
+										{
+											"key": "Content-Length",
+											"value": "0"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5, max=100"
+										},
+										{
+											"key": "Connection",
+											"value": "Keep-Alive"
+										},
+										{
+											"key": "Content-Type",
+											"value": "text/html; charset=UTF-8"
+										}
+									],
+									"cookie": [],
+									"body": null
+								}
+							]
 						}
 					],
 					"_postman_isSubFolder": true
@@ -2948,7 +3168,7 @@
 										"timer"
 									]
 								},
-								"description": "get all notifications to show to the user"
+								"description": "get all notitication to show the user"
 							},
 							"response": []
 						}

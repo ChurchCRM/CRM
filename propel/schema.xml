@@ -912,6 +912,36 @@
       </vendor>
     </table>
 
+    <table name="query_qry" idMethod="native" phpName="PredefinedReports" description="This contains all the predefined queries that appear in the queries page">
+        <column name="qry_ID" phpName="QryId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="qry_SQL" phpName="QrySql" type="LONGVARCHAR" required="true"/>
+        <column name="qry_Name" phpName="QryName" type="VARCHAR" size="255" required="true" defaultValue=""/>
+        <column name="qry_Description" phpName="QryDescription" type="LONGVARCHAR" required="true"/>
+        <column name="qry_Count" phpName="QryCount" type="BOOLEAN" size="1" sqlType="tinyint(1) unsigned" required="true" defaultValue="false"/>
+        <index name="qry_ID_2">
+            <index-column name="qry_ID"/>
+        </index>
+        <unique name="qry_ID">
+            <unique-column name="qry_ID"/>
+        </unique>
+        <vendor type="mysql">
+            <parameter name="Engine" value="InnoDB"/>
+        </vendor>
+    </table>
+
+    <table name="queryparameteroptions_qpo" idMethod="native" phpName="QueryParameterOptions" description="Defines the values for the parameters for each query">
+        <column name="qpo_ID" phpName="QpoId" type="SMALLINT" size="5" sqlType="smallint(5) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="qpo_qrp_ID" phpName="QpoQrpId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true" defaultValue="0"/>
+        <column name="qpo_Display" phpName="QpoDisplay" type="VARCHAR" size="50" required="true" defaultValue=""/>
+        <column name="qpo_Value" phpName="QpoValue" type="VARCHAR" size="50" required="true" defaultValue=""/>
+        <unique name="qpo_ID">
+            <unique-column name="qpo_ID"/>
+        </unique>
+        <vendor type="mysql">
+            <parameter name="Engine" value="InnoDB"/>
+        </vendor>
+    </table>
+
     <!--
  <table name="istlookup_lu" idMethod="native" phpName="IstlookupLu" >
    <column name="lu_fam_ID" phpName="LuFamId" type="SMALLINT" size="9" primaryKey="true" required="true" defaultValue="0"/>
@@ -964,22 +994,6 @@
 
 
 
- <table name="query_qry" idMethod="native" phpName="QueryQry" description="This contains all the predefined queries that appear in the queries page">
-   <column name="qry_ID" phpName="QryId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
-   <column name="qry_SQL" phpName="QrySql" type="LONGVARCHAR" required="true"/>
-   <column name="qry_Name" phpName="QryName" type="VARCHAR" size="255" required="true" defaultValue=""/>
-   <column name="qry_Description" phpName="QryDescription" type="LONGVARCHAR" required="true"/>
-   <column name="qry_Count" phpName="QryCount" type="BOOLEAN" size="1" sqlType="tinyint(1) unsigned" required="true" defaultValue="false"/>
-   <index name="qry_ID_2">
-     <index-column name="qry_ID"/>
-   </index>
-   <unique name="qry_ID">
-     <unique-column name="qry_ID"/>
-   </unique>
-   <vendor type="mysql">
-     <parameter name="Engine" value="InnoDB"/>
-   </vendor>
- </table>
  <table name="queryparameteroptions_qpo" idMethod="native" phpName="QueryparameteroptionsQpo" description="Defines the values for the parameters for each query">
    <column name="qpo_ID" phpName="QpoId" type="SMALLINT" size="5" sqlType="smallint(5) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
    <column name="qpo_qrp_ID" phpName="QpoQrpId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true" defaultValue="0"/>

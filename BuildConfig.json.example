@@ -9,13 +9,15 @@
     "demoKey": "",
     "Env": {
             "local": {
+                "server": "localhost",
                 "database": {
                     "server": "localhost",
                     "port" : "3309",
                     "database": "churchcrm",
                     "user":"churchcrm",
                     "password": "churchcrm"
-                }
+                },
+                "admin-api-key": ""
             }
         }
 }
