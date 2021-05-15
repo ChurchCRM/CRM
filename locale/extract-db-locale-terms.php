@@ -29,19 +29,15 @@ if (file_exists($filename)) {
         $db = new PDO('mysql:host=' . $db_server . ':' . $db_port . ';dbname=' . $db_name . ';charset=utf8mb4', $db_username, $db_password);
         $query = 'select DISTINCT ucfg_tooltip as term, "" as translation, "userconfig_ucfg" as cntx from userconfig_ucfg
 union all
-select DISTINCT qry_Name as term, "" as translation, "query_qry" as cntx   from query_qry
+select DISTINCT qry_Name as term, "" as translation, "query_qry" as cntx from query_qry
 union all
-select DISTINCT qry_Description as term, "" as translation, "query_qry" as cntx    from query_qry
+select DISTINCT qry_Description as term, "" as translation, "query_qry" as cntx from query_qry
 union all
 select DISTINCT qpo_Display as term, "" as translation, "queryparameteroptions_qpo" as cntx from queryparameteroptions_qpo
 union all
 select DISTINCT qrp_Name as term, "" as translation, "queryparameters_qrp" as cntx from queryparameters_qrp
 union all
-select DISTINCT qrp_Description term, "" as translation, "queryparameters_qrp" as cntx from queryparameters_qrp
-union all
-select DISTINCT qry_Name as term, "" as translation, "query_qry" as cntx from query_qry
-union all
-select DISTINCT qry_Description as term, "" as translation, "query_qry" as cntx from query_qry';
+select DISTINCT qrp_Description term, "" as translation, "queryparameters_qrp" as cntx from queryparameters_qrp';
 
         echo "DB read complete \n";
 
