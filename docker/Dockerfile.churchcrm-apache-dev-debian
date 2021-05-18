@@ -1,4 +1,4 @@
-FROM  php:7-apache
+FROM  php:7.3.27-apache
 LABEL maintainer="crossan007@gmail.com"
 
 ADD https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh /opt/node-install.sh
