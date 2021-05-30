@@ -36,7 +36,7 @@ $mailchimp = new MailChimpService();
                 <div class="box box-primary">
                     <div class="box-header">
                         <i class="fa fa-info"></i>
-                        <h3 class="box-title"><?= $family->getName() ?></h3>
+                        <h3 class="box-title"><?= $family->getName() ?> [<?= $family->getId() ?>]</h3>
                         <div class="box-tools pull-right">
                             <button type="button" class="btn btn-box-tool edit-family"><i
                                     class="fa fa-edit"></i>

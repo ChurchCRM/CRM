@@ -236,7 +236,7 @@ $bOkToEdit = (
                         <i class="fa fa-female"></i>
                         <?php
     } ?>
-                    <?= $person->getFullName() ?></h3>
+                    <?= $person->getFullName() ?> [<?= $person->getId()?>]</h3>
 
                 <p class="text-muted text-center">
                     <?= empty($sFamRole) ? gettext('Undefined') : gettext($sFamRole); ?>
