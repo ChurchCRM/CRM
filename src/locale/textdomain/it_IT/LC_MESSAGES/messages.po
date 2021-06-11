@@ -65,7 +65,6 @@ msgid "This tool will assist you in manually backing up the ChurchCRM database."
 msgstr "Questo strumento ti assisterà nel salvataggio del database del ChurchCRM."
 
 #: 
-#, fuzzy
 msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
 msgstr "Dovresti eseguire un backup manuale almeno una volta alla settimana, a meno che questa procedura non sia già automatizzata"
 
@@ -1591,7 +1590,6 @@ msgid "Do you want to proceed?"
 msgstr "Vuoi Procedere?"
 
 #: 
-#, fuzzy
 msgid "You are about to email copy of the family information to the following emails"
 msgstr "Stai per inviare per via e-mail una copia delle informazioni sulla famiglia alle seguenti e-mail"
 
@@ -4114,9 +4112,8 @@ msgid "Add New Person"
 msgstr "Aggiungi Persona"
 
 #: 
-#, fuzzy
 msgid "View All People"
-msgstr "Visualizza tutte le persone"
+msgstr "Visualizza tutte le Persone"
 
 #: 
 msgid "Add New Family"
@@ -4252,7 +4249,6 @@ msgid "Church Information"
 msgstr "Informazioni sulla Chiesa"
 
 #: 
-#, fuzzy
 msgid "User Setup"
 msgstr "Configurazione dell'utente"
 
@@ -4540,7 +4536,7 @@ msgstr "Registra una nuova famiglia"
 
 #: 
 msgid "If you need to make changes to registration data, go to "
-msgstr "Se è necessario apportare modifiche ai dati di registrazione, andare a"
+msgstr "Se è necessario apportare modifiche ai dati di registrazione, andare a "
 
 #: 
 msgid "Admin->Edit General Settings"
@@ -8645,7 +8641,6 @@ msgid "Include family custom properties in global search."
 msgstr "Includi le proprietà personalizzate della famiglia nella ricerca globale."
 
 #: 
-#, fuzzy
 msgid "Latvia (Latvija)"
 msgstr "Lettonia (Latvija)"
 
@@ -8768,4 +8763,242 @@ msgstr "Si prega di aggiornare le informazioni sulla mia famiglia con quanto seg
 #: 
 msgid "Age Histogram"
 msgstr "Istogramma di età"
+
+#: 
+msgid "Missing event id"
+msgstr "ID evento mancante"
+
+#: 
+msgid "Event not found"
+msgstr "Evento non trovato"
+
+#: 
+msgid "Session timeout length in seconds\n"
+"Set to zero to disable session timeouts."
+msgstr "Durata del timeout della sessione in secondi\n"
+"Impostare su zero per disabilitare i timeout della sessione."
+
+#: 
+msgid "Minimum amount that a new password must differ from the old one (# of characters changed)\n"
+"Set to zero to disable this feature"
+msgstr "Numero di caratteri differenti che una nuova password deve avere da quella vecchia (# di caratteri modificati)\n"
+"Imposta a zero per disabilitare questa funzione"
+
+#: 
+msgid "Maximum number of failed logins to allow before a user account is locked.\n"
+"Once the maximum has been reached, an administrator must re-enable the account.\n"
+"This feature helps to protect against automated password guessing attacks.\n"
+"Set to zero to disable this feature."
+msgstr "Numero massimo di accessi non riusciti da consentire prima che un account utente venga bloccato.\n"
+"Una volta raggiunto il massimo, un amministratore deve riattivare l'account.\n"
+"Questa funzione aiuta a proteggere dagli attacchi di tipo Brute-force\n"
+"Impostare su zero per disabilitare questa funzione."
+
+#: 
+msgid "PDF handling mode.\n"
+"1 = Save File dialog\n"
+"2 = Open in current browser window"
+msgstr "Modalità di gestione PDF.\n"
+"1 = Finestra di dialogo Salva File\n"
+"2 = Apri nella finestra del browser corrente"
+
+#: 
+msgid "Unavailable person info inherited from assigned family for display?\n"
+"This option causes certain info from a person's assigned family record to be\n"
+"displayed IF the corresponding info has NOT been entered for that person. "
+msgstr "Informazioni sulla persona non disponibili ereditate dalla famiglia assegnata per la visualizzazione?\n"
+"Questa opzione fa sì che alcune informazioni dal record di famiglia assegnato a una persona siano\n"
+"visualizzato SE NON sono state inserite le informazioni corrispondenti per quella persona."
+
+#: 
+msgid "Press CTRL + C to copy all group members\\' phone numbers"
+msgstr "Premi CTRL + C per copiare i numeri di telefono di tutti i membri del gruppo"
+
+#: 
+msgid "Verify People"
+msgstr "Verifica Persone"
+
+#: 
+msgid "People Verify Dashboard"
+msgstr "Pannello di controllo di verifica delle Persone"
+
+#: 
+msgid "Download family letters"
+msgstr "Scarica le lettere di famiglia"
+
+#: 
+msgid "Send family email"
+msgstr "Invia email di famiglia"
+
+#: 
+msgid "Verification recorded"
+msgstr "Verifica registrata"
+
+#: 
+msgid "Verification URL created"
+msgstr "URL di verifica creato"
+
+#: 
+msgid "URL"
+msgstr "URL"
+
+#: 
+msgid "PDF"
+msgstr "PDF"
+
+#: 
+msgid "Error sending email(s)"
+msgstr "Errore durante l'invio delle e-mail"
+
+#: 
+msgid "Please check logs for more information"
+msgstr "Si prega di controllare i registri per ulteriori informazioni"
+
+#: 
+msgid "Verification URL"
+msgstr "URL di verifica"
+
+#: 
+msgid "Reset System"
+msgstr "Ripristina Sistema"
+
+#: 
+msgid "Unexpected Person Id"
+msgstr "ID persona inaspettato"
+
+#: 
+msgid "Interval in Hours for software update check"
+msgstr "Intervallo in ore per il controllo dell'aggiornamento del software"
+
+#: 
+msgid "Last Software Update Check Timestamp"
+msgstr "Data e ora dell'ultimo aggiornamento del software"
+
+#: 
+msgid "Allow system upgrades to release marked as 'pre release' on GitHub"
+msgstr "Consenti il rilascio degli aggiornamenti di sistema contrassegnati come 'pre-release' su GitHub"
+
+#: 
+msgid "Search Calendar Events"
+msgstr "Cerca Calendario Eventi"
+
+#: 
+msgid "Maximum number of Calendar Events"
+msgstr "Numero massimo di eventi del calendario"
+
+#: 
+msgid "%d month old"
+msgid_plural "%d months old"
+msgstr[0] "%d mese"
+msgstr[1] "%d mesi"
+
+#: 
+msgid "%d year old"
+msgid_plural "%d years old"
+msgstr[0] "%d anno"
+msgstr[1] "%d anni"
+
+#: 
+msgid "Database upgrade failed"
+msgstr "Aggiornamento del database non riuscito"
+
+#: 
+msgid "Unsupported PHP Version"
+msgstr "Versione PHP non supportata"
+
+#: 
+msgid "Support for this PHP version will soon be removed.  Current PHP Version: "
+msgstr "Il supporto per questa versione PHP verrà presto rimosso. Versione PHP attuale: "
+
+#: 
+msgid "Missing PHP ZipArchive"
+msgstr "PHP ZipArchive mancante"
+
+#: 
+msgid "PHP ZipArchive required to support upgrade"
+msgstr "PHP ZipArchive richiesto per supportare l'aggiornamento"
+
+#: 
+msgid "Add Results to Cart"
+msgstr "Aggiungi risultati al carrello"
+
+#: 
+msgid "Remove Results from Cart"
+msgstr "Rimuovi risultati dal carrello"
+
+#: 
+msgid "Warning: Pre-Upgrade Tasks Detected"
+msgstr "Avvertenza: rilevate attività pre-aggiornamento"
+
+#: 
+msgid "Some conditions have been identified wich may prevent a successful upgrade"
+msgstr "Sono state identificate alcune condizioni che potrebbero impedire un aggiornamento riuscito"
+
+#: 
+msgid "Please review and mitigate these tasks before continuing with the upgrade:"
+msgstr "Si prega di rivedere e mitigare queste attività prima di continuare con l'aggiornamento:"
+
+#: 
+msgid "Database Reset Functions"
+msgstr "Funzioni di ripristino del database"
+
+#: 
+msgid "Reset Members"
+msgstr "Ripristina membri"
+
+#: 
+msgid "This will remove all the member data, people, and families and can't be undone."
+msgstr "Questo rimuoverà tutti i dati dei membri, le persone e le famiglie e non può essere annullato."
+
+#: 
+msgid "Reset Families/People"
+msgstr "Ripristina famiglie/persone"
+
+#: 
+msgid "Reset Database"
+msgstr "Ripristina database"
+
+#: 
+msgid "This will reset the system data and will restart the system as a new install."
+msgstr "Ciò ripristinerà i dati di sistema e riavvierà il sistema come una nuova installazione."
+
+#: 
+msgid "Add Person"
+msgstr "Aggiungi persona"
+
+#: 
+msgid "Specify the application name to be displayed in authenticator app"
+msgstr "Specificare il nome dell'applicazione da visualizzare nell'app di autenticazione"
+
+#: 
+msgid "Secret Keys missing from Config.php"
+msgstr "Chiavi segrete mancanti nel file Config.php"
+
+#: 
+msgid "Done, show me the homepage!"
+msgstr "Fatto, mostrami la homepage!"
+
+#: 
+msgid "Include/Config.php must define an encryption key for storing 2FA secret keys in the database by setting a value for"
+msgstr "Include/Config.php deve definire una chiave di crittografia per memorizzare le chiavi segrete 2FA nel database impostando un valore per"
+
+#: 
+msgid "Google Maps API Key used for Geocoding addresses"
+msgstr "Chiave API di Google Maps utilizzata per gli indirizzi di geocodifica"
+
+#: 
+msgid "Max Failed Login"
+msgstr "Numero Massimo Accessi falliti"
+
+#: 
+msgid "Login Count"
+msgstr "Conteggio accessi"
+
+#: 
+msgid "Failed Login"
+msgstr "Accessi falliti"
+
+#: 
+msgid "Enrolling your ChurchCRM user account in Two Factor Authention provides an additional layer of defense against bad actors trying to access your account."
+msgstr "La registrazione del tuo account utente ChurchCRM in Autenticazione a Due Fattori fornisce un ulteriore livello di difesa contro i malintenzionati che tentano di accedere al tuo account."
 
