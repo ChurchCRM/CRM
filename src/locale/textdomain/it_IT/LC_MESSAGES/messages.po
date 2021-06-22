@@ -419,11 +419,11 @@ msgstr "Assegna Promotore"
 #. Please check the english phrase
 #: 
 msgid "Randomly assign canvassers to all Families.  The Canvassers are taken from the &quot;Canvassers&quot; Group."
-msgstr "Assegna casualmente consulenti alle famiglie. I consulenti sono presi da &quot;Promotori&quot; Grouppo."
+msgstr "Assegna casualmente consulenti alle famiglie. I consulenti sono presi da &quot;Promotori&quot; Gruppo."
 
 #: 
 msgid "Assign To Non Pledging"
-msgstr "Assign To Non Pledging"
+msgstr "Assegna a chi non si impegna"
 
 #: 
 msgid "Randomly assign canvassers to non-pledging Families.  The Canvassers are taken from the &quot;BraveCanvassers&quot; Group."
@@ -455,7 +455,7 @@ msgstr "Disabilita Consulente per tutte le Famiglie"
 
 #: 
 msgid "Turn off the &quot;Ok To Canvass&quot; field for all Families"
-msgstr "Disattiva il & quot; Si per il Sondaggio & quot; nel campo per tutte le famiglie"
+msgstr "Disattiva il &quot; Si per il Sondaggio &quot; nel campo per tutte le famiglie"
 
 #: 
 msgid "Briefing Sheets"
@@ -488,7 +488,7 @@ msgstr "Rapporto non interessato"
 
 #: 
 msgid "Generate a PDF containing a report of the families marked &quot;Not Interested&quot; by the canvasser."
-msgstr "Genera un PDF contenente un rapporto delle famiglie contrassegnate & quot; Non interessate & quot; dal Promotore."
+msgstr "Genera un PDF contenente un rapporto delle famiglie contrassegnate & quot; Non interessate &quot; dal Promotore."
 
 #: 
 msgid " Canvass Input for the "
@@ -4636,7 +4636,7 @@ msgstr "Anno Fiscale:"
 
 #: 
 msgid "Important note: this will lose any &quot;Ok To Canvass&quot; fields that have been set by hand."
-msgstr "Nota importante: questo perderà qualsiasi &quot; Ok To Canvass & quot; campi che sono stati impostati a mano."
+msgstr "Nota importante: questo perderà qualsiasi &quot; Ok To Canvass &quot; campi che sono stati impostati a mano."
 
 #: 
 msgid "Canvasser:"
@@ -6549,7 +6549,7 @@ msgstr "South Africa"
 
 #: 
 msgid "South Georgia & South Sandwich Islands"
-msgstr "South Georgia & South Sandwich Islands"
+msgstr "Georgia del Sud e Isole Sandwich Meridionali"
 
 #: 
 msgid "South Korea (대한민국)"
@@ -8146,11 +8146,11 @@ msgstr "Numero di secondi dopo il caricamento della pagina fino a quando il bann
 
 #: 
 msgid "Help & Support"
-msgstr "Supporto"
+msgstr "Aiuto e Supporto"
 
 #: 
 msgid "Help & Manual"
-msgstr "Guida e manuale"
+msgstr "Aiuto e Manuale"
 
 #: 
 msgid "Contributing"
@@ -8963,8 +8963,32 @@ msgid "This will reset the system data and will restart the system as a new inst
 msgstr "Ciò ripristinerà i dati di sistema e riavvierà il sistema come una nuova installazione."
 
 #: 
+msgid "Clear Filter"
+msgstr "Filtro pulito"
+
+#: 
 msgid "Add Person"
 msgstr "Aggiungi persona"
+
+#: 
+msgid "Portuguese - Portugal"
+msgstr "Portoghese - Portogallo"
+
+#: 
+msgid "Holiday"
+msgstr "Vacanza"
+
+#: 
+msgid "Allow users to self-enroll in 2 factor authentication"
+msgstr "Consenti agli utenti di registrarsi autonomamente con Autenticazione a 2 Fattori"
+
+#: 
+msgid "Requires users to self-enroll in 2 factor authentication"
+msgstr "Richiede agli utenti di iscriversi autonomamente con Autenticazione a 2 Fattori"
+
+#: 
+msgid "ChurchCRM"
+msgstr "ChurchCRM"
 
 #: 
 msgid "Specify the application name to be displayed in authenticator app"
@@ -8975,8 +8999,80 @@ msgid "Secret Keys missing from Config.php"
 msgstr "Chiavi segrete mancanti nel file Config.php"
 
 #: 
+msgid "Review"
+msgstr "Revisione"
+
+#: 
+msgid "Thank you for registering your family"
+msgstr "Grazie per aver registrato la tua famiglia"
+
+#: 
+msgid "Register another family!"
+msgstr "Registra un'altra famiglia!"
+
+#: 
 msgid "Done, show me the homepage!"
 msgstr "Fatto, mostrami la homepage!"
+
+#: 
+msgid "User authenticated via API Key: "
+msgstr "Utente autenticato tramite chiave API: "
+
+#: 
+msgid "Unsuccessful API Key authentication attempt"
+msgstr "Tentativo di autenticazione con chiave API non riuscito"
+
+#: 
+msgid "Unpinned Events"
+msgstr "Eventi non appuntati"
+
+#: 
+msgid "LastName, FirstName MiddleName"
+msgstr "Cognome, Nome e Secondo Nome"
+
+#: 
+msgid "Manage 2 Factor Authentication"
+msgstr "Gestisci Autenticazione a 2 Fattori"
+
+#: 
+msgid "Two Factor Status"
+msgstr "Due Fattori - Stato"
+
+#: 
+msgid "Please confirm disabling 2 Factor Auth for this user"
+msgstr "Conferma la disattivazione Autenticazione a 2 Fattori per questo utente"
+
+#: 
+msgid "Please enter 2FA code"
+msgstr "Si prega di inserire il codice 2FA"
+
+#: 
+msgid "2FA Code"
+msgstr "Codice 2FA"
+
+#: 
+msgid "2 Factor Authentication enrollment"
+msgstr "Registrazione con Autenticazione a 2 Fattori "
+
+#: 
+msgid "Unsupported Two Factor Authentication Configuration"
+msgstr "Configurazione Autenticazione a due Fattori non supportata"
+
+#: 
+msgid "Unable To Begin Two Factor Authentication Enrollment"
+msgstr "Impossibile avviare la registrazione con Autenticazione a due Fattori"
+
+#: 
+msgid "Two factor authentication requires ChurchCRM administrators to configure a few parameters"
+msgstr "Autenticazione a due Fattori richiede agli amministratori di ChurchCRM di configurare alcuni parametri"
+
+#: 
+msgid "System configuration "
+msgstr "Configurazione di sistema "
+
+#: 
+msgid "Must be set to 'true'"
+msgstr "Deve essere impostato su 'vero'"
 
 #: 
 msgid "Include/Config.php must define an encryption key for storing 2FA secret keys in the database by setting a value for"
@@ -8987,8 +9083,180 @@ msgid "Google Maps API Key used for Geocoding addresses"
 msgstr "Chiave API di Google Maps utilizzata per gli indirizzi di geocodifica"
 
 #: 
+msgid "Send an email notifying users when their account has been deleted"
+msgstr "Invia un'email di notifica agli utenti quando il loro account è stato eliminato"
+
+#: 
+msgid "Google Maps API Key used for rendering maps in browser"
+msgstr "Chiave API di Google Maps utilizzata per visualizzare le mappe nel browser"
+
+#: 
+msgid "Incorrect password supplied for current user"
+msgstr "Si è fornita una Password errata per l'utente corrente"
+
+#: 
+msgid "Your new password must not match your old one."
+msgstr "La tua nuova password non deve corrispondere a quella vecchia."
+
+#: 
+msgid "Your new password is too similar to your old one."
+msgstr "La tua nuova password è troppo simile a quella vecchia."
+
+#: 
+msgid "Password reset not availble.  Please contact your system administrator"
+msgstr "Reimpostazione password non disponibile. Si prega di contattare l'amministratore di sistema"
+
+#: 
+msgid "Authentication Issue"
+msgstr "Problema di Autenticazione"
+
+#: 
+msgid "Enter new user password. Administratively set passwords are not subject to length or complexity requirements"
+msgstr "Inserisci la nuova password utente. Le password impostate a livello amministrativo non sono soggette a requisiti di lunghezza o complessità"
+
+#: 
+msgid "No email passed in"
+msgstr "Nessuna email passata"
+
+#: 
+msgid "Mailchimp is not active"
+msgstr "Mailchimp non è attivo"
+
+#: 
+msgid "Mailchimp"
+msgstr "Mailchimp"
+
+#: 
+msgid "Lists"
+msgstr "Elenchi"
+
+#: 
+msgid "loading"
+msgstr "caricamento in corso"
+
+#: 
+msgid "List not found"
+msgstr "Elenco non trovato"
+
+#: 
+msgid "List not inList"
+msgstr "Elenco non in elenco"
+
+#: 
+msgid "People not in"
+msgstr "Persone non in"
+
+#: 
+msgid "Invalid List id"
+msgstr "ID elenco non valido"
+
+#: 
+msgid "Audience not in the ChurchCRM"
+msgstr "Pubblico non in ChurchCRM"
+
+#: 
+msgid "ChurchCRM Installation Information"
+msgstr "Informazioni sull'installazione di ChurchCRM"
+
+#: 
+msgid "Database Server Version"
+msgstr "Versione server Database"
+
+#: 
+msgid "Web Server"
+msgstr "Server Web"
+
+#: 
+msgid "Server Software"
+msgstr "Software Server"
+
+#: 
+msgid "Email Information"
+msgstr "Informazioni e-mail"
+
+#: 
+msgid "List maintenance"
+msgstr "Manutenzione dell'elenco"
+
+#: 
+msgid "People not in list"
+msgstr "Persone non presenti nell'elenco"
+
+#: 
+msgid "Audience not in the CRM"
+msgstr "Pubblico non nel CRM"
+
+#: 
+msgid "Hebrew"
+msgstr "Ebraico"
+
+#: 
+msgid "open rate"
+msgstr "tasso di apertura"
+
+#: 
+msgid "Not Subscribed "
+msgstr "Non Iscritto "
+
+#: 
+msgid "Global User Settings"
+msgstr "Impostazioni Utente Globali"
+
+#: 
+msgid "General"
+msgstr "Generale"
+
+#: 
+msgid "Passwords"
+msgstr "Parole d’ordine (Passwords)"
+
+#: 
+msgid "2FA"
+msgstr "2FA"
+
+#: 
+msgid "Session Timeout"
+msgstr "Pausa Sessione"
+
+#: 
 msgid "Max Failed Login"
 msgstr "Numero Massimo Accessi falliti"
+
+#: 
+msgid "Enable Password Reset"
+msgstr "Abilita reimpostazione Password"
+
+#: 
+msgid "Send email to Deleted Users"
+msgstr "Invia email agli Utenti Eliminati"
+
+#: 
+msgid "Min Password Length"
+msgstr "Lunghezza minima Password"
+
+#: 
+msgid "Min Password Characters Delta"
+msgstr "Numero minimo di caratteri diversi per la Password"
+
+#: 
+msgid "Disallowed Passwords"
+msgstr "Password non consentite"
+
+#: 
+msgid "Enable 2FA"
+msgstr "Abilita 2FA"
+
+#: 
+msgid "Require 2FA"
+msgstr "Richiedi 2FA"
+
+#: 
+msgid "2FA Application Name"
+msgstr "Nome Applicazione 2FA"
+
+#: 
+msgid "Login Info"
+msgstr "Informazioni di accesso"
 
 #: 
 msgid "Login Count"
@@ -8999,6 +9267,322 @@ msgid "Failed Login"
 msgstr "Accessi falliti"
 
 #: 
+msgid "Permissions"
+msgstr "Permessi"
+
+#: 
+msgid "Manage Notes"
+msgstr "Gestisci note"
+
+#: 
+msgid "Skins"
+msgstr "Pellicole"
+
+#: 
+msgid "Failed generate a new API Key"
+msgstr "Impossibile generare una nuova chiave API"
+
+#: 
+msgid "Pledge Summary By Family"
+msgstr "Riepilogo Impegno per Famiglia"
+
+#: 
+msgid "Pledge"
+msgstr "Impegno"
+
+#: 
+msgid "Paid"
+msgstr "Pagato"
+
+#: 
+msgid "Owe"
+msgstr "Dovere"
+
+#: 
+msgid "Start Date"
+msgstr "Data iniziale"
+
+#: 
+msgid "End Date"
+msgstr "Data finale"
+
+#: 
+msgid "Pinned Calendars"
+msgstr "Calendari bloccati"
+
+#: 
+msgid "This field is required"
+msgstr "Questo campo è obbligatorio"
+
+#: 
+msgid "Text"
+msgstr "Testo"
+
+#: 
+msgid "Event Description"
+msgstr "Descrizione dell'Evento"
+
+#: 
 msgid "Enrolling your ChurchCRM user account in Two Factor Authention provides an additional layer of defense against bad actors trying to access your account."
 msgstr "La registrazione del tuo account utente ChurchCRM in Autenticazione a Due Fattori fornisce un ulteriore livello di difesa contro i malintenzionati che tentano di accedere al tuo account."
+
+#: 
+msgid "ChurchCRM Two factor supports any TOTP authenticator app, so you're free to choose between Microsoft Authenticator, Google Authenticator, Authy, LastPass, and others"
+msgstr "Autenticazione a 2 Fattori supporta qualsiasi app di autenticazione TOTP, quindi sei libero di scegliere tra Microsoft Authenticator, Google Authenticator, Authy, LastPass e altri"
+
+#: 
+msgid "When you sign in to ChurchCRM, you'll still enter your username and password like normal"
+msgstr "Quando accedi a ChurchCRM, inserirai comunque il tuo nome utente e la password come di consueto"
+
+#: 
+msgid "However, you'll also need to supply a one-time code from your authenticator device to complete your login"
+msgstr "Tuttavia, dovrai anche fornire un codice monouso dal tuo dispositivo di autenticazione per completare il tuo accesso"
+
+#: 
+msgid "After successfully entering both your credentials, and the one-time code, you'll be logged in as normal"
+msgstr "Dopo aver inserito correttamente sia le tue credenziali che il codice monouso, effettuerai l'accesso normalmente"
+
+#: 
+msgid "To prevent being locked out of your ChurchCRM account, please ensure you're ready to complete two factor enrollment before clicking begin"
+msgstr "Per evitare di essere bloccato dal tuo account ChurchCRM, assicurati di essere pronto per completare la registrazione a due Fattori prima di fare clic su inizia"
+
+#: 
+msgid "Beginning enrollment will invalidate any previously enrolled 2 factor devices and recovery codes."
+msgstr "L'inizio della registrazione invaliderà qualsiasi dispositivo a 2 fattori e codici di ripristino precedentemente registrati."
+
+#: 
+msgid "When you click next, you'll be prompted to scan a QR code to enroll your authenticator app."
+msgstr "Quando fai clic su Avanti, ti verrà chiesto di scansire un codice QR per registrare la tua app di autenticazione."
+
+#: 
+msgid "To confirm enrollment, you'll need to enter the code generated by your authenticator app"
+msgstr "Per confermare la registrazione, dovrai inserire il codice generato dalla tua app di autenticazione"
+
+#: 
+msgid "After confirming app enrollment, single-use recovery codes will be generated and displayed."
+msgstr "Dopo aver confermato la registrazione dell'app, verranno generati e visualizzati i codici di ripristino monouso."
+
+#: 
+msgid "Recovery codes can be used instead of a code generated from your authenticator app."
+msgstr "I codici di ripristino possono essere utilizzati al posto di un codice generato dall'app di autenticazione."
+
+#: 
+msgid "Store these in a secure location"
+msgstr "Conservali in un luogo sicuro"
+
+#: 
+msgid "Begin Two Factor Authentication Enrollment"
+msgstr "Inizia la registrazione con Autenticazione a due Fattori"
+
+#: 
+msgid "2 Factor Authentication Secret"
+msgstr "Codice Autenticazione a 2 Fattori"
+
+#: 
+msgid "Regenerate 2 Factor Authentication Secret"
+msgstr "Rigenera Codice Autenticazione a 2 Fattori"
+
+#: 
+msgid "Remove 2 Factor Authentication Secret"
+msgstr "Rimuovi Codice Autenticazione a 2 Fattori"
+
+#: 
+msgid "Enter TOTP code to confirm enrollment"
+msgstr "Inserisci il codice TOTP per confermare l'iscrizione"
+
+#: 
+msgid "2 Factor Authentication Enrollment Success"
+msgstr "Registrazione con Autenticazione a 2 Fattori riuscita"
+
+#: 
+msgid "Please store these recovery codes in a safe location"
+msgstr "Si prega di conservare questi codici di recupero in un luogo sicuro"
+
+#: 
+msgid "If you ever lose access to your newly enrolled authenticator app, you'll need to use a recovery code to gain access to your account"
+msgstr "Se perdi l'accesso alla tua app di autenticazione appena registrata, dovrai utilizzare un codice di ripristino per accedere al tuo account"
+
+#: 
+msgid "Event Attendance"
+msgstr "Partecipazione all'Evento"
+
+#: 
+msgid "Generate attendance -AND- non-attendance reports for events"
+msgstr "Genera rapporti sulla presenza -E- sulla mancata presenza per gli eventi"
+
+#: 
+msgid "of translation completed"
+msgstr "di traduzione completata"
+
+#: 
+msgid "Help translate this project"
+msgstr "Aiutaci a tradurre questo progetto"
+
+#: 
+msgid "Credit Card People"
+msgstr "Persone con carta di credito"
+
+#: 
+msgid "People who are configured to pay by credit card."
+msgstr "Persone che sono configurate per pagare con carta di credito."
+
+#: 
+msgid "Afrikaans"
+msgstr "Africani"
+
+#: 
+msgid " has a type mismatch"
+msgstr " ha una mancata corrispondenza di tipo"
+
+#: 
+msgid "Loading"
+msgstr "Caricamento in corso"
+
+#: 
+msgid "Family Property Unassignment"
+msgstr "Annullamento dell'assegnazione della proprietà familiare"
+
+#: 
+msgid "Do you want to remove"
+msgstr "Vuoi rimuovere"
+
+#: 
+msgid "View Active People"
+msgstr "Visualizza persone attive"
+
+#: 
+msgid "View Inactive People"
+msgstr "Visualizza persone inattive"
+
+#: 
+msgid "Today's Birthdays"
+msgstr "I compleanni di oggi"
+
+#: 
+msgid "Today's Wedding Anniversaries"
+msgstr "Gli anniversari di matrimonio di oggi"
+
+#: 
+msgid "Api Key"
+msgstr "Chiave API"
+
+#: 
+msgid "Regen API Key"
+msgstr "Chiave API di rigenerazione"
+
+#: 
+msgid "View Family Page"
+msgstr "Visualizza la pagina della famiglia"
+
+#: 
+msgid "View Person Page"
+msgstr "Visualizza la pagina della persona"
+
+#: 
+msgid "Verify"
+msgstr "Verificare"
+
+#: 
+msgid "Family has no emails to use"
+msgstr "La famiglia non ha email da usare"
+
+#: 
+msgid "Blue"
+msgstr "Blu"
+
+#: 
+msgid "Black"
+msgstr "Nero"
+
+#: 
+msgid "Purple"
+msgstr "Viola"
+
+#: 
+msgid "Green"
+msgstr "Verde"
+
+#: 
+msgid "Red"
+msgstr "Rosso"
+
+#: 
+msgid "Yellow"
+msgstr "Giallo"
+
+#: 
+msgid "Blue Light"
+msgstr "Luce blu"
+
+#: 
+msgid "Black Light"
+msgstr "Luce nera"
+
+#: 
+msgid "Purple Light"
+msgstr "Luce viola"
+
+#: 
+msgid "Green Light"
+msgstr "Luce verde"
+
+#: 
+msgid "Red Light"
+msgstr "Luce rossa"
+
+#: 
+msgid "Yellow Light"
+msgstr "Luce gialla"
+
+#: 
+msgid "Boxed Layout"
+msgstr "Layout in scatola"
+
+#: 
+msgid "Activate the boxed layout"
+msgstr "Attiva il layout in scatola"
+
+#: 
+msgid "Toggle Sidebar"
+msgstr "Attiva/disattiva barra laterale"
+
+#: 
+msgid "Toggle the left sidebar's state (open or collapse)"
+msgstr "Attiva/disattiva lo stato della barra laterale sinistra (apri o comprimi)"
+
+#: 
+msgid "Tables Settings"
+msgstr "Impostazioni tabelle"
+
+#: 
+msgid "Page length"
+msgstr "Lunghezza pagina"
+
+#: 
+msgid "Change the initial page length (number of rows per page)"
+msgstr "Modificare la lunghezza della pagina iniziale (numero di righe per pagina)"
+
+#: 
+msgid "User Interface"
+msgstr "Interfaccia Utente"
+
+#: 
+msgid "Locale"
+msgstr "Luogo"
+
+#: 
+msgid "Override system locale"
+msgstr "Sostituisci le impostazioni internazionali del sistema"
+
+#: 
+msgid "Deleted"
+msgstr "Eliminato"
+
+#: 
+msgid "Invalid Birth Date: Missing birth month or day."
+msgstr "Data di nascita non valida: mese o giorno di nascita mancante."
+
+#: 
+msgid "Invalid Birth Date: Missing birth month and day."
+msgstr "Data di nascita non valida: mese e giorno di nascita mancanti."
 
