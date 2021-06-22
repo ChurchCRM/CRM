@@ -9,7 +9,7 @@
     "State": "Область",
     "Country": "Страна",
     "Phone": "Телефон",
-    "Email": "е-мейл",
+    "Email": "Эл.почта",
     "Credit Card": "Кредитная карта",
     "Backup Database": "Резервное копирование базы данных",
     "This tool will assist you in manually backing up the ChurchCRM database.": "Этот инструмент поможет вам вручную сделать резервное копирования базы данных.",

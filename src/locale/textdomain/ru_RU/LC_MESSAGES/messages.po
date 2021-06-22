@@ -50,7 +50,7 @@ msgstr "Телефон"
 
 #: 
 msgid "Email"
-msgstr "е-мейл"
+msgstr "Эл.почта"
 
 #: 
 msgid "Credit Card"
