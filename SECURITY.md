@@ -9,3 +9,4 @@
 | 3.0.x   | :x:                | 7.x |
 | 2.0.x   | :x:                | 5.6 7.0 7.1  | 
 
+Please disclose security issues to info@churchcrm.io
