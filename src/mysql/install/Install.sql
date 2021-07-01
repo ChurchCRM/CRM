@@ -12,51 +12,6 @@ CREATE TABLE `version_ver` (
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci  AUTO_INCREMENT=1 ;
 
 
-
---
--- Table structure for table `autopayment_aut`
---
-
-CREATE TABLE `autopayment_aut` (
-  `aut_ID` mediumint(9) unsigned NOT NULL auto_increment,
-  `aut_FamID` mediumint(9) unsigned NOT NULL default '0',
-  `aut_EnableBankDraft` tinyint(1) unsigned NOT NULL default '0',
-  `aut_EnableCreditCard` tinyint(1) unsigned NOT NULL default '0',
-  `aut_NextPayDate` date default NULL,
-  `aut_FYID` mediumint(9) NOT NULL default '9',
-  `aut_Amount` decimal(6,2) NOT NULL default '0.00',
-  `aut_Interval` tinyint(3) NOT NULL default '1',
-  `aut_Fund` mediumint(6) NOT NULL default '0',
-  `aut_FirstName` varchar(50) default NULL,
-  `aut_LastName` varchar(50) default NULL,
-  `aut_Address1` varchar(255) default NULL,
-  `aut_Address2` varchar(255) default NULL,
-  `aut_City` varchar(50) default NULL,
-  `aut_State` varchar(50) default NULL,
-  `aut_Zip` varchar(50) default NULL,
-  `aut_Country` varchar(50) default NULL,
-  `aut_Phone` varchar(30) default NULL,
-  `aut_Email` varchar(100) default NULL,
-  `aut_CreditCard` varchar(50) default NULL,
-  `aut_ExpMonth` varchar(2) default NULL,
-  `aut_ExpYear` varchar(4) default NULL,
-  `aut_BankName` varchar(50) default NULL,
-  `aut_Route` varchar(30) default NULL,
-  `aut_Account` varchar(30) default NULL,
-  `aut_DateLastEdited` datetime default NULL,
-  `aut_EditedBy` smallint(5) unsigned default '0',
-  `aut_Serial` mediumint(9) NOT NULL default '1',
-  `aut_CreditCardVanco` varchar(50) default NULL,
-  `aut_AccountVanco` varchar(50) default NULL,
-  PRIMARY KEY  (`aut_ID`),
-  UNIQUE KEY `aut_ID` (`aut_ID`)
-) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1 ;
-
---
--- Dumping data for table `autopayment_aut`
---
-
-
 -- --------------------------------------------------------
 
 --
@@ -76,8 +31,7 @@ CREATE TABLE `canvassdata_can` (
   `can_Suggestion` text,
   `can_NotInterested` tinyint(1) NOT NULL default '0',
   `can_WhyNotInterested` text,
-  PRIMARY KEY  (`can_ID`),
-  UNIQUE KEY `can_ID` (`can_ID`)
+  PRIMARY KEY  (`can_ID`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 --
@@ -98,8 +52,7 @@ CREATE TABLE `config_cfg` (
   `cfg_name` varchar(50) NOT NULL default '',
   `cfg_value` text,
   PRIMARY KEY  (`cfg_id`),
-  UNIQUE KEY `cfg_name` (`cfg_name`),
-  KEY `cfg_id` (`cfg_id`)
+  UNIQUE KEY `cfg_name` (`cfg_name`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
 --
@@ -132,8 +85,7 @@ CREATE TABLE `donationfund_fun` (
   `fun_Active` enum('true','false') NOT NULL default 'true',
   `fun_Name` varchar(30) default NULL,
   `fun_Description` varchar(100) default NULL,
-  PRIMARY KEY  (`fun_ID`),
-  UNIQUE KEY `fun_ID` (`fun_ID`)
+  PRIMARY KEY  (`fun_ID`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci  AUTO_INCREMENT=2 ;
 
 --
@@ -367,7 +319,6 @@ CREATE TABLE `family_custom_master` (
   `fam_custom_Field` varchar(5) NOT NULL default '',
   `fam_custom_Name` varchar(40) NOT NULL default '',
   `fam_custom_Special` mediumint(8) unsigned default NULL,
-  `fam_custom_Side` enum('left','right') NOT NULL default 'left',
   `fam_custom_FieldSec` tinyint(4) NOT NULL default '1',
   `type_ID` tinyint(4) NOT NULL default '0'
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
@@ -410,8 +361,7 @@ CREATE TABLE `family_fam` (
   `fam_Latitude` double default NULL,
   `fam_Longitude` double default NULL,
   `fam_Envelope` mediumint(9) NOT NULL default '0',
-  PRIMARY KEY  (`fam_ID`),
-  KEY `fam_ID` (`fam_ID`)
+  PRIMARY KEY  (`fam_ID`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 --
@@ -457,9 +407,7 @@ CREATE TABLE `group_grp` (
   `grp_hasSpecialProps` BOOLEAN NOT NULL default 0,
   `grp_active` BOOLEAN NOT NULL default 1,
   `grp_include_email_export` BOOLEAN NOT NULL default 1,
-  PRIMARY KEY  (`grp_ID`),
-  UNIQUE KEY `grp_ID` (`grp_ID`),
-  KEY `grp_ID_2` (`grp_ID`)
+  PRIMARY KEY  (`grp_ID`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 --
@@ -548,11 +496,9 @@ INSERT INTO `list_lst` (`lst_ID`, `lst_OptionID`, `lst_OptionSequence`, `lst_Opt
   (5, 3, 3, 'bAddRecords'),
   (5, 4, 4, 'bEditRecords'),
   (5, 5, 5, 'bDeleteRecords'),
-  (5, 6, 6, 'bMenuOptions'),
   (5, 7, 7, 'bManageGroups'),
   (5, 8, 8, 'bFinance'),
   (5, 9, 9, 'bNotes'),
-  (5, 10, 10, 'bCommunication'),
   (5, 11, 11, 'bCanvasser'),
   (10, 1, 1, 'Teacher'),
   (10, 2, 2, 'Student'),
@@ -614,8 +560,7 @@ CREATE TABLE `person2volunteeropp_p2vo` (
   `p2vo_ID` mediumint(9) NOT NULL auto_increment,
   `p2vo_per_ID` mediumint(9) default NULL,
   `p2vo_vol_ID` mediumint(9) default NULL,
-  PRIMARY KEY  (`p2vo_ID`),
-  UNIQUE KEY `p2vo_ID` (`p2vo_ID`)
+  PRIMARY KEY  (`p2vo_ID`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 --
@@ -650,7 +595,6 @@ CREATE TABLE `person_custom_master` (
   `custom_Field` varchar(5) NOT NULL default '',
   `custom_Name` varchar(40) NOT NULL default '',
   `custom_Special` mediumint(8) unsigned default NULL,
-  `custom_Side` enum('left','right') NOT NULL default 'left',
   `custom_FieldSec` tinyint(4) NOT NULL,
   `type_ID` tinyint(4) NOT NULL default '0',
   PRIMARY KEY (`custom_Field`)
@@ -700,11 +644,10 @@ CREATE TABLE `person_per` (
   `per_EditedBy` smallint(5) unsigned default '0',
   `per_FriendDate` date default NULL,
   `per_Flags` mediumint(9) NOT NULL default '0',
-  `per_FacebookID` bigint(20) unsigned default NULL,
+  `per_Facebook` varchar(50) default NULL,
   `per_Twitter` varchar(50) default NULL,
   `per_LinkedIn` varchar(50) default NULL,
-  PRIMARY KEY  (`per_ID`),
-  KEY `per_ID` (`per_ID`)
+  PRIMARY KEY  (`per_ID`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci  AUTO_INCREMENT=2 ;
 
 --
@@ -761,9 +704,7 @@ CREATE TABLE `propertytype_prt` (
   `prt_Class` varchar(10) NOT NULL default '',
   `prt_Name` varchar(50) NOT NULL default '',
   `prt_Description` text NOT NULL,
-  PRIMARY KEY  (`prt_ID`),
-  UNIQUE KEY `prt_ID` (`prt_ID`),
-  KEY `prt_ID_2` (`prt_ID`)
+  PRIMARY KEY  (`prt_ID`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci  AUTO_INCREMENT=4 ;
 
 --
@@ -788,9 +729,7 @@ CREATE TABLE `property_pro` (
   `pro_Name` varchar(200) NOT NULL default '0',
   `pro_Description` text NOT NULL,
   `pro_Prompt` varchar(255) default NULL,
-  PRIMARY KEY  (`pro_ID`),
-  UNIQUE KEY `pro_ID` (`pro_ID`),
-  KEY `pro_ID_2` (`pro_ID`)
+  PRIMARY KEY  (`pro_ID`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci  AUTO_INCREMENT=4 ;
 
 --
@@ -813,8 +752,7 @@ CREATE TABLE `queryparameteroptions_qpo` (
   `qpo_qrp_ID` mediumint(8) unsigned NOT NULL default '0',
   `qpo_Display` varchar(50) NOT NULL default '',
   `qpo_Value` varchar(255) NOT NULL default '',
-  PRIMARY KEY  (`qpo_ID`),
-  UNIQUE KEY `qpo_ID` (`qpo_ID`)
+  PRIMARY KEY  (`qpo_ID`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci  AUTO_INCREMENT=28 ;
 
 --
@@ -882,8 +820,6 @@ CREATE TABLE `queryparameters_qrp` (
   `qrp_AlphaMinLength` int(11) default NULL,
   `qrp_AlphaMaxLength` int(11) default NULL,
   PRIMARY KEY  (`qrp_ID`),
-  UNIQUE KEY `qrp_ID` (`qrp_ID`),
-  KEY `qrp_ID_2` (`qrp_ID`),
   KEY `qrp_qry_ID` (`qrp_qry_ID`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci  AUTO_INCREMENT=102 ;
 
@@ -920,7 +856,8 @@ INSERT INTO `queryparameters_qrp` (`qrp_ID`, `qrp_qry_ID`, `qrp_Type`, `qrp_Opti
   (100, 100, 2, 'SELECT vol_ID AS Value, vol_Name AS Display FROM volunteeropportunity_vol ORDER BY vol_Name', 'Volunteer opportunities', 'First volunteer opportunity choice', 'volopp1', '1', 1, 0, '', 12, 1, 1, 2),
   (101, 100, 2, 'SELECT vol_ID AS Value, vol_Name AS Display FROM volunteeropportunity_vol ORDER BY vol_Name', 'Volunteer opportunities', 'Second volunteer opportunity choice', 'volopp2', '1', 1, 0, '', 12, 1, 1, 2),
   (200, 200, 2, 'SELECT custom_field as Value, custom_Name as Display FROM person_custom_master', 'Custom field', 'Choose customer person field', 'custom', '1', 0, 0, '', 0, 0, 0, 0),
-  (201, 200, 0, '', 'Field value', 'Match custom field to this value', 'value', '1', 0, 0, '', 0, 0, 0, 0);
+  (201, 200, 0, '', 'Field value', 'Match custom field to this value', 'value', '1', 0, 0, '', 0, 0, 0, 0),
+  (202, 201, 3, 'SELECT event_id as Value, event_title as Display FROM events_event ORDER BY event_start DESC', 'Event', 'Select the desired event', 'event', '', 1, 0, '', 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -934,9 +871,7 @@ CREATE TABLE `query_qry` (
   `qry_Name` varchar(255) NOT NULL default '',
   `qry_Description` text NOT NULL,
   `qry_Count` tinyint(1) unsigned NOT NULL default '0',
-  PRIMARY KEY  (`qry_ID`),
-  UNIQUE KEY `qry_ID` (`qry_ID`),
-  KEY `qry_ID_2` (`qry_ID`)
+  PRIMARY KEY  (`qry_ID`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci  AUTO_INCREMENT=101 ;
 
 --
@@ -944,8 +879,7 @@ CREATE TABLE `query_qry` (
 --
 
 INSERT INTO `query_qry` (`qry_ID`, `qry_SQL`, `qry_Name`, `qry_Description`, `qry_Count`) VALUES
-  (1, 'SELECT CONCAT(''<a href=FamilyView.php?FamilyID='',fam_ID,''>'',fam_Name,''</a>'') AS ''Family Name''   FROM family_fam Where fam_WorkPhone != ""', 'Family Member Count', 'Returns each family and the total number of people assigned to them.', 0),
-  (3, 'SELECT CONCAT(''<a href=FamilyView.php?FamilyID='',fam_ID,''>'',fam_Name,''</a>'') AS ''Family Name'', COUNT(*) AS ''No.''\nFROM person_per\nINNER JOIN family_fam\nON fam_ID = per_fam_ID\nGROUP BY per_fam_ID\nORDER BY ''No.'' DESC', 'Family Member Count', 'Returns each family and the total number of people assigned to them.', 0),
+  (3, 'SELECT CONCAT(''<a href=v2/family/'',fam_ID,''>'',fam_Name,''</a>'') AS ''Family Name'', COUNT(*) AS ''No.''\nFROM person_per\nINNER JOIN family_fam\nON fam_ID = per_fam_ID\nGROUP BY per_fam_ID\nORDER BY ''No.'' DESC', 'Family Member Count', 'Returns each family and the total number of people assigned to them.', 0),
   (4, 'SELECT per_ID as AddToCart,CONCAT(''<a\r\nhref=PersonView.php?PersonID='',per_ID,''>'',per_FirstName,''\r\n'',per_LastName,''</a>'') AS Name,\r\nCONCAT(per_BirthMonth,''/'',per_BirthDay,''/'',per_BirthYear) AS ''Birth Date'',\r\nDATE_FORMAT(FROM_DAYS(TO_DAYS(NOW())-TO_DAYS(CONCAT(per_BirthYear,''-'',per_BirthMonth,''-'',per_BirthDay))),''%Y'')+0 AS  ''Age''\r\nFROM person_per\r\nWHERE\r\nDATE_ADD(CONCAT(per_BirthYear,''-'',per_BirthMonth,''-'',per_BirthDay),INTERVAL\r\n~min~ YEAR) <= CURDATE()\r\nAND\r\nDATE_ADD(CONCAT(per_BirthYear,''-'',per_BirthMonth,''-'',per_BirthDay),INTERVAL\r\n(~max~ + 1) YEAR) >= CURDATE()', 'Person by Age', 'Returns any person records with ages between two given ages.', 1),
   (6, 'SELECT COUNT(per_ID) AS Total FROM person_per WHERE per_Gender = ~gender~', 'Total By Gender', 'Total of records matching a given gender.', 0),
   (7, 'SELECT per_ID as AddToCart, CONCAT(per_FirstName,'' '',per_LastName) AS Name FROM person_per WHERE per_fmr_ID = ~role~ AND per_Gender = ~gender~', 'Person by Role and Gender', 'Selects person records with the family role and gender specified.', 1),
@@ -961,10 +895,10 @@ INSERT INTO `query_qry` (`qry_ID`, `qry_SQL`, `qry_Name`, `qry_Description`, `qr
   (27, 'SELECT per_ID as AddToCart, CONCAT(per_FirstName,'' '',per_LastName) AS Name FROM person_per inner join family_fam on per_fam_ID=fam_ID where per_fmr_ID<>3 AND fam_OkToCanvass="TRUE" ORDER BY fam_Zip', 'Families to Canvass', 'People in families that are ok to canvass.', 0),
   (28, 'SELECT fam_Name, a.plg_amount as PlgFY1, b.plg_amount as PlgFY2 from family_fam left join pledge_plg a on a.plg_famID = fam_ID and a.plg_FYID=~fyid1~ and a.plg_PledgeOrPayment=''Pledge'' left join pledge_plg b on b.plg_famID = fam_ID and b.plg_FYID=~fyid2~ and b.plg_PledgeOrPayment=''Pledge'' order by fam_Name', 'Pledge comparison', 'Compare pledges between two fiscal years', 1),
   (30, 'SELECT per_ID as AddToCart, CONCAT(per_FirstName,'' '',per_LastName) AS Name, fam_address1, fam_city, fam_state, fam_zip FROM person_per join family_fam on per_fam_id=fam_id where per_fmr_id<>3 and per_fam_id in (select fam_id from family_fam inner join pledge_plg a on a.plg_famID=fam_ID and a.plg_FYID=~fyid1~ and a.plg_amount>0) and per_fam_id not in (select fam_id from family_fam inner join pledge_plg b on b.plg_famID=fam_ID and b.plg_FYID=~fyid2~ and b.plg_amount>0)', 'Missing pledges', 'Find people who pledged one year but not another', 1),
-  (31, 'select per_ID as AddToCart, per_FirstName, per_LastName, per_email from person_per, autopayment_aut where aut_famID=per_fam_ID and aut_CreditCard!="" and per_email!="" and (per_fmr_ID=1 or per_fmr_ID=2 or per_cls_ID=1)', 'Credit Card People', 'People who are configured to pay by credit card.', 0),
   (32, 'SELECT fam_Name, fam_Envelope, b.fun_Name as Fund_Name, a.plg_amount as Pledge from family_fam left join pledge_plg a on a.plg_famID = fam_ID and a.plg_FYID=~fyid~ and a.plg_PledgeOrPayment=\'Pledge\' and a.plg_amount>0 join donationfund_fun b on b.fun_ID = a.plg_fundID order by fam_Name, a.plg_fundID', 'Family Pledge by Fiscal Year', 'Pledge summary by family name for each fund for the selected fiscal year', 1),
   (100, 'SELECT a.per_ID as AddToCart, CONCAT(''<a href=PersonView.php?PersonID='',a.per_ID,''>'',a.per_FirstName,'' '',a.per_LastName,''</a>'') AS Name FROM person_per AS a LEFT JOIN person2volunteeropp_p2vo p2v1 ON (a.per_id = p2v1.p2vo_per_ID AND p2v1.p2vo_vol_ID = ~volopp1~) LEFT JOIN person2volunteeropp_p2vo p2v2 ON (a.per_id = p2v2.p2vo_per_ID AND p2v2.p2vo_vol_ID = ~volopp2~) WHERE p2v1.p2vo_per_ID=p2v2.p2vo_per_ID ORDER BY per_LastName', 'Volunteers', 'Find volunteers for who match two specific opportunity codes', 1),
-  (200, 'SELECT a.per_ID as AddToCart, CONCAT(''<a href=PersonView.php?PersonID='',a.per_ID,''>'',a.per_FirstName,'' '',a.per_LastName,''</a>'') AS Name FROM person_per AS a LEFT JOIN person_custom pc ON a.per_id = pc.per_ID WHERE pc.~custom~=''~value~'' ORDER BY per_LastName', 'CustomSearch', 'Find people with a custom field value', 1);
+  (200, 'SELECT a.per_ID as AddToCart, CONCAT(''<a href=PersonView.php?PersonID='',a.per_ID,''>'',a.per_FirstName,'' '',a.per_LastName,''</a>'') AS Name FROM person_per AS a LEFT JOIN person_custom pc ON a.per_id = pc.per_ID WHERE pc.~custom~=''~value~'' ORDER BY per_LastName', 'CustomSearch', 'Find people with a custom field value', 1),
+  (201, 'SELECT per_ID as AddToCart, CONCAT(''<a href=PersonView.php?PersonID='',per_ID,''>'',per_FirstName,'',per_LastName,''</a>'') AS Name, per_LastName AS Lastname FROM person_per LEFT OUTER JOIN (SELECT event_attend.attend_id, event_attend.person_id FROM event_attend WHERE event_attend.event_id IN (~event~)) a ON person_per.per_ID = a.person_id WHERE a.attend_id is NULL ORDER BY person_per.per_LastName, person_per.per_FirstName', 'Missing people', 'Find people who didn''t attend an event', 1);
 
 -- --------------------------------------------------------
 
@@ -1093,10 +1027,12 @@ CREATE TABLE `user_usr` (
   `usr_CalNoSchool8` date default NULL,
   `usr_SearchFamily` tinyint(3) default NULL,
   `usr_Canvasser` tinyint(1) NOT NULL default '0',
+  `usr_TwoFactorAuthSecret` VARCHAR(255) NULL,
+  `usr_TwoFactorAuthLastKeyTimestamp` INT NULL,
+  `usr_TwoFactorAuthRecoveryCodes` TEXT NULL,
   PRIMARY KEY  (`usr_per_ID`),
   UNIQUE KEY `usr_UserName` (`usr_UserName`),
-  UNIQUE KEY `usr_apiKey` (`usr_apiKey`),
-  KEY `usr_per_ID` (`usr_per_ID`)
+  UNIQUE KEY `usr_apiKey` (`usr_apiKey`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
 --
@@ -1112,7 +1048,28 @@ INSERT INTO `user_usr` (`usr_per_ID`, `usr_Password`, `usr_NeedPasswordChange`, 
                         `usr_CalNoSchool5`, `usr_CalNoSchool6`, `usr_CalNoSchool7`, `usr_CalNoSchool8`, `usr_SearchFamily`,
                         `usr_Canvasser`)
 VALUES
-  (1, '4bdf3fba58c956fc3991a1fde84929223f968e2853de596e49ae80a91499609b', 1, '2016-01-01 00:00:00', 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 10, 'skin-blue', 0, 0, '2016-01-01', 10, 0, 'Admin', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0);
+  (1, '4bdf3fba58c956fc3991a1fde84929223f968e2853de596e49ae80a91499609b', 1, '2016-01-01 00:00:00', 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 10, 'skin-red', 0, 0, '2016-01-01', 10, 0, 'Admin', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0);
+
+
+--
+-- Table structure for table `user_settings`
+--
+
+CREATE TABLE `user_settings` (
+  `user_id` int(11) NOT NULL,
+  `setting_name` varchar(50) NOT NULL,
+  `setting_value` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `user_settings`
+--
+ALTER TABLE `user_settings`
+  ADD PRIMARY KEY (`user_id`,`setting_name`);
 
 
 -- --------------------------------------------------------
@@ -1127,8 +1084,7 @@ CREATE TABLE `volunteeropportunity_vol` (
   `vol_Active` enum('true','false') NOT NULL default 'true',
   `vol_Name` varchar(30) default NULL,
   `vol_Description` varchar(100) default NULL,
-  PRIMARY KEY  (`vol_ID`),
-  UNIQUE KEY `vol_ID` (`vol_ID`)
+  PRIMARY KEY  (`vol_ID`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 --
@@ -1161,8 +1117,7 @@ CREATE TABLE `paddlenum_pn` (
   `pn_fr_ID` mediumint(9) unsigned,
   `pn_Num` mediumint(9) unsigned,
   `pn_per_ID` mediumint(9) NOT NULL default '0',
-  PRIMARY KEY  (`pn_ID`),
-  UNIQUE KEY `pn_ID` (`pn_ID`)
+  PRIMARY KEY  (`pn_ID`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 CREATE TABLE `fundraiser_fr` (
@@ -1192,8 +1147,7 @@ CREATE TABLE `donateditem_di` (
   `di_EnteredBy` smallint(5) unsigned NOT NULL default '0',
   `di_EnteredDate` date NOT NULL,
   `di_picture` text,
-  PRIMARY KEY  (`di_ID`),
-  UNIQUE KEY `di_ID` (`di_ID`)
+  PRIMARY KEY  (`di_ID`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 CREATE TABLE `multibuy_mb` (
@@ -1201,8 +1155,7 @@ CREATE TABLE `multibuy_mb` (
   `mb_per_ID` mediumint(9) NOT NULL default '0',
   `mb_item_ID` mediumint(9) NOT NULL default '0',
   `mb_count` decimal(8,0) default NULL,
-  PRIMARY KEY  (`mb_ID`),
-  UNIQUE KEY `mb_ID` (`mb_ID`)
+  PRIMARY KEY  (`mb_ID`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 CREATE TABLE `egive_egv` (
@@ -1223,8 +1176,7 @@ CREATE TABLE `kioskdevice_kdev` (
   `kdev_Accepted` BOOLEAN,
   `kdev_PendingCommands` varchar(50),
 
-  PRIMARY KEY  (`kdev_ID`),
-  UNIQUE KEY `kdev_ID` (`kdev_ID`)
+  PRIMARY KEY  (`kdev_ID`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
 CREATE TABLE `kioskassginment_kasm` (
@@ -1249,7 +1201,7 @@ CREATE TABLE `tokens` (
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
 CREATE TABLE `locations` (
-  `location_id` INT NOT NULL,
+  `location_id` INT NOT NULL AUTO_INCREMENT,
   `location_typeId` INT NOT NULL,
   `location_name` VARCHAR(256) NOT NULL,
   `location_address` VARCHAR(45) NOT NULL,
@@ -1292,14 +1244,124 @@ CREATE TABLE `menu_links` (
   PRIMARY KEY (`linkId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-CREATE VIEW email_list AS
-    SELECT fam_Email AS email, 'family' AS type, fam_id AS id FROM family_fam WHERE fam_email IS NOT NULL AND fam_email != ''
-    UNION
-    SELECT per_email AS email, 'person_home' AS type, per_id AS id FROM person_per WHERE per_email IS NOT NULL AND per_email != ''
-    UNION
-    SELECT per_WorkEmail AS email, 'person_work' AS type, per_id AS id FROM person_per WHERE per_WorkEmail IS NOT NULL AND per_WorkEmail != '';
+--
+-- Table structure for table `permissions`
+--
 
-CREATE VIEW email_count AS
-    SELECT email, COUNT(*) AS total FROM email_list group by email;
+CREATE TABLE `permissions` (
+  `permission_id` int(11) NOT NULL,
+  `permission_name` varchar(50) NOT NULL,
+  `permission_desc` varchar(250) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `permissions`
+--
+
+INSERT INTO `permissions` (`permission_id`, `permission_name`, `permission_desc`) VALUES
+(1, 'addPeople', 'Add People'),
+(3, 'updatePeople', 'Update People'),
+(4, 'deletePeopleRecords', 'Delete People Records'),
+(5, 'curdProperties', 'Manage Properties '),
+(6, 'crudClassifications', 'Manage Classifications'),
+(7, 'crudGroups', 'Manage Groups'),
+(8, 'crudRoles', 'Manage Roles'),
+(9, 'crudDonations', 'Manage Donations'),
+(10, 'curdFinance', 'Manage Finance'),
+(11, 'curdNotes', 'Manage Notes'),
+(12, 'canvasser', 'Canvasser volunteer'),
+(13, 'editSelf', 'Edit own family only'),
+(14, 'emailMailto', 'Allow to see Mailto Links'),
+(15, 'createDirectory', 'Create Directories'),
+(16, 'exportCSV', 'Export CSV files'),
+(17, 'usAddressVerification', 'Use IST Address Verification'),
+(18, 'crudEvent', 'Manage Events');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `person_permission`
+--
+
+CREATE TABLE `person_permission` (
+  `per_id` int(11) NOT NULL,
+  `permission_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `person_roles`
+--
+
+CREATE TABLE `person_roles` (
+  `per_id` int(11) NOT NULL,
+  `role_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `roles`
+--
+
+CREATE TABLE `roles` (
+  `role_id` int(11) NOT NULL,
+  `role_name` varchar(50) NOT NULL,
+  `role_desc` varchar(250) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `roles`
+--
+
+INSERT INTO `roles` (`role_id`, `role_name`, `role_desc`) VALUES
+(1, 'Welcome Committee', NULL),
+(2, 'Clergy', NULL);
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `permissions`
+--
+ALTER TABLE `permissions`
+  ADD PRIMARY KEY (`permission_id`),
+  ADD UNIQUE KEY `permission_name` (`permission_name`);
+
+--
+-- Indexes for table `person_permission`
+--
+ALTER TABLE `person_permission`
+  ADD PRIMARY KEY (`per_id`,`permission_id`);
+
+--
+-- Indexes for table `person_roles`
+--
+ALTER TABLE `person_roles`
+  ADD PRIMARY KEY (`per_id`,`role_id`);
+
+--
+-- Indexes for table `roles`
+--
+ALTER TABLE `roles`
+  ADD PRIMARY KEY (`role_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `permissions`
+--
+ALTER TABLE `permissions`
+  MODIFY `permission_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
+--
+-- AUTO_INCREMENT for table `roles`
+--
+ALTER TABLE `roles`
+  MODIFY `role_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 update version_ver set ver_update_end = now();

@@ -4,105 +4,280 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>{{churchName}}</title>
+    <style type="text/css">
+        /**
+         * Google webfonts. Recommended to include the .woff version for cross-client compatibility.
+         */
+        @media screen {
+            @font-face {
+                font-family: 'Source Sans Pro';
+                font-style: normal;
+                font-weight: 400;
+                src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'), url(https://fonts.gstatic.com/s/sourcesanspro/v10/ODelI1aHBYDBqgeIAH2zlBM0YzuT7MdOe03otPbuUS0.woff) format('woff');
+            }
 
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+            @font-face {
+                font-family: 'Source Sans Pro';
+                font-style: normal;
+                font-weight: 700;
+                src: local('Source Sans Pro Bold'), local('SourceSansPro-Bold'), url(https://fonts.gstatic.com/s/sourcesanspro/v10/toadOcfmlt9b38dHJxOBGFkQc6VGVFSmCnC_l7QZG60.woff) format('woff');
+            }
+        }
 
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
-      integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+        /**
+         * Avoid browser level font resizing.
+         * 1. Windows Mobile
+         * 2. iOS / OSX
+         */
+        body,
+        table,
+        td,
+        a {
+            -ms-text-size-adjust: 100%; /* 1 */
+            -webkit-text-size-adjust: 100%; /* 2 */
+        }
 
-    <!-- Latest compiled and minified JavaScript -->
+        /**
+         * Remove extra space added to tables and cells in Outlook.
+         */
+        table,
+        td {
+            mso-table-rspace: 0pt;
+            mso-table-lspace: 0pt;
+        }
 
-    <script
-      src="https://code.jquery.com/jquery-3.2.1.min.js"
-      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-      crossorigin="anonymous"></script>
+        /**
+         * Better fluid images in Internet Explorer.
+         */
+        img {
+            -ms-interpolation-mode: bicubic;
+        }
 
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-      integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-      crossorigin="anonymous"></script>
+        /**
+         * Remove blue links for iOS devices.
+         */
+        a[x-apple-data-detectors] {
+            font-family: inherit !important;
+            font-size: inherit !important;
+            font-weight: inherit !important;
+            line-height: inherit !important;
+            color: inherit !important;
+            text-decoration: none !important;
+        }
+
+        /**
+         * Fix centering issues in Android 4.4.
+         */
+        div[style*="margin: 16px 0;"] {
+            margin: 0 !important;
+        }
+
+        body {
+            width: 100% !important;
+            height: 100% !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+
+        /**
+         * Collapse table borders to avoid space between cells.
+         */
+        table {
+            border-collapse: collapse !important;
+        }
+
+        a {
+            color: #1a82e2;
+        }
+
+        img {
+            height: auto;
+            line-height: 100%;
+            text-decoration: none;
+            border: 0;
+            outline: none;
+        }
+    </style>
 
 </head>
-<body>
+<body style="background-color: #e9ecef;">
 
-<div class="container">
-    <div class="jumbotron text-center">
-        <h2 class="display-3">{{churchName}}</b></h2>
-    </div>
+<!-- start preheader -->
+<div class="preheader" style="display: none; max-width: 0; max-height: 0; overflow: hidden; font-size: 1px; line-height: 1px; color: #fff; opacity: 0;">
+    A preheader is the short summary text that follows the subject line when an email is viewed in the inbox.
+</div>
+<!-- end preheader -->
 
-    <div class="row marketing">
-        <div class="col-lg-10">
-            <p>
-                {{dear}} {{toName}},
-            </p>
-            <p>
-                {{body}}
-            </p>
-            {{# userName}}
-            <p>
-                {{userNameText}}: <a href="{{churchCRMURL}}Login.php?username={{userName}}" target="_blank">{{userName}}</a><br/>
-                {{# password}}
-                {{passwordText}}: {{password}}
-                {{/ password}}
-            <p/>
-            {{/ userName}}
-            {{# verificationToken}}
-            <p>
-                <a href="{{churchCRMURL}}external/verify/{{verificationToken}}" target="_blank">{{churchCRMURL}}external/verify/{{verificationToken}}</a>
-            </p>
-            {{/ verificationToken}}
-            {{# passwordToken}}
-            <p>
-                <a href="{{churchCRMURL}}external/password/set/{{passwordToken}}" target="_blank">{{resetPasswordText}}</a>
-            </p>
-            {{/ passwordToken}}
-            
-            {{# familyLink }}
-              {{# IncludeDataInNewPersonNotifications }}
-                <p>{{FamilyEmail}}</p>
-                <p>{{FamilyPhone}}</p>
-                <p>{{FamilyAddress}}</p>
-              {{/ IncludeDataInNewPersonNotifications}}
-              <p><a href="{{familyLink}}">View Family Page</a></p>
-            {{/ familyLink }}
-            {{# personLink }}
-              {{# IncludeDataInNewPersonNotifications }}
-                <p>{{PersonEmail}}</p>
-                <p>{{PersonPhone}}</p>
-                <p>{{PersonAddress}}</p>
-                <p>{{PersonAge}}</p>
-              {{/ IncludeDataInNewPersonNotifications}}
-              <p><a href="{{personLink}}">View Person Page</a></p>
-            {{/ personLink }}
-            <p>{{ # sGreeterCustomMsg1 }}{{ sGreeterCustomMsg1 }}{{ / sGreeterCustomMsg1 }}</p>
-            <p>{{ # sGreeterCustomMsg2 }}{{ sGreeterCustomMsg2 }}{{ / sGreeterCustomMsg2 }}</p>
-            <p>
-            {{confirmSincerely}}, <br/>
-            {{confirmSigner}}
-            </p>
-        </div>
-        <p/>
-    </div>
+<!-- start body -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
 
-    <footer class="footer text-center">
-        <hr/>
-        <p>
-            {{churchName}}<br/>
-            {{churchAddress}}<br/>
-            {{churchPhone}}<br/>
-            {{churchEmail}}<br/>
-        <p/>
-        If you do not want to receive these emails from {{churchName}} in the future, please contact the church admins.
-        </p>
-        <hr width="50%"/>
-        <p>Church<b>CRM</b> {{copyrightDate}}</p>
-    </footer>
+    <!-- start logo -->
+    <tr>
+        <td align="center" bgcolor="#e9ecef">
+            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
+                <tr>
+                    <td align="center" valign="top" style="padding: 36px 24px;">
+                        <a href="{{churchCRMURL}}" target="_blank" style="display: inline-block;">
+                            <h1>{{churchName}}</h1>
+                            {{# churchLogo}}
+                            <img src="{{churchCRMURL}}/{{churchLogo}}" alt="Logo" border="0" width="48" style="display: block; width: 48px; max-width: 48px; min-width: 48px;">
+                            {{/ churchLogo}}
+                        </a>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <!-- end logo -->
 
-</div> <!-- /container -->
+    <!-- start hero -->
+    <tr>
+        <td align="center" bgcolor="#e9ecef">
+            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
+                <tr>
+                    <td align="left" bgcolor="#ffffff" style="padding: 36px 24px 0; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; border-top: 3px solid #d4dadf;">
+                        <h1 style="margin: 0; font-size: 32px; font-weight: 700; letter-spacing: -1px; line-height: 48px;"></h1>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <!-- end hero -->
+
+    <!-- start copy block -->
+    <tr>
+        <td align="center" bgcolor="#e9ecef">
+            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
+
+                <!-- start copy -->
+                <tr>
+                    <td align="left" bgcolor="#ffffff" style="padding: 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+                        <p style="margin: 0;">
+                        <h2>{{dear}} {{toName}},</h2>
+                        </p>
+                        <p>
+                            {{body}}
+                        </p>
+                        {{# userName}}
+                        <p>
+                            {{userNameText}}: {{userName}}<br/>
+                            {{# password}}
+                            {{passwordText}}: {{password}}
+                            {{/ password}}
+                        <p/>
+                        {{/ userName}}
+
+                        {{# IncludeDataInNewFamilyNotifications }}
+                            <p>{{FamilyEmail}}</p>
+                            <p>{{FamilyPhone}}</p>
+                            <p>{{FamilyAddress}}</p>
+                        {{/ IncludeDataInNewFamilyNotifications}}
+
+                        {{# IncludeDataInNewPersonNotifications }}
+                            <p>{{PersonEmail}}</p>
+                            <p>{{PersonPhone}}</p>
+                            <p>{{PersonAddress}}</p>
+                            <p>{{PersonAge}}</p>
+                        {{/ IncludeDataInNewPersonNotifications}}
+
+                        </p>
+                    </td>
+                </tr>
+                <!-- end copy -->
+
+                {{# fullURL }}
+                <!-- start button -->
+                <tr>
+                    <td align="left" bgcolor="#ffffff">
+                        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                            <tr>
+                                <td align="center" bgcolor="#ffffff" style="padding: 12px;">
+                                    <table border="0" cellpadding="0" cellspacing="0">
+                                        <tr>
+                                            <td align="center" bgcolor="#1a82e2" style="border-radius: 6px;">
+                                                <a href="{{fullURL}}" target="_blank" style="display: inline-block; padding: 16px 36px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; color: #ffffff; text-decoration: none; border-radius: 6px;">{{buttonText}}</a>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <!-- end button -->
+
+                <!-- start copy -->
+                <tr>
+                    <td align="left" bgcolor="#ffffff" style="padding: 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+                        <p style="margin: 0;">{{buttonNotWorkingText}}:</p>
+                        <p style="margin: 0;"><a href="{{fullURL}}" target="_blank">{{fullURL}}</a></p>
+                    </td>
+                </tr>
+                <!-- end copy -->
+                {{/ fullURL }}
+
+                <!-- start copy -->
+                <tr>
+                    <td align="left" bgcolor="#ffffff" style="padding: 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px; border-bottom: 3px solid #d4dadf">
+                        <p>{{ # sGreeterCustomMsg1 }}{{ sGreeterCustomMsg1 }}{{ / sGreeterCustomMsg1 }}</p>
+                        <p>{{ # sGreeterCustomMsg2 }}{{ sGreeterCustomMsg2 }}{{ / sGreeterCustomMsg2 }}</p>
+                        <p style="margin: 0;">{{confirmSincerely}},<br> {{confirmSigner}}</p>
+                    </td>
+                </tr>
+                <!-- end copy -->
+
+            </table>
+            <!--[if (gte mso 9)|(IE)]>
+            </td>
+            </tr>
+            </table>
+            <![endif]-->
+        </td>
+    </tr>
+    <!-- end copy block -->
+
+<!-- start footer -->
+<tr>
+    <td align="center" bgcolor="#e9ecef" style="padding: 24px;">
+        <!--[if (gte mso 9)|(IE)]>
+        <table align="center" border="0" cellpadding="0" cellspacing="0" width="600">
+            <tr>
+                <td align="center" valign="top" width="600">
+        <![endif]-->
+        <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
+
+            <!-- start permission -->
+            <tr>
+                <td align="center" bgcolor="#e9ecef" style="padding: 12px 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 14px; line-height: 20px; color: #666;">
+                    <p style="margin: 0;">{{emailErrorText}}</p>
+                </td>
+            </tr>
+            <!-- end permission -->
+
+            <!-- start unsubscribe -->
+            <tr>
+                <td align="center" bgcolor="#e9ecef" style="padding: 12px 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 14px; line-height: 20px; color: #666;">
+                    <p style="margin: 0;">{{stopEmailText}} <a href="mailto:{{churchEmail}}" target="_blank">{{churchName}}</a>.</p>
+                    <p style="margin: 0;">{{churchAddress}}</p>
+                    <p style="margin: 0;">{{churchPhone}}</p>
+
+                </td>
+            </tr>
+            <!-- end unsubscribe -->
+
+        </table>
+        <!--[if (gte mso 9)|(IE)]>
+        </td>
+        </tr>
+        </table>
+        <![endif]-->
+    </td>
+</tr>
+<!-- end footer -->
+
+</table>
+<!-- end body -->
 
 </body>
 </html>

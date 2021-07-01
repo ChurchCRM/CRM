@@ -14,13 +14,14 @@ require 'Include/Functions.php';
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\Authentication\AuthenticationManager;
 
 //Set the page title
 $sPageTitle = gettext('Free-Text Query');
 
 // Security: User must be an Admin to access this page.  It allows unrestricted database access!
 // Otherwise, re-direct them to the main menu.
-if (!$_SESSION['user']->isAdmin()) {
+if (!AuthenticationManager::GetCurrentUser()->isAdmin()) {
     RedirectUtils::Redirect('Menu.php');
     exit;
 }
@@ -51,7 +52,7 @@ require 'Include/Header.php';
 	<textarea style="font-family:courier,fixed; font-size:9pt; padding:1;" cols="60" rows="10" name="SQL"><?= $sSQL ?></textarea>
 </p>
 <p align="center">
-	<input type="submit" class="btn" name="Submit" value="<?= gettext('Execute SQL') ?>">
+	<input type="submit" class="btn btn-default" name="Submit" value="<?= gettext('Execute SQL') ?>">
 </p>
 
 </form>
@@ -178,9 +179,9 @@ function RunFreeQuery()
         if (count($aHiddenFormField) > 0) { // TODO Don't post to CartView.php?>
 			<form method="post" action="CartView.php"><p align="center"> 
 				<input type="hidden" value="<?= implode(',', $aHiddenFormField) ?>" name="BulkAddToCart">
-				<input type="submit" class="btn" name="AddToCartSubmit" value="<?php echo gettext('Add Results To Cart'); ?>">&nbsp;
-				<input type="submit" class="btn" name="AndToCartSubmit" value="<?php echo gettext('Intersect Results With Cart'); ?>">&nbsp;
-				<input type="submit" class="btn" name="NotToCartSubmit" value="<?php echo gettext('Remove Results From Cart'); ?>">
+				<input type="submit" class="btn btn-default" name="AddToCartSubmit" value="<?php echo gettext('Add Results To Cart'); ?>">&nbsp;
+				<input type="submit" class="btn btn-default" name="AndToCartSubmit" value="<?php echo gettext('Intersect Results With Cart'); ?>">&nbsp;
+				<input type="submit" class="btn btn-default" name="NotToCartSubmit" value="<?php echo gettext('Remove Results From Cart'); ?>">
 			</p></form>
 			<?php
         }

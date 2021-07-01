@@ -7,7 +7,7 @@ use ChurchCRM\dto\SystemConfig;
 class NotificationEmail extends BaseEmail
 {
     private $notificationSource;
-    
+
     public function __construct($toAddresses,$notificationSource)
     {
         $this->notificationSource = $notificationSource;
@@ -21,7 +21,7 @@ class NotificationEmail extends BaseEmail
     {
         return gettext("Notification");
     }
-   
+
      public function getTokens()
     {
         $myTokens =  [
@@ -29,5 +29,15 @@ class NotificationEmail extends BaseEmail
             "body" => gettext("A notification was triggered by the classroom teacher at") . " " . date('Y-m-d H:i:s') . " " . gettext("Please go to this location")
         ];
         return array_merge($this->getCommonTokens(), $myTokens);
+    }
+
+    function getFullURL()
+    {
+        // TODO: Implement getFullURL() method.
+    }
+
+    function getButtonText()
+    {
+        // TODO: Implement getButtonText() method.
     }
 }

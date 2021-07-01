@@ -17,10 +17,11 @@ use ChurchCRM\NoteQuery;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\Authentication\AuthenticationManager;
 
 // Security: User must have Notes permission
 // Otherwise, re-direct them to the main menu.
-if (!$_SESSION['user']->isNotesEnabled()) {
+if (!AuthenticationManager::GetCurrentUser()->isNotesEnabled()) {
     RedirectUtils::Redirect('Menu.php');
     exit;
 }
@@ -44,7 +45,7 @@ if (isset($_GET['FamilyID'])) {
 if ($iPersonID > 0) {
     $sBackPage = 'PersonView.php?PersonID='.$iPersonID;
 } else {
-    $sBackPage = 'FamilyView.php?FamilyID='.$iFamilyID;
+    $sBackPage = 'v2/family/'.$iFamilyID;
 }
 
 //Has the form been submitted?
@@ -79,14 +80,14 @@ if (isset($_POST['Submit'])) {
             $note->setPrivate($bPrivate);
             $note->setText($sNoteText);
             $note->setType('note');
-            $note->setEntered($_SESSION['user']->getId());
+            $note->setEntered(AuthenticationManager::GetCurrentUser()->getId());
             $note->save();
         } else {
             $note = NoteQuery::create()->findPk($iNoteID);
             $note->setPrivate($bPrivate);
             $note->setText($sNoteText);
             $note->setDateLastEdited(new DateTime());
-            $note->setEditedBy($_SESSION['user']->getId());
+            $note->setEditedBy(AuthenticationManager::GetCurrentUser()->getId());
             $note->save();
         }
 
@@ -132,7 +133,7 @@ require 'Include/Header.php';
   <p align="center">
     <input type="submit" class="btn btn-success" name="Submit" value="<?= gettext('Save') ?>">
     &nbsp;
-    <input type="button" class="btn" name="Cancel" value="<?= gettext('Cancel') ?>" onclick="javascript:document.location='<?= $sBackPage ?>';">
+    <input type="button" class="btn btn-default" name="Cancel" value="<?= gettext('Cancel') ?>" onclick="javascript:document.location='<?= $sBackPage ?>';">
 
   </p>
 </form>

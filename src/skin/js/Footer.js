@@ -37,6 +37,13 @@ $("document").ready(function(){
     });
     $(".multiSearch").on("select2:select",function (e) { window.location.href= e.params.data.uri;});
 
+    window.onkeyup = function(e){
+      // listen for "?" keypress for quick access to the select2 search box.
+      if (e.shiftKey && e.keyCode == 191) {
+        $('.multiSearch').select2("open");
+      }
+    };
+
     window.CRM.system.runTimerJobs();
 
     $(".date-picker").datepicker({format:window.CRM.datePickerformat, language: window.CRM.lang});
@@ -84,7 +91,7 @@ $("document").ready(function(){
 
     window.CRM.cart.refresh();
     window.CRM.dashboard.refresh();
-    DashboardRefreshTimer=setInterval(window.CRM.dashboard.refresh, window.CRM.iDasbhoardServiceIntervalTime * 1000);
+    DashboardRefreshTimer=setInterval(window.CRM.dashboard.refresh, window.CRM.iDashboardServiceIntervalTime * 1000);
 
     window.CRM.APIRequest({
         path: 'system/notification',
@@ -127,21 +134,3 @@ function showGlobalMessage(message, callOutClass) {
         }
     });
 }
-
-function suspendSession(){
-  $.ajax({
-        method: 'HEAD',
-        url: window.CRM.root + "/api/session/lock",
-        statusCode: {
-          200: function() {
-            window.open(window.CRM.root + "/Login.php");
-          },
-          404: function() {
-            window.CRM.DisplayErrorMessage(url, {message: error});
-          },
-          500: function() {
-            window.CRM.DisplayErrorMessage(url, {message: error});
-          }
-        }
-      });
-};

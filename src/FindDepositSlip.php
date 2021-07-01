@@ -14,6 +14,7 @@ require 'Include/Functions.php';
 
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\Authentication\AuthenticationManager;
 
 $iDepositSlipID = $_SESSION['iCurrentDeposit'];
 
@@ -21,7 +22,7 @@ $iDepositSlipID = $_SESSION['iCurrentDeposit'];
 $sPageTitle = gettext('Deposit Listing');
 
 // Security: User must have finance permission to use this form
-if (!$_SESSION['user']->isFinanceEnabled()) {
+if (!AuthenticationManager::GetCurrentUser()->isFinanceEnabled()) {
     RedirectUtils::Redirect('index.php');
     exit;
 }
@@ -43,11 +44,8 @@ require 'Include/Header.php';
           </div>
           <div class="col-lg-3">
             <label for="depositType"><?= gettext('Deposit Type') ?></label>
-            <select class="form-control" id="depositType" name="depositType">
+            <select class="form-control" id="depositType" name="depositType" disabled>
               <option value="Bank"><?= gettext('Bank') ?></option>
-              <option value="CreditCard"><?= gettext('Credit Card') ?></option>
-              <option value="BankDraft"><?= gettext('Bank Draft') ?></option>
-              <option value="eGive"><?= gettext('eGive') ?></option>
             </select>
           </div>
           <div class="col-lg-3">

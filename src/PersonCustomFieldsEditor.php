@@ -15,9 +15,10 @@ require 'Include/Functions.php';
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\Authentication\AuthenticationManager;
 
 // Security: user must be administrator to use this page
-if (!$_SESSION['user']->isAdmin()) {
+if (!AuthenticationManager::GetCurrentUser()->isAdmin()) {
     RedirectUtils::Redirect('Menu.php');
     exit;
 }
@@ -66,7 +67,6 @@ require 'Include/Header.php'; ?>
               $aNameErrors[$iFieldID] = false;
           }
 
-          $aSideFields[$iFieldID] = $_POST[$iFieldID.'side'];
           $aFieldSecurity[$iFieldID] = $_POST[$iFieldID.'FieldSec'];
 
           if (isset($_POST[$iFieldID.'special'])) {
@@ -84,16 +84,9 @@ require 'Include/Header.php'; ?>
       // If no errors, then update.
       if (!$bErrorFlag) {
           for ($iFieldID = 1; $iFieldID <= $numRows; $iFieldID++) {
-              if ($aSideFields[$iFieldID] == 0) {
-                  $temp = 'left';
-              } else {
-                  $temp = 'right';
-              }
-
               $sSQL = "UPDATE person_custom_master
 					SET custom_Name = '".$aNameFields[$iFieldID]."',
 						custom_Special = ".$aSpecialFields[$iFieldID].",
-						custom_Side = '".$temp."',
 						custom_FieldSec = ".$aFieldSecurity[$iFieldID]."
 					WHERE custom_Field = '".$aFieldFields[$iFieldID]."';";
               RunQuery($sSQL);
@@ -104,7 +97,6 @@ require 'Include/Header.php'; ?>
       if (isset($_POST['AddField'])) {
           $newFieldType = InputUtils::LegacyFilterInput($_POST['newFieldType'], 'int');
           $newFieldName = InputUtils::LegacyFilterInput($_POST['newFieldName']);
-          $newFieldSide = $_POST['newFieldSide'];
           $newFieldSec = $_POST['newFieldSec'];
 
           if (strlen($newFieldName) == 0) {
@@ -135,12 +127,6 @@ require 'Include/Header.php'; ?>
                   $fieldInfo = mysqli_fetch_field_direct($fields, $last);
                   $newFieldNum = mb_substr($fieldInfo->name, 1) + 1;
 
-                  if ($newFieldSide == 0) {
-                      $newFieldSide = 'left';
-                  } else {
-                      $newFieldSide = 'right';
-                  }
-
                   // If we're inserting a new custom-list type field, create a new list and get its ID
                   if ($newFieldType == 12) {
                       // Get the first available lst_ID for insertion.  lst_ID 0-9 are reserved for permanent lists.
@@ -164,8 +150,8 @@ require 'Include/Header.php'; ?>
                   // Insert into the master table
                   $newOrderID = $last + 1;
                   $sSQL = "INSERT INTO person_custom_master
-						(custom_Order , custom_Field , custom_Name ,  custom_Special , custom_Side , custom_FieldSec, type_ID)
-						VALUES ('".$newOrderID."', 'c".$newFieldNum."', '".$newFieldName."', ".$newSpecial.", '".$newFieldSide."', '".$newFieldSec."', '".$newFieldType."');";
+						(custom_Order , custom_Field , custom_Name ,  custom_Special , custom_FieldSec, type_ID)
+						VALUES ('".$newOrderID."', 'c".$newFieldNum."', '".$newFieldName."', ".$newSpecial.", '".$newFieldSec."', '".$newFieldType."');";
                   RunQuery($sSQL);
 
                   // Insert into the custom fields table
@@ -232,7 +218,6 @@ require 'Include/Header.php'; ?>
           $aSpecialFields[$row] = $custom_Special;
           $aFieldFields[$row] = $custom_Field;
           $aTypeFields[$row] = $type_ID;
-          $aSideFields[$row] = ($custom_Side == 'right');
           $aFieldSecurity[$row] = $custom_FieldSec;
       }
   }
@@ -311,7 +296,6 @@ require 'Include/Header.php'; ?>
           <th><?= gettext('Name') ?></th>
           <th><?= gettext('Special option') ?></th>
           <th><?= gettext('Security Option') ?></th>
-          <th><?= gettext('Person-View Side') ?></th>
           <th><?= gettext('Delete') ?></th>
         </tr>
 
@@ -369,16 +353,6 @@ require 'Include/Header.php'; ?>
               } else {
                   echo GetSecurityList($aSecurityGrp, $row.'FieldSec');
               } ?>
-            </td>
-            <td class="TextColumn" align="center" nowrap>
-              <input type="radio" Name="<?= $row ?>side"
-                     value="0" <?php if (!$aSideFields[$row]) {
-                  echo ' checked';
-              } ?>><?= gettext('Left') ?>
-              <input type="radio" Name="<?= $row ?>side"
-                     value="1" <?php if ($aSideFields[$row]) {
-                  echo ' checked';
-              } ?>><?= gettext('Right') ?>
             </td>
             <td>
               <input type="button" class="btn btn-danger" value="<?= gettext('Delete') ?>" name="delete"
@@ -449,12 +423,6 @@ require 'Include/Header.php'; ?>
                     echo '<div><span style="color: red;"><BR>'.gettext('That field name already exists.').'</span></div>';
                 }
                 ?>
-                &nbsp;
-              </td>
-              <td valign="top" nowrap>
-                <div><?= gettext('Side') ?>:</div>
-                <input type="radio" name="newFieldSide" value="0" checked><?= gettext('Left') ?>
-                <input type="radio" name="newFieldSide" value="1"><?= gettext('Right') ?>
                 &nbsp;
               </td>
               <td valign="top" nowrap>

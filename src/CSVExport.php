@@ -14,10 +14,10 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\Utils\RedirectUtils;
-use ChurchCRM\SessionUser;
+use ChurchCRM\Authentication\AuthenticationManager;
 
 // If user does not have CSV Export permission, redirect to the menu.
-if (!SessionUser::getUser()->isCSVExport()) {
+if (!AuthenticationManager::GetCurrentUser()->isCSVExport()) {
     RedirectUtils::SecurityRedirect("CSVExport");
 }
 
@@ -172,16 +172,16 @@ require 'Include/Header.php';
             <label><?= gettext('Family Role') ?>:</label>
             <input type="checkbox" name="PrintFamilyRole" value="1">
           </div>
-          
+
           <div class="col-md-4">
             <label><?= gettext('Gender') ?>:</label>
             <input type="checkbox" name="PrintGender" value="1">
           </div>
-          
+
           <div class="col-md-12">
             * <?= gettext('Depends whether using person or family output method') ?>
           </div>
-          
+
         </div>
       </div>
 
@@ -451,7 +451,7 @@ require 'Include/Header.php';
 
           <label><?= gettext('Skip records with incomplete mail address') ?></label><input type="checkbox" name="SkipIncompleteAddr" value="1">
 
-          <input type="submit" class="btn" value=<?= '"'.gettext('Create File').'"' ?> name="Submit"></td>
+          <input type="submit" class="btn btn-default" value=<?= '"'.gettext('Create File').'"' ?> name="Submit"></td>
 
         </div>
       </div>

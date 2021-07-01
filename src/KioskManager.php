@@ -25,8 +25,8 @@ require 'Include/Header.php';
         <h3 class="box-title"><?= gettext('Kiosk Manager') ?></h3>
       </div>
       <div class="box-body">
-        <div class="col-sm-4"> 
-          <b><?= gettext('Enable New Kiosk Registration') ?>:</b> 
+        <div class="col-sm-4">
+          <b><?= gettext('Enable New Kiosk Registration') ?>:</b>
           <input data-width="150" id="isNewKioskRegistrationActive" type="checkbox" data-toggle="toggle" data-on="<?= gettext('Active') ?>" data-off="<?= gettext('Inactive') ?>">
         </div>
       </div>
@@ -39,16 +39,16 @@ require 'Include/Header.php';
       </div>
       <div class="box-body">
         <table id="KioskTable" style="width:100%">
-          
+
         </table>
-       
+
       </div>
     </div>
   </div>
 </div>
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
-  
+
   function renderKioskAssignment(data) {
 
     if(data.Accepted){
@@ -67,7 +67,7 @@ require 'Include/Header.php';
         }
 
       }
-    
+
         return '<select class="assignmentMenu" data-kioskid="'+data.Id+'">'+ options +'</select>';
     }
     else
@@ -97,27 +97,20 @@ require 'Include/Header.php';
     }
 
   })
-  
- 
+
+
   $(document).on("change",".assignmentMenu",function(event){
     var kioskId = $(event.currentTarget).data("kioskid");
     var selected = $(event.currentTarget).val();
     window.CRM.kiosks.setAssignment(kioskId,selected);
   })
-  
+
   $(document).ready(function(){
-    window.CRM.kioskDataTable = $("#KioskTable").DataTable({
-    "language": {
-      "url": window.CRM.plugin.dataTable.language.url
-    },
-    responsive: true,
+
+    var dataTableConfig = {
     ajax: {
       url: window.CRM.root + "/api/kiosks/",
       dataSrc: "KioskDevices"
-    },
-    "dom": window.CRM.plugin.dataTable.dom,
-    "tableTools": {
-        "sSwfPath": window.CRM.plugin.dataTable.tableTools.sSwfPath
     },
     columns: [
       {
@@ -143,13 +136,13 @@ require 'Include/Header.php';
           {
             return "None";
           }
-            
+
         },
         render: function (data,type,full,meta)
         {
           return renderKioskAssignment(full);
         }
-        
+
       },
       {
         width: 'auto',
@@ -187,11 +180,15 @@ require 'Include/Header.php';
         }
       }
     ]
-  })
-  
+  }
+
+    $.extend(dataTableConfig, window.CRM.plugin.dataTable);
+
+    window.CRM.kioskDataTable = $("#KioskTable").DataTable(dataTableConfig)
+
     setInterval(function(){window.CRM.kioskDataTable.ajax.reload()},5000);
   })
-  
+
 </script>
 
 <?php

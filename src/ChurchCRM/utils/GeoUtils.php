@@ -2,13 +2,15 @@
 
 namespace ChurchCRM\Utils;
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\LocaleInfo;
 use Geocoder\Provider\BingMaps\BingMaps;
 use Geocoder\Provider\GoogleMaps\GoogleMaps;
 use Geocoder\StatefulGeocoder;
-use Http\Adapter\Guzzle6\Client;
+use Http\Adapter\Guzzle7\Client;
 use Geocoder\Query\GeocodeQuery;
+use ChurchCRM\Bootstrapper;
 
 class GeoUtils
 {
@@ -17,7 +19,7 @@ class GeoUtils
     {
 
         $logger = LoggerUtils::getAppLogger();
-        $localeInfo = new LocaleInfo(SystemConfig::getValue('sLanguage'));
+        $localeInfo = Bootstrapper::GetCurrentLocale();
 
         $provider = null;
         $adapter = new Client();
@@ -27,7 +29,7 @@ class GeoUtils
         try {
             switch (SystemConfig::getValue("sGeoCoderProvider")) {
                 case "GoogleMaps":
-                    $provider = new GoogleMaps($adapter, null, null, true, SystemConfig::getValue("sGoogleMapKey"));
+                    $provider = new GoogleMaps($adapter, null, SystemConfig::getValue("sGoogleMapsGeocodeKey"));
                     break;
                 case "BingMaps":
                     $provider = new BingMaps($adapter, SystemConfig::getValue("sBingMapKey"));
@@ -44,7 +46,7 @@ class GeoUtils
                 $long = $coordinates->getLongitude();
             }
         } catch (\Exception $exception) {
-            $logger->warn("issue creating geoCoder " . $exception->getMessage());
+            $logger->warning("issue creating geoCoder " . $exception->getMessage());
         }
 
         return array(
@@ -57,7 +59,7 @@ class GeoUtils
     public static function DrivingDistanceMatrix($address1, $address2)
     {
         $logger = LoggerUtils::getAppLogger();
-        $localeInfo = new LocaleInfo(SystemConfig::getValue('sLanguage'));
+        $localeInfo = Bootstrapper::GetCurrentLocale();
         $url = "https://maps.googleapis.com/maps/api/distancematrix/json?";
         $url = $url . "language=" . $localeInfo->getShortLocale();
         $url = $url . "&origins=" . urlencode($address1);

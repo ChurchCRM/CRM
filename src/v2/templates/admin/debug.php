@@ -1,11 +1,10 @@
 <?php
 
+use ChurchCRM\Bootstrapper;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\AppIntegrityService;
 use ChurchCRM\Service\SystemService;
-
-require SystemURLs::getDocumentRoot() . '/Include/SimpleConfig.php';
 
 //Set the page title
 include SystemURLs::getDocumentRoot() . '/Include/Header.php';
@@ -14,7 +13,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
     <div class="col-lg-4">
         <div class="box">
             <div class="box-header">
-                <h4><?= gettext("System Information") ?></h4>
+                <h4><?= gettext("ChurchCRM Installation Information") ?></h4>
             </div>
             <div class="box-body">
                 <table class="table table-striped">
@@ -27,8 +26,39 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         <td><?= SystemURLs::getRootPath() ?></td>
                     </tr>
                     <tr>
-                        <td><?= gettext("Valid Mail Server Settings") ?></td>
-                        <td><?= SystemConfig::hasValidMailServerSettings() ? "true" : "false" ?></td>
+                        <td>DocumentRoot</td>
+                        <td><?= SystemURLs::getDocumentRoot() ?></td>
+                    </tr>
+                    <tr>
+                        <td>ImagesRoot</td>
+                        <td><?= SystemURLs::getImagesRoot() ?></td>
+                    </tr>
+                    <tr>
+                        <td>URL</td>
+                        <td><?= SystemURLs::getURL() ?></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="box">
+            <div class="box-header">
+                <h4><?= gettext("System Information") ?></h4>
+            </div>
+            <div class="box-body">
+                <table class="table table-striped">
+                    <tr>
+                        <td>Server Hostname</td>
+                        <td><?= gethostname() ?></td>
+                    </tr>
+                    <tr>
+                        <td>Server IP</td>
+                        <td><?= $_SERVER['SERVER_ADDR'] ?></td>
+                    </tr>
+                    <tr>
+                        <td>Server Platform</td>
+                        <td><?= php_uname() ?></td>
                     </tr>
                 </table>
             </div>
@@ -46,9 +76,36 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         <td><?= SystemService::getDBVersion() ?></td>
                     </tr>
                     <tr>
-                        <td>MySQL <?= gettext("Database Version") ?></td>
+                        <td><?= gettext("Database Server Version") ?></td>
                         <td><?= SystemService::getDBServerVersion() ?></td>
                     </tr>
+                    <tr>
+                        <td>DSN</td>
+                        <td><?= Bootstrapper::GetDSN() ?></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="box">
+            <div class="box-header">
+                <h4><?= gettext("Web Server") ?></h4>
+            </div>
+            <div class="box-body" style="overflow: scroll-x">
+                <table class="table table-striped">
+                    <tr>
+                        <td><?= gettext("Server Software") ?></td>
+                        <td><?= $_SERVER["SERVER_SOFTWARE"] ?></td>
+                    </tr>
+                    <?php
+                    if (function_exists('apache_get_modules')) {
+                        foreach (apache_get_modules() as $item) { ?>
+                            <tr>
+                                <td><?= $item ?></td>
+                            </tr>
+                        <?php }
+                    } ?>
                 </table>
             </div>
         </div>
@@ -80,6 +137,29 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         <td>PHP Max Exec</td>
                         <td><?= ini_get('max_execution_time') ?></td>
                     </tr>
+                    <tr>
+                        <td>SAPI Name</td>
+                        <td><?= php_sapi_name()  ?></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="box">
+            <div class="box-header">
+                <h4><?= gettext("Email Information") ?></h4>
+            </div>
+            <div class="box-body">
+                <table class="table table-striped">
+                    <tr>
+                        <td>SMTP Host</td>
+                        <td><?= SystemConfig::getValue("sSMTPHost") ?></td>
+                    </tr>
+                    <tr>
+                        <td><?= gettext("Valid Mail Server Settings") ?></td>
+                        <td><?= SystemConfig::hasValidMailServerSettings() ? "true" : "false" ?></td>
+                    </tr>
                 </table>
             </div>
         </div>
@@ -91,10 +171,10 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
             </div>
             <div class="box-body">
                 <table class="table table-striped">
-                    <?php foreach (AppIntegrityService::getApplicationPrerequisites() as $prerequisite => $status) { ?>
+                    <?php foreach (AppIntegrityService::getApplicationPrerequisites() as $prerequisite) { ?>
                         <tr>
-                            <td><?= $prerequisite ?></td>
-                            <td><?= $status ? "true" : "false" ?></td>
+                          <td><a href='<?=$prerequisite->GetWikiLink()?>'><?= $prerequisite->getName()?></a></td>
+                          <td><?= $prerequisite->GetStatusText()?></td>
                         </tr>
                     <?php } ?>
                 </table>
@@ -104,23 +184,59 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
     <div class="col-lg-4">
         <div class="box">
             <div class="box-header">
-                <h4><?= gettext("WebServer Modules") ?></h4>
+              <h4><?= gettext("Application Integrity Check") . ": " . AppIntegrityService::getIntegrityCheckStatus()?></h4>
             </div>
             <div class="box-body">
-                <table class="table table-striped">
+              <p><?= gettext('Details:')?> <?=  AppIntegrityService::getIntegrityCheckMessage() ?></p>
+                <?php
+                  if (count(AppIntegrityService::getFilesFailingIntegrityCheck()) > 0) {
+                      ?>
+                    <p><?= gettext('Files failing integrity check') ?>:
+                    <table class="display responsive no-wrap" width="100%" id="fileIntegrityCheckResultsTable">
+                      <thead>
+                      <td>FileName</td>
+                      <td>Expected Hash</td>
+                      <td>Actual Hash</td>
+                    </thead>
+                      <?php
+                      foreach (AppIntegrityService::getFilesFailingIntegrityCheck() as $file) {
+                          ?>
+                    <tr>
+                      <td><?= $file->filename ?></td>
+                      <td><?= $file->expectedhash ?></td>
+                      <td>
+                          <?php
+                          if ($file->status == 'File Missing') {
+                           echo gettext('File Missing');
+                          }
+                          else {
+                          echo $file->actualhash;
+                        }?>
+                      </td>
+                    </tr>
+                        <?php
+                      }
+                      ?>
+                    </table>
                     <?php
-                    if (function_exists('apache_get_modules')) {
-                        foreach (apache_get_modules() as $item) { ?>
-                            <tr>
-                                <td><?= $item ?></td>
-                            </tr>
-                        <?php }
-                    } ?>
-                </table>
+                  }   
+                ?>
             </div>
         </div>
     </div>
+    
 </div>
 
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
+  $(document).ready(function() { 
+  $("#fileIntegrityCheckResultsTable").DataTable({
+    responsive: true,
+    paging:false,
+    searching: false
+  });
+  
+  });
+  
+</script>
 
 <?php include SystemURLs::getDocumentRoot() . '/Include/Footer.php'; ?>

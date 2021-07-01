@@ -19,6 +19,7 @@ use ChurchCRM\Emails\FamilyVerificationEmail;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\LoggerUtils;
 
 class EmailPDF_ConfirmReport extends ChurchInfoReport
 {
@@ -164,7 +165,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
     $curY += SystemConfig::getValue('incrementY');
     $curY += SystemConfig::getValue('incrementY');
 
-    $sSQL = 'SELECT *, cls.lst_OptionName AS sClassName, fmr.lst_OptionName AS sFamRole FROM person_per 
+    $sSQL = 'SELECT *, cls.lst_OptionName AS sClassName, fmr.lst_OptionName AS sFamRole FROM person_per
 				LEFT JOIN list_lst cls ON per_cls_ID = cls.lst_OptionID AND cls.lst_ID = 1
 				LEFT JOIN list_lst fmr ON per_fmr_ID = fmr.lst_OptionID AND fmr.lst_ID = 2
 				WHERE per_fam_ID = '.$fam_ID.' ORDER BY per_fmr_ID';
@@ -338,13 +339,14 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
         if ($mail->send()) {
             $familiesEmailed = $familiesEmailed + 1;
         } else {
-            $logger->error($mail->getError());
+            LoggerUtils::getAppLogger()->error($mail->getError());
+            RedirectUtils::Redirect(SystemURLs::getRootPath().'/v2/people/verify?EmailsError=true');
         }
     }
 }
 
 if ($_GET['familyId']) {
-    RedirectUtils::Redirect('FamilyView.php?FamilyID='.$_GET['familyId'].'&PDFEmailed='.$familyEmailSent);
+    RedirectUtils::Redirect('v2/family/'.$_GET['familyId'].'&PDFEmailed='.$familyEmailSent);
 } else {
-    RedirectUtils::Redirect(SystemURLs::getRootPath().'/v2/family?AllPDFsEmailed='.$familiesEmailed);
+    RedirectUtils::Redirect(SystemURLs::getRootPath().'/v2/people/verify?AllPDFsEmailed='. $familiesEmailed);
 }

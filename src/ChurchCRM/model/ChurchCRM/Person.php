@@ -2,6 +2,7 @@
 
 namespace ChurchCRM;
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Base\Person as BasePerson;
 use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemConfig;
@@ -43,7 +44,7 @@ class Person extends BasePerson implements iPhoto
     {
         return $this->getGender() == 2;
     }
-    
+
     public function getGenderName()
     {
       switch (strtolower($this->getGender())) {
@@ -59,7 +60,7 @@ class Person extends BasePerson implements iPhoto
         return $this->getFlags() == 1 || $this->getBirthYear() == '' || $this->getBirthYear() == '0';
     }
 
-    private function getBirthDate()
+    public function getBirthDate()
     {
         if (!is_null($this->getBirthDay()) && $this->getBirthDay() != '' &&
             !is_null($this->getBirthMonth()) && $this->getBirthMonth() != ''
@@ -72,7 +73,6 @@ class Person extends BasePerson implements iPhoto
             return date_create($birthYear . '-' . $this->getBirthMonth() . '-' . $this->getBirthDay());
         }
         return false;
-
 
     }
 
@@ -108,7 +108,7 @@ class Person extends BasePerson implements iPhoto
 
         return $familyRole;
     }
-    
+
     public function getFamilyRoleName()
     {
         $roleName = '';
@@ -119,7 +119,7 @@ class Person extends BasePerson implements iPhoto
 
         return $roleName;
     }
-    
+
     public function getClassification()
     {
       $classification = null;
@@ -129,7 +129,7 @@ class Person extends BasePerson implements iPhoto
       }
       return $classification;
     }
-    
+
     public function getClassificationName()
     {
       $classificationName = '';
@@ -147,7 +147,7 @@ class Person extends BasePerson implements iPhoto
       {
         $NotificationEmail = new NewPersonOrFamilyEmail($this);
         if (!$NotificationEmail->send()) {
-            LoggerUtils::getAppLogger()->warn(gettext("New Person Notification Email Error"). " :". $NotificationEmail->getError());
+            LoggerUtils::getAppLogger()->warning(gettext("New Person Notification Email Error"). " :". $NotificationEmail->getError());
         }
       }
     }
@@ -189,19 +189,6 @@ class Person extends BasePerson implements iPhoto
         return !is_null($user);
     }
 
-    public function getOtherFamilyMembers()
-    {
-        $familyMembers = $this->getFamily()->getPeople();
-        $otherFamilyMembers = [];
-        foreach ($familyMembers as $member) {
-            if ($member->getId() != $this->getId()) {
-                array_push($otherFamilyMembers, $member);
-            }
-        }
-
-        return $otherFamilyMembers;
-    }
-
     /**
      * Get address of  a person. If empty, return family address.
      * @return string
@@ -239,6 +226,66 @@ class Person extends BasePerson implements iPhoto
     }
 
     /**
+     * Get name of a person family.
+     * @return string
+     */
+    public function getFamilyName()
+    {
+      if ($this->getFamily()) {
+          return $this->getFamily()
+              ->getName();
+      }
+      //if it reaches here, no family name found. return empty family name
+      return "";
+    }
+
+    /**
+     * Get name of a person family.
+     * @return string
+     */
+    public function getFamilyCountry()
+    {
+      if ($this->getFamily()) {
+          return $this->getFamily()
+              ->getCountry();
+      }
+      //if it reaches here, no country found. return empty country
+      return "";
+    }
+
+     /**
+     * Get Phone of a person family.
+     * 0 = Home
+     * 1 = Work
+     * 2 = Cell
+     * @return string
+     */
+    public function getFamilyPhone($type)
+    {
+      switch ($type) {
+        case 0:
+          if($this->getFamily()) {
+          return $this->getFamily()
+              ->getHomePhone();
+          }
+          break;
+        case 1:
+        if($this->getFamily()) {
+          return $this->getFamily()
+              ->getWorkPhone();
+          }
+          break;
+        case 2:
+        if($this->getFamily()) {
+          return $this->getFamily()
+              ->getCellPhone();
+          }
+          break;
+      }
+      //if it reaches here, no phone found. return empty phone
+      return "";
+    }
+    /**
      * * If person address found, return latitude and Longitude of person address
      * else return family latitude and Longitude
      * @return array
@@ -273,12 +320,12 @@ class Person extends BasePerson implements iPhoto
 
     public function deletePhoto()
     {
-        if ($_SESSION['user']->isDeleteRecordsEnabled()) {
+        if (AuthenticationManager::GetCurrentUser()->isDeleteRecordsEnabled()) {
             if ($this->getPhoto()->delete()) {
                 $note = new Note();
                 $note->setText(gettext("Profile Image Deleted"));
                 $note->setType("photo");
-                $note->setEntered($_SESSION['user']->getId());
+                $note->setEntered(AuthenticationManager::GetCurrentUser()->getId());
                 $note->setPerId($this->getId());
                 $note->save();
                 return true;
@@ -298,11 +345,11 @@ class Person extends BasePerson implements iPhoto
 
     public function setImageFromBase64($base64)
     {
-        if ($_SESSION['user']->isEditRecordsEnabled()) {
+        if (AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled()) {
             $note = new Note();
             $note->setText(gettext("Profile Image uploaded"));
             $note->setType("photo");
-            $note->setEntered($_SESSION['user']->getId());
+            $note->setEntered(AuthenticationManager::GetCurrentUser()->getId());
             $this->getPhoto()->setImageFromBase64($base64);
             $note->setPerId($this->getId());
             $note->save();
@@ -311,7 +358,7 @@ class Person extends BasePerson implements iPhoto
         return false;
 
     }
-        
+
     /**
      * Returns a string of a person's full name, formatted as specified by $Style
      * $Style = 0  :  "Title FirstName MiddleName LastName, Suffix"
@@ -321,6 +368,8 @@ class Person extends BasePerson implements iPhoto
      * $Style = 4  :  "FirstName MiddleName LastName"
      * $Style = 5  :  "Title FirstName LastName"
      * $Style = 6  :  "LastName, Title FirstName"
+     * $Style = 7  :  "LastName FirstName"
+     * $Style = 8  :  "LastName, FirstName Middlename"
      *
      * @param $Style
      * @return string
@@ -413,6 +462,7 @@ class Person extends BasePerson implements iPhoto
                     $nameString .= ' ' . $this->getLastName();
                 }
                 break;
+
             case 6:
                 if ($this->getLastName()) {
                     $nameString .= $this->getLastName() . ', ';
@@ -422,16 +472,36 @@ class Person extends BasePerson implements iPhoto
                 }
                 $nameString .= $this->getFirstName();
                 break;
-             case 7:
+
+            case 7:
                 if ($this->getLastName()) {
                     $nameString .= $this->getLastName() . ' ';
                 }
                 if ($this->getFirstName() ){
                     $nameString .= $this->getFirstName();
+                } else {
+                    $nameString = trim($nameString);
+                }
+                break;
+
+            case 8:
+                if ($this->getLastName()) {
+                    $nameString .= $this->getLastName();
+                }
+                if ($this->getFirstName()) {
+                  if (!$nameString) { // no first name
+                    $nameString = $this->getFirstName();
+                  } else {
+                    $nameString .= ', ' . $this->getFirstName();
+                  }
+
+                }
+                if ($this->getMiddleName()) {
+                    $nameString .= ' ' . $this->getMiddleName();
                 }
                 break;
             default:
-                $nameString = $this->getFullName();
+                $nameString = trim($this->getFullName());
 
         }
         return $nameString;
@@ -473,12 +543,72 @@ class Person extends BasePerson implements iPhoto
     }
 
     public function getProperties() {
-        $personProperties = PropertyQuery::create()
-            ->filterByProClass("p")
-            ->useRecordPropertyQuery()
-            ->filterByRecordId($this->getId())
-            ->find();
-        return $personProperties;
+      $personProperties = PropertyQuery::create()
+          ->filterByProClass("p")
+          ->useRecordPropertyQuery()
+          ->filterByRecordId($this->getId())
+          ->find();
+      return $personProperties;
+    }
+
+    //  return array of person properties
+    // created for the person-list.php datatable
+    public function getPropertiesString() {
+      $personProperties = PropertyQuery::create()
+          ->filterByProClass("p")
+          ->leftJoinRecordProperty()
+          ->where('r2p_record_ID='.$this->getId())
+          ->find();
+
+      $PropertiesList = [];
+      foreach($personProperties as $element) {
+          $PropertiesList[] = $element->getProName();
+      }
+      return $PropertiesList;
+    }
+
+    // return array of person custom fields
+    // created for the person-list.php datatable
+    public function getCustomFields() {
+      // get list of custom field column names
+      $allPersonCustomFields = PersonCustomMasterQuery::create()->find();
+
+      // add custom fields to person_custom table since they are not defined in the propel schema
+      $rawQry =  PersonCustomQuery::create();
+      foreach ($allPersonCustomFields as $customfield ) {
+          if (AuthenticationManager::GetCurrentUser()->isEnabledSecurity($customfield->getFieldSecurity())) {
+            $rawQry->withColumn($customfield->getId());
+          }
+      }
+      $thisPersonCustomFields = $rawQry->findOneByPerId($this->getId());
+
+      // get custom column names and values
+      $personCustom = [];
+      if ($rawQry->count() > 0) {
+        foreach ($allPersonCustomFields as $customfield ) {
+            if (AuthenticationManager::GetCurrentUser()->isEnabledSecurity($customfield->getFieldSecurity())) {
+                $value = $thisPersonCustomFields->getVirtualColumn($customfield->getId());
+                if (!empty($value)) {
+                    $personCustom[] = $customfield->getName();
+                }
+            }
+        }
+      }
+      return $personCustom;
+    }
+    // return array of person groups
+    // created for the person-list.php datatable
+    public function getGroups() {
+      $GroupList = GroupQuery::create()
+      ->leftJoinPerson2group2roleP2g2r()
+      ->where('p2g2r_per_ID='.$this->getId())
+      ->find();
+
+      $group = [];
+      foreach($GroupList as $element) {
+        $group[] = $element->getName();
+      }
+      return $group;
     }
 
     public function getNumericCellPhone()
@@ -504,24 +634,28 @@ class Person extends BasePerson implements iPhoto
       }
       $age = date_diff($now,$birthDate);
 
-      if ($age->y < 1) {
-        $ageValue = $age->m;
-        if ($age->m > 1) {
-          $ageSuffix = gettext('mos old');
-        } else {
-          $ageSuffix = gettext('mo old');
-        }
+      if ($age->y < 1)
+        return sprintf(ngettext('%d month old', '%d months old', $age->m), $age->m);
+
+      return sprintf(ngettext('%d year old', '%d years old', $age->y), $age->y);
+    }
+
+    public function getNumericAge() {
+      $birthDate = $this->getBirthDate();
+      if ($this->hideAge())
+      {
+        return false;
+      }
+      if (empty($now)) {
+        $now = date_create('today');
+      }
+      $age = date_diff($now,$birthDate);
+       if ($age->y < 1) {
+        $ageValue = 0;
       } else {
         $ageValue = $age->y;
-        if ($age->y > 1) {
-          $ageSuffix = gettext('yrs old');
-        } else {
-          $ageSuffix = gettext('yr old');
-        }
       }
-
-      return $ageValue. " ".$ageSuffix;
-
+      return $ageValue;
     }
 
     /* Philippe Logel 2017 */
@@ -530,17 +664,17 @@ class Person extends BasePerson implements iPhoto
        return $this->getFullName()." ".$this->getAge();
     }
 
-    public function toArray()
+    public function toArray($keyType = TableMap::TYPE_PHPNAME, $includeLazyLoadColumns = true, $alreadyDumpedObjects = array(), $includeForeignObjects = false)
     {
         $array = parent::toArray();
         $array['Address']=$this->getAddress();
         return $array;
     }
-    
+
     public function getThumbnailURL() {
       return SystemURLs::getRootPath() . '/api/person/' . $this->getId() . '/thumbnail';
     }
-    
+
     public function getEmail() {
       if (parent::getEmail() == null)
       {

@@ -6,508 +6,307 @@ msgstr ""
 "X-Generator: POEditor.com\n"
 "Project-Id-Version: ChurchCRM\n"
 "Language: sq\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: AutoPaymentClearAccounts.php:24 CatchCreatePayment.php:71
-#: Include/Functions.php:234
+#: 
 msgid "Cannot execute query."
-msgstr "Nuk mund të ekzekutuar query."
+msgstr "Nuk mund të ekzekutojë kërkesën."
 
-#: AutoPaymentDelete.php:19
-msgid "Confirm Delete Automatic payment"
-msgstr "Konfirmo Fshij pagesën automatik"
-
-#: AutoPaymentDelete.php:63 Checkin.php:286 Checkin.php:368
-#: DepositSlipEditor.php:231 DonationFundEditor.php:153
-#: DonationFundEditor.php:183 EditEventAttendees.php:76
-#: ElectronicPaymentList.php:219 ElectronicPaymentList.php:284
-#: EventNames.php:302 FamilyCustomFieldsEditor.php:324
-#: FamilyCustomFieldsEditor.php:382 FamilyView.php:663 FamilyView.php:715
-#: FamilyView.php:774 FamilyView.php:911 FindDepositSlip.php:105
-#: FundRaiserEditor.php:200 ListEvents.php:241 PaddleNumList.php:55
-#: PersonCustomFieldsEditor.php:315 PersonCustomFieldsEditor.php:384
-#: PersonView.php:940 PledgeDelete.php:53 PropertyList.php:65
-#: PropertyList.php:106 PropertyTypeList.php:46 PropertyTypeList.php:67
-#: PropertyTypeList.php:69 v2/templates/people/family-view.php:530
+#: 
 msgid "Delete"
-msgstr "Fshiji"
+msgstr "Fshije"
 
-#: AutoPaymentDelete.php:64 AutoPaymentEditor.php:787 BatchWinnerEntry.php:112
-#: CanvassEditor.php:239 Checkin.php:167 Checkin.php:274 Checkin.php:287
-#: DirectoryReports.php:286 DonatedItemEditor.php:297 EventNames.php:231
-#: FamilyEditor.php:1119 FamilyView.php:910 FinancialReports.php:69
-#: FundRaiserEditor.php:143 GroupPropsEditor.php:168 GroupReports.php:82
-#: GroupReports.php:151 LettersAndLabels.php:83 ManageEnvelopes.php:135
-#: MemberRoleChange.php:119 MemberRoleChange.php:121 NoteDelete.php:67
-#: NoteEditor.php:135 PersonEditor.php:1231 PersonView.php:939
-#: PledgeDelete.php:54 PropertyEditor.php:169 PropertyTypeEditor.php:114
-#: Register.php:56 ReminderReport.php:52 SettingsIndividual.php:114
-#: SettingsIndividual.php:160 SettingsUser.php:100 SettingsUser.php:160
-#: TaxReport.php:55 UserEditor.php:459 UserEditor.php:562
-#: WhyCameEditor.php:105 external/templates/verify/verify-family-info.php:144
-#: sundayschool/SundaySchoolDashboard.php:258
-#: sundayschool/SundaySchoolReports.php:286
-#: v2/templates/people/family-view.php:529
+#: 
 msgid "Cancel"
 msgstr "Anulo"
 
-#: AutoPaymentEditor.php:129
-msgid "Automatic payment configuration for the "
-msgstr "Konfigurimi Automatik pagesa për "
-
-#: AutoPaymentEditor.php:786 CanvassEditor.php:238 DepositSlipEditor.php:97
-#: DonatedItemEditor.php:293 FamilyEditor.php:647 FamilyEditor.php:731
-#: FamilyEditor.php:795 FamilyEditor.php:869 FamilyEditor.php:891
-#: FamilyEditor.php:922 FamilyEditor.php:1115 FundRaiserEditor.php:142
-#: GroupEditor.php:167 GroupPropsEditor.php:166 NoteEditor.php:133
-#: PaddleNumEditor.php:147 PersonEditor.php:617 PersonEditor.php:775
-#: PersonEditor.php:818 PersonEditor.php:1129 PersonEditor.php:1192
-#: PersonEditor.php:1227 PledgeEditor.php:687 PropertyEditor.php:169
-#: PropertyTypeEditor.php:112 UserEditor.php:458 UserPasswordChange.php:213
-#: WhyCameEditor.php:104
+#: 
 msgid "Save"
 msgstr "Ruaj"
 
-#: AutoPaymentEditor.php:804 BatchWinnerEntry.php:83 BatchWinnerEntry.php:95
-#: CSVImport.php:271 ChurchCRM/Config/Menu/Menu.php:100
-#: DirectoryReports.php:82 DonatedItemEditor.php:186 DonatedItemEditor.php:237
-#: FamilyEditor.php:1089 GroupEditor.php:94 GroupList.php:36 GroupView.php:40
-#: Include/CountryDropDown.php:6 Include/Functions.php:856
-#: Include/Functions.php:909 MapUsingGoogle.php:96 MapUsingGoogle.php:120
-#: PaddleNumEditor.php:176 PersonEditor.php:782 PersonEditor.php:798
-#: PersonEditor.php:1137 PrintView.php:264 PrintView.php:274
-#: SelectDelete.php:157 SelectList.php:35 SelectList.php:45 SelectList.php:61
-#: SelectList.php:1098 SelectList.php:1169 SystemSettings.php:214
-#: eGive.php:341
+#: 
 msgid "Unassigned"
-msgstr "Pacaktuara"
+msgstr "E pacaktuar"
 
-#: AutoPaymentEditor.php:824
-msgid "Automatic payment type"
-msgstr "Lloji i pagesave automatike"
-
-#: AutoPaymentEditor.php:854
-msgid "Payment amount"
-msgstr "Shuma e pagesës"
-
-#: AutoPaymentEditor.php:859
-msgid "Payment interval (months)"
-msgstr "Intervali i pagesës (muaj)"
-
-#: AutoPaymentEditor.php:867 CartToGroup.php:74 EditEventTypes.php:86
-#: EditEventTypes.php:98 EventNames.php:106 EventNames.php:118
-#: EventNames.php:163 GroupReports.php:47 GroupReports.php:142
-#: PersonToGroup.php:66 sundayschool/SundaySchoolReports.php:190
+#: 
 msgid "None"
 msgstr "Asnjë"
 
-#: AutoPaymentEditor.php:880
-msgid "inactive"
-msgstr "joaktiv"
-
-#: AutoPaymentEditor.php:914 CSVExport.php:102 CSVImport.php:219
-#: CartToFamily.php:245 DirectoryReports.php:250 FamilyEditor.php:672
-#: PersonEditor.php:863 Register.php:44
-#: external/templates/registration/family-register.php:41
-#: queryparameteroptions_qpo.php:7
+#: 
 msgid "City"
-msgstr "Qytet"
+msgstr "Qyteti"
 
-#: AutoPaymentEditor.php:919 CSVExport.php:107 CSVImport.php:220
-#: CartToFamily.php:250 DirectoryReports.php:254 FamilyEditor.php:679
-#: PersonEditor.php:883 Register.php:45
-#: external/templates/registration/family-register.php:44
-#: queryparameteroptions_qpo.php:6
+#: 
 msgid "State"
-msgstr "Shtet"
+msgstr "Shteti"
 
-#: AutoPaymentEditor.php:930 CSVExport.php:122 CSVImport.php:222
-#: CartToFamily.php:270 FamilyEditor.php:699 PersonEditor.php:928
-#: Register.php:47
+#: 
 msgid "Country"
 msgstr "Shteti"
 
-#: AutoPaymentEditor.php:936 ChurchCRM/Reports/PDF_Directory.php:309
-#: ChurchCRM/Reports/PDF_Directory.php:383
-#: ChurchCRM/Reports/PDF_Directory.php:440 DirectoryReports.php:262
-#: Reports/DirectoryReport.php:285 Reports/GroupReport.php:119
-#: external/templates/registration/family-register-members.php:103
+#: 
 msgid "Phone"
 msgstr "Telefon"
 
-#: AutoPaymentEditor.php:942 CSVExport.php:142 CSVImport.php:226
-#: CartToFamily.php:311 ChurchCRM/Config/Menu/Menu.php:40
-#: ChurchCRM/Reports/PDF_Directory.php:318
-#: ChurchCRM/Reports/PDF_Directory.php:394
-#: ChurchCRM/Reports/PDF_Directory.php:451 EditEventAttendees.php:42
-#: EventAttendance.php:175 FamilyEditor.php:771 FamilyView.php:272
-#: FamilyView.php:277 FamilyView.php:359 GroupReports.php:127
-#: PersonEditor.php:1035 PersonEditor.php:1037 PersonView.php:307
-#: PersonView.php:511 PrintView.php:294 Reports/CanvassReports.php:243
-#: Reports/ConfirmReport.php:183 Reports/ConfirmReport.php:202
-#: Reports/ConfirmReportEmail.php:187 Reports/ConfirmReportEmail.php:205
-#: Reports/DirectoryReport.php:296 Reports/GroupReport.php:133
-#: external/templates/registration/family-register-members.php:83
-#: external/templates/verify/enter-info.php:33
-#: external/templates/verify/verify-family-info.php:76
-#: sundayschool/SundaySchoolClassView.php:89
-#: sundayschool/SundaySchoolClassView.php:205
-#: v2/templates/cart/cartlisting.php:19
-#: v2/templates/people/family-view.php:174
-#: v2/templates/people/family-view.php:314 queryparameteroptions_qpo.php:13
+#: 
 msgid "Email"
-msgstr "Email"
+msgstr "E-posta"
 
-#: AutoPaymentEditor.php:948 ElectronicPaymentList.php:210
-#: FinancialReports.php:264 FindDepositSlip.php:48 PledgeEditor.php:589
+#: 
 msgid "Credit Card"
-msgstr "Credit Card"
+msgstr "Karta e kreditit"
 
-#: AutoPaymentEditor.php:965
-msgid "Expiration Month"
-msgstr "Muaji Skadimit"
-
-#: AutoPaymentEditor.php:971
-msgid "Expiration Year"
-msgstr "Viti Skadimit"
-
-#: AutoPaymentEditor.php:977
-msgid "Bank Name"
-msgstr "Emri i Bankës"
-
-#: AutoPaymentEditor.php:983
-msgid "Bank Route Number"
-msgstr "Banka Route Numri"
-
-#: AutoPaymentEditor.php:989
-msgid "Bank Account Number"
-msgstr "Numri i llogarisë bankare"
-
-#: BackupDatabase.php:32 ChurchCRM/Config/Menu/Menu.php:197
+#: 
 msgid "Backup Database"
-msgstr "Baza e të dhënave Backup"
+msgstr "Databaza e kopjes rezervë"
 
-#: BackupDatabase.php:42
-msgid "You should make a manual backup at least once a week unless you already have a regular backup procedule for your systems."
+#: 
+#, fuzzy
+msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
 msgstr "Ju duhet të bëni një backup manual të paktën një herë në javë nëse ju tashmë keni një procedule rregullt rezervë për sistemet tuaja."
 
-#: BackupDatabase.php:43
+#: 
 msgid "After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site."
 msgstr "Pasi ta shkarkoni file backup, ju duhet të bëjë dy kopje. Vendos një prej tyre në një zjarr-provë të sigurt në vend dhe të tjera në një vend të sigurt off-site."
 
-#: BackupDatabase.php:45
-msgid "For added backup security, you can e-mail the backup to yourself at an e-mail account hosted off-site or to a trusted friend.  Be sure to use encryption if you do this, however."
-msgstr "Për sigurinë e shtuar backup, ju mund të e-mail backup të veten në një llogari e-mail priti off-site ose me një mik të besuar. Të jetë i sigurt për të përdorur encryption nëse ju bëni këtë, megjithatë."
-
-#: BackupDatabase.php:53
+#: 
 msgid "Encrypt backup file with a password?"
 msgstr "Fotografi Encrypt backup me një fjalëkalim?"
 
-#: BackupDatabase.php:56
+#: 
 msgid "Re-type Password"
 msgstr "Re-lloj Fjalëkalimi"
 
-#: BackupDatabase.php:59
-msgid "Generate and Download Backup"
-msgstr "Generate dhe Shkarko Backup"
-
-#: BatchWinnerEntry.php:35 FundRaiserEditor.php:154
+#: 
 msgid "Batch Winner Entry"
 msgstr "Batch Fituesi Hyrja"
 
-#: BatchWinnerEntry.php:75
+#: 
 msgid "Winner"
 msgstr "Fitues"
 
-#: BatchWinnerEntry.php:76
+#: 
 msgid "Price"
 msgstr "Çmim"
 
-#: BatchWinnerEntry.php:111
+#: 
 msgid "Enter Winners"
 msgstr "Shkruani Fituesit"
 
-#: CSVExport.php:54 v2/templates/cart/cartfunctions.php:32
+#: 
 msgid "CSV Export"
 msgstr "CSV Export"
 
-#: AutoPaymentEditor.php:896 CSVExport.php:66 CSVImport.php:213
-#: ManageEnvelopes.php:162 PersonEditor.php:668
-#: external/templates/registration/family-register-members.php:73
-#: external/templates/verify/enter-info.php:25
-#: sundayschool/SundaySchoolDashboard.php:204
+#: 
 msgid "Last Name"
 msgstr "Mbiemër"
 
-#: CSVExport.php:67
+#: 
 msgid "Required"
 msgstr "I nevojshëm"
 
-#: AutoPaymentEditor.php:890 CSVExport.php:77 CSVImport.php:211
-#: PersonEditor.php:646
-#: external/templates/registration/family-register-members.php:69
-#: external/templates/verify/enter-info.php:21
-#: sundayschool/SundaySchoolDashboard.php:203
+#: 
 msgid "First Name"
 msgstr "Emër"
 
-#: CSVExport.php:82 CSVImport.php:212 PersonEditor.php:657
+#: 
 msgid "Middle Name"
 msgstr "Emri i dytë"
 
-#: AutoPaymentEditor.php:925 CSVExport.php:112 CSVImport.php:221
-#: CartToFamily.php:262 DirectoryReports.php:258 FamilyEditor.php:689
-#: PersonEditor.php:906 Register.php:46
-#: external/templates/registration/family-register.php:51
-#: external/templates/verify/enter-info.php:29
+#: 
 msgid "Zip"
 msgstr "Zinxhir"
 
-#: CSVExport.php:117
+#: 
 msgid "Envelope"
 msgstr "Zarf"
 
-#: CSVExport.php:147 ChurchCRM/Reports/PDF_Directory.php:397
-#: ChurchCRM/Reports/PDF_Directory.php:454 PersonView.php:321
-#: Reports/DirectoryReport.php:299
+#: 
 msgid "Work/Other Email"
 msgstr "Puna / tjera Email"
 
-#: CSVExport.php:152 CSVExport.php:371 CSVImport.php:229 PersonEditor.php:1150
-#: PrintView.php:304
+#: 
 msgid "Membership Date"
 msgstr "Anëtarësia Data"
 
-#: CSVExport.php:172 CSVExport.php:302 OptionManager.php:62
-#: PersonEditor.php:780 PrintView.php:269 v2/templates/cart/cartlisting.php:22
-#: queryparameters_qrp.php:5
+#: 
 msgid "Family Role"
 msgstr "Roli i familjes"
 
-#: CSVExport.php:205
+#: 
 msgid "Custom Person Fields"
 msgstr "Person Fushat Custom"
 
-#: CSVExport.php:223
+#: 
 msgid "Custom Family Fields"
 msgstr "Fushat Custom Family"
 
-#: CSVExport.php:250 FinancialReports.php:108
+#: 
 msgid "Filters"
 msgstr "Filtrat"
 
-#: CSVExport.php:256
+#: 
 msgid "Records to export"
 msgstr "Gjurmë të eksportit"
 
-#: CSVExport.php:265
+#: 
 msgid "Based on filters below.."
 msgstr "Bazuar në filtra më poshtë .."
 
-#: CSVExport.php:268
+#: 
 msgid "People in Cart (filters ignored)"
 msgstr "Njerëzit në kartën (filtra injorohen)"
 
-#: CSVExport.php:294 CSVExport.php:319 CSVExport.php:355
-#: DirectoryReports.php:80 DirectoryReports.php:98 DirectoryReports.php:116
-#: DirectoryReports.php:134 DirectoryReports.php:153 FinancialReports.php:259
+#: 
 msgid "Use Ctrl Key to select multiple"
 msgstr "Përdorni Ctrl Key për të zgjedhur të shumta"
 
-#: CSVExport.php:336
+#: 
 msgid "Don't Filter"
 msgstr "Mos Filter"
 
-#: CSVExport.php:337 ChurchCRM/Dashboard/PersonDemographicDashboardItem.php:26
-#: ChurchCRM/model/ChurchCRM/Person.php:51 FamilyEditor.php:990
-#: PeopleDashboard.php:310 PeopleDashboard.php:355 PersonEditor.php:630
-#: PrintView.php:244 PrintView.php:363 SelectList.php:555 SelectList.php:1140
-#: external/templates/registration/family-register-members.php:59
-#: queryparameteroptions_qpo.php:2
+#: 
 msgid "Male"
 msgstr "Mashkull"
 
-#: CSVExport.php:338 ChurchCRM/Dashboard/PersonDemographicDashboardItem.php:29
-#: ChurchCRM/model/ChurchCRM/Person.php:53 FamilyEditor.php:993
-#: PeopleDashboard.php:323 PeopleDashboard.php:368 PersonEditor.php:633
-#: PrintView.php:247 PrintView.php:363 SelectList.php:561 SelectList.php:1141
-#: external/templates/registration/family-register-members.php:60
-#: queryparameteroptions_qpo.php:3
+#: 
 msgid "Female"
 msgstr "Femër"
 
-#: CSVExport.php:347 DirectoryReports.php:96
+#: 
 msgid "Group Membership"
 msgstr "Anëtarësia Grupi"
 
-#: CSVExport.php:379 CSVExport.php:396 CSVExport.php:413 CSVExport.php:430
+#: 
 msgid "From:"
 msgstr "Nga:"
 
-#: CSVExport.php:380 CSVExport.php:397 CSVExport.php:414 CSVExport.php:431
+#: 
 msgid "To:"
 msgstr "Në:"
 
-#: CSVExport.php:388
+#: 
 msgid "Birthday Date"
 msgstr "Ditëlindja Date"
 
-#: Reports/ConfirmReport.php:150 Reports/ConfirmReportEmail.php:151
+#: 
 #, fuzzy
 msgid "Anniversary Date"
 msgstr "Anniversary Data"
 
-#: CSVExport.php:443 FinancialReports.php:317
+#: 
 msgid "Output Method:"
 msgstr "Output Metoda:"
 
-#: CSVExport.php:447
+#: 
 msgid "CSV Individual Records"
 msgstr "CSV Të dhënat individuale"
 
-#: CSVExport.php:448
+#: 
 msgid "CSV Combine Families"
 msgstr "CSV Kombinoje Familjet"
 
-#: CSVExport.php:449
+#: 
 msgid "Add Individuals to Cart"
 msgstr "Shtoni në kartën e individëve"
 
-#: CSVExport.php:452
+#: 
 msgid "Skip records with incomplete mail address"
 msgstr "Kalo dhënat me adresë jo të plotë të postës"
 
-#: CSVExport.php:454
+#: 
 msgid "Create File"
 msgstr "Krijo Skedar"
 
-#: CSVImport.php:128
+#: 
 msgid "No file selected for upload."
 msgstr "Nuk ka fotografi zgjedhur për upload."
 
-#: CSVImport.php:154
+#: 
 msgid "Total number of rows in the CSV file:"
 msgstr "Numri i përgjithshëm i rreshtave në skedar CSV:"
 
-#: CSVImport.php:209
+#: 
 msgid "Ignore this Field"
 msgstr "Injorojë këtë Field"
 
-#: CSVExport.php:72 CSVImport.php:210 DonatedItemEditor.php:208
-#: FindFundRaiser.php:236 FundRaiserEditor.php:169 FundRaiserEditor.php:195
-#: PersonEditor.php:637
+#: 
 msgid "Title"
 msgstr "Titull"
 
-#: CSVExport.php:87 CSVImport.php:214 FamilyEditor.php:942
-#: PersonEditor.php:679
+#: 
 msgid "Suffix"
 msgstr "Prapashtesë"
 
-#: CSVExport.php:177 CSVExport.php:327 CSVImport.php:215 FamilyEditor.php:943
-#: PersonEditor.php:624 PrintView.php:238 PrintView.php:338
-#: sundayschool/SundaySchoolClassView.php:179 queryparameters_qrp.php:4
+#: 
 msgid "Gender"
 msgstr "Gjini"
 
-#: CSVImport.php:216
+#: 
 msgid "Donation Envelope"
 msgstr "Dhurim Zarf"
 
-#: CSVExport.php:127 CSVImport.php:223 CartToFamily.php:281
-#: EditEventAttendees.php:43 EventAttendance.php:176 FamilyEditor.php:737
-#: FamilyView.php:254 GroupReports.php:124 PersonEditor.php:961
-#: PersonEditor.php:963 PersonView.php:302 PrintView.php:199
-#: Reports/ConfirmReport.php:135 Reports/ConfirmReportEmail.php:136
-#: SelectList.php:965 SelectList.php:966 SelectList.php:1041
-#: external/templates/registration/family-register-done.php:30
-#: external/templates/registration/family-register.php:68
-#: external/templates/verify/verify-family-info.php:27
-#: external/templates/verify/verify-family-info.php:70
-#: sundayschool/SundaySchoolClassView.php:207
-#: v2/templates/people/family-list.php:33
-#: v2/templates/people/family-view.php:153
-#: v2/templates/people/family-view.php:299 queryparameteroptions_qpo.php:8
+#: 
 msgid "Home Phone"
 msgstr "Faqja Telefon"
 
-#: CSVExport.php:132 CSVImport.php:224 CartToFamily.php:291
-#: FamilyEditor.php:749 FamilyView.php:260 GroupReports.php:125
-#: PersonEditor.php:984 PersonEditor.php:986 PersonView.php:316
-#: PrintView.php:204 Reports/ConfirmReport.php:239
-#: Reports/ConfirmReportEmail.php:234 SelectList.php:968 SelectList.php:969
-#: SelectList.php:1041 external/templates/verify/verify-family-info.php:72
-#: v2/templates/people/family-view.php:160
-#: v2/templates/people/family-view.php:304
+#: 
 msgid "Work Phone"
 msgstr "Puna Phone"
 
-#: CSVExport.php:137 CSVImport.php:225 CartToFamily.php:301
-#: FamilyEditor.php:759 FamilyView.php:266 PersonEditor.php:1009
-#: PersonEditor.php:1011 PersonView.php:297 PrintView.php:209
-#: SelectList.php:971 SelectList.php:972 SelectList.php:1041
-#: external/templates/verify/verify-family-info.php:74
-#: v2/templates/people/family-view.php:167
-#: v2/templates/people/family-view.php:309
+#: 
 msgid "Mobile Phone"
 msgstr "Mobile Phone"
 
-#: CSVImport.php:227 PersonEditor.php:1054 PrintView.php:299
+#: 
 msgid "Work / Other Email"
 msgstr "Puna / tjera Email"
 
-#: CSVImport.php:228 PersonView.php:282 PrintView.php:253
-#: sundayschool/SundaySchoolClassView.php:203
-#: sundayschool/SundaySchoolDashboard.php:205
+#: 
 msgid "Birth Date"
 msgstr "Data e lindjes"
 
-#: CSVImport.php:230 CartToFamily.php:211 DirectoryReports.php:173
-#: FamilyEditor.php:805 FamilyView.php:241
-#: external/templates/verify/verify-family-info.php:34
-#: v2/templates/people/family-view.php:140
+#: 
 msgid "Wedding Date"
 msgstr "Dasma Data"
 
-#: CSVImport.php:239
+#: 
 msgid "Ignore first CSV row (to exclude a header)"
 msgstr "Ignore rreshtin e parë CSV (për të përjashtuar një kokë)"
 
-#: CSVImport.php:244
+#: 
 msgid "Make Family records based on last name and address"
 msgstr "Bëni shënime familjare bazuar në mbiemrin dhe adresën"
 
-#: CSVImport.php:250
+#: 
 msgid "Patriarch"
 msgstr "Patrik"
 
-#: CSVImport.php:251
+#: 
 msgid "Matriarch"
 msgstr "Matriarch"
 
-#: CSVImport.php:253
+#: 
 msgid "Family Type: used with Make Family records... option above"
 msgstr "Lloji Familja: përdoret me të dhënat Bëni familjare ... Opsioni më lartë"
 
-#: CSVImport.php:260
+#: 
 msgid "NOTE: Separators (dashes, etc.) or lack thereof do not matter"
 msgstr "SHËNIM: ndarësit (dashes, etj) ose mungesa e tij nuk kanë rëndësi"
 
-#: CSVImport.php:265
+#: 
 msgid "Default country if none specified otherwise"
 msgstr "Vendi Default qoftë se asnjë specifikuara ndryshe"
 
-#: CSVExport.php:167 CSVExport.php:277 CSVImport.php:281 FamilyEditor.php:948
-#: FinancialReports.php:117 OptionManager.php:69 PeopleDashboard.php:411
-#: PersonEditor.php:1135 PrintView.php:309
-#: v2/templates/cart/cartlisting.php:21 queryparameters_qrp.php:19
+#: 
 msgid "Classification"
 msgstr "Klasifikimi"
 
-#: CSVImport.php:283
+#: 
 msgid "Perform Import"
 msgstr "Kryen Import"
 
-#: CSVImport.php:803
+#: 
 msgid "ERROR: the uploaded CSV file no longer exists!"
 msgstr "GABIM: fotografia ngarkuar CSV nuk ekziston më!"
 
@@ -515,11 +314,11 @@ msgstr "GABIM: fotografia ngarkuar CSV nuk ekziston më!"
 msgid "Data Cleared Successfully!"
 msgstr "Të dhënat pastruar me sukses!"
 
-#: CSVImport.php:812
+#: 
 msgid "Upload CSV File"
 msgstr "Ngarkoni CSV dokumentit"
 
-#: CSVImport.php:822
+#: 
 msgid "Clear Persons and Families"
 msgstr "Personat e qarta dhe Familjet"
 
@@ -531,1594 +330,1401 @@ msgstr "Warning! Mos zgjidhni këtë opsion, nëse keni ndërmend për të shtua
 msgid "Use only if unsatisfied with initial import.  All person and member data will be destroyed!"
 msgstr "Përdoreni vetëm nëse pakënaqur me importin fillestar. Të gjitha të dhënat e personit dhe anëtare do të shkatërrohet!"
 
-#: CSVImport.php:829
+#: 
 msgid "Data import successful."
 msgstr "Të dhënat e importit të suksesshme."
 
-#: CSVImport.php:829
+#: 
 msgid "persons were imported"
 msgstr "persona janë importuar"
 
-#: CanvassAutomation.php:21 ChurchCRM/Config/Menu/Menu.php:171
+#: 
 msgid "Canvass Automation"
 msgstr "Automatizimi anketim"
 
-#: CanvassAutomation.php:46 CanvassAutomation.php:53 CanvassAutomation.php:60
-#: CanvassAutomation.php:68 CanvassAutomation.php:76
+#: 
 msgid "Not confirmed."
 msgstr "Nuk është konfirmuar."
 
-#: CanvassAutomation.php:51 CanvassEditor.php:145 FamilyEditor.php:57
+#: 
 msgid "Canvassers"
 msgstr "Canvassers"
 
-#: CanvassAutomation.php:58 CanvassEditor.php:146 FamilyEditor.php:58
+#: 
 msgid "BraveCanvassers"
 msgstr "BraveCanvassers"
 
-#: CanvassAutomation.php:66
+#: 
 msgid "Cleared all canvasser assignments."
 msgstr "Pastruar të gjitha detyrat mbledh vota duke vizituar."
 
-#: CanvassAutomation.php:74
+#: 
 msgid "Set Ok To Canvass for all families."
 msgstr "Bëje Ok të diskutoj për të gjitha familjet."
 
-#: CanvassAutomation.php:82
+#: 
 msgid "Disabled Ok To Canvass for all families."
 msgstr "Me aftësi të kufizuara Ok të diskutoj për të gjitha familjet."
 
-#: CanvassAutomation.php:84
+#: 
 msgid "ClearAllOkToCanvass button not confimed."
 msgstr "Button ClearAllOkToCanvass nuk confimed."
 
-#: CanvassAutomation.php:129
+#: 
 msgid "Set default fiscal year"
 msgstr "Bëje vit fiskal parazgjedhur"
 
-#: CanvassAutomation.php:133 CanvassAutomation.php:144
-#: CanvassAutomation.php:155 CanvassAutomation.php:166
-#: CanvassAutomation.php:177 CanvassAutomation.php:188
+#: 
 msgid "Check to confirm"
 msgstr "Kontrollo për të konfirmuar"
 
-#: CanvassAutomation.php:139
+#: 
 msgid "Assign Canvassers"
 msgstr "Cakto Canvassers"
 
-#: CanvassAutomation.php:143
+#: 
 msgid "Randomly assign canvassers to all Families.  The Canvassers are taken from the &quot;Canvassers&quot; Group."
 msgstr "Rastësisht caktojë canvassers të gjitha familjeve. Të Canvassers janë taken nga Canvassers Group."
 
-#: CanvassAutomation.php:150
+#: 
 msgid "Assign To Non Pledging"
 msgstr "Cakto To Jo duke u zotuar"
 
-#: CanvassAutomation.php:154
+#: 
 msgid "Randomly assign canvassers to non-pledging Families.  The Canvassers are taken from the &quot;BraveCanvassers&quot; Group."
 msgstr "Rastësisht caktojë canvassers Familjeve jo duke u zotuar. Të Canvassers janë taken nga BraveCanvassers Group."
 
-#: CanvassAutomation.php:161
+#: 
 msgid "Clear Canvasser Assignments"
 msgstr "Detyrat e qarta mbledh vota duke vizituar"
 
-#: CanvassAutomation.php:172
+#: 
 msgid "Enable Canvass for All Families"
 msgstr "Aktivizo diskutoj për të gjitha familjet"
 
-#: CanvassAutomation.php:183
+#: 
 msgid "Disable Canvass for All Families"
 msgstr "Disable diskutoj për të gjitha familjet"
 
-#: CanvassAutomation.php:194
+#: 
 msgid "Briefing Sheets"
 msgstr "Sheets njoftuese"
 
-#: CanvassAutomation.php:198
+#: 
 msgid "Generate a PDF containing briefing sheets for all Families, sorted by canvasser."
 msgstr "Të gjenerojë një PDF që përmban fletë udhëzuese për të gjitha familjet, të renditura sipas mbledh vota duke vizituar."
 
-#: CanvassAutomation.php:204
+#: 
 msgid "Progress Report"
 msgstr "Raporti i progresi"
 
-#: CanvassAutomation.php:208
+#: 
 msgid "Generate a PDF containing a progress report.  The progress report includes information on the overall progress of the canvass, and the progress of individual canvassers."
 msgstr "Të gjenerojë një PDF që përmban një raport progresi. Raporti i progresit përfshin information për progresin e përgjithshëm të pëlhurë, dhe progresin e canvassers individuale."
 
-#: CanvassAutomation.php:214
+#: 
 msgid "Summary Report"
 msgstr "Raporti përmbledhës"
 
-#: CanvassAutomation.php:218
+#: 
 msgid "Generate a PDF containing a summary report.  The summary report includes comments extracted from the canvass data."
 msgstr "Të gjenerojë një PDF që përmban një raport përmbledhës. Raporti përmbledhës përfshin comments nxjerrë nga të dhënat anketim."
 
-#: CanvassAutomation.php:224
+#: 
 msgid "Not Interested Report"
 msgstr "Raporti nuk Interesuar"
 
-#: CanvassAutomation.php:228
+#: 
 msgid "Generate a PDF containing a report of the families marked &quot;Not Interested&quot; by the canvasser."
 msgstr "Generate një PDF që përmban një raport i familjeve shënuar nuk është e interesuar nga mbledh vota duke vizituar."
 
-#: CanvassEditor.php:44
+#: 
 msgid " Canvass Input for the "
 msgstr " Diskutoj Input për "
 
-#: Reports/CanvassReports.php:170 UserEditor.php:440
+#: 
 msgid "Canvasser"
 msgstr "Mbledh vota duke vizituar"
 
-#: CanvassEditor.php:200 Reports/CanvassReports.php:347
+#: 
 msgid "Positive"
 msgstr "Pozitiv"
 
-#: CanvassEditor.php:205 Reports/CanvassReports.php:347
+#: 
 msgid "Critical"
 msgstr "Kritik"
 
-#: CanvassEditor.php:210 Reports/CanvassReports.php:347
+#: 
 msgid "Insightful"
 msgstr "Insightful"
 
-#: CanvassEditor.php:215 Reports/CanvassReports.php:347
+#: 
 msgid "Financial"
 msgstr "Financiar"
 
-#: CanvassEditor.php:220
+#: 
 msgid "Suggestions"
 msgstr "Sugjerime"
 
-#: CanvassEditor.php:225
+#: 
 msgid "Not Interested"
 msgstr "Jo të interesuar"
 
-#: CanvassEditor.php:232
+#: 
 msgid "Why Not Interested?"
 msgstr "Pse jo të interesuar?"
 
-#: CartToEvent.php:52 CartToEvent.php:85
+#: 
 msgid "Add Cart to Event"
 msgstr "Shto te Shporta Event"
 
-#: CartToEvent.php:59
+#: 
 msgid "Select the event to which you would like to add your cart"
 msgstr "Zgjidhni ngjarje për të cilën ju do të donte për të shtuar karrocë tuaj"
 
-#: CartToEvent.php:86
+#: 
 msgid "OR"
 msgstr "OSE"
 
-#: CartToEvent.php:87 Checkin.php:105 ListEvents.php:344
+#: 
 msgid "Add New Event"
 msgstr "Shto ngjarje te re"
 
-#: CartToEvent.php:94 CartToFamily.php:325 CartToGroup.php:101
+#: 
 msgid "Your cart is empty!"
 msgstr "Shporta juaj është bosh!"
 
-#: CartToFamily.php:84
+#: 
 msgid "No family name entered!"
 msgstr "Asnjë emër i familjes hyri!"
 
-#: CartToFamily.php:123
+#: 
 msgid "Add Cart to Family"
 msgstr "Shto te Shporta Family"
 
-#: CartToFamily.php:155 Checkin.php:311 DonationFundEditor.php:150
-#: DonationFundEditor.php:213 EditEventAttendees.php:32
-#: EditEventAttendees.php:41 EventAttendance.php:174 EventNames.php:263
-#: FamilyCustomFieldsEditor.php:320 FamilyCustomFieldsEditor.php:434
-#: FamilyView.php:550 GeoPage.php:357 GroupEditor.php:73
-#: GroupPropsFormEditor.php:285 GroupPropsFormEditor.php:397 GroupView.php:255
-#: GroupView.php:288 PersonCustomFieldsEditor.php:311
-#: PersonCustomFieldsEditor.php:442 PersonView.php:683 PersonView.php:788
-#: PrintView.php:337 PrintView.php:463 PropertyEditor.php:149
-#: PropertyList.php:60 PropertyTypeEditor.php:96 PropertyTypeList.php:41
-#: Reports/CanvassReports.php:69 Reports/CanvassReports.php:237
-#: Reports/FRBidSheets.php:88 SelectList.php:988 UserList.php:54
-#: VolunteerOpportunityEditor.php:75 VolunteerOpportunityEditor.php:354
-#: VolunteerOpportunityEditor.php:421
-#: sundayschool/SundaySchoolClassView.php:202
-#: v2/templates/cart/cartlisting.php:17 v2/templates/people/family-list.php:31
-#: v2/templates/people/family-view.php:374 queryparameteroptions_qpo.php:4
+#: 
 msgid "Name"
 msgstr "Emëri"
 
-#: CartToFamily.php:156
+#: 
 msgid "Assign Role"
 msgstr "Cakto Rolit"
 
-#: CartToFamily.php:172
+#: 
 msgid "Already in a family"
 msgstr "Tashmë në një familje"
 
-#: CartToFamily.php:190
+#: 
 msgid "Create new family"
 msgstr "Krijo familje të re"
 
-#: CartToFamily.php:201
+#: 
 msgid "If adding a new family, enter data below."
 msgstr "Në qoftë se duke shtuar një familje të re, hyrë në të dhënat më poshtë."
 
-#: CartToFamily.php:216
+#: 
 msgid "Use address/contact data from"
 msgstr "Përdorin të dhënat e adresën / e kontaktit nga"
 
-#: CartToFamily.php:220
+#: 
 msgid "Only the new data below"
 msgstr "Vetëm të dhënat e reja më poshtë"
 
-#: CartToFamily.php:257
+#: 
 msgid "(Use the textbox for countries other than US and Canada)"
 msgstr "(Përdorni textbox për vendet tjetër se në SHBA dhe Kanada)"
 
-#: CartToFamily.php:286 CartToFamily.php:296 CartToFamily.php:306
-#: FamilyEditor.php:745 FamilyEditor.php:755 FamilyEditor.php:765
-#: Include/Functions.php:899 PersonEditor.php:977 PersonEditor.php:1001
-#: PersonEditor.php:1025
+#: 
 msgid "Do not auto-format"
 msgstr "Mos auto-format"
 
-#: CartToFamily.php:185 CartToFamily.php:319
+#: 
 msgid "Add to Family"
 msgstr "Shtoni në të Familjes"
 
-#: CartToGroup.php:55
+#: 
 msgid "Add Cart to Group"
 msgstr "Shto te Shporta Group"
 
-#: CartToGroup.php:66
+#: 
 msgid "Select the group to which you would like to add your cart"
 msgstr "Zgjidh grupin për të cilën ju do të donte për të shtuar karrocë tuaj"
 
-#: CartToGroup.php:70 GroupReports.php:43 PersonToGroup.php:62
-#: sundayschool/SundaySchoolReports.php:186
+#: 
 msgid "Select Group"
 msgstr "Zgjidhni Grupi"
 
-#: CartToGroup.php:85 PersonToGroup.php:79
+#: 
 msgid "No Group Selected"
 msgstr "No grup i zgjedhur"
 
-#: CartToGroup.php:92 PersonToGroup.php:86 SelectList.php:1218
+#: 
 msgid "Add to Group"
 msgstr "Shtoni në të Grupit"
 
-#: v2/routes/cart.php:21
+#: 
 msgid "View Your Cart"
 msgstr "Shiko Shporta juaj"
 
-#: v2/templates/cart/cartempty.php:10
+#: 
 msgid "You have no items in your cart."
 msgstr "Nuk keni asnjë faqe në karrocë tuaj."
 
-#: v2/templates/cart/cartempty.php:23
+#: 
 msgid "Back to Menu"
 msgstr "Kthehu tek Menu"
 
-#: v2/templates/cart/cartfunctions.php:14
+#: 
 msgid "Empty Cart"
 msgstr "Shporta Empty"
 
-#: v2/templates/cart/cartfunctions.php:17
+#: 
 msgid "Empty Cart to Group"
 msgstr "Shporta bosh të Grupit"
 
-#: v2/templates/cart/cartfunctions.php:23
+#: 
 msgid "Empty Cart to Family"
 msgstr "Shporta bosh për Familjen"
 
-#: v2/templates/cart/cartfunctions.php:27
+#: 
 msgid "Empty Cart to Event"
 msgstr "Shporta bosh për Event"
 
-#: v2/templates/cart/cartfunctions.php:36
+#: 
 msgid "Map Cart"
 msgstr "Harta Shporta"
 
-#: v2/templates/cart/cartfunctions.php:38
+#: 
 msgid "Name Tags"
 msgstr "Emri Etiketa"
 
-#: v2/templates/cart/cartfunctions.php:43
+#: 
 msgid "Email Cart"
 msgstr "Email Shporta"
 
-#: GroupView.php:139 sundayschool/SundaySchoolClassView.php:101
-#: v2/templates/cart/cartfunctions.php:44
+#: 
 msgid "Email (BCC)"
 msgstr "Email (BCC)"
 
-#: v2/templates/cart/cartfunctions.php:53
+#: 
 msgid "Create Directory From Cart"
 msgstr "Krijo Directory Nga Shportë"
 
-#: v2/templates/cart/generateLabels.php:4
-#: v2/templates/cart/generateLabels.php:46
+#: 
 msgid "Generate Labels"
 msgstr "Generate Etiketa"
 
-#: v2/templates/cart/generateLabels.php:12
+#: 
 msgid "Bulk Mail Presort"
 msgstr "Presort Bulk Mail"
 
-#: v2/templates/cart/generateLabels.php:21
+#: 
 msgid "Quiet Presort"
 msgstr "Presort qetë"
 
-#: v2/templates/cart/cartlisting.php:6
+#: 
 msgid "Your cart contains"
 msgstr "Shporta juaj përmban"
 
-#: v2/templates/cart/cartlisting.php:6
+#: 
 msgid "persons from"
 msgstr "persona nga"
 
-#: EditEventTypes.php:166 FamilyView.php:555 FamilyView.php:597
-#: GroupView.php:293 GroupView.php:334 PersonView.php:686 PersonView.php:704
-#: PersonView.php:791 PersonView.php:809 v2/templates/cart/cartlisting.php:20
-#: v2/templates/cart/cartlisting.php:37
+#: 
 msgid "Remove"
 msgstr "Hiq"
 
-#: DonationFundEditor.php:177 FinancialReports.php:295
-#: Include/Functions.php:686 Include/Functions.php:770 ListEvents.php:296
-#: Reports/ConfirmReport.php:227
+#: 
 msgid "Yes"
 msgstr "Po"
 
-#: DonationFundEditor.php:180 FinancialReports.php:296
-#: Include/Functions.php:688 Include/Functions.php:771 ListEvents.php:296
-#: Reports/ConfirmReport.php:229
+#: 
 msgid "No"
 msgstr "Jo"
 
-#: Checkin.php:15
+#: 
 msgid "Event Checkin"
 msgstr "Checkin Event"
 
-#: Checkin.php:75
+#: 
 msgid "Select the event to which you would like to check people in for"
 msgstr "Zgjidhni ngjarje për të cilën ju do të donte për të kontrolluar njerëzit në për"
 
-#: CartToEvent.php:70 Checkin.php:84
+#: 
 msgid "Select Event"
 msgstr "Zgjidhni Event"
 
-#: external/templates/verify/verify-family-info.php:145
-msgid "Verify"
-msgstr "Verifikoj"
-
-#: Checkin.php:172
+#: 
 msgid "Add Visitor"
 msgstr "Shto Vizitor"
 
-#: Checkin.php:165
+#: 
 msgid "CheckIn"
 msgstr "Checkin"
 
-#: Checkin.php:273 Checkin.php:366
+#: 
 msgid "CheckOut"
 msgstr "Checkout"
 
-#: Checkin.php:312
+#: 
 msgid "Checked In Time"
 msgstr "Kontrolluar ne daten In Time"
 
-#: Checkin.php:313
+#: 
 msgid "Checked In By"
 msgstr "Kontrolluar ne daten Në By"
 
-#: Checkin.php:314
+#: 
 msgid "Checked Out Time"
 msgstr "Kontrolluar ne daten Out Koha"
 
-#: Checkin.php:315
+#: 
 msgid "Checked Out By"
 msgstr "Kontrolluar ne daten Out By"
 
-#: Checkin.php:316 EditEventAttendees.php:44 EventNames.php:267
-#: ListEvents.php:205 PersonView.php:633
+#: 
 msgid "Action"
 msgstr "Veprim"
 
-#: EditEventAttendees.php:84
+#: 
 msgid "No Attendees Assigned to Event"
 msgstr "Nuk Pjesëmarrësit caktuar për Event"
 
-#: Checkin.php:455 Include/Functions.php:1410 Reports/CanvassReports.php:241
-#: Reports/VotingMembers.php:83 queryparameteroptions_qpo.php:15
+#: 
 msgid "Member"
 msgstr "Anëtar"
 
-#: Checkin.php:457 ChurchCRM/Service/PersonService.php:39
+#: 
 msgid " of the"
 msgstr " i"
 
-#: Checkin.php:459 ChurchCRM/Service/PersonService.php:41 PersonView.php:267
+#: 
 msgid "(No assigned family)"
 msgstr "(Nuk ka familja caktuar)"
 
-#: ConvertIndividualToFamily.php:39
+#: 
 msgid "Convert Individuals to Families"
 msgstr "Convert Individët të Familjeve"
 
-#: ConvertIndividualToFamily.php:137
+#: 
 msgid "Convert Next"
 msgstr "Convert Tjetër"
 
-#: ConvertIndividualToFamily.php:138
+#: 
 msgid "Convert All"
 msgstr "Të kthyer të gjitha"
 
-#: DepositSlipEditor.php:53
+#: 
 msgid "Deposit Slip Number: "
 msgstr "Depozita Numri Shqip: "
 
-#: DepositSlipEditor.php:92
+#: 
 msgid "Close deposit slip (remember to press Save)"
 msgstr "Mbylle depozitave shqip (mos harroni të shtypni Save)"
 
-#: DepositSlipEditor.php:100
+#: 
 msgid "Deposit Slip Report"
 msgstr "Shqip Depozita Raport"
 
-#: DepositSlipEditor.php:105
+#: 
 msgid "Important note: failed transactions will be deleted permanantly when the deposit slip is closed."
 msgstr "Shënim i rëndësishëm: Transaksionet e dështuara do të fshihen permanantly kur faturën e depozitës është e mbyllur."
 
-#: DepositSlipEditor.php:147
+#: 
 msgid "Payments on this deposit slip:"
 msgstr "Pagesat për këtë gabim të depozitave:"
 
-#: DepositSlipEditor.php:152 eGive.php:267
+#: 
 msgid "Import eGive"
 msgstr "Import eGive"
 
-#: DepositSlipEditor.php:154
+#: 
 msgid "Add Payment"
 msgstr "Shto Pagesa"
 
-#: DepositSlipEditor.php:158
+#: 
 msgid "Load Authorized Transactions"
 msgstr "Load transaksionet e autorizuara"
 
-#: DepositSlipEditor.php:159
+#: 
 msgid "Run Transactions"
 msgstr "Transaksionet Run"
 
-#: DirectoryReports.php:28
+#: 
 msgid "Directory reports"
 msgstr "Raportet Directory"
 
-#: DirectoryReports.php:78
+#: 
 msgid "Select classifications to include"
 msgstr "Zgjidhni klasifikimet për të përfshirë"
 
-#: DirectoryReports.php:114
+#: 
 msgid "Which role is the head of household?"
 msgstr "Cili është roli kryefamiljari?"
 
-#: DirectoryReports.php:132
+#: 
 msgid "Which role is the spouse?"
 msgstr "Cili është roli bashkëshorti?"
 
-#: DirectoryReports.php:151
+#: 
 msgid "Which role is a child?"
 msgstr "Cili është roli është një fëmijë?"
 
-#: DirectoryReports.php:170
+#: 
 msgid "Information to Include"
 msgstr "Informacione të përfshijnë"
 
-#: AutoPaymentEditor.php:902 AutoPaymentEditor.php:908 CSVExport.php:92
-#: CSVExport.php:97 CSVImport.php:217 CSVImport.php:218 CartToFamily.php:235
-#: CartToFamily.php:240 DirectoryReports.php:172 DirectoryReports.php:246
-#: FamilyEditor.php:664 FamilyEditor.php:668 FamilyView.php:214
-#: GeoPage.php:358 GroupReports.php:123 Menu.php:309 Menu.php:338
-#: PersonEditor.php:831 PersonEditor.php:847 PersonView.php:272
-#: Register.php:43 Reports/ConfirmReportEmail.php:121
-#: Reports/ConfirmReportEmail.php:126 api/routes/search.php:98
-#: external/templates/registration/family-register-done.php:29
-#: external/templates/registration/family-register.php:35
-#: v2/templates/cart/cartlisting.php:18 v2/templates/people/family-list.php:32
-#: v2/templates/people/family-view.php:211
+#: 
 msgid "Address"
 msgstr "Adresa"
 
-#: ChurchCRM/Service/CalendarService.php:16
-#: ChurchCRM/SystemCalendars/BirthdaysCalendar.php:63 DirectoryReports.php:174
-#: FamilyView.php:358 PersonView.php:510 Reports/ConfirmReport.php:184
-#: Reports/ConfirmReport.php:203 Reports/ConfirmReportEmail.php:188
-#: Reports/ConfirmReportEmail.php:206
-#: external/templates/verify/verify-family-info.php:80
-#: v2/templates/people/family-view.php:323
+#: 
 msgid "Birthday"
 msgstr "Ditëlindje"
 
-#: DirectoryReports.php:176
+#: 
 msgid "Family Home Phone"
 msgstr "Family Phone Faqja kryesore"
 
-#: DirectoryReports.php:177
+#: 
 msgid "Family Work Phone"
 msgstr "Puna Family Phone"
 
-#: DirectoryReports.php:178
+#: 
 msgid "Family Cell Phone"
 msgstr "Cell Phone Family"
 
-#: DirectoryReports.php:179 Reports/ConfirmReport.php:156
-#: Reports/ConfirmReportEmail.php:157
-#: external/templates/verify/verify-family-info.php:29
+#: 
 msgid "Family Email"
 msgstr "Familja Email"
 
-#: DirectoryReports.php:181
+#: 
 msgid "Personal Home Phone"
 msgstr "Personal Home Phone"
 
-#: DirectoryReports.php:182
+#: 
 msgid "Personal Work Phone"
 msgstr "Personal Phone Puna"
 
-#: DirectoryReports.php:183
+#: 
 msgid "Personal Cell Phone"
 msgstr "Personal Phone Cell"
 
-#: DirectoryReports.php:184
+#: 
 msgid "Personal Email"
 msgstr "Personal Email"
 
-#: DirectoryReports.php:185
+#: 
 msgid "Personal Work/Other Email"
 msgstr "Puna Personale / Të tjera Email"
 
-#: DirectoryReports.php:186
+#: 
 msgid "Photos"
 msgstr "Photos"
 
-#: DirectoryReports.php:202
+#: 
 msgid "Number of Columns"
 msgstr "Numri i Columns"
 
-#: DirectoryReports.php:234
+#: 
 msgid "Title page"
 msgstr "Faqja Titulli"
 
-#: DirectoryReports.php:238
+#: 
 msgid "Use Title Page"
 msgstr "Përdorni titull në faqe"
 
-#: ChurchCRM/dto/SystemConfig.php:129 DirectoryReports.php:242 Register.php:41
+#: 
 msgid "Church Name"
 msgstr "Emri Kisha"
 
-#: DirectoryReports.php:266
+#: 
 msgid "Disclaimer"
 msgstr "Mohim"
 
-#: DirectoryReports.php:285
+#: 
 msgid "Create Directory"
 msgstr "Krijo Directory"
 
-#: DonatedItemEditor.php:44
+#: 
 msgid "Donated Item Editor"
 msgstr "Dhuruar Item Editor"
 
-#: DonatedItemEditor.php:295 FamilyEditor.php:1117 PaddleNumEditor.php:150
-#: PersonEditor.php:1229 PledgeEditor.php:689
+#: 
 msgid "Save and Add"
 msgstr "Ruaj dhe Add"
 
-#: BatchWinnerEntry.php:74 DonatedItemEditor.php:172 FundRaiserEditor.php:191
+#: 
 msgid "Item"
 msgstr "Artikull"
 
-#: DonatedItemEditor.php:179
+#: 
 msgid "Multiple items"
 msgstr "Artikuj Multiple"
 
-#: DonatedItemEditor.php:179
+#: 
 msgid "Sell to everyone"
 msgstr "Shitet për të gjithë"
 
-#: DonatedItemEditor.php:213
+#: 
 msgid "Estimated Price"
 msgstr "E vlerësuar Çmimi"
 
-#: DonatedItemEditor.php:233 FundRaiserEditor.php:192 FundRaiserEditor.php:230
+#: 
 msgid "Multiple"
 msgstr "I shumëfishtë"
 
-#: DonatedItemEditor.php:255
+#: 
 msgid "Final Price"
 msgstr "Final Çmimi"
 
-#: DonatedItemEditor.php:264 FindFundRaiser.php:227
-#: external/templates/password/enter-username.php:36
+#: 
 msgid "Go"
 msgstr "Shkoj"
 
-#: DonatedItemEditor.php:274 DonationFundEditor.php:151
-#: DonationFundEditor.php:221 EditEventAttendees.php:34
-#: FundRaiserEditor.php:174 GroupEditor.php:79 GroupPropsFormEditor.php:286
-#: GroupPropsFormEditor.php:410 GroupView.php:256 ListEvents.php:206
-#: PersonView.php:789 PropertyTypeEditor.php:104
-#: VolunteerOpportunityEditor.php:76 VolunteerOpportunityEditor.php:355
-#: VolunteerOpportunityEditor.php:429
+#: 
 msgid "Description"
 msgstr "Përshkri"
 
-#: DonationFundEditor.php:50
+#: 
 msgid "Donation Fund Editor"
 msgstr "Fondi Dhurim Editor"
 
-#: DonationFundEditor.php:116
+#: 
 msgid "Are you sure you want to delete this fund?"
 msgstr "Jeni te sigurte qe doni te fshini kete fond?"
 
-#: DonationFundEditor.php:132 FamilyCustomFieldsEditor.php:315
-#: GroupPropsFormEditor.php:277 OptionManager.php:310
-#: PersonCustomFieldsEditor.php:304 PersonEditor.php:609
-#: VolunteerOpportunityEditor.php:340
+#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "Fushat e pavlefshme ose zgjedhje. Ndryshimet nuk i shpëtuar! Ju lutem korrigjojeni dhe provoni përsëri!"
 
-#: DonationFundEditor.php:144
+#: 
 msgid "No funds have been added yet"
 msgstr "Asnjë fond janë shtuar ende"
 
-#: DonationFundEditor.php:152 EventEditor.php:534 GroupView.php:217
-#: KioskManager.php:30 ListEvents.php:210
+#: 
 msgid "Active"
 msgstr "Aktiv"
 
-#: DonationFundEditor.php:196 EventEditor.php:543 EventNames.php:234
-#: FamilyCustomFieldsEditor.php:404 GroupPropsFormEditor.php:368
-#: OptionManager.php:367 PersonCustomFieldsEditor.php:407
-#: VolunteerOpportunityEditor.php:403
+#: 
 msgid "Save Changes"
 msgstr "Ruaj Ndryshimet"
 
-#: DonationFundEditor.php:226
+#: 
 msgid "Add New Fund"
 msgstr "Shto fond të ri"
 
-#: EditEventAttendees.php:7 EventEditor.php:29
+#: 
 msgid "Church Event Editor"
 msgstr "Kisha Event Editor"
 
-#: EditEventTypes.php:25 EventNames.php:29
+#: 
 msgid "Edit Event Types"
 msgstr "Edit Event Llojet"
 
-#: EditEventTypes.php:121
+#: 
 msgid "Edit Event Type"
 msgstr "Edit Event Type"
 
-#: EditEventTypes.php:131 EventEditor.php:429 EventEditor.php:457
-#: EventNames.php:262 ListEvents.php:207
+#: 
 msgid "Event Type"
 msgstr "Lloji Event"
 
-#: EditEventTypes.php:137
+#: 
 msgid "Save Name"
 msgstr "Ruaj Emri"
 
-#: EditEventTypes.php:142 EventNames.php:158 EventNames.php:264
+#: 
 #, fuzzy
 msgid "Recurrence Pattern"
 msgstr "Recurrance Pattern"
 
-#: EditEventTypes.php:157 EventEditor.php:489 EventNames.php:266
-#: ListEvents.php:208
+#: 
 msgid "Attendance Counts"
 msgstr "Pikat Pjesëmarrja"
 
-#: AutoPaymentEditor.php:801
-#: ChurchCRM/Emails/verify/FamilyVerificationEmail.php:24
-#: ElectronicPaymentList.php:195 FamilyView.php:205 FinancialReports.php:303
-#: PersonEditor.php:796 PersonView.php:422 PledgeEditor.php:508
-#: PrintView.php:258 PropertyAssign.php:73 PropertyEditor.php:43
-#: PropertyList.php:28 PropertyTypeEditor.php:90 PropertyTypeList.php:62
-#: SelectList.php:1037
-#: external/templates/registration/family-register-done.php:28
+#: 
 msgid "Family"
 msgstr "Familje"
 
-#: ElectronicPaymentList.php:196 FamilyCustomFieldsEditor.php:319
-#: FamilyCustomFieldsEditor.php:421 FamilyView.php:549 FamilyView.php:657
-#: GroupPropsFormEditor.php:284 GroupPropsFormEditor.php:385 GroupView.php:254
-#: GroupView.php:287 OptionManager.php:77 PersonCustomFieldsEditor.php:310
-#: PersonCustomFieldsEditor.php:429 PersonView.php:682 PropertyEditor.php:129
-#: SelectDelete.php:216
+#: 
 msgid "Type"
 msgstr "Lloj"
 
-#: AutoPaymentEditor.php:847 ElectronicPaymentList.php:197 FamilyView.php:766
-#: PledgeEditor.php:520 ReminderReport.php:42 SelectDelete.php:218
-#: sundayschool/SundaySchoolReports.php:205 queryparameters_qrp.php:18
+#: 
 msgid "Fiscal Year"
 msgstr "Viti fiskal"
 
-#: ElectronicPaymentList.php:199 FamilyView.php:659 FamilyView.php:768
-#: PledgeEditor.php:714 SelectDelete.php:220
+#: 
 msgid "Amount"
 msgstr "Shumë"
 
-#: AutoPaymentEditor.php:864 ElectronicPaymentList.php:201 FamilyView.php:661
-#: FamilyView.php:765 FinancialReports.php:302 SelectDelete.php:217
+#: 
 msgid "Fund"
 msgstr "Fond"
 
-#: ElectronicPaymentList.php:202 FindDepositSlip.php:47
+#: 
 msgid "Bank"
 msgstr "Banka"
 
-#: ElectronicPaymentList.php:211 FamilyEditor.php:945
-#: queryparameters_qrp.php:11
+#: 
 msgid "Month"
 msgstr "Muaj"
 
-#: ElectronicPaymentList.php:212 FamilyEditor.php:947
-#: Include/Functions.php:101
+#: 
 msgid "Year"
 msgstr "Viti:"
 
-#: ElectronicPaymentList.php:218 ElectronicPaymentList.php:283
-#: EventNames.php:294 FamilyView.php:209 FamilyView.php:662 FamilyView.php:711
-#: FamilyView.php:773 FindFundRaiser.php:233 FindFundRaiser.php:241
-#: ListEvents.php:224 PersonView.php:238 PropertyList.php:64
-#: PropertyList.php:105 PropertyTypeList.php:45 PropertyTypeList.php:65
-#: SelectList.php:1052
+#: 
 msgid "Edit"
 msgstr "Ndrysho"
 
-#: Register.php:50
+#: 
 #, fuzzy
 msgid "Message"
 msgstr "Mesazh"
 
-#: EventAttendance.php:22
+#: 
 msgid "Event Attendees"
 msgstr "Pjesëmarrësit Event"
 
-#: EventAttendance.php:42
+#: 
 msgid "Event Nonattendees"
 msgstr "Nonattendees Event"
 
-#: EventAttendance.php:48
+#: 
 msgid "Event Guests"
 msgstr "Guests Event"
 
-#: EventAttendance.php:60
-msgid "Back to Report Menu"
-msgstr "Mbrapsht në Njoftoni Menu"
-
-#: EventAttendance.php:171
+#: 
 msgid "There "
 msgstr "Jane "
 
-#: EventAttendance.php:100 EventEditor.php:466
+#: 
 msgid "Event Title"
 msgstr "Titulli i evenimentit"
 
-#: EventAttendance.php:101
+#: 
 msgid "Event Date"
 msgstr "Data Event"
 
-#: EventAttendance.php:102
-msgid "Generate Report"
-msgstr "Generate Raportin"
-
-#: EventAttendance.php:134
+#: 
 msgid "Attending Members"
 msgstr "Të pranishëm Anëtarët"
 
-#: EventAttendance.php:145
+#: 
 msgid "Non-Attending Members"
 msgstr "Jo-Të pranishëm Anëtarëve"
 
-#: EventAttendance.php:160
+#: 
 msgid "Guests"
 msgstr "Guests"
 
-#: EventAttendance.php:204
+#: 
 msgid "There are no events in this category"
 msgstr "Nuk ka ngjarje në këtë kategori"
 
-#: EventAttendance.php:204
-msgid "There are no Records"
-msgstr "Nuk ka shenime"
-
-#: EventEditor.php:407
+#: 
 msgid "Editing Event ID: "
 msgstr "Editing Event ID: "
 
-#: EventEditor.php:413
+#: 
 msgid " errors. Please see below"
 msgstr " gabime. Ju lutemi shihni më poshtë"
 
-#: EventEditor.php:415
+#: 
 msgid "Items with a "
 msgstr "Items me një "
 
-#: EventEditor.php:415
+#: 
 msgid " are required"
 msgstr " janë të nevojshme"
 
-#: EventEditor.php:472
+#: 
 msgid "Event Desc"
 msgstr "Event Përshkrimi"
 
-#: EventEditor.php:494
+#: 
 msgid "No Attendance counts recorded"
 msgstr "Nuk ka akuza Pjesëmarrja e regjistruara"
 
-#: EventEditor.php:512
+#: 
 msgid "Attendance Notes: "
 msgstr "Shënime Pjesëmarrja: "
 
-#: EventEditor.php:524
+#: 
 msgid "Event Sermon"
 msgstr "Predikimi Event"
 
-#: EventEditor.php:530
+#: 
 msgid "Event Status"
 msgstr "Statusi Event"
 
-#: EventNames.php:150
+#: 
 msgid "EVENT TYPE NAME"
 msgstr "EMRI RAST LLOJI"
 
-#: EventNames.php:172
+#: 
 msgid "Sundays"
 msgstr "Dielave"
 
-#: EventNames.php:173
+#: 
 msgid "Mondays"
 msgstr "E hënë"
 
-#: EventNames.php:174
+#: 
 msgid "Tuesdays"
 msgstr "Martave"
 
-#: EventNames.php:175
+#: 
 msgid "Wednesdays"
 msgstr "Mërkurë"
 
-#: EventNames.php:176
+#: 
 msgid "Thursdays"
 msgstr "Enjteve"
 
-#: EventNames.php:177
+#: 
 msgid "Fridays"
 msgstr "Premteve"
 
-#: EventNames.php:178
+#: 
 msgid "Saturdays"
 msgstr "Shtunave"
 
-#: EventNames.php:219
+#: 
 msgid "ATTENDANCE COUNTS"
 msgstr "PIKAT Spektatorë"
 
-#: EventNames.php:327
+#: 
 msgid "Add Event Type"
 msgstr "Shto ngjarje te Lloji"
 
-#: FamilyCustomFieldsEditor.php:30
+#: 
 msgid "Custom Family Fields Editor"
 msgstr "Custom Family Fushat Editor"
 
-#: FamilyCustomFieldsEditor.php:167 PersonCustomFieldsEditor.php:156
+#: 
 msgid "Default Option"
 msgstr "Default Option"
 
-#: FamilyCustomFieldsEditor.php:286
+#: 
 msgid "Warning:  By deleting this field, you will irrevokably lose all family data assigned for this field!"
 msgstr "Warning: Duke fshirjes këtë fushë, ju irrevokably do të humbasin të gjitha të dhënat e familjes e përcaktuara për këtë fushë!"
 
-#: FamilyCustomFieldsEditor.php:298 PersonCustomFieldsEditor.php:287
+#: 
 msgid "Warning: Arrow and delete buttons take effect immediately.  Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!"
 msgstr "Warning: Arrow dhe fshini butonat të hyjë në fuqi menjëherë. Ndryshimet emrin në terren do të humbasin nëse ju nuk e 'Ruaj ndryshimet' para se të përdorni një lart, poshtë, fshini ose 'të shtuar të reja' button!"
 
-#: FamilyCustomFieldsEditor.php:307
+#: 
 msgid "No custom Family fields have been added yet"
 msgstr "Nuk fusha familjare me porosi janë shtuar ende"
 
-#: FamilyCustomFieldsEditor.php:321 GroupPropsFormEditor.php:287
-#: PersonCustomFieldsEditor.php:312
+#: 
 msgid "Special option"
 msgstr "Opsion i veçantë"
 
-#: FamilyCustomFieldsEditor.php:322 FamilyCustomFieldsEditor.php:447
-#: PersonCustomFieldsEditor.php:313 PersonCustomFieldsEditor.php:461
+#: 
 msgid "Security Option"
 msgstr "Opcioni i Sigurimit"
 
-#: FamilyCustomFieldsEditor.php:323
-msgid "Family-View Side"
-msgstr "Family-Shiko Side"
-
-#: FamilyCustomFieldsEditor.php:363 GroupPropsFormEditor.php:345
-#: PersonCustomFieldsEditor.php:356
+#: 
 msgid "You must select a group."
 msgstr "Ju duhet të zgjidhni një grup."
 
-#: FamilyCustomFieldsEditor.php:368 PersonCustomFieldsEditor.php:359
+#: 
 msgid "Edit List Options"
 msgstr "Edit Lista Options"
 
-#: FamilyCustomFieldsEditor.php:378 FamilyCustomFieldsEditor.php:452
-#: PersonCustomFieldsEditor.php:377 PersonCustomFieldsEditor.php:456
-msgid "Left"
-msgstr "Majtas"
-
-#: FamilyCustomFieldsEditor.php:379 FamilyCustomFieldsEditor.php:453
-#: PersonCustomFieldsEditor.php:381 PersonCustomFieldsEditor.php:457
-msgid "Right"
-msgstr "E drejtë"
-
-#: FamilyCustomFieldsEditor.php:431 GroupPropsFormEditor.php:394
-#: PersonCustomFieldsEditor.php:439
+#: 
 msgid "Help on types.."
 msgstr "Ndihmë në lloje .."
 
-#: DonationFundEditor.php:167 DonationFundEditor.php:216
-#: FamilyCustomFieldsEditor.php:338 FamilyCustomFieldsEditor.php:438
-#: FamilyEditor.php:219 GroupPropsFormEditor.php:315
-#: GroupPropsFormEditor.php:401 OptionManager.php:351
-#: PersonCustomFieldsEditor.php:332 PersonCustomFieldsEditor.php:446
-#: PropertyEditor.php:71 PropertyTypeEditor.php:45
-#: VolunteerOpportunityEditor.php:383 VolunteerOpportunityEditor.php:424
+#: 
 msgid "You must enter a name"
 msgstr "Ju duhet të shkruani një emër"
 
-#: FamilyCustomFieldsEditor.php:441 GroupPropsFormEditor.php:404
-#: PersonCustomFieldsEditor.php:449
+#: 
 msgid "That field name already exists."
 msgstr "Se emri fushë tashmë ekziston."
 
-#: FamilyCustomFieldsEditor.php:457 GroupPropsFormEditor.php:415
-#: PersonCustomFieldsEditor.php:465
+#: 
 msgid "Add New Field"
 msgstr "Shto fushë të re"
 
-#: FamilyEditor.php:25
+#: 
 msgid "Family Editor"
 msgstr "Editor Family"
 
-#: FamilyEditor.php:198
+#: 
 msgid "First name must be entered"
 msgstr "Emri i parë duhet të lidhet"
 
-#: FamilyEditor.php:206 PersonEditor.php:209
+#: 
 msgid "Invalid Year: allowable values are 1901 to 2155"
 msgstr "Viti i pavlefshëm: Vlerat e lejuara janë 1901-2155"
 
-#: FamilyEditor.php:210 PersonEditor.php:213
+#: 
 msgid "Invalid Birth Date."
 msgstr "Invalid Data e lindjes."
 
-#: FamilyEditor.php:228
+#: 
 msgid "Not a valid Wedding Date"
 msgstr "Jo një të vlefshme Data Dasma"
 
-#: FamilyEditor.php:241 PersonEditor.php:247
+#: 
 msgid "Email is Not Valid"
 msgstr "Email nuk është i vlefshëm"
 
-#: FamilyEditor.php:817
+#: 
 msgid "Ok To Canvass"
 msgstr "Ok të diskutoj"
 
-#: FamilyEditor.php:828
+#: 
 msgid "Assign a Canvasser"
 msgstr "Cakto një mbledh vota duke vizituar"
 
-#: FamilyEditor.php:846
+#: 
 msgid "Assign a Brave Canvasser"
 msgstr "Cakto një trim mbledh vota duke vizituar"
 
-#: FamilyEditor.php:889 PersonEditor.php:1190
+#: 
 msgid "Custom Fields"
 msgstr "Fushat Custom"
 
-#: FamilyEditor.php:920 FamilyView.php:356 PersonView.php:508
-#: PrintView.php:334
-#: external/templates/registration/family-register-members.php:20
-#: v2/templates/people/family-view.php:256
+#: 
 msgid "Family Members"
 msgstr "Anëtarët e familjes"
 
-#: FamilyEditor.php:933
+#: 
 msgid "You may create family members now or add them later.  All entries will become <i>new</i> person records."
 msgstr "Ju mund të krijoni anëtarë të familjes tani ose shtoni ato më vonë. Të gjitha shënimet do të bëhet <i> regjistrimet e reja </ i> personi."
 
-#: FamilyEditor.php:939
+#: 
 msgid "First"
 msgstr "I parë"
 
-#: FamilyEditor.php:940
+#: 
 msgid "Middle"
 msgstr "Mes"
 
-#: FamilyEditor.php:941
+#: 
 msgid "Last"
 msgstr "I fundit"
 
-#: FamilyEditor.php:944 FamilyView.php:357 OptionManager.php:60
-#: OptionManager.php:93 PersonView.php:509 PrintView.php:339 PrintView.php:392
-#: Reports/CanvassReports.php:239 Reports/GroupReport.php:102
+#: 
 msgid "Role"
 msgstr "Rol"
 
-#: FamilyEditor.php:946
-msgid "Day"
-msgstr "Dita:"
-
-#: FamilyEditor.php:987 PersonEditor.php:626
+#: 
 msgid "Select Gender"
 msgstr "Zgjidhni Gjinia"
 
-#: CartToGroup.php:82 FamilyEditor.php:1001 GroupReports.php:57
-#: PersonToGroup.php:76
+#: 
 msgid "Select Role"
 msgstr "Zgjidh Roli"
 
-#: ChurchCRM/Dashboard/PersonDemographicDashboardItem.php:23
-#: ChurchCRM/Dashboard/PersonDemographicDashboardItem.php:37
-#: ChurchCRM/Service/TimelineService.php:115 ChurchCRM/utils/MiscUtils.php:62
-#: FamilyEditor.php:1017 Include/Functions.php:772 PeopleDashboard.php:336
-#: PeopleDashboard.php:355 PeopleDashboard.php:368 PeopleDashboard.php:381
+#: 
 msgid "Unknown"
 msgstr "I panjohur"
 
-#: FamilyEditor.php:1020 PersonEditor.php:695
+#: 
 msgid "January"
 msgstr "Janar"
 
-#: FamilyEditor.php:1023 PersonEditor.php:698
+#: 
 msgid "February"
 msgstr "Shkurt"
 
-#: FamilyEditor.php:1026 PersonEditor.php:701
+#: 
 msgid "March"
 msgstr "Mars"
 
-#: FamilyEditor.php:1029 PersonEditor.php:704
+#: 
 msgid "April"
 msgstr "Prill"
 
-#: FamilyEditor.php:1032 PersonEditor.php:707
+#: 
 msgid "May"
 msgstr "Mund"
 
-#: FamilyEditor.php:1035 PersonEditor.php:710
+#: 
 msgid "June"
 msgstr "Qershor"
 
-#: FamilyEditor.php:1038 PersonEditor.php:713
+#: 
 msgid "July"
 msgstr "Korrik"
 
-#: FamilyEditor.php:1041 PersonEditor.php:716
+#: 
 msgid "August"
 msgstr "Gusht"
 
-#: FamilyEditor.php:1044 PersonEditor.php:719
+#: 
 msgid "September"
 msgstr "Shtator"
 
-#: FamilyEditor.php:1047 PersonEditor.php:722
+#: 
 msgid "October"
 msgstr "Tetor"
 
-#: FamilyEditor.php:1050 PersonEditor.php:725
+#: 
 msgid "November"
 msgstr "Nëntor"
 
-#: FamilyEditor.php:1053 PersonEditor.php:728
+#: 
 msgid "December"
 msgstr "Dhjetor"
 
-#: FamilyEditor.php:1058
+#: 
 msgid "Unk"
 msgstr "Unk"
 
-#: FamilyView.php:29 v2/templates/people/family-view.php:11
-msgid "Family View"
-msgstr "Shiko Family"
-
-#: FamilyView.php:229
-msgid "Latitude/Longitude"
-msgstr "Latitude / Longitude"
-
-#: FamilyEditor.php:875 FamilyView.php:247 ManageEnvelopes.php:166
-#: PledgeEditor.php:525 v2/templates/people/family-view.php:146
+#: 
 msgid "Envelope Number"
 msgstr "Zarf Numri"
 
-#: FamilyView.php:308
+#: 
 msgid "Previous Family"
 msgstr "Familja Kthehu"
 
-#: FamilyView.php:316
+#: 
 msgid "Next Family"
 msgstr "Familja Next"
 
-#: FamilyView.php:194 PersonView.php:199
-#: v2/templates/people/family-view.php:58
+#: 
 msgid "Upload Photo"
 msgstr "Ngarko Foto"
 
-#: FamilyView.php:198 PersonView.php:202
-#: v2/templates/people/family-view.php:62
+#: 
 msgid "Delete Photo"
 msgstr "Fshij Foto"
 
-#: FamilyView.php:444
-msgid "Automatic Payments"
-msgstr "Pagesat automatike"
-
-#: FamilyView.php:446
+#: 
 msgid "Pledges and Payments"
 msgstr "Premton dhe Pagesat"
 
-#: FamilyView.php:542 PersonView.php:676 PrintView.php:459
-#: v2/templates/people/family-view.php:366
+#: 
 msgid "No property assignments."
 msgstr "Nuk ka detyra të pronës."
 
-#: FamilyView.php:551 GroupView.php:289 PersonView.php:684 PrintView.php:464
-#: PropertyAssign.php:176 SystemSettings.php:140
-#: v2/templates/people/family-view.php:375
+#: 
 msgid "Value"
 msgstr "Vlera"
 
-#: FamilyView.php:554 FamilyView.php:592 GroupView.php:292 GroupView.php:328
+#: 
 msgid "Edit Value"
 msgstr "Edit Vlera"
 
-#: FamilyView.php:615 PersonView.php:717
-#: v2/templates/people/family-view.php:401
+#: 
 msgid "Assign a New Property"
 msgstr "Cakto një Pronës Re"
 
-#: FamilyView.php:636 GroupView.php:366 PersonView.php:756 PersonView.php:842
-#: PropertyAssign.php:185 SelectList.php:1060
-#: v2/templates/people/family-view.php:415
+#: 
 msgid "Assign"
 msgstr "Caktoj"
 
-#: FamilyView.php:658
-msgid "Next payment date"
-msgstr "Data e pagesës Next"
-
-#: FamilyView.php:660
-msgid "Interval (months)"
-msgstr "Interval (muaj)"
-
-#: FamilyView.php:664 FamilyView.php:775 SelectDelete.php:224
+#: 
 msgid "Date Updated"
 msgstr "Data përditësua"
 
-#: FamilyView.php:665 FamilyView.php:776 SelectDelete.php:225
+#: 
 msgid "Updated By"
 msgstr "Përditësuar By"
 
-#: FamilyView.php:731
-msgid "Add a new automatic payment"
-msgstr "Shto një pagesë të re automatike"
-
-#: FamilyView.php:743
+#: 
 msgid "Show Pledges"
 msgstr "Shfaq premton"
 
-#: FamilyView.php:747
+#: 
 msgid "Show Payments"
 msgstr "Shfaq Pagesat"
 
-#: FamilyView.php:756 MemberRoleChange.php:116 PropertyAssign.php:187
+#: 
 msgid "Update"
 msgstr "Përmirso"
 
-#: FamilyView.php:764
+#: 
 msgid "Pledge or Payment"
 msgstr "Pengut apo Pagesa"
 
-#: AutoPaymentEditor.php:840 CanvassEditor.php:194 DepositSlipEditor.php:81
-#: EditEventAttendees.php:33 FamilyView.php:767 FindFundRaiser.php:235
-#: FundRaiserEditor.php:164 Include/Functions.php:97 PledgeEditor.php:518
-#: SelectDelete.php:219
+#: 
 msgid "Date"
 msgstr "Data"
 
-#: FamilyView.php:769
+#: 
 msgid "NonDeductible"
 msgstr "Pazbritshme"
 
-#: FamilyView.php:770 SelectDelete.php:221
+#: 
 msgid "Schedule"
 msgstr "Orar"
 
-#: FamilyView.php:771 SelectDelete.php:222
+#: 
 msgid "Method"
 msgstr "Metodë"
 
-#: FamilyView.php:772 PledgeEditor.php:722 SelectDelete.php:223
+#: 
 msgid "Comment"
 msgstr "Komento"
 
-#: FamilyView.php:864
+#: 
 msgid "Add a new pledge"
 msgstr "Shto një premtim të ri"
 
-#: FamilyView.php:866
+#: 
 msgid "Add a new payment"
 msgstr "Shto një pagesë të re"
 
-#: FamilyView.php:877
+#: 
 msgid " Canvass Entry"
 msgstr " Diskutoj Hyrja"
 
-#: DepositSlipEditor.php:222 FamilyView.php:899 FindDepositSlip.php:95
-#: PersonView.php:929 PledgeDelete.php:19
-#: v2/templates/people/family-view.php:517
+#: 
 msgid "Confirm Delete"
 msgstr "Konfirmo Fshij"
 
-#: FinancialReports.php:35
+#: 
 msgid "Financial Reports"
 msgstr "Raportet financiare"
 
-#: FinancialReports.php:47
+#: 
 msgid "No records were returned from the previous report."
 msgstr "Asnjë procesverbal u kthye nga raporti i kaluar."
 
-#: FinancialReports.php:54 FinancialReports.php:304
+#: 
 msgid "Report Type:"
 msgstr "Raporti Type:"
 
-#: FinancialReports.php:56
+#: 
 msgid "Select Report Type"
 msgstr "Zgjidh Lloji Raporti"
 
-#: FinancialReports.php:57
+#: 
 msgid "Pledge Summary"
 msgstr "Zotimi Përmbledhje"
 
-#: FinancialReports.php:59
+#: 
 msgid "Pledge Reminders"
 msgstr "Zotimi Harroni"
 
-#: FinancialReports.php:60
+#: 
 msgid "Voting Members"
 msgstr "Anëtarët votimit"
 
-#: FinancialReports.php:61
+#: 
 msgid "Giving Report (Tax Statements)"
 msgstr "Dhënia e Raportit (Deklaratat tatimore)"
 
-#: FinancialReports.php:62
+#: 
 msgid "Zero Givers"
 msgstr "Zero givers"
 
-#: FinancialReports.php:63
+#: 
 msgid "Individual Deposit Report"
 msgstr "Raporti i depozitave individuale"
 
-#: FinancialReports.php:64
+#: 
 msgid "Advanced Deposit Report"
 msgstr "Avancuar Raporti Depozita"
 
-#: FinancialReports.php:71 GroupReports.php:81
-#: external/templates/registration/family-register-members.php:131
-#: external/templates/registration/family-register.php:97
-#: external/templates/verify/enter-info.php:38
+#: 
 msgid "Next"
 msgstr "Tjetra"
 
-#: FinancialReports.php:189
+#: 
 msgid "Report Start Date:"
 msgstr "Raporti Data e fillimit:"
 
-#: FinancialReports.php:191
+#: 
 msgid "Report End Date:"
 msgstr "Njoftoni End Date:"
 
-#: FinancialReports.php:194
+#: 
 msgid "Apply Report Dates To:"
 msgstr "Aplikoni Raporti Datat Për:"
 
-#: FinancialReports.php:195
+#: 
 msgid "Deposit Date (Default)"
 msgstr "Data Depozita (Default)"
 
-#: FinancialReports.php:196
+#: 
 msgid "Payment Date"
 msgstr "Data e pagesës"
 
-#: FinancialReports.php:212
+#: 
 msgid "Filter by Deposit:"
 msgstr "Filter by Depozitave:"
 
-#: FinancialReports.php:215
+#: 
 msgid "If deposit is selected, date criteria will be ignored."
 msgstr "Në qoftë se depozita është zgjedhur, kriteret data do të injorohen."
 
-#: FinancialReports.php:219
+#: 
 msgid "All deposits within date range"
 msgstr "Të gjitha depozitat brenda datës varg"
 
-#: FinancialReports.php:257
+#: 
 msgid "Filter by Payment Type:"
 msgstr "Filter sipas llojit të pagesave:"
 
-#: FinancialReports.php:261
+#: 
 msgid "All Methods"
 msgstr "Të gjitha Metodat"
 
-#: FinancialReports.php:262 PledgeEditor.php:577 PledgeEditor.php:615
+#: 
 msgid "Check"
 msgstr "Kontr"
 
-#: FinancialReports.php:263 PledgeEditor.php:581
+#: 
 msgid "Cash"
 msgstr "Para në dorë"
 
-#: FinancialReports.php:265 FindDepositSlip.php:49 PledgeEditor.php:597
+#: 
 msgid "Bank Draft"
 msgstr "Draft Bank"
 
-#: FinancialReports.php:266 FindDepositSlip.php:50 PledgeEditor.php:604
+#: 
 msgid "eGive"
 msgstr "eGive"
 
-#: FinancialReports.php:271
+#: 
 msgid "Minimun Total Amount:"
 msgstr "Minimun Shuma totale:"
 
-#: FinancialReports.php:273
+#: 
 msgid "0 - No Minimum"
 msgstr "0 - No Minimum"
 
-#: FinancialReports.php:278
+#: 
 msgid "Other Settings"
 msgstr "Cilësimet tjera"
 
-#: FinancialReports.php:281
+#: 
 msgid "Include:"
 msgstr "Përfshijnë:"
 
-#: FinancialReports.php:282
+#: 
 msgid "Only Payments with Pledges"
 msgstr "Vetëm Pagesat me Pengun"
 
-#: FinancialReports.php:283
+#: 
 msgid "All Payments"
 msgstr "Të gjitha Pagesat"
 
-#: FinancialReports.php:284
+#: 
 msgid "Generate:"
 msgstr "Generate:"
 
-#: FinancialReports.php:285
+#: 
 msgid "Only Families with unpaid pledges"
 msgstr "Vetëm Familje me zotimeve të papaguara"
 
-#: FinancialReports.php:286 GeoPage.php:312 PeopleDashboard.php:118
+#: 
 msgid "All Families"
 msgstr "Të gjitha Familjet"
 
-#: FinancialReports.php:290
+#: 
 msgid "Report Heading:"
 msgstr "Raporti Titulli:"
 
-#: FinancialReports.php:291
+#: 
 msgid "Graphic"
 msgstr "Grafik"
 
-#: ChurchCRM/dto/SystemConfig.php:130 FinancialReports.php:292
+#: 
 msgid "Church Address"
 msgstr "Kisha Adresa"
 
-#: FinancialReports.php:293
+#: 
 msgid "Blank"
 msgstr "Bosh"
 
-#: FinancialReports.php:294
+#: 
 msgid "Remittance Slip:"
 msgstr "Remitencat Shqip:"
 
-#: FinancialReports.php:300
+#: 
 msgid "Sort Data by:"
 msgstr "Rendit dhënave nga:"
 
-#: ChurchCRM/Config/Menu/Menu.php:140 FinancialReports.php:301
+#: 
 msgid "Deposit"
 msgstr "Depozitë"
 
-#: FinancialReports.php:305
+#: 
 msgid "All Data"
 msgstr "Të gjitha të dhënave"
 
-#: FinancialReports.php:306
+#: 
 msgid "Moderate Detail"
 msgstr "Detail Moderuar"
 
-#: FinancialReports.php:307
+#: 
 msgid "Summary Data"
 msgstr "Përmbledhje e të dhënave"
 
-#: FinancialReports.php:319
+#: 
 msgid "CSV"
 msgstr "CSV"
 
-#: FinancialReports.php:326 PaddleNumEditor.php:152 PledgeDetails.php:58
+#: 
 msgid "Back"
 msgstr "Mbrapa"
 
-#: FinancialReports.php:328 GroupReports.php:150 ReminderReport.php:50
-#: TaxReport.php:53
+#: 
 msgid "Create Report"
 msgstr "Krijo Raport"
 
-#: FindDepositSlip.php:21
+#: 
 msgid "Deposit Listing"
 msgstr "Depozita Listing"
 
-#: FindFundRaiser.php:18
+#: 
 msgid "Fundraiser Listing"
 msgstr "Fondesh Listing"
 
-#: FindFundRaiser.php:80
+#: 
 msgid "Date Start"
 msgstr "Date Fillimi"
 
-#: FindFundRaiser.php:83
+#: 
 msgid "Apply Filters"
 msgstr "Aplikoni Filters"
 
-#: FindFundRaiser.php:87
+#: 
 msgid "Date End"
 msgstr "Data e përfundimit"
 
-#: FindFundRaiser.php:90 SelectList.php:758
+#: 
 msgid "Clear Filters"
 msgstr "Filtrat e qarta"
 
-#: FindFundRaiser.php:145 SelectList.php:807
+#: 
 msgid "Previous Page"
 msgstr "Faqja e kaluar"
 
-#: FindFundRaiser.php:187 SelectList.php:848
+#: 
 msgid "Next Page"
 msgstr "Faqja tjeter"
 
-#: FindFundRaiser.php:219 SelectList.php:921
+#: 
 msgid "Display:"
 msgstr "Paraqitja:"
 
-#: FindFundRaiser.php:75 FindFundRaiser.php:234 Include/Functions.php:103
-#: PaddleNumEditor.php:167 PaddleNumList.php:53
+#: 
 msgid "Number"
 msgstr "Numër"
 
-#: FundRaiserEditor.php:33
+#: 
 msgid "Create New Fund Raiser"
 msgstr "Krijo Fund Ri paraprake"
 
-#: FundRaiserEditor.php:150
+#: 
 msgid "Add Donated Item"
 msgstr "Item Shto dhuruar"
 
-#: FundRaiserEditor.php:151
+#: 
 msgid "Generate Catalog"
 msgstr "Generate Katalog"
 
-#: FundRaiserEditor.php:152
+#: 
 msgid "Generate Bid Sheets"
 msgstr "Generate Sheets ofertimit"
 
-#: FundRaiserEditor.php:153
+#: 
 msgid "Generate Certificates"
 msgstr "Generate Certifikata"
 
-#: FundRaiserEditor.php:185
+#: 
 msgid "Donated items for this fundraiser"
 msgstr "Artikuj dhuruara për këtë fondesh"
 
-#: DonatedItemEditor.php:184 FundRaiserEditor.php:193
+#: 
 msgid "Donor"
 msgstr "Dhurues"
 
-#: DonatedItemEditor.php:231 FundRaiserEditor.php:194 PaddleNumEditor.php:172
-#: PaddleNumList.php:54
+#: 
 msgid "Buyer"
 msgstr "Blerës"
 
-#: FundRaiserEditor.php:196
+#: 
 msgid "Sale Price"
 msgstr "Çmim i ulur"
 
-#: DonatedItemEditor.php:218 FundRaiserEditor.php:198
+#: 
 msgid "Material Value"
 msgstr "Vlera materiale"
 
-#: DonatedItemEditor.php:223 FundRaiserEditor.php:199
+#: 
 msgid "Minimum Price"
 msgstr "Çmimi minimal"
 
-#: GeoPage.php:89
+#: 
 msgid "Family Geographic Utilities"
 msgstr "Familjare gjeografike Utilities"
 
-#: GeoPage.php:211
+#: 
 msgid "Select Family:"
 msgstr "Zgjidh Family:"
 
-#: GeoPage.php:230
+#: 
 msgid "Maximum number of neighbors:"
 msgstr "Numri maksimal i fqinjëve:"
 
-#: GeoPage.php:237
+#: 
 msgid "Maximum distance"
 msgstr "Distanca maksimale"
 
-#: GeoPage.php:291
+#: 
 msgid "Data file format:"
 msgstr "File format e të dhënave:"
 
-#: GeoPage.php:296
+#: 
 msgid "GPS Visualizer"
 msgstr "GPS visualizer"
 
-#: GeoPage.php:301
+#: 
 msgid "Street Atlas USA"
 msgstr "Street Atlas USA"
 
-#: GeoPage.php:307
+#: 
 msgid "Include families in coordinate file:"
 msgstr "Përfshijnë familjet në koordinojnë skedë:"
 
-#: GeoPage.php:317
+#: 
 msgid "Neighbor Families"
 msgstr "Familjet fqinje"
 
-#: GeoPage.php:283 GeoPage.php:331
+#: 
 msgid "Make Data File"
 msgstr "Bëni dhënat e file"
 
-#: GeoPage.php:265
+#: 
 msgid "Show Neighbors"
 msgstr "Shfaq Fqinjët"
 
-#: GeoPage.php:355
+#: 
 msgid "Distance"
 msgstr "Distancë"
 
-#: GeoPage.php:356
+#: 
 msgid "Direction"
 msgstr "Drejtim"
 
-#: FamilyEditor.php:707
+#: 
 msgid "Latitude"
 msgstr "Gjerësi"
 
-#: FamilyEditor.php:711
+#: 
 msgid "Longitude"
 msgstr "Gjatësi"
 
-#: PersonView.php:381
+#: 
 msgid "Add to Cart"
 msgstr "Shtoni në kartën e"
 
-#: GeoPage.php:421 SelectList.php:760
+#: 
 msgid "Intersect with Cart"
 msgstr "Ndërpritet me Shportë"
 
@@ -2126,1731 +1732,1533 @@ msgstr "Ndërpritet me Shportë"
 msgid "Remove from Cart"
 msgstr "Hiq nga Shportë"
 
-#: GetText.php:28
+#: 
 msgid "Text for Event ID: "
 msgstr "Tekst per ID Event: "
 
-#: GroupEditor.php:30
+#: 
 msgid "Group Editor"
 msgstr "Grupi Editor"
 
-#: GroupEditor.php:85 GroupView.php:195
+#: 
 msgid "Type of Group"
 msgstr "Lloji i Grupit"
 
-#: GroupEditor.php:128 OptionManager.php:95
+#: 
 msgid "Group Member Roles"
 msgstr "Grupi Rolet anëtare"
 
-#: GroupEditor.php:130
+#: 
 msgid "Clone roles"
 msgstr "Klon role"
 
-#: GroupEditor.php:134
+#: 
 msgid "from group"
 msgstr "nga grupi"
 
-#: GroupEditor.php:136 GroupPropsFormEditor.php:326
+#: 
 msgid "Select a group"
 msgstr "Zgjidhni një grup"
 
-#: GroupEditor.php:156 GroupView.php:80
+#: 
 msgid "Edit Group-Specific Properties Form"
 msgstr "Edit Group-specifik Prona Form"
 
-#: GroupEditor.php:176
+#: 
 msgid "Group Roles"
 msgstr "Rolet e grupit"
 
-#: GroupEditor.php:188 MemberRoleChange.php:92
+#: 
 msgid "New Role"
 msgstr "Roli i ri"
 
-#: GroupList.php:20
+#: 
 msgid "Group Listing"
 msgstr "Listing Group"
 
-#: Include/Header-function.php:66
+#: 
 msgid "Submit"
 msgstr "Konfirmo"
 
-#: GroupPropsEditor.php:26
+#: 
 msgid "Group Member Properties Editor"
 msgstr "Grupi Anëtar Prona Editor"
 
-#: GroupPropsEditor.php:120
+#: 
 msgid "This group currently has no properties!  You can add them in the Group Editor."
 msgstr "Ky grup aktualisht nuk ka veti! Ju mund të shtoni ato në Redaktorin Group."
 
-#: GroupPropsEditor.php:122
+#: 
 msgid "Return to Person Record"
 msgstr "Kthehu tek Personi Record"
 
-#: GroupPropsEditor.php:130
+#: 
 msgid "Editing"
 msgstr "Editing"
 
-#: GroupPropsEditor.php:130
+#: 
 msgid "data for member"
 msgstr "dhënat për anëtar"
 
-#: GroupPropsFormEditor.php:43
+#: 
 msgid "Group-Specific Properties Form Editor:"
 msgstr "Prona Grupi-specifike Form Editor:"
 
-#: GroupPropsFormEditor.php:265
+#: 
 msgid "No properties have been added yet"
 msgstr "Asnjë prona janë shtuar ende"
 
-#: GroupPropsFormEditor.php:288
+#: 
 msgid "Show in"
 msgstr "Shoqëroj"
 
-#: GroupPropsFormEditor.php:288
+#: 
 msgid "Person View"
 msgstr "Person Shiko"
 
-#: GroupReports.php:25
+#: 
 msgid "Group reports"
 msgstr "Raportet e grupit"
 
-#: GroupReports.php:37
+#: 
 msgid "Select the group you would like to report"
 msgstr "Zgjidhni grupin që ju do të donte për të raportuar"
 
-#: GroupReports.php:71
+#: 
 msgid "Report Model"
 msgstr "Raporti Model"
 
-#: GroupReports.php:72
+#: 
 msgid "Report for group and role selected"
 msgstr "Raportojnë për grupin dhe rolin e përzgjedhur"
 
-#: GroupReports.php:73
+#: 
 msgid "Report for any role in group selected"
 msgstr "Raportojnë për ndonjë rol në grup të përzgjedhur"
 
-#: GroupReports.php:99
+#: 
 msgid "Select which information you want to include"
 msgstr "Zgjidhni të cilën informatat që ju dëshironi që të përfshijë"
 
-#: GroupReports.php:121
+#: 
 msgid "Standard Info"
 msgstr "Info Standard"
 
-#: GroupReports.php:128 Reports/GroupReport.php:137
+#: 
 msgid "Other Email"
 msgstr "Të tjera Email"
 
-#: GroupReports.php:129
+#: 
 msgid "GroupRole"
 msgstr "GroupRole"
 
-#: GroupReports.php:133
+#: 
 msgid "Group-Specific Property Fields"
 msgstr "Group-specifik Pronës Fushat"
 
-#: PersonView.php:222
+#: 
 msgid "Undefined"
 msgstr "I papërcaktuar"
 
-#: GroupView.php:62
+#: 
 msgid "Group View"
 msgstr "Grupi Shiko"
 
-#: GroupView.php:75
+#: 
 msgid "Edit this Group"
 msgstr "Edit this Group"
 
-#: GroupView.php:76
+#: 
 msgid "Delete this Group"
 msgstr "Fshije këtë Group"
 
-#: GroupView.php:432
+#: 
 msgid "Please confirm deletion of this group record"
 msgstr "Ju lutem konfirmoni fshirjen e këtij rekord grupit"
 
-#: GroupView.php:434
+#: 
 msgid "This will also delete all Roles and Group-Specific Property data associated with this Group record."
 msgstr "Kjo gjithashtu do të fshijë të gjitha roleve dhe të dhënat Group-specifike pronësore që lidhen me këtë rekord Group."
 
-#: GroupView.php:84
+#: 
 msgid "Add Group Members to Cart"
 msgstr "Shto anëtarët e grupit ne shporte"
 
-#: GroupView.php:85
+#: 
 msgid "Map this group"
 msgstr "Hartë këtë grup"
 
-#: GroupView.php:128
+#: 
 msgid "Email Group"
 msgstr "Email Group"
 
-#: GroupView.php:200
+#: 
 #, fuzzy
 msgid "Default Role"
 msgstr "Default Roli"
 
-#: GroupView.php:231
+#: 
 #, fuzzy
 msgid "Group-Specific Properties"
 msgstr "Grupi-specifike Prona të paluajtshme"
 
-#: GroupView.php:271
+#: 
 msgid "Disabled for this group."
 msgstr "Me aftësi të kufizuara për këtë grup."
 
-#: FamilyView.php:440 GroupView.php:276 PersonView.php:424 PrintView.php:448
+#: 
 msgid "Assigned Properties"
 msgstr "Prona të caktuar"
 
-#: GroupView.php:383
+#: 
 msgid "Group Members:"
 msgstr "Anëtarët e grupit:"
 
-#: LettersAndLabels.php:26 PeopleDashboard.php:237
+#: 
 msgid "Letters and Mailing Labels"
 msgstr "Letra dhe Etiketa postimit"
 
-#: LettersAndLabels.php:79
+#: 
 msgid "Newsletter labels"
 msgstr "Etiketat Newsletter"
 
-#: LettersAndLabels.php:80
-msgid "Confirm data letter"
-msgstr "Konfirmo letër të të dhënave"
-
-#: LettersAndLabels.php:82
+#: 
 msgid "Confirm data labels"
 msgstr "Konfirmo etiketat të dhënave"
 
-#: ListEvents.php:42
+#: 
 msgid "Listing All Church Events"
 msgstr "Listing të gjitha ngjarjet e Kishës"
 
-#: ListEvents.php:83
+#: 
 msgid "Select Event Types To Display"
 msgstr "Zgjidhni ngjarje Llojet To Display"
 
-#: ListEvents.php:125
+#: 
 msgid "Display Events in Year"
 msgstr "Shfaq Ngjarjet në Vitin"
 
-#: ListEvents.php:209
+#: 
 msgid "Start Date/Time"
 msgstr "Filloni Data / Koha"
 
-#: ListEvents.php:285
+#: 
 msgid "No Attendance Recorded"
 msgstr "Nuk ka Pjesëmarrja Recorded"
 
-#: ListEvents.php:235
+#: 
 #, fuzzy
 msgid "Attendees"
 msgstr "Pjesëmarrësit ("
 
-#: ListEvents.php:309
+#: 
 msgid " Monthly Averages"
 msgstr " Mesataret mujore"
 
-#: Login.php:41 Login.php:56
+#: 
 msgid "Invalid login or password"
 msgstr "Login pavlefshme ose regjistrohu"
 
-#: Login.php:44
+#: 
 msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
 msgstr "Shumë hyrje të dështuara: llogaria juaj ka qenë e mbyllur. Ju lutem kontaktoni një administrator."
 
-#: Login.php:176 Login.php:238
+#: 
 msgid "Please Login"
 msgstr "Ju lutem Identifikohu"
 
-#: BackupDatabase.php:55 Login.php:200 Login.php:278 UserList.php:58
+#: 
 msgid "Password"
 msgstr "Fjalekalmi"
 
-#: Login.php:163 Login.php:213
+#: 
 msgid "Login"
 msgstr "Hyrje"
 
-#: ChurchCRM/Config/Menu/Menu.php:147 ManageEnvelopes.php:21
+#: 
 msgid "Envelope Manager"
 msgstr "Zarf Menaxher"
 
-#: ManageEnvelopes.php:117
+#: 
 msgid "Update Family Records"
 msgstr "Update Records familjare"
 
-#: ManageEnvelopes.php:134 external/templates/verify/verify-family-info.php:17
-#: external/templates/verify/verify-family-info.php:127
+#: 
 msgid "Confirm"
 msgstr "Konfirmoj"
 
-#: ManageEnvelopes.php:158
+#: 
 msgid "Sort by"
 msgstr "Renditur sipas"
 
-#: ManageEnvelopes.php:170
+#: 
 msgid "Zero"
 msgstr "Zero"
 
-#: ManageEnvelopes.php:172
+#: 
 msgid "Assign starting at #"
 msgstr "Cakto duke filluar nga #"
 
-#: MemberRoleChange.php:25
+#: 
 msgid "Member Role Change"
 msgstr "Ndryshimi Anëtar Roli"
 
-#: MemberRoleChange.php:84
+#: 
 msgid "Member's Name"
 msgstr "Anëtarit Emri"
 
-#: MemberRoleChange.php:88
+#: 
 msgid "Current Role"
 msgstr "Roli aktual"
 
-#: PeopleDashboard.php:123
+#: 
 msgid "Update All Family Coordinates"
 msgstr "Update të gjitha koordinatat Family"
 
-#: ChurchCRM/Config/Menu/Menu.php:75 PersonView.php:425
+#: 
 msgid "Volunteer Opportunities"
 msgstr "Mundësitë vullnetare"
 
-#: Menu.php:172 PeopleDashboard.php:137 api/routes/search.php:156
-#: members/online-pending-verify.php:24 members/self-register.php:24
-#: members/self-verify-updates.php:24
-#: sundayschool/SundaySchoolDashboard.php:104
+#: 
 msgid "Families"
 msgstr "Familjet"
 
-#: ChurchCRM/Config/Menu/Menu.php:61 Menu.php:191 PeopleDashboard.php:158
+#: 
 msgid "People"
 msgstr "Njerëz"
 
-#: PeopleDashboard.php:226
+#: 
 msgid "Reports on groups and roles"
 msgstr "Raportet për grupe dhe rolet"
 
-#: PeopleDashboard.php:228
+#: 
 msgid "Report on group and roles selected (it may be a multi-page PDF)."
 msgstr "Raportojnë në grup dhe rolet e zgjedhur (kjo mund të jetë një multi-faqe PDF)."
 
-#: PeopleDashboard.php:238
+#: 
 msgid "Generate letters and mailing labels."
 msgstr "Generate letra dhe etiketat e postimeve."
 
-#: PeopleDashboard.php:244
+#: 
 msgid "US Address Verification Report"
 msgstr "SHBA Adresa Verifikimi Raport"
 
-#: CartToFamily.php:206
-#: ChurchCRM/Emails/notifications/NewPersonOrFamilyEmail.php:60
-#: FamilyEditor.php:654 LettersAndLabels.php:71 Menu.php:308 Menu.php:337
-#: Reports/ConfirmReport.php:115 Reports/ConfirmReportEmail.php:116
-#: SelectDelete.php:153 SelectDelete.php:279
-#: external/templates/registration/family-register.php:31
+#: 
 msgid "Family Name"
 msgstr "Emri Family"
 
-#: NoteDelete.php:27
+#: 
 msgid "Note Delete Confirmation"
 msgstr "Shënim Fshije Konfirmimi"
 
-#: NoteDelete.php:61
+#: 
 msgid "Please confirm deletion of this note"
 msgstr "Ju lutem konfirmoni fshirjen e këtij shënim"
 
-#: NoteDelete.php:68 PropertyDelete.php:63 PropertyTypeDelete.php:68
+#: 
 msgid "Yes, delete this record"
 msgstr "Po, fshini këtë arkiv të dhënash"
 
-#: NoteDelete.php:68 PropertyDelete.php:63 SelectDelete.php:277
+#: 
 msgid "(this action cannot be undone)"
 msgstr "(Ky veprim nuk mund të zhbëhet)"
 
-#: NoteEditor.php:29
+#: 
 msgid "Note Editor"
 msgstr "Shënim i redaktorit"
 
-#: NoteEditor.php:128
+#: 
 msgid "Private"
 msgstr "Privat"
 
-#: PropertyAssign.php:43 PropertyEditor.php:39 PropertyList.php:24
-#: PropertyTypeEditor.php:89 PropertyTypeList.php:62
+#: 
 msgid "Person"
 msgstr "Person"
 
-#: OptionManager.php:85 PropertyAssign.php:58 PropertyEditor.php:47
-#: PropertyList.php:32 PropertyTypeEditor.php:91 PropertyTypeList.php:62
+#: 
 msgid "Group"
 msgstr "Grup"
 
-#: OptionManager.php:114 OptionManager.php:132 OptionManager.php:150
+#: 
 msgid "Option"
 msgstr "Alternativë"
 
-#: OptionManager.php:301
+#: 
 msgid "Warning: Removing will reset all assignments for all persons with the assignment!"
 msgstr "Warning: Heqja do të rivendosur të gjitha detyrat për të gjithë personat me të detyrës!"
 
-#: OptionManager.php:308
+#: 
 msgid "Error: Duplicate"
 msgstr "Error: Duplicate"
 
-#: OptionManager.php:325
+#: 
 msgid "Default"
 msgstr "Parazgjedhur"
 
-#: OptionManager.php:353
+#: 
 msgid "Duplicate name found."
 msgstr "Duplicate emrin gjetur."
 
-#: OptionManager.php:358
+#: 
 msgid "Make Default"
 msgstr "Bëni Default"
 
-#: OptionManager.php:372 OptionManager.php:376
-#: VolunteerOpportunityEditor.php:405
+#: 
 msgid "Exit"
 msgstr "Dalje"
 
-#: OptionManager.php:390
+#: 
 msgid "Add New"
 msgstr "Shto të re"
 
-#: OptionManager.php:397
+#: 
 msgid "Error: A "
 msgstr "Gabim: Një "
 
-#: OptionManager.php:397
+#: 
 msgid " by that name already exists."
 msgstr " me atë emër ekziston."
 
-#: PaddleNumEditor.php:45
+#: 
 msgid "Buyer Number Editor"
 msgstr "Blerësi Numri Editor"
 
-#: PaddleNumEditor.php:148
+#: 
 msgid "Generate Statement"
 msgstr "Generate Deklarata"
 
-#: PaddleNumList.php:33
+#: 
 msgid "Buyers for this fundraiser:"
 msgstr "Blerësit për këtë fondesh:"
 
-#: PaddleNumList.php:40
+#: 
 msgid "Select all"
 msgstr "Zgjidh gjithë"
 
-#: PaddleNumList.php:42
+#: 
 msgid "Select none"
 msgstr "Zgjidhni asnjë"
 
-#: PaddleNumList.php:43
+#: 
 msgid "Add Buyer"
 msgstr "Shto blerësi"
 
-#: PaddleNumList.php:44
+#: 
 msgid "Generate Statements for Selected"
 msgstr "Generate Deklaratat për Selected"
 
-#: PaddleNumList.php:52
+#: 
 msgid "Select"
 msgstr "Zgjidh"
 
-#: PersonCustomFieldsEditor.php:25
+#: 
 msgid "Custom Person Fields Editor"
 msgstr "Person Custom Fields Editor"
 
-#: PersonCustomFieldsEditor.php:275
+#: 
 msgid "Warning:  By deleting this field, you will irrevokably lose all person data assigned for this field!"
 msgstr "Warning: Duke fshirjes këtë fushë, ju irrevokably do të humbasin të gjitha të dhënat person i caktuar për këtë fushë!"
 
-#: PersonCustomFieldsEditor.php:296
+#: 
 msgid "No custom person fields have been added yet"
 msgstr "Nuk fusha personi me porosi janë shtuar ende"
 
-#: PersonCustomFieldsEditor.php:314
-msgid "Person-View Side"
-msgstr "Person-Shiko Side"
-
-#: PersonEditor.php:25
+#: 
 msgid "Person Editor"
 msgstr "Person Editor"
 
-#: PersonEditor.php:194
+#: 
 msgid "You must enter a Last Name if no Family is selected."
 msgstr "Ju duhet të hyjë në një Mbiemri nëse nuk Familja është zgjedhur."
 
-#: PersonEditor.php:224
+#: 
 msgid "Not a valid Friend Date"
 msgstr "Jo Shoqëri vlefshme Data"
 
-#: PersonEditor.php:236
+#: 
 msgid "Not a valid Membership Date"
 msgstr "Jo një të vlefshme Data Anëtarësimit"
 
-#: PersonEditor.php:258
+#: 
 msgid "Work Email is Not Valid"
 msgstr "Puna Email nuk është i vlefshëm"
 
-#: PersonEditor.php:602
+#: 
 msgid "Red text"
 msgstr "Teksti i Kuq"
 
-#: PersonEditor.php:602 PersonView.php:369
+#: 
 msgid "indicates items inherited from the associated family record."
 msgstr "tregon objekte të trashëguara nga të dhënat lidhur familjare."
 
-#: PersonEditor.php:749
+#: 
 msgid "Birth Year"
 msgstr "Viti i lindjes"
 
-#: PersonEditor.php:762 Reports/ConfirmReport.php:185
-#: Reports/ConfirmReport.php:204
-#: external/templates/registration/family-register-members.php:120
+#: 
 msgid "Hide Age"
 msgstr "Hide Mosha"
 
-#: PersonEditor.php:799
+#: 
 msgid "Create a new family (using last name)"
 msgstr "Krijo një familje të re (duke përdorur emrin e kaluar)"
 
-#: PersonEditor.php:1167 PersonView.php:292
+#: 
 msgid "Friend Date"
 msgstr "Mik Data"
 
-#: PersonToGroup.php:51
-msgid "Add Person to Group"
-msgstr "Shto person të Grupit"
-
-#: PersonToGroup.php:57
-msgid "Select the group to add this person to"
-msgstr "Zgjidh grupin për të shtuar këtë person të"
-
-#: PersonView.php:175
+#: 
 msgid "Not assigned"
 msgstr "Nuk është caktuar"
 
-#: PersonView.php:380
+#: 
 msgid "Printable Page"
 msgstr "Printueshëm Page"
 
-#: PersonView.php:395
+#: 
 msgid "Delete this Record"
 msgstr "Fshije këtë Record"
 
-#: PersonView.php:401
+#: 
 msgid "Make User"
 msgstr "Bëni përdoruesin"
 
-#: PersonView.php:405
+#: 
 msgid "Edit User"
 msgstr "Edit User"
 
-#: PersonView.php:581 PrintView.php:387
+#: 
 msgid "No group assignments."
 msgstr "Asnjë grup detyra."
 
-#: PersonView.php:781
+#: 
 msgid "No volunteer opportunity assignments."
 msgstr "Jo detyra mundësi vullnetare."
 
-#: PersonView.php:824
+#: 
 msgid "Assign a New Volunteer Opportunity"
 msgstr "Cakto një re Vullnetare Opportunity"
 
-#: PledgeDetails.php:17
+#: 
 msgid "Electronic Transaction Details"
 msgstr "Details elektronike Transaksionit"
 
-#: ChurchCRM/Service/FinancialService.php:481 PledgeEditor.php:271
+#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "Shuma pazbritshme nuk mund të jetë më i madh se shuma e përgjithshme."
 
-#: ChurchCRM/Service/FinancialService.php:486 PledgeEditor.php:278
+#: 
 msgid "At least one fund must have a non-zero amount."
 msgstr "Së paku një fond duhet të ketë një sasi jo-zero."
 
-#: ChurchCRM/Service/FinancialService.php:511 PledgeEditor.php:295
+#: 
 msgid "Must specify non-zero check number"
 msgstr "Specifiko jo-zero numër kontrolloni"
 
-#: PledgeEditor.php:440
+#: 
 msgid "Pledge Editor"
 msgstr "Zotimi Editor"
 
-#: PledgeEditor.php:442
+#: 
 msgid "Payment Editor: "
 msgstr "Editor Pagesa: "
 
-#: PledgeEditor.php:442
+#: 
 msgid " Deposit Slip #"
 msgstr " Shqip Depozita #"
 
-#: PledgeEditor.php:463
+#: 
 msgid " more entries will fit."
 msgstr " më shumë të hyra do të përshtaten."
 
-#: PledgeEditor.php:469
+#: 
 msgid "Payment Editor - Modify Existing Payment"
 msgstr "Editor Pagesa - Ndrysho Pagesa Ekzistuese"
 
-#: PledgeEditor.php:471
+#: 
 msgid "Payment Editor - New Deposit Slip Will Be Created"
 msgstr "Pagesa Editor - Shqip New Depozita do të krijohet"
 
-#: PledgeEditor.php:529
+#: 
 msgid "Find family->"
 msgstr "Gjej të familjes->"
 
-#: PledgeEditor.php:539
+#: 
 msgid "Payment Schedule"
 msgstr "Orari Pagesa"
 
-#: PledgeEditor.php:541
+#: 
 msgid "Select Schedule"
 msgstr "Zgjidhni Listën"
 
-#: EventNames.php:168 PledgeEditor.php:544
+#: 
 msgid "Weekly"
 msgstr "Javor"
 
-#: EventNames.php:184 PledgeEditor.php:548
+#: 
 msgid "Monthly"
 msgstr "Mujor"
 
-#: PledgeEditor.php:552
+#: 
 msgid "Quarterly"
 msgstr "Tremujor"
 
-#: PledgeEditor.php:556
+#: 
 msgid "Once"
 msgstr "Dikur"
 
-#: ChurchCRM/Dashboard/PersonDemographicDashboardItem.php:32
-#: ChurchCRM/Dashboard/PersonDemographicDashboardItem.php:49
-#: PledgeEditor.php:560
+#: 
 msgid "Other"
 msgstr "Tjera"
 
-#: PledgeEditor.php:571
+#: 
 msgid "Payment by"
 msgstr "Pagesa nga"
 
-#: PledgeEditor.php:634
-msgid "Choose online payment method"
-msgstr "Zgjidh metodën e pagesave online"
-
-#: PledgeEditor.php:642
-msgid "Select online payment record"
-msgstr "Zgjidhni rekord pagesave online"
-
-#: PledgeEditor.php:650
-msgid "Bank account "
-msgstr "Llogari bankare "
-
-#: PledgeEditor.php:669
+#: 
 msgid "Scan check"
 msgstr "Kontrolloni Scan"
 
-#: PledgeEditor.php:678
+#: 
 msgid "find family from check account #"
 msgstr "gjeni familjen nga llogaria check #"
 
-#: PledgeEditor.php:679
+#: 
 msgid "Set default check account number for family"
 msgstr "Set Default Numri i llogarisë kontrolloni për familjen"
 
-#: PledgeEditor.php:713
+#: 
 msgid "Fund Name"
 msgstr "Fondi Emri"
 
-#: PledgeEditor.php:718
+#: 
 msgid "Non-deductible amount"
 msgstr "Shuma jo-deductible"
 
-#: PrintView.php:126
+#: 
 msgid "Printable View"
 msgstr "Shiko printueshëm"
 
-#: PrintView.php:340 Reports/CanvassReports.php:240
-#: sundayschool/SundaySchoolClassView.php:204
-#: sundayschool/SundaySchoolDashboard.php:206
+#: 
 msgid "Age"
 msgstr "Moshë"
 
-#: PersonView.php:423 PrintView.php:376
+#: 
 msgid "Assigned Groups"
 msgstr "Grupet caktuar"
 
-#: MemberRoleChange.php:80 PrintView.php:391
+#: 
 msgid "Group Name"
 msgstr "Emri i Grupit"
 
-#: PrintView.php:488
+#: 
 msgid "Notes:"
 msgstr "Shënime:"
 
-#: PrintView.php:494
+#: 
 msgid "Entered:"
 msgstr "Regjistruar:"
 
-#: ChurchCRM/Service/TimelineService.php:127 PrintView.php:497
+#: 
 msgid "by"
 msgstr "nga"
 
-#: PropertyAssign.php:124 PropertyAssign.php:142
+#: 
 msgid "Property successfully assigned."
 msgstr "Pronës caktuar me sukses."
 
-#: PropertyAssign.php:157
+#: 
 msgid " Property Assignment"
 msgstr " Caktimi i Pronës"
 
-#: PropertyAssign.php:171
+#: 
 msgid "Assigning"
 msgstr "Caktimi"
 
-#: PropertyDelete.php:24
+#: 
 msgid "Property Delete Confirmation"
 msgstr "Pronës Konfirmimi Delete"
 
-#: PropertyDelete.php:51
+#: 
 msgid "Please confirm deletion of this property"
 msgstr "Ju lutem konfirmoni fshirjen e këtë pronë"
 
-#: PropertyDelete.php:59
+#: 
 msgid "Deleting this Property will also delete all assignments of this Property to any People, Family, or Group records."
 msgstr "Fshirja kjo pronë do të fshijë të gjitha detyrat e kësaj Pronave për çdo Popullit, Familjen, apo dokumentet e grupit."
 
-#: PropertyDelete.php:65 PropertyTypeDelete.php:70 SelectDelete.php:294
-#: VolunteerOpportunityEditor.php:111
+#: 
 msgid "No, cancel this deletion"
 msgstr "Jo, të anulojë këtë fshirjen"
 
-#: PropertyEditor.php:57
+#: 
 msgid "Property Editor"
 msgstr "Pronës Editor"
 
-#: PropertyEditor.php:77
+#: 
 #, fuzzy
 msgid "You must select a type"
 msgstr "Duhet të zgjidhni një Lloji"
 
-#: PropertyEditor.php:131
+#: 
 msgid "Select Property Type"
 msgstr "Zgjidh Lloji i Pronës"
 
-#: PropertyEditor.php:156 PropertyList.php:61
+#: 
 msgid "A"
 msgstr "Një"
 
-#: PropertyEditor.php:164
+#: 
 msgid "Entering a Prompt value will allow the association of a free-form value."
 msgstr "Hyrja një vlerë Prompt do të lejojë shoqata e një vlerë të lirë-formë."
 
-#: PropertyList.php:42
+#: 
 msgid "Property List"
 msgstr "Lista e Pronës"
 
-#: PropertyList.php:54
+#: 
 msgid "Add a New"
 msgstr "Shto Një i ri"
 
-#: PropertyList.php:54 queryparameters_qrp.php:6
+#: 
 msgid "Property"
 msgstr "Tipari (property)"
 
-#: PropertyEditor.php:162 PropertyList.php:62
+#: 
 msgid "Prompt"
 msgstr "I shpejtë"
 
-#: PropertyTypeDelete.php:25
+#: 
 msgid "Property Type Delete Confirmation"
 msgstr "Tipi i Pronës Konfirmimi Delete"
 
-#: PropertyTypeDelete.php:58 VolunteerOpportunityEditor.php:98
+#: 
 msgid "Warning"
 msgstr "Paralajmërim"
 
-#: PropertyTypeDelete.php:58
+#: 
 msgid "This property type is still being used by at least one property."
 msgstr "Ky lloj pronë është ende duke u përdorur së paku nga një pronë."
 
-#: PropertyTypeDelete.php:58
+#: 
 msgid "If you delete this type, you will also remove all properties using"
 msgstr "Nëse ju fshini këtë lloj, ju do të hiqni të gjitha pronat e përdorimit"
 
-#: PropertyTypeDelete.php:58
+#: 
 msgid "it and lose any corresponding property assignments."
 msgstr "ajo dhe humbasin asnjë detyra përkatëse të pronësisë."
 
-#: PropertyTypeDelete.php:64
+#: 
 msgid "Please confirm deletion of this Property Type"
 msgstr "Ju lutem konfirmoni fshirjen e këtij Tipi i patundshmërisë"
 
-#: PropertyTypeEditor.php:25
+#: 
 msgid "Property Type Editor"
 msgstr "Tipi i Pronës Editor"
 
-#: PropertyTypeList.php:23
+#: 
 msgid "Property Type List"
 msgstr "Lista Tipi i Pronës"
 
-#: PropertyTypeList.php:35
+#: 
 msgid "Add a New Property Type"
 msgstr "Shto një re Tipi i Pronës"
 
-#: PropertyTypeEditor.php:86 PropertyTypeList.php:42
-#: sundayschool/SundaySchoolDashboard.php:152
-#: sundayschool/SundaySchoolDashboard.php:247 queryparameters_qrp.php:12
+#: 
 msgid "Class"
 msgstr "Klasë"
 
-#: PropertyTypeList.php:43 v2/templates/people/family-view.php:344
+#: 
 msgid "Properties"
 msgstr "Cilësime"
 
-#: PropertyUnassign.php:94
+#: 
 msgid " Property Unassignment"
 msgstr " Pronës Unassignment"
 
-#: PropertyUnassign.php:101
+#: 
 msgid "Please confirm removal of this property from this"
 msgstr "Ju lutem konfirmoni largimin e kësaj prone nga kjo"
 
-#: PropertyUnassign.php:116
+#: 
 msgid "Yes, unassign this Property"
 msgstr "Po, unassign këtë Pronës"
 
-#: PropertyUnassign.php:119
+#: 
 msgid "No, retain this assignment"
 msgstr "Jo, të mbajë këtë detyrë"
 
-#: QueryList.php:16
+#: 
 msgid "Query Listing"
 msgstr "Query Listing"
 
-#: QueryList.php:31
+#: 
 msgid "Run a Free-Text Query"
 msgstr "Run një Query Free-Text"
 
-#: QuerySQL.php:19
+#: 
 msgid "Free-Text Query"
 msgstr "Free-Tekst Query"
 
-#: QuerySQL.php:46
+#: 
 msgid "Export Results to CSV file"
 msgstr "Rezultatet e eksportit në CSV dosjes"
 
-#: QuerySQL.php:54
+#: 
 msgid "Execute SQL"
 msgstr "Execute SQL"
 
-#: QuerySQL.php:82 QuerySQL.php:132
+#: 
 msgid "An error occured: "
 msgstr "Ka ndodhur një gabim: "
 
-#: QuerySQL.php:117 QueryView.php:178 QueryView.php:200
+#: 
 msgid " record(s) returned"
 msgstr " dhënat (s) kthyer"
 
-#: QuerySQL.php:181
+#: 
 msgid "Add Results To Cart"
 msgstr "Shto Rezultatet To Cart"
 
-#: QuerySQL.php:182
+#: 
 msgid "Intersect Results With Cart"
 msgstr "Ndërpritet Rezultatet Me Shportë"
 
-#: QuerySQL.php:183
+#: 
 msgid "Remove Results From Cart"
 msgstr "Hiq Rezultatet Nga Shportë"
 
-#: QuerySQL.php:188
+#: 
 msgid "Return to Query Menu"
 msgstr "Kthehu tek Query Menu"
 
-#: QueryView.php:21
+#: 
 msgid "Query View"
 msgstr "Query Shiko"
 
-#: QueryView.php:91
+#: 
 msgid "This value is required."
 msgstr "Kjo vlerë është e nevojshme."
 
-#: QueryView.php:104
+#: 
 msgid "This value must be numeric."
 msgstr "Kjo vlerë duhet të jetë një numër."
 
-#: QueryView.php:109
+#: 
 msgid "This value must be at least "
 msgstr "Kjo vlerë duhet të jetë së paku "
 
-#: QueryView.php:114 QueryView.php:127
+#: 
 msgid "This value cannot be more than "
 msgstr "Kjo vlerë nuk mund të jetë më shumë se "
 
-#: QueryView.php:127 QueryView.php:132
+#: 
 msgid " characters long"
 msgstr " karaktere të gjatë"
 
-#: QueryView.php:132
+#: 
 msgid "This value cannot be less than "
 msgstr "Kjo vlerë nuk mund të jetë më pak se "
 
-#: QueryView.php:262
+#: 
 msgid "Run Query Again"
 msgstr "Run Query Përsëri"
 
-#: QueryView.php:380
+#: 
 msgid "Execute Query"
 msgstr "Execute Query"
 
-#: RPCdummy.php:51
-msgid "Address Info:"
-msgstr "Adresa Info:"
-
-#: Register.php:35
+#: 
 msgid "Please register your copy of ChurchCRM by checking over this information and pressing the Send button.  "
 msgstr "Ju lutemi regjistrohuni kopje të ChurchCRM duke kontrolluar mbi këtë informacion dhe të shtypur butonin Send.  "
 
-#: Register.php:36
+#: 
 msgid "This information is used only to track the usage of this software.  "
 msgstr "Ky informacion do të përdoret vetëm për të ndjekur përdorimin e këtij software.  "
 
-#: Register.php:55
+#: 
 msgid "Send"
 msgstr "Dërgoj"
 
-#: ReminderReport.php:25
+#: 
 msgid "Pledge Reminder Report"
 msgstr "Zotimi Reminder Raporti"
 
-#: SelectDelete.php:68
+#: 
 msgid "All donations from this family have been moved to another family."
 msgstr "Të gjitha donacionet nga kjo familje janë zhvendosur në një familje tjetër."
 
-#: SelectDelete.php:72
+#: 
 msgid "Family Delete Confirmation"
 msgstr "Familja Fshije Konfirmimi"
 
-#: SelectDelete.php:145
+#: 
 msgid "Sorry, there are records of donations from this family. This family may not be deleted."
 msgstr "Na vjen keq, ka të dhënat e donacioneve nga kjo familje. Kjo familje nuk mund të fshihen."
 
-#: SelectDelete.php:146
+#: 
 msgid "Return to Family View"
 msgstr "Kthehu tek Family View"
 
-#: SelectDelete.php:150
+#: 
 msgid "WARNING: This family has records of donations and may NOT be deleted until these donations are associated with another family."
 msgstr "KUJDES: Kjo familje ka të dhënat e donacioneve dhe nuk mund të fshihen deri sa këto donacione janë të lidhur me një familje tjetër."
 
-#: SelectDelete.php:154
+#: 
 msgid "Please select another family with whom to associate these donations:"
 msgstr "Ju lutem zgjidhni një tjetër familje me të cilin që të lidhen këto donacione:"
 
-#: SelectDelete.php:155
+#: 
 msgid "WARNING: This action can not be undone and may have legal implications!"
 msgstr "KUJDES: Ky veprim nuk mund të zhbëhet dhe mund të ketë pasoja ligjore!"
 
-#: SelectDelete.php:193
+#: 
 msgid "CURRENT FAMILY WITH DONATIONS"
 msgstr "FAMILJA AKTUALE ME DONACIONET"
 
-#: SelectDelete.php:275
+#: 
 msgid "Please confirm deletion of this family record:"
 msgstr "Ju lutem konfirmoni fshirjen e këtij rekord të familjes:"
 
-#: SelectDelete.php:276
+#: 
 msgid "Note: This will also delete all Notes associated with this Family record."
 msgstr "Shënim: Kjo do të fshijë të gjitha shënimet që lidhen me këtë rekord të Familjes."
 
-#: SelectDelete.php:292
+#: 
 msgid "Delete Family Record ONLY"
 msgstr "Fshij Record Family VETEM"
 
-#: SelectDelete.php:293
+#: 
 msgid "Delete Family Record AND Family Members"
 msgstr "Fshij Record familjare dhe anëtarët e familjes"
 
-#: SelectList.php:141
-msgid "Person Listing"
-msgstr "Person Listing"
-
-#: ChurchCRM/Config/Menu/Menu.php:86 SelectList.php:172
-msgid "Group Assignment Helper"
-msgstr "Grupi Caktimi Helper"
-
-#: SelectList.php:500
-msgid "Show people <b>not</b> in this group type:"
-msgstr "Shfaq njerëzit nuk <b> </ b> në këtë lloj grup:"
-
-#: SelectList.php:516
-msgid "Sort order"
-msgstr "Renditur urdhërojë"
-
-#: SelectList.php:520
-msgid "By Name"
-msgstr "Nga Emri"
-
-#: SelectList.php:523
-msgid "By Family"
-msgstr "By Family"
-
-#: SelectList.php:529
-msgid "By Newest Entries"
-msgstr "Nga Entries rejat"
-
-#: SelectList.php:532
-msgid "By Recently Edited"
-msgstr "Duke Redaktuar Kohët e fundit"
-
-#: SelectList.php:538
-msgid "Apply Filter"
-msgstr "Aplikoni Filter"
-
-#: SelectList.php:549
-msgid "Male & Female"
-msgstr "Meshkuj & Femra"
-
-#: SelectList.php:570
-msgid "All Classifications"
-msgstr "Të gjitha Klasifikimet"
-
-#: SelectList.php:596
-msgid "All Family Roles"
-msgstr "Të gjitha Rolet familjare"
-
-#: SelectList.php:622
-msgid "All Contact Properties"
-msgstr "Të gjitha Prona Kontakt"
-
-#: SelectList.php:654
-msgid "All Group Types"
-msgstr "Të gjitha Llojet e grupit"
-
-#: SelectList.php:694
-msgid "All Groups"
-msgstr "Të gjitha grupet"
-
-#: SelectList.php:743
-msgid "All Roles"
-msgstr "Të gjitha Rolet"
-
-#: SelectList.php:784
-msgid "View All"
-msgstr "Shiko të gjitha"
-
-#: SelectList.php:1055
-msgid "Cart"
-msgstr "Qerre"
-
-#: SettingsIndividual.php:86
+#: 
 msgid "My User Settings"
 msgstr "Mia User Settings"
 
-#: SettingsIndividual.php:98 SettingsUser.php:85 SystemSettings.php:139
-#: UserEditor.php:478
+#: 
 msgid "Variable name"
 msgstr "Emri ndryshueshme"
 
-#: SettingsIndividual.php:99 SettingsUser.php:86 UserEditor.php:479
+#: 
 msgid "Current Value"
 msgstr "Vlera e tanishme"
 
-#: SettingsIndividual.php:113 SettingsIndividual.php:159 SettingsUser.php:98
-#: SettingsUser.php:159 SystemSettings.php:256 UserEditor.php:561
+#: 
 msgid "Save Settings"
 msgstr "Save Settings"
 
-#: SettingsUser.php:68
+#: 
 msgid "Default User Settings"
 msgstr "Default User Settings"
 
-#: SettingsUser.php:80
+#: 
 msgid "Set Permission True to give new users the ability to change their current value.<BR>"
 msgstr "Set leje True për të dhënë përdoruesve të reja aftësinë për të ndryshuar vlerën e tyre aktuale. <BR>"
 
-#: SettingsUser.php:84 UserEditor.php:477
+#: 
 msgid "Permission"
 msgstr "Leje"
 
-#: TaxReport.php:29
+#: 
 msgid "Tax Report"
 msgstr "Tax Raporti"
 
-#: TaxReport.php:45
+#: 
 msgid "Calendar Year"
 msgstr "Viti Kalendari"
 
-#: USISTAddressVerification.php:47
+#: 
 msgid "US Address Verification"
 msgstr "Adresa SHBA Verifikimi"
 
-#: UserList.php:125
+#: 
 msgid "User Delete Confirmation"
 msgstr "User Fshije Konfirmimi"
 
-#: UserList.php:127
+#: 
 msgid "Please confirm removal of user status from:"
 msgstr "Ju lutem konfirmoni heqjen e statusit të përdoruesit nga:"
 
-#: UserEditor.php:322
+#: 
 msgid "User Editor"
 msgstr "User Editor"
 
-#: UserEditor.php:330
+#: 
 msgid "Note: Changes will not take effect until next logon."
 msgstr "Shënim: Ndryshimet nuk do të hyjë në fuqi deri në logon e ardhshëm."
 
-#: UserEditor.php:344
+#: 
 msgid "Person to Make User"
 msgstr "Person të Bëni Përdorues"
 
-#: UserEditor.php:364 api/routes/public/public-user.php:51
-#: v2/templates/admin/user.php:10
+#: 
 msgid "User"
 msgstr "Përdoruesi"
 
-#: UserEditor.php:380 external/templates/password/enter-username.php:30
+#: 
 msgid "Login Name"
 msgstr "Identifikohu Emri"
 
-#: UserEditor.php:392
+#: 
 msgid "Edit Records"
 msgstr "Edit shenime"
 
-#: UserEditor.php:406
+#: 
 msgid "Manage Properties and Classifications"
 msgstr "Menaxho Prona dhe klasifikime"
 
-#: UserEditor.php:413
+#: 
 msgid "Manage Groups and Roles"
 msgstr "Menaxhuar grupet dhe Rolet"
 
-#: UserEditor.php:420
+#: 
 msgid "Manage Donations and Finance"
 msgstr "Menaxho Donacionet dhe Financave"
 
-#: UserEditor.php:427
+#: 
 msgid "View, Add and Edit Notes"
 msgstr "Shiko, Shto dhe Edit Shënime"
 
-#: UserEditor.php:434
+#: 
 msgid "Edit Self"
 msgstr "Edit Vetë"
 
-#: UserEditor.php:437
+#: 
 msgid "(Edit own family only.)"
 msgstr "(Edit familjen e vet vetëm.)"
 
-#: UserEditor.php:443
+#: 
 msgid "(Canvass volunteer.)"
 msgstr "(Vullnetar anketim.)"
 
-#: ChurchCRM/Config/Menu/Menu.php:68 ChurchCRM/Config/Menu/Menu.php:105
-#: ChurchCRM/Config/Menu/Menu.php:146 ChurchCRM/Config/Menu/Menu.php:192
-#: UserEditor.php:446
+#: 
 msgid "Admin"
 msgstr "Admin"
 
-#: UserEditor.php:449
+#: 
 msgid "(Grants all privileges.)"
 msgstr "(Grantet gjitha privilegjet.)"
 
-#: UserEditor.php:452
+#: 
 msgid "Style"
 msgstr "Stili"
 
-#: UserList.php:37
+#: 
 msgid "User Listing"
 msgstr "User Listing"
 
-#: UserList.php:55
+#: 
 msgid "Last Login"
 msgstr "Kycja e fundit"
 
-#: UserList.php:56
+#: 
 msgid "Total Logins"
 msgstr "Gjithsej Logins"
 
-#: UserList.php:57
+#: 
 msgid "Failed Logins"
 msgstr "Logins dështuara"
 
-#: UserPasswordChange.php:55
-msgid "You must enter a password in both boxes"
-msgstr "Ju duhet të hyjë në një fjalëkalim në të dy kutitë"
-
-#: UserPasswordChange.php:61 UserPasswordChange.php:113
+#: 
 msgid "You must enter the same password in both boxes"
 msgstr "Ju duhet të hyjë në të njëjtin fjalëkalim në të dy kutitë"
 
-#: UserPasswordChange.php:101
-msgid "Invalid password"
-msgstr "Regjistrohu Invalid"
-
-#: UserPasswordChange.php:107
-msgid "You must enter your new password in both boxes"
-msgstr "Ju duhet të shkruani fjalëkalimin tuaj të re në të dy kutitë"
-
-#: UserPasswordChange.php:119
+#: 
 msgid "Your password choice is too obvious. Please choose something else."
 msgstr "Zgjedhja juaj fjalëkalimi është shumë e qartë. Ju lutemi zgjidhni diçka tjetër."
 
-#: UserPasswordChange.php:125
+#: 
 msgid "Your new password must be at least"
 msgstr "Fjalëkalimi juaj i ri duhet të jetë së paku"
 
-#: UserPasswordChange.php:125
+#: 
 msgid "characters"
 msgstr "karaktere"
 
-#: UserPasswordChange.php:131
-msgid "You need to actually change your password (nice try, though!)"
-msgstr "Ju duhet të vërtetë të ndryshuar fjalëkalimin tuaj (të mirë provoni, pse!)"
-
-#: UserPasswordChange.php:134
-msgid "Your new password is too similar to your old one.  Be more creative!"
-msgstr "Fjalëkalimi juaj i ri është shumë i ngjashëm me një tuaj të vjetër. Të jetë më kreative!"
-
-#: UserPasswordChange.php:163
-msgid "User Password Change"
-msgstr "Ndryshimi i përdoruesit Fjalëkalimi"
-
-#: UserPasswordChange.php:171
-msgid "Your account record indicates that you need to change your password before proceding."
-msgstr "Të dhënat tuaja të llogarisë tregon se ju duhet të ndryshoni fjalëkalimin tuaj para proceding."
-
-#: UserPasswordChange.php:183
+#: 
 msgid "Enter your current password, then your new password twice.  Passwords must be at least"
 msgstr "Shkruani fjalëkalimin tuaj të tanishme, atëherë fjalëkalimin tuaj të ri dy herë. Fjalëkalimet duhet të jetë të paktën"
 
-#: UserPasswordChange.php:183
+#: 
 msgid "characters in length."
 msgstr "karaktere në gjatësi."
 
-#: UserPasswordChange.php:185
-msgid "Enter a new password for this user."
-msgstr "Futni një fjalëkalim të ri për këtë përdorues."
-
-#: UserPasswordChange.php:196
+#: 
 msgid "Old Password"
 msgstr "Vjetër Fjalëkalimi"
 
-#: ChurchCRM/Emails/users/NewAccountEmail.php:30
-#: ChurchCRM/Emails/users/PasswordChangeEmail.php:29
-#: ChurchCRM/Emails/users/ResetPasswordEmail.php:29 UserPasswordChange.php:202
+#: 
 msgid "New Password"
 msgstr "Fjalëkalimi i ri"
 
-#: UserPasswordChange.php:206
+#: 
 msgid "Confirm New Password"
 msgstr "Konfirmo Re Password"
 
-#: UserList.php:167
+#: 
 msgid "Please confirm the password reset of this user"
 msgstr "Ju lutem konfirmoni ricaktim fjalëkalimi për këtë përdorues"
 
-#: VolunteerOpportunityEditor.php:69
+#: 
 msgid "Volunteer Opportunity Delete Confirmation"
 msgstr "Volunteer Opportunity Fshije Konfirmimi"
 
-#: VolunteerOpportunityEditor.php:99
+#: 
 msgid "There are people assigned to this Volunteer Opportunity."
 msgstr "Ka njerëz të caktuar në këtë Vullnetare Opportunity."
 
-#: VolunteerOpportunityEditor.php:100
+#: 
 msgid "Volunteer Opportunity will be unassigned for the following people."
 msgstr "Volunteer Opportunity do të pacaktuara për popullin e mëposhtme."
 
-#: VolunteerOpportunityEditor.php:109
+#: 
 msgid "Yes, delete this Volunteer Opportunity"
 msgstr "Po, fshini këtë Vullnetare Opportunity"
 
-#: VolunteerOpportunityEditor.php:194
+#: 
 msgid "Volunteer Opportunity Editor"
 msgstr "Volunteer Opportunity Editor"
 
-#: VolunteerOpportunityEditor.php:283
+#: 
 msgid "No volunteer opportunities have been added yet"
 msgstr "Nuk ka mundësi vullnetare janë shtuar ende"
 
-#: VolunteerOpportunityEditor.php:332
+#: 
 msgid "NOTE: ADD, Delete, and Ordering changes are immediate.  Changes to Name or Desc fields must be saved by pressing 'Save Changes'"
 msgstr "SHËNIM: ADD, Delete, dhe Renditja ndryshimet janë të menjëhershme. Ndryshimet Emri ose Përshkrimi fusha duhet të ruhen duke shtypur 'Ruaj ndryshimet'"
 
-#: VolunteerOpportunityEditor.php:434
+#: 
 msgid "Add New Opportunity"
 msgstr "Shto mundësi e re"
 
-#: WhyCameEditor.php:87
+#: 
 msgid "Why did you come to the church?"
 msgstr "Pse keni ardhur në kishë?"
 
-#: WhyCameEditor.php:91
+#: 
 msgid "Why do you keep coming?"
 msgstr "Pse ju të mbajtur të vijnë?"
 
-#: WhyCameEditor.php:95
+#: 
 msgid "Do you have any suggestions for us?"
 msgstr "A keni ndonjë sugjerim për ne?"
 
-#: WhyCameEditor.php:99
+#: 
 msgid "How did you learn of the church?"
 msgstr "Si keni mësuar për kishën?"
 
-#: eGive.php:352
+#: 
 msgid "Re-import to selected family"
 msgstr "Ri-import për familjen e përzgjedhur"
 
-#: eGive.php:356
+#: 
 msgid "Data import results: "
 msgstr "Rezultatet e importit e të dhënave: "
 
-#: eGive.php:356
+#: 
 msgid " gifts were imported, "
 msgstr " dhurata janë importuar, "
 
-#: eGive.php:356
+#: 
 msgid " gifts unchanged, and "
 msgstr " dhurata pandryshuar, dhe "
 
-#: eGive.php:356
+#: 
 msgid " gifts not imported due to problems"
 msgstr " Dhurata nuk e importuara për shkak të problemeve"
 
-#: eGive.php:357 eGive.php:386
+#: 
 msgid "Back to Deposit Slip"
 msgstr "Mbrapsht në faturën e depozitës"
 
-#: eGive.php:385
+#: 
 msgid "Fatal error in eGive API datastream: '"
 msgstr "Gabim Fatal në Datastream eGive API: '"
 
-#: Include/CanvassUtilities.php:66
+#: 
 msgid "No families need canvassers assigned"
 msgstr "Nuk ka familje duhet canvassers caktuar"
 
-#: Include/CanvassUtilities.php:78
+#: 
 msgid "Canvassers assigned at random to %d families."
 msgstr "Canvassers caktuar në mënyrë të rastësishme në %d familjeve."
 
-#: Include/CanvassUtilities.php:112
+#: 
 msgid "Canvassers assigned at random to %d non-pledging families."
 msgstr "Canvassers caktuar në mënyrë të rastësishme në %d jo duke u zotuar për familjet."
 
-#: Include/EnvelopeFunctions.php:35
+#: 
 msgid "Assigned envelope numbers to all families with at least one member."
 msgstr "Caktuar numrat zarf për të gjitha familjet me të paktën një anëtar."
 
-#: Include/EnvelopeFunctions.php:37
+#: 
 msgid "Assigned envelope numbers to all families."
 msgstr "Caktuar numrat zarf për të gjitha familjet."
 
-#: Include/Functions.php:96
+#: 
 msgid "True / False"
 msgstr "True / False"
 
-#: Include/Functions.php:98
+#: 
 msgid "Text Field (50 char)"
 msgstr "Field Text (50 char)"
 
-#: Include/Functions.php:99
+#: 
 msgid "Text Field (100 char)"
 msgstr "Field Text (100 char)"
 
-#: Include/Functions.php:100
+#: 
 msgid "Text Field (long)"
 msgstr "Field Text (e gjatë)"
 
-#: Include/Functions.php:102
+#: 
 msgid "Season"
 msgstr "Sezon"
 
-#: Include/Functions.php:104
+#: 
 msgid "Person from Group"
 msgstr "Personi nga Grupi"
 
-#: Include/Functions.php:105
+#: 
 msgid "Money"
 msgstr "Para"
 
-#: Include/Functions.php:106
+#: 
 msgid "Phone Number"
 msgstr "Numri i telefonit"
 
-#: Include/Functions.php:107
+#: 
 msgid "Custom Drop-Down List"
 msgstr "Custom Drop-Down Lista"
 
-#: Include/Functions.php:131
+#: 
 msgid "Group successfully added to the Cart."
 msgstr "Grupi shtua me sukses në qerre."
 
-#: Include/Functions.php:137
+#: 
 msgid "Group successfully removed from the Cart."
 msgstr "Grupi larguar me sukses nga Cart."
 
-#: Include/Functions.php:156
+#: 
 msgid "Selected record successfully removed from the Cart."
 msgstr "Të dhënat e zgjedhur është larguar me sukses nga Cart."
 
-#: api/routes/cart.php:56
+#: 
 #, fuzzy
 msgid "Your cart has been successfully emptied"
 msgstr "Shporta juaj ka qenë i zbrazur me sukses"
 
-#: Include/Functions.php:174
+#: 
 msgid "item(s) added to the Cart."
 msgstr "pika (s) shtuar në karrocë."
 
-#: Include/Functions.php:199
+#: 
 msgid "Select Fiscal Year"
 msgstr "Zgjidhni Viti fiskal"
 
-#: Include/Functions.php:428
+#: 
 msgid "pm"
 msgstr "pm"
 
-#: Include/Functions.php:433
+#: 
 msgid "am"
 msgstr "am"
 
-#: Include/Functions.php:754
+#: 
 msgid "Invalid Editor ID!"
 msgstr "ID e pavlefshme Editor!"
 
-#: Include/Functions.php:809
+#: 
 msgid "Select Season"
 msgstr "Zgjidhni Sezoni"
 
-#: Include/Functions.php:814
+#: 
 msgid "Winter"
 msgstr "Dimër"
 
-#: Include/Functions.php:819
+#: 
 msgid "Spring"
 msgstr "Pranverë"
 
-#: Include/Functions.php:824
+#: 
 msgid "Summer"
 msgstr "Verë"
 
-#: Include/Functions.php:829
+#: 
 msgid "Fall"
 msgstr "Bie"
 
-#: Include/Functions.php:926
+#: 
 msgid "Error: Invalid Editor ID!"
 msgstr "Error: Invalid Editor ID!"
 
-#: FundRaiserEditor.php:52 Include/Functions.php:1123 PledgeEditor.php:318
+#: 
 msgid "Not a valid date"
 msgstr "Nuk është një datë e vlefshme"
 
-#: Include/Functions.php:1135
+#: 
 msgid "Invalid Year"
 msgstr "Viti i pavlefshëm"
 
-#: Include/Functions.php:1138
+#: 
 msgid "Out of range: Allowable values are 1901 to 2155"
 msgstr "Nga varg: Vlerat e lejuara janë 1901-2155"
 
-#: Include/Functions.php:1151 Include/Functions.php:1167
+#: 
 msgid "Invalid Number"
 msgstr "Numri i pavlefshëm"
 
-#: Include/Functions.php:1154
+#: 
 msgid "Number too large. Must be between -2147483648 and 2147483647"
 msgstr "Numri shumë i madh. Duhet të jetë në mes dhe -2147483648 2147483647"
 
-#: Include/Functions.php:1170
+#: 
 msgid "Money amount too large. Maximum is $999999999.99"
 msgstr "Shuma Paratë shumë e madhe. Maksimale është $ 999.999.999,99"
 
-#: Include/Functions.php:1320
+#: 
 msgid " Bold Italic"
 msgstr " Bold Italic"
 
-#: Include/Functions.php:1323
+#: 
 msgid " Italic"
 msgstr " Kursiv"
 
-#: Include/Functions.php:1325
+#: 
 msgid " Bold"
 msgstr " Guximtar"
 
-#: Include/LabelFunctions.php:97
+#: 
 msgid "Label Grouping"
 msgstr "Label Grupimi"
 
-#: Include/LabelFunctions.php:105
+#: 
 msgid "All Individuals"
 msgstr "Të gjitha Individët"
 
-#: Include/LabelFunctions.php:112
+#: 
 msgid "Grouped by Family"
 msgstr "Grupuar sipas Family"
 
-#: Include/LabelFunctions.php:117
+#: 
 msgid "To the parents of"
 msgstr "Për prindërit e"
 
-#: Include/LabelFunctions.php:133
+#: 
 msgid "Start Row"
 msgstr "Filloni Rresht"
 
-#: Include/LabelFunctions.php:140
+#: 
 msgid "Start Column"
 msgstr "Filloni Column"
 
-#: Include/LabelFunctions.php:152
+#: 
 msgid "Ignore Incomplete<br>Addresses"
 msgstr "Ignore <br> Adresat jo të plotë"
 
-#: Include/LabelFunctions.php:164
+#: 
 msgid "File Type"
 msgstr "Lloji i dokumentit"
 
-#: Reports/AdvancedDeposit.php:386 Reports/AdvancedDeposit.php:404
-#: Reports/AdvancedDeposit.php:493 Reports/AdvancedDeposit.php:507
-#: Reports/AdvancedDeposit.php:548 Reports/AdvancedDeposit.php:566
-#: Reports/AdvancedDeposit.php:655 Reports/AdvancedDeposit.php:669
-#: Reports/AdvancedDeposit.php:710 Reports/AdvancedDeposit.php:728
-#: Reports/AdvancedDeposit.php:817 Reports/AdvancedDeposit.php:831
-#: Reports/AdvancedDeposit.php:848
+#: 
 msgid "items"
 msgstr "artikuj"
 
-#: Reports/CanvassReports.php:204
+#: 
 msgid "Did not pledge"
 msgstr "A nuk peng"
 
-#: Reports/CanvassReports.php:208
+#: 
 msgid "Top pledger"
 msgstr "Top pengdhënësi"
 
-#: Reports/CanvassReports.php:210
+#: 
 msgid "Pledged"
 msgstr "U zotua"
 
-#: Reports/CanvassReports.php:238 Reports/ConfirmReport.php:181
-#: Reports/ConfirmReport.php:200 Reports/ConfirmReportEmail.php:185
-#: Reports/ConfirmReportEmail.php:203
+#: 
 msgid "M/F"
 msgstr "M / F"
 
-#: Reports/ClassAttendance.php:151 Reports/ClassAttendance.php:152
-#: Reports/ClassList.php:134 Reports/ClassList.php:135
+#: 
 msgid "Liaison"
 msgstr "Ndërlidhje"
 
-#: Reports/ConfirmReport.php:130 Reports/ConfirmReportEmail.php:131
+#: 
 msgid "City, State, Zip"
 msgstr "Qyteti, Shteti, Zip"
 
-#: FamilyEditor.php:781 FamilyView.php:234 Reports/ConfirmReport.php:140
-#: Reports/ConfirmReportEmail.php:141
-#: external/templates/verify/verify-family-info.php:39
-#: v2/templates/people/family-view.php:133
+#: 
 msgid "Send Newsletter"
 msgstr "Dërgo lajme me email"
 
-#: Reports/ConfirmReport.php:180 Reports/ConfirmReport.php:199
-#: Reports/ConfirmReportEmail.php:184 Reports/ConfirmReportEmail.php:202
+#: 
 msgid "Member Name"
 msgstr "Anëtar Emri"
 
-#: Reports/ConfirmReport.php:182 Reports/ConfirmReport.php:201
-#: Reports/ConfirmReportEmail.php:186 Reports/ConfirmReportEmail.php:204
+#: 
 msgid "Adult/Child"
 msgstr "Adult / Fëmija"
 
-#: GroupReports.php:126 Reports/CanvassReports.php:242
-#: Reports/ConfirmReportEmail.php:189 Reports/ConfirmReportEmail.php:207
-#: v2/templates/people/family-list.php:34
+#: 
 #, fuzzy
 msgid "Cell Phone"
 msgstr "Celular"
 
-#: Reports/ConfirmReport.php:187 Reports/ConfirmReport.php:206
-#: Reports/ConfirmReportEmail.php:190 Reports/ConfirmReportEmail.php:208
+#: 
 msgid "Member/Friend"
 msgstr "Anëtar / Shoqëri"
 
-#: Reports/DirectoryReport.php:179
+#: 
 msgid "This option requires at least version 3.22 of MySQL!  Hit browser back button to return to ChurchCRM."
 msgstr "Ky opsion kërkon të paktën versionin 3.22 të MySQL! Shfletuesi goditi përsëri button për t'u kthyer në ChurchCRM."
 
-#: ChurchCRM/Reports/PDF_Directory.php:312
-#: ChurchCRM/Reports/PDF_Directory.php:387
-#: ChurchCRM/Reports/PDF_Directory.php:444 Reports/DirectoryReport.php:289
-#: Reports/GroupReport.php:124
-#: external/templates/registration/family-register-members.php:96
+#: 
 msgid "Work"
 msgstr "Punë"
 
-#: ChurchCRM/Reports/PDF_Directory.php:315
-#: ChurchCRM/Reports/PDF_Directory.php:391
-#: ChurchCRM/Reports/PDF_Directory.php:448 Reports/DirectoryReport.php:293
-#: Reports/GroupReport.php:129
+#: 
 msgid "Cell"
 msgstr "Qelizë"
 
-#: Reports/FRBidSheets.php:75 Reports/FRCatalog.php:98
-#: Reports/FRCertificates.php:45
+#: 
 msgid "Estimated value "
 msgstr "Vlera e parashikuar "
 
-#: Reports/FRBidSheets.php:78 Reports/FRCatalog.php:101
-#: Reports/FRCertificates.php:48
+#: 
 msgid "Donated by "
 msgstr "Dhuruar nga "
 
-#: Reports/FRBidSheets.php:89
+#: 
 msgid "Paddle"
 msgstr "Vozis"
 
-#: Reports/FRBidSheets.php:90
+#: 
 msgid "Bid"
 msgstr "Ofertës"
 
-#: Reports/FRCatalog.php:95
+#: 
 msgid "Minimum bid "
 msgstr "Oferta minimale "
 
-#: Reports/FamilyPledgeSummary.php:143 Reports/ReminderReport.php:154
+#: 
 msgid "All Funds"
 msgstr "Të gjitha Fondet"
 
-#: Reports/FamilyPledgeSummary.php:144 Reports/ReminderReport.php:155
+#: 
 msgid " for all funds"
 msgstr " për të gjitha fondet e"
 
-#: Reports/FamilyPledgeSummary.php:146 Reports/ReminderReport.php:157
+#: 
 msgid " for fund "
 msgstr " për fondin "
 
-#: Reports/FamilyPledgeSummary.php:149 Reports/ReminderReport.php:160
+#: 
 msgid "for funds "
 msgstr "për fonde "
 
-#: Reports/FundRaiserStatement.php:92
+#: 
 msgid "Donated Items:"
 msgstr "Items dhuruara:"
 
-#: Reports/FundRaiserStatement.php:143
+#: 
 msgid "Purchased Items:"
 msgstr "Items blerë:"
 
-#: Reports/FundRaiserStatement.php:215
+#: 
 msgid "Total of all purchases: $"
 msgstr "Totali i të gjitha blerjeve: $"
 
-#: Reports/FundRaiserStatement.php:222
+#: 
 msgid "Total purchases: $"
 msgstr "Totali blerjet: $"
 
-#: Reports/FundRaiserStatement.php:222
+#: 
 msgid "Amount paid: ________________"
 msgstr "Shuma e paguar: ________________"
 
-#: Reports/FundRaiserStatement.php:224
+#: 
 msgid "Paid by (  ) Cash    (  ) Check    (  ) Credit card __ __ __ __    __ __ __ __    __ __ __ __    __ __ __ __  Exp __ / __"
 msgstr "Paguar nga () Cash () Kontrollo () kartë krediti ________________________________ Exp __ / __"
 
-#: Reports/FundRaiserStatement.php:226
+#: 
 msgid "                                        Signature ________________________________________________________________"
 msgstr "                                        Nënshkrimi ________________________________________________________________"
 
-#: ChurchCRM/Reports/PDF_Attendance.php:179
+#: 
 msgid "Totals"
 msgstr "Gjithsej"
 
-#: ChurchCRM/Reports/PDF_CertificatesReport.php:30
+#: 
 msgid "Certificate of Ownership"
 msgstr "Certifikata e Pronësisë"
 
-#: ChurchCRM/Reports/PDF_Directory.php:38
-#: ChurchCRM/Reports/PDF_Directory.php:74
+#: 
 msgid "Directory"
 msgstr "Drejtori"
 
-#: ChurchCRM/Reports/PDF_Directory.php:57
+#: 
 msgid "Page"
 msgstr "Faqe"
 
-#: ChurchCRM/Reports/PDF_Directory.php:321
+#: 
 msgid "Wedding"
 msgstr "Martesë"
 
-#: ChurchCRM/Reports/PDF_Directory.php:350
+#: 
 msgid "and"
 msgstr "dhe"
 
-#: ChurchCRM/Reports/PDF_GroupDirectory.php:29
+#: 
 msgid "Group Directory"
 msgstr "Drejtoria Group"
 
-#: Reports/TaxReport.php:241
+#: 
 msgid "Please detach this slip and mail with your next gift."
 msgstr "Ju lutem shkëput këtë gabim dhe mail me dhuratën tuaj të ardhshëm."
 
-#: Reports/TaxReport.php:243
+#: 
 msgid "Please mail you next gift to "
 msgstr "Ju lutem mail ju dhuratë tjetër për "
 
-#: Reports/TaxReport.php:282
+#: 
 msgid "Gift Amount:"
 msgstr "Shuma Dhuratë:"
 
-#: Reports/TaxReport.php:285
+#: 
 msgid "Gift Designation:"
 msgstr "Përcaktimi Dhuratë:"
 
-#: sundayschool/SundaySchoolReports.php:30
+#: 
 msgid "Sunday School Reports"
 msgstr "Raportet e diela Shkolla"
 
-#: sundayschool/SundaySchoolDashboard.php:55
+#: 
 msgid "Generate class lists and attendance sheets"
 msgstr "Generate listat klasës dhe fletët e frekuentimit"
 
-#: sundayschool/SundaySchoolReports.php:123
+#: 
 msgid "At least one group must be selected to make class lists or attendance sheets."
 msgstr "Të paktën një grup duhet të zgjidhen për të bërë listat e klasit ose fletë frekuentimit."
 
-#: sundayschool/SundaySchoolReports.php:217
+#: 
 msgid "Last Sunday"
 msgstr "Të dielën e kaluar"
 
-#: sundayschool/SundaySchoolReports.php:222
-#: sundayschool/SundaySchoolReports.php:227
-#: sundayschool/SundaySchoolReports.php:232
-#: sundayschool/SundaySchoolReports.php:237
-#: sundayschool/SundaySchoolReports.php:242
-#: sundayschool/SundaySchoolReports.php:247
-#: sundayschool/SundaySchoolReports.php:252
-#: sundayschool/SundaySchoolReports.php:257
+#: 
 msgid "No Sunday School"
 msgstr "No Shkolla e së Dielës"
 
-#: sundayschool/SundaySchoolReports.php:266
+#: 
 msgid "Extra Teachers"
 msgstr "Mësuesit Extra"
 
-#: sundayschool/SundaySchoolReports.php:275
+#: 
 msgid "Create Class List"
 msgstr "Krijo Lista Class"
 
-#: sundayschool/SundaySchoolReports.php:278
+#: 
 msgid "Create Attendance Sheet"
 msgstr "Krijo Pjesëmarrja Sheet"
 
@@ -3858,45 +3266,40 @@ msgstr "Krijo Pjesëmarrja Sheet"
 msgid "Members"
 msgstr "Anëtarët"
 
-#: ChurchCRM/Config/Menu/Menu.php:63
+#: 
 msgid "Add New Person"
 msgstr "Shto person i ri"
 
-#: ChurchCRM/Config/Menu/Menu.php:64
-msgid "View All Persons"
+#: 
+#, fuzzy
+msgid "View All People"
 msgstr "Shiko të gjitha Persona"
 
-#: ChurchCRM/Config/Menu/Menu.php:65
+#: 
 msgid "Add New Family"
 msgstr "Shto Family re"
 
-#: ChurchCRM/Config/Menu/Menu.php:129 ChurchCRM/dto/SystemConfig.php:258
+#: 
 msgid "Events"
 msgstr "Ngjarje"
 
-#: ChurchCRM/Config/Menu/Menu.php:157 FundRaiserEditor.php:31
+#: 
 msgid "Fundraiser"
 msgstr "Fondesh"
 
-#: FindDepositSlip.php:45
+#: 
 msgid "Deposit Type"
 msgstr "Lloji Depozita"
 
-#: ChurchCRM/dto/SystemConfig.php:250
+#: 
 msgid "Report Settings"
 msgstr "Raporti Cilësimet"
 
-#: PersonView.php:254
+#: 
 msgid "Family:"
 msgstr "Familja:"
 
-#: Reports/AdvancedDeposit.php:388 Reports/AdvancedDeposit.php:406
-#: Reports/AdvancedDeposit.php:495 Reports/AdvancedDeposit.php:509
-#: Reports/AdvancedDeposit.php:550 Reports/AdvancedDeposit.php:568
-#: Reports/AdvancedDeposit.php:657 Reports/AdvancedDeposit.php:671
-#: Reports/AdvancedDeposit.php:712 Reports/AdvancedDeposit.php:730
-#: Reports/AdvancedDeposit.php:819 Reports/AdvancedDeposit.php:833
-#: Reports/AdvancedDeposit.php:850
+#: 
 msgid "item"
 msgstr "artikull"
 

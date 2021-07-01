@@ -16,6 +16,7 @@ require 'Include/Functions.php';
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\Authentication\AuthenticationManager;
 
 //Set the page title
 $sPageTitle = gettext('Query View');
@@ -25,7 +26,7 @@ $iQueryID = InputUtils::LegacyFilterInput($_GET['QueryID'], 'int');
 
 $aFinanceQueries = explode(',', SystemConfig::getValue('aFinanceQueries'));
 
-if (!$_SESSION['user']->isFinanceEnabled() && in_array($iQueryID, $aFinanceQueries)) {
+if (!AuthenticationManager::GetCurrentUser()->isFinanceEnabled() && in_array($iQueryID, $aFinanceQueries)) {
     RedirectUtils::Redirect('Menu.php');
     exit;
 }
@@ -82,11 +83,12 @@ function ValidateInput()
     if (mysqli_num_rows($rsParameters)) {
         mysqli_data_seek($rsParameters, 0);
     }
+
     while ($aRow = mysqli_fetch_array($rsParameters)) {
         extract($aRow);
 
         //Is the value required?
-        if ($qrp_Required && strlen(trim($_POST[$qrp_Alias])) < 1) {
+        if ($qrp_Required && empty($_POST[$qrp_Alias])) {
             $bError = true;
             $aErrorText[$qrp_Alias] = gettext('This value is required.');
         }
@@ -161,7 +163,8 @@ function ProcessSQL()
         //echo "--" . $qry_SQL . "<br>--" . "~" . $qrp_Alias . "~" . "<br>--" . $vPOST[$qrp_Alias] . "<p>";
 
         //Replace the placeholder with the parameter value
-        $qry_SQL = str_replace('~'.$qrp_Alias.'~', $vPOST[$qrp_Alias], $qry_SQL);
+        $qrp_Value = is_array($vPOST[$qrp_Alias]) ? implode(',', $vPOST[$qrp_Alias]) : $vPOST[$qrp_Alias];
+        $qry_SQL = str_replace('~'.$qrp_Alias.'~', $qrp_Value, $qry_SQL);
     }
 }
 
@@ -206,16 +209,18 @@ function DoQuery()
                 <?php
                     //Loop through the fields and write the header row
                     for ($iCount = 0; $iCount < mysqli_num_fields($rsQueryResults); $iCount++) {
-                        //If this field is called "AddToCart", don't display this field...
+                        //If this field is called "AddToCart", provision a headerless column to hold the cart action buttons
                         $fieldInfo = mysqli_fetch_field_direct($rsQueryResults, $iCount);
                         if ($fieldInfo->name != 'AddToCart') {
                             echo '<th>'.$fieldInfo->name.'</th>';
+                        } else {
+                            echo '<th></th>';
                         }
                     } ?>
             </thead>
             <tbody>
 <?php
-    $aHiddenFormField = [];
+    $aAddToCartIDs = [];
 
     while ($aRow = mysqli_fetch_array($rsQueryResults)) {
         //Alternate the background color of the row
@@ -225,10 +230,21 @@ function DoQuery()
 
         //Loop through the fields and write each one
         for ($iCount = 0; $iCount < mysqli_num_fields($rsQueryResults); $iCount++) {
-            //If this field is called "AddToCart", add this to the hidden form field...
+            // If this field is called "AddToCart", add a cart button to the form
             $fieldInfo = mysqli_fetch_field_direct($rsQueryResults, $iCount);
             if ($fieldInfo->name == 'AddToCart') {
-                $aHiddenFormField[] = $aRow[$iCount];
+                ?>
+                <td>
+                    <a class="AddToPeopleCart"  data-cartpersonid="<?= $aRow[$iCount] ?>">
+                        <span class="fa-stack">
+                        <i class="fa fa-square fa-stack-2x"></i>
+                        <i class="fa fa-cart-plus fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </a>
+                </td>
+                <?php
+
+                $aAddToCartIDs[] = $aRow[$iCount];
             }
             //...otherwise just render the field
             else {
@@ -246,16 +262,28 @@ function DoQuery()
 
     <div class="box-footer">
         <p>
-        <?php if (count($aHiddenFormField)): //TODO Don't post to CartView'?>
-            <form method="post" action="CartView.php">
+        <?php if (count($aAddToCartIDs)) { ?>
+            
             <div class="col-sm-offset-1">
-                <input type="hidden" value="<?= implode(',', $aHiddenFormField) ?>" name="BulkAddToCart">
-                <input type="submit" class="btn btn-primary btn-sm" name="AddToCartSubmit" value="<?= gettext('Add To Cart') ?>">
-                <input type="submit" class="btn btn-warning btn-sm" name="AndToCartSubmit" value="<?= gettext('Intersect With Cart') ?>">
-                <input type="submit" class="btn btn-danger btn-sm" name="NotToCartSubmit" value="<?= gettext('Remove From Cart') ?>">
+                <input type="hidden" value="<?= implode(',', $aAddToCartIDs) ?>" name="BulkAddToCart">
+                <button type="button" id="addResultsToCart" class="btn btn-success" > <?= gettext('Add Results to Cart') ?></button>
+                <!-- TODO: #5049 create cart intersect API <input type="submit" class="btn btn-warning btn-sm" name="AndToCartSubmit" value="<?= gettext('Intersect With Cart') ?>"> -->
+                <button type="button" id="removeResultsFromCart" class="btn btn-danger" > <?= gettext('Remove Results from Cart') ?></button>
             </div>
-            </form>
-        <?php endif; ?>
+            <script>
+                $("#addResultsToCart").click(function () {
+                    var selectedPersons = <?= json_encode($aAddToCartIDs) ?>;
+                    window.CRM.cart.addPerson(selectedPersons);
+                });
+
+                $("#removeResultsFromCart").click(function(){
+                    var selectedPersons = <?= json_encode($aAddToCartIDs) ?>;
+                    window.CRM.cart.removePerson(selectedPersons);
+                });
+
+            </script>
+
+        <?php } ?>
         </p>
 
         <p class="text-right">
@@ -341,6 +369,21 @@ function getQueryFormInput($queryParameters)
 
             $input .= '</select>';
             break;
+
+        case 3:
+            //Run the SQL to get the options
+            $rsParameterOptions = RunQuery($qrp_OptionSQL);
+
+            $input .= '<select name="'.$qrp_Alias.'[]" class="form-control" size="10" multiple="multiple">';
+            $input .= '<option disabled selected value> -- select an option -- </option>';
+
+            while ($ThisRow = mysqli_fetch_array($rsParameterOptions)) {
+                extract($ThisRow);
+                $input .= '<option value="'.$Value.'">'.$Display.'</option>';
+            }
+
+            $input .= '</select>';
+            break;
     }
 
     $helpBlock = '<div class="help-block">' . $helpMsg . '</div>';
@@ -387,6 +430,7 @@ if (mysqli_num_rows($rsParameters)) {
     </div>
 
 </div>
+
 <?php
 }
 

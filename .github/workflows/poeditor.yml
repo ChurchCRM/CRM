@@ -1,0 +1,61 @@
+name: POEditor Locales
+
+on:
+  schedule:
+    - cron: "0 0 * * *"
+      
+env:
+  node_version: 14
+
+jobs:
+
+  Download:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2.3.2
+      with:
+        # fetch full history so things like auto-changelog work properly
+        fetch-depth: 0
+    - name: Use Node.js ${{ env.node_version }}
+      uses: actions/setup-node@v2-beta
+      with:
+        node-version: ${{ env.node_version }}
+        # setting a registry enables the NODE_AUTH_TOKEN env variable where we can set an npm token.  REQUIRED
+        registry-url: 'https://registry.npmjs.org'
+
+    - name: get-npm-version
+      id: package-version
+      uses: martinbeentjes/npm-get-version-action@master
+
+    - name: Get current date
+      id: date
+      run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
+
+    - name: install locale tools
+      run: |
+        npm install grunt-cli --save-dev
+   #     apt-get install gettext
+
+   # - name: Gen Locales
+   #   run: npm run locale-gen
+
+   # - name: Upload & Tag Locale file
+   #   run: echo 'upload file with tag ${{ steps.package-version.outputs.current-version}}'
+
+    - name: Create BuildConfig File
+      uses: jsdaniell/create-json@1.1.2
+      with:
+        name: "BuildConfig.json"
+        json: '{"POEditor": { "id": "77079", "token": "${{ secrets.POEDITOR_TOKEN }}"}}'
+
+    - name: Download locales from POEditor
+      run: npm run locale-download
+
+    - name: Push changes to ${{ steps.package-version.outputs.current-version}} locale branch
+      uses: peter-evans/create-pull-request@v3
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        branch: 'locale/${{ steps.package-version.outputs.current-version}}'
+        delete-branch: true
+        title: "${{ steps.package-version.outputs.current-version}} POEditor Update - ${{ steps.date.outputs.date }}"
+        commit-message: 'Loacle Gen & Download on ${{ steps.date.outputs.date }}'

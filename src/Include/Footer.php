@@ -10,11 +10,12 @@
   *
  ******************************************************************************/
 
+use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\Bootstrapper;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\SystemService;
 
-$isAdmin = $_SESSION['user']->isAdmin();
-
+$isAdmin = AuthenticationManager::GetCurrentUser()->isAdmin();
 ?>
 </section><!-- /.content -->
 
@@ -26,6 +27,7 @@ $isAdmin = $_SESSION['user']->isAdmin();
     </div>
     <strong><?= gettext('Copyright') ?> &copy; <?= SystemService::getCopyrightDate() ?> <a href="http://www.churchcrm.io" target="_blank"><b>Church</b>CRM</a>.</strong> <?= gettext('All rights reserved') ?>.
     | <a href="https://twitter.com/church_crm" target="_blank"><i class="fa fa-twitter"></i> <?= gettext("Follow us on Twitter") ?></a>
+    | <span class="flag-icon flag-icon-squared"></span>
 </footer>
 
 <!-- The Right Sidebar -->
@@ -43,7 +45,7 @@ $isAdmin = $_SESSION['user']->isAdmin();
     } ?>
                     <!-- Task item -->
                     <li>
-                        <a href="<?= $task['link'] ?>">
+                        <a target="blank" href="<?= $task['link'] ?>">
                             <i class="menu-icon fa fa-fw <?= $taskIcon ?>"></i>
                             <div class="menu-info">
                                 <h4 class="control-sidebar-subheading"
@@ -72,30 +74,23 @@ $isAdmin = $_SESSION['user']->isAdmin();
 <!-- Bootstrap 3.3.5 -->
 
 
-<script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/bootstrap/js/bootstrap.min.js"></script>
-<!-- SlimScroll -->
-<script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/external/bootstrap/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
-<script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/dist/js/app.min.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/external/adminlte/adminlte.min.js"></script>
 
 <!-- InputMask -->
-<script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/input-mask/jquery.inputmask.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/input-mask/jquery.inputmask.extensions.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/external/inputmask/jquery.inputmask.min.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/external/inputmask/inputmask.binding.js"></script>
 
-<script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/datepicker/bootstrap-datepicker.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/daterangepicker/daterangepicker.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/timepicker/bootstrap-timepicker.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/external/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/external/bootstrap-daterangepicker/daterangepicker.js"></script>
 
-<script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/datatables/dataTables.bootstrap.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js" ></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/datatables/extensions/TableTools/js/dataTables.tableTools.min.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/datatables/extensions/Select/dataTables.select.min.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/external/datatables/pdfmake.min.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/external/datatables/vfs_fonts.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/external/datatables/datatables.min.js"></script>
 
-<script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/chartjs/Chart.min.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/pace/pace.min.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/select2/select2.full.min.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/external/chartjs/Chart.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/external/select2/select2.full.min.js"></script>
 
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/bootstrap-notify/bootstrap-notify.min.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/fullcalendar/fullcalendar.min.js"></script>
@@ -103,7 +98,7 @@ $isAdmin = $_SESSION['user']->isAdmin();
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/fastclick/fastclick.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/bootstrap-toggle/bootstrap-toggle.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/i18next/i18next.min.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/locale/js/<?= $localeInfo->getLocale() ?>.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/locale/js/<?= Bootstrapper::GetCurrentLocale()->getLocale() ?>.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/bootstrap-validator/validator.min.js"></script>
 
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/IssueReporter.js"></script>

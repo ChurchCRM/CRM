@@ -14,6 +14,7 @@ require 'Include/Functions.php';
 
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\Authentication\AuthenticationManager;
 
 //Get the type to display
 $sType = InputUtils::LegacyFilterInput($_GET['Type'], 'char', 1);
@@ -49,7 +50,7 @@ require 'Include/Header.php'; ?>
 
 <div class="box box-body">
 
-<?php if ($_SESSION['user']->isMenuOptionsEnabled()) {
+<?php if (AuthenticationManager::GetCurrentUser()->isMenuOptionsEnabled()) {
     //Display the new property link
     echo "<p align=\"center\"><a class='btn btn-primary' href=\"PropertyEditor.php?Type=".$sType.'">'.gettext('Add a New').' '.$sTypeName.' '.gettext('Property').'</a></p>';
 }
@@ -60,7 +61,7 @@ echo '<tr>';
 echo '<th valign="top">'.gettext('Name').'</th>';
 echo '<th valign="top">'.gettext('A').' '.$sTypeName.' '.gettext('with this Property...').'</b></th>';
 echo '<th valign="top">'.gettext('Prompt').'</th>';
-if ($_SESSION['user']->isMenuOptionsEnabled()) {
+if (AuthenticationManager::GetCurrentUser()->isMenuOptionsEnabled()) {
     echo '<td valign="top"><b>'.gettext('Edit').'</b></td>';
     echo '<td valign="top"><b>'.gettext('Delete').'</b></td>';
 }
@@ -101,7 +102,7 @@ while ($aRow = mysqli_fetch_array($rsProperties)) {
     }
     echo '&nbsp;</td>';
     echo '<td valign="top">'.$pro_Prompt.'&nbsp;</td>';
-    if ($_SESSION['user']->isMenuOptionsEnabled()) {
+    if (AuthenticationManager::GetCurrentUser()->isMenuOptionsEnabled()) {
         echo "<td valign=\"top\"><a class='btn btn-primary' href=\"PropertyEditor.php?PropertyID=".$pro_ID.'&Type='.$sType.'">'.gettext('Edit').'</a></td>';
         echo "<td valign=\"top\"><a class='btn btn-danger' href=\"PropertyDelete.php?PropertyID=".$pro_ID.'&Type='.$sType.'">'.gettext('Delete').'</a></td>';
     }

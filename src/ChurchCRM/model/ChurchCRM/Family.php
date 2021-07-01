@@ -2,15 +2,17 @@
 
 namespace ChurchCRM;
 
+use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\Base\Family as BaseFamily;
+use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\Base\Family as BaseFamily;
-use Propel\Runtime\Connection\ConnectionInterface;
-use ChurchCRM\dto\Photo;
-use ChurchCRM\Utils\GeoUtils;
-use DateTime;
+use ChurchCRM\Emails\FamilyVerificationEmail;
 use ChurchCRM\Emails\NewPersonOrFamilyEmail;
+use ChurchCRM\Utils\GeoUtils;
 use ChurchCRM\Utils\LoggerUtils;
+use DateTime;
+use Propel\Runtime\Connection\ConnectionInterface;
 
 /**
  * Skeleton subclass for representing a row from the 'family_fam' table.
@@ -56,7 +58,7 @@ class Family extends BaseFamily implements iPhoto
 
     public function getViewURI()
     {
-        return SystemURLs::getRootPath().'/FamilyView.php?FamilyID='.$this->getId();
+        return SystemURLs::getRootPath().'/v2/family/'.$this->getId();
     }
 
     public function getWeddingDay()
@@ -88,7 +90,7 @@ class Family extends BaseFamily implements iPhoto
         {
           $NotificationEmail = new NewPersonOrFamilyEmail($this);
           if (!$NotificationEmail->send()) {
-              LoggerUtils::getAppLogger()->warn(gettext("New Family Notification Email Error"). " :". $NotificationEmail->getError());
+              LoggerUtils::getAppLogger()->warning(gettext("New Family Notification Email Error"). " :". $NotificationEmail->getError());
           }
         }
     }
@@ -148,7 +150,11 @@ class Family extends BaseFamily implements iPhoto
     return $foundPeople;
   }
 
-  public function getEmails() {
+    /**
+     * @return array
+     * @throws \Propel\Runtime\Exception\PropelException
+     */
+    public function getEmails() {
     $emails = array();
     if (!(empty($this->getEmail()))) {
         array_push($emails, $this->getEmail());
@@ -186,12 +192,16 @@ class Family extends BaseFamily implements iPhoto
                 break;
             case "verify":
                 $note->setText(gettext('Family Data Verified'));
-                $note->setEnteredBy($_SESSION['user']->getId());
+                $note->setEnteredBy(AuthenticationManager::GetCurrentUser()->getId());
                 break;
             case "verify-link":
               $note->setText(gettext('Verification email sent'));
-              $note->setEnteredBy($_SESSION['user']->getId());
+              $note->setEnteredBy(AuthenticationManager::GetCurrentUser()->getId());
               break;
+            case "verify-URL":
+                $note->setText(gettext('Verification URL created'));
+                $note->setEnteredBy(AuthenticationManager::GetCurrentUser()->getId());
+                break;
         }
 
         $note->save();
@@ -236,6 +246,9 @@ class Family extends BaseFamily implements iPhoto
         return $this->getName() . ' Family';
     }
 
+    /***
+     * @return ChurchCRM\dto\Photo
+     */
     public function getPhoto()
     {
       if (!$this->photo)
@@ -247,13 +260,13 @@ class Family extends BaseFamily implements iPhoto
 
     public function deletePhoto()
     {
-      if ($_SESSION['user']->isDeleteRecordsEnabled() ) {
+      if (AuthenticationManager::GetCurrentUser()->isDeleteRecordsEnabled() ) {
         if ( $this->getPhoto()->delete() )
         {
           $note = new Note();
           $note->setText(gettext("Profile Image Deleted"));
           $note->setType("photo");
-          $note->setEntered($_SESSION['user']->getId());
+          $note->setEntered(AuthenticationManager::GetCurrentUser()->getId());
           $note->setPerId($this->getId());
           $note->save();
           return true;
@@ -262,11 +275,11 @@ class Family extends BaseFamily implements iPhoto
       return false;
     }
     public function setImageFromBase64($base64) {
-      if ($_SESSION['user']->isEditRecordsEnabled() ) {
+      if (AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled() ) {
         $note = new Note();
         $note->setText(gettext("Profile Image uploaded"));
         $note->setType("photo");
-        $note->setEntered($_SESSION['user']->getId());
+        $note->setEntered(AuthenticationManager::GetCurrentUser()->getId());
         $this->getPhoto()->setImageFromBase64($base64);
         $note->setFamId($this->getId());
         $note->save();
@@ -324,7 +337,7 @@ class Family extends BaseFamily implements iPhoto
         }
     }
 
-    public function toArray()
+    public function toArray($keyType = TableMap::TYPE_PHPNAME, $includeLazyLoadColumns = true, $alreadyDumpedObjects = Array(), $includeForeignObjects = false)
     {
       $array = parent::toArray();
       $array['Address']=$this->getAddress();
@@ -337,7 +350,7 @@ class Family extends BaseFamily implements iPhoto
       $searchArray=[
           "Id" => $this->getId(),
           "displayName" => $this->getFamilyString(SystemConfig::getBooleanValue("bSearchIncludeFamilyHOH")),
-          "uri" => SystemURLs::getRootPath() . '/FamilyView.php?FamilyID=' . $this->getId()
+          "uri" => SystemURLs::getRootPath() . '/v2/family/' . $this->getId()
       ];
       return $searchArray;
     }
@@ -352,5 +365,33 @@ class Family extends BaseFamily implements iPhoto
             ->useRecordPropertyQuery()
             ->filterByRecordId($this->getId())
             ->find();
+    }
+
+    public function sendVerifyEmail() {
+        $familyEmails = $this->getEmails();
+
+        if (empty($familyEmails)) {
+            throw new \Exception(gettext("Family has no emails to use"));
+        }
+
+        // delete old tokens
+        TokenQuery::create()->filterByType("verifyFamily")->filterByReferenceId($this->getId())->delete();
+
+        // create a new token an send to all emails
+        $token = new Token();
+        $token->build("verifyFamily", $this->getId());
+        $token->save();
+        $email = new FamilyVerificationEmail($familyEmails, $this->getName(), $token);
+        if (!$email->send()) {
+            LoggerUtils::getAppLogger()->error($email->getError());
+            throw new \Exception($email->getError());
+        }
+        $this->createTimeLineNote("verify-link");
+        return true;
+    }
+
+    public function isSendNewsletter()
+    {
+        return $this->getSendNewsletter() == 'TRUE';
     }
 }

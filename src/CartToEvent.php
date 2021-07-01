@@ -19,9 +19,10 @@ require 'Include/Functions.php';
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\dto\Cart;
+use ChurchCRM\Authentication\AuthenticationManager;
 
 // Security: User must have Manage Groups & Roles permission
-if (!$_SESSION['user']->isManageGroupsEnabled()) {
+if (!AuthenticationManager::GetCurrentUser()->isManageGroupsEnabled()) {
     RedirectUtils::Redirect('Menu.php');
     exit;
 }

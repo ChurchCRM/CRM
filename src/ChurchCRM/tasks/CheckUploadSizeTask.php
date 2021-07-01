@@ -3,6 +3,7 @@
 
 namespace ChurchCRM\Tasks;
 
+use ChurchCRM\dto\SystemURLs;
 
 class CheckUploadSizeTask
 {
@@ -27,7 +28,7 @@ class CheckUploadSizeTask
 
     public function getLink()
     {
-        return 'https://mediatemple.net/community/products/dv/204404784/how-do-i-increase-the-php-upload-limits';
+        return SystemURLs::getSupportURL(array_pop(explode('\\', __CLASS__)));
     }
 
     public function getTitle()
@@ -44,6 +45,7 @@ class CheckUploadSizeTask
     {
         $val = trim($val);
         $last = strtolower($val[strlen($val) - 1]);
+        $val = substr($val, 0, -1);
         switch ($last) {
             case 'g':
                 $val *= 1073741824;

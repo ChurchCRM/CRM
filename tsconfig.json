@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["es2015", "es2017", "dom"],
+    "sourceMap": true,
+    "jsx": "react"
+  },
+  "exclude": [
+    "node_modules",
+    "src/vendor",
+    "tests/vendor"
+  ]
+}

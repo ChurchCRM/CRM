@@ -20,6 +20,8 @@ use ChurchCRM\PersonQuery;
 use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\Utils\LoggerUtils;
+use ChurchCRM\Authentication\AuthenticationManager;
 
 //Set the page title
 $sPageTitle = gettext('Person Editor');
@@ -49,15 +51,15 @@ if ($iPersonID > 0) {
     }
 
     if (!(
-        $_SESSION['user']->isEditRecordsEnabled() ||
-        ($_SESSION['user']->isEditSelfEnabled() && $iPersonID == $_SESSION['user']->getId()) ||
-        ($_SESSION['user']->isEditSelfEnabled() && $per_fam_ID > 0 && $per_fam_ID == $_SESSION['user']->getPerson()->getFamId())
+        AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled() ||
+        (AuthenticationManager::GetCurrentUser()->isEditSelfEnabled() && $iPersonID == AuthenticationManager::GetCurrentUser()->getId()) ||
+        (AuthenticationManager::GetCurrentUser()->isEditSelfEnabled() && $per_fam_ID > 0 && $per_fam_ID == AuthenticationManager::GetCurrentUser()->getPerson()->getFamId())
     )
     ) {
         RedirectUtils::Redirect('Menu.php');
         exit;
     }
-} elseif (!$_SESSION['user']->isAddRecordsEnabled()) {
+} elseif (!AuthenticationManager::GetCurrentUser()->isAddRecordsEnabled()) {
     RedirectUtils::Redirect('Menu.php');
     exit;
 }
@@ -93,6 +95,9 @@ $fam_Country = '';
 $bNoFormat_HomePhone = false;
 $bNoFormat_WorkPhone = false;
 $bNoFormat_CellPhone = false;
+$sFacebookError = false;
+$sTwitterError = false;
+$sLinkedInError = false;
 
 //Is this the second pass?
 if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
@@ -175,7 +180,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         $iupdateBirthYear = InputUtils::LegacyFilterInput($_POST['updateBirthYear'], 'int');
     }
 
-    $iFacebook = InputUtils::FilterInt($_POST['Facebook']);
+    $sFacebook = InputUtils::FilterString($_POST['Facebook']);
     $sTwitter = InputUtils::FilterString($_POST['Twitter']);
     $sLinkedIn = InputUtils::FilterString($_POST['LinkedIn']);
 
@@ -202,7 +207,13 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
     }
 
     // If they entered a full date, see if it's valid
-    if (strlen($iBirthYear) > 0) {
+    if ($iBirthMonth > 0 xor $iBirthDay > 0) {
+        $sBirthDateError = gettext('Invalid Birth Date: Missing birth month or day.');
+        $bErrorFlag = true;
+    } elseif (strlen($iBirthYear) > 0 && $iBirthMonth == 0 && $iBirthDay == 0) {
+        $sBirthDateError = gettext('Invalid Birth Date: Missing birth month and day.');
+        $bErrorFlag = true;
+    } elseif (strlen($iBirthYear) > 0) {
         if ($iBirthYear == 0) { // If zero set to NULL
             $iBirthYear = null;
         } elseif ($iBirthYear > 2155 || $iBirthYear < 1901) {
@@ -267,7 +278,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
     while ($rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQLI_BOTH)) {
         extract($rowCustomField);
 
-        if ($aSecurityType[$custom_FieldSec] == 'bAll' || $_SESSION[$aSecurityType[$custom_FieldSec]]) {
+        if (AuthenticationManager::GetCurrentUser()->isEnabledSecurity($aSecurityType[$custom_FieldSec])) {
             $currentFieldData = InputUtils::LegacyFilterInput($_POST[$custom_Field]);
 
             $bErrorFlag |= !validateCustomField($type_ID, $currentFieldData, $custom_Field, $aCustomErrors);
@@ -302,7 +313,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         // Family will be named by the Last Name.
         if ($iFamily == -1) {
             $sSQL = "INSERT INTO family_fam (fam_Name, fam_Address1, fam_Address2, fam_City, fam_State, fam_Zip, fam_Country, fam_HomePhone, fam_WorkPhone, fam_CellPhone, fam_Email, fam_DateEntered, fam_EnteredBy)
-					VALUES ('".$sLastName."','".$sAddress1."','".$sAddress2."','".$sCity."','".$sState."','".$sZip."','".$sCountry."','".$sHomePhone."','".$sWorkPhone."','".$sCellPhone."','".$sEmail."','".date('YmdHis')."',".$_SESSION['user']->getId().')';
+					VALUES ('".$sLastName."','".$sAddress1."','".$sAddress2."','".$sCity."','".$sState."','".$sZip."','".$sCountry."','".$sHomePhone."','".$sWorkPhone."','".$sCellPhone."','".$sEmail."','".date('YmdHis')."',".AuthenticationManager::GetCurrentUser()->getId().')';
             //Execute the SQL
             RunQuery($sSQL);
             //Get the key back
@@ -321,14 +332,14 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         if ($iPersonID < 1) {
             $iEnvelope = 0;
 
-            $sSQL = "INSERT INTO person_per (per_Title, per_FirstName, per_MiddleName, per_LastName, per_Suffix, per_Gender, per_Address1, per_Address2, per_City, per_State, per_Zip, per_Country, per_HomePhone, per_WorkPhone, per_CellPhone, per_Email, per_WorkEmail, per_BirthMonth, per_BirthDay, per_BirthYear, per_Envelope, per_fam_ID, per_fmr_ID, per_MembershipDate, per_cls_ID, per_DateEntered, per_EnteredBy, per_FriendDate, per_Flags, per_FacebookID, per_Twitter, per_LinkedIn)
+            $sSQL = "INSERT INTO person_per (per_Title, per_FirstName, per_MiddleName, per_LastName, per_Suffix, per_Gender, per_Address1, per_Address2, per_City, per_State, per_Zip, per_Country, per_HomePhone, per_WorkPhone, per_CellPhone, per_Email, per_WorkEmail, per_BirthMonth, per_BirthDay, per_BirthYear, per_Envelope, per_fam_ID, per_fmr_ID, per_MembershipDate, per_cls_ID, per_DateEntered, per_EnteredBy, per_FriendDate, per_Flags, per_Facebook, per_Twitter, per_LinkedIn)
 			         VALUES ('".$sTitle."','".$sFirstName."','".$sMiddleName."','".$sLastName."','".$sSuffix."',".$iGender.",'".$sAddress1."','".$sAddress2."','".$sCity."','".$sState."','".$sZip."','".$sCountry."','".$sHomePhone."','".$sWorkPhone."','".$sCellPhone."','".$sEmail."','".$sWorkEmail."',".$iBirthMonth.','.$iBirthDay.','.$iBirthYear.','.$iEnvelope.','.$iFamily.','.$iFamilyRole.',';
             if (strlen($dMembershipDate) > 0) {
                 $sSQL .= '"'.$dMembershipDate.'"';
             } else {
                 $sSQL .= 'NULL';
             }
-            $sSQL .= ','.$iClassification.",'".date('YmdHis')."',".$_SESSION['user']->getId().',';
+            $sSQL .= ','.$iClassification.",'".date('YmdHis')."',".AuthenticationManager::GetCurrentUser()->getId().',';
 
             if (strlen($dFriendDate) > 0) {
                 $sSQL .= '"'.$dFriendDate.'"';
@@ -337,7 +348,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
             }
 
             $sSQL .= ', '.$per_Flags;
-            $sSQL .= ', '. $iFacebook;
+            $sSQL .= ', "'. $sFacebook. '"';
             $sSQL .= ', "'. $sTwitter.'"';
             $sSQL .= ', "'. $sLinkedIn.'"';
             $sSQL .= ')';
@@ -353,11 +364,11 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
                 $sSQL .= 'NULL';
             }
 
-            if ($_SESSION['user']->isFinanceEnabled()) {
+            if (AuthenticationManager::GetCurrentUser()->isFinanceEnabled()) {
                 $sSQL .= ', per_Envelope = '.$iEnvelope;
             }
 
-            $sSQL .= ", per_DateLastEdited = '".date('YmdHis')."', per_EditedBy = ".$_SESSION['user']->getId().', per_FriendDate =';
+            $sSQL .= ", per_DateLastEdited = '".date('YmdHis')."', per_EditedBy = ".AuthenticationManager::GetCurrentUser()->getId().', per_FriendDate =';
 
             if (strlen($dFriendDate) > 0) {
                 $sSQL .= '"'.$dFriendDate.'"';
@@ -367,7 +378,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
 
             $sSQL .= ', per_Flags='.$per_Flags;
 
-            $sSQL .= ', per_FacebookID='. $iFacebook;
+            $sSQL .= ', per_Facebook="'. $sFacebook.'"';
             $sSQL .= ', per_Twitter="'. $sTwitter.'"';
             $sSQL .= ', per_LinkedIn="'. $sLinkedIn.'"';
 
@@ -381,7 +392,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
 
 
         $note = new Note();
-        $note->setEntered($_SESSION['user']->getId());
+        $note->setEntered(AuthenticationManager::GetCurrentUser()->getId());
         // If this is a new person, get the key back and insert a blank row into the person_custom table
         if ($bGetKeyBack) {
             $sSQL = 'SELECT MAX(per_ID) AS iPersonID FROM person_per';
@@ -398,7 +409,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
                 $person = PersonQuery::create()->findOneByID($iPersonID);
                 $NotificationEmail = new NewPersonOrFamilyEmail($person);
                 if (!$NotificationEmail->send()) {
-                    $logger->warn($NotificationEmail->getError());
+                    LoggerUtils::getAppLogger()->warning($NotificationEmail->getError());
                 }
             }
         } else {
@@ -417,7 +428,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
             $sSQL = '';
             while ($rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQLI_BOTH)) {
                 extract($rowCustomField);
-                if ($aSecurityType[$custom_FieldSec] == 'bAll' || $_SESSION[$aSecurityType[$custom_FieldSec]]) {
+                if (AuthenticationManager::GetCurrentUser()->isEnabledSecurity($aSecurityType[$custom_FieldSec])) {
                     $currentFieldData = trim($aCustomData[$custom_Field]);
                     sqlCustomField($sSQL, $type_ID, $currentFieldData, $custom_Field, $sPhoneCountry);
                 }
@@ -487,7 +498,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         $iClassification = $per_cls_ID;
         $iViewAgeFlag = $per_Flags;
 
-        $iFacebookID = $per_FacebookID;
+        $sFacebook = $per_Facebook;
         $sTwitter = $per_Twitter;
         $sLinkedIn = $per_LinkedIn;
 
@@ -510,7 +521,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         $bFamilyCellPhone = strlen($fam_CellPhone);
         $bFamilyEmail = strlen($fam_Email);
 
-        $bFacebookID = $per_FacebookID != 0;
+        $bFacebook = strlen($per_Facebook);
         $bTwitter =  strlen($per_Twitter);
         $bLinkedIn = strlen($per_LinkedIn);
 
@@ -553,7 +564,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         $iViewAgeFlag = 0;
         $sPhoneCountry = '';
 
-        $iFacebookID = 0;
+        $sFacebook = '';
         $sTwitter = '';
         $sLinkedIn = '';
 
@@ -622,7 +633,7 @@ require 'Include/Header.php';
                 <div class="row">
                     <div class="col-md-2">
                         <label><?= gettext('Gender') ?>:</label>
-                        <select name="Gender" class="form-control">
+                        <select id="Gender" name="Gender" class="form-control">
                             <option value="0"><?= gettext('Select Gender') ?></option>
                             <option value="0" disabled>-----------------------</option>
                             <option value="1" <?php if ($iGender == 1) {
@@ -648,8 +659,7 @@ require 'Include/Header.php';
                                value="<?= htmlentities(stripslashes($sFirstName), ENT_NOQUOTES, 'UTF-8') ?>"
                                class="form-control">
                         <?php if ($sFirstNameError) {
-        ?><br><font
-                            color="red"><?php echo $sFirstNameError ?></font><?php
+        ?><br><span style="color: red;"><?php echo $sFirstNameError ?></span><?php
     } ?>
                     </div>
 
@@ -659,8 +669,7 @@ require 'Include/Header.php';
                                value="<?= htmlentities(stripslashes($sMiddleName), ENT_NOQUOTES, 'UTF-8') ?>"
                                class="form-control">
                         <?php if ($sMiddleNameError) {
-        ?><br><font
-                            color="red"><?php echo $sMiddleNameError ?></font><?php
+        ?><br><span style="color: red;"><?php echo $sMiddleNameError ?></span><?php
     } ?>
                     </div>
 
@@ -670,8 +679,7 @@ require 'Include/Header.php';
                                value="<?= htmlentities(stripslashes($sLastName), ENT_NOQUOTES, 'UTF-8') ?>"
                                class="form-control">
                         <?php if ($sLastNameError) {
-        ?><br><font
-                            color="red"><?php echo $sLastNameError ?></font><?php
+        ?><br><span style="color: red;"><?php echo $sLastNameError ?></span><?php
     } ?>
                     </div>
 
@@ -686,7 +694,7 @@ require 'Include/Header.php';
                 <div class="row">
                     <div class="col-md-2">
                         <label><?= gettext('Birth Month') ?>:</label>
-                        <select name="BirthMonth" class="form-control">
+                        <select id="BirthMonth" name="BirthMonth" class="form-control">
                             <option value="0" <?php if ($iBirthMonth == 0) {
         echo 'selected';
     } ?>><?= gettext('Select Month') ?></option>
@@ -730,7 +738,7 @@ require 'Include/Header.php';
                     </div>
                     <div class="col-md-2">
                         <label><?= gettext('Birth Day') ?>:</label>
-                        <select name="BirthDay" class="form-control">
+                        <select id="BirthDay" name="BirthDay" class="form-control">
                             <option value="0"><?= gettext('Select Day') ?></option>
                             <?php for ($x = 1; $x < 32; $x++) {
         if ($x < 10) {
@@ -747,15 +755,14 @@ require 'Include/Header.php';
                     </div>
                     <div class="col-md-2">
                         <label><?= gettext('Birth Year') ?>:</label>
-                        <input type="text" name="BirthYear" value="<?php echo $iBirthYear ?>" maxlength="4" size="5"
+                        <input type="text" id="BirthYear" name="BirthYear" value="<?php echo $iBirthYear ?>" maxlength="4" size="5"
                                placeholder="yyyy" class="form-control">
                         <?php if ($sBirthYearError) {
-        ?><font color="red"><br><?php echo $sBirthYearError ?>
-                            </font><?php
+        ?><span style="color: red;"><br><?php echo $sBirthYearError ?>
+                            </span><?php
     } ?>
                         <?php if ($sBirthDateError) {
-        ?><font
-                            color="red"><?php echo $sBirthDateError ?></font><?php
+        ?><span style="color: red;"><?php echo $sBirthDateError ?></span><?php
     } ?>
                     </div>
                     <div class="col-md-2">
@@ -794,7 +801,7 @@ require 'Include/Header.php';
 
             <div class="form-group col-md-6">
                 <label><?= gettext('Family'); ?>:</label>
-                <select name="Family" size="8" class="form-control">
+                <select name="Family" id="famailyId" class="form-control">
                     <option value="0" selected><?= gettext('Unassigned') ?></option>
                     <option value="-1"><?= gettext('Create a new family (using last name)') ?></option>
                     <option value="0" disabled>-----------------------</option>
@@ -1042,11 +1049,11 @@ require 'Include/Header.php';
                         <div class="input-group-addon">
                             <i class="fa fa-envelope"></i>
                         </div>
-                        <input type="text" name="Email"
+                        <input type="text" name="Email" id="Email"
                                value="<?= htmlentities(stripslashes($sEmail), ENT_NOQUOTES, 'UTF-8') ?>" size="30"
                                maxlength="100" class="form-control">
                         <?php if ($sEmailError) {
-                            ?><font color="red"><?php echo $sEmailError ?></font><?php
+                            ?><span style="color: red;"><?php echo $sEmailError ?></span><?php
                         } ?>
                     </div>
                 </div>
@@ -1060,17 +1067,16 @@ require 'Include/Header.php';
                                value="<?= htmlentities(stripslashes($sWorkEmail), ENT_NOQUOTES, 'UTF-8') ?>" size="30"
                                maxlength="100" class="form-control">
                         <?php if ($sWorkEmailError) {
-                            ?><font
-                            color="red"><?php echo $sWorkEmailError ?></font></td><?php
+                            ?><span style="color: red;"><?php echo $sWorkEmailError ?></span></td><?php
                         } ?>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="form-group col-md-4">
-                    <label for="FacebookID">
+                    <label for="Facebook">
                         <?php
-                        if ($bFacebookID) {
+                        if ($bFacebook) {
                             echo '<span style="color: red;">'.gettext('Facebook').':</span></td>';
                         } else {
                             echo gettext('Facebook').':</td>';
@@ -1082,10 +1088,10 @@ require 'Include/Header.php';
                             <i class="fa fa-facebook"></i>
                         </div>
                         <input type="text" name="Facebook"
-                               value="<?= htmlentities(stripslashes($iFacebookID), ENT_NOQUOTES, 'UTF-8') ?>" size="30"
-                               maxlength="100" class="form-control">
+                               value="<?= htmlentities(stripslashes($sFacebook), ENT_NOQUOTES, 'UTF-8') ?>" size="30"
+                               maxlength="50" class="form-control">
                         <?php if ($sFacebookError) {
-                            ?><font color="red"><?php echo $sFacebookError ?></font><?php
+                            ?><span style="color: red;"><?php echo $sFacebookError ?></span><?php
                         } ?>
                     </div>
                 </div>
@@ -1097,10 +1103,9 @@ require 'Include/Header.php';
                         </div>
                         <input type="text" name="Twitter"
                                value="<?= htmlentities(stripslashes($sTwitter), ENT_NOQUOTES, 'UTF-8') ?>" size="30"
-                               maxlength="100" class="form-control">
+                               maxlength="50" class="form-control">
                         <?php if ($sTwitterError) {
-                            ?><font
-                            color="red"><?php echo $sTwitterError ?></font></td><?php
+                            ?><span style="color: red;"><?php echo $sTwitterError ?></span></td><?php
                         } ?>
                     </div>
                 </div>
@@ -1112,10 +1117,9 @@ require 'Include/Header.php';
                           </div>
                           <input type="text" name="LinkedIn"
                                  value="<?= htmlentities(stripslashes($sLinkedIn), ENT_NOQUOTES, 'UTF-8') ?>" size="30"
-                                 maxlength="100" class="form-control">
+                                 maxlength="50" class="form-control">
                           <?php if ($sLinkedInError) {
-                            ?><font
-                              color="red"><?php echo $sLinkedInError ?></font></td><?php
+                            ?><span style="color: red;"><?php echo $sLinkedInError ?></span></td><?php
                         } ?>
                       </div>
                   </div>
@@ -1133,7 +1137,7 @@ require 'Include/Header.php';
             <div class="row">
               <div class="form-group col-md-3 col-lg-3">
                 <label><?= gettext('Classification') ?>:</label>
-                <select name="Classification" class="form-control">
+                <select id="Classification" name="Classification" class="form-control">
                   <option value="0"><?= gettext('Unassigned') ?></option>
                   <option value="0" disabled>-----------------------</option>
                   <?php while ($aRow = mysqli_fetch_array($rsClassifications)) {
@@ -1157,8 +1161,7 @@ require 'Include/Header.php';
                                value="<?= change_date_for_place_holder($dMembershipDate) ?>" maxlength="10" id="sel1" size="11"
                                placeholder="<?= SystemConfig::getValue("sDatePickerPlaceHolder") ?>">
                         <?php if ($sMembershipDateError) {
-                            ?><font
-                            color="red"><?= $sMembershipDateError ?></font><?php
+                            ?><span style="color: red;"><?= $sMembershipDateError ?></span><?php
                         } ?>
                     </div>
                 </div>
@@ -1173,8 +1176,7 @@ require 'Include/Header.php';
                            value="<?= change_date_for_place_holder($dFriendDate) ?>" maxlength="10" id="sel2" size="10"
                            placeholder="<?= SystemConfig::getValue("sDatePickerPlaceHolder") ?>">
                     <?php if ($sFriendDateError) {
-                            ?><font
-                      color="red"><?php echo $sFriendDateError ?></font><?php
+                            ?><span style="color: red;"><?php echo $sFriendDateError ?></span><?php
                         } ?>
                   </div>
                 </div>
@@ -1199,7 +1201,7 @@ require 'Include/Header.php';
                                 while ($rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQLI_BOTH)) {
                                     extract($rowCustomField);
 
-                                    if ($aSecurityType[$custom_FieldSec] == 'bAll' || $_SESSION[$aSecurityType[$custom_FieldSec]]) {
+                                    if (AuthenticationManager::GetCurrentUser()->isEnabledSecurity($aSecurityType[$custom_FieldSec])) {
                                         echo "<div class='row'><div class=\"form-group col-md-3\"><label>".$custom_Name.'</label>';
 
                                         if (array_key_exists($custom_Field, $aCustomData)) {
@@ -1225,16 +1227,17 @@ require 'Include/Header.php';
   <?php
                         } ?>
     <input type="submit" class="btn btn-primary" id="PersonSaveButton" value="<?= gettext('Save') ?>" name="PersonSubmit">
-    <?php if ($_SESSION['user']->isAddRecordsEnabled()) {
+    <?php if (AuthenticationManager::GetCurrentUser()->isAddRecordsEnabled()) {
                             echo '<input type="submit" class="btn btn-primary" value="'.gettext('Save and Add').'" name="PersonSubmitAndAdd">';
                         } ?>
     <input type="button" class="btn btn-primary" value="<?= gettext('Cancel') ?>" name="PersonCancel"
-           onclick="javascript:document.location='SelectList.php?mode=person';">
+           onclick="javascript:document.location='v2/people';">
 </form>
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>" >
 	$(function() {
 		$("[data-mask]").inputmask();
+		$("#famailyId").select2();;
 	});
 </script>
 

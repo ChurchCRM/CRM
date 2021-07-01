@@ -6,6 +6,7 @@ use ChurchCRM\Service\DashboardService;
 use ChurchCRM\Service\SundaySchoolService;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\MiscUtils;
+use ChurchCRM\Authentication\AuthenticationManager;
 
 $dashboardService = new DashboardService();
 $sundaySchoolService = new SundaySchoolService();
@@ -45,7 +46,7 @@ require '../Include/Header.php';
     <h3 class="box-title"><?= gettext('Functions') ?></h3>
   </div>
   <div class="box-body">
-    <?php if ($_SESSION['user']->isManageGroupsEnabled()) {
+    <?php if (AuthenticationManager::GetCurrentUser()->isManageGroupsEnabled()) {
     ?>
       <button class="btn btn-app" data-toggle="modal" data-target="#add-class"><i
           class="fa fa-plus-square"></i><?= gettext('Add New Class') ?></button>
@@ -165,7 +166,7 @@ require '../Include/Header.php';
 							<i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
             </span>
             </a>
-          	<a href='/GroupEditor.php?GroupID=<?= $class['id'] ?>'>
+          	<a href='<?= SystemURLs::getRootPath() ?>/GroupEditor.php?GroupID=<?= $class['id'] ?>'>
             <span class="fa-stack">
 							<i class="fa fa-square fa-stack-2x"></i>
 							<i class="fa fa fa-pencil fa-stack-1x fa-inverse"></i>
@@ -235,7 +236,7 @@ require '../Include/Header.php';
     </table>
   </div>
 </div>
-<?php if ($_SESSION['user']->isManageGroupsEnabled()) {
+<?php if (AuthenticationManager::GetCurrentUser()->isManageGroupsEnabled()) {
           ?>
   <div class="modal fade" id="add-class" tabindex="-1" role="dialog" aria-labelledby="add-class-label"
        aria-hidden="true">

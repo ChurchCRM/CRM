@@ -2,7 +2,6 @@
 
 use ChurchCRM\dto\SystemURLs;
 
-require SystemURLs::getDocumentRoot() . '/Include/SimpleConfig.php';
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 ?>
@@ -25,19 +24,11 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     $(document).ready(function () {
-        $("#dupEmails").DataTable({
-            "language": {
-                "url": window.CRM.plugin.dataTable.language.url
-            },
+        var dataTableConfig = {
             ajax: {
                 url: window.CRM.root + "/api/persons/duplicate/emails",
                 dataSrc: 'emails'
             },
-            "dom": window.CRM.plugin.dataTable.dom,
-            "tableTools": {
-                "sSwfPath": window.CRM.plugin.dataTable.tableTools.sSwfPath
-            },
-            responsive: true,
             columns: [
                 {
                     title: i18next.t('Email'),
@@ -62,7 +53,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     render: function ( data, type, row ){
                         var render ="<ul>";
                         $.each( data, function( key, value ) {
-                            render += "<li><a href='"+ window.CRM.root + "/FamilyView.php?FamilyID=" +value.id + "' target='family' />"+ value.name + "</a></li>";
+                            render += "<li><a href='"+ window.CRM.root + "/v2/family/" +value.id + "' target='family' />"+ value.name + "</a></li>";
                         });
                         render += "</ul>"
                         return render;
@@ -70,7 +61,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     searchable: true
                 }
             ]
-        });
+        }
+        $.extend(dataTableConfig, window.CRM.plugin.dataTable);
+        $("#dupEmails").DataTable(dataTableConfig);
     });
 
     function peopleToString(people) {

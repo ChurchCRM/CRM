@@ -1,21 +1,24 @@
 <?php
 
-use Slim\Http\Request;
-use Slim\Http\Response;
+use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\dto\PeopleCustomField;
 use ChurchCRM\dto\SystemURLs;
-use Slim\Views\PhpRenderer;
+use ChurchCRM\FamilyCustomMasterQuery;
+use ChurchCRM\FamilyCustomQuery;
 use ChurchCRM\FamilyQuery;
-use ChurchCRM\Service\TimelineService;
 use ChurchCRM\PropertyQuery;
+use ChurchCRM\Service\TimelineService;
 use ChurchCRM\Utils\InputUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
+use Slim\Http\Request;
+use Slim\Http\Response;
+use Slim\Views\PhpRenderer;
 
 $app->group('/family', function () {
     $this->get('','listFamilies');
     $this->get('/','listFamilies');
     $this->get('/not-found', 'viewFamilyNotFound');
-    $this->get('/{id}/view', 'viewFamily');
-    $this->get('/{id}/view/', 'viewFamily');
+    $this->get('/{id}', 'viewFamily');
 });
 
 function listFamilies(Request $request, Response $response, array $args)
@@ -49,7 +52,7 @@ function listFamilies(Request $request, Response $response, array $args)
 function viewFamilyNotFound(Request $request, Response $response, array $args)
 {
   $renderer = new PhpRenderer('templates/common/');
-  
+
   $pageArgs = [
         'sRootPath' => SystemURLs::getRootPath(),
         'memberType' => "Family",
@@ -74,11 +77,34 @@ function viewFamily(Request $request, Response $response, array $args)
 
     $allFamilyProperties = PropertyQuery::create()->findByProClass("f");
 
+    $allFamilyCustomFields = FamilyCustomMasterQuery::create()->find();
+
+    // get family with all the extra columns created
+    $rawQry =  FamilyCustomQuery::create();
+    foreach ($allFamilyCustomFields as $customfield ) {
+        $rawQry->withColumn($customfield->getField());
+    }
+    $thisFamilyCustomFields = $rawQry->findOneByFamId($familyId);
+
+    if ($thisFamilyCustomFields) {
+        $familyCustom = [];
+        foreach ($allFamilyCustomFields as $customfield ) {
+            if (AuthenticationManager::GetCurrentUser()->isEnabledSecurity($customfield->getFieldSecurity())) {
+                $value = $thisFamilyCustomFields->getVirtualColumn($customfield->getField());
+                if (!empty($value)) {
+                    $item = new PeopleCustomField($customfield, $value);
+                    array_push($familyCustom, $item);
+                }
+            }
+        }
+    }
+
     $pageArgs = [
         'sRootPath' => SystemURLs::getRootPath(),
         'family' => $family,
         'familyTimeline' => $timelineService->getForFamily($family->getId()),
-        'allFamilyProperties' => $allFamilyProperties
+        'allFamilyProperties' => $allFamilyProperties,
+        'familyCustom' => $familyCustom
     ];
 
     return $renderer->render($response, 'family-view.php', $pageArgs);

@@ -7,7 +7,7 @@ chkconfig --level 234 httpd on
 
 rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
-sudo yum install php70w php70w-pear php70w-mcrypt php70w-mysql php70w-zip php70w-phar php70w-gd php70w-mbstring -y
+sudo yum install php70w php70w-pear php70w-mysql php70w-zip php70w-phar php70w-gd php70w-mbstring -y
 service httpd start
 php --version
 

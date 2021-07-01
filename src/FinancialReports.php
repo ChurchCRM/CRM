@@ -14,9 +14,10 @@ require 'Include/Functions.php';
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\Authentication\AuthenticationManager;
 
 // Security
-if (!$_SESSION['user']->isFinanceEnabled()) {
+if (!AuthenticationManager::GetCurrentUser()->isFinanceEnabled()) {
     RedirectUtils::Redirect('Menu.php');
     exit;
 }
@@ -44,7 +45,7 @@ require 'Include/Header.php';
 
 // No Records Message if previous report returned no records.
 if (array_key_exists('ReturnMessage', $_GET) && $_GET['ReturnMessage'] == 'NoRows') {
-    echo '<h3><font color=red>'.gettext('No records were returned from the previous report.').'</font></h3>';
+    echo '<h3><span style="color: red;">'.gettext('No records were returned from the previous report.').'</span></h3>';
 }
 
 if ($sReportType == '') {
@@ -130,8 +131,8 @@ if ($sReportType == '') {
         <td></td>
         <td>
         <br/>
-        <button type="button" id="addAllClasses" class="btn"><?= gettext('Add All Classes') ?></button>
-        <button type="button" id="clearAllClasses" class="btn"><?= gettext('Clear All Classes') ?></button><br/><br/>
+        <button type="button" id="addAllClasses" class="btn btn-default"><?= gettext('Add All Classes') ?></button>
+        <button type="button" id="clearAllClasses" class="btn btn-default"><?= gettext('Clear All Classes') ?></button><br/><br/>
         </td></tr>
         <?php
 
@@ -177,8 +178,8 @@ if ($sReportType == '') {
         <td></td>
         <td>
         <br/>
-        <button type="button" id="addAllFamilies" class="btn"><?= gettext('Add All Families') ?></button>
-        <button type="button" id="clearAllFamilies" class="btn"><?= gettext('Clear All Families') ?></button><br/><br/>
+        <button type="button" id="addAllFamilies" class="btn btn-default"><?= gettext('Add All Families') ?></button>
+        <button type="button" id="clearAllFamilies" class="btn btn-default"><?= gettext('Clear All Families') ?></button><br/><br/>
         </td></tr>
         <?php
     }
@@ -245,8 +246,8 @@ if ($sReportType == '') {
         <td></td>
         <td>
         <br/>
-        <button type="button" id="addAllFunds" class="btn"><?= gettext('Add All Funds') ?></button>
-        <button type="button" id="clearAllFunds" class="btn"><?= gettext('Clear All Funds') ?></button><br/><br/>
+        <button type="button" id="addAllFunds" class="btn btn-default"><?= gettext('Add All Funds') ?></button>
+        <button type="button" id="clearAllFunds" class="btn btn-default"><?= gettext('Clear All Funds') ?></button><br/><br/>
         </td></tr>
 
         <?php
@@ -312,7 +313,7 @@ if ($sReportType == '') {
         echo '<td class=TextColumnWithBottomBorder><input name=RequireDonationYears type=text value=0 size=5></td></tr>';
     }
 
-    if ((($_SESSION['user']->isAdmin() && $bCSVAdminOnly) || !$bCSVAdminOnly)
+    if (((AuthenticationManager::GetCurrentUser()->isAdmin() && $bCSVAdminOnly) || !$bCSVAdminOnly)
         && ($sReportType == 'Pledge Summary' || $sReportType == 'Giving Report' || $sReportType == 'Individual Deposit Report' || $sReportType == 'Advanced Deposit Report' || $sReportType == 'Zero Givers')) {
         echo '<tr><td class=LabelColumn>'.gettext('Output Method:').'</td>';
         echo "<td class=TextColumnWithBottomBorder><input name=output type=radio checked value='pdf'>PDF";

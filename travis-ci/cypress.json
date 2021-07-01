@@ -1,0 +1,16 @@
+{
+    "baseUrl": "http://127.0.0.1",
+    "integrationFolder": "cypress/integration/ui/admin",
+    "chromeWebSecurity": false,
+    "pageLoadTimeout": 1000000,
+    "defaultCommandTimeout": 200000,
+    "requestTimeout": 200000,
+    "viewportHeight": 1080,
+    "viewportWidth": 1920,
+    "screenshotOnRunFailure": false,
+    "video": false,
+    "env": {
+        "admin.api.key": "ajGwpy8Pdai22XDUpqjC5Ob04v0eG7EGgb4vz2bD2juT8YDmfM",
+        "user.api.key": "cjcPihn8wDwVeRIiNnKfpj0HGgCYbcxaD9SaF6BNJKLtVrnGFr"
+    }
+}

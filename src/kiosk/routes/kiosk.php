@@ -1,10 +1,10 @@
 <?php
 
-use Slim\Views\PhpRenderer;
-use ChurchCRM\PersonQuery;
-use Psr\Http\Message\ServerRequestInterface;
-use Psr\Http\Message\ResponseInterface;
 use ChurchCRM\dto\Notification;
+use ChurchCRM\PersonQuery;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+use Slim\Views\PhpRenderer;
 
 
 $app->get('/', function ($request, $response, $args) use ($app) {
@@ -15,7 +15,7 @@ $app->get('/', function ($request, $response, $args) use ($app) {
 
   $app->get('/heartbeat', function ($request, $response, $args) use ($app) {
 
-    return json_encode($app->kiosk->heartbeat());     
+    return json_encode($app->kiosk->heartbeat());
   });
 
   $app->post('/checkin', function ($request, $response, $args) use ($app) {
@@ -36,7 +36,7 @@ $app->get('/', function ($request, $response, $args) use ($app) {
 
     $Person =PersonQuery::create()
             ->findOneById($input->PersonId);
-    
+
     $Notification = new Notification();
     $Notification->setPerson($Person);
     $Notification->setRecipients($Person->getFamily()->getAdults());
@@ -46,7 +46,7 @@ $app->get('/', function ($request, $response, $args) use ($app) {
     return $response->withJSON($Status);
   });
 
-  
+
    $app->get('/activeClassMembers', function ($request, $response, $args) use ($app) {
     return $app->kiosk->getActiveAssignment()->getActiveGroupMembers()->toJSON();
   });

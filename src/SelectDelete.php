@@ -22,10 +22,11 @@ use ChurchCRM\PersonQuery;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Authentication\AuthenticationManager;
 
 // Security: User must have Delete records permission
 // Otherwise, re-direct them to the main menu.
-if (!$_SESSION['user']->isDeleteRecordsEnabled()) {
+if (!AuthenticationManager::GetCurrentUser()->isDeleteRecordsEnabled()) {
     RedirectUtils::Redirect('Menu.php');
     exit;
 }
@@ -46,26 +47,26 @@ if (!empty($_GET['mode'])) {
 }
 
 if (isset($_GET['CancelFamily'])) {
-    RedirectUtils::Redirect("FamilyView.php?FamilyID=$iFamilyID");
+    RedirectUtils::Redirect("v2/family/$iFamilyID");
     exit;
 }
 
 $DonationMessage = '';
 
 // Move Donations from 1 family to another
-if ($_SESSION['user']->isFinanceEnabled() && isset($_GET['MoveDonations']) && $iFamilyID && $iDonationFamilyID && $iFamilyID != $iDonationFamilyID) {
+if (AuthenticationManager::GetCurrentUser()->isFinanceEnabled() && isset($_GET['MoveDonations']) && $iFamilyID && $iDonationFamilyID && $iFamilyID != $iDonationFamilyID) {
     $today = date('Y-m-d');
     $sSQL = "UPDATE pledge_plg SET plg_FamID='$iDonationFamilyID',
-		plg_DateLastEdited ='$today', plg_EditedBy='" . $_SESSION['user']->getId()
+		plg_DateLastEdited ='$today', plg_EditedBy='" . AuthenticationManager::GetCurrentUser()->getId()
         . "' WHERE plg_FamID='$iFamilyID'";
     RunQuery($sSQL);
 
     $sSQL = "UPDATE egive_egv SET egv_famID='$iDonationFamilyID',
-		egv_DateLastEdited ='$today', egv_EditedBy='" . $_SESSION['user']->getId()
+		egv_DateLastEdited ='$today', egv_EditedBy='" . AuthenticationManager::GetCurrentUser()->getId()
         . "' WHERE egv_famID='$iFamilyID'";
     RunQuery($sSQL);
 
-    $DonationMessage = '<p><b><font color=red>' . gettext('All donations from this family have been moved to another family.') . '</font></b></p>';
+    $DonationMessage = '<p><b><span style="color: red;">' . gettext('All donations from this family have been moved to another family.') . '</span></b></p>';
 }
 
 //Set the Page Title
@@ -140,11 +141,11 @@ require 'Include/Header.php';
         $rsDonations = RunQuery($sSQL);
         $bIsDonor = (mysqli_num_rows($rsDonations) > 0);
 
-        if ($bIsDonor && !$_SESSION['user']->isFinanceEnabled()) {
+        if ($bIsDonor && !AuthenticationManager::GetCurrentUser()->isFinanceEnabled()) {
             // Donations from Family. Current user not authorized for Finance
             echo '<p class="LargeText">' . gettext('Sorry, there are records of donations from this family. This family may not be deleted.') . '<br><br>';
-            echo '<a href="FamilyView.php?FamilyID=' . $iFamilyID . '">' . gettext('Return to Family View') . '</a></p>';
-        } elseif ($bIsDonor && $_SESSION['user']->isFinanceEnabled()) {
+            echo '<a href="v2/family/' . $iFamilyID . '">' . gettext('Return to Family View') . '</a></p>';
+        } elseif ($bIsDonor && AuthenticationManager::GetCurrentUser()->isFinanceEnabled()) {
             // Donations from Family. Current user authorized for Finance.
             // Select another family to move donations to.
             echo '<p class="LargeText">' . gettext('WARNING: This family has records of donations and may NOT be deleted until these donations are associated with another family.') . '</p>';
@@ -204,9 +205,9 @@ require 'Include/Header.php';
             // -----------------------------------
             echo '<br><br>';
             //Get the pledges for this family
-            $sSQL = 'SELECT plg_plgID, plg_FYID, plg_date, plg_amount, plg_schedule, plg_method, 
+            $sSQL = 'SELECT plg_plgID, plg_FYID, plg_date, plg_amount, plg_schedule, plg_method,
 		         plg_comment, plg_DateLastEdited, plg_PledgeOrPayment, a.per_FirstName AS EnteredFirstName, a.Per_LastName AS EnteredLastName, b.fun_Name AS fundName
-				 FROM pledge_plg 
+				 FROM pledge_plg
 				 LEFT JOIN person_per a ON plg_EditedBy = a.per_ID
 				 LEFT JOIN donationfund_fun b ON plg_fundID = b.fun_ID
 				 WHERE plg_famID = ' . $iFamilyID . ' ORDER BY pledge_plg.plg_date';
@@ -291,7 +292,7 @@ require 'Include/Header.php';
             echo '</ul></div>';
             echo "<p class=\"text-center\"><a class='btn btn-danger' href=\"SelectDelete.php?Confirmed=Yes&FamilyID=" . $iFamilyID . '">' . gettext('Delete Family Record ONLY') . '</a> ';
             echo "<a class='btn btn-danger' href=\"SelectDelete.php?Confirmed=Yes&Members=Yes&FamilyID=" . $iFamilyID . '">' . gettext('Delete Family Record AND Family Members') . '</a> ';
-            echo "<a class='btn btn-info' href=\"FamilyView.php?FamilyID=" . $iFamilyID . '">' . gettext('No, cancel this deletion') . '</a></p>';
+            echo "<a class='btn btn-info' href=\"v2/family/" . $iFamilyID . '">' . gettext('No, cancel this deletion') . '</a></p>';
         }
             ?>
     </div>

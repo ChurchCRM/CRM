@@ -2,13 +2,7 @@
 
 
 use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\FamilyQuery;
-use Propel\Runtime\ActiveQuery\Criteria;
-use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\dto\SystemURLs;
-
-
-require SystemURLs::getDocumentRoot() . '/Include/SimpleConfig.php';
 
 //Set the page title
 $sPageTitle = gettext(ucfirst($sMode)) . ' ' . gettext('Family List');
@@ -32,7 +26,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <th><?= gettext('Address') ?></th>
                 <th><?= gettext('Home Phone') ?></th>
                 <th><?= gettext('Cell Phone') ?></th>
-                <th><?= gettext('email') ?></th>
+                <th><?= gettext('Email') ?></th>
                 <th><?= gettext('Created') ?></th>
                 <th><?= gettext('Edited') ?></th>
             </tr>
@@ -44,7 +38,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
               /* @var $family ChurchCRM\Family */
     ?>
             <tr>
-              <td><a href='<?= SystemURLs::getRootPath()?>/FamilyView.php?FamilyID=<?= $family->getId() ?>'>
+              <td><a href='<?= SystemURLs::getRootPath()?>/v2/family/<?= $family->getId() ?>'>
                         <span class="fa-stack">
                             <i class="fa fa-square fa-stack-2x"></i>
                             <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>

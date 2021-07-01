@@ -78,15 +78,13 @@ require 'Include/Header.php';
                     </div>
                     <div class="row">
                         <div class="col-xs-6">
-                            <input type="submit" class="btn" name="Submit" value="<?= gettext('Next') ?>">
-                            <input type="button" class="btn" name="Cancel" value="<?= gettext('Cancel') ?>" onclick="javascript:document.location = 'ReportList.php';">
-
+                            <input type="submit" class="btn btn-default" name="Submit" value="<?= gettext('Next') ?>">
                         </div>
                     </div>
                 </form>
             </div>
         </div>
-    
+
         </div>
     </div>
     <?php
@@ -147,8 +145,8 @@ require 'Include/Header.php';
 
                         <p align="center">
                             <BR>
-                            <input type="submit" class="btn" name="Submit" value="<?= gettext('Create Report') ?>">
-                            <input type="button" class="btn" name="Cancel" value="<?= gettext('Cancel') ?>" onclick="javascript:document.location = 'Menu.php';">
+                            <input type="submit" class="btn btn-default" name="Submit" value="<?= gettext('Create Report') ?>">
+                            <input type="button" class="btn btn-default" name="Cancel" value="<?= gettext('Cancel') ?>" onclick="javascript:document.location = 'Menu.php';">
                         </p>
                     </form>
 

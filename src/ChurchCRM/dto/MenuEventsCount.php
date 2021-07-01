@@ -9,26 +9,22 @@
  */
 
 namespace ChurchCRM\dto;
- 
-use ChurchCRM\EventQuery;
-use ChurchCRM\Event;
-use ChurchCRM\PersonQuery;
-use ChurchCRM\Person;
+
 use ChurchCRM\FamilyQuery;
-use ChurchCRM\Family;
+use ChurchCRM\PersonQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
 
 
 class MenuEventsCount
 {
-    
+
     public static function getBirthDates()
     {
         $peopleWithBirthDays = PersonQuery::create()
             ->filterByBirthMonth(date('m'))
             ->filterByBirthDay(date('d'))
             ->find();
-        
+
         return $peopleWithBirthDays;
     }
 
@@ -43,17 +39,17 @@ class MenuEventsCount
               ->filterByWeddingDate(['min' => '0001-00-00']) // a Wedding Date
               ->filterByDateDeactivated(null, Criteria::EQUAL) //Date Deactivated is null (active)
               ->find();
-      
+
         $curDay = date('d');
         $curMonth = date('m');
-  
+
         $families = [];
         foreach ($Anniversaries as $anniversary) {
             if ($anniversary->getWeddingMonth() == $curMonth && $curDay == $anniversary->getWeddingDay()) {
                 $families[] = $anniversary;
             }
         }
-    
+
         return $families;
     }
 

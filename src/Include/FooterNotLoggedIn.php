@@ -1,6 +1,7 @@
 <?php
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\SystemService;
+use ChurchCRM\Bootstrapper;
 
 ?>
     <div style="background-color: white; padding-top: 5px; padding-bottom: 5px; text-align: center; position: fixed; bottom: 0; width: 100%">
@@ -8,33 +9,39 @@ use ChurchCRM\Service\SystemService;
     </div>
 
 
-  <script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/select2/select2.full.min.js"></script>
+  <script src="<?= SystemURLs::getRootPath() ?>/skin/external/select2/select2.full.min.js"></script>
 
   <!-- Bootstrap 3.3.5 -->
-  <script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/bootstrap/js/bootstrap.min.js"></script>
-  <!-- iCheck -->
-  <script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/iCheck/icheck.min.js"></script>
+  <script src="<?= SystemURLs::getRootPath() ?>/skin/external/bootstrap/bootstrap.min.js"></script>
 
   <!-- AdminLTE App -->
-  <script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/dist/js/app.min.js"></script>
+  <script src="<?= SystemURLs::getRootPath() ?>/skin/external/adminlte/adminlte.min.js"></script>
 
   <!-- InputMask -->
-  <script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/input-mask/jquery.inputmask.js"></script>
-  <script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
-  <script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/input-mask/jquery.inputmask.extensions.js" ></script>
-  <script src="<?= SystemURLs::getRootPath() ?>/skin/adminlte/plugins/datepicker/bootstrap-datepicker.js" ></script>
+  <script src="<?= SystemURLs::getRootPath() ?>/skin/external/inputmask/jquery.inputmask.min.js"></script>
+  <script src="<?= SystemURLs::getRootPath() ?>/skin/external/inputmask/inputmask.binding.js"></script>
 
-  <!-- Bootbox -->
+  <script src="<?= SystemURLs::getRootPath() ?>/skin/external/bootstrap-datepicker/bootstrap-datepicker.min.js" ></script>
   <script src="<?= SystemURLs::getRootPath() ?>/skin/external/bootbox/bootbox.min.js"></script>
+  <script src="<?= SystemURLs::getRootPath() ?>/skin/external/i18next/i18next.min.js"></script>
+  <script src="<?= SystemURLs::getRootPath() ?>/skin/external/bootstrap-show-password/bootstrap-show-password.min.js"></script>
+  <script src="<?= SystemURLs::getRootPath() ?>/locale/js/<?= Bootstrapper::GetCurrentLocale()->getLocale() ?>.js"></script>
 
   <script nonce="<?= SystemURLs::getCSPNonce() ?>">
-    $(function () {
-      $('input').iCheck({
-        checkboxClass: 'icheckbox_square-blue',
-        radioClass: 'iradio_square-blue',
-        increaseArea: '20%' // optional
-      });
-    });
+    i18nextOpt = {
+      lng:window.CRM.shortLocale,
+      nsSeparator: false,
+      keySeparator: false,
+      pluralSeparator:false,
+      contextSeparator:false,
+      fallbackLng: false,
+      resources: { }
+    };
+
+    i18nextOpt.resources[window.CRM.shortLocale] = {
+      translation: window.CRM.i18keys
+    };
+    i18next.init(i18nextOpt);
   </script>
   <?php
 

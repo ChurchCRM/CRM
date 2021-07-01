@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "d5b77aa8-989c-4f95-be01-a36dcd68835c",
+		"_postman_id": "27e8d46d-03e7-4744-9218-5549605e8fa3",
 		"name": "Private API",
 		"description": "# Introduction\nWhat does your API do?\n\n# Overview\nThings that the developers should know about\n\n# Authentication\nWhat is the preferred way of using the API?\n\n# Error Codes\nWhat errors and status codes can a user expect?\n\n# Rate limit\nIs there a limit to the number of requests an user can send?",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -8,7 +8,6 @@
 	"item": [
 		{
 			"name": "Events",
-			"description": null,
 			"item": [
 				{
 					"name": "Events: get by Id",
@@ -20,10 +19,6 @@
 								"value": "{{api-key}}"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{host}}/api/calendars/3/events",
 							"host": [
@@ -49,10 +44,6 @@
 								"value": "{{api-key}}"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{host}}/api/events/",
 							"host": [
@@ -106,10 +97,6 @@
 								"value": "{{api-key}}"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{host}}/api/events/",
 							"host": [
@@ -128,7 +115,6 @@
 		},
 		{
 			"name": "Calendars",
-			"description": null,
 			"item": [
 				{
 					"name": "New Calendar",
@@ -190,17 +176,40 @@
 		},
 		{
 			"name": "Cart",
-			"description": null,
-			"item": []
+			"item": [
+				{
+					"name": "Cart: Get",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/api/cart/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"cart",
+								""
+							]
+						},
+						"description": "get all notitication to show the user"
+					},
+					"response": []
+				}
+			]
 		},
 		{
 			"name": "Dashboard",
-			"description": null,
 			"item": []
 		},
 		{
 			"name": "Emails",
-			"description": null,
 			"item": [
 				{
 					"name": "Email: Debug",
@@ -212,10 +221,6 @@
 								"value": "{{api-key}}"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{host}}/api/email/debug",
 							"host": [
@@ -234,30 +239,79 @@
 		},
 		{
 			"name": "Finance",
-			"description": null,
 			"item": [
 				{
 					"name": "Deposits",
-					"description": null,
-					"item": [],
+					"item": [
+						{
+							"name": "Deposiits: Dashbaord data",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{api-key}}"
+									}
+								],
+								"url": {
+									"raw": "{{host}}/api/deposits/dashboard",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"deposits",
+										"dashboard"
+									]
+								},
+								"description": "Find where an email address is used more than once"
+							},
+							"response": []
+						}
+					],
 					"_postman_isSubFolder": true
 				},
 				{
 					"name": "Payments",
-					"description": null,
-					"item": [],
+					"item": [
+						{
+							"name": "Get Pledges by Family",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{api-key}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{host}}/api/payments/family/20/list",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"payments",
+										"family",
+										"20",
+										"list"
+									]
+								}
+							},
+							"response": []
+						}
+					],
 					"_postman_isSubFolder": true
 				}
 			]
 		},
 		{
 			"name": "Geocoder",
-			"description": null,
 			"item": []
 		},
 		{
 			"name": "Groups",
-			"description": null,
 			"item": [
 				{
 					"name": "Group: Get Group by ID",
@@ -269,10 +323,6 @@
 								"value": "{{api-key}}"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{host}}/api/group/9",
 							"host": [
@@ -288,7 +338,6 @@
 					},
 					"response": [
 						{
-							"id": "7db43367-f579-4e5d-a38c-5952d67b7ab0",
 							"name": "Persons: Get Photo by ID",
 							"originalRequest": {
 								"method": "GET",
@@ -298,10 +347,6 @@
 										"value": "ajGwpy8Pdai22XDUpqjC5Ob04v0eG7EGgb4vz2bD2juT8YDmfM"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
 								"url": {
 									"raw": "{{host}}/api/persons/2/photo",
 									"host": [
@@ -393,10 +438,6 @@
 								"value": "{{api-key}}"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{host}}/api/groups/9/members",
 							"host": [
@@ -417,16 +458,597 @@
 		},
 		{
 			"name": "Kiosks",
-			"description": null,
 			"item": []
 		},
 		{
+			"name": "Mailchimp",
+			"item": [
+				{
+					"name": "MailChimp: Get Subscribed in MailChimp but not in CRM",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/api/mailchimp/list/c84848f505/missing",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"mailchimp",
+								"list",
+								"c84848f505",
+								"missing"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Persons: Get Photo by ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "ajGwpy8Pdai22XDUpqjC5Ob04v0eG7EGgb4vz2bD2juT8YDmfM"
+									}
+								],
+								"url": {
+									"raw": "{{host}}/api/persons/2/photo",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"persons",
+										"2",
+										"photo"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "CRM_USER_ID",
+									"value": "1",
+									"name": "CRM_USER_ID",
+									"description": "Custom header"
+								},
+								{
+									"key": "CRM_VERSION",
+									"value": "3.0.0",
+									"name": "CRM_VERSION",
+									"description": "Custom header"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"name": "Connection",
+									"description": "Options that are desired for the connection"
+								},
+								{
+									"key": "Content-Length",
+									"value": "98",
+									"name": "Content-Length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html;charset=UTF-8",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 24 Feb 2018 19:02:53 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=15",
+									"name": "Keep-Alive",
+									"description": "Custom header"
+								},
+								{
+									"key": "Server",
+									"value": "nginx",
+									"name": "Server",
+									"description": "A name for the server"
+								}
+							],
+							"cookie": [
+								{
+									"expires": "Invalid Date",
+									"httpOnly": false,
+									"domain": "demo.churchcrm.io",
+									"path": "/",
+									"secure": false,
+									"value": "r9fr05tpmoo6tu2242kquji0b5",
+									"key": "CRM%40%2Fmaster"
+								}
+							],
+							"body": "Can't find route for GET on http://demo.churchcrm.io/master/api/persons/%7B%7BpersonId%7D%7D/photo"
+						}
+					]
+				},
+				{
+					"name": "MailChimp: Get Unsubscribed in MailChimp",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/api/mailchimp/list/c84848f505/not-subscribed",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"mailchimp",
+								"list",
+								"c84848f505",
+								"not-subscribed"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Persons: Get Photo by ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "ajGwpy8Pdai22XDUpqjC5Ob04v0eG7EGgb4vz2bD2juT8YDmfM"
+									}
+								],
+								"url": {
+									"raw": "{{host}}/api/persons/2/photo",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"persons",
+										"2",
+										"photo"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "CRM_USER_ID",
+									"value": "1",
+									"name": "CRM_USER_ID",
+									"description": "Custom header"
+								},
+								{
+									"key": "CRM_VERSION",
+									"value": "3.0.0",
+									"name": "CRM_VERSION",
+									"description": "Custom header"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"name": "Connection",
+									"description": "Options that are desired for the connection"
+								},
+								{
+									"key": "Content-Length",
+									"value": "98",
+									"name": "Content-Length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html;charset=UTF-8",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 24 Feb 2018 19:02:53 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=15",
+									"name": "Keep-Alive",
+									"description": "Custom header"
+								},
+								{
+									"key": "Server",
+									"value": "nginx",
+									"name": "Server",
+									"description": "A name for the server"
+								}
+							],
+							"cookie": [
+								{
+									"expires": "Invalid Date",
+									"httpOnly": false,
+									"domain": "demo.churchcrm.io",
+									"path": "/",
+									"secure": false,
+									"value": "r9fr05tpmoo6tu2242kquji0b5",
+									"key": "CRM%40%2Fmaster"
+								}
+							],
+							"body": "Can't find route for GET on http://demo.churchcrm.io/master/api/persons/%7B%7BpersonId%7D%7D/photo"
+						}
+					]
+				},
+				{
+					"name": "MailChimp: Get List",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/api/mailchimp/list/c84848f505",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"mailchimp",
+								"list",
+								"c84848f505"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Persons: Get Photo by ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "ajGwpy8Pdai22XDUpqjC5Ob04v0eG7EGgb4vz2bD2juT8YDmfM"
+									}
+								],
+								"url": {
+									"raw": "{{host}}/api/persons/2/photo",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"persons",
+										"2",
+										"photo"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "CRM_USER_ID",
+									"value": "1",
+									"name": "CRM_USER_ID",
+									"description": "Custom header"
+								},
+								{
+									"key": "CRM_VERSION",
+									"value": "3.0.0",
+									"name": "CRM_VERSION",
+									"description": "Custom header"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"name": "Connection",
+									"description": "Options that are desired for the connection"
+								},
+								{
+									"key": "Content-Length",
+									"value": "98",
+									"name": "Content-Length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html;charset=UTF-8",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 24 Feb 2018 19:02:53 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=15",
+									"name": "Keep-Alive",
+									"description": "Custom header"
+								},
+								{
+									"key": "Server",
+									"value": "nginx",
+									"name": "Server",
+									"description": "A name for the server"
+								}
+							],
+							"cookie": [
+								{
+									"expires": "Invalid Date",
+									"httpOnly": false,
+									"domain": "demo.churchcrm.io",
+									"path": "/",
+									"secure": false,
+									"value": "r9fr05tpmoo6tu2242kquji0b5",
+									"key": "CRM%40%2Fmaster"
+								}
+							],
+							"body": "Can't find route for GET on http://demo.churchcrm.io/master/api/persons/%7B%7BpersonId%7D%7D/photo"
+						}
+					]
+				},
+				{
+					"name": "MailChimp: Get Family status",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/api/mailchimp/family/21",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"mailchimp",
+								"family",
+								"21"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Persons: Get Photo by ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "ajGwpy8Pdai22XDUpqjC5Ob04v0eG7EGgb4vz2bD2juT8YDmfM"
+									}
+								],
+								"url": {
+									"raw": "{{host}}/api/persons/2/photo",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"persons",
+										"2",
+										"photo"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "CRM_USER_ID",
+									"value": "1",
+									"name": "CRM_USER_ID",
+									"description": "Custom header"
+								},
+								{
+									"key": "CRM_VERSION",
+									"value": "3.0.0",
+									"name": "CRM_VERSION",
+									"description": "Custom header"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"name": "Connection",
+									"description": "Options that are desired for the connection"
+								},
+								{
+									"key": "Content-Length",
+									"value": "98",
+									"name": "Content-Length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html;charset=UTF-8",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 24 Feb 2018 19:02:53 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=15",
+									"name": "Keep-Alive",
+									"description": "Custom header"
+								},
+								{
+									"key": "Server",
+									"value": "nginx",
+									"name": "Server",
+									"description": "A name for the server"
+								}
+							],
+							"cookie": [
+								{
+									"expires": "Invalid Date",
+									"httpOnly": false,
+									"domain": "demo.churchcrm.io",
+									"path": "/",
+									"secure": false,
+									"value": "r9fr05tpmoo6tu2242kquji0b5",
+									"key": "CRM%40%2Fmaster"
+								}
+							],
+							"body": "Can't find route for GET on http://demo.churchcrm.io/master/api/persons/%7B%7BpersonId%7D%7D/photo"
+						}
+					]
+				},
+				{
+					"name": "MailChimp: Get Person status",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{host}}/api/mailchimp/person/105",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"mailchimp",
+								"person",
+								"105"
+							]
+						},
+						"description": "return perosn by Id"
+					},
+					"response": [
+						{
+							"name": "Persons: Get Photo by ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "ajGwpy8Pdai22XDUpqjC5Ob04v0eG7EGgb4vz2bD2juT8YDmfM"
+									}
+								],
+								"url": {
+									"raw": "{{host}}/api/persons/2/photo",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"persons",
+										"2",
+										"photo"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "CRM_USER_ID",
+									"value": "1",
+									"name": "CRM_USER_ID",
+									"description": "Custom header"
+								},
+								{
+									"key": "CRM_VERSION",
+									"value": "3.0.0",
+									"name": "CRM_VERSION",
+									"description": "Custom header"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"name": "Connection",
+									"description": "Options that are desired for the connection"
+								},
+								{
+									"key": "Content-Length",
+									"value": "98",
+									"name": "Content-Length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html;charset=UTF-8",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 24 Feb 2018 19:02:53 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=15",
+									"name": "Keep-Alive",
+									"description": "Custom header"
+								},
+								{
+									"key": "Server",
+									"value": "nginx",
+									"name": "Server",
+									"description": "A name for the server"
+								}
+							],
+							"cookie": [
+								{
+									"expires": "Invalid Date",
+									"httpOnly": false,
+									"domain": "demo.churchcrm.io",
+									"path": "/",
+									"secure": false,
+									"value": "r9fr05tpmoo6tu2242kquji0b5",
+									"key": "CRM%40%2Fmaster"
+								}
+							],
+							"body": "Can't find route for GET on http://demo.churchcrm.io/master/api/persons/%7B%7BpersonId%7D%7D/photo"
+						}
+					]
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
 			"name": "People",
-			"description": null,
 			"item": [
 				{
 					"name": "Person",
-					"description": "",
 					"item": [
 						{
 							"name": "Person: Get by ID",
@@ -438,10 +1060,6 @@
 										"value": "{{api-key}}"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
 								"url": {
 									"raw": "{{host}}/api/person/105",
 									"host": [
@@ -457,7 +1075,6 @@
 							},
 							"response": [
 								{
-									"id": "4d952957-54b3-4afa-89a6-a2db7b0dd60a",
 									"name": "Persons: Get Photo by ID",
 									"originalRequest": {
 										"method": "GET",
@@ -467,10 +1084,6 @@
 												"value": "ajGwpy8Pdai22XDUpqjC5Ob04v0eG7EGgb4vz2bD2juT8YDmfM"
 											}
 										],
-										"body": {
-											"mode": "raw",
-											"raw": ""
-										},
 										"url": {
 											"raw": "{{host}}/api/persons/2/photo",
 											"host": [
@@ -622,10 +1235,6 @@
 										"value": "{{api-key}}"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
 								"url": {
 									"raw": "{{host}}/api/person/2/photo",
 									"host": [
@@ -642,7 +1251,6 @@
 							},
 							"response": [
 								{
-									"id": "b63926e8-1e61-4fb2-9894-76d4d7a6f64d",
 									"name": "Persons: Get Photo by ID",
 									"originalRequest": {
 										"method": "GET",
@@ -652,10 +1260,6 @@
 												"value": "ajGwpy8Pdai22XDUpqjC5Ob04v0eG7EGgb4vz2bD2juT8YDmfM"
 											}
 										],
-										"body": {
-											"mode": "raw",
-											"raw": ""
-										},
 										"url": {
 											"raw": "{{host}}/api/persons/2/photo",
 											"host": [
@@ -747,10 +1351,6 @@
 										"value": "{{api-key}}"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
 								"url": {
 									"raw": "{{host}}/api/person/2/thumbnail",
 									"host": [
@@ -832,7 +1432,6 @@
 				},
 				{
 					"name": "Persons",
-					"description": null,
 					"item": [
 						{
 							"name": "Persons: Roles",
@@ -844,10 +1443,6 @@
 										"value": "{{api-key}}"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
 								"url": {
 									"raw": "{{host}}/api/persons/roles",
 									"host": [
@@ -864,6 +1459,56 @@
 							"response": []
 						},
 						{
+							"name": "Persons: Updated",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{api-key}}"
+									}
+								],
+								"url": {
+									"raw": "{{host}}/api/persons/updated",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"persons",
+										"updated"
+									]
+								},
+								"description": "Find where an email address is used more than once"
+							},
+							"response": []
+						},
+						{
+							"name": "Persons: Latest",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{api-key}}"
+									}
+								],
+								"url": {
+									"raw": "{{host}}/api/persons/latest",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"persons",
+										"latest"
+									]
+								},
+								"description": "Find where an email address is used more than once"
+							},
+							"response": []
+						},
+						{
 							"name": "Persons: Search",
 							"request": {
 								"method": "GET",
@@ -873,10 +1518,6 @@
 										"value": "{{api-key}}"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
 								"url": {
 									"raw": "{{host}}/api/persons/search/admin",
 									"host": [
@@ -903,10 +1544,6 @@
 										"value": "{{api-key}}"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
 								"url": {
 									"raw": "{{host}}/api/persons/duplicate/emails",
 									"host": [
@@ -924,62 +1561,27 @@
 							"response": []
 						},
 						{
-							"name": "Persons: Property Assign",
+							"name": "Persons: Birthdate",
 							"request": {
-								"method": "POST",
+								"method": "GET",
 								"header": [
 									{
 										"key": "x-api-key",
 										"value": "{{api-key}}"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n  \"PersonId\": 2,\n  \"PropertyId\": 3,\n  \"PropertyValue\": \"yep\"\n}"
-								},
 								"url": {
-									"raw": "{{host}}/api/persons/properties/",
+									"raw": "{{host}}/api/persons/birthday",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
 										"api",
 										"persons",
-										"properties",
-										""
+										"birthday"
 									]
 								},
-								"description": "added a property to a person with a value"
-							},
-							"response": []
-						},
-						{
-							"name": "Persons: Property Remove",
-							"request": {
-								"method": "DELETE",
-								"header": [
-									{
-										"key": "x-api-key",
-										"value": "{{api-key}}"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n  \"PersonId\": 2,\n  \"PropertyId\": 3\n}"
-								},
-								"url": {
-									"raw": "{{host}}/api/persons/properties/",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"api",
-										"persons",
-										"properties",
-										""
-									]
-								},
-								"description": "remove a property to a person with a value"
+								"description": "Find where an email address is used more than once"
 							},
 							"response": []
 						}
@@ -988,7 +1590,6 @@
 				},
 				{
 					"name": "Families",
-					"description": null,
 					"item": [
 						{
 							"name": "Families byCheckNumber",
@@ -1000,10 +1601,6 @@
 										"value": "{{api-key}}"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
 								"url": {
 									"raw": "{{host}}/api//families/byCheckNumber/5",
 									"host": [
@@ -1031,10 +1628,6 @@
 										"value": "{{api-key}}"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
 								"url": {
 									"raw": "{{host}}/api/families/search/Kennedy",
 									"host": [
@@ -1061,10 +1654,6 @@
 										"value": "{{api-key}}"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
 								"url": {
 									"raw": "{{host}}/api/families/lastedited",
 									"host": [
@@ -1090,10 +1679,6 @@
 										"value": "{{api-key}}"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
 								"url": {
 									"raw": "{{host}}/api/families/numbers",
 									"host": [
@@ -1118,10 +1703,6 @@
 										"value": "{{api-key}}"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
 								"url": {
 									"raw": "{{host}}/api/families/self-register",
 									"host": [
@@ -1146,10 +1727,6 @@
 										"value": "{{api-key}}"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
 								"url": {
 									"raw": "{{host}}/api/families/self-verify",
 									"host": [
@@ -1174,10 +1751,6 @@
 										"value": "{{api-key}}"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
 								"url": {
 									"raw": "{{host}}/api/families/pending-self-verify",
 									"host": [
@@ -1222,13 +1795,87 @@
 								"description": "Update the family status to activated or deactivated with :familyId and :status true/false.\nPass true to activate and false to deactivate."
 							},
 							"response": []
+						},
+						{
+							"name": "Families: Latest",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{api-key}}"
+									}
+								],
+								"url": {
+									"raw": "{{host}}/api/families/latest",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"families",
+										"latest"
+									]
+								},
+								"description": "Find where an email address is used more than once"
+							},
+							"response": []
+						},
+						{
+							"name": "Families: Updated",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{api-key}}"
+									}
+								],
+								"url": {
+									"raw": "{{host}}/api/families/updated",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"families",
+										"updated"
+									]
+								},
+								"description": "Find where an email address is used more than once"
+							},
+							"response": []
+						},
+						{
+							"name": "Families: Anniversaries",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{api-key}}"
+									}
+								],
+								"url": {
+									"raw": "{{host}}/api/families/anniversaries",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"families",
+										"anniversaries"
+									]
+								},
+								"description": "Find where an email address is used more than once"
+							},
+							"response": []
 						}
 					],
 					"_postman_isSubFolder": true
 				},
 				{
 					"name": "Family",
-					"description": "",
 					"item": [
 						{
 							"name": "Family: Get by ID",
@@ -1240,10 +1887,6 @@
 										"value": "{{api-key}}"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
 								"url": {
 									"raw": "{{host}}/api/family/21",
 									"host": [
@@ -1268,10 +1911,6 @@
 										"value": "{{api-key}}"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
 								"url": {
 									"raw": "{{host}}/api/family/2/geolocation",
 									"host": [
@@ -1288,6 +1927,31 @@
 							"response": []
 						},
 						{
+							"name": "Family: Nav",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{api-key}}"
+									}
+								],
+								"url": {
+									"raw": "{{host}}/api/family/2/nav",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"family",
+										"2",
+										"nav"
+									]
+								}
+							},
+							"response": []
+						},
+						{
 							"name": "Family: Get Photo by ID",
 							"request": {
 								"method": "GET",
@@ -1297,10 +1961,6 @@
 										"value": "{{api-key}}"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
 								"url": {
 									"raw": "{{host}}/api/family/2/photo",
 									"host": [
@@ -1355,10 +2015,6 @@
 										"value": "{{api-key}}"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
 								"url": {
 									"raw": "{{host}}/api/family/2/thumbnail",
 									"host": [
@@ -1432,15 +2088,378 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "Family: Get by ID - MailChimp",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{api-key}}"
+									}
+								],
+								"url": {
+									"raw": "{{host}}/api/family/21/mailchimp",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"family",
+										"21",
+										"mailchimp"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Persons: Get Photo by ID",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "x-api-key",
+												"value": "ajGwpy8Pdai22XDUpqjC5Ob04v0eG7EGgb4vz2bD2juT8YDmfM"
+											}
+										],
+										"url": {
+											"raw": "{{host}}/api/persons/2/photo",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"api",
+												"persons",
+												"2",
+												"photo"
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "html",
+									"header": [
+										{
+											"key": "CRM_USER_ID",
+											"value": "1",
+											"name": "CRM_USER_ID",
+											"description": "Custom header"
+										},
+										{
+											"key": "CRM_VERSION",
+											"value": "3.0.0",
+											"name": "CRM_VERSION",
+											"description": "Custom header"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive",
+											"name": "Connection",
+											"description": "Options that are desired for the connection"
+										},
+										{
+											"key": "Content-Length",
+											"value": "98",
+											"name": "Content-Length",
+											"description": "The length of the response body in octets (8-bit bytes)"
+										},
+										{
+											"key": "Content-Type",
+											"value": "text/html;charset=UTF-8",
+											"name": "Content-Type",
+											"description": "The mime type of this content"
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 24 Feb 2018 19:02:53 GMT",
+											"name": "Date",
+											"description": "The date and time that the message was sent"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=15",
+											"name": "Keep-Alive",
+											"description": "Custom header"
+										},
+										{
+											"key": "Server",
+											"value": "nginx",
+											"name": "Server",
+											"description": "A name for the server"
+										}
+									],
+									"cookie": [
+										{
+											"expires": "Invalid Date",
+											"httpOnly": false,
+											"domain": "demo.churchcrm.io",
+											"path": "/",
+											"secure": false,
+											"value": "r9fr05tpmoo6tu2242kquji0b5",
+											"key": "CRM%40%2Fmaster"
+										}
+									],
+									"body": "Can't find route for GET on http://demo.churchcrm.io/master/api/persons/%7B%7BpersonId%7D%7D/photo"
+								}
+							]
 						}
 					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Properties",
+					"item": [
+						{
+							"name": "Persons: get Properties",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"type": "text",
+										"value": "{{api-key}}"
+									}
+								],
+								"url": {
+									"raw": "{{host}}/api/people/properties/person",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"people",
+										"properties",
+										"person"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Person: get Properties",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"type": "text",
+										"value": "{{api-key}}"
+									}
+								],
+								"url": {
+									"raw": "{{host}}/api/people/properties/person/3",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"people",
+										"properties",
+										"person",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Person: Property Assign",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{api-key}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"value\": \"acc on 1.0.5 ss s\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/api/people/properties/person/3/1",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"people",
+										"properties",
+										"person",
+										"3",
+										"1"
+									]
+								},
+								"description": "added a property to a person with a value"
+							},
+							"response": []
+						},
+						{
+							"name": "Person: Property Remove",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{api-key}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"PersonId\": 2,\n  \"PropertyId\": 3\n}"
+								},
+								"url": {
+									"raw": "{{host}}/api/people/properties/person/3/1",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"people",
+										"properties",
+										"person",
+										"3",
+										"1"
+									]
+								},
+								"description": "remove a property to a person with a value"
+							},
+							"response": []
+						},
+						{
+							"name": "Family: get Properties",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{api-key}}"
+									}
+								],
+								"url": {
+									"raw": "{{host}}/api/people/properties/family",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"people",
+										"properties",
+										"family"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Family: get Property",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{api-key}}"
+									}
+								],
+								"url": {
+									"raw": "{{host}}/api/people/properties/family/3",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"people",
+										"properties",
+										"family",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Family: Property Assign",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{api-key}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"value\": \"family 5\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/api/people/properties/family/3/5",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"people",
+										"properties",
+										"family",
+										"3",
+										"5"
+									]
+								},
+								"description": "added a property to a person with a value"
+							},
+							"response": []
+						},
+						{
+							"name": "Family: Property Remove",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{api-key}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"PersonId\": 2,\n  \"PropertyId\": 3\n}"
+								},
+								"url": {
+									"raw": "{{host}}/api/people/properties/family/3/2",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"people",
+										"properties",
+										"family",
+										"3",
+										"2"
+									]
+								},
+								"description": "remove a property to a person with a value"
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
 					"_postman_isSubFolder": true
 				}
 			]
 		},
 		{
 			"name": "Search",
-			"description": null,
 			"item": [
 				{
 					"name": "Search: All",
@@ -1452,10 +2471,6 @@
 								"value": "{{api-key}}"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{host}}/api/search/Smith",
 							"host": [
@@ -1475,11 +2490,9 @@
 		},
 		{
 			"name": "System",
-			"description": null,
 			"item": [
 				{
 					"name": "Config",
-					"description": "",
 					"item": [
 						{
 							"name": "System: Set System Config",
@@ -1524,10 +2537,6 @@
 										"value": "{{api-key}}"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
 								"url": {
 									"raw": "{{host}}/api/system/config/sDefaultCountry",
 									"host": [
@@ -1548,21 +2557,26 @@
 				},
 				{
 					"name": "Database",
-					"description": null,
 					"item": [
 						{
 							"name": "Database - Reset",
 							"request": {
-								"method": "POST",
+								"method": "DELETE",
 								"header": [
 									{
 										"key": "x-api-key",
 										"value": "{{api-key}}"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
 									}
 								],
 								"body": {
-									"mode": "raw",
-									"raw": ""
+									"mode": "urlencoded",
+									"urlencoded": []
 								},
 								"url": {
 									"raw": "{{host}}/api/database/reset",
@@ -1578,6 +2592,116 @@
 								"description": "Drops all DB tables and rebuilds them.\nMust have Admin role"
 							},
 							"response": []
+						},
+						{
+							"name": "Database - ChMeetings Export",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{api-key}}"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "{{host}}/api/database/people/export/chmeetings",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"database",
+										"people",
+										"export",
+										"chmeetings"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Database - ChMeetings Export",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "x-api-key",
+												"value": "{{api-key}}"
+											},
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/x-www-form-urlencoded"
+											}
+										],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": []
+										},
+										"url": {
+											"raw": "{{host}}/api/database/people/export/chmeetings",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"api",
+												"database",
+												"people",
+												"export",
+												"chmeetings"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "html",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Sun, 21 Mar 2021 20:15:23 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "Apache"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/7.3.9"
+										},
+										{
+											"key": "Content-Length",
+											"value": "0"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5, max=100"
+										},
+										{
+											"key": "Connection",
+											"value": "Keep-Alive"
+										},
+										{
+											"key": "Content-Type",
+											"value": "text/html; charset=UTF-8"
+										}
+									],
+									"cookie": [],
+									"body": null
+								}
+							]
 						},
 						{
 							"name": "Database - Clear People",
@@ -1608,13 +2732,232 @@
 								"description": "Clear all people in the system.\nMust have Admin role"
 							},
 							"response": []
+						},
+						{
+							"name": "Database - ChMeetings Export Copy",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{api-key}}"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "{{host}}/api/database/people/export/chmeetings",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"database",
+										"people",
+										"export",
+										"chmeetings"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Database - ChMeetings Export",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "x-api-key",
+												"value": "{{api-key}}"
+											},
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/x-www-form-urlencoded"
+											}
+										],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": []
+										},
+										"url": {
+											"raw": "{{host}}/api/database/people/export/chmeetings",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"api",
+												"database",
+												"people",
+												"export",
+												"chmeetings"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "html",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Sun, 21 Mar 2021 20:15:23 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "Apache"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/7.3.9"
+										},
+										{
+											"key": "Content-Length",
+											"value": "0"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5, max=100"
+										},
+										{
+											"key": "Connection",
+											"value": "Keep-Alive"
+										},
+										{
+											"key": "Content-Type",
+											"value": "text/html; charset=UTF-8"
+										}
+									],
+									"cookie": [],
+									"body": null
+								}
+							]
+						},
+						{
+							"name": "Database - Locale Terms",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{api-key}}"
+									},
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "{{host}}/api/database/people/export/chmeetings",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"database",
+										"people",
+										"export",
+										"chmeetings"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Database - ChMeetings Export",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "x-api-key",
+												"value": "{{api-key}}"
+											},
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/x-www-form-urlencoded"
+											}
+										],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": []
+										},
+										"url": {
+											"raw": "{{host}}/api/database/people/export/chmeetings",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"api",
+												"database",
+												"people",
+												"export",
+												"chmeetings"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "html",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Sun, 21 Mar 2021 20:15:23 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "Apache"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/7.3.9"
+										},
+										{
+											"key": "Content-Length",
+											"value": "0"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5, max=100"
+										},
+										{
+											"key": "Connection",
+											"value": "Keep-Alive"
+										},
+										{
+											"key": "Content-Type",
+											"value": "text/html; charset=UTF-8"
+										}
+									],
+									"cookie": [],
+									"body": null
+								}
+							]
 						}
 					],
 					"_postman_isSubFolder": true
 				},
 				{
 					"name": "Debug",
-					"description": null,
 					"item": [
 						{
 							"name": "System: Debug URLs",
@@ -1626,12 +2969,41 @@
 										"value": "{{api-key}}"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
 								"url": {
 									"raw": ""
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "System: Set System Level to Debug",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{api-key}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"value\": \"100\"\n}"
+								},
+								"url": {
+									"raw": "{{host}}/api/system/config/sLogLevel",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"system",
+										"config",
+										"sLogLevel"
+									]
 								}
 							},
 							"response": []
@@ -1641,13 +3013,11 @@
 				},
 				{
 					"name": "Issues",
-					"description": null,
 					"item": [],
 					"_postman_isSubFolder": true
 				},
 				{
 					"name": "Menu Links",
-					"description": null,
 					"item": [
 						{
 							"name": "MenuLink: Get All",
@@ -1659,10 +3029,6 @@
 										"value": "{{api-key}}"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
 								"url": {
 									"raw": "{{host}}/api/system/menu",
 									"host": [
@@ -1744,8 +3110,70 @@
 				},
 				{
 					"name": "Upgrade",
-					"description": null,
 					"item": [],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "background",
+					"item": [
+						{
+							"name": "Background: Page",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{api-key}}"
+									}
+								],
+								"url": {
+									"raw": "{{host}}/api/background/page?name=anypage",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"background",
+										"page"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "anypage"
+										}
+									]
+								},
+								"description": "get all notitication to show the user"
+							},
+							"response": []
+						},
+						{
+							"name": "Background: Timer",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{api-key}}"
+									}
+								],
+								"url": {
+									"raw": "{{host}}/api/background/timer",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"background",
+										"timer"
+									]
+								},
+								"description": "get all notitication to show the user"
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
 					"_postman_isSubFolder": true
 				},
 				{
@@ -1758,10 +3186,6 @@
 								"value": "{{api-key}}"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
 						"url": {
 							"raw": "{{host}}/api/system/notification",
 							"host": [
@@ -1781,12 +3205,85 @@
 		},
 		{
 			"name": "Users",
-			"description": null,
 			"item": [
 				{
 					"name": "Email",
-					"description": null,
 					"item": [],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Current User",
+					"item": [
+						{
+							"name": "User: Set Setting",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{api-key}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"value\": true\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/api/user/1/setting/finance.show.payments",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"user",
+										"1",
+										"setting",
+										"finance.show.payments"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "User: get Setting",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-api-key",
+										"value": "{{api-key}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{host}}/api/user/1/setting/finance.show.paymentsddddd",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"user",
+										"1",
+										"setting",
+										"finance.show.paymentsddddd"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
 					"_postman_isSubFolder": true
 				},
 				{
@@ -1814,6 +3311,78 @@
 								"1",
 								"apikey",
 								"regen"
+							]
+						},
+						"description": "login and get api token back"
+					},
+					"response": []
+				},
+				{
+					"name": "User: Set User Config",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{api-key}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"value\": \",\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/users/1/config/sMailtoDelimiter",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"1",
+								"config",
+								"sMailtoDelimiter"
+							]
+						},
+						"description": "login and get api token back"
+					},
+					"response": []
+				},
+				{
+					"name": "User: Set User Setting",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "{{api-key}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"value\": \"skin-green\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/users/1/setting/style",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"1",
+								"setting",
+								"style"
 							]
 						},
 						"description": "login and get api token back"

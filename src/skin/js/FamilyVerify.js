@@ -49,22 +49,31 @@ $(document).ready(function () {
           "stylers": [{"hue": "#ffff00"}, {"lightness": -25}, {"saturation": -97}]
         }]
       };
-  
+
       // Get all html elements for map
       var mapElement1 = document.getElementById('map1');
-  
+
       // Create the Google Map using elements
       var map1 = new google.maps.Map(mapElement1, mapOptions1);
-  
+
       marker = new google.maps.Marker({position: LatLng, map: map1});
     }
   }
 
 
   $("#onlineVerifyBtn").click(function () {
+
+
+    var formData =  "";
+    if ($("input[type='radio']:checked").val() === 'change-needed') {
+     formData = $("#confirm-info-data").val()
+    }
+
+    alert(formData);
+
     $.post(window.CRM.root + '/external/verify/' + token,
       {
-        message: $("#confirm-info-data").val()
+        message: formData
       },
       function (data, status) {
         $('#confirm-modal-collect').hide();
@@ -78,7 +87,7 @@ $(document).ready(function () {
         }
       });
   });
-  
- 
 
 });
+
+

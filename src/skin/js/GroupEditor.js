@@ -146,7 +146,7 @@ $("document").ready(function()
     {
       newRoleSequence = Number(currentRoleSequence) + 1; // increase the role's sequenc number
     }
-   
+
     replaceRow = dataT.row(function(idx, data, node)
     {
       if(data.lst_OptionSequence == newRoleSequence)
@@ -158,7 +158,7 @@ $("document").ready(function()
     d.lst_OptionSequence = currentRoleSequence;
     setGroupRoleOrder(groupID, d.lst_OptionID, d.lst_OptionSequence);
     replaceRow.data(d);
-   
+
     dataT.cell(function(idx, data, node)
     {
       if(data.lst_OptionID == roleID)
@@ -206,10 +206,7 @@ $("document").ready(function()
     });
   });
 
-  dataT = $("#groupRoleTable").DataTable({
-   "language": {
-      "url": window.CRM.plugin.dataTable.language.url
-    },
+ var dataTableConfig = {
     data: groupRoleData,
     columns: [
       {
@@ -285,7 +282,9 @@ $("document").ready(function()
       },
     ],
     "order": [[3, "asc"]]
-  });
+  }
+  $.extend(dataTableConfig, window.CRM.plugin.dataTable);
+  dataT = $("#groupRoleTable").DataTable(dataTableConfig);
 
   // initialize the event handlers when the document is ready.  Don't do it here, since we need to be able to initialize these handlers on the fly in response to user action.
 });

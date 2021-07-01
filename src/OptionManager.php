@@ -17,6 +17,7 @@ require 'Include/Functions.php';
 
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\Authentication\AuthenticationManager;
 
 $mode = trim($_GET['mode']);
 
@@ -24,7 +25,7 @@ $mode = trim($_GET['mode']);
 switch ($mode) {
     case 'famroles':
     case 'classes':
-        if (!$_SESSION['user']->isMenuOptionsEnabled()) {
+        if (!AuthenticationManager::GetCurrentUser()->isMenuOptionsEnabled()) {
             RedirectUtils::Redirect('Menu.php');
             exit;
         }
@@ -33,7 +34,7 @@ switch ($mode) {
     case 'grptypes':
     case 'grproles':
     case 'groupcustom':
-        if (!$_SESSION['user']->isManageGroupsEnabled()) {
+        if (!AuthenticationManager::GetCurrentUser()->isManageGroupsEnabled()) {
             RedirectUtils::Redirect('Menu.php');
             exit;
         }
@@ -42,7 +43,7 @@ switch ($mode) {
     case 'custom':
     case 'famcustom':
     case 'securitygrp':
-        if (!$_SESSION['user']->isAdmin()) {
+        if (!AuthenticationManager::GetCurrentUser()->isAdmin()) {
             RedirectUtils::Redirect('Menu.php');
             exit;
         }
@@ -355,7 +356,7 @@ for ($row = 1; $row <= $numRows; $row++) {
 		</td>
 		<?php
         if ($mode == 'grproles') {
-            echo '<td class="TextColumn"><input class="form-control input-small" type="button" class="btn" value="'.gettext('Make Default')."\" Name=\"default\" onclick=\"javascript:document.location='OptionManagerRowOps.php?mode=".$mode.'&ListID='.$listID.'&ID='.$aIDs[$row]."&Action=makedefault';\" ></td>";
+            echo '<td class="TextColumn"><input class="form-control input-small" type="button" class="btn btn-default" value="'.gettext('Make Default')."\" Name=\"default\" onclick=\"javascript:document.location='OptionManagerRowOps.php?mode=".$mode.'&ListID='.$listID.'&ID='.$aIDs[$row]."&Action=makedefault';\" ></td>";
         } ?>
 
 	</tr>
@@ -369,11 +370,11 @@ for ($row = 1; $row <= $numRows; $row++) {
 
 	<?php if ($mode == 'groupcustom' || $mode == 'custom' || $mode == 'famcustom') {
             ?>
-		<input type="button" class="btn" value="<?= gettext('Exit') ?>" Name="Exit" onclick="javascript:window.close();">
+		<input type="button" class="btn btn-default" value="<?= gettext('Exit') ?>" Name="Exit" onclick="javascript:window.close();">
 	<?php
         } elseif ($mode != 'grproles') {
             ?>
-		<input type="button" class="btn" value="<?= gettext('Exit') ?>" Name="Exit" onclick="javascript:document.location='<?php
+		<input type="button" class="btn btn-default" value="<?= gettext('Exit') ?>" Name="Exit" onclick="javascript:document.location='<?php
         echo 'Menu.php'; ?>';">
 	<?php
         } ?>
@@ -387,7 +388,7 @@ for ($row = 1; $row <= $numRows; $row++) {
 	<input class="form-control input-small" type="text" name="newFieldName" size="30" maxlength="40">
 </span>
 <p>  </p>
-<input type="submit" class="btn" value="<?= gettext('Add New').' '.$adjplusname ?>" Name="AddField">
+<input type="submit" class="btn btn-default" value="<?= gettext('Add New').' '.$adjplusname ?>" Name="AddField">
 <?php
     if ($iNewNameError > 0) {
         echo '<div><span style="color: red;"><BR>';

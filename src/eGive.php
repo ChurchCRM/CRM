@@ -13,8 +13,9 @@ require 'Include/Functions.php';
 
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\Authentication\AuthenticationManager;
 
-if (!$_SESSION['user']->isFinanceEnabled()) {
+if (!AuthenticationManager::GetCurrentUser()->isFinanceEnabled()) {
     RedirectUtils::Redirect('Menu.php');
     exit;
 }
@@ -228,7 +229,7 @@ if (isset($_POST['ApiGet'])) {
         $doUpdate = $_POST['MissingEgive_Set_'.$nameWithUnderscores];
         if ($famID) {
             if ($doUpdate) {
-                $sSQL = "INSERT INTO egive_egv (egv_egiveID, egv_famID, egv_DateEntered, egv_EnteredBy) VALUES ('".$egiveID."','".$famID."','".date('YmdHis')."','".$_SESSION['user']->getId()."');";
+                $sSQL = "INSERT INTO egive_egv (egv_egiveID, egv_famID, egv_DateEntered, egv_EnteredBy) VALUES ('".$egiveID."','".$famID."','".date('YmdHis')."','".AuthenticationManager::GetCurrentUser()->getId()."');";
                 RunQuery($sSQL);
             }
 
@@ -261,10 +262,10 @@ if (isset($_POST['ApiGet'])) {
 	<tr><td>
 		<form method="post" action="eGive.php?DepositSlipID=<?php echo $iDepositSlipID ?>" enctype="multipart/form-data">
 		<class="LabelColumn"><b><?= gettext('Start Date: ') ?></b>
-			<class="TextColumn"><input type="text" name="StartDate" value="<?= $lwDate ?>" maxlength="10" id="StartDate" size="11" class="date-picker"><font color="red"><?php echo $sDateError ?></font><br>
+			<class="TextColumn"><input type="text" name="StartDate" value="<?= $lwDate ?>" maxlength="10" id="StartDate" size="11" class="date-picker"><span style="color: red;"><?php echo $sDateError ?></span><br>
 			<class="LabelColumn"><b><?= gettext('End Date: ') ?></b>
-			<class="TextColumn"><input type="text" name="EndDate" value="<?= $dDate ?>" maxlength="10" id="EndDate" size="11" class="date-picker"><font color="red"><?php echo $sDateError ?></font><br><br>
-		<input type="submit" class="btn" value="<?= gettext('Import eGive') ?>" name="ApiGet">
+			<class="TextColumn"><input type="text" name="EndDate" value="<?= $dDate ?>" maxlength="10" id="EndDate" size="11" class="date-picker"><span style="color: red;"><?php echo $sDateError ?></span><br><br>
+		<input type="submit" class="btn btn-default" value="<?= gettext('Import eGive') ?>" name="ApiGet">
 		<br><br><br>
 		</form>
 		</td>
@@ -284,7 +285,7 @@ function updateDB($famID, $transId, $date, $name, $amount, $fundId, $comment, $f
     if ($eGiveExisting && array_key_exists($keyExisting, $eGiveExisting)) {
         ++$importNoChange;
     } elseif ($famID) { //  insert a new record
-        $sSQL = "INSERT INTO pledge_plg (plg_famID, plg_FYID, plg_date, plg_amount, plg_schedule, plg_method, plg_comment, plg_DateLastEdited, plg_EditedBy, plg_PledgeOrPayment, plg_fundID, plg_depID, plg_CheckNo, plg_NonDeductible, plg_GroupKey) VALUES ('".$famID."','".$iFYID."','".$date."','".$amount."','".$frequency."','EGIVE','".$comment."','".date('YmdHis')."',".$_SESSION['user']->getId().",'Payment',".$fundId.",'".$iDepositSlipID."','".$transId."','0','".$groupKey."')";
+        $sSQL = "INSERT INTO pledge_plg (plg_famID, plg_FYID, plg_date, plg_amount, plg_schedule, plg_method, plg_comment, plg_DateLastEdited, plg_EditedBy, plg_PledgeOrPayment, plg_fundID, plg_depID, plg_CheckNo, plg_NonDeductible, plg_GroupKey) VALUES ('".$famID."','".$iFYID."','".$date."','".$amount."','".$frequency."','EGIVE','".$comment."','".date('YmdHis')."',".AuthenticationManager::GetCurrentUser()->getId().",'Payment',".$fundId.",'".$iDepositSlipID."','".$transId."','0','".$groupKey."')";
         ++$importCreated;
         RunQuery($sSQL);
     }
@@ -349,12 +350,12 @@ function importDoneFixOrContinue()
         } ?>
 		</table><br>
 
-		<input type="submit" class="btn" value="<?= gettext('Re-import to selected family') ?>" name="ReImport">
+		<input type="submit" class="btn btn-default" value="<?= gettext('Re-import to selected family') ?>" name="ReImport">
 	<?php
     } ?>
 
 	<p class="MediumLargeText"> <?= gettext('Data import results: ').$importCreated.gettext(' gifts were imported, ').$importNoChange.gettext(' gifts unchanged, and ').$importError.gettext(' gifts not imported due to problems') ?></p>
-	<input type="button" class="btn" value="<?= gettext('Back to Deposit Slip') ?>" onclick="javascript:document.location='DepositSlipEditor.php?DepositSlipID=<?= $iDepositSlipID ?>'"
+	<input type="button" class="btn btn-default" value="<?= gettext('Back to Deposit Slip') ?>" onclick="javascript:document.location='DepositSlipEditor.php?DepositSlipID=<?= $iDepositSlipID ?>'"
 <?php
 }
 
@@ -382,8 +383,8 @@ function get_api_data($json)
         return $result;
     } else {
         ?>
-		<font color="red"><?= gettext("Fatal error in eGive API datastream: '").$error ?>"'</font><br><br>
- 		<input type="button" class="btn" value="<?= gettext('Back to Deposit Slip') ?>" onclick="javascript:document.location='DepositSlipEditor.php?DepositSlipID=<?= $iDepositSlipID ?>'"
+		<span style="color: red;"><?= gettext("Fatal error in eGive API datastream: '").$error ?>"'</span><br><br>
+ 		<input type="button" class="btn btn-default" value="<?= gettext('Back to Deposit Slip') ?>" onclick="javascript:document.location='DepositSlipEditor.php?DepositSlipID=<?= $iDepositSlipID ?>'"
 	<?php
         return 0;
     }

@@ -1,13 +1,12 @@
 {
-    "name": "ChurchCRM/CRM",
-    "version": "3.0.9",
+    "name": "churchcrm/crm",
+    "version": "4.4.4",
     "type": "project",
     "keywords": [
         "church",
         "crm"
     ],
     "homepage": "http://www.churchcrm.io",
-    "time": "2018-08-24 19:08:25",
     "license": "MIT",
     "authors": [
         {
@@ -17,7 +16,7 @@
         },
         {
             "name": "Charles Crossan",
-            "homepage": "http://www.ccrossan.com",
+            "homepage": "https://crossan007.dev/",
             "role": "Developer"
         }
     ],
@@ -28,26 +27,35 @@
         "source": "https://github.com/ChurchCRM/CRM",
         "docs": "https://github.com/ChurchCRM/CRM/wiki"
     },
+    "config": {
+        "platform": {
+            "php": "7.3"
+        },
+        "sort-packages": true
+    },
     "require": {
-        "php": ">=5.6.0",
-        "mailchimp/mailchimp": "2.0.6",
-        "slim/slim": "3.9.2",
-        "slim/php-view": "2.2",
-        "monolog/monolog": "^1.17",
-        "authorizenet/authorizenet": "1.9.5",
-        "knplabs/github-api": "~1.4",
-        "propel/propel": "~2.0@dev",
-        "setasign/fpdf": "1.8.1",
-        "phpmailer/phpmailer": "6.0.*",
-        "verot/class.upload.php": "dev-master",
-        "ifsnop/mysqldump-php": "2.*",
-        "php-http/message": "1.6.0",
-        "geocoder-php/google-maps-provider": "4.2.0",
-        "geocoder-php/bing-maps-provider": "4.0.0",
-        "mustache/mustache": "~2.5",
-        "nexmo/client": "@beta",
-        "slim/http-cache": "^0.4.0",
-        "azuyalabs/yasumi": "^1.8"
+        "azuyalabs/yasumi": "^2.3",
+        "defuse/php-encryption": "^2.2",
+        "drewm/mailchimp-api": "^2.5",
+        "endroid/qr-code": "^3.9",
+        "geocoder-php/bing-maps-provider": "^4.1",
+        "geocoder-php/google-maps-provider": "^4.5",
+        "ifsnop/mysqldump-php": "^v2.9",
+        "knplabs/github-api": "^2.17.0",
+        "monolog/monolog": "^2.1",
+        "mustache/mustache": "^v2.13.0",
+        "php-http/guzzle7-adapter": "^0.1.1",
+        "php-http/message": "^1.9.1",
+        "phpmailer/phpmailer": "^6.5.0",
+        "pragmarx/google2fa": "^8.0.0",
+        "propel/propel": "2.0.0-alpha12",
+        "setasign/fpdf": "^1.8.2",
+        "slim/http-cache": "^1.1.0",
+        "slim/php-view": "^3.0.0",
+        "slim/slim": "^3.12.3",
+        "symfony/translation": "^5.2",
+        "verot/class.upload.php": "^2.0.9",
+        "vonage/client": "^2.4.0"
     },
     "autoload": {
         "classmap": [

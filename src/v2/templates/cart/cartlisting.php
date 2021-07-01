@@ -1,7 +1,6 @@
 <?php
 
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\dto\SystemConfig;
 
 $ListTitleText = gettext('Your cart contains') . ' ' . count($cartPeople) . ' ' . gettext('persons from') . ' ' . $iNumFamilies . ' ' . gettext('families');
 ?>

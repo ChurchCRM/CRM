@@ -6,533 +6,332 @@ msgstr ""
 "X-Generator: POEditor.com\n"
 "Project-Id-Version: ChurchCRM\n"
 "Language: hu\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: AutoPaymentClearAccounts.php:24 CatchCreatePayment.php:71
-#: Include/Functions.php:234
+#: 
 msgid "Cannot execute query."
 msgstr "Nem hajtható végre a lekérdezést."
 
-#: AutoPaymentDelete.php:19
-msgid "Confirm Delete Automatic payment"
-msgstr "Törlés megerősítése Automatikus fizetés"
-
-#: AutoPaymentDelete.php:63 Checkin.php:286 Checkin.php:368
-#: DepositSlipEditor.php:231 DonationFundEditor.php:153
-#: DonationFundEditor.php:183 EditEventAttendees.php:76
-#: ElectronicPaymentList.php:219 ElectronicPaymentList.php:284
-#: EventNames.php:302 FamilyCustomFieldsEditor.php:324
-#: FamilyCustomFieldsEditor.php:382 FamilyView.php:663 FamilyView.php:715
-#: FamilyView.php:774 FamilyView.php:911 FindDepositSlip.php:105
-#: FundRaiserEditor.php:200 ListEvents.php:241 PaddleNumList.php:55
-#: PersonCustomFieldsEditor.php:315 PersonCustomFieldsEditor.php:384
-#: PersonView.php:940 PledgeDelete.php:53 PropertyList.php:65
-#: PropertyList.php:106 PropertyTypeList.php:46 PropertyTypeList.php:67
-#: PropertyTypeList.php:69 v2/templates/people/family-view.php:530
+#: 
 msgid "Delete"
 msgstr "Töröl"
 
-#: AutoPaymentDelete.php:64 AutoPaymentEditor.php:787 BatchWinnerEntry.php:112
-#: CanvassEditor.php:239 Checkin.php:167 Checkin.php:274 Checkin.php:287
-#: DirectoryReports.php:286 DonatedItemEditor.php:297 EventNames.php:231
-#: FamilyEditor.php:1119 FamilyView.php:910 FinancialReports.php:69
-#: FundRaiserEditor.php:143 GroupPropsEditor.php:168 GroupReports.php:82
-#: GroupReports.php:151 LettersAndLabels.php:83 ManageEnvelopes.php:135
-#: MemberRoleChange.php:119 MemberRoleChange.php:121 NoteDelete.php:67
-#: NoteEditor.php:135 PersonEditor.php:1231 PersonView.php:939
-#: PledgeDelete.php:54 PropertyEditor.php:169 PropertyTypeEditor.php:114
-#: Register.php:56 ReminderReport.php:52 SettingsIndividual.php:114
-#: SettingsIndividual.php:160 SettingsUser.php:100 SettingsUser.php:160
-#: TaxReport.php:55 UserEditor.php:459 UserEditor.php:562
-#: WhyCameEditor.php:105 external/templates/verify/verify-family-info.php:144
-#: sundayschool/SundaySchoolDashboard.php:258
-#: sundayschool/SundaySchoolReports.php:286
-#: v2/templates/people/family-view.php:529
+#: 
 msgid "Cancel"
 msgstr "Töröl"
 
-#: AutoPaymentEditor.php:129
-msgid "Automatic payment configuration for the "
-msgstr "Automata fizető-konfiguráció"
-
-#: AutoPaymentEditor.php:786 CanvassEditor.php:238 DepositSlipEditor.php:97
-#: DonatedItemEditor.php:293 FamilyEditor.php:647 FamilyEditor.php:731
-#: FamilyEditor.php:795 FamilyEditor.php:869 FamilyEditor.php:891
-#: FamilyEditor.php:922 FamilyEditor.php:1115 FundRaiserEditor.php:142
-#: GroupEditor.php:167 GroupPropsEditor.php:166 NoteEditor.php:133
-#: PaddleNumEditor.php:147 PersonEditor.php:617 PersonEditor.php:775
-#: PersonEditor.php:818 PersonEditor.php:1129 PersonEditor.php:1192
-#: PersonEditor.php:1227 PledgeEditor.php:687 PropertyEditor.php:169
-#: PropertyTypeEditor.php:112 UserEditor.php:458 UserPasswordChange.php:213
-#: WhyCameEditor.php:104
+#: 
 msgid "Save"
 msgstr "Kivéve"
 
-#: AutoPaymentEditor.php:804 BatchWinnerEntry.php:83 BatchWinnerEntry.php:95
-#: CSVImport.php:271 ChurchCRM/Config/Menu/Menu.php:100
-#: DirectoryReports.php:82 DonatedItemEditor.php:186 DonatedItemEditor.php:237
-#: FamilyEditor.php:1089 GroupEditor.php:94 GroupList.php:36 GroupView.php:40
-#: Include/CountryDropDown.php:6 Include/Functions.php:856
-#: Include/Functions.php:909 MapUsingGoogle.php:96 MapUsingGoogle.php:120
-#: PaddleNumEditor.php:176 PersonEditor.php:782 PersonEditor.php:798
-#: PersonEditor.php:1137 PrintView.php:264 PrintView.php:274
-#: SelectDelete.php:157 SelectList.php:35 SelectList.php:45 SelectList.php:61
-#: SelectList.php:1098 SelectList.php:1169 SystemSettings.php:214
-#: eGive.php:341
+#: 
 msgid "Unassigned"
 msgstr "Gazdátlan"
 
-#: AutoPaymentEditor.php:824
-msgid "Automatic payment type"
-msgstr "Automatikus fizetés módját"
-
-#: AutoPaymentEditor.php:854
-msgid "Payment amount"
-msgstr "Fizetési összeg"
-
-#: AutoPaymentEditor.php:859
-msgid "Payment interval (months)"
-msgstr "Fizetési idő (hónap)"
-
-#: AutoPaymentEditor.php:867 CartToGroup.php:74 EditEventTypes.php:86
-#: EditEventTypes.php:98 EventNames.php:106 EventNames.php:118
-#: EventNames.php:163 GroupReports.php:47 GroupReports.php:142
-#: PersonToGroup.php:66 sundayschool/SundaySchoolReports.php:190
+#: 
 msgid "None"
 msgstr "Egyik sem"
 
-#: AutoPaymentEditor.php:880
-msgid "inactive"
-msgstr "tétlen"
-
-#: AutoPaymentEditor.php:914 CSVExport.php:102 CSVImport.php:219
-#: CartToFamily.php:245 DirectoryReports.php:250 FamilyEditor.php:672
-#: PersonEditor.php:863 Register.php:44
-#: external/templates/registration/family-register.php:41
-#: queryparameteroptions_qpo.php:7
+#: 
 msgid "City"
 msgstr "City"
 
-#: AutoPaymentEditor.php:919 CSVExport.php:107 CSVImport.php:220
-#: CartToFamily.php:250 DirectoryReports.php:254 FamilyEditor.php:679
-#: PersonEditor.php:883 Register.php:45
-#: external/templates/registration/family-register.php:44
-#: queryparameteroptions_qpo.php:6
+#: 
 msgid "State"
 msgstr "Állami"
 
-#: AutoPaymentEditor.php:930 CSVExport.php:122 CSVImport.php:222
-#: CartToFamily.php:270 FamilyEditor.php:699 PersonEditor.php:928
-#: Register.php:47
+#: 
 msgid "Country"
 msgstr "Ország"
 
-#: AutoPaymentEditor.php:936 ChurchCRM/Reports/PDF_Directory.php:309
-#: ChurchCRM/Reports/PDF_Directory.php:383
-#: ChurchCRM/Reports/PDF_Directory.php:440 DirectoryReports.php:262
-#: Reports/DirectoryReport.php:285 Reports/GroupReport.php:119
-#: external/templates/registration/family-register-members.php:103
+#: 
 msgid "Phone"
 msgstr "Telefon"
 
-#: AutoPaymentEditor.php:942 CSVExport.php:142 CSVImport.php:226
-#: CartToFamily.php:311 ChurchCRM/Config/Menu/Menu.php:40
-#: ChurchCRM/Reports/PDF_Directory.php:318
-#: ChurchCRM/Reports/PDF_Directory.php:394
-#: ChurchCRM/Reports/PDF_Directory.php:451 EditEventAttendees.php:42
-#: EventAttendance.php:175 FamilyEditor.php:771 FamilyView.php:272
-#: FamilyView.php:277 FamilyView.php:359 GroupReports.php:127
-#: PersonEditor.php:1035 PersonEditor.php:1037 PersonView.php:307
-#: PersonView.php:511 PrintView.php:294 Reports/CanvassReports.php:243
-#: Reports/ConfirmReport.php:183 Reports/ConfirmReport.php:202
-#: Reports/ConfirmReportEmail.php:187 Reports/ConfirmReportEmail.php:205
-#: Reports/DirectoryReport.php:296 Reports/GroupReport.php:133
-#: external/templates/registration/family-register-members.php:83
-#: external/templates/verify/enter-info.php:33
-#: external/templates/verify/verify-family-info.php:76
-#: sundayschool/SundaySchoolClassView.php:89
-#: sundayschool/SundaySchoolClassView.php:205
-#: v2/templates/cart/cartlisting.php:19
-#: v2/templates/people/family-view.php:174
-#: v2/templates/people/family-view.php:314 queryparameteroptions_qpo.php:13
+#: 
 msgid "Email"
 msgstr "Email"
 
-#: AutoPaymentEditor.php:948 ElectronicPaymentList.php:210
-#: FinancialReports.php:264 FindDepositSlip.php:48 PledgeEditor.php:589
+#: 
 msgid "Credit Card"
 msgstr "Hitelkártya"
 
-#: AutoPaymentEditor.php:956
-msgid "Vanco Credit Card Method"
-msgstr "Vanco Hitelkártya Metódus"
-
-#: AutoPaymentEditor.php:965
-msgid "Expiration Month"
-msgstr "Lejárati hónap"
-
-#: AutoPaymentEditor.php:971
-msgid "Expiration Year"
-msgstr "Lejárat éve"
-
-#: AutoPaymentEditor.php:977
-msgid "Bank Name"
-msgstr "Bank neve"
-
-#: AutoPaymentEditor.php:983
-msgid "Bank Route Number"
-msgstr "Bank Route szám"
-
-#: AutoPaymentEditor.php:989
-msgid "Bank Account Number"
-msgstr "Bankszámlaszám"
-
-#: BackupDatabase.php:32 ChurchCRM/Config/Menu/Menu.php:197
+#: 
 msgid "Backup Database"
 msgstr "Backup Database"
 
-#: BackupDatabase.php:38
+#: 
 msgid "This tool will assist you in manually backing up the ChurchCRM database."
 msgstr "Ez az eszköz segít neked mauális biztonsági mentést csinálni a ChurchCRM adatbázisról."
 
-#: BackupDatabase.php:42
-msgid "You should make a manual backup at least once a week unless you already have a regular backup procedule for your systems."
+#: 
+#, fuzzy
+msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
 msgstr "Meg kell, hogy egy kézi mentés legalább egyszer egy héten, kivéve, ha már van egy rendszeres biztonsági mentés procedule a rendszerek."
 
-#: BackupDatabase.php:43
+#: 
 msgid "After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site."
 msgstr "Miután letöltötte a backup fájlt, akkor kell, hogy két példányban. Tedd egyikük egy tűzálló széf a helyszínen, a másik pedig biztonságos helyen off-site."
 
-#: BackupDatabase.php:45
-msgid "For added backup security, you can e-mail the backup to yourself at an e-mail account hosted off-site or to a trusted friend.  Be sure to use encryption if you do this, however."
-msgstr "A nagyobb biztonság biztonsági mentés, akkor az e-mail a mentés magad egy e-mail fiókot házigazdája off-site, vagy egy megbízható barát. Ügyeljen arra, hogy titkosítást használni, ha ezt teszed, de."
-
-#: BackupDatabase.php:49
+#: 
 #, fuzzy
 msgid "Select archive type"
 msgstr "Válassza archívum típusa"
 
-#: BackupDatabase.php:53
+#: 
 msgid "Encrypt backup file with a password?"
 msgstr "Titkosítása biztonsági mentés a jelszót?"
 
-#: BackupDatabase.php:59
-msgid "Generate and Download Backup"
-msgstr "Létrehozása és letöltése Backup"
-
-#: BatchWinnerEntry.php:35 FundRaiserEditor.php:154
+#: 
 msgid "Batch Winner Entry"
 msgstr "Batch Winner bejegyzés"
 
-#: BatchWinnerEntry.php:75
+#: 
 msgid "Winner"
 msgstr "Győztes"
 
-#: BatchWinnerEntry.php:76
+#: 
 msgid "Price"
 msgstr "Ár"
 
-#: BatchWinnerEntry.php:111
+#: 
 msgid "Enter Winners"
 msgstr "Adja meg a nyertesek"
 
-#: CSVExport.php:54 v2/templates/cart/cartfunctions.php:32
+#: 
 msgid "CSV Export"
 msgstr "CSV export"
 
-#: AutoPaymentEditor.php:896 CSVExport.php:66 CSVImport.php:213
-#: ManageEnvelopes.php:162 PersonEditor.php:668
-#: external/templates/registration/family-register-members.php:73
-#: external/templates/verify/enter-info.php:25
-#: sundayschool/SundaySchoolDashboard.php:204
+#: 
 #, fuzzy
 msgid "Last Name"
 msgstr "Vezetéknév"
 
-#: CSVExport.php:67
+#: 
 msgid "Required"
 msgstr "Kötelező"
 
-#: CSVExport.php:82 CSVImport.php:212 PersonEditor.php:657
+#: 
 #, fuzzy
 msgid "Middle Name"
 msgstr "Középső név"
 
-#: AutoPaymentEditor.php:925 CSVExport.php:112 CSVImport.php:221
-#: CartToFamily.php:262 DirectoryReports.php:258 FamilyEditor.php:689
-#: PersonEditor.php:906 Register.php:46
-#: external/templates/registration/family-register.php:51
-#: external/templates/verify/enter-info.php:29
+#: 
 msgid "Zip"
 msgstr "Irányítószám"
 
-#: CSVExport.php:117
+#: 
 #, fuzzy
 msgid "Envelope"
 msgstr "Boríték"
 
-#: CSVExport.php:147 ChurchCRM/Reports/PDF_Directory.php:397
-#: ChurchCRM/Reports/PDF_Directory.php:454 PersonView.php:321
-#: Reports/DirectoryReport.php:299
+#: 
 #, fuzzy
 msgid "Work/Other Email"
 msgstr "Munka / Egyéb Email"
 
-#: CSVExport.php:152 CSVExport.php:371 CSVImport.php:229 PersonEditor.php:1150
-#: PrintView.php:304
+#: 
 #, fuzzy
 msgid "Membership Date"
 msgstr "Tagsági Date"
 
-#: CSVExport.php:157
+#: 
 #, fuzzy
 msgid "Birth / Anniversary Date"
 msgstr "Születési / Anniversary Dátum"
 
-#: CSVExport.php:162
+#: 
 #, fuzzy
 msgid "Age / Years Married"
 msgstr "Életkor / Évek Házas"
 
-#: CSVExport.php:172 CSVExport.php:302 OptionManager.php:62
-#: PersonEditor.php:780 PrintView.php:269 v2/templates/cart/cartlisting.php:22
-#: queryparameters_qrp.php:5
+#: 
 #, fuzzy
 msgid "Family Role"
 msgstr "Család Szerep"
 
-#: CSVExport.php:182
+#: 
 #, fuzzy
 msgid "Depends whether using person or family output method"
 msgstr "Függ, hogy a személy vagy család kimeneti metódus"
 
-#: CSVExport.php:205
+#: 
 msgid "Custom Person Fields"
 msgstr "Egyéni Személy mezők"
 
-#: CSVExport.php:223
+#: 
 msgid "Custom Family Fields"
 msgstr "Egyéni Family mezők"
 
-#: CSVExport.php:250 FinancialReports.php:108
+#: 
 msgid "Filters"
 msgstr "Szűrők"
 
-#: CSVExport.php:256
+#: 
 #, fuzzy
 msgid "Records to export"
 msgstr "Records exportálni"
 
-#: CSVExport.php:265
+#: 
 msgid "Based on filters below.."
 msgstr "Összesen szűrők alatt .."
 
-#: CSVExport.php:268
+#: 
 msgid "People in Cart (filters ignored)"
 msgstr "Emberek Kosár (szűrők figyelmen kívül hagyva)"
 
-#: CSVExport.php:294 CSVExport.php:319 CSVExport.php:355
-#: DirectoryReports.php:80 DirectoryReports.php:98 DirectoryReports.php:116
-#: DirectoryReports.php:134 DirectoryReports.php:153 FinancialReports.php:259
+#: 
 msgid "Use Ctrl Key to select multiple"
 msgstr "Használja a Ctrl gombot több"
 
-#: CSVExport.php:336
+#: 
 msgid "Don't Filter"
 msgstr "Ne Szűrés"
 
-#: CSVExport.php:337 ChurchCRM/Dashboard/PersonDemographicDashboardItem.php:26
-#: ChurchCRM/model/ChurchCRM/Person.php:51 FamilyEditor.php:990
-#: PeopleDashboard.php:310 PeopleDashboard.php:355 PersonEditor.php:630
-#: PrintView.php:244 PrintView.php:363 SelectList.php:555 SelectList.php:1140
-#: external/templates/registration/family-register-members.php:59
-#: queryparameteroptions_qpo.php:2
+#: 
 msgid "Male"
 msgstr "Férfi"
 
-#: CSVExport.php:338 ChurchCRM/Dashboard/PersonDemographicDashboardItem.php:29
-#: ChurchCRM/model/ChurchCRM/Person.php:53 FamilyEditor.php:993
-#: PeopleDashboard.php:323 PeopleDashboard.php:368 PersonEditor.php:633
-#: PrintView.php:247 PrintView.php:363 SelectList.php:561 SelectList.php:1141
-#: external/templates/registration/family-register-members.php:60
-#: queryparameteroptions_qpo.php:3
+#: 
 msgid "Female"
 msgstr "Női"
 
-#: CSVExport.php:347 DirectoryReports.php:96
+#: 
 #, fuzzy
 msgid "Group Membership"
 msgstr "Csoport tagság"
 
-#: CSVExport.php:379 CSVExport.php:396 CSVExport.php:413 CSVExport.php:430
+#: 
 msgid "From:"
 msgstr "Feladó:"
 
-#: CSVExport.php:380 CSVExport.php:397 CSVExport.php:414 CSVExport.php:431
+#: 
 msgid "To:"
 msgstr "Címzett:"
 
-#: CSVExport.php:388
+#: 
 #, fuzzy
 msgid "Birthday Date"
 msgstr "Születési dátuma"
 
-#: Reports/ConfirmReport.php:150 Reports/ConfirmReportEmail.php:151
+#: 
 #, fuzzy
 msgid "Anniversary Date"
 msgstr "Évforduló dátuma"
 
-#: CSVExport.php:443 FinancialReports.php:317
+#: 
 msgid "Output Method:"
 msgstr "Output Method:"
 
-#: CSVExport.php:447
+#: 
 msgid "CSV Individual Records"
 msgstr "CSV Egyéni Records"
 
-#: CSVExport.php:448
+#: 
 msgid "CSV Combine Families"
 msgstr "CSV Combine Családok"
 
-#: CSVExport.php:449
+#: 
 msgid "Add Individuals to Cart"
 msgstr "Add egyénnek a kosárba"
 
-#: CSVExport.php:452
+#: 
 msgid "Skip records with incomplete mail address"
 msgstr "Ugrás rekordok hiányos mail címét"
 
-#: CSVExport.php:454
+#: 
 msgid "Create File"
 msgstr "Új fájl"
 
-#: CSVImport.php:128
+#: 
 msgid "No file selected for upload."
 msgstr "Nincs fájl kiválasztva upload."
 
-#: CSVImport.php:154
+#: 
 msgid "Total number of rows in the CSV file:"
 msgstr "Teljes sorok száma a CSV-fájlban:"
 
-#: CSVImport.php:209
+#: 
 msgid "Ignore this Field"
 msgstr "Hagyja figyelmen kívül ezt a Field"
 
-#: CSVExport.php:72 CSVImport.php:210 DonatedItemEditor.php:208
-#: FindFundRaiser.php:236 FundRaiserEditor.php:169 FundRaiserEditor.php:195
-#: PersonEditor.php:637
+#: 
 msgid "Title"
 msgstr "Cím"
 
-#: CSVExport.php:87 CSVImport.php:214 FamilyEditor.php:942
-#: PersonEditor.php:679
+#: 
 msgid "Suffix"
 msgstr "Képző"
 
-#: CSVExport.php:177 CSVExport.php:327 CSVImport.php:215 FamilyEditor.php:943
-#: PersonEditor.php:624 PrintView.php:238 PrintView.php:338
-#: sundayschool/SundaySchoolClassView.php:179 queryparameters_qrp.php:4
+#: 
 msgid "Gender"
 msgstr "Nemek"
 
-#: CSVImport.php:216
+#: 
 msgid "Donation Envelope"
 msgstr "Adomány boríték"
 
-#: CSVExport.php:127 CSVImport.php:223 CartToFamily.php:281
-#: EditEventAttendees.php:43 EventAttendance.php:176 FamilyEditor.php:737
-#: FamilyView.php:254 GroupReports.php:124 PersonEditor.php:961
-#: PersonEditor.php:963 PersonView.php:302 PrintView.php:199
-#: Reports/ConfirmReport.php:135 Reports/ConfirmReportEmail.php:136
-#: SelectList.php:965 SelectList.php:966 SelectList.php:1041
-#: external/templates/registration/family-register-done.php:30
-#: external/templates/registration/family-register.php:68
-#: external/templates/verify/verify-family-info.php:27
-#: external/templates/verify/verify-family-info.php:70
-#: sundayschool/SundaySchoolClassView.php:207
-#: v2/templates/people/family-list.php:33
-#: v2/templates/people/family-view.php:153
-#: v2/templates/people/family-view.php:299 queryparameteroptions_qpo.php:8
+#: 
 msgid "Home Phone"
 msgstr "Otthoni telefon"
 
-#: CSVExport.php:132 CSVImport.php:224 CartToFamily.php:291
-#: FamilyEditor.php:749 FamilyView.php:260 GroupReports.php:125
-#: PersonEditor.php:984 PersonEditor.php:986 PersonView.php:316
-#: PrintView.php:204 Reports/ConfirmReport.php:239
-#: Reports/ConfirmReportEmail.php:234 SelectList.php:968 SelectList.php:969
-#: SelectList.php:1041 external/templates/verify/verify-family-info.php:72
-#: v2/templates/people/family-view.php:160
-#: v2/templates/people/family-view.php:304
+#: 
 msgid "Work Phone"
 msgstr "Munka Phone"
 
-#: CSVExport.php:137 CSVImport.php:225 CartToFamily.php:301
-#: FamilyEditor.php:759 FamilyView.php:266 PersonEditor.php:1009
-#: PersonEditor.php:1011 PersonView.php:297 PrintView.php:209
-#: SelectList.php:971 SelectList.php:972 SelectList.php:1041
-#: external/templates/verify/verify-family-info.php:74
-#: v2/templates/people/family-view.php:167
-#: v2/templates/people/family-view.php:309
+#: 
 msgid "Mobile Phone"
 msgstr "Mobiltelefon"
 
-#: CSVImport.php:227 PersonEditor.php:1054 PrintView.php:299
+#: 
 msgid "Work / Other Email"
 msgstr "Munka / Egyéb Email"
 
-#: CSVImport.php:228 PersonView.php:282 PrintView.php:253
-#: sundayschool/SundaySchoolClassView.php:203
-#: sundayschool/SundaySchoolDashboard.php:205
+#: 
 msgid "Birth Date"
 msgstr "Születési dátum"
 
-#: CSVImport.php:230 CartToFamily.php:211 DirectoryReports.php:173
-#: FamilyEditor.php:805 FamilyView.php:241
-#: external/templates/verify/verify-family-info.php:34
-#: v2/templates/people/family-view.php:140
+#: 
 msgid "Wedding Date"
 msgstr "Wedding Date"
 
-#: CSVImport.php:239
+#: 
 msgid "Ignore first CSV row (to exclude a header)"
 msgstr "Ignore 1. CSV sorban (kizárása a fejléc)"
 
-#: CSVImport.php:244
+#: 
 msgid "Make Family records based on last name and address"
 msgstr "Győződjön Családi feljegyzések alapján last neve és címe"
 
-#: CSVImport.php:250
+#: 
 msgid "Patriarch"
 msgstr "Pátriárka"
 
-#: CSVImport.php:251
+#: 
 msgid "Matriarch"
 msgstr "Matriarka"
 
-#: CSVImport.php:253
+#: 
 msgid "Family Type: used with Make Family records... option above"
 msgstr "Család Típus: használt Gyártó Család nyilvántartások ... opciót a fenti"
 
-#: CSVImport.php:260
+#: 
 msgid "NOTE: Separators (dashes, etc.) or lack thereof do not matter"
 msgstr "Megjegyzés: Elválasztók (gondolatjelek, stb), vagy annak hiánya nem számít"
 
-#: CSVImport.php:265
+#: 
 msgid "Default country if none specified otherwise"
 msgstr "Alapértelmezett ország, ha nincs másként nem"
 
-#: CSVExport.php:167 CSVExport.php:277 CSVImport.php:281 FamilyEditor.php:948
-#: FinancialReports.php:117 OptionManager.php:69 PeopleDashboard.php:411
-#: PersonEditor.php:1135 PrintView.php:309
-#: v2/templates/cart/cartlisting.php:21 queryparameters_qrp.php:19
+#: 
 msgid "Classification"
 msgstr "Besorolás"
 
-#: CSVImport.php:283
+#: 
 msgid "Perform Import"
 msgstr "Végezze Import"
 
-#: CSVImport.php:803
+#: 
 msgid "ERROR: the uploaded CSV file no longer exists!"
 msgstr "ERROR: a feltöltött CSV-fájl nem létezik!"
 
@@ -540,11 +339,11 @@ msgstr "ERROR: a feltöltött CSV-fájl nem létezik!"
 msgid "Data Cleared Successfully!"
 msgstr "Adatok Cleared sikeresen!"
 
-#: CSVImport.php:812
+#: 
 msgid "Upload CSV File"
 msgstr "Feltöltés CSV fájl"
 
-#: CSVImport.php:822
+#: 
 msgid "Clear Persons and Families"
 msgstr "Tiszta személyek és családok"
 
@@ -556,1620 +355,1427 @@ msgstr "Figyelem! Ne válassza ezt az opciót, ha azt tervezi, hogy adjunk egy m
 msgid "Use only if unsatisfied with initial import.  All person and member data will be destroyed!"
 msgstr "Csak, ha elégedetlen a kezdeti import. Minden személy tagja és adatokat meg kell semmisíteni!"
 
-#: CSVImport.php:829
+#: 
 msgid "Data import successful."
 msgstr "Adatok importálása sikeres."
 
-#: CSVImport.php:829
+#: 
 msgid "persons were imported"
 msgstr "személy importálta"
 
-#: CanvassAutomation.php:21 ChurchCRM/Config/Menu/Menu.php:171
+#: 
 msgid "Canvass Automation"
 msgstr "Korteskedés Automation"
 
-#: CanvassAutomation.php:46 CanvassAutomation.php:53 CanvassAutomation.php:60
-#: CanvassAutomation.php:68 CanvassAutomation.php:76
+#: 
 msgid "Not confirmed."
 msgstr "Nem megerősítik."
 
-#: CanvassAutomation.php:51 CanvassEditor.php:145 FamilyEditor.php:57
+#: 
 msgid "Canvassers"
 msgstr "Canvassers"
 
-#: CanvassAutomation.php:58 CanvassEditor.php:146 FamilyEditor.php:58
+#: 
 msgid "BraveCanvassers"
 msgstr "BraveCanvassers"
 
-#: CanvassAutomation.php:66
+#: 
 msgid "Cleared all canvasser assignments."
 msgstr "Tiszta minden kortes feladatokat."
 
-#: CanvassAutomation.php:74
+#: 
 msgid "Set Ok To Canvass for all families."
 msgstr "Állítsa Ok A korteskedés minden család."
 
-#: CanvassAutomation.php:82
+#: 
 msgid "Disabled Ok To Canvass for all families."
 msgstr "Tiltott Ok A korteskedés minden család."
 
-#: CanvassAutomation.php:84
+#: 
 msgid "ClearAllOkToCanvass button not confimed."
 msgstr "ClearAllOkToCanvass gomb nem confimed."
 
-#: CanvassAutomation.php:129
+#: 
 msgid "Set default fiscal year"
 msgstr "Alapértelmezett pénzügyi év"
 
-#: CanvassAutomation.php:133 CanvassAutomation.php:144
-#: CanvassAutomation.php:155 CanvassAutomation.php:166
-#: CanvassAutomation.php:177 CanvassAutomation.php:188
+#: 
 msgid "Check to confirm"
 msgstr "Ellenőrizze a megerősítéshez"
 
-#: CanvassAutomation.php:139
+#: 
 msgid "Assign Canvassers"
 msgstr "Hozzárendelése Canvassers"
 
-#: CanvassAutomation.php:150
+#: 
 msgid "Assign To Non Pledging"
 msgstr "Hozzárendelés Non Pledging"
 
-#: CanvassAutomation.php:161
+#: 
 msgid "Clear Canvasser Assignments"
 msgstr "Kódolatlan kortes Hozzárendelések"
 
-#: CanvassAutomation.php:172
+#: 
 msgid "Enable Canvass for All Families"
 msgstr "Engedélyezze a korteskedés for All Families"
 
-#: CanvassAutomation.php:183
+#: 
 msgid "Disable Canvass for All Families"
 msgstr "Tiltása korteskedés for All Families"
 
-#: CanvassAutomation.php:194
+#: 
 msgid "Briefing Sheets"
 msgstr "Briefing Sheets"
 
-#: CanvassAutomation.php:198
+#: 
 msgid "Generate a PDF containing briefing sheets for all Families, sorted by canvasser."
 msgstr "Hozzon létre egy PDF tartalmazó tájékoztató lapot az összes családok szerint rendezve kortes."
 
-#: CanvassAutomation.php:204
+#: 
 msgid "Progress Report"
 msgstr "Elért eredményekről szóló jelentés"
 
-#: CanvassAutomation.php:214
+#: 
 msgid "Summary Report"
 msgstr "Összefoglaló jelentés"
 
-#: CanvassAutomation.php:224
+#: 
 msgid "Not Interested Report"
 msgstr "Nem érdekelt bejelentése"
 
-#: CanvassEditor.php:44
+#: 
 msgid " Canvass Input for the "
 msgstr "Korteskedés Hozzájárulás a"
 
-#: Reports/CanvassReports.php:170 UserEditor.php:440
+#: 
 #, fuzzy
 msgid "Canvasser"
 msgstr "Kortes"
 
-#: CanvassEditor.php:200 Reports/CanvassReports.php:347
+#: 
 msgid "Positive"
 msgstr "Pozitív"
 
-#: CanvassEditor.php:205 Reports/CanvassReports.php:347
+#: 
 msgid "Critical"
 msgstr "Kritikai"
 
-#: CanvassEditor.php:210 Reports/CanvassReports.php:347
+#: 
 msgid "Insightful"
 msgstr "Éleslátó"
 
-#: CanvassEditor.php:215 Reports/CanvassReports.php:347
+#: 
 msgid "Financial"
 msgstr "Pénzügyi"
 
-#: CanvassEditor.php:220
+#: 
 msgid "Suggestions"
 msgstr "Javaslatok"
 
-#: CanvassEditor.php:225
+#: 
 msgid "Not Interested"
 msgstr "Nem érdekel"
 
-#: CanvassEditor.php:232
+#: 
 msgid "Why Not Interested?"
 msgstr "Miért nem érdekel?"
 
-#: CartToEvent.php:52 CartToEvent.php:85
+#: 
 msgid "Add Cart to Event"
 msgstr "Add kosárba a rendezvény"
 
-#: CartToEvent.php:59
+#: 
 #, fuzzy
 msgid "Select the event to which you would like to add your cart"
 msgstr "Válassza ki az eseményt, amelyre szeretné felvenni a kosárba"
 
-#: CartToEvent.php:86
+#: 
 msgid "OR"
 msgstr "VAGY"
 
-#: CartToEvent.php:87 Checkin.php:105 ListEvents.php:344
+#: 
 msgid "Add New Event"
 msgstr "Új esemény hozzáadása"
 
-#: CartToEvent.php:94 CartToFamily.php:325 CartToGroup.php:101
+#: 
 msgid "Your cart is empty!"
 msgstr "Az Ön kosara üres!"
 
-#: CartToFamily.php:84
+#: 
 msgid "No family name entered!"
 msgstr "Nincs családja beírt név!"
 
-#: CartToFamily.php:123
+#: 
 msgid "Add Cart to Family"
 msgstr "Add kosárba Family"
 
-#: CartToFamily.php:155 Checkin.php:311 DonationFundEditor.php:150
-#: DonationFundEditor.php:213 EditEventAttendees.php:32
-#: EditEventAttendees.php:41 EventAttendance.php:174 EventNames.php:263
-#: FamilyCustomFieldsEditor.php:320 FamilyCustomFieldsEditor.php:434
-#: FamilyView.php:550 GeoPage.php:357 GroupEditor.php:73
-#: GroupPropsFormEditor.php:285 GroupPropsFormEditor.php:397 GroupView.php:255
-#: GroupView.php:288 PersonCustomFieldsEditor.php:311
-#: PersonCustomFieldsEditor.php:442 PersonView.php:683 PersonView.php:788
-#: PrintView.php:337 PrintView.php:463 PropertyEditor.php:149
-#: PropertyList.php:60 PropertyTypeEditor.php:96 PropertyTypeList.php:41
-#: Reports/CanvassReports.php:69 Reports/CanvassReports.php:237
-#: Reports/FRBidSheets.php:88 SelectList.php:988 UserList.php:54
-#: VolunteerOpportunityEditor.php:75 VolunteerOpportunityEditor.php:354
-#: VolunteerOpportunityEditor.php:421
-#: sundayschool/SundaySchoolClassView.php:202
-#: v2/templates/cart/cartlisting.php:17 v2/templates/people/family-list.php:31
-#: v2/templates/people/family-view.php:374 queryparameteroptions_qpo.php:4
+#: 
 msgid "Name"
 msgstr "Név"
 
-#: CartToFamily.php:156
+#: 
 msgid "Assign Role"
 msgstr "Hozzárendelése szerepe"
 
-#: CartToFamily.php:172
+#: 
 msgid "Already in a family"
 msgstr "Már egy család"
 
-#: CartToFamily.php:190
+#: 
 msgid "Create new family"
 msgstr "Új család"
 
-#: CartToFamily.php:201
+#: 
 msgid "If adding a new family, enter data below."
 msgstr "Ha kiegészítve egy új családot, írja az alábbi adatokat."
 
-#: CartToFamily.php:216
+#: 
 #, fuzzy
 msgid "Use address/contact data from"
 msgstr "Használja a címet / kapcsolattartó adatait"
 
-#: CartToFamily.php:220
+#: 
 msgid "Only the new data below"
 msgstr "Csak az új adatok az alábbi"
 
-#: CartToFamily.php:257
+#: 
 msgid "(Use the textbox for countries other than US and Canada)"
 msgstr "(Használja a szövegdobozba a más országokban, mint az USA és Kanada)"
 
-#: CartToFamily.php:286 CartToFamily.php:296 CartToFamily.php:306
-#: FamilyEditor.php:745 FamilyEditor.php:755 FamilyEditor.php:765
-#: Include/Functions.php:899 PersonEditor.php:977 PersonEditor.php:1001
-#: PersonEditor.php:1025
+#: 
 msgid "Do not auto-format"
 msgstr "Ne auto-formátum"
 
-#: CartToFamily.php:185 CartToFamily.php:319
+#: 
 msgid "Add to Family"
 msgstr "Add hozzá a Family"
 
-#: CartToGroup.php:55
+#: 
 msgid "Add Cart to Group"
 msgstr "Add kosárba csoporthoz"
 
-#: CartToGroup.php:66
+#: 
 #, fuzzy
 msgid "Select the group to which you would like to add your cart"
 msgstr "Válassza ki a csoportot, amelyhez szeretne hozzáadni a kosárban"
 
-#: CartToGroup.php:70 GroupReports.php:43 PersonToGroup.php:62
-#: sundayschool/SundaySchoolReports.php:186
+#: 
 #, fuzzy
 msgid "Select Group"
 msgstr "Válassza Csoport"
 
-#: CartToGroup.php:85 PersonToGroup.php:79
+#: 
 msgid "No Group Selected"
 msgstr "Nincs csoport Kiválasztott"
 
-#: CartToGroup.php:92 PersonToGroup.php:86 SelectList.php:1218
+#: 
 msgid "Add to Group"
 msgstr "Add hozzá a Csoport"
 
-#: v2/routes/cart.php:21
+#: 
 msgid "View Your Cart"
 msgstr "Mind Ön kosara"
 
-#: v2/templates/cart/cartempty.php:10
+#: 
 msgid "You have no items in your cart."
 msgstr "Nincsenek termékek a kosárban."
 
-#: v2/templates/cart/cartempty.php:23
+#: 
 msgid "Back to Menu"
 msgstr "Vissza a Menu"
 
-#: v2/templates/cart/cartfunctions.php:14
+#: 
 msgid "Empty Cart"
 msgstr "Üres Kosár"
 
-#: v2/templates/cart/cartfunctions.php:17
+#: 
 msgid "Empty Cart to Group"
 msgstr "Üres Kosár csoporthoz"
 
-#: v2/templates/cart/cartfunctions.php:23
+#: 
 msgid "Empty Cart to Family"
 msgstr "Üres a kosár Család"
 
-#: v2/templates/cart/cartfunctions.php:27
+#: 
 msgid "Empty Cart to Event"
 msgstr "Üres Cart a rendezvény"
 
-#: v2/templates/cart/cartfunctions.php:36
+#: 
 msgid "Map Cart"
 msgstr "Térkép Cart"
 
-#: v2/templates/cart/cartfunctions.php:38
+#: 
 msgid "Name Tags"
 msgstr "Név Szavak"
 
-#: v2/templates/cart/cartfunctions.php:43
+#: 
 msgid "Email Cart"
 msgstr "Email Cart"
 
-#: GroupView.php:139 sundayschool/SundaySchoolClassView.php:101
-#: v2/templates/cart/cartfunctions.php:44
+#: 
 msgid "Email (BCC)"
 msgstr "Email (BCC)"
 
-#: v2/templates/cart/cartfunctions.php:53
+#: 
 msgid "Create Directory From Cart"
 msgstr "Hozzon létre Directory kezdőár kosárba"
 
-#: v2/templates/cart/generateLabels.php:4
-#: v2/templates/cart/generateLabels.php:46
+#: 
 msgid "Generate Labels"
 msgstr "Generálása címkék"
 
-#: v2/templates/cart/generateLabels.php:12
+#: 
 msgid "Bulk Mail Presort"
 msgstr "Bulk Mail Presort"
 
-#: v2/templates/cart/generateLabels.php:21
+#: 
 msgid "Quiet Presort"
 msgstr "Csendes Presort"
 
-#: v2/templates/cart/cartlisting.php:6
+#: 
 msgid "Your cart contains"
 msgstr "Kosarában"
 
-#: v2/templates/cart/cartlisting.php:6
+#: 
 msgid "persons from"
 msgstr "személyek"
 
-#: EditEventTypes.php:166 FamilyView.php:555 FamilyView.php:597
-#: GroupView.php:293 GroupView.php:334 PersonView.php:686 PersonView.php:704
-#: PersonView.php:791 PersonView.php:809 v2/templates/cart/cartlisting.php:20
-#: v2/templates/cart/cartlisting.php:37
+#: 
 msgid "Remove"
 msgstr "Eltávolít"
 
-#: DonationFundEditor.php:177 FinancialReports.php:295
-#: Include/Functions.php:686 Include/Functions.php:770 ListEvents.php:296
-#: Reports/ConfirmReport.php:227
+#: 
 msgid "Yes"
 msgstr "Igen"
 
-#: DonationFundEditor.php:180 FinancialReports.php:296
-#: Include/Functions.php:688 Include/Functions.php:771 ListEvents.php:296
-#: Reports/ConfirmReport.php:229
+#: 
 msgid "No"
 msgstr "Nincs"
 
-#: Checkin.php:15
+#: 
 msgid "Event Checkin"
 msgstr "Event Checkin"
 
-#: Checkin.php:75
+#: 
 #, fuzzy
 msgid "Select the event to which you would like to check people in for"
 msgstr "Válassza ki az eseményt, amelyre szeretné, hogy ellenőrizze az emberek számára"
 
-#: CartToEvent.php:70 Checkin.php:84
+#: 
 msgid "Select Event"
 msgstr "Válassza Event"
 
-#: external/templates/verify/verify-family-info.php:145
-msgid "Verify"
-msgstr "Ellenőrzése"
-
-#: Checkin.php:172
+#: 
 msgid "Add Visitor"
 msgstr "Add Visitor"
 
-#: Checkin.php:165
+#: 
 msgid "CheckIn"
 msgstr "Bejelentkezés-"
 
-#: Checkin.php:273 Checkin.php:366
+#: 
 msgid "CheckOut"
 msgstr "CheckOut"
 
-#: Checkin.php:312
+#: 
 msgid "Checked In Time"
 msgstr "Kockás In Time"
 
-#: Checkin.php:313
+#: 
 msgid "Checked In By"
 msgstr "Kockás által"
 
-#: Checkin.php:314
+#: 
 msgid "Checked Out Time"
 msgstr "Checked Out idő"
 
-#: Checkin.php:315
+#: 
 msgid "Checked Out By"
 msgstr "Kivette"
 
-#: Checkin.php:316 EditEventAttendees.php:44 EventNames.php:267
-#: ListEvents.php:205 PersonView.php:633
+#: 
 msgid "Action"
 msgstr "Akció"
 
-#: EditEventAttendees.php:84
+#: 
 msgid "No Attendees Assigned to Event"
 msgstr "Nem Résztvevők Hozzárendelve Event"
 
-#: Checkin.php:455 Include/Functions.php:1410 Reports/CanvassReports.php:241
-#: Reports/VotingMembers.php:83 queryparameteroptions_qpo.php:15
+#: 
 msgid "Member"
 msgstr "Tag"
 
-#: Checkin.php:457 ChurchCRM/Service/PersonService.php:39
+#: 
 msgid " of the"
 msgstr "Az"
 
-#: Checkin.php:459 ChurchCRM/Service/PersonService.php:41 PersonView.php:267
+#: 
 msgid "(No assigned family)"
 msgstr "(Nincs hozzárendelt család)"
 
-#: ConvertIndividualToFamily.php:39
+#: 
 msgid "Convert Individuals to Families"
 msgstr "Átalakítás az egyének Családok"
 
-#: ConvertIndividualToFamily.php:137
+#: 
 msgid "Convert Next"
 msgstr "Convert Következő"
 
-#: ConvertIndividualToFamily.php:138
+#: 
 msgid "Convert All"
 msgstr "Convert All"
 
-#: DepositSlipEditor.php:53
+#: 
 msgid "Deposit Slip Number: "
 msgstr "Fizess Slip száma:"
 
-#: DepositSlipEditor.php:92
+#: 
 msgid "Close deposit slip (remember to press Save)"
 msgstr "Bezárás betét slip (ne feledjük, hogy nyomja meg az Mentés)"
 
-#: DepositSlipEditor.php:100
+#: 
 msgid "Deposit Slip Report"
 msgstr "Befizetési Slip Jelentés"
 
-#: DepositSlipEditor.php:105
+#: 
 msgid "Important note: failed transactions will be deleted permanantly when the deposit slip is closed."
 msgstr "Fontos megjegyzés: A sikertelen tranzakciók törlésre kerül permanantly, ha a betét slip zárva van."
 
-#: DepositSlipEditor.php:147
+#: 
 msgid "Payments on this deposit slip:"
 msgstr "Kifizetések ezen befizetés:"
 
-#: DepositSlipEditor.php:152 eGive.php:267
+#: 
 msgid "Import eGive"
 msgstr "Import eGive"
 
-#: DepositSlipEditor.php:154
+#: 
 msgid "Add Payment"
 msgstr "Add Fizetés"
 
-#: DepositSlipEditor.php:158
+#: 
 msgid "Load Authorized Transactions"
 msgstr "Betöltése Jogosult tranzakciók"
 
-#: DepositSlipEditor.php:159
+#: 
 msgid "Run Transactions"
 msgstr "Run tranzakciók"
 
-#: DirectoryReports.php:28
+#: 
 msgid "Directory reports"
 msgstr "Directory jelentések"
 
-#: DirectoryReports.php:78
+#: 
 msgid "Select classifications to include"
 msgstr "Válassza osztályozási fel"
 
-#: DirectoryReports.php:114
+#: 
 msgid "Which role is the head of household?"
 msgstr "Milyen szerepe van a háztartási?"
 
-#: DirectoryReports.php:132
+#: 
 msgid "Which role is the spouse?"
 msgstr "Milyen szerepe van a házastárs?"
 
-#: DirectoryReports.php:151
+#: 
 msgid "Which role is a child?"
 msgstr "Milyen szerepet a gyerek?"
 
-#: DirectoryReports.php:170
+#: 
 #, fuzzy
 msgid "Information to Include"
 msgstr "Információ Beleértve"
 
-#: AutoPaymentEditor.php:902 AutoPaymentEditor.php:908 CSVExport.php:92
-#: CSVExport.php:97 CSVImport.php:217 CSVImport.php:218 CartToFamily.php:235
-#: CartToFamily.php:240 DirectoryReports.php:172 DirectoryReports.php:246
-#: FamilyEditor.php:664 FamilyEditor.php:668 FamilyView.php:214
-#: GeoPage.php:358 GroupReports.php:123 Menu.php:309 Menu.php:338
-#: PersonEditor.php:831 PersonEditor.php:847 PersonView.php:272
-#: Register.php:43 Reports/ConfirmReportEmail.php:121
-#: Reports/ConfirmReportEmail.php:126 api/routes/search.php:98
-#: external/templates/registration/family-register-done.php:29
-#: external/templates/registration/family-register.php:35
-#: v2/templates/cart/cartlisting.php:18 v2/templates/people/family-list.php:32
-#: v2/templates/people/family-view.php:211
+#: 
 msgid "Address"
 msgstr "Cím"
 
-#: ChurchCRM/Service/CalendarService.php:16
-#: ChurchCRM/SystemCalendars/BirthdaysCalendar.php:63 DirectoryReports.php:174
-#: FamilyView.php:358 PersonView.php:510 Reports/ConfirmReport.php:184
-#: Reports/ConfirmReport.php:203 Reports/ConfirmReportEmail.php:188
-#: Reports/ConfirmReportEmail.php:206
-#: external/templates/verify/verify-family-info.php:80
-#: v2/templates/people/family-view.php:323
+#: 
 msgid "Birthday"
 msgstr "Születésnap"
 
-#: DirectoryReports.php:176
+#: 
 msgid "Family Home Phone"
 msgstr "Family Home Phone"
 
-#: DirectoryReports.php:177
+#: 
 msgid "Family Work Phone"
 msgstr "Családi Munkahelyi telefon"
 
-#: DirectoryReports.php:178
+#: 
 msgid "Family Cell Phone"
 msgstr "Family Cell Phone"
 
-#: DirectoryReports.php:179 Reports/ConfirmReport.php:156
-#: Reports/ConfirmReportEmail.php:157
-#: external/templates/verify/verify-family-info.php:29
+#: 
 msgid "Family Email"
 msgstr "Family Email"
 
-#: DirectoryReports.php:181
+#: 
 msgid "Personal Home Phone"
 msgstr "Personal Home Phone"
 
-#: DirectoryReports.php:182
+#: 
 msgid "Personal Work Phone"
 msgstr "Személyes Munkahelyi telefon"
 
-#: DirectoryReports.php:183
+#: 
 msgid "Personal Cell Phone"
 msgstr "Személyes Cell Phone"
 
-#: DirectoryReports.php:184
+#: 
 msgid "Personal Email"
 msgstr "Personal Email"
 
-#: DirectoryReports.php:185
+#: 
 msgid "Personal Work/Other Email"
 msgstr "Személyes Munka / Egyéb e-mail"
 
-#: DirectoryReports.php:186
+#: 
 msgid "Photos"
 msgstr "Fotók"
 
-#: DirectoryReports.php:202
+#: 
 #, fuzzy
 msgid "Number of Columns"
 msgstr "Oszlopok száma"
 
-#: DirectoryReports.php:210
+#: 
 #, fuzzy
 msgid "Paper Size"
 msgstr "Papírméret"
 
-#: DirectoryReports.php:218 Include/LabelFunctions.php:61
+#: 
 #, fuzzy
 msgid "Font Size"
 msgstr "Betűméret"
 
-#: DirectoryReports.php:234
+#: 
 #, fuzzy
 msgid "Title page"
 msgstr "Oldal címe"
 
-#: DirectoryReports.php:238
+#: 
 msgid "Use Title Page"
 msgstr "Használja Címoldal"
 
-#: ChurchCRM/dto/SystemConfig.php:129 DirectoryReports.php:242 Register.php:41
+#: 
 msgid "Church Name"
 msgstr "Church neve"
 
-#: DirectoryReports.php:266
+#: 
 msgid "Disclaimer"
 msgstr "Lemondás"
 
-#: DirectoryReports.php:285
+#: 
 msgid "Create Directory"
 msgstr "Create Directory"
 
-#: DonatedItemEditor.php:44
+#: 
 msgid "Donated Item Editor"
 msgstr "Adományozott jogcím szerkesztő"
 
-#: DonatedItemEditor.php:295 FamilyEditor.php:1117 PaddleNumEditor.php:150
-#: PersonEditor.php:1229 PledgeEditor.php:689
+#: 
 msgid "Save and Add"
 msgstr "Mentés és hozzáadása"
 
-#: BatchWinnerEntry.php:74 DonatedItemEditor.php:172 FundRaiserEditor.php:191
+#: 
 #, fuzzy
 msgid "Item"
 msgstr "Cikkszám"
 
-#: DonatedItemEditor.php:179
+#: 
 #, fuzzy
 msgid "Multiple items"
 msgstr "Több tételek"
 
-#: DonatedItemEditor.php:179
+#: 
 msgid "Sell to everyone"
 msgstr "Eladás mindenkinek"
 
-#: DonatedItemEditor.php:213
+#: 
 #, fuzzy
 msgid "Estimated Price"
 msgstr "Becsült ár"
 
-#: DonatedItemEditor.php:233 FundRaiserEditor.php:192 FundRaiserEditor.php:230
+#: 
 msgid "Multiple"
 msgstr "Többszörös"
 
-#: DonatedItemEditor.php:255
+#: 
 #, fuzzy
 msgid "Final Price"
 msgstr "Végső ár"
 
-#: DonatedItemEditor.php:264 FindFundRaiser.php:227
-#: external/templates/password/enter-username.php:36
+#: 
 msgid "Go"
 msgstr "Megy"
 
-#: DonatedItemEditor.php:274 DonationFundEditor.php:151
-#: DonationFundEditor.php:221 EditEventAttendees.php:34
-#: FundRaiserEditor.php:174 GroupEditor.php:79 GroupPropsFormEditor.php:286
-#: GroupPropsFormEditor.php:410 GroupView.php:256 ListEvents.php:206
-#: PersonView.php:789 PropertyTypeEditor.php:104
-#: VolunteerOpportunityEditor.php:76 VolunteerOpportunityEditor.php:355
-#: VolunteerOpportunityEditor.php:429
+#: 
 msgid "Description"
 msgstr "Leírás"
 
-#: DonationFundEditor.php:50
+#: 
 msgid "Donation Fund Editor"
 msgstr "Adomány Alap szerkesztő"
 
-#: DonationFundEditor.php:116
+#: 
 msgid "Are you sure you want to delete this fund?"
 msgstr "Biztos benne, hogy törölni szeretné ezt az alapot?"
 
-#: DonationFundEditor.php:126
+#: 
 msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using a delete or 'add new' button!"
 msgstr "Figyelmeztetés: Field változtatások elvesznek, ha nem a \"Változtatások mentése\" mielőtt a delete vagy &#39;Új&#39; gombra!"
 
-#: DonationFundEditor.php:132 FamilyCustomFieldsEditor.php:315
-#: GroupPropsFormEditor.php:277 OptionManager.php:310
-#: PersonCustomFieldsEditor.php:304 PersonEditor.php:609
-#: VolunteerOpportunityEditor.php:340
+#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "Érvénytelen mező vagy kiválasztást. Változtatások nem lettek elmentve! Kérjük, javítsa ki és próbálja újra!"
 
-#: DonationFundEditor.php:144
+#: 
 msgid "No funds have been added yet"
 msgstr "Semmiféle pénzeszközt adtak még"
 
-#: DonationFundEditor.php:152 EventEditor.php:534 GroupView.php:217
-#: KioskManager.php:30 ListEvents.php:210
+#: 
 msgid "Active"
 msgstr "Aktív"
 
-#: DonationFundEditor.php:196 EventEditor.php:543 EventNames.php:234
-#: FamilyCustomFieldsEditor.php:404 GroupPropsFormEditor.php:368
-#: OptionManager.php:367 PersonCustomFieldsEditor.php:407
-#: VolunteerOpportunityEditor.php:403
+#: 
 msgid "Save Changes"
 msgstr "Változtatások mentése"
 
-#: DonationFundEditor.php:226
+#: 
 msgid "Add New Fund"
 msgstr "Új alap"
 
-#: EditEventAttendees.php:7 EventEditor.php:29
+#: 
 msgid "Church Event Editor"
 msgstr "Church Esemény szerkesztő"
 
-#: EditEventTypes.php:25 EventNames.php:29
+#: 
 msgid "Edit Event Types"
 msgstr "Szerkesztése Esemény típusok"
 
-#: EditEventTypes.php:121
+#: 
 msgid "Edit Event Type"
 msgstr "Szerkesztése Esemény típusa"
 
-#: EditEventTypes.php:131 EventEditor.php:429 EventEditor.php:457
-#: EventNames.php:262 ListEvents.php:207
+#: 
 msgid "Event Type"
 msgstr "Esemény típusa"
 
-#: EditEventTypes.php:137
+#: 
 msgid "Save Name"
 msgstr "Mentés neve"
 
-#: EditEventTypes.php:142 EventNames.php:158 EventNames.php:264
+#: 
 #, fuzzy
 msgid "Recurrence Pattern"
 msgstr "Recurrance Pattern"
 
-#: EditEventTypes.php:157 EventEditor.php:489 EventNames.php:266
-#: ListEvents.php:208
+#: 
 msgid "Attendance Counts"
 msgstr "Részvétel számít"
 
-#: AutoPaymentEditor.php:801
-#: ChurchCRM/Emails/verify/FamilyVerificationEmail.php:24
-#: ElectronicPaymentList.php:195 FamilyView.php:205 FinancialReports.php:303
-#: PersonEditor.php:796 PersonView.php:422 PledgeEditor.php:508
-#: PrintView.php:258 PropertyAssign.php:73 PropertyEditor.php:43
-#: PropertyList.php:28 PropertyTypeEditor.php:90 PropertyTypeList.php:62
-#: SelectList.php:1037
-#: external/templates/registration/family-register-done.php:28
+#: 
 msgid "Family"
 msgstr "Család"
 
-#: ElectronicPaymentList.php:196 FamilyCustomFieldsEditor.php:319
-#: FamilyCustomFieldsEditor.php:421 FamilyView.php:549 FamilyView.php:657
-#: GroupPropsFormEditor.php:284 GroupPropsFormEditor.php:385 GroupView.php:254
-#: GroupView.php:287 OptionManager.php:77 PersonCustomFieldsEditor.php:310
-#: PersonCustomFieldsEditor.php:429 PersonView.php:682 PropertyEditor.php:129
-#: SelectDelete.php:216
+#: 
 msgid "Type"
 msgstr "Type"
 
-#: AutoPaymentEditor.php:847 ElectronicPaymentList.php:197 FamilyView.php:766
-#: PledgeEditor.php:520 ReminderReport.php:42 SelectDelete.php:218
-#: sundayschool/SundaySchoolReports.php:205 queryparameters_qrp.php:18
+#: 
 msgid "Fiscal Year"
 msgstr "Költségvetési év"
 
-#: ElectronicPaymentList.php:198
-msgid "Next Date"
-msgstr "Következő dátum"
-
-#: ElectronicPaymentList.php:199 FamilyView.php:659 FamilyView.php:768
-#: PledgeEditor.php:714 SelectDelete.php:220
+#: 
 msgid "Amount"
 msgstr "Összeg"
 
-#: AutoPaymentEditor.php:864 ElectronicPaymentList.php:201 FamilyView.php:661
-#: FamilyView.php:765 FinancialReports.php:302 SelectDelete.php:217
+#: 
 msgid "Fund"
 msgstr "Alap"
 
-#: ElectronicPaymentList.php:202 FindDepositSlip.php:47
+#: 
 msgid "Bank"
 msgstr "Bank"
 
-#: ElectronicPaymentList.php:211 FamilyEditor.php:945
-#: queryparameters_qrp.php:11
+#: 
 msgid "Month"
 msgstr "Hónap"
 
-#: ElectronicPaymentList.php:212 FamilyEditor.php:947
-#: Include/Functions.php:101
+#: 
 msgid "Year"
 msgstr "Év"
 
-#: ElectronicPaymentList.php:218 ElectronicPaymentList.php:283
-#: EventNames.php:294 FamilyView.php:209 FamilyView.php:662 FamilyView.php:711
-#: FamilyView.php:773 FindFundRaiser.php:233 FindFundRaiser.php:241
-#: ListEvents.php:224 PersonView.php:238 PropertyList.php:64
-#: PropertyList.php:105 PropertyTypeList.php:45 PropertyTypeList.php:65
-#: SelectList.php:1052
+#: 
 msgid "Edit"
 msgstr "Szerkeszt"
 
-#: Register.php:50
+#: 
 #, fuzzy
 msgid "Message"
 msgstr "Üzenet"
 
-#: EventAttendance.php:22
+#: 
 msgid "Event Attendees"
 msgstr "Event Résztvevők"
 
-#: EventAttendance.php:42
+#: 
 msgid "Event Nonattendees"
 msgstr "Event Nonattendees"
 
-#: EventAttendance.php:48
+#: 
 msgid "Event Guests"
 msgstr "Esemény vendégek"
 
-#: EventAttendance.php:60
-msgid "Back to Report Menu"
-msgstr "Vissza a jelentése Menu"
-
-#: EventAttendance.php:171
+#: 
 msgid "There "
 msgstr "Ott"
 
-#: EventAttendance.php:100 EventEditor.php:466
+#: 
 msgid "Event Title"
 msgstr "Esemény címe"
 
-#: EventAttendance.php:101
+#: 
 msgid "Event Date"
 msgstr "Esemény dátuma"
 
-#: EventAttendance.php:102
-msgid "Generate Report"
-msgstr "Jelentés létrehozása"
-
-#: EventAttendance.php:134
+#: 
 msgid "Attending Members"
 msgstr "Résztvevő tagok"
 
-#: EventAttendance.php:145
+#: 
 msgid "Non-Attending Members"
 msgstr "Nem Résztvevő tagok"
 
-#: EventAttendance.php:160
+#: 
 msgid "Guests"
 msgstr "Vendégek"
 
-#: EventAttendance.php:204
+#: 
 msgid "There are no events in this category"
 msgstr "Nincs esemény Ebben a kategóriában"
 
-#: EventAttendance.php:204
-msgid "There are no Records"
-msgstr "Nincsenek Records"
-
-#: EventEditor.php:407
+#: 
 msgid "Editing Event ID: "
 msgstr "Szerkesztése Eseményazonosító:"
 
-#: EventEditor.php:413
+#: 
 msgid " errors. Please see below"
 msgstr "hibák. Kérjük, olvassa el az alábbi"
 
-#: EventEditor.php:415
+#: 
 msgid "Items with a "
 msgstr "Elemek egy"
 
-#: EventEditor.php:415
+#: 
 msgid " are required"
 msgstr "van szükség"
 
-#: EventEditor.php:472
+#: 
 #, fuzzy
 msgid "Event Desc"
 msgstr "Event Leírás"
 
-#: EventEditor.php:494
+#: 
 msgid "No Attendance counts recorded"
 msgstr "Nem számít Részvétel rögzített"
 
-#: EventEditor.php:512
+#: 
 msgid "Attendance Notes: "
 msgstr "Nézőszám Megjegyzések:"
 
-#: EventEditor.php:524
+#: 
 #, fuzzy
 msgid "Event Sermon"
 msgstr "Esemény Prédikáció"
 
-#: EventEditor.php:530
+#: 
 #, fuzzy
 msgid "Event Status"
 msgstr "Event Állapot"
 
-#: EventEditor.php:554
+#: 
 msgid "Return to Events"
 msgstr "Vissza az eseményekhez"
 
-#: EventNames.php:150
+#: 
 msgid "EVENT TYPE NAME"
 msgstr "EVENT TYPE NAME"
 
-#: EventNames.php:172
+#: 
 msgid "Sundays"
 msgstr "Vasárnap"
 
-#: EventNames.php:173
+#: 
 msgid "Mondays"
 msgstr "Hétfőnként"
 
-#: EventNames.php:174
+#: 
 msgid "Tuesdays"
 msgstr "Keddenként"
 
-#: EventNames.php:175
+#: 
 msgid "Wednesdays"
 msgstr "Szerdánként"
 
-#: EventNames.php:176
+#: 
 msgid "Thursdays"
 msgstr "Csütörtökönként"
 
-#: EventNames.php:177
+#: 
 msgid "Fridays"
 msgstr "Fridays"
 
-#: EventNames.php:178
+#: 
 msgid "Saturdays"
 msgstr "Szombaton"
 
-#: EventNames.php:219
+#: 
 msgid "ATTENDANCE COUNTS"
 msgstr "JELENLÉTI SZÁMÍT"
 
-#: EventNames.php:327
+#: 
 msgid "Add Event Type"
 msgstr "Hozzáadása Esemény típusa"
 
-#: FamilyCustomFieldsEditor.php:30
+#: 
 msgid "Custom Family Fields Editor"
 msgstr "Egyéni Family Fields Editor"
 
-#: FamilyCustomFieldsEditor.php:167 PersonCustomFieldsEditor.php:156
+#: 
 msgid "Default Option"
 msgstr "Alapértelmezett beállítás"
 
-#: FamilyCustomFieldsEditor.php:286
+#: 
 msgid "Warning:  By deleting this field, you will irrevokably lose all family data assigned for this field!"
 msgstr "Figyelmeztetés: A törlés ezen a területen, akkor irrevokably elveszíti minden családi adatok rendelt ezt a mezőt!"
 
-#: FamilyCustomFieldsEditor.php:298 PersonCustomFieldsEditor.php:287
+#: 
 msgid "Warning: Arrow and delete buttons take effect immediately.  Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!"
 msgstr "Figyelmeztetés: A nyíl és delete gomb azonnal életbe lépnek. Mezőnév változtatások elvesznek, ha nem a \"Változtatások mentése\" használata előtt fel, le, törölheti vagy &#39;Új&#39; gombra!"
 
-#: FamilyCustomFieldsEditor.php:307
+#: 
 msgid "No custom Family fields have been added yet"
 msgstr "Nincs egyéni Family mezők kerültek még"
 
-#: FamilyCustomFieldsEditor.php:321 GroupPropsFormEditor.php:287
-#: PersonCustomFieldsEditor.php:312
+#: 
 msgid "Special option"
 msgstr "Különleges lehetőség"
 
-#: FamilyCustomFieldsEditor.php:322 FamilyCustomFieldsEditor.php:447
-#: PersonCustomFieldsEditor.php:313 PersonCustomFieldsEditor.php:461
+#: 
 msgid "Security Option"
 msgstr "Biztonsági opció"
 
-#: FamilyCustomFieldsEditor.php:323
-msgid "Family-View Side"
-msgstr "Család-View Side"
-
-#: FamilyCustomFieldsEditor.php:363 GroupPropsFormEditor.php:345
-#: PersonCustomFieldsEditor.php:356
+#: 
 msgid "You must select a group."
 msgstr "Ki kell választania egy csoportot."
 
-#: FamilyCustomFieldsEditor.php:368 PersonCustomFieldsEditor.php:359
+#: 
 msgid "Edit List Options"
 msgstr "Lista szerkesztése opciók"
 
-#: FamilyCustomFieldsEditor.php:378 FamilyCustomFieldsEditor.php:452
-#: PersonCustomFieldsEditor.php:377 PersonCustomFieldsEditor.php:456
-msgid "Left"
-msgstr "Bal"
-
-#: FamilyCustomFieldsEditor.php:379 FamilyCustomFieldsEditor.php:453
-#: PersonCustomFieldsEditor.php:381 PersonCustomFieldsEditor.php:457
-msgid "Right"
-msgstr "Jobbra"
-
-#: FamilyCustomFieldsEditor.php:431 GroupPropsFormEditor.php:394
-#: PersonCustomFieldsEditor.php:439
+#: 
 msgid "Help on types.."
 msgstr "Súgó típusok .."
 
-#: DonationFundEditor.php:167 DonationFundEditor.php:216
-#: FamilyCustomFieldsEditor.php:338 FamilyCustomFieldsEditor.php:438
-#: FamilyEditor.php:219 GroupPropsFormEditor.php:315
-#: GroupPropsFormEditor.php:401 OptionManager.php:351
-#: PersonCustomFieldsEditor.php:332 PersonCustomFieldsEditor.php:446
-#: PropertyEditor.php:71 PropertyTypeEditor.php:45
-#: VolunteerOpportunityEditor.php:383 VolunteerOpportunityEditor.php:424
+#: 
 msgid "You must enter a name"
 msgstr "Meg kell adnia egy nevet"
 
-#: FamilyCustomFieldsEditor.php:441 GroupPropsFormEditor.php:404
-#: PersonCustomFieldsEditor.php:449
+#: 
 msgid "That field name already exists."
 msgstr "Ez a mező már létezik."
 
-#: FamilyCustomFieldsEditor.php:457 GroupPropsFormEditor.php:415
-#: PersonCustomFieldsEditor.php:465
+#: 
 msgid "Add New Field"
 msgstr "Új mező hozzáadása"
 
-#: FamilyEditor.php:25
+#: 
 msgid "Family Editor"
 msgstr "Family szerkesztő"
 
-#: FamilyEditor.php:198
+#: 
 msgid "First name must be entered"
 msgstr "Először nevet kell beírni"
 
-#: FamilyEditor.php:206 PersonEditor.php:209
+#: 
 msgid "Invalid Year: allowable values are 1901 to 2155"
 msgstr "Érvénytelen év: megengedett értékek 1901-2155"
 
-#: FamilyEditor.php:210 PersonEditor.php:213
+#: 
 msgid "Invalid Birth Date."
 msgstr "Érvénytelen Születési dátum."
 
-#: FamilyEditor.php:228
+#: 
 msgid "Not a valid Wedding Date"
 msgstr "Nem érvényes Wedding Date"
 
-#: FamilyEditor.php:241 PersonEditor.php:247
+#: 
 msgid "Email is Not Valid"
 msgstr "Email nem érvényes"
 
-#: FamilyEditor.php:817
+#: 
 #, fuzzy
 msgid "Ok To Canvass"
 msgstr "Ok To korteskedés"
 
-#: FamilyEditor.php:828
+#: 
 #, fuzzy
 msgid "Assign a Canvasser"
 msgstr "Hozzárendelése kortes"
 
-#: FamilyEditor.php:846
+#: 
 #, fuzzy
 msgid "Assign a Brave Canvasser"
 msgstr "Hozzárendelése Brave kortes"
 
-#: FamilyEditor.php:889 PersonEditor.php:1190
+#: 
 msgid "Custom Fields"
 msgstr "Egyéni mezők"
 
-#: FamilyEditor.php:920 FamilyView.php:356 PersonView.php:508
-#: PrintView.php:334
-#: external/templates/registration/family-register-members.php:20
-#: v2/templates/people/family-view.php:256
+#: 
 msgid "Family Members"
 msgstr "Családtagok"
 
-#: FamilyEditor.php:933
+#: 
 msgid "You may create family members now or add them later.  All entries will become <i>new</i> person records."
 msgstr "Létre lehet hozni családtagjai most, vagy vegye fel őket később. Minden bejegyzés lesz <i>új</i> személy rekordok."
 
-#: FamilyEditor.php:939
+#: 
 msgid "First"
 msgstr "Első"
 
-#: FamilyEditor.php:940
+#: 
 msgid "Middle"
 msgstr "Középső"
 
-#: FamilyEditor.php:941
+#: 
 msgid "Last"
 msgstr "Utolsó"
 
-#: FamilyEditor.php:944 FamilyView.php:357 OptionManager.php:60
-#: OptionManager.php:93 PersonView.php:509 PrintView.php:339 PrintView.php:392
-#: Reports/CanvassReports.php:239 Reports/GroupReport.php:102
+#: 
 msgid "Role"
 msgstr "Szerep"
 
-#: FamilyEditor.php:946
-msgid "Day"
-msgstr "Nap"
-
-#: FamilyEditor.php:987 PersonEditor.php:626
+#: 
 msgid "Select Gender"
 msgstr "Válassza a nemek"
 
-#: CartToGroup.php:82 FamilyEditor.php:1001 GroupReports.php:57
-#: PersonToGroup.php:76
+#: 
 msgid "Select Role"
 msgstr "Válassza szerepe"
 
-#: ChurchCRM/Dashboard/PersonDemographicDashboardItem.php:23
-#: ChurchCRM/Dashboard/PersonDemographicDashboardItem.php:37
-#: ChurchCRM/Service/TimelineService.php:115 ChurchCRM/utils/MiscUtils.php:62
-#: FamilyEditor.php:1017 Include/Functions.php:772 PeopleDashboard.php:336
-#: PeopleDashboard.php:355 PeopleDashboard.php:368 PeopleDashboard.php:381
+#: 
 msgid "Unknown"
 msgstr "Ismeretlen"
 
-#: FamilyEditor.php:1020 PersonEditor.php:695
+#: 
 msgid "January"
 msgstr "Január"
 
-#: FamilyEditor.php:1023 PersonEditor.php:698
+#: 
 msgid "February"
 msgstr "Február"
 
-#: FamilyEditor.php:1026 PersonEditor.php:701
+#: 
 msgid "March"
 msgstr "Március"
 
-#: FamilyEditor.php:1029 PersonEditor.php:704
+#: 
 msgid "April"
 msgstr "Április"
 
-#: FamilyEditor.php:1032 PersonEditor.php:707
+#: 
 msgid "May"
 msgstr "Május"
 
-#: FamilyEditor.php:1035 PersonEditor.php:710
+#: 
 msgid "June"
 msgstr "Június"
 
-#: FamilyEditor.php:1038 PersonEditor.php:713
+#: 
 msgid "July"
 msgstr "Július"
 
-#: FamilyEditor.php:1041 PersonEditor.php:716
+#: 
 msgid "August"
 msgstr "Augusztus"
 
-#: FamilyEditor.php:1044 PersonEditor.php:719
+#: 
 msgid "September"
 msgstr "Szeptember"
 
-#: FamilyEditor.php:1047 PersonEditor.php:722
+#: 
 msgid "October"
 msgstr "Október"
 
-#: FamilyEditor.php:1050 PersonEditor.php:725
+#: 
 msgid "November"
 msgstr "November"
 
-#: FamilyEditor.php:1053 PersonEditor.php:728
+#: 
 msgid "December"
 msgstr "December"
 
-#: FamilyEditor.php:1058
+#: 
 msgid "Unk"
 msgstr "Unk"
 
-#: FamilyView.php:29 v2/templates/people/family-view.php:11
-msgid "Family View"
-msgstr "Family megnézése"
-
-#: FamilyView.php:229
-msgid "Latitude/Longitude"
-msgstr "Latitude / Longitude"
-
-#: FamilyEditor.php:875 FamilyView.php:247 ManageEnvelopes.php:166
-#: PledgeEditor.php:525 v2/templates/people/family-view.php:146
+#: 
 msgid "Envelope Number"
 msgstr "Boríték száma"
 
-#: FamilyView.php:308
+#: 
 msgid "Previous Family"
 msgstr "Korábbi Family"
 
-#: FamilyView.php:316
+#: 
 msgid "Next Family"
 msgstr "Következő Családi"
 
-#: FamilyView.php:194 PersonView.php:199
-#: v2/templates/people/family-view.php:58
+#: 
 msgid "Upload Photo"
 msgstr "Fotó feltöltése"
 
-#: FamilyView.php:198 PersonView.php:202
-#: v2/templates/people/family-view.php:62
+#: 
 msgid "Delete Photo"
 msgstr "Törlés Photo"
 
-#: FamilyView.php:446
+#: 
 msgid "Pledges and Payments"
 msgstr "Felajánlások és kifizetések"
 
-#: FamilyView.php:542 PersonView.php:676 PrintView.php:459
-#: v2/templates/people/family-view.php:366
+#: 
 msgid "No property assignments."
 msgstr "Nincs ingatlan feladatokat."
 
-#: FamilyView.php:551 GroupView.php:289 PersonView.php:684 PrintView.php:464
-#: PropertyAssign.php:176 SystemSettings.php:140
-#: v2/templates/people/family-view.php:375
+#: 
 msgid "Value"
 msgstr "Érték"
 
-#: FamilyView.php:554 FamilyView.php:592 GroupView.php:292 GroupView.php:328
+#: 
 msgid "Edit Value"
 msgstr "Érték szerkesztése"
 
-#: FamilyView.php:615 PersonView.php:717
-#: v2/templates/people/family-view.php:401
+#: 
 #, fuzzy
 msgid "Assign a New Property"
 msgstr "Rendelni egy új tulajdon"
 
-#: FamilyView.php:636 GroupView.php:366 PersonView.php:756 PersonView.php:842
-#: PropertyAssign.php:185 SelectList.php:1060
-#: v2/templates/people/family-view.php:415
+#: 
 msgid "Assign"
 msgstr "Kijelöl"
 
-#: FamilyView.php:658
-msgid "Next payment date"
-msgstr "Next fizetési határidő"
-
-#: FamilyView.php:660
-msgid "Interval (months)"
-msgstr "Interval (hónap)"
-
-#: FamilyView.php:664 FamilyView.php:775 SelectDelete.php:224
+#: 
 msgid "Date Updated"
 msgstr "Módosítás dátuma"
 
-#: FamilyView.php:665 FamilyView.php:776 SelectDelete.php:225
+#: 
 msgid "Updated By"
 msgstr "Frissítve: By"
 
-#: FamilyView.php:731
-msgid "Add a new automatic payment"
-msgstr "Új automatikus fizetés"
-
-#: FamilyView.php:743
+#: 
 msgid "Show Pledges"
 msgstr "Megjelenítés vállalja"
 
-#: FamilyView.php:747
+#: 
 msgid "Show Payments"
 msgstr "Megjelenítés kifizetések"
 
-#: FamilyView.php:756 MemberRoleChange.php:116 PropertyAssign.php:187
+#: 
 msgid "Update"
 msgstr "Frissítse"
 
-#: FamilyView.php:764
+#: 
 msgid "Pledge or Payment"
 msgstr "Pledge vagy fizetés"
 
-#: AutoPaymentEditor.php:840 CanvassEditor.php:194 DepositSlipEditor.php:81
-#: EditEventAttendees.php:33 FamilyView.php:767 FindFundRaiser.php:235
-#: FundRaiserEditor.php:164 Include/Functions.php:97 PledgeEditor.php:518
-#: SelectDelete.php:219
+#: 
 msgid "Date"
 msgstr "Dátum"
 
-#: FamilyView.php:769
+#: 
 msgid "NonDeductible"
 msgstr "NonDeductible"
 
-#: FamilyView.php:770 SelectDelete.php:221
+#: 
 msgid "Schedule"
 msgstr "Menetrend"
 
-#: FamilyView.php:771 SelectDelete.php:222
+#: 
 msgid "Method"
 msgstr "Módszer"
 
-#: FamilyView.php:772 PledgeEditor.php:722 SelectDelete.php:223
+#: 
 msgid "Comment"
 msgstr "Megjegyzés"
 
-#: FamilyView.php:864
+#: 
 msgid "Add a new pledge"
 msgstr "Új fogadalmat"
 
-#: FamilyView.php:866
+#: 
 msgid "Add a new payment"
 msgstr "Új fizetési"
 
-#: FamilyView.php:877
+#: 
 msgid " Canvass Entry"
 msgstr "Korteskedés bejegyzés"
 
-#: DepositSlipEditor.php:222 FamilyView.php:899 FindDepositSlip.php:95
-#: PersonView.php:929 PledgeDelete.php:19
-#: v2/templates/people/family-view.php:517
+#: 
 msgid "Confirm Delete"
 msgstr "Törlés megerősítése"
 
-#: FinancialReports.php:35
+#: 
 msgid "Financial Reports"
 msgstr "Pénzügyi jelentések"
 
-#: FinancialReports.php:47
+#: 
 msgid "No records were returned from the previous report."
 msgstr "Nem feljegyzések kerültek vissza az előző jelentést."
 
-#: FinancialReports.php:54 FinancialReports.php:304
+#: 
 msgid "Report Type:"
 msgstr "Jelentés típusa:"
 
-#: FinancialReports.php:56
+#: 
 msgid "Select Report Type"
 msgstr "Válassza a Jelentés típusa"
 
-#: FinancialReports.php:57
+#: 
 msgid "Pledge Summary"
 msgstr "Pledge Összefoglaló"
 
-#: FinancialReports.php:58
+#: 
 #, fuzzy
 msgid "Pledge Family Summary"
 msgstr "Pledge FamilySummary"
 
-#: FinancialReports.php:59
+#: 
 msgid "Pledge Reminders"
 msgstr "Pledge emlékeztetők"
 
-#: FinancialReports.php:60
+#: 
 msgid "Voting Members"
 msgstr "A szavazás tag"
 
-#: FinancialReports.php:61
+#: 
 msgid "Giving Report (Tax Statements)"
 msgstr "Giving jelentés (Adóbevallások)"
 
-#: FinancialReports.php:62
+#: 
 msgid "Zero Givers"
 msgstr "Zero givers"
 
-#: FinancialReports.php:63
+#: 
 msgid "Individual Deposit Report"
 msgstr "Egyéni Deposit jelentés"
 
-#: FinancialReports.php:64
+#: 
 msgid "Advanced Deposit Report"
 msgstr "Advanced Deposit Jelentés"
 
-#: FinancialReports.php:71 GroupReports.php:81
-#: external/templates/registration/family-register-members.php:131
-#: external/templates/registration/family-register.php:97
-#: external/templates/verify/enter-info.php:38
+#: 
 msgid "Next"
 msgstr "Következő"
 
-#: FinancialReports.php:140
+#: 
 #, fuzzy
 msgid "Filter by Family"
 msgstr "Szűrés a Család"
 
-#: FinancialReports.php:189
+#: 
 msgid "Report Start Date:"
 msgstr "Jelentés Kezdés dátuma:"
 
-#: FinancialReports.php:191
+#: 
 msgid "Report End Date:"
 msgstr "Jelentés End Date:"
 
-#: FinancialReports.php:194
+#: 
 msgid "Apply Report Dates To:"
 msgstr "Alkalmazás Jelentés Dátumok To:"
 
-#: FinancialReports.php:195
+#: 
 msgid "Deposit Date (Default)"
 msgstr "Deposit Date (Alapértelmezett)"
 
-#: FinancialReports.php:196
+#: 
 msgid "Payment Date"
 msgstr "Kifizetés dátuma"
 
-#: FinancialReports.php:212
+#: 
 msgid "Filter by Deposit:"
 msgstr "Szűrés szerint Kaució:"
 
-#: FinancialReports.php:215
+#: 
 msgid "If deposit is selected, date criteria will be ignored."
 msgstr "Ha a betét van kiválasztva, a dátumot kritériumokat figyelmen kívül hagyja."
 
-#: FinancialReports.php:219
+#: 
 msgid "All deposits within date range"
 msgstr "Minden betétek dátumtartományban"
 
-#: FinancialReports.php:257
+#: 
 msgid "Filter by Payment Type:"
 msgstr "Szűrés Fizetés típusa:"
 
-#: FinancialReports.php:261
+#: 
 msgid "All Methods"
 msgstr "All módszerek"
 
-#: FinancialReports.php:262 PledgeEditor.php:577 PledgeEditor.php:615
+#: 
 msgid "Check"
 msgstr "Ellenőrzés"
 
-#: FinancialReports.php:263 PledgeEditor.php:581
+#: 
 msgid "Cash"
 msgstr "Készpénz"
 
-#: FinancialReports.php:265 FindDepositSlip.php:49 PledgeEditor.php:597
+#: 
 msgid "Bank Draft"
 msgstr "Bank-tervezet"
 
-#: FinancialReports.php:266 FindDepositSlip.php:50 PledgeEditor.php:604
+#: 
 msgid "eGive"
 msgstr "eGive"
 
-#: FinancialReports.php:271
+#: 
 msgid "Minimun Total Amount:"
 msgstr "Minimum Teljes összeg:"
 
-#: FinancialReports.php:273
+#: 
 msgid "0 - No Minimum"
 msgstr "0 - Nincs Minimum"
 
-#: FinancialReports.php:278
+#: 
 msgid "Other Settings"
 msgstr "Egyéb beállítások"
 
-#: FinancialReports.php:281
+#: 
 msgid "Include:"
 msgstr "Beleértve:"
 
-#: FinancialReports.php:282
+#: 
 msgid "Only Payments with Pledges"
 msgstr "Csak a kifizetések az vállalja"
 
-#: FinancialReports.php:283
+#: 
 msgid "All Payments"
 msgstr "Minden kifizetések"
 
-#: FinancialReports.php:284
+#: 
 msgid "Generate:"
 msgstr "Generálása:"
 
-#: FinancialReports.php:285
+#: 
 msgid "Only Families with unpaid pledges"
 msgstr "Csak a családok térítésmentes felajánlások"
 
-#: FinancialReports.php:286 GeoPage.php:312 PeopleDashboard.php:118
+#: 
 msgid "All Families"
 msgstr "All Families"
 
-#: FinancialReports.php:290
+#: 
 msgid "Report Heading:"
 msgstr "Jelentés Jogcím:"
 
-#: FinancialReports.php:291
+#: 
 msgid "Graphic"
 msgstr "Grafikus"
 
-#: ChurchCRM/dto/SystemConfig.php:130 FinancialReports.php:292
+#: 
 msgid "Church Address"
 msgstr "Templom Cím"
 
-#: FinancialReports.php:293
+#: 
 msgid "Blank"
 msgstr "Üres"
 
-#: FinancialReports.php:294
+#: 
 msgid "Remittance Slip:"
 msgstr "Átutalási Slip:"
 
-#: FinancialReports.php:300
+#: 
 msgid "Sort Data by:"
 msgstr "Rendezés Adatok:"
 
-#: ChurchCRM/Config/Menu/Menu.php:140 FinancialReports.php:301
+#: 
 msgid "Deposit"
 msgstr "Letét"
 
-#: FinancialReports.php:305
+#: 
 msgid "All Data"
 msgstr "Minden adat"
 
-#: FinancialReports.php:306
+#: 
 msgid "Moderate Detail"
 msgstr "Mérsékelt Detail"
 
-#: FinancialReports.php:307
+#: 
 msgid "Summary Data"
 msgstr "Összefoglaló adatok"
 
-#: FinancialReports.php:319
+#: 
 msgid "CSV"
 msgstr "CSV"
 
-#: FinancialReports.php:326 PaddleNumEditor.php:152 PledgeDetails.php:58
+#: 
 msgid "Back"
 msgstr "Vissza"
 
-#: FinancialReports.php:328 GroupReports.php:150 ReminderReport.php:50
-#: TaxReport.php:53
+#: 
 msgid "Create Report"
 msgstr "Jelentés létrehozása"
 
-#: FindDepositSlip.php:21
+#: 
 msgid "Deposit Listing"
 msgstr "Befizetési Listing"
 
-#: FindFundRaiser.php:18
+#: 
 msgid "Fundraiser Listing"
 msgstr "Adománygyűjtő Listing"
 
-#: FindFundRaiser.php:80
+#: 
 #, fuzzy
 msgid "Date Start"
 msgstr "Dátum Kezdés"
 
-#: FindFundRaiser.php:83
+#: 
 msgid "Apply Filters"
 msgstr "Szűrők alkalmazása"
 
-#: FindFundRaiser.php:90 SelectList.php:758
+#: 
 msgid "Clear Filters"
 msgstr "Szűrők törlése"
 
-#: FindFundRaiser.php:145 SelectList.php:807
+#: 
 msgid "Previous Page"
 msgstr "Előző oldal"
 
-#: FindFundRaiser.php:187 SelectList.php:848
+#: 
 msgid "Next Page"
 msgstr "Következő oldal"
 
-#: FindFundRaiser.php:219 SelectList.php:921
+#: 
 msgid "Display:"
 msgstr "Kijelző:"
 
-#: FindFundRaiser.php:75 FindFundRaiser.php:234 Include/Functions.php:103
-#: PaddleNumEditor.php:167 PaddleNumList.php:53
+#: 
 msgid "Number"
 msgstr "Szám"
 
-#: FundRaiserEditor.php:33
+#: 
 msgid "Create New Fund Raiser"
 msgstr "Új Fund Raiser"
 
-#: FundRaiserEditor.php:150
+#: 
 msgid "Add Donated Item"
 msgstr "Add adományozott Elem"
 
-#: FundRaiserEditor.php:151
+#: 
 msgid "Generate Catalog"
 msgstr "Generálása Catalog"
 
-#: FundRaiserEditor.php:152
+#: 
 msgid "Generate Bid Sheets"
 msgstr "Generálása Ajánlati Lapok"
 
-#: FundRaiserEditor.php:153
+#: 
 msgid "Generate Certificates"
 msgstr "Létrehozása Tanúsítványok"
 
-#: FundRaiserEditor.php:185
+#: 
 #, fuzzy
 msgid "Donated items for this fundraiser"
 msgstr "Adományozott tételek e adománygyűjtő"
 
-#: DonatedItemEditor.php:184 FundRaiserEditor.php:193
+#: 
 msgid "Donor"
 msgstr "Donor"
 
-#: DonatedItemEditor.php:231 FundRaiserEditor.php:194 PaddleNumEditor.php:172
-#: PaddleNumList.php:54
+#: 
 msgid "Buyer"
 msgstr "Vevő"
 
-#: FundRaiserEditor.php:196
+#: 
 msgid "Sale Price"
 msgstr "Eladási ár"
 
-#: DonatedItemEditor.php:218 FundRaiserEditor.php:198
+#: 
 msgid "Material Value"
 msgstr "Anyag érték"
 
-#: DonatedItemEditor.php:223 FundRaiserEditor.php:199
+#: 
 msgid "Minimum Price"
 msgstr "Minimum ár"
 
-#: GeoPage.php:89
+#: 
 msgid "Family Geographic Utilities"
 msgstr "Family Geographic Utilities"
 
-#: GeoPage.php:211
+#: 
 msgid "Select Family:"
 msgstr "Válassza Család:"
 
-#: GeoPage.php:230
+#: 
 msgid "Maximum number of neighbors:"
 msgstr "Maximális száma szomszédok:"
 
-#: GeoPage.php:237
+#: 
 msgid "Maximum distance"
 msgstr "Maximális távolság"
 
-#: GeoPage.php:291
+#: 
 msgid "Data file format:"
 msgstr "Adat formátum:"
 
-#: GeoPage.php:296
+#: 
 msgid "GPS Visualizer"
 msgstr "GPS Visualizer"
 
-#: GeoPage.php:301
+#: 
 msgid "Street Atlas USA"
 msgstr "Street Atlas USA"
 
-#: GeoPage.php:307
+#: 
 msgid "Include families in coordinate file:"
 msgstr "Beleértve a családok koordináta fájlban:"
 
-#: GeoPage.php:317
+#: 
 msgid "Neighbor Families"
 msgstr "Szomszéd családok"
 
-#: GeoPage.php:283 GeoPage.php:331
+#: 
 msgid "Make Data File"
 msgstr "Gyártó Data File"
 
-#: GeoPage.php:265
+#: 
 msgid "Show Neighbors"
 msgstr "Megjelenítés Szomszédok"
 
-#: GeoPage.php:355
+#: 
 msgid "Distance"
 msgstr "Távolság"
 
-#: GeoPage.php:356
+#: 
 msgid "Direction"
 msgstr "Irány"
 
-#: FamilyEditor.php:707
+#: 
 msgid "Latitude"
 msgstr "Szélesség"
 
-#: FamilyEditor.php:711
+#: 
 msgid "Longitude"
 msgstr "Hosszúság"
 
-#: PersonView.php:381
+#: 
 msgid "Add to Cart"
 msgstr "A kosárban"
 
-#: GeoPage.php:421 SelectList.php:760
+#: 
 msgid "Intersect with Cart"
 msgstr "Metszet kosár"
 
@@ -2177,1834 +1783,1636 @@ msgstr "Metszet kosár"
 msgid "Remove from Cart"
 msgstr "Eltávolítás a kosárba"
 
-#: GetText.php:28
+#: 
 msgid "Text for Event ID: "
 msgstr "Szöveg Eseményazonosító:"
 
-#: GroupEditor.php:30
+#: 
 msgid "Group Editor"
 msgstr "Csoport szerkesztő"
 
-#: GroupEditor.php:85 GroupView.php:195
+#: 
 #, fuzzy
 msgid "Type of Group"
 msgstr "Típusa Csoport"
 
-#: GroupEditor.php:128 OptionManager.php:95
+#: 
 #, fuzzy
 msgid "Group Member Roles"
 msgstr "Csoport tag Szerep"
 
-#: GroupEditor.php:130
+#: 
 #, fuzzy
 msgid "Clone roles"
 msgstr "Clone szerepek"
 
-#: GroupEditor.php:134
+#: 
 #, fuzzy
 msgid "from group"
 msgstr "a csoportból"
 
-#: GroupEditor.php:136 GroupPropsFormEditor.php:326
+#: 
 msgid "Select a group"
 msgstr "Válasszon ki egy csoportot"
 
-#: GroupEditor.php:156 GroupView.php:80
+#: 
 msgid "Edit Group-Specific Properties Form"
 msgstr "Szerkesztése Group-specifikus tulajdonságai Form"
 
-#: GroupEditor.php:176
+#: 
 #, fuzzy
 msgid "Group Roles"
 msgstr "Csoport Szerep"
 
-#: GroupEditor.php:188 MemberRoleChange.php:92
+#: 
 #, fuzzy
 msgid "New Role"
 msgstr "Új Szerep"
 
-#: GroupList.php:20
+#: 
 msgid "Group Listing"
 msgstr "Group Listing"
 
-#: Include/Header-function.php:66
+#: 
 msgid "Submit"
 msgstr "Küldés"
 
-#: GroupPropsEditor.php:26
+#: 
 msgid "Group Member Properties Editor"
 msgstr "Csoporttag tulajdonságai szerkesztő"
 
-#: GroupPropsEditor.php:120
+#: 
 msgid "This group currently has no properties!  You can add them in the Group Editor."
 msgstr "Ez a csoport jelenleg nincsenek tulajdonságai! Felveheti őket a csoport szerkesztő."
 
-#: GroupPropsEditor.php:122
+#: 
 msgid "Return to Person Record"
 msgstr "Vissza a Person Record"
 
-#: GroupPropsEditor.php:130
+#: 
 msgid "Editing"
 msgstr "Szerkesztés"
 
-#: GroupPropsEditor.php:130
+#: 
 msgid "data for member"
 msgstr "adatok member"
 
-#: GroupPropsFormEditor.php:43
+#: 
 msgid "Group-Specific Properties Form Editor:"
 msgstr "Group-specifikus tulajdonságai Form Editor:"
 
-#: GroupPropsFormEditor.php:265
+#: 
 msgid "No properties have been added yet"
 msgstr "Nincs tulajdonságokat adtak még"
 
-#: GroupPropsFormEditor.php:271
+#: 
 msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete, or 'add new' button!"
 msgstr "Figyelmeztetés: Field változtatások elvesznek, ha nem a \"Változtatások mentése\" használata előtt fel, le, törölheti, vagy \"új\" gombra!"
 
-#: GroupPropsFormEditor.php:288
+#: 
 msgid "Show in"
 msgstr "Megjelenítés"
 
-#: GroupPropsFormEditor.php:288
+#: 
 msgid "Person View"
 msgstr "Személy megnézése"
 
-#: GroupReports.php:25
+#: 
 msgid "Group reports"
 msgstr "Group jelentések"
 
-#: GroupReports.php:37
+#: 
 #, fuzzy
 msgid "Select the group you would like to report"
 msgstr "Válassza ki a csoportot szeretne jelenteni"
 
-#: GroupReports.php:65
+#: 
 #, fuzzy
 msgid "Only cart persons?"
 msgstr "Csak cart személyek?"
 
-#: GroupReports.php:71
+#: 
 #, fuzzy
 msgid "Report Model"
 msgstr "Jelentés Típus"
 
-#: GroupReports.php:72
+#: 
 msgid "Report for group and role selected"
 msgstr "Jelentés Csoportos és szerepét a kijelölt"
 
-#: GroupReports.php:73
+#: 
 msgid "Report for any role in group selected"
 msgstr "Jelentés bármilyen szerepe a kiválasztott csoport"
 
-#: GroupReports.php:99
+#: 
 msgid "Select which information you want to include"
 msgstr "Válassza ki, melyik kívánt adatokat fel"
 
-#: GroupReports.php:121
+#: 
 #, fuzzy
 msgid "Standard Info"
 msgstr "Normál Info"
 
-#: GroupReports.php:128 Reports/GroupReport.php:137
+#: 
 msgid "Other Email"
 msgstr "Más E-mail"
 
-#: GroupReports.php:129
+#: 
 msgid "GroupRole"
 msgstr "GroupRole"
 
-#: GroupReports.php:133
+#: 
 #, fuzzy
 msgid "Group-Specific Property Fields"
 msgstr "Group-specifikus Property mezők"
 
-#: PersonView.php:222
+#: 
 msgid "Undefined"
 msgstr "Meghatározatlan"
 
-#: GroupView.php:62
+#: 
 msgid "Group View"
 msgstr "Csoport megtekintése"
 
-#: GroupView.php:75
+#: 
 msgid "Edit this Group"
 msgstr "Szerkesztése Group"
 
-#: GroupView.php:76
+#: 
 msgid "Delete this Group"
 msgstr "Törlése Group"
 
-#: GroupView.php:432
+#: 
 #, fuzzy
 msgid "Please confirm deletion of this group record"
 msgstr "Kérjük, erősítse meg törlés a csoport eredménye"
 
-#: GroupView.php:434
+#: 
 msgid "This will also delete all Roles and Group-Specific Property data associated with this Group record."
 msgstr "Ez is törli az összes Szerepek és csoport-specifikus Tulajdoni társított adatokat e csoport rekordot."
 
-#: GroupView.php:84
+#: 
 msgid "Add Group Members to Cart"
 msgstr "Add Csoport tagjai a kosárba"
 
-#: GroupView.php:85
+#: 
 msgid "Map this group"
 msgstr "Térkép e csoport"
 
-#: GroupView.php:128
+#: 
 msgid "Email Group"
 msgstr "Email Group"
 
-#: GroupView.php:205
+#: 
 #, fuzzy
 msgid "Total Members"
 msgstr "Összes tag"
 
-#: GroupView.php:200
+#: 
 #, fuzzy
 msgid "Default Role"
 msgstr "Alapértelmezett Szerep"
 
-#: GroupView.php:231
+#: 
 #, fuzzy
 msgid "Group-Specific Properties"
 msgstr "Group-specifikus tulajdonságok"
 
-#: GroupView.php:271
+#: 
 msgid "Disabled for this group."
 msgstr "Tiltott ebben a csoportban."
 
-#: FamilyView.php:440 GroupView.php:276 PersonView.php:424 PrintView.php:448
+#: 
 #, fuzzy
 msgid "Assigned Properties"
 msgstr "Célhoz Tulajdonságok"
 
-#: GroupView.php:383
+#: 
 msgid "Group Members:"
 msgstr "Csoport tagjai:"
 
-#: LettersAndLabels.php:26 PeopleDashboard.php:237
+#: 
 msgid "Letters and Mailing Labels"
 msgstr "Levelek és Mailing Labels"
 
-#: LettersAndLabels.php:79
+#: 
 msgid "Newsletter labels"
 msgstr "Hírlevél címkék"
 
-#: LettersAndLabels.php:80
-msgid "Confirm data letter"
-msgstr "Még adatokat írni"
-
-#: LettersAndLabels.php:82
+#: 
 msgid "Confirm data labels"
 msgstr "Még adatfeliratokat"
 
-#: ListEvents.php:42
+#: 
 msgid "Listing All Church Events"
 msgstr "Felsorolja az összes Church Events"
 
-#: ListEvents.php:83
+#: 
 msgid "Select Event Types To Display"
 msgstr "Válassza Esemény típusok megjelenítése"
 
-#: ListEvents.php:125
+#: 
 msgid "Display Events in Year"
 msgstr "Kijelző Események év"
 
-#: ListEvents.php:209
+#: 
 msgid "Start Date/Time"
 msgstr "Kezdő dátum / idő"
 
-#: ListEvents.php:285
+#: 
 msgid "No Attendance Recorded"
 msgstr "No Részvétel Adatbázisunkban"
 
-#: ListEvents.php:235
+#: 
 #, fuzzy
 msgid "Attendees"
 msgstr "Résztvevők ("
 
-#: ListEvents.php:309
+#: 
 msgid " Monthly Averages"
 msgstr "Havi átlagok"
 
-#: Login.php:41 Login.php:56
+#: 
 msgid "Invalid login or password"
 msgstr "Érvénytelen login vagy jelszó"
 
-#: Login.php:44
+#: 
 msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
 msgstr "Túl sok sikertelen bejelentkezési: fiókját zárolták. Kérjük, forduljon a rendszergazda."
 
-#: Login.php:176 Login.php:238
+#: 
 msgid "Please Login"
 msgstr "Kérem, jelentkezzen"
 
-#: BackupDatabase.php:55 Login.php:200 Login.php:278 UserList.php:58
+#: 
 msgid "Password"
 msgstr "Jelszó"
 
-#: Login.php:163 Login.php:213
+#: 
 msgid "Login"
 msgstr "Bejelentkezés"
 
-#: ChurchCRM/Config/Menu/Menu.php:147 ManageEnvelopes.php:21
+#: 
 msgid "Envelope Manager"
 msgstr "Boríték menedzser"
 
-#: ManageEnvelopes.php:117
+#: 
 msgid "Update Family Records"
 msgstr "Frissítse Family Records"
 
-#: ManageEnvelopes.php:134 external/templates/verify/verify-family-info.php:17
-#: external/templates/verify/verify-family-info.php:127
+#: 
 msgid "Confirm"
 msgstr "Még"
 
-#: ManageEnvelopes.php:158
+#: 
 msgid "Sort by"
 msgstr "Rendezés"
 
-#: ManageEnvelopes.php:170
+#: 
 msgid "Zero"
 msgstr "Nulla"
 
-#: ManageEnvelopes.php:172
+#: 
 msgid "Assign starting at #"
 msgstr "Rendeljen kezdődnek #"
 
-#: MemberRoleChange.php:25
+#: 
 msgid "Member Role Change"
 msgstr "Tagállamok szerepe módosítása"
 
-#: MemberRoleChange.php:84
+#: 
 #, fuzzy
 msgid "Member's Name"
 msgstr "Képviselő neve"
 
-#: MemberRoleChange.php:88
+#: 
 #, fuzzy
 msgid "Current Role"
 msgstr "Jelenlegi Szerep"
 
-#: PeopleDashboard.php:123
+#: 
 msgid "Update All Family Coordinates"
 msgstr "Frissítse All Family Koordináták"
 
-#: Menu.php:172 PeopleDashboard.php:137 api/routes/search.php:156
-#: members/online-pending-verify.php:24 members/self-register.php:24
-#: members/self-verify-updates.php:24
-#: sundayschool/SundaySchoolDashboard.php:104
+#: 
 msgid "Families"
 msgstr "Családok"
 
-#: ChurchCRM/Config/Menu/Menu.php:61 Menu.php:191 PeopleDashboard.php:158
+#: 
 msgid "People"
 msgstr "Emberek"
 
-#: PeopleDashboard.php:226
+#: 
 msgid "Reports on groups and roles"
 msgstr "Jelentések csoportok és szerepek"
 
-#: PeopleDashboard.php:228
+#: 
 msgid "Report on group and roles selected (it may be a multi-page PDF)."
 msgstr "Jelentés a csoport és szerepek választott (lehet egy többoldalas PDF)."
 
-#: PeopleDashboard.php:238
+#: 
 msgid "Generate letters and mailing labels."
 msgstr "Létrehoz levelek és levelezési címkéket."
 
-#: PeopleDashboard.php:244
+#: 
 msgid "US Address Verification Report"
 msgstr "USA Address Verification Report"
 
-#: CartToFamily.php:206
-#: ChurchCRM/Emails/notifications/NewPersonOrFamilyEmail.php:60
-#: FamilyEditor.php:654 LettersAndLabels.php:71 Menu.php:308 Menu.php:337
-#: Reports/ConfirmReport.php:115 Reports/ConfirmReportEmail.php:116
-#: SelectDelete.php:153 SelectDelete.php:279
-#: external/templates/registration/family-register.php:31
+#: 
 msgid "Family Name"
 msgstr "Családi név"
 
-#: NoteDelete.php:27
+#: 
 msgid "Note Delete Confirmation"
 msgstr "Megjegyzés: A Törlés megerősítése"
 
-#: NoteDelete.php:61
+#: 
 #, fuzzy
 msgid "Please confirm deletion of this note"
 msgstr "Kérjük, erősítse meg törlését e feljegyzés"
 
-#: NoteDelete.php:68 PropertyDelete.php:63 PropertyTypeDelete.php:68
+#: 
 msgid "Yes, delete this record"
 msgstr "Igen, törlöm ezt a rekordot"
 
-#: NoteDelete.php:68 PropertyDelete.php:63 SelectDelete.php:277
+#: 
 msgid "(this action cannot be undone)"
 msgstr "(Ez a művelet nem vonható vissza)"
 
-#: NoteEditor.php:29
+#: 
 msgid "Note Editor"
 msgstr "Megjegyzés szerkesztő"
 
-#: NoteEditor.php:128
+#: 
 msgid "Private"
 msgstr "Magán"
 
-#: PropertyAssign.php:43 PropertyEditor.php:39 PropertyList.php:24
-#: PropertyTypeEditor.php:89 PropertyTypeList.php:62
+#: 
 msgid "Person"
 msgstr "Személy"
 
-#: OptionManager.php:85 PropertyAssign.php:58 PropertyEditor.php:47
-#: PropertyList.php:32 PropertyTypeEditor.php:91 PropertyTypeList.php:62
+#: 
 msgid "Group"
 msgstr "Csoport"
 
-#: OptionManager.php:114 OptionManager.php:132 OptionManager.php:150
+#: 
 msgid "Option"
 msgstr "Opció"
 
-#: OptionManager.php:301
+#: 
 msgid "Warning: Removing will reset all assignments for all persons with the assignment!"
 msgstr "Figyelmeztetés: eltávolítása visszaállítja az összes feladatot minden személy számára a feladat!"
 
-#: OptionManager.php:308
+#: 
 msgid "Error: Duplicate"
 msgstr "Hiba: Ismétlődő"
 
-#: OptionManager.php:325
+#: 
 msgid "Default"
 msgstr "Alapértelmezett"
 
-#: OptionManager.php:353
+#: 
 msgid "Duplicate name found."
 msgstr "Ismétlődő név található."
 
-#: OptionManager.php:358
+#: 
 msgid "Make Default"
 msgstr "Legyen alapértelmezett"
 
-#: OptionManager.php:372 OptionManager.php:376
-#: VolunteerOpportunityEditor.php:405
+#: 
 msgid "Exit"
 msgstr "Kijárat"
 
-#: OptionManager.php:390
+#: 
 msgid "Add New"
 msgstr "Új"
 
-#: OptionManager.php:397
+#: 
 msgid "Error: A "
 msgstr "Hiba: A"
 
-#: OptionManager.php:397
+#: 
 msgid " by that name already exists."
 msgstr "ezen a néven már létezik."
 
-#: PaddleNumEditor.php:45
+#: 
 msgid "Buyer Number Editor"
 msgstr "Vevő száma szerkesztő"
 
-#: PaddleNumEditor.php:148
+#: 
 msgid "Generate Statement"
 msgstr "Generálása Statement"
 
-#: PaddleNumList.php:33
+#: 
 msgid "Buyers for this fundraiser:"
 msgstr "Vevők erre adománygyűjtő:"
 
-#: PaddleNumList.php:40
+#: 
 msgid "Select all"
 msgstr "Az összes,"
 
-#: PaddleNumList.php:42
+#: 
 msgid "Select none"
 msgstr "Válassza none"
 
-#: PaddleNumList.php:43
+#: 
 msgid "Add Buyer"
 msgstr "Add Vevő"
 
-#: PaddleNumList.php:44
+#: 
 msgid "Generate Statements for Selected"
 msgstr "Létrehoz kimutatásokhoz Kiválasztott"
 
-#: PaddleNumList.php:52
+#: 
 msgid "Select"
 msgstr "Választ"
 
-#: PersonCustomFieldsEditor.php:25
+#: 
 msgid "Custom Person Fields Editor"
 msgstr "Egyéni Személy Fields Editor"
 
-#: PersonCustomFieldsEditor.php:275
+#: 
 msgid "Warning:  By deleting this field, you will irrevokably lose all person data assigned for this field!"
 msgstr "Figyelmeztetés: A törlés ezen a területen, akkor irrevokably elveszíti minden személy adatait rendelt ezt a mezőt!"
 
-#: PersonCustomFieldsEditor.php:296
+#: 
 msgid "No custom person fields have been added yet"
 msgstr "Nincs egyéni személy mezők kerültek még"
 
-#: PersonCustomFieldsEditor.php:314
-msgid "Person-View Side"
-msgstr "Személy-View Side"
-
-#: PersonEditor.php:25
+#: 
 msgid "Person Editor"
 msgstr "Személy szerkesztő"
 
-#: PersonEditor.php:194
+#: 
 msgid "You must enter a Last Name if no Family is selected."
 msgstr "Meg kell adnia egy Vezetéknév, ha nincs Család kiválasztva."
 
-#: PersonEditor.php:224
+#: 
 msgid "Not a valid Friend Date"
 msgstr "Nem érvényes Ismerős Mikortól"
 
-#: PersonEditor.php:236
+#: 
 msgid "Not a valid Membership Date"
 msgstr "Nem érvényes tagság Mikortól"
 
-#: PersonEditor.php:258
+#: 
 msgid "Work Email is Not Valid"
 msgstr "Munkahelyi e-mail nem érvényes"
 
-#: PersonEditor.php:602
+#: 
 msgid "Red text"
 msgstr "Piros szöveg"
 
-#: PersonEditor.php:602 PersonView.php:369
+#: 
 msgid "indicates items inherited from the associated family record."
 msgstr "jelzi elemek örökölt a kapcsolódó családi feljegyzés."
 
-#: PersonEditor.php:749
+#: 
 #, fuzzy
 msgid "Birth Year"
 msgstr "Születési év"
 
-#: PersonEditor.php:762 Reports/ConfirmReport.php:185
-#: Reports/ConfirmReport.php:204
-#: external/templates/registration/family-register-members.php:120
+#: 
 msgid "Hide Age"
 msgstr "Elrejtése Age"
 
-#: PersonEditor.php:799
+#: 
 msgid "Create a new family (using last name)"
 msgstr "Hozzon létre egy új család (a vezetéknév)"
 
-#: PersonEditor.php:1167 PersonView.php:292
+#: 
 #, fuzzy
 msgid "Friend Date"
 msgstr "Ismerős Date"
 
-#: PersonToGroup.php:51
-msgid "Add Person to Group"
-msgstr "Add személy, csoport"
-
-#: PersonToGroup.php:57
-#, fuzzy
-msgid "Select the group to add this person to"
-msgstr "Válassza ki a csoportot, hogy adjunk ennek a személynek, hogy"
-
-#: PersonView.php:175
+#: 
 msgid "Not assigned"
 msgstr "Nincs hozzárendelve"
 
-#: PersonView.php:380
+#: 
 msgid "Printable Page"
 msgstr "Nyomtatható oldal"
 
-#: PersonView.php:384
+#: 
 msgid "Edit \"Why Came\" Notes"
 msgstr "Szerkesztése \"Miért jött\" Megjegyzés"
 
-#: PersonView.php:395
+#: 
 msgid "Delete this Record"
 msgstr "Rekord törlése"
 
-#: PersonView.php:401
+#: 
 msgid "Make User"
 msgstr "Gyártó felhasználó"
 
-#: PersonView.php:405
+#: 
 msgid "Edit User"
 msgstr "Felhasználó szerkesztése"
 
-#: PersonView.php:581 PrintView.php:387
+#: 
 msgid "No group assignments."
 msgstr "Nincs csoport feladatokat."
 
-#: PersonView.php:781
+#: 
 msgid "No volunteer opportunity assignments."
 msgstr "Nincs lehetőség az önkéntes feladatokat."
 
-#: PersonView.php:824
+#: 
 #, fuzzy
 msgid "Assign a New Volunteer Opportunity"
 msgstr "Rendelni egy új Önkéntes lehetőség"
 
-#: PledgeDetails.php:17
+#: 
 msgid "Electronic Transaction Details"
 msgstr "Electronic Transaction Details"
 
-#: ChurchCRM/Service/FinancialService.php:481 PledgeEditor.php:271
+#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "NonDeductible összeg nem lehet nagyobb, mint a teljes összeg."
 
-#: ChurchCRM/Service/FinancialService.php:486 PledgeEditor.php:278
+#: 
 msgid "At least one fund must have a non-zero amount."
 msgstr "Legalább egy alap kell rendelkeznie nem nulla összeg."
 
-#: ChurchCRM/Service/FinancialService.php:511 PledgeEditor.php:295
+#: 
 msgid "Must specify non-zero check number"
 msgstr "Meg kell adni a nem nulla szám ellenőrzés"
 
-#: ChurchCRM/Service/FinancialService.php:516 PledgeEditor.php:302
+#: 
 msgid "Check number not valid for 'CASH' payment"
 msgstr "Ellenőrizze szám nem érvényes a \"készpénz\" fizetési"
 
-#: PledgeEditor.php:440
+#: 
 msgid "Pledge Editor"
 msgstr "Pledge szerkesztő"
 
-#: PledgeEditor.php:442
+#: 
 msgid "Payment Editor: "
 msgstr "Fizetés Vágó:"
 
-#: PledgeEditor.php:442
+#: 
 msgid " Deposit Slip #"
 msgstr "Fizess Slip #"
 
-#: PledgeEditor.php:463
+#: 
 msgid " more entries will fit."
 msgstr "több bejegyzés fér."
 
-#: PledgeEditor.php:469
+#: 
 msgid "Payment Editor - Modify Existing Payment"
 msgstr "Fizetési Editor - módosítása meglévő támogatási"
 
-#: PledgeEditor.php:471
+#: 
 msgid "Payment Editor - New Deposit Slip Will Be Created"
 msgstr "Fizetési Editor - New Deposit Slip jön létre"
 
-#: PledgeEditor.php:529
+#: 
 msgid "Find family->"
 msgstr "Keresse meg a családi->"
 
-#: PledgeEditor.php:539
+#: 
 msgid "Payment Schedule"
 msgstr "Fizetési ütemezés"
 
-#: PledgeEditor.php:541
+#: 
 msgid "Select Schedule"
 msgstr "Válassza ütemezése"
 
-#: EventNames.php:168 PledgeEditor.php:544
+#: 
 msgid "Weekly"
 msgstr "Heti"
 
-#: EventNames.php:184 PledgeEditor.php:548
+#: 
 msgid "Monthly"
 msgstr "Havi"
 
-#: PledgeEditor.php:552
+#: 
 msgid "Quarterly"
 msgstr "Negyedévi"
 
-#: PledgeEditor.php:556
+#: 
 msgid "Once"
 msgstr "Egyszer"
 
-#: ChurchCRM/Dashboard/PersonDemographicDashboardItem.php:32
-#: ChurchCRM/Dashboard/PersonDemographicDashboardItem.php:49
-#: PledgeEditor.php:560
+#: 
 msgid "Other"
 msgstr "Más"
 
-#: PledgeEditor.php:571
+#: 
 msgid "Payment by"
 msgstr "Fizetés"
 
-#: PledgeEditor.php:634
-msgid "Choose online payment method"
-msgstr "Válassza online fizetés módja"
-
-#: PledgeEditor.php:642
-msgid "Select online payment record"
-msgstr "Válassza online fizetés eredménye"
-
-#: PledgeEditor.php:650
-msgid "Bank account "
-msgstr "Bankszámla"
-
-#: PledgeEditor.php:669
+#: 
 msgid "Scan check"
 msgstr "Szkennelés megtekintéséhez"
 
-#: PledgeEditor.php:678
+#: 
 msgid "find family from check account #"
 msgstr "találta család check számla #"
 
-#: PledgeEditor.php:679
+#: 
 msgid "Set default check account number for family"
 msgstr "Alapértelmezett csekk számlaszám családi"
 
-#: PledgeEditor.php:713
+#: 
 msgid "Fund Name"
 msgstr "Alap neve"
 
-#: PledgeEditor.php:718
+#: 
 msgid "Non-deductible amount"
 msgstr "Non-levonható összeg"
 
-#: PrintView.php:126
+#: 
 msgid "Printable View"
 msgstr "Nyomtatási nézet"
 
-#: PrintView.php:340 Reports/CanvassReports.php:240
-#: sundayschool/SundaySchoolClassView.php:204
-#: sundayschool/SundaySchoolDashboard.php:206
+#: 
 msgid "Age"
 msgstr "Életkor"
 
-#: PersonView.php:423 PrintView.php:376
+#: 
 #, fuzzy
 msgid "Assigned Groups"
 msgstr "Célhoz Csoportok"
 
-#: MemberRoleChange.php:80 PrintView.php:391
+#: 
 msgid "Group Name"
 msgstr "Csoport neve"
 
-#: PrintView.php:488
+#: 
 msgid "Notes:"
 msgstr "Megjegyzések:"
 
-#: PrintView.php:494
+#: 
 msgid "Entered:"
 msgstr "Bejegyezte:"
 
-#: ChurchCRM/Service/TimelineService.php:127 PrintView.php:497
+#: 
 msgid "by"
 msgstr "által"
 
-#: PropertyAssign.php:124 PropertyAssign.php:142
+#: 
 msgid "Property successfully assigned."
 msgstr "Az ingatlan sikeresen hozzárendelve."
 
-#: PropertyAssign.php:157
+#: 
 msgid " Property Assignment"
 msgstr "Property Hozzárendelés"
 
-#: PropertyAssign.php:171
+#: 
 #, fuzzy
 msgid "Assigning"
 msgstr "Hozzárendelése"
 
-#: PropertyDelete.php:24
+#: 
 msgid "Property Delete Confirmation"
 msgstr "Property Törlés megerősítése"
 
-#: PropertyDelete.php:51
+#: 
 #, fuzzy
 msgid "Please confirm deletion of this property"
 msgstr "Kérjük, erősítse meg törlését az ingatlan"
 
-#: PropertyDelete.php:59
+#: 
 msgid "Deleting this Property will also delete all assignments of this Property to any People, Family, or Group records."
 msgstr "Törlése ez az ingatlan is törli az összes átengedése ez az ingatlan bármely személy, család, vagy csoport rekordokat."
 
-#: PropertyDelete.php:65 PropertyTypeDelete.php:70 SelectDelete.php:294
-#: VolunteerOpportunityEditor.php:111
+#: 
 msgid "No, cancel this deletion"
 msgstr "Nem, mégse ez törlés"
 
-#: PropertyEditor.php:57
+#: 
 msgid "Property Editor"
 msgstr "Property Editor"
 
-#: PropertyEditor.php:77
+#: 
 #, fuzzy
 msgid "You must select a type"
 msgstr "Ki kell választania egy Type"
 
-#: PropertyEditor.php:131
+#: 
 msgid "Select Property Type"
 msgstr "Válassza Ingatlan típusa"
 
-#: PropertyEditor.php:156 PropertyList.php:61
+#: 
 msgid "A"
 msgstr "A"
 
-#: PropertyEditor.php:164
+#: 
 msgid "Entering a Prompt value will allow the association of a free-form value."
 msgstr "Megadása Prompt érték lehetővé teszi, hogy az egyesület egy szabad formátumú érték."
 
-#: PropertyList.php:42
+#: 
 msgid "Property List"
 msgstr "Property List"
 
-#: PropertyList.php:54
+#: 
 msgid "Add a New"
 msgstr "Hozzáadása Új"
 
-#: PropertyList.php:54 queryparameters_qrp.php:6
+#: 
 msgid "Property"
 msgstr "Ingatlan"
 
-#: PropertyEditor.php:162 PropertyList.php:62
+#: 
 msgid "Prompt"
 msgstr "Gyors"
 
-#: PropertyTypeDelete.php:25
+#: 
 msgid "Property Type Delete Confirmation"
 msgstr "Ingatlan típusa Törlés megerősítése"
 
-#: PropertyTypeDelete.php:58 VolunteerOpportunityEditor.php:98
+#: 
 msgid "Warning"
 msgstr "Figyelmeztetés"
 
-#: PropertyTypeDelete.php:58
+#: 
 msgid "This property type is still being used by at least one property."
 msgstr "Ez a tulajdonság a típus is használják legalább egy tulajdonság."
 
-#: PropertyTypeDelete.php:58
+#: 
 msgid "If you delete this type, you will also remove all properties using"
 msgstr "Ha törli ezt a típust, akkor is eltávolítja az összes tulajdonságait"
 
-#: PropertyTypeDelete.php:58
+#: 
 msgid "it and lose any corresponding property assignments."
 msgstr "azt, és elveszíti minden megfelelő ingatlan feladatokat."
 
-#: PropertyTypeDelete.php:64
+#: 
 #, fuzzy
 msgid "Please confirm deletion of this Property Type"
 msgstr "Kérjük, erősítse meg törlését ez az ingatlan típusa"
 
-#: PropertyTypeEditor.php:25
+#: 
 msgid "Property Type Editor"
 msgstr "Ingatlan típusa szerkesztő"
 
-#: PropertyTypeList.php:23
+#: 
 msgid "Property Type List"
 msgstr "Ingatlan típusa List"
 
-#: PropertyTypeList.php:35
+#: 
 msgid "Add a New Property Type"
 msgstr "Hozzáadása Új Ingatlan típusa"
 
-#: PropertyTypeEditor.php:86 PropertyTypeList.php:42
-#: sundayschool/SundaySchoolDashboard.php:152
-#: sundayschool/SundaySchoolDashboard.php:247 queryparameters_qrp.php:12
+#: 
 msgid "Class"
 msgstr "Osztály"
 
-#: PropertyTypeList.php:43 v2/templates/people/family-view.php:344
+#: 
 msgid "Properties"
 msgstr "Tulajdon"
 
-#: PropertyUnassign.php:94
+#: 
 msgid " Property Unassignment"
 msgstr "Property Unassignment"
 
-#: PropertyUnassign.php:101
+#: 
 msgid "Please confirm removal of this property from this"
 msgstr "Kérjük, erősítse meg eltávolítását az ingatlan ezen"
 
-#: PropertyUnassign.php:110
+#: 
 #, fuzzy
 msgid "Unassigning"
 msgstr "Unassigning"
 
-#: PropertyUnassign.php:116
+#: 
 msgid "Yes, unassign this Property"
 msgstr "Igen, ez az ingatlan hozzárendelésének"
 
-#: PropertyUnassign.php:119
+#: 
 msgid "No, retain this assignment"
 msgstr "Nem, megtartja ezt a feladatot"
 
-#: QueryList.php:16
+#: 
 msgid "Query Listing"
 msgstr "Lekérdezés Listing"
 
-#: QueryList.php:31
+#: 
 msgid "Run a Free-Text Query"
 msgstr "Fuss egy Free-Text lekérdezés"
 
-#: QuerySQL.php:19
+#: 
 msgid "Free-Text Query"
 msgstr "Free-Text lekérdezés"
 
-#: QuerySQL.php:46
+#: 
 msgid "Export Results to CSV file"
 msgstr "Eredmények exportálása CSV fájlba"
 
-#: QuerySQL.php:54
+#: 
 msgid "Execute SQL"
 msgstr "Execute SQL"
 
-#: QuerySQL.php:82 QuerySQL.php:132
+#: 
 msgid "An error occured: "
 msgstr "Hiba történt:"
 
-#: QuerySQL.php:117 QueryView.php:178 QueryView.php:200
+#: 
 msgid " record(s) returned"
 msgstr "bejegyzés (ek) iránt"
 
-#: QuerySQL.php:181
+#: 
 msgid "Add Results To Cart"
 msgstr "Add Eredmények Kosárba"
 
-#: QuerySQL.php:182
+#: 
 msgid "Intersect Results With Cart"
 msgstr "Metszet Eredmények A kosárba"
 
-#: QuerySQL.php:183
+#: 
 msgid "Remove Results From Cart"
 msgstr "Vegye Eredmények a kosárba"
 
-#: QuerySQL.php:188
+#: 
 msgid "Return to Query Menu"
 msgstr "Vissza a Lekérdezés menü"
 
-#: QueryView.php:21
+#: 
 msgid "Query View"
 msgstr "Lekérdezés megnézése"
 
-#: QueryView.php:91
+#: 
 msgid "This value is required."
 msgstr "Ez az érték szükséges."
 
-#: QueryView.php:104
+#: 
 msgid "This value must be numeric."
 msgstr "Ez a számérték kell legyen."
 
-#: QueryView.php:109
+#: 
 msgid "This value must be at least "
 msgstr "Ennek az értéknek legalább"
 
-#: QueryView.php:114 QueryView.php:127
+#: 
 msgid "This value cannot be more than "
 msgstr "Ez az érték nem lehet nagyobb, mint a"
 
-#: QueryView.php:127 QueryView.php:132
+#: 
 msgid " characters long"
 msgstr "karakter hosszú"
 
-#: QueryView.php:132
+#: 
 msgid "This value cannot be less than "
 msgstr "Ez az érték nem lehet kisebb, mint"
 
-#: QueryView.php:262
+#: 
 msgid "Run Query Again"
 msgstr "Lekérdezés futtatása Again"
 
-#: QueryView.php:380
+#: 
 msgid "Execute Query"
 msgstr "Execute Query"
 
-#: RPCdummy.php:51
-msgid "Address Info:"
-msgstr "Cím Info:"
-
-#: Register.php:35
+#: 
 msgid "Please register your copy of ChurchCRM by checking over this information and pressing the Send button.  "
 msgstr "Kérjük regisztrálja másolatát ChurchCRM ellenőrzésével át ezt az információt, és nyomja meg a Küldés gombot."
 
-#: Register.php:36
+#: 
 msgid "This information is used only to track the usage of this software.  "
 msgstr "Ez az információ csak nyomon követhető a használat ezt a szoftvert."
 
-#: Register.php:55
+#: 
 msgid "Send"
 msgstr "Küld"
 
-#: ReminderReport.php:25
+#: 
 msgid "Pledge Reminder Report"
 msgstr "Pledge Emlékeztető Jelentés"
 
-#: SelectDelete.php:68
+#: 
 msgid "All donations from this family have been moved to another family."
 msgstr "Minden adományt ennek a családnak már átkerült egy másik család."
 
-#: SelectDelete.php:72
+#: 
 msgid "Family Delete Confirmation"
 msgstr "Family Törlés megerősítése"
 
-#: VolunteerOpportunityEditor.php:72
+#: 
 #, fuzzy
 msgid "Please confirm deletion of"
 msgstr "Kérjük, erősítse meg törlését"
 
-#: SelectDelete.php:145
+#: 
 msgid "Sorry, there are records of donations from this family. This family may not be deleted."
 msgstr "Sajnáljuk, de nyilvántartást adományok ennek a családnak. Ez a család nem lehet törölni."
 
-#: SelectDelete.php:146
+#: 
 msgid "Return to Family View"
 msgstr "Vissza a Family megnézése"
 
-#: SelectDelete.php:150
+#: 
 msgid "WARNING: This family has records of donations and may NOT be deleted until these donations are associated with another family."
 msgstr "FIGYELEM: A család nyilvántartást adományok és nem kell hagyni, amíg ezek adományt társítva van egy másik család."
 
-#: SelectDelete.php:154
+#: 
 msgid "Please select another family with whom to associate these donations:"
 msgstr "Kérjük, válasszon egy másik család, akikkel társítani ezeket az adományokat:"
 
-#: SelectDelete.php:155
+#: 
 msgid "WARNING: This action can not be undone and may have legal implications!"
 msgstr "FIGYELEM: Ez a művelet nem vonható vissza, és jogi hatásai lehetnek!"
 
-#: SelectDelete.php:193
+#: 
 msgid "CURRENT FAMILY WITH DONATIONS"
 msgstr "FOLYÓ család ADOMÁNYOK"
 
-#: SelectDelete.php:275
+#: 
 msgid "Please confirm deletion of this family record:"
 msgstr "Kérjük, erősítse meg törlés a család eredménye:"
 
-#: SelectDelete.php:276
+#: 
 msgid "Note: This will also delete all Notes associated with this Family record."
 msgstr "Megjegyzés: Ez is törli az összes Notes társított Család rekordot."
 
-#: SelectDelete.php:292
+#: 
 msgid "Delete Family Record ONLY"
 msgstr "Törlés Family Record CSAK"
 
-#: SelectDelete.php:293
+#: 
 msgid "Delete Family Record AND Family Members"
 msgstr "Törlés Family Record és a családtagok"
 
-#: SelectList.php:141
-msgid "Person Listing"
-msgstr "Személy Listing"
-
-#: ChurchCRM/Config/Menu/Menu.php:86 SelectList.php:172
-msgid "Group Assignment Helper"
-msgstr "Csoportos Megbízás Helper"
-
-#: SelectList.php:500
-msgid "Show people <b>not</b> in this group type:"
-msgstr "Megjelenítés emberek <b>nem</b> ebben a csoportban típusa:"
-
-#: SelectList.php:516
-#, fuzzy
-msgid "Sort order"
-msgstr "Rendezési sorrend"
-
-#: SelectList.php:520
-msgid "By Name"
-msgstr "Név szerint"
-
-#: SelectList.php:523
-msgid "By Family"
-msgstr "By Family"
-
-#: SelectList.php:529
-msgid "By Newest Entries"
-msgstr "By Új bejegyzések"
-
-#: SelectList.php:532
-msgid "By Recently Edited"
-msgstr "By Nemrég Szerkesztett"
-
-#: SelectList.php:538
-msgid "Apply Filter"
-msgstr "Szűrő alkalmazása"
-
-#: SelectList.php:549
-msgid "Male & Female"
-msgstr "Férfi és Nő"
-
-#: SelectList.php:570
-msgid "All Classifications"
-msgstr "Minden Csoportosítási"
-
-#: SelectList.php:596
-msgid "All Family Roles"
-msgstr "Minden családi szerepek"
-
-#: SelectList.php:622
-msgid "All Contact Properties"
-msgstr "All Kapcsolat tulajdonságai"
-
-#: SelectList.php:654
-msgid "All Group Types"
-msgstr "Minden csoport típus"
-
-#: SelectList.php:694
-msgid "All Groups"
-msgstr "Minden csoport"
-
-#: SelectList.php:743
-msgid "All Roles"
-msgstr "Minden szerep"
-
-#: SelectList.php:784
-msgid "View All"
-msgstr "Az összes megtekintése"
-
-#: SelectList.php:1055
-msgid "Cart"
-msgstr "Kosár"
-
-#: SettingsIndividual.php:86
+#: 
 msgid "My User Settings"
 msgstr "A Felhasználói beállítások"
 
-#: SettingsIndividual.php:98 SettingsUser.php:85 SystemSettings.php:139
-#: UserEditor.php:478
+#: 
 msgid "Variable name"
 msgstr "Változó neve"
 
-#: SettingsIndividual.php:99 SettingsUser.php:86 UserEditor.php:479
+#: 
 msgid "Current Value"
 msgstr "Aktuális érték"
 
-#: SettingsIndividual.php:113 SettingsIndividual.php:159 SettingsUser.php:98
-#: SettingsUser.php:159 SystemSettings.php:256 UserEditor.php:561
+#: 
 msgid "Save Settings"
 msgstr "Beállítások mentése"
 
-#: SettingsUser.php:68
+#: 
 msgid "Default User Settings"
 msgstr "Alapértelmezett felhasználói beállítások"
 
-#: SettingsUser.php:80
+#: 
 msgid "Set Permission True to give new users the ability to change their current value.<BR>"
 msgstr "Állítsa Permission Igaz, hogy az új felhasználók képesek megváltoztatni a jelenlegi értékét. <BR>"
 
-#: SettingsUser.php:84 UserEditor.php:477
+#: 
 msgid "Permission"
 msgstr "Engedély"
 
-#: TaxReport.php:29
+#: 
 msgid "Tax Report"
 msgstr "Adóbeszámoló"
 
-#: TaxReport.php:45
+#: 
 #, fuzzy
 msgid "Calendar Year"
 msgstr "Naptári év"
 
-#: USISTAddressVerification.php:47
+#: 
 msgid "US Address Verification"
 msgstr "USA Address Verification"
 
-#: UserList.php:125
+#: 
 msgid "User Delete Confirmation"
 msgstr "Felhasználó törlése megerősítése"
 
-#: UserList.php:127
+#: 
 msgid "Please confirm removal of user status from:"
 msgstr "Kérjük, erősítse eltávolítása felhasználói státuszát:"
 
-#: UserEditor.php:322
+#: 
 msgid "User Editor"
 msgstr "Felhasználó szerkesztő"
 
-#: UserEditor.php:330
+#: 
 msgid "Note: Changes will not take effect until next logon."
 msgstr "Megjegyzés: A változások nem lépnek életbe, amíg a következő bejelentkezéskor."
 
-#: UserEditor.php:344
+#: 
 #, fuzzy
 msgid "Person to Make User"
 msgstr "Személy készítsünk User"
 
-#: UserEditor.php:364 api/routes/public/public-user.php:51
-#: v2/templates/admin/user.php:10
+#: 
 #, fuzzy
 msgid "User"
 msgstr "Felhasználó"
 
-#: UserEditor.php:380 external/templates/password/enter-username.php:30
+#: 
 #, fuzzy
 msgid "Login Name"
 msgstr "Bejelentkezés Név"
 
-#: UserEditor.php:392
+#: 
 #, fuzzy
 msgid "Edit Records"
 msgstr "Szerkesztés Records"
 
-#: UserEditor.php:399
+#: 
 #, fuzzy
 msgid "Delete Records"
 msgstr "Törlés rekordok"
 
-#: UserEditor.php:406
+#: 
 #, fuzzy
 msgid "Manage Properties and Classifications"
 msgstr "Kezelése Tulajdonságok és szempontok"
 
-#: UserEditor.php:413
+#: 
 #, fuzzy
 msgid "Manage Groups and Roles"
 msgstr "Csoportok kezelése és Szerep"
 
-#: UserEditor.php:420
+#: 
 #, fuzzy
 msgid "Manage Donations and Finance"
 msgstr "Kezelése Adományok és pénzügyek"
 
-#: UserEditor.php:427
+#: 
 #, fuzzy
 msgid "View, Add and Edit Notes"
 msgstr "Megtekintése, hozzáadása és szerkesztése Megjegyzés"
 
-#: UserEditor.php:434
+#: 
 #, fuzzy
 msgid "Edit Self"
 msgstr "Szerkesztés Self"
 
-#: UserEditor.php:437
+#: 
 msgid "(Edit own family only.)"
 msgstr "(Szerkesztés saját családja csak.)"
 
-#: UserEditor.php:443
+#: 
 msgid "(Canvass volunteer.)"
 msgstr "(Korteskedés önkéntes.)"
 
-#: UserEditor.php:449
+#: 
 msgid "(Grants all privileges.)"
 msgstr "(Ad minden jogosultságokat.)"
 
-#: UserEditor.php:452
+#: 
 #, fuzzy
 msgid "Style"
 msgstr "Stílus"
 
-#: UserList.php:37
+#: 
 msgid "User Listing"
 msgstr "Felhasználó Listing"
 
-#: UserList.php:55
+#: 
 msgid "Last Login"
 msgstr "Last Login"
 
-#: UserList.php:56
+#: 
 msgid "Total Logins"
 msgstr "Összesen Bejelentkezések"
 
-#: UserList.php:57
+#: 
 msgid "Failed Logins"
 msgstr "Sikertelen bejelentkezések"
 
-#: UserPasswordChange.php:55
-msgid "You must enter a password in both boxes"
-msgstr "Meg kell adnod egy jelszót mindkét dobozok"
-
-#: UserPasswordChange.php:61 UserPasswordChange.php:113
+#: 
 msgid "You must enter the same password in both boxes"
 msgstr "Meg kell adni ugyanazt a jelszót mindkét dobozok"
 
-#: UserPasswordChange.php:101
-msgid "Invalid password"
-msgstr "Érvénytelen jelszó"
-
-#: UserPasswordChange.php:107
-msgid "You must enter your new password in both boxes"
-msgstr "Meg kell adnia az új jelszót mindkét dobozok"
-
-#: UserPasswordChange.php:119
+#: 
 msgid "Your password choice is too obvious. Please choose something else."
 msgstr "Jelszava választás túl nyilvánvaló. Kérjük, válasszon valami mást."
 
-#: UserPasswordChange.php:125
+#: 
 msgid "Your new password must be at least"
 msgstr "Az új jelszó legalább"
 
-#: UserPasswordChange.php:125
+#: 
 msgid "characters"
 msgstr "karakterek"
 
-#: UserPasswordChange.php:131
-msgid "You need to actually change your password (nice try, though!)"
-msgstr "Be kell, hogy tényleg változtassa meg a jelszavát (szép próbálkozás, de!)"
-
-#: UserPasswordChange.php:134
-msgid "Your new password is too similar to your old one.  Be more creative!"
-msgstr "Az új jelszó túl hasonló a régit. Légy kreatív!"
-
-#: UserPasswordChange.php:163
-msgid "User Password Change"
-msgstr "User Password Change"
-
-#: UserPasswordChange.php:171
-msgid "Your account record indicates that you need to change your password before proceding."
-msgstr "Fiókja eredménye azt jelzi, hogy meg kell, hogy változtassa meg a jelszavát, mielőtt proceding."
-
-#: UserPasswordChange.php:183
+#: 
 msgid "Enter your current password, then your new password twice.  Passwords must be at least"
 msgstr "Adja meg jelenlegi jelszavát, majd az új jelszót kétszer. Jelszavak legalább"
 
-#: UserPasswordChange.php:183
+#: 
 msgid "characters in length."
 msgstr "karakter hosszú."
 
-#: UserPasswordChange.php:185
-msgid "Enter a new password for this user."
-msgstr "Adjon meg egy új jelszót a felhasználó számára."
-
-#: UserPasswordChange.php:196
+#: 
 #, fuzzy
 msgid "Old Password"
 msgstr "Régi jelszó"
 
-#: ChurchCRM/Emails/users/NewAccountEmail.php:30
-#: ChurchCRM/Emails/users/PasswordChangeEmail.php:29
-#: ChurchCRM/Emails/users/ResetPasswordEmail.php:29 UserPasswordChange.php:202
+#: 
 #, fuzzy
 msgid "New Password"
 msgstr "Új jelszó"
 
-#: UserPasswordChange.php:206
+#: 
 #, fuzzy
 msgid "Confirm New Password"
 msgstr "Új jelszó megerősítése"
 
-#: UserList.php:167
+#: 
 #, fuzzy
 msgid "Please confirm the password reset of this user"
 msgstr "Kérjük, erősítse meg a jelszó-visszaállítási ennek a felhasználónak"
 
-#: VolunteerOpportunityEditor.php:69
+#: 
 msgid "Volunteer Opportunity Delete Confirmation"
 msgstr "Önkéntes Opportunity Törlés megerősítése"
 
-#: VolunteerOpportunityEditor.php:99
+#: 
 msgid "There are people assigned to this Volunteer Opportunity."
 msgstr "Vannak emberek, akik rendelt e Önkéntes Opportunity."
 
-#: VolunteerOpportunityEditor.php:100
+#: 
 msgid "Volunteer Opportunity will be unassigned for the following people."
 msgstr "Önkéntes Opportunity lesz kiosztva a következő emberek."
 
-#: VolunteerOpportunityEditor.php:109
+#: 
 msgid "Yes, delete this Volunteer Opportunity"
 msgstr "Igen, törlöm ezt Önkéntes Opportunity"
 
-#: VolunteerOpportunityEditor.php:194
+#: 
 msgid "Volunteer Opportunity Editor"
 msgstr "Önkéntes Opportunity szerkesztő"
 
-#: VolunteerOpportunityEditor.php:283
+#: 
 msgid "No volunteer opportunities have been added yet"
 msgstr "Nem önkéntes lehetőségeket adtak még"
 
-#: VolunteerOpportunityEditor.php:332
+#: 
 msgid "NOTE: ADD, Delete, and Ordering changes are immediate.  Changes to Name or Desc fields must be saved by pressing 'Save Changes'"
 msgstr "MEGJEGYZÉS: ADD, Törlés és rendelési változások azonnali. Változások a név vagy Desc mezőket kell menteni megnyomásával \"Változtatások mentése\""
 
-#: VolunteerOpportunityEditor.php:434
+#: 
 msgid "Add New Opportunity"
 msgstr "Új Opportunity"
 
-#: WhyCameEditor.php:32
+#: 
 msgid "\"Why Came\" notes for "
 msgstr "\"Miért jött\" megjegyzések"
 
-#: WhyCameEditor.php:87
+#: 
 msgid "Why did you come to the church?"
 msgstr "Miért jöttél a templomba?"
 
-#: WhyCameEditor.php:91
+#: 
 msgid "Why do you keep coming?"
 msgstr "Miért jönnek?"
 
-#: WhyCameEditor.php:95
+#: 
 msgid "Do you have any suggestions for us?"
 msgstr "Van valami javaslatod számunkra?"
 
-#: WhyCameEditor.php:99
+#: 
 msgid "How did you learn of the church?"
 msgstr "Hogyan tanultál az egyház?"
 
-#: eGive.php:352
+#: 
 msgid "Re-import to selected family"
 msgstr "Re-import a kiválasztott család"
 
-#: eGive.php:356
+#: 
 msgid "Data import results: "
 msgstr "Adat import eredmények:"
 
-#: eGive.php:356
+#: 
 msgid " gifts were imported, "
 msgstr "ajándékok importálták,"
 
-#: eGive.php:356
+#: 
 msgid " gifts unchanged, and "
 msgstr "ajándékok változatlan marad, és a"
 
-#: eGive.php:356
+#: 
 msgid " gifts not imported due to problems"
 msgstr "ajándékok nem importáltak problémák miatt"
 
-#: eGive.php:357 eGive.php:386
+#: 
 msgid "Back to Deposit Slip"
 msgstr "Vissza Befizetés Slip"
 
-#: eGive.php:385
+#: 
 msgid "Fatal error in eGive API datastream: '"
 msgstr "Végzetes hiba eGive API Datastream: \""
 
-#: Include/CanvassUtilities.php:66
+#: 
 msgid "No families need canvassers assigned"
 msgstr "Nem családtagjaik canvassers célhoz"
 
-#: Include/CanvassUtilities.php:78
+#: 
 msgid "Canvassers assigned at random to %d families."
 msgstr "Canvassers rendelt véletlenszerűen% d családoknak."
 
-#: Include/CanvassUtilities.php:112
+#: 
 msgid "Canvassers assigned at random to %d non-pledging families."
 msgstr "Canvassers rendelt véletlenszerűen% d nem zálogjog családok."
 
-#: Include/EnvelopeFunctions.php:35
+#: 
 msgid "Assigned envelope numbers to all families with at least one member."
 msgstr "Célhoz boríték számok minden család legalább egy tagja."
 
-#: Include/EnvelopeFunctions.php:37
+#: 
 msgid "Assigned envelope numbers to all families."
 msgstr "Célhoz boríték számok minden család."
 
-#: Include/Functions.php:96
+#: 
 msgid "True / False"
 msgstr "Igaz / hamis"
 
-#: Include/Functions.php:98
+#: 
 msgid "Text Field (50 char)"
 msgstr "Text Field (50 karakter)"
 
-#: Include/Functions.php:99
+#: 
 msgid "Text Field (100 char)"
 msgstr "Text Field (100 karakter)"
 
-#: Include/Functions.php:100
+#: 
 msgid "Text Field (long)"
 msgstr "Text Field (hosszú)"
 
-#: Include/Functions.php:102
+#: 
 msgid "Season"
 msgstr "Évad"
 
-#: Include/Functions.php:104
+#: 
 msgid "Person from Group"
 msgstr "Személy nevében"
 
-#: Include/Functions.php:105
+#: 
 msgid "Money"
 msgstr "Pénz"
 
-#: Include/Functions.php:106
+#: 
 msgid "Phone Number"
 msgstr "Telefonszám"
 
-#: Include/Functions.php:107
+#: 
 msgid "Custom Drop-Down List"
 msgstr "Egyedi Legördülő lista"
 
-#: Include/Functions.php:131
+#: 
 msgid "Group successfully added to the Cart."
 msgstr "Csoport sikeresen hozzáadva a kosárba."
 
-#: Include/Functions.php:137
+#: 
 msgid "Group successfully removed from the Cart."
 msgstr "Csoport sikeresen eltávolították a kosárba."
 
-#: Include/Functions.php:156
+#: 
 msgid "Selected record successfully removed from the Cart."
 msgstr "A kiválasztott rekord sikeresen eltávolították a kosárba."
 
-#: api/routes/cart.php:56
+#: 
 #, fuzzy
 msgid "Your cart has been successfully emptied"
 msgstr "Ön kosara sikeresen kiürült"
 
-#: Include/Functions.php:174
+#: 
 msgid "item(s) added to the Cart."
 msgstr "tétel (ek) adunk a kosárba."
 
-#: Include/Functions.php:199
+#: 
 msgid "Select Fiscal Year"
 msgstr "Válassza a pénzügyi év"
 
-#: Include/Functions.php:428
+#: 
 msgid "pm"
 msgstr "pm"
 
-#: Include/Functions.php:433
+#: 
 msgid "am"
 msgstr "am"
 
-#: Include/Functions.php:754
+#: 
 msgid "Invalid Editor ID!"
 msgstr "Érvénytelen azonosító szerkesztő!"
 
-#: Include/Functions.php:809
+#: 
 msgid "Select Season"
 msgstr "Válassza Évad"
 
-#: Include/Functions.php:814
+#: 
 msgid "Winter"
 msgstr "Tél"
 
-#: Include/Functions.php:819
+#: 
 msgid "Spring"
 msgstr "Tavasz"
 
-#: Include/Functions.php:824
+#: 
 msgid "Summer"
 msgstr "Nyár"
 
-#: Include/Functions.php:829
+#: 
 msgid "Fall"
 msgstr "Esik"
 
-#: Include/Functions.php:926
+#: 
 msgid "Error: Invalid Editor ID!"
 msgstr "Hiba: Érvénytelen azonosító szerkesztő!"
 
-#: FundRaiserEditor.php:52 Include/Functions.php:1123 PledgeEditor.php:318
+#: 
 msgid "Not a valid date"
 msgstr "Nem érvényes dátum"
 
-#: Include/Functions.php:1135
+#: 
 msgid "Invalid Year"
 msgstr "Érvénytelen év"
 
-#: Include/Functions.php:1138
+#: 
 msgid "Out of range: Allowable values are 1901 to 2155"
 msgstr "Out of tartomány: megengedett értékek 1901-2155"
 
-#: Include/Functions.php:1151 Include/Functions.php:1167
+#: 
 msgid "Invalid Number"
 msgstr "Érvénytelen szám"
 
-#: Include/Functions.php:1154
+#: 
 msgid "Number too large. Must be between -2147483648 and 2147483647"
 msgstr "Száma túl nagy. Között kell lennie -2147483648 és 2147483647"
 
-#: Include/Functions.php:1170
+#: 
 msgid "Money amount too large. Maximum is $999999999.99"
 msgstr "Pénz összeg túl nagy. Maximum $ 999999999,99"
 
-#: Include/Functions.php:1320
+#: 
 msgid " Bold Italic"
 msgstr "Bold Italic"
 
-#: Include/Functions.php:1323
+#: 
 msgid " Italic"
 msgstr "Dőlt betű"
 
-#: Include/Functions.php:1325
+#: 
 msgid " Bold"
 msgstr "Bátor"
 
-#: Include/LabelFunctions.php:42
+#: 
 #, fuzzy
 msgid "Font"
 msgstr "Font"
 
-#: Include/LabelFunctions.php:80
+#: 
 #, fuzzy
 msgid "Label Type"
 msgstr "Címke típusa"
 
-#: Include/LabelFunctions.php:97
+#: 
 msgid "Label Grouping"
 msgstr "Label csoportosítása"
 
-#: Include/LabelFunctions.php:105
+#: 
 msgid "All Individuals"
 msgstr "Minden egyénnek"
 
-#: Include/LabelFunctions.php:112
+#: 
 msgid "Grouped by Family"
 msgstr "Szerint csoportosítva Family"
 
-#: Include/LabelFunctions.php:117
+#: 
 #, fuzzy
 msgid "To the parents of"
 msgstr "Ahhoz, hogy a szülők"
 
-#: Include/LabelFunctions.php:133
+#: 
 #, fuzzy
 msgid "Start Row"
 msgstr "Indítás Row"
 
-#: Include/LabelFunctions.php:140
+#: 
 #, fuzzy
 msgid "Start Column"
 msgstr "Indítás Oszlop"
 
-#: Include/LabelFunctions.php:152
+#: 
 #, fuzzy
 msgid "Ignore Incomplete<br>Addresses"
 msgstr "Ignore Befejezetlen <br> Címek"
 
-#: Include/LabelFunctions.php:164
+#: 
 #, fuzzy
 msgid "File Type"
 msgstr "Fájl típus"
 
-#: Reports/AdvancedDeposit.php:386 Reports/AdvancedDeposit.php:404
-#: Reports/AdvancedDeposit.php:493 Reports/AdvancedDeposit.php:507
-#: Reports/AdvancedDeposit.php:548 Reports/AdvancedDeposit.php:566
-#: Reports/AdvancedDeposit.php:655 Reports/AdvancedDeposit.php:669
-#: Reports/AdvancedDeposit.php:710 Reports/AdvancedDeposit.php:728
-#: Reports/AdvancedDeposit.php:817 Reports/AdvancedDeposit.php:831
-#: Reports/AdvancedDeposit.php:848
+#: 
 msgid "items"
 msgstr "tételek"
 
-#: Reports/CanvassReports.php:204
+#: 
 msgid "Did not pledge"
 msgstr "Nem jelölt"
 
-#: Reports/CanvassReports.php:208
+#: 
 msgid "Top pledger"
 msgstr "Top zálogadós"
 
-#: Reports/CanvassReports.php:210
+#: 
 msgid "Pledged"
 msgstr "Elzálogosított"
 
-#: Reports/CanvassReports.php:238 Reports/ConfirmReport.php:181
-#: Reports/ConfirmReport.php:200 Reports/ConfirmReportEmail.php:185
-#: Reports/ConfirmReportEmail.php:203
+#: 
 msgid "M/F"
 msgstr "M / F"
 
-#: Reports/ClassAttendance.php:151 Reports/ClassAttendance.php:152
-#: Reports/ClassList.php:134 Reports/ClassList.php:135
+#: 
 msgid "Liaison"
 msgstr "Kapcsolat"
 
-#: Reports/ConfirmReport.php:130 Reports/ConfirmReportEmail.php:131
+#: 
 msgid "City, State, Zip"
 msgstr "Város, Állam, Zip"
 
-#: FamilyEditor.php:781 FamilyView.php:234 Reports/ConfirmReport.php:140
-#: Reports/ConfirmReportEmail.php:141
-#: external/templates/verify/verify-family-info.php:39
-#: v2/templates/people/family-view.php:133
+#: 
 msgid "Send Newsletter"
 msgstr "Küldés Hírlevél"
 
-#: Reports/ConfirmReport.php:180 Reports/ConfirmReport.php:199
-#: Reports/ConfirmReportEmail.php:184 Reports/ConfirmReportEmail.php:202
+#: 
 msgid "Member Name"
 msgstr "Felhasználói név"
 
-#: Reports/ConfirmReport.php:182 Reports/ConfirmReport.php:201
-#: Reports/ConfirmReportEmail.php:186 Reports/ConfirmReportEmail.php:204
+#: 
 msgid "Adult/Child"
 msgstr "Felnőtt / Gyermek"
 
-#: GroupReports.php:126 Reports/CanvassReports.php:242
-#: Reports/ConfirmReportEmail.php:189 Reports/ConfirmReportEmail.php:207
-#: v2/templates/people/family-list.php:34
+#: 
 #, fuzzy
 msgid "Cell Phone"
 msgstr "Mobiltelefonos"
 
-#: Reports/ConfirmReport.php:187 Reports/ConfirmReport.php:206
-#: Reports/ConfirmReportEmail.php:190 Reports/ConfirmReportEmail.php:208
+#: 
 msgid "Member/Friend"
 msgstr "Tagállamok / Friend"
 
-#: Reports/DirectoryReport.php:179
+#: 
 msgid "This option requires at least version 3.22 of MySQL!  Hit browser back button to return to ChurchCRM."
 msgstr "Ez a lehetőség szerint legalább verziója 3,22 MySQL! Hit böngésző Vissza gombot, hogy visszatérjen ChurchCRM."
 
-#: ChurchCRM/Reports/PDF_Directory.php:312
-#: ChurchCRM/Reports/PDF_Directory.php:387
-#: ChurchCRM/Reports/PDF_Directory.php:444 Reports/DirectoryReport.php:289
-#: Reports/GroupReport.php:124
-#: external/templates/registration/family-register-members.php:96
+#: 
 msgid "Work"
 msgstr "Munka"
 
-#: ChurchCRM/Reports/PDF_Directory.php:315
-#: ChurchCRM/Reports/PDF_Directory.php:391
-#: ChurchCRM/Reports/PDF_Directory.php:448 Reports/DirectoryReport.php:293
-#: Reports/GroupReport.php:129
+#: 
 msgid "Cell"
 msgstr "Sejt"
 
-#: Reports/FRBidSheets.php:75 Reports/FRCatalog.php:98
-#: Reports/FRCertificates.php:45
+#: 
 msgid "Estimated value "
 msgstr "Becsült érték"
 
-#: Reports/FRBidSheets.php:78 Reports/FRCatalog.php:101
-#: Reports/FRCertificates.php:48
+#: 
 msgid "Donated by "
 msgstr "Által adományozott"
 
-#: Reports/FRBidSheets.php:89
+#: 
 msgid "Paddle"
 msgstr "Evez"
 
-#: Reports/FRBidSheets.php:90
+#: 
 msgid "Bid"
 msgstr "Árajánlat"
 
-#: Reports/FRCatalog.php:95
+#: 
 msgid "Minimum bid "
 msgstr "Minimális ajánlat"
 
-#: Reports/FamilyPledgeSummary.php:143 Reports/ReminderReport.php:154
+#: 
 msgid "All Funds"
 msgstr "Összes alapok"
 
-#: Reports/FamilyPledgeSummary.php:144 Reports/ReminderReport.php:155
+#: 
 msgid " for all funds"
 msgstr "Ha az összes alap"
 
-#: Reports/FamilyPledgeSummary.php:146 Reports/ReminderReport.php:157
+#: 
 msgid " for fund "
 msgstr "az alapok"
 
-#: Reports/FamilyPledgeSummary.php:149 Reports/ReminderReport.php:160
+#: 
 msgid "for funds "
 msgstr "az alapok"
 
-#: Reports/FundRaiserStatement.php:92
+#: 
 msgid "Donated Items:"
 msgstr "Adományozott tárgyak:"
 
-#: Reports/FundRaiserStatement.php:143
+#: 
 msgid "Purchased Items:"
 msgstr "Vásárolt elemek:"
 
-#: Reports/FundRaiserStatement.php:215
+#: 
 msgid "Total of all purchases: $"
 msgstr "Összesen vásárlások: $"
 
-#: Reports/FundRaiserStatement.php:222
+#: 
 msgid "Total purchases: $"
 msgstr "Beszerzése összesen: $"
 
-#: Reports/FundRaiserStatement.php:222
+#: 
 msgid "Amount paid: ________________"
 msgstr "Kifizetett összeg: ________________"
 
-#: Reports/FundRaiserStatement.php:224
+#: 
 msgid "Paid by (  ) Cash    (  ) Check    (  ) Credit card __ __ __ __    __ __ __ __    __ __ __ __    __ __ __ __  Exp __ / __"
 msgstr "Által fizetett () Készpénz () Check () Hitelkártya ________________________________ Exp __ / __"
 
-#: Reports/FundRaiserStatement.php:226
+#: 
 msgid "                                        Signature ________________________________________________________________"
 msgstr "Aláírás ________________________________________________________________"
 
-#: ChurchCRM/Reports/PDF_Attendance.php:179
+#: 
 msgid "Totals"
 msgstr "Összesítés"
 
-#: ChurchCRM/Reports/PDF_CertificatesReport.php:30
+#: 
 msgid "Certificate of Ownership"
 msgstr "Tulajdonosi igazolás"
 
-#: ChurchCRM/Reports/PDF_Directory.php:38
-#: ChurchCRM/Reports/PDF_Directory.php:74
+#: 
 msgid "Directory"
 msgstr "Telefonkönyv"
 
-#: ChurchCRM/Reports/PDF_Directory.php:57
+#: 
 msgid "Page"
 msgstr "Oldal"
 
-#: ChurchCRM/Reports/PDF_Directory.php:321
+#: 
 msgid "Wedding"
 msgstr "Esküvő"
 
-#: ChurchCRM/Reports/PDF_Directory.php:350
+#: 
 msgid "and"
 msgstr "és"
 
-#: ChurchCRM/Reports/PDF_GroupDirectory.php:29
+#: 
 msgid "Group Directory"
 msgstr "Group Directory"
 
-#: Reports/TaxReport.php:241
+#: 
 msgid "Please detach this slip and mail with your next gift."
 msgstr "Kérem, vegye le ezt a csúszás és mailt a következő ajándékot."
 
-#: Reports/TaxReport.php:243
+#: 
 msgid "Please mail you next gift to "
 msgstr "Légyszíves írj legközelebb ajándékot"
 
-#: Reports/TaxReport.php:282
+#: 
 msgid "Gift Amount:"
 msgstr "Ajándék Mennyiség:"
 
-#: Reports/TaxReport.php:285
+#: 
 msgid "Gift Designation:"
 msgstr "Ajándék Megnevezés:"
 
-#: sundayschool/SundaySchoolReports.php:30
+#: 
 msgid "Sunday School Reports"
 msgstr "Vasárnapi Iskola jelentések"
 
-#: sundayschool/SundaySchoolDashboard.php:55
+#: 
 msgid "Generate class lists and attendance sheets"
 msgstr "Létrehoz osztály listák és jelenléti ív"
 
-#: sundayschool/SundaySchoolReports.php:123
+#: 
 msgid "At least one group must be selected to make class lists or attendance sheets."
 msgstr "Legalább egy csoportot úgy kell megválasztani, hogy a class listák vagy jelenléti ív."
 
-#: sundayschool/SundaySchoolReports.php:186
+#: 
 #, fuzzy
 msgid "To select multiple hold CTL"
 msgstr "Válassza Csoport: Ha több hold CTL"
 
-#: sundayschool/SundaySchoolReports.php:212
+#: 
 #, fuzzy
 msgid "First Sunday"
 msgstr "Első vasárnap"
 
-#: sundayschool/SundaySchoolReports.php:217
+#: 
 #, fuzzy
 msgid "Last Sunday"
 msgstr "Múlt vasárnap"
 
-#: sundayschool/SundaySchoolReports.php:222
-#: sundayschool/SundaySchoolReports.php:227
-#: sundayschool/SundaySchoolReports.php:232
-#: sundayschool/SundaySchoolReports.php:237
-#: sundayschool/SundaySchoolReports.php:242
-#: sundayschool/SundaySchoolReports.php:247
-#: sundayschool/SundaySchoolReports.php:252
-#: sundayschool/SundaySchoolReports.php:257
+#: 
 #, fuzzy
 msgid "No Sunday School"
 msgstr "No Vasárnapi Iskola"
 
-#: sundayschool/SundaySchoolReports.php:262
+#: 
 #, fuzzy
 msgid "Extra Students"
 msgstr "Extra Hallgatók"
 
-#: sundayschool/SundaySchoolReports.php:266
+#: 
 #, fuzzy
 msgid "Extra Teachers"
 msgstr "Extra Tanárok"
 
-#: sundayschool/SundaySchoolReports.php:275
+#: 
 msgid "Create Class List"
 msgstr "Create Class List"
 
-#: sundayschool/SundaySchoolReports.php:278
+#: 
 msgid "Create Attendance Sheet"
 msgstr "Létrehozása jelenléti ív"
 

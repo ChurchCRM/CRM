@@ -14,9 +14,10 @@ require 'Include/Functions.php';
 
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\Authentication\AuthenticationManager;
 
 // Security: User must have property and classification editing permission
-if (!$_SESSION['user']->isMenuOptionsEnabled()) {
+if (!AuthenticationManager::GetCurrentUser()->isMenuOptionsEnabled()) {
     RedirectUtils::Redirect('Menu.php');
     exit;
 }
@@ -42,7 +43,7 @@ if (isset($_POST['Submit'])) {
 
     //Did they enter a name?
     if (strlen($sName) < 1) {
-        $sNameError = '<font color="red">'.gettext('You must enter a name').'</font>';
+        $sNameError = '<span style="color: red;">'.gettext('You must enter a name').'</span>';
         $bError = true;
     }
 

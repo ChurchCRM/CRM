@@ -3,6 +3,7 @@
 namespace ChurchCRM\Tasks;
 
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Authentication\AuthenticationManager;
 
 
 class IntegrityCheckTask implements iTask
@@ -18,7 +19,7 @@ class IntegrityCheckTask implements iTask
 
   public function isActive()
   {
-    return $_SESSION['user']->isAdmin() && ($this->integrityCheckData == null || $this->integrityCheckData->status == 'failure');
+    return AuthenticationManager::GetCurrentUser()->isAdmin() && ($this->integrityCheckData == null || $this->integrityCheckData->status == 'failure');
   }
 
   public function isAdmin()
@@ -28,7 +29,7 @@ class IntegrityCheckTask implements iTask
 
   public function getLink()
   {
-    return SystemURLs::getRootPath() . '/IntegrityCheck.php';
+    return SystemURLs::getRootPath() . '/v2/admin/debug';
   }
 
   public function getTitle()

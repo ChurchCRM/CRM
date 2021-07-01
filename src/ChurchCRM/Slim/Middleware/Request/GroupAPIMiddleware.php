@@ -2,9 +2,9 @@
 
 namespace ChurchCRM\Slim\Middleware\Request;
 
+use ChurchCRM\GroupQuery;
 use Slim\Http\Request;
 use Slim\Http\Response;
-use ChurchCRM\GroupQuery;
 
 class GroupAPIMiddleware
 {
@@ -13,12 +13,12 @@ class GroupAPIMiddleware
 
         $groupId = $request->getAttribute("route")->getArgument("groupId");
         if (empty(trim($groupId))) {
-          return $response->withStatus(400, gettext("Missing"). " GroupId");
+          return $response->withStatus(412, gettext("Missing"). " GroupId");
         }
 
         $group = GroupQuery::create()->findPk($groupId);
         if (empty($group)) {
-            return $response->withStatus(404, "GroupId: " . $groupId . " ". gettext("not found"));
+            return $response->withStatus(412, "GroupId: " . $groupId . " ". gettext("not found"));
         }
 
         $request = $request->withAttribute("group", $group);

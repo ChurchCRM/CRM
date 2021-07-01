@@ -18,9 +18,11 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\Bootstrapper;
+use ChurchCRM\Authentication\AuthenticationManager;
 
 // Security
-if (!$_SESSION['user']->isAdmin()) {
+if (!AuthenticationManager::GetCurrentUser()->isAdmin()) {
     RedirectUtils::Redirect('Menu.php');
     exit;
 }
@@ -63,9 +65,9 @@ if (isset($_POST['save'])) {
     }
 
         // If changing the locale, translate the menu options
-        if ($id == 39 && $value != $localeInfo->getLocale()) {
-            $localeInfo = new LocaleInfo($value);
-            setlocale(LC_ALL, $localeInfo->getLocale());
+        if ($id == 39 && $value != Bootstrapper::GetCurrentLocale()->getLocale()) {
+            $localeInfo = new LocaleInfo($value, AuthenticationManager::GetCurrentUser()->getSetting("ui.locale"));
+            setlocale(LC_ALL, $localeInfo->getLocale(), $localeInfo->getLocale().'.UTF-8', $localeInfo->getLocale().'.utf8');
             $aLocaleInfo = $localeInfo->getLocaleInfo();
         }
 
@@ -109,7 +111,7 @@ require 'Include/Header.php';
 <div class="row">
   <div class="col-lg-12">
     <div class="box box-body">
-      <form method=post action=SystemSettings.php>
+      <form name="SystemSettingsForm" method=post action=SystemSettings.php>
         <div class="nav-tabs-custom">
           <ul class="nav nav-tabs">
             <?php foreach (SystemConfig::getCategories() as $category=>$settings) {
@@ -231,7 +233,7 @@ require 'Include/Header.php';
                       <td>
                         <?php if (!empty($setting->getTooltip())) {
                           ?>
-                          <a data-toggle="popover" title="<?= $setting->getTooltip() ?>" target="_blank"><i class="fa fa-fw fa-question-circle"></i></a>
+                          <a class="setting-tip" data-tip="<?= $setting->getTooltip() ?>"><i class="fa fa-fw fa-question-circle"></i></a>
                         <?php
                       }
                       if (!empty($setting->getUrl())) {

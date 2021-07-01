@@ -454,7 +454,7 @@ function loadPerson($iPersonID)
         } else {
             $familyRole .=  gettext('Member');
         }
-        $familyRole .= gettext(' of the').' <a href="FamilyView.php?FamilyID='. $person->getFamId().'">'.$person->getFamily()->getName().'</a> '.gettext('family').' )';
+        $familyRole .= gettext(' of the').' <a href="v2/family/'. $person->getFamId().'">'.$person->getFamily()->getName().'</a> '.gettext('family').' )';
     } else {
         $familyRole = gettext('(No assigned family)');
     }

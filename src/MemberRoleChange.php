@@ -14,9 +14,10 @@ require 'Include/Functions.php';
 
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\Authentication\AuthenticationManager;
 
 // Security: User must have Manage Groups & Roles permission
-if (!$_SESSION['user']->isManageGroupsEnabled()) {
+if (!AuthenticationManager::GetCurrentUser()->isManageGroupsEnabled()) {
     RedirectUtils::Redirect('Menu.php');
     exit;
 }
@@ -113,12 +114,12 @@ require 'Include/Header.php'
 	</tr>
 	<tr>
 		<td colspan="2" align="center">
-			<input type="submit" class="btn" name="Submit" value="<?= gettext('Update') ?>">
+			<input type="submit" class="btn btn-default" name="Submit" value="<?= gettext('Update') ?>">
 			<?php
                 if ($iReturn) {
-                    echo '&nbsp;&nbsp;<input type="button" class="btn" name="Cancel" value="'.gettext('Cancel')."\" onclick=\"document.location='GroupView.php?GroupID=".$iGroupID."';\">";
+                    echo '&nbsp;&nbsp;<input type="button" class="btn btn-default" name="Cancel" value="'.gettext('Cancel')."\" onclick=\"document.location='GroupView.php?GroupID=".$iGroupID."';\">";
                 } else {
-                    echo '&nbsp;&nbsp;<input type="button" class="btn" name="Cancel" value="'.gettext('Cancel')."\" onclick=\"document.location='PersonView.php?PersonID=".$iPersonID."';\">";
+                    echo '&nbsp;&nbsp;<input type="button" class="btn btn-default" name="Cancel" value="'.gettext('Cancel')."\" onclick=\"document.location='PersonView.php?PersonID=".$iPersonID."';\">";
                 }
             ?>
 		</td>

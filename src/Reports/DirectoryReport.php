@@ -19,9 +19,10 @@ use ChurchCRM\Reports\PDF_Directory;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\MiscUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\Authentication\AuthenticationManager;
 
 // Check for Create Directory user permission.
-if (!$bCreateDirectory) {
+if (!AuthenticationManager::GetCurrentUser()->isCreateDirectoryEnabled()) {
     RedirectUtils::Redirect('Menu.php');
     exit;
 }
@@ -103,8 +104,10 @@ $numCustomFields = mysqli_num_rows($rsCustomFields);
 
 if ($numCustomFields > 0) {
     while ($rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQLI_ASSOC)) {
-        $pdf->AddCustomField($rowCustomField['custom_Order'], isset($_POST['bCustom'.$rowCustomField['custom_Order']])
-                            );
+        $pdf->AddCustomField(
+            $rowCustomField['custom_Order'],
+            isset($_POST['bCustom'.$rowCustomField['custom_Order']])
+        );
     }
 }
 
@@ -312,7 +315,7 @@ while ($aRow = mysqli_fetch_array($rsRecords)) {
 
     if ($numlines > 0) {
         if (strtoupper($sLastLetter) != strtoupper(mb_substr($pdf->sSortBy, 0, 1))) {
-            $pdf->Check_Lines($numlines + 2, 0, 0);
+            $pdf->Check_Lines($numlines + 2, null);
             $sLastLetter = strtoupper(mb_substr($pdf->sSortBy, 0, 1));
             $pdf->Add_Header($sLastLetter);
         }

@@ -1,15 +1,15 @@
 <?php
 
 namespace ChurchCRM\dto;
+use ChurchCRM\Calendar;
 use ChurchCRM\Interfaces\SystemCalendar;
 use Propel\Runtime\Collection\ObjectCollection;
-use ChurchCRM\Calendar;
 
 class SystemCalendars {
 
   private static function getCalendars() {
     $systemCalendarNamespace = "ChurchCRM\SystemCalendars\\";
-    $systemCalendarNames = ["BirthdaysCalendar", "AnniversariesCalendar", "HolidayCalendar"];
+    $systemCalendarNames = ["BirthdaysCalendar", "AnniversariesCalendar", "HolidayCalendar","UnpinnedEvents"];
     $calendars = [];
     foreach ($systemCalendarNames as $systemCalendarName)  {
       $className = $systemCalendarNamespace.$systemCalendarName;
@@ -19,7 +19,7 @@ class SystemCalendars {
     }
     return $calendars;
   }
-  
+
   public static function getCalendarList() {
     $calendars = new ObjectCollection();
     $calendars->setModel("ChurchCRM\\Calendar");
@@ -28,7 +28,7 @@ class SystemCalendars {
     }
     return $calendars;
   }
-   
+
   public static function getCalendarById($id) {
     $requestedCalendar = null;
     foreach(self::getCalendars() as $calendar)
@@ -40,7 +40,7 @@ class SystemCalendars {
     }
     return $requestedCalendar;
   }
-  
+
   public static function toPropelCalendar(SystemCalendar $calendar) {
     $procalendar =  new Calendar();
     $procalendar->setId($calendar->getId());
@@ -50,5 +50,5 @@ class SystemCalendars {
     $procalendar->setForegroundColor($calendar->getForegroundColor());
     return $procalendar;
   }
-  
+
 }

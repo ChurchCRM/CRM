@@ -154,17 +154,6 @@ function initDataTable() {
       url: window.CRM.root + "/api/groups/" + window.CRM.currentGroup + "/members",
       dataSrc: "Person2group2roleP2g2rs"
     },
-    "language": {
-      "url": window.CRM.plugin.dataTable.language.url
-    },
-      responsive: true,
-      "language": {
-          "url": window.CRM.plugin.dataTable.language.url
-      },
-      "dom": window.CRM.plugin.dataTable.dom,
-      "tableTools": {
-          "sSwfPath": window.CRM.plugin.dataTable.tableTools.sSwfPath
-      },
     columns: [
       {
         width: 'auto',

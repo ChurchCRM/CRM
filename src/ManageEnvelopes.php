@@ -16,12 +16,13 @@ require 'Include/EnvelopeFunctions.php';
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\Authentication\AuthenticationManager;
 
 //Set the page title
 $sPageTitle = gettext('Envelope Manager');
 
 // Security: User must have finance permission to use this form
-if (!$_SESSION['user']->isFinanceEnabled()) {
+if (!AuthenticationManager::GetCurrentUser()->isFinanceEnabled()) {
     RedirectUtils::Redirect('Menu.php');
     exit;
 }
@@ -115,7 +116,7 @@ if (isset($_POST['PrintReport'])) {
 
 
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#updateEnvelopesModal"><?= gettext('Update Family Records') ?></button>
-<button type="submit" class="btn" name="PrintReport"><i class="fa fa-print"></i></button>
+<button type="submit" class="btn btn-default" name="PrintReport"><i class="fa fa-print"></i></button>
 
 <br><br>
 
@@ -155,7 +156,7 @@ if (isset($_POST['PrintReport'])) {
         }
         ?>
         </select>
-        <input type="submit" class="btn" value="<?= gettext('Sort by') ?>" name="Sort">
+        <input type="submit" class="btn btn-default" value="<?= gettext('Sort by') ?>" name="Sort">
         <input type="radio" Name="SortBy" value="name"
         <?php if ($sSortBy == 'name') {
             echo ' checked';
@@ -167,9 +168,9 @@ if (isset($_POST['PrintReport'])) {
     </th>
     <th>
         <b>Envelope</b>
-        <input type="submit" class="btn" value="<?= gettext('Zero') ?>"
+        <input type="submit" class="btn btn-default" value="<?= gettext('Zero') ?>"
                  name="ZeroAll">
-        <input type="submit" class="btn" value="<?= gettext('Assign starting at #') ?>"
+        <input type="submit" class="btn btn-default" value="<?= gettext('Assign starting at #') ?>"
                  name="AssignAllFamilies">
         <input type="text" name="AssignStartNum" value="<?= $iAssignStartNum ?>" maxlength="5">
     </th>

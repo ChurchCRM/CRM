@@ -29,9 +29,9 @@ function doBackup(isRemote)
     // get the form data
     // there are many ways to get this data using jQuery (you can use the class or id also)
     var formData = {
-      'iArchiveType'              : $('input[name=archiveType]:checked').val(),
-      'bEncryptBackup'            : $("input[name=encryptBackup]").is(':checked'),
-      'password'                  : $('input[name=pw1]').val()
+      'BackupType'              : $('input[name=archiveType]:checked').val(),
+      'EncryptBackup'            : $("input[name=encryptBackup]").is(':checked'),
+      'BackupPassword'                  : $('input[name=pw1]').val()
     };
     $("#backupstatus").css("color","orange");
     $("#backupstatus").html("Backup Running, Please wait.");
@@ -44,7 +44,7 @@ function doBackup(isRemote)
       data        : JSON.stringify(formData)
     })
     .done(function(data) {
-      var downloadButton = "<button class=\"btn btn-primary\" id=\"downloadbutton\" role=\"button\" onclick=\"javascript:downloadbutton('"+data.filename+"')\"><i class='fa fa-download'></i>  "+data.filename+"</button>";
+      var downloadButton = "<button class=\"btn btn-primary\" id=\"downloadbutton\" role=\"button\" onclick=\"javascript:downloadbutton('"+data.BackupDownloadFileName+"')\"><i class='fa fa-download'></i>  "+data.BackupDownloadFileName+"</button>";
       $("#backupstatus").css("color","green");
       if(isRemote)
       {

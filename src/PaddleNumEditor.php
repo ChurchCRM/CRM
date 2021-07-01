@@ -14,6 +14,7 @@ require 'Include/Functions.php';
 
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\Authentication\AuthenticationManager;
 
 $iPaddleNumID = InputUtils::LegacyFilterInputArr($_GET, 'PaddleNumID', 'int');
 $linkBack = InputUtils::LegacyFilterInputArr($_GET, 'linkBack');
@@ -144,12 +145,12 @@ require 'Include/Header.php';
 <table class="table" cellpadding="3" align="center">
 	<tr>
 		<td align="center">
-			<input type="submit" class="btn" value="<?= gettext('Save') ?>" name="PaddleNumSubmit">
-			<input type="submit" class="btn" value="<?= gettext('Generate Statement') ?>" name="GenerateStatement">
-			<?php if ($_SESSION['user']->isAddRecordsEnabled()) {
-    echo '<input type="submit" class="btn" value="'.gettext('Save and Add')."\" name=\"PaddleNumSubmitAndAdd\">\n";
+			<input type="submit" class="btn btn-default" value="<?= gettext('Save') ?>" name="PaddleNumSubmit">
+			<input type="submit" class="btn btn-default" value="<?= gettext('Generate Statement') ?>" name="GenerateStatement">
+			<?php if (AuthenticationManager::GetCurrentUser()->isAddRecordsEnabled()) {
+    echo '<input type="submit" class="btn btn-default" value="'.gettext('Save and Add')."\" name=\"PaddleNumSubmitAndAdd\">\n";
 } ?>
-			<input type="button" class="btn" value="<?= gettext('Back') ?>" name="PaddleNumCancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) {
+			<input type="button" class="btn btn-default" value="<?= gettext('Back') ?>" name="PaddleNumCancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) {
     echo $linkBack;
 } else {
     echo 'Menu.php';

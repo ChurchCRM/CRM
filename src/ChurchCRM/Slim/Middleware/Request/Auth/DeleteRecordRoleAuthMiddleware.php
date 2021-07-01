@@ -6,7 +6,7 @@ class DeleteRecordRoleAuthMiddleware extends BaseAuthRoleMiddleware {
 
     function hasRole()
     {
-        return $this->user->isDeleteRecords();
+        return $this->user->isDeleteRecordsEnabled();
     }
 
     function noRoleMessage()

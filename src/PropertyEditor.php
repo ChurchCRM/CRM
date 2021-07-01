@@ -14,9 +14,10 @@ require 'Include/Functions.php';
 
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\Authentication\AuthenticationManager;
 
 // Security: User must have property and classification editing permission
-if (!$_SESSION['user']->isMenuOptionsEnabled()) {
+if (!AuthenticationManager::GetCurrentUser()->isMenuOptionsEnabled()) {
     RedirectUtils::Redirect('Menu.php');
     exit;
 }
@@ -68,13 +69,13 @@ if (isset($_POST['Submit'])) {
 
     //Did they enter a name?
     if (strlen($sName) < 1) {
-        $sNameError = '<br><font color="red">'.gettext('You must enter a name').'</font>';
+        $sNameError = '<br><span style="color: red;">'.gettext('You must enter a name').'</span>';
         $bError = true;
     }
 
     //Did they select a Type
     if (strlen($iClass) < 1) {
-        $sClassError = '<br><font color="red">'.gettext('You must select a type').'</font>';
+        $sClassError = '<br><span style="color: red;">'.gettext('You must select a type').'</span>';
         $bError = true;
     }
 
@@ -166,7 +167,7 @@ require 'Include/Header.php';
         </div>
         <div class="row">
           <div class="col-md-6">
-            <input type="submit" class="btn" name="Submit" value="<?= gettext('Save') ?>">&nbsp;<input type="button" class="btn" name="Cancel" value="<?= gettext('Cancel') ?>" onclick="document.location='PropertyList.php?Type=<?= $sType ?>';">
+            <input type="submit" class="btn btn-primary" id="save" name="Submit" value="<?= gettext('Save') ?>">&nbsp;<input type="button" class="btn btn-default" name="Cancel" value="<?= gettext('Cancel') ?>" onclick="document.location='PropertyList.php?Type=<?= $sType ?>';">
         </div>
         </div>
     </div>

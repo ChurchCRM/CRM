@@ -24,9 +24,10 @@ require 'Include/Config.php';
 require 'Include/Functions.php';
 
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\Authentication\AuthenticationManager;
 
 // Security
-if (!$_SESSION['user']->isAdmin()) {
+if (!AuthenticationManager::GetCurrentUser()->isAdmin()) {
     RedirectUtils::Redirect('Menu.php');
     exit;
 }
@@ -40,7 +41,7 @@ $sPageTitle = gettext('Convert Individuals to Families');
 
 require 'Include/Header.php';
 
-$curUserId = $_SESSION['user']->getId();
+$curUserId = AuthenticationManager::GetCurrentUser()->getId();
 
 // find the family ID so we can associate to person record
 $sSQL = 'SELECT MAX(fam_ID) AS iFamilyID FROM family_fam';

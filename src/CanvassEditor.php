@@ -14,9 +14,10 @@ require 'Include/Functions.php';
 
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\Authentication\AuthenticationManager;
 
 // Security: User must have canvasser permission to use this form
-if (!$_SESSION['user']->isCanvasserEnabled()) {
+if (!AuthenticationManager::GetCurrentUser()->isCanvasserEnabled()) {
     RedirectUtils::Redirect('Menu.php');
     exit;
 }
@@ -127,7 +128,7 @@ if (isset($_POST['Submit'])) {
         $tWhyNotInterested = $can_WhyNotInterested;
     } else {
         // Set some default values
-        $iCanvasser = $_SESSION['user']->getId();
+        $iCanvasser = AuthenticationManager::GetCurrentUser()->getId();
         $dDate = date('Y-m-d');
 
         $dDate = '';
@@ -192,7 +193,7 @@ require 'Include/Header.php';
 
 			<tr>
                 <td class="LabelColumn"><?= gettext('Date') ?>:</td>
-				<td class="TextColumn"><input type="text" name="Date" value="<?= $dDate ?>" maxlength="10" id="sel1" size="11"  class="form-control pull-right active date-picker" ?><font color="red"><?= $sDateError ?></font></td>
+				<td class="TextColumn"><input type="text" name="Date" value="<?= $dDate ?>" maxlength="10" id="sel1" size="11"  class="form-control pull-right active date-picker" ?><span style="color: red;"><?= $sDateError ?></span></td>
 			</tr>
 
 
@@ -236,7 +237,7 @@ require 'Include/Header.php';
 </div>
     <div>
             <input type="submit" class="btn btn-primary" value="<?= gettext('Save') ?>" name="Submit">
-            <input type="button" class="btn" value="<?= gettext('Cancel') ?>" name="Cancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) {
+            <input type="button" class="btn btn-default" value="<?= gettext('Cancel') ?>" name="Cancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) {
                 echo $linkBack;
             } else {
                 echo 'Menu.php';

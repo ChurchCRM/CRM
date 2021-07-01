@@ -3,6 +3,7 @@
 use ChurchCRM\Deposit;
 use ChurchCRM\DepositQuery;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\PledgeQuery;
 use ChurchCRM\Slim\Middleware\Request\Auth\FinanceRoleAuthMiddleware;
 
 $app->group('/deposits', function () {
@@ -14,6 +15,13 @@ $app->group('/deposits', function () {
         $deposit->setDate($input->depositDate);
         $deposit->save();
         echo $deposit->toJSON();
+    });
+
+    $this->get('/dashboard', function ($request, $response, $args) {
+        $list = DepositQuery::create()
+            ->filterByDate(['min' =>date('Y-m-d', strtotime('-90 days'))])
+            ->find();
+        return $response->withJson($list->toArray());
     });
 
     $this->get('', function ($request, $response, $args) {
@@ -53,7 +61,7 @@ $app->group('/deposits', function () {
         $id = $args['id'];
         //echo DepositQuery::create()->findOneById($id)->toCSV();
         header('Content-Disposition: attachment; filename=ChurchCRM-Deposit-' . $id . '-' . date(SystemConfig::getValue("sDateFilenameFormat")) . '.csv');
-        echo ChurchCRM\PledgeQuery::create()->filterByDepid($id)
+        echo PledgeQuery::create()->filterByDepId($id)
             ->joinDonationFund()->useDonationFundQuery()
             ->withColumn('DonationFund.Name', 'DonationFundName')
             ->endUse()
@@ -72,9 +80,9 @@ $app->group('/deposits', function () {
 
     $this->get('/{id:[0-9]+}/pledges', function ($request, $response, $args) {
         $id = $args['id'];
-        $Pledges = \ChurchCRM\PledgeQuery::create()
-            ->filterByDepid($id)
-            ->groupByGroupkey()
+        $Pledges = PledgeQuery::create()
+            ->filterByDepId($id)
+            ->groupByGroupKey()
             ->withColumn('SUM(Pledge.Amount)', 'sumAmount')
             ->joinDonationFund()
             ->withColumn('DonationFund.Name')

@@ -49,3 +49,11 @@ src/logs/*.log
 error.log
 
 nbproject/*
+/src/skin/js-react/
+.DS_Store
+
+src/Upgrade/*
+
+cypress/screenshots
+cypress/videos
+cypress.json

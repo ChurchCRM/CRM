@@ -3,11 +3,12 @@
 namespace ChurchCRM\Tasks;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Authentication\AuthenticationManager;
 
 class ChurchAddress implements iTask
 {
   public function isActive(){
-    return $_SESSION['user']->isAdmin() && empty(SystemConfig::getValue('sChurchAddress'));
+    return AuthenticationManager::GetCurrentUser()->isAdmin() && empty(SystemConfig::getValue('sChurchAddress'));
   }
   public function isAdmin(){
     return true;

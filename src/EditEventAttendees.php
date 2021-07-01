@@ -73,7 +73,7 @@ if ($numAttRows != 0) {
           <input type="hidden" name="EName" value="<?= $EvtName ?>">
           <input type="hidden" name="EDesc" value="<?= $EvtDesc ?>">
           <input type="hidden" name="EDate" value="<?= $EvtDate ?>">
-          <input type="submit" name="Action" value="<?= gettext('Delete') ?>" class="btn" onClick="return confirm("<?= gettext('Are you sure you want to DELETE this person from Event ID: ').$EventID ?>")">
+          <input type="submit" name="Action" value="<?= gettext('Delete') ?>" class="btn btn-default" onClick="return confirm("<?= gettext('Are you sure you want to DELETE this person from Event ID: ').$EventID ?>")">
       </form>
      </td>
     </tr>

@@ -1,11 +1,11 @@
 <?php
 
-use Slim\Http\Request;
-use Slim\Http\Response;
-use ChurchCRM\Service\NotificationService;
 use ChurchCRM\dto\Notification\UiNotification;
+use ChurchCRM\Service\NotificationService;
 use ChurchCRM\Service\TaskService;
 use ChurchCRM\Utils\LoggerUtils;
+use Slim\Http\Request;
+use Slim\Http\Response;
 
 $app->group('/system', function () {
     $this->get('/notification', 'getUiNotificationAPI');
@@ -16,7 +16,7 @@ function logCSPReportAPI(Request $request, Response $response, array $args)
 {
     $input = json_decode($request->getBody());
     $log = json_encode($input, JSON_PRETTY_PRINT);
-    LoggerUtils::getCSPLogger()->info($log);
+    LoggerUtils::getCSPLogger()->debug($log);
 }
 
 function getUiNotificationAPI(Request $request, Response $response, array $args)

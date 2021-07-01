@@ -4,6 +4,8 @@ namespace ChurchCRM\Reports;
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Utils\MiscUtils;
+use ChurchCRM\FamilyQuery;
+use ChurchCRM\PersonQuery;
 
 class PDF_Directory extends ChurchInfoReport
 {
@@ -172,21 +174,15 @@ class PDF_Directory extends ChurchInfoReport
         return $nl;
     }
 
-    public function Check_Lines($numlines, $fid, $pid)
+    public function Check_Lines($numlines, $img)
     {
         // Need to determine if we will extend beyoned 17mm from the bottom of
         // the page.
 
         $h = 0; // check image height.  id will be zero if not included
-           $famimg = '../Images/Family/'.$fid.'.jpg';
-        if (file_exists($famimg)) {
-            $s = getimagesize($famimg);
-            $h = ($this->_ColWidth / $s[0]) * $s[1];
-        }
 
-        $persimg = '../Images/Person/'.$pid.'.jpg';
-        if (file_exists($persimg)) {
-            $s = getimagesize($persimg);
+        if (file_exists($img)) {
+            $s = getimagesize($img);
             $h = ($this->_ColWidth / $s[0]) * $s[1];
         }
 
@@ -208,7 +204,7 @@ class PDF_Directory extends ChurchInfoReport
     // changes.
     public function Add_Header($sLetter)
     {
-        $this->Check_Lines(2, 0, 0);
+        $this->Check_Lines(2, null);
         $this->SetTextColor(255);
         $this->SetFont($this->_Font, 'B', $this->_Char_Size);
 //        $_PosX = $this->_Column == 0 ? $this->_Margin_Left : $this->w - $this->_Margin_Left - $this->_ColWidth;
@@ -267,7 +263,7 @@ class PDF_Directory extends ChurchInfoReport
             return '';
         }
     }
-    
+
     public function getBirthdayString($bDirBirthday, $per_BirthMonth, $per_BirthDay, $per_BirthYear, $per_Flags)
     {
       if ($bDirBirthday && $per_BirthDay > 0 && $per_BirthMonth > 0) {
@@ -373,7 +369,7 @@ class PDF_Directory extends ChurchInfoReport
         }
 
         $iTempLen = strlen($sHeadStr);
-        
+
         $sHeadStr .= " " . $this->getBirthdayString($bDirBirthday, $per_BirthMonth, $per_BirthDay, $per_BirthYear, $per_Flags) . "\n";
 
         $sCountry = SelectWhichInfo($per_Country, $fam_Country, false);
@@ -460,39 +456,36 @@ class PDF_Directory extends ChurchInfoReport
     // Number of lines is only for the $text parameter
     public function Add_Record($sName, $text, $numlines, $fid, $pid)
     {
-        $this->Check_Lines($numlines, $fid, $pid);
+        $dirimg = '';
+        if(!is_null($fid)){
+          $family = FamilyQuery::create()->findOneById($fid);
+          if($family && !($family->getPhoto()->isInitials()) && file_exists($family->getPhoto()->getPhotoURI())) {
+            $dirimg = $family->getPhoto()->getPhotoURI();
+          }
+        }
+        if(!is_null($pid)){
+          $person = PersonQuery::create()->findOneById($pid);
+          if ($person && !($person->getPhoto()->isInitials()) && file_exists($person->getPhoto()->getPhotoURI())) {
+            $dirimg = $person->getPhoto()->getPhotoURI();
+          }
+        }
+        $this->Check_Lines($numlines, $dirimg);
 
         $this->Print_Name(iconv('UTF-8', 'ISO-8859-1', $sName));
 
-//        $_PosX = $this->_Column == 0 ? $this->_Margin_Left : $this->w - $this->_Margin_Left - $this->_ColWidth;
-         $_PosX = ($this->_Column * ($this->_ColWidth + $this->_Gutter)) + $this->_Margin_Left;
+        $_PosX = ($this->_Column * ($this->_ColWidth + $this->_Gutter)) + $this->_Margin_Left;
         $_PosY = $this->GetY();
 
         $this->SetXY($_PosX, $_PosY);
 
-        $dirimg = '';
-        $famimg = '../Images/Family/'.$fid.'.jpg';
-        if (file_exists($famimg)) {
-            $dirimg = $famimg;
-        }
-
-        $perimg = '../Images/Person/'.$pid.'.jpg';
-        if (file_exists($perimg)) {
-            $dirimg = $perimg;
-        }
-
         if ($dirimg != '') {
-            $s = getimagesize($dirimg);
-            $h = ($this->_ColWidth / $s[0]) * $s[1];
+            $h = 20;
             $_PosY += 2;
-            $this->Image($dirimg, $_PosX, $_PosY, $this->_ColWidth);
+            $this->Image($dirimg, $_PosX, $_PosY, $h);
             $this->SetXY($_PosX, $_PosY + $h + 2);
         }
 
-//        $this->MultiCell($this->_ColWidth, 5, $text, 0, 'L');
-
         $this->MultiCell($this->_ColWidth, $this->_LS, iconv('UTF-8', 'ISO-8859-1', $text), 0, 'L');
-//        $this->SetY($this->GetY() + 5);
         $this->SetY($this->GetY() + $this->_LS);
     }
 }

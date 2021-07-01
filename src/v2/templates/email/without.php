@@ -2,7 +2,6 @@
 
 use ChurchCRM\dto\SystemURLs;
 
-require SystemURLs::getDocumentRoot() . '/Include/SimpleConfig.php';
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 ?>
@@ -25,25 +24,17 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     $(document).ready(function () {
-        $("#noEmails").DataTable({
-            "language": {
-                "url": window.CRM.plugin.dataTable.language.url
-            },
+        var dataTableConfig = {
             ajax: {
                 url: window.CRM.root + "/api/families/email/without",
                 dataSrc: 'families'
             },
-            "dom": window.CRM.plugin.dataTable.dom,
-            "tableTools": {
-                "sSwfPath": window.CRM.plugin.dataTable.tableTools.sSwfPath
-            },
-            responsive: true,
             columns: [
                 {
                     title: i18next.t('Family'),
                     data: 'Name',
                     render: function ( data, type, row ){
-                        return "<a href='"+ window.CRM.root + "/FamilyView.php?FamilyID=" + row.Id + "' target='family' />"+ data + "</a></li>";
+                        return "<a href='"+ window.CRM.root + "/v2/family/" + row.Id + "' target='family' />"+ data + "</a></li>";
                     },
                     searchable: true
                 },
@@ -52,7 +43,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     data: 'Address',
                 },
             ]
-        });
+        }
+        $.extend(dataTableConfig, window.CRM.plugin.dataTable);
+        $("#noEmails").DataTable(dataTableConfig);
     });
 
     function peopleToString(people) {
