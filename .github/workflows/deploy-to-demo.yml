@@ -43,5 +43,5 @@ jobs:
           npm run composer-update
           npm run orm-gen
 
-      - name: Update PHP
-        run: npm run demo
+      - name: Deploy
+        run: npm run demosite
