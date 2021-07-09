@@ -2,7 +2,7 @@ name: Security
 
 on:
   schedule:
-  - cron: "0 0 * * *"
+  - cron: "0 5 * * SAT"
 
 jobs:
   security_checker:
