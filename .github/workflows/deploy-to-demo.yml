@@ -9,9 +9,11 @@ env:
   node_version: 14
 
 jobs:
-  install_n_gen:
+  build_n_deploy:
     runs-on: ubuntu-latest
     steps:
+      - env:
+          demoKey: ${{ secrets.demoKey }}
       - uses: actions/checkout@v2.3.2
         with:
           # fetch full history so things like auto-changelog work properly
@@ -32,18 +34,8 @@ jobs:
         id: package-version
         uses: martinbeentjes/npm-get-version-action@master
 
-      - name: Update JS
+      - name: Build & Deploy
         run: |
-          npm install
-          npm run build-react
-
-      - name: Update PHP
-        run: |
-          npm run composer-install
-          npm run composer-update
-          npm run orm-gen
-
-      - name: Deploy
-        run: |
+          npm run deploy
           npm run package
           npm run demosite
