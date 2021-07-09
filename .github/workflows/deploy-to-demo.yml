@@ -44,4 +44,6 @@ jobs:
           npm run orm-gen
 
       - name: Deploy
-        run: npm run demosite
+        run: |
+          npm run package
+          npm run demosite
