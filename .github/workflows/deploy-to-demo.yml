@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - 'master'
+  schedule:
+    - cron: '0 */4 * * *'
 
 env:
   node_version: 14
