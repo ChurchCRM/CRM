@@ -46,9 +46,6 @@ jobs:
     - name: NPM Audit
       run: npm run audit fix --only=prod
 
-    - name: ORM Tasks
-      run: npm run orm-gen
-
     - name: Push to built branch
       uses: Automattic/action-commit-to-branch@master
       with:
