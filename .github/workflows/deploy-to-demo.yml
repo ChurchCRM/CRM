@@ -12,8 +12,6 @@ jobs:
   build_n_deploy:
     runs-on: ubuntu-latest
     steps:
-      - env:
-          demoKey: ${{ secrets.demoKey }}
       - uses: actions/checkout@v2.3.2
         with:
           # fetch full history so things like auto-changelog work properly
@@ -35,6 +33,8 @@ jobs:
         uses: martinbeentjes/npm-get-version-action@master
 
       - name: Build & Deploy
+        env:
+          demoKey: ${{ secrets.demoKey }}
         run: |
           npm run deploy
           npm run package
