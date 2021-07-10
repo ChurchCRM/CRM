@@ -6,7 +6,7 @@ env:
   node_version: 14
 
 jobs:
-  build_n_deploy:
+  build_n_test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2.3.2
