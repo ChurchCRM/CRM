@@ -32,7 +32,15 @@ jobs:
       - name: Build
         run: npm run deploy
 
-      #- name: Run Tests
-      #  run: |
-      #    npm run docker-test-build
-      #    npm run test-via-docker
+      - name: Setup Test Server
+        run: |
+          npm run docker-test-build
+          npm run docker-test-start
+
+      - name: Sleep for 5 min
+        uses: jakejarvis/wait-action@master
+        with:
+          time: '300s'
+
+      - name: Run Tests
+        run: npm run test-via-docker
