@@ -32,7 +32,7 @@ jobs:
       - name: Build
         run: npm run deploy
 
-      - name: Run Tests
-        run: |
-          npm run docker-test-build
-          npm run test-via-docker
+      #- name: Run Tests
+      #  run: |
+      #    npm run docker-test-build
+      #    npm run test-via-docker
