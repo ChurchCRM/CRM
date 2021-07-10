@@ -1,4 +1,4 @@
-name: Build Audit
+name: Audit 3rd Party Libs
 
 on:
   push:
@@ -9,7 +9,7 @@ env:
   node_version: 14
 
 jobs:
-  install_n_gen:
+  audit:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2.3.2
