@@ -34,10 +34,15 @@ jobs:
         id: package-version
         uses: martinbeentjes/npm-get-version-action@master
 
-      - name: Build & Deploy
-        env:
-          demoKey: ${{ secrets.demoKey }}
+      - name: Build & Package
         run: |
           npm run deploy
           npm run package
-          npm run demosite
+
+      - name: Deploy
+        env:
+          demoKey: ${{ secrets.demoKey }}
+        run: npm run demosite
+
+      - name: Test
+        run: npm run test-via-demo
