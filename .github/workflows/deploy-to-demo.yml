@@ -18,6 +18,7 @@ jobs:
         with:
           # fetch full history so things like auto-changelog work properly
           fetch-depth: 0
+
       - name: Use Node.js ${{ env.node_version }}
         uses: actions/setup-node@v2-beta
         with:
@@ -25,19 +26,11 @@ jobs:
           # setting a registry enables the NODE_AUTH_TOKEN env variable where we can set an npm token.  REQUIRED
           registry-url: 'https://registry.npmjs.org'
 
-      - name: Declare some variables
-        id: vars
-        shell: bash
-        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+      - name: Install & Build Source
+        run: npm run deploy
 
-      - name: get-npm-version
-        id: package-version
-        uses: martinbeentjes/npm-get-version-action@master
-
-      - name: Build & Package
-        run: |
-          npm run deploy
-          npm run package
+      - name: Package
+        run:  npm run package
 
       - name: Deploy
         env:
