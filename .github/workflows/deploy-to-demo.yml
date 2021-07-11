@@ -37,7 +37,7 @@ jobs:
           demoKey: ${{ secrets.demoKey }}
         run: npm run demosite
 
-      - name: Test
-        run: |
-          cp demo/cypress.json cypress.json
-          node_modules/cypress/bin/cypress run --record --key ${{ secrets.cypressKey }}
+#      - name: Test
+#        run: |
+#          cp demo/cypress.json cypress.json
+#          node_modules/cypress/bin/cypress run --record --key ${{ secrets.cypressKey }}
