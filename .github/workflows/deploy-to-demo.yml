@@ -38,4 +38,6 @@ jobs:
         run: npm run demosite
 
       - name: Test
-        run: npm run test-via-demo
+        run: |
+          cp demo/cypress.json cypress.json
+          node_modules/cypress/bin/cypress run --record --key ${{ secrets.cypressKey }}
