@@ -1,6 +1,6 @@
 {
     "name": "churchcrm",
-    "version": "4.4.5",
+    "version": "4.4.6",
     "description": "Free Church CRM Software",
     "repository": {
         "type": "git",
@@ -119,6 +119,6 @@
         "webpack-cli": "^3.3.12"
     },
     "optionalDependencies": {
-        "cypress": "^7.3.0"
+        "cypress": "^8.2.0"
     }
 }
