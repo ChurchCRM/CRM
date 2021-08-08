@@ -2378,8 +2378,4 @@
     "Toggle the left sidebar's state (open or collapse)": "Chuyển đổi trạng thái của thanh bên trái (mở hoặc thu gọn)",
     "Tables Settings": "Cài đặt bảng",
     "Page length": "Độ dài trang",
-    "Change the initial page length (number of rows per page)": "Thay đổi độ dài trang ban đầu (số hàng trên mỗi trang)",
-    "User Interface": "Giao diện người dùng",
-    "Locale": "Ngôn ngữ",
-    "Override system locale": "Ghi đè ngôn ngữ hệ thống"
-}
+    "Change the initial 
