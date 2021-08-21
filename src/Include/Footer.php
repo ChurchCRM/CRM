@@ -17,6 +17,7 @@ use ChurchCRM\Service\SystemService;
 
 $isAdmin = AuthenticationManager::GetCurrentUser()->isAdmin();
 ?>
+</div>
 </section><!-- /.content -->
 
 </div>
