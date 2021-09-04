@@ -646,13 +646,13 @@ require 'Include/Header.php';
 	<input type="hidden" name="FamCount" value="<?= $iFamilyMemberRows ?>">
     <input type="hidden" id="stateType" name="stateType" value="">
 	<div class="box box-info clearfix">
-		<div class="box-header">
-			<h3 class="box-title"><?= gettext('Family Info') ?></h3>
+		<div class="card-header">
+			<h3 class="card-title"><?= gettext('Family Info') ?></h3>
 			<div class="pull-right"><br/>
 				<input type="submit" class="btn btn-primary" value="<?= gettext('Save') ?>" name="FamilySubmit">
 			</div>
 		</div><!-- /.box-header -->
-		<div class="box-body">
+		<div class="card-body">
 			<div class="form-group">
 				<div class="row">
 					<div class="col-md-6">
@@ -724,13 +724,13 @@ require 'Include/Header.php';
 		</div>
 	</div>
 	<div class="box box-info clearfix">
-		<div class="box-header">
-			<h3 class="box-title"><?= gettext('Contact Info') ?></h3>
+		<div class="card-header">
+			<h3 class="card-title"><?= gettext('Contact Info') ?></h3>
 			<div class="pull-right"><br/>
 				<input type="submit" class="btn btn-primary" value="<?= gettext('Save') ?>" name="FamilySubmit" >
 			</div>
 		</div><!-- /.box-header -->
-		<div class="box-body">
+		<div class="card-body">
 			<div class="row">
 				<div class="form-group col-md-6">
 					<label><?= gettext('Home Phone') ?>:</label>
@@ -788,13 +788,13 @@ require 'Include/Header.php';
 		</div>
 	</div>
 	<div class="box box-info clearfix">
-		<div class="box-header">
-			<h3 class="box-title"><?= gettext('Other Info') ?>:</h3>
+		<div class="card-header">
+			<h3 class="card-title"><?= gettext('Other Info') ?>:</h3>
 			<div class="pull-right"><br/>
 				<input type="submit" class="btn btn-primary" value="<?= gettext('Save') ?>" name="FamilySubmit">
 			</div>
 		</div><!-- /.box-header -->
-		<div class="box-body">
+		<div class="card-body">
 			<?php if (!SystemConfig::getValue('bHideWeddingDate')) { /* Wedding Date can be hidden - General Settings */
                                 if ($dWeddingDate == 'NULL') {
                                     $dWeddingDate = '';
@@ -862,13 +862,13 @@ require 'Include/Header.php';
 	</div>
 	<?php if (SystemConfig::getValue('bUseDonationEnvelopes')) { /* Donation envelopes can be hidden - General Settings */ ?>
 	<div class="box box-info clearfix">
-		<div class="box-header">
+		<div class="card-header">
 			<h3><?= gettext('Envelope Info') ?></h3>
 			<div class="pull-right"><br/>
 				<input type="submit" class="btn btn-primary" value="<?= gettext('Save') ?>" name="FamilySubmit">
 			</div>
 		</div><!-- /.box-header -->
-		<div class="box-body">
+		<div class="card-body">
 			<div class="row">
 				<div class="form-group col-md-4">
 					<label><?= gettext('Envelope Number') ?>:</label>
@@ -884,13 +884,13 @@ require 'Include/Header.php';
     if ($numCustomFields > 0) {
         ?>
 	<div class="box box-info clearfix">
-		<div class="box-header">
-			<h3 class="box-title"><?= gettext('Custom Fields') ?></h3>
+		<div class="card-header">
+			<h3 class="card-title"><?= gettext('Custom Fields') ?></h3>
 			<div class="pull-right"><br/>
 				<input type="submit" class="btn btn-primary" value="<?= gettext('Save') ?>" name="FamilySubmit">
 			</div>
 		</div><!-- /.box-header -->
-		<div class="box-body">
+		<div class="card-body">
 		<?php mysqli_data_seek($rsCustomFields, 0);
         while ($rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQLI_BOTH)) {
             extract($rowCustomField);
@@ -915,13 +915,13 @@ require 'Include/Header.php';
 	<?php
     } ?>
 	<div class="box box-info clearfix">
-		<div class="box-header">
-			<h3 class="box-title"><?= gettext('Family Members') ?></h3>
+		<div class="card-header">
+			<h3 class="card-title"><?= gettext('Family Members') ?></h3>
 			<div class="pull-right"><br/>
 				<input type="submit" class="btn btn-primary" value="<?= gettext('Save') ?>" name="FamilySubmit">
 			</div>
 		</div><!-- /.box-header -->
-		<div class="box-body">
+		<div class="card-body">
 
 	<?php if ($iFamilyMemberRows > 0) {
         ?>

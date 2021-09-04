@@ -47,15 +47,15 @@ $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
       <?php } ?>
     </div>
     <div class="box box-solid">
-      <div class="box-header">
+      <div class="card-header">
         <i class="fa fa-users"></i>
-        <h3 class="box-title"><?= gettext("Family Member(s)")?></h3>
+        <h3 class="card-title"><?= gettext("Family Member(s)")?></h3>
       </div>
       <div class="row row-flex row-flex-wrap">
         <?php foreach ($family->getPeopleSorted() as $person) { ?>
           <div class="col-md-4 col-sm-4">
             <div class="box box-primary">
-              <div class="box-body box-profile">
+              <div class="card-body box-profile">
                  <img class="profile-user-img img-responsive img-circle initials-image" src="data:image/png;base64,<?= base64_encode($person->getPhoto()->getThumbnailBytes()) ?>">
 
                 <h3 class="profile-username text-center"><?= $person->getTitle() ?> <?= $person->getFullName() ?></h3>

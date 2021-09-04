@@ -84,11 +84,11 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
 ?>
 
 <!-- Default box -->
-<div class="box">
-  <div class="box-header with-border">
-    <h3 class="box-title"><?= gettext('People Functions') ?></h3>
+<div class="card">
+  <div class="card-header with-border">
+    <h3 class="card-title"><?= gettext('People Functions') ?></h3>
   </div>
-  <div class="box-body">
+  <div class="card-body">
       <a href="<?= SystemURLs::getRootPath() ?>/v2/people" class="btn btn-app"><i class="fa fa-user"></i><?= gettext('All People') ?></a>
       <a href="<?= SystemURLs::getRootPath() ?>/v2/people/verify" class="btn btn-app"><i class="fa fa-check-square-o"></i><?= gettext('Verify People') ?></a>
       <div class="btn btn-app"><span class="badge <?=$selfRegColor?>"><?= $selfRegText?></span><i class="fa fa-user-plus"></i><?= gettext('Self Register') ?></div>
@@ -230,15 +230,15 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
 <div class="row">
   <div class="col-lg-6">
     <div class="box box-info">
-      <div class="box-header with-border">
-        <h3 class="box-title"><?= gettext('Reports') ?></h3>
+      <div class="card-header with-border">
+        <h3 class="card-title"><?= gettext('Reports') ?></h3>
           <div class="box-tools pull-right">
               <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
               </button>
               <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
           </div>
       </div>
-      <div class="box-body">
+      <div class="card-body">
         <p> <a class="MediumText" href="members/self-register.php"><?php echo gettext('Self Register') ?> <?= gettext('Reports') ?></a>
         <br>
         <?php echo gettext('List families that were created via self registration.') ?>
@@ -271,10 +271,10 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
   </div>
   <div class="col-lg-6">
       <div class="box box-primary">
-      <div class="box-header with-border">
+      <div class="card-header with-border">
         <i class="fa fa-bar-chart-o"></i>
 
-        <h3 class="box-title"><?= gettext('People Classification') ?></h3>
+        <h3 class="card-title"><?= gettext('People Classification') ?></h3>
 
         <div class="box-tools pull-right">
           <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -310,10 +310,10 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
 <div class="row">
   <div class="col-lg-6">
     <div class="box box-primary">
-      <div class="box-header with-border">
+      <div class="card-header with-border">
         <i class="fa fa-pie-chart"></i>
 
-        <h3 class="box-title"><?= gettext('Family Roles') ?></h3>
+        <h3 class="card-title"><?= gettext('Family Roles') ?></h3>
 
         <div class="box-tools pull-right">
           <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -321,7 +321,7 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
           <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
         </div>
       </div>
-      <div class="box-body no-padding">
+      <div class="card-body no-padding">
         <table class="table table-condensed">
           <tr>
             <th><?= gettext('Role / Gender') ?></th>
@@ -427,22 +427,22 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
   <div class="col-lg-6">
 
     <div class="box box-info">
-      <div class="box-header">
+      <div class="card-header">
         <i class="fa fa-address-card-o"></i>
-        <h3 class="box-title"><?= gettext('Gender Demographics') ?></h3>
+        <h3 class="card-title"><?= gettext('Gender Demographics') ?></h3>
       </div>
       <!-- /.box-header -->
-      <div class="box-body">
+      <div class="card-body">
         <canvas id="gender-donut" style="height:250px"></canvas>
       </div>
     </div>
     <div class="box box-info">
-      <div class="box-header">
+      <div class="card-header">
         <i class="fa fa-birthday-cake"></i>
-        <h3 class="box-title"><?= gettext('Age Histogram') ?></h3>
+        <h3 class="card-title"><?= gettext('Age Histogram') ?></h3>
       </div>
       <!-- /.box-header -->
-      <div class="box-body">
+      <div class="card-body">
         <canvas id="age-stats-bar" style="height:250px"></canvas>
       </div>
     </div>

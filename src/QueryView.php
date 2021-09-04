@@ -198,7 +198,7 @@ function DoQuery()
     $rsQueryResults = RunQuery($qry_SQL); ?>
 <div class="box box-primary">
 
-    <div class="box-body">
+    <div class="card-body">
         <p class="text-right">
             <?= $qry_Count ? mysqli_num_rows($rsQueryResults).gettext(' record(s) returned') : ''; ?>
         </p>
@@ -260,10 +260,10 @@ function DoQuery()
         </div>
     </div>
 
-    <div class="box-footer">
+    <div class="card-footer">
         <p>
         <?php if (count($aAddToCartIDs)) { ?>
-            
+
             <div class="col-sm-offset-1">
                 <input type="hidden" value="<?= implode(',', $aAddToCartIDs) ?>" name="BulkAddToCart">
                 <button type="button" id="addResultsToCart" class="btn btn-success" > <?= gettext('Add Results to Cart') ?></button>
@@ -294,10 +294,10 @@ function DoQuery()
 </div>
 
 <div class="box box-info">
-    <div class="box-header with-border">
-        <div class="box-title">Query</div>
+    <div class="card-header with-border">
+        <div class="card-title">Query</div>
     </div>
-    <div class="box-body">
+    <div class="card-body">
         <code><?= str_replace(chr(13), '<br>', htmlspecialchars($qry_SQL)); ?></code>
     </div>
 </div>
@@ -311,7 +311,7 @@ function DisplayQueryInfo()
     global $qry_Name;
     global $qry_Description; ?>
 <div class="box box-info">
-    <div class="box-body">
+    <div class="card-body">
         <p><strong><?= gettext($qry_Name); ?></strong></p>
         <p><?= gettext($qry_Description); ?></p>
     </div>
@@ -407,7 +407,7 @@ function DisplayParameterForm()
 
         <div class="box box-primary">
 
-            <div class="box-body">
+            <div class="card-body">
 
                 <form method="post" action="QueryView.php?QueryID=<?= $iQueryID ?>">
 <?php

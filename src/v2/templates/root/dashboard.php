@@ -115,16 +115,16 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <div class="row">
             <div class="col-md-6">
                 <div class="box box-solid">
-                    <h3 class="box-header"><h4><?= gettext("Today's Birthdays") ?></h4></h3>
-                    <div class="box-body">
+                    <h3 class="card-header"><h4><?= gettext("Today's Birthdays") ?></h4></h3>
+                    <div class="card-body">
                         <table class="table table-striped" width="100%" id="PersonBirthdayDashboardItem"></table>
                     </div>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="box box-solid">
-                    <h3 class="box-header"><h4><?= gettext("Today's Wedding Anniversaries") ?></h4></h3>
-                    <div class="box-body">
+                    <h3 class="card-header"><h4><?= gettext("Today's Wedding Anniversaries") ?></h4></h3>
+                    <div class="card-body">
                         <table class="table table-striped" width="100%" id="FamiliesWithAnniversariesDashboardItem"></table>
                     </div>
                 </div>
@@ -141,14 +141,14 @@ if ($depositEnabled) { // If the user has Finance permissions, then let's displa
     <div class="card" id="depositChartRow">
         <div class="col-lg-12 col-md-12 col-sm-12">
             <div class="box box-info">
-                <div class="box-header">
+                <div class="card-header">
                     <i class="fa fa-money"></i>
-                    <h3 class="box-title"><?= gettext('Deposit Tracking') ?></h3>
+                    <h3 class="card-title"><?= gettext('Deposit Tracking') ?></h3>
                     <div class="box-tools pull-right">
                         <div id="deposit-graph" class="chart-legend"></div>
                     </div>
                 </div><!-- /.box-header -->
-                <div class="box-body">
+                <div class="card-body">
                     <canvas id="deposit-lineGraph" style="height:125px; width:100%"></canvas>
                 </div>
             </div>

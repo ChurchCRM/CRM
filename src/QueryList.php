@@ -26,7 +26,7 @@ require 'Include/Header.php';
 
 ?>
 <div class="box box-primary">
-    <div class="box-body">
+    <div class="card-body">
         <p class="text-right">
             <?php
                 if (AuthenticationManager::GetCurrentUser()->isAdmin()) {

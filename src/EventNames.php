@@ -265,11 +265,11 @@ if (InputUtils::LegacyFilterInput($_POST['Action']) == 'NEW') {
 
 // Construct the form
 ?>
-<div class="box">
-  <div class="box-header">
+<div class="card">
+  <div class="card-header">
     <?php if ($numRows > 0) {
     ?>
-      <h3 class="box-title"><?= ($numRows == 1 ? gettext('There currently is') : gettext('There currently are')).' '.$numRows.' '.($numRows == 1 ? gettext('custom event type') : gettext('custom event types')) ?></h3>
+      <h3 class="card-title"><?= ($numRows == 1 ? gettext('There currently is') : gettext('There currently are')).' '.$numRows.' '.($numRows == 1 ? gettext('custom event type') : gettext('custom event types')) ?></h3>
     <?php
 } ?>
   </div>

@@ -16,8 +16,8 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
   </a>
 </div>
 <p><br/><br/></p>
-<div class="box">
-    <div class="box-body">
+<div class="card">
+    <div class="card-body">
         <table id="families" class="table table-striped table-bordered data-table" cellspacing="0" width="100%">
             <thead>
             <tr>

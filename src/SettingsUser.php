@@ -74,8 +74,8 @@ $sSQL = "SELECT * FROM userconfig_ucfg WHERE ucfg_per_id='0' ORDER BY ucfg_id";
 $rsConfigs = RunQuery($sSQL);
 ?>
 <!-- Default box -->
-<div class="box">
-	<div class="box-header with-border">
+<div class="card">
+	<div class="card-header with-border">
 
 	<form method=post action=SettingsUser.php'>
 		<div class="callout callout-info"> <?= gettext('Set Permission True to give new users the ability to change their current value.<BR>'); ?></div>
@@ -130,7 +130,7 @@ while (list($ucfg_per_id, $ucfg_id, $ucfg_name, $ucfg_value, $ucfg_type, $ucfg_t
             .htmlspecialchars($ucfg_value, ENT_QUOTES).'</textarea></td>';
     } elseif ($ucfg_type == 'number' || $ucfg_type == 'date') {
         echo "<td class=\"TextColumnWithBottomBorder\">
-            <input type=text size=\"15\" maxlength=\"15\" name=\"new_value[$ucfg_id]\" 
+            <input type=text size=\"15\" maxlength=\"15\" name=\"new_value[$ucfg_id]\"
             value=\"$ucfg_value\"></td>";
     } elseif ($ucfg_type == 'boolean') {
         if ($ucfg_value) {

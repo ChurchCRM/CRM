@@ -54,7 +54,7 @@ foreach ($ListItem as $element) {
 ?>
 
 <div class="box box-primary">
-    <div class="box-header">
+    <div class="card-header">
         <?= gettext('Filter and Cart') ?>
     </div>
 
@@ -91,7 +91,7 @@ foreach ($ListItem as $element) {
 </div>
 <p><br/><br/></p>
 <div class="box box-warning">
-    <div class="box-body">
+    <div class="card-body">
         <table id="members" class="table table-striped table-bordered data-table" cellspacing="0" width="100%">
             <tbody>
             <!--Populate the table with person details -->

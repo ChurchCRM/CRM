@@ -29,11 +29,11 @@ if (!AuthenticationManager::GetCurrentUser()->isAdmin()) {
 $sPageTitle = gettext('Restore Database');
 require 'Include/Header.php';
 ?>
-<div class="box">
-  <div class="box-header">
-    <h3 class="box-title"><?= gettext('Select Database Files') ?></h3>
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title"><?= gettext('Select Database Files') ?></h3>
   </div>
-  <div class="box-body">
+  <div class="card-body">
     <p><?= gettext('Select a backup file to restore') ?></p>
     <p><?= gettext('CAUTION: This will completely erase the existing database, and replace it with the backup') ?></p>
     <p><?= gettext('If you upload a backup from ChurchInfo, or a previous version of ChurchCRM, it will be automatically upgraded to the current database schema') ?></p>
@@ -47,9 +47,9 @@ require 'Include/Header.php';
     </form>
   </div>
 </div>
-<div class="box">
-  <div class="box-header">
-    <h3 class="box-title"><?= gettext('Restore Status:') ?></h3>&nbsp;<h3 class="box-title" id="restorestatus"
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title"><?= gettext('Restore Status:') ?></h3>&nbsp;<h3 class="card-title" id="restorestatus"
                                                         style="color:red"><?= gettext('No Restore Running') ?></h3>
     <div id="restoreMessages"></div>
     <span id="restoreNextStep"></span>

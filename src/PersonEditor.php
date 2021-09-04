@@ -622,13 +622,13 @@ require 'Include/Header.php';
     <?php
 } ?>
     <div class="box box-info clearfix">
-        <div class="box-header">
-            <h3 class="box-title"><?= gettext('Personal Info') ?></h3>
+        <div class="card-header">
+            <h3 class="card-title"><?= gettext('Personal Info') ?></h3>
             <div class="pull-right"><br/>
                 <input type="submit" class="btn btn-primary" value="<?= gettext('Save') ?>" name="PersonSubmit">
             </div>
         </div><!-- /.box-header -->
-        <div class="box-body">
+        <div class="card-body">
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-2">
@@ -776,13 +776,13 @@ require 'Include/Header.php';
         </div>
     </div>
     <div class="box box-info clearfix">
-        <div class="box-header">
-            <h3 class="box-title"><?= gettext('Family Info') ?></h3>
+        <div class="card-header">
+            <h3 class="card-title"><?= gettext('Family Info') ?></h3>
             <div class="pull-right"><br/>
                 <input type="submit" class="btn btn-primary" value="<?= gettext('Save') ?>" name="PersonSubmit">
             </div>
         </div><!-- /.box-header -->
-        <div class="box-body">
+        <div class="card-body">
             <div class="form-group col-md-3">
                 <label><?= gettext('Family Role') ?>:</label>
                 <select name="FamilyRole" class="form-control">
@@ -819,13 +819,13 @@ require 'Include/Header.php';
         </div>
     </div>
     <div class="box box-info clearfix">
-        <div class="box-header">
-            <h3 class="box-title"><?= gettext('Contact Info') ?></h3>
+        <div class="card-header">
+            <h3 class="card-title"><?= gettext('Contact Info') ?></h3>
             <div class="pull-right"><br/>
                 <input type="submit" class="btn btn-primary" value="<?= gettext('Save') ?>" name="PersonSubmit">
             </div>
         </div><!-- /.box-header -->
-        <div class="box-body">
+        <div class="card-body">
             <?php if (!SystemConfig::getValue('bHidePersonAddress')) { /* Person Address can be hidden - General Settings */ ?>
                 <div class="row">
                     <div class="form-group">
@@ -1127,13 +1127,13 @@ require 'Include/Header.php';
         </div>
     </div>
     <div class="box box-info clearfix">
-        <div class="box-header">
-            <h3 class="box-title"><?= gettext('Membership Info') ?></h3>
+        <div class="card-header">
+            <h3 class="card-title"><?= gettext('Membership Info') ?></h3>
             <div class="pull-right"><br/>
                 <input type="submit" class="btn btn-primary" value="<?= gettext('Save') ?>" name="PersonSubmit">
             </div>
         </div><!-- /.box-header -->
-        <div class="box-body">
+        <div class="card-body">
             <div class="row">
               <div class="form-group col-md-3 col-lg-3">
                 <label><?= gettext('Classification') ?>:</label>
@@ -1188,13 +1188,13 @@ require 'Include/Header.php';
   <?php if ($numCustomFields > 0) {
                             ?>
     <div class="box box-info clearfix">
-        <div class="box-header">
-            <h3 class="box-title"><?= gettext('Custom Fields') ?></h3>
+        <div class="card-header">
+            <h3 class="card-title"><?= gettext('Custom Fields') ?></h3>
             <div class="pull-right"><br/>
                 <input type="submit" class="btn btn-primary" value="<?= gettext('Save') ?>" name="PersonSubmit">
             </div>
         </div><!-- /.box-header -->
-        <div class="box-body">
+        <div class="card-body">
             <?php if ($numCustomFields > 0) {
                                 mysqli_data_seek($rsCustomFields, 0);
 

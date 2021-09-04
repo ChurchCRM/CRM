@@ -34,16 +34,16 @@ $mailchimp = new MailChimpService();
         <div class="row">
             <div class="col-lg-4">
                 <div class="box box-primary">
-                    <div class="box-header">
+                    <div class="card-header">
                         <i class="fa fa-info"></i>
-                        <h3 class="box-title"><?= $family->getName() ?> [<?= $family->getId() ?>]</h3>
+                        <h3 class="card-title"><?= $family->getName() ?> [<?= $family->getId() ?>]</h3>
                         <div class="box-tools pull-right">
                             <button type="button" class="btn btn-box-tool edit-family"><i
                                     class="fa fa-edit"></i>
                             </button>
                         </div>
                     </div>
-                    <div class="box-body">
+                    <div class="card-body">
                         <div class="image-container">
                             <img src="<?= SystemURLs::getRootPath() ?>/api/family/<?= $family->getId() ?>/photo"
                                  class="img-responsive profile-user-img profile-family-img"/>
@@ -71,7 +71,7 @@ $mailchimp = new MailChimpService();
                 </div>
             </div>
                 <div class="col-lg-8">
-                    <div class="box">
+                    <div class="card">
                         <br/>
                         <div class="text-center">
                         <a class="btn btn-app" id="lastFamily"><i
@@ -131,16 +131,16 @@ $mailchimp = new MailChimpService();
         <div class="row">
             <div class="col-lg-12">
                 <div class="box box-primary">
-                    <div class="box-header">
+                    <div class="card-header">
                         <i class="fa fa-id-badge"></i>
-                        <h3 class="box-title"><?= gettext("Metadata") ?></h3>
+                        <h3 class="card-title"><?= gettext("Metadata") ?></h3>
                         <div class="box-tools pull-right">
                             <button type="button" class="btn btn-box-tool edit-family"><i
                                     class="fa fa-edit"></i>
                             </button>
                         </div>
                     </div>
-                    <div class="box-body">
+                    <div class="card-body">
                         <ul class="fa-ul">
 
                             <?php
@@ -211,10 +211,10 @@ $mailchimp = new MailChimpService();
 
         <div class="row">
             <div class="col-lg-12">
-                <div class="box">
-                    <div class="box-header">
+                <div class="card">
+                    <div class="card-header">
                         <i class="fa fa-group"></i>
-                        <h3 class="box-title"><?= gettext("Family Members") ?></h3>
+                        <h3 class="card-title"><?= gettext("Family Members") ?></h3>
                         <div class="box-tools pull-right">
                             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
                                     class="fa fa-minus"></i>
@@ -222,11 +222,11 @@ $mailchimp = new MailChimpService();
 
                         </div>
                     </div>
-                    <div class="box-body row row-flex row-flex-wrap">
+                    <div class="card-body row row-flex row-flex-wrap">
                         <?php foreach ($family->getPeople() as $person) { ?>
                             <div class="col-sm-6">
                                 <div class="box box-primary">
-                                    <div class="box-body box-profile">
+                                    <div class="card-body box-profile">
                                         <a href="<?= $person->getViewURI()?>" ?>
                                             <img class="profile-user-img img-responsive img-circle initials-image"
                                                  src="data:image/png;base64,<?= base64_encode($person->getPhoto()->getThumbnailBytes()) ?>">
@@ -303,10 +303,10 @@ $mailchimp = new MailChimpService();
         </div>
     </div>
     <div class="col-lg-6">
-        <div class="box">
-            <div class="box-header">
+        <div class="card">
+            <div class="card-header">
                 <i class="fa fa-hashtag"></i>
-                <h3 class="box-title"><?= gettext("Properties") ?></h3>
+                <h3 class="card-title"><?= gettext("Properties") ?></h3>
                 <div class="box-tools pull-right">
                     <?php if (AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled()) { ?>
                     <button id="add-family-property" type="button" class="btn btn-box-tool hidden"><i class="fa fa-plus-circle text-blue"></i></button>
@@ -317,7 +317,7 @@ $mailchimp = new MailChimpService();
                     </button>
                 </div>
             </div>
-            <div class="box-body">
+            <div class="card-body">
 
                 <div id="family-property-loading" class="col-xs-12 text-center">
                     <i class="btn btn-default btn-lrg ajax">
@@ -345,10 +345,10 @@ $mailchimp = new MailChimpService();
 
         <div class="row">
             <div class="col-lg-12">
-                <div class="box">
-                    <div class="box-header">
+                <div class="card">
+                    <div class="card-header">
                         <i class="fa fa-map"></i>
-                        <h3 class="box-title"><?= gettext("Address") ?></h3>
+                        <h3 class="card-title"><?= gettext("Address") ?></h3>
                         <div class="box-tools pull-right">
                             <button type="button" class="btn btn-box-tool edit-family"><i
                                         class="fa fa-edit"></i>
@@ -358,7 +358,7 @@ $mailchimp = new MailChimpService();
                             </button>
                         </div>
                     </div>
-                    <div class="box-body">
+                    <div class="card-body">
                         <a href="http://maps.google.com/?q=<?= $familyAddress ?>"
                            target="_blank"><?= $familyAddress ?></a></span>
                         <p/>
@@ -387,17 +387,17 @@ $mailchimp = new MailChimpService();
             </div>
         </div>
         <!-- Maps End -->
-        <div class="box">
-            <div class="box-header">
+        <div class="card">
+            <div class="card-header">
                 <i class="fa fa-history"></i>
-                <h3 class="box-title"><?= gettext("Timeline") ?></h3>
+                <h3 class="card-title"><?= gettext("Timeline") ?></h3>
                 <div class="box-tools pull-right">
                     <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
                             class="fa fa-minus"></i>
                     </button>
                 </div>
             </div>
-            <div class="box-body">
+            <div class="card-body">
                 <ul class="timeline">
                     <!-- timeline time label -->
                     <li class="time-label"><span class="bg-teal"><?= $curYear ?></span></li>
@@ -468,10 +468,10 @@ $mailchimp = new MailChimpService();
     <div class="col-lg-12">
         <div class="row">
             <div class="col-lg-12">
-            <div class="box">
-                <div class="box-header">
+            <div class="card">
+                <div class="card-header">
                     <i class="fa fa-map"></i>
-                    <h3 class="box-title"><?= gettext("Pledges and Payments") ?></h3>
+                    <h3 class="card-title"><?= gettext("Pledges and Payments") ?></h3>
                     <div class="box-tools pull-right">
                         <input type="checkbox" id="ShowPledges" <?= AuthenticationManager::GetCurrentUser()->isShowPledges() ? "checked" : "" ?>> <?= gettext("Show Pledges") ?>
                         <input type="checkbox" id="ShowPayments" <?= AuthenticationManager::GetCurrentUser()->isShowPayments() ? "checked" : "" ?>> <?= gettext("Show Payments") ?>
@@ -480,7 +480,7 @@ $mailchimp = new MailChimpService();
                                value="<?= AuthenticationManager::GetCurrentUser()->getShowSince() ?>" maxlength="10" id="ShowSinceDate" size="15">
                     </div>
                 </div>
-                <div class="box-body">
+                <div class="card-body">
                     <table id="pledge-payment-v2-table" class="table table-striped table-bordered table-responsive data-table">
                         <tbody></tbody>
                     </table>

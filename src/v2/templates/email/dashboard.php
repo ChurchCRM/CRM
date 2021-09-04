@@ -6,11 +6,11 @@ use ChurchCRM\dto\SystemURLs;
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 ?>
-<div class="box">
-    <div class="box-header with-border">
-        <h3 class="box-title"><?= gettext('Email Functions') ?></h3>
+<div class="card">
+    <div class="card-header with-border">
+        <h3 class="card-title"><?= gettext('Email Functions') ?></h3>
     </div>
-    <div class="box-body">
+    <div class="card-body">
         <a href="<?= SystemURLs::getRootPath()?>/email/MemberEmailExport.php" class="btn btn-app"><i class="fa fa-table"></i><?= gettext('Email Export') ?></a>
         <a href="<?= SystemURLs::getRootPath()?>/v2/email/duplicate" class="btn btn-app"><i class="fa fa-exclamation-triangle"></i><?= gettext('Find Duplicate Emails') ?></a>
         <a href="<?= SystemURLs::getRootPath()?>/v2/email/missing" class="btn btn-app"><i class="fa fa-bell-slash"></i><?= gettext('Families Without Emails') ?></a>
@@ -25,11 +25,11 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <?php foreach ($mailChimpLists as $list) {
             ?>
             <div class="col-lg-4 col-md-2 col-sm-2">
-                <div class="box">
-                    <div class="box-header">
-                        <h3 class="box-title"><?= gettext('List') ?>: <?= $list['name'] ?></h3>
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title"><?= gettext('List') ?>: <?= $list['name'] ?></h3>
                     </div>
-                    <div class="box-body">
+                    <div class="card-body">
                         <table width='300px'>
                             <tr>
                                 <td><b><?= gettext('Members:') ?></b></td>

@@ -325,8 +325,8 @@ require 'Include/Header.php';
 
 ?>
 <!-- Default box -->
-<div class="box">
-    <div class="box-body">
+<div class="card">
+    <div class="card-body">
         <div class="callout callout-info">
             <?= gettext('Note: Changes will not take effect until next logon.') ?>
         </div>
@@ -467,8 +467,8 @@ require 'Include/Header.php';
 </div>
 <!-- /.box -->
 <!-- Default box -->
-<div class="box">
-    <div class="box-body box-danger">
+<div class="card">
+    <div class="card-body box-danger">
         <div
             class="callout callout-info"><?= gettext('Set Permission True to give this user the ability to change their current value.') ?></div>
         <div class="table-responsive">

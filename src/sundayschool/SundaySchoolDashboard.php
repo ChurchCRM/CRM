@@ -41,11 +41,11 @@ $sPageTitle = gettext('Sunday School Dashboard');
 require '../Include/Header.php';
 
 ?>
-<div class="box">
-  <div class="box-header with-border">
-    <h3 class="box-title"><?= gettext('Functions') ?></h3>
+<div class="card">
+  <div class="card-header with-border">
+    <h3 class="card-title"><?= gettext('Functions') ?></h3>
   </div>
-  <div class="box-body">
+  <div class="card-body">
     <?php if (AuthenticationManager::GetCurrentUser()->isManageGroupsEnabled()) {
     ?>
       <button class="btn btn-app" data-toggle="modal" data-target="#add-class"><i
@@ -136,8 +136,8 @@ require '../Include/Header.php';
 </div><!-- /.row -->
 <!-- on continue -->
 <div class="box box-info">
-  <div class="box-header">
-    <h3 class="box-title"><?= gettext('Sunday School Classes') ?></h3>
+  <div class="card-header">
+    <h3 class="card-title"><?= gettext('Sunday School Classes') ?></h3>
       <div class="box-tools pull-right">
           <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
           </button>
@@ -145,7 +145,7 @@ require '../Include/Header.php';
           </button>
       </div>
   </div>
-  <div class="box-body">
+  <div class="card-body">
     <table id="sundayschoolMissing" class="table table-striped table-bordered data-table" cellspacing="0" width="100%">
       <thead>
       <tr>
@@ -186,8 +186,8 @@ require '../Include/Header.php';
 
 
 <div class="box box-danger">
-  <div class="box-header">
-    <h3 class="box-title"><?= gettext('Students not in a Sunday School Class') ?></h3>
+  <div class="card-header">
+    <h3 class="card-title"><?= gettext('Students not in a Sunday School Class') ?></h3>
       <div class="box-tools pull-right">
           <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
           </button>
@@ -196,7 +196,7 @@ require '../Include/Header.php';
       </div>
   </div>
   <!-- /.box-header -->
-  <div class="box-body table-responsive">
+  <div class="card-body table-responsive">
     <table id="sundayschoolMissing" class="table table-striped table-bordered data-table" cellspacing="0" width="100%">
       <thead>
       <tr>

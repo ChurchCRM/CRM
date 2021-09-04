@@ -6,10 +6,10 @@ $ListTitleText = gettext('Your cart contains') . ' ' . count($cartPeople) . ' ' 
 ?>
 <!-- BEGIN CART LISTING -->
 <div class="box box-primary">
-  <div class="box-header with-border">
-    <h3 class="box-title"><?= $ListTitleText ?></h3>
+  <div class="card-header with-border">
+    <h3 class="card-title"><?= $ListTitleText ?></h3>
   </div>
-  <div class="box-body">
+  <div class="card-body">
     <table class="table table-hover dt-responsive" id="cart-listing-table" style="width:100%;">
       <thead>
         <tr>

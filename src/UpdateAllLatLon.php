@@ -42,10 +42,10 @@ foreach ($families as $family) {
 if ($families->count() > 0) {
     ?>
     <div class="box box-warning">
-        <div class="box-header">
+        <div class="card-header">
             <b><?= gettext('No coordinates found') ?></b>
         </div>
-        <div class="box-body ">
+        <div class="card-body ">
             <?php
 
             foreach ($families as $family) {

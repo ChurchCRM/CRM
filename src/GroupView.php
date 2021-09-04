@@ -65,11 +65,11 @@ $sPageTitle = gettext('Group View').' : '.$thisGroup->getName();
 require 'Include/Header.php';
 ?>
 
-<div class="box">
-  <div class="box-header with-border">
-    <h3 class="box-title"><?= gettext('Group Functions') ?></h3>
+<div class="card">
+  <div class="card-header with-border">
+    <h3 class="card-title"><?= gettext('Group Functions') ?></h3>
   </div>
-  <div class="box-body">
+  <div class="card-body">
 
     <?php
     if (AuthenticationManager::GetCurrentUser()->isManageGroupsEnabled()) {
@@ -189,8 +189,8 @@ require 'Include/Header.php';
   </div>
 </div>
 
-<div class="box">
-    <div class="box-body">
+<div class="card">
+    <div class="card-body">
         <?= $thisGroup->getDescription() ?>
         <p/><p/><p/>
         <button class="btn btn-success" type="button">
@@ -210,11 +210,11 @@ require 'Include/Header.php';
 </div>
 
 
-<div class="box">
-  <div class="box-header with-border">
-    <h3 class="box-title"><?= gettext('Quick Settings') ?></h3>
+<div class="card">
+  <div class="card-header with-border">
+    <h3 class="card-title"><?= gettext('Quick Settings') ?></h3>
   </div>
-  <div class="box-body">
+  <div class="card-body">
       <form>
           <div class="col-sm-3"> <b><?= gettext('Status') ?>:</b> <input data-size="small" id="isGroupActive" type="checkbox" data-toggle="toggle" data-on="<?= gettext('Active') ?>" data-off="<?= gettext('Disabled') ?>"> </div>
           <div class="col-sm-3"> <b><?= gettext('Email export') ?>:</b> <input data-size="small" id="isGroupEmailExport" type="checkbox" data-toggle="toggle" data-on="<?= gettext('Include') ?>" data-off="<?= gettext('Exclude') ?>"></div>
@@ -222,11 +222,11 @@ require 'Include/Header.php';
   </div>
 </div>
 
-      <div class="box">
-  <div class="box-header with-border">
-    <h3 class="box-title"><?= gettext('Group Properties') ?></h3>
+      <div class="card">
+  <div class="card-header with-border">
+    <h3 class="card-title"><?= gettext('Group Properties') ?></h3>
   </div>
-  <div class="box-body">
+  <div class="card-body">
       <table width="100%">
       <tr>
         <td>
@@ -380,19 +380,19 @@ require 'Include/Header.php';
             </div>
             </div>
 
-            <div class="box">
-              <div class="box-header with-border">
-                <h3 class="box-title"><?= gettext('Group Members:') ?></h3>
+            <div class="card">
+              <div class="card-header with-border">
+                <h3 class="card-title"><?= gettext('Group Members:') ?></h3>
               </div>
-              <div class="box-body">
+              <div class="card-body">
                 <!-- START GROUP MEMBERS LISTING  -->
                 <table class="table" id="membersTable">
                 </table>
-                <div class="box">
-                  <div class="box-header with-border">
-                    <h3 class="box-title"><?php echo gettext('Group members: '); ?></h3>
+                <div class="card">
+                  <div class="card-header with-border">
+                    <h3 class="card-title"><?php echo gettext('Group members: '); ?></h3>
                   </div>
-                  <div class="box-body">
+                  <div class="card-body">
                     <table class="table" id="depositsTable"></table>
                     <button type="button" id="deleteSelectedRows" class="btn btn-danger" disabled> <?= gettext('Remove Selected Members from group') ?> </button>
                     <div class="btn-group">

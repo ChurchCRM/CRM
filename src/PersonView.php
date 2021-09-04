@@ -206,7 +206,7 @@ $bOkToEdit = (
 <div class="row">
     <div class="col-lg-3 col-md-3 col-sm-3">
         <div class="box box-primary">
-            <div class="box-body box-profile">
+            <div class="card-body box-profile">
                 <div class="image-container">
                     <img src ="<?= SystemURLs::getRootPath().'/api/person/'.$person->getId().'/photo' ?>"
                          class="initials-image profile-user-img img-responsive img-rounded profile-user-img-md">
@@ -265,11 +265,11 @@ $bOkToEdit = (
 
     <!-- About Me Box -->
     <div class="box box-primary">
-      <div class="box-header with-border">
-        <h3 class="box-title text-center"><?php echo gettext('About Me'); ?></h3>
+      <div class="card-header with-border">
+        <h3 class="card-title text-center"><?php echo gettext('About Me'); ?></h3>
       </div>
       <!-- /.box-header -->
-      <div class="box-body">
+      <div class="card-body">
         <ul class="fa-ul">
           <li><i class="fa-li fa fa-group"></i><?php echo gettext('Family:'); ?> <span>
               <?php
@@ -635,8 +635,8 @@ $bOkToEdit = (
                                         <p><br/></p>
                                         <!-- Info box -->
                                         <div class="box box-info">
-                                            <div class="box-header">
-                                                <h3 class="box-title"><a href="<?= SystemURLs::getRootPath() ?>/GroupView.php?GroupID=<?= $grp_ID ?>"><?= $grp_Name ?></a></h3>
+                                            <div class="card-header">
+                                                <h3 class="card-title"><a href="<?= SystemURLs::getRootPath() ?>/GroupView.php?GroupID=<?= $grp_ID ?>"><?= $grp_Name ?></a></h3>
 
                                                 <div class="box-tools pull-right">
                                                     <div class="label bg-aqua"><?= gettext($roleName) ?></div>
@@ -653,7 +653,7 @@ $bOkToEdit = (
                                                 $rsPersonProps = RunQuery($sSQL);
                                                 $aPersonProps = mysqli_fetch_array($rsPersonProps, MYSQLI_BOTH);
 
-                                                echo '<div class="box-body">';
+                                                echo '<div class="card-body">';
 
                                                 while ($aProps = mysqli_fetch_array($rsPropList)) {
                                                     extract($aProps);
@@ -669,7 +669,7 @@ $bOkToEdit = (
 
                                                 echo '</div><!-- /.box-body -->';
                                             } ?>
-                                            <div class="box-footer">
+                                            <div class="card-footer">
                                                 <code>
                                                     <?php if (AuthenticationManager::GetCurrentUser()->isManageGroupsEnabled()) {
                                                 ?>
