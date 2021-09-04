@@ -116,9 +116,8 @@ module.exports = function (grunt) {
                     },
                     {
                         expand: true,
-                        filter: 'isFile',
-                        flatten: true,
-                        src: ['node_modules/bootstrap/dist/css/bootstrap.min.css', 'node_modules/bootstrap/dist/css/bootstrap.min.css.map', 'node_modules/bootstrap/dist/js/bootstrap.min.js'],
+                        cwd: 'node_modules/bootstrap/dist',
+                        src: ['{css,js}/**'],
                         dest: 'src/skin/external/bootstrap/'
                     },
                     {
@@ -139,7 +138,8 @@ module.exports = function (grunt) {
                         expand: true,
                         filter: 'isFile',
                         flatten: true,
-                        src: ['node_modules/bootstrap-daterangepicker/daterangepicker.css', 'node_modules/bootstrap-daterangepicker/daterangepicker.js'],
+                        cwd: '',
+                        src: ['node_modules/daterangepicker/daterangepicker.*','node_modules/daterangepicker/moment.min.js'],
                         dest: 'src/skin/external/bootstrap-daterangepicker/'
                     },
                     {
