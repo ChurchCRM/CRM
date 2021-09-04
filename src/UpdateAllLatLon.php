@@ -16,7 +16,7 @@ require 'Include/Functions.php';
 $sPageTitle = gettext('Update Latitude & Longitude');
 require 'Include/Header.php';
 
-echo '<div class="box box-body box-info">';
+echo '<div class="card card-body box-info">';
 
 $families = FamilyQuery::create()
     ->filterByLongitude(array(null,0), Criteria::IN)

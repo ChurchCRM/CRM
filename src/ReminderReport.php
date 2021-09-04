@@ -37,7 +37,7 @@ if (isset($_POST['Submit'])) {
 
 ?>
 
-<div class="box box-body">
+<div class="card card-body">
     <form class="form-horizontal" method="post" action="Reports/ReminderReport.php">
         <div class="form-group">
             <label class="control-label col-sm-2" for="FYID"><?= gettext('Fiscal Year') ?>:</label>

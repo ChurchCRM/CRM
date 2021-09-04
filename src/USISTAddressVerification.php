@@ -62,7 +62,7 @@ if ($myISTReturnCode == '4') {
     ?>
   <div class="row">
     <div class="col-lg-12 col-md-7 col-sm-3">
-      <div class="box box-body">
+      <div class="card card-body">
         <div class="alert alert-danger alert-dismissible">
           <h4><i class="icon fa fa-ban"></i>The Intelligent Search Technology, Ltd. XML web service is temporarily unavailable.</h4>
   <?php echo 'getAccountInfo ReturnCode = '.$myISTReturnCode ?>
@@ -80,7 +80,7 @@ if ($myISTReturnCode == '4') {
         ?>
   <div class="row">
     <div class="col-lg-12 col-md-7 col-sm-3">
-      <div class="box box-body">
+      <div class="card card-body">
         <div class="alert alert-danger alert-dismissible">
           <h4><i class="icon fa fa-ban"></i>The Intelligent Search Technology, Ltd. XML web service is temporarily unavailable.</h4>
           <p><?php echo 'getAccountInfo ReturnCode = '.$myISTReturnCode ?></p>

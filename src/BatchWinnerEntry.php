@@ -66,7 +66,7 @@ $rsPaddles = RunQuery($sPaddleSQL);
 require 'Include/Header.php';
 
 ?>
-<div class="box box-body">
+<div class="card card-body">
 <form method="post" action="BatchWinnerEntry.php?<?= 'CurrentFundraiser='.'&linkBack='.$linkBack ?>" name="BatchWinnerEntry">
 <div class="table-responsive">
 <table class="table" cellpadding="2" align="center">

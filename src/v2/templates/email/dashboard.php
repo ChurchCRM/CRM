@@ -75,7 +75,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     ?>
     <div class="row">
         <div class="col-lg-12 col-md-7 col-sm-3">
-            <div class="box box-body">
+            <div class="card card-body">
                 <div class="alert alert-warning">
                     <h4><i class="fa fa-ban"></i> MailChimp <?= gettext('is not configured') ?></h4>
                     <?= gettext('Please update the') ?> MailChimp <?= gettext('API key in Setting->') ?><a
