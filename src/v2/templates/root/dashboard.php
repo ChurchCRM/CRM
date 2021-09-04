@@ -144,7 +144,7 @@ if ($depositEnabled) { // If the user has Finance permissions, then let's displa
                 <div class="card-header">
                     <i class="fa fa-money"></i>
                     <h3 class="card-title"><?= gettext('Deposit Tracking') ?></h3>
-                    <div class="box-tools pull-right">
+                    <div class="card-tools pull-right">
                         <div id="deposit-graph" class="chart-legend"></div>
                     </div>
                 </div><!-- /.box-header -->

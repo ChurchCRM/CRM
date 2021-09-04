@@ -281,9 +281,9 @@ $families = FamilyQuery::create()
         <div class="card card-default collapsed-box">
             <div class="card-header with-border">
                 <h3 class="card-title"><?= gettext('Make Data File') ?></h3>
-                <div class="box-tools pull-right">
+                <div class="card-tools pull-right">
                     <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
-                </div><!-- /.box-tools -->
+                </div><!-- /.card-tools -->
             </div><!-- /.box-header -->
             <div class="card-body">
                 <div class="form-group">

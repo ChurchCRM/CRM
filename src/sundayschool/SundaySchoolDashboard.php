@@ -138,7 +138,7 @@ require '../Include/Header.php';
 <div class="card card-info">
   <div class="card-header">
     <h3 class="card-title"><?= gettext('Sunday School Classes') ?></h3>
-      <div class="box-tools pull-right">
+      <div class="card-tools pull-right">
           <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
           </button>
           <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
@@ -188,7 +188,7 @@ require '../Include/Header.php';
 <div class="card card-danger">
   <div class="card-header">
     <h3 class="card-title"><?= gettext('Students not in a Sunday School Class') ?></h3>
-      <div class="box-tools pull-right">
+      <div class="card-tools pull-right">
           <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
           </button>
           <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>

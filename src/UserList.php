@@ -48,7 +48,7 @@ require 'Include/Header.php';
 <div class="box collapsed-box">
     <div class="card-header">
         <b class="card-title"><?= _("Global User Settings")?></b>
-            <div class="box-tools pull-right">
+            <div class="card-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
             </div>
         </b>
@@ -186,7 +186,7 @@ require 'Include/Header.php';
 <div class="card">
     <div class="card-header">
         <b class="card-title"><?= _("User Listing")?></b>
-        <div class="box-tools pull-right">
+        <div class="card-tools pull-right">
             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
         </div>
         </h3>

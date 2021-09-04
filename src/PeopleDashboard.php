@@ -232,7 +232,7 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
     <div class="card card-info">
       <div class="card-header with-border">
         <h3 class="card-title"><?= gettext('Reports') ?></h3>
-          <div class="box-tools pull-right">
+          <div class="card-tools pull-right">
               <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
               </button>
               <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
@@ -276,7 +276,7 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
 
         <h3 class="card-title"><?= gettext('People Classification') ?></h3>
 
-        <div class="box-tools pull-right">
+        <div class="card-tools pull-right">
           <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
           </button>
           <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
@@ -315,7 +315,7 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
 
         <h3 class="card-title"><?= gettext('Family Roles') ?></h3>
 
-        <div class="box-tools pull-right">
+        <div class="card-tools pull-right">
           <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
           </button>
           <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>

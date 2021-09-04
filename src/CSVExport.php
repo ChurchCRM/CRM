@@ -254,7 +254,7 @@ require 'Include/Header.php';
             <div class="card card-danger collapsed-box">
               <div class="card-header with-border">
                 <h3 class="card-title"><?= gettext('Records to export') ?>:</h3>
-                <div class="box-tools pull-right">
+                <div class="card-tools pull-right">
                   <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
                   </button>
                 </div>
@@ -275,7 +275,7 @@ require 'Include/Header.php';
             <div class="card card-danger collapsed-box">
               <div class="card-header with-border">
                 <h3 class="card-title"><?= gettext('Classification') ?>:</h3>
-                <div class="box-tools pull-right">
+                <div class="card-tools pull-right">
                   <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
                   </button>
                 </div>
@@ -300,7 +300,7 @@ require 'Include/Header.php';
             <div class="card card-danger collapsed-box">
               <div class="card-header with-border">
                 <h3 class="card-title"><?= gettext('Family Role') ?>:</h3>
-                <div class="box-tools pull-right">
+                <div class="card-tools pull-right">
                   <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
                   </button>
                 </div>
@@ -325,7 +325,7 @@ require 'Include/Header.php';
             <div class="card card-danger collapsed-box">
               <div class="card-header with-border">
                 <h3 class="card-title"><?= gettext('Gender') ?>:</h3>
-                <div class="box-tools pull-right">
+                <div class="card-tools pull-right">
                   <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
                   </button>
                 </div>
@@ -345,7 +345,7 @@ require 'Include/Header.php';
             <div class="card card-danger collapsed-box">
               <div class="card-header with-border">
                 <h3 class="card-title"><?= gettext('Group Membership') ?>:</h3>
-                <div class="box-tools pull-right">
+                <div class="card-tools pull-right">
                   <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
                   </button>
                 </div>
@@ -369,7 +369,7 @@ require 'Include/Header.php';
             <div class="card card-danger collapsed-box">
               <div class="card-header with-border">
                 <h3 class="card-title"><?= gettext('Membership Date') ?>:</h3>
-                <div class="box-tools pull-right">
+                <div class="card-tools pull-right">
                   <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
                   </button>
                 </div>
@@ -386,7 +386,7 @@ require 'Include/Header.php';
             <div class="card card-danger collapsed-box">
               <div class="card-header with-border">
                 <h3 class="card-title"><?= gettext('Birthday Date') ?>:</h3>
-                <div class="box-tools pull-right">
+                <div class="card-tools pull-right">
                   <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
                   </button>
                 </div>
@@ -403,7 +403,7 @@ require 'Include/Header.php';
             <div class="card card-danger collapsed-box">
               <div class="card-header with-border">
                 <h3 class="card-title"><?= gettext('Anniversary Date:') ?></h3>
-                <div class="box-tools pull-right">
+                <div class="card-tools pull-right">
                   <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
                   </button>
                 </div>
@@ -420,7 +420,7 @@ require 'Include/Header.php';
             <div class="card card-danger collapsed-box">
               <div class="card-header with-border">
                 <h3 class="card-title"><?= gettext('Date Entered:') ?></h3>
-                <div class="box-tools pull-right">
+                <div class="card-tools pull-right">
                   <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
                   </button>
                 </div>

@@ -37,7 +37,7 @@ $mailchimp = new MailChimpService();
                     <div class="card-header">
                         <i class="fa fa-info"></i>
                         <h3 class="card-title"><?= $family->getName() ?> [<?= $family->getId() ?>]</h3>
-                        <div class="box-tools pull-right">
+                        <div class="card-tools pull-right">
                             <button type="button" class="btn btn-box-tool edit-family"><i
                                     class="fa fa-edit"></i>
                             </button>
@@ -134,7 +134,7 @@ $mailchimp = new MailChimpService();
                     <div class="card-header">
                         <i class="fa fa-id-badge"></i>
                         <h3 class="card-title"><?= gettext("Metadata") ?></h3>
-                        <div class="box-tools pull-right">
+                        <div class="card-tools pull-right">
                             <button type="button" class="btn btn-box-tool edit-family"><i
                                     class="fa fa-edit"></i>
                             </button>
@@ -215,7 +215,7 @@ $mailchimp = new MailChimpService();
                     <div class="card-header">
                         <i class="fa fa-group"></i>
                         <h3 class="card-title"><?= gettext("Family Members") ?></h3>
-                        <div class="box-tools pull-right">
+                        <div class="card-tools pull-right">
                             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
                                     class="fa fa-minus"></i>
                             </button>
@@ -307,7 +307,7 @@ $mailchimp = new MailChimpService();
             <div class="card-header">
                 <i class="fa fa-hashtag"></i>
                 <h3 class="card-title"><?= gettext("Properties") ?></h3>
-                <div class="box-tools pull-right">
+                <div class="card-tools pull-right">
                     <?php if (AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled()) { ?>
                     <button id="add-family-property" type="button" class="btn btn-box-tool hidden"><i class="fa fa-plus-circle text-blue"></i></button>
                     <?php } ?>
@@ -349,7 +349,7 @@ $mailchimp = new MailChimpService();
                     <div class="card-header">
                         <i class="fa fa-map"></i>
                         <h3 class="card-title"><?= gettext("Address") ?></h3>
-                        <div class="box-tools pull-right">
+                        <div class="card-tools pull-right">
                             <button type="button" class="btn btn-box-tool edit-family"><i
                                         class="fa fa-edit"></i>
                             </button>
@@ -391,7 +391,7 @@ $mailchimp = new MailChimpService();
             <div class="card-header">
                 <i class="fa fa-history"></i>
                 <h3 class="card-title"><?= gettext("Timeline") ?></h3>
-                <div class="box-tools pull-right">
+                <div class="card-tools pull-right">
                     <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
                             class="fa fa-minus"></i>
                     </button>
@@ -472,7 +472,7 @@ $mailchimp = new MailChimpService();
                 <div class="card-header">
                     <i class="fa fa-map"></i>
                     <h3 class="card-title"><?= gettext("Pledges and Payments") ?></h3>
-                    <div class="box-tools pull-right">
+                    <div class="card-tools pull-right">
                         <input type="checkbox" id="ShowPledges" <?= AuthenticationManager::GetCurrentUser()->isShowPledges() ? "checked" : "" ?>> <?= gettext("Show Pledges") ?>
                         <input type="checkbox" id="ShowPayments" <?= AuthenticationManager::GetCurrentUser()->isShowPayments() ? "checked" : "" ?>> <?= gettext("Show Payments") ?>
                         <label for="ShowSinceDate"><?= gettext("Since") ?>:</label>
