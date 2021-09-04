@@ -23,7 +23,7 @@ $isAdmin = AuthenticationManager::GetCurrentUser()->isAdmin();
 </div>
 <!-- /.content-wrapper -->
 <footer class="main-footer">
-    <div class="pull-right">
+    <div class="float-right d-none d-sm-block">
         <b><?= gettext('Version') ?></b> <?= $_SESSION['sSoftwareInstalledVersion'] ?>
     </div>
     <strong><?= gettext('Copyright') ?> &copy; <?= SystemService::getCopyrightDate() ?> <a href="http://www.churchcrm.io" target="_blank"><b>Church</b>CRM</a>.</strong> <?= gettext('All rights reserved') ?>.
@@ -75,7 +75,7 @@ $isAdmin = AuthenticationManager::GetCurrentUser()->isAdmin();
 <!-- Bootstrap 3.3.5 -->
 
 
-<script src="<?= SystemURLs::getRootPath() ?>/skin/external/bootstrap/bootstrap.min.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/external/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/adminlte/adminlte.min.js"></script>
 
