@@ -176,8 +176,7 @@ $MenuFirst = 1;
             </li>
         </ul>
     </nav>
-
-``
+    
   <!-- =============================================== -->
 
   <!-- Left side column. contains the sidebar -->
