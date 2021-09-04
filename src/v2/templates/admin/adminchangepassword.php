@@ -11,7 +11,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
     <!-- left column -->
     <div class="col-md-8">
         <!-- general form elements -->
-        <div class="box box-primary">
+        <div class="card card-primary">
             <div class="card-header with-border">
                 <?= gettext('Enter new user password. Administratively set passwords are not subject to length or complexity requirements') . '</p>' ?>
             </div>

@@ -205,7 +205,7 @@ $bOkToEdit = (
 ?>
 <div class="row">
     <div class="col-lg-3 col-md-3 col-sm-3">
-        <div class="box box-primary">
+        <div class="card card-primary">
             <div class="card-body box-profile">
                 <div class="image-container">
                     <img src ="<?= SystemURLs::getRootPath().'/api/person/'.$person->getId().'/photo' ?>"
@@ -264,7 +264,7 @@ $bOkToEdit = (
     <!-- /.box -->
 
     <!-- About Me Box -->
-    <div class="box box-primary">
+    <div class="card card-primary">
       <div class="card-header with-border">
         <h3 class="card-title text-center"><?php echo gettext('About Me'); ?></h3>
       </div>
@@ -389,7 +389,7 @@ $bOkToEdit = (
         </div>
     </div>
     <div class="col-lg-9 col-md-9 col-sm-9">
-        <div class="box box-primary box-body">
+        <div class="card card-primary box-body">
             <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/PrintView.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-print"></i> <?= gettext("Printable Page") ?></a>
             <a class="btn btn-app AddToPeopleCart" id="AddPersonToCart" data-cartpersonid="<?= $iPersonID ?>"><i class="fa fa-cart-plus"></i><span class="cartActionDescription"><?= gettext("Add to Cart") ?></span></a>
             <?php if (AuthenticationManager::GetCurrentUser()->isNotesEnabled()) {
@@ -634,7 +634,7 @@ $bOkToEdit = (
                                     <div class="col-md-4">
                                         <p><br/></p>
                                         <!-- Info box -->
-                                        <div class="box box-info">
+                                        <div class="card card-info">
                                             <div class="card-header">
                                                 <h3 class="card-title"><a href="<?= SystemURLs::getRootPath() ?>/GroupView.php?GroupID=<?= $grp_ID ?>"><?= $grp_Name ?></a></h3>
 

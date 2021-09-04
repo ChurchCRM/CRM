@@ -112,7 +112,7 @@ require 'Include/Header.php';
 
 ?>
 <form method="post">
-  <div class="box box-primary">
+  <div class="card card-primary">
     <div class="card-body">
 
       <p align="center">

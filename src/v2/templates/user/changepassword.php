@@ -13,7 +13,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
     <!-- left column -->
     <div class="col-md-8">
         <!-- general form elements -->
-        <div class="box box-primary">
+        <div class="card card-primary">
             <div class="card-header with-border">
                 <?= gettext('Enter your current password, then your new password twice.  Passwords must be at least').' '.SystemConfig::getValue('iMinPasswordLength').' '.gettext('characters in length.').'</p>' ?>
             </div>

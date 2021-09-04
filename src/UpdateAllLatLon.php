@@ -41,7 +41,7 @@ foreach ($families as $family) {
 <?php $families = FamilyQuery::create()->filterByLongitude(0)->limit(250)->find();
 if ($families->count() > 0) {
     ?>
-    <div class="box box-warning">
+    <div class="card card-warning">
         <div class="card-header">
             <b><?= gettext('No coordinates found') ?></b>
         </div>

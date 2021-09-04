@@ -135,7 +135,7 @@ require '../Include/Header.php';
   </div>
 </div><!-- /.row -->
 <!-- on continue -->
-<div class="box box-info">
+<div class="card card-info">
   <div class="card-header">
     <h3 class="card-title"><?= gettext('Sunday School Classes') ?></h3>
       <div class="box-tools pull-right">
@@ -185,7 +185,7 @@ require '../Include/Header.php';
 </div>
 
 
-<div class="box box-danger">
+<div class="card card-danger">
   <div class="card-header">
     <h3 class="card-title"><?= gettext('Students not in a Sunday School Class') ?></h3>
       <div class="box-tools pull-right">

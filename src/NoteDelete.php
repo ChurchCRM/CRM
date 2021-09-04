@@ -57,7 +57,7 @@ if (isset($_GET['Confirmed'])) {
 require 'Include/Header.php';
 
 ?>
-<div class="box box-warning">
+<div class="card card-warning">
   <div class="card-header with-border">
 	<?= gettext('Please confirm deletion of this note') ?>:
   </div>

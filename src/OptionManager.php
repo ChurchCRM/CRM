@@ -381,7 +381,7 @@ for ($row = 1; $row <= $numRows; $row++) {
 	</div>
 </div>
 
-<div class="box box-primary">
+<div class="card card-primary">
 	<div class="card-body">
 <?=  gettext('Name for New').' '.$noun ?>:&nbsp;
 <span class="SmallText">

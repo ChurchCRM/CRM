@@ -645,7 +645,7 @@ require 'Include/Header.php';
 	<input type="hidden" name="iFamilyID" value="<?= $iFamilyID ?>">
 	<input type="hidden" name="FamCount" value="<?= $iFamilyMemberRows ?>">
     <input type="hidden" id="stateType" name="stateType" value="">
-	<div class="box box-info clearfix">
+	<div class="card card-info clearfix">
 		<div class="card-header">
 			<h3 class="card-title"><?= gettext('Family Info') ?></h3>
 			<div class="pull-right"><br/>
@@ -723,7 +723,7 @@ require 'Include/Header.php';
 			</div>
 		</div>
 	</div>
-	<div class="box box-info clearfix">
+	<div class="card card-info clearfix">
 		<div class="card-header">
 			<h3 class="card-title"><?= gettext('Contact Info') ?></h3>
 			<div class="pull-right"><br/>
@@ -787,7 +787,7 @@ require 'Include/Header.php';
 			</div>
 		</div>
 	</div>
-	<div class="box box-info clearfix">
+	<div class="card card-info clearfix">
 		<div class="card-header">
 			<h3 class="card-title"><?= gettext('Other Info') ?>:</h3>
 			<div class="pull-right"><br/>
@@ -861,7 +861,7 @@ require 'Include/Header.php';
 		</div>
 	</div>
 	<?php if (SystemConfig::getValue('bUseDonationEnvelopes')) { /* Donation envelopes can be hidden - General Settings */ ?>
-	<div class="box box-info clearfix">
+	<div class="card card-info clearfix">
 		<div class="card-header">
 			<h3><?= gettext('Envelope Info') ?></h3>
 			<div class="pull-right"><br/>
@@ -883,7 +883,7 @@ require 'Include/Header.php';
                 }
     if ($numCustomFields > 0) {
         ?>
-	<div class="box box-info clearfix">
+	<div class="card card-info clearfix">
 		<div class="card-header">
 			<h3 class="card-title"><?= gettext('Custom Fields') ?></h3>
 			<div class="pull-right"><br/>
@@ -914,7 +914,7 @@ require 'Include/Header.php';
 	</div>
 	<?php
     } ?>
-	<div class="box box-info clearfix">
+	<div class="card card-info clearfix">
 		<div class="card-header">
 			<h3 class="card-title"><?= gettext('Family Members') ?></h3>
 			<div class="pull-right"><br/>

@@ -25,7 +25,7 @@ $aFinanceQueries = explode(',', $aFinanceQueries);
 require 'Include/Header.php';
 
 ?>
-<div class="box box-primary">
+<div class="card card-primary">
     <div class="card-body">
         <p class="text-right">
             <?php

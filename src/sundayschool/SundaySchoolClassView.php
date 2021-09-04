@@ -120,7 +120,7 @@ require '../Include/Header.php';
   </div>
 </div>
 
-<div class="box box-success">
+<div class="card card-success">
   <div class="card-header">
     <h3 class="card-title"><?= gettext('Teachers') ?></h3>
   </div>
@@ -130,7 +130,7 @@ require '../Include/Header.php';
         ?>
       <div class="col-sm-2">
         <!-- Begin user profile -->
-        <div class="box box-info text-center user-profile-2">
+        <div class="card card-info text-center user-profile-2">
           <div class="user-profile-inner">
             <h4 class="white"><?= $teacher['per_FirstName'].' '.$teacher['per_LastName'] ?></h4>
             <img src="<?= SystemURLs::getRootPath(); ?>/api/person/<?= $teacher['per_ID'] ?>/thumbnail"
@@ -147,7 +147,7 @@ require '../Include/Header.php';
   </div>
 </div>
 
-<div class="box box-info">
+<div class="card card-info">
   <div class="card-header">
     <h3 class="card-title"><?= gettext('Quick Status') ?></h3>
 
@@ -159,7 +159,7 @@ require '../Include/Header.php';
   <div class="card-body row">
     <div class="col-lg-8">
       <!-- Bar chart -->
-      <div class="box box-primary">
+      <div class="card card-primary">
         <div class="card-header">
           <i class="fa fa-bar-chart-o"></i>
 
@@ -174,7 +174,7 @@ require '../Include/Header.php';
     </div>
     <div class="col-lg-4">
       <!-- Donut chart -->
-      <div class="box box-primary">
+      <div class="card card-primary">
         <div class="card-header">
           <i class="fa fa-bar-chart-o"></i>
 
@@ -190,7 +190,7 @@ require '../Include/Header.php';
   </div>
 </div>
 
-<div class="box box-primary">
+<div class="card card-primary">
   <div class="card-header">
     <h3 class="card-title"><?= gettext('Students') ?></h3>
   </div>

@@ -251,7 +251,7 @@ require 'Include/Header.php';
         </div>
         <div class="card-body">
           <div class="col-lg-4">
-            <div class="box box-danger collapsed-box">
+            <div class="card card-danger collapsed-box">
               <div class="card-header with-border">
                 <h3 class="card-title"><?= gettext('Records to export') ?>:</h3>
                 <div class="box-tools pull-right">
@@ -272,7 +272,7 @@ require 'Include/Header.php';
           </div>
 
           <div class="col-lg-4">
-            <div class="box box-danger collapsed-box">
+            <div class="card card-danger collapsed-box">
               <div class="card-header with-border">
                 <h3 class="card-title"><?= gettext('Classification') ?>:</h3>
                 <div class="box-tools pull-right">
@@ -297,7 +297,7 @@ require 'Include/Header.php';
           </div>
 
           <div class="col-lg-4">
-            <div class="box box-danger collapsed-box">
+            <div class="card card-danger collapsed-box">
               <div class="card-header with-border">
                 <h3 class="card-title"><?= gettext('Family Role') ?>:</h3>
                 <div class="box-tools pull-right">
@@ -322,7 +322,7 @@ require 'Include/Header.php';
           </div>
 
           <div class="col-lg-4">
-            <div class="box box-danger collapsed-box">
+            <div class="card card-danger collapsed-box">
               <div class="card-header with-border">
                 <h3 class="card-title"><?= gettext('Gender') ?>:</h3>
                 <div class="box-tools pull-right">
@@ -342,7 +342,7 @@ require 'Include/Header.php';
           </div>
 
           <div class="col-lg-4">
-            <div class="box box-danger collapsed-box">
+            <div class="card card-danger collapsed-box">
               <div class="card-header with-border">
                 <h3 class="card-title"><?= gettext('Group Membership') ?>:</h3>
                 <div class="box-tools pull-right">
@@ -366,7 +366,7 @@ require 'Include/Header.php';
           </div>
 
           <div class="col-lg-4">
-            <div class="box box-danger collapsed-box">
+            <div class="card card-danger collapsed-box">
               <div class="card-header with-border">
                 <h3 class="card-title"><?= gettext('Membership Date') ?>:</h3>
                 <div class="box-tools pull-right">
@@ -383,7 +383,7 @@ require 'Include/Header.php';
           </div>
 
           <div class="col-lg-4">
-            <div class="box box-danger collapsed-box">
+            <div class="card card-danger collapsed-box">
               <div class="card-header with-border">
                 <h3 class="card-title"><?= gettext('Birthday Date') ?>:</h3>
                 <div class="box-tools pull-right">
@@ -400,7 +400,7 @@ require 'Include/Header.php';
           </div>
 
           <div class="col-lg-4">
-            <div class="box box-danger collapsed-box">
+            <div class="card card-danger collapsed-box">
               <div class="card-header with-border">
                 <h3 class="card-title"><?= gettext('Anniversary Date:') ?></h3>
                 <div class="box-tools pull-right">
@@ -417,7 +417,7 @@ require 'Include/Header.php';
           </div>
 
           <div class="col-lg-4">
-            <div class="box box-danger collapsed-box">
+            <div class="card card-danger collapsed-box">
               <div class="card-header with-border">
                 <h3 class="card-title"><?= gettext('Date Entered:') ?></h3>
                 <div class="box-tools pull-right">

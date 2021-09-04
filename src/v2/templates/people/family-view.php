@@ -33,7 +33,7 @@ $mailchimp = new MailChimpService();
     <div class="col-lg-6">
         <div class="row">
             <div class="col-lg-4">
-                <div class="box box-primary">
+                <div class="card card-primary">
                     <div class="card-header">
                         <i class="fa fa-info"></i>
                         <h3 class="card-title"><?= $family->getName() ?> [<?= $family->getId() ?>]</h3>
@@ -130,7 +130,7 @@ $mailchimp = new MailChimpService();
 
         <div class="row">
             <div class="col-lg-12">
-                <div class="box box-primary">
+                <div class="card card-primary">
                     <div class="card-header">
                         <i class="fa fa-id-badge"></i>
                         <h3 class="card-title"><?= gettext("Metadata") ?></h3>
@@ -225,7 +225,7 @@ $mailchimp = new MailChimpService();
                     <div class="card-body row row-flex row-flex-wrap">
                         <?php foreach ($family->getPeople() as $person) { ?>
                             <div class="col-sm-6">
-                                <div class="box box-primary">
+                                <div class="card card-primary">
                                     <div class="card-body box-profile">
                                         <a href="<?= $person->getViewURI()?>" ?>
                                             <img class="profile-user-img img-responsive img-circle initials-image"

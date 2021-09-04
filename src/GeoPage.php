@@ -278,7 +278,7 @@ $families = FamilyQuery::create()
         ?>
 
         <!--Datafile section -->
-        <div class="box box-default collapsed-box">
+        <div class="card card-default collapsed-box">
             <div class="card-header with-border">
                 <h3 class="card-title"><?= gettext('Make Data File') ?></h3>
                 <div class="box-tools pull-right">
@@ -335,7 +335,7 @@ $families = FamilyQuery::create()
         </div><!-- /.box -->
     </div><!-- /.box container -->
 
-    <div class="box box-pane no-border">
+    <div class="card card-pane no-border">
         <?php
         $aPersonIDs = [];
 

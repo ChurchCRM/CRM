@@ -229,7 +229,7 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
 </div><!-- /.row -->
 <div class="row">
   <div class="col-lg-6">
-    <div class="box box-info">
+    <div class="card card-info">
       <div class="card-header with-border">
         <h3 class="card-title"><?= gettext('Reports') ?></h3>
           <div class="box-tools pull-right">
@@ -270,7 +270,7 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
     </div>
   </div>
   <div class="col-lg-6">
-      <div class="box box-primary">
+      <div class="card card-primary">
       <div class="card-header with-border">
         <i class="fa fa-bar-chart-o"></i>
 
@@ -309,7 +309,7 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
 </div>
 <div class="row">
   <div class="col-lg-6">
-    <div class="box box-primary">
+    <div class="card card-primary">
       <div class="card-header with-border">
         <i class="fa fa-pie-chart"></i>
 
@@ -426,7 +426,7 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
   </div>
   <div class="col-lg-6">
 
-    <div class="box box-info">
+    <div class="card card-info">
       <div class="card-header">
         <i class="fa fa-address-card-o"></i>
         <h3 class="card-title"><?= gettext('Gender Demographics') ?></h3>
@@ -436,7 +436,7 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
         <canvas id="gender-donut" style="height:250px"></canvas>
       </div>
     </div>
-    <div class="box box-info">
+    <div class="card card-info">
       <div class="card-header">
         <i class="fa fa-birthday-cake"></i>
         <h3 class="card-title"><?= gettext('Age Histogram') ?></h3>

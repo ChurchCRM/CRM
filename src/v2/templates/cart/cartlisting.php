@@ -5,7 +5,7 @@ use ChurchCRM\dto\SystemURLs;
 $ListTitleText = gettext('Your cart contains') . ' ' . count($cartPeople) . ' ' . gettext('persons from') . ' ' . $iNumFamilies . ' ' . gettext('families');
 ?>
 <!-- BEGIN CART LISTING -->
-<div class="box box-primary">
+<div class="card card-primary">
   <div class="card-header with-border">
     <h3 class="card-title"><?= $ListTitleText ?></h3>
   </div>

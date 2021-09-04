@@ -23,13 +23,13 @@ $ChurchCRMURL = $protocol.$domainName;
 require 'Include/Header.php';
 ?>
 
-<div class="box box-warning">
+<div class="card card-warning">
   <div class="card-body">
 	  <?= gettext('If you need to make changes to registration data, go to '); ?><a href="<?= SystemURLs::getRootPath() ?>/SystemSettings.php"><?= gettext('Admin->Edit General Settings'); ?></a>
   </div>
 </div>
 
-<div class="box box-primary">
+<div class="card card-primary">
 	<div class="card-header">
 		<?php
         echo gettext('Please register your copy of ChurchCRM by checking over this information and pressing the Send button.  ');

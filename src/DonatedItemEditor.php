@@ -164,7 +164,7 @@ require 'Include/Header.php';
 ?>
 
 <form method="post" action="DonatedItemEditor.php?<?= 'CurrentFundraiser='.$iCurrentFundraiser.'&DonatedItemID='.$iDonatedItemID.'&linkBack='.$linkBack; ?>" name="DonatedItemEditor">
-    <div class="box box-primary">
+    <div class="card card-primary">
         <div class="card-body">
             <div class="form-group">
                 <div class="row">

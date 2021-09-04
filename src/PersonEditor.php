@@ -621,7 +621,7 @@ require 'Include/Header.php';
         </div>
     <?php
 } ?>
-    <div class="box box-info clearfix">
+    <div class="card card-info clearfix">
         <div class="card-header">
             <h3 class="card-title"><?= gettext('Personal Info') ?></h3>
             <div class="pull-right"><br/>
@@ -775,7 +775,7 @@ require 'Include/Header.php';
             </div>
         </div>
     </div>
-    <div class="box box-info clearfix">
+    <div class="card card-info clearfix">
         <div class="card-header">
             <h3 class="card-title"><?= gettext('Family Info') ?></h3>
             <div class="pull-right"><br/>
@@ -818,7 +818,7 @@ require 'Include/Header.php';
             </div>
         </div>
     </div>
-    <div class="box box-info clearfix">
+    <div class="card card-info clearfix">
         <div class="card-header">
             <h3 class="card-title"><?= gettext('Contact Info') ?></h3>
             <div class="pull-right"><br/>
@@ -1126,7 +1126,7 @@ require 'Include/Header.php';
             </div>
         </div>
     </div>
-    <div class="box box-info clearfix">
+    <div class="card card-info clearfix">
         <div class="card-header">
             <h3 class="card-title"><?= gettext('Membership Info') ?></h3>
             <div class="pull-right"><br/>
@@ -1187,7 +1187,7 @@ require 'Include/Header.php';
     </div>
   <?php if ($numCustomFields > 0) {
                             ?>
-    <div class="box box-info clearfix">
+    <div class="card card-info clearfix">
         <div class="card-header">
             <h3 class="card-title"><?= gettext('Custom Fields') ?></h3>
             <div class="pull-right"><br/>

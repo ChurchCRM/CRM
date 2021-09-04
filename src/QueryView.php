@@ -196,7 +196,7 @@ function DoQuery()
 
     //Run the SQL
     $rsQueryResults = RunQuery($qry_SQL); ?>
-<div class="box box-primary">
+<div class="card card-primary">
 
     <div class="card-body">
         <p class="text-right">
@@ -293,7 +293,7 @@ function DoQuery()
 
 </div>
 
-<div class="box box-info">
+<div class="card card-info">
     <div class="card-header with-border">
         <div class="card-title">Query</div>
     </div>
@@ -310,7 +310,7 @@ function DisplayQueryInfo()
 {
     global $qry_Name;
     global $qry_Description; ?>
-<div class="box box-info">
+<div class="card card-info">
     <div class="card-body">
         <p><strong><?= gettext($qry_Name); ?></strong></p>
         <p><?= gettext($qry_Description); ?></p>
@@ -405,7 +405,7 @@ function DisplayParameterForm()
 <div class="row">
     <div class="col-md-8">
 
-        <div class="box box-primary">
+        <div class="card card-primary">
 
             <div class="card-body">
 
