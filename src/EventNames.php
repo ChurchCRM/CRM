@@ -314,7 +314,7 @@ if (InputUtils::LegacyFilterInput($_POST['Action']) == 'NEW') {
                       <form name="ProcessEventType" action="EditEventTypes.php" method="POST" class="pull-left">
                         <input type="hidden" name="EN_tyid" value="<?= $aTypeID[$row] ?>">
                         <button type="submit" class="btn btn-default btn-sm" name="Action" title="<?= gettext('Edit') ?>" data-tooltip value="<?= gettext('Edit') ?>">
-                          <i class='fa fa-pencil'></i>
+                          <i class='fas fa-edit'></i>
                         </button>
                       </form>
                     </td>

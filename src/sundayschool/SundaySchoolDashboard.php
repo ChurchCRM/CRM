@@ -169,7 +169,7 @@ require '../Include/Header.php';
           	<a href='<?= SystemURLs::getRootPath() ?>/GroupEditor.php?GroupID=<?= $class['id'] ?>'>
             <span class="fa-stack">
 							<i class="fa fa-square fa-stack-2x"></i>
-							<i class="fa fa fa-pencil fa-stack-1x fa-inverse"></i>
+							<i class="fa fas fa-edit fa-stack-1x fa-inverse"></i>
             </span>
             </a>
           </td>

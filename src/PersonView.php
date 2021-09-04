@@ -243,7 +243,7 @@ $bOkToEdit = (
                     &nbsp;
                     <a id="edit-role-btn" data-person_id="<?= $person->getId() ?>" data-family_role="<?= $person->getFamilyRoleName() ?>"
                        data-family_role_id="<?= $person->getFmrId() ?>"  class="btn btn-primary btn-xs">
-                        <i class="fa fa-pencil"></i>
+                        <i class="fas fa-edit"></i>
                     </a>
                 </p>
 
@@ -279,7 +279,7 @@ $bOkToEdit = (
                   <a href="<?= SystemURLs::getRootPath() ?>/FamilyEditor.php?FamilyID=<?= $fam_ID ?>" class="table-link">
                   <span class="fa-stack">
                     <i class="fa fa-square fa-stack-2x"></i>
-                    <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+                    <i class="fas fa-edit fa-stack-1x fa-inverse"></i>
                   </span>
                 </a>
                   <?php
@@ -572,7 +572,7 @@ $bOkToEdit = (
                                             <a href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $tmpPersonId ?>">
                       <span class="fa-stack">
                         <i class="fa fa-square fa-stack-2x"></i>
-                        <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+                        <i class="fas fa-edit fa-stack-1x fa-inverse"></i>
                       </span>
                                             </a>
                                              <a class="delete-person" data-person_name="<?= $familyMember->getFullName() ?>"

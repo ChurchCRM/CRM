@@ -13,7 +13,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <div class="box">
             <div class="box-header">
                 <div class="pull-right">
-                    <a id="editSettings" href="<?= SystemURLs::getRootPath() ?>/SettingsIndividual.php" class="btn btn-primary"><i class="fa fa-pencil-square-o"></i> <?= _("Edit") ?> </a>
+                    <a id="editSettings" href="<?= SystemURLs::getRootPath() ?>/SettingsIndividual.php" class="btn btn-primary"><i class="fas fa-edit-square-o"></i> <?= _("Edit") ?> </a>
                 </div>
                 <h4><?= _("Login Info") ?></h4>
             </div>

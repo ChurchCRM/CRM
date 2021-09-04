@@ -242,7 +242,7 @@ $mailchimp = new MailChimpService();
                                             </a>
 
                                             <a href="<?= SystemURLs::getRootPath()?>/PersonEditor.php?PersonID=<?= $person->getID()?>" class="table-link">
-                                                <button type="button" class="btn btn-xs btn-primary"><i class="fa fa-pencil"></i></button>
+                                                <button type="button" class="btn btn-xs btn-primary"><i class="fas fa-edit"></i></button>
                                             </a>
                                             <a class="delete-person" data-person_name="<?= $person->getFullName() ?>"
                                                data-person_id="<?= $person->getId() ?>" data-view="family">
