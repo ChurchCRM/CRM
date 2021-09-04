@@ -32,7 +32,7 @@ class Menu
     private static function buildMenuItems()
     {
         return array(
-            "Dashboard" => new MenuItem(gettext("Dashboard"), "Menu.php", true, 'fa-dashboard'),
+            "Dashboard" => new MenuItem(gettext("Dashboard"), "Menu.php", true, 'fa-tachometer-alt'),
             "Calendar" => self::getCalendarMenu(),
             "People" => self::getPeopleMenu(),
             "Groups" => self::getGroupMenu(),
@@ -127,7 +127,7 @@ class Menu
 
     private static function getEventsMenu()
     {
-        $eventsMenu = new MenuItem(gettext("Events"), "", SystemConfig::getBooleanValue("bEnabledEvents"), 'fa-ticket');
+        $eventsMenu = new MenuItem(gettext("Events"), "", SystemConfig::getBooleanValue("bEnabledEvents"), 'fa-ticket-alt');
         $eventsMenu->addSubMenu(new MenuItem(gettext("Add Church Event"), "EventEditor.php", AuthenticationManager::GetCurrentUser()->isAddEventEnabled()));
         $eventsMenu->addSubMenu(new MenuItem(gettext("List Church Events"), "ListEvents.php"));
         $eventsMenu->addSubMenu(new MenuItem(gettext("List Event Types"), "EventNames.php", AuthenticationManager::GetCurrentUser()->isAddEventEnabled()));
@@ -138,7 +138,7 @@ class Menu
 
     private static function getDepositsMenu()
     {
-        $depositsMenu = new MenuItem(gettext("Deposit"), "", SystemConfig::getBooleanValue("bEnabledFinance") && AuthenticationManager::GetCurrentUser()->isFinanceEnabled(), 'fa-bank');
+        $depositsMenu = new MenuItem(gettext("Deposit"), "", SystemConfig::getBooleanValue("bEnabledFinance") && AuthenticationManager::GetCurrentUser()->isFinanceEnabled(), 'fa-cash-register');
         $depositsMenu->addSubMenu(new MenuItem(gettext("View All Deposits"), "FindDepositSlip.php", AuthenticationManager::GetCurrentUser()->isFinanceEnabled()));
         $depositsMenu->addSubMenu(new MenuItem(gettext("Deposit Reports"), "FinancialReports.php", AuthenticationManager::GetCurrentUser()->isFinanceEnabled()));
         $depositsMenu->addSubMenu(new MenuItem(gettext("Edit Deposit Slip"), "DepositSlipEditor.php?DepositSlipID=".$_SESSION['iCurrentDeposit'], AuthenticationManager::GetCurrentUser()->isFinanceEnabled()));
@@ -155,7 +155,7 @@ class Menu
 
     private static function getFundraisersMenu()
     {
-        $fundraiserMenu = new MenuItem(gettext("Fundraiser"), "", SystemConfig::getBooleanValue("bEnabledFundraiser"), 'fa-money');
+        $fundraiserMenu = new MenuItem(gettext("Fundraiser"), "", SystemConfig::getBooleanValue("bEnabledFundraiser"), 'fa-money-bill-alt');
         $fundraiserMenu->addSubMenu(new MenuItem(gettext("Create New Fundraiser"), "FundRaiserEditor.php?FundRaiserID=-1"));
         $fundraiserMenu->addSubMenu(new MenuItem(gettext("View All Fundraisers"), "FindFundRaiser.php"));
         $fundraiserMenu->addSubMenu(new MenuItem(gettext("Edit Fundraiser"), "FundRaiserEditor.php"));
@@ -173,7 +173,7 @@ class Menu
 
     private static function getReportsMenu()
     {
-        $reportsMenu = new MenuItem(gettext("Data/Reports"), "", true, 'fa-file-pdf-o');
+        $reportsMenu = new MenuItem(gettext("Data/Reports"), "", true, 'fa-file-pdf');
         $reportsMenu->addSubMenu(new MenuItem(gettext('Canvass Automation'), "CanvassAutomation.php"));
         $reportsMenu->addSubMenu(new MenuItem(gettext("Query Menu"), "QueryList.php"));
         return $reportsMenu;
@@ -195,7 +195,7 @@ class Menu
 
     private static function getAdminMenu()
     {
-        $menu = new MenuItem(gettext("Admin"), "", true, 'fa-gears');
+        $menu = new MenuItem(gettext("Admin"), "", true, 'fa-tools');
         $menu->addSubMenu(new MenuItem(gettext("Edit General Settings"), "SystemSettings.php",AuthenticationManager::GetCurrentUser()->isAdmin()));
         $menu->addSubMenu(new MenuItem(gettext("System Users"), "UserList.php",AuthenticationManager::GetCurrentUser()->isAdmin()));
         $menu->addSubMenu(new MenuItem(gettext("Property Types"), "PropertyTypeList.php",AuthenticationManager::GetCurrentUser()->isAdmin()));
