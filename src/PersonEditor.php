@@ -624,7 +624,7 @@ require 'Include/Header.php';
     <div class="card card-info clearfix">
         <div class="card-header">
             <h3 class="card-title"><?= gettext('Personal Info') ?></h3>
-            <div class="pull-right"><br/>
+            <div class="card-tools">
                 <input type="submit" class="btn btn-primary" value="<?= gettext('Save') ?>" name="PersonSubmit">
             </div>
         </div><!-- /.box-header -->
@@ -778,7 +778,7 @@ require 'Include/Header.php';
     <div class="card card-info clearfix">
         <div class="card-header">
             <h3 class="card-title"><?= gettext('Family Info') ?></h3>
-            <div class="pull-right"><br/>
+            <div class="card-tools">
                 <input type="submit" class="btn btn-primary" value="<?= gettext('Save') ?>" name="PersonSubmit">
             </div>
         </div><!-- /.box-header -->
@@ -821,7 +821,7 @@ require 'Include/Header.php';
     <div class="card card-info clearfix">
         <div class="card-header">
             <h3 class="card-title"><?= gettext('Contact Info') ?></h3>
-            <div class="pull-right"><br/>
+            <div class="card-tools">
                 <input type="submit" class="btn btn-primary" value="<?= gettext('Save') ?>" name="PersonSubmit">
             </div>
         </div><!-- /.box-header -->
@@ -1129,7 +1129,7 @@ require 'Include/Header.php';
     <div class="card card-info clearfix">
         <div class="card-header">
             <h3 class="card-title"><?= gettext('Membership Info') ?></h3>
-            <div class="pull-right"><br/>
+            <div class="card-tools">
                 <input type="submit" class="btn btn-primary" value="<?= gettext('Save') ?>" name="PersonSubmit">
             </div>
         </div><!-- /.box-header -->
@@ -1190,7 +1190,7 @@ require 'Include/Header.php';
     <div class="card card-info clearfix">
         <div class="card-header">
             <h3 class="card-title"><?= gettext('Custom Fields') ?></h3>
-            <div class="pull-right"><br/>
+            <div class="card-tools">
                 <input type="submit" class="btn btn-primary" value="<?= gettext('Save') ?>" name="PersonSubmit">
             </div>
         </div><!-- /.box-header -->
