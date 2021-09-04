@@ -168,7 +168,7 @@ $MenuFirst = 1;
 
                 </div>
             </li>
-            
+
             <li class="nav-item">
                 <a class="nav-link" data-widget="fullscreen" href="#" role="button">
                     <i class="fas fa-expand-arrows-alt"></i>
@@ -208,9 +208,12 @@ $MenuFirst = 1;
       </form>
       <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
-      <ul class="sidebar-menu" data-widget="tree">
+
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <?php MenuRenderer::RenderMenu(); ?>
-      </ul>
+            </ul>
+        </nav>
     </div>
   </aside>
   <!-- Content Wrapper. Contains page content -->
