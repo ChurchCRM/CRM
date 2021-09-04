@@ -325,7 +325,7 @@ function initializeCalendar() {
 
 function getCalendarFilterElement(calendar,type,parent) {
   boxId = type+calendar.Id;
-  return '<div class="panel box box-primary" style="border-top: 0px">'+
+  return '<div class="panel card card-primary" style="border-top: 0px">'+
             '<div class="card-header" style="background-color:#'+calendar.BackgroundColor+'">' +
               '<h4 class="card-title">' +
                 '<a data-toggle="collapse" data-parent="#'+parent+'" href="#'+boxId+'" aria-expanded="false" style="color:#'+calendar.ForegroundColor+'; font-size:10pt">' +

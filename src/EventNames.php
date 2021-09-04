@@ -163,7 +163,7 @@ $numRows = mysqli_num_rows($rsOpps);
 
 if (InputUtils::LegacyFilterInput($_POST['Action']) == 'NEW') {
     ?>
-  <div class='box box-primary'>
+  <div class='card card-primary'>
     <div class='box-body'>
       <form name="UpdateEventNames" action="EventNames.php" method="POST" class='form-horizontal'>
         <input type="hidden" name="theID" value="<?= $aTypeID[$row] ?>">

@@ -335,7 +335,7 @@ $families = FamilyQuery::create()
         </div><!-- /.box -->
     </div><!-- /.box container -->
 
-    <div class="card card-pane no-border">
+    <div class="card no-border">
         <?php
         $aPersonIDs = [];
 
