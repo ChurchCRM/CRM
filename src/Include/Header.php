@@ -57,7 +57,7 @@ $MenuFirst = 1;
 
         <!-- Right navbar links -->
         <span class="navbar-nav ml-auto">
-            <!-- Navbar Search -->
+            <!-- Navbar Search
             <li class="nav-item">
                 <a class="nav-link" data-widget="navbar-search" href="#" role="button">
                     <i class="fas fa-search"></i>
@@ -77,7 +77,7 @@ $MenuFirst = 1;
                         </div>
                     </form>
                 </div>
-            </li>
+            </li>-->
 
             <!-- Locale Dropdown Menu -->
             <li class="nav-item dropdown show">
