@@ -51,16 +51,10 @@ $isAdmin = AuthenticationManager::GetCurrentUser()->isAdmin();
         <!-- /.tab-pane -->
     </div>
 </aside>
-<!-- The sidebar's background -->
-<!-- This div must placed right after the sidebar for it to work-->
-<div class="control-sidebar-bg"></div>
-</div>
 <!-- ./wrapper -->
 </div><!-- ./wrapper -->
 
 <!-- Bootstrap 3.3.5 -->
-
-
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/adminlte/adminlte.min.js"></script>
