@@ -12,19 +12,20 @@ use ChurchCRM\Bootstrapper;
   <script src="<?= SystemURLs::getRootPath() ?>/skin/external/select2/select2.full.min.js"></script>
 
   <!-- Bootstrap 3.3.5 -->
-  <script src="<?= SystemURLs::getRootPath() ?>/skin/external/bootstrap/bootstrap.min.js"></script>
+  <script src="<?= SystemURLs::getRootPath() ?>/skin/external/bootstrap/js/bootstrap.min.js"></script>
 
   <!-- AdminLTE App -->
   <script src="<?= SystemURLs::getRootPath() ?>/skin/external/adminlte/adminlte.min.js"></script>
 
-  <script src="<?= SystemURLs::getRootPath() ?>/skin/external/fontawesome/all.js"></script>
+  <script src="<?= SystemURLs::getRootPath() ?>/skin/external/fontawesome/js/all.js"></script>
 
   <!-- InputMask -->
   <script src="<?= SystemURLs::getRootPath() ?>/skin/external/inputmask/jquery.inputmask.min.js"></script>
   <script src="<?= SystemURLs::getRootPath() ?>/skin/external/inputmask/inputmask.binding.js"></script>
 
-  <script src="<?= SystemURLs::getRootPath() ?>/skin/external/bootstrap-datepicker/bootstrap-datepicker.min.js" ></script>
+  <script src="<?= SystemURLs::getRootPath() ?>/skin/external/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
   <script src="<?= SystemURLs::getRootPath() ?>/skin/external/bootbox/bootbox.min.js"></script>
+
   <script src="<?= SystemURLs::getRootPath() ?>/skin/external/i18next/i18next.min.js"></script>
   <script src="<?= SystemURLs::getRootPath() ?>/skin/external/bootstrap-show-password/bootstrap-show-password.min.js"></script>
   <script src="<?= SystemURLs::getRootPath() ?>/locale/js/<?= Bootstrapper::GetCurrentLocale()->getLocale() ?>.js"></script>
