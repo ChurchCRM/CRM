@@ -1226,12 +1226,15 @@ require 'Include/Header.php';
     </div>
   <?php
                         } ?>
+    <div class="text-right">
     <input type="submit" class="btn btn-primary" id="PersonSaveButton" value="<?= gettext('Save') ?>" name="PersonSubmit">
     <?php if (AuthenticationManager::GetCurrentUser()->isAddRecordsEnabled()) {
                             echo '<input type="submit" class="btn btn-primary" value="'.gettext('Save and Add').'" name="PersonSubmitAndAdd">';
                         } ?>
     <input type="button" class="btn btn-primary" value="<?= gettext('Cancel') ?>" name="PersonCancel"
            onclick="javascript:document.location='v2/people';">
+        <p><br/></p>
+    </div>
 </form>
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>" >
