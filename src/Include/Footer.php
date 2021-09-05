@@ -95,14 +95,14 @@ $isAdmin = AuthenticationManager::GetCurrentUser()->isAdmin();
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/Footer.js"></script>
 
 <?php if (isset($sGlobalMessage)) {
-        ?>
+    ?>
     <script nonce="<?= SystemURLs::getCSPNonce() ?>">
         $("document").ready(function () {
             showGlobalMessage("<?= $sGlobalMessage ?>", "<?=$sGlobalMessageClass?>");
         });
     </script>
     <?php
-    } ?>
+} ?>
 
 <?php  include_once('analyticstracking.php'); ?>
 </body>
