@@ -29,10 +29,10 @@ require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
 
                     // output warning and error messages
                     if (isset($sErrorText)) {
-                        echo '<div class="alert alert-error">' . $sErrorText . '</div>';
+                        echo '<div class="callout callout-danger">' . $sErrorText . '</div>';
                     }
                     if (isset($loginPageMsg)) {
-                        echo '<div class="alert alert-warning">' . $loginPageMsg . '</div>';
+                        echo '<div class="callout callout-warning">' . $loginPageMsg . '</div>';
                     }
                 ?>
                 <form class="form-signin" role="form" method="post" name="LoginForm" action="<?= $localAuthNextStepURL ?>">
