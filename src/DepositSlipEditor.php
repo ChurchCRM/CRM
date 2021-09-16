@@ -71,11 +71,11 @@ require 'Include/Header.php';
 ?>
 <div class="row">
   <div class="col-lg-7">
-    <div class="box">
-      <div class="box-header with-border">
-        <h3 class="box-title"><?php echo gettext('Deposit Details: '); ?></h3>
+    <div class="card">
+      <div class="card-header with-border">
+        <h3 class="card-title"><?php echo gettext('Deposit Details: '); ?></h3>
       </div>
-      <div class="box-body">
+      <div class="card-body">
         <form method="post" action="#" name="DepositSlipEditor" id="DepositSlipEditor">
           <div class="row">
             <div class="col-lg-4">
@@ -110,11 +110,11 @@ require 'Include/Header.php';
     </div>
   </div>
   <div class="col-lg-5">
-    <div class="box">
-      <div class="box-header with-border">
-        <h3 class="box-title"><?php echo gettext('Deposit Summary: '); ?></h3>
+    <div class="card">
+      <div class="card-header with-border">
+        <h3 class="card-title"><?php echo gettext('Deposit Summary: '); ?></h3>
       </div>
-      <div class="box-body">
+      <div class="card-body">
         <div class="col-lg-6">
           <canvas id="type-donut" style="height: 250px;"></canvas>
           <ul style="margin:0px; border:0px; padding:0px;">
@@ -143,9 +143,9 @@ require 'Include/Header.php';
     </div>
   </div>
 </div>
-<div class="box">
-  <div class="box-header with-border">
-    <h3 class="box-title"><?php echo gettext('Payments on this deposit slip:'); ?></h3>
+<div class="card">
+  <div class="card-header with-border">
+    <h3 class="card-title"><?php echo gettext('Payments on this deposit slip:'); ?></h3>
     <div class="pull-right">
       <?php
       if ($iDepositSlipID and $thisDeposit->getType() and !$thisDeposit->getClosed()) {
@@ -164,7 +164,7 @@ require 'Include/Header.php';
       ?>
     </div>
   </div>
-  <div class="box-body">
+  <div class="card-body">
     <table class="table" id="paymentsTable" width="100%"></table>
     <?php
     if ($iDepositSlipID and $thisDeposit->getType() and !$thisDeposit->getClosed()) {

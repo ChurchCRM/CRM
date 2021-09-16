@@ -41,11 +41,11 @@ $sPageTitle = gettext('Sunday School Dashboard');
 require '../Include/Header.php';
 
 ?>
-<div class="box">
-  <div class="box-header with-border">
-    <h3 class="box-title"><?= gettext('Functions') ?></h3>
+<div class="card">
+  <div class="card-header with-border">
+    <h3 class="card-title"><?= gettext('Functions') ?></h3>
   </div>
-  <div class="box-body">
+  <div class="card-body">
     <?php if (AuthenticationManager::GetCurrentUser()->isManageGroupsEnabled()) {
     ?>
       <button class="btn btn-app" data-toggle="modal" data-target="#add-class"><i
@@ -135,17 +135,17 @@ require '../Include/Header.php';
   </div>
 </div><!-- /.row -->
 <!-- on continue -->
-<div class="box box-info">
-  <div class="box-header">
-    <h3 class="box-title"><?= gettext('Sunday School Classes') ?></h3>
-      <div class="box-tools pull-right">
+<div class="card card-info">
+  <div class="card-header">
+    <h3 class="card-title"><?= gettext('Sunday School Classes') ?></h3>
+      <div class="card-tools pull-right">
           <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
           </button>
           <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
           </button>
       </div>
   </div>
-  <div class="box-body">
+  <div class="card-body">
     <table id="sundayschoolMissing" class="table table-striped table-bordered data-table" cellspacing="0" width="100%">
       <thead>
       <tr>
@@ -169,7 +169,7 @@ require '../Include/Header.php';
           	<a href='<?= SystemURLs::getRootPath() ?>/GroupEditor.php?GroupID=<?= $class['id'] ?>'>
             <span class="fa-stack">
 							<i class="fa fa-square fa-stack-2x"></i>
-							<i class="fa fa fa-pencil fa-stack-1x fa-inverse"></i>
+							<i class="fa fas fa-edit fa-stack-1x fa-inverse"></i>
             </span>
             </a>
           </td>
@@ -185,10 +185,10 @@ require '../Include/Header.php';
 </div>
 
 
-<div class="box box-danger">
-  <div class="box-header">
-    <h3 class="box-title"><?= gettext('Students not in a Sunday School Class') ?></h3>
-      <div class="box-tools pull-right">
+<div class="card card-danger">
+  <div class="card-header">
+    <h3 class="card-title"><?= gettext('Students not in a Sunday School Class') ?></h3>
+      <div class="card-tools pull-right">
           <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
           </button>
           <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
@@ -196,7 +196,7 @@ require '../Include/Header.php';
       </div>
   </div>
   <!-- /.box-header -->
-  <div class="box-body table-responsive">
+  <div class="card-body table-responsive">
     <table id="sundayschoolMissing" class="table table-striped table-bordered data-table" cellspacing="0" width="100%">
       <thead>
       <tr>

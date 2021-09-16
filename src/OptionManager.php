@@ -295,8 +295,8 @@ if ($embedded) {
 }
 
 ?>
-<div class="box">
-	<div class="box-body">
+<div class="card">
+	<div class="card-body">
 <form method="post" action="OptionManager.php?<?= "mode=$mode&ListID=$listID" ?>" name="OptionManager">
 
 <div class="callout callout-warning"><?= gettext('Warning: Removing will reset all assignments for all persons with the assignment!') ?></div>
@@ -381,8 +381,8 @@ for ($row = 1; $row <= $numRows; $row++) {
 	</div>
 </div>
 
-<div class="box box-primary">
-	<div class="box-body">
+<div class="card card-primary">
+	<div class="card-body">
 <?=  gettext('Name for New').' '.$noun ?>:&nbsp;
 <span class="SmallText">
 	<input class="form-control input-small" type="text" name="newFieldName" size="30" maxlength="40">

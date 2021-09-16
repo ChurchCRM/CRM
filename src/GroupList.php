@@ -44,7 +44,7 @@ $rsGroupTypes = ListOptionQuery::create()->filterById('3')->find();
 
 
 
-<div class="box box-body">
+<div class="card card-body">
 <table class="table" id="groupsTable">
 </table>
 <?php

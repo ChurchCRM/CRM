@@ -83,7 +83,7 @@ $iGroupID = InputUtils::LegacyFilterInput($_GET['GroupID'], 'int');
         src="https://maps.googleapis.com/maps/api/js?key=<?= SystemConfig::getValue('sGoogleMapsRenderKey') ?>">
     </script>
 
-    <div class="box">
+    <div class="card">
         <!-- Google map div -->
         <div id="map" class="map-div"></div>
 

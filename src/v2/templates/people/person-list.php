@@ -53,8 +53,8 @@ foreach ($ListItem as $element) {
 
 ?>
 
-<div class="box box-primary">
-    <div class="box-header">
+<div class="card card-primary">
+    <div class="card-header">
         <?= gettext('Filter and Cart') ?>
     </div>
 
@@ -90,8 +90,8 @@ foreach ($ListItem as $element) {
 
 </div>
 <p><br/><br/></p>
-<div class="box box-warning">
-    <div class="box-body">
+<div class="card card-warning">
+    <div class="card-body">
         <table id="members" class="table table-striped table-bordered data-table" cellspacing="0" width="100%">
             <tbody>
             <!--Populate the table with person details -->
@@ -109,7 +109,7 @@ foreach ($ListItem as $element) {
                     <a href='<?= SystemURLs::getRootPath()?>/PersonEditor.php?PersonID=<?= $person->getId() ?>'>
                         <span class="fa-stack">
                             <i class="fa fa-square fa-stack-2x"></i>
-                            <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+                            <i class="fas fa-edit fa-stack-1x fa-inverse"></i>
                         </span>
                     </a>
 

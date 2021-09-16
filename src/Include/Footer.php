@@ -17,12 +17,13 @@ use ChurchCRM\Service\SystemService;
 
 $isAdmin = AuthenticationManager::GetCurrentUser()->isAdmin();
 ?>
+</div>
 </section><!-- /.content -->
 
 </div>
 <!-- /.content-wrapper -->
 <footer class="main-footer">
-    <div class="pull-right">
+    <div class="float-right d-none d-sm-block">
         <b><?= gettext('Version') ?></b> <?= $_SESSION['sSoftwareInstalledVersion'] ?>
     </div>
     <strong><?= gettext('Copyright') ?> &copy; <?= SystemService::getCopyrightDate() ?> <a href="http://www.churchcrm.io" target="_blank"><b>Church</b>CRM</a>.</strong> <?= gettext('All rights reserved') ?>.
@@ -34,47 +35,27 @@ $isAdmin = AuthenticationManager::GetCurrentUser()->isAdmin();
 <aside class="control-sidebar control-sidebar-dark">
     <div class="tab-content">
         <div class="tab-pane active" id="control-sidebar-tasks-tab">
-            <?= gettext('You have') ?> &nbsp; <span class="label label-danger"><?= $taskSize ?></span>
-            &nbsp; <?= gettext('task(s)') ?>
+            <?= gettext('You have') ?> <span class="badge badge-warning"><?= $taskSize ?></span> <?= gettext('task(s)') ?>
             <br/><br/>
-            <ul class="control-sidebar-menu">
-                <?php foreach ($tasks as $task) {
-    $taskIcon = 'fa-info bg-green';
-    if ($task['admin']) {
-        $taskIcon = 'fa-lock bg-yellow-gradient';
-    } ?>
+                <?php foreach ($tasks as $task) { ?>
                     <!-- Task item -->
-                    <li>
+                    <div class="mb-1">
                         <a target="blank" href="<?= $task['link'] ?>">
-                            <i class="menu-icon fa fa-fw <?= $taskIcon ?>"></i>
-                            <div class="menu-info">
-                                <h4 class="control-sidebar-subheading"
-                                    title="<?= $task['desc'] ?>"><?= $task['title'] ?></h4>
-                            </div>
+                            <i class="menu-icon fa fa-fw <?= $task['admin'] ? 'fa-lock' :'fa-info' ?>"></i> <?= $task['title'] ?>
                         </a>
-
-                    </li>
+                    </div>
                     <!-- end task item -->
-                    <?php
-} ?>
-            </ul>
+                    <?php } ?>
             <!-- /.control-sidebar-menu -->
-
         </div>
         <!-- /.tab-pane -->
     </div>
 </aside>
-<!-- The sidebar's background -->
-<!-- This div must placed right after the sidebar for it to work-->
-<div class="control-sidebar-bg"></div>
-</div>
 <!-- ./wrapper -->
 </div><!-- ./wrapper -->
 
 <!-- Bootstrap 3.3.5 -->
-
-
-<script src="<?= SystemURLs::getRootPath() ?>/skin/external/bootstrap/bootstrap.min.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/external/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/adminlte/adminlte.min.js"></script>
 

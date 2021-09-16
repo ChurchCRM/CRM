@@ -31,11 +31,11 @@ $sPageTitle = gettext('Backup Database');
 require 'Include/Header.php';
 
 ?>
-<div class="box">
-    <div class="box-header">
-        <h3 class="box-title"><?= gettext('This tool will assist you in manually backing up the ChurchCRM database.') ?></h3>
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title"><?= gettext('This tool will assist you in manually backing up the ChurchCRM database.') ?></h3>
     </div>
-    <div class="box-body">
+    <div class="card-body">
         <ul>
         <li><?= gettext('You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems.') ?></li><br>
         <li><?= gettext('After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site.') ?></li><br>
@@ -59,11 +59,11 @@ require 'Include/Header.php';
         </form>
     </div>
 </div>
-<div class="box">
-    <div class="box-header">
-        <h3 class="box-title"><?= gettext('Backup Status:') ?> </h3>&nbsp;<h3 class="box-title" id="backupstatus" style="color:red"> <?= gettext('No Backup Running') ?></h3>
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title"><?= gettext('Backup Status:') ?> </h3>&nbsp;<h3 class="card-title" id="backupstatus" style="color:red"> <?= gettext('No Backup Running') ?></h3>
     </div>
-     <div class="box-body" id="resultFiles">
+     <div class="card-body" id="resultFiles">
      </div>
 </div>
 

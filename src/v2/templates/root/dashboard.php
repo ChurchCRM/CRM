@@ -11,7 +11,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
 <div class="row">
     <div class="col-lg-2 col-xs-4">
         <!-- small box -->
-        <div class="small-box bg-aqua">
+        <div class="small-box bg-olive">
             <div class="inner">
                 <h3 id="familyCountDashboard">
                     <?= $dashboardCounts["families"] ?>
@@ -21,7 +21,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 </p>
             </div>
             <div class="icon">
-                <i class="fa fa-users"></i>
+                <i class="fa fa-user-friends"></i>
             </div>
             <a href="<?= SystemURLs::getRootPath() ?>/v2/family" class="small-box-footer">
                 <?= gettext('See all Families') ?> <i class="fa fa-arrow-circle-right"></i>
@@ -47,11 +47,30 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
             </a>
         </div>
     </div><!-- ./col -->
+    <div class="col-lg-2 col-xs-4">
+        <!-- small box -->
+        <div class="small-box bg-red">
+            <div class="inner">
+                <h3 id="groupsCountDashboard">
+                    <?= $dashboardCounts["Groups"] ?>
+                </h3>
+                <p>
+                    <?= gettext('Groups') ?>
+                </p>
+            </div>
+            <div class="icon">
+                <i class="fa fa-users"></i>
+            </div>
+            <a href="<?= SystemURLs::getRootPath() ?>/GroupList.php" class="small-box-footer">
+                <?= gettext('More info') ?>  <i class="fa fa-arrow-circle-right"></i>
+            </a>
+        </div>
+    </div><!-- ./col -->
     <?php if ($sundaySchoolEnabled) {
         ?>
         <div class="col-lg-2 col-xs-4">
             <!-- small box -->
-            <div class="small-box bg-yellow">
+            <div class="small-box bg-orange">
                 <div class="inner">
                     <h3 id="groupStatsSundaySchool">
                         <?= $dashboardCounts["SundaySchool"] ?>
@@ -72,25 +91,6 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
     } ?>
     <div class="col-lg-2 col-xs-4">
         <!-- small box -->
-        <div class="small-box bg-red">
-            <div class="inner">
-                <h3 id="groupsCountDashboard">
-                    <?= $dashboardCounts["Groups"] ?>
-                </h3>
-                <p>
-                    <?= gettext('Groups') ?>
-                </p>
-            </div>
-            <div class="icon">
-                <i class="fa fa-gg"></i>
-            </div>
-            <a href="<?= SystemURLs::getRootPath() ?>/GroupList.php" class="small-box-footer">
-                <?= gettext('More info') ?>  <i class="fa fa-arrow-circle-right"></i>
-            </a>
-        </div>
-    </div><!-- ./col -->
-    <div class="col-lg-2 col-xs-4">
-        <!-- small box -->
         <div class="small-box bg-yellow">
             <div class="inner">
                 <h3>
@@ -101,7 +101,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 </p>
             </div>
             <div class="icon">
-                <i class="fa fa-gg"></i>
+                <i class="far fa-calendar-check"></i>
             </div>
             <a href="<?= SystemURLs::getRootPath() ?>/ListEvents.php" class="small-box-footer">
                 <?= gettext('More info') ?>  <i class="fa fa-arrow-circle-right"></i>
@@ -110,27 +110,17 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
     </div><!-- ./col -->
 </div><!-- /.row -->
 
-<div class="box">
-    <div class="box-body">
-        <div class="row">
-            <div class="col-md-6">
-                <div class="box box-solid">
-                    <h3 class="box-header"><h4><?= gettext("Today's Birthdays") ?></h4></h3>
-                    <div class="box-body">
-                        <table class="table table-striped" width="100%" id="PersonBirthdayDashboardItem"></table>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="box box-solid">
-                    <h3 class="box-header"><h4><?= gettext("Today's Wedding Anniversaries") ?></h4></h3>
-                    <div class="box-body">
-                        <table class="table table-striped" width="100%" id="FamiliesWithAnniversariesDashboardItem"></table>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-            </div>
+<div class="row">
+    <div class="card col-md-6">
+        <div class="card-body">
+            <h3><?= gettext("Today's Birthdays") ?></h3>
+            <table class="table table-striped" width="100%" id="PersonBirthdayDashboardItem"></table>
+        </div>
+    </div>
+    <div class="card col-md-6">
+        <div class="card-body">
+            <h3><?= gettext("Today's Wedding Anniversaries") ?></h3>
+            <table class="table table-striped" width="100%" id="FamiliesWithAnniversariesDashboardItem"></table>
         </div>
     </div>
 </div>
@@ -138,17 +128,17 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
 <?php
 if ($depositEnabled) { // If the user has Finance permissions, then let's display the deposit line chart
     ?>
-    <div class="row" id="depositChartRow">
+    <div class="card" id="depositChartRow">
         <div class="col-lg-12 col-md-12 col-sm-12">
-            <div class="box box-info">
-                <div class="box-header">
+            <div class="card card-info">
+                <div class="card-header">
                     <i class="fa fa-money"></i>
-                    <h3 class="box-title"><?= gettext('Deposit Tracking') ?></h3>
-                    <div class="box-tools pull-right">
+                    <h3 class="card-title"><?= gettext('Deposit Tracking') ?></h3>
+                    <div class="card-tools pull-right">
                         <div id="deposit-graph" class="chart-legend"></div>
                     </div>
                 </div><!-- /.box-header -->
-                <div class="box-body">
+                <div class="card-body" style="height: 200px">
                     <canvas id="deposit-lineGraph" style="height:125px; width:100%"></canvas>
                 </div>
             </div>
@@ -158,10 +148,10 @@ if ($depositEnabled) { // If the user has Finance permissions, then let's displa
 }  //END IF block for Finance permissions to include HTML for Deposit Chart
 ?>
 
-<div class="box">
-    <div class="box-header with-border">
-        <h3 class="box-title"><?= gettext('People') ?></h3>
-        <div class="pull-right">
+<div class="card">
+    <div class="card-header with-border">
+        <dev class="card-title"><h4><?= gettext('People') ?></h4></dev>
+        <div class="card-tools">
             <div class="btn-group">
                 <a href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php">
                     <button type="button" class="btn btn-success"><?= gettext('Add New Person') ?></button>
@@ -172,40 +162,35 @@ if ($depositEnabled) { // If the user has Finance permissions, then let's displa
             </div>
         </div>
     </div>
-    <div class="box-body">
-        <div class="row">
-            <div class="col-md-12">
-                <!-- Custom Tabs -->
-                <div class="nav-tabs-custom">
-                    <ul class="nav nav-tabs">
-                        <li class="active"><a href="#ppl-tab_1" data-toggle="tab"><?= gettext('Latest Families') ?></a></li>
-                        <li><a href="#ppl-tab_2" data-toggle="tab"><?= gettext('Updated Families') ?></a></li>
-                        <li><a href="#ppl-tab_3" data-toggle="tab"><?= gettext('Latest Persons') ?></a></li>
-                        <li><a href="#ppl-tab_4" data-toggle="tab"><?= gettext('Updated Persons') ?></a></li>
-                    </ul>
-                    <div class="tab-content">
-                        <div class="tab-pane active" id="ppl-tab_1">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-5 col-sm-3">
+                    <div class="nav flex-column nav-tabs h-100" id="vert-tabs-tab" role="tablist" aria-orientation="vertical">
+                        <a class="nav-link active" id="vert-tabs-latest-fam-tab" data-toggle="pill" href="#vert-tabs-lasterst-fam" role="tab" aria-controls="vert-tabs-lasterst-fam" aria-selected="true"><?= gettext('Latest Families') ?></a>
+                        <a class="nav-link" id="vert-tabs-updated-fam-tab" data-toggle="pill" href="#vert-tabs-updated-fam" role="tab" aria-controls="vert-tabs-updated-fam" aria-selected="false"><?= gettext('Updated Families') ?></a>
+                        <a class="nav-link" id="vert-tabs-latest-ppl-tab" data-toggle="pill" href="#vert-tabs-latest-ppl" role="tab" aria-controls="vert-tabs-latest-ppl" aria-selected="false"><?= gettext('Latest Persons') ?></a>
+                        <a class="nav-link" id="vert-tabs-updated-ppl-tab" data-toggle="pill" href="#vert-tabs-updated-ppl" role="tab" aria-controls="vert-tabs-updated-ppl" aria-selected="false"><?= gettext('Updated Persons') ?></a>
+                    </div>
+                </div>
+                <div class="col-7 col-sm-9">
+                    <div class="tab-content" id="vert-tabs-tabContent">
+                        <div class="tab-pane text-left fade show active" id="vert-tabs-lasterst-fam" role="tabpanel" aria-labelledby="vert-tabs-latest-fam-tab">
                             <table class="table table-striped" width="100%" id="latestFamiliesDashboardItem"></table>
                         </div>
-                        <!-- /.tab-pane -->
-                        <div class="tab-pane" id="ppl-tab_2">
+                        <div class="tab-pane fade" id="vert-tabs-updated-fam" role="tabpanel" aria-labelledby="vert-tabs-updated-fam-tab">
                             <table class="table table-striped" width="100%" id="updatedFamiliesDashboardItem"></table>
                         </div>
-                        <!-- /.tab-pane -->
-                        <div class="tab-pane" id="ppl-tab_3">
+                        <div class="tab-pane fade" id="vert-tabs-latest-ppl" role="tabpanel" aria-labelledby="vert-tabs-latest-ppl-tab">
                             <table class="table table-striped" width="100%" id="latestPersonDashboardItem"></table>
                         </div>
-                        <!-- /.tab-pane -->
-                        <div class="tab-pane" id="ppl-tab_4">
+                        <div class="tab-pane fade" id="vert-tabs-updated-ppl" role="tabpanel" aria-labelledby="vert-tabs-updated-ppl-tab">
                             <table class="table table-striped" width="100%" id="updatedPersonDashboardItem"></table>
                         </div>
-                        <!-- /.tab-pane -->
                     </div>
-                    <!-- /.tab-content -->
                 </div>
-                <!-- nav-tabs-custom -->
             </div>
         </div>
+        <!-- /.card -->
     </div>
 </div>
 

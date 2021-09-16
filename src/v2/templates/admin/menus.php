@@ -7,11 +7,11 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
 <div class="row">
     <div class="col-lg-12">
-        <div class="box">
-            <div class="box-header">
+        <div class="card">
+            <div class="card-header">
                 <h4><?= _("Add Menu") ?></h4>
             </div>
-            <div class="box-body">
+            <div class="card-body">
                 <section>
                     <div class="form-group">
                         <label for="MENU_NAME"><?= _("Menu Name")?></label>
@@ -35,11 +35,11 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
 </div>
 <div class="row">
     <div class="col-lg-12">
-        <div class="box">
-            <div class="box-header">
+        <div class="card">
+            <div class="card-header">
                 <h4><?= _("Menus") ?></h4>
             </div>
-            <div class="box-body">
+            <div class="card-body">
                 <table id="menus" class="table table-striped table-bordered table-responsive data-table">
                     <tbody></tbody>
                 </table>

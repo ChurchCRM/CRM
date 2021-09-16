@@ -16,7 +16,7 @@ require 'Include/Functions.php';
 $sPageTitle = gettext('Update Latitude & Longitude');
 require 'Include/Header.php';
 
-echo '<div class="box box-body box-info">';
+echo '<div class="card card-body box-info">';
 
 $families = FamilyQuery::create()
     ->filterByLongitude(array(null,0), Criteria::IN)
@@ -41,11 +41,11 @@ foreach ($families as $family) {
 <?php $families = FamilyQuery::create()->filterByLongitude(0)->limit(250)->find();
 if ($families->count() > 0) {
     ?>
-    <div class="box box-warning">
-        <div class="box-header">
+    <div class="card card-warning">
+        <div class="card-header">
             <b><?= gettext('No coordinates found') ?></b>
         </div>
-        <div class="box-body ">
+        <div class="card-body ">
             <?php
 
             foreach ($families as $family) {

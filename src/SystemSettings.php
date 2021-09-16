@@ -110,7 +110,7 @@ require 'Include/Header.php';
 
 <div class="row">
   <div class="col-lg-12">
-    <div class="box box-body">
+    <div class="card card-body">
       <form name="SystemSettingsForm" method=post action=SystemSettings.php>
         <div class="nav-tabs-custom">
           <ul class="nav nav-tabs">

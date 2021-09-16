@@ -16,8 +16,8 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
   </a>
 </div>
 <p><br/><br/></p>
-<div class="box">
-    <div class="box-body">
+<div class="card">
+    <div class="card-body">
         <table id="families" class="table table-striped table-bordered data-table" cellspacing="0" width="100%">
             <thead>
             <tr>
@@ -47,7 +47,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <a href='<?= SystemURLs::getRootPath()?>/FamilyEditor.php?FamilyID=<?= $family->getId() ?>'>
                         <span class="fa-stack">
                             <i class="fa fa-square fa-stack-2x"></i>
-                            <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+                            <i class="fas fa-edit fa-stack-1x fa-inverse"></i>
                         </span>
                     </a></td>
               <td><?= $family->getName() ?></td>

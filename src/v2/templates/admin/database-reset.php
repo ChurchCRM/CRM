@@ -7,11 +7,11 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
 <div class="row">
     <div class="col-lg-4">
-        <div class="box">
-            <div class="box-header">
+        <div class="card">
+            <div class="card-header">
                 <h4><?= gettext("Reset Members") ?></h4>
             </div>
-            <div class="box-body">
+            <div class="card-body">
                 <div class="">
                     <?= gettext("This will remove all the member data, people, and families and can't be undone.") ?>
                 </div>
@@ -24,11 +24,11 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
         </div>
     </div>
     <div class="col-lg-4">
-        <div class="box">
-            <div class="box-header">
+        <div class="card">
+            <div class="card-header">
                 <h4><?= gettext("Reset Database") ?></h4>
             </div>
-            <div class="box-body">
+            <div class="card-body">
                 <div class="">
                     <?= gettext("This will reset the system data and will restart the system as a new install.") ?>
                 </div>

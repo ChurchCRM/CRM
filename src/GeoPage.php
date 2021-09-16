@@ -205,7 +205,7 @@ $families = FamilyQuery::create()
     ->find(); ?>
 <form class="form-horizontal" method="POST" action="GeoPage.php" name="GeoPage">
     <div class="box container">
-        <div class="box-body">
+        <div class="card-body">
             <div class="form-group">
                 <label for="Family"
                        class="control-label col-xs-12 col-sm-3 col-md-3 col-lg-3"><?= gettext('Select Family:') ?></label>
@@ -278,14 +278,14 @@ $families = FamilyQuery::create()
         ?>
 
         <!--Datafile section -->
-        <div class="box box-default collapsed-box">
-            <div class="box-header with-border">
-                <h3 class="box-title"><?= gettext('Make Data File') ?></h3>
-                <div class="box-tools pull-right">
+        <div class="card card-default collapsed-box">
+            <div class="card-header with-border">
+                <h3 class="card-title"><?= gettext('Make Data File') ?></h3>
+                <div class="card-tools pull-right">
                     <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
-                </div><!-- /.box-tools -->
+                </div><!-- /.card-tools -->
             </div><!-- /.box-header -->
-            <div class="box-body">
+            <div class="card-body">
                 <div class="form-group">
                     <label for="CoordFileFormat"
                            class="control-label col-xs-12 col-sm-3 col-md-3 col-lg-3"><?= gettext('Data file format:') ?></label>
@@ -335,7 +335,7 @@ $families = FamilyQuery::create()
         </div><!-- /.box -->
     </div><!-- /.box container -->
 
-    <div class="box box-pane no-border">
+    <div class="card no-border">
         <?php
         $aPersonIDs = [];
 
