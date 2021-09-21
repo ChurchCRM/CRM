@@ -115,7 +115,7 @@
         "react-bootstrap": "^0.32.4",
         "react-dom": "^16.14.0",
         "react-modal": "^3.12.1",
-        "tar": "^6.1.2",
+        "tar": "^6.1.9",
         "ts-loader": "^7.0.5",
         "typescript": "^3.9.9",
         "webpack": "^4.46.0",
