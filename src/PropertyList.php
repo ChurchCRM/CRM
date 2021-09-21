@@ -48,7 +48,7 @@ $rsProperties = RunQuery($sSQL);
 
 require 'Include/Header.php'; ?>
 
-<div class="box box-body">
+<div class="card card-body">
 
 <?php if (AuthenticationManager::GetCurrentUser()->isMenuOptionsEnabled()) {
     //Display the new property link

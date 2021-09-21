@@ -90,12 +90,12 @@ if (!empty($sHeader)) {
             <section>
                 <?php for ($x = 1; $x <= 8; $x++) { ?>
                     <div id="memberBox<?= $x ?>" class="box">
-                        <div class="box-header with-border">
-                            <h4 class="box-title">
+                        <div class="card-header with-border">
+                            <h4 class="card-title">
                                 <?= gettext ("Family Member") . " #". $x ?>
                             </h4>
                         </div>
-                        <div class="box-body">
+                        <div class="card-body">
                             <div class="form-group has-feedback">
                                 <div class="row">
                                     <div class="col-lg-8">

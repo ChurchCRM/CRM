@@ -19,11 +19,11 @@ use ChurchCRM\dto\SystemURLs;
 
 <div class="row">
     <div class="col-lg-12">
-        <div class="box">
-            <div class="box-header">
-                <h3 class="box-title"><?= _("Families") ?></h3>
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title"><?= _("Families") ?></h3>
             </div>
-            <div class="box-body">
+            <div class="card-body">
                 <table id="families" class="table table-striped table-bordered table-responsive data-table">
                     <tbody></tbody>
                 </table>
@@ -34,11 +34,11 @@ use ChurchCRM\dto\SystemURLs;
 
 <div class="row">
     <div class="col-lg-12">
-        <div class="box">
-            <div class="box-header">
-                <h3 class="box-title"><?= _("Persons") ?></h3>
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title"><?= _("Persons") ?></h3>
             </div>
-            <div class="box-body">
+            <div class="card-body">
                 <table id="people" class="table table-striped table-bordered table-responsive data-table">
                     <tbody></tbody>
                 </table>

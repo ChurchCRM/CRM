@@ -23,21 +23,21 @@ $ChurchCRMURL = $protocol.$domainName;
 require 'Include/Header.php';
 ?>
 
-<div class="box box-warning">
-  <div class="box-body">
+<div class="card card-warning">
+  <div class="card-body">
 	  <?= gettext('If you need to make changes to registration data, go to '); ?><a href="<?= SystemURLs::getRootPath() ?>/SystemSettings.php"><?= gettext('Admin->Edit General Settings'); ?></a>
   </div>
 </div>
 
-<div class="box box-primary">
-	<div class="box-header">
+<div class="card card-primary">
+	<div class="card-header">
 		<?php
         echo gettext('Please register your copy of ChurchCRM by checking over this information and pressing the Send button.  ');
         echo gettext('This information is used only to track the usage of this software.  ');
         ?>
 	</div>
 	<form id="registerForm">
-	<div class="box-body">
+	<div class="card-body">
     <?= gettext('Church Name') ?>: <?= SystemConfig::getValue('sChurchName'); ?><br>
     <?= gettext('Version') ?>: <?= SystemService::getInstalledVersion(); ?><br>
     <?= gettext('Address') ?>: <?= SystemConfig::getValue('sChurchAddress'); ?><br>
@@ -50,7 +50,7 @@ require 'Include/Header.php';
 		<br> <?= gettext('Message') ?>:
 		<br><textarea class="form-control" name="emailmessage" rows="20" cols="72"><?= htmlspecialchars($sEmailMessage) ?> </textarea>
 	</div>
-	<div class="box-footer">
+	<div class="card-footer">
     <input type="hidden" name="ChurchCRMURL" value="<?= $ChurchCRMURL ?>"/>
 		<input type="submit" class="btn btn-primary" value="<?= gettext('Send') ?>" name="Submit">
 		<input type="button" class="btn btn-default" value="<?= gettext('Cancel') ?>" name="Cancel" onclick="javascript:document.location='Menu.php';">

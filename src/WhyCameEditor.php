@@ -78,8 +78,8 @@ if (isset($_POST['Submit'])) {
 require 'Include/Header.php';
 
 ?>
-<div class="box">
-  <div class="box-body">
+<div class="card">
+  <div class="card-body">
 
     <form method="post" action="WhyCameEditor.php?<?= 'PersonID='.$iPerson.'&WhyCameID='.$iWhyCameID.'&linkBack='.$linkBack ?>" name="WhyCameEditor">
       <table class="table table-simple-padding">

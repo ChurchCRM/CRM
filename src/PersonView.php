@@ -205,8 +205,8 @@ $bOkToEdit = (
 ?>
 <div class="row">
     <div class="col-lg-3 col-md-3 col-sm-3">
-        <div class="box box-primary">
-            <div class="box-body box-profile">
+        <div class="card card-primary">
+            <div class="card-body box-profile">
                 <div class="image-container">
                     <img src ="<?= SystemURLs::getRootPath().'/api/person/'.$person->getId().'/photo' ?>"
                          class="initials-image profile-user-img img-responsive img-rounded profile-user-img-md">
@@ -243,7 +243,7 @@ $bOkToEdit = (
                     &nbsp;
                     <a id="edit-role-btn" data-person_id="<?= $person->getId() ?>" data-family_role="<?= $person->getFamilyRoleName() ?>"
                        data-family_role_id="<?= $person->getFmrId() ?>"  class="btn btn-primary btn-xs">
-                        <i class="fa fa-pencil"></i>
+                        <i class="fas fa-edit"></i>
                     </a>
                 </p>
 
@@ -264,12 +264,12 @@ $bOkToEdit = (
     <!-- /.box -->
 
     <!-- About Me Box -->
-    <div class="box box-primary">
-      <div class="box-header with-border">
-        <h3 class="box-title text-center"><?php echo gettext('About Me'); ?></h3>
+    <div class="card card-primary">
+      <div class="card-header with-border">
+        <h3 class="card-title text-center"><?php echo gettext('About Me'); ?></h3>
       </div>
       <!-- /.box-header -->
-      <div class="box-body">
+      <div class="card-body">
         <ul class="fa-ul">
           <li><i class="fa-li fa fa-group"></i><?php echo gettext('Family:'); ?> <span>
               <?php
@@ -279,7 +279,7 @@ $bOkToEdit = (
                   <a href="<?= SystemURLs::getRootPath() ?>/FamilyEditor.php?FamilyID=<?= $fam_ID ?>" class="table-link">
                   <span class="fa-stack">
                     <i class="fa fa-square fa-stack-2x"></i>
-                    <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+                    <i class="fas fa-edit fa-stack-1x fa-inverse"></i>
                   </span>
                 </a>
                   <?php
@@ -389,7 +389,7 @@ $bOkToEdit = (
         </div>
     </div>
     <div class="col-lg-9 col-md-9 col-sm-9">
-        <div class="box box-primary box-body">
+        <div class="card card-primary box-body">
             <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/PrintView.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-print"></i> <?= gettext("Printable Page") ?></a>
             <a class="btn btn-app AddToPeopleCart" id="AddPersonToCart" data-cartpersonid="<?= $iPersonID ?>"><i class="fa fa-cart-plus"></i><span class="cartActionDescription"><?= gettext("Add to Cart") ?></span></a>
             <?php if (AuthenticationManager::GetCurrentUser()->isNotesEnabled()) {
@@ -572,7 +572,7 @@ $bOkToEdit = (
                                             <a href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $tmpPersonId ?>">
                       <span class="fa-stack">
                         <i class="fa fa-square fa-stack-2x"></i>
-                        <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+                        <i class="fas fa-edit fa-stack-1x fa-inverse"></i>
                       </span>
                                             </a>
                                              <a class="delete-person" data-person_name="<?= $familyMember->getFullName() ?>"
@@ -634,11 +634,11 @@ $bOkToEdit = (
                                     <div class="col-md-4">
                                         <p><br/></p>
                                         <!-- Info box -->
-                                        <div class="box box-info">
-                                            <div class="box-header">
-                                                <h3 class="box-title"><a href="<?= SystemURLs::getRootPath() ?>/GroupView.php?GroupID=<?= $grp_ID ?>"><?= $grp_Name ?></a></h3>
+                                        <div class="card card-info">
+                                            <div class="card-header">
+                                                <h3 class="card-title"><a href="<?= SystemURLs::getRootPath() ?>/GroupView.php?GroupID=<?= $grp_ID ?>"><?= $grp_Name ?></a></h3>
 
-                                                <div class="box-tools pull-right">
+                                                <div class="card-tools pull-right">
                                                     <div class="label bg-aqua"><?= gettext($roleName) ?></div>
                                                 </div>
                                             </div>
@@ -653,7 +653,7 @@ $bOkToEdit = (
                                                 $rsPersonProps = RunQuery($sSQL);
                                                 $aPersonProps = mysqli_fetch_array($rsPersonProps, MYSQLI_BOTH);
 
-                                                echo '<div class="box-body">';
+                                                echo '<div class="card-body">';
 
                                                 while ($aProps = mysqli_fetch_array($rsPropList)) {
                                                     extract($aProps);
@@ -669,7 +669,7 @@ $bOkToEdit = (
 
                                                 echo '</div><!-- /.box-body -->';
                                             } ?>
-                                            <div class="box-footer">
+                                            <div class="card-footer">
                                                 <code>
                                                     <?php if (AuthenticationManager::GetCurrentUser()->isManageGroupsEnabled()) {
                                                 ?>

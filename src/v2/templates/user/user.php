@@ -10,22 +10,22 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
 <div class="row">
     <div class="col-lg-6">
-        <div class="box">
-            <div class="box-header">
+        <div class="card">
+            <div class="card-header">
                 <div class="pull-right">
-                    <a id="editSettings" href="<?= SystemURLs::getRootPath() ?>/SettingsIndividual.php" class="btn btn-primary"><i class="fa fa-pencil-square-o"></i> <?= _("Edit") ?> </a>
+                    <a id="editSettings" href="<?= SystemURLs::getRootPath() ?>/SettingsIndividual.php" class="btn btn-primary"><i class="fas fa-edit-square-o"></i> <?= _("Edit") ?> </a>
                 </div>
                 <h4><?= _("Login Info") ?></h4>
             </div>
-            <div class="box-body">
+            <div class="card-body">
                 <li><b><?= gettext("Username") ?>:</b> <?= $user->getUserName() ?></li>
                 <li><b><?= gettext("Login Count") ?>:</b> <?= $user->getLoginCount() ?></li>
                 <li><b><?= gettext("Failed Login") ?>:</b> <?= $user->getFailedLogins() ?></li>
             </div>
-            <div class="box-header">
+            <div class="card-header">
                 <h4><?= _("Api Key") ?></h4>
             </div>
-            <div class="box-body">
+            <div class="card-body">
                 <form>
                     <input id="apiKey" class="form-control" type="text" readonly value="<?= $user->getApiKey() ?>"/>
                 </form>
@@ -36,11 +36,11 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
         </div>
     </div>
     <div class="col-lg-6">
-        <div class="box">
-            <div class="box-header">
+        <div class="card">
+            <div class="card-header">
                 <h4><?= _("Permissions") ?></h4>
             </div>
-            <div class="box-body">
+            <div class="card-body">
                 <li><b><?= gettext("Admin") ?>:</b> <?= $user->isAdmin() ? _("Yes") : _("No") ?></li>
                 <li><b><?= gettext("Add Records") ?>:</b> <?= $user->isAdmin() || $user->isAddRecords() ? _("Yes") : _("No") ?></li>
                 <li><b><?= gettext("Edit Records") ?>:</b> <?= $user->isAdmin() || $user->isEditRecords() ? _("Yes") : _("No") ?></li>
@@ -56,11 +56,11 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
 </div>
 <div class="row">
     <div class="col-lg-6">
-        <div class="box">
-            <div class="box-header">
+        <div class="card">
+            <div class="card-header">
                 <h4><?= _("Skins") ?></h4>
             </div>
-            <div class="box-body">
+            <div class="card-body">
                 <ul class="list-unstyled clearfix">
                     <li style="float:left; width: 33.33333%; padding: 5px;">
                         <a href="javascript:void(0)" data-skin="skin-blue" style="display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)"
@@ -220,11 +220,11 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
         </div>
     </div>
     <div class="col-lg-6">
-        <div class="box">
-            <div class="box-header">
+        <div class="card">
+            <div class="card-header">
                 <h4><?= _("User Interface") ?></h4>
             </div>
-            <div class="box-body">
+            <div class="card-body">
                 <div class="form-group">
                     <label class="control-sidebar-subheading"><input type="checkbox" data-layout="layout-boxed" data-css="body" class="pull-right user-setting-checkbox" data-setting-name="ui.boxed"> <b><?= _("Boxed Layout")?></b></label>
                     <p><?= _("Activate the boxed layout")?></p>
@@ -246,11 +246,11 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
 </div>
 <div class="row">
     <div class="col-lg-6">
-        <div class="box">
-            <div class="box-header">
+        <div class="card">
+            <div class="card-header">
                 <h4><?= _("Tables Settings") ?></h4>
             </div>
-            <div class="box-body">
+            <div class="card-body">
                 <div class="form-group">
                     <label class="control-sidebar-subheading">
                         <select class="pull-right user-setting-select" data-setting-name="ui.table.size">

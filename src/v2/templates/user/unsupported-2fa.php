@@ -7,10 +7,10 @@ $sPageTitle = gettext("Unsupported Two Factor Authentication Configuration");
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
 
-<div class="box">
-    <div class="box-body">
+<div class="card">
+    <div class="card-body">
 
-    <div class="box-body">
+    <div class="card-body">
         <h3><i class="fa fa-warning text-yellow"></i> <?= gettext("Unable To Begin Two Factor Authentication Enrollment") ?></h3>
 
         <p><?= gettext("Two factor authentication requires ChurchCRM administrators to configure a few parameters").":" ?></p>

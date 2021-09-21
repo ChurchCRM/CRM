@@ -1645,7 +1645,7 @@ function generateGroupRoleEmailDropdown($roleEmails, $href)
         }
         $Email = urlencode($Email);  // Mailto should comply with RFC 2368
     ?>
-      <li> <a href="<?= $href.mb_substr($Email, 0, -3) ?>"><?=$role?></a></li>
+      <a class="dropdown-item" href="<?= $href.mb_substr($Email, 0, -3) ?>"><?=$role?></a>
     <?php
     }
 }

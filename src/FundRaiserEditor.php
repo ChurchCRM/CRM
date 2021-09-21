@@ -133,7 +133,7 @@ if ($iFundRaiserID > 0) {
 require 'Include/Header.php';
 
 ?>
-<div class="box box-body">
+<div class="card card-body">
 <form method="post" action="FundRaiserEditor.php?<?= 'linkBack='.$linkBack.'&FundRaiserID='.$iFundRaiserID ?>" name="FundRaiserEditor">
 
 <table cellpadding="3" align="center">
@@ -182,7 +182,7 @@ require 'Include/Header.php';
 
 <br>
 </div>
-<div class="box box-body">
+<div class="card card-body">
 <b><?= gettext('Donated items for this fundraiser') ?>:</b>
 <br>
 <div class="table-responsive">

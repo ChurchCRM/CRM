@@ -84,13 +84,13 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
 ?>
 
 <!-- Default box -->
-<div class="box">
-  <div class="box-header with-border">
-    <h3 class="box-title"><?= gettext('People Functions') ?></h3>
+<div class="card">
+  <div class="card-header with-border">
+    <h3 class="card-title"><?= gettext('People Functions') ?></h3>
   </div>
-  <div class="box-body">
+  <div class="card-body">
       <a href="<?= SystemURLs::getRootPath() ?>/v2/people" class="btn btn-app"><i class="fa fa-user"></i><?= gettext('All People') ?></a>
-      <a href="<?= SystemURLs::getRootPath() ?>/v2/people/verify" class="btn btn-app"><i class="fa fa-check-square-o"></i><?= gettext('Verify People') ?></a>
+      <a href="<?= SystemURLs::getRootPath() ?>/v2/people/verify" class="btn btn-app"><i class="fas fa-clipboard-check"></i><?= gettext('Verify People') ?></a>
       <div class="btn btn-app"><span class="badge <?=$selfRegColor?>"><?= $selfRegText?></span><i class="fa fa-user-plus"></i><?= gettext('Self Register') ?></div>
       <a href="<?= SystemURLs::getRootPath()?>/v2/family" class="btn btn-app"><i class="fa fa-users"></i><?= gettext('All Families') ?></a>
       <br/>
@@ -110,7 +110,7 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
       // Display link
        ?>
         <div class="btn-group">
-          <a  class="btn btn-app" href="mailto:<?= mb_substr($sEmailLink, 0, -3) ?>"><i class="fa fa-send-o"></i><?= gettext('Email All')?></a>
+          <a  class="btn btn-app" href="mailto:<?= mb_substr($sEmailLink, 0, -3) ?>"><i class="fas fa-mail-bulk"></i></i><?= gettext('Email All')?></a>
           <button type="button" class="btn btn-app dropdown-toggle" data-toggle="dropdown" >
             <span class="caret"></span>
             <span class="sr-only">Toggle Dropdown</span>
@@ -120,7 +120,7 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
           </ul>
         </div>
        <div class="btn-group">
-          <a class="btn btn-app" href="mailto:?bcc=<?= mb_substr($sEmailLink, 0, -3) ?>"><i class="fa fa-send"></i><?=gettext('Email All (BCC)') ?></a>
+          <a class="btn btn-app" href="mailto:?bcc=<?= mb_substr($sEmailLink, 0, -3) ?>"><i class="fas fa-mail-bulk"></i><?=gettext('Email All (BCC)') ?></a>
            <button type="button" class="btn btn-app dropdown-toggle" data-toggle="dropdown" >
             <span class="caret"></span>
             <span class="sr-only">Toggle Dropdown</span>
@@ -150,7 +150,7 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
         </p>
       </div>
       <div class="icon">
-        <i class="fa fa-users"></i>
+        <i class="fa fa-user-friends"></i>
       </div>
       <a href="<?= SystemURLs::getRootPath()?>/v2/family" class="small-box-footer">
         <?= gettext('See all Families') ?> <i class="fa fa-arrow-circle-right"></i>
@@ -217,7 +217,7 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
         </p>
       </div>
       <div class="icon">
-        <i class="fa fa-gg"></i>
+        <i class="fa fa-users"></i>
       </div>
       <a href="<?= SystemURLs::getRootPath() ?>/grouplist" class="small-box-footer">
         <?= gettext('More info') ?> <i class="fa fa-arrow-circle-right"></i>
@@ -229,16 +229,16 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
 </div><!-- /.row -->
 <div class="row">
   <div class="col-lg-6">
-    <div class="box box-info">
-      <div class="box-header with-border">
-        <h3 class="box-title"><?= gettext('Reports') ?></h3>
-          <div class="box-tools pull-right">
+    <div class="card card-info">
+      <div class="card-header with-border">
+        <h3 class="card-title"><?= gettext('Reports') ?></h3>
+          <div class="card-tools pull-right">
               <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
               </button>
               <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
           </div>
       </div>
-      <div class="box-body">
+      <div class="card-body">
         <p> <a class="MediumText" href="members/self-register.php"><?php echo gettext('Self Register') ?> <?= gettext('Reports') ?></a>
         <br>
         <?php echo gettext('List families that were created via self registration.') ?>
@@ -270,13 +270,13 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
     </div>
   </div>
   <div class="col-lg-6">
-      <div class="box box-primary">
-      <div class="box-header with-border">
+      <div class="card card-primary">
+      <div class="card-header with-border">
         <i class="fa fa-bar-chart-o"></i>
 
-        <h3 class="box-title"><?= gettext('People Classification') ?></h3>
+        <h3 class="card-title"><?= gettext('People Classification') ?></h3>
 
-        <div class="box-tools pull-right">
+        <div class="card-tools pull-right">
           <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
           </button>
           <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
@@ -309,19 +309,19 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
 </div>
 <div class="row">
   <div class="col-lg-6">
-    <div class="box box-primary">
-      <div class="box-header with-border">
+    <div class="card card-primary">
+      <div class="card-header with-border">
         <i class="fa fa-pie-chart"></i>
 
-        <h3 class="box-title"><?= gettext('Family Roles') ?></h3>
+        <h3 class="card-title"><?= gettext('Family Roles') ?></h3>
 
-        <div class="box-tools pull-right">
+        <div class="card-tools pull-right">
           <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
           </button>
           <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
         </div>
       </div>
-      <div class="box-body no-padding">
+      <div class="card-body no-padding">
         <table class="table table-condensed">
           <tr>
             <th><?= gettext('Role / Gender') ?></th>
@@ -426,23 +426,23 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
   </div>
   <div class="col-lg-6">
 
-    <div class="box box-info">
-      <div class="box-header">
+    <div class="card card-info">
+      <div class="card-header">
         <i class="fa fa-address-card-o"></i>
-        <h3 class="box-title"><?= gettext('Gender Demographics') ?></h3>
+        <h3 class="card-title"><?= gettext('Gender Demographics') ?></h3>
       </div>
       <!-- /.box-header -->
-      <div class="box-body">
+      <div class="card-body" style="height: 300px">
         <canvas id="gender-donut" style="height:250px"></canvas>
       </div>
     </div>
-    <div class="box box-info">
-      <div class="box-header">
+    <div class="card card-info">
+      <div class="card-header">
         <i class="fa fa-birthday-cake"></i>
-        <h3 class="box-title"><?= gettext('Age Histogram') ?></h3>
+        <h3 class="card-title"><?= gettext('Age Histogram') ?></h3>
       </div>
       <!-- /.box-header -->
-      <div class="box-body">
+      <div class="card-body" style="height: 400px">
         <canvas id="age-stats-bar" style="height:250px"></canvas>
       </div>
     </div>

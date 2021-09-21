@@ -111,11 +111,11 @@ class Family
 $sPageTitle = gettext('CSV Import');
 require 'Include/Header.php'; ?>
 
-<div class="box">
-<div class="box-header">
-   <h3 class="box-title"><?= gettext('Import Data')?></h3>
+<div class="card">
+<div class="card-header">
+   <h3 class="card-title"><?= gettext('Import Data')?></h3>
 </div>
-<div class="box-body">
+<div class="card-body">
 
 <?php
 
@@ -819,11 +819,11 @@ if ($iStage == 1) {
         </form>
         </div>
         </div>
-        <div class="box">
-        <div class="box-header">
-        <h3 class="box-title"><?= gettext('Clear Data')?></h3>
+        <div class="card">
+        <div class="card-header">
+        <h3 class="card-title"><?= gettext('Clear Data')?></h3>
         </div>
-        <div class="box-body">
+        <div class="card-body">
         <button type="button" class="btn btn-danger" id="clear-people"><?= gettext('Clear Persons and Families') ?></button>
     </p>
     <?php

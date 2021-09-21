@@ -30,7 +30,7 @@ $sPageTitle = gettext('Directory reports');
 require 'Include/Header.php';
 
 ?>
-<div class="box box-body">
+<div class="card card-body">
 <form method="POST" action="Reports/DirectoryReport.php">
 
 <?php

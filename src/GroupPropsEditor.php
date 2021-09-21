@@ -127,10 +127,10 @@ if (mysqli_num_rows($rsPropList) == 0) {
         ?>
 
   <div class="box ">
-    <div class="box-header">
-      <h3 class="box-title"><?= gettext('Editing') ?> <i> <?= $grp_Name ?> </i> <?= gettext('data for member') ?> <i> <?= $per_FirstName.' '.$per_LastName ?> </i></h3>
+    <div class="card-header">
+      <h3 class="card-title"><?= gettext('Editing') ?> <i> <?= $grp_Name ?> </i> <?= gettext('data for member') ?> <i> <?= $per_FirstName.' '.$per_LastName ?> </i></h3>
     </div>
-    <div class="box-body">
+    <div class="card-body">
       <form method="post" action="GroupPropsEditor.php?<?= 'PersonID='.$iPersonID.'&GroupID='.$iGroupID ?>" name="GroupPropEditor">
 
         <table class="table">

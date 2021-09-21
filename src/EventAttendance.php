@@ -89,11 +89,11 @@ for ($row = 1; $row <= $numRows; $row++) {
 ?>
 
 
-<div class="box">
-    <div class="box-header">
+<div class="card">
+    <div class="card-header">
     <h3><?php echo gettext("Event Attendance"); ?></h3>
     </div>
-    <div class="box-body">
+    <div class="card-body">
     <?php echo gettext("Generate attendance -AND- non-attendance reports for events"); ?>
         <p><br/></p>
     <?php
@@ -117,11 +117,11 @@ for ($row = 1; $row <= $numRows; $row++) {
 
 
 <?php  if (array_key_exists('Action', $_GET) && $_GET['Action'] == 'List' && $numRows > 0) { ?>
-<div class="box">
-    <div class="box-header">
+<div class="card">
+    <div class="card-header">
         <h3> <?= ($numRows == 1 ? gettext('There is') : gettext('There are')).' '.$numRows.' '.($numRows == 1 ? gettext('event') : gettext('events')).gettext(' in this category.') ?></h3>
     </div>
-    <div class="box-body">
+    <div class="card-body">
         <table class="table table-striped data-table" id="eventsTable">
             <thead>
          <tr class="TableHeader">
@@ -191,11 +191,11 @@ $cSQL = 'SELECT COUNT(per_ID) AS cCount
         });
     </script>
 <?php } elseif ($_POST['Action'] == 'Retrieve' && $numRows > 0) { ?>
-<div class="box">
-   <div class="box-header">
+<div class="card">
+   <div class="card-header">
      <h3><?= gettext('There '.($numRows == 1 ? 'was '.$numRows.' '.$_POST['Choice'] : 'were '.$numRows.' '.$_POST['Choice'])).' for this Event' ?></h3>
    </div>
-    <div class="box-body">
+    <div class="card-body">
        <table class="table table-striped data-table" id="peopleTable">
        <thead>
          <tr>

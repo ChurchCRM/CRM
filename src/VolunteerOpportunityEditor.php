@@ -69,7 +69,7 @@ if (($sAction == 'delete') && $iOpp > 0) {
 
     $sPageTitle = gettext('Volunteer Opportunity Delete Confirmation');
     require 'Include/Header.php'; ?>
-    <div class="box box-body">
+    <div class="card card-body">
     <div class="callout callout-danger"><?= gettext('Please confirm deletion of') ?>:</div>
     <table class="table">
         <tr><th>&nbsp;</th>
@@ -246,7 +246,7 @@ if (isset($_POST['SaveChanges'])) {
             $rsOpps = RunQuery($sSQL);
             $numRows = mysqli_num_rows($rsOpps);
             $newOrder = $numRows + 1;
-            $sSQL = "INSERT INTO `volunteeropportunity_vol` 
+            $sSQL = "INSERT INTO `volunteeropportunity_vol`
            ( `vol_Order` , `vol_Name` , `vol_Description`)
            VALUES ( '".$newOrder."', '".$newFieldName."', '".$newFieldDesc."');";
             RunQuery($sSQL);
@@ -273,7 +273,7 @@ if (isset($_POST['SaveChanges'])) {
 // Construct the form
 
 ?>
-<div class="box box-body">
+<div class="card card-body">
 <form method="post" action="VolunteerOpportunityEditor.php" name="OppsEditor">
 
 <table class="table">

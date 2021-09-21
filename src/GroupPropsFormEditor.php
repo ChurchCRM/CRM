@@ -45,7 +45,7 @@ $sPageTitle = gettext('Group-Specific Properties Form Editor:').'  '.$grp_Name;
 
 require 'Include/Header.php'; ?>
 
-<div class="box box-body">
+<div class="card card-body">
 
 <?php
 $bErrorFlag = false;

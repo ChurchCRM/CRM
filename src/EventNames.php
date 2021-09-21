@@ -163,7 +163,7 @@ $numRows = mysqli_num_rows($rsOpps);
 
 if (InputUtils::LegacyFilterInput($_POST['Action']) == 'NEW') {
     ?>
-  <div class='box box-primary'>
+  <div class='card card-primary'>
     <div class='box-body'>
       <form name="UpdateEventNames" action="EventNames.php" method="POST" class='form-horizontal'>
         <input type="hidden" name="theID" value="<?= $aTypeID[$row] ?>">
@@ -265,11 +265,11 @@ if (InputUtils::LegacyFilterInput($_POST['Action']) == 'NEW') {
 
 // Construct the form
 ?>
-<div class="box">
-  <div class="box-header">
+<div class="card">
+  <div class="card-header">
     <?php if ($numRows > 0) {
     ?>
-      <h3 class="box-title"><?= ($numRows == 1 ? gettext('There currently is') : gettext('There currently are')).' '.$numRows.' '.($numRows == 1 ? gettext('custom event type') : gettext('custom event types')) ?></h3>
+      <h3 class="card-title"><?= ($numRows == 1 ? gettext('There currently is') : gettext('There currently are')).' '.$numRows.' '.($numRows == 1 ? gettext('custom event type') : gettext('custom event types')) ?></h3>
     <?php
 } ?>
   </div>
@@ -314,7 +314,7 @@ if (InputUtils::LegacyFilterInput($_POST['Action']) == 'NEW') {
                       <form name="ProcessEventType" action="EditEventTypes.php" method="POST" class="pull-left">
                         <input type="hidden" name="EN_tyid" value="<?= $aTypeID[$row] ?>">
                         <button type="submit" class="btn btn-default btn-sm" name="Action" title="<?= gettext('Edit') ?>" data-tooltip value="<?= gettext('Edit') ?>">
-                          <i class='fa fa-pencil'></i>
+                          <i class='fas fa-edit'></i>
                         </button>
                       </form>
                     </td>

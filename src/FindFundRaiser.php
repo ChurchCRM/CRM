@@ -64,7 +64,7 @@ if (array_key_exists('FilterClear', $_GET) && $_GET['FilterClear']) {
 require 'Include/Header.php';
 
 ?>
-<div class="box box-body">
+<div class="card card-body">
 <form method="get" action="FindFundRaiser.php" name="FindFundRaiser">
 <input name="sort" type="hidden" value="<?= $sSort ?>"
 <table cellpadding="3" align="center">
@@ -96,7 +96,7 @@ require 'Include/Header.php';
 	</form>
 </table>
 </div>
-<div class="box box-body">
+<div class="card card-body">
 <?php
 // List Fundraisers
 // Save record limit if changed
