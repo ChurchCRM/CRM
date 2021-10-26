@@ -62,11 +62,11 @@ require 'Include/Header.php';
 </div>
 <!-- END GROUP SPECIFIC PROPERTIES MODAL-->
 
-<div class="box">
-  <div class="box-header">
-    <h3 class="box-title"><?= (($thisGroup->isSundaySchool())?gettext("Special Group Settings : Sunday School Type"):gettext('Group Settings')) ?></h3>
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title"><?= (($thisGroup->isSundaySchool())?gettext("Special Group Settings : Sunday School Type"):gettext('Group Settings')) ?></h3>
   </div>
-  <div class="box-body">
+  <div class="card-body">
     <form name="groupEditForm" id="groupEditForm">
       <div class="form-group">
         <div class="row">
@@ -172,11 +172,11 @@ require 'Include/Header.php';
     </form>
   </div>
 </div>
-<div class="box">
-  <div class="box-header">
-    <h3 class="box-title"><?= gettext('Group Roles') ?>:</h3>
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title"><?= gettext('Group Roles') ?>:</h3>
   </div>
-  <div class="box-body">
+  <div class="card-body">
     <div class="alert alert-info alert-dismissable">
       <i class="fa fa-info"></i>
       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>

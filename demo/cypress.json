@@ -1,0 +1,15 @@
+{
+    "baseUrl": "https://demo.churchcrm.io/master/",
+    "chromeWebSecurity": false,
+    "video": false,
+    "pageLoadTimeout": 120000,
+    "defaultCommandTimeout": 60000,
+    "requestTimeout": 60000,
+    "viewportHeight": 1080,
+    "viewportWidth": 1920,
+    "projectId": "n4qnyb",
+    "env": {
+        "admin.api.key": "ajGwpy8Pdai22XDUpqjC5Ob04v0eG7EGgb4vz2bD2juT8YDmfM",
+        "user.api.key": "cjcPihn8wDwVeRIiNnKfpj0HGgCYbcxaD9SaF6BNJKLtVrnGFr"
+    }
+}

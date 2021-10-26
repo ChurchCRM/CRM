@@ -15,8 +15,8 @@ require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
     </div>
     <div class="row">
       <div class="col-xs-12">
-        <div class="box box-info">
-            <div class="box-body no-padding">
+        <div class="card card-info">
+            <div class="card-body no-padding">
                 <!-- THE CALENDAR -->
                 <div id="calendar"></div>
             </div>
@@ -40,12 +40,12 @@ window.CRM.fullcalendar =  $('#calendar').fullCalendar({
     eventDurationEditable: false,
     selectHelper: true,
     locale: window.CRM.lang,
-    eventSources: [ 
+    eventSources: [
       '<?= $eventSource ?>'
     ]
   });
 </script>
-  
+
 <?php
 // Add the page footer
 require(SystemURLs::getDocumentRoot() . "/Include/FooterNotLoggedIn.php");

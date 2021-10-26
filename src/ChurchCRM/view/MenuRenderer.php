@@ -24,13 +24,13 @@ class MenuRenderer
     private static function renderMenuItem(MenuItem $menuItem)
     {
         ?>
-        <li <?= $menuItem->isActive()? "class='active'" : ""?>>
-            <a href="<?= $menuItem->getURI() ?>" <?= $menuItem->isExternal() ? "target='_blank'" : "" ?>>
+        <li class="nav-item <?= $menuItem->isActive()? "active" : ""?>">
+            <a href="<?= $menuItem->getURI() ?>" <?= $menuItem->isExternal() ? "target='_blank'" : "" ?> class="nav-link">
                 <i class='fa <?= $menuItem->getIcon() ?>'></i>
-                <span>
+                <p>
                     <?= $menuItem->getName() ?>
                     <?php self::renderMenuCounters($menuItem) ?>
-                </span>
+                </p>
             </a>
         </li>
         <?php
@@ -39,16 +39,16 @@ class MenuRenderer
     private static function renderSubMenuItem(MenuItem $menuItem)
     {
         ?>
-        <li class="treeview <?= $menuItem->openMenu()? "menu-open active" : "" ?>">
-            <a href="#">
+        <div class="nav-item <?= $menuItem->openMenu()? "menu-open active" : "" ?>">
+            <a href="#" class="nav-link">
                 <i class="fa <?= $menuItem->getIcon() ?>"></i>
                 <span>
-                    <?= $menuItem->getName() ?>
+                    <b><?= $menuItem->getName() ?></b>
                     <?php self::renderMenuCounters($menuItem) ?>
                 </span>
-                <i class="fa fa-angle-left pull-right"></i>
+                <i class="right fas fa-angle-left"></i>
             </a>
-            <ul class="treeview-menu ">
+            <ul class="nav nav-treeview">
             <?php foreach ($menuItem->getSubItems() as $menuSubItem) {
                 if ($menuSubItem->isVisible()) {
                     if ($menuSubItem->isMenu()) {
@@ -59,7 +59,7 @@ class MenuRenderer
                 }
             } ?>
             </ul>
-        </li>
+        </div>
         <?php
     }
 
@@ -68,12 +68,12 @@ class MenuRenderer
     {
         if ($menuItem->hasCounters()) {
             ?>
-            <span class='pull-right-container'>
+
                 <?php foreach ($menuItem->getCounters() as $counter) { ?>
-                    <small class='label pull-right <?= $counter->getCss() ?>'
+                    <small class='right badge <?= $counter->getCss() ?>'
                            id='<?= $counter->getName() ?>'><?= $counter->getInitValue() ?></small>
                 <?php } ?>
-            </span>
+
             <?php
         }
     }

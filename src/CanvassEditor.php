@@ -149,7 +149,7 @@ $rsBraveCanvassers = CanvassGetCanvassers(gettext('BraveCanvassers'));
 require 'Include/Header.php';
 ?>
 
-<div class="box box-body">
+<div class="card card-body">
 <form method="post" action="CanvassEditor.php?<?= 'FamilyID='.$iFamily.'&FYID='.$iFYID.'&CanvassID='.$iCanvassID.'&linkBack='.$linkBack ?>" name="CanvassEditor">
 <div class="table-responsive">
 <table class="table" cellpadding="3" align="center">

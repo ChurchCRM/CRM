@@ -1,5 +1,5 @@
 window.CRM.kiosk = {
-   
+
   APIRequest: function(options) {
     if (!options.method)
     {
@@ -20,7 +20,7 @@ window.CRM.kiosk = {
       else
       {
         var outerDiv = $("<div>",{id:"personId-"+classMember.personId}).addClass("col-sm-3");
-        var innerDiv = $("<div>").addClass("box box-widget widget-user-2");
+        var innerDiv = $("<div>").addClass("card card-widget widget-user-2");
         var userHeaderDiv = $("<div>",{class :"widget-user-header bg-yellow"}).attr("data-personid",classMember.personId);
         var imageDiv = $("<div>", {class:"widget-user-image"})
                 .append($("<img>",{
@@ -38,9 +38,9 @@ window.CRM.kiosk = {
                   .append($("<li>",{class: "btn btn-primary checkinButton", style:"width:50%", text : "Checkin", "data-personid": classMember.personId}))
                 ));
         outerDiv.append(innerDiv);
-        $("#classMemberContainer").append(outerDiv);   
+        $("#classMemberContainer").append(outerDiv);
       }
-      
+
       if (classMember.status == 1)
       {
         window.CRM.kiosk.setCheckedIn(classMember.personId);
@@ -48,11 +48,11 @@ window.CRM.kiosk = {
       else
       {
         window.CRM.kiosk.setCheckedOut(classMember.personId);
-        
+
       }
 
     },
-    
+
   updateActiveClassMembers: function()  {
      window.CRM.kiosk.APIRequest({
        path:"activeClassMembers"
@@ -63,26 +63,26 @@ window.CRM.kiosk = {
           });
       })
   },
-  
+
   heartbeat: function(){
     window.CRM.kiosk.APIRequest({
        path:"heartbeat"
      }).
         done(function(data){
           thisAssignment = JSON.parse(data.Assignment);
-          if( window.CRM.kioskAssignmentId === undefined) 
+          if( window.CRM.kioskAssignmentId === undefined)
           {
             window.CRM.kioskAssignmentId = thisAssignment;
           }
           else if (thisAssignment && (thisAssignment.EventId !== window.CRM.kioskAssignmentId.EventId || thisAssignment.Event.GroupId !== window.CRM.kioskAssignmentId.Event.GroupId)){
             location.reload();
           }
-          
+
           if (data.Commands === "Reload")
           {
             location.reload();
           }
-          
+
           if (data.Commands === "Identify")
           {
             clearInterval(window.CRM.kioskEventLoop);
@@ -92,7 +92,7 @@ window.CRM.kiosk = {
             setTimeout(function(){location.reload()},2000);
             return;
           }
-          
+
           if (data.Accepted)
           {
             Assignment=JSON.parse(data.Assignment);
@@ -117,11 +117,11 @@ window.CRM.kiosk = {
             $("#noEvent").show();
             $("#noEvent").html("This kiosk has not been accepted.<br/>Kiosk Name: " + data.Name);
             $("#event").hide();
-          } 
-          
+          }
+
       })
   },
-   
+
   checkInPerson: function(personId) {
     window.CRM.kiosk.APIRequest({
       path:"checkin",
@@ -131,9 +131,9 @@ window.CRM.kiosk = {
     done(function(data){
       window.CRM.kiosk.setCheckedIn(personId);
     });
-    
+
   },
-  
+
   checkOutPerson: function(personId)  {
     window.CRM.kiosk.APIRequest({
       path:"checkout",
@@ -144,7 +144,7 @@ window.CRM.kiosk = {
       window.CRM.kiosk.setCheckedOut(personId);
     });
   },
-  
+
   setCheckedOut: function (personId)  {
     $personDiv = $("#personId-"+personId)
     $personDivButton = $("#personId-"+personId+" .checkoutButton")
@@ -154,20 +154,20 @@ window.CRM.kiosk = {
     $personDiv.find(".widget-user-header").addClass("bg-yellow");
     $personDiv.find(".widget-user-header").removeClass("bg-green");
   },
-  
+
   setCheckedIn: function (personId)  {
     $personDiv = $("#personId-"+personId)
-    
+
     $personDivButton = $("#personId-"+personId+" .checkinButton")
     $personDivButton.removeClass("checkinButton");
     $personDivButton.addClass("checkoutButton");
     $personDivButton.text("Checkout");
-    
+
     $personDiv.find(".widget-user-header").removeClass("bg-yellow");
     $personDiv.find(".widget-user-header").addClass("bg-green");
-    
+
   },
-  
+
   triggerNotification:  function(personId)  {
     //window.CRM.kiosk.stopEventLoop();
     window.CRM.kiosk.APIRequest({
@@ -179,9 +179,9 @@ window.CRM.kiosk = {
      //window.CRM.kiosk.startEventLoop();
        //TODO:  Signal to the kiosk user that the notification was sent
    });
-   
+
   },
-  
+
   enterFullScreen: function() {
     if(document.documentElement.requestFullscreen) {
       document.documentElement.requestFullscreen();
@@ -193,7 +193,7 @@ window.CRM.kiosk = {
       document.documentElement.msRequestFullscreen();
     }
   },
-  
+
   exitFullScreen: function() {
     if(document.exitFullscreen) {
      document.exitFullscreen();
@@ -203,16 +203,16 @@ window.CRM.kiosk = {
      document.webkitExitFullscreen();
    }
   },
-  
+
   displayPersonInfo: function (personId)
   {
     //TODO: Display information (allergies, etc) about the person selected.
   },
-  
+
   startEventLoop: function() {
     window.CRM.kiosk.kioskEventLoop = setInterval(window.CRM.kiosk.heartbeat,2000);
   },
-  
+
   stopEventLoop: function() {
     clearInterval(window.CRM.kiosk.kioskEventLoop);
   }

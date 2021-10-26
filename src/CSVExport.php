@@ -57,11 +57,11 @@ require 'Include/Header.php';
 <form method="post" action="CSVCreateFile.php">
   <div class="row">
     <div class="col-lg-12">
-      <div class="box">
-        <div class="box-header with-border">
-          <h3 class="box-title"><?= gettext('Field Selection') ?></h3>
+      <div class="card">
+        <div class="card-header with-border">
+          <h3 class="card-title"><?= gettext('Field Selection') ?></h3>
         </div>
-        <div class="box-body">
+        <div class="card-body">
           <div class="col-md-4">
             <label><?= gettext('Last Name') ?>:</label>
             <?= gettext('Required') ?>
@@ -192,11 +192,11 @@ require 'Include/Header.php';
       ?>
     <div class="row">
       <div class="col-lg-12">
-        <div class="box">
-          <div class="box-header with-border">
-            <h3 class="box-title"><?= gettext('Custom Field Selection') ?></h3>
+        <div class="card">
+          <div class="card-header with-border">
+            <h3 class="card-title"><?= gettext('Custom Field Selection') ?></h3>
           </div>
-          <div class="box-body">
+          <div class="card-body">
             <table border="0">
               <?php
               if ($numCustomFields > 0) {
@@ -245,22 +245,22 @@ require 'Include/Header.php';
 
   <div class="row">
     <div class="col-lg-12">
-      <div class="box">
-        <div class="box-header with-border">
-          <h3 class="box-title"><?= gettext('Filters') ?></h3>
+      <div class="card">
+        <div class="card-header with-border">
+          <h3 class="card-title"><?= gettext('Filters') ?></h3>
         </div>
-        <div class="box-body">
+        <div class="card-body">
           <div class="col-lg-4">
-            <div class="box box-danger collapsed-box">
-              <div class="box-header with-border">
-                <h3 class="box-title"><?= gettext('Records to export') ?>:</h3>
-                <div class="box-tools pull-right">
+            <div class="card card-danger collapsed-box">
+              <div class="card-header with-border">
+                <h3 class="card-title"><?= gettext('Records to export') ?>:</h3>
+                <div class="card-tools pull-right">
                   <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
                   </button>
                 </div>
               </div>
               <!-- /.box-header -->
-              <div class="box-body no-padding">
+              <div class="card-body no-padding">
                 <select name="Source">
                   <option value="filters"><?= gettext('Based on filters below..') ?></option>
                   <option value="cart" <?php if (array_key_exists('Source', $_GET) && $_GET['Source'] == 'cart') {
@@ -272,16 +272,16 @@ require 'Include/Header.php';
           </div>
 
           <div class="col-lg-4">
-            <div class="box box-danger collapsed-box">
-              <div class="box-header with-border">
-                <h3 class="box-title"><?= gettext('Classification') ?>:</h3>
-                <div class="box-tools pull-right">
+            <div class="card card-danger collapsed-box">
+              <div class="card-header with-border">
+                <h3 class="card-title"><?= gettext('Classification') ?>:</h3>
+                <div class="card-tools pull-right">
                   <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
                   </button>
                 </div>
               </div>
               <!-- /.box-header -->
-              <div class="box-body no-padding">
+              <div class="card-body no-padding">
                 <select name="Classification[]" size="5" multiple>
                   <?php
                   while ($aRow = mysqli_fetch_array($rsClassifications)) {
@@ -297,16 +297,16 @@ require 'Include/Header.php';
           </div>
 
           <div class="col-lg-4">
-            <div class="box box-danger collapsed-box">
-              <div class="box-header with-border">
-                <h3 class="box-title"><?= gettext('Family Role') ?>:</h3>
-                <div class="box-tools pull-right">
+            <div class="card card-danger collapsed-box">
+              <div class="card-header with-border">
+                <h3 class="card-title"><?= gettext('Family Role') ?>:</h3>
+                <div class="card-tools pull-right">
                   <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
                   </button>
                 </div>
               </div>
               <!-- /.box-header -->
-              <div class="box-body no-padding">
+              <div class="card-body no-padding">
                 <select name="FamilyRole[]" size="5" multiple>
                   <?php
                   while ($aRow = mysqli_fetch_array($rsFamilyRoles)) {
@@ -322,16 +322,16 @@ require 'Include/Header.php';
           </div>
 
           <div class="col-lg-4">
-            <div class="box box-danger collapsed-box">
-              <div class="box-header with-border">
-                <h3 class="box-title"><?= gettext('Gender') ?>:</h3>
-                <div class="box-tools pull-right">
+            <div class="card card-danger collapsed-box">
+              <div class="card-header with-border">
+                <h3 class="card-title"><?= gettext('Gender') ?>:</h3>
+                <div class="card-tools pull-right">
                   <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
                   </button>
                 </div>
               </div>
               <!-- /.box-header -->
-              <div class="box-body no-padding">
+              <div class="card-body no-padding">
                 <select name="Gender">
                   <option value="0"><?= gettext("Don't Filter") ?></option>
                   <option value="1"><?= gettext('Male') ?></option>
@@ -342,16 +342,16 @@ require 'Include/Header.php';
           </div>
 
           <div class="col-lg-4">
-            <div class="box box-danger collapsed-box">
-              <div class="box-header with-border">
-                <h3 class="box-title"><?= gettext('Group Membership') ?>:</h3>
-                <div class="box-tools pull-right">
+            <div class="card card-danger collapsed-box">
+              <div class="card-header with-border">
+                <h3 class="card-title"><?= gettext('Group Membership') ?>:</h3>
+                <div class="card-tools pull-right">
                   <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
                   </button>
                 </div>
               </div>
               <!-- /.box-header -->
-              <div class="box-body no-padding">
+              <div class="card-body no-padding">
                 <div class="SmallText"><?= gettext('Use Ctrl Key to select multiple') ?></div>
                 <select name="GroupID[]" size="5" multiple>
                   <?php
@@ -366,16 +366,16 @@ require 'Include/Header.php';
           </div>
 
           <div class="col-lg-4">
-            <div class="box box-danger collapsed-box">
-              <div class="box-header with-border">
-                <h3 class="box-title"><?= gettext('Membership Date') ?>:</h3>
-                <div class="box-tools pull-right">
+            <div class="card card-danger collapsed-box">
+              <div class="card-header with-border">
+                <h3 class="card-title"><?= gettext('Membership Date') ?>:</h3>
+                <div class="card-tools pull-right">
                   <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
                   </button>
                 </div>
               </div>
               <!-- /.box-header -->
-              <div class="box-body no-padding">
+              <div class="card-body no-padding">
                 <?= gettext('From:') ?>&nbsp;</b></td><td><input id="MembershipDate1" class="date-picker" type="text" name="MembershipDate1" size="11" maxlength="10">
                   <?= gettext('To:') ?>&nbsp;</b></td><td><input id="MembershipDate2" class="date-picker" type="text" name="MembershipDate2" size="11" maxlength="10" value="<?php echo date('Y-m-d'); ?>">
               </div>
@@ -383,16 +383,16 @@ require 'Include/Header.php';
           </div>
 
           <div class="col-lg-4">
-            <div class="box box-danger collapsed-box">
-              <div class="box-header with-border">
-                <h3 class="box-title"><?= gettext('Birthday Date') ?>:</h3>
-                <div class="box-tools pull-right">
+            <div class="card card-danger collapsed-box">
+              <div class="card-header with-border">
+                <h3 class="card-title"><?= gettext('Birthday Date') ?>:</h3>
+                <div class="card-tools pull-right">
                   <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
                   </button>
                 </div>
               </div>
               <!-- /.box-header -->
-              <div class="box-body no-padding">
+              <div class="card-body no-padding">
                 <b><?= gettext('From:') ?>&nbsp;</b><input type="text" name="BirthDate1" class="date-picker" size="11" maxlength="10" id="BirthdayDate1">
                 <b><?= gettext('To:') ?>&nbsp;</b><input type="text" name="BirthDate2" class="date-picker" size="11" maxlength="10" value="<?= date('Y-m-d') ?>"  id="BirthdayDate2">
               </div>
@@ -400,16 +400,16 @@ require 'Include/Header.php';
           </div>
 
           <div class="col-lg-4">
-            <div class="box box-danger collapsed-box">
-              <div class="box-header with-border">
-                <h3 class="box-title"><?= gettext('Anniversary Date:') ?></h3>
-                <div class="box-tools pull-right">
+            <div class="card card-danger collapsed-box">
+              <div class="card-header with-border">
+                <h3 class="card-title"><?= gettext('Anniversary Date:') ?></h3>
+                <div class="card-tools pull-right">
                   <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
                   </button>
                 </div>
               </div>
               <!-- /.box-header -->
-              <div class="box-body no-padding">
+              <div class="card-body no-padding">
                 <?= gettext('From:') ?>&nbsp;</b></td><td><input type="text" class="date-picker" name="AnniversaryDate1" size="11" maxlength="10" id="AnniversaryDate1">
                   <?= gettext('To:') ?>&nbsp;</b></td><td><input type="text" class="date-picker" name="AnniversaryDate2" size="11" maxlength="10" value="<?php echo date('Y-m-d'); ?>" id="AnniversaryDate2">
               </div>
@@ -417,16 +417,16 @@ require 'Include/Header.php';
           </div>
 
           <div class="col-lg-4">
-            <div class="box box-danger collapsed-box">
-              <div class="box-header with-border">
-                <h3 class="box-title"><?= gettext('Date Entered:') ?></h3>
-                <div class="box-tools pull-right">
+            <div class="card card-danger collapsed-box">
+              <div class="card-header with-border">
+                <h3 class="card-title"><?= gettext('Date Entered:') ?></h3>
+                <div class="card-tools pull-right">
                   <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
                   </button>
                 </div>
               </div>
               <!-- /.box-header -->
-              <div class="box-body no-padding">
+              <div class="card-body no-padding">
                 <?= gettext('From:') ?>&nbsp;</b></td><td><input id="EnterDate1" type="text" name="EnterDate1" size="11" maxlength="10" class="date-picker">
                   <?= gettext('To:') ?>&nbsp;</b></td><td><input id="EnterDate2" type="text" name="EnterDate2" size="11" maxlength="10" value="<?php echo date('Y-m-d'); ?>" class="date-picker">
               </div>
@@ -438,11 +438,11 @@ require 'Include/Header.php';
   </div>
   <div class="row">
     <div class="col-lg-12">
-      <div class="box">
-        <div class="box-header with-border">
-          <h3 class="box-title"><?= gettext('Output Method:') ?></h3>
+      <div class="card">
+        <div class="card-header with-border">
+          <h3 class="card-title"><?= gettext('Output Method:') ?></h3>
         </div>
-        <div class="box-body">
+        <div class="card-body">
           <select name="Format">
             <option value="Default"><?= gettext('CSV Individual Records') ?></option>
             <option value="Rollup"><?= gettext('CSV Combine Families') ?></option>

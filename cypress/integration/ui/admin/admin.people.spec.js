@@ -9,14 +9,27 @@ context('Admin People', () => {
 
     it('Person Classifications Editor', () => {
         cy.loginAdmin('OptionManager.php?mode=classes');
-        cy.get('.box-body > form').submit();
         cy.contains("Person Classifications Editor");
     });
 
     it('Family Roles Editor', () => {
         cy.loginAdmin('OptionManager.php?mode=famroles');
-        cy.get('.box-body > form').submit();
         cy.contains("Family Roles Editor");
+    });
+
+    it('Custom Family Fields Editor', () => {
+        cy.loginAdmin('FamilyCustomFieldsEditor.php');
+        cy.contains('Custom Family Fields Editor');
+    });
+
+    it('Custom Person Fields Editor', () => {
+        cy.loginAdmin('PersonCustomFieldsEditor.php');
+        cy.contains('Custom Person Fields Editor');
+    });
+
+    it('Volunteer Opportunity Editor', () => {
+        cy.loginAdmin('VolunteerOpportunityEditor.php');
+        cy.contains('Volunteer Opportunity Editor');
     });
 
     it('Family Property List', () => {
@@ -32,11 +45,6 @@ context('Admin People', () => {
         cy.url().should('contains', 'PropertyList.php');
     });
 
-    it('Custom Family Fields Editor', () => {
-        cy.loginAdmin('FamilyCustomFieldsEditor.php');
-        cy.get('.box-body > form').submit();
-        cy.contains('Custom Family Fields Editor');
-    });
 
     it('Person Property List', () => {
         cy.loginAdmin('PropertyList.php?Type=p');
@@ -51,15 +59,4 @@ context('Admin People', () => {
         cy.url().should('contains', 'PropertyList.php');
     });
 
-    it('Custom Person Fields Editor', () => {
-        cy.loginAdmin('PersonCustomFieldsEditor.php');
-        cy.get('.box-body > form').submit();
-        cy.contains('Custom Person Fields Editor');
-    });
-
-    it('Volunteer Opportunity Editor', () => {
-        cy.loginAdmin('VolunteerOpportunityEditor.php');
-        cy.get('.box-body > form').submit();
-        cy.contains('Volunteer Opportunity Editor');
-    });
 });

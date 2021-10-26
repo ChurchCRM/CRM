@@ -11,11 +11,11 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
 <div class="row">
     <div class="col-lg-4">
-        <div class="box">
-            <div class="box-header">
+        <div class="card">
+            <div class="card-header">
                 <h4><?= gettext("ChurchCRM Installation Information") ?></h4>
             </div>
-            <div class="box-body">
+            <div class="card-body">
                 <table class="table table-striped">
                     <tr>
                         <td>ChurchCRM <?= gettext("Software Version") ?></td>
@@ -42,11 +42,11 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
         </div>
     </div>
     <div class="col-lg-4">
-        <div class="box">
-            <div class="box-header">
+        <div class="card">
+            <div class="card-header">
                 <h4><?= gettext("System Information") ?></h4>
             </div>
-            <div class="box-body">
+            <div class="card-body">
                 <table class="table table-striped">
                     <tr>
                         <td>Server Hostname</td>
@@ -65,11 +65,11 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
         </div>
     </div>
     <div class="col-lg-4">
-        <div class="box">
-            <div class="box-header">
+        <div class="card">
+            <div class="card-header">
                 <h4><?= gettext("Database") ?></h4>
             </div>
-            <div class="box-body">
+            <div class="card-body">
                 <table class="table table-striped">
                     <tr>
                         <td>ChurchCRM <?= gettext("Database Version") ?></td>
@@ -88,11 +88,11 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
         </div>
     </div>
     <div class="col-lg-4">
-        <div class="box">
-            <div class="box-header">
+        <div class="card">
+            <div class="card-header">
                 <h4><?= gettext("Web Server") ?></h4>
             </div>
-            <div class="box-body" style="overflow: scroll-x">
+            <div class="card-body" style="overflow: scroll-x">
                 <table class="table table-striped">
                     <tr>
                         <td><?= gettext("Server Software") ?></td>
@@ -111,11 +111,11 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
         </div>
     </div>
     <div class="col-lg-4">
-        <div class="box">
-            <div class="box-header">
+        <div class="card">
+            <div class="card-header">
                 <h4>PHP</h4>
             </div>
-            <div class="box-body">
+            <div class="card-body">
                 <table class="table table-striped">
                     <tr>
                         <td>PHP Version</td>
@@ -146,11 +146,11 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
         </div>
     </div>
     <div class="col-lg-4">
-        <div class="box">
-            <div class="box-header">
+        <div class="card">
+            <div class="card-header">
                 <h4><?= gettext("Email Information") ?></h4>
             </div>
-            <div class="box-body">
+            <div class="card-body">
                 <table class="table table-striped">
                     <tr>
                         <td>SMTP Host</td>
@@ -165,11 +165,11 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
         </div>
     </div>
     <div class="col-lg-4">
-        <div class="box">
-            <div class="box-header">
+        <div class="card">
+            <div class="card-header">
                 <h4><?= gettext("Application Prerequisites") ?></h4>
             </div>
-            <div class="box-body">
+            <div class="card-body">
                 <table class="table table-striped">
                     <?php foreach (AppIntegrityService::getApplicationPrerequisites() as $prerequisite) { ?>
                         <tr>
@@ -182,11 +182,11 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
         </div>
     </div>
     <div class="col-lg-4">
-        <div class="box">
-            <div class="box-header">
+        <div class="card">
+            <div class="card-header">
               <h4><?= gettext("Application Integrity Check") . ": " . AppIntegrityService::getIntegrityCheckStatus()?></h4>
             </div>
-            <div class="box-body">
+            <div class="card-body">
               <p><?= gettext('Details:')?> <?=  AppIntegrityService::getIntegrityCheckMessage() ?></p>
                 <?php
                   if (count(AppIntegrityService::getFilesFailingIntegrityCheck()) > 0) {
@@ -219,24 +219,24 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                       ?>
                     </table>
                     <?php
-                  }   
+                  }
                 ?>
             </div>
         </div>
     </div>
-    
+
 </div>
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
-  $(document).ready(function() { 
+  $(document).ready(function() {
   $("#fileIntegrityCheckResultsTable").DataTable({
     responsive: true,
     paging:false,
     searching: false
   });
-  
+
   });
-  
+
 </script>
 
 <?php include SystemURLs::getDocumentRoot() . '/Include/Footer.php'; ?>

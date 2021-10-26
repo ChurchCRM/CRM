@@ -30,11 +30,11 @@ if (!AuthenticationManager::GetCurrentUser()->isFinanceEnabled()) {
 require 'Include/Header.php';
 ?>
 
-<div class="box">
-  <div class="box-header with-border">
-    <h3 class="box-title"><?php echo gettext('Add New Deposit: '); ?></h3>
+<div class="card">
+  <div class="card-header with-border">
+    <h3 class="card-title"><?php echo gettext('Add New Deposit: '); ?></h3>
   </div>
-  <div class="box-body">
+  <div class="card-body">
     <form action="#" method="get" class="form">
       <div class="row">
         <div class="container-fluid">
@@ -64,11 +64,11 @@ require 'Include/Header.php';
   </div>
 </div>
 
-<div class="box">
-  <div class="box-header with-border">
-    <h3 class="box-title"><?php echo gettext('Deposits: '); ?></h3>
+<div class="card">
+  <div class="card-header with-border">
+    <h3 class="card-title"><?php echo gettext('Deposits: '); ?></h3>
   </div>
-  <div class="box-body">
+  <div class="card-body">
     <div class="container-fluid">
       <table class="display responsive nowrap data-table table table-striped table-hover" id="depositsTable" width="100%"></table>
 

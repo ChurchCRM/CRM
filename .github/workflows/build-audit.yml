@@ -1,4 +1,4 @@
-name: Build
+name: Audit 3rd Party Libs
 
 on:
   push:
@@ -9,7 +9,7 @@ env:
   node_version: 14
 
 jobs:
-  install_n_gen:
+  audit:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2.3.2
@@ -45,9 +45,6 @@ jobs:
 
     - name: NPM Audit
       run: npm run audit fix --only=prod
-
-    - name: ORM Tasks
-      run: npm run orm-gen
 
     - name: Push to built branch
       uses: Automattic/action-commit-to-branch@master

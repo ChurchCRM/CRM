@@ -1,0 +1,43 @@
+name: Deploy to Demo Site
+
+on:
+  push:
+    branches:
+      - 'master'
+  schedule:
+    - cron: '0 */4 * * *'
+
+env:
+  node_version: 16
+
+jobs:
+  build_n_deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2.3.2
+        with:
+          # fetch full history so things like auto-changelog work properly
+          fetch-depth: 0
+
+      - name: Use Node.js ${{ env.node_version }}
+        uses: actions/setup-node@v2-beta
+        with:
+          node-version: ${{ env.node_version }}
+          # setting a registry enables the NODE_AUTH_TOKEN env variable where we can set an npm token.  REQUIRED
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Install & Build Source
+        run: npm run deploy
+
+      - name: Package
+        run:  npm run package
+
+      - name: Deploy
+        env:
+          demoKey: ${{ secrets.demoKey }}
+        run: npm run demosite
+
+#      - name: Test
+#        run: |
+#          cp demo/cypress.json cypress.json
+#          node_modules/cypress/bin/cypress run --record --key ${{ secrets.cypressKey }}

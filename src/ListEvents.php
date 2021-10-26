@@ -71,9 +71,9 @@ if (isset($_POST['Action']) && isset($_POST['EID']) && AuthenticationManager::Ge
 
 /// top of main form
 //
-$sSQL = 'SELECT DISTINCT event_types.* 
-         FROM event_types 
-         RIGHT JOIN events_event ON event_types.type_id=events_event.event_type 
+$sSQL = 'SELECT DISTINCT event_types.*
+         FROM event_types
+         RIGHT JOIN events_event ON event_types.type_id=events_event.event_type
          ORDER BY type_id ';
 $rsOpps = RunQuery($sSQL);
 $numRows = mysqli_num_rows($rsOpps);
@@ -102,12 +102,12 @@ $numRows = mysqli_num_rows($rsOpps);
 <?php
 // year selector
 if ($eType == 'All') {
-    $sSQL = 'SELECT DISTINCT YEAR(events_event.event_start) 
-           FROM events_event 
+    $sSQL = 'SELECT DISTINCT YEAR(events_event.event_start)
+           FROM events_event
            WHERE YEAR(events_event.event_start)';
 } else {
-    $sSQL = "SELECT DISTINCT YEAR(events_event.event_start) 
-           FROM events_event 
+    $sSQL = "SELECT DISTINCT YEAR(events_event.event_start)
+           FROM events_event
            WHERE events_event.event_type = '$eType' AND YEAR(events_event.event_start)";
 }
 $rsOpps = RunQuery($sSQL);
@@ -204,7 +204,7 @@ foreach ($allMonths as $mKey => $mVal) {
     <thead>
       <tr class="TableHeader">
         <?php if (AuthenticationManager::GetCurrentUser()->isAddEvent()) {
-            ?> 
+            ?>
         <th><?= gettext('Action') ?></th>
         <?php
         } ?>
@@ -229,7 +229,7 @@ foreach ($allMonths as $mKey => $mVal) {
                     <form name="EditEvent" action="EventEditor.php" method="POST">
                       <input type="hidden" name="EID" value="<?= $aEventID[$row] ?>">
                       <button type="submit" name="Action" title="<?= gettext('Edit') ?>" value="Edit" data-tooltip class="btn btn-default btn-sm">
-                        <i class='fa fa-pencil'></i>
+                        <i class='fas fa-edit'></i>
                       </button>
                     </form>
                   </td>

@@ -132,8 +132,8 @@ extract(mysqli_fetch_array($rsFamily));
 require 'Include/Header.php';
 
 ?>
-<div class="box">
-    <div class="box-body">
+<div class="card">
+    <div class="card-body">
         <?php
         // Delete Family Confirmation
         // See if this family has any donations OR an Egive association

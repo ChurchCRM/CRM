@@ -3,8 +3,16 @@
 context('Family Reg', () => {
 
     it('Family of 2', () => {
+
+        cy.intercept({ method: "GET", url: "/api/public/data/countries"}).as("getCountries");
+        cy.intercept({ method: "GET", url: "/api/public/data/countries/us/states"}).as("getUSStates");
+
         cy.visit('external/register/');
         cy.contains("Main St. Cathedral");
+
+        cy.wait("@getCountries");
+        cy.wait("@getUSStates");
+
         cy.get('#familyName').type('Master');
         cy.get('#familyAddress1').clear().type('123 Main St.');
         cy.get('#familyZip').type('98001');

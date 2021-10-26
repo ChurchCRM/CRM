@@ -70,12 +70,12 @@ if ($EventID > 0) {
 <form class="well form-horizontal" name="selectEvent" action="Checkin.php" method="POST">
     <div class="row">
         <div class="col-md-10 col-xs-12">
-            <div class="box box-primary">
-                <div class="box-header">
-                    <h3 class="box-title"><?= gettext('Select the event to which you would like to check people in for') ?>
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title"><?= gettext('Select the event to which you would like to check people in for') ?>
                         :</h3>
                 </div>
-                <div class="box-body">
+                <div class="card-body">
                     <?php if ($sGlobalMessage): ?>
                         <p><?= $sGlobalMessage ?></p>
                     <?php endif; ?>
@@ -126,11 +126,11 @@ if (!$CheckoutOrDelete &&  $EventID > 0) {
 
         <div class="row">
             <div class="col-xs-12">
-                <div class="box box-primary">
-                    <div class="box-header">
-                        <h3 class="box-title"><?= gettext('Add Attendees for Event'); ?>: <?= $event->getTitle() ?></h3>
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title"><?= gettext('Add Attendees for Event'); ?>: <?= $event->getTitle() ?></h3>
                     </div>
-                    <div class="box-body">
+                    <div class="card-body">
 
                         <div class="form-group">
                             <label for="child" class="col-sm-2 control-label"><?= gettext("Person's Name") ?></label>
@@ -161,7 +161,7 @@ if (!$CheckoutOrDelete &&  $EventID > 0) {
 
                         <div class="form-group row">
 
-                            <div class="box-footer text-center col-md-4  col-xs-8">
+                            <div class="card-footer text-center col-md-4  col-xs-8">
                                 <input type="submit" class="btn btn-primary" value="<?= gettext('CheckIn'); ?>"
                                        name="CheckIn" tabindex=3>
                                 <input type="reset" class="btn btn-default" value="<?= gettext('Cancel'); ?>"
@@ -244,12 +244,12 @@ if (isset($_POST['EventID']) && isset($_POST['child-id']) &&
 
         <div class="row">
             <div class="col-xs-12">
-                <div class="box box-primary">
-                    <div class="box-header with-border">
-                        <h3 class="box-title"><?= $formTitle ?></h3>
+                <div class="card card-primary">
+                    <div class="card-header with-border">
+                        <h3 class="card-title"><?= $formTitle ?></h3>
                     </div>
 
-                    <div class="box-body">
+                    <div class="card-body">
                         <div class="row">
                             <div id="child" class="col-sm-4 text-center" onload="SetPersonHtml(this,perArr)">
                                 <?php
@@ -277,7 +277,7 @@ if (isset($_POST['EventID']) && isset($_POST['child-id']) &&
                                 </div>
 
                                 <div class="col-sm-4 text-center">
-                                    <div id="adultoutDetails" class="box box-solid box-default hidden"></div>
+                                    <div id="adultoutDetails" class="card card-solid box-default hidden"></div>
                                 </div>
                                 <?php
                             } else { // DeleteBtn?>
@@ -303,8 +303,8 @@ if (isset($_POST['EventID']) && isset($_POST['child-id']) &&
 //Populate data table
 if (isset($_POST['EventID'])) {
     ?>
-    <div class="box box-primary">
-        <div class="box-body table-responsive">
+    <div class="card card-primary">
+        <div class="card-body table-responsive">
             <table id="checkedinTable" class="table data-table table-striped ">
                 <thead>
                 <tr>

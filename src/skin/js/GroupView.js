@@ -171,7 +171,7 @@ function initDataTable() {
           thisRole = $(window.CRM.groupRoles).filter(function (index, item) {
             return item.OptionId == data
           })[0];
-          return i18next.t(thisRole.OptionName) + '<button class="changeMembership" data-personid=' + full.PersonId + '><i class="fa fa-pencil"></i></button>';
+          return i18next.t(thisRole.OptionName) + '<button class="changeMembership" data-personid=' + full.PersonId + '><i class="fas fa-edit"></i></button>';
         }
       },
       {

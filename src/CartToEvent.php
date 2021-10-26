@@ -56,7 +56,7 @@ require 'Include/Header.php';
 if (count($_SESSION['aPeopleCart']) > 0) {
     $sSQL = 'SELECT * FROM events_event';
     $rsEvents = RunQuery($sSQL); ?>
-<div class="box">
+<div class="card">
 <p align="center"><?= gettext('Select the event to which you would like to add your cart') ?>:</p>
 <form name="CartToEvent" action="CartToEvent.php" method="POST">
 <table align="center">
