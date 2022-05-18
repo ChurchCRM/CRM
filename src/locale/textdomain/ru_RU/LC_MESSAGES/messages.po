@@ -296,7 +296,7 @@ msgstr "Пол"
 
 #: 
 msgid "Donation Envelope"
-msgstr "Пожертвование Конверт"
+msgstr "Пожертвование наличными"
 
 #: 
 msgid "Home Phone"
@@ -5847,4 +5847,28 @@ msgstr "Для большей информации обратитесь к ло�
 #: 
 msgid "Verification URL"
 msgstr "Верификация URL"
+
+#: 
+msgid "Green"
+msgstr "Зеленый"
+
+#: 
+msgid "Red"
+msgstr "Красный"
+
+#: 
+msgid "Yellow"
+msgstr "Желтый"
+
+#: 
+msgid "Blue Light"
+msgstr "Голубой"
+
+#: 
+msgid "Invalid Birth Date: Missing birth month or day."
+msgstr "Неверная дата рождения: отсутствует месяц или день рождения."
+
+#: 
+msgid "Invalid Birth Date: Missing birth month and day."
+msgstr "Неверная дата рождения: отсутствует месяц и день рождения."
 
