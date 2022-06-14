@@ -2,7 +2,7 @@
 # from this file by first filling in your password and db info in the .env
 # file and then running "docker-compose -f docker-compose.develop.yaml build", and
 # "docker-compose -f docker-compose.develop.yaml up" in your terminal.
-version: "3.6"
+version: "3.8"
 services:
   database:
     image: mariadb
