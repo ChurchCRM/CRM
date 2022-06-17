@@ -54,7 +54,7 @@ msgstr "ኢሜይል"
 
 #: 
 msgid "Credit Card"
-msgstr "Krediet kaart"
+msgstr "ክሬዲት ካርድ"
 
 #: 
 msgid "Backup Database"
@@ -86,7 +86,7 @@ msgstr "Rugsteunlêer met 'n wagwoord enkripteer?"
 
 #: 
 msgid "Re-type Password"
-msgstr "Hertik wagwoord"
+msgstr "የይለፍቃሉን እንደገና ይፃፉ"
 
 #: 
 msgid "Generate and Ship Backup to External Storage"
