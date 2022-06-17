@@ -31,6 +31,16 @@
     "datePicker": true,
     "select2": true
   },
+  "Amharic - Ethiopia": {
+    "poEditor": "am",
+    "locale": "am_ET",
+    "languageCode": "am",
+    "countryCode": "ET",
+    "dataTables": "Amharic",
+    "fullCalendar" : true,
+    "datePicker": true,
+    "select2": true
+  },
   "Chinese - China": {
     "poEditor": "zh-CN",
     "locale": "zh_CN",
