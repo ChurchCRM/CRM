@@ -106,6 +106,26 @@ msgid "Internationalization (I18n) support"
 msgstr "Internationalisation (I18n) support"
 
 #: 
+msgid "Church Zip"
+msgstr "Church Postcode"
+
+#: 
+msgid "Zip Code"
+msgstr "Postcode"
+
+#: 
+msgid "Enter any part of the following: Name, City, State, Zip, Home Phone, Email, or Work Email."
+msgstr "Enter any part of the following: Name, City, State, Postcode, Home Phone, Email, or Work Email."
+
+#: 
+msgid "Search by any part of Name, City, State, Zip, Home Phone, Email, or Work Email."
+msgstr "Search by any part of Name, City, State, Postcode, Home Phone, Email, or Work Email."
+
+#: 
+msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database."
+msgstr "Make user-entered postcodes UPPERCASE when saving to the database."
+
+#: 
 msgid "This upgrade will completely destroy any customizations made to the following files by reverting the files to the official version."
 msgstr "This upgrade will completely destroy any customisations made to the following files by reverting the files to the official version."
 
