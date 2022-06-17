@@ -73,7 +73,7 @@
         "icheck-bootstrap": "^3.0.1",
         "i18n": "^0.13.3",
         "i18next": "19.9.2",
-        "inputmask": "^5.0.6",
+        "inputmask": "^5.0.7",
         "jquery": "^3.6.0",
         "jquery-photo-uploader": "^1.0.13",
         "jquery-steps": "^1.1.0",
