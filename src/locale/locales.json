@@ -125,6 +125,16 @@
     "datePicker": true,
     "select2": false
   },
+  "Finnish": {
+    "poEditor": "fi",
+    "locale": "fi_FI",
+    "languageCode": "fi",
+    "countryCode": "FI",
+    "dataTables": "Finnish",
+    "fullCalendar" : true,
+    "datePicker": true,
+    "select2": true
+  },
   "French - France": {
     "poEditor": "fr",
     "locale": "fr_FR",
