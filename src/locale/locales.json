@@ -296,6 +296,16 @@
     "datePicker": true,
     "select2": true
   },
+  "Ukrainian": {
+    "poEditor": "uk",
+    "locale": "uk_UA",
+    "languageCode": "uk",
+    "countryCode": "UA",
+    "dataTables": "Ukrainian",
+    "fullCalendar" : true,
+    "datePicker": true,
+    "select2": true
+  },
   "Vietnamese": {
     "poEditor": "vi",
     "locale": "vi_VN",
