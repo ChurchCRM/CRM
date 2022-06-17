@@ -66,7 +66,7 @@
     "Title": "Название",
     "Suffix": "Суффикс",
     "Gender": "Пол",
-    "Donation Envelope": "Пожертвование Конверт",
+    "Donation Envelope": "Пожертвование наличными",
     "Home Phone": "Домашний телефон",
     "Work Phone": "Рабочий телефон",
     "Mobile Phone": "Мобильный",
@@ -1429,5 +1429,11 @@
     "PDF": "PDF",
     "Error sending email(s)": "Ошибка при отправке почты.",
     "Please check logs for more information": "Для большей информации обратитесь к логам. ",
-    "Verification URL": "Верификация URL"
+    "Verification URL": "Верификация URL",
+    "Green": "Зеленый",
+    "Red": "Красный",
+    "Yellow": "Желтый",
+    "Blue Light": "Голубой",
+    "Invalid Birth Date: Missing birth month or day.": "Неверная дата рождения: отсутствует месяц или день рождения.",
+    "Invalid Birth Date: Missing birth month and day.": "Неверная дата рождения: отсутствует месяц и день рождения."
 }
