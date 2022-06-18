@@ -100,36 +100,25 @@ foreach ($ListItem as $element) {
 
     ?>
             <tr>
-              <td><a href='<?= SystemURLs::getRootPath()?>/PersonView.php?PersonID=<?= $person->getId() ?>'>
-                        <span class="fa-stack">
-                            <i class="fa fa-square fa-stack-2x"></i>
-                            <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
-                        </span>
+              <td>
+                    <a href='<?= SystemURLs::getRootPath()?>/PersonView.php?PersonID=<?= $person->getId() ?>'>
+                        <i class="fa fa-search-plus"></i>
                     </a>
                     <a href='<?= SystemURLs::getRootPath()?>/PersonEditor.php?PersonID=<?= $person->getId() ?>'>
-                        <span class="fa-stack">
-                            <i class="fa fa-square fa-stack-2x"></i>
-                            <i class="fas fa-edit fa-stack-1x fa-inverse"></i>
-                        </span>
+                            <i class="fas fa-edit"></i>
                     </a>
 
                     <?php if (!isset($_SESSION['aPeopleCart']) || !in_array($per_ID, $_SESSION['aPeopleCart'], false)) {
                             ?>
-                          <a class="AddToPeopleCart" data-cartpersonid="<?= $person->getId() ?>">
-                        <span class="fa-stack">
-                                    <i class="fa fa-square fa-stack-2x"></i>
-                                    <i class="fa fa-cart-plus fa-stack-1x fa-inverse"></i>
-                                </span>
+                            <a class="AddToPeopleCart" data-cartpersonid="<?= $person->getId() ?>">
+                                <i class="fa fa-cart-plus"></i>
                             </a>
                         </td>
                       <?php
                         } else {
                             ?>
                         <a class="RemoveFromPeopleCart" data-cartpersonid="<?= $person->getId() ?>">
-                        <span class="fa-stack">
-                                    <i class="fa fa-square fa-stack-2x"></i>
-                                    <i class="fa fa-remove fa-stack-1x fa-inverse"></i>
-                                </span>
+                                    <i class="fa fa-remove"></i>
                             </a>
                             <?php
                         }
