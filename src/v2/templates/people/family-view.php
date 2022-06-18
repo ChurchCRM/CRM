@@ -25,7 +25,7 @@ $mailchimp = new MailChimpService();
 </script>
 
 
-<div id="family-deactivated" class="alert alert-warning hide">
+<div id="family-deactivated" class="alert alert-warning d-none">
     <strong><?= gettext("This Family is Deactivated") ?> </strong>
 </div>
 
@@ -398,19 +398,18 @@ $mailchimp = new MailChimpService();
                 </div>
             </div>
             <div class="card-body">
-                <ul class="timeline">
+                <div class="timeline">
                     <!-- timeline time label -->
-                    <li class="time-label"><span class="bg-teal"><?= $curYear ?></span></li>
+                    <div class="time-label"><span class="bg-teal"><?= $curYear ?></span></div>
                     <!-- /.timeline-label -->
 
                     <!-- timeline item -->
                     <?php foreach ($familyTimeline as $item) {
                         if ($curYear != $item['year']) {
                             $curYear = $item['year']; ?>
-                            <li class="time-label"><span class="bg-green"><?= $curYear ?></span></li>
                             <?php
                         } ?>
-                        <li>
+                        <div class="timeline-item">
                             <!-- timeline icon -->
                             <i class="fa <?= $item['style'] ?>"></i>
                             <div class="timeline-item">
@@ -456,7 +455,7 @@ $mailchimp = new MailChimpService();
                         <?php
                     } ?>
                     <!-- END timeline item -->
-                </ul>
+                </div>
             </div>
         </div>
     </div>
