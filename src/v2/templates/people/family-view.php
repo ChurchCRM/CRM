@@ -122,7 +122,6 @@ $mailchimp = new MailChimpService();
                                 <i class="fa fa-check-circle-o"></i><?= gettext("Add a new pledge") ?></a>
                             <a class="btn btn-app"
                                href="<?= SystemURLs::getRootPath()?>/PledgeEditor.php?FamilyID=<?= $family->getId() ?>&amp;linkBack=v2/family/<?= $family->getId() ?>&amp;PledgeOrPayment=Payment">
-                                <i class="fa fa-money"></i><?= gettext("Add a new payment") ?></a>
                         <?php } ?>
                     </div>
                 </div>
