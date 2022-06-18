@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
     if (!window.CRM.currentActive) {
-        $("#family-deactivated").removeClass("hide");
+        $("#family-deactivated").removeClass("d-none");
     }
 
     $.ajax({
