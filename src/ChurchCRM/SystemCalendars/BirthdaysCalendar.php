@@ -20,11 +20,11 @@ class BirthdaysCalendar implements SystemCalendar {
   }
 
   public function getBackgroundColor() {
-    return "FF0000";
+    return "0000FF";
   }
   
   public function getForegroundColor() {
-    return "000000";
+    return "FFFFFF";
   }
 
   public function getId() {
