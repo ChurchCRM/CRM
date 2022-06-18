@@ -208,23 +208,26 @@ $bOkToEdit = (
         <div class="card card-primary">
             <div class="card-body box-profile">
                 <div class="image-container">
+                    <div class="text-center">
                     <img src ="<?= SystemURLs::getRootPath().'/api/person/'.$person->getId().'/photo' ?>"
-                         class="initials-image profile-user-img img-responsive img-rounded profile-user-img-md">
-                    <?php if ($bOkToEdit): ?>
-                        <div class="after">
-                            <div class="buttons">
-                                <a id="view-larger-image-btn" class="hide"  title="<?= gettext("View Photo") ?>">
-                                    <i class="fa fa-search-plus"></i>
-                                </a>&nbsp;
-                                <a  class="" data-toggle="modal" data-target="#upload-image" title="<?= gettext("Upload Photo") ?>">
-                                    <i class="fa fa-camera"></i>
-                                </a>&nbsp;
-                                <a  data-toggle="modal" data-target="#confirm-delete-image" title="<?= gettext("Delete Photo") ?>">
-                                    <i class="fa fa-trash-can"></i>
-                                </a>
-                            </div>
-                        </div>
-                    <?php endif; ?>
+                         class="initials-image profile-user-img img-fluid img-circle">
+                    <p/>
+
+                        <?php if ($bOkToEdit): ?>
+                                <div class="buttons">
+                                    <a id="view-larger-image-btn" class="hide"  title="<?= gettext("View Photo") ?>">
+                                        <i class="fa fa-search-plus"></i>
+                                    </a>&nbsp;
+                                    <a  class="" data-toggle="modal" data-target="#upload-image" title="<?= gettext("Upload Photo") ?>">
+                                        <i class="fa fa-camera"></i>
+                                    </a>&nbsp;
+                                    <a  data-toggle="modal" data-target="#confirm-delete-image" title="<?= gettext("Delete Photo") ?>">
+                                        <i class="fa fa-trash-can"></i>
+                                    </a>
+                                </div>
+                            
+                        <?php endif; ?>
+                    </div>
                 </div>
                 <h3 class="profile-username text-center">
                     <?php if ($person->isMale()) {
@@ -242,7 +245,7 @@ $bOkToEdit = (
                     <?= empty($sFamRole) ? gettext('Undefined') : gettext($sFamRole); ?>
                     &nbsp;
                     <a id="edit-role-btn" data-person_id="<?= $person->getId() ?>" data-family_role="<?= $person->getFamilyRoleName() ?>"
-                       data-family_role_id="<?= $person->getFmrId() ?>"  class="btn btn-primary btn-xs">
+                       data-family_role_id="<?= $person->getFmrId() ?>"  class="btn btn-xs">
                         <i class="fas fa-edit"></i>
                     </a>
                 </p>
@@ -271,17 +274,14 @@ $bOkToEdit = (
       <!-- /.box-header -->
       <div class="card-body">
         <ul class="fa-ul">
-          <li><i class="fa-li fa fa-group"></i><?php echo gettext('Family:'); ?> <span>
+          <li><i class="fa-li fa fa-people-roof"></i><?php echo gettext('Family:'); ?> <span>
               <?php
               if ($fam_ID != '') {
                   ?>
                   <a href="<?= SystemURLs::getRootPath() ?>/v2/family/<?= $fam_ID ?>"><?= $fam_Name ?> </a>
                   <a href="<?= SystemURLs::getRootPath() ?>/FamilyEditor.php?FamilyID=<?= $fam_ID ?>" class="table-link">
-                  <span class="fa-stack">
-                    <i class="fa fa-square fa-stack-2x"></i>
-                    <i class="fas fa-edit fa-stack-1x fa-inverse"></i>
-                  </span>
-                </a>
+                    <i class="fas fa-edit"></i>
+                  </a>
                   <?php
               } else {
                   echo gettext('(No assigned family)');
@@ -390,6 +390,7 @@ $bOkToEdit = (
     </div>
     <div class="col-lg-9 col-md-9 col-sm-9">
         <div class="card card-primary box-body">
+            <div class="row">
             <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/PrintView.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-print"></i> <?= gettext("Printable Page") ?></a>
             <a class="btn btn-app AddToPeopleCart" id="AddPersonToCart" data-cartpersonid="<?= $iPersonID ?>"><i class="fa fa-cart-plus"></i><span class="cartActionDescription"><?= gettext("Add to Cart") ?></span></a>
             <?php if (AuthenticationManager::GetCurrentUser()->isNotesEnabled()) {
@@ -416,7 +417,7 @@ $bOkToEdit = (
             if (AuthenticationManager::GetCurrentUser()->isAdmin()) {
                 if (!$person->isUser()) {
                     ?>
-                    <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/UserEditor.php?NewPersonID=<?= $iPersonID ?>"><i class="fa fa-user-secret"></i> <?= gettext('Make User') ?></a>
+                    <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/UserEditor.php?NewPersonID=<?= $iPersonID ?>"><i class="fa fa-person-chalkboard"></i> <?= gettext('Make User') ?></a>
                     <?php
                 } else {
                     ?>
@@ -432,6 +433,7 @@ $bOkToEdit = (
                 <?php
             } ?>
 
+        </div>
         </div>
     </div>
     <div class="col-lg-9 col-md-9 col-sm-9">
