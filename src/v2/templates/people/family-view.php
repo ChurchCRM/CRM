@@ -392,8 +392,7 @@ $mailchimp = new MailChimpService();
                 <i class="fa fa-history"></i>
                 <h3 class="card-title"><?= gettext("Timeline") ?></h3>
                 <div class="card-tools pull-right">
-                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
-                            class="fa fa-minus"></i>
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                     </button>
                 </div>
             </div>
@@ -451,7 +450,7 @@ $mailchimp = new MailChimpService();
 
                                 <?php } ?>
                             </div>
-                        </li>
+                        </div>
                         <?php
                     } ?>
                     <!-- END timeline item -->
