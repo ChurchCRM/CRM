@@ -340,19 +340,19 @@ $bOkToEdit = (
 
     if (strlen($per_Facebook) > 0) {
         ?>
-              <li><i class="fa-li fa fa-facebook-official"></i><?= gettext('Facebook') ?>: <span><a href="https://www.facebook.com/<?= InputUtils::FilterString($per_Facebook) ?> "target="_blank"><?= $per_Facebook ?></a></span></li>
+              <li><i class="fa-li fa-brands fa-facebook-official"></i><?= gettext('Facebook') ?>: <span><a href="https://www.facebook.com/<?= InputUtils::FilterString($per_Facebook) ?> "target="_blank"><?= $per_Facebook ?></a></span></li>
           <?php
     }
 
     if (strlen($per_Twitter) > 0) {
         ?>
-              <li><i class="fa-li fa fa-twitter"></i><?= gettext('Twitter') ?>: <span><a href="https://www.twitter.com/<?= InputUtils::FilterString($per_Twitter) ?>" target="_blank"><?= $per_Twitter ?></a></span></li>
+              <li><i class="fa-li fa-brands fa-twitter"></i><?= gettext('Twitter') ?>: <span><a href="https://www.twitter.com/<?= InputUtils::FilterString($per_Twitter) ?>" target="_blank"><?= $per_Twitter ?></a></span></li>
           <?php
     }
 
                     if (strlen($per_LinkedIn) > 0) {
                         ?>
-                        <li><i class="fa-li fa fa-linkedin"></i><?= gettext('LinkedIn') ?>: <span><a href="https://www.linkedin.com/in/<?= InputUtils::FiltersTring($per_LinkedIn) ?>" target="_blank"><?= $per_LinkedIn ?></a></span></li>
+                        <li><i class="fa-li fa-brands fa-linkedin"></i><?= gettext('LinkedIn') ?>: <span><a href="https://www.linkedin.com/in/<?= InputUtils::FiltersTring($per_LinkedIn) ?>" target="_blank"><?= $per_LinkedIn ?></a></span></li>
                         <?php
                     }
 
