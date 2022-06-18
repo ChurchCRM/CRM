@@ -48,6 +48,7 @@
         "docker-test-stop": "docker-compose -f docker/docker-compose.test-apache.yaml stop",
         "docker-test-restart": "npm run docker-test-down && npm run docker-test-start",
         "test-via-docker": "npm run docker-test-restart && cp docker/cypress.json cypress.json && node_modules/cypress/bin/cypress run",
+        "test-via-docker-ui": "npm run docker-test-restart && cp docker/cypress.json cypress.json && node_modules/cypress/bin/cypress open",
         "test-via-demo": "cp demo/cypress.json cypress.json && node_modules/cypress/bin/cypress run",
         "build-react": "webpack",
         "restore-demo-db": "php scripts/restore-db.php demo",
@@ -56,7 +57,7 @@
         "test-ui": "node_modules/cypress/bin/cypress open"
     },
     "dependencies": {
-        "@fortawesome/fontawesome-free": "^5.15.3",
+        "@fortawesome/fontawesome-free": "^6.1.1",
         "admin-lte": "3.2.0",
         "bootbox": "^5.5.2",
         "bootstrap": "^4.6",
