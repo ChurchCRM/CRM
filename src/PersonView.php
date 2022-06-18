@@ -220,7 +220,7 @@ $bOkToEdit = (
                                     <i class="fa fa-camera"></i>
                                 </a>&nbsp;
                                 <a  data-toggle="modal" data-target="#confirm-delete-image" title="<?= gettext("Delete Photo") ?>">
-                                    <i class="fa fa-trash-o"></i>
+                                    <i class="fa fa-trash-can"></i>
                                 </a>
                             </div>
                         </div>
@@ -407,7 +407,7 @@ $bOkToEdit = (
             <?php
             if (AuthenticationManager::GetCurrentUser()->isDeleteRecordsEnabled()) {
                 ?>
-                <a class="btn btn-app bg-maroon delete-person" data-person_name="<?= $person->getFullName()?>" data-person_id="<?= $iPersonID ?>"><i class="fa fa-trash-o"></i> <?= gettext("Delete this Record") ?></a>
+                <a class="btn btn-app bg-maroon delete-person" data-person_name="<?= $person->getFullName()?>" data-person_id="<?= $iPersonID ?>"><i class="fa fa-trash-can"></i> <?= gettext("Delete this Record") ?></a>
                 <?php
             }
             ?>
@@ -579,7 +579,7 @@ $bOkToEdit = (
                                            data-person_id="<?= $familyMember->getId() ?>" data-view="family">
                                                 <span class="fa-stack">
                                                     <i class="fa fa-square fa-stack-2x"></i>
-                                                    <i class="fa fa-trash-o fa-stack-1x fa-inverse btn-danger"></i>
+                                                    <i class="fa fa-trash-can fa-stack-1x fa-inverse btn-danger"></i>
                                                 </span>
                                             </a>
                                             <?php
@@ -690,7 +690,7 @@ $bOkToEdit = (
                                                             </ul>
                                                         </div>
                                                         <div class="btn-group">
-                                                            <button data-groupid="<?= $grp_ID ?>" data-groupname="<?= $grp_Name ?>" type="button" class="btn btn-danger groupRemove" data-toggle="dropdown"><i class="fa fa-trash-o"></i></button>
+                                                            <button data-groupid="<?= $grp_ID ?>" data-groupname="<?= $grp_Name ?>" type="button" class="btn btn-danger groupRemove" data-toggle="dropdown"><i class="fa fa-trash-can"></i></button>
                                                         </div>
                                                         <?php
                                             } ?>
