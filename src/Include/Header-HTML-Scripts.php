@@ -11,4 +11,6 @@ use ChurchCRM\dto\SystemURLs;
 <!-- jQuery UI -->
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/jquery-ui/jquery-ui.min.js"></script>
 
+<script src="<?= SystemURLs::getRootPath() ?>/skin/external/fontawesome/js/all.js"></script>
+
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/moment/moment-with-locales.min.js"></script>
