@@ -1,0 +1,9549 @@
+msgid ""
+msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: POEditor.com\n"
+"Project-Id-Version: ChurchCRM\n"
+"Language: uk\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: 
+msgid "Cannot execute query."
+msgstr "Не вдалося виконати запит."
+
+#: 
+msgid "Delete"
+msgstr "Видалити"
+
+#: 
+msgid "Cancel"
+msgstr "Відмінити"
+
+#: 
+msgid "Save"
+msgstr "Зберегти"
+
+#: 
+msgid "Unassigned"
+msgstr "Невизначено"
+
+#: 
+msgid "None"
+msgstr "Жоден"
+
+#: 
+msgid "City"
+msgstr "Місто"
+
+#: 
+msgid "State"
+msgstr "Район"
+
+#: 
+msgid "Country"
+msgstr "Країна"
+
+#: 
+msgid "Phone"
+msgstr "Телефон"
+
+#: 
+msgid "Email"
+msgstr "Електронна скринька"
+
+#: 
+msgid "Credit Card"
+msgstr "Кредитна карта"
+
+#: 
+msgid "Backup Database"
+msgstr "Створити резервну копію бази даних"
+
+#: 
+msgid "This tool will assist you in manually backing up the ChurchCRM database."
+msgstr "Цей інструмент допоможе вам вручну створити резервну копію бази даних \"ChurchCRM\"."
+
+#: 
+#, fuzzy
+msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
+msgstr "Ви повинні робити резервну копію вручну принаймні раз на тиждень, якщо у вас вже є регулярне резервне копіювання для ваших систем."
+
+#: 
+msgid "After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site."
+msgstr "Після завантаження файлу резервної копії слід зробити дві копії. Покладіть одну з них у вогнестійкий сейф на місці, а інший в безпечному місці поза територією помешкання."
+
+#: 
+msgid "If you are concerned about confidentiality of data stored in the ChurchCRM database, you should encrypt the backup data if it will be stored somewhere potentially accessible to others"
+msgstr "Якщо ви турбуєтеся про конфіденційність даних, що зберігаються в базі даних, ви повинні зашифрувати резервні копії даних, якщо він буде зберігатися десь потенційно доступним для інших"
+
+#: 
+msgid "Select archive type"
+msgstr "Виберіть тип архіву"
+
+#: 
+msgid "Encrypt backup file with a password?"
+msgstr "Зашифрувати файл резервної копії з паролем?"
+
+#: 
+msgid "Re-type Password"
+msgstr "Повторно введіть пароль"
+
+#: 
+msgid "Generate and Ship Backup to External Storage"
+msgstr "Створити та відправити резервну копію на зовнішнє сховище"
+
+#: 
+msgid "Batch Winner Entry"
+msgstr "Пакетний запис переможця"
+
+#: 
+msgid "Winner"
+msgstr "Переможець"
+
+#: 
+msgid "Price"
+msgstr "Ціна"
+
+#: 
+msgid "Enter Winners"
+msgstr "Введіть переможців"
+
+#: 
+msgid "CSV Export"
+msgstr "Експорт в форматі CSV"
+
+#: 
+msgid "Field Selection"
+msgstr "Вибір полів"
+
+#: 
+msgid "Last Name"
+msgstr "Прізвище"
+
+#: 
+msgid "Required"
+msgstr "Обовʼязково"
+
+#: 
+msgid "First Name"
+msgstr "Імʼя"
+
+#: 
+msgid "Middle Name"
+msgstr "По-батькові"
+
+#: 
+msgid "Zip"
+msgstr "Індекс"
+
+#: 
+msgid "Envelope"
+msgstr "Конверт"
+
+#: 
+msgid "Work/Other Email"
+msgstr "Робоча/інша Електронна скринька"
+
+#: 
+msgid "Membership Date"
+msgstr "Член з"
+
+#: 
+msgid "Birth / Anniversary Date"
+msgstr "Дата дня народження/річниці"
+
+#: 
+msgid "Age / Years Married"
+msgstr "Вік / років одружений(-а)"
+
+#: 
+msgid "Family Role"
+msgstr "Роль у сімʼї"
+
+#: 
+msgid "Depends whether using person or family output method"
+msgstr "Залежить від вибраного методу виводу (персона/сімʼя)"
+
+#: 
+msgid "Custom Field Selection"
+msgstr "Вибір персональних полів"
+
+#: 
+msgid "Custom Person Fields"
+msgstr "Персональні поля персон"
+
+#: 
+msgid "Custom Family Fields"
+msgstr "Персональні поля сімей"
+
+#: 
+msgid "Filters"
+msgstr "Фільтри"
+
+#: 
+msgid "Records to export"
+msgstr "Записи для експорту"
+
+#: 
+msgid "Based on filters below.."
+msgstr "На основі наступних фільтрів."
+
+#: 
+msgid "People in Cart (filters ignored)"
+msgstr "Люди в корзині (фільтри ігноровані)"
+
+#: 
+msgid "Use Ctrl Key to select multiple"
+msgstr "Щоб вибрати декілька скористайтесь клавішею Cttrl"
+
+#: 
+msgid "Don't Filter"
+msgstr "Не фільтрувати"
+
+#: 
+msgid "Male"
+msgstr "Чоловіча"
+
+#: 
+msgid "Female"
+msgstr "Жіноча"
+
+#: 
+msgid "Group Membership"
+msgstr "Членство в групах"
+
+#: 
+msgid "From:"
+msgstr "Від:"
+
+#: 
+msgid "To:"
+msgstr "Кому:"
+
+#: 
+msgid "Birthday Date"
+msgstr "Дата народження"
+
+#: 
+msgid "Anniversary Date"
+msgstr "Дата річниці"
+
+#: 
+msgid "Output Method:"
+msgstr "Метод виводу:"
+
+#: 
+msgid "CSV Individual Records"
+msgstr "CSV окремі записи"
+
+#: 
+msgid "CSV Combine Families"
+msgstr "CSV скомбінований по сімʼям"
+
+#: 
+msgid "Add Individuals to Cart"
+msgstr "Додати індивідів до корзини"
+
+#: 
+msgid "Skip records with incomplete mail address"
+msgstr "Пропустити записи і неповними поштовими адресами"
+
+#: 
+msgid "Create File"
+msgstr "Створити файл"
+
+#: 
+msgid "No file selected for upload."
+msgstr "Не вибрано файл для завантаження."
+
+#: 
+msgid "Total number of rows in the CSV file:"
+msgstr "Загальна кількість рядків у CSV-файлі:"
+
+#: 
+msgid "Ignore this Field"
+msgstr "Ігнорувати це поле"
+
+#: 
+msgid "Title"
+msgstr "Звернення"
+
+#: 
+msgid "Suffix"
+msgstr "Суфікс"
+
+#: 
+msgid "Gender"
+msgstr "Стать"
+
+#: 
+msgid "Donation Envelope"
+msgstr "Конверт пожертв"
+
+#: 
+msgid "Home Phone"
+msgstr "Домашній телефон"
+
+#: 
+msgid "Work Phone"
+msgstr "Робочий телефон"
+
+#: 
+msgid "Mobile Phone"
+msgstr "Мобільний телефон"
+
+#: 
+msgid "Work / Other Email"
+msgstr "Робоча/інша Електронна скринька"
+
+#: 
+msgid "Birth Date"
+msgstr "Дата народження"
+
+#: 
+msgid "Wedding Date"
+msgstr "Дата весілля"
+
+#: 
+msgid "Ignore first CSV row (to exclude a header)"
+msgstr "Ігнорувати перший рядок CSV-файлу (щоб виключити заголовок)"
+
+#: 
+msgid "Make Family records based on last name and address"
+msgstr "Зробити запис сімʼї на основі прізвища і адреси"
+
+#: 
+msgid "Patriarch"
+msgstr "Батько"
+
+#: 
+msgid "Matriarch"
+msgstr "Мати"
+
+#: 
+msgid "Family Type: used with Make Family records... option above"
+msgstr "Тип сім'ї: використовується з опцією Створити сімейні записи ... вище"
+
+#: 
+msgid "NOTE: Separators (dashes, etc.) or lack thereof do not matter"
+msgstr "ПРИМІТКА: Роздільники (тире та ін.) Або їх відсутність не мають значення"
+
+#: 
+msgid "Default country if none specified otherwise"
+msgstr "Країна по замовчанню, якщо інше не вказано"
+
+#: 
+msgid "Classification"
+msgstr "Класифікація"
+
+#: 
+msgid "Perform Import"
+msgstr "Виконати імпорт"
+
+#: 
+msgid "ERROR: the uploaded CSV file no longer exists!"
+msgstr "ПОМИЛКА: завантажений CSV-файл більше не існує!"
+
+#: 
+msgid "Data Cleared Successfully!"
+msgstr "Дані успишно очищено!"
+
+#: 
+msgid "Upload CSV File"
+msgstr "Завантажити CSV-файл"
+
+#: 
+msgid "Clear Persons and Families"
+msgstr "Очистити персони і сімʼі"
+
+#: 
+msgid "Warning!  Do not select this option if you plan to add to an existing database.<br/>"
+msgstr "Увага! Не вибирайте цю опцію, якщо ви плануєте додавати існуючу базу даних"
+
+#: 
+msgid "Use only if unsatisfied with initial import.  All person and member data will be destroyed!"
+msgstr "Використовуйте лише якщо ви не задоволені первинним імпортом. Всі персони і дані членів буде знищено!"
+
+#: 
+msgid "Data import successful."
+msgstr "Імпорт даних успішно завершено."
+
+#: 
+msgid "persons were imported"
+msgstr "персон імпортовано"
+
+#: 
+msgid "Canvass Automation"
+msgstr "Автоматизація агітаторів"
+
+#: 
+msgid "Not confirmed."
+msgstr "Не підтверджено."
+
+#: 
+msgid "Canvassers"
+msgstr "Агітатори"
+
+#: 
+msgid "BraveCanvassers"
+msgstr "Хоробрий Canvassers"
+
+#: 
+msgid "Cleared all canvasser assignments."
+msgstr "Усі призначеня агітаторів очищено."
+
+#: 
+msgid "Set Ok To Canvass for all families."
+msgstr "Встановіть Ok To Canvass для всіх сімей."
+
+#: 
+msgid "Disabled Ok To Canvass for all families."
+msgstr "Інваліди в порядку для всіх сімей."
+
+#: 
+msgid "ClearAllOkToCanvass button not confimed."
+msgstr "Кнопка ClearAllOkToCanvass не збережена."
+
+#: 
+msgid "Set default fiscal year"
+msgstr "Встановити фінансовий рік за замовчуванням"
+
+#: 
+msgid "Check to confirm"
+msgstr "Перевірте для підтвердження"
+
+#: 
+msgid "Assign Canvassers"
+msgstr "Призначити Canvassers"
+
+#: 
+msgid "Randomly assign canvassers to all Families.  The Canvassers are taken from the &quot;Canvassers&quot; Group."
+msgstr "Випадковим чином призначити учасників програми для всіх сімей. Полотнища взяті з & quot; Полотнища & quot; Група."
+
+#: 
+msgid "Assign To Non Pledging"
+msgstr "Призначити без застави"
+
+#: 
+msgid "Randomly assign canvassers to non-pledging Families.  The Canvassers are taken from the &quot;BraveCanvassers&quot; Group."
+msgstr "Випадковим чином призначати учасників сімей, які не беруть в обіг сім'ї. Полотнища взяті з \"BraveCanvassers\" & quot; Група."
+
+#: 
+msgid "Clear Canvasser Assignments"
+msgstr "Очистити завдання Canvasser"
+
+#: 
+msgid "Clear all the canvasser assignments for all families."
+msgstr "Очистіть усі завдання для всіх родин."
+
+#: 
+msgid "Important note: this will lose any canvasser assignments that have been made by hand."
+msgstr "Важливе зауваження: це призведе до втрати будь-яких завдань, які були зроблені вручну."
+
+#: 
+msgid "Enable Canvass for All Families"
+msgstr "Увімкніть Canvass для всіх сімей"
+
+#: 
+msgid "Turn on the &quot;Ok To Canvass&quot; field for all Families."
+msgstr "Увімкніть & quot; Ok To Canvass & quot; поле для всіх сімей."
+
+#: 
+msgid "Disable Canvass for All Families"
+msgstr "Вимкніть Canvass для всіх сімей"
+
+#: 
+msgid "Turn off the &quot;Ok To Canvass&quot; field for all Families"
+msgstr "Вимкніть & quot; Ok To Canvass & quot; поле для всіх сімей"
+
+#: 
+msgid "Briefing Sheets"
+msgstr "Інформаційні бюлетені"
+
+#: 
+msgid "Generate a PDF containing briefing sheets for all Families, sorted by canvasser."
+msgstr "Створіть PDF, що містить брифінгові аркуші для всіх сімей, відсортовані за програмою."
+
+#: 
+msgid "Progress Report"
+msgstr "Доповідь про хід роботи"
+
+#: 
+msgid "Generate a PDF containing a progress report.  The progress report includes information on the overall progress of the canvass, and the progress of individual canvassers."
+msgstr "Створіть PDF, що містить звіт про хід. Звіт про хід включає інформацію про загальний прогрес полотна та про хід окремих користувачів."
+
+#: 
+msgid "Summary Report"
+msgstr "Зведений звіт"
+
+#: 
+msgid "Generate a PDF containing a summary report.  The summary report includes comments extracted from the canvass data."
+msgstr "Створіть PDF, що містить зведений звіт. Зведений звіт включає коментарі, витягнуті з даних полотна."
+
+#: 
+msgid "Not Interested Report"
+msgstr "Незацікавлений звіт"
+
+#: 
+msgid "Generate a PDF containing a report of the families marked &quot;Not Interested&quot; by the canvasser."
+msgstr "Створіть PDF, що містить звіт сімей з позначкою \"Нецікаво\" & quot; полотнищем."
+
+#: 
+msgid " Canvass Input for the "
+msgstr " Введення полотна для "
+
+#: 
+msgid "Canvasser"
+msgstr "Полотно"
+
+#: 
+msgid "Positive"
+msgstr "Позитивні"
+
+#: 
+msgid "Critical"
+msgstr "Критичний"
+
+#: 
+msgid "Insightful"
+msgstr "Проникливий"
+
+#: 
+msgid "Financial"
+msgstr "Фінансові"
+
+#: 
+msgid "Suggestions"
+msgstr "Пропозиції"
+
+#: 
+msgid "Not Interested"
+msgstr "Не зацікавлений"
+
+#: 
+msgid "Why Not Interested?"
+msgstr "Чому вас не цікавить?"
+
+#: 
+msgid "Add Cart to Event"
+msgstr "Додати кошик до події"
+
+#: 
+msgid "Select the event to which you would like to add your cart"
+msgstr "Виберіть подію, до якої ви хочете додати свій кошик"
+
+#: 
+msgid "OR"
+msgstr "АБО"
+
+#: 
+msgid "Add New Event"
+msgstr "Додати нову подію"
+
+#: 
+msgid "Your cart is empty!"
+msgstr "Ваш кошик порожній!"
+
+#: 
+msgid "No family name entered!"
+msgstr "Прізвище не введено!"
+
+#: 
+msgid "Add Cart to Family"
+msgstr "Додати кошик до родини"
+
+#: 
+msgid "Name"
+msgstr "Ім'я"
+
+#: 
+msgid "Assign Role"
+msgstr "Призначити роль"
+
+#: 
+msgid "Already in a family"
+msgstr "Вже в родині"
+
+#: 
+msgid "Create new family"
+msgstr "Створіть нову сім’ю"
+
+#: 
+msgid "If adding a new family, enter data below."
+msgstr "Якщо ви додаєте нову родину, введіть дані нижче."
+
+#: 
+msgid "Use address/contact data from"
+msgstr "Використовуйте адресу / контактні дані від"
+
+#: 
+msgid "Only the new data below"
+msgstr "Тільки нові дані нижче"
+
+#: 
+msgid "(Use the textbox for countries other than US and Canada)"
+msgstr "(Використовуйте текстове поле для країн, крім США та Канади)"
+
+#: 
+msgid "Do not auto-format"
+msgstr "Не автоматично форматувати"
+
+#: 
+msgid "Add to Family"
+msgstr "Додати до родини"
+
+#: 
+msgid "Add Cart to Group"
+msgstr "Додати кошик до групи"
+
+#: 
+msgid "Select the group to which you would like to add your cart"
+msgstr "Виберіть групу, до якої ви хочете додати свій кошик"
+
+#: 
+msgid "Select Group"
+msgstr "Виберіть Групу"
+
+#: 
+msgid "No Group Selected"
+msgstr "Групу не вибрано"
+
+#: 
+msgid "Add to Group"
+msgstr "Додати до групи"
+
+#: 
+msgid "View Your Cart"
+msgstr "Переглянути свій кошик"
+
+#: 
+msgid "You have no items in your cart."
+msgstr "У вашому кошику немає товарів."
+
+#: 
+msgid "Back to Menu"
+msgstr "Повернутися до меню"
+
+#: 
+msgid "Empty Cart"
+msgstr "Порожній кошик"
+
+#: 
+msgid "Empty Cart to Group"
+msgstr "Порожній кошик до групи"
+
+#: 
+msgid "Empty Cart to Family"
+msgstr "Порожній кошик для сім'ї"
+
+#: 
+msgid "Empty Cart to Event"
+msgstr "Порожній кошик до події"
+
+#: 
+msgid "Map Cart"
+msgstr "Карта кошика"
+
+#: 
+msgid "Name Tags"
+msgstr "Теги імен"
+
+#: 
+msgid "Email Cart"
+msgstr "Кошик електронної пошти"
+
+#: 
+msgid "Email (BCC)"
+msgstr "Електронна пошта (BCC)"
+
+#: 
+msgid "Create Directory From Cart"
+msgstr "Створити каталог з кошика"
+
+#: 
+msgid "Generate Labels"
+msgstr "Створити мітки"
+
+#: 
+msgid "Bulk Mail Presort"
+msgstr "Пресорт масової пошти"
+
+#: 
+msgid "Quiet Presort"
+msgstr "Тихий Пресорт"
+
+#: 
+msgid "Your cart contains"
+msgstr "Кошик містить"
+
+#: 
+msgid "persons from"
+msgstr "особи з"
+
+#: 
+msgid "Remove"
+msgstr "Видалити"
+
+#: 
+msgid "Yes"
+msgstr "Так"
+
+#: 
+msgid "No"
+msgstr "Немає"
+
+#: 
+msgid "Developer Chat"
+msgstr "Чат розробника"
+
+#: 
+msgid "Event Checkin"
+msgstr "Реєстрація події"
+
+#: 
+msgid "Select the event to which you would like to check people in for"
+msgstr "Виберіть подію, на яку ви хочете зареєструвати людей"
+
+#: 
+msgid "Select Event"
+msgstr "Виберіть Подія"
+
+#: 
+msgid "Add Visitor"
+msgstr "Додати відвідувача"
+
+#: 
+msgid "CheckIn"
+msgstr "Перевірь"
+
+#: 
+msgid "CheckOut"
+msgstr "Перевіряти"
+
+#: 
+msgid "Checked In Time"
+msgstr "Перевірено вчасно"
+
+#: 
+msgid "Checked In By"
+msgstr "Зареєструвався"
+
+#: 
+msgid "Checked Out Time"
+msgstr "Час виїзду"
+
+#: 
+msgid "Checked Out By"
+msgstr "Зареєстрував"
+
+#: 
+msgid "Action"
+msgstr "Дія"
+
+#: 
+msgid "No Attendees Assigned to Event"
+msgstr "Жоден учасник не призначений на подію"
+
+#: 
+msgid "Member"
+msgstr "Член"
+
+#: 
+msgid " of the"
+msgstr " з"
+
+#: 
+msgid "(No assigned family)"
+msgstr "(Сім'я відсутня)"
+
+#: 
+msgid "Convert Individuals to Families"
+msgstr "Перетворити людей на сім’ї"
+
+#: 
+msgid "Convert Next"
+msgstr "Перетворити далі"
+
+#: 
+msgid "Convert All"
+msgstr "Перетворити все"
+
+#: 
+msgid "Deposit Slip Number: "
+msgstr "Номер депозитного квитанції: "
+
+#: 
+msgid "Deposit Details: "
+msgstr "Деталі депозиту: "
+
+#: 
+msgid "Close deposit slip (remember to press Save)"
+msgstr "Закрийте депозит (не забудьте натиснути Зберегти)"
+
+#: 
+msgid "Deposit Slip Report"
+msgstr "Звіт про депозит"
+
+#: 
+msgid "Important note: failed transactions will be deleted permanantly when the deposit slip is closed."
+msgstr "Важливе зауваження: невдалі транзакції будуть постійно видалятися, коли депозитний депозит буде закритий."
+
+#: 
+msgid "Deposit Summary: "
+msgstr "Підсумок депозиту: "
+
+#: 
+msgid "Payments on this deposit slip:"
+msgstr "Платежі за цим депозитним листом:"
+
+#: 
+msgid "Import eGive"
+msgstr "Імпортуйте eGive"
+
+#: 
+msgid "Add Payment"
+msgstr "Додати платіж"
+
+#: 
+msgid "Load Authorized Transactions"
+msgstr "Завантажте авторизовані транзакції"
+
+#: 
+msgid "Run Transactions"
+msgstr "Запуск транзакцій"
+
+#: 
+msgid "Directory reports"
+msgstr "Звіти каталогу"
+
+#: 
+msgid "Select classifications to include"
+msgstr "Виберіть класифікації для включення"
+
+#: 
+msgid "Which role is the head of household?"
+msgstr "Яку роль виконує глава домогосподарства?"
+
+#: 
+msgid "Which role is the spouse?"
+msgstr "Яку роль виконує подружжя?"
+
+#: 
+msgid "Which role is a child?"
+msgstr "Яку роль виконує дитина?"
+
+#: 
+msgid "Information to Include"
+msgstr "Інформація для включення"
+
+#: 
+msgid "Address"
+msgstr "Адреса"
+
+#: 
+msgid "Birthday"
+msgstr "День народження"
+
+#: 
+msgid "Family Home Phone"
+msgstr "Сімейний домашній телефон"
+
+#: 
+msgid "Family Work Phone"
+msgstr "Сімейний робочий телефон"
+
+#: 
+msgid "Family Cell Phone"
+msgstr "Сімейний стільниковий телефон"
+
+#: 
+msgid "Family Email"
+msgstr "Сімейна електронна пошта"
+
+#: 
+msgid "Personal Home Phone"
+msgstr "Особистий домашній телефон"
+
+#: 
+msgid "Personal Work Phone"
+msgstr "Особистий робочий телефон"
+
+#: 
+msgid "Personal Cell Phone"
+msgstr "Персональний стільниковий телефон"
+
+#: 
+msgid "Personal Email"
+msgstr "Особиста електронна пошта"
+
+#: 
+msgid "Personal Work/Other Email"
+msgstr "Особиста робота / Інша електронна пошта"
+
+#: 
+msgid "Photos"
+msgstr "Фотографії"
+
+#: 
+msgid "Number of Columns"
+msgstr "Кількість стовпців"
+
+#: 
+msgid "Paper Size"
+msgstr "Розмір паперу"
+
+#: 
+msgid "Font Size"
+msgstr "Розмір шрифту"
+
+#: 
+msgid "Title page"
+msgstr "Титульна сторінка"
+
+#: 
+msgid "Use Title Page"
+msgstr "Використовуйте титульну сторінку"
+
+#: 
+msgid "Church Name"
+msgstr "Назва церкви"
+
+#: 
+msgid "Disclaimer"
+msgstr "Застереження"
+
+#: 
+msgid "Create Directory"
+msgstr "Створити каталог"
+
+#: 
+msgid "Donated Item Editor"
+msgstr "Редактор подарованих предметів"
+
+#: 
+msgid "Save and Add"
+msgstr "Зберегти та додати"
+
+#: 
+msgid "Item"
+msgstr "Елемент"
+
+#: 
+msgid "Multiple items"
+msgstr "Кілька предметів"
+
+#: 
+msgid "Sell to everyone"
+msgstr "Продавати всім"
+
+#: 
+msgid "Estimated Price"
+msgstr "Орієнтовна ціна"
+
+#: 
+msgid "Multiple"
+msgstr "Множинні"
+
+#: 
+msgid "Final Price"
+msgstr "Кінцева ціна"
+
+#: 
+msgid "Replicate item"
+msgstr "Реплікаційний елемент"
+
+#: 
+msgid "Go"
+msgstr "Іди"
+
+#: 
+msgid "Description"
+msgstr "Опис"
+
+#: 
+msgid "Picture URL"
+msgstr "URL-адреса зображення"
+
+#: 
+msgid "Donation Fund Editor"
+msgstr "Редактор фонду пожертв"
+
+#: 
+msgid "Are you sure you want to delete this fund?"
+msgstr "Ви впевнені, що хочете видалити цей фонд?"
+
+#: 
+msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using a delete or 'add new' button!"
+msgstr "Попередження: Змінення полів буде втрачено, якщо ви не натиснете кнопку \"Зберегти зміни\" перед використанням кнопки видалення або додавання нового!"
+
+#: 
+msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
+msgstr "Недійсні поля або виділення. Зміни не збережено! Будь ласка, виправте і спробуйте ще раз!"
+
+#: 
+msgid "No funds have been added yet"
+msgstr "Коштів ще не додано"
+
+#: 
+msgid "Active"
+msgstr "Активний"
+
+#: 
+msgid "Save Changes"
+msgstr "Зберегти зміни"
+
+#: 
+msgid "Add New Fund"
+msgstr "Додати новий фонд"
+
+#: 
+msgid "Church Event Editor"
+msgstr "Редактор церковних подій"
+
+#: 
+msgid "Edit Event Types"
+msgstr "Редагувати типи подій"
+
+#: 
+msgid "Edit Event Type"
+msgstr "Редагувати тип події"
+
+#: 
+msgid "Event Type"
+msgstr "Тип події"
+
+#: 
+msgid "Save Name"
+msgstr "Зберегти ім'я"
+
+#: 
+msgid "Recurrence Pattern"
+msgstr "Шаблон рецидиву"
+
+#: 
+msgid "Attendance Counts"
+msgstr "Кількість відвідувачів"
+
+#: 
+msgid "Add counter"
+msgstr "Додати лічильник"
+
+#: 
+msgid "Return to Event Types"
+msgstr "Повернутися до типів подій"
+
+#: 
+msgid "Family"
+msgstr "Сім'я"
+
+#: 
+msgid "Type"
+msgstr "Тип"
+
+#: 
+msgid "Fiscal Year"
+msgstr "Фінансовий рік"
+
+#: 
+msgid "Amount"
+msgstr "Сума"
+
+#: 
+msgid "Fund"
+msgstr "Фонд"
+
+#: 
+msgid "Bank"
+msgstr "Банку"
+
+#: 
+msgid "Month"
+msgstr "Місяць"
+
+#: 
+msgid "Year"
+msgstr "Рік"
+
+#: 
+msgid "Edit"
+msgstr "Редагувати"
+
+#: 
+msgid "Message"
+msgstr "повідомлення"
+
+#: 
+msgid "Event Attendees"
+msgstr "Учасники заходу"
+
+#: 
+msgid "Event Nonattendees"
+msgstr "Події без учасників"
+
+#: 
+msgid "Event Guests"
+msgstr "Гості заходу"
+
+#: 
+msgid "There "
+msgstr "Там "
+
+#: 
+msgid "Event Title"
+msgstr "Назва події"
+
+#: 
+msgid "Event Date"
+msgstr "Дата події"
+
+#: 
+msgid "Attending Members"
+msgstr "Присутні члени"
+
+#: 
+msgid "Non-Attending Members"
+msgstr "Неприсутні члени"
+
+#: 
+msgid "Guests"
+msgstr "Гості"
+
+#: 
+msgid "There are no events in this category"
+msgstr "У цій категорії немає подій"
+
+#: 
+msgid "Create Event"
+msgstr "Створити подію"
+
+#: 
+msgid "Create a new Event"
+msgstr "Створити нову подію"
+
+#: 
+msgid "Editing Event ID: "
+msgstr "Редагування ідентифікатора події: "
+
+#: 
+msgid " errors. Please see below"
+msgstr " помилки. Дивіться нижче"
+
+#: 
+msgid "Items with a "
+msgstr "Елементи з a "
+
+#: 
+msgid " are required"
+msgstr " вимагаються"
+
+#: 
+msgid "Select your event type"
+msgstr "Виберіть тип події"
+
+#: 
+msgid "You must pick an event type."
+msgstr "Ви повинні вибрати тип події."
+
+#: 
+msgid "Event Desc"
+msgstr "Опис події"
+
+#: 
+msgid "No Attendance counts recorded"
+msgstr "Кількість відвідувачів не зафіксовано"
+
+#: 
+msgid "Attendance Notes: "
+msgstr "Примітки щодо відвідуваності: "
+
+#: 
+msgid "Event Sermon"
+msgstr "Проповідь події"
+
+#: 
+msgid "Event Status"
+msgstr "Статус події"
+
+#: 
+msgid "Return to Events"
+msgstr "Повернутися до подій"
+
+#: 
+msgid "EVENT TYPE NAME"
+msgstr "НАЗВА ТИПУ ПОДІЇ"
+
+#: 
+msgid "Sundays"
+msgstr "Неділі"
+
+#: 
+msgid "Mondays"
+msgstr "Понеділок"
+
+#: 
+msgid "Tuesdays"
+msgstr "Вівторки"
+
+#: 
+msgid "Wednesdays"
+msgstr "Середа"
+
+#: 
+msgid "Thursdays"
+msgstr "Четвер"
+
+#: 
+msgid "Fridays"
+msgstr "П’ятниці"
+
+#: 
+msgid "Saturdays"
+msgstr "Суботи"
+
+#: 
+msgid "DEFAULT START TIME"
+msgstr "ЗАВДАННЯ ЧАС ПОЧАТКУ"
+
+#: 
+msgid "ATTENDANCE COUNTS"
+msgstr "ЛІЧЕННЯ НА УЧАСТЬ"
+
+#: 
+msgid "Optional"
+msgstr "Необов’язково"
+
+#: 
+msgid "Enter a list of the attendance counts you want to include with this event."
+msgstr "Введіть список кількості відвідувачів, який ви хочете включити в цю подію."
+
+#: 
+msgid "Separate each count_name with a comma. e.g. Members, Visitors, Campus, Children"
+msgstr "Відокремте кожне ім'я_читання комою. напр. Учасники, відвідувачі, кампус, діти"
+
+#: 
+msgid "Every event type includes a Total count, you do not need to include it."
+msgstr "Кожен тип події включає загальну кількість, вам не потрібно її включати."
+
+#: 
+msgid "Add Event Type"
+msgstr "Додати тип події"
+
+#: 
+msgid "Custom Family Fields Editor"
+msgstr "Редактор власних сімейних полів"
+
+#: 
+msgid "Default Option"
+msgstr "Варіант за замовчуванням"
+
+#: 
+msgid "Warning:  By deleting this field, you will irrevokably lose all family data assigned for this field!"
+msgstr "Попередження: Видаливши це поле, ви безповоротно втратите всі сімейні дані, призначені для цього поля!"
+
+#: 
+msgid "Warning: Arrow and delete buttons take effect immediately.  Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!"
+msgstr "Попередження: Кнопки зі стрілками та видаленнями набувають чинності негайно. Зміни імен полів будуть втрачені, якщо ви не натиснете кнопку «Зберегти зміни» перед використанням кнопки вгору, вниз, видалення або «додати нову»!"
+
+#: 
+msgid "No custom Family fields have been added yet"
+msgstr "Ще жодного спеціального поля Family не додано"
+
+#: 
+msgid "Special option"
+msgstr "Спеціальний варіант"
+
+#: 
+msgid "Security Option"
+msgstr "Варіант безпеки"
+
+#: 
+msgid "You must select a group."
+msgstr "Ви повинні вибрати групу."
+
+#: 
+msgid "Edit List Options"
+msgstr "Редагувати параметри списку"
+
+#: 
+msgid "Help on types.."
+msgstr "Довідка щодо типів .."
+
+#: 
+msgid "You must enter a name"
+msgstr "Ви повинні ввести ім'я"
+
+#: 
+msgid "That field name already exists."
+msgstr "Ця назва поля вже існує."
+
+#: 
+msgid "Add New Field"
+msgstr "Додати нове поле"
+
+#: 
+msgid "Family Editor"
+msgstr "Сімейний редактор"
+
+#: 
+msgid "First name must be entered"
+msgstr "Потрібно ввести ім’я"
+
+#: 
+msgid "Invalid Year: allowable values are 1901 to 2155"
+msgstr "Недійсний рік: допустимі значення - від 1901 до 2155"
+
+#: 
+msgid "Invalid Birth Date."
+msgstr "Недійсна дата народження."
+
+#: 
+msgid "Not a valid Wedding Date"
+msgstr "Недійсна дата весілля"
+
+#: 
+msgid "Email is Not Valid"
+msgstr "Електронна адреса недійсна"
+
+#: 
+msgid "Family Info"
+msgstr "Інформація про сім’ю"
+
+#: 
+msgid "Contact Info"
+msgstr "Контактна інформація"
+
+#: 
+msgid "Other Info"
+msgstr "Інша інформація"
+
+#: 
+msgid "Ok To Canvass"
+msgstr "Гаразд, щоб полотна"
+
+#: 
+msgid "Assign a Canvasser"
+msgstr "Призначити Canvasser"
+
+#: 
+msgid "Assign a Brave Canvasser"
+msgstr "Призначте Хороброго полотнища"
+
+#: 
+msgid "Envelope Info"
+msgstr "Інформація про конверт"
+
+#: 
+msgid "Custom Fields"
+msgstr "Спеціальні поля"
+
+#: 
+msgid "Family Members"
+msgstr "Члени сім'ї"
+
+#: 
+msgid "You may create family members now or add them later.  All entries will become <i>new</i> person records."
+msgstr "Ви можете створити членів сім'ї зараз або додати їх пізніше. Усі записи стануть <i> новими </i> записами осіб."
+
+#: 
+msgid "First"
+msgstr "Спочатку"
+
+#: 
+msgid "Middle"
+msgstr "Середній"
+
+#: 
+msgid "Last"
+msgstr "Останній"
+
+#: 
+msgid "Role"
+msgstr "Роль"
+
+#: 
+msgid "Select Gender"
+msgstr "Виберіть стать"
+
+#: 
+msgid "Select Role"
+msgstr "Виберіть Роль"
+
+#: 
+msgid "Unknown"
+msgstr "Невідомо"
+
+#: 
+msgid "January"
+msgstr "Січня"
+
+#: 
+msgid "February"
+msgstr "Лютий"
+
+#: 
+msgid "March"
+msgstr "Березень"
+
+#: 
+msgid "April"
+msgstr "Квітень"
+
+#: 
+msgid "May"
+msgstr "Може"
+
+#: 
+msgid "June"
+msgstr "Червень"
+
+#: 
+msgid "July"
+msgstr "Липень"
+
+#: 
+msgid "August"
+msgstr "Серпня"
+
+#: 
+msgid "September"
+msgstr "Вересень"
+
+#: 
+msgid "October"
+msgstr "Жовтень"
+
+#: 
+msgid "November"
+msgstr "Листопад"
+
+#: 
+msgid "December"
+msgstr "Грудень"
+
+#: 
+msgid "Unk"
+msgstr "Дядько"
+
+#: 
+msgid "Family List"
+msgstr "Сімейний список"
+
+#: 
+msgid "Add Family"
+msgstr "Додати сім’ю"
+
+#: 
+msgid "Created"
+msgstr "Створено"
+
+#: 
+msgid "Edited"
+msgstr "Відредаговано"
+
+#: 
+msgid "Envelope Number"
+msgstr "Номер конверта"
+
+#: 
+msgid "Verify Info"
+msgstr "Перевірити інформацію"
+
+#: 
+msgid "Add New Member"
+msgstr "Додати нового учасника"
+
+#: 
+msgid "Previous Family"
+msgstr "Попередня сім'я"
+
+#: 
+msgid "Next Family"
+msgstr "Наступна сім'я"
+
+#: 
+msgid "Delete this Family"
+msgstr "Видалити цю сім’ю"
+
+#: 
+msgid "Upload Photo"
+msgstr "Завантажити фото"
+
+#: 
+msgid "Delete Photo"
+msgstr "Видалити фото"
+
+#: 
+msgid "Add a Note"
+msgstr "Додайте примітку"
+
+#: 
+msgid "Add All Family Members to Cart"
+msgstr "Додати всіх членів сім'ї в кошик"
+
+#: 
+msgid "Timeline"
+msgstr "Часова шкала"
+
+#: 
+msgid "Pledges and Payments"
+msgstr "Поручення та платежі"
+
+#: 
+msgid "No property assignments."
+msgstr "Немає присвоєння майна."
+
+#: 
+msgid "Value"
+msgstr "Значення"
+
+#: 
+msgid "Edit Value"
+msgstr "Редагувати значення"
+
+#: 
+msgid "Assign a New Property"
+msgstr "Призначити нове майно"
+
+#: 
+msgid "Assign"
+msgstr "Призначити"
+
+#: 
+msgid "Date Updated"
+msgstr "Дата оновлення"
+
+#: 
+msgid "Updated By"
+msgstr "Оновлено"
+
+#: 
+msgid "Show Pledges"
+msgstr "Показати обіцянки"
+
+#: 
+msgid "Show Payments"
+msgstr "Показати платежі"
+
+#: 
+msgid "Since"
+msgstr "Оскільки"
+
+#: 
+msgid "Update"
+msgstr "Оновлення"
+
+#: 
+msgid "Pledge or Payment"
+msgstr "Застава або платіж"
+
+#: 
+msgid "Date"
+msgstr "Дата"
+
+#: 
+msgid "NonDeductible"
+msgstr "Не вираховується"
+
+#: 
+msgid "Schedule"
+msgstr "Розклад"
+
+#: 
+msgid "Method"
+msgstr "Метод"
+
+#: 
+msgid "Comment"
+msgstr "Прокоментуйте"
+
+#: 
+msgid "Add a new pledge"
+msgstr "Додайте нову заставу"
+
+#: 
+msgid "Add a new payment"
+msgstr "Додайте новий платіж"
+
+#: 
+msgid " Canvass Entry"
+msgstr " Запис полотна"
+
+#: 
+msgid "Close"
+msgstr "Закрити"
+
+#: 
+msgid "Confirm Delete"
+msgstr "Підтвердьте Видалити"
+
+#: 
+msgid "You are about to delete the profile photo, this procedure is irreversible."
+msgstr "Ви збираєтеся видалити фотографію профілю, ця процедура незворотна."
+
+#: 
+msgid "Do you want to proceed?"
+msgstr "Ви хочете продовжити?"
+
+#: 
+msgid "You are about to email copy of the family information to the following emails"
+msgstr "Ви збираєтесь надіслати копію сімейної інформації на такі електронні листи"
+
+#: 
+msgid "Financial Reports"
+msgstr "Фінансові звіти"
+
+#: 
+msgid "No records were returned from the previous report."
+msgstr "З попереднього звіту не повернуто жодних записів."
+
+#: 
+msgid "Report Type:"
+msgstr "Тип звіту:"
+
+#: 
+msgid "Select Report Type"
+msgstr "Виберіть Тип звіту"
+
+#: 
+msgid "Pledge Summary"
+msgstr "Підсумок застави"
+
+#: 
+msgid "Pledge Family Summary"
+msgstr "Підсумок сім'ї про заставу"
+
+#: 
+msgid "Pledge Reminders"
+msgstr "Нагадування про заставу"
+
+#: 
+msgid "Voting Members"
+msgstr "Голосування членів"
+
+#: 
+msgid "Giving Report (Tax Statements)"
+msgstr "Надання звіту (податкові звіти)"
+
+#: 
+msgid "Zero Givers"
+msgstr "Нульові дарувальники"
+
+#: 
+msgid "Individual Deposit Report"
+msgstr "Індивідуальний звіт про депозит"
+
+#: 
+msgid "Advanced Deposit Report"
+msgstr "Розширений звіт про депозит"
+
+#: 
+msgid "Next"
+msgstr "Далі"
+
+#: 
+msgid "Filter by Family"
+msgstr "Фільтрувати за сім'єю"
+
+#: 
+msgid "Report Start Date:"
+msgstr "Дата початку звіту:"
+
+#: 
+msgid "Report End Date:"
+msgstr "Дата завершення звіту:"
+
+#: 
+msgid "Apply Report Dates To:"
+msgstr "Застосувати дати звітів до:"
+
+#: 
+msgid "Deposit Date (Default)"
+msgstr "Дата вкладу (за замовчуванням)"
+
+#: 
+msgid "Payment Date"
+msgstr "Дата оплати"
+
+#: 
+msgid "Filter by Deposit:"
+msgstr "Фільтрувати за депозитом:"
+
+#: 
+msgid "If deposit is selected, date criteria will be ignored."
+msgstr "Якщо обрано депозит, критерії дати будуть проігноровані."
+
+#: 
+msgid "All deposits within date range"
+msgstr "Усі депозити в межах діапазону дат"
+
+#: 
+msgid "Filter by Payment Type:"
+msgstr "Фільтрувати за типом оплати:"
+
+#: 
+msgid "All Methods"
+msgstr "Усі методи"
+
+#: 
+msgid "Check"
+msgstr "Перевірте"
+
+#: 
+msgid "Cash"
+msgstr "Готівкою"
+
+#: 
+msgid "Bank Draft"
+msgstr "Банківський чек"
+
+#: 
+msgid "eGive"
+msgstr "eGive"
+
+#: 
+msgid "Minimun Total Amount:"
+msgstr "Мінімальна загальна сума:"
+
+#: 
+msgid "0 - No Minimum"
+msgstr "0 - відсутність мінімуму"
+
+#: 
+msgid "Other Settings"
+msgstr "Інші налаштування"
+
+#: 
+msgid "Include:"
+msgstr "Включати:"
+
+#: 
+msgid "Only Payments with Pledges"
+msgstr "Лише платежі під заставу"
+
+#: 
+msgid "All Payments"
+msgstr "Усі платежі"
+
+#: 
+msgid "Generate:"
+msgstr "Створити:"
+
+#: 
+msgid "Only Families with unpaid pledges"
+msgstr "Тільки сім'ї з неоплаченими заставами"
+
+#: 
+msgid "All Families"
+msgstr "Усі сім'ї"
+
+#: 
+msgid "Report Heading:"
+msgstr "Заголовок звіту:"
+
+#: 
+msgid "Graphic"
+msgstr "Графічний"
+
+#: 
+msgid "Church Address"
+msgstr "Адреса церкви"
+
+#: 
+msgid "Blank"
+msgstr "Пустий"
+
+#: 
+msgid "Remittance Slip:"
+msgstr "Грошовий переказ:"
+
+#: 
+msgid "Sort Data by:"
+msgstr "Сортувати дані за:"
+
+#: 
+msgid "Deposit"
+msgstr "Депозит"
+
+#: 
+msgid "All Data"
+msgstr "Усі дані"
+
+#: 
+msgid "Moderate Detail"
+msgstr "Помірні деталі"
+
+#: 
+msgid "Summary Data"
+msgstr "Зведені дані"
+
+#: 
+msgid "Voting members must have made<br> a donation within this many years<br> (0 to not require a donation):"
+msgstr "Члени, що брали участь у голосуванні, мали внести <br> пожертву протягом багатьох років <br> (0, щоб не вимагати пожертви):"
+
+#: 
+msgid "CSV"
+msgstr "CSV"
+
+#: 
+msgid "Back"
+msgstr "Назад"
+
+#: 
+msgid "Create Report"
+msgstr "Створити звіт"
+
+#: 
+msgid "Deposit Listing"
+msgstr "Перелік депозитів"
+
+#: 
+msgid "Add New Deposit"
+msgstr "Додати новий депозит"
+
+#: 
+msgid "Deposits: "
+msgstr "Депозити: "
+
+#: 
+msgid "Delete Selected Rows"
+msgstr "Видалити вибрані рядки"
+
+#: 
+msgid "Export Selected Rows (OFX)"
+msgstr "Експортувати вибрані рядки (OFX)"
+
+#: 
+msgid "Export Selected Rows (CSV)"
+msgstr "Експортувати вибрані рядки (CSV)"
+
+#: 
+msgid "Fundraiser Listing"
+msgstr "Список збору коштів"
+
+#: 
+msgid "Date Start"
+msgstr "Дата початку"
+
+#: 
+msgid "Apply Filters"
+msgstr "Застосувати фільтри"
+
+#: 
+msgid "Date End"
+msgstr "Дата закінчення"
+
+#: 
+msgid "Clear Filters"
+msgstr "Очистити фільтри"
+
+#: 
+msgid "Previous Page"
+msgstr "Попередня сторінка"
+
+#: 
+msgid "Next Page"
+msgstr "Наступна сторінка"
+
+#: 
+msgid "Display:"
+msgstr "Дисплей:"
+
+#: 
+msgid "Number"
+msgstr "Кількість"
+
+#: 
+msgid "Create New Fund Raiser"
+msgstr "Створити новий збірник коштів"
+
+#: 
+msgid "Add Donated Item"
+msgstr "Додати подарований предмет"
+
+#: 
+msgid "Generate Catalog"
+msgstr "Створити каталог"
+
+#: 
+msgid "Generate Bid Sheets"
+msgstr "Сформувати таблиці заявок"
+
+#: 
+msgid "Generate Certificates"
+msgstr "Сформувати сертифікати"
+
+#: 
+msgid "Donated items for this fundraiser"
+msgstr "Пожертви для цього збору коштів"
+
+#: 
+msgid "Donor"
+msgstr "Донор"
+
+#: 
+msgid "Buyer"
+msgstr "Покупець"
+
+#: 
+msgid "Sale Price"
+msgstr "Ціна розпродажу"
+
+#: 
+msgid "Material Value"
+msgstr "Матеріальна цінність"
+
+#: 
+msgid "Minimum Price"
+msgstr "Мінімальна ціна"
+
+#: 
+msgid "Family Geographic Utilities"
+msgstr "Сімейні географічні утиліти"
+
+#: 
+msgid "Select Family:"
+msgstr "Виберіть сім'ю:"
+
+#: 
+msgid "Maximum number of neighbors:"
+msgstr "Максимальна кількість сусідів:"
+
+#: 
+msgid "Maximum distance"
+msgstr "Максимальна відстань"
+
+#: 
+msgid "Data file format:"
+msgstr "Формат файлу даних:"
+
+#: 
+msgid "GPS Visualizer"
+msgstr "GPS візуалізатор"
+
+#: 
+msgid "Street Atlas USA"
+msgstr "Вуличний атлас США"
+
+#: 
+msgid "Include families in coordinate file:"
+msgstr "Включіть сім’ї у файл координат:"
+
+#: 
+msgid "Neighbor Families"
+msgstr "Сусідські сім'ї"
+
+#: 
+msgid "Make Data File"
+msgstr "Зробити файл даних"
+
+#: 
+msgid "Show Neighbors"
+msgstr "Показати сусідів"
+
+#: 
+msgid "Distance"
+msgstr "Відстань"
+
+#: 
+msgid "Direction"
+msgstr "Напрямок"
+
+#: 
+msgid "Latitude"
+msgstr "Широта"
+
+#: 
+msgid "Longitude"
+msgstr "Довгота"
+
+#: 
+msgid "Add to Cart"
+msgstr "Додати в кошик"
+
+#: 
+msgid "Intersect with Cart"
+msgstr "Перетин з кошиком"
+
+#: 
+msgid "Remove from Cart"
+msgstr "Видалити з кошика"
+
+#: 
+msgid "Text for Event ID: "
+msgstr "Текст для ідентифікатора події: "
+
+#: 
+msgid "Group Editor"
+msgstr "Редактор групи"
+
+#: 
+msgid "Group Settings"
+msgstr "Налаштування групи"
+
+#: 
+msgid "Type of Group"
+msgstr "Тип групи"
+
+#: 
+msgid "Group Member Roles"
+msgstr "Ролі членів групи"
+
+#: 
+msgid "Clone roles"
+msgstr "Клонувати ролі"
+
+#: 
+msgid "from group"
+msgstr "з групи"
+
+#: 
+msgid "Select a group"
+msgstr "Виберіть групу"
+
+#: 
+msgid "Group Specific Properties: "
+msgstr "Властивості групи: "
+
+#: 
+msgid "Enabled"
+msgstr "Увімкнено"
+
+#: 
+msgid "Edit Group-Specific Properties Form"
+msgstr "Редагування форми властивостей, специфічних для групи"
+
+#: 
+msgid "Disabled"
+msgstr "Інваліди"
+
+#: 
+msgid "Enable Group Specific Properties"
+msgstr "Увімкніть властивості групи"
+
+#: 
+msgid "Group Roles"
+msgstr "Групові ролі"
+
+#: 
+msgid "Group role name changes are saved as soon as the box loses focus"
+msgstr "Зміни імен рольових ролей зберігаються, як тільки поле втрачає фокус"
+
+#: 
+msgid "New Role"
+msgstr "Нова роль"
+
+#: 
+msgid "Add New Role"
+msgstr "Додати нову роль"
+
+#: 
+msgid "Group Listing"
+msgstr "Перелік груп"
+
+#: 
+msgid "Add New Group"
+msgstr "Додати нову групу"
+
+#: 
+msgid "Submit"
+msgstr "Подати"
+
+#: 
+msgid "Group Member Properties Editor"
+msgstr "Редактор властивостей учасника групи"
+
+#: 
+msgid "This group currently has no properties!  You can add them in the Group Editor."
+msgstr "На даний момент ця група не має властивостей! Ви можете додати їх у редакторі групи."
+
+#: 
+msgid "Return to Person Record"
+msgstr "Повернутися до Особистого запису"
+
+#: 
+msgid "Editing"
+msgstr "Редагування"
+
+#: 
+msgid "data for member"
+msgstr "дані для члена"
+
+#: 
+msgid "Group-Specific Properties Form Editor:"
+msgstr "Редактор форми властивостей для групи:"
+
+#: 
+msgid "No properties have been added yet"
+msgstr "Жодних властивостей ще не додано"
+
+#: 
+msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete, or 'add new' button!"
+msgstr "Попередження: Змінення полів буде втрачено, якщо не натиснути кнопку «Зберегти зміни» перед використанням кнопки вгору, вниз, видалення або «додати нову»!"
+
+#: 
+msgid "Show in"
+msgstr "Показати в"
+
+#: 
+msgid "Person View"
+msgstr "Перегляд особи"
+
+#: 
+msgid "Group reports"
+msgstr "Групові звіти"
+
+#: 
+msgid "Select the group you would like to report"
+msgstr "Виберіть групу, про яку ви хочете повідомити"
+
+#: 
+msgid "No Role Selected"
+msgstr "Роль не вибрано"
+
+#: 
+msgid "Only cart persons?"
+msgstr "Тільки вози?"
+
+#: 
+msgid "Report Model"
+msgstr "Модель звіту"
+
+#: 
+msgid "Report for group and role selected"
+msgstr "Звіт для вибраної групи та ролі"
+
+#: 
+msgid "Report for any role in group selected"
+msgstr "Звіт про будь-яку роль у вибраній групі"
+
+#: 
+msgid "Select which information you want to include"
+msgstr "Виберіть, яку інформацію ви хочете включити"
+
+#: 
+msgid "Standard Info"
+msgstr "Стандартна інформація"
+
+#: 
+msgid "Other Email"
+msgstr "Інша електронна пошта"
+
+#: 
+msgid "GroupRole"
+msgstr "GroupRole"
+
+#: 
+msgid "Group-Specific Property Fields"
+msgstr "Групові поля властивостей"
+
+#: 
+msgid "Undefined"
+msgstr "Не визначено"
+
+#: 
+msgid "Group View"
+msgstr "Перегляд групи"
+
+#: 
+msgid "Group Functions"
+msgstr "Функції групи"
+
+#: 
+msgid "Edit this Group"
+msgstr "Редагувати цю групу"
+
+#: 
+msgid "Delete this Group"
+msgstr "Видалити цю групу"
+
+#: 
+msgid "Confirm Delete Group"
+msgstr "Підтвердьте Видалити групу"
+
+#: 
+msgid "Please confirm deletion of this group record"
+msgstr "Будь ласка, підтвердьте видалення цього запису групи"
+
+#: 
+msgid "This will also delete all Roles and Group-Specific Property data associated with this Group record."
+msgstr "Це також призведе до видалення всіх даних про ролі та властивості групи, пов’язаних із цим записом групи."
+
+#: 
+msgid "All group membership and properties will be destroyed.  The group members themselves will not be altered."
+msgstr "Усі члени групи та майно будуть знищені. Самі учасники групи не будуть змінені."
+
+#: 
+msgid "Please select target group for members"
+msgstr "Виберіть цільову групу для членів"
+
+#: 
+msgid "Add Group Members to Cart"
+msgstr "Додайте учасників групи в кошик"
+
+#: 
+msgid "Map this group"
+msgstr "Складіть карту цієї групи"
+
+#: 
+msgid "Email Group"
+msgstr "Група електронної пошти"
+
+#: 
+msgid "Total Members"
+msgstr "Всього учасників"
+
+#: 
+msgid "Default Role"
+msgstr "Роль за замовчуванням"
+
+#: 
+msgid "Group-Specific Properties"
+msgstr "Групові специфічні властивості"
+
+#: 
+msgid "Disabled for this group."
+msgstr "Вимкнено для цієї групи."
+
+#: 
+msgid "Assigned Properties"
+msgstr "Присвоєні властивості"
+
+#: 
+msgid "Group Members:"
+msgstr "Учасники групи:"
+
+#: 
+msgid "Group members: "
+msgstr "Члени групи: "
+
+#: 
+msgid "Remove Selected Members from group"
+msgstr "Видалити вибраних членів із групи"
+
+#: 
+msgid "Add Selected Members to Cart"
+msgstr "Додати вибраних учасників у кошик"
+
+#: 
+msgid "Add Selected Members to Group"
+msgstr "Додати вибраних членів до групи"
+
+#: 
+msgid "Move Selected Members to Group"
+msgstr "Перемістити вибраних членів до групи"
+
+#: 
+msgid "Add Group Member: "
+msgstr "Додати учасника групи: "
+
+#: 
+msgid "Letters and Mailing Labels"
+msgstr "Листи та поштові ярлики"
+
+#: 
+msgid "Newsletter labels"
+msgstr "Етикетки бюлетенів"
+
+#: 
+msgid "Confirm data labels"
+msgstr "Підтвердьте мітки даних"
+
+#: 
+msgid "Listing Events of Type = "
+msgstr "Перелік подій типу = "
+
+#: 
+msgid "Listing All Church Events"
+msgstr "Перелік усіх церковних подій"
+
+#: 
+msgid "Select Event Types To Display"
+msgstr "Виберіть типи подій для відображення"
+
+#: 
+msgid "Display Events in Year"
+msgstr "Відобразити події в році"
+
+#: 
+msgid "Start Date/Time"
+msgstr "Дата / час початку"
+
+#: 
+msgid "No Attendance Recorded"
+msgstr "Відсутність зафіксовано"
+
+#: 
+msgid "Attendees"
+msgstr "Присутні"
+
+#: 
+msgid " Monthly Averages"
+msgstr " Середньомісячні"
+
+#: 
+msgid "Invalid login or password"
+msgstr "Недійсний логін або пароль"
+
+#: 
+msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
+msgstr "Забагато невдалих входів: ваш обліковий запис заблоковано. Зверніться до адміністратора."
+
+#: 
+msgid "Please Login"
+msgstr "Будь ласка, увійдіть"
+
+#: 
+msgid "Email/Username"
+msgstr "Електронна адреса / ім’я користувача"
+
+#: 
+msgid "Password"
+msgstr "Пароль"
+
+#: 
+msgid "Login"
+msgstr "Увійти"
+
+#: 
+msgid "Envelope Manager"
+msgstr "Диспетчер конвертів"
+
+#: 
+msgid "Update Family Records"
+msgstr "Оновіть сімейні записи"
+
+#: 
+msgid "Update Envelopes"
+msgstr "Оновити конверти"
+
+#: 
+msgid "Confirm"
+msgstr "Підтвердьте"
+
+#: 
+msgid "Sort by"
+msgstr "Сортувати за"
+
+#: 
+msgid "Zero"
+msgstr "Нуль"
+
+#: 
+msgid "Assign starting at #"
+msgstr "Призначати починаючи з #"
+
+#: 
+msgid "Unable to display map due to missing Church Latitude or Longitude. Please update the church Address in the settings menu."
+msgstr "Не вдається відобразити карту через відсутність церковної широти чи довготи. Будь ласка, оновіть Адресу церкви в меню налаштувань."
+
+#: 
+msgid "Google Map API key is not set. The Map will work for smaller set of locations. Please create a Key in the maps sections of the setting menu."
+msgstr "Ключ API Google Map не встановлений. Карта працюватиме для менших наборів місць. Будь ласка, створіть ключ у розділах карт меню налаштувань."
+
+#: 
+msgid "Member Role Change"
+msgstr "Зміна ролі члена"
+
+#: 
+msgid "Member's Name"
+msgstr "Ім'я учасника"
+
+#: 
+msgid "Current Role"
+msgstr "Поточна роль"
+
+#: 
+msgid "All People"
+msgstr "Все населення"
+
+#: 
+msgid "Classifications Manager"
+msgstr "Менеджер класифікацій"
+
+#: 
+msgid "Email All"
+msgstr "Надіслати всім електронною поштою"
+
+#: 
+msgid "Email All (BCC)"
+msgstr "Надіслати всім електронною поштою (BCC)"
+
+#: 
+msgid "Family Roles"
+msgstr "Сімейні ролі"
+
+#: 
+msgid "Family Geographic"
+msgstr "Family Geographic"
+
+#: 
+msgid "Update All Family Coordinates"
+msgstr "Оновіть усі сімейні координати"
+
+#: 
+msgid "Volunteer Opportunities"
+msgstr "Волонтерські можливості"
+
+#: 
+msgid "Families"
+msgstr "Сім'ї"
+
+#: 
+msgid "See all Families"
+msgstr "Переглянути всі сім'ї"
+
+#: 
+msgid "People"
+msgstr "Люди"
+
+#: 
+msgid "See All People"
+msgstr "Див. Усі люди"
+
+#: 
+msgid "Sunday School Kids"
+msgstr "Діти недільної школи"
+
+#: 
+msgid "More info"
+msgstr "Більше інформації"
+
+#: 
+msgid "Reports on groups and roles"
+msgstr "Звіти про групи та ролі"
+
+#: 
+msgid "Report on group and roles selected (it may be a multi-page PDF)."
+msgstr "Звіт про вибрану групу та ролі (це може бути багатосторінковий PDF)."
+
+#: 
+msgid "Generate letters and mailing labels."
+msgstr "Створюйте листи та поштові ярлики."
+
+#: 
+msgid "US Address Verification Report"
+msgstr "Звіт про перевірку адреси США"
+
+#: 
+msgid "Generate report comparing all US family addresses with United States Postal Service Standard Address Format.<br>"
+msgstr "Створіть звіт, порівнюючи всі сімейні адреси США зі стандартним форматом адрес поштової служби США. <br>"
+
+#: 
+msgid "Role / Gender"
+msgstr "Роль / стать"
+
+#: 
+msgid "Count"
+msgstr "Рахувати"
+
+#: 
+msgid "People Classification"
+msgstr "Класифікація людей"
+
+#: 
+msgid "Gender Demographics"
+msgstr "Гендерна демографія"
+
+#: 
+msgid "Men"
+msgstr "Чоловіки"
+
+#: 
+msgid "Women"
+msgstr "Жінки"
+
+#: 
+msgid "Boys"
+msgstr "Хлопчики"
+
+#: 
+msgid "Girls"
+msgstr "Дівчатка"
+
+#: 
+msgid "Sunday School Classes"
+msgstr "Заняття в недільній школі"
+
+#: 
+msgid "Deposit Tracking"
+msgstr "Відстеження депозитів"
+
+#: 
+msgid "Latest Families"
+msgstr "Останні сім'ї"
+
+#: 
+msgid "Family Name"
+msgstr "Прізвище"
+
+#: 
+msgid "Updated Families"
+msgstr "Оновлені сім'ї"
+
+#: 
+msgid "Updated"
+msgstr "Оновлено"
+
+#: 
+msgid "Note Delete Confirmation"
+msgstr "Примітка Видалити підтвердження"
+
+#: 
+msgid "Please confirm deletion of this note"
+msgstr "Будь ласка, підтвердьте видалення цієї примітки"
+
+#: 
+msgid "Yes, delete this record"
+msgstr "Так, видалити цей запис"
+
+#: 
+msgid "(this action cannot be undone)"
+msgstr "(цю дію не можна скасувати)"
+
+#: 
+msgid "Note Editor"
+msgstr "Редактор приміток"
+
+#: 
+msgid "Private"
+msgstr "Приватна"
+
+#: 
+msgid "Person"
+msgstr "Людина"
+
+#: 
+msgid "Group"
+msgstr "Група"
+
+#: 
+msgid "Option"
+msgstr "Варіант"
+
+#: 
+msgid "Warning: Removing will reset all assignments for all persons with the assignment!"
+msgstr "Попередження: Видалення призведе до скидання всіх завдань для всіх осіб, які мають це призначення!"
+
+#: 
+msgid "Error: Duplicate"
+msgstr "Помилка: копія"
+
+#: 
+msgid "Default"
+msgstr "За замовчуванням"
+
+#: 
+msgid "Duplicate name found."
+msgstr "Знайдено копію назви."
+
+#: 
+msgid "Make Default"
+msgstr "Використовувати за замовчуванням"
+
+#: 
+msgid "Exit"
+msgstr "Вихід"
+
+#: 
+msgid "Add New"
+msgstr "Додати новий"
+
+#: 
+msgid "Error: A "
+msgstr "Помилка: A "
+
+#: 
+msgid " by that name already exists."
+msgstr " під цією назвою вже існує."
+
+#: 
+msgid "Buyer Number Editor"
+msgstr "Редактор номерів покупця"
+
+#: 
+msgid "Generate Statement"
+msgstr "Сформувати заяву"
+
+#: 
+msgid "Buyers for this fundraiser:"
+msgstr "Покупці цього збору коштів:"
+
+#: 
+msgid "Select all"
+msgstr "Вибрати все"
+
+#: 
+msgid "Select none"
+msgstr "Не вибирайте жодного"
+
+#: 
+msgid "Add Buyer"
+msgstr "Додати покупця"
+
+#: 
+msgid "Generate Statements for Selected"
+msgstr "Сформувати заяви для вибраного"
+
+#: 
+msgid "Select"
+msgstr "Виберіть"
+
+#: 
+msgid "Custom Person Fields Editor"
+msgstr "Редактор полів користувача"
+
+#: 
+msgid "Warning:  By deleting this field, you will irrevokably lose all person data assigned for this field!"
+msgstr "Попередження: Видаливши це поле, ви безповоротно втратите всі дані особи, призначені для цього поля!"
+
+#: 
+msgid "No custom person fields have been added yet"
+msgstr "Поля користувацької особи ще не додано"
+
+#: 
+msgid "Person Editor"
+msgstr "Редактор персон"
+
+#: 
+msgid "You must enter a Last Name if no Family is selected."
+msgstr "Ви не повинні ввести прізвище, якщо не вибрано жодної родини."
+
+#: 
+msgid "Not a valid Friend Date"
+msgstr "Недійсна дата друга"
+
+#: 
+msgid "Not a valid Membership Date"
+msgstr "Недійсна дата членства"
+
+#: 
+msgid "Work Email is Not Valid"
+msgstr "Робоча електронна адреса недійсна"
+
+#: 
+msgid "Red text"
+msgstr "Червоний текст"
+
+#: 
+msgid "indicates items inherited from the associated family record."
+msgstr "вказує на елементи, успадковані від пов'язаного сімейного запису."
+
+#: 
+msgid "Personal Info"
+msgstr "Особиста інформація"
+
+#: 
+msgid "Mr., Mrs., Dr., Rev."
+msgstr "Пан, пані, доктор, преподобний"
+
+#: 
+msgid "Jr., Sr., III"
+msgstr "Молодший, старший, III"
+
+#: 
+msgid "Birth Month"
+msgstr "Місяць народження"
+
+#: 
+msgid "Select Month"
+msgstr "Виберіть місяць"
+
+#: 
+msgid "Birth Day"
+msgstr "День народження"
+
+#: 
+msgid "Select Day"
+msgstr "Виберіть День"
+
+#: 
+msgid "Birth Year"
+msgstr "рік народження"
+
+#: 
+msgid "Hide Age"
+msgstr "Приховати вік"
+
+#: 
+msgid "Create a new family (using last name)"
+msgstr "Створити нову родину (використовуючи прізвище)"
+
+#: 
+msgid "Membership Info"
+msgstr "Інформація про членство"
+
+#: 
+msgid "Friend Date"
+msgstr "Дата друзів"
+
+#: 
+msgid "Person Profile"
+msgstr "Профіль особи"
+
+#: 
+msgid "Not assigned"
+msgstr "Не призначено"
+
+#: 
+msgid "About Me"
+msgstr "Про мене"
+
+#: 
+msgid "Printable Page"
+msgstr "Сторінка для друку"
+
+#: 
+msgid "Edit \"Why Came\" Notes"
+msgstr "Редагувати примітки \"Чому прийшов\""
+
+#: 
+msgid "Delete this Record"
+msgstr "Видалити цей запис"
+
+#: 
+msgid "Make User"
+msgstr "Зробити користувачем"
+
+#: 
+msgid "Edit User"
+msgstr "Редагувати користувача"
+
+#: 
+msgid "List Members"
+msgstr "Список учасників"
+
+#: 
+msgid "No group assignments."
+msgstr "Немає групових завдань."
+
+#: 
+msgid "Change Role"
+msgstr "Зміна ролі"
+
+#: 
+msgid "Update Properties"
+msgstr "Властивості оновлення"
+
+#: 
+msgid "Assign New Group"
+msgstr "Призначити нову групу"
+
+#: 
+msgid "No volunteer opportunity assignments."
+msgstr "Немає можливостей для волонтерів."
+
+#: 
+msgid "Assign a New Volunteer Opportunity"
+msgstr "Призначте нову можливість для волонтерів"
+
+#: 
+msgid "Electronic Transaction Details"
+msgstr "Інформація про електронні транзакції"
+
+#: 
+msgid "NonDeductible amount can't be greater than total amount."
+msgstr "Сума, що не підлягає відшкодуванню, не може бути більшою за загальну суму."
+
+#: 
+msgid "At least one fund must have a non-zero amount."
+msgstr "Принаймні один фонд повинен мати ненульову суму."
+
+#: 
+msgid "Must specify non-zero check number"
+msgstr "Потрібно вказати ненульовий номер перевірки"
+
+#: 
+msgid "Check number not valid for 'CASH' payment"
+msgstr "Номер чека недійсний для оплати \"ГОТОВИМИ\""
+
+#: 
+msgid "Pledge Editor"
+msgstr "Редактор застави"
+
+#: 
+msgid "Payment Editor: "
+msgstr "Редактор платежів: "
+
+#: 
+msgid " Deposit Slip #"
+msgstr " Депозитарна розписка #"
+
+#: 
+msgid " more entries will fit."
+msgstr " підійде більше записів."
+
+#: 
+msgid "Payment Editor - Modify Existing Payment"
+msgstr "Редактор платежів - змініть наявний платіж"
+
+#: 
+msgid "Payment Editor - New Deposit Slip Will Be Created"
+msgstr "Редактор платежів - буде створено новий депозит"
+
+#: 
+msgid "Deposit closed"
+msgstr "Депозит закритий"
+
+#: 
+msgid "Find family->"
+msgstr "Знайти сім'ю->"
+
+#: 
+msgid "Payment Schedule"
+msgstr "Графік платежів"
+
+#: 
+msgid "Select Schedule"
+msgstr "Виберіть Розклад"
+
+#: 
+msgid "Weekly"
+msgstr "Щотижня"
+
+#: 
+msgid "Monthly"
+msgstr "Щомісяця"
+
+#: 
+msgid "Quarterly"
+msgstr "Щоквартально"
+
+#: 
+msgid "Once"
+msgstr "Одного разу"
+
+#: 
+msgid "Other"
+msgstr "Інший"
+
+#: 
+msgid "Payment by"
+msgstr "Оплата за"
+
+#: 
+msgid "Scan check"
+msgstr "Перевірка сканування"
+
+#: 
+msgid "find family from check account #"
+msgstr "знайти родину з чекового рахунку №"
+
+#: 
+msgid "Set default check account number for family"
+msgstr "Встановіть номер чекового рахунку за замовчуванням для сім'ї"
+
+#: 
+msgid "Fund Name"
+msgstr "Назва фонду"
+
+#: 
+msgid "Non-deductible amount"
+msgstr "Сума, що не підлягає вирахуванню"
+
+#: 
+msgid "Printable View"
+msgstr "Вид для друку"
+
+#: 
+msgid "Age"
+msgstr "Вік"
+
+#: 
+msgid "Assigned Groups"
+msgstr "Призначені групи"
+
+#: 
+msgid "Group Name"
+msgstr "Назва групи"
+
+#: 
+msgid "Notes:"
+msgstr "Примітки:"
+
+#: 
+msgid "Entered:"
+msgstr "Введено:"
+
+#: 
+msgid "by"
+msgstr "від"
+
+#: 
+msgid "Property successfully assigned."
+msgstr "Властивість успішно призначено."
+
+#: 
+msgid " Property Assignment"
+msgstr " Призначення майна"
+
+#: 
+msgid "Assigning"
+msgstr "Призначення"
+
+#: 
+msgid "Property Delete Confirmation"
+msgstr "Підтвердження видалення властивості"
+
+#: 
+msgid "Please confirm deletion of this property"
+msgstr "Будь ласка, підтвердьте видалення цього ресурсу"
+
+#: 
+msgid "Deleting this Property will also delete all assignments of this Property to any People, Family, or Group records."
+msgstr "Видалення цього Властивості також призведе до видалення всіх призначень цього Властивості для будь-яких записів Люди, Сім'я чи Група."
+
+#: 
+msgid "No, cancel this deletion"
+msgstr "Ні, скасувати це видалення"
+
+#: 
+msgid "Property Editor"
+msgstr "Редактор властивостей"
+
+#: 
+msgid "You must select a type"
+msgstr "Ви повинні вибрати тип"
+
+#: 
+msgid "Select Property Type"
+msgstr "Виберіть Тип власності"
+
+#: 
+msgid "A"
+msgstr "A"
+
+#: 
+msgid "Entering a Prompt value will allow the association of a free-form value."
+msgstr "Введення значення Prompt дозволить асоціювати значення у вільній формі."
+
+#: 
+msgid "Property List"
+msgstr "Перелік властивостей"
+
+#: 
+msgid "Add a New"
+msgstr "Додати новий"
+
+#: 
+msgid "Property"
+msgstr "Власність"
+
+#: 
+msgid "Prompt"
+msgstr "Підкажіть"
+
+#: 
+msgid "Property Type Delete Confirmation"
+msgstr "Тип властивості Видалити підтвердження"
+
+#: 
+msgid "Warning"
+msgstr "Увага"
+
+#: 
+msgid "This property type is still being used by at least one property."
+msgstr "Цей тип властивості все ще використовується принаймні одним ресурсом."
+
+#: 
+msgid "If you delete this type, you will also remove all properties using"
+msgstr "Якщо видалити цей тип, ви також видалите всі властивості за допомогою"
+
+#: 
+msgid "it and lose any corresponding property assignments."
+msgstr "його і втратити відповідні призначення майна."
+
+#: 
+msgid "Please confirm deletion of this Property Type"
+msgstr "Будь ласка, підтвердьте видалення цього типу власності"
+
+#: 
+msgid "Property Type Editor"
+msgstr "Редактор типів властивостей"
+
+#: 
+msgid "Property Type List"
+msgstr "Перелік типів властивостей"
+
+#: 
+msgid "Add a New Property Type"
+msgstr "Додайте новий тип властивості"
+
+#: 
+msgid "Class"
+msgstr "Клас"
+
+#: 
+msgid "Properties"
+msgstr "Властивості"
+
+#: 
+msgid " Property Unassignment"
+msgstr " Відступ майна"
+
+#: 
+msgid "Please confirm removal of this property from this"
+msgstr "Будь ласка, підтвердьте вилучення цього майна з цього"
+
+#: 
+msgid "Unassigning"
+msgstr "Скасування призначення"
+
+#: 
+msgid "Yes, unassign this Property"
+msgstr "Так, скасувати цю властивість"
+
+#: 
+msgid "No, retain this assignment"
+msgstr "Ні, збережіть це доручення"
+
+#: 
+msgid "Query Listing"
+msgstr "Список запитів"
+
+#: 
+msgid "Run a Free-Text Query"
+msgstr "Запустіть текстовий запит"
+
+#: 
+msgid "Free-Text Query"
+msgstr "Запит у вільному тексті"
+
+#: 
+msgid "Export Results to CSV file"
+msgstr "Експортувати результати у файл CSV"
+
+#: 
+msgid "Execute SQL"
+msgstr "Виконайте SQL"
+
+#: 
+msgid "An error occured: "
+msgstr "Сталася помилка: "
+
+#: 
+msgid " record(s) returned"
+msgstr " повернено записи"
+
+#: 
+msgid "Add Results To Cart"
+msgstr "Додати результати в кошик"
+
+#: 
+msgid "Intersect Results With Cart"
+msgstr "Перетинати результати за допомогою кошика"
+
+#: 
+msgid "Remove Results From Cart"
+msgstr "Видаліть результати з кошика"
+
+#: 
+msgid "Return to Query Menu"
+msgstr "Повернутися до меню запитів"
+
+#: 
+msgid "Query View"
+msgstr "Перегляд запитів"
+
+#: 
+msgid "This value is required."
+msgstr "Це значення обов’язкове."
+
+#: 
+msgid "This value must be numeric."
+msgstr "Це значення має бути числовим."
+
+#: 
+msgid "This value must be at least "
+msgstr "Це значення має бути не менше "
+
+#: 
+msgid "This value cannot be more than "
+msgstr "Це значення не може бути більше "
+
+#: 
+msgid " characters long"
+msgstr " символів дов"
+
+#: 
+msgid "This value cannot be less than "
+msgstr "Це значення не може бути менше "
+
+#: 
+msgid "Run Query Again"
+msgstr "Знову запустіть запит"
+
+#: 
+msgid "Execute Query"
+msgstr "Виконати запит"
+
+#: 
+msgid "Software Registration"
+msgstr "Реєстрація програмного забезпечення"
+
+#: 
+msgid "Please register your copy of ChurchCRM by checking over this information and pressing the Send button.  "
+msgstr "Будь ласка, зареєструйте свою копію ChurchCRM, перевіривши цю інформацію та натиснувши кнопку Надіслати.  "
+
+#: 
+msgid "This information is used only to track the usage of this software.  "
+msgstr "Ця інформація використовується лише для відстеження використання цього програмного забезпечення.  "
+
+#: 
+msgid "Send"
+msgstr "Надіслати"
+
+#: 
+msgid "Pledge Reminder Report"
+msgstr "Звіт про нагадування про заставу"
+
+#: 
+msgid "Event Attendance Reports"
+msgstr "Звіти про відвідуваність подій"
+
+#: 
+msgid "Restore Database"
+msgstr "Відновити базу даних"
+
+#: 
+msgid "All donations from this family have been moved to another family."
+msgstr "Усі пожертви від цієї родини були передані іншій родині."
+
+#: 
+msgid "Family Delete Confirmation"
+msgstr "Підтвердження видалення сім’ї"
+
+#: 
+msgid "Please confirm deletion of"
+msgstr "Будь ласка, підтвердьте видалення"
+
+#: 
+msgid "Sorry, there are records of donations from this family. This family may not be deleted."
+msgstr "На жаль, є записи про пожертви від цієї родини. Цю родину не можна видалити."
+
+#: 
+msgid "Return to Family View"
+msgstr "Повернутися до Family View"
+
+#: 
+msgid "WARNING: This family has records of donations and may NOT be deleted until these donations are associated with another family."
+msgstr "ПОПЕРЕДЖЕННЯ. У цій родині є записи про пожертви, і їх НЕ можна видаляти, поки ці пожертви не будуть пов’язані з іншою родиною."
+
+#: 
+msgid "Please select another family with whom to associate these donations:"
+msgstr "Виберіть іншу сім’ю, з якою потрібно пов’язати ці пожертви:"
+
+#: 
+msgid "WARNING: This action can not be undone and may have legal implications!"
+msgstr "ПОПЕРЕДЖЕННЯ: Цю дію не можна скасувати та може мати юридичні наслідки!"
+
+#: 
+msgid "CURRENT FAMILY WITH DONATIONS"
+msgstr "ПОТОЧНА СІМ'Я З ПОЖЕРТВАМИ"
+
+#: 
+msgid "Please confirm deletion of this family record:"
+msgstr "Підтвердьте видалення цього сімейного запису:"
+
+#: 
+msgid "Note: This will also delete all Notes associated with this Family record."
+msgstr "Примітка. Буде також видалено всі примітки, пов’язані з цим сімейним записом."
+
+#: 
+msgid "Delete Family Record ONLY"
+msgstr "Видалити ТІЛЬКИ сімейний запис"
+
+#: 
+msgid "Delete Family Record AND Family Members"
+msgstr "Видалити сімейний запис та членів сім’ї"
+
+#: 
+msgid "Filter and Cart"
+msgstr "Фільтр і кошик"
+
+#: 
+msgid "Listing"
+msgstr "Перелік"
+
+#: 
+msgid "My User Settings"
+msgstr "Мої налаштування користувача"
+
+#: 
+msgid "Variable name"
+msgstr "Назва змінної"
+
+#: 
+msgid "Current Value"
+msgstr "Поточна вартість"
+
+#: 
+msgid "Save Settings"
+msgstr "Зберегти налаштування"
+
+#: 
+msgid "Default User Settings"
+msgstr "Налаштування користувача за замовчуванням"
+
+#: 
+msgid "Set Permission True to give new users the ability to change their current value.<BR>"
+msgstr "Встановіть Permission True, щоб дати новим користувачам можливість змінювати поточне значення. <BR>"
+
+#: 
+msgid "Permission"
+msgstr "Дозвіл"
+
+#: 
+msgid "Base URL"
+msgstr "Базова URL-адреса"
+
+#: 
+msgid "System Settings"
+msgstr "Налаштування системи"
+
+#: 
+msgid "Tax Report"
+msgstr "Податковий звіт"
+
+#: 
+msgid "Calendar Year"
+msgstr "Календарний рік"
+
+#: 
+msgid "US Address Verification"
+msgstr "Перевірка адреси США"
+
+#: 
+msgid "Update Latitude & Longitude"
+msgstr "Оновлення широти та довготи"
+
+#: 
+msgid "User Delete Confirmation"
+msgstr "Підтвердження видалення користувача"
+
+#: 
+msgid "Please confirm removal of user status from:"
+msgstr "Підтвердьте видалення статусу користувача з:"
+
+#: 
+msgid "User Editor"
+msgstr "Редактор користувача"
+
+#: 
+msgid "Note: Changes will not take effect until next logon."
+msgstr "Примітка: Зміни почнуть діяти до наступного входу в систему."
+
+#: 
+msgid "Person to Make User"
+msgstr "Особа, яка робить користувача"
+
+#: 
+msgid "User"
+msgstr "Користувач"
+
+#: 
+msgid "Login Name"
+msgstr "Логін"
+
+#: 
+msgid "Add Records"
+msgstr "Додати записи"
+
+#: 
+msgid "Edit Records"
+msgstr "Редагувати записи"
+
+#: 
+msgid "Delete Records"
+msgstr "Видалити записи"
+
+#: 
+msgid "Manage Properties and Classifications"
+msgstr "Управління властивостями та класифікаціями"
+
+#: 
+msgid "Manage Groups and Roles"
+msgstr "Управління групами та ролями"
+
+#: 
+msgid "Manage Donations and Finance"
+msgstr "Управління пожертвами та фінансами"
+
+#: 
+msgid "View, Add and Edit Notes"
+msgstr "Перегляд, додавання та редагування нотаток"
+
+#: 
+msgid "Edit Self"
+msgstr "Редагувати себе"
+
+#: 
+msgid "(Edit own family only.)"
+msgstr "(Редагувати лише власну сім’ю.)"
+
+#: 
+msgid "(Canvass volunteer.)"
+msgstr "(Полотно волонтера.)"
+
+#: 
+msgid "Admin"
+msgstr "Адміністратор"
+
+#: 
+msgid "(Grants all privileges.)"
+msgstr "(Надає всі привілеї.)"
+
+#: 
+msgid "Style"
+msgstr "Стиль"
+
+#: 
+msgid "Set Permission True to give this user the ability to change their current value."
+msgstr "Встановіть Permission True, щоб надати цьому користувачеві можливість змінювати своє поточне значення."
+
+#: 
+msgid "User Listing"
+msgstr "Список користувачів"
+
+#: 
+msgid "New User"
+msgstr "Новий користувач"
+
+#: 
+msgid "User Settings"
+msgstr "Налаштування користувача"
+
+#: 
+msgid "Last Login"
+msgstr "Останній вхід"
+
+#: 
+msgid "Total Logins"
+msgstr "Загальна кількість входів"
+
+#: 
+msgid "Failed Logins"
+msgstr "Невдалі входи"
+
+#: 
+msgid "You must enter the same password in both boxes"
+msgstr "Ви повинні ввести однаковий пароль в обох полях"
+
+#: 
+msgid "Your password choice is too obvious. Please choose something else."
+msgstr "Ваш вибір пароля занадто очевидний. Виберіть щось інше."
+
+#: 
+msgid "Your new password must be at least"
+msgstr "Ваш новий пароль повинен бути принаймні"
+
+#: 
+msgid "characters"
+msgstr "символів"
+
+#: 
+msgid "Enter your current password, then your new password twice.  Passwords must be at least"
+msgstr "Введіть поточний пароль, а потім новий пароль двічі. Паролі повинні бути принаймні"
+
+#: 
+msgid "characters in length."
+msgstr "символів завдовжки."
+
+#: 
+msgid "Old Password"
+msgstr "Старий пароль"
+
+#: 
+msgid "New Password"
+msgstr "Новий пароль"
+
+#: 
+msgid "Confirm New Password"
+msgstr "Підтвердити новий пароль"
+
+#: 
+msgid "Please confirm the password reset of this user"
+msgstr "Будь ласка, підтвердьте скидання пароля цього користувача"
+
+#: 
+msgid "Volunteer Opportunity Delete Confirmation"
+msgstr "Підтвердження видалення можливості добровольців"
+
+#: 
+msgid "There are people assigned to this Volunteer Opportunity."
+msgstr "Є люди, яким призначено цю можливість для волонтерів."
+
+#: 
+msgid "Volunteer Opportunity will be unassigned for the following people."
+msgstr "Волонтерська можливість не буде призначена для наступних людей."
+
+#: 
+msgid "Yes, delete this Volunteer Opportunity"
+msgstr "Так, видалити цю можливість для волонтерів"
+
+#: 
+msgid "Volunteer Opportunity Editor"
+msgstr "Редактор волонтерських можливостей"
+
+#: 
+msgid "No volunteer opportunities have been added yet"
+msgstr "Жодних можливостей для волонтерів ще не додано"
+
+#: 
+msgid "NOTE: ADD, Delete, and Ordering changes are immediate.  Changes to Name or Desc fields must be saved by pressing 'Save Changes'"
+msgstr "ПРИМІТКА: Зміни ДОДАТИ, Видалити та Замовити негайно. Зміни в полях Ім'я чи Desc необхідно зберегти, натиснувши \"Зберегти зміни\""
+
+#: 
+msgid "Add New Opportunity"
+msgstr "Додайте нову можливість"
+
+#: 
+msgid "\"Why Came\" notes for "
+msgstr "\"Чому прийшов\" примітки для "
+
+#: 
+msgid "Why did you come to the church?"
+msgstr "Чому ти прийшов до церкви?"
+
+#: 
+msgid "Why do you keep coming?"
+msgstr "Чому ти продовжуєш приходити?"
+
+#: 
+msgid "Do you have any suggestions for us?"
+msgstr "Чи є у вас пропозиції щодо нас?"
+
+#: 
+msgid "How did you learn of the church?"
+msgstr "Як ти дізнався про церкву?"
+
+#: 
+msgid "eGive Import"
+msgstr "eGive Імпорт"
+
+#: 
+msgid "Re-import to selected family"
+msgstr "Повторно імпортувати до вибраної родини"
+
+#: 
+msgid "Data import results: "
+msgstr "Результати імпорту даних: "
+
+#: 
+msgid " gifts were imported, "
+msgstr " подарунки були імпортовані, "
+
+#: 
+msgid " gifts unchanged, and "
+msgstr " подарунки без змін, і "
+
+#: 
+msgid " gifts not imported due to problems"
+msgstr " подарунки, не імпортовані через проблеми"
+
+#: 
+msgid "Back to Deposit Slip"
+msgstr "Повернутися до депозитного депозиту"
+
+#: 
+msgid "Fatal error in eGive API datastream: '"
+msgstr "Фатальна помилка в потоці даних API eGive: '"
+
+#: 
+msgid "eMail Dashboard"
+msgstr "Інформаційна панель електронної пошти"
+
+#: 
+msgid "No families need canvassers assigned"
+msgstr "Жодним сім’ям не потрібні призначені диспетчери"
+
+#: 
+msgid "Canvassers assigned at random to %d families."
+msgstr "Наглядачі, довільно призначені для% d сімей."
+
+#: 
+msgid "Canvassers assigned at random to %d non-pledging families."
+msgstr "Наглядачі, довільно призначені для% d сімей, які не беруть заставу."
+
+#: 
+msgid "Assigned envelope numbers to all families with at least one member."
+msgstr "Номери конвертів присвоєні всім сім'ям, у яких є принаймні один член."
+
+#: 
+msgid "Assigned envelope numbers to all families."
+msgstr "Номери конвертів призначені всім сім'ям."
+
+#: 
+msgid "Version"
+msgstr "Версія"
+
+#: 
+msgid "Copyright"
+msgstr "Авторське право"
+
+#: 
+msgid "All rights reserved"
+msgstr "Всі права захищені"
+
+#: 
+msgid "True / False"
+msgstr "True / False"
+
+#: 
+msgid "Text Field (50 char)"
+msgstr "Текстове поле (50 символів)"
+
+#: 
+msgid "Text Field (100 char)"
+msgstr "Текстове поле (100 символів)"
+
+#: 
+msgid "Text Field (long)"
+msgstr "Текстове поле (довге)"
+
+#: 
+msgid "Season"
+msgstr "Сезон"
+
+#: 
+msgid "Person from Group"
+msgstr "Людина з групи"
+
+#: 
+msgid "Money"
+msgstr "Гроші"
+
+#: 
+msgid "Phone Number"
+msgstr "Номер телефону"
+
+#: 
+msgid "Custom Drop-Down List"
+msgstr "Спеціальний випадаючий список"
+
+#: 
+msgid "Thank you for registering your ChurchCRM installation."
+msgstr "Дякуємо, що зареєстрували свою установку ChurchCRM."
+
+#: 
+msgid "PDFs successfully emailed "
+msgstr "PDF-файли успішно надіслані електронною поштою "
+
+#: 
+msgid "PDF successfully emailed to family members."
+msgstr "PDF успішно надіслано членам сім'ї електронною поштою."
+
+#: 
+msgid "Failed to email PDF to family members."
+msgstr "Не вдалося надіслати PDF-файл членам сім’ї."
+
+#: 
+msgid "Group successfully added to the Cart."
+msgstr "Групу успішно додано в кошик."
+
+#: 
+msgid "Group successfully removed from the Cart."
+msgstr "Група успішно вилучена з кошика."
+
+#: 
+msgid "Profile Image successfully removed."
+msgstr "Зображення профілю успішно видалено."
+
+#: 
+msgid "Profile Image successfully updated."
+msgstr "Зображення профілю успішно оновлено."
+
+#: 
+msgid "Profile Image upload Error."
+msgstr "Помилка завантаження зображення профілю."
+
+#: 
+msgid "Selected record successfully removed from the Cart."
+msgstr "Вибраний запис успішно видалено з кошика."
+
+#: 
+msgid "Your cart has been successfully emptied"
+msgstr "Ваш кошик успішно спорожнений"
+
+#: 
+msgid "item(s) added to the Cart."
+msgstr "товари, додані в кошик."
+
+#: 
+msgid "Select Fiscal Year"
+msgstr "Виберіть фінансовий рік"
+
+#: 
+msgid "pm"
+msgstr "вечора"
+
+#: 
+msgid "am"
+msgstr "ранку"
+
+#: 
+msgid "Invalid Editor ID!"
+msgstr "Недійсний ідентифікатор редактора!"
+
+#: 
+msgid "Select Season"
+msgstr "Виберіть Сезон"
+
+#: 
+msgid "Winter"
+msgstr "Взимку"
+
+#: 
+msgid "Spring"
+msgstr "Весна"
+
+#: 
+msgid "Summer"
+msgstr "Літо"
+
+#: 
+msgid "Fall"
+msgstr "Падіння"
+
+#: 
+msgid "Error: Invalid Editor ID!"
+msgstr "Помилка: недійсний ідентифікатор редактора!"
+
+#: 
+msgid "Not a valid date"
+msgstr "Недійсна дата"
+
+#: 
+msgid "Invalid Year"
+msgstr "Недійсний рік"
+
+#: 
+msgid "Out of range: Allowable values are 1901 to 2155"
+msgstr "Поза діапазоном: Допустимі значення - від 1901 до 2155"
+
+#: 
+msgid "Invalid Number"
+msgstr "Недійсний номер"
+
+#: 
+msgid "Number too large. Must be between -2147483648 and 2147483647"
+msgstr "Номер завеликий. Має бути від -2147483648 до 2147483647"
+
+#: 
+msgid "Money amount too large. Maximum is $999999999.99"
+msgstr "Сума грошей завелика. Максимум - 999999999,99 доларів"
+
+#: 
+msgid " Bold Italic"
+msgstr " Жирний курсив"
+
+#: 
+msgid " Italic"
+msgstr " Курсив"
+
+#: 
+msgid " Bold"
+msgstr " Сміливий"
+
+#: 
+msgid "Error making API Call to"
+msgstr "Помилка під час здійснення виклику через API"
+
+#: 
+msgid "Error text"
+msgstr "Текст помилки"
+
+#: 
+msgid "Issue Report!"
+msgstr "Звіт про випуск!"
+
+#: 
+msgid "Enter a Title for your bug / feature report"
+msgstr "Введіть заголовок для звіту про помилку / функцію"
+
+#: 
+msgid "What were you doing when you noticed the bug / feature opportunity?"
+msgstr "Що ви робили, коли помітили можливість помилки / функції?"
+
+#: 
+msgid "When you click \"submit,\" an error report will be posted to the ChurchCRM GitHub Issue tracker."
+msgstr "Коли ви натискаєте \"надіслати\", звіт про помилку буде опубліковано в засобі відстеження ChurchCRM GitHub."
+
+#: 
+msgid "Please do not include any confidential information."
+msgstr "Будь ласка, не включайте жодної конфіденційної інформації."
+
+#: 
+msgid "Some general information about your system will be submitted along with the request such as Server version and browser headers."
+msgstr "Деяка загальна інформація про вашу систему буде подана разом із запитом, наприклад версія сервера та заголовки браузера."
+
+#: 
+msgid "No personally identifiable information will be submitted unless you purposefully include it."
+msgstr "Жодна інформація, що ідентифікує особу, не буде подана, якщо ви цілеспрямовано не включите її."
+
+#: 
+msgid "Dashboard"
+msgstr "Панель приладів"
+
+#: 
+msgid "Toggle navigation"
+msgstr "Переключити навігацію"
+
+#: 
+msgid "Change Password"
+msgstr "Змінити пароль"
+
+#: 
+msgid "You have"
+msgstr "Ти маєш"
+
+#: 
+msgid "task(s)"
+msgstr "завдання"
+
+#: 
+msgid "Home"
+msgstr "Додому"
+
+#: 
+msgid "Font"
+msgstr "Шрифт"
+
+#: 
+msgid "Label Type"
+msgstr "Тип етикетки"
+
+#: 
+msgid "Label Grouping"
+msgstr "Групування етикеток"
+
+#: 
+msgid "All Individuals"
+msgstr "Усі приватні особи"
+
+#: 
+msgid "Grouped by Family"
+msgstr "Групується за сім’єю"
+
+#: 
+msgid "To the parents of"
+msgstr "Батькам"
+
+#: 
+msgid "Start Row"
+msgstr "Початок рядка"
+
+#: 
+msgid "Start Column"
+msgstr "Початок стовпця"
+
+#: 
+msgid "Ignore Incomplete<br>Addresses"
+msgstr "Ігнорувати неповні <br> адреси"
+
+#: 
+msgid "File Type"
+msgstr "Тип файлу"
+
+#: 
+msgid "items"
+msgstr "предметів"
+
+#: 
+msgid "Did not pledge"
+msgstr "Не дав застави"
+
+#: 
+msgid "Top pledger"
+msgstr "Найвищий заставодавець"
+
+#: 
+msgid "Pledged"
+msgstr "В заставі"
+
+#: 
+msgid "M/F"
+msgstr "М / Ж"
+
+#: 
+msgid "Liaison"
+msgstr "Зв'язок"
+
+#: 
+msgid "City, State, Zip"
+msgstr "Місто, штат, поштовий індекс"
+
+#: 
+msgid "Send Newsletter"
+msgstr "Надіслати бюлетень"
+
+#: 
+msgid "Member Name"
+msgstr "Ім'я учасника"
+
+#: 
+msgid "Adult/Child"
+msgstr "Дорослий / дитина"
+
+#: 
+msgid "Cell Phone"
+msgstr "Мобільний телефон"
+
+#: 
+msgid "Member/Friend"
+msgstr "Член / друг"
+
+#: 
+msgid "This option requires at least version 3.22 of MySQL!  Hit browser back button to return to ChurchCRM."
+msgstr "Для цього варіанту потрібна принаймні версія 3.22 MySQL! Натисніть кнопку повернення браузера, щоб повернутися до ChurchCRM."
+
+#: 
+msgid "Work"
+msgstr "Робота"
+
+#: 
+msgid "Cell"
+msgstr "Клітинка"
+
+#: 
+msgid "Estimated value "
+msgstr "Орієнтовна вартість "
+
+#: 
+msgid "Donated by "
+msgstr "Пожертвував "
+
+#: 
+msgid "Paddle"
+msgstr "Весло"
+
+#: 
+msgid "Bid"
+msgstr "Пропозиція"
+
+#: 
+msgid "Minimum bid "
+msgstr "Мінімальна ставка "
+
+#: 
+msgid "All Funds"
+msgstr "Усі кошти"
+
+#: 
+msgid " for all funds"
+msgstr " на всі кошти"
+
+#: 
+msgid " for fund "
+msgstr " для фонду "
+
+#: 
+msgid "for funds "
+msgstr "за кошти "
+
+#: 
+msgid "Donated Items:"
+msgstr "Пожертвувані предмети:"
+
+#: 
+msgid "Purchased Items:"
+msgstr "Придбані товари:"
+
+#: 
+msgid "Total of all purchases: $"
+msgstr "Сума всіх покупок: $"
+
+#: 
+msgid "Total purchases: $"
+msgstr "Загальна сума покупок: $"
+
+#: 
+msgid "Amount paid: ________________"
+msgstr "Виплачувана сума: ________________"
+
+#: 
+msgid "Paid by (  ) Cash    (  ) Check    (  ) Credit card __ __ __ __    __ __ __ __    __ __ __ __    __ __ __ __  Exp __ / __"
+msgstr "Оплачується () Готівкою () Чеком () Кредитна картка __ __ __ __ __ __ __ __ __ __ __ __ __ __ __ __ Опит __ / __"
+
+#: 
+msgid "                                        Signature ________________________________________________________________"
+msgstr "                                        Підпис ________________________________________________________________"
+
+#: 
+msgid "Totals"
+msgstr "Підсумки"
+
+#: 
+msgid "Certificate of Ownership"
+msgstr "Свідоцтво про право власності"
+
+#: 
+msgid "Directory"
+msgstr "Каталог"
+
+#: 
+msgid "Page"
+msgstr "Сторінка"
+
+#: 
+msgid "Wedding"
+msgstr "Весілля"
+
+#: 
+msgid "and"
+msgstr "і"
+
+#: 
+msgid "Group Directory"
+msgstr "Каталог груп"
+
+#: 
+msgid "Please detach this slip and mail with your next gift."
+msgstr "Будь ласка, від'єднайте цей лист і надішліть лист із наступним подарунком."
+
+#: 
+msgid "Please mail you next gift to "
+msgstr "Будь ласка, надішліть вам наступний подарунок на "
+
+#: 
+msgid "Gift Amount:"
+msgstr "Сума подарунка:"
+
+#: 
+msgid "Gift Designation:"
+msgstr "Призначення подарунка:"
+
+#: 
+msgid "Sunday School"
+msgstr "Недільна школа"
+
+#: 
+msgid "Sunday School Class Functions"
+msgstr "Функції класу недільної школи"
+
+#: 
+msgid "Toggle Dropdown"
+msgstr "Перемкнути спадне меню"
+
+#: 
+msgid "Teachers"
+msgstr "Вчителі"
+
+#: 
+msgid "Send Message"
+msgstr "Відправити повідомлення"
+
+#: 
+msgid "View Profile"
+msgstr "Перегляд профілю"
+
+#: 
+msgid "Quick Status"
+msgstr "Швидкий статус"
+
+#: 
+msgid "Birthdays by Month"
+msgstr "Дні народження за місяцями"
+
+#: 
+msgid "Students"
+msgstr "Студенти"
+
+#: 
+msgid "Mobile"
+msgstr "Мобільний"
+
+#: 
+msgid "Home Address"
+msgstr "Домашня адреса"
+
+#: 
+msgid "Dad Name"
+msgstr "Тато Ім'я"
+
+#: 
+msgid "Dad Mobile"
+msgstr "Тато Мобіль"
+
+#: 
+msgid "Dad Email"
+msgstr "Тато електронною поштою"
+
+#: 
+msgid "Mom Name"
+msgstr "Ім'я мами"
+
+#: 
+msgid "Mom Mobile"
+msgstr "Мама Мобільна"
+
+#: 
+msgid "Mom Email"
+msgstr "Мама електронною поштою"
+
+#: 
+msgid "Compose New Message"
+msgstr "Створити нове повідомлення"
+
+#: 
+msgid "Kids Emails"
+msgstr "Дитячі електронні листи"
+
+#: 
+msgid "Parents Emails"
+msgstr "Електронні листи батьків"
+
+#: 
+msgid "Teachers Emails"
+msgstr "Електронна пошта вчителів"
+
+#: 
+msgid "Attachment"
+msgstr "Прикріплення"
+
+#: 
+msgid "Max. 32MB"
+msgstr "Макс. 32 Мб"
+
+#: 
+msgid "Discard"
+msgstr "Викинути"
+
+#: 
+msgid "Sunday School Dashboard"
+msgstr "Інформаційна панель недільної школи"
+
+#: 
+msgid "Classes"
+msgstr "Заняття"
+
+#: 
+msgid "Sunday School Reports"
+msgstr "Звіти недільної школи"
+
+#: 
+msgid "Generate class lists and attendance sheets"
+msgstr "Створіть списки класів та таблиці відвідуваності"
+
+#: 
+msgid "Export All Classes, Kids, and Parent to CSV file"
+msgstr "Експортуйте всі класи, дітей та батьків у файл CSV"
+
+#: 
+msgid "Students not in a Sunday School Class"
+msgstr "Студенти, які не відвідують клас недільної школи"
+
+#: 
+msgid "At least one group must be selected to make class lists or attendance sheets."
+msgstr "Для складання списків занять або листів відвідуваності потрібно вибрати принаймні одну групу."
+
+#: 
+msgid "Report Details"
+msgstr "Деталі звіту"
+
+#: 
+msgid "To select multiple hold CTL"
+msgstr "Для вибору багаторазового утримання CTL"
+
+#: 
+msgid "Multiple groups will have a Page Break between Groups<br>"
+msgstr "Кілька груп матимуть розрив сторінки між групами <br>"
+
+#: 
+msgid "List all Roles (unchecked will list Teacher/Student roles only)"
+msgstr "Перерахувати всі ролі (не позначений прапорець перераховуватиме лише ролі викладача / студента)"
+
+#: 
+msgid "First Sunday"
+msgstr "Перша неділя"
+
+#: 
+msgid "Last Sunday"
+msgstr "Минулої неділі"
+
+#: 
+msgid "No Sunday School"
+msgstr "Немає недільної школи"
+
+#: 
+msgid "Extra Students"
+msgstr "Додаткові студенти"
+
+#: 
+msgid "Extra Teachers"
+msgstr "Додаткові викладачі"
+
+#: 
+msgid "Create Class List"
+msgstr "Створити список класів"
+
+#: 
+msgid "Create Attendance Sheet"
+msgstr "Створити аркуш відвідувачів"
+
+#: 
+msgid "System Users"
+msgstr "Користувачі системи"
+
+#: 
+msgid "Calendar"
+msgstr "Календар"
+
+#: 
+msgid "Members"
+msgstr "Члени"
+
+#: 
+msgid "Add New Person"
+msgstr "Додати нову особу"
+
+#: 
+msgid "View All People"
+msgstr "Переглянути всіх людей"
+
+#: 
+msgid "Add New Family"
+msgstr "Додати нову сім’ю"
+
+#: 
+msgid "Events"
+msgstr "Події"
+
+#: 
+msgid "Fundraiser"
+msgstr "Збір коштів"
+
+#: 
+msgid "Email Export"
+msgstr "Експорт електронної пошти"
+
+#: 
+msgid "List"
+msgstr "Список"
+
+#: 
+msgid "Import Data"
+msgstr "Імпорт даних"
+
+#: 
+msgid "Clear Data"
+msgstr "Очистити дані"
+
+#: 
+msgid "Are you sure you want to DELETE this person from Event ID: "
+msgstr "Ви впевнені, що хочете ВИДАЛИТИ цю особу з ідентифікатора події: "
+
+#: 
+msgid "Date Range"
+msgstr "Проміжок часу"
+
+#: 
+msgid "Deleting this event TYPE will NOT delete any existing Events or Attendance Counts.  Are you sure you want to DELETE Event Type ID: "
+msgstr "Видалення цієї події TYPE НЕ буде видаляти будь-які існуючі події чи кількість відвідувачів. Ви впевнені, що хочете ВИДАЛИТИ Ідентифікатор типу події: "
+
+#: 
+msgid "Are you sure you want to delete the selected"
+msgstr "Ви впевнені, що хочете видалити вибране"
+
+#: 
+msgid "Deposit(s)"
+msgstr "Депозит (и)"
+
+#: 
+msgid "This will also delete all payments associated with this deposit"
+msgstr "Це також призведе до видалення всіх платежів, пов’язаних із цим депозитом"
+
+#: 
+msgid "This action CANNOT be undone, and may have legal implications!"
+msgstr "Цю дію НЕ МОЖЕ відмінити і може мати юридичні наслідки!"
+
+#: 
+msgid "Please ensure this what you want to do."
+msgstr "Будь ласка, переконайтеся, що ви хочете зробити."
+
+#: 
+msgid "Deposit Type"
+msgstr "Тип депозиту"
+
+#: 
+msgid "Deposit Date"
+msgstr "Дата вкладу"
+
+#: 
+msgid "Details:"
+msgstr "Подробиці:"
+
+#: 
+msgid "File Missing"
+msgstr "Файл відсутній"
+
+#: 
+msgid "This will overwrite the family envelope numbers in the database with those selected on this page.  Continue?"
+msgstr "Це призведе до заміни номерів сімейних конвертів у базі даних на вибрані на цій сторінці. Продовжити?"
+
+#: 
+msgid "Family Select"
+msgstr "Сімейний вибір"
+
+#: 
+msgid "with at least one:"
+msgstr "принаймні з одним:"
+
+#: 
+msgid "Welcome to"
+msgstr "Ласкаво просимо до"
+
+#: 
+msgid "Select Database Files"
+msgstr "Виберіть Файли бази даних"
+
+#: 
+msgid "Select a backup file to restore"
+msgstr "Виберіть файл резервної копії для відновлення"
+
+#: 
+msgid "CAUTION: This will completely erase the existing database, and replace it with the backup"
+msgstr "ПОПЕРЕДЖЕННЯ. Це повністю видалить існуючу базу даних і замінить її резервною"
+
+#: 
+msgid "If you upload a backup from ChurchInfo, or a previous version of ChurchCRM, it will be automatically upgraded to the current database schema"
+msgstr "Якщо ви завантажите резервну копію з ChurchInfo або попередньої версії ChurchCRM, вона буде автоматично оновлена до поточної схеми бази даних"
+
+#: 
+msgid "Upload Files"
+msgstr "Завантажити файли"
+
+#: 
+msgid "No Restore Running"
+msgstr "Відновлення не працює"
+
+#: 
+msgid "Restore Complete"
+msgstr "Відновлення завершено"
+
+#: 
+msgid "Login to restored Database"
+msgstr "Увійдіть до відновленої бази даних"
+
+#: 
+msgid "Restore Error."
+msgstr "Помилка відновлення."
+
+#: 
+msgid "Church Information"
+msgstr "Церковна інформація"
+
+#: 
+msgid "User Setup"
+msgstr "Налаштування користувача"
+
+#: 
+msgid "Email Setup"
+msgstr "Налаштування електронної пошти"
+
+#: 
+msgid "Map Settings"
+msgstr "Налаштування карти"
+
+#: 
+msgid "Report Settings"
+msgstr "Налаштування звіту"
+
+#: 
+msgid "Localization"
+msgstr "Локалізація"
+
+#: 
+msgid "Setting saved"
+msgstr "Налаштування збережено"
+
+#: 
+msgid "Edit JSON Settings"
+msgstr "Редагуйте налаштування JSON"
+
+#: 
+msgid "Default Value"
+msgstr "Значення за замовчуванням"
+
+#: 
+msgid "False"
+msgstr "помилковий"
+
+#: 
+msgid "True"
+msgstr "Правда"
+
+#: 
+msgid "Edit Settings"
+msgstr "Редагувати налаштування"
+
+#: 
+msgid "Upgrade ChurchCRM"
+msgstr "Оновіть ChurchCRM"
+
+#: 
+msgid "Step 1: Backup Database"
+msgstr "Крок 1: Резервне копіювання бази даних"
+
+#: 
+msgid "Please create a database backup before beginning the upgrade process."
+msgstr "Будь ласка, створіть резервну копію бази даних перед початком процесу оновлення."
+
+#: 
+msgid "Generate Database Backup"
+msgstr "Створити резервну копію бази даних"
+
+#: 
+msgid "Step 2: Fetch Update Package on Server"
+msgstr "Крок 2: Отримати пакет оновлення на сервері"
+
+#: 
+msgid "Fetch the latest files from the ChurchCRM GitHub release page"
+msgstr "Завантажте найновіші файли зі сторінки випуску ChurchCRM GitHub"
+
+#: 
+msgid "Fetch Update Files"
+msgstr "Отримати файли оновлення"
+
+#: 
+msgid "Step 3: Apply Update Package on Server"
+msgstr "Крок 3: Застосуйте пакет оновлень на сервері"
+
+#: 
+msgid "Extract the upgrade archive, and apply the new files"
+msgstr "Витягніть архів оновлення та застосуйте нові файли"
+
+#: 
+msgid "Full Path:"
+msgstr "Повний шлях:"
+
+#: 
+msgid "SHA1:"
+msgstr "SHA1:"
+
+#: 
+msgid "Upgrade System"
+msgstr "Система оновлення"
+
+#: 
+msgid "Step 4: Login"
+msgstr "Крок 4: Вхід"
+
+#: 
+msgid "Login to Upgraded System"
+msgstr "Увійдіть в оновлену систему"
+
+#: 
+msgid "Backup Complete, Ready for Download."
+msgstr "Резервне копіювання завершено, готове до завантаження."
+
+#: 
+msgid "Backup Error."
+msgstr "Помилка резервного копіювання."
+
+#: 
+msgid "Backup Downloaded, Copy on server removed"
+msgstr "Резервну копію завантажено, копію на сервер видалено"
+
+#: 
+msgid "Campaigns:"
+msgstr "Кампанії:"
+
+#: 
+msgid "Unsubscribed count:"
+msgstr "Кількість відписаних:"
+
+#: 
+msgid "Unsubscribed count since last send:"
+msgstr "Кількість відписаних від останнього надсилання:"
+
+#: 
+msgid "Cleaned count:"
+msgstr "Кількість очищених:"
+
+#: 
+msgid "Cleaned count since last send:"
+msgstr "Кількість очищених з моменту останнього надсилання:"
+
+#: 
+msgid "Functions"
+msgstr "Функції"
+
+#: 
+msgid "Add New Class"
+msgstr "Додати новий клас"
+
+#: 
+msgid "Export to CSV"
+msgstr "Експорт у CSV"
+
+#: 
+msgid "Add"
+msgstr "Додати"
+
+#: 
+msgid "Enter Name"
+msgstr "Введіть ім'я"
+
+#: 
+msgid "Register Software"
+msgstr "Зареєструйте програмне забезпечення"
+
+#: 
+msgid "Update Church Info"
+msgstr "Оновіть інформацію про церкву"
+
+#: 
+msgid "Set Church Address"
+msgstr "Встановити адресу церкви"
+
+#: 
+msgid "Set Email Settings"
+msgstr "Встановіть налаштування електронної пошти"
+
+#: 
+msgid "New Release"
+msgstr "Новий випуск"
+
+#: 
+msgid "Application Integrity Check Failed"
+msgstr "Не вдалося перевірити цілісність програми"
+
+#: 
+msgid "Self Registration"
+msgstr "Самореєстрація"
+
+#: 
+msgid "Restore Status:"
+msgstr "Відновити статус:"
+
+#: 
+msgid "No coordinates found"
+msgstr "Не знайдено координат"
+
+#: 
+msgid "Backup Status:"
+msgstr "Статус резервної копії:"
+
+#: 
+msgid "No Backup Running"
+msgstr "Немає резервного запуску"
+
+#: 
+msgid "Anonymous"
+msgstr "Анонім"
+
+#: 
+msgid "Attendees for Event ID:"
+msgstr "Учасники ідентифікатора події:"
+
+#: 
+msgid "is not configured"
+msgstr "не налаштовано"
+
+#: 
+msgid "Please update the"
+msgstr "Будь ласка, оновіть"
+
+#: 
+msgid "API key in Setting->"
+msgstr "Ключ API у Setting->"
+
+#: 
+msgid "then update"
+msgstr "потім оновіть"
+
+#: 
+msgid "For more info see our "
+msgstr "Для отримання додаткової інформації дивіться наш "
+
+#: 
+msgid "support docs."
+msgstr "Документи підтримки."
+
+#: 
+msgid "Yearly"
+msgstr "Щорічно"
+
+#: 
+msgid "Registration Complete"
+msgstr "Реєстрація завершена"
+
+#: 
+msgid "Register"
+msgstr "Зареєструйтесь"
+
+#: 
+msgid "Register your family"
+msgstr "Зареєструйте свою сім'ю"
+
+#: 
+msgid "How many people are in your family"
+msgstr "Скільки людей у вашій родині"
+
+#: 
+msgid "Add All Classes"
+msgstr "Додати всі класи"
+
+#: 
+msgid "Clear All Classes"
+msgstr "Очистити всі класи"
+
+#: 
+msgid "Add All Families"
+msgstr "Додати всі сім’ї"
+
+#: 
+msgid "Clear All Families"
+msgstr "Очистити всі сім’ї"
+
+#: 
+msgid "Add All Funds"
+msgstr "Додати всі кошти"
+
+#: 
+msgid "Clear All Funds"
+msgstr "Очистити всі кошти"
+
+#: 
+msgid "Deposit Comment"
+msgstr "Коментар на депозит"
+
+#: 
+msgid "Your previous session timed out.  Please login again."
+msgstr "У вашого попереднього сеансу минув час. Будь ласка, увійдіть ще раз."
+
+#: 
+msgid "Register a new Family"
+msgstr "Зареєструйте нову сім'ю"
+
+#: 
+msgid "If you need to make changes to registration data, go to "
+msgstr "Якщо вам потрібно внести зміни до реєстраційних даних, перейдіть на "
+
+#: 
+msgid "Admin->Edit General Settings"
+msgstr "Адміністратор-> Редагувати загальні налаштування"
+
+#: 
+msgid "Signature definition file signature failed validation"
+msgstr "Підпис файлу визначення підпису не вдалося перевірити"
+
+#: 
+msgid "Signature definition File Missing"
+msgstr "Файл визначення підпису відсутній"
+
+#: 
+msgid "One or more files failed signature validation"
+msgstr "Один або кілька файлів не вдалося перевірити підпис"
+
+#: 
+msgid "Configure HTTPS"
+msgstr "Налаштуйте HTTPS"
+
+#: 
+msgid "Files failing integrity check"
+msgstr "Файли не вдалося перевірити цілісність"
+
+#: 
+msgid "Family:"
+msgstr "Сім'я:"
+
+#: 
+msgid "item"
+msgstr "пункт"
+
+#: 
+msgid "Address 1"
+msgstr "адреса 1"
+
+#: 
+msgid "Address 2"
+msgstr "Адреса 2"
+
+#: 
+msgid "Cell phone"
+msgstr "Мобільний телефон"
+
+#: 
+msgid "-----------------------------------------------------------------------------------------------------------------------------------------------"
+msgstr "-------------------------------------------------- -------------------------------------------------- -------------------------------------------"
+
+#: 
+msgid "Buyer # "
+msgstr "Номер покупця "
+
+#: 
+msgid "Envelope:"
+msgstr "Конверт:"
+
+#: 
+msgid ", Phone: "
+msgstr ", Телефон: "
+
+#: 
+msgid "Voting members "
+msgstr "Члени, що голосують "
+
+#: 
+msgid "Restore Running, Please wait."
+msgstr "Відновити Запуск, зачекайте."
+
+#: 
+msgid "Family Members:"
+msgstr "Члени сім'ї:"
+
+#: 
+msgid "Anniversary"
+msgstr "Ювілей"
+
+#: 
+msgid "Notes"
+msgstr "Примітки"
+
+#: 
+msgid "Reports"
+msgstr "Звіти"
+
+#: 
+msgid "File Name:"
+msgstr "Ім'я файлу:"
+
+#: 
+msgid "http://www.intelligentsearch.com/address_verification/verify_address.html"
+msgstr "http://www.intelligentsearch.com/address_verification/verify_address.html"
+
+#: 
+msgid "Fiscal Year:"
+msgstr "Фінансовий рік:"
+
+#: 
+msgid "Important note: this will lose any &quot;Ok To Canvass&quot; fields that have been set by hand."
+msgstr "Важлива примітка: при цьому буде втрачено будь-яке & quot; Ok To Canvass & quot; поля, встановлені вручну."
+
+#: 
+msgid "Canvasser:"
+msgstr "Полотно:"
+
+#: 
+msgid "Add Attendees for Event"
+msgstr "Додайте учасників до події"
+
+#: 
+msgid "family"
+msgstr "сім'я"
+
+#: 
+msgid "Anniversary Date:"
+msgstr "Дата річниці:"
+
+#: 
+msgid "Date Entered:"
+msgstr "Дата вступу:"
+
+#: 
+msgid "CSV Import"
+msgstr "Імпорт CSV"
+
+#: 
+msgid "Comment:"
+msgstr "Коментар:"
+
+#: 
+msgid "Closed:"
+msgstr "Зачинено:"
+
+#: 
+msgid "Start Date: "
+msgstr "Дата початку: "
+
+#: 
+msgid "End Date: "
+msgstr "Кінцева дата: "
+
+#: 
+msgid "Members:"
+msgstr "Учасники:"
+
+#: 
+msgid "Edit General Settings"
+msgstr "Редагувати загальні налаштування"
+
+#: 
+msgid "There were "
+msgstr "Там були "
+
+#: 
+msgid "Inactive"
+msgstr "Неактивний"
+
+#: 
+msgid "Start Time"
+msgstr "Час початку"
+
+#: 
+msgid "Filter by Fund"
+msgstr "Фільтр за фондом"
+
+#: 
+msgid "Add New Deposit: "
+msgstr "Додати новий депозит: "
+
+#: 
+msgid "Estimated value"
+msgstr "Орієнтовна вартість"
+
+#: 
+msgid "Disable Group Specific Properties"
+msgstr "Вимкніть властивості групи"
+
+#: 
+msgid "'Default Option'"
+msgstr "'Параметр за замовчуванням'"
+
+#: 
+msgid "Text Group"
+msgstr "Текстова група"
+
+#: 
+msgid "Group Properties"
+msgstr "Властивості групи"
+
+#: 
+msgid "Assign a New Property:"
+msgstr "Призначити нову властивість:"
+
+#: 
+msgid "There was a problem retrieving the requested object"
+msgstr "Не вдалося отримати запитаний об’єкт"
+
+#: 
+msgid "All"
+msgstr "Всі"
+
+#: 
+msgid "Family Map"
+msgstr "Сімейна карта"
+
+#: 
+msgid "Groups"
+msgstr "Групи"
+
+#: 
+msgid "Error: You must enter a name"
+msgstr "Помилка: Ви повинні ввести ім’я"
+
+#: 
+msgid " Since:"
+msgstr " З:"
+
+#: 
+msgid "Total $"
+msgstr "Всього $"
+
+#: 
+msgid "with this property.."
+msgstr "з цією властивістю .."
+
+#: 
+msgid "with this Property..."
+msgstr "з цим майном ..."
+
+#: 
+msgid "Church Email"
+msgstr "Церковна електронна пошта"
+
+#: 
+msgid "Include only these classifications in the directory, comma seperated"
+msgstr "Включіть лише ці класифікації в каталог, розділені комами"
+
+#: 
+msgid "These are the family role numbers designated as head of house"
+msgstr "Це номери сімейних ролей, призначених головою будинку"
+
+#: 
+msgid "These are the family role numbers designated as spouse"
+msgstr "Це номери сімейних ролей, позначені як чоловік / дружина"
+
+#: 
+msgid "These are the family role numbers designated as child"
+msgstr "Це номери сімейних ролей, позначені як дитячі"
+
+#: 
+msgid "Queries for which user must have finance permissions to use:"
+msgstr "Запити, для яких користувач повинен мати фінансові дозволи для використання:"
+
+#: 
+msgid "Should only administrators have access to the CSV export system and directory report?"
+msgstr "Чи повинні лише адміністратори мати доступ до системи експорту та звіту CSV?"
+
+#: 
+msgid "Minimum length a user may set their password to"
+msgstr "Мінімальна довжина, яку користувач може встановити для свого пароля"
+
+#: 
+msgid "A comma-seperated list of disallowed (too obvious) passwords."
+msgstr "Список заборонених (занадто очевидних) паролів, розділений комами."
+
+#: 
+msgid "Default City"
+msgstr "Місто за замовчуванням"
+
+#: 
+msgid "Default State - Must be 2-letter abbreviation!"
+msgstr "Стан за замовчуванням - Має бути двобуквене скорочення!"
+
+#: 
+msgid "Default account for receiving a copy of all emails"
+msgstr "Обліковий запис за замовчуванням для отримання копії всіх листів"
+
+#: 
+msgid "SMTP Server Address (mail.server.com:25)"
+msgstr "Адреса SMTP-сервера (mail.server.com:25)"
+
+#: 
+msgid "Does your SMTP server require auththentication (username/password)?"
+msgstr "Чи вимагає ваш SMTP-сервер аутентифікацію (ім’я користувача / пароль)?"
+
+#: 
+msgid "SMTP Username"
+msgstr "Ім'я користувача SMTP"
+
+#: 
+msgid "SMTP Password"
+msgstr "Пароль SMTP"
+
+#: 
+msgid "Internationalization (I18n) support"
+msgstr "Підтримка інтернаціоналізації (I18n)"
+
+#: 
+msgid "First month of the fiscal year"
+msgstr "Перший місяць фінансового року"
+
+#: 
+msgid "Latitude of the church, used to center the Google map"
+msgstr "Широта церкви, що використовується для центру мапи Google"
+
+#: 
+msgid "Longitude of the church, used to center the Google map"
+msgstr "Довгота церкви, що використовується для центру мапи Google"
+
+#: 
+msgid "Set true to disable entering addresses in Person Editor.  Set false to enable entering addresses in Person Editor."
+msgstr "Встановіть значення true, щоб вимкнути введення адрес у редакторі Person. Встановіть значення false, щоб увімкнути введення адрес у редакторі Person."
+
+#: 
+msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
+msgstr "Встановіть значення true, щоб вимкнути введення дати друга в редакторі особи. Встановіть значення false, щоб увімкнути введення дати друга в редакторі особи."
+
+#: 
+msgid "Set true to disable management of newsletter subscriptions in the Family Editor."
+msgstr "Встановіть значення true, щоб вимкнути керування підписками на розсилки в редакторі сімейства."
+
+#: 
+msgid "Set true to disable entering Wedding Date in Family Editor.  Set false to enable entering Wedding Date in Family Editor."
+msgstr "Встановіть значення true, щоб заборонити введення дати весілля в сімейному редакторі. Встановіть значення false, щоб увімкнути введення дати весілля у сімейному редакторі."
+
+#: 
+msgid "Set true to disable entering Latitude and Longitude in Family Editor.  Set false to enable entering Latitude and Longitude in Family Editor.  Lookups are still performed, just not displayed."
+msgstr "Встановіть значення true, щоб вимкнути введення широти та довготи в сімейному редакторі. Встановіть значення false, щоб увімкнути введення широти та довготи в сімейний редактор. Пошук все ще виконується, але не відображається."
+
+#: 
+msgid "Set true to enable use of donation envelopes"
+msgstr "Встановіть значення true, щоб дозволити використання конвертів для пожертв"
+
+#: 
+msgid "Enter in HTML code which will be displayed as a header at the top of each page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A SECOND TIME to view the new header."
+msgstr "Введіть в HTML-код, який відображатиметься як заголовок у верхній частині кожної сторінки. Обов’язково закрийте свої теги! Примітка: Ви повинні ОСВІЖИТИ БРАУЗЕР ДРУГИЙ раз, щоб переглянути новий заголовок."
+
+#: 
+msgid "Intelligent Search Technolgy, Ltd. CorrectAddress Username"
+msgstr "Інтелектуальний пошуковий засіб Technolgy, Ltd. Правильний адрес"
+
+#: 
+msgid "Intelligent Search Technolgy, Ltd. CorrectAddress Password"
+msgstr "Intelligent Search Technolgy, Ltd. Пароль правильної адреси"
+
+#: 
+msgid "Number of checks for Deposit Slip Report"
+msgstr "Кількість чеків для звіту про депозит"
+
+#: 
+msgid "Set true to enable use of scanned checks"
+msgstr "Встановіть значення true, щоб дозволити використання відсканованих чеків"
+
+#: 
+msgid "Unit used to measure distance, miles or km."
+msgstr "Одиниця вимірювання відстані, миль або км."
+
+#: 
+msgid "Names of markers for Google Maps in order of classification"
+msgstr "Назви маркерів для Карт Google у порядку класифікації"
+
+#: 
+msgid "Enable non-deductible payments"
+msgstr "Увімкнути платежі, що не підлягають вирахуванню"
+
+#: 
+msgid "Set true to enable family self registration."
+msgstr "Встановіть значення true, щоб дозволити самореєстрацію в сім’ї."
+
+#: 
+msgid "ChurchCRM has been registered.  The ChurchCRM team uses registration information to track usage.  This information is kept confidential and never released or sold.  If this field is true the registration option in the admin menu changes to update registration."
+msgstr "ChurchCRM зареєстровано. Команда ChurchCRM використовує реєстраційну інформацію для відстеження використання. Ця інформація зберігається в конфіденційності, ніколи не розголошується та не продається. Якщо це поле відповідає дійсності, параметр реєстрації в меню адміністратора змінюється на оновлення реєстрації."
+
+#: 
+msgid "Left Margin (1 = 1/100th inch)"
+msgstr "Лівий край (1 = 1/100 дюйма)"
+
+#: 
+msgid "Line Thickness (1 = 1/100th inch"
+msgstr "Товщина лінії (1 = 1/100 дюйма"
+
+#: 
+msgid "Church City"
+msgstr "Церковне місто"
+
+#: 
+msgid "Church State"
+msgstr "Церковна держава"
+
+#: 
+msgid "Church Zip"
+msgstr "Церковний Zip"
+
+#: 
+msgid "Church Phone"
+msgstr "Церковний телефон"
+
+#: 
+msgid "Home area code of the church"
+msgstr "Місцевий телефонний код церкви"
+
+#: 
+msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
+msgstr "Verbage для верхнього рядка податкового звіту. Дати будуть додані до кінця цього рядка."
+
+#: 
+msgid "Verbage for bottom line of tax report."
+msgstr "Запустіть нижній рядок податкового звіту."
+
+#: 
+msgid "Tax Report signer"
+msgstr "Підписувач податкової звітності"
+
+#: 
+msgid "Verbage for the pledge reminder report"
+msgstr "Verbage для звіту про нагадування про заставу"
+
+#: 
+msgid "Pledge Reminder Signer"
+msgstr "Підписувач про нагадування про заставу"
+
+#: 
+msgid "Verbage for the pledge reminder report - No record of a pledge"
+msgstr "Verbage для звіту про нагадування про заставу - немає запису про заставу"
+
+#: 
+msgid "Verbage for the pledge reminder report - No record of payments"
+msgstr "Verbage для звіту про нагадування про заставу - відсутні записи про платежі"
+
+#: 
+msgid "Verbage for the database information confirmation and correction report"
+msgstr "Verbage для підтвердження та виправлення інформації про базу даних"
+
+#: 
+msgid "Database information confirmation and correction report signer"
+msgstr "Підписувач звіту про підтвердження та виправлення інформації в базі даних"
+
+#: 
+msgid "Verbage for the pledge summary report"
+msgstr "Verbage для підсумкового звіту про заставу"
+
+#: 
+msgid "Verbage for the directory report"
+msgstr "Verbage для звіту каталогу"
+
+#: 
+msgid "Church Letterhead path and file"
+msgstr "Шлях та файл церковного бланка"
+
+#: 
+msgid "lookup user images on Gravatar when no local image is present"
+msgstr "шукати зображення користувачів на Gravatar, коли немає локального зображення"
+
+#: 
+msgid "Enable Remote Backups to Cloud Services"
+msgstr "Увімкніть віддалене резервне копіювання хмарних служб"
+
+#: 
+msgid "Cloud Service Type (Supported values: WebDAV, Local)"
+msgstr "Тип хмарної служби (підтримувані значення: WebDAV, Local)"
+
+#: 
+msgid "Remote Backup Username"
+msgstr "Ім'я користувача для віддаленого резервного копіювання"
+
+#: 
+msgid "Remote Backup Password"
+msgstr "Пароль віддаленого резервного копіювання"
+
+#: 
+msgid "Interval in Hours for Automatic Remote Backups"
+msgstr "Інтервал у годинах для автоматичного віддаленого резервного копіювання"
+
+#: 
+msgid "Last Backup Timestamp"
+msgstr "Мітка часу останньої резервної копії"
+
+#: 
+msgid "QuickBooks Deposit Ticket Settings"
+msgstr "Налаштування квитків на депозит QuickBooks"
+
+#: 
+msgid "Enable Integrity Check"
+msgstr "Увімкніть перевірку цілісності"
+
+#: 
+msgid "Interval in Hours for Integrity Check"
+msgstr "Інтервал у годинах для перевірки доброчесності"
+
+#: 
+msgid "Last Integrity Check Timestamp"
+msgstr "Мітка часу останньої перевірки доброчесності"
+
+#: 
+msgid "List Groups"
+msgstr "Список груп"
+
+#: 
+msgid "List Church Events"
+msgstr "Перелічіть церковні події"
+
+#: 
+msgid "Add Church Event"
+msgstr "Додати церковну подію"
+
+#: 
+msgid "List Event Types"
+msgstr "Перелічіть типи подій"
+
+#: 
+msgid "Check-in and Check-out"
+msgstr "Реєстрація заїзду та виїзду"
+
+#: 
+msgid "View All Deposits"
+msgstr "Переглянути всі депозити"
+
+#: 
+msgid "Deposit Reports"
+msgstr "Звіти про депозити"
+
+#: 
+msgid "Edit Deposit Slip"
+msgstr "Редагувати депозит"
+
+#: 
+msgid "View All Fundraisers"
+msgstr "Переглянути всі збори коштів"
+
+#: 
+msgid "Create New Fundraiser"
+msgstr "Створити новий збір коштів"
+
+#: 
+msgid "Edit Fundraiser"
+msgstr "Редагувати збір коштів"
+
+#: 
+msgid "View Buyers"
+msgstr "Переглянути покупців"
+
+#: 
+msgid "Add Donors to Buyer List"
+msgstr "Додайте донорів до списку покупців"
+
+#: 
+msgid "Data/Reports"
+msgstr "Дані / Звіти"
+
+#: 
+msgid "Query Menu"
+msgstr "Меню запитів"
+
+#: 
+msgid "CSV Export Records"
+msgstr "Записи експорту CSV"
+
+#: 
+msgid "People Properties"
+msgstr "Властивості людей"
+
+#: 
+msgid "Family Properties"
+msgstr "Сімейні властивості"
+
+#: 
+msgid "Property Types"
+msgstr "Типи властивостей"
+
+#: 
+msgid "Zip Code"
+msgstr "ЗІП код"
+
+#: 
+msgid "2012/2013"
+msgstr "2012/2013"
+
+#: 
+msgid "2013/2014"
+msgstr "2013/2014"
+
+#: 
+msgid "2014/2015"
+msgstr "2014/2015"
+
+#: 
+msgid "2015/2016"
+msgstr "2015/2016"
+
+#: 
+msgid "WorkEmail"
+msgstr "WorkEmail"
+
+#: 
+msgid "Regular Attender"
+msgstr "Звичайний учасник"
+
+#: 
+msgid "Guest"
+msgstr "Гість"
+
+#: 
+msgid "Non-Attender"
+msgstr "Нездатний"
+
+#: 
+msgid "Non-Attender (staff)"
+msgstr "Не присутні (персонал)"
+
+#: 
+msgid "Minimum Age"
+msgstr "Мінімальний вік"
+
+#: 
+msgid "Maximum Age"
+msgstr "Максимальний вік"
+
+#: 
+msgid "Beginning Date"
+msgstr "Дата початку"
+
+#: 
+msgid "Ending Date"
+msgstr "Дата закінчення"
+
+#: 
+msgid "Search"
+msgstr "Пошук"
+
+#: 
+msgid "Field"
+msgstr "Польовий"
+
+#: 
+msgid "Registered students"
+msgstr "Зареєстровані студенти"
+
+#: 
+msgid "Volunteer opportunities"
+msgstr "Волонтерські можливості"
+
+#: 
+msgid "Months"
+msgstr "Місяці"
+
+#: 
+msgid "First Fiscal Year"
+msgstr "Перший фінансовий рік"
+
+#: 
+msgid "Second Fiscal Year"
+msgstr "Другий фінансовий рік"
+
+#: 
+msgid "Custom field"
+msgstr "Спеціальне поле"
+
+#: 
+msgid "Field value"
+msgstr "Значення поля"
+
+#: 
+msgid "The minimum age for which you want records returned."
+msgstr "Мінімальний вік, для якого потрібно повернути записи."
+
+#: 
+msgid "The maximum age for which you want records returned."
+msgstr "Максимальний вік, для якого потрібно повернути записи."
+
+#: 
+msgid "The desired gender to search the database for."
+msgstr "Бажана стать для пошуку в базі даних."
+
+#: 
+msgid "Select the desired family role."
+msgstr "Виберіть бажану сімейну роль."
+
+#: 
+msgid "The gender for which you would like records returned."
+msgstr "Стать, для якої ви хочете повернути записи."
+
+#: 
+msgid "The property for which you would like person records returned."
+msgstr "Власність, для якої ви хотіли б повернути особові записи."
+
+#: 
+msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that conatain donations."
+msgstr "Виберіть дату початку, щоб розрахувати загальний внесок для кожного учасника (тобто РРРР-ММ-ДД). ПРИМІТКА. Ви можете вибирати лише дати, на які пожертвуватимуть."
+
+#: 
+msgid "Please enter the last date to calculate total contributions for each member (i.e. YYYY-MM-DD)."
+msgstr "Введіть останню дату для розрахунку загальної суми внесків для кожного учасника (тобто РРРР-ММ-ДД)."
+
+#: 
+msgid "Enter any part of the following: Name, City, State, Zip, Home Phone, Email, or Work Email."
+msgstr "Введіть будь-яку частину з наступного: Ім'я, місто, штат, поштовий індекс, домашній телефон, електронна пошта або робоча електронна адреса."
+
+#: 
+msgid "Select field to search for."
+msgstr "Виберіть поле для пошуку."
+
+#: 
+msgid "The birthday month for which you would like records returned."
+msgstr "Місяць народження, за який ви хотіли б повернути записи."
+
+#: 
+msgid "The sunday school class for which you would like records returned."
+msgstr "Недільний шкільний клас, для якого ви хотіли б записати записи."
+
+#: 
+msgid "Group of registered students"
+msgstr "Група зареєстрованих студентів"
+
+#: 
+msgid "The membership anniversary month for which you would like records returned."
+msgstr "Місячний ювілейний членський період, за який ви хотіли б повернути записи."
+
+#: 
+msgid "Choose a volunteer opportunity"
+msgstr "Виберіть можливість для волонтерів"
+
+#: 
+msgid "Number of months since becoming a friend"
+msgstr "Кількість місяців з моменту, коли я став другом"
+
+#: 
+msgid "First fiscal year for comparison"
+msgstr "Перший фінансовий рік для порівняння"
+
+#: 
+msgid "Second fiscal year for comparison"
+msgstr "Другий фінансовий рік для порівняння"
+
+#: 
+msgid "Pledged this year"
+msgstr "Пообіцяв цього року"
+
+#: 
+msgid "but not this year"
+msgstr "але не цього року"
+
+#: 
+msgid "Fiscal Year."
+msgstr "Фінансовий рік."
+
+#: 
+msgid "Member, Regular Attender, etc."
+msgstr "Член, регулярний учасник тощо."
+
+#: 
+msgid "First volunteer opportunity choice"
+msgstr "Перший вибір волонтерської можливості"
+
+#: 
+msgid "Second volunteer opportunity choice"
+msgstr "Другий вибір волонтерської можливості"
+
+#: 
+msgid "Choose customer person field"
+msgstr "Виберіть поле клієнта"
+
+#: 
+msgid "Match custom field to this value"
+msgstr "Установіть відповідність спеціального поля до цього значення"
+
+#: 
+msgid "Family Member Count"
+msgstr "Кількість членів сім'ї"
+
+#: 
+msgid "Person by Age"
+msgstr "Людина за віком"
+
+#: 
+msgid "Total By Gender"
+msgstr "Усього за статтю"
+
+#: 
+msgid "Person by Role and Gender"
+msgstr "Людина за роллю та статтю"
+
+#: 
+msgid "Person by Property"
+msgstr "Особа за майном"
+
+#: 
+msgid "Advanced Search"
+msgstr "розширений пошук"
+
+#: 
+msgid "Birthdays"
+msgstr "Дні народження"
+
+#: 
+msgid "Membership anniversaries"
+msgstr "Ювілеї членства"
+
+#: 
+msgid "Select database users"
+msgstr "Виберіть користувачів бази даних"
+
+#: 
+msgid "Select all members"
+msgstr "Виберіть усіх учасників"
+
+#: 
+msgid "Volunteers"
+msgstr "Волонтери"
+
+#: 
+msgid "Recent friends"
+msgstr "Останні друзі"
+
+#: 
+msgid "Families to Canvass"
+msgstr "Сім'ї для полотна"
+
+#: 
+msgid "Pledge comparison"
+msgstr "Порівняння застави"
+
+#: 
+msgid "Missing pledges"
+msgstr "Відсутні застави"
+
+#: 
+msgid "Family Pledge by Fiscal Year"
+msgstr "Сімейна застава за фінансовим роком"
+
+#: 
+msgid "CustomSearch"
+msgstr "CustomSearch"
+
+#: 
+msgid "Returns each family and the total number of people assigned to them."
+msgstr "Повертає кожну сім’ю та загальну кількість призначених їм людей."
+
+#: 
+msgid "Returns any person records with ages between two given ages."
+msgstr "Повертає записи будь-якої особи віком від двох до даного віку."
+
+#: 
+msgid "Total of records matching a given gender."
+msgstr "Загальна кількість записів, що відповідають даній статі."
+
+#: 
+msgid "Selects person records with the family role and gender specified."
+msgstr "Вибирає записи людей із зазначенням ролі сім'ї та статі."
+
+#: 
+msgid "Returns person records which are assigned the given property."
+msgstr "Повертає записи особи, яким присвоєно дане властивість."
+
+#: 
+msgid "Search by any part of Name, City, State, Zip, Home Phone, Email, or Work Email."
+msgstr "Шукайте за будь-якою частиною імені, міста, штату, поштового індексу, домашнього телефону, електронної пошти чи робочої електронної пошти."
+
+#: 
+msgid "People with birthdays in a particular month"
+msgstr "Люди з днями народження в певному місяці"
+
+#: 
+msgid "Find Registered students"
+msgstr "Знайдіть зареєстрованих студентів"
+
+#: 
+msgid "Members who joined in a particular month"
+msgstr "Члени, які приєдналися до певного місяця"
+
+#: 
+msgid "People who are registered as database users"
+msgstr "Люди, які зареєстровані як користувачі баз даних"
+
+#: 
+msgid "People who are members"
+msgstr "Люди, які є членами"
+
+#: 
+msgid "Find volunteers for a particular opportunity"
+msgstr "Знайдіть волонтерів для певної можливості"
+
+#: 
+msgid "Friends who signed up in previous months"
+msgstr "Друзі, які записалися в попередні місяці"
+
+#: 
+msgid "People in families that are ok to canvass."
+msgstr "Люди в сім'ях, які можуть розмовляти."
+
+#: 
+msgid "Compare pledges between two fiscal years"
+msgstr "Порівняйте обіцянки між двома фінансовими роками"
+
+#: 
+msgid "Find people who pledged one year but not another"
+msgstr "Знайдіть людей, які пообіцяли один рік, але не інший"
+
+#: 
+msgid "Pledge summary by family name for each fund for the selected fiscal year"
+msgstr "Підсумок застави за прізвищем для кожного фонду на вибраний фінансовий рік"
+
+#: 
+msgid "Find volunteers for who match two specific opportunity codes"
+msgstr "Знайдіть добровольців, які відповідають двом конкретним кодам можливостей"
+
+#: 
+msgid "Find people with a custom field value"
+msgstr "Знайдіть людей із користувацьким значенням поля"
+
+#: 
+msgid "Last Edited"
+msgstr "Останнє редагування"
+
+#: 
+msgid "User permission to send email via mailto: links"
+msgstr "Дозвіл користувача на надсилання електронного листа через mailto: посилання"
+
+#: 
+msgid "Delimiter to separate emails in mailto: links"
+msgstr "Розділювач для відокремлення електронних листів у mailto: посилання"
+
+#: 
+msgid "User permission to create directories"
+msgstr "Дозвіл користувача на створення каталогів"
+
+#: 
+msgid "User permission to export CSV files"
+msgstr "Дозвіл користувача на експорт файлів CSV"
+
+#: 
+msgid "User permission to use IST Address Verification"
+msgstr "Дозвіл користувача використовувати підтвердження IST-адреси"
+
+#: 
+msgid "Allow user to add new event"
+msgstr "Дозволити користувачеві додавати нову подію"
+
+#: 
+msgid "Canvass Progress Report"
+msgstr "Звіт про хід роботи"
+
+#: 
+msgid "Done"
+msgstr "Готово"
+
+#: 
+msgid "Assigned"
+msgstr "Призначений"
+
+#: 
+msgid "Percent"
+msgstr "Відсоток"
+
+#: 
+msgid "Total"
+msgstr "Всього"
+
+#: 
+msgid "Pledge status"
+msgstr "Статус застави"
+
+#: 
+msgid "Canvass Summary Report"
+msgstr "Зворотний звіт полотна"
+
+#: 
+msgid "Suggestion"
+msgstr "Пропозиція"
+
+#: 
+msgid "WhyNotInterested"
+msgstr "ЧомуНецікаво"
+
+#: 
+msgid "Comments"
+msgstr "Коментарі"
+
+#: 
+msgid "Canvass Not Interested Report"
+msgstr "Полотна не цікавить звіт"
+
+#: 
+msgid "Weekly on"
+msgstr "Щотижня"
+
+#: 
+msgid "s"
+msgstr "s"
+
+#: 
+msgid "Monthly on"
+msgstr "Щомісяця"
+
+#: 
+msgid "Yearly on"
+msgstr "Щороку"
+
+#: 
+msgid "All Events of Type"
+msgstr "Усі події типу"
+
+#: 
+msgid "There is"
+msgstr "є"
+
+#: 
+msgid "There are"
+msgstr "Існує"
+
+#: 
+msgid "event"
+msgstr "подія"
+
+#: 
+msgid "events"
+msgstr "події"
+
+#: 
+msgid " in this category."
+msgstr " у цій категорії."
+
+#: 
+msgid "There currently is"
+msgstr "В даний час є"
+
+#: 
+msgid "There currently are"
+msgstr "В даний час є"
+
+#: 
+msgid "custom event type"
+msgstr "власний тип події"
+
+#: 
+msgid "custom event types"
+msgstr "користувацькі типи подій"
+
+#: 
+msgid "Family Roles Editor"
+msgstr "Редактор сімейних ролей"
+
+#: 
+msgid "Person Classification"
+msgstr "Класифікація осіб"
+
+#: 
+msgid "Person Classifications"
+msgstr "Класифікація людей"
+
+#: 
+msgid "Person Classifications Editor"
+msgstr "Редактор класифікацій осіб"
+
+#: 
+msgid "Group Type"
+msgstr "Тип групи"
+
+#: 
+msgid "Group Types"
+msgstr "Типи груп"
+
+#: 
+msgid "Group Types Editor"
+msgstr "Редактор типів груп"
+
+#: 
+msgid "Security Group"
+msgstr "Група безпеки"
+
+#: 
+msgid "Security Groups"
+msgstr "Групи безпеки"
+
+#: 
+msgid "Security Groups Editor"
+msgstr "Редактор груп безпеки"
+
+#: 
+msgid "Group Member Role"
+msgstr "Роль учасника групи"
+
+#: 
+msgid "Group Member Roles Editor"
+msgstr "Редактор ролей членів групи"
+
+#: 
+msgid "Person Custom List Option"
+msgstr "Варіант користувацького списку особи"
+
+#: 
+msgid "Person Custom List Options"
+msgstr "Параметри користувацького списку особи"
+
+#: 
+msgid "Person Custom List Options Editor"
+msgstr "Редактор параметрів користувацького списку"
+
+#: 
+msgid "Custom List Option"
+msgstr "Варіант користувацького списку"
+
+#: 
+msgid "Custom List Options"
+msgstr "Параметри користувацького списку"
+
+#: 
+msgid "Custom List Options Editor"
+msgstr "Редактор параметрів користувацького списку"
+
+#: 
+msgid "Family Custom List Option"
+msgstr "Сімейний варіант користувацького списку"
+
+#: 
+msgid "Family Custom List Options"
+msgstr "Параметри сімейного користувацького списку"
+
+#: 
+msgid "Family Custom List Options Editor"
+msgstr "Редактор параметрів сімейного користувацького списку"
+
+#: 
+msgid "are not allowed."
+msgstr "заборонені."
+
+#: 
+msgid "Name for New"
+msgstr "Назва для нового"
+
+#: 
+msgid "Imported"
+msgstr "Імпортні"
+
+#: 
+msgid "Created via Family"
+msgstr "Створено через Family"
+
+#: 
+msgid "Updated via Family"
+msgstr "Оновлено через Family"
+
+#: 
+msgid "Family Data Verified"
+msgstr "Сімейні дані перевірені"
+
+#: 
+msgid "Profile Image Deleted"
+msgstr "Зображення профілю видалено"
+
+#: 
+msgid "miles"
+msgstr "миль"
+
+#: 
+msgid "kilometers"
+msgstr "кілометрів"
+
+#: 
+msgid "WebDAV"
+msgstr "WebDAV"
+
+#: 
+msgid "Local"
+msgstr "Місцеві"
+
+#: 
+msgid "Afghanistan (‫افغانستان‬‎)"
+msgstr "Афганістан (افغانستان)"
+
+#: 
+msgid "Åland Islands (Åland)"
+msgstr "Аландські острови (Аланд)"
+
+#: 
+msgid "Albania (Shqipëri)"
+msgstr "Албанія (Shqipëri)"
+
+#: 
+msgid "Algeria (‫الجزائر‬‎)"
+msgstr "Алжир (الجزائر)"
+
+#: 
+msgid "American Samoa"
+msgstr "Американське Самоа"
+
+#: 
+msgid "Andorra"
+msgstr "Андорра"
+
+#: 
+msgid "Angola"
+msgstr "Ангола"
+
+#: 
+msgid "Anguilla"
+msgstr "Ангілья"
+
+#: 
+msgid "Antarctica"
+msgstr "Антарктида"
+
+#: 
+msgid "Antigua and Barbuda"
+msgstr "Антигуа та Барбуда"
+
+#: 
+msgid "Argentina"
+msgstr "Аргентина"
+
+#: 
+msgid "Armenia (Հայաստան)"
+msgstr "Вірменія (Հայաստան)"
+
+#: 
+msgid "Aruba"
+msgstr "Аруба"
+
+#: 
+msgid "Ascension Island"
+msgstr "Острів Вознесіння"
+
+#: 
+msgid "Australia"
+msgstr "Австралія"
+
+#: 
+msgid "Austria (Österreich)"
+msgstr "Австрія (Österreich)"
+
+#: 
+msgid "Azerbaijan (Azərbaycan)"
+msgstr "Азербайджан (Azərbaycan)"
+
+#: 
+msgid "Bahamas"
+msgstr "Багамські острови"
+
+#: 
+msgid "Bahrain (‫البحرين‬‎)"
+msgstr "Бахрейн (البحرين)"
+
+#: 
+msgid "Bangladesh (বাংলাদেশ)"
+msgstr "Бангладеш (বাংলাদেশ)"
+
+#: 
+msgid "Barbados"
+msgstr "Барбадос"
+
+#: 
+msgid "Belarus (Беларусь)"
+msgstr "Білорусь (Беларусь)"
+
+#: 
+msgid "Belgium (België)"
+msgstr "Бельгія (Бельгія)"
+
+#: 
+msgid "Belize"
+msgstr "Беліз"
+
+#: 
+msgid "Benin (Bénin)"
+msgstr "Бенін (Бенін)"
+
+#: 
+msgid "Bermuda"
+msgstr "Бермудські острови"
+
+#: 
+msgid "Bhutan (འབྲུག)"
+msgstr "Бутан (འབྲུག)"
+
+#: 
+msgid "Bolivia"
+msgstr "Болівія"
+
+#: 
+msgid "Bosnia and Herzegovina (Босна и Херцеговина)"
+msgstr "Босна і Герцеговина (Босна і Херцеговина)"
+
+#: 
+msgid "Botswana"
+msgstr "Ботсвана"
+
+#: 
+msgid "Bouvet Island"
+msgstr "Острів Буве"
+
+#: 
+msgid "Brazil (Brasil)"
+msgstr "Бразилія (Бразилія)"
+
+#: 
+msgid "British Indian Ocean Territory"
+msgstr "Британська територія в Індійському океані"
+
+#: 
+msgid "British Virgin Islands"
+msgstr "Британські Віргінські острови"
+
+#: 
+msgid "Brunei"
+msgstr "Бруней"
+
+#: 
+msgid "Bulgaria (България)"
+msgstr "Болгарія (България)"
+
+#: 
+msgid "Burkina Faso"
+msgstr "Буркіна-Фасо"
+
+#: 
+msgid "Burundi (Uburundi)"
+msgstr "Бурунді (Убурунді)"
+
+#: 
+msgid "Cambodia (កម្ពុជា)"
+msgstr "Камбоджа (កម្ពុជា)"
+
+#: 
+msgid "Cameroon (Cameroun)"
+msgstr "Камерун (Камерун)"
+
+#: 
+msgid "Canada"
+msgstr "Канада"
+
+#: 
+msgid "Canary Islands (islas Canarias)"
+msgstr "Канарські острови (острови Канаріас)"
+
+#: 
+msgid "Cape Verde (Kabu Verdi)"
+msgstr "Кабо-Верде (Кабу-Верді)"
+
+#: 
+msgid "Caribbean Netherlands"
+msgstr "Карибські Нідерланди"
+
+#: 
+msgid "Cayman Islands"
+msgstr "Кайманові острови"
+
+#: 
+msgid "Central African Republic (République centrafricaine)"
+msgstr "Центральноафриканська Республіка (République centrafricaine)"
+
+#: 
+msgid "Ceuta and Melilla (Ceuta y Melilla)"
+msgstr "Сеута і Мелілья (Ceuta y Melilla)"
+
+#: 
+msgid "Chad (Tchad)"
+msgstr "Чад (Чад)"
+
+#: 
+msgid "Chile"
+msgstr "Чилі"
+
+#: 
+msgid "China (中国)"
+msgstr "Китай (中国)"
+
+#: 
+msgid "Christmas Island"
+msgstr "Острів Різдва"
+
+#: 
+msgid "Clipperton Island"
+msgstr "Острів Кліппертон"
+
+#: 
+msgid "Cocos (Keeling) Islands (Kepulauan Cocos (Keeling))"
+msgstr "Кокосові (Кілінг) острови (Кепулауанські Кокоси (Кілінг))"
+
+#: 
+msgid "Colombia"
+msgstr "Колумбія"
+
+#: 
+msgid "Comoros (‫جزر القمر‬‎)"
+msgstr "Коморські острови (جزر القمر)"
+
+#: 
+msgid "Congo (DRC) (Jamhuri ya Kidemokrasia ya Kongo)"
+msgstr "Конго (ДРК) (Jamhuri ya Kidemokrasia ya Kongo)"
+
+#: 
+msgid "Congo (Republic) (Congo-Brazzaville)"
+msgstr "Конго (Республіка) (Конго-Браззавіль)"
+
+#: 
+msgid "Cook Islands"
+msgstr "Острови Кука"
+
+#: 
+msgid "Costa Rica"
+msgstr "Коста-Ріка"
+
+#: 
+msgid "Côte d’Ivoire"
+msgstr "Кот-д’Івуар"
+
+#: 
+msgid "Croatia (Hrvatska)"
+msgstr "Хорватія (Hrvatska)"
+
+#: 
+msgid "Cuba"
+msgstr "Куба"
+
+#: 
+msgid "Curaçao"
+msgstr "Кюрасао"
+
+#: 
+msgid "Cyprus (Κύπρος)"
+msgstr "Кіпр (Κύπρος)"
+
+#: 
+msgid "Czech Republic (Česká republika)"
+msgstr "Чеська Республіка (Чеська Республіка)"
+
+#: 
+msgid "Denmark (Danmark)"
+msgstr "Данія (Данія)"
+
+#: 
+msgid "Diego Garcia"
+msgstr "Дієго Гарсія"
+
+#: 
+msgid "Djibouti"
+msgstr "Джибуті"
+
+#: 
+msgid "Dominica"
+msgstr "Домініка"
+
+#: 
+msgid "Dominican Republic (República Dominicana)"
+msgstr "Домініканська Республіка (República Dominicana)"
+
+#: 
+msgid "Ecuador"
+msgstr "Еквадор"
+
+#: 
+msgid "Egypt (‫مصر‬‎)"
+msgstr "Єгипет (مصر)"
+
+#: 
+msgid "El Salvador"
+msgstr "Сальвадор"
+
+#: 
+msgid "Equatorial Guinea (Guinea Ecuatorial)"
+msgstr "Екваторіальна Гвінея (Екваторіальна Гвінея)"
+
+#: 
+msgid "Eritrea"
+msgstr "Еритрея"
+
+#: 
+msgid "Estonia (Eesti)"
+msgstr "Естонія (Естонія)"
+
+#: 
+msgid "Ethiopia"
+msgstr "Ефіопія"
+
+#: 
+msgid "Falkland Islands (Islas Malvinas)"
+msgstr "Фолклендські острови (Мальвінські острови)"
+
+#: 
+msgid "Faroe Islands (Føroyar)"
+msgstr "Фарерські острови (Føroyar)"
+
+#: 
+msgid "Fiji"
+msgstr "Фіджі"
+
+#: 
+msgid "Finland (Suomi)"
+msgstr "Фінляндія (Суомі)"
+
+#: 
+msgid "France"
+msgstr "Франція"
+
+#: 
+msgid "French Guiana (Guyane française)"
+msgstr "Французька Гвіана (Французька Гайана)"
+
+#: 
+msgid "French Polynesia (Polynésie française)"
+msgstr "Французька Полінезія (Polynésie française)"
+
+#: 
+msgid "French Southern Territories (Terres australes françaises)"
+msgstr "Французькі південні території (Terres australes françaises)"
+
+#: 
+msgid "Gabon"
+msgstr "Габон"
+
+#: 
+msgid "Gambia"
+msgstr "Гамбія"
+
+#: 
+msgid "Georgia (საქართველო)"
+msgstr "Грузія (საქართველო)"
+
+#: 
+msgid "Germany (Deutschland)"
+msgstr "Німеччина (Німеччина)"
+
+#: 
+msgid "Ghana (Gaana)"
+msgstr "Гана (Гаана)"
+
+#: 
+msgid "Gibraltar"
+msgstr "Гібралтар"
+
+#: 
+msgid "Greece (Ελλάδα)"
+msgstr "Греція (Ελλάδα)"
+
+#: 
+msgid "Greenland (Kalaallit Nunaat)"
+msgstr "Гренландія (Kalaallit Nunaat)"
+
+#: 
+msgid "Grenada"
+msgstr "Гренада"
+
+#: 
+msgid "Guadeloupe"
+msgstr "Гваделупа"
+
+#: 
+msgid "Guam"
+msgstr "Гуам"
+
+#: 
+msgid "Guatemala"
+msgstr "Гватемала"
+
+#: 
+msgid "Guernsey"
+msgstr "Гернсі"
+
+#: 
+msgid "Guinea (Guinée)"
+msgstr "Гвінея (Гвінея)"
+
+#: 
+msgid "Guinea-Bissau (Guiné Bissau)"
+msgstr "Гвінея-Бісау (Гвіне-Бісау)"
+
+#: 
+msgid "Guyana"
+msgstr "Гайана"
+
+#: 
+msgid "Haiti"
+msgstr "Гаїті"
+
+#: 
+msgid "Heard & McDonald Islands"
+msgstr "Острови Херда і Макдональда"
+
+#: 
+msgid "Honduras"
+msgstr "Гондурас"
+
+#: 
+msgid "Hong Kong (香港)"
+msgstr "Гонконг (香港)"
+
+#: 
+msgid "Hungary (Magyarország)"
+msgstr "Угорщина (Magyarország)"
+
+#: 
+msgid "Iceland (Ísland)"
+msgstr "Ісландія (Ісландія)"
+
+#: 
+msgid "India (भारत)"
+msgstr "Індія (भारत)"
+
+#: 
+msgid "Indonesia"
+msgstr "Індонезія"
+
+#: 
+msgid "Iran (‫ایران‬‎)"
+msgstr "Іран (ایران)"
+
+#: 
+msgid "Iraq (‫العراق‬‎)"
+msgstr "Ірак (العراق)"
+
+#: 
+msgid "Ireland"
+msgstr "Ірландія"
+
+#: 
+msgid "Isle of Man"
+msgstr "Острів Мен"
+
+#: 
+msgid "Israel (‫ישראל‬‎)"
+msgstr "Ізраїль (ישראל)"
+
+#: 
+msgid "Italy (Italia)"
+msgstr "Італія (Італія)"
+
+#: 
+msgid "Jamaica"
+msgstr "Ямайка"
+
+#: 
+msgid "Japan (日本)"
+msgstr "Японія (日本)"
+
+#: 
+msgid "Jersey"
+msgstr "Джерсі"
+
+#: 
+msgid "Jordan (‫الأردن‬‎)"
+msgstr "Йорданія (الأردن)"
+
+#: 
+msgid "Kazakhstan (Казахстан)"
+msgstr "Казахстан (Казахстан)"
+
+#: 
+msgid "Kenya"
+msgstr "Кенія"
+
+#: 
+msgid "Kiribati"
+msgstr "Кірібаті"
+
+#: 
+msgid "Kosovo (Kosovë)"
+msgstr "Косово (Косово)"
+
+#: 
+msgid "Kuwait (‫الكويت‬‎)"
+msgstr "Кувейт (الكويت)"
+
+#: 
+msgid "Kyrgyzstan (Кыргызстан)"
+msgstr "Киргизстан (Киргизстан)"
+
+#: 
+msgid "Laos (ລາວ)"
+msgstr "Лаос (ລາວ)"
+
+#: 
+msgid "Lebanon (‫لبنان‬‎)"
+msgstr "Ліван (لبنان)"
+
+#: 
+msgid "Lesotho"
+msgstr "Лесото"
+
+#: 
+msgid "Liberia"
+msgstr "Ліберія"
+
+#: 
+msgid "Libya (‫ليبيا‬‎)"
+msgstr "Лівія (ليبيا)"
+
+#: 
+msgid "Liechtenstein"
+msgstr "Ліхтенштейн"
+
+#: 
+msgid "Lithuania (Lietuva)"
+msgstr "Литва (Lietuva)"
+
+#: 
+msgid "Luxembourg"
+msgstr "Люксембург"
+
+#: 
+msgid "Macau (澳門)"
+msgstr "Макао (澳門)"
+
+#: 
+msgid "Macedonia (FYROM) (Македонија)"
+msgstr "Македонія (КЮРМ) (Македонія)"
+
+#: 
+msgid "Madagascar (Madagasikara)"
+msgstr "Мадагаскар (Мадагасікара)"
+
+#: 
+msgid "Malawi"
+msgstr "Малаві"
+
+#: 
+msgid "Malaysia"
+msgstr "Малайзія"
+
+#: 
+msgid "Maldives"
+msgstr "Мальдіви"
+
+#: 
+msgid "Mali"
+msgstr "Малі"
+
+#: 
+msgid "Malta"
+msgstr "Мальта"
+
+#: 
+msgid "Marshall Islands"
+msgstr "Маршаллові острови"
+
+#: 
+msgid "Martinique"
+msgstr "Мартініка"
+
+#: 
+msgid "Mauritania (‫موريتانيا‬‎)"
+msgstr "Мавританія (Македонія)"
+
+#: 
+msgid "Mauritius (Moris)"
+msgstr "Маврикій (Моріс)"
+
+#: 
+msgid "Mayotte"
+msgstr "Майотта"
+
+#: 
+msgid "Mexico (México)"
+msgstr "Мексика (Мексика)"
+
+#: 
+msgid "Micronesia"
+msgstr "Мікронезія"
+
+#: 
+msgid "Moldova (Republica Moldova)"
+msgstr "Молдова (Республіка Молдова)"
+
+#: 
+msgid "Monaco"
+msgstr "Монако"
+
+#: 
+msgid "Mongolia (Монгол)"
+msgstr "Монголія (Монгол)"
+
+#: 
+msgid "Montenegro (Crna Gora)"
+msgstr "Чорногорія (Чорна Гора)"
+
+#: 
+msgid "Montserrat"
+msgstr "Монтсеррат"
+
+#: 
+msgid "Morocco (‫المغرب‬‎)"
+msgstr "Марокко (المغرب)"
+
+#: 
+msgid "Mozambique (Moçambique)"
+msgstr "Мозамбік (Moçambique)"
+
+#: 
+msgid "Myanmar (Burma) (မြန်မာ)"
+msgstr "М'янма (Бірма) (မြန်မာ)"
+
+#: 
+msgid "Namibia (Namibië)"
+msgstr "Намібія (Намібія)"
+
+#: 
+msgid "Nauru"
+msgstr "Науру"
+
+#: 
+msgid "Nepal (नेपाल)"
+msgstr "Непал (Непал)"
+
+#: 
+msgid "Netherlands (Nederland)"
+msgstr "Нідерланди (Нідерланди)"
+
+#: 
+msgid "New Caledonia (Nouvelle-Calédonie)"
+msgstr "Нова Каледонія (Нувель-Каледонія)"
+
+#: 
+msgid "New Zealand"
+msgstr "Нова Зеландія"
+
+#: 
+msgid "Nicaragua"
+msgstr "Нікарагуа"
+
+#: 
+msgid "Niger (Nijar)"
+msgstr "Нігер (Ніджар)"
+
+#: 
+msgid "Nigeria"
+msgstr "Нігерія"
+
+#: 
+msgid "Niue"
+msgstr "Ніуе"
+
+#: 
+msgid "Norfolk Island"
+msgstr "Острів Норфолк"
+
+#: 
+msgid "Northern Mariana Islands"
+msgstr "Північні Маріанські острови"
+
+#: 
+msgid "North Korea (조선 민주주의 인민 공화국)"
+msgstr "Північна Корея (조선 민주주의 인민 공화국)"
+
+#: 
+msgid "Norway (Norge)"
+msgstr "Норвегія (Норвегія)"
+
+#: 
+msgid "Oman (‫عُمان‬‎)"
+msgstr "Оман (عُمان)"
+
+#: 
+msgid "Pakistan (‫پاکستان‬‎)"
+msgstr "Пакистан (پاکستان)"
+
+#: 
+msgid "Palau"
+msgstr "Палау"
+
+#: 
+msgid "Palestine (‫فلسطين‬‎)"
+msgstr "Палестина (فلسطين)"
+
+#: 
+msgid "Panama (Panamá)"
+msgstr "Панама (Панама)"
+
+#: 
+msgid "Papua New Guinea"
+msgstr "Папуа-Нова Гвінея"
+
+#: 
+msgid "Paraguay"
+msgstr "Парагвай"
+
+#: 
+msgid "Peru (Perú)"
+msgstr "Перу (Перу)"
+
+#: 
+msgid "Philippines"
+msgstr "Філіппіни"
+
+#: 
+msgid "Pitcairn Islands"
+msgstr "Острови Піткерн"
+
+#: 
+msgid "Poland (Polska)"
+msgstr "Польща (Польща)"
+
+#: 
+msgid "Portugal"
+msgstr "Португалія"
+
+#: 
+msgid "Puerto Rico"
+msgstr "Пуерто-Рико"
+
+#: 
+msgid "Qatar (‫قطر‬‎)"
+msgstr "Катар (قطر)"
+
+#: 
+msgid "Réunion (La Réunion)"
+msgstr "Реюньйон (Реюньйон)"
+
+#: 
+msgid "Romania (România)"
+msgstr "Румунія (Романія)"
+
+#: 
+msgid "Russia (Россия)"
+msgstr "Росія (Россия)"
+
+#: 
+msgid "Rwanda"
+msgstr "Руанда"
+
+#: 
+msgid "Saint Barthélemy (Saint-Barthélemy)"
+msgstr "Сен-Бартелемі (Saint-Barthélemy)"
+
+#: 
+msgid "Saint Helena"
+msgstr "Свята Олена"
+
+#: 
+msgid "Saint Kitts and Nevis"
+msgstr "Сент-Кітс і Невіс"
+
+#: 
+msgid "Saint Lucia"
+msgstr "Сент-Люсія"
+
+#: 
+msgid "Saint Martin (Saint-Martin (partie française))"
+msgstr "Сен-Мартен (Сен-Мартен (partie française))"
+
+#: 
+msgid "Saint Pierre and Miquelon (Saint-Pierre-et-Miquelon)"
+msgstr "Сен-П'єр і Мікелон (Saint-Pierre-et-Miquelon)"
+
+#: 
+msgid "Samoa"
+msgstr "Самоа"
+
+#: 
+msgid "San Marino"
+msgstr "Сан-Марино"
+
+#: 
+msgid "São Tomé and Príncipe (São Tomé e Príncipe)"
+msgstr "Сан-Томе і Принсіпі (Сан-Томе і Принсіпі)"
+
+#: 
+msgid "Saudi Arabia (‫المملكة العربية السعودية‬‎)"
+msgstr "Саудівська Аравія (المملكة العربية السعودية)"
+
+#: 
+msgid "Senegal (Sénégal)"
+msgstr "Сенегал (Сенегал)"
+
+#: 
+msgid "Serbia (Србија)"
+msgstr "Сербія (Србіја)"
+
+#: 
+msgid "Seychelles"
+msgstr "Сейшельські острови"
+
+#: 
+msgid "Sierra Leone"
+msgstr "Сьєрра-Леоне"
+
+#: 
+msgid "Singapore"
+msgstr "Сінгапур"
+
+#: 
+msgid "Sint Maarten"
+msgstr "Сінт-Мартен"
+
+#: 
+msgid "Slovakia (Slovensko)"
+msgstr "Словаччина (Slovensko)"
+
+#: 
+msgid "Slovenia (Slovenija)"
+msgstr "Словенія (Словенія)"
+
+#: 
+msgid "Solomon Islands"
+msgstr "Соломонові острови"
+
+#: 
+msgid "Somalia (Soomaaliya)"
+msgstr "Сомалі (Соомаалія)"
+
+#: 
+msgid "South Africa"
+msgstr "Південна Африка"
+
+#: 
+msgid "South Georgia & South Sandwich Islands"
+msgstr "Південна Джорджія та Південні Сандвічеві острови"
+
+#: 
+msgid "South Korea (대한민국)"
+msgstr "Південна Корея (대한민국)"
+
+#: 
+msgid "South Sudan (‫جنوب السودان‬‎)"
+msgstr "Південний Судан (جنوب السودان)"
+
+#: 
+msgid "Spain (España)"
+msgstr "Іспанія (Іспанія)"
+
+#: 
+msgid "Sri Lanka (ශ්‍රී ලංකාව)"
+msgstr "Шрі-Ланка (ශ්‍රී ලංකාව)"
+
+#: 
+msgid "St. Vincent & Grenadines"
+msgstr "Сент-Вінсент і Гренадини"
+
+#: 
+msgid "Sudan (‫السودان‬‎)"
+msgstr "Судан (السودان)"
+
+#: 
+msgid "Suriname"
+msgstr "Суринам"
+
+#: 
+msgid "Svalbard and Jan Mayen (Svalbard og Jan Mayen)"
+msgstr "Шпіцберген та Ян Майєн (Шпіцберген та Ян Майєн)"
+
+#: 
+msgid "Swaziland"
+msgstr "Свазіленд"
+
+#: 
+msgid "Sweden (Sverige)"
+msgstr "Швеція (Швеція)"
+
+#: 
+msgid "Switzerland (Schweiz)"
+msgstr "Швейцарія (Schweiz)"
+
+#: 
+msgid "Syria (‫سوريا‬‎)"
+msgstr "Сирія (Швеція)"
+
+#: 
+msgid "Taiwan (台灣)"
+msgstr "Тайвань (台灣)"
+
+#: 
+msgid "Tajikistan"
+msgstr "Таджикистан"
+
+#: 
+msgid "Tanzania"
+msgstr "Танзанія"
+
+#: 
+msgid "Thailand (ไทย)"
+msgstr "Таїланд (ไทย)"
+
+#: 
+msgid "Timor-Leste"
+msgstr "Восточний Тимор"
+
+#: 
+msgid "Togo"
+msgstr "Йти"
+
+#: 
+msgid "Tokelau"
+msgstr "Токелау"
+
+#: 
+msgid "Tonga"
+msgstr "Тонга"
+
+#: 
+msgid "Trinidad and Tobago"
+msgstr "Тринідад і Тобаго"
+
+#: 
+msgid "Tristan da Cunha"
+msgstr "Трістан да Кунья"
+
+#: 
+msgid "Tunisia (‫تونس‬‎)"
+msgstr "Туніс (تونس)"
+
+#: 
+msgid "Turkey (Türkiye)"
+msgstr "Туреччина (Туреччина)"
+
+#: 
+msgid "Turkmenistan"
+msgstr "Туркменістан"
+
+#: 
+msgid "Turks and Caicos Islands"
+msgstr "Острови Теркс і Кайкос"
+
+#: 
+msgid "Tuvalu"
+msgstr "Тувалу"
+
+#: 
+msgid "U.S. Outlying Islands"
+msgstr "Віддалені острови США"
+
+#: 
+msgid "U.S. Virgin Islands"
+msgstr "Віргінські острови США"
+
+#: 
+msgid "Uganda"
+msgstr "Уганда"
+
+#: 
+msgid "Ukraine (Україна)"
+msgstr "Україна (Україна)"
+
+#: 
+msgid "United Arab Emirates (‫الإمارات العربية المتحدة‬‎)"
+msgstr "Об'єднані Арабські Емірати (الإمارات العربية المتحدة)"
+
+#: 
+msgid "United Kingdom"
+msgstr "Об'єднане Королівство"
+
+#: 
+msgid "United States"
+msgstr "Сполучені Штати"
+
+#: 
+msgid "Uruguay"
+msgstr "Уругвай"
+
+#: 
+msgid "Uzbekistan (Oʻzbekiston)"
+msgstr "Узбекистан (Узбекістон)"
+
+#: 
+msgid "Vanuatu"
+msgstr "Вануату"
+
+#: 
+msgid "Vatican City (Città del Vaticano)"
+msgstr "Ватикан (Città del Vaticano)"
+
+#: 
+msgid "Venezuela"
+msgstr "Венесуела"
+
+#: 
+msgid "Vietnam (Việt Nam)"
+msgstr "В'єтнам (В'єтнам)"
+
+#: 
+msgid "Wallis and Futuna"
+msgstr "Уолліс і Футуна"
+
+#: 
+msgid "Western Sahara (‫الصحراء الغربية‬‎)"
+msgstr "Західна Сахара (الصحراء الغربية)"
+
+#: 
+msgid "Yemen (‫اليمن‬‎)"
+msgstr "Ємен (اليمن)"
+
+#: 
+msgid "Zambia"
+msgstr "Замбія"
+
+#: 
+msgid "Zimbabwe"
+msgstr "Зімбабве"
+
+#: 
+msgid "Please verify your family's information"
+msgstr "Будь ласка, перевірте інформацію про свою сім’ю"
+
+#: 
+msgid "Church Address is not Set."
+msgstr "Адреса церкви не встановлена."
+
+#: 
+msgid "Church Name is set to default value"
+msgstr "Ім'я церкви встановлено за значенням за замовчуванням"
+
+#: 
+msgid "SMTP Server info are blank"
+msgstr "Інформація про сервер SMTP порожня"
+
+#: 
+msgid "Your system could be more secure by installing an TLS/SSL Cert."
+msgstr "Ваша система може бути більш безпечною, встановивши сертифікат TLS / SSL."
+
+#: 
+msgid "Missing Classification Data"
+msgstr "Відсутні класифікаційні дані"
+
+#: 
+msgid "Missing Classification Data for Some People"
+msgstr "Відсутні класифікаційні дані для деяких людей"
+
+#: 
+msgid "Missing Gender Data"
+msgstr "Відсутні дані про стать"
+
+#: 
+msgid "Missing Gender Data for Some People"
+msgstr "Відсутні гендерні дані для деяких людей"
+
+#: 
+msgid "Missing Role Data"
+msgstr "Відсутні дані про ролі"
+
+#: 
+msgid "Let us know that you are using the software"
+msgstr "Повідомте нас, що ви використовуєте програмне забезпечення"
+
+#: 
+msgid "Unable to load verification info"
+msgstr "Не вдається завантажити інформацію про підтвердження"
+
+#: 
+msgid "No Changes"
+msgstr "Без змін"
+
+#: 
+msgid "Page not fond"
+msgstr "Сторінка не любить"
+
+#: 
+msgid "Oops! Page not found."
+msgstr "Ой! Сторінку не знайдено."
+
+#: 
+msgid "Family Registration"
+msgstr "Реєстрація сім’ї"
+
+#: 
+msgid "Please enter the following to start your family's verification"
+msgstr "Введіть наступне, щоб розпочати перевірку вашої родини"
+
+#: 
+msgid "Family Verification"
+msgstr "Перевірка сім’ї"
+
+#: 
+msgid "Family Member(s)"
+msgstr "Члени сім'ї)"
+
+#: 
+msgid "Work Email"
+msgstr "Робоча електронна пошта"
+
+#: 
+msgid "Your verification request is complete"
+msgstr "Ваш запит на підтвердження завершено"
+
+#: 
+msgid "We encountered an error submitting with your verification data"
+msgstr "Ми виявили помилку під час надсилання даних про підтвердження"
+
+#: 
+msgid "Visit our Site"
+msgstr "Відвідайте наш сайт"
+
+#: 
+msgid "Request Family Info Verification"
+msgstr "Подати запит на перевірку інформації про сім’ю"
+
+#: 
+msgid "Select how do you want to request the family information to be verified"
+msgstr "Виберіть спосіб подання запиту на перевірку інформації про сім’ю"
+
+#: 
+msgid "Online Verification"
+msgstr "Онлайн перевірка"
+
+#: 
+msgid "Verified In Person"
+msgstr "Перевірено в особі"
+
+#: 
+msgid "None State"
+msgstr "Жодна держава"
+
+#: 
+msgid "Backup archive does not contain a database"
+msgstr "Архів резервної копії не містить бази даних"
+
+#: 
+msgid "Missing Coordinates"
+msgstr "Відсутні координати"
+
+#: 
+msgid "Family Coordinates Data for Some Families"
+msgstr "Дані про сімейні координати для деяких сімей"
+
+#: 
+msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database."
+msgstr "Зробіть введені користувачем поштові індекси ВИСОКИМИ під час збереження в базі даних."
+
+#: 
+msgid "Used to end a letter before Signer"
+msgstr "Використовується для закінчення листа перед підписувачем"
+
+#: 
+msgid "Google Analytics Tracking Code"
+msgstr "Код відстеження Google Analytics"
+
+#: 
+msgid "English - United States"
+msgstr "Англійська - США"
+
+#: 
+msgid "English - Canada"
+msgstr "Англійська - Канада"
+
+#: 
+msgid "English - Australia"
+msgstr "Англійська - Австралія"
+
+#: 
+msgid "English - Great Britain"
+msgstr "Англійська - Великобританія"
+
+#: 
+msgid "German - Germany"
+msgstr "Німецька - Німеччина"
+
+#: 
+msgid "Spanish - Spain"
+msgstr "Іспанська - Іспанія"
+
+#: 
+msgid "French - France"
+msgstr "Французька - Франція"
+
+#: 
+msgid "Hungarian"
+msgstr "Угорська"
+
+#: 
+msgid "Italian - Italy"
+msgstr "Італійська - Італія"
+
+#: 
+msgid "Norwegian"
+msgstr "Норвезька"
+
+#: 
+msgid "Dutch - Netherlands"
+msgstr "Голландська - Нідерланди"
+
+#: 
+msgid "Polish"
+msgstr "Польська"
+
+#: 
+msgid "Portuguese - Brazil"
+msgstr "Португальська - Бразилія"
+
+#: 
+msgid "Romanian - Romania"
+msgstr "Румунська - Румунія"
+
+#: 
+msgid "Russian"
+msgstr "російський"
+
+#: 
+msgid "Sami (Northern) (Sweden)"
+msgstr "Саамі (північ) (Швеція)"
+
+#: 
+msgid "Albanian"
+msgstr "Албанська"
+
+#: 
+msgid "Vietnamese"
+msgstr "В’єтнамські"
+
+#: 
+msgid "Chinese - China"
+msgstr "Китайський - Китай"
+
+#: 
+msgid "Chinese - Taiwan"
+msgstr "Китайська - Тайвань"
+
+#: 
+msgid "Maximum upload size"
+msgstr "Максимальний розмір завантаження"
+
+#: 
+msgid "The selected file exceeds this servers maximum upload size of"
+msgstr "Вибраний файл перевищує максимальний розмір цього сервера для завантаження"
+
+#: 
+msgid "Unmet Application Prerequisites"
+msgstr "Незадоволені передумови заявки"
+
+#: 
+msgid "Failed"
+msgstr "Помилка"
+
+#: 
+msgid "The previous integrity check passed.  All system file hashes match the expected values."
+msgstr "Попередня перевірка цілісності пройдена. Усі хеші системних файлів відповідають очікуваним значенням."
+
+#: 
+msgid "Church Checking Account Number"
+msgstr "Номер церковного чекового рахунку"
+
+#: 
+msgid "Missing Role Data for Some People"
+msgstr "Відсутні дані про ролі для деяких людей"
+
+#: 
+msgid "PHP Max File size too small"
+msgstr "PHP Максимальний розмір файлу замалий"
+
+#: 
+msgid "Increase the php upload limits to allow for mobile photo upload, and backup restore."
+msgstr "Збільште обмеження на завантаження php, щоб дозволити мобільне завантаження фотографій та відновлення резервної копії."
+
+#: 
+msgid "Deactivated the Family"
+msgstr "Деактивував сім’ю"
+
+#: 
+msgid "Activated the Family"
+msgstr "Активізував сім’ю"
+
+#: 
+msgid "families"
+msgstr "сім'ї"
+
+#: 
+msgid "Deposit ticket type.  QBDT - Quickbooks"
+msgstr "Тип депозитного квитка. QBDT - Швидкі книги"
+
+#: 
+msgid "Financial Settings"
+msgstr "Фінансові налаштування"
+
+#: 
+msgid "An invalid configuration name has been requested"
+msgstr "Запитано недійсне ім’я конфігурації"
+
+#: 
+msgid "An invalid configuration id has been requested"
+msgstr "Запрошено недійсний ідентифікатор конфігурації"
+
+#: 
+msgid "Profile Image uploaded"
+msgstr "Зображення профілю завантажено"
+
+#: 
+msgid "payments(s)?"
+msgstr "платежі?"
+
+#: 
+msgid "Please ensure this what you want to do.</p>"
+msgstr "Будь ласка, переконайтеся, що ви хочете зробити. </p>"
+
+#: 
+msgid " this Family"
+msgstr " ця Родина"
+
+#: 
+msgid "Confirm Deactivation"
+msgstr "Підтвердьте деактивацію"
+
+#: 
+msgid "Confirm Activation"
+msgstr "Підтвердьте активацію"
+
+#: 
+msgid "Please confirm deactivation of family"
+msgstr "Будь ласка, підтвердьте дезактивацію сім'ї"
+
+#: 
+msgid "Please confirm activation of family"
+msgstr "Будь ласка, підтвердьте активацію сім'ї"
+
+#: 
+msgid "Show neighbors with these classifications:"
+msgstr "Покажіть сусідів з цими класифікаціями:"
+
+#: 
+msgid "Please select a Family."
+msgstr "Виберіть сім’ю."
+
+#: 
+msgid "Coordinate data base file name:"
+msgstr "Назва файлу бази даних координат:"
+
+#: 
+msgid "Intersect With Cart"
+msgstr "Перетин з кошиком"
+
+#: 
+msgid "Family Member"
+msgstr "Член сім'ї"
+
+#: 
+msgid "select an option"
+msgstr "виберіть варіант"
+
+#: 
+msgid "Direct me"
+msgstr "Спрямуй мене"
+
+#: 
+msgid "Your cart is empty"
+msgstr "Ваш кошик порожній"
+
+#: 
+msgid "The record could not be found."
+msgstr "Запис не вдалося знайти."
+
+#: 
+msgid "The property is already assigned."
+msgstr "Властивість вже призначена."
+
+#: 
+msgid "The property is successfully assigned."
+msgstr "Властивість успішно призначено."
+
+#: 
+msgid "The property could not be assigned."
+msgstr "Не вдалося призначити властивість."
+
+#: 
+msgid "The property is successfully unassigned."
+msgstr "Властивість успішно не призначено."
+
+#: 
+msgid "The property could not be unassigned."
+msgstr "Власність не може бути відмінена."
+
+#: 
+msgid "Select event"
+msgstr "Виберіть подію"
+
+#: 
+msgid "Person's Name"
+msgstr "Ім'я особи"
+
+#: 
+msgid "Adult Name(Optional)"
+msgstr "Ім'я дорослого (необов’язково)"
+
+#: 
+msgid "Checked in By(Optional)"
+msgstr "Зареєструвався (необов’язково)"
+
+#: 
+msgid "Person has been already checked in for this event"
+msgstr "Людина вже зареєстрована на цю подію"
+
+#: 
+msgid "CheckOut Person"
+msgstr "CheckOut Person"
+
+#: 
+msgid "Delete Checkin in Entry"
+msgstr "Видалити реєстрацію в записі"
+
+#: 
+msgid "Adult Checking Out Person"
+msgstr "Дорослий, який виписує особу"
+
+#: 
+msgid "Adult Name (Optional)"
+msgstr "Ім'я дорослого (необов’язково)"
+
+#: 
+msgid "Text before name in emails/reports"
+msgstr "Текст перед назвою в електронних листах / звітах"
+
+#: 
+msgid "Set true to allow empty lastname in Person Editor.  Set false to validate last name and inherit from family when left empty."
+msgstr "Встановіть значення true, щоб дозволити порожнє прізвище в редакторі особи. Встановіть значення false, щоб перевірити прізвище та успадкувати від родини, якщо воно залишається порожнім."
+
+#: 
+msgid "Display bill counts on deposit slip"
+msgstr "Відображати рахунок рахунку на депозитному листі"
+
+#: 
+msgid "ChurchCRM Cloud Access URL"
+msgstr "URL-адреса хмарного доступу ChurchCRM"
+
+#: 
+msgid "Your Account was Deleted"
+msgstr "Ваш рахунок був видалений"
+
+#: 
+msgid "Your ChurchCRM Account was Deleted."
+msgstr "Ваш обліковий запис ChurchCRM видалено."
+
+#: 
+msgid "Account Locked"
+msgstr "Обліковий запис заблоковано"
+
+#: 
+msgid "Your New Account"
+msgstr "Ваш новий рахунок"
+
+#: 
+msgid "Password Changed"
+msgstr "Пароль змінено"
+
+#: 
+msgid "Password Reset"
+msgstr "Скидання пароля"
+
+#: 
+msgid "Account Unlocked"
+msgstr "Обліковий запис розблоковано"
+
+#: 
+msgid "Part"
+msgstr "Частина"
+
+#: 
+msgid "View Photo"
+msgstr "Переглянути фото"
+
+#: 
+msgid "Family Photo"
+msgstr "Сімейне фото"
+
+#: 
+msgid "Quick Settings"
+msgstr "Швидкі налаштування"
+
+#: 
+msgid "Status"
+msgstr "Статус"
+
+#: 
+msgid "Email export"
+msgstr "Експорт електронної пошти"
+
+#: 
+msgid "Include"
+msgstr "Включати"
+
+#: 
+msgid "Exclude"
+msgstr "Виключити"
+
+#: 
+msgid "No property assignments"
+msgstr "Немає присвоєння майна"
+
+#: 
+msgid "View Cart"
+msgstr "Переглянути кошик"
+
+#: 
+msgid "Your Cart is Empty"
+msgstr "Кошик порожній"
+
+#: 
+msgid "View on Map"
+msgstr "Переглянути на карті"
+
+#: 
+msgid "Legend"
+msgstr "Легенда"
+
+#: 
+msgid "assigned"
+msgstr "призначений"
+
+#: 
+msgid "Photo"
+msgstr "Фото"
+
+#: 
+msgid "Payment Details"
+msgstr "Платіжні реквізити"
+
+#: 
+msgid "Fund Split"
+msgstr "Фонд Спліт"
+
+#: 
+msgid "Showing students with birthdays in"
+msgstr "Показ студентів з днями народження в"
+
+#: 
+msgid "Actions"
+msgstr "Дії"
+
+#: 
+msgid "Action Confirmation"
+msgstr "Підтвердження дії"
+
+#: 
+msgid "Please confirm reset failed login count"
+msgstr "Будь ласка, підтвердьте скидання кількості помилок входу"
+
+#: 
+msgid "View Active Families"
+msgstr "Перегляд активних сімей"
+
+#: 
+msgid "View Inactive Families"
+msgstr "Переглянути неактивні сім’ї"
+
+#: 
+msgid "SMTP Server timeout in sec"
+msgstr "Час очікування сервера SMTP в сек"
+
+#: 
+msgid "Exclude Inactive Families"
+msgstr "Виключіть неактивні сім’ї"
+
+#: 
+msgid "The role is already assigned."
+msgstr "Роль уже призначена."
+
+#: 
+msgid "The role is successfully assigned."
+msgstr "Роль успішно призначена."
+
+#: 
+msgid "The role could not be assigned."
+msgstr "Не вдалося призначити роль."
+
+#: 
+msgid "Bing map API requires a unique key"
+msgstr "API Bing map вимагає унікальний ключ"
+
+#: 
+msgid "Google Maps Zoom"
+msgstr "Google Maps Zoom"
+
+#: 
+msgid "Select GeoCoder Provider"
+msgstr "Виберіть постачальника геокодерів"
+
+#: 
+msgid "Your ChurchCRM account was locked."
+msgstr "Ваш обліковий запис ChurchCRM був заблокований."
+
+#: 
+msgid "A ChurchCRM account was created for you"
+msgstr "Для вас був створений обліковий запис ChurchCRM"
+
+#: 
+msgid "Your ChurchCRM password was changed"
+msgstr "Ваш пароль ChurchCRM змінено"
+
+#: 
+msgid "You can reset your ChurchCRM password by clicking this link"
+msgstr "Ви можете скинути свій пароль ChurchCRM, натиснувши це посилання"
+
+#: 
+msgid "Your ChurchCRM account was unlocked."
+msgstr "Ваш акаунт ChurchCRM був розблокований."
+
+#: 
+msgid "system user created"
+msgstr "створений користувачем системи"
+
+#: 
+msgid "system user updated"
+msgstr "користувач системи оновлений"
+
+#: 
+msgid "system user deleted"
+msgstr "користувача системи видалено"
+
+#: 
+msgid "system user password reset"
+msgstr "скидання пароля системного користувача -"
+
+#: 
+msgid "system user changed password"
+msgstr "користувач системи змінив пароль - -"
+
+#: 
+msgid "system user password changed by admin"
+msgstr "пароль користувача системи змінено адміністратором - -"
+
+#: 
+msgid "system user login reset"
+msgstr "скидання входу користувача системи"
+
+#: 
+msgid "Missing Families? Update Family Latitude or Longitude now."
+msgstr "Зниклих сімей? Оновіть сімейну широту чи довготу зараз."
+
+#: 
+msgid "Families without Geo Info"
+msgstr "Сім'ї без геоінформації"
+
+#: 
+msgid "Notification for"
+msgstr "Повідомлення для"
+
+#: 
+msgid "DEBUG"
+msgstr "НАЛАГОДЖУВАТИ"
+
+#: 
+msgid "INFO"
+msgstr "ІНФОРМАЦІЯ"
+
+#: 
+msgid "NOTICE"
+msgstr "ПРИМІТКА"
+
+#: 
+msgid "WARNING"
+msgstr "УВАГА"
+
+#: 
+msgid "ERROR"
+msgstr "ПОМИЛКА"
+
+#: 
+msgid "CRITICAL"
+msgstr "КРИТИЧНИЙ"
+
+#: 
+msgid "ALERT"
+msgstr "ПОВІДОМЛЕННЯ"
+
+#: 
+msgid "EMERGENCY"
+msgstr "НАДЗВИЧАЙНА СТАН"
+
+#: 
+msgid "Title FirstName MiddleName LastName"
+msgstr "Назва Ім'я Середнє Ім'я Прізвище"
+
+#: 
+msgid "Title FirstName MiddleInitial. LastName"
+msgstr "Назва FirstName MiddleInitial. Прізвище"
+
+#: 
+msgid "LastName, Title FirstName MiddleName"
+msgstr "Прізвище, Назва Ім'я Середнє Ім'я"
+
+#: 
+msgid "LastName, Title FirstName MiddleInitial"
+msgstr "Прізвище, Назва Ім'я Середній Ініціал"
+
+#: 
+msgid "FirstName MiddleName LastName"
+msgstr "Ім'я Середнє Ім'я Прізвище"
+
+#: 
+msgid "Title FirstName LastName"
+msgstr "Заголовок Ім'я Прізвище"
+
+#: 
+msgid "LastName, Title FirstName"
+msgstr "Прізвище, Назва Ім'я"
+
+#: 
+msgid "Event Log severity to write, used by ORM and App Logs"
+msgstr "Серйозність журналу подій для запису, використовується ORM та журналами програм"
+
+#: 
+msgid "Time zone"
+msgstr "Часовий пояс"
+
+#: 
+msgid "Nexmo SMS API Key"
+msgstr "Ключ API Nexmo SMS"
+
+#: 
+msgid "Nexmo SMS API Secret"
+msgstr "Nexmo SMS API Secret"
+
+#: 
+msgid "Nexmo SMS From Number"
+msgstr "Nexmo SMS з номера"
+
+#: 
+msgid "OpenLP URL"
+msgstr "URL-адреса OpenLP"
+
+#: 
+msgid "OpenLP Username"
+msgstr "Ім'я користувача OpenLP"
+
+#: 
+msgid "OpenLP Password"
+msgstr "Пароль OpenLP"
+
+#: 
+msgid "KioskVisibilityTimestamp"
+msgstr "Відмітка часу кіоску"
+
+#: 
+msgid "Show/Hide Lost Password Link on the login screen"
+msgstr "Показати / сховати посилання для втраченого пароля на екрані входу"
+
+#: 
+msgid "Backup"
+msgstr "Резервне копіювання"
+
+#: 
+msgid "Integration"
+msgstr "Інтеграція"
+
+#: 
+msgid "Notification"
+msgstr "Повідомлення"
+
+#: 
+msgid "Guardian(s) of"
+msgstr "Опікун (и)"
+
+#: 
+msgid "A notification was triggered by the classroom teacher at"
+msgstr "Повідомлення було зроблено вчителем класу в"
+
+#: 
+msgid "Please go to this location"
+msgstr "Будь ласка, перейдіть за цим місцем"
+
+#: 
+msgid "You ChurchCRM updated password has been changed"
+msgstr "Оновлений вами пароль для ChurchCRM змінено"
+
+#: 
+msgid "Password Reset Link"
+msgstr "Посилання для скидання пароля"
+
+#: 
+msgid "Reset Password"
+msgstr "Скинути пароль"
+
+#: 
+msgid "As part of the restore, external backups have been disabled.  If you wish to continue automatic backups, you must manuall re-enable the bEnableExternalBackupTarget setting."
+msgstr "В рамках відновлення зовнішні резервні копії були вимкнені. Якщо ви хочете продовжити автоматичне резервне копіювання, вам слід вручну ввімкнути налаштування bEnableExternalBackupTarget."
+
+#: 
+msgid "Unable to reset password"
+msgstr "Не вдається скинути пароль"
+
+#: 
+msgid "Reset your password"
+msgstr "Скинути пароль"
+
+#: 
+msgid "Sorry, we are unable to process your request at this point in time."
+msgstr "На жаль, наразі ми не можемо обробити ваш запит."
+
+#: 
+msgid "Login Name is Required"
+msgstr "Ім'я для входу обов’язкове"
+
+#: 
+msgid "A new password was sent to you. Please check your email"
+msgstr "Вам надіслано новий пароль. Будь ласка, перевірте свою електронну пошту"
+
+#: 
+msgid "Kiosk Manager"
+msgstr "Менеджер кіоску"
+
+#: 
+msgid "Your Cart"
+msgstr "Ваш кошик"
+
+#: 
+msgid "Your settings and more"
+msgstr "Ваші налаштування та багато іншого"
+
+#: 
+msgid "Report an issue"
+msgstr "Повідомте про проблему"
+
+#: 
+msgid "Your tasks"
+msgstr "Ваші завдання"
+
+#: 
+msgid "Enable New Kiosk Registration"
+msgstr "Увімкнути реєстрацію нового кіоску"
+
+#: 
+msgid "Active Kiosks"
+msgstr "Активні кіоски"
+
+#: 
+msgid "I forgot my password"
+msgstr "Я забув свій пароль"
+
+#: 
+msgid "Attendees Checked In"
+msgstr "Присутні зареєструвались"
+
+#: 
+msgid "Text Cart"
+msgstr "Текстовий кошик"
+
+#: 
+msgid "Your Church's Website"
+msgstr "Веб-сайт вашої церкви"
+
+#: 
+msgid "Self Verification"
+msgstr "Самоперевірка"
+
+#: 
+msgid "Deactivate"
+msgstr "Вимкнути"
+
+#: 
+msgid "Activate"
+msgstr "Активувати"
+
+#: 
+msgid "Stack Trace"
+msgstr "Трасування стека"
+
+#: 
+msgid "Check Number"
+msgstr "Номер чека"
+
+#: 
+msgid "Details"
+msgstr "Деталі"
+
+#: 
+msgid "Verification email sent"
+msgstr "Електронний лист із підтвердженням надіслано"
+
+#: 
+msgid "Confirm Enable Group Specific Properties"
+msgstr "Підтвердьте Увімкнути властивості групи"
+
+#: 
+msgid "This will create a group-specific properties table for this group.  You should then add needed properties with the Group-Specific Properties Form Editor."
+msgstr "Це створить специфічну для групи таблицю властивостей для цієї групи. Потім слід додати необхідні властивості за допомогою редактора форми властивостей групи."
+
+#: 
+msgid "Confirm Disable Group Specific Properties"
+msgstr "Підтвердьте вимкнення властивостей групи"
+
+#: 
+msgid "Are you sure you want to remove the group-specific person properties?  All group member properties data will be lost!"
+msgstr "Ви впевнені, що хочете видалити властивості особи, характерні для групи? Усі дані про властивості членів групи будуть втрачені!"
+
+#: 
+msgid "Role Name"
+msgstr "Назва ролі"
+
+#: 
+msgid "Sequence"
+msgstr "Послідовність"
+
+#: 
+msgid "Checking Cart Status"
+msgstr "Перевірка стану кошика"
+
+#: 
+msgid "All members of this group are in the cart"
+msgstr "Всі учасники цієї групи знаходяться в кошику"
+
+#: 
+msgid "Remove all"
+msgstr "Видалити всі"
+
+#: 
+msgid "Not all members of this group are in the cart"
+msgstr "Не всі учасники цієї групи знаходяться в кошику"
+
+#: 
+msgid "Add all"
+msgstr "Додати все"
+
+#: 
+msgid "Are you sure you want to remove the selected group members?"
+msgstr "Ви впевнені, що хочете видалити вибраних членів групи?"
+
+#: 
+msgid "Successfully submitted Issue"
+msgstr "Випуск успішно надіслано"
+
+#: 
+msgid "View Issue on GitHub"
+msgstr "Переглянути випуск на GitHub"
+
+#: 
+msgid "Do you want to delete this person?  This cannot be undone."
+msgstr "Видалити цю особу? Це не може бути скасовано."
+
+#: 
+msgid "Are you sure you want to unassign this property?"
+msgstr "Ви впевнені, що хочете скасувати цю властивість?"
+
+#: 
+msgid "Select a family"
+msgstr "Виберіть сім’ю"
+
+#: 
+msgid "Release Notes"
+msgstr "Примітки до випуску"
+
+#: 
+msgid "Move"
+msgstr "Рухайся"
+
+#: 
+msgid "Arabic - Egypt"
+msgstr "Арабська - Єгипет"
+
+#: 
+msgid "Thai"
+msgstr "Тайська"
+
+#: 
+msgid "Your Church's Facebook Page"
+msgstr "Сторінка Вашої Церкви у Facebook"
+
+#: 
+msgid "Your Church's Twitter Page"
+msgstr "Сторінка Вашої Церкви у Twitter"
+
+#: 
+msgid "lookup user images on Google when no local image is present"
+msgstr "шукати зображення користувачів у Google, коли немає локального зображення"
+
+#: 
+msgid "Self Register"
+msgstr "Самореєстрація"
+
+#: 
+msgid "List families that were created via self registration."
+msgstr "Перелічіть родини, створені шляхом самореєстрації."
+
+#: 
+msgid "Pending Self Verify"
+msgstr "Очікує на самостійну перевірку"
+
+#: 
+msgid "Self Verify"
+msgstr "Самоперевірка"
+
+#: 
+msgid "Indonesian - Indonesia"
+msgstr "Індонезійська - Індонезія"
+
+#: 
+msgid "POST to cart requires a Persons array, FamilyID, or GroupID"
+msgstr "POST для кошика вимагає масиву Persons, FamilyID або GroupID"
+
+#: 
+msgid "records(s) successfully added to selected Group."
+msgstr "записи успішно додано до вибраної групи."
+
+#: 
+msgid "To export to another For european CharSet use ;"
+msgstr "Експортувати до іншого Для європейського використання CharSet;"
+
+#: 
+msgid "Default is UTF-8, For european CharSet use Windows-1252 for example for French language."
+msgstr "За замовчуванням UTF-8, для європейського CharSet використовуйте Windows-1252, наприклад для французької мови."
+
+#: 
+msgid "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example."
+msgstr "Для визначення дати в засобі вибору дати за замовчуванням: рррр-мм-дд, французькою мовою: дд / мм / рррр, наприклад."
+
+#: 
+msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/m/Y for example."
+msgstr "Для визначення дати в засобі вибору дати за замовчуванням: Y-m-d, французькою мовою: d / m / Y, наприклад."
+
+#: 
+msgid "Comma Separated list of PersonIDs of people to notify when a new family or person is added"
+msgstr "Розділений комами список PersonIDs людей, яких потрібно повідомити про додавання нової родини чи людини"
+
+#: 
+msgid "Allow unauthenticated reads of events from the external calendar API"
+msgstr "Дозволити неавторизоване читання подій із зовнішнього API календаря"
+
+#: 
+msgid "New Person Added"
+msgstr "Додано нову особу"
+
+#: 
+msgid "New Family Added"
+msgstr "Додано нову сім’ю"
+
+#: 
+msgid "Church Greeter"
+msgstr "Church Greeter"
+
+#: 
+msgid "External Calendar API is disabled"
+msgstr "API зовнішнього календаря вимкнено"
+
+#: 
+msgid "Special Group Settings : Sunday School Type"
+msgstr "Спеціальні налаштування групи: тип недільної школи"
+
+#: 
+msgid "Sunday School group can't be modified, only in this two cases :"
+msgstr "Групу недільної школи не можна змінити, лише в цих двох випадках:"
+
+#: 
+msgid "You can create/delete sunday school group. "
+msgstr "Ви можете створити / видалити недільну шкільну групу. "
+
+#: 
+msgid "Add new roles, but not modify or rename the Student and the Teacher roles."
+msgstr "Додайте нові ролі, але не змінюйте та не перейменовуйте ролі студента та викладача."
+
+#: 
+msgid "E"
+msgstr "Е"
+
+#: 
+msgid "ENE"
+msgstr "ENE"
+
+#: 
+msgid "ESE"
+msgstr "ESE"
+
+#: 
+msgid "N"
+msgstr "N"
+
+#: 
+msgid "NE"
+msgstr "СВ"
+
+#: 
+msgid "NNE"
+msgstr "ПНВ"
+
+#: 
+msgid "NNW"
+msgstr "ПНВ"
+
+#: 
+msgid "NW"
+msgstr "Пн"
+
+#: 
+msgid "S"
+msgstr "S"
+
+#: 
+msgid "SE"
+msgstr "SE"
+
+#: 
+msgid "SSW"
+msgstr "SSW"
+
+#: 
+msgid "SW"
+msgstr "SW"
+
+#: 
+msgid "W"
+msgstr "W"
+
+#: 
+msgid "WNW"
+msgstr "ПнЗ"
+
+#: 
+msgid "WSW"
+msgstr "WSW"
+
+#: 
+msgid "Persons"
+msgstr "Особи"
+
+#: 
+msgid "Search Family"
+msgstr "Пошук сім’ї"
+
+#: 
+msgid "Show Family Head of House Names"
+msgstr "Показати главу сім’ї вдома"
+
+#: 
+msgid "Search Groups"
+msgstr "Шукати групи"
+
+#: 
+msgid "Search Deposits"
+msgstr "Пошук депозитів"
+
+#: 
+msgid "Search Payments"
+msgstr "Пошук платежів"
+
+#: 
+msgid "Quick Search"
+msgstr "Швидкий пошук"
+
+#: 
+msgid "Search Addresses"
+msgstr "Шукати адреси"
+
+#: 
+msgid "Maximum number of Families"
+msgstr "Максимальна кількість сімей"
+
+#: 
+msgid "Maximum number of Family H.O.H Names"
+msgstr "Максимальна кількість сімейних імен H.O.H."
+
+#: 
+msgid "Maximum number of Groups"
+msgstr "Максимальна кількість груп"
+
+#: 
+msgid "Maximum number of Deposits"
+msgstr "Максимальна кількість депозитів"
+
+#: 
+msgid "Maximum number of Payments"
+msgstr "Максимальна кількість платежів"
+
+#: 
+msgid "Maximum number of Addresses"
+msgstr "Максимальна кількість адрес"
+
+#: 
+msgid "Show type of group:"
+msgstr "Показати тип групи:"
+
+#: 
+msgid "Add Students"
+msgstr "Додати студентів"
+
+#: 
+msgid "Edit this Class"
+msgstr "Редагувати цей клас"
+
+#: 
+msgid "OK"
+msgstr "гаразд"
+
+#: 
+msgid "Please select target Role for members"
+msgstr "Виберіть цільову роль для членів"
+
+#: 
+msgid "GroupID required for role selection prompt"
+msgstr "Ідентифікатор групи потрібен для підказки щодо вибору ролі"
+
+#: 
+msgid "Select Group and Role"
+msgstr "Виберіть Групувати та Роль"
+
+#: 
+msgid "Are you sure you want to remove this person's membership from"
+msgstr "Ви впевнені, що хочете вилучити членство цієї людини з"
+
+#: 
+msgid "All Members"
+msgstr "Усі члени"
+
+#: 
+msgid "PhotoBook"
+msgstr "Фотокнига"
+
+#: 
+msgid "With Photos"
+msgstr "З фотографіями"
+
+#: 
+msgid "Create PhotoBook"
+msgstr "Створіть PhotoBook"
+
+#: 
+msgid "SSE"
+msgstr "SSE"
+
+#: 
+msgid "Height to use for images"
+msgstr "Висота для зображення"
+
+#: 
+msgid "Width to use for images"
+msgstr "Ширина для зображення"
+
+#: 
+msgid "Width to use for thumbnails"
+msgstr "Ширина для ескізів"
+
+#: 
+msgid "Point size to use for initials thumbnails"
+msgstr "Розмір точки для ескізів ініціалів"
+
+#: 
+msgid "Client cache seconds for images"
+msgstr "Клієнтські кеш-секунди для зображень"
+
+#: 
+msgid "Server cache time for remote images"
+msgstr "Час кешування сервера для віддалених зображень"
+
+#: 
+msgid "Recipient Naming Method"
+msgstr "Метод іменування одержувачів"
+
+#: 
+msgid "Salutation Utility"
+msgstr "Утиліта привітання"
+
+#: 
+msgid "Add A Group Name"
+msgstr "Додайте назву групи"
+
+#: 
+msgid "Default Name Group"
+msgstr "Група імен за замовчуванням"
+
+#: 
+msgid "Group Role"
+msgstr "Роль групи"
+
+#: 
+msgid "Members from group"
+msgstr "Члени групи"
+
+#: 
+msgid "Members to another group"
+msgstr "Члени іншої групи"
+
+#: 
+msgid "Members to cart"
+msgstr "Учасники в кошик"
+
+#: 
+msgid "OR Create a Group and add the CART in ONE ACTION"
+msgstr "АБО Створіть групу та додайте КОРЗИНУ ЗА ОДНУ ДІЮ"
+
+#: 
+msgid "Create Group + ADD Cart"
+msgstr "Створити групу + ДОДАТИ кошик"
+
+#: 
+msgid "Facebook"
+msgstr "Facebook"
+
+#: 
+msgid "Twitter"
+msgstr "Twitter"
+
+#: 
+msgid "LinkedIn"
+msgstr "LinkedIn"
+
+#: 
+msgid "Move Event"
+msgstr "Перемістити подію"
+
+#: 
+msgid "Resize Event"
+msgstr "Змінити розмір події"
+
+#: 
+msgid "Text from"
+msgstr "Текст від"
+
+#: 
+msgid "Profile"
+msgstr "Профіль"
+
+#: 
+msgid "Sign out"
+msgstr "Вийти з аккаунта"
+
+#: 
+msgid "Sermon Text"
+msgstr "Текст проповіді"
+
+#: 
+msgid "Change Settings"
+msgstr "Змінити налаштування"
+
+#: 
+msgid "Unknown Type"
+msgstr "Невідомий тип"
+
+#: 
+msgid "PersonID for Cart must be numeric"
+msgstr "PersonID для кошика має бути цифровим"
+
+#: 
+msgid "GroupID for Cart must be numeric"
+msgstr "Ідентифікатор групи для кошика повинен бути числовим"
+
+#: 
+msgid "FamilyID for Cart must be numeric"
+msgstr "Ідентифікатор FamilyID для кошика повинен бути цифровим"
+
+#: 
+msgid "Search People"
+msgstr "Шукати людей"
+
+#: 
+msgid "Maximum number of People"
+msgstr "Максимальна кількість людей"
+
+#: 
+msgid "Field where Father Of Confession is listed, must be a people of group type"
+msgstr "Поле, де вказаний Батько Сповіді, повинно бути людьми групового типу"
+
+#: 
+msgid "Field where last Confession is stored, must be a date type"
+msgstr "Поле, де зберігається останнє Сповідь, має бути типом дати"
+
+#: 
+msgid "Require that this ChurchCRM Database is accessed over HTTPS"
+msgstr "Потрібно мати доступ до цієї бази даних ChurchCRM через HTTPS"
+
+#: 
+msgid "People Setup"
+msgstr "Налаштування людей"
+
+#: 
+msgid "Church Services"
+msgstr "Церковні служби"
+
+#: 
+msgid "People Reports"
+msgstr "Люди Звіти"
+
+#: 
+msgid "People Dashboard"
+msgstr "Інформаційна панель людей"
+
+#: 
+msgid "People Functions"
+msgstr "Функції людей"
+
+#: 
+msgid "People Directory"
+msgstr "Каталог людей"
+
+#: 
+msgid "Printable directory of all people, grouped by family where assigned"
+msgstr "Каталог для друку всіх людей, згрупований за родиною, де призначено"
+
+#: 
+msgid "of People"
+msgstr "людей"
+
+#: 
+msgid "System Upgrade"
+msgstr "Оновлення системи"
+
+#: 
+msgid "Upgrade Required"
+msgstr "Потрібне оновлення"
+
+#: 
+msgid "Current DB Version: "
+msgstr "Поточна версія БД: "
+
+#: 
+msgid "Current Software Version: "
+msgstr "Поточна версія програмного забезпечення: "
+
+#: 
+msgid "Upgrade database"
+msgstr "Оновити базу даних"
+
+#: 
+msgid "Show Birthdates Anniversaries on start up of the CRM"
+msgstr "Показувати ювілеї дат народження при запуску CRM"
+
+#: 
+msgid "Number of seconds after page load until the banner disappears, default 10 seconds"
+msgstr "Кількість секунд після завантаження сторінки до зникнення банера, за замовчуванням 10 секунд"
+
+#: 
+msgid "Help & Support"
+msgstr "Довідка та підтримка"
+
+#: 
+msgid "Help & Manual"
+msgstr "Довідка та керівництво"
+
+#: 
+msgid "Contributing"
+msgstr "Сприяння"
+
+#: 
+msgid "Automatically enable SMTP encryption if offered by the relaying server."
+msgstr "Автоматично активувати шифрування SMTP, якщо це пропонується сервером ретрансляції."
+
+#: 
+msgid "Set the encryption system to use - ssl (deprecated) or tls"
+msgstr "Встановіть для використання систему шифрування - ssl (застаріла) або tls"
+
+#: 
+msgid "Dashboard Service dynamic asynchronous refresh interval, default 60 second"
+msgstr "Інтервал динамічного асинхронного оновлення служби інформаційної панелі, за замовчуванням 60 секунд"
+
+#: 
+msgid "Generate Deposit Slip for Selected Rows (PDF)"
+msgstr "Створити депозит для вибраних рядків (PDF)"
+
+#: 
+msgid "Add All to Cart"
+msgstr "Додати все в кошик"
+
+#: 
+msgid "Remove All from Cart"
+msgstr "Видалити все з кошика"
+
+#: 
+msgid "records(s) successfully deleted from the selected Group."
+msgstr "записи успішно видалено з вибраної групи."
+
+#: 
+msgid "Not Found"
+msgstr "Не знайдено"
+
+#: 
+msgid "Oops!"
+msgstr "Ой!"
+
+#: 
+msgid "Meanwhile, you may"
+msgstr "Тим часом ти можеш"
+
+#: 
+msgid "Database Only (.sql)"
+msgstr "Лише база даних (.sql)"
+
+#: 
+msgid "Database and Photos (.tar.gz)"
+msgstr "База даних та фотографії (.tar.gz)"
+
+#: 
+msgid "User must be an Admin"
+msgstr "Користувач повинен бути адміністратором"
+
+#: 
+msgid "No logged in user"
+msgstr "Немає авторизованого користувача"
+
+#: 
+msgid "Set the standard profile picture icon size in pixels to be used in people lists, default 85 pixels."
+msgstr "Встановіть стандартний розмір піктограми зображення профілю в пікселях для використання у списках людей, за замовчуванням - 85 пікселів."
+
+#: 
+msgid "not found"
+msgstr "не знайдено"
+
+#: 
+msgid "Deleted from group"
+msgstr "Видалено з групи"
+
+#: 
+msgid "Added to group"
+msgstr "Додано до групи"
+
+#: 
+msgid "We could not find the person(s) you were looking for."
+msgstr "Ми не змогли знайти людей, яких шукали."
+
+#: 
+msgid "return to People Dashboard"
+msgstr "повернутися до Інформаційної панелі людей"
+
+#: 
+msgid "User must have MenuOptions permission"
+msgstr "Користувач повинен мати дозвіл MenuOptions"
+
+#: 
+msgid "SMTP Host is not setup, please visit the settings page"
+msgstr "Хост SMTP не налаштований, відвідайте сторінку налаштувань"
+
+#: 
+msgid "Debug Email Connection"
+msgstr "Налагодження підключення електронної пошти"
+
+#: 
+msgid "This Family is Deactivated"
+msgstr "Ця родина деактивована"
+
+#: 
+msgid "Metadata"
+msgstr "Метадані"
+
+#: 
+msgid "The database has been cleared."
+msgstr "База даних очищена."
+
+#: 
+msgid "User must have bAddEvent permissions"
+msgstr "Користувач повинен мати дозволи bAddEvent"
+
+#: 
+msgid "Anniversaries"
+msgstr "Ювілеї"
+
+#: 
+msgid "New Family Notification Email Error"
+msgstr "Нова помилка електронної пошти з повідомленням про сім’ю"
+
+#: 
+msgid "New Person Notification Email Error"
+msgstr "Помилка повідомлення електронної пошти про нову особу"
+
+#: 
+msgid "View User"
+msgstr "Переглянути користувача"
+
+#: 
+msgid "Invalid request: Missing calendar id"
+msgstr "Недійсний запит: відсутній ідентифікатор календаря"
+
+#: 
+msgid "Not Found: Unknown calendar id"
+msgstr "Не знайдено: невідомий ідентифікатор календаря"
+
+#: 
+msgid "no found or user without an email"
+msgstr "жодного знайденого або користувача без електронної пошти"
+
+#: 
+msgid "UserName not set"
+msgstr "Ім'я користувача не встановлено"
+
+#: 
+msgid "The people and families has been cleared from the database."
+msgstr "Люди та сім'ї вилучені з бази даних."
+
+#: 
+msgid "Self Registrations"
+msgstr "Самореєстрація"
+
+#: 
+msgid "Public Calendar"
+msgstr "Громадський календар"
+
+#: 
+msgid "Private Calendar"
+msgstr "Приватний календар"
+
+#: 
+msgid "Username"
+msgstr "Ім'я користувача"
+
+#: 
+msgid "Are you sure you want to move"
+msgstr "Ви впевнені, що хочете переїхати"
+
+#: 
+msgid "from"
+msgstr "від"
+
+#: 
+msgid "to"
+msgstr "до"
+
+#: 
+msgid "Are you sure you want to change the end time for "
+msgstr "Ви впевнені, що хочете змінити час завершення для "
+
+#: 
+msgid "Access Token"
+msgstr "Маркер доступу"
+
+#: 
+msgid "New Access Token"
+msgstr "Новий маркер доступу"
+
+#: 
+msgid "Delete Access Token"
+msgstr "Видалити маркер доступу"
+
+#: 
+msgid "ICS URL"
+msgstr "URL-адреса ICS"
+
+#: 
+msgid "JSON URL"
+msgstr "URL-адреса JSON"
+
+#: 
+msgid "Foreground Color"
+msgstr "Колір переднього плану"
+
+#: 
+msgid "Background Color"
+msgstr "Колір фону"
+
+#: 
+msgid "Delete Calendar"
+msgstr "Видалити календар"
+
+#: 
+msgid "Invalid Entry"
+msgstr "Недійсний запис"
+
+#: 
+msgid "Calendar Name"
+msgstr "Назва календаря"
+
+#: 
+msgid "New Calendar"
+msgstr "Новий календар"
+
+#: 
+msgid "Warning: bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
+msgstr "Попередження: bEnableExternalCalendarAPI вимкнено, але деякі календарі мають маркери доступу"
+
+#: 
+msgid "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token"
+msgstr "Для спільного використання календарів потрібно ввімкнути параметр bEnableExternalCalendarAPI на додаток до календаря, що має певний маркер доступу"
+
+#: 
+msgid "Links"
+msgstr "Посилання"
+
+#: 
+msgid "Show custom links on the left menu."
+msgstr "Показати власні посилання в меню ліворуч."
+
+#: 
+msgid "Enable Sunday School left menu."
+msgstr "Увімкнути меню лівої недільної школи."
+
+#: 
+msgid "Enable Finance menu"
+msgstr "Увімкнути меню Фінанси"
+
+#: 
+msgid "Enable Events menu."
+msgstr "Увімкнути меню Події."
+
+#: 
+msgid "Enable Calendar menu."
+msgstr "Увімкнути меню Календар."
+
+#: 
+msgid "Enable Fundraiser menu."
+msgstr "Увімкнути меню Збору коштів."
+
+#: 
+msgid "Enable Email menu."
+msgstr "Увімкнути меню Електронна пошта."
+
+#: 
+msgid "Enabled Features"
+msgstr "Увімкнені функції"
+
+#: 
+msgid "Validation Error"
+msgstr "Помилка перевірки"
+
+#: 
+msgid "Link Not found"
+msgstr "Посилання не знайдено"
+
+#: 
+msgid "Email Functions"
+msgstr "Функції електронної пошти"
+
+#: 
+msgid "Debug"
+msgstr "Налагоджувати"
+
+#: 
+msgid "Family Custom Fields"
+msgstr "Сімейні спеціальні поля"
+
+#: 
+msgid "Person Custom Fields"
+msgstr "Користувацькі поля користувача"
+
+#: 
+msgid "Donation Funds"
+msgstr "Пожертвні кошти"
+
+#: 
+msgid "Unable to open file"
+msgstr "Не вдається відкрити файл"
+
+#: 
+msgid "Invalid upgrade file specified"
+msgstr "Вказано недійсний файл оновлення"
+
+#: 
+msgid "Failure executing upgrade script"
+msgstr "Помилка виконання сценарію оновлення"
+
+#: 
+msgid "Missing calendar access token"
+msgstr "Відсутній маркер доступу до календаря"
+
+#: 
+msgid "Calendar access token not found"
+msgstr "Маркер доступу до календаря не знайдено"
+
+#: 
+msgid "User must have Delete Records permission"
+msgstr "Користувач повинен мати дозвіл на видалення записів"
+
+#: 
+msgid "ChurchCRM Central Notifications URL"
+msgstr "URL-адреса центральних сповіщень ChurchCRM"
+
+#: 
+msgid "Follow us on Twitter"
+msgstr "Слідуйте за нами в Twitter"
+
+#: 
+msgid "invalid event type id"
+msgstr "недійсний ідентифікатор типу події"
+
+#: 
+msgid "invalid calendar pinning"
+msgstr "недійсне закріплення календаря"
+
+#: 
+msgid "invalid group id"
+msgstr "недійсний ідентифікатор групи"
+
+#: 
+msgid "invalid status value"
+msgstr "недійсне значення статусу"
+
+#: 
+msgid "invalid export value"
+msgstr "недійсне значення експорту"
+
+#: 
+msgid "Invalid User/Password"
+msgstr "Недійсний користувач / пароль"
+
+#: 
+msgid "Find Duplicate Emails"
+msgstr "Знайдіть повторювані електронні листи"
+
+#: 
+msgid "Duplicate Emails"
+msgstr "Повторювані електронні листи"
+
+#: 
+msgid "HTML URL"
+msgstr "URL-адреса HTML"
+
+#: 
+msgid "Latest Persons"
+msgstr "Останні особи"
+
+#: 
+msgid "Updated Persons"
+msgstr "Оновлені особи"
+
+#: 
+msgid "Custom Menus"
+msgstr "Спеціальні меню"
+
+#: 
+msgid "User must have Manage Groups permission"
+msgstr "Користувач повинен мати дозвіл на керування групами"
+
+#: 
+msgid "Missing"
+msgstr "Відсутній"
+
+#: 
+msgid "User must have Edit Records permission"
+msgstr "Користувач повинен мати дозвіл на редагування записів"
+
+#: 
+msgid "User must have Finance permission"
+msgstr "Користувач повинен мати дозвіл на фінанси"
+
+#: 
+msgid "Can't delete yourself"
+msgstr "Не вдається видалити себе"
+
+#: 
+msgid "success"
+msgstr "успіху"
+
+#: 
+msgid "The role could not be found."
+msgstr "Роль не вдалося знайти."
+
+#: 
+msgid "Add Menu"
+msgstr "Додати меню"
+
+#: 
+msgid "Menu Name"
+msgstr "Назва меню"
+
+#: 
+msgid "Max 20 char"
+msgstr "Макс. 20 символів"
+
+#: 
+msgid "Link Address"
+msgstr "Адреса посилання"
+
+#: 
+msgid "Start with http:// or https://"
+msgstr "Почніть з http: // або https: //"
+
+#: 
+msgid "Menus"
+msgstr "Меню"
+
+#: 
+msgid "is disabled"
+msgstr "вимкнено"
+
+#: 
+msgid "System Information"
+msgstr "Інформація про систему"
+
+#: 
+msgid "Software Version"
+msgstr "Версія програмного забезпечення"
+
+#: 
+msgid "Valid Mail Server Settings"
+msgstr "Дійсні налаштування поштового сервера"
+
+#: 
+msgid "Database"
+msgstr "База даних"
+
+#: 
+msgid "Database Version"
+msgstr "Версія бази даних"
+
+#: 
+msgid "Application Prerequisites"
+msgstr "Передумови застосування"
+
+#: 
+msgid "Invalid country name supplied"
+msgstr "Надано недійсну назву країни"
+
+#: 
+msgid "LastName FirstName"
+msgstr "Прізвище Ім'я"
+
+#: 
+msgid "Holidays"
+msgstr "Свята"
+
+#: 
+msgid "Person Name"
+msgstr "Ім'я особи"
+
+#: 
+msgid "Custom message for church greeter email 1, max 255 characters"
+msgstr "Спеціальне повідомлення для електронної пошти, що вітає церкву, максимум 255 символів"
+
+#: 
+msgid "Custom message for church greeter email 2, max 255 characters"
+msgstr "Спеціальне повідомлення для електронної пошти, що вітає церкву, максимум 255 символів"
+
+#: 
+msgid "Include contact and demographic data in new member email notification body"
+msgstr "Включіть контактні та демографічні дані до органу сповіщення електронної пошти нового учасника"
+
+#: 
+msgid "Include family custom properties in global search."
+msgstr "Включіть власні властивості родини у глобальний пошук."
+
+#: 
+msgid "Latvia (Latvija)"
+msgstr "Латвія (Латвія)"
+
+#: 
+msgid "You are about to add a new deposit without a comment"
+msgstr "Ви збираєтеся додати новий депозит без коментарів"
+
+#: 
+msgid "Families Without Emails"
+msgstr "Сім'ї без електронної пошти"
+
+#: 
+msgid "Record"
+msgstr "Запис"
+
+#: 
+msgid "Records"
+msgstr "Записи"
+
+#: 
+msgid "Emptied into Event ID"
+msgstr "Порожній в ідентифікаторі події"
+
+#: 
+msgid "integrityCheck.json file missing"
+msgstr "Файл integritetCheck.json відсутній"
+
+#: 
+msgid "Passed"
+msgstr "Пройшов"
+
+#: 
+msgid "PHP Max Execution Time is too Short"
+msgstr "Макс. Час виконання PHP занадто короткий"
+
+#: 
+msgid "Increase the PHP execution time limit to allow for backup and restore."
+msgstr "Збільште обмеження часу виконання PHP, щоб дозволити резервне копіювання та відновлення."
+
+#: 
+msgid "Application Integrity Check"
+msgstr "Перевірка цілісності програми"
+
+#: 
+msgid "Focus"
+msgstr "Фокус"
+
+#: 
+msgid "Unfocus"
+msgstr "Розфокусувати"
+
+#: 
+msgid "Warning: Signature mismatch"
+msgstr "Попередження: Невідповідність підпису"
+
+#: 
+msgid "Some ChurchCRM system files may have been modified since the last installation."
+msgstr "Деякі системні файли ChurchCRM, можливо, були змінені після останньої інсталяції."
+
+#: 
+msgid "This upgrade will completely destroy any customizations made to the following files by reverting the files to the official version."
+msgstr "Це оновлення повністю знищить будь-які налаштування наступних файлів, повернувши їх до офіційної версії."
+
+#: 
+msgid "If you wish to maintain your changes to these files, please take a manual backup of these files before proceeding with this upgrade, and then manually restore the files after the upgrade is complete."
+msgstr "Якщо ви хочете зберегти зміни до цих файлів, виконайте резервне копіювання цих файлів вручну, перш ніж продовжувати це оновлення, а потім вручну відновіть файли після завершення оновлення."
+
+#: 
+msgid "Integrity Check Details:"
+msgstr "Подробиці перевірки цілісності:"
+
+#: 
+msgid "I Understand"
+msgstr "Я розумію"
+
+#: 
+msgid "Unsupported Deposit Types Detected"
+msgstr "Виявлено непідтримувані типи депозитів"
+
+#: 
+msgid "Support for eGive, Credit Card, and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions."
+msgstr "Підтримка платежів eGive, кредитних карток та банківських векселів застаріла. Існуючі небанківські звіти можуть бути недоступними в наступних версіях."
+
+#: 
+msgid "Estonian"
+msgstr "Естонська"
+
+#: 
+msgid "Error decoding integrity check result file"
+msgstr "Помилка декодування файлу результатів перевірки цілісності"
+
+#: 
+msgid "Error decoding signature definition file"
+msgstr "Помилка декодування файлу визначення підпису"
+
+#: 
+msgid "Generate Backup"
+msgstr "Створити резервну копію"
+
+#: 
+msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
+msgstr "Кінцева точка віддаленого резервного копіювання. Якщо WebDAV, це має бути закодовано за адресою url. "
+
+#: 
+msgid "Include initials image files, remote image files (gravatar), and thumbnails in backup.  These files are generally able to be reproduced after a restore and add very little value to the backup archive at a large expense of execution time and storage"
+msgstr "Включіть у резервну копію файли зображень ініціалів, віддалені файли зображень (gravatar) та ескізи. Ці файли, як правило, можуть бути відтворені після відновлення та додають дуже мало значення архіву резервних копій за великих витрат часу виконання та зберігання"
+
+#: 
+msgid "Password (if any)"
+msgstr "Пароль (якщо є)"
+
+#: 
+msgid "All information on this page is correct."
+msgstr "Вся інформація на цій сторінці є правильною."
+
+#: 
+msgid "Please update the my family information with the following"
+msgstr "Будь ласка, оновіть інформацію про мою сім’ю наступним чином"
+
+#: 
+msgid "Age Histogram"
+msgstr "Вікова гістограма"
+
+#: 
+msgid "Missing event id"
+msgstr "Відсутній ідентифікатор події"
+
+#: 
+msgid "Event not found"
+msgstr "Подія не знайдена"
+
+#: 
+msgid "Session timeout length in seconds\n"
+"Set to zero to disable session timeouts."
+msgstr "Тривалість очікування сеансу в секундах\n"
+"Встановіть нуль, щоб вимкнути час очікування сеансу."
+
+#: 
+msgid "Minimum amount that a new password must differ from the old one (# of characters changed)\n"
+"Set to zero to disable this feature"
+msgstr "Мінімальна кількість, яку новий пароль повинен відрізнятися від старого (змінено кількість символів)\n"
+"Встановіть нуль, щоб вимкнути цю функцію"
+
+#: 
+msgid "Maximum number of failed logins to allow before a user account is locked.\n"
+"Once the maximum has been reached, an administrator must re-enable the account.\n"
+"This feature helps to protect against automated password guessing attacks.\n"
+"Set to zero to disable this feature."
+msgstr "Максимальна кількість невдалих входів, які слід дозволити до блокування облікового запису користувача.\n"
+"Після досягнення максимуму адміністратор повинен знову ввімкнути обліковий запис.\n"
+"Ця функція допомагає захистити від автоматизованих атак вгадування паролів.\n"
+"Встановіть нуль, щоб вимкнути цю функцію."
+
+#: 
+msgid "PDF handling mode.\n"
+"1 = Save File dialog\n"
+"2 = Open in current browser window"
+msgstr "Режим обробки PDF.\n"
+"1 = Діалогове вікно Зберегти файл\n"
+"2 = Відкрити у поточному вікні браузера"
+
+#: 
+msgid "Unavailable person info inherited from assigned family for display?\n"
+"This option causes certain info from a person's assigned family record to be\n"
+"displayed IF the corresponding info has NOT been entered for that person. "
+msgstr "Недоступна інформація про особу, успадкована від призначеної родини для показу?\n"
+"Цей параметр спричиняє певну інформацію із призначеного сімейного запису людини\n"
+"відображається, ЯКЩО відповідна інформація НЕ була введена для цієї особи. "
+
+#: 
+msgid "Press CTRL + C to copy all group members\\' phone numbers"
+msgstr "Натисніть CTRL + C, щоб скопіювати всі телефонні номери членів групи"
+
+#: 
+msgid "Verify People"
+msgstr "Перевірити людей"
+
+#: 
+msgid "People Verify Dashboard"
+msgstr "Люди перевіряють інформаційну панель"
+
+#: 
+msgid "Download family letters"
+msgstr "Завантажте сімейні листи"
+
+#: 
+msgid "Send family email"
+msgstr "Надіслати сімейний електронний лист"
+
+#: 
+msgid "Verification recorded"
+msgstr "Перевірку записано"
+
+#: 
+msgid "Verification URL created"
+msgstr "Створено URL-адресу для підтвердження"
+
+#: 
+msgid "URL"
+msgstr "URL"
+
+#: 
+msgid "PDF"
+msgstr "PDF"
+
+#: 
+msgid "Error sending email(s)"
+msgstr "Помилка надсилання електронних листів"
+
+#: 
+msgid "Please check logs for more information"
+msgstr "Будь ласка, перевірте журнали для отримання додаткової інформації"
+
+#: 
+msgid "Verification URL"
+msgstr "URL-адреса для підтвердження"
+
+#: 
+msgid "Reset System"
+msgstr "Скинути систему"
+
+#: 
+msgid "Unexpected Person Id"
+msgstr "Ідентифікатор несподіваної особи"
+
+#: 
+msgid "Interval in Hours for software update check"
+msgstr "Інтервал у годинах для перевірки оновлення програмного забезпечення"
+
+#: 
+msgid "Last Software Update Check Timestamp"
+msgstr "Мітка часу перевірки останнього оновлення програмного забезпечення"
+
+#: 
+msgid "Allow system upgrades to release marked as 'pre release' on GitHub"
+msgstr "Дозволити оновленням системи випускати позначені як «попередні версії» на GitHub"
+
+#: 
+msgid "Search Calendar Events"
+msgstr "Пошук подій календаря"
+
+#: 
+msgid "Maximum number of Calendar Events"
+msgstr "Максимальна кількість подій календаря"
+
+#: 
+msgid "Database upgrade failed"
+msgstr "Помилка оновлення бази даних"
+
+#: 
+msgid "Unsupported PHP Version"
+msgstr "Непідтримувана версія PHP"
+
+#: 
+msgid "Support for this PHP version will soon be removed.  Current PHP Version: "
+msgstr "Підтримка цієї версії PHP незабаром буде видалена. Поточна версія PHP: "
+
+#: 
+msgid "Missing PHP ZipArchive"
+msgstr "Відсутній PHP ZipArchive"
+
+#: 
+msgid "PHP ZipArchive required to support upgrade"
+msgstr "Для підтримки оновлення потрібен PHP ZipArchive"
+
+#: 
+msgid "Add Results to Cart"
+msgstr "Додати результати в кошик"
+
+#: 
+msgid "Remove Results from Cart"
+msgstr "Видаліть результати з кошика"
+
+#: 
+msgid "Warning: Pre-Upgrade Tasks Detected"
+msgstr "Попередження: Виявлено завдання перед оновленням"
+
+#: 
+msgid "Some conditions have been identified wich may prevent a successful upgrade"
+msgstr "Виявлено деякі умови, які можуть перешкодити успішному оновленню"
+
+#: 
+msgid "Please review and mitigate these tasks before continuing with the upgrade:"
+msgstr "Перш ніж продовжувати оновлення, перегляньте та пом’якшіть ці завдання:"
+
+#: 
+msgid "Database Reset Functions"
+msgstr "Функції скидання бази даних"
+
+#: 
+msgid "Reset Members"
+msgstr "Скинути учасників"
+
+#: 
+msgid "This will remove all the member data, people, and families and can't be undone."
+msgstr "Це призведе до видалення всіх даних учасників, людей та сімей, і їх не можна скасувати."
+
+#: 
+msgid "Reset Families/People"
+msgstr "Скинути налаштування сімей / людей"
+
+#: 
+msgid "Reset Database"
+msgstr "Скинути базу даних"
+
+#: 
+msgid "This will reset the system data and will restart the system as a new install."
+msgstr "Це скине дані системи та перезапустить систему як нову установку."
+
+#: 
+msgid "Clear Filter"
+msgstr "Очистити фільтр"
+
+#: 
+msgid "Add Person"
+msgstr "Додати особу"
+
+#: 
+msgid "Portuguese - Portugal"
+msgstr "Португальська - Португалія"
+
+#: 
+msgid "Holiday"
+msgstr "Свято"
+
+#: 
+msgid "Allow users to self-enroll in 2 factor authentication"
+msgstr "Дозволити користувачам самостійно реєструватися у двофакторній автентифікації"
+
+#: 
+msgid "Requires users to self-enroll in 2 factor authentication"
+msgstr "Потрібно, щоб користувачі самостійно реєструвались у двофакторній аутентифікації"
+
+#: 
+msgid "ChurchCRM"
+msgstr "ChurchCRM"
+
+#: 
+msgid "Specify the application name to be displayed in authenticator app"
+msgstr "Вкажіть назву програми, яка відображатиметься в програмі автентифікації"
+
+#: 
+msgid "Secret Keys missing from Config.php"
+msgstr "Секретні ключі відсутні в Config.php"
+
+#: 
+msgid "Review"
+msgstr "Огляд"
+
+#: 
+msgid "Thank you for registering your family"
+msgstr "Дякуємо за реєстрацію вашої родини"
+
+#: 
+msgid "Register another family!"
+msgstr "Зареєструйте іншу сім'ю!"
+
+#: 
+msgid "Done, show me the homepage!"
+msgstr "Готово, покажіть домашню сторінку!"
+
+#: 
+msgid "User authenticated via API Key: "
+msgstr "Аутентифікація користувача за допомогою ключа API: "
+
+#: 
+msgid "Unsuccessful API Key authentication attempt"
+msgstr "Невдала спроба автентифікації ключа ключа API"
+
+#: 
+msgid "Unpinned Events"
+msgstr "Незакріплені події"
+
+#: 
+msgid "LastName, FirstName MiddleName"
+msgstr "Прізвище, Ім'я Середнє Ім'я"
+
+#: 
+msgid "Manage 2 Factor Authentication"
+msgstr "Управління двофакторною автентифікацією"
+
+#: 
+msgid "Two Factor Status"
+msgstr "Двофакторний статус"
+
+#: 
+msgid "Please confirm disabling 2 Factor Auth for this user"
+msgstr "Будь ласка, підтвердьте вимкнення 2-факторної авторизації для цього користувача"
+
+#: 
+msgid "Please enter 2FA code"
+msgstr "Введіть код 2FA"
+
+#: 
+msgid "2FA Code"
+msgstr "Код 2FA"
+
+#: 
+msgid "2 Factor Authentication enrollment"
+msgstr "2 Реєстрація автентифікації фактора"
+
+#: 
+msgid "Unsupported Two Factor Authentication Configuration"
+msgstr "Непідтримувана конфігурація двофакторної автентифікації"
+
+#: 
+msgid "Unable To Begin Two Factor Authentication Enrollment"
+msgstr "Неможливо розпочати реєстрацію аутентифікації за двома факторами"
+
+#: 
+msgid "Two factor authentication requires ChurchCRM administrators to configure a few parameters"
+msgstr "Двофакторна автентифікація вимагає від адміністраторів ChurchCRM налаштування кількох параметрів"
+
+#: 
+msgid "System configuration "
+msgstr "Системна конфігурація "
+
+#: 
+msgid "Must be set to 'true'"
+msgstr "Потрібно встановити значення `` true ''"
+
+#: 
+msgid "Include/Config.php must define an encryption key for storing 2FA secret keys in the database by setting a value for"
+msgstr "Include / Config.php повинен визначити ключ шифрування для зберігання секретних ключів 2FA у базі даних, встановивши значення для"
+
+#: 
+msgid "Google Maps API Key used for Geocoding addresses"
+msgstr "Ключ API Google Maps, що використовується для геокодування адрес"
+
+#: 
+msgid "Send an email notifying users when their account has been deleted"
+msgstr "Надішліть повідомлення електронною поштою, коли користувачі будуть видалені"
+
+#: 
+msgid "Google Maps API Key used for rendering maps in browser"
+msgstr "Ключ API Google Maps, який використовується для відтворення карт у браузері"
+
+#: 
+msgid "Incorrect password supplied for current user"
+msgstr "Неправильний пароль для поточного користувача"
+
+#: 
+msgid "Your new password must not match your old one."
+msgstr "Ваш новий пароль не повинен відповідати вашому старому."
+
+#: 
+msgid "Your new password is too similar to your old one."
+msgstr "Ваш новий пароль занадто схожий на ваш старий."
+
+#: 
+msgid "Password reset not availble.  Please contact your system administrator"
+msgstr "Скидання пароля недоступне. Зверніться до свого системного адміністратора"
+
+#: 
+msgid "Authentication Issue"
+msgstr "Випуск автентифікації"
+
+#: 
+msgid "Enter new user password. Administratively set passwords are not subject to length or complexity requirements"
+msgstr "Введіть новий пароль користувача. Адміністративно встановлені паролі не підпадають під вимоги довжини та складності"
+
+#: 
+msgid "No email passed in"
+msgstr "Жодного електронного листа не надійшло"
+
+#: 
+msgid "Mailchimp is not active"
+msgstr "Mailchimp не активний"
+
+#: 
+msgid "Mailchimp"
+msgstr "Mailchimp"
+
+#: 
+msgid "Lists"
+msgstr "Списки"
+
+#: 
+msgid "loading"
+msgstr "завантаження"
+
+#: 
+msgid "List not found"
+msgstr "Список не знайдено"
+
+#: 
+msgid "List not inList"
+msgstr "Список не в списку"
+
+#: 
+msgid "People not in"
+msgstr "Люди не входять"
+
+#: 
+msgid "Invalid List id"
+msgstr "Недійсний ідентифікатор списку"
+
+#: 
+msgid "Audience not in the ChurchCRM"
+msgstr "Аудиторія не в ChurchCRM"
+
+#: 
+msgid "ChurchCRM Installation Information"
+msgstr "Інформація про встановлення ChurchCRM"
+
+#: 
+msgid "Database Server Version"
+msgstr "Версія сервера баз даних"
+
+#: 
+msgid "Web Server"
+msgstr "Веб-сервер"
+
+#: 
+msgid "Server Software"
+msgstr "Серверне програмне забезпечення"
+
+#: 
+msgid "Email Information"
+msgstr "Інформація про електронну пошту"
+
+#: 
+msgid "List maintenance"
+msgstr "Ведення списку"
+
+#: 
+msgid "People not in list"
+msgstr "Люди, яких немає в списку"
+
+#: 
+msgid "Audience not in the CRM"
+msgstr "Аудиторія не в CRM"
+
+#: 
+msgid "Hebrew"
+msgstr "Іврит"
+
+#: 
+msgid "open rate"
+msgstr "відкрита ставка"
+
+#: 
+msgid "Not Subscribed "
+msgstr "Не передплачено "
+
+#: 
+msgid "Global User Settings"
+msgstr "Загальні налаштування користувача"
+
+#: 
+msgid "General"
+msgstr "Загальні"
+
+#: 
+msgid "Passwords"
+msgstr "Паролі"
+
+#: 
+msgid "2FA"
+msgstr "2FA"
+
+#: 
+msgid "Session Timeout"
+msgstr "Час очікування сеансу"
+
+#: 
+msgid "Max Failed Login"
+msgstr "Макс. Невдалий вхід"
+
+#: 
+msgid "Enable Password Reset"
+msgstr "Увімкнути скидання пароля"
+
+#: 
+msgid "Send email to Deleted Users"
+msgstr "Надіслати електронне повідомлення видаленим користувачам"
+
+#: 
+msgid "Min Password Length"
+msgstr "Мінімальна довжина пароля"
+
+#: 
+msgid "Min Password Characters Delta"
+msgstr "Мінімальний пароль символів Дельта"
+
+#: 
+msgid "Disallowed Passwords"
+msgstr "Заборонені паролі"
+
+#: 
+msgid "Enable 2FA"
+msgstr "Увімкніть 2FA"
+
+#: 
+msgid "Require 2FA"
+msgstr "Вимагають 2FA"
+
+#: 
+msgid "2FA Application Name"
+msgstr "Назва програми 2FA"
+
+#: 
+msgid "Login Info"
+msgstr "Інформація для входу"
+
+#: 
+msgid "Login Count"
+msgstr "Кількість входів"
+
+#: 
+msgid "Failed Login"
+msgstr "Помилка входу"
+
+#: 
+msgid "Permissions"
+msgstr "Дозволи"
+
+#: 
+msgid "Manage Notes"
+msgstr "Керування нотатками"
+
+#: 
+msgid "Skins"
+msgstr "Скіни"
+
+#: 
+msgid "Failed generate a new API Key"
+msgstr "Не вдалося створити новий ключ API"
+
+#: 
+msgid "Pledge Summary By Family"
+msgstr "Підсумок застави за сім'єю"
+
+#: 
+msgid "Pledge"
+msgstr "Застава"
+
+#: 
+msgid "Paid"
+msgstr "Платні"
+
+#: 
+msgid "Owe"
+msgstr "Винен"
+
+#: 
+msgid "Start Date"
+msgstr "Дата початку"
+
+#: 
+msgid "End Date"
+msgstr "Кінцева дата"
+
+#: 
+msgid "Pinned Calendars"
+msgstr "Закріплені календарі"
+
+#: 
+msgid "This field is required"
+msgstr "Це поле є обов'язковим"
+
+#: 
+msgid "Text"
+msgstr "Текст"
+
+#: 
+msgid "Event Description"
+msgstr "Опис події"
+
+#: 
+msgid "Enrolling your ChurchCRM user account in Two Factor Authention provides an additional layer of defense against bad actors trying to access your account."
+msgstr "Зареєструвавши свій обліковий запис користувача ChurchCRM у двофакторній автентифікації, ви отримуєте додатковий рівень захисту від поганих акторів, які намагаються отримати доступ до вашого облікового запису."
+
+#: 
+msgid "ChurchCRM Two factor supports any TOTP authenticator app, so you're free to choose between Microsoft Authenticator, Google Authenticator, Authy, LastPass, and others"
+msgstr "ChurchCRM Two factor підтримує будь-яку програму автентифікації TOTP, тому ви можете вільно вибирати між Microsoft Authenticator, Google Authenticator, Authy, LastPass та іншими"
+
+#: 
+msgid "When you sign in to ChurchCRM, you'll still enter your username and password like normal"
+msgstr "Коли ви входите в ChurchCRM, ви все одно введете своє ім’я користувача та пароль, як зазвичай"
+
+#: 
+msgid "However, you'll also need to supply a one-time code from your authenticator device to complete your login"
+msgstr "Однак вам також потрібно буде надати одноразовий код із вашого пристрою для автентифікації, щоб заповнити свій логін"
+
+#: 
+msgid "After successfully entering both your credentials, and the one-time code, you'll be logged in as normal"
+msgstr "Після успішного введення як ваших облікових даних, так і одноразового коду, ви ввійдете в систему як зазвичай"
+
+#: 
+msgid "To prevent being locked out of your ChurchCRM account, please ensure you're ready to complete two factor enrollment before clicking begin"
+msgstr "Щоб запобігти блокуванню вашого облікового запису ChurchCRM, будь ласка, переконайтесь, що ви готові пройти реєстрацію за двома факторами, перш ніж натискати «Почати»"
+
+#: 
+msgid "Beginning enrollment will invalidate any previously enrolled 2 factor devices and recovery codes."
+msgstr "Початок реєстрації призведе до недійсності будь-яких раніше зареєстрованих двофакторних пристроїв та кодів відновлення."
+
+#: 
+msgid "When you click next, you'll be prompted to scan a QR code to enroll your authenticator app."
+msgstr "Коли ви натискаєте кнопку Далі, вам буде запропоновано відсканувати QR-код, щоб зареєструвати програму автентифікації."
+
+#: 
+msgid "To confirm enrollment, you'll need to enter the code generated by your authenticator app"
+msgstr "Щоб підтвердити реєстрацію, вам потрібно буде ввести код, згенерований вашим додатком для автентифікації"
+
+#: 
+msgid "After confirming app enrollment, single-use recovery codes will be generated and displayed."
+msgstr "Після підтвердження реєстрації програми буде створено та відображено одноразові коди відновлення."
+
+#: 
+msgid "Recovery codes can be used instead of a code generated from your authenticator app."
+msgstr "Коди відновлення можна використовувати замість коду, згенерованого з вашої програми автентифікації."
+
+#: 
+msgid "Store these in a secure location"
+msgstr "Зберігайте їх у безпечному місці"
+
+#: 
+msgid "Begin Two Factor Authentication Enrollment"
+msgstr "Почніть реєстрацію аутентифікації з двох факторів"
+
+#: 
+msgid "2 Factor Authentication Secret"
+msgstr "Секрет автентифікації 2 факторів"
+
+#: 
+msgid "Regenerate 2 Factor Authentication Secret"
+msgstr "Поновити секрет аутентифікації 2-х факторів"
+
+#: 
+msgid "Remove 2 Factor Authentication Secret"
+msgstr "Видаліть 2-факторну таємницю автентифікації"
+
+#: 
+msgid "Enter TOTP code to confirm enrollment"
+msgstr "Введіть код TOTP для підтвердження реєстрації"
+
+#: 
+msgid "2 Factor Authentication Enrollment Success"
+msgstr "2 Успіх реєстрації автентифікації фактора"
+
+#: 
+msgid "Please store these recovery codes in a safe location"
+msgstr "Зберігайте ці коди відновлення у безпечному місці"
+
+#: 
+msgid "If you ever lose access to your newly enrolled authenticator app, you'll need to use a recovery code to gain access to your account"
+msgstr "Якщо ви коли-небудь втратите доступ до своєї нещодавно зареєстрованої програми автентифікації, вам потрібно буде скористатися кодом відновлення, щоб отримати доступ до свого облікового запису"
+
+#: 
+msgid "Event Attendance"
+msgstr "Відвідування подій"
+
+#: 
+msgid "Generate attendance -AND- non-attendance reports for events"
+msgstr "Створення відвідуваності -І- звіти про неявку на події"
+
+#: 
+msgid "of translation completed"
+msgstr "перекладу завершено"
+
+#: 
+msgid "Help translate this project"
+msgstr "Допоможіть перекласти цей проект"
+
+#: 
+msgid "Credit Card People"
+msgstr "Кредитні картки людей"
+
+#: 
+msgid "People who are configured to pay by credit card."
+msgstr "Люди, які налаштовані платити кредитною карткою."
+
+#: 
+msgid "Afrikaans"
+msgstr "Африкаанс"
+
+#: 
+msgid " has a type mismatch"
+msgstr " має невідповідність типу"
+
+#: 
+msgid "Loading"
+msgstr "Завантаження"
+
+#: 
+msgid "Family Property Unassignment"
+msgstr "Видалення сімейного майна"
+
+#: 
+msgid "Do you want to remove"
+msgstr "Видалити"
+
+#: 
+msgid "View Active People"
+msgstr "Перегляд активних людей"
+
+#: 
+msgid "View Inactive People"
+msgstr "Перегляд неактивних людей"
+
+#: 
+msgid "Today's Birthdays"
+msgstr "Сьогоднішні дні народження"
+
+#: 
+msgid "Today's Wedding Anniversaries"
+msgstr "Сьогоднішні річниці весілля"
+
+#: 
+msgid "Api Key"
+msgstr "Ключ Api"
+
+#: 
+msgid "Regen API Key"
+msgstr "Ключ API Regen"
+
+#: 
+msgid "View Family Page"
+msgstr "Переглянути сімейну сторінку"
+
+#: 
+msgid "View Person Page"
+msgstr "Переглянути сторінку особи"
+
+#: 
+msgid "Verify"
+msgstr "Перевірити"
+
+#: 
+msgid "Family has no emails to use"
+msgstr "Сім'я не має електронних листів для використання"
+
+#: 
+msgid "Blue"
+msgstr "Синій"
+
+#: 
+msgid "Black"
+msgstr "Чорний"
+
+#: 
+msgid "Purple"
+msgstr "Фіолетовий"
+
+#: 
+msgid "Green"
+msgstr "Зелений"
+
+#: 
+msgid "Red"
+msgstr "Червоний"
+
+#: 
+msgid "Yellow"
+msgstr "Жовтий"
+
+#: 
+msgid "Blue Light"
+msgstr "Синє світло"
+
+#: 
+msgid "Black Light"
+msgstr "Чорне світло"
+
+#: 
+msgid "Purple Light"
+msgstr "Фіолетове світло"
+
+#: 
+msgid "Green Light"
+msgstr "Зелене світло"
+
+#: 
+msgid "Red Light"
+msgstr "Червоне світло"
+
+#: 
+msgid "Yellow Light"
+msgstr "Жовте світло"
+
+#: 
+msgid "Boxed Layout"
+msgstr "Макет у коробці"
+
+#: 
+msgid "Activate the boxed layout"
+msgstr "Активуйте розмітку в коробці"
+
+#: 
+msgid "Toggle Sidebar"
+msgstr "Перемкнути бічну панель"
+
+#: 
+msgid "Toggle the left sidebar's state (open or collapse)"
+msgstr "Переключити стан лівої бічної панелі (відкрити або згорнути)"
+
+#: 
+msgid "Tables Settings"
+msgstr "Налаштування таблиць"
+
+#: 
+msgid "Page length"
+msgstr "Довжина сторінки"
+
+#: 
+msgid "Change the initial page length (number of rows per page)"
+msgstr "Змінення початкової довжини сторінки (кількість рядків на сторінці)"
+
+#: 
+msgid "User Interface"
+msgstr "Інтерфейс користувача"
+
+#: 
+msgid "Locale"
+msgstr "Локаль"
+
+#: 
+msgid "Override system locale"
+msgstr "Замінити локальний рівень системи"
+
+#: 
+msgid "Deleted"
+msgstr "Видалено"
+
+#: 
+msgid "Invalid Birth Date: Missing birth month or day."
+msgstr "Недійсна дата народження: відсутній місяць або день народження."
+
+#: 
+msgid "Invalid Birth Date: Missing birth month and day."
+msgstr "Недійсна дата народження: відсутні місяць і день народження."
+
