@@ -116,7 +116,7 @@ $MenuFirst = 1;
                     <i class="fas fa-headset"></i>
                 </a>
                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right" style="left: inherit; right: 0px;">
-                    <a href="<?= SystemURLs::getSupportURL() ?>" class="dropdown-item" title="<?= gettext('Help & Manual') ?>">
+                    <a href="<?= SystemURLs::getSupportURL() ?>" target="help" class="dropdown-item" title="<?= gettext('Help & Manual') ?>">
                         <i class="fas fa-book-reader"></i> <?= gettext('Help & Manual') ?>
                     </a>
                     <div class="dropdown-divider"></div>
