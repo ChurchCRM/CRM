@@ -26,7 +26,7 @@ $groups = GroupQuery::create()
                     ->orderByName(Criteria::ASC)
                     ->filterByType(4)
                     ->find();
-                    
+
 // Set the page title and include HTML header
 $sPageTitle = gettext('Sunday School Reports');
 require '../Include/Header.php';
@@ -34,7 +34,7 @@ require '../Include/Header.php';
 // Is this the second pass?
 if (isset($_POST['SubmitPhotoBook']) || isset($_POST['SubmitClassList']) || isset($_POST['SubmitClassAttendance'])) {
     $iFYID = InputUtils::LegacyFilterInput($_POST['FYID'], 'int');
-    
+
     $dFirstSunday = InputUtils::LegacyFilterInput($_POST['FirstSunday'], 'date');
     $dLastSunday = InputUtils::LegacyFilterInput($_POST['LastSunday'], 'date');
     $dNoSchool1 = InputUtils::LegacyFilterInput($_POST['NoSchool1'], 'date');
@@ -59,10 +59,10 @@ if (isset($_POST['SubmitPhotoBook']) || isset($_POST['SubmitClassList']) || isse
         $aGrpID = implode(',', $aGroups);
         $bAtLeastOneGroup = true;
     }
-    
+
     $allroles = InputUtils::LegacyFilterInput($_POST['allroles']);
     $withPictures = InputUtils::LegacyFilterInput($_POST['withPictures']);
-    
+
     $currentUser = UserQuery::create()->findPk(AuthenticationManager::GetCurrentUser()->getId());
     $currentUser->setCalStart($dFirstSunday);
     $currentUser->setCalEnd($dLastSunday);
@@ -127,7 +127,7 @@ if (isset($_POST['SubmitPhotoBook']) || isset($_POST['SubmitClassList']) || isse
     $iFYID = $_SESSION['idefaultFY'];
     $iGroupID = 0;
     $currentUser = UserQuery::create()->findPk(AuthenticationManager::GetCurrentUser()->getId());
-    
+
     if ($currentUser->getCalStart() != null) {
         $dFirstSunday = $currentUser->getCalStart()->format('Y-m-d');
     }
@@ -158,7 +158,7 @@ if (isset($_POST['SubmitPhotoBook']) || isset($_POST['SubmitClassList']) || isse
     if ($currentUser->getCalNoSchool8() != null) {
         $dNoSchool8 = $currentUser->getCalNoSchool8()->format('Y-m-d');
     }
-        
+
     $iExtraStudents = 0;
     $iExtraTeachers = 0;
 }
@@ -175,11 +175,11 @@ $dNoSchool7 = change_date_for_place_holder($dNoSchool7);
 $dNoSchool8 = change_date_for_place_holder($dNoSchool6);
 
 ?>
-<div class="box">
-  <div class="box-header with-border">
-    <h3 class="box-title"><?= gettext('Report Details')?></h3>
+<div class="card">
+  <div class="card-header with-border">
+    <h3 class="card-title"><?= gettext('Report Details')?></h3>
   </div>
-  <div class="box-body">
+  <div class="card-body">
     <form method="post" action="SundaySchoolReports.php">
 
       <table class="table table-simple-padding" align="left">

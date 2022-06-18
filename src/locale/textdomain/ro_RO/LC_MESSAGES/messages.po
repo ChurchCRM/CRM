@@ -38,7 +38,7 @@ msgstr "Oraș"
 
 #: 
 msgid "State"
-msgstr "De stat"
+msgstr "Județ"
 
 #: 
 msgid "Country"
@@ -54,7 +54,7 @@ msgstr "E-mail"
 
 #: 
 msgid "Credit Card"
-msgstr "Card de credit"
+msgstr "Card bancar"
 
 #: 
 msgid "Backup Database"
@@ -62,12 +62,12 @@ msgstr "Baza de date de rezervă"
 
 #: 
 msgid "This tool will assist you in manually backing up the ChurchCRM database."
-msgstr "Această unealtă vă va asista în crearea manuală a unei copii de rezervăd pentru baza de date ChurchCRM "
+msgstr "Această unealtă vă va ajuta în crearea manuală a unei copii de rezervă pentru baza de date ChurchCRM."
 
 #: 
 #, fuzzy
 msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
-msgstr "Tu ar trebui să facă o copie de rezervă manual, cel puțin o dată pe săptămână, dacă nu aveți deja un procedeu de backup regulat pentru sistemele dvs.."
+msgstr "Trebuie să faci un backup manual, cel puțin o dată pe săptămână, dacă nu aveți deja o metoda de backup regulată pentru sistemele dvs."
 
 #: 
 msgid "After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site."
@@ -84,16 +84,16 @@ msgstr "Selectați tipul arhivă"
 
 #: 
 msgid "Encrypt backup file with a password?"
-msgstr "Cripta fișierul copie de siguranță cu o parolă?"
+msgstr "Criptezi fișierul de backup cu o parolă?"
 
 #: 
 #, fuzzy
 msgid "Re-type Password"
-msgstr "Re-introdu parola"
+msgstr "Re-introduceți parola"
 
 #: 
 msgid "Generate and Ship Backup to External Storage"
-msgstr "Generează și trimite o copie de rezervă vătre o stocare externă"
+msgstr "Generează și trimite o un backup către o stocare externă"
 
 #: 
 msgid "Batch Winner Entry"
@@ -109,7 +109,7 @@ msgstr "Preț"
 
 #: 
 msgid "Enter Winners"
-msgstr "Introduceți Câștigătorii"
+msgstr "Introduceți câștigătorii"
 
 #: 
 msgid "CSV Export"
@@ -166,12 +166,12 @@ msgstr "Nasterii / Aniversare Data"
 #: 
 #, fuzzy
 msgid "Age / Years Married"
-msgstr "Vârsta / ani Casatorit"
+msgstr "Vârsta / Ani căsătorie"
 
 #: 
 #, fuzzy
 msgid "Family Role"
-msgstr "Rolul familiei"
+msgstr "Rolul în familie"
 
 #: 
 #, fuzzy
@@ -205,7 +205,7 @@ msgstr "Bazat pe filtrele de mai jos .."
 
 #: 
 msgid "People in Cart (filters ignored)"
-msgstr "Oamenii din Cos (filtre ignorate)"
+msgstr "Oamenii din coș (filtre ignorate)"
 
 #: 
 msgid "Use Ctrl Key to select multiple"
@@ -213,7 +213,7 @@ msgstr "Foloseste Ctrl pentru a selecta mai multe"
 
 #: 
 msgid "Don't Filter"
-msgstr "Nu Filtru"
+msgstr "Fără filtre"
 
 #: 
 msgid "Male"
@@ -234,25 +234,25 @@ msgstr "De la:"
 
 #: 
 msgid "To:"
-msgstr "Pentru a:"
+msgstr "Pentru:"
 
 #: 
 #, fuzzy
 msgid "Birthday Date"
-msgstr "Data nasterii Data"
+msgstr "Data nașterii"
 
 #: 
 #, fuzzy
 msgid "Anniversary Date"
-msgstr "Aniversare Data"
+msgstr "Data aniversării"
 
 #: 
 msgid "Output Method:"
-msgstr "Metoda de iesire:"
+msgstr "Metoda de export:"
 
 #: 
 msgid "CSV Individual Records"
-msgstr "CSV individual Records"
+msgstr "CSV înregistrări individuale"
 
 #: 
 msgid "CSV Combine Families"
@@ -260,11 +260,11 @@ msgstr "CSV Combine Familiile"
 
 #: 
 msgid "Add Individuals to Cart"
-msgstr "Adauga Indivizii in cos"
+msgstr "Adauga persoane în coș"
 
 #: 
 msgid "Skip records with incomplete mail address"
-msgstr "Treci înregistrări cu adresa de e-mail incomplete"
+msgstr "Sari peste înregistrările fără adresa de e-mail"
 
 #: 
 msgid "Create File"
@@ -320,7 +320,7 @@ msgstr "Data nașterii"
 
 #: 
 msgid "Wedding Date"
-msgstr "Nunta Data"
+msgstr "Data nunții"
 
 #: 
 msgid "Ignore first CSV row (to exclude a header)"
@@ -8141,6 +8141,46 @@ msgid "Help & Support"
 msgstr "Ajutor"
 
 #: 
+msgid "Help & Manual"
+msgstr "Ajutor și manual"
+
+#: 
+msgid "Remove All from Cart"
+msgstr "Șterge pe toți din coș"
+
+#: 
+msgid "Not Found"
+msgstr "Nu găsesc"
+
+#: 
+msgid "Oops!"
+msgstr "Ups!"
+
+#: 
+msgid "Database Only (.sql)"
+msgstr "Doar baza de date (.sql)"
+
+#: 
+msgid "Database and Photos (.tar.gz)"
+msgstr "Baza de date și pozele (.tar.gz)"
+
+#: 
+msgid "User must be an Admin"
+msgstr "Trebuie să fi administrator"
+
+#: 
+msgid "No logged in user"
+msgstr "Nu ești autentificat"
+
+#: 
+msgid "Set the standard profile picture icon size in pixels to be used in people lists, default 85 pixels."
+msgstr "Setează poza standard de profil pentru a apărea în lista cu persoane, implicit la 85px."
+
+#: 
+msgid "not found"
+msgstr "nu găsesc"
+
+#: 
 msgid "Deleted from group"
 msgstr "Șterge din grup"
 
@@ -8219,4 +8259,168 @@ msgstr "UserName nesetat"
 #: 
 msgid "The people and families has been cleared from the database."
 msgstr "Persoanele și familiile au fost șterse din baza de date"
+
+#: 
+msgid "Self Registrations"
+msgstr "Înregistrare personală"
+
+#: 
+msgid "Public Calendar"
+msgstr "Calendar public"
+
+#: 
+msgid "Private Calendar"
+msgstr "Calendar privat"
+
+#: 
+msgid "Username"
+msgstr "Nume utilizator"
+
+#: 
+msgid "Are you sure you want to move"
+msgstr "Ești sigur/ă că vrei să muți"
+
+#: 
+msgid "from"
+msgstr "de la"
+
+#: 
+msgid "to"
+msgstr "pentru"
+
+#: 
+msgid "Background Color"
+msgstr "Culoare fundal"
+
+#: 
+msgid "Calendar Name"
+msgstr "Nume calendar"
+
+#: 
+msgid "New Calendar"
+msgstr "Calendar nou"
+
+#: 
+msgid "Links"
+msgstr "Link-uri"
+
+#: 
+msgid "Show custom links on the left menu."
+msgstr "Arată link-urile personalizate în meniul din stânga"
+
+#: 
+msgid "Family Custom Fields"
+msgstr "Câmpuri personalizate de familie"
+
+#: 
+msgid "Person Custom Fields"
+msgstr "Câmpuri personalizate persoane"
+
+#: 
+msgid "Latest Persons"
+msgstr "Persoane recente"
+
+#: 
+msgid "Updated Persons"
+msgstr "Persoane actualizate"
+
+#: 
+msgid "Custom Menus"
+msgstr "Meniu personalizat"
+
+#: 
+msgid "Missing"
+msgstr "Nu există"
+
+#: 
+msgid "User must have Edit Records permission"
+msgstr "Utilizatorul trebuie să aibă permisiunea de editare"
+
+#: 
+msgid "Can't delete yourself"
+msgstr "Nu poți să te ștergi pe tine"
+
+#: 
+msgid "success"
+msgstr "succes"
+
+#: 
+msgid "The role could not be found."
+msgstr "Rolul nu se găsește"
+
+#: 
+msgid "Add Menu"
+msgstr "Adaugă meniu"
+
+#: 
+msgid "Menu Name"
+msgstr "Adaugă nume"
+
+#: 
+msgid "Max 20 char"
+msgstr "Max 20 caractere"
+
+#: 
+msgid "Link Address"
+msgstr "Link adresă"
+
+#: 
+msgid "Start with http:// or https://"
+msgstr "Începe cu http:// sau https://"
+
+#: 
+msgid "Menus"
+msgstr "Meniuri"
+
+#: 
+msgid "is disabled"
+msgstr "este dezactivat"
+
+#: 
+msgid "System Information"
+msgstr "Informații sistem"
+
+#: 
+msgid "Software Version"
+msgstr "Versiune soft"
+
+#: 
+msgid "Holidays"
+msgstr "Sărbători"
+
+#: 
+msgid "Person Name"
+msgstr "Nume persoană"
+
+#: 
+msgid "Record"
+msgstr "Înregistrare"
+
+#: 
+msgid "Records"
+msgstr "Înregistrări"
+
+#: 
+msgid "Focus"
+msgstr "Focalizare"
+
+#: 
+msgid "Unfocus"
+msgstr "Defocalizare"
+
+#: 
+msgid "I Understand"
+msgstr "Înțeleg"
+
+#: 
+msgid "Generate Backup"
+msgstr "Generează backup"
+
+#: 
+msgid "Password (if any)"
+msgstr "Parola (dacă)"
+
+#: 
+msgid "All information on this page is correct."
+msgstr "Toate informațiile de pe pagină sunt corecte."
 

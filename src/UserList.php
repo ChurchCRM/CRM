@@ -39,21 +39,21 @@ require 'Include/Header.php';
 
 ?>
 <!-- Default box -->
-<div class="box">
-    <div class="box-header">
+<div class="card">
+    <div class="card-header">
         <a href="UserEditor.php" class="btn btn-app"><i class="fa fa-user-plus"></i><?= gettext('New User') ?></a>
         <a href="SettingsUser.php" class="btn btn-app"><i class="fa fa-wrench"></i><?= gettext('User Settings') ?></a>
     </div>
 </div>
 <div class="box collapsed-box">
-    <div class="box-header">
-        <b class="box-title"><?= _("Global User Settings")?></b>
-            <div class="box-tools pull-right">
+    <div class="card-header">
+        <b class="card-title"><?= _("Global User Settings")?></b>
+            <div class="card-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
             </div>
         </b>
     </div>
-    <div class="box-body">
+    <div class="card-body">
         <!-- Custom Tabs -->
         <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
@@ -183,15 +183,15 @@ require 'Include/Header.php';
 
 </div>
 
-<div class="box">
-    <div class="box-header">
-        <b class="box-title"><?= _("User Listing")?></b>
-        <div class="box-tools pull-right">
+<div class="card">
+    <div class="card-header">
+        <b class="card-title"><?= _("User Listing")?></b>
+        <div class="card-tools pull-right">
             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
         </div>
         </h3>
     </div>
-    <div class="box-body">
+    <div class="card-body">
         <table class="table table-hover dt-responsive" id="user-listing-table" style="width:100%;">
             <thead>
             <tr>
@@ -210,14 +210,14 @@ require 'Include/Header.php';
                 <tr>
                     <td>
                         <a href="UserEditor.php?PersonID=<?= $user->getId() ?>">
-                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                            <i class="fas fa-edit" aria-hidden="true"></i>
                         </a>&nbsp;&nbsp;
                         <a href="v2/user/<?= $user->getId() ?>">
                             <i class="fa fa-eye" aria-hidden="true"></i>
                         </a>&nbsp;&nbsp;
                         <?php if ($user->getId() != AuthenticationManager::GetCurrentUser()->getId()) { ?>
                             <a onclick="deleteUser(<?= $user->getId() ?>, '<?= $user->getPerson()->getFullName() ?>')">
-                                <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                <i class="fa fa-trash-can" aria-hidden="true"></i>
                             </a>
                         <?php } ?>
                     </td>

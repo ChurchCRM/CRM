@@ -3581,7 +3581,7 @@ msgstr "Sélectionner l'année fiscale"
 
 #: 
 msgid "pm"
-msgstr " "
+msgstr "PM "
 
 #: 
 msgid "am"
@@ -8468,6 +8468,10 @@ msgid "invalid event type id"
 msgstr "ID de type d'événement invalide"
 
 #: 
+msgid "invalid calendar pinning"
+msgstr "épinglage de calendrier non valide"
+
+#: 
 msgid "invalid group id"
 msgstr "ID de groupe incorrect"
 
@@ -8663,6 +8667,15 @@ msgstr "Augmenter la limite du temps d'exécution PHP pour permettre la sauvegar
 msgid "Application Integrity Check"
 msgstr "Vérification de l'intégrité de l'application"
 
+#. We need the context, that is in a sentence, otherwise difficult to translate.
+#: 
+msgid "Focus"
+msgstr "le point"
+
+#: 
+msgid "Unfocus"
+msgstr "Déconcentrer"
+
 #: 
 msgid "Warning: Signature mismatch"
 msgstr "Attention : signature incompatible"
@@ -8692,12 +8705,32 @@ msgid "Unsupported Deposit Types Detected"
 msgstr "Types de dépôts incorrects"
 
 #: 
+msgid "Support for eGive, Credit Card, and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions."
+msgstr "La prise en charge des paiements par eGive, par carte de crédit et par traite bancaire a été abandonnée. Désolé, mais les rapports non bancaires existants pourraient ne plus être accessibles dans les futures versions."
+
+#: 
 msgid "Estonian"
 msgstr "Estonien"
 
 #: 
+msgid "Error decoding integrity check result file"
+msgstr "Erreur lors du décodage du fichier de résultat du contrôle d'intégrité"
+
+#: 
+msgid "Error decoding signature definition file"
+msgstr "Erreur lors du décodage du fichier de définition de signature"
+
+#: 
 msgid "Generate Backup"
 msgstr "Effectuer une sauvegarde"
+
+#: 
+msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
+msgstr "Point de restauration à distance. S'il s'agit de WebDAV, l'URL doit être encodée."
+
+#: 
+msgid "Include initials image files, remote image files (gravatar), and thumbnails in backup.  These files are generally able to be reproduced after a restore and add very little value to the backup archive at a large expense of execution time and storage"
+msgstr "Inclus les fichiers image des initiales, les fichiers image distants (gravatar) et les vignettes dans la sauvegarde. Ces fichiers sont généralement capables d'être reproduits après une restauration et ajoutent très peu de valeur à l'archive de sauvegarde au détriment du temps d'exécution et du stockage."
 
 #: 
 msgid "Password (if any)"
@@ -8724,9 +8757,25 @@ msgid "Event not found"
 msgstr "Evénement introuvable"
 
 #: 
+msgid "Session timeout length in seconds\n"
+"Set to zero to disable session timeouts."
+msgstr "Délai d'expiration de la session en secondes\n"
+"Saisissez zéro pour désactiver les délais d'expiration de session."
+
+#: 
 msgid "Minimum amount that a new password must differ from the old one (# of characters changed)\n"
 "Set to zero to disable this feature"
 msgstr "Nombre minimal de caractères à changer lors d'un changement de mot de passe. Mettre zéro pour désactiver cette fonctionnalité."
+
+#: 
+msgid "Maximum number of failed logins to allow before a user account is locked.\n"
+"Once the maximum has been reached, an administrator must re-enable the account.\n"
+"This feature helps to protect against automated password guessing attacks.\n"
+"Set to zero to disable this feature."
+msgstr "Nombre maximal d'échecs de connexion à autoriser avant qu'un compte utilisateur ne soit verrouillé.\n"
+"Une fois le maximum atteint, un administrateur doit réactiver le compte.\n"
+"Cette fonctionnalité permet de se protéger contre les attaques automatisées par devinette de mot de passe.\n"
+"Réglez sur zéro pour désactiver cette fonction."
 
 #: 
 msgid "PDF handling mode.\n"
@@ -8735,6 +8784,14 @@ msgid "PDF handling mode.\n"
 msgstr "Gestion des PDF.\n"
 "1 = Boite de dialogue Enregistrer\n"
 "2 = Ouvrir dans la fenêtre courante du navigateur"
+
+#: 
+msgid "Unavailable person info inherited from assigned family for display?\n"
+"This option causes certain info from a person's assigned family record to be\n"
+"displayed IF the corresponding info has NOT been entered for that person. "
+msgstr "Informations sur la personne non disponibles héritées de la famille attribuée pour l'affichage ?\n"
+"Cette option entraîne l'affichage de certaines informations du dossier familial attribué à une personne \n"
+"affiché SI les informations correspondantes n'ont PAS été saisies pour cette personne."
 
 #: 
 msgid "Press CTRL + C to copy all group members\\' phone numbers"
@@ -8801,6 +8858,18 @@ msgid "Last Software Update Check Timestamp"
 msgstr "Dernière mise à jour"
 
 #: 
+msgid "Allow system upgrades to release marked as 'pre release' on GitHub"
+msgstr "Autoriser la publication des mises à niveau du système marquées comme « pré-version » sur GitHub"
+
+#: 
+msgid "Search Calendar Events"
+msgstr "Rechercher des événements du calendrier"
+
+#: 
+msgid "Maximum number of Calendar Events"
+msgstr "Nombre maximum d'événements dans le calendrier"
+
+#: 
 msgid "%d month old"
 msgid_plural "%d months old"
 msgstr[0] "il y a %d mois"
@@ -8821,6 +8890,10 @@ msgid "Unsupported PHP Version"
 msgstr "Version de PHP non supportée"
 
 #: 
+msgid "Support for this PHP version will soon be removed.  Current PHP Version: "
+msgstr "La prise en charge de cette version de PHP sera bientôt supprimée. Version PHP actuelle :"
+
+#: 
 msgid "Missing PHP ZipArchive"
 msgstr "L'archive ZIP PHP est manquante"
 
@@ -8839,6 +8912,22 @@ msgstr "Enlever les résultats du panier"
 #: 
 msgid "Warning: Pre-Upgrade Tasks Detected"
 msgstr "Avertissement : Des opérations pré-migrations sont requises"
+
+#: 
+msgid "Some conditions have been identified wich may prevent a successful upgrade"
+msgstr "Certaines conditions qui ont été identifiées peuvent empêcher la réussite de la mise à niveau"
+
+#: 
+msgid "Please review and mitigate these tasks before continuing with the upgrade:"
+msgstr "Veuillez passer en revue et réduire ces tâches avant de poursuivre la mise à niveau :"
+
+#: 
+msgid "Database Reset Functions"
+msgstr "Fonctions de réinitialisation de la base de données"
+
+#: 
+msgid "Reset Members"
+msgstr "Réinitialiser les membres"
 
 #: 
 msgid "This will remove all the member data, people, and families and can't be undone."
@@ -8873,8 +8962,24 @@ msgid "Holiday"
 msgstr "Vacances"
 
 #: 
+msgid "Allow users to self-enroll in 2 factor authentication"
+msgstr "Autoriser les utilisateurs à s'inscrire eux-mêmes à l'authentification à 2 facteurs"
+
+#: 
+msgid "Requires users to self-enroll in 2 factor authentication"
+msgstr "Exige que les utilisateurs s'auto-inscrivent à l'authentification à 2 facteurs"
+
+#: 
 msgid "ChurchCRM"
 msgstr "ChurchCRM"
+
+#: 
+msgid "Specify the application name to be displayed in authenticator app"
+msgstr "Spécifiez le nom de l'application à afficher dans l'application d'authentification"
+
+#: 
+msgid "Secret Keys missing from Config.php"
+msgstr "Clés secrètes manquantes dans Config.php"
 
 #: 
 msgid "Review"
@@ -8894,9 +8999,41 @@ msgid "Done, show me the homepage!"
 msgstr "J'ai fini, dirigez moi vers la page d'acceuil"
 
 #: 
+msgid "User authenticated via API Key: "
+msgstr "Utilisateur authentifié via la clé API :"
+
+#: 
+msgid "Unsuccessful API Key authentication attempt"
+msgstr "Tentative d'authentification de clé API infructueuse"
+
+#: 
+msgid "Unpinned Events"
+msgstr "Événements non épinglés"
+
+#: 
 #, fuzzy
 msgid "LastName, FirstName MiddleName"
 msgstr "Nom, Prénoms"
+
+#: 
+msgid "Manage 2 Factor Authentication"
+msgstr "Gérer l'authentification à 2 facteurs"
+
+#: 
+msgid "Two Factor Status"
+msgstr "Statut à deux facteurs"
+
+#: 
+msgid "Please confirm disabling 2 Factor Auth for this user"
+msgstr "Veuillez confirmer la désactivation de l'authentification à 2 facteurs pour cet utilisateur"
+
+#: 
+msgid "Please enter 2FA code"
+msgstr "Veuillez entrer le code 2FA"
+
+#: 
+msgid "2FA Code"
+msgstr "Code 2FA"
 
 #: 
 msgid "2 Factor Authentication enrollment"
@@ -8915,8 +9052,28 @@ msgid "Two factor authentication requires ChurchCRM administrators to configure 
 msgstr "L'authentification à 2 facteurs nécessite une intervention de l'administrateur ChurchCRM"
 
 #: 
+msgid "System configuration "
+msgstr "Configuration Système "
+
+#: 
+msgid "Must be set to 'true'"
+msgstr "Doit être défini sur \"vrai\""
+
+#: 
+msgid "Include/Config.php must define an encryption key for storing 2FA secret keys in the database by setting a value for"
+msgstr "Include/Config.php doit définir une clé de chiffrement pour stocker les clés secrètes 2FA dans la base de données en définissant une valeur pour"
+
+#: 
+msgid "Your new password must not match your old one."
+msgstr "Votre nouveau mot de passe doit être différent de l'ancien."
+
+#: 
 msgid "Your new password is too similar to your old one."
 msgstr "Le nouveau mot de passe est trop similaire à l'ancien"
+
+#: 
+msgid "Password reset not availble.  Please contact your system administrator"
+msgstr "Réinitialisation du mot de passe non disponible. Veuillez contacter votre administrateur système"
 
 #: 
 msgid "Authentication Issue"
@@ -8979,6 +9136,14 @@ msgid "Enable Password Reset"
 msgstr "Activer la réinitialisation de mot de passe"
 
 #: 
+msgid "Min Password Length"
+msgstr "Longueur minimale du mot de passe"
+
+#: 
+msgid "Failed Login"
+msgstr "Echec de l'Authentification"
+
+#: 
 msgid "Pledge"
 msgstr "Promesses de dons"
 
@@ -8991,12 +9156,60 @@ msgid "Start Date"
 msgstr "Date de début"
 
 #: 
+msgid "End Date"
+msgstr "Date de fin"
+
+#: 
+msgid "This field is required"
+msgstr "Ce champ est obligatoire"
+
+#: 
 msgid "Text"
 msgstr "Texte"
 
 #: 
 msgid "Event Description"
 msgstr "Description de l'événement"
+
+#: 
+msgid "To prevent being locked out of your ChurchCRM account, please ensure you're ready to complete two factor enrollment before clicking begin"
+msgstr "Pour éviter d'être bloqué sur votre compte ChurchCRM, veuillez vous assurer que vous êtes prêt à terminer l'inscription à deux facteurs avant de cliquer sur commencer"
+
+#: 
+msgid "When you click next, you'll be prompted to scan a QR code to enroll your authenticator app."
+msgstr "Lorsque vous cliquez sur Suivant, vous serez invité à scanner un code QR pour inscrire votre application d'authentification."
+
+#: 
+msgid "Remove 2 Factor Authentication Secret"
+msgstr "Supprimer le secret d'authentification à 2 facteurs"
+
+#: 
+msgid "Enter TOTP code to confirm enrollment"
+msgstr "Entrez le code TOTP pour confirmer l'inscription"
+
+#: 
+msgid "2 Factor Authentication Enrollment Success"
+msgstr "Succès de l'inscription à l'authentification à 2 facteurs"
+
+#: 
+msgid "Please store these recovery codes in a safe location"
+msgstr "Veuillez stocker ces codes de récupération dans un endroit sûr"
+
+#: 
+msgid "Generate attendance -AND- non-attendance reports for events"
+msgstr "Générer des rapports de présence -ET- d'absence pour les événements"
+
+#: 
+msgid "of translation completed"
+msgstr "de traduction terminée"
+
+#: 
+msgid "Help translate this project"
+msgstr "Aidez à traduire ce projet"
+
+#: 
+msgid "People who are configured to pay by credit card."
+msgstr "Les personnes qui ont payer par carte de crédit."
 
 #: 
 msgid "Afrikaans"
@@ -9019,7 +9232,6 @@ msgid "View Inactive People"
 msgstr "Voir les personnes inactives"
 
 #: 
-#, fuzzy
 msgid "Today's Birthdays"
 msgstr "Anniversaires du jour"
 
@@ -9109,6 +9321,42 @@ msgid "Boxed Layout"
 msgstr "Disposition en boites"
 
 #: 
+msgid "Toggle Sidebar"
+msgstr "Basculer la barre latérale"
+
+#: 
+msgid "Toggle the left sidebar's state (open or collapse)"
+msgstr "Basculer l'état de la barre latérale gauche (ouvrir ou réduire)"
+
+#: 
+msgid "Tables Settings"
+msgstr "Paramètres des tables"
+
+#: 
+msgid "Page length"
+msgstr "Longueur de la page"
+
+#: 
+msgid "Change the initial page length (number of rows per page)"
+msgstr "Modifier la longueur de page initiale (nombre de lignes par page)"
+
+#: 
 msgid "User Interface"
 msgstr "Interface utilisateur"
+
+#: 
+msgid "Override system locale"
+msgstr "Remplacer les paramètres régionaux du système"
+
+#: 
+msgid "Deleted"
+msgstr "Supprimé"
+
+#: 
+msgid "Invalid Birth Date: Missing birth month or day."
+msgstr "Date de naissance invalide : Mois ou jour de naissance manquant."
+
+#: 
+msgid "Invalid Birth Date: Missing birth month and day."
+msgstr "Date de naissance invalide : Mois ou jour de naissance manquant."
 

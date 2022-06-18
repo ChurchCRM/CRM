@@ -32,7 +32,7 @@ Thanks to Jetbrains for providing a free license for their excellent [JetBrain P
 
 ##  Change Log
 
-see [Checkout our Change Log](CHANGELOG.md)
+[Checkout our Change Log](CHANGELOG.md)
 
 ### Demo Account
 

@@ -92,7 +92,7 @@ $sSQL = 'SELECT * FROM userconfig_ucfg WHERE ucfg_per_id='.$iPersonID
 .' ORDER BY ucfg_id';
 $rsConfigs = RunQuery($sSQL);
 ?>
-<div class="box box-body">
+<div class="card card-body">
 <form method=post action=SettingsIndividual.php>
 <div class="table-responsive">
 <table class="table">

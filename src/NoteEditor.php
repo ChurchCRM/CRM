@@ -112,8 +112,8 @@ require 'Include/Header.php';
 
 ?>
 <form method="post">
-  <div class="box box-primary">
-    <div class="box-body">
+  <div class="card card-primary">
+    <div class="card-body">
 
       <p align="center">
         <input type="hidden" name="PersonID" value="<?= $iPersonID ?>">

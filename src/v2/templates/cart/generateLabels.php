@@ -1,9 +1,9 @@
 <?php
-<div class="box">
-    <div class="box-header with-border">
-        <h3 class="box-title"><?= gettext('Generate Labels') ?></h3>
+<div class="card">
+    <div class="card-header with-border">
+        <h3 class="card-title"><?= gettext('Generate Labels') ?></h3>
     </div>
-    <div class="box-body">
+    <div class="card-body">
         <form method="get" action="Reports/PDFLabel.php" name="labelform">
             <table class="table table-responsive">
                 <?php

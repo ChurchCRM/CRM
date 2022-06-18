@@ -126,7 +126,7 @@ require 'Include/Header.php';
 
 echo $sError;
 ?>
-<div class="box">
+<div class="card">
 
 <?php
 if (count($_SESSION['aPeopleCart']) > 0) {
@@ -178,7 +178,7 @@ if (count($_SESSION['aPeopleCart']) > 0) {
 
     echo '</table>'; ?>
     </div>
-    <div class="box">
+    <div class="card">
 <form method="post">
 <div class="table-responsive">
 <table align="center" class="table table-hover">

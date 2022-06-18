@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
     if (!window.CRM.currentActive) {
-        $("#family-deactivated").removeClass("hide");
+        $("#family-deactivated").removeClass("d-none");
     }
 
     $.ajax({
@@ -113,7 +113,7 @@ $(document).ready(function () {
                 title: i18next.t('Edit'),
                 data: 'GroupKey',
                 render: function (data, type, row) {
-                    return '<a class="btn btn-default" href="'+window.CRM.root+'/PledgeEditor.php?GroupKey='+ row.GroupKey + '&amp;linkBack=v2/family/'+window.CRM.currentFamily+'"><i class="fa fa-pencil bg-info"></i></a>';
+                    return '<a class="btn btn-default" href="'+window.CRM.root+'/PledgeEditor.php?GroupKey='+ row.GroupKey + '&amp;linkBack=v2/family/'+window.CRM.currentFamily+'"><i class="fas fa-edit bg-info"></i></a>';
                 },
                 searchable: false
             },

@@ -25,7 +25,7 @@ $mailchimp = new MailChimpService();
 </script>
 
 
-<div id="family-deactivated" class="alert alert-warning hide">
+<div id="family-deactivated" class="alert alert-warning d-none">
     <strong><?= gettext("This Family is Deactivated") ?> </strong>
 </div>
 
@@ -33,17 +33,15 @@ $mailchimp = new MailChimpService();
     <div class="col-lg-6">
         <div class="row">
             <div class="col-lg-4">
-                <div class="box box-primary">
-                    <div class="box-header">
-                        <i class="fa fa-info"></i>
-                        <h3 class="box-title"><?= $family->getName() ?> [<?= $family->getId() ?>]</h3>
-                        <div class="box-tools pull-right">
-                            <button type="button" class="btn btn-box-tool edit-family"><i
-                                    class="fa fa-edit"></i>
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title"><?= $family->getName() ?> [<?= $family->getId() ?>]</h3>
+                        <div class="card-tools pull-right">
+                            <button type="button" class="btn btn-box-tool edit-family"><i class="fa fa-edit"></i>
                             </button>
                         </div>
                     </div>
-                    <div class="box-body">
+                    <div class="card-body">
                         <div class="image-container">
                             <img src="<?= SystemURLs::getRootPath() ?>/api/family/<?= $family->getId() ?>/photo"
                                  class="img-responsive profile-user-img profile-family-img"/>
@@ -60,7 +58,7 @@ $mailchimp = new MailChimpService();
                                         </a>&nbsp;
                                         <a href="#" data-toggle="modal" data-target="#confirm-delete-image"
                                            title="<?= gettext("Delete Photo") ?>">
-                                            <i class="fa fa-trash-o"></i>
+                                            <i class="fa fa-trash-can"></i>
                                         </a>
                                     <?php endif; ?>
                                 </div>
@@ -71,20 +69,21 @@ $mailchimp = new MailChimpService();
                 </div>
             </div>
                 <div class="col-lg-8">
-                    <div class="box">
+                    <div class="card">
                         <br/>
                         <div class="text-center">
-                        <a class="btn btn-app" id="lastFamily"><i
-                                    class="fa fa-hand-o-left"></i><?= gettext('Previous Family') ?></a>
+                            <a class="btn btn-app" id="lastFamily"><i
+                                        class="fa fa-hand-point-left"></i><?= gettext('Previous Family') ?></a>
 
-                        <a class="btn btn-app btn-danger" role="button" href="<?= SystemURLs::getRootPath()?>/v2/family"><i
-                                    class="fa fa-list-ul"></i><?= gettext('Family List') ?></a>
+                            <a class="btn btn-app btn-danger" role="button" href="<?= SystemURLs::getRootPath()?>/v2/family"><i
+                                        class="fa fa-list-ul"></i><?= gettext('Family List') ?></a>
 
-                        <a class="btn btn-app" role="button" id="nextFamily" ><i
-                                    class="fa fa-hand-o-right"></i><?= gettext('Next Family') ?> </a>
+                            <a class="btn btn-app" role="button" id="nextFamily" ><i
+                                        class="fa fa-hand-point-right"></i><?= gettext('Next Family') ?> </a>
                         </div>
                         <hr/>
-                        <a class="btn btn-app" href="#" data-toggle="modal" data-target="#confirm-verify"><i
+                        <div class="text-center">
+                        <a class="btn btn-sm btn-app" href="#" data-toggle="modal" data-target="#confirm-verify"><i
                                 class="fa fa-check-square"></i> <?= gettext("Verify Info") ?></a>
                         <a class="btn btn-app bg-olive"
                            href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?FamilyID=<?=$family->getId()?>"><i
@@ -92,14 +91,14 @@ $mailchimp = new MailChimpService();
 
                         <?php if (AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled()) { ?>
                             <button class="btn btn-app bg-orange" id="activateDeactivate">
-                                <i class="fa <?= (empty($family->isActive()) ? 'fa-times-circle-o' : 'fa-check-circle-o') ?> "></i><?php echo(($family->isActive() ? _('Deactivate') : _('Activate')) . _(' this Family')); ?>
+                                <i class="fa <?= (empty($family->isActive()) ? 'fa-toggle-on' : 'fa-toggle-off') ?> "></i><?php echo(($family->isActive() ? _('Deactivate') : _('Activate')) . _(' this Family')); ?>
                             </button>
                         <?php }
                         if (AuthenticationManager::GetCurrentUser()->isDeleteRecordsEnabled()) {
                             ?>
                             <a class="btn btn-app bg-maroon"
                                href="<?= SystemURLs::getRootPath() ?>/SelectDelete.php?FamilyID=<?=$family->getId()?>"><i
-                                        class="fa fa-trash-o"></i><?= gettext('Delete this Family') ?></a>
+                                        class="fa fa-trash-can"></i><?= gettext('Delete this Family') ?></a>
                             <?php
                         }
                         if (AuthenticationManager::GetCurrentUser()->isNotesEnabled()) {
@@ -113,34 +112,34 @@ $mailchimp = new MailChimpService();
                                 class="fa fa-cart-plus"></i> <?= gettext("Add All Family Members to Cart") ?></a>
                         <?php if (AuthenticationManager::GetCurrentUser()->isCanvasserEnabled()) { ?>
                             <a class="btn btn-app" href="<?= SystemURLs::getRootPath()?>/CanvassEditor.php?FamilyID=<?= $family->getId() ?>&FYID=<?= MakeFYString($_SESSION['idefaultFY']) ?>&amp;linkBack=v2/family/<?= $family->getId() ?>">
-                                <i class="fa fa-refresh"></i><?= MakeFYString($_SESSION['idefaultFY']) . gettext(" Canvass Entry") ?></a>
+                                <i class="fas fa-refresh"></i><?= MakeFYString($_SESSION['idefaultFY']) . gettext(" Canvass Entry") ?></a>
                         <?php } ?>
 
                         <?php if (AuthenticationManager::GetCurrentUser()->isFinanceEnabled()) { ?>
                             <a class="btn btn-app"
                                href="<?= SystemURLs::getRootPath()?>/PledgeEditor.php?FamilyID=<?= $family->getId() ?>&amp;linkBack=v2/family/<?= $family->getId() ?>&amp;PledgeOrPayment=Pledge">
-                                <i class="fa fa-check-circle-o"></i><?= gettext("Add a new pledge") ?></a>
+                                <i class="fa fa-hand-holding-dollar"></i><?= gettext("Add a new pledge") ?></a>
                             <a class="btn btn-app"
                                href="<?= SystemURLs::getRootPath()?>/PledgeEditor.php?FamilyID=<?= $family->getId() ?>&amp;linkBack=v2/family/<?= $family->getId() ?>&amp;PledgeOrPayment=Payment">
-                                <i class="fa fa-money"></i><?= gettext("Add a new payment") ?></a>
+                                <i class="fa-solid fa-money-bill-transfer"></i><?= gettext("Add a new payment") ?></a>
                         <?php } ?>
+                        </div>
                     </div>
                 </div>
             </div>
 
         <div class="row">
             <div class="col-lg-12">
-                <div class="box box-primary">
-                    <div class="box-header">
-                        <i class="fa fa-id-badge"></i>
-                        <h3 class="box-title"><?= gettext("Metadata") ?></h3>
-                        <div class="box-tools pull-right">
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title"> <i class="fa fa-thumbtack"></i> <?= gettext("Metadata") ?></h3>
+                        <div class="card-tools pull-right">
                             <button type="button" class="btn btn-box-tool edit-family"><i
                                     class="fa fa-edit"></i>
                             </button>
                         </div>
                     </div>
-                    <div class="box-body">
+                    <div class="card-body">
                         <ul class="fa-ul">
 
                             <?php
@@ -211,22 +210,21 @@ $mailchimp = new MailChimpService();
 
         <div class="row">
             <div class="col-lg-12">
-                <div class="box">
-                    <div class="box-header">
-                        <i class="fa fa-group"></i>
-                        <h3 class="box-title"><?= gettext("Family Members") ?></h3>
-                        <div class="box-tools pull-right">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title"> <i class="fa fa-people-roof"></i> <?= gettext("Family Members") ?></h3>
+                        <div class="card-tools pull-right">
                             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
                                     class="fa fa-minus"></i>
                             </button>
 
                         </div>
                     </div>
-                    <div class="box-body row row-flex row-flex-wrap">
+                    <div class="card-body row row-flex row-flex-wrap">
                         <?php foreach ($family->getPeople() as $person) { ?>
                             <div class="col-sm-6">
-                                <div class="box box-primary">
-                                    <div class="box-body box-profile">
+                                <div class="card card-primary">
+                                    <div class="card-body box-profile">
                                         <a href="<?= $person->getViewURI()?>" ?>
                                             <img class="profile-user-img img-responsive img-circle initials-image"
                                                  src="data:image/png;base64,<?= base64_encode($person->getPhoto()->getThumbnailBytes()) ?>">
@@ -242,11 +240,11 @@ $mailchimp = new MailChimpService();
                                             </a>
 
                                             <a href="<?= SystemURLs::getRootPath()?>/PersonEditor.php?PersonID=<?= $person->getID()?>" class="table-link">
-                                                <button type="button" class="btn btn-xs btn-primary"><i class="fa fa-pencil"></i></button>
+                                                <button type="button" class="btn btn-xs btn-primary"><i class="fas fa-edit"></i></button>
                                             </a>
                                             <a class="delete-person" data-person_name="<?= $person->getFullName() ?>"
                                                data-person_id="<?= $person->getId() ?>" data-view="family">
-                                                <button type="button" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i></button>
+                                                <button type="button" class="btn btn-xs btn-danger"><i class="fa-solid fa-trash-can"></i></button>
                                             </a>
                                         </p>
                                         <?php if ($person->getClsId()) { ?>
@@ -303,11 +301,10 @@ $mailchimp = new MailChimpService();
         </div>
     </div>
     <div class="col-lg-6">
-        <div class="box">
-            <div class="box-header">
-                <i class="fa fa-hashtag"></i>
-                <h3 class="box-title"><?= gettext("Properties") ?></h3>
-                <div class="box-tools pull-right">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title"><i class="fa fa-hashtag"></i> <?= gettext("Properties") ?></h3>
+                <div class="card-tools pull-right">
                     <?php if (AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled()) { ?>
                     <button id="add-family-property" type="button" class="btn btn-box-tool hidden"><i class="fa fa-plus-circle text-blue"></i></button>
                     <?php } ?>
@@ -317,7 +314,7 @@ $mailchimp = new MailChimpService();
                     </button>
                 </div>
             </div>
-            <div class="box-body">
+            <div class="card-body">
 
                 <div id="family-property-loading" class="col-xs-12 text-center">
                     <i class="btn btn-default btn-lrg ajax">
@@ -345,20 +342,17 @@ $mailchimp = new MailChimpService();
 
         <div class="row">
             <div class="col-lg-12">
-                <div class="box">
-                    <div class="box-header">
-                        <i class="fa fa-map"></i>
-                        <h3 class="box-title"><?= gettext("Address") ?></h3>
-                        <div class="box-tools pull-right">
-                            <button type="button" class="btn btn-box-tool edit-family"><i
-                                        class="fa fa-edit"></i>
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title"><i class="fa fa-map"></i> <?= gettext("Address") ?></h3> 
+                        <div class="card-tools pull-right">
+                            <button type="button" class="btn btn-box-tool edit-family"><i class="fa fa-edit"></i>
                             </button>
-                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
-                                        class="fa fa-minus"></i>
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                             </button>
                         </div>
                     </div>
-                    <div class="box-body">
+                    <div class="card-body">
                         <a href="http://maps.google.com/?q=<?= $familyAddress ?>"
                            target="_blank"><?= $familyAddress ?></a></span>
                         <p/>
@@ -387,30 +381,27 @@ $mailchimp = new MailChimpService();
             </div>
         </div>
         <!-- Maps End -->
-        <div class="box">
-            <div class="box-header">
-                <i class="fa fa-history"></i>
-                <h3 class="box-title"><?= gettext("Timeline") ?></h3>
-                <div class="box-tools pull-right">
-                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
-                            class="fa fa-minus"></i>
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title"><i class="fa fa-history"></i> <?= gettext("Timeline") ?></h3>
+                <div class="card-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                     </button>
                 </div>
             </div>
-            <div class="box-body">
-                <ul class="timeline">
+            <div class="card-body">
+                <div class="timeline">
                     <!-- timeline time label -->
-                    <li class="time-label"><span class="bg-teal"><?= $curYear ?></span></li>
+                    <div class="time-label"><span class="bg-teal"><?= $curYear ?></span></div>
                     <!-- /.timeline-label -->
-
                     <!-- timeline item -->
                     <?php foreach ($familyTimeline as $item) {
                         if ($curYear != $item['year']) {
                             $curYear = $item['year']; ?>
-                            <li class="time-label"><span class="bg-green"><?= $curYear ?></span></li>
+                            <div class="time-label"><span class="bg-teal"><?= $curYear ?></span></div>
                             <?php
                         } ?>
-                        <li>
+                        <div class="timeline-item">
                             <!-- timeline icon -->
                             <i class="fa <?= $item['style'] ?>"></i>
                             <div class="timeline-item">
@@ -452,11 +443,11 @@ $mailchimp = new MailChimpService();
 
                                 <?php } ?>
                             </div>
-                        </li>
+                        </div>
                         <?php
                     } ?>
                     <!-- END timeline item -->
-                </ul>
+                </div>
             </div>
         </div>
     </div>
@@ -468,11 +459,10 @@ $mailchimp = new MailChimpService();
     <div class="col-lg-12">
         <div class="row">
             <div class="col-lg-12">
-            <div class="box">
-                <div class="box-header">
-                    <i class="fa fa-map"></i>
-                    <h3 class="box-title"><?= gettext("Pledges and Payments") ?></h3>
-                    <div class="box-tools pull-right">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title"><i class="fa fa-circle-dollar-to-slot"></i> <?= gettext("Pledges and Payments") ?></h3>
+                    <div class="card-tools pull-right">
                         <input type="checkbox" id="ShowPledges" <?= AuthenticationManager::GetCurrentUser()->isShowPledges() ? "checked" : "" ?>> <?= gettext("Show Pledges") ?>
                         <input type="checkbox" id="ShowPayments" <?= AuthenticationManager::GetCurrentUser()->isShowPayments() ? "checked" : "" ?>> <?= gettext("Show Payments") ?>
                         <label for="ShowSinceDate"><?= gettext("Since") ?>:</label>
@@ -480,7 +470,7 @@ $mailchimp = new MailChimpService();
                                value="<?= AuthenticationManager::GetCurrentUser()->getShowSince() ?>" maxlength="10" id="ShowSinceDate" size="15">
                     </div>
                 </div>
-                <div class="box-body">
+                <div class="card-body">
                     <table id="pledge-payment-v2-table" class="table table-striped table-bordered table-responsive data-table">
                         <tbody></tbody>
                     </table>

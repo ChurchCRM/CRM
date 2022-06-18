@@ -62,8 +62,8 @@ if (count($_SESSION['aPeopleCart']) > 0) {
   <script src="skin/js/GroupRoles.js"></script>
 
   <!-- Default box -->
-  <div class="box">
-    <div class="box-body">
+  <div class="card">
+    <div class="card-body">
       <p align="center"><?= gettext('Select the group to which you would like to add your cart') ?>:</p>
       <form method="post">
         <table align="center">

@@ -81,7 +81,7 @@ if (isset($_POST['Submit'])) {
 require 'Include/Header.php';
 
 ?>
-<div class="box box-body">
+<div class="card card-body">
 <form class="form-horizontal" method="post" action="PropertyTypeEditor.php?PropertyTypeID=<?= $iPropertyTypeID ?>">
     <div class="form-group">
         <label class="control-label col-sm-2" for="class"><?= gettext('Class') ?>:</label>

@@ -17,7 +17,7 @@ $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
       <button type="button" id="verify" class="btn btn-sm" data-toggle="modal" data-target="#confirm-Verify"><div class="btn-txt"><?=gettext("Confirm")?></div><i class="fa fa-check fa-5x"></i>  </button>
     </div>
   </div>
-  <div class="box box-info" id="verifyBox">
+  <div class="card card-info" id="verifyBox">
     <div class="panel-body">
       <img class="img-circle center-block pull-right img-responsive initials-image" width="200" height="200" src="data:image/png;base64,<?= base64_encode($family->getPhoto()->getThumbnailBytes()) ?>" >
       <h2><?= $family->getName() ?></h2>
@@ -46,16 +46,16 @@ $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
         </section>
       <?php } ?>
     </div>
-    <div class="box box-solid">
-      <div class="box-header">
+    <div class="card card-solid">
+      <div class="card-header">
         <i class="fa fa-users"></i>
-        <h3 class="box-title"><?= gettext("Family Member(s)")?></h3>
+        <h3 class="card-title"><?= gettext("Family Member(s)")?></h3>
       </div>
       <div class="row row-flex row-flex-wrap">
         <?php foreach ($family->getPeopleSorted() as $person) { ?>
           <div class="col-md-4 col-sm-4">
-            <div class="box box-primary">
-              <div class="box-body box-profile">
+            <div class="card card-primary">
+              <div class="card-body box-profile">
                  <img class="profile-user-img img-responsive img-circle initials-image" src="data:image/png;base64,<?= base64_encode($person->getPhoto()->getThumbnailBytes()) ?>">
 
                 <h3 class="profile-username text-center"><?= $person->getTitle() ?> <?= $person->getFullName() ?></h3>

@@ -122,7 +122,7 @@ $rsPropertyTypes = RunQuery($sSQL);
 require 'Include/Header.php';
 
 ?>
-<div class="box box-body">
+<div class="card card-body">
   <form method="post" action="PropertyEditor.php?PropertyID=<?= $iPropertyID ?>&Type=<?= $sType ?>">
     <div class="form-group">
         <div class="row">

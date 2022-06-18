@@ -86,7 +86,7 @@ require 'Include/Header.php';
 
 ?>
 
-<div class="box box-body">
+<div class="card card-body">
 <form method="post" action="ManageEnvelopes.php" name="ManageEnvelopes">
 <?php
 

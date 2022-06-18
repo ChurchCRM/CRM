@@ -621,14 +621,14 @@ require 'Include/Header.php';
         </div>
     <?php
 } ?>
-    <div class="box box-info clearfix">
-        <div class="box-header">
-            <h3 class="box-title"><?= gettext('Personal Info') ?></h3>
-            <div class="pull-right"><br/>
+    <div class="card card-info clearfix">
+        <div class="card-header">
+            <h3 class="card-title"><?= gettext('Personal Info') ?></h3>
+            <div class="card-tools">
                 <input type="submit" class="btn btn-primary" value="<?= gettext('Save') ?>" name="PersonSubmit">
             </div>
         </div><!-- /.box-header -->
-        <div class="box-body">
+        <div class="card-body">
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-2">
@@ -775,14 +775,14 @@ require 'Include/Header.php';
             </div>
         </div>
     </div>
-    <div class="box box-info clearfix">
-        <div class="box-header">
-            <h3 class="box-title"><?= gettext('Family Info') ?></h3>
-            <div class="pull-right"><br/>
+    <div class="card card-info clearfix">
+        <div class="card-header">
+            <h3 class="card-title"><?= gettext('Family Info') ?></h3>
+            <div class="card-tools">
                 <input type="submit" class="btn btn-primary" value="<?= gettext('Save') ?>" name="PersonSubmit">
             </div>
         </div><!-- /.box-header -->
-        <div class="box-body">
+        <div class="card-body">
             <div class="form-group col-md-3">
                 <label><?= gettext('Family Role') ?>:</label>
                 <select name="FamilyRole" class="form-control">
@@ -818,14 +818,14 @@ require 'Include/Header.php';
             </div>
         </div>
     </div>
-    <div class="box box-info clearfix">
-        <div class="box-header">
-            <h3 class="box-title"><?= gettext('Contact Info') ?></h3>
-            <div class="pull-right"><br/>
+    <div class="card card-info clearfix">
+        <div class="card-header">
+            <h3 class="card-title"><?= gettext('Contact Info') ?></h3>
+            <div class="card-tools">
                 <input type="submit" class="btn btn-primary" value="<?= gettext('Save') ?>" name="PersonSubmit">
             </div>
         </div><!-- /.box-header -->
-        <div class="box-body">
+        <div class="card-body">
             <?php if (!SystemConfig::getValue('bHidePersonAddress')) { /* Person Address can be hidden - General Settings */ ?>
                 <div class="row">
                     <div class="form-group">
@@ -1085,7 +1085,7 @@ require 'Include/Header.php';
                     </label>
                     <div class="input-group">
                         <div class="input-group-addon">
-                            <i class="fa fa-facebook"></i>
+                            <i class="fa-brands fa-facebook"></i>
                         </div>
                         <input type="text" name="Facebook"
                                value="<?= htmlentities(stripslashes($sFacebook), ENT_NOQUOTES, 'UTF-8') ?>" size="30"
@@ -1099,7 +1099,7 @@ require 'Include/Header.php';
                     <label for="Twitter"><?= gettext('Twitter') ?>:</label>
                     <div class="input-group">
                         <div class="input-group-addon">
-                            <i class="fa fa-twitter"></i>
+                            <i class="fa-brands fa-twitter"></i>
                         </div>
                         <input type="text" name="Twitter"
                                value="<?= htmlentities(stripslashes($sTwitter), ENT_NOQUOTES, 'UTF-8') ?>" size="30"
@@ -1113,7 +1113,7 @@ require 'Include/Header.php';
                       <label for="LinkedIn"><?= gettext('LinkedIn') ?>:</label>
                       <div class="input-group">
                           <div class="input-group-addon">
-                              <i class="fa fa-linkedin"></i>
+                              <i class="fa-brands fa-linkedin"></i>
                           </div>
                           <input type="text" name="LinkedIn"
                                  value="<?= htmlentities(stripslashes($sLinkedIn), ENT_NOQUOTES, 'UTF-8') ?>" size="30"
@@ -1126,14 +1126,14 @@ require 'Include/Header.php';
             </div>
         </div>
     </div>
-    <div class="box box-info clearfix">
-        <div class="box-header">
-            <h3 class="box-title"><?= gettext('Membership Info') ?></h3>
-            <div class="pull-right"><br/>
+    <div class="card card-info clearfix">
+        <div class="card-header">
+            <h3 class="card-title"><?= gettext('Membership Info') ?></h3>
+            <div class="card-tools">
                 <input type="submit" class="btn btn-primary" value="<?= gettext('Save') ?>" name="PersonSubmit">
             </div>
         </div><!-- /.box-header -->
-        <div class="box-body">
+        <div class="card-body">
             <div class="row">
               <div class="form-group col-md-3 col-lg-3">
                 <label><?= gettext('Classification') ?>:</label>
@@ -1187,14 +1187,14 @@ require 'Include/Header.php';
     </div>
   <?php if ($numCustomFields > 0) {
                             ?>
-    <div class="box box-info clearfix">
-        <div class="box-header">
-            <h3 class="box-title"><?= gettext('Custom Fields') ?></h3>
-            <div class="pull-right"><br/>
+    <div class="card card-info clearfix">
+        <div class="card-header">
+            <h3 class="card-title"><?= gettext('Custom Fields') ?></h3>
+            <div class="card-tools">
                 <input type="submit" class="btn btn-primary" value="<?= gettext('Save') ?>" name="PersonSubmit">
             </div>
         </div><!-- /.box-header -->
-        <div class="box-body">
+        <div class="card-body">
             <?php if ($numCustomFields > 0) {
                                 mysqli_data_seek($rsCustomFields, 0);
 
@@ -1226,12 +1226,15 @@ require 'Include/Header.php';
     </div>
   <?php
                         } ?>
+    <div class="text-right">
     <input type="submit" class="btn btn-primary" id="PersonSaveButton" value="<?= gettext('Save') ?>" name="PersonSubmit">
     <?php if (AuthenticationManager::GetCurrentUser()->isAddRecordsEnabled()) {
                             echo '<input type="submit" class="btn btn-primary" value="'.gettext('Save and Add').'" name="PersonSubmitAndAdd">';
                         } ?>
     <input type="button" class="btn btn-primary" value="<?= gettext('Cancel') ?>" name="PersonCancel"
            onclick="javascript:document.location='v2/people';">
+        <p><br/></p>
+    </div>
 </form>
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>" >

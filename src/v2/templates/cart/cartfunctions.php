@@ -5,11 +5,11 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
 
 ?>
-<div class="box">
-  <div class="box-header with-border">
-    <h3 class="box-title">Cart Functions</h3>
+<div class="card">
+  <div class="card-header with-border">
+    <h3 class="card-title">Cart Functions</h3>
   </div>
-  <div class="box-body">
+  <div class="card-body">
     <a href="#" id="emptyCart" class="btn btn-app emptyCart"><i class="fa fa-trash"></i><?= gettext('Empty Cart') ?></a>
     <?php if (AuthenticationManager::GetCurrentUser()->isManageGroupsEnabled()) {
       ?>

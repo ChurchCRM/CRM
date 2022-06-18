@@ -65,11 +65,11 @@ require '../Include/Header.php';
 
 ?>
 
-<div class="box">
-  <div class="box-header with-border">
-    <h3 class="box-title"><?= gettext('Sunday School Class Functions') ?></h3>
+<div class="card">
+  <div class="card-header with-border">
+    <h3 class="card-title"><?= gettext('Sunday School Class Functions') ?></h3>
   </div>
-  <div class="box-body">
+  <div class="card-body">
     <?php
     $sMailtoDelimiter = AuthenticationManager::GetCurrentUser()->getUserConfigString("sMailtoDelimiter");
     $allEmails = array_unique(array_merge($ParentsEmails, $KidsEmails, $TeachersEmails));
@@ -112,25 +112,25 @@ require '../Include/Header.php';
       <?php
     }
     ?>
-    <!-- <a class="btn btn-success" data-toggle="modal" data-target="#compose-modal"><i class="fa fa-pencil"></i> Compose Message</a>  This doesn't really work right now...-->
+    <!-- <a class="btn btn-success" data-toggle="modal" data-target="#compose-modal"><i class="fas fa-edit"></i> Compose Message</a>  This doesn't really work right now...-->
     <a class="btn btn-app" href="../GroupView.php?GroupID=<?= $iGroupId ?>"><i
         class="fa fa-user-plus"></i><?= gettext('Add Students') ?> </a>
 
-	<a class="btn btn-app" href="../GroupEditor.php?GroupID=<?= $iGroupId?>"><i class="fa fa-pencil"></i><?= gettext("Edit this Class") ?></a>
+	<a class="btn btn-app" href="../GroupEditor.php?GroupID=<?= $iGroupId?>"><i class="fas fa-edit"></i><?= gettext("Edit this Class") ?></a>
   </div>
 </div>
 
-<div class="box box-success">
-  <div class="box-header">
-    <h3 class="box-title"><?= gettext('Teachers') ?></h3>
+<div class="card card-success">
+  <div class="card-header">
+    <h3 class="card-title"><?= gettext('Teachers') ?></h3>
   </div>
   <!-- /.box-header -->
-  <div class="box-body row">
+  <div class="card-body row">
     <?php foreach ($rsTeachers as $teacher) {
         ?>
       <div class="col-sm-2">
         <!-- Begin user profile -->
-        <div class="box box-info text-center user-profile-2">
+        <div class="card card-info text-center user-profile-2">
           <div class="user-profile-inner">
             <h4 class="white"><?= $teacher['per_FirstName'].' '.$teacher['per_LastName'] ?></h4>
             <img src="<?= SystemURLs::getRootPath(); ?>/api/person/<?= $teacher['per_ID'] ?>/thumbnail"
@@ -147,25 +147,25 @@ require '../Include/Header.php';
   </div>
 </div>
 
-<div class="box box-info">
-  <div class="box-header">
-    <h3 class="box-title"><?= gettext('Quick Status') ?></h3>
+<div class="card card-info">
+  <div class="card-header">
+    <h3 class="card-title"><?= gettext('Quick Status') ?></h3>
 
-    <div class="box-tools pull-right">
+    <div class="card-tools pull-right">
       <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
     </div>
   </div>
   <!-- /.box-header -->
-  <div class="box-body row">
+  <div class="card-body row">
     <div class="col-lg-8">
       <!-- Bar chart -->
-      <div class="box box-primary">
-        <div class="box-header">
+      <div class="card card-primary">
+        <div class="card-header">
           <i class="fa fa-bar-chart-o"></i>
 
-          <h3 class="box-title"><?= gettext('Birthdays by Month') ?></h3>
+          <h3 class="card-title"><?= gettext('Birthdays by Month') ?></h3>
         </div>
-        <div class="box-body">
+        <div class="card-body">
           <div class="disableSelection" id="bar-chart" style="width: 100%; height: 300px;"></div>
         </div>
         <!-- /.box-body-->
@@ -174,13 +174,13 @@ require '../Include/Header.php';
     </div>
     <div class="col-lg-4">
       <!-- Donut chart -->
-      <div class="box box-primary">
-        <div class="box-header">
+      <div class="card card-primary">
+        <div class="card-header">
           <i class="fa fa-bar-chart-o"></i>
 
-          <h3 class="box-title"><?= gettext('Gender') ?></h3>
+          <h3 class="card-title"><?= gettext('Gender') ?></h3>
         </div>
-        <div class="box-body">
+        <div class="card-body">
           <div id="donut-chart" style="width: 100%; height: 300px;"></div>
         </div>
         <!-- /.box-body-->
@@ -190,12 +190,12 @@ require '../Include/Header.php';
   </div>
 </div>
 
-<div class="box box-primary">
-  <div class="box-header">
-    <h3 class="box-title"><?= gettext('Students') ?></h3>
+<div class="card card-primary">
+  <div class="card-header">
+    <h3 class="card-title"><?= gettext('Students') ?></h3>
   </div>
   <!-- /.box-header -->
-  <div class="box-body table-responsive">
+  <div class="card-body table-responsive">
     <h4 class="birthday-filter" style="display:none;"><?= gettext('Showing students with birthdays in') ?><span class="month"></span> <i style="cursor:pointer; color:red;" class="icon fa fa-close"></i></h4>
     <table id="sundayschool" class="table table-striped table-bordered data-table" cellspacing="0" width="100%">
       <thead>

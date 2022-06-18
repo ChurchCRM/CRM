@@ -1590,7 +1590,7 @@ msgstr "Apakah anda mau melanjutkan?"
 #: 
 #, fuzzy
 msgid "You are about to email copy of the family information to the following emails"
-msgstr "anda akan mengkopi informasi keluarga dalam lewat surel berikut"
+msgstr "Anda akan mengirimkan informasi keluarga ini melalui email berikut"
 
 #: 
 msgid "Financial Reports"
