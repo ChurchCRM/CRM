@@ -7,16 +7,16 @@ context('Finance Deposits', () => {
         cy.loginAdmin("FindDepositSlip.php");
         cy.contains('Add New Deposit');
         cy.contains('Deposits');
-
-        cy.get('#addNewDeposit').click();
-        cy.contains('You are about to add a new deposit without a comment');
-        cy.get('.btn-secondary').click();
-
         cy.get('#depositComment').click();
         cy.get('#depositComment').type('Selenium Test Deposit');
         cy.get('#addNewDeposit').click();
 
         cy.contains('Selenium Test Deposit');
+
+        cy.get('#depositComment').click();
+        cy.get('#depositComment').clear();
+        cy.get('#addNewDeposit').click();
+        cy.contains('You are about to add a new deposit without a comment');
 
     });
 

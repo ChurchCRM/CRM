@@ -1085,7 +1085,7 @@ require 'Include/Header.php';
                     </label>
                     <div class="input-group">
                         <div class="input-group-addon">
-                            <i class="fa fa-facebook"></i>
+                            <i class="fa-brands fa-facebook"></i>
                         </div>
                         <input type="text" name="Facebook"
                                value="<?= htmlentities(stripslashes($sFacebook), ENT_NOQUOTES, 'UTF-8') ?>" size="30"
@@ -1099,7 +1099,7 @@ require 'Include/Header.php';
                     <label for="Twitter"><?= gettext('Twitter') ?>:</label>
                     <div class="input-group">
                         <div class="input-group-addon">
-                            <i class="fa fa-twitter"></i>
+                            <i class="fa-brands fa-twitter"></i>
                         </div>
                         <input type="text" name="Twitter"
                                value="<?= htmlentities(stripslashes($sTwitter), ENT_NOQUOTES, 'UTF-8') ?>" size="30"
@@ -1113,7 +1113,7 @@ require 'Include/Header.php';
                       <label for="LinkedIn"><?= gettext('LinkedIn') ?>:</label>
                       <div class="input-group">
                           <div class="input-group-addon">
-                              <i class="fa fa-linkedin"></i>
+                              <i class="fa-brands fa-linkedin"></i>
                           </div>
                           <input type="text" name="LinkedIn"
                                  value="<?= htmlentities(stripslashes($sLinkedIn), ENT_NOQUOTES, 'UTF-8') ?>" size="30"
