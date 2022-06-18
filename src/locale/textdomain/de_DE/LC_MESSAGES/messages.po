@@ -87,7 +87,7 @@ msgstr "Soll die Sicherung mit einem Passwort verschlüsselt werden?"
 
 #: 
 msgid "Re-type Password"
-msgstr "Passwort wiederholen."
+msgstr "Passwort wiederholen"
 
 #: 
 msgid "Generate and Ship Backup to External Storage"
@@ -1495,7 +1495,7 @@ msgstr "Zeitstrahl"
 
 #: 
 msgid "Pledges and Payments"
-msgstr "Zusagen und Zahlungen"
+msgstr "Spendenzusagen und Zahlungen"
 
 #: 
 msgid "No property assignments."
@@ -1528,7 +1528,7 @@ msgstr "Aktualisiert durch"
 
 #: 
 msgid "Show Pledges"
-msgstr "Zeige Zusagen"
+msgstr "Zeige Spendenzusagen"
 
 #: 
 msgid "Show Payments"
@@ -1544,7 +1544,7 @@ msgstr "Update"
 
 #: 
 msgid "Pledge or Payment"
-msgstr "Zusage oder Zahlung"
+msgstr "Spendenzusagen oder Zahlung"
 
 #: 
 msgid "Date"
@@ -1617,16 +1617,16 @@ msgstr "Wähle eine Berichtsart aus"
 
 #: 
 msgid "Pledge Summary"
-msgstr "Summe der Zusagen"
+msgstr "Summe der Spendenzusagen"
 
 #: 
 #, fuzzy
 msgid "Pledge Family Summary"
-msgstr "Zusagen Familienzusammenfassung"
+msgstr "Zusammenfassung der Spendenzusagen der Familie"
 
 #: 
 msgid "Pledge Reminders"
-msgstr "Zusagen Erinnerung"
+msgstr "Spendenzusagen Erinnerung"
 
 #: 
 msgid "Voting Members"
@@ -1732,7 +1732,7 @@ msgstr "Einschließen:"
 
 #: 
 msgid "Only Payments with Pledges"
-msgstr "Nur Zahlungen basierend auf Zusagen"
+msgstr "Nur Zahlungen basierend auf Spendenzusagen"
 
 #: 
 msgid "All Payments"
@@ -1744,7 +1744,7 @@ msgstr "Erzeugen:"
 
 #: 
 msgid "Only Families with unpaid pledges"
-msgstr "Nur Familien mit unbezahlten Zusagen"
+msgstr "Nur Familien mit unbezahlten Spendenzusagen"
 
 #: 
 msgid "All Families"
@@ -2020,6 +2020,10 @@ msgstr "aus Gruppe"
 #: 
 msgid "Select a group"
 msgstr "Gruppe auswählen"
+
+#: 
+msgid "Group Specific Properties: "
+msgstr "gruppenspezifische Eigenschaften"
 
 #: 
 msgid "Enabled"
@@ -2784,7 +2788,7 @@ msgstr "Kontonummer nicht gültig für Barzahlung"
 
 #: 
 msgid "Pledge Editor"
-msgstr "Zusagen Editor"
+msgstr "Spendenzusagen Editor"
 
 #: 
 msgid "Payment Editor: "
@@ -3127,7 +3131,7 @@ msgstr "Senden"
 
 #: 
 msgid "Pledge Reminder Report"
-msgstr "Bericht zur Erinnerung an Zusagen"
+msgstr "Bericht zur Erinnerung an Spendenzusagen"
 
 #: 
 msgid "Event Attendance Reports"
@@ -3812,15 +3816,15 @@ msgstr "Sachen"
 
 #: 
 msgid "Did not pledge"
-msgstr "Hat nichts zugesagt"
+msgstr "Hat keine Spenden zugesagt"
 
 #: 
 msgid "Top pledger"
-msgstr "Top Zusager"
+msgstr "Top Spendenzusager"
 
 #: 
 msgid "Pledged"
-msgstr "Zugesagt"
+msgstr "Spenden zugesagt"
 
 #: 
 msgid "M/F"
@@ -4765,8 +4769,20 @@ msgid "Estimated value"
 msgstr "Geschätzter Wert"
 
 #: 
+msgid "Disable Group Specific Properties"
+msgstr "gruppenspezifische Eigenschaften ausschalten"
+
+#: 
+msgid "'Default Option'"
+msgstr "'voreingestellte Option'"
+
+#: 
 msgid "Group Properties"
 msgstr "Gruppeneinstellungen"
+
+#: 
+msgid "Assign a New Property:"
+msgstr "eine neue Eigenschaft zuweisen;"
 
 #: 
 msgid "There was a problem retrieving the requested object"
@@ -4833,12 +4849,36 @@ msgid "Should only administrators have access to the CSV export system and direc
 msgstr "Sollen nur Administratoren CSV Dateien exportieren dürfen?"
 
 #: 
+msgid "Minimum length a user may set their password to"
+msgstr "Mindestlänge für ein Passwort, das ein Benutzer setzen kann"
+
+#: 
+msgid "Default City"
+msgstr "voreingestellter Ort"
+
+#: 
+msgid "Default account for receiving a copy of all emails"
+msgstr "Standardkonto zum Empfangen einer Kopie aller E-Mails"
+
+#: 
+msgid "SMTP Server Address (mail.server.com:25)"
+msgstr "SMTP Server Adresse (mail.server.com:25)"
+
+#: 
+msgid "Does your SMTP server require auththentication (username/password)?"
+msgstr "Verlangt Ihr SMTP Server eine Authentifikation (Benutzername/Passwort)?"
+
+#: 
 msgid "SMTP Username"
 msgstr "SMTP Benutzname"
 
 #: 
 msgid "SMTP Password"
 msgstr "SMTP Passwort"
+
+#: 
+msgid "Internationalization (I18n) support"
+msgstr "Unterstützung für Mehrsprachigkeit (l18n)"
 
 #: 
 msgid "First month of the fiscal year"
@@ -4883,6 +4923,18 @@ msgstr "Telefonnummer der Gemeinde"
 #: 
 msgid "Home area code of the church"
 msgstr "Ortsvorwahl der Gemeinde"
+
+#: 
+msgid "Enable Remote Backups to Cloud Services"
+msgstr "Remote Backups zu Cloud-Diensten aktivieren"
+
+#: 
+msgid "Remote Backup Username"
+msgstr "Remote Backup Benutzername"
+
+#: 
+msgid "Remote Backup Password"
+msgstr "Remote Backup Passwort"
 
 #: 
 msgid "Last Backup Timestamp"
@@ -5009,6 +5061,14 @@ msgid "Guest"
 msgstr "Gast"
 
 #: 
+msgid "Non-Attender"
+msgstr "kein Gottesdienstbesucher"
+
+#: 
+msgid "Non-Attender (staff)"
+msgstr "kein Gottesdienstbesucher (Mitarbeiter)"
+
+#: 
 msgid "Minimum Age"
 msgstr "Mindestalter"
 
@@ -5037,6 +5097,10 @@ msgid "Registered students"
 msgstr "Registrierte Schüler"
 
 #: 
+msgid "Volunteer opportunities"
+msgstr "Möglichkeiten für Freiwillige"
+
+#: 
 msgid "Months"
 msgstr "Monate"
 
@@ -5059,6 +5123,18 @@ msgstr "Feldwert"
 #: 
 msgid "Select the desired family role."
 msgstr "Wählen Sie die gewünschte Familienrolle"
+
+#: 
+msgid "Group of registered students"
+msgstr "Gruppe von registrierten Schülern"
+
+#: 
+msgid "Choose a volunteer opportunity"
+msgstr "Wählen Sie eine Freiwilligenarbeit "
+
+#: 
+msgid "Pledged this year"
+msgstr "dieses Jahr Spenden zugesagt"
 
 #: 
 msgid "but not this year"
@@ -5793,12 +5869,48 @@ msgid "Guadeloupe"
 msgstr "Guadeloupe"
 
 #: 
+msgid "Guatemala"
+msgstr "Guatemala"
+
+#: 
+msgid "Guinea (Guinée)"
+msgstr "Guinea"
+
+#: 
+msgid "Haiti"
+msgstr "Haiti"
+
+#: 
+msgid "Honduras"
+msgstr "Honduras"
+
+#: 
+msgid "Hong Kong (香港)"
+msgstr "Hongkong"
+
+#: 
+msgid "Hungary (Magyarország)"
+msgstr "Ungarn"
+
+#: 
 msgid "Iceland (Ísland)"
 msgstr "Island"
 
 #: 
 msgid "India (भारत)"
 msgstr "Indien"
+
+#: 
+msgid "Indonesia"
+msgstr "Indonesien"
+
+#: 
+msgid "Iran (‫ایران‬‎)"
+msgstr "Iran"
+
+#: 
+msgid "Iraq (‫العراق‬‎)"
+msgstr "Irak"
 
 #: 
 msgid "Ireland"
@@ -5881,12 +5993,68 @@ msgid "Liechtenstein"
 msgstr "Liechtenstein"
 
 #: 
+msgid "Lithuania (Lietuva)"
+msgstr "Litauen"
+
+#: 
 msgid "Luxembourg"
 msgstr "Luxemburg"
 
 #: 
+msgid "Macedonia (FYROM) (Македонија)"
+msgstr "Mazedonien"
+
+#: 
+msgid "Madagascar (Madagasikara)"
+msgstr "Madagascar"
+
+#: 
+msgid "Malawi"
+msgstr "Malawi"
+
+#: 
+msgid "Malaysia"
+msgstr "Malaysien"
+
+#: 
 msgid "Maldives"
 msgstr "Malediven"
+
+#: 
+msgid "Mali"
+msgstr "Mali"
+
+#: 
+msgid "Malta"
+msgstr "Malta"
+
+#: 
+msgid "Martinique"
+msgstr "Martinique"
+
+#: 
+msgid "Mauritania (‫موريتانيا‬‎)"
+msgstr "Mauretanien"
+
+#: 
+msgid "Mauritius (Moris)"
+msgstr "Mauritius"
+
+#: 
+msgid "Mexico (México)"
+msgstr "Mexiko"
+
+#: 
+msgid "Moldova (Republica Moldova)"
+msgstr "Moldavien"
+
+#: 
+msgid "Monaco"
+msgstr "Monaco"
+
+#: 
+msgid "Mongolia (Монгол)"
+msgstr "Mongolei"
 
 #: 
 msgid "Montenegro (Crna Gora)"
@@ -5969,6 +6137,62 @@ msgid "Oman (‫عُمان‬‎)"
 msgstr "Oman"
 
 #: 
+msgid "Pakistan (‫پاکستان‬‎)"
+msgstr "Pakistan"
+
+#: 
+msgid "Palestine (‫فلسطين‬‎)"
+msgstr "Palestina"
+
+#: 
+msgid "Panama (Panamá)"
+msgstr "Panama"
+
+#: 
+msgid "Papua New Guinea"
+msgstr "Papua-Neuguinea"
+
+#: 
+msgid "Paraguay"
+msgstr "Paraguay"
+
+#: 
+msgid "Peru (Perú)"
+msgstr "Peru"
+
+#: 
+msgid "Philippines"
+msgstr "Philippinen"
+
+#: 
+msgid "Poland (Polska)"
+msgstr "Polen"
+
+#: 
+msgid "Portugal"
+msgstr "Portugal"
+
+#: 
+msgid "Puerto Rico"
+msgstr "Puerto Rico"
+
+#: 
+msgid "Réunion (La Réunion)"
+msgstr "La Réunion"
+
+#: 
+msgid "Romania (România)"
+msgstr "Rumänien"
+
+#: 
+msgid "Russia (Россия)"
+msgstr "Russland"
+
+#: 
+msgid "Rwanda"
+msgstr "Ruanda"
+
+#: 
 msgid "Saint Lucia"
 msgstr "Saint Lucia"
 
@@ -6048,6 +6272,46 @@ msgstr "South Georgia & South Sandwich Islands\n"
 #: 
 msgid "South Korea (대한민국)"
 msgstr "Südkorea"
+
+#: 
+msgid "Spain (España)"
+msgstr "Spanien"
+
+#: 
+msgid "Sri Lanka (ශ්‍රී ලංකාව)"
+msgstr "Sri Lanka"
+
+#: 
+msgid "Sudan (‫السودان‬‎)"
+msgstr "Sudan"
+
+#: 
+msgid "Sweden (Sverige)"
+msgstr "Schweden"
+
+#: 
+msgid "Switzerland (Schweiz)"
+msgstr "Schweiz"
+
+#: 
+msgid "Taiwan (台灣)"
+msgstr "Taiwan"
+
+#: 
+msgid "Tanzania"
+msgstr "Tanzania"
+
+#: 
+msgid "Thailand (ไทย)"
+msgstr "Thailand"
+
+#: 
+msgid "Togo"
+msgstr "Togo"
+
+#: 
+msgid "Trinidad and Tobago"
+msgstr "Trinidad und Tobago"
 
 #: 
 msgid "Tristan da Cunha"
@@ -6475,6 +6739,18 @@ msgid "The property is successfully assigned."
 msgstr "Die Eigenschaft wurde zugewiesen."
 
 #: 
+msgid "The property could not be assigned."
+msgstr "Die Eigenschaft konnte nicht zugewiesen werden."
+
+#: 
+msgid "The property is successfully unassigned."
+msgstr "Die Eigenschaft wurde erfolgreich entfernt."
+
+#: 
+msgid "The property could not be unassigned."
+msgstr "Die Eigenschaft konnte nicht entfernt werden."
+
+#: 
 msgid "Select event"
 msgstr "Veranstaltung auswählen"
 
@@ -6493,6 +6769,10 @@ msgstr "Eingecheckt von (optional)"
 #: 
 msgid "Person has been already checked in for this event"
 msgstr "Person wurde für dieses Event bereits eingecheckt"
+
+#: 
+msgid "CheckOut Person"
+msgstr "Person auschecken"
 
 #: 
 msgid "Adult Name (Optional)"
@@ -7020,7 +7300,7 @@ msgstr "Wollen Sie diese Person löschen? Diese Aktion kann nicht rückgängig g
 
 #: 
 msgid "Are you sure you want to unassign this property?"
-msgstr "Sind Sie sicher, dass Sie die Zuweisung diese Winstellung aufheben möchten?"
+msgstr "Sind Sie sicher, dass Sie diese Eigenschaft entfernen möchten?"
 
 #: 
 msgid "Select a family"
@@ -8641,16 +8921,64 @@ msgid "Store these in a secure location"
 msgstr "An sicherem Ort speichern"
 
 #: 
+msgid "Please store these recovery codes in a safe location"
+msgstr "Bitte bewahren Sie diese Wiederherstellungscodes an einem sicheren Ort auf"
+
+#: 
+msgid "Help translate this project"
+msgstr "Helfen Sie mit dieses Projekt zu übersetzen"
+
+#: 
+msgid "Credit Card People"
+msgstr "Kreditkartenmenschen"
+
+#: 
+msgid "Afrikaans"
+msgstr "Afrikaans"
+
+#: 
 msgid "Loading"
 msgstr "Lädt"
+
+#: 
+msgid "Do you want to remove"
+msgstr "Wollen Sie entfernen"
+
+#: 
+msgid "View Active People"
+msgstr "Aktive Personen anzeigen"
+
+#: 
+msgid "View Inactive People"
+msgstr "Inaktive Personen anzeigen"
 
 #: 
 msgid "Today's Birthdays"
 msgstr "Heutige Geburtstage"
 
 #: 
+msgid "Today's Wedding Anniversaries"
+msgstr "Heutige Hochzeitstage"
+
+#: 
+msgid "Api Key"
+msgstr "API Schlüssel"
+
+#: 
+msgid "View Family Page"
+msgstr "Familienseite anzeigen"
+
+#: 
+msgid "View Person Page"
+msgstr "Personenseite anzeigen"
+
+#: 
 msgid "Verify"
 msgstr "Verifizieren"
+
+#: 
+msgid "Family has no emails to use"
+msgstr "Die Familie hat keine E-Mails zu verwenden"
 
 #: 
 msgid "Blue"
@@ -8659,4 +8987,64 @@ msgstr "Blau"
 #: 
 msgid "Black"
 msgstr "Schwarz"
+
+#: 
+msgid "Purple"
+msgstr "Violett"
+
+#: 
+msgid "Green"
+msgstr "Grün"
+
+#: 
+msgid "Red"
+msgstr "Rot"
+
+#: 
+msgid "Yellow"
+msgstr "Gelb"
+
+#: 
+msgid "Blue Light"
+msgstr "Blaues Licht"
+
+#: 
+msgid "Black Light"
+msgstr "Schwarzes Licht"
+
+#: 
+msgid "Purple Light"
+msgstr "Violettes Licht"
+
+#: 
+msgid "Green Light"
+msgstr "Grünes Licht"
+
+#: 
+msgid "Red Light"
+msgstr "Rotes Licht"
+
+#: 
+msgid "Yellow Light"
+msgstr "Gelbes Licht"
+
+#: 
+msgid "Page length"
+msgstr "Länge der Seite"
+
+#: 
+msgid "User Interface"
+msgstr "Benutzeroberfläche"
+
+#: 
+msgid "Deleted"
+msgstr "Gelöscht"
+
+#: 
+msgid "Invalid Birth Date: Missing birth month or day."
+msgstr "Ungültiges Geburtsdatum: Monat oder Tag fehlt."
+
+#: 
+msgid "Invalid Birth Date: Missing birth month and day."
+msgstr "Ungültiges Gebursdatum: Monat und Tag fehlen."
 

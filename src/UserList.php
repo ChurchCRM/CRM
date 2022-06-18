@@ -217,7 +217,7 @@ require 'Include/Header.php';
                         </a>&nbsp;&nbsp;
                         <?php if ($user->getId() != AuthenticationManager::GetCurrentUser()->getId()) { ?>
                             <a onclick="deleteUser(<?= $user->getId() ?>, '<?= $user->getPerson()->getFullName() ?>')">
-                                <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                <i class="fa fa-trash-can" aria-hidden="true"></i>
                             </a>
                         <?php } ?>
                     </td>

@@ -296,7 +296,7 @@ msgstr "Пол"
 
 #: 
 msgid "Donation Envelope"
-msgstr "Пожертвование Конверт"
+msgstr "Пожертвование наличными"
 
 #: 
 msgid "Home Phone"
@@ -316,7 +316,7 @@ msgstr "Работа / Другой Email"
 
 #: 
 msgid "Birth Date"
-msgstr "Дата рождения"
+msgstr "День рождения"
 
 #: 
 msgid "Wedding Date"
@@ -867,7 +867,7 @@ msgstr "Адрес"
 
 #: 
 msgid "Birthday"
-msgstr "Дата рождения"
+msgstr "День рождения"
 
 #: 
 msgid "Family Home Phone"
@@ -2700,7 +2700,7 @@ msgstr "Выберите месяц "
 
 #: 
 msgid "Birth Day"
-msgstr "Дата рождения"
+msgstr "День рождения"
 
 #: 
 msgid "Select Day"
@@ -5847,4 +5847,68 @@ msgstr "Для большей информации обратитесь к ло�
 #: 
 msgid "Verification URL"
 msgstr "Верификация URL"
+
+#: 
+msgid "Green"
+msgstr "Зеленый"
+
+#: 
+msgid "Red"
+msgstr "Красный"
+
+#: 
+msgid "Yellow"
+msgstr "Желтый"
+
+#: 
+msgid "Blue Light"
+msgstr "Голубой"
+
+#: 
+msgid "Black Light"
+msgstr "Черный"
+
+#: 
+msgid "Purple Light"
+msgstr "Фиолетовый"
+
+#: 
+msgid "Green Light"
+msgstr "Зеленый"
+
+#: 
+msgid "Red Light"
+msgstr "Красный"
+
+#: 
+msgid "Yellow Light"
+msgstr "Желтый"
+
+#: 
+msgid "Tables Settings"
+msgstr "Настройки таблиц"
+
+#: 
+msgid "Page length"
+msgstr "Размер страницы"
+
+#: 
+msgid "Change the initial page length (number of rows per page)"
+msgstr "Изменить размер страницы (количество строк на странице)"
+
+#: 
+msgid "User Interface"
+msgstr "Пользовательский интерфейс"
+
+#: 
+msgid "Deleted"
+msgstr "Удалить"
+
+#: 
+msgid "Invalid Birth Date: Missing birth month or day."
+msgstr "Неверная дата рождения: отсутствует месяц или день рождения."
+
+#: 
+msgid "Invalid Birth Date: Missing birth month and day."
+msgstr "Неверная дата рождения: отсутствует месяц и день рождения."
 

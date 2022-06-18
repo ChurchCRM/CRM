@@ -231,7 +231,7 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
   <div class="col-lg-6">
     <div class="card card-info">
       <div class="card-header with-border">
-        <h3 class="card-title"><?= gettext('Reports') ?></h3>
+        <h3 class="card-title"><i class="fa fa-file-lines"></i>  <?= gettext('Reports') ?></h3>
           <div class="card-tools pull-right">
               <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
               </button>
@@ -272,10 +272,7 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
   <div class="col-lg-6">
       <div class="card card-primary">
       <div class="card-header with-border">
-        <i class="fa fa-bar-chart-o"></i>
-
-        <h3 class="card-title"><?= gettext('People Classification') ?></h3>
-
+        <h3 class="card-title"><i class="fa fa-chart-bar"></i> <?= gettext('People Classification') ?></h3>
         <div class="card-tools pull-right">
           <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
           </button>
@@ -311,9 +308,7 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
   <div class="col-lg-6">
     <div class="card card-primary">
       <div class="card-header with-border">
-        <i class="fa fa-pie-chart"></i>
-
-        <h3 class="card-title"><?= gettext('Family Roles') ?></h3>
+       <h3 class="card-title"> <i class="fa fa-people-group"></i> <?= gettext('Family Roles') ?></h3>
 
         <div class="card-tools pull-right">
           <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -428,8 +423,7 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
 
     <div class="card card-info">
       <div class="card-header">
-        <i class="fa fa-address-card-o"></i>
-        <h3 class="card-title"><?= gettext('Gender Demographics') ?></h3>
+        <h3 class="card-title"><i class="fa fa-id-card-clip"></i> <?= gettext('Gender Demographics') ?></h3>
       </div>
       <!-- /.box-header -->
       <div class="card-body" style="height: 300px">
@@ -438,8 +432,7 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
     </div>
     <div class="card card-info">
       <div class="card-header">
-        <i class="fa fa-birthday-cake"></i>
-        <h3 class="card-title"><?= gettext('Age Histogram') ?></h3>
+        <h3 class="card-title"><i class="fa fa-birthday-cake"></i> <?= gettext('Age Histogram') ?></h3>
       </div>
       <!-- /.box-header -->
       <div class="card-body" style="height: 400px">
