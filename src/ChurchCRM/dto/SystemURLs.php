@@ -65,9 +65,7 @@ class SystemURLs
             return $supportURLs[$topic];
         }
         else {
-            // if we're well-behavied with creating doucmentation,
-            // this code should never be executed.
-            return 'https://github.com/ChurchCRM/CRM/search?q='.$topic;
+            return 'https://github.com/ChurchCRM/CRM/wiki';
         }
       
     }
