@@ -57,12 +57,8 @@ msgid "Credit Card"
 msgstr "ክሬዲት ካርድ"
 
 #: 
-msgid "Backup Database"
-msgstr "Rugsteun databasis"
-
-#: 
 msgid "This tool will assist you in manually backing up the ChurchCRM database."
-msgstr "Hierdie hulpmiddel sal u help om 'n back-up te maak van die ChurchCRM-databasis."
+msgstr "ይሄ መሳሪያ የChurchCRM  መረጃ ቋት ለማስቀመጥ ይረዳል"
 
 #: 
 msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
@@ -126,11 +122,11 @@ msgstr "Word vereis"
 
 #: 
 msgid "First Name"
-msgstr "Voornaam"
+msgstr "ስም"
 
 #: 
 msgid "Middle Name"
-msgstr "Tweede naam"
+msgstr "የአባት ስም"
 
 #: 
 msgid "Zip"
@@ -142,7 +138,7 @@ msgstr "ፖስታ"
 
 #: 
 msgid "Work/Other Email"
-msgstr "Werk/Ander Epos"
+msgstr "የስራ/ሌላ ኢሜይል"
 
 #: 
 msgid "Membership Date"
@@ -155,10 +151,6 @@ msgstr "Geboorte / Herdenkingsdatum"
 #: 
 msgid "Age / Years Married"
 msgstr "እድሜ / የጋብቻ እድሜ"
-
-#: 
-msgid "Family Role"
-msgstr "Familie rol"
 
 #: 
 msgid "Depends whether using person or family output method"
@@ -175,10 +167,6 @@ msgstr "Pasgemaakte persoonveld"
 #: 
 msgid "Custom Family Fields"
 msgstr "Pasgemaakte famielieveld"
-
-#: 
-msgid "Filters"
-msgstr "Filter"
 
 #: 
 msgid "Records to export"
@@ -198,15 +186,15 @@ msgstr "Gebruik die Ctl sleutel om meer te kies"
 
 #: 
 msgid "Don't Filter"
-msgstr "Moenie filter"
+msgstr "አይጣራ"
 
 #: 
 msgid "Male"
-msgstr "Manlik"
+msgstr "ወንድ"
 
 #: 
 msgid "Female"
-msgstr "Vroulik"
+msgstr "ሴት"
 
 #: 
 msgid "Group Membership"
@@ -214,11 +202,11 @@ msgstr "Groep lidmaatskap"
 
 #: 
 msgid "From:"
-msgstr "Van:"
+msgstr "ከ:"
 
 #: 
 msgid "To:"
-msgstr "Aan:"
+msgstr "እስከ:"
 
 #: 
 msgid "Birthday Date"
@@ -3682,7 +3670,7 @@ msgstr "Geen persoonlik identifiseerbare inligting sal ingedien word tensy u dit
 
 #: 
 msgid "Dashboard"
-msgstr "Dashboard"
+msgstr "ዳሽቦርድ"
 
 #: 
 msgid "Toggle navigation"
