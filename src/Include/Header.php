@@ -209,7 +209,7 @@ $MenuFirst = 1;
       <!-- sidebar menu: : style can be found in sidebar.less -->
 
         <nav class="mt-2">
-            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <ul class="nav nav-pills  nav-child-indent nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <?php MenuRenderer::RenderMenu(); ?>
             </ul>
         </nav>

@@ -39,16 +39,10 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
     ?>
             <tr>
               <td><a href='<?= SystemURLs::getRootPath()?>/v2/family/<?= $family->getId() ?>'>
-                        <span class="fa-stack">
-                            <i class="fa fa-square fa-stack-2x"></i>
-                            <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
-                        </span>
-                    </a>
+                      <i class="fa fa-search-plus"></i>
+                    </a> 
                     <a href='<?= SystemURLs::getRootPath()?>/FamilyEditor.php?FamilyID=<?= $family->getId() ?>'>
-                        <span class="fa-stack">
-                            <i class="fa fa-square fa-stack-2x"></i>
-                            <i class="fas fa-edit fa-stack-1x fa-inverse"></i>
-                        </span>
+                        <i class="fas fa-edit"></i>
                     </a></td>
               <td><?= $family->getName() ?></td>
                 <td> <?= $family->getAddress() ?></td>
