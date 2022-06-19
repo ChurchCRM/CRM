@@ -1,5 +1,7 @@
 # Security Policy
 
+Do **NOT** conduct penetration/security testing on the ChurchCRM demo site without discussing first with code owners (via support ticket, or [Gitter](https://gitter.im/ChurchCRM/CRM) ). This can (*and often does*) generate hundreds of bogus support cases which is unhelpful. All security testing should be done in your own hosting environment unless you have explicit permission from site owners to test their deployments (including the ChurchCRM demo system).
+
 ## Supported Versions
 
 | Version | Supported          | PHP Version | 
