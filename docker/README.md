@@ -23,7 +23,7 @@ These are the steps needed to develop ChurchCRM with Docker
 2. build docker `npm run docker-dev-build`
 3. run docker `npm run docker-dev-start`
 4. ssh into docker, you will need the docker id or use docker desktop to build the ssh comand
-   example ` docker container ls` then find the churchcrm id then use it in `docker exec -it xxxxxx /bin/sh`
+   example ` docker container ls` then find the churchcrm id then use it in `npm run docker-dev-login-web`
 5. cd into src code `cd /home/ChurchCRM`
 6. build church crm web and php code `npm run deploy`
 10. stop docker `npm run docker-dev-stop`
