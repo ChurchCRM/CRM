@@ -197,7 +197,8 @@ if ($per_Envelope > 0) {
 
 $iTableSpacerWidth = 10;
 
-$bOkToEdit = (AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled() ||
+$bOkToEdit = (
+    AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled() ||
     (AuthenticationManager::GetCurrentUser()->isEditSelfEnabled() && $per_ID == AuthenticationManager::GetCurrentUser()->getId()) ||
     (AuthenticationManager::GetCurrentUser()->isEditSelfEnabled() && $per_fam_ID == AuthenticationManager::GetCurrentUser()->getPerson()->getFamId())
 );
@@ -250,9 +251,9 @@ $bOkToEdit = (AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled() ||
                     <li class="list-group-item">
                         <b><?= gettext($sClassName)?></b>
                         <a class="float-right">
-                            <?php if ($per_MembershipDate) { 
-                                echo gettext(' Since:')  . ' ' . FormatDate($per_MembershipDate, false);
-                            } ?>
+                            <?php if ($per_MembershipDate) {
+                        echo gettext(' Since:')  . ' ' . FormatDate($per_MembershipDate, false);
+                    } ?>
                         </a>
                     </li>
 
@@ -277,7 +278,7 @@ $bOkToEdit = (AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled() ||
                     <li><i class="fa-li fa fa-people-roof"></i><?php echo gettext('Family:'); ?> <span>
                             <?php
                             if ($fam_ID != '') {
-                            ?>
+                                ?>
                                 <a href="<?= SystemURLs::getRootPath() ?>/v2/family/<?= $fam_ID ?>"><?= $fam_Name ?> </a>
                                 <a href="<?= SystemURLs::getRootPath() ?>/FamilyEditor.php?FamilyID=<?= $fam_ID ?>" class="table-link">
                                     <i class="fas fa-edit"></i>
@@ -288,23 +289,23 @@ $bOkToEdit = (AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled() ||
                             } ?>
                         </span></li>
                     <?php if (!empty($formattedMailingAddress)) {
-                    ?>
+                                ?>
                         <li><i class="fa-li fa fa-home"></i><?php echo gettext('Address'); ?>: <span>
                                 <a href="http://maps.google.com/?q=<?= $plaintextMailingAddress ?>" target="_blank">
                                     <?= $formattedMailingAddress ?>
                                 </a>
                             </span></li>
                     <?php
-                    }
+                            }
                     if ($dBirthDate) {
-                    ?>
+                        ?>
                         <li>
                             <i class="fa-li fa fa-calendar"></i><?= gettext('Birth Date') ?>: <?= $dBirthDate ?>
                             <?php if (!$person->hideAge()) {
                             ?>
                                 (<span></span><?= $person->getAge() ?>)
                             <?php
-                            } ?>
+                        } ?>
                         </li>
                     <?php
                     }
@@ -313,45 +314,45 @@ $bOkToEdit = (AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled() ||
                     <?php
                     }
                     if ($sCellPhone) {
-                    ?>
+                        ?>
                         <li><i class="fa-li fa fa-mobile-phone"></i><?= gettext('Mobile Phone') ?>: <span><a href="tel:<?= $sCellPhoneUnformatted ?>"><?= $sCellPhone ?></a></span></li>
                     <?php
                     }
                     if ($sHomePhone) {
-                    ?>
+                        ?>
                         <li><i class="fa-li fa fa-phone"></i><?= gettext('Home Phone') ?>: <span><a href="tel:<?= $sHomePhoneUnformatted ?>"><?= $sHomePhone ?></a></span></li>
                     <?php
                     }
                     if ($sEmail != '') {
-                    ?>
+                        ?>
                         <li><i class="fa-li fa fa-envelope"></i><?= gettext('Email') ?>: <span><a href="mailto:<?= $sUnformattedEmail ?>"><?= $sEmail ?></a></span></li>
                     <?php
                     }
                     if ($sWorkPhone) {
-                    ?>
+                        ?>
                         <li><i class="fa-li fa fa-phone"></i><?= gettext('Work Phone') ?>: <span><a href="tel:<?= $sWorkPhoneUnformatted ?>"><?= $sWorkPhone ?></a></span></li>
                     <?php
                     } ?>
                     <?php if ($per_WorkEmail != '') {
-                    ?>
+                        ?>
                         <li><i class="fa-li fa fa-envelope"></i><?= gettext('Work/Other Email') ?>: <span><a href="mailto:<?= $per_WorkEmail ?>"><?= $per_WorkEmail ?></a></span></li>
                     <?php
                     }
 
                     if (strlen($per_Facebook) > 0) {
-                    ?>
+                        ?>
                         <li><i class="fa-li fa-brands fa-facebook-official"></i><?= gettext('Facebook') ?>: <span><a href="https://www.facebook.com/<?= InputUtils::FilterString($per_Facebook) ?> " target="_blank"><?= $per_Facebook ?></a></span></li>
                     <?php
                     }
 
                     if (strlen($per_Twitter) > 0) {
-                    ?>
+                        ?>
                         <li><i class="fa-li fa-brands fa-twitter"></i><?= gettext('Twitter') ?>: <span><a href="https://www.twitter.com/<?= InputUtils::FilterString($per_Twitter) ?>" target="_blank"><?= $per_Twitter ?></a></span></li>
                     <?php
                     }
 
                     if (strlen($per_LinkedIn) > 0) {
-                    ?>
+                        ?>
                         <li><i class="fa-li fa-brands fa-linkedin"></i><?= gettext('LinkedIn') ?>: <span><a href="https://www.linkedin.com/in/<?= InputUtils::FiltersTring($per_LinkedIn) ?>" target="_blank"><?= $per_LinkedIn ?></a></span></li>
                     <?php
                     }
@@ -394,20 +395,20 @@ $bOkToEdit = (AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled() ||
                 <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/PrintView.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-print"></i> <?= gettext("Printable Page") ?></a>
                 <a class="btn btn-app AddToPeopleCart" id="AddPersonToCart" data-cartpersonid="<?= $iPersonID ?>"><i class="fa fa-cart-plus"></i><span class="cartActionDescription"><?= gettext("Add to Cart") ?></span></a>
                 <?php if (AuthenticationManager::GetCurrentUser()->isNotesEnabled()) {
-                ?>
+                        ?>
                     <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/WhyCameEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-question-circle"></i> <?= gettext("Edit \"Why Came\" Notes") ?></a>
                     <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/NoteEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-sticky-note"></i> <?= gettext("Add a Note") ?></a>
                 <?php
-                }
+                    }
                 if (AuthenticationManager::GetCurrentUser()->isManageGroupsEnabled()) {
-                ?>
+                    ?>
                     <a class="btn btn-app" id="addGroup"><i class="fa fa-users"></i> <?= gettext("Assign New Group") ?></a>
                 <?php
                 } ?>
                 <a class="btn btn-app" role="button" href="<?= SystemURLs::getRootPath() ?>/v2/people"><i class="fa fa-list"></i> <?= gettext("List Members") ?></span></a>
                 <?php
                 if (AuthenticationManager::GetCurrentUser()->isDeleteRecordsEnabled()) {
-                ?>
+                    ?>
                     <a class="btn btn-app bg-maroon delete-person" data-person_name="<?= $person->getFullName() ?>" data-person_id="<?= $iPersonID ?>"><i class="fa fa-trash-can"></i> <?= gettext("Delete this Record") ?></a>
                 <?php
                 }
@@ -416,11 +417,11 @@ $bOkToEdit = (AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled() ||
                 <?php
                 if (AuthenticationManager::GetCurrentUser()->isAdmin()) {
                     if (!$person->isUser()) {
-                ?>
+                        ?>
                         <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/UserEditor.php?NewPersonID=<?= $iPersonID ?>"><i class="fa fa-person-chalkboard"></i> <?= gettext('Make User') ?></a>
                     <?php
                     } else {
-                    ?>
+                        ?>
                         <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/UserEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-user-secret"></i> <?= gettext('Edit User') ?></a>
                         <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= $iPersonID ?>"><i class="fa fa-eye"></i> <?= gettext('View User') ?></a>
                         <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= $iPersonID ?>/changePassword"><i class="fa fa-key"></i> <?= gettext("Change Password") ?></a>
@@ -466,7 +467,7 @@ $bOkToEdit = (AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled() ||
 
                         <!-- timeline item -->
                         <?php foreach ($timelineService->getForPerson($iPersonID) as $item) {
-                        ?>
+                                    ?>
                             <li>
                                 <!-- timeline icon -->
                                 <i class="fa <?= $item['style'] ?>"></i>
@@ -479,35 +480,35 @@ $bOkToEdit = (AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled() ||
                                             ?>
                                                 <a href="<?= $item["editLink"] ?>"><button type="button" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></button></a>
                                             <?php
-                                            }
-                                            if (isset($item["deleteLink"])) {
+                                        }
+                                        if (isset($item["deleteLink"])) {
                                             ?>
                                                 <a href="<?= $item["deleteLink"] ?>"><button type="button" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i></button></a>
                                             <?php
-                                            } ?>
+                                        } ?>
                                             &nbsp;
                                         <?php
-                                        } ?>
+                                    } ?>
                                         <i class="fa fa-clock-o"></i> <?= $item['datetime'] ?></span>
 
                                     <?php if ($item['slim']) {
-                                    ?>
+                                        ?>
                                         <h4 class="timeline-header">
                                             <?= $item['text'] ?> <?= gettext($item['header']) ?>
                                         </h4>
                                     <?php
                                     } else {
-                                    ?>
+                                        ?>
                                         <h3 class="timeline-header">
                                             <?php if (in_array('headerlink', $item)) {
                                             ?>
                                                 <a href="<?= $item['headerlink'] ?>"><?= $item['header'] ?></a>
                                             <?php
-                                            } else {
+                                        } else {
                                             ?>
                                                 <?= $item['header'] ?>
                                             <?php
-                                            } ?>
+                                        } ?>
                                         </h3>
 
                                         <div class="timeline-body">
@@ -519,14 +520,14 @@ $bOkToEdit = (AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled() ||
                                 </div>
                             </li>
                         <?php
-                        } ?>
+                                } ?>
                         <!-- END timeline item -->
                     </ul>
                 </div>
                 <div role="tab-pane fade" class="tab-pane" id="family">
 
                     <?php if ($person->getFamId() != '') {
-                    ?>
+                                    ?>
                         <table class="table user-list table-hover">
                             <thead>
                                 <tr>
@@ -539,7 +540,7 @@ $bOkToEdit = (AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled() ||
                             </thead>
                             <tbody>
                                 <?php foreach ($person->getFamily()->getPeople() as $familyMember) {
-                                    $tmpPersonId = $familyMember->getId(); ?>
+                                        $tmpPersonId = $familyMember->getId(); ?>
                                     <tr>
                                         <td>
 
@@ -556,11 +557,11 @@ $bOkToEdit = (AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled() ||
                                         </td>
                                         <td>
                                             <?php $tmpEmail = $familyMember->getEmail();
-                                            if ($tmpEmail != '') {
+                                        if ($tmpEmail != '') {
                                             ?>
                                                 <a href="mailto:<?= $tmpEmail ?>"><?= $tmpEmail ?></a>
                                             <?php
-                                            } ?>
+                                        } ?>
                                         </td>
                                         <td style="width: 20%;">
                                             <a class="AddToPeopleCart" data-cartpersonid="<?= $tmpPersonId ?>">
@@ -584,15 +585,15 @@ $bOkToEdit = (AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled() ||
                                                     </span>
                                                 </a>
                                             <?php
-                                            } ?>
+                                        } ?>
                                         </td>
                                     </tr>
                                 <?php
-                                } ?>
+                                    } ?>
                             </tbody>
                         </table>
                     <?php
-                    } ?>
+                                } ?>
                 </div>
                 <div role="tab-pane fade" class="tab-pane" id="mailchimp">
                     <table class="table">
@@ -621,7 +622,7 @@ $bOkToEdit = (AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled() ||
                             <?php
                             //Was anything returned?
                             if (mysqli_num_rows($rsAssignedGroups) == 0) {
-                            ?>
+                                ?>
                                 <br>
                                 <div class="alert alert-warning">
                                     <i class="fa fa-question-circle fa-fw fa-lg"></i> <span><?= gettext('No group assignments.') ?></span>
@@ -673,7 +674,7 @@ $bOkToEdit = (AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled() ||
                                             <div class="card-footer">
                                                 <code>
                                                     <?php if (AuthenticationManager::GetCurrentUser()->isManageGroupsEnabled()) {
-                                                    ?>
+                                                ?>
                                                         <a href="<?= SystemURLs::getRootPath() ?>/GroupView.php?GroupID=<?= $grp_ID ?>" class="btn btn-default" role="button"><i class="fa fa-list"></i></a>
                                                         <div class="btn-group">
                                                             <button type="button" class="btn btn-default"><?= gettext('Action') ?></button>
@@ -684,17 +685,17 @@ $bOkToEdit = (AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled() ||
                                                             <ul class="dropdown-menu" role="menu">
                                                                 <li><a class="changeRole" data-groupid="<?= $grp_ID ?>"><?= gettext('Change Role') ?></a></li>
                                                                 <?php if ($grp_hasSpecialProps) {
-                                                                ?>
+                                                    ?>
                                                                     <li><a href="<?= SystemURLs::getRootPath() ?>/GroupPropsEditor.php?GroupID=<?= $grp_ID ?>&PersonID=<?= $iPersonID ?>"><?= gettext('Update Properties') ?></a></li>
                                                                 <?php
-                                                                } ?>
+                                                } ?>
                                                             </ul>
                                                         </div>
                                                         <div class="btn-group">
                                                             <button data-groupid="<?= $grp_ID ?>" data-groupname="<?= $grp_Name ?>" type="button" class="btn btn-danger groupRemove" data-toggle="dropdown"><i class="fa fa-trash-can"></i></button>
                                                         </div>
                                                     <?php
-                                                    } ?>
+                                            } ?>
                                                 </code>
                                             </div>
                                             <!-- /.box-footer-->
@@ -821,7 +822,7 @@ $bOkToEdit = (AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled() ||
 
                             //Was anything returned?
                             if (mysqli_num_rows($rsAssignedVolunteerOpps) == 0) {
-                            ?>
+                                ?>
                                 <br>
                                 <div class="alert alert-warning">
                                     <i class="fa fa-question-circle fa-fw fa-lg"></i> <span><?= gettext('No volunteer opportunity assignments.') ?></span>
@@ -906,7 +907,7 @@ $bOkToEdit = (AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled() ||
 
                         <!-- note item -->
                         <?php foreach ($timelineService->getNotesForPerson($iPersonID) as $item) {
-                        ?>
+                                                            ?>
                             <li>
                                 <!-- timeline icon -->
                                 <i class="fa <?= $item['style'] ?>"></i>
@@ -916,14 +917,14 @@ $bOkToEdit = (AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled() ||
 
                                     <h3 class="timeline-header">
                                         <?php if (in_array('headerlink', $item)) {
-                                        ?>
+                                                                ?>
                                             <a href="<?= $item['headerlink'] ?>"><?= $item['header'] ?></a>
                                         <?php
-                                        } else {
-                                        ?>
+                                                            } else {
+                                                                ?>
                                             <?= $item['header'] ?>
                                         <?php
-                                        } ?>
+                                                            } ?>
                                     </h3>
 
                                     <div class="timeline-body">
@@ -931,29 +932,29 @@ $bOkToEdit = (AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled() ||
                                     </div>
 
                                     <?php if ((AuthenticationManager::GetCurrentUser()->isNotesEnabled()) && ($item['editLink'] != '' || $item['deleteLink'] != '')) {
-                                    ?>
+                                                                ?>
                                         <div class="timeline-footer">
                                             <?php if ($item['editLink'] != '') {
-                                            ?>
+                                                                    ?>
                                                 <a href="<?= $item['editLink'] ?>">
                                                     <button type="button" class="btn btn-primary"><i class="fa fa-edit"></i></button>
                                                 </a>
                                             <?php
-                                            }
-                                            if ($item['deleteLink'] != '') {
-                                            ?>
+                                                                }
+                                                                if ($item['deleteLink'] != '') {
+                                                                    ?>
                                                 <a href="<?= $item['deleteLink'] ?>">
                                                     <button type="button" class="btn btn-danger"><i class="fa fa-trash"></i></button>
                                                 </a>
                                             <?php
-                                            } ?>
+                                                                } ?>
                                         </div>
                                     <?php
-                                    } ?>
+                                                            } ?>
                                 </div>
                             </li>
                         <?php
-                        } ?>
+                                                        } ?>
                         <!-- END timeline item -->
                     </ul>
                 </div>
