@@ -527,7 +527,7 @@ $bOkToEdit = (
                                         ?>
                                 <div>
                                     <!-- timeline icon -->
-                                    <i class="far <?= $item['style'] ?>"></i>
+                                    <i class="fa <?= $item['style'] ?>"></i>
 
                                     <div class="timeline-item">
                                         <span class="time">
