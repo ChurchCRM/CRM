@@ -161,7 +161,7 @@ require '../Include/Header.php';
       <!-- Bar chart -->
       <div class="card card-primary">
         <div class="card-header">
-          <i class="fa fa-bar-chart-o"></i>
+          <i class="fa fa-chart-bar"></i>
 
           <h3 class="card-title"><?= gettext('Birthdays by Month') ?></h3>
         </div>
@@ -176,7 +176,7 @@ require '../Include/Header.php';
       <!-- Donut chart -->
       <div class="card card-primary">
         <div class="card-header">
-          <i class="fa fa-bar-chart-o"></i>
+          <i class="fa fa-chart-bar"></i>
 
           <h3 class="card-title"><?= gettext('Gender') ?></h3>
         </div>
@@ -277,7 +277,7 @@ function implodeUnique($array, $withQuotes)
     <div class="modal-content large">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title"><i class="fa fa-envelope-o"></i><?= gettext('Compose New Message') ?></h4>
+        <h4 class="modal-title"><i class="fa fa-envelope"></i><?= gettext('Compose New Message') ?></h4>
       </div>
       <form action="SendEmail.php" method="post">
         <div class="modal-body">

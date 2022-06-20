@@ -191,7 +191,7 @@ Header_body_scripts();
   });
 
  $("#doBackup").click(function(){
-   $("#status1").html('<i class="fa fa-circle-o-notch fa-spin"></i>');
+   $("#status1").html('<i class="fa fa-circle-notch fa-spin"></i>');
    window.CRM.APIRequest({
       method : 'POST',
       path : 'database/backup',
@@ -218,7 +218,7 @@ Header_body_scripts();
  });
 
  $("#fetchUpdate").click(function(){
-    $("#status2").html('<i class="fa fa-circle-o-notch fa-spin"></i>');
+    $("#status2").html('<i class="fa fa-circle-notch fa-spin"></i>');
     window.CRM.APIRequest({
       type : 'GET',
       path  : 'systemupgrade/downloadlatestrelease',
@@ -236,7 +236,7 @@ Header_body_scripts();
  });
 
  $("#applyUpdate").click(function(){
-   $("#status3").html('<i class="fa fa-circle-o-notch fa-spin"></i>');
+   $("#status3").html('<i class="fa fa-circle-notch fa-spin"></i>');
    window.CRM.APIRequest({
       method : 'POST',
       path : 'systemupgrade/doupgrade',
