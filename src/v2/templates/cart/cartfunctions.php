@@ -39,7 +39,7 @@ use ChurchCRM\dto\SystemURLs;
 
           if (AuthenticationManager::GetCurrentUser()->isEmailEnabled()) { // Does user have permission to email groups
             // Display link
-            echo "<a href='mailto:" . $sEmailLink . "' class='btn btn-app'><i class='fa fa-send-o'></i>" . gettext('Email Cart') . '</a>';
+            echo "<a href='mailto:" . $sEmailLink . "' class='btn btn-app'><i class='fa fa-paper-plane'></i>" . gettext('Email Cart') . '</a>';
             echo "<a href='mailto:?bcc=" . $sEmailLink . "' class='btn btn-app'><i class='fa fa-send'></i>" . gettext('Email (BCC)') . '</a>';
 
             // Display link

@@ -88,7 +88,7 @@ require '../Include/Header.php';
       ?>
       <div class="btn-group">
         <a class="btn btn-app" href="mailto:<?= mb_substr($sEmailLink, 0, -3) ?>"><i
-            class="fa fa-send-o"></i><?= gettext('Email') ?></a>
+            class="fa fa-paper-plane"></i><?= gettext('Email') ?></a>
         <button type="button" class="btn btn-app dropdown-toggle" data-toggle="dropdown">
           <span class="caret"></span>
           <span class="sr-only"><?= gettext('Toggle Dropdown') ?></span>

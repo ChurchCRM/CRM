@@ -216,7 +216,7 @@ require 'Include/Header.php';
                             <i class="fa fa-eye" aria-hidden="true"></i>
                         </a>&nbsp;&nbsp;
                         <?php if ($user->getId() != AuthenticationManager::GetCurrentUser()->getId()) { ?>
-                            <a onclick="deleteUser(<?= $user->getId() ?>, '<?= $user->getPerson()->getFullName() ?>')">
+                            <a href="#" onclick="deleteUser(<?= $user->getId() ?>, '<?= $user->getPerson()->getFullName() ?>')">
                                 <i class="fa fa-trash-can" aria-hidden="true"></i>
                             </a>
                         <?php } ?>
@@ -239,12 +239,12 @@ require 'Include/Header.php';
                             <?php } ?>
                     </td>
                     <td>
-                        <a href="v2/user/<?= $user->getId() ?>/changePassword"><i
-                                    class="fa fa-wrench" aria-hidden="true"></i></a>&nbsp;&nbsp;
+                        <a href="v2/user/<?= $user->getId() ?>/changePassword"><i class="fa fa-wrench"></i></a
+                        >&nbsp;&nbsp;
                         <?php if ($user->getId() != AuthenticationManager::GetCurrentUser()->getId() && !empty($user->getEmail())) {
                                 ?>
-                            <a onclick="resetUserPassword(<?= $user->getId() ?>, '<?= $user->getPerson()->getFullName() ?>')"><i
-                                        class="fa fa-send-o" aria-hidden="true"></i></a>
+                            <a href="#" onclick="resetUserPassword(<?= $user->getId() ?>, '<?= $user->getPerson()->getFullName() ?>')">
+                                <i class="fas fa-paper-plane"></i></a>
                             <?php
                             } ?>
                     </td>
