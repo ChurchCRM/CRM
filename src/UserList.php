@@ -45,11 +45,11 @@ require 'Include/Header.php';
         <a href="SettingsUser.php" class="btn btn-app"><i class="fa fa-wrench"></i><?= gettext('User Settings') ?></a>
     </div>
 </div>
-<div class="box collapsed-box">
+<div class="card collapsed-card">
     <div class="card-header">
         <b class="card-title"><?= _("Global User Settings")?></b>
             <div class="card-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
+                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa fa-plus"></i></button>
             </div>
         </b>
     </div>
@@ -187,7 +187,7 @@ require 'Include/Header.php';
     <div class="card-header">
         <b class="card-title"><?= _("User Listing")?></b>
         <div class="card-tools pull-right">
-            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
+            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa fa-minus"></i></button>
         </div>
         </h3>
     </div>

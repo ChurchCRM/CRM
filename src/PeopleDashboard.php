@@ -233,9 +233,8 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
       <div class="card-header with-border">
         <h3 class="card-title"><i class="fa fa-file-lines"></i>  <?= gettext('Reports') ?></h3>
           <div class="card-tools pull-right">
-              <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-              </button>
-              <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+              <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa fa-minus"></i></button>
+              <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fa fa-times"></i></button>
           </div>
       </div>
       <div class="card-body">
@@ -274,11 +273,11 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
       <div class="card-header with-border">
         <h3 class="card-title"><i class="fa fa-chart-bar"></i> <?= gettext('People Classification') ?></h3>
         <div class="card-tools pull-right">
-          <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-          </button>
-          <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa fa-minus"></i></button>
+            <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fa fa-times"></i></button>
         </div>
       </div>
+      <div class="card-body no-padding">
       <table class="table table-condensed">
         <tr>
           <th><?= gettext('Classification') ?></th>
@@ -301,6 +300,7 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
         } ?>
       </table>
       <!-- /.box-body-->
+      </div>
     </div>
   </div>
 </div>
@@ -309,11 +309,9 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
     <div class="card card-primary">
       <div class="card-header with-border">
        <h3 class="card-title"> <i class="fa fa-people-group"></i> <?= gettext('Family Roles') ?></h3>
-
-        <div class="card-tools pull-right">
-          <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-          </button>
-          <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+       <div class="card-tools pull-right">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa fa-minus"></i></button>
+            <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fa fa-times"></i></button>
         </div>
       </div>
       <div class="card-body no-padding">

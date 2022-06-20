@@ -214,7 +214,7 @@ $mailchimp = new MailChimpService();
                     <div class="card-header">
                         <h3 class="card-title"> <i class="fa fa-people-roof"></i> <?= gettext("Family Members") ?></h3>
                         <div class="card-tools pull-right">
-                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
                                     class="fa fa-minus"></i>
                             </button>
 
@@ -309,7 +309,7 @@ $mailchimp = new MailChimpService();
                     <button id="add-family-property" type="button" class="btn btn-box-tool hidden"><i class="fa fa-plus-circle text-blue"></i></button>
                     <?php } ?>
 
-                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
                             class="fa fa-minus"></i>
                     </button>
                 </div>
@@ -348,7 +348,7 @@ $mailchimp = new MailChimpService();
                         <div class="card-tools pull-right">
                             <button type="button" class="btn btn-box-tool edit-family"><i class="fa fa-edit"></i>
                             </button>
-                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa fa-minus"></i>
                             </button>
                         </div>
                     </div>
@@ -385,7 +385,7 @@ $mailchimp = new MailChimpService();
             <div class="card-header">
                 <h3 class="card-title"><i class="fa fa-history"></i> <?= gettext("Timeline") ?></h3>
                 <div class="card-tools pull-right">
-                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa fa-minus"></i>
                     </button>
                 </div>
             </div>

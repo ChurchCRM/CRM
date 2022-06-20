@@ -152,7 +152,7 @@ require '../Include/Header.php';
     <h3 class="card-title"><?= gettext('Quick Status') ?></h3>
 
     <div class="card-tools pull-right">
-      <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
+      <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa fa-plus"></i></button>
     </div>
   </div>
   <!-- /.box-header -->
