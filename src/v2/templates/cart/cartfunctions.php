@@ -28,18 +28,18 @@ use ChurchCRM\dto\SystemURLs;
     <?php if (AuthenticationManager::GetCurrentUser()->isCSVExport()) {
       ?>
       <a href="<?= SystemURLs::getRootPath()."/CSVExport.php?Source=cart" ?>" class="btn btn-app"><i
-          class="fa fa-file-excel-o"></i><?= gettext('CSV Export') ?></a>
+          class="fa fa-file-excel"></i><?= gettext('CSV Export') ?></a>
         <?php }
       ?>
     <a href="<?= SystemURLs::getRootPath()."/MapUsingGoogle.php?GroupID=0"?>" class="btn btn-app"><i
         class="fa fa-map-marker"></i><?= gettext('Map Cart') ?></a>
     <a href="<?= SystemURLs::getRootPath()."/Reports/NameTags.php?labeltype=74536&labelfont=times&labelfontsize=36"?>" class="btn btn-app"><i
-        class="fa fa-file-pdf-o"></i><?= gettext('Name Tags') ?></a>
+        class="fa fa-file-pdf"></i><?= gettext('Name Tags') ?></a>
       <?php
 
           if (AuthenticationManager::GetCurrentUser()->isEmailEnabled()) { // Does user have permission to email groups
             // Display link
-            echo "<a href='mailto:" . $sEmailLink . "' class='btn btn-app'><i class='fa fa-send-o'></i>" . gettext('Email Cart') . '</a>';
+            echo "<a href='mailto:" . $sEmailLink . "' class='btn btn-app'><i class='fa fa-paper-plane'></i>" . gettext('Email Cart') . '</a>';
             echo "<a href='mailto:?bcc=" . $sEmailLink . "' class='btn btn-app'><i class='fa fa-send'></i>" . gettext('Email (BCC)') . '</a>';
 
             // Display link

@@ -45,11 +45,11 @@ require 'Include/Header.php';
         <a href="SettingsUser.php" class="btn btn-app"><i class="fa fa-wrench"></i><?= gettext('User Settings') ?></a>
     </div>
 </div>
-<div class="box collapsed-box">
+<div class="card collapsed-card">
     <div class="card-header">
         <b class="card-title"><?= _("Global User Settings")?></b>
             <div class="card-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
+                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa fa-plus"></i></button>
             </div>
         </b>
     </div>
@@ -187,7 +187,7 @@ require 'Include/Header.php';
     <div class="card-header">
         <b class="card-title"><?= _("User Listing")?></b>
         <div class="card-tools pull-right">
-            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
+            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa fa-minus"></i></button>
         </div>
         </h3>
     </div>
@@ -210,13 +210,13 @@ require 'Include/Header.php';
                 <tr>
                     <td>
                         <a href="UserEditor.php?PersonID=<?= $user->getId() ?>">
-                            <i class="fas fa-edit" aria-hidden="true"></i>
+                            <i class="fas fa-pen" aria-hidden="true"></i>
                         </a>&nbsp;&nbsp;
                         <a href="v2/user/<?= $user->getId() ?>">
                             <i class="fa fa-eye" aria-hidden="true"></i>
                         </a>&nbsp;&nbsp;
                         <?php if ($user->getId() != AuthenticationManager::GetCurrentUser()->getId()) { ?>
-                            <a onclick="deleteUser(<?= $user->getId() ?>, '<?= $user->getPerson()->getFullName() ?>')">
+                            <a href="#" onclick="deleteUser(<?= $user->getId() ?>, '<?= $user->getPerson()->getFullName() ?>')">
                                 <i class="fa fa-trash-can" aria-hidden="true"></i>
                             </a>
                         <?php } ?>
@@ -239,12 +239,12 @@ require 'Include/Header.php';
                             <?php } ?>
                     </td>
                     <td>
-                        <a href="v2/user/<?= $user->getId() ?>/changePassword"><i
-                                    class="fa fa-wrench" aria-hidden="true"></i></a>&nbsp;&nbsp;
+                        <a href="v2/user/<?= $user->getId() ?>/changePassword"><i class="fa fa-wrench"></i></a
+                        >&nbsp;&nbsp;
                         <?php if ($user->getId() != AuthenticationManager::GetCurrentUser()->getId() && !empty($user->getEmail())) {
                                 ?>
-                            <a onclick="resetUserPassword(<?= $user->getId() ?>, '<?= $user->getPerson()->getFullName() ?>')"><i
-                                        class="fa fa-send-o" aria-hidden="true"></i></a>
+                            <a href="#" onclick="resetUserPassword(<?= $user->getId() ?>, '<?= $user->getPerson()->getFullName() ?>')">
+                                <i class="fas fa-paper-plane"></i></a>
                             <?php
                             } ?>
                     </td>

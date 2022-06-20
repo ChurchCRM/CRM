@@ -49,7 +49,7 @@ $(document).ready(function () {
         title:i18next.t( 'Group Name'),
         data: 'Name',
         render: function (data, type, full, meta) {
-          return '<a href=\'GroupView.php?GroupID=' + full.Id + '\'><span class="fa-stack"><i class="fa fa-square fa-stack-2x"></i><i class="fa fa-search-plus fa-stack-1x fa-inverse"></i></span></a><a href=\'GroupEditor.php?GroupID=' + full.Id + '\'><span class="fa-stack"><i class="fa fa-square fa-stack-2x"></i><i class="fas fa-edit fa-stack-1x fa-inverse"></i></span></a>' + data;
+          return '<a href=\'GroupView.php?GroupID=' + full.Id + '\'> <i class="fa fa-eye"></i></a> <a href=\'GroupEditor.php?GroupID=' + full.Id + '\'><i class="fa fa-pen"></i></a> ' + data;
         }
       },
       {
@@ -120,7 +120,7 @@ $(document).ready(function () {
     var parent = $(this).parent().find("span");
     window.CRM.cart.addGroup(groupid,function(data){
         link.target.id = "removeGroupFromCart";
-        link.target.className = "btn btn-danger";
+        link.target.className = "btn";
         link.target.innerText = i18next.t("Remove all");
         parent.text(i18next.t("All members of this group are in the cart"));
     });
@@ -131,7 +131,7 @@ $(document).ready(function () {
     var parent = $(this).parent().find("span");
     window.CRM.cart.removeGroup(groupid,function(data){
         link.target.id = "AddGroupToCart";
-        link.target.className = "btn btn-primary";
+        link.target.className = "btn";
         link.target.innerText = i18next.t("Add all");
         parent.text(i18next.t("Not all members of this group are in the cart"));
     });

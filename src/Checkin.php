@@ -84,7 +84,7 @@ if ($EventID > 0) {
                         <label class="col-md-2 control-label"><?= gettext('Select Event'); ?></label>
                         <div class="col-md-10 inputGroupContainer">
                             <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-calendar-check-o"></i></span>
+                                <span class="input-group-addon"><i class="fa fa-calendar-check"></i></span>
                                 <select name="EventID" class="form-control" onchange="this.form.submit()">
                                     <option value="<?= $EventID; ?>"
                                             disabled <?= ($EventID == 0) ? " Selected='selected'" : "" ?> ><?= gettext('Select event') ?></option>

@@ -88,7 +88,7 @@ require '../Include/Header.php';
       ?>
       <div class="btn-group">
         <a class="btn btn-app" href="mailto:<?= mb_substr($sEmailLink, 0, -3) ?>"><i
-            class="fa fa-send-o"></i><?= gettext('Email') ?></a>
+            class="fa fa-paper-plane"></i><?= gettext('Email') ?></a>
         <button type="button" class="btn btn-app dropdown-toggle" data-toggle="dropdown">
           <span class="caret"></span>
           <span class="sr-only"><?= gettext('Toggle Dropdown') ?></span>
@@ -112,11 +112,11 @@ require '../Include/Header.php';
       <?php
     }
     ?>
-    <!-- <a class="btn btn-success" data-toggle="modal" data-target="#compose-modal"><i class="fas fa-edit"></i> Compose Message</a>  This doesn't really work right now...-->
+    <!-- <a class="btn btn-success" data-toggle="modal" data-target="#compose-modal"><i class="fas fa-pen"></i> Compose Message</a>  This doesn't really work right now...-->
     <a class="btn btn-app" href="../GroupView.php?GroupID=<?= $iGroupId ?>"><i
         class="fa fa-user-plus"></i><?= gettext('Add Students') ?> </a>
 
-	<a class="btn btn-app" href="../GroupEditor.php?GroupID=<?= $iGroupId?>"><i class="fas fa-edit"></i><?= gettext("Edit this Class") ?></a>
+	<a class="btn btn-app" href="../GroupEditor.php?GroupID=<?= $iGroupId?>"><i class="fas fa-pen"></i><?= gettext("Edit this Class") ?></a>
   </div>
 </div>
 
@@ -152,7 +152,7 @@ require '../Include/Header.php';
     <h3 class="card-title"><?= gettext('Quick Status') ?></h3>
 
     <div class="card-tools pull-right">
-      <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
+      <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa fa-plus"></i></button>
     </div>
   </div>
   <!-- /.box-header -->
@@ -161,7 +161,7 @@ require '../Include/Header.php';
       <!-- Bar chart -->
       <div class="card card-primary">
         <div class="card-header">
-          <i class="fa fa-bar-chart-o"></i>
+          <i class="fa fa-chart-bar"></i>
 
           <h3 class="card-title"><?= gettext('Birthdays by Month') ?></h3>
         </div>
@@ -176,7 +176,7 @@ require '../Include/Header.php';
       <!-- Donut chart -->
       <div class="card card-primary">
         <div class="card-header">
-          <i class="fa fa-bar-chart-o"></i>
+          <i class="fa fa-chart-bar"></i>
 
           <h3 class="card-title"><?= gettext('Gender') ?></h3>
         </div>
@@ -277,7 +277,7 @@ function implodeUnique($array, $withQuotes)
     <div class="modal-content large">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title"><i class="fa fa-envelope-o"></i><?= gettext('Compose New Message') ?></h4>
+        <h4 class="modal-title"><i class="fa fa-envelope"></i><?= gettext('Compose New Message') ?></h4>
       </div>
       <form action="SendEmail.php" method="post">
         <div class="modal-body">

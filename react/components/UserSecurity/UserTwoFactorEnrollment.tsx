@@ -11,7 +11,7 @@ const TwoFAEnrollmentWelcome: React.FunctionComponent<{nextButtonEventHandler: F
                             <p>{window.i18next.t("ChurchCRM Two factor supports any TOTP authenticator app, so you're free to choose between Microsoft Authenticator, Google Authenticator, Authy, LastPass, and others")}</p>
                             <hr/>
                             <div className="col-lg-4">
-                                <i className="fa fa-id-card-o"></i>
+                                <i className="fa fa-id-card"></i>
                                 <p>{window.i18next.t("When you sign in to ChurchCRM, you'll still enter your username and password like normal")}</p>
                             </div>
                             <div className="col-lg-4">
@@ -19,7 +19,7 @@ const TwoFAEnrollmentWelcome: React.FunctionComponent<{nextButtonEventHandler: F
                                 <p>{window.i18next.t("However, you'll also need to supply a one-time code from your authenticator device to complete your login")}</p>
                             </div>
                             <div className="col-lg-4">
-                                <i className="fa fa-check-square-o"></i>
+                                <i className="fa fa-square-check"></i>
                                 <p>{window.i18next.t("After successfully entering both your credentials, and the one-time code, you'll be logged in as normal")}</p>
                             </div>
                             <div className="clearfix"></div>

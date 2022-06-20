@@ -152,11 +152,11 @@ class TimelineService
                 $item['style'] = 'fa-calendar bg-green';
                 break;
             case 'verify':
-                $item['style'] = 'fa-check-circle-o bg-teal';
+                $item['style'] = 'fa-circle-check bg-teal';
             case 'verify-link':
-                $item['style'] = 'fa-check-circle-o bg-teal';
+                $item['style'] = 'fa-circle-check bg-teal';
             case 'verify-URL':
-                $item['style'] = 'fa-check-circle-o bg-teal';
+                $item['style'] = 'fa-circle-check bg-teal';
                 break;
             case 'user':
                 $item['style'] = 'fa-user-secret bg-gray';

@@ -42,7 +42,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                       <i class="fa fa-search-plus"></i>
                     </a> 
                     <a href='<?= SystemURLs::getRootPath()?>/FamilyEditor.php?FamilyID=<?= $family->getId() ?>'>
-                        <i class="fas fa-edit"></i>
+                        <i class="fas fa-pen"></i>
                     </a></td>
               <td><?= $family->getName() ?></td>
                 <td> <?= $family->getAddress() ?></td>

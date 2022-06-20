@@ -186,7 +186,7 @@ class Menu
         if (!$groups->isEmpty()) {
             $unassignedGroups = new MenuItem($menuName, "", true, "fa-tag");
             foreach ($groups as $group) {
-                $unassignedGroups->addSubMenu(new MenuItem($group->getName(), $viewURl . $group->getID(), true, "fa-user-o"));
+                $unassignedGroups->addSubMenu(new MenuItem($group->getName(), $viewURl . $group->getID(), true, "fa-user-tag"));
             }
             return $unassignedGroups;
         }
