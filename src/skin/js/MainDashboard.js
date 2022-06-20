@@ -13,7 +13,7 @@ $(document).ready(function () {
             title: i18next.t('Edit'),
             data: 'Id',
             render: function (data, type, row) {
-                return '<a href="' + window.CRM.root + '/FamilyEditor.php?FamilyID=' + row.FamilyId + '"><button class="btn btn-default"><i class="fas fa-edit"></i></button></a>';
+                return '<a href="' + window.CRM.root + '/FamilyEditor.php?FamilyID=' + row.FamilyId + '"><button class="btn btn-default"><i class="fas fa-pen"></i></button></a>';
             },
             searchable: false
         },
@@ -121,7 +121,7 @@ $(document).ready(function () {
             data: 'Id',
             render: function (data, type, row) {
                 return '<a href="' + window.CRM.root + '/PersonView.php?PersonID=' + row.PersonId + '"><button class="btn btn-default"><i class="fa fa-search-plus"></i></button></a> ' +
-                    '<a href="' + window.CRM.root + '/PersonView.php?PersonID=' + row.PersonId + '"><button class="btn btn-default"><i class="fas fa-edit"></i></button></a>';
+                    '<a href="' + window.CRM.root + '/PersonView.php?PersonID=' + row.PersonId + '"><button class="btn btn-default"><i class="fas fa-pen"></i></button></a>';
             },
             searchable: false
         },

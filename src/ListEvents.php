@@ -229,7 +229,7 @@ foreach ($allMonths as $mKey => $mVal) {
                     <form name="EditEvent" action="EventEditor.php" method="POST">
                       <input type="hidden" name="EID" value="<?= $aEventID[$row] ?>">
                       <button type="submit" name="Action" title="<?= gettext('Edit') ?>" value="Edit" data-tooltip class="btn btn-default btn-sm">
-                        <i class='fas fa-edit'></i>
+                        <i class='fas fa-pen'></i>
                       </button>
                     </form>
                   </td>

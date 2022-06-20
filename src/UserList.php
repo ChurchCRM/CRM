@@ -210,7 +210,7 @@ require 'Include/Header.php';
                 <tr>
                     <td>
                         <a href="UserEditor.php?PersonID=<?= $user->getId() ?>">
-                            <i class="fas fa-edit" aria-hidden="true"></i>
+                            <i class="fas fa-pen" aria-hidden="true"></i>
                         </a>&nbsp;&nbsp;
                         <a href="v2/user/<?= $user->getId() ?>">
                             <i class="fa fa-eye" aria-hidden="true"></i>

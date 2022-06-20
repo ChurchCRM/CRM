@@ -36,7 +36,7 @@ $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
           }
         ?>
 
-        <i class="fa fa-fw fa-newspaper-o" title="<?= gettext("Send Newsletter")?>"></i><?= $family->getSendNewsletter() ?><br/>
+        <i class="fa fa-fw fa-newspaper" title="<?= gettext("Send Newsletter")?>"></i><?= $family->getSendNewsletter() ?><br/>
       </div>
     </div>
     <div class="border-right border-left">
@@ -75,9 +75,9 @@ $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
                       <?php }  if (!empty($person->getEmail()))  { ?>
                     <i class="fa fa-fw fa-envelope" title="<?= gettext("Email")?>"></i>(H) <?= $person->getEmail() ?><br/>
                       <?php }  if (!empty($person->getWorkEmail()))  { ?>
-                    <i class="fa fa-fw fa-envelope-o" title="<?= gettext("Work Email")?>"></i>(W) <?= $person->getWorkEmail() ?><br/>
+                    <i class="fa fa-fw fa-envelope" title="<?= gettext("Work Email")?>"></i>(W) <?= $person->getWorkEmail() ?><br/>
                       <?php }  ?>
-                    <i class="fa fa-fw fa-birthday-cake" title="<?= gettext("Birthday")?>"></i> <?= $person->getFormattedBirthDate() ?><br/>
+                    <i class="fa fa-fw fa-cake-candles" title="<?= gettext("Birthday")?>"></i> <?= $person->getFormattedBirthDate() ?><br/>
                   </li>
                   <li class="list-group-item">
                     <b>Classification:</b> <?= Classification::getName($person->getClsId()) ?>

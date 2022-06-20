@@ -48,7 +48,7 @@ $(document).ready(function () {
                     let propVal = prop.value;
                     selectedFamilyProperties.push(propId);
                     if (prop.allowEdit) {
-                        editIcon = "<a href='"+ window.CRM.root  +"/PropertyAssign.php?FamilyID="+ window.CRM.currentFamily +"&PropertyID=" + propId +"'><button type='button' class='btn btn-xs btn-primary'><i class='fa fa-edit'></i></button></a>";
+                        editIcon = "<a href='"+ window.CRM.root  +"/PropertyAssign.php?FamilyID="+ window.CRM.currentFamily +"&PropertyID=" + propId +"'><button type='button' class='btn btn-xs btn-primary'><i class='fa fa-pen'></i></button></a>";
                     }
                     if (prop.allowDelete) {
                         deleteIcon = "<div class='btn btn-xs btn-danger delete-property' data-property-id='" + propId +"' data-property-name='"+propName+"'><i class='fa fa-trash'></i></div>";
@@ -113,7 +113,7 @@ $(document).ready(function () {
                 title: i18next.t('Edit'),
                 data: 'GroupKey',
                 render: function (data, type, row) {
-                    return '<a class="btn btn-default" href="'+window.CRM.root+'/PledgeEditor.php?GroupKey='+ row.GroupKey + '&amp;linkBack=v2/family/'+window.CRM.currentFamily+'"><i class="fas fa-edit bg-info"></i></a>';
+                    return '<a class="btn btn-default" href="'+window.CRM.root+'/PledgeEditor.php?GroupKey='+ row.GroupKey + '&amp;linkBack=v2/family/'+window.CRM.currentFamily+'"><i class="fas fa-pen bg-info"></i></a>';
                 },
                 searchable: false
             },

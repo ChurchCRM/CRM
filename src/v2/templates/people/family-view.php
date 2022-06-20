@@ -37,7 +37,7 @@ $mailchimp = new MailChimpService();
                     <div class="card-header">
                         <h3 class="card-title"><?= $family->getName() ?> [<?= $family->getId() ?>]</h3>
                         <div class="card-tools pull-right">
-                            <button type="button" class="btn btn-box-tool edit-family"><i class="fa fa-edit"></i>
+                            <button type="button" class="btn btn-box-tool edit-family"><i class="fa fa-pen"></i>
                             </button>
                         </div>
                     </div>
@@ -135,7 +135,7 @@ $mailchimp = new MailChimpService();
                         <h3 class="card-title"> <i class="fa fa-thumbtack"></i> <?= gettext("Metadata") ?></h3>
                         <div class="card-tools pull-right">
                             <button type="button" class="btn btn-box-tool edit-family"><i
-                                    class="fa fa-edit"></i>
+                                    class="fa fa-pen"></i>
                             </button>
                         </div>
                     </div>
@@ -240,7 +240,7 @@ $mailchimp = new MailChimpService();
                                             </a>
 
                                             <a href="<?= SystemURLs::getRootPath()?>/PersonEditor.php?PersonID=<?= $person->getID()?>" class="table-link">
-                                                <button type="button" class="btn btn-xs btn-primary"><i class="fas fa-edit"></i></button>
+                                                <button type="button" class="btn btn-xs btn-primary"><i class="fas fa-pen"></i></button>
                                             </a>
                                             <a class="delete-person" data-person_name="<?= $person->getFullName() ?>"
                                                data-person_id="<?= $person->getId() ?>" data-view="family">
@@ -275,7 +275,7 @@ $mailchimp = new MailChimpService();
                                                     <br/>
                                                 <?php }
                                                 if (!empty($person->getWorkEmail())) { ?>
-                                                    <i class="fa fa-fw fa-envelope-o"
+                                                    <i class="fa fa-fw fa-inbox"
                                                        title="<?= gettext("Work Email") ?>"></i>(W) <?= $person->getWorkEmail() ?>
                                                     <br/>
                                                 <?php }
@@ -346,7 +346,7 @@ $mailchimp = new MailChimpService();
                     <div class="card-header">
                         <h3 class="card-title"><i class="fa fa-map"></i> <?= gettext("Address") ?></h3> 
                         <div class="card-tools pull-right">
-                            <button type="button" class="btn btn-box-tool edit-family"><i class="fa fa-edit"></i>
+                            <button type="button" class="btn btn-box-tool edit-family"><i class="fa fa-pen"></i>
                             </button>
                             <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa fa-minus"></i>
                             </button>
@@ -409,7 +409,7 @@ $mailchimp = new MailChimpService();
                                     <?php if (AuthenticationManager::GetCurrentUser()->isNotesEnabled() && (isset($item["editLink"]) || isset($item["deleteLink"]))) {
                                     ?>
                                         <?php if (isset($item["editLink"])) { ?>
-                                            <a href="<?= $item["editLink"] ?>"><button type="button" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i></button></a>
+                                            <a href="<?= $item["editLink"] ?>"><button type="button" class="btn btn-xs btn-primary"><i class="fa fa-pen"></i></button></a>
                                         <?php }
                                         if (isset($item["deleteLink"])) { ?>
                                             <a href="<?= $item["deleteLink"] ?>"><button type="button" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i></button></a>
@@ -417,7 +417,7 @@ $mailchimp = new MailChimpService();
                                         &nbsp;
                                     <?php
                                 } ?>
-                                <i class="fa fa-clock-o"></i> <?= $item['datetime'] ?></span>
+                                <i class="fa fa-clock"></i> <?= $item['datetime'] ?></span>
                                 <?php if ($item['slim']) { ?>
                                     <h4 class="timeline-header">
                                         <?= $item['text'] ?> <?= gettext($item['header']) ?>

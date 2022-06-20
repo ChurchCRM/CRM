@@ -54,10 +54,10 @@ require '../Include/Header.php';
 } ?>
     <a href="SundaySchoolReports.php" class="btn btn-app"
        title="<?= gettext('Generate class lists and attendance sheets'); ?>"><i
-        class="fa fa-file-pdf-o"></i><?= gettext('Reports'); ?></a>
+        class="fa fa-file-pdf"></i><?= gettext('Reports'); ?></a>
     <a href="SundaySchoolClassListExport.php" class="btn btn-app"
        title="<?= gettext('Export All Classes, Kids, and Parent to CSV file'); ?>"><i
-        class="fa fa-file-excel-o"></i><?= gettext('Export to CSV') ?></a><br/>
+        class="fa fa-file-excel"></i><?= gettext('Export to CSV') ?></a><br/>
   </div>
 </div>
 <!-- Small boxes (Stat box) -->
@@ -169,7 +169,7 @@ require '../Include/Header.php';
           	<a href='<?= SystemURLs::getRootPath() ?>/GroupEditor.php?GroupID=<?= $class['id'] ?>'>
             <span class="fa-stack">
 							<i class="fa fa-square fa-stack-2x"></i>
-							<i class="fa fas fa-edit fa-stack-1x fa-inverse"></i>
+							<i class="fa fas fa-pen fa-stack-1x fa-inverse"></i>
             </span>
             </a>
           </td>

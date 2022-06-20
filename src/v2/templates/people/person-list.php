@@ -105,7 +105,7 @@ foreach ($ListItem as $element) {
                         <i class="fa fa-search-plus"></i>
                     </a>
                     <a href='<?= SystemURLs::getRootPath()?>/PersonEditor.php?PersonID=<?= $person->getId() ?>'>
-                            <i class="fas fa-edit"></i>
+                            <i class="fas fa-pen"></i>
                     </a>
 
                     <?php if (!isset($_SESSION['aPeopleCart']) || !in_array($per_ID, $_SESSION['aPeopleCart'], false)) {
