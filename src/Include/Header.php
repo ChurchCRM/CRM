@@ -82,7 +82,7 @@ $MenuFirst = 1;
             <!-- Locale Dropdown Menu -->
             <li class="nav-item dropdown show">
                 <a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="true">
-                    <i class="flag-icon flag-icon-squared"></i>
+                    <i class="fi fi-squared"></i>
                     <span class="badge badge-danger navbar-badge" id="translationPer"></span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right" style="left: inherit; right: 0px;">
@@ -116,7 +116,7 @@ $MenuFirst = 1;
                     <i class="fas fa-headset"></i>
                 </a>
                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right" style="left: inherit; right: 0px;">
-                    <a href="<?= SystemURLs::getSupportURL() ?>" class="dropdown-item" title="<?= gettext('Help & Manual') ?>">
+                    <a href="<?= SystemURLs::getSupportURL() ?>" target="help" class="dropdown-item" title="<?= gettext('Help & Manual') ?>">
                         <i class="fas fa-book-reader"></i> <?= gettext('Help & Manual') ?>
                     </a>
                     <div class="dropdown-divider"></div>

@@ -249,12 +249,12 @@ module.exports = function (grunt) {
                         expand: true,
                         filter: 'isFile',
                         flatten: false,
-                        cwd: 'node_modules/flag-icon-css',
+                        cwd: 'node_modules/flag-icons',
                         src: [
                             'flags/**',
-                            'css/flag-icon.css',
+                            'css/flag-icons.min.css',
                         ],
-                        dest: 'src/skin/external/flag-icon-css/'
+                        dest: 'src/skin/external/flag-icons/'
                     }
                 ]
             }
@@ -626,7 +626,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-compress');
     grunt.loadNpmTasks('grunt-curl');
-    grunt.loadNpmTasks('grunt-poeditor-ab');
+    grunt.loadNpmTasks('grunt-poeditor-gd');
     grunt.loadNpmTasks('grunt-exec');
     grunt.loadNpmTasks('grunt-lineending');
 

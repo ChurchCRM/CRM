@@ -535,7 +535,7 @@
           }
         },
         PageLocale: function (data) {
-            $(".flag-icon").addClass("flag-icon-" + data.countryFlagCode);
+            $(".fi").addClass("fi-" + data.countryFlagCode);
             $("#translationInfo").html(data.name + " [" + window.CRM.locale + "]");
             if (data.countryFlagCode != "us" && data.poPerComplete < 90) {
                 $("#translationPer").html(data.poPerComplete + "%");

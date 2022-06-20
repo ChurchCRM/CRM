@@ -24,6 +24,7 @@ class ListOptionQuery extends BaseListOptionQuery
     {
         return $this
             ->filterById(2)
+            ->orderByOptionSequence()
             ->find();
     }
 }
