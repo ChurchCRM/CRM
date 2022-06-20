@@ -626,7 +626,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-compress');
     grunt.loadNpmTasks('grunt-curl');
-    grunt.loadNpmTasks('grunt-poeditor-ab');
+    grunt.loadNpmTasks('grunt-poeditor-gd');
     grunt.loadNpmTasks('grunt-exec');
     grunt.loadNpmTasks('grunt-lineending');
 

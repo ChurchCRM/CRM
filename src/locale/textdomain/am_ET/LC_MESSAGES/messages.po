@@ -57,6 +57,10 @@ msgid "Credit Card"
 msgstr "ክሬዲት ካርድ"
 
 #: 
+msgid "Backup Database"
+msgstr "የመረጃ ቋቱን አስቀምጥ"
+
+#: 
 msgid "This tool will assist you in manually backing up the ChurchCRM database."
 msgstr "ይሄ መሳሪያ የChurchCRM  መረጃ ቋት ለማስቀመጥ ይረዳል"
 
