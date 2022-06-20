@@ -60,7 +60,7 @@ $(document).ready(function () {
         data: 'Id',
         render: function (data, type, full, meta) {
           if (type === 'display') {
-            return '<a href=\'DepositSlipEditor.php?DepositSlipID=' + full.Id + '\'><span class="fa-stack"><i class="fa fa-square fa-stack-2x"></i><i class="fa fa-search-plus fa-stack-1x fa-inverse"></i></span></a>' + full.Id;
+            return '<a href=\'DepositSlipEditor.php?DepositSlipID=' + full.Id + '\'><i class="fa fa-search-plus"></i></a> ' + full.Id;
           }
           else {
             return parseInt(full.Id);
