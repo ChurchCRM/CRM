@@ -65,12 +65,14 @@ msgid "This tool will assist you in manually backing up the ChurchCRM database."
 msgstr "ይሄ መሳሪያ የChurchCRM  መረጃ ቋት ለማስቀመጥ ይረዳል"
 
 #: 
+#, fuzzy
 msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
-msgstr "U moet minstens een keer per week 'n handmatige rugsteun maak, tensy u reeds 'n gereelde rugsteunprosedure vir u stelsels het."
+msgstr "ሳምንታዊ የባካፕ መንገድ እስከሌለ ድረስ ቢያንስ በሳምንት አንዴ የመረጃ ቋቱን ባካፕ ማድረግ ያስፈልጋል።"
 
 #: 
+#, fuzzy
 msgid "After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site."
-msgstr "Nadat u die rugsteunlêer afgelaai het, moet u twee eksemplare maak. Sit een daarvan in 'n brandwerende kluis op die perseel en die ander op 'n veilige plek buite die perseel."
+msgstr "የባካፕ ፋይሉን ካወረዱ በኋላ ሁለት ኮፒ መዘጋጀት አለበት። አንደኛውን እሳት በማይደርስበት ይቀመጥ፥ ሁለተኛውን ባካፕ በሌላ ስፍራ ያስቀምጡት።"
 
 #: 
 msgid "If you are concerned about confidentiality of data stored in the ChurchCRM database, you should encrypt the backup data if it will be stored somewhere potentially accessible to others"
@@ -78,11 +80,11 @@ msgstr "As u bekommerd is oor die vertroulikheid van data wat in die ChurchCRM-d
 
 #: 
 msgid "Select archive type"
-msgstr "Kies tipe argief"
+msgstr "የአርቻይቩን አይነት ይምረጡ"
 
 #: 
 msgid "Encrypt backup file with a password?"
-msgstr "Rugsteunlêer met 'n wagwoord enkripteer?"
+msgstr "የባካፕ ፋይሉን በይለፍ ቃል ያመስጥሩት?"
 
 #: 
 msgid "Re-type Password"
