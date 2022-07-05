@@ -1394,7 +1394,7 @@ msgstr "Μαιος"
 
 #: 
 msgid "June"
-msgstr "Ιούνιος"
+msgstr "June"
 
 #: 
 msgid "July"
