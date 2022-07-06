@@ -1044,7 +1044,7 @@ msgstr "Tipe"
 #. Merriam-Webster menerjemahkan Fiscal Year sebagai "an accounting period of 12 months." Mungkin hal ini berhubungan dengan kebiasaan di Amerika Serikat. Apabila ada rekan yang mengetahui lebih baik dalam penerjemahan kata ini, saya akan sangat berterima kasih.
 #: 
 msgid "Fiscal Year"
-msgstr "12 Bulan"
+msgstr "Tahun Fiskal"
 
 #: 
 msgid "Amount"
@@ -3286,7 +3286,7 @@ msgstr "(Edit keluarga sendiri saja.)"
 
 #: 
 msgid "(Canvass volunteer.)"
-msgstr "(Canvass sukarela.)"
+msgstr "(Canvass relawan.)"
 
 #: 
 msgid "Admin"

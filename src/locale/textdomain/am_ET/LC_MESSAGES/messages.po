@@ -76,7 +76,7 @@ msgstr "የባካፕ ፋይሉን ካወረዱ በኋላ ሁለት ኮፒ መዘ
 
 #: 
 msgid "If you are concerned about confidentiality of data stored in the ChurchCRM database, you should encrypt the backup data if it will be stored somewhere potentially accessible to others"
-msgstr "As u bekommerd is oor die vertroulikheid van data wat in die ChurchCRM-databasis gestoor word, moet u die rugsteun-data enkripteer as dit êrens gestoor word wat moontlik vir ander toeganklik is."
+msgstr "በዚህ ሶፍትዌር የሚቀመጠው መረጃ ደህንነት ካሳሰብዎት፤ አባክዎ ሰዎች ሊያገኙት በሚችሉት ቦታ የተቀመጠን ዳታቤስ አመስጥረው ያስቀምጡ።"
 
 #: 
 msgid "Select archive type"
@@ -92,11 +92,11 @@ msgstr "የይለፍቃሉን እንደገና ይፃፉ"
 
 #: 
 msgid "Generate and Ship Backup to External Storage"
-msgstr "Genereer en stuur rugsteun na eksterne berging"
+msgstr "ለውጫዊ የመረጃ ማስቀመጫ ባካፑን አዘጋጅ"
 
 #: 
 msgid "Batch Winner Entry"
-msgstr "Inskrywing vir groepwenners"
+msgstr "የአሸናፊው ባች ማስገቢያ"
 
 #: 
 msgid "Winner"
@@ -108,15 +108,15 @@ msgstr "ዋጋ"
 
 #: 
 msgid "Enter Winners"
-msgstr "Voer wenner in"
+msgstr "አሸናፊዎችን አስገባ"
 
 #: 
 msgid "CSV Export"
-msgstr "CSV Uitvoer"
+msgstr "CSV ፎርማት አውርድ"
 
 #: 
 msgid "Field Selection"
-msgstr "Veldkeuse"
+msgstr "የመረጃ ምርጫ"
 
 #: 
 msgid "Last Name"
@@ -124,7 +124,7 @@ msgstr "የአያት ስም"
 
 #: 
 msgid "Required"
-msgstr "Word vereis"
+msgstr "አስፈላጊ"
 
 #: 
 msgid "First Name"
@@ -136,7 +136,7 @@ msgstr "የአባት ስም"
 
 #: 
 msgid "Zip"
-msgstr "Poskode"
+msgstr "ዚፕ የፖስታ ኮድ"
 
 #: 
 msgid "Envelope"
@@ -152,19 +152,23 @@ msgstr "የአባልነት ቀን"
 
 #: 
 msgid "Birth / Anniversary Date"
-msgstr "Geboorte / Herdenkingsdatum"
+msgstr "ልደት / እዩበልዩ"
 
 #: 
 msgid "Age / Years Married"
 msgstr "እድሜ / የጋብቻ እድሜ"
 
 #: 
+msgid "Family Role"
+msgstr "የቤተሰብ አባልነት"
+
+#: 
 msgid "Depends whether using person or family output method"
-msgstr "Dit hang af of die metode van persone of gesinsuitsette gebruik word"
+msgstr "በግለሰቡ የቤተሰብ ውጤት ላይ የተመረኮዘ"
 
 #: 
 msgid "Custom Field Selection"
-msgstr "Pasgemaakte veldkeuse"
+msgstr "የግል መረጃ ምርጫ"
 
 #: 
 msgid "Custom Person Fields"
@@ -173,6 +177,10 @@ msgstr "Pasgemaakte persoonveld"
 #: 
 msgid "Custom Family Fields"
 msgstr "Pasgemaakte famielieveld"
+
+#: 
+msgid "Filters"
+msgstr "ማጣርያዎች"
 
 #: 
 msgid "Records to export"
