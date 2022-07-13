@@ -7,7 +7,7 @@ services:
   database:
     image: mariadb
     ports:
-      - "3306:3306"
+      - ${DEV_DATABASE_PORT:-3306}:3306
     env_file:
       - .env
     networks:
