@@ -172,11 +172,11 @@ msgstr "የግል መረጃ ምርጫ"
 
 #: 
 msgid "Custom Person Fields"
-msgstr "Pasgemaakte persoonveld"
+msgstr "አዲስ የግለሰብ መረጃ መቀበያዎች"
 
 #: 
 msgid "Custom Family Fields"
-msgstr "Pasgemaakte famielieveld"
+msgstr "አዲስ የቤተሰብ መረጃ መቀበያዎች"
 
 #: 
 msgid "Filters"
@@ -184,19 +184,19 @@ msgstr "ማጣርያዎች"
 
 #: 
 msgid "Records to export"
-msgstr "Rekords om uit te voer"
+msgstr "ኤክስፖርት የሚደረጉ መረጃዎች"
 
 #: 
 msgid "Based on filters below.."
-msgstr "Gebasseer op onderstaande filters"
+msgstr "በሚከተሉት ማጣርያዎች መሰረት.."
 
 #: 
 msgid "People in Cart (filters ignored)"
-msgstr "Mense in mandjie (filters geïgnoreer)"
+msgstr "በጋሪ ውስጥ ያሉ ሰዎች(ማጣርያውን ትተን)"
 
 #: 
 msgid "Use Ctrl Key to select multiple"
-msgstr "Gebruik die Ctl sleutel om meer te kies"
+msgstr "ብዙ ለመምረጥ Ctlን ይጠቀሙ"
 
 #: 
 msgid "Don't Filter"
@@ -212,7 +212,7 @@ msgstr "ሴት"
 
 #: 
 msgid "Group Membership"
-msgstr "Groep lidmaatskap"
+msgstr "የቡድን አባልነት"
 
 #: 
 msgid "From:"
@@ -224,39 +224,39 @@ msgstr "እስከ:"
 
 #: 
 msgid "Birthday Date"
-msgstr "Geboortedatum"
+msgstr "የትውልድ ቀን"
 
 #: 
 msgid "Anniversary Date"
-msgstr "Herdenking datum"
+msgstr "የኢዮበልዩ ቀን"
 
 #: 
 msgid "Output Method:"
-msgstr "Uitvoer metode:"
+msgstr "የውጤት መንገድ:"
 
 #: 
 msgid "CSV Individual Records"
-msgstr "CVS Individuele rekords: "
+msgstr "እያንዳንዱ መረጃ በCVS"
 
 #: 
 msgid "CSV Combine Families"
-msgstr "CVS kombineer families"
+msgstr "ቤተሰብ የተቀላቀለበት CVS"
 
 #: 
 msgid "Add Individuals to Cart"
-msgstr "Voed individue by inkopiemantjie in"
+msgstr "እያንዳንዱን ግለሰብ ወደ ግዢ ጋሪ ይጨምሩ"
 
 #: 
 msgid "Skip records with incomplete mail address"
-msgstr "Slaan rekords oor met onvolledige e-posadres"
+msgstr "የፖስታ መረጃ የሌላቸውን እለፍ"
 
 #: 
 msgid "Create File"
-msgstr "Skep leêr"
+msgstr "ፋይል ፍጠር"
 
 #: 
 msgid "No file selected for upload."
-msgstr "Geen leêr was gekies vir die oplaai nie"
+msgstr "ለአፕሎድ የተመረጠ ፋይል የለም."
 
 #: 
 msgid "Total number of rows in the CSV file:"
