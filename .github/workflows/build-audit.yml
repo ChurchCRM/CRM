@@ -28,6 +28,10 @@ jobs:
       shell: bash
       run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
 
+    - name: Update versions
+      run: |
+        npm run pre-install
+
     - name: get-npm-version
       id: package-version
       uses: martinbeentjes/npm-get-version-action@master
