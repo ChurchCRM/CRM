@@ -293,7 +293,7 @@
         ],
         "dbVersion": "4.4.0"
     },
-    "current": {
+    "pre-4.5.0": {
         "versions": [
             "4.4.0",
             "4.4.1",
@@ -304,5 +304,12 @@
         ],
         "scripts": [],
         "dbVersion": "4.5.0"
+    },
+    "current": {
+        "versions": [
+            "4.5.0"
+        ],
+        "scripts": [],
+        "dbVersion": "4.5.1"
     }
 }
