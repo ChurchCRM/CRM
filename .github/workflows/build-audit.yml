@@ -30,7 +30,7 @@ jobs:
 
     - name: Update versions
       run: |
-        npm run pre-install
+        npm run preinstall
 
     - name: get-npm-version
       id: package-version
