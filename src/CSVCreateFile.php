@@ -454,10 +454,11 @@ if ($sFormat == 'addtocart') {
                 } elseif ($sFormat == 'rollup') {
                     if ($memberCount > 1) {
                         $sString .= '","'.MakeSalutationUtility($fam_ID);
+                        $sString .= '"'.$delimiter.'"'.MakeFirstNameSalutationUtility($fam_ID);
                     } else {
-                        $sString .= '","'.$per_LastName.', '.$per_FirstName;
+                        $sString .= '"'.$delimiter.'"'.$per_FirstName.' '.$per_LastName;
+                        $sString .= '"'.$delimiter.'"'.$per_FirstName;
                     }
-                    $sString .= '"'.$delimiter.'"'.MakeFirstNameSalutationUtility($fam_ID);
                 }
 
                 if (isset($_POST['Address1'])) {
