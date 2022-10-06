@@ -69,7 +69,7 @@ function MakeSalutationUtility($famID)
 
 // MakeFirstNameSalutation: this utility figures out how address a family in the salutation of a
 // piece of correspondence (Dear NAME,)
-function MakeFirstNameSalutationUtility(famID)
+function MakeFirstNameSalutationUtility($famID)
 {
     // If there is only one person in the family, return the first name of that person
     // If there are two persons, return the first names concatenated by ' & '
