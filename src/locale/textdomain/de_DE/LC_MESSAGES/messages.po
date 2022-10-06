@@ -123,7 +123,7 @@ msgstr "Feldauswahl"
 #: 
 #, fuzzy
 msgid "Last Name"
-msgstr "Nachnahme/Familienname"
+msgstr "Nachname"
 
 #: 
 msgid "Required"
@@ -572,7 +572,7 @@ msgstr "Wenn eine neue Familie angelget werden soll bitte unten Daten eingeben."
 #: 
 #, fuzzy
 msgid "Use address/contact data from"
-msgstr "Benutze Adressen/Kotaktdatn von"
+msgstr "Benutze Adressen/Kontaktdaten von"
 
 #: 
 msgid "Only the new data below"
@@ -6274,6 +6274,10 @@ msgid "South Korea (대한민국)"
 msgstr "Südkorea"
 
 #: 
+msgid "South Sudan (‫جنوب السودان‬‎)"
+msgstr "Süd Sudan"
+
+#: 
 msgid "Spain (España)"
 msgstr "Spanien"
 
@@ -6292,6 +6296,10 @@ msgstr "Schweden"
 #: 
 msgid "Switzerland (Schweiz)"
 msgstr "Schweiz"
+
+#: 
+msgid "Syria (‫سوريا‬‎)"
+msgstr "Syrien"
 
 #: 
 msgid "Taiwan (台灣)"
@@ -6393,6 +6401,14 @@ msgstr "Vietnam"
 #: 
 msgid "Wallis and Futuna"
 msgstr "Wallis und Futuna"
+
+#: 
+msgid "Western Sahara (‫الصحراء الغربية‬‎)"
+msgstr "West-Sahara"
+
+#: 
+msgid "Yemen (‫اليمن‬‎)"
+msgstr "Jemen"
 
 #: 
 msgid "Zambia"
@@ -8690,7 +8706,7 @@ msgstr "Bitte 2FA-Code eingeben"
 
 #: 
 msgid "2FA Code"
-msgstr "2FA-Kode"
+msgstr "2FA-Code"
 
 #: 
 msgid "2 Factor Authentication enrollment"
@@ -8718,7 +8734,7 @@ msgstr "Muss auf 'wahr' gesetzt werden"
 
 #: 
 msgid "Include/Config.php must define an encryption key for storing 2FA secret keys in the database by setting a value for"
-msgstr "In der Include/Config.php muss einen Schlüssel für die Speicherung von geheimen 2FA-Schlüsseln in der Datenbank angegeben werden"
+msgstr "In der Include/Config.php muss ein Schlüssel für die Speicherung von geheimen 2FA-Schlüsseln in der Datenbank angegeben werden"
 
 #: 
 msgid "Google Maps API Key used for Geocoding addresses"
@@ -8897,12 +8913,28 @@ msgid "2FA Application Name"
 msgstr "2FA Anwendungsname Name"
 
 #: 
+msgid "Login Info"
+msgstr "Anmeldeinfo‘s"
+
+#: 
+msgid "Failed Login"
+msgstr "Fehlgeschlagene Anmeldung(en)"
+
+#: 
 msgid "Permissions"
 msgstr "Berechtigungen"
 
 #: 
+msgid "Skins"
+msgstr "Design"
+
+#: 
 msgid "Paid"
 msgstr "Bezahlt"
+
+#: 
+msgid "Owe"
+msgstr "Schulden"
 
 #: 
 msgid "Start Date"
@@ -8917,12 +8949,32 @@ msgid "Pinned Calendars"
 msgstr "Angepinnte Kalender"
 
 #: 
+msgid "This field is required"
+msgstr "Dieses Feld ist erforderlich"
+
+#: 
+msgid "Enrolling your ChurchCRM user account in Two Factor Authention provides an additional layer of defense against bad actors trying to access your account."
+msgstr "Die Registrierung Ihres ChurchCRM-Benutzerkontos bei der Zwei-Faktor-Authentifizierung bietet eine zusätzliche Sicherheitsebene gegen Angreifer, die versuchen auf Ihr Konto zuzugreifen."
+
+#: 
+msgid "When you sign in to ChurchCRM, you'll still enter your username and password like normal"
+msgstr "Um sich bei ChurchCRM anmelden, geben Sie Ihren Benutzernamen und Ihr Passwort wie gewohnt ein"
+
+#: 
 msgid "Store these in a secure location"
-msgstr "An sicherem Ort speichern"
+msgstr "An einem sicherem Ort speichern"
 
 #: 
 msgid "Please store these recovery codes in a safe location"
 msgstr "Bitte bewahren Sie diese Wiederherstellungscodes an einem sicheren Ort auf"
+
+#: 
+msgid "If you ever lose access to your newly enrolled authenticator app, you'll need to use a recovery code to gain access to your account"
+msgstr "Wenn Sie jemals den Zugriff auf Ihre neu registrierte Authentifikator-App verlieren, müssen Sie einen Wiederherstellungscode verwenden, um Zugriff auf Ihr Konto zu erhalten"
+
+#: 
+msgid "Event Attendance"
+msgstr "Teilnahme an der Veranstaltung"
 
 #: 
 msgid "Help translate this project"
@@ -8934,7 +8986,7 @@ msgstr "Kreditkartenmenschen"
 
 #: 
 msgid "Afrikaans"
-msgstr "Afrikaans"
+msgstr "Afrikanisch"
 
 #: 
 msgid "Loading"
@@ -8978,7 +9030,7 @@ msgstr "Verifizieren"
 
 #: 
 msgid "Family has no emails to use"
-msgstr "Die Familie hat keine E-Mails zu verwenden"
+msgstr "Die Familie hat keine E-Mailadresse"
 
 #: 
 msgid "Blue"
@@ -9029,12 +9081,24 @@ msgid "Yellow Light"
 msgstr "Gelbes Licht"
 
 #: 
+msgid "Toggle the left sidebar's state (open or collapse)"
+msgstr "Tabelleneinstellungen"
+
+#: 
+msgid "Tables Settings"
+msgstr "Tabellen"
+
+#: 
 msgid "Page length"
 msgstr "Länge der Seite"
 
 #: 
 msgid "User Interface"
 msgstr "Benutzeroberfläche"
+
+#: 
+msgid "Override system locale"
+msgstr "Gebietsschema des Systems außer Kraft setzen"
 
 #: 
 msgid "Deleted"
