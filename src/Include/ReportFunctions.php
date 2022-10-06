@@ -110,7 +110,6 @@ function MakeFirstNameSalutationUtility($famID)
     } else {
         $sNames = $allNames[0];
         for ($ind = 1; $ind < ($numMembers - 1); $ind++) {
-            // 
             $sNames .= ', '.$allNames[$ind];
         }
         $sNames .= ' & '.$allNames[$numMembers - 1];
