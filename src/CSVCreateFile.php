@@ -230,6 +230,8 @@ if ($sFormat == 'addtocart') {
     $headerString = '"'.InputUtils::translate_special_charset("Family").' ID "'.$delimiter;
     if ($sFormat == 'rollup') {
         $headerString .= '"'.InputUtils::translate_special_charset("Name").'"'.$delimiter;
+        // Add Salutation for family here...
+        $headerString .= '"'.InputUtils::translate_special_charset("Salutation").'"'.$delimiter;
     } else {
         $headerString .= '"'.InputUtils::translate_special_charset("Person").' Id"'.$delimiter;
         $headerString .= '"'.InputUtils::translate_special_charset("Last Name").'"'.$delimiter;
@@ -455,6 +457,7 @@ if ($sFormat == 'addtocart') {
                     } else {
                         $sString .= '","'.$per_LastName.', '.$per_FirstName;
                     }
+                    $sString .= '"'.$delimiter.'"'.MakeFirstNameSalutationUtility($famID);
                 }
 
                 if (isset($_POST['Address1'])) {
