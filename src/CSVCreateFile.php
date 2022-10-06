@@ -457,7 +457,7 @@ if ($sFormat == 'addtocart') {
                     } else {
                         $sString .= '","'.$per_LastName.', '.$per_FirstName;
                     }
-                    $sString .= '"'.$delimiter.'"'.MakeFirstNameSalutationUtility($famID);
+                    $sString .= '"'.$delimiter.'"'.MakeFirstNameSalutationUtility($fam_ID);
                 }
 
                 if (isset($_POST['Address1'])) {
