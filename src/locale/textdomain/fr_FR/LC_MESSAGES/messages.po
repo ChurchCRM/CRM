@@ -3585,7 +3585,7 @@ msgstr "PM "
 
 #: 
 msgid "am"
-msgstr " "
+msgstr "du matin"
 
 #: 
 msgid "Invalid Editor ID!"
@@ -9064,6 +9064,22 @@ msgid "Include/Config.php must define an encryption key for storing 2FA secret k
 msgstr "Include/Config.php doit définir une clé de chiffrement pour stocker les clés secrètes 2FA dans la base de données en définissant une valeur pour"
 
 #: 
+msgid "Google Maps API Key used for Geocoding addresses"
+msgstr "Clé API Google Maps utilisée pour le géocodage des adresses"
+
+#: 
+msgid "Send an email notifying users when their account has been deleted"
+msgstr "Envoyer un e-mail informant les utilisateurs lorsque leur compte a été supprimé"
+
+#: 
+msgid "Google Maps API Key used for rendering maps in browser"
+msgstr "Clé API Google Maps utilisée pour le rendu des cartes dans le navigateur"
+
+#: 
+msgid "Incorrect password supplied for current user"
+msgstr "Mot de passe fourni pour l'utilisateur actuel incorrect"
+
+#: 
 msgid "Your new password must not match your old one."
 msgstr "Votre nouveau mot de passe doit être différent de l'ancien."
 
@@ -9078,6 +9094,14 @@ msgstr "Réinitialisation du mot de passe non disponible. Veuillez contacter vot
 #: 
 msgid "Authentication Issue"
 msgstr "Erreur d'authentification"
+
+#: 
+msgid "Enter new user password. Administratively set passwords are not subject to length or complexity requirements"
+msgstr "Entrez le nouveau mot de passe utilisateur. Les mots de passe définis administrativement ne sont pas soumis à des exigences de longueur ou de complexité"
+
+#: 
+msgid "No email passed in"
+msgstr "Aucun e-mail n'est passé"
 
 #: 
 msgid "Mailchimp is not active"
@@ -9100,8 +9124,24 @@ msgid "List not found"
 msgstr "Liste introuvable"
 
 #: 
+msgid "List not inList"
+msgstr "Liste pas dansListe"
+
+#: 
 msgid "People not in"
 msgstr "Person non trouvée"
+
+#: 
+msgid "Invalid List id"
+msgstr "Identifiant de liste non valide"
+
+#: 
+msgid "Audience not in the ChurchCRM"
+msgstr "Public non membre de ChurchCRM"
+
+#: 
+msgid "ChurchCRM Installation Information"
+msgstr "Informations d'installation de ChurchCRM"
 
 #: 
 msgid "Database Server Version"
@@ -9114,6 +9154,38 @@ msgstr "Serveur wen"
 #: 
 msgid "Server Software"
 msgstr "Logiciel serveur"
+
+#: 
+msgid "Email Information"
+msgstr "Informations par e-mail"
+
+#: 
+msgid "List maintenance"
+msgstr "Maintenance de la liste"
+
+#: 
+msgid "People not in list"
+msgstr "Personnes non répertoriées"
+
+#: 
+msgid "Audience not in the CRM"
+msgstr "Public absent du CRM"
+
+#: 
+msgid "Hebrew"
+msgstr "hébreu"
+
+#: 
+msgid "open rate"
+msgstr "taux d'ouverture"
+
+#: 
+msgid "Not Subscribed "
+msgstr "Non abonné "
+
+#: 
+msgid "Global User Settings"
+msgstr "Paramètres utilisateur globaux"
 
 #: 
 msgid "General"
@@ -9132,16 +9204,72 @@ msgid "Session Timeout"
 msgstr "Session expirée"
 
 #: 
+msgid "Max Failed Login"
+msgstr "Échec de la connexion max."
+
+#: 
 msgid "Enable Password Reset"
 msgstr "Activer la réinitialisation de mot de passe"
+
+#: 
+msgid "Send email to Deleted Users"
+msgstr "Envoyer un e-mail aux utilisateurs supprimés"
 
 #: 
 msgid "Min Password Length"
 msgstr "Longueur minimale du mot de passe"
 
 #: 
+msgid "Min Password Characters Delta"
+msgstr "Nombre minimal de caractères du mot de passe"
+
+#: 
+msgid "Disallowed Passwords"
+msgstr "Mots de passe non autorisés"
+
+#: 
+msgid "Enable 2FA"
+msgstr "Activer 2FA"
+
+#: 
+msgid "Require 2FA"
+msgstr "Exiger 2FA"
+
+#: 
+msgid "2FA Application Name"
+msgstr "Nom de l'application 2FA"
+
+#: 
+msgid "Login Info"
+msgstr "Informations de connexion"
+
+#: 
+msgid "Login Count"
+msgstr "Nombre de connexions"
+
+#: 
 msgid "Failed Login"
 msgstr "Echec de l'Authentification"
+
+#: 
+msgid "Permissions"
+msgstr "Autorisations"
+
+#: 
+msgid "Manage Notes"
+msgstr "Gérer les notes"
+
+#: 
+msgid "Skins"
+msgstr "Peaux"
+
+#: 
+msgid "Failed generate a new API Key"
+msgstr "Échec de la génération d'une nouvelle clé API"
+
+#: 
+msgid "Pledge Summary By Family"
+msgstr "Résumé de l'engagement par famille"
 
 #: 
 msgid "Pledge"
@@ -9152,12 +9280,20 @@ msgid "Paid"
 msgstr "Payé"
 
 #: 
+msgid "Owe"
+msgstr "Devoir"
+
+#: 
 msgid "Start Date"
 msgstr "Date de début"
 
 #: 
 msgid "End Date"
 msgstr "Date de fin"
+
+#: 
+msgid "Pinned Calendars"
+msgstr "Calendriers épinglés"
 
 #: 
 msgid "This field is required"
@@ -9172,12 +9308,64 @@ msgid "Event Description"
 msgstr "Description de l'événement"
 
 #: 
+msgid "Enrolling your ChurchCRM user account in Two Factor Authention provides an additional layer of defense against bad actors trying to access your account."
+msgstr "L'inscription de votre compte d'utilisateur ChurchCRM dans l'authentification à 2 facteurs fournit une couche supplémentaire de défense contre les mauvais acteurs essayant d'accéder à votre compte."
+
+#: 
+msgid "ChurchCRM Two factor supports any TOTP authenticator app, so you're free to choose between Microsoft Authenticator, Google Authenticator, Authy, LastPass, and others"
+msgstr "ChurchCRM 2 facteurs prend en charge n'importe quelle application d'authentification TOTP, vous êtes donc libre de choisir entre Microsoft Authenticator, Google Authenticator, Authy, LastPass et autres"
+
+#: 
+msgid "When you sign in to ChurchCRM, you'll still enter your username and password like normal"
+msgstr "Lorsque vous vous connectez à ChurchCRM, vous entrez toujours votre nom d'utilisateur et votre mot de passe comme d'habitude"
+
+#: 
+msgid "However, you'll also need to supply a one-time code from your authenticator device to complete your login"
+msgstr "Cependant, vous devrez également fournir un code à usage unique à partir de votre appareil d'authentification pour terminer votre connexion."
+
+#: 
+msgid "After successfully entering both your credentials, and the one-time code, you'll be logged in as normal"
+msgstr "Après avoir entré avec succès vos informations d'identification et le code à usage unique, vous serez connecté normalement"
+
+#: 
 msgid "To prevent being locked out of your ChurchCRM account, please ensure you're ready to complete two factor enrollment before clicking begin"
 msgstr "Pour éviter d'être bloqué sur votre compte ChurchCRM, veuillez vous assurer que vous êtes prêt à terminer l'inscription à deux facteurs avant de cliquer sur commencer"
 
 #: 
+msgid "Beginning enrollment will invalidate any previously enrolled 2 factor devices and recovery codes."
+msgstr "Le début de l'inscription invalidera tous les appareils et codes de récupération à 2 facteurs précédemment inscrits."
+
+#: 
 msgid "When you click next, you'll be prompted to scan a QR code to enroll your authenticator app."
 msgstr "Lorsque vous cliquez sur Suivant, vous serez invité à scanner un code QR pour inscrire votre application d'authentification."
+
+#: 
+msgid "To confirm enrollment, you'll need to enter the code generated by your authenticator app"
+msgstr "Pour confirmer l'inscription, vous devrez entrer le code généré par votre application d'authentification"
+
+#: 
+msgid "After confirming app enrollment, single-use recovery codes will be generated and displayed."
+msgstr "Après confirmation de l'inscription à l'application, des codes de récupération à usage unique seront générés et affichés."
+
+#: 
+msgid "Recovery codes can be used instead of a code generated from your authenticator app."
+msgstr "Les codes de récupération peuvent être utilisés à la place d'un code généré à partir de votre application d'authentification."
+
+#: 
+msgid "Store these in a secure location"
+msgstr "Stockez-les dans un endroit sûr"
+
+#: 
+msgid "Begin Two Factor Authentication Enrollment"
+msgstr "Commencer l'inscription à l'authentification à 2 facteurs"
+
+#: 
+msgid "2 Factor Authentication Secret"
+msgstr "Secret d'authentification à 2 facteurs"
+
+#: 
+msgid "Regenerate 2 Factor Authentication Secret"
+msgstr "Régénérer le secret d'authentification à 2 facteurs"
 
 #: 
 msgid "Remove 2 Factor Authentication Secret"
@@ -9196,6 +9384,14 @@ msgid "Please store these recovery codes in a safe location"
 msgstr "Veuillez stocker ces codes de récupération dans un endroit sûr"
 
 #: 
+msgid "If you ever lose access to your newly enrolled authenticator app, you'll need to use a recovery code to gain access to your account"
+msgstr "Si jamais vous perdez l'accès à votre application d'authentification nouvellement inscrite, vous devrez utiliser un code de récupération pour accéder à votre compte"
+
+#: 
+msgid "Event Attendance"
+msgstr "Participation à l'événement"
+
+#: 
 msgid "Generate attendance -AND- non-attendance reports for events"
 msgstr "Générer des rapports de présence -ET- d'absence pour les événements"
 
@@ -9208,6 +9404,10 @@ msgid "Help translate this project"
 msgstr "Aidez à traduire ce projet"
 
 #: 
+msgid "Credit Card People"
+msgstr "Les gens de la carte de crédit"
+
+#: 
 msgid "People who are configured to pay by credit card."
 msgstr "Les personnes qui ont payer par carte de crédit."
 
@@ -9216,8 +9416,16 @@ msgid "Afrikaans"
 msgstr "Afrikaans"
 
 #: 
+msgid " has a type mismatch"
+msgstr "présente une faute de frappe"
+
+#: 
 msgid "Loading"
 msgstr "Chargement en cours"
+
+#: 
+msgid "Family Property Unassignment"
+msgstr "Désaffectation des biens familiaux"
 
 #: 
 msgid "Do you want to remove"
@@ -9321,6 +9529,10 @@ msgid "Boxed Layout"
 msgstr "Disposition en boites"
 
 #: 
+msgid "Activate the boxed layout"
+msgstr "Activer la mise en page en boîte"
+
+#: 
 msgid "Toggle Sidebar"
 msgstr "Basculer la barre latérale"
 
@@ -9343,6 +9555,10 @@ msgstr "Modifier la longueur de page initiale (nombre de lignes par page)"
 #: 
 msgid "User Interface"
 msgstr "Interface utilisateur"
+
+#: 
+msgid "Locale"
+msgstr "Lieu"
 
 #: 
 msgid "Override system locale"
