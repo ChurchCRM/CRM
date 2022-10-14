@@ -4,7 +4,7 @@ LABEL maintainer="crossan007@gmail.com"
 ADD https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh /opt/node-install.sh
 RUN chmod a+x /opt/node-install.sh && /opt/node-install.sh
 
-RUN /bin/bash -c "source /root/.nvm/nvm.sh && nvm install node && npm install -g node-gyp"
+RUN /bin/bash -c "source /root/.nvm/nvm.sh && nvm install --lts && npm install -g node-gyp"
 
 RUN apt-get update && \
     apt-get install -y \

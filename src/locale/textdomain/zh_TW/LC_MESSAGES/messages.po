@@ -57,7 +57,6 @@ msgid "Credit Card"
 msgstr "信用卡"
 
 #: 
-#, fuzzy
 msgid "Backup Database"
 msgstr "資料庫備份"
 
@@ -115,7 +114,7 @@ msgstr "輸入獲獎者"
 
 #: 
 msgid "CSV Export"
-msgstr "CSV出口"
+msgstr "匯出CSV"
 
 #: 
 msgid "Field Selection"
@@ -127,7 +126,7 @@ msgstr "姓氏"
 
 #: 
 msgid "Required"
-msgstr "需要"
+msgstr "必填"
 
 #: 
 #, fuzzy
@@ -384,7 +383,7 @@ msgstr "警告！如果您打算添加到現有的資料庫，請不要選擇此
 #: 
 #, fuzzy
 msgid "Use only if unsatisfied with initial import.  All person and member data will be destroyed!"
-msgstr "僅使用於不滿意首次匯入。所有的人及成員的數據將被破壞！"
+msgstr "僅使用於不滿意首次匯入。所有的人及成員的資料將被破壞！"
 
 #: 
 #, fuzzy
