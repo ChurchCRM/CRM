@@ -34,9 +34,12 @@ jobs:
                 
       - uses: actions/upload-artifact@v3
         with:
-          path: target/ChurchCRM-*.*    
+          path: target/ChurchCRM-*.zip  
         
-
+      - uses: actions/upload-artifact@v3
+        with:
+          path: target/ChurchCRM-*.tar.gz  
+        
       - name: Deploy
         env:
           demoKey: ${{ secrets.demoKey }}
