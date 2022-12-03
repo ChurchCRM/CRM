@@ -59,6 +59,7 @@ function resetLogin(Request $request, Response $response, array $args)
 function deleteUser(Request $request, Response $response, array $args)
 {
     $user = $request->getAttribute("user");
+    $userName = $user->getName();
     $userConfig = UserConfigQuery::create()->findPk($user->getId());
     if (!is_null($userConfig)) {
         $userConfig->delete();
@@ -71,7 +72,7 @@ function deleteUser(Request $request, Response $response, array $args)
             LoggerUtils::getAppLogger()->warning($email->getError());
         }
     }
-    return $response->withStatus(200);
+    return $response->withJson(["user" => $userName]);
 }
 
 
