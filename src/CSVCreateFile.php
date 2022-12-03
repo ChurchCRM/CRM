@@ -12,15 +12,14 @@
 // Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
-require 'Include/ReportFunctions.php';
 
 use ChurchCRM\dto\Cart;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Utils\InputUtils;
-use ChurchCRM\ListOptionQuery;
 use ChurchCRM\Utils\MiscUtils;
 use ChurchCRM\dto\Classification;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\FamilyQuery;
 
 $delimiter = SystemConfig::getValue("sCSVExportDelemiter");
 
@@ -230,6 +229,8 @@ if ($sFormat == 'addtocart') {
     $headerString = '"'.InputUtils::translate_special_charset("Family").' ID "'.$delimiter;
     if ($sFormat == 'rollup') {
         $headerString .= '"'.InputUtils::translate_special_charset("Name").'"'.$delimiter;
+        // Add Salutation for family here...
+        $headerString .= '"'.InputUtils::translate_special_charset("Salutation").'"'.$delimiter;
     } else {
         $headerString .= '"'.InputUtils::translate_special_charset("Person").' Id"'.$delimiter;
         $headerString .= '"'.InputUtils::translate_special_charset("Last Name").'"'.$delimiter;
@@ -450,10 +451,13 @@ if ($sFormat == 'addtocart') {
                         $sString .= '"'.$delimiter.'"'.InputUtils::translate_special_charset($per_MiddleName);
                     }
                 } elseif ($sFormat == 'rollup') {
+                    $family = FamilyQuery::create()->findPk($fam_ID);
                     if ($memberCount > 1) {
-                        $sString .= '"'.$delimiter.'"'.MakeSalutationUtility($fam_ID);
+                        $sString .= '"'.$delimiter.'"'.$family->getSalutation();
+                        $sString .= '"'.$delimiter.'"'.$family->getFirstNameSalutation();
                     } else {
-                        $sString .= '"'.$delimiter.'"'.$per_LastName.', '.$per_FirstName;
+                        $sString .= '"'.$delimiter.'"'.$per_FirstName.' '.$per_LastName;
+                        $sString .= '"'.$delimiter.'"'.$per_FirstName;
                     }
                 }
 

@@ -207,45 +207,6 @@ class Family extends BaseFamily implements iPhoto
         $note->save();
     }
 
-    /**
-     * Figure out how to address a family for correspondence.
-     *
-     * Put the name if there is only one individual in the family.
-     * Put two first names and the last name when there are exactly two people in the family
-     * (e.g. "Nathaniel and Jeanette Brooks").
-     * Put two whole names where there are exactly two people with different names
-     * (e.g. "Doug Philbrook and Karen Andrews")
-     * When there are more than two people in the family I don't have any way to know
-     * which people are children, so I would have to just use the family name (e.g. "Grossman Family").
-     *
-     * @return string
-     */
-    public function getSaluation()
-    {
-        $childRoleId = SystemConfig::getValue("sDirRoleChild");
-        $people = $this->getPeople();
-        $notChildren = null;
-        foreach ($people as $person) {
-            if ($person->getFmrId() != $childRoleId) {
-                $notChildren[] = $person;
-            }
-        }
-
-        $notChildrenCount = count($notChildren);
-        if ($notChildrenCount === 1) {
-            return $notChildren[0]->getFullName();
-        }
-
-        if ($notChildrenCount === 2) {
-            if ($notChildren[0]->getLastName() == $notChildren[1]->getLastName()) {
-                return $notChildren[0]->getFirstName() .' & '. $notChildren[1]->getFirstName() .' '. $notChildren[0]->getLastName();
-            }
-            return $notChildren[0]->getFullName() .' & '. $notChildren[1]->getFullName();
-        }
-
-        return $this->getName() . ' Family';
-    }
-
     /***
      * @return ChurchCRM\dto\Photo
      */
@@ -393,5 +354,34 @@ class Family extends BaseFamily implements iPhoto
     public function isSendNewsletter()
     {
         return $this->getSendNewsletter() == 'TRUE';
+    }
+
+    public function getSalutation()
+    {
+      $adults = $this->getAdults();
+      $adultsCount = count($adults);
+      
+      if ($adultsCount == 1) {
+          return $adults[0]->getFullName();
+      } elseif ($adultsCount == 2) {
+          $firstLastName = $adults[0]->getLastName();
+          $secondLastName = $adults[1]->getLastName();
+          if ($firstLastName == $secondLastName) {
+              return $adults[0]->getFirstName().' & '.$adults[1]->getFirstName().' '.$firstLastName;
+          } else {
+              return $adults[0]->getFullName().' & '.$adults[1]->getFullName();
+          }
+      } else {
+          return $this->getName().' Family';
+      }
+    }
+
+    public function getFirstNameSalutation()
+    {
+        $names = [];
+        foreach ($this->getPeopleSorted() as $person) {
+            array_push($names, $person->getFirstName());
+        }
+        return implode(", ", $names);
     }
 }
