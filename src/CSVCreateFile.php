@@ -435,8 +435,8 @@ if ($sFormat == 'addtocart') {
                 // If we are doing family roll-up, we use a single, formatted name field
                 $sString = '"'.($fam_ID? $fam_ID : "");
                 if ($sFormat == 'default') {
-                    $sString .= '","'.$per_ID.'",';
-                    $sString .= '"'.$per_LastName;
+                    $sString .= '"'.$delimiter.'"'.$per_ID;
+                    $sString .= '"'.$delimiter.'"'.$per_LastName;
                     if (isset($_POST['Title'])) {
                         $sString .= '"'.$delimiter.'"'.InputUtils::translate_special_charset($per_Title);
                     }
@@ -451,9 +451,9 @@ if ($sFormat == 'addtocart') {
                     }
                 } elseif ($sFormat == 'rollup') {
                     if ($memberCount > 1) {
-                        $sString .= '","'.MakeSalutationUtility($fam_ID);
+                        $sString .= '"'.$delimiter.'"'.MakeSalutationUtility($fam_ID);
                     } else {
-                        $sString .= '","'.$per_LastName.', '.$per_FirstName;
+                        $sString .= '"'.$delimiter.'"'.$per_LastName.', '.$per_FirstName;
                     }
                 }
 
