@@ -59,7 +59,7 @@ $app->group('/families', function () {
             array_push($results, $family->toSearchArray());
         }
 
-        return $response->withJSON(json_encode(["Families" => $results]));
+        return $response->withJson(json_encode(["Families" => $results]));
     });
 
     $this->get('/self-register', function ($request, $response, $args) {
@@ -68,7 +68,7 @@ $app->group('/families', function () {
             ->orderByDateEntered(Criteria::DESC)
             ->limit(100)
             ->find();
-        return $response->withJSON(['families' => $families->toArray()]);
+        return $response->withJson(['families' => $families->toArray()]);
     });
 
     $this->get('/self-verify', function ($request, $response, $args) {
@@ -78,7 +78,7 @@ $app->group('/families', function () {
             ->joinWithFamily()
             ->limit(100)
             ->find();
-        return $response->withJSON(['families' => $verifcationNotes->toArray()]);
+        return $response->withJson(['families' => $verifcationNotes->toArray()]);
     });
 
     $this->get('/pending-self-verify', function ($request, $response, $args) {
@@ -91,7 +91,7 @@ $app->group('/families', function () {
             ->withColumn(TokenTableMap::COL_REFERENCE_ID, "FamilyId")
             ->limit(100)
             ->find();
-        return $response->withJSON(['families' => $pendingTokens->toArray()]);
+        return $response->withJson(['families' => $pendingTokens->toArray()]);
     });
 
 

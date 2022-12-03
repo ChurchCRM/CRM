@@ -57,7 +57,7 @@ $app->group('/persons', function () {
             ->orderByDateEntered(Criteria::DESC)
             ->limit(100)
             ->find();
-        return $response->withJSON(['people' => $people->toArray()]);
+        return $response->withJson(['people' => $people->toArray()]);
     });
 
 });

@@ -88,7 +88,7 @@ $app->group('/deposits', function () {
             ->withColumn('DonationFund.Name')
             ->find()
             ->toArray();
-        return $response->withJSON($Pledges);
+        return $response->withJson($Pledges);
 
     });
 })->add(new FinanceRoleAuthMiddleware());

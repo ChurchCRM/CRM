@@ -22,13 +22,13 @@ $app->get('/', function ($request, $response, $args) use ($app) {
 
     $input = (object) $request->getParsedBody();
     $status = $app->kiosk->getActiveAssignment()->getEvent()->checkInPerson($input->PersonId);
-    return $response->withJSON($status);
+    return $response->withJson($status);
   });
 
   $app->post('/checkout', function ($request, $response, $args) use ($app) {
     $input = (object) $request->getParsedBody();
     $status = $app->kiosk->getActiveAssignment()->getEvent()->checkOutPerson($input->PersonId);
-    return $response->withJSON($status);
+    return $response->withJson($status);
   });
 
    $app->post('/triggerNotification', function ($request, $response, $args) use ($app) {
@@ -43,7 +43,7 @@ $app->get('/', function ($request, $response, $args) use ($app) {
     $Notification->setProjectorText($app->kiosk->getActiveAssignment()->getEvent()->getType()."-".$Person->getId());
     $Status = $Notification->send();
 
-    return $response->withJSON($Status);
+    return $response->withJson($Status);
   });
 
 

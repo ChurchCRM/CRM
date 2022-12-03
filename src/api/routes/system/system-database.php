@@ -36,7 +36,7 @@ $app->group('/database', function () {
         $BackupType = $input->BackupType;
         $Backup = new BackupJob($BaseName, $BackupType, SystemConfig::getValue('bBackupExtraneousImages'), isset($input->EncryptBackup) ? $input->EncryptBackup : "", isset($input->BackupPassword) ? $input->BackupPassword : "");
         $Backup->Execute();
-        return $response->withJSON($Backup);
+        return $response->withJson($Backup);
     });
 
     $this->post('/backupRemote', function ($request, $response, $args) {
@@ -47,7 +47,7 @@ $app->group('/database', function () {
         $Backup = new BackupJob($BaseName, $BackupType, SystemConfig::getValue('bBackupExtraneousImages'));
         $Backup->Execute();
         $copyStatus = $Backup->CopyToWebDAV(SystemConfig::getValue('sExternalBackupEndpoint'), SystemConfig::getValue('sExternalBackupUsername'), SystemConfig::getValue('sExternalBackupPassword'));
-        return $response->withJSON($copyStatus);
+        return $response->withJson($copyStatus);
       }
       else {
         throw new \Exception('WebDAV backups are not correctly configured.  Please ensure endpoint, username, and password are set', 500);
@@ -57,7 +57,7 @@ $app->group('/database', function () {
     $this->post('/restore', function ($request, $response, $args) {
         $RestoreJob = new RestoreJob();
         $RestoreJob->Execute();
-        return $response->withJSON($RestoreJob);
+        return $response->withJson($RestoreJob);
     });
 
     $this->get('/download/{filename}', function ($request, $response, $args) {

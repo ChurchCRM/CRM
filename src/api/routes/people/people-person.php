@@ -40,7 +40,7 @@ $app->group('/person/{personId:[0-9]+}', function () {
             return $response->withStatus(403, gettext("Can't delete yourself"));
         }
         $person->delete();
-        return $response->withJSON(["status" => gettext("success")]);
+        return $response->withJson(["status" => gettext("success")]);
     })->add(new DeleteRecordRoleAuthMiddleware());
 
     $this->post('/role/{roleId:[0-9]+}', 'setPersonRoleAPI')->add(new EditRecordsRoleAuthMiddleware());
@@ -53,7 +53,7 @@ $app->group('/person/{personId:[0-9]+}', function () {
         $person = $request->getAttribute("person");
         $input = (object)$request->getParsedBody();
         $person->setImageFromBase64($input->imgBase64);
-        $response->withJSON(array("status" => "success"));
+        $response->withJson(array("status" => "success"));
     })->add(new EditRecordsRoleAuthMiddleware());
 
     $this->delete('/photo', function ($request, $response, $args) {

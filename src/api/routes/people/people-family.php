@@ -78,7 +78,7 @@ $app->group('/family/{familyId:[0-9]+}', function () {
             return $response->withStatus(200);
         } catch (Exception $e ) {
             LoggerUtils::getAppLogger()->error($e->getMessage());
-            return $response->withStatus(500)->withJSON(['message' => gettext("Error sending email(s)") . " - " . gettext("Please check logs for more information"), "trace" => $e->getMessage()]);
+            return $response->withStatus(500)->withJson(['message' => gettext("Error sending email(s)") . " - " . gettext("Please check logs for more information"), "trace" => $e->getMessage()]);
         }
     });
 
@@ -89,7 +89,7 @@ $app->group('/family/{familyId:[0-9]+}', function () {
         $token->build("verifyFamily", $family->getId());
         $token->save();
         $family->createTimeLineNote("verify-URL");
-        return $response->withJSON(["url" => SystemURLs::getURL() . "/external/verify/" . $token->getToken()]);
+        return $response->withJson(["url" => SystemURLs::getURL() . "/external/verify/" . $token->getToken()]);
     });
 
     $this->post('/verify/now', function ($request, $response, $args) {
