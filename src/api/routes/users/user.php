@@ -2,7 +2,6 @@
 
 use ChurchCRM\Slim\Middleware\Request\UserAPIMiddleware;
 use ChurchCRM\User;
-use ChurchCRM\UserSettings;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
@@ -30,6 +29,6 @@ function updateUserConfig(Request $request, Response $response, array $args)
     $user->setUserConfigString($userConfigName, $newValue);
     $user->save();
     if ($user->getUserConfigString($userConfigName) == $newValue) {
-        return $response->withjson([$userConfigName => $newValue]);
+        return $response->withJson([$userConfigName => $newValue]);
     }
 };
