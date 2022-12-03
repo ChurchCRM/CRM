@@ -5,6 +5,7 @@ namespace ChurchCRM\dto;
 use ChurchCRM\Config;
 use ChurchCRM\data\Countries;
 use ChurchCRM\ListOptionQuery;
+use Exception;
 use Monolog\Logger;
 
 class SystemConfig
@@ -62,11 +63,16 @@ class SystemConfig
 
     public static function getFamilyRoleChoices() 
     {
-      $familyRoles = ListOptionQuery::create()->getFamilyRoles();
       $roles = [];
-      foreach ($familyRoles as $familyRole) {
-        array_push($roles, $familyRole->getOptionName().":".$familyRole->getOptionId());
-      }
+      try {
+        $familyRoles = ListOptionQuery::create()->getFamilyRoles();
+        
+        foreach ($familyRoles as $familyRole) {
+          array_push($roles, $familyRole->getOptionName().":".$familyRole->getOptionId());
+        }
+      } catch (Exception $e) {
+        
+      } 
       return ["Choices" => $roles];
     }
 
