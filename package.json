@@ -108,10 +108,10 @@
         "grunt-contrib-clean": "^2.0.0",
         "grunt-contrib-compress": "^1.6.0",
         "grunt-contrib-copy": "^1.0.0",
-        "grunt-curl": "^2.5.1",
+        "grunt-curl": "^1.0.0",
         "grunt-exec": "^3.0.0",
         "grunt-git": "^1.1.1",
-        "grunt-http": "^2.3.3",
+        "grunt-http": "^1.1.0",
         "grunt-lineending": "^1.0.0",
         "grunt-sass": "^3.1.0",
         "i18next-extract-gettext": "^3.2.1",
@@ -124,7 +124,7 @@
         "tar": "^6.1.11",
         "ts-loader": "^7.0.5",
         "typescript": "^3.9.9",
-        "webpack": "^4.46.0",
+        "webpack": "^5.75.0",
         "webpack-cli": "^3.3.12"
     },
     "optionalDependencies": {
