@@ -704,9 +704,10 @@ $bOkToEdit = ($_SESSION['user']->isEditRecordsEnabled() || ($_SESSION['user']->i
                 extract($aRow);
 
                 //Display the pledge or payment if appropriate
-                if ((($_SESSION['sshowPledges'] && $plg_PledgeOrPayment == 'Pledge') ||
+                if ((
+                    ($_SESSION['sshowPledges'] && $plg_PledgeOrPayment == 'Pledge') ||
                                                 ($_SESSION['sshowPayments'] && $plg_PledgeOrPayment == 'Payment')
-                                            ) &&
+                ) &&
                                             (empty($_SESSION['user']->getShowSince()) || DateTime::createFromFormat("Y-m-d", $plg_date) > $_SESSION['user']->getShowSince())
                                         ) {
                     ?>

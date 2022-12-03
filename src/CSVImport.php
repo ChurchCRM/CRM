@@ -589,12 +589,14 @@ if (isset($_POST['DoImport'])) {
                     extract(mysqli_fetch_array($rsExistingFamily));
                     $famid = $fam_ID;
                     if (array_key_exists($famid, $Families)) {
-                        $Families[$famid]->AddMember($per_ID,
-                                                     $iGender,
-                                                     GetAge($iBirthMonth, $iBirthDay, $iBirthYear),
-                                                     $dWedding,
-                                                     $per_HomePhone,
-                                                     $iEnvelope);
+                        $Families[$famid]->AddMember(
+                            $per_ID,
+                            $iGender,
+                            GetAge($iBirthMonth, $iBirthDay, $iBirthYear),
+                            $dWedding,
+                            $per_HomePhone,
+                            $iEnvelope
+                        );
                     }
                 } else {
                     $sSQL = 'INSERT INTO family_fam (fam_ID,
@@ -641,12 +643,14 @@ if (isset($_POST['DoImport'])) {
                     RunQuery($sSQL);
 
                     $fFamily = new Family(InputUtils::LegacyFilterInput($_POST['FamilyMode'], 'int'));
-                    $fFamily->AddMember($per_ID,
-                                        $iGender,
-                                        GetAge($iBirthMonth, $iBirthDay, $iBirthYear),
-                                        $dWedding,
-                                        $per_HomePhone,
-                                        $iEnvelope);
+                    $fFamily->AddMember(
+                        $per_ID,
+                        $iGender,
+                        GetAge($iBirthMonth, $iBirthDay, $iBirthYear),
+                        $dWedding,
+                        $per_HomePhone,
+                        $iEnvelope
+                    );
                     $Families[$famid] = $fFamily;
                 }
                 $sSQL = 'UPDATE person_per SET per_fam_ID = '.$famid.' WHERE per_ID = '.$per_ID;
