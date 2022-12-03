@@ -16,7 +16,6 @@ global $iChecksPerDepositForm;
 
 require "../Include/Config.php";
 require "../Include/Functions.php";
-require "../Include/ReportFunctions.php";
 
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\dto\SystemURLs;

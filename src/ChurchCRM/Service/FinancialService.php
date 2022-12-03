@@ -2,7 +2,6 @@
 
 namespace ChurchCRM\Service;
 
-require_once dirname(dirname(__FILE__)).'/../Include/ReportFunctions.php';
 $bSuppressSessionTests = true; // DO NOT MOVE
 require_once dirname(dirname(__FILE__)).'/../Include/Functions.php';
 
