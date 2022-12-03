@@ -77,8 +77,26 @@ class VancoTools
         return $encryptednvp;
     }
 
-    public function vancoEFTAddCompleteTransactionRequest($sessionid, $paymentmethodref, $startdate, $frequencycode, $customerid = '', $customerref = '', $name = '', $address1 = '', $address2 = '', $city = '',
-                                                 $state = '', $czip = '', $phone = '', $isdebitcardonly = '', $enddate = '', $transactiontypecode = '', $funddict = '', $amount = '')
+    public function vancoEFTAddCompleteTransactionRequest(
+        $sessionid,
+        $paymentmethodref,
+        $startdate,
+        $frequencycode,
+        $customerid = '',
+        $customerref = '',
+        $name = '',
+        $address1 = '',
+        $address2 = '',
+        $city = '',
+        $state = '',
+        $czip = '',
+        $phone = '',
+        $isdebitcardonly = '',
+        $enddate = '',
+        $transactiontypecode = '',
+        $funddict = '',
+        $amount = ''
+    )
     {
         /*
         Function:    vancoEFTAddCompleteTransactionRequest($sessionid,$paymentmethodref,$startdate,$frequencycode,$customerid,$customerref,$name,$address1,$address2,$city,$state,\

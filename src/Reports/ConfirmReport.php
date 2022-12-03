@@ -107,8 +107,16 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
         $filename = 'ConfirmReport-'.$fam_Name.'.pdf';
     }
 
-    $curY = $pdf->StartNewPage($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City,
-                               $fam_State, $fam_Zip, $fam_Country);
+    $curY = $pdf->StartNewPage(
+        $fam_ID,
+        $fam_Name,
+        $fam_Address1,
+        $fam_Address2,
+        $fam_City,
+        $fam_State,
+        $fam_Zip,
+        $fam_Country
+    );
     $curY += SystemConfig::getValue('incrementY');
 
     $pdf->SetFont('Times', 'B', 10);
