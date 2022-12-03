@@ -26,7 +26,7 @@ function deleteUser(userId, userName) {
             if (result) {
                 window.CRM.APIRequest({
                     method: "DELETE",
-                    path: "users/" + userId,
+                    path: "user/" + userId + "/",
                     data: {"_METHOD": "DELETE"}
                 }).done(function () {
                     window.location.href = window.CRM.root + "/UserList.php";
