@@ -108,7 +108,7 @@
         "grunt-contrib-clean": "^2.0.0",
         "grunt-contrib-compress": "^1.6.0",
         "grunt-contrib-copy": "^1.0.0",
-        "grunt-curl": "^1.0.0",
+        "grunt-curl": "^2.5.1",
         "grunt-exec": "^3.0.0",
         "grunt-git": "^1.1.1",
         "grunt-http": "^1.6.0",
