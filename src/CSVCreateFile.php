@@ -12,15 +12,14 @@
 // Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
-require 'Include/ReportFunctions.php';
 
 use ChurchCRM\dto\Cart;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Utils\InputUtils;
-use ChurchCRM\ListOptionQuery;
 use ChurchCRM\Utils\MiscUtils;
 use ChurchCRM\dto\Classification;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\FamilyQuery;
 
 $delimiter = SystemConfig::getValue("sCSVExportDelemiter");
 
@@ -452,9 +451,10 @@ if ($sFormat == 'addtocart') {
                         $sString .= '"'.$delimiter.'"'.InputUtils::translate_special_charset($per_MiddleName);
                     }
                 } elseif ($sFormat == 'rollup') {
+                    $family = FamilyQuery::create()->findPk($fam_ID);
                     if ($memberCount > 1) {
-                        $sString .= '","'.MakeSalutationUtility($fam_ID);
-                        $sString .= '"'.$delimiter.'"'.MakeFirstNameSalutationUtility($fam_ID);
+                        $sString .= '"'.$delimiter.'"'.$family->getSalutation();
+                        $sString .= '"'.$delimiter.'"'.$family->getFirstNameSalutation();
                     } else {
                         $sString .= '"'.$delimiter.'"'.$per_FirstName.' '.$per_LastName;
                         $sString .= '"'.$delimiter.'"'.$per_FirstName;
