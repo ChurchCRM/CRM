@@ -139,7 +139,7 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
 <div class="row">
   <div class="col-lg-3 col-md-6 col-sm-6">
     <!-- small box -->
-    <div class="small-box bg-aqua">
+    <div class="small-box bg-gray">
       <div class="inner">
         <h3>
           <?= $familyCount['familyCount'] ?>
