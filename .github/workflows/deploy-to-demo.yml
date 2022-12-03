@@ -31,7 +31,16 @@ jobs:
 
       - name: Package
         run:  npm run package
-
+                
+      - uses: actions/upload-artifact@v3
+        with:
+          name: ChurchCRM
+          path: target/ChurchCRM-*.zip  
+        
+#      - uses: actions/upload-artifact@v3
+#        with:
+#          path: target/ChurchCRM-*.tar.gz  
+        
       - name: Deploy
         env:
           demoKey: ${{ secrets.demoKey }}
