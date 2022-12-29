@@ -138,7 +138,7 @@ class ChurchInfoReport extends FPDF
     public function MakeSalutation($famID)
     {
         $family = FamilyQuery::create()->findPk($famID);
-        return $family->getSaluation();
+        return $family->getSalutation();
     
     }
 }
