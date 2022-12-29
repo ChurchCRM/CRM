@@ -135,7 +135,7 @@ function newEvent($request, $response, $args)
     $event->setCalendars($calendars);
     $event->save();
 
-    return $response->withJSON(array("status" => "success"));
+    return $response->withJson(array("status" => "success"));
 }
 
 function updateEvent($request, $response, $args)

@@ -307,9 +307,10 @@
     },
     "current": {
         "versions": [
-            "4.5.0"
+            "4.5.0",
+            "4.5.1"
         ],
         "scripts": [],
-        "dbVersion": "4.5.1"
+        "dbVersion": "4.5.2"
     }
 }
