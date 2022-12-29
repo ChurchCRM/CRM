@@ -9862,7 +9862,7 @@ msgstr "盒裝布局"
 #: 
 #, fuzzy
 msgid "Activate the boxed layout"
-msgstr "激活盒裝布局"
+msgstr "啟動盒裝布局"
 
 #: 
 #, fuzzy
