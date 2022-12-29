@@ -29,7 +29,7 @@ $app->group('/family/{familyId:[0-9]+}', function () {
 
     $this->delete('/photo', function ($request, $response, $args) {
         $family = $request->getAttribute("family");
-        return $response->withJSON(["status" => $family->deletePhoto()]);
+        return $response->withJson(["status" => $family->deletePhoto()]);
     })->add(new EditRecordsRoleAuthMiddleware());
 
     $this->get('/thumbnail', function ($request, $response, $args) {
@@ -95,7 +95,7 @@ $app->group('/family/{familyId:[0-9]+}', function () {
     $this->post('/verify/now', function ($request, $response, $args) {
         $family = $request->getAttribute("family");
         $family->verify();
-        return $response->withJSON(["message" => "Success"]);
+        return $response->withJson(["message" => "Success"]);
     });
 
 })->add(new FamilyAPIMiddleware());
