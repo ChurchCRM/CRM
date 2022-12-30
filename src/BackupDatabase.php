@@ -42,7 +42,7 @@ require 'Include/Header.php';
         <li><?= gettext('If you are concerned about confidentiality of data stored in the ChurchCRM database, you should encrypt the backup data if it will be stored somewhere potentially accessible to others') ?></li><br>
         </ul>
         <BR><BR>
-        <form method="post" action="<?= sRootPath ?>/api/database/backup" id="BackupDatabase">
+        <form method="post" action="<?= $sRootPath ?>/api/database/backup" id="BackupDatabase">
         <?= gettext('Select archive type') ?>:
         <input type="radio" name="archiveType" value="2" checked><?= gettext('Database Only (.sql)') ?>
         <input type="radio" name="archiveType" value="3" checked><?= gettext('Database and Photos (.tar.gz)') ?>
