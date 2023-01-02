@@ -104,10 +104,20 @@ class Family extends BaseFamily implements iPhoto
 
 
   public function getPeopleSorted() {
-    $familyMembersParents = array_merge($this->getHeadPeople(), $this->getSpousePeople());
-    $familyMembersChildren = $this->getChildPeople();
-    $familyMembersOther = $this->getOtherPeople();
-    return array_merge($familyMembersParents, $familyMembersChildren, $familyMembersOther);
+    $sortedByRole = [];
+    if ($this->getHeadPeople()) {
+      array_push($sortedByRole, $this->getHeadPeople());
+    }
+    if ($this->getSpousePeople()) {
+      array_push($sortedByRole, $this->getSpousePeople());
+    }
+    if ($this->getChildPeople()) {
+      array_push($sortedByRole, $this->getChildPeople());
+    }
+    if ($this->getOtherPeople()) {
+      array_push($sortedByRole, $this->getOtherPeople());
+    }
+    return $sortedByRole;
   }
 
   public function getHeadPeople() {
