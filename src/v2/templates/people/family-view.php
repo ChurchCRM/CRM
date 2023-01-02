@@ -221,7 +221,7 @@ $mailchimp = new MailChimpService();
                         </div>
                     </div>
                     <div class="card-body row row-flex row-flex-wrap">
-                        <?php foreach ($family->getPeople() as $person) { ?>
+                        <?php foreach ($family->getPeopleSorted() as $person) { ?>
                             <div class="col-sm-6">
                                 <div class="card card-primary">
                                     <div class="card-body box-profile">

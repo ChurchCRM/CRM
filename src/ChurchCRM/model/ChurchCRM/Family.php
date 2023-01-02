@@ -141,7 +141,7 @@ class Family extends BaseFamily implements iPhoto
       SystemConfig::getValue("sDirRoleSpouse")),
       explode(",", SystemConfig::getValue("sDirRoleChild")));
     $foundPeople = array();
-    foreach ($this->getPeople() as $person) {
+    foreach ($this->getPeopleSorted() as $person) {
       if (!in_array($person->getFmrId(), $roleIds)) {
         array_push($foundPeople, $person);
       }
@@ -152,7 +152,7 @@ class Family extends BaseFamily implements iPhoto
   private function getPeopleByRole($roleConfigName) {
     $roleIds = explode(",", SystemConfig::getValue($roleConfigName));
     $foundPeople = array();
-    foreach ($this->getPeople() as $person) {
+    foreach ($this->getPeopleSorted() as $person) {
       if (in_array($person->getFmrId(), $roleIds)) {
           array_push($foundPeople, $person);
       }
@@ -169,7 +169,7 @@ class Family extends BaseFamily implements iPhoto
     if (!(empty($this->getEmail()))) {
         array_push($emails, $this->getEmail());
     }
-    foreach ($this->getPeople() as $person) {
+    foreach ($this->getPeopleSorted() as $person) {
         $email = $person->getEmail();
         if ($email != null) {
             array_push($emails, $email);
