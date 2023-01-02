@@ -28,7 +28,7 @@ $app->group('/families', function () {
         foreach ($families as $family) {
             if (empty($family->getEmail())) {
                 $hasEmail = false;
-                foreach ($family->getPeopleSorted() as $person) {
+                foreach ($family->getPeople() as $person) {
                     if (!empty($person->getEmail() || !empty($person->getWorkEmail()))) {
                         $hasEmail = true;
                         break;

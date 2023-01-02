@@ -464,7 +464,7 @@ $bOkToEdit = (
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach ($person->getFamily()->getPeopleSorted() as $familyMember) {
+                                    <?php foreach ($person->getFamily()->getPeople() as $familyMember) {
                     $tmpPersonId = $familyMember->getId(); ?>
                                         <tr>
                                             <td>
