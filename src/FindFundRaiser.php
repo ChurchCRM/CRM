@@ -118,7 +118,7 @@ switch ($sSort) {
 }
 
 // Append a LIMIT clause to the SQL statement
-$iPerPage = AuthenticationManager::GetCurrentUser()->getSetting("ui.table.size");
+$iPerPage = AuthenticationManager::GetCurrentUser()->getSetting("ui.table.size")->getValue();
 if (empty($_GET['Result_Set'])) {
     $Result_Set = 0;
 } else {
