@@ -1,9 +1,10 @@
-FROM  php:8-apache
+FROM  php:7-apache
 LABEL maintainer="george@dawouds.com"
 
 RUN apt-get update && \
     apt-get install -y \
         libxml2-dev \
+        gettext \
         libpng-dev \
         libzip-dev \
         libfreetype6-dev \
