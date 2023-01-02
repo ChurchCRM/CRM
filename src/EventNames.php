@@ -146,9 +146,8 @@ $numRows = mysqli_num_rows($rsOpps);
             $cSQL = "SELECT evctnm_countid, evctnm_countname FROM eventcountnames_evctnm WHERE evctnm_eventtypeid='$aTypeID[$row]' ORDER BY evctnm_countid";
             $cOpps = RunQuery($cSQL);
             $numCounts = mysqli_num_rows($cOpps);
-            $cCountName = '';
             if ($numCounts) {
-                $cCountName = '';
+                $cCountName = [];
                 for ($c = 1; $c <= $numCounts; $c++) {
                     $cRow = mysqli_fetch_array($cOpps, MYSQLI_BOTH);
                     extract($cRow);

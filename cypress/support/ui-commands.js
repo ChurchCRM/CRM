@@ -15,7 +15,7 @@ Cypress.Commands.add("loginAdmin", (location, checkMatchingLocation = true) => {
 });
 
 Cypress.Commands.add("loginStandard", (location, checkMatchingLocation = true) => {
-    cy.login("tony.wade@example.com", "abc123", location, checkMatchingLocation);
+    cy.login("tony.wade@example.com", "basicjoe", location, checkMatchingLocation);
 });
 
 Cypress.Commands.add("login", (username, password, location, checkMatchingLocation = true) => {
