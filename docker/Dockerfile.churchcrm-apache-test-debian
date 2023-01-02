@@ -4,7 +4,6 @@ LABEL maintainer="george@dawouds.com"
 RUN apt-get update && \
     apt-get install -y \
         libxml2-dev \
-        
         libpng-dev \
         libzip-dev \
         libfreetype6-dev \
