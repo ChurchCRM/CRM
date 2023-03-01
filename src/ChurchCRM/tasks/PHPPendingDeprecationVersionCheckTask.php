@@ -8,10 +8,11 @@ use ChurchCRM\dto\SystemURLs;
 
 class PHPPendingDeprecationVersionCheckTask implements iTask, iPreUpgradeTask
 {
-  private const REQUIRED_PHP_VERSION = '7.4.0';
+  private const REQUIRED_PHP_VERSION = '7.3.0';
   public function isActive()
   {
-    return version_compare(PHP_VERSION, $this::REQUIRED_PHP_VERSION, '<');
+    return version_compare(PHP_VERSION, $this::REQUIRED_PHP_VERSION, '<')
+        || version_compare(PHP_VERSION, '8.0.0', '>=');;
   }
 
   public function isAdmin()

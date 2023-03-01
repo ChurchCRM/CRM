@@ -29,7 +29,7 @@
     },
     "config": {
         "platform": {
-            "php": "8.2"
+            "php": "7.3"
         },
         "sort-packages": true
     },
