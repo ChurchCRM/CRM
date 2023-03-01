@@ -1,5 +1,10 @@
-FROM  php:8.0.0-apache
-LABEL maintainer="george@dawouds.com"
+FROM  php:8-apache
+LABEL maintainer="crossan007@gmail.com"
+
+ADD https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh /opt/node-install.sh
+RUN chmod a+x /opt/node-install.sh && /opt/node-install.sh
+
+RUN /bin/bash -c "source /root/.nvm/nvm.sh && nvm install --lts && npm install -g node-gyp"
 
 RUN apt-get update && \
     apt-get install -y \
@@ -12,7 +17,7 @@ RUN apt-get update && \
         libpng-dev \
         libjpeg-dev \
         libpng-dev \
-        npm \
+        make \
         git
 
 RUN docker-php-ext-install -j$(nproc) xml exif pdo_mysql gettext iconv mysqli zip
@@ -23,6 +28,9 @@ RUN    docker-php-ext-install -j$(nproc) gd
 COPY ./apache/default.conf /etc/apache2/apache2.conf
 
 RUN a2enmod  rewrite
+
+RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+RUN php composer-setup.php --install-dir=/usr/local/bin --filename=composer
 
 # Configure PHP
 RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
