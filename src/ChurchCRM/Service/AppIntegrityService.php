@@ -120,7 +120,7 @@ class AppIntegrityService
   {
 
     $prerequisites = array(
-      new Prerequisite('PHP 7.3+ or PHP 7.4+', function() { return version_compare(PHP_VERSION, '7.3.0', '>=') && version_compare(PHP_VERSION, '8.0.0', '<'); }),
+      new Prerequisite('PHP 7.4+', function() { return version_compare(PHP_VERSION, '7.4.0', '>='); }),
       new Prerequisite('PCRE and UTF-8 Support', function() { return function_exists('preg_match') && @preg_match('/^.$/u', 'ñ') && @preg_match('/^\pL$/u', 'ñ'); }),
       new Prerequisite('Multibyte Encoding', function() { return extension_loaded('mbstring'); }),
       new Prerequisite('PHP Phar', function() { return extension_loaded('phar'); }),
