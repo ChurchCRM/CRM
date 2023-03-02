@@ -111,7 +111,7 @@ msgstr "Winnaars invoeren"
 
 #: 
 msgid "CSV Export"
-msgstr "CVS Export"
+msgstr "CSV Exporteren"
 
 #: 
 msgid "Field Selection"
@@ -139,7 +139,7 @@ msgstr "Postcode"
 
 #: 
 msgid "Envelope"
-msgstr "Enveloppe"
+msgstr "Envelop"
 
 #: 
 msgid "Work/Other Email"
@@ -175,7 +175,7 @@ msgstr "Aanpasbare Persoons-Veld"
 
 #: 
 msgid "Custom Family Fields"
-msgstr "Aanpasbare velden gezin "
+msgstr "Aanpasbare velden gezin"
 
 #: 
 msgid "Filters"
@@ -183,7 +183,7 @@ msgstr "Filters"
 
 #: 
 msgid "Records to export"
-msgstr "Records voor export"
+msgstr "Records om te exporteren"
 
 #: 
 msgid "Based on filters below.."
@@ -195,7 +195,7 @@ msgstr "Werkbestand met personen (filters genegeerd) "
 
 #: 
 msgid "Use Ctrl Key to select multiple"
-msgstr "Druk op Ctrl toets om veelvouden te selecteren"
+msgstr "Druk op Ctrl toets om meerdere te selecteren"
 
 #: 
 msgid "Don't Filter"
@@ -215,11 +215,11 @@ msgstr "Groepslidmaatschap"
 
 #: 
 msgid "From:"
-msgstr "Van"
+msgstr "Van:"
 
 #: 
 msgid "To:"
-msgstr "Aan"
+msgstr "Aan:"
 
 #: 
 msgid "Birthday Date"
@@ -232,11 +232,11 @@ msgstr "Trouwdatum"
 
 #: 
 msgid "Output Method:"
-msgstr "Output Methode:"
+msgstr "Uitvoermethode:"
 
 #: 
 msgid "CSV Individual Records"
-msgstr "CVS Individuele Records"
+msgstr "Individuele CSV-records"
 
 #: 
 msgid "CSV Combine Families"
@@ -900,7 +900,7 @@ msgstr "Font Grote"
 
 #: 
 msgid "Title page"
-msgstr "Title Pagina"
+msgstr "Pagina titel"
 
 #: 
 msgid "Use Title Page"
@@ -9308,7 +9308,7 @@ msgstr "Vastgezette kalenders"
 
 #: 
 msgid "This field is required"
-msgstr "dit veld is verplicht"
+msgstr "Dit veld is verplicht"
 
 #: 
 msgid "Text"
@@ -9320,7 +9320,7 @@ msgstr "beschrijving van het evenement"
 
 #: 
 msgid "Enrolling your ChurchCRM user account in Two Factor Authention provides an additional layer of defense against bad actors trying to access your account."
-msgstr "Het inschrijven van uw ChurchCRM-gebruikersaccount bij Two Factor Authention biedt een extra verdedigingslaag tegen kwaadwillenden die toegang tot uw account proberen te krijgen."
+msgstr "Door Twee-Factor Authenticatie in te schakelen voor uw ChurchCRM-gebruikersaccount, wordt uw account extra beschermd tegen ongeautoriseerde toegang."
 
 #: 
 msgid "ChurchCRM Two factor supports any TOTP authenticator app, so you're free to choose between Microsoft Authenticator, Google Authenticator, Authy, LastPass, and others"

@@ -30,7 +30,7 @@ msgstr "Не назначен"
 
 #: 
 msgid "None"
-msgstr "Ни один"
+msgstr "Отсутствует"
 
 #: 
 msgid "City"
@@ -62,39 +62,38 @@ msgstr "Резервное копирование базы данных"
 
 #: 
 msgid "This tool will assist you in manually backing up the ChurchCRM database."
-msgstr "Этот инструмент поможет вам вручную сделать резервное копирования базы данных."
+msgstr "Этот инструмент поможет вам вручную создать резервную копию базы данных ChurchCRM."
 
 #: 
-#, fuzzy
 msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
-msgstr "Вы должны сделать ручное резервное копирование по крайней мере, один раз в неделю, если у вас уже есть регулярное создание резервных копий procedule для ваших систем."
+msgstr "Следует в ручную создавать резервную копию не реже одного раза в неделю, если только у вас нет регулярной процедуры резервного копирования ваших систем."
 
+#. This is too explicit. maybe it would be better to suggest to regularly keep backed up copies in two or more safe locations (on-site, off-site, vault, lockers)?
 #: 
 msgid "After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site."
-msgstr "После загрузки файл резервной копии, вы должны сделать две копии. Положите одну из них в несгораемый сейф на месте, и другой в безопасном месте вне."
+msgstr "После загрузки файла резервной копии. Одну копию следует хранить в несгораемом сейфе на месте, и продублированную в безопасном месте за пределами предприятия."
 
 #: 
 msgid "If you are concerned about confidentiality of data stored in the ChurchCRM database, you should encrypt the backup data if it will be stored somewhere potentially accessible to others"
 msgstr "Если вас беспокоит конфиденциальность данных, хранящихся в базе данных ChurchCRM, вы должны зашифровать данные резервного копии, если она будет храниться в потенциально доступном для других месте"
 
 #: 
-#, fuzzy
 msgid "Select archive type"
-msgstr "Выберите Тип архива"
+msgstr "Выберите тип архива"
 
 #: 
 msgid "Encrypt backup file with a password?"
-msgstr "Зашифровать файл резервной копии с паролем?"
+msgstr "Зашифровать файл резервной копии паролем?"
 
 #: 
-#, fuzzy
 msgid "Re-type Password"
 msgstr "Введите пароль еще раз"
 
 #: 
 msgid "Generate and Ship Backup to External Storage"
-msgstr "Создать резервную копии на внешнем хранилище"
+msgstr "Создать резервную копию и сохранить на внешнем хранилище"
 
+#. more context required.
 #: 
 msgid "Batch Winner Entry"
 msgstr "Победитель пакетный ввод"
@@ -113,65 +112,60 @@ msgstr "Введите победителей"
 
 #: 
 msgid "CSV Export"
-msgstr "CSV экспорт"
+msgstr "Экспорт CSV файла"
 
 #: 
 msgid "Field Selection"
 msgstr "Выбор поля"
 
 #: 
-#, fuzzy
 msgid "Last Name"
 msgstr "Фамилия"
 
 #: 
 msgid "Required"
-msgstr "Не требуется"
+msgstr "Требуется"
 
 #: 
-#, fuzzy
 msgid "First Name"
 msgstr "Имя"
 
+#. In Russian usually there are no Middle names. but there are Father's names. which are totally different. But your list does not have Father's name
 #: 
 #, fuzzy
 msgid "Middle Name"
 msgstr "Второе имя"
 
 #: 
-#, fuzzy
 msgid "Zip"
-msgstr "Страна"
+msgstr "Почтовый индекс"
 
 #: 
-#, fuzzy
 msgid "Envelope"
 msgstr "Конверт"
 
 #: 
-#, fuzzy
 msgid "Work/Other Email"
-msgstr "Работа / Другая Email"
+msgstr "Рабочий/другой адрес эл.почты"
 
+#. Do you mean membership of Church? or membership of some kind of fraction inside the church or is there any other meaning?
 #: 
 #, fuzzy
 msgid "Membership Date"
-msgstr "Членство Дата"
+msgstr "Дата вступления"
 
+#. Hmm. Birthday? Anniversary date? need context. personal anniversaries or is it related to churches? and is it like 50 years old, 60, 70,... 100?
 #: 
-#, fuzzy
 msgid "Birth / Anniversary Date"
-msgstr "Рождения / Юбилей Дата"
+msgstr "Дата рождения / годовщина"
 
 #: 
-#, fuzzy
 msgid "Age / Years Married"
-msgstr "Возраст / лет замужем"
+msgstr "Возраст / лет в браке"
 
 #: 
-#, fuzzy
 msgid "Family Role"
-msgstr "Роль семьи"
+msgstr "Роль в семье"
 
 #: 
 #, fuzzy
@@ -182,11 +176,14 @@ msgstr "Зависит ли с помощью человека или выход
 msgid "Custom Field Selection"
 msgstr "Выбор пользовательского поля"
 
+#. Need more context.
 #: 
+#, fuzzy
 msgid "Custom Person Fields"
-msgstr "Пользовательские поля человека"
+msgstr "Персональные настраиваемые поля"
 
 #: 
+#, fuzzy
 msgid "Custom Family Fields"
 msgstr "Пользовательские поля семьи"
 
@@ -195,15 +192,15 @@ msgid "Filters"
 msgstr "Фильтры"
 
 #: 
-#, fuzzy
 msgid "Records to export"
 msgstr "Записи для экспорта"
 
 #: 
 msgid "Based on filters below.."
-msgstr "На основании списка ниже .."
+msgstr "На основании фильтров ниже .."
 
 #: 
+#, fuzzy
 msgid "People in Cart (filters ignored)"
 msgstr "Люди в корзину (фильтры игнорируются)"
 
@@ -213,15 +210,15 @@ msgstr "Используйте клавишу Ctrl, чтобы выбрать н
 
 #: 
 msgid "Don't Filter"
-msgstr "нет фильтра"
+msgstr "Без фильтра"
 
 #: 
 msgid "Male"
-msgstr "Муж"
+msgstr "Муж."
 
 #: 
 msgid "Female"
-msgstr "Жен"
+msgstr "Жен."
 
 #: 
 #, fuzzy
@@ -230,21 +227,20 @@ msgstr "Членство в группах"
 
 #: 
 msgid "From:"
-msgstr "от куда"
+msgstr "От кого:"
 
 #: 
 msgid "To:"
-msgstr "кому"
+msgstr "Кому:"
 
 #: 
-#, fuzzy
 msgid "Birthday Date"
-msgstr "День рождения Дата"
+msgstr "Дата рождения"
 
 #: 
 #, fuzzy
 msgid "Anniversary Date"
-msgstr "Годовщина Дата"
+msgstr "Годовщина"
 
 #: 
 msgid "Output Method:"
@@ -252,19 +248,23 @@ msgstr "Метод вывода:"
 
 #: 
 msgid "CSV Individual Records"
-msgstr "CSV отдельных записей"
+msgstr "Персональные данные в CSV файле"
 
+#. need more context
 #: 
+#, fuzzy
 msgid "CSV Combine Families"
 msgstr "CSV комбинат семей"
 
+#. Context please. how to add individuals to cart? to buy?
 #: 
+#, fuzzy
 msgid "Add Individuals to Cart"
 msgstr "Добавить Лица в корзину"
 
 #: 
 msgid "Skip records with incomplete mail address"
-msgstr "Перейти записи с неполным почты"
+msgstr "Пропустить записи с неполным почтовым адресом"
 
 #: 
 msgid "Create File"
@@ -272,7 +272,7 @@ msgstr "Создать файл"
 
 #: 
 msgid "No file selected for upload."
-msgstr "Файл не выбран для загрузки."
+msgstr "Не выбран файл для загрузки."
 
 #: 
 msgid "Total number of rows in the CSV file:"
@@ -324,11 +324,11 @@ msgstr "Дата свадьбы"
 
 #: 
 msgid "Ignore first CSV row (to exclude a header)"
-msgstr "Игнорировать первый CSV строку (чтобы исключить заголовок)"
+msgstr "Игнорировать первую строку в CSV (чтобы исключить заголовок)"
 
 #: 
 msgid "Make Family records based on last name and address"
-msgstr "Сделать семейные записи, основанные на фамилию и адрес"
+msgstr "Семейные записи на основании фамилии и адреса"
 
 #: 
 msgid "Patriarch"
@@ -338,17 +338,18 @@ msgstr "Патриарх"
 msgid "Matriarch"
 msgstr "Матриарх"
 
+#. didn't quite understand. what are the family types?
 #: 
 msgid "Family Type: used with Make Family records... option above"
-msgstr "Семья Тип: использованный с замыкающими Family Records ... вариант выше"
+msgstr "Тип семьи: используется с семейными записями... вариант выше"
 
 #: 
 msgid "NOTE: Separators (dashes, etc.) or lack thereof do not matter"
-msgstr "ПРИМЕЧАНИЕ: Сепараторы (тире и т.д.) или их отсутствие не имеет значения"
+msgstr "ПРИМЕЧАНИЕ: Разделители (тире и т.д.) или их отсутствие не имеют значения"
 
 #: 
 msgid "Default country if none specified otherwise"
-msgstr "Страна по умолчанию, если ничего не указано иное"
+msgstr "Страна по умолчанию, если ничего не указано"
 
 #: 
 msgid "Classification"
@@ -356,7 +357,7 @@ msgstr "Классификация"
 
 #: 
 msgid "Perform Import"
-msgstr "Выполните импорт"
+msgstr "Выполнить импорт"
 
 #: 
 msgid "ERROR: the uploaded CSV file no longer exists!"
@@ -370,7 +371,9 @@ msgstr "Данные успешно очищены"
 msgid "Upload CSV File"
 msgstr "Загрузить файл CSV"
 
+#. what do you mean clear? please define this action "clear"?
 #: 
+#, fuzzy
 msgid "Clear Persons and Families"
 msgstr "Очистить людей и семьи,"
 
@@ -391,6 +394,7 @@ msgid "persons were imported"
 msgstr "люди были импортированы"
 
 #: 
+#, fuzzy
 msgid "Canvass Automation"
 msgstr "Canvass Автоматизация"
 
@@ -5804,6 +5808,20 @@ msgstr "Панель Управления Людей"
 msgid "return to People Dashboard"
 msgstr "Вернутся к Панели Управления Людьми"
 
+#. didn't quite understand. do you mean upgrade of system? and do you mean maintain personal data that system update might delete?
+#: 
+#, fuzzy
+msgid "If you wish to maintain your changes to these files, please take a manual backup of these files before proceeding with this upgrade, and then manually restore the files after the upgrade is complete."
+msgstr "Если вы хотите сохранить свои изменения в этих файлах, пожалуйста, сделайте ручную резервную копию этих файлов перед выполнением этого обновления, а затем вручную восстановите файлы после завершения обновления."
+
+#: 
+msgid "Integrity Check Details:"
+msgstr "Детальная информация проверки целостности данных:"
+
+#: 
+msgid "I Understand"
+msgstr "Я понимаю"
+
 #: 
 msgid "Generate Backup"
 msgstr "Создать резервную копию."
@@ -5821,8 +5839,61 @@ msgid "Please update the my family information with the following"
 msgstr "Пожалуйтса обновите информацию об моей семье."
 
 #: 
+msgid "Age Histogram"
+msgstr "Возрастная гистограмма"
+
+#: 
+msgid "Event not found"
+msgstr "Событие не найдено"
+
+#: 
+msgid "Session timeout length in seconds\n"
+"Set to zero to disable session timeouts."
+msgstr "Продолжительность времени ожидания сеанса в секундах\n"
+"Установите значение на ноль, чтобы убрать интервал ожидания сеанса."
+
+#: 
+msgid "Minimum amount that a new password must differ from the old one (# of characters changed)\n"
+"Set to zero to disable this feature"
+msgstr "Минимальное количество символов, на которое новый пароль должен отличаться от старого (Кол-во символов изменено)\n"
+"Чтобы отключить эту функцию установите значение \"ноль\""
+
+#: 
+msgid "Maximum number of failed logins to allow before a user account is locked.\n"
+"Once the maximum has been reached, an administrator must re-enable the account.\n"
+"This feature helps to protect against automated password guessing attacks.\n"
+"Set to zero to disable this feature."
+msgstr "Максимальное количество неудачных попыток входа, допустимых до блокировки учетной записи пользователя.\n"
+"После достижения предела, администратор должен вновь включить данную учетную запись.\n"
+"Данная функция помогает защитить от взлома автоматическим подбором пароля.\n"
+"Чтобы отключить эту функцию установите значение \"ноль\"."
+
+#: 
+msgid "Unavailable person info inherited from assigned family for display?\n"
+"This option causes certain info from a person's assigned family record to be\n"
+"displayed IF the corresponding info has NOT been entered for that person. "
+msgstr "Недоступная информация о человеке, унаследованная от назначенной семьи для отображения?\n"
+"Этот параметр приводит к отображению определенной информации из назначенной семейной записи человека, если соответствующая информация для этого человека НЕ была введена.␣"
+
+#: 
+msgid "Press CTRL + C to copy all group members\\' phone numbers"
+msgstr "Нажмите CTRL + C, чтобы скопировать телефонные номера членов всех групп"
+
+#: 
+msgid "Verify People"
+msgstr "Проверить людей"
+
+#: 
 msgid "People Verify Dashboard"
 msgstr "Панель Управления для верификации личности"
+
+#: 
+msgid "Download family letters"
+msgstr "Скачать семейные письма"
+
+#: 
+msgid "Send family email"
+msgstr "Отправить эл.письмо се"
 
 #: 
 msgid "Verification URL created"
@@ -5842,11 +5913,429 @@ msgstr "Ошибка при отправке почты."
 
 #: 
 msgid "Please check logs for more information"
-msgstr "Для большей информации обратитесь к логам. "
+msgstr "Пожалуйста, проверьте журналы для получения дополнительной информации"
 
 #: 
 msgid "Verification URL"
 msgstr "Верификация URL"
+
+#: 
+msgid "Reset System"
+msgstr "Сброс системы"
+
+#: 
+msgid "Unexpected Person Id"
+msgstr "Непредусмотренный ID человека"
+
+#: 
+msgid "Interval in Hours for software update check"
+msgstr "Интервал в часах для проверки обновления программного обеспечения"
+
+#: 
+msgid "Last Software Update Check Timestamp"
+msgstr "Отметка времени проверки последнего обновления программного обеспечения"
+
+#: 
+msgid "Search Calendar Events"
+msgstr "Поиск событий календаря"
+
+#: 
+msgid "Maximum number of Calendar Events"
+msgstr "Максимальное количество событий календаря"
+
+#. https://s3.eu-west-1.amazonaws.com/po-pub/i/4I3Vj2PQsiMuQccur5HkUs7k.jpg
+#: 
+msgid "%d month old"
+msgid_plural "%d months old"
+msgstr[0] "%d месяц"
+msgstr[1] "%d месяца"
+msgstr[2] "%d месяцев"
+msgstr[3] "%d-месячный"
+
+#: 
+msgid "Database upgrade failed"
+msgstr "Сбой обновления базы данных"
+
+#: 
+msgid "Unsupported PHP Version"
+msgstr "Неподдерживаемая версия PHP"
+
+#: 
+msgid "Add Results to Cart"
+msgstr "Добавить результаты в корзину"
+
+#: 
+msgid "Remove Results from Cart"
+msgstr "Удалить результаты из корзины"
+
+#: 
+msgid "Warning: Pre-Upgrade Tasks Detected"
+msgstr "Предупреждение: Обнаружены задачи предварительного обновления"
+
+#: 
+msgid "Some conditions have been identified wich may prevent a successful upgrade"
+msgstr "Обнаружены некоторые условия, которые могут помешать успешному обновлению"
+
+#: 
+msgid "Please review and mitigate these tasks before continuing with the upgrade:"
+msgstr "Пожалуйста, просмотрите и завершите эти задачи, прежде чем продолжить обновление:"
+
+#: 
+msgid "Database Reset Functions"
+msgstr "Функции сброса базы данных"
+
+#: 
+msgid "Reset Members"
+msgstr "Сбросить участников"
+
+#: 
+msgid "This will remove all the member data, people, and families and can't be undone."
+msgstr "Это приведет к удалению всех данных участника, людей и семей и не может быть отменено."
+
+#: 
+msgid "Reset Families/People"
+msgstr "Сбросить семьи/людей"
+
+#: 
+msgid "Reset Database"
+msgstr "Сбросить базу данных"
+
+#: 
+msgid "This will reset the system data and will restart the system as a new install."
+msgstr "Это приведет к сбросу системных данных и перезапуску системы как новую установку."
+
+#: 
+msgid "Clear Filter"
+msgstr "Очистить фильтр"
+
+#: 
+msgid "Add Person"
+msgstr "Добавить человека"
+
+#: 
+msgid "Portuguese - Portugal"
+msgstr "Португальский - Португалия"
+
+#: 
+msgid "Holiday"
+msgstr "Праздник"
+
+#: 
+msgid "Allow users to self-enroll in 2 factor authentication"
+msgstr "Разрешить пользователям самостоятельно регистрироваться с помощью двухфакторной аутентификации"
+
+#: 
+msgid "Requires users to self-enroll in 2 factor authentication"
+msgstr "Требуется, чтобы пользователи самостоятельно регистрировались с помощью двухфакторной аутентификации"
+
+#: 
+msgid "ChurchCRM"
+msgstr "ChurchCRM"
+
+#: 
+msgid "Specify the application name to be displayed in authenticator app"
+msgstr "Укажите имя приложения, которое будет отображаться в приложении аутентификатора"
+
+#: 
+msgid "Secret Keys missing from Config.php"
+msgstr "Секретных ключей нет в Config.php"
+
+#: 
+msgid "Thank you for registering your family"
+msgstr "Благодарим вас за регистрацию вашей семьи"
+
+#: 
+msgid "Register another family!"
+msgstr "Регистрация следующей семьи!"
+
+#: 
+msgid "Done, show me the homepage!"
+msgstr "Готово, покажи домашнюю страницу!"
+
+#: 
+msgid "User authenticated via API Key: "
+msgstr "Аутентификация пользователя с помощью ключа API:␣"
+
+#: 
+msgid "Unsuccessful API Key authentication attempt"
+msgstr "Неудачная попытка аутентификации по ключу API"
+
+#: 
+msgid "Unpinned Events"
+msgstr "Снятые события"
+
+#: 
+msgid "Manage 2 Factor Authentication"
+msgstr "Управление двухфакторной аутентификации"
+
+#: 
+msgid "Two Factor Status"
+msgstr "Статус двухфакторной аутентификации"
+
+#: 
+msgid "Please confirm disabling 2 Factor Auth for this user"
+msgstr "Пожалуйста подтвердите отключение двухфакторной аутентификации для данного пользователя"
+
+#: 
+msgid "Please enter 2FA code"
+msgstr "Пожалуйста введите код 2FA"
+
+#: 
+msgid "2FA Code"
+msgstr "Код \t2FA"
+
+#: 
+msgid "2 Factor Authentication enrollment"
+msgstr "Регистрация двухфакторной аутентификации"
+
+#: 
+msgid "Unsupported Two Factor Authentication Configuration"
+msgstr "Неподдерживаемая конфигурация двухфакторной аутентификации"
+
+#: 
+msgid "Unable To Begin Two Factor Authentication Enrollment"
+msgstr "Невозможно начать регистрацию двухфакторной аутентификации"
+
+#: 
+msgid "Two factor authentication requires ChurchCRM administrators to configure a few parameters"
+msgstr "Двухфакторная аутентификация требует от администраторов ChurchCRM настройки нескольких параметров"
+
+#: 
+msgid "System configuration "
+msgstr "Конфигурация системы␣"
+
+#: 
+msgid "Must be set to 'true'"
+msgstr "Должно быть установлено значение 'true'"
+
+#: 
+msgid "Google Maps API Key used for Geocoding addresses"
+msgstr "Ключ API карт Google, используемый для геокодирования адресов"
+
+#: 
+msgid "Send an email notifying users when their account has been deleted"
+msgstr "Отправить эл.письмо, уведомляющее пользователей о том, что их учетная запись была удалена"
+
+#: 
+msgid "Google Maps API Key used for rendering maps in browser"
+msgstr "Ключ API карт Google, используемый для рендеринга карт в браузере"
+
+#: 
+msgid "Incorrect password supplied for current user"
+msgstr "Предоставлен не верный пароль для данного пользователя"
+
+#: 
+msgid "Your new password must not match your old one."
+msgstr "Ваш новый пароль не должен совпадать со старым."
+
+#: 
+msgid "Your new password is too similar to your old one."
+msgstr "Ваш новый пароль похож на ваш предыдущий."
+
+#: 
+msgid "Password reset not availble.  Please contact your system administrator"
+msgstr "Функция сброса пароля не доступна. Свяжитесь с системным администратором."
+
+#: 
+msgid "Enter new user password. Administratively set passwords are not subject to length or complexity requirements"
+msgstr "Введите новый пароль пользователя. К паролям, устанавливаемым администратором, требований по длине или сложности нет."
+
+#: 
+msgid "Lists"
+msgstr "Списки"
+
+#: 
+msgid "loading"
+msgstr "загрузка"
+
+#: 
+msgid "List not found"
+msgstr "Список не найден"
+
+#. what is inList?
+#: 
+#, fuzzy
+msgid "List not inList"
+msgstr "Список не в inList"
+
+#: 
+msgid "People not in"
+msgstr "Люди не в"
+
+#: 
+msgid "Invalid List id"
+msgstr "Неверный id списка"
+
+#: 
+msgid "Web Server"
+msgstr "Веб-сервер"
+
+#: 
+msgid "Server Software"
+msgstr "ПО сервера"
+
+#: 
+msgid "Email Information"
+msgstr "Сведения эл.почты"
+
+#: 
+#, fuzzy
+msgid "People not in list"
+msgstr "Люди не в списке"
+
+#. without context translation may be wrong
+#: 
+#, fuzzy
+msgid "Audience not in the CRM"
+msgstr "Аудитория не в CRM"
+
+#. Or second translation: Еврейский.
+#: 
+msgid "Hebrew"
+msgstr "Иврит"
+
+#: 
+msgid "Not Subscribed "
+msgstr "Не подписаны␣"
+
+#: 
+msgid "Global User Settings"
+msgstr "Глобальные настройки пользователя"
+
+#: 
+msgid "General"
+msgstr "Общие"
+
+#: 
+msgid "Passwords"
+msgstr "Пароли"
+
+#: 
+msgid "2FA"
+msgstr "2FA"
+
+#. without context might be wrong
+#: 
+#, fuzzy
+msgid "Session Timeout"
+msgstr "лимит времени сеанса"
+
+#: 
+msgid "Max Failed Login"
+msgstr "Максимальное число неудачных попыток входа в систему"
+
+#: 
+msgid "Enable Password Reset"
+msgstr "включение процедуры сброса пароля"
+
+#: 
+msgid "Send email to Deleted Users"
+msgstr "Отправить эл.письмо удаленным пользователям"
+
+#: 
+msgid "Min Password Length"
+msgstr "Минимальная длина пароля"
+
+#: 
+msgid "Min Password Characters Delta"
+msgstr "Минимальная дельта символов пароля"
+
+#: 
+msgid "Disallowed Passwords"
+msgstr "Запрещенные пароли"
+
+#: 
+msgid "Enable 2FA"
+msgstr "Включить 2FA"
+
+#: 
+msgid "Require 2FA"
+msgstr "Требуется 2FA"
+
+#: 
+msgid "2FA Application Name"
+msgstr "Название запроса 2FA\n"
+""
+
+#: 
+msgid "Login Info"
+msgstr "Сведения входа в систему"
+
+#: 
+msgid "Login Count"
+msgstr "Кол-во входов в систему"
+
+#: 
+msgid "Failed Login"
+msgstr "Неудачная попытка входа в систему"
+
+#: 
+msgid "Permissions"
+msgstr "Разрешения"
+
+#: 
+msgid "Paid"
+msgstr "оплачено"
+
+#: 
+msgid "Start Date"
+msgstr "Дата начала"
+
+#: 
+msgid "End Date"
+msgstr "Дата окончания"
+
+#: 
+msgid "This field is required"
+msgstr "обязательное поле"
+
+#: 
+msgid "Text"
+msgstr "Текст"
+
+#: 
+msgid "Event Description"
+msgstr "Описание события"
+
+#: 
+msgid "Help translate this project"
+msgstr "Помогите перевести данный проект"
+
+#: 
+msgid "Loading"
+msgstr "Загрузка"
+
+#: 
+msgid "Today's Birthdays"
+msgstr "Дни рождения сегодня"
+
+#: 
+msgid "Today's Wedding Anniversaries"
+msgstr "Годовщины свадеб сегодня"
+
+#: 
+msgid "Api Key"
+msgstr "Ключ Api"
+
+#: 
+msgid "Regen API Key"
+msgstr "Повторная генерация ключа API"
+
+#: 
+msgid "Verify"
+msgstr "Проверить"
+
+#: 
+msgid "Blue"
+msgstr "Синий"
+
+#: 
+msgid "Black"
+msgstr "Черный"
+
+#: 
+msgid "Purple"
+msgstr "Фиолетовый"
 
 #: 
 msgid "Green"
@@ -5864,25 +6353,27 @@ msgstr "Желтый"
 msgid "Blue Light"
 msgstr "Голубой"
 
+#. did you mean grey? or is it a name of theme?
 #: 
+#, fuzzy
 msgid "Black Light"
 msgstr "Черный"
 
 #: 
 msgid "Purple Light"
-msgstr "Фиолетовый"
+msgstr "Светло фиолетовый"
 
 #: 
 msgid "Green Light"
-msgstr "Зеленый"
+msgstr "Светло зеленый"
 
 #: 
 msgid "Red Light"
-msgstr "Красный"
+msgstr "Светло красный"
 
 #: 
 msgid "Yellow Light"
-msgstr "Желтый"
+msgstr "Светло желтый"
 
 #: 
 msgid "Tables Settings"
@@ -5894,7 +6385,7 @@ msgstr "Размер страницы"
 
 #: 
 msgid "Change the initial page length (number of rows per page)"
-msgstr "Изменить размер страницы (количество строк на странице)"
+msgstr "Изменить изначальный размер страницы (количество строк на странице)"
 
 #: 
 msgid "User Interface"
