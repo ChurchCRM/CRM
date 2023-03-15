@@ -257,7 +257,7 @@ for ($i = 0; $i < $nGrps; $i++) {
         );
     }
 }
-        
+
 header('Pragma: public');  // Needed for IE when using a shared SSL certificate
 if ($iPDFOutputType == 1) {
     $pdf->Output('ClassAttendance'.date(SystemConfig::getValue("sDateFilenameFormat")).'.pdf', 'D');

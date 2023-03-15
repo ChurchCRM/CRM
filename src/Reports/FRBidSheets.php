@@ -36,10 +36,10 @@ class PDF_FRBidSheetsReport extends ChurchInfoReport
 
         //    	$this->SetFont("Times",'B',16);
 //    	$this->Write (8, $fr_title."\n");
-//		$curY += 8;
-//		$this->Write (8, $fr_description."\n\n");
-//		$curY += 8;
-//   	$this->SetFont("Times",'',10);
+        //		$curY += 8;
+        //		$this->Write (8, $fr_description."\n\n");
+        //		$curY += 8;
+        //   	$this->SetFont("Times",'',10);
     }
 }
 

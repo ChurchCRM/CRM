@@ -61,24 +61,24 @@ $sSQL = 'SELECT plg_plgID, plg_FYID, plg_amount, plg_PledgeOrPayment, plg_fundID
 		 LEFT JOIN donationfund_fun b ON plg_fundID = b.fun_ID
 		 WHERE plg_FYID = '.$iFYID;
 
- // Filter by Fund
- if (!empty($_POST['funds'])) {
-     $count = 0;
-     foreach ($_POST['funds'] as $fundID) {
-         $fund[$count++] = InputUtils::LegacyFilterInput($fundID, 'int');
-     }
-     if ($count == 1) {
-         if ($fund[0]) {
-             $sSQL .= " AND plg_fundID='$fund[0]' ";
-         }
-     } else {
-         $sSQL .= " AND (plg_fundID ='$fund[0]'";
-         for ($i = 1; $i < $count; $i++) {
-             $sSQL .= " OR plg_fundID='$fund[$i]'";
-         }
-         $sSQL .= ') ';
-     }
- }
+// Filter by Fund
+if (!empty($_POST['funds'])) {
+    $count = 0;
+    foreach ($_POST['funds'] as $fundID) {
+        $fund[$count++] = InputUtils::LegacyFilterInput($fundID, 'int');
+    }
+    if ($count == 1) {
+        if ($fund[0]) {
+            $sSQL .= " AND plg_fundID='$fund[0]' ";
+        }
+    } else {
+        $sSQL .= " AND (plg_fundID ='$fund[0]'";
+        for ($i = 1; $i < $count; $i++) {
+            $sSQL .= " OR plg_fundID='$fund[$i]'";
+        }
+        $sSQL .= ') ';
+    }
+}
 // Order by Fund Active, Fund Name
 //$sSQL .= " ORDER BY fundActive, fundName";
 // Order by Family so the related pledges and payments will be together
@@ -271,10 +271,9 @@ if ($output == 'pdf') {
         $pdf->Output();
     }
 
-    // Output a text file
+// Output a text file
 // ##################
 } elseif ($output == 'csv') {
-
     // Settings
     $delimiter = ',';
     $eol = "\r\n";
