@@ -208,7 +208,6 @@ if ($iCountRows < 1) {
 // ***************************
 
 if ($output == 'pdf') {
-
     // Set up bottom border value
     $bottom_border = 250;
     $summaryIntervalY = 4;
@@ -515,7 +514,6 @@ if ($output == 'pdf') {
         $curY += 2 * $summaryIntervalY;
         $page = $pdf->PageBreak($page);
     } elseif ($sort == 'fund') {
-
         // **********************
         // Sort by Fund  Report
         // **********************
@@ -680,7 +678,6 @@ if ($output == 'pdf') {
         }
         $page = $pdf->PageBreak($page);
     } elseif ($sort == 'family') {
-
         // **********************
         // Sort by Family  Report
         // **********************
@@ -885,7 +882,6 @@ if ($output == 'pdf') {
 // Output a text file
 // ##################
 } elseif ($output == 'csv') {
-
     // Settings
     $delimiter = ',';
     $eol = "\r\n";

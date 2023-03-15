@@ -254,31 +254,31 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
       // Calculations (without groups) show 84 mm is needed.
       // For the Letter size of 279 mm, this says that curY can be no bigger than 195 mm.
       // Leaving 12 mm for a bottom margin yields 183 mm.
-      $numWide = 0; // starting value for columns
-      while ($rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQLI_BOTH)) {
-          extract($rowCustomField);
-          if ($sCustomFieldName[$custom_Order - 1]) {
-              $currentFieldData = trim($aCustomData[$custom_Field]);
+            $numWide = 0; // starting value for columns
+            while ($rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQLI_BOTH)) {
+                extract($rowCustomField);
+                if ($sCustomFieldName[$custom_Order - 1]) {
+                    $currentFieldData = trim($aCustomData[$custom_Field]);
 
-              $OutStr = $sCustomFieldName[$custom_Order - 1].' : '.$currentFieldData.'    ';
-              $pdf->WriteAtCell($xInc, $curY, $xSize, $sCustomFieldName[$custom_Order - 1]);
-              if ($currentFieldData == '') {
-                  $pdf->SetFont('Times', 'B', 6);
-                  $pdf->WriteAtCell($xInc + $xSize, $curY, $xSize, '');
-                  $pdf->SetFont('Times', '', 10);
-              } else {
-                  $pdf->WriteAtCell($xInc + $xSize, $curY, $xSize, $currentFieldData);
-              }
-              $numWide += 1; // increment the number of columns done
-          $xInc += (2 * $xSize); // Increment the X position by about 1/2 page width
-          if (($numWide % 2) == 0) { // 2 columns
-            $xInc = $XName; // Reset margin
-            $curY += SystemConfig::getValue('incrementY');
-          }
-          }
-      }
+                    $OutStr = $sCustomFieldName[$custom_Order - 1].' : '.$currentFieldData.'    ';
+                    $pdf->WriteAtCell($xInc, $curY, $xSize, $sCustomFieldName[$custom_Order - 1]);
+                    if ($currentFieldData == '') {
+                        $pdf->SetFont('Times', 'B', 6);
+                        $pdf->WriteAtCell($xInc + $xSize, $curY, $xSize, '');
+                        $pdf->SetFont('Times', '', 10);
+                    } else {
+                        $pdf->WriteAtCell($xInc + $xSize, $curY, $xSize, $currentFieldData);
+                    }
+                    $numWide += 1; // increment the number of columns done
+                    $xInc += (2 * $xSize); // Increment the X position by about 1/2 page width
+                    if (($numWide % 2) == 0) { // 2 columns
+                        $xInc = $XName; // Reset margin
+                        $curY += SystemConfig::getValue('incrementY');
+                    }
+                }
+            }
             //$pdf->WriteAt($XName,$curY,$OutStr);
-      //$curY += (2 * SystemConfig::getValue("incrementY"));
+            //$curY += (2 * SystemConfig::getValue("incrementY"));
         }
         $curY += 2 * SystemConfig::getValue('incrementY');
     }

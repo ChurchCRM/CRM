@@ -265,7 +265,6 @@ function CanvassBriefingSheets($iFYID)
         if (mysqli_num_rows($rsFamilyMembers) > 0) {
             mysqli_data_seek($rsFamilyMembers, 0);
             while ($aMember = mysqli_fetch_array($rsFamilyMembers)) {
-
                 // Get the Groups this Person is assigned to
                 $sSQL = 'SELECT grp_Name, role.lst_OptionName AS roleName
 						FROM group_grp
@@ -354,7 +353,7 @@ function CanvassSummaryReport($iFYID)
             if ($str != '') {
                 $pdf->Write(4, $str."\n\n");
                 //				$pdf->WriteAt (SystemConfig::getValue("leftX"), $curY, $str);
-//				$curY += SystemConfig::getValue("incrementY");
+                //				$curY += SystemConfig::getValue("incrementY");
             }
         }
         mysqli_data_seek($rsCanvassData, 0);

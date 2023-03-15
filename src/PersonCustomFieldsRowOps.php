@@ -36,7 +36,7 @@ switch ($sAction) {
         RunQuery($sSQL);
         break;
 
-    // Move a field down:  Swap the custom_Order (ordering) of the selected row and the one below it
+        // Move a field down:  Swap the custom_Order (ordering) of the selected row and the one below it
     case 'down':
         $sSQL = "UPDATE person_custom_master SET custom_Order = '".$iOrderID."' WHERE custom_Order = '".($iOrderID + 1)."'";
         RunQuery($sSQL);
@@ -44,7 +44,7 @@ switch ($sAction) {
         RunQuery($sSQL);
         break;
 
-    // Delete a field from the form
+        // Delete a field from the form
     case 'delete':
         // Check if this field is a custom list type.  If so, the list needs to be deleted from list_lst.
         $sSQL = "SELECT type_ID,custom_Special FROM person_custom_master WHERE custom_Field = '".$sField."'";
@@ -74,7 +74,7 @@ switch ($sAction) {
         }
         break;
 
-    // If no valid action was specified, abort and return to the GroupView
+        // If no valid action was specified, abort and return to the GroupView
     default:
         RedirectUtils::Redirect('PersonCustomFieldsEditor.php');
         break;

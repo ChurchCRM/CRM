@@ -60,7 +60,7 @@ $groups = GroupQuery::create()
                     ->filterByType(4)
                     ->find();
                     
-                    
+
 foreach ($groups as $group) {
     $iGroupID = $group->getID();
     $sundayschoolClass = $group->getName();

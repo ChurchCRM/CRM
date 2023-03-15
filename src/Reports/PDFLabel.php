@@ -205,8 +205,7 @@ function MakeADCArray($sADClist)
     // The end of each row is marked with the pipe | symbol
     // keep fetching rows until gone
     while (mb_substr_count($sADClist, '|')) {
-
-    // find end of current row
+        // find end of current row
         $endOfRow = strpos($sADClist, '|');
         if ($endOfRow) {
             $currentRow = mb_substr($sADClist, 0, $endOfRow);
@@ -415,11 +414,11 @@ function ZipBundleSort($inLabels)
     // 80
 
     // $iMinBundleSize = 15;  // Minimum number of labels allowed in a bundle
-$iZip5MinBundleSize = 15;  // Minimum number of labels allowed in a 5 digit zip code bundle
-$iZip3MinBundleSize = 10;  // Minimum number of labels allowed in a 3 digit zip code bundle
-$iAdcMinBundleSize = 10;  // Minimum number of labels allowed in an ADC bundle
+    $iZip5MinBundleSize = 15;  // Minimum number of labels allowed in a 5 digit zip code bundle
+    $iZip3MinBundleSize = 10;  // Minimum number of labels allowed in a 3 digit zip code bundle
+    $iAdcMinBundleSize = 10;  // Minimum number of labels allowed in an ADC bundle
 
-$n = count($inLabels);
+    $n = count($inLabels);
     $nTotalLabels = $n;
     if ($db) {
         echo "{$n} Labels passed to bundle function....<br>";
@@ -658,8 +657,7 @@ function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComp
     $didFam = [];
 
     while ($aRow = mysqli_fetch_array($rsCartItems)) {
-
-    // It's possible (but unlikely) that three labels can be generated for a
+        // It's possible (but unlikely) that three labels can be generated for a
         // family even when they are grouped.
         // At most one label for all adults
         // At most one label for all children
@@ -709,8 +707,7 @@ function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComp
         }
 
         foreach ($aName as $key => $sName) {
-
-        // Bail out if nothing to print
+            // Bail out if nothing to print
             if ($sName == 'Nothing to return') {
                 continue;
             }
@@ -869,7 +866,6 @@ if ($sFileType == 'PDF') {
         $pdf->Output();
     }
 } else { // File Type must be CSV
-
     $delimiter = SystemConfig::getValue("sCSVExportDelemiter");
 
     $sCSVOutput = '';

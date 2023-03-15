@@ -80,8 +80,7 @@ class PDF_PhotoBook extends ChurchInfoReport
     
     private function drawPersonBlock($name, $thumbnailURI)
     {
-   
-    # Draw a bounding box around the image placeholder centered around the name text.
+        # Draw a bounding box around the image placeholder centered around the name text.
         $this->currentX += $this->personMarginL;
         $this->SetFont('Times', '', 10);
         $NameWidth = $this->GetStringWidth($name);
