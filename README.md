@@ -51,3 +51,4 @@ To test out the demo, you may login to the http://demo.churchcrm.io  with the fo
 
 [Checkout our Change Log](CHANGELOG.md)
 
+### CHANGES FOR DEMO
