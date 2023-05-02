@@ -19,6 +19,6 @@ service mysqld start
 
 cd /var/www/
 rm -rf html
-wget https://github.com/ChurchCRM/CRM/releases/download/2.4.4/ChurchCRM-2.4.4.zip
-unzip ChurchCRM-2.4.4.zip
+wget https://github.com/ChurchCRM/CRM/releases/download/4.5.4/ChurchCRM-4.5.4.zip
+unzip ChurchCRM-4.5.4.zip
 mv churchcrm/ html
