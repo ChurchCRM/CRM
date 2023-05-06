@@ -63,7 +63,10 @@ class LoggerUtils
 
     private static function getCaller() {
       $callers = debug_backtrace();
-      $call = $callers[5];
+      $call = [];
+      if ($callers[5]) {
+        $call = $callers[5];
+      }
       return [
         "ContextClass"=> array_key_exists("class",$call) ? $call['class'] : "",
         "ContextMethod"=> $call['function']

@@ -19,8 +19,8 @@ services:
     ## Look into: https://hub.docker.com/r/nimmis/apache-php7
     build:
       context: .
-      dockerfile: Dockerfile.churchcrm-apache-test-debian
-    image: churchcrm/crm:php7.3-debian
+      dockerfile: Dockerfile.churchcrm-apache-php7-test-debian
+    image: churchcrm/crm:php7-debian
     ports:
       - "80:80"
     volumes:
