@@ -14,7 +14,7 @@ msgstr "Kan nie navraag uitvoer nie"
 
 #: 
 msgid "Delete"
-msgstr "Vee uit"
+msgstr "Skrap"
 
 #: 
 msgid "Cancel"
@@ -4099,7 +4099,7 @@ msgstr "Voeg nuwe persoon by"
 #: 
 #, fuzzy
 msgid "View All People"
-msgstr "Bekyk alle persone"
+msgstr "Sien alle persone"
 
 #: 
 msgid "Add New Family"
@@ -9419,4 +9419,145 @@ msgstr "Gesins eiendom ontoegeken"
 #: 
 msgid "Do you want to remove"
 msgstr "Is jy seker jy wil dit verwyder"
+
+#: 
+msgid "View Active People"
+msgstr "Sien aktiewe mense"
+
+#: 
+msgid "View Inactive People"
+msgstr "Sien onaktiewe mense"
+
+#: 
+msgid "Today's Birthdays"
+msgstr "Vandag se verjaarsdae"
+
+#: 
+msgid "Today's Wedding Anniversaries"
+msgstr "Vandag se Huweliksherdenkings"
+
+#: 
+msgid "Api Key"
+msgstr "API-sleutel"
+
+#: 
+msgid "Regen API Key"
+msgstr "Hergenereer API-sleutel"
+
+#: 
+msgid "View Family Page"
+msgstr "Sien familiebladsy"
+
+#: 
+msgid "View Person Page"
+msgstr "Sien persoonbladsy"
+
+#: 
+msgid "Verify"
+msgstr "Verifieer"
+
+#: 
+msgid "Family has no emails to use"
+msgstr "Gesin het geen e-posse om te gebruik nie"
+
+#: 
+msgid "Blue"
+msgstr "Blou"
+
+#: 
+msgid "Black"
+msgstr "Swart"
+
+#: 
+msgid "Purple"
+msgstr "Pers"
+
+#: 
+msgid "Green"
+msgstr "Groen"
+
+#: 
+msgid "Red"
+msgstr "Rooi"
+
+#: 
+msgid "Yellow"
+msgstr "Geel"
+
+#: 
+msgid "Blue Light"
+msgstr "Blou-Lig"
+
+#: 
+msgid "Black Light"
+msgstr "Swart-Lig"
+
+#: 
+msgid "Purple Light"
+msgstr "Pers-Lig"
+
+#: 
+msgid "Green Light"
+msgstr "Groen-Lig"
+
+#: 
+msgid "Red Light"
+msgstr "Rooi-Lig"
+
+#: 
+msgid "Yellow Light"
+msgstr "Geel-Lig"
+
+#: 
+msgid "Boxed Layout"
+msgstr "Boksuitleg"
+
+#: 
+msgid "Activate the boxed layout"
+msgstr "Aktiveer die boksuitleg"
+
+#: 
+msgid "Toggle Sidebar"
+msgstr "Wissel Sybalk"
+
+#: 
+msgid "Toggle the left sidebar's state (open or collapse)"
+msgstr "Wissel die linker kantbalk se toestand (oop of invou)"
+
+#: 
+msgid "Tables Settings"
+msgstr "Tabelle-instellings"
+
+#: 
+msgid "Page length"
+msgstr "Bladsy lengte"
+
+#: 
+msgid "Change the initial page length (number of rows per page)"
+msgstr "Verander die aanvanklike bladsylengte (aantal rye per bladsy)"
+
+#: 
+msgid "User Interface"
+msgstr "Gebruikerskoppelvlak"
+
+#: 
+msgid "Locale"
+msgstr "Lokaal"
+
+#: 
+#, fuzzy
+msgid "Override system locale"
+msgstr "Ignoreer stelsel-lokaal"
+
+#: 
+msgid "Deleted"
+msgstr "Geskrap"
+
+#: 
+msgid "Invalid Birth Date: Missing birth month or day."
+msgstr "Ongeldige geboortedatum: Geboortemaand of -dag ontbreek."
+
+#: 
+msgid "Invalid Birth Date: Missing birth month and day."
+msgstr "Ongeldige geboortedatum: Geboortemaand en -dag ontbreek."
 

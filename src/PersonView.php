@@ -452,7 +452,7 @@ $bOkToEdit = (
             <div class="card-body">
                 <div class="tab-content">
                     <div class="active tab-pane" id="family">
-                        <?php if ($person->getFamId() != '') { ?>
+                        <?php if ($person->getFamId() != '' && $person->getFamily() != null) { ?>
                             <table class="table user-list table-hover">
                                 <thead>
                                     <tr>
