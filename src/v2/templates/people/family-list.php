@@ -50,11 +50,14 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <td><?= $family->getCellPhone() ?></td>
                 <td><?= $family->getEmail() ?></td>
                 <td><?= date_format($family->getDateEntered(), SystemConfig::getValue('sDateFormatLong')) ?></td>
-                <td><?= date_format($family->getDateLastEdited(), SystemConfig::getValue('sDateFormatLong')) ?></td>
-                <?php
-}
-                ?>
+                <td>
+                  <?php if ($family->getDateLastEdited()) { 
+                    echo date_format($family->getDateLastEdited(), SystemConfig::getValue('sDateFormatLong')); 
+                  } ?>
+                </td>
+                
             </tr>
+            <?php } ?>
             </tbody>
         </table>
     </div>
