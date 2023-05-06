@@ -7,8 +7,6 @@ Welcome to Church Web CRM
 ### Development 
 [![GitHub contributors](https://img.shields.io/github/contributors/churchcrm/crm.svg)]()
 [![Join the chat at https://gitter.im/ChurchCRM/CRM](https://badges.gitter.im/ChurchCRM/CRM.svg)](https://gitter.im/ChurchCRM/CRM?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-[![Build Status](https://travis-ci.org/ChurchCRM/CRM.svg?branch=master)](https://travis-ci.org/ChurchCRM/CRM)
-[![StyleCI](https://styleci.io/repos/30856851/shield?branch=master)](https://styleci.io/repos/30856851)
 [![POEditor](https://img.shields.io/badge/Languages-22-green.svg)](https://poeditor.com/join/project/RABdnDSqAt)
 
 # Status 
