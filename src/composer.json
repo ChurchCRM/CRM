@@ -1,6 +1,6 @@
 {
     "name": "churchcrm/crm",
-    "version": "4.5.4",
+    "version": "5.0.0",
     "type": "project",
     "keywords": [
         "church",
@@ -29,7 +29,7 @@
     },
     "config": {
         "platform": {
-            "php": "7.3"
+            "php": "8.2"
         },
         "sort-packages": true
     },
@@ -48,11 +48,11 @@
         "php-http/message": "^1.11.1",
         "phpmailer/phpmailer": "^6.5.1",
         "pragmarx/google2fa": "^8.0.0",
-        "propel/propel": "2.0.0-alpha12",
+        "propel/propel": "2.0.0-beta2",
         "setasign/fpdf": "^1.8.3",
         "slim/http-cache": "^1.1.0",
-        "slim/php-view": "^3.1.0",
-        "slim/slim": "^3.12.3",
+        "slim/php-view": "^3.2.0",
+        "slim/slim": "^4.10.0",
         "symfony/translation": "^5.3.3",
         "verot/class.upload.php": "^2.1.0",
         "vonage/client": "^2.4.0"

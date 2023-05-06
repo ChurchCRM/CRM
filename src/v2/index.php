@@ -15,6 +15,9 @@ $container = new Container;
 if (SystemConfig::debugEnabled()) {
     $container["settings"]['displayErrorDetails'] = true;
 }
+$container["settings"]['displayErrorDetails'] = true;
+$container["settings"]['logger']['name'] = "slim-app";
+$container["settings"]['logger']['path'] = __DIR__ . '/logs/slim-app.log';
 
 // Add middleware to the application
 $app = new App($container);
