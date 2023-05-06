@@ -2,7 +2,6 @@
 
 namespace ChurchCRM
 {
-
     use ChurchCRM\Utils\LoggerUtils;
 
     class FileSystemUtils

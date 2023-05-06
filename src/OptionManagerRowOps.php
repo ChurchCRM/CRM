@@ -44,10 +44,10 @@ switch ($mode) {
 
     case 'custom':
     case 'famcustom':
-    if (!AuthenticationManager::GetCurrentUser()->isAdmin()) {
-        RedirectUtils::Redirect('Menu.php');
-        exit;
-    }
+        if (!AuthenticationManager::GetCurrentUser()->isAdmin()) {
+            RedirectUtils::Redirect('Menu.php');
+            exit;
+        }
         break;
     default:
         RedirectUtils::Redirect('Menu.php');
@@ -101,7 +101,7 @@ switch ($sAction) {
         RunQuery($sSQL);
         break;
 
-    // Move a field down:  Swap the OptionSequence (ordering) of the selected row and the one below it
+        // Move a field down:  Swap the OptionSequence (ordering) of the selected row and the one below it
     case 'down':
         $sSQL = "UPDATE list_lst SET lst_OptionSequence = '".$iOrder."' WHERE lst_ID = $listID AND lst_OptionSequence = '".($iOrder + 1)."'";
         RunQuery($sSQL);
@@ -109,7 +109,7 @@ switch ($sAction) {
         RunQuery($sSQL);
         break;
 
-    // Delete a field from the form
+        // Delete a field from the form
     case 'delete':
         $sSQL = "SELECT '' FROM list_lst WHERE lst_ID = $listID";
         $rsPropList = RunQuery($sSQL);
@@ -153,13 +153,13 @@ switch ($sAction) {
         }
         break;
 
-    // Currently this is used solely for group roles
+        // Currently this is used solely for group roles
     case 'makedefault':
         $sSQL = "UPDATE group_grp SET grp_DefaultRole = $iID WHERE grp_RoleListID = $listID";
         RunQuery($sSQL);
         break;
 
-    // If no valid action was specified, abort
+        // If no valid action was specified, abort
     default:
         RedirectUtils::Redirect('Menu.php');
         break;

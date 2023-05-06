@@ -121,12 +121,12 @@ class ISTAddressLookup
         //intializing the parameters
 
         $username = $sISTusername;                //  * (Type your username)
-    $password = $sISTpassword;                //  * (Type your password)
+        $password = $sISTpassword;                //  * (Type your password)
 
-    $params = [
-        'username' => $username,
-        'password' => $password,
-    ];
+        $params = [
+            'username' => $username,
+            'password' => $password,
+        ];
 
         $query_string = 'username='.$username.'&password='.$password;
 
@@ -155,30 +155,29 @@ class ISTAddressLookup
             $this->ReturnCode = XMLparseIST($response, 'ReturnCode');
 
             switch ($this->ReturnCode) {
-        case '0':
-          $this->SearchesLeft = XMLparseIST($response, 'SearchesLeft');
-          break;
-        case '1':
-          $this->SearchesLeft = 'Invalid Account';
-          break;
-        case '2':
-          $this->SearchesLeft = 'Account is disabled';
-          break;
-        case '3':
-          $this->SearchesLeft = 'Account does not have access to CorrectAddress(R)';
-          $this->SearchesLeft .= ' XML web services';
-          break;
-        default:
-          $this->SearchesLeft = 'Error';
-          break;
-      }
+                case '0':
+                    $this->SearchesLeft = XMLparseIST($response, 'SearchesLeft');
+                    break;
+                case '1':
+                    $this->SearchesLeft = 'Invalid Account';
+                    break;
+                case '2':
+                    $this->SearchesLeft = 'Account is disabled';
+                    break;
+                case '3':
+                    $this->SearchesLeft = 'Account does not have access to CorrectAddress(R)';
+                    $this->SearchesLeft .= ' XML web services';
+                    break;
+                default:
+                    $this->SearchesLeft = 'Error';
+                    break;
+            }
         }
     }
 
     public function wsCorrectA($sISTusername, $sISTpassword)
     {
-
-    // Lookup and Correct US address
+        // Lookup and Correct US address
 
         $base = 'https://www.intelligentsearch.com/CorrectAddressWS/';
         $base .= 'CorrectAddressWebService.asmx/wsCorrectA';
@@ -191,28 +190,28 @@ class ISTAddressLookup
         //intializing the parameters
 
         $username = $sISTusername;                //  * (Type your username)
-    $password = $sISTpassword;                //  * (Type your password)
-    $firmname = '';                           // optional
-    $urbanization = '';                           // optional
-    $delivery_line_1 = $this->address1;              //  * (Type the street address1)
-    $delivery_line_2 = $this->address2;                  // optional
-    $city_state_zip = $this->city.' '.$this->state; //  *
-    $ca_codes = '128            135         139'; //  *
-    $ca_filler = '';                              //  *
-    $batchname = '';                               // optional
+        $password = $sISTpassword;                //  * (Type your password)
+        $firmname = '';                           // optional
+        $urbanization = '';                           // optional
+        $delivery_line_1 = $this->address1;              //  * (Type the street address1)
+        $delivery_line_2 = $this->address2;                  // optional
+        $city_state_zip = $this->city.' '.$this->state; //  *
+        $ca_codes = '128            135         139'; //  *
+        $ca_filler = '';                              //  *
+        $batchname = '';                               // optional
 
-    $params = [
-        'username'        => $username,
-        'password'        => $password,
-        'firmname'        => $firmname,
-        'urbanization'    => $urbanization,
-        'delivery_line_1' => $delivery_line_1,
-        'delivery_line_2' => $delivery_line_2,
-        'city_state_zip'  => $city_state_zip,
-        'ca_codes'        => $ca_codes,
-        'ca_filler'       => $ca_filler,
-        'batchname'       => $batchname,
-    ];
+        $params = [
+            'username'        => $username,
+            'password'        => $password,
+            'firmname'        => $firmname,
+            'urbanization'    => $urbanization,
+            'delivery_line_1' => $delivery_line_1,
+            'delivery_line_2' => $delivery_line_2,
+            'city_state_zip'  => $city_state_zip,
+            'ca_codes'        => $ca_codes,
+            'ca_filler'       => $ca_filler,
+            'batchname'       => $batchname,
+        ];
 
         foreach ($params as $key => $value) {
             $query_string .= "$key=".urlencode($value).'&';

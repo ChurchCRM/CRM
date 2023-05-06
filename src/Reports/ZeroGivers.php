@@ -71,7 +71,6 @@ if ($iCountRows < 1) {
 // ***************************
 
 if ($output == 'pdf') {
-
     // Set up bottom border values
     if ($remittance == 'yes') {
         $bottom_border1 = 134;
@@ -144,10 +143,9 @@ if ($output == 'pdf') {
         $pdf->Output();
     }
 
-    // Output a text file
+// Output a text file
 // ##################
 } elseif ($output == 'csv') {
-
     // Settings
     $delimiter = ',';
     $eol = "\r\n";

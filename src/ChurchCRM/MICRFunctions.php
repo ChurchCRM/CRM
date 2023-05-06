@@ -7,9 +7,9 @@ namespace ChurchCRM;
 class MICRFunctions
 {
     public $CHECKNO_FIRST = 1; // o<check>o t<route>t <account>o
-  public $ROUTE_FIRST1 = 2;   // t<route>t <account>o <check>
-  public $ROUTE_FIRST2 = 3;   // t<route>t o<account>o <check>
-  public $NOT_RECOGNIZED = 4;
+    public $ROUTE_FIRST1 = 2;   // t<route>t <account>o <check>
+    public $ROUTE_FIRST2 = 3;   // t<route>t o<account>o <check>
+    public $NOT_RECOGNIZED = 4;
 
     public function IdentifyFormat($micr)
     {
