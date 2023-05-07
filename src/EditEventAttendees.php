@@ -4,6 +4,8 @@
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
+use ChurchCRM\Utils\InputUtils;
+
 $sPageTitle = gettext('Church Event Editor');
 require 'Include/Header.php';
 
@@ -16,8 +18,8 @@ $EvtDate = $_POST['EDate'];
 // process the action inputs
 //
 if ($sAction == 'Delete') {
-    $dpeEventID = $_POST['DelPerEventID'];
-    $dpePerID = $_POST['DelPerID'];
+    $dpeEventID = InputUtils::LegacyFilterInput($_POST['DelPerEventID'], 'int');
+    $dpePerID = InputUtils::LegacyFilterInput($_POST['DelPerID'], 'int');
     $dpeSQL = "DELETE FROM event_attend WHERE event_id=$dpeEventID AND person_id=$dpePerID LIMIT 1";
     RunQuery($dpeSQL);
     $ShowAttendees = 1;
