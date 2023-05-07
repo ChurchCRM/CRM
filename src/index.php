@@ -1,6 +1,6 @@
 <?php
 
-if (version_compare(phpversion(), "8.0.0", ">=")) {
+if (version_compare(phpversion(), "8.0.0", "<=")) {
     header("Location: php-error.html");
     exit;
 }
