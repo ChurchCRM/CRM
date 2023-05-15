@@ -14,4 +14,5 @@ sudo unzip ChurchCRM-4.5.4.zip
 sudo mv churchcrm/ html
 sudo chmod 755 /var/www/html/Include
 sudo chmod 755 /var/www/html/Images
+sudo systemctl restart apache2 
 
