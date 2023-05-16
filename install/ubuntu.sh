@@ -2,8 +2,8 @@ sudo apt update ; sudo apt upgrade -y
 sudo apt install unzip wget -y
 sudo apt install apache2 -y
 sudo apt install mysql-server -y
-sudo apt install software-properties-common
-sudo add-apt-repository ppa:ondrej/php
+sudo apt install software-properties-common -y 
+sudo add-apt-repository ppa:ondrej/php -y 
 sudo apt update
 sudo apt install php7.4 libapache2-mod-php7.4 php7.4-mysql php7.4-xml php7.4-zip php7.4-curl php7.4-gd php7.4-mbstring -y
 
