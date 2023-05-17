@@ -5,7 +5,7 @@ sudo apt install mysql-server -y
 sudo apt install software-properties-common -y 
 sudo add-apt-repository ppa:ondrej/php -y
 sudo apt update
-sudo yum install php7.4 libapache2-mod-php7.4 php7.4-mysql php7.4-xml php7.4-zip php7.4-curl php7.4-gd php7.4-mbstring -y
+sudo yum install php7.4 libapache2-mod-php7.4 php7.4-mysql php7.4-xml php7.4-zip php7.4-curl php7.4-gd php7.4-mbstring php7.4-cli -y
 
 cd /var/www/
 sudo rm -rf html
