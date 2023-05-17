@@ -1,17 +1,21 @@
 sudo apt update ; sudo apt upgrade -y 
-sudo apt install unzip wget -y
+sudo apt install unzip wget git -y
 sudo apt install apache2 -y
 sudo apt install mysql-server -y
-sudo apt install software-properties-common -y 
-sudo add-apt-repository ppa:ondrej/php -y
-sudo apt update
-sudo yum install php7.4 libapache2-mod-php7.4 php7.4-mysql php7.4-xml php7.4-zip php7.4-curl php7.4-gd php7.4-mbstring php7.4-cli -y
 
-cd /var/www/
+########### un-comment if you are using php7.4####### 
+#sudo apt install software-properties-common -y 
+#sudo add-apt-repository ppa:ondrej/php -y
+#sudo apt update
+#sudo apt install php7.4 libapache2-mod-php7.4 php7.4-mysql php7.4-xml php7.4-zip php7.4-curl php7.4-gd php7.4-mbstring php7.4-cli -y
+######################################################
+
+sudo apt install php libapache2-mod-php php-mysql php-xml php-zip php-curl php-gd php-mbstring php-cli -y
+cd /tmp
+git clone https://github.com/ChurchCRM/CRM.git
+cd /var/www
 sudo rm -rf html
-sudo wget https://github.com/ChurchCRM/CRM/releases/download/4.5.4/ChurchCRM-4.5.4.zip
-sudo unzip ChurchCRM-4.5.4.zip
-sudo mv churchcrm/ html
+sudo cp -r /tmp/CRM/src /var/www/htnl
 sudo chmod 755 /var/www/html/Include
 sudo chmod 755 /var/www/html/Images
 sudo systemctl restart apache2 
