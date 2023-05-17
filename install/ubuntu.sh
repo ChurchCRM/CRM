@@ -15,7 +15,7 @@ cd /tmp
 git clone https://github.com/ChurchCRM/CRM.git
 cd /var/www
 sudo rm -rf html
-sudo cp -r /tmp/CRM/src /var/www/htnl
+sudo cp -r /tmp/CRM/src /var/www/html
 sudo chmod 755 /var/www/html/Include
 sudo chmod 755 /var/www/html/Images
 sudo systemctl restart apache2 
