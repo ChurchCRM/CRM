@@ -17,7 +17,7 @@ class PDF_Attendance extends ChurchInfoReport
     /////////////////////////////////////////////////////////////////////////////
 //
 // function modified by S. Shaffer 3/2006 to change the following
-// (1) handle the case where teh list of names covers more than one page
+// (1) handle the case where the list of names covers more than one page
 // (2) rearranged some of the code to make it clearer for multi-page
 //
 //    for information contact Steve Shaffer at stephen@shaffers4christ.com
@@ -44,23 +44,23 @@ class PDF_Attendance extends ChurchInfoReport
     {
         $startMonthX = 60;
         $dayWid = 7;
-        
+
         if ($with_img)
-	        $yIncrement = 10; // normaly 6
+	        $yIncrement = 10; // normally 6
 				else
 					$yIncrement = 6;
-	    	
+
         $yTitle = 20;
         $yTeachers = $yTitle + $yIncrement;
         $nameX = 10+$yIncrement/2;
         unset($NameList);
         $numMembers = 0;
         $aNameCount = 0;
-        
+
         $MaxLinesPerPage = -5*$yIncrement+66; // 36  lines for a yIncrement of 6, 16 lines for a yIncrement of 10, y=-5x+66
-        
+
         $fontTitleTitle = 16;
-        
+
         if ($with_img)
         	$fontTitleNormal = 11;
         else
@@ -68,7 +68,7 @@ class PDF_Attendance extends ChurchInfoReport
 
         $aNoSchoolX = [];
         $noSchoolCnt = 0;
-        
+
 //
 //  determine how many pages will be includes in this report
 //
@@ -82,7 +82,7 @@ class PDF_Attendance extends ChurchInfoReport
         for ($row = 0; $row < count($aNames); $row++) {
         		$person = $aNames[$row];
             $thisName = ($person->getFullName());
-            
+
              // Special handling for person listed twice- only show once in the Attendance Calendar
              // This happens when a child is listed in two different families (parents divorced and
              // both active in the church)
@@ -103,8 +103,8 @@ class PDF_Attendance extends ChurchInfoReport
 
 		$numMembers = count($NameList);
 		$nPages = ceil($numMembers / $MaxLinesPerPage);
-	
-	
+
+
 		//	echo "nPages = {$nPages} \n\r";
 		//
 		// Main loop which draws each page
@@ -118,7 +118,7 @@ class PDF_Attendance extends ChurchInfoReport
 			}
 			$this->SetFont('Times', 'B', $fontTitleTitle);
 			$this->WriteAt($nameX, $yTitle, $rptHeader);
-				
+
 			$this->SetLineWidth(0.5);
 			//$this->Line($nameX-5, $yTeachers - 0.45, 195, $yTeachers - 0.45); // unusefull
 			$yMonths = $yTop;
@@ -144,15 +144,15 @@ class PDF_Attendance extends ChurchInfoReport
 			$this->SetLineWidth(0.25);
 			for ($row = $pRowStart; $row < $pRowEnd; $row++) {
 				$this->WriteAt($nameX, $y + (($with_img==true)?3:1), $NameList[$row]);
-						
-				if($with_img == true) 
+
+				if($with_img == true)
 				{
 					//$this->SetLineWidth(0.5);
 					$this->Line($nameX-$yIncrement,$y,$nameX,$y);
 					$this->Line($nameX-$yIncrement,$y+$yIncrement,$nameX,$y+$yIncrement);
 					$this->Line($nameX-$yIncrement,$y,$nameX,$y);
 					$this->Line($nameX-$yIncrement,$y,$nameX-$yIncrement,$y+$yIncrement);
-					
+
 					// we build the cross in the case of there's no photo
 					//$this->SetLineWidth(0.25);
 					$this->Line($nameX-$yIncrement,$y+$yIncrement,$nameX,$y);
@@ -165,11 +165,11 @@ class PDF_Attendance extends ChurchInfoReport
 						$factor = $yIncrement/$height;
 						$nw = $width*$factor;
 						$nh = $yIncrement;
-				
+
 						$this->Image($imgList[$row], $nameX-$nw , $y, $nw,$nh,'JPG');
 					}
 				}
-			  
+
 				$y += $yIncrement;
 			}
 	//
@@ -201,7 +201,7 @@ class PDF_Attendance extends ChurchInfoReport
 
 			while (!$doneFlag) {
 				$dayListX[$dayCounter] = $dayX;
-			
+
 				$dayListNum[$dayCounter] = date('d', $dWhichSunday);
 
 				if ($tWhichSunday == $tNoSchool1) {
@@ -228,7 +228,7 @@ class PDF_Attendance extends ChurchInfoReport
 				if ($tWhichSunday == $tNoSchool8) {
 					$aNoSchoolX[$noSchoolCnt++] = $dayX;
 				}
-			
+
 				if (date('n', $dWhichSunday) != $whichMonth) { // Finish the previous month
 					$this->WriteAt($monthX, $yMonths + 1, mb_substr(gettext(date('F', $dWhichMonthDate)),0,3));
 					$aHeavyVerticalX[$heavyVerticalXCnt++] = $monthX;

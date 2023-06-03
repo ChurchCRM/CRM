@@ -72,13 +72,13 @@ $app->group('/families', function () {
     });
 
     $this->get('/self-verify', function ($request, $response, $args) {
-        $verifcationNotes = NoteQuery::create()
+        $verificationNotes = NoteQuery::create()
             ->filterByEnteredBy(Person::SELF_VERIFY)
             ->orderByDateEntered(Criteria::DESC)
             ->joinWithFamily()
             ->limit(100)
             ->find();
-        return $response->withJson(['families' => $verifcationNotes->toArray()]);
+        return $response->withJson(['families' => $verificationNotes->toArray()]);
     });
 
     $this->get('/pending-self-verify', function ($request, $response, $args) {

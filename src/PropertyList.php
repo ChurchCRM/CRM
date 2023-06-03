@@ -69,7 +69,7 @@ echo '</tr>';
 
 echo '<tr><td>&nbsp;</td></tr>';
 
-//Initalize the row shading
+//Initialize the row shading
 $sRowClass = 'RowColorA';
 $iPreviousPropertyType = -1;
 $sBlankLine = '';

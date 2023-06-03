@@ -18,9 +18,9 @@ class ExecutionTime
     $this->endTime = microtime(TRUE);
     $this->endR = getrusage();
   }
-  
-  public function getMiliseconds() {
-    // if End() has not yet been called, this returns the current number of running seconds.  
+
+  public function getMilliseconds() {
+    // if End() has not yet been called, this returns the current number of running seconds.
     // Otherwise, returns the ending number of seconds
     if (is_null($this->endTime)){
       $value = (microtime(TRUE) - $this->startTime)*1000;
@@ -34,7 +34,7 @@ class ExecutionTime
   private function runTime($ru, $rus, $index) {
       return ($ru["ru_$index.tv_sec"]*1000 + intval($ru["ru_$index.tv_usec"]/1000))
   -  ($rus["ru_$index.tv_sec"]*1000 + intval($rus["ru_$index.tv_usec"]/1000));
-  }    
+  }
 
   public function __toString(){
       return "This process used " . $this->runTime($this->endTime, $this->startTime, "utime") .

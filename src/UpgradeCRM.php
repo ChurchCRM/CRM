@@ -47,7 +47,7 @@ Header_body_scripts();
       <div class="timeline-item" >
         <h3 class="timeline-header"><?= gettext('Warning: Pre-Upgrade Tasks Detected') ?> <span id="status1"></span></h3>
         <div class="timeline-body" id="preUpgradeCheckWarning">
-          <p><?= gettext("Some conditions have been identified wich may prevent a successful upgrade")?></b></p>
+          <p><?= gettext("Some conditions have been identified which may prevent a successful upgrade")?></b></p>
           <p><?= gettext("Please review and mitigate these tasks before continuing with the upgrade:")?></p>
           <div>
             <ul>

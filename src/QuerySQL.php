@@ -80,7 +80,7 @@ function ExportQueryResults()
     $rsQueryResults = RunQuery($sSQL);
 
     if (mysqli_error($cnInfoCentral) != '') {
-        $sCSVstring = gettext('An error occured: ').mysqli_errno($cnInfoCentral).'--'.mysqli_error($cnInfoCentral);
+        $sCSVstring = gettext('An error occurred: ').mysqli_errno($cnInfoCentral).'--'.mysqli_error($cnInfoCentral);
     } else {
 
         //Loop through the fields and write the header row
@@ -130,7 +130,7 @@ function RunFreeQuery()
     $rsQueryResults = RunQuery($sSQL);
 
     if (mysqli_error($cnInfoCentral) != '') {
-        echo gettext('An error occured: ').mysqli_errno($cnInfoCentral).'--'.mysqli_error($cnInfoCentral);
+        echo gettext('An error occurred: ').mysqli_errno($cnInfoCentral).'--'.mysqli_error($cnInfoCentral);
     } else {
         $sRowClass = 'RowColorA';
 
@@ -177,7 +177,7 @@ function RunFreeQuery()
         echo '<p align="center">';
 
         if (count($aHiddenFormField) > 0) { // TODO Don't post to CartView.php?>
-			<form method="post" action="CartView.php"><p align="center"> 
+			<form method="post" action="CartView.php"><p align="center">
 				<input type="hidden" value="<?= implode(',', $aHiddenFormField) ?>" name="BulkAddToCart">
 				<input type="submit" class="btn btn-default" name="AddToCartSubmit" value="<?php echo gettext('Add Results To Cart'); ?>">&nbsp;
 				<input type="submit" class="btn btn-default" name="AndToCartSubmit" value="<?php echo gettext('Intersect Results With Cart'); ?>">&nbsp;

@@ -17,7 +17,7 @@
  * License: LGPL - however, if you use this library, please post to my forum where you
  *          use it so that I get a chance to see my baby in action.  If you are doing
  *          this for commercial work perhaps you could send me a few Starbucks Coffee
- *          gift dollars to encourage future developement (NOT REQUIRED).  E-mail me
+ *          gift dollars to encourage future development (NOT REQUIRED).  E-mail me
  *          for and address.
  *
  * Homepage: http://www.mojavelinux.com/forum/viewtopic.php
@@ -28,9 +28,9 @@
  *
  * Supported Browsers: Mozilla (Gecko), IE 5+, Konqueror, (not finished Opera 7), Netscape 4
  *
- * Usage: 
+ * Usage:
  *
- * Menu Options: Each option is followed by the value for that option. The options avaiable are:
+ * Menu Options: Each option is followed by the value for that option. The options available are:
  *            'contents'
  *            'rolloverContents',
  *            'uri' (may be javascript)
@@ -56,7 +56,7 @@
  *     className
  *     style
  *     cellSpacing (Konq only)
- *     
+ *
  *     ** events **
  *     mouseover/click -> domMenu_openEvent
  *     mouseout        -> domMenu_closeEvent
@@ -171,7 +171,7 @@ var domMenu_pointerStyle = domMenu_isIE ? 'hand' : 'pointer';
 function domMenu_Hash() {
     var argIndex = 0;
     this.length = 0;
-    this.numericLength = 0; 
+    this.numericLength = 0;
     this.items = new Array();
     while (arguments.length > argIndex) {
         this.items[arguments[argIndex]] = arguments[argIndex + 1];
@@ -183,10 +183,9 @@ function domMenu_Hash() {
         argIndex += 2;
     }
 
-    this.removeItem = function(in_key)
-    {
+    this.removeItem = function (in_key) {
         var tmp_value;
-        if (typeof(this.items[in_key]) != 'undefined') {
+        if (typeof (this.items[in_key]) != 'undefined') {
             this.length--;
             if (in_key == parseInt(in_key)) {
                 this.numericLength--;
@@ -195,36 +194,32 @@ function domMenu_Hash() {
             tmp_value = this.items[in_key];
             delete this.items[in_key];
         }
-        
+
         return tmp_value;
     }
 
-    this.getItem = function(in_key)
-    {
+    this.getItem = function (in_key) {
         return this.items[in_key];
     }
 
-    this.setItem = function(in_key, in_value)
-    {
-        if (typeof(this.items[in_key]) == 'undefined') {
+    this.setItem = function (in_key, in_value) {
+        if (typeof (this.items[in_key]) == 'undefined') {
             this.length++;
             if (in_key == parseInt(in_key)) {
                 this.numericLength++;
             }
         }
-        
+
         this.items[in_key] = in_value;
     }
 
-    this.hasItem = function(in_key)
-    {
-        return typeof(this.items[in_key]) != 'undefined';
+    this.hasItem = function (in_key) {
+        return typeof (this.items[in_key]) != 'undefined';
     }
-    
-    this.merge = function(in_hash)
-    {
+
+    this.merge = function (in_hash) {
         for (var tmp_key in in_hash.items) {
-            if (typeof(this.items[tmp_key]) == 'undefined') {
+            if (typeof (this.items[tmp_key]) == 'undefined') {
                 this.length++;
                 if (tmp_key == parseInt(tmp_key)) {
                     this.numericLength++;
@@ -235,8 +230,7 @@ function domMenu_Hash() {
         }
     }
 
-    this.compare = function(in_hash)
-    {
+    this.compare = function (in_hash) {
         if (this.length != in_hash.length) {
             return false;
         }
@@ -246,7 +240,7 @@ function domMenu_Hash() {
                 return false;
             }
         }
-        
+
         return true;
     }
 }
@@ -254,8 +248,7 @@ function domMenu_Hash() {
 // }}}
 // {{{ domMenu_activate()
 
-function domMenu_activate(in_containerId)
-{
+function domMenu_activate(in_containerId) {
     var container;
     var data;
 
@@ -284,10 +277,10 @@ function domMenu_activate(in_containerId)
         'level', 0,
         'index', 1
     );
-    
+
     // if we choose to distribute either height or width, determine ratio of each cell
-    var distributeRatio = Math.round(100/container.data.items['numChildren']) + '%';
-    
+    var distributeRatio = Math.round(100 / container.data.items['numChildren']) + '%';
+
     // the first menu is the rootMenu, which is a child of the zero level element
     var rootMenu = document.createElement('div');
     rootMenu.id = in_containerId + '[0]';
@@ -345,30 +338,30 @@ function domMenu_activate(in_containerId)
         rootElement.innerHTML = '<span>' + rootMenuTableCell.data.items['contents'] + '</span>' + (rootMenuTableCell.data.hasItem('contentsHover') ? '<span style="display: none;">' + rootMenuTableCell.data.items['contentsHover'] + '</span>' : '');
 
         // attach the events
-        rootMenuTableCell.onmouseover = function(in_event) { domMenu_openEvent(this, in_event, settings.items['openMouseoverMenuDelay']); };
-        rootMenuTableCell.onmouseout = function(in_event) { domMenu_closeEvent(this, in_event); };
+        rootMenuTableCell.onmouseover = function (in_event) { domMenu_openEvent(this, in_event, settings.items['openMouseoverMenuDelay']); };
+        rootMenuTableCell.onmouseout = function (in_event) { domMenu_closeEvent(this, in_event); };
 
         if (settings.items['openMousedownMenuDelay'] >= 0 && rootMenuTableCell.data.items['numChildren']) {
-            rootMenuTableCell.onmousedown = function(in_event) { domMenu_openEvent(this, in_event, settings.items['openMousedownMenuDelay']); };
-            // cancel mouseup so that it doesn't propogate to global mouseup event
-            rootMenuTableCell.onmouseup = function(in_event) { var eventObj = domMenu_isIE ? event : in_event; eventObj.cancelBubble = true; };
+            rootMenuTableCell.onmousedown = function (in_event) { domMenu_openEvent(this, in_event, settings.items['openMousedownMenuDelay']); };
+            // cancel mouseup so that it doesn't propagate to global mouseup event
+            rootMenuTableCell.onmouseup = function (in_event) { var eventObj = domMenu_isIE ? event : in_event; eventObj.cancelBubble = true; };
             if (domMenu_isIE) {
-                rootMenuTableCell.ondblclick = function(in_event) { domMenu_openEvent(this, in_event, settings.items['openMousedownMenuDelay']); };
+                rootMenuTableCell.ondblclick = function (in_event) { domMenu_openEvent(this, in_event, settings.items['openMousedownMenuDelay']); };
             }
         }
         else if (rootMenuTableCell.data.items['uri']) {
             rootMenuTableCell.style.cursor = domMenu_pointerStyle;
-            rootMenuTableCell.onclick = function(in_event) { domMenu_resolveLink(this, in_event); };
+            rootMenuTableCell.onclick = function (in_event) { domMenu_resolveLink(this, in_event); };
         }
 
         // prevent highlighting of text
         if (domMenu_isIE) {
-            rootMenuTableCell.onselectstart = function() { return false; };
+            rootMenuTableCell.onselectstart = function () { return false; };
         }
 
-        rootMenuTableCell.oncontextmenu = function() { return false; };
+        rootMenuTableCell.oncontextmenu = function () { return false; };
     }
-    
+
     // add the menu rootMenu to the zero level element
     rootMenu = container.appendChild(rootMenu);
 
@@ -380,8 +373,7 @@ function domMenu_activate(in_containerId)
 // }}}
 // {{{ domMenu_activateSubMenu()
 
-function domMenu_activateSubMenu(in_parentElement)
-{
+function domMenu_activateSubMenu(in_parentElement) {
     // see if submenu already exists
     if (in_parentElement.data.hasItem('subMenu')) {
         domMenu_toggleSubMenu(in_parentElement, 'visible');
@@ -439,14 +431,14 @@ function domMenu_activateSubMenu(in_parentElement)
             'level', in_parentElement.data.items['level'] + 1,
             'index', index
         ));
-        
+
         // assign the styles
         var parentStyle = in_parentElement.data.items['level'] == 1 ? in_parentElement.parentNode.style : in_parentElement.style;
         menuTableCell.style.cursor = 'default';
-        
-        var element = menuTableCell.appendChild(document.createElement('div')); 
+
+        var element = menuTableCell.appendChild(document.createElement('div'));
         var outerElement = element;
-        outerElement.className = settings.items['subMenuElementClass']; 
+        outerElement.className = settings.items['subMenuElementClass'];
 
         if (menuTableCell.data.items['numChildren']) {
             element = outerElement.appendChild(document.createElement('div'));
@@ -462,19 +454,19 @@ function domMenu_activateSubMenu(in_parentElement)
         element.innerHTML = menuTableCell.data.items['contents'];
 
         // attach the events
-        menuTableCell.onmouseover = function(in_event) { domMenu_openEvent(this, in_event, settings.items['openMouseoverSubMenuDelay']); };
-        menuTableCell.onmouseout = function(in_event) { domMenu_closeEvent(this, in_event); };
+        menuTableCell.onmouseover = function (in_event) { domMenu_openEvent(this, in_event, settings.items['openMouseoverSubMenuDelay']); };
+        menuTableCell.onmouseout = function (in_event) { domMenu_closeEvent(this, in_event); };
 
         if (settings.items['openClickSubMenuDelay'] >= 0 && menuTableCell.data.items['numChildren']) {
-            menuTableCell.onmousedown = function(in_event) { domMenu_openEvent(this, in_event, settings.items['openClickSubMenuDelay']); };
-            menuTableCell.onmouseup = function(in_event) { var eventObj = domMenu_isIE ? event : in_event; eventObj.cancelBubble = true; };
+            menuTableCell.onmousedown = function (in_event) { domMenu_openEvent(this, in_event, settings.items['openClickSubMenuDelay']); };
+            menuTableCell.onmouseup = function (in_event) { var eventObj = domMenu_isIE ? event : in_event; eventObj.cancelBubble = true; };
             if (domMenu_isIE) {
-                menuTableCell.ondblclick = function(in_event) { domMenu_openEvent(this, in_event, settings.items['openClickSubMenuDelay']); };
+                menuTableCell.ondblclick = function (in_event) { domMenu_openEvent(this, in_event, settings.items['openClickSubMenuDelay']); };
             }
         }
         else if (menuTableCell.data.items['uri']) {
             menuTableCell.style.cursor = domMenu_pointerStyle;
-            menuTableCell.onclick = function(in_event) { domMenu_resolveLink(this, in_event); };
+            menuTableCell.onclick = function (in_event) { domMenu_resolveLink(this, in_event); };
         }
         else if (!menuTableCell.data.items['numChildren']) {
             outerElement.className += ' ' + settings.items['subMenuElementHeadingClass'];
@@ -482,10 +474,10 @@ function domMenu_activateSubMenu(in_parentElement)
 
         // prevent highlighting of text
         if (domMenu_isIE) {
-            menuTableCell.onselectstart = function() { return false; };
+            menuTableCell.onselectstart = function () { return false; };
         }
 
-        menuTableCell.oncontextmenu = function() { return false; };
+        menuTableCell.oncontextmenu = function () { return false; };
     }
 
     menu = document.body.appendChild(menu);
@@ -502,8 +494,7 @@ function domMenu_activateSubMenu(in_parentElement)
  *
  * @return mixed new active element or false if not set
  */
-function domMenu_changeActivePath(in_newActiveElement, in_oldActiveElement, in_closeDelay)
-{
+function domMenu_changeActivePath(in_newActiveElement, in_oldActiveElement, in_closeDelay) {
     // protect against crap
     if (!in_oldActiveElement && !in_newActiveElement) {
         return false;
@@ -523,7 +514,7 @@ function domMenu_changeActivePath(in_newActiveElement, in_oldActiveElement, in_c
     if (in_oldActiveElement) {
         var tmp_oldActivePathElement = in_oldActiveElement;
         do {
-            oldActivePath.setItem(tmp_oldActivePathElement.id, tmp_oldActivePathElement); 
+            oldActivePath.setItem(tmp_oldActivePathElement.id, tmp_oldActivePathElement);
         } while ((tmp_oldActivePathElement = tmp_oldActivePathElement.data.items['parentElement']) && tmp_oldActivePathElement.id != basename);
 
         // unhighlight the old active element if it doesn't have children open
@@ -541,7 +532,7 @@ function domMenu_changeActivePath(in_newActiveElement, in_oldActiveElement, in_c
         // in the event we have no old active element, just highlight new one and return
         // without setting the new active element (handled later)
         if (!in_oldActiveElement) {
-            domMenu_cancelTimeout(in_newActiveElement.id, 'close'); 
+            domMenu_cancelTimeout(in_newActiveElement.id, 'close');
             domMenu_toggleHighlight(in_newActiveElement, true);
             return false;
         }
@@ -558,8 +549,8 @@ function domMenu_changeActivePath(in_newActiveElement, in_oldActiveElement, in_c
                 intersectPoint = tmp_newActivePathElement;
             }
 
-            newActivePath.setItem(tmp_newActivePathElement.id, tmp_newActivePathElement); 
-            domMenu_cancelTimeout(tmp_newActivePathElement.id, 'close'); 
+            newActivePath.setItem(tmp_newActivePathElement.id, tmp_newActivePathElement);
+            domMenu_cancelTimeout(tmp_newActivePathElement.id, 'close');
             // {!} this is ugly {!}
             if (tmp_newActivePathElement != in_oldActiveElement || actualActiveElement == in_oldActiveElement) {
                 domMenu_toggleHighlight(tmp_newActivePathElement, true);
@@ -596,11 +587,11 @@ function domMenu_changeActivePath(in_newActiveElement, in_oldActiveElement, in_c
     }
 
     // override the close delay with that passed in
-    if (typeof(in_closeDelay) != 'undefined') {
+    if (typeof (in_closeDelay) != 'undefined') {
         closeDelay = in_closeDelay;
     }
 
-    // if there is an intersect sibling, then we need to work from there up to 
+    // if there is an intersect sibling, then we need to work from there up to
     // preserve the active path
     if (intersectSibling) {
         // only if this is not the root level to we allow the scheduled close
@@ -634,7 +625,7 @@ function domMenu_changeActivePath(in_newActiveElement, in_oldActiveElement, in_c
         domMenu_cancelTimeout(i, 'close');
 
         if (isRootLevel) {
-            domMenu_toggleHighlight(oldActivePath.items[i], false); 
+            domMenu_toggleHighlight(oldActivePath.items[i], false);
             domMenu_toggleSubMenu(oldActivePath.items[i], 'hidden');
         }
         else {
@@ -649,15 +640,14 @@ function domMenu_changeActivePath(in_newActiveElement, in_oldActiveElement, in_c
             domMenu_callTimeout(tmp_function, closeDelay, tmp_args, i, 'close');
         }
     }
-    
+
     return in_newActiveElement;
 }
 
 // }}}
 // {{{ domMenu_deactivate()
 
-function domMenu_deactivate(in_basename, in_delay)
-{
+function domMenu_deactivate(in_basename, in_delay) {
     if (!in_delay) {
         in_delay = 0;
     }
@@ -675,8 +665,7 @@ function domMenu_deactivate(in_basename, in_delay)
  * called, handles reinitialization of the menu state and sets
  * a timeout interval for opening the submenu (if one exists)
  */
-function domMenu_openEvent(in_this, in_event, in_openDelay)
-{
+function domMenu_openEvent(in_this, in_event, in_openDelay) {
     if (domMenu_isGecko) {
         window.getSelection().removeAllRanges();
     }
@@ -686,7 +675,7 @@ function domMenu_openEvent(in_this, in_event, in_openDelay)
     var currentTarget = domMenu_isIE ? in_this : eventObj.currentTarget;
     var basename = currentTarget.data.items['basename'];
 
-    // if we are moving amoungst children of the same element, just ignore event
+    // if we are moving amongst children of the same element, just ignore event
     if (eventObj.type != 'mousedown' && domMenu_getElement(eventObj[domMenu_eventFrom], basename) == currentTarget) {
         return;
     }
@@ -734,8 +723,7 @@ function domMenu_openEvent(in_this, in_event, in_openDelay)
  * When an mouseout event is received to close the menu, this function is
  * called, sets a timeout interval for closing the menu.
  */
-function domMenu_closeEvent(in_this, in_event)
-{
+function domMenu_closeEvent(in_this, in_event) {
     // setup the cross-browser event object and target
     var eventObj = domMenu_isIE ? event : in_event;
     var currentTarget = domMenu_isIE ? in_this : eventObj.currentTarget;
@@ -756,13 +744,12 @@ function domMenu_closeEvent(in_this, in_event)
             domMenu_toggleHighlight(currentTarget, false);
         }
     }
-}    
+}
 
 // }}}
 // {{{ domMenu_getElement()
 
-function domMenu_getElement(in_object, in_basename)
-{
+function domMenu_getElement(in_object, in_basename) {
     while (in_object) {
         try {
             if (in_object.id && in_object.id.search(new RegExp('^' + in_basename + '(\\[[0-9]\\])*\\[[1-9]\\]$')) == 0) {
@@ -772,28 +759,27 @@ function domMenu_getElement(in_object, in_basename)
                 in_object = in_object.parentNode;
             }
         }
-        catch(e) {
+        catch (e) {
             return false;
         }
     }
-    
+
     return false;
 }
 
 // }}}
 // {{{ domMenu_detectCollisions()
 
-function domMenu_detectCollisions(in_menuObj, in_recover)
-{
+function domMenu_detectCollisions(in_menuObj, in_recover) {
     // no need to do anything for opera
     if (domMenu_isOpera) {
         return;
     }
 
-    if (typeof(domMenu_selectElements) == 'undefined') {
+    if (typeof (domMenu_selectElements) == 'undefined') {
         domMenu_selectElements = document.getElementsByTagName('select');
     }
-    
+
     // if we don't have a menu, then unhide selects
     if (in_recover) {
         for (var cnt = 0; cnt < domMenu_selectElements.length; cnt++) {
@@ -827,12 +813,12 @@ function domMenu_detectCollisions(in_menuObj, in_recover)
             thisSelect.hideList = new domMenu_Hash();
         }
 
-        var selectOffsets = domMenu_getOffsets(thisSelect); 
+        var selectOffsets = domMenu_getOffsets(thisSelect);
         // for mozilla we only have to worry about the scrollbar itself
         if (domMenu_isGecko) {
             selectOffsets.setItem('left', selectOffsets.items['left'] + thisSelect.offsetWidth - domMenu_scrollbarWidth);
-            selectOffsets.setItem('leftCenter', selectOffsets.items['left'] + domMenu_scrollbarWidth/2);
-            selectOffsets.setItem('radius', Math.max(thisSelect.offsetHeight, domMenu_scrollbarWidth/2));
+            selectOffsets.setItem('leftCenter', selectOffsets.items['left'] + domMenu_scrollbarWidth / 2);
+            selectOffsets.setItem('radius', Math.max(thisSelect.offsetHeight, domMenu_scrollbarWidth / 2));
         }
 
         var center2centerDistance = Math.sqrt(Math.pow(selectOffsets.items['leftCenter'] - menuOffsets.items['leftCenter'], 2) + Math.pow(selectOffsets.items['topCenter'] - menuOffsets.items['topCenter'], 2));
@@ -841,11 +827,11 @@ function domMenu_detectCollisions(in_menuObj, in_recover)
         if (center2centerDistance < radiusSum) {
             // tip is left of select
             if ((menuOffsets.items['leftCenter'] <= selectOffsets.items['leftCenter'] && menuOffsets.items['right'] < selectOffsets.items['left']) ||
-            // tip is right of select
+                // tip is right of select
                 (menuOffsets.items['leftCenter'] > selectOffsets.items['leftCenter'] && menuOffsets.items['left'] > selectOffsets.items['right']) ||
-            // tip is above select
+                // tip is above select
                 (menuOffsets.items['topCenter'] <= selectOffsets.items['topCenter'] && menuOffsets.items['bottom'] < selectOffsets.items['top']) ||
-            // tip is below select
+                // tip is below select
                 (menuOffsets.items['topCenter'] > selectOffsets.items['topCenter'] && menuOffsets.items['top'] > selectOffsets.items['bottom'])) {
                 thisSelect.hideList.removeItem(in_menuObj.id);
                 if (!thisSelect.hideList.length) {
@@ -863,8 +849,7 @@ function domMenu_detectCollisions(in_menuObj, in_recover)
 // }}}
 // {{{ domMenu_getOffsets()
 
-function domMenu_getOffsets(in_object)
-{
+function domMenu_getOffsets(in_object) {
     var originalObject = in_object;
     var originalWidth = in_object.offsetWidth;
     var originalHeight = in_object.offsetHeight;
@@ -876,23 +861,22 @@ function domMenu_getOffsets(in_object)
         offsetTop += in_object.offsetTop;
         in_object = in_object.offsetParent;
     }
-    
+
     return new domMenu_Hash(
-        'left',       offsetLeft,
-        'top',        offsetTop,
-        'right',      offsetLeft + originalWidth,
-        'bottom',     offsetTop + originalHeight,
-        'leftCenter', offsetLeft + originalWidth/2,
-        'topCenter',  offsetTop + originalHeight/2,
-        'radius',     Math.max(originalWidth, originalHeight) 
+        'left', offsetLeft,
+        'top', offsetTop,
+        'right', offsetLeft + originalWidth,
+        'bottom', offsetTop + originalHeight,
+        'leftCenter', offsetLeft + originalWidth / 2,
+        'topCenter', offsetTop + originalHeight / 2,
+        'radius', Math.max(originalWidth, originalHeight)
     );
 }
 
 // }}}
 // {{{ domMenu_callTimeout()
 
-function domMenu_callTimeout(in_function, in_timeout, in_args, in_basename, in_type)
-{
+function domMenu_callTimeout(in_function, in_timeout, in_args, in_basename, in_type) {
     if (in_timeout == 0) {
         var tmp_function = new Function('argv', in_function);
         tmp_function(in_args);
@@ -907,7 +891,7 @@ function domMenu_callTimeout(in_function, in_timeout, in_args, in_basename, in_t
         }
 
         if (!domMenu_isKonq && !domMenu_isIE50) {
-            domMenu_timeouts[in_type].setItem(in_basename, setTimeout(function() { tmp_function(tmp_args); }, in_timeout));
+            domMenu_timeouts[in_type].setItem(in_basename, setTimeout(function () { tmp_function(tmp_args); }, in_timeout));
         }
         else {
             var tmp_data = new Array();
@@ -925,8 +909,7 @@ function domMenu_callTimeout(in_function, in_timeout, in_args, in_basename, in_t
 // }}}
 // {{{ domMenu_cancelTimeout()
 
-function domMenu_cancelTimeout(in_basename, in_type)
-{
+function domMenu_cancelTimeout(in_basename, in_type) {
     // take advantage of browsers which use the anonymous function
     if (!domMenu_isKonq && !domMenu_isIE50) {
         clearTimeout(domMenu_timeouts[in_type].removeItem(in_basename));
@@ -943,8 +926,7 @@ function domMenu_cancelTimeout(in_basename, in_type)
 // }}}
 // {{{ domMenu_correctEdgeBleed()
 
-function domMenu_correctEdgeBleed(in_width, in_height, in_x, in_y, in_padding, in_axis)
-{
+function domMenu_correctEdgeBleed(in_width, in_height, in_x, in_y, in_padding, in_axis) {
     if (domMenu_isIE && !domMenu_isIE5) {
         var pageHeight = document.documentElement.clientHeight;
     }
@@ -957,7 +939,7 @@ function domMenu_correctEdgeBleed(in_width, in_height, in_x, in_y, in_padding, i
 
     var pageYOffset = domMenu_isIE ? document.body.scrollTop : window.pageYOffset;
     var pageXOffset = domMenu_isIE ? document.body.scrollLeft : window.pageXOffset;
-    
+
 
     if (in_axis == 'horizontal') {
         var bleedRight = (in_x - pageXOffset) + in_width - (document.body.clientWidth - in_padding);
@@ -977,7 +959,7 @@ function domMenu_correctEdgeBleed(in_width, in_height, in_x, in_y, in_padding, i
     else {
         var bleedTop = (in_y - pageYOffset) - in_padding;
         var bleedBottom = (in_y - pageYOffset) + in_height - (pageHeight - in_padding);
-        
+
         // if we are bleeding off the bottom, move menu to stay on page
         if (bleedBottom > 0) {
             in_y -= bleedBottom;
@@ -989,28 +971,27 @@ function domMenu_correctEdgeBleed(in_width, in_height, in_x, in_y, in_padding, i
             in_y += bleedTop;
         }
     }
-    
+
     return new Array(in_x, in_y);
 }
 
 // }}}
 // {{{ domMenu_toggleSubMenu()
 
-function domMenu_toggleSubMenu(in_parentElement, in_style)
-{
+function domMenu_toggleSubMenu(in_parentElement, in_style) {
     var subMenu = in_parentElement.data.items['subMenu'];
     if (subMenu && subMenu.style.visibility != in_style) {
         var settings = domMenu_settings.items[in_parentElement.data.items['basename']];
         var prefix = in_parentElement.data.items['level'] == 1 ? 'menu' : 'subMenu';
         var className = settings.items[prefix + 'ElementClass'];
-		// :BUG: this is a problem if submenus click to open, then it won't
-		// have the right class when you click to close
-		if (in_style == 'visible') {
+        // :BUG: this is a problem if submenus click to open, then it won't
+        // have the right class when you click to close
+        if (in_style == 'visible') {
             className += ' ' + settings.items[prefix + 'Element' + (in_style == 'visible' ? 'Active' : 'Hover') + 'Class'];
-		}
+        }
 
         in_parentElement.firstChild.className = className;
-        
+
         // position our submenu
         if (in_style == 'visible') {
             var tmp_offsets = domMenu_getOffsets(in_parentElement);
@@ -1056,7 +1037,7 @@ function domMenu_toggleSubMenu(in_parentElement, in_style)
                     // change the width of the table
                     subMenu.firstChild.style.width = Math.max(minWidth, renderedWidth) + 'px';
                 }
-                
+
                 var coordinates = domMenu_correctEdgeBleed(subMenu.offsetWidth, subMenu.offsetHeight, xCoor, yCoor, settings.items['screenPadding'], settings.items['axis']);
                 subMenu.style.left = coordinates[0] + 'px';
                 subMenu.style.top = coordinates[1] + 'px';
@@ -1082,8 +1063,7 @@ function domMenu_toggleSubMenu(in_parentElement, in_style)
 // }}}
 // {{{ domMenu_toggleHighlight()
 
-function domMenu_toggleHighlight(in_element, in_status)
-{
+function domMenu_toggleHighlight(in_element, in_status) {
     // if this is a heading, don't change the style
     if (!in_element.data.items['numChildren'] && !in_element.data.items['uri']) {
         return;
@@ -1132,8 +1112,7 @@ function domMenu_toggleHighlight(in_element, in_status)
 // }}}
 // {{{ domMenu_resolveLink()
 
-function domMenu_resolveLink(in_this, in_event)
-{
+function domMenu_resolveLink(in_this, in_event) {
     var eventObj = domMenu_isIE ? event : in_event;
     var currentTarget = domMenu_isIE ? in_this : eventObj.currentTarget;
     var basename = currentTarget.data.items['basename'];
@@ -1158,8 +1137,7 @@ function domMenu_resolveLink(in_this, in_event)
 // }}}
 // {{{ domMenu_quote()
 
-function domMenu_quote(in_string)
-{
+function domMenu_quote(in_string) {
     return "'" + in_string.replace(new RegExp("'", 'g'), "\\'") + "'";
 }
 

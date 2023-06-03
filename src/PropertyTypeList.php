@@ -47,7 +47,7 @@ if (AuthenticationManager::GetCurrentUser()->isMenuOptionsEnabled()) {
 }
 echo '</tr>';
 
-//Initalize the row shading
+//Initialize the row shading
 $sRowClass = 'RowColorA';
 
 //Loop through the records

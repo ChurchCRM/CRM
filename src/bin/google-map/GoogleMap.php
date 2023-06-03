@@ -1,6 +1,6 @@
 <?php
 /*
- * Project:     GoogleMapAPI V3: a PHP library inteface to the Google Map API v3
+ * Project:     GoogleMapAPI V3: a PHP library interface to the Google Map API v3
  * File:        GoogleMapV3.php
  *
  * This library is free software; you can redistribute it and/or
@@ -1839,7 +1839,7 @@ class GoogleMapAPI
         $_output .= " * Copyright 2010-2012 Brad Wedell\n";
         $_output .= " * Original Author: Monte Ohrt <monte AT ohrt DOT com>\n";
         $_output .= " * Original Copyright 2005-2006 New Digital Group\n";
-        $_output .= " * Originial Link http://www.phpinsider.com/php/code/GoogleMapAPI/\n";
+        $_output .= " * Original Link http://www.phpinsider.com/php/code/GoogleMapAPI/\n";
         $_output .= " *************************************************/\n";
 
         // create global info window ( so we can auto close it )
@@ -1905,7 +1905,7 @@ class GoogleMapAPI
         //Elevation stuff
         if (!empty($this->_elevation_polylines) || (!empty($this->_directions) && $this->elevation_directions)) {
             $_script .= "
-				var elevationCharts$_key = [];				
+				var elevationCharts$_key = [];
 			";
         }
         //Overlays
@@ -2008,14 +2008,14 @@ class GoogleMapAPI
             if ($this->street_view_controls) {
                 $_script .= '
 					mapOptions'.$_key.'.streetViewControl= true;
-	
+
 				';
             }
 
             // Add any map styles if they are present
             if (isset($this->map_styles)) {
                 $_script .= "
-						var styles$_key = ".$this->map_styles.';		
+						var styles$_key = ".$this->map_styles.';
 				';
             }
 
@@ -2142,7 +2142,7 @@ class GoogleMapAPI
 				  ";
                 }
                 $_script .= '
-				  
+
 			  ';
             }
 
@@ -2248,7 +2248,7 @@ class GoogleMapAPI
 		          gridSize: '.$this->marker_clusterer_options['gridSize'].',
 		          styles: '.$this->marker_clusterer_options['styles'].'
 		        });
-		        	
+
         	';
         }
 
@@ -2272,13 +2272,13 @@ class GoogleMapAPI
         		';
             }
             $_output .= '
-        	   polylineCoords'.$this->map_id."[$polyline_id] = [".$_coords_output.'];    	
+        	   polylineCoords'.$this->map_id."[$polyline_id] = [".$_coords_output.'];
 			   polylines'.$this->map_id."[$polyline_id] = new google.maps.Polyline({
 				  path: polylineCoords".$this->map_id."[$polyline_id]
 				  ".(($_polyline['color'] != '') ? ", strokeColor: '".$_polyline['color']."'" : '').'
 				  '.(($_polyline['opacity'] != 0) ? ', strokeOpacity: '.$_polyline['opacity'].'' : '').'
 				  '.(($_polyline['weight'] != 0) ? ', strokeWeight: '.$_polyline['weight'].'' : '').'
-			  });			
+			  });
 			  polylines'.$this->map_id."[$polyline_id].setMap(map".$this->map_id.');
         	';
 
@@ -2354,7 +2354,7 @@ class GoogleMapAPI
 						destination: '".$directions['dest']."'
 						$directionsParams
 					}
-					".(($this->elevation_directions) ? ",		
+					".(($this->elevation_directions) ? ",
 					   selector: '".$directions['elevation_dom_id']."',
 					   chart: new google.visualization.ColumnChart(document.getElementById('".$directions['elevation_dom_id']."')),
 					   service: new google.maps.ElevationService(),
@@ -2410,31 +2410,31 @@ class GoogleMapAPI
 			    var marker_options = {
 			        position: point,
 			        map: map,
-			        title: title};  
+			        title: title};
 			    if(icon!=''){marker_options.icon = icon;}
 			    if(icon_shadow!=''){marker_options.shadow = icon_shadow;}
-			    
+
 			    //create marker
 			    var new_marker = new google.maps.Marker(marker_options);
 			    if(html!=''){
 					".(($this->info_window) ? "
-			        
+
 			        google.maps.event.addListener(new_marker, '".$this->window_trigger."', function() {
-			          	infowindow.close();	
+			          	infowindow.close();
 			          	infowindow.setContent(html);
 			          	infowindow.open(map,new_marker);
 			        });
-			        
+
 					if(openers != ''&&!isEmpty(openers)){
 			           for(var i in openers){
 			             var opener = document.getElementById(openers[i]);
-			             opener.on".$this->window_trigger.' = function() { 
-			             
+			             opener.on".$this->window_trigger.' = function() {
+
 			             	infowindow.close();
 			             	infowindow.setContent(html);
-			             	infowindow.open(map,new_marker); 
-			             	
-			          		return false;			             	
+			             	infowindow.open(map,new_marker);
+
+			          		return false;
 			             };
 			           }
 			        }
@@ -2453,7 +2453,7 @@ class GoogleMapAPI
 						}
 			        }
                 }
-			    return new_marker;  
+			    return new_marker;
 			}
     	';
 
@@ -2466,7 +2466,7 @@ class GoogleMapAPI
      public function getCreateOverlayJS()
      {
          $_output = "
-		 	CustomOverlay.prototype = new google.maps.OverlayView();	
+		 	CustomOverlay.prototype = new google.maps.OverlayView();
 			function CustomOverlay(bounds, image, map, opacity){
 				this.bounds_ = bounds;
 				this.image_ = image;
@@ -2485,9 +2485,9 @@ class GoogleMapAPI
 				img.style.width = '100%';
 				img.style.height = '100%';
 				img.style.opacity = this.opacity/10;
-				img.style.filter = 'alpha(opacity='+this.opacity*10+')';	
+				img.style.filter = 'alpha(opacity='+this.opacity*10+')';
 				div.appendChild(img);
-				this.div_ = div;	
+				this.div_ = div;
 				var panes = this.getPanes();
 				panes.overlayImage.appendChild(div);
 			}
@@ -2852,7 +2852,7 @@ class GoogleMapAPI
         		';
             }
             $_output .= '
-        	   polygonCoords'.$this->map_id."[$polygon_id] = [".$_coords_output.'];    	
+        	   polygonCoords'.$this->map_id."[$polygon_id] = [".$_coords_output.'];
 			   polygon'.$this->map_id."[$polygon_id] = new google.maps.Polygon({
 				  paths: polygonCoords".$this->map_id."[$polygon_id]
 				  ".(($_polygon['color'] != '') ? ", strokeColor: '".$_polygon['color']."'" : '').'
@@ -2860,7 +2860,7 @@ class GoogleMapAPI
 				  '.(($_polygon['weight'] != 0) ? ', strokeWeight: '.$_polygon['weight'].'' : '').'
 				  '.(($_polygon['fill_color'] != '') ? ", fillColor: '".$_polygon['fill_color']."'" : '').'
 				  '.(($_polygon['fill_opacity'] != 0) ? ', fillOpacity: '.$_polygon['fill_opacity'].'' : '').'
-			  });			
+			  });
 			  polygon'.$this->map_id."[$polygon_id].setMap(map".$this->map_id.');
         	';
         }

@@ -269,7 +269,7 @@ if ($sReportType == '') {
     }
 
     if ($sReportType == 'Giving Report') {
-        echo '<tr><td class=LabelColumn>'.gettext('Minimun Total Amount:').'</td>'
+        echo '<tr><td class=LabelColumn>'.gettext('Minimum Total Amount:').'</td>'
             .'<td class=TextColumnWithBottomBorder><div class=SmallText>'
             .gettext('0 - No Minimum').'</div>'
             ."<input name=minimum type=text value='0' size=8></td></tr>";

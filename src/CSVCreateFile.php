@@ -21,7 +21,7 @@ use ChurchCRM\dto\Classification;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\FamilyQuery;
 
-$delimiter = SystemConfig::getValue("sCSVExportDelemiter");
+$delimiter = SystemConfig::getValue("sCSVExportDelimiter");
 
 // Turn ON output buffering
 ob_start();
@@ -85,7 +85,7 @@ if ($sSource == 'cart') {
         $sPerTable = '(person_per, person2group2role_p2g2r)';
     }
 
-    // Prepare any extentions to the WHERE clauses
+    // Prepare any extensions to the WHERE clauses
     $sWhereExt = '';
     if (!empty($_POST['Classification'])) {
         $count = 0;

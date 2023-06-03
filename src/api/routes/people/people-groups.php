@@ -57,7 +57,7 @@ $app->group('/groups', function () {
             ->findByGroupId($groupID);
 
 
-        // we loop to find the information in the family to add adresses etc ...
+        // we loop to find the information in the family to add addresses etc ...
         foreach ($members as $member) {
             $p = $member->getPerson();
             $fam = $p->getFamily();

@@ -785,7 +785,7 @@ msgid "Deposit Slip Report"
 msgstr "Αναφορά δελτίου κατάθεσης"
 
 #: 
-msgid "Important note: failed transactions will be deleted permanantly when the deposit slip is closed."
+msgid "Important note: failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr "Σημαντική σημείωση: οι αποτυχημένες συναλλαγές θα διαγραφούν οριστικά όταν κλείσει το δελτίο κατάθεσης."
 
 #: 
@@ -1701,7 +1701,7 @@ msgid "eGive"
 msgstr "eΔώσε"
 
 #: 
-msgid "Minimun Total Amount:"
+msgid "Minimum Total Amount:"
 msgstr "Ελάχιστο συνολικό ποσό:"
 
 #: 
@@ -3013,7 +3013,7 @@ msgid "Execute SQL"
 msgstr "Εκτελέστε SQL"
 
 #: 
-msgid "An error occured: "
+msgid "An error occurred: "
 msgstr "Προέκυψε ένα σφάλμα: "
 
 #: 
@@ -8887,7 +8887,7 @@ msgid "Warning: Pre-Upgrade Tasks Detected"
 msgstr "Προειδοποίηση: Εντοπίστηκαν εργασίες προ-αναβάθμισης"
 
 #: 
-msgid "Some conditions have been identified wich may prevent a successful upgrade"
+msgid "Some conditions have been identified which may prevent a successful upgrade"
 msgstr "Έχουν εντοπιστεί ορισμένες συνθήκες που ενδέχεται να εμποδίσουν την επιτυχή αναβάθμιση"
 
 #: 
@@ -9059,7 +9059,7 @@ msgid "Your new password is too similar to your old one."
 msgstr "Ο νέος κωδικός πρόσβασης είναι πολύ παρόμοιος με τον παλιό σας."
 
 #: 
-msgid "Password reset not availble.  Please contact your system administrator"
+msgid "Password reset not available.  Please contact your system administrator"
 msgstr "Η επαναφορά κωδικού πρόσβασης δεν είναι διαθέσιμη. Επικοινωνήστε με τον διαχειριστή του συστήματός σας"
 
 #: 

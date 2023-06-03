@@ -277,7 +277,7 @@ if ($output == 'pdf') {
 
         public function PageBreak($page)
         {
-            // Finish footer of previous page if neccessary and add new page
+            // Finish footer of previous page if necessary and add new page
             global $curY, $bottom_border, $detail_level;
             if ($curY > $bottom_border) {
                 $this->FinishPage($page);
@@ -300,7 +300,7 @@ if ($output == 'pdf') {
                 $this->SetFont('Times', 'BU', 10);
                 $this->WriteAt($curX, $curY, 'Chk No.');
                 $this->WriteAt(40, $curY, 'Fund');
-                $this->WriteAt(80, $curY, 'Recieved From');
+                $this->WriteAt(80, $curY, 'Received From');
                 $this->WriteAt(135, $curY, 'Memo');
                 $this->WriteAt(181, $curY, 'Amount');
                 $curY += 2 * $summaryIntervalY;
@@ -309,7 +309,7 @@ if ($output == 'pdf') {
                 $this->SetFont('Times', 'BU', 10);
                 $this->WriteAt($curX, $curY, 'Chk No.');
                 $this->WriteAt(40, $curY, 'Deposit No./ Date');
-                $this->WriteAt(80, $curY, 'Recieved From');
+                $this->WriteAt(80, $curY, 'Received From');
                 $this->WriteAt(135, $curY, 'Memo');
                 $this->WriteAt(181, $curY, 'Amount');
                 $curY += 2 * $summaryIntervalY;

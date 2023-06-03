@@ -189,7 +189,7 @@ class SystemService
                 }
         }
         if (self::IsTimerThresholdExceeded(SystemConfig::getValue('sLastSoftwareUpdateCheckTimeStamp'),SystemConfig::getValue('iSoftwareUpdateCheckInterval'))) {
-          // Since checking for updates from GitHub is a potentailly expensive operation,
+          // Since checking for updates from GitHub is a potentially expensive operation,
           // Run this task as part of the "background jobs" API call
           // Inside ChurchCRMReleaseManager, the restults are stored to the $_SESSION
           ChurchCRMReleaseManager::checkForUpdates();

@@ -23,7 +23,7 @@ class ChurchCRMReleaseManager {
             // Since populating the release list can be an expensive operation
             // don't do it here, but rather wait for SystemServer TimerJobs to take care of it
             // just give the requestor a skeleton object
-            LoggerUtils::getAppLogger()->debug("Query for release string " . $releaseString . " ocurred before GitHub releases were populated.  Providing skeleton release object");
+            LoggerUtils::getAppLogger()->debug("Query for release string " . $releaseString . " occurred before GitHub releases were populated.  Providing skeleton release object");
             return new ChurchCRMRelease(@["name" => $releaseString]);
         }
         else {

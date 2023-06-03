@@ -370,7 +370,7 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
         }
             $countUnknownMale = PersonQuery::create()->filterByFmrId(0)->filterByGender(1)->count();
             $countUnknownFemale = PersonQuery::create()->filterByFmrId(0)->filterByGender(2)->count();
-            $countUnknwonRoleUnknownGender = PersonQuery::create()->filterByFmrId(0)->filterByGender(0)->count();
+            $countUnknownRoleUnknownGender = PersonQuery::create()->filterByFmrId(0)->filterByGender(0)->count();
 
             $genPop = PersonQuery::create()->count();
             if ($countUnknownMale != 0) {
@@ -399,16 +399,16 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
 </tr>
 <?php
             }
-            if ($countUnknwonRoleUnknownGender != 0) {
+            if ($countUnknownRoleUnknownGender != 0) {
                 ?>
 <tr>
 <td><a href="v2/people?Gender=0&FamilyRole=0"><?= gettext('Unassigned') ?> - <?= gettext('Unassigned') ?></a></td>
 <td>
 <div class="progress progress-xs progress-striped active">
-<div class="progress-bar progress-bar-success" style="width: <?= round(($countUnknwonRoleUnknownGender / $genPop) * 100)?>%" title="<?= round(($countUnknwonRoleUnknownGender / $genPop) * 100)?>%"></div>
+<div class="progress-bar progress-bar-success" style="width: <?= round(($countUnknownRoleUnknownGender / $genPop) * 100)?>%" title="<?= round(($countUnknownRoleUnknownGender / $genPop) * 100)?>%"></div>
 </div>
 </td>
-<td><span class="badge bg-green"><?= $countUnknwonRoleUnknownGender ?></span></td>
+<td><span class="badge bg-green"><?= $countUnknownRoleUnknownGender ?></span></td>
 </tr>
 <?php
             }

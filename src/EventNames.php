@@ -178,7 +178,7 @@ if (InputUtils::LegacyFilterInput($_POST['Action']) == 'NEW') {
           <div class='col-sm-4 control-label text-bold'>
             <?= gettext('Recurrence Pattern') ?>
           </div>
-          <div class='col-sm-6 event-recurrance-patterns'>
+          <div class='col-sm-6 event-recurrence-patterns'>
             <div class='row form-radio-list'>
               <div class='col-xs-12'>
                 <input type="radio" name="newEvtTypeRecur" value="none" checked/> <?= gettext('None'); ?>

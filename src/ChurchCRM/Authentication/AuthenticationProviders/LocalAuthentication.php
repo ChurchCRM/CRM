@@ -150,7 +150,7 @@ class LocalAuthentication implements IAuthenticationProvider
         } else {
             $this->prepareSuccessfulLoginOperations();
             $authenticationResult->isAuthenticated = true;
-            LoggerUtils::getAuthLogger()->info("User succefully logged in without 2FA: " . $this->currentUser->getUserName());
+            LoggerUtils::getAuthLogger()->info("User successfully logged in without 2FA: " . $this->currentUser->getUserName());
             return $authenticationResult;
           }
         }
@@ -159,14 +159,14 @@ class LocalAuthentication implements IAuthenticationProvider
             $this->prepareSuccessfulLoginOperations();
             $authenticationResult->isAuthenticated = true;
             $this->bPendingTwoFactorAuth = false;
-            LoggerUtils::getAuthLogger()->info("User succefully logged in with 2FA: " . $this->currentUser->getUserName());
+            LoggerUtils::getAuthLogger()->info("User successfully logged in with 2FA: " . $this->currentUser->getUserName());
             return $authenticationResult;
           }
           elseif($this->currentUser->isTwoFaRecoveryCodeValid($AuthenticationRequest->TwoFACode)){
             $this->prepareSuccessfulLoginOperations();
             $authenticationResult->isAuthenticated = true;
             $this->bPendingTwoFactorAuth = false;
-            LoggerUtils::getAuthLogger()->info("User succefully logged in with 2FA Recovery Code: " . $this->currentUser->getUserName());
+            LoggerUtils::getAuthLogger()->info("User successfully logged in with 2FA Recovery Code: " . $this->currentUser->getUserName());
             return $authenticationResult;
           }
           else {
@@ -213,7 +213,7 @@ class LocalAuthentication implements IAuthenticationProvider
       }
 
       // Next, if this user needs to change password, send to that page
-      // but don't redirect them if they're already on the passsword change page
+      // but don't redirect them if they're already on the password change page
       $IsUserOnPasswordChangePageNow = $_SERVER["REQUEST_URI"] == $this->GetPasswordChangeURL();
       if ($this->currentUser->getNeedPasswordChange() && ! $IsUserOnPasswordChangePageNow ) {
         LoggerUtils::getAuthLogger()->info("User needs password change; redirecting to password change");

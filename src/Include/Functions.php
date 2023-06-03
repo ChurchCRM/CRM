@@ -261,7 +261,7 @@ function SelectWhichInfo($sPersonInfo, $sFamilyInfo, $bFormat = false)
 //
 // Returns the correct address to use via the sReturnAddress arguments.
 // Function value returns 0 if no info was given, 1 if person info was used, and 2 if family info was used.
-// We do address lines 1 and 2 in together because seperately we might end up with half family address and half person address!
+// We do address lines 1 and 2 in together because separately we might end up with half family address and half person address!
 //
 function SelectWhichAddress(&$sReturnAddress1, &$sReturnAddress2, $sPersonAddress1, $sPersonAddress2, $sFamilyAddress1, $sFamilyAddress2, $bFormat = false)
 {
@@ -1033,7 +1033,7 @@ function parseAndValidateDate($data, $locale = 'US', $pasfut = 'future')
     // reason consider strtotime() as a function of last resort.
     $timeStamp = strtotime($data);
     if ($timeStamp == false || $timeStamp <= 0) {
-        // Some Operating Sytems and older versions of PHP do not gracefully handle
+        // Some Operating Systems and older versions of PHP do not gracefully handle
         // negative timestamps.  Bail if the timestamp is negative.
         return false;
     }
@@ -1042,7 +1042,7 @@ function parseAndValidateDate($data, $locale = 'US', $pasfut = 'future')
     $dateString = date('Y-m-d', $timeStamp);
 
     if (strlen($dateString) != 10) {
-        // Common sense says we have a 10 charater string.  If not, something is wrong
+        // Common sense says we have a 10 character string.  If not, something is wrong
         // and it's time to bail.
         return false;
     }
@@ -1445,7 +1445,7 @@ function checkEmail($email, $domainCheck = false, $verify = false, $return_error
                     if ($sock = @fsockopen($mailers[$n], 25, $errno, $errstr, $connect_timeout)) {
                         $response = fgets($sock);
                         if ($checkEmailDebug) {
-                            echo "Opening up socket to $mailers[$n]... Succes!\n";
+                            echo "Opening up socket to $mailers[$n]... Success!\n";
                         }
                         stream_set_timeout($sock, 5);
                         $meta = stream_get_meta_data($sock);
@@ -1478,7 +1478,7 @@ function checkEmail($email, $domainCheck = false, $verify = false, $return_error
                         }
                         fclose($sock);
                         if ($checkEmailDebug) {
-                            echo "Succesful communication with $mailers[$n], no hard errors, assuming OK";
+                            echo "Successful communication with $mailers[$n], no hard errors, assuming OK";
                         }
                         break;
                     } elseif ($n == $total - 1) {

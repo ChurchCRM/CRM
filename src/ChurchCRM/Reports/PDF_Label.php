@@ -15,7 +15,7 @@
 // 1.1  : +    : Added unit in the constructor
 //          + : Now Positions start @ (1,1).. then the first image @top-left of a page is (1,1)
 //          + : Added in the description of a label :
-//                font-size    : defaut char size (can be changed by calling Set_Char_Size(xx);
+//                font-size     : default char size (can be changed by calling Set_Char_Size(xx);
 //                paper-size    : Size of the paper for this sheet (thanx to Al Canton)
 //                metric        : type of unit used in this description
 //                              You can define your label properties in inches by setting metric to 'in'

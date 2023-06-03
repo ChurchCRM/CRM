@@ -91,7 +91,7 @@ if (isset($_POST['Submit'])) {
             $note->save();
         }
 
-        //Send them back to whereever they came from
+        //Send them back to wherever they came from
         RedirectUtils::Redirect($sBackPage);
     }
 } else {

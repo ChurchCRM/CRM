@@ -101,7 +101,7 @@ class SystemURLs
             // chop off the query string
             $currentURL = explode('?', $currentURL)[0];
 
-            // check if this matches any one of teh whitelisted login URLS
+            // check if this matches any one of the whitelisted login URLS
             $validURL = false;
             foreach ($URL as $value) {
                 $base = substr($value, 0, -strlen('/'));

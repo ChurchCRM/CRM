@@ -95,7 +95,7 @@ class GroupService
      *
      * @param int $groupID ID of the group
      *
-     * @return array represnting the roles of the group
+     * @return array representing the roles of the group
      */
     public function getGroupRoles($groupID)
     {
@@ -319,7 +319,7 @@ class GroupService
         	if (array_key_exists('p2g2r_per_ID',$row) && array_key_exists('lst_OptionName',$row))
         	{
             $dbPerson = PersonQuery::create()->findPk($row['p2g2r_per_ID']);
-        			
+
        			if (array_key_exists('displayName',$dbPerson))
        			{
 	            $person['displayName'] = $dbPerson->getFullName();

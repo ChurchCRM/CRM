@@ -118,7 +118,7 @@ class ISTAddressLookup
         $XmlArray = null;
 
         //NOTE: Fields with * sign are required.
-        //intializing the parameters
+        //initializing the parameters
 
         $username = $sISTusername;                //  * (Type your username)
         $password = $sISTpassword;                //  * (Type your password)
@@ -187,7 +187,7 @@ class ISTAddressLookup
         $XmlArray = null;
 
         //NOTE: Fields with * sign are required.
-        //intializing the parameters
+        //initializing the parameters
 
         $username = $sISTusername;                //  * (Type your username)
         $password = $sISTpassword;                //  * (Type your password)

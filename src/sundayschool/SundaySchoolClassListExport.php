@@ -28,7 +28,7 @@ header('Content-Type: text/csv;charset='.SystemConfig::getValue("sCSVExportChars
 header('Content-Disposition: attachment; filename=SundaySchool-'.date(SystemConfig::getValue("sDateFilenameFormat")).'.csv');
 header('Content-Transfer-Encoding: binary');
 
-$delimiter = SystemConfig::getValue("sCSVExportDelemiter");
+$delimiter = SystemConfig::getValue("sCSVExportDelimiter");
 
 $out = fopen('php://output', 'w');
 

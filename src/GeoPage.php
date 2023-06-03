@@ -371,7 +371,7 @@ $families = FamilyQuery::create()
                 $rsPeople = RunQuery($sSQL);
                 $numListed = mysqli_num_rows($rsPeople);
 
-                if (!$numListed) { // skip familes with zero members
+                if (!$numListed) { // skip families with zero members
                     continue;
                 }
                 $counter++; ?>

@@ -10,14 +10,14 @@ import EventPropertiesEditor from './EventPropertiesEditor';
 class ExistingEvent extends React.Component<EventFormProps, EventFormState> {
   constructor(props: EventFormProps) {
     super(props);
-    
+
     this.state = {
       isEditMode: false,
       calendars: [],
       eventTypes: []
     };
     if (this.props.eventId == 0) {
-      this.state= {
+      this.state = {
         isEditMode: true,
         calendars: [],
         eventTypes: [],
@@ -35,7 +35,7 @@ class ExistingEvent extends React.Component<EventFormProps, EventFormState> {
         this.state.event.End = this.props.end;
       }
     }
-       
+
 
     this.setEditMode = this.setEditMode.bind(this);
     this.setReadOnlyMode = this.setReadOnlyMode.bind(this);
@@ -51,7 +51,7 @@ class ExistingEvent extends React.Component<EventFormProps, EventFormState> {
 
   componentDidMount() {
     if (this.props.eventId != 0) {
-      // when the component monts to the DOM, then we should execut an XHR query to find the details for the supplied event id.
+      // when the component mounts to the DOM, then we should execute an XHR query to find the details for the supplied event id.
       fetch(CRMRoot + "/api/events/" + this.props.eventId, {
         credentials: "include"
       })
@@ -66,20 +66,20 @@ class ExistingEvent extends React.Component<EventFormProps, EventFormState> {
     }
 
     fetch(CRMRoot + "/api/calendars", {
-        credentials: "include"
-      })
-        .then(response => response.json())
-        .then(data => {
-          this.setState({ calendars: data.Calendars })
-        });
+      credentials: "include"
+    })
+      .then(response => response.json())
+      .then(data => {
+        this.setState({ calendars: data.Calendars })
+      });
 
     fetch(CRMRoot + "/api/events/types", {
-          credentials: "include"
-        })
-          .then(response => response.json())
-          .then(data => {
-            this.setState({ eventTypes: data.EventTypes })
-          });
+      credentials: "include"
+    })
+      .then(response => response.json())
+      .then(data => {
+        this.setState({ eventTypes: data.EventTypes })
+      });
   }
 
   setEditMode() {
@@ -116,22 +116,22 @@ class ExistingEvent extends React.Component<EventFormProps, EventFormState> {
   }
 
   updatePinnedCalendar(event) {
-    const pinnedCalendars=event.map((selected:{value:number, label:string}) => selected.value);
+    const pinnedCalendars = event.map((selected: { value: number, label: string }) => selected.value);
     this.setState({
       event: Object.assign({}, this.state.event, { PinnedCalendars: pinnedCalendars })
     });
   }
 
   updateEventType(event) {
-    const eventType=event.value;
+    const eventType = event.value;
     this.setState({
       event: Object.assign({}, this.state.event, { Type: eventType })
     });
   }
 
   isFormComplete(): boolean {
-    return this.state.event.PinnedCalendars.length >0 && this.state.event.Title.length >0 && this.state.event.Start != null && this.state.event.End != null;
-          
+    return this.state.event.PinnedCalendars.length > 0 && this.state.event.Title.length > 0 && this.state.event.Start != null && this.state.event.End != null;
+
   }
 
   exit() {
@@ -139,23 +139,23 @@ class ExistingEvent extends React.Component<EventFormProps, EventFormState> {
   }
 
   save() {
-    var DateReplacer = function(key, value) {
+    var DateReplacer = function (key, value) {
 
       if (this[key] instanceof Date) {
         var td = this[key];
         return window.moment(td).format();
       }
-      
+
       return value;
-   }
-    fetch(CRMRoot + "/api/events" + (this.state.event.Id !=0 ? "/"+this.state.event.Id:""), {
+    }
+    fetch(CRMRoot + "/api/events" + (this.state.event.Id != 0 ? "/" + this.state.event.Id : ""), {
       credentials: "include",
       method: "POST",
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(this.state.event,DateReplacer)
+      body: JSON.stringify(this.state.event, DateReplacer)
     })
       .then(() => this.exit());
   }
@@ -168,7 +168,7 @@ class ExistingEvent extends React.Component<EventFormProps, EventFormState> {
         Accept: 'application/json',
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({"_METHOD" : "DELETE" })
+      body: JSON.stringify({ "_METHOD": "DELETE" })
     })
       .then(() => this.exit());
   }
@@ -186,35 +186,35 @@ class ExistingEvent extends React.Component<EventFormProps, EventFormState> {
       )
     }
     else {
-      
+
     }
     if (this.state.isEditMode) {
-      return ( <div>
-    <Modal show={true} onHide={function () { }} >
-      <Modal.Header>
-      <input name="Title" value={this.state.event.Title} onChange={this.handleInputChange} placeholder={window.i18next.t("Event Title")}/>
-      <span className={this.state.event.Title.length ==0 ? "RequiredFormFieldUnsatisfied" : "RequiredFormFieldSatisfied"}>{window.i18next.t('This field is required')}</span>
-      </Modal.Header>
-      <Modal.Body>
-        <EventPropertiesEditor event={this.state.event} calendars={this.state.calendars} eventTypes={this.state.eventTypes} changeHandler={this.handleInputChange} handleStartDateChange={this.handleStartDateChange}  handleEndDateChange={this.handleEndDateChange} pinnedCalendarChanged={this.updatePinnedCalendar} eventTypeChanged={this.updateEventType} />
-      </Modal.Body>
-      <Modal.Footer>
-        <button disabled={!this.isFormComplete()} className="btn btn-success" onClick={this.save}>Save</button>
-        <button className="btn btn-danger pull-left" onClick={this.delete}>Delete</button>
-        <button className="btn btn-default pull-right" onClick={this.exit}>Cancel</button>
-      </Modal.Footer>
-    </Modal>
-  </div>)
-      
+      return (<div>
+        <Modal show={true} onHide={function () { }} >
+          <Modal.Header>
+            <input name="Title" value={this.state.event.Title} onChange={this.handleInputChange} placeholder={window.i18next.t("Event Title")} />
+            <span className={this.state.event.Title.length == 0 ? "RequiredFormFieldUnsatisfied" : "RequiredFormFieldSatisfied"}>{window.i18next.t('This field is required')}</span>
+          </Modal.Header>
+          <Modal.Body>
+            <EventPropertiesEditor event={this.state.event} calendars={this.state.calendars} eventTypes={this.state.eventTypes} changeHandler={this.handleInputChange} handleStartDateChange={this.handleStartDateChange} handleEndDateChange={this.handleEndDateChange} pinnedCalendarChanged={this.updatePinnedCalendar} eventTypeChanged={this.updateEventType} />
+          </Modal.Body>
+          <Modal.Footer>
+            <button disabled={!this.isFormComplete()} className="btn btn-success" onClick={this.save}>Save</button>
+            <button className="btn btn-danger pull-left" onClick={this.delete}>Delete</button>
+            <button className="btn btn-default pull-right" onClick={this.exit}>Cancel</button>
+          </Modal.Footer>
+        </Modal>
+      </div>)
+
     }
     else {
-      return ( <div>
+      return (<div>
         <Modal show={true} onHide={function () { }} >
           <Modal.Header>
             <h2>{this.state.event.Title}</h2>
           </Modal.Header>
           <Modal.Body>
-          <EventPropertiesViewer event={this.state.event} calendars={this.state.calendars} eventTypes={this.state.eventTypes} />
+            <EventPropertiesViewer event={this.state.event} calendars={this.state.calendars} eventTypes={this.state.eventTypes} />
           </Modal.Body>
           <Modal.Footer>
             <button className="btn btn-success" onClick={this.setEditMode}>Edit</button>

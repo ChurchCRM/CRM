@@ -35,7 +35,7 @@ To test out the demo, you may login to the http://demo.churchcrm.io  with the fo
 
 ## Installation, Upgrades and Documentation
 
-* [Download the lastest release](https://github.com/ChurchCRM/CRM/releases/latest)
+* [Download the latest release](https://github.com/ChurchCRM/CRM/releases/latest)
 
 * [Checkout our online Docs](http://docs.churchcrm.io)
 

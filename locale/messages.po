@@ -2016,7 +2016,7 @@ msgid "Deposit Slip Report"
 msgstr ""
 
 msgid ""
-"Important note: failed transactions will be deleted permanantly when the "
+"Important note: failed transactions will be deleted permanently when the "
 "deposit slip is closed."
 msgstr ""
 
@@ -2735,7 +2735,7 @@ msgstr ""
 msgid "eGive"
 msgstr ""
 
-msgid "Minimun Total Amount:"
+msgid "Minimum Total Amount:"
 msgstr ""
 
 msgid "0 - No Minimum"
@@ -4237,7 +4237,7 @@ msgstr ""
 msgid "Execute SQL"
 msgstr ""
 
-msgid "An error occured: "
+msgid "An error occurred: "
 msgstr ""
 
 msgid " record(s) returned"
@@ -4702,7 +4702,7 @@ msgid "Warning: Pre-Upgrade Tasks Detected"
 msgstr ""
 
 msgid ""
-"Some conditions have been identified wich may prevent a successful upgrade"
+"Some conditions have been identified which may prevent a successful upgrade"
 msgstr ""
 
 msgid ""
@@ -5179,7 +5179,7 @@ msgstr ""
 msgid "Unable to reset password"
 msgstr ""
 
-msgid "Password reset not availble.  Please contact your system administrator"
+msgid "Password reset not available.  Please contact your system administrator"
 msgstr ""
 
 msgid "no found or user without an email"

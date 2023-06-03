@@ -27,7 +27,7 @@ class NotificationService
 
   public static function getNotifications()
   {
-    /* retreive active notifications from the session variable for display
+    /* retrieve active notifications from the session variable for display
      *
      */
     if (isset($_SESSION['SystemNotifications']))

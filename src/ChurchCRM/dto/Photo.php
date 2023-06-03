@@ -94,7 +94,7 @@ class Photo {
       }
     }
 
-    # stil no image - generate it from initials
+    # still no image - generate it from initials
     $this->renderInitials();
   }
 

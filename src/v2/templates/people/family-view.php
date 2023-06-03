@@ -279,11 +279,11 @@ $mailchimp = new MailChimpService();
                                                        title="<?= gettext("Work Email") ?>"></i>(W) <?= $person->getWorkEmail() ?>
                                                     <br/>
                                                 <?php }
-                                                $formatedBirthday = $person->getFormattedBirthDate();
-                                                if ($formatedBirthday) {?>
+                                                $formattedBirthday = $person->getFormattedBirthDate();
+                                                if ($formattedBirthday) {?>
                                                 <i class="fa fa-fw fa-birthday-cake"
                                                    title="<?= gettext("Birthday") ?>"></i>
-                                                <?= $formatedBirthday ?>  <?= $person->getAge()?>
+                                                <?= $formattedBirthday ?>  <?= $person->getAge()?>
                                                 </i>
                                                 <?php } ?>
                                             </li>
@@ -344,7 +344,7 @@ $mailchimp = new MailChimpService();
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title"><i class="fa fa-map"></i> <?= gettext("Address") ?></h3> 
+                        <h3 class="card-title"><i class="fa fa-map"></i> <?= gettext("Address") ?></h3>
                         <div class="card-tools pull-right">
                             <button type="button" class="btn btn-box-tool edit-family"><i class="fa fa-pen"></i>
                             </button>

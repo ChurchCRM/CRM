@@ -31,7 +31,7 @@ if (!AuthenticationManager::GetCurrentUser()->isAdmin()) {
 class Family
 {
     public $Members;       // array for member data
-    public $MemberCount;   // obious
+    public $MemberCount;   // obvious
     public $WeddingDate;   // one per family
     public $Phone;         // one per family
     public $Envelope;      // one per family
@@ -77,7 +77,7 @@ class Family
     /** Assigning of roles to be called after all members added **/
     public function AssignRoles()
     {
-        // only one meber, must be "head"
+        // only one member, must be "head"
         if ($this->MemberCount == 1) {
             $this->Members[0]['role'] = 1;
             $this->Phone = $this->Members[0]['phone'];

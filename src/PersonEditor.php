@@ -109,7 +109,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
     $sSuffix = InputUtils::LegacyFilterInput($_POST['Suffix']);
     $iGender = InputUtils::LegacyFilterInput($_POST['Gender'], 'int');
 
-    // Person address stuff is normally surpressed in favor of family address info
+    // Person address stuff is normally suppressed in favor of family address info
     $sAddress1 = '';
     $sAddress2 = '';
     $sCity = '';
