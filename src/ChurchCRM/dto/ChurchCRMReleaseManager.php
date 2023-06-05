@@ -196,7 +196,7 @@ class ChurchCRMReleaseManager {
         $logger->info("Downloading release from: " . $url . " to: ". $UpgradeDir . '/' . basename($url));
         $executionTime = new ExecutionTime();
         file_put_contents($UpgradeDir . '/' . basename($url), file_get_contents($url));
-        $logger->info("Finished downloading file.  Execution time: " .$executionTime->getMiliseconds()." ms");
+        $logger->info("Finished downloading file.  Execution time: " .$executionTime->getMilliseconds()." ms");
         $returnFile = [];
         $returnFile['fileName'] = basename($url);
         $returnFile['releaseNotes'] = $release->getReleaseNotes();
@@ -250,11 +250,11 @@ class ChurchCRMReleaseManager {
             $executionTime = new ExecutionTime();
             $zip->extractTo(SystemURLs::getDocumentRoot() . '/Upgrade');
             $zip->close();
-            $logger->info("Extraction completed.  Took:" . $executionTime->getMiliseconds());
+            $logger->info("Extraction completed.  Took:" . $executionTime->getMilliseconds());
             $logger->info("Moving extracted zip into place");
             $executionTime = new ExecutionTime();
             FileSystemUtils::moveDir(SystemURLs::getDocumentRoot() . '/Upgrade/churchcrm', SystemURLs::getDocumentRoot());
-            $logger->info("Move completed.  Took:" . $executionTime->getMiliseconds());
+            $logger->info("Move completed.  Took:" . $executionTime->getMilliseconds());
             }
             $logger->info("Deleting zip archive: ".$zipFilename);
             unlink($zipFilename);

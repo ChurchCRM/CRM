@@ -43,7 +43,7 @@ class MailChimpService
             LoggerUtils::getAppLogger()->debug("Updating MailChimp List Cache");
             $time = new ExecutionTime;
             $lists = $this->myMailchimp->get("lists")['lists'];
-            LoggerUtils::getAppLogger()->debug("MailChimp list enumeration took: " . $time->getMiliseconds() . " ms.  Found " . count($lists) . " lists");
+            LoggerUtils::getAppLogger()->debug("MailChimp list enumeration took: " . $time->getMilliseconds() . " ms.  Found " . count($lists) . " lists");
             foreach ($lists as &$list) {
                 $list['members'] = [];
                 $listmembers = $this->myMailchimp->get('lists/' . $list['id'] . '/members',
@@ -64,7 +64,7 @@ class MailChimpService
                 LoggerUtils::getAppLogger()->debug("MailChimp list ". $list['id'] . " membership ". count($list['members']));
 
             }
-            LoggerUtils::getAppLogger()->debug("MailChimp list and membership update took: " . $time->getMiliseconds() . " ms");
+            LoggerUtils::getAppLogger()->debug("MailChimp list and membership update took: " . $time->getMilliseconds() . " ms");
             $_SESSION['MailChimpLists'] = $lists;
         } else {
             LoggerUtils::getAppLogger()->debug("Using cached MailChimp List");
