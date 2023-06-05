@@ -787,6 +787,7 @@ msgid "Deposit Slip Report"
 msgstr "የተቀማጭ መንሸራተት ሪፖርት"
 
 #: 
+#, fuzzy
 msgid "Important note: failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr "ጠቃሚ ማስታወሻ፡ የተቀማጭ ወረቀቱ ሲዘጋ ያልተሳኩ ግብይቶች እስከመጨረሻው ይሰረዛሉ።"
 
@@ -1703,6 +1704,7 @@ msgid "eGive"
 msgstr "መስጠት"
 
 #: 
+#, fuzzy
 msgid "Minimum Total Amount:"
 msgstr "አነስተኛ ጠቅላላ መጠን፡-"
 
@@ -3019,6 +3021,7 @@ msgid "Execute SQL"
 msgstr "SQLን ተግብር"
 
 #: 
+#, fuzzy
 msgid "An error occurred: "
 msgstr "ስህተት ተፈጥሯል: "
 
@@ -8912,6 +8915,7 @@ msgid "Warning: Pre-Upgrade Tasks Detected"
 msgstr "ማስጠንቀቂያ፡ የቅድመ-ማሻሻል ተግባራት ተገኝተዋል "
 
 #: 
+#, fuzzy
 msgid "Some conditions have been identified which may prevent a successful upgrade"
 msgstr "ስኬታማ የሆነ ማሻሻልን የሚከለክሉ አንዳንድ ሁኔታዎች ተለይተዋል። "
 
@@ -9092,6 +9096,7 @@ msgstr "\n"
 "አዲሱ የይለፍ ቃልህ ከቀድሞው ጋር በጣም ተመሳሳይ ነው።"
 
 #: 
+#, fuzzy
 msgid "Password reset not available.  Please contact your system administrator"
 msgstr "\n"
 "የይለፍ ቃል ዳግም ማስጀመር አይገኝም። እባክዎ የስርዓት አስተዳዳሪዎን ያግኙ"

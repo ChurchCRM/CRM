@@ -787,6 +787,7 @@ msgid "Deposit Slip Report"
 msgstr "Stortings Strook Rapport"
 
 #: 
+#, fuzzy
 msgid "Important note: failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr "Belangrijk gegeven: Mislukte transacties zijn permananent verwijderd na het afsluiten van het stortings strookje."
 
@@ -1706,6 +1707,7 @@ msgid "eGive"
 msgstr "eGive"
 
 #: 
+#, fuzzy
 msgid "Minimum Total Amount:"
 msgstr "Minimum Totaal Bedrag:"
 
@@ -3027,6 +3029,7 @@ msgid "Execute SQL"
 msgstr "Voer SQL uit"
 
 #: 
+#, fuzzy
 msgid "An error occurred: "
 msgstr "Een fout heeft plaatsgevonden: "
 
@@ -8927,6 +8930,7 @@ msgid "Warning: Pre-Upgrade Tasks Detected"
 msgstr "Waarschuwing: pre-upgradetaken gedetecteerd"
 
 #: 
+#, fuzzy
 msgid "Some conditions have been identified which may prevent a successful upgrade"
 msgstr "Er zijn enkele omstandigheden geïdentificeerd die een succesvolle upgrade kunnen verhinderen"
 
@@ -9099,6 +9103,7 @@ msgid "Your new password is too similar to your old one."
 msgstr "Uw nieuwe wachtwoord lijkt te veel op het oude."
 
 #: 
+#, fuzzy
 msgid "Password reset not available.  Please contact your system administrator"
 msgstr "Wachtwoord opnieuw instellen niet beschikbaar. Neem contact op met uw systeembeheerder"
 

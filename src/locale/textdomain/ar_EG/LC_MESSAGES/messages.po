@@ -786,6 +786,7 @@ msgid "Deposit Slip Report"
 msgstr "تقرير قسيمة إيداع"
 
 #: 
+#, fuzzy
 msgid "Important note: failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr "سيتم حذف فشل المعاملات بيرمانانتلي عند إغلاق قسيمة الإيداع: ملاحظة هامة."
 
@@ -1702,6 +1703,7 @@ msgid "eGive"
 msgstr "eGive"
 
 #: 
+#, fuzzy
 msgid "Minimum Total Amount:"
 msgstr "الادنى إجمالي المبلغ:"
 
@@ -3018,6 +3020,7 @@ msgid "Execute SQL"
 msgstr "تنفيذ SQL"
 
 #: 
+#, fuzzy
 msgid "An error occurred: "
 msgstr "حدث خطأ:"
 
@@ -8905,6 +8908,7 @@ msgid "Warning: Pre-Upgrade Tasks Detected"
 msgstr "تحذير: مهام ما قبل الترقية التي تم اكتشافها"
 
 #: 
+#, fuzzy
 msgid "Some conditions have been identified which may prevent a successful upgrade"
 msgstr "وقد تم تحديد بعض الشروط اللي تبونه قد تحول دون ترقية ناجحة"
 
@@ -9077,6 +9081,7 @@ msgid "Your new password is too similar to your old one."
 msgstr "كلمه المرور متشابهه مع كلمه مرور سابقه"
 
 #: 
+#, fuzzy
 msgid "Password reset not available.  Please contact your system administrator"
 msgstr "لأعاده كلمه المرور برجاء التواصل مع مسئول النظام"
 

@@ -803,6 +803,7 @@ msgid "Deposit Slip Report"
 msgstr "Báo cáo tiền gửi"
 
 #: 
+#, fuzzy
 msgid "Important note: failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr "Lưu ý quan trọng: các giao dịch không thành công sẽ bị xóa vĩnh viễn khi đóng phiếu gửi tiền."
 
@@ -1719,6 +1720,7 @@ msgid "eGive"
 msgstr "eGive"
 
 #: 
+#, fuzzy
 msgid "Minimum Total Amount:"
 msgstr "Tổng số tiền tối thiểu:"
 
@@ -3035,6 +3037,7 @@ msgid "Execute SQL"
 msgstr "Thực thi SQL"
 
 #: 
+#, fuzzy
 msgid "An error occurred: "
 msgstr "Đã xảy ra lỗi:"
 
@@ -8912,6 +8915,7 @@ msgid "Warning: Pre-Upgrade Tasks Detected"
 msgstr "Cảnh báo: Đã phát hiện tác vụ nâng cấp trước"
 
 #: 
+#, fuzzy
 msgid "Some conditions have been identified which may prevent a successful upgrade"
 msgstr "Một số điều kiện đã được xác định có thể ngăn cản việc nâng cấp thành công"
 
@@ -9084,6 +9088,7 @@ msgid "Your new password is too similar to your old one."
 msgstr "Mật khẩu mới của bạn quá giống với mật khẩu cũ của bạn."
 
 #: 
+#, fuzzy
 msgid "Password reset not available.  Please contact your system administrator"
 msgstr "Đặt lại mật khẩu không khả dụng. Xin vui lòng liên hệ với quản trị hệ thống của bạn"
 

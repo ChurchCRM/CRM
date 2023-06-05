@@ -786,6 +786,7 @@ msgid "Deposit Slip Report"
 msgstr "Laporan Slip Setoran"
 
 #: 
+#, fuzzy
 msgid "Important note: failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr "Catatan penting : transaksi yang gagal akan terhapus permanen jika slip setoran di tutup"
 
@@ -1705,6 +1706,7 @@ msgid "eGive"
 msgstr "eGive"
 
 #: 
+#, fuzzy
 msgid "Minimum Total Amount:"
 msgstr "Jumlah minimum"
 
@@ -3021,6 +3023,7 @@ msgid "Execute SQL"
 msgstr "Jalankan SQL"
 
 #: 
+#, fuzzy
 msgid "An error occurred: "
 msgstr "Kesalahan terjadi: "
 
@@ -8898,6 +8901,7 @@ msgid "Warning: Pre-Upgrade Tasks Detected"
 msgstr "Peringatan: Tugas Pra-Upgrade Terdeteksi"
 
 #: 
+#, fuzzy
 msgid "Some conditions have been identified which may prevent a successful upgrade"
 msgstr "Beberapa kondisi telah diidentifikasi yang dapat mencegah pembaruan yang berhasil"
 
@@ -9070,6 +9074,7 @@ msgid "Your new password is too similar to your old one."
 msgstr "Kata sandi baru anda mirip dengan kata sandi yang lama"
 
 #: 
+#, fuzzy
 msgid "Password reset not available.  Please contact your system administrator"
 msgstr "Penyetelan ulang kata sandi tidak tersedia. Silahkan menghubungi administrator sistem anda"
 

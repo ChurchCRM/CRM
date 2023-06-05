@@ -790,6 +790,7 @@ msgid "Deposit Slip Report"
 msgstr "Rapport du Bordereau d&#39;acompte"
 
 #: 
+#, fuzzy
 msgid "Important note: failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr "Note importante: quand un bordereau d&#39;acompte est fermé, les transactions non réussies sont définitivement supprimées."
 
@@ -1708,6 +1709,7 @@ msgid "eGive"
 msgstr "eGive"
 
 #: 
+#, fuzzy
 msgid "Minimum Total Amount:"
 msgstr "Montant total minimum :"
 
@@ -3024,6 +3026,7 @@ msgid "Execute SQL"
 msgstr "Exécuter SQL"
 
 #: 
+#, fuzzy
 msgid "An error occurred: "
 msgstr "Une erreur s'est produite: "
 
@@ -8913,6 +8916,7 @@ msgid "Warning: Pre-Upgrade Tasks Detected"
 msgstr "Avertissement : Des opérations pré-migrations sont requises"
 
 #: 
+#, fuzzy
 msgid "Some conditions have been identified which may prevent a successful upgrade"
 msgstr "Certaines conditions qui ont été identifiées peuvent empêcher la réussite de la mise à niveau"
 
@@ -9085,6 +9089,7 @@ msgid "Your new password is too similar to your old one."
 msgstr "Le nouveau mot de passe est trop similaire à l'ancien"
 
 #: 
+#, fuzzy
 msgid "Password reset not available.  Please contact your system administrator"
 msgstr "Réinitialisation du mot de passe non disponible. Veuillez contacter votre administrateur système"
 

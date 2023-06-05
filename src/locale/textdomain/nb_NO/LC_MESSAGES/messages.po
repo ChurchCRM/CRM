@@ -774,6 +774,7 @@ msgid "Deposit Slip Report"
 msgstr "Innskudd Slip Rapporter"
 
 #: 
+#, fuzzy
 msgid "Important note: failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr "Viktig merknad: mislykkede transaksjoner vil bli slettet permanent når innskuddet slip er lukket."
 
@@ -1685,6 +1686,7 @@ msgid "eGive"
 msgstr "eGive"
 
 #: 
+#, fuzzy
 msgid "Minimum Total Amount:"
 msgstr "Minimun Totalbeløp:"
 
@@ -2993,6 +2995,7 @@ msgid "Execute SQL"
 msgstr "Utføre SQL"
 
 #: 
+#, fuzzy
 msgid "An error occurred: "
 msgstr "Det oppstod en feil:"
 

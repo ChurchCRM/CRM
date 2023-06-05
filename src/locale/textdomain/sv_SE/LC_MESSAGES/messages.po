@@ -812,6 +812,7 @@ msgid "Deposit Slip Report"
 msgstr "Insättningsblankettrapport"
 
 #: 
+#, fuzzy
 msgid "Important note: failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr "Viktig: misslyckade verifikationer raderas permanent när insättningsblankett stängas"
 
@@ -1751,6 +1752,7 @@ msgid "eGive"
 msgstr "eGive"
 
 #: 
+#, fuzzy
 msgid "Minimum Total Amount:"
 msgstr "Minimala summa:"
 
@@ -3123,6 +3125,7 @@ msgid "Execute SQL"
 msgstr "Gör SQL förfrågan"
 
 #: 
+#, fuzzy
 msgid "An error occurred: "
 msgstr "Ett fel inträffade"
 
@@ -9054,6 +9057,7 @@ msgid "Warning: Pre-Upgrade Tasks Detected"
 msgstr "Varning: Uppgraderingsuppgifter har upptäckts"
 
 #: 
+#, fuzzy
 msgid "Some conditions have been identified which may prevent a successful upgrade"
 msgstr "Vissa förhållanden har identifierats som kan förhindra en framgångsrik uppgradering"
 
@@ -9226,6 +9230,7 @@ msgid "Your new password is too similar to your old one."
 msgstr "Ditt nya lösenord liknar det gamla."
 
 #: 
+#, fuzzy
 msgid "Password reset not available.  Please contact your system administrator"
 msgstr "Återställning av lösenord är inte tillgängligt. Kontakta din systemadministratör"
 

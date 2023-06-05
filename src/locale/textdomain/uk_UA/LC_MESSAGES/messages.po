@@ -786,6 +786,7 @@ msgid "Deposit Slip Report"
 msgstr "Звіт про депозит"
 
 #: 
+#, fuzzy
 msgid "Important note: failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr "Важливе зауваження: невдалі транзакції будуть постійно видалятися, коли депозитний депозит буде закритий."
 
@@ -1702,6 +1703,7 @@ msgid "eGive"
 msgstr "eGive"
 
 #: 
+#, fuzzy
 msgid "Minimum Total Amount:"
 msgstr "Мінімальна загальна сума:"
 
@@ -3018,6 +3020,7 @@ msgid "Execute SQL"
 msgstr "Виконайте SQL"
 
 #: 
+#, fuzzy
 msgid "An error occurred: "
 msgstr "Сталася помилка: "
 
@@ -8892,6 +8895,7 @@ msgid "Warning: Pre-Upgrade Tasks Detected"
 msgstr "Попередження: Виявлено завдання перед оновленням"
 
 #: 
+#, fuzzy
 msgid "Some conditions have been identified which may prevent a successful upgrade"
 msgstr "Виявлено деякі умови, які можуть перешкодити успішному оновленню"
 
@@ -9064,6 +9068,7 @@ msgid "Your new password is too similar to your old one."
 msgstr "Ваш новий пароль занадто схожий на ваш старий."
 
 #: 
+#, fuzzy
 msgid "Password reset not available.  Please contact your system administrator"
 msgstr "Скидання пароля недоступне. Зверніться до свого системного адміністратора"
 

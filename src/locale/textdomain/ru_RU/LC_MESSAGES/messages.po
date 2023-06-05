@@ -813,6 +813,7 @@ msgid "Deposit Slip Report"
 msgstr "Квитанции Сообщить"
 
 #: 
+#, fuzzy
 msgid "Important note: failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr "Важное замечание: не удалось сделки будут удалены них постоянно, когда квитанции закрыт."
 
@@ -1743,6 +1744,7 @@ msgid "eGive"
 msgstr "eGive"
 
 #: 
+#, fuzzy
 msgid "Minimum Total Amount:"
 msgstr "График Общая сумма:"
 
@@ -3076,6 +3078,7 @@ msgid "Execute SQL"
 msgstr "Выполнить SQL"
 
 #: 
+#, fuzzy
 msgid "An error occurred: "
 msgstr "Произошла ошибка: "
 
@@ -5973,6 +5976,7 @@ msgid "Warning: Pre-Upgrade Tasks Detected"
 msgstr "Предупреждение: Обнаружены задачи предварительного обновления"
 
 #: 
+#, fuzzy
 msgid "Some conditions have been identified which may prevent a successful upgrade"
 msgstr "Обнаружены некоторые условия, которые могут помешать успешному обновлению"
 
@@ -6133,6 +6137,7 @@ msgid "Your new password is too similar to your old one."
 msgstr "Ваш новый пароль похож на ваш предыдущий."
 
 #: 
+#, fuzzy
 msgid "Password reset not available.  Please contact your system administrator"
 msgstr "Функция сброса пароля не доступна. Свяжитесь с системным администратором."
 

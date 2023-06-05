@@ -786,6 +786,7 @@ msgid "Deposit Slip Report"
 msgstr "Deposiidi teatis"
 
 #: 
+#, fuzzy
 msgid "Important note: failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr "Oluline märkus: ebaõnnestunud tehingud kustutatakse jäädavalt, kui deposiidipilet suletakse."
 
@@ -1702,6 +1703,7 @@ msgid "eGive"
 msgstr "eAnnetus"
 
 #: 
+#, fuzzy
 msgid "Minimum Total Amount:"
 msgstr "Minimaalne kogusumma:"
 
@@ -3018,6 +3020,7 @@ msgid "Execute SQL"
 msgstr "Käivitage SQL"
 
 #: 
+#, fuzzy
 msgid "An error occurred: "
 msgstr "Ilmnes viga: "
 
@@ -6466,6 +6469,7 @@ msgid "Warning: Pre-Upgrade Tasks Detected"
 msgstr "Hoiatus: tuvastatud on täiendamiseelsed ülesanded"
 
 #: 
+#, fuzzy
 msgid "Some conditions have been identified which may prevent a successful upgrade"
 msgstr "On kindlaks tehtud mõned tingimused, mis võivad takistada edukat täiendamist"
 
@@ -6639,6 +6643,7 @@ msgid "Your new password is too similar to your old one."
 msgstr "Teie uus parool on liiga sarnane vanaga."
 
 #: 
+#, fuzzy
 msgid "Password reset not available.  Please contact your system administrator"
 msgstr "Parooli lähtestamine pole saadaval. Palun pöörduge oma süsteemi administraatori poole"
 
