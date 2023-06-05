@@ -957,7 +957,7 @@ msgstr "Relatório de erro do depósito"
 
 #: 
 #, fuzzy
-msgid "Important note: failed transactions will be deleted permanently when the deposit slip is closed."
+msgid "Important note: failed transactions will be deleted permanantly when the deposit slip is closed."
 msgstr "Nota importante: transações com falha serão excluídos permanantly quando o comprovante de depósito está fechada."
 
 #: 
@@ -2077,7 +2077,7 @@ msgstr "eGive"
 
 #: 
 #, fuzzy
-msgid "Minimum Total Amount:"
+msgid "Minimun Total Amount:"
 msgstr "Quantia mínima total:"
 
 #: 
@@ -3665,7 +3665,7 @@ msgstr "Execute SQL"
 
 #: 
 #, fuzzy
-msgid "An error occurred: "
+msgid "An error occured: "
 msgstr "Ocorreu um erro: "
 
 #: 
@@ -10926,7 +10926,7 @@ msgstr "Atenção: Tarefas de atualização detectadas"
 
 #: 
 #, fuzzy
-msgid "Some conditions have been identified which may prevent a successful upgrade"
+msgid "Some conditions have been identified wich may prevent a successful upgrade"
 msgstr "Foram identificadas algumas condições que podem impedir uma atualização bem-sucedida"
 
 #: 
@@ -11141,7 +11141,7 @@ msgstr "sua nova senha é muito parecida com a antiga"
 
 #: 
 #, fuzzy
-msgid "Password reset not available.  Please contact your system administrator"
+msgid "Password reset not availble.  Please contact your system administrator"
 msgstr "Reset de senha não disponível. Entre em contato com o administrador do sistema"
 
 #: 
