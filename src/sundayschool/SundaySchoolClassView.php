@@ -283,17 +283,17 @@ function implodeUnique($array, $withQuotes)
         <div class="modal-body">
           <div class="form-group">
             <label><?= gettext('Kids Emails') ?></label>
-            <input name="email_to" class="form-control email-recepients-kids"
+            <input name="email_to" class="form-control email-recipients-kids"
                    value="<?= implodeUnique($KidsEmails, false) ?>">
           </div>
           <div class="form-group">
             <label><?= gettext('Parents Emails') ?></label>
-            <input name="email_to_2" class="form-control email-recepients-parents"
+            <input name="email_to_2" class="form-control email-recipients-parents"
                    value="<?= implodeUnique($ParentsEmails, false) ?>">
           </div>
           <div class="form-group">
             <label><?= gettext('Teachers Emails') ?></label>
-            <input name="email_cc" class="form-control email-recepients-teachers"
+            <input name="email_cc" class="form-control email-recipients-teachers"
                    value="<?= implodeUnique($TeachersEmails, false) ?>">
           </div>
           <div class="form-group">
@@ -339,16 +339,16 @@ function implodeUnique($array, $withQuotes)
     var dataTable = $('.data-table').DataTable(window.CRM.plugin.dataTable);
 
     // turn the element to select2 select style
-    $('.email-recepients-kids').select2({
-      placeholder: 'Enter recepients',
+    $('.email-recipients-kids').select2({
+      placeholder: 'Enter recipients',
       tags: [<?php implodeUnique($KidsEmails, true) ?>]
     });
-    $('.email-recepients-teachers').select2({
-      placeholder: 'Enter recepients',
+    $('.email-recipients-teachers').select2({
+      placeholder: 'Enter recipients',
       tags: [<?= implodeUnique($TeachersEmails, true) ?>]
     });
-    $('.email-recepients-parents').select2({
-      placeholder: 'Enter recepients',
+    $('.email-recipients-parents').select2({
+      placeholder: 'Enter recipients',
       tags: [<?= implodeUnique($ParentsEmails, true) ?>]
     });
 

@@ -936,11 +936,6 @@ msgid "Save Name"
 msgstr "Ruaj Emri"
 
 #: 
-#, fuzzy
-msgid "Recurrence Pattern"
-msgstr "Recurrance Pattern"
-
-#: 
 msgid "Attendance Counts"
 msgstr "Pikat Pjesëmarrja"
 

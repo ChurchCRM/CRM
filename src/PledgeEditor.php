@@ -249,13 +249,13 @@ if ($iMethod == 'CASH' || $iMethod == 'CHECK') {
 }
 
 if ($PledgeOrPayment == 'Payment') {
-    $bEnableNonDeductible = SystemConfig::getValue('bEnableNonDeductible'); // this could/should be a config parm?  regardless, having a non-deductible amount for a pledge doesn't seem possible
+    $bEnableNonDeductible = SystemConfig::getValue('bEnableNonDeductible'); // this could/should be a config param?  regardless, having a non-deductible amount for a pledge doesn't seem possible
 }
 
 if (isset($_POST['PledgeSubmit']) || isset($_POST['PledgeSubmitAndAdd'])) {
     //Initialize the error flag
     $bErrorFlag = false;
-    // make sure at least one fund has a non-zero numer
+    // make sure at least one fund has a non-zero number
     $nonZeroFundAmountEntered = 0;
     foreach ($fundId2Name as $fun_id => $fun_name) {
         //$fun_active = $fundActive[$fun_id];

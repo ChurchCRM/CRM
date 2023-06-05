@@ -64,7 +64,7 @@ while ($aRow = mysqli_fetch_array($rsFamilies)) {
         extract(mysqli_fetch_array($rsLookup));
     }
 
-    // This check alows cities like Coeur d'Alene ID to be accepted also as Coeur d Alene ID
+    // This check allows cities like Coeur d'Alene ID to be accepted also as Coeur d Alene ID
     $lu_LastLine = str_replace("'", ' ', $lu_LastLine);
     $fam_City = str_replace("'", ' ', $fam_City);
 

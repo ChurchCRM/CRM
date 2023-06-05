@@ -864,7 +864,7 @@
     <table name="locations" idMethod="native" phpName="Location"  description="This is a table for storing all physical locations (Church Offices, Events, etc) ">
         <column name="location_id" phpName="LocationId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true"  primaryKey="true"/>
         <column name="location_typeID" phpName="LocationType" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned" required="true"/>
-        <column name="location_name" type="VARCHAR" size="256" required="true" defaultValue="" descripton="Location Name (e.g 'Main Campus')"/>
+        <column name="location_name" type="VARCHAR" size="256" required="true" defaultValue="" description="Location Name (e.g 'Main Campus')"/>
         <column name="location_address" type="VARCHAR" size="45" required="true" defaultValue="" />
         <column name="location_city" type="VARCHAR" size="45" required="true" defaultValue="" />
         <column name="location_state" type="VARCHAR" size="45" required="true" defaultValue=""/>

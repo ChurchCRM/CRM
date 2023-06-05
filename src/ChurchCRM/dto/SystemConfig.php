@@ -61,18 +61,18 @@ class SystemConfig
         ];
     }
 
-    public static function getFamilyRoleChoices() 
+    public static function getFamilyRoleChoices()
     {
       $roles = [];
       try {
         $familyRoles = ListOptionQuery::create()->getFamilyRoles();
-        
+
         foreach ($familyRoles as $familyRole) {
           array_push($roles, $familyRole->getOptionName().":".$familyRole->getOptionId());
         }
       } catch (Exception $e) {
-        
-      } 
+
+      }
       return ["Choices" => $roles];
     }
 
@@ -81,7 +81,7 @@ class SystemConfig
   {
     return array(
         "sLogLevel" => new ConfigItem(4, "sLogLevel", "choice", "200", gettext("Event Log severity to write, used by ORM and App Logs"), "", json_encode(SystemConfig::getMonoLogLevels())),
-        "sDirClassifications" => new ConfigItem(5, "sDirClassifications", "text", "1,2,4,5", gettext("Include only these classifications in the directory, comma seperated")),
+        "sDirClassifications" => new ConfigItem(5, "sDirClassifications", "text", "1,2,4,5", gettext("Include only these classifications in the directory, comma separated")),
         "sDirRoleHead" => new ConfigItem(6, "sDirRoleHead", "choice", "1", gettext("These are the family role numbers designated as head of house"),"", json_encode(SystemConfig::getFamilyRoleChoices())),
         "sDirRoleSpouse" => new ConfigItem(7, "sDirRoleSpouse", "choice", "2", gettext("These are the family role numbers designated as spouse"),"", json_encode(SystemConfig::getFamilyRoleChoices())),
         "sDirRoleChild" => new ConfigItem(8, "sDirRoleChild", "choice", "3", gettext("These are the family role numbers designated as child"),"", json_encode(SystemConfig::getFamilyRoleChoices())),
@@ -90,7 +90,7 @@ class SystemConfig
         "bCSVAdminOnly" => new ConfigItem(11, "bCSVAdminOnly", "boolean", "1", gettext("Should only administrators have access to the CSV export system and directory report?")),
         "iMinPasswordLength" => new ConfigItem(13, "iMinPasswordLength", "number", "6", gettext("Minimum length a user may set their password to")),
         "iMinPasswordChange" => new ConfigItem(14, "iMinPasswordChange", "number", "4", gettext("Minimum amount that a new password must differ from the old one (# of characters changed)\rSet to zero to disable this feature")),
-        "aDisallowedPasswords" => new ConfigItem(15, "aDisallowedPasswords","text", "password,god,jesus,church,christian", gettext("A comma-seperated list of disallowed (too obvious) passwords.")),
+        "aDisallowedPasswords" => new ConfigItem(15, "aDisallowedPasswords","text", "password,god,jesus,church,christian", gettext("A comma-separated list of disallowed (too obvious) passwords.")),
         "iMaxFailedLogins" => new ConfigItem(16, "iMaxFailedLogins", "number", "5", gettext("Maximum number of failed logins to allow before a user account is locked.\rOnce the maximum has been reached, an administrator must re-enable the account.\rThis feature helps to protect against automated password guessing attacks.\rSet to zero to disable this feature.")),
         "iPDFOutputType" => new ConfigItem(20, "iPDFOutputType", "number", "1", gettext("PDF handling mode.\r1 = Save File dialog\r2 = Open in current browser window")),
         "sDefaultCity" => new ConfigItem(21, "sDefaultCity", "text", "", gettext("Default City")),
@@ -136,7 +136,7 @@ class SystemConfig
         "sDateFormatShort" => new ConfigItem(104, "sDateFormatShort", "text", "j/m/y"),
         "sDateTimeFormat" => new ConfigItem(105, "sDateTimeFormat", "text", "j/m/y g:i a"),
         "sDateFilenameFormat" => new ConfigItem(106, "sDateFilenameFormat", "text", "Ymd-Gis"),
-        "sCSVExportDelemiter" => new ConfigItem(107, "sCSVExportDelemiter", "text", ",", gettext("To export to another For european CharSet use ;")),
+        "sCSVExportDelimiter" => new ConfigItem(107, "sCSVExportDelimiter", "text", ",", gettext("To export to another For european CharSet use ;")),
         "sCSVExportCharset" => new ConfigItem(108, "sCSVExportCharset", "text", "UTF-8", gettext("Default is UTF-8, For european CharSet use Windows-1252 for example for French language.")),
         "sDatePickerPlaceHolder" => new ConfigItem(109, "sDatePickerPlaceHolder", "text", "yyyy-mm-dd", gettext("For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example.")),
         "sDatePickerFormat" => new ConfigItem(110, "sDatePickerFormat", "text", "Y-m-d", gettext("For defining the date in Date-Picker, per default : Y-m-d, In French : d/m/Y for example.")),
@@ -278,7 +278,7 @@ class SystemConfig
       gettext('Report Settings')  => ["sQBDTSettings","leftX","incrementY","sTaxReport1","sTaxReport2","sTaxReport3","sTaxSigner","sReminder1","sReminderSigner","sReminderNoPledge","sReminderNoPayments","sConfirm1","sConfirm2","sConfirm3","sConfirm4","sConfirm5","sConfirm6","sDear","sConfirmSincerely","sConfirmSigner","sPledgeSummary1","sPledgeSummary2","sDirectoryDisclaimer1","sDirectoryDisclaimer2","bDirLetterHead","sZeroGivers","sZeroGivers2","sZeroGivers3", "iPDFOutputType"],
       gettext('Financial Settings') => ["sDepositSlipType","iChecksPerDepositForm","bDisplayBillCounts","bUseScannedChecks","bEnableNonDeductible","iFYMonth","bUseDonationEnvelopes","aFinanceQueries"],
       gettext('Quick Search') => ["bSearchIncludePersons","bSearchIncludePersonsMax","bSearchIncludeAddresses", "bSearchIncludeAddressesMax", "bSearchIncludeFamilies","bSearchIncludeFamiliesMax","bSearchIncludeFamilyHOH","bSearchIncludeFamilyHOHMax","bSearchIncludeGroups","bSearchIncludeGroupsMax","bSearchIncludeDeposits", "bSearchIncludeDepositsMax", "bSearchIncludePayments", "bSearchIncludePaymentsMax", "bSearchIncludeFamilyCustomProperties","bSearchIncludeCalendarEvents","bSearchIncludeCalendarEventsMax"],
-      gettext('Localization')  => ["sLanguage","sDistanceUnit","sPhoneFormat","sPhoneFormatWithExt","sPhoneFormatCell","sDateFormatLong","sDateFormatNoYear","sDateFormatShort","sDateTimeFormat","sDateFilenameFormat","sCSVExportDelemiter","sCSVExportCharset","sDatePickerFormat","sDatePickerPlaceHolder"],
+      gettext('Localization')  => ["sLanguage","sDistanceUnit","sPhoneFormat","sPhoneFormatWithExt","sPhoneFormatCell","sDateFormatLong","sDateFormatNoYear","sDateFormatShort","sDateTimeFormat","sDateFilenameFormat","sCSVExportDelimiter","sCSVExportCharset","sDatePickerFormat","sDatePickerPlaceHolder"],
       gettext('Integration')  => ["sMailChimpApiKey","sGoogleTrackingID","bEnableGravatarPhotos","bEnableGooglePhotos","iRemotePhotoCacheDuration","sNexmoAPIKey","sNexmoAPISecret","sNexmoFromNumber","sOLPURL","sOLPUserName","sOLPPassword"],
       gettext('Church Services')  => ["iPersonConfessionFatherCustomField","iPersonConfessionDateCustomField"],
       gettext('Events')  => ["bEnableExternalCalendarAPI","bEventsOnDashboardPresence","iEventsOnDashboardPresenceTimeOut"],

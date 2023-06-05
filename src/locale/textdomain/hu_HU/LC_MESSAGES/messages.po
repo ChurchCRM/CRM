@@ -968,11 +968,6 @@ msgid "Save Name"
 msgstr "Mentés neve"
 
 #: 
-#, fuzzy
-msgid "Recurrence Pattern"
-msgstr "Recurrance Pattern"
-
-#: 
 msgid "Attendance Counts"
 msgstr "Részvétel számít"
 

@@ -103,7 +103,7 @@ require 'Include/Header.php';
           </div>
           <?php
           if ($thisDeposit->getType() == 'BankDraft' || $thisDeposit->getType() == 'CreditCard') {
-              echo '<p>'.gettext('Important note: failed transactions will be deleted permanantly when the deposit slip is closed.').'</p>';
+              echo '<p>'.gettext('Important note: failed transactions will be deleted permanently when the deposit slip is closed.').'</p>';
           }
           ?>
       </div>

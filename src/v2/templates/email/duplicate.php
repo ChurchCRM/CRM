@@ -67,7 +67,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     });
 
     function peopleToString(people) {
-        return people.lengh;
+        return people.length;
     }
 </script>
 

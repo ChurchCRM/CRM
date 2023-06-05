@@ -380,7 +380,7 @@ class User extends BaseUser
     }
 
     public function getNewTwoFARecoveryCodes() {
-        // generate an array of 2FA recovery codes, and store as an encrypted, comma-seperated list
+        // generate an array of 2FA recovery codes, and store as an encrypted, comma-separated list
         $recoveryCodes = array();
         for($i=0; $i < 12; $i++) {
             $recoveryCodes[$i] = base64_encode(random_bytes(10));

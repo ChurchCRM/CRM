@@ -95,9 +95,9 @@ class FinancialService
     {
         requireUserGroupMembership('bFinance');
         $sSQL = 'SELECT * from pledge_plg
-            INNER JOIN 
-            donationfund_fun 
-            ON 
+            INNER JOIN
+            donationfund_fun
+            ON
             pledge_plg.plg_fundID = donationfund_fun.fun_ID';
 
         if ($depID) {
@@ -205,7 +205,7 @@ class FinancialService
     {
         requireUserGroupMembership('bFinance');
     //validate that the payment options are valid
-    //If the payment method is a check, then the check nubmer must be present, and it must not already have been used for this family
+    //If the payment method is a check, then the check number must be present, and it must not already have been used for this family
     //if the payment method is cash, there must not be a check number
     if ($payment->type == 'Payment' and $payment->iMethod == 'CHECK' and !isset($payment->iCheckNo)) {
         throw new \Exception(gettext('Must specify non-zero check number'));
@@ -225,7 +225,7 @@ class FinancialService
     {
         $currencyDenoms = json_decode($payment->cashDenominations);
         foreach ($currencyDenoms as $cdom) {
-            $sSQL = "INSERT INTO pledge_denominations_pdem (pdem_plg_GroupKey, plg_depID, pdem_denominationID, pdem_denominationQuantity) 
+            $sSQL = "INSERT INTO pledge_denominations_pdem (pdem_plg_GroupKey, plg_depID, pdem_denominationID, pdem_denominationQuantity)
       VALUES ('".$groupKey."','".$payment->DepositID."','".$cdom->currencyID."','".$cdom->Count."')";
             if (isset($sSQL)) {
                 RunQuery($sSQL);
@@ -262,21 +262,21 @@ class FinancialService
         }
                 $sSQL = "INSERT INTO pledge_plg
                     (plg_famID,
-                    plg_FYID, 
-                    plg_date, 
+                    plg_FYID,
+                    plg_date,
                     plg_amount,
-                    plg_schedule, 
-                    plg_method, 
-                    plg_comment, 
-                    plg_DateLastEdited, 
-                    plg_EditedBy, 
-                    plg_PledgeOrPayment, 
-                    plg_fundID, 
-                    plg_depID, 
-                    plg_CheckNo, 
-                    plg_scanString, 
-                    plg_aut_ID, 
-                    plg_NonDeductible, 
+                    plg_schedule,
+                    plg_method,
+                    plg_comment,
+                    plg_DateLastEdited,
+                    plg_EditedBy,
+                    plg_PledgeOrPayment,
+                    plg_fundID,
+                    plg_depID,
+                    plg_CheckNo,
+                    plg_scanString,
+                    plg_aut_ID,
+                    plg_NonDeductible,
                     plg_GroupKey)
                     VALUES ('".
           $payment->FamilyID."','".

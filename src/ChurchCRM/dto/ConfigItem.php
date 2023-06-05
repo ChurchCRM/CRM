@@ -81,7 +81,7 @@ class ConfigItem
         $this->dbConfigItem->setId($this->getId());
         $this->dbConfigItem->setName($this->getName());
       }
-      //set the values, and seve it
+      //set the values, and save it
       $this->dbConfigItem->setValue($value);
       $this->dbConfigItem->save();
       $this->value=$value;

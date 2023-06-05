@@ -47,7 +47,7 @@ $app->group('/forgot-password', function () {
     else {
         $this->get('/{foo:.*}', function ($request, $response, $args) {
             $renderer = new PhpRenderer('templates');
-            return $renderer->render($response, '/error.php', array("message" => gettext("Password reset not availble.  Please contact your system administrator")));
+            return $renderer->render($response, '/error.php', array("message" => gettext("Password reset not available.  Please contact your system administrator")));
         });
     }
 });

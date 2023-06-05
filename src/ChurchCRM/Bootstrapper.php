@@ -134,12 +134,12 @@ namespace ChurchCRM
               $cnInfoCentral = mysqli_connect(self::$databaseServerName, self::$databaseUser, self::$databasePassword);
           } else {
               if (!isset(self::$databasePort)) {
-                  self::$bootStrapLogger->debug("MySQL connection did not specify a port.  Using 3306 as defualt");
+                  self::$bootStrapLogger->debug("MySQL connection did not specify a port.  Using 3306 as default");
                   self::$databasePort=3306;
               }
               // Connect via TCP to specified port and pass a 'null' for database name.
               // We specify the database name in a different call, ie 'mysqli_select_db()' just below here
-              self::$bootStrapLogger->debug("Connectiong to ". self::$databaseServerName . " on port " . self::$databasePort . " as " . self::$databaseUser);
+              self::$bootStrapLogger->debug("Connecting to ". self::$databaseServerName . " on port " . self::$databasePort . " as " . self::$databaseUser);
               $cnInfoCentral = mysqli_connect(self::$databaseServerName, self::$databaseUser, self::$databasePassword, null, self::$databasePort);
           }
           self::testMYSQLI();
@@ -189,7 +189,7 @@ namespace ChurchCRM
       }
       private static function isDatabaseEmpty()
       {
-          self::$bootStrapLogger->debug("Checking for ChurchCRM Datbase tables");
+          self::$bootStrapLogger->debug("Checking for ChurchCRM Database tables");
           $connection = Propel::getConnection();
           $query = "SHOW TABLES FROM `".self::$databaseName."`";
           $statement = $connection->prepare($query);

@@ -282,7 +282,7 @@ Released on (10.19.2020)
 - New: /v2/dashbaord page [#5446](https://github.com/ChurchCRM/CRM/pull/5446)
 - Feature/enable v2 dashboard via settings [#5459](https://github.com/ChurchCRM/CRM/pull/5459)
 - API reduction / speed  [#5447](https://github.com/ChurchCRM/CRM/pull/5447)
-- Created new APIs for use on Main Dashbaord [#5443](https://github.com/ChurchCRM/CRM/pull/5443)
+- Created new APIs for use on Main Dashboard [#5443](https://github.com/ChurchCRM/CRM/pull/5443)
 - Export to CVS does not include family/person ids [#5404](https://github.com/ChurchCRM/CRM/issues/5404)
 - Active/Inactive Persons [#5088](https://github.com/ChurchCRM/CRM/issues/5088)
 - Application Prerequisites: PHP 7.3+  [#5424](https://github.com/ChurchCRM/CRM/pull/5424)
@@ -472,7 +472,7 @@ Released on (03.31.2020)
 
 ## :star: Enhancements
 
-- Logitude Latitude necessary for mapping function to work?  Available outside of US? [#5174](https://github.com/ChurchCRM/CRM/issues/5174)
+- Longitude Latitude necessary for mapping function to work?  Available outside of US? [#5174](https://github.com/ChurchCRM/CRM/issues/5174)
 
 ## :tada: Core Functionality
 

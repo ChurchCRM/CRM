@@ -1053,7 +1053,7 @@ msgstr "Salvarea unui nume"
 #: 
 #, fuzzy
 msgid "Recurrence Pattern"
-msgstr "Model Recurrance"
+msgstr "Model Recurrence"
 
 #: 
 msgid "Attendance Counts"

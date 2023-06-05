@@ -41,7 +41,7 @@ class LoggerUtils
     public static function getAppLogger($level=null)
     {
       if (is_null(self::$appLogger)){
-        // if $level is null 
+        // if $level is null
         // (meaning this function was invoked without explicitly setting the level),
         //  then get the level from the database
         if (is_null($level)) {
@@ -79,7 +79,7 @@ class LoggerUtils
     public static function getAuthLogger($level=null)
     {
       if (is_null(self::$authLogger)){
-        // if $level is null 
+        // if $level is null
         // (meaning this function was invoked without explicitly setting the level),
         //  then get the level from the database
         if (is_null($level)) {
@@ -100,11 +100,11 @@ class LoggerUtils
       }
       return self::$authLogger;
     }
-    
+
     public static function ResetAppLoggerLevel() {
-      // if the app log hander was initialized (in the boostrapper) to a specific level
+      // if the app log handler was initialized (in the boostrapper) to a specific level
       // before the database initialization occurred
-      // we provide a function to reset the app logger to what's defined in the databse.
+      // we provide a function to reset the app logger to what's defined in the database.
       self::$appLogHandler->setLevel(self::getLogLevel());
     }
 

@@ -129,13 +129,13 @@ class AuthenticationManager
     public static function EnsureAuthentication() {
       // This function differs from the sematinc `ValidateUserSessionIsActive` in that it will
       // take corrective action to redirect the user to an appropriate login location
-      // if the current session is not actuall authenticated
+      // if the current session is not actually authenticated
 
       try {
         $result = self::GetAuthenticationProvider()->ValidateUserSessionIsActive(true);
         // Auth providers will always include a `nextStepURL` if authentication fails.
         // Sometimes other actions may require a `nextStepURL` that should be enforced with
-        // an autentication request (2FA, Expired Password, etc).
+        // an authentication request (2FA, Expired Password, etc).
         if (!$result->isAuthenticated){
           LoggerUtils::getAuthLogger()->debug("Session not authenticated.  Redirecting to login page");
           RedirectUtils::Redirect(self::GetSessionBeginURL());

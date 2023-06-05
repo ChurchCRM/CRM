@@ -1011,7 +1011,7 @@ msgstr "Lagre navn"
 #: 
 #, fuzzy
 msgid "Recurrence Pattern"
-msgstr "Recurrance Mønster"
+msgstr "Recurrence Mønster"
 
 #: 
 msgid "Attendance Counts"

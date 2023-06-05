@@ -138,7 +138,7 @@ namespace ChurchCRM\Backup
                 if (isset($error_msg)) {
                     throw new \Exception("Error backing up to remote: ". $error_msg);
                 }
-                LoggerUtils::getAppLogger()->debug("File send complete.  Took: " . $time->getMiliseconds() . "ms");
+                LoggerUtils::getAppLogger()->debug("File send complete.  Took: " . $time->getMilliseconds() . "ms");
             } catch (\Exception $e) {
                 LoggerUtils::getAppLogger()->error("Error copying backup: " . $e);
             }
@@ -149,11 +149,11 @@ namespace ChurchCRM\Backup
         private function CaptureSQLFile(\SplFileInfo $SqlFilePath)
         {
             global $sSERVERNAME, $sDATABASE, $sUSER, $sPASSWORD;
-            LoggerUtils::getAppLogger()->debug("Beginning to backup datbase to: " . $SqlFilePath->getPathname());
+            LoggerUtils::getAppLogger()->debug("Beginning to backup database to: " . $SqlFilePath->getPathname());
             try {
                 $dump = new Mysqldump(Bootstrapper::GetDSN(), $sUSER, $sPASSWORD, ['add-drop-table' => true]);
                 $dump->start($SqlFilePath->getPathname());
-                LoggerUtils::getAppLogger()->debug("Finisehd backing up datbase to " . $SqlFilePath->getPathname());
+                LoggerUtils::getAppLogger()->debug("Finished backing up database to " . $SqlFilePath->getPathname());
             } catch (\Exception $e) {
                 $message = "Failed to backup database to: " . $SqlFilePath->getPathname(). " Exception: " . $e;
                 LoggerUtils::getAppLogger()->error($message);
@@ -239,8 +239,8 @@ namespace ChurchCRM\Backup
                 $this->EncryptBackupFile();
             }
             $time->End();
-            $percentExecutionTime = (($time->getMiliseconds()/1000)/ini_get('max_execution_time'))*100;
-            LoggerUtils::getAppLogger()->info("Completed backup job.  Took : " . $time->getMiliseconds()."ms. ".$percentExecutionTime."% of max_execution_time");
+            $percentExecutionTime = (($time->getMilliseconds()/1000)/ini_get('max_execution_time'))*100;
+            LoggerUtils::getAppLogger()->info("Completed backup job.  Took : " . $time->getMilliseconds()."ms. ".$percentExecutionTime."% of max_execution_time");
             if ($percentExecutionTime > 80) {
                 // if the backup took more than 80% of the max_execution_time, then write a warning to the log
                 LoggerUtils::getAppLogger()->warning("Backup task took more than 80% of max_execution_time (".ini_get('max_execution_time').").  Consider increasing this time to avoid a failure");
@@ -282,7 +282,7 @@ namespace ChurchCRM\Backup
 
         public function __construct()
         {
-            LoggerUtils::getAppLogger()->info("Beginning to process incoming archvie for restoration");
+            LoggerUtils::getAppLogger()->info("Beginning to process incoming archive for restoration");
             $this->Messages = array();
             if ($this->IsIncomingFileFailed()) {
                 $message = "The selected file exceeds this servers maximum upload size of: " . SystemService::getMaxUploadFileSize();

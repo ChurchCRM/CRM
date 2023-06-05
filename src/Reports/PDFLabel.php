@@ -866,7 +866,7 @@ if ($sFileType == 'PDF') {
         $pdf->Output();
     }
 } else { // File Type must be CSV
-    $delimiter = SystemConfig::getValue("sCSVExportDelemiter");
+    $delimiter = SystemConfig::getValue("sCSVExportDelimiter");
 
     $sCSVOutput = '';
     if ($iBulkCode) {

@@ -112,7 +112,7 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
     $sCountNotes = '';
     //
     // this switch manages the smart-prefill of the form based on the event type
-    // definitions, recurrance type, etc.
+    // definitions, recurrence type, etc.
     //
     switch ($sDefRecurType) {
     case 'none':
@@ -126,7 +126,7 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
       break;
 
     case 'weekly':
-    // check for the last occurance of this type_id in the events table and
+    // check for the last occurrence of this type_id in the events table and
     // create a new event based on this date reference
     //
       $sSQL = "SELECT * FROM events_event WHERE event_type = '$iTypeID' ORDER BY event_start DESC LIMIT 1";
@@ -160,7 +160,7 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
       break;
 
     case 'monthly':
-    // check for the last occurance of this type_id in the events table and
+    // check for the last occurrence of this type_id in the events table and
     // create a new event based on this date reference
     //
       $sSQL = "SELECT * FROM events_event WHERE event_type = '$iTypeID' ORDER BY event_start DESC LIMIT 1";

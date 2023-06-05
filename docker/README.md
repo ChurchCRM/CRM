@@ -1,7 +1,7 @@
 Getting Started with Docker for Development
 ===========================
 
-** THIS DOCKER CONFIGURATION IS INTENDED FOR DEVLOPMENT & DEVELOPMENT PURPOSES ONLY**
+** THIS DOCKER CONFIGURATION IS INTENDED FOR DEVELOPMENT & DEVELOPMENT PURPOSES ONLY**
 
 The main difference between the Dev and Test dockers is that the Dev has NPM, Node, composer, and Cypress installed and running inside the docker.
 
@@ -38,7 +38,7 @@ These are the steps needed to develop ChurchCRM with Docker
       Internally, the port is always **3306**
    - webserver : The web server and container that contains all of the application's code
       - exposes port **80** by default. You can change this port by updating *DEV_WEBSERVER_PORT* in the file `docker/.env`.
-      
+
          Internally, the port is always **80**
    - adminer : Simple web application to access the database server graphically
       - exposes port **8088** by default. You can change this port by updating *DEV_ADMINER_PORT* in the file `docker/.env`

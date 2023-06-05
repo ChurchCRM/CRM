@@ -52,7 +52,7 @@ if (array_key_exists('Action', $_POST) && $_POST['Action'] == 'Retrieve' && !emp
 } elseif (array_key_exists('Action', $_GET) && $_GET['Action'] == 'List' && !empty($_GET['Event'])) {
     $sSQL = 'SELECT * FROM events_event WHERE event_type = '.$_GET['Event'].' ORDER BY event_start';
 
-    //I change textt from All $_GET['Type'] Events to All Events of type . $_GET['Type'], because it don´t work for protuguese, spanish, french and so on
+    //I change textt from All $_GET['Type'] Events to All Events of type . $_GET['Type'], because it don´t work for portuguese, spanish, french and so on
     $sPageTitle = gettext('All Events of Type').': '.$_GET['Type'];
 } else {
     $sSQL = 'SELECT * FROM events_event ORDER BY event_start';
