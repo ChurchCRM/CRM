@@ -738,7 +738,8 @@ msgid "Deposit Slip Report"
 msgstr "Befizetési Slip Jelentés"
 
 #: 
-msgid "Important note: failed transactions will be deleted permanantly when the deposit slip is closed."
+#, fuzzy
+msgid "Important note: failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr "Fontos megjegyzés: A sikertelen tranzakciók törlésre kerül permanantly, ha a betét slip zárva van."
 
 #: 
@@ -1542,7 +1543,8 @@ msgid "eGive"
 msgstr "eGive"
 
 #: 
-msgid "Minimun Total Amount:"
+#, fuzzy
+msgid "Minimum Total Amount:"
 msgstr "Minimum Teljes összeg:"
 
 #: 
@@ -2605,7 +2607,8 @@ msgid "Execute SQL"
 msgstr "Execute SQL"
 
 #: 
-msgid "An error occured: "
+#, fuzzy
+msgid "An error occurred: "
 msgstr "Hiba történt:"
 
 #: 

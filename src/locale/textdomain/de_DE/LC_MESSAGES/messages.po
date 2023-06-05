@@ -787,7 +787,8 @@ msgid "Deposit Slip Report"
 msgstr "Einzahlungsbericht"
 
 #: 
-msgid "Important note: failed transactions will be deleted permanantly when the deposit slip is closed."
+#, fuzzy
+msgid "Important note: failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr "Wichtige Mitteilung: fehlgeschlagene Transaktionen werden dauerhaft gelöscht wenn der Einzahlungsbeleg geschlossen wird."
 
 #: 
@@ -1715,7 +1716,8 @@ msgid "eGive"
 msgstr "eGive"
 
 #: 
-msgid "Minimun Total Amount:"
+#, fuzzy
+msgid "Minimum Total Amount:"
 msgstr "Minimaler Gesamtbetrag:"
 
 #: 
@@ -3054,7 +3056,8 @@ msgid "Execute SQL"
 msgstr "Führe SQL aus"
 
 #: 
-msgid "An error occured: "
+#, fuzzy
+msgid "An error occurred: "
 msgstr "Ein Fehler ist aufgetreten:"
 
 #: 
@@ -8589,7 +8592,8 @@ msgid "Warning: Pre-Upgrade Tasks Detected"
 msgstr "Warnung: Pre-Upgrade-Aufgaben entdeckt"
 
 #: 
-msgid "Some conditions have been identified wich may prevent a successful upgrade"
+#, fuzzy
+msgid "Some conditions have been identified which may prevent a successful upgrade"
 msgstr "Es wurden einige Bedingungen festgestellt, die ein erfolgreiches Upgrade verhindern können"
 
 #: 
@@ -8761,7 +8765,8 @@ msgid "Your new password is too similar to your old one."
 msgstr "Ihr neues Passwort ist Ihrem alten zu ähnlich."
 
 #: 
-msgid "Password reset not availble.  Please contact your system administrator"
+#, fuzzy
+msgid "Password reset not available.  Please contact your system administrator"
 msgstr "Passwortrücksetzung nicht verfügbar.  Bitte kontaktieren Sie Ihren Systemadministrator"
 
 #: 

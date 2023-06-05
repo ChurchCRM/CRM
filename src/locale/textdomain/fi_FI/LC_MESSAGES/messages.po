@@ -786,7 +786,8 @@ msgid "Deposit Slip Report"
 msgstr "Talletuksen kuitti raportti"
 
 #: 
-msgid "Important note: failed transactions will be deleted permanantly when the deposit slip is closed."
+#, fuzzy
+msgid "Important note: failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr "Tärkeä huomautus: epäonnistuneet tapahtumat poistetaan pysyvästi, kun talletuskuitti suljetaan."
 
 #: 

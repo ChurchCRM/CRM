@@ -787,7 +787,8 @@ msgid "Deposit Slip Report"
 msgstr "Reporte de fichas de depósitos"
 
 #: 
-msgid "Important note: failed transactions will be deleted permanantly when the deposit slip is closed."
+#, fuzzy
+msgid "Important note: failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr "Nota importante: las transacciones no realizadas se borrarán permanentemente al cerrar la ficha de depósitos."
 
 #: 
@@ -1703,7 +1704,8 @@ msgid "eGive"
 msgstr "eGive"
 
 #: 
-msgid "Minimun Total Amount:"
+#, fuzzy
+msgid "Minimum Total Amount:"
 msgstr "Monto total mínimo:"
 
 #: 
@@ -3019,7 +3021,8 @@ msgid "Execute SQL"
 msgstr "Ejecutar SQL"
 
 #: 
-msgid "An error occured: "
+#, fuzzy
+msgid "An error occurred: "
 msgstr "A Ocurrido un Error: "
 
 #: 
@@ -8942,7 +8945,8 @@ msgid "Warning: Pre-Upgrade Tasks Detected"
 msgstr "Advertencia: Tareas de Pre-Actualización Detectadas"
 
 #: 
-msgid "Some conditions have been identified wich may prevent a successful upgrade"
+#, fuzzy
+msgid "Some conditions have been identified which may prevent a successful upgrade"
 msgstr "Algunas condiciones han sido identificadas, las que pueden evitar una actualización satisfactoria."
 
 #: 
@@ -9115,7 +9119,8 @@ msgstr "Su nueva contraseña es demasiado similar a la anterior."
 
 #. Availble
 #: 
-msgid "Password reset not availble.  Please contact your system administrator"
+#, fuzzy
+msgid "Password reset not available.  Please contact your system administrator"
 msgstr "Restablecimiento de contraseña no disponible. Por favor, contacte al administrador de su sistema."
 
 #: 

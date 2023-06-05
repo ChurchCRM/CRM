@@ -193,7 +193,7 @@
     "Deposit Details: ": "Talletustiedot:",
     "Close deposit slip (remember to press Save)": "Sulje talletuksen kuittinumero(muista painaa Tallenna-painiketta)",
     "Deposit Slip Report": "Talletuksen kuitti raportti",
-    "Important note: failed transactions will be deleted permanantly when the deposit slip is closed.": "Tärkeä huomautus: epäonnistuneet tapahtumat poistetaan pysyvästi, kun talletuskuitti suljetaan.",
+    "Important note: failed transactions will be deleted permanently when the deposit slip is closed.": "Tärkeä huomautus: epäonnistuneet tapahtumat poistetaan pysyvästi, kun talletuskuitti suljetaan.",
     "Deposit Summary: ": "Talletusyhteenveto:",
     "Payments on this deposit slip:": "Tämän talletuskuitin maksut:",
     "Import eGive": "Tuo eGive",

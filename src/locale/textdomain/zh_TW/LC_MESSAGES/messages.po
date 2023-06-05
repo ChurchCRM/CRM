@@ -818,7 +818,8 @@ msgid "Deposit Slip Report"
 msgstr "存款單報告"
 
 #: 
-msgid "Important note: failed transactions will be deleted permanantly when the deposit slip is closed."
+#, fuzzy
+msgid "Important note: failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr "重要提示：在存款憑條被關閉時，失敗的交易將被刪除permanantly。"
 
 #: 
@@ -1757,7 +1758,8 @@ msgid "eGive"
 msgstr "eGive"
 
 #: 
-msgid "Minimun Total Amount:"
+#, fuzzy
+msgid "Minimum Total Amount:"
 msgstr "最小起總金額："
 
 #: 
@@ -3109,7 +3111,8 @@ msgid "Execute SQL"
 msgstr "執行SQL"
 
 #: 
-msgid "An error occured: "
+#, fuzzy
+msgid "An error occurred: "
 msgstr "發生錯誤："
 
 #: 
@@ -9144,7 +9147,7 @@ msgstr "警告：檢測到預升級任務"
 
 #: 
 #, fuzzy
-msgid "Some conditions have been identified wich may prevent a successful upgrade"
+msgid "Some conditions have been identified which may prevent a successful upgrade"
 msgstr "已確定某些情況，可能會阻止成功升級"
 
 #: 
@@ -9343,7 +9346,7 @@ msgstr "您的新密碼與舊密碼過於相似。"
 
 #: 
 #, fuzzy
-msgid "Password reset not availble.  Please contact your system administrator"
+msgid "Password reset not available.  Please contact your system administrator"
 msgstr "密碼重置不可用。請聯繫您的系統管理員"
 
 #: 

@@ -727,7 +727,8 @@ msgid "Deposit Slip Report"
 msgstr "Shqip Depozita Raport"
 
 #: 
-msgid "Important note: failed transactions will be deleted permanantly when the deposit slip is closed."
+#, fuzzy
+msgid "Important note: failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr "Shënim i rëndësishëm: Transaksionet e dështuara do të fshihen permanantly kur faturën e depozitës është e mbyllur."
 
 #: 
@@ -1489,7 +1490,8 @@ msgid "eGive"
 msgstr "eGive"
 
 #: 
-msgid "Minimun Total Amount:"
+#, fuzzy
+msgid "Minimum Total Amount:"
 msgstr "Minimun Shuma totale:"
 
 #: 
@@ -2509,7 +2511,8 @@ msgid "Execute SQL"
 msgstr "Execute SQL"
 
 #: 
-msgid "An error occured: "
+#, fuzzy
+msgid "An error occurred: "
 msgstr "Ka ndodhur një gabim: "
 
 #: 
