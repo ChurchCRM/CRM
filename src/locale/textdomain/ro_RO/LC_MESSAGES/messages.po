@@ -809,7 +809,8 @@ msgid "Deposit Slip Report"
 msgstr "Raportul Slip depozit"
 
 #: 
-msgid "Important note: failed transactions will be deleted permanantly when the deposit slip is closed."
+#, fuzzy
+msgid "Important note: failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr "Notă Important: tranzacții eșuate vor fi șterse permanantly atunci când ordinul de plată este închis."
 
 #: 
@@ -1745,7 +1746,8 @@ msgid "eGive"
 msgstr "eGive"
 
 #: 
-msgid "Minimun Total Amount:"
+#, fuzzy
+msgid "Minimum Total Amount:"
 msgstr "Minim total Suma:"
 
 #: 
@@ -3092,7 +3094,8 @@ msgid "Execute SQL"
 msgstr "Executa SQL"
 
 #: 
-msgid "An error occured: "
+#, fuzzy
+msgid "An error occurred: "
 msgstr "A apărut o eroare:"
 
 #: 

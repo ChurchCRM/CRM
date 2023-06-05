@@ -809,7 +809,8 @@ msgid "Deposit Slip Report"
 msgstr "存款单报告"
 
 #: 
-msgid "Important note: failed transactions will be deleted permanantly when the deposit slip is closed."
+#, fuzzy
+msgid "Important note: failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr "重要提示：在存款凭条被关闭时，失败的交易将被删除permanantly。"
 
 #: 
@@ -1746,7 +1747,8 @@ msgid "eGive"
 msgstr "eGive"
 
 #: 
-msgid "Minimun Total Amount:"
+#, fuzzy
+msgid "Minimum Total Amount:"
 msgstr "最小起总金额："
 
 #: 
@@ -3094,7 +3096,8 @@ msgid "Execute SQL"
 msgstr "执行SQL"
 
 #: 
-msgid "An error occured: "
+#, fuzzy
+msgid "An error occurred: "
 msgstr "发生错误："
 
 #: 
@@ -9017,7 +9020,8 @@ msgid "Warning: Pre-Upgrade Tasks Detected"
 msgstr "警告：检测到升级前任务"
 
 #: 
-msgid "Some conditions have been identified wich may prevent a successful upgrade"
+#, fuzzy
+msgid "Some conditions have been identified which may prevent a successful upgrade"
 msgstr "已确定某些情况，可能会阻止成功升级"
 
 #: 
@@ -9189,7 +9193,8 @@ msgid "Your new password is too similar to your old one."
 msgstr "您的新密码与旧密码太相似。"
 
 #: 
-msgid "Password reset not availble.  Please contact your system administrator"
+#, fuzzy
+msgid "Password reset not available.  Please contact your system administrator"
 msgstr "密码重置不可用。请联系您的系统管理员"
 
 #: 
