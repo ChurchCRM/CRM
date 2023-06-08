@@ -41,7 +41,7 @@ sudo mysql -e "GRANT ALL PRIVILEGES ON ${DB_NAME}.* TO '${DB_USER}'@'localhost';
 sudo mysql -e "FLUSH PRIVILEGES;"
 
 # Define the domain name of the server
-DOMAIN="stmary.threatsfree.com"
+DOMAIN=""
 # Set-up the required BookStack apache config
 sudo tee /etc/apache2/sites-available/churchcrm.conf << 'TXT'
 <VirtualHost *:80>
