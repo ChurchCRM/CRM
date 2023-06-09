@@ -27,7 +27,7 @@ if (!empty($sHeader)) {
         position: relative;
     }
 </style>
-<div class="register-box" style="width: 600px;">
+<div class="register-box" style="width: 75%;">
     <div class="register-logo">
         <a href="<?= SystemURLs::getRootPath() ?>/"><?= $headerHTML ?></a>
         <h3><?= gettext("Register your family") ?></h3>
