@@ -12,7 +12,7 @@ sudo apt install mysql-server -y
 
 
 sudo apt install php libapache2-mod-php -y
-sudo apt install php-curl php-cli php-dev php-gd php-intl php-json php-mysql php-opcache php-bcmath php-mbstring php-soap php-xml php-zip -y
+sudo apt install php-curl php-cli php-dev php-gd php-intl php-json php-mysql php-bcmath php-mbstring php-soap php-xml php-zip -y
 cd /tmp
 git clone https://github.com/ChurchCRM/CRM.git
 cd /var/www
