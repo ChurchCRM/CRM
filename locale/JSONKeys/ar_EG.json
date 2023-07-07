@@ -2276,123 +2276,4 @@
     "Your new password is too similar to your old one.": "كلمه المرور متشابهه مع كلمه مرور سابقه",
     "Password reset not available.  Please contact your system administrator": "لأعاده كلمه المرور برجاء التواصل مع مسئول النظام",
     "Authentication Issue": "مشكلة المصادقة",
-    "Enter new user password. Administratively set passwords are not subject to length or complexity requirements": "أدخل كلمة مرور المستخدم الجديدة. لا تخضع كلمات المرور المعينة إداريًا لمتطلبات الطول أو التعقيد",
-    "No email passed in": "لم يمر أي بريد إلكتروني",
-    "Mailchimp is not active": "Mailchimp غير نشط",
-    "Mailchimp": "Mailchimp",
-    "Lists": "القوائم",
-    "loading": "يتم التحميل ",
-    "List not found": "القائمه غير موجوده",
-    "List not inList": "القائمة ليست في القائمة",
-    "People not in": "الناس ليسوا في",
-    "Invalid List id": "معرف قائمة غير صالح",
-    "Audience not in the ChurchCRM": "الجمهور ليس في ChurchCRM",
-    "ChurchCRM Installation Information": "معلومات تثبيت ChurchCRM",
-    "Database Server Version": "إصدار خادم قاعدة البيانات",
-    "Web Server": "قاعدة بيانات للانترنت",
-    "Server Software": "برنامج الخادم",
-    "Email Information": "معلومات البريد الإلكتروني",
-    "List maintenance": "قائمة الصيانة",
-    "People not in list": "الناس ليسوا في القائمة",
-    "Audience not in the CRM": "الجمهور ليس في CRM",
-    "Hebrew": "اللغة العبرية",
-    "open rate": "معدل مفتوح",
-    "Not Subscribed ": "غير مشترك ",
-    "Global User Settings": "إعدادات المستخدم العامة",
-    "General": "عام",
-    "Passwords": "كلمات السر",
-    "2FA": "2FA",
-    "Session Timeout": "مهلة جلسة",
-    "Max Failed Login": "ماكس فشل تسجيل الدخول",
-    "Enable Password Reset": "تفعيل اعاده تعيين كلمه المرور",
-    "Send email to Deleted Users": "أرسل بريدًا إلكترونيًا إلى المستخدمين المحذوفين",
-    "Min Password Length": "الحد الأدنى لطول كلمة المرور",
-    "Min Password Characters Delta": "الحد الأدنى لأحرف كلمة المرور دلتا",
-    "Disallowed Passwords": "كلمات المرور غير المسموح بها",
-    "Enable 2FA": "تمكين 2FA",
-    "Require 2FA": "تتطلب 2FA",
-    "2FA Application Name": "2FA اسم التطبيق",
-    "Login Info": "معلومات تسجيل الدخول",
-    "Login Count": "حساب تسجيل الدخول",
-    "Failed Login": "الدخول الفاشلة",
-    "Permissions": "أذونات",
-    "Manage Notes": "إدارة الملاحظات",
-    "Skins": "جلود",
-    "Failed generate a new API Key": "فشل إنشاء مفتاح API جديد",
-    "Pledge Summary By Family": "ملخص التعهد حسب الأسرة",
-    "Pledge": "التعهد",
-    "Paid": "دفع",
-    "Owe": "مدينون",
-    "Start Date": "تاريخ البدء",
-    "End Date": "تاريخ الانتهاء",
-    "Pinned Calendars": "التقويمات المثبتة",
-    "This field is required": "هذه الخانة مطلوبه",
-    "Text": "نص",
-    "Event Description": "وصف الحدث",
-    "Enrolling your ChurchCRM user account in Two Factor Authention provides an additional layer of defense against bad actors trying to access your account.": "يوفر تسجيل حساب مستخدم ChurchCRM الخاص بك في Two Factor Authention طبقة إضافية من الدفاع ضد الجهات الفاعلة السيئة التي تحاول الوصول إلى حسابك.",
-    "ChurchCRM Two factor supports any TOTP authenticator app, so you're free to choose between Microsoft Authenticator, Google Authenticator, Authy, LastPass, and others": "يدعم ChurchCRM Two Factor أي تطبيق مصادقة TOTP ، لذلك يمكنك الاختيار بين Microsoft Authenticator و Google Authenticator و Authy و LastPass وغيرها",
-    "When you sign in to ChurchCRM, you'll still enter your username and password like normal": "عند تسجيل الدخول إلى ChurchCRM ، ستظل تدخل اسم المستخدم وكلمة المرور الخاصين بك كالمعتاد",
-    "However, you'll also need to supply a one-time code from your authenticator device to complete your login": "ومع ذلك ، ستحتاج أيضًا إلى توفير رمز لمرة واحدة من جهاز المصادقة الخاص بك لإكمال تسجيل الدخول الخاص بك",
-    "After successfully entering both your credentials, and the one-time code, you'll be logged in as normal": "بعد إدخال بيانات الاعتماد الخاصة بك والرمز المستخدم لمرة واحدة بنجاح ، سيتم تسجيل دخولك كالمعتاد",
-    "To prevent being locked out of your ChurchCRM account, please ensure you're ready to complete two factor enrollment before clicking begin": "لمنع حظر حسابك في ChurchCRM ، يرجى التأكد من استعدادك لإكمال التسجيل الثنائي قبل النقر فوق ابدأ",
-    "Beginning enrollment will invalidate any previously enrolled 2 factor devices and recovery codes.": "سيؤدي بدء التسجيل إلى إبطال أي أجهزة ثنائية ورموز استرداد مسجلة مسبقًا.",
-    "When you click next, you'll be prompted to scan a QR code to enroll your authenticator app.": "عند النقر فوق التالي ، سيُطلب منك مسح رمز QR ضوئيًا لتسجيل تطبيق المصادقة.",
-    "To confirm enrollment, you'll need to enter the code generated by your authenticator app": "لتأكيد التسجيل ، ستحتاج إلى إدخال الرمز الذي تم إنشاؤه بواسطة تطبيق المصادقة الخاص بك",
-    "After confirming app enrollment, single-use recovery codes will be generated and displayed.": "بعد تأكيد تسجيل التطبيق ، سيتم إنشاء وعرض رموز الاسترداد ذات الاستخدام الفردي.",
-    "Recovery codes can be used instead of a code generated from your authenticator app.": "يمكن استخدام رموز الاسترداد بدلاً من رمز تم إنشاؤه من تطبيق المصادقة الخاص بك.",
-    "Store these in a secure location": "قم بتخزينها في مكان آمن",
-    "Begin Two Factor Authentication Enrollment": "بدء التسجيل في المصادقة الثنائية",
-    "2 Factor Authentication Secret": "2 سر مصادقة العامل",
-    "Regenerate 2 Factor Authentication Secret": "إعادة إنشاء سر مصادقة 2 عامل",
-    "Remove 2 Factor Authentication Secret": "قم بإزالة 2 Factor Authentication Secret",
-    "Enter TOTP code to confirm enrollment": "أدخل رمز TOTP لتأكيد التسجيل",
-    "2 Factor Authentication Enrollment Success": "2 نجاح تسجيل مصادقة العامل",
-    "Please store these recovery codes in a safe location": "يرجى تخزين رموز الاسترداد هذه في مكان آمن",
-    "If you ever lose access to your newly enrolled authenticator app, you'll need to use a recovery code to gain access to your account": "إذا فقدت الوصول إلى تطبيق المصدق المسجل حديثًا ، فستحتاج إلى استخدام رمز الاسترداد للوصول إلى حسابك",
-    "Event Attendance": "حضور الحدث",
-    "Generate attendance -AND- non-attendance reports for events": "إنشاء تقارير الحضور - و - عدم الحضور للأحداث",
-    "of translation completed": "اكتملت الترجمة",
-    "Help translate this project": "ساعد في ترجمة هذا المشروع",
-    "Credit Card People": "الناس بطاقة الائتمان",
-    "People who are configured to pay by credit card.": "الأشخاص الذين تم تكوينهم للدفع بواسطة بطاقة الائتمان.",
-    "Afrikaans": "الأفريكانية",
-    " has a type mismatch": " له نوع غير متطابق",
-    "Loading": "جار التحميل",
-    "Family Property Unassignment": "إلغاء التنازل عن ممتلكات العائلة",
-    "Do you want to remove": "هل تريد إزالة",
-    "View Active People": "عرض الأشخاص النشطين",
-    "View Inactive People": "مشاهدة ملف Inactive People",
-    "Today's Birthdays": "اعياد ميلاد اليوم",
-    "Today's Wedding Anniversaries": "مناسبات الزفاف اليوم",
-    "Api Key": "مفتاح API",
-    "Regen API Key": "مفتاح Regen API",
-    "View Family Page": "عرض صفحة العائلة",
-    "View Person Page": "عرض صفحة الشخص",
-    "Verify": "تحقق",
-    "Family has no emails to use": "العائلة ليس لديها رسائل بريد إلكتروني لاستخدامها",
-    "Blue": "أزرق",
-    "Black": "أسود",
-    "Purple": "أرجواني",
-    "Green": "أخضر",
-    "Red": "أحمر",
-    "Yellow": "أصفر",
-    "Blue Light": "ضوء أزرق",
-    "Black Light": "ضوء أسود",
-    "Purple Light": "ضوء أرجواني",
-    "Green Light": "ضوء أخضر",
-    "Red Light": "ضوء أحمر",
-    "Yellow Light": "ضوء أصفر",
-    "Boxed Layout": "تخطيط محاصر",
-    "Activate the boxed layout": "تنشيط التخطيط المعبأ",
-    "Toggle Sidebar": "تبديل الشريط الجانبي",
-    "Toggle the left sidebar's state (open or collapse)": "تبديل حالة الشريط الجانبي الأيسر (فتح أو تصغير)",
-    "Tables Settings": "جدول الإعدادات",
-    "Page length": "طول الصفحة",
-    "Change the initial page length (number of rows per page)": "تغيير طول الصفحة البدائي (عدد الأسطر بكل صفحة).",
-    "User Interface": "واجهة المستخدم",
-    "Locale": "لغة",
-    "Override system locale": "تجاوز لغة النظام",
-    "Deleted": "تم المسح",
-    "Invalid Birth Date: Missing birth month or day.": "تاريخ ميلاد خطأ ، شهر الميلاد او اليوم غير صحيح.",
-    "Invalid Birth Date: Missing birth month and day.": "تاريخ ميلاد خطأ ، شهر الميلاد او اليوم غير صحيح."
-}
+    "Enter new user password. Administratively set passwords are not subject to length or complexity requirements": "أدخل كلمة مرور المستخدم الجديد�
