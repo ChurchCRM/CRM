@@ -84,7 +84,7 @@
         "i18next": "19.9.2",
         "icheck-bootstrap": "^3.0.1",
         "inputmask": "^5.0.8",
-        "jquery": "^3.7.0",
+        "jquery": "^3.7.1",
         "jquery-photo-uploader": "^1.0.13",
         "jquery-steps": "^1.1.0",
         "jquery-validation": "^1.19.5",
