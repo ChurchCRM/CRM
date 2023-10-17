@@ -3329,16 +3329,16 @@
         },
         {
             "name": "slim/slim",
-            "version": "3.12.4",
+            "version": "3.12.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/slimphp/Slim.git",
-                "reference": "ce3cb65a06325fc9fe3d0223f2ae23113a767304"
+                "reference": "565632b2d9b64ecedf89546edbbf4f3648089f0c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/slimphp/Slim/zipball/ce3cb65a06325fc9fe3d0223f2ae23113a767304",
-                "reference": "ce3cb65a06325fc9fe3d0223f2ae23113a767304",
+                "url": "https://api.github.com/repos/slimphp/Slim/zipball/565632b2d9b64ecedf89546edbbf4f3648089f0c",
+                "reference": "565632b2d9b64ecedf89546edbbf4f3648089f0c",
                 "shasum": ""
             },
             "require": {
@@ -3400,7 +3400,7 @@
             ],
             "support": {
                 "issues": "https://github.com/slimphp/Slim/issues",
-                "source": "https://github.com/slimphp/Slim/tree/3.12.4"
+                "source": "https://github.com/slimphp/Slim/tree/3.12.5"
             },
             "funding": [
                 {
@@ -3412,7 +3412,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-10-02T19:38:22+00:00"
+            "time": "2023-07-23T04:32:51+00:00"
         },
         {
             "name": "symfony/config",
