@@ -10,10 +10,10 @@ ini_set('error_log', __DIR__ . '/../logs/external.log');
 if (file_exists('../Include/Config.php')) {
     header('Location: ../index.php');
 } else {
-    require_once dirname(__FILE__) . '/../vendor/autoload.php';
+    require_once __DIR__ . '/../vendor/autoload.php';
 
     $rootPath = str_replace('/setup/index.php', '', $_SERVER['SCRIPT_NAME']);
-    SystemURLs::init($rootPath, '', dirname(__FILE__)."/../");
+    SystemURLs::init($rootPath, '', __DIR__."/../");
     SystemConfig::init();
 
     $app = new \Slim\App();

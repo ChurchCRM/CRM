@@ -3,7 +3,7 @@
 namespace ChurchCRM\Service;
 
 $bSuppressSessionTests = true; // DO NOT MOVE
-require_once dirname(dirname(__FILE__)).'/../Include/Functions.php';
+require_once dirname(__DIR__).'/../Include/Functions.php';
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;

@@ -10,8 +10,8 @@ use ChurchCRM\PersonQuery;
 class PDF_Directory extends ChurchInfoReport
 {
     // Private properties
-    public $_Margin_Left = 16;        // Left Margin
-    public $_Margin_Top = 0;         // Top margin
+    public $_Margin_Left = 13;        // Left Margin
+    public $_Margin_Top = 13;         // Top margin
     public $_Char_Size = 10;        // Character size
     public $_Column = 0;
     public $_Font = 'Times';
@@ -20,7 +20,7 @@ class PDF_Directory extends ChurchInfoReport
     public $sFamily;
     public $sLastName;
     public $_ColWidth = 58;
-    public $_Custom;
+    public $_Custom = [];
     public $_NCols = 3;
     public $_PS = 'Letter';
     public $sSortBy = '';
@@ -102,17 +102,10 @@ class PDF_Directory extends ChurchInfoReport
         parent::__construct('P', 'mm', $paper);
         $this->_Char_Size = $fs;
         $this->_LS = $ls;
-
-        $this->_Column = 0;
-        $this->_Font = 'Times';
         $this->SetMargins(0, 0);
 
         $this->Set_Char_Size($this->_Char_Size);
         $this->SetAutoPageBreak(false);
-
-        $this->_Margin_Left = 13;
-        $this->_Margin_Top = 13;
-        $this->_Custom = [];
         $this->_NCols = $nc;
         $this->_ColWidth = 190 / $nc - $this->_Gutter;
     }

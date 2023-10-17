@@ -148,12 +148,12 @@ $mailchimp = new MailChimpService();
                                     <span style="color:<?= ($family->isSendNewsletter()? "green" : "red") ?>"><i
                                             class="fa fa-<?= ($family->isSendNewsletter() ? "check" : "times") ?>"></i></span>
                                 </li>
-                                <?php
+<?php
                             }
                             if (!SystemConfig::getBooleanValue("bHideWeddingDate") && !empty($family->getWeddingdate())) { /* Wedding Date can be hidden - General Settings */ ?>
                                 <li><i class="fa-li fa fa-magic"></i><?= gettext("Wedding Date") ?>:
                                     <span><?= $family->getWeddingDate()->format(SystemConfig::getValue("sDateFormatLong")) ?></span></li>
-                                <?php
+<?php
                             }
                             if (SystemConfig::getValue("bUseDonationEnvelopes")) {
                                 ?>

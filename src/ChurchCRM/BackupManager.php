@@ -262,7 +262,7 @@ namespace ChurchCRM\Backup
          *
          * @var Array
          */
-        public $Messages;
+        public $Messages = array();
         /**
          *
          * @var Boolean
@@ -283,7 +283,6 @@ namespace ChurchCRM\Backup
         public function __construct()
         {
             LoggerUtils::getAppLogger()->info("Beginning to process incoming archive for restoration");
-            $this->Messages = array();
             if ($this->IsIncomingFileFailed()) {
                 $message = "The selected file exceeds this servers maximum upload size of: " . SystemService::getMaxUploadFileSize();
                 LoggerUtils::getAppLogger()->error($message);

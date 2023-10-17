@@ -18,11 +18,10 @@ use Propel\Runtime\ActiveQuery\Criteria;
 class Event extends BaseEvent
 {
 
-  private $editable;
+  private $editable = true;
 
   public function __construct() {
     parent::__construct();
-    $this->editable = true;
   }
 
   public function toArray($keyType = TableMap::TYPE_PHPNAME, $includeLazyLoadColumns = true, $alreadyDumpedObjects = array(), $includeForeignObjects = false)

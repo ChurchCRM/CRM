@@ -29,27 +29,19 @@ class PDF_PhotoBook extends ChurchInfoReport
     private $FYIDString;
     private $currentX;
     private $currentY;
-    private $pageMarginL;
-    private $pageMarginR;
-    private $pageMarginT;
-    private $pageMarginB;
-    private $personMarginL;
-    private $personMarginR;
-    private $personImageHeight;
-    private $personImageWidth;
+    private $pageMarginL = 15;
+    private $pageMarginR = 15;
+    private $pageMarginT = 20;
+    private $pageMarginB = 5;
+    private $personMarginL = 2.5;
+    private $personMarginR = 2.5;
+    private $personImageHeight = 30;
+    private $personImageWidth = 30;
   
     // Constructor
     public function __construct($iFYID)
     {
         parent::__construct('P', 'mm', $this->paperFormat);
-        $this->pageMarginL = 15;
-        $this->pageMarginR = 15;
-        $this->pageMarginT = 20;
-        $this->pageMarginB = 5;
-        $this->personMarginL = 2.5;
-        $this->personMarginR = 2.5;
-        $this->personImageHeight = 30;
-        $this->personImageWidth = 30;
         $this->FYIDString = MakeFYString($iFYID);
     }
     

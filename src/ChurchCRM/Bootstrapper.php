@@ -46,7 +46,7 @@ namespace ChurchCRM
           self::$allowableURLs = $URL;
 
           try {
-              SystemURLs::init($sRootPath, $URL, dirname(dirname(__FILE__)));
+              SystemURLs::init($sRootPath, $URL, dirname(__DIR__));
           } catch (\Exception $e) {
               Bootstrapper::system_failure($e->getMessage());
           }

@@ -6,12 +6,11 @@ use ChurchCRM\Utils\MiscUtils;
 class Prerequisite implements \JsonSerializable {
   private $name;
   private $testFunction;
-  private $savedTestResult;
+  private $savedTestResult = null;
 
   public function __construct(string $name, callable $testFunction) {
     $this->name = $name;
     $this->testFunction = $testFunction;
-    $this->savedTestResult = null;
   }
   
   public function IsPrerequisiteMet(){
