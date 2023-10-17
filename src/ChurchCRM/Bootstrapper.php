@@ -176,7 +176,7 @@ namespace ChurchCRM
       {
           self::$bootStrapLogger->debug("Initializing Propel ORM");
           // ==== ORM
-          self::$dbClassName = "\\Propel\\Runtime\\Connection\\ConnectionWrapper";
+          self::$dbClassName = '\\' . \Propel\Runtime\Connection\ConnectionWrapper::class;
           self::$serviceContainer = Propel::getServiceContainer();
           self::$serviceContainer->checkVersion('2.0.0-dev');
           self::$serviceContainer->setAdapterClass('default', 'mysql');
@@ -236,7 +236,7 @@ namespace ChurchCRM
           $ormLogPath = LoggerUtils::buildLogFilePath("orm");
           $ormLogger = new Logger('ormLogger');
           self::$bootStrapLogger->debug("Configuring ORM logs at :" .$ormLogPath);
-          self::$dbClassName = "\\Propel\\Runtime\\Connection\\DebugPDO";
+          self::$dbClassName = '\\' . \Propel\Runtime\Connection\DebugPDO::class;
           self::$manager->setConfiguration(self::buildConnectionManagerConfig());
           $ormLogger->pushHandler(new StreamHandler($ormLogPath, LoggerUtils::getLogLevel()));
           self::$serviceContainer->setLogger('defaultLogger', $ormLogger);

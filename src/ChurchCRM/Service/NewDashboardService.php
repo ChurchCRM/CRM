@@ -7,9 +7,9 @@ class NewDashboardService
     public static function getDashboardItems($PageName)
     {
         $DashboardItems = [
-            "ChurchCRM\Dashboard\EventsMenuItems",
-            "ChurchCRM\Dashboard\ClassificationDashboardItem",
-            "ChurchCRM\Dashboard\CurrentLocaleMetadata"
+            \ChurchCRM\Dashboard\EventsMenuItems::class,
+            \ChurchCRM\Dashboard\ClassificationDashboardItem::class,
+            \ChurchCRM\Dashboard\CurrentLocaleMetadata::class
         ];
         $ReturnValues = [];
         foreach ($DashboardItems as $DashboardItem) {

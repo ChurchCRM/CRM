@@ -50,7 +50,7 @@ class HolidayCalendar implements SystemCalendar {
     $year = date('Y');
     $holidays = Yasumi::create($Country->getCountryNameYasumi(),$year);
     $events = new ObjectCollection();
-    $events->setModel("ChurchCRM\\Event");
+    $events->setModel(\ChurchCRM\Event::class);
    
     foreach ($holidays as $holiday){
       $event = $this->yasumiHolidayToEvent($holiday);
