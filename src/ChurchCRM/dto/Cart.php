@@ -199,7 +199,7 @@ class Cart
   public static function getEmailLink() {
     /* @var $cartPerson ChurchCRM\Person */
     $people = Cart::getCartPeople();
-    $emailAddressArray = array();
+    $emailAddressArray = [];
     foreach($people as $cartPerson) {
       if (!empty($cartPerson->getEmail())) {
         array_push($emailAddressArray, $cartPerson->getEmail());
@@ -217,7 +217,7 @@ class Cart
 
      /* @var $cartPerson ChurchCRM\Person */
     $people = Cart::getCartPeople();
-    $SMSNumberArray = array();
+    $SMSNumberArray = [];
     foreach($people as $cartPerson)
     {
       if (!empty($cartPerson->getCellPhone())) {

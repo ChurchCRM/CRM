@@ -114,8 +114,8 @@ function getUserCalendarFullCalendarEvents($request, Response $response, $args)
     $start = $request->getQueryParam("start", "");
     $end = $request->getQueryParam("end", "");
     $Events = EventQuery::create()
-        ->filterByStart(array("min" => $start))
-        ->filterByEnd(array("max" => $end))
+        ->filterByStart(["min" => $start])
+        ->filterByEnd(["max" => $end])
         ->filterByCalendar($calendar)
         ->find();
     if (!$Events) {
@@ -189,5 +189,5 @@ function deleteUserCalendar(Request $request, Response $response, $args)
         return $response->withStatus(404, gettext("Not Found: Unknown calendar id") . ": " . $args['id']);
     }
     $Calendar->delete();
-    return $response->withJson(array("status"=>"success"));
+    return $response->withJson(["status"=>"success"]);
 }

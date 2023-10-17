@@ -32,7 +32,7 @@ class NotificationService
      */
     if (isset($_SESSION['SystemNotifications']))
     {
-      $notifications = array();
+      $notifications = [];
       foreach ($_SESSION['SystemNotifications']->messages as $message)
       {
         if($message->targetVersion == $_SESSION['sSoftwareInstalledVersion'])

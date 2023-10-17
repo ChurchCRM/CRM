@@ -52,7 +52,7 @@ class Photo {
     $extensions = Photo::$validExtensions;
 
     foreach($extensions as $ext) {
-      $photoFiles = array($baseName . "." . $ext,$baseName . "-remote." . $ext,$baseName . "-initials." . $ext);
+      $photoFiles = [$baseName . "." . $ext, $baseName . "-remote." . $ext, $baseName . "-initials." . $ext];
       foreach ($photoFiles as $photoFile)
       {
         if (file_exists($photoFile)) {
@@ -230,7 +230,7 @@ class Photo {
     $retstr = "";
     if ($this->photoType == "Person")
     {
-      $fullNameArr = PersonQuery::create()->select(array('FirstName','LastName'))->findOneById($this->id);
+      $fullNameArr = PersonQuery::create()->select(['FirstName', 'LastName'])->findOneById($this->id);
       foreach ($fullNameArr as $name)
       {
         $retstr .= mb_strtoupper(mb_substr($name, 0, 1));

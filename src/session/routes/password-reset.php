@@ -41,13 +41,13 @@ $app->group('/forgot-password', function () {
                 }
             }
 
-            return $renderer->render($response, "error.php", array("message" => gettext("Unable to reset password")));
+            return $renderer->render($response, "error.php", ["message" => gettext("Unable to reset password")]);
         });
     }
     else {
         $this->get('/{foo:.*}', function ($request, $response, $args) {
             $renderer = new PhpRenderer('templates');
-            return $renderer->render($response, '/error.php', array("message" => gettext("Password reset not available.  Please contact your system administrator")));
+            return $renderer->render($response, '/error.php', ["message" => gettext("Password reset not available.  Please contact your system administrator")]);
         });
     }
 });

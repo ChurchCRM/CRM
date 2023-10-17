@@ -57,7 +57,7 @@ class KioskAssignment extends BaseKioskAssignment
                 ->endUse()
                  ->leftJoin('EventAttend')
                  ->withColumn("(CASE WHEN event_attend.event_id is not null AND event_attend.checkout_date IS NULL then 1 else 0 end)","status")
-                ->select(array("Id","FirstName","LastName","status"))
+                ->select(["Id", "FirstName", "LastName", "status"])
                 ->find();
       return $ssClass;
     }

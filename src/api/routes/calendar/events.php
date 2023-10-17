@@ -135,7 +135,7 @@ function newEvent($request, $response, $args)
     $event->setCalendars($calendars);
     $event->save();
 
-    return $response->withJson(array("status" => "success"));
+    return $response->withJson(["status" => "success"]);
 }
 
 function updateEvent($request, $response, $args)
@@ -169,7 +169,7 @@ function setEventTime($request, Response $response, $args)
     $event->setStart($input->startTime);
     $event->setEnd($input->endTime);
     $event->save();
-    return $response->withJson(array("status" => "success"));
+    return $response->withJson(["status" => "success"]);
 
 }
 
@@ -213,5 +213,5 @@ function deleteEvent($request, $response, $args)
         return $response->withStatus(404);
     }
     $event->delete();
-    return $response->withJson(array("status" => "success"));
+    return $response->withJson(["status" => "success"]);
 }

@@ -8,7 +8,7 @@ abstract class BaseSearchResultProvider {
     /* @var string */
     protected $pluralNoun;
     /* @var ChurchCRM\Search\SearchResult[] */
-    protected $searchResults = array();
+    protected $searchResults = [];
     public abstract function getSearchResults(string $SearchQuery);
     protected function formatSearchGroup() {
         if (!empty($this->searchResults)) {

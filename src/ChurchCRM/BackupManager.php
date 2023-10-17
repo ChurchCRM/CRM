@@ -172,7 +172,7 @@ namespace ChurchCRM\Backup
 
         private function CreateFullArchive()
         {
-            $imagesAddedToArchive = array();
+            $imagesAddedToArchive = [];
             $this->BackupFile = new \SplFileInfo($this->BackupFileBaseName.".tar");
             $phar = new PharData($this->BackupFile->getPathname());
             LoggerUtils::getAppLogger()->debug("Archive opened at: ".$this->BackupFile->getPathname());
@@ -262,7 +262,7 @@ namespace ChurchCRM\Backup
          *
          * @var Array
          */
-        public $Messages = array();
+        public $Messages = [];
         /**
          *
          * @var Boolean
