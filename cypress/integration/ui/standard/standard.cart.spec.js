@@ -10,7 +10,7 @@ context('Standard Cart', () => {
         cy.contains('You have no items in your cart');
         cy.visit("PersonView.php?PersonID=1")
         cy.get("#AddPersonToCart").click();
-        cy.intercept({ method: "GET", url: "/api/cart/"}).as("getNewCart");
+        cy.intercept("GET", "/api/cart/").as("getNewCart");
         cy.wait("@getNewCart");
         cy.visit("v2/cart");
         cy.contains('Cart Functions');
@@ -24,7 +24,7 @@ context('Standard Cart', () => {
         cy.contains('You have no items in your cart');
         cy.visit("v2/family/6")
         cy.get("#AddFamilyToCart").click();
-        cy.intercept({ method: "GET", url: "/api/cart/"}).as("getNewCart");
+        cy.intercept("GET", "/api/cart/").as("getNewCart");
         cy.wait("@getNewCart");
         cy.visit("v2/cart");
         cy.contains('Kenzi Dixon');

@@ -6,8 +6,8 @@ context('Standard Family', () => {
     it('View Family Lists', () => {
         cy.makePrivateUserAPICall("POST", '/api/families/3/activate/true', "", 200);
 
-        cy.intercept({ method: "POST", url: "/api/families/3/activate/true"}).as("updateToActive");
-        cy.intercept({ method: "POST", url: "/api/families/3/activate/false"}).as("updateToInActive");
+        cy.intercept( "POST", "/api/families/3/activate/true").as("updateToActive");
+        cy.intercept( "POST", "/api/families/3/activate/false").as("updateToInActive");
 
         cy.loginStandard("v2/family");
         cy.contains('Active Family List');
