@@ -103,6 +103,7 @@ require 'Include/Header.php';
             AND p2g2r_grp_ID = ".$iGroupID;
     $rsEmailList = RunQuery($sSQL);
     $sEmailLink = '';
+    $roleEmails = [];
     $sMailtoDelimiter = AuthenticationManager::GetCurrentUser()->getUserConfigString("sMailtoDelimiter");
     while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailList)) {
         $sEmail = SelectWhichInfo($per_Email, $fam_Email, false);
@@ -112,7 +113,7 @@ require 'Include/Header.php';
             // Add email only if email address is not already in string
             if (!stristr($sEmailLink, $sEmail)) {
                 $sEmailLink .= $sEmail .= $sMailtoDelimiter;
-                $roleEmails->$virt_RoleName .= $sEmail .= $sMailtoDelimiter;
+                $roleEmails[$virt_RoleName] = $sEmailLink;
             }
         }
     }
@@ -385,13 +386,16 @@ require 'Include/Header.php';
                 <h3 class="card-title"><?= gettext('Group Members:') ?></h3>
               </div>
               <div class="card-body">
+                <form action="#" method="get" class="sidebar-form">
+                    <label for="addGroupMember"><?= gettext('Add Group Member: ') ?></label>
+                    <select id="addGroupMember" class="form-control personSearch" name="addGroupMember" style="width: 300px;">
+                    </select>
+                  </form>
+                </div>
                 <!-- START GROUP MEMBERS LISTING  -->
                 <table class="table" id="membersTable">
                 </table>
                 <div class="card">
-                  <div class="card-header with-border">
-                    <h3 class="card-title"><?php echo gettext('Group members: '); ?></h3>
-                  </div>
                   <div class="card-body">
                     <table class="table" id="depositsTable"></table>
                     <button type="button" id="deleteSelectedRows" class="btn btn-danger" disabled> <?= gettext('Remove Selected Members from group') ?> </button>
@@ -410,12 +414,7 @@ require 'Include/Header.php';
                 </div>
                 </form>
                 <!-- END GROUP MEMBERS LISTING -->
-                <form action="#" method="get" class="sidebar-form">
-                  <label for="addGroupMember"><?= gettext('Add Group Member: ') ?></label>
-                  <select class="form-control personSearch" name="addGroupMember" style="width:100%">
-                  </select>
-                </form>
-              </div>
+                
             </div>
             <script nonce="<?= SystemURLs::getCSPNonce() ?>">
               window.CRM.currentGroup = <?= $iGroupID ?>;

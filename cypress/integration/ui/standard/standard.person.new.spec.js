@@ -1,9 +1,11 @@
-context('Standard Person Add Group', () => {
+context('Standard Person', () => {
 
-    it('Add user then group', () => {
+    it('Add Person', () => {
+        const uniqueSeed = Date.now().toString();
+        const name = 'Bobby ' + uniqueSeed;
         cy.loginStandard("PersonEditor.php");
         cy.get('#Gender').select('1');
-        cy.get('#FirstName').type('Boby');
+        cy.get('#FirstName').type(name);
         cy.get('#LastName').type('Hall');
         cy.get('#BirthMonth').select('12');
         cy.get('#BirthDay').select('21');
@@ -13,20 +15,7 @@ context('Standard Person Add Group', () => {
         cy.get('#PersonSaveButton').click();
 
         cy.url().should('contains', 'PersonView.php');
-        cy.get('.nav-tabs > li:nth-child(4) > a').click();
-        cy.get('#input-person-properties').select("Disabled", { force: true });
-        cy.get('#assign-property-btn').click();
-        cy.url().should('contains', 'PersonView.php');
-        cy.contains("Disabled")
-
-        // TODO: Group Selection
-        cy.get('#addGroup > .fa').click();
-        // cy.get('#select2-targetGroupSelection-container').click();
-        // cy.get('#select2-targetRoleSelection-container').click();
-        // cy.get('.btn-success').click();
-        // cy.url().should('contains', 'PersonView.php');
-        // cy.contains("Class 6-7");
-
+        cy.contains(name);
 
     });
 

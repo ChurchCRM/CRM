@@ -22,7 +22,7 @@
         "preinstall": "grunt clean & grunt updateVersions",
         "install": "grunt curl-dir && grunt copy && grunt sass && grunt lineending && grunt patchDataTablesCSS",
         "build-react": "webpack",
-        "build": "npm run composer-install && npm run orm-gen &&  npm run build-react",
+        "build": "npm run composer-install && npm run orm-gen &&  npm run build-react && grunt generateSignatures",
         "audit": "npm audit fix --only=prod --audit-level=high",
         "deploy": "npm install && npm run build",
         "postinstall": "grunt genLocaleJSFiles",
