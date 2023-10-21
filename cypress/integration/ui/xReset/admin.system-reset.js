@@ -10,7 +10,7 @@ context('Admin System Reset', () => {
         cy.contains('Please type I AGREE to access the database reset functions page.').should('not.be.visible');
         cy.get('#confirm-people').click();
         cy.contains('This will remove all the member data, people, and families and can\'t be undone.').should("be.visible");
-        cy.get('.bootbox-accept').click();
+        cy.get('.bootbox-accept').should('be.visible').click();
         cy.url().should('contains', 'v2/dashboard');
 
     });
@@ -23,7 +23,7 @@ context('Admin System Reset', () => {
         cy.contains('Please type I AGREE to access the database reset functions page.').should('not.be.visible');
         cy.get('#confirm-db').click();
         cy.contains('This will reset the system data and will restart the system as a new install.').should("be.visible");
-        cy.get('.bootbox-accept').click();
+        cy.get('.bootbox-accept').should('be.visible').click();
         cy.url().should('contains', 'v2/user/current/changepassword');
 
     });

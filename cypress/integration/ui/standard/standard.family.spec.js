@@ -19,7 +19,7 @@ context('Standard Family', () => {
         cy.visit("v2/family/3");
         cy.contains('This Family is Deactivated').should('not.be.visible');
         cy.get("#activateDeactivate").click();
-        cy.get("body > div.bootbox.modal.fade.bootbox-confirm.in > div > div > div.modal-footer > button.btn.btn-primary.bootbox-accept").click();
+        cy.get('.bootbox-accept').should('be.visible').click();
         cy.wait("@updateToInActive");
 
         cy.visit("v2/family?mode=inactive");
@@ -28,7 +28,7 @@ context('Standard Family', () => {
         cy.visit("v2/family/3");
         cy.contains('This Family is Deactivated').should('be.visible');
         cy.get("#activateDeactivate").click();
-        cy.get("body > div.bootbox.modal.fade.bootbox-confirm.in > div > div > div.modal-footer > button.btn.btn-primary.bootbox-accept").click();
+        cy.get('.bootbox-accept').should('be.visible').click();
         cy.wait("@updateToActive");
 
         cy.visit("v2/family?mode=inactive");
