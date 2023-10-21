@@ -30,7 +30,7 @@
         "locale-download": "grunt updateFromPOeditor && grunt genLocaleJSFiles && npm run locale-audit",
         "locale-audit": "grunt exec:downloadPOEditorStats && grunt genLocaleAudit",
         "update-signatures": "grunt generateSignatures",
-        "package": "grunt generateSignatures && grunt compress",
+        "package": "npm run clean && npm run deploy && grunt compress",
         "demosite": "php scripts/update-demo-site.php",
         "changelog-gen": "grunt exec:updatechangelog",
         "orm-gen": "php src/vendor/propel/propel/bin/propel.php --config-dir=propel model:build && cd src/ && composer dump-autoload",
