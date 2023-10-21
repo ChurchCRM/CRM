@@ -357,7 +357,7 @@ $mailchimp = new MailChimpService();
                            target="_blank"><?= $familyAddress ?></a></span>
                         <p/>
                         <!-- Maps Start -->
-                        <?php if (!empty($family->getLatitude())) : ?>
+                        <?php if (!empty(SystemConfig::getValue("sGoogleMapsRenderKey")) && !empty($family->getLatitude())) : ?>
                             <div class="border-right border-left">
                                 <section id="map">
                                     <div id="map1"></div>
