@@ -36,7 +36,7 @@ class Pledge extends BasePledge
         }
     }
 
-    public function toArray($keyType = TableMap::TYPE_PHPNAME, $includeLazyLoadColumns = true, $alreadyDumpedObjects = array(), $includeForeignObjects = false)
+    public function toArray($keyType = TableMap::TYPE_PHPNAME, $includeLazyLoadColumns = true, $alreadyDumpedObjects = [], $includeForeignObjects = false)
     {
       $array = parent::toArray($keyType, $includeLazyLoadColumns,  $alreadyDumpedObjects, $includeForeignObjects);
       $family = $this->getFamily();

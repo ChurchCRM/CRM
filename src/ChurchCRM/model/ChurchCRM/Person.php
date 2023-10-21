@@ -312,10 +312,10 @@ class Person extends BasePerson implements iPhoto
     $lng = $this->getFamily()->getLongitude();
    }
         }
-        return array(
-            'Latitude' => $lat,
-            'Longitude' => $lng
-        );
+        return [
+          'Latitude' => $lat,
+          'Longitude' => $lng
+        ];
     }
 
     public function deletePhoto()
@@ -664,7 +664,7 @@ class Person extends BasePerson implements iPhoto
        return $this->getFullName()." ".$this->getAge();
     }
 
-    public function toArray($keyType = TableMap::TYPE_PHPNAME, $includeLazyLoadColumns = true, $alreadyDumpedObjects = array(), $includeForeignObjects = false)
+    public function toArray($keyType = TableMap::TYPE_PHPNAME, $includeLazyLoadColumns = true, $alreadyDumpedObjects = [], $includeForeignObjects = false)
     {
         $array = parent::toArray();
         $array['Address']=$this->getAddress();

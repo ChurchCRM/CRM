@@ -5,10 +5,10 @@ namespace ChurchCRM\Reports;
 class PDF_AddressReport extends ChurchInfoReport
 {
     // Private properties
-    private $_Margin_Left = 0;         // Left Margin
-    private $_Margin_Top = 0;         // Top margin
+    private $_Margin_Left = 12;         // Left Margin
+    private $_Margin_Top = 12;         // Top margin
     private $_Char_Size = 12;        // Character size
-    private $_CurLine = 0;
+    private $_CurLine = 2;
     private $_Column = 0;
     private $_Font = 'Times';
     private $sFamily;
@@ -81,18 +81,11 @@ class PDF_AddressReport extends ChurchInfoReport
     {
         global $paperFormat;
         parent::__construct('P', 'mm', $this->paperFormat);
-
-        $this->_Column = 0;
-        $this->_CurLine = 2;
-        $this->_Font = 'Times';
         $this->SetMargins(0, 0);
 
         $this->Set_Char_Size(12);
         $this->AddPage();
         $this->SetAutoPageBreak(false);
-
-        $this->_Margin_Left = 12;
-        $this->_Margin_Top = 12;
 
         $this->Set_Char_Size(20);
         $this->Write(10, 'ChurchCRM USPS Address Verification Report');

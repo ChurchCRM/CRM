@@ -32,7 +32,7 @@ class FinancePaymentSearchResultProvider extends BaseSearchResultProvider  {
     }
 
     private function getPaymentsWithValuesInRange(int $min, int $max) {
-        $searchResults = array();
+        $searchResults = [];
         $id = 0;
         if ($max == 0)
         {
@@ -65,7 +65,7 @@ class FinancePaymentSearchResultProvider extends BaseSearchResultProvider  {
     }
 
     private function getPaymentSearchResults(string $SearchQuery) {
-        $searchResults = array();
+        $searchResults = [];
         $id = 0;
         try {
             $Payments = PledgeQuery::create()

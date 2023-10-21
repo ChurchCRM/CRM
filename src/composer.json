@@ -74,5 +74,9 @@
             "url": "https://packagist.org",
             "type": "composer"
         }
+    },
+    "require-dev": {
+        "phpstan/phpstan": "^1.10",
+        "rector/rector": "^0.18.5"
     }
 }

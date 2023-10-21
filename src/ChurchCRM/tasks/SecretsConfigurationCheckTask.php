@@ -20,7 +20,7 @@ class SecretsConfigurationCheckTask implements iTask
 
   public function getLink()
   {
-      return SystemURLs::getSupportURL(array_pop(explode('\\', __CLASS__)));
+      return SystemURLs::getSupportURL(array_pop(explode('\\', self::class)));
   }
 
   public function getTitle()

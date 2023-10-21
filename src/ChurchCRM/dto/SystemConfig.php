@@ -79,7 +79,7 @@ class SystemConfig
 
     private static function buildConfigs()
   {
-    return array(
+    return [
         "sLogLevel" => new ConfigItem(4, "sLogLevel", "choice", "200", gettext("Event Log severity to write, used by ORM and App Logs"), "", json_encode(SystemConfig::getMonoLogLevels())),
         "sDirClassifications" => new ConfigItem(5, "sDirClassifications", "text", "1,2,4,5", gettext("Include only these classifications in the directory, comma separated")),
         "sDirRoleHead" => new ConfigItem(6, "sDirRoleHead", "choice", "1", gettext("These are the family role numbers designated as head of house"),"", json_encode(SystemConfig::getFamilyRoleChoices())),
@@ -263,12 +263,12 @@ class SystemConfig
         "s2FAApplicationName" => new ConfigItem(2070,"s2FAApplicationName", "text",gettext("ChurchCRM"),gettext("Specify the application name to be displayed in authenticator app")),
         "bSendUserDeletedEmail" => new ConfigItem(2071,"bSendUserDeletedEmail", "boolean","0",gettext("Send an email notifying users when their account has been deleted")),
         "sGoogleMapsRenderKey" => new ConfigItem(2072, "sGoogleMapsRenderKey", "text", "", gettext("Google Maps API Key used for rendering maps in browser") , "https://developers.google.com/maps/documentation/javascript/get-api-key")
-        );
+      ];
   }
 
   private static function buildCategories()
   {
-    return array (
+    return [
       gettext('Church Information') =>["sChurchName","sChurchAddress","sChurchCity","sChurchState","sChurchZip","sChurchCountry","sChurchPhone","sChurchEmail","sHomeAreaCode","sTimeZone","iChurchLatitude","iChurchLongitude", "sChurchWebSite","sChurchFB", "sChurchTwitter"],
       gettext('User Setup') => ["iMinPasswordLength","iMinPasswordChange","iMaxFailedLogins","iSessionTimeout","aDisallowedPasswords","bEnableLostPassword","bEnable2FA","bRequire2FA","s2FAApplicationName","bSendUserDeletedEmail"],
       gettext('Email Setup')  => ["sSMTPHost","bSMTPAuth","sSMTPUser","sSMTPPass", "iSMTPTimeout","sToEmailAddress", "bPHPMailerAutoTLS","sPHPMailerSMTPSecure"],
@@ -284,7 +284,7 @@ class SystemConfig
       gettext('Events')  => ["bEnableExternalCalendarAPI","bEventsOnDashboardPresence","iEventsOnDashboardPresenceTimeOut"],
       gettext('Backup')  => ["sLastBackupTimeStamp","bEnableExternalBackupTarget","sExternalBackupType","sExternalBackupAutoInterval","sExternalBackupEndpoint","sExternalBackupUsername","sExternalBackupPassword","bBackupExtraneousImages"],
       gettext('System Settings')  => ["sLogLevel", "bRegistered","bCSVAdminOnly","sHeader","bEnableIntegrityCheck","iIntegrityCheckInterval","sLastIntegrityCheckTimeStamp", "iPhotoClientCacheDuration","bHSTSEnable", "iDashboardServiceIntervalTime","iSoftwareUpdateCheckInterval","sLastSoftwareUpdateCheckTimeStamp","bAllowPrereleaseUpgrade"]
-    );
+    ];
   }
 
   /**

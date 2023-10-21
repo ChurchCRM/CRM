@@ -49,10 +49,10 @@ class GeoUtils
             $logger->warning("issue creating geoCoder " . $exception->getMessage());
         }
 
-        return array(
+        return [
             'Latitude' => $lat,
             'Longitude' => $long
-        );
+        ];
 
     }
 
@@ -68,10 +68,10 @@ class GeoUtils
         $gMapsResponse = file_get_contents($url);
         $details = json_decode($gMapsResponse, TRUE);
         $matrixElements = $details['rows'][0]['elements'][0];
-        return array(
+        return [
             'distance' => $matrixElements['distance']['text'],
             'duration' => $matrixElements['duration']['text']
-        );
+        ];
     }
 
     // Function takes latitude and longitude

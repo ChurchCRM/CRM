@@ -29,7 +29,7 @@ class FinanceDepositSearchResultProvider extends BaseSearchResultProvider  {
     }
 
     private function getDepositSearchResults(string $SearchQuery) {
-        $searchResults = array();
+        $searchResults = [];
         $id = 0;
         try {
             $Deposits = DepositQuery::create()->filterByComment("%$SearchQuery%", Criteria::LIKE)

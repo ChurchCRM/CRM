@@ -23,25 +23,25 @@ $app->group('/locale', function () {
  */
 function getDBTerms(Request $request, Response $response, array $p_args)
 {
-    $terms = array();
+    $terms = [];
 
-    $dbTerms = UserConfigQuery::create()->select(array('ucfg_tooltip'))->distinct()->find();
+    $dbTerms = UserConfigQuery::create()->select(['ucfg_tooltip'])->distinct()->find();
     foreach ($dbTerms as $term) {
         array_push($terms, $term);
     }
 
-    $dbTerms = QueryParameterOptionsQuery::create()->select(array('qpo_Display'))->distinct()->find();
+    $dbTerms = QueryParameterOptionsQuery::create()->select(['qpo_Display'])->distinct()->find();
     foreach ($dbTerms as $term) {
         array_push($terms, $term);
     }
 
-    $dbTerms = PredefinedReportsQuery::create()->select(array('qry_Name','qry_Description'))->distinct()->find();
+    $dbTerms = PredefinedReportsQuery::create()->select(['qry_Name', 'qry_Description'])->distinct()->find();
     foreach ($dbTerms as $term) {
         array_push($terms, $term['qry_Name']);
         array_push($terms, $term['qry_Description']);
     }
 
-    $dbTerms = QueryParametersQuery::create()->select(array('qrp_Name','qrp_Description'))->distinct()->find();
+    $dbTerms = QueryParametersQuery::create()->select(['qrp_Name', 'qrp_Description'])->distinct()->find();
     foreach ($dbTerms as $term) {
         array_push($terms, $term['qrp_Name']);
         array_push($terms, $term['qrp_Description']);
