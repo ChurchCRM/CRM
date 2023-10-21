@@ -26,13 +26,20 @@ use ChurchCRM\Authentication\AuthenticationManager;
 $timelineService = new TimelineService();
 $mailchimp = new MailChimpService();
 
-// Set the page title and include HTML header
+// Get the person ID from the querystring
+$iPersonID = InputUtils::LegacyFilterInput($_GET['PersonID'], 'int');
 
+$person = PersonQuery::create()->findPk($iPersonID);
+
+if (empty($person)) {
+    header('Location: ' . SystemURLs::getRootPath() . '/v2/person/not-found?id=' . $iPersonID);
+    exit;
+}
+
+// Set the page title and include HTML header
 $sPageTitle = gettext('Person Profile');
 require 'Include/Header.php';
 
-// Get the person ID from the querystring
-$iPersonID = InputUtils::LegacyFilterInput($_GET['PersonID'], 'int');
 
 $iRemoveVO = 0;
 if (array_key_exists('RemoveVO', $_GET)) {
@@ -65,14 +72,6 @@ $sSQL = "SELECT a.*, family_fam.*, COALESCE(cls.lst_OptionName , 'Unassigned') A
       WHERE a.per_ID = " . $iPersonID;
 $rsPerson = RunQuery($sSQL);
 extract(mysqli_fetch_array($rsPerson));
-
-
-$person = PersonQuery::create()->findPk($iPersonID);
-
-if (empty($person)) {
-    header('Location: ' . SystemURLs::getRootPath() . '/v2/person/not-found?id=' . $iPersonID);
-    exit;
-}
 
 $assignedProperties = $person->getProperties();
 
@@ -409,7 +408,7 @@ $bOkToEdit = (
                 <?php
                 if (AuthenticationManager::GetCurrentUser()->isDeleteRecordsEnabled()) {
                     ?>
-                    <a class="btn btn-app bg-maroon delete-person" data-person_name="<?= $person->getFullName() ?>" data-person_id="<?= $iPersonID ?>"><i class="fa fa-trash-can"></i> <?= gettext("Delete this Record") ?></a>
+                    <a id="deletePersonBtn" class="btn btn-app bg-maroon delete-person" data-person_name="<?= $person->getFullName() ?>" data-person_id="<?= $iPersonID ?>"><i class="fa fa-trash-can"></i> <?= gettext("Delete this Record") ?></a>
                 <?php
                 }
                 ?>

@@ -6,8 +6,8 @@ context('Standard Family', () => {
     it('View Family Lists', () => {
         cy.makePrivateUserAPICall("POST", '/api/families/3/activate/true', "", 200);
 
-        cy.intercept({ method: "POST", url: "/api/families/3/activate/true"}).as("updateToActive");
-        cy.intercept({ method: "POST", url: "/api/families/3/activate/false"}).as("updateToInActive");
+        cy.intercept( "POST", "/api/families/3/activate/true").as("updateToActive");
+        cy.intercept( "POST", "/api/families/3/activate/false").as("updateToInActive");
 
         cy.loginStandard("v2/family");
         cy.contains('Active Family List');
@@ -19,7 +19,7 @@ context('Standard Family', () => {
         cy.visit("v2/family/3");
         cy.contains('This Family is Deactivated').should('not.be.visible');
         cy.get("#activateDeactivate").click();
-        cy.get("body > div.bootbox.modal.fade.bootbox-confirm.in > div > div > div.modal-footer > button.btn.btn-primary.bootbox-accept").click();
+        cy.get('.bootbox-accept').should('be.visible').click();
         cy.wait("@updateToInActive");
 
         cy.visit("v2/family?mode=inactive");
@@ -28,7 +28,7 @@ context('Standard Family', () => {
         cy.visit("v2/family/3");
         cy.contains('This Family is Deactivated').should('be.visible');
         cy.get("#activateDeactivate").click();
-        cy.get("body > div.bootbox.modal.fade.bootbox-confirm.in > div > div > div.modal-footer > button.btn.btn-primary.bootbox-accept").click();
+        cy.get('.bootbox-accept').should('be.visible').click();
         cy.wait("@updateToActive");
 
         cy.visit("v2/family?mode=inactive");

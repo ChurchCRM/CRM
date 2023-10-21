@@ -4,8 +4,8 @@ context('Family Reg', () => {
 
     it('Family of 2', () => {
 
-        cy.intercept({ method: "GET", url: "/api/public/data/countries"}).as("getCountries");
-        cy.intercept({ method: "GET", url: "/api/public/data/countries/us/states"}).as("getUSStates");
+        cy.intercept("GET", "/api/public/data/countries").as("getCountries");
+        cy.intercept("GET","/api/public/data/countries/us/states").as("getUSStates");
 
         cy.visit('external/register/');
         cy.contains("Main St. Cathedral");
