@@ -96,7 +96,7 @@ $mailchimp = new MailChimpService();
                         <?php }
                         if (AuthenticationManager::GetCurrentUser()->isDeleteRecordsEnabled()) {
                             ?>
-                            <a class="btn btn-app bg-maroon"
+                            <a id="deleteFamilyBtn" class="btn btn-app bg-maroon"
                                href="<?= SystemURLs::getRootPath() ?>/SelectDelete.php?FamilyID=<?=$family->getId()?>"><i
                                         class="fa fa-trash-can"></i><?= gettext('Delete this Family') ?></a>
                             <?php

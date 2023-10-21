@@ -408,7 +408,7 @@ $bOkToEdit = (
                 <?php
                 if (AuthenticationManager::GetCurrentUser()->isDeleteRecordsEnabled()) {
                     ?>
-                    <a class="btn btn-app bg-maroon delete-person" data-person_name="<?= $person->getFullName() ?>" data-person_id="<?= $iPersonID ?>"><i class="fa fa-trash-can"></i> <?= gettext("Delete this Record") ?></a>
+                    <a id="deletePersonBtn" class="btn btn-app bg-maroon delete-person" data-person_name="<?= $person->getFullName() ?>" data-person_id="<?= $iPersonID ?>"><i class="fa fa-trash-can"></i> <?= gettext("Delete this Record") ?></a>
                 <?php
                 }
                 ?>
