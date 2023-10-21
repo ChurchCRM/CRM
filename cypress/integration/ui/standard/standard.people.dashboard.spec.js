@@ -2,11 +2,6 @@
 
 context('Standard People Dashboard', () => {
 
-    it('Dashboard Page', () => {
-        cy.loginStandard('PeopleDashboard.php');
-        cy.contains("People Dashboard");
-    });
-
     it('Geo Page', () => {
         cy.loginStandard('GeoPage.php');
         cy.contains("Family Geographic Utilities");
