@@ -150,7 +150,7 @@ class LocalAuthentication implements IAuthenticationProvider
         } else {
             $this->prepareSuccessfulLoginOperations();
             $authenticationResult->isAuthenticated = true;
-            LoggerUtils::getAuthLogger()->info("User successfully logged in without 2FA: " . $this->currentUser->getUserName());
+            LoggerUtils::getAuthLogger()->debug("User successfully logged in without 2FA: " . $this->currentUser->getUserName());
             return $authenticationResult;
           }
         }
