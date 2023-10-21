@@ -305,7 +305,7 @@
         "scripts": [],
         "dbVersion": "4.5.0"
     },
-    "current": {
+    "pre-5.0.0": {
         "versions": [
             "4.5.0",
             "4.5.1",
@@ -315,5 +315,12 @@
         ],
         "scripts": [],
         "dbVersion": "5.0.0"
+    },
+    "current": {
+        "versions": [
+            "5.0.0"
+        ],
+        "scripts": [],
+        "dbVersion": "5.0.1"
     }
 }
