@@ -84,8 +84,8 @@ $app->group('/families', function () {
     $this->get('/pending-self-verify', function ($request, $response, $args) {
         $pendingTokens = TokenQuery::create()
             ->filterByType(Token::typeFamilyVerify)
-            ->filterByRemainingUses(array('min' => 1))
-            ->filterByValidUntilDate(array('min' => new DateTime()))
+            ->filterByRemainingUses(['min' => 1])
+            ->filterByValidUntilDate(['min' => new DateTime()])
             ->addJoin(TokenTableMap::COL_REFERENCE_ID, FamilyTableMap::COL_FAM_ID)
             ->withColumn(FamilyTableMap::COL_FAM_NAME, "FamilyName")
             ->withColumn(TokenTableMap::COL_REFERENCE_ID, "FamilyId")

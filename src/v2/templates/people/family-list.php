@@ -55,9 +55,9 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     echo date_format($family->getDateLastEdited(), SystemConfig::getValue('sDateFormatLong')); 
                   } ?>
                 </td>
-                
+
             </tr>
-            <?php } ?>
+<?php } ?>
             </tbody>
         </table>
     </div>

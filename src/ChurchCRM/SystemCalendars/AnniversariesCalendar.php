@@ -52,7 +52,7 @@ class AnniversariesCalendar implements SystemCalendar {
   
   private function familyCollectionToEvents(ObjectCollection $Families){
     $events = new ObjectCollection();
-    $events->setModel("ChurchCRM\\Event");
+    $events->setModel(\ChurchCRM\Event::class);
     Foreach($Families as $family) {
       $anniversary = new Event();
       $anniversary->setId($family->getId());

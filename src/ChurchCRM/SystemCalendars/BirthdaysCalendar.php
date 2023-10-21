@@ -52,7 +52,7 @@ class BirthdaysCalendar implements SystemCalendar {
   
   private function peopleCollectionToEvents(ObjectCollection $People) {
     $events = new ObjectCollection();
-    $events->setModel("ChurchCRM\\Event");
+    $events->setModel(\ChurchCRM\Event::class);
     Foreach($People as $person) {
       $birthday = new Event();
       $birthday->setId($person->getId());

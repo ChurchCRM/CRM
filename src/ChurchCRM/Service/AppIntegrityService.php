@@ -119,7 +119,7 @@ class AppIntegrityService
   public static function getApplicationPrerequisites()
   {
 
-    $prerequisites = array(
+    $prerequisites = [
       new Prerequisite('PHP 7.4+', function() { return version_compare(PHP_VERSION, '7.4.0', '>='); }),
       new Prerequisite('PCRE and UTF-8 Support', function() { return function_exists('preg_match') && @preg_match('/^.$/u', 'ñ') && @preg_match('/^\pL$/u', 'ñ'); }),
       new Prerequisite('Multibyte Encoding', function() { return extension_loaded('mbstring'); }),
@@ -138,7 +138,7 @@ class AppIntegrityService
       new Prerequisite('Images directory is writeable', function() { return AppIntegrityService::testImagesWriteable(); }),
       new Prerequisite('PHP ZipArchive', function() { return extension_loaded('zip'); }),
       new Prerequisite('Mysqli Functions', function() { return function_exists('mysqli_connect'); })
-    );
+    ];
 
     return $prerequisites;
   }
@@ -201,7 +201,7 @@ class AppIntegrityService
           curl_setopt($ch, CURLOPT_NOBODY, 1);
           $output = curl_exec($ch);
           curl_close($ch);
-          $headers=array();
+          $headers=[];
           $data=explode("\n",$output);
           $headers['status']=$data[0];
           array_shift($data);

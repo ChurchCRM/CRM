@@ -35,8 +35,8 @@ class UnpinnedEvents implements SystemCalendar {
     
   public function getEvents($start,$end) {
     $Events = EventQuery::create()
-        ->filterByStart(array("min" => $start))
-        ->filterByEnd(array("max" => $end))
+        ->filterByStart(["min" => $start])
+        ->filterByEnd(["max" => $end])
         ->useCalendarEventQuery(null,\Propel\Runtime\ActiveQuery\Criteria::LEFT_JOIN)
           ->filterByCalendarId(null)
         ->endUse()

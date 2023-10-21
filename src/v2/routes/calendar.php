@@ -28,9 +28,9 @@ function getCalendar(Request $request, Response $response, array $args) {
 }
 
 function getCalendarJSArgs() {
-  return array(
-      'isModifiable' => AuthenticationManager::GetCurrentUser()->isAddEvent(),
-      'countCalendarAccessTokens' => CalendarQuery::create()->filterByAccessToken(null, Criteria::NOT_EQUAL)->count(),
-      'bEnableExternalCalendarAPI' => SystemConfig::getBooleanValue("bEnableExternalCalendarAPI")
-  );
+    return [
+        'isModifiable' => AuthenticationManager::GetCurrentUser()->isAddEvent(),
+        'countCalendarAccessTokens' => CalendarQuery::create()->filterByAccessToken(null, Criteria::NOT_EQUAL)->count(),
+        'bEnableExternalCalendarAPI' => SystemConfig::getBooleanValue("bEnableExternalCalendarAPI")
+    ];
 }

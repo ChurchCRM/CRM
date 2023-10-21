@@ -24,9 +24,9 @@ $app->group('/verify', function () {
     }
 
     if ($haveFamily) {
-      return $renderer->render($response, "verify-family-info.php", array("family" => $family, "token" => $token));
+      return $renderer->render($response, "verify-family-info.php", ["family" => $family, "token" => $token]);
     } else {
-      return $renderer->render($response, "/../404.php", array("message" => gettext("Unable to load verification info")));
+      return $renderer->render($response, "/../404.php", ["message" => gettext("Unable to load verification info")]);
     }
   });
 

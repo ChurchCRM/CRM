@@ -76,15 +76,15 @@ class AuthenticationManager
 
     public static function Authenticate(AuthenticationRequest $AuthenticationRequest) {
       switch (get_class($AuthenticationRequest)){
-        case "ChurchCRM\Authentication\Requests\APITokenAuthenticationRequest":
+        case \ChurchCRM\Authentication\Requests\APITokenAuthenticationRequest::class:
           $AuthenticationProvider = new APITokenAuthentication();
           self::SetAuthenticationProvider($AuthenticationProvider);
         break;
-        case "ChurchCRM\Authentication\Requests\LocalUsernamePasswordRequest":
+        case \ChurchCRM\Authentication\Requests\LocalUsernamePasswordRequest::class:
           $AuthenticationProvider = new LocalAuthentication();
           self::SetAuthenticationProvider($AuthenticationProvider);
         break;
-        case "ChurchCRM\Authentication\Requests\LocalTwoFactorTokenRequest":
+        case \ChurchCRM\Authentication\Requests\LocalTwoFactorTokenRequest::class:
           try {
             self::GetAuthenticationProvider();
           }

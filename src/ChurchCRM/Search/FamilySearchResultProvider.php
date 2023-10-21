@@ -18,7 +18,7 @@ class FamilySearchResultProvider extends BaseSearchResultProvider  {
     }
 
     public function getSearchResults(string $SearchQuery) {
-        $searchResults = array();
+        $searchResults = [];
         if (SystemConfig::getBooleanValue("bSearchIncludeFamilies")) {
             $this->addSearchResults($this->getFamilySearchResultsByPartialName($SearchQuery));
         }
@@ -30,7 +30,7 @@ class FamilySearchResultProvider extends BaseSearchResultProvider  {
     }
 
     private function getFamilySearchResultsByPartialName(string $SearchQuery) {
-        $searchResults = array();
+        $searchResults = [];
         $id = 0;
         try {
             $families = FamilyQuery::create()->
@@ -56,7 +56,7 @@ class FamilySearchResultProvider extends BaseSearchResultProvider  {
         }
     }
     private function getFamilySearchResultsByCustomProperties(string $SearchQuery) {
-        $searchResults = array();
+        $searchResults = [];
         $id = 0;
         try {
             $customFields = FamilyCustomMasterQuery::create()->find();
