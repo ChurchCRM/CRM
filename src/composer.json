@@ -1,6 +1,6 @@
 {
     "name": "churchcrm/crm",
-    "version": "5.0.0",
+    "version": "5.0.1",
     "type": "project",
     "keywords": [
         "church",
@@ -51,7 +51,7 @@
         "php-http/message": "^1.11.1",
         "phpmailer/phpmailer": "^6.5.1",
         "pragmarx/google2fa": "^8.0.0",
-        "propel/propel": "2.0.0-alpha12",
+        "propel/propel": "2.0.0-beta3",
         "setasign/fpdf": "^1.8.3",
         "slim/http-cache": "^1.1.0",
         "slim/php-view": "^3.1.0",

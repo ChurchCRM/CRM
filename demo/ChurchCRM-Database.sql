@@ -3,7 +3,7 @@
 -- Host: database	Database: churchcrm
 -- ------------------------------------------------------
 -- Server version 	10.5.8-MariaDB-1:10.5.8+maria~focal
--- Date: Sat, 06 May 2023 17:32:00 -0400
+-- Date: Sat, 21 Oct 2023 19:05:31 -0400
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -11,41 +11,234 @@
 /*!40101 SET NAMES utf8 */;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
+/*!40101 SET @OLD_AUTOCOMMIT=@@AUTOCOMMIT */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `query_qry`
+-- Table structure for table `calendars`
 --
 
-DROP TABLE IF EXISTS `query_qry`;
+DROP TABLE IF EXISTS `calendars`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `query_qry` (
-  `qry_ID` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
-  `qry_SQL` text COLLATE utf8_unicode_ci NOT NULL,
-  `qry_Name` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `qry_Description` text COLLATE utf8_unicode_ci NOT NULL,
-  `qry_Count` tinyint(1) unsigned NOT NULL DEFAULT 0,
-  PRIMARY KEY (`qry_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=201 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+CREATE TABLE `calendars` (
+  `calendar_id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(128) COLLATE utf8_unicode_ci NOT NULL,
+  `accesstoken` varchar(99) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `foregroundColor` varchar(6) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `backgroundColor` varchar(6) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`calendar_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `query_qry`
+-- Dumping data for table `calendars`
 --
 
-LOCK TABLES `query_qry` WRITE;
-/*!40000 ALTER TABLE `query_qry` DISABLE KEYS */;
+LOCK TABLES `calendars` WRITE;
+/*!40000 ALTER TABLE `calendars` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `query_qry` VALUES (3,'SELECT CONCAT(\'<a href=v2/family/\',fam_ID,\'>\',fam_Name,\'</a>\') AS \'Family Name\', COUNT(*) AS \'No.\'\nFROM person_per\nINNER JOIN family_fam\nON fam_ID = per_fam_ID\nGROUP BY per_fam_ID\nORDER BY \'No.\' DESC','Family Member Count','Returns each family and the total number of people assigned to them.',0),(4,'SELECT per_ID as AddToCart,CONCAT(\'<a\r\nhref=PersonView.php?PersonID=\',per_ID,\'>\',per_FirstName,\'\r\n\',per_LastName,\'</a>\') AS Name,\r\nCONCAT(per_BirthMonth,\'/\',per_BirthDay,\'/\',per_BirthYear) AS \'Birth Date\',\r\nDATE_FORMAT(FROM_DAYS(TO_DAYS(NOW())-TO_DAYS(CONCAT(per_BirthYear,\'-\',per_BirthMonth,\'-\',per_BirthDay))),\'%Y\')+0 AS  \'Age\'\r\nFROM person_per\r\nWHERE\r\nDATE_ADD(CONCAT(per_BirthYear,\'-\',per_BirthMonth,\'-\',per_BirthDay),INTERVAL\r\n~min~ YEAR) <= CURDATE()\r\nAND\r\nDATE_ADD(CONCAT(per_BirthYear,\'-\',per_BirthMonth,\'-\',per_BirthDay),INTERVAL\r\n(~max~ + 1) YEAR) >= CURDATE()','Person by Age','Returns any person records with ages between two given ages.',1),(6,'SELECT COUNT(per_ID) AS Total FROM person_per WHERE per_Gender = ~gender~','Total By Gender','Total of records matching a given gender.',0),(7,'SELECT per_ID as AddToCart, CONCAT(per_FirstName,\' \',per_LastName) AS Name FROM person_per WHERE per_fmr_ID = ~role~ AND per_Gender = ~gender~','Person by Role and Gender','Selects person records with the family role and gender specified.',1),(9,'SELECT \r\nper_ID as AddToCart, \r\nCONCAT(per_FirstName,\' \',per_LastName) AS Name, \r\nCONCAT(r2p_Value,\' \') AS Value\r\nFROM person_per,record2property_r2p\r\nWHERE per_ID = r2p_record_ID\r\nAND r2p_pro_ID = ~PropertyID~\r\nORDER BY per_LastName','Person by Property','Returns person records which are assigned the given property.',1),(15,'SELECT per_ID as AddToCart, CONCAT(\'<a href=PersonView.php?PersonID=\',per_ID,\'>\',COALESCE(`per_FirstName`,\'\'),\' \',COALESCE(`per_MiddleName`,\'\'),\' \',COALESCE(`per_LastName`,\'\'),\'</a>\') AS Name, fam_City as City, fam_State as State, fam_Zip as ZIP, per_HomePhone as HomePhone, per_Email as Email, per_WorkEmail as WorkEmail FROM person_per RIGHT JOIN family_fam ON family_fam.fam_id = person_per.per_fam_id WHERE ~searchwhat~ LIKE \'%~searchstring~%\'','Advanced Search','Search by any part of Name, City, State, Zip, Home Phone, Email, or Work Email.',1),(18,'SELECT per_ID as AddToCart, per_BirthDay as Day, CONCAT(per_FirstName,\' \',per_LastName) AS Name FROM person_per WHERE per_cls_ID=~percls~ AND per_BirthMonth=~birthmonth~ ORDER BY per_BirthDay','Birthdays','People with birthdays in a particular month',0),(21,'SELECT per_ID as AddToCart, CONCAT(\'<a href=PersonView.php?PersonID=\',per_ID,\'>\',per_FirstName,\' \',per_LastName,\'</a>\') AS Name FROM person_per LEFT JOIN person2group2role_p2g2r ON per_id = p2g2r_per_ID WHERE p2g2r_grp_ID=~group~ ORDER BY per_LastName','Registered students','Find Registered students',1),(22,'SELECT per_ID as AddToCart, DAYOFMONTH(per_MembershipDate) as Day, per_MembershipDate AS DATE, CONCAT(per_FirstName,\' \',per_LastName) AS Name FROM person_per WHERE per_cls_ID=1 AND MONTH(per_MembershipDate)=~membermonth~ ORDER BY per_MembershipDate','Membership anniversaries','Members who joined in a particular month',0),(23,'SELECT usr_per_ID as AddToCart, CONCAT(a.per_FirstName,\' \',a.per_LastName) AS Name FROM user_usr LEFT JOIN person_per a ON per_ID=usr_per_ID ORDER BY per_LastName','Select database users','People who are registered as database users',0),(24,'SELECT per_ID as AddToCart, CONCAT(\'<a href=PersonView.php?PersonID=\',per_ID,\'>\',per_FirstName,\' \',per_LastName,\'</a>\') AS Name FROM person_per WHERE per_cls_id =1','Select all members','People who are members',0),(25,'SELECT per_ID as AddToCart, CONCAT(\'<a href=PersonView.php?PersonID=\',per_ID,\'>\',per_FirstName,\' \',per_LastName,\'</a>\') AS Name FROM person_per LEFT JOIN person2volunteeropp_p2vo ON per_id = p2vo_per_ID WHERE p2vo_vol_ID = ~volopp~ ORDER BY per_LastName','Volunteers','Find volunteers for a particular opportunity',1),(26,'SELECT per_ID as AddToCart, CONCAT(per_FirstName,\' \',per_LastName) AS Name FROM person_per WHERE DATE_SUB(NOW(),INTERVAL ~friendmonths~ MONTH)<per_FriendDate ORDER BY per_MembershipDate','Recent friends','Friends who signed up in previous months',0),(27,'SELECT per_ID as AddToCart, CONCAT(per_FirstName,\' \',per_LastName) AS Name FROM person_per inner join family_fam on per_fam_ID=fam_ID where per_fmr_ID<>3 AND fam_OkToCanvass=\"TRUE\" ORDER BY fam_Zip','Families to Canvass','People in families that are ok to canvass.',0),(28,'SELECT fam_Name, a.plg_amount as PlgFY1, b.plg_amount as PlgFY2 from family_fam left join pledge_plg a on a.plg_famID = fam_ID and a.plg_FYID=~fyid1~ and a.plg_PledgeOrPayment=\'Pledge\' left join pledge_plg b on b.plg_famID = fam_ID and b.plg_FYID=~fyid2~ and b.plg_PledgeOrPayment=\'Pledge\' order by fam_Name','Pledge comparison','Compare pledges between two fiscal years',1),(30,'SELECT per_ID as AddToCart, CONCAT(per_FirstName,\' \',per_LastName) AS Name, fam_address1, fam_city, fam_state, fam_zip FROM person_per join family_fam on per_fam_id=fam_id where per_fmr_id<>3 and per_fam_id in (select fam_id from family_fam inner join pledge_plg a on a.plg_famID=fam_ID and a.plg_FYID=~fyid1~ and a.plg_amount>0) and per_fam_id not in (select fam_id from family_fam inner join pledge_plg b on b.plg_famID=fam_ID and b.plg_FYID=~fyid2~ and b.plg_amount>0)','Missing pledges','Find people who pledged one year but not another',1),(31,'select per_ID as AddToCart, per_FirstName, per_LastName, per_email from person_per, autopayment_aut where aut_famID=per_fam_ID and aut_CreditCard!=\"\" and per_email!=\"\" and (per_fmr_ID=1 or per_fmr_ID=2 or per_cls_ID=1)','Credit Card People','People who are configured to pay by credit card.',0),(32,'SELECT fam_Name, fam_Envelope, b.fun_Name as Fund_Name, a.plg_amount as Pledge from family_fam left join pledge_plg a on a.plg_famID = fam_ID and a.plg_FYID=~fyid~ and a.plg_PledgeOrPayment=\'Pledge\' and a.plg_amount>0 join donationfund_fun b on b.fun_ID = a.plg_fundID order by fam_Name, a.plg_fundID','Family Pledge by Fiscal Year','Pledge summary by family name for each fund for the selected fiscal year',1),(100,'SELECT a.per_ID as AddToCart, CONCAT(\'<a href=PersonView.php?PersonID=\',a.per_ID,\'>\',a.per_FirstName,\' \',a.per_LastName,\'</a>\') AS Name FROM person_per AS a LEFT JOIN person2volunteeropp_p2vo p2v1 ON (a.per_id = p2v1.p2vo_per_ID AND p2v1.p2vo_vol_ID = ~volopp1~) LEFT JOIN person2volunteeropp_p2vo p2v2 ON (a.per_id = p2v2.p2vo_per_ID AND p2v2.p2vo_vol_ID = ~volopp2~) WHERE p2v1.p2vo_per_ID=p2v2.p2vo_per_ID ORDER BY per_LastName','Volunteers','Find volunteers for who match two specific opportunity codes',1),(200,'SELECT a.per_ID as AddToCart, CONCAT(\'<a href=PersonView.php?PersonID=\',a.per_ID,\'>\',a.per_FirstName,\' \',a.per_LastName,\'</a>\') AS Name FROM person_per AS a LEFT JOIN person_custom pc ON a.per_id = pc.per_ID WHERE pc.~custom~=\'~value~\' ORDER BY per_LastName','CustomSearch','Find people with a custom field value',1);
-/*!40000 ALTER TABLE `query_qry` ENABLE KEYS */;
+INSERT INTO `calendars` VALUES (1,'Public Calendar',NULL,'FFFFFF','00AA00'),(2,'Private Calendar',NULL,'FFFFFF','0000AA'),(3,'C',NULL,'FA8072','212F3D'),(4,'Ca',NULL,'FA8072','212F3D'),(5,'Ca',NULL,'FA8072','212F3D');
+/*!40000 ALTER TABLE `calendars` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
 
--- Dumped table `query_qry` with 20 row(s)
+-- Dumped table `calendars` with 5 row(s)
+--
+
+--
+-- Table structure for table `calendar_events`
+--
+
+DROP TABLE IF EXISTS `calendar_events`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `calendar_events` (
+  `calendar_id` int(11) NOT NULL,
+  `event_id` int(11) NOT NULL,
+  PRIMARY KEY (`calendar_id`,`event_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `calendar_events`
+--
+
+LOCK TABLES `calendar_events` WRITE;
+/*!40000 ALTER TABLE `calendar_events` DISABLE KEYS */;
+SET autocommit=0;
+INSERT INTO `calendar_events` VALUES (2,1),(2,2),(2,3);
+/*!40000 ALTER TABLE `calendar_events` ENABLE KEYS */;
+UNLOCK TABLES;
+COMMIT;
+
+-- Dumped table `calendar_events` with 3 row(s)
+--
+
+--
+-- Table structure for table `canvassdata_can`
+--
+
+DROP TABLE IF EXISTS `canvassdata_can`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `canvassdata_can` (
+  `can_ID` mediumint(9) unsigned NOT NULL AUTO_INCREMENT,
+  `can_famID` mediumint(9) NOT NULL DEFAULT 0,
+  `can_Canvasser` mediumint(9) NOT NULL DEFAULT 0,
+  `can_FYID` mediumint(9) DEFAULT NULL,
+  `can_date` date DEFAULT NULL,
+  `can_Positive` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `can_Critical` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `can_Insightful` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `can_Financial` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `can_Suggestion` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `can_NotInterested` tinyint(1) NOT NULL DEFAULT 0,
+  `can_WhyNotInterested` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`can_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `canvassdata_can`
+--
+
+LOCK TABLES `canvassdata_can` WRITE;
+/*!40000 ALTER TABLE `canvassdata_can` DISABLE KEYS */;
+SET autocommit=0;
+INSERT INTO `canvassdata_can` VALUES (1,17,0,23,'2019-09-09','asdsd','asdf','saf','sdfsdf','sdfsdf',1,'sdfsdf');
+/*!40000 ALTER TABLE `canvassdata_can` ENABLE KEYS */;
+UNLOCK TABLES;
+COMMIT;
+
+-- Dumped table `canvassdata_can` with 1 row(s)
+--
+
+--
+-- Table structure for table `church_location_person`
+--
+
+DROP TABLE IF EXISTS `church_location_person`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `church_location_person` (
+  `location_id` int(11) NOT NULL,
+  `person_id` int(11) NOT NULL,
+  `order` int(11) NOT NULL,
+  `person_location_role_id` int(11) NOT NULL,
+  PRIMARY KEY (`location_id`,`person_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `church_location_person`
+--
+
+LOCK TABLES `church_location_person` WRITE;
+/*!40000 ALTER TABLE `church_location_person` DISABLE KEYS */;
+SET autocommit=0;
+/*!40000 ALTER TABLE `church_location_person` ENABLE KEYS */;
+UNLOCK TABLES;
+COMMIT;
+
+-- Dumped table `church_location_person` with 0 row(s)
+--
+
+--
+-- Table structure for table `church_location_role`
+--
+
+DROP TABLE IF EXISTS `church_location_role`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `church_location_role` (
+  `location_id` int(11) NOT NULL,
+  `role_id` int(11) NOT NULL,
+  `role_order` int(11) NOT NULL,
+  `role_title` int(11) NOT NULL,
+  PRIMARY KEY (`location_id`,`role_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `church_location_role`
+--
+
+LOCK TABLES `church_location_role` WRITE;
+/*!40000 ALTER TABLE `church_location_role` DISABLE KEYS */;
+SET autocommit=0;
+/*!40000 ALTER TABLE `church_location_role` ENABLE KEYS */;
+UNLOCK TABLES;
+COMMIT;
+
+-- Dumped table `church_location_role` with 0 row(s)
+--
+
+--
+-- Table structure for table `config_cfg`
+--
+
+DROP TABLE IF EXISTS `config_cfg`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `config_cfg` (
+  `cfg_id` int(11) NOT NULL DEFAULT 0,
+  `cfg_name` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `cfg_value` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`cfg_id`),
+  UNIQUE KEY `cfg_name` (`cfg_name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `config_cfg`
+--
+
+LOCK TABLES `config_cfg` WRITE;
+/*!40000 ALTER TABLE `config_cfg` DISABLE KEYS */;
+SET autocommit=0;
+INSERT INTO `config_cfg` VALUES (10,'aFinanceQueries','28,30,31,32'),(21,'sDefaultCity','Kansas City'),(22,'sDefaultState','MO'),(23,'sDefaultCountry','United States'),(27,'sSMTPHost','smtp.mailtrap.io:2525'),(28,'bSMTPAuth','1'),(29,'sSMTPUser','c58d4ec1a5a021'),(30,'sSMTPPass','3cfab2ee59990c'),(45,'iChurchLatitude','39.1111974'),(46,'iChurchLongitude','-94.5838009'),(48,'bHideFriendDate',''),(49,'bHideFamilyNewsletter',''),(50,'bHideWeddingDate',''),(51,'bHideLatLon',''),(52,'bUseDonationEnvelopes',''),(58,'bUseScannedChecks',''),(65,'sTimeZone','America/Detroit'),(67,'bForceUppercaseZip',''),(72,'bEnableNonDeductible',''),(80,'bEnableSelfRegistration','1'),(999,'bRegistered',''),(1003,'sChurchName','Main St. Cathedral'),(1004,'sChurchAddress','123 Main St'),(1005,'sChurchCity','Kansas City'),(1006,'sChurchState','MO'),(1007,'sChurchZip','64106'),(1008,'sChurchPhone','555 123 4234'),(1009,'sChurchEmail','demo@churchcrm.io'),(1010,'sHomeAreaCode','555'),(1014,'sTaxSigner','Elder Joe Smith'),(1016,'sReminderSigner','Elder Joe Smith'),(1025,'sConfirmSigner','Elder Joe Smith'),(1027,'sPledgeSummary2','as of'),(1028,'sDirectoryDisclaimer1','Every effort was made to insure the accuracy of this directory.  If there are any errors or omissions, please contact the church office.This directory is for the use of the people of'),(1034,'sChurchChkAcctNum','111111111'),(1035,'bEnableGravatarPhotos','1'),(1037,'sExternalBackupType','WebDAV'),(1046,'sLastIntegrityCheckTimeStamp','20231021-190520'),(1047,'sChurchCountry','United States'),(2010,'bAllowEmptyLastName',''),(2017,'bEnableExternalCalendarAPI',''),(2045,'bPHPMailerAutoTLS',''),(2046,'sPHPMailerSMTPSecure',''),(2064,'sLastSoftwareUpdateCheckTimeStamp','20231021-190521'),(20142,'bHSTSEnable','');
+/*!40000 ALTER TABLE `config_cfg` ENABLE KEYS */;
+UNLOCK TABLES;
+COMMIT;
+
+-- Dumped table `config_cfg` with 45 row(s)
+--
+
+--
+-- Table structure for table `deposit_dep`
+--
+
+DROP TABLE IF EXISTS `deposit_dep`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `deposit_dep` (
+  `dep_ID` mediumint(9) unsigned NOT NULL AUTO_INCREMENT,
+  `dep_Date` date DEFAULT NULL,
+  `dep_Comment` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `dep_EnteredBy` mediumint(9) unsigned DEFAULT NULL,
+  `dep_Closed` tinyint(1) NOT NULL DEFAULT 0,
+  `dep_Type` enum('Bank','CreditCard','BankDraft','eGive') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'Bank',
+  PRIMARY KEY (`dep_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci PACK_KEYS=0;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `deposit_dep`
+--
+
+LOCK TABLES `deposit_dep` WRITE;
+/*!40000 ALTER TABLE `deposit_dep` DISABLE KEYS */;
+SET autocommit=0;
+INSERT INTO `deposit_dep` VALUES (1,'2018-02-11','',NULL,0,'Bank'),(2,'2018-02-18','',NULL,0,'Bank'),(3,'2018-02-25','',NULL,0,'Bank'),(4,'2018-03-04','',NULL,0,'Bank'),(5,'2018-03-11','',NULL,0,'Bank'),(6,'2021-04-25','Selenium Test Deposit',NULL,0,'Bank'),(7,'2021-04-25','Selenium Test Deposit',NULL,0,'Bank'),(8,'2021-04-25','Selenium Test Deposit',NULL,0,'Bank'),(9,'2021-04-25','Selenium Test Deposit',NULL,0,'Bank'),(10,'2021-04-25','Selenium Test Deposit',NULL,0,'Bank'),(11,'2021-04-25','Selenium Test Deposit',NULL,0,'Bank'),(12,'2021-04-25','Selenium Test Deposit',NULL,0,'Bank'),(13,'2021-04-25','Selenium Test Deposit',NULL,0,'Bank'),(14,'2021-04-25','Selenium Test Deposit',NULL,0,'Bank'),(15,'2021-04-25','Selenium Test Deposit',NULL,0,'Bank'),(16,'2021-04-25','Selenium Test Deposit',NULL,0,'Bank'),(17,'2021-04-25','Selenium Test Deposit',NULL,0,'Bank'),(18,'2021-04-25','Selenium Test Deposit',NULL,0,'Bank');
+/*!40000 ALTER TABLE `deposit_dep` ENABLE KEYS */;
+UNLOCK TABLES;
+COMMIT;
+
+-- Dumped table `deposit_dep` with 18 row(s)
 --
 
 --
@@ -90,152 +283,126 @@ COMMIT;
 --
 
 --
--- Table structure for table `calendars`
+-- Table structure for table `donationfund_fun`
 --
 
-DROP TABLE IF EXISTS `calendars`;
+DROP TABLE IF EXISTS `donationfund_fun`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `calendars` (
-  `calendar_id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(128) COLLATE utf8_unicode_ci NOT NULL,
-  `accesstoken` varchar(99) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `foregroundColor` varchar(6) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `backgroundColor` varchar(6) COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`calendar_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+CREATE TABLE `donationfund_fun` (
+  `fun_ID` tinyint(3) NOT NULL AUTO_INCREMENT,
+  `fun_Active` enum('true','false') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'true',
+  `fun_Name` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `fun_Description` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`fun_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `calendars`
+-- Dumping data for table `donationfund_fun`
 --
 
-LOCK TABLES `calendars` WRITE;
-/*!40000 ALTER TABLE `calendars` DISABLE KEYS */;
+LOCK TABLES `donationfund_fun` WRITE;
+/*!40000 ALTER TABLE `donationfund_fun` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `calendars` VALUES (1,'Public Calendar',NULL,'FFFFFF','00AA00'),(2,'Private Calendar',NULL,'FFFFFF','0000AA'),(3,'C',NULL,'FA8072','212F3D'),(4,'Ca',NULL,'FA8072','212F3D'),(5,'Ca',NULL,'FA8072','212F3D');
-/*!40000 ALTER TABLE `calendars` ENABLE KEYS */;
+INSERT INTO `donationfund_fun` VALUES (1,'true','Pledges','Pledge income for the operating budget'),(2,'true','New Building Fund',''),(3,'true','Music Ministry','');
+/*!40000 ALTER TABLE `donationfund_fun` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
 
--- Dumped table `calendars` with 5 row(s)
+-- Dumped table `donationfund_fun` with 3 row(s)
 --
 
 --
--- Table structure for table `groupprop_6`
+-- Table structure for table `egive_egv`
 --
 
-DROP TABLE IF EXISTS `groupprop_6`;
+DROP TABLE IF EXISTS `egive_egv`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `groupprop_6` (
-  `per_ID` mediumint(8) unsigned NOT NULL DEFAULT 0,
-  `c1` date DEFAULT NULL
+CREATE TABLE `egive_egv` (
+  `egv_egiveID` varchar(16) CHARACTER SET utf8 NOT NULL,
+  `egv_famID` int(11) NOT NULL,
+  `egv_DateEntered` datetime NOT NULL,
+  `egv_DateLastEdited` datetime NOT NULL,
+  `egv_EnteredBy` smallint(6) NOT NULL DEFAULT 0,
+  `egv_EditedBy` smallint(6) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `groupprop_6`
+-- Dumping data for table `egive_egv`
 --
 
-LOCK TABLES `groupprop_6` WRITE;
-/*!40000 ALTER TABLE `groupprop_6` DISABLE KEYS */;
+LOCK TABLES `egive_egv` WRITE;
+/*!40000 ALTER TABLE `egive_egv` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `groupprop_6` VALUES (131,NULL),(326,NULL),(334,NULL),(398,NULL),(590,NULL),(601,NULL),(603,NULL),(607,NULL),(608,NULL),(609,NULL),(612,NULL),(613,NULL),(622,NULL),(652,NULL),(653,NULL),(674,NULL),(675,NULL),(703,NULL),(729,NULL),(754,NULL),(757,NULL),(770,NULL),(773,NULL),(781,NULL),(785,NULL),(788,NULL),(798,NULL),(852,NULL),(862,NULL);
-/*!40000 ALTER TABLE `groupprop_6` ENABLE KEYS */;
+/*!40000 ALTER TABLE `egive_egv` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
 
--- Dumped table `groupprop_6` with 29 row(s)
+-- Dumped table `egive_egv` with 0 row(s)
 --
 
 --
--- Table structure for table `person_custom_master`
+-- Table structure for table `email_message_pending_emp`
 --
 
-DROP TABLE IF EXISTS `person_custom_master`;
+DROP TABLE IF EXISTS `email_message_pending_emp`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `person_custom_master` (
-  `custom_Order` smallint(6) NOT NULL DEFAULT 0,
-  `custom_Field` varchar(5) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `custom_Name` varchar(40) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `custom_Special` mediumint(8) unsigned DEFAULT NULL,
-  `custom_FieldSec` tinyint(4) NOT NULL,
-  `type_ID` tinyint(4) NOT NULL DEFAULT 0,
-  PRIMARY KEY (`custom_Field`)
+CREATE TABLE `email_message_pending_emp` (
+  `emp_usr_id` mediumint(9) unsigned NOT NULL DEFAULT 0,
+  `emp_to_send` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `emp_subject` varchar(128) COLLATE utf8_unicode_ci NOT NULL,
+  `emp_message` text COLLATE utf8_unicode_ci NOT NULL,
+  `emp_attach_name` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `emp_attach` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `person_custom_master`
+-- Dumping data for table `email_message_pending_emp`
 --
 
-LOCK TABLES `person_custom_master` WRITE;
-/*!40000 ALTER TABLE `person_custom_master` DISABLE KEYS */;
+LOCK TABLES `email_message_pending_emp` WRITE;
+/*!40000 ALTER TABLE `email_message_pending_emp` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `person_custom_master` VALUES (1,'c1','Father of confession',11,2,9),(2,'c2','Father of confession - Other',NULL,2,3),(3,'c3','Highest Degree Received',NULL,1,4),(4,'c4','My Custom Drop Down List',24,1,12);
-/*!40000 ALTER TABLE `person_custom_master` ENABLE KEYS */;
+/*!40000 ALTER TABLE `email_message_pending_emp` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
 
--- Dumped table `person_custom_master` with 4 row(s)
+-- Dumped table `email_message_pending_emp` with 0 row(s)
 --
 
 --
--- Table structure for table `groupprop_13`
+-- Table structure for table `email_recipient_pending_erp`
 --
 
-DROP TABLE IF EXISTS `groupprop_13`;
+DROP TABLE IF EXISTS `email_recipient_pending_erp`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `groupprop_13` (
-  `per_ID` mediumint(8) unsigned NOT NULL DEFAULT 0,
-  `c1` date DEFAULT NULL
+CREATE TABLE `email_recipient_pending_erp` (
+  `erp_id` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `erp_usr_id` mediumint(9) unsigned NOT NULL DEFAULT 0,
+  `erp_num_attempt` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `erp_failed_time` datetime DEFAULT NULL,
+  `erp_email_address` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT ''
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `groupprop_13`
+-- Dumping data for table `email_recipient_pending_erp`
 --
 
-LOCK TABLES `groupprop_13` WRITE;
-/*!40000 ALTER TABLE `groupprop_13` DISABLE KEYS */;
+LOCK TABLES `email_recipient_pending_erp` WRITE;
+/*!40000 ALTER TABLE `email_recipient_pending_erp` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `groupprop_13` VALUES (79,NULL),(141,NULL),(240,NULL),(257,NULL),(273,NULL),(295,NULL),(297,NULL),(307,NULL),(322,NULL),(337,NULL),(350,NULL),(370,NULL),(386,NULL),(583,NULL),(654,NULL),(668,NULL),(670,NULL),(671,NULL);
-/*!40000 ALTER TABLE `groupprop_13` ENABLE KEYS */;
+/*!40000 ALTER TABLE `email_recipient_pending_erp` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
 
--- Dumped table `groupprop_13` with 18 row(s)
---
-
---
--- Table structure for table `person_roles`
---
-
-DROP TABLE IF EXISTS `person_roles`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `person_roles` (
-  `per_id` int(11) NOT NULL,
-  `role_id` int(11) NOT NULL,
-  PRIMARY KEY (`per_id`,`role_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `person_roles`
---
-
-LOCK TABLES `person_roles` WRITE;
-/*!40000 ALTER TABLE `person_roles` DISABLE KEYS */;
-SET autocommit=0;
-/*!40000 ALTER TABLE `person_roles` ENABLE KEYS */;
-UNLOCK TABLES;
-COMMIT;
-
--- Dumped table `person_roles` with 0 row(s)
+-- Dumped table `email_recipient_pending_erp` with 0 row(s)
 --
 
 --
@@ -271,460 +438,138 @@ COMMIT;
 --
 
 --
--- Table structure for table `locations`
+-- Table structure for table `eventcounts_evtcnt`
 --
 
-DROP TABLE IF EXISTS `locations`;
+DROP TABLE IF EXISTS `eventcounts_evtcnt`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `locations` (
-  `location_id` int(11) NOT NULL AUTO_INCREMENT,
-  `location_typeId` int(11) NOT NULL,
-  `location_name` varchar(256) COLLATE utf8_unicode_ci NOT NULL,
-  `location_address` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
-  `location_city` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
-  `location_state` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
-  `location_zip` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
-  `location_country` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
-  `location_phone` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `location_email` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `location_timzezone` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`location_id`)
+CREATE TABLE `eventcounts_evtcnt` (
+  `evtcnt_eventid` int(5) NOT NULL DEFAULT 0,
+  `evtcnt_countid` int(5) NOT NULL DEFAULT 0,
+  `evtcnt_countname` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `evtcnt_countcount` int(6) DEFAULT NULL,
+  `evtcnt_notes` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`evtcnt_eventid`,`evtcnt_countid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `locations`
+-- Dumping data for table `eventcounts_evtcnt`
 --
 
-LOCK TABLES `locations` WRITE;
-/*!40000 ALTER TABLE `locations` DISABLE KEYS */;
+LOCK TABLES `eventcounts_evtcnt` WRITE;
+/*!40000 ALTER TABLE `eventcounts_evtcnt` DISABLE KEYS */;
 SET autocommit=0;
-/*!40000 ALTER TABLE `locations` ENABLE KEYS */;
+INSERT INTO `eventcounts_evtcnt` VALUES (1,4,'Total',25,''),(1,5,'Members',10,''),(1,6,'Visitors',0,''),(2,1,'Total',100,''),(2,2,'Members',0,''),(2,3,'Visitors',0,''),(3,4,'Total',100,''),(3,5,'Members',0,''),(3,6,'Visitors',0,'');
+/*!40000 ALTER TABLE `eventcounts_evtcnt` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
 
--- Dumped table `locations` with 0 row(s)
+-- Dumped table `eventcounts_evtcnt` with 9 row(s)
 --
 
 --
--- Table structure for table `church_location_person`
+-- Table structure for table `events_event`
 --
 
-DROP TABLE IF EXISTS `church_location_person`;
+DROP TABLE IF EXISTS `events_event`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `church_location_person` (
-  `location_id` int(11) NOT NULL,
-  `person_id` int(11) NOT NULL,
-  `order` int(11) NOT NULL,
-  `person_location_role_id` int(11) NOT NULL,
-  PRIMARY KEY (`location_id`,`person_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+CREATE TABLE `events_event` (
+  `event_id` int(11) NOT NULL AUTO_INCREMENT,
+  `event_type` int(11) NOT NULL DEFAULT 0,
+  `event_title` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `event_desc` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `event_text` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `event_start` datetime NOT NULL,
+  `event_end` datetime NOT NULL,
+  `inactive` int(1) NOT NULL DEFAULT 0,
+  `event_typename` varchar(40) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `location_id` int(11) DEFAULT NULL,
+  `secondary_contact_person_id` int(11) DEFAULT NULL,
+  `primary_contact_person_id` int(11) DEFAULT NULL,
+  `event_url` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`event_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `church_location_person`
+-- Dumping data for table `events_event`
 --
 
-LOCK TABLES `church_location_person` WRITE;
-/*!40000 ALTER TABLE `church_location_person` DISABLE KEYS */;
+LOCK TABLES `events_event` WRITE;
+/*!40000 ALTER TABLE `events_event` DISABLE KEYS */;
 SET autocommit=0;
-/*!40000 ALTER TABLE `church_location_person` ENABLE KEYS */;
+INSERT INTO `events_event` VALUES (1,2,'Sunday School Class Changes','This is when the students move to new classes','','2016-11-20 12:30:00','2016-11-20 13:30:00',0,'Sunday School',NULL,NULL,NULL,NULL),(2,1,'Christmas Service','christmas service','','2016-12-24 22:30:00','2016-12-25 01:30:00',0,'Church Service',NULL,NULL,NULL,NULL),(3,2,'Summer Camp','Summer Camp','','2017-06-06 09:30:00','2017-06-11 09:30:00',0,'Sunday School',NULL,NULL,NULL,NULL);
+/*!40000 ALTER TABLE `events_event` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
 
--- Dumped table `church_location_person` with 0 row(s)
+-- Dumped table `events_event` with 3 row(s)
 --
 
 --
--- Table structure for table `calendar_events`
+-- Table structure for table `event_attend`
 --
 
-DROP TABLE IF EXISTS `calendar_events`;
+DROP TABLE IF EXISTS `event_attend`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `calendar_events` (
-  `calendar_id` int(11) NOT NULL,
+CREATE TABLE `event_attend` (
+  `attend_id` int(11) NOT NULL AUTO_INCREMENT,
+  `event_id` int(11) NOT NULL DEFAULT 0,
+  `person_id` int(11) NOT NULL DEFAULT 0,
+  `checkin_date` datetime DEFAULT NULL,
+  `checkin_id` int(11) DEFAULT NULL,
+  `checkout_date` datetime DEFAULT NULL,
+  `checkout_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`attend_id`),
+  UNIQUE KEY `event_id` (`event_id`,`person_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `event_attend`
+--
+
+LOCK TABLES `event_attend` WRITE;
+/*!40000 ALTER TABLE `event_attend` DISABLE KEYS */;
+SET autocommit=0;
+INSERT INTO `event_attend` VALUES (1,3,104,'2017-04-15 17:23:46',26,NULL,NULL);
+/*!40000 ALTER TABLE `event_attend` ENABLE KEYS */;
+UNLOCK TABLES;
+COMMIT;
+
+-- Dumped table `event_attend` with 1 row(s)
+--
+
+--
+-- Table structure for table `event_audience`
+--
+
+DROP TABLE IF EXISTS `event_audience`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `event_audience` (
   `event_id` int(11) NOT NULL,
-  PRIMARY KEY (`calendar_id`,`event_id`)
+  `group_id` int(11) NOT NULL,
+  PRIMARY KEY (`event_id`,`group_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `calendar_events`
+-- Dumping data for table `event_audience`
 --
 
-LOCK TABLES `calendar_events` WRITE;
-/*!40000 ALTER TABLE `calendar_events` DISABLE KEYS */;
+LOCK TABLES `event_audience` WRITE;
+/*!40000 ALTER TABLE `event_audience` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `calendar_events` VALUES (2,1),(2,2),(2,3);
-/*!40000 ALTER TABLE `calendar_events` ENABLE KEYS */;
+/*!40000 ALTER TABLE `event_audience` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
 
--- Dumped table `calendar_events` with 3 row(s)
---
-
---
--- Table structure for table `version_ver`
---
-
-DROP TABLE IF EXISTS `version_ver`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `version_ver` (
-  `ver_ID` mediumint(9) unsigned NOT NULL AUTO_INCREMENT,
-  `ver_version` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `ver_update_start` datetime DEFAULT NULL,
-  `ver_update_end` datetime DEFAULT NULL,
-  PRIMARY KEY (`ver_ID`),
-  UNIQUE KEY `ver_version` (`ver_version`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `version_ver`
---
-
-LOCK TABLES `version_ver` WRITE;
-/*!40000 ALTER TABLE `version_ver` DISABLE KEYS */;
-SET autocommit=0;
-INSERT INTO `version_ver` VALUES (1,'3.5.0','2019-02-10 20:14:23',NULL),(2,'3.5.2','2019-09-10 22:54:56','2019-09-10 22:54:56'),(3,'3.5.4','2019-10-11 22:45:35','2019-10-11 22:45:35'),(4,'4.0.0','2020-06-16 13:11:20','2020-06-16 13:11:20'),(5,'4.1.0','2020-06-16 13:11:20','2020-06-16 13:11:21'),(6,'4.2.3','2020-10-17 01:46:16','2020-10-17 01:46:16'),(7,'4.3.1','2020-11-23 18:55:02','2020-11-23 18:55:02'),(8,'4.3.2','2020-12-10 01:57:09','2020-12-10 01:57:09'),(9,'4.4.0','2021-03-21 17:44:23','2021-03-21 17:44:23'),(10,'4.4.1','2021-05-09 13:58:09','2021-04-27 13:58:09'),(11,'4.4.2','2021-05-09 13:58:09','2021-04-27 13:58:09'),(12,'4.4.3','2021-05-09 13:58:09','2021-04-27 13:58:09'),(13,'4.4.4','2021-07-08 13:58:09','2021-07-08 13:58:09'),(14,'4.4.5','2021-07-09 13:58:09','2021-07-09 13:58:09'),(15,'4.5.0','2021-07-09 13:58:09','2021-09-03 13:58:09'),(16,'4.5.1','2022-12-03 14:02:00','2022-12-03 14:02:00'),(17,'4.5.2','2022-12-28 21:42:20','2022-12-28 21:42:20'),(18,'4.5.3','2023-01-01 20:32:08','2023-01-01 20:32:08'),(19,'5.0.0','2023-05-06 17:29:55','2023-05-06 17:29:55');
-/*!40000 ALTER TABLE `version_ver` ENABLE KEYS */;
-UNLOCK TABLES;
-COMMIT;
-
--- Dumped table `version_ver` with 19 row(s)
---
-
---
--- Table structure for table `groupprop_20`
---
-
-DROP TABLE IF EXISTS `groupprop_20`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `groupprop_20` (
-  `per_ID` mediumint(8) unsigned NOT NULL DEFAULT 0,
-  `c1` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `groupprop_20`
---
-
-LOCK TABLES `groupprop_20` WRITE;
-/*!40000 ALTER TABLE `groupprop_20` DISABLE KEYS */;
-SET autocommit=0;
-INSERT INTO `groupprop_20` VALUES (5,NULL),(37,NULL),(51,NULL),(94,NULL),(305,NULL),(310,NULL),(312,NULL),(320,NULL),(325,NULL),(342,NULL),(355,NULL),(589,NULL),(602,NULL),(611,NULL),(620,NULL),(621,NULL),(629,NULL),(641,NULL),(649,NULL),(657,NULL),(660,NULL),(761,NULL),(769,NULL),(784,NULL),(789,NULL),(797,NULL),(829,NULL),(855,NULL),(860,NULL);
-/*!40000 ALTER TABLE `groupprop_20` ENABLE KEYS */;
-UNLOCK TABLES;
-COMMIT;
-
--- Dumped table `groupprop_20` with 29 row(s)
---
-
---
--- Table structure for table `note_nte`
---
-
-DROP TABLE IF EXISTS `note_nte`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `note_nte` (
-  `nte_ID` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
-  `nte_per_ID` mediumint(8) unsigned NOT NULL DEFAULT 0,
-  `nte_fam_ID` mediumint(8) unsigned NOT NULL DEFAULT 0,
-  `nte_Private` mediumint(8) unsigned NOT NULL DEFAULT 0,
-  `nte_Text` text COLLATE utf8_unicode_ci DEFAULT NULL,
-  `nte_DateEntered` datetime NOT NULL,
-  `nte_DateLastEdited` datetime DEFAULT NULL,
-  `nte_EnteredBy` mediumint(8) NOT NULL DEFAULT 0,
-  `nte_EditedBy` mediumint(8) unsigned NOT NULL DEFAULT 0,
-  `nte_Type` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`nte_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=633 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `note_nte`
---
-
-LOCK TABLES `note_nte` WRITE;
-/*!40000 ALTER TABLE `note_nte` DISABLE KEYS */;
-SET autocommit=0;
-INSERT INTO `note_nte` VALUES (1,0,1,0,'Created','2016-01-01 00:00:00','2009-12-25 07:19:06',1,0,'create'),(2,2,0,0,'Created','2016-01-01 00:00:00','2009-12-25 07:19:06',1,0,'create'),(3,3,0,0,'Created','2016-01-01 00:00:00','2006-05-18 08:07:27',1,0,'create'),(4,4,0,0,'Created','2016-01-01 00:00:00','2016-04-03 09:13:02',1,0,'create'),(5,5,0,0,'Created','2016-01-01 00:00:00','2003-06-23 04:32:34',1,0,'create'),(6,0,2,0,'Created','2016-01-01 00:00:00','2009-04-13 01:17:12',1,0,'create'),(7,6,0,0,'Created','2016-01-01 00:00:00','2009-04-13 01:17:12',1,0,'create'),(8,7,0,0,'Created','2016-01-01 00:00:00','2006-08-18 00:45:56',1,0,'create'),(9,8,0,0,'Created','2016-01-01 00:00:00','2004-11-25 05:24:25',1,0,'create'),(10,9,0,0,'Created','2016-01-01 00:00:00','2009-08-19 12:28:31',1,0,'create'),(11,10,0,0,'Created','2016-01-01 00:00:00','2003-02-22 08:03:31',1,0,'create'),(12,11,0,0,'Created','2016-01-01 00:00:00','2011-12-29 16:42:21',1,0,'create'),(13,12,0,0,'Created','2016-01-01 00:00:00','2014-10-07 16:03:06',1,0,'create'),(14,13,0,0,'Created','2016-01-01 00:00:00','2013-02-28 09:48:03',1,0,'create'),(15,0,3,0,'Created','2016-01-01 00:00:00','2007-11-19 10:08:41',1,0,'create'),(16,14,0,0,'Created','2016-01-01 00:00:00','2007-11-19 10:08:41',1,0,'create'),(17,15,0,0,'Created','2016-01-01 00:00:00','2009-12-31 07:48:03',1,0,'create'),(18,16,0,0,'Created','2016-01-01 00:00:00','2011-05-22 19:11:16',1,0,'create'),(19,17,0,0,'Created','2016-01-01 00:00:00','2003-09-03 15:13:09',1,0,'create'),(20,0,4,0,'Created','2016-01-01 00:00:00','2003-10-14 16:05:17',1,0,'create'),(21,18,0,0,'Created','2016-01-01 00:00:00','2003-10-14 16:05:17',1,0,'create'),(22,19,0,0,'Created','2016-01-01 00:00:00','2008-05-09 05:12:00',1,0,'create'),(23,20,0,0,'Created','2016-01-01 00:00:00','2011-02-18 08:54:47',1,0,'create'),(24,21,0,0,'Created','2016-01-01 00:00:00','2009-08-31 21:41:59',1,0,'create'),(25,22,0,0,'Created','2016-01-01 00:00:00','2007-06-22 01:54:41',1,0,'create'),(26,23,0,0,'Created','2016-01-01 00:00:00','2009-08-13 03:54:14',1,0,'create'),(27,24,0,0,'Created','2016-01-01 00:00:00','2016-03-23 12:51:45',1,0,'create'),(28,25,0,0,'Created','2016-01-01 00:00:00','2007-08-08 06:34:24',1,0,'create'),(29,0,5,0,'Created','2016-01-01 00:00:00','2007-09-14 23:32:06',1,0,'create'),(30,26,0,0,'Created','2016-01-01 00:00:00','2007-09-14 23:32:06',1,0,'create'),(31,27,0,0,'Created','2016-01-01 00:00:00','2004-09-21 04:59:36',1,0,'create'),(32,0,6,0,'Created','2016-01-01 00:00:00','2013-07-25 20:18:03',1,0,'create'),(33,28,0,0,'Created','2016-01-01 00:00:00','2013-07-25 20:18:03',1,0,'create'),(34,29,0,0,'Created','2016-01-01 00:00:00','2004-03-04 00:12:40',1,0,'create'),(35,30,0,0,'Created','2016-01-01 00:00:00','2014-09-29 01:36:32',1,0,'create'),(36,31,0,0,'Created','2016-01-01 00:00:00','2007-04-14 04:13:25',1,0,'create'),(37,32,0,0,'Created','2016-01-01 00:00:00','2010-07-15 12:40:49',1,0,'create'),(38,33,0,0,'Created','2016-01-01 00:00:00','2006-07-25 23:21:13',1,0,'create'),(39,0,7,0,'Created','2016-01-01 00:00:00','2011-08-17 04:00:29',1,0,'create'),(40,34,0,0,'Created','2016-01-01 00:00:00','2011-08-17 04:00:29',1,0,'create'),(41,35,0,0,'Created','2016-01-01 00:00:00','2007-12-26 21:13:22',1,0,'create'),(43,36,0,0,'Created','2016-01-01 00:00:00','2015-02-07 16:23:42',1,0,'create'),(44,37,0,0,'Created','2016-01-01 00:00:00','2005-03-04 15:19:32',1,0,'create'),(45,38,0,0,'Created','2016-01-01 00:00:00','2008-10-02 23:33:21',1,0,'create'),(46,39,0,0,'Created','2016-01-01 00:00:00','2003-04-01 17:32:42',1,0,'create'),(47,40,0,0,'Created','2016-01-01 00:00:00','2015-05-27 00:37:53',1,0,'create'),(48,41,0,0,'Created','2016-01-01 00:00:00','2003-12-11 09:28:32',1,0,'create'),(49,42,0,0,'Created','2016-01-01 00:00:00','2012-03-22 08:26:55',1,0,'create'),(50,0,9,0,'Created','2016-01-01 00:00:00','2013-04-20 15:01:05',1,0,'create'),(51,43,0,0,'Created','2016-01-01 00:00:00','2013-04-20 15:01:05',1,0,'create'),(52,44,0,0,'Created','2016-01-01 00:00:00','2012-02-09 10:41:53',1,0,'create'),(56,48,0,0,'Created','2016-01-01 00:00:00','2010-01-07 01:55:34',1,0,'create'),(57,49,0,0,'Created','2016-01-01 00:00:00','2004-06-21 14:40:43',1,0,'create'),(58,0,10,0,'Created','2016-01-01 00:00:00','2004-09-09 18:40:30',1,0,'create'),(59,50,0,0,'Created','2016-01-01 00:00:00','2004-09-09 18:40:30',1,0,'create'),(60,51,0,0,'Created','2016-01-01 00:00:00','2006-11-20 15:07:23',1,0,'create'),(61,0,11,0,'Created','2016-01-01 00:00:00','2006-10-11 03:51:16',1,0,'create'),(62,52,0,0,'Created','2016-01-01 00:00:00','2006-10-11 03:51:16',1,0,'create'),(63,53,0,0,'Created','2016-01-01 00:00:00','2006-06-21 08:18:13',1,0,'create'),(64,54,0,0,'Created','2016-01-01 00:00:00','2006-05-24 17:02:09',1,0,'create'),(65,55,0,0,'Created','2016-01-01 00:00:00','2015-10-04 01:39:08',1,0,'create'),(66,56,0,0,'Created','2016-01-01 00:00:00','2006-07-23 14:13:59',1,0,'create'),(67,0,12,0,'Created','2016-01-01 00:00:00','2014-08-31 04:21:43',1,0,'create'),(68,57,0,0,'Created','2016-01-01 00:00:00','2014-08-31 04:21:43',1,0,'create'),(69,58,0,0,'Created','2016-01-01 00:00:00','2007-11-22 02:36:13',1,0,'create'),(70,0,13,0,'Created','2016-01-01 00:00:00','2007-02-01 16:50:26',1,0,'create'),(71,59,0,0,'Created','2016-01-01 00:00:00','2007-02-01 16:50:26',1,0,'create'),(72,60,0,0,'Created','2016-01-01 00:00:00','2006-11-07 12:19:08',1,0,'create'),(73,61,0,0,'Created','2016-01-01 00:00:00','2009-03-23 09:24:30',1,0,'create'),(74,62,0,0,'Created','2016-01-01 00:00:00','2013-07-10 17:58:37',1,0,'create'),(75,63,0,0,'Created','2016-01-01 00:00:00','2004-10-13 20:53:29',1,0,'create'),(79,0,14,0,'Created','2016-01-01 00:00:00','2013-10-15 09:25:25',1,0,'create'),(80,67,0,0,'Created','2016-01-01 00:00:00','2013-10-15 09:25:25',1,0,'create'),(81,68,0,0,'Created','2016-01-01 00:00:00','2003-09-29 17:56:26',1,0,'create'),(82,69,0,0,'Created','2016-01-01 00:00:00','2010-10-03 22:37:50',1,0,'create'),(84,70,0,0,'Created','2016-01-01 00:00:00','2003-04-25 18:30:46',1,0,'create'),(85,71,0,0,'Created','2016-01-01 00:00:00','2013-07-20 08:52:02',1,0,'create'),(86,72,0,0,'Created','2016-01-01 00:00:00','2002-10-01 07:06:30',1,0,'create'),(87,73,0,0,'Created','2016-01-01 00:00:00','2006-10-24 06:38:46',1,0,'create'),(88,74,0,0,'Created','2016-01-01 00:00:00','2005-01-21 16:03:19',1,0,'create'),(89,75,0,0,'Created','2016-01-01 00:00:00','2008-02-08 09:12:55',1,0,'create'),(90,0,16,0,'Created','2016-01-01 00:00:00','2016-03-01 14:19:32',1,0,'create'),(91,76,0,0,'Created','2016-01-01 00:00:00','2016-03-01 14:19:32',1,0,'create'),(92,77,0,0,'Created','2016-01-01 00:00:00','2013-07-06 04:09:48',1,0,'create'),(93,0,17,0,'Created','2016-01-01 00:00:00','2014-09-26 00:09:54',1,0,'create'),(94,78,0,0,'Created','2016-01-01 00:00:00','2014-09-26 00:09:54',1,0,'create'),(95,79,0,0,'Created','2016-01-01 00:00:00','2007-06-20 13:29:12',1,0,'create'),(96,80,0,0,'Created','2016-01-01 00:00:00','2015-12-26 15:02:22',1,0,'create'),(97,81,0,0,'Created','2016-01-01 00:00:00','2008-02-28 11:35:15',1,0,'create'),(98,82,0,0,'Created','2016-01-01 00:00:00','2007-04-24 18:10:43',1,0,'create'),(99,83,0,0,'Created','2016-01-01 00:00:00','2011-10-07 17:53:37',1,0,'create'),(100,0,18,0,'Created','2016-01-01 00:00:00','2002-04-09 05:31:36',1,0,'create'),(101,84,0,0,'Created','2016-01-01 00:00:00','2002-04-09 05:31:36',1,0,'create'),(102,85,0,0,'Created','2016-01-01 00:00:00','2015-03-05 07:54:37',1,0,'create'),(103,86,0,0,'Created','2016-01-01 00:00:00','2003-02-10 12:19:20',1,0,'create'),(104,87,0,0,'Created','2016-01-01 00:00:00','2008-11-13 08:27:32',1,0,'create'),(105,88,0,0,'Created','2016-01-01 00:00:00','2008-06-30 07:18:09',1,0,'create'),(106,89,0,0,'Created','2016-01-01 00:00:00','2005-04-12 20:56:36',1,0,'create'),(107,90,0,0,'Created','2016-01-01 00:00:00','2007-01-20 19:02:31',1,0,'create'),(108,91,0,0,'Created','2016-01-01 00:00:00','2010-12-30 01:21:15',1,0,'create'),(109,0,19,0,'Created','2016-01-01 00:00:00','2014-11-23 09:17:25',1,0,'create'),(110,92,0,0,'Created','2016-01-01 00:00:00','2014-11-23 09:17:25',1,0,'create'),(111,93,0,0,'Created','2016-01-01 00:00:00','2011-07-16 02:59:16',1,0,'create'),(112,94,0,0,'Created','2016-01-01 00:00:00','2006-05-25 19:29:47',1,0,'create'),(113,95,0,0,'Created','2016-01-01 00:00:00','2003-07-08 08:25:48',1,0,'create'),(114,96,0,0,'Created','2016-01-01 00:00:00','2006-04-08 10:42:12',1,0,'create'),(115,97,0,0,'Created','2016-01-01 00:00:00','2010-01-28 17:10:25',1,0,'create'),(116,98,0,0,'Created','2016-01-01 00:00:00','2007-02-16 17:31:50',1,0,'create'),(117,0,20,0,'Created','2016-01-01 00:00:00','2014-05-10 06:07:19',1,0,'create'),(118,99,0,0,'Created','2016-01-01 00:00:00','2014-05-10 06:07:19',1,0,'create'),(119,100,0,0,'Created','2016-01-01 00:00:00','2004-09-29 01:37:47',1,0,'create'),(121,102,0,0,'Created','2016-01-01 00:00:00','2005-03-07 21:32:47',1,0,'create'),(122,103,0,0,'Created','2016-01-01 00:00:00','2014-05-16 11:35:23',1,0,'create'),(123,26,0,0,'Updated via Family','2016-11-19 15:23:31',NULL,1,0,'edit'),(124,27,0,0,'Updated via Family','2016-11-19 15:23:31',NULL,1,0,'edit'),(125,0,5,0,'Updated','2016-11-19 15:23:31',NULL,1,0,'edit'),(126,61,0,0,'Updated','2016-11-19 15:25:34',NULL,1,0,'edit'),(127,62,0,0,'Updated','2016-11-19 15:25:41',NULL,1,0,'edit'),(128,63,0,0,'Updated','2016-11-19 15:26:00',NULL,1,0,'edit'),(129,63,0,0,'Updated','2016-11-19 15:27:02',NULL,1,0,'edit'),(130,60,0,0,'Updated','2016-11-19 15:27:13',NULL,1,0,'edit'),(131,69,0,0,'Updated','2016-11-19 15:38:00',NULL,1,0,'edit'),(132,69,0,0,'Profile Image Deleted','2016-11-19 15:38:03',NULL,1,0,'photo'),(133,68,0,0,'Updated','2016-11-19 15:38:31',NULL,1,0,'edit'),(134,67,0,0,'Updated','2016-11-19 15:38:39',NULL,1,0,'edit'),(135,4,0,0,'Updated','2016-11-19 15:39:19',NULL,1,0,'edit'),(136,5,0,0,'Updated','2016-11-19 15:39:30',NULL,1,0,'edit'),(137,80,0,0,'Updated','2016-11-19 15:39:51',NULL,1,0,'edit'),(138,81,0,0,'Updated','2016-11-19 15:39:54',NULL,1,0,'edit'),(139,82,0,0,'Updated','2016-11-19 15:39:58',NULL,1,0,'edit'),(140,83,0,0,'Updated','2016-11-19 15:40:22',NULL,1,0,'edit'),(141,31,0,0,'Updated','2016-11-19 15:40:40',NULL,1,0,'edit'),(142,33,0,0,'Updated','2016-11-19 15:40:43',NULL,1,0,'edit'),(143,29,0,0,'Updated','2016-11-19 15:40:58',NULL,1,0,'edit'),(144,32,0,0,'Updated','2016-11-19 15:41:02',NULL,1,0,'edit'),(145,30,0,0,'Updated','2016-11-19 15:41:11',NULL,1,0,'edit'),(146,51,0,0,'Updated','2016-11-19 15:41:44',NULL,1,0,'edit'),(147,13,0,0,'Updated','2016-11-19 15:42:01',NULL,1,0,'edit'),(148,12,0,0,'Updated','2016-11-19 15:42:04',NULL,1,0,'edit'),(149,11,0,0,'Updated','2016-11-19 15:42:07',NULL,1,0,'edit'),(150,10,0,0,'Updated','2016-11-19 15:42:10',NULL,1,0,'edit'),(151,9,0,0,'Updated','2016-11-19 15:42:14',NULL,1,0,'edit'),(152,8,0,0,'Updated','2016-11-19 15:42:20',NULL,1,0,'edit'),(153,94,0,0,'Updated','2016-11-19 15:42:48',NULL,1,0,'edit'),(154,95,0,0,'Updated','2016-11-19 15:42:57',NULL,1,0,'edit'),(155,96,0,0,'Updated','2016-11-19 15:43:06',NULL,1,0,'edit'),(156,97,0,0,'Updated','2016-11-19 15:43:10',NULL,1,0,'edit'),(157,53,0,0,'Updated','2016-11-19 15:43:22',NULL,1,0,'edit'),(158,27,0,0,'Updated','2016-11-19 15:43:47',NULL,1,0,'edit'),(159,35,0,0,'Updated','2016-11-19 15:44:07',NULL,1,0,'edit'),(160,35,0,0,'Profile Image Deleted','2016-11-19 15:44:11',NULL,1,0,'photo'),(161,59,0,0,'Updated via Family','2016-11-19 15:46:56',NULL,1,0,'edit'),(162,63,0,0,'Updated via Family','2016-11-19 15:46:56',NULL,1,0,'edit'),(163,60,0,0,'Updated via Family','2016-11-19 15:46:56',NULL,1,0,'edit'),(164,61,0,0,'Updated via Family','2016-11-19 15:46:56',NULL,1,0,'edit'),(165,62,0,0,'Updated via Family','2016-11-19 15:46:56',NULL,1,0,'edit'),(166,0,13,0,'Updated','2016-11-19 15:46:56',NULL,1,0,'edit'),(167,59,0,0,'Updated via Family','2016-11-19 15:49:36',NULL,1,0,'edit'),(168,63,0,0,'Updated via Family','2016-11-19 15:49:36',NULL,1,0,'edit'),(169,60,0,0,'Updated via Family','2016-11-19 15:49:36',NULL,1,0,'edit'),(170,61,0,0,'Updated via Family','2016-11-19 15:49:36',NULL,1,0,'edit'),(171,62,0,0,'Updated via Family','2016-11-19 15:49:36',NULL,1,0,'edit'),(172,0,13,0,'Updated','2016-11-19 15:49:36',NULL,1,0,'edit'),(173,68,0,0,'Updated via Family','2016-11-19 15:49:58',NULL,1,0,'edit'),(174,67,0,0,'Updated via Family','2016-11-19 15:49:58',NULL,1,0,'edit'),(175,69,0,0,'Updated via Family','2016-11-19 15:49:58',NULL,1,0,'edit'),(176,0,14,0,'Updated','2016-11-19 15:49:58',NULL,1,0,'edit'),(177,99,0,0,'Updated via Family','2016-11-19 15:50:25',NULL,1,0,'edit'),(178,100,0,0,'Updated via Family','2016-11-19 15:50:25',NULL,1,0,'edit'),(179,102,0,0,'Updated via Family','2016-11-19 15:50:25',NULL,1,0,'edit'),(180,103,0,0,'Updated via Family','2016-11-19 15:50:25',NULL,1,0,'edit'),(181,0,20,0,'Updated','2016-11-19 15:50:25',NULL,1,0,'edit'),(182,2,0,0,'Updated via Family','2016-11-19 15:50:57',NULL,1,0,'edit'),(183,3,0,0,'Updated via Family','2016-11-19 15:50:57',NULL,1,0,'edit'),(184,4,0,0,'Updated via Family','2016-11-19 15:50:57',NULL,1,0,'edit'),(185,5,0,0,'Updated via Family','2016-11-19 15:50:57',NULL,1,0,'edit'),(186,0,1,0,'Updated','2016-11-19 15:50:57',NULL,1,0,'edit'),(187,78,0,0,'Updated via Family','2016-11-19 15:51:35',NULL,1,0,'edit'),(188,79,0,0,'Updated via Family','2016-11-19 15:51:35',NULL,1,0,'edit'),(189,80,0,0,'Updated via Family','2016-11-19 15:51:35',NULL,1,0,'edit'),(190,81,0,0,'Updated via Family','2016-11-19 15:51:35',NULL,1,0,'edit'),(191,82,0,0,'Updated via Family','2016-11-19 15:51:35',NULL,1,0,'edit'),(192,0,17,0,'Updated','2016-11-19 15:51:35',NULL,1,0,'edit'),(193,43,0,0,'Updated via Family','2016-11-19 15:52:17',NULL,1,0,'edit'),(194,44,0,0,'Updated via Family','2016-11-19 15:52:17',NULL,1,0,'edit'),(195,48,0,0,'Updated via Family','2016-11-19 15:52:17',NULL,1,0,'edit'),(196,49,0,0,'Updated via Family','2016-11-19 15:52:17',NULL,1,0,'edit'),(197,0,9,0,'Updated','2016-11-19 15:52:17',NULL,1,0,'edit'),(198,28,0,0,'Updated via Family','2016-11-19 15:52:44',NULL,1,0,'edit'),(199,30,0,0,'Updated via Family','2016-11-19 15:52:44',NULL,1,0,'edit'),(200,0,6,0,'Updated','2016-11-19 15:52:44',NULL,1,0,'edit'),(201,50,0,0,'Updated via Family','2016-11-19 15:52:50',NULL,1,0,'edit'),(202,0,10,0,'Updated','2016-11-19 15:52:50',NULL,1,0,'edit'),(203,6,0,0,'Updated via Family','2016-11-19 15:53:10',NULL,1,0,'edit'),(204,7,0,0,'Updated via Family','2016-11-19 15:53:10',NULL,1,0,'edit'),(205,8,0,0,'Updated via Family','2016-11-19 15:53:10',NULL,1,0,'edit'),(206,9,0,0,'Updated via Family','2016-11-19 15:53:10',NULL,1,0,'edit'),(207,10,0,0,'Updated via Family','2016-11-19 15:53:10',NULL,1,0,'edit'),(208,11,0,0,'Updated via Family','2016-11-19 15:53:10',NULL,1,0,'edit'),(209,12,0,0,'Updated via Family','2016-11-19 15:53:10',NULL,1,0,'edit'),(210,13,0,0,'Updated via Family','2016-11-19 15:53:10',NULL,1,0,'edit'),(211,0,2,0,'Updated','2016-11-19 15:53:10',NULL,1,0,'edit'),(212,92,0,0,'Updated via Family','2016-11-19 15:53:40',NULL,1,0,'edit'),(213,93,0,0,'Updated via Family','2016-11-19 15:53:40',NULL,1,0,'edit'),(214,98,0,0,'Updated via Family','2016-11-19 15:53:40',NULL,1,0,'edit'),(215,0,19,0,'Updated','2016-11-19 15:53:40',NULL,1,0,'edit'),(216,76,0,0,'Updated via Family','2016-11-19 15:53:48',NULL,1,0,'edit'),(217,77,0,0,'Updated via Family','2016-11-19 15:53:48',NULL,1,0,'edit'),(218,0,16,0,'Updated','2016-11-19 15:53:48',NULL,1,0,'edit'),(219,14,0,0,'Updated via Family','2016-11-19 15:54:09',NULL,1,0,'edit'),(220,15,0,0,'Updated via Family','2016-11-19 15:54:09',NULL,1,0,'edit'),(221,16,0,0,'Updated via Family','2016-11-19 15:54:09',NULL,1,0,'edit'),(222,17,0,0,'Updated via Family','2016-11-19 15:54:09',NULL,1,0,'edit'),(223,0,3,0,'Updated','2016-11-19 15:54:09',NULL,1,0,'edit'),(224,52,0,0,'Updated via Family','2016-11-19 15:54:22',NULL,1,0,'edit'),(225,54,0,0,'Updated via Family','2016-11-19 15:54:22',NULL,1,0,'edit'),(226,55,0,0,'Updated via Family','2016-11-19 15:54:22',NULL,1,0,'edit'),(227,56,0,0,'Updated via Family','2016-11-19 15:54:22',NULL,1,0,'edit'),(228,0,11,0,'Updated','2016-11-19 15:54:22',NULL,1,0,'edit'),(229,57,0,0,'Updated via Family','2016-11-19 15:54:30',NULL,1,0,'edit'),(230,58,0,0,'Updated via Family','2016-11-19 15:54:30',NULL,1,0,'edit'),(231,0,12,0,'Updated','2016-11-19 15:54:30',NULL,1,0,'edit'),(232,18,0,0,'Updated via Family','2016-11-19 15:55:11',NULL,1,0,'edit'),(233,19,0,0,'Updated via Family','2016-11-19 15:55:11',NULL,1,0,'edit'),(234,20,0,0,'Updated via Family','2016-11-19 15:55:11',NULL,1,0,'edit'),(235,21,0,0,'Updated via Family','2016-11-19 15:55:11',NULL,1,0,'edit'),(236,22,0,0,'Updated via Family','2016-11-19 15:55:11',NULL,1,0,'edit'),(237,23,0,0,'Updated via Family','2016-11-19 15:55:11',NULL,1,0,'edit'),(238,24,0,0,'Updated via Family','2016-11-19 15:55:11',NULL,1,0,'edit'),(239,25,0,0,'Updated via Family','2016-11-19 15:55:11',NULL,1,0,'edit'),(240,0,4,0,'Updated','2016-11-19 15:55:11',NULL,1,0,'edit'),(241,84,0,0,'Updated via Family','2016-11-19 15:56:04',NULL,1,0,'edit'),(242,85,0,0,'Updated via Family','2016-11-19 15:56:04',NULL,1,0,'edit'),(243,86,0,0,'Updated via Family','2016-11-19 15:56:04',NULL,1,0,'edit'),(244,87,0,0,'Updated via Family','2016-11-19 15:56:04',NULL,1,0,'edit'),(245,88,0,0,'Updated via Family','2016-11-19 15:56:04',NULL,1,0,'edit'),(246,89,0,0,'Updated via Family','2016-11-19 15:56:04',NULL,1,0,'edit'),(247,90,0,0,'Updated via Family','2016-11-19 15:56:04',NULL,1,0,'edit'),(248,91,0,0,'Updated via Family','2016-11-19 15:56:04',NULL,1,0,'edit'),(249,0,18,0,'Updated','2016-11-19 15:56:04',NULL,1,0,'edit'),(250,26,0,0,'Updated via Family','2016-11-19 15:56:49',NULL,1,0,'edit'),(251,0,5,0,'Updated','2016-11-19 15:56:49',NULL,1,0,'edit'),(252,34,0,0,'Updated via Family','2016-11-19 15:56:55',NULL,1,0,'edit'),(253,0,7,0,'Updated','2016-11-19 15:56:55',NULL,1,0,'edit'),(254,3,0,0,'Updated','2016-11-19 16:07:39',NULL,1,0,'edit'),(255,84,0,0,'Updated via Family','2016-11-19 16:42:37',NULL,1,0,'edit'),(256,85,0,0,'Updated via Family','2016-11-19 16:42:37',NULL,1,0,'edit'),(257,87,0,0,'Updated via Family','2016-11-19 16:42:37',NULL,1,0,'edit'),(258,88,0,0,'Updated via Family','2016-11-19 16:42:37',NULL,1,0,'edit'),(259,89,0,0,'Updated via Family','2016-11-19 16:42:37',NULL,1,0,'edit'),(260,90,0,0,'Updated via Family','2016-11-19 16:42:37',NULL,1,0,'edit'),(261,91,0,0,'Updated via Family','2016-11-19 16:42:37',NULL,1,0,'edit'),(262,86,0,0,'Updated via Family','2016-11-19 16:42:37',NULL,1,0,'edit'),(263,0,18,0,'Updated','2016-11-19 16:42:37',NULL,1,0,'edit'),(264,84,0,0,'Updated via Family','2016-11-19 16:43:48',NULL,1,0,'edit'),(265,85,0,0,'Updated via Family','2016-11-19 16:43:48',NULL,1,0,'edit'),(266,87,0,0,'Updated via Family','2016-11-19 16:43:48',NULL,1,0,'edit'),(267,88,0,0,'Updated via Family','2016-11-19 16:43:48',NULL,1,0,'edit'),(268,89,0,0,'Updated via Family','2016-11-19 16:43:48',NULL,1,0,'edit'),(269,90,0,0,'Updated via Family','2016-11-19 16:43:48',NULL,1,0,'edit'),(270,91,0,0,'Updated via Family','2016-11-19 16:43:48',NULL,1,0,'edit'),(271,86,0,0,'Updated via Family','2016-11-19 16:43:48',NULL,1,0,'edit'),(272,0,18,0,'Updated','2016-11-19 16:43:48',NULL,1,0,'edit'),(273,0,21,0,'Created','0000-00-00 00:00:00','2017-04-15 17:19:26',-1,0,'create'),(274,104,0,0,'Created','2017-04-15 17:20:21',NULL,-1,0,'create'),(275,105,0,0,'Created','2017-04-15 17:20:21',NULL,-1,0,'create'),(276,106,0,0,'Created','2017-04-15 17:20:21',NULL,-1,0,'create'),(277,107,0,0,'Created','2017-04-15 17:20:21',NULL,-1,0,'create'),(278,14,0,0,'Updated via Family','2017-04-15 17:21:40',NULL,1,0,'edit'),(279,15,0,0,'Updated via Family','2017-04-15 17:21:40',NULL,1,0,'edit'),(280,16,0,0,'Updated via Family','2017-04-15 17:21:40',NULL,1,0,'edit'),(281,17,0,0,'Updated via Family','2017-04-15 17:21:40',NULL,1,0,'edit'),(282,0,3,0,'Updated','2017-04-15 17:21:40',NULL,1,0,'edit'),(283,26,0,0,'Updated via Family','2017-04-15 17:22:04',NULL,1,0,'edit'),(284,0,5,0,'Updated','2017-04-15 17:22:04',NULL,1,0,'edit'),(285,50,0,0,'Updated via Family','2017-04-15 17:22:19',NULL,1,0,'edit'),(286,0,10,0,'Updated','2017-04-15 17:22:19',NULL,1,0,'edit'),(287,0,4,0,'Updated','0000-00-00 00:00:00','2016-11-19 15:55:11',1,0,'edit'),(288,0,4,0,'Deactivated the Family','2017-04-15 17:34:50',NULL,1,0,'edit'),(289,3,0,0,'system user password reset','2017-12-18 00:43:09',NULL,1,0,'user'),(290,3,0,0,'system user password changed by admin','2017-12-18 00:43:33',NULL,1,0,'user'),(291,3,0,0,'system user password reset','2017-12-18 00:45:44',NULL,1,0,'user'),(292,3,0,0,'system user password reset','2017-12-18 00:47:43',NULL,1,0,'user'),(293,96,0,0,'Deleted from group: ','2017-12-23 14:46:01',NULL,1,0,'group'),(294,96,0,0,'Deleted from group: Class 4-5','2017-12-23 14:46:59',NULL,1,0,'group'),(295,96,0,0,'Added to group: High School Class','2017-12-23 14:48:34',NULL,1,0,'group'),(296,3,0,0,'system user password changed by admin','2017-12-23 16:49:29',NULL,1,0,'user'),(297,35,0,0,'Updated','2018-01-01 19:25:55',NULL,1,0,'edit'),(298,1,0,0,NULL,'2018-02-19 17:11:42',NULL,1,0,'user'),(299,26,0,0,'Added to group: Clergy','2019-09-08 21:23:06',NULL,1,0,'group'),(300,2,0,0,'Added to group: Clergy','2019-09-08 21:23:18',NULL,1,0,'group'),(301,78,0,0,'Updated','2019-09-08 21:43:50',NULL,3,0,'edit'),(302,80,0,0,'Updated','2019-09-08 21:44:06',NULL,3,0,'edit'),(303,50,0,0,'Updated via Family','2019-09-11 23:04:11',NULL,1,0,'edit'),(304,0,10,0,'Updated','2019-09-11 23:04:11',NULL,1,0,'edit'),(305,50,0,0,'Updated','2019-09-11 23:09:35',NULL,1,0,'edit'),(306,95,0,0,'system user login reset','2020-11-27 11:40:54',NULL,1,0,'user'),(307,95,0,0,'system user password reset','2020-11-27 11:40:56',NULL,1,0,'user'),(308,0,2,0,'Verification email sent','2020-11-27 11:43:34',NULL,1,0,'verify-link'),(309,3,0,0,NULL,'2020-11-27 11:45:28',NULL,1,0,'user'),(310,105,0,0,'Updated','2021-03-21 17:45:34',NULL,1,0,'edit'),(311,105,0,0,'Updated','2021-03-21 17:46:45',NULL,1,0,'edit'),(312,104,0,0,'Updated','2021-04-25 09:41:33',NULL,1,0,'edit'),(313,104,0,0,'Updated via Family','2021-04-25 09:45:44',NULL,1,0,'edit'),(314,105,0,0,'Updated via Family','2021-04-25 09:45:44',NULL,1,0,'edit'),(315,106,0,0,'Updated via Family','2021-04-25 09:45:44',NULL,1,0,'edit'),(316,107,0,0,'Updated via Family','2021-04-25 09:45:44',NULL,1,0,'edit'),(317,0,21,0,'Updated','2021-04-25 09:45:44',NULL,1,0,'edit'),(318,95,0,0,'system user login reset','2021-04-25 10:04:41',NULL,1,0,'user'),(319,95,0,0,'system user password reset','2021-04-25 10:04:43',NULL,1,0,'user'),(320,0,2,0,'Verification email sent','2021-04-25 10:04:53',NULL,3,0,'verify-link'),(321,76,0,0,'system user password changed by admin','2021-04-25 10:10:53',NULL,1,0,'user'),(322,0,3,0,'Updated','2017-04-15 17:21:40',NULL,1,0,'edit'),(323,0,3,0,'Deactivated the Family','2021-04-25 10:21:17',NULL,3,0,'edit'),(324,0,3,0,'Updated','2017-04-15 17:21:40',NULL,1,0,'edit'),(325,0,3,0,'Activated the Family','2021-04-25 10:21:56',NULL,3,0,'edit'),(326,108,0,0,'Created via Family','2021-04-25 10:24:12',NULL,3,0,'create'),(327,109,0,0,'Created via Family','2021-04-25 10:24:12',NULL,3,0,'create'),(328,110,0,0,'Created via Family','2021-04-25 10:24:12',NULL,3,0,'create'),(329,111,0,0,'Created via Family','2021-04-25 10:24:12',NULL,3,0,'create'),(330,112,0,0,'Created via Family','2021-04-25 10:24:12',NULL,3,0,'create'),(331,113,0,0,'Created via Family','2021-04-25 10:24:12',NULL,3,0,'create'),(332,0,22,0,'Created','2021-04-25 10:24:12',NULL,3,0,'create'),(333,114,0,0,'Created','2021-04-25 10:32:31',NULL,3,0,'create'),(334,3,0,0,'system user changed password','2021-04-25 10:36:28',NULL,3,0,'user'),(335,3,0,0,'system user changed password','2021-04-25 10:37:04',NULL,3,0,'user'),(336,95,0,0,'system user login reset','2021-04-25 10:39:46',NULL,1,0,'user'),(337,95,0,0,'system user password reset','2021-04-25 10:39:49',NULL,1,0,'user'),(338,0,2,0,'Verification email sent','2021-04-25 10:39:55',NULL,3,0,'verify-link'),(339,95,0,0,'system user login reset','2021-04-25 10:41:32',NULL,1,0,'user'),(340,95,0,0,'system user password reset','2021-04-25 10:41:35',NULL,1,0,'user'),(341,0,2,0,'Verification email sent','2021-04-25 10:41:41',NULL,3,0,'verify-link'),(342,76,0,0,'system user password changed by admin','2021-04-25 10:47:42',NULL,1,0,'user'),(343,0,23,0,'Created','2021-04-25 10:50:11',NULL,-1,0,'create'),(344,115,0,0,'Created','2021-04-25 10:50:12',NULL,-1,0,'create'),(345,116,0,0,'Created','2021-04-25 10:50:12',NULL,-1,0,'create'),(346,0,3,0,'Updated','2017-04-15 17:21:40',NULL,1,0,'edit'),(347,0,3,0,'Deactivated the Family','2021-04-25 10:53:35',NULL,3,0,'edit'),(348,117,0,0,'Created via Family','2021-04-25 10:54:55',NULL,3,0,'create'),(349,118,0,0,'Created via Family','2021-04-25 10:54:55',NULL,3,0,'create'),(350,119,0,0,'Created via Family','2021-04-25 10:54:56',NULL,3,0,'create'),(351,120,0,0,'Created via Family','2021-04-25 10:54:56',NULL,3,0,'create'),(352,121,0,0,'Created via Family','2021-04-25 10:54:56',NULL,3,0,'create'),(353,122,0,0,'Created via Family','2021-04-25 10:54:56',NULL,3,0,'create'),(354,0,24,0,'Created','2021-04-25 10:54:55',NULL,3,0,'create'),(355,123,0,0,'Created','2021-04-25 10:56:50',NULL,3,0,'create'),(356,3,0,0,'system user changed password','2021-04-25 10:58:36',NULL,3,0,'user'),(357,3,0,0,'system user changed password','2021-04-25 10:58:53',NULL,3,0,'user'),(358,124,0,0,'Created via Family','2021-04-25 12:35:39',NULL,3,0,'create'),(359,125,0,0,'Created via Family','2021-04-25 12:35:39',NULL,3,0,'create'),(360,126,0,0,'Created via Family','2021-04-25 12:35:39',NULL,3,0,'create'),(361,127,0,0,'Created via Family','2021-04-25 12:35:39',NULL,3,0,'create'),(362,128,0,0,'Created via Family','2021-04-25 12:35:39',NULL,3,0,'create'),(363,129,0,0,'Created via Family','2021-04-25 12:35:39',NULL,3,0,'create'),(364,0,25,0,'Created','2021-04-25 12:35:39',NULL,3,0,'create'),(365,0,6,0,'Updated','2016-11-19 15:52:44',NULL,1,0,'edit'),(366,0,6,0,'Deactivated the Family','2021-04-25 12:37:28',NULL,1,0,'edit'),(367,0,6,0,'Updated','2016-11-19 15:52:44',NULL,1,0,'edit'),(368,0,6,0,'Activated the Family','2021-04-25 12:38:17',NULL,1,0,'edit'),(369,130,0,0,'Created via Family','2021-04-25 12:41:04',NULL,3,0,'create'),(370,131,0,0,'Created via Family','2021-04-25 12:41:04',NULL,3,0,'create'),(371,132,0,0,'Created via Family','2021-04-25 12:41:04',NULL,3,0,'create'),(372,133,0,0,'Created via Family','2021-04-25 12:41:04',NULL,3,0,'create'),(373,134,0,0,'Created via Family','2021-04-25 12:41:04',NULL,3,0,'create'),(374,135,0,0,'Created via Family','2021-04-25 12:41:04',NULL,3,0,'create'),(375,0,26,0,'Created','2021-04-25 12:41:04',NULL,3,0,'create'),(376,0,3,0,'Updated','2017-04-15 17:21:40',NULL,1,0,'edit'),(377,0,3,0,'Activated the Family','2021-04-25 12:43:11',NULL,3,0,'edit'),(378,0,3,0,'Updated','2017-04-15 17:21:40',NULL,1,0,'edit'),(379,0,3,0,'Deactivated the Family','2021-04-25 12:44:14',NULL,3,0,'edit'),(380,0,3,0,'Updated','2017-04-15 17:21:40',NULL,1,0,'edit'),(381,0,3,0,'Activated the Family','2021-04-25 12:44:28',NULL,3,0,'edit'),(382,136,0,0,'Created via Family','2021-04-25 12:45:41',NULL,3,0,'create'),(383,137,0,0,'Created via Family','2021-04-25 12:45:41',NULL,3,0,'create'),(384,138,0,0,'Created via Family','2021-04-25 12:45:41',NULL,3,0,'create'),(385,139,0,0,'Created via Family','2021-04-25 12:45:41',NULL,3,0,'create'),(386,140,0,0,'Created via Family','2021-04-25 12:45:41',NULL,3,0,'create'),(387,141,0,0,'Created via Family','2021-04-25 12:45:41',NULL,3,0,'create'),(388,0,27,0,'Created','2021-04-25 12:45:41',NULL,3,0,'create'),(389,0,3,0,'Updated','2017-04-15 17:21:40',NULL,1,0,'edit'),(390,0,3,0,'Deactivated the Family','2021-04-25 12:46:20',NULL,3,0,'edit'),(391,0,3,0,'Updated','2017-04-15 17:21:40',NULL,1,0,'edit'),(392,0,3,0,'Activated the Family','2021-04-25 12:47:01',NULL,3,0,'edit'),(393,0,3,0,'Updated','2017-04-15 17:21:40',NULL,1,0,'edit'),(394,0,3,0,'Deactivated the Family','2021-04-25 12:47:11',NULL,3,0,'edit'),(395,0,3,0,'Updated','2017-04-15 17:21:40',NULL,1,0,'edit'),(396,0,3,0,'Activated the Family','2021-04-25 12:47:22',NULL,3,0,'edit'),(397,142,0,0,'Created via Family','2021-04-25 12:47:38',NULL,3,0,'create'),(398,143,0,0,'Created via Family','2021-04-25 12:47:38',NULL,3,0,'create'),(399,144,0,0,'Created via Family','2021-04-25 12:47:38',NULL,3,0,'create'),(400,145,0,0,'Created via Family','2021-04-25 12:47:38',NULL,3,0,'create'),(401,146,0,0,'Created via Family','2021-04-25 12:47:38',NULL,3,0,'create'),(402,147,0,0,'Created via Family','2021-04-25 12:47:38',NULL,3,0,'create'),(403,0,28,0,'Created','2021-04-25 12:47:38',NULL,3,0,'create'),(404,0,3,0,'Updated','2017-04-15 17:21:40',NULL,1,0,'edit'),(405,0,3,0,'Deactivated the Family','2021-04-25 12:48:01',NULL,3,0,'edit'),(406,0,3,0,'Updated','2017-04-15 17:21:40',NULL,1,0,'edit'),(407,0,3,0,'Activated the Family','2021-04-25 12:48:12',NULL,3,0,'edit'),(408,148,0,0,'Created via Family','2021-04-25 12:48:31',NULL,3,0,'create'),(409,149,0,0,'Created via Family','2021-04-25 12:48:31',NULL,3,0,'create'),(410,150,0,0,'Created via Family','2021-04-25 12:48:31',NULL,3,0,'create'),(411,151,0,0,'Created via Family','2021-04-25 12:48:31',NULL,3,0,'create'),(412,152,0,0,'Created via Family','2021-04-25 12:48:31',NULL,3,0,'create'),(413,153,0,0,'Created via Family','2021-04-25 12:48:31',NULL,3,0,'create'),(414,0,29,0,'Created','2021-04-25 12:48:31',NULL,3,0,'create'),(415,95,0,0,'system user login reset','2021-04-25 13:09:08',NULL,1,0,'user'),(416,95,0,0,'system user password reset','2021-04-25 13:09:10',NULL,1,0,'user'),(417,0,2,0,'Verification email sent','2021-04-25 13:09:15',NULL,3,0,'verify-link'),(418,76,0,0,'system user password changed by admin','2021-04-25 13:11:31',NULL,1,0,'user'),(419,0,30,0,'Created','2021-04-25 13:13:24',NULL,-1,0,'create'),(420,154,0,0,'Created','2021-04-25 13:13:24',NULL,-1,0,'create'),(421,155,0,0,'Created','2021-04-25 13:13:24',NULL,-1,0,'create'),(422,0,3,0,'Updated','2017-04-15 17:21:40',NULL,1,0,'edit'),(423,0,3,0,'Deactivated the Family','2021-04-25 13:15:16',NULL,3,0,'edit'),(424,0,3,0,'Updated','2017-04-15 17:21:40',NULL,1,0,'edit'),(425,0,3,0,'Activated the Family','2021-04-25 13:15:29',NULL,3,0,'edit'),(426,156,0,0,'Created via Family','2021-04-25 13:15:57',NULL,3,0,'create'),(427,157,0,0,'Created via Family','2021-04-25 13:15:57',NULL,3,0,'create'),(428,158,0,0,'Created via Family','2021-04-25 13:15:57',NULL,3,0,'create'),(429,159,0,0,'Created via Family','2021-04-25 13:15:57',NULL,3,0,'create'),(430,160,0,0,'Created via Family','2021-04-25 13:15:57',NULL,3,0,'create'),(431,161,0,0,'Created via Family','2021-04-25 13:15:57',NULL,3,0,'create'),(432,0,31,0,'Created','2021-04-25 13:15:57',NULL,3,0,'create'),(433,162,0,0,'Created','2021-04-25 13:17:35',NULL,3,0,'create'),(434,3,0,0,'system user changed password','2021-04-25 13:18:40',NULL,3,0,'user'),(435,3,0,0,'system user changed password','2021-04-25 13:18:50',NULL,3,0,'user'),(436,95,0,0,'system user login reset','2021-04-25 16:15:58',NULL,1,0,'user'),(437,95,0,0,'system user password reset','2021-04-25 16:16:00',NULL,1,0,'user'),(438,0,2,0,'Verification email sent','2021-04-25 16:16:06',NULL,3,0,'verify-link'),(439,76,0,0,'system user password changed by admin','2021-04-25 16:18:39',NULL,1,0,'user'),(440,0,3,0,'Updated','2017-04-15 17:21:40',NULL,1,0,'edit'),(441,0,3,0,'Deactivated the Family','2021-04-25 16:23:48',NULL,3,0,'edit'),(442,0,3,0,'Updated','2017-04-15 17:21:40',NULL,1,0,'edit'),(443,0,3,0,'Activated the Family','2021-04-25 16:24:03',NULL,3,0,'edit'),(444,163,0,0,'Created via Family','2021-04-25 16:24:32',NULL,3,0,'create'),(445,164,0,0,'Created via Family','2021-04-25 16:24:32',NULL,3,0,'create'),(446,165,0,0,'Created via Family','2021-04-25 16:24:32',NULL,3,0,'create'),(447,166,0,0,'Created via Family','2021-04-25 16:24:32',NULL,3,0,'create'),(448,167,0,0,'Created via Family','2021-04-25 16:24:32',NULL,3,0,'create'),(449,168,0,0,'Created via Family','2021-04-25 16:24:32',NULL,3,0,'create'),(450,0,32,0,'Created','2021-04-25 16:24:31',NULL,3,0,'create'),(451,169,0,0,'Created','2021-04-25 16:26:33',NULL,3,0,'create'),(452,3,0,0,'system user changed password','2021-04-25 16:27:52',NULL,3,0,'user'),(453,3,0,0,'system user changed password','2021-04-25 16:28:03',NULL,3,0,'user'),(454,95,0,0,'system user login reset','2021-04-25 16:39:21',NULL,1,0,'user'),(455,95,0,0,'system user password reset','2021-04-25 16:39:23',NULL,1,0,'user'),(456,0,2,0,'Verification email sent','2021-04-25 16:39:28',NULL,3,0,'verify-link'),(457,76,0,0,'system user password changed by admin','2021-04-25 16:42:01',NULL,1,0,'user'),(458,95,0,0,'system user login reset','2021-04-25 16:46:55',NULL,1,0,'user'),(459,95,0,0,'system user password reset','2021-04-25 16:46:56',NULL,1,0,'user'),(460,0,2,0,'Verification email sent','2021-04-25 16:47:02',NULL,3,0,'verify-link'),(461,95,0,0,'system user login reset','2021-04-25 16:48:44',NULL,1,0,'user'),(462,95,0,0,'system user password reset','2021-04-25 16:48:47',NULL,1,0,'user'),(463,0,2,0,'Verification email sent','2021-04-25 16:48:54',NULL,3,0,'verify-link'),(464,76,0,0,'system user password changed by admin','2021-04-25 16:53:24',NULL,1,0,'user'),(465,0,33,0,'Created','2021-04-25 16:55:43',NULL,-1,0,'create'),(466,170,0,0,'Created','2021-04-25 16:55:43',NULL,-1,0,'create'),(467,171,0,0,'Created','2021-04-25 16:55:43',NULL,-1,0,'create'),(468,0,3,0,'Updated','2017-04-15 17:21:40',NULL,1,0,'edit'),(469,0,3,0,'Deactivated the Family','2021-04-25 16:57:34',NULL,3,0,'edit'),(470,0,3,0,'Updated','2017-04-15 17:21:40',NULL,1,0,'edit'),(471,0,3,0,'Activated the Family','2021-04-25 16:57:51',NULL,3,0,'edit'),(472,172,0,0,'Created via Family','2021-04-25 16:58:11',NULL,3,0,'create'),(473,173,0,0,'Created via Family','2021-04-25 16:58:11',NULL,3,0,'create'),(474,174,0,0,'Created via Family','2021-04-25 16:58:11',NULL,3,0,'create'),(475,175,0,0,'Created via Family','2021-04-25 16:58:11',NULL,3,0,'create'),(476,176,0,0,'Created via Family','2021-04-25 16:58:11',NULL,3,0,'create'),(477,177,0,0,'Created via Family','2021-04-25 16:58:11',NULL,3,0,'create'),(478,0,34,0,'Created','2021-04-25 16:58:11',NULL,3,0,'create'),(479,178,0,0,'Created','2021-04-25 16:59:38',NULL,3,0,'create'),(480,3,0,0,'system user changed password','2021-04-25 17:00:41',NULL,3,0,'user'),(481,3,0,0,'system user changed password','2021-04-25 17:00:51',NULL,3,0,'user'),(482,95,0,0,'system user login reset','2021-04-25 17:04:32',NULL,1,0,'user'),(483,95,0,0,'system user password reset','2021-04-25 17:04:34',NULL,1,0,'user'),(484,0,2,0,'Verification email sent','2021-04-25 17:04:39',NULL,3,0,'verify-link'),(485,76,0,0,'system user password changed by admin','2021-04-25 17:06:53',NULL,1,0,'user'),(486,95,0,0,'system user login reset','2021-04-25 17:18:54',NULL,1,0,'user'),(487,95,0,0,'system user password reset','2021-04-25 17:18:56',NULL,1,0,'user'),(488,0,2,0,'Verification email sent','2021-04-25 17:19:01',NULL,3,0,'verify-link'),(489,76,0,0,'system user password changed by admin','2021-04-25 17:21:52',NULL,1,0,'user'),(490,0,35,0,'Created','2021-04-25 17:24:16',NULL,-1,0,'create'),(491,179,0,0,'Created','2021-04-25 17:24:16',NULL,-1,0,'create'),(492,180,0,0,'Created','2021-04-25 17:24:16',NULL,-1,0,'create'),(493,0,3,0,'Updated','2017-04-15 17:21:40',NULL,1,0,'edit'),(494,0,3,0,'Deactivated the Family','2021-04-25 17:28:05',NULL,3,0,'edit'),(495,0,3,0,'Updated','2017-04-15 17:21:40',NULL,1,0,'edit'),(496,0,3,0,'Activated the Family','2021-04-25 17:28:47',NULL,3,0,'edit'),(497,181,0,0,'Created via Family','2021-04-25 17:29:15',NULL,3,0,'create'),(498,182,0,0,'Created via Family','2021-04-25 17:29:15',NULL,3,0,'create'),(499,183,0,0,'Created via Family','2021-04-25 17:29:15',NULL,3,0,'create'),(500,184,0,0,'Created via Family','2021-04-25 17:29:15',NULL,3,0,'create'),(501,185,0,0,'Created via Family','2021-04-25 17:29:15',NULL,3,0,'create'),(502,186,0,0,'Created via Family','2021-04-25 17:29:15',NULL,3,0,'create'),(503,0,36,0,'Created','2021-04-25 17:29:15',NULL,3,0,'create'),(504,187,0,0,'Created','2021-04-25 17:30:35',NULL,3,0,'create'),(505,3,0,0,'system user changed password','2021-04-25 17:31:49',NULL,3,0,'user'),(506,3,0,0,'system user changed password','2021-04-25 17:32:01',NULL,3,0,'user'),(507,95,0,0,'system user login reset','2021-04-25 17:34:18',NULL,1,0,'user'),(508,95,0,0,'system user password reset','2021-04-25 17:34:21',NULL,1,0,'user'),(509,0,2,0,'Verification email sent','2021-04-25 17:34:27',NULL,3,0,'verify-link'),(510,76,0,0,'system user password changed by admin','2021-04-25 17:36:33',NULL,1,0,'user'),(511,0,37,0,'Created','2021-04-25 17:37:18',NULL,-1,0,'create'),(512,188,0,0,'Created','2021-04-25 17:37:19',NULL,-1,0,'create'),(513,189,0,0,'Created','2021-04-25 17:37:19',NULL,-1,0,'create'),(514,0,3,0,'Updated','2017-04-15 17:21:40',NULL,1,0,'edit'),(515,0,3,0,'Deactivated the Family','2021-04-25 17:38:50',NULL,3,0,'edit'),(516,0,3,0,'Updated','2017-04-15 17:21:40',NULL,1,0,'edit'),(517,0,3,0,'Activated the Family','2021-04-25 17:39:02',NULL,3,0,'edit'),(518,190,0,0,'Created via Family','2021-04-25 17:39:21',NULL,3,0,'create'),(519,191,0,0,'Created via Family','2021-04-25 17:39:21',NULL,3,0,'create'),(520,192,0,0,'Created via Family','2021-04-25 17:39:21',NULL,3,0,'create'),(521,193,0,0,'Created via Family','2021-04-25 17:39:21',NULL,3,0,'create'),(522,194,0,0,'Created via Family','2021-04-25 17:39:21',NULL,3,0,'create'),(523,195,0,0,'Created via Family','2021-04-25 17:39:21',NULL,3,0,'create'),(524,0,38,0,'Created','2021-04-25 17:39:21',NULL,3,0,'create'),(525,196,0,0,'Created','2021-04-25 17:40:34',NULL,3,0,'create'),(526,3,0,0,'system user changed password','2021-04-25 17:41:28',NULL,3,0,'user'),(527,3,0,0,'system user changed password','2021-04-25 17:41:37',NULL,3,0,'user'),(528,95,0,0,'system user login reset','2021-04-25 20:00:09',NULL,1,0,'user'),(529,95,0,0,'system user password reset','2021-04-25 20:00:11',NULL,1,0,'user'),(530,0,2,0,'Verification email sent','2021-04-25 20:00:18',NULL,3,0,'verify-link'),(531,76,0,0,'system user password changed by admin','2021-04-25 20:03:06',NULL,1,0,'user'),(532,0,39,0,'Created','2021-04-25 20:05:48',NULL,-1,0,'create'),(533,197,0,0,'Created','2021-04-25 20:05:48',NULL,-1,0,'create'),(534,198,0,0,'Created','2021-04-25 20:05:48',NULL,-1,0,'create'),(535,0,3,0,'Updated','2017-04-15 17:21:40',NULL,1,0,'edit'),(536,0,3,0,'Deactivated the Family','2021-04-25 20:07:22',NULL,3,0,'edit'),(537,0,3,0,'Updated','2017-04-15 17:21:40',NULL,1,0,'edit'),(538,0,3,0,'Activated the Family','2021-04-25 20:07:35',NULL,3,0,'edit'),(539,199,0,0,'Created via Family','2021-04-25 20:07:53',NULL,3,0,'create'),(540,200,0,0,'Created via Family','2021-04-25 20:07:53',NULL,3,0,'create'),(541,201,0,0,'Created via Family','2021-04-25 20:07:53',NULL,3,0,'create'),(542,202,0,0,'Created via Family','2021-04-25 20:07:53',NULL,3,0,'create'),(543,203,0,0,'Created via Family','2021-04-25 20:07:53',NULL,3,0,'create'),(544,204,0,0,'Created via Family','2021-04-25 20:07:53',NULL,3,0,'create'),(545,0,40,0,'Created','2021-04-25 20:07:53',NULL,3,0,'create'),(546,205,0,0,'Created','2021-04-25 20:09:02',NULL,3,0,'create'),(547,3,0,0,'system user changed password','2021-04-25 20:09:55',NULL,3,0,'user'),(548,3,0,0,'system user changed password','2021-04-25 20:10:04',NULL,3,0,'user'),(549,95,0,0,'system user login reset','2021-04-25 21:32:18',NULL,1,0,'user'),(550,95,0,0,'system user password reset','2021-04-25 21:32:21',NULL,1,0,'user'),(551,0,2,0,'Verification email sent','2021-04-25 21:32:26',NULL,3,0,'verify-link'),(552,76,0,0,'system user password changed by admin','2021-04-25 21:35:47',NULL,1,0,'user'),(553,19,0,0,'Updated','2021-04-25 21:36:05',NULL,1,0,'edit'),(554,18,0,0,'Updated via Family','2021-04-25 21:36:43',NULL,1,0,'edit'),(555,19,0,0,'Updated via Family','2021-04-25 21:36:43',NULL,1,0,'edit'),(556,21,0,0,'Updated via Family','2021-04-25 21:36:43',NULL,1,0,'edit'),(557,22,0,0,'Updated via Family','2021-04-25 21:36:43',NULL,1,0,'edit'),(558,23,0,0,'Updated via Family','2021-04-25 21:36:43',NULL,1,0,'edit'),(559,24,0,0,'Updated via Family','2021-04-25 21:36:43',NULL,1,0,'edit'),(560,25,0,0,'Updated via Family','2021-04-25 21:36:43',NULL,1,0,'edit'),(561,20,0,0,'Updated via Family','2021-04-25 21:36:43',NULL,1,0,'edit'),(562,0,4,0,'Updated','2021-04-25 21:36:43',NULL,1,0,'edit'),(563,0,3,0,'Updated','2017-04-15 17:21:40',NULL,1,0,'edit'),(564,0,3,0,'Deactivated the Family','2021-04-25 21:40:39',NULL,3,0,'edit'),(565,0,3,0,'Updated','2017-04-15 17:21:40',NULL,1,0,'edit'),(566,0,3,0,'Activated the Family','2021-04-25 21:40:56',NULL,3,0,'edit'),(567,206,0,0,'Created via Family','2021-04-25 21:41:31',NULL,3,0,'create'),(568,207,0,0,'Created via Family','2021-04-25 21:41:31',NULL,3,0,'create'),(569,208,0,0,'Created via Family','2021-04-25 21:41:31',NULL,3,0,'create'),(570,209,0,0,'Created via Family','2021-04-25 21:41:31',NULL,3,0,'create'),(571,210,0,0,'Created via Family','2021-04-25 21:41:31',NULL,3,0,'create'),(572,211,0,0,'Created via Family','2021-04-25 21:41:31',NULL,3,0,'create'),(573,0,41,0,'Created','2021-04-25 21:41:31',NULL,3,0,'create'),(574,212,0,0,'Created','2021-04-25 21:43:48',NULL,3,0,'create'),(575,3,0,0,'system user changed password','2021-04-25 21:45:00',NULL,3,0,'user'),(576,3,0,0,'system user changed password','2021-04-25 21:45:10',NULL,3,0,'user'),(577,95,0,0,'system user login reset','2021-04-25 21:48:47',NULL,1,0,'user'),(578,95,0,0,'system user password reset','2021-04-25 21:48:49',NULL,1,0,'user'),(579,0,2,0,'Verification email sent','2021-04-25 21:48:55',NULL,3,0,'verify-link'),(580,76,0,0,'system user password changed by admin','2021-04-25 21:51:42',NULL,1,0,'user'),(581,0,42,0,'Created','2021-04-25 21:52:35',NULL,-1,0,'create'),(582,213,0,0,'Created','2021-04-25 21:52:35',NULL,-1,0,'create'),(583,214,0,0,'Created','2021-04-25 21:52:35',NULL,-1,0,'create'),(584,0,3,0,'Updated','2017-04-15 17:21:40',NULL,1,0,'edit'),(585,0,3,0,'Deactivated the Family','2021-04-25 21:54:26',NULL,3,0,'edit'),(586,0,3,0,'Updated','2017-04-15 17:21:40',NULL,1,0,'edit'),(587,0,3,0,'Activated the Family','2021-04-25 21:54:47',NULL,3,0,'edit'),(588,215,0,0,'Created via Family','2021-04-25 21:55:18',NULL,3,0,'create'),(589,216,0,0,'Created via Family','2021-04-25 21:55:18',NULL,3,0,'create'),(590,217,0,0,'Created via Family','2021-04-25 21:55:18',NULL,3,0,'create'),(591,218,0,0,'Created via Family','2021-04-25 21:55:18',NULL,3,0,'create'),(592,219,0,0,'Created via Family','2021-04-25 21:55:18',NULL,3,0,'create'),(593,220,0,0,'Created via Family','2021-04-25 21:55:18',NULL,3,0,'create'),(594,0,43,0,'Created','2021-04-25 21:55:18',NULL,3,0,'create'),(595,221,0,0,'Created','2021-04-25 21:57:16',NULL,3,0,'create'),(596,3,0,0,'system user changed password','2021-04-25 21:58:46',NULL,3,0,'user'),(597,3,0,0,'system user changed password','2021-04-25 21:58:58',NULL,3,0,'user'),(598,95,0,0,'system user login reset','2021-04-25 22:39:43',NULL,1,0,'user'),(599,95,0,0,'system user password reset','2021-04-25 22:39:46',NULL,1,0,'user'),(600,0,2,0,'Verification email sent','2021-04-25 22:39:53',NULL,3,0,'verify-link'),(601,76,0,0,'system user password changed by admin','2021-04-25 22:42:54',NULL,1,0,'user'),(602,0,3,0,'Updated','2017-04-15 17:21:40',NULL,1,0,'edit'),(603,0,3,0,'Deactivated the Family','2021-04-25 22:48:03',NULL,3,0,'edit'),(604,0,3,0,'Updated','2017-04-15 17:21:40',NULL,1,0,'edit'),(605,0,3,0,'Activated the Family','2021-04-25 22:48:22',NULL,3,0,'edit'),(606,222,0,0,'Created via Family','2021-04-25 22:48:59',NULL,3,0,'create'),(607,223,0,0,'Created via Family','2021-04-25 22:48:59',NULL,3,0,'create'),(608,224,0,0,'Created via Family','2021-04-25 22:48:59',NULL,3,0,'create'),(609,225,0,0,'Created via Family','2021-04-25 22:48:59',NULL,3,0,'create'),(610,226,0,0,'Created via Family','2021-04-25 22:48:59',NULL,3,0,'create'),(611,227,0,0,'Created via Family','2021-04-25 22:48:59',NULL,3,0,'create'),(612,0,44,0,'Created','2021-04-25 22:48:59',NULL,3,0,'create'),(613,228,0,0,'Created','2021-04-25 22:50:53',NULL,3,0,'create'),(614,3,0,0,'system user changed password','2021-04-25 22:52:22',NULL,3,0,'user'),(615,3,0,0,'system user changed password','2021-04-25 22:52:34',NULL,3,0,'user'),(616,0,13,0,'Updated','2016-11-19 15:49:36',NULL,1,0,'edit'),(617,0,13,0,'Deactivated the Family','2022-12-03 14:38:02',NULL,1,0,'edit'),(618,0,13,0,'Updated','2016-11-19 15:49:36',NULL,1,0,'edit'),(619,0,13,0,'Activated the Family','2022-12-03 14:38:26',NULL,1,0,'edit'),(620,95,0,0,'system user deleted','2022-12-03 17:05:27',NULL,1,0,'user'),(621,76,0,0,'system user deleted','2022-12-03 17:06:34',NULL,1,0,'user'),(622,3,0,0,'system user deleted','2022-12-03 17:07:19',NULL,1,0,'user'),(623,59,0,0,'system user created','2022-12-03 17:09:58',NULL,1,0,'user'),(624,59,0,0,'system user deleted','2022-12-03 17:10:05',NULL,1,0,'user'),(625,59,0,0,'system user created','2022-12-03 17:12:15',NULL,1,0,'user'),(626,59,0,0,'system user deleted','2022-12-03 17:12:22',NULL,1,0,'user'),(627,3,0,0,'system user created','2022-12-29 18:40:16',NULL,1,0,'user'),(628,3,0,0,NULL,'2022-12-29 18:40:27',NULL,1,0,'user'),(629,3,0,0,'system user password changed by admin','2022-12-29 18:43:18',NULL,1,0,'user'),(630,95,0,0,'system user created','2022-12-29 21:01:30',NULL,1,0,'user'),(631,95,0,0,'system user login reset','2022-12-29 21:01:40',NULL,1,0,'user'),(632,95,0,0,'system user password reset','2022-12-29 21:01:42',NULL,1,0,'user');
-/*!40000 ALTER TABLE `note_nte` ENABLE KEYS */;
-UNLOCK TABLES;
-COMMIT;
-
--- Dumped table `note_nte` with 623 row(s)
---
-
---
--- Table structure for table `result_res`
---
-
-DROP TABLE IF EXISTS `result_res`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `result_res` (
-  `res_ID` mediumint(9) NOT NULL AUTO_INCREMENT,
-  `res_echotype1` text COLLATE utf8_unicode_ci NOT NULL,
-  `res_echotype2` text COLLATE utf8_unicode_ci NOT NULL,
-  `res_echotype3` text COLLATE utf8_unicode_ci NOT NULL,
-  `res_authorization` text COLLATE utf8_unicode_ci NOT NULL,
-  `res_order_number` text COLLATE utf8_unicode_ci NOT NULL,
-  `res_reference` text COLLATE utf8_unicode_ci NOT NULL,
-  `res_status` text COLLATE utf8_unicode_ci NOT NULL,
-  `res_avs_result` text COLLATE utf8_unicode_ci NOT NULL,
-  `res_security_result` text COLLATE utf8_unicode_ci NOT NULL,
-  `res_mac` text COLLATE utf8_unicode_ci NOT NULL,
-  `res_decline_code` text COLLATE utf8_unicode_ci NOT NULL,
-  `res_tran_date` text COLLATE utf8_unicode_ci NOT NULL,
-  `res_merchant_name` text COLLATE utf8_unicode_ci NOT NULL,
-  `res_version` text COLLATE utf8_unicode_ci NOT NULL,
-  `res_EchoServer` text COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`res_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `result_res`
---
-
-LOCK TABLES `result_res` WRITE;
-/*!40000 ALTER TABLE `result_res` DISABLE KEYS */;
-SET autocommit=0;
-/*!40000 ALTER TABLE `result_res` ENABLE KEYS */;
-UNLOCK TABLES;
-COMMIT;
-
--- Dumped table `result_res` with 0 row(s)
---
-
---
--- Table structure for table `user_usr`
---
-
-DROP TABLE IF EXISTS `user_usr`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `user_usr` (
-  `usr_per_ID` mediumint(9) unsigned NOT NULL DEFAULT 0,
-  `usr_Password` varchar(500) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `usr_NeedPasswordChange` tinyint(3) unsigned NOT NULL DEFAULT 1,
-  `usr_LastLogin` datetime NOT NULL DEFAULT '2016-01-01 00:00:00',
-  `usr_LoginCount` smallint(5) unsigned NOT NULL DEFAULT 0,
-  `usr_FailedLogins` tinyint(3) unsigned NOT NULL DEFAULT 0,
-  `usr_AddRecords` tinyint(3) unsigned NOT NULL DEFAULT 0,
-  `usr_EditRecords` tinyint(3) unsigned NOT NULL DEFAULT 0,
-  `usr_DeleteRecords` tinyint(3) unsigned NOT NULL DEFAULT 0,
-  `usr_MenuOptions` tinyint(3) unsigned NOT NULL DEFAULT 0,
-  `usr_ManageGroups` tinyint(3) unsigned NOT NULL DEFAULT 0,
-  `usr_Finance` tinyint(3) unsigned NOT NULL DEFAULT 0,
-  `usr_Notes` tinyint(3) unsigned NOT NULL DEFAULT 0,
-  `usr_Admin` tinyint(3) unsigned NOT NULL DEFAULT 0,
-  `usr_SearchLimit` tinyint(4) DEFAULT 10,
-  `usr_Style` varchar(50) COLLATE utf8_unicode_ci DEFAULT 'Style.css',
-  `usr_showPledges` tinyint(1) NOT NULL DEFAULT 0,
-  `usr_showPayments` tinyint(1) NOT NULL DEFAULT 0,
-  `usr_showSince` date NOT NULL DEFAULT '2016-01-01',
-  `usr_defaultFY` mediumint(9) NOT NULL DEFAULT 10,
-  `usr_currentDeposit` mediumint(9) NOT NULL DEFAULT 0,
-  `usr_UserName` varchar(32) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `usr_apiKey` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `usr_EditSelf` tinyint(3) unsigned NOT NULL DEFAULT 0,
-  `usr_CalStart` date DEFAULT NULL,
-  `usr_CalEnd` date DEFAULT NULL,
-  `usr_CalNoSchool1` date DEFAULT NULL,
-  `usr_CalNoSchool2` date DEFAULT NULL,
-  `usr_CalNoSchool3` date DEFAULT NULL,
-  `usr_CalNoSchool4` date DEFAULT NULL,
-  `usr_CalNoSchool5` date DEFAULT NULL,
-  `usr_CalNoSchool6` date DEFAULT NULL,
-  `usr_CalNoSchool7` date DEFAULT NULL,
-  `usr_CalNoSchool8` date DEFAULT NULL,
-  `usr_SearchFamily` tinyint(3) DEFAULT NULL,
-  `usr_Canvasser` tinyint(3) NOT NULL DEFAULT 0,
-  `usr_TwoFactorAuthSecret` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `usr_TwoFactorAuthLastKeyTimestamp` int(11) DEFAULT NULL,
-  `usr_TwoFactorAuthRecoveryCodes` text COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`usr_per_ID`),
-  UNIQUE KEY `usr_UserName` (`usr_UserName`),
-  UNIQUE KEY `usr_apiKey_unique` (`usr_apiKey`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `user_usr`
---
-
-LOCK TABLES `user_usr` WRITE;
-/*!40000 ALTER TABLE `user_usr` DISABLE KEYS */;
-SET autocommit=0;
-INSERT INTO `user_usr` VALUES (1,'4bdf3fba58c956fc3991a1fde84929223f968e2853de596e49ae80a91499609b',0,'2023-05-06 17:31:33',359,0,0,0,0,0,0,0,0,1,10,'skin-red',1,1,'2016-01-01',23,5,'Admin','ajGwpy8Pdai22XDUpqjC5Ob04v0eG7EGgb4vz2bD2juT8YDmfM',0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,NULL,NULL,NULL),(3,'6d6abba93a4ea780f575e39b2ef6281357dd4e0b1a74ff3f459ee52fbb6614d8',0,'2022-12-29 18:40:16',0,0,1,1,1,1,1,1,1,0,10,'skin-yellow-light',0,0,'2016-01-01',26,0,'tony.wade@example.com','JZJApQ9XOnF7nvupWZlTWBRrqMtHE9eNcWBTUzEWGqL4Sdqp6C',1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL),(95,'ed7162b5a395e9ba3f9012eda6e9d2150d5ab76cdb082dc4a1422b4f2da2d102',1,'2022-12-29 21:01:30',0,0,0,0,0,0,0,0,0,0,10,'skin-blue',0,0,'2016-01-01',26,0,'judith.matthews@example.com',NULL,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL);
-/*!40000 ALTER TABLE `user_usr` ENABLE KEYS */;
-UNLOCK TABLES;
-COMMIT;
-
--- Dumped table `user_usr` with 3 row(s)
---
-
---
--- Table structure for table `donationfund_fun`
---
-
-DROP TABLE IF EXISTS `donationfund_fun`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `donationfund_fun` (
-  `fun_ID` tinyint(3) NOT NULL AUTO_INCREMENT,
-  `fun_Active` enum('true','false') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'true',
-  `fun_Name` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `fun_Description` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`fun_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `donationfund_fun`
---
-
-LOCK TABLES `donationfund_fun` WRITE;
-/*!40000 ALTER TABLE `donationfund_fun` DISABLE KEYS */;
-SET autocommit=0;
-INSERT INTO `donationfund_fun` VALUES (1,'true','Pledges','Pledge income for the operating budget'),(2,'true','New Building Fund',''),(3,'true','Music Ministry','');
-/*!40000 ALTER TABLE `donationfund_fun` ENABLE KEYS */;
-UNLOCK TABLES;
-COMMIT;
-
--- Dumped table `donationfund_fun` with 3 row(s)
---
-
---
--- Table structure for table `volunteeropportunity_vol`
---
-
-DROP TABLE IF EXISTS `volunteeropportunity_vol`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `volunteeropportunity_vol` (
-  `vol_ID` int(3) NOT NULL AUTO_INCREMENT,
-  `vol_Order` int(3) NOT NULL DEFAULT 0,
-  `vol_Active` enum('true','false') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'true',
-  `vol_Name` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `vol_Description` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`vol_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `volunteeropportunity_vol`
---
-
-LOCK TABLES `volunteeropportunity_vol` WRITE;
-/*!40000 ALTER TABLE `volunteeropportunity_vol` DISABLE KEYS */;
-SET autocommit=0;
-/*!40000 ALTER TABLE `volunteeropportunity_vol` ENABLE KEYS */;
-UNLOCK TABLES;
-COMMIT;
-
--- Dumped table `volunteeropportunity_vol` with 0 row(s)
---
-
---
--- Table structure for table `propertytype_prt`
---
-
-DROP TABLE IF EXISTS `propertytype_prt`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `propertytype_prt` (
-  `prt_ID` mediumint(9) NOT NULL AUTO_INCREMENT,
-  `prt_Class` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `prt_Name` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `prt_Description` text COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`prt_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `propertytype_prt`
---
-
-LOCK TABLES `propertytype_prt` WRITE;
-/*!40000 ALTER TABLE `propertytype_prt` DISABLE KEYS */;
-SET autocommit=0;
-INSERT INTO `propertytype_prt` VALUES (1,'p','General','General Person Properties'),(2,'f','General','General Family Properties'),(3,'g','General','General Group Properties');
-/*!40000 ALTER TABLE `propertytype_prt` ENABLE KEYS */;
-UNLOCK TABLES;
-COMMIT;
-
--- Dumped table `propertytype_prt` with 3 row(s)
---
-
---
--- Table structure for table `kioskassginment_kasm`
---
-
-DROP TABLE IF EXISTS `kioskassginment_kasm`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `kioskassginment_kasm` (
-  `kasm_ID` mediumint(9) unsigned NOT NULL AUTO_INCREMENT,
-  `kasm_kdevId` mediumint(9) DEFAULT NULL,
-  `kasm_AssignmentType` mediumint(9) DEFAULT NULL,
-  `kasm_EventId` mediumint(9) DEFAULT 0,
-  PRIMARY KEY (`kasm_ID`),
-  UNIQUE KEY `kasm_ID` (`kasm_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `kioskassginment_kasm`
---
-
-LOCK TABLES `kioskassginment_kasm` WRITE;
-/*!40000 ALTER TABLE `kioskassginment_kasm` DISABLE KEYS */;
-SET autocommit=0;
-/*!40000 ALTER TABLE `kioskassginment_kasm` ENABLE KEYS */;
-UNLOCK TABLES;
-COMMIT;
-
--- Dumped table `kioskassginment_kasm` with 0 row(s)
---
-
---
--- Table structure for table `church_location_role`
---
-
-DROP TABLE IF EXISTS `church_location_role`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `church_location_role` (
-  `location_id` int(11) NOT NULL,
-  `role_id` int(11) NOT NULL,
-  `role_order` int(11) NOT NULL,
-  `role_title` int(11) NOT NULL,
-  PRIMARY KEY (`location_id`,`role_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `church_location_role`
---
-
-LOCK TABLES `church_location_role` WRITE;
-/*!40000 ALTER TABLE `church_location_role` DISABLE KEYS */;
-SET autocommit=0;
-/*!40000 ALTER TABLE `church_location_role` ENABLE KEYS */;
-UNLOCK TABLES;
-COMMIT;
-
--- Dumped table `church_location_role` with 0 row(s)
+-- Dumped table `event_audience` with 0 row(s)
 --
 
 --
@@ -764,348 +609,6 @@ COMMIT;
 --
 
 --
--- Table structure for table `family_custom_master`
---
-
-DROP TABLE IF EXISTS `family_custom_master`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `family_custom_master` (
-  `fam_custom_Order` smallint(6) NOT NULL DEFAULT 0,
-  `fam_custom_Field` varchar(5) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `fam_custom_Name` varchar(40) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `fam_custom_Special` mediumint(8) unsigned DEFAULT NULL,
-  `fam_custom_FieldSec` tinyint(4) NOT NULL DEFAULT 1,
-  `type_ID` tinyint(4) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `family_custom_master`
---
-
-LOCK TABLES `family_custom_master` WRITE;
-/*!40000 ALTER TABLE `family_custom_master` DISABLE KEYS */;
-SET autocommit=0;
-INSERT INTO `family_custom_master` VALUES (1,'c1','Sponser',9,1,9),(2,'c2','Emergency Phone',NULL,1,11),(3,'c3','Vacation Season',NULL,1,7),(4,'c4','Family Custom Drop Down List',25,1,12);
-/*!40000 ALTER TABLE `family_custom_master` ENABLE KEYS */;
-UNLOCK TABLES;
-COMMIT;
-
--- Dumped table `family_custom_master` with 4 row(s)
---
-
---
--- Table structure for table `email_recipient_pending_erp`
---
-
-DROP TABLE IF EXISTS `email_recipient_pending_erp`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `email_recipient_pending_erp` (
-  `erp_id` smallint(5) unsigned NOT NULL DEFAULT 0,
-  `erp_usr_id` mediumint(9) unsigned NOT NULL DEFAULT 0,
-  `erp_num_attempt` smallint(5) unsigned NOT NULL DEFAULT 0,
-  `erp_failed_time` datetime DEFAULT NULL,
-  `erp_email_address` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT ''
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `email_recipient_pending_erp`
---
-
-LOCK TABLES `email_recipient_pending_erp` WRITE;
-/*!40000 ALTER TABLE `email_recipient_pending_erp` DISABLE KEYS */;
-SET autocommit=0;
-/*!40000 ALTER TABLE `email_recipient_pending_erp` ENABLE KEYS */;
-UNLOCK TABLES;
-COMMIT;
-
--- Dumped table `email_recipient_pending_erp` with 0 row(s)
---
-
---
--- Table structure for table `person_permission`
---
-
-DROP TABLE IF EXISTS `person_permission`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `person_permission` (
-  `per_id` int(11) NOT NULL,
-  `permission_id` int(11) NOT NULL,
-  PRIMARY KEY (`per_id`,`permission_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `person_permission`
---
-
-LOCK TABLES `person_permission` WRITE;
-/*!40000 ALTER TABLE `person_permission` DISABLE KEYS */;
-SET autocommit=0;
-/*!40000 ALTER TABLE `person_permission` ENABLE KEYS */;
-UNLOCK TABLES;
-COMMIT;
-
--- Dumped table `person_permission` with 0 row(s)
---
-
---
--- Table structure for table `fundraiser_fr`
---
-
-DROP TABLE IF EXISTS `fundraiser_fr`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `fundraiser_fr` (
-  `fr_ID` mediumint(9) unsigned NOT NULL AUTO_INCREMENT,
-  `fr_date` date DEFAULT NULL,
-  `fr_title` varchar(128) COLLATE utf8_unicode_ci NOT NULL,
-  `fr_description` text COLLATE utf8_unicode_ci DEFAULT NULL,
-  `fr_EnteredBy` smallint(5) unsigned NOT NULL DEFAULT 0,
-  `fr_EnteredDate` date NOT NULL,
-  PRIMARY KEY (`fr_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `fundraiser_fr`
---
-
-LOCK TABLES `fundraiser_fr` WRITE;
-/*!40000 ALTER TABLE `fundraiser_fr` DISABLE KEYS */;
-SET autocommit=0;
-INSERT INTO `fundraiser_fr` VALUES (1,'2016-11-19','zczxc','zxczxczxc',1,'2016-11-19');
-/*!40000 ALTER TABLE `fundraiser_fr` ENABLE KEYS */;
-UNLOCK TABLES;
-COMMIT;
-
--- Dumped table `fundraiser_fr` with 1 row(s)
---
-
---
--- Table structure for table `permissions`
---
-
-DROP TABLE IF EXISTS `permissions`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `permissions` (
-  `permission_id` int(11) NOT NULL AUTO_INCREMENT,
-  `permission_name` varchar(50) NOT NULL,
-  `permission_desc` varchar(250) DEFAULT NULL,
-  PRIMARY KEY (`permission_id`),
-  UNIQUE KEY `permission_name` (`permission_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `permissions`
---
-
-LOCK TABLES `permissions` WRITE;
-/*!40000 ALTER TABLE `permissions` DISABLE KEYS */;
-SET autocommit=0;
-INSERT INTO `permissions` VALUES (1,'addPeople','Add People'),(3,'updatePeople','Update People'),(4,'deletePeopleRecords','Delete People Records'),(5,'curdProperties','Manage Properties '),(6,'crudClassifications','Manage Classifications'),(7,'crudGroups','Manage Groups'),(8,'crudRoles','Manage Roles'),(9,'crudDonations','Manage Donations'),(10,'curdFinance','Manage Finance'),(11,'curdNotes','Manage Notes'),(12,'canvasser','Canvasser volunteer'),(13,'editSelf','Edit own family only'),(14,'emailMailto','Allow to see Mailto Links'),(15,'createDirectory','Create Directories'),(16,'exportCSV','Export CSV files'),(17,'usAddressVerification','Use IST Address Verification'),(18,'crudEvent','Manage Events');
-/*!40000 ALTER TABLE `permissions` ENABLE KEYS */;
-UNLOCK TABLES;
-COMMIT;
-
--- Dumped table `permissions` with 17 row(s)
---
-
---
--- Table structure for table `property_pro`
---
-
-DROP TABLE IF EXISTS `property_pro`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `property_pro` (
-  `pro_ID` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
-  `pro_Class` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `pro_prt_ID` mediumint(8) unsigned NOT NULL DEFAULT 0,
-  `pro_Name` varchar(200) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
-  `pro_Description` text COLLATE utf8_unicode_ci NOT NULL,
-  `pro_Prompt` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`pro_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `property_pro`
---
-
-LOCK TABLES `property_pro` WRITE;
-/*!40000 ALTER TABLE `property_pro` DISABLE KEYS */;
-SET autocommit=0;
-INSERT INTO `property_pro` VALUES (1,'p',1,'Disabled','has a disability.','What is the nature of the disability?'),(2,'f',2,'Single Parent','is a single-parent household.',''),(3,'g',3,'Youth','is youth-oriented.',''),(4,'g',3,'Scouts','',''),(5,'f',2,'Test','Who','What do you want'),(6,'p',1,'Test','Who','What do you want'),(7,'f',2,'Test','Who','What do you want'),(8,'p',1,'Test','Who','What do you want'),(9,'f',2,'Test','Who','What do you want'),(10,'p',1,'Test','Who','What do you want'),(11,'f',2,'Test','Who','What do you want'),(12,'p',1,'Test','Who','What do you want'),(13,'f',2,'Test','Who','What do you want'),(14,'p',1,'Test','Who','What do you want'),(15,'f',2,'Test','Who','What do you want'),(16,'p',1,'Test','Who','What do you want'),(17,'f',2,'Test','Who','What do you want'),(18,'p',1,'Test','Who','What do you want'),(19,'f',2,'Test','Who','What do you want'),(20,'p',1,'Test','Who','What do you want'),(21,'f',2,'Test','Who','What do you want'),(22,'p',1,'Test','Who','What do you want'),(23,'f',2,'Test','Who','What do you want'),(24,'p',1,'Test','Who','What do you want'),(25,'f',2,'Test','Who','What do you want'),(26,'p',1,'Test','Who','What do you want'),(27,'f',2,'Test','Who','What do you want'),(28,'p',1,'Test','Who','What do you want'),(29,'f',2,'Test','Who','What do you want'),(30,'p',1,'Test','Who','What do you want');
-/*!40000 ALTER TABLE `property_pro` ENABLE KEYS */;
-UNLOCK TABLES;
-COMMIT;
-
--- Dumped table `property_pro` with 30 row(s)
---
-
---
--- Table structure for table `list_lst`
---
-
-DROP TABLE IF EXISTS `list_lst`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `list_lst` (
-  `lst_ID` mediumint(8) unsigned NOT NULL DEFAULT 0,
-  `lst_OptionID` mediumint(8) unsigned NOT NULL DEFAULT 0,
-  `lst_OptionSequence` tinyint(3) unsigned NOT NULL DEFAULT 0,
-  `lst_OptionName` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT ''
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `list_lst`
---
-
-LOCK TABLES `list_lst` WRITE;
-/*!40000 ALTER TABLE `list_lst` DISABLE KEYS */;
-SET autocommit=0;
-INSERT INTO `list_lst` VALUES (1,1,1,'Member'),(1,2,2,'Regular Attender'),(1,3,3,'Guest'),(1,5,4,'Non-Attender'),(1,4,5,'Non-Attender (staff)'),(2,1,1,'Head of Household'),(2,2,2,'Spouse'),(2,3,3,'Child'),(2,4,4,'Other Relative'),(2,5,5,'Non Relative'),(3,1,1,'Ministry'),(3,2,2,'Team'),(3,3,3,'Bible Study'),(3,4,4,'Sunday School Class'),(4,1,1,'True / False'),(4,2,2,'Date'),(4,3,3,'Text Field (50 char)'),(4,4,4,'Text Field (100 char)'),(4,5,5,'Text Field (Long)'),(4,6,6,'Year'),(4,7,7,'Season'),(4,8,8,'Number'),(4,9,9,'Person from Group'),(4,10,10,'Money'),(4,11,11,'Phone Number'),(4,12,12,'Custom Drop-Down List'),(5,1,1,'bAll'),(5,2,2,'bAdmin'),(5,3,3,'bAddRecords'),(5,4,4,'bEditRecords'),(5,5,5,'bDeleteRecords'),(5,7,7,'bManageGroups'),(5,8,8,'bFinance'),(5,9,9,'bNotes'),(5,11,11,'bCanvasser'),(10,1,1,'Teacher'),(10,2,2,'Student'),(11,1,1,'Member'),(12,1,1,'Teacher'),(12,2,2,'Student'),(13,1,1,'Teacher'),(13,2,2,'Student'),(14,1,1,'Teacher'),(14,2,2,'Student'),(15,1,1,'Teacher'),(15,2,2,'Student'),(16,1,1,'Teacher'),(16,2,2,'Student'),(17,1,1,'Teacher'),(17,2,2,'Student'),(18,1,1,'Teacher'),(18,2,2,'Student'),(19,1,1,'Member'),(20,1,1,'Member'),(21,1,1,'Member'),(3,5,5,'Scouts'),(22,1,1,'Member'),(23,1,1,'Member'),(24,1,1,'Default Option'),(24,2,2,'My Custom Item 1'),(24,3,3,'My Custom Item 2'),(25,1,1,'Default Option'),(26,1,1,'Member'),(27,1,1,'Member'),(28,1,1,'Member'),(29,1,1,'Member'),(30,1,1,'Member'),(31,1,1,'Member'),(32,1,1,'Member'),(33,1,1,'Member'),(34,1,1,'Member'),(35,1,1,'Member'),(36,1,1,'Member'),(37,1,2,'Member'),(37,2,1,'sdfsdf');
-/*!40000 ALTER TABLE `list_lst` ENABLE KEYS */;
-UNLOCK TABLES;
-COMMIT;
-
--- Dumped table `list_lst` with 75 row(s)
---
-
---
--- Table structure for table `canvassdata_can`
---
-
-DROP TABLE IF EXISTS `canvassdata_can`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `canvassdata_can` (
-  `can_ID` mediumint(9) unsigned NOT NULL AUTO_INCREMENT,
-  `can_famID` mediumint(9) NOT NULL DEFAULT 0,
-  `can_Canvasser` mediumint(9) NOT NULL DEFAULT 0,
-  `can_FYID` mediumint(9) DEFAULT NULL,
-  `can_date` date DEFAULT NULL,
-  `can_Positive` text COLLATE utf8_unicode_ci DEFAULT NULL,
-  `can_Critical` text COLLATE utf8_unicode_ci DEFAULT NULL,
-  `can_Insightful` text COLLATE utf8_unicode_ci DEFAULT NULL,
-  `can_Financial` text COLLATE utf8_unicode_ci DEFAULT NULL,
-  `can_Suggestion` text COLLATE utf8_unicode_ci DEFAULT NULL,
-  `can_NotInterested` tinyint(1) NOT NULL DEFAULT 0,
-  `can_WhyNotInterested` text COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`can_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `canvassdata_can`
---
-
-LOCK TABLES `canvassdata_can` WRITE;
-/*!40000 ALTER TABLE `canvassdata_can` DISABLE KEYS */;
-SET autocommit=0;
-INSERT INTO `canvassdata_can` VALUES (1,17,0,23,'2019-09-09','asdsd','asdf','saf','sdfsdf','sdfsdf',1,'sdfsdf');
-/*!40000 ALTER TABLE `canvassdata_can` ENABLE KEYS */;
-UNLOCK TABLES;
-COMMIT;
-
--- Dumped table `canvassdata_can` with 1 row(s)
---
-
---
--- Table structure for table `event_audience`
---
-
-DROP TABLE IF EXISTS `event_audience`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `event_audience` (
-  `event_id` int(11) NOT NULL,
-  `group_id` int(11) NOT NULL,
-  PRIMARY KEY (`event_id`,`group_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `event_audience`
---
-
-LOCK TABLES `event_audience` WRITE;
-/*!40000 ALTER TABLE `event_audience` DISABLE KEYS */;
-SET autocommit=0;
-/*!40000 ALTER TABLE `event_audience` ENABLE KEYS */;
-UNLOCK TABLES;
-COMMIT;
-
--- Dumped table `event_audience` with 0 row(s)
---
-
---
--- Table structure for table `record2property_r2p`
---
-
-DROP TABLE IF EXISTS `record2property_r2p`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `record2property_r2p` (
-  `r2p_pro_ID` mediumint(8) unsigned NOT NULL DEFAULT 0,
-  `r2p_record_ID` mediumint(8) unsigned NOT NULL DEFAULT 0,
-  `r2p_Value` text COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `record2property_r2p`
---
-
-LOCK TABLES `record2property_r2p` WRITE;
-/*!40000 ALTER TABLE `record2property_r2p` DISABLE KEYS */;
-SET autocommit=0;
-INSERT INTO `record2property_r2p` VALUES (4,7,''),(4,8,''),(1,59,'N/A'),(1,114,'N/A'),(1,123,'N/A'),(1,162,'N/A'),(1,169,'N/A'),(1,178,'N/A'),(1,187,'N/A'),(1,196,'N/A'),(1,205,'N/A'),(1,212,'N/A'),(1,221,'N/A'),(1,228,'N/A');
-/*!40000 ALTER TABLE `record2property_r2p` ENABLE KEYS */;
-UNLOCK TABLES;
-COMMIT;
-
--- Dumped table `record2property_r2p` with 14 row(s)
---
-
---
--- Table structure for table `groupprop_23`
---
-
-DROP TABLE IF EXISTS `groupprop_23`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `groupprop_23` (
-  `per_ID` mediumint(8) unsigned NOT NULL DEFAULT 0,
-  `c1` year(4) DEFAULT NULL,
-  PRIMARY KEY (`per_ID`),
-  UNIQUE KEY `per_ID` (`per_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `groupprop_23`
---
-
-LOCK TABLES `groupprop_23` WRITE;
-/*!40000 ALTER TABLE `groupprop_23` DISABLE KEYS */;
-SET autocommit=0;
-/*!40000 ALTER TABLE `groupprop_23` ENABLE KEYS */;
-UNLOCK TABLES;
-COMMIT;
-
--- Dumped table `groupprop_23` with 0 row(s)
---
-
---
 -- Table structure for table `family_custom`
 --
 
@@ -1135,6 +638,38 @@ UNLOCK TABLES;
 COMMIT;
 
 -- Dumped table `family_custom` with 19 row(s)
+--
+
+--
+-- Table structure for table `family_custom_master`
+--
+
+DROP TABLE IF EXISTS `family_custom_master`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `family_custom_master` (
+  `fam_custom_Order` smallint(6) NOT NULL DEFAULT 0,
+  `fam_custom_Field` varchar(5) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `fam_custom_Name` varchar(40) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `fam_custom_Special` mediumint(8) unsigned DEFAULT NULL,
+  `fam_custom_FieldSec` tinyint(4) NOT NULL DEFAULT 1,
+  `type_ID` tinyint(4) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `family_custom_master`
+--
+
+LOCK TABLES `family_custom_master` WRITE;
+/*!40000 ALTER TABLE `family_custom_master` DISABLE KEYS */;
+SET autocommit=0;
+INSERT INTO `family_custom_master` VALUES (1,'c1','Sponser',9,1,9),(2,'c2','Emergency Phone',NULL,1,11),(3,'c3','Vacation Season',NULL,1,7),(4,'c4','Family Custom Drop Down List',25,1,12);
+/*!40000 ALTER TABLE `family_custom_master` ENABLE KEYS */;
+UNLOCK TABLES;
+COMMIT;
+
+-- Dumped table `family_custom_master` with 4 row(s)
 --
 
 --
@@ -1191,144 +726,92 @@ COMMIT;
 --
 
 --
--- Table structure for table `event_attend`
+-- Table structure for table `fundraiser_fr`
 --
 
-DROP TABLE IF EXISTS `event_attend`;
+DROP TABLE IF EXISTS `fundraiser_fr`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `event_attend` (
-  `attend_id` int(11) NOT NULL AUTO_INCREMENT,
-  `event_id` int(11) NOT NULL DEFAULT 0,
-  `person_id` int(11) NOT NULL DEFAULT 0,
-  `checkin_date` datetime DEFAULT NULL,
-  `checkin_id` int(11) DEFAULT NULL,
-  `checkout_date` datetime DEFAULT NULL,
-  `checkout_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`attend_id`),
-  UNIQUE KEY `event_id` (`event_id`,`person_id`)
+CREATE TABLE `fundraiser_fr` (
+  `fr_ID` mediumint(9) unsigned NOT NULL AUTO_INCREMENT,
+  `fr_date` date DEFAULT NULL,
+  `fr_title` varchar(128) COLLATE utf8_unicode_ci NOT NULL,
+  `fr_description` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `fr_EnteredBy` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `fr_EnteredDate` date NOT NULL,
+  PRIMARY KEY (`fr_ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `event_attend`
+-- Dumping data for table `fundraiser_fr`
 --
 
-LOCK TABLES `event_attend` WRITE;
-/*!40000 ALTER TABLE `event_attend` DISABLE KEYS */;
+LOCK TABLES `fundraiser_fr` WRITE;
+/*!40000 ALTER TABLE `fundraiser_fr` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `event_attend` VALUES (1,3,104,'2017-04-15 17:23:46',26,NULL,NULL);
-/*!40000 ALTER TABLE `event_attend` ENABLE KEYS */;
+INSERT INTO `fundraiser_fr` VALUES (1,'2016-11-19','zczxc','zxczxczxc',1,'2016-11-19');
+/*!40000 ALTER TABLE `fundraiser_fr` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
 
--- Dumped table `event_attend` with 1 row(s)
+-- Dumped table `fundraiser_fr` with 1 row(s)
 --
 
 --
--- Table structure for table `roles`
+-- Table structure for table `groupprop_11`
 --
 
-DROP TABLE IF EXISTS `roles`;
+DROP TABLE IF EXISTS `groupprop_11`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `roles` (
-  `role_id` int(11) NOT NULL AUTO_INCREMENT,
-  `role_name` varchar(50) NOT NULL,
-  `role_desc` varchar(250) DEFAULT NULL,
-  PRIMARY KEY (`role_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `roles`
---
-
-LOCK TABLES `roles` WRITE;
-/*!40000 ALTER TABLE `roles` DISABLE KEYS */;
-SET autocommit=0;
-INSERT INTO `roles` VALUES (1,'Welcome Committee',NULL),(2,'Clergy',NULL);
-/*!40000 ALTER TABLE `roles` ENABLE KEYS */;
-UNLOCK TABLES;
-COMMIT;
-
--- Dumped table `roles` with 2 row(s)
---
-
---
--- Table structure for table `queryparameters_qrp`
---
-
-DROP TABLE IF EXISTS `queryparameters_qrp`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `queryparameters_qrp` (
-  `qrp_ID` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
-  `qrp_qry_ID` mediumint(8) unsigned NOT NULL DEFAULT 0,
-  `qrp_Type` tinyint(3) unsigned NOT NULL DEFAULT 0,
-  `qrp_OptionSQL` text COLLATE utf8_unicode_ci DEFAULT NULL,
-  `qrp_Name` varchar(25) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `qrp_Description` text COLLATE utf8_unicode_ci DEFAULT NULL,
-  `qrp_Alias` varchar(25) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `qrp_Default` varchar(25) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `qrp_Required` tinyint(3) unsigned NOT NULL DEFAULT 0,
-  `qrp_InputBoxSize` tinyint(3) unsigned NOT NULL DEFAULT 0,
-  `qrp_Validation` varchar(5) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `qrp_NumericMax` int(11) DEFAULT NULL,
-  `qrp_NumericMin` int(11) DEFAULT NULL,
-  `qrp_AlphaMinLength` int(11) DEFAULT NULL,
-  `qrp_AlphaMaxLength` int(11) DEFAULT NULL,
-  PRIMARY KEY (`qrp_ID`),
-  KEY `qrp_qry_ID` (`qrp_qry_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=202 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `queryparameters_qrp`
---
-
-LOCK TABLES `queryparameters_qrp` WRITE;
-/*!40000 ALTER TABLE `queryparameters_qrp` DISABLE KEYS */;
-SET autocommit=0;
-INSERT INTO `queryparameters_qrp` VALUES (1,4,0,NULL,'Minimum Age','The minimum age for which you want records returned.','min','0',0,5,'n',120,0,NULL,NULL),(2,4,0,NULL,'Maximum Age','The maximum age for which you want records returned.','max','120',1,5,'n',120,0,NULL,NULL),(4,6,1,'','Gender','The desired gender to search the database for.','gender','1',1,0,'',0,0,0,0),(5,7,2,'SELECT lst_OptionID as Value, lst_OptionName as Display FROM list_lst WHERE lst_ID=2 ORDER BY lst_OptionSequence','Family Role','Select the desired family role.','role','1',0,0,'',0,0,0,0),(6,7,1,'','Gender','The gender for which you would like records returned.','gender','1',1,0,'',0,0,0,0),(8,9,2,'SELECT pro_ID AS Value, pro_Name as Display \r\nFROM property_pro\r\nWHERE pro_Class= \'p\' \r\nORDER BY pro_Name ','Property','The property for which you would like person records returned.','PropertyID','0',1,0,'',0,0,0,0),(9,10,2,'SELECT distinct don_date as Value, don_date as Display FROM donations_don ORDER BY don_date ASC','Beginning Date','Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations.','startdate','1',1,0,'0',0,0,0,0),(10,10,2,'SELECT distinct don_date as Value, don_date as Display FROM donations_don\r\nORDER BY don_date DESC','Ending Date','Please enter the last date to calculate total contributions for each member (i.e. YYYY-MM-DD).','enddate','1',1,0,'',0,0,0,0),(14,15,0,'','Search','Enter any part of the following: Name, City, State, Zip, Home Phone, Email, or Work Email.','searchstring','',1,0,'',0,0,0,0),(15,15,1,'','Field','Select field to search for.','searchwhat','1',1,0,'',0,0,0,0),(16,11,2,'SELECT distinct don_date as Value, don_date as Display FROM donations_don ORDER BY don_date ASC','Beginning Date','Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations.','startdate','1',1,0,'0',0,0,0,0),(17,11,2,'SELECT distinct don_date as Value, don_date as Display FROM donations_don\r\nORDER BY don_date DESC','Ending Date','Please enter the last date to calculate total contributions for each member (i.e. YYYY-MM-DD).','enddate','1',1,0,'',0,0,0,0),(18,18,0,'','Month','The birthday month for which you would like records returned.','birthmonth','1',1,0,'',12,1,1,2),(19,19,2,'SELECT grp_ID AS Value, grp_Name AS Display FROM group_grp ORDER BY grp_Type','Class','The sunday school class for which you would like records returned.','group','1',1,0,'',12,1,1,2),(20,20,2,'SELECT grp_ID AS Value, grp_Name AS Display FROM group_grp ORDER BY grp_Type','Class','The sunday school class for which you would like records returned.','group','1',1,0,'',12,1,1,2),(21,21,2,'SELECT grp_ID AS Value, grp_Name AS Display FROM group_grp ORDER BY grp_Type','Registered students','Group of registered students','group','1',1,0,'',12,1,1,2),(22,22,0,'','Month','The membership anniversary month for which you would like records returned.','membermonth','1',1,0,'',12,1,1,2),(25,25,2,'SELECT vol_ID AS Value, vol_Name AS Display FROM volunteeropportunity_vol ORDER BY vol_Name','Volunteer opportunities','Choose a volunteer opportunity','volopp','1',1,0,'',12,1,1,2),(26,26,0,'','Months','Number of months since becoming a friend','friendmonths','1',1,0,'',24,1,1,2),(27,28,1,'','First Fiscal Year','First fiscal year for comparison','fyid1','9',1,0,'',12,9,0,0),(28,28,1,'','Second Fiscal Year','Second fiscal year for comparison','fyid2','9',1,0,'',12,9,0,0),(30,30,1,'','First Fiscal Year','Pledged this year','fyid1','9',1,0,'',12,9,0,0),(31,30,1,'','Second Fiscal Year','but not this year','fyid2','9',1,0,'',12,9,0,0),(32,32,1,'','Fiscal Year','Fiscal Year.','fyid','9',1,0,'',12,9,0,0),(33,18,1,'','Classification','Member, Regular Attender, etc.','percls','1',1,0,'',12,1,1,2),(100,100,2,'SELECT vol_ID AS Value, vol_Name AS Display FROM volunteeropportunity_vol ORDER BY vol_Name','Volunteer opportunities','First volunteer opportunity choice','volopp1','1',1,0,'',12,1,1,2),(101,100,2,'SELECT vol_ID AS Value, vol_Name AS Display FROM volunteeropportunity_vol ORDER BY vol_Name','Volunteer opportunities','Second volunteer opportunity choice','volopp2','1',1,0,'',12,1,1,2),(200,200,2,'SELECT custom_field as Value, custom_Name as Display FROM person_custom_master','Custom field','Choose customer person field','custom','1',0,0,'',0,0,0,0),(201,200,0,'','Field value','Match custom field to this value','value','1',0,0,'',0,0,0,0);
-/*!40000 ALTER TABLE `queryparameters_qrp` ENABLE KEYS */;
-UNLOCK TABLES;
-COMMIT;
-
--- Dumped table `queryparameters_qrp` with 29 row(s)
---
-
---
--- Table structure for table `kioskdevice_kdev`
---
-
-DROP TABLE IF EXISTS `kioskdevice_kdev`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `kioskdevice_kdev` (
-  `kdev_ID` mediumint(9) unsigned NOT NULL AUTO_INCREMENT,
-  `kdev_GUIDHash` char(64) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `kdev_Name` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `kdev_deviceType` mediumint(9) NOT NULL DEFAULT 0,
-  `kdev_lastHeartbeat` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `kdev_Accepted` tinyint(1) DEFAULT NULL,
-  `kdev_PendingCommands` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`kdev_ID`)
+CREATE TABLE `groupprop_11` (
+  `per_ID` mediumint(8) unsigned NOT NULL DEFAULT 0,
+  `c1` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `kioskdevice_kdev`
+-- Dumping data for table `groupprop_11`
 --
 
-LOCK TABLES `kioskdevice_kdev` WRITE;
-/*!40000 ALTER TABLE `kioskdevice_kdev` DISABLE KEYS */;
+LOCK TABLES `groupprop_11` WRITE;
+/*!40000 ALTER TABLE `groupprop_11` DISABLE KEYS */;
 SET autocommit=0;
-/*!40000 ALTER TABLE `kioskdevice_kdev` ENABLE KEYS */;
+INSERT INTO `groupprop_11` VALUES (26,NULL),(33,NULL),(34,NULL),(37,NULL),(100,NULL),(125,NULL),(134,NULL),(293,NULL),(349,NULL),(374,NULL),(649,NULL),(650,NULL);
+/*!40000 ALTER TABLE `groupprop_11` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
 
--- Dumped table `kioskdevice_kdev` with 0 row(s)
+-- Dumped table `groupprop_11` with 12 row(s)
+--
+
+--
+-- Table structure for table `groupprop_13`
+--
+
+DROP TABLE IF EXISTS `groupprop_13`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `groupprop_13` (
+  `per_ID` mediumint(8) unsigned NOT NULL DEFAULT 0,
+  `c1` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `groupprop_13`
+--
+
+LOCK TABLES `groupprop_13` WRITE;
+/*!40000 ALTER TABLE `groupprop_13` DISABLE KEYS */;
+SET autocommit=0;
+INSERT INTO `groupprop_13` VALUES (79,NULL),(141,NULL),(240,NULL),(257,NULL),(273,NULL),(295,NULL),(297,NULL),(307,NULL),(322,NULL),(337,NULL),(350,NULL),(370,NULL),(386,NULL),(583,NULL),(654,NULL),(668,NULL),(670,NULL),(671,NULL);
+/*!40000 ALTER TABLE `groupprop_13` ENABLE KEYS */;
+UNLOCK TABLES;
+COMMIT;
+
+-- Dumped table `groupprop_13` with 18 row(s)
 --
 
 --
@@ -1366,34 +849,116 @@ COMMIT;
 --
 
 --
--- Table structure for table `queryparameteroptions_qpo`
+-- Table structure for table `groupprop_2`
 --
 
-DROP TABLE IF EXISTS `queryparameteroptions_qpo`;
+DROP TABLE IF EXISTS `groupprop_2`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `queryparameteroptions_qpo` (
-  `qpo_ID` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
-  `qpo_qrp_ID` mediumint(8) unsigned NOT NULL DEFAULT 0,
-  `qpo_Display` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `qpo_Value` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  PRIMARY KEY (`qpo_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+CREATE TABLE `groupprop_2` (
+  `per_ID` mediumint(8) unsigned NOT NULL DEFAULT 0,
+  `c1` date DEFAULT NULL,
+  `c2` tinyint(4) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `queryparameteroptions_qpo`
+-- Dumping data for table `groupprop_2`
 --
 
-LOCK TABLES `queryparameteroptions_qpo` WRITE;
-/*!40000 ALTER TABLE `queryparameteroptions_qpo` DISABLE KEYS */;
+LOCK TABLES `groupprop_2` WRITE;
+/*!40000 ALTER TABLE `groupprop_2` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `queryparameteroptions_qpo` VALUES (1,4,'Male','1'),(2,4,'Female','2'),(3,6,'Male','1'),(4,6,'Female','2'),(5,15,'Name','CONCAT(COALESCE(`per_FirstName`,\'),COALESCE(`per_MiddleName`,\'),COALESCE(`per_LastName`,\'))'),(6,15,'Zip Code','fam_Zip'),(7,15,'State','fam_State'),(8,15,'City','fam_City'),(9,15,'Home Phone','per_HomePhone'),(10,27,'2012/2013','17'),(11,27,'2013/2014','18'),(12,27,'2014/2015','19'),(13,27,'2015/2016','20'),(14,28,'2012/2013','17'),(15,28,'2013/2014','18'),(16,28,'2014/2015','19'),(17,28,'2015/2016','20'),(18,30,'2012/2013','17'),(19,30,'2013/2014','18'),(20,30,'2014/2015','19'),(21,30,'2015/2016','20'),(22,31,'2012/2013','17'),(23,31,'2013/2014','18'),(24,31,'2014/2015','19'),(25,31,'2015/2016','20'),(26,15,'Email','per_Email'),(27,15,'WorkEmail','per_WorkEmail'),(28,32,'2012/2013','17'),(29,32,'2013/2014','18'),(30,32,'2014/2015','19'),(31,32,'2015/2016','20'),(32,33,'Member','1'),(33,33,'Regular Attender','2'),(34,33,'Guest','3'),(35,33,'Non-Attender','4'),(36,33,'Non-Attender (staff)','5');
-/*!40000 ALTER TABLE `queryparameteroptions_qpo` ENABLE KEYS */;
+INSERT INTO `groupprop_2` VALUES (4,NULL,2),(151,NULL,NULL),(293,NULL,NULL),(301,NULL,1),(304,NULL,NULL),(309,NULL,NULL),(311,NULL,1),(314,NULL,2),(319,NULL,NULL),(328,NULL,NULL),(344,NULL,1),(363,NULL,NULL),(364,NULL,NULL),(385,NULL,NULL),(448,NULL,NULL),(572,NULL,3),(576,NULL,3),(617,NULL,NULL),(618,NULL,1),(633,NULL,1),(634,NULL,1),(635,NULL,NULL),(636,NULL,NULL),(637,NULL,NULL),(639,NULL,1),(661,NULL,NULL),(727,NULL,NULL),(749,NULL,NULL),(759,NULL,NULL),(760,NULL,NULL),(766,NULL,NULL),(774,NULL,NULL),(777,NULL,NULL),(778,NULL,NULL);
+/*!40000 ALTER TABLE `groupprop_2` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
 
--- Dumped table `queryparameteroptions_qpo` with 36 row(s)
+-- Dumped table `groupprop_2` with 34 row(s)
+--
+
+--
+-- Table structure for table `groupprop_20`
+--
+
+DROP TABLE IF EXISTS `groupprop_20`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `groupprop_20` (
+  `per_ID` mediumint(8) unsigned NOT NULL DEFAULT 0,
+  `c1` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `groupprop_20`
+--
+
+LOCK TABLES `groupprop_20` WRITE;
+/*!40000 ALTER TABLE `groupprop_20` DISABLE KEYS */;
+SET autocommit=0;
+INSERT INTO `groupprop_20` VALUES (5,NULL),(37,NULL),(51,NULL),(94,NULL),(305,NULL),(310,NULL),(312,NULL),(320,NULL),(325,NULL),(342,NULL),(355,NULL),(589,NULL),(602,NULL),(611,NULL),(620,NULL),(621,NULL),(629,NULL),(641,NULL),(649,NULL),(657,NULL),(660,NULL),(761,NULL),(769,NULL),(784,NULL),(789,NULL),(797,NULL),(829,NULL),(855,NULL),(860,NULL);
+/*!40000 ALTER TABLE `groupprop_20` ENABLE KEYS */;
+UNLOCK TABLES;
+COMMIT;
+
+-- Dumped table `groupprop_20` with 29 row(s)
+--
+
+--
+-- Table structure for table `groupprop_23`
+--
+
+DROP TABLE IF EXISTS `groupprop_23`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `groupprop_23` (
+  `per_ID` mediumint(8) unsigned NOT NULL DEFAULT 0,
+  `c1` year(4) DEFAULT NULL,
+  PRIMARY KEY (`per_ID`),
+  UNIQUE KEY `per_ID` (`per_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `groupprop_23`
+--
+
+LOCK TABLES `groupprop_23` WRITE;
+/*!40000 ALTER TABLE `groupprop_23` DISABLE KEYS */;
+SET autocommit=0;
+/*!40000 ALTER TABLE `groupprop_23` ENABLE KEYS */;
+UNLOCK TABLES;
+COMMIT;
+
+-- Dumped table `groupprop_23` with 0 row(s)
+--
+
+--
+-- Table structure for table `groupprop_45`
+--
+
+DROP TABLE IF EXISTS `groupprop_45`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `groupprop_45` (
+  `per_ID` mediumint(8) unsigned NOT NULL DEFAULT 0,
+  `c1` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `groupprop_45`
+--
+
+LOCK TABLES `groupprop_45` WRITE;
+/*!40000 ALTER TABLE `groupprop_45` DISABLE KEYS */;
+SET autocommit=0;
+/*!40000 ALTER TABLE `groupprop_45` ENABLE KEYS */;
+UNLOCK TABLES;
+COMMIT;
+
+-- Dumped table `groupprop_45` with 0 row(s)
 --
 
 --
@@ -1421,6 +986,646 @@ UNLOCK TABLES;
 COMMIT;
 
 -- Dumped table `groupprop_47` with 1 row(s)
+--
+
+--
+-- Table structure for table `groupprop_49`
+--
+
+DROP TABLE IF EXISTS `groupprop_49`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `groupprop_49` (
+  `per_ID` mediumint(8) unsigned NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `groupprop_49`
+--
+
+LOCK TABLES `groupprop_49` WRITE;
+/*!40000 ALTER TABLE `groupprop_49` DISABLE KEYS */;
+SET autocommit=0;
+/*!40000 ALTER TABLE `groupprop_49` ENABLE KEYS */;
+UNLOCK TABLES;
+COMMIT;
+
+-- Dumped table `groupprop_49` with 0 row(s)
+--
+
+--
+-- Table structure for table `groupprop_6`
+--
+
+DROP TABLE IF EXISTS `groupprop_6`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `groupprop_6` (
+  `per_ID` mediumint(8) unsigned NOT NULL DEFAULT 0,
+  `c1` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `groupprop_6`
+--
+
+LOCK TABLES `groupprop_6` WRITE;
+/*!40000 ALTER TABLE `groupprop_6` DISABLE KEYS */;
+SET autocommit=0;
+INSERT INTO `groupprop_6` VALUES (131,NULL),(326,NULL),(334,NULL),(398,NULL),(590,NULL),(601,NULL),(603,NULL),(607,NULL),(608,NULL),(609,NULL),(612,NULL),(613,NULL),(622,NULL),(652,NULL),(653,NULL),(674,NULL),(675,NULL),(703,NULL),(729,NULL),(754,NULL),(757,NULL),(770,NULL),(773,NULL),(781,NULL),(785,NULL),(788,NULL),(798,NULL),(852,NULL),(862,NULL);
+/*!40000 ALTER TABLE `groupprop_6` ENABLE KEYS */;
+UNLOCK TABLES;
+COMMIT;
+
+-- Dumped table `groupprop_6` with 29 row(s)
+--
+
+--
+-- Table structure for table `groupprop_7`
+--
+
+DROP TABLE IF EXISTS `groupprop_7`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `groupprop_7` (
+  `per_ID` mediumint(8) unsigned NOT NULL DEFAULT 0,
+  `c1` date DEFAULT NULL,
+  `c2` tinyint(4) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `groupprop_7`
+--
+
+LOCK TABLES `groupprop_7` WRITE;
+/*!40000 ALTER TABLE `groupprop_7` DISABLE KEYS */;
+SET autocommit=0;
+INSERT INTO `groupprop_7` VALUES (39,NULL,NULL),(42,NULL,NULL),(104,NULL,NULL),(134,NULL,NULL),(216,NULL,NULL),(300,NULL,1),(303,NULL,NULL),(313,NULL,2),(318,NULL,2),(327,NULL,1),(331,NULL,2),(365,NULL,NULL),(573,NULL,NULL),(575,NULL,1),(577,NULL,1),(581,NULL,2),(582,NULL,2),(662,NULL,NULL),(663,NULL,NULL),(664,NULL,1),(665,NULL,2),(748,NULL,NULL);
+/*!40000 ALTER TABLE `groupprop_7` ENABLE KEYS */;
+UNLOCK TABLES;
+COMMIT;
+
+-- Dumped table `groupprop_7` with 22 row(s)
+--
+
+--
+-- Table structure for table `groupprop_9`
+--
+
+DROP TABLE IF EXISTS `groupprop_9`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `groupprop_9` (
+  `per_ID` mediumint(8) unsigned NOT NULL DEFAULT 0,
+  `c1` tinyint(4) DEFAULT NULL,
+  `c2` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `groupprop_9`
+--
+
+LOCK TABLES `groupprop_9` WRITE;
+/*!40000 ALTER TABLE `groupprop_9` DISABLE KEYS */;
+SET autocommit=0;
+INSERT INTO `groupprop_9` VALUES (47,NULL,NULL),(170,NULL,NULL),(190,NULL,NULL),(285,NULL,NULL),(296,2,NULL),(317,1,NULL),(321,2,NULL),(329,NULL,NULL),(330,2,NULL),(352,2,NULL),(362,1,NULL),(373,1,NULL),(379,1,NULL),(382,NULL,NULL),(578,1,NULL),(579,1,NULL),(580,NULL,NULL),(584,1,NULL),(585,NULL,NULL),(586,2,NULL),(669,NULL,NULL);
+/*!40000 ALTER TABLE `groupprop_9` ENABLE KEYS */;
+UNLOCK TABLES;
+COMMIT;
+
+-- Dumped table `groupprop_9` with 21 row(s)
+--
+
+--
+-- Table structure for table `groupprop_master`
+--
+
+DROP TABLE IF EXISTS `groupprop_master`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `groupprop_master` (
+  `grp_ID` mediumint(9) unsigned NOT NULL DEFAULT 0,
+  `prop_ID` tinyint(3) unsigned NOT NULL DEFAULT 0,
+  `prop_Field` varchar(5) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  `prop_Name` varchar(40) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `prop_Description` varchar(60) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `type_ID` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `prop_Special` mediumint(9) unsigned DEFAULT NULL,
+  `prop_PersonDisplay` enum('false','true') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'false'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Group-specific properties order, name, description, type';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `groupprop_master`
+--
+
+LOCK TABLES `groupprop_master` WRITE;
+/*!40000 ALTER TABLE `groupprop_master` DISABLE KEYS */;
+SET autocommit=0;
+INSERT INTO `groupprop_master` VALUES (23,1,'c1','sdfsaf','',6,NULL,'false');
+/*!40000 ALTER TABLE `groupprop_master` ENABLE KEYS */;
+UNLOCK TABLES;
+COMMIT;
+
+-- Dumped table `groupprop_master` with 1 row(s)
+--
+
+--
+-- Table structure for table `group_grp`
+--
+
+DROP TABLE IF EXISTS `group_grp`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `group_grp` (
+  `grp_ID` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
+  `grp_Type` tinyint(4) NOT NULL DEFAULT 0,
+  `grp_RoleListID` mediumint(8) unsigned NOT NULL DEFAULT 0,
+  `grp_DefaultRole` mediumint(9) NOT NULL DEFAULT 0,
+  `grp_Name` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `grp_Description` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `grp_hasSpecialProps` tinyint(1) NOT NULL DEFAULT 0,
+  `grp_active` tinyint(1) NOT NULL DEFAULT 1,
+  `grp_include_email_export` tinyint(1) NOT NULL DEFAULT 1,
+  PRIMARY KEY (`grp_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `group_grp`
+--
+
+LOCK TABLES `group_grp` WRITE;
+/*!40000 ALTER TABLE `group_grp` DISABLE KEYS */;
+SET autocommit=0;
+INSERT INTO `group_grp` VALUES (1,4,13,2,'Angels class',NULL,0,1,1),(2,4,14,2,'Class 1-3',NULL,0,1,1),(3,4,15,2,'Class 4-5',NULL,0,1,1),(4,4,16,2,'Class 6-7',NULL,0,1,1),(5,4,17,2,'High School Class',NULL,0,1,1),(6,4,18,2,'Youth Meeting',NULL,0,1,1),(7,0,19,1,'Boys Scouts',NULL,0,1,1),(8,0,20,1,'Girl Scouts',NULL,0,0,0),(9,0,21,1,'Church Board',NULL,0,1,0),(10,1,22,1,'Worship Service','',0,1,1),(11,0,23,1,'Clergy',NULL,0,1,1),(12,0,26,1,'New Test Group',NULL,0,1,1),(13,0,27,1,'New Test Group',NULL,0,1,1),(14,0,28,1,'New Test Group',NULL,0,1,1),(15,0,29,1,'New Test Group',NULL,0,1,1),(16,0,30,1,'New Test Group',NULL,0,1,1),(17,0,31,1,'New Test Group',NULL,0,1,1),(18,0,32,1,'New Test Group',NULL,0,1,1),(19,0,33,1,'New Test Group',NULL,0,1,1),(20,0,34,1,'New Test Group',NULL,0,1,1),(21,0,35,1,'New Test Group',NULL,0,1,1),(22,0,36,1,'New Test Group',NULL,0,1,1),(23,0,37,1,'sdfsdfsdf',NULL,1,1,1);
+/*!40000 ALTER TABLE `group_grp` ENABLE KEYS */;
+UNLOCK TABLES;
+COMMIT;
+
+-- Dumped table `group_grp` with 23 row(s)
+--
+
+--
+-- Table structure for table `istlookup_lu`
+--
+
+DROP TABLE IF EXISTS `istlookup_lu`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `istlookup_lu` (
+  `lu_fam_ID` mediumint(9) NOT NULL DEFAULT 0,
+  `lu_LookupDateTime` datetime NOT NULL DEFAULT '2016-01-01 00:00:00',
+  `lu_DeliveryLine1` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `lu_DeliveryLine2` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `lu_City` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `lu_State` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `lu_ZipAddon` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `lu_Zip` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `lu_Addon` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `lu_LOTNumber` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `lu_DPCCheckdigit` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `lu_RecordType` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `lu_LastLine` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `lu_CarrierRoute` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `lu_ReturnCodes` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `lu_ErrorCodes` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `lu_ErrorDesc` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`lu_fam_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='US Address Verification Lookups From Intelligent Search Tech';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `istlookup_lu`
+--
+
+LOCK TABLES `istlookup_lu` WRITE;
+/*!40000 ALTER TABLE `istlookup_lu` DISABLE KEYS */;
+SET autocommit=0;
+/*!40000 ALTER TABLE `istlookup_lu` ENABLE KEYS */;
+UNLOCK TABLES;
+COMMIT;
+
+-- Dumped table `istlookup_lu` with 0 row(s)
+--
+
+--
+-- Table structure for table `kioskassginment_kasm`
+--
+
+DROP TABLE IF EXISTS `kioskassginment_kasm`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `kioskassginment_kasm` (
+  `kasm_ID` mediumint(9) unsigned NOT NULL AUTO_INCREMENT,
+  `kasm_kdevId` mediumint(9) DEFAULT NULL,
+  `kasm_AssignmentType` mediumint(9) DEFAULT NULL,
+  `kasm_EventId` mediumint(9) DEFAULT 0,
+  PRIMARY KEY (`kasm_ID`),
+  UNIQUE KEY `kasm_ID` (`kasm_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `kioskassginment_kasm`
+--
+
+LOCK TABLES `kioskassginment_kasm` WRITE;
+/*!40000 ALTER TABLE `kioskassginment_kasm` DISABLE KEYS */;
+SET autocommit=0;
+/*!40000 ALTER TABLE `kioskassginment_kasm` ENABLE KEYS */;
+UNLOCK TABLES;
+COMMIT;
+
+-- Dumped table `kioskassginment_kasm` with 0 row(s)
+--
+
+--
+-- Table structure for table `kioskdevice_kdev`
+--
+
+DROP TABLE IF EXISTS `kioskdevice_kdev`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `kioskdevice_kdev` (
+  `kdev_ID` mediumint(9) unsigned NOT NULL AUTO_INCREMENT,
+  `kdev_GUIDHash` char(64) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `kdev_Name` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `kdev_deviceType` mediumint(9) NOT NULL DEFAULT 0,
+  `kdev_lastHeartbeat` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `kdev_Accepted` tinyint(1) DEFAULT NULL,
+  `kdev_PendingCommands` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`kdev_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `kioskdevice_kdev`
+--
+
+LOCK TABLES `kioskdevice_kdev` WRITE;
+/*!40000 ALTER TABLE `kioskdevice_kdev` DISABLE KEYS */;
+SET autocommit=0;
+/*!40000 ALTER TABLE `kioskdevice_kdev` ENABLE KEYS */;
+UNLOCK TABLES;
+COMMIT;
+
+-- Dumped table `kioskdevice_kdev` with 0 row(s)
+--
+
+--
+-- Table structure for table `list_lst`
+--
+
+DROP TABLE IF EXISTS `list_lst`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `list_lst` (
+  `lst_ID` mediumint(8) unsigned NOT NULL DEFAULT 0,
+  `lst_OptionID` mediumint(8) unsigned NOT NULL DEFAULT 0,
+  `lst_OptionSequence` tinyint(3) unsigned NOT NULL DEFAULT 0,
+  `lst_OptionName` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT ''
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `list_lst`
+--
+
+LOCK TABLES `list_lst` WRITE;
+/*!40000 ALTER TABLE `list_lst` DISABLE KEYS */;
+SET autocommit=0;
+INSERT INTO `list_lst` VALUES (1,1,1,'Member'),(1,2,2,'Regular Attender'),(1,3,3,'Guest'),(1,5,4,'Non-Attender'),(1,4,5,'Non-Attender (staff)'),(2,1,1,'Head of Household'),(2,2,2,'Spouse'),(2,3,3,'Child'),(2,4,4,'Other Relative'),(2,5,5,'Non Relative'),(3,1,1,'Ministry'),(3,2,2,'Team'),(3,3,3,'Bible Study'),(3,4,4,'Sunday School Class'),(4,1,1,'True / False'),(4,2,2,'Date'),(4,3,3,'Text Field (50 char)'),(4,4,4,'Text Field (100 char)'),(4,5,5,'Text Field (Long)'),(4,6,6,'Year'),(4,7,7,'Season'),(4,8,8,'Number'),(4,9,9,'Person from Group'),(4,10,10,'Money'),(4,11,11,'Phone Number'),(4,12,12,'Custom Drop-Down List'),(5,1,1,'bAll'),(5,2,2,'bAdmin'),(5,3,3,'bAddRecords'),(5,4,4,'bEditRecords'),(5,5,5,'bDeleteRecords'),(5,7,7,'bManageGroups'),(5,8,8,'bFinance'),(5,9,9,'bNotes'),(5,11,11,'bCanvasser'),(10,1,1,'Teacher'),(10,2,2,'Student'),(11,1,1,'Member'),(12,1,1,'Teacher'),(12,2,2,'Student'),(13,1,1,'Teacher'),(13,2,2,'Student'),(14,1,1,'Teacher'),(14,2,2,'Student'),(15,1,1,'Teacher'),(15,2,2,'Student'),(16,1,1,'Teacher'),(16,2,2,'Student'),(17,1,1,'Teacher'),(17,2,2,'Student'),(18,1,1,'Teacher'),(18,2,2,'Student'),(19,1,1,'Member'),(20,1,1,'Member'),(21,1,1,'Member'),(3,5,5,'Scouts'),(22,1,1,'Member'),(23,1,1,'Member'),(24,1,1,'Default Option'),(24,2,2,'My Custom Item 1'),(24,3,3,'My Custom Item 2'),(25,1,1,'Default Option'),(26,1,1,'Member'),(27,1,1,'Member'),(28,1,1,'Member'),(29,1,1,'Member'),(30,1,1,'Member'),(31,1,1,'Member'),(32,1,1,'Member'),(33,1,1,'Member'),(34,1,1,'Member'),(35,1,1,'Member'),(36,1,1,'Member'),(37,1,2,'Member'),(37,2,1,'sdfsdf');
+/*!40000 ALTER TABLE `list_lst` ENABLE KEYS */;
+UNLOCK TABLES;
+COMMIT;
+
+-- Dumped table `list_lst` with 75 row(s)
+--
+
+--
+-- Table structure for table `locations`
+--
+
+DROP TABLE IF EXISTS `locations`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `locations` (
+  `location_id` int(11) NOT NULL AUTO_INCREMENT,
+  `location_typeId` int(11) NOT NULL,
+  `location_name` varchar(256) COLLATE utf8_unicode_ci NOT NULL,
+  `location_address` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `location_city` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `location_state` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `location_zip` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `location_country` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `location_phone` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `location_email` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `location_timzezone` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`location_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `locations`
+--
+
+LOCK TABLES `locations` WRITE;
+/*!40000 ALTER TABLE `locations` DISABLE KEYS */;
+SET autocommit=0;
+/*!40000 ALTER TABLE `locations` ENABLE KEYS */;
+UNLOCK TABLES;
+COMMIT;
+
+-- Dumped table `locations` with 0 row(s)
+--
+
+--
+-- Table structure for table `menu_links`
+--
+
+DROP TABLE IF EXISTS `menu_links`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `menu_links` (
+  `linkId` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
+  `linkName` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `linkUri` text COLLATE utf8_unicode_ci NOT NULL,
+  `linkOrder` int(11) NOT NULL,
+  PRIMARY KEY (`linkId`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `menu_links`
+--
+
+LOCK TABLES `menu_links` WRITE;
+/*!40000 ALTER TABLE `menu_links` DISABLE KEYS */;
+SET autocommit=0;
+INSERT INTO `menu_links` VALUES (1,'CNN','https://www.cnn.com',0),(2,'Google','https://www.google.com',0);
+/*!40000 ALTER TABLE `menu_links` ENABLE KEYS */;
+UNLOCK TABLES;
+COMMIT;
+
+-- Dumped table `menu_links` with 2 row(s)
+--
+
+--
+-- Table structure for table `multibuy_mb`
+--
+
+DROP TABLE IF EXISTS `multibuy_mb`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `multibuy_mb` (
+  `mb_ID` mediumint(9) unsigned NOT NULL AUTO_INCREMENT,
+  `mb_per_ID` mediumint(9) NOT NULL DEFAULT 0,
+  `mb_item_ID` mediumint(9) NOT NULL DEFAULT 0,
+  `mb_count` decimal(8,0) DEFAULT NULL,
+  PRIMARY KEY (`mb_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `multibuy_mb`
+--
+
+LOCK TABLES `multibuy_mb` WRITE;
+/*!40000 ALTER TABLE `multibuy_mb` DISABLE KEYS */;
+SET autocommit=0;
+/*!40000 ALTER TABLE `multibuy_mb` ENABLE KEYS */;
+UNLOCK TABLES;
+COMMIT;
+
+-- Dumped table `multibuy_mb` with 0 row(s)
+--
+
+--
+-- Table structure for table `note_nte`
+--
+
+DROP TABLE IF EXISTS `note_nte`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `note_nte` (
+  `nte_ID` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
+  `nte_per_ID` mediumint(8) unsigned NOT NULL DEFAULT 0,
+  `nte_fam_ID` mediumint(8) unsigned NOT NULL DEFAULT 0,
+  `nte_Private` mediumint(8) unsigned NOT NULL DEFAULT 0,
+  `nte_Text` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `nte_DateEntered` datetime NOT NULL,
+  `nte_DateLastEdited` datetime DEFAULT NULL,
+  `nte_EnteredBy` mediumint(8) NOT NULL DEFAULT 0,
+  `nte_EditedBy` mediumint(8) unsigned NOT NULL DEFAULT 0,
+  `nte_Type` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`nte_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=633 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `note_nte`
+--
+
+LOCK TABLES `note_nte` WRITE;
+/*!40000 ALTER TABLE `note_nte` DISABLE KEYS */;
+SET autocommit=0;
+INSERT INTO `note_nte` VALUES (1,0,1,0,'Created','2016-01-01 00:00:00','2009-12-25 07:19:06',1,0,'create'),(2,2,0,0,'Created','2016-01-01 00:00:00','2009-12-25 07:19:06',1,0,'create'),(3,3,0,0,'Created','2016-01-01 00:00:00','2006-05-18 08:07:27',1,0,'create'),(4,4,0,0,'Created','2016-01-01 00:00:00','2016-04-03 09:13:02',1,0,'create'),(5,5,0,0,'Created','2016-01-01 00:00:00','2003-06-23 04:32:34',1,0,'create'),(6,0,2,0,'Created','2016-01-01 00:00:00','2009-04-13 01:17:12',1,0,'create'),(7,6,0,0,'Created','2016-01-01 00:00:00','2009-04-13 01:17:12',1,0,'create'),(8,7,0,0,'Created','2016-01-01 00:00:00','2006-08-18 00:45:56',1,0,'create'),(9,8,0,0,'Created','2016-01-01 00:00:00','2004-11-25 05:24:25',1,0,'create'),(10,9,0,0,'Created','2016-01-01 00:00:00','2009-08-19 12:28:31',1,0,'create'),(11,10,0,0,'Created','2016-01-01 00:00:00','2003-02-22 08:03:31',1,0,'create'),(12,11,0,0,'Created','2016-01-01 00:00:00','2011-12-29 16:42:21',1,0,'create'),(13,12,0,0,'Created','2016-01-01 00:00:00','2014-10-07 16:03:06',1,0,'create'),(14,13,0,0,'Created','2016-01-01 00:00:00','2013-02-28 09:48:03',1,0,'create'),(15,0,3,0,'Created','2016-01-01 00:00:00','2007-11-19 10:08:41',1,0,'create'),(16,14,0,0,'Created','2016-01-01 00:00:00','2007-11-19 10:08:41',1,0,'create'),(17,15,0,0,'Created','2016-01-01 00:00:00','2009-12-31 07:48:03',1,0,'create'),(18,16,0,0,'Created','2016-01-01 00:00:00','2011-05-22 19:11:16',1,0,'create'),(19,17,0,0,'Created','2016-01-01 00:00:00','2003-09-03 15:13:09',1,0,'create'),(20,0,4,0,'Created','2016-01-01 00:00:00','2003-10-14 16:05:17',1,0,'create'),(21,18,0,0,'Created','2016-01-01 00:00:00','2003-10-14 16:05:17',1,0,'create'),(22,19,0,0,'Created','2016-01-01 00:00:00','2008-05-09 05:12:00',1,0,'create'),(23,20,0,0,'Created','2016-01-01 00:00:00','2011-02-18 08:54:47',1,0,'create'),(24,21,0,0,'Created','2016-01-01 00:00:00','2009-08-31 21:41:59',1,0,'create'),(25,22,0,0,'Created','2016-01-01 00:00:00','2007-06-22 01:54:41',1,0,'create'),(26,23,0,0,'Created','2016-01-01 00:00:00','2009-08-13 03:54:14',1,0,'create'),(27,24,0,0,'Created','2016-01-01 00:00:00','2016-03-23 12:51:45',1,0,'create'),(28,25,0,0,'Created','2016-01-01 00:00:00','2007-08-08 06:34:24',1,0,'create'),(29,0,5,0,'Created','2016-01-01 00:00:00','2007-09-14 23:32:06',1,0,'create'),(30,26,0,0,'Created','2016-01-01 00:00:00','2007-09-14 23:32:06',1,0,'create'),(31,27,0,0,'Created','2016-01-01 00:00:00','2004-09-21 04:59:36',1,0,'create'),(32,0,6,0,'Created','2016-01-01 00:00:00','2013-07-25 20:18:03',1,0,'create'),(33,28,0,0,'Created','2016-01-01 00:00:00','2013-07-25 20:18:03',1,0,'create'),(34,29,0,0,'Created','2016-01-01 00:00:00','2004-03-04 00:12:40',1,0,'create'),(35,30,0,0,'Created','2016-01-01 00:00:00','2014-09-29 01:36:32',1,0,'create'),(36,31,0,0,'Created','2016-01-01 00:00:00','2007-04-14 04:13:25',1,0,'create'),(37,32,0,0,'Created','2016-01-01 00:00:00','2010-07-15 12:40:49',1,0,'create'),(38,33,0,0,'Created','2016-01-01 00:00:00','2006-07-25 23:21:13',1,0,'create'),(39,0,7,0,'Created','2016-01-01 00:00:00','2011-08-17 04:00:29',1,0,'create'),(40,34,0,0,'Created','2016-01-01 00:00:00','2011-08-17 04:00:29',1,0,'create'),(41,35,0,0,'Created','2016-01-01 00:00:00','2007-12-26 21:13:22',1,0,'create'),(43,36,0,0,'Created','2016-01-01 00:00:00','2015-02-07 16:23:42',1,0,'create'),(44,37,0,0,'Created','2016-01-01 00:00:00','2005-03-04 15:19:32',1,0,'create'),(45,38,0,0,'Created','2016-01-01 00:00:00','2008-10-02 23:33:21',1,0,'create'),(46,39,0,0,'Created','2016-01-01 00:00:00','2003-04-01 17:32:42',1,0,'create'),(47,40,0,0,'Created','2016-01-01 00:00:00','2015-05-27 00:37:53',1,0,'create'),(48,41,0,0,'Created','2016-01-01 00:00:00','2003-12-11 09:28:32',1,0,'create'),(49,42,0,0,'Created','2016-01-01 00:00:00','2012-03-22 08:26:55',1,0,'create'),(50,0,9,0,'Created','2016-01-01 00:00:00','2013-04-20 15:01:05',1,0,'create'),(51,43,0,0,'Created','2016-01-01 00:00:00','2013-04-20 15:01:05',1,0,'create'),(52,44,0,0,'Created','2016-01-01 00:00:00','2012-02-09 10:41:53',1,0,'create'),(56,48,0,0,'Created','2016-01-01 00:00:00','2010-01-07 01:55:34',1,0,'create'),(57,49,0,0,'Created','2016-01-01 00:00:00','2004-06-21 14:40:43',1,0,'create'),(58,0,10,0,'Created','2016-01-01 00:00:00','2004-09-09 18:40:30',1,0,'create'),(59,50,0,0,'Created','2016-01-01 00:00:00','2004-09-09 18:40:30',1,0,'create'),(60,51,0,0,'Created','2016-01-01 00:00:00','2006-11-20 15:07:23',1,0,'create'),(61,0,11,0,'Created','2016-01-01 00:00:00','2006-10-11 03:51:16',1,0,'create'),(62,52,0,0,'Created','2016-01-01 00:00:00','2006-10-11 03:51:16',1,0,'create'),(63,53,0,0,'Created','2016-01-01 00:00:00','2006-06-21 08:18:13',1,0,'create'),(64,54,0,0,'Created','2016-01-01 00:00:00','2006-05-24 17:02:09',1,0,'create'),(65,55,0,0,'Created','2016-01-01 00:00:00','2015-10-04 01:39:08',1,0,'create'),(66,56,0,0,'Created','2016-01-01 00:00:00','2006-07-23 14:13:59',1,0,'create'),(67,0,12,0,'Created','2016-01-01 00:00:00','2014-08-31 04:21:43',1,0,'create'),(68,57,0,0,'Created','2016-01-01 00:00:00','2014-08-31 04:21:43',1,0,'create'),(69,58,0,0,'Created','2016-01-01 00:00:00','2007-11-22 02:36:13',1,0,'create'),(70,0,13,0,'Created','2016-01-01 00:00:00','2007-02-01 16:50:26',1,0,'create'),(71,59,0,0,'Created','2016-01-01 00:00:00','2007-02-01 16:50:26',1,0,'create'),(72,60,0,0,'Created','2016-01-01 00:00:00','2006-11-07 12:19:08',1,0,'create'),(73,61,0,0,'Created','2016-01-01 00:00:00','2009-03-23 09:24:30',1,0,'create'),(74,62,0,0,'Created','2016-01-01 00:00:00','2013-07-10 17:58:37',1,0,'create'),(75,63,0,0,'Created','2016-01-01 00:00:00','2004-10-13 20:53:29',1,0,'create'),(79,0,14,0,'Created','2016-01-01 00:00:00','2013-10-15 09:25:25',1,0,'create'),(80,67,0,0,'Created','2016-01-01 00:00:00','2013-10-15 09:25:25',1,0,'create'),(81,68,0,0,'Created','2016-01-01 00:00:00','2003-09-29 17:56:26',1,0,'create'),(82,69,0,0,'Created','2016-01-01 00:00:00','2010-10-03 22:37:50',1,0,'create'),(84,70,0,0,'Created','2016-01-01 00:00:00','2003-04-25 18:30:46',1,0,'create'),(85,71,0,0,'Created','2016-01-01 00:00:00','2013-07-20 08:52:02',1,0,'create'),(86,72,0,0,'Created','2016-01-01 00:00:00','2002-10-01 07:06:30',1,0,'create'),(87,73,0,0,'Created','2016-01-01 00:00:00','2006-10-24 06:38:46',1,0,'create'),(88,74,0,0,'Created','2016-01-01 00:00:00','2005-01-21 16:03:19',1,0,'create'),(89,75,0,0,'Created','2016-01-01 00:00:00','2008-02-08 09:12:55',1,0,'create'),(90,0,16,0,'Created','2016-01-01 00:00:00','2016-03-01 14:19:32',1,0,'create'),(91,76,0,0,'Created','2016-01-01 00:00:00','2016-03-01 14:19:32',1,0,'create'),(92,77,0,0,'Created','2016-01-01 00:00:00','2013-07-06 04:09:48',1,0,'create'),(93,0,17,0,'Created','2016-01-01 00:00:00','2014-09-26 00:09:54',1,0,'create'),(94,78,0,0,'Created','2016-01-01 00:00:00','2014-09-26 00:09:54',1,0,'create'),(95,79,0,0,'Created','2016-01-01 00:00:00','2007-06-20 13:29:12',1,0,'create'),(96,80,0,0,'Created','2016-01-01 00:00:00','2015-12-26 15:02:22',1,0,'create'),(97,81,0,0,'Created','2016-01-01 00:00:00','2008-02-28 11:35:15',1,0,'create'),(98,82,0,0,'Created','2016-01-01 00:00:00','2007-04-24 18:10:43',1,0,'create'),(99,83,0,0,'Created','2016-01-01 00:00:00','2011-10-07 17:53:37',1,0,'create'),(100,0,18,0,'Created','2016-01-01 00:00:00','2002-04-09 05:31:36',1,0,'create'),(101,84,0,0,'Created','2016-01-01 00:00:00','2002-04-09 05:31:36',1,0,'create'),(102,85,0,0,'Created','2016-01-01 00:00:00','2015-03-05 07:54:37',1,0,'create'),(103,86,0,0,'Created','2016-01-01 00:00:00','2003-02-10 12:19:20',1,0,'create'),(104,87,0,0,'Created','2016-01-01 00:00:00','2008-11-13 08:27:32',1,0,'create'),(105,88,0,0,'Created','2016-01-01 00:00:00','2008-06-30 07:18:09',1,0,'create'),(106,89,0,0,'Created','2016-01-01 00:00:00','2005-04-12 20:56:36',1,0,'create'),(107,90,0,0,'Created','2016-01-01 00:00:00','2007-01-20 19:02:31',1,0,'create'),(108,91,0,0,'Created','2016-01-01 00:00:00','2010-12-30 01:21:15',1,0,'create'),(109,0,19,0,'Created','2016-01-01 00:00:00','2014-11-23 09:17:25',1,0,'create'),(110,92,0,0,'Created','2016-01-01 00:00:00','2014-11-23 09:17:25',1,0,'create'),(111,93,0,0,'Created','2016-01-01 00:00:00','2011-07-16 02:59:16',1,0,'create'),(112,94,0,0,'Created','2016-01-01 00:00:00','2006-05-25 19:29:47',1,0,'create'),(113,95,0,0,'Created','2016-01-01 00:00:00','2003-07-08 08:25:48',1,0,'create'),(114,96,0,0,'Created','2016-01-01 00:00:00','2006-04-08 10:42:12',1,0,'create'),(115,97,0,0,'Created','2016-01-01 00:00:00','2010-01-28 17:10:25',1,0,'create'),(116,98,0,0,'Created','2016-01-01 00:00:00','2007-02-16 17:31:50',1,0,'create'),(117,0,20,0,'Created','2016-01-01 00:00:00','2014-05-10 06:07:19',1,0,'create'),(118,99,0,0,'Created','2016-01-01 00:00:00','2014-05-10 06:07:19',1,0,'create'),(119,100,0,0,'Created','2016-01-01 00:00:00','2004-09-29 01:37:47',1,0,'create'),(121,102,0,0,'Created','2016-01-01 00:00:00','2005-03-07 21:32:47',1,0,'create'),(122,103,0,0,'Created','2016-01-01 00:00:00','2014-05-16 11:35:23',1,0,'create'),(123,26,0,0,'Updated via Family','2016-11-19 15:23:31',NULL,1,0,'edit'),(124,27,0,0,'Updated via Family','2016-11-19 15:23:31',NULL,1,0,'edit'),(125,0,5,0,'Updated','2016-11-19 15:23:31',NULL,1,0,'edit'),(126,61,0,0,'Updated','2016-11-19 15:25:34',NULL,1,0,'edit'),(127,62,0,0,'Updated','2016-11-19 15:25:41',NULL,1,0,'edit'),(128,63,0,0,'Updated','2016-11-19 15:26:00',NULL,1,0,'edit'),(129,63,0,0,'Updated','2016-11-19 15:27:02',NULL,1,0,'edit'),(130,60,0,0,'Updated','2016-11-19 15:27:13',NULL,1,0,'edit'),(131,69,0,0,'Updated','2016-11-19 15:38:00',NULL,1,0,'edit'),(132,69,0,0,'Profile Image Deleted','2016-11-19 15:38:03',NULL,1,0,'photo'),(133,68,0,0,'Updated','2016-11-19 15:38:31',NULL,1,0,'edit'),(134,67,0,0,'Updated','2016-11-19 15:38:39',NULL,1,0,'edit'),(135,4,0,0,'Updated','2016-11-19 15:39:19',NULL,1,0,'edit'),(136,5,0,0,'Updated','2016-11-19 15:39:30',NULL,1,0,'edit'),(137,80,0,0,'Updated','2016-11-19 15:39:51',NULL,1,0,'edit'),(138,81,0,0,'Updated','2016-11-19 15:39:54',NULL,1,0,'edit'),(139,82,0,0,'Updated','2016-11-19 15:39:58',NULL,1,0,'edit'),(140,83,0,0,'Updated','2016-11-19 15:40:22',NULL,1,0,'edit'),(141,31,0,0,'Updated','2016-11-19 15:40:40',NULL,1,0,'edit'),(142,33,0,0,'Updated','2016-11-19 15:40:43',NULL,1,0,'edit'),(143,29,0,0,'Updated','2016-11-19 15:40:58',NULL,1,0,'edit'),(144,32,0,0,'Updated','2016-11-19 15:41:02',NULL,1,0,'edit'),(145,30,0,0,'Updated','2016-11-19 15:41:11',NULL,1,0,'edit'),(146,51,0,0,'Updated','2016-11-19 15:41:44',NULL,1,0,'edit'),(147,13,0,0,'Updated','2016-11-19 15:42:01',NULL,1,0,'edit'),(148,12,0,0,'Updated','2016-11-19 15:42:04',NULL,1,0,'edit'),(149,11,0,0,'Updated','2016-11-19 15:42:07',NULL,1,0,'edit'),(150,10,0,0,'Updated','2016-11-19 15:42:10',NULL,1,0,'edit'),(151,9,0,0,'Updated','2016-11-19 15:42:14',NULL,1,0,'edit'),(152,8,0,0,'Updated','2016-11-19 15:42:20',NULL,1,0,'edit'),(153,94,0,0,'Updated','2016-11-19 15:42:48',NULL,1,0,'edit'),(154,95,0,0,'Updated','2016-11-19 15:42:57',NULL,1,0,'edit'),(155,96,0,0,'Updated','2016-11-19 15:43:06',NULL,1,0,'edit'),(156,97,0,0,'Updated','2016-11-19 15:43:10',NULL,1,0,'edit'),(157,53,0,0,'Updated','2016-11-19 15:43:22',NULL,1,0,'edit'),(158,27,0,0,'Updated','2016-11-19 15:43:47',NULL,1,0,'edit'),(159,35,0,0,'Updated','2016-11-19 15:44:07',NULL,1,0,'edit'),(160,35,0,0,'Profile Image Deleted','2016-11-19 15:44:11',NULL,1,0,'photo'),(161,59,0,0,'Updated via Family','2016-11-19 15:46:56',NULL,1,0,'edit'),(162,63,0,0,'Updated via Family','2016-11-19 15:46:56',NULL,1,0,'edit'),(163,60,0,0,'Updated via Family','2016-11-19 15:46:56',NULL,1,0,'edit'),(164,61,0,0,'Updated via Family','2016-11-19 15:46:56',NULL,1,0,'edit'),(165,62,0,0,'Updated via Family','2016-11-19 15:46:56',NULL,1,0,'edit'),(166,0,13,0,'Updated','2016-11-19 15:46:56',NULL,1,0,'edit'),(167,59,0,0,'Updated via Family','2016-11-19 15:49:36',NULL,1,0,'edit'),(168,63,0,0,'Updated via Family','2016-11-19 15:49:36',NULL,1,0,'edit'),(169,60,0,0,'Updated via Family','2016-11-19 15:49:36',NULL,1,0,'edit'),(170,61,0,0,'Updated via Family','2016-11-19 15:49:36',NULL,1,0,'edit'),(171,62,0,0,'Updated via Family','2016-11-19 15:49:36',NULL,1,0,'edit'),(172,0,13,0,'Updated','2016-11-19 15:49:36',NULL,1,0,'edit'),(173,68,0,0,'Updated via Family','2016-11-19 15:49:58',NULL,1,0,'edit'),(174,67,0,0,'Updated via Family','2016-11-19 15:49:58',NULL,1,0,'edit'),(175,69,0,0,'Updated via Family','2016-11-19 15:49:58',NULL,1,0,'edit'),(176,0,14,0,'Updated','2016-11-19 15:49:58',NULL,1,0,'edit'),(177,99,0,0,'Updated via Family','2016-11-19 15:50:25',NULL,1,0,'edit'),(178,100,0,0,'Updated via Family','2016-11-19 15:50:25',NULL,1,0,'edit'),(179,102,0,0,'Updated via Family','2016-11-19 15:50:25',NULL,1,0,'edit'),(180,103,0,0,'Updated via Family','2016-11-19 15:50:25',NULL,1,0,'edit'),(181,0,20,0,'Updated','2016-11-19 15:50:25',NULL,1,0,'edit'),(182,2,0,0,'Updated via Family','2016-11-19 15:50:57',NULL,1,0,'edit'),(183,3,0,0,'Updated via Family','2016-11-19 15:50:57',NULL,1,0,'edit'),(184,4,0,0,'Updated via Family','2016-11-19 15:50:57',NULL,1,0,'edit'),(185,5,0,0,'Updated via Family','2016-11-19 15:50:57',NULL,1,0,'edit'),(186,0,1,0,'Updated','2016-11-19 15:50:57',NULL,1,0,'edit'),(187,78,0,0,'Updated via Family','2016-11-19 15:51:35',NULL,1,0,'edit'),(188,79,0,0,'Updated via Family','2016-11-19 15:51:35',NULL,1,0,'edit'),(189,80,0,0,'Updated via Family','2016-11-19 15:51:35',NULL,1,0,'edit'),(190,81,0,0,'Updated via Family','2016-11-19 15:51:35',NULL,1,0,'edit'),(191,82,0,0,'Updated via Family','2016-11-19 15:51:35',NULL,1,0,'edit'),(192,0,17,0,'Updated','2016-11-19 15:51:35',NULL,1,0,'edit'),(193,43,0,0,'Updated via Family','2016-11-19 15:52:17',NULL,1,0,'edit'),(194,44,0,0,'Updated via Family','2016-11-19 15:52:17',NULL,1,0,'edit'),(195,48,0,0,'Updated via Family','2016-11-19 15:52:17',NULL,1,0,'edit'),(196,49,0,0,'Updated via Family','2016-11-19 15:52:17',NULL,1,0,'edit'),(197,0,9,0,'Updated','2016-11-19 15:52:17',NULL,1,0,'edit'),(198,28,0,0,'Updated via Family','2016-11-19 15:52:44',NULL,1,0,'edit'),(199,30,0,0,'Updated via Family','2016-11-19 15:52:44',NULL,1,0,'edit'),(200,0,6,0,'Updated','2016-11-19 15:52:44',NULL,1,0,'edit'),(201,50,0,0,'Updated via Family','2016-11-19 15:52:50',NULL,1,0,'edit'),(202,0,10,0,'Updated','2016-11-19 15:52:50',NULL,1,0,'edit'),(203,6,0,0,'Updated via Family','2016-11-19 15:53:10',NULL,1,0,'edit'),(204,7,0,0,'Updated via Family','2016-11-19 15:53:10',NULL,1,0,'edit'),(205,8,0,0,'Updated via Family','2016-11-19 15:53:10',NULL,1,0,'edit'),(206,9,0,0,'Updated via Family','2016-11-19 15:53:10',NULL,1,0,'edit'),(207,10,0,0,'Updated via Family','2016-11-19 15:53:10',NULL,1,0,'edit'),(208,11,0,0,'Updated via Family','2016-11-19 15:53:10',NULL,1,0,'edit'),(209,12,0,0,'Updated via Family','2016-11-19 15:53:10',NULL,1,0,'edit'),(210,13,0,0,'Updated via Family','2016-11-19 15:53:10',NULL,1,0,'edit'),(211,0,2,0,'Updated','2016-11-19 15:53:10',NULL,1,0,'edit'),(212,92,0,0,'Updated via Family','2016-11-19 15:53:40',NULL,1,0,'edit'),(213,93,0,0,'Updated via Family','2016-11-19 15:53:40',NULL,1,0,'edit'),(214,98,0,0,'Updated via Family','2016-11-19 15:53:40',NULL,1,0,'edit'),(215,0,19,0,'Updated','2016-11-19 15:53:40',NULL,1,0,'edit'),(216,76,0,0,'Updated via Family','2016-11-19 15:53:48',NULL,1,0,'edit'),(217,77,0,0,'Updated via Family','2016-11-19 15:53:48',NULL,1,0,'edit'),(218,0,16,0,'Updated','2016-11-19 15:53:48',NULL,1,0,'edit'),(219,14,0,0,'Updated via Family','2016-11-19 15:54:09',NULL,1,0,'edit'),(220,15,0,0,'Updated via Family','2016-11-19 15:54:09',NULL,1,0,'edit'),(221,16,0,0,'Updated via Family','2016-11-19 15:54:09',NULL,1,0,'edit'),(222,17,0,0,'Updated via Family','2016-11-19 15:54:09',NULL,1,0,'edit'),(223,0,3,0,'Updated','2016-11-19 15:54:09',NULL,1,0,'edit'),(224,52,0,0,'Updated via Family','2016-11-19 15:54:22',NULL,1,0,'edit'),(225,54,0,0,'Updated via Family','2016-11-19 15:54:22',NULL,1,0,'edit'),(226,55,0,0,'Updated via Family','2016-11-19 15:54:22',NULL,1,0,'edit'),(227,56,0,0,'Updated via Family','2016-11-19 15:54:22',NULL,1,0,'edit'),(228,0,11,0,'Updated','2016-11-19 15:54:22',NULL,1,0,'edit'),(229,57,0,0,'Updated via Family','2016-11-19 15:54:30',NULL,1,0,'edit'),(230,58,0,0,'Updated via Family','2016-11-19 15:54:30',NULL,1,0,'edit'),(231,0,12,0,'Updated','2016-11-19 15:54:30',NULL,1,0,'edit'),(232,18,0,0,'Updated via Family','2016-11-19 15:55:11',NULL,1,0,'edit'),(233,19,0,0,'Updated via Family','2016-11-19 15:55:11',NULL,1,0,'edit'),(234,20,0,0,'Updated via Family','2016-11-19 15:55:11',NULL,1,0,'edit'),(235,21,0,0,'Updated via Family','2016-11-19 15:55:11',NULL,1,0,'edit'),(236,22,0,0,'Updated via Family','2016-11-19 15:55:11',NULL,1,0,'edit'),(237,23,0,0,'Updated via Family','2016-11-19 15:55:11',NULL,1,0,'edit'),(238,24,0,0,'Updated via Family','2016-11-19 15:55:11',NULL,1,0,'edit'),(239,25,0,0,'Updated via Family','2016-11-19 15:55:11',NULL,1,0,'edit'),(240,0,4,0,'Updated','2016-11-19 15:55:11',NULL,1,0,'edit'),(241,84,0,0,'Updated via Family','2016-11-19 15:56:04',NULL,1,0,'edit'),(242,85,0,0,'Updated via Family','2016-11-19 15:56:04',NULL,1,0,'edit'),(243,86,0,0,'Updated via Family','2016-11-19 15:56:04',NULL,1,0,'edit'),(244,87,0,0,'Updated via Family','2016-11-19 15:56:04',NULL,1,0,'edit'),(245,88,0,0,'Updated via Family','2016-11-19 15:56:04',NULL,1,0,'edit'),(246,89,0,0,'Updated via Family','2016-11-19 15:56:04',NULL,1,0,'edit'),(247,90,0,0,'Updated via Family','2016-11-19 15:56:04',NULL,1,0,'edit'),(248,91,0,0,'Updated via Family','2016-11-19 15:56:04',NULL,1,0,'edit'),(249,0,18,0,'Updated','2016-11-19 15:56:04',NULL,1,0,'edit'),(250,26,0,0,'Updated via Family','2016-11-19 15:56:49',NULL,1,0,'edit'),(251,0,5,0,'Updated','2016-11-19 15:56:49',NULL,1,0,'edit'),(252,34,0,0,'Updated via Family','2016-11-19 15:56:55',NULL,1,0,'edit'),(253,0,7,0,'Updated','2016-11-19 15:56:55',NULL,1,0,'edit'),(254,3,0,0,'Updated','2016-11-19 16:07:39',NULL,1,0,'edit'),(255,84,0,0,'Updated via Family','2016-11-19 16:42:37',NULL,1,0,'edit'),(256,85,0,0,'Updated via Family','2016-11-19 16:42:37',NULL,1,0,'edit'),(257,87,0,0,'Updated via Family','2016-11-19 16:42:37',NULL,1,0,'edit'),(258,88,0,0,'Updated via Family','2016-11-19 16:42:37',NULL,1,0,'edit'),(259,89,0,0,'Updated via Family','2016-11-19 16:42:37',NULL,1,0,'edit'),(260,90,0,0,'Updated via Family','2016-11-19 16:42:37',NULL,1,0,'edit'),(261,91,0,0,'Updated via Family','2016-11-19 16:42:37',NULL,1,0,'edit'),(262,86,0,0,'Updated via Family','2016-11-19 16:42:37',NULL,1,0,'edit'),(263,0,18,0,'Updated','2016-11-19 16:42:37',NULL,1,0,'edit'),(264,84,0,0,'Updated via Family','2016-11-19 16:43:48',NULL,1,0,'edit'),(265,85,0,0,'Updated via Family','2016-11-19 16:43:48',NULL,1,0,'edit'),(266,87,0,0,'Updated via Family','2016-11-19 16:43:48',NULL,1,0,'edit'),(267,88,0,0,'Updated via Family','2016-11-19 16:43:48',NULL,1,0,'edit'),(268,89,0,0,'Updated via Family','2016-11-19 16:43:48',NULL,1,0,'edit'),(269,90,0,0,'Updated via Family','2016-11-19 16:43:48',NULL,1,0,'edit'),(270,91,0,0,'Updated via Family','2016-11-19 16:43:48',NULL,1,0,'edit'),(271,86,0,0,'Updated via Family','2016-11-19 16:43:48',NULL,1,0,'edit'),(272,0,18,0,'Updated','2016-11-19 16:43:48',NULL,1,0,'edit'),(273,0,21,0,'Created','0000-00-00 00:00:00','2017-04-15 17:19:26',-1,0,'create'),(274,104,0,0,'Created','2017-04-15 17:20:21',NULL,-1,0,'create'),(275,105,0,0,'Created','2017-04-15 17:20:21',NULL,-1,0,'create'),(276,106,0,0,'Created','2017-04-15 17:20:21',NULL,-1,0,'create'),(277,107,0,0,'Created','2017-04-15 17:20:21',NULL,-1,0,'create'),(278,14,0,0,'Updated via Family','2017-04-15 17:21:40',NULL,1,0,'edit'),(279,15,0,0,'Updated via Family','2017-04-15 17:21:40',NULL,1,0,'edit'),(280,16,0,0,'Updated via Family','2017-04-15 17:21:40',NULL,1,0,'edit'),(281,17,0,0,'Updated via Family','2017-04-15 17:21:40',NULL,1,0,'edit'),(282,0,3,0,'Updated','2017-04-15 17:21:40',NULL,1,0,'edit'),(283,26,0,0,'Updated via Family','2017-04-15 17:22:04',NULL,1,0,'edit'),(284,0,5,0,'Updated','2017-04-15 17:22:04',NULL,1,0,'edit'),(285,50,0,0,'Updated via Family','2017-04-15 17:22:19',NULL,1,0,'edit'),(286,0,10,0,'Updated','2017-04-15 17:22:19',NULL,1,0,'edit'),(287,0,4,0,'Updated','0000-00-00 00:00:00','2016-11-19 15:55:11',1,0,'edit'),(288,0,4,0,'Deactivated the Family','2017-04-15 17:34:50',NULL,1,0,'edit'),(289,3,0,0,'system user password reset','2017-12-18 00:43:09',NULL,1,0,'user'),(290,3,0,0,'system user password changed by admin','2017-12-18 00:43:33',NULL,1,0,'user'),(291,3,0,0,'system user password reset','2017-12-18 00:45:44',NULL,1,0,'user'),(292,3,0,0,'system user password reset','2017-12-18 00:47:43',NULL,1,0,'user'),(293,96,0,0,'Deleted from group: ','2017-12-23 14:46:01',NULL,1,0,'group'),(294,96,0,0,'Deleted from group: Class 4-5','2017-12-23 14:46:59',NULL,1,0,'group'),(295,96,0,0,'Added to group: High School Class','2017-12-23 14:48:34',NULL,1,0,'group'),(296,3,0,0,'system user password changed by admin','2017-12-23 16:49:29',NULL,1,0,'user'),(297,35,0,0,'Updated','2018-01-01 19:25:55',NULL,1,0,'edit'),(298,1,0,0,NULL,'2018-02-19 17:11:42',NULL,1,0,'user'),(299,26,0,0,'Added to group: Clergy','2019-09-08 21:23:06',NULL,1,0,'group'),(300,2,0,0,'Added to group: Clergy','2019-09-08 21:23:18',NULL,1,0,'group'),(301,78,0,0,'Updated','2019-09-08 21:43:50',NULL,3,0,'edit'),(302,80,0,0,'Updated','2019-09-08 21:44:06',NULL,3,0,'edit'),(303,50,0,0,'Updated via Family','2019-09-11 23:04:11',NULL,1,0,'edit'),(304,0,10,0,'Updated','2019-09-11 23:04:11',NULL,1,0,'edit'),(305,50,0,0,'Updated','2019-09-11 23:09:35',NULL,1,0,'edit'),(306,95,0,0,'system user login reset','2020-11-27 11:40:54',NULL,1,0,'user'),(307,95,0,0,'system user password reset','2020-11-27 11:40:56',NULL,1,0,'user'),(308,0,2,0,'Verification email sent','2020-11-27 11:43:34',NULL,1,0,'verify-link'),(309,3,0,0,NULL,'2020-11-27 11:45:28',NULL,1,0,'user'),(310,105,0,0,'Updated','2021-03-21 17:45:34',NULL,1,0,'edit'),(311,105,0,0,'Updated','2021-03-21 17:46:45',NULL,1,0,'edit'),(312,104,0,0,'Updated','2021-04-25 09:41:33',NULL,1,0,'edit'),(313,104,0,0,'Updated via Family','2021-04-25 09:45:44',NULL,1,0,'edit'),(314,105,0,0,'Updated via Family','2021-04-25 09:45:44',NULL,1,0,'edit'),(315,106,0,0,'Updated via Family','2021-04-25 09:45:44',NULL,1,0,'edit'),(316,107,0,0,'Updated via Family','2021-04-25 09:45:44',NULL,1,0,'edit'),(317,0,21,0,'Updated','2021-04-25 09:45:44',NULL,1,0,'edit'),(318,95,0,0,'system user login reset','2021-04-25 10:04:41',NULL,1,0,'user'),(319,95,0,0,'system user password reset','2021-04-25 10:04:43',NULL,1,0,'user'),(320,0,2,0,'Verification email sent','2021-04-25 10:04:53',NULL,3,0,'verify-link'),(321,76,0,0,'system user password changed by admin','2021-04-25 10:10:53',NULL,1,0,'user'),(322,0,3,0,'Updated','2017-04-15 17:21:40',NULL,1,0,'edit'),(323,0,3,0,'Deactivated the Family','2021-04-25 10:21:17',NULL,3,0,'edit'),(324,0,3,0,'Updated','2017-04-15 17:21:40',NULL,1,0,'edit'),(325,0,3,0,'Activated the Family','2021-04-25 10:21:56',NULL,3,0,'edit'),(326,108,0,0,'Created via Family','2021-04-25 10:24:12',NULL,3,0,'create'),(327,109,0,0,'Created via Family','2021-04-25 10:24:12',NULL,3,0,'create'),(328,110,0,0,'Created via Family','2021-04-25 10:24:12',NULL,3,0,'create'),(329,111,0,0,'Created via Family','2021-04-25 10:24:12',NULL,3,0,'create'),(330,112,0,0,'Created via Family','2021-04-25 10:24:12',NULL,3,0,'create'),(331,113,0,0,'Created via Family','2021-04-25 10:24:12',NULL,3,0,'create'),(332,0,22,0,'Created','2021-04-25 10:24:12',NULL,3,0,'create'),(333,114,0,0,'Created','2021-04-25 10:32:31',NULL,3,0,'create'),(334,3,0,0,'system user changed password','2021-04-25 10:36:28',NULL,3,0,'user'),(335,3,0,0,'system user changed password','2021-04-25 10:37:04',NULL,3,0,'user'),(336,95,0,0,'system user login reset','2021-04-25 10:39:46',NULL,1,0,'user'),(337,95,0,0,'system user password reset','2021-04-25 10:39:49',NULL,1,0,'user'),(338,0,2,0,'Verification email sent','2021-04-25 10:39:55',NULL,3,0,'verify-link'),(339,95,0,0,'system user login reset','2021-04-25 10:41:32',NULL,1,0,'user'),(340,95,0,0,'system user password reset','2021-04-25 10:41:35',NULL,1,0,'user'),(341,0,2,0,'Verification email sent','2021-04-25 10:41:41',NULL,3,0,'verify-link'),(342,76,0,0,'system user password changed by admin','2021-04-25 10:47:42',NULL,1,0,'user'),(343,0,23,0,'Created','2021-04-25 10:50:11',NULL,-1,0,'create'),(344,115,0,0,'Created','2021-04-25 10:50:12',NULL,-1,0,'create'),(345,116,0,0,'Created','2021-04-25 10:50:12',NULL,-1,0,'create'),(346,0,3,0,'Updated','2017-04-15 17:21:40',NULL,1,0,'edit'),(347,0,3,0,'Deactivated the Family','2021-04-25 10:53:35',NULL,3,0,'edit'),(348,117,0,0,'Created via Family','2021-04-25 10:54:55',NULL,3,0,'create'),(349,118,0,0,'Created via Family','2021-04-25 10:54:55',NULL,3,0,'create'),(350,119,0,0,'Created via Family','2021-04-25 10:54:56',NULL,3,0,'create'),(351,120,0,0,'Created via Family','2021-04-25 10:54:56',NULL,3,0,'create'),(352,121,0,0,'Created via Family','2021-04-25 10:54:56',NULL,3,0,'create'),(353,122,0,0,'Created via Family','2021-04-25 10:54:56',NULL,3,0,'create'),(354,0,24,0,'Created','2021-04-25 10:54:55',NULL,3,0,'create'),(355,123,0,0,'Created','2021-04-25 10:56:50',NULL,3,0,'create'),(356,3,0,0,'system user changed password','2021-04-25 10:58:36',NULL,3,0,'user'),(357,3,0,0,'system user changed password','2021-04-25 10:58:53',NULL,3,0,'user'),(358,124,0,0,'Created via Family','2021-04-25 12:35:39',NULL,3,0,'create'),(359,125,0,0,'Created via Family','2021-04-25 12:35:39',NULL,3,0,'create'),(360,126,0,0,'Created via Family','2021-04-25 12:35:39',NULL,3,0,'create'),(361,127,0,0,'Created via Family','2021-04-25 12:35:39',NULL,3,0,'create'),(362,128,0,0,'Created via Family','2021-04-25 12:35:39',NULL,3,0,'create'),(363,129,0,0,'Created via Family','2021-04-25 12:35:39',NULL,3,0,'create'),(364,0,25,0,'Created','2021-04-25 12:35:39',NULL,3,0,'create'),(365,0,6,0,'Updated','2016-11-19 15:52:44',NULL,1,0,'edit'),(366,0,6,0,'Deactivated the Family','2021-04-25 12:37:28',NULL,1,0,'edit'),(367,0,6,0,'Updated','2016-11-19 15:52:44',NULL,1,0,'edit'),(368,0,6,0,'Activated the Family','2021-04-25 12:38:17',NULL,1,0,'edit'),(369,130,0,0,'Created via Family','2021-04-25 12:41:04',NULL,3,0,'create'),(370,131,0,0,'Created via Family','2021-04-25 12:41:04',NULL,3,0,'create'),(371,132,0,0,'Created via Family','2021-04-25 12:41:04',NULL,3,0,'create'),(372,133,0,0,'Created via Family','2021-04-25 12:41:04',NULL,3,0,'create'),(373,134,0,0,'Created via Family','2021-04-25 12:41:04',NULL,3,0,'create'),(374,135,0,0,'Created via Family','2021-04-25 12:41:04',NULL,3,0,'create'),(375,0,26,0,'Created','2021-04-25 12:41:04',NULL,3,0,'create'),(376,0,3,0,'Updated','2017-04-15 17:21:40',NULL,1,0,'edit'),(377,0,3,0,'Activated the Family','2021-04-25 12:43:11',NULL,3,0,'edit'),(378,0,3,0,'Updated','2017-04-15 17:21:40',NULL,1,0,'edit'),(379,0,3,0,'Deactivated the Family','2021-04-25 12:44:14',NULL,3,0,'edit'),(380,0,3,0,'Updated','2017-04-15 17:21:40',NULL,1,0,'edit'),(381,0,3,0,'Activated the Family','2021-04-25 12:44:28',NULL,3,0,'edit'),(382,136,0,0,'Created via Family','2021-04-25 12:45:41',NULL,3,0,'create'),(383,137,0,0,'Created via Family','2021-04-25 12:45:41',NULL,3,0,'create'),(384,138,0,0,'Created via Family','2021-04-25 12:45:41',NULL,3,0,'create'),(385,139,0,0,'Created via Family','2021-04-25 12:45:41',NULL,3,0,'create'),(386,140,0,0,'Created via Family','2021-04-25 12:45:41',NULL,3,0,'create'),(387,141,0,0,'Created via Family','2021-04-25 12:45:41',NULL,3,0,'create'),(388,0,27,0,'Created','2021-04-25 12:45:41',NULL,3,0,'create'),(389,0,3,0,'Updated','2017-04-15 17:21:40',NULL,1,0,'edit'),(390,0,3,0,'Deactivated the Family','2021-04-25 12:46:20',NULL,3,0,'edit'),(391,0,3,0,'Updated','2017-04-15 17:21:40',NULL,1,0,'edit'),(392,0,3,0,'Activated the Family','2021-04-25 12:47:01',NULL,3,0,'edit'),(393,0,3,0,'Updated','2017-04-15 17:21:40',NULL,1,0,'edit'),(394,0,3,0,'Deactivated the Family','2021-04-25 12:47:11',NULL,3,0,'edit'),(395,0,3,0,'Updated','2017-04-15 17:21:40',NULL,1,0,'edit'),(396,0,3,0,'Activated the Family','2021-04-25 12:47:22',NULL,3,0,'edit'),(397,142,0,0,'Created via Family','2021-04-25 12:47:38',NULL,3,0,'create'),(398,143,0,0,'Created via Family','2021-04-25 12:47:38',NULL,3,0,'create'),(399,144,0,0,'Created via Family','2021-04-25 12:47:38',NULL,3,0,'create'),(400,145,0,0,'Created via Family','2021-04-25 12:47:38',NULL,3,0,'create'),(401,146,0,0,'Created via Family','2021-04-25 12:47:38',NULL,3,0,'create'),(402,147,0,0,'Created via Family','2021-04-25 12:47:38',NULL,3,0,'create'),(403,0,28,0,'Created','2021-04-25 12:47:38',NULL,3,0,'create'),(404,0,3,0,'Updated','2017-04-15 17:21:40',NULL,1,0,'edit'),(405,0,3,0,'Deactivated the Family','2021-04-25 12:48:01',NULL,3,0,'edit'),(406,0,3,0,'Updated','2017-04-15 17:21:40',NULL,1,0,'edit'),(407,0,3,0,'Activated the Family','2021-04-25 12:48:12',NULL,3,0,'edit'),(408,148,0,0,'Created via Family','2021-04-25 12:48:31',NULL,3,0,'create'),(409,149,0,0,'Created via Family','2021-04-25 12:48:31',NULL,3,0,'create'),(410,150,0,0,'Created via Family','2021-04-25 12:48:31',NULL,3,0,'create'),(411,151,0,0,'Created via Family','2021-04-25 12:48:31',NULL,3,0,'create'),(412,152,0,0,'Created via Family','2021-04-25 12:48:31',NULL,3,0,'create'),(413,153,0,0,'Created via Family','2021-04-25 12:48:31',NULL,3,0,'create'),(414,0,29,0,'Created','2021-04-25 12:48:31',NULL,3,0,'create'),(415,95,0,0,'system user login reset','2021-04-25 13:09:08',NULL,1,0,'user'),(416,95,0,0,'system user password reset','2021-04-25 13:09:10',NULL,1,0,'user'),(417,0,2,0,'Verification email sent','2021-04-25 13:09:15',NULL,3,0,'verify-link'),(418,76,0,0,'system user password changed by admin','2021-04-25 13:11:31',NULL,1,0,'user'),(419,0,30,0,'Created','2021-04-25 13:13:24',NULL,-1,0,'create'),(420,154,0,0,'Created','2021-04-25 13:13:24',NULL,-1,0,'create'),(421,155,0,0,'Created','2021-04-25 13:13:24',NULL,-1,0,'create'),(422,0,3,0,'Updated','2017-04-15 17:21:40',NULL,1,0,'edit'),(423,0,3,0,'Deactivated the Family','2021-04-25 13:15:16',NULL,3,0,'edit'),(424,0,3,0,'Updated','2017-04-15 17:21:40',NULL,1,0,'edit'),(425,0,3,0,'Activated the Family','2021-04-25 13:15:29',NULL,3,0,'edit'),(426,156,0,0,'Created via Family','2021-04-25 13:15:57',NULL,3,0,'create'),(427,157,0,0,'Created via Family','2021-04-25 13:15:57',NULL,3,0,'create'),(428,158,0,0,'Created via Family','2021-04-25 13:15:57',NULL,3,0,'create'),(429,159,0,0,'Created via Family','2021-04-25 13:15:57',NULL,3,0,'create'),(430,160,0,0,'Created via Family','2021-04-25 13:15:57',NULL,3,0,'create'),(431,161,0,0,'Created via Family','2021-04-25 13:15:57',NULL,3,0,'create'),(432,0,31,0,'Created','2021-04-25 13:15:57',NULL,3,0,'create'),(433,162,0,0,'Created','2021-04-25 13:17:35',NULL,3,0,'create'),(434,3,0,0,'system user changed password','2021-04-25 13:18:40',NULL,3,0,'user'),(435,3,0,0,'system user changed password','2021-04-25 13:18:50',NULL,3,0,'user'),(436,95,0,0,'system user login reset','2021-04-25 16:15:58',NULL,1,0,'user'),(437,95,0,0,'system user password reset','2021-04-25 16:16:00',NULL,1,0,'user'),(438,0,2,0,'Verification email sent','2021-04-25 16:16:06',NULL,3,0,'verify-link'),(439,76,0,0,'system user password changed by admin','2021-04-25 16:18:39',NULL,1,0,'user'),(440,0,3,0,'Updated','2017-04-15 17:21:40',NULL,1,0,'edit'),(441,0,3,0,'Deactivated the Family','2021-04-25 16:23:48',NULL,3,0,'edit'),(442,0,3,0,'Updated','2017-04-15 17:21:40',NULL,1,0,'edit'),(443,0,3,0,'Activated the Family','2021-04-25 16:24:03',NULL,3,0,'edit'),(444,163,0,0,'Created via Family','2021-04-25 16:24:32',NULL,3,0,'create'),(445,164,0,0,'Created via Family','2021-04-25 16:24:32',NULL,3,0,'create'),(446,165,0,0,'Created via Family','2021-04-25 16:24:32',NULL,3,0,'create'),(447,166,0,0,'Created via Family','2021-04-25 16:24:32',NULL,3,0,'create'),(448,167,0,0,'Created via Family','2021-04-25 16:24:32',NULL,3,0,'create'),(449,168,0,0,'Created via Family','2021-04-25 16:24:32',NULL,3,0,'create'),(450,0,32,0,'Created','2021-04-25 16:24:31',NULL,3,0,'create'),(451,169,0,0,'Created','2021-04-25 16:26:33',NULL,3,0,'create'),(452,3,0,0,'system user changed password','2021-04-25 16:27:52',NULL,3,0,'user'),(453,3,0,0,'system user changed password','2021-04-25 16:28:03',NULL,3,0,'user'),(454,95,0,0,'system user login reset','2021-04-25 16:39:21',NULL,1,0,'user'),(455,95,0,0,'system user password reset','2021-04-25 16:39:23',NULL,1,0,'user'),(456,0,2,0,'Verification email sent','2021-04-25 16:39:28',NULL,3,0,'verify-link'),(457,76,0,0,'system user password changed by admin','2021-04-25 16:42:01',NULL,1,0,'user'),(458,95,0,0,'system user login reset','2021-04-25 16:46:55',NULL,1,0,'user'),(459,95,0,0,'system user password reset','2021-04-25 16:46:56',NULL,1,0,'user'),(460,0,2,0,'Verification email sent','2021-04-25 16:47:02',NULL,3,0,'verify-link'),(461,95,0,0,'system user login reset','2021-04-25 16:48:44',NULL,1,0,'user'),(462,95,0,0,'system user password reset','2021-04-25 16:48:47',NULL,1,0,'user'),(463,0,2,0,'Verification email sent','2021-04-25 16:48:54',NULL,3,0,'verify-link'),(464,76,0,0,'system user password changed by admin','2021-04-25 16:53:24',NULL,1,0,'user'),(465,0,33,0,'Created','2021-04-25 16:55:43',NULL,-1,0,'create'),(466,170,0,0,'Created','2021-04-25 16:55:43',NULL,-1,0,'create'),(467,171,0,0,'Created','2021-04-25 16:55:43',NULL,-1,0,'create'),(468,0,3,0,'Updated','2017-04-15 17:21:40',NULL,1,0,'edit'),(469,0,3,0,'Deactivated the Family','2021-04-25 16:57:34',NULL,3,0,'edit'),(470,0,3,0,'Updated','2017-04-15 17:21:40',NULL,1,0,'edit'),(471,0,3,0,'Activated the Family','2021-04-25 16:57:51',NULL,3,0,'edit'),(472,172,0,0,'Created via Family','2021-04-25 16:58:11',NULL,3,0,'create'),(473,173,0,0,'Created via Family','2021-04-25 16:58:11',NULL,3,0,'create'),(474,174,0,0,'Created via Family','2021-04-25 16:58:11',NULL,3,0,'create'),(475,175,0,0,'Created via Family','2021-04-25 16:58:11',NULL,3,0,'create'),(476,176,0,0,'Created via Family','2021-04-25 16:58:11',NULL,3,0,'create'),(477,177,0,0,'Created via Family','2021-04-25 16:58:11',NULL,3,0,'create'),(478,0,34,0,'Created','2021-04-25 16:58:11',NULL,3,0,'create'),(479,178,0,0,'Created','2021-04-25 16:59:38',NULL,3,0,'create'),(480,3,0,0,'system user changed password','2021-04-25 17:00:41',NULL,3,0,'user'),(481,3,0,0,'system user changed password','2021-04-25 17:00:51',NULL,3,0,'user'),(482,95,0,0,'system user login reset','2021-04-25 17:04:32',NULL,1,0,'user'),(483,95,0,0,'system user password reset','2021-04-25 17:04:34',NULL,1,0,'user'),(484,0,2,0,'Verification email sent','2021-04-25 17:04:39',NULL,3,0,'verify-link'),(485,76,0,0,'system user password changed by admin','2021-04-25 17:06:53',NULL,1,0,'user'),(486,95,0,0,'system user login reset','2021-04-25 17:18:54',NULL,1,0,'user'),(487,95,0,0,'system user password reset','2021-04-25 17:18:56',NULL,1,0,'user'),(488,0,2,0,'Verification email sent','2021-04-25 17:19:01',NULL,3,0,'verify-link'),(489,76,0,0,'system user password changed by admin','2021-04-25 17:21:52',NULL,1,0,'user'),(490,0,35,0,'Created','2021-04-25 17:24:16',NULL,-1,0,'create'),(491,179,0,0,'Created','2021-04-25 17:24:16',NULL,-1,0,'create'),(492,180,0,0,'Created','2021-04-25 17:24:16',NULL,-1,0,'create'),(493,0,3,0,'Updated','2017-04-15 17:21:40',NULL,1,0,'edit'),(494,0,3,0,'Deactivated the Family','2021-04-25 17:28:05',NULL,3,0,'edit'),(495,0,3,0,'Updated','2017-04-15 17:21:40',NULL,1,0,'edit'),(496,0,3,0,'Activated the Family','2021-04-25 17:28:47',NULL,3,0,'edit'),(497,181,0,0,'Created via Family','2021-04-25 17:29:15',NULL,3,0,'create'),(498,182,0,0,'Created via Family','2021-04-25 17:29:15',NULL,3,0,'create'),(499,183,0,0,'Created via Family','2021-04-25 17:29:15',NULL,3,0,'create'),(500,184,0,0,'Created via Family','2021-04-25 17:29:15',NULL,3,0,'create'),(501,185,0,0,'Created via Family','2021-04-25 17:29:15',NULL,3,0,'create'),(502,186,0,0,'Created via Family','2021-04-25 17:29:15',NULL,3,0,'create'),(503,0,36,0,'Created','2021-04-25 17:29:15',NULL,3,0,'create'),(504,187,0,0,'Created','2021-04-25 17:30:35',NULL,3,0,'create'),(505,3,0,0,'system user changed password','2021-04-25 17:31:49',NULL,3,0,'user'),(506,3,0,0,'system user changed password','2021-04-25 17:32:01',NULL,3,0,'user'),(507,95,0,0,'system user login reset','2021-04-25 17:34:18',NULL,1,0,'user'),(508,95,0,0,'system user password reset','2021-04-25 17:34:21',NULL,1,0,'user'),(509,0,2,0,'Verification email sent','2021-04-25 17:34:27',NULL,3,0,'verify-link'),(510,76,0,0,'system user password changed by admin','2021-04-25 17:36:33',NULL,1,0,'user'),(511,0,37,0,'Created','2021-04-25 17:37:18',NULL,-1,0,'create'),(512,188,0,0,'Created','2021-04-25 17:37:19',NULL,-1,0,'create'),(513,189,0,0,'Created','2021-04-25 17:37:19',NULL,-1,0,'create'),(514,0,3,0,'Updated','2017-04-15 17:21:40',NULL,1,0,'edit'),(515,0,3,0,'Deactivated the Family','2021-04-25 17:38:50',NULL,3,0,'edit'),(516,0,3,0,'Updated','2017-04-15 17:21:40',NULL,1,0,'edit'),(517,0,3,0,'Activated the Family','2021-04-25 17:39:02',NULL,3,0,'edit'),(518,190,0,0,'Created via Family','2021-04-25 17:39:21',NULL,3,0,'create'),(519,191,0,0,'Created via Family','2021-04-25 17:39:21',NULL,3,0,'create'),(520,192,0,0,'Created via Family','2021-04-25 17:39:21',NULL,3,0,'create'),(521,193,0,0,'Created via Family','2021-04-25 17:39:21',NULL,3,0,'create'),(522,194,0,0,'Created via Family','2021-04-25 17:39:21',NULL,3,0,'create'),(523,195,0,0,'Created via Family','2021-04-25 17:39:21',NULL,3,0,'create'),(524,0,38,0,'Created','2021-04-25 17:39:21',NULL,3,0,'create'),(525,196,0,0,'Created','2021-04-25 17:40:34',NULL,3,0,'create'),(526,3,0,0,'system user changed password','2021-04-25 17:41:28',NULL,3,0,'user'),(527,3,0,0,'system user changed password','2021-04-25 17:41:37',NULL,3,0,'user'),(528,95,0,0,'system user login reset','2021-04-25 20:00:09',NULL,1,0,'user'),(529,95,0,0,'system user password reset','2021-04-25 20:00:11',NULL,1,0,'user'),(530,0,2,0,'Verification email sent','2021-04-25 20:00:18',NULL,3,0,'verify-link'),(531,76,0,0,'system user password changed by admin','2021-04-25 20:03:06',NULL,1,0,'user'),(532,0,39,0,'Created','2021-04-25 20:05:48',NULL,-1,0,'create'),(533,197,0,0,'Created','2021-04-25 20:05:48',NULL,-1,0,'create'),(534,198,0,0,'Created','2021-04-25 20:05:48',NULL,-1,0,'create'),(535,0,3,0,'Updated','2017-04-15 17:21:40',NULL,1,0,'edit'),(536,0,3,0,'Deactivated the Family','2021-04-25 20:07:22',NULL,3,0,'edit'),(537,0,3,0,'Updated','2017-04-15 17:21:40',NULL,1,0,'edit'),(538,0,3,0,'Activated the Family','2021-04-25 20:07:35',NULL,3,0,'edit'),(539,199,0,0,'Created via Family','2021-04-25 20:07:53',NULL,3,0,'create'),(540,200,0,0,'Created via Family','2021-04-25 20:07:53',NULL,3,0,'create'),(541,201,0,0,'Created via Family','2021-04-25 20:07:53',NULL,3,0,'create'),(542,202,0,0,'Created via Family','2021-04-25 20:07:53',NULL,3,0,'create'),(543,203,0,0,'Created via Family','2021-04-25 20:07:53',NULL,3,0,'create'),(544,204,0,0,'Created via Family','2021-04-25 20:07:53',NULL,3,0,'create'),(545,0,40,0,'Created','2021-04-25 20:07:53',NULL,3,0,'create'),(546,205,0,0,'Created','2021-04-25 20:09:02',NULL,3,0,'create'),(547,3,0,0,'system user changed password','2021-04-25 20:09:55',NULL,3,0,'user'),(548,3,0,0,'system user changed password','2021-04-25 20:10:04',NULL,3,0,'user'),(549,95,0,0,'system user login reset','2021-04-25 21:32:18',NULL,1,0,'user'),(550,95,0,0,'system user password reset','2021-04-25 21:32:21',NULL,1,0,'user'),(551,0,2,0,'Verification email sent','2021-04-25 21:32:26',NULL,3,0,'verify-link'),(552,76,0,0,'system user password changed by admin','2021-04-25 21:35:47',NULL,1,0,'user'),(553,19,0,0,'Updated','2021-04-25 21:36:05',NULL,1,0,'edit'),(554,18,0,0,'Updated via Family','2021-04-25 21:36:43',NULL,1,0,'edit'),(555,19,0,0,'Updated via Family','2021-04-25 21:36:43',NULL,1,0,'edit'),(556,21,0,0,'Updated via Family','2021-04-25 21:36:43',NULL,1,0,'edit'),(557,22,0,0,'Updated via Family','2021-04-25 21:36:43',NULL,1,0,'edit'),(558,23,0,0,'Updated via Family','2021-04-25 21:36:43',NULL,1,0,'edit'),(559,24,0,0,'Updated via Family','2021-04-25 21:36:43',NULL,1,0,'edit'),(560,25,0,0,'Updated via Family','2021-04-25 21:36:43',NULL,1,0,'edit'),(561,20,0,0,'Updated via Family','2021-04-25 21:36:43',NULL,1,0,'edit'),(562,0,4,0,'Updated','2021-04-25 21:36:43',NULL,1,0,'edit'),(563,0,3,0,'Updated','2017-04-15 17:21:40',NULL,1,0,'edit'),(564,0,3,0,'Deactivated the Family','2021-04-25 21:40:39',NULL,3,0,'edit'),(565,0,3,0,'Updated','2017-04-15 17:21:40',NULL,1,0,'edit'),(566,0,3,0,'Activated the Family','2021-04-25 21:40:56',NULL,3,0,'edit'),(567,206,0,0,'Created via Family','2021-04-25 21:41:31',NULL,3,0,'create'),(568,207,0,0,'Created via Family','2021-04-25 21:41:31',NULL,3,0,'create'),(569,208,0,0,'Created via Family','2021-04-25 21:41:31',NULL,3,0,'create'),(570,209,0,0,'Created via Family','2021-04-25 21:41:31',NULL,3,0,'create'),(571,210,0,0,'Created via Family','2021-04-25 21:41:31',NULL,3,0,'create'),(572,211,0,0,'Created via Family','2021-04-25 21:41:31',NULL,3,0,'create'),(573,0,41,0,'Created','2021-04-25 21:41:31',NULL,3,0,'create'),(574,212,0,0,'Created','2021-04-25 21:43:48',NULL,3,0,'create'),(575,3,0,0,'system user changed password','2021-04-25 21:45:00',NULL,3,0,'user'),(576,3,0,0,'system user changed password','2021-04-25 21:45:10',NULL,3,0,'user'),(577,95,0,0,'system user login reset','2021-04-25 21:48:47',NULL,1,0,'user'),(578,95,0,0,'system user password reset','2021-04-25 21:48:49',NULL,1,0,'user'),(579,0,2,0,'Verification email sent','2021-04-25 21:48:55',NULL,3,0,'verify-link'),(580,76,0,0,'system user password changed by admin','2021-04-25 21:51:42',NULL,1,0,'user'),(581,0,42,0,'Created','2021-04-25 21:52:35',NULL,-1,0,'create'),(582,213,0,0,'Created','2021-04-25 21:52:35',NULL,-1,0,'create'),(583,214,0,0,'Created','2021-04-25 21:52:35',NULL,-1,0,'create'),(584,0,3,0,'Updated','2017-04-15 17:21:40',NULL,1,0,'edit'),(585,0,3,0,'Deactivated the Family','2021-04-25 21:54:26',NULL,3,0,'edit'),(586,0,3,0,'Updated','2017-04-15 17:21:40',NULL,1,0,'edit'),(587,0,3,0,'Activated the Family','2021-04-25 21:54:47',NULL,3,0,'edit'),(588,215,0,0,'Created via Family','2021-04-25 21:55:18',NULL,3,0,'create'),(589,216,0,0,'Created via Family','2021-04-25 21:55:18',NULL,3,0,'create'),(590,217,0,0,'Created via Family','2021-04-25 21:55:18',NULL,3,0,'create'),(591,218,0,0,'Created via Family','2021-04-25 21:55:18',NULL,3,0,'create'),(592,219,0,0,'Created via Family','2021-04-25 21:55:18',NULL,3,0,'create'),(593,220,0,0,'Created via Family','2021-04-25 21:55:18',NULL,3,0,'create'),(594,0,43,0,'Created','2021-04-25 21:55:18',NULL,3,0,'create'),(595,221,0,0,'Created','2021-04-25 21:57:16',NULL,3,0,'create'),(596,3,0,0,'system user changed password','2021-04-25 21:58:46',NULL,3,0,'user'),(597,3,0,0,'system user changed password','2021-04-25 21:58:58',NULL,3,0,'user'),(598,95,0,0,'system user login reset','2021-04-25 22:39:43',NULL,1,0,'user'),(599,95,0,0,'system user password reset','2021-04-25 22:39:46',NULL,1,0,'user'),(600,0,2,0,'Verification email sent','2021-04-25 22:39:53',NULL,3,0,'verify-link'),(601,76,0,0,'system user password changed by admin','2021-04-25 22:42:54',NULL,1,0,'user'),(602,0,3,0,'Updated','2017-04-15 17:21:40',NULL,1,0,'edit'),(603,0,3,0,'Deactivated the Family','2021-04-25 22:48:03',NULL,3,0,'edit'),(604,0,3,0,'Updated','2017-04-15 17:21:40',NULL,1,0,'edit'),(605,0,3,0,'Activated the Family','2021-04-25 22:48:22',NULL,3,0,'edit'),(606,222,0,0,'Created via Family','2021-04-25 22:48:59',NULL,3,0,'create'),(607,223,0,0,'Created via Family','2021-04-25 22:48:59',NULL,3,0,'create'),(608,224,0,0,'Created via Family','2021-04-25 22:48:59',NULL,3,0,'create'),(609,225,0,0,'Created via Family','2021-04-25 22:48:59',NULL,3,0,'create'),(610,226,0,0,'Created via Family','2021-04-25 22:48:59',NULL,3,0,'create'),(611,227,0,0,'Created via Family','2021-04-25 22:48:59',NULL,3,0,'create'),(612,0,44,0,'Created','2021-04-25 22:48:59',NULL,3,0,'create'),(613,228,0,0,'Created','2021-04-25 22:50:53',NULL,3,0,'create'),(614,3,0,0,'system user changed password','2021-04-25 22:52:22',NULL,3,0,'user'),(615,3,0,0,'system user changed password','2021-04-25 22:52:34',NULL,3,0,'user'),(616,0,13,0,'Updated','2016-11-19 15:49:36',NULL,1,0,'edit'),(617,0,13,0,'Deactivated the Family','2022-12-03 14:38:02',NULL,1,0,'edit'),(618,0,13,0,'Updated','2016-11-19 15:49:36',NULL,1,0,'edit'),(619,0,13,0,'Activated the Family','2022-12-03 14:38:26',NULL,1,0,'edit'),(620,95,0,0,'system user deleted','2022-12-03 17:05:27',NULL,1,0,'user'),(621,76,0,0,'system user deleted','2022-12-03 17:06:34',NULL,1,0,'user'),(622,3,0,0,'system user deleted','2022-12-03 17:07:19',NULL,1,0,'user'),(623,59,0,0,'system user created','2022-12-03 17:09:58',NULL,1,0,'user'),(624,59,0,0,'system user deleted','2022-12-03 17:10:05',NULL,1,0,'user'),(625,59,0,0,'system user created','2022-12-03 17:12:15',NULL,1,0,'user'),(626,59,0,0,'system user deleted','2022-12-03 17:12:22',NULL,1,0,'user'),(627,3,0,0,'system user created','2022-12-29 18:40:16',NULL,1,0,'user'),(628,3,0,0,NULL,'2022-12-29 18:40:27',NULL,1,0,'user'),(629,3,0,0,'system user password changed by admin','2022-12-29 18:43:18',NULL,1,0,'user'),(630,95,0,0,'system user created','2022-12-29 21:01:30',NULL,1,0,'user'),(631,95,0,0,'system user login reset','2022-12-29 21:01:40',NULL,1,0,'user'),(632,95,0,0,'system user password reset','2022-12-29 21:01:42',NULL,1,0,'user');
+/*!40000 ALTER TABLE `note_nte` ENABLE KEYS */;
+UNLOCK TABLES;
+COMMIT;
+
+-- Dumped table `note_nte` with 623 row(s)
+--
+
+--
+-- Table structure for table `paddlenum_pn`
+--
+
+DROP TABLE IF EXISTS `paddlenum_pn`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `paddlenum_pn` (
+  `pn_ID` mediumint(9) unsigned NOT NULL AUTO_INCREMENT,
+  `pn_fr_ID` mediumint(9) unsigned DEFAULT NULL,
+  `pn_Num` mediumint(9) unsigned DEFAULT NULL,
+  `pn_per_ID` mediumint(9) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`pn_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `paddlenum_pn`
+--
+
+LOCK TABLES `paddlenum_pn` WRITE;
+/*!40000 ALTER TABLE `paddlenum_pn` DISABLE KEYS */;
+SET autocommit=0;
+/*!40000 ALTER TABLE `paddlenum_pn` ENABLE KEYS */;
+UNLOCK TABLES;
+COMMIT;
+
+-- Dumped table `paddlenum_pn` with 0 row(s)
+--
+
+--
+-- Table structure for table `permissions`
+--
+
+DROP TABLE IF EXISTS `permissions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `permissions` (
+  `permission_id` int(11) NOT NULL AUTO_INCREMENT,
+  `permission_name` varchar(50) NOT NULL,
+  `permission_desc` varchar(250) DEFAULT NULL,
+  PRIMARY KEY (`permission_id`),
+  UNIQUE KEY `permission_name` (`permission_name`)
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `permissions`
+--
+
+LOCK TABLES `permissions` WRITE;
+/*!40000 ALTER TABLE `permissions` DISABLE KEYS */;
+SET autocommit=0;
+INSERT INTO `permissions` VALUES (1,'addPeople','Add People'),(3,'updatePeople','Update People'),(4,'deletePeopleRecords','Delete People Records'),(5,'curdProperties','Manage Properties '),(6,'crudClassifications','Manage Classifications'),(7,'crudGroups','Manage Groups'),(8,'crudRoles','Manage Roles'),(9,'crudDonations','Manage Donations'),(10,'curdFinance','Manage Finance'),(11,'curdNotes','Manage Notes'),(12,'canvasser','Canvasser volunteer'),(13,'editSelf','Edit own family only'),(14,'emailMailto','Allow to see Mailto Links'),(15,'createDirectory','Create Directories'),(16,'exportCSV','Export CSV files'),(17,'usAddressVerification','Use IST Address Verification'),(18,'crudEvent','Manage Events');
+/*!40000 ALTER TABLE `permissions` ENABLE KEYS */;
+UNLOCK TABLES;
+COMMIT;
+
+-- Dumped table `permissions` with 17 row(s)
+--
+
+--
+-- Table structure for table `person2group2role_p2g2r`
+--
+
+DROP TABLE IF EXISTS `person2group2role_p2g2r`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `person2group2role_p2g2r` (
+  `p2g2r_per_ID` mediumint(8) unsigned NOT NULL DEFAULT 0,
+  `p2g2r_grp_ID` mediumint(8) unsigned NOT NULL DEFAULT 0,
+  `p2g2r_rle_ID` mediumint(8) unsigned NOT NULL DEFAULT 0,
+  PRIMARY KEY (`p2g2r_per_ID`,`p2g2r_grp_ID`),
+  KEY `p2g2r_per_ID` (`p2g2r_per_ID`,`p2g2r_grp_ID`,`p2g2r_rle_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `person2group2role_p2g2r`
+--
+
+LOCK TABLES `person2group2role_p2g2r` WRITE;
+/*!40000 ALTER TABLE `person2group2role_p2g2r` DISABLE KEYS */;
+SET autocommit=0;
+INSERT INTO `person2group2role_p2g2r` VALUES (2,9,1),(2,11,1),(4,1,1),(5,1,2),(7,6,1),(8,1,2),(9,1,2),(10,2,2),(11,3,2),(12,5,2),(13,2,2),(16,5,2),(21,6,2),(22,4,2),(24,4,2),(25,5,2),(26,7,1),(26,11,1),(30,3,2),(60,7,1),(63,1,1),(63,8,1),(67,2,1),(79,5,1),(79,9,1),(80,2,2),(80,8,1),(82,2,2),(83,9,1),(93,6,1),(95,8,1),(96,5,2),(100,4,1),(222,23,2),(223,23,2),(224,23,2),(225,23,2),(226,23,2),(227,23,2);
+/*!40000 ALTER TABLE `person2group2role_p2g2r` ENABLE KEYS */;
+UNLOCK TABLES;
+COMMIT;
+
+-- Dumped table `person2group2role_p2g2r` with 39 row(s)
+--
+
+--
+-- Table structure for table `person2volunteeropp_p2vo`
+--
+
+DROP TABLE IF EXISTS `person2volunteeropp_p2vo`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `person2volunteeropp_p2vo` (
+  `p2vo_ID` mediumint(9) NOT NULL AUTO_INCREMENT,
+  `p2vo_per_ID` mediumint(9) DEFAULT NULL,
+  `p2vo_vol_ID` mediumint(9) DEFAULT NULL,
+  PRIMARY KEY (`p2vo_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `person2volunteeropp_p2vo`
+--
+
+LOCK TABLES `person2volunteeropp_p2vo` WRITE;
+/*!40000 ALTER TABLE `person2volunteeropp_p2vo` DISABLE KEYS */;
+SET autocommit=0;
+/*!40000 ALTER TABLE `person2volunteeropp_p2vo` ENABLE KEYS */;
+UNLOCK TABLES;
+COMMIT;
+
+-- Dumped table `person2volunteeropp_p2vo` with 0 row(s)
+--
+
+--
+-- Table structure for table `person_custom`
+--
+
+DROP TABLE IF EXISTS `person_custom`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `person_custom` (
+  `per_ID` mediumint(9) NOT NULL DEFAULT 0,
+  `c1` mediumint(9) DEFAULT NULL,
+  `c2` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `c3` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `c4` tinyint(4) DEFAULT NULL,
+  PRIMARY KEY (`per_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `person_custom`
+--
+
+LOCK TABLES `person_custom` WRITE;
+/*!40000 ALTER TABLE `person_custom` DISABLE KEYS */;
+SET autocommit=0;
+INSERT INTO `person_custom` VALUES (19,NULL,NULL,NULL,NULL),(50,NULL,NULL,'Law School',NULL),(78,2,NULL,NULL,NULL),(80,NULL,'Fr. Join Smith',NULL,NULL),(104,NULL,NULL,NULL,2),(105,NULL,NULL,NULL,NULL),(108,NULL,NULL,NULL,NULL),(109,NULL,NULL,NULL,NULL),(110,NULL,NULL,NULL,NULL),(111,NULL,NULL,NULL,NULL),(112,NULL,NULL,NULL,NULL),(113,NULL,NULL,NULL,NULL),(114,NULL,NULL,NULL,NULL),(117,NULL,NULL,NULL,NULL),(118,NULL,NULL,NULL,NULL),(119,NULL,NULL,NULL,NULL),(120,NULL,NULL,NULL,NULL),(121,NULL,NULL,NULL,NULL),(122,NULL,NULL,NULL,NULL),(123,NULL,NULL,NULL,NULL),(124,NULL,NULL,NULL,NULL),(125,NULL,NULL,NULL,NULL),(126,NULL,NULL,NULL,NULL),(127,NULL,NULL,NULL,NULL),(128,NULL,NULL,NULL,NULL),(129,NULL,NULL,NULL,NULL),(130,NULL,NULL,NULL,NULL),(131,NULL,NULL,NULL,NULL),(132,NULL,NULL,NULL,NULL),(133,NULL,NULL,NULL,NULL),(134,NULL,NULL,NULL,NULL),(135,NULL,NULL,NULL,NULL),(136,NULL,NULL,NULL,NULL),(137,NULL,NULL,NULL,NULL),(138,NULL,NULL,NULL,NULL),(139,NULL,NULL,NULL,NULL),(140,NULL,NULL,NULL,NULL),(141,NULL,NULL,NULL,NULL),(142,NULL,NULL,NULL,NULL),(143,NULL,NULL,NULL,NULL),(144,NULL,NULL,NULL,NULL),(145,NULL,NULL,NULL,NULL),(146,NULL,NULL,NULL,NULL),(147,NULL,NULL,NULL,NULL),(148,NULL,NULL,NULL,NULL),(149,NULL,NULL,NULL,NULL),(150,NULL,NULL,NULL,NULL),(151,NULL,NULL,NULL,NULL),(152,NULL,NULL,NULL,NULL),(153,NULL,NULL,NULL,NULL),(156,NULL,NULL,NULL,NULL),(157,NULL,NULL,NULL,NULL),(158,NULL,NULL,NULL,NULL),(159,NULL,NULL,NULL,NULL),(160,NULL,NULL,NULL,NULL),(161,NULL,NULL,NULL,NULL),(162,NULL,NULL,NULL,NULL),(163,NULL,NULL,NULL,NULL),(164,NULL,NULL,NULL,NULL),(165,NULL,NULL,NULL,NULL),(166,NULL,NULL,NULL,NULL),(167,NULL,NULL,NULL,NULL),(168,NULL,NULL,NULL,NULL),(169,NULL,NULL,NULL,NULL),(172,NULL,NULL,NULL,NULL),(173,NULL,NULL,NULL,NULL),(174,NULL,NULL,NULL,NULL),(175,NULL,NULL,NULL,NULL),(176,NULL,NULL,NULL,NULL),(177,NULL,NULL,NULL,NULL),(178,NULL,NULL,NULL,NULL),(181,NULL,NULL,NULL,NULL),(182,NULL,NULL,NULL,NULL),(183,NULL,NULL,NULL,NULL),(184,NULL,NULL,NULL,NULL),(185,NULL,NULL,NULL,NULL),(186,NULL,NULL,NULL,NULL),(187,NULL,NULL,NULL,NULL),(190,NULL,NULL,NULL,NULL),(191,NULL,NULL,NULL,NULL),(192,NULL,NULL,NULL,NULL),(193,NULL,NULL,NULL,NULL),(194,NULL,NULL,NULL,NULL),(195,NULL,NULL,NULL,NULL),(196,NULL,NULL,NULL,NULL),(199,NULL,NULL,NULL,NULL),(200,NULL,NULL,NULL,NULL),(201,NULL,NULL,NULL,NULL),(202,NULL,NULL,NULL,NULL),(203,NULL,NULL,NULL,NULL),(204,NULL,NULL,NULL,NULL),(205,NULL,NULL,NULL,NULL),(206,NULL,NULL,NULL,NULL),(207,NULL,NULL,NULL,NULL),(208,NULL,NULL,NULL,NULL),(209,NULL,NULL,NULL,NULL),(210,NULL,NULL,NULL,NULL),(211,NULL,NULL,NULL,NULL),(212,NULL,NULL,NULL,NULL),(215,NULL,NULL,NULL,NULL),(216,NULL,NULL,NULL,NULL),(217,NULL,NULL,NULL,NULL),(218,NULL,NULL,NULL,NULL),(219,NULL,NULL,NULL,NULL),(220,NULL,NULL,NULL,NULL),(221,NULL,NULL,NULL,NULL),(222,NULL,NULL,NULL,NULL),(223,NULL,NULL,NULL,NULL),(224,NULL,NULL,NULL,NULL),(225,NULL,NULL,NULL,NULL),(226,NULL,NULL,NULL,NULL),(227,NULL,NULL,NULL,NULL),(228,NULL,NULL,NULL,NULL);
+/*!40000 ALTER TABLE `person_custom` ENABLE KEYS */;
+UNLOCK TABLES;
+COMMIT;
+
+-- Dumped table `person_custom` with 113 row(s)
+--
+
+--
+-- Table structure for table `person_custom_master`
+--
+
+DROP TABLE IF EXISTS `person_custom_master`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `person_custom_master` (
+  `custom_Order` smallint(6) NOT NULL DEFAULT 0,
+  `custom_Field` varchar(5) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `custom_Name` varchar(40) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `custom_Special` mediumint(8) unsigned DEFAULT NULL,
+  `custom_FieldSec` tinyint(4) NOT NULL,
+  `type_ID` tinyint(4) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`custom_Field`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `person_custom_master`
+--
+
+LOCK TABLES `person_custom_master` WRITE;
+/*!40000 ALTER TABLE `person_custom_master` DISABLE KEYS */;
+SET autocommit=0;
+INSERT INTO `person_custom_master` VALUES (1,'c1','Father of confession',11,2,9),(2,'c2','Father of confession - Other',NULL,2,3),(3,'c3','Highest Degree Received',NULL,1,4),(4,'c4','My Custom Drop Down List',24,1,12);
+/*!40000 ALTER TABLE `person_custom_master` ENABLE KEYS */;
+UNLOCK TABLES;
+COMMIT;
+
+-- Dumped table `person_custom_master` with 4 row(s)
 --
 
 --
@@ -1486,201 +1691,59 @@ COMMIT;
 --
 
 --
--- Table structure for table `eventcounts_evtcnt`
+-- Table structure for table `person_permission`
 --
 
-DROP TABLE IF EXISTS `eventcounts_evtcnt`;
+DROP TABLE IF EXISTS `person_permission`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `eventcounts_evtcnt` (
-  `evtcnt_eventid` int(5) NOT NULL DEFAULT 0,
-  `evtcnt_countid` int(5) NOT NULL DEFAULT 0,
-  `evtcnt_countname` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `evtcnt_countcount` int(6) DEFAULT NULL,
-  `evtcnt_notes` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`evtcnt_eventid`,`evtcnt_countid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+CREATE TABLE `person_permission` (
+  `per_id` int(11) NOT NULL,
+  `permission_id` int(11) NOT NULL,
+  PRIMARY KEY (`per_id`,`permission_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `eventcounts_evtcnt`
+-- Dumping data for table `person_permission`
 --
 
-LOCK TABLES `eventcounts_evtcnt` WRITE;
-/*!40000 ALTER TABLE `eventcounts_evtcnt` DISABLE KEYS */;
+LOCK TABLES `person_permission` WRITE;
+/*!40000 ALTER TABLE `person_permission` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `eventcounts_evtcnt` VALUES (1,4,'Total',25,''),(1,5,'Members',10,''),(1,6,'Visitors',0,''),(2,1,'Total',100,''),(2,2,'Members',0,''),(2,3,'Visitors',0,''),(3,4,'Total',100,''),(3,5,'Members',0,''),(3,6,'Visitors',0,'');
-/*!40000 ALTER TABLE `eventcounts_evtcnt` ENABLE KEYS */;
+/*!40000 ALTER TABLE `person_permission` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
 
--- Dumped table `eventcounts_evtcnt` with 9 row(s)
+-- Dumped table `person_permission` with 0 row(s)
 --
 
 --
--- Table structure for table `istlookup_lu`
+-- Table structure for table `person_roles`
 --
 
-DROP TABLE IF EXISTS `istlookup_lu`;
+DROP TABLE IF EXISTS `person_roles`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `istlookup_lu` (
-  `lu_fam_ID` mediumint(9) NOT NULL DEFAULT 0,
-  `lu_LookupDateTime` datetime NOT NULL DEFAULT '2016-01-01 00:00:00',
-  `lu_DeliveryLine1` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `lu_DeliveryLine2` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `lu_City` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `lu_State` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `lu_ZipAddon` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `lu_Zip` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `lu_Addon` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `lu_LOTNumber` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `lu_DPCCheckdigit` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `lu_RecordType` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `lu_LastLine` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `lu_CarrierRoute` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `lu_ReturnCodes` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `lu_ErrorCodes` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `lu_ErrorDesc` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`lu_fam_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='US Address Verification Lookups From Intelligent Search Tech';
+CREATE TABLE `person_roles` (
+  `per_id` int(11) NOT NULL,
+  `role_id` int(11) NOT NULL,
+  PRIMARY KEY (`per_id`,`role_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `istlookup_lu`
+-- Dumping data for table `person_roles`
 --
 
-LOCK TABLES `istlookup_lu` WRITE;
-/*!40000 ALTER TABLE `istlookup_lu` DISABLE KEYS */;
+LOCK TABLES `person_roles` WRITE;
+/*!40000 ALTER TABLE `person_roles` DISABLE KEYS */;
 SET autocommit=0;
-/*!40000 ALTER TABLE `istlookup_lu` ENABLE KEYS */;
+/*!40000 ALTER TABLE `person_roles` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
 
--- Dumped table `istlookup_lu` with 0 row(s)
---
-
---
--- Table structure for table `groupprop_2`
---
-
-DROP TABLE IF EXISTS `groupprop_2`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `groupprop_2` (
-  `per_ID` mediumint(8) unsigned NOT NULL DEFAULT 0,
-  `c1` date DEFAULT NULL,
-  `c2` tinyint(4) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `groupprop_2`
---
-
-LOCK TABLES `groupprop_2` WRITE;
-/*!40000 ALTER TABLE `groupprop_2` DISABLE KEYS */;
-SET autocommit=0;
-INSERT INTO `groupprop_2` VALUES (4,NULL,2),(151,NULL,NULL),(293,NULL,NULL),(301,NULL,1),(304,NULL,NULL),(309,NULL,NULL),(311,NULL,1),(314,NULL,2),(319,NULL,NULL),(328,NULL,NULL),(344,NULL,1),(363,NULL,NULL),(364,NULL,NULL),(385,NULL,NULL),(448,NULL,NULL),(572,NULL,3),(576,NULL,3),(617,NULL,NULL),(618,NULL,1),(633,NULL,1),(634,NULL,1),(635,NULL,NULL),(636,NULL,NULL),(637,NULL,NULL),(639,NULL,1),(661,NULL,NULL),(727,NULL,NULL),(749,NULL,NULL),(759,NULL,NULL),(760,NULL,NULL),(766,NULL,NULL),(774,NULL,NULL),(777,NULL,NULL),(778,NULL,NULL);
-/*!40000 ALTER TABLE `groupprop_2` ENABLE KEYS */;
-UNLOCK TABLES;
-COMMIT;
-
--- Dumped table `groupprop_2` with 34 row(s)
---
-
---
--- Table structure for table `person2volunteeropp_p2vo`
---
-
-DROP TABLE IF EXISTS `person2volunteeropp_p2vo`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `person2volunteeropp_p2vo` (
-  `p2vo_ID` mediumint(9) NOT NULL AUTO_INCREMENT,
-  `p2vo_per_ID` mediumint(9) DEFAULT NULL,
-  `p2vo_vol_ID` mediumint(9) DEFAULT NULL,
-  PRIMARY KEY (`p2vo_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `person2volunteeropp_p2vo`
---
-
-LOCK TABLES `person2volunteeropp_p2vo` WRITE;
-/*!40000 ALTER TABLE `person2volunteeropp_p2vo` DISABLE KEYS */;
-SET autocommit=0;
-/*!40000 ALTER TABLE `person2volunteeropp_p2vo` ENABLE KEYS */;
-UNLOCK TABLES;
-COMMIT;
-
--- Dumped table `person2volunteeropp_p2vo` with 0 row(s)
---
-
---
--- Table structure for table `group_grp`
---
-
-DROP TABLE IF EXISTS `group_grp`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `group_grp` (
-  `grp_ID` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
-  `grp_Type` tinyint(4) NOT NULL DEFAULT 0,
-  `grp_RoleListID` mediumint(8) unsigned NOT NULL DEFAULT 0,
-  `grp_DefaultRole` mediumint(9) NOT NULL DEFAULT 0,
-  `grp_Name` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `grp_Description` text COLLATE utf8_unicode_ci DEFAULT NULL,
-  `grp_hasSpecialProps` tinyint(1) NOT NULL DEFAULT 0,
-  `grp_active` tinyint(1) NOT NULL DEFAULT 1,
-  `grp_include_email_export` tinyint(1) NOT NULL DEFAULT 1,
-  PRIMARY KEY (`grp_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `group_grp`
---
-
-LOCK TABLES `group_grp` WRITE;
-/*!40000 ALTER TABLE `group_grp` DISABLE KEYS */;
-SET autocommit=0;
-INSERT INTO `group_grp` VALUES (1,4,13,2,'Angels class',NULL,0,1,1),(2,4,14,2,'Class 1-3',NULL,0,1,1),(3,4,15,2,'Class 4-5',NULL,0,1,1),(4,4,16,2,'Class 6-7',NULL,0,1,1),(5,4,17,2,'High School Class',NULL,0,1,1),(6,4,18,2,'Youth Meeting',NULL,0,1,1),(7,0,19,1,'Boys Scouts',NULL,0,1,1),(8,0,20,1,'Girl Scouts',NULL,0,0,0),(9,0,21,1,'Church Board',NULL,0,1,0),(10,1,22,1,'Worship Service','',0,1,1),(11,0,23,1,'Clergy',NULL,0,1,1),(12,0,26,1,'New Test Group',NULL,0,1,1),(13,0,27,1,'New Test Group',NULL,0,1,1),(14,0,28,1,'New Test Group',NULL,0,1,1),(15,0,29,1,'New Test Group',NULL,0,1,1),(16,0,30,1,'New Test Group',NULL,0,1,1),(17,0,31,1,'New Test Group',NULL,0,1,1),(18,0,32,1,'New Test Group',NULL,0,1,1),(19,0,33,1,'New Test Group',NULL,0,1,1),(20,0,34,1,'New Test Group',NULL,0,1,1),(21,0,35,1,'New Test Group',NULL,0,1,1),(22,0,36,1,'New Test Group',NULL,0,1,1),(23,0,37,1,'sdfsdfsdf',NULL,1,1,1);
-/*!40000 ALTER TABLE `group_grp` ENABLE KEYS */;
-UNLOCK TABLES;
-COMMIT;
-
--- Dumped table `group_grp` with 23 row(s)
---
-
---
--- Table structure for table `groupprop_7`
---
-
-DROP TABLE IF EXISTS `groupprop_7`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `groupprop_7` (
-  `per_ID` mediumint(8) unsigned NOT NULL DEFAULT 0,
-  `c1` date DEFAULT NULL,
-  `c2` tinyint(4) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `groupprop_7`
---
-
-LOCK TABLES `groupprop_7` WRITE;
-/*!40000 ALTER TABLE `groupprop_7` DISABLE KEYS */;
-SET autocommit=0;
-INSERT INTO `groupprop_7` VALUES (39,NULL,NULL),(42,NULL,NULL),(104,NULL,NULL),(134,NULL,NULL),(216,NULL,NULL),(300,NULL,1),(303,NULL,NULL),(313,NULL,2),(318,NULL,2),(327,NULL,1),(331,NULL,2),(365,NULL,NULL),(573,NULL,NULL),(575,NULL,1),(577,NULL,1),(581,NULL,2),(582,NULL,2),(662,NULL,NULL),(663,NULL,NULL),(664,NULL,1),(665,NULL,2),(748,NULL,NULL);
-/*!40000 ALTER TABLE `groupprop_7` ENABLE KEYS */;
-UNLOCK TABLES;
-COMMIT;
-
--- Dumped table `groupprop_7` with 22 row(s)
+-- Dumped table `person_roles` with 0 row(s)
 --
 
 --
@@ -1732,100 +1795,306 @@ COMMIT;
 --
 
 --
--- Table structure for table `groupprop_master`
+-- Table structure for table `propertytype_prt`
 --
 
-DROP TABLE IF EXISTS `groupprop_master`;
+DROP TABLE IF EXISTS `propertytype_prt`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `groupprop_master` (
-  `grp_ID` mediumint(9) unsigned NOT NULL DEFAULT 0,
-  `prop_ID` tinyint(3) unsigned NOT NULL DEFAULT 0,
-  `prop_Field` varchar(5) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
-  `prop_Name` varchar(40) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `prop_Description` varchar(60) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `type_ID` smallint(5) unsigned NOT NULL DEFAULT 0,
-  `prop_Special` mediumint(9) unsigned DEFAULT NULL,
-  `prop_PersonDisplay` enum('false','true') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'false'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Group-specific properties order, name, description, type';
+CREATE TABLE `propertytype_prt` (
+  `prt_ID` mediumint(9) NOT NULL AUTO_INCREMENT,
+  `prt_Class` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `prt_Name` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `prt_Description` text COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`prt_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `groupprop_master`
+-- Dumping data for table `propertytype_prt`
 --
 
-LOCK TABLES `groupprop_master` WRITE;
-/*!40000 ALTER TABLE `groupprop_master` DISABLE KEYS */;
+LOCK TABLES `propertytype_prt` WRITE;
+/*!40000 ALTER TABLE `propertytype_prt` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `groupprop_master` VALUES (23,1,'c1','sdfsaf','',6,NULL,'false');
-/*!40000 ALTER TABLE `groupprop_master` ENABLE KEYS */;
+INSERT INTO `propertytype_prt` VALUES (1,'p','General','General Person Properties'),(2,'f','General','General Family Properties'),(3,'g','General','General Group Properties');
+/*!40000 ALTER TABLE `propertytype_prt` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
 
--- Dumped table `groupprop_master` with 1 row(s)
+-- Dumped table `propertytype_prt` with 3 row(s)
 --
 
 --
--- Table structure for table `user_settings`
+-- Table structure for table `property_pro`
 --
 
-DROP TABLE IF EXISTS `user_settings`;
+DROP TABLE IF EXISTS `property_pro`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `user_settings` (
-  `user_id` int(11) NOT NULL,
-  `setting_name` varchar(50) NOT NULL,
-  `setting_value` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`user_id`,`setting_name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `property_pro` (
+  `pro_ID` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
+  `pro_Class` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `pro_prt_ID` mediumint(8) unsigned NOT NULL DEFAULT 0,
+  `pro_Name` varchar(200) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  `pro_Description` text COLLATE utf8_unicode_ci NOT NULL,
+  `pro_Prompt` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`pro_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `user_settings`
+-- Dumping data for table `property_pro`
 --
 
-LOCK TABLES `user_settings` WRITE;
-/*!40000 ALTER TABLE `user_settings` DISABLE KEYS */;
+LOCK TABLES `property_pro` WRITE;
+/*!40000 ALTER TABLE `property_pro` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `user_settings` VALUES (0,'ui.email.delimiter',','),(1,'finance.FY','23'),(1,'finance.show.payments','true'),(1,'finance.show.pledges','true'),(1,'finance.show.since','2016-01-01'),(1,'ui.email.delimiter',','),(1,'ui.locale','en_US'),(1,'ui.search.calendar.end',NULL),(1,'ui.search.calendar.start',NULL),(1,'ui.style','skin-red'),(1,'ui.table.size','10'),(3,'finance.FY','23'),(3,'finance.show.payments','0'),(3,'finance.show.pledges','0'),(3,'finance.show.since','2016-01-01'),(3,'ui.email.delimiter',','),(3,'ui.locale','en_US'),(3,'ui.search.calendar.end',NULL),(3,'ui.search.calendar.start',NULL),(3,'ui.style','skin-yellow-light'),(3,'ui.table.size','10'),(76,'finance.FY','20'),(76,'finance.show.payments','0'),(76,'finance.show.pledges','0'),(76,'finance.show.since','2016-01-01'),(76,'ui.email.delimiter',','),(76,'ui.search.calendar.end',NULL),(76,'ui.search.calendar.start',NULL),(76,'ui.style','skin-blue'),(76,'ui.table.size','10'),(95,'finance.FY','20'),(95,'finance.show.payments','0'),(95,'finance.show.pledges','0'),(95,'finance.show.since','2016-01-01'),(95,'ui.email.delimiter',','),(95,'ui.search.calendar.end',NULL),(95,'ui.search.calendar.start',NULL),(95,'ui.style','skin-blue'),(95,'ui.table.size','10');
-/*!40000 ALTER TABLE `user_settings` ENABLE KEYS */;
+INSERT INTO `property_pro` VALUES (1,'p',1,'Disabled','has a disability.','What is the nature of the disability?'),(2,'f',2,'Single Parent','is a single-parent household.',''),(3,'g',3,'Youth','is youth-oriented.',''),(4,'g',3,'Scouts','',''),(5,'f',2,'Test','Who','What do you want'),(6,'p',1,'Test','Who','What do you want'),(7,'f',2,'Test','Who','What do you want'),(8,'p',1,'Test','Who','What do you want'),(9,'f',2,'Test','Who','What do you want'),(10,'p',1,'Test','Who','What do you want'),(11,'f',2,'Test','Who','What do you want'),(12,'p',1,'Test','Who','What do you want'),(13,'f',2,'Test','Who','What do you want'),(14,'p',1,'Test','Who','What do you want'),(15,'f',2,'Test','Who','What do you want'),(16,'p',1,'Test','Who','What do you want'),(17,'f',2,'Test','Who','What do you want'),(18,'p',1,'Test','Who','What do you want'),(19,'f',2,'Test','Who','What do you want'),(20,'p',1,'Test','Who','What do you want'),(21,'f',2,'Test','Who','What do you want'),(22,'p',1,'Test','Who','What do you want'),(23,'f',2,'Test','Who','What do you want'),(24,'p',1,'Test','Who','What do you want'),(25,'f',2,'Test','Who','What do you want'),(26,'p',1,'Test','Who','What do you want'),(27,'f',2,'Test','Who','What do you want'),(28,'p',1,'Test','Who','What do you want'),(29,'f',2,'Test','Who','What do you want'),(30,'p',1,'Test','Who','What do you want');
+/*!40000 ALTER TABLE `property_pro` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
 
--- Dumped table `user_settings` with 39 row(s)
+-- Dumped table `property_pro` with 30 row(s)
 --
 
 --
--- Table structure for table `deposit_dep`
+-- Table structure for table `queryparameteroptions_qpo`
 --
 
-DROP TABLE IF EXISTS `deposit_dep`;
+DROP TABLE IF EXISTS `queryparameteroptions_qpo`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `deposit_dep` (
-  `dep_ID` mediumint(9) unsigned NOT NULL AUTO_INCREMENT,
-  `dep_Date` date DEFAULT NULL,
-  `dep_Comment` text COLLATE utf8_unicode_ci DEFAULT NULL,
-  `dep_EnteredBy` mediumint(9) unsigned DEFAULT NULL,
-  `dep_Closed` tinyint(1) NOT NULL DEFAULT 0,
-  `dep_Type` enum('Bank','CreditCard','BankDraft','eGive') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'Bank',
-  PRIMARY KEY (`dep_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci PACK_KEYS=0;
+CREATE TABLE `queryparameteroptions_qpo` (
+  `qpo_ID` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
+  `qpo_qrp_ID` mediumint(8) unsigned NOT NULL DEFAULT 0,
+  `qpo_Display` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `qpo_Value` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  PRIMARY KEY (`qpo_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `deposit_dep`
+-- Dumping data for table `queryparameteroptions_qpo`
 --
 
-LOCK TABLES `deposit_dep` WRITE;
-/*!40000 ALTER TABLE `deposit_dep` DISABLE KEYS */;
+LOCK TABLES `queryparameteroptions_qpo` WRITE;
+/*!40000 ALTER TABLE `queryparameteroptions_qpo` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `deposit_dep` VALUES (1,'2018-02-11','',NULL,0,'Bank'),(2,'2018-02-18','',NULL,0,'Bank'),(3,'2018-02-25','',NULL,0,'Bank'),(4,'2018-03-04','',NULL,0,'Bank'),(5,'2018-03-11','',NULL,0,'Bank'),(6,'2021-04-25','Selenium Test Deposit',NULL,0,'Bank'),(7,'2021-04-25','Selenium Test Deposit',NULL,0,'Bank'),(8,'2021-04-25','Selenium Test Deposit',NULL,0,'Bank'),(9,'2021-04-25','Selenium Test Deposit',NULL,0,'Bank'),(10,'2021-04-25','Selenium Test Deposit',NULL,0,'Bank'),(11,'2021-04-25','Selenium Test Deposit',NULL,0,'Bank'),(12,'2021-04-25','Selenium Test Deposit',NULL,0,'Bank'),(13,'2021-04-25','Selenium Test Deposit',NULL,0,'Bank'),(14,'2021-04-25','Selenium Test Deposit',NULL,0,'Bank'),(15,'2021-04-25','Selenium Test Deposit',NULL,0,'Bank'),(16,'2021-04-25','Selenium Test Deposit',NULL,0,'Bank'),(17,'2021-04-25','Selenium Test Deposit',NULL,0,'Bank'),(18,'2021-04-25','Selenium Test Deposit',NULL,0,'Bank');
-/*!40000 ALTER TABLE `deposit_dep` ENABLE KEYS */;
+INSERT INTO `queryparameteroptions_qpo` VALUES (1,4,'Male','1'),(2,4,'Female','2'),(3,6,'Male','1'),(4,6,'Female','2'),(5,15,'Name','CONCAT(COALESCE(`per_FirstName`,\'),COALESCE(`per_MiddleName`,\'),COALESCE(`per_LastName`,\'))'),(6,15,'Zip Code','fam_Zip'),(7,15,'State','fam_State'),(8,15,'City','fam_City'),(9,15,'Home Phone','per_HomePhone'),(10,27,'2012/2013','17'),(11,27,'2013/2014','18'),(12,27,'2014/2015','19'),(13,27,'2015/2016','20'),(14,28,'2012/2013','17'),(15,28,'2013/2014','18'),(16,28,'2014/2015','19'),(17,28,'2015/2016','20'),(18,30,'2012/2013','17'),(19,30,'2013/2014','18'),(20,30,'2014/2015','19'),(21,30,'2015/2016','20'),(22,31,'2012/2013','17'),(23,31,'2013/2014','18'),(24,31,'2014/2015','19'),(25,31,'2015/2016','20'),(26,15,'Email','per_Email'),(27,15,'WorkEmail','per_WorkEmail'),(28,32,'2012/2013','17'),(29,32,'2013/2014','18'),(30,32,'2014/2015','19'),(31,32,'2015/2016','20'),(32,33,'Member','1'),(33,33,'Regular Attender','2'),(34,33,'Guest','3'),(35,33,'Non-Attender','4'),(36,33,'Non-Attender (staff)','5');
+/*!40000 ALTER TABLE `queryparameteroptions_qpo` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
 
--- Dumped table `deposit_dep` with 18 row(s)
+-- Dumped table `queryparameteroptions_qpo` with 36 row(s)
+--
+
+--
+-- Table structure for table `queryparameters_qrp`
+--
+
+DROP TABLE IF EXISTS `queryparameters_qrp`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `queryparameters_qrp` (
+  `qrp_ID` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
+  `qrp_qry_ID` mediumint(8) unsigned NOT NULL DEFAULT 0,
+  `qrp_Type` tinyint(3) unsigned NOT NULL DEFAULT 0,
+  `qrp_OptionSQL` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `qrp_Name` varchar(25) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `qrp_Description` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `qrp_Alias` varchar(25) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `qrp_Default` varchar(25) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `qrp_Required` tinyint(3) unsigned NOT NULL DEFAULT 0,
+  `qrp_InputBoxSize` tinyint(3) unsigned NOT NULL DEFAULT 0,
+  `qrp_Validation` varchar(5) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `qrp_NumericMax` int(11) DEFAULT NULL,
+  `qrp_NumericMin` int(11) DEFAULT NULL,
+  `qrp_AlphaMinLength` int(11) DEFAULT NULL,
+  `qrp_AlphaMaxLength` int(11) DEFAULT NULL,
+  PRIMARY KEY (`qrp_ID`),
+  KEY `qrp_qry_ID` (`qrp_qry_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=202 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `queryparameters_qrp`
+--
+
+LOCK TABLES `queryparameters_qrp` WRITE;
+/*!40000 ALTER TABLE `queryparameters_qrp` DISABLE KEYS */;
+SET autocommit=0;
+INSERT INTO `queryparameters_qrp` VALUES (1,4,0,NULL,'Minimum Age','The minimum age for which you want records returned.','min','0',0,5,'n',120,0,NULL,NULL),(2,4,0,NULL,'Maximum Age','The maximum age for which you want records returned.','max','120',1,5,'n',120,0,NULL,NULL),(4,6,1,'','Gender','The desired gender to search the database for.','gender','1',1,0,'',0,0,0,0),(5,7,2,'SELECT lst_OptionID as Value, lst_OptionName as Display FROM list_lst WHERE lst_ID=2 ORDER BY lst_OptionSequence','Family Role','Select the desired family role.','role','1',0,0,'',0,0,0,0),(6,7,1,'','Gender','The gender for which you would like records returned.','gender','1',1,0,'',0,0,0,0),(8,9,2,'SELECT pro_ID AS Value, pro_Name as Display \r\nFROM property_pro\r\nWHERE pro_Class= \'p\' \r\nORDER BY pro_Name ','Property','The property for which you would like person records returned.','PropertyID','0',1,0,'',0,0,0,0),(9,10,2,'SELECT distinct don_date as Value, don_date as Display FROM donations_don ORDER BY don_date ASC','Beginning Date','Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations.','startdate','1',1,0,'0',0,0,0,0),(10,10,2,'SELECT distinct don_date as Value, don_date as Display FROM donations_don\r\nORDER BY don_date DESC','Ending Date','Please enter the last date to calculate total contributions for each member (i.e. YYYY-MM-DD).','enddate','1',1,0,'',0,0,0,0),(14,15,0,'','Search','Enter any part of the following: Name, City, State, Zip, Home Phone, Email, or Work Email.','searchstring','',1,0,'',0,0,0,0),(15,15,1,'','Field','Select field to search for.','searchwhat','1',1,0,'',0,0,0,0),(16,11,2,'SELECT distinct don_date as Value, don_date as Display FROM donations_don ORDER BY don_date ASC','Beginning Date','Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations.','startdate','1',1,0,'0',0,0,0,0),(17,11,2,'SELECT distinct don_date as Value, don_date as Display FROM donations_don\r\nORDER BY don_date DESC','Ending Date','Please enter the last date to calculate total contributions for each member (i.e. YYYY-MM-DD).','enddate','1',1,0,'',0,0,0,0),(18,18,0,'','Month','The birthday month for which you would like records returned.','birthmonth','1',1,0,'',12,1,1,2),(19,19,2,'SELECT grp_ID AS Value, grp_Name AS Display FROM group_grp ORDER BY grp_Type','Class','The sunday school class for which you would like records returned.','group','1',1,0,'',12,1,1,2),(20,20,2,'SELECT grp_ID AS Value, grp_Name AS Display FROM group_grp ORDER BY grp_Type','Class','The sunday school class for which you would like records returned.','group','1',1,0,'',12,1,1,2),(21,21,2,'SELECT grp_ID AS Value, grp_Name AS Display FROM group_grp ORDER BY grp_Type','Registered students','Group of registered students','group','1',1,0,'',12,1,1,2),(22,22,0,'','Month','The membership anniversary month for which you would like records returned.','membermonth','1',1,0,'',12,1,1,2),(25,25,2,'SELECT vol_ID AS Value, vol_Name AS Display FROM volunteeropportunity_vol ORDER BY vol_Name','Volunteer opportunities','Choose a volunteer opportunity','volopp','1',1,0,'',12,1,1,2),(26,26,0,'','Months','Number of months since becoming a friend','friendmonths','1',1,0,'',24,1,1,2),(27,28,1,'','First Fiscal Year','First fiscal year for comparison','fyid1','9',1,0,'',12,9,0,0),(28,28,1,'','Second Fiscal Year','Second fiscal year for comparison','fyid2','9',1,0,'',12,9,0,0),(30,30,1,'','First Fiscal Year','Pledged this year','fyid1','9',1,0,'',12,9,0,0),(31,30,1,'','Second Fiscal Year','but not this year','fyid2','9',1,0,'',12,9,0,0),(32,32,1,'','Fiscal Year','Fiscal Year.','fyid','9',1,0,'',12,9,0,0),(33,18,1,'','Classification','Member, Regular Attender, etc.','percls','1',1,0,'',12,1,1,2),(100,100,2,'SELECT vol_ID AS Value, vol_Name AS Display FROM volunteeropportunity_vol ORDER BY vol_Name','Volunteer opportunities','First volunteer opportunity choice','volopp1','1',1,0,'',12,1,1,2),(101,100,2,'SELECT vol_ID AS Value, vol_Name AS Display FROM volunteeropportunity_vol ORDER BY vol_Name','Volunteer opportunities','Second volunteer opportunity choice','volopp2','1',1,0,'',12,1,1,2),(200,200,2,'SELECT custom_field as Value, custom_Name as Display FROM person_custom_master','Custom field','Choose customer person field','custom','1',0,0,'',0,0,0,0),(201,200,0,'','Field value','Match custom field to this value','value','1',0,0,'',0,0,0,0);
+/*!40000 ALTER TABLE `queryparameters_qrp` ENABLE KEYS */;
+UNLOCK TABLES;
+COMMIT;
+
+-- Dumped table `queryparameters_qrp` with 29 row(s)
+--
+
+--
+-- Table structure for table `query_qry`
+--
+
+DROP TABLE IF EXISTS `query_qry`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `query_qry` (
+  `qry_ID` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
+  `qry_SQL` text COLLATE utf8_unicode_ci NOT NULL,
+  `qry_Name` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `qry_Description` text COLLATE utf8_unicode_ci NOT NULL,
+  `qry_Count` tinyint(1) unsigned NOT NULL DEFAULT 0,
+  PRIMARY KEY (`qry_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=201 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `query_qry`
+--
+
+LOCK TABLES `query_qry` WRITE;
+/*!40000 ALTER TABLE `query_qry` DISABLE KEYS */;
+SET autocommit=0;
+INSERT INTO `query_qry` VALUES (3,'SELECT CONCAT(\'<a href=v2/family/\',fam_ID,\'>\',fam_Name,\'</a>\') AS \'Family Name\', COUNT(*) AS \'No.\'\nFROM person_per\nINNER JOIN family_fam\nON fam_ID = per_fam_ID\nGROUP BY per_fam_ID\nORDER BY \'No.\' DESC','Family Member Count','Returns each family and the total number of people assigned to them.',0),(4,'SELECT per_ID as AddToCart,CONCAT(\'<a\r\nhref=PersonView.php?PersonID=\',per_ID,\'>\',per_FirstName,\'\r\n\',per_LastName,\'</a>\') AS Name,\r\nCONCAT(per_BirthMonth,\'/\',per_BirthDay,\'/\',per_BirthYear) AS \'Birth Date\',\r\nDATE_FORMAT(FROM_DAYS(TO_DAYS(NOW())-TO_DAYS(CONCAT(per_BirthYear,\'-\',per_BirthMonth,\'-\',per_BirthDay))),\'%Y\')+0 AS  \'Age\'\r\nFROM person_per\r\nWHERE\r\nDATE_ADD(CONCAT(per_BirthYear,\'-\',per_BirthMonth,\'-\',per_BirthDay),INTERVAL\r\n~min~ YEAR) <= CURDATE()\r\nAND\r\nDATE_ADD(CONCAT(per_BirthYear,\'-\',per_BirthMonth,\'-\',per_BirthDay),INTERVAL\r\n(~max~ + 1) YEAR) >= CURDATE()','Person by Age','Returns any person records with ages between two given ages.',1),(6,'SELECT COUNT(per_ID) AS Total FROM person_per WHERE per_Gender = ~gender~','Total By Gender','Total of records matching a given gender.',0),(7,'SELECT per_ID as AddToCart, CONCAT(per_FirstName,\' \',per_LastName) AS Name FROM person_per WHERE per_fmr_ID = ~role~ AND per_Gender = ~gender~','Person by Role and Gender','Selects person records with the family role and gender specified.',1),(9,'SELECT \r\nper_ID as AddToCart, \r\nCONCAT(per_FirstName,\' \',per_LastName) AS Name, \r\nCONCAT(r2p_Value,\' \') AS Value\r\nFROM person_per,record2property_r2p\r\nWHERE per_ID = r2p_record_ID\r\nAND r2p_pro_ID = ~PropertyID~\r\nORDER BY per_LastName','Person by Property','Returns person records which are assigned the given property.',1),(15,'SELECT per_ID as AddToCart, CONCAT(\'<a href=PersonView.php?PersonID=\',per_ID,\'>\',COALESCE(`per_FirstName`,\'\'),\' \',COALESCE(`per_MiddleName`,\'\'),\' \',COALESCE(`per_LastName`,\'\'),\'</a>\') AS Name, fam_City as City, fam_State as State, fam_Zip as ZIP, per_HomePhone as HomePhone, per_Email as Email, per_WorkEmail as WorkEmail FROM person_per RIGHT JOIN family_fam ON family_fam.fam_id = person_per.per_fam_id WHERE ~searchwhat~ LIKE \'%~searchstring~%\'','Advanced Search','Search by any part of Name, City, State, Zip, Home Phone, Email, or Work Email.',1),(18,'SELECT per_ID as AddToCart, per_BirthDay as Day, CONCAT(per_FirstName,\' \',per_LastName) AS Name FROM person_per WHERE per_cls_ID=~percls~ AND per_BirthMonth=~birthmonth~ ORDER BY per_BirthDay','Birthdays','People with birthdays in a particular month',0),(21,'SELECT per_ID as AddToCart, CONCAT(\'<a href=PersonView.php?PersonID=\',per_ID,\'>\',per_FirstName,\' \',per_LastName,\'</a>\') AS Name FROM person_per LEFT JOIN person2group2role_p2g2r ON per_id = p2g2r_per_ID WHERE p2g2r_grp_ID=~group~ ORDER BY per_LastName','Registered students','Find Registered students',1),(22,'SELECT per_ID as AddToCart, DAYOFMONTH(per_MembershipDate) as Day, per_MembershipDate AS DATE, CONCAT(per_FirstName,\' \',per_LastName) AS Name FROM person_per WHERE per_cls_ID=1 AND MONTH(per_MembershipDate)=~membermonth~ ORDER BY per_MembershipDate','Membership anniversaries','Members who joined in a particular month',0),(23,'SELECT usr_per_ID as AddToCart, CONCAT(a.per_FirstName,\' \',a.per_LastName) AS Name FROM user_usr LEFT JOIN person_per a ON per_ID=usr_per_ID ORDER BY per_LastName','Select database users','People who are registered as database users',0),(24,'SELECT per_ID as AddToCart, CONCAT(\'<a href=PersonView.php?PersonID=\',per_ID,\'>\',per_FirstName,\' \',per_LastName,\'</a>\') AS Name FROM person_per WHERE per_cls_id =1','Select all members','People who are members',0),(25,'SELECT per_ID as AddToCart, CONCAT(\'<a href=PersonView.php?PersonID=\',per_ID,\'>\',per_FirstName,\' \',per_LastName,\'</a>\') AS Name FROM person_per LEFT JOIN person2volunteeropp_p2vo ON per_id = p2vo_per_ID WHERE p2vo_vol_ID = ~volopp~ ORDER BY per_LastName','Volunteers','Find volunteers for a particular opportunity',1),(26,'SELECT per_ID as AddToCart, CONCAT(per_FirstName,\' \',per_LastName) AS Name FROM person_per WHERE DATE_SUB(NOW(),INTERVAL ~friendmonths~ MONTH)<per_FriendDate ORDER BY per_MembershipDate','Recent friends','Friends who signed up in previous months',0),(27,'SELECT per_ID as AddToCart, CONCAT(per_FirstName,\' \',per_LastName) AS Name FROM person_per inner join family_fam on per_fam_ID=fam_ID where per_fmr_ID<>3 AND fam_OkToCanvass=\"TRUE\" ORDER BY fam_Zip','Families to Canvass','People in families that are ok to canvass.',0),(28,'SELECT fam_Name, a.plg_amount as PlgFY1, b.plg_amount as PlgFY2 from family_fam left join pledge_plg a on a.plg_famID = fam_ID and a.plg_FYID=~fyid1~ and a.plg_PledgeOrPayment=\'Pledge\' left join pledge_plg b on b.plg_famID = fam_ID and b.plg_FYID=~fyid2~ and b.plg_PledgeOrPayment=\'Pledge\' order by fam_Name','Pledge comparison','Compare pledges between two fiscal years',1),(30,'SELECT per_ID as AddToCart, CONCAT(per_FirstName,\' \',per_LastName) AS Name, fam_address1, fam_city, fam_state, fam_zip FROM person_per join family_fam on per_fam_id=fam_id where per_fmr_id<>3 and per_fam_id in (select fam_id from family_fam inner join pledge_plg a on a.plg_famID=fam_ID and a.plg_FYID=~fyid1~ and a.plg_amount>0) and per_fam_id not in (select fam_id from family_fam inner join pledge_plg b on b.plg_famID=fam_ID and b.plg_FYID=~fyid2~ and b.plg_amount>0)','Missing pledges','Find people who pledged one year but not another',1),(31,'select per_ID as AddToCart, per_FirstName, per_LastName, per_email from person_per, autopayment_aut where aut_famID=per_fam_ID and aut_CreditCard!=\"\" and per_email!=\"\" and (per_fmr_ID=1 or per_fmr_ID=2 or per_cls_ID=1)','Credit Card People','People who are configured to pay by credit card.',0),(32,'SELECT fam_Name, fam_Envelope, b.fun_Name as Fund_Name, a.plg_amount as Pledge from family_fam left join pledge_plg a on a.plg_famID = fam_ID and a.plg_FYID=~fyid~ and a.plg_PledgeOrPayment=\'Pledge\' and a.plg_amount>0 join donationfund_fun b on b.fun_ID = a.plg_fundID order by fam_Name, a.plg_fundID','Family Pledge by Fiscal Year','Pledge summary by family name for each fund for the selected fiscal year',1),(100,'SELECT a.per_ID as AddToCart, CONCAT(\'<a href=PersonView.php?PersonID=\',a.per_ID,\'>\',a.per_FirstName,\' \',a.per_LastName,\'</a>\') AS Name FROM person_per AS a LEFT JOIN person2volunteeropp_p2vo p2v1 ON (a.per_id = p2v1.p2vo_per_ID AND p2v1.p2vo_vol_ID = ~volopp1~) LEFT JOIN person2volunteeropp_p2vo p2v2 ON (a.per_id = p2v2.p2vo_per_ID AND p2v2.p2vo_vol_ID = ~volopp2~) WHERE p2v1.p2vo_per_ID=p2v2.p2vo_per_ID ORDER BY per_LastName','Volunteers','Find volunteers for who match two specific opportunity codes',1),(200,'SELECT a.per_ID as AddToCart, CONCAT(\'<a href=PersonView.php?PersonID=\',a.per_ID,\'>\',a.per_FirstName,\' \',a.per_LastName,\'</a>\') AS Name FROM person_per AS a LEFT JOIN person_custom pc ON a.per_id = pc.per_ID WHERE pc.~custom~=\'~value~\' ORDER BY per_LastName','CustomSearch','Find people with a custom field value',1);
+/*!40000 ALTER TABLE `query_qry` ENABLE KEYS */;
+UNLOCK TABLES;
+COMMIT;
+
+-- Dumped table `query_qry` with 20 row(s)
+--
+
+--
+-- Table structure for table `record2property_r2p`
+--
+
+DROP TABLE IF EXISTS `record2property_r2p`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `record2property_r2p` (
+  `r2p_pro_ID` mediumint(8) unsigned NOT NULL DEFAULT 0,
+  `r2p_record_ID` mediumint(8) unsigned NOT NULL DEFAULT 0,
+  `r2p_Value` text COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `record2property_r2p`
+--
+
+LOCK TABLES `record2property_r2p` WRITE;
+/*!40000 ALTER TABLE `record2property_r2p` DISABLE KEYS */;
+SET autocommit=0;
+INSERT INTO `record2property_r2p` VALUES (4,7,''),(4,8,''),(1,59,'N/A'),(1,114,'N/A'),(1,123,'N/A'),(1,162,'N/A'),(1,169,'N/A'),(1,178,'N/A'),(1,187,'N/A'),(1,196,'N/A'),(1,205,'N/A'),(1,212,'N/A'),(1,221,'N/A'),(1,228,'N/A');
+/*!40000 ALTER TABLE `record2property_r2p` ENABLE KEYS */;
+UNLOCK TABLES;
+COMMIT;
+
+-- Dumped table `record2property_r2p` with 14 row(s)
+--
+
+--
+-- Table structure for table `result_res`
+--
+
+DROP TABLE IF EXISTS `result_res`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `result_res` (
+  `res_ID` mediumint(9) NOT NULL AUTO_INCREMENT,
+  `res_echotype1` text COLLATE utf8_unicode_ci NOT NULL,
+  `res_echotype2` text COLLATE utf8_unicode_ci NOT NULL,
+  `res_echotype3` text COLLATE utf8_unicode_ci NOT NULL,
+  `res_authorization` text COLLATE utf8_unicode_ci NOT NULL,
+  `res_order_number` text COLLATE utf8_unicode_ci NOT NULL,
+  `res_reference` text COLLATE utf8_unicode_ci NOT NULL,
+  `res_status` text COLLATE utf8_unicode_ci NOT NULL,
+  `res_avs_result` text COLLATE utf8_unicode_ci NOT NULL,
+  `res_security_result` text COLLATE utf8_unicode_ci NOT NULL,
+  `res_mac` text COLLATE utf8_unicode_ci NOT NULL,
+  `res_decline_code` text COLLATE utf8_unicode_ci NOT NULL,
+  `res_tran_date` text COLLATE utf8_unicode_ci NOT NULL,
+  `res_merchant_name` text COLLATE utf8_unicode_ci NOT NULL,
+  `res_version` text COLLATE utf8_unicode_ci NOT NULL,
+  `res_EchoServer` text COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`res_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `result_res`
+--
+
+LOCK TABLES `result_res` WRITE;
+/*!40000 ALTER TABLE `result_res` DISABLE KEYS */;
+SET autocommit=0;
+/*!40000 ALTER TABLE `result_res` ENABLE KEYS */;
+UNLOCK TABLES;
+COMMIT;
+
+-- Dumped table `result_res` with 0 row(s)
+--
+
+--
+-- Table structure for table `roles`
+--
+
+DROP TABLE IF EXISTS `roles`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `roles` (
+  `role_id` int(11) NOT NULL AUTO_INCREMENT,
+  `role_name` varchar(50) NOT NULL,
+  `role_desc` varchar(250) DEFAULT NULL,
+  PRIMARY KEY (`role_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `roles`
+--
+
+LOCK TABLES `roles` WRITE;
+/*!40000 ALTER TABLE `roles` DISABLE KEYS */;
+SET autocommit=0;
+INSERT INTO `roles` VALUES (1,'Welcome Committee',NULL),(2,'Clergy',NULL);
+/*!40000 ALTER TABLE `roles` ENABLE KEYS */;
+UNLOCK TABLES;
+COMMIT;
+
+-- Dumped table `roles` with 2 row(s)
+--
+
+--
+-- Table structure for table `tokens`
+--
+
+DROP TABLE IF EXISTS `tokens`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tokens` (
+  `token` varchar(99) COLLATE utf8_unicode_ci NOT NULL,
+  `type` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `reference_id` int(9) NOT NULL,
+  `valid_until_date` datetime DEFAULT NULL,
+  `remainingUses` int(2) DEFAULT NULL,
+  PRIMARY KEY (`token`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tokens`
+--
+
+LOCK TABLES `tokens` WRITE;
+/*!40000 ALTER TABLE `tokens` DISABLE KEYS */;
+SET autocommit=0;
+INSERT INTO `tokens` VALUES ('60857719bfd23','password',3,'2021-04-26 10:05:13',1),('60857f497052c','password',3,'2021-04-26 10:40:09',1),('60857fb53e96f','password',3,'2021-04-26 10:41:57',1),('6085a2436f14e','password',3,'2021-04-26 13:09:23',1),('6085ce0e1e0c4','password',3,'2021-04-26 16:16:14',1),('6085d38aee1d1','password',3,'2021-04-26 16:39:38',1),('6085d553a4d50','password',3,'2021-04-26 16:47:15',1),('6085d5c1b5c6a','password',3,'2021-04-26 16:49:05',1),('6085d96fe2f87','password',3,'2021-04-26 17:04:47',1),('6085dccdac282','password',3,'2021-04-26 17:19:09',1),('6085e06ba44ec','password',3,'2021-04-26 17:34:35',1),('6086029bea898','password',3,'2021-04-26 20:00:27',1),('60861832ad541','password',3,'2021-04-26 21:32:34',1),('60861c0fc4780','password',3,'2021-04-26 21:49:03',1),('608627f7874a1','verifyFamily',2,'2021-05-02 22:39:51',5),('608628078bc34','password',3,'2021-04-26 22:40:07',1),('63ae25e2b31a7','password',3,'2022-12-30 18:42:26',1);
+/*!40000 ALTER TABLE `tokens` ENABLE KEYS */;
+UNLOCK TABLES;
+COMMIT;
+
+-- Dumped table `tokens` with 17 row(s)
 --
 
 --
@@ -1864,278 +2133,164 @@ COMMIT;
 --
 
 --
--- Table structure for table `groupprop_45`
+-- Table structure for table `user_settings`
 --
 
-DROP TABLE IF EXISTS `groupprop_45`;
+DROP TABLE IF EXISTS `user_settings`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `groupprop_45` (
-  `per_ID` mediumint(8) unsigned NOT NULL DEFAULT 0,
-  `c1` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+CREATE TABLE `user_settings` (
+  `user_id` int(11) NOT NULL,
+  `setting_name` varchar(50) NOT NULL,
+  `setting_value` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`user_id`,`setting_name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `groupprop_45`
+-- Dumping data for table `user_settings`
 --
 
-LOCK TABLES `groupprop_45` WRITE;
-/*!40000 ALTER TABLE `groupprop_45` DISABLE KEYS */;
+LOCK TABLES `user_settings` WRITE;
+/*!40000 ALTER TABLE `user_settings` DISABLE KEYS */;
 SET autocommit=0;
-/*!40000 ALTER TABLE `groupprop_45` ENABLE KEYS */;
+INSERT INTO `user_settings` VALUES (0,'ui.email.delimiter',','),(1,'finance.FY','23'),(1,'finance.show.payments','true'),(1,'finance.show.pledges','true'),(1,'finance.show.since','2016-01-01'),(1,'ui.email.delimiter',','),(1,'ui.locale','en_US'),(1,'ui.search.calendar.end',NULL),(1,'ui.search.calendar.start',NULL),(1,'ui.style','skin-red'),(1,'ui.table.size','10'),(3,'finance.FY','23'),(3,'finance.show.payments','0'),(3,'finance.show.pledges','0'),(3,'finance.show.since','2016-01-01'),(3,'ui.email.delimiter',','),(3,'ui.locale','en_US'),(3,'ui.search.calendar.end',NULL),(3,'ui.search.calendar.start',NULL),(3,'ui.style','skin-yellow-light'),(3,'ui.table.size','10'),(76,'finance.FY','20'),(76,'finance.show.payments','0'),(76,'finance.show.pledges','0'),(76,'finance.show.since','2016-01-01'),(76,'ui.email.delimiter',','),(76,'ui.search.calendar.end',NULL),(76,'ui.search.calendar.start',NULL),(76,'ui.style','skin-blue'),(76,'ui.table.size','10'),(95,'finance.FY','20'),(95,'finance.show.payments','0'),(95,'finance.show.pledges','0'),(95,'finance.show.since','2016-01-01'),(95,'ui.email.delimiter',','),(95,'ui.search.calendar.end',NULL),(95,'ui.search.calendar.start',NULL),(95,'ui.style','skin-blue'),(95,'ui.table.size','10');
+/*!40000 ALTER TABLE `user_settings` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
 
--- Dumped table `groupprop_45` with 0 row(s)
+-- Dumped table `user_settings` with 39 row(s)
 --
 
 --
--- Table structure for table `tokens`
+-- Table structure for table `user_usr`
 --
 
-DROP TABLE IF EXISTS `tokens`;
+DROP TABLE IF EXISTS `user_usr`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `tokens` (
-  `token` varchar(99) COLLATE utf8_unicode_ci NOT NULL,
-  `type` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `reference_id` int(9) NOT NULL,
-  `valid_until_date` datetime DEFAULT NULL,
-  `remainingUses` int(2) DEFAULT NULL,
-  PRIMARY KEY (`token`)
+CREATE TABLE `user_usr` (
+  `usr_per_ID` mediumint(9) unsigned NOT NULL DEFAULT 0,
+  `usr_Password` varchar(500) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `usr_NeedPasswordChange` tinyint(3) unsigned NOT NULL DEFAULT 1,
+  `usr_LastLogin` datetime NOT NULL DEFAULT '2016-01-01 00:00:00',
+  `usr_LoginCount` smallint(5) unsigned NOT NULL DEFAULT 0,
+  `usr_FailedLogins` tinyint(3) unsigned NOT NULL DEFAULT 0,
+  `usr_AddRecords` tinyint(3) unsigned NOT NULL DEFAULT 0,
+  `usr_EditRecords` tinyint(3) unsigned NOT NULL DEFAULT 0,
+  `usr_DeleteRecords` tinyint(3) unsigned NOT NULL DEFAULT 0,
+  `usr_MenuOptions` tinyint(3) unsigned NOT NULL DEFAULT 0,
+  `usr_ManageGroups` tinyint(3) unsigned NOT NULL DEFAULT 0,
+  `usr_Finance` tinyint(3) unsigned NOT NULL DEFAULT 0,
+  `usr_Notes` tinyint(3) unsigned NOT NULL DEFAULT 0,
+  `usr_Admin` tinyint(3) unsigned NOT NULL DEFAULT 0,
+  `usr_SearchLimit` tinyint(4) DEFAULT 10,
+  `usr_Style` varchar(50) COLLATE utf8_unicode_ci DEFAULT 'Style.css',
+  `usr_showPledges` tinyint(1) NOT NULL DEFAULT 0,
+  `usr_showPayments` tinyint(1) NOT NULL DEFAULT 0,
+  `usr_showSince` date NOT NULL DEFAULT '2016-01-01',
+  `usr_defaultFY` mediumint(9) NOT NULL DEFAULT 10,
+  `usr_currentDeposit` mediumint(9) NOT NULL DEFAULT 0,
+  `usr_UserName` varchar(32) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `usr_apiKey` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `usr_EditSelf` tinyint(3) unsigned NOT NULL DEFAULT 0,
+  `usr_CalStart` date DEFAULT NULL,
+  `usr_CalEnd` date DEFAULT NULL,
+  `usr_CalNoSchool1` date DEFAULT NULL,
+  `usr_CalNoSchool2` date DEFAULT NULL,
+  `usr_CalNoSchool3` date DEFAULT NULL,
+  `usr_CalNoSchool4` date DEFAULT NULL,
+  `usr_CalNoSchool5` date DEFAULT NULL,
+  `usr_CalNoSchool6` date DEFAULT NULL,
+  `usr_CalNoSchool7` date DEFAULT NULL,
+  `usr_CalNoSchool8` date DEFAULT NULL,
+  `usr_SearchFamily` tinyint(3) DEFAULT NULL,
+  `usr_Canvasser` tinyint(3) NOT NULL DEFAULT 0,
+  `usr_TwoFactorAuthSecret` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `usr_TwoFactorAuthLastKeyTimestamp` int(11) DEFAULT NULL,
+  `usr_TwoFactorAuthRecoveryCodes` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`usr_per_ID`),
+  UNIQUE KEY `usr_UserName` (`usr_UserName`),
+  UNIQUE KEY `usr_apiKey_unique` (`usr_apiKey`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tokens`
+-- Dumping data for table `user_usr`
 --
 
-LOCK TABLES `tokens` WRITE;
-/*!40000 ALTER TABLE `tokens` DISABLE KEYS */;
+LOCK TABLES `user_usr` WRITE;
+/*!40000 ALTER TABLE `user_usr` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `tokens` VALUES ('60857719bfd23','password',3,'2021-04-26 10:05:13',1),('60857f497052c','password',3,'2021-04-26 10:40:09',1),('60857fb53e96f','password',3,'2021-04-26 10:41:57',1),('6085a2436f14e','password',3,'2021-04-26 13:09:23',1),('6085ce0e1e0c4','password',3,'2021-04-26 16:16:14',1),('6085d38aee1d1','password',3,'2021-04-26 16:39:38',1),('6085d553a4d50','password',3,'2021-04-26 16:47:15',1),('6085d5c1b5c6a','password',3,'2021-04-26 16:49:05',1),('6085d96fe2f87','password',3,'2021-04-26 17:04:47',1),('6085dccdac282','password',3,'2021-04-26 17:19:09',1),('6085e06ba44ec','password',3,'2021-04-26 17:34:35',1),('6086029bea898','password',3,'2021-04-26 20:00:27',1),('60861832ad541','password',3,'2021-04-26 21:32:34',1),('60861c0fc4780','password',3,'2021-04-26 21:49:03',1),('608627f7874a1','verifyFamily',2,'2021-05-02 22:39:51',5),('608628078bc34','password',3,'2021-04-26 22:40:07',1),('63ae25e2b31a7','password',3,'2022-12-30 18:42:26',1);
-/*!40000 ALTER TABLE `tokens` ENABLE KEYS */;
+INSERT INTO `user_usr` VALUES (1,'4bdf3fba58c956fc3991a1fde84929223f968e2853de596e49ae80a91499609b',0,'2023-10-21 19:04:55',360,0,0,0,0,0,0,0,0,1,10,'skin-red',1,1,'2016-01-01',23,5,'Admin','ajGwpy8Pdai22XDUpqjC5Ob04v0eG7EGgb4vz2bD2juT8YDmfM',0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,NULL,NULL,NULL),(3,'6d6abba93a4ea780f575e39b2ef6281357dd4e0b1a74ff3f459ee52fbb6614d8',0,'2022-12-29 18:40:16',0,0,1,1,1,1,1,1,1,0,10,'skin-yellow-light',0,0,'2016-01-01',26,0,'tony.wade@example.com','JZJApQ9XOnF7nvupWZlTWBRrqMtHE9eNcWBTUzEWGqL4Sdqp6C',1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL),(95,'ed7162b5a395e9ba3f9012eda6e9d2150d5ab76cdb082dc4a1422b4f2da2d102',1,'2022-12-29 21:01:30',0,0,0,0,0,0,0,0,0,0,10,'skin-blue',0,0,'2016-01-01',26,0,'judith.matthews@example.com',NULL,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL);
+/*!40000 ALTER TABLE `user_usr` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
 
--- Dumped table `tokens` with 17 row(s)
+-- Dumped table `user_usr` with 3 row(s)
 --
 
 --
--- Table structure for table `person_custom`
+-- Table structure for table `version_ver`
 --
 
-DROP TABLE IF EXISTS `person_custom`;
+DROP TABLE IF EXISTS `version_ver`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `person_custom` (
-  `per_ID` mediumint(9) NOT NULL DEFAULT 0,
-  `c1` mediumint(9) DEFAULT NULL,
-  `c2` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `c3` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `c4` tinyint(4) DEFAULT NULL,
-  PRIMARY KEY (`per_ID`)
+CREATE TABLE `version_ver` (
+  `ver_ID` mediumint(9) unsigned NOT NULL AUTO_INCREMENT,
+  `ver_version` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `ver_update_start` datetime DEFAULT NULL,
+  `ver_update_end` datetime DEFAULT NULL,
+  PRIMARY KEY (`ver_ID`),
+  UNIQUE KEY `ver_version` (`ver_version`)
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `version_ver`
+--
+
+LOCK TABLES `version_ver` WRITE;
+/*!40000 ALTER TABLE `version_ver` DISABLE KEYS */;
+SET autocommit=0;
+INSERT INTO `version_ver` VALUES (1,'3.5.0','2019-02-10 20:14:23',NULL),(2,'3.5.2','2019-09-10 22:54:56','2019-09-10 22:54:56'),(3,'3.5.4','2019-10-11 22:45:35','2019-10-11 22:45:35'),(4,'4.0.0','2020-06-16 13:11:20','2020-06-16 13:11:20'),(5,'4.1.0','2020-06-16 13:11:20','2020-06-16 13:11:21'),(6,'4.2.3','2020-10-17 01:46:16','2020-10-17 01:46:16'),(7,'4.3.1','2020-11-23 18:55:02','2020-11-23 18:55:02'),(8,'4.3.2','2020-12-10 01:57:09','2020-12-10 01:57:09'),(9,'4.4.0','2021-03-21 17:44:23','2021-03-21 17:44:23'),(10,'4.4.1','2021-05-09 13:58:09','2021-04-27 13:58:09'),(11,'4.4.2','2021-05-09 13:58:09','2021-04-27 13:58:09'),(12,'4.4.3','2021-05-09 13:58:09','2021-04-27 13:58:09'),(13,'4.4.4','2021-07-08 13:58:09','2021-07-08 13:58:09'),(14,'4.4.5','2021-07-09 13:58:09','2021-07-09 13:58:09'),(15,'4.5.0','2021-07-09 13:58:09','2021-09-03 13:58:09'),(16,'4.5.1','2022-12-03 14:02:00','2022-12-03 14:02:00'),(17,'4.5.2','2022-12-28 21:42:20','2022-12-28 21:42:20'),(18,'4.5.3','2023-01-01 20:32:08','2023-01-01 20:32:08'),(19,'5.0.0','2023-05-06 17:29:55','2023-05-06 17:29:55'),(20,'5.0.1','2023-10-21 19:04:42','2023-10-21 19:04:42');
+/*!40000 ALTER TABLE `version_ver` ENABLE KEYS */;
+UNLOCK TABLES;
+COMMIT;
+
+-- Dumped table `version_ver` with 20 row(s)
+--
+
+--
+-- Table structure for table `volunteeropportunity_vol`
+--
+
+DROP TABLE IF EXISTS `volunteeropportunity_vol`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `volunteeropportunity_vol` (
+  `vol_ID` int(3) NOT NULL AUTO_INCREMENT,
+  `vol_Order` int(3) NOT NULL DEFAULT 0,
+  `vol_Active` enum('true','false') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'true',
+  `vol_Name` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `vol_Description` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`vol_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `person_custom`
+-- Dumping data for table `volunteeropportunity_vol`
 --
 
-LOCK TABLES `person_custom` WRITE;
-/*!40000 ALTER TABLE `person_custom` DISABLE KEYS */;
+LOCK TABLES `volunteeropportunity_vol` WRITE;
+/*!40000 ALTER TABLE `volunteeropportunity_vol` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `person_custom` VALUES (19,NULL,NULL,NULL,NULL),(50,NULL,NULL,'Law School',NULL),(78,2,NULL,NULL,NULL),(80,NULL,'Fr. Join Smith',NULL,NULL),(104,NULL,NULL,NULL,2),(105,NULL,NULL,NULL,NULL),(108,NULL,NULL,NULL,NULL),(109,NULL,NULL,NULL,NULL),(110,NULL,NULL,NULL,NULL),(111,NULL,NULL,NULL,NULL),(112,NULL,NULL,NULL,NULL),(113,NULL,NULL,NULL,NULL),(114,NULL,NULL,NULL,NULL),(117,NULL,NULL,NULL,NULL),(118,NULL,NULL,NULL,NULL),(119,NULL,NULL,NULL,NULL),(120,NULL,NULL,NULL,NULL),(121,NULL,NULL,NULL,NULL),(122,NULL,NULL,NULL,NULL),(123,NULL,NULL,NULL,NULL),(124,NULL,NULL,NULL,NULL),(125,NULL,NULL,NULL,NULL),(126,NULL,NULL,NULL,NULL),(127,NULL,NULL,NULL,NULL),(128,NULL,NULL,NULL,NULL),(129,NULL,NULL,NULL,NULL),(130,NULL,NULL,NULL,NULL),(131,NULL,NULL,NULL,NULL),(132,NULL,NULL,NULL,NULL),(133,NULL,NULL,NULL,NULL),(134,NULL,NULL,NULL,NULL),(135,NULL,NULL,NULL,NULL),(136,NULL,NULL,NULL,NULL),(137,NULL,NULL,NULL,NULL),(138,NULL,NULL,NULL,NULL),(139,NULL,NULL,NULL,NULL),(140,NULL,NULL,NULL,NULL),(141,NULL,NULL,NULL,NULL),(142,NULL,NULL,NULL,NULL),(143,NULL,NULL,NULL,NULL),(144,NULL,NULL,NULL,NULL),(145,NULL,NULL,NULL,NULL),(146,NULL,NULL,NULL,NULL),(147,NULL,NULL,NULL,NULL),(148,NULL,NULL,NULL,NULL),(149,NULL,NULL,NULL,NULL),(150,NULL,NULL,NULL,NULL),(151,NULL,NULL,NULL,NULL),(152,NULL,NULL,NULL,NULL),(153,NULL,NULL,NULL,NULL),(156,NULL,NULL,NULL,NULL),(157,NULL,NULL,NULL,NULL),(158,NULL,NULL,NULL,NULL),(159,NULL,NULL,NULL,NULL),(160,NULL,NULL,NULL,NULL),(161,NULL,NULL,NULL,NULL),(162,NULL,NULL,NULL,NULL),(163,NULL,NULL,NULL,NULL),(164,NULL,NULL,NULL,NULL),(165,NULL,NULL,NULL,NULL),(166,NULL,NULL,NULL,NULL),(167,NULL,NULL,NULL,NULL),(168,NULL,NULL,NULL,NULL),(169,NULL,NULL,NULL,NULL),(172,NULL,NULL,NULL,NULL),(173,NULL,NULL,NULL,NULL),(174,NULL,NULL,NULL,NULL),(175,NULL,NULL,NULL,NULL),(176,NULL,NULL,NULL,NULL),(177,NULL,NULL,NULL,NULL),(178,NULL,NULL,NULL,NULL),(181,NULL,NULL,NULL,NULL),(182,NULL,NULL,NULL,NULL),(183,NULL,NULL,NULL,NULL),(184,NULL,NULL,NULL,NULL),(185,NULL,NULL,NULL,NULL),(186,NULL,NULL,NULL,NULL),(187,NULL,NULL,NULL,NULL),(190,NULL,NULL,NULL,NULL),(191,NULL,NULL,NULL,NULL),(192,NULL,NULL,NULL,NULL),(193,NULL,NULL,NULL,NULL),(194,NULL,NULL,NULL,NULL),(195,NULL,NULL,NULL,NULL),(196,NULL,NULL,NULL,NULL),(199,NULL,NULL,NULL,NULL),(200,NULL,NULL,NULL,NULL),(201,NULL,NULL,NULL,NULL),(202,NULL,NULL,NULL,NULL),(203,NULL,NULL,NULL,NULL),(204,NULL,NULL,NULL,NULL),(205,NULL,NULL,NULL,NULL),(206,NULL,NULL,NULL,NULL),(207,NULL,NULL,NULL,NULL),(208,NULL,NULL,NULL,NULL),(209,NULL,NULL,NULL,NULL),(210,NULL,NULL,NULL,NULL),(211,NULL,NULL,NULL,NULL),(212,NULL,NULL,NULL,NULL),(215,NULL,NULL,NULL,NULL),(216,NULL,NULL,NULL,NULL),(217,NULL,NULL,NULL,NULL),(218,NULL,NULL,NULL,NULL),(219,NULL,NULL,NULL,NULL),(220,NULL,NULL,NULL,NULL),(221,NULL,NULL,NULL,NULL),(222,NULL,NULL,NULL,NULL),(223,NULL,NULL,NULL,NULL),(224,NULL,NULL,NULL,NULL),(225,NULL,NULL,NULL,NULL),(226,NULL,NULL,NULL,NULL),(227,NULL,NULL,NULL,NULL),(228,NULL,NULL,NULL,NULL);
-/*!40000 ALTER TABLE `person_custom` ENABLE KEYS */;
+/*!40000 ALTER TABLE `volunteeropportunity_vol` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
 
--- Dumped table `person_custom` with 113 row(s)
---
-
---
--- Table structure for table `events_event`
---
-
-DROP TABLE IF EXISTS `events_event`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `events_event` (
-  `event_id` int(11) NOT NULL AUTO_INCREMENT,
-  `event_type` int(11) NOT NULL DEFAULT 0,
-  `event_title` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `event_desc` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `event_text` text COLLATE utf8_unicode_ci DEFAULT NULL,
-  `event_start` datetime NOT NULL,
-  `event_end` datetime NOT NULL,
-  `inactive` int(1) NOT NULL DEFAULT 0,
-  `event_typename` varchar(40) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `location_id` int(11) DEFAULT NULL,
-  `secondary_contact_person_id` int(11) DEFAULT NULL,
-  `primary_contact_person_id` int(11) DEFAULT NULL,
-  `event_url` text COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`event_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `events_event`
---
-
-LOCK TABLES `events_event` WRITE;
-/*!40000 ALTER TABLE `events_event` DISABLE KEYS */;
-SET autocommit=0;
-INSERT INTO `events_event` VALUES (1,2,'Sunday School Class Changes','This is when the students move to new classes','','2016-11-20 12:30:00','2016-11-20 13:30:00',0,'Sunday School',NULL,NULL,NULL,NULL),(2,1,'Christmas Service','christmas service','','2016-12-24 22:30:00','2016-12-25 01:30:00',0,'Church Service',NULL,NULL,NULL,NULL),(3,2,'Summer Camp','Summer Camp','','2017-06-06 09:30:00','2017-06-11 09:30:00',0,'Sunday School',NULL,NULL,NULL,NULL);
-/*!40000 ALTER TABLE `events_event` ENABLE KEYS */;
-UNLOCK TABLES;
-COMMIT;
-
--- Dumped table `events_event` with 3 row(s)
---
-
---
--- Table structure for table `groupprop_49`
---
-
-DROP TABLE IF EXISTS `groupprop_49`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `groupprop_49` (
-  `per_ID` mediumint(8) unsigned NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `groupprop_49`
---
-
-LOCK TABLES `groupprop_49` WRITE;
-/*!40000 ALTER TABLE `groupprop_49` DISABLE KEYS */;
-SET autocommit=0;
-/*!40000 ALTER TABLE `groupprop_49` ENABLE KEYS */;
-UNLOCK TABLES;
-COMMIT;
-
--- Dumped table `groupprop_49` with 0 row(s)
---
-
---
--- Table structure for table `paddlenum_pn`
---
-
-DROP TABLE IF EXISTS `paddlenum_pn`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `paddlenum_pn` (
-  `pn_ID` mediumint(9) unsigned NOT NULL AUTO_INCREMENT,
-  `pn_fr_ID` mediumint(9) unsigned DEFAULT NULL,
-  `pn_Num` mediumint(9) unsigned DEFAULT NULL,
-  `pn_per_ID` mediumint(9) NOT NULL DEFAULT 0,
-  PRIMARY KEY (`pn_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `paddlenum_pn`
---
-
-LOCK TABLES `paddlenum_pn` WRITE;
-/*!40000 ALTER TABLE `paddlenum_pn` DISABLE KEYS */;
-SET autocommit=0;
-/*!40000 ALTER TABLE `paddlenum_pn` ENABLE KEYS */;
-UNLOCK TABLES;
-COMMIT;
-
--- Dumped table `paddlenum_pn` with 0 row(s)
---
-
---
--- Table structure for table `egive_egv`
---
-
-DROP TABLE IF EXISTS `egive_egv`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `egive_egv` (
-  `egv_egiveID` varchar(16) CHARACTER SET utf8 NOT NULL,
-  `egv_famID` int(11) NOT NULL,
-  `egv_DateEntered` datetime NOT NULL,
-  `egv_DateLastEdited` datetime NOT NULL,
-  `egv_EnteredBy` smallint(6) NOT NULL DEFAULT 0,
-  `egv_EditedBy` smallint(6) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `egive_egv`
---
-
-LOCK TABLES `egive_egv` WRITE;
-/*!40000 ALTER TABLE `egive_egv` DISABLE KEYS */;
-SET autocommit=0;
-/*!40000 ALTER TABLE `egive_egv` ENABLE KEYS */;
-UNLOCK TABLES;
-COMMIT;
-
--- Dumped table `egive_egv` with 0 row(s)
---
-
---
--- Table structure for table `groupprop_9`
---
-
-DROP TABLE IF EXISTS `groupprop_9`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `groupprop_9` (
-  `per_ID` mediumint(8) unsigned NOT NULL DEFAULT 0,
-  `c1` tinyint(4) DEFAULT NULL,
-  `c2` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `groupprop_9`
---
-
-LOCK TABLES `groupprop_9` WRITE;
-/*!40000 ALTER TABLE `groupprop_9` DISABLE KEYS */;
-SET autocommit=0;
-INSERT INTO `groupprop_9` VALUES (47,NULL,NULL),(170,NULL,NULL),(190,NULL,NULL),(285,NULL,NULL),(296,2,NULL),(317,1,NULL),(321,2,NULL),(329,NULL,NULL),(330,2,NULL),(352,2,NULL),(362,1,NULL),(373,1,NULL),(379,1,NULL),(382,NULL,NULL),(578,1,NULL),(579,1,NULL),(580,NULL,NULL),(584,1,NULL),(585,NULL,NULL),(586,2,NULL),(669,NULL,NULL);
-/*!40000 ALTER TABLE `groupprop_9` ENABLE KEYS */;
-UNLOCK TABLES;
-COMMIT;
-
--- Dumped table `groupprop_9` with 21 row(s)
---
-
---
--- Table structure for table `groupprop_11`
---
-
-DROP TABLE IF EXISTS `groupprop_11`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `groupprop_11` (
-  `per_ID` mediumint(8) unsigned NOT NULL DEFAULT 0,
-  `c1` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `groupprop_11`
---
-
-LOCK TABLES `groupprop_11` WRITE;
-/*!40000 ALTER TABLE `groupprop_11` DISABLE KEYS */;
-SET autocommit=0;
-INSERT INTO `groupprop_11` VALUES (26,NULL),(33,NULL),(34,NULL),(37,NULL),(100,NULL),(125,NULL),(134,NULL),(293,NULL),(349,NULL),(374,NULL),(649,NULL),(650,NULL);
-/*!40000 ALTER TABLE `groupprop_11` ENABLE KEYS */;
-UNLOCK TABLES;
-COMMIT;
-
--- Dumped table `groupprop_11` with 12 row(s)
+-- Dumped table `volunteeropportunity_vol` with 0 row(s)
 --
 
 --
@@ -2168,160 +2323,6 @@ UNLOCK TABLES;
 COMMIT;
 
 -- Dumped table `whycame_why` with 0 row(s)
---
-
---
--- Table structure for table `config_cfg`
---
-
-DROP TABLE IF EXISTS `config_cfg`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `config_cfg` (
-  `cfg_id` int(11) NOT NULL DEFAULT 0,
-  `cfg_name` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `cfg_value` text COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`cfg_id`),
-  UNIQUE KEY `cfg_name` (`cfg_name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `config_cfg`
---
-
-LOCK TABLES `config_cfg` WRITE;
-/*!40000 ALTER TABLE `config_cfg` DISABLE KEYS */;
-SET autocommit=0;
-INSERT INTO `config_cfg` VALUES (10,'aFinanceQueries','28,30,31,32'),(21,'sDefaultCity','Kansas City'),(22,'sDefaultState','MO'),(23,'sDefaultCountry','United States'),(27,'sSMTPHost','smtp.mailtrap.io:2525'),(28,'bSMTPAuth','1'),(29,'sSMTPUser','c58d4ec1a5a021'),(30,'sSMTPPass','3cfab2ee59990c'),(45,'iChurchLatitude','39.1111974'),(46,'iChurchLongitude','-94.5838009'),(48,'bHideFriendDate',''),(49,'bHideFamilyNewsletter',''),(50,'bHideWeddingDate',''),(51,'bHideLatLon',''),(52,'bUseDonationEnvelopes',''),(58,'bUseScannedChecks',''),(65,'sTimeZone','America/Detroit'),(67,'bForceUppercaseZip',''),(72,'bEnableNonDeductible',''),(80,'bEnableSelfRegistration','1'),(999,'bRegistered',''),(1003,'sChurchName','Main St. Cathedral'),(1004,'sChurchAddress','123 Main St'),(1005,'sChurchCity','Kansas City'),(1006,'sChurchState','MO'),(1007,'sChurchZip','64106'),(1008,'sChurchPhone','555 123 4234'),(1009,'sChurchEmail','demo@churchcrm.io'),(1010,'sHomeAreaCode','555'),(1014,'sTaxSigner','Elder Joe Smith'),(1016,'sReminderSigner','Elder Joe Smith'),(1025,'sConfirmSigner','Elder Joe Smith'),(1027,'sPledgeSummary2','as of'),(1028,'sDirectoryDisclaimer1','Every effort was made to insure the accuracy of this directory.  If there are any errors or omissions, please contact the church office.This directory is for the use of the people of'),(1034,'sChurchChkAcctNum','111111111'),(1035,'bEnableGravatarPhotos','1'),(1037,'sExternalBackupType','WebDAV'),(1046,'sLastIntegrityCheckTimeStamp','20230506-173153'),(1047,'sChurchCountry','United States'),(2010,'bAllowEmptyLastName',''),(2017,'bEnableExternalCalendarAPI',''),(2045,'bPHPMailerAutoTLS',''),(2046,'sPHPMailerSMTPSecure',''),(2064,'sLastSoftwareUpdateCheckTimeStamp','20230506-173153'),(20142,'bHSTSEnable','');
-/*!40000 ALTER TABLE `config_cfg` ENABLE KEYS */;
-UNLOCK TABLES;
-COMMIT;
-
--- Dumped table `config_cfg` with 45 row(s)
---
-
---
--- Table structure for table `person2group2role_p2g2r`
---
-
-DROP TABLE IF EXISTS `person2group2role_p2g2r`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `person2group2role_p2g2r` (
-  `p2g2r_per_ID` mediumint(8) unsigned NOT NULL DEFAULT 0,
-  `p2g2r_grp_ID` mediumint(8) unsigned NOT NULL DEFAULT 0,
-  `p2g2r_rle_ID` mediumint(8) unsigned NOT NULL DEFAULT 0,
-  PRIMARY KEY (`p2g2r_per_ID`,`p2g2r_grp_ID`),
-  KEY `p2g2r_per_ID` (`p2g2r_per_ID`,`p2g2r_grp_ID`,`p2g2r_rle_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `person2group2role_p2g2r`
---
-
-LOCK TABLES `person2group2role_p2g2r` WRITE;
-/*!40000 ALTER TABLE `person2group2role_p2g2r` DISABLE KEYS */;
-SET autocommit=0;
-INSERT INTO `person2group2role_p2g2r` VALUES (2,9,1),(2,11,1),(4,1,1),(5,1,2),(7,6,1),(8,1,2),(9,1,2),(10,2,2),(11,3,2),(12,5,2),(13,2,2),(16,5,2),(21,6,2),(22,4,2),(24,4,2),(25,5,2),(26,7,1),(26,11,1),(30,3,2),(60,7,1),(63,1,1),(63,8,1),(67,2,1),(79,5,1),(79,9,1),(80,2,2),(80,8,1),(82,2,2),(83,9,1),(93,6,1),(95,8,1),(96,5,2),(100,4,1),(222,23,2),(223,23,2),(224,23,2),(225,23,2),(226,23,2),(227,23,2);
-/*!40000 ALTER TABLE `person2group2role_p2g2r` ENABLE KEYS */;
-UNLOCK TABLES;
-COMMIT;
-
--- Dumped table `person2group2role_p2g2r` with 39 row(s)
---
-
---
--- Table structure for table `email_message_pending_emp`
---
-
-DROP TABLE IF EXISTS `email_message_pending_emp`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `email_message_pending_emp` (
-  `emp_usr_id` mediumint(9) unsigned NOT NULL DEFAULT 0,
-  `emp_to_send` smallint(5) unsigned NOT NULL DEFAULT 0,
-  `emp_subject` varchar(128) COLLATE utf8_unicode_ci NOT NULL,
-  `emp_message` text COLLATE utf8_unicode_ci NOT NULL,
-  `emp_attach_name` text COLLATE utf8_unicode_ci DEFAULT NULL,
-  `emp_attach` tinyint(1) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `email_message_pending_emp`
---
-
-LOCK TABLES `email_message_pending_emp` WRITE;
-/*!40000 ALTER TABLE `email_message_pending_emp` DISABLE KEYS */;
-SET autocommit=0;
-/*!40000 ALTER TABLE `email_message_pending_emp` ENABLE KEYS */;
-UNLOCK TABLES;
-COMMIT;
-
--- Dumped table `email_message_pending_emp` with 0 row(s)
---
-
---
--- Table structure for table `menu_links`
---
-
-DROP TABLE IF EXISTS `menu_links`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `menu_links` (
-  `linkId` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
-  `linkName` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `linkUri` text COLLATE utf8_unicode_ci NOT NULL,
-  `linkOrder` int(11) NOT NULL,
-  PRIMARY KEY (`linkId`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `menu_links`
---
-
-LOCK TABLES `menu_links` WRITE;
-/*!40000 ALTER TABLE `menu_links` DISABLE KEYS */;
-SET autocommit=0;
-INSERT INTO `menu_links` VALUES (1,'CNN','https://www.cnn.com',0),(2,'Google','https://www.google.com',0);
-/*!40000 ALTER TABLE `menu_links` ENABLE KEYS */;
-UNLOCK TABLES;
-COMMIT;
-
--- Dumped table `menu_links` with 2 row(s)
---
-
---
--- Table structure for table `multibuy_mb`
---
-
-DROP TABLE IF EXISTS `multibuy_mb`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `multibuy_mb` (
-  `mb_ID` mediumint(9) unsigned NOT NULL AUTO_INCREMENT,
-  `mb_per_ID` mediumint(9) NOT NULL DEFAULT 0,
-  `mb_item_ID` mediumint(9) NOT NULL DEFAULT 0,
-  `mb_count` decimal(8,0) DEFAULT NULL,
-  PRIMARY KEY (`mb_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `multibuy_mb`
---
-
-LOCK TABLES `multibuy_mb` WRITE;
-/*!40000 ALTER TABLE `multibuy_mb` DISABLE KEYS */;
-SET autocommit=0;
-/*!40000 ALTER TABLE `multibuy_mb` ENABLE KEYS */;
-UNLOCK TABLES;
-COMMIT;
-
--- Dumped table `multibuy_mb` with 0 row(s)
 --
 
 --
@@ -2366,6 +2367,7 @@ DROP TABLE IF EXISTS `email_list`;
 /*!50001 VIEW `email_list` AS select `family_fam`.`fam_Email` AS `email`,'family' AS `type`,`family_fam`.`fam_ID` AS `id` from `family_fam` where `family_fam`.`fam_Email` is not null and `family_fam`.`fam_Email` <> '' union select `person_per`.`per_Email` AS `email`,'person_home' AS `type`,`person_per`.`per_ID` AS `id` from `person_per` where `person_per`.`per_Email` is not null and `person_per`.`per_Email` <> '' union select `person_per`.`per_WorkEmail` AS `email`,'person_work' AS `type`,`person_per`.`per_ID` AS `id` from `person_per` where `person_per`.`per_WorkEmail` is not null and `person_per`.`per_WorkEmail` <> '' */;
 
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+/*!40101 SET AUTOCOMMIT=@OLD_AUTOCOMMIT */;
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
 /*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
@@ -2374,4 +2376,4 @@ DROP TABLE IF EXISTS `email_list`;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on: Sat, 06 May 2023 17:32:02 -0400
+-- Dump completed on: Sat, 21 Oct 2023 19:05:34 -0400
