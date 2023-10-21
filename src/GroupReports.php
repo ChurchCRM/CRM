@@ -68,17 +68,18 @@ require 'Include/Header.php';
                     </div>
                     <div class="row">
                         <div class="col-xs-12">
-                            <label for="ReportModel"><?= gettext('Report Model') ?>:</label>
-                            <input type="radio" Name="ReportModel" value="1" checked><?= gettext('Report for group and role selected') ?>
-                            <input type="radio" Name="ReportModel" value="2"><?= gettext('Report for any role in group selected') ?>
+                            <label for="ReportModel"><?= gettext('Report Model') ?>:</label> </br>
+                            <ul>
+                            <li><input type="radio" Name="ReportModel" value="1" checked> <?= gettext('Report for group and role selected') ?></li>
+                            <li><input type="radio" Name="ReportModel" value="2"> <?= gettext('Report for any role in group selected') ?></li>
+                            </ul>
                             <?php
-                            //<input type="radio" Name="ReportModel" value="3"><?= gettext("Report any group and role")
                             ?>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-xs-6">
-                            <input type="submit" class="btn btn-default" name="Submit" value="<?= gettext('Next') ?>">
+                            <input type="submit" id="genReportModelBtn" class="btn btn-default" name="Submit" value="<?= gettext('Next') ?>">
                         </div>
                     </div>
                 </form>
@@ -145,7 +146,7 @@ require 'Include/Header.php';
 
                         <p align="center">
                             <BR>
-                            <input type="submit" class="btn btn-default" name="Submit" value="<?= gettext('Create Report') ?>">
+                            <input id="CreateReportBtn" type="submit" class="btn btn-default" name="Submit" value="<?= gettext('Create Report') ?>">
                             <input type="button" class="btn btn-default" name="Cancel" value="<?= gettext('Cancel') ?>" onclick="javascript:document.location = 'Menu.php';">
                         </p>
                     </form>
