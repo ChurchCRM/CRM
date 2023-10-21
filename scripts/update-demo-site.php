@@ -20,12 +20,7 @@ function GetDemoKey() {
 }
 
 function GetBranchName() {
-    if (!empty(getenv("TRAVIS_BRANCH"))) {
-        return getenv("TRAVIS_BRANCH");
-    }
-    else {
-        return exec("git rev-parse --abbrev-ref HEAD");
-    }
+    return exec("git rev-parse --abbrev-ref HEAD");
 }
 
 $buildVersion = $buildconfigs = \json_decode(file_get_contents("package.json"), true)['version'];
