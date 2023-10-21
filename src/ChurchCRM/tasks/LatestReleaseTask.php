@@ -34,7 +34,7 @@ class LatestReleaseTask implements iTask
         $this->latestVersion = ChurchCRMReleaseManager::getNextReleaseStep($this->installedVersion);
       }
       catch (\Exception $e) {
-        LoggerUtils::getAppLogger()->warning($e);
+        LoggerUtils::getAppLogger()->debug($e);
         return false;
       }
       return true;

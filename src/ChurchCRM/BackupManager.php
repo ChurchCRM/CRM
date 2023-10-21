@@ -172,7 +172,7 @@ namespace ChurchCRM\Backup
 
         private function CreateFullArchive()
         {
-            $imagesAddedToArchive = array();
+            $imagesAddedToArchive = [];
             $this->BackupFile = new \SplFileInfo($this->BackupFileBaseName.".tar");
             $phar = new PharData($this->BackupFile->getPathname());
             LoggerUtils::getAppLogger()->debug("Archive opened at: ".$this->BackupFile->getPathname());
@@ -262,7 +262,7 @@ namespace ChurchCRM\Backup
          *
          * @var Array
          */
-        public $Messages;
+        public $Messages = [];
         /**
          *
          * @var Boolean
@@ -283,7 +283,6 @@ namespace ChurchCRM\Backup
         public function __construct()
         {
             LoggerUtils::getAppLogger()->info("Beginning to process incoming archive for restoration");
-            $this->Messages = array();
             if ($this->IsIncomingFileFailed()) {
                 $message = "The selected file exceeds this servers maximum upload size of: " . SystemService::getMaxUploadFileSize();
                 LoggerUtils::getAppLogger()->error($message);

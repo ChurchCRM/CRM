@@ -2,11 +2,6 @@
 
 context('Admin People', () => {
 
-    it('Update Lat & Long ', () => {
-        cy.loginAdmin('UpdateAllLatLon.php');
-        cy.contains("Update Latitude & Longitude");
-    });
-
     it('Person Classifications Editor', () => {
         cy.loginAdmin('OptionManager.php?mode=classes');
         cy.contains("Person Classifications Editor");

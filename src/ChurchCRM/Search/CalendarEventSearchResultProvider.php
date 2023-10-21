@@ -24,7 +24,7 @@ class CalendarEventSearchResultProvider extends BaseSearchResultProvider  {
     }
 
     private function getCalendarEventSearchResultsByPartialName(string $SearchQuery) {
-        $searchResults = array();
+        $searchResults = [];
         $id = 0;
         try {
             $events = EventQuery::create()

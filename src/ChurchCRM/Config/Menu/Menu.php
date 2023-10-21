@@ -31,7 +31,7 @@ class Menu
 
     private static function buildMenuItems()
     {
-        return array(
+        return [
             "Dashboard" => new MenuItem(gettext("Dashboard"), "Menu.php", true, 'fa-tachometer-alt'),
             "Calendar" => self::getCalendarMenu(),
             "People" => self::getPeopleMenu(),
@@ -44,7 +44,7 @@ class Menu
             "Reports" => self::getReportsMenu(),
             "Admin" => self::getAdminMenu(),
             "Custom" => self::getCustomMenu(),
-        );
+        ];
     }
 
     private static function getCalendarMenu()

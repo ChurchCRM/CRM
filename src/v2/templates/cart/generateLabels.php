@@ -1,4 +1,5 @@
 <?php
+echo <<<'EOD'
 <div class="card">
     <div class="card-header with-border">
         <h3 class="card-title"><?= gettext('Generate Labels') ?></h3>
@@ -6,7 +7,7 @@
     <div class="card-body">
         <form method="get" action="Reports/PDFLabel.php" name="labelform">
             <table class="table table-responsive">
-                <?php
+EOD;
                 LabelGroupSelect('groupbymode');
 
 echo '  <tr><td>' . gettext('Bulk Mail Presort') . '</td>';
@@ -38,8 +39,9 @@ FontSelect('labelfont');
 FontSizeSelect('labelfontsize');
 StartRowStartColumn();
 IgnoreIncompleteAddresses();
-LabelFileType(); ?>
+LabelFileType();
 
+echo <<<'EOD'
                 <tr>
                     <td></td>
                     <td><input type="submit" class="btn btn-primary"
@@ -51,3 +53,4 @@ LabelFileType(); ?>
     </div>
     <!-- /.box-body -->
 </div>
+EOD;

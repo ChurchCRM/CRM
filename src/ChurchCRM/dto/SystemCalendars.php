@@ -22,7 +22,7 @@ class SystemCalendars {
 
   public static function getCalendarList() {
     $calendars = new ObjectCollection();
-    $calendars->setModel("ChurchCRM\\Calendar");
+    $calendars->setModel(\ChurchCRM\Calendar::class);
     foreach(self::getCalendars() as $calendar) {
       $calendars->push(self::toPropelCalendar($calendar));
     }

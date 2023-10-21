@@ -109,7 +109,7 @@ require '../Include/Header.php';
           <?php generateGroupRoleEmailDropdown($roleEmails, 'mailto:?bcc=') ?>
         </ul>
       </div>
-      <?php
+<?php
     }
     ?>
     <!-- <a class="btn btn-success" data-toggle="modal" data-target="#compose-modal"><i class="fas fa-pen"></i> Compose Message</a>  This doesn't really work right now...-->

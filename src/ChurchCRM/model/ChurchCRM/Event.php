@@ -18,14 +18,13 @@ use Propel\Runtime\ActiveQuery\Criteria;
 class Event extends BaseEvent
 {
 
-  private $editable;
+  private $editable = true;
 
   public function __construct() {
     parent::__construct();
-    $this->editable = true;
   }
 
-  public function toArray($keyType = TableMap::TYPE_PHPNAME, $includeLazyLoadColumns = true, $alreadyDumpedObjects = array(), $includeForeignObjects = false)
+  public function toArray($keyType = TableMap::TYPE_PHPNAME, $includeLazyLoadColumns = true, $alreadyDumpedObjects = [], $includeForeignObjects = false)
   {
 
     $array = parent::toArray($keyType, $includeLazyLoadColumns, $alreadyDumpedObjects, $includeForeignObjects);
@@ -59,7 +58,7 @@ class Event extends BaseEvent
       ->setCheckoutDate(null)
       ->save();
 
-    return array("status"=>"success");
+    return ["status"=>"success"];
 
   }
 
@@ -76,7 +75,7 @@ class Event extends BaseEvent
       ->setCheckoutDate(date('Y-m-d H:i:s'))
       ->save();
 
-    return array("status"=>"success");
+    return ["status"=>"success"];
 
   }
 

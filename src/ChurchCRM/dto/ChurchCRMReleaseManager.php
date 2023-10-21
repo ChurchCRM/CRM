@@ -54,7 +54,7 @@ class ChurchCRMReleaseManager {
      */
     private static function populateReleases(): array{
         $client = new Client();
-        $eligibleReleases = array();
+        $eligibleReleases = [];
         LoggerUtils::getAppLogger()->debug("Querying GitHub '".ChurchCRMReleaseManager::GITHUB_USER_NAME."/".ChurchCRMReleaseManager::GITHUB_REPOSITORY_NAME."' for ChurchCRM Releases");
         $gitHubReleases = $client->api('repo')->releases()->all(ChurchCRMReleaseManager::GITHUB_USER_NAME, ChurchCRMReleaseManager::GITHUB_REPOSITORY_NAME);
         LoggerUtils::getAppLogger()->debug("Received ". count($gitHubReleases) . " ChurchCRM releases from GitHub");

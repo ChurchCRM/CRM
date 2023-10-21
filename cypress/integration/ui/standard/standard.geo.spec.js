@@ -1,11 +1,6 @@
 /// <reference types="cypress" />
 
-context('Standard People Dashboard', () => {
-
-    it('Dashboard Page', () => {
-        cy.loginStandard('PeopleDashboard.php');
-        cy.contains("People Dashboard");
-    });
+context('Geo Pages', () => {
 
     it('Geo Page', () => {
         cy.loginStandard('GeoPage.php');

@@ -53,7 +53,7 @@ $app->group('/person/{personId:[0-9]+}', function () {
         $person = $request->getAttribute("person");
         $input = (object)$request->getParsedBody();
         $person->setImageFromBase64($input->imgBase64);
-        $response->withJson(array("status" => "success"));
+        $response->withJson(["status" => "success"]);
     })->add(new EditRecordsRoleAuthMiddleware());
 
     $this->delete('/photo', function ($request, $response, $args) {

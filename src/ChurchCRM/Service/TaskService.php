@@ -31,7 +31,9 @@ class TaskService
      * @var ObjectCollection|iTask[]
      */
     private $taskClasses;
-    private $notificationClasses;
+    private $notificationClasses = [
+      //  new LatestReleaseTask()
+    ];
 
     public function __construct()
     {
@@ -54,10 +56,6 @@ class TaskService
             new SecretsConfigurationCheckTask(),
             new PHPPendingDeprecationVersionCheckTask(),
             new PHPZipArchiveCheckTask()
-        ];
-
-        $this->notificationClasses = [
-          //  new LatestReleaseTask()
         ];
     }
 

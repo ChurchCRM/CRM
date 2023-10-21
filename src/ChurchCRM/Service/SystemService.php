@@ -228,7 +228,7 @@ class SystemService
       $size = preg_replace('/[^0-9\.]/', '', $size); // Remove the non-numeric characters from the size.
       if ($unit) {
         // Find the position of the unit in the ordered string which is the power of magnitude to multiply a kilobyte by.
-        return round($size * pow(1024, stripos('bkmgtpezy', $unit[0])));
+        return round($size * 1024 ** stripos('bkmgtpezy', $unit[0]));
       }
       else {
         return round($size);
@@ -236,8 +236,8 @@ class SystemService
     }
 
     static function human_filesize($bytes, $decimals = 2) {
-      $size = array('B','kB','MB','GB','TB','PB','EB','ZB','YB');
+      $size = ['B', 'kB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
       $factor = floor((strlen($bytes) - 1) / 3);
-      return sprintf("%.{$decimals}f", $bytes / pow(1024, $factor)) . @$size[$factor];
+      return sprintf("%.{$decimals}f", $bytes / 1024 ** $factor) . @$size[$factor];
     }
 }

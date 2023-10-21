@@ -208,13 +208,13 @@ require 'Include/Header.php';
   var fundLabels = <?= json_encode(array_values($fundLabels)) ?>;
   var fundData = <?= json_encode(array_values($fundData)) ?>;
   var fundBackgroundColor = <?= json_encode(array_values($fundBackgroundColor)) ?>;
-  var pledgeLables = ['Cash', 'Check'];
+  var pledgeLabels = ['Cash', 'Check'];
   var pledgeData = <?= json_encode($pledgeData) ?>;
   var pledgeBackgroundColor = ['#197A05','#003399'];
   $(document).ready(function() {
     initPaymentTable();
     var pledgeLabels = <?= json_encode(array_values($fundData)); ?>;
-    initCharts(pledgeLables,
+    initCharts(pledgeLabels,
                pledgeData,
                pledgeBackgroundColor,
                fundLabels,

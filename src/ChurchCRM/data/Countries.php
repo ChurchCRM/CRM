@@ -6,7 +6,7 @@ class Countries
     private static $countries;
 
     private static function initializeCountries() {
-      self::$countries = array(
+      self::$countries = [
         'AF' => new Country('AF','Afghanistan (‫افغانستان‬‎)'),
         'AX' => new Country('AX','Åland Islands (Åland)'),
         'AL' => new Country('AL','Albania (Shqipëri)'),
@@ -263,7 +263,7 @@ class Countries
         'YE' => new Country('YE','Yemen (‫اليمن‬‎)'),
         'ZM' => new Country('ZM','Zambia'),
         'ZW' => new Country('ZW','Zimbabwe')
-      );
+      ];
     }
     private static function getSingleName(Country $Country)
     {
@@ -273,7 +273,7 @@ class Countries
     public static function getNames()
     {
       self::initializeCountries();
-      return array_map(array("self","getSingleName"),self::$countries);
+      return array_map(["self","getSingleName"],self::$countries);
     }
 
     public static function getAll()

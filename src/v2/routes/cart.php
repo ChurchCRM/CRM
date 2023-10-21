@@ -24,12 +24,12 @@ function getCartView(Request $request, Response $response, array $args) {
   if (!Cart::HasPeople()) {
     return $renderer->render($response, 'cartempty.php', $pageArgs);
   } else {
-    $pageArgs = array_merge($pageArgs, array(
+    $pageArgs = array_merge($pageArgs, [
         'sEmailLink' => Cart::getEmailLink(),
         'sPhoneLink' => Cart::getSMSLink(),
         'iNumFamilies' => Cart::CountFamilies(),
         'cartPeople' => Cart::getCartPeople()
-    ));
+    ]);
     return $renderer->render($response, 'cartview.php', $pageArgs);
   }
 }

@@ -29,27 +29,23 @@ class OpenLPNotification
   
   public function send()
   {
-    $headers = array (
-      'http'=>array(
+    $headers = [
+      'http' => [
         'method' =>"GET",
         'timeout' => 5
-      ),
-      "ssl" => array(
+      ],
+      "ssl" => [
           "verify_peer" => false,
           "verify_peer_name" => false,
           "allow_self_signed" => true,
-      )
-    );
+      ]
+    ];
     if(SystemConfig::getValue("sOLPUserName"))
     {
       $headers['http']['header'] = "Authorization: Basic ".$this->getAuthorizationHeader()."\r\n";
     }
     //return json_encode($headers);
-    $request = array(
-      "request" => array(
-        "text" =>$this->AlertText
-      )
-    );
+    $request = ["request" => ["text" =>$this->AlertText]];
     $url = $this->OLPAddress."/api/alert?data=".urlencode(json_encode($request));
     $context = stream_context_create($headers);
     $response = file_get_contents($url,false,$context);

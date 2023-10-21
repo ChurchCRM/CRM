@@ -130,8 +130,8 @@ class Family extends BaseFamily implements iPhoto
     $roleIds = array_merge (explode(",", SystemConfig::getValue("sDirRoleHead")), explode(",",
       SystemConfig::getValue("sDirRoleSpouse")),
       explode(",", SystemConfig::getValue("sDirRoleChild")));
-    $foundPeople = array();
-    foreach ($this->getPeopleSorted() as $person) {
+    $foundPeople = [];
+    foreach ($this->getPeople() as $person) {
       if (!in_array($person->getFmrId(), $roleIds)) {
         array_push($foundPeople, $person);
       }
@@ -141,8 +141,8 @@ class Family extends BaseFamily implements iPhoto
 
   private function getPeopleByRole($roleConfigName) {
     $roleIds = explode(",", SystemConfig::getValue($roleConfigName));
-    $foundPeople = array();
-    foreach ($this->getPeopleSorted() as $person) {
+    $foundPeople = [];
+    foreach ($this->getPeople() as $person) {
       if (in_array($person->getFmrId(), $roleIds)) {
           array_push($foundPeople, $person);
       }
@@ -155,7 +155,7 @@ class Family extends BaseFamily implements iPhoto
      * @throws \Propel\Runtime\Exception\PropelException
      */
     public function getEmails() {
-    $emails = array();
+    $emails = [];
     if (!(empty($this->getEmail()))) {
         array_push($emails, $this->getEmail());
     }
@@ -298,7 +298,7 @@ class Family extends BaseFamily implements iPhoto
         }
     }
 
-    public function toArray($keyType = TableMap::TYPE_PHPNAME, $includeLazyLoadColumns = true, $alreadyDumpedObjects = Array(), $includeForeignObjects = false)
+    public function toArray($keyType = TableMap::TYPE_PHPNAME, $includeLazyLoadColumns = true, $alreadyDumpedObjects = [], $includeForeignObjects = false)
     {
       $array = parent::toArray();
       $array['Address']=$this->getAddress();

@@ -77,16 +77,17 @@ $app->group('/database', function () {
  */
 function exportChMeetings(Request $request, Response $response, array $p_args) {
 
-    $header_data=array(
+    $header_data = [
         'First Name','Last Name','Middle Name','Gender',
         'Marital Status','Anniversary','Engagement Date',
         'Birthdate','Mobile Phone','Home Phone','Email',
         'Facebook','School','Grade','Employer','Job Title','Talents And Hobbies',
         'Address Line','Address Line 2','City','State','ZIP Code','Notes','Join Date',
         'Family Id','Family Role',
-        'Baptism Date','Baptism Location','Nickname');
+        'Baptism Date','Baptism Location','Nickname'
+    ];
     $people = PersonQuery::create()->find();
-    $list = array();
+    $list = [];
     foreach ($people as $person) {
         $family = $person->getFamily();
         $annaversery = ($family ? $family->getWeddingdate(SystemConfig::getValue("sDateFormatShort")) : "");
@@ -95,13 +96,7 @@ function exportChMeetings(Request $request, Response $response, array $p_args) {
             $familyRole = "Primary";
         }
 
-        $chPerson = array($person->getFirstName(), $person->getLastName(), $person->getMiddleName(), $person->getGenderName(),
-            '', $annaversery, "",
-            $person->getFormattedBirthDate(), $person->getCellPhone(), $person->getHomePhone(), $person->getEmail(),
-            $person->getFacebookID(), "","", "", "", "",
-            $person->getAddress1(), $person->getAddress2(), $person->getCity(), $person->getState(),  $person->getZip(), "",  $person->getMembershipDate(SystemConfig::getValue("sDateFormatShort")),
-            ($family? $family->getId(): ""), $familyRole,
-            "", "", "");
+        $chPerson = [$person->getFirstName(), $person->getLastName(), $person->getMiddleName(), $person->getGenderName(), '', $annaversery, "", $person->getFormattedBirthDate(), $person->getCellPhone(), $person->getHomePhone(), $person->getEmail(), $person->getFacebookID(), "", "", "", "", "", $person->getAddress1(), $person->getAddress2(), $person->getCity(), $person->getState(), $person->getZip(), "", $person->getMembershipDate(SystemConfig::getValue("sDateFormatShort")), ($family? $family->getId(): ""), $familyRole, "", "", ""];
         array_push($list, $chPerson);
     }
 

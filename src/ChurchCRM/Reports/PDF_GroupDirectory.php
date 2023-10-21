@@ -5,10 +5,10 @@ namespace ChurchCRM\Reports;
 class PDF_GroupDirectory extends ChurchInfoReport
 {
     // Private properties
-    public $_Margin_Left = 0;         // Left Margin
-    public $_Margin_Top = 0;         // Top margin
+    public $_Margin_Left = 12;         // Left Margin
+    public $_Margin_Top = 12;         // Top margin
     public $_Char_Size = 12;        // Character size
-    public $_CurLine = 0;
+    public $_CurLine = 2;
     public $_Column = 0;
     public $_Font = 'Times';
     public $sFamily;
@@ -58,17 +58,10 @@ class PDF_GroupDirectory extends ChurchInfoReport
     public function __construct()
     {
         parent::__construct('P', 'mm', $this->paperFormat);
-
-        $this->_Column = 0;
-        $this->_CurLine = 2;
-        $this->_Font = 'Times';
         $this->SetMargins(0, 0);
         $this->Set_Char_Size(12);
         $this->AddPage();
         $this->SetAutoPageBreak(false);
-
-        $this->_Margin_Left = 12;
-        $this->_Margin_Top = 12;
     }
 
     public function Check_Lines($numlines)

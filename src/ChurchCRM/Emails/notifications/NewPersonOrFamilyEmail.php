@@ -36,11 +36,11 @@ class NewPersonOrFamilyEmail extends BaseEmail
 
     protected function getSubSubject()
     {
-      if (get_class($this->relatedObject) == "ChurchCRM\Person")
+      if (get_class($this->relatedObject) == \ChurchCRM\Person::class)
       {
         return gettext("New Person Added");
       }
-      else if (get_class($this->relatedObject) == "ChurchCRM\Family")
+      else if (get_class($this->relatedObject) == \ChurchCRM\Family::class)
       {
         return gettext("New Family Added");
       }
@@ -52,7 +52,7 @@ class NewPersonOrFamilyEmail extends BaseEmail
         $myTokens =  [
             "toName" => gettext("Church Greeter")
         ];
-        if (get_class($this->relatedObject) == "ChurchCRM\Family")
+        if (get_class($this->relatedObject) == \ChurchCRM\Family::class)
         {
           /* @var $family ChurchCRM\Family */
           $family = $this->relatedObject;
@@ -63,7 +63,7 @@ class NewPersonOrFamilyEmail extends BaseEmail
           $myTokens['FamilyAddress'] =  $family->getAddress();
           $myTokens['IncludeDataInNewFamilyNotifications'] = SystemConfig::getBooleanValue("IncludeDataInNewPersonNotifications");
         }
-        elseif (get_class($this->relatedObject) == "ChurchCRM\Person")
+        elseif (get_class($this->relatedObject) == \ChurchCRM\Person::class)
         {
           /* @var $person ChurchCRM\Person */
           $person = $this->relatedObject;
@@ -83,20 +83,20 @@ class NewPersonOrFamilyEmail extends BaseEmail
 
     function getFullURL()
     {
-        if (get_class($this->relatedObject) == "ChurchCRM\Family") {
+        if (get_class($this->relatedObject) == \ChurchCRM\Family::class) {
             return SystemURLs::getURL() . "/v2/family/" . $this->relatedObject->getId();
         }
-        elseif (get_class($this->relatedObject) == "ChurchCRM\Person") {
+        elseif (get_class($this->relatedObject) == \ChurchCRM\Person::class) {
             return SystemURLs::getURL()."/PersonView.php?PersonID=". $this->relatedObject->getId();
         }
     }
 
     function getButtonText()
     {
-        if (get_class($this->relatedObject) == "ChurchCRM\Family") {
+        if (get_class($this->relatedObject) == \ChurchCRM\Family::class) {
             return gettext("View Family Page");
         }
-        elseif (get_class($this->relatedObject) == "ChurchCRM\Person") {
+        elseif (get_class($this->relatedObject) == \ChurchCRM\Person::class) {
             return gettext("View Person Page");
         }
 
