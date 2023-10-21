@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-context('Standard People Dashboard', () => {
+context('Geo Pages', () => {
 
     it('Geo Page', () => {
         cy.loginStandard('GeoPage.php');
