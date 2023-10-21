@@ -103,6 +103,7 @@ require 'Include/Header.php';
             AND p2g2r_grp_ID = ".$iGroupID;
     $rsEmailList = RunQuery($sSQL);
     $sEmailLink = '';
+    $roleEmails = [];
     $sMailtoDelimiter = AuthenticationManager::GetCurrentUser()->getUserConfigString("sMailtoDelimiter");
     while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailList)) {
         $sEmail = SelectWhichInfo($per_Email, $fam_Email, false);
@@ -112,7 +113,7 @@ require 'Include/Header.php';
             // Add email only if email address is not already in string
             if (!stristr($sEmailLink, $sEmail)) {
                 $sEmailLink .= $sEmail .= $sMailtoDelimiter;
-                $roleEmails->$virt_RoleName .= $sEmail .= $sMailtoDelimiter;
+                $roleEmails[$virt_RoleName] = $sEmailLink;
             }
         }
     }
