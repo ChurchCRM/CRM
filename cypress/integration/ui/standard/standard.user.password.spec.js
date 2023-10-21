@@ -14,7 +14,7 @@ context('Standard User Password', () => {
 
     it('Change with simple password', () => {
         cy.loginStandard('v2/user/current/changepassword');
-        cy.get('#OldPassword').type('abc123');
+        cy.get('#OldPassword').type('basicjoe');
         cy.get('#NewPassword1').type('password');
         cy.get('#NewPassword2').type('password');
         cy.get('#passwordChangeForm').submit();
@@ -25,9 +25,9 @@ context('Standard User Password', () => {
 
     it('Change with old password', () => {
         cy.loginStandard('v2/user/current/changepassword');
-        cy.get('#OldPassword').type('abc123');
-        cy.get('#NewPassword1').type('abc123');
-        cy.get('#NewPassword2').type('abc123');
+        cy.get('#OldPassword').type('basicjoe');
+        cy.get('#NewPassword1').type('basicjoe');
+        cy.get('#NewPassword2').type('basicjoe');
         cy.get('#passwordChangeForm').submit();
         cy.url().should('contains', '/v2/user/current/changepassword');
         cy.contains("Your new password must not match your old one")
@@ -35,9 +35,9 @@ context('Standard User Password', () => {
 
     it('Change with like old password', () => {
         cy.loginStandard('v2/user/current/changepassword');
-        cy.get('#OldPassword').type('abc123');
-        cy.get('#NewPassword1').type('abc1234');
-        cy.get('#NewPassword2').type('abc1234');
+        cy.get('#OldPassword').type('basicjoe');
+        cy.get('#NewPassword1').type('basicjoe2');
+        cy.get('#NewPassword2').type('basicjoe2');
         cy.get('#passwordChangeForm').submit();
         cy.url().should('contains', '/v2/user/current/changepassword');
         cy.contains("Your new password is too similar to your old one")
@@ -45,7 +45,7 @@ context('Standard User Password', () => {
 
     it('Change then back', () => {
         cy.loginStandard('v2/user/current/changepassword');
-        cy.get('#OldPassword').type('abc123');
+        cy.get('#OldPassword').type('basicjoe');
         cy.get('#NewPassword1').type('SomeThingsAreBetterLeftUnChangedJustKidding');
         cy.get('#NewPassword2').type('SomeThingsAreBetterLeftUnChangedJustKidding');
         cy.get('#passwordChangeForm').submit();
@@ -55,8 +55,8 @@ context('Standard User Password', () => {
         cy.visit("/session/end");
         cy.login("tony.wade@example.com", "SomeThingsAreBetterLeftUnChangedJustKidding", "v2/user/current/changepassword");
         cy.get('#OldPassword').type('SomeThingsAreBetterLeftUnChangedJustKidding');
-        cy.get('#NewPassword1').type('abc123');
-        cy.get('#NewPassword2').type('abc123');
+        cy.get('#NewPassword1').type('basicjoe');
+        cy.get('#NewPassword2').type('basicjoe');
         cy.get('#passwordChangeForm').submit();
         cy.url().should('contains', '/v2/user/current/changepassword');
         cy.contains("Password Change Successful")

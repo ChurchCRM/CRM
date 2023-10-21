@@ -96,7 +96,7 @@ $mailchimp = new MailChimpService();
                         <?php }
                         if (AuthenticationManager::GetCurrentUser()->isDeleteRecordsEnabled()) {
                             ?>
-                            <a class="btn btn-app bg-maroon"
+                            <a id="deleteFamilyBtn" class="btn btn-app bg-maroon"
                                href="<?= SystemURLs::getRootPath() ?>/SelectDelete.php?FamilyID=<?=$family->getId()?>"><i
                                         class="fa fa-trash-can"></i><?= gettext('Delete this Family') ?></a>
                             <?php
@@ -357,7 +357,7 @@ $mailchimp = new MailChimpService();
                            target="_blank"><?= $familyAddress ?></a></span>
                         <p/>
                         <!-- Maps Start -->
-                        <?php if (!empty($family->getLatitude())) : ?>
+                        <?php if (!empty(SystemConfig::getValue("sGoogleMapsRenderKey")) && !empty($family->getLatitude())) : ?>
                             <div class="border-right border-left">
                                 <section id="map">
                                     <div id="map1"></div>
