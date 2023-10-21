@@ -89,7 +89,6 @@ function registerPersonAPI(Request $request, Response $response, array $args)
 
     $person = new Person();
     $person->fromJSON($request->getBody());
-    $person->setId(); //ignore any ID set in the payload
     $person->setEnteredBy(Person::SELF_REGISTER);
     $person->setDateEntered(new \DateTime());
     if ($person->validate()) {
