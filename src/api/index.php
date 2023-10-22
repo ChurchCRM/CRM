@@ -13,7 +13,7 @@ use Slim\HttpCache\CacheProvider;
 
 // Instantiate the app
 $container = new Container;
-$container['cache'] = fn() => new CacheProvider();
+$container['cache'] = fn () => new CacheProvider();
 if (SystemConfig::debugEnabled()) {
     $container["settings"]['displayErrorDetails'] = true;
 }
