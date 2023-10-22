@@ -48,5 +48,5 @@ jobs:
 
 #      - name: Test
 #        run: |
-#          cp demo/cypress.json cypress.json
+#          cp demo/cypress.config.ts cypress.config.ts
 #          node_modules/cypress/bin/cypress run --record --key ${{ secrets.cypressKey }}
