@@ -198,7 +198,7 @@ for ($i = 0; $i < $nGrps; $i++) {
                 $pdf->Line($nameX-$imageHeight, $y, $nameX, $y+$imageHeight);
                     
                 if ($imgName != '   ' && strlen($imgName) > 5 && file_exists($imgName)) {
-                    list($width, $height) = getimagesize($imgName);
+                    [$width, $height] = getimagesize($imgName);
                     $factor = 8/$height;
                     $nw = $imageHeight;
                     $nh = $imageHeight;
