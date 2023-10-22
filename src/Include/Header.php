@@ -91,7 +91,7 @@ $MenuFirst = 1;
                     </a>
                     <?php if (AuthenticationManager::GetCurrentUser()->isAdmin()) { ?>
                     <div class="dropdown-divider"></div>
-                    <a href="<?= SystemURLs::getRootPath()?>/SystemSettings.php" class="dropdown-item">
+                    <a href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= AuthenticationManager::GetCurrentUser()->getPersonId() ?>" class="dropdown-item">
                         <i class="fas fa-user-edit"></i> <span id="translationInfo"></span>
                     </a>
                     <?php } ?>
