@@ -174,7 +174,7 @@ $MenuFirst = 1;
                     <i class="fas fa-expand-arrows-alt"></i>
                 </a>
             </li>
-        </ul>
+        </span>
     </nav>
 
   <!-- =============================================== -->
