@@ -2,16 +2,9 @@
     "TTL": 300,
     "messages": [
         {
-            "targetVersion": "3.1.2",
+            "targetVersion": "4.5.4",
             "adminOnly": true,
-            "title": "Manual action required for upgrade to 3.2.1",
-            "link": "https://github.com/ChurchCRM/CRM/wiki/Upgrade#320-and-321-automatic-upgrade-fix"
-        },
-        {
-            "targetVersion": "3.2.0",
-            "adminOnly": true,
-            "title": "Manual action required for upgrade to 3.2.1",
-            "link": "https://github.com/ChurchCRM/CRM/wiki/Upgrade#320-and-321-automatic-upgrade-fix"
+            "title": "Version 5.0.0 has been released, but it requires PHP 8.x"
         }
     ]
 }
