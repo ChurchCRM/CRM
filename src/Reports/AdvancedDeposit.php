@@ -216,7 +216,7 @@ if ($output == 'pdf') {
     class PDF_TaxReport extends ChurchInfoReport
     {
         // Constructor
-        public function PDF_TaxReport()
+        public function __construct()
         {
             parent::__construct('P', 'mm', $this->paperFormat);
             $this->SetFont('Times', '', 10);
@@ -887,7 +887,7 @@ if ($output == 'pdf') {
     $eol = "\r\n";
 
     // Build headings row
-    eregi('SELECT (.*) FROM ', $sSQL, $result);
+    preg_match('#SELECT (.*) FROM #mi', $sSQL, $result);
     $headings = explode(',', $result[1]);
     $buffer = '';
     foreach ($headings as $heading) {
