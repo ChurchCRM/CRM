@@ -66,7 +66,7 @@ function forgotPassword($request, $response, $args) {
 function userPasswordReset(Request $request, Response $response, array $args)
 {
     $logger = LoggerUtils::getAppLogger();
-    $body = json_decode($request->getBody());
+    $body = json_decode($request->getBody(), null, 512, JSON_THROW_ON_ERROR);
     $userName = strtolower(trim($body->userName));
     if (!empty($userName)) {
         $user = UserQuery::create()->findOneByUserName($userName);

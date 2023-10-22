@@ -14,7 +14,7 @@ $app->group('/system', function () {
 
 function logCSPReportAPI(Request $request, Response $response, array $args)
 {
-    $input = json_decode($request->getBody());
+    $input = json_decode($request->getBody(), null, 512, JSON_THROW_ON_ERROR);
     $log = json_encode($input, JSON_PRETTY_PRINT);
     LoggerUtils::getCSPLogger()->debug($log);
 }

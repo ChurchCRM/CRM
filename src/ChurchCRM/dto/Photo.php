@@ -206,7 +206,7 @@ class Photo {
       if (strpos($headers[0], '404') === false) {
         $json = file_get_contents($url);
         if (!empty($json)) {
-          $obj = json_decode($json);
+          $obj = json_decode($json, null, 512, JSON_THROW_ON_ERROR);
           $photoEntry = $obj->entry;
           $photoURL = $photoEntry->{'gphoto$thumbnail'}->{'$t'};
           $photo = imagecreatefromstring(file_get_contents($photoURL));

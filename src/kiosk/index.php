@@ -27,7 +27,7 @@ if (isset($_COOKIE['kioskCookie'])) {
     $Kiosk =  \ChurchCRM\Base\KioskDeviceQuery::create()
           ->findOneByGUIDHash($g);
     if (is_null($Kiosk)) {
-        setcookie(kioskCookie, '', time() - 3600);
+        setcookie('kioskCookie', '', ['expires' => time() - 3600]);
         header('Location: '.$_SERVER['REQUEST_URI']);
     }
 }
@@ -35,7 +35,7 @@ if (isset($_COOKIE['kioskCookie'])) {
 if (!isset($_COOKIE['kioskCookie'])) {
     if ($windowOpen) {
         $guid = uniqid();
-        setcookie("kioskCookie", $guid, 2147483647);
+        setcookie('kioskCookie', $guid, ['expires' => 2147483647]);
         $Kiosk = new \ChurchCRM\KioskDevice();
         $Kiosk->setGUIDHash(hash('sha256', $guid));
         $Kiosk->setAccepted($false);

@@ -61,7 +61,7 @@ function registerFamilyAPI(Request $request, Response $response, array $args)
             }
 
             if (!$person->validate()) {
-                LoggerUtils::getAppLogger()->error("Public Reg Error with the following data: " . json_encode($personMetaData));
+                LoggerUtils::getAppLogger()->error("Public Reg Error with the following data: " . json_encode($personMetaData, JSON_THROW_ON_ERROR));
                 return $response->withStatus(401)->withJson(["error" => gettext("Validation Error"),
                     "failures" => ORMUtils::getValidationErrors($person->getValidationFailures())]);
             }

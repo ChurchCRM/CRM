@@ -44,7 +44,7 @@ class ChurchCRMReleaseManager {
             }
             else {
                 // This should _never_ happen.
-                throw new \Exception("Provided string matched more than one ChurchCRM Release: " . \json_encode($requestedRelease));
+                throw new \Exception("Provided string matched more than one ChurchCRM Release: " . \json_encode($requestedRelease, JSON_THROW_ON_ERROR));
             }
         }
     }
@@ -222,7 +222,7 @@ class ChurchCRMReleaseManager {
             echo \json_encode([
                 'code' => 500,
                 'message' => "Maximum execution time threshold exceeded: " . ini_get("max_execution_time") . ".  This ChurchCRM installation may now be in an unstable state.  Please review the documentation at https://github.com/ChurchCRM/CRM/wiki/Recovering-from-a-failed-update"
-            ]);
+            ], JSON_THROW_ON_ERROR);
         }
     }
     public static function doUpgrade($zipFilename, $sha1)

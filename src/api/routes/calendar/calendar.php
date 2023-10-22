@@ -73,7 +73,7 @@ function getSystemCalendarFullCalendarEvents($request, Response $response, $args
     if (!$Events) {
         return $response->withStatus(404);
     }
-    return $response->write(json_encode(EventsObjectCollectionToFullCalendar($Events, SystemCalendars::toPropelCalendar($Calendar))));
+    return $response->write(json_encode(EventsObjectCollectionToFullCalendar($Events, SystemCalendars::toPropelCalendar($Calendar)), JSON_THROW_ON_ERROR));
 }
 
 
@@ -121,7 +121,7 @@ function getUserCalendarFullCalendarEvents($request, Response $response, $args)
     if (!$Events) {
         return $response->withStatus(404);
     }
-    return $response->write(json_encode(EventsObjectCollectionToFullCalendar($Events, $calendar)));
+    return $response->write(json_encode(EventsObjectCollectionToFullCalendar($Events, $calendar), JSON_THROW_ON_ERROR));
 }
 
 function EventsObjectCollectionToFullCalendar(ObjectCollection $Events, Calendar $Calendar)

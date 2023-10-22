@@ -105,7 +105,7 @@ class SystemURLs
             $validURL = false;
             foreach ($URL as $value) {
                 $base = substr($value, 0, -strlen('/'));
-                if (strpos($currentURL, $value) === 0) {
+                if (strpos($currentURL, (string) $value) === 0) {
                     $validURL = true;
                     break;
                 }
