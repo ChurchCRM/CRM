@@ -122,7 +122,7 @@
         "webpack-cli": "^5.0.0"
     },
     "optionalDependencies": {
-        "cypress": "^10.11.0",
+        "cypress": "^13.3.2",
         "grunt-poeditor-gd": "0.2.0"
     }
 }
