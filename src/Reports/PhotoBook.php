@@ -29,14 +29,14 @@ class PDF_PhotoBook extends ChurchInfoReport
     private $FYIDString;
     private $currentX;
     private $currentY;
-    private $pageMarginL = 15;
-    private $pageMarginR = 15;
-    private $pageMarginT = 20;
-    private $pageMarginB = 5;
-    private $personMarginL = 2.5;
-    private $personMarginR = 2.5;
-    private $personImageHeight = 30;
-    private $personImageWidth = 30;
+    private int $pageMarginL = 15;
+    private int $pageMarginR = 15;
+    private int $pageMarginT = 20;
+    private int $pageMarginB = 5;
+    private float $personMarginL = 2.5;
+    private float $personMarginR = 2.5;
+    private int $personImageHeight = 30;
+    private int $personImageWidth = 30;
   
     // Constructor
     public function __construct($iFYID)

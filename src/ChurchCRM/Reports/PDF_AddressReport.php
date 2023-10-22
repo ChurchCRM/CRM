@@ -5,12 +5,12 @@ namespace ChurchCRM\Reports;
 class PDF_AddressReport extends ChurchInfoReport
 {
     // Private properties
-    private $_Margin_Left = 12;         // Left Margin
-    private $_Margin_Top = 12;         // Top margin
-    private $_Char_Size = 12;        // Character size
-    private $_CurLine = 2;
-    private $_Column = 0;
-    private $_Font = 'Times';
+    private int $_Margin_Left = 12;         // Left Margin
+    private int $_Margin_Top = 12;         // Top margin
+    private int $_Char_Size = 12;        // Character size
+    private int $_CurLine = 2;
+    private int $_Column = 0;
+    private string $_Font = 'Times';
     private $sFamily;
     private $sLastName;
 

@@ -25,7 +25,7 @@ use Propel\Runtime\Connection\ConnectionInterface;
  */
 class Family extends BaseFamily implements iPhoto
 {
-    private $photo;
+    private ?\ChurchCRM\dto\Photo $photo = null;
 
     public function getAddress()
     {

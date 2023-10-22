@@ -47,9 +47,7 @@ $app->group('/persons', function () {
         return $response->withJson($return);
     });
 
-    $this->get('/numbers', function ($request, $response, $args) {
-        return $response->withJson(MenuEventsCount::getNumberBirthDates());
-    });
+    $this->get('/numbers', fn($request, $response, $args) => $response->withJson(MenuEventsCount::getNumberBirthDates()));
 
     $this->get('/self-register', function ($request, $response, $args) {
         $people = PersonQuery::create()

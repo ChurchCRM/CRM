@@ -13,10 +13,7 @@ $app->get('/', function ($request, $response, $args) use ($app) {
     return $renderer->render($response, "sunday-school-class-view.php", $pageObjects);
   });
 
-  $app->get('/heartbeat', function ($request, $response, $args) use ($app) {
-
-    return json_encode($app->kiosk->heartbeat(), JSON_THROW_ON_ERROR);
-  });
+  $app->get('/heartbeat', fn($request, $response, $args) => json_encode($app->kiosk->heartbeat(), JSON_THROW_ON_ERROR));
 
   $app->post('/checkin', function ($request, $response, $args) use ($app) {
 
@@ -47,9 +44,7 @@ $app->get('/', function ($request, $response, $args) use ($app) {
   });
 
 
-   $app->get('/activeClassMembers', function ($request, $response, $args) use ($app) {
-    return $app->kiosk->getActiveAssignment()->getActiveGroupMembers()->toJSON();
-  });
+   $app->get('/activeClassMembers', fn($request, $response, $args) => $app->kiosk->getActiveAssignment()->getActiveGroupMembers()->toJSON());
 
 
   $app->get('/activeClassMember/{PersonId}/photo', function (ServerRequestInterface  $request, ResponseInterface  $response, $args) use ($app) {

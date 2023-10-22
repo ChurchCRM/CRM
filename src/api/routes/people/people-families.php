@@ -43,9 +43,7 @@ $app->group('/families', function () {
         return $response->withJson(["count" => count($familiesWithoutEmails), "families" => $familiesWithoutEmails]);
     });
 
-    $this->get('/numbers', function ($request, $response, $args) {
-        return $response->withJson(MenuEventsCount::getNumberAnniversaries());
-    });
+    $this->get('/numbers', fn($request, $response, $args) => $response->withJson(MenuEventsCount::getNumberAnniversaries()));
 
 
     $this->get('/search/{query}', function ($request, $response, $args) {

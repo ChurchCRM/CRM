@@ -13,7 +13,7 @@ class SystemURLs
     private static $rootPath;
     private static $urls;
     private static $documentRoot;
-    private static $CSPNonce;
+    private static ?string $CSPNonce = null;
 
     public static function init($rootPath, $urls, $documentRoot)
     {

@@ -10,11 +10,8 @@ use ChurchCRM\Authentication\AuthenticationManager;
 
 class LatestReleaseTask implements iTask
 {
-  private $installedVersion;
-  /**
-   * @var ChurchCRMRelease
-   */
-  private $latestVersion;
+  private \ChurchCRM\dto\ChurchCRMRelease $installedVersion;
+  private ?\ChurchCRM\dto\ChurchCRMRelease $latestVersion = null;
 
   public function __construct()
   {

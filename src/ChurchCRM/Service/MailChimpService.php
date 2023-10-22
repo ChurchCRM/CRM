@@ -10,9 +10,9 @@ use PHPMailer\PHPMailer\Exception;
 
 class MailChimpService
 {
-    private $hasKey = false;
-    private $isActive = false;
-    private $myMailchimp;
+    private bool $hasKey = false;
+    private bool $isActive = false;
+    private ?\DrewM\MailChimp\MailChimp $myMailchimp = null;
 
     public function __construct()
     {

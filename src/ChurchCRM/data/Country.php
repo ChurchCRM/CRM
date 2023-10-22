@@ -3,9 +3,9 @@ namespace ChurchCRM\data;
 
 class Country implements \JsonSerializable
 {
-  private $countryCode;
-  private $countryName;
-  private $countryNameYasumi;
+  private string $countryCode;
+  private string $countryName;
+  private ?string $countryNameYasumi = null;
   public function __construct (string $CountryCode, string $CountryName, string $CountryNameYasumi = null)
   {
     $this->countryCode = $CountryCode;

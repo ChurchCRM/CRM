@@ -1106,7 +1106,7 @@ function validateCustomField($type, &$data, $col_Name, &$aErrors)
           if (!is_numeric($data)) {
               $aErrors[$col_Name] = gettext('Invalid Number');
               $bErrorFlag = true;
-          } elseif ($data < -2147483648 || $data > 2147483647) {
+          } elseif ($data < -2_147_483_648 || $data > 2_147_483_647) {
               $aErrors[$col_Name] = gettext('Number too large. Must be between -2147483648 and 2147483647');
               $bErrorFlag = true;
           }
@@ -1122,7 +1122,7 @@ function validateCustomField($type, &$data, $col_Name, &$aErrors)
           if (!is_numeric($data)) {
               $aErrors[$col_Name] = gettext('Invalid Number');
               $bErrorFlag = true;
-          } elseif ($data > 999999999.99) {
+          } elseif ($data > 999_999_999.99) {
               $aErrors[$col_Name] = gettext('Money amount too large. Maximum is $999999999.99');
               $bErrorFlag = true;
           }
