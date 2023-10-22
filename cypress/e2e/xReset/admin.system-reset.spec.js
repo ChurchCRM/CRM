@@ -24,7 +24,7 @@ context('Admin System Reset', () => {
         cy.get('#confirm-db').click();
         cy.contains('This will reset the system data and will restart the system as a new install.').should("be.visible");
         cy.get('.bootbox-accept').should('be.visible').click();
-        cy.url().should('contains', 'v2/user/current/changepassword');
+        cy.url().should('contains', 'session/begin');
 
     });
 

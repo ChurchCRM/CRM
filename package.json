@@ -48,7 +48,7 @@
         "docker-test7-start": "cp docker/Config.php src/Include/Config.php && docker-compose -f docker/docker-compose.test-php7-apache.yaml up -d",
         "docker-test7-down": "docker-compose -f docker/docker-compose.test-php7-apache.yaml down -v",
         "docker-test7-restart": "npm run docker-test7-down && npm run docker-test7-start",
-        "test-via-docker7-ui": "npm run docker-test7-restart && cp docker/cypress.json cypress.json && node_modules/cypress/bin/cypress open",
+        "test-via-docker7-ui": "npm run docker-test7-restart && cp docker/cypress.config.ts cypress.config.ts && node_modules/cypress/bin/cypress open",
         "docker-test-build": "docker-compose -f docker/docker-compose.test-php8-apache.yaml build",
         "docker-test-start": "cp docker/Config.php src/Include/Config.php && docker-compose -f docker/docker-compose.test-php8-apache.yaml up -d",
         "docker-test-down": "docker-compose -f docker/docker-compose.test-php8-apache.yaml down -v",
@@ -57,11 +57,9 @@
         "docker-test-login-web": "docker-compose -f docker/docker-compose.test-php8-apache.yaml exec webserver bash",
         "docker-test-login-db": "docker-compose -f docker/docker-compose.test-php8-apache.yaml exec database bash",
         "docker-test-logs": "docker-compose -f docker/docker-compose.test-php8-apache.yaml logs -f --tail=10",
-        "test": "echo 'skipping tests'",
-        "test-ui": "node_modules/cypress/bin/cypress open",
-        "test-via-docker": "npm run docker-test-restart && cp docker/cypress.json cypress.json && node_modules/cypress/bin/cypress run",
-        "test-via-docker-ui": "npm run docker-test-restart && cp docker/cypress.json cypress.json && node_modules/cypress/bin/cypress open",
-        "test-via-demo": "cp demo/cypress.json cypress.json && node_modules/cypress/bin/cypress run",
+        "test": "cp docker/cypress.config.ts cypress.config.ts && node_modules/cypress/bin/cypress run --e2e",
+        "test-ui": "cp docker/cypress.config.ts cypress.config.ts && node_modules/cypress/bin/cypress open --e2e --browser chrome",
+        "test-via-demo": "cp demo/cypress.config.ts cypress.config.ts && node_modules/cypress/bin/cypress run",
         "restore-demo-db": "php scripts/restore-db.php demo",
         "restore-empty-db": "php scripts/restore-db.php"
     },
@@ -88,7 +86,7 @@
         "jquery-photo-uploader": "^1.0.13",
         "jquery-steps": "^1.1.0",
         "jquery-validation": "^1.19.5",
-        "node-sass": "^7.0.3",
+        "node-sass": "^9.0.0",
         "pace-js": "^1.2.4",
         "react-bootstrap": "^2.9.0",
         "react-datepicker": "^2.16.0",
@@ -124,7 +122,7 @@
         "webpack-cli": "^5.0.0"
     },
     "optionalDependencies": {
-        "cypress": "^9.7.0",
+        "cypress": "^13.3.2",
         "grunt-poeditor-gd": "0.2.0"
     }
 }
