@@ -296,6 +296,16 @@
     "datePicker": true,
     "select2": true
   },
+  "Turkish": {
+    "poEditor": "tr",
+    "locale": "tr_TR",
+    "languageCode": "tr",
+    "countryCode": "TR",
+    "dataTables": "Turkish",
+    "fullCalendar" : true,
+    "datePicker": true,
+    "select2": true
+  },
   "Ukrainian": {
     "poEditor": "uk",
     "locale": "uk_UA",
