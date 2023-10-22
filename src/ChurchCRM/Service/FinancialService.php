@@ -85,7 +85,7 @@ class FinancialService
     public function getPaymentJSON($payments)
     {
         if ($payments) {
-            return '{"payments":'.json_encode($payments).'}';
+            return '{"payments":'.json_encode($payments, JSON_THROW_ON_ERROR).'}';
         } else {
             return false;
         }
@@ -167,7 +167,7 @@ class FinancialService
         //Validate that the fund selection is valid:
     //If a single fund is selected, that fund must exist, and not equal the default "Select a Fund" selection.
     //If a split is selected, at least one fund must be non-zero, the total must add up to the total of all funds, and all funds in the split must be valid funds.
-    $FundSplit = json_decode($payment->FundSplit);
+    $FundSplit = json_decode($payment->FundSplit, null, 512, JSON_THROW_ON_ERROR);
         if (count($FundSplit) >= 1 and $FundSplit[0]->FundID != 'None') { // split
       $nonZeroFundAmountEntered = 0;
             foreach ($FundSplit as $fun_id => $fund) {
@@ -223,7 +223,7 @@ class FinancialService
 
     public function processCurrencyDenominations($payment, $groupKey)
     {
-        $currencyDenoms = json_decode($payment->cashDenominations);
+        $currencyDenoms = json_decode($payment->cashDenominations, null, 512, JSON_THROW_ON_ERROR);
         foreach ($currencyDenoms as $cdom) {
             $sSQL = "INSERT INTO pledge_denominations_pdem (pdem_plg_GroupKey, plg_depID, pdem_denominationID, pdem_denominationQuantity)
       VALUES ('".$groupKey."','".$payment->DepositID."','".$cdom->currencyID."','".$cdom->Count."')";
@@ -240,7 +240,7 @@ class FinancialService
     // Only set PledgeOrPayment when the record is first created
     // loop through all funds and create non-zero amount pledge records
     unset($sGroupKey);
-        $FundSplit = json_decode($payment->FundSplit);
+        $FundSplit = json_decode($payment->FundSplit, null, 512, JSON_THROW_ON_ERROR);
         foreach ($FundSplit as $Fund) {
             if ($Fund->Amount > 0) {  //Only insert a row in the pledge table if this fund has a non zero amount.
         if (!isset($sGroupKey)) {  //a GroupKey references a single familie's payment, and transcends the fund splits.  Sharing the same Group Key for this payment helps clean up reports.
@@ -346,7 +346,7 @@ class FinancialService
         }
         $payment->total = $total;
 
-        return json_encode($payment);
+        return json_encode($payment, JSON_THROW_ON_ERROR);
     }
 
     private function generateBankDepositSlip($thisReport)

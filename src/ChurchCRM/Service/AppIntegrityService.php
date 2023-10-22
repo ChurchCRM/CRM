@@ -17,7 +17,7 @@ class AppIntegrityService
       LoggerUtils::getAppLogger()->debug('Integrity check results not cached; reloading from file');
       if (file_exists($integrityCheckFile)) {
         LoggerUtils::getAppLogger()->info('Integrity check result file found at: ' . $integrityCheckFile);
-        AppIntegrityService::$IntegrityCheckDetails = json_decode(file_get_contents($integrityCheckFile));
+        AppIntegrityService::$IntegrityCheckDetails = json_decode(file_get_contents($integrityCheckFile), null, 512, JSON_THROW_ON_ERROR);
         if (is_null(AppIntegrityService::$IntegrityCheckDetails))
         {
           LoggerUtils::getAppLogger()->warning("Error decoding integrity check result file: " . $integrityCheckFile);
@@ -73,7 +73,7 @@ class AppIntegrityService
     $signatureFailures = [];
     if (file_exists($signatureFile)) {
       LoggerUtils::getAppLogger()->info('Signature file found at: ' . $signatureFile);
-      $signatureData = json_decode(file_get_contents($signatureFile));
+      $signatureData = json_decode(file_get_contents($signatureFile), null, 512, JSON_THROW_ON_ERROR);
       if (is_null($signatureData)){
         LoggerUtils::getAppLogger()->warning('Error decoding signature definition file: ' . $signatureFile);
         return ['status' => 'failure', 'message' => gettext('Error decoding signature definition file')];

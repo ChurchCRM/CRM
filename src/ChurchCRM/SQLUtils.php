@@ -47,8 +47,8 @@ namespace ChurchCRM
 
                 // 4. separate sql queries by delimiter
                 $offset = 0;
-                while (strpos($row, $delimiter, $offset) !== false) {
-                    $delimiterOffset = strpos($row, $delimiter, $offset);
+                while (strpos($row, (string) $delimiter, $offset) !== false) {
+                    $delimiterOffset = strpos($row, (string) $delimiter, $offset);
                     if (self::isQuoted($delimiterOffset, $row)) {
                         $offset = $delimiterOffset + strlen($delimiter);
                     } else {
