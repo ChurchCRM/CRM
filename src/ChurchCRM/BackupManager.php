@@ -20,9 +20,9 @@ namespace ChurchCRM\Backup
 
     abstract class BackupType
     {
-        const GZSQL = 0;
-        const SQL = 2;
-        const FullBackup = 3;
+        public const GZSQL = 0;
+        public const SQL = 2;
+        public const FullBackup = 3;
     }
 
     class JobBase

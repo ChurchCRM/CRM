@@ -202,7 +202,7 @@ if ($output == 'pdf') {
                 // Get Deposit Date
                 $sSQL = "SELECT dep_Date, dep_Date FROM deposit_dep WHERE dep_ID='$iDepID'";
                 $rsDep = RunQuery($sSQL);
-                list($sDateStart, $sDateEnd) = mysqli_fetch_row($rsDep);
+                [$sDateStart, $sDateEnd] = mysqli_fetch_row($rsDep);
             }
             if ($sDateStart == $sDateEnd) {
                 $DateString = date('F j, Y', strtotime($sDateStart));
@@ -298,7 +298,7 @@ if ($output == 'pdf') {
             $temp = "SELECT SUM(plg_amount) AS total_gifts FROM pledge_plg
 				WHERE plg_FamID=$fam_ID AND $aSQLCriteria[1]";
             $rsMinimum = RunQuery($temp);
-            list($total_gifts) = mysqli_fetch_row($rsMinimum);
+            [$total_gifts] = mysqli_fetch_row($rsMinimum);
             if ($iMinimum > $total_gifts) {
                 continue;
             }
@@ -340,7 +340,7 @@ if ($output == 'pdf') {
                 }
             }
             $pdf->SetFont('Times', '', 10);
-            $pdf->FinishPage($curY, $prev_fam_ID, $prev_fam_Name, $prev_fam_Address1, $prev_fam_Address2, $prev_fam_City, $prev_fam_State, $prev_fam_Zip, $prev_fam_Country);
+            $pdf->FinishPage($curY);
         }
 
         // Start Page for New Family
@@ -450,7 +450,7 @@ if ($output == 'pdf') {
             }
         }
         $pdf->SetFont('Times', '', 10);
-        $pdf->FinishPage($curY, $fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country);
+        $pdf->FinishPage($curY);
     }
 
     header('Pragma: public');  // Needed for IE when using a shared SSL certificate

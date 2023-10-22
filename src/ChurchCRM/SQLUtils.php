@@ -92,7 +92,7 @@ namespace ChurchCRM
 
             $offset = 0;
             while (preg_match('{--\s|#|/\*[^!]}sUi', $sql, $matched, PREG_OFFSET_CAPTURE, $offset)) {
-                list($comment, $foundOn) = $matched[0];
+                [$comment, $foundOn] = $matched[0];
                 if (self::isQuoted($foundOn, $sql)) {
                     $offset = $foundOn + strlen($comment);
                 } else {

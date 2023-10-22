@@ -362,7 +362,7 @@ function FormatDate($dDate, $bWithTime = false)
 
     // Verify it is a valid date
     $sScanString = mb_substr($dDate, 0, 10);
-    list($iYear, $iMonth, $iDay) = sscanf($sScanString, '%04d-%02d-%02d');
+    [$iYear, $iMonth, $iDay] = sscanf($sScanString, '%04d-%02d-%02d');
 
     if (!checkdate($iMonth, $iDay, $iYear)) {
         return 'Unknown';
@@ -946,7 +946,7 @@ function assembleYearMonthDay($sYear, $sMonth, $sDay, $pasfut = 'future')
     }
 
     $sScanString = $sYear.'-'.$sMonth.'-'.$sDay;
-    list($iYear, $iMonth, $iDay) = sscanf($sScanString, '%04d-%02d-%02d');
+    [$iYear, $iMonth, $iDay] = sscanf($sScanString, '%04d-%02d-%02d');
 
     if (checkdate($iMonth, $iDay, $iYear)) {
         return $sScanString;
@@ -1553,7 +1553,7 @@ function getFamilyList($sDirRoleHead, $sDirRoleSpouse, $classification = 0, $sSe
     $sSQL = 'SELECT per_FirstName, per_fam_ID FROM person_per WHERE per_fam_ID > 0 AND ('.$head_criteria.') ORDER BY per_fam_ID';
     $rs_head = RunQuery($sSQL);
     $aHead = [];
-    while (list($head_firstname, $head_famid) = mysqli_fetch_row($rs_head)) {
+    while ([$head_firstname, $head_famid] = mysqli_fetch_row($rs_head)) {
         if ($head_firstname && isset($aHead[$head_famid])) {
             $aHead[$head_famid] .= ' & '.$head_firstname;
         } elseif ($head_firstname) {
@@ -1597,7 +1597,7 @@ function genGroupKey($methodSpecificID, $famID, $fundIDs, $date)
         $GroupKey = $methodSpecificID.'|'.$uniqueNum.'|'.$famID.'|'.$fundIDs.'|'.$date;
         $sSQL = "SELECT COUNT(plg_GroupKey) FROM pledge_plg WHERE plg_PledgeOrPayment='Payment' AND plg_GroupKey='".$GroupKey."'";
         $rsResults = RunQuery($sSQL);
-        list($numGroupKeys) = mysqli_fetch_row($rsResults);
+        [$numGroupKeys] = mysqli_fetch_row($rsResults);
         if ($numGroupKeys) {
             ++$uniqueNum;
         } else {

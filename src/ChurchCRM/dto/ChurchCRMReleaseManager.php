@@ -11,8 +11,8 @@ use Github\Client;
 class ChurchCRMReleaseManager {
 
     // todo: make these const variables private after deprecating PHP7.0 #4948
-    const GITHUB_USER_NAME = 'churchcrm';
-    const GITHUB_REPOSITORY_NAME = 'crm';
+    public const GITHUB_USER_NAME = 'churchcrm';
+    public const GITHUB_REPOSITORY_NAME = 'crm';
 
     /** @var bool true when an upgrade is in progress */
     private static $isUpgradeInProgress;

@@ -77,7 +77,7 @@ class FinancialService
     // Get deposit total
     $sSQL = "SELECT SUM(plg_amount) AS deposit_total FROM pledge_plg WHERE plg_depID = '$id' AND plg_PledgeOrPayment = 'Payment' ".$sqlClause;
         $rsDepositTotal = RunQuery($sSQL);
-        list($deposit_total) = mysqli_fetch_row($rsDepositTotal);
+        [$deposit_total] = mysqli_fetch_row($rsDepositTotal);
 
         return $deposit_total;
     }
@@ -155,7 +155,7 @@ class FinancialService
     {
         // Validate Date
     if (strlen($payment->Date) > 0) {
-        list($iYear, $iMonth, $iDay) = sscanf($payment->Date, '%04d-%02d-%02d');
+        [$iYear, $iMonth, $iDay] = sscanf($payment->Date, '%04d-%02d-%02d');
         if (!checkdate($iMonth, $iDay, $iYear)) {
             throw new \Exception('Invalid Date');
         }
