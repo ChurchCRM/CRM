@@ -143,6 +143,8 @@ function resetDatabase(Request $request, Response $response, array $p_args)
         $dbAlterStatement = $connection->exec($alterSQL);
         $logger->info("DB Update: " . $alterSQL . " done.");
     }
+    
+    AuthenticationManager::EndSession();
 
     return $response->withJson(['success' => true, 'msg' => gettext('The database has been cleared.')]);
 }
