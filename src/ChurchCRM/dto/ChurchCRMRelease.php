@@ -1,8 +1,6 @@
 <?php
 
-
 namespace ChurchCRM\dto;
-
 
 Class ChurchCRMRelease {
     public $MAJOR;
@@ -11,7 +9,7 @@ Class ChurchCRMRelease {
 
     private array $rawRelease;
 
-    public function __construct(array $releaseArray){
+    public function __construct(array $releaseArray) {
         $this->rawRelease = $releaseArray;
         $versions = explode(".",$releaseArray["name"]);
         $this->MAJOR = $versions[0];
@@ -25,29 +23,21 @@ Class ChurchCRMRelease {
     }
 
     public function compareTo(ChurchCRMRelease $b) {
-        if ($this->MAJOR < $b->MAJOR )
-        {
+        if ($this->MAJOR < $b->MAJOR) {
             return -1;
-        }
-        elseif ($this->MAJOR > $b->MAJOR ) {
+        } elseif ($this->MAJOR > $b->MAJOR) {
             return 1;
-        }
-        elseif ($this->MAJOR  ==  $b->MAJOR ) {
+        } elseif ($this->MAJOR  ==  $b->MAJOR) {
             if ($this->MINOR < $b->MINOR) {
                 return -1;
-            }
-            elseif ($this->MINOR > $b->MINOR) {
+            } elseif ($this->MINOR > $b->MINOR) {
                 return 1;
-            }
-            elseif ($this->MINOR == $b->MINOR) {
-                if ($this->PATCH < $b->PATCH)
-                {
+            } elseif ($this->MINOR == $b->MINOR) {
+                if ($this->PATCH < $b->PATCH) {
                     return -1;
-                }
-                else if ($this->PATCH > $b->PATCH) {
+                } elseif ($this->PATCH > $b->PATCH) {
                     return 1;
-                }
-                else if($this->PATCH == $b->PATCH) {
+                } elseif ($this->PATCH == $b->PATCH) {
                     return 0;
                 }
             }
@@ -56,8 +46,7 @@ Class ChurchCRMRelease {
 
     public function __toString()
     {
-        try 
-        {
+        try {
             return (string) $this->MAJOR.".".$this->MINOR.".".$this->PATCH;
         } 
         catch (\Exception $exception) 
@@ -69,7 +58,7 @@ Class ChurchCRMRelease {
     public function getDownloadURL() {
         foreach ($this->rawRelease['assets'] as $asset) {
             if ($asset['name'] == "ChurchCRM-" . $this->rawRelease['name'] . ".zip") {
-            $url = $asset['browser_download_url'];
+                $url = $asset['browser_download_url'];
             }
         }
         return $url;
