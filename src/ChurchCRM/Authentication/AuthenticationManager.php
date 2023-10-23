@@ -20,7 +20,11 @@ class AuthenticationManager
     // Currently, only local auth is implemented; hence the zero-indexed array elements.
 
     public static function GetAuthenticationProvider() {
-      if ( key_exists("AuthenticationProvider", $_SESSION) && $_SESSION['AuthenticationProvider'] instanceof IAuthenticationProvider) {
+      if (
+        isset($_SESSION) &&
+        array_key_exists('AuthenticationProvider', $_SESSION) &&
+        $_SESSION['AuthenticationProvider'] instanceof IAuthenticationProvider
+      ) {
         return  $_SESSION['AuthenticationProvider'];
       }
       else {

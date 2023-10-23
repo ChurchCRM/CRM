@@ -25,7 +25,7 @@ if (isset($_GET['upgrade']) && InputUtils::FilterString($_GET['upgrade']) === "t
         $logger->info("Complete database upgrade; redirecting to Main menu");
         RedirectUtils::Redirect('Menu.php');
         exit;
-    } catch (Exception $ex) {
+    } catch (\Exception $ex) {
         $errorMessage = $ex->getMessage();
         $logger->error("Error updating database: " .$errorMessage, ['exception' => $ex]);
     }
