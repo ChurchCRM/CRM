@@ -154,7 +154,7 @@ if (array_key_exists('cartdir', $_POST)) {
 $mysqlinfo = mysqli_get_server_info($cnInfoCentral);
 $mysqltmp = explode('.', $mysqlinfo);
 $mysqlversion = $mysqltmp[0];
-if (count($mysqltmp[1] > 1)) {
+if (count($mysqltmp) > 1) {
     $mysqlsubversion = $mysqltmp[1];
 } else {
     $mysqlsubversion = 0;

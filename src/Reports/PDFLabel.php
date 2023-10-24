@@ -200,8 +200,6 @@ function GroupBySalutation($famID, $aAdultRole, $aChildRole)
 
 function MakeADCArray($sADClist)
 {
-    unset($aReturnArray);
-
     // The end of each row is marked with the pipe | symbol
     // keep fetching rows until gone
     while (mb_substr_count($sADClist, '|')) {
@@ -440,7 +438,7 @@ function ZipBundleSort($inLabels)
 
     $nz5 = 0;
 
-    while ([$z, $zc] = each($ZipCounts)) {
+    foreach ($ZipCounts as $z => $zc) {
         if ($zc >= $iZip5MinBundleSize) {
             $NoteText = ['Note'=>'******* Presort ZIP-5 '.$z];
             $NameText = ['Name'=>'** '.$zc.' Addresses in Bundle '.$z.' *'];
@@ -499,7 +497,7 @@ function ZipBundleSort($inLabels)
     //
 
     $nz3 = 0;
-    while ([$z, $zc] = each($ZipCounts)) {
+    foreach ($ZipCounts as $z => $zc) {
         if ($zc >= $iZip3MinBundleSize) {
             $NoteText = ['Note'=>'******* Presort ZIP-3 '.$z];
             $NameText = ['Name'=>'** '.$zc.' Addresses in Bundle '.$z.' *'];
@@ -561,7 +559,7 @@ function ZipBundleSort($inLabels)
     }
     $nadc = 0;
     if ($ncounts) {
-        while ([$z, $zc] = each($ZipCounts)) {
+        foreach ($ZipCounts as $z => $zc) {
             if ($zc >= $iAdcMinBundleSize) {
                 $NoteText = ['Note'=>'******* Presort ADC '.$z];
                 $NameText = ['Name'=>'** '.$zc.' Addresses in Bundle ADC '.$z.' *'];
@@ -634,8 +632,6 @@ function ZipBundleSort($inLabels)
 function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComplete)
 {
     // $mode is "indiv" or "fam"
-
-    unset($didFam);
 
     $sAdultRole = SystemConfig::getValue('sDirRoleHead').','.SystemConfig::getValue('sDirRoleSpouse');
     $sAdultRole = trim($sAdultRole, " ,\t\n\r\0\x0B");
@@ -733,14 +729,13 @@ function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComp
         } // end of foreach loop
     } // end of while loop
 
-    unset($zipLabels);
     if ($iBulkMailPresort) {
         //
         // now sort the label list by presort bundle definitions
         //
         $zipLabels = ZipBundleSort($sLabelList);
         if ($iBulkMailPresort == 2) {
-            while ([$i, $sLT] = each($zipLabels)) {
+            foreach ($zipLabels as $i => $sLT) {
                 $pdf->Add_PDF_Label(sprintf(
                     "%s\n%s\n%s\n%s, %s %s",
                     $sLT['Note'],
@@ -752,7 +747,7 @@ function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComp
                 ));
             } // end while
         } else {
-            while ([$i, $sLT] = each($zipLabels)) {
+            foreach ($zipLabels as $i => $sLT) {
                 $pdf->Add_PDF_Label(sprintf(
                     "%s\n%s\n%s, %s %s",
                     $sLT['Name'],
@@ -764,7 +759,7 @@ function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComp
             } // end while
         } // end of if ($BulkMailPresort == 2)
     } else {
-        while ([$i, $sLT] = each($sLabelList)) {
+        foreach ($sLabelList as $i => $sLT) {
             $pdf->Add_PDF_Label(sprintf(
                 "%s\n%s\n%s, %s %s",
                 $sLT['Name'],
@@ -876,7 +871,7 @@ if ($sFileType == 'PDF') {
 
     $sCSVOutput .= '"'.InputUtils::translate_special_charset("Greeting").'"'.$delimiter.'"'.InputUtils::translate_special_charset("Name").'"'.$delimiter.'"'.InputUtils::translate_special_charset("Address").'"'.$delimiter.'"'.InputUtils::translate_special_charset("City").'"'.$delimiter.'"'.InputUtils::translate_special_charset("State").'"'.$delimiter.'"'.InputUtils::translate_special_charset("Zip").'"'."\n";
 
-    while ([$i, $sLT] = each($aLabelList)) {
+    foreach ($aLabelList as $i => $sLT) {
         if ($iBulkCode) {
             $sCSVOutput .= '"'.$sLT['Note'].'"'.$delimiter;
         }
