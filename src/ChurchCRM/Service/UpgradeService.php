@@ -57,9 +57,9 @@ class UpgradeService
                       $scriptName = SystemURLs::getDocumentRoot() . $dbScript;
 
                       $logger->info("Upgrade DB - " . $scriptName);
-                      if (pathinfo($scriptName, PATHINFO_EXTENSION) == "sql") {
+                      if (pathinfo($scriptName, PATHINFO_EXTENSION) === "sql") {
                           SQLUtils::sqlImport($scriptName, $connection);
-                      } elseif (pathinfo($scriptName, PATHINFO_EXTENSION) == "php") {
+                      } elseif (pathinfo($scriptName, PATHINFO_EXTENSION) === "php") {
                           require_once ($scriptName);
                       } else {
                         throw new \Exception("Invalid upgrade file specified: $scriptName");

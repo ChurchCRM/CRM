@@ -17,6 +17,7 @@ namespace ChurchCRM\Backup
     use ChurchCRM\Utils\InputUtils;
     use Defuse\Crypto\File;
     use ChurchCRM\Bootstrapper;
+    use ChurchCRM\Service\SystemService;
 
     abstract class BackupType
     {
@@ -348,7 +349,6 @@ namespace ChurchCRM\Backup
                 FileSystemUtils::recursiveCopyDirectory($this->TempFolder. '/Images/', SystemURLs::getImagesRoot());
                 LoggerUtils::getAppLogger()->debug("Finished copying images");
             } else {
-                FileSystemUtils::recursiveRemoveDirectory($restoreResult->backupDir, true);
                 throw new Exception(gettext("Backup archive does not contain a database").": " .$this->RestoreFile);
             }
             LoggerUtils::getAppLogger()->debug("Finished restoring full archive");
