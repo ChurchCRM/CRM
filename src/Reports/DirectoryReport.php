@@ -27,30 +27,30 @@ if (!AuthenticationManager::GetCurrentUser()->isCreateDirectoryEnabled()) {
 }
 
 // Get and filter the classifications selected
-$count = 0;
+$aClasses = [];
 if (array_key_exists('sDirClassifications', $_POST) and $_POST['sDirClassifications'] != '') {
     foreach ($_POST['sDirClassifications'] as $Cls) {
-        $aClasses[$count++] = InputUtils::LegacyFilterInput($Cls, 'int');
+        $aClasses[] = InputUtils::LegacyFilterInput($Cls, 'int');
     }
     $sDirClassifications = implode(',', $aClasses);
 } else {
     $sDirClassifications = '';
 }
-$count = 0;
+$aHeads = [];
 foreach ($_POST['sDirRoleHead'] as $Head) {
-    $aHeads[$count++] = InputUtils::LegacyFilterInput($Head, 'int');
+    $aHeads[] = InputUtils::LegacyFilterInput($Head, 'int');
 }
 $sDirRoleHeads = implode(',', $aHeads);
 
-$count = 0;
+$aSpouses = [];
 foreach ($_POST['sDirRoleSpouse'] as $Spouse) {
-    $aSpouses[$count++] = InputUtils::LegacyFilterInput($Spouse, 'int');
+    $aSpouses[] = InputUtils::LegacyFilterInput($Spouse, 'int');
 }
 $sDirRoleSpouses = implode(',', $aSpouses);
 
-$count = 0;
+$aChildren = [];
 foreach ($_POST['sDirRoleChild'] as $Child) {
-    $aChildren[$count++] = InputUtils::LegacyFilterInput($Child, 'int');
+    $aChildren[] = InputUtils::LegacyFilterInput($Child, 'int');
 }
 
 //Exclude inactive families
@@ -81,9 +81,9 @@ $sChurchPhone = InputUtils::LegacyFilterInput($_POST['sChurchPhone']);
 
 $bDirUseTitlePage = isset($_POST['bDirUseTitlePage']);
 
-$bNumberofColumns = InputUtils::LegacyFilterInput($_POST['NumCols']);
-$bPageSize = InputUtils::LegacyFilterInput($_POST['PageSize']);
-$bFontSz = InputUtils::LegacyFilterInput($_POST['FSize']);
+$bNumberofColumns = InputUtils::LegacyFilterInput($_POST['NumCols'] ?? '1', 'int');
+$bPageSize = InputUtils::LegacyFilterInput($_POST['PageSize'] ?? 'letter', 'int');
+$bFontSz = InputUtils::LegacyFilterInput($_POST['FSize'] ?? '8', 'int');
 $bLineSp = $bFontSz / 3;
 
 if ($bPageSize != 'letter' && $bPageSize != 'a4') {
@@ -125,9 +125,9 @@ $sWhereExt = '';
 if (!empty($_POST['GroupID'])) {
     $sGroupTable = '(person_per, person2group2role_p2g2r)';
 
-    $count = 0;
+    $aGroups = [];
     foreach ($_POST['GroupID'] as $Grp) {
-        $aGroups[$count++] = InputUtils::LegacyFilterInput($Grp, 'int');
+        $aGroups[] = InputUtils::LegacyFilterInput($Grp, 'int');
     }
     $sGroupsList = implode(',', $aGroups);
 
