@@ -220,9 +220,9 @@ class Photo {
   }
 
   private function getRandomColor($image) {
-    $red = rand(0, 150);
-    $green = rand(0, 150);
-    $blue = rand(0, 150);
+    $red = random_int(0, 150);
+    $green = random_int(0, 150);
+    $blue = random_int(0, 150);
     return imagecolorallocate($image, $red, $green, $blue);
   }
 

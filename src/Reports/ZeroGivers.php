@@ -149,9 +149,7 @@ if ($output == 'pdf') {
     // Settings
     $delimiter = ',';
     $eol = "\r\n";
-
-    // Build headings row
-    eregi('SELECT (.*) FROM ', $sSQL, $result);
+    
     $headings = explode(',', $result[1]);
     $buffer = '';
     foreach ($headings as $heading) {
@@ -174,4 +172,6 @@ if ($output == 'pdf') {
     header('Content-type: text/x-csv');
     header('Content-Disposition: attachment; filename=ChurchCRM-'.date(SystemConfig::getValue("sDateFilenameFormat")).'.csv');
     echo $buffer;
+} else {
+    echo "[". $output ."] output selected, but is not known";
 }

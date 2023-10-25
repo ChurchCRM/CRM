@@ -190,7 +190,7 @@ class AppIntegrityService
       if ( function_exists('curl_version')) {
           $ch = curl_init();
           $request_url_parser = parse_url($_SERVER['HTTP_REFERER']);
-          $request_scheme = isset($request_url_parser['scheme']) ? $request_url_parser['scheme'] : 'http';
+          $request_scheme = $request_url_parser['scheme'] ?? 'http';
           $rewrite_chk_url = $request_scheme ."://". $_SERVER['SERVER_ADDR'] . SystemURLs::getRootPath()."/INVALID";
           $logger->debug("Testing CURL loopback check to: $rewrite_chk_url");
           curl_setopt($ch, CURLOPT_URL, $rewrite_chk_url);

@@ -283,7 +283,7 @@ class FinancialService
           $payment->FYID."','".
           $payment->Date."','".
           $Fund->Amount."','".
-          (isset($payment->schedule) ? $payment->schedule : 'NULL')."','".
+          ($payment->schedule ?? 'NULL')."','".
           $payment->iMethod."','".
           $Fund->Comment."','".
           date('YmdHis')."',".
@@ -291,10 +291,10 @@ class FinancialService
           $payment->type."',".
           $Fund->FundID.','.
           $payment->DepositID.','.
-          (isset($payment->iCheckNo) ? $payment->iCheckNo : 'NULL').",'".
-          (isset($payment->tScanString) ? $payment->tScanString : 'NULL')."','".
-          (isset($payment->iAutID) ? $payment->iAutID : 'NULL')."','".
-          (isset($Fund->NonDeductible) ? $Fund->NonDeductible : 'NULL')."','".
+          ($payment->iCheckNo ?? 'NULL').",'".
+          ($payment->tScanString ?? 'NULL')."','".
+          ($payment->iAutID ?? 'NULL')."','".
+          ($Fund->NonDeductible ?? 'NULL')."','".
           $sGroupKey."')";
 
                 if (isset($sSQL)) {
