@@ -66,7 +66,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
 			WHERE plg_FamID = '.$fam_ID." AND plg_PledgeOrPayment = 'Payment' AND
 				 plg_date >= '$startdate' AND plg_date < '$enddate'";
         $rsPledges = RunQuery($sSQL);
-        list($count) = mysqli_fetch_row($rsPledges);
+        [$count] = mysqli_fetch_row($rsPledges);
         if ($count > 0) {
             $donation = 'yes';
         }

@@ -440,7 +440,7 @@ function ZipBundleSort($inLabels)
 
     $nz5 = 0;
 
-    while (list($z, $zc) = each($ZipCounts)) {
+    while ([$z, $zc] = each($ZipCounts)) {
         if ($zc >= $iZip5MinBundleSize) {
             $NoteText = ['Note'=>'******* Presort ZIP-5 '.$z];
             $NameText = ['Name'=>'** '.$zc.' Addresses in Bundle '.$z.' *'];
@@ -499,7 +499,7 @@ function ZipBundleSort($inLabels)
     //
 
     $nz3 = 0;
-    while (list($z, $zc) = each($ZipCounts)) {
+    while ([$z, $zc] = each($ZipCounts)) {
         if ($zc >= $iZip3MinBundleSize) {
             $NoteText = ['Note'=>'******* Presort ZIP-3 '.$z];
             $NameText = ['Name'=>'** '.$zc.' Addresses in Bundle '.$z.' *'];
@@ -561,7 +561,7 @@ function ZipBundleSort($inLabels)
     }
     $nadc = 0;
     if ($ncounts) {
-        while (list($z, $zc) = each($ZipCounts)) {
+        while ([$z, $zc] = each($ZipCounts)) {
             if ($zc >= $iAdcMinBundleSize) {
                 $NoteText = ['Note'=>'******* Presort ADC '.$z];
                 $NameText = ['Name'=>'** '.$zc.' Addresses in Bundle ADC '.$z.' *'];
@@ -740,7 +740,7 @@ function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComp
         //
         $zipLabels = ZipBundleSort($sLabelList);
         if ($iBulkMailPresort == 2) {
-            while (list($i, $sLT) = each($zipLabels)) {
+            while ([$i, $sLT] = each($zipLabels)) {
                 $pdf->Add_PDF_Label(sprintf(
                     "%s\n%s\n%s\n%s, %s %s",
                     $sLT['Note'],
@@ -752,7 +752,7 @@ function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComp
                 ));
             } // end while
         } else {
-            while (list($i, $sLT) = each($zipLabels)) {
+            while ([$i, $sLT] = each($zipLabels)) {
                 $pdf->Add_PDF_Label(sprintf(
                     "%s\n%s\n%s, %s %s",
                     $sLT['Name'],
@@ -764,7 +764,7 @@ function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComp
             } // end while
         } // end of if ($BulkMailPresort == 2)
     } else {
-        while (list($i, $sLT) = each($sLabelList)) {
+        while ([$i, $sLT] = each($sLabelList)) {
             $pdf->Add_PDF_Label(sprintf(
                 "%s\n%s\n%s, %s %s",
                 $sLT['Name'],
@@ -876,7 +876,7 @@ if ($sFileType == 'PDF') {
 
     $sCSVOutput .= '"'.InputUtils::translate_special_charset("Greeting").'"'.$delimiter.'"'.InputUtils::translate_special_charset("Name").'"'.$delimiter.'"'.InputUtils::translate_special_charset("Address").'"'.$delimiter.'"'.InputUtils::translate_special_charset("City").'"'.$delimiter.'"'.InputUtils::translate_special_charset("State").'"'.$delimiter.'"'.InputUtils::translate_special_charset("Zip").'"'."\n";
 
-    while (list($i, $sLT) = each($aLabelList)) {
+    while ([$i, $sLT] = each($aLabelList)) {
         if ($iBulkCode) {
             $sCSVOutput .= '"'.$sLT['Note'].'"'.$delimiter;
         }
