@@ -18,7 +18,7 @@
     },
     "homepage": "http://www.churchcrm.io",
     "scripts": {
-        "clean": "rm -rf node_modules/ src/vendor/ src/composer.lock",
+        "clean": "rm -rf node_modules/ src/vendor/",
         "preinstall": "grunt clean & grunt updateVersions",
         "install": "grunt curl-dir && grunt copy && grunt sass && grunt lineending && grunt patchDataTablesCSS",
         "build-react": "webpack",
@@ -31,7 +31,7 @@
         "locale-download": "grunt updateFromPOeditor && grunt genLocaleJSFiles && npm run locale-audit",
         "locale-audit": "grunt exec:downloadPOEditorStats && grunt genLocaleAudit",
         "update-signatures": "grunt generateSignatures",
-        "package": "npm run clean && npm run deploy && grunt compress",
+        "package": "npm run clean && npm run deploy && rm src/composer.lock && grunt compress",
         "demosite": "php scripts/update-demo-site.php",
         "changelog-gen": "grunt exec:updatechangelog",
         "orm-gen": "php src/vendor/propel/propel/bin/propel.php --config-dir=propel model:build && cd src/ && composer dump-autoload",
