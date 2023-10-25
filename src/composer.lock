@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4ab7608abafefd6e275a8ecc55ea8806",
+    "content-hash": "79a913745834c1dbe693d563188a91d4",
     "packages": [
         {
             "name": "azuyalabs/yasumi",
@@ -275,16 +275,16 @@
         },
         {
             "name": "dasprid/enum",
-            "version": "1.0.4",
+            "version": "1.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/DASPRiD/Enum.git",
-                "reference": "8e6b6ea76eabbf19ea2bf5b67b98e1860474012f"
+                "reference": "6faf451159fb8ba4126b925ed2d78acfce0dc016"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/DASPRiD/Enum/zipball/8e6b6ea76eabbf19ea2bf5b67b98e1860474012f",
-                "reference": "8e6b6ea76eabbf19ea2bf5b67b98e1860474012f",
+                "url": "https://api.github.com/repos/DASPRiD/Enum/zipball/6faf451159fb8ba4126b925ed2d78acfce0dc016",
+                "reference": "6faf451159fb8ba4126b925ed2d78acfce0dc016",
                 "shasum": ""
             },
             "require": {
@@ -319,22 +319,22 @@
             ],
             "support": {
                 "issues": "https://github.com/DASPRiD/Enum/issues",
-                "source": "https://github.com/DASPRiD/Enum/tree/1.0.4"
+                "source": "https://github.com/DASPRiD/Enum/tree/1.0.5"
             },
-            "time": "2023-03-01T18:44:03+00:00"
+            "time": "2023-08-25T16:18:39+00:00"
         },
         {
             "name": "defuse/php-encryption",
-            "version": "v2.3.1",
+            "version": "v2.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/defuse/php-encryption.git",
-                "reference": "77880488b9954b7884c25555c2a0ea9e7053f9d2"
+                "reference": "f53396c2d34225064647a05ca76c1da9d99e5828"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/defuse/php-encryption/zipball/77880488b9954b7884c25555c2a0ea9e7053f9d2",
-                "reference": "77880488b9954b7884c25555c2a0ea9e7053f9d2",
+                "url": "https://api.github.com/repos/defuse/php-encryption/zipball/f53396c2d34225064647a05ca76c1da9d99e5828",
+                "reference": "f53396c2d34225064647a05ca76c1da9d99e5828",
                 "shasum": ""
             },
             "require": {
@@ -343,7 +343,8 @@
                 "php": ">=5.6.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "^4|^5|^6|^7|^8|^9"
+                "phpunit/phpunit": "^5|^6|^7|^8|^9|^10",
+                "yoast/phpunit-polyfills": "^2.0.0"
             },
             "bin": [
                 "bin/generate-defuse-key"
@@ -385,9 +386,9 @@
             ],
             "support": {
                 "issues": "https://github.com/defuse/php-encryption/issues",
-                "source": "https://github.com/defuse/php-encryption/tree/v2.3.1"
+                "source": "https://github.com/defuse/php-encryption/tree/v2.4.0"
             },
-            "time": "2021-04-09T23:57:26+00:00"
+            "time": "2023-06-19T06:10:36+00:00"
         },
         {
             "name": "drewm/mailchimp-api",
@@ -1022,16 +1023,16 @@
         },
         {
             "name": "ifsnop/mysqldump-php",
-            "version": "v2.11",
+            "version": "v2.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ifsnop/mysqldump-php.git",
-                "reference": "ec6a777062b287cd25cb1cd916b3d14c595ebdb8"
+                "reference": "2d3a43fc0c49f23bf7dee392b0dd1f8c799f89d3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ifsnop/mysqldump-php/zipball/ec6a777062b287cd25cb1cd916b3d14c595ebdb8",
-                "reference": "ec6a777062b287cd25cb1cd916b3d14c595ebdb8",
+                "url": "https://api.github.com/repos/ifsnop/mysqldump-php/zipball/2d3a43fc0c49f23bf7dee392b0dd1f8c799f89d3",
+                "reference": "2d3a43fc0c49f23bf7dee392b0dd1f8c799f89d3",
                 "shasum": ""
             },
             "require": {
@@ -1075,9 +1076,9 @@
             ],
             "support": {
                 "issues": "https://github.com/ifsnop/mysqldump-php/issues",
-                "source": "https://github.com/ifsnop/mysqldump-php/tree/v2.11"
+                "source": "https://github.com/ifsnop/mysqldump-php/tree/v2.12"
             },
-            "time": "2023-03-18T00:37:42+00:00"
+            "time": "2023-04-12T07:43:14+00:00"
         },
         {
             "name": "khanamiryan/qrcode-detector-decoder",
@@ -1138,16 +1139,16 @@
         },
         {
             "name": "knplabs/github-api",
-            "version": "v3.11.0",
+            "version": "v3.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/KnpLabs/php-github-api.git",
-                "reference": "c68b874ac3267c3cc0544b726dbb4e49a72a9920"
+                "reference": "b50fc1f40bb5ac50957d32c5732fcde9167ac30a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/KnpLabs/php-github-api/zipball/c68b874ac3267c3cc0544b726dbb4e49a72a9920",
-                "reference": "c68b874ac3267c3cc0544b726dbb4e49a72a9920",
+                "url": "https://api.github.com/repos/KnpLabs/php-github-api/zipball/b50fc1f40bb5ac50957d32c5732fcde9167ac30a",
+                "reference": "b50fc1f40bb5ac50957d32c5732fcde9167ac30a",
                 "shasum": ""
             },
             "require": {
@@ -1161,7 +1162,7 @@
                 "psr/cache": "^1.0|^2.0|^3.0",
                 "psr/http-client-implementation": "^1.0",
                 "psr/http-factory-implementation": "^1.0",
-                "psr/http-message": "^1.0",
+                "psr/http-message": "^1.0|^2.0",
                 "symfony/deprecation-contracts": "^2.2|^3.0",
                 "symfony/polyfill-php80": "^1.17"
             },
@@ -1181,7 +1182,7 @@
             "extra": {
                 "branch-alias": {
                     "dev-2.x": "2.20.x-dev",
-                    "dev-master": "3.10.x-dev"
+                    "dev-master": "3.11.x-dev"
                 }
             },
             "autoload": {
@@ -1214,7 +1215,7 @@
             ],
             "support": {
                 "issues": "https://github.com/KnpLabs/php-github-api/issues",
-                "source": "https://github.com/KnpLabs/php-github-api/tree/v3.11.0"
+                "source": "https://github.com/KnpLabs/php-github-api/tree/v3.12.0"
             },
             "funding": [
                 {
@@ -1222,7 +1223,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-03-10T11:40:14+00:00"
+            "time": "2023-09-30T16:42:04+00:00"
         },
         {
             "name": "laminas/laminas-diactoros",
@@ -2343,31 +2344,26 @@
         },
         {
             "name": "php-http/promise",
-            "version": "1.1.0",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-http/promise.git",
-                "reference": "4c4c1f9b7289a2ec57cde7f1e9762a5789506f88"
+                "reference": "ef4905bfb492ff389eb7f12e26925a0f20073050"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-http/promise/zipball/4c4c1f9b7289a2ec57cde7f1e9762a5789506f88",
-                "reference": "4c4c1f9b7289a2ec57cde7f1e9762a5789506f88",
+                "url": "https://api.github.com/repos/php-http/promise/zipball/ef4905bfb492ff389eb7f12e26925a0f20073050",
+                "reference": "ef4905bfb492ff389eb7f12e26925a0f20073050",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.1 || ^8.0"
             },
             "require-dev": {
-                "friends-of-phpspec/phpspec-code-coverage": "^4.3.2",
-                "phpspec/phpspec": "^5.1.2 || ^6.2"
+                "friends-of-phpspec/phpspec-code-coverage": "^4.3.2 || ^6.3",
+                "phpspec/phpspec": "^5.1.2 || ^6.2 || ^7.4"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.1-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "Http\\Promise\\": "src/"
@@ -2394,9 +2390,9 @@
             ],
             "support": {
                 "issues": "https://github.com/php-http/promise/issues",
-                "source": "https://github.com/php-http/promise/tree/1.1.0"
+                "source": "https://github.com/php-http/promise/tree/1.2.0"
             },
-            "time": "2020-07-07T09:29:14+00:00"
+            "time": "2023-10-24T09:20:26+00:00"
         },
         {
             "name": "phpmailer/phpmailer",
@@ -2805,16 +2801,16 @@
         },
         {
             "name": "psr/http-client",
-            "version": "1.0.2",
+            "version": "1.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/http-client.git",
-                "reference": "0955afe48220520692d2d09f7ab7e0f93ffd6a31"
+                "reference": "bb5906edc1c324c9a05aa0873d40117941e5fa90"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/http-client/zipball/0955afe48220520692d2d09f7ab7e0f93ffd6a31",
-                "reference": "0955afe48220520692d2d09f7ab7e0f93ffd6a31",
+                "url": "https://api.github.com/repos/php-fig/http-client/zipball/bb5906edc1c324c9a05aa0873d40117941e5fa90",
+                "reference": "bb5906edc1c324c9a05aa0873d40117941e5fa90",
                 "shasum": ""
             },
             "require": {
@@ -2851,9 +2847,9 @@
                 "psr-18"
             ],
             "support": {
-                "source": "https://github.com/php-fig/http-client/tree/1.0.2"
+                "source": "https://github.com/php-fig/http-client"
             },
-            "time": "2023-04-10T20:12:12+00:00"
+            "time": "2023-09-23T14:17:50+00:00"
         },
         {
             "name": "psr/http-factory",
@@ -5401,16 +5397,16 @@
     "packages-dev": [
         {
             "name": "phpstan/phpstan",
-            "version": "1.10.38",
+            "version": "1.10.39",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "5302bb402c57f00fb3c2c015bac86e0827e4b691"
+                "reference": "d9dedb0413f678b4d03cbc2279a48f91592c97c4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/5302bb402c57f00fb3c2c015bac86e0827e4b691",
-                "reference": "5302bb402c57f00fb3c2c015bac86e0827e4b691",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/d9dedb0413f678b4d03cbc2279a48f91592c97c4",
+                "reference": "d9dedb0413f678b4d03cbc2279a48f91592c97c4",
                 "shasum": ""
             },
             "require": {
@@ -5459,20 +5455,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-10-06T14:19:14+00:00"
+            "time": "2023-10-17T15:46:26+00:00"
         },
         {
             "name": "rector/rector",
-            "version": "0.18.5",
+            "version": "0.18.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/rectorphp/rector.git",
-                "reference": "2a3b82f317e431fc142d21f3303891a4e64c96eb"
+                "reference": "02041b220704b9cbe075f0310d0954b2fda5c40c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rectorphp/rector/zipball/2a3b82f317e431fc142d21f3303891a4e64c96eb",
-                "reference": "2a3b82f317e431fc142d21f3303891a4e64c96eb",
+                "url": "https://api.github.com/repos/rectorphp/rector/zipball/02041b220704b9cbe075f0310d0954b2fda5c40c",
+                "reference": "02041b220704b9cbe075f0310d0954b2fda5c40c",
                 "shasum": ""
             },
             "require": {
@@ -5507,7 +5503,7 @@
             ],
             "support": {
                 "issues": "https://github.com/rectorphp/rector/issues",
-                "source": "https://github.com/rectorphp/rector/tree/0.18.5"
+                "source": "https://github.com/rectorphp/rector/tree/0.18.6"
             },
             "funding": [
                 {
@@ -5515,7 +5511,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-10-05T11:25:40+00:00"
+            "time": "2023-10-24T15:00:59+00:00"
         }
     ],
     "aliases": [],
@@ -5530,5 +5526,5 @@
     "platform-overrides": {
         "php": "8.1"
     },
-    "plugin-api-version": "2.6.0"
+    "plugin-api-version": "2.0.0"
 }
