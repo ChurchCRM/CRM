@@ -24,7 +24,7 @@
         "build-react": "webpack",
         "build": "npm run composer-install && npm run orm-gen &&  npm run build-react && grunt generateSignatures",
         "audit": "npm audit fix --only=prod --audit-level=high",
-        "deploy": "npm install && npm run install && npm run build",
+        "deploy": "npm ci && npm run install && npm run build",
         "clean-deploy": "npm run preinstall && npm run deploy",
         "postinstall": "grunt genLocaleJSFiles",
         "locale-gen": "locale/update-locale.sh",
