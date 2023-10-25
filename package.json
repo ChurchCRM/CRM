@@ -1,6 +1,6 @@
 {
     "name": "churchcrm",
-    "version": "5.0.2",
+    "version": "5.0.3",
     "description": "Free Church CRM Software",
     "repository": {
         "type": "git",
@@ -18,13 +18,14 @@
     },
     "homepage": "http://www.churchcrm.io",
     "scripts": {
-        "clean": "rm -rf node_modules/ &&  rm -rf src/vendor/",
+        "clean": "rm -rf node_modules/ && rm -rf src/vendor/ && rm -f src/composer.lock",
         "preinstall": "grunt clean & grunt updateVersions",
         "install": "grunt curl-dir && grunt copy && grunt sass && grunt lineending && grunt patchDataTablesCSS",
         "build-react": "webpack",
         "build": "npm run composer-install && npm run orm-gen &&  npm run build-react && grunt generateSignatures",
         "audit": "npm audit fix --only=prod --audit-level=high",
-        "deploy": "npm install && npm run build",
+        "deploy": "npm install && npm run install && npm run build",
+        "clean-deploy": "npm run preinstall && npm run deploy",
         "postinstall": "grunt genLocaleJSFiles",
         "locale-gen": "locale/update-locale.sh",
         "locale-download": "grunt updateFromPOeditor && grunt genLocaleJSFiles && npm run locale-audit",
@@ -76,7 +77,7 @@
         "chart.js": "^2.9.4",
         "ckeditor": "^4.12.1",
         "daterangepicker": "^3.1.0",
-        "flag-icons": "^6.11.0",
+        "flag-icons": "^6.11.1",
         "fullcalendar": "3.10.5",
         "i18n": "^0.15.1",
         "i18next": "19.9.2",
