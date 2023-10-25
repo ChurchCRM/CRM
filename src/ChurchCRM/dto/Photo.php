@@ -14,6 +14,7 @@ class Photo {
   private $photoContentType;
   private $thumbnailContentType;
   private bool $remotesEnabled;
+
   public static $validExtensions = ["png", "jpeg", "jpg"];
 
   public function __construct($photoType,$id) {
