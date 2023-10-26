@@ -27,6 +27,6 @@ try {
       </script>
   <?php
     }
-} catch (Exception $ex) {
+} catch (\Exception $ex) {
 }
  ?>
