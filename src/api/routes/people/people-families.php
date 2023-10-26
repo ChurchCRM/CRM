@@ -15,13 +15,13 @@ use Propel\Runtime\ActiveQuery\Criteria;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
-$app->group('/families', function () {
+$app->group('/families', function () use ($app) {
 
-    $this->get('/latest', 'getLatestFamilies');
-    $this->get('/updated', 'getUpdatedFamilies');
-    $this->get('/anniversaries', 'getFamiliesWithAnniversaries');
+    $app->get('/latest', 'getLatestFamilies');
+    $app->get('/updated', 'getUpdatedFamilies');
+    $app->get('/anniversaries', 'getFamiliesWithAnniversaries');
 
-    $this->get('/email/without', function ($request, $response, $args) {
+    $app->get('/email/without', function ($request, $response, $args) {
         $families = FamilyQuery::create()->joinWithPerson()->find();
 
         $familiesWithoutEmails = [];
@@ -43,10 +43,12 @@ $app->group('/families', function () {
         return $response->withJson(["count" => count($familiesWithoutEmails), "families" => $familiesWithoutEmails]);
     });
 
-    $this->get('/numbers', fn($request, $response, $args) => $response->withJson(MenuEventsCount::getNumberAnniversaries()));
+    $app->get('/numbers', function ($request, $response, $args) {
+        return $response->withJson(MenuEventsCount::getNumberAnniversaries());
+    });
 
 
-    $this->get('/search/{query}', function ($request, $response, $args) {
+    $app->get('/search/{query}', function ($request, $response, $args) {
         $query = $args['query'];
         $results = [];
         $q = FamilyQuery::create()
@@ -60,7 +62,7 @@ $app->group('/families', function () {
         return $response->withJson(json_encode(["Families" => $results], JSON_THROW_ON_ERROR));
     });
 
-    $this->get('/self-register', function ($request, $response, $args) {
+    $app->get('/self-register', function ($request, $response, $args) {
         $families = FamilyQuery::create()
             ->filterByEnteredBy(Person::SELF_REGISTER)
             ->orderByDateEntered(Criteria::DESC)
@@ -69,7 +71,7 @@ $app->group('/families', function () {
         return $response->withJson(['families' => $families->toArray()]);
     });
 
-    $this->get('/self-verify', function ($request, $response, $args) {
+    $app->get('/self-verify', function ($request, $response, $args) {
         $verificationNotes = NoteQuery::create()
             ->filterByEnteredBy(Person::SELF_VERIFY)
             ->orderByDateEntered(Criteria::DESC)
@@ -79,7 +81,7 @@ $app->group('/families', function () {
         return $response->withJson(['families' => $verificationNotes->toArray()]);
     });
 
-    $this->get('/pending-self-verify', function ($request, $response, $args) {
+    $app->get('/pending-self-verify', function ($request, $response, $args) {
         $pendingTokens = TokenQuery::create()
             ->filterByType(Token::typeFamilyVerify)
             ->filterByRemainingUses(['min' => 1])
@@ -93,16 +95,16 @@ $app->group('/families', function () {
     });
 
 
-    $this->get('/byCheckNumber/{scanString}', function ($request, $response, $args) {
+    $app->get('/byCheckNumber/{scanString}', function ($request, $response, $args) use ($app) {
         $scanString = $args['scanString'];
-        echo $this->FinancialService->getMemberByScanString($scanString);
+        echo $app->FinancialService->getMemberByScanString($scanString);
     });
 
     /**
      * Update the family status to activated or deactivated with :familyId and :status true/false.
      * Pass true to activate and false to deactivate.     *
      */
-    $this->post('/{familyId:[0-9]+}/activate/{status}', function ($request, $response, $args) {
+    $app->post('/{familyId:[0-9]+}/activate/{status}', function ($request, $response, $args) {
         $familyId = $args["familyId"];
         $newStatus = $args["status"];
 

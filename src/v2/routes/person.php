@@ -5,8 +5,8 @@ use Slim\Http\Request;
 use Slim\Http\Response;
 use Slim\Views\PhpRenderer;
 
-$app->group('/person', function () {
-    $this->get('/not-found', 'viewPersonNotFound');
+$app->group('/person', function () use ($app) {
+    $app->get('/not-found', 'viewPersonNotFound');
 });
 
 

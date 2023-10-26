@@ -10,15 +10,15 @@ use Slim\Http\Request;
 use Slim\Http\Response;
 use Slim\Views\PhpRenderer;
 
-$app->group('/email', function () {
-    $this->get('/debug', 'testEmailConnectionMVC')->add(new AdminRoleAuthMiddleware());
-    $this->get('', 'getEmailDashboardMVC');
-    $this->get('/', 'getEmailDashboardMVC');
-    $this->get('/dashboard', 'getEmailDashboardMVC');
-    $this->get('/duplicate', 'getDuplicateEmailsMVC');
-    $this->get('/missing', 'getFamiliesWithoutEmailsMVC');
-    $this->get('/mailchimp/{listId}/unsubscribed', 'getMailListUnSubscribersMVC');
-    $this->get('/mailchimp/{listId}/missing', 'getMailListMissingMVC');
+$app->group('/email', function () use ($app) {
+    $app->get('/debug', 'testEmailConnectionMVC')->add(new AdminRoleAuthMiddleware());
+    $app->get('', 'getEmailDashboardMVC');
+    $app->get('/', 'getEmailDashboardMVC');
+    $app->get('/dashboard', 'getEmailDashboardMVC');
+    $app->get('/duplicate', 'getDuplicateEmailsMVC');
+    $app->get('/missing', 'getFamiliesWithoutEmailsMVC');
+    $app->get('/mailchimp/{listId}/unsubscribed', 'getMailListUnSubscribersMVC');
+    $app->get('/mailchimp/{listId}/missing', 'getMailListMissingMVC');
 });
 
 function getEmailDashboardMVC(Request $request, Response $response, array $args)

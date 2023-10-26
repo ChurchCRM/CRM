@@ -14,7 +14,7 @@ use Slim\Http\Request;
 use Slim\Http\Response;
 
 
-$app->group('/people/properties', function () {
+$app->group('/people/properties', function () use ($app) {
 
     $personPropertyAPIMiddleware = new PropertyAPIMiddleware("p");
     $personAPIMiddleware = new PersonAPIMiddleware();
@@ -22,14 +22,14 @@ $app->group('/people/properties', function () {
     $familyAPIMiddleware = new FamilyAPIMiddleware();
 
 
-    $this->get('/person', 'getAllPersonProperties');
-    $this->get('/person/{personId}', 'getPersonProperties')->add($personAPIMiddleware);
-    $this->post('/person/{personId}/{propertyId}', 'addPropertyToPerson')->add($personAPIMiddleware)->add($personPropertyAPIMiddleware);
-    $this->delete('/person/{personId}/{propertyId}', 'removePropertyFromPerson')->add($personAPIMiddleware)->add($personPropertyAPIMiddleware);
-    $this->get('/family', 'getAllFamilyProperties');
-    $this->get('/family/{familyId}', 'getFamilyProperties')->add($familyAPIMiddleware);
-    $this->post('/family/{familyId}/{propertyId}', 'addPropertyToFamily')->add($familyAPIMiddleware)->add($familyPropertyAPIMiddleware);
-    $this->delete('/family/{familyId}/{propertyId}', 'removePropertyFromFamily')->add($familyAPIMiddleware)->add($familyPropertyAPIMiddleware);
+    $app->get('/person', 'getAllPersonProperties');
+    $app->get('/person/{personId}', 'getPersonProperties')->add($personAPIMiddleware);
+    $app->post('/person/{personId}/{propertyId}', 'addPropertyToPerson')->add($personAPIMiddleware)->add($personPropertyAPIMiddleware);
+    $app->delete('/person/{personId}/{propertyId}', 'removePropertyFromPerson')->add($personAPIMiddleware)->add($personPropertyAPIMiddleware);
+    $app->get('/family', 'getAllFamilyProperties');
+    $app->get('/family/{familyId}', 'getFamilyProperties')->add($familyAPIMiddleware);
+    $app->post('/family/{familyId}/{propertyId}', 'addPropertyToFamily')->add($familyAPIMiddleware)->add($familyPropertyAPIMiddleware);
+    $app->delete('/family/{familyId}/{propertyId}', 'removePropertyFromFamily')->add($familyAPIMiddleware)->add($familyPropertyAPIMiddleware);
 
 
 })->add(new MenuOptionsRoleAuthMiddleware());

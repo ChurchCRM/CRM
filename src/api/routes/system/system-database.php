@@ -23,28 +23,40 @@ use Propel\Runtime\Propel;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
-$app->group('/database', function () {
+$app->group('/database', function () use ($app) {
 
-    $this->delete('/reset', 'resetDatabase');
-    $this->delete('/people/clear', 'clearPeopleTables');
+    $app->delete('/reset', 'resetDatabase');
+    $app->delete('/people/clear', 'clearPeopleTables');
 
-    $this->get('/people/export/chmeetings', 'exportChMeetings');
+    $app->get('/people/export/chmeetings', 'exportChMeetings');
 
-    $this->post('/backup', function ($request, $response, $args) {
+    $app->post('/backup', function ($request, $response, $args) {
         $input = (object)$request->getParsedBody();
         $BaseName = preg_replace('/[^a-zA-Z0-9\-_]/','', SystemConfig::getValue('sChurchName')). "-" . date(SystemConfig::getValue("sDateFilenameFormat"));
         $BackupType = $input->BackupType;
-        $Backup = new BackupJob($BaseName, $BackupType, SystemConfig::getValue('bBackupExtraneousImages'), $input->EncryptBackup ?? "", $input->BackupPassword ?? "");
+        $Backup = new BackupJob(
+            $BaseName,
+            $BackupType,
+            SystemConfig::getValue('bBackupExtraneousImages'),
+            isset($input->EncryptBackup) ? $input->EncryptBackup : "",
+            isset($input->BackupPassword) ? $input->BackupPassword : ""
+        );
         $Backup->Execute();
         return $response->withJson($Backup);
     });
 
-    $this->post('/backupRemote', function ($request, $response, $args) {
+    $app->post('/backupRemote', function ($request, $response, $args) {
       if (SystemConfig::getValue('sExternalBackupUsername') && SystemConfig::getValue('sExternalBackupPassword') && SystemConfig::getValue('sExternalBackupEndpoint')) {
         $input = (object)$request->getParsedBody();
         $BaseName = preg_replace('/[^a-zA-Z0-9\-_]/','', SystemConfig::getValue('sChurchName')). "-" . date(SystemConfig::getValue("sDateFilenameFormat"));
         $BackupType = $input->BackupType;
-        $Backup = new BackupJob($BaseName, $BackupType, SystemConfig::getValue('bBackupExtraneousImages'));
+        $Backup = new BackupJob(
+            $BaseName,
+            $BackupType,
+            SystemConfig::getValue('bBackupExtraneousImages'),
+            isset($input->EncryptBackup) ? $input->EncryptBackup : "",
+            isset($input->BackupPassword) ? $input->BackupPassword : ""
+        );
         $Backup->Execute();
         $copyStatus = $Backup->CopyToWebDAV(SystemConfig::getValue('sExternalBackupEndpoint'), SystemConfig::getValue('sExternalBackupUsername'), SystemConfig::getValue('sExternalBackupPassword'));
         return $response->withJson($copyStatus);
@@ -54,13 +66,13 @@ $app->group('/database', function () {
       }
     });
 
-    $this->post('/restore', function ($request, $response, $args) {
+    $app->post('/restore', function ($request, $response, $args) {
         $RestoreJob = new RestoreJob();
         $RestoreJob->Execute();
         return $response->withJson($RestoreJob);
     });
 
-    $this->get('/download/{filename}', function ($request, $response, $args) {
+    $app->get('/download/{filename}', function ($request, $response, $args) {
         $filename = $args['filename'];
         BackupDownloader::DownloadBackup($filename);
     });

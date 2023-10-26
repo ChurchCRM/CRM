@@ -4,8 +4,8 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
 
-$app->group('/register', function () {
-    $this->post('', function ($request, $response, $args) {
+$app->group('/register', function () use ($app) {
+    $app->post('', function ($request, $response, $args) {
         $input = (object)$request->getParsedBody();
 
         $registrationData = new \stdClass();

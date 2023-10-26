@@ -13,8 +13,8 @@ use Slim\Http\Request;
 use Slim\Http\Response;
 use Slim\Views\PhpRenderer;
 
-$app->group('', function () {
-    $this->get('/dashboard', 'viewDashboard');
+$app->group('', function () use ($app) {
+    $app->get('/dashboard', 'viewDashboard');
 });
 
 

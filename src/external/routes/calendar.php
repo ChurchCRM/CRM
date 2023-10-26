@@ -4,9 +4,9 @@ use ChurchCRM\dto\SystemURLs;
 use Slim\Views\PhpRenderer;
 use ChurchCRM\Slim\Middleware\Request\PublicCalendarAPIMiddleware;
 
-$app->group('/calendars', function () {
-    $this->get('/{CalendarAccessToken}', 'serveCalendarPage');
-    $this->get('/{CalendarAccessToken}/', 'serveCalendarPage');
+$app->group('/calendars', function () use ($app) {
+    $app->get('/{CalendarAccessToken}', 'serveCalendarPage');
+    $app->get('/{CalendarAccessToken}/', 'serveCalendarPage');
 
 })->add(new PublicCalendarAPIMiddleware());
 

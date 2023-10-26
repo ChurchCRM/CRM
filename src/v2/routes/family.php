@@ -14,11 +14,11 @@ use Slim\Http\Request;
 use Slim\Http\Response;
 use Slim\Views\PhpRenderer;
 
-$app->group('/family', function () {
-    $this->get('','listFamilies');
-    $this->get('/','listFamilies');
-    $this->get('/not-found', 'viewFamilyNotFound');
-    $this->get('/{id}', 'viewFamily');
+$app->group('/family', function () use ($app) {
+    $app->get('','listFamilies');
+    $app->get('/','listFamilies');
+    $app->get('/not-found', 'viewFamilyNotFound');
+    $app->get('/{id}', 'viewFamily');
 });
 
 function listFamilies(Request $request, Response $response, array $args)
@@ -84,13 +84,13 @@ function viewFamily(Request $request, Response $response, array $args)
     foreach ($allFamilyCustomFields as $customfield ) {
         $rawQry->withColumn($customfield->getField());
     }
-    $thisFamilyCustomFields = $rawQry->findOneByFamId($familyId);
+    $appFamilyCustomFields = $rawQry->findOneByFamId($familyId);
 
-    if ($thisFamilyCustomFields) {
+    if ($appFamilyCustomFields) {
         $familyCustom = [];
         foreach ($allFamilyCustomFields as $customfield ) {
             if (AuthenticationManager::GetCurrentUser()->isEnabledSecurity($customfield->getFieldSecurity())) {
-                $value = $thisFamilyCustomFields->getVirtualColumn($customfield->getField());
+                $value = $appFamilyCustomFields->getVirtualColumn($customfield->getField());
                 if (!empty($value)) {
                     $item = new PeopleCustomField($customfield, $value);
                     array_push($familyCustom, $item);

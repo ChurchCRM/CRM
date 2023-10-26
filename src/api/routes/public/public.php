@@ -3,8 +3,8 @@
 use Slim\Http\Request;
 use Slim\Http\Response;
 
-$app->group('/public', function () {
-    $this->get('/echo', 'getEcho');
+$app->group('/public', function () use ($app) {
+    $app->get('/echo', 'getEcho');
 });
 
 

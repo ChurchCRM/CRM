@@ -12,12 +12,12 @@ use ChurchCRM\Utils\LoggerUtils;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
-$app->group('/user/{userId:[0-9]+}', function () {
-    $this->post("/password/reset", "resetPasswordAPI");
-    $this->post('/disableTwoFactor', "disableTwoFactor");
-    $this->post('/login/reset', "resetLogin");
-    $this->delete('/', "deleteUser");
-    $this->get("/permissions", "getUserPermissionsAPI");
+$app->group('/user/{userId:[0-9]+}', function () use ($app) {
+    $app->post("/password/reset", "resetPasswordAPI");
+    $app->post('/disableTwoFactor', "disableTwoFactor");
+    $app->post('/login/reset', "resetLogin");
+    $app->delete('/', "deleteUser");
+    $app->get("/permissions", "getUserPermissionsAPI");
 })->add(new AdminRoleAuthMiddleware())->add(new UserAPIMiddleware());
 
 function resetPasswordAPI(Request $request, Response $response, array $args)

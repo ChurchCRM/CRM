@@ -7,12 +7,12 @@ use ChurchCRM\ListOptionQuery;
 use ChurchCRM\Person;
 use Slim\Views\PhpRenderer;
 
-$app->group('/register', function () {
+$app->group('/register', function () use ($app) {
 
     $enableSelfReg = SystemConfig::getBooleanValue('bEnableSelfRegistration');
 
     if ($enableSelfReg) {
-        $this->get('/', function ($request, $response, $args) {
+        $app->get('/', function ($request, $response, $args) {
             $renderer = new PhpRenderer('templates/registration/');
             $familyRoles = ListOptionQuery::create()->filterById(2)->orderByOptionSequence()->find();
 
