@@ -34,7 +34,9 @@ class Prerequisite implements \JsonSerializable {
     }
     return gettext("Failed");
   }
-  public function jsonSerialize() {
+
+  public function jsonSerialize(): array
+  {
        return [
            'Name' => $this->GetName(),
            'WikiLink' => $this->GetWikiLink(),

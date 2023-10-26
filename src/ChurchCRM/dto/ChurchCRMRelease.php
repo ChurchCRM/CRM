@@ -60,7 +60,7 @@ Class ChurchCRMRelease {
         {
             return (string) $this->MAJOR.".".$this->MINOR.".".$this->PATCH;
         } 
-        catch (Exception $exception) 
+        catch (\Exception $exception) 
         {
             return '';
         }
