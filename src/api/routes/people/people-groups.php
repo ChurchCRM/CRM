@@ -39,7 +39,7 @@ $app->group('/groups', function () {
                 array_push($groupsInCart, $group->getId());
             }
         }
-        echo json_encode(['groupsInCart' => $groupsInCart]);
+        echo json_encode(['groupsInCart' => $groupsInCart], JSON_THROW_ON_ERROR);
     });
 
     $this->get('/{groupID:[0-9]+}', function ($request, $response, $args) {
@@ -209,7 +209,7 @@ $app->group('/groups', function () {
     $this->delete('/{groupID:[0-9]+}/roles/{roleID:[0-9]+}', function ($request, $response, $args) {
         $groupID = $args['groupID'];
         $roleID = $args['roleID'];
-        echo json_encode($this->GroupService->deleteGroupRole($groupID, $roleID));
+        echo json_encode($this->GroupService->deleteGroupRole($groupID, $roleID), JSON_THROW_ON_ERROR);
     });
 
     $this->post('/{groupID:[0-9]+}/roles', function ($request, $response, $args) {

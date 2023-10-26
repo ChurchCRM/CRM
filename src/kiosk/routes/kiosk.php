@@ -15,7 +15,7 @@ $app->get('/', function ($request, $response, $args) use ($app) {
 
   $app->get('/heartbeat', function ($request, $response, $args) use ($app) {
 
-    return json_encode($app->kiosk->heartbeat());
+    return json_encode($app->kiosk->heartbeat(), JSON_THROW_ON_ERROR);
   });
 
   $app->post('/checkin', function ($request, $response, $args) use ($app) {

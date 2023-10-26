@@ -14,7 +14,7 @@ $app->group('/payments', function () {
 
     $this->post('/', function ($request, $response, $args) {
         $payment = $request->getParsedBody();
-        echo json_encode(['payment' => $this->FinancialService->submitPledgeOrPayment($payment)]);
+        echo json_encode(['payment' => $this->FinancialService->submitPledgeOrPayment($payment)], JSON_THROW_ON_ERROR);
     });
 
     $this->get('/family/{familyId:[0-9]+}/list', function (Request $request, Response $response, array $args) {

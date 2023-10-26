@@ -28,7 +28,7 @@ class UpgradeService
         //the database isn't at the current version.  Start the upgrade
         try {
           $dbUpdatesFile = file_get_contents(SystemURLs::getDocumentRoot() . '/mysql/upgrade.json');
-          $dbUpdates = json_decode($dbUpdatesFile, true);
+          $dbUpdates = json_decode($dbUpdatesFile, true, 512, JSON_THROW_ON_ERROR);
           $errorFlag = false;
           $connection = Propel::getConnection();
           $upgradeScriptsExecuted = 0;

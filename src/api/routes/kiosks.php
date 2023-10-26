@@ -28,7 +28,7 @@ $app->group('/kiosks', function () {
         $reload = KioskDeviceQuery::create()
             ->findOneById($kioskId)
             ->reloadKiosk();
-        return $response->write(json_encode($reload));
+        return $response->write(json_encode($reload, JSON_THROW_ON_ERROR));
     });
 
     $this->post('/{kioskId:[0-9]+}/identifyKiosk', function ($request, $response, $args) {
@@ -36,7 +36,7 @@ $app->group('/kiosks', function () {
         $identify = KioskDeviceQuery::create()
             ->findOneById($kioskId)
             ->identifyKiosk();
-        return $response->write(json_encode($identify));
+        return $response->write(json_encode($identify, JSON_THROW_ON_ERROR));
     });
 
     $this->post('/{kioskId:[0-9]+}/acceptKiosk', function ($request, $response, $args) {
@@ -45,7 +45,7 @@ $app->group('/kiosks', function () {
             ->findOneById($kioskId)
             ->setAccepted(true)
             ->save();
-        return $response->write(json_encode($accept));
+        return $response->write(json_encode($accept, JSON_THROW_ON_ERROR));
     });
 
     $this->post('/{kioskId:[0-9]+}/setAssignment', function ($request, $response, $args) {
@@ -54,7 +54,7 @@ $app->group('/kiosks', function () {
         $accept = KioskDeviceQuery::create()
             ->findOneById($kioskId)
             ->setAssignment($input->assignmentType, $input->eventId);
-        return $response->write(json_encode($accept));
+        return $response->write(json_encode($accept, JSON_THROW_ON_ERROR));
     });
 
 });

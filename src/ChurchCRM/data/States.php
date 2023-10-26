@@ -14,7 +14,7 @@ class States
         $stateFileName = SystemURLs::getDocumentRoot() . '/locale/states/'. $countryCode .'.json';
         if( is_file($stateFileName)) {
             $satesFile = file_get_contents($stateFileName);
-            $this->states = json_decode($satesFile, true);
+            $this->states = json_decode($satesFile, true, 512, JSON_THROW_ON_ERROR);
         }
     }
 

@@ -124,7 +124,7 @@ class Notification
         "methods"=>$methods
     ];
 
-    return json_encode($sendStatus);
+    return json_encode($sendStatus, JSON_THROW_ON_ERROR);
 
   }
 

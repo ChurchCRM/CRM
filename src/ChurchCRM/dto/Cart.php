@@ -207,7 +207,7 @@ class Cart
     }
     $delimiter = AuthenticationManager::GetCurrentUser()->getUserConfigString("sMailtoDelimiter");
     $sEmailLink = implode($delimiter, array_unique(array_filter($emailAddressArray)));
-    if (!empty(SystemConfig::getValue('sToEmailAddress')) && !stristr($sEmailLink, SystemConfig::getValue('sToEmailAddress'))) {
+    if (!empty(SystemConfig::getValue('sToEmailAddress')) && !stristr($sEmailLink, (string) SystemConfig::getValue('sToEmailAddress'))) {
       $sEmailLink .= $delimiter . SystemConfig::getValue('sToEmailAddress');
     }
     return $sEmailLink;

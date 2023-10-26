@@ -23,7 +23,7 @@ $app->group('/register', function () {
         $curlService = curl_init('http://demo.churchcrm.io/register.php');
 
         curl_setopt($curlService, CURLOPT_POST, true);
-        curl_setopt($curlService, CURLOPT_POSTFIELDS, json_encode($registrationData));
+        curl_setopt($curlService, CURLOPT_POSTFIELDS, json_encode($registrationData, JSON_THROW_ON_ERROR));
         curl_setopt($curlService, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($curlService, CURLOPT_CONNECTTIMEOUT, 1);
 

@@ -12,7 +12,7 @@ $app->group('/public/user', function () {
 
 function userLogin(Request $request, Response $response, array $args)
 {
-    $body = json_decode($request->getBody());
+    $body = json_decode($request->getBody(), null, 512, JSON_THROW_ON_ERROR);
     if (!empty($body->userName)) {
         $user = UserQuery::create()->findOneByUserName($body->userName);
         if (!empty($user)) {

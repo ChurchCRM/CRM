@@ -17,14 +17,14 @@ use ChurchCRM\FamilyQuery;
 
 $sLabelFormat = InputUtils::LegacyFilterInput($_GET['labeltype']);
 $bRecipientNamingMethod = $_GET['recipientnamingmethod'];
-setcookie('labeltype', $sLabelFormat, time() + 60 * 60 * 24 * 90, '/');
+setcookie('labeltype', $sLabelFormat, ['expires' => time() + 60 * 60 * 24 * 90, 'path' => '/']);
 
 $pdf = new PDF_Label($sLabelFormat);
 
 $sFontInfo = FontFromName($_GET['labelfont']);
-setcookie('labelfont', $_GET['labelfont'], time() + 60 * 60 * 24 * 90, '/');
+setcookie('labelfont', $_GET['labelfont'], ['expires' => time() + 60 * 60 * 24 * 90, 'path' => '/']);
 $sFontSize = $_GET['labelfontsize'];
-setcookie('labelfontsize', $sFontSize, time() + 60 * 60 * 24 * 90, '/');
+setcookie('labelfontsize', $sFontSize, ['expires' => time() + 60 * 60 * 24 * 90, 'path' => '/']);
 $pdf->SetFont($sFontInfo[0], $sFontInfo[1]);
 if ($sFontSize != 'default') {
     $pdf->Set_Char_Size($sFontSize);
