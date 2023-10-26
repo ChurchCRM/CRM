@@ -9,6 +9,7 @@ $container['errorHandler'] = fn($container) => function ($request, $response, $e
         'trace' => explode("\n", $exception->getTraceAsString())
     ];
 
+
     return $container->get('response')->withStatus(500)
         ->withHeader('Content-Type', 'application/json')
         ->write(json_encode($data, JSON_THROW_ON_ERROR));

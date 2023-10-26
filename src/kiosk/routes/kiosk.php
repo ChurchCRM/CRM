@@ -13,6 +13,7 @@ $app->get('/', function ($request, $response, $args) use ($app) {
     return $renderer->render($response, "sunday-school-class-view.php", $pageObjects);
   });
 
+
   $app->get('/heartbeat', fn($request, $response, $args) => json_encode($app->kiosk->heartbeat(), JSON_THROW_ON_ERROR));
 
   $app->post('/checkin', function ($request, $response, $args) use ($app) {
