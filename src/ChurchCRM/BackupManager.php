@@ -338,7 +338,7 @@ namespace ChurchCRM\Backup
             $phar = new PharData($this->RestoreFile);
             LoggerUtils::getAppLogger()->debug("Extracting " . $this->RestoreFile . " to ". $this->TempFolder);
             $phar->extractTo($this->TempFolder);
-            LoggerUtils::getAppLogger()->debug("Finished exctraction");
+            LoggerUtils::getAppLogger()->debug("Finished extraction");
             $sqlFile =  $this->TempFolder."/ChurchCRM-Database.sql";
             if (file_exists($sqlFile)) {
                 $this->RestoreSQLBackup($sqlFile);
