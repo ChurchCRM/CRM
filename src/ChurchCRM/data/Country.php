@@ -5,28 +5,35 @@ class Country implements \JsonSerializable
 {
   private string $countryCode;
   private string $countryName;
-  private ?string $countryNameYasumi = null;
-  public function __construct (string $CountryCode, string $CountryName, string $CountryNameYasumi = null)
+  private ?string $countryNameYasumi;
+
+  public function __construct(string $CountryCode, string $CountryName, string $CountryNameYasumi = null)
   {
     $this->countryCode = $CountryCode;
     $this->countryName = $CountryName;
     $this->countryNameYasumi = $CountryNameYasumi;
   }
 
-  public function getCountryCode(){
+  public function getCountryCode()
+  {
     return $this->countryCode;
   }
 
-  public function getCountryName() {
+  public function getCountryName()
+  {
     return $this->countryName;
   }
 
-  public function getCountryNameYasumi() {
+  public function getCountryNameYasumi()
+  {
     return $this->countryNameYasumi;
   }
 
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
-        return ["name" => $this->countryName, "code" => $this->countryCode];
+        return [
+          'name' => $this->countryName,
+          'code' => $this->countryCode,
+        ];
     }
 }

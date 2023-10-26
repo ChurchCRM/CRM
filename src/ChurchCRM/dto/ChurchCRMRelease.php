@@ -9,7 +9,7 @@ Class ChurchCRMRelease {
     public $MINOR;
     public $PATCH;
 
-    private array $rawRelease;
+    private $rawRelease;
 
     public function __construct(array $releaseArray){
         $this->rawRelease = $releaseArray;
@@ -60,7 +60,7 @@ Class ChurchCRMRelease {
         {
             return (string) $this->MAJOR.".".$this->MINOR.".".$this->PATCH;
         } 
-        catch (Exception $exception) 
+        catch (\Exception $exception) 
         {
             return '';
         }

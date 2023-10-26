@@ -211,7 +211,7 @@ class ChurchCRMReleaseManager {
         if (self::$isUpgradeInProgress){
             // the PHP script was stopped while an upgrade was still in progress.
             $logger = LoggerUtils::getAppLogger();
-            $logger->addWarning("Maximum execution time threshold exceeded: " . ini_get("max_execution_time"));
+            $logger->warning("Maximum execution time threshold exceeded: " . ini_get("max_execution_time"));
 
             echo \json_encode([
                 'code' => 500,
@@ -259,7 +259,7 @@ class ChurchCRMReleaseManager {
         } else {
             self::$isUpgradeInProgress = false;
             ini_set('display_errors',$displayErrors);
-            $logger->err("Hash validation failed on " . $zipFilename.". Expected: ".$sha1. ". Got: ".sha1_file($zipFilename));
+            $logger->error("Hash validation failed on " . $zipFilename.". Expected: ".$sha1. ". Got: ".sha1_file($zipFilename));
             return 'hash validation failure';
         }
     }
