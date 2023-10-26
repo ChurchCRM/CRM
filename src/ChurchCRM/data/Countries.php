@@ -3,7 +3,7 @@ namespace ChurchCRM\data;
 
 class Countries
 {
-    private static $countries;
+    private static ?array $countries = null;
 
     private static function initializeCountries() {
       self::$countries = [
@@ -296,9 +296,7 @@ class Countries
         return null;
       }
       self::initializeCountries();
-      $result =  array_filter(self::$countries,function ($e) use ($CountryName) {
-        return $e->getCountryName() === $CountryName;
-      });
+      $result =  array_filter(self::$countries,fn($e) => $e->getCountryName() === $CountryName);
       if (count($result) === 1 )
       {
        return current($result);

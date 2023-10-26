@@ -11,12 +11,12 @@ use ChurchCRM\Authentication\AuthenticationManager;
 
 class LoggerUtils
 {
-    private static $appLogger;
-    private static $appLogHandler;
-    private static $cspLogger;
-    private static $authLogger;
-    private static $authLogHandler;
-    private static $correlationId;
+    private static ?\Monolog\Logger $appLogger = null;
+    private static ?\Monolog\Handler\StreamHandler $appLogHandler = null;
+    private static ?\Monolog\Logger $cspLogger = null;
+    private static ?\Monolog\Logger $authLogger = null;
+    private static ?\Monolog\Handler\StreamHandler $authLogHandler = null;
+    private static ?string $correlationId = null;
 
     public static function GetCorrelationId() {
       if ( empty( self::$correlationId )) {

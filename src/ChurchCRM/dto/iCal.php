@@ -13,8 +13,8 @@ use Propel\Runtime\Collection\ObjectCollection;
 
 Class iCal {
 
-  private $icsHeader;
-  private $eventsArray;
+  private string $icsHeader;
+  private \Propel\Runtime\Collection\ObjectCollection $eventsArray;
 
   public function __construct(ObjectCollection $Events, $CalendarName) {
     $this->eventsArray = $Events;

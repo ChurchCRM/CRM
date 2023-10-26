@@ -6,14 +6,14 @@ use ChurchCRM\dto\SystemURLs;
 
 class MenuItem
 {
-    private $maxNameStr = 25;
+    private int $maxNameStr = 25;
     private $name;
     private $uri;
     private $hasPermission;
     private $icon;
-    private $external = false;
-    private $subItems = [];
-    private $counters = [];
+    private bool $external = false;
+    private array $subItems = [];
+    private array $counters = [];
 
     public function __construct($name, $uri, $hasPermission = true, $icon = "")
     {

@@ -48,9 +48,9 @@ class CheckUploadSizeTask
         $val = substr($val, 0, -1);
         switch ($last) {
             case 'g':
-                $val *= 1073741824;
+                $val *= 1_073_741_824;
             case 'm':
-                $val *= 1048576;
+                $val *= 1_048_576;
             case 'k':
                 $val *= 1024;
         }

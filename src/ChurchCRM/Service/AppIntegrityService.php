@@ -120,24 +120,24 @@ class AppIntegrityService
   {
 
     $prerequisites = [
-      new Prerequisite('PHP 7.4+', function() { return version_compare(PHP_VERSION, '7.4.0', '>='); }),
-      new Prerequisite('PCRE and UTF-8 Support', function() { return function_exists('preg_match') && @preg_match('/^.$/u', 'ñ') && @preg_match('/^\pL$/u', 'ñ'); }),
-      new Prerequisite('Multibyte Encoding', function() { return extension_loaded('mbstring'); }),
-      new Prerequisite('PHP Phar', function() { return extension_loaded('phar'); }),
-      new Prerequisite('PHP Session', function() { return extension_loaded('session'); }),
-      new Prerequisite('PHP XML', function() { return extension_loaded('xml'); }),
-      new Prerequisite('PHP EXIF', function() { return extension_loaded('exif'); }),
-      new Prerequisite('PHP iconv', function() { return extension_loaded('iconv'); }),
-      new Prerequisite('Mod Rewrite or Equivalent', function() { return AppIntegrityService::hasModRewrite(); }),
-      new Prerequisite('GD Library for image manipulation', function() { return (extension_loaded('gd') && function_exists('gd_info')); }),
-      new Prerequisite('FreeType Library', function() { return function_exists('imagettftext'); }),
-      new Prerequisite('FileInfo Extension for image manipulation', function() { return extension_loaded('fileinfo'); }),
-      new Prerequisite('cURL', function() { return function_exists('curl_version'); }),
-      new Prerequisite('locale gettext', function() { return (function_exists('bindtextdomain') && function_exists("gettext")); }),
-      new Prerequisite('Include/Config file is writeable', function() { return is_writable(SystemURLs::getDocumentRoot().'/Include/') || is_writable(SystemURLs::getDocumentRoot().'/Include/Config.php'); }),
-      new Prerequisite('Images directory is writeable', function() { return AppIntegrityService::testImagesWriteable(); }),
-      new Prerequisite('PHP ZipArchive', function() { return extension_loaded('zip'); }),
-      new Prerequisite('Mysqli Functions', function() { return function_exists('mysqli_connect'); })
+      new Prerequisite('PHP 7.4+', fn() => version_compare(PHP_VERSION, '7.4.0', '>=')),
+      new Prerequisite('PCRE and UTF-8 Support', fn() => function_exists('preg_match') && @preg_match('/^.$/u', 'ñ') && @preg_match('/^\pL$/u', 'ñ')),
+      new Prerequisite('Multibyte Encoding', fn() => extension_loaded('mbstring')),
+      new Prerequisite('PHP Phar', fn() => extension_loaded('phar')),
+      new Prerequisite('PHP Session', fn() => extension_loaded('session')),
+      new Prerequisite('PHP XML', fn() => extension_loaded('xml')),
+      new Prerequisite('PHP EXIF', fn() => extension_loaded('exif')),
+      new Prerequisite('PHP iconv', fn() => extension_loaded('iconv')),
+      new Prerequisite('Mod Rewrite or Equivalent', fn() => AppIntegrityService::hasModRewrite()),
+      new Prerequisite('GD Library for image manipulation', fn() => extension_loaded('gd') && function_exists('gd_info')),
+      new Prerequisite('FreeType Library', fn() => function_exists('imagettftext')),
+      new Prerequisite('FileInfo Extension for image manipulation', fn() => extension_loaded('fileinfo')),
+      new Prerequisite('cURL', fn() => function_exists('curl_version')),
+      new Prerequisite('locale gettext', fn() => function_exists('bindtextdomain') && function_exists("gettext")),
+      new Prerequisite('Include/Config file is writeable', fn() => is_writable(SystemURLs::getDocumentRoot().'/Include/') || is_writable(SystemURLs::getDocumentRoot().'/Include/Config.php')),
+      new Prerequisite('Images directory is writeable', fn() => AppIntegrityService::testImagesWriteable()),
+      new Prerequisite('PHP ZipArchive', fn() => extension_loaded('zip')),
+      new Prerequisite('Mysqli Functions', fn() => function_exists('mysqli_connect'))
     ];
 
     return $prerequisites;
@@ -145,9 +145,7 @@ class AppIntegrityService
 
   public static function getUnmetPrerequisites()
   {
-    return array_filter(AppIntegrityService::getApplicationPrerequisites(), function ($prereq) {
-      return ! $prereq->IsPrerequisiteMet();
-    });
+    return array_filter(AppIntegrityService::getApplicationPrerequisites(), fn($prereq) => ! $prereq->IsPrerequisiteMet());
   }
 
   public static function arePrerequisitesMet()

@@ -31,7 +31,7 @@ class TaskService
      * @var ObjectCollection|iTask[]
      */
     private $taskClasses;
-    private $notificationClasses = [
+    private array $notificationClasses = [
       //  new LatestReleaseTask()
     ];
 
@@ -86,9 +86,7 @@ class TaskService
     }
 
     public function getActivePreUpgradeTasks()  {
-        return array_filter($this->taskClasses, function($k) {
-            return $k instanceof iPreUpgradeTask && $k->isActive();
-        });
+        return array_filter($this->taskClasses, fn($k) => $k instanceof iPreUpgradeTask && $k->isActive());
     }
 
 }
