@@ -20,7 +20,7 @@ class LocaleInfo
             $this->locale = $userLocale->getValue();
         }
         $localesFile = file_get_contents(SystemURLs::getDocumentRoot() . "/locale/locales.json");
-        $locales = json_decode($localesFile, true);
+        $locales = json_decode($localesFile, true, 512, JSON_THROW_ON_ERROR);
         foreach ($locales as $key => $value) {
             if ($value["locale"] == $this->locale) {
                 $this->name = $key;

@@ -43,7 +43,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 <div id="calendar-event-react-app"></div>
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
-  window.CRM.calendarJSArgs = <?= json_encode($calendarJSArgs) ?>;
+  window.CRM.calendarJSArgs = <?= json_encode($calendarJSArgs, JSON_THROW_ON_ERROR) ?>;
 </script>
 
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js-react/calendar-event-editor-app.js"></script>

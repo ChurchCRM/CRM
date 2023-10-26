@@ -133,9 +133,9 @@ foreach ($ListItem as $element) {
                 <td><?= empty($person->getGenderName()) ? 'Unassigned': $person->getGenderName() ?></td>
                 <td><?= empty($person->getClassificationName()) ? 'Unassigned' : $person->getClassificationName() ?></td>
                 <td><?= empty($person->getFamilyRoleName()) ? 'Unassigned': $person->getFamilyRoleName() ?></td>
-                <td><?= empty($person->getPropertiesString()) ? 'Unassigned': json_encode($person->getPropertiesString()) ?></td>
-                <td><?= empty($person->getCustomFields()) ? 'Unassigned': json_encode($person->getCustomFields()) ?></td>
-                <td><?= empty($person->getGroups()) ? 'Unassigned': json_encode($person->getGroups()) ?></td>
+                <td><?= empty($person->getPropertiesString()) ? 'Unassigned': json_encode($person->getPropertiesString(), JSON_THROW_ON_ERROR) ?></td>
+                <td><?= empty($person->getCustomFields()) ? 'Unassigned': json_encode($person->getCustomFields(), JSON_THROW_ON_ERROR) ?></td>
+                <td><?= empty($person->getGroups()) ? 'Unassigned': json_encode($person->getGroups(), JSON_THROW_ON_ERROR) ?></td>
 <?php
 }
                 ?>
@@ -306,7 +306,7 @@ foreach ($ListItem as $element) {
             $('.filter-Gender').append('<option value='+i+'>'+i18next.t(Gender[i])+'</option>');
             }
         }
-        var ClassificationList = <?= json_encode($ClassificationList) ?>;
+        var ClassificationList = <?= json_encode($ClassificationList, JSON_THROW_ON_ERROR) ?>;
         for (var i = 0; i < ClassificationList.length; i++) {
             // apply initinal filters if applicable
             if (filterByClsId == ClassificationList[i]) {
@@ -318,7 +318,7 @@ foreach ($ListItem as $element) {
             }
         }
 
-        var RoleList = <?= json_encode($RoleList) ?>;
+        var RoleList = <?= json_encode($RoleList, JSON_THROW_ON_ERROR) ?>;
         for (var i = 0; i < RoleList.length; i++) {
             if (filterByFmrId == RoleList[i]) {
                 $('.filter-Role').val(RoleList[i]);
@@ -328,15 +328,15 @@ foreach ($ListItem as $element) {
                 $('.filter-Role').append('<option value='+i+'>'+RoleList[i]+'</option>');
             }
         }
-        var PropertyList = <?= json_encode($PropertyList) ?>;
+        var PropertyList = <?= json_encode($PropertyList, JSON_THROW_ON_ERROR) ?>;
         for (var i = 0; i < PropertyList.length; i++) {
             $('.filter-Properties').append('<option value='+i+'>'+PropertyList[i]+'</option>');
         }
-        var CustomList = <?=  json_encode($CustomList) ?>;
+        var CustomList = <?=  json_encode($CustomList, JSON_THROW_ON_ERROR) ?>;
         for (var i = 0; i < CustomList.length; i++) {
             $('.filter-Custom').append('<option value='+i+'>'+CustomList[i]+'</option>');
         }
-        var GroupList = <?= json_encode($GroupList) ?>;
+        var GroupList = <?= json_encode($GroupList, JSON_THROW_ON_ERROR) ?>;
         for (var i = 0; i < GroupList.length; i++) {
             $('.filter-Group').append('<option value='+i+'>'+GroupList[i]+'</option>');
         }

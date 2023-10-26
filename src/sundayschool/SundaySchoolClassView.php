@@ -78,7 +78,7 @@ require '../Include/Header.php';
     $roleEmails->Kids = implode($sMailtoDelimiter, $KidsEmails).',';
     $sEmailLink = implode($sMailtoDelimiter, $allEmails).',';
     // Add default email if default email has been set and is not already in string
-    if (SystemConfig::getValue('sToEmailAddress') != '' && !stristr($sEmailLink, SystemConfig::getValue('sToEmailAddress'))) {
+    if (SystemConfig::getValue('sToEmailAddress') != '' && !stristr($sEmailLink, (string) SystemConfig::getValue('sToEmailAddress'))) {
         $sEmailLink .= $sMailtoDelimiter.SystemConfig::getValue('sToEmailAddress');
     }
     $sEmailLink = urlencode($sEmailLink);  // Mailto should comply with RFC 2368

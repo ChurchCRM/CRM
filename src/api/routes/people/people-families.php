@@ -59,7 +59,7 @@ $app->group('/families', function () {
             array_push($results, $family->toSearchArray());
         }
 
-        return $response->withJson(json_encode(["Families" => $results]));
+        return $response->withJson(json_encode(["Families" => $results], JSON_THROW_ON_ERROR));
     });
 
     $this->get('/self-register', function ($request, $response, $args) {

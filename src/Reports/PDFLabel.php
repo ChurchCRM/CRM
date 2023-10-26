@@ -798,14 +798,14 @@ if ($startrow < 1) {
 }
 
 $sLabelType = InputUtils::LegacyFilterInput($_GET['labeltype'], 'char', 8);
-setcookie('labeltype', $sLabelType, time() + 60 * 60 * 24 * 90, '/');
+setcookie('labeltype', $sLabelType, ['expires' => time() + 60 * 60 * 24 * 90, 'path' => '/']);
 
 $pdf = new PDF_Label($sLabelType, $startcol, $startrow);
 
 $sFontInfo = FontFromName($_GET['labelfont']);
-setcookie('labelfont', $_GET['labelfont'], time() + 60 * 60 * 24 * 90, '/');
+setcookie('labelfont', $_GET['labelfont'], ['expires' => time() + 60 * 60 * 24 * 90, 'path' => '/']);
 $sFontSize = $_GET['labelfontsize'];
-setcookie('labelfontsize', $sFontSize, time() + 60 * 60 * 24 * 90, '/');
+setcookie('labelfontsize', $sFontSize, ['expires' => time() + 60 * 60 * 24 * 90, 'path' => '/']);
 $pdf->SetFont($sFontInfo[0], $sFontInfo[1]);
 
 if ($sFontSize == 'default') {
@@ -820,7 +820,7 @@ if ($startcol > 1 || $startrow > 1) {
 }
 
 $mode = $_GET['groupbymode'];
-setcookie('groupbymode', $mode, time() + 60 * 60 * 24 * 90, '/');
+setcookie('groupbymode', $mode, ['expires' => time() + 60 * 60 * 24 * 90, 'path' => '/']);
 
 if (array_key_exists('bulkmailpresort', $_GET)) {
     $bulkmailpresort = $_GET['bulkmailpresort'];
@@ -828,7 +828,7 @@ if (array_key_exists('bulkmailpresort', $_GET)) {
     $bulkmailpresort = false;
 }
 
-setcookie('bulkmailpresort', $bulkmailpresort, time() + 60 * 60 * 24 * 90, '/');
+setcookie('bulkmailpresort', $bulkmailpresort, ['expires' => time() + 60 * 60 * 24 * 90, 'path' => '/']);
 
 if (array_key_exists('bulkmailquiet', $_GET)) {
     $bulkmailquiet = $_GET['bulkmailquiet'];
@@ -836,7 +836,7 @@ if (array_key_exists('bulkmailquiet', $_GET)) {
     $bulkmailquiet = false;
 }
 
-setcookie('bulkmailquiet', $bulkmailquiet, time() + 60 * 60 * 24 * 90, '/');
+setcookie('bulkmailquiet', $bulkmailquiet, ['expires' => time() + 60 * 60 * 24 * 90, 'path' => '/']);
 
 $iBulkCode = 0;
 if ($bulkmailpresort) {
@@ -847,7 +847,7 @@ if ($bulkmailpresort) {
 }
 
 $bToParents = (array_key_exists('toparents', $_GET) and $_GET['toparents'] == 1);
-setcookie('toparents', $bToParents, time() + 60 * 60 * 24 * 90, '/');
+setcookie('toparents', $bToParents, ['expires' => time() + 60 * 60 * 24 * 90, 'path' => '/']);
 
 $bOnlyComplete = ($_GET['onlyfull'] == 1);
 

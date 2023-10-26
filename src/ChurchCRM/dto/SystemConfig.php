@@ -19,7 +19,7 @@ class SystemConfig
   private static function getSupportedLocales()
   {
       $localesFile = file_get_contents(SystemURLs::getDocumentRoot()."/locale/locales.json");
-      $locales = json_decode($localesFile, true);
+      $locales = json_decode($localesFile, true, 512, JSON_THROW_ON_ERROR);
       $languagesChoices = [];
       foreach ($locales as $key => $value) {
           array_push($languagesChoices, gettext($key).":".$value["locale"]);
@@ -80,11 +80,11 @@ class SystemConfig
     private static function buildConfigs()
   {
     return [
-        "sLogLevel" => new ConfigItem(4, "sLogLevel", "choice", "200", gettext("Event Log severity to write, used by ORM and App Logs"), "", json_encode(SystemConfig::getMonoLogLevels())),
+        "sLogLevel" => new ConfigItem(4, "sLogLevel", "choice", "200", gettext("Event Log severity to write, used by ORM and App Logs"), "", json_encode(SystemConfig::getMonoLogLevels(), JSON_THROW_ON_ERROR)),
         "sDirClassifications" => new ConfigItem(5, "sDirClassifications", "text", "1,2,4,5", gettext("Include only these classifications in the directory, comma separated")),
-        "sDirRoleHead" => new ConfigItem(6, "sDirRoleHead", "choice", "1", gettext("These are the family role numbers designated as head of house"),"", json_encode(SystemConfig::getFamilyRoleChoices())),
-        "sDirRoleSpouse" => new ConfigItem(7, "sDirRoleSpouse", "choice", "2", gettext("These are the family role numbers designated as spouse"),"", json_encode(SystemConfig::getFamilyRoleChoices())),
-        "sDirRoleChild" => new ConfigItem(8, "sDirRoleChild", "choice", "3", gettext("These are the family role numbers designated as child"),"", json_encode(SystemConfig::getFamilyRoleChoices())),
+        "sDirRoleHead" => new ConfigItem(6, "sDirRoleHead", "choice", "1", gettext("These are the family role numbers designated as head of house"),"", json_encode(SystemConfig::getFamilyRoleChoices(), JSON_THROW_ON_ERROR)),
+        "sDirRoleSpouse" => new ConfigItem(7, "sDirRoleSpouse", "choice", "2", gettext("These are the family role numbers designated as spouse"),"", json_encode(SystemConfig::getFamilyRoleChoices(), JSON_THROW_ON_ERROR)),
+        "sDirRoleChild" => new ConfigItem(8, "sDirRoleChild", "choice", "3", gettext("These are the family role numbers designated as child"),"", json_encode(SystemConfig::getFamilyRoleChoices(), JSON_THROW_ON_ERROR)),
         "iSessionTimeout" => new ConfigItem(9, "iSessionTimeout", "number", "3600", gettext("Session timeout length in seconds\rSet to zero to disable session timeouts.")),
         "aFinanceQueries" => new ConfigItem(10, "aFinanceQueries", "text", "30,31,32", gettext("Queries for which user must have finance permissions to use:")),
         "bCSVAdminOnly" => new ConfigItem(11, "bCSVAdminOnly", "boolean", "1", gettext("Should only administrators have access to the CSV export system and directory report?")),
@@ -95,7 +95,7 @@ class SystemConfig
         "iPDFOutputType" => new ConfigItem(20, "iPDFOutputType", "number", "1", gettext("PDF handling mode.\r1 = Save File dialog\r2 = Open in current browser window")),
         "sDefaultCity" => new ConfigItem(21, "sDefaultCity", "text", "", gettext("Default City")),
         "sDefaultState" => new ConfigItem(22, "sDefaultState", "text", "", gettext("Default State - Must be 2-letter abbreviation!")),
-        "sDefaultCountry" => new ConfigItem(23, "sDefaultCountry", "choice", "", "", "", json_encode(["Choices" => Countries::getNames()])),
+        "sDefaultCountry" => new ConfigItem(23, "sDefaultCountry", "choice", "", "", "", json_encode(["Choices" => Countries::getNames()], JSON_THROW_ON_ERROR)),
         "sToEmailAddress" => new ConfigItem(26, "sToEmailAddress", "text", "", gettext("Default account for receiving a copy of all emails")),
         "iSMTPTimeout" => new ConfigItem(24, "iSMTPTimeout", "number", "10", gettext("SMTP Server timeout in sec")),
         "sSMTPHost" => new ConfigItem(27, "sSMTPHost", "text", "", gettext("SMTP Server Address (mail.server.com:25)")),
@@ -103,7 +103,7 @@ class SystemConfig
         "sSMTPUser" => new ConfigItem(29, "sSMTPUser", "text", "", gettext("SMTP Username")),
         "sSMTPPass" => new ConfigItem(30, "sSMTPPass", "password", "", gettext("SMTP Password")),
         "bShowFamilyData" => new ConfigItem(33, "bShowFamilyData", "boolean", "1", gettext("Unavailable person info inherited from assigned family for display?\rThis option causes certain info from a person's assigned family record to be\rdisplayed IF the corresponding info has NOT been entered for that person. ")),
-        "sLanguage" => new ConfigItem(39, "sLanguage", "choice", "en_US", gettext("Internationalization (I18n) support"), "https://poeditor.com/join/project?hash=RABdnDSqAt", json_encode(SystemConfig::getSupportedLocales())),
+        "sLanguage" => new ConfigItem(39, "sLanguage", "choice", "en_US", gettext("Internationalization (I18n) support"), "https://poeditor.com/join/project?hash=RABdnDSqAt", json_encode(SystemConfig::getSupportedLocales(), JSON_THROW_ON_ERROR)),
         "iFYMonth" => new ConfigItem(40, "iFYMonth", "choice", "1", gettext("First month of the fiscal year"),"",'{"Choices":["1","2","3","4","5","6","7","8","9","10","11","12"]}'),
         "sGoogleMapsGeocodeKey" => new ConfigItem(44, "sGoogleMapsGeocodeKey", "text", "", gettext("Google Maps API Key used for Geocoding addresses") , "https://developers.google.com/maps/documentation/javascript/get-api-key"),
         "sBingMapKey" => new ConfigItem(10000, "sBingMapKey", "text", "", gettext("Bing map API requires a unique key") , "https://www.microsoft.com/maps/create-a-bing-maps-key.aspx"),
@@ -123,7 +123,7 @@ class SystemConfig
         "iChecksPerDepositForm" => new ConfigItem(57, "iChecksPerDepositForm", "number", "14", gettext("Number of checks for Deposit Slip Report")),
         "bUseScannedChecks" => new ConfigItem(58, "bUseScannedChecks", "boolean", "0", gettext("Set true to enable use of scanned checks")),
         "sDistanceUnit" => new ConfigItem(64, "sDistanceUnit", "choice", "miles", gettext("Unit used to measure distance, miles or km."), "",'{"Choices":["'.gettext("miles").'","'.gettext("kilometers").'"]}'),
-        "sTimeZone" => new ConfigItem(65, "sTimeZone", "choice", "America/New_York", gettext("Time zone"), "http://php.net/manual/en/timezones.php", json_encode(["Choices"=>timezone_identifiers_list()])),
+        "sTimeZone" => new ConfigItem(65, "sTimeZone", "choice", "America/New_York", gettext("Time zone"), "http://php.net/manual/en/timezones.php", json_encode(["Choices"=>timezone_identifiers_list()], JSON_THROW_ON_ERROR)),
         "sGMapIcons" => new ConfigItem(66, "sGMapIcons","text", "green-dot,purple,yellow-dot,blue-dot,orange,yellow,green,blue,red,pink,lightblue", gettext("Names of markers for Google Maps in order of classification")),
         "bForceUppercaseZip" => new ConfigItem(67, "bForceUppercaseZip", "boolean", "0", gettext("Make user-entered zip/postcodes UPPERCASE when saving to the database.")),
         "bEnableNonDeductible" => new ConfigItem(72, "bEnableNonDeductible", "boolean", "0", gettext("Enable non-deductible payments")),
@@ -187,14 +187,14 @@ class SystemConfig
         "bEnableIntegrityCheck" => new ConfigItem(1044, "bEnableIntegrityCheck", "boolean", "1", gettext("Enable Integrity Check")),
         "iIntegrityCheckInterval" => new ConfigItem(1045, "iIntegrityCheckInterval", "number", "168", gettext("Interval in Hours for Integrity Check")),
         "sLastIntegrityCheckTimeStamp" => new ConfigItem(1046, "sLastIntegrityCheckTimeStamp", "text", "", gettext("Last Integrity Check Timestamp")),
-        "sChurchCountry" => new ConfigItem(1047, "sChurchCountry", "choice", "", "", "",json_encode(["Choices" => Countries::getNames()])),
+        "sChurchCountry" => new ConfigItem(1047, "sChurchCountry", "choice", "", "", "",json_encode(["Choices" => Countries::getNames()], JSON_THROW_ON_ERROR)),
         "sConfirmSincerely" => new ConfigItem(1048, "sConfirmSincerely", "text", "Sincerely", gettext("Used to end a letter before Signer")),
         "sDear" => new ConfigItem(1049, "sDear", "text", "Dear", gettext("Text before name in emails/reports")),
         "sGoogleTrackingID" => new ConfigItem(1050, "sGoogleTrackingID", "text", "", gettext("Google Analytics Tracking Code")),
         "sMailChimpApiKey" => new ConfigItem(2000, "sMailChimpApiKey", "text", "", "", "http://kb.mailchimp.com/accounts/management/about-api-keys"),
         "sDepositSlipType" => new ConfigItem(2001, "sDepositSlipType", "choice", "QBDT", gettext("Deposit ticket type.  QBDT - Quickbooks"), "",'{"Choices":["QBDT"]}'),
         "bAllowEmptyLastName" => new ConfigItem(2010, "bAllowEmptyLastName", "boolean", "0", gettext("Set true to allow empty lastname in Person Editor.  Set false to validate last name and inherit from family when left empty.")),
-        "iPersonNameStyle" => new ConfigItem(2020, "iPersonNameStyle", "choice", "4", "","", json_encode(SystemConfig::getNameChoices())),
+        "iPersonNameStyle" => new ConfigItem(2020, "iPersonNameStyle", "choice", "4", "","", json_encode(SystemConfig::getNameChoices(), JSON_THROW_ON_ERROR)),
         "bDisplayBillCounts" => new ConfigItem(2002, "bDisplayBillCounts", "boolean", "1", gettext("Display bill counts on deposit slip")),
         "sCloudURL" => new ConfigItem(2003, "sCloudURL", "text", "http://demo.churchcrm.io/", gettext("ChurchCRM Cloud Access URL")),
         "sNexmoAPIKey" => new ConfigItem(2012, "sNexmoAPIKey", "text", "", gettext("Nexmo SMS API Key")),

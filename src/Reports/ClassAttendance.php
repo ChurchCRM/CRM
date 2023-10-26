@@ -115,7 +115,7 @@ for ($i = 0; $i < $nGrps; $i++) {
             $family = $person->getFamily();
                         
             $homePhone = "";
-            if (!empty(family)) {
+            if (!empty($family)) {
                 $homePhone = $family->getHomePhone();
         
         

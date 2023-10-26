@@ -13,7 +13,7 @@ class IntegrityCheckTask implements iTask
   public function __construct()
   {
     if (file_exists(SystemURLs::getDocumentRoot() . '/integrityCheck.json')) {
-      $this->integrityCheckData = json_decode(file_get_contents(SystemURLs::getDocumentRoot() . '/integrityCheck.json'));
+      $this->integrityCheckData = json_decode(file_get_contents(SystemURLs::getDocumentRoot() . '/integrityCheck.json'), null, 512, JSON_THROW_ON_ERROR);
     }
   }
 

@@ -74,7 +74,7 @@ function getMailChimpMissingSubscribed(Request $request, Response $response, arr
                     $inList = true;
                 }
 
-                if (!found && !empty($person->getWorkEmail())) {
+                if (!$inList && !empty($person->getWorkEmail())) {
                     $inList = checkEmailInList($person->getWorkEmail(), $mailchimpListMembers);
                 }
 
