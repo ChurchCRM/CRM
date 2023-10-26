@@ -6,8 +6,8 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\PledgeQuery;
 use ChurchCRM\Slim\Middleware\Request\Auth\FinanceRoleAuthMiddleware;
 
-$app->group('/deposits', function () {
-    $this->post('', function ($request, $response, $args) {
+$app->group('/deposits', function () use ($app) {
+    $app->post('', function ($request, $response, $args) {
         $input = (object)$request->getParsedBody();
         $deposit = new Deposit();
         $deposit->setType($input->depositType);
@@ -17,47 +17,47 @@ $app->group('/deposits', function () {
         echo $deposit->toJSON();
     });
 
-    $this->get('/dashboard', function ($request, $response, $args) {
+    $app->get('/dashboard', function ($request, $response, $args) {
         $list = DepositQuery::create()
             ->filterByDate(['min' =>date('Y-m-d', strtotime('-90 days'))])
             ->find();
         return $response->withJson($list->toArray());
     });
 
-    $this->get('', function ($request, $response, $args) {
+    $app->get('', function ($request, $response, $args) {
         echo DepositQuery::create()->find()->toJSON();
     });
 
-    $this->get('/{id:[0-9]+}', function ($request, $response, $args) {
+    $app->get('/{id:[0-9]+}', function ($request, $response, $args) {
         $id = $args['id'];
         echo DepositQuery::create()->findOneById($id)->toJSON();
     });
 
-    $this->post('/{id:[0-9]+}', function ($request, $response, $args) {
+    $app->post('/{id:[0-9]+}', function ($request, $response, $args) {
         $id = $args['id'];
         $input = (object)$request->getParsedBody();
-        $thisDeposit = DepositQuery::create()->findOneById($id);
-        $thisDeposit->setType($input->depositType);
-        $thisDeposit->setComment($input->depositComment);
-        $thisDeposit->setDate($input->depositDate);
-        $thisDeposit->setClosed($input->depositClosed);
-        $thisDeposit->save();
-        echo $thisDeposit->toJSON();
+        $appDeposit = DepositQuery::create()->findOneById($id);
+        $appDeposit->setType($input->depositType);
+        $appDeposit->setComment($input->depositComment);
+        $appDeposit->setDate($input->depositDate);
+        $appDeposit->setClosed($input->depositClosed);
+        $appDeposit->save();
+        echo $appDeposit->toJSON();
     });
 
-    $this->get('/{id:[0-9]+}/ofx', function ($request, $response, $args) {
+    $app->get('/{id:[0-9]+}/ofx', function ($request, $response, $args) {
         $id = $args['id'];
         $OFX = DepositQuery::create()->findOneById($id)->getOFX();
         header($OFX->header);
         echo $OFX->content;
     });
 
-    $this->get('/{id:[0-9]+}/pdf', function ($request, $response, $args) {
+    $app->get('/{id:[0-9]+}/pdf', function ($request, $response, $args) {
         $id = $args['id'];
         DepositQuery::create()->findOneById($id)->getPDF();
     });
 
-    $this->get('/{id:[0-9]+}/csv', function ($request, $response, $args) {
+    $app->get('/{id:[0-9]+}/csv', function ($request, $response, $args) {
         $id = $args['id'];
         //echo DepositQuery::create()->findOneById($id)->toCSV();
         header('Content-Disposition: attachment; filename=ChurchCRM-Deposit-' . $id . '-' . date(SystemConfig::getValue("sDateFilenameFormat")) . '.csv');
@@ -72,13 +72,13 @@ $app->group('/deposits', function () {
             ->toCSV();
     });
 
-    $this->delete('/{id:[0-9]+}', function ($request, $response, $args) {
+    $app->delete('/{id:[0-9]+}', function ($request, $response, $args) {
         $id = $args['id'];
         DepositQuery::create()->findOneById($id)->delete();
         echo json_encode(['success' => true]);
     });
 
-    $this->get('/{id:[0-9]+}/pledges', function ($request, $response, $args) {
+    $app->get('/{id:[0-9]+}/pledges', function ($request, $response, $args) {
         $id = $args['id'];
         $Pledges = PledgeQuery::create()
             ->filterByDepId($id)

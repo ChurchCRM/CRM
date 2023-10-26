@@ -4,9 +4,9 @@ use ChurchCRM\UserQuery;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
-$app->group('/public/user', function () {
-    $this->post('/login', 'userLogin');
-    $this->post('/login/', 'userLogin');
+$app->group('/public/user', function () use ($app) {
+    $app->post('/login', 'userLogin');
+    $app->post('/login/', 'userLogin');
 
 });
 

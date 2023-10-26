@@ -9,10 +9,10 @@ use Slim\Http\Request;
 use Slim\Http\Response;
 use Slim\Views\PhpRenderer;
 
-$app->group('/user/current', function () {
-    $this->get('/enroll2fa', 'enroll2fa');
-    $this->get('/changepassword', 'changepassword');
-    $this->post('/changepassword', 'changepassword');
+$app->group('/user/current', function () use ($app) {
+    $app->get('/enroll2fa', 'enroll2fa');
+    $app->get('/changepassword', 'changepassword');
+    $app->post('/changepassword', 'changepassword');
 });
 
 

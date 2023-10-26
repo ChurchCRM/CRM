@@ -8,8 +8,8 @@ use ChurchCRM\QueryParameterOptionsQuery;
 use ChurchCRM\QueryParametersQuery;
 use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
 
-$app->group('/locale', function () {
-    $this->get('/database/terms', 'getDBTerms');
+$app->group('/locale', function () use ($app) {
+    $app->get('/database/terms', 'getDBTerms');
 })->add(new AdminRoleAuthMiddleware());
 
 

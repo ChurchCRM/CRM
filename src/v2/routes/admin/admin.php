@@ -6,10 +6,10 @@ use Slim\Http\Request;
 use Slim\Http\Response;
 use Slim\Views\PhpRenderer;
 
-$app->group('/admin', function () {
-    $this->get('/debug', 'debugPage');
-    $this->get('/menus', 'menuPage');
-    $this->get('/database/reset', 'dbResetPage');
+$app->group('/admin', function () use ($app) {
+    $app->get('/debug', 'debugPage');
+    $app->get('/menus', 'menuPage');
+    $app->get('/database/reset', 'dbResetPage');
 })->add(new AdminRoleAuthMiddleware());
 
 function debugPage(Request $request, Response $response, array $args) {

@@ -7,9 +7,9 @@ use ChurchCRM\Utils\LoggerUtils;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
-$app->group('/system', function () {
-    $this->get('/notification', 'getUiNotificationAPI');
-    $this->post('/background/csp-report', 'logCSPReportAPI');
+$app->group('/system', function () use ($app) {
+    $app->get('/notification', 'getUiNotificationAPI');
+    $app->post('/background/csp-report', 'logCSPReportAPI');
 });
 
 function logCSPReportAPI(Request $request, Response $response, array $args)

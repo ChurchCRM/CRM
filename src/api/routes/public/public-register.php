@@ -8,11 +8,11 @@ use ChurchCRM\Utils\ORMUtils;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
-$app->group('/public/register', function () {
-    $this->post('/family', 'registerFamilyAPI');
-    $this->post('/family/', 'registerFamilyAPI');
-    $this->post('/person', 'registerPersonAPI');
-    $this->post('/person/', 'registerPersonAPI');
+$app->group('/public/register', function () use ($app)  {
+    $app->post('/family', 'registerFamilyAPI');
+    $app->post('/family/', 'registerFamilyAPI');
+    $app->post('/person', 'registerPersonAPI');
+    $app->post('/person/', 'registerPersonAPI');
 })->add(new PublicRegistrationAuthMiddleware());
 
 function registerFamilyAPI(Request $request, Response $response, array $args)

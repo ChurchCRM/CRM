@@ -10,9 +10,9 @@ use Slim\Http\Response;
 use Slim\Views\PhpRenderer;
 
 
-$app->group('/calendar', function () {
-    $this->get('/', 'getCalendar');
-    $this->get('', 'getCalendar');
+$app->group('/calendar', function () use ($app) {
+    $app->get('/', 'getCalendar');
+    $app->get('', 'getCalendar');
 });
 
 function getCalendar(Request $request, Response $response, array $args) {

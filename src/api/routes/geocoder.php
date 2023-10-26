@@ -4,9 +4,9 @@ use ChurchCRM\Utils\GeoUtils;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
-$app->group('/geocoder', function () {
-    $this->post('/address', 'getGeoLocals');
-    $this->post('/address/', 'getGeoLocals');
+$app->group('/geocoder', function () use ($app) {
+    $app->post('/address', 'getGeoLocals');
+    $app->post('/address/', 'getGeoLocals');
 });
 
 

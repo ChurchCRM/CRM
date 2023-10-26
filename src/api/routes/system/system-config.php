@@ -5,11 +5,11 @@ use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
-$app->group('/system/config/{configName}', function () {
-    $this->get('', 'getConfigValueByNameAPI');
-    $this->post('', 'setConfigValueByNameAPI');
-    $this->get('/', 'getConfigValueByNameAPI');
-    $this->post('/', 'setConfigValueByNameAPI');
+$app->group('/system/config/{configName}', function () use ($app) {
+    $app->get('', 'getConfigValueByNameAPI');
+    $app->post('', 'setConfigValueByNameAPI');
+    $app->get('/', 'getConfigValueByNameAPI');
+    $app->post('/', 'setConfigValueByNameAPI');
 })->add(new AdminRoleAuthMiddleware());
 
 function getConfigValueByNameAPI(Request $request, Response $response, array $args)

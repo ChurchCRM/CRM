@@ -7,9 +7,9 @@ use Slim\Http\Response;
 use Slim\Views\PhpRenderer;
 
 
-$app->group('/cart', function () {
-  $this->get('/', 'getCartView');
-  $this->get('', 'getCartView');
+$app->group('/cart', function () use ($app) {
+  $app->get('/', 'getCartView');
+  $app->get('', 'getCartView');
 });
 
 function getCartView(Request $request, Response $response, array $args) {

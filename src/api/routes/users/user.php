@@ -5,9 +5,9 @@ use ChurchCRM\User;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
-$app->group('/user/{userId:[0-9]+}', function () {
-    $this->post("/apikey/regen", "genAPIKey");
-    $this->post("/config/{key}", "updateUserConfig");
+$app->group('/user/{userId:[0-9]+}', function () use ($app) {
+    $app->post("/apikey/regen", "genAPIKey");
+    $app->post("/config/{key}", "updateUserConfig");
 })->add(new UserAPIMiddleware());
 
 function genAPIKey(Request $request, Response $response, array $args)

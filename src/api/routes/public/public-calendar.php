@@ -8,10 +8,10 @@ use ChurchCRM\Slim\Middleware\Request\PublicCalendarAPIMiddleware;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
-$app->group('/public/calendar', function () {
-    $this->get('/{CalendarAccessToken}/events', 'getJSON');
-    $this->get('/{CalendarAccessToken}/ics', 'getICal');
-    $this->get('/{CalendarAccessToken}/fullcalendar', 'getPublicCalendarFullCalendarEvents');
+$app->group('/public/calendar', function () use ($app) {
+    $app->get('/{CalendarAccessToken}/events', 'getJSON');
+    $app->get('/{CalendarAccessToken}/ics', 'getICal');
+    $app->get('/{CalendarAccessToken}/fullcalendar', 'getPublicCalendarFullCalendarEvents');
 })->add(new PublicCalendarAPIMiddleware());
 
 function getJSON(Request $request, Response $response)

@@ -6,9 +6,9 @@ use Slim\Http\Request;
 use Slim\Http\Response;
 
 
-$app->group('/user/{userId:[0-9]+}/setting', function () {
-    $this->get("/{settingName}", "getUserSetting");
-    $this->post("/{settingName}", "updateUserSetting");
+$app->group('/user/{userId:[0-9]+}/setting', function () use ($app) {
+    $app->get("/{settingName}", "getUserSetting");
+    $app->post("/{settingName}", "updateUserSetting");
 })->add(new UserAPIMiddleware());
 
 function getUserSetting(Request $request, Response $response, array $args)
