@@ -83,7 +83,7 @@ class FinancePaymentSearchResultProvider extends BaseSearchResultProvider  {
                 }
             }
 
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             LoggerUtils::getAppLogger()->warning($e->getMessage());
         }
         return $searchResults;

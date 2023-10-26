@@ -38,7 +38,7 @@ class GroupSearchResultProvider extends BaseSearchResultProvider  {
                     array_push($searchResults, new SearchResult("group-name-".$id, $group->getName(),$group->getViewURI()));
                 }
             }
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             LoggerUtils::getAppLogger()->warning($e->getMessage());
         }
         return $searchResults;

@@ -45,7 +45,7 @@ class PersonSearchResultProvider extends BaseSearchResultProvider  {
                     array_push($searchResults, new SearchResult("person-name-".$id, $person->getFullName(),$person->getViewURI()));
                 }
             }
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             LoggerUtils::getAppLogger()->warning($e->getMessage());
         }
         return $searchResults;

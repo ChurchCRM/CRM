@@ -76,7 +76,7 @@ $app->group('/family/{familyId:[0-9]+}', function () use ($app) {
         try{
             $family->sendVerifyEmail();
             return $response->withStatus(200);
-        } catch (\Exception $e) {
+        } catch (\Exception $e ) {
             LoggerUtils::getAppLogger()->error($e->getMessage());
             return $response->withStatus(500)->withJson(['message' => gettext("Error sending email(s)") . " - " . gettext("Please check logs for more information"), "trace" => $e->getMessage()]);
         }
