@@ -18,6 +18,7 @@ class PDF_Directory extends ChurchInfoReport
     public $_Gutter = 5;
     public $_LS = 4;
     public $sFamily;
+    public string $sRecordName;
     public $sLastName;
     public $_ColWidth = 58;
     public $_Custom = [];
