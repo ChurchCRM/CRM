@@ -28,7 +28,7 @@ class Person extends BasePerson implements iPhoto
 
     public const SELF_REGISTER = -1;
     public const SELF_VERIFY = -2;
-    private $photo;
+    private ?\ChurchCRM\dto\Photo $photo = null;
 
     public function getFullName()
     {

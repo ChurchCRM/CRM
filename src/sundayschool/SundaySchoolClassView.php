@@ -72,7 +72,7 @@ require '../Include/Header.php';
   <div class="card-body">
     <?php
     $sMailtoDelimiter = AuthenticationManager::GetCurrentUser()->getUserConfigString("sMailtoDelimiter");
-    $allEmails = array_unique(array_merge($ParentsEmails, $KidsEmails, $TeachersEmails));
+    $allEmails = array_unique([...$ParentsEmails, ...$KidsEmails, ...$TeachersEmails]);
     $roleEmails->Parents = implode($sMailtoDelimiter, $ParentsEmails).',';
     $roleEmails->Teachers = implode($sMailtoDelimiter, $TeachersEmails).',';
     $roleEmails->Kids = implode($sMailtoDelimiter, $KidsEmails).',';

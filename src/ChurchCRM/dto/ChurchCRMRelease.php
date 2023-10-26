@@ -9,7 +9,7 @@ Class ChurchCRMRelease {
     public $MINOR;
     public $PATCH;
 
-    private $rawRelease;
+    private array $rawRelease;
 
     public function __construct(array $releaseArray){
         $this->rawRelease = $releaseArray;

@@ -149,7 +149,7 @@ if ($output == 'pdf') {
     // Settings
     $delimiter = ',';
     $eol = "\r\n";
-    
+
     $headings = explode(',', $result[1]);
     $buffer = '';
     foreach ($headings as $heading) {

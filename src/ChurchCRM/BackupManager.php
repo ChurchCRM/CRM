@@ -54,16 +54,9 @@ namespace ChurchCRM\Backup
 
     class BackupJob extends JobBase
     {
-        /**
-         *
-         * @var String
-         */
-        private $BackupFileBaseName;
-        /**
-         *
-         * @var SplFileInfo
-         */
-        private $BackupFile;
+        private string $BackupFileBaseName;
+        
+        private ?\SplFileInfo $BackupFile = null;
         /**
          *
          * @var Boolean
@@ -252,11 +245,7 @@ namespace ChurchCRM\Backup
 
     class RestoreJob extends JobBase
     {
-        /**
-         *
-         * @var SplFileInfo
-         */
-        private $RestoreFile;
+        private \SplFileInfo $RestoreFile;
 
         /**
          *

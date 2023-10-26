@@ -9,7 +9,7 @@ namespace ChurchCRM\Utils;
  */
 
 class PHPToMomentJSConverter {
-  private static $replacements = [
+  private static array $replacements = [
         'd' => 'DD',
         'D' => 'ddd',
         'j' => 'D',

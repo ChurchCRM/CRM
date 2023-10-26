@@ -9,11 +9,12 @@ class Photo {
   private $photoType;
   private $id;
   private $photoURI;
-  private $photoThumbURI;
-  private $thubmnailPath;
+  private ?string $photoThumbURI = null;
+  private ?string $thubmnailPath = null;
   private $photoContentType;
   private $thumbnailContentType;
-  private $remotesEnabled;
+  private bool $remotesEnabled;
+
   public static $validExtensions = ["png", "jpeg", "jpg"];
 
   public function __construct($photoType,$id) {

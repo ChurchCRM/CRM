@@ -18,7 +18,7 @@ use Propel\Runtime\ActiveQuery\Criteria;
 class Event extends BaseEvent
 {
 
-  private $editable = true;
+  private bool $editable = true;
 
   public function __construct() {
     parent::__construct();

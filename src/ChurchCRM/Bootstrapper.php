@@ -16,8 +16,8 @@ namespace ChurchCRM
 
   class Bootstrapper
   {
-      private static $manager;
-      private static $dbClassName;
+      private static ?\Propel\Runtime\Connection\ConnectionManagerSingle $manager = null;
+      private static ?string $dbClassName = null;
       private static $databaseServerName;
       private static $databasePort;
       private static $databaseUser;
@@ -31,7 +31,7 @@ namespace ChurchCRM
        * @var Logger
        */
       private static $bootStrapLogger;
-      private static $serviceContainer;
+      private static ?\Propel\Runtime\ServiceContainer\ServiceContainerInterface $serviceContainer = null;
 
       public static function init($sSERVERNAME, $dbPort, $sUSER, $sPASSWORD, $sDATABASE, $sRootPath, $bLockURL, $URL)
       {

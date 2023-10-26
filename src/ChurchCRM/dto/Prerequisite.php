@@ -4,9 +4,9 @@ namespace ChurchCRM\dto;
 use ChurchCRM\Utils\MiscUtils;
 
 class Prerequisite implements \JsonSerializable {
-  private $name;
+  private string $name;
   private $testFunction;
-  private $savedTestResult = null;
+  private ?bool $savedTestResult = null;
 
   public function __construct(string $name, callable $testFunction) {
     $this->name = $name;

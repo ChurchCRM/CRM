@@ -15,7 +15,7 @@ class ChurchCRMReleaseManager {
     public const GITHUB_REPOSITORY_NAME = 'crm';
 
     /** @var bool true when an upgrade is in progress */
-    private static $isUpgradeInProgress;
+    private static ?bool $isUpgradeInProgress = null;
 
     public static function getReleaseFromString(string $releaseString): ChurchCRMRelease {
         if ( empty($_SESSION['ChurchCRMReleases']  )) {
@@ -28,9 +28,7 @@ class ChurchCRMReleaseManager {
         }
         else {
             LoggerUtils::getAppLogger()->debug("Attempting to service query for release string " . $releaseString . " from GitHub release cache");
-            $requestedRelease = array_values(array_filter($_SESSION['ChurchCRMReleases'],function($r) use ($releaseString) {
-                return $r->__toString() == $releaseString;
-            }));
+            $requestedRelease = array_values(array_filter($_SESSION['ChurchCRMReleases'],fn($r) => $r->__toString() == $releaseString));
             if (count($requestedRelease) == 1 && $requestedRelease[0] instanceof ChurchCRMRelease){
                 // this should be the case 99% of the time - the current version of the software has exactly one release on the GitHub account
                 LoggerUtils::getAppLogger()->debug("Query for release string " . $releaseString . " serviced from GitHub release cache");
@@ -78,9 +76,7 @@ class ChurchCRMReleaseManager {
 
         }
 
-        usort($eligibleReleases, function(ChurchCRMRelease $a, ChurchCRMRelease $b){
-            return $a->compareTo($b) < 0;
-        });
+        usort($eligibleReleases, fn(ChurchCRMRelease $a, ChurchCRMRelease $b) => $a->compareTo($b) < 0);
 
         LoggerUtils::getAppLogger()->debug("Found " . count($eligibleReleases) . " eligible ChurchCRM releases on GitHub");
         return $eligibleReleases;
@@ -111,9 +107,7 @@ class ChurchCRMReleaseManager {
 
     private static function getHighestReleaseInArray (array $eligibleUpgradeTargetReleases)  {
         if (count($eligibleUpgradeTargetReleases) >0 ) {
-            usort($eligibleUpgradeTargetReleases, function(ChurchCRMRelease $a, ChurchCRMRelease $b){
-                return $a->compareTo($b) < 0;
-            });
+            usort($eligibleUpgradeTargetReleases, fn(ChurchCRMRelease $a, ChurchCRMRelease $b) => $a->compareTo($b) < 0);
             return $eligibleUpgradeTargetReleases[0];
         }
         return null;
@@ -234,9 +228,7 @@ class ChurchCRMReleaseManager {
         // PHP instance's max_execution_time
         $displayErrors = ini_get('display_errors');
         ini_set('display_errors',0);
-        register_shutdown_function(function() {
-            return ChurchCRMReleaseManager::preShutdown();
-        });
+        register_shutdown_function(fn() => ChurchCRMReleaseManager::preShutdown());
 
         $logger = LoggerUtils::getAppLogger();
         $logger->info("Beginnging upgrade process");
