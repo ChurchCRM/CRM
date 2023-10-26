@@ -9,7 +9,7 @@ env:
   node_version: 18
 
 jobs:
-  audit:
+  Test:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3.5.2
@@ -43,6 +43,10 @@ jobs:
     - name: Run Docker
       run: |
         npm run docker-test-start
+
+    - uses: GuillaumeFalourd/wait-sleep-action@v1
+      with:
+        time: '1m' # for 1 minute
 
     - name: Test App
       run: npm run test
