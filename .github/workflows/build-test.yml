@@ -44,9 +44,14 @@ jobs:
       run: |
         npm run docker-test-start
 
-    - uses: GuillaumeFalourd/wait-sleep-action@v1
+    - name: Wait for docker 
+      uses: GuillaumeFalourd/wait-sleep-action@v1
       with:
         time: '1m' # for 1 minute
+
+    - name: Test server 
+      run: |
+        wget -q --output-document - localhost 
 
     - name: Test App
       run: npm run test
