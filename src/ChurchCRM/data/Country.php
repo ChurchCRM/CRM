@@ -19,7 +19,7 @@ class Country implements \JsonSerializable
     return $this->countryCode;
   }
 
-  public function getCountryName()
+  public function getCountryName(): string
   {
     return $this->countryName;
   }
