@@ -1,0 +1,48 @@
+name: Test Application via Cypress on local docker
+
+on:
+  push:
+    branches:
+    - 'build/**'
+
+env:
+  node_version: 18
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3.5.2
+      with:
+        # fetch full history so things like auto-changelog work properly
+        fetch-depth: 0
+    - name: Use Node.js ${{ env.node_version }}
+      uses: actions/setup-node@v2-beta
+      with:
+        node-version: ${{ env.node_version }}
+        # setting a registry enables the NODE_AUTH_TOKEN env variable where we can set an npm token.  REQUIRED
+        registry-url: 'https://registry.npmjs.org'
+
+    - name: Declare some variables
+      id: vars
+      shell: bash
+      run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+
+    - name: get-npm-version
+      id: package-version
+      uses: martinbeentjes/npm-get-version-action@master
+
+    - name: Get Env Ready
+      run: |
+        npm ci
+
+    - name: Build App
+      run: |
+        npm run build
+
+    - name: Run Docker
+      run: |
+        npm run docker-test-start
+
+    - name: Test App
+      run: npm run test
