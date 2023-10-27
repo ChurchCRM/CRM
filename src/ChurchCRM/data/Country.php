@@ -5,7 +5,7 @@ class Country implements \JsonSerializable
 {
   private string $countryCode;
   private string $countryName;
-  private ?string $countryNameYasumi;
+  private ?string $countryNameYasumi = null;
 
   public function __construct(string $CountryCode, string $CountryName, string $CountryNameYasumi = null)
   {

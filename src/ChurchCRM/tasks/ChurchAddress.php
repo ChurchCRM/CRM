@@ -7,20 +7,28 @@ use ChurchCRM\Authentication\AuthenticationManager;
 
 class ChurchAddress implements iTask
 {
-  public function isActive(){
+  public function isActive(): bool
+  {
     return AuthenticationManager::GetCurrentUser()->isAdmin() && empty(SystemConfig::getValue('sChurchAddress'));
   }
-  public function isAdmin(){
+
+  public function isAdmin(): bool
+  {
     return true;
   }
-  public function getLink(){
+
+  public function getLink(): string
+  {
     return SystemURLs::getRootPath() . '/SystemSettings.php';
   }
-  public function getTitle(){
+
+  public function getTitle(): string
+  {
     return gettext('Set Church Address');
   }
-  public function getDesc(){
+
+  public function getDesc(): string
+  {
     return gettext("Church Address is not Set.");
   }
-
 }

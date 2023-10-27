@@ -184,7 +184,6 @@ class PDF_FamilyPledgeSummaryReport extends ChurchInfoReport
         $this->SetMargins(20, 20);
 
         $this->SetAutoPageBreak(false);
-        $this->incrementY = 0;
     }
 }
 

@@ -5,6 +5,7 @@ namespace ChurchCRM;
 use ChurchCRM\Base\Pledge as BasePledge;
 use Propel\Runtime\Connection\ConnectionInterface;
 use Propel\Runtime\Exception\PropelException;
+use Propel\Runtime\Map\TableMap;
 
 /**
  * Skeleton subclass for representing a row from the 'pledge_plg' table.

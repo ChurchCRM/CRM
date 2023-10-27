@@ -26,7 +26,6 @@ class EmailPDF_ConfirmReport extends ChurchInfoReport
     public function __construct()
     {
         parent::__construct('P', 'mm', $this->paperFormat);
-        $this->leftX = 10;
         $this->SetFont('Times', '', 10);
         $this->SetMargins(10, 20);
 

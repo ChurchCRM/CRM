@@ -20,27 +20,27 @@ class PersonRoleDataCheck implements iTask
         $this->count = $personQuery->count();
     }
 
-    public function isActive()
+    public function isActive(): bool
     {
         return $this->count > 0;
     }
 
-    public function isAdmin()
+    public function isAdmin(): bool
     {
         return false;
     }
 
-    public function getLink()
+    public function getLink(): string
     {
         return SystemURLs::getRootPath() . '/v2/people?FamilyRole=0';
     }
 
-    public function getTitle()
+    public function getTitle(): string
     {
         return gettext('Missing Role Data') . " (" . $this->count . ")";
     }
 
-    public function getDesc()
+    public function getDesc(): string
     {
         return gettext("Missing Role Data for Some People");
     }
