@@ -11,7 +11,6 @@ class UserAPIMiddleware
 {
     public function __invoke(Request $request, Response $response, callable $next)
     {
-
         $userId = $request->getAttribute("route")->getArgument("userId");
         if (empty(trim($userId))) {
           return $response->withStatus(412, gettext("Missing"). " UserId");
