@@ -34,9 +34,4 @@ class PHPPendingDeprecationVersionCheckTask implements iTask, iPreUpgradeTask
   {
     return gettext('Support for this PHP version will soon be removed.  Current PHP Version: '. PHP_VERSION. ". Minimum Required PHP Version: " . $this::REQUIRED_PHP_VERSION);
   }
-
-  public function getUpgradeBehavior() {
-      return TaskUpgradeBehavior::WARN;
-  }
-
 }

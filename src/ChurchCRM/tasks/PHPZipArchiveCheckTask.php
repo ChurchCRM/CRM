@@ -11,7 +11,7 @@ class PHPZipArchiveCheckTask implements iTask, iPreUpgradeTask
   // todo: make these const variables private after deprecating PHP7.0 #4948
   public function isActive(): bool
   {
-    return ! class_exists("ZipArchive");
+    return !class_exists("ZipArchive");
   }
 
   public function isAdmin(): bool
@@ -33,9 +33,4 @@ class PHPZipArchiveCheckTask implements iTask, iPreUpgradeTask
   {
     return gettext("PHP ZipArchive required to support upgrade");
   }
-
-  public function getUpgradeBehavior() {
-      return TaskUpgradeBehavior::WARN;
-  }
-
 }
