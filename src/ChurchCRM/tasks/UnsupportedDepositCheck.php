@@ -18,27 +18,27 @@ class UnsupportedDepositCheck implements iTask
         $this->count = $UnsupportedQuery->count();
     }
 
-    public function isActive()
+    public function isActive(): bool
     {
         return $this->count > 0;
     }
 
-    public function isAdmin()
+    public function isAdmin(): bool
     {
         return false;
     }
 
-    public function getLink()
+    public function getLink(): string
     {
         return SystemURLs::getSupportURL(array_pop(explode('\\', self::class)));
     }
 
-    public function getTitle()
+    public function getTitle(): string
     {
         return gettext('Unsupported Deposit Types Detected') . " (" . $this->count . ")";
     }
 
-    public function getDesc()
+    public function getDesc(): string
     {
         return gettext("Support for eGive, Credit Card, and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions.");
     }

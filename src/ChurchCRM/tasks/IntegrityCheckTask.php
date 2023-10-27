@@ -21,27 +21,27 @@ class IntegrityCheckTask implements iTask
     }
   }
 
-  public function isActive()
+  public function isActive(): bool
   {
     return AuthenticationManager::GetCurrentUser()->isAdmin() && ($this->integrityCheckData == null || $this->integrityCheckData->status == 'failure');
   }
 
-  public function isAdmin()
+  public function isAdmin(): bool
   {
     return true;
   }
 
-  public function getLink()
+  public function getLink(): string
   {
     return SystemURLs::getRootPath() . '/v2/admin/debug';
   }
 
-  public function getTitle()
+  public function getTitle(): string
   {
     return gettext('Application Integrity Check Failed');
   }
 
-  public function getDesc()
+  public function getDesc(): string
   {
     return gettext('Application Integrity Check Failed');
   }
