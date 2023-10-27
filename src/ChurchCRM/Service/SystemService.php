@@ -17,8 +17,6 @@ require SystemURLs::getDocumentRoot() . '/vendor/ifsnop/mysqldump-php/src/Ifsnop
 
 class SystemService
 {
-
-
     static public function getInstalledVersion()
     {
         $composerFile = file_get_contents(SystemURLs::getDocumentRoot() . '/composer.json');
@@ -46,7 +44,7 @@ class SystemService
    static public function getDBVersion()
     {
         $connection = Propel::getConnection();
-        $query = 'Select * from version_ver order by ver_update_end desc limit 1';
+        $query = 'select * from version_ver order by ver_update_end desc limit 1';
         $statement = $connection->prepare($query);
         $statement->execute();
         $results = $statement->fetchAll(\PDO::FETCH_ASSOC);

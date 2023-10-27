@@ -38,8 +38,8 @@ $app->group('/database', function () use ($app) {
             $BaseName,
             $BackupType,
             SystemConfig::getValue('bBackupExtraneousImages'),
-            isset($input->EncryptBackup) ? $input->EncryptBackup : "",
-            isset($input->BackupPassword) ? $input->BackupPassword : ""
+            $input->EncryptBackup ?? "",
+            $input->BackupPassword ?? ""
         );
         $Backup->Execute();
         return $response->withJson($Backup);
@@ -54,8 +54,8 @@ $app->group('/database', function () use ($app) {
             $BaseName,
             $BackupType,
             SystemConfig::getValue('bBackupExtraneousImages'),
-            isset($input->EncryptBackup) ? $input->EncryptBackup : "",
-            isset($input->BackupPassword) ? $input->BackupPassword : ""
+            $input->EncryptBackup ?? "",
+            $input->BackupPassword ?? ""
         );
         $Backup->Execute();
         $copyStatus = $Backup->CopyToWebDAV(SystemConfig::getValue('sExternalBackupEndpoint'), SystemConfig::getValue('sExternalBackupUsername'), SystemConfig::getValue('sExternalBackupPassword'));

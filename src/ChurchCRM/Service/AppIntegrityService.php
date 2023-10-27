@@ -5,34 +5,40 @@ namespace ChurchCRM\Service;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\Prerequisite;
 use ChurchCRM\Utils\LoggerUtils;
+use ChurchCRM\Utils\MiscUtils;
 
 class AppIntegrityService
 {
   private static $IntegrityCheckDetails;
 
   private static function getIntegrityCheckData() {
+    $logger = LoggerUtils::getAppLogger();
+
     $integrityCheckFile = SystemURLs::getDocumentRoot().'/integrityCheck.json';
-    if (is_null(AppIntegrityService::$IntegrityCheckDetails))
-    {
-      LoggerUtils::getAppLogger()->debug('Integrity check results not cached; reloading from file');
-      if (file_exists($integrityCheckFile)) {
-        LoggerUtils::getAppLogger()->info('Integrity check result file found at: ' . $integrityCheckFile);
-        AppIntegrityService::$IntegrityCheckDetails = json_decode(file_get_contents($integrityCheckFile), null, 512, JSON_THROW_ON_ERROR);
-        if (is_null(AppIntegrityService::$IntegrityCheckDetails))
-        {
-          LoggerUtils::getAppLogger()->warning("Error decoding integrity check result file: " . $integrityCheckFile);
+    if (AppIntegrityService::$IntegrityCheckDetails === null) {
+      $logger->debug('Integrity check results not cached; reloading from file');
+      if (is_file($integrityCheckFile)) {
+        $logger->info('Integrity check result file found at: ' . $integrityCheckFile);
+
+        try {
+          $integrityCheckFileContents = file_get_contents($integrityCheckFile);
+          MiscUtils::throwIfFailed($integrityCheckFileContents);
+          AppIntegrityService::$IntegrityCheckDetails = json_decode($integrityCheckFileContents, null, 512, JSON_THROW_ON_ERROR);
+        } catch (\Exception $e) {
+          $logger->warning("Error decoding integrity check result file: " . $integrityCheckFile, ['exception' => $e]);
+          AppIntegrityService::$IntegrityCheckDetails = new \stdClass;
           AppIntegrityService::$IntegrityCheckDetails->status = 'failure';
           AppIntegrityService::$IntegrityCheckDetails->message = gettext("Error decoding integrity check result file");
         }
       } else {
-        LoggerUtils::getAppLogger()->debug('Integrity check result file not found at: ' . $integrityCheckFile);
-        AppIntegrityService::$IntegrityCheckDetails = new \StdClass;
+        $logger->debug('Integrity check result file not found at: ' . $integrityCheckFile);
+        AppIntegrityService::$IntegrityCheckDetails = new \stdClass;
         AppIntegrityService::$IntegrityCheckDetails->status = 'failure';
         AppIntegrityService::$IntegrityCheckDetails->message = gettext("integrityCheck.json file missing");
       }
     }
     else {
-      LoggerUtils::getAppLogger()->debug('Integrity check results already cached; not reloading from file');
+      $logger->debug('Integrity check results already cached; not reloading from file');
     }
 
     return AppIntegrityService::$IntegrityCheckDetails;
@@ -40,18 +46,15 @@ class AppIntegrityService
   }
 
   public static function getIntegrityCheckStatus () {
-    if (AppIntegrityService::getIntegrityCheckData()->status == "failure")
-    {
+    if (AppIntegrityService::getIntegrityCheckData()->status === "failure") {
       return gettext("Failed");
     }
-    else {
-      return gettext("Passed");
-    }
+
+    return gettext("Passed");
   }
 
   public static function getIntegrityCheckMessage() {
-    if (AppIntegrityService::getIntegrityCheckData()->status != "failure")
-    {
+    if (AppIntegrityService::getIntegrityCheckData()->status !== "failure") {
       AppIntegrityService::$IntegrityCheckDetails->message = gettext('The previous integrity check passed.  All system file hashes match the expected values.');
     }
 
@@ -60,51 +63,78 @@ class AppIntegrityService
   }
 
   public static function getFilesFailingIntegrityCheck() {
-    if (isset(AppIntegrityService::getIntegrityCheckData()->files)) {
-    return AppIntegrityService::getIntegrityCheckData()->files;
-    }
-    else{
-      return @[];
-    }
+      return AppIntegrityService::getIntegrityCheckData()->files ?? [];
   }
+
   public static function verifyApplicationIntegrity()
   {
+    $logger = LoggerUtils::getAppLogger();
+
     $signatureFile = SystemURLs::getDocumentRoot() . '/signatures.json';
     $signatureFailures = [];
-    if (file_exists($signatureFile)) {
-      LoggerUtils::getAppLogger()->info('Signature file found at: ' . $signatureFile);
-      $signatureData = json_decode(file_get_contents($signatureFile), null, 512, JSON_THROW_ON_ERROR);
-      if (is_null($signatureData)){
-        LoggerUtils::getAppLogger()->warning('Error decoding signature definition file: ' . $signatureFile);
-        return ['status' => 'failure', 'message' => gettext('Error decoding signature definition file')];
+    if (is_file($signatureFile)) {
+      $logger->info('Signature file found at: ' . $signatureFile);
+
+      try {
+        $signatureFileContents = file_get_contents($signatureFile);
+        MiscUtils::throwIfFailed($signatureFileContents);
+        $signatureData = json_decode($signatureFileContents, null, 512, JSON_THROW_ON_ERROR);
+      } catch (\Exception $e) {
+        $logger->warning('Error decoding signature definition file: ' . $signatureFile, ['exception' => $e]);
+
+        return [
+          'status' => 'failure',
+          'message' => gettext('Error decoding signature definition file')
+        ];
       }
-      if (sha1(json_encode($signatureData->files, JSON_UNESCAPED_SLASHES)) == $signatureData->sha1) {
+      if (sha1(json_encode($signatureData->files, JSON_UNESCAPED_SLASHES)) === $signatureData->sha1) {
         foreach ($signatureData->files as $file) {
           $currentFile = SystemURLs::getDocumentRoot() . '/' . $file->filename;
           if (file_exists($currentFile)) {
             $actualHash = sha1_file($currentFile);
             if ($actualHash != $file->sha1) {
-              LoggerUtils::getAppLogger()->warning('File hash mismatch: ' . $file->filename . ". Expected: " . $file->sha1. "; Got: " . $actualHash);
-              array_push($signatureFailures, ['filename' => $file->filename, 'status' => 'Hash Mismatch', 'expectedhash' => $file->sha1, 'actualhash' => $actualHash]);
+              $logger->warning('File hash mismatch: ' . $file->filename . ". Expected: " . $file->sha1. "; Got: " . $actualHash);
+              array_push($signatureFailures, [
+                'filename' => $file->filename,
+                'status' => 'Hash Mismatch',
+                'expectedhash' => $file->sha1,
+                'actualhash' => $actualHash
+              ]);
             }
           } else {
-            LoggerUtils::getAppLogger()->warning('File Missing: ' . $file->filename);
-            array_push($signatureFailures, ['filename' => $file->filename, 'status' => 'File Missing']);
+            $logger->warning('File Missing: ' . $file->filename);
+            array_push($signatureFailures, [
+              'filename' => $file->filename,
+              'status' => 'File Missing'
+            ]);
           }
         }
       } else {
-        LoggerUtils::getAppLogger()->warning('Signature definition file signature failed validation');
-        return ['status' => 'failure', 'message' => gettext('Signature definition file signature failed validation')];
+        $logger->warning('Signature definition file signature failed validation');
+
+        return [
+          'status' => 'failure',
+          'message' => gettext('Signature definition file signature failed validation')
+        ];
       }
     } else {
-      LoggerUtils::getAppLogger()->warning('Signature definition file not found at: ' . $signatureFile);
-      return ['status' => 'failure', 'message' => gettext('Signature definition File Missing')];
+      $logger->warning('Signature definition file not found at: ' . $signatureFile);
+      return [
+        'status' => 'failure',
+        'message' => gettext('Signature definition File Missing')
+      ];
     }
 
     if (count($signatureFailures) > 0) {
-      return ['status' => 'failure', 'message' => gettext('One or more files failed signature validation'), 'files' => $signatureFailures];
+      return [
+        'status' => 'failure',
+        'message' => gettext('One or more files failed signature validation'),
+        'files' => $signatureFailures
+      ];
     } else {
-      return ['status' => 'success'];
+      return [
+        'status' => 'success'
+      ];
     }
   }
 
@@ -120,7 +150,7 @@ class AppIntegrityService
   {
 
     $prerequisites = [
-      new Prerequisite('PHP 7.4+', fn() => version_compare(PHP_VERSION, '7.4.0', '>=')),
+      new Prerequisite('PHP 8.1+', fn() => version_compare(PHP_VERSION, '8.1.0', '>=')),
       new Prerequisite('PCRE and UTF-8 Support', fn() => function_exists('preg_match') && @preg_match('/^.$/u', 'ñ') && @preg_match('/^\pL$/u', 'ñ')),
       new Prerequisite('Multibyte Encoding', fn() => extension_loaded('mbstring')),
       new Prerequisite('PHP Phar', fn() => extension_loaded('phar')),
@@ -145,7 +175,10 @@ class AppIntegrityService
 
   public static function getUnmetPrerequisites()
   {
-    return array_filter(AppIntegrityService::getApplicationPrerequisites(), fn($prereq) => ! $prereq->IsPrerequisiteMet());
+    return array_filter(
+      AppIntegrityService::getApplicationPrerequisites(),
+      fn($prereq) => !$prereq->IsPrerequisiteMet()
+    );
   }
 
   public static function arePrerequisitesMet()

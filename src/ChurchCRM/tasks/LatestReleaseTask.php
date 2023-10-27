@@ -18,7 +18,7 @@ class LatestReleaseTask implements iTask
     $this->installedVersion = ChurchCRMReleaseManager::getReleaseFromString($_SESSION['sSoftwareInstalledVersion']);
   }
 
-  public function isActive()
+  public function isActive(): bool
   {
     $isCurrent = ChurchCRMReleaseManager::isReleaseCurrent($this->installedVersion);
     if (! $isCurrent )
@@ -39,12 +39,12 @@ class LatestReleaseTask implements iTask
     return false;
   }
 
-  public function isAdmin()
+  public function isAdmin(): bool
   {
     return false;
   }
 
-  public function getLink()
+  public function getLink(): string
   {
     if (AuthenticationManager::GetCurrentUser()->isAdmin()) {
       return SystemURLs::getRootPath() . '/UpgradeCRM.php';
@@ -53,12 +53,12 @@ class LatestReleaseTask implements iTask
     }
   }
 
-  public function getTitle()
+  public function getTitle(): string
   {
     return gettext('New Release') . ' ' . $this->latestVersion;
   }
 
-  public function getDesc()
+  public function getDesc(): string
   {
     return $this->latestVersion->GetReleaseNotes();
   }
