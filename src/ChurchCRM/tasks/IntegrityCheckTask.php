@@ -4,7 +4,7 @@ namespace ChurchCRM\Tasks;
 
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Authentication\AuthenticationManager;
-
+use ChurchCRM\Utils\MiscUtils;
 
 class IntegrityCheckTask implements iTask
 {
@@ -12,8 +12,12 @@ class IntegrityCheckTask implements iTask
 
   public function __construct()
   {
-    if (file_exists(SystemURLs::getDocumentRoot() . '/integrityCheck.json')) {
-      $this->integrityCheckData = json_decode(file_get_contents(SystemURLs::getDocumentRoot() . '/integrityCheck.json'), null, 512, JSON_THROW_ON_ERROR);
+    $integrityCheckPath = SystemURLs::getDocumentRoot() . '/integrityCheck.json';
+    if (is_file($integrityCheckPath)) {
+      $integrityCheckContents = file_get_contents($integrityCheckPath);
+      MiscUtils::throwIfFailed($integrityCheckContents);
+
+      $this->integrityCheckData = json_decode($integrityCheckContents, null, 512, JSON_THROW_ON_ERROR);
     }
   }
 
