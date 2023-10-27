@@ -5,6 +5,7 @@ namespace ChurchCRM;
 use ChurchCRM\Base\Event as BaseEvent;
 use ChurchCRM\dto\SystemURLs;
 use Propel\Runtime\ActiveQuery\Criteria;
+use Propel\Runtime\Map\TableMap;
 
 /**
  * Skeleton subclass for representing a row from the 'events_event' table.

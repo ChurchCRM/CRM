@@ -177,6 +177,9 @@ namespace ChurchCRM
           self::$bootStrapLogger->debug("Initializing Propel ORM");
           // ==== ORM
           self::$dbClassName = '\\' . \Propel\Runtime\Connection\ConnectionWrapper::class;
+          /**
+           * @var \Propel\Runtime\ServiceContainer\StandardServiceContainer
+           */
           self::$serviceContainer = Propel::getServiceContainer();
           self::$serviceContainer->checkVersion('2.0.0-dev');
           self::$serviceContainer->setAdapterClass('default', 'mysql');
@@ -225,7 +228,6 @@ namespace ChurchCRM
       }
       private static function configureLogging()
       {
-
        // PHP Logs
           $phpLogPath = LoggerUtils::buildLogFilePath("php");
           self::$bootStrapLogger->debug("Configuring PHP logs at :" .$phpLogPath);
@@ -249,7 +251,7 @@ namespace ChurchCRM
 
       private static function buildConnectionManagerConfig()
       {
-          if (is_null(self::$databasePort)) {
+          if (self::$databasePort === null) {
               self::$databasePort = 3306;
           }
           return [

@@ -1,9 +1,20 @@
 <?php
 
 namespace ChurchCRM\Utils;
+
 use ChurchCRM\dto\SystemConfig;
+
 class MiscUtils {
- 
+  /**
+   * @param bool|mixed $isSuccessful
+   */
+  public static function throwIfFailed($isSuccessful): void
+  {
+    if ($isSuccessful === false) {
+      throw new \Exception('Operation failed.');
+    }
+  }
+
   public static function randomToken() {
     $alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
     $apiKey = []; //remember to declare $apiKey as an array
@@ -79,25 +90,23 @@ class MiscUtils {
       if (!$birthDate) {
         return false;
       }
-      if ($bFlags || is_null($per_BirthYear) || $per_BirthYear == '')
-      {
+      if ($bFlags || is_null($per_BirthYear) || $per_BirthYear == '') {
         return $birthDate->format(SystemConfig::getValue("sDateFormatNoYear"));  
       }
-      else
-      {
-        return $birthDate->format(SystemConfig::getValue("sDateFormatLong"));
-      }
+
+      return $birthDate->format(SystemConfig::getValue("sDateFormatLong"));
   }
   
   public static function BirthDate($year, $month, $day)
   {
      if (!is_null($day) && $day != '' && !is_null($month) && $month != '') {
-        if (is_null($year) || $year == '')
-        {
+        if (is_null($year) || $year == '') {
           $year = 1900;
         }
+
         return date_create($year . '-' . $month . '-' . $day);
       }
+
       return false;
   }
   
@@ -108,6 +117,7 @@ class MiscUtils {
     $anchor = preg_replace('/\s/','-',$anchor);
     $anchor = preg_replace('/\-+$/','',$anchor);
     $anchor = str_replace(" ", "-", $anchor);
+
     return $anchor;
   }
 
@@ -122,5 +132,3 @@ class MiscUtils {
       return $str;
   }
 }
-
-?>

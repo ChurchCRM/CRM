@@ -43,7 +43,7 @@ class AddressSearchResultProvider extends BaseSearchResultProvider {
                     array_push($searchResults, new SearchResult("person-address-".$id, $address->getFamilyString(SystemConfig::getBooleanValue("bSearchIncludeFamilyHOH")),$address->getViewURI()));
                 }
             }
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             LoggerUtils::getAppLogger()->warning($e->getMessage());
         }
 

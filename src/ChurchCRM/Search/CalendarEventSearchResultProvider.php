@@ -41,7 +41,7 @@ class CalendarEventSearchResultProvider extends BaseSearchResultProvider  {
                     array_push($searchResults, new SearchResult("event-name-".$id, $event->getTitle(),$event->getViewURI()));
                 }
             }
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             LoggerUtils::getAppLogger()->warning($e->getMessage());
         }
         return $searchResults;

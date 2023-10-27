@@ -51,7 +51,7 @@ class FamilySearchResultProvider extends BaseSearchResultProvider  {
             }
 
             return $searchResults;
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             LoggerUtils::getAppLogger()->warning($e->getMessage());
         }
     }
@@ -74,7 +74,7 @@ class FamilySearchResultProvider extends BaseSearchResultProvider  {
                 $id++;
                 array_push($searchResults, new SearchResult("family-custom-prop-".$id, $family->getFamilyString(SystemConfig::getBooleanValue("bSearchIncludeFamilyHOH")),$family->getViewURI()));
             }
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             LoggerUtils::getAppLogger()->warning($e->getMessage());
         }
         return $searchResults;

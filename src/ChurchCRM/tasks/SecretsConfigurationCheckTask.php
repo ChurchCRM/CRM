@@ -8,27 +8,27 @@ use ChurchCRM\KeyManager;
 
 class SecretsConfigurationCheckTask implements iTask
 {
-  public function isActive()
+  public function isActive(): bool
   {
     return ! KeyManager::GetAreAllSecretsDefined();
   }
 
-  public function isAdmin()
+  public function isAdmin(): bool
   {
     return true;
   }
 
-  public function getLink()
+  public function getLink(): string
   {
       return SystemURLs::getSupportURL(array_pop(explode('\\', self::class)));
   }
 
-  public function getTitle()
+  public function getTitle(): string
   {
     return gettext('Secret Keys missing from Config.php');
   }
 
-  public function getDesc()
+  public function getDesc(): string
   {
     return gettext('Secret Keys missing from Config.php');
   }

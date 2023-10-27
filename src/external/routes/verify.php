@@ -9,7 +9,6 @@ use ChurchCRM\Note;
 use ChurchCRM\Person;
 
 $app->group('/verify', function () use ($app) {
-
   $app->get('/{token}', function ($request, $response, $args) {
     $renderer = new PhpRenderer("templates/verify/");
     $token = TokenQuery::create()->findPk($args['token']);

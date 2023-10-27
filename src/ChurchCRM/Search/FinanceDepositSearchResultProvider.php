@@ -45,7 +45,7 @@ class FinanceDepositSearchResultProvider extends BaseSearchResultProvider  {
                     array_push($searchResults, new SearchResult("finance-deposit-".$id, $Deposit['displayName'], $Deposit['uri']));
                 }
             }
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             LoggerUtils::getAppLogger()->warning($e->getMessage());
         }
         return $searchResults;
