@@ -405,7 +405,6 @@ function ZipBundleSort($inLabels)
     //foreach ($adc as $key => $value)
     //    echo "key = $key, value = $value <br>";
 
-    //$db=0;
     //
     // Step 1 - create an array of only the zipcodes of length 5
     //
@@ -418,9 +417,6 @@ function ZipBundleSort($inLabels)
 
     $n = count($inLabels);
     $nTotalLabels = $n;
-    if ($db) {
-        echo "{$n} Labels passed to bundle function....<br>";
-    }
 
     for ($i = 0; $i < $n; $i++) {
         $Zips[$i] = intval(mb_substr($inLabels[$i]['Zip'], 0, 5));
@@ -454,9 +450,6 @@ function ZipBundleSort($inLabels)
             }
         }
     }
-    if ($db) {
-        echo "<br>{$nz5} Labels moved to the output list<br>";
-    }
 
     //
     //  remove processed labels for inLabels array
@@ -476,9 +469,6 @@ function ZipBundleSort($inLabels)
 
     unset($Zips);
     $n = count($inLabels);
-    if ($db) {
-        echo "<br>...pass 2 ZIP3..{$n} labels to process<br>";
-    }
 
     //print_r($inLabels);
 
@@ -514,9 +504,6 @@ function ZipBundleSort($inLabels)
         }
     }
 
-    if ($db) {
-        echo "{$nz3} Labels moved to the output list...<br>";
-    }
     unset($inLabels2);
     for ($i = 0; $i < $n; $i++) {
         if ($inLabels[$i]['Zip'] != -1) {
@@ -532,9 +519,6 @@ function ZipBundleSort($inLabels)
 
     unset($Zips);
     $n = count($inLabels);
-    if ($db) {
-        echo "...pass 3 ADC..{$n} labels to process\r\n";
-    }
 
     for ($i = 0; $i < $n; $i++) {
         if (isset($adc[intval(mb_substr($inLabels[$i]['Zip'], 0, 3))])) {
@@ -577,9 +561,6 @@ function ZipBundleSort($inLabels)
         }
     }
 
-    if ($db) {
-        echo "{$nadc} Labels moved to the output list<br>";
-    }
     unset($inLabels2);
     for ($i = 0; $i < $n; $i++) {
         if ($inLabels[$i]['Zip'] != -1) {
@@ -596,9 +577,6 @@ function ZipBundleSort($inLabels)
     unset($Zips);
     $n = count($inLabels);
     $zc = $n;
-    if ($db) {
-        echo "...pass 4 Mixed ADC..{$n} labels to process\r\n";
-    }
     if ($zc > 0) {
         $NoteText = ['Note'=>'******* Presort MIXED ADC '];
         $NameText = ['Name'=>'** '.$zc.' Addresses in Bundle *'];
@@ -606,16 +584,9 @@ function ZipBundleSort($inLabels)
         $CityText = ['City'=>'******* Presort MIXED ADC   '];
         $outList[] = array_merge($NoteText, $NameText, $AddressText, $CityText);
         for ($i = 0; $i < $n; $i++) {
-            if ($db) {
-                echo "$i.";
-            }
             $outList[] = array_merge($inLabels[$i], $NoteText);
             $nmadc++;
         }
-    }
-
-    if ($db) {
-        echo "{$nmadc} Labels moved to the output list <br>";
     }
 
     //
