@@ -13,6 +13,7 @@ namespace ChurchCRM
   use ChurchCRM\Utils\LoggerUtils;
   use ChurchCRM\Utils\RedirectUtils;
   use ChurchCRM\Authentication\AuthenticationManager;
+    use Exception;
 
   class Bootstrapper
   {
@@ -140,7 +141,11 @@ namespace ChurchCRM
               // Connect via TCP to specified port and pass a 'null' for database name.
               // We specify the database name in a different call, ie 'mysqli_select_db()' just below here
               self::$bootStrapLogger->debug("Connecting to ". self::$databaseServerName . " on port " . self::$databasePort . " as " . self::$databaseUser);
-              $cnInfoCentral = mysqli_connect(self::$databaseServerName, self::$databaseUser, self::$databasePassword, null, self::$databasePort);
+              try {
+                $cnInfoCentral = mysqli_connect(self::$databaseServerName, self::$databaseUser, self::$databasePassword, null, self::$databasePort);
+              } catch (\Exception $e) {
+                    Bootstrapper::system_failure($e->getMessage());
+              }
           }
           self::testMYSQLI();
           mysqli_set_charset($cnInfoCentral, 'utf8mb4');
@@ -294,7 +299,7 @@ namespace ChurchCRM
           if (!SystemConfig::isInitialized()) {
               SystemConfig::init();
           }
-          require 'Include/HeaderNotLoggedIn.php'; ?>
+          require '../Include/HeaderNotLoggedIn.php'; ?>
       <div class='container'>
           <h3>ChurchCRM – <?= _($header) ?></h3>
           <div class='alert alert-danger text-center' style='margin-top: 20px;'>
@@ -302,7 +307,7 @@ namespace ChurchCRM
           </div>
       </div>
       <?php
-      require 'Include/FooterNotLoggedIn.php';
+      require '../Include/FooterNotLoggedIn.php';
           exit();
       }
       public static function isDBCurrent()
