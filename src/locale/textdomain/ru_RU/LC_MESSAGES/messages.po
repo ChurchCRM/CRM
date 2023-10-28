@@ -4815,7 +4815,8 @@ msgid "Church Email"
 msgstr "Электронная почта церкви"
 
 #: 
-msgid "Include only these classifications in the directory, comma seperated"
+#, fuzzy
+msgid "Include only these classifications in the directory, comma separated"
 msgstr "Включать в каталог только эти классификации, разделенные запятыми."
 
 #: 
@@ -4831,7 +4832,8 @@ msgid "Minimum length a user may set their password to"
 msgstr "Минимальная длина, на которую пользователь может установить свой пароль"
 
 #: 
-msgid "A comma-seperated list of disallowed (too obvious) passwords."
+#, fuzzy
+msgid "A comma-separated list of disallowed (too obvious) passwords."
 msgstr "Список запрещенных (слишком очевидных) паролей, разделенных запятыми."
 
 #: 
@@ -5203,7 +5205,8 @@ msgid "The property for which you would like person records returned."
 msgstr "Свойство, для которого вы хотите вернуть личные записи."
 
 #: 
-msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that conatain donations."
+#, fuzzy
+msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations."
 msgstr "Пожалуйста, выберите дату начала для расчета общих взносов для каждого члена (например, ГГГГ-ММ-ДД). ПРИМЕЧАНИЕ. Вы можете выбирать только даты, в которые поступают пожертвования."
 
 #: 
@@ -5954,10 +5957,6 @@ msgstr[0] "%d месяц"
 msgstr[1] "%d месяца"
 msgstr[2] "%d месяцев"
 msgstr[3] "%d-месячный"
-
-#: 
-msgid "Database upgrade failed"
-msgstr "Сбой обновления базы данных"
 
 #: 
 msgid "Unsupported PHP Version"

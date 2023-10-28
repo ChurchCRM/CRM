@@ -4930,7 +4930,8 @@ msgid "Church Email"
 msgstr "E-mail da Igreja"
 
 #: 
-msgid "Include only these classifications in the directory, comma seperated"
+#, fuzzy
+msgid "Include only these classifications in the directory, comma separated"
 msgstr "Inclua apenas essas classificações no diretório, separadas por vírgulas"
 
 #: 
@@ -4958,7 +4959,8 @@ msgid "Minimum length a user may set their password to"
 msgstr "O tamanho mínimo da senha de um utilizador pode é"
 
 #: 
-msgid "A comma-seperated list of disallowed (too obvious) passwords."
+#, fuzzy
+msgid "A comma-separated list of disallowed (too obvious) passwords."
 msgstr "Uma lista separada por vírgulas não é permitida como senha (muito óbvio)."
 
 #: 
@@ -5385,7 +5387,8 @@ msgid "The property for which you would like person records returned."
 msgstr "Propriedade da qual você deseja obter registos de pessoas."
 
 #: 
-msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that conatain donations."
+#, fuzzy
+msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations."
 msgstr "Por favor, escolha a data de início para calcular as contribuições totais para cada membro (isto é AAAA-MM-DD). NOTA: Você só pode escolher as datas que contenham doações."
 
 #: 
@@ -8631,14 +8634,6 @@ msgid "Unable to open file"
 msgstr "Impossível abrir o arquivo"
 
 #: 
-msgid "Invalid upgrade file specified"
-msgstr "Arquivo de atualização inválido"
-
-#: 
-msgid "Failure executing upgrade script"
-msgstr "Falha ao executar o script de atualização"
-
-#: 
 msgid "Missing calendar access token"
 msgstr "Sem Token de acesso ao calendário"
 
@@ -9075,10 +9070,6 @@ msgid "%d year old"
 msgid_plural "%d years old"
 msgstr[0] "%d ano idade"
 msgstr[1] "%d anos idade"
-
-#: 
-msgid "Database upgrade failed"
-msgstr "Falha na atualização da base de dados"
 
 #: 
 msgid "Unsupported PHP Version"

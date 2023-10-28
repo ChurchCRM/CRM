@@ -4762,7 +4762,8 @@ msgid "Church Email"
 msgstr "Email Gereja"
 
 #: 
-msgid "Include only these classifications in the directory, comma seperated"
+#, fuzzy
+msgid "Include only these classifications in the directory, comma separated"
 msgstr "Masukkan hanya klasifikasi ini dalam direktori, pisahkan dengan koma"
 
 #: 
@@ -4790,7 +4791,8 @@ msgid "Minimum length a user may set their password to"
 msgstr "Panjang minimum pengguna dapat mengatur kata sandi mereka"
 
 #: 
-msgid "A comma-seperated list of disallowed (too obvious) passwords."
+#, fuzzy
+msgid "A comma-separated list of disallowed (too obvious) passwords."
 msgstr "Daftar kata sandi yang ditolak (terlalu jelas) yang dipisah koma."
 
 #: 
@@ -5214,7 +5216,8 @@ msgid "The property for which you would like person records returned."
 msgstr "Properti tempat Anda ingin catatan orang dikembalikan."
 
 #: 
-msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that conatain donations."
+#, fuzzy
+msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations."
 msgstr "Silakan pilih tanggal mulai untuk menghitung kontribusi total untuk setiap anggota (yaitu YYYY-MM-DD). CATATAN: Anda hanya dapat memilih tanggal yang berisi sumbangan."
 
 #: 
@@ -8434,14 +8437,6 @@ msgid "Unable to open file"
 msgstr "Tidak dapat membuka file"
 
 #: 
-msgid "Invalid upgrade file specified"
-msgstr "File upgrade yang ditentukan tidak valid"
-
-#: 
-msgid "Failure executing upgrade script"
-msgstr "Gagal menjalankan skrip pemutakhiran"
-
-#: 
 msgid "Missing calendar access token"
 msgstr "Token akses kalender tidak ada"
 
@@ -8867,10 +8862,6 @@ msgstr[0] "%d bulan"
 msgid "%d year old"
 msgid_plural "%d years old"
 msgstr[0] "%d tahun"
-
-#: 
-msgid "Database upgrade failed"
-msgstr "Pembaruan basis data gagal"
 
 #: 
 msgid "Unsupported PHP Version"

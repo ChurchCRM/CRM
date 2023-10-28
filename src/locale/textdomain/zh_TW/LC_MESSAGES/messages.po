@@ -4895,7 +4895,8 @@ msgid "Church Email"
 msgstr "教會電郵"
 
 #: 
-msgid "Include only these classifications in the directory, comma seperated"
+#, fuzzy
+msgid "Include only these classifications in the directory, comma separated"
 msgstr "僅在目錄中包含這些分類，逗號分隔"
 
 #: 
@@ -4923,7 +4924,8 @@ msgid "Minimum length a user may set their password to"
 msgstr "用戶設置密碼的最小長度"
 
 #: 
-msgid "A comma-seperated list of disallowed (too obvious) passwords."
+#, fuzzy
+msgid "A comma-separated list of disallowed (too obvious) passwords."
 msgstr "以逗號分隔的不允許（太簡單）密碼列表。"
 
 #: 
@@ -5360,7 +5362,8 @@ msgid "The property for which you would like person records returned."
 msgstr "返回您想要記錄的人員。"
 
 #: 
-msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that conatain donations."
+#, fuzzy
+msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations."
 msgstr "請選擇開始日期以計算每個成員的總貢獻（即YYYY-MM-DD）。注意：您只能選擇含捐贈的日期。"
 
 #: 
@@ -8607,14 +8610,6 @@ msgid "Unable to open file"
 msgstr "無法打開文件"
 
 #: 
-msgid "Invalid upgrade file specified"
-msgstr "指定的升級文件無效"
-
-#: 
-msgid "Failure executing upgrade script"
-msgstr "執行升級腳本失敗"
-
-#: 
 msgid "Missing calendar access token"
 msgstr "缺少日曆訪問令牌"
 
@@ -9104,11 +9099,6 @@ msgid "%d year old"
 msgid_plural "%d years old"
 msgstr[0] "%d歲大\n"
 "Plural: %d歲大"
-
-#: 
-#, fuzzy
-msgid "Database upgrade failed"
-msgstr "資料庫升級失敗"
 
 #: 
 #, fuzzy

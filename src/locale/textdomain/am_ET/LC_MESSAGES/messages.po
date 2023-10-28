@@ -4758,7 +4758,8 @@ msgid "Church Email"
 msgstr "የቤተክርስቲያን ኢሜይል"
 
 #: 
-msgid "Include only these classifications in the directory, comma seperated"
+#, fuzzy
+msgid "Include only these classifications in the directory, comma separated"
 msgstr "እነዚህን ምደባዎች በማውጫው ውስጥ ብቻ ያካትቱ፣ በነጠላ ሰረዝ የተለዩ"
 
 #: 
@@ -4786,7 +4787,8 @@ msgid "Minimum length a user may set their password to"
 msgstr "አንድ ተጠቃሚ የይለፍ ቃሉን ሊያዘጋጅ የሚችልበት አነስተኛ ርዝመት"
 
 #: 
-msgid "A comma-seperated list of disallowed (too obvious) passwords."
+#, fuzzy
+msgid "A comma-separated list of disallowed (too obvious) passwords."
 msgstr "በነጠላ ሰረዞች የተከለከሉ ያልተፈቀዱ (በጣም ግልጽ) የይለፍ ቃሎች ዝርዝር."
 
 #: 
@@ -5211,7 +5213,8 @@ msgid "The property for which you would like person records returned."
 msgstr "የሰው መዝገቦች እንዲመለሱ የሚፈልጉት ንብረት።"
 
 #: 
-msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that conatain donations."
+#, fuzzy
+msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations."
 msgstr "ለእያንዳንዱ አባል ጠቅላላ መዋጮ ለማስላት እባክህ የመጀመሪያ ቀን ምረጥ (ማለትም ዓ-ወ-ቀን)። ማሳሰቢያ፡ ልገሳዎችን የያዙ ቀኖችን ብቻ ነው መምረጥ የሚችሉት።"
 
 #: 
@@ -8433,14 +8436,6 @@ msgid "Unable to open file"
 msgstr "መክፈት አልተቻለም"
 
 #: 
-msgid "Invalid upgrade file specified"
-msgstr "ልክ ያልሆነ ማሻሻያ ተገለጿል"
-
-#: 
-msgid "Failure executing upgrade script"
-msgstr "ማሻሻያ መፈጸም አልተቻለም"
-
-#: 
 msgid "Missing calendar access token"
 msgstr "የቀን መቁጠሪያ መዳረሻ መተኪያ ይጎድላል"
 
@@ -8881,10 +8876,6 @@ msgid "%d year old"
 msgid_plural "%d years old"
 msgstr[0] "%d አመት ሞላው"
 msgstr[1] "%d አመት የሞላቸው"
-
-#: 
-msgid "Database upgrade failed"
-msgstr "የውሂብ ጎታ ማሻሻል አልተሳካም። "
 
 #: 
 msgid "Unsupported PHP Version"

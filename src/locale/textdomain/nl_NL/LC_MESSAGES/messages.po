@@ -4773,7 +4773,8 @@ msgid "Church Email"
 msgstr "Email adres van de kerk"
 
 #: 
-msgid "Include only these classifications in the directory, comma seperated"
+#, fuzzy
+msgid "Include only these classifications in the directory, comma separated"
 msgstr "Neem alleen deze classificaties in de directory, gescheiden door een komma"
 
 #: 
@@ -4801,7 +4802,8 @@ msgid "Minimum length a user may set their password to"
 msgstr "Minimale lengte kan een gebruiker zijn wachtwoord ingesteld op"
 
 #: 
-msgid "A comma-seperated list of disallowed (too obvious) passwords."
+#, fuzzy
+msgid "A comma-separated list of disallowed (too obvious) passwords."
 msgstr "Een door komma's gescheiden lijst van niet-toegestane (ook voor de hand liggende) wachtwoorden."
 
 #: 
@@ -5230,7 +5232,8 @@ msgid "The property for which you would like person records returned."
 msgstr "Records met personen op basis van de gewenste eigenschap."
 
 #: 
-msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that conatain donations."
+#, fuzzy
+msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations."
 msgstr "Selecteer de begindatum de totale bijdragen voor elk lid (dat wil zeggen YYYY-MM-DD) te berekenen. OPMERKING: U kunt alleen kiezen voor data die donaties bevatten. "
 
 #: 
@@ -8451,14 +8454,6 @@ msgid "Unable to open file"
 msgstr "Kan bestand niet openen"
 
 #: 
-msgid "Invalid upgrade file specified"
-msgstr "Ongeldig upgradebestand opgegeven"
-
-#: 
-msgid "Failure executing upgrade script"
-msgstr "Kan upgradescript niet uitvoeren"
-
-#: 
 msgid "Missing calendar access token"
 msgstr "Het certificaat van toegang tot de kalender is afwezig"
 
@@ -8896,10 +8891,6 @@ msgid "%d year old"
 msgid_plural "%d years old"
 msgstr[0] "%d jaar oud"
 msgstr[1] "%d jaar oud"
-
-#: 
-msgid "Database upgrade failed"
-msgstr "Database-upgrade mislukt"
 
 #: 
 msgid "Unsupported PHP Version"

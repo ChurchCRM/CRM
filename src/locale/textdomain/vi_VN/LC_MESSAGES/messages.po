@@ -4776,7 +4776,8 @@ msgid "Church Email"
 msgstr "Email Nhà thờ"
 
 #: 
-msgid "Include only these classifications in the directory, comma seperated"
+#, fuzzy
+msgid "Include only these classifications in the directory, comma separated"
 msgstr "Chỉ bao gồm các phân loại này trong thư mục, được phân tách bằng dấu phẩy"
 
 #: 
@@ -4804,7 +4805,8 @@ msgid "Minimum length a user may set their password to"
 msgstr "Độ dài tối thiểu mà người dùng có thể đặt mật khẩu của họ"
 
 #: 
-msgid "A comma-seperated list of disallowed (too obvious) passwords."
+#, fuzzy
+msgid "A comma-separated list of disallowed (too obvious) passwords."
 msgstr "Danh sách mật khẩu không được phép (quá rõ ràng) được phân tách bằng dấu phẩy."
 
 #: 
@@ -5228,7 +5230,8 @@ msgid "The property for which you would like person records returned."
 msgstr "Thuộc tính mà bạn muốn trả lại hồ sơ cá nhân."
 
 #: 
-msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that conatain donations."
+#, fuzzy
+msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations."
 msgstr "Vui lòng chọn ngày bắt đầu để tính tổng đóng góp cho mỗi thành viên (tức là YYYY-MM-DD). LƯU Ý: Bạn chỉ có thể chọn ngày đi kèm với số tiền quyên góp."
 
 #: 
@@ -8448,14 +8451,6 @@ msgid "Unable to open file"
 msgstr "Không thể mở tập tin"
 
 #: 
-msgid "Invalid upgrade file specified"
-msgstr "Đã chỉ định tệp nâng cấp không hợp lệ"
-
-#: 
-msgid "Failure executing upgrade script"
-msgstr "Không thực hiện được tập lệnh nâng cấp"
-
-#: 
 msgid "Missing calendar access token"
 msgstr "Thiếu mã thông báo truy cập lịch"
 
@@ -8881,10 +8876,6 @@ msgstr[0] "% d tháng tuổi"
 msgid "%d year old"
 msgid_plural "%d years old"
 msgstr[0] "% d tuổi"
-
-#: 
-msgid "Database upgrade failed"
-msgstr "Nâng cấp cơ sở dữ liệu không thành công"
 
 #: 
 msgid "Unsupported PHP Version"

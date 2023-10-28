@@ -4759,7 +4759,8 @@ msgid "Church Email"
 msgstr "الكنيسة البريد الإلكتروني"
 
 #: 
-msgid "Include only these classifications in the directory, comma seperated"
+#, fuzzy
+msgid "Include only these classifications in the directory, comma separated"
 msgstr "تشمل فقط هذه التصنيفات في الدليل، مفصولة بفواصل"
 
 #: 
@@ -4787,7 +4788,8 @@ msgid "Minimum length a user may set their password to"
 msgstr "الحد الأدنى لطول يجوز للمستخدم ضبط كلمة المرور الخاصة بهم ل"
 
 #: 
-msgid "A comma-seperated list of disallowed (too obvious) passwords."
+#, fuzzy
+msgid "A comma-separated list of disallowed (too obvious) passwords."
 msgstr "قائمة مفصولة بفواصل من غير مسموح كلمات السر (واضحة جدا)."
 
 #: 
@@ -5211,7 +5213,8 @@ msgid "The property for which you would like person records returned."
 msgstr "الخاصية التي ترغب السجلات شخص تم إرجاعها."
 
 #: 
-msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that conatain donations."
+#, fuzzy
+msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations."
 msgstr "الرجاء تحديد تاريخ بداية لحساب مجموع الاشتراكات لكل عضو (أي YYYY-MM-DD). ملاحظة: يمكنك فقط اختيار التواريخ التي التبرعات conatain."
 
 #: 
@@ -8431,14 +8434,6 @@ msgid "Unable to open file"
 msgstr "غير قادر على فتح ملف"
 
 #: 
-msgid "Invalid upgrade file specified"
-msgstr "ملف ترقية صالح المحدد"
-
-#: 
-msgid "Failure executing upgrade script"
-msgstr "فشل تنفيذ البرنامج النصي ترقية"
-
-#: 
 msgid "Missing calendar access token"
 msgstr "في عداد المفقودين رمز وصول تقويم"
 
@@ -8874,10 +8869,6 @@ msgstr[2] "%d سنة"
 msgstr[3] "%d سنة"
 msgstr[4] "%d سنة"
 msgstr[5] "%d سنة"
-
-#: 
-msgid "Database upgrade failed"
-msgstr "فشل ترقية قاعدة البيانات"
 
 #: 
 msgid "Unsupported PHP Version"

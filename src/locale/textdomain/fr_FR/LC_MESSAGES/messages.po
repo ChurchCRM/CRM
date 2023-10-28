@@ -4765,7 +4765,8 @@ msgid "Church Email"
 msgstr "Email de l'église"
 
 #: 
-msgid "Include only these classifications in the directory, comma seperated"
+#, fuzzy
+msgid "Include only these classifications in the directory, comma separated"
 msgstr "Inclure uniquement ces catégories dans le répertoire, séparées par une virgule"
 
 #: 
@@ -4793,7 +4794,8 @@ msgid "Minimum length a user may set their password to"
 msgstr "Longueur minimal d'un Mot de Passe utilisateur"
 
 #: 
-msgid "A comma-seperated list of disallowed (too obvious) passwords."
+#, fuzzy
+msgid "A comma-separated list of disallowed (too obvious) passwords."
 msgstr "Une liste de mot de passe rejeté (trop évident), séparé par une virugle."
 
 #: 
@@ -5217,7 +5219,8 @@ msgid "The property for which you would like person records returned."
 msgstr "La propriété pour laquelle vous voudriez que les rapports de personne soient retournés."
 
 #: 
-msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that conatain donations."
+#, fuzzy
+msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations."
 msgstr "Veuillez choisir la date de début pour calculer des contributions totales pour chaque membre (c'est-à-dire. JJ-MM-AAAA). NOTE : Vous pouvez seulement choisir des dates où des dons ont été faits."
 
 #: 
@@ -8438,14 +8441,6 @@ msgid "Unable to open file"
 msgstr "Impossible d'ouvrir le fichier"
 
 #: 
-msgid "Invalid upgrade file specified"
-msgstr "Fichier de mise à jour invalide"
-
-#: 
-msgid "Failure executing upgrade script"
-msgstr "Erreur lors de l'exécution du script de mise à jour"
-
-#: 
 msgid "Missing calendar access token"
 msgstr "Jeton d'accès au calendrier manquant"
 
@@ -8882,10 +8877,6 @@ msgid "%d year old"
 msgid_plural "%d years old"
 msgstr[0] "il y a %d an"
 msgstr[1] "il y a %d ans"
-
-#: 
-msgid "Database upgrade failed"
-msgstr "Mise à jour de la base de données échouée"
 
 #: 
 msgid "Unsupported PHP Version"

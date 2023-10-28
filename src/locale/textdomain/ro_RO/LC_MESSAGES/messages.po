@@ -4863,7 +4863,8 @@ msgid "Church Email"
 msgstr "Email biserică"
 
 #: 
-msgid "Include only these classifications in the directory, comma seperated"
+#, fuzzy
+msgid "Include only these classifications in the directory, comma separated"
 msgstr "Include în director, numai aceste clarificări, separate de virgulă"
 
 #: 
@@ -4891,7 +4892,8 @@ msgid "Minimum length a user may set their password to"
 msgstr "Lungime minim parolă"
 
 #: 
-msgid "A comma-seperated list of disallowed (too obvious) passwords."
+#, fuzzy
+msgid "A comma-separated list of disallowed (too obvious) passwords."
 msgstr "Listă de cuvinte, separate prin virgulă, pe care utilizatorul nu le poate folosi ca parolă."
 
 #: 
@@ -5315,7 +5317,8 @@ msgid "The property for which you would like person records returned."
 msgstr "Proprietatea pentru care doriți filtrarea rezultatelor"
 
 #: 
-msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that conatain donations."
+#, fuzzy
+msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations."
 msgstr "Vă rugăm să selectați data de început pentru a calcula contribuțiile totale pentru fiecare membru (adică AAAA-LL-ZZ). NOTĂ: Puteți alege doar datele care conțin donații."
 
 #: 
