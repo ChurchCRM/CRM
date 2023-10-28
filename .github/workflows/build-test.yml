@@ -1,4 +1,4 @@
-name: Test Application via Cypress on local docker
+name: Integration Tests
 
 on:
   pull_request:
@@ -60,12 +60,13 @@ jobs:
     - name: Run Docker
       run: |
         npm run ci-docker-test-start
-        # docker-compose -f docker/docker-compose.test-php8-apache.yaml -f docker/docker-compose.test-php8-apache.gh-actions.yaml ps -a
-        # docker-compose -f docker/docker-compose.test-php8-apache.yaml -f docker/docker-compose.test-php8-apache.gh-actions.yaml logs
 
-    - name: Run Tests
+    - name: Test Server
       run: |
-        curl -vvv http://127.0.0.1/api/public/echo
+          curl -vvv http://127.0.0.1/api/public/echo
+
+    - name: Run Cypress Tests
+      run: |
         npm run test
 
     - name: Stop Docker
