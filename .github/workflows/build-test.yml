@@ -57,9 +57,8 @@ jobs:
     - name: Run Docker
       run: |
         npm run ci-docker-test-start
-        docker-compose -f docker/docker-compose.test-php8-apache.yaml -f docker/docker-compose.test-php8-apache.gh-actions.yaml ps -a
-        curl -vvv http://127.0.0.1/api/public/echo
-        docker-compose -f docker/docker-compose.test-php8-apache.yaml -f docker/docker-compose.test-php8-apache.gh-actions.yaml logs
+        # docker-compose -f docker/docker-compose.test-php8-apache.yaml -f docker/docker-compose.test-php8-apache.gh-actions.yaml ps -a
+        # docker-compose -f docker/docker-compose.test-php8-apache.yaml -f docker/docker-compose.test-php8-apache.gh-actions.yaml logs
 
     - name: Test App
       run: |
