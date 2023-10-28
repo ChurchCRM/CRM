@@ -4756,7 +4756,8 @@ msgid "Church Email"
 msgstr "Kilise e -posta"
 
 #: 
-msgid "Include only these classifications in the directory, comma seperated"
+#, fuzzy
+msgid "Include only these classifications in the directory, comma separated"
 msgstr "Yalnızca bu sınıflandırmaları dizine ekleyin, virgül ayrılmış"
 
 #: 
@@ -4784,7 +4785,8 @@ msgid "Minimum length a user may set their password to"
 msgstr "Bir kullanıcının şifresini ayarlayabileceği minimum uzunluk"
 
 #: 
-msgid "A comma-seperated list of disallowed (too obvious) passwords."
+#, fuzzy
+msgid "A comma-separated list of disallowed (too obvious) passwords."
 msgstr "İzinsiz (çok açık) şifrelerin virgülle ayrılmış bir listesi."
 
 #: 
@@ -5208,7 +5210,8 @@ msgid "The property for which you would like person records returned."
 msgstr "Kişi kayıtlarının iade edilmesini istediğiniz mülk."
 
 #: 
-msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that conatain donations."
+#, fuzzy
+msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations."
 msgstr "Lütfen her üye için toplam katkıları hesaplamak için başlangıç ​​tarihini seçin (yani YYYY-MM-DD). Not: Yalnızca Conatain bağışlarının tarihlerini seçebilirsiniz."
 
 #: 
@@ -8428,14 +8431,6 @@ msgid "Unable to open file"
 msgstr "Dosya açılamıyor"
 
 #: 
-msgid "Invalid upgrade file specified"
-msgstr "Geçersiz yükseltme dosyası belirtildi"
-
-#: 
-msgid "Failure executing upgrade script"
-msgstr "Yükseltme komut dosyası yürütme"
-
-#: 
 msgid "Missing calendar access token"
 msgstr "Eksik Takvim Erişim Jetonu"
 
@@ -8872,10 +8867,6 @@ msgid "%d year old"
 msgid_plural "%d years old"
 msgstr[0] "%d yıl önce"
 msgstr[1] "%d yıl önce"
-
-#: 
-msgid "Database upgrade failed"
-msgstr "Veritabanı yükseltmesi başarısız oldu"
 
 #: 
 msgid "Unsupported PHP Version"

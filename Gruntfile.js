@@ -203,8 +203,7 @@ module.exports = function (grunt) {
                         filter: 'isFile',
                         flatten: true,
                         src: [
-                            'node_modules/i18next/dist/umd/i18next.min.js',
-                            'node_modules/i18next-xhr-backend/dist/umd/i18nextXHRBackend.min.js'
+                            'node_modules/i18next/dist/umd/i18next.min.js'
                         ],
                         dest: 'src/skin/external/i18next/'
                     },

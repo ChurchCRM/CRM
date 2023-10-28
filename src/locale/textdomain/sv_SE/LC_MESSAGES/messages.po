@@ -4907,7 +4907,8 @@ msgid "Church Email"
 msgstr "Kyrkans e-post"
 
 #: 
-msgid "Include only these classifications in the directory, comma seperated"
+#, fuzzy
+msgid "Include only these classifications in the directory, comma separated"
 msgstr "Inkludera endast dessa klassificeringar i katalogen, kommaseparerad"
 
 #: 
@@ -4935,7 +4936,8 @@ msgid "Minimum length a user may set their password to"
 msgstr "Minsta längd som en användare kan ställa in sitt lösenord till"
 
 #: 
-msgid "A comma-seperated list of disallowed (too obvious) passwords."
+#, fuzzy
+msgid "A comma-separated list of disallowed (too obvious) passwords."
 msgstr "En kommaseparerad lista med tillåtna (för uppenbara) lösenord."
 
 #: 
@@ -5359,7 +5361,8 @@ msgid "The property for which you would like person records returned."
 msgstr "Den egendom som du vill att personposter returneras för."
 
 #: 
-msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that conatain donations."
+#, fuzzy
+msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations."
 msgstr "Välj startdatum för att beräkna totala bidrag för varje medlem (dvs. ÅÅÅÅ-MM-DD). OBS: Du kan bara välja datum som kopplar in donationer."
 
 #: 
@@ -8579,14 +8582,6 @@ msgid "Unable to open file"
 msgstr "Kan ej öppna filen"
 
 #: 
-msgid "Invalid upgrade file specified"
-msgstr "Ogiltig uppgraderingsfil anges"
-
-#: 
-msgid "Failure executing upgrade script"
-msgstr "Det gick inte att uppgradera skript"
-
-#: 
 msgid "Missing calendar access token"
 msgstr "Saknar kalenderåtkomsttoken"
 
@@ -9023,10 +9018,6 @@ msgid "%d year old"
 msgid_plural "%d years old"
 msgstr[0] "%d år gammal"
 msgstr[1] "%d år gammal"
-
-#: 
-msgid "Database upgrade failed"
-msgstr "Uppgradering av databasen misslyckades"
 
 #: 
 msgid "Unsupported PHP Version"

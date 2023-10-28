@@ -3946,7 +3946,8 @@ msgid "Groups"
 msgstr "Grupy"
 
 #: 
-msgid "Include only these classifications in the directory, comma seperated"
+#, fuzzy
+msgid "Include only these classifications in the directory, comma separated"
 msgstr "Pokaż tylko wybrane kategorie w spisie, oddzielone przecinkami"
 
 #: 
@@ -4272,14 +4273,6 @@ msgstr "Cele Datków"
 #: 
 msgid "Unable to open file"
 msgstr "Błąd podczas otwierania pliku"
-
-#: 
-msgid "Invalid upgrade file specified"
-msgstr "Podano błędny plik aktualizacji"
-
-#: 
-msgid "Failure executing upgrade script"
-msgstr "Błąd podczas uruchamiania skryptu aktualizacji"
 
 #: 
 msgid "Missing calendar access token"
@@ -4686,10 +4679,6 @@ msgstr "Szukaj Wydarzeń w Kalendarzu"
 #: 
 msgid "Maximum number of Calendar Events"
 msgstr "Maksymalna liczba Wydarzeń w kalendarzu"
-
-#: 
-msgid "Database upgrade failed"
-msgstr "Aktualizacja bazy danych niepowiodła się"
 
 #: 
 msgid "Unsupported PHP Version"

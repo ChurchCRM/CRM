@@ -5770,7 +5770,7 @@ msgstr "E-mail da Igreja"
 
 #: 
 #, fuzzy
-msgid "Include only these classifications in the directory, comma seperated"
+msgid "Include only these classifications in the directory, comma separated"
 msgstr "Inclua apenas essas classificações no diretório, separadas por vírgulas"
 
 #: 
@@ -5805,7 +5805,7 @@ msgstr "O tamanho mínimo da senha de um usuário pode é"
 
 #: 
 #, fuzzy
-msgid "A comma-seperated list of disallowed (too obvious) passwords."
+msgid "A comma-separated list of disallowed (too obvious) passwords."
 msgstr "Uma lista separada por vírgulas não é permitida como senha (muito óbvio)."
 
 #: 
@@ -6333,7 +6333,7 @@ msgstr "Propriedade da qual você deseja obter registros de pessoas."
 
 #: 
 #, fuzzy
-msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that conatain donations."
+msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations."
 msgstr "Por favor, escolha a data de início para calcular as contribuições totais para cada membro (isto é AAAA-MM-DD). NOTA: Você só pode escolher as datas que contenham doações."
 
 #: 
@@ -10337,16 +10337,6 @@ msgstr "Impossível abrir o arquivo"
 
 #: 
 #, fuzzy
-msgid "Invalid upgrade file specified"
-msgstr "Arquivo de atualização inválido"
-
-#: 
-#, fuzzy
-msgid "Failure executing upgrade script"
-msgstr "Falha ao executar o script de atualização"
-
-#: 
-#, fuzzy
 msgid "Missing calendar access token"
 msgstr "Sem Token de acesso ao calendário"
 
@@ -10883,11 +10873,6 @@ msgid "%d year old"
 msgid_plural "%d years old"
 msgstr[0] "%d ano atrás"
 msgstr[1] "%d anos atrás"
-
-#: 
-#, fuzzy
-msgid "Database upgrade failed"
-msgstr "Falha ao atualizar banco de dados"
 
 #: 
 #, fuzzy

@@ -4758,7 +4758,8 @@ msgid "Church Email"
 msgstr "Kerk e-pos"
 
 #: 
-msgid "Include only these classifications in the directory, comma seperated"
+#, fuzzy
+msgid "Include only these classifications in the directory, comma separated"
 msgstr "Sluit slegs hierdie klassifikasies in, sonder kommas, in die gids"
 
 #: 
@@ -4786,7 +4787,8 @@ msgid "Minimum length a user may set their password to"
 msgstr "Minimum lengte waarop 'n gebruiker hul wagwoord kan stel"
 
 #: 
-msgid "A comma-seperated list of disallowed (too obvious) passwords."
+#, fuzzy
+msgid "A comma-separated list of disallowed (too obvious) passwords."
 msgstr "'N Kommaskeide lys van ontoelaatbare (te voor die hand liggende) wagwoorde."
 
 #: 
@@ -5210,7 +5212,8 @@ msgid "The property for which you would like person records returned."
 msgstr "Die eiendom waarvoor u persoonlike rekords wil teruggee."
 
 #: 
-msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that conatain donations."
+#, fuzzy
+msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations."
 msgstr "Kies die begindatum om die totale bydraes vir elke lid te bereken (dws JJJJ-MM-DD). OPMERKING: U kan slegs datums kies wat donasies bevat."
 
 #: 
@@ -8430,14 +8433,6 @@ msgid "Unable to open file"
 msgstr "Kan nie lêer oopmaak nie"
 
 #: 
-msgid "Invalid upgrade file specified"
-msgstr "Ongeldige opgraderingslêer is gespesifiseer"
-
-#: 
-msgid "Failure executing upgrade script"
-msgstr "Kon nie die opgraderingsskrif uitvoer nie"
-
-#: 
 msgid "Missing calendar access token"
 msgstr "Kalender-toegangstoken ontbreek"
 
@@ -8874,10 +8869,6 @@ msgid "%d year old"
 msgid_plural "%d years old"
 msgstr[0] "% d jaar oud"
 msgstr[1] "% d jare oud"
-
-#: 
-msgid "Database upgrade failed"
-msgstr "Kon nie databasis opgradeer nie"
 
 #: 
 msgid "Unsupported PHP Version"

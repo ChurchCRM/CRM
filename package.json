@@ -117,7 +117,6 @@
         "grunt-lineending": "^1.0.0",
         "grunt-sass": "^3.1.0",
         "i18next-extract-gettext": "^3.2.1",
-        "i18next-xhr-backend": "^3.2.2",
         "node-sha1": "^1.0.1",
         "tar": "^6.1.12",
         "ts-loader": "^9.4.2",

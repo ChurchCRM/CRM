@@ -10,7 +10,7 @@ msgstr ""
 "#-#-#-#-#  messages.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-18 21:15-0700\n"
+"POT-Creation-Date: 2023-10-28 14:32-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,16 +25,16 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2022-06-19T04:15:24.570Z\n"
-"PO-Revision-Date: 2022-06-19T04:15:24.570Z\n"
+"POT-Creation-Date: 2023-10-28T21:32:45.258Z\n"
+"PO-Revision-Date: 2023-10-28T21:32:45.258Z\n"
 "#-#-#-#-#  react-js-strings.po (i18next-conv)  #-#-#-#-#\n"
 "Project-Id-Version: i18next-conv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2022-06-19T04:15:24.759Z\n"
-"PO-Revision-Date: 2022-06-19T04:15:24.759Z\n"
+"POT-Creation-Date: 2023-10-28T21:32:45.455Z\n"
+"PO-Revision-Date: 2023-10-28T21:32:45.455Z\n"
 
 msgid "Backup Database"
 msgstr ""
@@ -1004,15 +1004,6 @@ msgstr ""
 msgid "by"
 msgstr ""
 
-msgid "Invalid upgrade file specified"
-msgstr ""
-
-msgid "Failure executing upgrade script"
-msgstr ""
-
-msgid "Database upgrade failed"
-msgstr ""
-
 msgid "No logged in user"
 msgstr ""
 
@@ -1157,7 +1148,7 @@ msgstr ""
 msgid "Event Log severity to write, used by ORM and App Logs"
 msgstr ""
 
-msgid "Include only these classifications in the directory, comma seperated"
+msgid "Include only these classifications in the directory, comma separated"
 msgstr ""
 
 msgid "These are the family role numbers designated as head of house"
@@ -1189,7 +1180,7 @@ msgid ""
 "characters changed)\rSet to zero to disable this feature"
 msgstr ""
 
-msgid "A comma-seperated list of disallowed (too obvious) passwords."
+msgid "A comma-separated list of disallowed (too obvious) passwords."
 msgstr ""
 
 msgid ""
@@ -3198,7 +3189,7 @@ msgstr ""
 msgid "Group Members:"
 msgstr ""
 
-msgid "Group members: "
+msgid "Add Group Member: "
 msgstr ""
 
 msgid "Remove Selected Members from group"
@@ -3211,9 +3202,6 @@ msgid "Add Selected Members to Group"
 msgstr ""
 
 msgid "Move Selected Members to Group"
-msgstr ""
-
-msgid "Add Group Member: "
 msgstr ""
 
 msgid "Confirm Delete Group"
@@ -5536,9 +5524,6 @@ msgstr ""
 msgid "persons from"
 msgstr ""
 
-msgid "Generate Labels"
-msgstr ""
-
 msgid "Bulk Mail Presort"
 msgstr ""
 
@@ -6091,7 +6076,7 @@ msgstr ""
 
 msgid ""
 "Please select the beginning date to calculate total contributions for each "
-"member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that conatain "
+"member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain "
 "donations."
 msgstr ""
 
@@ -6934,6 +6919,9 @@ msgstr ""
 msgid "Arabic - Egypt"
 msgstr ""
 
+msgid "Amharic - Ethiopia"
+msgstr ""
+
 msgid "Chinese - China"
 msgstr ""
 
@@ -6958,10 +6946,16 @@ msgstr ""
 msgid "Estonian"
 msgstr ""
 
+msgid "Finnish"
+msgstr ""
+
 msgid "French - France"
 msgstr ""
 
 msgid "German - Germany"
+msgstr ""
+
+msgid "Greek"
 msgstr ""
 
 msgid "Hebrew"
@@ -7003,19 +6997,13 @@ msgstr ""
 msgid "Thai"
 msgstr ""
 
-msgid "Vietnamese"
-msgstr ""
-
-msgid "Amharic - Ethiopia"
-msgstr ""
-
-msgid "Finnish"
-msgstr ""
-
-msgid "Greek"
+msgid "Turkish"
 msgstr ""
 
 msgid "Ukrainian"
+msgstr ""
+
+msgid "Vietnamese"
 msgstr ""
 
 msgid "User permission to send email via mailto: links"

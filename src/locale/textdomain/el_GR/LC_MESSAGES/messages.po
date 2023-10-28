@@ -4752,7 +4752,8 @@ msgid "Church Email"
 msgstr "Email Εκκλησίας"
 
 #: 
-msgid "Include only these classifications in the directory, comma seperated"
+#, fuzzy
+msgid "Include only these classifications in the directory, comma separated"
 msgstr "Συμπεριλάβετε μόνο αυτές τις ταξινομήσεις στον κατάλογο, διαχωρισμένες με κόμματα"
 
 #: 
@@ -4780,7 +4781,8 @@ msgid "Minimum length a user may set their password to"
 msgstr "Ελάχιστο μήκος στο οποίο μπορεί να ορίσει ο χρήστης τον κωδικό πρόσβασής του"
 
 #: 
-msgid "A comma-seperated list of disallowed (too obvious) passwords."
+#, fuzzy
+msgid "A comma-separated list of disallowed (too obvious) passwords."
 msgstr "Μια λίστα διαχωρισμένων με κόμματα με μη επιτρεπόμενους (πολύ προφανείς) κωδικούς πρόσβασης."
 
 #: 
@@ -5204,7 +5206,8 @@ msgid "The property for which you would like person records returned."
 msgstr "Το ακίνητο για το οποίο θα θέλατε να επιστραφούν προσωπικά αρχεία."
 
 #: 
-msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that conatain donations."
+#, fuzzy
+msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations."
 msgstr "Επιλέξτε την ημερομηνία έναρξης για να υπολογίσετε τις συνολικές συνεισφορές για κάθε μέλος (δηλαδή ΕΕΕΕ-ΜΜ-ΗΗ). ΣΗΜΕΙΩΣΗ: Μπορείτε να επιλέξετε μόνο ημερομηνίες που περιέχουν δωρεές."
 
 #: 
@@ -8424,14 +8427,6 @@ msgid "Unable to open file"
 msgstr "Δεν είναι δυνατό το άνοιγμα του αρχείου"
 
 #: 
-msgid "Invalid upgrade file specified"
-msgstr "Καθορίστηκε μη έγκυρο αρχείο αναβάθμισης"
-
-#: 
-msgid "Failure executing upgrade script"
-msgstr "Αποτυχία εκτέλεσης σεναρίου αναβάθμισης"
-
-#: 
 msgid "Missing calendar access token"
 msgstr "Λείπει το διακριτικό πρόσβασης στο ημερολόγιο"
 
@@ -8856,10 +8851,6 @@ msgstr "Αναζήτηση συμβάντων ημερολογίου"
 #: 
 msgid "Maximum number of Calendar Events"
 msgstr "Μέγιστος αριθμός συμβάντων ημερολογίου"
-
-#: 
-msgid "Database upgrade failed"
-msgstr "Η αναβάθμιση της βάσης δεδομένων απέτυχε"
 
 #: 
 msgid "Unsupported PHP Version"

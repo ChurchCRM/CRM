@@ -4755,7 +4755,8 @@ msgid "Church Email"
 msgstr "Kiriku e-post"
 
 #: 
-msgid "Include only these classifications in the directory, comma seperated"
+#, fuzzy
+msgid "Include only these classifications in the directory, comma separated"
 msgstr "Lisage kataloogi ainult need klassifikatsioonid, eraldades need komadega"
 
 #: 
@@ -4783,7 +4784,8 @@ msgid "Minimum length a user may set their password to"
 msgstr "Minimaalne pikkus, mille kasutaja võib parooliks seada"
 
 #: 
-msgid "A comma-seperated list of disallowed (too obvious) passwords."
+#, fuzzy
+msgid "A comma-separated list of disallowed (too obvious) passwords."
 msgstr "Komaga eraldatud nimekiri keelatud (liiga ilmsetest) paroolidest."
 
 #: 
@@ -5207,7 +5209,8 @@ msgid "The property for which you would like person records returned."
 msgstr "Omand, mille kohta soovite isikuandmeid näidata."
 
 #: 
-msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that conatain donations."
+#, fuzzy
+msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations."
 msgstr "Iga liikme kogupanuse arvutamiseks vali alguskuupäev (s.o. AAAA-KK-PP). MÄRKUS. Saate valida ainult annetusi sisaldavaid kuupäevi."
 
 #: 
@@ -5991,14 +5994,6 @@ msgid "Unable to open file"
 msgstr "Faili ei saa avada"
 
 #: 
-msgid "Invalid upgrade file specified"
-msgstr "Määratud kehtetu versioonifail"
-
-#: 
-msgid "Failure executing upgrade script"
-msgstr "Uuendamise skripti käivitamine ebaõnnestus"
-
-#: 
 msgid "Missing calendar access token"
 msgstr "Puudub kalendri juurdepääsuluba"
 
@@ -6435,10 +6430,6 @@ msgid "%d year old"
 msgid_plural "%d years old"
 msgstr[0] "% aastane"
 msgstr[1] "% aastane"
-
-#: 
-msgid "Database upgrade failed"
-msgstr "Andmebaasi uuendamine nurjus"
 
 #: 
 msgid "Unsupported PHP Version"

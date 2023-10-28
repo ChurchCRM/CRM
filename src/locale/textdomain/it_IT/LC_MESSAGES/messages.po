@@ -4775,7 +4775,8 @@ msgid "Church Email"
 msgstr "Email della Chiesa"
 
 #: 
-msgid "Include only these classifications in the directory, comma seperated"
+#, fuzzy
+msgid "Include only these classifications in the directory, comma separated"
 msgstr "Includere solo queste classificazioni nella directory, separate da virgola"
 
 #: 
@@ -4803,7 +4804,8 @@ msgid "Minimum length a user may set their password to"
 msgstr "Lunghezza minima a cui un utente può impostare la propria password"
 
 #: 
-msgid "A comma-seperated list of disallowed (too obvious) passwords."
+#, fuzzy
+msgid "A comma-separated list of disallowed (too obvious) passwords."
 msgstr "Un elenco separato da virgole di password non consentite (troppo ovvie)."
 
 #: 
@@ -5227,7 +5229,8 @@ msgid "The property for which you would like person records returned."
 msgstr "La proprietà per la quale si desidera che vengano restituiti record personali."
 
 #: 
-msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that conatain donations."
+#, fuzzy
+msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations."
 msgstr "Seleziona la data di inizio per calcolare i contributi totali per ciascun membro (cioè AAAA-MM-GG). NOTA: puoi scegliere solo le date che contengono le donazioni."
 
 #: 
@@ -8456,14 +8459,6 @@ msgid "Unable to open file"
 msgstr "Impossibile aprire il file"
 
 #: 
-msgid "Invalid upgrade file specified"
-msgstr "File di aggiornamento non valido"
-
-#: 
-msgid "Failure executing upgrade script"
-msgstr "Errore durante l'esecuzione dello script di aggiornamento"
-
-#: 
 msgid "Missing calendar access token"
 msgstr "Gettone di accesso al calendario mancante"
 
@@ -8900,10 +8895,6 @@ msgid "%d year old"
 msgid_plural "%d years old"
 msgstr[0] "%d anno"
 msgstr[1] "%d anni"
-
-#: 
-msgid "Database upgrade failed"
-msgstr "Aggiornamento del database non riuscito"
 
 #: 
 msgid "Unsupported PHP Version"

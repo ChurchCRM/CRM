@@ -4869,7 +4869,8 @@ msgid "Church Email"
 msgstr "教会电邮"
 
 #: 
-msgid "Include only these classifications in the directory, comma seperated"
+#, fuzzy
+msgid "Include only these classifications in the directory, comma separated"
 msgstr "仅在目录中包含这些分类，逗号分隔"
 
 #: 
@@ -4897,7 +4898,8 @@ msgid "Minimum length a user may set their password to"
 msgstr "用户设置密码的最小长度"
 
 #: 
-msgid "A comma-seperated list of disallowed (too obvious) passwords."
+#, fuzzy
+msgid "A comma-separated list of disallowed (too obvious) passwords."
 msgstr "以逗号分隔的不允许（太简单）密码列表。"
 
 #: 
@@ -5321,7 +5323,8 @@ msgid "The property for which you would like person records returned."
 msgstr "返回您想要记录的人员。"
 
 #: 
-msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that conatain donations."
+#, fuzzy
+msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations."
 msgstr "请选择开始日期以计算每个成员的总贡献（即YYYY-MM-DD）。注意：您只能选择含捐赠的日期。"
 
 #: 
@@ -8544,14 +8547,6 @@ msgid "Unable to open file"
 msgstr "无法打开文件"
 
 #: 
-msgid "Invalid upgrade file specified"
-msgstr "指定的升级文件无效"
-
-#: 
-msgid "Failure executing upgrade script"
-msgstr "执行升级脚本失败"
-
-#: 
 msgid "Missing calendar access token"
 msgstr "缺少日历访问令牌"
 
@@ -8986,10 +8981,6 @@ msgstr[0] "％d个月大"
 msgid "%d year old"
 msgid_plural "%d years old"
 msgstr[0] "％d岁"
-
-#: 
-msgid "Database upgrade failed"
-msgstr "数据库升级失败"
 
 #: 
 msgid "Unsupported PHP Version"

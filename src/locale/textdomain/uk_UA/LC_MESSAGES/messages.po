@@ -4757,7 +4757,8 @@ msgid "Church Email"
 msgstr "Церковна електронна пошта"
 
 #: 
-msgid "Include only these classifications in the directory, comma seperated"
+#, fuzzy
+msgid "Include only these classifications in the directory, comma separated"
 msgstr "Включіть лише ці класифікації в каталог, розділені комами"
 
 #: 
@@ -4785,7 +4786,8 @@ msgid "Minimum length a user may set their password to"
 msgstr "Мінімальна довжина, яку користувач може встановити для свого пароля"
 
 #: 
-msgid "A comma-seperated list of disallowed (too obvious) passwords."
+#, fuzzy
+msgid "A comma-separated list of disallowed (too obvious) passwords."
 msgstr "Список заборонених (занадто очевидних) паролів, розділений комами."
 
 #: 
@@ -5209,7 +5211,8 @@ msgid "The property for which you would like person records returned."
 msgstr "Власність, для якої ви хотіли б повернути особові записи."
 
 #: 
-msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that conatain donations."
+#, fuzzy
+msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations."
 msgstr "Виберіть дату початку, щоб розрахувати загальний внесок для кожного учасника (тобто РРРР-ММ-ДД). ПРИМІТКА. Ви можете вибирати лише дати, на які пожертвуватимуть."
 
 #: 
@@ -8429,14 +8432,6 @@ msgid "Unable to open file"
 msgstr "Не вдається відкрити файл"
 
 #: 
-msgid "Invalid upgrade file specified"
-msgstr "Вказано недійсний файл оновлення"
-
-#: 
-msgid "Failure executing upgrade script"
-msgstr "Помилка виконання сценарію оновлення"
-
-#: 
 msgid "Missing calendar access token"
 msgstr "Відсутній маркер доступу до календаря"
 
@@ -8861,10 +8856,6 @@ msgstr "Пошук подій календаря"
 #: 
 msgid "Maximum number of Calendar Events"
 msgstr "Максимальна кількість подій календаря"
-
-#: 
-msgid "Database upgrade failed"
-msgstr "Помилка оновлення бази даних"
 
 #: 
 msgid "Unsupported PHP Version"

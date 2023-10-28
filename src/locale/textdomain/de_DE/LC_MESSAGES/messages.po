@@ -4828,7 +4828,8 @@ msgid "Church Email"
 msgstr "E-Mail-Adresse der Gemeinde"
 
 #: 
-msgid "Include only these classifications in the directory, comma seperated"
+#, fuzzy
+msgid "Include only these classifications in the directory, comma separated"
 msgstr "Nur diese Klassifikation im Verzeichnis inkludieren, mit Komma getrennt"
 
 #: 
@@ -8114,14 +8115,6 @@ msgid "Unable to open file"
 msgstr "Datei kann nicht geöffnet werden"
 
 #: 
-msgid "Invalid upgrade file specified"
-msgstr "Ungültige Upgrade-Datei angegeben"
-
-#: 
-msgid "Failure executing upgrade script"
-msgstr "Fehler bei der Ausführung des Upgrade-Skripts"
-
-#: 
 msgid "Missing calendar access token"
 msgstr "Fehlende Kalender-Zugriffstoken"
 
@@ -8558,10 +8551,6 @@ msgid "%d year old"
 msgid_plural "%d years old"
 msgstr[0] "%d Jahr alt"
 msgstr[1] "%d Jahre alt"
-
-#: 
-msgid "Database upgrade failed"
-msgstr "Datenbank-Upgrade fehlgeschlagen"
 
 #: 
 msgid "Unsupported PHP Version"
