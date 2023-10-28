@@ -39,5 +39,5 @@ jobs:
               
     - uses: actions/upload-artifact@v3
       with:
-        name: ChurchCRM-${{ steps.package-version.outputs.current-version}}-${{ github.sha }}.zip
+        name: ChurchCRM-${{ steps.package-version.outputs.current-version}}.zip
         path: target/ChurchCRM-*.zip
