@@ -20,11 +20,6 @@ class States
 
             $this->states = json_decode($statesFile, true, 512, JSON_THROW_ON_ERROR);
         }
-
-        $statesFile = file_get_contents($stateFileName);
-        MiscUtils::throwIfFailed($statesFile);
-
-        $this->states = json_decode($statesFile, true, 512, JSON_THROW_ON_ERROR);
     }
 
     public function getNames()
