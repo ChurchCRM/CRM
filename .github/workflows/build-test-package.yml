@@ -1,4 +1,4 @@
-name: Integration Tests
+name: Build, Test and Package
 
 on:
   pull_request:
@@ -9,7 +9,7 @@ on:
     - master
 
 jobs:
-  Test:
+  test-n-package:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -55,7 +55,7 @@ jobs:
 
     - name: Build App
       run: |
-        npm run build
+        npm run package
 
     - name: Run Docker
       run: |
@@ -73,3 +73,8 @@ jobs:
       run: |
         npm run ci-docker-test-down
   
+    - name: Upload zip file
+      uses: actions/upload-artifact@v3
+      with:
+        name: ChurchCRM-${{ steps.package-version.outputs.current-version}}
+        path: target/ChurchCRM-*.zip
