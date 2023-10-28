@@ -256,15 +256,6 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
         <a class="MediumText" href="LettersAndLabels.php"><?php echo gettext('Letters and Mailing Labels'); ?></a>
         <br><?php echo gettext('Generate letters and mailing labels.'); ?>
         </p>
-        <?php
-        if (AuthenticationManager::GetCurrentUser()->isbUSAddressVerificationEnabled()) {
-            echo '<p>';
-            echo '<a class="MediumText" href="USISTAddressVerification.php">';
-            echo gettext('US Address Verification Report')."</a><br>\n";
-            echo gettext('Generate report comparing all US family addresses '.
-              'with United States Postal Service Standard Address Format.<br>')."\n";
-        }
-        ?>
       </div>
     </div>
   </div>

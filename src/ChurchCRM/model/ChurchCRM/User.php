@@ -139,12 +139,6 @@ class User extends BaseUser
         return $this->isAdmin() || $this->isEnabledSecurity('bCreateDirectory');
     }
 
-    public function isbUSAddressVerificationEnabled()
-    {
-        return $this->isAdmin() || $this->isEnabledSecurity('bUSAddressVerification');
-    }
-
-
     public function isLocked()
     {
         return SystemConfig::getValue('iMaxFailedLogins') > 0 && $this->getFailedLogins() >= SystemConfig::getValue('iMaxFailedLogins');
