@@ -14,6 +14,10 @@ services:
       - default
     volumes:
       - ../demo:/docker-entrypoint-initdb.d # auto-load the demo database as per: https://hub.docker.com/_/mariadb
+    healthcheck:
+      test: [ "CMD", "healthcheck.sh", "--connect", "--innodb_initialized" ]
+      timeout: 20s
+      retries: 10
 
   webserver:
     ## Look into: https://hub.docker.com/r/nimmis/apache-php8
@@ -30,3 +34,6 @@ services:
       - database
     env_file:
       - .env
+    depends_on:
+      database:
+        condition: service_healthy
