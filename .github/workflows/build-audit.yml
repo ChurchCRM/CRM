@@ -2,9 +2,6 @@ name: Audit 3rd Party Libs
 
 
 on:
-  push:
-    branches:
-      - 'master'
   schedule:
     - cron: '0 9 * * 6'
 
