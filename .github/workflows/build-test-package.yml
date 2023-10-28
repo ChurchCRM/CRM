@@ -9,7 +9,7 @@ on:
     - master
 
 jobs:
-  setup:
+  test:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -36,10 +36,6 @@ jobs:
       id: package-version
       uses: martinbeentjes/npm-get-version-action@main
 
-  build:
-    needs: setup
-    runs-on: ubuntu-latest
-    steps: 
     - name: Get Env Ready
       run: |
         npm ci
@@ -61,10 +57,6 @@ jobs:
       run: |
         npm run package
 
-  Test:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
     - name: Run Docker
       run: |
         npm run ci-docker-test-start
