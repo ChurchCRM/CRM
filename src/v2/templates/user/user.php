@@ -12,10 +12,10 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
     <div class="col-lg-6">
         <div class="card">
             <div class="card-header">
-                <div class="pull-right">
-                    <a id="editSettings" href="<?= SystemURLs::getRootPath() ?>/SettingsIndividual.php" class="btn btn-primary"><i class="fas fa-user-pen"></i> <?= _("Edit") ?> </a>
+                <div class="card-title"><?= _("Login Info") ?></div>
+                <div class="card-tools">
+                    <a id="editSettings" href="<?= SystemURLs::getRootPath() ?>/SettingsIndividual.php" class="btn btn-primary float-end"><i class="fas fa-user-pen"></i> <?= _("Edit") ?> </a>
                 </div>
-                <h4><?= _("Login Info") ?></h4>
             </div>
             <div class="card-body">
                 <li><b><?= gettext("Username") ?>:</b> <?= $user->getUserName() ?></li>
@@ -38,7 +38,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
     <div class="col-lg-6">
         <div class="card">
             <div class="card-header">
-                <h4><?= _("Permissions") ?></h4>
+            <div class="card-title"><?= _("Permissions") ?></div>
             </div>
             <div class="card-body">
                 <li><b><?= gettext("Admin") ?>:</b> <?= $user->isAdmin() ? _("Yes") : _("No") ?></li>
@@ -58,7 +58,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
     <div class="col-lg-6">
         <div class="card">
             <div class="card-header">
-                <h4><?= _("Skins") ?></h4>
+                <div class="card-title"><?= _("Skins") ?></div>
             </div>
             <div class="card-body">
                 <ul class="list-unstyled clearfix">
@@ -222,7 +222,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
     <div class="col-lg-6">
         <div class="card">
             <div class="card-header">
-                <h4><?= _("User Interface") ?></h4>
+                <div class="card-title"><?= _("User Interface") ?></div>
             </div>
             <div class="card-body">
                 <div class="form-group">
