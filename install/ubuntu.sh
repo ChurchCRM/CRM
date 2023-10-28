@@ -3,14 +3,6 @@ sudo apt install unzip wget git -y
 sudo apt install apache2 -y
 sudo apt install mysql-server -y
 
-########### un-comment if you are using php7.4####### 
-#sudo apt install software-properties-common -y 
-#sudo add-apt-repository ppa:ondrej/php -y
-#sudo apt update
-#sudo apt install php7.4 libapache2-mod-php7.4 php7.4-mysql php7.4-xml php7.4-zip php7.4-curl php7.4-gd php7.4-mbstring php7.4-cli -y
-######################################################
-
-
 sudo apt install php libapache2-mod-php -y
 sudo apt install php-curl php-cli php-dev php-gd php-intl php-json php-mysql php-bcmath php-mbstring php-soap php-xml php-zip -y
 cd /tmp
