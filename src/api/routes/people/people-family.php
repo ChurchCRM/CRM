@@ -15,9 +15,9 @@ use Propel\Runtime\ActiveQuery\Criteria;
 
 $app->group('/family/{familyId:[0-9]+}', function () use ($app) {
     $app->get('/photo', function ($request, $response, $args) use ($app) {
-        $res = $app->cache->withExpires($response, MiscUtils::getPhotoCacheExpirationTimestamp());
+        $this->cache->withExpires($response, MiscUtils::getPhotoCacheExpirationTimestamp());
         $photo = new Photo("Family", $args['familyId']);
-        return $res->write($photo->getPhotoBytes())->withHeader('Content-type', $photo->getPhotoContentType());
+        return $response->write($photo->getPhotoBytes())->withHeader('Content-type', $photo->getPhotoContentType());
     });
 
     $app->post('/photo', function ($request, $response, $args) {
@@ -33,9 +33,9 @@ $app->group('/family/{familyId:[0-9]+}', function () use ($app) {
     })->add(new EditRecordsRoleAuthMiddleware());
 
     $app->get('/thumbnail', function ($request, $response, $args) use ($app) {
-        $res = $app->cache->withExpires($response, MiscUtils::getPhotoCacheExpirationTimestamp());
+        $this->cache->withExpires($response, MiscUtils::getPhotoCacheExpirationTimestamp());
         $photo = new Photo("Family", $args['familyId']);
-        return $res->write($photo->getThumbnailBytes())->withHeader('Content-type', $photo->getThumbnailContentType());
+        return $response->write($photo->getThumbnailBytes())->withHeader('Content-type', $photo->getThumbnailContentType());
     });
 
     $app->get('', function ($request, $response, $args) {
