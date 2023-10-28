@@ -5,9 +5,6 @@ on:
     branches:
       - 'master'
 
-env:
-  node_version: 18
-
 jobs:
   build_n_deploy:
     runs-on: ubuntu-latest
