@@ -1,4 +1,4 @@
-name: Integration Tests
+name: Build, Test and Package
 
 on:
   pull_request:
@@ -9,7 +9,7 @@ on:
     - master
 
 jobs:
-  Test:
+  setup:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -36,6 +36,10 @@ jobs:
       id: package-version
       uses: martinbeentjes/npm-get-version-action@main
 
+  build:
+    needs: setup
+    runs-on: ubuntu-latest
+    steps: 
     - name: Get Env Ready
       run: |
         npm ci
@@ -55,8 +59,12 @@ jobs:
 
     - name: Build App
       run: |
-        npm run build
+        npm run package
 
+  Test:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
     - name: Run Docker
       run: |
         npm run ci-docker-test-start
@@ -73,3 +81,11 @@ jobs:
       run: |
         npm run ci-docker-test-down
   
+  Release:
+    needs: Test
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/upload-artifact@v3
+      with:
+        name: ChurchCRM-${{ steps.package-version.outputs.current-version}}.zip
+        path: target/ChurchCRM-*.zip
