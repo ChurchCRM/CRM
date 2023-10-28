@@ -1,6 +1,8 @@
 FROM  php:8-apache
 LABEL maintainer="george@dawouds.com"
 
+EXPOSE 80
+
 RUN apt-get update && \
     apt-get install -y \
         libxml2-dev \

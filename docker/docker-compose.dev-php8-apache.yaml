@@ -15,6 +15,11 @@ services:
     volumes:
       - ../demo:/docker-entrypoint-initdb.d # auto-load the demo database as per: https://hub.docker.com/_/mariadb
     hostname: crm-database
+    healthcheck:
+      test: [ "CMD", "healthcheck.sh", "--connect", "--innodb_initialized" ]
+      timeout: 20s
+      retries: 10
+
 
   webserver:
     ## Look into: https://hub.docker.com/r/nimmis/apache-php7
@@ -33,6 +38,9 @@ services:
       - mailserver
     env_file:
       - .env
+    depends_on:
+      database:
+        condition: service_healthy
 
 # https://www.adminer.org/
   adminer:

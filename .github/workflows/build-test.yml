@@ -1,0 +1,75 @@
+name: Integration Tests
+
+on:
+  pull_request:
+    branches:    
+      - master
+  push:
+    branches:
+    - master
+
+jobs:
+  Test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: ['20.x']
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        # fetch full history so things like auto-changelog work properly
+        fetch-depth: 0
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+        # setting a registry enables the NODE_AUTH_TOKEN env variable where we can set an npm token.  REQUIRED
+        registry-url: 'https://registry.npmjs.org'
+
+    - name: Declare some variables
+      id: vars
+      shell: bash
+      run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+
+    - name: get-npm-version
+      id: package-version
+      uses: martinbeentjes/npm-get-version-action@main
+
+    - name: Get Env Ready
+      run: |
+        npm ci
+
+    - name: Get Composer Cache Directory
+      id: composer-cache
+      run: |
+        cd src
+        echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
+
+    - uses: actions/cache@v3
+      with:
+        path: ${{ steps.composer-cache.outputs.dir }}
+        key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-composer-
+
+    - name: Build App
+      run: |
+        npm run build
+
+    - name: Run Docker
+      run: |
+        npm run ci-docker-test-start
+
+    - name: Test Server
+      run: |
+          curl -vvv http://127.0.0.1/api/public/echo
+
+    - name: Run Cypress Tests
+      run: |
+        npm run test
+
+    - name: Stop Docker
+      run: |
+        npm run ci-docker-test-down
+  
