@@ -1,9 +1,12 @@
 name: Test Application via Cypress on local docker
 
 on:
+  pull_request:
+    branches:    
+      - master
   push:
     branches:
-    - 'build/**'
+    - master
 
 jobs:
   Test:
@@ -60,7 +63,7 @@ jobs:
         # docker-compose -f docker/docker-compose.test-php8-apache.yaml -f docker/docker-compose.test-php8-apache.gh-actions.yaml ps -a
         # docker-compose -f docker/docker-compose.test-php8-apache.yaml -f docker/docker-compose.test-php8-apache.gh-actions.yaml logs
 
-    - name: Test App
+    - name: Run Tests
       run: |
         curl -vvv http://127.0.0.1/api/public/echo
         npm run test
