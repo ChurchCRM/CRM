@@ -29,7 +29,7 @@ To test out the demo, you may log in to http://demo.churchcrm.io  with the follo
 
 * [Download the latest release](https://github.com/ChurchCRM/CRM/releases/latest)
 
-* [Checkout our online Docs](http://docs.churchcrm.io)
+* [Checkout our online Docs (Wiki)](https://github.com/ChurchCRM/CRM/wiki)
 
 
 ### Docker
