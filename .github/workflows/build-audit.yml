@@ -1,9 +1,12 @@
 name: Audit 3rd Party Libs
 
+
 on:
   push:
     branches:
-    - 'build/**'
+      - 'master'
+  schedule:
+    - cron: '0 9 * * 6'
 
 env:
   node_version: 18
