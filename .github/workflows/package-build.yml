@@ -1,0 +1,39 @@
+name: Create A Release
+
+on:
+  push:
+    branches:
+      - 'master'
+
+env:
+  node_version: 18
+
+jobs:
+  build_n_deploy:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: ['20.x']
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        # fetch full history so things like auto-changelog work properly
+        fetch-depth: 0
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+        # setting a registry enables the NODE_AUTH_TOKEN env variable where we can set an npm token.  REQUIRED
+        registry-url: 'https://registry.npmjs.org'
+
+    - name: Install & Build Source
+      run: npm run deploy
+
+    - name: Package
+      run:  npm run package
+              
+    - uses: actions/upload-artifact@v3
+      with:
+        name: ChurchCRM
+        path: target/ChurchCRM-*.zip
