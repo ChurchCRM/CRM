@@ -1,6 +1,6 @@
 {
     "name": "churchcrm",
-    "version": "5.0.1",
+    "version": "5.0.5",
     "description": "Free Church CRM Software",
     "repository": {
         "type": "git",
@@ -16,21 +16,22 @@
     "bugs": {
         "url": "https://github.com/ChurchCRM/CRM/issues"
     },
-    "homepage": "http://www.churchcrm.io",
+    "homepage": "https://www.churchcrm.io",
     "scripts": {
-        "clean": "rm -rf node_modules/ &&  rm -rf src/vendor/",
+        "clean": "rm -rf node_modules/ src/vendor/ src/skin/external",
         "preinstall": "grunt clean & grunt updateVersions",
         "install": "grunt curl-dir && grunt copy && grunt sass && grunt lineending && grunt patchDataTablesCSS",
         "build-react": "webpack",
         "build": "npm run composer-install && npm run orm-gen &&  npm run build-react && grunt generateSignatures",
         "audit": "npm audit fix --only=prod --audit-level=high",
-        "deploy": "npm install && npm run build",
+        "deploy": "npm ci && npm run install && npm run build",
+        "clean-deploy": "npm run preinstall && npm run deploy",
         "postinstall": "grunt genLocaleJSFiles",
         "locale-gen": "locale/update-locale.sh",
         "locale-download": "grunt updateFromPOeditor && grunt genLocaleJSFiles && npm run locale-audit",
         "locale-audit": "grunt exec:downloadPOEditorStats && grunt genLocaleAudit",
         "update-signatures": "grunt generateSignatures",
-        "package": "npm run clean && npm run deploy && grunt compress",
+        "package": "npm run clean && npm run deploy && rm src/composer.lock && grunt compress",
         "demosite": "php scripts/update-demo-site.php",
         "changelog-gen": "grunt exec:updatechangelog",
         "orm-gen": "php src/vendor/propel/propel/bin/propel.php --config-dir=propel model:build && cd src/ && composer dump-autoload",
@@ -45,11 +46,9 @@
         "docker-dev-login-db": "docker-compose -f docker/docker-compose.dev-php8-apache.yaml exec database bash",
         "docker-dev-logs": "docker-compose -f docker/docker-compose.dev-php8-apache.yaml logs -f --tail=10",
         "docker-dev-stop": "docker-compose -f docker/docker-compose.dev-php8-apache.yaml stop",
-        "docker-test7-start": "cp docker/Config.php src/Include/Config.php && docker-compose -f docker/docker-compose.test-php7-apache.yaml up -d",
-        "docker-test7-down": "docker-compose -f docker/docker-compose.test-php7-apache.yaml down -v",
-        "docker-test7-restart": "npm run docker-test7-down && npm run docker-test7-start",
-        "test-via-docker7-ui": "npm run docker-test7-restart && cp docker/cypress.json cypress.json && node_modules/cypress/bin/cypress open",
         "docker-test-build": "docker-compose -f docker/docker-compose.test-php8-apache.yaml build",
+        "ci-docker-test-start": "cp docker/Config.php src/Include/Config.php && docker-compose -f docker/docker-compose.test-php8-apache.yaml -f docker/docker-compose.test-php8-apache.gh-actions.yaml up -d",
+        "ci-docker-test-down": "docker-compose -f docker/docker-compose.test-php8-apache.yaml -f docker/docker-compose.test-php8-apache.gh-actions.yaml down -v",
         "docker-test-start": "cp docker/Config.php src/Include/Config.php && docker-compose -f docker/docker-compose.test-php8-apache.yaml up -d",
         "docker-test-down": "docker-compose -f docker/docker-compose.test-php8-apache.yaml down -v",
         "docker-test-stop": "docker-compose -f docker/docker-compose.test-php8-apache.yaml stop",
@@ -57,11 +56,9 @@
         "docker-test-login-web": "docker-compose -f docker/docker-compose.test-php8-apache.yaml exec webserver bash",
         "docker-test-login-db": "docker-compose -f docker/docker-compose.test-php8-apache.yaml exec database bash",
         "docker-test-logs": "docker-compose -f docker/docker-compose.test-php8-apache.yaml logs -f --tail=10",
-        "test": "echo 'skipping tests'",
-        "test-ui": "node_modules/cypress/bin/cypress open",
-        "test-via-docker": "npm run docker-test-restart && cp docker/cypress.json cypress.json && node_modules/cypress/bin/cypress run",
-        "test-via-docker-ui": "npm run docker-test-restart && cp docker/cypress.json cypress.json && node_modules/cypress/bin/cypress open",
-        "test-via-demo": "cp demo/cypress.json cypress.json && node_modules/cypress/bin/cypress run",
+        "test": "cp docker/cypress.config.ts cypress.config.ts && node_modules/cypress/bin/cypress run --e2e",
+        "test-ui": "cp docker/cypress.config.ts cypress.config.ts && node_modules/cypress/bin/cypress open --e2e --browser chrome",
+        "test-via-demo": "cp demo/cypress.config.ts cypress.config.ts && node_modules/cypress/bin/cypress run",
         "restore-demo-db": "php scripts/restore-db.php demo",
         "restore-empty-db": "php scripts/restore-db.php"
     },
@@ -78,7 +75,7 @@
         "chart.js": "^2.9.4",
         "ckeditor": "^4.12.1",
         "daterangepicker": "^3.1.0",
-        "flag-icons": "^6.11.0",
+        "flag-icons": "^6.11.1",
         "fullcalendar": "3.10.5",
         "i18n": "^0.15.1",
         "i18next": "19.9.2",
@@ -88,7 +85,7 @@
         "jquery-photo-uploader": "^1.0.13",
         "jquery-steps": "^1.1.0",
         "jquery-validation": "^1.19.5",
-        "node-sass": "^7.0.3",
+        "node-sass": "^9.0.0",
         "pace-js": "^1.2.4",
         "react-bootstrap": "^2.9.0",
         "react-datepicker": "^2.16.0",
@@ -115,7 +112,6 @@
         "grunt-lineending": "^1.0.0",
         "grunt-sass": "^3.1.0",
         "i18next-extract-gettext": "^3.2.1",
-        "i18next-xhr-backend": "^3.2.2",
         "node-sha1": "^1.0.1",
         "tar": "^6.1.12",
         "ts-loader": "^9.4.2",
@@ -124,7 +120,7 @@
         "webpack-cli": "^5.0.0"
     },
     "optionalDependencies": {
-        "cypress": "^9.7.0",
+        "cypress": "^13.3.2",
         "grunt-poeditor-gd": "0.2.0"
     }
 }

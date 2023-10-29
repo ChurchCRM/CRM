@@ -811,20 +811,12 @@ if (isset($_POST['DoImport'])) {
 
 if ($iStage == 1) {
     // Display the select file form?>
-        <p style="color: red"> <?= $csvError ?></p>
+    <p style="color: red"> <?= $csvError ?></p>
         <form method="post" action="CSVImport.php" enctype="multipart/form-data">
-        <input class="icTinyButton" type="file" name="CSVfile"><br/>
-        <input type="submit" class="btn btn-default" value=" <?= gettext('Upload CSV File') ?> "
-        name="UploadCSV">
+            <input class="icTinyButton" type="file" name="CSVfile"> 
+            <p></p>
+            <input type="submit" class="btn btn-success" value=" <?= gettext('Upload CSV File') ?> " name="UploadCSV">
         </form>
-        </div>
-        </div>
-        <div class="card">
-        <div class="card-header">
-        <h3 class="card-title"><?= gettext('Clear Data')?></h3>
-        </div>
-        <div class="card-body">
-        <button type="button" class="btn btn-danger" id="clear-people"><?= gettext('Clear Persons and Families') ?></button>
     </p>
     <?php
     echo $sClear;

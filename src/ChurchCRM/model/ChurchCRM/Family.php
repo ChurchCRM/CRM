@@ -13,6 +13,7 @@ use ChurchCRM\Utils\GeoUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use DateTime;
 use Propel\Runtime\Connection\ConnectionInterface;
+use Propel\Runtime\Map\TableMap;
 
 /**
  * Skeleton subclass for representing a row from the 'family_fam' table.
@@ -25,7 +26,7 @@ use Propel\Runtime\Connection\ConnectionInterface;
  */
 class Family extends BaseFamily implements iPhoto
 {
-    private $photo;
+    private ?\ChurchCRM\dto\Photo $photo = null;
 
     public function getAddress()
     {

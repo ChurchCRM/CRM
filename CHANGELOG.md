@@ -1,4 +1,411 @@
-4.4.1
+# 5.0.3
+## :beetle: Bugs
+
+- Fixed Person / Family photo & thumbnail API [#6579](https://github.com/ChurchCRM/CRM/pull/6579)
+- Setup working on PHP 8 [#6578](https://github.com/ChurchCRM/CRM/pull/6578)
+
+## :gear: Inner Beauty
+
+- more minor code cleanup [#6577](https://github.com/ChurchCRM/CRM/pull/6577)
+- Remove php 7 from scripts [#6576](https://github.com/ChurchCRM/CRM/pull/6576)
+- Test Build branches - start test docker and test  [#6573](https://github.com/ChurchCRM/CRM/pull/6573)
+- PHP Cleanup - DATA / DTO FILES [#6572](https://github.com/ChurchCRM/CRM/pull/6572)
+- Updated Slim MVC to use $app vs $this [#6571](https://github.com/ChurchCRM/CRM/pull/6571)
+- Bump crypto-js from 4.1.1 to 4.2.0 [#6565](https://github.com/ChurchCRM/CRM/pull/6565)
+- Slight improvement to package.json script(s) [#6564](https://github.com/ChurchCRM/CRM/pull/6564)
+- [rector] migrate to ruleset LevelSetList::UP_TO_PHP_71 [#6563](https://github.com/ChurchCRM/CRM/pull/6563)
+- [rector] migrate to ruleset LevelSetList::UP_TO_PHP_70 [#6559](https://github.com/ChurchCRM/CRM/pull/6559)
+- Starting 5.0.3 [#6556](https://github.com/ChurchCRM/CRM/pull/6556)
+- find and fix various issues found in the codebase [#6554](https://github.com/ChurchCRM/CRM/pull/6554)
+- apply rector level set list rules to bring codebase to php 7.4 [#6550](https://github.com/ChurchCRM/CRM/pull/6550)
+
+## :heart: Contributors
+
+We'd like to thank all the contributors who worked on this release!
+
+- [@DawoudIO](https://github.com/DawoudIO)
+- [@dependabot[bot]](https://github.com/apps/dependabot)
+- [@DAcodedBEAT](https://github.com/DAcodedBEAT)
+
+## What's Changed
+* Starting 5.0.3 by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6556
+* [rector] migrate to ruleset LevelSetList::UP_TO_PHP_70 by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6559
+* Apply fixes from StyleCI by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6558
+* [rector] migrate to ruleset LevelSetList::UP_TO_PHP_71 by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6563
+* Apply fixes from StyleCI by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6562
+* [rector] migrate to ruleset LevelSetList::UP_TO_PHP_73 by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6567
+* Apply fixes from StyleCI by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6566
+* Bump crypto-js from 4.1.1 to 4.2.0 by @dependabot in https://github.com/ChurchCRM/CRM/pull/6565
+* apply rector level set list rules to bring codebase to php 7.4 by @DAcodedBEAT in https://github.com/ChurchCRM/CRM/pull/6550
+* Slight improvement to package.json script(s) by @DAcodedBEAT in https://github.com/ChurchCRM/CRM/pull/6564
+* Updated Slim MVC to use $app vs $this by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6571
+* PHP Cleanup - DATA / DTO FILES by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6572
+* Dev class cleanup 5.0.x by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6574
+* 5.0.3 POEditor Update - 2023-10-27 by @github-actions in https://github.com/ChurchCRM/CRM/pull/6575
+* find and fix various issues found in the codebase by @DAcodedBEAT in https://github.com/ChurchCRM/CRM/pull/6554
+* Setup working on PHP 8 by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6578
+* more minor code cleanup by @DAcodedBEAT in https://github.com/ChurchCRM/CRM/pull/6577
+* Test Build branches - start test docker and test  by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6573
+* Fixed Person / Family photo & thumbnail API by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6579
+* Integration Test Reorder by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6580
+* Remove php 7 from scripts by @DAcodedBEAT in https://github.com/ChurchCRM/CRM/pull/6576
+
+
+**Full Changelog**: https://github.com/ChurchCRM/CRM/compare/5.0.2...5.0.3
+# 5.0.2
+## :star: Enhancements
+- Support for PHP 8  [#6482](https://github.com/ChurchCRM/CRM/pull/6482)
+
+## :beetle: Bugs
+
+- Fix Event buttons [#6540](https://github.com/ChurchCRM/CRM/pull/6540)
+- After editing a person that person shows up twice in Family members in Person Profile. [#6478](https://github.com/ChurchCRM/CRM/issues/6478)
+- CAN'T EDIT OR DELETE EVENTS FROM Listing All Church Events [#6476](https://github.com/ChurchCRM/CRM/issues/6476)
+- Spelling errors [#6493](https://github.com/ChurchCRM/CRM/pull/6493)
+- DepositSlipEditor spelling [#6538](https://github.com/ChurchCRM/CRM/pull/6538)
+- add dockerfile to python3 and composer fix [#6495](https://github.com/ChurchCRM/CRM/pull/6495)
+
+## :gear: Inner Beauty
+* [Snyk] Upgrade flag-icons from 6.11.0 to 6.11.1 by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6553
+- [Snyk] Upgrade react-bootstrap from 2.8.0 to 2.9.0 [#65[33](https://github.com/ChurchCRM/CRM/actions/runs/6600001186/job/17929588010#step:4:34)](https://github.com/ChurchCRM/CRM/pull/6533)
+- [Snyk] Upgrade jquery from 3.7.0 to 3.7.1 [#6526](https://github.com/ChurchCRM/CRM/pull/6526)
+- [Snyk] Upgrade @fortawesome/fontawesome-free from 6.4.0 to 6.4.2 [#6523](https://github.com/ChurchCRM/CRM/pull/6523)
+- [Snyk] Upgrade bootstrap-datepicker from 1.9.0 to 1.10.0 [#6496](https://github.com/ChurchCRM/CRM/pull/6496)
+- [Snyk] Upgrade inputmask from 5.0.7 to 5.0.8 [#6468](https://github.com/ChurchCRM/CRM/pull/6468)
+
+## :heart: Contributors
+
+We'd like to thank all the contributors who worked on this release!
+
+- [@snyk-bot](https://github.com/snyk-bot)
+- [@brianteeman](https://github.com/brianteeman)
+- [@DAcodedBEAT](https://github.com/DAcodedBEAT)
+- [@kboghdady](https://github.com/kboghdady)
+- [@DawoudIO](https://github.com/DawoudIO)
+- [@uemura[45](https://github.com/ChurchCRM/CRM/actions/runs/6600001186/job/17929588010#step:4:46)01](https://github.com/uemura4[50](https://github.com/ChurchCRM/CRM/actions/runs/6600001186/job/17929588010#step:4:51)1)
+- [@github-actions[bot]](https://github.com/apps/github-actions)
+
+
+
+
+
+**Full Changelog**: https://github.com/ChurchCRM/CRM/compare/4.5.4...5.0.2
+
+
+# 5.0.1
+- Added  Turkish as a locale
+
+# 5.0.0
+## :star: Enhancements
+- Support for PHP 8  [#6482](https://github.com/ChurchCRM/CRM/pull/6482)
+
+## :beetle: Bugs
+
+- Fix Event buttons [#6540](https://github.com/ChurchCRM/CRM/pull/6540)
+- After editing a person that person shows up twice in Family members in Person Profile. [#6478](https://github.com/ChurchCRM/CRM/issues/6478)
+- CAN'T EDIT OR DELETE EVENTS FROM Listing All Church Events [#6476](https://github.com/ChurchCRM/CRM/issues/6476)
+- Spelling errors [#6493](https://github.com/ChurchCRM/CRM/pull/6493)
+- DepositSlipEditor spelling [#6538](https://github.com/ChurchCRM/CRM/pull/6538)
+- add dockerfile to python3 and composer fix [#6495](https://github.com/ChurchCRM/CRM/pull/6495)
+
+## :gear: Inner Beauty
+- [Snyk] Upgrade flag-icons from 6.6.6 to 6.7.0 [#6507](https://github.com/ChurchCRM/CRM/pull/6507)
+- [Snyk] Upgrade flag-icons from 6.8.0 to 6.9.5 [#6525](https://github.com/ChurchCRM/CRM/pull/6525)
+- [Snyk] Upgrade flag-icons from 6.9.5 to 6.11.0 [#6529](https://github.com/ChurchCRM/CRM/pull/6529)
+
+- [Snyk] Upgrade react-bootstrap from 2.7.1 to 2.7.2 [#6460](https://github.com/ChurchCRM/CRM/pull/6460)
+- [Snyk] Upgrade react-bootstrap from 2.7.2 to 2.7.3 [#6480](https://github.com/ChurchCRM/CRM/pull/6480)
+- [Snyk] Upgrade react-bootstrap from 2.7.3 to 2.7.4 [#6485](https://github.com/ChurchCRM/CRM/pull/6485)
+- [Snyk] Upgrade react-bootstrap from 2.7.4 to 2.8.0 [#6514](https://github.com/ChurchCRM/CRM/pull/6514)
+- [Snyk] Upgrade react-bootstrap from 2.8.0 to 2.9.0 [#65[33](https://github.com/ChurchCRM/CRM/actions/runs/6600001186/job/17929588010#step:4:34)](https://github.com/ChurchCRM/CRM/pull/6533)
+- [Snyk] Upgrade jquery from 3.6.4 to 3.7.0 [#6492](https://github.com/ChurchCRM/CRM/pull/6492)
+- [Snyk] Upgrade jquery from 3.7.0 to 3.7.1 [#6526](https://github.com/ChurchCRM/CRM/pull/6526)
+- [Snyk] Upgrade @fortawesome/fontawesome-free from 6.3.0 to 6.4.0 [#6472](https://github.com/ChurchCRM/CRM/pull/6472)
+- [Snyk] Upgrade @fortawesome/fontawesome-free from 6.4.0 to 6.4.2 [#6523](https://github.com/ChurchCRM/CRM/pull/6523)
+- [Snyk] Upgrade bootstrap-datepicker from 1.9.0 to 1.10.0 [#6496](https://github.com/ChurchCRM/CRM/pull/6496)
+- [Snyk] Upgrade inputmask from 5.0.7 to 5.0.8 [#6468](https://github.com/ChurchCRM/CRM/pull/6468)
+
+## :heart: Contributors
+
+We'd like to thank all the contributors who worked on this release!
+
+- [@snyk-bot](https://github.com/snyk-bot)
+- [@brianteeman](https://github.com/brianteeman)
+- [@DAcodedBEAT](https://github.com/DAcodedBEAT)
+- [@kboghdady](https://github.com/kboghdady)
+- [@DawoudIO](https://github.com/DawoudIO)
+- [@uemura[45](https://github.com/ChurchCRM/CRM/actions/runs/6600001186/job/17929588010#step:4:46)01](https://github.com/uemura4[50](https://github.com/ChurchCRM/CRM/actions/runs/6600001186/job/17929588010#step:4:51)1)
+- [@github-actions[bot]](https://github.com/apps/github-actions)
+
+# 4.5.4
+## What's Changed
+* Starting 4.5.4 release  by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6454
+* 4.5.4 POEditor Update - 2023-03-02 by @github-actions in https://github.com/ChurchCRM/CRM/pull/6456
+
+* [Snyk] Upgrade @fortawesome/fontawesome-free from 6.2.1 to 6.3.0 by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6452
+* [Snyk] Upgrade jquery from 3.6.1 to 3.6.2 by @snyk-bot in https://github.com/ChurchCRM/CRM/pull/6136
+* [Snyk] Upgrade jquery from 3.6.2 to 3.6.3 by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6457
+* [Snyk] Upgrade react-bootstrap from 2.7.0 to 2.7.1 by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6458
+
+* Bump http-cache-semantics from 4.1.0 to 4.1.1 by @dependabot in https://github.com/ChurchCRM/CRM/pull/6447
+* Bump jszip from 3.7.1 to 3.10.1 by @dependabot in https://github.com/ChurchCRM/CRM/pull/6445
+
+**Full Changelog**: https://github.com/ChurchCRM/CRM/compare/4.5.3...4.5.4
+# 4.5.3
+## :beetle: Bugs
+
+- fixed #6129 with bad user setting [#61[32](https://github.com/ChurchCRM/CRM/actions/runs/3819890766/jobs/6497804167#step:4:33)](https://github.com/ChurchCRM/CRM/pull/6132)
+- Bug in fundraising [#6129](https://github.com/ChurchCRM/CRM/issues/6129)
+- fixed sRootPath var in DB backup / restore
+- fixed renamed getPeople -> getPeopleSorted in Family / Person Pages
+- Fixed Event bad array declair
+- Fixed demo db to have the correct data for cypress testing.
+
+## :gear: Inner Beauty
+
+- [Snyk] Upgrade react-bootstrap from 2.6.0 to 2.7.0 [#6128](https://github.com/ChurchCRM/CRM/pull/6128)
+
+## :heart: Contributors
+
+We'd like to thank all the contributors who worked on this release!
+
+- [@snyk-bot](https://github.com/snyk-bot)
+- [@DawoudIO](https://github.com/DawoudIO)
+
+
+## What's Changed
+* Starting 4.5.3 by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6131
+* [Snyk] Upgrade react-bootstrap from 2.6.0 to 2.7.0 by @snyk-bot in https://github.com/ChurchCRM/CRM/pull/6128
+* fixed #6129 with bad user setting by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6132
+
+
+**Full Changelog**: https://github.com/ChurchCRM/CRM/compare/4.5.2...4.5.3
+
+# 4.5.2
+## What's Changed
+* Bug: Fixed method call for family getSalutation  by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6125
+* Release 4.5.2 started by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6124
+* Bump qs from 6.5.2 to 6.5.3 by @dependabot in https://github.com/ChurchCRM/CRM/pull/6121
+* 4.5.1 POEditor Update - 2022-12-29 by @github-actions in https://github.com/ChurchCRM/CRM/pull/6118
+* [Snyk] Upgrade @fortawesome/fontawesome-free from 6.2.0 to 6.2.1 by @snyk-bot in https://github.com/ChurchCRM/CRM/pull/6120
+
+
+**Full Changelog**: https://github.com/ChurchCRM/CRM/compare/4.5.1...4.5.2
+
+
+# 4.5.1
+
+
+## :beetle: Bugs
+
+- fixed API call to delete user [#6116](https://github.com/ChurchCRM/CRM/pull/6116)
+- Bug: replaced bg-aqua to bg-gray [#6115](https://github.com/ChurchCRM/CRM/pull/6115)
+- ChurchCRM 4.5.0 throws Fatal error while running setup [#6072](https://github.com/ChurchCRM/CRM/issues/6072)
+
+## :gear: Inner Beauty
+
+- Bump major lib and react to newer versions
+- Bump mime, grunt-curl and grunt-http [#6112](https://github.com/ChurchCRM/CRM/pull/6112)
+- Bump qs and grunt-http [#6108](https://github.com/ChurchCRM/CRM/pull/6108)
+- [Snyk] Upgrade flag-icons from 6.6.0 to 6.6.6 [#6097](https://github.com/ChurchCRM/CRM/pull/6097)
+- [Snyk] Upgrade i18n from 0.15.0 to 0.15.1 [#6096](https://github.com/ChurchCRM/CRM/pull/6096)
+- [Snyk] Upgrade @fortawesome/fontawesome-free from 6.1.2 to 6.2.0 [#6080](https://github.com/ChurchCRM/CRM/pull/6080)
+- [Snyk] Upgrade jquery from 3.6.0 to 3.6.1 [#6079](https://github.com/ChurchCRM/CRM/pull/6079)
+- [Snyk] Security upgrade node-sass from 7.0.1 to 7.0.2 [#6073](https://github.com/ChurchCRM/CRM/pull/6073)
+
+## :heart: Contributors
+
+We'd like to thank all the contributors who worked on this release!
+
+- [@snyk-bot](https://github.com/snyk-bot)
+- [@DawoudIO](https://github.com/DawoudIO)
+- [@chiebert](https://github.com/chiebert)
+- [@dependabot[bot]](https://github.com/apps/dependabot)
+
+## What's Changed
+* [Snyk] Security upgrade node-sass from 7.0.1 to 7.0.2 by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6073
+* Bump moment from 2.29.3 to 2.29.4 by @dependabot in https://github.com/ChurchCRM/CRM/pull/6076
+* Starting 4.5.1 by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6077
+* 4.5.1 POEditor Update - 2022-09-28 by @github-actions in https://github.com/ChurchCRM/CRM/pull/6085
+* [Snyk] Upgrade @fortawesome/fontawesome-free from 6.1.2 to 6.2.0 by @snyk-bot in https://github.com/ChurchCRM/CRM/pull/6080
+* [Snyk] Upgrade jquery from 3.6.0 to 3.6.1 by @snyk-bot in https://github.com/ChurchCRM/CRM/pull/6079
+* [Snyk] Upgrade node-sass from 7.0.2 to 7.0.3 by @snyk-bot in https://github.com/ChurchCRM/CRM/pull/6087
+* 4.5.1 POEditor Update - 2022-09-30 by @github-actions in https://github.com/ChurchCRM/CRM/pull/6086
+* Bump moment-timezone from 0.5.33 to 0.5.37 by @dependabot in https://github.com/ChurchCRM/CRM/pull/6071
+* 4.5.1 POEditor Update - 2022-10-01 by @github-actions in https://github.com/ChurchCRM/CRM/pull/6088
+* 4.5.1 POEditor Update - 2022-10-04 by @github-actions in https://github.com/ChurchCRM/CRM/pull/6089
+* [Snyk] Upgrade i18n from 0.15.0 to 0.15.1 by @snyk-bot in https://github.com/ChurchCRM/CRM/pull/6096
+* 4.5.1 POEditor Update - 2022-10-14 by @github-actions in https://github.com/ChurchCRM/CRM/pull/6095
+* [Snyk] Upgrade flag-icons from 6.5.1 to 6.6.0 by @snyk-bot in https://github.com/ChurchCRM/CRM/pull/6056
+* Bump minimatch from 3.0.4 to 3.0.8 by @dependabot in https://github.com/ChurchCRM/CRM/pull/6103
+* Bump loader-utils from 1.4.0 to 1.4.2 by @dependabot in https://github.com/ChurchCRM/CRM/pull/6102
+* [Snyk] Upgrade flag-icons from 6.6.0 to 6.6.6 by @snyk-bot in https://github.com/ChurchCRM/CRM/pull/6097
+* Add $delimiter instead of hardcoded commas by @chiebert in https://github.com/ChurchCRM/CRM/pull/6093
+* Bump qs and grunt-http by @dependabot in https://github.com/ChurchCRM/CRM/pull/6108
+* Bump mime, grunt-curl and grunt-http by @dependabot in https://github.com/ChurchCRM/CRM/pull/6112
+* Better family roll up csv export 6092 by @chiebert in https://github.com/ChurchCRM/CRM/pull/6094
+* Bug: replaced bg-aqua to bg-gray by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6115
+* fixed API call to delete user by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6116
+* Fixed  new system setup error in 4.5.0 by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6117
+
+## New Contributors
+* @chiebert made their first contribution in https://github.com/ChurchCRM/CRM/pull/6093
+
+**Full Changelog**: https://github.com/ChurchCRM/CRM/compare/4.5.0...4.5.1
+
+# 4.5.0
+
+This is a Major release, we have upgraded the software to ensure we patch the security issues, and this required major upgrades to the UI. If you see issues please let us know.
+
+## :star: Enhancements
+
+- System Settings:  Family Role is now a dropdown [#6039](https://github.com/ChurchCRM/CRM/pull/6039)
+- Add family role with changed order - impact on system setting member tab??? [#1176](https://github.com/ChurchCRM/CRM/issues/1176)
+-
+## :speech_balloon: Localization
+
+- add Ukrainian locale  [#6022](https://github.com/ChurchCRM/CRM/issues/6022)
+- Add Greek Locale [#6021](https://github.com/ChurchCRM/CRM/issues/6021)
+- Add Amharic - Ethiopia locale  [#6020](https://github.com/ChurchCRM/CRM/issues/6020)
+
+## :beetle: Bugs
+
+- Help & Manual Link Does Not Work [#5995](https://github.com/ChurchCRM/CRM/issues/5995)
+- Update NewsLetterLabels.php [#5984](https://github.com/ChurchCRM/CRM/pull/5984)
+- Newsletter labels printing country [#5983](https://github.com/ChurchCRM/CRM/issues/5983)
+
+## :gear: Inner Beauty
+
+- Update AdminLTE to 3.x [#5[34](https://github.com/ChurchCRM/CRM/runs/8097524846?check_suite_focus=true#step:4:35)8](https://github.com/ChurchCRM/CRM/issues/5348)
+- FA Icon v6 updates [#6045](https://github.com/ChurchCRM/CRM/pull/6045)
+- 2022 june skin updates [#60[33](https://github.com/ChurchCRM/CRM/runs/8097524846?check_suite_focus=true#step:4:34)](https://github.com/ChurchCRM/CRM/pull/6033)
+- [Snyk] Upgrade @fortawesome/fontawesome-free from 6.1.1 to 6.1.2 [#6065](https://github.com/ChurchCRM/CRM/pull/6065)
+- [Snyk] Upgrade bootstrap from 4.6.1 to 4.6.2 [#6064](https://github.com/ChurchCRM/CRM/pull/6064)
+- [Snyk] Security upgrade jquery-validation from 1.19.4 to 1.19.5 [#6054](https://github.com/ChurchCRM/CRM/pull/6054)
+- [Snyk] Upgrade bootstrap from 4.6.0 to 4.6.1 [#6038](https://github.com/ChurchCRM/CRM/pull/6038)
+- [Snyk] Upgrade fullcalendar from 3.10.2 to 3.10.5 [#6037](https://github.com/ChurchCRM/CRM/pull/6037)
+- [Snyk] Upgrade i18n from 0.13.3 to 0.15.0 [#60[36](https://github.com/ChurchCRM/CRM/runs/8097524846?check_suite_focus=true#step:4:37)](https://github.com/ChurchCRM/CRM/pull/6036)
+- Bump guzzlehttp/guzzle from 7.3.0 to 7.4.4 in /src [#6015](https://github.com/ChurchCRM/CRM/pull/6015)
+- Bump jquery-validation from 1.19.3 to 1.19.4 [#6014](https://github.com/ChurchCRM/CRM/pull/6014)
+- Bump grunt from 1.5.2 to 1.5.3 [#6013](https://github.com/ChurchCRM/CRM/pull/6013)
+- Bump simple-get from 3.1.0 to 3.1.1 [#6004](https://github.com/ChurchCRM/CRM/pull/6004)
+- Bump grunt from 1.3.0 to 1.5.2 [#6000](https://github.com/ChurchCRM/CRM/pull/6000)
+- [Snyk] Security upgrade node-sass from 6.0.1 to 7.0.0 [#[59](https://github.com/ChurchCRM/CRM/runs/8097524846?check_suite_focus=true#step:4:60)75](https://github.com/ChurchCRM/CRM/pull/5975)
+- Bump lcobucci/jwt from 3.4.5 to 3.4.6 in /src [#59[64](https://github.com/ChurchCRM/CRM/runs/8097524846?check_suite_focus=true#step:4:65)](https://github.com/ChurchCRM/CRM/pull/5964)
+
+## :heart: Contributors
+
+We'd like to thank all the contributors who worked on this release!
+
+- [@snyk-bot](https://github.com/snyk-bot)
+- [@wuletawwonte](https://github.com/wuletawwonte)
+- [@javacorey](https://github.com/javacorey)
+- [@MrClever](https://github.com/MrClever)
+- [@jibaomansaray](https://github.com/jibaomansaray)
+- [@DawoudIO](https://github.com/DawoudIO)
+- [@github-actions[bot]](https://github.com/apps/github-actions)
+- [@dependabot[bot]](https://github.com/apps/dependabot)
+
+# 4.4.5
+
+This is a security and localization release.
+
+## :speech_balloon: Localization
+
+it_IT is now 100% localized
+- 4.4.4 POEditor Update - Locale Cleanup [#5790](https://github.com/ChurchCRM/CRM/pull/5790)
+- 4.4.4 POEditor Update - it_IT [#5781](https://github.com/ChurchCRM/CRM/pull/5781)
+- 4.4.4 POEditor Update - it_IT [#5779](https://github.com/ChurchCRM/CRM/pull/5779)
+
+## :gear: Inner Beauty
+
+- [Snyk] Security upgrade node-sass from 4.14.1 to 6.0.1 [#5789](https://github.com/ChurchCRM/CRM/pull/5789)
+- Update PHP Mailer  [#5784](https://github.com/ChurchCRM/CRM/pull/5784)
+- Bump hosted-git-info from 2.7.1 to 2.8.9 [#5761](https://github.com/ChurchCRM/CRM/pull/5761)
+- Bump underscore from 1.9.1 to 1.13.1 [#5754](https://github.com/ChurchCRM/CRM/pull/5754)
+- Github Action: update-demo-site [#5406](https://github.com/ChurchCRM/CRM/issues/5406)
+
+## :heart: Contributors
+
+We'd like to thank all the contributors who worked on this release!
+
+- [@snyk-bot](https://github.com/snyk-bot)
+- [@DawoudIO](https://github.com/DawoudIO)
+- [@github-actions[bot]](https://github.com/apps/github-actions)
+- [@dependabot[bot]](https://github.com/apps/dependabot)
+
+# 4.4.4
+
+This is a security and localization release.
+
+## :speech_balloon: Localization
+
+it_IT is now 100% localized
+- 4.4.4 POEditor Update - Locale Cleanup [#5790](https://github.com/ChurchCRM/CRM/pull/5790)
+- 4.4.4 POEditor Update - it_IT [#5781](https://github.com/ChurchCRM/CRM/pull/5781)
+- 4.4.4 POEditor Update - it_IT [#5779](https://github.com/ChurchCRM/CRM/pull/5779)
+
+## :gear: Inner Beauty
+
+- [Snyk] Security upgrade node-sass from 4.14.1 to 6.0.1 [#5789](https://github.com/ChurchCRM/CRM/pull/5789)
+- Update PHP Mailer  [#5784](https://github.com/ChurchCRM/CRM/pull/5784)
+- Bump hosted-git-info from 2.7.1 to 2.8.9 [#5761](https://github.com/ChurchCRM/CRM/pull/5761)
+- Bump underscore from 1.9.1 to 1.13.1 [#5754](https://github.com/ChurchCRM/CRM/pull/5754)
+- Github Action: update-demo-site [#5406](https://github.com/ChurchCRM/CRM/issues/5406)
+
+## :heart: Contributors
+
+We'd like to thank all the contributors who worked on this release!
+
+- [@snyk-bot](https://github.com/snyk-bot)
+- [@DawoudIO](https://github.com/DawoudIO)
+- [@github-actions[bot]](https://github.com/apps/github-actions)
+- [@dependabot[bot]](https://github.com/apps/dependabot)
+
+# 4.4.3
+This is a security update to fix phpmailer
+
+## :speech_balloon: Localization
+
+- Locale cleanup [#5765](https://github.com/ChurchCRM/CRM/pull/5765)
+
+## :gear: Inner Beauty
+
+- Update grunt-cli [#5769](https://github.com/ChurchCRM/CRM/pull/5769)
+- new phpmailer/phpmailer version [#5766](https://github.com/ChurchCRM/CRM/pull/5766)
+
+## :heart: Contributors
+
+We'd like to thank all the contributors who worked on this release!
+
+- [@snyk-bot](https://github.com/snyk-bot)
+- [@DawoudIO](https://github.com/DawoudIO)
+- [@github-actions[bot]](https://github.com/apps/github-actions)
+
+# 4.4.2
+
+This is a localization + fix for the db upgrade bug.
+
+## :speech_balloon: Localization
+
+- 4.4.2 POEditor Update - pt_BR [#5752](https://github.com/ChurchCRM/CRM/pull/5752)
+
+## :beetle: Bugs
+
+- Bug: Send Newsletter display [#5751](https://github.com/ChurchCRM/CRM/pull/5751)
+
+## :gear: Inner Beauty
+
+- Build: 4.4.2 [#5748](https://github.com/ChurchCRM/CRM/pull/5748)
+
+## :heart: Contributors
+
+We'd like to thank all the contributors who worked on this release!
+
+- [@DawoudIO](https://github.com/DawoudIO)
+- [@github-actions[bot]](https://github.com/apps/github-actions)
+
+# 4.4.1
 
 ## :speech_balloon: Localization
 
@@ -279,7 +686,7 @@ Released on (10.19.2020)
 
 ## :star: Enhancements
 
-- New: /v2/dashbaord page [#5446](https://github.com/ChurchCRM/CRM/pull/5446)
+- New: /v2/dashboard page [#5446](https://github.com/ChurchCRM/CRM/pull/5446)
 - Feature/enable v2 dashboard via settings [#5459](https://github.com/ChurchCRM/CRM/pull/5459)
 - API reduction / speed  [#5447](https://github.com/ChurchCRM/CRM/pull/5447)
 - Created new APIs for use on Main Dashboard [#5443](https://github.com/ChurchCRM/CRM/pull/5443)

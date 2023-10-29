@@ -5,9 +5,9 @@ use ChurchCRM\Service\SystemService;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
-$app->group('/background', function () {
-    $this->get('/page', 'getPageCommonData');
-    $this->post('/timerjobs', 'runTimerJobsAPI');
+$app->group('/background', function () use ($app) {
+    $app->get('/page', 'getPageCommonData');
+    $app->post('/timerjobs', 'runTimerJobsAPI');
 });
 
 function getPageCommonData(Request $request, Response $response, array $p_args)

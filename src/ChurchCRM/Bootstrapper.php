@@ -13,11 +13,12 @@ namespace ChurchCRM
   use ChurchCRM\Utils\LoggerUtils;
   use ChurchCRM\Utils\RedirectUtils;
   use ChurchCRM\Authentication\AuthenticationManager;
+    use Exception;
 
   class Bootstrapper
   {
-      private static $manager;
-      private static $dbClassName;
+      private static ?\Propel\Runtime\Connection\ConnectionManagerSingle $manager = null;
+      private static ?string $dbClassName = null;
       private static $databaseServerName;
       private static $databasePort;
       private static $databaseUser;
@@ -31,7 +32,7 @@ namespace ChurchCRM
        * @var Logger
        */
       private static $bootStrapLogger;
-      private static $serviceContainer;
+      private static ?\Propel\Runtime\ServiceContainer\ServiceContainerInterface $serviceContainer = null;
 
       public static function init($sSERVERNAME, $dbPort, $sUSER, $sPASSWORD, $sDATABASE, $sRootPath, $bLockURL, $URL)
       {
@@ -140,7 +141,11 @@ namespace ChurchCRM
               // Connect via TCP to specified port and pass a 'null' for database name.
               // We specify the database name in a different call, ie 'mysqli_select_db()' just below here
               self::$bootStrapLogger->debug("Connecting to ". self::$databaseServerName . " on port " . self::$databasePort . " as " . self::$databaseUser);
-              $cnInfoCentral = mysqli_connect(self::$databaseServerName, self::$databaseUser, self::$databasePassword, null, self::$databasePort);
+              try {
+                $cnInfoCentral = mysqli_connect(self::$databaseServerName, self::$databaseUser, self::$databasePassword, null, self::$databasePort);
+              } catch (\Exception $e) {
+                    Bootstrapper::system_failure($e->getMessage());
+              }
           }
           self::testMYSQLI();
           mysqli_set_charset($cnInfoCentral, 'utf8mb4');
@@ -177,6 +182,9 @@ namespace ChurchCRM
           self::$bootStrapLogger->debug("Initializing Propel ORM");
           // ==== ORM
           self::$dbClassName = '\\' . \Propel\Runtime\Connection\ConnectionWrapper::class;
+          /**
+           * @var \Propel\Runtime\ServiceContainer\StandardServiceContainer
+           */
           self::$serviceContainer = Propel::getServiceContainer();
           self::$serviceContainer->checkVersion('2.0.0-dev');
           self::$serviceContainer->setAdapterClass('default', 'mysql');
@@ -225,7 +233,6 @@ namespace ChurchCRM
       }
       private static function configureLogging()
       {
-
        // PHP Logs
           $phpLogPath = LoggerUtils::buildLogFilePath("php");
           self::$bootStrapLogger->debug("Configuring PHP logs at :" .$phpLogPath);
@@ -249,7 +256,7 @@ namespace ChurchCRM
 
       private static function buildConnectionManagerConfig()
       {
-          if (is_null(self::$databasePort)) {
+          if (self::$databasePort === null) {
               self::$databasePort = 3306;
           }
           return [
@@ -277,10 +284,10 @@ namespace ChurchCRM
               ."FROM userconfig_ucfg WHERE ucfg_per_ID='".AuthenticationManager::GetCurrentUser()->getId()."'";
               $rsConfig = mysqli_query($cnInfoCentral, $sSQL);     // Can't use RunQuery -- not defined yet
               if ($rsConfig) {
-                  while (list($ucfg_name, $value) = mysqli_fetch_row($rsConfig)) {
+                  while ([$ucfg_name, $value] = mysqli_fetch_row($rsConfig)) {
                       //TODO:  THESE Variable-Variables must go awawy
                       // VV's will not work when set here; so all must be refactored away in all use cases throughout the code.
-                      $$ucfg_name = $value;
+                      ${$ucfg_name} = $value;
                       $_SESSION[$ucfg_name] = $value;
                   }
               }
@@ -292,7 +299,7 @@ namespace ChurchCRM
           if (!SystemConfig::isInitialized()) {
               SystemConfig::init();
           }
-          require 'Include/HeaderNotLoggedIn.php'; ?>
+          require '../Include/HeaderNotLoggedIn.php'; ?>
       <div class='container'>
           <h3>ChurchCRM – <?= _($header) ?></h3>
           <div class='alert alert-danger text-center' style='margin-top: 20px;'>
@@ -300,7 +307,7 @@ namespace ChurchCRM
           </div>
       </div>
       <?php
-      require 'Include/FooterNotLoggedIn.php';
+      require '../Include/FooterNotLoggedIn.php';
           exit();
       }
       public static function isDBCurrent()

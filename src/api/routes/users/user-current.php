@@ -6,12 +6,12 @@ use ChurchCRM\Utils\LoggerUtils;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
-$app->group('/user/current', function () {
-    $this->post("/refresh2fasecret", "refresh2fasecret");
-    $this->post("/refresh2farecoverycodes", "refresh2farecoverycodes");
-    $this->post("/remove2fasecret", "remove2fasecret");
-    $this->post("/test2FAEnrollmentCode", "test2FAEnrollmentCode");
-    $this->get("/get2faqrcode",'get2faqrcode');
+$app->group('/user/current', function () use ($app) {
+    $app->post("/refresh2fasecret", "refresh2fasecret");
+    $app->post("/refresh2farecoverycodes", "refresh2farecoverycodes");
+    $app->post("/remove2fasecret", "remove2fasecret");
+    $app->post("/test2FAEnrollmentCode", "test2FAEnrollmentCode");
+    $app->get("/get2faqrcode",'get2faqrcode');
 });
 
 function refresh2fasecret(Request $request, Response $response, array $args)

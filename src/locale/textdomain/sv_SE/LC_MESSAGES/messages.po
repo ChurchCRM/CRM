@@ -365,24 +365,8 @@ msgid "ERROR: the uploaded CSV file no longer exists!"
 msgstr "FEL: uppladdade CSV filen finns inte!"
 
 #: 
-msgid "Data Cleared Successfully!"
-msgstr "Informationen rensade!"
-
-#: 
 msgid "Upload CSV File"
 msgstr "Ladda upp CSV Fil"
-
-#: 
-msgid "Clear Persons and Families"
-msgstr "Rensa personer och familjer"
-
-#: 
-msgid "Warning!  Do not select this option if you plan to add to an existing database.<br/>"
-msgstr "Varning!  Välj inte detta om du ska lägga till en befintlig databas.<br/>"
-
-#: 
-msgid "Use only if unsatisfied with initial import.  All person and member data will be destroyed!"
-msgstr "Använd endast om du är missnöjd med den initialla importen.  Alla personer och medlemer infomration raderas!"
 
 #: 
 msgid "Data import successful."
@@ -685,10 +669,6 @@ msgstr "Epost (BCC)"
 #: 
 msgid "Create Directory From Cart"
 msgstr "Skapa katalog från korgen"
-
-#: 
-msgid "Generate Labels"
-msgstr "Skapa etikett"
 
 #: 
 msgid "Bulk Mail Presort"
@@ -2290,10 +2270,6 @@ msgid "Group Members:"
 msgstr "Grupp medlemmar"
 
 #: 
-msgid "Group members: "
-msgstr "Gruppmedlemmar:"
-
-#: 
 msgid "Remove Selected Members from group"
 msgstr "Ta bort utvalda medlemmar från gruppen"
 
@@ -2504,14 +2480,6 @@ msgstr "Rapport om grupp och roller vald (kanske blir det en mångsidig PDF doku
 #: 
 msgid "Generate letters and mailing labels."
 msgstr "Skapa brev och post etikett."
-
-#: 
-msgid "US Address Verification Report"
-msgstr "US adress konfirmation rapport"
-
-#: 
-msgid "Generate report comparing all US family addresses with United States Postal Service Standard Address Format.<br>"
-msgstr "Skapa rapport som jämför alla amerikanska familjeadresser med United States Postal Service Standard Address Format. <br>"
 
 #: 
 msgid "Role / Gender"
@@ -3322,10 +3290,6 @@ msgid "Calendar Year"
 msgstr "Kalender år"
 
 #: 
-msgid "US Address Verification"
-msgstr "Bekräfta USA adress"
-
-#: 
 msgid "Update Latitude & Longitude"
 msgstr "Uppdatera Latitude &amp; Longitud"
 
@@ -3820,10 +3784,6 @@ msgid "Dashboard"
 msgstr "Instrumentbräda"
 
 #: 
-msgid "Toggle navigation"
-msgstr "Växla navigering"
-
-#: 
 msgid "Change Password"
 msgstr "Ändra lösenord"
 
@@ -4276,10 +4236,6 @@ msgstr "Lista"
 #: 
 msgid "Import Data"
 msgstr "Importera data"
-
-#: 
-msgid "Clear Data"
-msgstr "Radera data"
 
 #: 
 msgid "Are you sure you want to DELETE this person from Event ID: "
@@ -4763,10 +4719,6 @@ msgid "File Name:"
 msgstr "Filnamn:"
 
 #: 
-msgid "http://www.intelligentsearch.com/address_verification/verify_address.html"
-msgstr "http://www.intelligentsearch.com/address_verification/verify_address.html"
-
-#: 
 msgid "Fiscal Year:"
 msgstr "Räkenskapsår:"
 
@@ -4907,7 +4859,8 @@ msgid "Church Email"
 msgstr "Kyrkans e-post"
 
 #: 
-msgid "Include only these classifications in the directory, comma seperated"
+#, fuzzy
+msgid "Include only these classifications in the directory, comma separated"
 msgstr "Inkludera endast dessa klassificeringar i katalogen, kommaseparerad"
 
 #: 
@@ -4935,7 +4888,8 @@ msgid "Minimum length a user may set their password to"
 msgstr "Minsta längd som en användare kan ställa in sitt lösenord till"
 
 #: 
-msgid "A comma-seperated list of disallowed (too obvious) passwords."
+#, fuzzy
+msgid "A comma-separated list of disallowed (too obvious) passwords."
 msgstr "En kommaseparerad lista med tillåtna (för uppenbara) lösenord."
 
 #: 
@@ -5009,14 +4963,6 @@ msgstr "Ställ in true för att möjliggöra användning av donations kuvert"
 #: 
 msgid "Enter in HTML code which will be displayed as a header at the top of each page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A SECOND TIME to view the new header."
 msgstr "Ange i HTML-kod som visas som en rubrik högst upp på varje sida. Var noga med att stänga dina taggar! Obs! Du måste uppdatera din brytare en andra tid för att se den nya rubriken."
-
-#: 
-msgid "Intelligent Search Technolgy, Ltd. CorrectAddress Username"
-msgstr "Intelligent Search Technolgy, Ltd. CorrectAddress Användarnamn"
-
-#: 
-msgid "Intelligent Search Technolgy, Ltd. CorrectAddress Password"
-msgstr "Intelligent Search Technolgy, Ltd. CorrectAddress Password"
 
 #: 
 msgid "Number of checks for Deposit Slip Report"
@@ -5359,7 +5305,8 @@ msgid "The property for which you would like person records returned."
 msgstr "Den egendom som du vill att personposter returneras för."
 
 #: 
-msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that conatain donations."
+#, fuzzy
+msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations."
 msgstr "Välj startdatum för att beräkna totala bidrag för varje medlem (dvs. ÅÅÅÅ-MM-DD). OBS: Du kan bara välja datum som kopplar in donationer."
 
 #: 
@@ -7655,20 +7602,8 @@ msgid "Kiosk Manager"
 msgstr "Kiosk redaktör"
 
 #: 
-msgid "Your Cart"
-msgstr "Din vagn"
-
-#: 
-msgid "Your settings and more"
-msgstr "Dina inställningar och mer"
-
-#: 
 msgid "Report an issue"
 msgstr "Rapportera ett problem"
-
-#: 
-msgid "Your tasks"
-msgstr "Dina uppgifter"
 
 #: 
 msgid "Enable New Kiosk Registration"
@@ -8271,10 +8206,6 @@ msgid "Number of seconds after page load until the banner disappears, default 10
 msgstr "Antal sekunder efter sidladdning tills bannern försvinner, standard 10 sekunder"
 
 #: 
-msgid "Help & Support"
-msgstr "Hjälp och support"
-
-#: 
 msgid "Help & Manual"
 msgstr "Hjälp och manual"
 
@@ -8577,14 +8508,6 @@ msgstr "Donationsfonder"
 #: 
 msgid "Unable to open file"
 msgstr "Kan ej öppna filen"
-
-#: 
-msgid "Invalid upgrade file specified"
-msgstr "Ogiltig uppgraderingsfil anges"
-
-#: 
-msgid "Failure executing upgrade script"
-msgstr "Det gick inte att uppgradera skript"
 
 #: 
 msgid "Missing calendar access token"
@@ -9025,10 +8948,6 @@ msgstr[0] "%d år gammal"
 msgstr[1] "%d år gammal"
 
 #: 
-msgid "Database upgrade failed"
-msgstr "Uppgradering av databasen misslyckades"
-
-#: 
 msgid "Unsupported PHP Version"
 msgstr "Ostödd PHP-version"
 
@@ -9403,10 +9322,6 @@ msgid "Manage Notes"
 msgstr "Hantera anteckningar"
 
 #: 
-msgid "Skins"
-msgstr "Skal"
-
-#: 
 msgid "Failed generate a new API Key"
 msgstr "Det gick inte att generera en ny API-nyckel"
 
@@ -9537,10 +9452,6 @@ msgstr "Deltagande i evenemang"
 #: 
 msgid "Generate attendance -AND- non-attendance reports for events"
 msgstr "Skapa närvaro-OCH- rapporter om närvaro för evenemang"
-
-#: 
-msgid "of translation completed"
-msgstr "av översättningen är klar"
 
 #: 
 msgid "Help translate this project"

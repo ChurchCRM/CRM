@@ -13,7 +13,7 @@ class SystemURLs
     private static $rootPath;
     private static $urls;
     private static $documentRoot;
-    private static $CSPNonce;
+    private static ?string $CSPNonce = null;
 
     public static function init($rootPath, $urls, $documentRoot)
     {
@@ -105,7 +105,7 @@ class SystemURLs
             $validURL = false;
             foreach ($URL as $value) {
                 $base = substr($value, 0, -strlen('/'));
-                if (strpos($currentURL, $value) === 0) {
+                if (strpos($currentURL, (string) $value) === 0) {
                     $validURL = true;
                     break;
                 }

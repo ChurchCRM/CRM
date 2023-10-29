@@ -1,23 +1,18 @@
 {
     "name": "churchcrm/crm",
-    "version": "5.0.1",
+    "version": "5.0.5",
     "type": "project",
     "keywords": [
         "church",
         "crm"
     ],
-    "homepage": "http://www.churchcrm.io",
+    "homepage": "https://www.churchcrm.io",
     "license": "MIT",
     "authors": [
         {
             "name": "George Dawoud",
             "homepage": "http://blog.dawouds.com",
             "role": "Lead Developer"
-        },
-        {
-            "name": "Charles Crossan",
-            "homepage": "https://crossan007.dev/",
-            "role": "Developer"
         }
     ],
     "support": {
@@ -51,7 +46,7 @@
         "php-http/message": "^1.11.1",
         "phpmailer/phpmailer": "^6.5.1",
         "pragmarx/google2fa": "^8.0.0",
-        "propel/propel": "2.0.0-beta3",
+        "propel/propel": "2.0.0-alpha12",
         "setasign/fpdf": "^1.8.3",
         "slim/http-cache": "^1.1.0",
         "slim/php-view": "^3.1.0",

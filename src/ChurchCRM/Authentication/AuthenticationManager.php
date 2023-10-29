@@ -20,8 +20,12 @@ class AuthenticationManager
     // Currently, only local auth is implemented; hence the zero-indexed array elements.
 
     public static function GetAuthenticationProvider() {
-      if ( key_exists("AuthenticationProvider", $_SESSION) && $_SESSION['AuthenticationProvider'] instanceof IAuthenticationProvider) {
-        return  $_SESSION['AuthenticationProvider'];
+      if (
+        isset($_SESSION) &&
+        array_key_exists('AuthenticationProvider', $_SESSION) &&
+        $_SESSION['AuthenticationProvider'] instanceof IAuthenticationProvider
+      ) {
+        return $_SESSION['AuthenticationProvider'];
       }
       else {
         throw new \Exception("No active authentication provider");
@@ -39,76 +43,73 @@ class AuthenticationManager
           throw new \Exception("No current user provided by current authentication provider: " . get_class(self::GetAuthenticationProvider()));
         }
         return $currentUser;
-      }
-      catch (\Exception $e){
-        LoggerUtils::getAppLogger()->debug("Failed to get current user: " . $e);
+      } catch (\Exception $e) {
+        LoggerUtils::getAppLogger()->debug('Failed to get current user', ['exception' => $e]);
         throw $e;
       }
     }
 
     public static function EndSession($preventRedirect=false) {
+      $logger = LoggerUtils::getAuthLogger();
       $currentSessionUserName = "Unknown";
       try {
         if (self::GetCurrentUser() != null) {
           $currentSessionUserName = self::GetCurrentUser()->getName();
         }
-      }
-      catch(\Exception $e) {
+      } catch (\Exception $e) {
         //unable to get name of user logging out. Don't really care.
       }
+
       try {
         $result = self::GetAuthenticationProvider()->EndSession();
         $_COOKIE = [];
         $_SESSION = [];
         session_destroy();
         Bootstrapper::initSession();
-        LoggerUtils::getAuthLogger()->info("Ended Local session for user " . $currentSessionUserName);
-      }
-      catch(\Exception $e) {
-        LoggerUtils::getAuthLogger()->warning("Error destroying session: " . $e);
-      }
-      finally {
-        if(!$preventRedirect) {
+        $logger->info("Ended Local session for user " . $currentSessionUserName);
+      } catch(\Exception $e) {
+        $logger->warning('Error destroying session', ['exception' => $e]);
+      } finally {
+        if (!$preventRedirect) {
           RedirectUtils::Redirect(self::GetSessionBeginURL());
         }
       }
     }
 
     public static function Authenticate(AuthenticationRequest $AuthenticationRequest) {
-      switch (get_class($AuthenticationRequest)){
+      $logger = LoggerUtils::getAppLogger();
+      switch (get_class($AuthenticationRequest)) {
         case \ChurchCRM\Authentication\Requests\APITokenAuthenticationRequest::class:
           $AuthenticationProvider = new APITokenAuthentication();
           self::SetAuthenticationProvider($AuthenticationProvider);
-        break;
+          break;
         case \ChurchCRM\Authentication\Requests\LocalUsernamePasswordRequest::class:
           $AuthenticationProvider = new LocalAuthentication();
           self::SetAuthenticationProvider($AuthenticationProvider);
-        break;
+          break;
         case \ChurchCRM\Authentication\Requests\LocalTwoFactorTokenRequest::class:
           try {
             self::GetAuthenticationProvider();
+          } catch (\Exception $e) {
+            $logger->warning("Tried to supply two factor authentication code, but didn't have an existing session.  This shouldn't ever happen", ['exception' => $e]);
           }
-          catch (\Exception $e)
-          {
-            LoggerUtils::getAppLogger()->warning("Tried to supply two factor authentication code, but didn't have an existing session.  This shouldn't ever happen");
-          }
-        break;
+          break;
         default:
-          LoggerUtils::getAppLogger()->critical("Unknown AuthenticationRequest type supplied");
-        break;
+          $logger->critical("Unknown AuthenticationRequest type supplied");
+          break;
       }
 
       $result = self::GetAuthenticationProvider()->Authenticate($AuthenticationRequest);
 
-      if (null !== $result->nextStepURL){
-        LoggerUtils::getAuthLogger()->debug("Authentication requires additional step: " . $result->nextStepURL);
+      if (null !== $result->nextStepURL) {
+        $logger->debug("Authentication requires additional step: " . $result->nextStepURL);
         RedirectUtils::Redirect($result->nextStepURL);
       }
 
       if ($result->isAuthenticated && ! $result->preventRedirect) {
         $redirectLocation = array_key_exists("location", $_SESSION) ? $_SESSION['location'] : 'Menu.php';
         NotificationService::updateNotifications();
-        LoggerUtils::getAuthLogger()->debug("Authentication Successful; redirecting to: " . $redirectLocation);
+        $logger->debug("Authentication Successful; redirecting to: " . $redirectLocation);
         RedirectUtils::Redirect($redirectLocation);
 
       }
@@ -119,9 +120,8 @@ class AuthenticationManager
       try {
         $result = self::GetAuthenticationProvider()->ValidateUserSessionIsActive($updateLastOperationTimestamp);
         return $result->isAuthenticated;
-      }
-      catch (\Exception $error){
-        LoggerUtils::getAuthLogger()->debug("Error determining session authentication status." . $error);
+      } catch (\Exception $error) {
+        LoggerUtils::getAuthLogger()->debug("Error determining session authentication status.", ['exception' => $error]);
         return false;
       }
     }
@@ -144,8 +144,8 @@ class AuthenticationManager
           RedirectUtils::Redirect($result->nextStepURL);
         }
         LoggerUtils::getAuthLogger()->debug("Session valid");
-      } catch (\Throwable $error){
-        LoggerUtils::getAuthLogger()->debug("Error determining session authentication status.  Redirecting to login page. " . $error);
+      } catch (\Throwable $error) {
+        LoggerUtils::getAuthLogger()->debug("Error determining session authentication status.  Redirecting to login page.", ['exception' => $error]);
         RedirectUtils::Redirect(self::GetSessionBeginURL());
       }
     }

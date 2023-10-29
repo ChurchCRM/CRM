@@ -244,7 +244,7 @@
 					"name": "Deposits",
 					"item": [
 						{
-							"name": "Deposiits: Dashbaord data",
+							"name": "Deposits: Dashboard data",
 							"request": {
 								"method": "GET",
 								"header": [
@@ -424,7 +424,7 @@
 									"key": "CRM%40%2Fmaster"
 								}
 							],
-							"body": "Can't find route for GET on http://demo.churchcrm.io/master/api/persons/%7B%7BpersonId%7D%7D/photo"
+							"body": "Can't find route for GET on https://demo.churchcrm.io/master/api/persons/%7B%7BpersonId%7D%7D/photo"
 						}
 					]
 				},
@@ -575,7 +575,7 @@
 									"key": "CRM%40%2Fmaster"
 								}
 							],
-							"body": "Can't find route for GET on http://demo.churchcrm.io/master/api/persons/%7B%7BpersonId%7D%7D/photo"
+							"body": "Can't find route for GET on https://demo.churchcrm.io/master/api/persons/%7B%7BpersonId%7D%7D/photo"
 						}
 					]
 				},
@@ -691,7 +691,7 @@
 									"key": "CRM%40%2Fmaster"
 								}
 							],
-							"body": "Can't find route for GET on http://demo.churchcrm.io/master/api/persons/%7B%7BpersonId%7D%7D/photo"
+							"body": "Can't find route for GET on https://demo.churchcrm.io/master/api/persons/%7B%7BpersonId%7D%7D/photo"
 						}
 					]
 				},
@@ -806,7 +806,7 @@
 									"key": "CRM%40%2Fmaster"
 								}
 							],
-							"body": "Can't find route for GET on http://demo.churchcrm.io/master/api/persons/%7B%7BpersonId%7D%7D/photo"
+							"body": "Can't find route for GET on https://demo.churchcrm.io/master/api/persons/%7B%7BpersonId%7D%7D/photo"
 						}
 					]
 				},
@@ -921,7 +921,7 @@
 									"key": "CRM%40%2Fmaster"
 								}
 							],
-							"body": "Can't find route for GET on http://demo.churchcrm.io/master/api/persons/%7B%7BpersonId%7D%7D/photo"
+							"body": "Can't find route for GET on https://demo.churchcrm.io/master/api/persons/%7B%7BpersonId%7D%7D/photo"
 						}
 					]
 				},
@@ -1037,7 +1037,7 @@
 									"key": "CRM%40%2Fmaster"
 								}
 							],
-							"body": "Can't find route for GET on http://demo.churchcrm.io/master/api/persons/%7B%7BpersonId%7D%7D/photo"
+							"body": "Can't find route for GET on https://demo.churchcrm.io/master/api/persons/%7B%7BpersonId%7D%7D/photo"
 						}
 					]
 				}
@@ -1161,7 +1161,7 @@
 											"key": "CRM%40%2Fmaster"
 										}
 									],
-									"body": "Can't find route for GET on http://demo.churchcrm.io/master/api/persons/%7B%7BpersonId%7D%7D/photo"
+									"body": "Can't find route for GET on https://demo.churchcrm.io/master/api/persons/%7B%7BpersonId%7D%7D/photo"
 								}
 							]
 						},
@@ -1337,7 +1337,7 @@
 											"key": "CRM%40%2Fmaster"
 										}
 									],
-									"body": "Can't find route for GET on http://demo.churchcrm.io/master/api/persons/%7B%7BpersonId%7D%7D/photo"
+									"body": "Can't find route for GET on https://demo.churchcrm.io/master/api/persons/%7B%7BpersonId%7D%7D/photo"
 								}
 							]
 						},
@@ -2200,7 +2200,7 @@
 											"key": "CRM%40%2Fmaster"
 										}
 									],
-									"body": "Can't find route for GET on http://demo.churchcrm.io/master/api/persons/%7B%7BpersonId%7D%7D/photo"
+									"body": "Can't find route for GET on https://demo.churchcrm.io/master/api/persons/%7B%7BpersonId%7D%7D/photo"
 								}
 							]
 						}

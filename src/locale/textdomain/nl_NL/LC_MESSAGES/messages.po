@@ -347,24 +347,8 @@ msgid "ERROR: the uploaded CSV file no longer exists!"
 msgstr "FOUT: Het uploaded CSV bestand bestaat niet meer!"
 
 #: 
-msgid "Data Cleared Successfully!"
-msgstr "Data is met succes verwijderd!"
-
-#: 
 msgid "Upload CSV File"
 msgstr "Upload CSV Bestand"
-
-#: 
-msgid "Clear Persons and Families"
-msgstr "Verwijder personen en gezinnen"
-
-#: 
-msgid "Warning!  Do not select this option if you plan to add to an existing database.<br/>"
-msgstr "Waarschuwing! Selecteer deze optie niet als u iets wilt toevoegen in een bestaande database.<br/>"
-
-#: 
-msgid "Use only if unsatisfied with initial import.  All person and member data will be destroyed!"
-msgstr "Gebruik alleen als u ontevreden bent over import actie.  Alle personen en gegevens zullen worden verwijderd!"
 
 #: 
 msgid "Data import successful."
@@ -661,10 +645,6 @@ msgstr "Email (BCC)"
 #: 
 msgid "Create Directory From Cart"
 msgstr "Maak adresboek van het werkbestand"
-
-#: 
-msgid "Generate Labels"
-msgstr "Genereer Etiketten"
 
 #: 
 msgid "Bulk Mail Presort"
@@ -2223,10 +2203,6 @@ msgid "Group Members:"
 msgstr "Groep Leden:"
 
 #: 
-msgid "Group members: "
-msgstr "Groepsleden."
-
-#: 
 msgid "Remove Selected Members from group"
 msgstr "Verwijder gelecteerde leden van groep"
 
@@ -2430,14 +2406,6 @@ msgstr "Rapportage van geselecteerde groepen en rollen (Meervoudige-pagina's PDF
 #: 
 msgid "Generate letters and mailing labels."
 msgstr "Genereer brieven en mailing Etikettes."
-
-#: 
-msgid "US Address Verification Report"
-msgstr "Amerikaanse Address Verification Report"
-
-#: 
-msgid "Generate report comparing all US family addresses with United States Postal Service Standard Address Format.<br>"
-msgstr "Genereer een rapport dat alle Amerikaanse gezinsadressen vergelijkt met het standaard adresformaat van de United States Postal Service."
 
 #: 
 msgid "Role / Gender"
@@ -3222,10 +3190,6 @@ msgid "Calendar Year"
 msgstr "Kalender Jaar"
 
 #: 
-msgid "US Address Verification"
-msgstr "Amerikaanse Address Verification"
-
-#: 
 msgid "Update Latitude & Longitude"
 msgstr "Breedte en lengtegraad updaten"
 
@@ -3699,10 +3663,6 @@ msgid "Dashboard"
 msgstr "Overzicht"
 
 #: 
-msgid "Toggle navigation"
-msgstr "Navigatie omschakelen"
-
-#: 
 msgid "Change Password"
 msgstr "Wijzig password"
 
@@ -4140,10 +4100,6 @@ msgstr "Overzicht"
 #: 
 msgid "Import Data"
 msgstr "Gegevens importeren"
-
-#: 
-msgid "Clear Data"
-msgstr "Opschonen gegevens"
 
 #: 
 msgid "Are you sure you want to DELETE this person from Event ID: "
@@ -4629,10 +4585,6 @@ msgid "File Name:"
 msgstr "Bestandsnaam:"
 
 #: 
-msgid "http://www.intelligentsearch.com/address_verification/verify_address.html"
-msgstr "http://www.intelligentsearch.com/address_verification/verify_address.html"
-
-#: 
 msgid "Fiscal Year:"
 msgstr "Fiscaal jaar:"
 
@@ -4773,7 +4725,8 @@ msgid "Church Email"
 msgstr "Email adres van de kerk"
 
 #: 
-msgid "Include only these classifications in the directory, comma seperated"
+#, fuzzy
+msgid "Include only these classifications in the directory, comma separated"
 msgstr "Neem alleen deze classificaties in de directory, gescheiden door een komma"
 
 #: 
@@ -4801,7 +4754,8 @@ msgid "Minimum length a user may set their password to"
 msgstr "Minimale lengte kan een gebruiker zijn wachtwoord ingesteld op"
 
 #: 
-msgid "A comma-seperated list of disallowed (too obvious) passwords."
+#, fuzzy
+msgid "A comma-separated list of disallowed (too obvious) passwords."
 msgstr "Een door komma's gescheiden lijst van niet-toegestane (ook voor de hand liggende) wachtwoorden."
 
 #: 
@@ -4879,14 +4833,6 @@ msgstr "\"Aan\" instellen om het gebruik van de donatie enveloppen mogelijk te m
 msgid "Enter in HTML code which will be displayed as a header at the top of each page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A SECOND TIME to view the new header."
 msgstr "Voer de HTML-code in, die als een \"header\" aan de bovenkant van elke pagina wordt weergegeven. Zorg ervoor dat u uw labels te sluit! Opmerking: U moet uw browser vernieuwen om een tweede maal de nieuwe header te zien.\n"
 ""
-
-#: 
-msgid "Intelligent Search Technolgy, Ltd. CorrectAddress Username"
-msgstr "Intelligent Search Technology, Ltd. Juiste adres gebruikersnaam"
-
-#: 
-msgid "Intelligent Search Technolgy, Ltd. CorrectAddress Password"
-msgstr "Intelligent Search Technolgy, Ltd. Juiste adres Password"
 
 #: 
 msgid "Number of checks for Deposit Slip Report"
@@ -5230,7 +5176,8 @@ msgid "The property for which you would like person records returned."
 msgstr "Records met personen op basis van de gewenste eigenschap."
 
 #: 
-msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that conatain donations."
+#, fuzzy
+msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations."
 msgstr "Selecteer de begindatum de totale bijdragen voor elk lid (dat wil zeggen YYYY-MM-DD) te berekenen. OPMERKING: U kunt alleen kiezen voor data die donaties bevatten. "
 
 #: 
@@ -7527,20 +7474,8 @@ msgid "Kiosk Manager"
 msgstr "Kioskmanager"
 
 #: 
-msgid "Your Cart"
-msgstr "Uw werkbestand"
-
-#: 
-msgid "Your settings and more"
-msgstr "Uw instellingen en meer"
-
-#: 
 msgid "Report an issue"
 msgstr "Een probleem melden"
-
-#: 
-msgid "Your tasks"
-msgstr "Je taken"
 
 #: 
 msgid "Enable New Kiosk Registration"
@@ -8143,10 +8078,6 @@ msgid "Number of seconds after page load until the banner disappears, default 10
 msgstr "Aantal seconden na het laden van de pagina totdat de banner verdwijnt, standaard 10 seconden"
 
 #: 
-msgid "Help & Support"
-msgstr "Help & ondersteuning"
-
-#: 
 msgid "Help & Manual"
 msgstr "Help & documentatie"
 
@@ -8449,14 +8380,6 @@ msgstr "Giften"
 #: 
 msgid "Unable to open file"
 msgstr "Kan bestand niet openen"
-
-#: 
-msgid "Invalid upgrade file specified"
-msgstr "Ongeldig upgradebestand opgegeven"
-
-#: 
-msgid "Failure executing upgrade script"
-msgstr "Kan upgradescript niet uitvoeren"
 
 #: 
 msgid "Missing calendar access token"
@@ -8898,10 +8821,6 @@ msgstr[0] "%d jaar oud"
 msgstr[1] "%d jaar oud"
 
 #: 
-msgid "Database upgrade failed"
-msgstr "Database-upgrade mislukt"
-
-#: 
 msgid "Unsupported PHP Version"
 msgstr "Niet-ondersteunde PHP-versie"
 
@@ -9276,10 +9195,6 @@ msgid "Manage Notes"
 msgstr "Notities beheren"
 
 #: 
-msgid "Skins"
-msgstr "Thema's"
-
-#: 
 msgid "Failed generate a new API Key"
 msgstr "Kan geen nieuwe API-sleutel genereren"
 
@@ -9412,10 +9327,6 @@ msgid "Generate attendance -AND- non-attendance reports for events"
 msgstr "Aanwezigheids -EN- niet-aanwezigheidsrapporten genereren voor evenementen"
 
 #: 
-msgid "of translation completed"
-msgstr "van vertaling voltooid"
-
-#: 
 msgid "Help translate this project"
 msgstr "Help dit project te vertalen"
 
@@ -9486,54 +9397,6 @@ msgstr "Verifiëren"
 #: 
 msgid "Family has no emails to use"
 msgstr "Familie heeft geen e-mails om te gebruiken"
-
-#: 
-msgid "Blue"
-msgstr "Blauw"
-
-#: 
-msgid "Black"
-msgstr "Zwart"
-
-#: 
-msgid "Purple"
-msgstr "Paars"
-
-#: 
-msgid "Green"
-msgstr "Groen"
-
-#: 
-msgid "Red"
-msgstr "Rood"
-
-#: 
-msgid "Yellow"
-msgstr "Geel"
-
-#: 
-msgid "Blue Light"
-msgstr "Licht Blauw"
-
-#: 
-msgid "Black Light"
-msgstr "Licht Zwart"
-
-#: 
-msgid "Purple Light"
-msgstr "Licht Paars"
-
-#: 
-msgid "Green Light"
-msgstr "Licht Groen"
-
-#: 
-msgid "Red Light"
-msgstr "Licht Rood"
-
-#: 
-msgid "Yellow Light"
-msgstr "Licht Geel"
 
 #: 
 msgid "Boxed Layout"

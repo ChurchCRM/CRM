@@ -245,7 +245,7 @@ foreach ($allMonths as $mKey => $mVal) {
                   <td>
                     <form name="DeleteEvent" action="ListEvents.php" method="POST">
                       <input type="hidden" name="EID" value="<?= $aEventID[$row] ?>">
-                      <button type="submit" name="Action" title="<?=gettext('Delete') ?>" data-tooltip value="Delete" class="btn btn-danger btn-sm" 
+                      <button type="submit" name="Action" title="<?=gettext('Delete') ?>" value="Delete" class="btn btn-danger btn-sm"
                       onClick="return confirm('Deleting an event will also delete all attendance counts for that event.  Are you sure you want to DELETE Event ID: <?=  $aEventID[$row] ?>')">
                         <i class='fa fa-trash'></i>
                       </button>

@@ -14,11 +14,11 @@ use Slim\Http\Response;
 use ChurchCRM\Utils\LoggerUtils;
 
 
-$app->group('/forgot-password', function () {
+$app->group('/forgot-password', function () use ($app) {
     if (SystemConfig::getBooleanValue('bEnableLostPassword')) {
-        $this->get('/reset-request', "forgotPassword");
-        $this->post('/reset-request', 'userPasswordReset');
-        $this->get('/set/{token}', function ($request, $response, $args) {
+        $app->get('/reset-request', "forgotPassword");
+        $app->post('/reset-request', 'userPasswordReset');
+        $app->get('/set/{token}', function ($request, $response, $args) use ($app) {
             $renderer = new PhpRenderer('templates');
             $token = TokenQuery::create()->findPk($args['token']);
             $haveUser = false;
@@ -35,7 +35,7 @@ $app->group('/forgot-password', function () {
                     if ($email->send()) {
                         return $renderer->render($response, 'password/password-check-email.php', ['sRootPath' => SystemURLs::getRootPath()]);
                     } else {
-                        $this->Logger->error($email->getError());
+                        $app->Logger->error($email->getError());
                         throw new \Exception($email->getError());
                     }
                 }
@@ -45,7 +45,7 @@ $app->group('/forgot-password', function () {
         });
     }
     else {
-        $this->get('/{foo:.*}', function ($request, $response, $args) {
+        $app->get('/{foo:.*}', function ($request, $response, $args) {
             $renderer = new PhpRenderer('templates');
             return $renderer->render($response, '/error.php', ["message" => gettext("Password reset not available.  Please contact your system administrator")]);
         });
@@ -66,7 +66,7 @@ function forgotPassword($request, $response, $args) {
 function userPasswordReset(Request $request, Response $response, array $args)
 {
     $logger = LoggerUtils::getAppLogger();
-    $body = json_decode($request->getBody());
+    $body = json_decode($request->getBody(), null, 512, JSON_THROW_ON_ERROR);
     $userName = strtolower(trim($body->userName));
     if (!empty($userName)) {
         $user = UserQuery::create()->findOneByUserName($userName);

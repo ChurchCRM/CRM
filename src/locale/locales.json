@@ -61,6 +61,16 @@
     "datePicker": true,
     "select2": true
   },
+  "Czech": {
+    "poEditor": "cs",
+    "locale": "cs",
+    "languageCode": "cs",
+    "countryCode": "CZ",
+    "dataTables": "Czech",
+    "fullCalendar" : true,
+    "datePicker": false,
+    "select2": true
+  },
   "Dutch - Netherlands": {
     "poEditor": "nl",
     "locale": "nl_NL",
@@ -292,6 +302,16 @@
     "languageCode": "th",
     "countryCode": "TH",
     "dataTables": "Thai",
+    "fullCalendar" : true,
+    "datePicker": true,
+    "select2": true
+  },
+  "Turkish": {
+    "poEditor": "tr",
+    "locale": "tr_TR",
+    "languageCode": "tr",
+    "countryCode": "TR",
+    "dataTables": "Turkish",
     "fullCalendar" : true,
     "datePicker": true,
     "select2": true

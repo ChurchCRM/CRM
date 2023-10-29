@@ -4,27 +4,27 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\AppIntegrityService;
 use Slim\Views\PhpRenderer;
 
-$app->group('/', function () {
-    $this->get('', function ($request, $response, $args) {
+$app->group('/', function () use ($app) {
+    $app->get('', function ($request, $response, $args) {
         $renderer = new PhpRenderer('templates/');
         $renderPage = 'setup-steps.php';
-        if (version_compare(phpversion(), "8.0.0", ">=")) {
+        if (version_compare(phpversion(), "8.0.0", "<")) {
             $renderPage = 'setup-error.php';
         }
         return $renderer->render($response, $renderPage, ['sRootPath' => SystemURLs::getRootPath()]);
     });
 
-    $this->get('SystemIntegrityCheck', function ($request, $response, $args) {
+    $app->get('SystemIntegrityCheck', function ($request, $response, $args) {
         $AppIntegrity = ChurchCRM\Service\AppIntegrityService::verifyApplicationIntegrity();
         echo $AppIntegrity['status'];
     });
 
-    $this->get('SystemPrerequisiteCheck', function ($request, $response, $args) {
+    $app->get('SystemPrerequisiteCheck', function ($request, $response, $args) {
         $required = AppIntegrityService::getApplicationPrerequisites();
         return $response->withJson($required);
     });
 
-    $this->post('', function ($request, $response, $args) {
+    $app->post('', function ($request, $response, $args) {
         $setupDate = $request->getParsedBody();
         $template = file_get_contents(SystemURLs::getDocumentRoot().'/Include/Config.php.example');
 

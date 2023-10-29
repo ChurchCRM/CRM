@@ -8,13 +8,13 @@ use ChurchCRM\Person2group2roleP2g2rQuery;
 use ChurchCRM\PersonQuery;
 use ChurchCRM\Slim\Middleware\Request\Auth\ManageGroupRoleAuthMiddleware;
 
-$app->group('/groups', function () {
-    $this->get('/', function () {
+$app->group('/groups', function () use ($app) {
+    $app->get('/', function () {
         echo GroupQuery::create()->find()->toJSON();
     });
 
     // get the group for the calendar, it's planned to only have the personan calendar and the calendar groups the user belongs to
-    $this->get('/calendars', function ($request, $response, $args) {
+    $app->get('/calendars', function ($request, $response, $args) {
         $groups = GroupQuery::Create()
             ->orderByName()
             ->find();
@@ -31,7 +31,7 @@ $app->group('/groups', function () {
         return $response->withJson($return);
     });
 
-    $this->get('/groupsInCart', function () {
+    $app->get('/groupsInCart', function () {
         $groupsInCart = [];
         $groups = GroupQuery::create()->find();
         foreach ($groups as $group) {
@@ -39,18 +39,18 @@ $app->group('/groups', function () {
                 array_push($groupsInCart, $group->getId());
             }
         }
-        echo json_encode(['groupsInCart' => $groupsInCart]);
+        echo json_encode(['groupsInCart' => $groupsInCart], JSON_THROW_ON_ERROR);
     });
 
-    $this->get('/{groupID:[0-9]+}', function ($request, $response, $args) {
+    $app->get('/{groupID:[0-9]+}', function ($request, $response, $args) {
         echo GroupQuery::create()->findOneById($args['groupID'])->toJSON();
     });
 
-    $this->get('/{groupID:[0-9]+}/cartStatus', function ($request, $response, $args) {
+    $app->get('/{groupID:[0-9]+}/cartStatus', function ($request, $response, $args) {
         echo GroupQuery::create()->findOneById($args['groupID'])->checkAgainstCart();
     });
 
-    $this->get('/{groupID:[0-9]+}/members', function ($request, $response, $args) {
+    $app->get('/{groupID:[0-9]+}/members', function ($request, $response, $args) {
         $groupID = $args['groupID'];
         $members = ChurchCRM\Person2group2roleP2g2rQuery::create()
             ->joinWithPerson()
@@ -76,7 +76,7 @@ $app->group('/groups', function () {
         echo $members->toJSON();
     });
 
-    $this->get('/{groupID:[0-9]+}/events', function ($request, $response, $args) {
+    $app->get('/{groupID:[0-9]+}/events', function ($request, $response, $args) {
         $groupID = $args['groupID'];
         $members = ChurchCRM\Person2group2roleP2g2rQuery::create()
             ->joinWithPerson()
@@ -84,7 +84,7 @@ $app->group('/groups', function () {
         echo $members->toJSON();
     });
 
-    $this->get('/{groupID:[0-9]+}/roles', function ($request, $response, $args) {
+    $app->get('/{groupID:[0-9]+}/roles', function ($request, $response, $args) {
         $groupID = $args['groupID'];
         $group = GroupQuery::create()->findOneById($groupID);
         $roles = ChurchCRM\ListOptionQuery::create()->filterById($group->getRoleListId())->find();
@@ -92,9 +92,9 @@ $app->group('/groups', function () {
     });
 });
 
-$app->group('/groups', function () {
+$app->group('/groups', function () use ($app) {
 
-    $this->post('/', function ($request, $response, $args) {
+    $app->post('/', function ($request, $response, $args) {
         $groupSettings = (object)$request->getParsedBody();
         $group = new Group();
         if ($groupSettings->isSundaySchool) {
@@ -105,7 +105,7 @@ $app->group('/groups', function () {
         echo $group->toJSON();
     });
 
-    $this->post('/{groupID:[0-9]+}', function ($request, $response, $args) {
+    $app->post('/{groupID:[0-9]+}', function ($request, $response, $args) {
         $groupID = $args['groupID'];
         $input = (object)$request->getParsedBody();
         $group = GroupQuery::create()->findOneById($groupID);
@@ -116,14 +116,14 @@ $app->group('/groups', function () {
         echo $group->toJSON();
     });
 
-    $this->delete('/{groupID:[0-9]+}', function ($request, $response, $args) {
+    $app->delete('/{groupID:[0-9]+}', function ($request, $response, $args) {
         $groupID = $args['groupID'];
         GroupQuery::create()->findOneById($groupID)->delete();
         echo json_encode(['status' => 'success']);
     });
 
 
-    $this->delete('/{groupID:[0-9]+}/removeperson/{userID:[0-9]+}', function ($request, $response, $args) {
+    $app->delete('/{groupID:[0-9]+}/removeperson/{userID:[0-9]+}', function ($request, $response, $args) {
         $groupID = $args['groupID'];
         $userID = $args['userID'];
         $person = PersonQuery::create()->findPk($userID);
@@ -143,7 +143,7 @@ $app->group('/groups', function () {
         echo json_encode(['success' => 'true']);
     });
 
-    $this->post('/{groupID:[0-9]+}/addperson/{userID:[0-9]+}', function ($request, $response, $args) {
+    $app->post('/{groupID:[0-9]+}/addperson/{userID:[0-9]+}', function ($request, $response, $args) {
         $groupID = $args['groupID'];
         $userID = $args['userID'];
         $person = PersonQuery::create()->findPk($userID);
@@ -170,11 +170,11 @@ $app->group('/groups', function () {
         $members = ChurchCRM\Person2group2roleP2g2rQuery::create()
             ->joinWithPerson()
             ->filterByPersonId($input->PersonID)
-            ->findByGroupId($GroupID);
+            ->findByGroupId($groupID);
         echo $members->toJSON();
     });
 
-    $this->post('/{groupID:[0-9]+}/userRole/{userID:[0-9]+}', function ($request, $response, $args) {
+    $app->post('/{groupID:[0-9]+}/userRole/{userID:[0-9]+}', function ($request, $response, $args) {
         $groupID = $args['groupID'];
         $userID = $args['userID'];
         $roleID = $request->getParsedBody()['roleID'];
@@ -184,7 +184,7 @@ $app->group('/groups', function () {
         echo $membership->toJSON();
     });
 
-    $this->post('/{groupID:[0-9]+}/roles/{roleID:[0-9]+}', function ($request, $response, $args) {
+    $app->post('/{groupID:[0-9]+}/roles/{roleID:[0-9]+}', function ($request, $response, $args) {
         $groupID = $args['groupID'];
         $roleID = $args['roleID'];
         $input = (object)$request->getParsedBody();
@@ -206,19 +206,19 @@ $app->group('/groups', function () {
         echo json_encode(['success' => false]);
     });
 
-    $this->delete('/{groupID:[0-9]+}/roles/{roleID:[0-9]+}', function ($request, $response, $args) {
+    $app->delete('/{groupID:[0-9]+}/roles/{roleID:[0-9]+}', function ($request, $response, $args) use ($app) {
         $groupID = $args['groupID'];
         $roleID = $args['roleID'];
-        echo json_encode($this->GroupService->deleteGroupRole($groupID, $roleID));
+        echo json_encode($app->GroupService->deleteGroupRole($groupID, $roleID), JSON_THROW_ON_ERROR);
     });
 
-    $this->post('/{groupID:[0-9]+}/roles', function ($request, $response, $args) {
+    $app->post('/{groupID:[0-9]+}/roles', function ($request, $response, $args) use ($app) {
         $groupID = $args['groupID'];
         $roleName = $request->getParsedBody()['roleName'];
-        echo $this->GroupService->addGroupRole($groupID, $roleName);
+        echo $app->GroupService->addGroupRole($groupID, $roleName);
     });
 
-    $this->post('/{groupID:[0-9]+}/defaultRole', function ($request, $response, $args) {
+    $app->post('/{groupID:[0-9]+}/defaultRole', function ($request, $response, $args) {
         $groupID = $args['groupID'];
         $roleID = $request->getParsedBody()['roleID'];
         $group = GroupQuery::create()->findPk($groupID);
@@ -227,19 +227,19 @@ $app->group('/groups', function () {
         echo json_encode(['success' => true]);
     });
 
-    $this->post('/{groupID:[0-9]+}/setGroupSpecificPropertyStatus', function ($request, $response, $args) {
+    $app->post('/{groupID:[0-9]+}/setGroupSpecificPropertyStatus', function ($request, $response, $args) use ($app) {
         $groupID = $args['groupID'];
         $input = $request->getParsedBody();
         if ($input['GroupSpecificPropertyStatus']) {
-            $this->GroupService->enableGroupSpecificProperties($groupID);
+            $app->GroupService->enableGroupSpecificProperties($groupID);
             echo json_encode(['status' => 'group specific properties enabled']);
         } else {
-            $this->GroupService->disableGroupSpecificProperties($groupID);
+            $app->GroupService->disableGroupSpecificProperties($groupID);
             echo json_encode(['status' => 'group specific properties disabled']);
         }
     });
 
-    $this->post('/{groupID:[0-9]+}/settings/active/{value}', function ($request, $response, $args) {
+    $app->post('/{groupID:[0-9]+}/settings/active/{value}', function ($request, $response, $args) {
         $groupID = $args['groupID'];
         $flag = $args['value'];
         if ($flag == "true" || $flag == "false") {
@@ -256,7 +256,7 @@ $app->group('/groups', function () {
         }
     });
 
-    $this->post('/{groupID:[0-9]+}/settings/email/export/{value}', function ($request, $response, $args) {
+    $app->post('/{groupID:[0-9]+}/settings/email/export/{value}', function ($request, $response, $args) {
         $groupID = $args['groupID'];
         $flag = $args['value'];
         if ($flag == "true" || $flag == "false") {

@@ -12,7 +12,7 @@ use ChurchCRM\Authentication\AuthenticationManager;
 class TimelineService
 {
     /* @var $currentUser \ChurchCRM\User */
-    private $currentUser;
+    private \ChurchCRM\User $currentUser;
 
     public function __construct()
     {

@@ -364,24 +364,8 @@ msgid "ERROR: the uploaded CSV file no longer exists!"
 msgstr "Fehler: Die hochgeladene CSV Datei existiert nicht mehr!"
 
 #: 
-msgid "Data Cleared Successfully!"
-msgstr "Daten erfolgreich gelöscht."
-
-#: 
 msgid "Upload CSV File"
 msgstr "CSV Datei hochladen"
-
-#: 
-msgid "Clear Persons and Families"
-msgstr "Personen und Familien löschen"
-
-#: 
-msgid "Warning!  Do not select this option if you plan to add to an existing database.<br/>"
-msgstr "Achtung! Bitte wählen sie diese Option nicht, wenn sie eine exisitierende Datenbank ergänzen wollen.<br/>"
-
-#: 
-msgid "Use only if unsatisfied with initial import.  All person and member data will be destroyed!"
-msgstr "Bitte nur benutzen, wenn sie mit der ursprünglichen Bericht unzufrieden sind. Alle Personen- und Mitgliederdaten werden gelöscht!"
 
 #: 
 msgid "Data import successful."
@@ -660,10 +644,6 @@ msgstr "Mailen (BCC)"
 #: 
 msgid "Create Directory From Cart"
 msgstr "Erstelle Verzeichnis aus Korb"
-
-#: 
-msgid "Generate Labels"
-msgstr "Adressaufkleber herstellen"
 
 #: 
 msgid "Bulk Mail Presort"
@@ -2244,10 +2224,6 @@ msgid "Group Members:"
 msgstr "Gruppen Mitglieder:"
 
 #: 
-msgid "Group members: "
-msgstr "Gruppenmitglieder"
-
-#: 
 msgid "Remove Selected Members from group"
 msgstr "entfernen"
 
@@ -2454,10 +2430,6 @@ msgstr "Bericht über ausgewählte Rollen und Gruppen (möglicherweise mehrseiti
 #: 
 msgid "Generate letters and mailing labels."
 msgstr "Erzeuge Briefe und Adressetiketten"
-
-#: 
-msgid "US Address Verification Report"
-msgstr "Bericht zur US Adressüberprüfung "
 
 #: 
 msgid "Role / Gender"
@@ -3251,10 +3223,6 @@ msgid "Calendar Year"
 msgstr "Kalenderjahr"
 
 #: 
-msgid "US Address Verification"
-msgstr "US Adressüberprüfung"
-
-#: 
 msgid "Update Latitude & Longitude"
 msgstr "Latitude & Longitude aktualisieren"
 
@@ -3747,10 +3715,6 @@ msgid "Dashboard"
 msgstr "Dashboard"
 
 #: 
-msgid "Toggle navigation"
-msgstr "Navigation umschalten"
-
-#: 
 msgid "Change Password"
 msgstr "Passwort ändern"
 
@@ -4205,10 +4169,6 @@ msgstr "Liste"
 #: 
 msgid "Import Data"
 msgstr "Daten importieren"
-
-#: 
-msgid "Clear Data"
-msgstr "Daten löschen"
 
 #: 
 msgid "Are you sure you want to DELETE this person from Event ID: "
@@ -4692,10 +4652,6 @@ msgid "File Name:"
 msgstr "Dateiname:"
 
 #: 
-msgid "http://www.intelligentsearch.com/address_verification/verify_address.html"
-msgstr "http://www.intelligentsearch.com/address_verification/verify_address.html"
-
-#: 
 msgid "Fiscal Year:"
 msgstr "Geschäftsjahr:"
 
@@ -4828,7 +4784,8 @@ msgid "Church Email"
 msgstr "E-Mail-Adresse der Gemeinde"
 
 #: 
-msgid "Include only these classifications in the directory, comma seperated"
+#, fuzzy
+msgid "Include only these classifications in the directory, comma separated"
 msgstr "Nur diese Klassifikation im Verzeichnis inkludieren, mit Komma getrennt"
 
 #: 
@@ -7190,20 +7147,8 @@ msgid "Kiosk Manager"
 msgstr "Kiosk-Manager"
 
 #: 
-msgid "Your Cart"
-msgstr "Dein Wagen"
-
-#: 
-msgid "Your settings and more"
-msgstr "Deine Einstellungen und mehr"
-
-#: 
 msgid "Report an issue"
 msgstr "Ein Problem melden"
-
-#: 
-msgid "Your tasks"
-msgstr "Ihre Aufgaben"
 
 #: 
 msgid "Enable New Kiosk Registration"
@@ -7806,10 +7751,6 @@ msgid "Number of seconds after page load until the banner disappears, default 10
 msgstr "Anzahl der Sekunden nach dem Laden der Seite, bis das Banner verschwindet, Standard 10 Sekunden"
 
 #: 
-msgid "Help & Support"
-msgstr "Hilfe und Support"
-
-#: 
 msgid "Help & Manual"
 msgstr "Hilfe und Bedienungsanleitung"
 
@@ -8112,14 +8053,6 @@ msgstr "Spendengelder"
 #: 
 msgid "Unable to open file"
 msgstr "Datei kann nicht geöffnet werden"
-
-#: 
-msgid "Invalid upgrade file specified"
-msgstr "Ungültige Upgrade-Datei angegeben"
-
-#: 
-msgid "Failure executing upgrade script"
-msgstr "Fehler bei der Ausführung des Upgrade-Skripts"
 
 #: 
 msgid "Missing calendar access token"
@@ -8560,10 +8493,6 @@ msgstr[0] "%d Jahr alt"
 msgstr[1] "%d Jahre alt"
 
 #: 
-msgid "Database upgrade failed"
-msgstr "Datenbank-Upgrade fehlgeschlagen"
-
-#: 
 msgid "Unsupported PHP Version"
 msgstr "Nicht unterstützte PHP-Version"
 
@@ -8930,10 +8859,6 @@ msgid "Permissions"
 msgstr "Berechtigungen"
 
 #: 
-msgid "Skins"
-msgstr "Design"
-
-#: 
 msgid "Paid"
 msgstr "Bezahlt"
 
@@ -9036,54 +8961,6 @@ msgstr "Verifizieren"
 #: 
 msgid "Family has no emails to use"
 msgstr "Die Familie hat keine E-Mailadresse"
-
-#: 
-msgid "Blue"
-msgstr "Blau"
-
-#: 
-msgid "Black"
-msgstr "Schwarz"
-
-#: 
-msgid "Purple"
-msgstr "Violett"
-
-#: 
-msgid "Green"
-msgstr "Grün"
-
-#: 
-msgid "Red"
-msgstr "Rot"
-
-#: 
-msgid "Yellow"
-msgstr "Gelb"
-
-#: 
-msgid "Blue Light"
-msgstr "Blaues Licht"
-
-#: 
-msgid "Black Light"
-msgstr "Schwarzes Licht"
-
-#: 
-msgid "Purple Light"
-msgstr "Violettes Licht"
-
-#: 
-msgid "Green Light"
-msgstr "Grünes Licht"
-
-#: 
-msgid "Red Light"
-msgstr "Rotes Licht"
-
-#: 
-msgid "Yellow Light"
-msgstr "Gelbes Licht"
 
 #: 
 msgid "Toggle the left sidebar's state (open or collapse)"

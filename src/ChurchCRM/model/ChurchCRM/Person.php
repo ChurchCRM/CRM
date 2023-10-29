@@ -13,6 +13,7 @@ use ChurchCRM\Utils\GeoUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use DateTime;
 use Propel\Runtime\Connection\ConnectionInterface;
+use Propel\Runtime\Map\TableMap;
 
 /**
  * Skeleton subclass for representing a row from the 'person_per' table.
@@ -26,9 +27,9 @@ use Propel\Runtime\Connection\ConnectionInterface;
 class Person extends BasePerson implements iPhoto
 {
 
-    const SELF_REGISTER = -1;
-    const SELF_VERIFY = -2;
-    private $photo;
+    public const SELF_REGISTER = -1;
+    public const SELF_VERIFY = -2;
+    private ?\ChurchCRM\dto\Photo $photo = null;
 
     public function getFullName()
     {

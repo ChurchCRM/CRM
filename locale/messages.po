@@ -10,7 +10,7 @@ msgstr ""
 "#-#-#-#-#  messages.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-18 21:15-0700\n"
+"POT-Creation-Date: 2023-10-28 16:05-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,16 +25,16 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2022-06-19T04:15:24.570Z\n"
-"PO-Revision-Date: 2022-06-19T04:15:24.570Z\n"
+"POT-Creation-Date: 2023-10-28T23:05:24.464Z\n"
+"PO-Revision-Date: 2023-10-28T23:05:24.464Z\n"
 "#-#-#-#-#  react-js-strings.po (i18next-conv)  #-#-#-#-#\n"
 "Project-Id-Version: i18next-conv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
-"POT-Creation-Date: 2022-06-19T04:15:24.759Z\n"
-"PO-Revision-Date: 2022-06-19T04:15:24.759Z\n"
+"POT-Creation-Date: 2023-10-28T23:05:24.660Z\n"
+"PO-Revision-Date: 2023-10-28T23:05:24.660Z\n"
 
 msgid "Backup Database"
 msgstr ""
@@ -315,12 +315,6 @@ msgid "ERROR: the uploaded CSV file no longer exists!"
 msgstr ""
 
 msgid "Upload CSV File"
-msgstr ""
-
-msgid "Clear Data"
-msgstr ""
-
-msgid "Clear Persons and Families"
 msgstr ""
 
 msgid "Data import successful."
@@ -1004,15 +998,6 @@ msgstr ""
 msgid "by"
 msgstr ""
 
-msgid "Invalid upgrade file specified"
-msgstr ""
-
-msgid "Failure executing upgrade script"
-msgstr ""
-
-msgid "Database upgrade failed"
-msgstr ""
-
 msgid "No logged in user"
 msgstr ""
 
@@ -1157,7 +1142,7 @@ msgstr ""
 msgid "Event Log severity to write, used by ORM and App Logs"
 msgstr ""
 
-msgid "Include only these classifications in the directory, comma seperated"
+msgid "Include only these classifications in the directory, comma separated"
 msgstr ""
 
 msgid "These are the family role numbers designated as head of house"
@@ -1189,7 +1174,7 @@ msgid ""
 "characters changed)\rSet to zero to disable this feature"
 msgstr ""
 
-msgid "A comma-seperated list of disallowed (too obvious) passwords."
+msgid "A comma-separated list of disallowed (too obvious) passwords."
 msgstr ""
 
 msgid ""
@@ -1287,12 +1272,6 @@ msgid ""
 "Enter in HTML code which will be displayed as a header at the top of each "
 "page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A "
 "SECOND TIME to view the new header."
-msgstr ""
-
-msgid "Intelligent Search Technolgy, Ltd. CorrectAddress Username"
-msgstr ""
-
-msgid "Intelligent Search Technolgy, Ltd. CorrectAddress Password"
 msgstr ""
 
 msgid "Select GeoCoder Provider"
@@ -3198,7 +3177,7 @@ msgstr ""
 msgid "Group Members:"
 msgstr ""
 
-msgid "Group members: "
+msgid "Add Group Member: "
 msgstr ""
 
 msgid "Remove Selected Members from group"
@@ -3211,9 +3190,6 @@ msgid "Add Selected Members to Group"
 msgstr ""
 
 msgid "Move Selected Members to Group"
-msgstr ""
-
-msgid "Add Group Member: "
 msgstr ""
 
 msgid "Confirm Delete Group"
@@ -3801,14 +3777,6 @@ msgid "Printable directory of all people, grouped by family where assigned"
 msgstr ""
 
 msgid "Generate letters and mailing labels."
-msgstr ""
-
-msgid "US Address Verification Report"
-msgstr ""
-
-msgid ""
-"Generate report comparing all US family addresses with United States Postal "
-"Service Standard Address Format.<br>"
 msgstr ""
 
 msgid "People Classification"
@@ -4679,13 +4647,6 @@ msgstr ""
 msgid "Calendar Year"
 msgstr ""
 
-msgid "US Address Verification"
-msgstr ""
-
-msgid ""
-"http://www.intelligentsearch.com/address_verification/verify_address.html"
-msgstr ""
-
 msgid "Update Latitude & Longitude"
 msgstr ""
 
@@ -5536,9 +5497,6 @@ msgstr ""
 msgid "persons from"
 msgstr ""
 
-msgid "Generate Labels"
-msgstr ""
-
 msgid "Bulk Mail Presort"
 msgstr ""
 
@@ -5816,45 +5774,6 @@ msgstr ""
 msgid "Manage Notes"
 msgstr ""
 
-msgid "Skins"
-msgstr ""
-
-msgid "Blue"
-msgstr ""
-
-msgid "Black"
-msgstr ""
-
-msgid "Purple"
-msgstr ""
-
-msgid "Green"
-msgstr ""
-
-msgid "Red"
-msgstr ""
-
-msgid "Yellow"
-msgstr ""
-
-msgid "Blue Light"
-msgstr ""
-
-msgid "Black Light"
-msgstr ""
-
-msgid "Purple Light"
-msgstr ""
-
-msgid "Green Light"
-msgstr ""
-
-msgid "Red Light"
-msgstr ""
-
-msgid "Yellow Light"
-msgstr ""
-
 msgid "User Interface"
 msgstr ""
 
@@ -6091,7 +6010,7 @@ msgstr ""
 
 msgid ""
 "Please select the beginning date to calculate total contributions for each "
-"member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that conatain "
+"member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain "
 "donations."
 msgstr ""
 
@@ -6934,10 +6853,16 @@ msgstr ""
 msgid "Arabic - Egypt"
 msgstr ""
 
+msgid "Amharic - Ethiopia"
+msgstr ""
+
 msgid "Chinese - China"
 msgstr ""
 
 msgid "Chinese - Taiwan"
+msgstr ""
+
+msgid "Czech"
 msgstr ""
 
 msgid "Dutch - Netherlands"
@@ -6958,10 +6883,16 @@ msgstr ""
 msgid "Estonian"
 msgstr ""
 
+msgid "Finnish"
+msgstr ""
+
 msgid "French - France"
 msgstr ""
 
 msgid "German - Germany"
+msgstr ""
+
+msgid "Greek"
 msgstr ""
 
 msgid "Hebrew"
@@ -7003,19 +6934,13 @@ msgstr ""
 msgid "Thai"
 msgstr ""
 
-msgid "Vietnamese"
-msgstr ""
-
-msgid "Amharic - Ethiopia"
-msgstr ""
-
-msgid "Finnish"
-msgstr ""
-
-msgid "Greek"
+msgid "Turkish"
 msgstr ""
 
 msgid "Ukrainian"
+msgstr ""
+
+msgid "Vietnamese"
 msgstr ""
 
 msgid "User permission to send email via mailto: links"
@@ -7277,19 +7202,6 @@ msgid "View Issue on GitHub"
 msgstr ""
 
 msgid "Do you want to delete this person?  This cannot be undone."
-msgstr ""
-
-msgid ""
-"Warning!  Do not select this option if you plan to add to an existing "
-"database.<br/>"
-msgstr ""
-
-msgid ""
-"Use only if unsatisfied with initial import.  All person and member data "
-"will be destroyed!"
-msgstr ""
-
-msgid "Data Cleared Successfully!"
 msgstr ""
 
 msgid "You must enter the same password in both boxes"

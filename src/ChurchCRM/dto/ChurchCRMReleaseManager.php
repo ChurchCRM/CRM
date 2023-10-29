@@ -11,11 +11,11 @@ use Github\Client;
 class ChurchCRMReleaseManager {
 
     // todo: make these const variables private after deprecating PHP7.0 #4948
-    const GITHUB_USER_NAME = 'churchcrm';
-    const GITHUB_REPOSITORY_NAME = 'crm';
+    public const GITHUB_USER_NAME = 'churchcrm';
+    public const GITHUB_REPOSITORY_NAME = 'crm';
 
     /** @var bool true when an upgrade is in progress */
-    private static $isUpgradeInProgress;
+    private static ?bool $isUpgradeInProgress = null;
 
     public static function getReleaseFromString(string $releaseString): ChurchCRMRelease {
         if ( empty($_SESSION['ChurchCRMReleases']  )) {
@@ -28,9 +28,7 @@ class ChurchCRMReleaseManager {
         }
         else {
             LoggerUtils::getAppLogger()->debug("Attempting to service query for release string " . $releaseString . " from GitHub release cache");
-            $requestedRelease = array_values(array_filter($_SESSION['ChurchCRMReleases'],function($r) use ($releaseString) {
-                return $r->__toString() == $releaseString;
-            }));
+            $requestedRelease = array_values(array_filter($_SESSION['ChurchCRMReleases'],fn($r) => $r->__toString() == $releaseString));
             if (count($requestedRelease) == 1 && $requestedRelease[0] instanceof ChurchCRMRelease){
                 // this should be the case 99% of the time - the current version of the software has exactly one release on the GitHub account
                 LoggerUtils::getAppLogger()->debug("Query for release string " . $releaseString . " serviced from GitHub release cache");
@@ -44,7 +42,7 @@ class ChurchCRMReleaseManager {
             }
             else {
                 // This should _never_ happen.
-                throw new \Exception("Provided string matched more than one ChurchCRM Release: " . \json_encode($requestedRelease));
+                throw new \Exception("Provided string matched more than one ChurchCRM Release: " . \json_encode($requestedRelease, JSON_THROW_ON_ERROR));
             }
         }
     }
@@ -78,9 +76,7 @@ class ChurchCRMReleaseManager {
 
         }
 
-        usort($eligibleReleases, function(ChurchCRMRelease $a, ChurchCRMRelease $b){
-            return $a->compareTo($b) < 0;
-        });
+        usort($eligibleReleases, fn(ChurchCRMRelease $a, ChurchCRMRelease $b) => $a->compareTo($b) < 0);
 
         LoggerUtils::getAppLogger()->debug("Found " . count($eligibleReleases) . " eligible ChurchCRM releases on GitHub");
         return $eligibleReleases;
@@ -111,9 +107,7 @@ class ChurchCRMReleaseManager {
 
     private static function getHighestReleaseInArray (array $eligibleUpgradeTargetReleases)  {
         if (count($eligibleUpgradeTargetReleases) >0 ) {
-            usort($eligibleUpgradeTargetReleases, function(ChurchCRMRelease $a, ChurchCRMRelease $b){
-                return $a->compareTo($b) < 0;
-            });
+            usort($eligibleUpgradeTargetReleases, fn(ChurchCRMRelease $a, ChurchCRMRelease $b) => $a->compareTo($b) < 0);
             return $eligibleUpgradeTargetReleases[0];
         }
         return null;
@@ -217,12 +211,12 @@ class ChurchCRMReleaseManager {
         if (self::$isUpgradeInProgress){
             // the PHP script was stopped while an upgrade was still in progress.
             $logger = LoggerUtils::getAppLogger();
-            $logger->addWarning("Maximum execution time threshold exceeded: " . ini_get("max_execution_time"));
+            $logger->warning("Maximum execution time threshold exceeded: " . ini_get("max_execution_time"));
 
             echo \json_encode([
                 'code' => 500,
                 'message' => "Maximum execution time threshold exceeded: " . ini_get("max_execution_time") . ".  This ChurchCRM installation may now be in an unstable state.  Please review the documentation at https://github.com/ChurchCRM/CRM/wiki/Recovering-from-a-failed-update"
-            ]);
+            ], JSON_THROW_ON_ERROR);
         }
     }
     public static function doUpgrade($zipFilename, $sha1)
@@ -234,9 +228,7 @@ class ChurchCRMReleaseManager {
         // PHP instance's max_execution_time
         $displayErrors = ini_get('display_errors');
         ini_set('display_errors',0);
-        register_shutdown_function(function() {
-            return ChurchCRMReleaseManager::preShutdown();
-        });
+        register_shutdown_function(fn() => ChurchCRMReleaseManager::preShutdown());
 
         $logger = LoggerUtils::getAppLogger();
         $logger->info("Beginnging upgrade process");
@@ -267,7 +259,7 @@ class ChurchCRMReleaseManager {
         } else {
             self::$isUpgradeInProgress = false;
             ini_set('display_errors',$displayErrors);
-            $logger->err("Hash validation failed on " . $zipFilename.". Expected: ".$sha1. ". Got: ".sha1_file($zipFilename));
+            $logger->error("Hash validation failed on " . $zipFilename.". Expected: ".$sha1. ". Got: ".sha1_file($zipFilename));
             return 'hash validation failure';
         }
     }

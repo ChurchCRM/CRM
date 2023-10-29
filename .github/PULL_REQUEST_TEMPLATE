@@ -1,22 +1,19 @@
 
-#### What's this PR do?
+#### What does PR do? Any background context you want to provide?
 
 
-#### Screenshots (if appropriate)
-
-#### What Issues does it Close?
+#### What Issues does it Close? Any the relevant tickets?
 
 Closes
 
-#### What are the relevant tickets?
+#### Screenshots (if appropriate)
 
-#### Any background context you want to provide?
 
 #### Where should the reviewer start?
 
+
 #### How should this be manually tested?
 
-#### How should the automated tests treat this?
 
 #### Questions:
 - Is there a related website / article to substantiate / explain this change?
@@ -38,4 +35,3 @@ Closes
 - Does this need to add new data to the demo database
   -  [ ] Yes
   -  [ ] No
-

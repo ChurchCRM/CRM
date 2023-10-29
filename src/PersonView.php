@@ -290,7 +290,7 @@ $bOkToEdit = (
                     <?php if (!empty($formattedMailingAddress)) {
                                 ?>
                         <li><i class="fa-li fa fa-home"></i><?php echo gettext('Address'); ?>: <span>
-                                <a href="http://maps.google.com/?q=<?= $plaintextMailingAddress ?>" target="_blank">
+                                <a href="https://maps.google.com/?q=<?= $plaintextMailingAddress ?>" target="_blank">
                                     <?= $formattedMailingAddress ?>
                                 </a>
                             </span></li>
@@ -389,52 +389,50 @@ $bOkToEdit = (
         </div>
     </div>
     <div class="col-lg-9 col-md-9 col-sm-9">
-        <div class="card card-primary box-body">
-            <div class="row">
-                <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/PrintView.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-print"></i> <?= gettext("Printable Page") ?></a>
-                <a class="btn btn-app AddToPeopleCart" id="AddPersonToCart" data-cartpersonid="<?= $iPersonID ?>"><i class="fa fa-cart-plus"></i><span class="cartActionDescription"><?= gettext("Add to Cart") ?></span></a>
-                <?php if (AuthenticationManager::GetCurrentUser()->isNotesEnabled()) {
-                        ?>
-                    <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/WhyCameEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-question-circle"></i> <?= gettext("Edit \"Why Came\" Notes") ?></a>
-                    <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/NoteEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-sticky-note"></i> <?= gettext("Add a Note") ?></a>
-                <?php
-                    }
-                if (AuthenticationManager::GetCurrentUser()->isManageGroupsEnabled()) {
+        <div class="row">
+            <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/PrintView.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-print"></i> <?= gettext("Printable Page") ?></a>
+            <a class="btn btn-app AddToPeopleCart" id="AddPersonToCart" data-cartpersonid="<?= $iPersonID ?>"><i class="fa fa-cart-plus"></i><span class="cartActionDescription"><?= gettext("Add to Cart") ?></span></a>
+            <?php if (AuthenticationManager::GetCurrentUser()->isNotesEnabled()) {
                     ?>
-                    <a class="btn btn-app" id="addGroup"><i class="fa fa-users"></i> <?= gettext("Assign New Group") ?></a>
-                <?php
-                } ?>
-                <a class="btn btn-app" role="button" href="<?= SystemURLs::getRootPath() ?>/v2/people"><i class="fa fa-list"></i> <?= gettext("List Members") ?></span></a>
-                <?php
-                if (AuthenticationManager::GetCurrentUser()->isDeleteRecordsEnabled()) {
+                <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/WhyCameEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-question-circle"></i> <?= gettext("Edit \"Why Came\" Notes") ?></a>
+                <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/NoteEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-sticky-note"></i> <?= gettext("Add a Note") ?></a>
+            <?php
+                }
+            if (AuthenticationManager::GetCurrentUser()->isManageGroupsEnabled()) {
+                ?>
+                <a class="btn btn-app" id="addGroup"><i class="fa fa-users"></i> <?= gettext("Assign New Group") ?></a>
+            <?php
+            } ?>
+            <a class="btn btn-app" role="button" href="<?= SystemURLs::getRootPath() ?>/v2/people"><i class="fa fa-list"></i> <?= gettext("List Members") ?></span></a>
+            <?php
+            if (AuthenticationManager::GetCurrentUser()->isDeleteRecordsEnabled()) {
+                ?>
+                <a id="deletePersonBtn" class="btn btn-app bg-maroon delete-person" data-person_name="<?= $person->getFullName() ?>" data-person_id="<?= $iPersonID ?>"><i class="fa fa-trash-can"></i> <?= gettext("Delete this Record") ?></a>
+            <?php
+            }
+            ?>
+            <br />
+            <?php
+            if (AuthenticationManager::GetCurrentUser()->isAdmin()) {
+                if (!$person->isUser()) {
                     ?>
-                    <a id="deletePersonBtn" class="btn btn-app bg-maroon delete-person" data-person_name="<?= $person->getFullName() ?>" data-person_id="<?= $iPersonID ?>"><i class="fa fa-trash-can"></i> <?= gettext("Delete this Record") ?></a>
+                    <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/UserEditor.php?NewPersonID=<?= $iPersonID ?>"><i class="fa fa-person-chalkboard"></i> <?= gettext('Make User') ?></a>
+                <?php
+                } else {
+                    ?>
+                    <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/UserEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-user-secret"></i> <?= gettext('Edit User') ?></a>
+                    <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= $iPersonID ?>"><i class="fa fa-eye"></i> <?= gettext('View User') ?></a>
+                    <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= $iPersonID ?>/changePassword"><i class="fa fa-key"></i> <?= gettext("Change Password") ?></a>
                 <?php
                 }
+            } elseif ($person->isUser() && $person->getId() == AuthenticationManager::GetCurrentUser()->getId()) {
                 ?>
-                <br />
-                <?php
-                if (AuthenticationManager::GetCurrentUser()->isAdmin()) {
-                    if (!$person->isUser()) {
-                        ?>
-                        <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/UserEditor.php?NewPersonID=<?= $iPersonID ?>"><i class="fa fa-person-chalkboard"></i> <?= gettext('Make User') ?></a>
-                    <?php
-                    } else {
-                        ?>
-                        <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/UserEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-user-secret"></i> <?= gettext('Edit User') ?></a>
-                        <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= $iPersonID ?>"><i class="fa fa-eye"></i> <?= gettext('View User') ?></a>
-                        <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= $iPersonID ?>/changePassword"><i class="fa fa-key"></i> <?= gettext("Change Password") ?></a>
-                    <?php
-                    }
-                } elseif ($person->isUser() && $person->getId() == AuthenticationManager::GetCurrentUser()->getId()) {
-                    ?>
-                    <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= $iPersonID ?>"><i class="fa fa-eye"></i> <?= gettext('View User') ?></a>
-                    <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/v2/user/current/changepassword"><i class="fa fa-key"></i> <?= gettext("Change Password") ?></a>
-                <?php
-                } ?>
-
-            </div>
+                <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= $iPersonID ?>"><i class="fa fa-eye"></i> <?= gettext('View User') ?></a>
+                <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/v2/user/current/changepassword"><i class="fa fa-key"></i> <?= gettext("Change Password") ?></a>
+            <?php
+            } ?>
         </div>
+
         <div class="card">
             <div class="card-header p-2">
                 <ul class="nav nav-pills">

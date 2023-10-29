@@ -24,7 +24,7 @@ $sDATABASE = '||DB_NAME||';
 // NOTE:
 // - the path SHOULD Start with slash, if not ''.
 // - the path SHOULD NOT end with slash.
-// - the is case sensitive.
+// - the path is case sensitive.
 $sRootPath = '||ROOT_PATH||';
 
 // Set $bLockURL=TRUE to enforce https access by specifying exactly
@@ -61,4 +61,3 @@ error_reporting(E_ERROR);
 // Absolute path must be specified since this file is called
 // from scripts located in other directories
 require_once(dirname(__FILE__) . DIRECTORY_SEPARATOR . 'LoadConfigs.php');
-?>

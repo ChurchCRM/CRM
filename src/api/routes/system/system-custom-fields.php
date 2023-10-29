@@ -5,9 +5,9 @@ use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
-$app->group('/system/custom-fields', function () {
-    $this->get('/person', 'getPersonFieldsByType');
-    $this->get('/person/', 'getPersonFieldsByType');
+$app->group('/system/custom-fields', function () use ($app) {
+    $app->get('/person', 'getPersonFieldsByType');
+    $app->get('/person/', 'getPersonFieldsByType');
 })->add(new AdminRoleAuthMiddleware());
 
 

@@ -9,12 +9,12 @@ use Propel\Runtime\ActiveQuery\Criteria;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
-$app->group('/mailchimp/', function () {
-    $this->get('list/{id}', 'getMailchimpList');
-    $this->get('list/{id}/missing', 'getMailchimpEmailNotInCRM');
-    $this->get('list/{id}/not-subscribed', 'getMailChimpMissingSubscribed');
-    $this->get('person/{personId}', 'getPersonStatus')->add(new PersonAPIMiddleware());
-    $this->get('family/{familyId}', 'getFamilyStatus')->add(new FamilyAPIMiddleware());
+$app->group('/mailchimp/', function () use ($app) {
+    $app->get('list/{id}', 'getMailchimpList');
+    $app->get('list/{id}/missing', 'getMailchimpEmailNotInCRM');
+    $app->get('list/{id}/not-subscribed', 'getMailChimpMissingSubscribed');
+    $app->get('person/{personId}', 'getPersonStatus')->add(new PersonAPIMiddleware());
+    $app->get('family/{familyId}', 'getFamilyStatus')->add(new FamilyAPIMiddleware());
 })->add(new MailChimpMiddleware());
 
 
@@ -74,7 +74,7 @@ function getMailChimpMissingSubscribed(Request $request, Response $response, arr
                     $inList = true;
                 }
 
-                if (!found && !empty($person->getWorkEmail())) {
+                if (!$inList && !empty($person->getWorkEmail())) {
                     $inList = checkEmailInList($person->getWorkEmail(), $mailchimpListMembers);
                 }
 

@@ -14,27 +14,27 @@ class CheckExecutionTimeTask
         $this->executionTime = ini_get('max_execution_time');
     }
 
-    public function isActive()
+    public function isActive(): bool
     {
         return $this->executionTime < 120;
     }
 
-    public function isAdmin()
+    public function isAdmin(): bool
     {
         return true;
     }
 
-    public function getLink()
+    public function getLink(): string
     {
         return SystemURLs::getSupportURL(array_pop(explode('\\', self::class)));
     }
 
-    public function getTitle()
+    public function getTitle(): string
     {
         return gettext('PHP Max Execution Time is too Short') . " (" . $this->executionTime . ")";
     }
 
-    public function getDesc()
+    public function getDesc(): string
     {
         return gettext("Increase the PHP execution time limit to allow for backup and restore.");
     }

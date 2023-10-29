@@ -9,10 +9,12 @@ class Photo {
   private $photoType;
   private $id;
   private $photoURI;
-  private $photoThumbURI;
-  private $thubmnailPath;
+  private ?string $photoThumbURI = null;
+  private ?string $thubmnailPath = null;
   private $photoContentType;
-  private $remotesEnabled;
+  private $thumbnailContentType;
+  private bool $remotesEnabled;
+
   public static $validExtensions = ["png", "jpeg", "jpg"];
 
   public function __construct($photoType,$id) {
@@ -205,7 +207,7 @@ class Photo {
       if (strpos($headers[0], '404') === false) {
         $json = file_get_contents($url);
         if (!empty($json)) {
-          $obj = json_decode($json);
+          $obj = json_decode($json, null, 512, JSON_THROW_ON_ERROR);
           $photoEntry = $obj->entry;
           $photoURL = $photoEntry->{'gphoto$thumbnail'}->{'$t'};
           $photo = imagecreatefromstring(file_get_contents($photoURL));
@@ -220,9 +222,9 @@ class Photo {
   }
 
   private function getRandomColor($image) {
-    $red = rand(0, 150);
-    $green = rand(0, 150);
-    $blue = rand(0, 150);
+    $red = random_int(0, 150);
+    $green = random_int(0, 150);
+    $blue = random_int(0, 150);
     return imagecolorallocate($image, $red, $green, $blue);
   }
 
@@ -297,8 +299,8 @@ class Photo {
     if (strpos($this->photoURI, "initials") || strpos($this->photoURI, "remote")) {
       $this->delete();
     }
-    $this->photoURI = $this->photoHunt(SystemURLs::getImagesRoot() . "/" . $photoType . "/" . $id);
-    $this->photoThumbURI = SystemURLs::getImagesRoot() . "/" . $photoType . "/thumbnails/" . $id . ".jpg";
+    $this->photoURI = $this->photoHunt();
+    $this->photoThumbURI = SystemURLs::getImagesRoot() . "/" . $this->photoType . "/thumbnails/" . $this->id . ".jpg";
   }
 
   public function isInitials() {

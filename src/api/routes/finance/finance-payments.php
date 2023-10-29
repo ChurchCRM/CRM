@@ -7,17 +7,17 @@ use Propel\Runtime\ActiveQuery\Criteria;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
-$app->group('/payments', function () {
-    $this->get('/', function (Request $request, Response $response, array $args) {
-        $this->FinancialService->getPaymentJSON($this->FinancialService->getPayments());
+$app->group('/payments', function () use ($app) {
+    $app->get('/', function (Request $request, Response $response, array $args) use ($app) {
+        $app->FinancialService->getPaymentJSON($app->FinancialService->getPayments());
     });
 
-    $this->post('/', function ($request, $response, $args) {
+    $app->post('/', function ($request, $response, $args) use ($app) {
         $payment = $request->getParsedBody();
-        echo json_encode(['payment' => $this->FinancialService->submitPledgeOrPayment($payment)]);
+        echo json_encode(['payment' => $app->FinancialService->submitPledgeOrPayment($payment)], JSON_THROW_ON_ERROR);
     });
 
-    $this->get('/family/{familyId:[0-9]+}/list', function (Request $request, Response $response, array $args) {
+    $app->get('/family/{familyId:[0-9]+}/list', function (Request $request, Response $response, array $args) {
         $familyId = $request->getAttribute("route")->getArgument("familyId");
         $query = PledgeQuery::create()->filterByFamId($familyId);
         if (!empty(AuthenticationManager::GetCurrentUser()->getShowSince())) {
@@ -53,9 +53,9 @@ $app->group('/payments', function () {
         return $response->withJson(["data" => $rows]);
     });
 
-    $this->delete('/{groupKey}', function (Request $request, Response $response, array $args) {
+    $app->delete('/{groupKey}', function (Request $request, Response $response, array $args) use ($app) {
         $groupKey = $args['groupKey'];
-        $this->FinancialService->deletePayment($groupKey);
+        $app->FinancialService->deletePayment($groupKey);
         echo json_encode(['status' => 'ok']);
     });
 })->add(new FinanceRoleAuthMiddleware());

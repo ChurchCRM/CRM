@@ -5,6 +5,7 @@ namespace ChurchCRM;
 use ChurchCRM\Base\Event as BaseEvent;
 use ChurchCRM\dto\SystemURLs;
 use Propel\Runtime\ActiveQuery\Criteria;
+use Propel\Runtime\Map\TableMap;
 
 /**
  * Skeleton subclass for representing a row from the 'events_event' table.
@@ -18,7 +19,7 @@ use Propel\Runtime\ActiveQuery\Criteria;
 class Event extends BaseEvent
 {
 
-  private $editable = true;
+  private bool $editable = true;
 
   public function __construct() {
     parent::__construct();

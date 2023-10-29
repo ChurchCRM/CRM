@@ -27,8 +27,8 @@ class LocalAuthentication implements IAuthenticationProvider
      * @var ChurchCRM\User
      */
     private $currentUser;
-    private $bPendingTwoFactorAuth;
-    private $tLastOperationTimestamp;
+    private ?bool $bPendingTwoFactorAuth = null;
+    private ?int $tLastOperationTimestamp = null;
 
     public function GetPasswordChangeURL(){
       // this shouln't really be called, but it's necessarty to implement the IAuthenticationProvider interface

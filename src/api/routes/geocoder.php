@@ -4,9 +4,9 @@ use ChurchCRM\Utils\GeoUtils;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
-$app->group('/geocoder', function () {
-    $this->post('/address', 'getGeoLocals');
-    $this->post('/address/', 'getGeoLocals');
+$app->group('/geocoder', function () use ($app) {
+    $app->post('/address', 'getGeoLocals');
+    $app->post('/address/', 'getGeoLocals');
 });
 
 
@@ -20,7 +20,7 @@ $app->group('/geocoder', function () {
  */
 function getGeoLocals(Request $request, Response $response, array $p_args)
 {
-    $input = json_decode($request->getBody());
+    $input = json_decode($request->getBody(), null, 512, JSON_THROW_ON_ERROR);
     if (!empty($input)) {
         return $response->withJson(GeoUtils::getLatLong($input->address));
     }

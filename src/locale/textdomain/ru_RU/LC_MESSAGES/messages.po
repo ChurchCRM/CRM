@@ -364,26 +364,8 @@ msgid "ERROR: the uploaded CSV file no longer exists!"
 msgstr "ОШИБКА: загруженный CSV файл больше не существует!"
 
 #: 
-msgid "Data Cleared Successfully!"
-msgstr "Данные успешно очищены"
-
-#: 
 msgid "Upload CSV File"
 msgstr "Загрузить файл CSV"
-
-#. what do you mean clear? please define this action "clear"?
-#: 
-#, fuzzy
-msgid "Clear Persons and Families"
-msgstr "Очистить людей и семьи,"
-
-#: 
-msgid "Warning!  Do not select this option if you plan to add to an existing database.<br/>"
-msgstr "Внимание! Не выбирайте эту опцию, если вы планируете добавить к существующей базе данных. <br/>"
-
-#: 
-msgid "Use only if unsatisfied with initial import.  All person and member data will be destroyed!"
-msgstr "Используйте только если удовлетворены первоначального импорта. Все лицо и члены данные будут уничтожены!"
 
 #: 
 msgid "Data import successful."
@@ -686,10 +668,6 @@ msgstr "E-mail (BCC)"
 #: 
 msgid "Create Directory From Cart"
 msgstr "Создать каталог из корзины"
-
-#: 
-msgid "Generate Labels"
-msgstr "Создание меток"
 
 #: 
 msgid "Bulk Mail Presort"
@@ -2272,10 +2250,6 @@ msgid "Group Members:"
 msgstr "Участники группы:"
 
 #: 
-msgid "Group members: "
-msgstr "Участники группы:"
-
-#: 
 msgid "Remove Selected Members from group"
 msgstr "Удалить выбранных участников из группы"
 
@@ -2482,14 +2456,6 @@ msgstr "Отчет о группы и роли, выбранной (это мо�
 #: 
 msgid "Generate letters and mailing labels."
 msgstr "Создание письма и почтовые наклейки."
-
-#: 
-msgid "US Address Verification Report"
-msgstr "Адрес в США доклад о проверке"
-
-#: 
-msgid "Generate report comparing all US family addresses with United States Postal Service Standard Address Format.<br>"
-msgstr "Создание отчета, в котором сравниваются все семейные адреса в США со стандартным форматом адресов почтовой службы США. <br>"
 
 #: 
 msgid "Count"
@@ -3273,10 +3239,6 @@ msgid "Calendar Year"
 msgstr "Календарный год"
 
 #: 
-msgid "US Address Verification"
-msgstr "US Address Verification"
-
-#: 
 msgid "Update Latitude & Longitude"
 msgstr "Обновить широту и долготу"
 
@@ -3763,11 +3725,6 @@ msgid "Dashboard"
 msgstr "Панель Управления"
 
 #: 
-msgid "Toggle navigation"
-msgstr "\n"
-"Переключить навигацию"
-
-#: 
 msgid "Change Password"
 msgstr "Изменить пароль"
 
@@ -4216,10 +4173,6 @@ msgstr "Список"
 #: 
 msgid "Import Data"
 msgstr "Импортировать данные"
-
-#: 
-msgid "Clear Data"
-msgstr "Очистить данные"
 
 #: 
 msgid "Are you sure you want to DELETE this person from Event ID: "
@@ -4815,7 +4768,8 @@ msgid "Church Email"
 msgstr "Электронная почта церкви"
 
 #: 
-msgid "Include only these classifications in the directory, comma seperated"
+#, fuzzy
+msgid "Include only these classifications in the directory, comma separated"
 msgstr "Включать в каталог только эти классификации, разделенные запятыми."
 
 #: 
@@ -4831,7 +4785,8 @@ msgid "Minimum length a user may set their password to"
 msgstr "Минимальная длина, на которую пользователь может установить свой пароль"
 
 #: 
-msgid "A comma-seperated list of disallowed (too obvious) passwords."
+#, fuzzy
+msgid "A comma-separated list of disallowed (too obvious) passwords."
 msgstr "Список запрещенных (слишком очевидных) паролей, разделенных запятыми."
 
 #: 
@@ -5203,7 +5158,8 @@ msgid "The property for which you would like person records returned."
 msgstr "Свойство, для которого вы хотите вернуть личные записи."
 
 #: 
-msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that conatain donations."
+#, fuzzy
+msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations."
 msgstr "Пожалуйста, выберите дату начала для расчета общих взносов для каждого члена (например, ГГГГ-ММ-ДД). ПРИМЕЧАНИЕ. Вы можете выбирать только даты, в которые поступают пожертвования."
 
 #: 
@@ -5956,10 +5912,6 @@ msgstr[2] "%d месяцев"
 msgstr[3] "%d-месячный"
 
 #: 
-msgid "Database upgrade failed"
-msgstr "Сбой обновления базы данных"
-
-#: 
 msgid "Unsupported PHP Version"
 msgstr "Неподдерживаемая версия PHP"
 
@@ -6329,56 +6281,6 @@ msgstr "Повторная генерация ключа API"
 #: 
 msgid "Verify"
 msgstr "Проверить"
-
-#: 
-msgid "Blue"
-msgstr "Синий"
-
-#: 
-msgid "Black"
-msgstr "Черный"
-
-#: 
-msgid "Purple"
-msgstr "Фиолетовый"
-
-#: 
-msgid "Green"
-msgstr "Зеленый"
-
-#: 
-msgid "Red"
-msgstr "Красный"
-
-#: 
-msgid "Yellow"
-msgstr "Желтый"
-
-#: 
-msgid "Blue Light"
-msgstr "Голубой"
-
-#. did you mean grey? or is it a name of theme?
-#: 
-#, fuzzy
-msgid "Black Light"
-msgstr "Черный"
-
-#: 
-msgid "Purple Light"
-msgstr "Светло фиолетовый"
-
-#: 
-msgid "Green Light"
-msgstr "Светло зеленый"
-
-#: 
-msgid "Red Light"
-msgstr "Светло красный"
-
-#: 
-msgid "Yellow Light"
-msgstr "Светло желтый"
 
 #: 
 msgid "Tables Settings"

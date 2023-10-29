@@ -8,9 +8,8 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Note;
 use ChurchCRM\Person;
 
-$app->group('/verify', function () {
-
-  $this->get('/{token}', function ($request, $response, $args) {
+$app->group('/verify', function () use ($app) {
+  $app->get('/{token}', function ($request, $response, $args) {
     $renderer = new PhpRenderer("templates/verify/");
     $token = TokenQuery::create()->findPk($args['token']);
     $haveFamily = false;
@@ -30,7 +29,7 @@ $app->group('/verify', function () {
     }
   });
 
-  $this->post('/{token}', function ($request, $response, $args) {
+  $app->post('/{token}', function ($request, $response, $args) {
     $token = TokenQuery::create()->findPk($args['token']);
     if ($token != null && $token->isVerifyFamilyToken() && $token->isValid()) {
       $family = FamilyQuery::create()->findPk($token->getReferenceId());
@@ -50,7 +49,7 @@ $app->group('/verify', function () {
     return $response->withStatus(200);
   });
 
-  /*$this->post('/', function ($request, $response, $args) {
+  /*$app->post('/', function ($request, $response, $args) {
       $body = $request->getParsedBody();
       $renderer = new PhpRenderer("templates/verify/");
       $family = PersonQuery::create()->findByEmail($body["email"]);

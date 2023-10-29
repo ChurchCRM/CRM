@@ -15,7 +15,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <!-- general form elements -->
         <div class="card card-primary">
             <div class="card-header with-border">
-                <?= gettext('Enter your current password, then your new password twice.  Passwords must be at least').' '.SystemConfig::getValue('iMinPasswordLength').' '.gettext('characters in length.').'</p>' ?>
+                <?= gettext('Enter your current password, then your new password twice.  Passwords must be at least').' '.SystemConfig::getValue('iMinPasswordLength').' '.gettext('characters in length.') ?>
             </div>
             <!-- /.box-header -->
             <!-- form start -->

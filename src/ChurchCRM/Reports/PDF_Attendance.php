@@ -161,7 +161,7 @@ class PDF_Attendance extends ChurchInfoReport
 
 					if ($NameList[$row] != '   ' && strlen($imgList[$row]) > 5 && file_exists($imgList[$row]))
 					{
-						list($width, $height) = getimagesize($imgList[$row]);
+						[$width, $height] = getimagesize($imgList[$row]);
 						$factor = $yIncrement/$height;
 						$nw = $width*$factor;
 						$nh = $yIncrement;

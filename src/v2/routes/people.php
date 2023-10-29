@@ -10,10 +10,10 @@ use Slim\Views\PhpRenderer;
 
 
 // entity can be a person, family, or business
-$app->group('/people', function () {
-    $this->get('','listPeople');
-    $this->get('/', 'listPeople');
-    $this->get('/verify','viewPeopleVerify');
+$app->group('/people', function () use ($app) {
+    $app->get('','listPeople');
+    $app->get('/', 'listPeople');
+    $app->get('/verify','viewPeopleVerify');
 
 });
 

@@ -15,6 +15,15 @@ context('Standard Groups', () => {
 
     });
 
+    it('Filter Group ', () => {
+
+        cy.loginStandard('GroupList.php');
+        cy.contains("Clergy");
+        cy.get('#table-filter').type('Scouts');
+        cy.contains("Clergy").should('not.be.visible');
+    });
+
+
     it('View Group ', () => {
 
         cy.loginStandard("GroupView.php?GroupID=9");

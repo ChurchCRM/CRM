@@ -17,12 +17,10 @@ require SystemURLs::getDocumentRoot() . '/vendor/ifsnop/mysqldump-php/src/Ifsnop
 
 class SystemService
 {
-
-
     static public function getInstalledVersion()
     {
         $composerFile = file_get_contents(SystemURLs::getDocumentRoot() . '/composer.json');
-        $composerJson = json_decode($composerFile, true);
+        $composerJson = json_decode($composerFile, true, 512, JSON_THROW_ON_ERROR);
         $version = $composerJson['version'];
 
         return $version;
@@ -46,7 +44,7 @@ class SystemService
    static public function getDBVersion()
     {
         $connection = Propel::getConnection();
-        $query = 'Select * from version_ver order by ver_update_end desc limit 1';
+        $query = 'select * from version_ver order by ver_update_end desc limit 1';
         $statement = $connection->prepare($query);
         $statement->execute();
         $results = $statement->fetchAll(\PDO::FETCH_ASSOC);
@@ -73,10 +71,9 @@ class SystemService
       else
       {
         $unmet = AppIntegrityService::getUnmetPrerequisites();
-        $unmetNames = array_map(function($o) {
-            return (string)($o->GetName());
-          }, $unmet);
-        return "Missing Prerequisites: ".json_encode(array_values($unmetNames));
+
+        $unmetNames = array_map(fn($o) => (string)($o->GetName()), $unmet);
+        return "Missing Prerequisites: ".json_encode(array_values($unmetNames), JSON_THROW_ON_ERROR);
       }
     }
 
@@ -113,7 +110,7 @@ class SystemService
 
         curl_setopt($curlService, CURLOPT_HTTPHEADER, $headers);
         curl_setopt($curlService, CURLOPT_POST, true);
-        curl_setopt($curlService, CURLOPT_POSTFIELDS, json_encode($postdata));
+        curl_setopt($curlService, CURLOPT_POSTFIELDS, json_encode($postdata, JSON_THROW_ON_ERROR));
         curl_setopt($curlService, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($curlService, CURLOPT_CONNECTTIMEOUT, 1);
 
@@ -172,7 +169,7 @@ class SystemService
                 LoggerUtils::getAppLogger()->info("Starting application integrity check");
                 $integrityCheckFile = SystemURLs::getDocumentRoot() . '/integrityCheck.json';
                 $appIntegrity = AppIntegrityService::verifyApplicationIntegrity();
-                file_put_contents($integrityCheckFile, json_encode($appIntegrity));
+                file_put_contents($integrityCheckFile, json_encode($appIntegrity, JSON_THROW_ON_ERROR));
                 $now = new \DateTime();  // update the LastBackupTimeStamp.
                 SystemConfig::setValue('sLastIntegrityCheckTimeStamp', $now->format(SystemConfig::getValue('sDateFilenameFormat')));
                 if ($appIntegrity['status'] == 'success')

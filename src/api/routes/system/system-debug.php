@@ -5,8 +5,8 @@ use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
-$app->group('/system/debug', function () {
-    $this->get('/urls', 'getSystemURLAPI');
+$app->group('/system/debug', function () use ($app) {
+    $app->get('/urls', 'getSystemURLAPI');
 })->add(new AdminRoleAuthMiddleware());
 
 function getSystemURLAPI(Request $request, Response $response, array $args)

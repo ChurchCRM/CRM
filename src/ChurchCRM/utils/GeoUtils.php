@@ -66,7 +66,7 @@ class GeoUtils
         $url = $url . "&destinations=" . urlencode($address2);
         $logger->debug($url);
         $gMapsResponse = file_get_contents($url);
-        $details = json_decode($gMapsResponse, TRUE);
+        $details = json_decode($gMapsResponse, TRUE, 512, JSON_THROW_ON_ERROR);
         $matrixElements = $details['rows'][0]['elements'][0];
         return [
             'distance' => $matrixElements['distance']['text'],

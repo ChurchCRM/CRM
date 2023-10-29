@@ -12,24 +12,24 @@ use Propel\Runtime\ActiveQuery\Criteria;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
-$app->group('/events', function () {
+$app->group('/events', function () use ($app) {
 
-    $this->get('/', 'getAllEvents');
-    $this->get('', 'getAllEvents');
-    $this->get("/types", "getEventTypes");
-    $this->get('/{id}', 'getEvent')->add(new EventsMiddleware);
-    $this->get('/{id}/', 'getEvent')->add(new EventsMiddleware);
-    $this->get('/{id}/primarycontact', 'getEventPrimaryContact');
-    $this->get('/{id}/secondarycontact', 'getEventSecondaryContact');
-    $this->get('/{id}/location', 'getEventLocation');
-    $this->get('/{id}/audience', 'getEventAudience');
+    $app->get('/', 'getAllEvents');
+    $app->get('', 'getAllEvents');
+    $app->get("/types", "getEventTypes");
+    $app->get('/{id}', 'getEvent')->add(new EventsMiddleware);
+    $app->get('/{id}/', 'getEvent')->add(new EventsMiddleware);
+    $app->get('/{id}/primarycontact', 'getEventPrimaryContact');
+    $app->get('/{id}/secondarycontact', 'getEventSecondaryContact');
+    $app->get('/{id}/location', 'getEventLocation');
+    $app->get('/{id}/audience', 'getEventAudience');
 
-    $this->post('/', 'newEvent')->add(new AddEventsRoleAuthMiddleware());
-    $this->post('', 'newEvent')->add(new AddEventsRoleAuthMiddleware());
-    $this->post('/{id}', 'updateEvent')->add(new AddEventsRoleAuthMiddleware())->add(new EventsMiddleware);
-    $this->post('/{id}/time', 'setEventTime')->add(new AddEventsRoleAuthMiddleware());
+    $app->post('/', 'newEvent')->add(new AddEventsRoleAuthMiddleware());
+    $app->post('', 'newEvent')->add(new AddEventsRoleAuthMiddleware());
+    $app->post('/{id}', 'updateEvent')->add(new AddEventsRoleAuthMiddleware())->add(new EventsMiddleware);
+    $app->post('/{id}/time', 'setEventTime')->add(new AddEventsRoleAuthMiddleware());
 
-    $this->delete("/{id}", 'deleteEvent')->add(new AddEventsRoleAuthMiddleware());
+    $app->delete("/{id}", 'deleteEvent')->add(new AddEventsRoleAuthMiddleware());
 
 });
 

@@ -347,24 +347,8 @@ msgid "ERROR: the uploaded CSV file no longer exists!"
 msgstr "ስህተት፡ የተሰቀለው የCSV ፋይል ከአሁን በኋላ የለም!"
 
 #: 
-msgid "Data Cleared Successfully!"
-msgstr "ውሂብ በተሳካ ሁኔታ ጸድቷል!"
-
-#: 
 msgid "Upload CSV File"
 msgstr "የCSV ፋይል ስቀል"
-
-#: 
-msgid "Clear Persons and Families"
-msgstr "ግለሰቦችን እና ቤተሰቦችን አጽዳ"
-
-#: 
-msgid "Warning!  Do not select this option if you plan to add to an existing database.<br/>"
-msgstr "ማስጠንቀቂያ! ወደ ነባር የውሂብ ጎታ ለመጨመር ካሰቡ ይህን አማራጭ አይምረጡ።<br/>"
-
-#: 
-msgid "Use only if unsatisfied with initial import.  All person and member data will be destroyed!"
-msgstr "በመጀመሪያ ማስመጣት ካልረኩ ብቻ ይጠቀሙ። ሁሉም ሰው እና አባል ውሂብ ይጠፋል!"
 
 #: 
 msgid "Data import successful."
@@ -661,10 +645,6 @@ msgstr "ኢሜል (ቢሲሲ)"
 #: 
 msgid "Create Directory From Cart"
 msgstr "ማውጫ ከጋሪ ፍጠር"
-
-#: 
-msgid "Generate Labels"
-msgstr "መለያዎችን ይፍጠሩ"
 
 #: 
 msgid "Bulk Mail Presort"
@@ -2217,10 +2197,6 @@ msgid "Group Members:"
 msgstr "የቡድን አባላት፡-"
 
 #: 
-msgid "Group members: "
-msgstr "የቡድን አባላት፡- "
-
-#: 
 msgid "Remove Selected Members from group"
 msgstr "የተመረጡ አባላትን ከቡድን ያስወግዱ"
 
@@ -2423,14 +2399,6 @@ msgstr "በቡድን እና በተመረጡት ሚናዎች ላይ ሪፖርት 
 #: 
 msgid "Generate letters and mailing labels."
 msgstr "ፊደሎችን እና የደብዳቤ መላኪያ መለያዎችን ይፍጠሩ።"
-
-#: 
-msgid "US Address Verification Report"
-msgstr "የአድራሻ ማረጋገጫ ሪፖርት"
-
-#: 
-msgid "Generate report comparing all US family addresses with United States Postal Service Standard Address Format.<br>"
-msgstr "ሁሉንም የአሜሪካ ቤተሰብ አድራሻዎች ከዩናይትድ ስቴትስ የፖስታ አገልግሎት መደበኛ የአድራሻ ቅርጸት ጋር በማነፃፀር ሪፖርት ማመንጨት።<br>"
 
 #: 
 msgid "Role / Gender"
@@ -3214,10 +3182,6 @@ msgid "Calendar Year"
 msgstr "አመት፣ በእትዬጵያ አቆጣጠር"
 
 #: 
-msgid "US Address Verification"
-msgstr "የአሜሪካ አድራሻ ማረጋገጫ"
-
-#: 
 msgid "Update Latitude & Longitude"
 msgstr "Latitude እና Longitude ያሻሽሉ"
 
@@ -3690,10 +3654,6 @@ msgid "Dashboard"
 msgstr "መለጠፊያ"
 
 #: 
-msgid "Toggle navigation"
-msgstr "አሰሳ ቀያይር"
-
-#: 
 msgid "Change Password"
 msgstr "የሚስጥር ቁልፍ ይቀይሩ"
 
@@ -4128,10 +4088,6 @@ msgstr "ዝርዝር"
 #: 
 msgid "Import Data"
 msgstr "መረጃ አስመጣ"
-
-#: 
-msgid "Clear Data"
-msgstr "መረጃ አንጻ"
 
 #: 
 msgid "Are you sure you want to DELETE this person from Event ID: "
@@ -4614,10 +4570,6 @@ msgid "File Name:"
 msgstr "የመዝገብ ስም:"
 
 #: 
-msgid "http://www.intelligentsearch.com/address_verification/verify_address.html"
-msgstr "http://www.intelligentsearch.com/address_verification/verify_address.html"
-
-#: 
 msgid "Fiscal Year:"
 msgstr "የበጀት ዓመት:"
 
@@ -4758,7 +4710,8 @@ msgid "Church Email"
 msgstr "የቤተክርስቲያን ኢሜይል"
 
 #: 
-msgid "Include only these classifications in the directory, comma seperated"
+#, fuzzy
+msgid "Include only these classifications in the directory, comma separated"
 msgstr "እነዚህን ምደባዎች በማውጫው ውስጥ ብቻ ያካትቱ፣ በነጠላ ሰረዝ የተለዩ"
 
 #: 
@@ -4786,7 +4739,8 @@ msgid "Minimum length a user may set their password to"
 msgstr "አንድ ተጠቃሚ የይለፍ ቃሉን ሊያዘጋጅ የሚችልበት አነስተኛ ርዝመት"
 
 #: 
-msgid "A comma-seperated list of disallowed (too obvious) passwords."
+#, fuzzy
+msgid "A comma-separated list of disallowed (too obvious) passwords."
 msgstr "በነጠላ ሰረዞች የተከለከሉ ያልተፈቀዱ (በጣም ግልጽ) የይለፍ ቃሎች ዝርዝር."
 
 #: 
@@ -4860,14 +4814,6 @@ msgstr "የልገሳ ኤንቨሎፖችን ለመጠቀም እውነት ያዘ�
 #: 
 msgid "Enter in HTML code which will be displayed as a header at the top of each page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A SECOND TIME to view the new header."
 msgstr "በእያንዳንዱ ገጽ አናት ላይ እንደ ራስጌ የሚታየውን HTML ኮድ ያስገቡ. መለያዎችዎን መዝጋትዎን ያረጋግጡ! ማስታወሻ: አዲሱን ራስጌ ለማየት አሳሽህን ለሁለተኛ ጊዜ ማደስ አለብህ."
-
-#: 
-msgid "Intelligent Search Technolgy, Ltd. CorrectAddress Username"
-msgstr "ኢንተለጀንት የፍለጋ ቴክኖልጂ፣ Ltd. CorrectAddress የተጠቃሚ ስም"
-
-#: 
-msgid "Intelligent Search Technolgy, Ltd. CorrectAddress Password"
-msgstr "ኢንተለጀንት የፍለጋ ቴክኖልጂ፣ Ltd. CorrectAddress የይለፍ ቃል"
 
 #: 
 msgid "Number of checks for Deposit Slip Report"
@@ -5211,7 +5157,8 @@ msgid "The property for which you would like person records returned."
 msgstr "የሰው መዝገቦች እንዲመለሱ የሚፈልጉት ንብረት።"
 
 #: 
-msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that conatain donations."
+#, fuzzy
+msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations."
 msgstr "ለእያንዳንዱ አባል ጠቅላላ መዋጮ ለማስላት እባክህ የመጀመሪያ ቀን ምረጥ (ማለትም ዓ-ወ-ቀን)። ማሳሰቢያ፡ ልገሳዎችን የያዙ ቀኖችን ብቻ ነው መምረጥ የሚችሉት።"
 
 #: 
@@ -7508,20 +7455,8 @@ msgid "Kiosk Manager"
 msgstr "የኪዮስክ አስተዳዳሪ"
 
 #: 
-msgid "Your Cart"
-msgstr "የእርስዎ ጋሪ"
-
-#: 
-msgid "Your settings and more"
-msgstr "የእርስዎ ቅንብሮች እና ተጨማሪ"
-
-#: 
 msgid "Report an issue"
 msgstr "ችግርዎን ያሳውቁ"
-
-#: 
-msgid "Your tasks"
-msgstr "የእርስዎ ተግባር"
 
 #: 
 msgid "Enable New Kiosk Registration"
@@ -8124,10 +8059,6 @@ msgid "Number of seconds after page load until the banner disappears, default 10
 msgstr "ባነር እስኪጠፋ ድረስ ከገጽ ጭነት በኋላ ያለው የሰከንዶች ብዛት፣ በተለምዶ 10 ሰከንድ"
 
 #: 
-msgid "Help & Support"
-msgstr "እገዛ እና ድጋፍ"
-
-#: 
 msgid "Help & Manual"
 msgstr "እገዛ እና መመሪያ"
 
@@ -8431,14 +8362,6 @@ msgstr "መዋጮዎች"
 #: 
 msgid "Unable to open file"
 msgstr "መክፈት አልተቻለም"
-
-#: 
-msgid "Invalid upgrade file specified"
-msgstr "ልክ ያልሆነ ማሻሻያ ተገለጿል"
-
-#: 
-msgid "Failure executing upgrade script"
-msgstr "ማሻሻያ መፈጸም አልተቻለም"
 
 #: 
 msgid "Missing calendar access token"
@@ -8883,10 +8806,6 @@ msgstr[0] "%d አመት ሞላው"
 msgstr[1] "%d አመት የሞላቸው"
 
 #: 
-msgid "Database upgrade failed"
-msgstr "የውሂብ ጎታ ማሻሻል አልተሳካም። "
-
-#: 
 msgid "Unsupported PHP Version"
 msgstr "የማይደገፍ የPHP ሥሪት "
 
@@ -9272,10 +9191,6 @@ msgid "Manage Notes"
 msgstr "ማስታወሻዎችን ያስተካክሉ"
 
 #: 
-msgid "Skins"
-msgstr "ቆዳዎች"
-
-#: 
 msgid "Failed generate a new API Key"
 msgstr "አዲስ የኤፒአይ ቁልፍ ማመንጨት አልተሳካም።"
 
@@ -9412,10 +9327,6 @@ msgid "Generate attendance -AND- non-attendance reports for events"
 msgstr "በቦታው የተገኙ እና ያልተገኙትን ሰዎችን ሪፖርት አሣይ"
 
 #: 
-msgid "of translation completed"
-msgstr "ትርጉሙ ተጠናቀቀ"
-
-#: 
 msgid "Help translate this project"
 msgstr "ይህንን ፕሮጀክት ለመተርጎም ያግዙ"
 
@@ -9487,54 +9398,6 @@ msgstr "አረጋገጥ"
 #: 
 msgid "Family has no emails to use"
 msgstr "ቤተሰብ ለመጠቀም ምንም ኢሜይሎች የሉትም።"
-
-#: 
-msgid "Blue"
-msgstr "ሰማያዊ"
-
-#: 
-msgid "Black"
-msgstr "ጥቁር"
-
-#: 
-msgid "Purple"
-msgstr "ሐምራዊ"
-
-#: 
-msgid "Green"
-msgstr "አረንጓዴ"
-
-#: 
-msgid "Red"
-msgstr "ቀይ"
-
-#: 
-msgid "Yellow"
-msgstr "ብጫ"
-
-#: 
-msgid "Blue Light"
-msgstr "ሰማያዊ ብርሃን"
-
-#: 
-msgid "Black Light"
-msgstr "ጥቁር ብርሃን"
-
-#: 
-msgid "Purple Light"
-msgstr "ሐምራዊ ብርሃን"
-
-#: 
-msgid "Green Light"
-msgstr "አረንጓዴ ብርሃን"
-
-#: 
-msgid "Red Light"
-msgstr "ቀይ ብርሃን"
-
-#: 
-msgid "Yellow Light"
-msgstr "ብጫ ብርሃን"
 
 #: 
 msgid "Boxed Layout"

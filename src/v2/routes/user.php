@@ -8,12 +8,12 @@ use Slim\Http\Request;
 use Slim\Http\Response;
 use Slim\Views\PhpRenderer;
 
-$app->group('/user', function () {
-    $this->get('/not-found', 'viewUserNotFound');
-    $this->get('/{id}', 'viewUser');
-    $this->get('/{id}/', 'viewUser');
-    $this->get('/{id}/changePassword', 'adminChangeUserPassword');
-    $this->post('/{id}/changePassword', 'adminChangeUserPassword');
+$app->group('/user', function () use ($app) {
+    $app->get('/not-found', 'viewUserNotFound');
+    $app->get('/{id}', 'viewUser');
+    $app->get('/{id}/', 'viewUser');
+    $app->get('/{id}/changePassword', 'adminChangeUserPassword');
+    $app->post('/{id}/changePassword', 'adminChangeUserPassword');
 });
 
 function viewUserNotFound(Request $request, Response $response, array $args)

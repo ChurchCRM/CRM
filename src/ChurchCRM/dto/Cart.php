@@ -160,7 +160,7 @@ class Cart
       $RoleID = $group->getDefaultRole();
     }
 
-    while ($element = each($_SESSION['aPeopleCart'])) {
+    foreach ($_SESSION['aPeopleCart'] as $element) {
       $personGroupRole = Person2group2roleP2g2rQuery::create()
         ->filterByGroupId($GroupID)
         ->filterByPersonId($_SESSION['aPeopleCart'][$element['key']])
@@ -207,7 +207,7 @@ class Cart
     }
     $delimiter = AuthenticationManager::GetCurrentUser()->getUserConfigString("sMailtoDelimiter");
     $sEmailLink = implode($delimiter, array_unique(array_filter($emailAddressArray)));
-    if (!empty(SystemConfig::getValue('sToEmailAddress')) && !stristr($sEmailLink, SystemConfig::getValue('sToEmailAddress'))) {
+    if (!empty(SystemConfig::getValue('sToEmailAddress')) && !stristr($sEmailLink, (string) SystemConfig::getValue('sToEmailAddress'))) {
       $sEmailLink .= $delimiter . SystemConfig::getValue('sToEmailAddress');
     }
     return $sEmailLink;

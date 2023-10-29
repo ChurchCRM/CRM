@@ -361,24 +361,8 @@ msgid "ERROR: the uploaded CSV file no longer exists!"
 msgstr "LỖI: tập tin CSV tải lên không còn tồn tại!"
 
 #: 
-msgid "Data Cleared Successfully!"
-msgstr "Dữ liệu đã xóa thành công!"
-
-#: 
 msgid "Upload CSV File"
 msgstr "Tải lên tập tin CSV"
-
-#: 
-msgid "Clear Persons and Families"
-msgstr "Xóa sạch thành viên và gia đình"
-
-#: 
-msgid "Warning!  Do not select this option if you plan to add to an existing database.<br/>"
-msgstr "Cảnh báo! Không chọn vào tùy chọn này nếu bạn có kế hoạch thêm vào một cơ sở dữ liệu hiện có.<br/>"
-
-#: 
-msgid "Use only if unsatisfied with initial import.  All person and member data will be destroyed!"
-msgstr "Chỉ sử dụng khi không hài lòng với lần nhập vào ban đầu. Tất cả dữ liệu thành viên sẽ bị xóa bỏ"
 
 #: 
 msgid "Data import successful."
@@ -677,10 +661,6 @@ msgstr "Email (BCC)"
 #: 
 msgid "Create Directory From Cart"
 msgstr "Tạo Danh bạ từ Giỏ"
-
-#: 
-msgid "Generate Labels"
-msgstr "Tạo các nhãn"
 
 #: 
 msgid "Bulk Mail Presort"
@@ -2233,10 +2213,6 @@ msgid "Group Members:"
 msgstr "Thành viên Ban/Mục vụ:"
 
 #: 
-msgid "Group members: "
-msgstr "Thành viên Ban/Mục vụ: "
-
-#: 
 msgid "Remove Selected Members from group"
 msgstr "Xóa bỏ thành viên đã lựa chọn từ Ban/Mục vụ"
 
@@ -2439,14 +2415,6 @@ msgstr "Báo cáo về nhóm và vai trò đã chọn (nó có thể là một t
 #: 
 msgid "Generate letters and mailing labels."
 msgstr "Tạo thư và nhãn gửi thư."
-
-#: 
-msgid "US Address Verification Report"
-msgstr "Báo cáo xác minh địa chỉ Hoa Kỳ"
-
-#: 
-msgid "Generate report comparing all US family addresses with United States Postal Service Standard Address Format.<br>"
-msgstr "Tạo báo cáo so sánh tất cả các địa chỉ gia đình ở Hoa Kỳ với Định dạng Địa chỉ Chuẩn của Bưu điện Hoa Kỳ. <br>"
 
 #: 
 msgid "Role / Gender"
@@ -3230,10 +3198,6 @@ msgid "Calendar Year"
 msgstr "Lịch năm"
 
 #: 
-msgid "US Address Verification"
-msgstr "Xác minh địa chỉ Hoa Kỳ"
-
-#: 
 msgid "Update Latitude & Longitude"
 msgstr "Cập nhật Vĩ độ và Kinh độ"
 
@@ -3706,10 +3670,6 @@ msgid "Dashboard"
 msgstr "Bảng điều khiển"
 
 #: 
-msgid "Toggle navigation"
-msgstr "Chuyển đổi điều hướng thành"
-
-#: 
 msgid "Change Password"
 msgstr "Thay đổi mật khẩu"
 
@@ -4145,10 +4105,6 @@ msgstr "Danh sách"
 #: 
 msgid "Import Data"
 msgstr "Nhập dữ liệu"
-
-#: 
-msgid "Clear Data"
-msgstr "Xóa dữ liệu"
 
 #: 
 msgid "Are you sure you want to DELETE this person from Event ID: "
@@ -4632,10 +4588,6 @@ msgid "File Name:"
 msgstr "Tên tệp:"
 
 #: 
-msgid "http://www.intelligentsearch.com/address_verification/verify_address.html"
-msgstr "http://www.intelligentsearch.com/address_verification/verify_address.html"
-
-#: 
 msgid "Fiscal Year:"
 msgstr "Năm tài chính:"
 
@@ -4776,7 +4728,8 @@ msgid "Church Email"
 msgstr "Email Nhà thờ"
 
 #: 
-msgid "Include only these classifications in the directory, comma seperated"
+#, fuzzy
+msgid "Include only these classifications in the directory, comma separated"
 msgstr "Chỉ bao gồm các phân loại này trong thư mục, được phân tách bằng dấu phẩy"
 
 #: 
@@ -4804,7 +4757,8 @@ msgid "Minimum length a user may set their password to"
 msgstr "Độ dài tối thiểu mà người dùng có thể đặt mật khẩu của họ"
 
 #: 
-msgid "A comma-seperated list of disallowed (too obvious) passwords."
+#, fuzzy
+msgid "A comma-separated list of disallowed (too obvious) passwords."
 msgstr "Danh sách mật khẩu không được phép (quá rõ ràng) được phân tách bằng dấu phẩy."
 
 #: 
@@ -4878,14 +4832,6 @@ msgstr "Đặt true để cho phép sử dụng phong bì quyên góp"
 #: 
 msgid "Enter in HTML code which will be displayed as a header at the top of each page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A SECOND TIME to view the new header."
 msgstr "Nhập mã HTML sẽ được hiển thị dưới dạng tiêu đề ở đầu mỗi trang. Hãy chắc chắn đóng thẻ của bạn! Lưu ý: Bạn phải LÀM LẠI TRÌNH DUYỆT CỦA BẠN MỘT LẦN THỨ HAI để xem tiêu đề mới."
-
-#: 
-msgid "Intelligent Search Technolgy, Ltd. CorrectAddress Username"
-msgstr "Tìm kiếm thông minh Technolgy, Ltd. Tên người dùng Địa chỉ chính xác"
-
-#: 
-msgid "Intelligent Search Technolgy, Ltd. CorrectAddress Password"
-msgstr "Tìm kiếm thông minh Technolgy, Ltd."
 
 #: 
 msgid "Number of checks for Deposit Slip Report"
@@ -5228,7 +5174,8 @@ msgid "The property for which you would like person records returned."
 msgstr "Thuộc tính mà bạn muốn trả lại hồ sơ cá nhân."
 
 #: 
-msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that conatain donations."
+#, fuzzy
+msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations."
 msgstr "Vui lòng chọn ngày bắt đầu để tính tổng đóng góp cho mỗi thành viên (tức là YYYY-MM-DD). LƯU Ý: Bạn chỉ có thể chọn ngày đi kèm với số tiền quyên góp."
 
 #: 
@@ -7524,20 +7471,8 @@ msgid "Kiosk Manager"
 msgstr "Người quản lý kiosk"
 
 #: 
-msgid "Your Cart"
-msgstr "Giỏ hàng của bạn"
-
-#: 
-msgid "Your settings and more"
-msgstr "Cài đặt của bạn và hơn thế nữa"
-
-#: 
 msgid "Report an issue"
 msgstr "Báo cáo một vấn đề"
-
-#: 
-msgid "Your tasks"
-msgstr "Yêu cầu của bạn"
 
 #: 
 msgid "Enable New Kiosk Registration"
@@ -8140,10 +8075,6 @@ msgid "Number of seconds after page load until the banner disappears, default 10
 msgstr "Số giây sau khi tải trang cho đến khi biểu ngữ biến mất, mặc định là 10 giây"
 
 #: 
-msgid "Help & Support"
-msgstr "Trợ giúp & Hỗ trợ"
-
-#: 
 msgid "Help & Manual"
 msgstr "Trợ giúp & Hướng dẫn sử dụng"
 
@@ -8446,14 +8377,6 @@ msgstr "Quỹ đóng góp"
 #: 
 msgid "Unable to open file"
 msgstr "Không thể mở tập tin"
-
-#: 
-msgid "Invalid upgrade file specified"
-msgstr "Đã chỉ định tệp nâng cấp không hợp lệ"
-
-#: 
-msgid "Failure executing upgrade script"
-msgstr "Không thực hiện được tập lệnh nâng cấp"
 
 #: 
 msgid "Missing calendar access token"
@@ -8883,10 +8806,6 @@ msgid_plural "%d years old"
 msgstr[0] "% d tuổi"
 
 #: 
-msgid "Database upgrade failed"
-msgstr "Nâng cấp cơ sở dữ liệu không thành công"
-
-#: 
 msgid "Unsupported PHP Version"
 msgstr "Phiên bản PHP không được hỗ trợ"
 
@@ -9261,10 +9180,6 @@ msgid "Manage Notes"
 msgstr "Quản lý ghi chú"
 
 #: 
-msgid "Skins"
-msgstr "Da"
-
-#: 
 msgid "Failed generate a new API Key"
 msgstr "Không tạo được khóa API mới"
 
@@ -9397,10 +9312,6 @@ msgid "Generate attendance -AND- non-attendance reports for events"
 msgstr "Tạo báo cáo tham dự -AND- không tham dự cho các sự kiện"
 
 #: 
-msgid "of translation completed"
-msgstr "bản dịch đã hoàn thành"
-
-#: 
 msgid "Help translate this project"
 msgstr "Giúp dịch dự án này"
 
@@ -9471,54 +9382,6 @@ msgstr "Kiểm chứng"
 #: 
 msgid "Family has no emails to use"
 msgstr "Gia đình không có email nào để sử dụng"
-
-#: 
-msgid "Blue"
-msgstr "Màu xanh da trời"
-
-#: 
-msgid "Black"
-msgstr "Đen"
-
-#: 
-msgid "Purple"
-msgstr "Màu tím"
-
-#: 
-msgid "Green"
-msgstr "màu xanh lá"
-
-#: 
-msgid "Red"
-msgstr "Đỏ"
-
-#: 
-msgid "Yellow"
-msgstr "Màu vàng"
-
-#: 
-msgid "Blue Light"
-msgstr "Đèn xanh"
-
-#: 
-msgid "Black Light"
-msgstr "Ánh sáng màu đen"
-
-#: 
-msgid "Purple Light"
-msgstr "Ánh sáng tím"
-
-#: 
-msgid "Green Light"
-msgstr "Đèn xanh"
-
-#: 
-msgid "Red Light"
-msgstr "Đèn đỏ"
-
-#: 
-msgid "Yellow Light"
-msgstr "Đèn vàng"
 
 #: 
 msgid "Boxed Layout"

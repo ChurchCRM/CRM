@@ -345,24 +345,8 @@ msgid "ERROR: the uploaded CSV file no longer exists!"
 msgstr "ERRORE: il file CSV inviato non esiste più!"
 
 #: 
-msgid "Data Cleared Successfully!"
-msgstr "Dati Cancellati con Successo!"
-
-#: 
 msgid "Upload CSV File"
 msgstr "Carica File CSV"
-
-#: 
-msgid "Clear Persons and Families"
-msgstr "Cancella Persone e Famiglie"
-
-#: 
-msgid "Warning!  Do not select this option if you plan to add to an existing database.<br/>"
-msgstr "Attenzione! Non selezionare questa opzione se si pensa di aggiungere a un database esistente. <br/>"
-
-#: 
-msgid "Use only if unsatisfied with initial import.  All person and member data will be destroyed!"
-msgstr "Utilizzare solo se insoddisfatto dell&#39;importazione iniziale. Tutti i dati delle persone e dei membri verranno distrutti!"
 
 #: 
 msgid "Data import successful."
@@ -661,10 +645,6 @@ msgstr "Email (copia nascosta)"
 #: 
 msgid "Create Directory From Cart"
 msgstr "Crea Elenco da Carrello"
-
-#: 
-msgid "Generate Labels"
-msgstr "Genera etichette"
 
 #: 
 msgid "Bulk Mail Presort"
@@ -2221,11 +2201,6 @@ msgid "Group Members:"
 msgstr "Componenti del gruppo:"
 
 #: 
-msgid "Group members: "
-msgstr "\n"
-"Membri del Gruppo:␣"
-
-#: 
 msgid "Remove Selected Members from group"
 msgstr "Rimuovi membri selezionati dal gruppo"
 
@@ -2430,14 +2405,6 @@ msgstr "Rapporto sui gruppi ed i ruoli selezionati (può generare un PDF multipa
 #: 
 msgid "Generate letters and mailing labels."
 msgstr "Generare lettere ed etichette di spedizione."
-
-#: 
-msgid "US Address Verification Report"
-msgstr "Stati Uniti Indirizzo Rapporto di verifica della"
-
-#: 
-msgid "Generate report comparing all US family addresses with United States Postal Service Standard Address Format.<br>"
-msgstr "Genera rapporto che confronta tutti gli indirizzi di famiglie statunitensi con il formato di indirizzo standard del servizio postale degli Stati Uniti.<br>"
 
 #: 
 msgid "Role / Gender"
@@ -3226,10 +3193,6 @@ msgid "Calendar Year"
 msgstr "Anno civile"
 
 #: 
-msgid "US Address Verification"
-msgstr "Stati Uniti Indirizzo di verifica"
-
-#: 
 msgid "Update Latitude & Longitude"
 msgstr "Aggiorna Latitudine e Longitudine"
 
@@ -3703,10 +3666,6 @@ msgid "Dashboard"
 msgstr "Dashboard"
 
 #: 
-msgid "Toggle navigation"
-msgstr "Attiva / disattiva la navigazione"
-
-#: 
 msgid "Change Password"
 msgstr "Cambia Password"
 
@@ -4142,10 +4101,6 @@ msgstr "Elenco"
 #: 
 msgid "Import Data"
 msgstr "Importa Dati"
-
-#: 
-msgid "Clear Data"
-msgstr "Cancella dati"
 
 #: 
 msgid "Are you sure you want to DELETE this person from Event ID: "
@@ -4630,10 +4585,6 @@ msgid "File Name:"
 msgstr "Nome del file:"
 
 #: 
-msgid "http://www.intelligentsearch.com/address_verification/verify_address.html"
-msgstr "http://www.intelligentsearch.com/address_verification/verify_address.html"
-
-#: 
 msgid "Fiscal Year:"
 msgstr "Anno Fiscale:"
 
@@ -4775,7 +4726,8 @@ msgid "Church Email"
 msgstr "Email della Chiesa"
 
 #: 
-msgid "Include only these classifications in the directory, comma seperated"
+#, fuzzy
+msgid "Include only these classifications in the directory, comma separated"
 msgstr "Includere solo queste classificazioni nella directory, separate da virgola"
 
 #: 
@@ -4803,7 +4755,8 @@ msgid "Minimum length a user may set their password to"
 msgstr "Lunghezza minima a cui un utente può impostare la propria password"
 
 #: 
-msgid "A comma-seperated list of disallowed (too obvious) passwords."
+#, fuzzy
+msgid "A comma-separated list of disallowed (too obvious) passwords."
 msgstr "Un elenco separato da virgole di password non consentite (troppo ovvie)."
 
 #: 
@@ -4877,14 +4830,6 @@ msgstr "Impostare true per abilitare l'uso delle buste di donazione"
 #: 
 msgid "Enter in HTML code which will be displayed as a header at the top of each page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A SECOND TIME to view the new header."
 msgstr "Inserisci il codice HTML che verrà visualizzato come intestazione nella parte superiore di ogni pagina. Assicurati di chiudere i tag! Nota: è necessario AGGIORNARE IL TUO BROWSER UNA SECONDA ORA per visualizzare la nuova intestazione."
-
-#: 
-msgid "Intelligent Search Technolgy, Ltd. CorrectAddress Username"
-msgstr "Intelligent Search Technolgy, Ltd. Nome utente CorrectAddress"
-
-#: 
-msgid "Intelligent Search Technolgy, Ltd. CorrectAddress Password"
-msgstr "Intelligent Search Technolgy, Ltd. CorrectAddress Password"
 
 #: 
 msgid "Number of checks for Deposit Slip Report"
@@ -5227,7 +5172,8 @@ msgid "The property for which you would like person records returned."
 msgstr "La proprietà per la quale si desidera che vengano restituiti record personali."
 
 #: 
-msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that conatain donations."
+#, fuzzy
+msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations."
 msgstr "Seleziona la data di inizio per calcolare i contributi totali per ciascun membro (cioè AAAA-MM-GG). NOTA: puoi scegliere solo le date che contengono le donazioni."
 
 #: 
@@ -7532,20 +7478,8 @@ msgid "Kiosk Manager"
 msgstr "Responsabile del chiosco"
 
 #: 
-msgid "Your Cart"
-msgstr "Il Tuo Carrello"
-
-#: 
-msgid "Your settings and more"
-msgstr "Le Tue Impostazioni ed altro"
-
-#: 
 msgid "Report an issue"
 msgstr "Segnala un problema"
-
-#: 
-msgid "Your tasks"
-msgstr "Le Tue Mansioni"
 
 #: 
 msgid "Enable New Kiosk Registration"
@@ -8148,10 +8082,6 @@ msgid "Number of seconds after page load until the banner disappears, default 10
 msgstr "Numero di secondi dopo il caricamento della pagina fino a quando il banner non scompare, predefinito per 10 secondi"
 
 #: 
-msgid "Help & Support"
-msgstr "Aiuto e Supporto"
-
-#: 
 msgid "Help & Manual"
 msgstr "Aiuto e Manuale"
 
@@ -8454,14 +8384,6 @@ msgstr "Fondi di donazione"
 #: 
 msgid "Unable to open file"
 msgstr "Impossibile aprire il file"
-
-#: 
-msgid "Invalid upgrade file specified"
-msgstr "File di aggiornamento non valido"
-
-#: 
-msgid "Failure executing upgrade script"
-msgstr "Errore durante l'esecuzione dello script di aggiornamento"
 
 #: 
 msgid "Missing calendar access token"
@@ -8902,10 +8824,6 @@ msgstr[0] "%d anno"
 msgstr[1] "%d anni"
 
 #: 
-msgid "Database upgrade failed"
-msgstr "Aggiornamento del database non riuscito"
-
-#: 
 msgid "Unsupported PHP Version"
 msgstr "Versione PHP non supportata"
 
@@ -9280,10 +9198,6 @@ msgid "Manage Notes"
 msgstr "Gestisci note"
 
 #: 
-msgid "Skins"
-msgstr "Pellicole"
-
-#: 
 msgid "Failed generate a new API Key"
 msgstr "Impossibile generare una nuova chiave API"
 
@@ -9416,10 +9330,6 @@ msgid "Generate attendance -AND- non-attendance reports for events"
 msgstr "Genera rapporti sulla presenza -E- sulla mancata presenza per gli eventi"
 
 #: 
-msgid "of translation completed"
-msgstr "di traduzione completata"
-
-#: 
 msgid "Help translate this project"
 msgstr "Aiutaci a tradurre questo progetto"
 
@@ -9490,54 +9400,6 @@ msgstr "Verificare"
 #: 
 msgid "Family has no emails to use"
 msgstr "La famiglia non ha email da usare"
-
-#: 
-msgid "Blue"
-msgstr "Blu"
-
-#: 
-msgid "Black"
-msgstr "Nero"
-
-#: 
-msgid "Purple"
-msgstr "Viola"
-
-#: 
-msgid "Green"
-msgstr "Verde"
-
-#: 
-msgid "Red"
-msgstr "Rosso"
-
-#: 
-msgid "Yellow"
-msgstr "Giallo"
-
-#: 
-msgid "Blue Light"
-msgstr "Luce blu"
-
-#: 
-msgid "Black Light"
-msgstr "Luce nera"
-
-#: 
-msgid "Purple Light"
-msgstr "Luce viola"
-
-#: 
-msgid "Green Light"
-msgstr "Luce verde"
-
-#: 
-msgid "Red Light"
-msgstr "Luce rossa"
-
-#: 
-msgid "Yellow Light"
-msgstr "Luce gialla"
 
 #: 
 msgid "Boxed Layout"

@@ -5,11 +5,11 @@ use ChurchCRM\data\States;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
-$app->group('/public/data', function () {
-    $this->get('/countries', 'getCountries');
-    $this->get('/countries/', 'getCountries');
-    $this->get('/countries/{countryCode}/states', 'getStates');
-    $this->get('/countries/{countryCode}/states/', 'getStates');
+$app->group('/public/data', function () use ($app) {
+    $app->get('/countries', 'getCountries');
+    $app->get('/countries/', 'getCountries');
+    $app->get('/countries/{countryCode}/states', 'getStates');
+    $app->get('/countries/{countryCode}/states/', 'getStates');
 });
 
 

@@ -1,0 +1,686 @@
+msgid ""
+msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: POEditor.com\n"
+"Project-Id-Version: ChurchCRM\n"
+"Language: cs\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+
+#: 
+msgid "Cannot execute query."
+msgstr "Nelze provést dotaz."
+
+#: 
+msgid "Delete"
+msgstr "Smazat"
+
+#: 
+msgid "Cancel"
+msgstr "Zrušit"
+
+#: 
+msgid "Save"
+msgstr "Uložit"
+
+#: 
+msgid "Unassigned"
+msgstr "Nepřiřazený"
+
+#: 
+msgid "None"
+msgstr "Žádný"
+
+#: 
+msgid "City"
+msgstr "Město"
+
+#: 
+msgid "State"
+msgstr "Stát"
+
+#: 
+msgid "Country"
+msgstr "Země"
+
+#: 
+msgid "Phone"
+msgstr "Telefon"
+
+#: 
+msgid "Email"
+msgstr "Email"
+
+#: 
+msgid "Credit Card"
+msgstr "Kreditní karta"
+
+#: 
+msgid "Backup Database"
+msgstr "Zálohovat databázi"
+
+#: 
+msgid "This tool will assist you in manually backing up the ChurchCRM database."
+msgstr "Tento nástroj vám pomůže při ručním zálohování databáze ChurchCRM."
+
+#: 
+msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
+msgstr "Ruční zálohování byste měli provádět alespoň jednou týdně, pokud již nemáte zavedený postup pravidelného zálohování systémů."
+
+#: 
+msgid "After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site."
+msgstr "Po stažení záložního souboru byste měli vytvořit dvě kopie. Jednu z nich uložte do ohnivzdorného trezoru na pracovišti a druhou na bezpečné místo mimo pracoviště."
+
+#: 
+msgid "If you are concerned about confidentiality of data stored in the ChurchCRM database, you should encrypt the backup data if it will be stored somewhere potentially accessible to others"
+msgstr "Pokud máte obavy o důvěrnost dat uložených v databázi ChurchCRM, měli byste záložní data šifrovat, pokud budou uložena na místě potenciálně přístupném jiným osobám"
+
+#: 
+msgid "Select archive type"
+msgstr "Vyberte typ archivu"
+
+#: 
+msgid "Encrypt backup file with a password?"
+msgstr "Zabezpečit zálohu heslem?"
+
+#: 
+msgid "Re-type Password"
+msgstr "Heslo znovu"
+
+#: 
+msgid "Generate and Ship Backup to External Storage"
+msgstr "Vytvoření a odeslání zálohy do externího úložiště"
+
+#: 
+msgid "Winner"
+msgstr "Vítěz"
+
+#: 
+msgid "Price"
+msgstr "Odměna"
+
+#: 
+msgid "Enter Winners"
+msgstr "Zadej vítěze"
+
+#: 
+msgid "CSV Export"
+msgstr "CSV export"
+
+#: 
+msgid "Last Name"
+msgstr "Příjmení"
+
+#: 
+msgid "Required"
+msgstr "Požadováno"
+
+#: 
+msgid "First Name"
+msgstr "Jméno"
+
+#: 
+msgid "Middle Name"
+msgstr "Prostřední jméno"
+
+#: 
+msgid "Envelope"
+msgstr "Obálka"
+
+#: 
+msgid "Work/Other Email"
+msgstr "Pracovní/jiný email"
+
+#: 
+msgid "Membership Date"
+msgstr "Členství od"
+
+#: 
+msgid "Birth / Anniversary Date"
+msgstr "Datum narození/výročí"
+
+#: 
+msgid "Age / Years Married"
+msgstr "Období v manželství"
+
+#: 
+msgid "Family Role"
+msgstr "Role v rodině"
+
+#: 
+msgid "Depends whether using person or family output method"
+msgstr "Záleží na tom, zda používáte metodu osobního nebo rodinného výstupu"
+
+#: 
+msgid "Custom Field Selection"
+msgstr "Výběr vlastního pole"
+
+#: 
+msgid "Filters"
+msgstr "Filtry"
+
+#: 
+msgid "Records to export"
+msgstr "Záznamy k exportu"
+
+#: 
+msgid "People in Cart (filters ignored)"
+msgstr "lidé v košíku (bez filtrů)"
+
+#: 
+msgid "Use Ctrl Key to select multiple"
+msgstr "Zmáčkni CTRL pro výběr více položek"
+
+#: 
+msgid "Don't Filter"
+msgstr "Nefiltruj"
+
+#: 
+msgid "Male"
+msgstr "Muž"
+
+#: 
+msgid "Female"
+msgstr "Žena"
+
+#: 
+msgid "Group Membership"
+msgstr "Členství skupiny"
+
+#: 
+msgid "From:"
+msgstr "Od:"
+
+#: 
+msgid "To:"
+msgstr "Komu:"
+
+#: 
+msgid "Birthday Date"
+msgstr "Datum narození"
+
+#: 
+msgid "Anniversary Date"
+msgstr "Datum výročí"
+
+#: 
+msgid "Output Method:"
+msgstr "Výstupní metoda:"
+
+#: 
+msgid "CSV Individual Records"
+msgstr "CSV individuální záznamy"
+
+#: 
+msgid "CSV Combine Families"
+msgstr "CSV"
+
+#: 
+msgid "Add Individuals to Cart"
+msgstr "přidat jednotlivce do košíku"
+
+#: 
+msgid "Skip records with incomplete mail address"
+msgstr "Přeskočit záznamy s neúplnou adresou"
+
+#: 
+msgid "Create File"
+msgstr "Vytvoř soubor"
+
+#: 
+msgid "No file selected for upload."
+msgstr "Nebyl vybrán soubor k nahrání."
+
+#: 
+msgid "Total number of rows in the CSV file:"
+msgstr "Celkový počet řádků v souboru CSV:"
+
+#: 
+msgid "Ignore this Field"
+msgstr "Ignoruj toto pole"
+
+#: 
+msgid "Title"
+msgstr "Název"
+
+#: 
+msgid "Suffix"
+msgstr "Předpona"
+
+#: 
+msgid "Gender"
+msgstr "Pohlaví"
+
+#: 
+msgid "Home Phone"
+msgstr "Telefon domů"
+
+#: 
+msgid "Work Phone"
+msgstr "Telefon do práce"
+
+#: 
+msgid "Mobile Phone"
+msgstr "Mobilní telefon"
+
+#: 
+msgid "Work / Other Email"
+msgstr "Pracovní/jiný email"
+
+#: 
+msgid "Birth Date"
+msgstr "Datum narození"
+
+#: 
+msgid "Wedding Date"
+msgstr "Datum svatby"
+
+#: 
+msgid "Ignore first CSV row (to exclude a header)"
+msgstr "Ignorovat první řádek CSV (vyloučit záhlaví)"
+
+#: 
+msgid "Make Family records based on last name and address"
+msgstr "Vytvořit rodinné záznamy na základě příjmení a adresy"
+
+#: 
+msgid "Patriarch"
+msgstr "Otec rodiny"
+
+#: 
+msgid "Matriarch"
+msgstr "Matka rodiny"
+
+#: 
+msgid "NOTE: Separators (dashes, etc.) or lack thereof do not matter"
+msgstr "POZNÁMKA: Na oddělovačích (pomlčky atd.) nebo jejich absenci nezáleží"
+
+#: 
+msgid "Default country if none specified otherwise"
+msgstr "Výchozí země, pokud není uvedena jiná"
+
+#: 
+msgid "Classification"
+msgstr "Klasifikace"
+
+#: 
+msgid "Perform Import"
+msgstr "Importuj"
+
+#: 
+msgid "Upload CSV File"
+msgstr "Nahraj CSV soubor"
+
+#: 
+msgid "Data import successful."
+msgstr "Import dat proběhl úspěšně."
+
+#: 
+msgid "persons were imported"
+msgstr "osoby byly importovány"
+
+#: 
+msgid "Not confirmed."
+msgstr "Nepotvrzeno."
+
+#: 
+msgid "Set default fiscal year"
+msgstr "Nastavit výchozí fiskální rok"
+
+#: 
+msgid "Progress Report"
+msgstr "Zpráva o průběhu"
+
+#: 
+msgid "Summary Report"
+msgstr "Souhrnná zpráva"
+
+#: 
+msgid "Positive"
+msgstr "Pozitivní"
+
+#: 
+msgid "Critical"
+msgstr "Kritický"
+
+#: 
+msgid "Financial"
+msgstr "Finanční"
+
+#: 
+msgid "Suggestions"
+msgstr "Návrhy"
+
+#: 
+msgid "Not Interested"
+msgstr "Nezájem"
+
+#: 
+msgid "Why Not Interested?"
+msgstr "Proč nezájem?"
+
+#: 
+msgid "Add Cart to Event"
+msgstr "Přidat košík do události"
+
+#: 
+msgid "OR"
+msgstr "NEBO"
+
+#: 
+msgid "Add New Event"
+msgstr "Přidej novou událost"
+
+#: 
+msgid "Your cart is empty!"
+msgstr "Váš košík je prázdný!"
+
+#: 
+msgid "No family name entered!"
+msgstr "Nebylo zadáno žádné příjmení!"
+
+#: 
+msgid "Add Cart to Family"
+msgstr "Přidat košík do rodiny"
+
+#: 
+msgid "Name"
+msgstr "Jméno"
+
+#: 
+msgid "Assign Role"
+msgstr "Přiřaď roli"
+
+#: 
+msgid "Already in a family"
+msgstr "Už je v rodině"
+
+#: 
+msgid "Create new family"
+msgstr "Vytvoř novou rodinu"
+
+#: 
+msgid "If adding a new family, enter data below."
+msgstr "Pokud přidáváte novou rodinu, zadejte níže uvedené údaje."
+
+#: 
+msgid "Use address/contact data from"
+msgstr "Použít údaje o adrese/kontaktních údajích z"
+
+#: 
+msgid "Do not auto-format"
+msgstr "Neformátovat automaticky"
+
+#: 
+msgid "Add to Family"
+msgstr "Přidat k rodině"
+
+#: 
+msgid "Add Cart to Group"
+msgstr "Přidat košík do skupiny"
+
+#: 
+msgid "Select Group"
+msgstr "Zvol skupinu"
+
+#: 
+msgid "No Group Selected"
+msgstr "Žádná skupina nebyla zvolena"
+
+#: 
+msgid "Add to Group"
+msgstr "Přidej do skupiny"
+
+#: 
+msgid "View Your Cart"
+msgstr "Zobrazit košík"
+
+#: 
+msgid "You have no items in your cart."
+msgstr "Žádné položky v košíku."
+
+#: 
+msgid "Back to Menu"
+msgstr "Zpátky do menu"
+
+#: 
+msgid "Empty Cart"
+msgstr "Prázdný košík"
+
+#: 
+msgid "Remove"
+msgstr "Odstranit"
+
+#: 
+msgid "Convert Individuals to Families"
+msgstr "Převeď jednotlivce na rodiny"
+
+#: 
+msgid "Convert Next"
+msgstr "Převeď další"
+
+#: 
+msgid "Convert All"
+msgstr "Převeď vše"
+
+#: 
+msgid "Import eGive"
+msgstr "Importuj eGive"
+
+#: 
+msgid "Add Payment"
+msgstr "Vlož platbu"
+
+#: 
+msgid "Address"
+msgstr "Adresa"
+
+#: 
+msgid "Birthday"
+msgstr "Narozeniny"
+
+#: 
+msgid "Personal Home Phone"
+msgstr "Osobní číslo domů"
+
+#: 
+msgid "Personal Work Phone"
+msgstr "Osobní číslo do práce"
+
+#: 
+msgid "Personal Cell Phone"
+msgstr "Osobní telefon"
+
+#: 
+msgid "Personal Email"
+msgstr "Osobní email"
+
+#: 
+msgid "Personal Work/Other Email"
+msgstr "Osobní pracovní/jiný email"
+
+#: 
+msgid "Photos"
+msgstr "Fotky"
+
+#: 
+msgid "Number of Columns"
+msgstr "Počet sloupců"
+
+#: 
+msgid "Paper Size"
+msgstr "Velikost papíru"
+
+#: 
+msgid "Font Size"
+msgstr "Velikost písma"
+
+#: 
+msgid "Title page"
+msgstr "Titulní strana"
+
+#: 
+msgid "Use Title Page"
+msgstr "Použij titulní stranu"
+
+#: 
+msgid "Church Name"
+msgstr "Název církve"
+
+#: 
+msgid "Disclaimer"
+msgstr "Odmítnutí odpovědnosti"
+
+#: 
+msgid "Create Directory"
+msgstr "Vytvoř složku"
+
+#: 
+msgid "Save and Add"
+msgstr "Ulož a přidej"
+
+#: 
+msgid "Item"
+msgstr "Položka"
+
+#: 
+msgid "Multiple items"
+msgstr "Více položek"
+
+#: 
+msgid "Sell to everyone"
+msgstr "Prodej všem"
+
+#: 
+msgid "Estimated Price"
+msgstr "Odhadovaná cena"
+
+#: 
+msgid "Final Price"
+msgstr "Finální cena"
+
+#: 
+msgid "Replicate item"
+msgstr "Kopírovat položku"
+
+#: 
+msgid "Go"
+msgstr "Jdi"
+
+#: 
+msgid " errors. Please see below"
+msgstr "chyb. Viz níže"
+
+#: 
+msgid " are required"
+msgstr "je požadováno"
+
+#: 
+msgid "Add Family"
+msgstr "Přidat rodinu"
+
+#: 
+msgid "Add a Note"
+msgstr "Přidat poznámku"
+
+#: 
+msgid " Canvass Entry"
+msgstr "Zadání agendy"
+
+#: 
+msgid " Monthly Averages"
+msgstr "měsíční průměry"
+
+#: 
+msgid "Add New"
+msgstr "Přidat nový"
+
+#: 
+msgid " by that name already exists."
+msgstr "toho názvu už existuje."
+
+#: 
+msgid "About Me"
+msgstr "O mně"
+
+#: 
+msgid " Deposit Slip #"
+msgstr "příjmový doklad #"
+
+#: 
+msgid " record(s) returned"
+msgstr "záznamu vráceno"
+
+#: 
+msgid " characters long"
+msgstr "znaků"
+
+#: 
+msgid " Bold Italic"
+msgstr "Tučně a kurzívou"
+
+#: 
+msgid " Italic"
+msgstr "kurzíva"
+
+#: 
+msgid " Bold"
+msgstr "Tučně"
+
+#: 
+msgid "                                        Signature ________________________________________________________________"
+msgstr "␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣␣Podpis________________________________________________________________"
+
+#: 
+msgid "Add"
+msgstr "Přidat"
+
+#: 
+msgid ", Phone: "
+msgstr ", Telefon:"
+
+#: 
+msgid "'Default Option'"
+msgstr "'Výchozí možnost'"
+
+#: 
+msgid " Since:"
+msgstr "Od:"
+
+#: 
+msgid "2012/2013"
+msgstr "2012/2013"
+
+#: 
+msgid "2013/2014"
+msgstr "2013/2014"
+
+#: 
+msgid "2014/2015"
+msgstr "2014/2015"
+
+#: 
+msgid "2015/2016"
+msgstr "2015/2016"
+
+#: 
+msgid " in this category."
+msgstr "v této kategorii."
+
+#: 
+msgid " this Family"
+msgstr "tato rodina"
+
+#: 
+msgid "Activate"
+msgstr "Aktivovat"
+
+#: 
+msgid "Add all"
+msgstr "Přidat vše"
+
+#: 
+msgid "Add Menu"
+msgstr "Přidat menu"
+

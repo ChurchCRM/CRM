@@ -4,8 +4,8 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
 
-$app->group('/register', function () {
-    $this->post('', function ($request, $response, $args) {
+$app->group('/register', function () use ($app) {
+    $app->post('', function ($request, $response, $args) {
         $input = (object)$request->getParsedBody();
 
         $registrationData = new \stdClass();
@@ -20,10 +20,10 @@ $app->group('/register', function () {
         $registrationData->Version = SystemService::getInstalledVersion();
 
         $registrationData->sComments = $input->emailmessage;
-        $curlService = curl_init('http://demo.churchcrm.io/register.php');
+        $curlService = curl_init('https://demo.churchcrm.io/register.php');
 
         curl_setopt($curlService, CURLOPT_POST, true);
-        curl_setopt($curlService, CURLOPT_POSTFIELDS, json_encode($registrationData));
+        curl_setopt($curlService, CURLOPT_POSTFIELDS, json_encode($registrationData, JSON_THROW_ON_ERROR));
         curl_setopt($curlService, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($curlService, CURLOPT_CONNECTTIMEOUT, 1);
 

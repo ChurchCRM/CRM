@@ -26,7 +26,7 @@ $isAdmin = AuthenticationManager::GetCurrentUser()->isAdmin();
     <div class="float-right d-none d-sm-block">
         <b><?= gettext('Version') ?></b> <?= $_SESSION['sSoftwareInstalledVersion'] ?>
     </div>
-    <strong><?= gettext('Copyright') ?> &copy; <?= SystemService::getCopyrightDate() ?> <a href="http://www.churchcrm.io" target="_blank"><b>Church</b>CRM</a>.</strong> <?= gettext('All rights reserved') ?>.
+    <strong><?= gettext('Copyright') ?> &copy; <?= SystemService::getCopyrightDate() ?> <a href="https://www.churchcrm.io" target="_blank"><b>Church</b>CRM</a>.</strong> <?= gettext('All rights reserved') ?>.
     | <a href="https://twitter.com/church_crm" target="_blank"><i class="fa-brands fa-twitter"></i> <?= gettext("Follow us on Twitter") ?></a>
     | <span class="fi fi-squared"></span>
 </footer>
@@ -84,7 +84,6 @@ $isAdmin = AuthenticationManager::GetCurrentUser()->isAdmin();
 
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/IssueReporter.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/DataTables.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/js/Tooltips.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/Events.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/Footer.js"></script>
 

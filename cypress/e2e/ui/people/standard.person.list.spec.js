@@ -2,16 +2,6 @@
 
 context('Standard People', () => {
 
-    it('Open the People Dashboard', () => {
-        cy.loginStandard("PeopleDashboard.php");
-        cy.contains('People Dashboard');
-        cy.contains('People Functions');
-        cy.contains('Reports');
-        cy.contains('Family Roles');
-        cy.contains('People Classification');
-        cy.contains('Gender Demographics');
-    });
-
     it('Listing all persons', () => {
         cy.loginStandard("v2/people");
         cy.contains('Admin');

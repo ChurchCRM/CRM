@@ -16,27 +16,27 @@ class CheckUploadSizeTask
         $this->sizeBytes = Self::return_bytes($this->sizeString);
     }
 
-    public function isActive()
+    public function isActive(): bool
     {
         return $this->sizeBytes < Self::return_bytes('5M');
     }
 
-    public function isAdmin()
+    public function isAdmin(): bool
     {
         return true;
     }
 
-    public function getLink()
+    public function getLink(): string
     {
         return SystemURLs::getSupportURL(array_pop(explode('\\', self::class)));
     }
 
-    public function getTitle()
+    public function getTitle(): string
     {
         return gettext('PHP Max File size too small') . " (" . $this->sizeString . ")";
     }
 
-    public function getDesc()
+    public function getDesc(): string
     {
         return gettext("Increase the php upload limits to allow for mobile photo upload, and backup restore.");
     }
@@ -48,9 +48,9 @@ class CheckUploadSizeTask
         $val = substr($val, 0, -1);
         switch ($last) {
             case 'g':
-                $val *= 1073741824;
+                $val *= 1_073_741_824;
             case 'm':
-                $val *= 1048576;
+                $val *= 1_048_576;
             case 'k':
                 $val *= 1024;
         }

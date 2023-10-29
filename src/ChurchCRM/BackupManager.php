@@ -17,12 +17,13 @@ namespace ChurchCRM\Backup
     use ChurchCRM\Utils\InputUtils;
     use Defuse\Crypto\File;
     use ChurchCRM\Bootstrapper;
+    use ChurchCRM\Service\SystemService;
 
     abstract class BackupType
     {
-        const GZSQL = 0;
-        const SQL = 2;
-        const FullBackup = 3;
+        public const GZSQL = 0;
+        public const SQL = 2;
+        public const FullBackup = 3;
     }
 
     class JobBase
@@ -54,16 +55,9 @@ namespace ChurchCRM\Backup
 
     class BackupJob extends JobBase
     {
-        /**
-         *
-         * @var String
-         */
-        private $BackupFileBaseName;
-        /**
-         *
-         * @var SplFileInfo
-         */
-        private $BackupFile;
+        private string $BackupFileBaseName;
+        
+        private ?\SplFileInfo $BackupFile = null;
         /**
          *
          * @var Boolean
@@ -252,11 +246,7 @@ namespace ChurchCRM\Backup
 
     class RestoreJob extends JobBase
     {
-        /**
-         *
-         * @var SplFileInfo
-         */
-        private $RestoreFile;
+        private \SplFileInfo $RestoreFile;
 
         /**
          *
@@ -349,7 +339,7 @@ namespace ChurchCRM\Backup
             $phar = new PharData($this->RestoreFile);
             LoggerUtils::getAppLogger()->debug("Extracting " . $this->RestoreFile . " to ". $this->TempFolder);
             $phar->extractTo($this->TempFolder);
-            LoggerUtils::getAppLogger()->debug("Finished exctraction");
+            LoggerUtils::getAppLogger()->debug("Finished extraction");
             $sqlFile =  $this->TempFolder."/ChurchCRM-Database.sql";
             if (file_exists($sqlFile)) {
                 $this->RestoreSQLBackup($sqlFile);
@@ -359,7 +349,6 @@ namespace ChurchCRM\Backup
                 FileSystemUtils::recursiveCopyDirectory($this->TempFolder. '/Images/', SystemURLs::getImagesRoot());
                 LoggerUtils::getAppLogger()->debug("Finished copying images");
             } else {
-                FileSystemUtils::recursiveRemoveDirectory($restoreResult->backupDir, true);
                 throw new Exception(gettext("Backup archive does not contain a database").": " .$this->RestoreFile);
             }
             LoggerUtils::getAppLogger()->debug("Finished restoring full archive");

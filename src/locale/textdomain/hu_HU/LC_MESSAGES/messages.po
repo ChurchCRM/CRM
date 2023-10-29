@@ -336,24 +336,8 @@ msgid "ERROR: the uploaded CSV file no longer exists!"
 msgstr "ERROR: a feltöltött CSV-fájl nem létezik!"
 
 #: 
-msgid "Data Cleared Successfully!"
-msgstr "Adatok Cleared sikeresen!"
-
-#: 
 msgid "Upload CSV File"
 msgstr "Feltöltés CSV fájl"
-
-#: 
-msgid "Clear Persons and Families"
-msgstr "Tiszta személyek és családok"
-
-#: 
-msgid "Warning!  Do not select this option if you plan to add to an existing database.<br/>"
-msgstr "Figyelem! Ne válassza ezt az opciót, ha azt tervezi, hogy adjunk egy meglévő adatbázist. <br/>"
-
-#: 
-msgid "Use only if unsatisfied with initial import.  All person and member data will be destroyed!"
-msgstr "Csak, ha elégedetlen a kezdeti import. Minden személy tagja és adatokat meg kell semmisíteni!"
 
 #: 
 msgid "Data import successful."
@@ -619,10 +603,6 @@ msgstr "Email (BCC)"
 #: 
 msgid "Create Directory From Cart"
 msgstr "Hozzon létre Directory kezdőár kosárba"
-
-#: 
-msgid "Generate Labels"
-msgstr "Generálása címkék"
 
 #: 
 msgid "Bulk Mail Presort"
@@ -2112,10 +2092,6 @@ msgid "Generate letters and mailing labels."
 msgstr "Létrehoz levelek és levelezési címkéket."
 
 #: 
-msgid "US Address Verification Report"
-msgstr "USA Address Verification Report"
-
-#: 
 msgid "Family Name"
 msgstr "Családi név"
 
@@ -2767,10 +2743,6 @@ msgstr "Adóbeszámoló"
 #, fuzzy
 msgid "Calendar Year"
 msgstr "Naptári év"
-
-#: 
-msgid "US Address Verification"
-msgstr "USA Address Verification"
 
 #: 
 msgid "User Delete Confirmation"

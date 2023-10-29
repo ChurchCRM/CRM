@@ -52,8 +52,6 @@ class PDF_EnvelopeReport extends ChurchInfoReport
         $this->AddPage();
         $this->SetAutoPageBreak(false);
 
-        $this->incrementY = 10;
-
         $this->Set_Char_Size(20);
         $this->WriteAt(12, 12, 'Envelope Numbers for all Families');
         $this->Set_Char_Size(12);

@@ -10,27 +10,27 @@ use Propel\Runtime\Collection\ObjectCollection;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
-$app->group('/calendars', function () {
-    $this->get('', 'getUserCalendars');
-    $this->post('', 'NewCalendar')->add(new AddEventsRoleAuthMiddleware());
-    $this->get('/', 'getUserCalendars');
-    $this->post('/', 'NewCalendar')->add(new AddEventsRoleAuthMiddleware());
-    $this->get('/{id}', 'getUserCalendars');
-    $this->delete('/{id}', 'deleteUserCalendar');
-    $this->get('/{id}/events', 'UserCalendar');
-    $this->get('/{id}/fullcalendar', 'getUserCalendarFullCalendarEvents');
-    $this->post('/{id}/NewAccessToken', 'NewAccessToken')->add(new AddEventsRoleAuthMiddleware());
-    $this->delete('/{id}/AccessToken', 'DeleteAccessToken')->add(new AddEventsRoleAuthMiddleware());
+$app->group('/calendars', function () use ($app) {
+    $app->get('', 'getUserCalendars');
+    $app->post('', 'NewCalendar')->add(new AddEventsRoleAuthMiddleware());
+    $app->get('/', 'getUserCalendars');
+    $app->post('/', 'NewCalendar')->add(new AddEventsRoleAuthMiddleware());
+    $app->get('/{id}', 'getUserCalendars');
+    $app->delete('/{id}', 'deleteUserCalendar');
+    $app->get('/{id}/events', 'UserCalendar');
+    $app->get('/{id}/fullcalendar', 'getUserCalendarFullCalendarEvents');
+    $app->post('/{id}/NewAccessToken', 'NewAccessToken')->add(new AddEventsRoleAuthMiddleware());
+    $app->delete('/{id}/AccessToken', 'DeleteAccessToken')->add(new AddEventsRoleAuthMiddleware());
 
 });
 
 
-$app->group('/systemcalendars', function () {
-    $this->get('', 'getSystemCalendars');
-    $this->get('/', 'getSystemCalendars');
-    $this->get('/{id}/events', 'getSystemCalendarEvents');
-    $this->get('/{id}/events/{eventid}', 'getSystemCalendarEventById');
-    $this->get('/{id}/fullcalendar', 'getSystemCalendarFullCalendarEvents');
+$app->group('/systemcalendars', function () use ($app) {
+    $app->get('', 'getSystemCalendars');
+    $app->get('/', 'getSystemCalendars');
+    $app->get('/{id}/events', 'getSystemCalendarEvents');
+    $app->get('/{id}/events/{eventid}', 'getSystemCalendarEventById');
+    $app->get('/{id}/fullcalendar', 'getSystemCalendarFullCalendarEvents');
 });
 
 
@@ -73,7 +73,7 @@ function getSystemCalendarFullCalendarEvents($request, Response $response, $args
     if (!$Events) {
         return $response->withStatus(404);
     }
-    return $response->write(json_encode(EventsObjectCollectionToFullCalendar($Events, SystemCalendars::toPropelCalendar($Calendar))));
+    return $response->write(json_encode(EventsObjectCollectionToFullCalendar($Events, SystemCalendars::toPropelCalendar($Calendar)), JSON_THROW_ON_ERROR));
 }
 
 
@@ -121,7 +121,7 @@ function getUserCalendarFullCalendarEvents($request, Response $response, $args)
     if (!$Events) {
         return $response->withStatus(404);
     }
-    return $response->write(json_encode(EventsObjectCollectionToFullCalendar($Events, $calendar)));
+    return $response->write(json_encode(EventsObjectCollectionToFullCalendar($Events, $calendar), JSON_THROW_ON_ERROR));
 }
 
 function EventsObjectCollectionToFullCalendar(ObjectCollection $Events, Calendar $Calendar)

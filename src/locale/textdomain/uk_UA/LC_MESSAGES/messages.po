@@ -346,24 +346,8 @@ msgid "ERROR: the uploaded CSV file no longer exists!"
 msgstr "ПОМИЛКА: завантажений CSV-файл більше не існує!"
 
 #: 
-msgid "Data Cleared Successfully!"
-msgstr "Дані успишно очищено!"
-
-#: 
 msgid "Upload CSV File"
 msgstr "Завантажити CSV-файл"
-
-#: 
-msgid "Clear Persons and Families"
-msgstr "Очистити персони і сімʼі"
-
-#: 
-msgid "Warning!  Do not select this option if you plan to add to an existing database.<br/>"
-msgstr "Увага! Не вибирайте цю опцію, якщо ви плануєте додавати існуючу базу даних"
-
-#: 
-msgid "Use only if unsatisfied with initial import.  All person and member data will be destroyed!"
-msgstr "Використовуйте лише якщо ви не задоволені первинним імпортом. Всі персони і дані членів буде знищено!"
 
 #: 
 msgid "Data import successful."
@@ -660,10 +644,6 @@ msgstr "Електронна пошта (BCC)"
 #: 
 msgid "Create Directory From Cart"
 msgstr "Створити каталог з кошика"
-
-#: 
-msgid "Generate Labels"
-msgstr "Створити мітки"
 
 #: 
 msgid "Bulk Mail Presort"
@@ -2216,10 +2196,6 @@ msgid "Group Members:"
 msgstr "Учасники групи:"
 
 #: 
-msgid "Group members: "
-msgstr "Члени групи: "
-
-#: 
 msgid "Remove Selected Members from group"
 msgstr "Видалити вибраних членів із групи"
 
@@ -2422,14 +2398,6 @@ msgstr "Звіт про вибрану групу та ролі (це може �
 #: 
 msgid "Generate letters and mailing labels."
 msgstr "Створюйте листи та поштові ярлики."
-
-#: 
-msgid "US Address Verification Report"
-msgstr "Звіт про перевірку адреси США"
-
-#: 
-msgid "Generate report comparing all US family addresses with United States Postal Service Standard Address Format.<br>"
-msgstr "Створіть звіт, порівнюючи всі сімейні адреси США зі стандартним форматом адрес поштової служби США. <br>"
 
 #: 
 msgid "Role / Gender"
@@ -3213,10 +3181,6 @@ msgid "Calendar Year"
 msgstr "Календарний рік"
 
 #: 
-msgid "US Address Verification"
-msgstr "Перевірка адреси США"
-
-#: 
 msgid "Update Latitude & Longitude"
 msgstr "Оновлення широти та довготи"
 
@@ -3689,10 +3653,6 @@ msgid "Dashboard"
 msgstr "Панель приладів"
 
 #: 
-msgid "Toggle navigation"
-msgstr "Переключити навігацію"
-
-#: 
 msgid "Change Password"
 msgstr "Змінити пароль"
 
@@ -4127,10 +4087,6 @@ msgstr "Список"
 #: 
 msgid "Import Data"
 msgstr "Імпорт даних"
-
-#: 
-msgid "Clear Data"
-msgstr "Очистити дані"
 
 #: 
 msgid "Are you sure you want to DELETE this person from Event ID: "
@@ -4613,10 +4569,6 @@ msgid "File Name:"
 msgstr "Ім'я файлу:"
 
 #: 
-msgid "http://www.intelligentsearch.com/address_verification/verify_address.html"
-msgstr "http://www.intelligentsearch.com/address_verification/verify_address.html"
-
-#: 
 msgid "Fiscal Year:"
 msgstr "Фінансовий рік:"
 
@@ -4757,7 +4709,8 @@ msgid "Church Email"
 msgstr "Церковна електронна пошта"
 
 #: 
-msgid "Include only these classifications in the directory, comma seperated"
+#, fuzzy
+msgid "Include only these classifications in the directory, comma separated"
 msgstr "Включіть лише ці класифікації в каталог, розділені комами"
 
 #: 
@@ -4785,7 +4738,8 @@ msgid "Minimum length a user may set their password to"
 msgstr "Мінімальна довжина, яку користувач може встановити для свого пароля"
 
 #: 
-msgid "A comma-seperated list of disallowed (too obvious) passwords."
+#, fuzzy
+msgid "A comma-separated list of disallowed (too obvious) passwords."
 msgstr "Список заборонених (занадто очевидних) паролів, розділений комами."
 
 #: 
@@ -4859,14 +4813,6 @@ msgstr "Встановіть значення true, щоб дозволити в
 #: 
 msgid "Enter in HTML code which will be displayed as a header at the top of each page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A SECOND TIME to view the new header."
 msgstr "Введіть в HTML-код, який відображатиметься як заголовок у верхній частині кожної сторінки. Обов’язково закрийте свої теги! Примітка: Ви повинні ОСВІЖИТИ БРАУЗЕР ДРУГИЙ раз, щоб переглянути новий заголовок."
-
-#: 
-msgid "Intelligent Search Technolgy, Ltd. CorrectAddress Username"
-msgstr "Інтелектуальний пошуковий засіб Technolgy, Ltd. Правильний адрес"
-
-#: 
-msgid "Intelligent Search Technolgy, Ltd. CorrectAddress Password"
-msgstr "Intelligent Search Technolgy, Ltd. Пароль правильної адреси"
 
 #: 
 msgid "Number of checks for Deposit Slip Report"
@@ -5209,7 +5155,8 @@ msgid "The property for which you would like person records returned."
 msgstr "Власність, для якої ви хотіли б повернути особові записи."
 
 #: 
-msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that conatain donations."
+#, fuzzy
+msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations."
 msgstr "Виберіть дату початку, щоб розрахувати загальний внесок для кожного учасника (тобто РРРР-ММ-ДД). ПРИМІТКА. Ви можете вибирати лише дати, на які пожертвуватимуть."
 
 #: 
@@ -7505,20 +7452,8 @@ msgid "Kiosk Manager"
 msgstr "Менеджер кіоску"
 
 #: 
-msgid "Your Cart"
-msgstr "Ваш кошик"
-
-#: 
-msgid "Your settings and more"
-msgstr "Ваші налаштування та багато іншого"
-
-#: 
 msgid "Report an issue"
 msgstr "Повідомте про проблему"
-
-#: 
-msgid "Your tasks"
-msgstr "Ваші завдання"
 
 #: 
 msgid "Enable New Kiosk Registration"
@@ -8121,10 +8056,6 @@ msgid "Number of seconds after page load until the banner disappears, default 10
 msgstr "Кількість секунд після завантаження сторінки до зникнення банера, за замовчуванням 10 секунд"
 
 #: 
-msgid "Help & Support"
-msgstr "Довідка та підтримка"
-
-#: 
 msgid "Help & Manual"
 msgstr "Довідка та керівництво"
 
@@ -8427,14 +8358,6 @@ msgstr "Пожертвні кошти"
 #: 
 msgid "Unable to open file"
 msgstr "Не вдається відкрити файл"
-
-#: 
-msgid "Invalid upgrade file specified"
-msgstr "Вказано недійсний файл оновлення"
-
-#: 
-msgid "Failure executing upgrade script"
-msgstr "Помилка виконання сценарію оновлення"
 
 #: 
 msgid "Missing calendar access token"
@@ -8863,10 +8786,6 @@ msgid "Maximum number of Calendar Events"
 msgstr "Максимальна кількість подій календаря"
 
 #: 
-msgid "Database upgrade failed"
-msgstr "Помилка оновлення бази даних"
-
-#: 
 msgid "Unsupported PHP Version"
 msgstr "Непідтримувана версія PHP"
 
@@ -9241,10 +9160,6 @@ msgid "Manage Notes"
 msgstr "Керування нотатками"
 
 #: 
-msgid "Skins"
-msgstr "Скіни"
-
-#: 
 msgid "Failed generate a new API Key"
 msgstr "Не вдалося створити новий ключ API"
 
@@ -9377,10 +9292,6 @@ msgid "Generate attendance -AND- non-attendance reports for events"
 msgstr "Створення відвідуваності -І- звіти про неявку на події"
 
 #: 
-msgid "of translation completed"
-msgstr "перекладу завершено"
-
-#: 
 msgid "Help translate this project"
 msgstr "Допоможіть перекласти цей проект"
 
@@ -9451,54 +9362,6 @@ msgstr "Перевірити"
 #: 
 msgid "Family has no emails to use"
 msgstr "Сім'я не має електронних листів для використання"
-
-#: 
-msgid "Blue"
-msgstr "Синій"
-
-#: 
-msgid "Black"
-msgstr "Чорний"
-
-#: 
-msgid "Purple"
-msgstr "Фіолетовий"
-
-#: 
-msgid "Green"
-msgstr "Зелений"
-
-#: 
-msgid "Red"
-msgstr "Червоний"
-
-#: 
-msgid "Yellow"
-msgstr "Жовтий"
-
-#: 
-msgid "Blue Light"
-msgstr "Синє світло"
-
-#: 
-msgid "Black Light"
-msgstr "Чорне світло"
-
-#: 
-msgid "Purple Light"
-msgstr "Фіолетове світло"
-
-#: 
-msgid "Green Light"
-msgstr "Зелене світло"
-
-#: 
-msgid "Red Light"
-msgstr "Червоне світло"
-
-#: 
-msgid "Yellow Light"
-msgstr "Жовте світло"
 
 #: 
 msgid "Boxed Layout"

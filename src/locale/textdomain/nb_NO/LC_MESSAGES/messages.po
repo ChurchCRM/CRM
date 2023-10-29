@@ -359,24 +359,8 @@ msgid "ERROR: the uploaded CSV file no longer exists!"
 msgstr "FEIL: den opplastede CSV-filen eksisterer ikke lenger!"
 
 #: 
-msgid "Data Cleared Successfully!"
-msgstr "Data Slettet Vellykket!"
-
-#: 
 msgid "Upload CSV File"
 msgstr "Last CSV-fil"
-
-#: 
-msgid "Clear Persons and Families"
-msgstr "Klare personer og familier"
-
-#: 
-msgid "Warning!  Do not select this option if you plan to add to an existing database.<br/>"
-msgstr "Advarsel! Ikke velg dette alternativet hvis du har tenkt å legge til en eksisterende database. <br/>"
-
-#: 
-msgid "Use only if unsatisfied with initial import.  All person and member data will be destroyed!"
-msgstr "Bruk kun hvis misfornøyd med første importen. Alle person-og medlemsdata vil bli ødelagt!"
 
 #: 
 msgid "Data import successful."
@@ -651,10 +635,6 @@ msgstr "E-post (BCC)"
 #: 
 msgid "Create Directory From Cart"
 msgstr "Lag katalog fra Cart"
-
-#: 
-msgid "Generate Labels"
-msgstr "Generere etiketter"
 
 #: 
 msgid "Bulk Mail Presort"
@@ -2208,10 +2188,6 @@ msgid "Group Members:"
 msgstr "Gruppemedlemmer:"
 
 #: 
-msgid "Group members: "
-msgstr "Gruppe Medlemmer:"
-
-#: 
 msgid "Remove Selected Members from group"
 msgstr "Fjern Valge fra Gruppe"
 
@@ -2398,10 +2374,6 @@ msgstr "Rapport om gruppen og roller valgt (det kan være en multi-siders PDF)."
 #: 
 msgid "Generate letters and mailing labels."
 msgstr "Generere brev og adresseetiketter."
-
-#: 
-msgid "US Address Verification Report"
-msgstr "USA-adressen senderapport"
 
 #: 
 msgid "Role / Gender"
@@ -3178,10 +3150,6 @@ msgstr "Skatt Rapporter"
 #, fuzzy
 msgid "Calendar Year"
 msgstr "Kalenderår"
-
-#: 
-msgid "US Address Verification"
-msgstr "USA Adressebekreftelse"
 
 #: 
 msgid "Update Latitude & Longitude"

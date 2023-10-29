@@ -8,13 +8,13 @@ use Slim\Http\Request;
 use Slim\Http\Response;
 
 
-$app->group('/system/menu', function () {
-    $this->get('', 'getMenus');
-    $this->get('/', 'getMenus');
-    $this->put('', 'addMenu');
-    $this->put('/', 'addMenu');
-    $this->delete('{linkId:[0-9]+}', 'delMenu');
-    $this->delete('/{linkId:[0-9]+}', 'delMenu');
+$app->group('/system/menu', function () use ($app) {
+    $app->get('', 'getMenus');
+    $app->get('/', 'getMenus');
+    $app->put('', 'addMenu');
+    $app->put('/', 'addMenu');
+    $app->delete('{linkId:[0-9]+}', 'delMenu');
+    $app->delete('/{linkId:[0-9]+}', 'delMenu');
 })->add(new AdminRoleAuthMiddleware());
 
 

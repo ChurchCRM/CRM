@@ -268,6 +268,5 @@ require 'Include/Header.php';
 </div>
 <!-- /.box -->
 
-<script src="<?= SystemURLs::getRootPath() ?>/skin/js/Tooltips.js" ></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/users.js" ></script>
 <?php require 'Include/Footer.php' ?>

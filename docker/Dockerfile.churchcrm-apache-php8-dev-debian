@@ -1,5 +1,4 @@
 FROM  php:8-apache
-LABEL maintainer="crossan007@gmail.com"
 
 ADD https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh /opt/node-install.sh
 RUN chmod a+x /opt/node-install.sh && /opt/node-install.sh

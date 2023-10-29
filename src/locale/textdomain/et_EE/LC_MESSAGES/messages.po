@@ -346,24 +346,8 @@ msgid "ERROR: the uploaded CSV file no longer exists!"
 msgstr "VIGA: üleslaetud CSV faili ei ole enam!"
 
 #: 
-msgid "Data Cleared Successfully!"
-msgstr "Andmed on edukalt puhastatud!"
-
-#: 
 msgid "Upload CSV File"
 msgstr "Lae CSV fail üles"
-
-#: 
-msgid "Clear Persons and Families"
-msgstr "Puhasta inimestest ja perekondadest"
-
-#: 
-msgid "Warning!  Do not select this option if you plan to add to an existing database.<br/>"
-msgstr "Hoiatus! Ära vali seda võimalust, kui sa plaanid lisada olemasolevasse andmebaasi.<br/>"
-
-#: 
-msgid "Use only if unsatisfied with initial import.  All person and member data will be destroyed!"
-msgstr "Kasuta vaid kui sa ei ole rahul olemasoleva impordiga. Kõik inimesed ja perekondade andmed kustutatakse!"
 
 #: 
 msgid "Data import successful."
@@ -660,10 +644,6 @@ msgstr "E-post (BCC)"
 #: 
 msgid "Create Directory From Cart"
 msgstr "Loo kataloog korvist"
-
-#: 
-msgid "Generate Labels"
-msgstr "Genereeri kleebised"
 
 #: 
 msgid "Bulk Mail Presort"
@@ -2216,10 +2196,6 @@ msgid "Group Members:"
 msgstr "Grupi liikmed:"
 
 #: 
-msgid "Group members: "
-msgstr "Grupi liikmed: "
-
-#: 
 msgid "Remove Selected Members from group"
 msgstr "Eemalda valitud liikmed grupist"
 
@@ -2422,14 +2398,6 @@ msgstr "Aruanne valitud rühma ja rollide kohta (see võib olla mitmeleheküljel
 #: 
 msgid "Generate letters and mailing labels."
 msgstr "Genereerige kirjad ja ümbriku kleebised."
-
-#: 
-msgid "US Address Verification Report"
-msgstr "USA aadresside kinnitamise aruanne"
-
-#: 
-msgid "Generate report comparing all US family addresses with United States Postal Service Standard Address Format.<br>"
-msgstr "Genereerige aruanne, milles võrreldakse kõiki USA perekonna aadresse Ameerika Ühendriikide postiteenuste standardse aadressivorminguga. <br>"
 
 #: 
 msgid "Role / Gender"
@@ -3213,10 +3181,6 @@ msgid "Calendar Year"
 msgstr "Kalendriaasta"
 
 #: 
-msgid "US Address Verification"
-msgstr "USA aadressi kontrollimine"
-
-#: 
 msgid "Update Latitude & Longitude"
 msgstr "Laius- ja pikkuskraadi värskendamine"
 
@@ -3689,10 +3653,6 @@ msgid "Dashboard"
 msgstr "Töölaud"
 
 #: 
-msgid "Toggle navigation"
-msgstr "Lülitab navigeerimise sisse"
-
-#: 
 msgid "Change Password"
 msgstr "Muuda salasõna"
 
@@ -4124,10 +4084,6 @@ msgstr "Nimekiri"
 #: 
 msgid "Import Data"
 msgstr "Andmete importimine"
-
-#: 
-msgid "Clear Data"
-msgstr "Kustuta andmed"
 
 #: 
 msgid "Are you sure you want to DELETE this person from Event ID: "
@@ -4611,10 +4567,6 @@ msgid "File Name:"
 msgstr "File Name:"
 
 #: 
-msgid "http://www.intelligentsearch.com/address_verification/verify_address.html"
-msgstr "http://www.intelligentsearch.com/address_verification/verify_address.html"
-
-#: 
 msgid "Fiscal Year:"
 msgstr "Majandusaasta:"
 
@@ -4755,7 +4707,8 @@ msgid "Church Email"
 msgstr "Kiriku e-post"
 
 #: 
-msgid "Include only these classifications in the directory, comma seperated"
+#, fuzzy
+msgid "Include only these classifications in the directory, comma separated"
 msgstr "Lisage kataloogi ainult need klassifikatsioonid, eraldades need komadega"
 
 #: 
@@ -4783,7 +4736,8 @@ msgid "Minimum length a user may set their password to"
 msgstr "Minimaalne pikkus, mille kasutaja võib parooliks seada"
 
 #: 
-msgid "A comma-seperated list of disallowed (too obvious) passwords."
+#, fuzzy
+msgid "A comma-separated list of disallowed (too obvious) passwords."
 msgstr "Komaga eraldatud nimekiri keelatud (liiga ilmsetest) paroolidest."
 
 #: 
@@ -4857,14 +4811,6 @@ msgstr "Annetusümbrike kasutamise lubamiseks määrake see tõene"
 #: 
 msgid "Enter in HTML code which will be displayed as a header at the top of each page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A SECOND TIME to view the new header."
 msgstr "Sisestage HTML-kood, mis kuvatakse iga lehe ülaservas päisena. Sulgege kindlasti oma sildid! Märkus. Uue päise kuvamiseks peate oma brauserit värskendama juba teist korda."
-
-#: 
-msgid "Intelligent Search Technolgy, Ltd. CorrectAddress Username"
-msgstr "Intelligent Search Technology, Ltd. Õige aadressi kasutajanimi"
-
-#: 
-msgid "Intelligent Search Technolgy, Ltd. CorrectAddress Password"
-msgstr "Intelligent Search Technology, Ltd. Õige aadressi parool"
 
 #: 
 msgid "Number of checks for Deposit Slip Report"
@@ -5207,7 +5153,8 @@ msgid "The property for which you would like person records returned."
 msgstr "Omand, mille kohta soovite isikuandmeid näidata."
 
 #: 
-msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that conatain donations."
+#, fuzzy
+msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations."
 msgstr "Iga liikme kogupanuse arvutamiseks vali alguskuupäev (s.o. AAAA-KK-PP). MÄRKUS. Saate valida ainult annetusi sisaldavaid kuupäevi."
 
 #: 
@@ -5683,10 +5630,6 @@ msgid "Number of seconds after page load until the banner disappears, default 10
 msgstr "Sekundite arv pärast lehe laadimist kuni ribareklaami kadumiseni, vaikimisi 10 sekundit"
 
 #: 
-msgid "Help & Support"
-msgstr "Abi ja tugi"
-
-#: 
 msgid "Help & Manual"
 msgstr "Abi ja juhend"
 
@@ -5989,14 +5932,6 @@ msgstr "Annetusfondid"
 #: 
 msgid "Unable to open file"
 msgstr "Faili ei saa avada"
-
-#: 
-msgid "Invalid upgrade file specified"
-msgstr "Määratud kehtetu versioonifail"
-
-#: 
-msgid "Failure executing upgrade script"
-msgstr "Uuendamise skripti käivitamine ebaõnnestus"
 
 #: 
 msgid "Missing calendar access token"
@@ -6435,10 +6370,6 @@ msgid "%d year old"
 msgid_plural "%d years old"
 msgstr[0] "% aastane"
 msgstr[1] "% aastane"
-
-#: 
-msgid "Database upgrade failed"
-msgstr "Andmebaasi uuendamine nurjus"
 
 #: 
 msgid "Unsupported PHP Version"

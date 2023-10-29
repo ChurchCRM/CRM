@@ -7,20 +7,24 @@ use ChurchCRM\Authentication\AuthenticationManager;
 
 class ChurchNameTask implements iTask
 {
-  public function isActive(){
+  public function isActive(): bool
+  {
     return AuthenticationManager::GetCurrentUser()->isAdmin() && SystemConfig::getValue('sChurchName') == 'Some Church';
   }
-  public function isAdmin(){
+
+  public function isAdmin(): bool {
     return true;
   }
-  public function getLink(){
+
+  public function getLink(): string {
     return SystemURLs::getRootPath() . '/SystemSettings.php';
   }
-  public function getTitle(){
+
+  public function getTitle(): string {
     return gettext('Update Church Info');
   }
-  public function getDesc(){
+
+  public function getDesc(): string {
     return gettext("Church Name is set to default value");
   }
-
 }

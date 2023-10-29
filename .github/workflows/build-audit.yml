@@ -1,25 +1,26 @@
 name: Audit 3rd Party Libs
 
-on:
-  push:
-    branches:
-    - 'build/**'
 
-env:
-  node_version: 18
+on:
+  schedule:
+    - cron: '0 9 * * 6'
 
 jobs:
   audit:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: ['20.x']
     steps:
-    - uses: actions/checkout@v3.5.2
+    - uses: actions/checkout@v4
       with:
         # fetch full history so things like auto-changelog work properly
         fetch-depth: 0
-    - name: Use Node.js ${{ env.node_version }}
-      uses: actions/setup-node@v2-beta
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
       with:
-        node-version: ${{ env.node_version }}
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
         # setting a registry enables the NODE_AUTH_TOKEN env variable where we can set an npm token.  REQUIRED
         registry-url: 'https://registry.npmjs.org'
 

@@ -7,22 +7,23 @@ use ChurchCRM\ListOptionQuery;
 use ChurchCRM\Person;
 use ChurchCRM\PersonQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
+use Propel\Runtime\Collection\Collection;
 use Propel\Runtime\Propel;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
-$app->group('/persons', function () {
+$app->group('/persons', function () use ($app) {
 
-    $this->get('/roles', 'getAllRolesAPI');
-    $this->get('/roles/', 'getAllRolesAPI');
-    $this->get('/duplicate/emails', 'getEmailDupesAPI');
+    $app->get('/roles', 'getAllRolesAPI');
+    $app->get('/roles/', 'getAllRolesAPI');
+    $app->get('/duplicate/emails', 'getEmailDupesAPI');
 
-    $this->get('/latest', 'getLatestPersons');
-    $this->get('/updated', 'getUpdatedPersons');
-    $this->get('/birthday', 'getPersonsWithBirthdays');
+    $app->get('/latest', 'getLatestPersons');
+    $app->get('/updated', 'getUpdatedPersons');
+    $app->get('/birthday', 'getPersonsWithBirthdays');
 
     // search person by Name
-    $this->get('/search/{query}', function ($request, $response, $args) {
+    $app->get('/search/{query}', function ($request, $response, $args) {
         $query = $args['query'];
 
         $searchLikeString = '%' . $query . '%';
@@ -47,11 +48,11 @@ $app->group('/persons', function () {
         return $response->withJson($return);
     });
 
-    $this->get('/numbers', function ($request, $response, $args) {
+    $app->get('/numbers', function ($request, $response, $args) {
         return $response->withJson(MenuEventsCount::getNumberBirthDates());
     });
 
-    $this->get('/self-register', function ($request, $response, $args) {
+    $app->get('/self-register', function ($request, $response, $args) {
         $people = PersonQuery::create()
             ->filterByEnteredBy(Person::SELF_REGISTER)
             ->orderByDateEntered(Criteria::DESC)
@@ -137,27 +138,27 @@ function getPersonsWithBirthdays(Request $request, Response $response, array $p_
     return $response->withJson(buildFormattedPersonList($people, false, false, true));
 }
 
-function buildFormattedPersonList($people, $created, $edited, $birthday)
+function buildFormattedPersonList(Collection $people, bool $created, bool $edited, bool $birthday)
 {
     $formattedList = [];
 
     foreach ($people as $person) {
         $formattedPerson = [];
-        $formattedPerson["PersonId"] = $person->getId();
-        $formattedPerson["FirstName"] = $person->getFirstName();
-        $formattedPerson["LastName"] = $person->getLastName();
-        $formattedPerson["FormattedName"] = $person->getFullName();
-        $formattedPerson["Email"] = $person->getEmail();
-        if ($created) {
-            $formattedPerson["Created"] = date_format($person->getDateEntered(), SystemConfig::getValue('sDateFormatLong'));
+        $formattedPerson['PersonId'] = $person->getId();
+        $formattedPerson['FirstName'] = $person->getFirstName();
+        $formattedPerson['LastName'] = $person->getLastName();
+        $formattedPerson['FormattedName'] = $person->getFullName();
+        $formattedPerson['Email'] = $person->getEmail();
+        if ($created && $person->getDateEntered()) {
+            $formattedPerson['Created'] = date_format($person->getDateEntered(), SystemConfig::getValue('sDateFormatLong'));
         }
 
-        if ($edited) {
-            $formattedPerson["LastEdited"] = date_format($person->getDateLastEdited(), SystemConfig::getValue('sDateFormatLong'));
+        if ($edited && $person->getDateLastEdited()) {
+            $formattedPerson['LastEdited'] = date_format($person->getDateLastEdited(), SystemConfig::getValue('sDateFormatLong'));
         }
 
-        if ($birthday) {
-            $formattedPerson["Birthday"] = date_format($person->getBirthDate(), SystemConfig::getValue('sDateFormatLong'));
+        if ($birthday && $person->getBirthDate()) {
+            $formattedPerson['Birthday'] = date_format($person->getBirthDate(), SystemConfig::getValue('sDateFormatLong'));
         }
 
 

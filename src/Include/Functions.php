@@ -362,7 +362,7 @@ function FormatDate($dDate, $bWithTime = false)
 
     // Verify it is a valid date
     $sScanString = mb_substr($dDate, 0, 10);
-    list($iYear, $iMonth, $iDay) = sscanf($sScanString, '%04d-%02d-%02d');
+    [$iYear, $iMonth, $iDay] = sscanf($sScanString, '%04d-%02d-%02d');
 
     if (!checkdate($iMonth, $iDay, $iYear)) {
         return 'Unknown';
@@ -946,7 +946,7 @@ function assembleYearMonthDay($sYear, $sMonth, $sDay, $pasfut = 'future')
     }
 
     $sScanString = $sYear.'-'.$sMonth.'-'.$sDay;
-    list($iYear, $iMonth, $iDay) = sscanf($sScanString, '%04d-%02d-%02d');
+    [$iYear, $iMonth, $iDay] = sscanf($sScanString, '%04d-%02d-%02d');
 
     if (checkdate($iMonth, $iDay, $iYear)) {
         return $sScanString;
@@ -1106,7 +1106,7 @@ function validateCustomField($type, &$data, $col_Name, &$aErrors)
           if (!is_numeric($data)) {
               $aErrors[$col_Name] = gettext('Invalid Number');
               $bErrorFlag = true;
-          } elseif ($data < -2147483648 || $data > 2147483647) {
+          } elseif ($data < -2_147_483_648 || $data > 2_147_483_647) {
               $aErrors[$col_Name] = gettext('Number too large. Must be between -2147483648 and 2147483647');
               $bErrorFlag = true;
           }
@@ -1122,7 +1122,7 @@ function validateCustomField($type, &$data, $col_Name, &$aErrors)
           if (!is_numeric($data)) {
               $aErrors[$col_Name] = gettext('Invalid Number');
               $bErrorFlag = true;
-          } elseif ($data > 999999999.99) {
+          } elseif ($data > 999_999_999.99) {
               $aErrors[$col_Name] = gettext('Money amount too large. Maximum is $999999999.99');
               $bErrorFlag = true;
           }
@@ -1553,7 +1553,7 @@ function getFamilyList($sDirRoleHead, $sDirRoleSpouse, $classification = 0, $sSe
     $sSQL = 'SELECT per_FirstName, per_fam_ID FROM person_per WHERE per_fam_ID > 0 AND ('.$head_criteria.') ORDER BY per_fam_ID';
     $rs_head = RunQuery($sSQL);
     $aHead = [];
-    while (list($head_firstname, $head_famid) = mysqli_fetch_row($rs_head)) {
+    while ([$head_firstname, $head_famid] = mysqli_fetch_row($rs_head)) {
         if ($head_firstname && isset($aHead[$head_famid])) {
             $aHead[$head_famid] .= ' & '.$head_firstname;
         } elseif ($head_firstname) {
@@ -1597,7 +1597,7 @@ function genGroupKey($methodSpecificID, $famID, $fundIDs, $date)
         $GroupKey = $methodSpecificID.'|'.$uniqueNum.'|'.$famID.'|'.$fundIDs.'|'.$date;
         $sSQL = "SELECT COUNT(plg_GroupKey) FROM pledge_plg WHERE plg_PledgeOrPayment='Payment' AND plg_GroupKey='".$GroupKey."'";
         $rsResults = RunQuery($sSQL);
-        list($numGroupKeys) = mysqli_fetch_row($rsResults);
+        [$numGroupKeys] = mysqli_fetch_row($rsResults);
         if ($numGroupKeys) {
             ++$uniqueNum;
         } else {
@@ -1628,7 +1628,7 @@ function requireUserGroupMembership($allowedRoles = null)
 
 function random_color_part()
 {
-    return str_pad(dechex(mt_rand(0, 255)), 2, '0', STR_PAD_LEFT);
+    return str_pad(dechex(random_int(0, 255)), 2, '0', STR_PAD_LEFT);
 }
 
 function random_color()
@@ -1640,7 +1640,7 @@ function generateGroupRoleEmailDropdown($roleEmails, $href)
 {
     $sMailtoDelimiter = AuthenticationManager::GetCurrentUser()->getUserConfigString("sMailtoDelimiter");
     foreach ($roleEmails as $role => $Email) {
-        if (SystemConfig::getValue('sToEmailAddress') != '' && !stristr($Email, SystemConfig::getValue('sToEmailAddress'))) {
+        if (SystemConfig::getValue('sToEmailAddress') != '' && !stristr($Email, (string) SystemConfig::getValue('sToEmailAddress'))) {
             $Email .= $sMailtoDelimiter.SystemConfig::getValue('sToEmailAddress');
         }
         $Email = urlencode($Email);  // Mailto should comply with RFC 2368

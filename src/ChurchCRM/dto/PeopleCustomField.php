@@ -8,10 +8,10 @@ use ChurchCRM\ListOptionQuery;
 Class PeopleCustomField {
 
     private $name;
-    private $value;
+    private string $value;
     private $formattedValue;
-    private $link;
-    private $icon = "fa fa-tag";
+    private ?string $link = null;
+    private string $icon = "fa fa-tag";
     private $displayValue;
 
     /**

@@ -8,11 +8,11 @@ use ChurchCRM\Utils\ORMUtils;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
-$app->group('/public/register', function () {
-    $this->post('/family', 'registerFamilyAPI');
-    $this->post('/family/', 'registerFamilyAPI');
-    $this->post('/person', 'registerPersonAPI');
-    $this->post('/person/', 'registerPersonAPI');
+$app->group('/public/register', function () use ($app)  {
+    $app->post('/family', 'registerFamilyAPI');
+    $app->post('/family/', 'registerFamilyAPI');
+    $app->post('/person', 'registerPersonAPI');
+    $app->post('/person/', 'registerPersonAPI');
 })->add(new PublicRegistrationAuthMiddleware());
 
 function registerFamilyAPI(Request $request, Response $response, array $args)
@@ -61,7 +61,7 @@ function registerFamilyAPI(Request $request, Response $response, array $args)
             }
 
             if (!$person->validate()) {
-                LoggerUtils::getAppLogger()->error("Public Reg Error with the following data: " . json_encode($personMetaData));
+                LoggerUtils::getAppLogger()->error("Public Reg Error with the following data: " . json_encode($personMetaData, JSON_THROW_ON_ERROR));
                 return $response->withStatus(401)->withJson(["error" => gettext("Validation Error"),
                     "failures" => ORMUtils::getValidationErrors($person->getValidationFailures())]);
             }

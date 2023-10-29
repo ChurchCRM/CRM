@@ -1,7 +1,7 @@
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm
 *.iml
 ## Directory-based project format:
-.idea/
+.vscode/
 
 ## File-based project format:
 *.ipr
@@ -54,4 +54,4 @@ src/Upgrade/*
 cypress/screenshots
 cypress/videos
 cypress/downloads
-cypress.json
+cypress.config.ts

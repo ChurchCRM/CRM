@@ -200,8 +200,6 @@ function GroupBySalutation($famID, $aAdultRole, $aChildRole)
 
 function MakeADCArray($sADClist)
 {
-    unset($aReturnArray);
-
     // The end of each row is marked with the pipe | symbol
     // keep fetching rows until gone
     while (mb_substr_count($sADClist, '|')) {
@@ -407,7 +405,6 @@ function ZipBundleSort($inLabels)
     //foreach ($adc as $key => $value)
     //    echo "key = $key, value = $value <br>";
 
-    //$db=0;
     //
     // Step 1 - create an array of only the zipcodes of length 5
     //
@@ -420,9 +417,6 @@ function ZipBundleSort($inLabels)
 
     $n = count($inLabels);
     $nTotalLabels = $n;
-    if ($db) {
-        echo "{$n} Labels passed to bundle function....<br>";
-    }
 
     for ($i = 0; $i < $n; $i++) {
         $Zips[$i] = intval(mb_substr($inLabels[$i]['Zip'], 0, 5));
@@ -440,7 +434,7 @@ function ZipBundleSort($inLabels)
 
     $nz5 = 0;
 
-    while (list($z, $zc) = each($ZipCounts)) {
+    foreach ($ZipCounts as $z => $zc) {
         if ($zc >= $iZip5MinBundleSize) {
             $NoteText = ['Note'=>'******* Presort ZIP-5 '.$z];
             $NameText = ['Name'=>'** '.$zc.' Addresses in Bundle '.$z.' *'];
@@ -455,9 +449,6 @@ function ZipBundleSort($inLabels)
                 }
             }
         }
-    }
-    if ($db) {
-        echo "<br>{$nz5} Labels moved to the output list<br>";
     }
 
     //
@@ -478,9 +469,6 @@ function ZipBundleSort($inLabels)
 
     unset($Zips);
     $n = count($inLabels);
-    if ($db) {
-        echo "<br>...pass 2 ZIP3..{$n} labels to process<br>";
-    }
 
     //print_r($inLabels);
 
@@ -499,7 +487,7 @@ function ZipBundleSort($inLabels)
     //
 
     $nz3 = 0;
-    while (list($z, $zc) = each($ZipCounts)) {
+    foreach ($ZipCounts as $z => $zc) {
         if ($zc >= $iZip3MinBundleSize) {
             $NoteText = ['Note'=>'******* Presort ZIP-3 '.$z];
             $NameText = ['Name'=>'** '.$zc.' Addresses in Bundle '.$z.' *'];
@@ -516,9 +504,6 @@ function ZipBundleSort($inLabels)
         }
     }
 
-    if ($db) {
-        echo "{$nz3} Labels moved to the output list...<br>";
-    }
     unset($inLabels2);
     for ($i = 0; $i < $n; $i++) {
         if ($inLabels[$i]['Zip'] != -1) {
@@ -534,9 +519,6 @@ function ZipBundleSort($inLabels)
 
     unset($Zips);
     $n = count($inLabels);
-    if ($db) {
-        echo "...pass 3 ADC..{$n} labels to process\r\n";
-    }
 
     for ($i = 0; $i < $n; $i++) {
         if (isset($adc[intval(mb_substr($inLabels[$i]['Zip'], 0, 3))])) {
@@ -561,7 +543,7 @@ function ZipBundleSort($inLabels)
     }
     $nadc = 0;
     if ($ncounts) {
-        while (list($z, $zc) = each($ZipCounts)) {
+        foreach ($ZipCounts as $z => $zc) {
             if ($zc >= $iAdcMinBundleSize) {
                 $NoteText = ['Note'=>'******* Presort ADC '.$z];
                 $NameText = ['Name'=>'** '.$zc.' Addresses in Bundle ADC '.$z.' *'];
@@ -579,9 +561,6 @@ function ZipBundleSort($inLabels)
         }
     }
 
-    if ($db) {
-        echo "{$nadc} Labels moved to the output list<br>";
-    }
     unset($inLabels2);
     for ($i = 0; $i < $n; $i++) {
         if ($inLabels[$i]['Zip'] != -1) {
@@ -598,9 +577,6 @@ function ZipBundleSort($inLabels)
     unset($Zips);
     $n = count($inLabels);
     $zc = $n;
-    if ($db) {
-        echo "...pass 4 Mixed ADC..{$n} labels to process\r\n";
-    }
     if ($zc > 0) {
         $NoteText = ['Note'=>'******* Presort MIXED ADC '];
         $NameText = ['Name'=>'** '.$zc.' Addresses in Bundle *'];
@@ -608,16 +584,9 @@ function ZipBundleSort($inLabels)
         $CityText = ['City'=>'******* Presort MIXED ADC   '];
         $outList[] = array_merge($NoteText, $NameText, $AddressText, $CityText);
         for ($i = 0; $i < $n; $i++) {
-            if ($db) {
-                echo "$i.";
-            }
             $outList[] = array_merge($inLabels[$i], $NoteText);
             $nmadc++;
         }
-    }
-
-    if ($db) {
-        echo "{$nmadc} Labels moved to the output list <br>";
     }
 
     //
@@ -634,8 +603,6 @@ function ZipBundleSort($inLabels)
 function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComplete)
 {
     // $mode is "indiv" or "fam"
-
-    unset($didFam);
 
     $sAdultRole = SystemConfig::getValue('sDirRoleHead').','.SystemConfig::getValue('sDirRoleSpouse');
     $sAdultRole = trim($sAdultRole, " ,\t\n\r\0\x0B");
@@ -733,14 +700,13 @@ function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComp
         } // end of foreach loop
     } // end of while loop
 
-    unset($zipLabels);
     if ($iBulkMailPresort) {
         //
         // now sort the label list by presort bundle definitions
         //
         $zipLabels = ZipBundleSort($sLabelList);
         if ($iBulkMailPresort == 2) {
-            while (list($i, $sLT) = each($zipLabels)) {
+            foreach ($zipLabels as $i => $sLT) {
                 $pdf->Add_PDF_Label(sprintf(
                     "%s\n%s\n%s\n%s, %s %s",
                     $sLT['Note'],
@@ -752,7 +718,7 @@ function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComp
                 ));
             } // end while
         } else {
-            while (list($i, $sLT) = each($zipLabels)) {
+            foreach ($zipLabels as $i => $sLT) {
                 $pdf->Add_PDF_Label(sprintf(
                     "%s\n%s\n%s, %s %s",
                     $sLT['Name'],
@@ -764,7 +730,7 @@ function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComp
             } // end while
         } // end of if ($BulkMailPresort == 2)
     } else {
-        while (list($i, $sLT) = each($sLabelList)) {
+        foreach ($sLabelList as $i => $sLT) {
             $pdf->Add_PDF_Label(sprintf(
                 "%s\n%s\n%s, %s %s",
                 $sLT['Name'],
@@ -798,14 +764,14 @@ if ($startrow < 1) {
 }
 
 $sLabelType = InputUtils::LegacyFilterInput($_GET['labeltype'], 'char', 8);
-setcookie('labeltype', $sLabelType, time() + 60 * 60 * 24 * 90, '/');
+setcookie('labeltype', $sLabelType, ['expires' => time() + 60 * 60 * 24 * 90, 'path' => '/']);
 
 $pdf = new PDF_Label($sLabelType, $startcol, $startrow);
 
 $sFontInfo = FontFromName($_GET['labelfont']);
-setcookie('labelfont', $_GET['labelfont'], time() + 60 * 60 * 24 * 90, '/');
+setcookie('labelfont', $_GET['labelfont'], ['expires' => time() + 60 * 60 * 24 * 90, 'path' => '/']);
 $sFontSize = $_GET['labelfontsize'];
-setcookie('labelfontsize', $sFontSize, time() + 60 * 60 * 24 * 90, '/');
+setcookie('labelfontsize', $sFontSize, ['expires' => time() + 60 * 60 * 24 * 90, 'path' => '/']);
 $pdf->SetFont($sFontInfo[0], $sFontInfo[1]);
 
 if ($sFontSize == 'default') {
@@ -820,7 +786,7 @@ if ($startcol > 1 || $startrow > 1) {
 }
 
 $mode = $_GET['groupbymode'];
-setcookie('groupbymode', $mode, time() + 60 * 60 * 24 * 90, '/');
+setcookie('groupbymode', $mode, ['expires' => time() + 60 * 60 * 24 * 90, 'path' => '/']);
 
 if (array_key_exists('bulkmailpresort', $_GET)) {
     $bulkmailpresort = $_GET['bulkmailpresort'];
@@ -828,7 +794,7 @@ if (array_key_exists('bulkmailpresort', $_GET)) {
     $bulkmailpresort = false;
 }
 
-setcookie('bulkmailpresort', $bulkmailpresort, time() + 60 * 60 * 24 * 90, '/');
+setcookie('bulkmailpresort', $bulkmailpresort, ['expires' => time() + 60 * 60 * 24 * 90, 'path' => '/']);
 
 if (array_key_exists('bulkmailquiet', $_GET)) {
     $bulkmailquiet = $_GET['bulkmailquiet'];
@@ -836,7 +802,7 @@ if (array_key_exists('bulkmailquiet', $_GET)) {
     $bulkmailquiet = false;
 }
 
-setcookie('bulkmailquiet', $bulkmailquiet, time() + 60 * 60 * 24 * 90, '/');
+setcookie('bulkmailquiet', $bulkmailquiet, ['expires' => time() + 60 * 60 * 24 * 90, 'path' => '/']);
 
 $iBulkCode = 0;
 if ($bulkmailpresort) {
@@ -847,7 +813,7 @@ if ($bulkmailpresort) {
 }
 
 $bToParents = (array_key_exists('toparents', $_GET) and $_GET['toparents'] == 1);
-setcookie('toparents', $bToParents, time() + 60 * 60 * 24 * 90, '/');
+setcookie('toparents', $bToParents, ['expires' => time() + 60 * 60 * 24 * 90, 'path' => '/']);
 
 $bOnlyComplete = ($_GET['onlyfull'] == 1);
 
@@ -876,7 +842,7 @@ if ($sFileType == 'PDF') {
 
     $sCSVOutput .= '"'.InputUtils::translate_special_charset("Greeting").'"'.$delimiter.'"'.InputUtils::translate_special_charset("Name").'"'.$delimiter.'"'.InputUtils::translate_special_charset("Address").'"'.$delimiter.'"'.InputUtils::translate_special_charset("City").'"'.$delimiter.'"'.InputUtils::translate_special_charset("State").'"'.$delimiter.'"'.InputUtils::translate_special_charset("Zip").'"'."\n";
 
-    while (list($i, $sLT) = each($aLabelList)) {
+    foreach ($aLabelList as $i => $sLT) {
         if ($iBulkCode) {
             $sCSVOutput .= '"'.$sLT['Note'].'"'.$delimiter;
         }

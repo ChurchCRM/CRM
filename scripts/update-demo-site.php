@@ -30,7 +30,7 @@ $commitHash = exec("git log --pretty=format:%H -n 1");
 
 ConsoleWriteLine("Uploading $uploadFile to demosite as $currentBranch with hash: $commitHash");
 // initialise the curl request
-$request = curl_init('http://demo.churchcrm.io/webhooks/DemoUpdate.php');
+$request = curl_init('https://demo.churchcrm.io/webhooks/DemoUpdate.php');
 
 // send a file
 curl_setopt($request, CURLOPT_POST, true);
