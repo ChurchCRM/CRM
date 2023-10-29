@@ -345,24 +345,8 @@ msgid "ERROR: the uploaded CSV file no longer exists!"
 msgstr "Hata: Yüklenen CSV dosyası artık mevcut değil!"
 
 #: 
-msgid "Data Cleared Successfully!"
-msgstr "Veriler başarıyla temizlendi!"
-
-#: 
 msgid "Upload CSV File"
 msgstr "CSV dosyasını yükle"
-
-#: 
-msgid "Clear Persons and Families"
-msgstr "Açık kişiler ve aileler"
-
-#: 
-msgid "Warning!  Do not select this option if you plan to add to an existing database.<br/>"
-msgstr "Uyarı! Mevcut bir veritabanına eklemeyi planlıyorsanız bu seçeneği seçmeyin. <br/>"
-
-#: 
-msgid "Use only if unsatisfied with initial import.  All person and member data will be destroyed!"
-msgstr "Yalnızca başlangıç ​​ithalatından memnun değilse kullanın. Tüm kişi ve üye verileri yok edilecektir!"
 
 #: 
 msgid "Data import successful."
@@ -659,10 +643,6 @@ msgstr "E -posta (BCC)"
 #: 
 msgid "Create Directory From Cart"
 msgstr "Sepetten dizin oluştur"
-
-#: 
-msgid "Generate Labels"
-msgstr "Etiket Oluşturun"
 
 #: 
 msgid "Bulk Mail Presort"
@@ -2215,10 +2195,6 @@ msgid "Group Members:"
 msgstr "Grup üyeleri:"
 
 #: 
-msgid "Group members: "
-msgstr "Grup üyeleri:"
-
-#: 
 msgid "Remove Selected Members from group"
 msgstr "Seçilen üyeleri gruptan kaldırın"
 
@@ -2421,14 +2397,6 @@ msgstr "Grup ve seçilen roller hakkında rapor (çok sayfalık bir PDF olabilir
 #: 
 msgid "Generate letters and mailing labels."
 msgstr "Harfler ve posta etiketleri oluşturun."
-
-#: 
-msgid "US Address Verification Report"
-msgstr "ABD Adres Doğrulama Raporu"
-
-#: 
-msgid "Generate report comparing all US family addresses with United States Postal Service Standard Address Format.<br>"
-msgstr "Tüm ABD Aile Adreslerini Amerika Birleşik Devletleri Posta Hizmeti Standart Adres Biçimi ile Karşılaştıran Rapor Oluşturun. <br>"
 
 #: 
 msgid "Role / Gender"
@@ -3212,10 +3180,6 @@ msgid "Calendar Year"
 msgstr "Takvim yılı"
 
 #: 
-msgid "US Address Verification"
-msgstr "ABD'nin Doğrulamasını Adres"
-
-#: 
 msgid "Update Latitude & Longitude"
 msgstr "Enlem ve Boylamı Güncelle"
 
@@ -3688,10 +3652,6 @@ msgid "Dashboard"
 msgstr "Gösterge Paneli"
 
 #: 
-msgid "Toggle navigation"
-msgstr "Gezinme"
-
-#: 
 msgid "Change Password"
 msgstr "Şifre değiştir"
 
@@ -4126,10 +4086,6 @@ msgstr "Liste"
 #: 
 msgid "Import Data"
 msgstr "Verileri İçe Aktar"
-
-#: 
-msgid "Clear Data"
-msgstr "Net veriler"
 
 #: 
 msgid "Are you sure you want to DELETE this person from Event ID: "
@@ -4612,10 +4568,6 @@ msgid "File Name:"
 msgstr "Dosya adı:"
 
 #: 
-msgid "http://www.intelligentsearch.com/address_verification/verify_address.html"
-msgstr "http://www.intelligentsearch.com/address_verification/Verify_address.html"
-
-#: 
 msgid "Fiscal Year:"
 msgstr "Mali yıl:"
 
@@ -4860,14 +4812,6 @@ msgstr "Bağış zarflarının kullanımını etkinleştirmek için true ayarlay
 #: 
 msgid "Enter in HTML code which will be displayed as a header at the top of each page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A SECOND TIME to view the new header."
 msgstr "Her sayfanın üstünde başlık olarak görüntülenecek HTML koduna girin. Etiketlerinizi kapattığınızdan emin olun! Not: Yeni başlığı görüntülemek için tarayıcınızı ikinci kez yenilemelisiniz."
-
-#: 
-msgid "Intelligent Search Technolgy, Ltd. CorrectAddress Username"
-msgstr "Akıllı Arama Technolgy, Ltd. DoleAddress Kullanıcı Adı"
-
-#: 
-msgid "Intelligent Search Technolgy, Ltd. CorrectAddress Password"
-msgstr "Akıllı Search Technolgy, Ltd. DoleAddress Parolası"
 
 #: 
 msgid "Number of checks for Deposit Slip Report"
@@ -7507,20 +7451,8 @@ msgid "Kiosk Manager"
 msgstr "Kiosk yöneticisi"
 
 #: 
-msgid "Your Cart"
-msgstr "Sepetiniz"
-
-#: 
-msgid "Your settings and more"
-msgstr "Ayarlarınız ve daha fazlası"
-
-#: 
 msgid "Report an issue"
 msgstr "Bir Sorun Bildirin"
-
-#: 
-msgid "Your tasks"
-msgstr "Görevleriniz"
 
 #: 
 msgid "Enable New Kiosk Registration"
@@ -8121,10 +8053,6 @@ msgstr "CRM'nin başlangıcında doğum tarihleri ​​yıldönümlerini göste
 #: 
 msgid "Number of seconds after page load until the banner disappears, default 10 seconds"
 msgstr "Banner kaybolana kadar sayfa yükünden sonra saniye sayısı, varsayılan 10 saniye"
-
-#: 
-msgid "Help & Support"
-msgstr "Yardım desteği"
 
 #: 
 msgid "Help & Manual"
@@ -9243,10 +9171,6 @@ msgid "Manage Notes"
 msgstr "Notları Yönetin"
 
 #: 
-msgid "Skins"
-msgstr "Deriler"
-
-#: 
 msgid "Failed generate a new API Key"
 msgstr "Başarısız yeni bir API anahtarı oluşturun"
 
@@ -9379,10 +9303,6 @@ msgid "Generate attendance -AND- non-attendance reports for events"
 msgstr "Etkinlikler için Katılım Olun ve Katılım Olmayan Raporlar"
 
 #: 
-msgid "of translation completed"
-msgstr "Çeviri tamamlandı"
-
-#: 
 msgid "Help translate this project"
 msgstr "Bu projeyi tercüme etmeye yardım edin"
 
@@ -9453,54 +9373,6 @@ msgstr "Doğrulayın"
 #: 
 msgid "Family has no emails to use"
 msgstr "Ailenin kullanılacak e -postaları yok"
-
-#: 
-msgid "Blue"
-msgstr "Mavi"
-
-#: 
-msgid "Black"
-msgstr "Siyah"
-
-#: 
-msgid "Purple"
-msgstr "Mor"
-
-#: 
-msgid "Green"
-msgstr "Yeşil"
-
-#: 
-msgid "Red"
-msgstr "Kırmızı"
-
-#: 
-msgid "Yellow"
-msgstr "Sarı"
-
-#: 
-msgid "Blue Light"
-msgstr "Mavi ışık"
-
-#: 
-msgid "Black Light"
-msgstr "Siyah ışık"
-
-#: 
-msgid "Purple Light"
-msgstr "Mor ışık"
-
-#: 
-msgid "Green Light"
-msgstr "Yeşil ışık"
-
-#: 
-msgid "Red Light"
-msgstr "Kırmızı ışık"
-
-#: 
-msgid "Yellow Light"
-msgstr "Sarı ışık"
 
 #: 
 msgid "Boxed Layout"

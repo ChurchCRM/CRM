@@ -309,24 +309,8 @@ msgid "Perform Import"
 msgstr "Importuj"
 
 #: 
-msgid "Data Cleared Successfully!"
-msgstr "Data úspěšně odstraněna!"
-
-#: 
 msgid "Upload CSV File"
 msgstr "Nahraj CSV soubor"
-
-#: 
-msgid "Clear Persons and Families"
-msgstr "Vymazat osoby a rodiny"
-
-#: 
-msgid "Warning!  Do not select this option if you plan to add to an existing database.<br/>"
-msgstr "Pozor! Tuto možnost nezvolte, pokud plánujete přidat do existující databáze.<br/>"
-
-#: 
-msgid "Use only if unsatisfied with initial import.  All person and member data will be destroyed!"
-msgstr "Použijte pouze v případě, že nejste spokojeni s původním importem.  Všechny údaje o osobách a členech budou odstraněny!"
 
 #: 
 msgid "Data import successful."

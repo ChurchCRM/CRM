@@ -346,24 +346,8 @@ msgid "ERROR: the uploaded CSV file no longer exists!"
 msgstr "VIRHE: ladattua CSV-tiedostoa ei ole enää olemassa!"
 
 #: 
-msgid "Data Cleared Successfully!"
-msgstr "Tietojen tyhjennys onnistui!"
-
-#: 
 msgid "Upload CSV File"
 msgstr "Lataa CSV-tiedosto"
-
-#: 
-msgid "Clear Persons and Families"
-msgstr "Tyhjennä henkilöt ja perheet"
-
-#: 
-msgid "Warning!  Do not select this option if you plan to add to an existing database.<br/>"
-msgstr "Varoitus! Älä valitse tätä vaihtoehtoa, jos aiot lisätä olemassa olevaan tietokantaan.<br/>"
-
-#: 
-msgid "Use only if unsatisfied with initial import.  All person and member data will be destroyed!"
-msgstr "Käytä vain, jos et ole tyytyväinen alkuperäiseen tuontiin. Kaikki henkilö- ja jäsentiedot tuhotaan!"
 
 #: 
 msgid "Data import successful."
@@ -660,10 +644,6 @@ msgstr "Sähköposti(BCC)"
 #: 
 msgid "Create Directory From Cart"
 msgstr "Luo hakemisto ostoskorista"
-
-#: 
-msgid "Generate Labels"
-msgstr "Luo tarroja"
 
 #: 
 msgid "Bulk Mail Presort"

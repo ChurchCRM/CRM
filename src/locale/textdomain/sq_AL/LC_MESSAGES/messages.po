@@ -311,24 +311,8 @@ msgid "ERROR: the uploaded CSV file no longer exists!"
 msgstr "GABIM: fotografia ngarkuar CSV nuk ekziston më!"
 
 #: 
-msgid "Data Cleared Successfully!"
-msgstr "Të dhënat pastruar me sukses!"
-
-#: 
 msgid "Upload CSV File"
 msgstr "Ngarkoni CSV dokumentit"
-
-#: 
-msgid "Clear Persons and Families"
-msgstr "Personat e qarta dhe Familjet"
-
-#: 
-msgid "Warning!  Do not select this option if you plan to add to an existing database.<br/>"
-msgstr "Warning! Mos zgjidhni këtë opsion, nëse keni ndërmend për të shtuar në një bazë të dhënash ekzistuese. <br/>"
-
-#: 
-msgid "Use only if unsatisfied with initial import.  All person and member data will be destroyed!"
-msgstr "Përdoreni vetëm nëse pakënaqur me importin fillestar. Të gjitha të dhënat e personit dhe anëtare do të shkatërrohet!"
 
 #: 
 msgid "Data import successful."
@@ -609,10 +593,6 @@ msgstr "Email (BCC)"
 #: 
 msgid "Create Directory From Cart"
 msgstr "Krijo Directory Nga Shportë"
-
-#: 
-msgid "Generate Labels"
-msgstr "Generate Etiketa"
 
 #: 
 msgid "Bulk Mail Presort"
@@ -2037,10 +2017,6 @@ msgid "Generate letters and mailing labels."
 msgstr "Generate letra dhe etiketat e postimeve."
 
 #: 
-msgid "US Address Verification Report"
-msgstr "SHBA Adresa Verifikimi Raport"
-
-#: 
 msgid "Family Name"
 msgstr "Emri Family"
 
@@ -2665,10 +2641,6 @@ msgstr "Tax Raporti"
 #: 
 msgid "Calendar Year"
 msgstr "Viti Kalendari"
-
-#: 
-msgid "US Address Verification"
-msgstr "Adresa SHBA Verifikimi"
 
 #: 
 msgid "User Delete Confirmation"

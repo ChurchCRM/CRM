@@ -364,26 +364,8 @@ msgid "ERROR: the uploaded CSV file no longer exists!"
 msgstr "錯誤：上傳的CSV文件不再存在！"
 
 #: 
-msgid "Data Cleared Successfully!"
-msgstr "數據成功地清除了！"
-
-#: 
 msgid "Upload CSV File"
 msgstr "上傳CSV文件"
-
-#: 
-msgid "Clear Persons and Families"
-msgstr "明確的個人和家庭"
-
-#: 
-#, fuzzy
-msgid "Warning!  Do not select this option if you plan to add to an existing database.<br/>"
-msgstr "警告！如果您打算添加到現有的資料庫，請不要選擇此選項。 <br/>"
-
-#: 
-#, fuzzy
-msgid "Use only if unsatisfied with initial import.  All person and member data will be destroyed!"
-msgstr "僅使用於不滿意首次匯入。所有的人及成員的資料將被破壞！"
 
 #: 
 #, fuzzy
@@ -690,10 +672,6 @@ msgstr "電子郵件（BCC）"
 #: 
 msgid "Create Directory From Cart"
 msgstr "創建目錄從購物車中"
-
-#: 
-msgid "Generate Labels"
-msgstr "生成標籤"
 
 #: 
 msgid "Bulk Mail Presort"
@@ -2290,10 +2268,6 @@ msgid "Group Members:"
 msgstr "小組成員："
 
 #: 
-msgid "Group members: "
-msgstr "群經成員:␣"
-
-#: 
 msgid "Remove Selected Members from group"
 msgstr "從群組中移除已選擇的會員"
 
@@ -2500,14 +2474,6 @@ msgstr "報告組和角色選擇（它可能是一個多頁的PDF）。"
 #: 
 msgid "Generate letters and mailing labels."
 msgstr "生成信函和郵寄標籤。"
-
-#: 
-msgid "US Address Verification Report"
-msgstr "美國地址驗證報告的"
-
-#: 
-msgid "Generate report comparing all US family addresses with United States Postal Service Standard Address Format.<br>"
-msgstr "生成報告，將所有美國家庭地址與美國郵政服務標準地址格式進行比較。"
 
 #: 
 #, fuzzy
@@ -3307,10 +3273,6 @@ msgid "Calendar Year"
 msgstr "日曆年份"
 
 #: 
-msgid "US Address Verification"
-msgstr "美國地址驗證"
-
-#: 
 msgid "Update Latitude & Longitude"
 msgstr "更新經緯度"
 
@@ -3801,10 +3763,6 @@ msgid "Dashboard"
 msgstr "儀錶板"
 
 #: 
-msgid "Toggle navigation"
-msgstr "切換導航"
-
-#: 
 msgid "Change Password"
 msgstr "更改密碼"
 
@@ -4257,10 +4215,6 @@ msgstr "清單"
 #: 
 msgid "Import Data"
 msgstr "導入數據"
-
-#: 
-msgid "Clear Data"
-msgstr "清除數據"
 
 #: 
 msgid "Are you sure you want to DELETE this person from Event ID: "
@@ -4751,10 +4705,6 @@ msgid "File Name:"
 msgstr "文件名："
 
 #: 
-msgid "http://www.intelligentsearch.com/address_verification/verify_address.html"
-msgstr "http://www.intelligentsearch.com/address_verification/verify_address.html"
-
-#: 
 msgid "Fiscal Year:"
 msgstr "財政年度："
 
@@ -4999,14 +4949,6 @@ msgstr "設置為true(是)以允許使用捐贈信封"
 #: 
 msgid "Enter in HTML code which will be displayed as a header at the top of each page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A SECOND TIME to view the new header."
 msgstr "輸入HTML代碼，該代碼將顯示為每頁頂部的標題。一定要關閉你的標籤！注意：您必須第二次刷新瀏覽器才能查看新標題。"
-
-#: 
-msgid "Intelligent Search Technolgy, Ltd. CorrectAddress Username"
-msgstr "Intelligent Search Technolgy, Ltd. CorrectAddress Username"
-
-#: 
-msgid "Intelligent Search Technolgy, Ltd. CorrectAddress Password"
-msgstr "Intelligent Search Technolgy, Ltd. CorrectAddress Password"
 
 #: 
 msgid "Number of checks for Deposit Slip Report"
@@ -7672,20 +7614,8 @@ msgid "Kiosk Manager"
 msgstr "Kiosk管理"
 
 #: 
-msgid "Your Cart"
-msgstr "您的購物車"
-
-#: 
-msgid "Your settings and more"
-msgstr "您的設置等等"
-
-#: 
 msgid "Report an issue"
 msgstr "報告問題"
-
-#: 
-msgid "Your tasks"
-msgstr "你的任務"
 
 #: 
 #, fuzzy
@@ -8296,10 +8226,6 @@ msgstr "在啟動CRM時顯示出生日期"
 #: 
 msgid "Number of seconds after page load until the banner disappears, default 10 seconds"
 msgstr "從頁面加載到橫幅消失的秒數，默認為10秒"
-
-#: 
-msgid "Help & Support"
-msgstr "幫助及支援"
 
 #: 
 msgid "Help & Manual"
@@ -9531,11 +9457,6 @@ msgstr "管理筆記"
 
 #: 
 #, fuzzy
-msgid "Skins"
-msgstr "佈景主題"
-
-#: 
-#, fuzzy
 msgid "Failed generate a new API Key"
 msgstr "生成新的API密鑰失敗"
 
@@ -9694,11 +9615,6 @@ msgstr "生成活動的出席-和非出席報告"
 
 #: 
 #, fuzzy
-msgid "of translation completed"
-msgstr "翻譯完成"
-
-#: 
-#, fuzzy
 msgid "Help translate this project"
 msgstr "幫助翻譯此專案"
 
@@ -9786,66 +9702,6 @@ msgstr "確認"
 #, fuzzy
 msgid "Family has no emails to use"
 msgstr "家庭沒有電子郵件可使用"
-
-#: 
-#, fuzzy
-msgid "Blue"
-msgstr "藍"
-
-#: 
-#, fuzzy
-msgid "Black"
-msgstr "黑"
-
-#: 
-#, fuzzy
-msgid "Purple"
-msgstr "紫"
-
-#: 
-#, fuzzy
-msgid "Green"
-msgstr "綠"
-
-#: 
-#, fuzzy
-msgid "Red"
-msgstr "紅"
-
-#: 
-#, fuzzy
-msgid "Yellow"
-msgstr "黃"
-
-#: 
-#, fuzzy
-msgid "Blue Light"
-msgstr "淺藍"
-
-#: 
-#, fuzzy
-msgid "Black Light"
-msgstr "淺黑"
-
-#: 
-#, fuzzy
-msgid "Purple Light"
-msgstr "淺紫"
-
-#: 
-#, fuzzy
-msgid "Green Light"
-msgstr "淺綠"
-
-#: 
-#, fuzzy
-msgid "Red Light"
-msgstr "淺紅"
-
-#: 
-#, fuzzy
-msgid "Yellow Light"
-msgstr "淺黃"
 
 #: 
 #, fuzzy

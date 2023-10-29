@@ -364,24 +364,8 @@ msgid "ERROR: the uploaded CSV file no longer exists!"
 msgstr "Błąd: brak wcześniej załadowanego pliku CSV!"
 
 #: 
-msgid "Data Cleared Successfully!"
-msgstr "Dane pomyślnie usunięte."
-
-#: 
 msgid "Upload CSV File"
 msgstr "Załaduj plik CSV"
-
-#: 
-msgid "Clear Persons and Families"
-msgstr "Usuń Osoby i Rodziny"
-
-#: 
-msgid "Warning!  Do not select this option if you plan to add to an existing database.<br/>"
-msgstr "Uwaga! Nie wybieraj tej opcji jeżeli zamierzasz dodać do już istniejącej bazy danych.<br/>"
-
-#: 
-msgid "Use only if unsatisfied with initial import.  All person and member data will be destroyed!"
-msgstr "Użyj tylko gdy nie jesteś zadowolony z pierwotnego importu. Wszystkie dotychczasowe dane zostaną usunięte!"
 
 #: 
 msgid "Data import successful."
@@ -647,10 +631,6 @@ msgstr "Email (BCC)"
 #: 
 msgid "Create Directory From Cart"
 msgstr "Utwórz Spis z Koszyka"
-
-#: 
-msgid "Generate Labels"
-msgstr "Wygeneruj Etykiety"
 
 #: 
 msgid "Bulk Mail Presort"
@@ -2130,10 +2110,6 @@ msgid "Group Members:"
 msgstr "Członkowie Grupy:"
 
 #: 
-msgid "Group members: "
-msgstr "Członkowie grupy: "
-
-#: 
 msgid "Remove Selected Members from group"
 msgstr "Usuń Wybranych Członków z grupy"
 
@@ -2335,14 +2311,6 @@ msgstr "Wybrano Raport o grupach i rolach (może to być kilka stron)"
 #: 
 msgid "Generate letters and mailing labels."
 msgstr "Wygeneruj Listy i Naklejki Adresowe"
-
-#: 
-msgid "US Address Verification Report"
-msgstr "Raport Potwierdzający Adresy USA"
-
-#: 
-msgid "Generate report comparing all US family addresses with United States Postal Service Standard Address Format.<br>"
-msgstr "Utwórz raport porównujący wszystkie adresy rodzin (w USA) ze zgodnością do States Postal Service Standard Address Format.<br>"
 
 #: 
 msgid "Role / Gender"
@@ -3136,10 +3104,6 @@ msgstr "Raport Podatkowy"
 #, fuzzy
 msgid "Calendar Year"
 msgstr "Rok Kalendarzowy"
-
-#: 
-msgid "US Address Verification"
-msgstr "Weryfikacja Adresu USA"
 
 #: 
 msgid "Update Latitude & Longitude"
@@ -5051,10 +5015,6 @@ msgid "Manage Notes"
 msgstr "Zarządzaj Notatkami"
 
 #: 
-msgid "Skins"
-msgstr "Powłoki"
-
-#: 
 msgid "Failed generate a new API Key"
 msgstr "Bład tworzenia klucza API"
 
@@ -5065,34 +5025,6 @@ msgstr "Dzisiejsze urodziny"
 #: 
 msgid "Today's Wedding Anniversaries"
 msgstr "Dzisiejsze rocznice ślubu"
-
-#: 
-msgid "Blue"
-msgstr "Niebieski"
-
-#: 
-msgid "Black"
-msgstr "Czarny"
-
-#: 
-msgid "Purple"
-msgstr "Fioletowy"
-
-#: 
-msgid "Green"
-msgstr "Zielony"
-
-#: 
-msgid "Red"
-msgstr "Czerwony"
-
-#: 
-msgid "Yellow"
-msgstr "Żółty"
-
-#: 
-msgid "Blue Light"
-msgstr "Błękitny"
 
 #: 
 msgid "Deleted"
