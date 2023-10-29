@@ -21,7 +21,7 @@ require '../Include/HeaderNotLoggedIn.php';
     <div class="error-content">
       <h3><i class="fa fa-warning text-yellow"></i> PHP <?= substr( phpversion(), 0, 3 )   ?> not a supported </h3>
       <p/>
-      <h4>See <a target="php" href="http://php.net/supported-versions.php" > supported versions</a></h4>
+      <h4>See <a target="php" href="https://php.net/supported-versions.php" > supported versions</a></h4>
     </div>
     <!-- /.error-content -->
   </div>
