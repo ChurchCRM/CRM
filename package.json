@@ -18,7 +18,7 @@
     },
     "homepage": "https://www.churchcrm.io",
     "scripts": {
-        "clean": "rm -rf node_modules/ src/vendor/",
+        "clean": "rm -rf node_modules/ src/vendor/ src/skin/external",
         "preinstall": "grunt clean & grunt updateVersions",
         "install": "grunt curl-dir && grunt copy && grunt sass && grunt lineending && grunt patchDataTablesCSS",
         "build-react": "webpack",
