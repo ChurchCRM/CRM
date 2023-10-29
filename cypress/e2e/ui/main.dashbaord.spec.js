@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-context('Standard Dashbaord', () => {
+context('Standard Dashboard', () => {
 
     it('Loads all', () => {
         cy.loginStandard();
