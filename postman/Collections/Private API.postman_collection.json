@@ -244,7 +244,7 @@
 					"name": "Deposits",
 					"item": [
 						{
-							"name": "Deposiits: Dashbaord data",
+							"name": "Deposits: Dashboard data",
 							"request": {
 								"method": "GET",
 								"header": [
