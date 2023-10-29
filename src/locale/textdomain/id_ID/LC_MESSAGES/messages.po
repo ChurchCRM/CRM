@@ -346,24 +346,8 @@ msgid "ERROR: the uploaded CSV file no longer exists!"
 msgstr "KESALAHAN: file CSV yang diunggah tidak ada lagi!"
 
 #: 
-msgid "Data Cleared Successfully!"
-msgstr "Data Berhasil Dibersihkan!"
-
-#: 
 msgid "Upload CSV File"
 msgstr "Unggah File CSV"
-
-#: 
-msgid "Clear Persons and Families"
-msgstr "Bersihkan Orang dan Keluarga"
-
-#: 
-msgid "Warning!  Do not select this option if you plan to add to an existing database.<br/>"
-msgstr "Perhatian ! Jangan memilih ini jika database sudah pernah ada"
-
-#: 
-msgid "Use only if unsatisfied with initial import.  All person and member data will be destroyed!"
-msgstr "Gunakan jika initial import kurang memuaskan. Semua data anggota akan dihapus"
 
 #: 
 msgid "Data import successful."
@@ -660,10 +644,6 @@ msgstr "Email (BCC)"
 #: 
 msgid "Create Directory From Cart"
 msgstr "Buat Direktori dari Cart"
-
-#: 
-msgid "Generate Labels"
-msgstr "Buat label"
 
 #: 
 msgid "Bulk Mail Presort"
@@ -2219,10 +2199,6 @@ msgid "Group Members:"
 msgstr "Anggota kelompok:"
 
 #: 
-msgid "Group members: "
-msgstr "Anggota kelompok: "
-
-#: 
 msgid "Remove Selected Members from group"
 msgstr "Hapus Anggota yang Dipilih dari grup"
 
@@ -2425,14 +2401,6 @@ msgstr "Laporkan grup dan peran yang dipilih (mungkin PDF multi-halaman)."
 #: 
 msgid "Generate letters and mailing labels."
 msgstr "Buat surat dan label surat."
-
-#: 
-msgid "US Address Verification Report"
-msgstr "Laporan Verifikasi Alamat AS"
-
-#: 
-msgid "Generate report comparing all US family addresses with United States Postal Service Standard Address Format.<br>"
-msgstr "Hasilkan laporan yang membandingkan semua alamat keluarga AS dengan Format Alamat Standar Layanan Pos Amerika Serikat. <br>"
 
 #: 
 msgid "Role / Gender"
@@ -3216,10 +3184,6 @@ msgid "Calendar Year"
 msgstr "Tahun kalender"
 
 #: 
-msgid "US Address Verification"
-msgstr "Verifikasi Alamat AS"
-
-#: 
 msgid "Update Latitude & Longitude"
 msgstr "Perbarui Latitude & Longitude"
 
@@ -3692,10 +3656,6 @@ msgid "Dashboard"
 msgstr "Dasbor"
 
 #: 
-msgid "Toggle navigation"
-msgstr "Alihkan navigasi"
-
-#: 
 msgid "Change Password"
 msgstr "Ganti kata sandi"
 
@@ -4131,10 +4091,6 @@ msgstr "Daftar"
 #: 
 msgid "Import Data"
 msgstr "Impor Data"
-
-#: 
-msgid "Clear Data"
-msgstr "Hapus data"
 
 #: 
 msgid "Are you sure you want to DELETE this person from Event ID: "
@@ -4618,10 +4574,6 @@ msgid "File Name:"
 msgstr "Nama file:"
 
 #: 
-msgid "http://www.intelligentsearch.com/address_verification/verify_address.html"
-msgstr "http://www.intelligentsearch.com/address_verification/verify_address.html"
-
-#: 
 msgid "Fiscal Year:"
 msgstr "Tahun fiskal:"
 
@@ -4866,14 +4818,6 @@ msgstr "Set true untuk mengaktifkan penggunaan amplop donasi"
 #: 
 msgid "Enter in HTML code which will be displayed as a header at the top of each page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A SECOND TIME to view the new header."
 msgstr "Masukkan kode HTML yang akan ditampilkan sebagai tajuk di bagian atas setiap halaman. Pastikan untuk menutup tag Anda! Catatan: Anda harus MEMBANGKITKAN BROWSER ANDA WAKTU KEDUA untuk melihat tajuk baru."
-
-#: 
-msgid "Intelligent Search Technolgy, Ltd. CorrectAddress Username"
-msgstr "Intelligent Search Technolgy, Ltd. Nama Pengguna CorrectAddress"
-
-#: 
-msgid "Intelligent Search Technolgy, Ltd. CorrectAddress Password"
-msgstr "Intelligent Search Technolgy, Ltd. CorrectAddress Password"
 
 #: 
 msgid "Number of checks for Deposit Slip Report"
@@ -7513,20 +7457,8 @@ msgid "Kiosk Manager"
 msgstr "Manajer Kios"
 
 #: 
-msgid "Your Cart"
-msgstr "Troli Anda"
-
-#: 
-msgid "Your settings and more"
-msgstr "Pengaturan Anda dan banyak lagi"
-
-#: 
 msgid "Report an issue"
 msgstr "Laporkan masalah"
-
-#: 
-msgid "Your tasks"
-msgstr "Tugas Anda"
 
 #: 
 msgid "Enable New Kiosk Registration"
@@ -8127,10 +8059,6 @@ msgstr "Perlihatkan Peringatan Tanggal Lahir pada saat memulai CRM"
 #: 
 msgid "Number of seconds after page load until the banner disappears, default 10 seconds"
 msgstr "Jumlah detik setelah pemuatan halaman hingga spanduk menghilang, default 10 detik"
-
-#: 
-msgid "Help & Support"
-msgstr "Bantuan & Support"
 
 #: 
 msgid "Help & Manual"
@@ -9238,10 +9166,6 @@ msgid "Manage Notes"
 msgstr "Kelola Catatan"
 
 #: 
-msgid "Skins"
-msgstr "Tampilan"
-
-#: 
 msgid "Failed generate a new API Key"
 msgstr "Gagal membuat Kunci API baru"
 
@@ -9374,10 +9298,6 @@ msgid "Generate attendance -AND- non-attendance reports for events"
 msgstr "Buat laporan kehadiran DAN ketidakhadiran acara"
 
 #: 
-msgid "of translation completed"
-msgstr "dari terjemahan terselesaikan"
-
-#: 
 msgid "Help translate this project"
 msgstr "Bantu terjemahkan proyek ini"
 
@@ -9448,54 +9368,6 @@ msgstr "Verifikasi"
 #: 
 msgid "Family has no emails to use"
 msgstr "Keluarga tidak memiliki email"
-
-#: 
-msgid "Blue"
-msgstr "Biru"
-
-#: 
-msgid "Black"
-msgstr "Hitam"
-
-#: 
-msgid "Purple"
-msgstr "Ungu"
-
-#: 
-msgid "Green"
-msgstr "Hijau"
-
-#: 
-msgid "Red"
-msgstr "Merah"
-
-#: 
-msgid "Yellow"
-msgstr "Kuning"
-
-#: 
-msgid "Blue Light"
-msgstr "Biru Terang"
-
-#: 
-msgid "Black Light"
-msgstr "Hitam Terang"
-
-#: 
-msgid "Purple Light"
-msgstr "Ungu Terang"
-
-#: 
-msgid "Green Light"
-msgstr "Hijau Terang"
-
-#: 
-msgid "Red Light"
-msgstr "Merah Terang"
-
-#: 
-msgid "Yellow Light"
-msgstr "Kuning Terang"
 
 #: 
 msgid "Boxed Layout"

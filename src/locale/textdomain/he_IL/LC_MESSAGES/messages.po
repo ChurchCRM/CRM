@@ -288,14 +288,6 @@ msgid "Upload CSV File"
 msgstr "טען קובץ CSV"
 
 #: 
-msgid "Clear Persons and Families"
-msgstr "הסר אנשים ומשפחות"
-
-#: 
-msgid "Warning!  Do not select this option if you plan to add to an existing database.<br/>"
-msgstr "אזהרה! אל תבחר באפשרות זאת, אם בכוונתך לטעון מסד נתונים קיים.<br/>"
-
-#: 
 msgid "Data import successful."
 msgstr "ייבוא המידע הושלם בהצלחה"
 
@@ -471,10 +463,6 @@ msgstr "דוא\"ל (BCC)"
 #: 
 msgid "Create Directory From Cart"
 msgstr "צור ספריה מהסל"
-
-#: 
-msgid "Generate Labels"
-msgstr "צור תגים"
 
 #. Need context
 #: 

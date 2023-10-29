@@ -350,24 +350,8 @@ msgid "ERROR: the uploaded CSV file no longer exists!"
 msgstr "ERREUR: fichier CSV téléchargé a disparu !"
 
 #: 
-msgid "Data Cleared Successfully!"
-msgstr "Les données ont été effacé avec succès!"
-
-#: 
 msgid "Upload CSV File"
 msgstr "Télécharger un fichier CSV"
-
-#: 
-msgid "Clear Persons and Families"
-msgstr "Effacer les personnes et les familles"
-
-#: 
-msgid "Warning!  Do not select this option if you plan to add to an existing database.<br/>"
-msgstr "Attention! Ne pas sélectionner cette option si vous prévoyez des ajouts ou des modifications d'une base de données existante. <br/>"
-
-#: 
-msgid "Use only if unsatisfied with initial import.  All person and member data will be destroyed!"
-msgstr "À utiliser uniquement en cas d&#39;insatisfaction de l'importation initiale. Toutes les personnes et membres seront détruits!"
 
 #: 
 msgid "Data import successful."
@@ -664,10 +648,6 @@ msgstr "Email (BCC)"
 #: 
 msgid "Create Directory From Cart"
 msgstr "Créer un répertoire depuis le panier"
-
-#: 
-msgid "Generate Labels"
-msgstr "Générer des étiquettes"
 
 #: 
 msgid "Bulk Mail Presort"
@@ -2222,10 +2202,6 @@ msgid "Group Members:"
 msgstr "Membres du Groupe:"
 
 #: 
-msgid "Group members: "
-msgstr "Membres du groupe: "
-
-#: 
 msgid "Remove Selected Members from group"
 msgstr "Supprimer les membres sélectionnés du groupe"
 
@@ -2428,14 +2404,6 @@ msgstr "Rapport sur les groupes et les rôles sélectionnés (possibilité de pa
 #: 
 msgid "Generate letters and mailing labels."
 msgstr "Générer des lettres et des étiquettes postales"
-
-#: 
-msgid "US Address Verification Report"
-msgstr "Rapport de vérification des adresses américaines"
-
-#: 
-msgid "Generate report comparing all US family addresses with United States Postal Service Standard Address Format.<br>"
-msgstr "Générer un rapport comparant toutes les adresses des familles US avec le format d'adresse standard des services postaux aux USA."
 
 #: 
 msgid "Role / Gender"
@@ -3219,10 +3187,6 @@ msgid "Calendar Year"
 msgstr "Année civile"
 
 #: 
-msgid "US Address Verification"
-msgstr "Vérification de l&#39;adresse US"
-
-#: 
 msgid "Update Latitude & Longitude"
 msgstr "Mettre à jour la Latitude & longitude"
 
@@ -3695,10 +3659,6 @@ msgid "Dashboard"
 msgstr "Tableau de bord"
 
 #: 
-msgid "Toggle navigation"
-msgstr "Basculer le mode de navigation"
-
-#: 
 msgid "Change Password"
 msgstr "Modifier Mot de Passe"
 
@@ -4135,10 +4095,6 @@ msgstr "Liste"
 #: 
 msgid "Import Data"
 msgstr "Importer des Données"
-
-#: 
-msgid "Clear Data"
-msgstr "Supprimer les Données"
 
 #: 
 msgid "Are you sure you want to DELETE this person from Event ID: "
@@ -4621,10 +4577,6 @@ msgid "File Name:"
 msgstr "Nom du fichier:"
 
 #: 
-msgid "http://www.intelligentsearch.com/address_verification/verify_address.html"
-msgstr "http://www.intelligentsearch.com/address_verification/verify_address.html"
-
-#: 
 msgid "Fiscal Year:"
 msgstr "Année Fiscale:"
 
@@ -4869,14 +4821,6 @@ msgstr "Cocher Vrai pour activer l'utilisation d&#39;enveloppes de dons"
 #: 
 msgid "Enter in HTML code which will be displayed as a header at the top of each page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A SECOND TIME to view the new header."
 msgstr "Saisir un code HTML qui sera affiché en entête de chaque page. Vérifiez que les tags soient bien fermés ! Note : vous devrez RAFRAÎCHIR LA PAGE UNE SECONDE FOIS pour voir le nouvel entête."
-
-#: 
-msgid "Intelligent Search Technolgy, Ltd. CorrectAddress Username"
-msgstr "Intelligent Search Technolgy, Ltd. CorrectAddress Identifiant"
-
-#: 
-msgid "Intelligent Search Technolgy, Ltd. CorrectAddress Password"
-msgstr "IIntelligent Search Technolgy, Ltd. CorrectAddress Mot de Passe"
 
 #: 
 msgid "Number of checks for Deposit Slip Report"
@@ -7517,20 +7461,8 @@ msgid "Kiosk Manager"
 msgstr "Manager de kiosque."
 
 #: 
-msgid "Your Cart"
-msgstr "Votre panier"
-
-#: 
-msgid "Your settings and more"
-msgstr "Vos réglages et plus"
-
-#: 
 msgid "Report an issue"
 msgstr "Signaler un problème"
-
-#: 
-msgid "Your tasks"
-msgstr "Vos tâches"
 
 #: 
 msgid "Enable New Kiosk Registration"
@@ -8131,10 +8063,6 @@ msgstr "Visualiser les anniversaire et anniversaires de mariage au démarrage du
 #: 
 msgid "Number of seconds after page load until the banner disappears, default 10 seconds"
 msgstr "Nombre de secondes à fixer pour que la bannière disparaisse, par défaut 10 secs."
-
-#: 
-msgid "Help & Support"
-msgstr "Aide & Support"
 
 #: 
 msgid "Help & Manual"
@@ -9253,10 +9181,6 @@ msgid "Manage Notes"
 msgstr "Gérer les notes"
 
 #: 
-msgid "Skins"
-msgstr "Peaux"
-
-#: 
 msgid "Failed generate a new API Key"
 msgstr "Échec de la génération d'une nouvelle clé API"
 
@@ -9389,10 +9313,6 @@ msgid "Generate attendance -AND- non-attendance reports for events"
 msgstr "Générer des rapports de présence -ET- d'absence pour les événements"
 
 #: 
-msgid "of translation completed"
-msgstr "de traduction terminée"
-
-#: 
 msgid "Help translate this project"
 msgstr "Aidez à traduire ce projet"
 
@@ -9464,54 +9384,6 @@ msgstr "Vérifier"
 #: 
 msgid "Family has no emails to use"
 msgstr "Aucune adresse email renseignée pour cette famille"
-
-#: 
-msgid "Blue"
-msgstr "Bleu"
-
-#: 
-msgid "Black"
-msgstr "Noir"
-
-#: 
-msgid "Purple"
-msgstr "Violet"
-
-#: 
-msgid "Green"
-msgstr "Vert"
-
-#: 
-msgid "Red"
-msgstr "Rouge"
-
-#: 
-msgid "Yellow"
-msgstr "Jaune"
-
-#: 
-msgid "Blue Light"
-msgstr "Bleu clair"
-
-#: 
-msgid "Black Light"
-msgstr "Noir clair"
-
-#: 
-msgid "Purple Light"
-msgstr "Violet clair"
-
-#: 
-msgid "Green Light"
-msgstr "Vert clair"
-
-#: 
-msgid "Red Light"
-msgstr "Rouge clair"
-
-#: 
-msgid "Yellow Light"
-msgstr "Jaune clair"
 
 #: 
 msgid "Boxed Layout"

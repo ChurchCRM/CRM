@@ -361,24 +361,8 @@ msgid "ERROR: the uploaded CSV file no longer exists!"
 msgstr "Erro: o ficheiro CSV não existe!"
 
 #: 
-msgid "Data Cleared Successfully!"
-msgstr "Dados apagados com sucesso!"
-
-#: 
 msgid "Upload CSV File"
 msgstr "Enviar ficheiro .CSV"
-
-#: 
-msgid "Clear Persons and Families"
-msgstr "Apagar pessoas e famílias"
-
-#: 
-msgid "Warning!  Do not select this option if you plan to add to an existing database.<br/>"
-msgstr "Atenção! Não selecione essa opção se você pretenda adicionar a uma base de dados existente. <br/>"
-
-#: 
-msgid "Use only if unsatisfied with initial import.  All person and member data will be destroyed!"
-msgstr "Use apenas se insatisfeito com importação inicial. Toda a pessoa e dados dos membros será destruído!"
 
 #: 
 msgid "Data import successful."
@@ -681,10 +665,6 @@ msgstr "E-mail (Cco)"
 #: 
 msgid "Create Directory From Cart"
 msgstr "Criar diretório a partir do Carrinho"
-
-#: 
-msgid "Generate Labels"
-msgstr "Criar etiquetas"
 
 #: 
 msgid "Bulk Mail Presort"
@@ -2292,10 +2272,6 @@ msgid "Group Members:"
 msgstr "Membros do grupo:"
 
 #: 
-msgid "Group members: "
-msgstr "Membros do Grupo"
-
-#: 
 msgid "Remove Selected Members from group"
 msgstr "Remover os membros Selecionados do Grupo"
 
@@ -2507,14 +2483,6 @@ msgstr "Relatórios sobre grupos e papéis selecionados"
 #: 
 msgid "Generate letters and mailing labels."
 msgstr "Gerar cartas e etiquetas"
-
-#: 
-msgid "US Address Verification Report"
-msgstr "EUA apenas - Relatório de Verificação de Endereço"
-
-#: 
-msgid "Generate report comparing all US family addresses with United States Postal Service Standard Address Format.<br>"
-msgstr "Gerar relatório que compara todos os endereços da família dos EUA com o formato de endereço padrão da United States Postal Service. <br>"
 
 #: 
 msgid "Role / Gender"
@@ -3327,10 +3295,6 @@ msgid "Calendar Year"
 msgstr "Ano calendário"
 
 #: 
-msgid "US Address Verification"
-msgstr "EUA verificação de endereço"
-
-#: 
 msgid "Update Latitude & Longitude"
 msgstr "Atualizar Latitude e Longiude"
 
@@ -3834,10 +3798,6 @@ msgid "Dashboard"
 msgstr "Painel"
 
 #: 
-msgid "Toggle navigation"
-msgstr "Alternância de Navegação"
-
-#: 
 msgid "Change Password"
 msgstr "Mudar senha"
 
@@ -4292,10 +4252,6 @@ msgstr "Lista"
 #: 
 msgid "Import Data"
 msgstr "Importar Dados"
-
-#: 
-msgid "Clear Data"
-msgstr "Limpar Dados"
 
 #: 
 msgid "Are you sure you want to DELETE this person from Event ID: "
@@ -4781,10 +4737,6 @@ msgid "File Name:"
 msgstr "Nome do Arquivo:"
 
 #: 
-msgid "http://www.intelligentsearch.com/address_verification/verify_address.html"
-msgstr "http://www.intelligentsearch.com/address_verification/verify_address.html"
-
-#: 
 msgid "Fiscal Year:"
 msgstr "Ano fiscal:"
 
@@ -5035,16 +4987,6 @@ msgstr "Defina verdadeiro para habilitar o uso de envelopes de doação"
 #: 
 msgid "Enter in HTML code which will be displayed as a header at the top of each page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A SECOND TIME to view the new header."
 msgstr "Digite no código HTML que será exibido como um cabeçalho no topo de cada página. Certifique-se de fechar suas tags! Nota: Você deve ATUALIZAR O SEU NAVEGADOR UMA SEGUNDA VEZ para ver o novo cabeçalho."
-
-#: 
-#, fuzzy
-msgid "Intelligent Search Technolgy, Ltd. CorrectAddress Username"
-msgstr "Intelligent Search Technolgy, Ltd. Nome de utilizador correto para o endereço"
-
-#: 
-#, fuzzy
-msgid "Intelligent Search Technolgy, Ltd. CorrectAddress Password"
-msgstr "Intelligent Search Technolgy, Ltd. Senha correta para o endereço"
 
 #: 
 msgid "Number of checks for Deposit Slip Report"
@@ -7708,20 +7650,8 @@ msgid "Kiosk Manager"
 msgstr "Gestão modo quiosque"
 
 #: 
-msgid "Your Cart"
-msgstr "Seu carrinho"
-
-#: 
-msgid "Your settings and more"
-msgstr "Suas configurações e mais"
-
-#: 
 msgid "Report an issue"
 msgstr "Reportar um problema"
-
-#: 
-msgid "Your tasks"
-msgstr "Suas tarefas"
 
 #: 
 msgid "Enable New Kiosk Registration"
@@ -8324,10 +8254,6 @@ msgstr "Mostrar aniversários no início do CRM"
 #: 
 msgid "Number of seconds after page load until the banner disappears, default 10 seconds"
 msgstr "Número de segundos após a carga da página até o banner desaparecer, padrão 10 segundos"
-
-#: 
-msgid "Help & Support"
-msgstr "Ajuda e Suporte"
 
 #: 
 msgid "Help & Manual"
