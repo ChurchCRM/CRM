@@ -19,6 +19,14 @@ services:
       timeout: 20s
       retries: 10
 
+  mailserver:
+    #  Reference: https://blog.mailtrap.io/mailhog-explained/
+    image: mailhog/mailhog
+    ports:
+      - ${DEV_MAILSERVER_PORT:-1025}:1025
+      - ${DEV_MAILSERVER_GUI_PORT:-8025}:8025
+    hostname: crmEmailServer
+
   webserver:
     ## Look into: https://hub.docker.com/r/nimmis/apache-php8
     build:
@@ -32,8 +40,6 @@ services:
       - ..:/home/ChurchCRM
     links:
       - database
+      - mailserver
     env_file:
       - .env
-    depends_on:
-      database:
-        condition: service_healthy

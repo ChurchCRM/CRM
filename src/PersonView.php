@@ -290,7 +290,7 @@ $bOkToEdit = (
                     <?php if (!empty($formattedMailingAddress)) {
                                 ?>
                         <li><i class="fa-li fa fa-home"></i><?php echo gettext('Address'); ?>: <span>
-                                <a href="http://maps.google.com/?q=<?= $plaintextMailingAddress ?>" target="_blank">
+                                <a href="https://maps.google.com/?q=<?= $plaintextMailingAddress ?>" target="_blank">
                                     <?= $formattedMailingAddress ?>
                                 </a>
                             </span></li>
@@ -432,7 +432,7 @@ $bOkToEdit = (
             <?php
             } ?>
         </div>
-        
+
         <div class="card">
             <div class="card-header p-2">
                 <ul class="nav nav-pills">
