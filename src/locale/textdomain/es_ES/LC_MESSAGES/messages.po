@@ -346,24 +346,8 @@ msgid "ERROR: the uploaded CSV file no longer exists!"
 msgstr "ERROR: el archivo CSV subido ya no existe!"
 
 #: 
-msgid "Data Cleared Successfully!"
-msgstr "Datos limpiados exitosamente!"
-
-#: 
 msgid "Upload CSV File"
 msgstr "Cargar archivo CSV"
-
-#: 
-msgid "Clear Persons and Families"
-msgstr "Limpiar personas y familias"
-
-#: 
-msgid "Warning!  Do not select this option if you plan to add to an existing database.<br/>"
-msgstr "¡Advertencia! No seleccione esta opción si va a añadir a una base de datos existente. <br/>"
-
-#: 
-msgid "Use only if unsatisfied with initial import.  All person and member data will be destroyed!"
-msgstr "Utilice únicamente si no está satisfecho con la importación inicial. Toda persona y datos de los miembros será destruida!"
 
 #: 
 msgid "Data import successful."
@@ -661,10 +645,6 @@ msgstr "Email (BCC)"
 #: 
 msgid "Create Directory From Cart"
 msgstr "Crear directorio desde separador"
-
-#: 
-msgid "Generate Labels"
-msgstr "Generar etiquetas"
 
 #: 
 msgid "Bulk Mail Presort"
@@ -2217,10 +2197,6 @@ msgid "Group Members:"
 msgstr "Miembros del grupo:"
 
 #: 
-msgid "Group members: "
-msgstr "Miembros de grupo: "
-
-#: 
 msgid "Remove Selected Members from group"
 msgstr "Borrar miembros seleccionados del grupo"
 
@@ -2423,14 +2399,6 @@ msgstr "Reportar por grupos y roles seleccionados (puede ser un PDF multi-págin
 #: 
 msgid "Generate letters and mailing labels."
 msgstr "Generar etiquetas y cartas"
-
-#: 
-msgid "US Address Verification Report"
-msgstr "Reporte de verificación de direcciones EEUU"
-
-#: 
-msgid "Generate report comparing all US family addresses with United States Postal Service Standard Address Format.<br>"
-msgstr "Generar reporte comparando todas las direcciones de familias en EE.UU. con formato estándar del servicio postar estadounidense.<br>"
 
 #: 
 msgid "Role / Gender"
@@ -3214,10 +3182,6 @@ msgid "Calendar Year"
 msgstr "Año calendario"
 
 #: 
-msgid "US Address Verification"
-msgstr "Verificación de dirección"
-
-#: 
 msgid "Update Latitude & Longitude"
 msgstr "Actualizar latitud y longitud"
 
@@ -3690,10 +3654,6 @@ msgid "Dashboard"
 msgstr "Dashboard"
 
 #: 
-msgid "Toggle navigation"
-msgstr "Cambiar navegación"
-
-#: 
 msgid "Change Password"
 msgstr "Cambiar contraseña"
 
@@ -4128,10 +4088,6 @@ msgstr "Lista"
 #: 
 msgid "Import Data"
 msgstr "Importar Datos"
-
-#: 
-msgid "Clear Data"
-msgstr "Limpiar Datos"
 
 #: 
 msgid "Are you sure you want to DELETE this person from Event ID: "
@@ -4614,10 +4570,6 @@ msgid "File Name:"
 msgstr "Nombre de Archivo:"
 
 #: 
-msgid "http://www.intelligentsearch.com/address_verification/verify_address.html"
-msgstr "http://www.intelligentsearch.com/address_verification/verify_address.html"
-
-#: 
 msgid "Fiscal Year:"
 msgstr "Año Fiscal:"
 
@@ -4863,15 +4815,6 @@ msgstr "Colocar en verdadero para habilitar uso de sobres de donación"
 #: 
 msgid "Enter in HTML code which will be displayed as a header at the top of each page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A SECOND TIME to view the new header."
 msgstr "Ingresar en código HTML que será desplegado como cabecera arriba de cada página. Asegúrese de cerrar sus tags! Nota: Debe REFRESCAR SU NAVEGADOR UNA SEGUNDA VEZ para ver el nuevo encabezado."
-
-#: 
-#, fuzzy
-msgid "Intelligent Search Technolgy, Ltd. CorrectAddress Username"
-msgstr "Intelligent Search Technolgy, Ltd. CorrectAddress Usuario"
-
-#: 
-msgid "Intelligent Search Technolgy, Ltd. CorrectAddress Password"
-msgstr "Intelligent Search Technolgy, Ltd. CorrectAddress contraseña"
 
 #: 
 msgid "Number of checks for Deposit Slip Report"
@@ -7540,20 +7483,8 @@ msgid "Kiosk Manager"
 msgstr "Administrador de Quiosco"
 
 #: 
-msgid "Your Cart"
-msgstr "Su carrito"
-
-#: 
-msgid "Your settings and more"
-msgstr "Sus ajustes y más"
-
-#: 
 msgid "Report an issue"
 msgstr "Reportar un problema"
-
-#: 
-msgid "Your tasks"
-msgstr "Sus tareas"
 
 #: 
 msgid "Enable New Kiosk Registration"
@@ -8156,10 +8087,6 @@ msgstr "Mostrar Cumpleaños cuando al iniciar el CRM"
 #: 
 msgid "Number of seconds after page load until the banner disappears, default 10 seconds"
 msgstr "Número de segundos después de la carga del sitio en que el anuncio desaparecerá, 10 segundos por defecto"
-
-#: 
-msgid "Help & Support"
-msgstr "Ayuda y Soporte"
 
 #: 
 msgid "Help & Manual"
@@ -9284,10 +9211,6 @@ msgid "Manage Notes"
 msgstr "Administrar Notas"
 
 #: 
-msgid "Skins"
-msgstr "Máscaras"
-
-#: 
 msgid "Failed generate a new API Key"
 msgstr "Falla al generar una nueva llave de API"
 
@@ -9420,10 +9343,6 @@ msgid "Generate attendance -AND- non-attendance reports for events"
 msgstr "Generar reportes de asistencia -Y- de no asistencia para eventos"
 
 #: 
-msgid "of translation completed"
-msgstr "de traducción completada"
-
-#: 
 msgid "Help translate this project"
 msgstr "Ayudar a traducir este proyecto"
 
@@ -9498,55 +9417,6 @@ msgstr "Verificar"
 #: 
 msgid "Family has no emails to use"
 msgstr "La familia no tiene correo electrónicos para usar"
-
-#: 
-msgid "Blue"
-msgstr "Azul"
-
-#: 
-msgid "Black"
-msgstr "Negro"
-
-#: 
-msgid "Purple"
-msgstr "Púrpura"
-
-#: 
-#, fuzzy
-msgid "Green"
-msgstr "Verde"
-
-#: 
-msgid "Red"
-msgstr "Rojo"
-
-#: 
-msgid "Yellow"
-msgstr "Amarillo"
-
-#: 
-msgid "Blue Light"
-msgstr "Luz azul"
-
-#: 
-msgid "Black Light"
-msgstr "Luz negra"
-
-#: 
-msgid "Purple Light"
-msgstr "Luz púrpura"
-
-#: 
-msgid "Green Light"
-msgstr "Luz verde"
-
-#: 
-msgid "Red Light"
-msgstr "Luz roja"
-
-#: 
-msgid "Yellow Light"
-msgstr "Luz amarilla"
 
 #: 
 msgid "Boxed Layout"

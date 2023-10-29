@@ -414,28 +414,8 @@ msgstr "Erro: o arquivo CSV não existe mais!"
 
 #: 
 #, fuzzy
-msgid "Data Cleared Successfully!"
-msgstr "Dados apagados com sucesso!"
-
-#: 
-#, fuzzy
 msgid "Upload CSV File"
 msgstr "Upload de arquivo CSV"
-
-#: 
-#, fuzzy
-msgid "Clear Persons and Families"
-msgstr "Apagar pessoas e famílias"
-
-#: 
-#, fuzzy
-msgid "Warning!  Do not select this option if you plan to add to an existing database.<br/>"
-msgstr "Atenção! Não selecione essa opção se você planeja adicionar a um banco de dados existente. <br/>"
-
-#: 
-#, fuzzy
-msgid "Use only if unsatisfied with initial import.  All person and member data will be destroyed!"
-msgstr "Use apenas se insatisfeito com importação inicial. Toda a pessoa e dados dos membros será destruído!"
 
 #: 
 #, fuzzy
@@ -800,11 +780,6 @@ msgstr "E-mail (Cco)"
 #, fuzzy
 msgid "Create Directory From Cart"
 msgstr "Criar diretório a partir do Carrinho"
-
-#: 
-#, fuzzy
-msgid "Generate Labels"
-msgstr "Criar etiquetas"
 
 #: 
 #, fuzzy
@@ -2691,11 +2666,6 @@ msgstr "Membros do grupo:"
 
 #: 
 #, fuzzy
-msgid "Group members: "
-msgstr "Membros do Grupo"
-
-#: 
-#, fuzzy
 msgid "Remove Selected Members from group"
 msgstr "Remover os membros Selecionados do Grupo"
 
@@ -2939,16 +2909,6 @@ msgstr "Relatórios sobre grupos e papéis selecionados"
 #, fuzzy
 msgid "Generate letters and mailing labels."
 msgstr "Gerar cartas e etiquetas"
-
-#: 
-#, fuzzy
-msgid "US Address Verification Report"
-msgstr "EUA Relatório de Verificação de Endereço"
-
-#: 
-#, fuzzy
-msgid "Generate report comparing all US family addresses with United States Postal Service Standard Address Format.<br>"
-msgstr "Gerar relatório que compara todos os endereços da família dos EUA com o formato de endereço padrão da United States Postal Service. <br>"
 
 #: 
 #, fuzzy
@@ -3898,11 +3858,6 @@ msgstr "Ano calendário"
 
 #: 
 #, fuzzy
-msgid "US Address Verification"
-msgstr "EUA verificação de endereço"
-
-#: 
-#, fuzzy
 msgid "Update Latitude & Longitude"
 msgstr "Atualizar Latitude e Longiude"
 
@@ -4463,11 +4418,6 @@ msgstr "Painel"
 
 #: 
 #, fuzzy
-msgid "Toggle navigation"
-msgstr "Alternância de Navegação"
-
-#: 
-#, fuzzy
 msgid "Change Password"
 msgstr "Mudar senha"
 
@@ -4990,11 +4940,6 @@ msgstr "Lista"
 #, fuzzy
 msgid "Import Data"
 msgstr "Importar Dados"
-
-#: 
-#, fuzzy
-msgid "Clear Data"
-msgstr "Limpar Dados"
 
 #: 
 #, fuzzy
@@ -5595,11 +5540,6 @@ msgstr "Nome do Arquivo:"
 
 #: 
 #, fuzzy
-msgid "http://www.intelligentsearch.com/address_verification/verify_address.html"
-msgstr "http://www.intelligentsearch.com/address_verification/verify_address.html"
-
-#: 
-#, fuzzy
 msgid "Fiscal Year:"
 msgstr "Ano fiscal:"
 
@@ -5896,14 +5836,6 @@ msgstr "Defina verdadeiro para habilitar o uso de envelopes de doação"
 #, fuzzy
 msgid "Enter in HTML code which will be displayed as a header at the top of each page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A SECOND TIME to view the new header."
 msgstr "Digite no código HTML que será exibido como um cabeçalho no topo de cada página. Certifique-se de fechar suas tags! Nota: Você deve ATUALIZAR O SEU NAVEGADOR UMA SEGUNDA VEZ para ver o novo cabeçalho."
-
-#: 
-msgid "Intelligent Search Technolgy, Ltd. CorrectAddress Username"
-msgstr "Intelligent Search Technolgy, Ltd. Nome de usuário correto para o endereço"
-
-#: 
-msgid "Intelligent Search Technolgy, Ltd. CorrectAddress Password"
-msgstr "Intelligent Search Technolgy, Ltd. Senha correta para o endereço"
 
 #: 
 #, fuzzy
@@ -9179,23 +9111,8 @@ msgstr "Gerenciador de quiosque"
 
 #: 
 #, fuzzy
-msgid "Your Cart"
-msgstr "Seu carrinho"
-
-#: 
-#, fuzzy
-msgid "Your settings and more"
-msgstr "Suas configurações e mais"
-
-#: 
-#, fuzzy
 msgid "Report an issue"
 msgstr "Reportar um problema"
-
-#: 
-#, fuzzy
-msgid "Your tasks"
-msgstr "Suas tarefas"
 
 #: 
 #, fuzzy
@@ -9948,11 +9865,6 @@ msgstr "Mostrar aniversários no início do CRM"
 msgid "Number of seconds after page load until the banner disappears, default 10 seconds"
 msgstr "\n"
 "Número de segundos após a carga da página até o banner desaparecer, padrão 10 segundos"
-
-#: 
-#, fuzzy
-msgid "Help & Support"
-msgstr "Ajuda e Suporte"
 
 #: 
 #, fuzzy
@@ -11341,11 +11253,6 @@ msgstr "Editar Notas"
 
 #: 
 #, fuzzy
-msgid "Skins"
-msgstr "Telas"
-
-#: 
-#, fuzzy
 msgid "Failed generate a new API Key"
 msgstr "Falha ao gerar uma nova chave API"
 
@@ -11511,11 +11418,6 @@ msgstr "Gerar relatórios de presença -E- não comparecimento para eventos"
 
 #: 
 #, fuzzy
-msgid "of translation completed"
-msgstr "de tradução concluída"
-
-#: 
-#, fuzzy
 msgid "Help translate this project"
 msgstr "Ajude a traduzir este projeto"
 
@@ -11603,66 +11505,6 @@ msgstr "Verificar"
 #, fuzzy
 msgid "Family has no emails to use"
 msgstr "A família não tem e-mails para usar"
-
-#: 
-#, fuzzy
-msgid "Blue"
-msgstr "Azul"
-
-#: 
-#, fuzzy
-msgid "Black"
-msgstr "Preto"
-
-#: 
-#, fuzzy
-msgid "Purple"
-msgstr "Roxo"
-
-#: 
-#, fuzzy
-msgid "Green"
-msgstr "Verde"
-
-#: 
-#, fuzzy
-msgid "Red"
-msgstr "Vermelho"
-
-#: 
-#, fuzzy
-msgid "Yellow"
-msgstr "Amarelo"
-
-#: 
-#, fuzzy
-msgid "Blue Light"
-msgstr "Luz Azul"
-
-#: 
-#, fuzzy
-msgid "Black Light"
-msgstr "Luz Negra"
-
-#: 
-#, fuzzy
-msgid "Purple Light"
-msgstr "Luz Roxa"
-
-#: 
-#, fuzzy
-msgid "Green Light"
-msgstr "Luz Verde"
-
-#: 
-#, fuzzy
-msgid "Red Light"
-msgstr "Luz Vermelha"
-
-#: 
-#, fuzzy
-msgid "Yellow Light"
-msgstr "Luz Amarela"
 
 #: 
 #, fuzzy
