@@ -113,7 +113,7 @@ We'd like to thank all the contributors who worked on this release!
 - [Snyk] Upgrade flag-icons from 6.8.0 to 6.9.5 [#6525](https://github.com/ChurchCRM/CRM/pull/6525)
 - [Snyk] Upgrade flag-icons from 6.9.5 to 6.11.0 [#6529](https://github.com/ChurchCRM/CRM/pull/6529)
 
-- [Snyk] Upgrade react-bootstrap from 2.7.1 to 2.7.2 [#6460](https://github.com/ChurchCRM/CRM/pull/6460) 
+- [Snyk] Upgrade react-bootstrap from 2.7.1 to 2.7.2 [#6460](https://github.com/ChurchCRM/CRM/pull/6460)
 - [Snyk] Upgrade react-bootstrap from 2.7.2 to 2.7.3 [#6480](https://github.com/ChurchCRM/CRM/pull/6480)
 - [Snyk] Upgrade react-bootstrap from 2.7.3 to 2.7.4 [#6485](https://github.com/ChurchCRM/CRM/pull/6485)
 - [Snyk] Upgrade react-bootstrap from 2.7.4 to 2.8.0 [#6514](https://github.com/ChurchCRM/CRM/pull/6514)
@@ -137,7 +137,7 @@ We'd like to thank all the contributors who worked on this release!
 - [@uemura[45](https://github.com/ChurchCRM/CRM/actions/runs/6600001186/job/17929588010#step:4:46)01](https://github.com/uemura4[50](https://github.com/ChurchCRM/CRM/actions/runs/6600001186/job/17929588010#step:4:51)1)
 - [@github-actions[bot]](https://github.com/apps/github-actions)
 
-# 4.5.4 
+# 4.5.4
 ## What's Changed
 * Starting 4.5.4 release  by @DawoudIO in https://github.com/ChurchCRM/CRM/pull/6454
 * 4.5.4 POEditor Update - 2023-03-02 by @github-actions in https://github.com/ChurchCRM/CRM/pull/6456
@@ -151,7 +151,7 @@ We'd like to thank all the contributors who worked on this release!
 * Bump jszip from 3.7.1 to 3.10.1 by @dependabot in https://github.com/ChurchCRM/CRM/pull/6445
 
 **Full Changelog**: https://github.com/ChurchCRM/CRM/compare/4.5.3...4.5.4
-# 4.5.3 
+# 4.5.3
 ## :beetle: Bugs
 
 - fixed #6129 with bad user setting [#61[32](https://github.com/ChurchCRM/CRM/actions/runs/3819890766/jobs/6497804167#step:4:33)](https://github.com/ChurchCRM/CRM/pull/6132)
@@ -253,15 +253,15 @@ We'd like to thank all the contributors who worked on this release!
 
 **Full Changelog**: https://github.com/ChurchCRM/CRM/compare/4.5.0...4.5.1
 
-# 4.5.0 
+# 4.5.0
 
-This is a Major release, we have upgraded the software to ensure we patch the security issues, and this required major upgrades to the UI. If you see issues please let us know. 
+This is a Major release, we have upgraded the software to ensure we patch the security issues, and this required major upgrades to the UI. If you see issues please let us know.
 
 ## :star: Enhancements
 
 - System Settings:  Family Role is now a dropdown [#6039](https://github.com/ChurchCRM/CRM/pull/6039)
 - Add family role with changed order - impact on system setting member tab??? [#1176](https://github.com/ChurchCRM/CRM/issues/1176)
-- 
+-
 ## :speech_balloon: Localization
 
 - add Ukrainian locale  [#6022](https://github.com/ChurchCRM/CRM/issues/6022)
@@ -312,7 +312,7 @@ This is a security and localization release.
 
 ## :speech_balloon: Localization
 
-it_IT is now 100% localized 
+it_IT is now 100% localized
 - 4.4.4 POEditor Update - Locale Cleanup [#5790](https://github.com/ChurchCRM/CRM/pull/5790)
 - 4.4.4 POEditor Update - it_IT [#5781](https://github.com/ChurchCRM/CRM/pull/5781)
 - 4.4.4 POEditor Update - it_IT [#5779](https://github.com/ChurchCRM/CRM/pull/5779)
@@ -340,7 +340,7 @@ This is a security and localization release.
 
 ## :speech_balloon: Localization
 
-it_IT is now 100% localized 
+it_IT is now 100% localized
 - 4.4.4 POEditor Update - Locale Cleanup [#5790](https://github.com/ChurchCRM/CRM/pull/5790)
 - 4.4.4 POEditor Update - it_IT [#5781](https://github.com/ChurchCRM/CRM/pull/5781)
 - 4.4.4 POEditor Update - it_IT [#5779](https://github.com/ChurchCRM/CRM/pull/5779)
@@ -363,7 +363,7 @@ We'd like to thank all the contributors who worked on this release!
 - [@dependabot[bot]](https://github.com/apps/dependabot)
 
 # 4.4.3
-This is a security update to fix phpmailer 
+This is a security update to fix phpmailer
 
 ## :speech_balloon: Localization
 
@@ -686,7 +686,7 @@ Released on (10.19.2020)
 
 ## :star: Enhancements
 
-- New: /v2/dashbaord page [#5446](https://github.com/ChurchCRM/CRM/pull/5446)
+- New: /v2/dashboard page [#5446](https://github.com/ChurchCRM/CRM/pull/5446)
 - Feature/enable v2 dashboard via settings [#5459](https://github.com/ChurchCRM/CRM/pull/5459)
 - API reduction / speed  [#5447](https://github.com/ChurchCRM/CRM/pull/5447)
 - Created new APIs for use on Main Dashboard [#5443](https://github.com/ChurchCRM/CRM/pull/5443)
