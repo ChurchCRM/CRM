@@ -51,8 +51,22 @@ namespace ChurchCRM
             }
         }
 
-        public static function moveDir($src, $dest)
+        public static function moveDir(string $src, string $dest)
         {
+            $logger = LoggerUtils::getAppLogger();
+
+            if (!is_dir($src)) {
+                $msg = 'provided src path is not a directory: '. $src;
+                $logger->error($msg);
+                throw new \Exception($msg);
+            }
+            if (!is_dir($dest)) {
+                $msg = 'provided dest path is not a directory: '. $dest;
+                $logger->error($msg);
+                throw new \Exception($msg);
+            }
+
+            $logger->info('Moving files: '. $src . ' to ' . $dest);
             $files = array_diff(scandir($src), ['.', '..']);
             foreach ($files as $file) {
                 if (is_dir("$src/$file")) {
