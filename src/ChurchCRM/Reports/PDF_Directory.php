@@ -451,13 +451,13 @@ class PDF_Directory extends ChurchInfoReport
     public function Add_Record($sName, $text, $numlines, $fid, $pid)
     {
         $dirimg = '';
-        if(!is_null($fid)){
+        if ($fid !== null) {
           $family = FamilyQuery::create()->findOneById($fid);
           if($family && !($family->getPhoto()->isInitials()) && file_exists($family->getPhoto()->getPhotoURI())) {
             $dirimg = $family->getPhoto()->getPhotoURI();
           }
         }
-        if(!is_null($pid)){
+        if ($pid !== null) {
           $person = PersonQuery::create()->findOneById($pid);
           if ($person && !($person->getPhoto()->isInitials()) && file_exists($person->getPhoto()->getPhotoURI())) {
             $dirimg = $person->getPhoto()->getPhotoURI();

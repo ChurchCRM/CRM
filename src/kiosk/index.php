@@ -26,7 +26,7 @@ if (isset($_COOKIE['kioskCookie'])) {
     $g = hash('sha256', $_COOKIE['kioskCookie']);
     $Kiosk =  \ChurchCRM\Base\KioskDeviceQuery::create()
           ->findOneByGUIDHash($g);
-    if (is_null($Kiosk)) {
+    if ($Kiosk === null) {
         setcookie('kioskCookie', '', ['expires' => time() - 3600]);
         header('Location: '.$_SERVER['REQUEST_URI']);
     }

@@ -22,7 +22,7 @@ class ExecutionTime
   public function getMilliseconds() {
     // if End() has not yet been called, this returns the current number of running seconds.
     // Otherwise, returns the ending number of seconds
-    if (is_null($this->endTime)){
+    if ($this->endTime === null) {
       $value = (microtime(TRUE) - $this->startTime)*1000;
     }
     else {
