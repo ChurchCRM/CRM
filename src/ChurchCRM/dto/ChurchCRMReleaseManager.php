@@ -28,13 +28,13 @@ class ChurchCRMReleaseManager {
         }
         else {
             LoggerUtils::getAppLogger()->debug("Attempting to service query for release string " . $releaseString . " from GitHub release cache");
-            $requestedRelease = array_values(array_filter($_SESSION['ChurchCRMReleases'],fn($r) => $r->__toString() == $releaseString));
-            if (count($requestedRelease) == 1 && $requestedRelease[0] instanceof ChurchCRMRelease){
+            $requestedRelease = array_values(array_filter($_SESSION['ChurchCRMReleases'],fn($r) => $r->__toString() === $releaseString));
+            if (count($requestedRelease) === 1 && $requestedRelease[0] instanceof ChurchCRMRelease){
                 // this should be the case 99% of the time - the current version of the software has exactly one release on the GitHub account
                 LoggerUtils::getAppLogger()->debug("Query for release string " . $releaseString . " serviced from GitHub release cache");
                 return $requestedRelease[0];
             }
-            elseif (count($requestedRelease) == 0) {
+            elseif (count($requestedRelease) === 0) {
                 // this will generally happen on dev or demo site instances
                 // where the currently running software has not yet been released / tagged on GitHun
                 LoggerUtils::getAppLogger()->debug("Query for release string " . $releaseString . " did not match any GitHub releases.  Providing skeleton release object");
@@ -115,7 +115,7 @@ class ChurchCRMReleaseManager {
 
     private static function getReleaseNextPatch(array $rs, ChurchCRMRelease $currentRelease) {
         $eligibleUpgradeTargetReleases = array_values(array_filter($rs , function(ChurchCRMRelease $r) use ($currentRelease) {
-            $isSameMajorAndMinorWithGreaterPatch = ($r->MAJOR == $currentRelease->MAJOR) && ($r->MINOR == $currentRelease->MINOR) && ($r->PATCH > $currentRelease->PATCH);
+            $isSameMajorAndMinorWithGreaterPatch = ($r->MAJOR === $currentRelease->MAJOR) && ($r->MINOR === $currentRelease->MINOR) && ($r->PATCH > $currentRelease->PATCH);
             LoggerUtils::getAppLogger()->debug("Release " . $r . " is" . ($isSameMajorAndMinorWithGreaterPatch ? " ":" not ")  . "a possible patch upgrade target");
             return $isSameMajorAndMinorWithGreaterPatch;
         }));
@@ -124,7 +124,7 @@ class ChurchCRMReleaseManager {
 
     private static function getReleaseNextMinor(array $rs, ChurchCRMRelease $currentRelease) {
         $eligibleUpgradeTargetReleases = array_values(array_filter($rs , function(ChurchCRMRelease $r) use ($currentRelease) {
-            $isSameMajorAndMinorWithGreaterPatch = ($r->MAJOR == $currentRelease->MAJOR) && ($r->MINOR > $currentRelease->MINOR);
+            $isSameMajorAndMinorWithGreaterPatch = ($r->MAJOR === $currentRelease->MAJOR) && ($r->MINOR > $currentRelease->MINOR);
             LoggerUtils::getAppLogger()->debug("Release " . $r . " is" . ($isSameMajorAndMinorWithGreaterPatch ? " ":" not ")  . "a possible minor upgrade target");
             return $isSameMajorAndMinorWithGreaterPatch;
         }));
@@ -152,21 +152,16 @@ class ChurchCRMReleaseManager {
         // We should use the newest patch.
         LoggerUtils::getAppLogger()->debug("Evaluating next-step release eligibility based on " . count($_SESSION['ChurchCRMReleases']) . " available releases ");
 
-        $nextStepRelease = self::getReleaseNextPatch($rs,$currentRelease);
+        $nextStepRelease = self::getReleaseNextPatch($rs, $currentRelease) ??
+            self::getReleaseNextMinor($rs, $currentRelease) ??
+            self::getReleaseNextMajor($rs, $currentRelease);
 
-        if (null == $nextStepRelease)  {
-            $nextStepRelease = self::getReleaseNextMinor($rs,$currentRelease);
-        }
-
-        if (null == $nextStepRelease)  {
-            $nextStepRelease = self::getReleaseNextMajor($rs,$currentRelease);
-        }
-
-        if (null == $nextStepRelease)  {
+        if (null === $nextStepRelease)  {
             throw new \Exception("Could not identify a suitable upgrade target release.  Current software version: " . $currentRelease . ".  Highest available release: " . $rs[0] ) ;
         }
 
         LoggerUtils::getAppLogger()->info("Next upgrade step for " . $currentRelease. " is : " . $nextStepRelease);
+
         return $nextStepRelease;
     }
 
@@ -231,35 +226,41 @@ class ChurchCRMReleaseManager {
         register_shutdown_function(fn() => ChurchCRMReleaseManager::preShutdown());
 
         $logger = LoggerUtils::getAppLogger();
-        $logger->info("Beginnging upgrade process");
+        $logger->info("Beginning upgrade process");
         $logger->info("PHP max_execution_time is now: " . ini_get("max_execution_time"));
         $logger->info("Beginning hash validation on " . $zipFilename);
-        if ($sha1 == sha1_file($zipFilename)) {
+        if ($sha1 === sha1_file($zipFilename)) {
             $logger->info("Hash validation succeeded on " . $zipFilename . " Got: " . sha1_file($zipFilename));
+
             $zip = new \ZipArchive();
-            if ($zip->open($zipFilename) == true) {
-            $logger->info("Extracting " . $zipFilename." to: " . SystemURLs::getDocumentRoot() . '/Upgrade');
-            $executionTime = new ExecutionTime();
-            $zip->extractTo(SystemURLs::getDocumentRoot() . '/Upgrade');
-            $zip->close();
-            $logger->info("Extraction completed.  Took:" . $executionTime->getMilliseconds());
-            $logger->info("Moving extracted zip into place");
-            $executionTime = new ExecutionTime();
-            FileSystemUtils::moveDir(SystemURLs::getDocumentRoot() . '/Upgrade/churchcrm', SystemURLs::getDocumentRoot());
-            $logger->info("Move completed.  Took:" . $executionTime->getMilliseconds());
+            if ($zip->open($zipFilename) === true) {
+                $logger->info("Extracting " . $zipFilename." to: " . SystemURLs::getDocumentRoot() . '/Upgrade');
+                $executionTime = new ExecutionTime();
+                $isSuccessful = $zip->extractTo(SystemURLs::getDocumentRoot() . '/Upgrade');
+                MiscUtils::throwIfFailed($isSuccessful);
+                $zip->close();
+                $logger->info("Extraction completed.  Took:" . $executionTime->getMilliseconds());
+                $logger->info("Moving extracted zip into place");
+                $executionTime = new ExecutionTime();
+
+                FileSystemUtils::moveDir(SystemURLs::getDocumentRoot() . '/Upgrade/churchcrm', SystemURLs::getDocumentRoot());
+                $logger->info("Move completed.  Took:" . $executionTime->getMilliseconds());
             }
             $logger->info("Deleting zip archive: ".$zipFilename);
             unlink($zipFilename);
+
             SystemConfig::setValue('sLastIntegrityCheckTimeStamp', null);
             $logger->debug("Set sLastIntegrityCheckTimeStamp to null");
             $logger->info("Upgrade process complete");
             ini_set('display_errors',$displayErrors);
             self::$isUpgradeInProgress = false;
+
             return 'success';
         } else {
             self::$isUpgradeInProgress = false;
             ini_set('display_errors',$displayErrors);
             $logger->error("Hash validation failed on " . $zipFilename.". Expected: ".$sha1. ". Got: ".sha1_file($zipFilename));
+
             return 'hash validation failure';
         }
     }
