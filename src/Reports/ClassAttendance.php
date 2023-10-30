@@ -83,7 +83,7 @@ $pdf = new PDF_Attendance();
 
 for ($i = 0; $i < $nGrps; $i++) {
     $iGroupID = $aGrp[$i];
-    //	uset($aStudents);
+    //  uset($aStudents);
     if ($i > 0) {
         $pdf->AddPage();
     }

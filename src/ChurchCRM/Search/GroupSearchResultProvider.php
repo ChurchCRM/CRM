@@ -10,21 +10,24 @@ use ChurchCRM\Search\SearchResult;
 use ChurchCRM\Search\SearchResultGroup;
 use ChurchCRM\dto\SystemConfig;
 
-class GroupSearchResultProvider extends BaseSearchResultProvider  {
+class GroupSearchResultProvider extends BaseSearchResultProvider
+{
     public function __construct()
     {
         $this->pluralNoun = "Groups";
         parent::__construct();
     }
 
-    public function getSearchResults(string $SearchQuery) {
+    public function getSearchResults(string $SearchQuery)
+    {
         if (SystemConfig::getBooleanValue("bSearchIncludeGroups")) {
             $this->addSearchResults($this->getPersonSearchResultsByPartialName($SearchQuery));
         }
         return $this->formatSearchGroup();
     }
 
-    private function getPersonSearchResultsByPartialName(string $SearchQuery) {
+    private function getPersonSearchResultsByPartialName(string $SearchQuery)
+    {
         $searchResults = [];
         $id = 0;
         try {
@@ -35,7 +38,7 @@ class GroupSearchResultProvider extends BaseSearchResultProvider  {
             if (!empty($groups)) {
                 $id++;
                 foreach ($groups as $group) {
-                    array_push($searchResults, new SearchResult("group-name-".$id, $group->getName(),$group->getViewURI()));
+                    array_push($searchResults, new SearchResult("group-name-".$id, $group->getName(), $group->getViewURI()));
                 }
             }
         } catch (\Exception $e) {

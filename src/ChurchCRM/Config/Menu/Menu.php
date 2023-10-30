@@ -162,8 +162,7 @@ class Menu
         $fundraiserMenu->addSubMenu(new MenuItem(gettext("Add Donors to Buyer List"), "AddDonors.php"));
         $fundraiserMenu->addSubMenu(new MenuItem(gettext("View Buyers"), "PaddleNumList.php"));
         $iCurrentFundraiser = 0;
-        if (array_key_exists('iCurrentFundraiser', $_SESSION))
-        {
+        if (array_key_exists('iCurrentFundraiser', $_SESSION)) {
             $iCurrentFundraiser = $_SESSION['iCurrentFundraiser'];
         }
         $fundraiserMenu->addCounter(new MenuCounter("iCurrentFundraiser", "bg-blue", $iCurrentFundraiser));
@@ -196,22 +195,23 @@ class Menu
     private static function getAdminMenu()
     {
         $menu = new MenuItem(gettext("Admin"), "", true, 'fa-tools');
-        $menu->addSubMenu(new MenuItem(gettext("Edit General Settings"), "SystemSettings.php",AuthenticationManager::GetCurrentUser()->isAdmin()));
-        $menu->addSubMenu(new MenuItem(gettext("System Users"), "UserList.php",AuthenticationManager::GetCurrentUser()->isAdmin()));
-        $menu->addSubMenu(new MenuItem(gettext("Property Types"), "PropertyTypeList.php",AuthenticationManager::GetCurrentUser()->isAdmin()));
-        $menu->addSubMenu(new MenuItem(gettext("Restore Database"), "RestoreDatabase.php",AuthenticationManager::GetCurrentUser()->isAdmin()));
-        $menu->addSubMenu(new MenuItem(gettext("Backup Database"), "BackupDatabase.php",AuthenticationManager::GetCurrentUser()->isAdmin()));
-        $menu->addSubMenu(new MenuItem(gettext("CSV Import"), "CSVImport.php",AuthenticationManager::GetCurrentUser()->isAdmin()));
-        $menu->addSubMenu(new MenuItem(gettext("CSV Export Records"), "CSVExport.php",AuthenticationManager::GetCurrentUser()->isCSVExport()));
-        $menu->addSubMenu(new MenuItem(gettext("Kiosk Manager"), "KioskManager.php",AuthenticationManager::GetCurrentUser()->isAdmin()));
-        $menu->addSubMenu(new MenuItem(gettext("Debug"), "v2/admin/debug",AuthenticationManager::GetCurrentUser()->isAdmin()));
-        $menu->addSubMenu(new MenuItem(gettext("Custom Menus"), "v2/admin/menus",AuthenticationManager::GetCurrentUser()->isAdmin()));
-        $menu->addSubMenu(new MenuItem(gettext("Reset System"), "v2/admin/database/reset",AuthenticationManager::GetCurrentUser()->isAdmin()));
+        $menu->addSubMenu(new MenuItem(gettext("Edit General Settings"), "SystemSettings.php", AuthenticationManager::GetCurrentUser()->isAdmin()));
+        $menu->addSubMenu(new MenuItem(gettext("System Users"), "UserList.php", AuthenticationManager::GetCurrentUser()->isAdmin()));
+        $menu->addSubMenu(new MenuItem(gettext("Property Types"), "PropertyTypeList.php", AuthenticationManager::GetCurrentUser()->isAdmin()));
+        $menu->addSubMenu(new MenuItem(gettext("Restore Database"), "RestoreDatabase.php", AuthenticationManager::GetCurrentUser()->isAdmin()));
+        $menu->addSubMenu(new MenuItem(gettext("Backup Database"), "BackupDatabase.php", AuthenticationManager::GetCurrentUser()->isAdmin()));
+        $menu->addSubMenu(new MenuItem(gettext("CSV Import"), "CSVImport.php", AuthenticationManager::GetCurrentUser()->isAdmin()));
+        $menu->addSubMenu(new MenuItem(gettext("CSV Export Records"), "CSVExport.php", AuthenticationManager::GetCurrentUser()->isCSVExport()));
+        $menu->addSubMenu(new MenuItem(gettext("Kiosk Manager"), "KioskManager.php", AuthenticationManager::GetCurrentUser()->isAdmin()));
+        $menu->addSubMenu(new MenuItem(gettext("Debug"), "v2/admin/debug", AuthenticationManager::GetCurrentUser()->isAdmin()));
+        $menu->addSubMenu(new MenuItem(gettext("Custom Menus"), "v2/admin/menus", AuthenticationManager::GetCurrentUser()->isAdmin()));
+        $menu->addSubMenu(new MenuItem(gettext("Reset System"), "v2/admin/database/reset", AuthenticationManager::GetCurrentUser()->isAdmin()));
         return $menu;
     }
 
 
-    private static function getCustomMenu() {
+    private static function getCustomMenu()
+    {
         $menu = new MenuItem(gettext("Links"), "", SystemConfig::getBooleanValue("bEnabledMenuLinks"), 'fa-link');
         $menuLinks = MenuLinkQuery::create()->orderByOrder()->find();
         foreach ($menuLinks as $link) {
@@ -219,5 +219,4 @@ class Menu
         }
         return $menu;
     }
-
 }

@@ -92,7 +92,7 @@ if (!empty($sHeader)) {
                     <div id="memberBox<?= $x ?>" class="box">
                         <div class="card-header with-border">
                             <h4 class="card-title">
-                                <?= gettext ("Family Member") . " #". $x ?>
+                                <?= gettext("Family Member") . " #". $x ?>
                             </h4>
                         </div>
                         <div class="card-body">
@@ -113,7 +113,9 @@ if (!empty($sHeader)) {
                                                     break;
                                             }
                                             foreach ($familyRoles as $role) { ?>
-                                                <option value="<?= $role->getOptionId() ?>" <?php if ( $role->getOptionId() == $defaultRole) { echo "selected"; } ?>><?= $role->getOptionName() ?></option>
+                                                <option value="<?= $role->getOptionId() ?>" <?php if ($role->getOptionId() == $defaultRole) {
+                                                    echo "selected";
+                                                               } ?>><?= $role->getOptionName() ?></option>
                                             <?php } ?>
                                         </select>
                                     </div>

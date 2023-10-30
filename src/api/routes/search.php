@@ -33,11 +33,9 @@ $app->get('/search/{query}', function ($request, $response, $args) {
         new CalendarEventSearchResultProvider()
     ];
 
-    foreach($resultsProviders as $provider)
-    {
+    foreach ($resultsProviders as $provider) {
         /* @var $provider iSearchResultProvider */
-        array_push($resultsArray,$provider->getSearchResults($query));
-
+        array_push($resultsArray, $provider->getSearchResults($query));
     }
     return $response->withJson(array_values(array_filter($resultsArray)));
 });

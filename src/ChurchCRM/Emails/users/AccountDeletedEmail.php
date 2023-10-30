@@ -2,7 +2,6 @@
 
 namespace ChurchCRM\Emails;
 
-
 class AccountDeletedEmail extends BaseUserEmail
 {
 

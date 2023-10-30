@@ -45,10 +45,10 @@ require 'Include/Header.php';
                                 <?php
                                 // Create the group select drop-down
                                 echo '<option value="0">'.gettext('None').'</option>';
-    while ($aRow = mysqli_fetch_array($rsGroups)) {
-        extract($aRow);
-        echo '<option value="'.$grp_ID.'">'.$grp_Name.'</option>';
-    } ?>
+                                while ($aRow = mysqli_fetch_array($rsGroups)) {
+                                    extract($aRow);
+                                    echo '<option value="'.$grp_ID.'">'.$grp_Name.'</option>';
+                                } ?>
                             </select>
                         </div>
                     </div>
@@ -157,6 +157,6 @@ require 'Include/Header.php';
     </div>
 
             <?php
-                            } ?>
+} ?>
 
 <?php require 'Include/Footer.php' ?>

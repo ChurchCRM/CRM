@@ -122,9 +122,9 @@ if (mysqli_num_rows($rsPropList) == 0) {
     <BR>
     <input type="button" class="btn btn-default" value="<?= gettext('Return to Person Record') ?>" Name="Cancel" onclick="javascript:document.location='PersonView.php?PersonID=<?= $iPersonID ?>';">
   </form>
-  <?php
+    <?php
 } else {
-        ?>
+    ?>
 
   <div class="box ">
     <div class="card-header">
@@ -137,30 +137,30 @@ if (mysqli_num_rows($rsPropList) == 0) {
           <?php
 
           // Make sure we're at the beginning of the properties list resource (2nd pass code used it)
-          mysqli_data_seek($rsPropList, 0);
+            mysqli_data_seek($rsPropList, 0);
 
-        while ($rowPropList = mysqli_fetch_array($rsPropList, MYSQLI_BOTH)) {
-            extract($rowPropList); ?>
+            while ($rowPropList = mysqli_fetch_array($rsPropList, MYSQLI_BOTH)) {
+                extract($rowPropList); ?>
             <tr>
               <td><?= $prop_Name ?>: </td>
               <td>
-                <?php
-                $currentFieldData = trim($aPersonProps[$prop_Field]);
+                    <?php
+                    $currentFieldData = trim($aPersonProps[$prop_Field]);
 
-            if ($type_ID == 11) {
-                $prop_Special = $sPhoneCountry;
-            }  // ugh.. an argument with special cases!
+                    if ($type_ID == 11) {
+                        $prop_Special = $sPhoneCountry;
+                    }  // ugh.. an argument with special cases!
 
-            formCustomField($type_ID, $prop_Field, $currentFieldData, $prop_Special, !isset($_POST['GroupPropSubmit']));
+                    formCustomField($type_ID, $prop_Field, $currentFieldData, $prop_Special, !isset($_POST['GroupPropSubmit']));
 
-            if (array_key_exists($prop_Field, $aPropErrors)) {
-                echo '<span style="color: red; ">'.$aPropErrors[$prop_Field].'</span>';
-            } ?>
+                    if (array_key_exists($prop_Field, $aPropErrors)) {
+                        echo '<span style="color: red; ">'.$aPropErrors[$prop_Field].'</span>';
+                    } ?>
               </td>
               <td><?= $prop_Description ?></td>
             </tr>
-          <?php
-        } ?>
+                <?php
+            } ?>
           <tr>
             <td align="center" colspan="3">
               <br><br>
@@ -173,8 +173,8 @@ if (mysqli_num_rows($rsPropList) == 0) {
       </form>
     </div>
   </div>
-  <?php
-    } ?>
+    <?php
+} ?>
 
 <?php
 require 'Include/Footer.php';

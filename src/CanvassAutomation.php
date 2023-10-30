@@ -107,7 +107,7 @@ if ($processNews != '') {
     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
     <strong><span style="color: red;"><?= $processNews ?></span></strong>
   </div>
-  <?php
+    <?php
 }
 ?>
 

@@ -40,7 +40,7 @@ $app->group('/family/{familyId:[0-9]+}', function () use ($app) {
 
     $app->get('', function ($request, $response, $args) {
         $family = $request->getAttribute("family");
-        return $response->withHeader('Content-Type','application/json')->write($family->exportTo('JSON'));
+        return $response->withHeader('Content-Type', 'application/json')->write($family->exportTo('JSON'));
     });
 
     $app->get('/geolocation', function ($request, $response, $args) {
@@ -73,7 +73,7 @@ $app->group('/family/{familyId:[0-9]+}', function () use ($app) {
 
     $app->post('/verify', function ($request, $response, $args) {
         $family = $request->getAttribute("family");
-        try{
+        try {
             $family->sendVerifyEmail();
             return $response->withStatus(200);
         } catch (\Exception $e) {
@@ -97,6 +97,4 @@ $app->group('/family/{familyId:[0-9]+}', function () use ($app) {
         $family->verify();
         return $response->withJson(["message" => "Success"]);
     });
-
 })->add(new FamilyAPIMiddleware());
-

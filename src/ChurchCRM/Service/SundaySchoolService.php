@@ -75,15 +75,15 @@ class SundaySchoolService
 
         foreach ($kids as $kid) {
             switch ($kid['per_Gender']) {
-        case 1:
-          $boys++;
-          break;
-        case 2:
-          $girls++;
-          break;
-        default:
-          $unknown++;
-      }
+                case 1:
+                    $boys++;
+                    break;
+                case 2:
+                    $girls++;
+                    break;
+                default:
+                    $unknown++;
+            }
         }
 
         return ['Boys' => $boys, 'Girls' => $girls, 'Unknown' => $unknown];
@@ -107,64 +107,64 @@ class SundaySchoolService
 
         foreach ($kids as $kid) {
             switch ($kid['per_BirthMonth']) {
-        case 1:
-          $Jan++;
-          break;
-        case 2:
-          $Feb++;
-          break;
-        case 3:
-          $Mar++;
-          break;
-        case 4:
-          $Apr++;
-          break;
-        case 5:
-          $May++;
-          break;
-        case 6:
-          $June++;
-          break;
-        case 7:
-          $July++;
-          break;
-        case 8:
-          $Aug++;
-          break;
-        case 9:
-          $Sept++;
-          break;
-        case 10:
-          $Oct++;
-          break;
-        case 11:
-          $Nov++;
-          break;
-        case 12:
-          $Dec++;
-          break;
-      }
+                case 1:
+                    $Jan++;
+                    break;
+                case 2:
+                    $Feb++;
+                    break;
+                case 3:
+                    $Mar++;
+                    break;
+                case 4:
+                    $Apr++;
+                    break;
+                case 5:
+                    $May++;
+                    break;
+                case 6:
+                    $June++;
+                    break;
+                case 7:
+                    $July++;
+                    break;
+                case 8:
+                    $Aug++;
+                    break;
+                case 9:
+                    $Sept++;
+                    break;
+                case 10:
+                    $Oct++;
+                    break;
+                case 11:
+                    $Nov++;
+                    break;
+                case 12:
+                    $Dec++;
+                    break;
+            }
         }
 
         return ['Jan' => $Jan,
-      'Feb'       => $Feb,
-      'Mar'       => $Mar,
-      'Apr'       => $Apr,
-      'May'       => $May,
-      'June'      => $June,
-      'July'      => $July,
-      'Aug'       => $Aug,
-      'Sept'      => $Sept,
-      'Oct'       => $Oct,
-      'Nov'       => $Nov,
-      'Dec'       => $Dec,
-    ];
+        'Feb'       => $Feb,
+        'Mar'       => $Mar,
+        'Apr'       => $Apr,
+        'May'       => $May,
+        'June'      => $June,
+        'July'      => $July,
+        'Aug'       => $Aug,
+        'Sept'      => $Sept,
+        'Oct'       => $Oct,
+        'Nov'       => $Nov,
+        'Dec'       => $Dec,
+        ];
     }
 
     public function getKidsFullDetails($groupId)
     {
         // Get all the groups
-    $sSQL = 'select grp.grp_Name sundayschoolClass, kid.per_ID kidId, kid.per_Gender kidGender, 
+        $sSQL = 'select grp.grp_Name sundayschoolClass, kid.per_ID kidId, kid.per_Gender kidGender, 
                 kid.per_FirstName firstName, kid.per_Email kidEmail, kid.per_LastName LastName, 
                   kid.per_BirthDay birthDay,  kid.per_BirthMonth birthMonth, kid.per_BirthYear birthYear, 
                   kid.per_CellPhone mobilePhone, kid.per_Flags flags, 

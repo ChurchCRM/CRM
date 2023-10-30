@@ -158,8 +158,8 @@ namespace ChurchCRM\Backup
         private function ShouldBackupImageFile(SplFileInfo $ImageFile)
         {
             $isExtraneousFile = strpos($ImageFile->getFileName(), "-initials") != false ||
-        strpos($ImageFile->getFileName(), "-remote") != false ||
-        strpos($ImageFile->getPathName(), "thumbnails") != false;
+            strpos($ImageFile->getFileName(), "-remote") != false ||
+            strpos($ImageFile->getPathName(), "thumbnails") != false;
 
             return $ImageFile->isFile() && !(!$this->IncludeExtraneousFiles && $isExtraneousFile); //todo: figure out this logic
         }

@@ -5,18 +5,18 @@ namespace ChurchCRM\Reports;
 class PDF_DepositReport extends ChurchInfoReport
 {
     // Private properties
-  public $_Char_Size = 10;        // Character size
-  public $_Font = 'Courier';
+    public $_Char_Size = 10;        // Character size
+    public $_Font = 'Courier';
 
   // Sets the character size
   // This changes the line height too
-  public function Set_Char_Size($pt)
-  {
-      if ($pt > 3) {
-          $this->_Char_Size = $pt;
-          $this->SetFont($this->_Font, '', $this->_Char_Size);
-      }
-  }
+    public function Set_Char_Size($pt)
+    {
+        if ($pt > 3) {
+            $this->_Char_Size = $pt;
+            $this->SetFont($this->_Font, '', $this->_Char_Size);
+        }
+    }
 
     public function PrintRightJustified($x, $y, $str)
     {
@@ -27,14 +27,14 @@ class PDF_DepositReport extends ChurchInfoReport
     }
 
   // Constructor
-  public function __construct()
-  {
-      parent::__construct('P', 'mm', $this->paperFormat);
+    public function __construct()
+    {
+        parent::__construct('P', 'mm', $this->paperFormat);
 
-    //
-    $this->SetFont('courier');
-      $this->SetMargins(0, 0);
-      $this->Set_Char_Size(10);
-      $this->SetAutoPageBreak(false);
-  }
+      //
+        $this->SetFont('courier');
+        $this->SetMargins(0, 0);
+        $this->Set_Char_Size(10);
+        $this->SetAutoPageBreak(false);
+    }
 }

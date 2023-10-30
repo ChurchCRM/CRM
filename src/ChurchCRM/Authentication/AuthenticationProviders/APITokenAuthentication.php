@@ -9,7 +9,7 @@ namespace ChurchCRM\Authentication\AuthenticationProviders {
     use ChurchCRM\Authentication\Requests\AuthenticationRequest;
     use ChurchCRM\Exceptions\NotImplementedException;
 
-class APITokenAuthentication implements IAuthenticationProvider
+    class APITokenAuthentication implements IAuthenticationProvider
     {
 
         /***
@@ -19,12 +19,13 @@ class APITokenAuthentication implements IAuthenticationProvider
 
         public function GetCurrentUser()
         {
-          return $this->currentUser;
+            return $this->currentUser;
         }
 
-        public function Authenticate(AuthenticationRequest $AuthenticationRequest) {
-            if (! $AuthenticationRequest instanceof APITokenAuthenticationRequest ) {
-                throw new \Exception ("Unable to process request as APITokenAuthenticationRequest");
+        public function Authenticate(AuthenticationRequest $AuthenticationRequest)
+        {
+            if (! $AuthenticationRequest instanceof APITokenAuthenticationRequest) {
+                throw new \Exception("Unable to process request as APITokenAuthenticationRequest");
             }
             $authenticationResult = new AuthenticationResult();
             $authenticationResult->isAuthenticated = false;
@@ -48,11 +49,13 @@ class APITokenAuthentication implements IAuthenticationProvider
             return $authenticationResult;
         }
 
-        public function EndSession() {
+        public function EndSession()
+        {
             $this->currentUser = null;
         }
 
-        public function GetPasswordChangeURL() {
+        public function GetPasswordChangeURL()
+        {
             throw new NotImplementedException();
         }
     }

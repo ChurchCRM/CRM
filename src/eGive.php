@@ -258,19 +258,19 @@ if (isset($_POST['ApiGet'])) {
     importDoneFixOrContinue();
 } else {
     ?>
-	<table cellpadding="3" align="left">
-	<tr><td>
-		<form method="post" action="eGive.php?DepositSlipID=<?php echo $iDepositSlipID ?>" enctype="multipart/form-data">
-		<class="LabelColumn"><b><?= gettext('Start Date: ') ?></b>
-			<class="TextColumn"><input type="text" name="StartDate" value="<?= $lwDate ?>" maxlength="10" id="StartDate" size="11" class="date-picker"><span style="color: red;"><?php echo $sDateError ?></span><br>
-			<class="LabelColumn"><b><?= gettext('End Date: ') ?></b>
-			<class="TextColumn"><input type="text" name="EndDate" value="<?= $dDate ?>" maxlength="10" id="EndDate" size="11" class="date-picker"><span style="color: red;"><?php echo $sDateError ?></span><br><br>
-		<input type="submit" class="btn btn-default" value="<?= gettext('Import eGive') ?>" name="ApiGet">
-		<br><br><br>
-		</form>
-		</td>
-	</tr>
-<?php
+    <table cellpadding="3" align="left">
+    <tr><td>
+        <form method="post" action="eGive.php?DepositSlipID=<?php echo $iDepositSlipID ?>" enctype="multipart/form-data">
+        <class="LabelColumn"><b><?= gettext('Start Date: ') ?></b>
+            <class="TextColumn"><input type="text" name="StartDate" value="<?= $lwDate ?>" maxlength="10" id="StartDate" size="11" class="date-picker"><span style="color: red;"><?php echo $sDateError ?></span><br>
+            <class="LabelColumn"><b><?= gettext('End Date: ') ?></b>
+            <class="TextColumn"><input type="text" name="EndDate" value="<?= $dDate ?>" maxlength="10" id="EndDate" size="11" class="date-picker"><span style="color: red;"><?php echo $sDateError ?></span><br><br>
+        <input type="submit" class="btn btn-default" value="<?= gettext('Import eGive') ?>" name="ApiGet">
+        <br><br><br>
+        </form>
+        </td>
+    </tr>
+    <?php
 }
 
 function updateDB($famID, $transId, $date, $name, $amount, $fundId, $comment, $frequency, $groupKey)
@@ -324,39 +324,39 @@ function importDoneFixOrContinue()
     global $missingEgiveIDCount;
     global $egiveID2NameWithUnderscores;
     global $familySelectHtml; ?>
-	<form method="post" action="eGive.php?DepositSlipID=<?= $iDepositSlipID ?>">
-	<?php
+    <form method="post" action="eGive.php?DepositSlipID=<?= $iDepositSlipID ?>">
+    <?php
     if ($importError) { // the only way we can fail to import data is if we're missing the egive IDs, so build a table, with text input, and prompt for it.?>
-		<p>New eGive Name(s) and ID(s) have been imported and must be associated with the appropriate Family.  Use the pulldown in the <b>Family</b> column to select the Family, based on the eGive name, and then press the Re-Import button.<br><br>If you cannot make the assignment now, you can safely go Back to the Deposit Slip, and Re-import this data at a later time.  Its possible you may need to view eGive data using the Web View in order to make an accurate Family assignment.</p>
-		<table border=1>
-		<tr><td><b>eGive Name</b></td><td><b>eGive ID</b></td><td><b>Family</b></td><td><b>Set eGive ID into Family</b></td></tr>
-		<?php
+        <p>New eGive Name(s) and ID(s) have been imported and must be associated with the appropriate Family.  Use the pulldown in the <b>Family</b> column to select the Family, based on the eGive name, and then press the Re-Import button.<br><br>If you cannot make the assignment now, you can safely go Back to the Deposit Slip, and Re-import this data at a later time.  Its possible you may need to view eGive data using the Web View in order to make an accurate Family assignment.</p>
+        <table border=1>
+        <tr><td><b>eGive Name</b></td><td><b>eGive ID</b></td><td><b>Family</b></td><td><b>Set eGive ID into Family</b></td></tr>
+        <?php
 
         foreach ($egiveID2NameWithUnderscores as $egiveID => $nameWithUnderscores) {
             $name = preg_replace('/_/', ' ', $nameWithUnderscores);
             echo '<tr>';
             echo '<td>'.$name.'&nbsp;</td>'; ?>
-			<td><class="TextColumn"><input type="text" name="MissingEgive_ID_<?= $nameWithUnderscores ?>" value="<?= $egiveID ?>" maxlength="10"></td>
-			<td class="TextColumn">
-			<select name="MissingEgive_FamID_<?= $nameWithUnderscores ?>">
-			<option value="0" selected><?= gettext('Unassigned') ?></option>
-			<?php
+            <td><class="TextColumn"><input type="text" name="MissingEgive_ID_<?= $nameWithUnderscores ?>" value="<?= $egiveID ?>" maxlength="10"></td>
+            <td class="TextColumn">
+            <select name="MissingEgive_FamID_<?= $nameWithUnderscores ?>">
+            <option value="0" selected><?= gettext('Unassigned') ?></option>
+            <?php
             echo $familySelectHtml; ?>
-			</select>
-			</td>
-			<td><input type="checkbox" name="MissingEgive_Set_<?= $nameWithUnderscores ?>" value="1" checked></td>
-			<?php
+            </select>
+            </td>
+            <td><input type="checkbox" name="MissingEgive_Set_<?= $nameWithUnderscores ?>" value="1" checked></td>
+            <?php
             echo '</tr>';
         } ?>
-		</table><br>
+        </table><br>
 
-		<input type="submit" class="btn btn-default" value="<?= gettext('Re-import to selected family') ?>" name="ReImport">
-	<?php
+        <input type="submit" class="btn btn-default" value="<?= gettext('Re-import to selected family') ?>" name="ReImport">
+        <?php
     } ?>
 
-	<p class="MediumLargeText"> <?= gettext('Data import results: ').$importCreated.gettext(' gifts were imported, ').$importNoChange.gettext(' gifts unchanged, and ').$importError.gettext(' gifts not imported due to problems') ?></p>
-	<input type="button" class="btn btn-default" value="<?= gettext('Back to Deposit Slip') ?>" onclick="javascript:document.location='DepositSlipEditor.php?DepositSlipID=<?= $iDepositSlipID ?>'"
-<?php
+    <p class="MediumLargeText"> <?= gettext('Data import results: ').$importCreated.gettext(' gifts were imported, ').$importNoChange.gettext(' gifts unchanged, and ').$importError.gettext(' gifts not imported due to problems') ?></p>
+    <input type="button" class="btn btn-default" value="<?= gettext('Back to Deposit Slip') ?>" onclick="javascript:document.location='DepositSlipEditor.php?DepositSlipID=<?= $iDepositSlipID ?>'"
+    <?php
 }
 
 function get_api_data($json)
@@ -375,7 +375,7 @@ function get_api_data($json)
             $error = ' - Syntax error, malformed JSON';
             break;
         case JSON_ERROR_NONE:
-            default:
+        default:
             $error = '';
     }
 
@@ -383,9 +383,9 @@ function get_api_data($json)
         return $result;
     } else {
         ?>
-		<span style="color: red;"><?= gettext("Fatal error in eGive API datastream: '").$error ?>"'</span><br><br>
- 		<input type="button" class="btn btn-default" value="<?= gettext('Back to Deposit Slip') ?>" onclick="javascript:document.location='DepositSlipEditor.php?DepositSlipID=<?= $iDepositSlipID ?>'"
-	<?php
+        <span style="color: red;"><?= gettext("Fatal error in eGive API datastream: '").$error ?>"'</span><br><br>
+        <input type="button" class="btn btn-default" value="<?= gettext('Back to Deposit Slip') ?>" onclick="javascript:document.location='DepositSlipEditor.php?DepositSlipID=<?= $iDepositSlipID ?>'"
+        <?php
         return 0;
     }
 }

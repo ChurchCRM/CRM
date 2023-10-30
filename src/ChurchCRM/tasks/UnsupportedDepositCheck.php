@@ -42,5 +42,4 @@ class UnsupportedDepositCheck implements iTask
     {
         return gettext("Support for eGive, Credit Card, and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions.");
     }
-
 }

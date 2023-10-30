@@ -49,12 +49,12 @@ require 'Include/Header.php';
 
 <table cellpadding="3" align="center">
 
-	<tr>
-		<td align="center">
-			<input type="submit" class="btn btn-default" value="<?= gettext('Delete') ?>" name="Delete">
-			<input type="submit" class="btn btn-default" value="<?= gettext('Cancel') ?>" name="Cancel">
-		</td>
-	</tr>
+    <tr>
+        <td align="center">
+            <input type="submit" class="btn btn-default" value="<?= gettext('Delete') ?>" name="Delete">
+            <input type="submit" class="btn btn-default" value="<?= gettext('Cancel') ?>" name="Cancel">
+        </td>
+    </tr>
 </table>
 
 <?php require 'Include/Footer.php' ?>

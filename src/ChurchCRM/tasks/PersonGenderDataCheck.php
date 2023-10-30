@@ -43,5 +43,4 @@ class PersonGenderDataCheck implements iTask
     {
         return gettext("Missing Gender Data for Some People");
     }
-
 }

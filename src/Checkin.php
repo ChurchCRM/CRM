@@ -76,7 +76,7 @@ if ($EventID > 0) {
                         :</h3>
                 </div>
                 <div class="card-body">
-                    <?php if ($sGlobalMessage): ?>
+                    <?php if ($sGlobalMessage) : ?>
                         <p><?= $sGlobalMessage ?></p>
                     <?php endif; ?>
 
@@ -89,12 +89,12 @@ if ($EventID > 0) {
                                     <option value="<?= $EventID; ?>"
                                             disabled <?= ($EventID == 0) ? " Selected='selected'" : "" ?> ><?= gettext('Select event') ?></option>
                                     <?php foreach ($activeEvents as $event) {
-    ?>
+                                        ?>
                                         <option
                                             value="<?= $event->getId(); ?>" <?= ($EventID == $event->getId()) ? " Selected='selected'" : "" ?> >
                                             <?= $event->getTitle(); ?></option>
                                         <?php
-}
+                                    }
                                     ?>
                                 </select>
                             </div>
@@ -324,28 +324,28 @@ if (isset($_POST['EventID'])) {
                     ->filterByEventId($EventID)
                     ->find();
 
-    foreach ($eventAttendees as $per) {
-        //Get Person who is checked in
-        $checkedInPerson = PersonQuery::create()
+                foreach ($eventAttendees as $per) {
+                    //Get Person who is checked in
+                    $checkedInPerson = PersonQuery::create()
                         ->findOneById($per->getPersonId());
 
-        $sPerson = $checkedInPerson->getFullName();
+                    $sPerson = $checkedInPerson->getFullName();
 
-        //Get Person who checked person in
-        $sCheckinby = "";
-        if ($per->getCheckinId()) {
-            $checkedInBy = PersonQuery::create()
+                    //Get Person who checked person in
+                    $sCheckinby = "";
+                    if ($per->getCheckinId()) {
+                        $checkedInBy = PersonQuery::create()
                             ->findOneById($per->getCheckinId());
-            $sCheckinby = $checkedInBy->getFullName();
-        }
+                        $sCheckinby = $checkedInBy->getFullName();
+                    }
 
-        //Get Person who checked person out
-        $sCheckoutby = "";
-        if ($per->getCheckoutId()) {
-            $checkedOutBy = PersonQuery::create()
+                    //Get Person who checked person out
+                    $sCheckoutby = "";
+                    if ($per->getCheckoutId()) {
+                        $checkedOutBy = PersonQuery::create()
                             ->findOneById($per->getCheckoutId());
-            $sCheckoutby = $checkedOutBy->getFullName();
-        } ?>
+                        $sCheckoutby = $checkedOutBy->getFullName();
+                    } ?>
                     <tr>
                         <td><img src="<?= SystemURLs::getRootPath() . '/api/person/' . $per->getPersonId() . '/thumbnail' ?>"
                                  class="direct-chat-img initials-image">&nbsp
@@ -376,8 +376,8 @@ if (isset($_POST['EventID'])) {
                             </form>
                         </td>
                     </tr>
-                    <?php
-    } ?>
+                                <?php
+                } ?>
                 </tbody>
             </table>
         </div>

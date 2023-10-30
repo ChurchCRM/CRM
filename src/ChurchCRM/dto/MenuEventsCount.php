@@ -14,7 +14,6 @@ use ChurchCRM\FamilyQuery;
 use ChurchCRM\PersonQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
 
-
 class MenuEventsCount
 {
 

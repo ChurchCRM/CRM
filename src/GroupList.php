@@ -35,9 +35,9 @@ $rsGroupTypes = ListOptionQuery::create()->filterById('3')->find();
 <option value=""><?= gettext("All") ?></option>
 <?php
   echo '<option>'.gettext("Unassigned").'</option>';
-  foreach ($rsGroupTypes as $groupType) {
-      echo '<option>'.$groupType->getOptionName().'</option>';
-  } ?>
+foreach ($rsGroupTypes as $groupType) {
+    echo '<option>'.$groupType->getOptionName().'</option>';
+} ?>
 </select>
 </label>
 </p>
@@ -49,7 +49,7 @@ $rsGroupTypes = ListOptionQuery::create()->filterById('3')->find();
 </table>
 <?php
 if (AuthenticationManager::GetCurrentUser()->isManageGroupsEnabled()) {
-      ?>
+    ?>
 
 
 <br>
@@ -61,8 +61,8 @@ if (AuthenticationManager::GetCurrentUser()->isManageGroupsEnabled()) {
         <button type="button" class="btn btn-primary" id="addNewGroup"><?= gettext('Add New Group') ?></button>
     </div>
 </form>
-<?php
-  }
+    <?php
+}
 ?>
 
 </div>
@@ -71,13 +71,13 @@ if (AuthenticationManager::GetCurrentUser()->isManageGroupsEnabled()) {
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
 $( document).ready(function() {
     var gS = localStorage.getItem("groupSelect");
-	if (gS != null)
-	{
-		tf = document.getElementById("table-filter");
-		tf.selectedIndex = gS;
+    if (gS != null)
+    {
+        tf = document.getElementById("table-filter");
+        tf.selectedIndex = gS;
 
-		window.groupSelect = tf.value;
-	}
+        window.groupSelect = tf.value;
+    }
 });
 
 </script>

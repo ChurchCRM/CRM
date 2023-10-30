@@ -80,28 +80,28 @@ if ($sReportType == '') {
     switch ($sReportType) {
         case 'Giving Report':
             $action = 'Reports/TaxReport.php';
-        break;
+            break;
         case 'Zero Givers':
             $action = 'Reports/ZeroGivers.php';
-        break;
+            break;
         case 'Pledge Summary':
             $action = 'Reports/PledgeSummary.php';
-        break;
+            break;
         case 'Pledge Family Summary':
             $action = 'Reports/FamilyPledgeSummary.php';
-        break;
+            break;
         case 'Pledge Reminders':
             $action = 'Reports/ReminderReport.php';
-        break;
+            break;
         case 'Voting Members':
             $action = 'Reports/VotingMembers.php';
-        break;
+            break;
         case 'Individual Deposit Report':
             $action = 'Reports/PrintDeposit.php';
-        break;
+            break;
         case 'Advanced Deposit Report':
             $action = 'Reports/AdvancedDeposit.php';
-        break;
+            break;
     }
     echo "<form method=post action=\"$action\">";
     echo "<input type=hidden name=ReportType value='$sReportType'>";
@@ -110,7 +110,6 @@ if ($sReportType == '') {
 
     // Filter by Classification and Families
     if ($sReportType == 'Giving Report' || $sReportType == 'Pledge Reminders' || $sReportType == 'Pledge Family Summary' || $sReportType == 'Advanced Deposit Report') {
-
         //Get Classifications for the drop-down
         $sSQL = 'SELECT * FROM list_lst WHERE lst_ID = 1 ORDER BY lst_OptionSequence';
         $rsClassifications = RunQuery($sSQL); ?>

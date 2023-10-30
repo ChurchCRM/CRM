@@ -105,7 +105,6 @@ if (isset($_POST['PaddleNumSubmit']) || isset($_POST['PaddleNumSubmitAndAdd']) |
         RedirectUtils::Redirect("Reports/FundRaiserStatement.php?PaddleNumID=$iPaddleNumID");
     }
 } else {
-
     //FirstPass
     //Are we editing or adding?
     if (strlen($iPaddleNumID) > 0) {
@@ -143,39 +142,39 @@ require 'Include/Header.php';
 <form method="post" action="PaddleNumEditor.php?<?= 'CurrentFundraiser='.$iCurrentFundraiser.'&PaddleNumID='.$iPaddleNumID.'&linkBack='.$linkBack ?>" name="PaddleNumEditor">
 <div class="table-responsive">
 <table class="table" cellpadding="3" align="center">
-	<tr>
-		<td align="center">
-			<input type="submit" class="btn btn-default" value="<?= gettext('Save') ?>" name="PaddleNumSubmit">
-			<input type="submit" class="btn btn-default" value="<?= gettext('Generate Statement') ?>" name="GenerateStatement">
-			<?php if (AuthenticationManager::GetCurrentUser()->isAddRecordsEnabled()) {
-    echo '<input type="submit" class="btn btn-default" value="'.gettext('Save and Add')."\" name=\"PaddleNumSubmitAndAdd\">\n";
-} ?>
-			<input type="button" class="btn btn-default" value="<?= gettext('Back') ?>" name="PaddleNumCancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) {
-    echo $linkBack;
-} else {
-    echo 'Menu.php';
-} ?>';">
-		</td>
-	</tr>
+    <tr>
+        <td align="center">
+            <input type="submit" class="btn btn-default" value="<?= gettext('Save') ?>" name="PaddleNumSubmit">
+            <input type="submit" class="btn btn-default" value="<?= gettext('Generate Statement') ?>" name="GenerateStatement">
+            <?php if (AuthenticationManager::GetCurrentUser()->isAddRecordsEnabled()) {
+                echo '<input type="submit" class="btn btn-default" value="'.gettext('Save and Add')."\" name=\"PaddleNumSubmitAndAdd\">\n";
+            } ?>
+            <input type="button" class="btn btn-default" value="<?= gettext('Back') ?>" name="PaddleNumCancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) {
+                echo $linkBack;
+                                                                } else {
+                                                                    echo 'Menu.php';
+                                                                } ?>';">
+        </td>
+    </tr>
 
-	<tr>
-		<td>
-		<table border="0" width="100%" cellspacing="0" cellpadding="4">
-			<tr>
-			<td width="50%" valign="top" align="left">
-			<table cellpadding="3">
-				<tr>
-					<td class="LabelColumn"><?= gettext('Number') ?>:</td>
-					<td class="TextColumn"><input type="text" name="Num" id="Num" value="<?= $iNum ?>"></td>
-				</tr>
+    <tr>
+        <td>
+        <table border="0" width="100%" cellspacing="0" cellpadding="4">
+            <tr>
+            <td width="50%" valign="top" align="left">
+            <table cellpadding="3">
+                <tr>
+                    <td class="LabelColumn"><?= gettext('Number') ?>:</td>
+                    <td class="TextColumn"><input type="text" name="Num" id="Num" value="<?= $iNum ?>"></td>
+                </tr>
 
-				<tr>
-					<td class="LabelColumn"><?= gettext('Buyer') ?>:
-					</td>
-					<td class="TextColumn">
-						<select name="PerID">
-							<option value="0" selected><?= gettext('Unassigned') ?></option>
-							<?php
+                <tr>
+                    <td class="LabelColumn"><?= gettext('Buyer') ?>:
+                    </td>
+                    <td class="TextColumn">
+                        <select name="PerID">
+                            <option value="0" selected><?= gettext('Unassigned') ?></option>
+                            <?php
                             $rsPeople = RunQuery($sPeopleSQL);
                             while ($aRow = mysqli_fetch_array($rsPeople)) {
                                 extract($aRow);
@@ -188,15 +187,15 @@ require 'Include/Header.php';
                             }
                             ?>
 
-						</select>
-					</td>
-				</tr>
-			</table>
-			</td>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+            </td>
 
-			<td width="50%" valign="top" align="center">
-			<table cellpadding="3">
-					<?php
+            <td width="50%" valign="top" align="center">
+            <table cellpadding="3">
+                    <?php
                     $rsMBItems = RunQuery($sMultibuyItemsSQL);
                     while ($aRow = mysqli_fetch_array($rsMBItems)) {
                         extract($aRow);
@@ -209,21 +208,21 @@ require 'Include/Header.php';
                         } else {
                             $mb_count = 0;
                         } ?>
-						<tr>
-							<td class="LabelColumn"><?= $di_title ?></td>
-							<td class="TextColumn"><input type="text" name="MBItem<?= $di_ID ?>" id="MBItem<?= $di_ID ?>" value="<?= $mb_count ?>"></td>
-						</tr>
-					<?php
+                        <tr>
+                            <td class="LabelColumn"><?= $di_title ?></td>
+                            <td class="TextColumn"><input type="text" name="MBItem<?= $di_ID ?>" id="MBItem<?= $di_ID ?>" value="<?= $mb_count ?>"></td>
+                        </tr>
+                        <?php
                     }
                     ?>
 
-			</table>
-			</td>
-			</tr>
+            </table>
+            </td>
+            </tr>
 
-			</table>
-			</tr>
-	</table>
+            </table>
+            </tr>
+    </table>
 </div>
 </form>
 </div>

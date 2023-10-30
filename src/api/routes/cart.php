@@ -10,11 +10,11 @@ $app->group('/cart', function () use ($app) {
 
     $app->post('/', function ($request, $response, $args) {
         $cartPayload = (object)$request->getParsedBody();
-        if (isset ($cartPayload->Persons) && count($cartPayload->Persons) > 0) {
+        if (isset($cartPayload->Persons) && count($cartPayload->Persons) > 0) {
             Cart::AddPersonArray($cartPayload->Persons);
-        } elseif (isset ($cartPayload->Family)) {
+        } elseif (isset($cartPayload->Family)) {
             Cart::AddFamily($cartPayload->Family);
-        } elseif (isset ($cartPayload->Group)) {
+        } elseif (isset($cartPayload->Group)) {
             Cart::AddGroup($cartPayload->Group);
         } else {
             throw new \Exception(gettext("POST to cart requires a Persons array, FamilyID, or GroupID"), 500);
@@ -47,7 +47,7 @@ $app->group('/cart', function () use ($app) {
     $app->delete('/', function ($request, $response, $args) {
 
         $cartPayload = (object)$request->getParsedBody();
-        if (isset ($cartPayload->Persons) && count($cartPayload->Persons) > 0) {
+        if (isset($cartPayload->Persons) && count($cartPayload->Persons) > 0) {
             Cart::RemovePersonArray($cartPayload->Persons);
         } else {
             $sMessage = gettext('Your cart is empty');
@@ -60,7 +60,5 @@ $app->group('/cart', function () use ($app) {
             'status' => "success",
             'message' => $sMessage
         ]);
-
     });
-
 });

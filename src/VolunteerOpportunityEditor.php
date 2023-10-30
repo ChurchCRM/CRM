@@ -83,7 +83,7 @@ if (($sAction == 'delete') && $iOpp > 0) {
     </tr>
     </table>
 
-<?php
+    <?php
     // Do some error checking before deleting this Opportunity.
     // Notify user if there are currently people assigned to this
     // Volunteer Opportunity.
@@ -116,7 +116,6 @@ if (($sAction == 'delete') && $iOpp > 0) {
 }
 
 if (($sAction == 'ConfDelete') && $iOpp > 0) {
-
     // Security: User must have Delete records permission
     // Otherwise, redirect to the main menu
     if (!AuthenticationManager::GetCurrentUser()->isDeleteRecordsEnabled()) {
@@ -282,50 +281,50 @@ if (isset($_POST['SaveChanges'])) {
 if ($numRows == 0) {
     ?>
     <div class="callout callout-warning"><?= gettext('No volunteer opportunities have been added yet') ?></div>
-<?php
+    <?php
 } else { // if an 'action' (up/down arrow clicked, or order was input)
-        if ($iRowNum && $sAction != '') {
-            // cast as int and couple with switch for sql injection prevention for $row_num
-            $swapRow = $iRowNum;
-            if ($sAction == 'up') {
-                $newRow = --$iRowNum;
-            } elseif ($sAction == 'down') {
-                $newRow = ++$iRowNum;
-            } else {
-                $newRow = $iRowNum;
-            }
-
-            if (array_key_exists($swapRow, $aIDFields)) {
-                $sSQL = "UPDATE volunteeropportunity_vol
-	               SET vol_Order = '".$newRow."' ".
-              "WHERE vol_ID = '".$aIDFields[$swapRow]."';";
-                RunQuery($sSQL);
-            }
-
-            if (array_key_exists($newRow, $aIDFields)) {
-                $sSQL = "UPDATE volunteeropportunity_vol
-	               SET vol_Order = '".$swapRow."' ".
-              "WHERE vol_ID = '".$aIDFields[$newRow]."';";
-                RunQuery($sSQL);
-            }
-
-            // now update internal data to match
-            if (array_key_exists($swapRow, $aIDFields)) {
-                $saveID = $aIDFields[$swapRow];
-                $saveName = $aNameFields[$swapRow];
-                $saveDesc = $aDescFields[$swapRow];
-                $aIDFields[$newRow] = $saveID;
-                $aNameFields[$newRow] = $saveName;
-                $aDescFields[$newRow] = $saveDesc;
-            }
-
-            if (array_key_exists($newRow, $aIDFields)) {
-                $aIDFields[$swapRow] = $aIDFields[$newRow];
-                $aNameFields[$swapRow] = $aNameFields[$newRow];
-                $aDescFields[$swapRow] = $aDescFields[$newRow];
-            }
+    if ($iRowNum && $sAction != '') {
+        // cast as int and couple with switch for sql injection prevention for $row_num
+        $swapRow = $iRowNum;
+        if ($sAction == 'up') {
+            $newRow = --$iRowNum;
+        } elseif ($sAction == 'down') {
+            $newRow = ++$iRowNum;
+        } else {
+            $newRow = $iRowNum;
         }
-    } // end if GET
+
+        if (array_key_exists($swapRow, $aIDFields)) {
+            $sSQL = "UPDATE volunteeropportunity_vol
+	               SET vol_Order = '".$newRow."' ".
+            "WHERE vol_ID = '".$aIDFields[$swapRow]."';";
+            RunQuery($sSQL);
+        }
+
+        if (array_key_exists($newRow, $aIDFields)) {
+            $sSQL = "UPDATE volunteeropportunity_vol
+	               SET vol_Order = '".$swapRow."' ".
+            "WHERE vol_ID = '".$aIDFields[$newRow]."';";
+            RunQuery($sSQL);
+        }
+
+        // now update internal data to match
+        if (array_key_exists($swapRow, $aIDFields)) {
+            $saveID = $aIDFields[$swapRow];
+            $saveName = $aNameFields[$swapRow];
+            $saveDesc = $aDescFields[$swapRow];
+            $aIDFields[$newRow] = $saveID;
+            $aNameFields[$newRow] = $saveName;
+            $aDescFields[$newRow] = $saveDesc;
+        }
+
+        if (array_key_exists($newRow, $aIDFields)) {
+            $aIDFields[$swapRow] = $aIDFields[$newRow];
+            $aNameFields[$swapRow] = $aNameFields[$newRow];
+            $aDescFields[$swapRow] = $aDescFields[$newRow];
+        }
+    }
+} // end if GET
 
 ?>
 <tr>
@@ -376,21 +375,21 @@ for ($row = 1; $row <= $numRows; $row++) {
 
         echo '<a href="VolunteerOpportunityEditor.php?act=delete&amp;Opp='.$aIDFields[$row]."\"> <i class='fa fa-times'></i></a></td>"; ?>
 
-	   <td class="TextColumn" align="center">
-	   <input type="text" name="<?= $row.'name' ?>" value="<?= htmlentities(stripslashes($aNameFields[$row]), ENT_NOQUOTES, 'UTF-8') ?>" class="form-control" size="20" maxlength="30">
-	   <?php
+       <td class="TextColumn" align="center">
+       <input type="text" name="<?= $row.'name' ?>" value="<?= htmlentities(stripslashes($aNameFields[$row]), ENT_NOQUOTES, 'UTF-8') ?>" class="form-control" size="20" maxlength="30">
+        <?php
 
-       if (array_key_exists($row, $aNameErrors) && $aNameErrors[$row]) {
-           echo '<span style="color: red;"><BR>'.gettext('You must enter a name').' </span>';
-       } ?>
-	   </td>
+        if (array_key_exists($row, $aNameErrors) && $aNameErrors[$row]) {
+            echo '<span style="color: red;"><BR>'.gettext('You must enter a name').' </span>';
+        } ?>
+       </td>
 
-	   <td class="TextColumn">
-	   <input type="text" name="<?= $row ?>desc" value="<?= htmlentities(stripslashes($aDescFields[$row]), ENT_NOQUOTES, 'UTF-8') ?>" class="form-control" size="40" maxlength="100">
-	   </td>
+       <td class="TextColumn">
+       <input type="text" name="<?= $row ?>desc" value="<?= htmlentities(stripslashes($aDescFields[$row]), ENT_NOQUOTES, 'UTF-8') ?>" class="form-control" size="40" maxlength="100">
+       </td>
 
-	   </tr>
-   <?php
+       </tr>
+        <?php
     }
 }
 ?>

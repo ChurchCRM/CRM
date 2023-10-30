@@ -87,7 +87,7 @@ class PDF_GroupDirectory extends ChurchInfoReport
 
     // This function prints out the heading when a letter
     // changes.
-/*	function Add_Header($sLetter)
+/*  function Add_Header($sLetter)
     {
         $this->Check_Lines(2);
         $this->SetTextColor(255);

@@ -55,7 +55,6 @@ $bDuplicateNameError = false;
 
 // Does the user want to save changes to text fields?
 if (isset($_POST['SaveChanges'])) {
-
     // Fill in the other needed property data arrays not gathered from the form submit
     $sSQL = 'SELECT prop_ID, prop_Field, type_ID, prop_Special, prop_PersonDisplay FROM groupprop_master WHERE grp_ID = '.$iGroupID.' ORDER BY prop_ID';
     $rsPropList = RunQuery($sSQL);
@@ -186,41 +185,41 @@ if (isset($_POST['SaveChanges'])) {
                 $sSQL = 'ALTER TABLE `groupprop_'.$iGroupID.'` ADD `c'.$newFieldNum.'` ';
 
                 switch ($newFieldType) {
-                case 1:
-                    $sSQL .= "ENUM('false', 'true')";
-                    break;
-                case 2:
-                    $sSQL .= 'DATE';
-                    break;
-                case 3:
-                    $sSQL .= 'VARCHAR(50)';
-                    break;
-                case 4:
-                    $sSQL .= 'VARCHAR(100)';
-                    break;
-                case 5:
-                    $sSQL .= 'TEXT';
-                    break;
-                case 6:
-                    $sSQL .= 'YEAR';
-                    break;
-                case 7:
-                    $sSQL .= "ENUM('winter', 'spring', 'summer', 'fall')";
-                    break;
-                case 8:
-                    $sSQL .= 'INT';
-                    break;
-                case 9:
-                    $sSQL .= 'MEDIUMINT(9)';
-                    break;
-                case 10:
-                    $sSQL .= 'DECIMAL(10,2)';
-                    break;
-                case 11:
-                    $sSQL .= 'VARCHAR(30)';
-                    break;
-                case 12:
-                    $sSQL .= 'TINYINT(4)';
+                    case 1:
+                        $sSQL .= "ENUM('false', 'true')";
+                        break;
+                    case 2:
+                        $sSQL .= 'DATE';
+                        break;
+                    case 3:
+                        $sSQL .= 'VARCHAR(50)';
+                        break;
+                    case 4:
+                        $sSQL .= 'VARCHAR(100)';
+                        break;
+                    case 5:
+                        $sSQL .= 'TEXT';
+                        break;
+                    case 6:
+                        $sSQL .= 'YEAR';
+                        break;
+                    case 7:
+                        $sSQL .= "ENUM('winter', 'spring', 'summer', 'fall')";
+                        break;
+                    case 8:
+                        $sSQL .= 'INT';
+                        break;
+                    case 9:
+                        $sSQL .= 'MEDIUMINT(9)';
+                        break;
+                    case 10:
+                        $sSQL .= 'DECIMAL(10,2)';
+                        break;
+                    case 11:
+                        $sSQL .= 'VARCHAR(30)';
+                        break;
+                    case 12:
+                        $sSQL .= 'TINYINT(4)';
                 }
 
                 $sSQL .= ' DEFAULT NULL ;';
@@ -263,64 +262,64 @@ if (isset($_POST['SaveChanges'])) {
 <?php
 if ($numRows == 0) {
     ?>
-	<center><h2><?= gettext('No properties have been added yet') ?></h2>
-	</center>
-<?php
+    <center><h2><?= gettext('No properties have been added yet') ?></h2>
+    </center>
+    <?php
 } else {
-        ?>
-	<tr><td colspan="7">
-	<center><b><?= gettext("Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete, or 'add new' button!") ?></b></center>
-	</td></tr>
+    ?>
+    <tr><td colspan="7">
+    <center><b><?= gettext("Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete, or 'add new' button!") ?></b></center>
+    </td></tr>
 
-	<tr><td colspan="7" align="center">
-	<?php
+    <tr><td colspan="7" align="center">
+    <?php
     if ($bErrorFlag) {
         echo '<span class="LargeText" style="color: red;">'.gettext('Invalid fields or selections. Changes not saved! Please correct and try again!').'</span>';
     } ?>
-	</td></tr>
+    </td></tr>
 
-		<tr>
-			<th></th>
-			<th></th>
-			<th><?= gettext('Type') ?></th>
-			<th><?= gettext('Name') ?></th>
-			<th><?= gettext('Description') ?></th>
-			<th><?= gettext('Special option') ?></th>
-			<th><?= gettext('Show in') ?><br><?= gettext('Person View') ?></th>
-		</tr>
+        <tr>
+            <th></th>
+            <th></th>
+            <th><?= gettext('Type') ?></th>
+            <th><?= gettext('Name') ?></th>
+            <th><?= gettext('Description') ?></th>
+            <th><?= gettext('Special option') ?></th>
+            <th><?= gettext('Show in') ?><br><?= gettext('Person View') ?></th>
+        </tr>
 
-	<?php
+    <?php
 
     for ($row = 1; $row <= $numRows; $row++) {
         ?>
-		<tr>
-			<td class="LabelColumn"><h2><b><?= $row ?></b></h2></td>
-			<td class="TextColumn" width="5%" nowrap>
-				<?php
+        <tr>
+            <td class="LabelColumn"><h2><b><?= $row ?></b></h2></td>
+            <td class="TextColumn" width="5%" nowrap>
+                <?php
                 if ($row != 1) {
                     echo "<a href=\"GroupPropsFormRowOps.php?GroupID=$iGroupID&PropID=$row&Field=".$aFieldFields[$row].'&Action=up"><i class="fa fa-arrow-up"></i></a>';
                 }
-        if ($row < $numRows) {
-            echo "<a href=\"GroupPropsFormRowOps.php?GroupID=$iGroupID&PropID=$row&Field=".$aFieldFields[$row].'&Action=down"><i class="fa fa-arrow-down"></i></a>';
-        } ?>
+                if ($row < $numRows) {
+                    echo "<a href=\"GroupPropsFormRowOps.php?GroupID=$iGroupID&PropID=$row&Field=".$aFieldFields[$row].'&Action=down"><i class="fa fa-arrow-down"></i></a>';
+                } ?>
 
-				<?= "<a href=\"GroupPropsFormRowOps.php?GroupID=$iGroupID&PropID=$row&Field=$aFieldFields[$row]&Action=delete\"><i class='fa fa-times' ></i></a>"; ?>
-			</td>
-			<td class="TextColumn" style="font-size:70%;">
-			<?= $aPropTypes[$aTypeFields[$row]]; ?>
-			</td>
+                <?= "<a href=\"GroupPropsFormRowOps.php?GroupID=$iGroupID&PropID=$row&Field=$aFieldFields[$row]&Action=delete\"><i class='fa fa-times' ></i></a>"; ?>
+            </td>
+            <td class="TextColumn" style="font-size:70%;">
+            <?= $aPropTypes[$aTypeFields[$row]]; ?>
+            </td>
 
-			<td class="TextColumn"><input type="text" name="<?= $row ?>name" value="<?= htmlentities(stripslashes($aNameFields[$row]), ENT_NOQUOTES, 'UTF-8') ?>" size="25" maxlength="40">
-				<?php
+            <td class="TextColumn"><input type="text" name="<?= $row ?>name" value="<?= htmlentities(stripslashes($aNameFields[$row]), ENT_NOQUOTES, 'UTF-8') ?>" size="25" maxlength="40">
+                <?php
                 if (array_key_exists($row, $aNameErrors) && $aNameErrors[$row]) {
                     echo '<span style="color: red;"><BR>'.gettext('You must enter a name').' </span>';
                 } ?>
-			</td>
+            </td>
 
-			<td class="TextColumn"><textarea name="<?= $row ?>desc" cols="30" rows="1" onKeyPress="LimitTextSize(this,60)"><?= htmlentities(stripslashes($aDescFields[$row]), ENT_NOQUOTES, 'UTF-8') ?></textarea></td>
+            <td class="TextColumn"><textarea name="<?= $row ?>desc" cols="30" rows="1" onKeyPress="LimitTextSize(this,60)"><?= htmlentities(stripslashes($aDescFields[$row]), ENT_NOQUOTES, 'UTF-8') ?></textarea></td>
 
-			<td class="TextColumn">
-			<?php
+            <td class="TextColumn">
+            <?php
 
             if ($aTypeFields[$row] == 9) {
                 echo '<select name="'.$row.'special">';
@@ -351,53 +350,53 @@ if ($numRows == 0) {
                 echo '&nbsp;';
             } ?></td>
 
-			<td class="TextColumn">
-				<input type="checkbox" name="<?= $row ?>show" value="1"	<?php if ($aPersonDisplayFields[$row]) {
-                echo ' checked';
-            } ?>>
-			</td>
-		</tr>
-	<?php
+            <td class="TextColumn">
+                <input type="checkbox" name="<?= $row ?>show" value="1" <?php if ($aPersonDisplayFields[$row]) {
+                    echo ' checked';
+                                             } ?>>
+            </td>
+        </tr>
+        <?php
     } ?>
 
-		<tr>
-			<td colspan="7">
-			<table width="100%">
-				<tr>
-					<td width="30%"></td>
-					<td width="40%" align="center" valign="bottom">
-						<input type="submit" class="btn btn-default" value="<?= gettext('Save Changes') ?>" Name="SaveChanges">
-					</td>
-					<td width="30%"></td>
-				</tr>
-			</table>
-			</td>
-			<td>
-		</tr>
-<?php
-    } ?>
-		<tr><td colspan="7"><hr></td></tr>
-		<tr>
-			<td colspan="7">
-			<table width="100%">
-				<tr>
-					<td width="15%"></td>
-					<td valign="top">
-					<div><?= gettext('Type') ?>:</div>
-					<?php
+        <tr>
+            <td colspan="7">
+            <table width="100%">
+                <tr>
+                    <td width="30%"></td>
+                    <td width="40%" align="center" valign="bottom">
+                        <input type="submit" class="btn btn-default" value="<?= gettext('Save Changes') ?>" Name="SaveChanges">
+                    </td>
+                    <td width="30%"></td>
+                </tr>
+            </table>
+            </td>
+            <td>
+        </tr>
+    <?php
+} ?>
+        <tr><td colspan="7"><hr></td></tr>
+        <tr>
+            <td colspan="7">
+            <table width="100%">
+                <tr>
+                    <td width="15%"></td>
+                    <td valign="top">
+                    <div><?= gettext('Type') ?>:</div>
+                    <?php
                         echo '<select name="newFieldType">';
-                        for ($iOptionID = 1; $iOptionID <= count($aPropTypes); $iOptionID++) {
-                            echo '<option value="'.$iOptionID.'"';
-                            echo '>'.$aPropTypes[$iOptionID];
-                        }
+                    for ($iOptionID = 1; $iOptionID <= count($aPropTypes); $iOptionID++) {
+                        echo '<option value="'.$iOptionID.'"';
+                        echo '>'.$aPropTypes[$iOptionID];
+                    }
                         echo '</select>';
                     ?><BR>
-					<a href="<?= SystemURLs::getSupportURL() ?>"><?= gettext('Help on types..') ?></a>
-					</td>
-					<td valign="top">
-						<div><?= gettext('Name') ?>:</div>
-						<input type="text" name="newFieldName" size="25" maxlength="40">
-						<?php
+                    <a href="<?= SystemURLs::getSupportURL() ?>"><?= gettext('Help on types..') ?></a>
+                    </td>
+                    <td valign="top">
+                        <div><?= gettext('Name') ?>:</div>
+                        <input type="text" name="newFieldName" size="25" maxlength="40">
+                        <?php
                         if ($bNewNameError) {
                             echo '<div><span style="color: red;"><BR>'.gettext('You must enter a name').'</span></div>';
                         }
@@ -405,25 +404,25 @@ if ($numRows == 0) {
                             echo '<div><span style="color: red;"><BR>'.gettext('That field name already exists.').'</span></div>';
                         }
                         ?>
-						&nbsp;
-					</td>
-					<td valign="top">
-						<div><?= gettext('Description') ?>:</div>
-						<input type="text" name="newFieldDesc" size="30" maxlength="60">
-						&nbsp;
-					</td>
-					<td>
-						<input type="submit" class="btn btn-default" value="<?= gettext('Add New Field') ?>" Name="AddField">
-					</td>
-					<td width="15%"></td>
-				</tr>
-			</table>
-			</td>
-		</tr>
+                        &nbsp;
+                    </td>
+                    <td valign="top">
+                        <div><?= gettext('Description') ?>:</div>
+                        <input type="text" name="newFieldDesc" size="30" maxlength="60">
+                        &nbsp;
+                    </td>
+                    <td>
+                        <input type="submit" class="btn btn-default" value="<?= gettext('Add New Field') ?>" Name="AddField">
+                    </td>
+                    <td width="15%"></td>
+                </tr>
+            </table>
+            </td>
+        </tr>
 
-	</table>
+    </table>
     </div>
-	</form>
+    </form>
 
 </div>
 

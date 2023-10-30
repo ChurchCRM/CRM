@@ -2,7 +2,8 @@
 
 namespace ChurchCRM\Slim\Middleware\Request\Auth;
 
-class DeleteRecordRoleAuthMiddleware extends BaseAuthRoleMiddleware {
+class DeleteRecordRoleAuthMiddleware extends BaseAuthRoleMiddleware
+{
 
     function hasRole()
     {

@@ -232,7 +232,7 @@ if (isset($_POST['UploadCSV'])) {
                 <?= $sPerCustomFieldList.$sFamCustomFieldList ?>
             </select>
             </td>
-        <?php
+            <?php
         }
 
         echo '</table>'; ?>
@@ -273,11 +273,11 @@ if (isset($_POST['UploadCSV'])) {
             <option value="0">-----------------------</option>
 
             <?php
-                while ($aRow = mysqli_fetch_array($rsClassifications)) {
-                    extract($aRow);
-                    echo '<option value="'.$lst_OptionID.'"';
-                    echo '>'.$lst_OptionName.'&nbsp;';
-                } ?>
+            while ($aRow = mysqli_fetch_array($rsClassifications)) {
+                extract($aRow);
+                echo '<option value="'.$lst_OptionID.'"';
+                echo '>'.$lst_OptionName.'&nbsp;';
+            } ?>
         </select>
         <?= gettext('Classification') ?>
         <BR><BR>
@@ -401,7 +401,11 @@ if (isset($_POST['DoImport'])) {
                     // handler for each of the 20 person_per table column possibilities
                     switch ($currentType) {
                         // Address goes with family record if creating families
-                        case 8: case 9: case 10: case 11: case 12:
+                        case 8:
+                        case 9:
+                        case 10:
+                        case 11:
+                        case 12:
                             // if not making family records, add to person
                             if (!isset($_POST['MakeFamilyRecords'])) {
                                 $sSQLpersonData .= "'".addslashes($aData[$col])."',";
@@ -426,9 +430,14 @@ if (isset($_POST['DoImport'])) {
                             break;
 
                         // Simple strings.. no special processing
-                        case 1: case 2: case 3: case 4: case 5:
-                        case 17: case 18:
-                            $sSQLpersonData .= "'".addslashes($aData[$col])."',";
+                        case 1:
+                        case 2:
+                        case 3:
+                        case 4:
+                        case 5:
+                        case 17:
+                        case 18:
+                                        $sSQLpersonData .= "'".addslashes($aData[$col])."',";
                             break;
 
                         // Country.. also set $sCountry for use later!
@@ -439,13 +448,19 @@ if (isset($_POST['DoImport'])) {
                         // Gender.. check for multiple possible designations from input
                         case 6:
                             switch (strtolower($aData[$col])) {
-                                case 'male': case 'm': case 'boy': case 'man':
-                                    $sSQLpersonData .= '1, ';
-                                      $iGender = 1;
+                                case 'male':
+                                case 'm':
+                                case 'boy':
+                                case 'man':
+                                            $sSQLpersonData .= '1, ';
+                                            $iGender = 1;
                                     break;
-                                case 'female': case 'f': case 'girl': case 'woman':
-                                    $sSQLpersonData .= '2, ';
-                                      $iGender = 2;
+                                case 'female':
+                                case 'f':
+                                case 'girl':
+                                case 'woman':
+                                            $sSQLpersonData .= '2, ';
+                                            $iGender = 2;
                                     break;
                                 default:
                                     $sSQLpersonData .= '0, ';
@@ -504,18 +519,28 @@ if (isset($_POST['DoImport'])) {
 
                         // Ignore field option
                         case 0:
-
                         // Phone numbers.. uh oh.. don't know country yet.. wait to do a second pass!
-                        case 14: case 15: case 16:
+                        case 14:
+                        case 15:
+                        case 16:
                         default:
                             break;
-
                     }
 
                     switch ($currentType) {
-                        case 0: case 7: case 13: case 14: case 15: case 16: case 21:
+                        case 0:
+                        case 7:
+                        case 13:
+                        case 14:
+                        case 15:
+                        case 16:
+                        case 21:
                             break;
-                        case 8: case 9: case 10: case 11: case 12:
+                        case 8:
+                        case 9:
+                        case 10:
+                        case 11:
+                        case 12:
                             // if not making family records, add to person
                             if (!isset($_POST['MakeFamilyRecords'])) {
                                 $sSQLpersonFields .= $aPersonTableFields[$currentType].', ';
@@ -535,9 +560,11 @@ if (isset($_POST['DoImport'])) {
                     $currentType = $aColumnID[$col];
                     switch ($currentType) {
                         // Phone numbers..
-                        case 14: case 15: case 16:
-                            $sSQLpersonData .= "'".addslashes(CollapsePhoneNumber($aData[$col], $sCountry))."',";
-                            $sSQLpersonFields .= $aPersonTableFields[$currentType].', ';
+                        case 14:
+                        case 15:
+                        case 16:
+                                $sSQLpersonData .= "'".addslashes(CollapsePhoneNumber($aData[$col], $sCountry))."',";
+                                $sSQLpersonFields .= $aPersonTableFields[$currentType].', ';
                             break;
                         default:
                             break;
@@ -769,7 +796,7 @@ if (isset($_POST['DoImport'])) {
         $aDirRoleChild = explode(',', SystemConfig::getValue('sDirRoleChild'));
 
         // update roles now that we have complete family data.
-        foreach ($Families as $fid=>$family) {
+        foreach ($Families as $fid => $family) {
             $family->AssignRoles();
             foreach ($family->Members as $member) {
                 switch ($member['role']) {
@@ -849,11 +876,11 @@ function ParseDate($sDate, $iDateMode)
             if (!is_numeric($cSeparator)) {
                 $sDate = str_replace($cSeparator, '', $sDate);
             }
-             if (strlen($sDate) == 8) {
-                 $aDate[0] = mb_substr($sDate, 0, 4);
-                 $aDate[1] = mb_substr($sDate, 4, 2);
-                 $aDate[2] = mb_substr($sDate, 6, 2);
-             }
+            if (strlen($sDate) == 8) {
+                $aDate[0] = mb_substr($sDate, 0, 4);
+                $aDate[1] = mb_substr($sDate, 4, 2);
+                $aDate[2] = mb_substr($sDate, 6, 2);
+            }
             break;
 
         // MM-DD-YYYY

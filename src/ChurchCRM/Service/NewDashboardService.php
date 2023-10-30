@@ -1,6 +1,7 @@
 <?php
 
 namespace ChurchCRM\Service;
+
 class NewDashboardService
 {
 
@@ -28,5 +29,4 @@ class NewDashboardService
         }
         return $ReturnValues;
     }
-
 }

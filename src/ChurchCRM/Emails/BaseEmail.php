@@ -57,7 +57,6 @@ abstract class BaseEmail
             return $this->mail->send();
         }
         return false; // we don't have a valid setting so let us make sure we don't crash.
-
     }
 
     public function getError()
@@ -80,7 +79,8 @@ abstract class BaseEmail
         return "BaseEmail";
     }
 
-    protected function getCommonTokens() {
+    protected function getCommonTokens()
+    {
         $commonTokens = [
             "toEmails" => $this->mail->getToAddresses(),
             "churchName" => ChurchMetaData::getChurchName(),

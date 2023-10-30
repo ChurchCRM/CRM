@@ -56,5 +56,4 @@ $app->group('/kiosks', function () use ($app) {
             ->setAssignment($input->assignmentType, $input->eventId);
         return $response->write(json_encode($accept, JSON_THROW_ON_ERROR));
     });
-
 });

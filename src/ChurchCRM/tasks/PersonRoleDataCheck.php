@@ -44,5 +44,4 @@ class PersonRoleDataCheck implements iTask
     {
         return gettext("Missing Role Data for Some People");
     }
-
 }

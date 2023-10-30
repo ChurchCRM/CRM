@@ -407,8 +407,8 @@ $families = FamilyQuery::create()
         </table>
     </div><!-- /.box -->
 
-    <?php
-    $sPersonIDList = implode(',', $aPersonIDs); ?>
+            <?php
+            $sPersonIDList = implode(',', $aPersonIDs); ?>
 
     <input type="hidden" name="PersonIDList" value="<?= $sPersonIDList ?>">
 
@@ -424,9 +424,9 @@ $families = FamilyQuery::create()
            <a id="RemoveAllFromCart" class="btn btn-danger" ><?= gettext('Remove All from Cart') ?></a>
         </div>
     </div>
-    <?php
+            <?php
         }
-    ?>
+        ?>
 </form>
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">

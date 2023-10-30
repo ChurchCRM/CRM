@@ -72,11 +72,11 @@ if (count($_SESSION['aPeopleCart']) > 0) {
             <td class="TextColumn">
               <?php
               // Create the group select drop-down
-              echo '<select id="GroupID" name="GroupID" onChange="UpdateRoles();"><option value="0">'.gettext('None').'</option>';
-    foreach ($ormGroups as $ormGroup) {
-        echo '<option value="'.$ormGroup->getID().'">'.$ormGroup->getName().'</option>';
-    }
-    echo '</select>'; ?>
+                echo '<select id="GroupID" name="GroupID" onChange="UpdateRoles();"><option value="0">'.gettext('None').'</option>';
+                foreach ($ormGroups as $ormGroup) {
+                    echo '<option value="'.$ormGroup->getID().'">'.$ormGroup->getName().'</option>';
+                }
+                echo '</select>'; ?>
             </td>
           </tr>
           <tr>
@@ -97,10 +97,10 @@ if (count($_SESSION['aPeopleCart']) > 0) {
         </p>
       </form>
     </div></div>
-  <?php
+    <?php
 } else {
         echo '<p align="center" class="LargeText">'.gettext('Your cart is empty!').'</p>';
-    }
+}
 
 
 require 'Include/Footer.php';

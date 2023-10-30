@@ -43,5 +43,4 @@ class PersonClassificationDataCheck implements iTask
     {
         return gettext("Missing Classification Data for Some People");
     }
-
 }

@@ -36,7 +36,6 @@ $iReturn = $_GET['Return'];
 
 //Was the form submitted?
 if (isset($_POST['Submit'])) {
-
     //Get the new role
     $iNewRole = InputUtils::LegacyFilterInput($_POST['NewRole']);
 
@@ -77,23 +76,23 @@ require 'Include/Header.php'
 <form method="post" action="MemberRoleChange.php?GroupID=<?= $iGroupID ?>&PersonID=<?= $iPersonID ?>&Return=<?= $iReturn ?>">
 
 <table cellpadding="4">
-	<tr>
-		<td align="right"><b><?= gettext('Group Name') ?>:</b></td>
-		<td><?php echo $grp_Name ?></td>
-	</tr>
-	<tr>
-		<td align="right"><b><?= gettext("Member's Name") ?>:</b></td>
-		<td><?php echo $per_LastName.', '.$per_FirstName ?></td>
-	</tr>
-	<tr>
-		<td align="right"><b><?= gettext('Current Role') ?>:</b></td>
-		<td><?php echo gettext($sRoleName) ?></td>
-	</tr>
-	<tr>
-		<td align="right"><b><?= gettext('New Role') ?>:</b></td>
-		<td>
-			<select name="NewRole">
-				<?php
+    <tr>
+        <td align="right"><b><?= gettext('Group Name') ?>:</b></td>
+        <td><?php echo $grp_Name ?></td>
+    </tr>
+    <tr>
+        <td align="right"><b><?= gettext("Member's Name") ?>:</b></td>
+        <td><?php echo $per_LastName.', '.$per_FirstName ?></td>
+    </tr>
+    <tr>
+        <td align="right"><b><?= gettext('Current Role') ?>:</b></td>
+        <td><?php echo gettext($sRoleName) ?></td>
+    </tr>
+    <tr>
+        <td align="right"><b><?= gettext('New Role') ?>:</b></td>
+        <td>
+            <select name="NewRole">
+                <?php
 
                 //Loop through all the possible roles
                 while ($aRow = mysqli_fetch_array($rsAllRoles)) {
@@ -109,21 +108,21 @@ require 'Include/Header.php'
                     echo '<option value="'.$lst_OptionID.'" '.$sSelected.'>'.gettext($lst_OptionName).'</option>';
                 }
                 ?>
-			</select>
-		</td>
-	</tr>
-	<tr>
-		<td colspan="2" align="center">
-			<input type="submit" class="btn btn-default" name="Submit" value="<?= gettext('Update') ?>">
-			<?php
-                if ($iReturn) {
-                    echo '&nbsp;&nbsp;<input type="button" class="btn btn-default" name="Cancel" value="'.gettext('Cancel')."\" onclick=\"document.location='GroupView.php?GroupID=".$iGroupID."';\">";
-                } else {
-                    echo '&nbsp;&nbsp;<input type="button" class="btn btn-default" name="Cancel" value="'.gettext('Cancel')."\" onclick=\"document.location='PersonView.php?PersonID=".$iPersonID."';\">";
-                }
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2" align="center">
+            <input type="submit" class="btn btn-default" name="Submit" value="<?= gettext('Update') ?>">
+            <?php
+            if ($iReturn) {
+                echo '&nbsp;&nbsp;<input type="button" class="btn btn-default" name="Cancel" value="'.gettext('Cancel')."\" onclick=\"document.location='GroupView.php?GroupID=".$iGroupID."';\">";
+            } else {
+                echo '&nbsp;&nbsp;<input type="button" class="btn btn-default" name="Cancel" value="'.gettext('Cancel')."\" onclick=\"document.location='PersonView.php?PersonID=".$iPersonID."';\">";
+            }
             ?>
-		</td>
-	</tr>
+        </td>
+    </tr>
 </table>
 </form>
 

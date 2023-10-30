@@ -85,39 +85,39 @@ require 'Include/Header.php';
           <div class="col-sm-3">
             <label for="GroupType"><?= gettext('Type of Group') ?>:</label>
             <?php
-                        if ($thisGroup->isSundaySchool()) {
-                            $hide = "style=\"display:none;\"";
-                        } else {
-                            $hide = "";
-                        }
-                    ?>
+            if ($thisGroup->isSundaySchool()) {
+                $hide = "style=\"display:none;\"";
+            } else {
+                $hide = "";
+            }
+            ?>
             <select class="form-control input-small" name="GroupType" <?= $hide ?>>
               <option value="0"><?= gettext('Unassigned') ?></option>
               <option value="0">-----------------------</option>
               <?php
-              foreach ($rsGroupTypes as $groupType) {
-                  echo '<option value="'.$groupType->getOptionId().'"';
-                  if ($thisGroup->getType() == $groupType->getOptionId()) {
-                      echo ' selected';
-                  }
-                  echo '>'.$groupType->getOptionName().'</option>';
-              } ?>
+                foreach ($rsGroupTypes as $groupType) {
+                    echo '<option value="'.$groupType->getOptionId().'"';
+                    if ($thisGroup->getType() == $groupType->getOptionId()) {
+                        echo ' selected';
+                    }
+                    echo '>'.$groupType->getOptionName().'</option>';
+                } ?>
             </select>
             <?php
-                                if ($thisGroup->isSundaySchool()) {
-                                    ?>
-            	<b><?= gettext("Sunday School") ?></b>
-            	<p><?= gettext("Sunday School group can't be modified, only in this two cases :")?></p>
-            	<ul>
-								<li>
-									<?= gettext("You can create/delete sunday school group. ")?>
-								</li>
-								<li>
-									<?= gettext("Add new roles, but not modify or rename the Student and the Teacher roles.")?>
-								</li>
-            	</ul>
-            <?php
-                                } ?>
+            if ($thisGroup->isSundaySchool()) {
+                ?>
+                <b><?= gettext("Sunday School") ?></b>
+                <p><?= gettext("Sunday School group can't be modified, only in this two cases :")?></p>
+                <ul>
+                                <li>
+                                    <?= gettext("You can create/delete sunday school group. ")?>
+                                </li>
+                                <li>
+                                    <?= gettext("Add new roles, but not modify or rename the Student and the Teacher roles.")?>
+                                </li>
+                </ul>
+                <?php
+            } ?>
           </div>
         </div>
         <div class="row">
@@ -128,11 +128,11 @@ require 'Include/Header.php';
                 ?>
               <b><?= gettext('Group Member Roles') ?>:</b>
 
-              <?= gettext('Clone roles') ?>:
+                <?= gettext('Clone roles') ?>:
               <input type="checkbox" name="cloneGroupRole" id="cloneGroupRole" value="1">
             </div>
             <div class="col-sm-3" id="selectGroupIDDiv">
-              <?= gettext('from group') ?>:
+                <?= gettext('from group') ?>:
               <select class="form-control input-small" name="seedGroupID" id="seedGroupID" >
                 <option value="0"><?php gettext('Select a group'); ?></option>
 

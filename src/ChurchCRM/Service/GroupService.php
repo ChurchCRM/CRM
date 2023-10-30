@@ -315,21 +315,18 @@ class GroupService
         WHERE p2g2r_grp_ID ='.$groupID.' '.$whereClause;
         $result = mysqli_query($cnInfoCentral, $sSQL);
         while ($row = mysqli_fetch_assoc($result)) {
-        	//on teste si les propriétés sont bonnes
-        	if (array_key_exists('p2g2r_per_ID',$row) && array_key_exists('lst_OptionName',$row))
-        	{
-            $dbPerson = PersonQuery::create()->findPk($row['p2g2r_per_ID']);
+            //on teste si les propriétés sont bonnes
+            if (array_key_exists('p2g2r_per_ID', $row) && array_key_exists('lst_OptionName', $row)) {
+                $dbPerson = PersonQuery::create()->findPk($row['p2g2r_per_ID']);
 
-       			if (array_key_exists('displayName',$dbPerson))
-       			{
-	            $person['displayName'] = $dbPerson->getFullName();
-  	          $person['groupRole'] = $row['lst_OptionName'];
-    	        array_push($members, $person);
-    	      }
-    	    }
+                if (array_key_exists('displayName', $dbPerson)) {
+                    $person['displayName'] = $dbPerson->getFullName();
+                    $person['groupRole'] = $row['lst_OptionName'];
+                    array_push($members, $person);
+                }
+            }
         }
 
         return $members;
     }
-
 }

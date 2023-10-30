@@ -13,12 +13,12 @@ class CheckUploadSizeTask
     public function __construct()
     {
         $this->sizeString = ini_get('upload_max_filesize');
-        $this->sizeBytes = Self::return_bytes($this->sizeString);
+        $this->sizeBytes = self::return_bytes($this->sizeString);
     }
 
     public function isActive(): bool
     {
-        return $this->sizeBytes < Self::return_bytes('5M');
+        return $this->sizeBytes < self::return_bytes('5M');
     }
 
     public function isAdmin(): bool

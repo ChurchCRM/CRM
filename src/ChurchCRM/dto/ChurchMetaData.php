@@ -93,7 +93,7 @@ class ChurchMetaData
     
     public static function getChurchTimeZone()
     {
-      return SystemConfig::getValue('sTimeZone');
+        return SystemConfig::getValue('sTimeZone');
     }
 
     private static function updateLatLng()

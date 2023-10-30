@@ -69,31 +69,31 @@ require 'Include/Header.php';
 <input name="sort" type="hidden" value="<?= $sSort ?>"
 <table cellpadding="3" align="center">
 
-	<tr>
-		<td>
-		<table cellpadding="3">
-			<tr>
-				<td class="LabelColumn"><?= gettext('Number') ?>:</td>
-				<td class="TextColumn"><input type="text" name="ID" id="ID" value="<?= $iID ?>"></td>
-			</tr>
+    <tr>
+        <td>
+        <table cellpadding="3">
+            <tr>
+                <td class="LabelColumn"><?= gettext('Number') ?>:</td>
+                <td class="TextColumn"><input type="text" name="ID" id="ID" value="<?= $iID ?>"></td>
+            </tr>
 
-			<tr>
+            <tr>
                 <td class="LabelColumn"><?= gettext('Date Start') ?>:</td>
-				<td class="TextColumn"><input type="text" name="DateStart" maxlength="10" id="DateStart" size="11" value="<?= $dDateStart ?>" class="date-picker"></td>
-				<td align="center">
-					<input type="submit" class="btn btn-primary" value="<?= gettext('Apply Filters') ?>" name="FindFundRaiserSubmit">
-				</td>
-			</tr>
-			<tr>
-				<td class="LabelColumn"><?= gettext('Date End') ?>:</td>
-				<td class="TextColumn"><input type="text" name="DateEnd" maxlength="10" id="DateEnd" size="11" value="<?= $dDateEnd ?>" class="date-picker"></td>
-				<td align="center">
-					<input type="submit" class="btn btn-danger" value="<?= gettext('Clear Filters') ?>" name="FilterClear">
-				</td>
-			</tr>
-		</table>
-		</td>
-	</form>
+                <td class="TextColumn"><input type="text" name="DateStart" maxlength="10" id="DateStart" size="11" value="<?= $dDateStart ?>" class="date-picker"></td>
+                <td align="center">
+                    <input type="submit" class="btn btn-primary" value="<?= gettext('Apply Filters') ?>" name="FindFundRaiserSubmit">
+                </td>
+            </tr>
+            <tr>
+                <td class="LabelColumn"><?= gettext('Date End') ?>:</td>
+                <td class="TextColumn"><input type="text" name="DateEnd" maxlength="10" id="DateEnd" size="11" value="<?= $dDateEnd ?>" class="date-picker"></td>
+                <td align="center">
+                    <input type="submit" class="btn btn-danger" value="<?= gettext('Clear Filters') ?>" name="FilterClear">
+                </td>
+            </tr>
+        </table>
+        </td>
+    </form>
 </table>
 </div>
 <div class="card card-body">

@@ -78,15 +78,17 @@ class TaskService
         $tasks = [];
         foreach ($this->notificationClasses as $taskClass) {
             if ($taskClass->isActive()) {
-                array_push($tasks,
-                    new UiNotification($taskClass->getTitle(), "wrench", $taskClass->getLink(), $taskClass->getDesc(), ($taskClass->isAdmin() ? "warning" : "info"), "12000", "bottom", "left"));
+                array_push(
+                    $tasks,
+                    new UiNotification($taskClass->getTitle(), "wrench", $taskClass->getLink(), $taskClass->getDesc(), ($taskClass->isAdmin() ? "warning" : "info"), "12000", "bottom", "left")
+                );
             }
         }
         return $tasks;
     }
 
-    public function getActivePreUpgradeTasks(): array {
+    public function getActivePreUpgradeTasks(): array
+    {
         return array_filter($this->taskClasses, fn($k) => $k instanceof iPreUpgradeTask && $k->isActive());
     }
-
 }

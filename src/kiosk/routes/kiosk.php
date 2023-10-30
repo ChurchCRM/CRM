@@ -6,12 +6,11 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Slim\Views\PhpRenderer;
 
-
 $app->get('/', function ($request, $response, $args) use ($app) {
     $renderer = new PhpRenderer("templates/kioskDevices/");
     $pageObjects = ["sRootPath" => $_SESSION['sRootPath']];
     return $renderer->render($response, "sunday-school-class-view.php", $pageObjects);
-  });
+});
 
 
   $app->get('/heartbeat', fn($request, $response, $args) => json_encode($app->kiosk->heartbeat(), JSON_THROW_ON_ERROR));
@@ -42,15 +41,13 @@ $app->get('/', function ($request, $response, $args) use ($app) {
     $Status = $Notification->send();
 
     return $response->withJson($Status);
-  });
+   });
 
 
    $app->get('/activeClassMembers', fn($request, $response, $args) => $app->kiosk->getActiveAssignment()->getActiveGroupMembers()->toJSON());
 
 
-  $app->get('/activeClassMember/{PersonId}/photo', function (ServerRequestInterface  $request, ResponseInterface  $response, $args) use ($app) {
-    $photo = new Photo("Person",$args['PersonId']);
+   $app->get('/activeClassMember/{PersonId}/photo', function (ServerRequestInterface  $request, ResponseInterface  $response, $args) use ($app) {
+    $photo = new Photo("Person", $args['PersonId']);
     return $response->write($photo->getPhotoBytes())->withHeader('Content-type', $photo->getPhotoContentType());
-  });
-
-
+   });

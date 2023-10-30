@@ -92,10 +92,10 @@ $numRows = mysqli_num_rows($rsOpps);
             //          foreach($aRow as $t)echo "$t\n\r";?>
           <option value="<?php echo $type_id ?>" <?php if ($type_id == $eType) {
                 echo 'selected';
-            } ?>><?= $type_name ?></option>
-          <?php
+                         } ?>><?= $type_name ?></option>
+            <?php
         }
-         ?>
+        ?>
          </select>
 </td>
 
@@ -130,10 +130,10 @@ for ($r = 1; $r <= $numRows; $r++) {
             ?>
           <option value="<?php echo $Yr[$r] ?>" <?php if ($Yr[$r] == $EventYear) {
                 echo 'selected';
-            } ?>><?= $Yr[$r] ?></option>
-          <?php
+                         } ?>><?= $Yr[$r] ?></option>
+            <?php
         }
-         ?>
+        ?>
          </select>
     </form>
 </td>
@@ -206,7 +206,7 @@ foreach ($allMonths as $mKey => $mVal) {
         <?php if (AuthenticationManager::GetCurrentUser()->isAddEvent()) {
             ?>
         <th><?= gettext('Action') ?></th>
-        <?php
+            <?php
         } ?>
         <th><?= gettext('Description') ?></th>
         <th><?= gettext('Event Type') ?></th>
@@ -216,7 +216,7 @@ foreach ($allMonths as $mKey => $mVal) {
       </tr>
     </thead>
     <tbody>
-      <?php
+        <?php
         for ($row = 1; $row <= $numRows; $row++) {
             ?>
           <tr>
@@ -254,16 +254,16 @@ foreach ($allMonths as $mKey => $mVal) {
                 </tr>
               </table>
             </td>
-            <?php
+                <?php
             } ?>
             <td>
               <?= $aEventTitle[$row] ?>
               <?= ($aEventDesc[$row] == '' ? '&nbsp;' : $aEventDesc[$row]) ?>
               <?php if ($aEventText[$row] != '') {
-                ?>
+                    ?>
                 <div class='text-bold'><a href="javascript:popUp('GetText.php?EID=<?=$aEventID[$row]?>')"><?= gettext("Sermon Text") ?></a></div>
-              <?php
-            } ?>
+                    <?php
+              } ?>
             </td>
             <td><?= $aEventType[$row] ?></td>
             <td>
@@ -272,30 +272,30 @@ foreach ($allMonths as $mKey => $mVal) {
                   <?php
                     // RETRIEVE THE list of counts associated with the current event
                     $cvSQL = "SELECT * FROM eventcounts_evtcnt WHERE evtcnt_eventid='$aEventID[$row]' ORDER BY evtcnt_countid ASC";
-            $cvOpps = RunQuery($cvSQL);
-            $aNumCounts = mysqli_num_rows($cvOpps);
+                    $cvOpps = RunQuery($cvSQL);
+                    $aNumCounts = mysqli_num_rows($cvOpps);
 
-            if ($aNumCounts) {
-                for ($c = 0; $c < $aNumCounts; $c++) {
-                    $cRow = mysqli_fetch_array($cvOpps, MYSQLI_BOTH);
-                    extract($cRow);
-                    $cCountID[$c] = $evtcnt_countid;
-                    $cCountName[$c] = $evtcnt_countname;
-                    $cCount[$c] = $evtcnt_countcount;
-                    $cCountNotes = $evtcnt_notes; ?>
+                    if ($aNumCounts) {
+                        for ($c = 0; $c < $aNumCounts; $c++) {
+                            $cRow = mysqli_fetch_array($cvOpps, MYSQLI_BOTH);
+                            extract($cRow);
+                            $cCountID[$c] = $evtcnt_countid;
+                            $cCountName[$c] = $evtcnt_countname;
+                            $cCount[$c] = $evtcnt_countcount;
+                            $cCountNotes = $evtcnt_notes; ?>
                         <td>
                           <div class='text-bold'><?= $evtcnt_countname ?></div>
                           <div><?= $evtcnt_countcount ?></div>
                         </td>
-                        <?php
-                }
-            } else {
-                ?>
+                                <?php
+                        }
+                    } else {
+                        ?>
                       <td>
                         <?= gettext('No Attendance Recorded') ?>
                       </td>
-                      <?php
-            } ?>
+                        <?php
+                    } ?>
                 </tr>
               </table>
             </td>
@@ -307,7 +307,7 @@ foreach ($allMonths as $mKey => $mVal) {
             </td>
 
           </tr>
-          <?php
+            <?php
         } // end of for loop for # rows for this month
 
         // calculate averages if this is a single type list
@@ -331,19 +331,19 @@ foreach ($allMonths as $mKey => $mVal) {
                     <strong>AVG<br><?= $avgName ?></strong>
                     <br><?= sprintf('%01.2f', $avgAvg) ?></span>
                   </td>
-                  <?php
+                    <?php
                 } ?>
               </div>
             </td>
             <td class="TextColumn" colspan="3"></td>
           </tr>
-          <?php
+            <?php
         } ?>
       </tbody>
     </table>
   </div>
   </div>
-  <?php
+        <?php
     }
 } // end for-each month loop
 ?>

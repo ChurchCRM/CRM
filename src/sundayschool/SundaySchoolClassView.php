@@ -85,7 +85,7 @@ require '../Include/Header.php';
 
     if (AuthenticationManager::GetCurrentUser()->isEmailEnabled()) { // Does user have permission to email groups
       // Display link
-      ?>
+        ?>
       <div class="btn-group">
         <a class="btn btn-app" href="mailto:<?= mb_substr($sEmailLink, 0, -3) ?>"><i
             class="fa fa-paper-plane"></i><?= gettext('Email') ?></a>
@@ -109,14 +109,14 @@ require '../Include/Header.php';
           <?php generateGroupRoleEmailDropdown($roleEmails, 'mailto:?bcc=') ?>
         </ul>
       </div>
-<?php
+        <?php
     }
     ?>
     <!-- <a class="btn btn-success" data-toggle="modal" data-target="#compose-modal"><i class="fas fa-pen"></i> Compose Message</a>  This doesn't really work right now...-->
     <a class="btn btn-app" href="../GroupView.php?GroupID=<?= $iGroupId ?>"><i
         class="fa fa-user-plus"></i><?= gettext('Add Students') ?> </a>
 
-	<a class="btn btn-app" href="../GroupEditor.php?GroupID=<?= $iGroupId?>"><i class="fas fa-pen"></i><?= gettext("Edit this Class") ?></a>
+    <a class="btn btn-app" href="../GroupEditor.php?GroupID=<?= $iGroupId?>"><i class="fas fa-pen"></i><?= gettext("Edit this Class") ?></a>
   </div>
 </div>
 
@@ -142,7 +142,7 @@ require '../Include/Header.php';
           </div>
         </div>
       </div>
-    <?php
+        <?php
     } ?>
   </div>
 </div>
@@ -219,9 +219,9 @@ require '../Include/Header.php';
       <tbody>
       <?php
 
-      foreach ($thisClassChildren as $child) {
-          $hideAge = $child['flags'] == 1 || $child['birthYear'] == '' || $child['birthYear'] == '0';
-          $birthDate = MiscUtils::FormatBirthDate($child['birthYear'], $child['birthMonth'], $child['birthDay'], '-', $child['flags']); ?>
+        foreach ($thisClassChildren as $child) {
+            $hideAge = $child['flags'] == 1 || $child['birthYear'] == '' || $child['birthYear'] == '0';
+            $birthDate = MiscUtils::FormatBirthDate($child['birthYear'], $child['birthMonth'], $child['birthDay'], '-', $child['flags']); ?>
           <tr>
           <td>
             <img src="<?= SystemURLs::getRootPath(); ?>/api/person/<?= $child['kidId'] ?>/thumbnail"
@@ -242,10 +242,10 @@ require '../Include/Header.php';
           <td><?= $child['momEmail'] ?></td>
           </tr>
 
-      <?php
-      }
+            <?php
+        }
 
-      ?>
+        ?>
       </tbody>
     </table>
   </div>
@@ -253,21 +253,21 @@ require '../Include/Header.php';
 
 <?php
 function implodeUnique($array, $withQuotes)
-      {
+{
           array_unique($array);
           asort($array);
-          if (count($array) > 0) {
-              if ($withQuotes) {
-                  $string = implode("','", $array);
+    if (count($array) > 0) {
+        if ($withQuotes) {
+            $string = implode("','", $array);
 
-                  return "'".$string."'";
-              } else {
-                  return implode(',', $array);
-              }
-          }
+            return "'".$string."'";
+        } else {
+            return implode(',', $array);
+        }
+    }
 
           return '';
-      }
+}
 
 ?>
 

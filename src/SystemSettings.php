@@ -43,27 +43,27 @@ if (isset($_POST['save'])) {
     while ($current_type = current($type)) {
         $id = key($type);
         // Filter Input
-    if ($id == $iHTMLHeaderRow) {  // Special handling of header value so HTML doesn't get removed
-      $value = InputUtils::FilterHTML($new_value[$id]);
-    } elseif ($current_type == 'text' || $current_type == 'textarea' || $current_type == 'password') {
-        $value = InputUtils::FilterString($new_value[$id]);
-    } elseif ($current_type == 'number') {
-        $value = InputUtils::FilterFloat($new_value[$id]);
-    } elseif ($current_type == 'date') {
-        $value = InputUtils::FilterDate($new_value[$id]);
-    } elseif ($current_type == 'json') {
-        $value = $new_value[$id];
-    } elseif ($current_type == 'choice') {
-        $value = InputUtils::FilterString($new_value[$id]);
-    } elseif ($current_type == 'ajax') {
-        $value = InputUtils::FilterString($new_value[$id]);
-    } elseif ($current_type == 'boolean') {
-        if ($new_value[$id] != '1') {
-            $value = '';
-        } else {
-            $value = '1';
+        if ($id == $iHTMLHeaderRow) {  // Special handling of header value so HTML doesn't get removed
+            $value = InputUtils::FilterHTML($new_value[$id]);
+        } elseif ($current_type == 'text' || $current_type == 'textarea' || $current_type == 'password') {
+            $value = InputUtils::FilterString($new_value[$id]);
+        } elseif ($current_type == 'number') {
+            $value = InputUtils::FilterFloat($new_value[$id]);
+        } elseif ($current_type == 'date') {
+            $value = InputUtils::FilterDate($new_value[$id]);
+        } elseif ($current_type == 'json') {
+            $value = $new_value[$id];
+        } elseif ($current_type == 'choice') {
+            $value = InputUtils::FilterString($new_value[$id]);
+        } elseif ($current_type == 'ajax') {
+            $value = InputUtils::FilterString($new_value[$id]);
+        } elseif ($current_type == 'boolean') {
+            if ($new_value[$id] != '1') {
+                $value = '';
+            } else {
+                $value = '1';
+            }
         }
-    }
 
         // If changing the locale, translate the menu options
         if ($id == 39 && $value != Bootstrapper::GetCurrentLocale()->getLocale()) {
@@ -114,14 +114,14 @@ require 'Include/Header.php';
   <div class="col-2 col-sm-2">
     <div class="nav flex-column nav-tabs h-100" id="vert-tabs-tab" role="tablist" aria-orientation="vertical">
       <?php foreach (SystemConfig::getCategories() as $category => $settings) {
-    $navItemId = str_replace(" ", '', $category);
-    $shouldBeSelected = false;
-    if ($category == 'Church Information') {
-        $shouldBeSelected = true;
-    } ?>
+            $navItemId = str_replace(" ", '', $category);
+            $shouldBeSelected = false;
+            if ($category == 'Church Information') {
+                $shouldBeSelected = true;
+            } ?>
         <a class="nav-link <?= $shouldBeSelected ? "active" : "" ?>" id="<?= $navItemId ?>-tab" data-toggle="pill" href="#<?= $navItemId ?>" role="tab" aria-controls="vert-tabs-profile" aria-selected="<?= $shouldBeSelected ?>"><?= gettext($category) ?></a>
-      <?php
-} ?>
+            <?php
+      } ?>
       <hr>
       <input type='submit' class='btn btn-sm btn-primary' name='save' id='save' value="<?= gettext('Save Settings') ?>">
     </div>
@@ -129,12 +129,12 @@ require 'Include/Header.php';
   </div>
   <div class="col-7 col-sm-9">
     <div class="tab-content" id="vert-tabs-tabContent">
-      <?php foreach (SystemConfig::getCategories() as  $category => $settings) {
-        $navItemId = str_replace(" ", '', $category);
-        $shouldBeSelected = false;
-        if ($category == 'Church Information') {
-            $shouldBeSelected = true;
-        } ?>
+      <?php foreach (SystemConfig::getCategories() as $category => $settings) {
+            $navItemId = str_replace(" ", '', $category);
+            $shouldBeSelected = false;
+            if ($category == 'Church Information') {
+                $shouldBeSelected = true;
+            } ?>
         <div class="tab-pane fade <?= $shouldBeSelected ? "show active" : "" ?>" id="<?= $navItemId ?>" role="tabpanel" aria-labelledby="<?= $navItemId ?>-tab">
           <div class="table-responsive">
             <table class="table table-striped">
@@ -144,9 +144,9 @@ require 'Include/Header.php';
                 <th><?= gettext('Default Value') ?></th>
               </tr>
               <?php
-              foreach ($settings as $settingName) {
-                  $setting = SystemConfig::getConfigItem($settingName)
-              ?>
+                foreach ($settings as $settingName) {
+                    $setting = SystemConfig::getConfigItem($settingName)
+                    ?>
                 <tr>
                   <td><?= $setting->getName() ?></td>
                   <input type=hidden name='type[<?= $setting->getId() ?>]' value='<?= $setting->getType() ?>'>
@@ -169,23 +169,23 @@ require 'Include/Header.php';
                             echo '<option value = "' . $value . '" ' . ($setting->getValue() == $value ? 'selected' : '') . '>' . $text . '</option>';
                         } ?>
                       </select>
-                    <?php
+                        <?php
                     } elseif ($setting->getType() == 'text') {
                         ?>
                       <input type=text size=40 maxlength=255 name='new_value[<?= $setting->getId() ?>]' value='<?= htmlspecialchars($setting->getValue(), ENT_QUOTES) ?>' class="form-control">
-                    <?php
+                        <?php
                     } elseif ($setting->getType() == 'password') {
                         ?>
                       <input type=password size=40 maxlength=255 name='new_value[<?= $setting->getId() ?>]' value='<?= htmlspecialchars($setting->getValue(), ENT_QUOTES) ?>' class="form-control">
-                    <?php
+                        <?php
                     } elseif ($setting->getType() == 'textarea') {
                         ?>
                       <textarea rows=4 cols=40 name='new_value[<?= $setting->getId() ?>]' class="form-control"><?= htmlspecialchars($setting->getValue(), ENT_QUOTES) ?></textarea>
-                    <?php
+                        <?php
                     } elseif ($setting->getType() == 'number' || $setting->getType() == 'date') {
                         ?>
                       <input type=text size=40 maxlength=15 name='new_value[<?= $setting->getId() ?>]' value='<?= $setting->getValue() ?>' class="form-control">
-                    <?php
+                        <?php
                     } elseif ($setting->getType() == 'boolean') {
                         if ($setting->getValue()) {
                             $sel1 = '';
@@ -198,55 +198,55 @@ require 'Include/Header.php';
                         <option value='' <?= $sel1 ?>><?= gettext('False') ?>
                         <option value='1' <?= $sel2 ?>><?= gettext('True') ?>
                       </select>
-                    <?php
+                        <?php
                     } elseif ($setting->getType() == 'json') {
                         ?>
                       <input type="hidden" name='new_value[<?= $setting->getId() ?>]' value='<?= $setting->getValue() ?>'>
                       <button class="btn-primary jsonSettingsEdit" id="set_value<?= $setting->getId() ?>" data-cfgid="<?= $setting->getId() ?>"><?= gettext('Edit Settings') ?>
                       </button>
-                    <?php
+                        <?php
                     } elseif ($setting->getType() == 'ajax') {
                         ?>
                       <select id='ajax-<?= $setting->getId() ?>' name='new_value[<?= $setting->getId() ?>]' data-url="<?= $setting->getData() ?>" data-value="<?= $setting->getValue() ?>" class="choiceSelectBox" style="width: 100%">
                         <option value=''><?= gettext('Unassigned') ?>
                       </select>
-                    <?php
+                        <?php
                     } else {
                         echo gettext("Unknown Type") . " " . $setting->getType();
                     } ?>
                   </td>
-                  <?php
-                  // Default Value
-                  $display_default = $setting->getDefault();
-                  if ($setting->getType() == 'boolean') {
-                      if ($setting->getDefault()) {
-                          $display_default = 'True';
-                      } else {
-                          $display_default = 'False';
-                      }
-                  } ?>
+                    <?php
+                    // Default Value
+                    $display_default = $setting->getDefault();
+                    if ($setting->getType() == 'boolean') {
+                        if ($setting->getDefault()) {
+                            $display_default = 'True';
+                        } else {
+                            $display_default = 'False';
+                        }
+                    } ?>
                   <td>
                     <?php if (!empty($setting->getTooltip())) {
-                      ?>
+                        ?>
                       <a class="setting-tip" data-tip="<?= $setting->getTooltip() ?>"><i class="fa fa-fw fa-question-circle"></i></a>
-                    <?php
-                  }
-                  if (!empty($setting->getUrl())) {
-                      ?>
+                        <?php
+                    }
+                    if (!empty($setting->getUrl())) {
+                        ?>
                       <a href="<?= $setting->getUrl() ?>" target="_blank"><i class="fa fa-fw fa-link"></i></a>
-                    <?php
-                  } ?>
+                        <?php
+                    } ?>
                     <?= $display_default ?>
                   </td>
                 </tr>
-              <?php
-              } ?>
+                    <?php
+                } ?>
             </table>
           </div>
         </div>
-      <?php
-    }
-      ?>
+            <?php
+      }
+        ?>
     </div>
   </div>
 </div>
@@ -273,7 +273,7 @@ require 'Include/Header.php';
             if ($setting->getType() == 'ajax') {
                 ?>
           updateDropDrownFromAjax($('#ajax-<?= $setting->getId() ?>'));
-    <?php
+                <?php
             }
         }
     } ?>

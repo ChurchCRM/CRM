@@ -125,8 +125,8 @@ require 'Include/Header.php';
 
       <p align="center">
         <input type="checkbox" value="1" name="Private" <?php if ($bPrivate != 0) {
-    echo 'checked';
-} ?>>&nbsp;<?= gettext('Private') ?>
+            echo 'checked';
+                                                        } ?>>&nbsp;<?= gettext('Private') ?>
       </p>
     </div>
   </div>

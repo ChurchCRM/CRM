@@ -2,7 +2,6 @@
 
 namespace ChurchCRM\Emails;
 
-
 class UnlockedEmail extends BaseUserEmail
 {
 

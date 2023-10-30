@@ -59,7 +59,17 @@ while ($aRow = mysqli_fetch_array($rsPropertyTypes)) {
     echo '<tr class="'.$sRowClass.'">';
     echo '<td>'.$prt_Name.'</td>';
     echo '<td>';
-    switch ($prt_Class) { case 'p': echo gettext('Person'); break; case 'f': echo gettext('Family'); break; case 'g': echo gettext('Group'); break; }
+    switch ($prt_Class) {
+        case 'p':
+            echo gettext('Person');
+            break;
+        case 'f':
+            echo gettext('Family');
+            break;
+        case 'g':
+            echo gettext('Group');
+            break;
+    }
     echo '<td align="center">'.$Properties.'</td>';
     if (AuthenticationManager::GetCurrentUser()->isMenuOptionsEnabled()) {
         echo "<td><a class='btn btn-info' href=\"PropertyTypeEditor.php?PropertyTypeID=".$prt_ID.'">'.gettext('Edit').'</a></td>';

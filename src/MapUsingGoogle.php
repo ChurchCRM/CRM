@@ -32,44 +32,44 @@ $iGroupID = InputUtils::LegacyFilterInput($_GET['GroupID'], 'int');
     </div>
     <?php
 } else {
-        if (SystemConfig::getValue('sGoogleMapsRenderKey') == '') {
-            ?>
+    if (SystemConfig::getValue('sGoogleMapsRenderKey') == '') {
+        ?>
         <div class="callout callout-warning">
           <a href="<?= SystemURLs::getRootPath() ?>/SystemSettings.php"><?= gettext('Google Map API key is not set. The Map will work for smaller set of locations. Please create a Key in the maps sections of the setting menu.') ?></a>
         </div>
         <?php
-        }
+    }
 
         $plotFamily = false;
         //Get the details from DB
         $dirRoleHead = SystemConfig::getValue('sDirRoleHead');
 
-        if ($iGroupID > 0) {
-            //Get all the members of this group
+    if ($iGroupID > 0) {
+        //Get all the members of this group
+        $persons = PersonQuery::create()
+        ->usePerson2group2roleP2g2rQuery()
+        ->filterByGroupId($iGroupID)
+        ->endUse()
+        ->find();
+    } elseif ($iGroupID == 0) {
+        // group zero means map the cart
+        if (!empty($_SESSION['aPeopleCart'])) {
             $persons = PersonQuery::create()
-            ->usePerson2group2roleP2g2rQuery()
-            ->filterByGroupId($iGroupID)
-            ->endUse()
+            ->filterById($_SESSION['aPeopleCart'])
             ->find();
-        } elseif ($iGroupID == 0) {
-            // group zero means map the cart
-            if (!empty($_SESSION['aPeopleCart'])) {
-                $persons = PersonQuery::create()
-                ->filterById($_SESSION['aPeopleCart'])
-                ->find();
-            }
-        } else {
-            //Map all the families
-            $families = FamilyQuery::create()
-            ->filterByDateDeactivated(null)
-            ->filterByLatitude(0, Criteria::NOT_EQUAL)
-            ->filterByLongitude(0, Criteria::NOT_EQUAL)
-            ->usePersonQuery('per')
-            ->filterByFmrId($dirRoleHead)
-            ->endUse()
-            ->find();
-            $plotFamily = true;
         }
+    } else {
+        //Map all the families
+        $families = FamilyQuery::create()
+        ->filterByDateDeactivated(null)
+        ->filterByLatitude(0, Criteria::NOT_EQUAL)
+        ->filterByLongitude(0, Criteria::NOT_EQUAL)
+        ->usePersonQuery('per')
+        ->filterByFmrId($dirRoleHead)
+        ->endUse()
+        ->find();
+        $plotFamily = true;
+    }
 
         //Markericons list
         $icons = Classification::getAll();
@@ -216,43 +216,43 @@ $iGroupID = InputUtils::LegacyFilterInput($_GET['GroupID'], 'int');
 
             <?php
             $arr = [];
-        $arrPlotItems = [];
-        if ($plotFamily) {
-            foreach ($families as $family) {
-                if ($family->hasLatitudeAndLongitude()) {
-                    //this helps to add head people persons details: otherwise doesn't seems to populate
-                    $class = $family->getHeadPeople()[0];
-                    $family->getHeadPeople()[0];
-                    $photoFileThumb = SystemURLs::getRootPath() . '/api/family/' . $family->getId() . '/photo';
-                    $arr['ID'] = $family->getId();
-                    $arr['Name'] = $family->getName();
-                    $arr['Salutation'] = $family->getSalutation();
-                    $arr['Address'] = $family->getAddress();
+            $arrPlotItems = [];
+            if ($plotFamily) {
+                foreach ($families as $family) {
+                    if ($family->hasLatitudeAndLongitude()) {
+                        //this helps to add head people persons details: otherwise doesn't seems to populate
+                        $class = $family->getHeadPeople()[0];
+                        $family->getHeadPeople()[0];
+                        $photoFileThumb = SystemURLs::getRootPath() . '/api/family/' . $family->getId() . '/photo';
+                        $arr['ID'] = $family->getId();
+                        $arr['Name'] = $family->getName();
+                        $arr['Salutation'] = $family->getSalutation();
+                        $arr['Address'] = $family->getAddress();
+                        $arr['Thumbnail'] = $photoFileThumb;
+                        $arr['Latitude'] = $family->getLatitude();
+                        $arr['Longitude'] = $family->getLongitude();
+                        $arr['Name'] = $family->getName();
+                        $arr['Classification'] = $class->GetClsId();
+                        array_push($arrPlotItems, $arr);
+                    }
+                }
+            } else {
+                //plot Person
+                foreach ($persons as $member) {
+                    $latLng = $member->getLatLng();
+                    $photoFileThumb = SystemURLs::getRootPath() . '/api/person/' . $member->getId() . '/thumbnail';
+                    $arr['ID'] = $member->getId();
+                    $arr['Salutation'] = $member->getFullName();
+                    $arr['Name'] = $member->getFullName();
+                    $arr['Address'] = $member->getAddress();
                     $arr['Thumbnail'] = $photoFileThumb;
-                    $arr['Latitude'] = $family->getLatitude();
-                    $arr['Longitude'] = $family->getLongitude();
-                    $arr['Name'] = $family->getName();
-                    $arr['Classification'] = $class->GetClsId();
+                    $arr['Latitude'] = $latLng['Latitude'];
+                    $arr['Longitude'] = $latLng['Longitude'];
+                    $arr['Name'] = $member->getFullName();
+                    $arr['Classification'] = $member->getClsId();
                     array_push($arrPlotItems, $arr);
                 }
-            }
-        } else {
-            //plot Person
-            foreach ($persons as $member) {
-                $latLng = $member->getLatLng();
-                $photoFileThumb = SystemURLs::getRootPath() . '/api/person/' . $member->getId() . '/thumbnail';
-                $arr['ID'] = $member->getId();
-                $arr['Salutation'] = $member->getFullName();
-                $arr['Name'] = $member->getFullName();
-                $arr['Address'] = $member->getAddress();
-                $arr['Thumbnail'] = $photoFileThumb;
-                $arr['Latitude'] = $latLng['Latitude'];
-                $arr['Longitude'] = $latLng['Longitude'];
-                $arr['Name'] = $member->getFullName();
-                $arr['Classification'] = $member->getClsId();
-                array_push($arrPlotItems, $arr);
-            }
-        } //end IF $plotFamily
+            } //end IF $plotFamily
 
             ?>
 
@@ -312,5 +312,5 @@ $iGroupID = InputUtils::LegacyFilterInput($_GET['GroupID'], 'int');
 
     </script>
     <?php
-    }
+}
 require 'Include/Footer.php' ?>

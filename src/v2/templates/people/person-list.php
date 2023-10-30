@@ -21,19 +21,19 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
 // classification list
 $ListItem =  ListOptionQuery::create()->select('OptionName')->filterById(1)->find()->toArray();
 $ClassificationList[] = "Unassigned";
-foreach($ListItem as $element) {
+foreach ($ListItem as $element) {
     $ClassificationList[] = $element;
 }
 // role list
 $ListItem = ListOptionQuery::create()->select('OptionName')->filterById(2)->find()->toArray();
 $RoleList[] = "Unassigned";
-foreach($ListItem as $element) {
+foreach ($ListItem as $element) {
     $RoleList[] = $element;
 }
 // person properties list
 $ListItem = PropertyQuery::create()->filterByProClass("p")->find();
 $PropertyList[] = "Unassigned";
-foreach($ListItem as $element) {
+foreach ($ListItem as $element) {
     $PropertyList[] = $element->getProName();
 }
 // person custom list
@@ -98,7 +98,7 @@ foreach ($ListItem as $element) {
             <?php foreach ($members as $person) {
               /* @var $members ChurchCRM\people */
 
-    ?>
+                ?>
             <tr>
               <td>
                     <a href='<?= SystemURLs::getRootPath()?>/PersonView.php?PersonID=<?= $person->getId() ?>'>
@@ -109,20 +109,20 @@ foreach ($ListItem as $element) {
                     </a>
 
                     <?php if (!isset($_SESSION['aPeopleCart']) || !in_array($per_ID, $_SESSION['aPeopleCart'], false)) {
-                            ?>
+                        ?>
                             <a class="AddToPeopleCart" data-cartpersonid="<?= $person->getId() ?>">
                                 <i class="fa fa-cart-plus"></i>
                             </a>
                         </td>
-                      <?php
-                        } else {
-                            ?>
+                        <?php
+                    } else {
+                        ?>
                         <a class="RemoveFromPeopleCart" data-cartpersonid="<?= $person->getId() ?>">
                                     <i class="fa fa-remove"></i>
                             </a>
                             <?php
-                        }
-                            ?>
+                    }
+                    ?>
                 <td><?= $person->getId() ?></td>
                 <td><?= $person->getLastName()?></td>
                 <td><?= $person->getFirstName()?></td>
@@ -136,9 +136,9 @@ foreach ($ListItem as $element) {
                 <td><?= empty($person->getPropertiesString()) ? 'Unassigned': json_encode($person->getPropertiesString(), JSON_THROW_ON_ERROR) ?></td>
                 <td><?= empty($person->getCustomFields()) ? 'Unassigned': json_encode($person->getCustomFields(), JSON_THROW_ON_ERROR) ?></td>
                 <td><?= empty($person->getGroups()) ? 'Unassigned': json_encode($person->getGroups(), JSON_THROW_ON_ERROR) ?></td>
-<?php
-}
-                ?>
+                <?php
+            }
+            ?>
             </tr>
             </tbody>
         </table>

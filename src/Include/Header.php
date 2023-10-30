@@ -35,12 +35,12 @@ $MenuFirst = 1;
 <!-- Site wrapper -->
 <div class="wrapper">
   <?php
-  Header_modals();
-  Header_body_scripts();
+    Header_modals();
+    Header_body_scripts();
 
-  $loggedInUserPhoto = SystemURLs::getRootPath().'/api/person/'.AuthenticationManager::GetCurrentUser()->getId().'/thumbnail';
-  $MenuFirst = 1;
-  ?>
+    $loggedInUserPhoto = SystemURLs::getRootPath().'/api/person/'.AuthenticationManager::GetCurrentUser()->getId().'/thumbnail';
+    $MenuFirst = 1;
+    ?>
 
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
         <!-- Left navbar links -->
@@ -187,12 +187,12 @@ $MenuFirst = 1;
           <img src="<?= SystemURLs::getRootPath() ?>/Images/CRM_50x50.png" alt="ChurchCRM Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
           <!-- logo for regular state and mobile devices -->
           <?php
-          $headerHTML = '<b>Church</b>CRM';
-          $sHeader = SystemConfig::getValue("sHeader");
-          if (!empty($sHeader)) {
-              $headerHTML = html_entity_decode($sHeader, ENT_QUOTES);
-          }
-          ?>
+            $headerHTML = '<b>Church</b>CRM';
+            $sHeader = SystemConfig::getValue("sHeader");
+            if (!empty($sHeader)) {
+                $headerHTML = html_entity_decode($sHeader, ENT_QUOTES);
+            }
+            ?>
           <span class="brand-text font-weight-light"><?= $headerHTML ?></span>
       </a>
     <!-- sidebar: style can be found in sidebar.less -->

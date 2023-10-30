@@ -13,7 +13,6 @@ use Slim\Http\Request;
 use Slim\Http\Response;
 use ChurchCRM\Utils\LoggerUtils;
 
-
 $app->group('/forgot-password', function () use ($app) {
     if (SystemConfig::getBooleanValue('bEnableLostPassword')) {
         $app->get('/reset-request', "forgotPassword");
@@ -43,8 +42,7 @@ $app->group('/forgot-password', function () use ($app) {
 
             return $renderer->render($response, "error.php", ["message" => gettext("Unable to reset password")]);
         });
-    }
-    else {
+    } else {
         $app->get('/{foo:.*}', function ($request, $response, $args) {
             $renderer = new PhpRenderer('templates');
             return $renderer->render($response, '/error.php', ["message" => gettext("Password reset not available.  Please contact your system administrator")]);
@@ -53,7 +51,8 @@ $app->group('/forgot-password', function () use ($app) {
 });
 
 
-function forgotPassword($request, $response, $args) {
+function forgotPassword($request, $response, $args)
+{
     $renderer = new PhpRenderer('templates/password/');
     $pageArgs = [
         'sRootPath' => SystemURLs::getRootPath(),

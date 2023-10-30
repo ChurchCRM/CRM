@@ -458,7 +458,6 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
     // Set the envelope in case the form failed.
     $per_Envelope = $iEnvelope;
 } else {
-
     //FirstPass
     //Are we editing or adding?
     if ($iPersonID > 0) {
@@ -613,14 +612,14 @@ require 'Include/Header.php';
                 style="color: red;"><?= gettext('Red text') ?></span></strong> <?php echo gettext('indicates items inherited from the associated family record.'); ?>
     </div>
     <?php if ($bErrorFlag) {
-    ?>
+        ?>
         <div class="alert alert-danger alert-dismissable">
             <i class="fa fa-ban"></i>
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
             <?= gettext('Invalid fields or selections. Changes not saved! Please correct and try again!') ?>
         </div>
-    <?php
-} ?>
+        <?php
+    } ?>
     <div class="card card-info clearfix">
         <div class="card-header">
             <h3 class="card-title"><?= gettext('Personal Info') ?></h3>
@@ -637,11 +636,11 @@ require 'Include/Header.php';
                             <option value="0"><?= gettext('Select Gender') ?></option>
                             <option value="0" disabled>-----------------------</option>
                             <option value="1" <?php if ($iGender == 1) {
-        echo 'selected';
-    } ?>><?= gettext('Male') ?></option>
+                                echo 'selected';
+                                              } ?>><?= gettext('Male') ?></option>
                             <option value="2" <?php if ($iGender == 2) {
-        echo 'selected';
-    } ?>><?= gettext('Female') ?></option>
+                                echo 'selected';
+                                              } ?>><?= gettext('Female') ?></option>
                         </select>
                     </div>
                     <div class="col-md-3">
@@ -659,8 +658,8 @@ require 'Include/Header.php';
                                value="<?= htmlentities(stripslashes($sFirstName), ENT_NOQUOTES, 'UTF-8') ?>"
                                class="form-control">
                         <?php if ($sFirstNameError) {
-        ?><br><span style="color: red;"><?php echo $sFirstNameError ?></span><?php
-    } ?>
+                            ?><br><span style="color: red;"><?php echo $sFirstNameError ?></span><?php
+                        } ?>
                     </div>
 
                     <div class="col-md-2">
@@ -669,8 +668,8 @@ require 'Include/Header.php';
                                value="<?= htmlentities(stripslashes($sMiddleName), ENT_NOQUOTES, 'UTF-8') ?>"
                                class="form-control">
                         <?php if ($sMiddleNameError) {
-        ?><br><span style="color: red;"><?php echo $sMiddleNameError ?></span><?php
-    } ?>
+                            ?><br><span style="color: red;"><?php echo $sMiddleNameError ?></span><?php
+                        } ?>
                     </div>
 
                     <div class="col-md-4">
@@ -679,8 +678,8 @@ require 'Include/Header.php';
                                value="<?= htmlentities(stripslashes($sLastName), ENT_NOQUOTES, 'UTF-8') ?>"
                                class="form-control">
                         <?php if ($sLastNameError) {
-        ?><br><span style="color: red;"><?php echo $sLastNameError ?></span><?php
-    } ?>
+                            ?><br><span style="color: red;"><?php echo $sLastNameError ?></span><?php
+                        } ?>
                     </div>
 
                     <div class="col-md-1">
@@ -696,44 +695,44 @@ require 'Include/Header.php';
                         <label><?= gettext('Birth Month') ?>:</label>
                         <select id="BirthMonth" name="BirthMonth" class="form-control">
                             <option value="0" <?php if ($iBirthMonth == 0) {
-        echo 'selected';
-    } ?>><?= gettext('Select Month') ?></option>
+                                echo 'selected';
+                                              } ?>><?= gettext('Select Month') ?></option>
                             <option value="01" <?php if ($iBirthMonth == 1) {
-        echo 'selected';
-    } ?>><?= gettext('January') ?></option>
+                                echo 'selected';
+                                               } ?>><?= gettext('January') ?></option>
                             <option value="02" <?php if ($iBirthMonth == 2) {
-        echo 'selected';
-    } ?>><?= gettext('February') ?></option>
+                                echo 'selected';
+                                               } ?>><?= gettext('February') ?></option>
                             <option value="03" <?php if ($iBirthMonth == 3) {
-        echo 'selected';
-    } ?>><?= gettext('March') ?></option>
+                                echo 'selected';
+                                               } ?>><?= gettext('March') ?></option>
                             <option value="04" <?php if ($iBirthMonth == 4) {
-        echo 'selected';
-    } ?>><?= gettext('April') ?></option>
+                                echo 'selected';
+                                               } ?>><?= gettext('April') ?></option>
                             <option value="05" <?php if ($iBirthMonth == 5) {
-        echo 'selected';
-    } ?>><?= gettext('May') ?></option>
+                                echo 'selected';
+                                               } ?>><?= gettext('May') ?></option>
                             <option value="06" <?php if ($iBirthMonth == 6) {
-        echo 'selected';
-    } ?>><?= gettext('June') ?></option>
+                                echo 'selected';
+                                               } ?>><?= gettext('June') ?></option>
                             <option value="07" <?php if ($iBirthMonth == 7) {
-        echo 'selected';
-    } ?>><?= gettext('July') ?></option>
+                                echo 'selected';
+                                               } ?>><?= gettext('July') ?></option>
                             <option value="08" <?php if ($iBirthMonth == 8) {
-        echo 'selected';
-    } ?>><?= gettext('August') ?></option>
+                                echo 'selected';
+                                               } ?>><?= gettext('August') ?></option>
                             <option value="09" <?php if ($iBirthMonth == 9) {
-        echo 'selected';
-    } ?>><?= gettext('September') ?></option>
+                                echo 'selected';
+                                               } ?>><?= gettext('September') ?></option>
                             <option value="10" <?php if ($iBirthMonth == 10) {
-        echo 'selected';
-    } ?>><?= gettext('October') ?></option>
+                                echo 'selected';
+                                               } ?>><?= gettext('October') ?></option>
                             <option value="11" <?php if ($iBirthMonth == 11) {
-        echo 'selected';
-    } ?>><?= gettext('November') ?></option>
+                                echo 'selected';
+                                               } ?>><?= gettext('November') ?></option>
                             <option value="12" <?php if ($iBirthMonth == 12) {
-        echo 'selected';
-    } ?>><?= gettext('December') ?></option>
+                                echo 'selected';
+                                               } ?>><?= gettext('December') ?></option>
                         </select>
                     </div>
                     <div class="col-md-2">
@@ -741,16 +740,16 @@ require 'Include/Header.php';
                         <select id="BirthDay" name="BirthDay" class="form-control">
                             <option value="0"><?= gettext('Select Day') ?></option>
                             <?php for ($x = 1; $x < 32; $x++) {
-        if ($x < 10) {
-            $sDay = '0'.$x;
-        } else {
-            $sDay = $x;
-        } ?>
+                                if ($x < 10) {
+                                    $sDay = '0'.$x;
+                                } else {
+                                    $sDay = $x;
+                                } ?>
                                 <option value="<?= $sDay ?>" <?php if ($iBirthDay == $x) {
-            echo 'selected';
-        } ?>><?= $x ?></option>
-                            <?php
-    } ?>
+                                    echo 'selected';
+                                               } ?>><?= $x ?></option>
+                                <?php
+                            } ?>
                         </select>
                     </div>
                     <div class="col-md-2">
@@ -758,18 +757,18 @@ require 'Include/Header.php';
                         <input type="text" id="BirthYear" name="BirthYear" value="<?php echo $iBirthYear ?>" maxlength="4" size="5"
                                placeholder="yyyy" class="form-control">
                         <?php if ($sBirthYearError) {
-        ?><span style="color: red;"><br><?php echo $sBirthYearError ?>
+                            ?><span style="color: red;"><br><?php echo $sBirthYearError ?>
                             </span><?php
-    } ?>
+                        } ?>
                         <?php if ($sBirthDateError) {
-        ?><span style="color: red;"><?php echo $sBirthDateError ?></span><?php
-    } ?>
+                            ?><span style="color: red;"><?php echo $sBirthDateError ?></span><?php
+                        } ?>
                     </div>
                     <div class="col-md-2">
                         <label><?= gettext('Hide Age') ?></label><br/>
                         <input type="checkbox" name="HideAge" value="1" <?php if ($bHideAge) {
-        echo ' checked';
-    } ?> />
+                            echo ' checked';
+                                                                        } ?> />
                     </div>
                 </div>
             </div>
@@ -789,13 +788,13 @@ require 'Include/Header.php';
                     <option value="0"><?= gettext('Unassigned') ?></option>
                     <option value="0" disabled>-----------------------</option>
                     <?php while ($aRow = mysqli_fetch_array($rsFamilyRoles)) {
-        extract($aRow);
-        echo '<option value="'.$lst_OptionID.'"';
-        if ($iFamilyRole == $lst_OptionID) {
-            echo ' selected';
-        }
-        echo '>'.$lst_OptionName.'&nbsp;';
-    } ?>
+                        extract($aRow);
+                        echo '<option value="'.$lst_OptionID.'"';
+                        if ($iFamilyRole == $lst_OptionID) {
+                            echo ' selected';
+                        }
+                        echo '>'.$lst_OptionName.'&nbsp;';
+                    } ?>
                 </select>
             </div>
 
@@ -806,14 +805,14 @@ require 'Include/Header.php';
                     <option value="-1"><?= gettext('Create a new family (using last name)') ?></option>
                     <option value="0" disabled>-----------------------</option>
                     <?php while ($aRow = mysqli_fetch_array($rsFamilies)) {
-        extract($aRow);
+                        extract($aRow);
 
-        echo '<option value="'.$fam_ID.'"';
-        if ($iFamily == $fam_ID || $_GET['FamilyID'] == $fam_ID) {
-            echo ' selected';
-        }
-        echo '>'.$fam_Name.'&nbsp;'.FormatAddressLine($fam_Address1, $fam_City, $fam_State);
-    } ?>
+                        echo '<option value="'.$fam_ID.'"';
+                        if ($iFamily == $fam_ID || $_GET['FamilyID'] == $fam_ID) {
+                            echo ' selected';
+                        }
+                        echo '>'.$fam_Name.'&nbsp;'.FormatAddressLine($fam_Address1, $fam_City, $fam_State);
+                    } ?>
                 </select>
             </div>
         </div>
@@ -832,14 +831,14 @@ require 'Include/Header.php';
                         <div class="col-md-6">
                             <label>
                                 <?php if ($bFamilyAddress1) {
-        echo '<span style="color: red;">';
-    }
+                                    echo '<span style="color: red;">';
+                                }
 
-        echo gettext('Address').' 1:';
+                                echo gettext('Address').' 1:';
 
-        if ($bFamilyAddress1) {
-            echo '</span>';
-        } ?>
+                                if ($bFamilyAddress1) {
+                                    echo '</span>';
+                                } ?>
                             </label>
                             <input type="text" name="Address1"
                                    value="<?= htmlentities(stripslashes($sAddress1), ENT_NOQUOTES, 'UTF-8') ?>"
@@ -848,14 +847,14 @@ require 'Include/Header.php';
                         <div class="col-md-3">
                             <label>
                                 <?php if ($bFamilyAddress2) {
-            echo '<span style="color: red;">';
-        }
+                                    echo '<span style="color: red;">';
+                                }
 
-        echo gettext('Address').' 2:';
+                                echo gettext('Address').' 2:';
 
-        if ($bFamilyAddress2) {
-            echo '</span>';
-        } ?>
+                                if ($bFamilyAddress2) {
+                                    echo '</span>';
+                                } ?>
                             </label>
                             <input type="text" name="Address2"
                                    value="<?= htmlentities(stripslashes($sAddress2), ENT_NOQUOTES, 'UTF-8') ?>"
@@ -864,14 +863,14 @@ require 'Include/Header.php';
                         <div class="col-md-3">
                             <label>
                                 <?php if ($bFamilyCity) {
-            echo '<span style="color: red;">';
-        }
+                                    echo '<span style="color: red;">';
+                                }
 
-        echo gettext('City').':';
+                                echo gettext('City').':';
 
-        if ($bFamilyCity) {
-            echo '</span>';
-        } ?>
+                                if ($bFamilyCity) {
+                                    echo '</span>';
+                                } ?>
                             </label>
                             <input type="text" name="City"
                                    value="<?= htmlentities(stripslashes($sCity), ENT_NOQUOTES, 'UTF-8') ?>"
@@ -884,14 +883,14 @@ require 'Include/Header.php';
                     <div class="form-group col-md-2">
                         <label for="StatleTextBox">
                             <?php if ($bFamilyState) {
-            echo '<span style="color: red;">';
-        }
+                                echo '<span style="color: red;">';
+                            }
 
-        echo gettext('State').':';
+                            echo gettext('State').':';
 
-        if ($bFamilyState) {
-            echo '</span>';
-        } ?>
+                            if ($bFamilyState) {
+                                echo '</span>';
+                            } ?>
                         </label>
                         <?php require 'Include/StateDropDown.php'; ?>
                     </div>
@@ -899,22 +898,22 @@ require 'Include/Header.php';
                         <label><?= gettext('None State') ?>:</label>
                         <input type="text" name="StateTextbox"
                                value="<?php if ($sPhoneCountry != 'United States' && $sPhoneCountry != 'Canada') {
-            echo htmlentities(stripslashes($sState), ENT_NOQUOTES, 'UTF-8');
-        } ?>"
+                                    echo htmlentities(stripslashes($sState), ENT_NOQUOTES, 'UTF-8');
+                                      } ?>"
                                size="20" maxlength="30" class="form-control">
                     </div>
 
                     <div class="form-group col-md-1">
                         <label for="Zip">
                             <?php if ($bFamilyZip) {
-            echo '<span style="color: red;">';
-        }
+                                echo '<span style="color: red;">';
+                            }
 
-        echo gettext('Zip').':';
+                            echo gettext('Zip').':';
 
-        if ($bFamilyZip) {
-            echo '</span>';
-        } ?>
+                            if ($bFamilyZip) {
+                                echo '</span>';
+                            } ?>
                         </label>
                         <input type="text" name="Zip" class="form-control"
                             <?php
@@ -923,27 +922,27 @@ require 'Include/Header.php';
                                 echo 'style="text-transform:uppercase" ';
                             }
 
-        echo 'value="'.htmlentities(stripslashes($sZip), ENT_NOQUOTES, 'UTF-8').'" '; ?>
+                            echo 'value="'.htmlentities(stripslashes($sZip), ENT_NOQUOTES, 'UTF-8').'" '; ?>
                                maxlength="10" size="8">
                     </div>
                     <div class="form-group col-md-2">
                         <label for="Zip">
                             <?php if ($bFamilyCountry) {
-            echo '<span style="color: red;">';
-        }
+                                echo '<span style="color: red;">';
+                            }
 
-        echo gettext('Country').':';
+                            echo gettext('Country').':';
 
-        if ($bFamilyCountry) {
-            echo '</span>';
-        } ?>
+                            if ($bFamilyCountry) {
+                                echo '</span>';
+                            } ?>
                         </label>
                         <?php require 'Include/CountryDropDown.php'; ?>
                     </div>
                 </div>
                 <p/>
-            <?php
-    } else { // put the current values in hidden controls so they are not lost if hiding the person-specific info?>
+                <?php
+            } else { // put the current values in hidden controls so they are not lost if hiding the person-specific info?>
                 <input type="hidden" name="Address1"
                        value="<?= htmlentities(stripslashes($sAddress1), ENT_NOQUOTES, 'UTF-8') ?>"></input>
                 <input type="hidden" name="Address2"
@@ -958,8 +957,8 @@ require 'Include/Header.php';
                        value="<?= htmlentities(stripslashes($sZip), ENT_NOQUOTES, 'UTF-8') ?>"></input>
                 <input type="hidden" name="Country"
                        value="<?= htmlentities(stripslashes($sCountry), ENT_NOQUOTES, 'UTF-8') ?>"></input>
-            <?php
-    } ?>
+                    <?php
+            } ?>
             <div class="row">
                 <div class="form-group col-md-3">
                     <label for="HomePhone">
@@ -980,8 +979,8 @@ require 'Include/Header.php';
                                maxlength="30" class="form-control" data-inputmask='"mask": "<?= SystemConfig::getValue('sPhoneFormat')?>"' data-mask>
                         <br><input type="checkbox" name="NoFormat_HomePhone"
                                    value="1" <?php if ($bNoFormat_HomePhone) {
-                            echo ' checked';
-                        } ?>><?= gettext('Do not auto-format') ?>
+                                        echo ' checked';
+                                             } ?>><?= gettext('Do not auto-format') ?>
                     </div>
                 </div>
                 <div class="form-group col-md-3">
@@ -1004,8 +1003,8 @@ require 'Include/Header.php';
                                data-inputmask='"mask": "<?= SystemConfig::getValue('sPhoneFormatWithExt')?>"' data-mask/>
                         <br><input type="checkbox" name="NoFormat_WorkPhone"
                                    value="1" <?php if ($bNoFormat_WorkPhone) {
-                            echo ' checked';
-                        } ?>><?= gettext('Do not auto-format') ?>
+                                        echo ' checked';
+                                             } ?>><?= gettext('Do not auto-format') ?>
                     </div>
                 </div>
 
@@ -1028,8 +1027,8 @@ require 'Include/Header.php';
                                maxlength="30" class="form-control" data-inputmask='"mask": "<?= SystemConfig::getValue('sPhoneFormatCell')?>"' data-mask>
                         <br><input type="checkbox" name="NoFormat_CellPhone"
                                    value="1" <?php if ($bNoFormat_CellPhone) {
-                            echo ' checked';
-                        } ?>><?= gettext('Do not auto-format') ?>
+                                        echo ' checked';
+                                             } ?>><?= gettext('Do not auto-format') ?>
                     </div>
                 </div>
             </div>
@@ -1119,8 +1118,8 @@ require 'Include/Header.php';
                                  value="<?= htmlentities(stripslashes($sLinkedIn), ENT_NOQUOTES, 'UTF-8') ?>" size="30"
                                  maxlength="50" class="form-control">
                           <?php if ($sLinkedInError) {
-                            ?><span style="color: red;"><?php echo $sLinkedInError ?></span></td><?php
-                        } ?>
+                                ?><span style="color: red;"><?php echo $sLinkedInError ?></span></td><?php
+                          } ?>
                       </div>
                   </div>
             </div>
@@ -1143,11 +1142,11 @@ require 'Include/Header.php';
                   <?php while ($aRow = mysqli_fetch_array($rsClassifications)) {
                             extract($aRow);
                             echo '<option value="'.$lst_OptionID.'"';
-                            if ($iClassification == $lst_OptionID) {
-                                echo ' selected';
-                            }
+                        if ($iClassification == $lst_OptionID) {
+                            echo ' selected';
+                        }
                             echo '>'.$lst_OptionName.'&nbsp;';
-                        } ?>
+                  } ?>
                 </select>
               </div>
                 <div class="form-group col-md-3 col-lg-3">
@@ -1176,17 +1175,17 @@ require 'Include/Header.php';
                            value="<?= change_date_for_place_holder($dFriendDate) ?>" maxlength="10" id="sel2" size="10"
                            placeholder="<?= SystemConfig::getValue("sDatePickerPlaceHolder") ?>">
                     <?php if ($sFriendDateError) {
-                            ?><span style="color: red;"><?php echo $sFriendDateError ?></span><?php
-                        } ?>
+                        ?><span style="color: red;"><?php echo $sFriendDateError ?></span><?php
+                    } ?>
                   </div>
                 </div>
-              <?php
-                        } ?>
+                    <?php
+              } ?>
             </div>
         </div>
     </div>
   <?php if ($numCustomFields > 0) {
-                            ?>
+        ?>
     <div class="card card-info clearfix">
         <div class="card-header">
             <h3 class="card-title"><?= gettext('Custom Fields') ?></h3>
@@ -1198,39 +1197,39 @@ require 'Include/Header.php';
             <?php if ($numCustomFields > 0) {
                                 mysqli_data_seek($rsCustomFields, 0);
 
-                                while ($rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQLI_BOTH)) {
-                                    extract($rowCustomField);
+                while ($rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQLI_BOTH)) {
+                    extract($rowCustomField);
 
-                                    if (AuthenticationManager::GetCurrentUser()->isEnabledSecurity($aSecurityType[$custom_FieldSec])) {
-                                        echo "<div class='row'><div class=\"form-group col-md-3\"><label>".$custom_Name.'</label>';
+                    if (AuthenticationManager::GetCurrentUser()->isEnabledSecurity($aSecurityType[$custom_FieldSec])) {
+                        echo "<div class='row'><div class=\"form-group col-md-3\"><label>".$custom_Name.'</label>';
 
-                                        if (array_key_exists($custom_Field, $aCustomData)) {
-                                            $currentFieldData = trim($aCustomData[$custom_Field]);
-                                        } else {
-                                            $currentFieldData = '';
-                                        }
+                        if (array_key_exists($custom_Field, $aCustomData)) {
+                            $currentFieldData = trim($aCustomData[$custom_Field]);
+                        } else {
+                            $currentFieldData = '';
+                        }
 
-                                        if ($type_ID == 11) {
-                                            $custom_Special = $sPhoneCountry;
-                                        }
+                        if ($type_ID == 11) {
+                            $custom_Special = $sPhoneCountry;
+                        }
 
-                                        formCustomField($type_ID, $custom_Field, $currentFieldData, $custom_Special, !isset($_POST['PersonSubmit']));
-                                        if (isset($aCustomErrors[$custom_Field])) {
-                                            echo '<span style="color: red; ">'.$aCustomErrors[$custom_Field].'</span>';
-                                        }
-                                        echo '</div></div>';
-                                    }
-                                }
-                            } ?>
+                        formCustomField($type_ID, $custom_Field, $currentFieldData, $custom_Special, !isset($_POST['PersonSubmit']));
+                        if (isset($aCustomErrors[$custom_Field])) {
+                            echo '<span style="color: red; ">'.$aCustomErrors[$custom_Field].'</span>';
+                        }
+                        echo '</div></div>';
+                    }
+                }
+            } ?>
         </div>
     </div>
-  <?php
-                        } ?>
+        <?php
+  } ?>
     <div class="text-right">
     <input type="submit" class="btn btn-primary" id="PersonSaveButton" value="<?= gettext('Save') ?>" name="PersonSubmit">
     <?php if (AuthenticationManager::GetCurrentUser()->isAddRecordsEnabled()) {
                             echo '<input type="submit" class="btn btn-primary" value="'.gettext('Save and Add').'" name="PersonSubmitAndAdd">';
-                        } ?>
+    } ?>
     <input type="button" class="btn btn-primary" value="<?= gettext('Cancel') ?>" name="PersonCancel"
            onclick="javascript:document.location='v2/people';">
         <p><br/></p>
@@ -1238,10 +1237,10 @@ require 'Include/Header.php';
 </form>
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>" >
-	$(function() {
-		$("[data-mask]").inputmask();
-		$("#famailyId").select2();;
-	});
+    $(function() {
+        $("[data-mask]").inputmask();
+        $("#famailyId").select2();;
+    });
 </script>
 
 <?php require 'Include/Footer.php' ?>

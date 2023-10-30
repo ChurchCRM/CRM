@@ -102,7 +102,6 @@ if (isset($_POST['DonatedItemSubmit']) || isset($_POST['DonatedItemSubmitAndAdd'
         RedirectUtils::Redirect("DonatedItemEditor.php?CurrentFundraiser=$iCurrentFundraiser&linkBack=", $linkBack);
     }
 } else {
-
   //FirstPass
     //Are we editing or adding?
     if (strlen($iDonatedItemID) > 0) {
@@ -236,8 +235,8 @@ while ($aRow = mysqli_fetch_array($rsPeople)) {
     ?>
                         <select name="Buyer" class="form-control">
                           <option value="0" selected><?= gettext('Unassigned') ?></option>
-<?php
-  $rsBuyers = RunQuery($sPaddleSQL);
+    <?php
+    $rsBuyers = RunQuery($sPaddleSQL);
     while ($aRow = mysqli_fetch_array($rsBuyers)) {
         extract($aRow);
         echo '<option value="'.$pn_per_ID.'"';
@@ -281,7 +280,7 @@ while ($aRow = mysqli_fetch_array($rsPeople)) {
                             <textarea name="PictureURL" rows="1" cols="90" class="form-control"><?= htmlentities($sPictureURL) ?></textarea>
                         </div>
 
-                        <?php if ($sPictureURL != ''): ?>
+                        <?php if ($sPictureURL != '') : ?>
                             <div class="form-group"><img src="<?= htmlentities($sPictureURL) ?>"/></div>
                         <?php endif; ?>
 
@@ -292,7 +291,7 @@ while ($aRow = mysqli_fetch_array($rsPeople)) {
 
             <div class="form-group text-center">
                 <input type="submit" class="btn btn-primary" value="<?= gettext('Save') ?>" name="DonatedItemSubmit">
-                <?php if (AuthenticationManager::GetCurrentUser()->isAddRecordsEnabled()): ?>
+                <?php if (AuthenticationManager::GetCurrentUser()->isAddRecordsEnabled()) : ?>
                     <input type="submit" class="btn btn-primary" value="<?= gettext('Save and Add'); ?>" name="DonatedItemSubmitAndAdd">
                 <?php endif; ?>
                 <input type="button" class="btn btn-default" value="<?= gettext('Cancel') ?>" name="DonatedItemCancel"

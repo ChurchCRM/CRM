@@ -75,23 +75,22 @@ $rsConfigs = RunQuery($sSQL);
 ?>
 <!-- Default box -->
 <div class="card">
-	<div class="card-header with-border">
+    <div class="card-header with-border">
 
-	<form method=post action=SettingsUser.php'>
-		<div class="callout callout-info"> <?= gettext('Set Permission True to give new users the ability to change their current value.<BR>'); ?></div>
+    <form method=post action=SettingsUser.php'>
+        <div class="callout callout-info"> <?= gettext('Set Permission True to give new users the ability to change their current value.<BR>'); ?></div>
         <div class="table-responsive">
         <table class='table table-responsive'>
-		<tr>
-			<th> <?= gettext('Permission') ?></th>
-			<th><?= gettext('Variable name') ?></th>
-			<th><?= gettext('Current Value') ?></th>
-			<th><?=gettext('Notes') ?></th>
-		</tr>
+        <tr>
+            <th> <?= gettext('Permission') ?></th>
+            <th><?= gettext('Variable name') ?></th>
+            <th><?= gettext('Current Value') ?></th>
+            <th><?=gettext('Notes') ?></th>
+        </tr>
 <?php
 $r = 1;
 // List Individual Settings
 while (list($ucfg_per_id, $ucfg_id, $ucfg_name, $ucfg_value, $ucfg_type, $ucfg_tooltip, $ucfg_permission) = mysqli_fetch_row($rsConfigs)) {
-
     // Cancel, Save Buttons every 13 rows
     if ($r == 13) {
         echo '<tr><td>&nbsp;</td>
@@ -156,10 +155,10 @@ while (list($ucfg_per_id, $ucfg_id, $ucfg_name, $ucfg_value, $ucfg_type, $ucfg_t
 
 ?>
 <tr>
-	<td colspan='3' class='text-center'>
-		<input type=submit class='btn btn-primary' name=save value="<?=  gettext('Save Settings') ?> ">
-		<input type=submit class=btn name=cancel value="<?= gettext('Cancel') ?>" onclick="javascript:document.location = 'Menu.php';">
-	</td>
+    <td colspan='3' class='text-center'>
+        <input type=submit class='btn btn-primary' name=save value="<?=  gettext('Save Settings') ?> ">
+        <input type=submit class=btn name=cancel value="<?= gettext('Cancel') ?>" onclick="javascript:document.location = 'Menu.php';">
+    </td>
 </tr>
 </table>
         </div>

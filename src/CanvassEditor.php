@@ -154,11 +154,11 @@ require 'Include/Header.php';
 <div class="table-responsive">
 <table class="table" cellpadding="3" align="center">
 
-	<tr>
+    <tr>
 
-		<td>
+        <td>
 
-			<?php
+            <?php
             if (($rsBraveCanvassers != 0 && mysqli_num_rows($rsBraveCanvassers) > 0) ||
                 ($rsCanvassers != 0 && mysqli_num_rows($rsCanvassers) > 0)) {
                 echo "<tr><td class='LabelColumn'>".gettext('Canvasser:')."</td>\n";
@@ -191,61 +191,61 @@ require 'Include/Header.php';
             }
             ?>
 
-			<tr>
+            <tr>
                 <td class="LabelColumn"><?= gettext('Date') ?>:</td>
-				<td class="TextColumn"><input type="text" name="Date" value="<?= $dDate ?>" maxlength="10" id="sel1" size="11"  class="form-control pull-right active date-picker" ?><span style="color: red;"><?= $sDateError ?></span></td>
-			</tr>
+                <td class="TextColumn"><input type="text" name="Date" value="<?= $dDate ?>" maxlength="10" id="sel1" size="11"  class="form-control pull-right active date-picker" ?><span style="color: red;"><?= $sDateError ?></span></td>
+            </tr>
 
 
-			<tr>
-				<td class="LabelColumn"><?= gettext('Positive') ?></td>
-				<td><textarea name="Positive" rows="3" cols="90"><?= $tPositive ?></textarea></td>
-			</tr>
+            <tr>
+                <td class="LabelColumn"><?= gettext('Positive') ?></td>
+                <td><textarea name="Positive" rows="3" cols="90"><?= $tPositive ?></textarea></td>
+            </tr>
 
-			<tr>
-				<td class="LabelColumn"><?= gettext('Critical') ?></td>
-				<td><textarea name="Critical" rows="3" cols="90"><?= $tCritical ?></textarea></td>
-			</tr>
+            <tr>
+                <td class="LabelColumn"><?= gettext('Critical') ?></td>
+                <td><textarea name="Critical" rows="3" cols="90"><?= $tCritical ?></textarea></td>
+            </tr>
 
-			<tr>
-				<td class="LabelColumn"><?= gettext('Insightful') ?></td>
-				<td><textarea name="Insightful" rows="3" cols="90"><?= $tInsightful ?></textarea></td>
-			</tr>
+            <tr>
+                <td class="LabelColumn"><?= gettext('Insightful') ?></td>
+                <td><textarea name="Insightful" rows="3" cols="90"><?= $tInsightful ?></textarea></td>
+            </tr>
 
-			<tr>
-				<td class="LabelColumn"><?= gettext('Financial') ?></td>
-				<td><textarea name="Financial" rows="3" cols="90"><?= $tFinancial ?></textarea></td>
-			</tr>
+            <tr>
+                <td class="LabelColumn"><?= gettext('Financial') ?></td>
+                <td><textarea name="Financial" rows="3" cols="90"><?= $tFinancial ?></textarea></td>
+            </tr>
 
-			<tr>
-				<td class="LabelColumn"><?= gettext('Suggestions') ?></td>
-				<td><textarea name="Suggestion" rows="3" cols="90"><?= $tSuggestion ?></textarea></td>
-			</tr>
+            <tr>
+                <td class="LabelColumn"><?= gettext('Suggestions') ?></td>
+                <td><textarea name="Suggestion" rows="3" cols="90"><?= $tSuggestion ?></textarea></td>
+            </tr>
 
-			<tr>
-				<td class="LabelColumn"><?= gettext('Not Interested') ?></td>
-				<td class="TextColumn"><input type="checkbox" Name="NotInterested" value="1" <?php if ($bNotInterested) {
-                echo ' checked';
-            } ?>></td>
-			</tr>
+            <tr>
+                <td class="LabelColumn"><?= gettext('Not Interested') ?></td>
+                <td class="TextColumn"><input type="checkbox" Name="NotInterested" value="1" <?php if ($bNotInterested) {
+                    echo ' checked';
+                                                                                             } ?>></td>
+            </tr>
 
-			<tr>
-				<td class="LabelColumn"><?= gettext('Why Not Interested?') ?></td>
-				<td><textarea name="WhyNotInterested" rows="1" cols="90"><?= $tWhyNotInterested ?></textarea></td>
-			</tr>
+            <tr>
+                <td class="LabelColumn"><?= gettext('Why Not Interested?') ?></td>
+                <td><textarea name="WhyNotInterested" rows="1" cols="90"><?= $tWhyNotInterested ?></textarea></td>
+            </tr>
     </table>
 </div>
     <div>
             <input type="submit" class="btn btn-primary" value="<?= gettext('Save') ?>" name="Submit">
             <input type="button" class="btn btn-default" value="<?= gettext('Cancel') ?>" name="Cancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) {
                 echo $linkBack;
-            } else {
-                echo 'Menu.php';
-            } ?>';">
+                                                                } else {
+                                                                    echo 'Menu.php';
+                                                                } ?>';">
 
     </div>
 
-	</form>
+    </form>
 </div>
 
 <?php require 'Include/Footer.php'; ?>

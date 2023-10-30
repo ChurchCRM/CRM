@@ -11,24 +11,26 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Authentication\AuthenticationManager;
 
-class FinanceDepositSearchResultProvider extends BaseSearchResultProvider  {
+class FinanceDepositSearchResultProvider extends BaseSearchResultProvider
+{
     public function __construct()
     {
         $this->pluralNoun = "Deposits";
         parent::__construct();
     }
 
-    public function getSearchResults(string $SearchQuery) {
+    public function getSearchResults(string $SearchQuery)
+    {
         if (AuthenticationManager::GetCurrentUser()->isFinanceEnabled()) {
             if (SystemConfig::getBooleanValue("bSearchIncludeDeposits")) {
                 $this->addSearchResults($this->getDepositSearchResults($SearchQuery));
             }
-
         }
         return $this->formatSearchGroup();
     }
 
-    private function getDepositSearchResults(string $SearchQuery) {
+    private function getDepositSearchResults(string $SearchQuery)
+    {
         $searchResults = [];
         $id = 0;
         try {

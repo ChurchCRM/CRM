@@ -5,7 +5,8 @@ namespace ChurchCRM\dto;
 use ChurchCRM\PersonQuery;
 use ChurchCRM\ListOptionQuery;
 
-Class PeopleCustomField {
+class PeopleCustomField
+{
 
     private $name;
     private string $value;
@@ -95,7 +96,4 @@ Class PeopleCustomField {
     {
         return $this->displayValue;
     }
-
-
-
 }

@@ -54,11 +54,11 @@ if ($resArr) {
 
 <table cellpadding="3" align="center">
 
-	<tr>
-		<td align="center">
-			<input type="submit" class="btn btn-default" value="<?= gettext('Back') ?>" name="Back">
-		</td>
-	</tr>
+    <tr>
+        <td align="center">
+            <input type="submit" class="btn btn-default" value="<?= gettext('Back') ?>" name="Back">
+        </td>
+    </tr>
 </table>
 
 <?php require 'Include/Footer.php' ?>

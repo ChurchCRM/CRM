@@ -13,7 +13,7 @@ class PersonAPIMiddleware
 
         $personId = $request->getAttribute("route")->getArgument("personId");
         if (empty(trim($personId))) {
-          return $response->withStatus(412, gettext("Missing"). " PersonId");
+            return $response->withStatus(412, gettext("Missing"). " PersonId");
         }
 
         $person = PersonQuery::create()->findPk($personId);
@@ -24,5 +24,4 @@ class PersonAPIMiddleware
         $request = $request->withAttribute("person", $person);
         return $next($request, $response);
     }
-
 }

@@ -97,8 +97,8 @@ $rsConfigs = RunQuery($sSQL);
 <div class="table-responsive">
 <table class="table">
 <tr><th><?= gettext('Variable name') ?></th>
-	<th><?= gettext('Current Value')?></th>
-	<th><?= gettext('Notes')?></h3></th>
+    <th><?= gettext('Current Value')?></th>
+    <th><?= gettext('Notes')?></h3></th>
 </tr>
 <?php
 $r = 1;
@@ -156,10 +156,10 @@ while (list($ucfg_per_id, $ucfg_id, $ucfg_name, $ucfg_value, $ucfg_type, $ucfg_t
 
 <tr>
     <td>&nbsp;</td>
-	<td>
+    <td>
         <input type=submit class='btn btn-primary'  name=save value="<?= gettext('Save Settings') ?>">
-	    <input type=submit class=btn name=cancel value="<?= gettext('Cancel') ?>">
-	</td>
+        <input type=submit class=btn name=cancel value="<?= gettext('Cancel') ?>">
+    </td>
 </tr>
 </table>
 </div>

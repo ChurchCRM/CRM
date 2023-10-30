@@ -31,7 +31,7 @@ class PDF_FRCatalogReport extends ChurchInfoReport
         $this->SetAutoPageBreak(true, 25);
     }
 
-    public function AddPage($orientation = '', $format = '', $rotation=0)
+    public function AddPage($orientation = '', $format = '', $rotation = 0)
     {
         global $fr_title, $fr_description, $curY;
 

@@ -45,7 +45,7 @@ $isAdmin = AuthenticationManager::GetCurrentUser()->isAdmin();
                         </a>
                     </div>
                     <!-- end task item -->
-                    <?php } ?>
+                <?php } ?>
             <!-- /.control-sidebar-menu -->
         </div>
         <!-- /.tab-pane -->

@@ -103,18 +103,18 @@ require 'Include/Header.php';
 
 
 <table class="table table-striped">
-	<tr>
-		<td><b><?php echo $sTypeName ?>:</b></td>
-		<td><?= $sName ?></td>
-	</tr>
-	<tr>
-		<td><b><?= gettext('Unassigning') ?>:</b></td>
-		<td><?= $sPropertyName ?></td>
-	</tr>
+    <tr>
+        <td><b><?php echo $sTypeName ?>:</b></td>
+        <td><?= $sName ?></td>
+    </tr>
+    <tr>
+        <td><b><?= gettext('Unassigning') ?>:</b></td>
+        <td><?= $sPropertyName ?></td>
+    </tr>
 </table>
 
 <div class="text-center">
-	<a class="btn btn-default" href="<?= $sBackPage ?>"><?= gettext('No, retain this assignment') ?></a>
+    <a class="btn btn-default" href="<?= $sBackPage ?>"><?= gettext('No, retain this assignment') ?></a>
 
     <a class="btn btn-danger" href="PropertyUnassign.php<?= $sQuerystring.'&PropertyID='.$iPropertyID.'&Confirmed=Yes' ?>"><?= gettext('Yes, unassign this Property') ?></a>
 </div>

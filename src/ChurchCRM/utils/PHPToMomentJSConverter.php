@@ -2,14 +2,15 @@
 
 namespace ChurchCRM\Utils;
 
-/* 
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 
-class PHPToMomentJSConverter {
-  private static array $replacements = [
+class PHPToMomentJSConverter
+{
+    private static array $replacements = [
         'd' => 'DD',
         'D' => 'ddd',
         'j' => 'D',
@@ -48,9 +49,10 @@ class PHPToMomentJSConverter {
         'r' => '', // no equivalent
         'U' => 'X',
     ];
-  public static function ConvertFormatString($string){
-    //borrowed from https://stackoverflow.com/questions/30186611/php-dateformat-to-moment-js-format
-    $momentFormat = strtr($string, self::$replacements );
-    return $momentFormat;
-  }
+    public static function ConvertFormatString($string)
+    {
+      //borrowed from https://stackoverflow.com/questions/30186611/php-dateformat-to-moment-js-format
+        $momentFormat = strtr($string, self::$replacements);
+        return $momentFormat;
+    }
 }

@@ -49,10 +49,10 @@ if ($iFundRaiserID > 0) {
 <table cellpadding="5" cellspacing="5">
 
 <tr class="TableHeader">
-	<td><?= gettext('Select') ?></td>
-	<td><?= gettext('Number') ?></td>
-	<td><?= gettext('Buyer') ?></td>
-	<td><?= gettext('Delete') ?></td>
+    <td><?= gettext('Select') ?></td>
+    <td><?= gettext('Number') ?></td>
+    <td><?= gettext('Buyer') ?></td>
+    <td><?= gettext('Delete') ?></td>
 </tr>
 
 <?php
@@ -64,25 +64,25 @@ if ($rsPaddleNums) {
         extract($aRow);
 
         $sRowClass = 'RowColorA'; ?>
-		<tr class="<?= $sRowClass ?>">
-			<td>
-				<input type="checkbox" name="Chk<?= $pn_ID.'"';
-        if (isset($_GET['SelectAll'])) {
-            echo ' checked="yes"';
-        } ?>></input>
-			</td>
-			<td>
-				<?= "<a href=\"PaddleNumEditor.php?PaddleNumID=$pn_ID&linkBack=PaddleNumList.php\"> $pn_Num</a>\n" ?>
-			</td>
+        <tr class="<?= $sRowClass ?>">
+            <td>
+                <input type="checkbox" name="Chk<?= $pn_ID.'"';
+                if (isset($_GET['SelectAll'])) {
+                    echo ' checked="yes"';
+                } ?>></input>
+            </td>
+            <td>
+                <?= "<a href=\"PaddleNumEditor.php?PaddleNumID=$pn_ID&linkBack=PaddleNumList.php\"> $pn_Num</a>\n" ?>
+            </td>
 
-			<td>
-				<?= $buyerFirstName.' '.$buyerLastName ?>&nbsp;
-			</td>
-			<td>
-				<a href="PaddleNumDelete.php?PaddleNumID=<?= $pn_ID.'&linkBack=PaddleNumList.php?FundRaiserID='.$iFundRaiserID ?>">Delete</a>
-			</td>
-		</tr>
-	<?php
+            <td>
+                <?= $buyerFirstName.' '.$buyerLastName ?>&nbsp;
+            </td>
+            <td>
+                <a href="PaddleNumDelete.php?PaddleNumID=<?= $pn_ID.'&linkBack=PaddleNumList.php?FundRaiserID='.$iFundRaiserID ?>">Delete</a>
+            </td>
+        </tr>
+        <?php
     } // while
 } // if
 ?>

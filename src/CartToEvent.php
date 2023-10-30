@@ -29,7 +29,6 @@ if (!AuthenticationManager::GetCurrentUser()->isManageGroupsEnabled()) {
 
 // Was the form submitted?
 if (isset($_POST['Submit']) && count($_SESSION['aPeopleCart']) > 0 && isset($_POST['EventID'])) {
-
         // Get the PersonID
     $iEventID = InputUtils::LegacyFilterInput($_POST['EventID'], 'int');
 
@@ -61,23 +60,23 @@ if (count($_SESSION['aPeopleCart']) > 0) {
 <form name="CartToEvent" action="CartToEvent.php" method="POST">
 <table align="center">
         <?php if ($sGlobalMessage) {
-        ?>
+            ?>
         <tr>
           <td colspan="2"><?= $sGlobalMessage ?></td>
         </tr>
-        <?php
-    } ?>
+            <?php
+        } ?>
         <tr>
                 <td class="LabelColumn"><?= gettext('Select Event') ?>:</td>
                 <td class="TextColumn">
                         <?php
                         // Create the group select drop-down
                         echo '<select name="EventID">';
-    while ($aRow = mysqli_fetch_array($rsEvents)) {
-        extract($aRow);
-        echo '<option value="'.$event_id.'">'.$event_title.'</option>';
-    }
-    echo '</select>'; ?>
+                        while ($aRow = mysqli_fetch_array($rsEvents)) {
+                            extract($aRow);
+                            echo '<option value="'.$event_id.'">'.$event_title.'</option>';
+                        }
+                        echo '</select>'; ?>
                 </td>
         </tr>
 </table>
@@ -90,10 +89,10 @@ if (count($_SESSION['aPeopleCart']) > 0) {
 </p>
 </form>
 </div>
-<?php
+    <?php
 } else {
         echo '<p align="center" class="callout callout-warning">'.gettext('Your cart is empty!').'</p>';
-    }
+}
 
 require 'Include/Footer.php';
 ?>

@@ -35,7 +35,7 @@
 
 /*
 *  InfoCentral modifications:
-*	  adjustment of label format parameters: 5160,
+*     adjustment of label format parameters: 5160,
 *
 */
 

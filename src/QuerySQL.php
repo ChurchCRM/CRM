@@ -49,10 +49,10 @@ require 'Include/Header.php';
 </tr></table></center>
 
 <p align="center">
-	<textarea style="font-family:courier,fixed; font-size:9pt; padding:1;" cols="60" rows="10" name="SQL"><?= $sSQL ?></textarea>
+    <textarea style="font-family:courier,fixed; font-size:9pt; padding:1;" cols="60" rows="10" name="SQL"><?= $sSQL ?></textarea>
 </p>
 <p align="center">
-	<input type="submit" class="btn btn-default" name="Submit" value="<?= gettext('Execute SQL') ?>">
+    <input type="submit" class="btn btn-default" name="Submit" value="<?= gettext('Execute SQL') ?>">
 </p>
 
 </form>
@@ -82,7 +82,6 @@ function ExportQueryResults()
     if (mysqli_error($cnInfoCentral) != '') {
         $sCSVstring = gettext('An error occurred: ').mysqli_errno($cnInfoCentral).'--'.mysqli_error($cnInfoCentral);
     } else {
-
         //Loop through the fields and write the header row
         for ($iCount = 0; $iCount < mysqli_num_fields($rsQueryResults); $iCount++) {
             $fieldInfo = mysqli_fetch_field_direct($rsQueryResults, $iCount);
@@ -177,13 +176,13 @@ function RunFreeQuery()
         echo '<p align="center">';
 
         if (count($aHiddenFormField) > 0) { // TODO Don't post to CartView.php?>
-			<form method="post" action="CartView.php"><p align="center">
-				<input type="hidden" value="<?= implode(',', $aHiddenFormField) ?>" name="BulkAddToCart">
-				<input type="submit" class="btn btn-default" name="AddToCartSubmit" value="<?php echo gettext('Add Results To Cart'); ?>">&nbsp;
-				<input type="submit" class="btn btn-default" name="AndToCartSubmit" value="<?php echo gettext('Intersect Results With Cart'); ?>">&nbsp;
-				<input type="submit" class="btn btn-default" name="NotToCartSubmit" value="<?php echo gettext('Remove Results From Cart'); ?>">
-			</p></form>
-			<?php
+            <form method="post" action="CartView.php"><p align="center">
+                <input type="hidden" value="<?= implode(',', $aHiddenFormField) ?>" name="BulkAddToCart">
+                <input type="submit" class="btn btn-default" name="AddToCartSubmit" value="<?php echo gettext('Add Results To Cart'); ?>">&nbsp;
+                <input type="submit" class="btn btn-default" name="AndToCartSubmit" value="<?php echo gettext('Intersect Results With Cart'); ?>">&nbsp;
+                <input type="submit" class="btn btn-default" name="NotToCartSubmit" value="<?php echo gettext('Remove Results From Cart'); ?>">
+            </p></form>
+            <?php
         }
 
         echo '<p align="center"><a href="QueryList.php">'.gettext('Return to Query Menu').'</a></p>';

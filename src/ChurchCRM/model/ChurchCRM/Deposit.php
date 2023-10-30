@@ -147,7 +147,6 @@ class Deposit extends BaseDeposit
             $thisReport->pdf->PrintRightJustified($thisReport->curX + 55, $thisReport->curY, $amountStr);
             $thisReport->curY += 4;
         }
-
     }
 
     private function generateQBDepositSlip($thisReport)
@@ -290,6 +289,7 @@ class Deposit extends BaseDeposit
             } else {
                 $familyName = gettext('Anonymous');
             }
+
             if (strlen($checkNo) > 8) {
                 $checkNo = '...'.mb_substr($checkNo, -8, 8);
             }
@@ -352,10 +352,9 @@ class Deposit extends BaseDeposit
         $this->generateTotalsByCurrencyType($thisReport);
         $thisReport->curY += $thisReport->depositSummaryParameters->summary->intervalY * 2;
 
-        if (!empty($this->getComment()))
-        {
-          $thisReport->pdf->SetXY($thisReport->curX,  $thisReport->curY);
-          $thisReport->pdf->MultiCell(0, $thisReport->depositSummaryParameters->summary->intervalY, gettext('Deposit Comment') . ": " . $this->getComment(), 0, 'L');
+        if (!empty($this->getComment())) {
+            $thisReport->pdf->SetXY($thisReport->curX, $thisReport->curY);
+            $thisReport->pdf->MultiCell(0, $thisReport->depositSummaryParameters->summary->intervalY, gettext('Deposit Comment') . ": " . $this->getComment(), 0, 'L');
         }
         $thisReport->curY += 130;
         $thisReport->curX = $thisReport->depositSummaryParameters->summary->x;
@@ -468,14 +467,14 @@ class Deposit extends BaseDeposit
     public function getFundTotals()
     {
         $funds = PledgeQuery::create()
-      ->filterByDepId($this->getId())
-      ->groupByFundId()
-      ->withColumn('SUM('.PledgeTableMap::COL_PLG_AMOUNT.')', 'Total')
-      ->joinDonationFund()
-      ->withColumn(DonationFundTableMap::COL_FUN_NAME, 'Name')
-      ->orderBy(DonationFundTableMap::COL_FUN_NAME)
-      ->select(['Name', 'Total'])
-      ->find();
+        ->filterByDepId($this->getId())
+        ->groupByFundId()
+        ->withColumn('SUM('.PledgeTableMap::COL_PLG_AMOUNT.')', 'Total')
+        ->joinDonationFund()
+        ->withColumn(DonationFundTableMap::COL_FUN_NAME, 'Name')
+        ->orderBy(DonationFundTableMap::COL_FUN_NAME)
+        ->select(['Name', 'Total'])
+        ->find();
 
         return $funds;
     }

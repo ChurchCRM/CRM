@@ -29,7 +29,7 @@ class MailChimpService
         }
         if ($this->hasKey) {
             $rootAPI = $this->myMailchimp->get("");
-            if ( $rootAPI["total_subscribers"] > 0 ) {
+            if ($rootAPI["total_subscribers"] > 0) {
                 $this->isActive = true;
                 return true;
             }
@@ -46,23 +46,23 @@ class MailChimpService
             LoggerUtils::getAppLogger()->debug("MailChimp list enumeration took: " . $time->getMilliseconds() . " ms.  Found " . count($lists) . " lists");
             foreach ($lists as &$list) {
                 $list['members'] = [];
-                $listmembers = $this->myMailchimp->get('lists/' . $list['id'] . '/members',
+                $listmembers = $this->myMailchimp->get(
+                    'lists/' . $list['id'] . '/members',
                     [
                         'count' => $list['stats']["member_count"],
                         "fields" => "members.id,members.email_address,members.status,members.merge_fields",
                         "status" => "subscribed"
-                    ]);
+                    ]
+                );
                 foreach ($listmembers['members'] as $member) {
                     array_push($list['members'], [
                         "email" => strtolower($member["email_address"]),
                         "first" => $member["merge_fields"]["FNAME"],
                         "last" => $member["merge_fields"]["LNAME"],
                         "status" => $member["status"]
-                        ]
-                    );
+                        ]);
                 }
                 LoggerUtils::getAppLogger()->debug("MailChimp list ". $list['id'] . " membership ". count($list['members']));
-
             }
             LoggerUtils::getAppLogger()->debug("MailChimp list and membership update took: " . $time->getMilliseconds() . " ms");
             $_SESSION['MailChimpLists'] = $lists;
@@ -100,7 +100,8 @@ class MailChimpService
         return $this->getListsFromCache();
     }
 
-    public function getList($listId) {
+    public function getList($listId)
+    {
         $mailchimpLists = $this->getLists();
         foreach ($mailchimpLists as $mailchimpList) {
             if ($listId == $mailchimpList["id"]) {

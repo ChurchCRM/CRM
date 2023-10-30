@@ -6,7 +6,6 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\User;
 
-
 abstract class BaseUserEmail extends BaseEmail
 {
     protected $user;
@@ -46,5 +45,5 @@ abstract class BaseUserEmail extends BaseEmail
         return $this->user->getUserName();
     }
 
-    protected abstract function buildMessageBody();
+    abstract protected function buildMessageBody();
 }

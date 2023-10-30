@@ -103,10 +103,10 @@ require 'Include/Header.php';
           <td colspan="2" align="center">
             <input type="submit" class="btn btn-primary" value="<?= gettext('Save') ?>" name="Submit">
             <input type="button" class="btn btn-default" value="<?= gettext('Cancel') ?>" name="Cancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) {
-    echo $linkBack;
-} else {
-    echo 'PersonView.php?PersonID='.$iPerson;
-} ?>';">
+                echo $linkBack;
+                                                                } else {
+                                                                    echo 'PersonView.php?PersonID='.$iPerson;
+                                                                } ?>';">
           </td>
         </tr>
     </form>

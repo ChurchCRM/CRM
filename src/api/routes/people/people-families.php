@@ -37,7 +37,7 @@ $app->group('/families', function () use ($app) {
                 if (!$hasEmail) {
                     array_push($familiesWithoutEmails, $family->toArray());
                 }
-             }
+            }
         }
 
         return $response->withJson(["count" => count($familiesWithoutEmails), "families" => $familiesWithoutEmails]);
@@ -116,7 +116,7 @@ $app->group('/families', function () use ($app) {
             if ($newStatus == "false") {
                 $family->setDateDeactivated(date('YmdHis'));
             } elseif ($newStatus == "true") {
-                $family->setDateDeactivated(Null);
+                $family->setDateDeactivated(null);
             }
             $family->save();
 
@@ -133,9 +133,7 @@ $app->group('/families', function () use ($app) {
             $note->save();
         }
         return $response->withJson(['success' => true]);
-
     });
-
 });
 
 
@@ -144,13 +142,12 @@ function getFamiliesWithAnniversaries(Request $request, Response $response, arra
     $families = FamilyQuery::create()
         ->filterByDateDeactivated(null)
         ->filterByWeddingdate(null, Criteria::NOT_EQUAL)
-        ->addUsingAlias(FamilyTableMap::COL_FAM_WEDDINGDATE,"MONTH(". FamilyTableMap::COL_FAM_WEDDINGDATE .") =" . date('m'),Criteria::CUSTOM)
-        ->addUsingAlias(FamilyTableMap::COL_FAM_WEDDINGDATE,"DAY(". FamilyTableMap::COL_FAM_WEDDINGDATE .") =" . date('d'),Criteria::CUSTOM)
+        ->addUsingAlias(FamilyTableMap::COL_FAM_WEDDINGDATE, "MONTH(". FamilyTableMap::COL_FAM_WEDDINGDATE .") =" . date('m'), Criteria::CUSTOM)
+        ->addUsingAlias(FamilyTableMap::COL_FAM_WEDDINGDATE, "DAY(". FamilyTableMap::COL_FAM_WEDDINGDATE .") =" . date('d'), Criteria::CUSTOM)
         ->orderByWeddingdate('DESC')
         ->find();
 
     return $response->withJson(buildFormattedFamilies($families, false, false, true));
-
 }
 function getLatestFamilies(Request $request, Response $response, array $p_args)
 {

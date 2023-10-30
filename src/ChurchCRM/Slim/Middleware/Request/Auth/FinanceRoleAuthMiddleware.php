@@ -2,7 +2,8 @@
 
 namespace ChurchCRM\Slim\Middleware\Request\Auth;
 
-class FinanceRoleAuthMiddleware extends BaseAuthRoleMiddleware {
+class FinanceRoleAuthMiddleware extends BaseAuthRoleMiddleware
+{
 
     function hasRole()
     {

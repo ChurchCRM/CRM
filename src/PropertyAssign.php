@@ -36,8 +36,8 @@ if (isset($_POST['PropertyID'])) {
     $sAction = 'edit';
 }
 
-// Is there a PersonID in the querystring?
 if (isset($_GET['PersonID']) && AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled()) {
+    // Is there a PersonID in the querystring?
     $iPersonID = InputUtils::LegacyFilterInput($_GET['PersonID'], 'int');
     $iRecordID = $iPersonID;
     $sQuerystring = '?PersonID='.$iPersonID;
@@ -49,10 +49,8 @@ if (isset($_GET['PersonID']) && AuthenticationManager::GetCurrentUser()->isEditR
     $rsName = RunQuery($sSQL);
     $aRow = mysqli_fetch_array($rsName);
     $sName = $aRow['per_LastName'].', '.$aRow['per_FirstName'];
-}
-
-// Is there a GroupID in the querystring?
-elseif (isset($_GET['GroupID']) && AuthenticationManager::GetCurrentUser()->isManageGroupsEnabled()) {
+} elseif (isset($_GET['GroupID']) && AuthenticationManager::GetCurrentUser()->isManageGroupsEnabled()) {
+    // Is there a GroupID in the querystring?
     $iGroupID = InputUtils::LegacyFilterInput($_GET['GroupID'], 'int');
     $iRecordID = $iGroupID;
     $sQuerystring = '?GroupID='.$iGroupID;
@@ -64,10 +62,8 @@ elseif (isset($_GET['GroupID']) && AuthenticationManager::GetCurrentUser()->isMa
     $rsName = RunQuery($sSQL);
     $aRow = mysqli_fetch_array($rsName);
     $sName = $aRow['grp_Name'];
-}
-
-// Is there a FamilyID in the querystring?
-elseif (isset($_GET['FamilyID']) && AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled()) {
+} elseif (isset($_GET['FamilyID']) && AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled()) {
+    // Is there a FamilyID in the querystring?
     $iFamilyID = InputUtils::LegacyFilterInput($_GET['FamilyID'], 'int');
     $iRecordID = $iFamilyID;
     $sQuerystring = '?FamilyID='.$iFamilyID;
@@ -79,10 +75,8 @@ elseif (isset($_GET['FamilyID']) && AuthenticationManager::GetCurrentUser()->isE
     $rsName = RunQuery($sSQL);
     $aRow = mysqli_fetch_array($rsName);
     $sName = $aRow['fam_Name'];
-}
-
-// Somebody tried to call the script with no options
-else {
+} else {
+    // Somebody tried to call the script with no options
     RedirectUtils::Redirect('Menu.php');
 }
 
@@ -164,17 +158,17 @@ require 'Include/Header.php';
 <input type="hidden" name="Action" value="<?= $sAction ?>">
 <div class="table-responsive">
 <table class="table table-striped">
-	<tr>
-		<td align="right"><b><?= $sTypeName ?>:</b></td>
-		<td><?= $sName ?></td>
-	</tr>
-	<tr>
-		<td align="right"><b><?= gettext('Assigning') ?>:</b></td>
-		<td><?php echo $sPropertyName ?></td>
+    <tr>
+        <td align="right"><b><?= $sTypeName ?>:</b></td>
+        <td><?= $sName ?></td>
+    </tr>
+    <tr>
+        <td align="right"><b><?= gettext('Assigning') ?>:</b></td>
+        <td><?php echo $sPropertyName ?></td>
 <?php if (strlen($sPrompt)) {
     ?>
-		<tr>
-			<td align="right" valign="top">
+        <tr>
+            <td align="right" valign="top">
                 <b><?= gettext('Value') ?>:</b>
             </td>
             <td>
@@ -182,17 +176,17 @@ require 'Include/Header.php';
                 <p><br/></p>
                 <textarea name="Value" cols="60" rows="10"><?= $sValue ?></textarea>
             </td>
-		</tr>
-<?php
+        </tr>
+    <?php
 } ?>
 </table>
 </div>
 
 <p align="center"><input type="submit" class="btn btn-primary" <?= 'value="'; if ($sAction == 'add') {
         echo gettext('Assign');
-    } else {
-        echo gettext('Update');
-    } echo '"' ?> name="Submit"></p>
+                                                               } else {
+                                                                   echo gettext('Update');
+                                                               } echo '"' ?> name="Submit"></p>
 
 </form>
 

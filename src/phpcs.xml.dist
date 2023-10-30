@@ -5,6 +5,7 @@
     <file>.</file>
 
     <exclude-pattern>*/vendor/*$</exclude-pattern>
+    <exclude-pattern>*\.(inc|css|js)</exclude-pattern>
 
     <arg name="basepath" value="."/>
     <arg name="colors"/>

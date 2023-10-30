@@ -294,7 +294,7 @@ require 'Include/Header.php';
             echo "<a id=\"deleteFamilyAndMembersBtn\" class='btn btn-danger' href=\"SelectDelete.php?Confirmed=Yes&Members=Yes&FamilyID=" . $iFamilyID . '">' . gettext('Delete Family Record AND Family Members') . '</a> ';
             echo "<a class='btn btn-info' href=\"v2/family/" . $iFamilyID . '">' . gettext('No, cancel this deletion') . '</a></p>';
         }
-            ?>
+        ?>
     </div>
 </div>
 

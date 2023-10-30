@@ -53,7 +53,6 @@ class GeoUtils
             'Latitude' => $lat,
             'Longitude' => $long
         ];
-
     }
 
     public static function DrivingDistanceMatrix($address1, $address2)
@@ -66,7 +65,7 @@ class GeoUtils
         $url = $url . "&destinations=" . urlencode($address2);
         $logger->debug($url);
         $gMapsResponse = file_get_contents($url);
-        $details = json_decode($gMapsResponse, TRUE, 512, JSON_THROW_ON_ERROR);
+        $details = json_decode($gMapsResponse, true, 512, JSON_THROW_ON_ERROR);
         $matrixElements = $details['rows'][0]['elements'][0];
         return [
             'distance' => $matrixElements['distance']['text'],

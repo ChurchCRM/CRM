@@ -9,7 +9,8 @@ class ResetPasswordTokenEmail extends BaseUserEmail
 
     protected $token;
 
-    public function __construct($user, $token) {
+    public function __construct($user, $token)
+    {
         $this->token = $token;
         parent::__construct($user);
     }

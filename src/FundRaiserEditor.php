@@ -88,7 +88,6 @@ if (isset($_POST['FundRaiserSubmit'])) {
         }
     }
 } else {
-
     //FirstPass
     //Are we editing or adding?
     if ($iFundRaiserID > 0) {
@@ -138,46 +137,46 @@ require 'Include/Header.php';
 
 <table cellpadding="3" align="center">
 
-	<tr>
-		<td align="center">
-		<input type="submit" class="btn btn-default" value="<?= gettext('Save') ?>" name="FundRaiserSubmit">
-			<input type="button" class="btn btn-default" value="<?= gettext('Cancel') ?>" name="FundRaiserCancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) {
-    echo $linkBack;
-} else {
-    echo 'Menu.php';
-} ?>';">
-			<?php
-                if ($iFundRaiserID > 0) {
-                    echo '<input type=button class=btn value="'.gettext('Add Donated Item')."\" name=AddDonatedItem onclick=\"javascript:document.location='DonatedItemEditor.php?CurrentFundraiser=$iFundRaiserID&linkBack=FundRaiserEditor.php?FundRaiserID=$iFundRaiserID&CurrentFundraiser=$iFundRaiserID';\">\n";
-                    echo '<input type=button class=btn value="'.gettext('Generate Catalog')."\" name=GenerateCatalog onclick=\"javascript:document.location='Reports/FRCatalog.php?CurrentFundraiser=$iFundRaiserID';\">\n";
-                    echo '<input type=button class=btn value="'.gettext('Generate Bid Sheets')."\" name=GenerateBidSheets onclick=\"javascript:document.location='Reports/FRBidSheets.php?CurrentFundraiser=$iFundRaiserID';\">\n";
-                    echo '<input type=button class=btn value="'.gettext('Generate Certificates')."\" name=GenerateCertificates onclick=\"javascript:document.location='Reports/FRCertificates.php?CurrentFundraiser=$iFundRaiserID';\">\n";
-                    echo '<input type=button class=btn value="'.gettext('Batch Winner Entry')."\" name=BatchWinnerEntry onclick=\"javascript:document.location='BatchWinnerEntry.php?CurrentFundraiser=$iFundRaiserID&linkBack=FundRaiserEditor.php?FundRaiserID=$iFundRaiserID&CurrentFundraiser=$iFundRaiserID';\">\n";
-                }
+    <tr>
+        <td align="center">
+        <input type="submit" class="btn btn-default" value="<?= gettext('Save') ?>" name="FundRaiserSubmit">
+            <input type="button" class="btn btn-default" value="<?= gettext('Cancel') ?>" name="FundRaiserCancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) {
+                echo $linkBack;
+                                                                } else {
+                                                                    echo 'Menu.php';
+                                                                } ?>';">
+            <?php
+            if ($iFundRaiserID > 0) {
+                echo '<input type=button class=btn value="'.gettext('Add Donated Item')."\" name=AddDonatedItem onclick=\"javascript:document.location='DonatedItemEditor.php?CurrentFundraiser=$iFundRaiserID&linkBack=FundRaiserEditor.php?FundRaiserID=$iFundRaiserID&CurrentFundraiser=$iFundRaiserID';\">\n";
+                echo '<input type=button class=btn value="'.gettext('Generate Catalog')."\" name=GenerateCatalog onclick=\"javascript:document.location='Reports/FRCatalog.php?CurrentFundraiser=$iFundRaiserID';\">\n";
+                echo '<input type=button class=btn value="'.gettext('Generate Bid Sheets')."\" name=GenerateBidSheets onclick=\"javascript:document.location='Reports/FRBidSheets.php?CurrentFundraiser=$iFundRaiserID';\">\n";
+                echo '<input type=button class=btn value="'.gettext('Generate Certificates')."\" name=GenerateCertificates onclick=\"javascript:document.location='Reports/FRCertificates.php?CurrentFundraiser=$iFundRaiserID';\">\n";
+                echo '<input type=button class=btn value="'.gettext('Batch Winner Entry')."\" name=BatchWinnerEntry onclick=\"javascript:document.location='BatchWinnerEntry.php?CurrentFundraiser=$iFundRaiserID&linkBack=FundRaiserEditor.php?FundRaiserID=$iFundRaiserID&CurrentFundraiser=$iFundRaiserID';\">\n";
+            }
             ?>
-		</td>
-	</tr>
+        </td>
+    </tr>
 
-	<tr>
-		<td>
-		<table cellpadding="3">
-			<tr>
+    <tr>
+        <td>
+        <table cellpadding="3">
+            <tr>
                 <td class="LabelColumn"><?= gettext('Date') ?>:</td>
-				<td class="TextColumn"><input type="text" name="Date" value="<?= $dDate ?>" maxlength="10" id="Date" size="11" class="date-picker"><span style="color: red;"><?php echo $sDateError ?></span></td>
-			</tr>
+                <td class="TextColumn"><input type="text" name="Date" value="<?= $dDate ?>" maxlength="10" id="Date" size="11" class="date-picker"><span style="color: red;"><?php echo $sDateError ?></span></td>
+            </tr>
 
-			<tr>
-				<td class="LabelColumn"><?= gettext('Title') ?>:</td>
-				<td class="TextColumn"><input type="text" name="Title" id="Title" value="<?= $sTitle ?>"></td>
-			</tr>
+            <tr>
+                <td class="LabelColumn"><?= gettext('Title') ?>:</td>
+                <td class="TextColumn"><input type="text" name="Title" id="Title" value="<?= $sTitle ?>"></td>
+            </tr>
 
-			<tr>
-				<td class="LabelColumn"><?= gettext('Description') ?>:</td>
-				<td class="TextColumn"><input type="text" name="Description" id="Description" value="<?= $sDescription ?>"></td>
-			</tr>
-		</table>
-		</td>
-	</form>
+            <tr>
+                <td class="LabelColumn"><?= gettext('Description') ?>:</td>
+                <td class="TextColumn"><input type="text" name="Description" id="Description" value="<?= $sDescription ?>"></td>
+            </tr>
+        </table>
+        </td>
+    </form>
 </table>
 
 <br>
@@ -189,16 +188,16 @@ require 'Include/Header.php';
 <table class="table" cellpadding="5" cellspacing="0" width="100%">
 
 <tr class="TableHeader">
-	<td><?= gettext('Item') ?></td>
-	<td><?= gettext('Multiple') ?></td>
-	<td><?= gettext('Donor') ?></td>
-	<td><?= gettext('Buyer') ?></td>
-	<td><?= gettext('Title') ?></td>
-	<td><?= gettext('Sale Price') ?></td>
-	<td><?= gettext('Estimated value') ?></td>
-	<td><?= gettext('Material Value') ?></td>
-	<td><?= gettext('Minimum Price') ?></td>
-	<td><?= gettext('Delete') ?></td>
+    <td><?= gettext('Item') ?></td>
+    <td><?= gettext('Multiple') ?></td>
+    <td><?= gettext('Donor') ?></td>
+    <td><?= gettext('Buyer') ?></td>
+    <td><?= gettext('Title') ?></td>
+    <td><?= gettext('Sale Price') ?></td>
+    <td><?= gettext('Estimated value') ?></td>
+    <td><?= gettext('Material Value') ?></td>
+    <td><?= gettext('Minimum Price') ?></td>
+    <td><?= gettext('Delete') ?></td>
 </tr>
 
 <?php
@@ -214,45 +213,45 @@ if ($rsDonatedItems != 0) {
         }
 
         $sRowClass = 'RowColorA'; ?>
-		<tr class="<?= $sRowClass ?>">
-			<td>
-				<a href="DonatedItemEditor.php?DonatedItemID=<?= $di_ID.'&linkBack=FundRaiserEditor.php?FundRaiserID='.$iFundRaiserID ?>"><?= $di_Item ?></a>
-			</td>
-			<td>
-				<?php if ($di_multibuy) {
-            echo 'X';
-        } ?>&nbsp;
-			</td>
-			<td>
-				<?= $donorFirstName.' '.$donorLastName ?>&nbsp;
-			</td>
-			<td>
-				<?php if ($di_multibuy) {
-            echo gettext('Multiple');
-        } else {
-            echo $buyerFirstName.' '.$buyerLastName;
-        } ?>&nbsp;
-			</td>
-			<td>
-				<?= $di_title ?>&nbsp;
-			</td>
-			<td align=center>
-				<?= $di_sellprice ?>&nbsp;
-			</td>
-			<td align=center>
-				<?= $di_estprice ?>&nbsp;
-			</td>
-			<td align=center>
-				<?= $di_materialvalue ?>&nbsp;
-			</td>
-			<td align=center>
-				<?= $di_minimum ?>&nbsp;
-			</td>
-			<td>
-				<a href="DonatedItemDelete.php?DonatedItemID=<?= $di_ID.'&linkBack=FundRaiserEditor.php?FundRaiserID='.$iFundRaiserID ?>">Delete</a>
-			</td>
-		</tr>
-	<?php
+        <tr class="<?= $sRowClass ?>">
+            <td>
+                <a href="DonatedItemEditor.php?DonatedItemID=<?= $di_ID.'&linkBack=FundRaiserEditor.php?FundRaiserID='.$iFundRaiserID ?>"><?= $di_Item ?></a>
+            </td>
+            <td>
+                <?php if ($di_multibuy) {
+                    echo 'X';
+                } ?>&nbsp;
+            </td>
+            <td>
+                <?= $donorFirstName.' '.$donorLastName ?>&nbsp;
+            </td>
+            <td>
+                <?php if ($di_multibuy) {
+                    echo gettext('Multiple');
+                } else {
+                    echo $buyerFirstName.' '.$buyerLastName;
+                } ?>&nbsp;
+            </td>
+            <td>
+                <?= $di_title ?>&nbsp;
+            </td>
+            <td align=center>
+                <?= $di_sellprice ?>&nbsp;
+            </td>
+            <td align=center>
+                <?= $di_estprice ?>&nbsp;
+            </td>
+            <td align=center>
+                <?= $di_materialvalue ?>&nbsp;
+            </td>
+            <td align=center>
+                <?= $di_minimum ?>&nbsp;
+            </td>
+            <td>
+                <a href="DonatedItemDelete.php?DonatedItemID=<?= $di_ID.'&linkBack=FundRaiserEditor.php?FundRaiserID='.$iFundRaiserID ?>">Delete</a>
+            </td>
+        </tr>
+        <?php
     } // while
 }// if
 ?>

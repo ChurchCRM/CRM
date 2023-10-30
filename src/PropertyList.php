@@ -82,7 +82,6 @@ while ($aRow = mysqli_fetch_array($rsProperties)) {
 
     //Did the Type change?
     if ($iPreviousPropertyType != $prt_ID) {
-
         //Write the header row
         echo $sBlankLine;
         echo '<tr class="RowColorA"><td colspan="5"><b>'.$prt_Name.'</b></td></tr>';

@@ -52,7 +52,6 @@ function viewUser(Request $request, Response $response, array $args)
     ];
 
     return $renderer->render($response, 'user.php', $pageArgs);
-
 }
 
 function adminChangeUserPassword(Request $request, Response $response, array $args)
@@ -88,13 +87,11 @@ function adminChangeUserPassword(Request $request, Response $response, array $ar
         $loginRequestBody = (object)$request->getParsedBody();
         try {
             $user->adminSetUserPassword($loginRequestBody->NewPassword1);
-            return $renderer->render($response,"common/success-changepassword.php",$pageArgs);
-        }
-        catch (PasswordChangeException $pwChangeExc) {
+            return $renderer->render($response, "common/success-changepassword.php", $pageArgs);
+        } catch (PasswordChangeException $pwChangeExc) {
             $pageArgs['s'.$pwChangeExc->AffectedPassword.'PasswordError'] =  $pwChangeExc->getMessage();
         }
     }
 
     return $renderer->render($response, 'admin/adminchangepassword.php', $pageArgs);
-
 }

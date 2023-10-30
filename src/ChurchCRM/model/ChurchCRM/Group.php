@@ -96,25 +96,25 @@ class Group extends BaseGroup
         $bNoneInCart = true;
         $bAllInCart = true;
     //Loop through the recordset
-    foreach ($groupMemberships as $groupMembership) {
-        if (!isset($_SESSION['aPeopleCart'])) {
-            $bAllInCart = false;
-        } // Cart does not exist.  This person is not in cart.
-      elseif (!in_array($groupMembership->getPersonId(), $_SESSION['aPeopleCart'], false)) {
-          $bAllInCart = false;
-      } // This person is not in cart.
-      elseif (in_array($groupMembership->getPersonId(), $_SESSION['aPeopleCart'], false)) {
-          $bNoneInCart = false;
-      } // This person is in the cart
-    }
+        foreach ($groupMemberships as $groupMembership) {
+            if (!isset($_SESSION['aPeopleCart'])) {
+                $bAllInCart = false;
+            } // Cart does not exist.  This person is not in cart.
+            elseif (!in_array($groupMembership->getPersonId(), $_SESSION['aPeopleCart'], false)) {
+                $bAllInCart = false;
+            } // This person is not in cart.
+            elseif (in_array($groupMembership->getPersonId(), $_SESSION['aPeopleCart'], false)) {
+                $bNoneInCart = false;
+            } // This person is in the cart
+        }
 
         if (!$bAllInCart) {
             //there is at least one person in this group who is not in the cart.  Return false
-      return false;
+            return false;
         }
         if (!$bNoneInCart) {
             //every member of this group is in the cart.  Return true
-      return true;
+            return true;
         }
 
         return false;

@@ -38,33 +38,33 @@ if (strpos($_POST['Action'], 'DELETE_', 0) === 0) {
     RunQuery($sSQL);
 } else {
     switch ($_POST['Action']) {
-  case 'ADD':
-    $newCTName = $_POST['newCountName'];
-    $theID = $_POST['EN_tyid'];
-    $sSQL = "INSERT eventcountnames_evctnm (evctnm_eventtypeid, evctnm_countname) VALUES ('$theID','$newCTName')";
-    RunQuery($sSQL);
-    break;
+        case 'ADD':
+            $newCTName = $_POST['newCountName'];
+            $theID = $_POST['EN_tyid'];
+            $sSQL = "INSERT eventcountnames_evctnm (evctnm_eventtypeid, evctnm_countname) VALUES ('$theID','$newCTName')";
+            RunQuery($sSQL);
+            break;
 
-  case 'NAME':
-    $editing = 'FALSE';
-    $eName = $_POST['newEvtName'];
-    $theID = $_POST['EN_tyid'];
-    $sSQL = "UPDATE event_types SET type_name='".InputUtils::LegacyFilterInput($eName)."' WHERE type_id='".InputUtils::LegacyFilterInput($theID)."'";
-    RunQuery($sSQL);
-    $theID = '';
-    $_POST['Action'] = '';
-    break;
+        case 'NAME':
+            $editing = 'FALSE';
+            $eName = $_POST['newEvtName'];
+            $theID = $_POST['EN_tyid'];
+            $sSQL = "UPDATE event_types SET type_name='".InputUtils::LegacyFilterInput($eName)."' WHERE type_id='".InputUtils::LegacyFilterInput($theID)."'";
+            RunQuery($sSQL);
+            $theID = '';
+            $_POST['Action'] = '';
+            break;
 
-  case 'TIME':
-    $editing = 'FALSE';
-    $eTime = $_POST['newEvtStartTime'];
-    $theID = $_POST['EN_tyid'];
-    $sSQL = "UPDATE event_types SET type_defstarttime='".InputUtils::LegacyFilterInput($eTime)."' WHERE type_id='".InputUtils::LegacyFilterInput($theID)."'";
-    RunQuery($sSQL);
-    $theID = '';
-    $_POST['Action'] = '';
-    break;
-  }
+        case 'TIME':
+            $editing = 'FALSE';
+            $eTime = $_POST['newEvtStartTime'];
+            $theID = $_POST['EN_tyid'];
+            $sSQL = "UPDATE event_types SET type_defstarttime='".InputUtils::LegacyFilterInput($eTime)."' WHERE type_id='".InputUtils::LegacyFilterInput($theID)."'";
+            RunQuery($sSQL);
+            $theID = '';
+            $_POST['Action'] = '';
+            break;
+    }
 }
 
 // Get data for the form as it now exists.
@@ -84,19 +84,19 @@ $aDefRecurDOY = $type_defrecurDOY;
 $aDefRecurType = $type_defrecurtype;
 switch ($aDefRecurType) {
     case 'none':
-       $recur = gettext('None');
-       break;
+        $recur = gettext('None');
+        break;
     case 'weekly':
-       $recur = gettext('Weekly on').' '.gettext($aDefRecurDOW.'s');
-       break;
+        $recur = gettext('Weekly on').' '.gettext($aDefRecurDOW.'s');
+        break;
     case 'monthly':
-       $recur = gettext('Monthly on').' '.date('dS', mktime(0, 0, 0, 1, $aDefRecurDOM, 2000));
-       break;
+        $recur = gettext('Monthly on').' '.date('dS', mktime(0, 0, 0, 1, $aDefRecurDOM, 2000));
+        break;
     case 'yearly':
-       $recur = gettext('Yearly on').' '.mb_substr($aDefRecurDOY, 5);
-       break;
+        $recur = gettext('Yearly on').' '.mb_substr($aDefRecurDOY, 5);
+        break;
     default:
-       $recur = gettext('None');
+        $recur = gettext('None');
 }
 
 // Get a list of the attendance counts currently associated with thisevent type
@@ -167,9 +167,9 @@ if ($numCounts) {
           <button type="submit" name="Action" value="DELETE_<?=  $cCountID[$c] ?>" class="btn btn-default"><?= gettext('Remove') ?></button>
         </td>
       </tr>
-     <?php
+        <?php
     }
-     ?>
+    ?>
       <tr>
         <td class="TextColumn" width="35%">
            <input class='form-control' type="text" name="newCountName" length="20" placeholder="New Attendance Count" />

@@ -89,6 +89,5 @@ $app->group('/deposits', function () use ($app) {
             ->find()
             ->toArray();
         return $response->withJson($Pledges);
-
     });
 })->add(new FinanceRoleAuthMiddleware());

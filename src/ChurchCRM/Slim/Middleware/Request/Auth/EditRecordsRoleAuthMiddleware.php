@@ -2,7 +2,8 @@
 
 namespace ChurchCRM\Slim\Middleware\Request\Auth;
 
-class EditRecordsRoleAuthMiddleware extends BaseAuthRoleMiddleware {
+class EditRecordsRoleAuthMiddleware extends BaseAuthRoleMiddleware
+{
 
     function hasRole()
     {

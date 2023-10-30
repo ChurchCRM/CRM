@@ -6,7 +6,7 @@ namespace ChurchCRM
 
     class FileSystemUtils
     {
-        public static function recursiveRemoveDirectory($directory, $retainParentFolderAndFiles=false)
+        public static function recursiveRemoveDirectory($directory, $retainParentFolderAndFiles = false)
         {
             //sourced from http://stackoverflow.com/questions/11267086/php-unlink-all-files-within-a-directory-and-then-deleting-that-directory
             foreach (glob("{$directory}/*") as $file) {

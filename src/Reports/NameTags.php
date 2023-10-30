@@ -29,7 +29,7 @@ if ($sFontSize != 'default') {
     $pdf->Set_Char_Size($sFontSize);
 }
 //if($sFontSize != "default")
-//	$pdf->SetFontSize($sFontSize);
+//  $pdf->SetFontSize($sFontSize);
 
 $sSQL = 'SELECT * FROM person_per WHERE per_ID IN ('.ConvertCartToString($_SESSION['aPeopleCart']).') ORDER BY per_LastName';
 $rsPersons = RunQuery($sSQL);

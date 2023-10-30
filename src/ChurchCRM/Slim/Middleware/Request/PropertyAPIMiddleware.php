@@ -22,7 +22,7 @@ class PropertyAPIMiddleware
         $propertyId = $request->getAttribute("route")->getArgument("propertyId");
 
         if (empty(trim($propertyId))) {
-          return $response->withStatus(412, gettext("Missing"). " PropertyId");
+            return $response->withStatus(412, gettext("Missing"). " PropertyId");
         }
 
         $property = PropertyQuery::create()->findPk($propertyId);
@@ -37,5 +37,4 @@ class PropertyAPIMiddleware
         $request = $request->withAttribute("property", $property);
         return $next($request, $response);
     }
-
 }

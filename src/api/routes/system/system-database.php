@@ -32,7 +32,7 @@ $app->group('/database', function () use ($app) {
 
     $app->post('/backup', function ($request, $response, $args) {
         $input = (object)$request->getParsedBody();
-        $BaseName = preg_replace('/[^a-zA-Z0-9\-_]/','', SystemConfig::getValue('sChurchName')). "-" . date(SystemConfig::getValue("sDateFilenameFormat"));
+        $BaseName = preg_replace('/[^a-zA-Z0-9\-_]/', '', SystemConfig::getValue('sChurchName')). "-" . date(SystemConfig::getValue("sDateFilenameFormat"));
         $BackupType = $input->BackupType;
         $Backup = new BackupJob(
             $BaseName,
@@ -46,24 +46,23 @@ $app->group('/database', function () use ($app) {
     });
 
     $app->post('/backupRemote', function ($request, $response, $args) {
-      if (SystemConfig::getValue('sExternalBackupUsername') && SystemConfig::getValue('sExternalBackupPassword') && SystemConfig::getValue('sExternalBackupEndpoint')) {
-        $input = (object)$request->getParsedBody();
-        $BaseName = preg_replace('/[^a-zA-Z0-9\-_]/','', SystemConfig::getValue('sChurchName')). "-" . date(SystemConfig::getValue("sDateFilenameFormat"));
-        $BackupType = $input->BackupType;
-        $Backup = new BackupJob(
-            $BaseName,
-            $BackupType,
-            SystemConfig::getValue('bBackupExtraneousImages'),
-            $input->EncryptBackup ?? "",
-            $input->BackupPassword ?? ""
-        );
-        $Backup->Execute();
-        $copyStatus = $Backup->CopyToWebDAV(SystemConfig::getValue('sExternalBackupEndpoint'), SystemConfig::getValue('sExternalBackupUsername'), SystemConfig::getValue('sExternalBackupPassword'));
-        return $response->withJson($copyStatus);
-      }
-      else {
-        throw new \Exception('WebDAV backups are not correctly configured.  Please ensure endpoint, username, and password are set', 500);
-      }
+        if (SystemConfig::getValue('sExternalBackupUsername') && SystemConfig::getValue('sExternalBackupPassword') && SystemConfig::getValue('sExternalBackupEndpoint')) {
+            $input = (object)$request->getParsedBody();
+            $BaseName = preg_replace('/[^a-zA-Z0-9\-_]/', '', SystemConfig::getValue('sChurchName')). "-" . date(SystemConfig::getValue("sDateFilenameFormat"));
+            $BackupType = $input->BackupType;
+            $Backup = new BackupJob(
+                $BaseName,
+                $BackupType,
+                SystemConfig::getValue('bBackupExtraneousImages'),
+                $input->EncryptBackup ?? "",
+                $input->BackupPassword ?? ""
+            );
+            $Backup->Execute();
+            $copyStatus = $Backup->CopyToWebDAV(SystemConfig::getValue('sExternalBackupEndpoint'), SystemConfig::getValue('sExternalBackupUsername'), SystemConfig::getValue('sExternalBackupPassword'));
+            return $response->withJson($copyStatus);
+        } else {
+            throw new \Exception('WebDAV backups are not correctly configured.  Please ensure endpoint, username, and password are set', 500);
+        }
     });
 
     $app->post('/restore', function ($request, $response, $args) {
@@ -87,7 +86,8 @@ $app->group('/database', function () use ($app) {
  * @param array $p_args Arguments
  * @return \Slim\Http\Response The augmented response.
  */
-function exportChMeetings(Request $request, Response $response, array $p_args) {
+function exportChMeetings(Request $request, Response $response, array $p_args)
+{
 
     $header_data = [
         'First Name','Last Name','Middle Name','Gender',
@@ -113,7 +113,7 @@ function exportChMeetings(Request $request, Response $response, array $p_args) {
     }
 
     $stream = fopen('php://memory', 'w+');
-    fputcsv($stream,$header_data);
+    fputcsv($stream, $header_data);
     foreach ($list as $fields) {
         fputcsv($stream, $fields, ',');
     }
@@ -206,4 +206,3 @@ function clearPeopleTables(Request $request, Response $response, array $p_args)
 
     return $response->withJson(['success' => true, 'msg' => gettext('The people and families has been cleared from the database.')]);
 }
-

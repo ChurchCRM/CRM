@@ -42,7 +42,7 @@ class SystemURLs
     
     public static function getImagesRoot()
     {
-      return self::$documentRoot."/Images";
+        return self::$documentRoot."/Images";
     }
 
     public static function getURLs()
@@ -50,7 +50,7 @@ class SystemURLs
         return self::$urls;
     }
 
-    public static function getSupportURL($topic="")
+    public static function getSupportURL($topic = "")
     {
         $supportURLs = [
             "HttpsTask" => "https://github.com/ChurchCRM/CRM/wiki/SSL",
@@ -61,13 +61,11 @@ class SystemURLs
             "CheckUploadSizeTask" => "https://mediatemple.net/community/products/dv/204404784/how-do-i-increase-the-php-upload-limits"
         ];
 
-        if ( array_key_exists($topic,$supportURLs) ) {
+        if (array_key_exists($topic, $supportURLs)) {
             return $supportURLs[$topic];
-        }
-        else {
+        } else {
             return 'https://github.com/ChurchCRM/CRM/wiki';
         }
-      
     }
 
     public static function getURL($index = 0)
@@ -75,8 +73,8 @@ class SystemURLs
         // Return the URL configured for this server from Include/Config.php
         // Trim any trailing slashes from the configured URL
         $URL = self::$urls[$index];
-        if (substr($URL,-1,1) == "/") {
-            return substr($URL,0,-1);
+        if (substr($URL, -1, 1) == "/") {
+            return substr($URL, 0, -1);
         }
         return $URL;
     }
@@ -121,6 +119,6 @@ class SystemURLs
     
     public static function getCSPNonce()
     {
-      return self::$CSPNonce;
+        return self::$CSPNonce;
     }
 }

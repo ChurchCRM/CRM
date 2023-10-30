@@ -251,8 +251,8 @@ $bOkToEdit = (
                         <b><?= gettext($sClassName) ?></b>
                         <a class="float-right">
                             <?php if ($per_MembershipDate) {
-                            echo gettext(' Since:')  . ' ' . FormatDate($per_MembershipDate, false);
-                        } ?>
+                                echo gettext(' Since:')  . ' ' . FormatDate($per_MembershipDate, false);
+                            } ?>
                         </a>
                     </li>
 
@@ -282,78 +282,78 @@ $bOkToEdit = (
                                 <a href="<?= SystemURLs::getRootPath() ?>/FamilyEditor.php?FamilyID=<?= $fam_ID ?>" class="table-link">
                                     <i class="fas fa-pen"></i>
                                 </a>
-                            <?php
+                                <?php
                             } else {
                                 echo gettext('(No assigned family)');
                             } ?>
                         </span></li>
                     <?php if (!empty($formattedMailingAddress)) {
-                                ?>
+                        ?>
                         <li><i class="fa-li fa fa-home"></i><?php echo gettext('Address'); ?>: <span>
                                 <a href="https://maps.google.com/?q=<?= $plaintextMailingAddress ?>" target="_blank">
                                     <?= $formattedMailingAddress ?>
                                 </a>
                             </span></li>
-                    <?php
-                            }
+                        <?php
+                    }
                     if ($dBirthDate) {
                         ?>
                         <li>
                             <i class="fa-li fa fa-calendar"></i><?= gettext('Birth Date') ?>: <?= $dBirthDate ?>
                             <?php if (!$person->hideAge()) {
-                            ?>
+                                ?>
                                 (<span></span><?= $person->getAge() ?>)
-                            <?php
-                        } ?>
+                                <?php
+                            } ?>
                         </li>
-                    <?php
+                        <?php
                     }
                     if (!SystemConfig::getValue('bHideFriendDate') && $per_FriendDate != '') { /* Friend Date can be hidden - General Settings */ ?>
                         <li><i class="fa-li fa fa-tasks"></i><?= gettext('Friend Date') ?>: <span><?= FormatDate($per_FriendDate, false) ?></span></li>
-                    <?php
+                        <?php
                     }
                     if ($sCellPhone) {
                         ?>
                         <li><i class="fa-li fa fa-mobile-phone"></i><?= gettext('Mobile Phone') ?>: <span><a href="tel:<?= $sCellPhoneUnformatted ?>"><?= $sCellPhone ?></a></span></li>
-                    <?php
+                        <?php
                     }
                     if ($sHomePhone) {
                         ?>
                         <li><i class="fa-li fa fa-phone"></i><?= gettext('Home Phone') ?>: <span><a href="tel:<?= $sHomePhoneUnformatted ?>"><?= $sHomePhone ?></a></span></li>
-                    <?php
+                        <?php
                     }
                     if ($sEmail != '') {
                         ?>
                         <li><i class="fa-li fa fa-envelope"></i><?= gettext('Email') ?>: <span><a href="mailto:<?= $sUnformattedEmail ?>"><?= $sEmail ?></a></span></li>
-                    <?php
+                        <?php
                     }
                     if ($sWorkPhone) {
                         ?>
                         <li><i class="fa-li fa fa-phone"></i><?= gettext('Work Phone') ?>: <span><a href="tel:<?= $sWorkPhoneUnformatted ?>"><?= $sWorkPhone ?></a></span></li>
-                    <?php
+                        <?php
                     } ?>
                     <?php if ($per_WorkEmail != '') {
                         ?>
                         <li><i class="fa-li fa fa-envelope"></i><?= gettext('Work/Other Email') ?>: <span><a href="mailto:<?= $per_WorkEmail ?>"><?= $per_WorkEmail ?></a></span></li>
-                    <?php
+                        <?php
                     }
 
                     if (strlen($per_Facebook) > 0) {
                         ?>
                         <li><i class="fa-li fa-brands fa-facebook-official"></i><?= gettext('Facebook') ?>: <span><a href="https://www.facebook.com/<?= InputUtils::FilterString($per_Facebook) ?> " target="_blank"><?= $per_Facebook ?></a></span></li>
-                    <?php
+                        <?php
                     }
 
                     if (strlen($per_Twitter) > 0) {
                         ?>
                         <li><i class="fa-li fa-brands fa-twitter"></i><?= gettext('Twitter') ?>: <span><a href="https://www.twitter.com/<?= InputUtils::FilterString($per_Twitter) ?>" target="_blank"><?= $per_Twitter ?></a></span></li>
-                    <?php
+                        <?php
                     }
 
                     if (strlen($per_LinkedIn) > 0) {
                         ?>
                         <li><i class="fa-li fa-brands fa-linkedin"></i><?= gettext('LinkedIn') ?>: <span><a href="https://www.linkedin.com/in/<?= InputUtils::FiltersTring($per_LinkedIn) ?>" target="_blank"><?= $per_LinkedIn ?></a></span></li>
-                    <?php
+                        <?php
                     }
 
                     // Display the side custom fields
@@ -393,22 +393,22 @@ $bOkToEdit = (
             <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/PrintView.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-print"></i> <?= gettext("Printable Page") ?></a>
             <a class="btn btn-app AddToPeopleCart" id="AddPersonToCart" data-cartpersonid="<?= $iPersonID ?>"><i class="fa fa-cart-plus"></i><span class="cartActionDescription"><?= gettext("Add to Cart") ?></span></a>
             <?php if (AuthenticationManager::GetCurrentUser()->isNotesEnabled()) {
-                    ?>
+                ?>
                 <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/WhyCameEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-question-circle"></i> <?= gettext("Edit \"Why Came\" Notes") ?></a>
                 <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/NoteEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-sticky-note"></i> <?= gettext("Add a Note") ?></a>
-            <?php
-                }
+                <?php
+            }
             if (AuthenticationManager::GetCurrentUser()->isManageGroupsEnabled()) {
                 ?>
                 <a class="btn btn-app" id="addGroup"><i class="fa fa-users"></i> <?= gettext("Assign New Group") ?></a>
-            <?php
+                <?php
             } ?>
             <a class="btn btn-app" role="button" href="<?= SystemURLs::getRootPath() ?>/v2/people"><i class="fa fa-list"></i> <?= gettext("List Members") ?></span></a>
             <?php
             if (AuthenticationManager::GetCurrentUser()->isDeleteRecordsEnabled()) {
                 ?>
                 <a id="deletePersonBtn" class="btn btn-app bg-maroon delete-person" data-person_name="<?= $person->getFullName() ?>" data-person_id="<?= $iPersonID ?>"><i class="fa fa-trash-can"></i> <?= gettext("Delete this Record") ?></a>
-            <?php
+                <?php
             }
             ?>
             <br />
@@ -417,19 +417,19 @@ $bOkToEdit = (
                 if (!$person->isUser()) {
                     ?>
                     <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/UserEditor.php?NewPersonID=<?= $iPersonID ?>"><i class="fa fa-person-chalkboard"></i> <?= gettext('Make User') ?></a>
-                <?php
+                    <?php
                 } else {
                     ?>
                     <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/UserEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-user-secret"></i> <?= gettext('Edit User') ?></a>
                     <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= $iPersonID ?>"><i class="fa fa-eye"></i> <?= gettext('View User') ?></a>
                     <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= $iPersonID ?>/changePassword"><i class="fa fa-key"></i> <?= gettext("Change Password") ?></a>
-                <?php
+                    <?php
                 }
             } elseif ($person->isUser() && $person->getId() == AuthenticationManager::GetCurrentUser()->getId()) {
                 ?>
                 <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= $iPersonID ?>"><i class="fa fa-eye"></i> <?= gettext('View User') ?></a>
                 <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/v2/user/current/changepassword"><i class="fa fa-key"></i> <?= gettext("Change Password") ?></a>
-            <?php
+                <?php
             } ?>
         </div>
 
@@ -462,7 +462,7 @@ $bOkToEdit = (
                                 </thead>
                                 <tbody>
                                     <?php foreach ($person->getFamily()->getPeopleSorted() as $familyMember) {
-                    $tmpPersonId = $familyMember->getId(); ?>
+                                        $tmpPersonId = $familyMember->getId(); ?>
                                         <tr>
                                             <td>
 
@@ -479,7 +479,7 @@ $bOkToEdit = (
                                             </td>
                                             <td>
                                                 <?php $tmpEmail = $familyMember->getEmail();
-                    if ($tmpEmail != '') { ?>
+                                                if ($tmpEmail != '') { ?>
                                                     <a href="mailto:<?= $tmpEmail ?>"><?= $tmpEmail ?></a>
                                                 <?php } ?>
                                             </td>
@@ -488,22 +488,22 @@ $bOkToEdit = (
                                                     <i class="fa fa-cart-plus "></i>
                                                 </a>
                                                 <?php if ($bOkToEdit) {
-                        ?>
+                                                    ?>
                                                     <a href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $tmpPersonId ?>">
                                                         <i class="fas fa-pen "></i>
                                                     </a>
                                                     <a class="delete-person" data-person_name="<?= $familyMember->getFullName() ?>" data-person_id="<?= $familyMember->getId() ?>" data-view="family">
                                                         <i class="fa fa-trash-can btn-danger"></i>
                                                     </a>
-                                                <?php
-                    } ?>
+                                                    <?php
+                                                } ?>
                                             </td>
                                         </tr>
-                                    <?php
-                } ?>
+                                        <?php
+                                    } ?>
                                 </tbody>
                             </table>
-                        <?php
+                            <?php
                         } ?>
                     </div>
 
@@ -521,7 +521,7 @@ $bOkToEdit = (
 
                             <!-- timeline item -->
                             <?php foreach ($timelineService->getForPerson($iPersonID) as $item) {
-                                        ?>
+                                ?>
                                 <div>
                                     <!-- timeline icon -->
                                     <i class="fa <?= $item['style'] ?>"></i>
@@ -529,20 +529,20 @@ $bOkToEdit = (
                                     <div class="timeline-item">
                                         <span class="time">
                                             <?php if (AuthenticationManager::GetCurrentUser()->isNotesEnabled() && (isset($item["editLink"]) || isset($item["deleteLink"]))) {
-                                            ?>
+                                                ?>
                                                 <?php if (isset($item["editLink"])) {
-                                                ?>
+                                                    ?>
                                                     <a href="<?= $item["editLink"] ?>"><button type="button" class="btn btn-xs btn-primary"><i class="fa fa-pen"></i></button></a>
-                                                <?php
-                                            }
-                                            if (isset($item["deleteLink"])) {
-                                                ?>
+                                                    <?php
+                                                }
+                                                if (isset($item["deleteLink"])) {
+                                                    ?>
                                                     <a href="<?= $item["deleteLink"] ?>"><button type="button" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i></button></a>
+                                                    <?php
+                                                } ?>
+                                                &nbsp;
                                                 <?php
                                             } ?>
-                                                &nbsp;
-                                            <?php
-                                        } ?>
                                             <i class="fa fa-clock"></i> <?= $item['datetime'] ?></span>
 
                                         <?php if ($item['slim']) {
@@ -550,31 +550,31 @@ $bOkToEdit = (
                                             <h4 class="timeline-header">
                                                 <?= $item['text'] ?> <?= gettext($item['header']) ?>
                                             </h4>
-                                        <?php
+                                            <?php
                                         } else {
                                             ?>
                                             <h3 class="timeline-header">
                                                 <?php if (in_array('headerlink', $item)) {
-                                                ?>
+                                                    ?>
                                                     <a href="<?= $item['headerlink'] ?>"><?= $item['header'] ?></a>
-                                                <?php
-                                            } else {
-                                                ?>
+                                                    <?php
+                                                } else {
+                                                    ?>
                                                     <?= $item['header'] ?>
-                                                <?php
-                                            } ?>
+                                                    <?php
+                                                } ?>
                                             </h3>
 
                                             <div class="timeline-body">
                                                 <pre style="line-height: 1.2;"><?= $item['text'] ?></pre>
                                             </div>
 
-                                        <?php
+                                            <?php
                                         } ?>
                                     </div>
                                 </div>
-                            <?php
-                                    } ?>
+                                <?php
+                            } ?>
                             <!-- END timeline item -->
                         </ul>
                     </div>
@@ -637,7 +637,7 @@ $bOkToEdit = (
                                                 <div class="card-footer">
                                                     <code>
                                                         <?php if (AuthenticationManager::GetCurrentUser()->isManageGroupsEnabled()) {
-                                                    ?>
+                                                            ?>
                                                             <a href="<?= SystemURLs::getRootPath() ?>/GroupView.php?GroupID=<?= $grp_ID ?>" class="btn btn-default" role="button"><i class="fa fa-list"></i></a>
                                                             <div class="btn-group">
                                                                 <button type="button" class="btn btn-default"><?= gettext('Action') ?></button>
@@ -648,24 +648,24 @@ $bOkToEdit = (
                                                                 <ul class="dropdown-menu" role="menu">
                                                                     <li><a class="changeRole" data-groupid="<?= $grp_ID ?>"><?= gettext('Change Role') ?></a></li>
                                                                     <?php if ($grp_hasSpecialProps) {
-                                                        ?>
+                                                                        ?>
                                                                         <li><a href="<?= SystemURLs::getRootPath() ?>/GroupPropsEditor.php?GroupID=<?= $grp_ID ?>&PersonID=<?= $iPersonID ?>"><?= gettext('Update Properties') ?></a></li>
-                                                                    <?php
-                                                    } ?>
+                                                                        <?php
+                                                                    } ?>
                                                                 </ul>
                                                             </div>
                                                             <div class="btn-group">
                                                                 <button data-groupid="<?= $grp_ID ?>" data-groupname="<?= $grp_Name ?>" type="button" class="btn btn-danger groupRemove" data-toggle="dropdown"><i class="fa fa-trash-can"></i></button>
                                                             </div>
-                                                        <?php
-                                                } ?>
+                                                            <?php
+                                                        } ?>
                                                     </code>
                                                 </div>
                                                 <!-- /.box-footer-->
                                             </div>
                                             <!-- /.box -->
                                         </div>
-                                <?php
+                                        <?php
                                         // NOTE: this method is crude.  Need to replace this with use of an array.
                                         $sAssignedGroups .= $grp_ID . ',';
                                     }
@@ -716,7 +716,7 @@ $bOkToEdit = (
                                                         </td>
                                                     <?php } ?>
                                                 </tr>
-                                            <?php
+                                                <?php
                                                 $sAssignedProperties .= $pro_ID . ',';
                                             } ?>
                                         </tbody>
@@ -790,7 +790,7 @@ $bOkToEdit = (
                                     <div class="alert alert-warning">
                                         <i class="fa fa-question-circle fa-fw fa-lg"></i> <span><?= gettext('No volunteer opportunity assignments.') ?></span>
                                     </div>
-                                <?php
+                                    <?php
                                 } else {
                                     echo '<table class="table table-condensed dt-responsive" id="assigned-volunteer-opps-table" width="100%">';
                                     echo '<thead>';

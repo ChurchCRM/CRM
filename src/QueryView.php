@@ -99,7 +99,6 @@ function ValidateInput()
             switch ($qrp_Validation) {
                 //Numeric validation
                 case 'n':
-
                     //Is it a number?
                     if (!is_numeric($_POST[$qrp_Alias])) {
                         $bError = true;
@@ -122,7 +121,6 @@ function ValidateInput()
 
                 //Alpha validation
                 case 'a':
-
                     //Is the length less than the maximum?
                     if (strlen($_POST[$qrp_Alias]) > $qrp_AlphaMaxLength) {
                         $bError = true;
@@ -208,18 +206,18 @@ function DoQuery()
             <thead>
                 <?php
                     //Loop through the fields and write the header row
-                    for ($iCount = 0; $iCount < mysqli_num_fields($rsQueryResults); $iCount++) {
-                        //If this field is called "AddToCart", provision a headerless column to hold the cart action buttons
-                        $fieldInfo = mysqli_fetch_field_direct($rsQueryResults, $iCount);
-                        if ($fieldInfo->name != 'AddToCart') {
-                            echo '<th>'.$fieldInfo->name.'</th>';
-                        } else {
-                            echo '<th></th>';
-                        }
-                    } ?>
+                for ($iCount = 0; $iCount < mysqli_num_fields($rsQueryResults); $iCount++) {
+                    //If this field is called "AddToCart", provision a headerless column to hold the cart action buttons
+                    $fieldInfo = mysqli_fetch_field_direct($rsQueryResults, $iCount);
+                    if ($fieldInfo->name != 'AddToCart') {
+                        echo '<th>'.$fieldInfo->name.'</th>';
+                    } else {
+                        echo '<th></th>';
+                    }
+                } ?>
             </thead>
             <tbody>
-<?php
+    <?php
     $aAddToCartIDs = [];
 
     while ($aRow = mysqli_fetch_array($rsQueryResults)) {
@@ -263,7 +261,6 @@ function DoQuery()
     <div class="card-footer">
         <p>
         <?php if (count($aAddToCartIDs)) { ?>
-
             <div class="col-sm-offset-1">
                 <input type="hidden" value="<?= implode(',', $aAddToCartIDs) ?>" name="BulkAddToCart">
                 <button type="button" id="addResultsToCart" class="btn btn-success" > <?= gettext('Add Results to Cart') ?></button>
@@ -301,7 +298,7 @@ function DoQuery()
         <code><?= str_replace(chr(13), '<br>', htmlspecialchars($qry_SQL)); ?></code>
     </div>
 </div>
-<?php
+    <?php
 }
 
 
@@ -316,7 +313,7 @@ function DisplayQueryInfo()
         <p><?= gettext($qry_Description); ?></p>
     </div>
 </div>
-<?php
+    <?php
 }
 
 
@@ -410,11 +407,11 @@ function DisplayParameterForm()
             <div class="card-body">
 
                 <form method="post" action="QueryView.php?QueryID=<?= $iQueryID ?>">
-<?php
+    <?php
 //Loop through the parameters and display an entry box for each one
-if (mysqli_num_rows($rsParameters)) {
-    mysqli_data_seek($rsParameters, 0);
-}
+    if (mysqli_num_rows($rsParameters)) {
+        mysqli_data_seek($rsParameters, 0);
+    }
     while ($aRow = mysqli_fetch_array($rsParameters)) {
         echo getQueryFormInput($aRow);
     } ?>
@@ -431,7 +428,7 @@ if (mysqli_num_rows($rsParameters)) {
 
 </div>
 
-<?php
+    <?php
 }
 
 require 'Include/Footer.php';

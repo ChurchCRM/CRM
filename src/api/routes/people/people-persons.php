@@ -60,7 +60,6 @@ $app->group('/persons', function () use ($app) {
             ->find();
         return $response->withJson(['people' => $people->toArray()]);
     });
-
 });
 
 function getAllRolesAPI(Request $request, Response $response, array $p_args)
@@ -112,7 +111,7 @@ function getLatestPersons(Request $request, Response $response, array $p_args)
     ->limit(10)
     ->find();
 
-    return $response->withJson(buildFormattedPersonList($people, true, false, false ));
+    return $response->withJson(buildFormattedPersonList($people, true, false, false));
 }
 
 function getUpdatedPersons(Request $request, Response $response, array $p_args)

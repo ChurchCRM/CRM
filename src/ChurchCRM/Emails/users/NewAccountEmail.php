@@ -2,13 +2,13 @@
 
 namespace ChurchCRM\Emails;
 
-
 class NewAccountEmail extends BaseUserEmail
 {
 
     protected $password;
 
-    public function __construct($user, $password) {
+    public function __construct($user, $password)
+    {
         $this->password = $password;
         parent::__construct($user);
     }

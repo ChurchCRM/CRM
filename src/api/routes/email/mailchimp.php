@@ -129,7 +129,8 @@ function getPersonStatus(Request $request, Response $response, array $args)
     return $response->withJson($emailToLists);
 }
 
-function getPeopleWithEmails() {
+function getPeopleWithEmails()
+{
     $list = PersonQuery::create()
         ->filterByEmail(null, Criteria::NOT_EQUAL)
         ->_or()
@@ -140,7 +141,8 @@ function getPeopleWithEmails() {
     return $list;
 }
 
-function checkEmailInList($email, $memberList) {
+function checkEmailInList($email, $memberList)
+{
     $email = trim(strtolower($email));
     $key = array_search($email, array_column($memberList, "email"));
     if ($key > 0) {

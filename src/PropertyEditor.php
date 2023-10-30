@@ -81,7 +81,6 @@ if (isset($_POST['Submit'])) {
 
     //If no errors, let's update
     if (!$bError) {
-
         //Vary the SQL depending on if we're adding or editing
         if ($iPropertyID == 0) {
             $sSQL = "INSERT INTO property_pro (pro_Class,pro_prt_ID,pro_Name,pro_Description,pro_Prompt) VALUES ('".$sType."',".$iClass.",'".$sName."','".$sDescription."','".$sPrompt."')";

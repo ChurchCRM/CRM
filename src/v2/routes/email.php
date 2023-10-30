@@ -77,12 +77,12 @@ function testEmailConnectionMVC(Request $request, Response $response, array $arg
 
 function getDuplicateEmailsMVC(Request $request, Response $response, array $args)
 {
-    return renderPage($response,'templates/email/',  'duplicate.php', _("Duplicate Emails"));
+    return renderPage($response, 'templates/email/', 'duplicate.php', _("Duplicate Emails"));
 }
 
 function getFamiliesWithoutEmailsMVC(Request $request, Response $response, array $args)
 {
-    return renderPage($response,'templates/email/',  'without.php', _("Families Without Emails"));
+    return renderPage($response, 'templates/email/', 'without.php', _("Families Without Emails"));
 }
 
 function getMailListUnSubscribersMVC(Request $request, Response $response, array $args)

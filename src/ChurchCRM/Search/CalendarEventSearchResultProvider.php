@@ -9,21 +9,24 @@ use ChurchCRM\Search\SearchResult;
 use ChurchCRM\Search\SearchResultGroup;
 use ChurchCRM\dto\SystemConfig;
 
-class CalendarEventSearchResultProvider extends BaseSearchResultProvider  {
+class CalendarEventSearchResultProvider extends BaseSearchResultProvider
+{
     public function __construct()
     {
         $this->pluralNoun = "Calendar Events";
         parent::__construct();
     }
 
-    public function getSearchResults(string $SearchQuery) {
+    public function getSearchResults(string $SearchQuery)
+    {
         if (SystemConfig::getBooleanValue("bSearchIncludeCalendarEvents")) {
             $this->addSearchResults($this->getCalendarEventSearchResultsByPartialName($SearchQuery));
         }
         return $this->formatSearchGroup();
     }
 
-    private function getCalendarEventSearchResultsByPartialName(string $SearchQuery) {
+    private function getCalendarEventSearchResultsByPartialName(string $SearchQuery)
+    {
         $searchResults = [];
         $id = 0;
         try {
@@ -38,7 +41,7 @@ class CalendarEventSearchResultProvider extends BaseSearchResultProvider  {
             if (!empty($events)) {
                 $id++;
                 foreach ($events as $event) {
-                    array_push($searchResults, new SearchResult("event-name-".$id, $event->getTitle(),$event->getViewURI()));
+                    array_push($searchResults, new SearchResult("event-name-".$id, $event->getTitle(), $event->getViewURI()));
                 }
             }
         } catch (\Exception $e) {

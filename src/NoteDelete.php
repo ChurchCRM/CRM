@@ -59,14 +59,14 @@ require 'Include/Header.php';
 ?>
 <div class="card card-warning">
   <div class="card-header with-border">
-	<?= gettext('Please confirm deletion of this note') ?>:
+    <?= gettext('Please confirm deletion of this note') ?>:
   </div>
   <div class="card-body">
     <?= $nte_Text ?>
   </div>
   <div class="card-footer">
     <a class="btn btn-default" href="<?php echo $sReroute ?>"><?= gettext('Cancel') ?></a>
-  	<a class="btn btn-danger" href="NoteDelete.php?Confirmed=Yes&NoteID=<?php echo $iNoteID ?>"><?= gettext('Yes, delete this record') ?></a> <?= gettext('(this action cannot be undone)') ?>
+    <a class="btn btn-danger" href="NoteDelete.php?Confirmed=Yes&NoteID=<?php echo $iNoteID ?>"><?= gettext('Yes, delete this record') ?></a> <?= gettext('(this action cannot be undone)') ?>
   </div>
 
 <?php require 'Include/Footer.php' ?>

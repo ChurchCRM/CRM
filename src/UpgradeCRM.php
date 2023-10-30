@@ -40,8 +40,8 @@ Header_body_scripts();
     <?php
      $taskService = new TaskService();
      $preUpgradeTasks = $taskService->getActivePreUpgradeTasks();
-      if (count($preUpgradeTasks) > 0) {
-          ?>
+    if (count($preUpgradeTasks) > 0) {
+        ?>
     <li>
       <i class="fa fa-bomb bg-red"></i>
       <div class="timeline-item" >
@@ -51,12 +51,12 @@ Header_body_scripts();
           <p><?= gettext("Please review and mitigate these tasks before continuing with the upgrade:")?></p>
           <div>
             <ul>
-              <?php
-                foreach ($preUpgradeTasks as $preUpgradeTask) {
-                    ?>
+            <?php
+            foreach ($preUpgradeTasks as $preUpgradeTask) {
+                ?>
                     <li><?= $preUpgradeTask->getTitle() ?>: <?= $preUpgradeTask->getDesc()?></li>
                   <?php
-                } ?>
+            } ?>
 
             </ul>
               
@@ -66,12 +66,12 @@ Header_body_scripts();
         </div>
       </div>
     </li>
-    <?php
-      }
+        <?php
+    }
     ?>
     <?php
-      if (AppIntegrityService::getIntegrityCheckStatus() == gettext("Failed")) {
-          ?>
+    if (AppIntegrityService::getIntegrityCheckStatus() == gettext("Failed")) {
+        ?>
     <li>
       <i class="fa fa-bomb bg-red"></i>
       <div class="timeline-item" >
@@ -81,9 +81,9 @@ Header_body_scripts();
           <p><?= gettext("If you wish to maintain your changes to these files, please take a manual backup of these files before proceeding with this upgrade, and then manually restore the files after the upgrade is complete.")?></p>
           <div>
               <p><?= gettext('Integrity Check Details:')?> <?=  AppIntegrityService::getIntegrityCheckMessage() ?></p>
-                <?php
-                  if (count(AppIntegrityService::getFilesFailingIntegrityCheck()) > 0) {
-                      ?>
+              <?php
+                if (count(AppIntegrityService::getFilesFailingIntegrityCheck()) > 0) {
+                    ?>
                     <p><?= gettext('Files failing integrity check') ?>:
                     <table class="display responsive no-wrap" width="100%" id="fileIntegrityCheckResultsTable">
                       <thead>
@@ -92,32 +92,32 @@ Header_body_scripts();
                       <td>Actual Hash</td>
                     </thead>
                       <?php
-                      foreach (AppIntegrityService::getFilesFailingIntegrityCheck() as $file) {
-                          ?>
+                        foreach (AppIntegrityService::getFilesFailingIntegrityCheck() as $file) {
+                            ?>
                     <tr>
                       <td><?= $file->filename ?></td>
                       <td><?= $file->expectedhash ?></td>
                       <td>
-                          <?php
-                          if ($file->status == 'File Missing') {
-                              echo gettext('File Missing');
-                          } else {
-                              echo $file->actualhash;
-                          } ?>
+                            <?php
+                            if ($file->status == 'File Missing') {
+                                echo gettext('File Missing');
+                            } else {
+                                echo $file->actualhash;
+                            } ?>
                       </td>
                     </tr>
-                        <?php
-                      } ?>
+                            <?php
+                        } ?>
                     </table>
                     <?php
-                  } ?>
+                } ?>
             </div>
           <input type="button" class="btn btn-primary" id="acceptIntegrityCheckWarking" <?= 'value="'.gettext('I Understand').'"' ?>>
         </div>
       </div>
     </li>
-    <?php
-      }
+        <?php
+    }
     ?>
     <li>
       <i class="fa fa-database bg-blue"></i>

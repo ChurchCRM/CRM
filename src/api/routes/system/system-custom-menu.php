@@ -7,7 +7,6 @@ use ChurchCRM\Utils\ORMUtils;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
-
 $app->group('/system/menu', function () use ($app) {
     $app->get('', 'getMenus');
     $app->get('/', 'getMenus');

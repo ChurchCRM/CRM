@@ -2,7 +2,6 @@
 
 namespace ChurchCRM\Slim\Middleware\Request\Setting;
 
-
 class PublicRegistrationAuthMiddleware extends BaseAuthSettingMiddleware
 {
 

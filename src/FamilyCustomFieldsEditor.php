@@ -169,41 +169,41 @@ if (isset($_POST['SaveChanges'])) {
                 $sSQL = 'ALTER TABLE `family_custom` ADD `c'.$newFieldNum.'` ';
 
                 switch ($newFieldType) {
-                case 1:
-                    $sSQL .= "ENUM('false', 'true')";
-                    break;
-                case 2:
-                    $sSQL .= 'DATE';
-                    break;
-                case 3:
-                    $sSQL .= 'VARCHAR(50)';
-                    break;
-                case 4:
-                    $sSQL .= 'VARCHAR(100)';
-                    break;
-                case 5:
-                    $sSQL .= 'TEXT';
-                    break;
-                case 6:
-                    $sSQL .= 'YEAR';
-                    break;
-                case 7:
-                    $sSQL .= "ENUM('winter', 'spring', 'summer', 'fall')";
-                    break;
-                case 8:
-                    $sSQL .= 'INT';
-                    break;
-                case 9:
-                    $sSQL .= 'MEDIUMINT(9)';
-                    break;
-                case 10:
-                    $sSQL .= 'DECIMAL(10,2)';
-                    break;
-                case 11:
-                    $sSQL .= 'VARCHAR(30)';
-                    break;
-                case 12:
-                    $sSQL .= 'TINYINT(4)';
+                    case 1:
+                        $sSQL .= "ENUM('false', 'true')";
+                        break;
+                    case 2:
+                        $sSQL .= 'DATE';
+                        break;
+                    case 3:
+                        $sSQL .= 'VARCHAR(50)';
+                        break;
+                    case 4:
+                        $sSQL .= 'VARCHAR(100)';
+                        break;
+                    case 5:
+                        $sSQL .= 'TEXT';
+                        break;
+                    case 6:
+                        $sSQL .= 'YEAR';
+                        break;
+                    case 7:
+                        $sSQL .= "ENUM('winter', 'spring', 'summer', 'fall')";
+                        break;
+                    case 8:
+                        $sSQL .= 'INT';
+                        break;
+                    case 9:
+                        $sSQL .= 'MEDIUMINT(9)';
+                        break;
+                    case 10:
+                        $sSQL .= 'DECIMAL(10,2)';
+                        break;
+                    case 11:
+                        $sSQL .= 'VARCHAR(30)';
+                        break;
+                    case 12:
+                        $sSQL .= 'TINYINT(4)';
                 }
 
                 $sSQL .= ' DEFAULT NULL ;';
@@ -239,11 +239,11 @@ if (isset($_POST['SaveChanges'])) {
     $rsSecurityGrp = RunQuery($sSQL);
 
     $aSecurityGrp = [];
-    while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
-        $aSecurityGrp[] = $aRow;
-        extract($aRow);
-        $aSecurityType[$lst_OptionID] = $lst_OptionName;
-    }
+while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
+    $aSecurityGrp[] = $aRow;
+    extract($aRow);
+    $aSecurityType[$lst_OptionID] = $lst_OptionName;
+}
 
 function GetSecurityList($aSecGrp, $fld_name, $currOpt = 'bAll')
 {
@@ -268,19 +268,19 @@ function GetSecurityList($aSecGrp, $fld_name, $currOpt = 'bAll')
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>" >
 function confirmDeleteField( Field ) {
-	var answer = confirm (<?= "'".gettext('Warning:  By deleting this field, you will irrevokably lose all family data assigned for this field!')."'" ?>)
-	if ( answer )
-	{
-		window.location="FamilyCustomFieldsRowOps.php?Field=" + Field +"&Action=delete";
-		return true;
-	}
-	event.preventDefault ? event.preventDefault() : event.returnValue = false;
-	return false;
+    var answer = confirm (<?= "'".gettext('Warning:  By deleting this field, you will irrevokably lose all family data assigned for this field!')."'" ?>)
+    if ( answer )
+    {
+        window.location="FamilyCustomFieldsRowOps.php?Field=" + Field +"&Action=delete";
+        return true;
+    }
+    event.preventDefault ? event.preventDefault() : event.returnValue = false;
+    return false;
 }
 </script>
 <div class="alert alert-warning">
-		<i class="fa fa-ban"></i>
-		<?= gettext("Warning: Arrow and delete buttons take effect immediately.  Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!") ?>
+        <i class="fa fa-ban"></i>
+        <?= gettext("Warning: Arrow and delete buttons take effect immediately.  Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!") ?>
 </div>
 <form method="post" action="FamilyCustomFieldsEditor.php" name="FamilyCustomFieldsEditor">
     <div class="table-responsive">
@@ -291,9 +291,9 @@ if ($numRows == 0) {
     ?>
     <center><h2><?= gettext('No custom Family fields have been added yet') ?></h2>
     </center>
-<?php
+    <?php
 } else {
-        ?>
+    ?>
     <tr><td colspan="7">
     <?php
     if ($bErrorFlag) {
@@ -347,7 +347,6 @@ if ($numRows == 0) {
                     echo '<span style="color: red;"><BR>'.gettext('You must select a group.').'</span>';
                 }
             } elseif ($aTypeFields[$row] == 12) {
-
                 // TLH 6-23-07 Added scrollbars to the popup so long lists can be edited.
                 echo "<a href=\"javascript:void(0)\" onClick=\"Newwin=window.open('OptionManager.php?mode=famcustom&ListID=$aSpecialFields[$row]','Newwin','toolbar=no,status=no,width=400,height=500,scrollbars=1')\">".gettext('Edit List Options').'</a>';
             } else {
@@ -366,13 +365,13 @@ if ($numRows == 0) {
                 if ($row > 1) {
                     echo "<a href=\"FamilyCustomFieldsRowOps.php?OrderID=$row&Field=".$aFieldFields[$row].'&Action=up"><i class="fa fa-arrow-up"></i></a>';
                 }
-        if ($row < $numRows) {
-            echo "<a href=\"FamilyCustomFieldsRowOps.php?OrderID=$row&Field=".$aFieldFields[$row].'&Action=down"><i class="fa fa-arrow-down"></i></a>';
-        } ?>
+                if ($row < $numRows) {
+                    echo "<a href=\"FamilyCustomFieldsRowOps.php?OrderID=$row&Field=".$aFieldFields[$row].'&Action=down"><i class="fa fa-arrow-down"></i></a>';
+                } ?>
             </td>
 
         </tr>
-    <?php
+        <?php
     } ?>
 
         <tr>
@@ -389,8 +388,8 @@ if ($numRows == 0) {
             </td>
             <td>
         </tr>
-<?php
-    } ?>
+    <?php
+} ?>
         <tr><td colspan="7"><hr></td></tr>
         <tr>
             <td colspan="7">
@@ -402,10 +401,10 @@ if ($numRows == 0) {
                     <?php
                         echo '<select name="newFieldType">';
 
-                        for ($iOptionID = 1; $iOptionID <= count($aPropTypes); $iOptionID++) {
-                            echo '<option value="'.$iOptionID.'"';
-                            echo '>'.$aPropTypes[$iOptionID];
-                        }
+                    for ($iOptionID = 1; $iOptionID <= count($aPropTypes); $iOptionID++) {
+                        echo '<option value="'.$iOptionID.'"';
+                        echo '>'.$aPropTypes[$iOptionID];
+                    }
                         echo '</select>';
                     ?><BR>
                     <a href="<?= SystemURLs::getSupportURL() ?>"><?= gettext('Help on types..') ?></a>
@@ -414,12 +413,12 @@ if ($numRows == 0) {
                         <div><?= gettext('Name') ?>:</div>
                         <input type="text" name="newFieldName" size="30" maxlength="40">
                         <?php
-                            if ($bNewNameError) {
-                                echo '<div><span style="color: red;"><BR>'.gettext('You must enter a name').'</span></div>';
-                            }
-                            if ($bDuplicateNameError) {
-                                echo '<div><span style="color: red;"><BR>'.gettext('That field name already exists.').'</span></div>';
-                            }
+                        if ($bNewNameError) {
+                            echo '<div><span style="color: red;"><BR>'.gettext('You must enter a name').'</span></div>';
+                        }
+                        if ($bDuplicateNameError) {
+                            echo '<div><span style="color: red;"><BR>'.gettext('That field name already exists.').'</span></div>';
+                        }
                         ?>
                         &nbsp;
                     </td>

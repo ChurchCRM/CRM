@@ -52,6 +52,6 @@ use ChurchCRM\Bootstrapper;
     if ($_SERVER['SCRIPT_NAME'] != '/setup/index.php') {
         include_once('analyticstracking.php');
     }
- ?>
+    ?>
 </body>
 </html>

@@ -2,7 +2,8 @@
 
 namespace ChurchCRM\Slim\Middleware\Request\Auth;
 
-class MenuOptionsRoleAuthMiddleware extends BaseAuthRoleMiddleware {
+class MenuOptionsRoleAuthMiddleware extends BaseAuthRoleMiddleware
+{
 
     function hasRole()
     {

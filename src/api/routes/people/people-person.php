@@ -60,7 +60,6 @@ $app->group('/person/{personId:[0-9]+}', function () use ($app) {
         $person = $request->getAttribute("person");
         return $response->withJson(['success' => $person->deletePhoto()]);
     })->add(new DeleteRecordRoleAuthMiddleware());
-
 })->add(new PersonAPIMiddleware());
 
 

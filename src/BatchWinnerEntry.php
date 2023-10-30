@@ -70,53 +70,53 @@ require 'Include/Header.php';
 <form method="post" action="BatchWinnerEntry.php?<?= 'CurrentFundraiser='.'&linkBack='.$linkBack ?>" name="BatchWinnerEntry">
 <div class="table-responsive">
 <table class="table" cellpadding="2" align="center">
-	<tr>
-		<td class="LabelColumn"><?= gettext('Item') ?></td>
-		<td class="LabelColumn"><?= gettext('Winner') ?></td>
-		<td class="LabelColumn"><?= gettext('Price') ?></td>
-	</tr>
+    <tr>
+        <td class="LabelColumn"><?= gettext('Item') ?></td>
+        <td class="LabelColumn"><?= gettext('Winner') ?></td>
+        <td class="LabelColumn"><?= gettext('Price') ?></td>
+    </tr>
 <?php
-    for ($row = 0; $row < 10; $row += 1) {
-        echo '<tr>';
-        echo '<td>';
-        echo '<select name="Item'.$row."\">\n";
-        echo '<option value="0" selected>'.gettext('Unassigned')."</option>\n";
+for ($row = 0; $row < 10; $row += 1) {
+    echo '<tr>';
+    echo '<td>';
+    echo '<select name="Item'.$row."\">\n";
+    echo '<option value="0" selected>'.gettext('Unassigned')."</option>\n";
 
-        mysqli_data_seek($rsDonatedItems, 0);
-        while ($itemArr = mysqli_fetch_array($rsDonatedItems)) {
-            extract($itemArr);
-            echo '<option value="'.$di_ID.'">'.$di_Item.' '.$di_title."</option>\n";
-        }
-        echo "</select>\n";
-        echo '</td>';
-
-        echo '<td>';
-        echo '<select name="Paddle'.$row."\">\n";
-        echo '<option value="0" selected>'.gettext('Unassigned')."</option>\n";
-
-        mysqli_data_seek($rsPaddles, 0);
-        while ($paddleArr = mysqli_fetch_array($rsPaddles)) {
-            extract($paddleArr);
-            echo '<option value="'.$pn_per_ID.'">'.$pn_Num.' '.$buyerFirstName.' '.$buyerLastName."</option>\n";
-        }
-        echo "</select>\n";
-        echo '</td>';
-
-        echo "<td class=\"TextColumn\"><input type=\"text\" name=\"SellPrice$row\" id=\"SellPrice\"$row value=\"\"></td>\n";
-        echo '</tr>';
+    mysqli_data_seek($rsDonatedItems, 0);
+    while ($itemArr = mysqli_fetch_array($rsDonatedItems)) {
+        extract($itemArr);
+        echo '<option value="'.$di_ID.'">'.$di_Item.' '.$di_title."</option>\n";
     }
+    echo "</select>\n";
+    echo '</td>';
+
+    echo '<td>';
+    echo '<select name="Paddle'.$row."\">\n";
+    echo '<option value="0" selected>'.gettext('Unassigned')."</option>\n";
+
+    mysqli_data_seek($rsPaddles, 0);
+    while ($paddleArr = mysqli_fetch_array($rsPaddles)) {
+        extract($paddleArr);
+        echo '<option value="'.$pn_per_ID.'">'.$pn_Num.' '.$buyerFirstName.' '.$buyerLastName."</option>\n";
+    }
+    echo "</select>\n";
+    echo '</td>';
+
+    echo "<td class=\"TextColumn\"><input type=\"text\" name=\"SellPrice$row\" id=\"SellPrice\"$row value=\"\"></td>\n";
+    echo '</tr>';
+}
 ?>
-	<tr>
-		<td colspan="2" align="center">
-			<input type="submit" class="btn btn-primary" value="<?= gettext('Enter Winners') ?>" name="EnterWinners">
-			<input type="button" class="btn btn-default" value="<?= gettext('Cancel') ?>" name="Cancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) {
-    echo $linkBack;
-} else {
-    echo 'Menu.php';
-} ?>';">
-		</td>
-	</tr>
-	</table>
+    <tr>
+        <td colspan="2" align="center">
+            <input type="submit" class="btn btn-primary" value="<?= gettext('Enter Winners') ?>" name="EnterWinners">
+            <input type="button" class="btn btn-default" value="<?= gettext('Cancel') ?>" name="Cancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) {
+                echo $linkBack;
+                                                                } else {
+                                                                    echo 'Menu.php';
+                                                                } ?>';">
+        </td>
+    </tr>
+    </table>
 </div>
 </form>
 </div>

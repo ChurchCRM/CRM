@@ -29,7 +29,7 @@ $app->group('/payments', function () use ($app) {
         if (!AuthenticationManager::GetCurrentUser()->isShowPledges()) {
             $query->filterByPledgeOrPayment("Pledge", Criteria::NOT_EQUAL);
         }
-        $query->innerJoinDonationFund()->withColumn("donationfund_fun.fun_Name" , "PledgeName");
+        $query->innerJoinDonationFund()->withColumn("donationfund_fun.fun_Name", "PledgeName");
         $data = $query->find();
 
         $rows = [];

@@ -9,13 +9,13 @@ use Slim\Http\Request;
 use Slim\Http\Response;
 use Slim\Views\PhpRenderer;
 
-
 $app->group('/calendar', function () use ($app) {
     $app->get('/', 'getCalendar');
     $app->get('', 'getCalendar');
 });
 
-function getCalendar(Request $request, Response $response, array $args) {
+function getCalendar(Request $request, Response $response, array $args)
+{
     $renderer = new PhpRenderer('templates/calendar/');
 
     $pageArgs = [
@@ -27,7 +27,8 @@ function getCalendar(Request $request, Response $response, array $args) {
     return $renderer->render($response, 'calendar.php', $pageArgs);
 }
 
-function getCalendarJSArgs() {
+function getCalendarJSArgs()
+{
     return [
         'isModifiable' => AuthenticationManager::GetCurrentUser()->isAddEvent(),
         'countCalendarAccessTokens' => CalendarQuery::create()->filterByAccessToken(null, Criteria::NOT_EQUAL)->count(),

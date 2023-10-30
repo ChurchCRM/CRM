@@ -8,13 +8,11 @@ use Slim\Http\Request;
 use Slim\Http\Response;
 use Slim\Views\PhpRenderer;
 
-
 // entity can be a person, family, or business
 $app->group('/people', function () use ($app) {
-    $app->get('','listPeople');
+    $app->get('', 'listPeople');
     $app->get('/', 'listPeople');
-    $app->get('/verify','viewPeopleVerify');
-
+    $app->get('/verify', 'viewPeopleVerify');
 });
 
 function viewPeopleVerify(Request $request, Response $response, array $args)
@@ -77,10 +75,9 @@ function listPeople(Request $request, Response $response, array $args)
             $filterByClsId = gettext('Unassigned');
             $sMode = $filterByClsId;
         } else {
-           $filterByClsId = $option->getOptionName();
+            $filterByClsId = $option->getOptionName();
             $sMode = $filterByClsId;
         }
-
     }
 
     $filterByFmrId = '';
@@ -111,7 +108,7 @@ function listPeople(Request $request, Response $response, array $args)
                 $sMode = $sMode . " - " . $filterByGender;
                 break;
             case 2:
-            $filterByGender = gettext('Female');
+                $filterByGender = gettext('Female');
                 $sMode = $sMode . " - " . $filterByGender;
                 break;
         }

@@ -188,8 +188,8 @@ require 'Include/Header.php';
     </div>
   </div>
   <?php
-  if ($numCustomFields > 0 || $numFamCustomFields > 0) {
-      ?>
+    if ($numCustomFields > 0 || $numFamCustomFields > 0) {
+        ?>
     <div class="row">
       <div class="col-lg-12">
         <div class="card">
@@ -199,49 +199,49 @@ require 'Include/Header.php';
           <div class="card-body">
             <table border="0">
               <?php
-              if ($numCustomFields > 0) {
-                  ?>
+                if ($numCustomFields > 0) {
+                    ?>
                 <tr><td width="100%" valign="top" align="left">
                     <h3><?= gettext('Custom Person Fields') ?></h3>
                     <table cellpadding="4" align="left">
                       <?php
-                      // Display the custom fields
-                      while ($Row = mysqli_fetch_array($rsCustomFields)) {
-                          extract($Row);
-                          if ($aSecurityType[$custom_FieldSec] == 'bAll' || $_SESSION[$aSecurityType[$custom_FieldSec]]) {
-                              echo '<tr><td class="LabelColumn">'.$custom_Name.'</td>';
-                              echo '<td class="TextColumn"><input type="checkbox" name='.$custom_Field.' value="1"></td></tr>';
-                          }
-                      } ?>
+                        // Display the custom fields
+                        while ($Row = mysqli_fetch_array($rsCustomFields)) {
+                            extract($Row);
+                            if ($aSecurityType[$custom_FieldSec] == 'bAll' || $_SESSION[$aSecurityType[$custom_FieldSec]]) {
+                                echo '<tr><td class="LabelColumn">'.$custom_Name.'</td>';
+                                echo '<td class="TextColumn"><input type="checkbox" name='.$custom_Field.' value="1"></td></tr>';
+                            }
+                        } ?>
                     </table>
                   </td></tr>
-                <?php
-              }
-      if ($numFamCustomFields > 0) {
-          ?>
+                    <?php
+                }
+                if ($numFamCustomFields > 0) {
+                    ?>
                 <tr><td width="100%" valign="top" align="left">
                     <h3><?= gettext('Custom Family Fields') ?></h3>
                     <table cellpadding="4" align="left">
                       <?php
-                      // Display the family custom fields
-                      while ($Row = mysqli_fetch_array($rsFamCustomFields)) {
-                          extract($Row);
-                          if ($aSecurityType[$fam_custom_FieldSec] == 'bAll' || $_SESSION[$aSecurityType[$fam_custom_FieldSec]]) {
-                              echo '<tr><td class="LabelColumn">'.$fam_custom_Name.'</td>';
-                              echo '<td class="TextColumn"><input type="checkbox" name='.$fam_custom_Field.' value="1"></td></tr>';
-                          }
-                      } ?>
+                              // Display the family custom fields
+                        while ($Row = mysqli_fetch_array($rsFamCustomFields)) {
+                            extract($Row);
+                            if ($aSecurityType[$fam_custom_FieldSec] == 'bAll' || $_SESSION[$aSecurityType[$fam_custom_FieldSec]]) {
+                                echo '<tr><td class="LabelColumn">'.$fam_custom_Name.'</td>';
+                                echo '<td class="TextColumn"><input type="checkbox" name='.$fam_custom_Field.' value="1"></td></tr>';
+                            }
+                        } ?>
                     </table>
                   </td></tr>
-              <?php
-      } ?>
+                              <?php
+                } ?>
             </table>
           </div>
         </div>
       </div>
     </div>
-  <?php
-  } ?>
+        <?php
+    } ?>
 
   <div class="row">
     <div class="col-lg-12">
@@ -264,8 +264,8 @@ require 'Include/Header.php';
                 <select name="Source">
                   <option value="filters"><?= gettext('Based on filters below..') ?></option>
                   <option value="cart" <?php if (array_key_exists('Source', $_GET) && $_GET['Source'] == 'cart') {
-      echo 'selected';
-  } ?>><?= gettext('People in Cart (filters ignored)') ?></option>
+                        echo 'selected';
+                                       } ?>><?= gettext('People in Cart (filters ignored)') ?></option>
                 </select>
               </div>
             </div>
@@ -284,12 +284,12 @@ require 'Include/Header.php';
               <div class="card-body no-padding">
                 <select name="Classification[]" size="5" multiple>
                   <?php
-                  while ($aRow = mysqli_fetch_array($rsClassifications)) {
-                      extract($aRow); ?>
+                    while ($aRow = mysqli_fetch_array($rsClassifications)) {
+                        extract($aRow); ?>
                     <option value="<?= $lst_OptionID ?>"><?= $lst_OptionName ?></option>
-                    <?php
-                  }
-                  ?>
+                        <?php
+                    }
+                    ?>
                 </select>
                 <div class="SmallText"><?= gettext('Use Ctrl Key to select multiple') ?></div>
               </div>
@@ -309,12 +309,12 @@ require 'Include/Header.php';
               <div class="card-body no-padding">
                 <select name="FamilyRole[]" size="5" multiple>
                   <?php
-                  while ($aRow = mysqli_fetch_array($rsFamilyRoles)) {
-                      extract($aRow); ?>
+                    while ($aRow = mysqli_fetch_array($rsFamilyRoles)) {
+                        extract($aRow); ?>
                     <option value="<?= $lst_OptionID ?>"><?= $lst_OptionName ?></option>
-                    <?php
-                  }
-                  ?>
+                        <?php
+                    }
+                    ?>
                 </select>
                 <div class="SmallText"><?= gettext('Use Ctrl Key to select multiple') ?></div>
               </div>
@@ -355,11 +355,11 @@ require 'Include/Header.php';
                 <div class="SmallText"><?= gettext('Use Ctrl Key to select multiple') ?></div>
                 <select name="GroupID[]" size="5" multiple>
                   <?php
-                  while ($aRow = mysqli_fetch_array($rsGroups)) {
-                      extract($aRow);
-                      echo '<option value="'.$grp_ID.'">'.$grp_Name.'</option>';
-                  }
-                  ?>
+                    while ($aRow = mysqli_fetch_array($rsGroups)) {
+                        extract($aRow);
+                        echo '<option value="'.$grp_ID.'">'.$grp_Name.'</option>';
+                    }
+                    ?>
                 </select>
               </div>
             </div>

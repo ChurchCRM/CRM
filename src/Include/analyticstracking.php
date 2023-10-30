@@ -25,8 +25,8 @@ try {
           ga('send', 'pageview');
 
       </script>
-  <?php
+        <?php
     }
 } catch (\Exception $ex) {
 }
- ?>
+?>

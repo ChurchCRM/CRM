@@ -143,17 +143,17 @@ for ($row = 1; $row <= $numRows; $row++) {
                <input type="hidden" name="Type" value="<?= $_GET['Type'] ?>">
                <input type="hidden" name="Action" value="Retrieve">
                <input type="hidden" name="Choice" value="Attendees">
-<?php
-$cSQL = 'SELECT COUNT(per_ID) AS cCount
+                <?php
+                $cSQL = 'SELECT COUNT(per_ID) AS cCount
          FROM person_per as t1, events_event as t2, event_attend as t3
          WHERE t1.per_ID = t3.person_id AND t2.event_id = t3.event_id AND t3.event_id = '.$aEventID[$row]." AND per_cls_ID IN ('1','2','5')";
-            $cOpps = RunQuery($cSQL);
-            $cNumAttend = mysqli_fetch_row($cOpps)[0];
-            $tSQL = "SELECT COUNT(per_ID) AS tCount
+                $cOpps = RunQuery($cSQL);
+                $cNumAttend = mysqli_fetch_row($cOpps)[0];
+                $tSQL = "SELECT COUNT(per_ID) AS tCount
          FROM person_per
          WHERE per_cls_ID IN ('1','2','5')";
-            $tOpps = RunQuery($tSQL);
-            $tNumTotal = mysqli_fetch_row($tOpps)[0]; ?>
+                $tOpps = RunQuery($tSQL);
+                $tNumTotal = mysqli_fetch_row($tOpps)[0]; ?>
                <input type="submit" name="Type" value="<?= gettext('Attending Members').' ['.$cNumAttend.']' ?>" class="btn btn-default">
              </form>
            </td>
@@ -172,15 +172,15 @@ $cSQL = 'SELECT COUNT(per_ID) AS cCount
                <input type="hidden" name="Type" value="<?= $_GET['Type'] ?>">
                <input type="hidden" name="Action" value="Retrieve">
                <input type="hidden" name="Choice" value="Guests">
-            <?php $gSQL = 'SELECT COUNT(per_ID) AS gCount FROM person_per as t1, events_event as t2, event_attend as t3
+                <?php $gSQL = 'SELECT COUNT(per_ID) AS gCount FROM person_per as t1, events_event as t2, event_attend as t3
                      WHERE t1.per_ID = t3.person_id AND t2.event_id = t3.event_id AND t3.event_id = '.$aEventID[$row].' AND per_cls_ID = 3';
-            $gOpps = RunQuery($gSQL);
-            $gNumGuestAttend = mysqli_fetch_row($gOpps)[0]; ?>
+                $gOpps = RunQuery($gSQL);
+                $gNumGuestAttend = mysqli_fetch_row($gOpps)[0]; ?>
                <input <?= ($gNumGuestAttend == 0 ? 'type="button"' : 'type="submit"') ?> name="Type" value="<?= gettext('Guests').' ['.$gNumGuestAttend.']' ?>" class="btn btn-default">
              </form>
            </td>
          </tr>
-            <?php } ?>
+         <?php } ?>
             </tbody>
         </table>
     </div>

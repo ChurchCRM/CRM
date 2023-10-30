@@ -62,5 +62,4 @@ class Token extends BaseToken
         }
         return $stillValidDate && $hasUses;
     }
-
 }

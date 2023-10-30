@@ -50,7 +50,7 @@ $mailchimp = new MailChimpService();
                                     <a id="view-larger-image-btn" href="#" title="<?= gettext("View Photo") ?>">
                                         <i class="fa fa-search-plus"></i>
                                     </a>
-                                    <?php if (AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled()): ?>
+                                    <?php if (AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled()) : ?>
                                         &nbsp;
                                         <a href="#" data-toggle="modal" data-target="#upload-image"
                                            title="<?= gettext("Upload Photo") ?>">
@@ -148,12 +148,12 @@ $mailchimp = new MailChimpService();
                                     <span style="color:<?= ($family->isSendNewsletter()? "green" : "red") ?>"><i
                                             class="fa fa-<?= ($family->isSendNewsletter() ? "check" : "times") ?>"></i></span>
                                 </li>
-<?php
+                                <?php
                             }
                             if (!SystemConfig::getBooleanValue("bHideWeddingDate") && !empty($family->getWeddingdate())) { /* Wedding Date can be hidden - General Settings */ ?>
                                 <li><i class="fa-li fa fa-magic"></i><?= gettext("Wedding Date") ?>:
                                     <span><?= $family->getWeddingDate()->format(SystemConfig::getValue("sDateFormatLong")) ?></span></li>
-<?php
+                                <?php
                             }
                             if (SystemConfig::getValue("bUseDonationEnvelopes")) {
                                 ?>
@@ -283,7 +283,7 @@ $mailchimp = new MailChimpService();
                                                 if ($formattedBirthday) {?>
                                                 <i class="fa fa-fw fa-birthday-cake"
                                                    title="<?= gettext("Birthday") ?>"></i>
-                                                <?= $formattedBirthday ?>  <?= $person->getAge()?>
+                                                    <?= $formattedBirthday ?>  <?= $person->getAge()?>
                                                 </i>
                                                 <?php } ?>
                                             </li>
@@ -407,7 +407,7 @@ $mailchimp = new MailChimpService();
                             <div class="timeline-item">
                                 <span class="time">
                                     <?php if (AuthenticationManager::GetCurrentUser()->isNotesEnabled() && (isset($item["editLink"]) || isset($item["deleteLink"]))) {
-                                    ?>
+                                        ?>
                                         <?php if (isset($item["editLink"])) { ?>
                                             <a href="<?= $item["editLink"] ?>"><button type="button" class="btn btn-xs btn-primary"><i class="fa fa-pen"></i></button></a>
                                         <?php }
@@ -415,8 +415,8 @@ $mailchimp = new MailChimpService();
                                             <a href="<?= $item["deleteLink"] ?>"><button type="button" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i></button></a>
                                         <?php } ?>
                                         &nbsp;
-                                    <?php
-                                } ?>
+                                        <?php
+                                    } ?>
                                 <i class="fa fa-clock"></i> <?= $item['datetime'] ?></span>
                                 <?php if ($item['slim']) { ?>
                                     <h4 class="timeline-header">
@@ -454,7 +454,7 @@ $mailchimp = new MailChimpService();
 </div>
 
 <?php if (AuthenticationManager::GetCurrentUser()->isFinanceEnabled()) {
-?>
+    ?>
 <div class="row">
     <div class="col-lg-12">
         <div class="row">
@@ -474,7 +474,7 @@ $mailchimp = new MailChimpService();
                     <table id="pledge-payment-v2-table" class="table table-striped table-bordered table-responsive data-table">
                         <tbody></tbody>
                     </table>
-                    <?php } ?>
+<?php } ?>
                 </div>
             </div>
         </div>
@@ -550,17 +550,17 @@ $mailchimp = new MailChimpService();
                 <b><?= gettext("Select how do you want to request the family information to be verified") ?></b>
                 <p>
                     <?php if (count($family->getEmails()) > 0) {
-                    ?>
+                        ?>
                 <p><?= gettext("You are about to email copy of the family information to the following emails") ?>
                 <ul>
-                    <?php foreach ($family->getEmails() as $tmpEmail) { ?>
+                        <?php foreach ($family->getEmails() as $tmpEmail) { ?>
                         <li><?= $tmpEmail ?></li>
-                    <?php } ?>
+                        <?php } ?>
                 </ul>
                 </p>
             </div>
-            <?php
-            } ?>
+                        <?php
+                    } ?>
             <div class="modal-footer text-center">
                 <?php if (count($family->getEmails()) > 0 && !empty(SystemConfig::getValue('sSMTPHost'))) {
                     ?>

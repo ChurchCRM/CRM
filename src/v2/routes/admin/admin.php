@@ -12,7 +12,8 @@ $app->group('/admin', function () use ($app) {
     $app->get('/database/reset', 'dbResetPage');
 })->add(new AdminRoleAuthMiddleware());
 
-function debugPage(Request $request, Response $response, array $args) {
+function debugPage(Request $request, Response $response, array $args)
+{
     $renderer = new PhpRenderer('templates/admin/');
 
     $pageArgs = [
@@ -23,7 +24,8 @@ function debugPage(Request $request, Response $response, array $args) {
     return $renderer->render($response, 'debug.php', $pageArgs);
 }
 
-function menuPage(Request $request, Response $response, array $args) {
+function menuPage(Request $request, Response $response, array $args)
+{
     $renderer = new PhpRenderer('templates/admin/');
 
     $pageArgs = [
@@ -35,7 +37,8 @@ function menuPage(Request $request, Response $response, array $args) {
 }
 
 
-function dbResetPage(Request $request, Response $response, array $args) {
+function dbResetPage(Request $request, Response $response, array $args)
+{
     $renderer = new PhpRenderer('templates/admin/');
 
     $pageArgs = [
@@ -45,5 +48,3 @@ function dbResetPage(Request $request, Response $response, array $args) {
 
     return $renderer->render($response, 'database-reset.php', $pageArgs);
 }
-
-

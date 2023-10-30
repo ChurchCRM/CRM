@@ -30,7 +30,6 @@ $app->group('/events', function () use ($app) {
     $app->post('/{id}/time', 'setEventTime')->add(new AddEventsRoleAuthMiddleware());
 
     $app->delete("/{id}", 'deleteEvent')->add(new AddEventsRoleAuthMiddleware());
-
 });
 
 function getAllEvents($request, Response $response, $args)
@@ -170,7 +169,6 @@ function setEventTime($request, Response $response, $args)
     $event->setEnd($input->endTime);
     $event->save();
     return $response->withJson(["status" => "success"]);
-
 }
 
 

@@ -2,9 +2,10 @@
 
 namespace ChurchCRM\Authentication\Requests {
 
-    class AuthenticationRequest {
+    class AuthenticationRequest
+    {
         public function __construct()
-        {            
+        {
         }
     }
 

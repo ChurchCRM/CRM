@@ -66,7 +66,6 @@ if (isset($_POST['NewUser'])) {
 
 // Has the form been submitted?
 if (isset($_POST['save']) && $iPersonID > 0) {
-
     // Assign all variables locally
     $sAction = $_POST['Action'];
 
@@ -173,7 +172,6 @@ if (isset($_POST['save']) && $iPersonID > 0) {
         }
     }
 } else {
-
     // Do we know which person yet?
     if ($iPersonID > 0) {
         $usr_per_ID = $iPersonID;
@@ -351,7 +349,7 @@ require 'Include/Header.php';
                                         extract($aRow); ?>
                                         <option value="<?= $per_ID ?>"<?php if ($per_ID == $iPersonID) {
                                             echo ' selected';
-                                        } ?>><?= $per_LastName . ', ' . $per_FirstName ?></option>
+                                                       } ?>><?= $per_LastName . ', ' . $per_FirstName ?></option>
                                         <?php
                                     } ?>
                                 </select>
@@ -384,69 +382,69 @@ require 'Include/Header.php';
                     <tr>
                         <td><?= gettext('Admin') ?>:</td>
                         <td><input type="checkbox" name="Admin" value="1"<?php if ($usr_Admin) {
-                        echo ' checked';
-                    } ?>>&nbsp;<span class="SmallText"><?= gettext('(Grants all privileges.)') ?></span></td>
+                            echo ' checked';
+                                                                         } ?>>&nbsp;<span class="SmallText"><?= gettext('(Grants all privileges.)') ?></span></td>
                     </tr>
                     <tr>
                         <td><?= gettext('Add Records') ?>:</td>
                         <td><input type="checkbox" name="AddRecords" value="1"<?php if ($usr_AddRecords) {
-                        echo ' checked';
-                    } ?>></td>
+                            echo ' checked';
+                                                                              } ?>></td>
                     </tr>
 
                     <tr>
                         <td><?= gettext('Edit Records') ?>:</td>
                         <td><input type="checkbox" name="EditRecords" value="1"<?php if ($usr_EditRecords) {
-                        echo ' checked';
-                    } ?>></td>
+                            echo ' checked';
+                                                                               } ?>></td>
                     </tr>
 
                     <tr>
                         <td><?= gettext('Delete Records') ?>:</td>
                         <td><input type="checkbox" name="DeleteRecords" value="1"<?php if ($usr_DeleteRecords) {
-                        echo ' checked';
-                    } ?>></td>
+                            echo ' checked';
+                                                                                 } ?>></td>
                     </tr>
 
                     <tr>
                         <td><?= gettext('Manage Properties and Classifications') ?>:</td>
                         <td><input type="checkbox" name="MenuOptions" value="1"<?php if ($usr_MenuOptions) {
-                        echo ' checked';
-                    } ?>></td>
+                            echo ' checked';
+                                                                               } ?>></td>
                     </tr>
 
                     <tr>
                         <td><?= gettext('Manage Groups and Roles') ?>:</td>
                         <td><input type="checkbox" name="ManageGroups" value="1"<?php if ($usr_ManageGroups) {
-                        echo ' checked';
-                    } ?>></td>
+                            echo ' checked';
+                                                                                } ?>></td>
                     </tr>
 
                     <tr>
                         <td><?= gettext('Manage Donations and Finance') ?>:</td>
                         <td><input type="checkbox" name="Finance" value="1"<?php if ($usr_Finance) {
-                        echo ' checked';
-                    } ?>></td>
+                            echo ' checked';
+                                                                           } ?>></td>
                     </tr>
 
                     <tr>
                         <td><?= gettext('View, Add and Edit Notes') ?>:</td>
                         <td><input type="checkbox" name="Notes" value="1"<?php if ($usr_Notes) {
-                        echo ' checked';
-                    } ?>></td>
+                            echo ' checked';
+                                                                         } ?>></td>
                     </tr>
 
                     <tr>
                         <td><?= gettext('Edit Self') ?>:</td>
                         <td><input type="checkbox" name="EditSelf" value="1"<?php if ($usr_EditSelf) {
-                        echo ' checked';
-                    } ?>>&nbsp;<span class="SmallText"><?= gettext('(Edit own family only.)') ?></span></td>
+                            echo ' checked';
+                                                                            } ?>>&nbsp;<span class="SmallText"><?= gettext('(Edit own family only.)') ?></span></td>
                     </tr>
                     <tr>
                         <td><?= gettext('Canvasser') ?>:</td>
                         <td><input type="checkbox" name="Canvasser" value="1"<?php if ($usr_Canvasser) {
-                        echo ' checked';
-                    } ?>>&nbsp;<span class="SmallText"><?= gettext('(Canvass volunteer.)') ?></span></td>
+                            echo ' checked';
+                                                                             } ?>>&nbsp;<span class="SmallText"><?= gettext('(Canvass volunteer.)') ?></span></td>
                     </tr>
                     <tr>
                         <td><?= gettext('Style') ?>:</td>
