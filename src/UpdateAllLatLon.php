@@ -19,9 +19,9 @@ require 'Include/Header.php';
 echo '<div class="card card-body box-info">';
 
 $families = FamilyQuery::create()
-    ->filterByLongitude(array(null,0), Criteria::IN)
+    ->filterByLongitude([null,0], Criteria::IN)
     ->_or()
-    ->filterByLatitude(array(null,0), Criteria::IN)
+    ->filterByLatitude([null,0], Criteria::IN)
     ->limit(250)
     ->find();
 
