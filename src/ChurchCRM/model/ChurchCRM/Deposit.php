@@ -285,7 +285,7 @@ class Deposit extends BaseDeposit
             $comment = $payment->getComment();
             //$family = FamilyQuery::create()->findOneById($payment->getFamId());
             $family = $payment->getFamily();
-            if (!is_null($family)) {
+            if ($family !== null) {
                 $familyName = $payment->getFamily()->getName();
             } else {
                 $familyName = gettext('Anonymous');

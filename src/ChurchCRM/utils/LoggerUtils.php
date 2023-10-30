@@ -40,11 +40,11 @@ class LoggerUtils
      */
     public static function getAppLogger($level=null)
     {
-      if (is_null(self::$appLogger)){
+      if (self::$appLogger === null) {
         // if $level is null
         // (meaning this function was invoked without explicitly setting the level),
         //  then get the level from the database
-        if (is_null($level)) {
+        if ($level === null) {
           $level = self::getLogLevel();
         }
         self::$appLogger = new Logger('defaultLogger');
@@ -78,11 +78,11 @@ class LoggerUtils
      */
     public static function getAuthLogger($level=null)
     {
-      if (is_null(self::$authLogger)){
+      if (self::$authLogger === null){
         // if $level is null
         // (meaning this function was invoked without explicitly setting the level),
         //  then get the level from the database
-        if (is_null($level)) {
+        if ($level === null) {
           $level = self::getLogLevel();
         }
         self::$authLogger = new Logger('authLogger');
@@ -110,7 +110,7 @@ class LoggerUtils
 
     public static function getCSPLogger()
     {
-      if (is_null(self::$cspLogger)){
+      if (self::$cspLogger === null) {
         self::$cspLogger = new Logger('cspLogger');
         self::$cspLogger->pushHandler(new StreamHandler(self::buildLogFilePath("csp"), self::getLogLevel()));
       }

@@ -25,7 +25,7 @@ class TimelineService
         $familyNotes = NoteQuery::create()->findByFamId($familyID);
         foreach ($familyNotes as $dbNote) {
             $item = $this->noteToTimelineItem($dbNote);
-            if (!is_null($item)) {
+            if ($item !== null) {
                 $timeline[$item['key']] = $item;
             }
         }
@@ -67,7 +67,7 @@ class TimelineService
         }
         foreach ($personQuery->find() as $dbNote) {
             $item = $this->noteToTimelineItem($dbNote);
-            if (!is_null($item)) {
+            if ($item !== null) {
                 $timeline[$item['key']] = $item;
             }
         }

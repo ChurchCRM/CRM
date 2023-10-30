@@ -17,7 +17,7 @@ class KioskDevice extends BaseKioskDevice
   public function setAssignment($assignmentType,$eventId)
   {
     $assignment = $this->getActiveAssignment();
-    if (is_null($assignment))
+    if ($assignment === null)
     {
       $assignment = new KioskAssignment();
       $assignment->setKioskDevice($this);
