@@ -5,7 +5,7 @@ namespace ChurchCRM\Tasks;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\KeyManager;
 
-class SecretsConfigurationCheckTask implements iTask
+class SecretsConfigurationCheckTask implements TaskInterface
 {
     public function isActive(): bool
     {

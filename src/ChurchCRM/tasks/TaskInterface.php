@@ -2,7 +2,7 @@
 
 namespace ChurchCRM\Tasks;
 
-interface iTask
+interface TaskInterface
 {
     public function isActive(): bool;
     public function isAdmin(): bool;

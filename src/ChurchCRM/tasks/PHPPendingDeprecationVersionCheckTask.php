@@ -5,7 +5,7 @@ namespace ChurchCRM\Tasks;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 
-class PHPPendingDeprecationVersionCheckTask implements iTask, iPreUpgradeTask
+class PHPPendingDeprecationVersionCheckTask implements TaskInterface, iPreUpgradeTask
 {
     private const REQUIRED_PHP_VERSION = '8.1.0';
 

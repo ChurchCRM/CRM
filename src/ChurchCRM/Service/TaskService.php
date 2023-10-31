@@ -10,7 +10,7 @@ use ChurchCRM\Tasks\ChurchNameTask;
 use ChurchCRM\Tasks\EmailTask;
 use ChurchCRM\Tasks\HttpsTask;
 use ChurchCRM\Tasks\IntegrityCheckTask;
-use ChurchCRM\Tasks\iTask;
+use ChurchCRM\Tasks\TaskInterface;
 use ChurchCRM\Tasks\LatestReleaseTask;
 use ChurchCRM\Tasks\PersonClassificationDataCheck;
 use ChurchCRM\Tasks\PersonGenderDataCheck;
@@ -28,7 +28,7 @@ use ChurchCRM\Tasks\SecretsConfigurationCheckTask;
 class TaskService
 {
     /**
-     * @var ObjectCollection|iTask[]
+     * @var ObjectCollection|TaskInterface[]
      */
     private $taskClasses;
     private array $notificationClasses = [

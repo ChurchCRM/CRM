@@ -8,7 +8,7 @@ use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\dto\ChurchCRMRelease;
 use ChurchCRM\Authentication\AuthenticationManager;
 
-class LatestReleaseTask implements iTask
+class LatestReleaseTask implements TaskInterface
 {
     private \ChurchCRM\dto\ChurchCRMRelease $installedVersion;
     private ?\ChurchCRM\dto\ChurchCRMRelease $latestVersion = null;

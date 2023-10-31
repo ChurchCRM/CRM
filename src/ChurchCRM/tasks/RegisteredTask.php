@@ -5,7 +5,7 @@ namespace ChurchCRM\Tasks;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 
-class RegisteredTask implements iTask
+class RegisteredTask implements TaskInterface
 {
     public function isActive(): bool
     {

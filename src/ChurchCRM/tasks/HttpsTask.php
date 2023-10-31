@@ -5,7 +5,7 @@ namespace ChurchCRM\Tasks;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Authentication\AuthenticationManager;
 
-class HttpsTask implements iTask
+class HttpsTask implements TaskInterface
 {
     public function isActive(): bool
     {

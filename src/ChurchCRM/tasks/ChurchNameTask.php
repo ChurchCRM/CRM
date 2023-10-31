@@ -5,7 +5,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Authentication\AuthenticationManager;
 
-class ChurchNameTask implements iTask
+class ChurchNameTask implements TaskInterface
 {
     public function isActive(): bool
     {

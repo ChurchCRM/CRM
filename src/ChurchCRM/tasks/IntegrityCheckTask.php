@@ -6,7 +6,7 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Utils\MiscUtils;
 
-class IntegrityCheckTask implements iTask
+class IntegrityCheckTask implements TaskInterface
 {
     private $integrityCheckData;
 

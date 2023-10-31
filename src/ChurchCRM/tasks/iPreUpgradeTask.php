@@ -2,7 +2,7 @@
 
 namespace ChurchCRM\Tasks;
 
-interface iPreUpgradeTask extends iTask
+interface iPreUpgradeTask extends TaskInterface
 {
 
 }

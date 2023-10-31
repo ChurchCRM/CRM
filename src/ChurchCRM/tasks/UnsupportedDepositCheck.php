@@ -6,7 +6,7 @@ use ChurchCRM\DepositQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
 use ChurchCRM\dto\SystemURLs;
 
-class UnsupportedDepositCheck implements iTask
+class UnsupportedDepositCheck implements TaskInterface
 {
     private $count;
 

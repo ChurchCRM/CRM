@@ -5,7 +5,7 @@ namespace ChurchCRM\Tasks;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\AppIntegrityService;
 
-class PrerequisiteCheckTask implements iTask
+class PrerequisiteCheckTask implements TaskInterface
 {
     public function isActive(): bool
     {
