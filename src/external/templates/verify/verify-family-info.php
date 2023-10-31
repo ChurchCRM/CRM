@@ -1,18 +1,18 @@
- <?php
+<?php
 
- use ChurchCRM\dto\SystemURLs;
- use ChurchCRM\ListOptionQuery;
- use ChurchCRM\dto\SystemConfig;
- use ChurchCRM\dto\ChurchMetaData;
- use ChurchCRM\dto\Classification;
+use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\ListOptionQuery;
+use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\dto\ChurchMetaData;
+use ChurchCRM\dto\Classification;
 
 // Set the page title and include HTML header
- $sPageTitle = gettext("Family Verification");
+$sPageTitle = gettext("Family Verification");
 
- require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
+require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
 
- $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
-    ?>
+$doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
+?>
   <div class="row">
     <div id="right-buttons" class="btn-group" role="group">
       <button type="button" id="verify" class="btn btn-sm" data-toggle="modal" data-target="#confirm-Verify"><div class="btn-txt"><?=gettext("Confirm")?></div><i class="fa fa-check fa-5x"></i>  </button>
