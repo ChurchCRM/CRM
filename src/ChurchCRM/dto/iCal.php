@@ -12,6 +12,7 @@ use ChurchCRM\Event;
 use ChurchCRM\Service\SystemService;
 use Propel\Runtime\Collection\ObjectCollection;
 
+// phpcs:disable Squiz.Classes.ValidClassName
 class iCal
 {
 
