@@ -19,7 +19,7 @@ use ChurchCRM\Tasks\PrerequisiteCheckTask;
 use ChurchCRM\Tasks\RegisteredTask;
 use ChurchCRM\Tasks\UpdateFamilyCoordinatesTask;
 use ChurchCRM\Tasks\CheckExecutionTimeTask;
-use ChurchCRM\Tasks\iPreUpgradeTask;
+use ChurchCRM\Tasks\PreUpgradeTaskInterface;
 use ChurchCRM\Tasks\PHPPendingDeprecationVersionCheckTask;
 use ChurchCRM\Tasks\UnsupportedDepositCheck;
 use ChurchCRM\Tasks\PHPZipArchiveCheckTask;
@@ -89,6 +89,6 @@ class TaskService
 
     public function getActivePreUpgradeTasks(): array
     {
-        return array_filter($this->taskClasses, fn($k) => $k instanceof iPreUpgradeTask && $k->isActive());
+        return array_filter($this->taskClasses, fn($k) => $k instanceof PreUpgradeTaskInterface && $k->isActive());
     }
 }
