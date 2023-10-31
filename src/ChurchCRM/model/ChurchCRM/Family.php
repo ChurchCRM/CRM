@@ -24,7 +24,7 @@ use Propel\Runtime\Map\TableMap;
  * application requirements.  This class will only be generated as
  * long as it does not already exist in the output directory.
  */
-class Family extends BaseFamily implements iPhoto
+class Family extends BaseFamily implements PhotoInterface
 {
     private ?\ChurchCRM\dto\Photo $photo = null;
 

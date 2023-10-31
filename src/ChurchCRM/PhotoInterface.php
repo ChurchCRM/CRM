@@ -1,7 +1,7 @@
 <?php
 namespace ChurchCRM;
 
-interface iPhoto
+interface PhotoInterface
 {
     public function getPhoto();
     public function deletePhoto();

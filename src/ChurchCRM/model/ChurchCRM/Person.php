@@ -24,7 +24,7 @@ use Propel\Runtime\Map\TableMap;
  * application requirements.  This class will only be generated as
  * long as it does not already exist in the output directory.
  */
-class Person extends BasePerson implements iPhoto
+class Person extends BasePerson implements PhotoInterface
 {
 
     public const SELF_REGISTER = -1;
