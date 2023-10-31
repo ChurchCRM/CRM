@@ -149,7 +149,7 @@ require 'Include/Header.php';
     <h3 class="card-title"><?php echo gettext('Payments on this deposit slip:'); ?></h3>
     <div class="pull-right">
       <?php
-        if ($iDepositSlipID and $thisDeposit->getType() and !$thisDeposit->getClosed()) {
+        if ($iDepositSlipID && $thisDeposit->getType() && !$thisDeposit->getClosed()) {
             if ($thisDeposit->getType() == 'eGive') {
                 echo '<input type=button class=btn value="' . gettext('Import eGive') . "\" name=ImporteGive onclick=\"javascript:document.location='eGive.php?DepositSlipID=$iDepositSlipID&linkBack=DepositSlipEditor.php?DepositSlipID=$iDepositSlipID&PledgeOrPayment=Payment&CurrentDeposit=$iDepositSlipID';\">";
             } else {
@@ -168,7 +168,7 @@ require 'Include/Header.php';
   <div class="card-body">
     <table class="table" id="paymentsTable" width="100%"></table>
     <?php
-    if ($iDepositSlipID and $thisDeposit->getType() and !$thisDeposit->getClosed()) {
+    if ($iDepositSlipID && $thisDeposit->getType() && !$thisDeposit->getClosed()) {
         if ($thisDeposit->getType() == 'Bank') {
             ?>
         <button type="button" id="deleteSelectedRows"  class="btn btn-danger" disabled>Delete Selected Rows</button>

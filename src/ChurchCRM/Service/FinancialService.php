@@ -167,7 +167,7 @@ class FinancialService
     //If a single fund is selected, that fund must exist, and not equal the default "Select a Fund" selection.
     //If a split is selected, at least one fund must be non-zero, the total must add up to the total of all funds, and all funds in the split must be valid funds.
         $FundSplit = json_decode($payment->FundSplit, null, 512, JSON_THROW_ON_ERROR);
-        if (count($FundSplit) >= 1 and $FundSplit[0]->FundID != 'None') { // split
+        if (count($FundSplit) >= 1 && $FundSplit[0]->FundID != 'None') { // split
             $nonZeroFundAmountEntered = 0;
             foreach ($FundSplit as $fun_id => $fund) {
                 //$fun_active = $fundActive[$fun_id];
@@ -206,14 +206,14 @@ class FinancialService
     //validate that the payment options are valid
     //If the payment method is a check, then the check number must be present, and it must not already have been used for this family
     //if the payment method is cash, there must not be a check number
-        if ($payment->type == 'Payment' and $payment->iMethod == 'CHECK' and !isset($payment->iCheckNo)) {
+        if ($payment->type == 'Payment' && $payment->iMethod == 'CHECK' && !isset($payment->iCheckNo)) {
             throw new \Exception(gettext('Must specify non-zero check number'));
         }
     // detect check inconsistencies
-        if ($payment->type == 'Payment' and isset($payment->iCheckNo)) {
+        if ($payment->type == 'Payment' && isset($payment->iCheckNo)) {
             if ($payment->iMethod == 'CASH') {
                 throw new \Exception(gettext("Check number not valid for 'CASH' payment"));
-            } elseif ($payment->iMethod == 'CHECK' and $this->locateFamilyCheck($payment->iCheckNo, $payment->FamilyID)) {
+            } elseif ($payment->iMethod == 'CHECK' && $this->locateFamilyCheck($payment->iCheckNo, $payment->FamilyID)) {
                 //build routine to make sure this check number hasn't been used by this family yet (look at group key)
                 throw new \Exception("Check number '" . $payment->iCheckNo . "' for selected family already exists.");
             }

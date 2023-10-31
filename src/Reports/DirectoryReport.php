@@ -29,7 +29,7 @@ if (!AuthenticationManager::getCurrentUser()->isCreateDirectoryEnabled()) {
 
 // Get and filter the classifications selected
 $aClasses = [];
-if (array_key_exists('sDirClassifications', $_POST) and $_POST['sDirClassifications'] != '') {
+if (array_key_exists('sDirClassifications', $_POST) && $_POST['sDirClassifications'] != '') {
     foreach ($_POST['sDirClassifications'] as $Cls) {
         $aClasses[] = InputUtils::legacyFilterInput($Cls, 'int');
     }
@@ -170,13 +170,13 @@ if ($mysqlversion >= 4) {
 } elseif ($mysqlversion == 3 && $mysqlsubversion >= 22) {
     // If UNION not supported use this query with temporary table.  Prior to version 3.22 no IF EXISTS statement.
     $sSQL = 'DROP TABLE IF EXISTS tmp;';
-    $rsRecords = mysqli_query($cnInfoCentral, $sSQL) or die(mysqli_error($cnInfoCentral));
+    $rsRecords = mysqli_query($cnInfoCentral, $sSQL) || die(mysqli_error($cnInfoCentral));
     $sSQL = "CREATE TABLE tmp TYPE = InnoDB SELECT *, 0 AS memberCount, per_LastName AS SortMe FROM $sGroupTable LEFT JOIN family_fam ON per_fam_ID = fam_ID WHERE per_fam_ID = 0 $sWhereExt $sClassQualifier ;";
-    $rsRecords = mysqli_query($cnInfoCentral, $sSQL) or die(mysqli_error($cnInfoCentral));
+    $rsRecords = mysqli_query($cnInfoCentral, $sSQL) || die(mysqli_error($cnInfoCentral));
     $sSQL = "INSERT INTO tmp SELECT *, COUNT(*) AS memberCount, fam_Name AS SortMe FROM $sGroupTable LEFT JOIN family_fam ON per_fam_ID = fam_ID WHERE per_fam_ID > 0 $sWhereExt $sClassQualifier GROUP BY per_fam_ID HAVING memberCount = 1;";
-    $rsRecords = mysqli_query($cnInfoCentral, $sSQL) or die(mysqli_error($cnInfoCentral));
+    $rsRecords = mysqli_query($cnInfoCentral, $sSQL) || die(mysqli_error($cnInfoCentral));
     $sSQL = "INSERT INTO tmp SELECT *, COUNT(*) AS memberCount, fam_Name AS SortMe FROM $sGroupTable LEFT JOIN family_fam ON per_fam_ID = fam_ID WHERE per_fam_ID > 0 $sWhereExt $sClassQualifier GROUP BY per_fam_ID HAVING memberCount > 1;";
-    $rsRecords = mysqli_query($cnInfoCentral, $sSQL) or die(mysqli_error($cnInfoCentral));
+    $rsRecords = mysqli_query($cnInfoCentral, $sSQL) || die(mysqli_error($cnInfoCentral));
     $sSQL = 'SELECT DISTINCT * FROM tmp ORDER BY SortMe';
 } else {
     die(gettext('This option requires at least version 3.22 of MySQL!  Hit browser back button to return to ChurchCRM.'));

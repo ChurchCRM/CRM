@@ -149,9 +149,10 @@ namespace ChurchCRM
             }
             self::testMYSQLI();
             mysqli_set_charset($cnInfoCentral, 'utf8mb4');
+
             self::$bootStrapLogger->debug("Selecting database: " . self::$databaseName);
-            mysqli_select_db($cnInfoCentral, self::$databaseName)
-            or Bootstrapper::systemFailure('Could not connect to the MySQL database <strong>' . self::$databaseName . '</strong>. Please check the settings in <strong>Include/Config.php</strong>.<br/>MySQL Error: ' . mysqli_error($cnInfoCentral));
+            mysqli_select_db($cnInfoCentral, self::$databaseName) ||
+                Bootstrapper::systemFailure('Could not connect to the MySQL database <strong>' . self::$databaseName . '</strong>. Please check the settings in <strong>Include/Config.php</strong>.<br/>MySQL Error: ' . mysqli_error($cnInfoCentral));
             self::$bootStrapLogger->debug("Database selected: " . self::$databaseName);
         }
         private static function testMYSQLI()

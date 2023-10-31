@@ -18,6 +18,8 @@
 
     <rule ref="PSR12"/>
     <rule ref="Generic.Arrays.DisallowLongArraySyntax"/>
+    <rule ref="Generic.PHP.BacktickOperator"/>
+    <rule ref="Squiz.Operators.ValidLogicalOperators"/>
 
     <!-- Don't hide tokenizer exceptions -->
     <rule ref="Internal.Tokenizer.Exception">

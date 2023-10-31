@@ -373,7 +373,7 @@ class SystemConfig
             $hasValidSettings = false;
         }
 
-        if (SystemConfig::getBooleanValue("bSMTPAuth") and (empty(self::getValue("sSMTPUser")) or empty(self::getValue("sSMTPPass")))) {
+        if (SystemConfig::getBooleanValue("bSMTPAuth") && (empty(self::getValue("sSMTPUser")) || empty(self::getValue("sSMTPPass")))) {
             $hasValidSettings = false;
         }
 

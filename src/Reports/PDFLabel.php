@@ -640,7 +640,7 @@ function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComp
         }
 
         // Skip if mode is fam and we have already printed labels
-        if (array_key_exists($aRow['per_fam_ID'], $didFam) and $didFam[$aRow['per_fam_ID']] && ($mode == 'fam')) {
+        if (array_key_exists($aRow['per_fam_ID'], $didFam) && $didFam[$aRow['per_fam_ID']] && ($mode == 'fam')) {
             continue;
         }
 
@@ -813,7 +813,7 @@ if ($bulkmailpresort) {
     }
 }
 
-$bToParents = (array_key_exists('toparents', $_GET) and $_GET['toparents'] == 1);
+$bToParents = (array_key_exists('toparents', $_GET) && $_GET['toparents'] == 1);
 setcookie('toparents', $bToParents, ['expires' => time() + 60 * 60 * 24 * 90, 'path' => '/']);
 
 $bOnlyComplete = ($_GET['onlyfull'] == 1);

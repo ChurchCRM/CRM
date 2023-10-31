@@ -100,11 +100,11 @@ if ($sGroupKey) {
 
 // Handle _POST input if the form was up and a button press came in
 if (
-    isset($_POST['PledgeSubmit']) or
-    isset($_POST['PledgeSubmitAndAdd']) or
-    isset($_POST['MatchFamily']) or
-    isset($_POST['MatchEnvelope']) or
-    isset($_POST['SetDefaultCheck']) or
+    isset($_POST['PledgeSubmit']) ||
+    isset($_POST['PledgeSubmitAndAdd']) ||
+    isset($_POST['MatchFamily']) ||
+    isset($_POST['MatchEnvelope']) ||
+    isset($_POST['SetDefaultCheck']) ||
     isset($_POST['SetFundTypeSelection'])
 ) {
     $iFamily = InputUtils::legacyFilterInput($_POST['FamilyID'], 'int');

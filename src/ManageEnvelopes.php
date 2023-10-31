@@ -197,7 +197,7 @@ foreach ($arrayToLoop as $fam_ID => $value) {
     }
     echo '<tr>';
     echo '<td>' . $fam_Data . '&nbsp;</td>';
-    if ($envelope and $duplicateEnvelopeHash and array_key_exists($envelope, $duplicateEnvelopeHash)) {
+    if ($envelope && $duplicateEnvelopeHash && array_key_exists($envelope, $duplicateEnvelopeHash)) {
         $tdTag = "<td bgcolor='red'>";
     } else {
         $duplicateEnvelopeHash[$envelope] = $fam_ID;
