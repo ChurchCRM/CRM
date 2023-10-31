@@ -748,7 +748,7 @@ function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComp
     } else {
         return serialize($sLabelList);
     }
-} // end of function GenerateLabels
+}
 
 // Main body of PHP file begins here
 
