@@ -19,7 +19,7 @@ $app->group('/deposits', function () use ($app) {
 
     $app->get('/dashboard', function ($request, $response, $args) {
         $list = DepositQuery::create()
-            ->filterByDate(['min' =>date('Y-m-d', strtotime('-90 days'))])
+            ->filterByDate(['min' => date('Y-m-d', strtotime('-90 days'))])
             ->find();
         return $response->withJson($list->toArray());
     });

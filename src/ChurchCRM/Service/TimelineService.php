@@ -190,7 +190,7 @@ class TimelineService
 
         $item['datetime'] = $datetime;
         $item['year'] = $year;
-        $item['key'] = $datetime.'-'.$id;
+        $item['key'] = $datetime . '-' . $id;
 
         return $item;
     }

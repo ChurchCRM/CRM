@@ -1,4 +1,5 @@
 <?php
+
 /*******************************************************************************
 *
 *  filename    : SettingsUser.php
@@ -58,8 +59,8 @@ if (isset($_POST['save'])) {
 
         // Save new setting
         $sSQL = 'UPDATE userconfig_ucfg '
-        ."SET ucfg_value='$value', ucfg_permission='$permission' "
-        ."WHERE ucfg_id='$id' AND ucfg_per_id='0' ";
+        . "SET ucfg_value='$value', ucfg_permission='$permission' "
+        . "WHERE ucfg_id='$id' AND ucfg_per_id='0' ";
         $rsUpdate = RunQuery($sSQL);
         next($type);
     }
@@ -95,9 +96,9 @@ while (list($ucfg_per_id, $ucfg_id, $ucfg_name, $ucfg_value, $ucfg_type, $ucfg_t
     if ($r == 13) {
         echo '<tr><td>&nbsp;</td>
 			<td><input type=submit class=btn name=save value="'
-            .gettext('Save Settings').'">
+            . gettext('Save Settings') . '">
 			<input type=submit class=btn name=cancel value="'
-            .gettext('Cancel').'">
+            . gettext('Cancel') . '">
 			</td></tr>';
         $r = 1;
     }
@@ -111,8 +112,8 @@ while (list($ucfg_per_id, $ucfg_id, $ucfg_name, $ucfg_value, $ucfg_type, $ucfg_t
         $sel2 = '';
     }
     echo "<tr><td class=\"TextColumnWithBottomBorder\"><select name=\"new_permission[$ucfg_id]\">";
-    echo "<option value=\"FALSE\" $sel1>".gettext('False');
-    echo "<option value=\"TRUE\" $sel2>".gettext('True').'
+    echo "<option value=\"FALSE\" $sel1>" . gettext('False');
+    echo "<option value=\"TRUE\" $sel2>" . gettext('True') . '
                         </select></td>';
 
     // Variable Name & Type
@@ -122,11 +123,11 @@ while (list($ucfg_per_id, $ucfg_id, $ucfg_name, $ucfg_value, $ucfg_type, $ucfg_t
     if ($ucfg_type == 'text') {
         echo "<td class=\"TextColumnWithBottomBorder\">
             <input type=text size=\"30\" maxlength=\"255\" name=\"new_value[$ucfg_id]\"
-            value=\"".htmlspecialchars($ucfg_value, ENT_QUOTES).'"></td>';
+            value=\"" . htmlspecialchars($ucfg_value, ENT_QUOTES) . '"></td>';
     } elseif ($ucfg_type == 'textarea') {
         echo "<td class=\"TextColumnWithBottomBorder\">
 			<textarea rows=\"4\" cols=\"30\" name=\"new_value[$ucfg_id]\">"
-            .htmlspecialchars($ucfg_value, ENT_QUOTES).'</textarea></td>';
+            . htmlspecialchars($ucfg_value, ENT_QUOTES) . '</textarea></td>';
     } elseif ($ucfg_type == 'number' || $ucfg_type == 'date') {
         echo "<td class=\"TextColumnWithBottomBorder\">
             <input type=text size=\"15\" maxlength=\"15\" name=\"new_value[$ucfg_id]\"
@@ -141,14 +142,14 @@ while (list($ucfg_per_id, $ucfg_id, $ucfg_name, $ucfg_value, $ucfg_type, $ucfg_t
         }
         echo "<td class=\"TextColumnWithBottomBorder\">
                 <select name=\"new_value[$ucfg_id]\">
-                <option value=\"\" $sel1>".gettext('False')."
-                <option value=\"1\" $sel2>".gettext('True').'
+                <option value=\"\" $sel1>" . gettext('False') . "
+                <option value=\"1\" $sel2>" . gettext('True') . '
                 </select></td>';
     }
 
     // Notes
     echo "<td><input type=hidden name=\"type[$ucfg_id]\" value=\"$ucfg_type\">
-        ".gettext($ucfg_tooltip).'</td></tr>';
+        " . gettext($ucfg_tooltip) . '</td></tr>';
 
     $r++;
 }

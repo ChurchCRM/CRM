@@ -1,4 +1,5 @@
 <?php
+
 /*******************************************************************************
  *
  *  filename    : MemberRoleChange.php
@@ -40,25 +41,25 @@ if (isset($_POST['Submit'])) {
     $iNewRole = InputUtils::legacyFilterInput($_POST['NewRole']);
 
     //Update the database
-    $sSQL = 'UPDATE person2group2role_p2g2r SET p2g2r_rle_ID = '.$iNewRole." WHERE p2g2r_per_ID = $iPersonID AND p2g2r_grp_ID = $iGroupID";
+    $sSQL = 'UPDATE person2group2role_p2g2r SET p2g2r_rle_ID = ' . $iNewRole . " WHERE p2g2r_per_ID = $iPersonID AND p2g2r_grp_ID = $iGroupID";
     RunQuery($sSQL);
 
     //Reroute back to the proper location
     if ($iReturn) {
-        RedirectUtils::redirect('GroupView.php?GroupID='.$iGroupID);
+        RedirectUtils::redirect('GroupView.php?GroupID=' . $iGroupID);
     } else {
-        RedirectUtils::redirect('PersonView.php?PersonID='.$iPersonID);
+        RedirectUtils::redirect('PersonView.php?PersonID=' . $iPersonID);
     }
 }
 
 //Get their current role
-$sSQL = 'SELECT per_FirstName, per_LastName, grp_Name, grp_RoleListID, lst_OptionID, '.
-        'lst_OptionName AS sRoleName, p2g2r_rle_ID AS iRoleID '.
-        'FROM person_per '.
-        'LEFT JOIN person2group2role_p2g2r ON p2g2r_per_ID = per_ID '.
-        'LEFT JOIN group_grp ON p2g2r_grp_ID = grp_ID '.
-        'LEFT JOIN list_lst ON lst_ID = grp_RoleListID '.
-        "WHERE per_ID = $iPersonID AND grp_ID = $iGroupID ".
+$sSQL = 'SELECT per_FirstName, per_LastName, grp_Name, grp_RoleListID, lst_OptionID, ' .
+        'lst_OptionName AS sRoleName, p2g2r_rle_ID AS iRoleID ' .
+        'FROM person_per ' .
+        'LEFT JOIN person2group2role_p2g2r ON p2g2r_per_ID = per_ID ' .
+        'LEFT JOIN group_grp ON p2g2r_grp_ID = grp_ID ' .
+        'LEFT JOIN list_lst ON lst_ID = grp_RoleListID ' .
+        "WHERE per_ID = $iPersonID AND grp_ID = $iGroupID " .
         'AND lst_OptionID=p2g2r_rle_ID ';
 
 $rsCurrentRole = mysqli_fetch_array(RunQuery($sSQL));
@@ -82,7 +83,7 @@ require 'Include/Header.php'
     </tr>
     <tr>
         <td align="right"><b><?= gettext("Member's Name") ?>:</b></td>
-        <td><?php echo $per_LastName.', '.$per_FirstName ?></td>
+        <td><?php echo $per_LastName . ', ' . $per_FirstName ?></td>
     </tr>
     <tr>
         <td align="right"><b><?= gettext('Current Role') ?>:</b></td>
@@ -105,7 +106,7 @@ require 'Include/Header.php'
                         $sSelected = '';
                     }
                     //Write the <option> tag
-                    echo '<option value="'.$lst_OptionID.'" '.$sSelected.'>'.gettext($lst_OptionName).'</option>';
+                    echo '<option value="' . $lst_OptionID . '" ' . $sSelected . '>' . gettext($lst_OptionName) . '</option>';
                 }
                 ?>
             </select>
@@ -116,9 +117,9 @@ require 'Include/Header.php'
             <input type="submit" class="btn btn-default" name="Submit" value="<?= gettext('Update') ?>">
             <?php
             if ($iReturn) {
-                echo '&nbsp;&nbsp;<input type="button" class="btn btn-default" name="Cancel" value="'.gettext('Cancel')."\" onclick=\"document.location='GroupView.php?GroupID=".$iGroupID."';\">";
+                echo '&nbsp;&nbsp;<input type="button" class="btn btn-default" name="Cancel" value="' . gettext('Cancel') . "\" onclick=\"document.location='GroupView.php?GroupID=" . $iGroupID . "';\">";
             } else {
-                echo '&nbsp;&nbsp;<input type="button" class="btn btn-default" name="Cancel" value="'.gettext('Cancel')."\" onclick=\"document.location='PersonView.php?PersonID=".$iPersonID."';\">";
+                echo '&nbsp;&nbsp;<input type="button" class="btn btn-default" name="Cancel" value="' . gettext('Cancel') . "\" onclick=\"document.location='PersonView.php?PersonID=" . $iPersonID . "';\">";
             }
             ?>
         </td>

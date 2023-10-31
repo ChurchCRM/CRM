@@ -44,7 +44,7 @@ namespace ChurchCRM
         public static function deleteFiles($path, $extArray)
         {
             foreach ($extArray as $ext) {
-                LoggerUtils::getAppLogger()->info('Deleting files: '. $path . "*." . $ext);
+                LoggerUtils::getAppLogger()->info('Deleting files: ' . $path . "*." . $ext);
                 foreach (GLOB($path . "*." . $ext) as $filename) {
                     UNLINK($filename);
                 }
@@ -56,17 +56,17 @@ namespace ChurchCRM
             $logger = LoggerUtils::getAppLogger();
 
             if (!is_dir($src)) {
-                $msg = 'provided src path is not a directory: '. $src;
+                $msg = 'provided src path is not a directory: ' . $src;
                 $logger->error($msg);
                 throw new \Exception($msg);
             }
             if (!is_dir($dest)) {
-                $msg = 'provided dest path is not a directory: '. $dest;
+                $msg = 'provided dest path is not a directory: ' . $dest;
                 $logger->error($msg);
                 throw new \Exception($msg);
             }
 
-            $logger->info('Moving files: '. $src . ' to ' . $dest);
+            $logger->info('Moving files: ' . $src . ' to ' . $dest);
             $files = array_diff(scandir($src), ['.', '..']);
             foreach ($files as $file) {
                 if (is_dir("$src/$file")) {

@@ -4,7 +4,6 @@ namespace ChurchCRM\Emails;
 
 class UnlockedEmail extends BaseUserEmail
 {
-
     protected function getSubSubject()
     {
         return gettext("Account Unlocked");

@@ -39,7 +39,7 @@ class MiscUtils
             if (strlen($word) == 2) {
                 $cons = array_merge($cons, $cons_cant_start);
             }
-            $rnd = ${$current}[ random_int(0, count(${$current}) -1) ];
+            $rnd = ${$current}[ random_int(0, count(${$current}) - 1) ];
             if (strlen($word . $rnd) <= $length) {
                 $word .= $rnd;
                 $current = ( $current == 'cons' ? 'vows' : 'cons' );
@@ -47,7 +47,7 @@ class MiscUtils
         }
         return $word;
     }
-  
+
     public static function getRandomCache($baseCacheTime, $variability)
     {
         $var = random_int(0, $variability);
@@ -58,11 +58,11 @@ class MiscUtils
             return $baseCacheTime + $var;
         }
     }
-  
+
     public static function getPhotoCacheExpirationTimestamp()
     {
         $cacheLength = SystemConfig::getValue("iPhotoClientCacheDuration");
-        $cacheLength = MiscUtils::getRandomCache($cacheLength, 0.5*$cacheLength);
+        $cacheLength = MiscUtils::getRandomCache($cacheLength, 0.5 * $cacheLength);
         return time() + $cacheLength ;
     }
 
@@ -71,7 +71,7 @@ class MiscUtils
         if ($Flags || $Year === null || $Year === '') {
             return;
         }
-      
+
         $birthDate = MiscUtils::birthDate($Year, $Month, $Day);
         $ageSuffix = gettext('Unknown');
         $ageValue = 0;
@@ -100,7 +100,7 @@ class MiscUtils
 
         return $birthDate->format(SystemConfig::getValue("sDateFormatLong"));
     }
-  
+
     public static function birthDate($year, $month, $day)
     {
         if (!$day !== null && $day !== '' && $month !== null && $month !== '') {
@@ -113,7 +113,7 @@ class MiscUtils
 
         return false;
     }
-  
+
     public static function getGitHubWikiAnchorLink($text)
     {
       // roughly adapted from https://gist.github.com/asabaylus/3071099#gistcomment-1593627

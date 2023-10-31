@@ -28,7 +28,7 @@ if (isset($_COOKIE['kioskCookie'])) {
           ->findOneByGUIDHash($g);
     if ($Kiosk === null) {
         setcookie('kioskCookie', '', ['expires' => time() - 3600]);
-        header('Location: '.$_SERVER['REQUEST_URI']);
+        header('Location: ' . $_SERVER['REQUEST_URI']);
     }
 }
 

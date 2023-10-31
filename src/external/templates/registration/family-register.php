@@ -92,7 +92,7 @@ if (!empty($sHeader)) {
                     <div id="memberBox<?= $x ?>" class="box">
                         <div class="card-header with-border">
                             <h4 class="card-title">
-                                <?= gettext("Family Member") . " #". $x ?>
+                                <?= gettext("Family Member") . " #" . $x ?>
                             </h4>
                         </div>
                         <div class="card-body">

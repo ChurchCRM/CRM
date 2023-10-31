@@ -1,4 +1,5 @@
 <?php
+
 namespace ChurchCRM\data;
 
 class Country implements \JsonSerializable

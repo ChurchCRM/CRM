@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: georg
@@ -51,7 +52,7 @@ class UpgradeService
                         $version->setVersion($dbUpdate['dbVersion']);
                         $version->setUpdateStart(new \DateTimeImmutable());
 
-                        $logger->info("New Version: " .$version->getVersion());
+                        $logger->info("New Version: " . $version->getVersion());
                         $scriptName = null;
                         foreach ($dbUpdate['scripts'] as $dbScript) {
                             $scriptName = SystemURLs::getDocumentRoot() . $dbScript;
@@ -77,7 +78,7 @@ class UpgradeService
                     }
                 } catch (\Exception $exc) {
                     $logger->error(
-                        'Failure executing upgrade script(s): '.$exc->getMessage(),
+                        'Failure executing upgrade script(s): ' . $exc->getMessage(),
                         [
                         'exception' => $exc,
                         'scriptName' => $scriptName,
@@ -100,7 +101,7 @@ class UpgradeService
         } catch (\Exception $exc) {
             $logger->error(
                 "Database upgrade failed: " . $exc->getMessage(),
-                ['exception' =>$exc]
+                ['exception' => $exc]
             );
 
             throw $exc; //allow the method requesting the upgrade to handle this failure also.

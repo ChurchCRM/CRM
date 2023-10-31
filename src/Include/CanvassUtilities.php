@@ -1,4 +1,5 @@
 <?php
+
 /*******************************************************************************
  *
  *  filename    : /Include/CanvassUtilities.php
@@ -10,7 +11,7 @@
 
 function CanvassSetDefaultFY($iFYID)
 {
-    $sSQL = "UPDATE user_usr SET usr_defaultFY='".$iFYID."';";
+    $sSQL = "UPDATE user_usr SET usr_defaultFY='" . $iFYID . "';";
     RunQuery($sSQL);
 }
 
@@ -35,7 +36,7 @@ function CanvassClearCanvasserAssignments()
 function CanvassGetCanvassers($groupName)
 {
     // Find the canvassers group
-    $sSQL = 'SELECT grp_ID AS iCanvassGroup FROM group_grp WHERE grp_Name="'.$groupName.'";';
+    $sSQL = 'SELECT grp_ID AS iCanvassGroup FROM group_grp WHERE grp_Name="' . $groupName . '";';
     $rsGroupData = RunQuery($sSQL);
     $aGroupData = mysqli_fetch_array($rsGroupData);
     if (mysqli_num_rows($rsGroupData) == 0) {
@@ -44,7 +45,7 @@ function CanvassGetCanvassers($groupName)
     extract($aGroupData);
 
     // Get the canvassers from the Canvassers group
-    $sSQL = 'SELECT per_ID, per_FirstName, per_LastName FROM person_per, person2group2role_p2g2r WHERE per_ID = p2g2r_per_ID AND p2g2r_grp_ID = '.$iCanvassGroup.' ORDER BY per_LastName,per_FirstName;';
+    $sSQL = 'SELECT per_ID, per_FirstName, per_LastName FROM person_per, person2group2role_p2g2r WHERE per_ID = p2g2r_per_ID AND p2g2r_grp_ID = ' . $iCanvassGroup . ' ORDER BY per_LastName,per_FirstName;';
     $rsCanvassers = RunQuery($sSQL);
     $numCanvassers = mysqli_num_rows($rsCanvassers);
     if ($numCanvassers == 0) {
@@ -71,7 +72,7 @@ function CanvassAssignCanvassers($groupName)
             mysqli_data_seek($rsCanvassers, 0);
             $aCanvasser = mysqli_fetch_array($rsCanvassers);
         }
-        $sSQL = 'UPDATE family_fam SET fam_Canvasser='.$aCanvasser['per_ID'].' WHERE fam_ID= '.$aFamily['fam_ID'];
+        $sSQL = 'UPDATE family_fam SET fam_Canvasser=' . $aCanvasser['per_ID'] . ' WHERE fam_ID= ' . $aFamily['fam_ID'];
         RunQuery($sSQL);
     }
 
@@ -95,7 +96,7 @@ function CanvassAssignNonPledging($groupName, $iFYID)
     while ($aFamily = mysqli_fetch_array($rsFamilies)) {
         // Get pledges for this fiscal year, this family
         $sSQL = 'SELECT plg_Amount FROM pledge_plg
-				 WHERE plg_FYID = '.$iFYID.' AND plg_PledgeOrPayment="Pledge" AND plg_FamID = '.$aFamily['fam_ID'].' ORDER BY plg_Amount DESC';
+				 WHERE plg_FYID = ' . $iFYID . ' AND plg_PledgeOrPayment="Pledge" AND plg_FamID = ' . $aFamily['fam_ID'] . ' ORDER BY plg_Amount DESC';
         $rsPledges = RunQuery($sSQL);
 
         $pledgeCount = mysqli_num_rows($rsPledges);
@@ -105,7 +106,7 @@ function CanvassAssignNonPledging($groupName, $iFYID)
                 mysqli_data_seek($rsCanvassers, 0);
                 $aCanvasser = mysqli_fetch_array($rsCanvassers);
             }
-            $sSQL = 'UPDATE family_fam SET fam_Canvasser='.$aCanvasser['per_ID'].' WHERE fam_ID= '.$aFamily['fam_ID'];
+            $sSQL = 'UPDATE family_fam SET fam_Canvasser=' . $aCanvasser['per_ID'] . ' WHERE fam_ID= ' . $aFamily['fam_ID'];
             RunQuery($sSQL);
         }
     }

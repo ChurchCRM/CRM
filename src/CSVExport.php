@@ -1,4 +1,5 @@
 <?php
+
 /*******************************************************************************
  *
  *  filename    : CSVExport.php
@@ -209,8 +210,8 @@ require 'Include/Header.php';
                         while ($Row = mysqli_fetch_array($rsCustomFields)) {
                             extract($Row);
                             if ($aSecurityType[$custom_FieldSec] == 'bAll' || $_SESSION[$aSecurityType[$custom_FieldSec]]) {
-                                echo '<tr><td class="LabelColumn">'.$custom_Name.'</td>';
-                                echo '<td class="TextColumn"><input type="checkbox" name='.$custom_Field.' value="1"></td></tr>';
+                                echo '<tr><td class="LabelColumn">' . $custom_Name . '</td>';
+                                echo '<td class="TextColumn"><input type="checkbox" name=' . $custom_Field . ' value="1"></td></tr>';
                             }
                         } ?>
                     </table>
@@ -227,8 +228,8 @@ require 'Include/Header.php';
                         while ($Row = mysqli_fetch_array($rsFamCustomFields)) {
                             extract($Row);
                             if ($aSecurityType[$fam_custom_FieldSec] == 'bAll' || $_SESSION[$aSecurityType[$fam_custom_FieldSec]]) {
-                                echo '<tr><td class="LabelColumn">'.$fam_custom_Name.'</td>';
-                                echo '<td class="TextColumn"><input type="checkbox" name='.$fam_custom_Field.' value="1"></td></tr>';
+                                echo '<tr><td class="LabelColumn">' . $fam_custom_Name . '</td>';
+                                echo '<td class="TextColumn"><input type="checkbox" name=' . $fam_custom_Field . ' value="1"></td></tr>';
                             }
                         } ?>
                     </table>
@@ -357,7 +358,7 @@ require 'Include/Header.php';
                   <?php
                     while ($aRow = mysqli_fetch_array($rsGroups)) {
                         extract($aRow);
-                        echo '<option value="'.$grp_ID.'">'.$grp_Name.'</option>';
+                        echo '<option value="' . $grp_ID . '">' . $grp_Name . '</option>';
                     }
                     ?>
                 </select>
@@ -451,7 +452,7 @@ require 'Include/Header.php';
 
           <label><?= gettext('Skip records with incomplete mail address') ?></label><input type="checkbox" name="SkipIncompleteAddr" value="1">
 
-          <input type="submit" class="btn btn-default" value=<?= '"'.gettext('Create File').'"' ?> name="Submit"></td>
+          <input type="submit" class="btn btn-default" value=<?= '"' . gettext('Create File') . '"' ?> name="Submit"></td>
 
         </div>
       </div>

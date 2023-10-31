@@ -1,4 +1,5 @@
 <?php
+
 /*******************************************************************************
  *
  *  filename    : TaxReport.php
@@ -29,7 +30,7 @@ require 'Include/Header.php';
 // Is this the second pass?
 if (isset($_POST['Submit'])) {
     $iYear = InputUtils::legacyFilterInput($_POST['Year'], 'int');
-    RedirectUtils::redirect('Reports/TaxReport.php?Year='.$iYear);
+    RedirectUtils::redirect('Reports/TaxReport.php?Year=' . $iYear);
 } else {
     $iYear = date('Y') - 1;
 }

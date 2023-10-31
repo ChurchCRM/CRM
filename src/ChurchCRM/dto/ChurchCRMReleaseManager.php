@@ -10,7 +10,6 @@ use Github\Client;
 
 class ChurchCRMReleaseManager
 {
-
     // todo: make these const variables private after deprecating PHP7.0 #4948
     public const GITHUB_USER_NAME = 'churchcrm';
     public const GITHUB_REPOSITORY_NAME = 'crm';
@@ -53,20 +52,20 @@ class ChurchCRMReleaseManager
     {
         $client = new Client();
         $eligibleReleases = [];
-        LoggerUtils::getAppLogger()->debug("Querying GitHub '".ChurchCRMReleaseManager::GITHUB_USER_NAME."/".ChurchCRMReleaseManager::GITHUB_REPOSITORY_NAME."' for ChurchCRM Releases");
+        LoggerUtils::getAppLogger()->debug("Querying GitHub '" . ChurchCRMReleaseManager::GITHUB_USER_NAME . "/" . ChurchCRMReleaseManager::GITHUB_REPOSITORY_NAME . "' for ChurchCRM Releases");
         $gitHubReleases = $client->api('repo')->releases()->all(ChurchCRMReleaseManager::GITHUB_USER_NAME, ChurchCRMReleaseManager::GITHUB_REPOSITORY_NAME);
-        LoggerUtils::getAppLogger()->debug("Received ". count($gitHubReleases) . " ChurchCRM releases from GitHub");
+        LoggerUtils::getAppLogger()->debug("Received " . count($gitHubReleases) . " ChurchCRM releases from GitHub");
         foreach ($gitHubReleases as $r) {
             $release = new ChurchCRMRelease($r);
             if ($release->isPreRelease()) {
                 if (SystemConfig::getBooleanValue("bAllowPrereleaseUpgrade")) {
-                    LoggerUtils::getAppLogger()->debug("bAllowPrereleaseUpgrade allows upgrade to a pre-release version.  Including ".$release." for consideration");
+                    LoggerUtils::getAppLogger()->debug("bAllowPrereleaseUpgrade allows upgrade to a pre-release version.  Including " . $release . " for consideration");
                     array_push($eligibleReleases, $release);
                 } else {
-                    LoggerUtils::getAppLogger()->debug("bAllowPrereleaseUpgrade disallows upgrade to a pre-release version.  Not including ".$release." for consideration");
+                    LoggerUtils::getAppLogger()->debug("bAllowPrereleaseUpgrade disallows upgrade to a pre-release version.  Not including " . $release . " for consideration");
                 }
             } else {
-                LoggerUtils::getAppLogger()->debug($release." is not a pre-release version. Including for consideration");
+                LoggerUtils::getAppLogger()->debug($release . " is not a pre-release version. Including for consideration");
                 array_push($eligibleReleases, $release);
             }
         }
@@ -84,7 +83,7 @@ class ChurchCRMReleaseManager
         $_SESSION['ChurchCRMReleases'] = self::populateReleases();
     }
 
-    public static function isReleaseCurrent(ChurchCRMRelease $Release) : bool
+    public static function isReleaseCurrent(ChurchCRMRelease $Release): bool
     {
         if (empty($_SESSION['ChurchCRMReleases'])) {
             // The ChurchCRM releases have not yet been populated.
@@ -94,14 +93,14 @@ class ChurchCRMReleaseManager
             return true;
         } else {
             $CurrentRelease = $_SESSION['ChurchCRMReleases'][0];
-            LoggerUtils::getAppLogger()->debug("Determining if ".$Release." is current by checking if equals: " . $CurrentRelease);
+            LoggerUtils::getAppLogger()->debug("Determining if " . $Release . " is current by checking if equals: " . $CurrentRelease);
             return $CurrentRelease->equals($Release);
         }
     }
 
     private static function getHighestReleaseInArray(array $eligibleUpgradeTargetReleases)
     {
-        if (count($eligibleUpgradeTargetReleases) >0) {
+        if (count($eligibleUpgradeTargetReleases) > 0) {
             usort($eligibleUpgradeTargetReleases, fn(ChurchCRMRelease $a, ChurchCRMRelease $b) => $a->compareTo($b) < 0);
             return $eligibleUpgradeTargetReleases[0];
         }
@@ -112,7 +111,7 @@ class ChurchCRMReleaseManager
     {
         $eligibleUpgradeTargetReleases = array_values(array_filter($rs, function (ChurchCRMRelease $r) use ($currentRelease) {
             $isSameMajorAndMinorWithGreaterPatch = ($r->MAJOR === $currentRelease->MAJOR) && ($r->MINOR === $currentRelease->MINOR) && ($r->PATCH > $currentRelease->PATCH);
-            LoggerUtils::getAppLogger()->debug("Release " . $r . " is" . ($isSameMajorAndMinorWithGreaterPatch ? " ":" not ")  . "a possible patch upgrade target");
+            LoggerUtils::getAppLogger()->debug("Release " . $r . " is" . ($isSameMajorAndMinorWithGreaterPatch ? " " : " not ")  . "a possible patch upgrade target");
             return $isSameMajorAndMinorWithGreaterPatch;
         }));
         return self::getHighestReleaseInArray($eligibleUpgradeTargetReleases);
@@ -122,7 +121,7 @@ class ChurchCRMReleaseManager
     {
         $eligibleUpgradeTargetReleases = array_values(array_filter($rs, function (ChurchCRMRelease $r) use ($currentRelease) {
             $isSameMajorAndMinorWithGreaterPatch = ($r->MAJOR === $currentRelease->MAJOR) && ($r->MINOR > $currentRelease->MINOR);
-            LoggerUtils::getAppLogger()->debug("Release " . $r . " is" . ($isSameMajorAndMinorWithGreaterPatch ? " ":" not ")  . "a possible minor upgrade target");
+            LoggerUtils::getAppLogger()->debug("Release " . $r . " is" . ($isSameMajorAndMinorWithGreaterPatch ? " " : " not ")  . "a possible minor upgrade target");
             return $isSameMajorAndMinorWithGreaterPatch;
         }));
         return self::getHighestReleaseInArray($eligibleUpgradeTargetReleases);
@@ -132,13 +131,13 @@ class ChurchCRMReleaseManager
     {
         $eligibleUpgradeTargetReleases = array_values(array_filter($rs, function (ChurchCRMRelease $r) use ($currentRelease) {
             $isSameMajorAndMinorWithGreaterPatch = ($r->MAJOR > $currentRelease->MAJOR);
-            LoggerUtils::getAppLogger()->debug("Release " . $r . " is" . ($isSameMajorAndMinorWithGreaterPatch ? " ":" not ")  . "a possible major upgrade target");
+            LoggerUtils::getAppLogger()->debug("Release " . $r . " is" . ($isSameMajorAndMinorWithGreaterPatch ? " " : " not ")  . "a possible major upgrade target");
             return $isSameMajorAndMinorWithGreaterPatch;
         }));
         return self::getHighestReleaseInArray($eligibleUpgradeTargetReleases);
     }
 
-    public static function getNextReleaseStep(ChurchCRMRelease $currentRelease) : ChurchCRMRelease
+    public static function getNextReleaseStep(ChurchCRMRelease $currentRelease): ChurchCRMRelease
     {
 
         LoggerUtils::getAppLogger()->debug("Determining the next-step release step for " . $currentRelease);
@@ -159,7 +158,7 @@ class ChurchCRMReleaseManager
             throw new \Exception("Could not identify a suitable upgrade target release.  Current software version: " . $currentRelease . ".  Highest available release: " . $rs[0]) ;
         }
 
-        LoggerUtils::getAppLogger()->info("Next upgrade step for " . $currentRelease. " is : " . $nextStepRelease);
+        LoggerUtils::getAppLogger()->info("Next upgrade step for " . $currentRelease . " is : " . $nextStepRelease);
 
         return $nextStepRelease;
     }
@@ -181,16 +180,16 @@ class ChurchCRMReleaseManager
         if (!is_dir($UpgradeDir)) {
             mkdir($UpgradeDir);
         }
-        $logger->info("Downloading release from: " . $url . " to: ". $UpgradeDir . '/' . basename($url));
+        $logger->info("Downloading release from: " . $url . " to: " . $UpgradeDir . '/' . basename($url));
         $executionTime = new ExecutionTime();
         file_put_contents($UpgradeDir . '/' . basename($url), file_get_contents($url));
-        $logger->info("Finished downloading file.  Execution time: " .$executionTime->getMilliseconds()." ms");
+        $logger->info("Finished downloading file.  Execution time: " . $executionTime->getMilliseconds() . " ms");
         $returnFile = [];
         $returnFile['fileName'] = basename($url);
         $returnFile['releaseNotes'] = $release->getReleaseNotes();
         $returnFile['fullPath'] = $UpgradeDir . '/' . basename($url);
         $returnFile['sha1'] = sha1_file($UpgradeDir . '/' . basename($url));
-        $logger->info("SHA1 hash for ". $returnFile['fullPath'] .": " . $returnFile['sha1']);
+        $logger->info("SHA1 hash for " . $returnFile['fullPath'] . ": " . $returnFile['sha1']);
         $logger->info("Release notes: " . $returnFile['releaseNotes']);
         return $returnFile;
     }
@@ -234,7 +233,7 @@ class ChurchCRMReleaseManager
 
             $zip = new \ZipArchive();
             if ($zip->open($zipFilename) === true) {
-                    $logger->info("Extracting " . $zipFilename." to: " . SystemURLs::getDocumentRoot() . '/Upgrade');
+                    $logger->info("Extracting " . $zipFilename . " to: " . SystemURLs::getDocumentRoot() . '/Upgrade');
                     $executionTime = new ExecutionTime();
                     $isSuccessful = $zip->extractTo(SystemURLs::getDocumentRoot() . '/Upgrade');
                     MiscUtils::throwIfFailed($isSuccessful);
@@ -242,11 +241,11 @@ class ChurchCRMReleaseManager
                     $logger->info("Extraction completed.  Took:" . $executionTime->getMilliseconds());
                     $logger->info("Moving extracted zip into place");
                     $executionTime = new ExecutionTime();
-    
+
                 FileSystemUtils::moveDir(SystemURLs::getDocumentRoot() . '/Upgrade/churchcrm', SystemURLs::getDocumentRoot());
                     $logger->info("Move completed.  Took:" . $executionTime->getMilliseconds());
             }
-            $logger->info("Deleting zip archive: ".$zipFilename);
+            $logger->info("Deleting zip archive: " . $zipFilename);
             unlink($zipFilename);
 
             SystemConfig::setValue('sLastIntegrityCheckTimeStamp', null);
@@ -259,7 +258,7 @@ class ChurchCRMReleaseManager
         } else {
             self::$isUpgradeInProgress = false;
             ini_set('display_errors', $displayErrors);
-            $logger->error("Hash validation failed on " . $zipFilename.". Expected: ".$sha1. ". Got: ".sha1_file($zipFilename));
+            $logger->error("Hash validation failed on " . $zipFilename . ". Expected: " . $sha1 . ". Got: " . sha1_file($zipFilename));
 
             return 'hash validation failure';
         }

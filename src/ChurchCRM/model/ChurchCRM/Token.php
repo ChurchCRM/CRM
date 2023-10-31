@@ -16,7 +16,6 @@ use ChurchCRM\Base\Token as BaseToken;
  */
 class Token extends BaseToken
 {
-
     public const TYPE_FAMILY_VERIFY = "verifyFamily";
     private const TYPE_PASSWORD = "password";
 

@@ -1,4 +1,5 @@
 <?php
+
 namespace ChurchCRM\dto;
 
 use ChurchCRM\Config;
@@ -86,7 +87,7 @@ class ConfigItem
           //set the values, and save it
             $this->dbConfigItem->setValue($value);
             $this->dbConfigItem->save();
-            $this->value=$value;
+            $this->value = $value;
         }
     }
 

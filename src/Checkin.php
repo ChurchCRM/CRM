@@ -1,4 +1,5 @@
 <?php
+
 /*******************************************************************************
  *
  *  filename    : Checkin.php
@@ -230,7 +231,8 @@ if (isset($_POST['EventID']) && isset($_POST['child-id']) && (isset($_POST['Chec
 //-- End checkin
 
 //  Checkout / Delete section
-if (isset($_POST['EventID']) && isset($_POST['child-id']) &&
+if (
+    isset($_POST['EventID']) && isset($_POST['child-id']) &&
     (isset($_POST['CheckOutBtn']) || isset($_POST['DeleteBtn']))
 ) {
     $iChildID = InputUtils::legacyFilterInput($_POST['child-id'], 'int');
@@ -447,21 +449,21 @@ function loadPerson($iPersonID)
     }
     $person = PersonQuery::create()
         ->findOneById($iPersonID);
-    $familyRole="(";
+    $familyRole = "(";
     if ($person->getFamId()) {
         if ($person->getFamilyRole()) {
             $familyRole .= $person->getFamilyRoleName();
         } else {
             $familyRole .=  gettext('Member');
         }
-        $familyRole .= gettext(' of the').' <a href="v2/family/'. $person->getFamId().'">'.$person->getFamily()->getName().'</a> '.gettext('family').' )';
+        $familyRole .= gettext(' of the') . ' <a href="v2/family/' . $person->getFamId() . '">' . $person->getFamily()->getName() . '</a> ' . gettext('family') . ' )';
     } else {
         $familyRole = gettext('(No assigned family)');
     }
 
 
     $html = '<div class="text-center">' .
-        '<a target="_top" href="PersonView.php?PersonID=' . $iPersonID . '"><h4>' . $person->getTitle(). ' ' . $person->getFullName() . '</h4></a>' .
+        '<a target="_top" href="PersonView.php?PersonID=' . $iPersonID . '"><h4>' . $person->getTitle() . ' ' . $person->getFullName() . '</h4></a>' .
         '<div class="">' . $familyRole . '</div>' .
         '<div class="text-center">' . $person->getAddress() . '</div>' .
         '<img src="' . SystemURLs::getRootPath() . '/api/person/' . $iPersonID . '/thumbnail" class="initials-image profile-user-img img-responsive img-circle"> </div>';

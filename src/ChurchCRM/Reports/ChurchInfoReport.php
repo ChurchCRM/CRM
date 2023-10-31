@@ -1,4 +1,5 @@
 <?php
+
 /*******************************************************************************
  *
  *  filename    : Include/ReportsConfig.php
@@ -36,7 +37,7 @@ class ChurchInfoReport extends FPDF
         if (mb_substr($phone, 0, 3) == SystemConfig::getValue('sHomeAreaCode')) {
             $phone = mb_substr($phone, 3, strlen($phone) - 3);
         }
-        if (mb_substr($phone, 0, 5) == ('('.SystemConfig::getValue('sHomeAreaCode').')')) {
+        if (mb_substr($phone, 0, 5) == ('(' . SystemConfig::getValue('sHomeAreaCode') . ')')) {
             $phone = mb_substr($phone, 5, strlen($phone) - 5);
         }
         if (mb_substr($phone, 0, 1) == '-') {
@@ -44,7 +45,7 @@ class ChurchInfoReport extends FPDF
         }
         if (strlen($phone) == 7) {
             // Fix the missing -
-            $phone = mb_substr($phone, 0, 3).'-'.mb_substr($phone, 3, 4);
+            $phone = mb_substr($phone, 0, 3) . '-' . mb_substr($phone, 3, 4);
         }
 
         return $phone;
@@ -109,10 +110,10 @@ class ChurchInfoReport extends FPDF
             $curY += SystemConfig::getValue('incrementY');
             $this->writeAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sChurchAddress'));
             $curY += SystemConfig::getValue('incrementY');
-            $this->writeAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sChurchCity').', '.SystemConfig::getValue('sChurchState').'  '.SystemConfig::getValue('sChurchZip'));
+            $this->writeAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sChurchCity') . ', ' . SystemConfig::getValue('sChurchState') . '  ' . SystemConfig::getValue('sChurchZip'));
             $curY += SystemConfig::getValue('incrementY');
             $curY += SystemConfig::getValue('incrementY'); // Skip another line before the phone/email
-            $this->writeAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sChurchPhone').'  '.SystemConfig::getValue('sChurchEmail'));
+            $this->writeAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sChurchPhone') . '  ' . SystemConfig::getValue('sChurchEmail'));
             $curY += 25; // mm to move to the second window
         }
         $this->writeAt(SystemConfig::getValue('leftX'), $curY, $this->makeSalutation($fam_ID));
@@ -125,7 +126,7 @@ class ChurchInfoReport extends FPDF
             $this->writeAt(SystemConfig::getValue('leftX'), $curY, $fam_Address2);
             $curY += SystemConfig::getValue('incrementY');
         }
-        $this->writeAt(SystemConfig::getValue('leftX'), $curY, $fam_City.', '.$fam_State.'  '.$fam_Zip);
+        $this->writeAt(SystemConfig::getValue('leftX'), $curY, $fam_City . ', ' . $fam_State . '  ' . $fam_Zip);
         $curY += SystemConfig::getValue('incrementY');
         if ($fam_Country != '' && $fam_Country != SystemConfig::getValue('sDefaultCountry')) {
             $this->writeAt(SystemConfig::getValue('leftX'), $curY, $fam_Country);

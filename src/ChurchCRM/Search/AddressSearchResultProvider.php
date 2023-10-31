@@ -42,7 +42,7 @@ class AddressSearchResultProvider extends BaseSearchResultProvider
             if (!empty($addresses)) {
                 $id++;
                 foreach ($addresses as $address) {
-                    array_push($searchResults, new SearchResult("person-address-".$id, $address->getFamilyString(SystemConfig::getBooleanValue("bSearchIncludeFamilyHOH")), $address->getViewURI()));
+                    array_push($searchResults, new SearchResult("person-address-" . $id, $address->getFamilyString(SystemConfig::getBooleanValue("bSearchIncludeFamilyHOH")), $address->getViewURI()));
                 }
             }
         } catch (\Exception $e) {

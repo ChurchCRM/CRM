@@ -186,5 +186,5 @@ function deleteUserCalendar(Request $request, Response $response, $args)
         return $response->withStatus(404, gettext("Not Found: Unknown calendar id") . ": " . $args['id']);
     }
     $Calendar->delete();
-    return $response->withJson(["status"=>"success"]);
+    return $response->withJson(["status" => "success"]);
 }

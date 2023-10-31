@@ -11,12 +11,11 @@ use Propel\Runtime\ActiveQuery\Criteria;
 
 class BirthdaysCalendar implements SystemCalendar
 {
- 
     public static function isAvailable()
     {
         return true;
     }
-  
+
     public function getAccessToken()
     {
         return false;
@@ -26,7 +25,7 @@ class BirthdaysCalendar implements SystemCalendar
     {
         return "0000FF";
     }
-  
+
     public function getForegroundColor()
     {
         return "FFFFFF";
@@ -41,7 +40,7 @@ class BirthdaysCalendar implements SystemCalendar
     {
         return gettext("Birthdays");
     }
-    
+
     public function getEvents($start, $end)
     {
         $people = PersonQuery::create()
@@ -49,7 +48,7 @@ class BirthdaysCalendar implements SystemCalendar
             ->find();
         return $this->peopleCollectionToEvents($people);
     }
-  
+
     public function getEventById($Id)
     {
         $people = PersonQuery::create()
@@ -58,7 +57,7 @@ class BirthdaysCalendar implements SystemCalendar
             ->find();
         return $this->peopleCollectionToEvents($people);
     }
-  
+
     private function peopleCollectionToEvents(ObjectCollection $People)
     {
         $events = new ObjectCollection();
@@ -68,9 +67,9 @@ class BirthdaysCalendar implements SystemCalendar
             $birthday->setId($person->getId());
             $birthday->setEditable(false);
             $year = date('Y');
-            $birthday->setStart($year.'-'.$person->getBirthMonth().'-'.$person->getBirthDay());
+            $birthday->setStart($year . '-' . $person->getBirthMonth() . '-' . $person->getBirthDay());
             $age = $person->getAge($birthday->getStart());
-            $birthday->setTitle(gettext("Birthday") . ": " . $person->getFullName() . ( $age ? " (".$age.")" : '' ));
+            $birthday->setTitle(gettext("Birthday") . ": " . $person->getFullName() . ( $age ? " (" . $age . ")" : '' ));
             $birthday->setURL($person->getViewURI());
             $events->push($birthday);
         }

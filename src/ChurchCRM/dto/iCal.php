@@ -15,19 +15,18 @@ use Propel\Runtime\Collection\ObjectCollection;
 // phpcs:disable Squiz.Classes.ValidClassName
 class iCal
 {
-
     private string $icsHeader;
     private \Propel\Runtime\Collection\ObjectCollection $eventsArray;
 
     public function __construct(ObjectCollection $Events, $CalendarName)
     {
         $this->eventsArray = $Events;
-        $this->icsHeader =  "BEGIN:VCALENDAR\r\n".
-                    "VERSION:2.0\r\n".
-                    "PRODID:-//ChurchCRM/CRM//NONSGML v".SystemService::getInstalledVersion()."//EN\r\n".
-                    "CALSCALE:GREGORIAN\r\n".
-                    "METHOD:PUBLISH\r\n".
-                    "X-WR-CALNAME:".$CalendarName."\r\n".
+        $this->icsHeader =  "BEGIN:VCALENDAR\r\n" .
+                    "VERSION:2.0\r\n" .
+                    "PRODID:-//ChurchCRM/CRM//NONSGML v" . SystemService::getInstalledVersion() . "//EN\r\n" .
+                    "CALSCALE:GREGORIAN\r\n" .
+                    "METHOD:PUBLISH\r\n" .
+                    "X-WR-CALNAME:" . $CalendarName . "\r\n" .
                     "X-WR-CALDESC:\r\n";
     }
 
@@ -36,12 +35,12 @@ class iCal
         $now = new \DateTime();
         $UTC = new \DateTimeZone("UTC");
 
-        return "BEGIN:VEVENT\r\n".
-          "UID:".$event->getId()."@".ChurchMetaData::getChurchName()."\r\n".
-          "DTSTAMP:".$now->setTimezone($UTC)->format('Ymd\THis\Z')."\r\n".
-          "DTSTART:".$event->getStart()->setTimezone($UTC)->format('Ymd\THis\Z')."\r\n".
-          "DTEND:".$event->getEnd()->setTimezone($UTC)->format('Ymd\THis\Z')."\r\n".
-          "SUMMARY:".$event->getTitle()."\r\n".
+        return "BEGIN:VEVENT\r\n" .
+          "UID:" . $event->getId() . "@" . ChurchMetaData::getChurchName() . "\r\n" .
+          "DTSTAMP:" . $now->setTimezone($UTC)->format('Ymd\THis\Z') . "\r\n" .
+          "DTSTART:" . $event->getStart()->setTimezone($UTC)->format('Ymd\THis\Z') . "\r\n" .
+          "DTEND:" . $event->getEnd()->setTimezone($UTC)->format('Ymd\THis\Z') . "\r\n" .
+          "SUMMARY:" . $event->getTitle() . "\r\n" .
           "END:VEVENT\r\n";
     }
 
@@ -51,7 +50,7 @@ class iCal
         foreach ($this->eventsArray as $event) {
             $iCal .= $this->eventToVEVENT($event);
         }
-        $iCal .="END:VCALENDAR";
+        $iCal .= "END:VCALENDAR";
         return $iCal;
     }
 }

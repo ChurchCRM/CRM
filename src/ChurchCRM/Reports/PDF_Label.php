@@ -63,15 +63,15 @@ class PdfLabel extends ChurchInfoReport
 
     // List of all Avery formats
     public $_Avery_Labels = [
-        'Tractor'=> ['name'=>'Tractor', 'paper-size'=>'letter', 'metric'=>'mm', 'marginLeft'=>6.5, 'marginTop'=>5, 'NX'=>1, 'NY'=>10, 'SpaceX'=>3.175, 'SpaceY'=>0, 'width'=>120, 'height'=>26.5, 'font-size'=>12],
-        '5160'   => ['name'=>'5160', 'paper-size'=>'letter', 'metric'=>'mm', 'marginLeft'=>4, 'marginTop'=>11.5, 'NX'=>3, 'NY'=>10, 'SpaceX'=>3.175, 'SpaceY'=>0, 'width'=>66.675, 'height'=>25.4, 'font-size'=>11],
-        '5161'   => ['name'=>'5161', 'paper-size'=>'letter', 'metric'=>'mm', 'marginLeft'=>1, 'marginTop'=>10.7, 'NX'=>2, 'NY'=>10, 'SpaceX'=>3.967, 'SpaceY'=>0, 'width'=>101.6, 'height'=>25.4, 'font-size'=>11],
-        '5162'   => ['name'=>'5162', 'paper-size'=>'letter', 'metric'=>'mm', 'marginLeft'=>4, 'marginTop'=>20.224, 'NX'=>2, 'NY'=>7, 'SpaceX'=>4.762, 'SpaceY'=>0, 'width'=>100.807, 'height'=>34, 'font-size'=>12],
-        '5163'   => ['name'=>'5163', 'paper-size'=>'letter', 'metric'=>'mm', 'marginLeft'=>1.762, 'marginTop'=>10.7, 'NX'=>2, 'NY'=>5, 'SpaceX'=>3.175, 'SpaceY'=>0, 'width'=>101.6, 'height'=>50.8, 'font-size'=>8],
-        '5164'   => ['name'=>'5164', 'paper-size'=>'letter', 'metric'=>'in', 'marginLeft'=>0.148, 'marginTop'=>0.5, 'NX'=>2, 'NY'=>3, 'SpaceX'=>0.2031, 'SpaceY'=>0, 'width'=>4.0, 'height'=>3.33, 'font-size'=>12],
-        '8600'   => ['name'=>'8600', 'paper-size'=>'letter', 'metric'=>'mm', 'marginLeft'=>7.1, 'marginTop'=>19, 'NX'=>3, 'NY'=>10, 'SpaceX'=>9.5, 'SpaceY'=>3.1, 'width'=>66.6, 'height'=>25.4, 'font-size'=>8],
-        '74536'  => ['name'=>'74536(name tags)', 'paper-size'=>'letter', 'metric'=>'mm', 'marginLeft'=>7.0, 'marginTop'=>25, 'NX'=>2, 'NY'=>3, 'SpaceX'=>0, 'SpaceY'=>0, 'width'=>102, 'height'=>76, 'font-size'=>18],
-        'L7163'  => ['name'=>'L7163', 'paper-size'=>'A4', 'metric'=>'mm', 'marginLeft'=>5, 'marginTop'=>15, 'NX'=>2, 'NY'=>7, 'SpaceX'=>2.5, 'SpaceY'=>0, 'width'=>99.1, 'height'=>38.1, 'font-size'=>10],
+        'Tractor' => ['name' => 'Tractor', 'paper-size' => 'letter', 'metric' => 'mm', 'marginLeft' => 6.5, 'marginTop' => 5, 'NX' => 1, 'NY' => 10, 'SpaceX' => 3.175, 'SpaceY' => 0, 'width' => 120, 'height' => 26.5, 'font-size' => 12],
+        '5160'   => ['name' => '5160', 'paper-size' => 'letter', 'metric' => 'mm', 'marginLeft' => 4, 'marginTop' => 11.5, 'NX' => 3, 'NY' => 10, 'SpaceX' => 3.175, 'SpaceY' => 0, 'width' => 66.675, 'height' => 25.4, 'font-size' => 11],
+        '5161'   => ['name' => '5161', 'paper-size' => 'letter', 'metric' => 'mm', 'marginLeft' => 1, 'marginTop' => 10.7, 'NX' => 2, 'NY' => 10, 'SpaceX' => 3.967, 'SpaceY' => 0, 'width' => 101.6, 'height' => 25.4, 'font-size' => 11],
+        '5162'   => ['name' => '5162', 'paper-size' => 'letter', 'metric' => 'mm', 'marginLeft' => 4, 'marginTop' => 20.224, 'NX' => 2, 'NY' => 7, 'SpaceX' => 4.762, 'SpaceY' => 0, 'width' => 100.807, 'height' => 34, 'font-size' => 12],
+        '5163'   => ['name' => '5163', 'paper-size' => 'letter', 'metric' => 'mm', 'marginLeft' => 1.762, 'marginTop' => 10.7, 'NX' => 2, 'NY' => 5, 'SpaceX' => 3.175, 'SpaceY' => 0, 'width' => 101.6, 'height' => 50.8, 'font-size' => 8],
+        '5164'   => ['name' => '5164', 'paper-size' => 'letter', 'metric' => 'in', 'marginLeft' => 0.148, 'marginTop' => 0.5, 'NX' => 2, 'NY' => 3, 'SpaceX' => 0.2031, 'SpaceY' => 0, 'width' => 4.0, 'height' => 3.33, 'font-size' => 12],
+        '8600'   => ['name' => '8600', 'paper-size' => 'letter', 'metric' => 'mm', 'marginLeft' => 7.1, 'marginTop' => 19, 'NX' => 3, 'NY' => 10, 'SpaceX' => 9.5, 'SpaceY' => 3.1, 'width' => 66.6, 'height' => 25.4, 'font-size' => 8],
+        '74536'  => ['name' => '74536(name tags)', 'paper-size' => 'letter', 'metric' => 'mm', 'marginLeft' => 7.0, 'marginTop' => 25, 'NX' => 2, 'NY' => 3, 'SpaceX' => 0, 'SpaceY' => 0, 'width' => 102, 'height' => 76, 'font-size' => 18],
+        'L7163'  => ['name' => 'L7163', 'paper-size' => 'A4', 'metric' => 'mm', 'marginLeft' => 5, 'marginTop' => 15, 'NX' => 2, 'NY' => 7, 'SpaceX' => 2.5, 'SpaceY' => 0, 'width' => 99.1, 'height' => 38.1, 'font-size' => 10],
     ];
 
     // convert units (in to mm, mm to in)
@@ -92,7 +92,7 @@ class PdfLabel extends ChurchInfoReport
     private function getHeightChars($pt)
     {
         // Array matching character sizes and line heights
-        $_Table_Hauteur_Chars = [6=>2, 7=>2.5, 8=>3, 9=>4, 10=>5, 11=>6, 12=>7, 13=>8, 14=>7.5, 15=>9, 16=>8, 18=>9];
+        $_Table_Hauteur_Chars = [6 => 2, 7 => 2.5, 8 => 3, 9 => 4, 10 => 5, 11 => 6, 12 => 7, 13 => 8, 14 => 7.5, 15 => 9, 16 => 8, 18 => 9];
         if (in_array($pt, array_keys($_Table_Hauteur_Chars))) {
             return $_Table_Hauteur_Chars[$pt];
         } else {

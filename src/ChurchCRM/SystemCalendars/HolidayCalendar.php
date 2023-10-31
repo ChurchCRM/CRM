@@ -16,7 +16,6 @@ use ChurchCRM\dto\SystemConfig;
 
 class HolidayCalendar implements SystemCalendar
 {
- 
     public static function isAvailable()
     {
         $systemCountry = Countries::getCountryByName(SystemConfig::getValue("sChurchCountry"));
@@ -24,7 +23,7 @@ class HolidayCalendar implements SystemCalendar
             return $systemCountry->getCountryNameYasumi() !== null;
         }
     }
-  
+
     public function getAccessToken()
     {
         return false;
@@ -34,7 +33,7 @@ class HolidayCalendar implements SystemCalendar
     {
         return "6dfff5";
     }
-  
+
     public function getForegroundColor()
     {
         return "000000";
@@ -49,7 +48,7 @@ class HolidayCalendar implements SystemCalendar
     {
         return gettext("Holidays");
     }
-    
+
     public function getEvents($start, $end)
     {
         $Country = Countries::getCountryByName(SystemConfig::getValue("sChurchCountry"));
@@ -57,22 +56,22 @@ class HolidayCalendar implements SystemCalendar
         $holidays = Yasumi::create($Country->getCountryNameYasumi(), $year);
         $events = new ObjectCollection();
         $events->setModel(\ChurchCRM\Event::class);
-   
+
         foreach ($holidays as $holiday) {
             $event = $this->yasumiHolidayToEvent($holiday);
             $events->push($event);
         }
         return $events;
     }
-  
+
     public function getEventById($Id)
     {
         return false;
     }
-  
+
     private function yasumiHolidayToEvent(Holiday $holiday)
     {
-        $id = crc32($holiday->getName().$holiday->getTimestamp());
+        $id = crc32($holiday->getName() . $holiday->getTimestamp());
         $holidayEvent = new Event();
         $holidayEvent->setId($id);
         $holidayEvent->setEditable(false);

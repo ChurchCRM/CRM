@@ -1,4 +1,5 @@
 <?php
+
 /*******************************************************************************
  *
  *  filename    : CanvassAutomation.php
@@ -86,16 +87,16 @@ if (isset($_POST['ClearAllOkToCanvass'])) {
     }
 }
 if (isset($_POST['BriefingSheets'])) {
-    RedirectUtils::redirect('Reports/CanvassReports.php?FYID='.$iFYID.'&WhichReport=Briefing');
+    RedirectUtils::redirect('Reports/CanvassReports.php?FYID=' . $iFYID . '&WhichReport=Briefing');
 }
 if (isset($_POST['ProgressReport'])) {
-    RedirectUtils::redirect('Reports/CanvassReports.php?FYID='.$iFYID.'&WhichReport=Progress');
+    RedirectUtils::redirect('Reports/CanvassReports.php?FYID=' . $iFYID . '&WhichReport=Progress');
 }
 if (isset($_POST['SummaryReport'])) {
-    RedirectUtils::redirect('Reports/CanvassReports.php?FYID='.$iFYID.'&WhichReport=Summary');
+    RedirectUtils::redirect('Reports/CanvassReports.php?FYID=' . $iFYID . '&WhichReport=Summary');
 }
 if (isset($_POST['NotInterestedReport'])) {
-    RedirectUtils::redirect('Reports/CanvassReports.php?FYID='.$iFYID.'&WhichReport=NotInterested');
+    RedirectUtils::redirect('Reports/CanvassReports.php?FYID=' . $iFYID . '&WhichReport=NotInterested');
 }
 
 require 'Include/Header.php';

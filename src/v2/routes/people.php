@@ -29,7 +29,7 @@ function viewPeopleVerify(Request $request, Response $response, array $args)
     }
 
     if ($request->getQueryParam("AllPDFsEmailed")) {
-        $headerArgs = ['sGlobalMessage' =>  gettext('PDFs successfully emailed ').$request->getQueryParam("AllPDFsEmailed").' '.gettext('families').".",
+        $headerArgs = ['sGlobalMessage' =>  gettext('PDFs successfully emailed ') . $request->getQueryParam("AllPDFsEmailed") . ' ' . gettext('families') . ".",
         "sGlobalMessageClass" => "success"];
         $pageArgs =  array_merge($pageArgs, $headerArgs);
     }

@@ -1,4 +1,5 @@
 <?php
+
 /*******************************************************************************
  *
  *  filename    : OptionManagerRowOps.php
@@ -78,7 +79,7 @@ switch ($mode) {
         $listID = InputUtils::legacyFilterInput($_GET['ListID'], 'int');
 
         // Validate that this list ID is really for a group roles list. (for security)
-        $sSQL = "SELECT '' FROM group_grp WHERE grp_RoleListID = ".$listID;
+        $sSQL = "SELECT '' FROM group_grp WHERE grp_RoleListID = " . $listID;
         $rsTemp = RunQuery($sSQL);
         if (mysqli_num_rows($rsTemp) == 0) {
             RedirectUtils::redirect('Menu.php');
@@ -95,17 +96,17 @@ switch ($mode) {
 switch ($sAction) {
     // Move a field up:  Swap the OptionSequence (ordering) of the selected row and the one above it
     case 'up':
-        $sSQL = "UPDATE list_lst SET lst_OptionSequence = '".$iOrder."' WHERE lst_ID = $listID AND lst_OptionSequence = '".($iOrder - 1)."'";
+        $sSQL = "UPDATE list_lst SET lst_OptionSequence = '" . $iOrder . "' WHERE lst_ID = $listID AND lst_OptionSequence = '" . ($iOrder - 1) . "'";
         RunQuery($sSQL);
-        $sSQL = "UPDATE list_lst SET lst_OptionSequence = '".($iOrder - 1)."' WHERE lst_ID = $listID AND lst_OptionID = '".$iID."'";
+        $sSQL = "UPDATE list_lst SET lst_OptionSequence = '" . ($iOrder - 1) . "' WHERE lst_ID = $listID AND lst_OptionID = '" . $iID . "'";
         RunQuery($sSQL);
         break;
 
         // Move a field down:  Swap the OptionSequence (ordering) of the selected row and the one below it
     case 'down':
-        $sSQL = "UPDATE list_lst SET lst_OptionSequence = '".$iOrder."' WHERE lst_ID = $listID AND lst_OptionSequence = '".($iOrder + 1)."'";
+        $sSQL = "UPDATE list_lst SET lst_OptionSequence = '" . $iOrder . "' WHERE lst_ID = $listID AND lst_OptionSequence = '" . ($iOrder + 1) . "'";
         RunQuery($sSQL);
-        $sSQL = "UPDATE list_lst SET lst_OptionSequence = '".($iOrder + 1)."' WHERE lst_ID = $listID AND lst_OptionID = '".$iID."'";
+        $sSQL = "UPDATE list_lst SET lst_OptionSequence = '" . ($iOrder + 1) . "' WHERE lst_ID = $listID AND lst_OptionID = '" . $iID . "'";
         RunQuery($sSQL);
         break;
 
@@ -117,12 +118,12 @@ switch ($sAction) {
 
         // Make sure we never delete the only option
         if ($numRows > 1) {
-            $sSQL = "DELETE FROM list_lst WHERE lst_ID = $listID AND lst_OptionSequence = '".$iOrder."'";
+            $sSQL = "DELETE FROM list_lst WHERE lst_ID = $listID AND lst_OptionSequence = '" . $iOrder . "'";
             RunQuery($sSQL);
 
             // Shift the remaining rows up by one
             for ($reorderRow = $iOrder + 1; $reorderRow <= $numRows + 1; $reorderRow++) {
-                $sSQL = "UPDATE list_lst SET lst_OptionSequence = '".($reorderRow - 1)."' WHERE lst_ID = $listID AND lst_OptionSequence = '".$reorderRow."'";
+                $sSQL = "UPDATE list_lst SET lst_OptionSequence = '" . ($reorderRow - 1) . "' WHERE lst_ID = $listID AND lst_OptionSequence = '" . $reorderRow . "'";
                 RunQuery($sSQL);
             }
 
@@ -144,7 +145,7 @@ switch ($sAction) {
             } else {
                 // Otherwise, for other types of assignees having a deleted option, reset them to default of 0 (undefined).
                 if ($deleteCleanupTable != 0) {
-                    $sSQL = "UPDATE $deleteCleanupTable SET $deleteCleanupColumn = $deleteCleanupResetTo WHERE $deleteCleanupColumn = ".$iID;
+                    $sSQL = "UPDATE $deleteCleanupTable SET $deleteCleanupColumn = $deleteCleanupResetTo WHERE $deleteCleanupColumn = " . $iID;
                     RunQuery($sSQL);
                 }
             }

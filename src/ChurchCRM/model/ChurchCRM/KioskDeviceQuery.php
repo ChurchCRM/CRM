@@ -16,5 +16,4 @@ use ChurchCRM\Base\KioskDeviceQuery as BaseKioskDeviceQuery;
  */
 class KioskDeviceQuery extends BaseKioskDeviceQuery
 {
-
 }

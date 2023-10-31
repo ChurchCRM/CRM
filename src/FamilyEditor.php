@@ -1,4 +1,5 @@
 <?php
+
 /*******************************************************************************
  *
  *  filename    : FamilyEditor.php
@@ -41,7 +42,7 @@ if ($iFamilyID > 0) {
         exit;
     }
 
-    $sSQL = 'SELECT fam_ID FROM family_fam WHERE fam_ID = '.$iFamilyID;
+    $sSQL = 'SELECT fam_ID FROM family_fam WHERE fam_ID = ' . $iFamilyID;
     if (mysqli_num_rows(RunQuery($sSQL)) == 0) {
         RedirectUtils::redirect('Menu.php');
         exit;
@@ -124,13 +125,13 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
 
 
     if (is_numeric($nLatitude)) {
-        $nLatitude = "'".$nLatitude."'";
+        $nLatitude = "'" . $nLatitude . "'";
     } else {
         $nLatitude = 'NULL';
     }
 
     if (is_numeric($nLongitude)) {
-        $nLongitude = "'".$nLongitude."'";
+        $nLongitude = "'" . $nLongitude . "'";
     } else {
         $nLongitude = 'NULL';
     }
@@ -142,7 +143,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
 
     if (is_numeric($nEnvelope)) { // Only integers are allowed as Envelope Numbers
         if (intval($nEnvelope) == floatval($nEnvelope)) {
-            $nEnvelope = "'".intval($nEnvelope)."'";
+            $nEnvelope = "'" . intval($nEnvelope) . "'";
         } else {
             $nEnvelope = "'0'";
         }
@@ -177,17 +178,17 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
     //Loop through the Family Member 'quick entry' form fields
     for ($iCount = 1; $iCount <= $iFamilyMemberRows; $iCount++) {
         // Assign everything to arrays
-        $aFirstNames[$iCount] = InputUtils::legacyFilterInput($_POST['FirstName'.$iCount]);
-        $aMiddleNames[$iCount] = InputUtils::legacyFilterInput($_POST['MiddleName'.$iCount]);
-        $aLastNames[$iCount] = InputUtils::legacyFilterInput($_POST['LastName'.$iCount]);
-        $aSuffix[$iCount] = InputUtils::legacyFilterInput($_POST['Suffix'.$iCount]);
-        $aRoles[$iCount] = InputUtils::legacyFilterInput($_POST['Role'.$iCount], 'int');
-        $aGenders[$iCount] = InputUtils::legacyFilterInput($_POST['Gender'.$iCount], 'int');
-        $aBirthDays[$iCount] = InputUtils::legacyFilterInput($_POST['BirthDay'.$iCount], 'int');
-        $aBirthMonths[$iCount] = InputUtils::legacyFilterInput($_POST['BirthMonth'.$iCount], 'int');
-        $aBirthYears[$iCount] = InputUtils::legacyFilterInput($_POST['BirthYear'.$iCount], 'int');
-        $aClassification[$iCount] = InputUtils::legacyFilterInput($_POST['Classification'.$iCount], 'int');
-        $aPersonIDs[$iCount] = InputUtils::legacyFilterInput($_POST['PersonID'.$iCount], 'int');
+        $aFirstNames[$iCount] = InputUtils::legacyFilterInput($_POST['FirstName' . $iCount]);
+        $aMiddleNames[$iCount] = InputUtils::legacyFilterInput($_POST['MiddleName' . $iCount]);
+        $aLastNames[$iCount] = InputUtils::legacyFilterInput($_POST['LastName' . $iCount]);
+        $aSuffix[$iCount] = InputUtils::legacyFilterInput($_POST['Suffix' . $iCount]);
+        $aRoles[$iCount] = InputUtils::legacyFilterInput($_POST['Role' . $iCount], 'int');
+        $aGenders[$iCount] = InputUtils::legacyFilterInput($_POST['Gender' . $iCount], 'int');
+        $aBirthDays[$iCount] = InputUtils::legacyFilterInput($_POST['BirthDay' . $iCount], 'int');
+        $aBirthMonths[$iCount] = InputUtils::legacyFilterInput($_POST['BirthMonth' . $iCount], 'int');
+        $aBirthYears[$iCount] = InputUtils::legacyFilterInput($_POST['BirthYear' . $iCount], 'int');
+        $aClassification[$iCount] = InputUtils::legacyFilterInput($_POST['Classification' . $iCount], 'int');
+        $aPersonIDs[$iCount] = InputUtils::legacyFilterInput($_POST['PersonID' . $iCount], 'int');
         $aUpdateBirthYear[$iCount] = InputUtils::legacyFilterInput($_POST['UpdateBirthYear'], 'int');
 
         // Make sure first names were entered if editing existing family
@@ -229,7 +230,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
         $dateString = parseAndValidateDate($dWeddingDate, Bootstrapper::getCurrentLocale()->getCountryCode(), $pasfut = 'past');
         if ($dateString === false) {
             $sWeddingDateError = '<span style="color: red; ">'
-                                .gettext('Not a valid Wedding Date').'</span>';
+                                . gettext('Not a valid Wedding Date') . '</span>';
             $bErrorFlag = true;
         } else {
             $dWeddingDate = "'$dateString'";
@@ -242,7 +243,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
     if (strlen($sEmail) > 0) {
         if (checkEmail($sEmail) == false) {
             $sEmailError = '<span style="color: red; ">'
-                                .gettext('Email is Not Valid').'</span>';
+                                . gettext('Email is Not Valid') . '</span>';
             $bErrorFlag = true;
         } else {
             $sEmail = $sEmail;
@@ -308,52 +309,52 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
 						fam_Latitude,
 						fam_Longitude,
 						fam_Envelope)
-					VALUES ('".
-                        $sName."','".
-                        $sAddress1."','".
-                        $sAddress2."','".
-                        $sCity."','".
-                        $sState."','".
-                        $sZip."','".
-                        $sCountry."','".
-                        $sHomePhone."','".
-                        $sWorkPhone."','".
-                        $sCellPhone."','".
-                        $sEmail."',".
-                        $dWeddingDate.",'".
-                        date('YmdHis')."',".
-                        AuthenticationManager::getCurrentUser()->getId().','.
-                        $bSendNewsLetterString.','.
-                        $bOkToCanvassString.",'".
-                        $iCanvasser."',".
-                        $nLatitude.','.
-                        $nLongitude.','.
-                        $nEnvelope.')';
+					VALUES ('" .
+                        $sName . "','" .
+                        $sAddress1 . "','" .
+                        $sAddress2 . "','" .
+                        $sCity . "','" .
+                        $sState . "','" .
+                        $sZip . "','" .
+                        $sCountry . "','" .
+                        $sHomePhone . "','" .
+                        $sWorkPhone . "','" .
+                        $sCellPhone . "','" .
+                        $sEmail . "'," .
+                        $dWeddingDate . ",'" .
+                        date('YmdHis') . "'," .
+                        AuthenticationManager::getCurrentUser()->getId() . ',' .
+                        $bSendNewsLetterString . ',' .
+                        $bOkToCanvassString . ",'" .
+                        $iCanvasser . "'," .
+                        $nLatitude . ',' .
+                        $nLongitude . ',' .
+                        $nEnvelope . ')';
             $bGetKeyBack = true;
         } else {
-            $sSQL = "UPDATE family_fam SET fam_Name='".$sName."',".
-                        "fam_Address1='".$sAddress1."',".
-                        "fam_Address2='".$sAddress2."',".
-                        "fam_City='".$sCity."',".
-                        "fam_State='".$sState."',".
-                        "fam_Zip='".$sZip."',".
-                        'fam_Latitude='.$nLatitude.','.
-                        'fam_Longitude='.$nLongitude.','.
-                        "fam_Country='".$sCountry."',".
-                        "fam_HomePhone='".$sHomePhone."',".
-                        "fam_WorkPhone='".$sWorkPhone."',".
-                        "fam_CellPhone='".$sCellPhone."',".
-                        "fam_Email='".$sEmail."',".
-                        'fam_WeddingDate='.$dWeddingDate.','.
-                        'fam_Envelope='.$nEnvelope.','.
-                        "fam_DateLastEdited='".date('YmdHis')."',".
-                        'fam_EditedBy = '.AuthenticationManager::getCurrentUser()->getId().','.
-                        'fam_SendNewsLetter = '.$bSendNewsLetterString;
+            $sSQL = "UPDATE family_fam SET fam_Name='" . $sName . "'," .
+                        "fam_Address1='" . $sAddress1 . "'," .
+                        "fam_Address2='" . $sAddress2 . "'," .
+                        "fam_City='" . $sCity . "'," .
+                        "fam_State='" . $sState . "'," .
+                        "fam_Zip='" . $sZip . "'," .
+                        'fam_Latitude=' . $nLatitude . ',' .
+                        'fam_Longitude=' . $nLongitude . ',' .
+                        "fam_Country='" . $sCountry . "'," .
+                        "fam_HomePhone='" . $sHomePhone . "'," .
+                        "fam_WorkPhone='" . $sWorkPhone . "'," .
+                        "fam_CellPhone='" . $sCellPhone . "'," .
+                        "fam_Email='" . $sEmail . "'," .
+                        'fam_WeddingDate=' . $dWeddingDate . ',' .
+                        'fam_Envelope=' . $nEnvelope . ',' .
+                        "fam_DateLastEdited='" . date('YmdHis') . "'," .
+                        'fam_EditedBy = ' . AuthenticationManager::getCurrentUser()->getId() . ',' .
+                        'fam_SendNewsLetter = ' . $bSendNewsLetterString;
             if (AuthenticationManager::getCurrentUser()->isCanvasserEnabled()) {
-                $sSQL .= ', fam_OkToCanvass = '.$bOkToCanvassString.
-                                    ", fam_Canvasser = '".$iCanvasser."'";
+                $sSQL .= ', fam_OkToCanvass = ' . $bOkToCanvassString .
+                                    ", fam_Canvasser = '" . $iCanvasser . "'";
             }
-            $sSQL .= ' WHERE fam_ID = '.$iFamilyID;
+            $sSQL .= ' WHERE fam_ID = ' . $iFamilyID;
             $bGetKeyBack = false;
         }
 
@@ -367,7 +368,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
             $rsLastEntry = RunQuery($sSQL);
             extract(mysqli_fetch_array($rsLastEntry));
 
-            $sSQL = "INSERT INTO `family_custom` (`fam_ID`) VALUES ('".$iFamilyID."')";
+            $sSQL = "INSERT INTO `family_custom` (`fam_ID`) VALUES ('" . $iFamilyID . "')";
             RunQuery($sSQL);
 
             // Add property if assigned
@@ -412,8 +413,8 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
 								'$aSuffix[$iCount]',
 								$iFamilyID,
 								$aRoles[$iCount],
-								'".date('YmdHis')."',
-								".AuthenticationManager::getCurrentUser()->getId().",
+								'" . date('YmdHis') . "',
+								" . AuthenticationManager::getCurrentUser()->getId() . ",
 								$aGenders[$iCount],
 								$aBirthDays[$iCount],
 								$aBirthMonths[$iCount],
@@ -428,7 +429,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
                     $note->setEntered(AuthenticationManager::getCurrentUser()->getId());
                     $note->save();
                     $sSQL = 'INSERT INTO person_custom (per_ID) VALUES ('
-                                .$dbPersonId.')';
+                                . $dbPersonId . ')';
                     RunQuery($sSQL);
                     RunQuery('UNLOCK TABLES');
                 }
@@ -456,9 +457,9 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
                     } else {
                         $sLastNameToEnter = $sName;
                     }
-                    $sBirthYearScript = ($aUpdateBirthYear[$iCount] & 1) ? 'per_BirthYear='.$aBirthYears[$iCount].', ' : '';
+                    $sBirthYearScript = ($aUpdateBirthYear[$iCount] & 1) ? 'per_BirthYear=' . $aBirthYears[$iCount] . ', ' : '';
                     //RunQuery("LOCK TABLES person_per WRITE, person_custom WRITE");
-                    $sSQL = "UPDATE person_per SET per_FirstName='".$aFirstNames[$iCount]."', per_MiddleName='".$aMiddleNames[$iCount]."',per_LastName='".$aLastNames[$iCount]."',per_Suffix='".$aSuffix[$iCount]."',per_Gender='".$aGenders[$iCount]."',per_fmr_ID='".$aRoles[$iCount]."',per_BirthMonth='".$aBirthMonths[$iCount]."',per_BirthDay='".$aBirthDays[$iCount]."', ".$sBirthYearScript."per_cls_ID='".$aClassification[$iCount]."' WHERE per_ID=".$aPersonIDs[$iCount];
+                    $sSQL = "UPDATE person_per SET per_FirstName='" . $aFirstNames[$iCount] . "', per_MiddleName='" . $aMiddleNames[$iCount] . "',per_LastName='" . $aLastNames[$iCount] . "',per_Suffix='" . $aSuffix[$iCount] . "',per_Gender='" . $aGenders[$iCount] . "',per_fmr_ID='" . $aRoles[$iCount] . "',per_BirthMonth='" . $aBirthMonths[$iCount] . "',per_BirthDay='" . $aBirthDays[$iCount] . "', " . $sBirthYearScript . "per_cls_ID='" . $aClassification[$iCount] . "' WHERE per_ID=" . $aPersonIDs[$iCount];
                     RunQuery($sSQL);
                     //RunQuery("UNLOCK TABLES");
 
@@ -492,7 +493,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
             // chop off the last 2 characters (comma and space) added in the last while loop iteration.
             $sSQL = mb_substr($sSQL, 0, -2);
 
-            $sSQL .= ', fam_ID = '.$iFamilyID;
+            $sSQL .= ', fam_ID = ' . $iFamilyID;
 
             //Execute the SQL
             RunQuery($sSQL);
@@ -501,7 +502,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
         //Which submit button did they press?
         if (isset($_POST['FamilySubmit'])) {
             //Send to the view of this person
-            RedirectUtils::redirect('v2/family/'.$iFamilyID);
+            RedirectUtils::redirect('v2/family/' . $iFamilyID);
         } else {
             //Reload to editor to add another record
             RedirectUtils::redirect('FamilyEditor.php');
@@ -513,7 +514,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
     if ($iFamilyID > 0) {
         //Editing....
         //Get the information on this family
-        $sSQL = 'SELECT * FROM family_fam WHERE fam_ID = '.$iFamilyID;
+        $sSQL = 'SELECT * FROM family_fam WHERE fam_ID = ' . $iFamilyID;
         $rsFamily = RunQuery($sSQL);
         extract(mysqli_fetch_array($rsFamily));
 
@@ -541,7 +542,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
         $sWorkPhone = ExpandPhoneNumber($sWorkPhone, $sCountry, $bNoFormat_WorkPhone);
         $sCellPhone = ExpandPhoneNumber($sCellPhone, $sCountry, $bNoFormat_CellPhone);
 
-        $sSQL = 'SELECT * FROM family_custom WHERE fam_ID = '.$iFamilyID;
+        $sSQL = 'SELECT * FROM family_custom WHERE fam_ID = ' . $iFamilyID;
         $rsCustomData = RunQuery($sSQL);
         $aCustomData = mysqli_fetch_array($rsCustomData, MYSQLI_BOTH);
 
@@ -554,7 +555,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
             }
         }
 
-        $sSQL = 'SELECT * FROM person_per LEFT JOIN family_fam ON per_fam_ID = fam_ID WHERE per_fam_ID ='.$iFamilyID.' ORDER BY per_fmr_ID';
+        $sSQL = 'SELECT * FROM person_per LEFT JOIN family_fam ON per_fam_ID = fam_ID WHERE per_fam_ID =' . $iFamilyID . ' ORDER BY per_fmr_ID';
         $rsMembers = RunQuery($sSQL);
         $iCount = 0;
         $iFamilyMemberRows = 0;
@@ -696,7 +697,7 @@ require 'Include/Header.php';
                         if (SystemConfig::getBooleanValue('bForceUppercaseZip')) {
                             echo 'style="text-transform:uppercase" ';
                         }
-                            echo 'value="'.htmlentities(stripslashes($sZip), ENT_NOQUOTES, 'UTF-8').'" '; ?>
+                            echo 'value="' . htmlentities(stripslashes($sZip), ENT_NOQUOTES, 'UTF-8') . '" '; ?>
                             maxlength="10" size="8">
                     </div>
                     <div class="form-group col-md-3">
@@ -772,7 +773,7 @@ require 'Include/Header.php';
                         <div class="input-group-addon">
                             <i class="fa fa-envelope"></i>
                         </div>
-                        <input type="text" Name="Email" class="form-control" value="<?= htmlentities(stripslashes($sEmail)) ?>" size="30" maxlength="100"><span style="color: red;"><?php echo '<BR>'.$sEmailError ?></span>
+                        <input type="text" Name="Email" class="form-control" value="<?= htmlentities(stripslashes($sEmail)) ?>" size="30" maxlength="100"><span style="color: red;"><?php echo '<BR>' . $sEmailError ?></span>
                     </div>
                 </div>
                 <?php if (!SystemConfig::getValue('bHideFamilyNewsletter')) { /* Newsletter can be hidden - General Settings */ ?>
@@ -828,12 +829,12 @@ require 'Include/Header.php';
                     <?php // Display all canvassers
                     echo "<select name='Canvasser' class=\"form-control\"><option value=\"0\">None selected</option>";
                     while ($aCanvasser = mysqli_fetch_array($rsCanvassers)) {
-                        echo '<option value="'.$aCanvasser['per_ID'].'"';
+                        echo '<option value="' . $aCanvasser['per_ID'] . '"';
                         if ($aCanvasser['per_ID'] == $iCanvasser) {
                             echo ' selected';
                         }
                         echo '>';
-                        echo $aCanvasser['per_FirstName'].' '.$aCanvasser['per_LastName'];
+                        echo $aCanvasser['per_FirstName'] . ' ' . $aCanvasser['per_LastName'];
                         echo '</option>';
                     }
                     echo '</select></div>';
@@ -847,12 +848,12 @@ require 'Include/Header.php';
                         <?php // Display all canvassers
                         echo "<select name='BraveCanvasser' class=\"form-control\"><option value=\"0\">None selected</option>";
                         while ($aBraveCanvasser = mysqli_fetch_array($rsBraveCanvassers)) {
-                            echo '<option value="'.$aBraveCanvasser['per_ID'].'"';
+                            echo '<option value="' . $aBraveCanvasser['per_ID'] . '"';
                             if ($aBraveCanvasser['per_ID'] == $iCanvasser) {
                                 echo ' selected';
                             }
                             echo '>';
-                            echo $aBraveCanvasser['per_FirstName'].' '.$aBraveCanvasser['per_LastName'];
+                            echo $aBraveCanvasser['per_FirstName'] . ' ' . $aBraveCanvasser['per_LastName'];
                             echo '</option>';
                         }
                         echo '</select></div>';
@@ -873,7 +874,7 @@ require 'Include/Header.php';
                 <div class="form-group col-md-4">
                     <label><?= gettext('Envelope Number') ?>:</label>
                     <input type="text" Name="Envelope" <?php if ($fam_Envelope) {
-                        echo ' value="'.$fam_Envelope;
+                        echo ' value="' . $fam_Envelope;
                                                        } ?>" size="30" maxlength="50">
                 </div>
             </div>
@@ -906,7 +907,7 @@ require 'Include/Header.php';
                 }
 
                 formCustomField($type_ID, $fam_custom_Field, $currentFieldData, $fam_custom_Special, !isset($_POST['FamilySubmit']));
-                echo '<span style="color: red; ">'.$aCustomErrors[$fam_custom_Field].'</span>';
+                echo '<span style="color: red; ">' . $aCustomErrors[$fam_custom_Field] . '</span>';
                 echo '</div></div>';
             }
         } ?>
@@ -1001,11 +1002,11 @@ require 'Include/Header.php';
                 <?php
                 //Build the role select box
                 for ($c = 1; $c <= $numFamilyRoles; $c++) {
-                    echo '<option value="'.$aFamilyRoleIDs[$c].'"';
+                    echo '<option value="' . $aFamilyRoleIDs[$c] . '"';
                     if ($aRoles[$iCount] == $aFamilyRoleIDs[$c]) {
                         echo ' selected';
                     }
-                    echo '>'.$aFamilyRoleNames[$c].'</option>';
+                    echo '>' . $aFamilyRoleNames[$c] . '</option>';
                 } ?>
                 </select>
             </td>
@@ -1057,7 +1058,7 @@ require 'Include/Header.php';
                     <option value="0"><?= gettext('Unk')?></option>
                     <?php for ($x = 1; $x < 32; $x++) {
                         if ($x < 10) {
-                            $sDay = '0'.$x;
+                            $sDay = '0' . $x;
                         } else {
                             $sDay = $x;
                         } ?>
@@ -1094,11 +1095,11 @@ require 'Include/Header.php';
             //Display Classifications
                     while ($aRow = mysqli_fetch_array($rsClassifications)) {
                         extract($aRow);
-                        echo '<option value="'.$lst_OptionID.'"';
+                        echo '<option value="' . $lst_OptionID . '"';
                         if ($aClassification[$iCount] == $lst_OptionID) {
                             echo ' selected';
                         }
-                        echo '>'.$lst_OptionName.'&nbsp;';
+                        echo '>' . $lst_OptionName . '&nbsp;';
                     }
                     echo '</select></td></tr>';
         }
@@ -1108,17 +1109,17 @@ require 'Include/Header.php';
     }
 
     echo '<td colspan="2" align="center">';
-    echo '<input type="hidden" Name="UpdateBirthYear" value="'.$UpdateBirthYear.'">';
+    echo '<input type="hidden" Name="UpdateBirthYear" value="' . $UpdateBirthYear . '">';
 
-    echo '<input type="submit" class="btn btn-primary" value="'.gettext('Save').'" Name="FamilySubmit" id="FamilySubmitBottom"> ';
+    echo '<input type="submit" class="btn btn-primary" value="' . gettext('Save') . '" Name="FamilySubmit" id="FamilySubmitBottom"> ';
     if (AuthenticationManager::getCurrentUser()->isAddRecordsEnabled()) {
-        echo ' <input type="submit" class="btn btn-info" value="'.gettext('Save and Add').'" name="FamilySubmitAndAdd"> ';
+        echo ' <input type="submit" class="btn btn-info" value="' . gettext('Save and Add') . '" name="FamilySubmitAndAdd"> ';
     }
-    echo ' <input type="button" class="btn btn-default" value="'.gettext('Cancel').'" Name="FamilyCancel"';
+    echo ' <input type="button" class="btn btn-default" value="' . gettext('Cancel') . '" Name="FamilyCancel"';
     if ($iFamilyID > 0) {
         echo " onclick=\"javascript:document.location='v2/family/$iFamilyID';\">";
     } else {
-        echo " onclick=\"javascript:document.location='".SystemURLs::getRootPath()."/v2/family';\">";
+        echo " onclick=\"javascript:document.location='" . SystemURLs::getRootPath() . "/v2/family';\">";
     }
     echo '</td></tr></form></table>';
     ?>

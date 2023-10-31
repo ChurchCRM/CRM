@@ -93,7 +93,7 @@ function getMailListUnSubscribersMVC(Request $request, Response $response, array
         $renderer = new PhpRenderer('templates/email/');
         $pageArgs = [
             'sRootPath' => SystemURLs::getRootPath(),
-            'sPageTitle' => _("People not in"). " ".  $list["name"],
+            'sPageTitle' => _("People not in") . " " .  $list["name"],
             'listId' => $list["id"]
         ];
         return $renderer->render($response, 'mailchimp-unsubscribers.php', $pageArgs);

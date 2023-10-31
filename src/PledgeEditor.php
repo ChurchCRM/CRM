@@ -1,4 +1,5 @@
 <?php
+
 /*******************************************************************************
  *
  *  filename    : PledgeEditor.php
@@ -81,7 +82,7 @@ if (array_key_exists('FamilyID', $_GET)) {
 $fund2PlgIds = []; // this will be the array cross-referencing funds to existing plg_plgid's
 
 if ($sGroupKey) {
-    $sSQL = 'SELECT plg_plgID, plg_fundID, plg_EditedBy from pledge_plg where plg_GroupKey="'.$sGroupKey.'"';
+    $sSQL = 'SELECT plg_plgID, plg_fundID, plg_EditedBy from pledge_plg where plg_GroupKey="' . $sGroupKey . '"';
     $rsKeys = RunQuery($sSQL);
     while ($aRow = mysqli_fetch_array($rsKeys)) {
         $onePlgID = $aRow['plg_plgID'];
@@ -98,12 +99,14 @@ if ($sGroupKey) {
 }
 
 // Handle _POST input if the form was up and a button press came in
-if (isset($_POST['PledgeSubmit']) or
+if (
+    isset($_POST['PledgeSubmit']) or
     isset($_POST['PledgeSubmitAndAdd']) or
     isset($_POST['MatchFamily']) or
     isset($_POST['MatchEnvelope']) or
     isset($_POST['SetDefaultCheck']) or
-    isset($_POST['SetFundTypeSelection'])) {
+    isset($_POST['SetFundTypeSelection'])
+) {
     $iFamily = InputUtils::legacyFilterInput($_POST['FamilyID'], 'int');
 
     $dDate = InputUtils::legacyFilterInput($_POST['Date']);
@@ -142,11 +145,11 @@ if (isset($_POST['PledgeSubmit']) or
     $iMethod = InputUtils::legacyFilterInput($_POST['Method']);
     if (!$iMethod) {
         if ($sGroupKey) {
-            $sSQL = "SELECT DISTINCT plg_method FROM pledge_plg WHERE plg_GroupKey='".$sGroupKey."'";
+            $sSQL = "SELECT DISTINCT plg_method FROM pledge_plg WHERE plg_GroupKey='" . $sGroupKey . "'";
             $rsResults = RunQuery($sSQL);
             list($iMethod) = mysqli_fetch_row($rsResults);
         } elseif ($iCurrentDeposit) {
-            $sSQL = 'SELECT plg_method from pledge_plg where plg_depID="'.$iCurrentDeposit.'" ORDER by plg_plgID DESC LIMIT 1';
+            $sSQL = 'SELECT plg_method from pledge_plg where plg_depID="' . $iCurrentDeposit . '" ORDER by plg_plgID DESC LIMIT 1';
             $rsMethod = RunQuery($sSQL);
             $num = mysqli_num_rows($rsMethod);
             if ($num) {    // set iMethod to last record's setting
@@ -167,12 +170,12 @@ if (isset($_POST['PledgeSubmit']) or
     }
 } else { // Form was not up previously, take data from existing records or make default values
     if ($sGroupKey) {
-        $sSQL = "SELECT COUNT(plg_GroupKey), plg_PledgeOrPayment, plg_fundID, plg_Date, plg_FYID, plg_CheckNo, plg_Schedule, plg_method, plg_depID FROM pledge_plg WHERE plg_GroupKey='".$sGroupKey."' GROUP BY plg_GroupKey";
+        $sSQL = "SELECT COUNT(plg_GroupKey), plg_PledgeOrPayment, plg_fundID, plg_Date, plg_FYID, plg_CheckNo, plg_Schedule, plg_method, plg_depID FROM pledge_plg WHERE plg_GroupKey='" . $sGroupKey . "' GROUP BY plg_GroupKey";
         $rsResults = RunQuery($sSQL);
         list($numGroupKeys, $PledgeOrPayment, $fundId, $dDate, $iFYID, $iCheckNo, $iSchedule, $iMethod, $iCurrentDeposit) = mysqli_fetch_row($rsResults);
 
 
-        $sSQL = "SELECT DISTINCT plg_famID, plg_CheckNo, plg_date, plg_method, plg_FYID from pledge_plg where plg_GroupKey='".$sGroupKey."'";
+        $sSQL = "SELECT DISTINCT plg_famID, plg_CheckNo, plg_date, plg_method, plg_FYID from pledge_plg where plg_GroupKey='" . $sGroupKey . "'";
         //  don't know if we need plg_date or plg_method here...  leave it here for now
         $rsFam = RunQuery($sSQL);
         extract(mysqli_fetch_array($rsFam));
@@ -181,7 +184,7 @@ if (isset($_POST['PledgeSubmit']) or
         $iCheckNo = $plg_CheckNo;
         $iFYID = $plg_FYID;
 
-        $sSQL = "SELECT plg_plgID, plg_fundID, plg_amount, plg_comment, plg_NonDeductible from pledge_plg where plg_GroupKey='".$sGroupKey."'";
+        $sSQL = "SELECT plg_plgID, plg_fundID, plg_amount, plg_comment, plg_NonDeductible from pledge_plg where plg_GroupKey='" . $sGroupKey . "'";
 
         $rsAmounts = RunQuery($sSQL);
         while ($aRow = mysqli_fetch_array($rsAmounts)) {
@@ -214,7 +217,7 @@ if (isset($_POST['PledgeSubmit']) or
         }
     }
     if (!$iEnvelope && $iFamily) {
-        $sSQL = 'SELECT fam_Envelope FROM family_fam WHERE fam_ID="'.$iFamily.'";';
+        $sSQL = 'SELECT fam_Envelope FROM family_fam WHERE fam_ID="' . $iFamily . '";';
         $rsEnv = RunQuery($sSQL);
         extract(mysqli_fetch_array($rsEnv));
         if ($fam_Envelope) {
@@ -234,7 +237,7 @@ if ($PledgeOrPayment == 'Pledge') { // Don't assign the deposit slip if this is 
 
     // Get the current deposit slip data
     if ($iCurrentDeposit) {
-        $sSQL = 'SELECT dep_Closed, dep_Date, dep_Type from deposit_dep WHERE dep_ID = '.$iCurrentDeposit;
+        $sSQL = 'SELECT dep_Closed, dep_Date, dep_Type from deposit_dep WHERE dep_ID = ' . $iCurrentDeposit;
         $rsDeposit = RunQuery($sSQL);
         extract(mysqli_fetch_array($rsDeposit));
     }
@@ -259,14 +262,14 @@ if (isset($_POST['PledgeSubmit']) || isset($_POST['PledgeSubmitAndAdd'])) {
     $nonZeroFundAmountEntered = 0;
     foreach ($fundId2Name as $fun_id => $fun_name) {
         //$fun_active = $fundActive[$fun_id];
-        $nAmount[$fun_id] = InputUtils::legacyFilterInput($_POST[$fun_id.'_Amount']);
-        $sComment[$fun_id] = InputUtils::legacyFilterInput($_POST[$fun_id.'_Comment']);
+        $nAmount[$fun_id] = InputUtils::legacyFilterInput($_POST[$fun_id . '_Amount']);
+        $sComment[$fun_id] = InputUtils::legacyFilterInput($_POST[$fun_id . '_Comment']);
         if ($nAmount[$fun_id] > 0) {
             ++$nonZeroFundAmountEntered;
         }
 
         if ($bEnableNonDeductible) {
-            $nNonDeductible[$fun_id] = InputUtils::legacyFilterInput($_POST[$fun_id.'_NonDeductible']);
+            $nNonDeductible[$fun_id] = InputUtils::legacyFilterInput($_POST[$fun_id . '_NonDeductible']);
             //Validate the NonDeductible Amount
             if ($nNonDeductible[$fun_id] > $nAmount[$fun_id]) { //Validate the NonDeductible Amount
                 $sNonDeductibleError[$fun_id] = gettext("NonDeductible amount can't be greater than total amount.");
@@ -293,20 +296,20 @@ if (isset($_POST['PledgeSubmit']) || isset($_POST['PledgeSubmitAndAdd'])) {
     //$iEnvelope = InputUtils::legacyFilterInput($_POST["Envelope"], 'int');
 
     if ($PledgeOrPayment == 'Payment' && !$iCheckNo && $iMethod == 'CHECK') {
-        $sCheckNoError = '<span style="color: red; ">'.gettext('Must specify non-zero check number').'</span>';
+        $sCheckNoError = '<span style="color: red; ">' . gettext('Must specify non-zero check number') . '</span>';
         $bErrorFlag = true;
     }
 
     // detect check inconsistencies
     if ($PledgeOrPayment == 'Payment' && $iCheckNo) {
         if ($iMethod == 'CASH') {
-            $sCheckNoError = '<span style="color: red; ">'.gettext("Check number not valid for 'CASH' payment").'</span>';
+            $sCheckNoError = '<span style="color: red; ">' . gettext("Check number not valid for 'CASH' payment") . '</span>';
             $bErrorFlag = true;
         } elseif ($iMethod == 'CHECK' && !$sGroupKey) {
-            $chkKey = $iFamily.'|'.$iCheckNo;
+            $chkKey = $iFamily . '|' . $iCheckNo;
             if (array_key_exists($chkKey, $checkHash)) {
-                $text = "Check number '".$iCheckNo."' for selected family already exists.";
-                $sCheckNoError = '<span style="color: red; ">'.gettext($text).'</span>';
+                $text = "Check number '" . $iCheckNo . "' for selected family already exists.";
+                $sCheckNoError = '<span style="color: red; ">' . gettext($text) . '</span>';
                 $bErrorFlag = true;
             }
         }
@@ -316,7 +319,7 @@ if (isset($_POST['PledgeSubmit']) || isset($_POST['PledgeSubmitAndAdd'])) {
     if (strlen($dDate) > 0) {
         list($iYear, $iMonth, $iDay) = sscanf($dDate, '%04d-%02d-%02d');
         if (!checkdate($iMonth, $iDay, $iYear)) {
-            $sDateError = '<span style="color: red; ">'.gettext('Not a valid date').'</span>';
+            $sDateError = '<span style="color: red; ">' . gettext('Not a valid date') . '</span>';
             $bErrorFlag = true;
         }
     }
@@ -332,10 +335,10 @@ if (isset($_POST['PledgeSubmit']) || isset($_POST['PledgeSubmitAndAdd'])) {
             unset($sSQL);
             if ($fund2PlgIds && array_key_exists($fun_id, $fund2PlgIds)) {
                 if ($nAmount[$fun_id] > 0) {
-                    $sSQL = "UPDATE pledge_plg SET plg_famID = '".$iFamily."',plg_FYID = '".$iFYID."',plg_date = '".$dDate."', plg_amount = '".$nAmount[$fun_id]."', plg_schedule = '".$iSchedule."', plg_method = '".$iMethod."', plg_comment = '".$sComment[$fun_id]."'";
-                    $sSQL .= ", plg_DateLastEdited = '".date('YmdHis')."', plg_EditedBy = ".AuthenticationManager::getCurrentUser()->getId().", plg_CheckNo = '".$iCheckNo."', plg_scanString = '".$tScanString."', plg_aut_ID='".$iAutID."', plg_NonDeductible='".$nNonDeductible[$fun_id]."' WHERE plg_plgID='".$fund2PlgIds[$fun_id]."'";
+                    $sSQL = "UPDATE pledge_plg SET plg_famID = '" . $iFamily . "',plg_FYID = '" . $iFYID . "',plg_date = '" . $dDate . "', plg_amount = '" . $nAmount[$fun_id] . "', plg_schedule = '" . $iSchedule . "', plg_method = '" . $iMethod . "', plg_comment = '" . $sComment[$fun_id] . "'";
+                    $sSQL .= ", plg_DateLastEdited = '" . date('YmdHis') . "', plg_EditedBy = " . AuthenticationManager::getCurrentUser()->getId() . ", plg_CheckNo = '" . $iCheckNo . "', plg_scanString = '" . $tScanString . "', plg_aut_ID='" . $iAutID . "', plg_NonDeductible='" . $nNonDeductible[$fun_id] . "' WHERE plg_plgID='" . $fund2PlgIds[$fun_id] . "'";
                 } else { // delete that record
-                    $sSQL = 'DELETE FROM pledge_plg WHERE plg_plgID ='.$fund2PlgIds[$fun_id];
+                    $sSQL = 'DELETE FROM pledge_plg WHERE plg_plgID =' . $fund2PlgIds[$fun_id];
                 }
             } elseif ($nAmount[$fun_id] > 0) {
                 if ($iMethod != 'CHECK') {
@@ -359,8 +362,8 @@ if (isset($_POST['PledgeSubmit']) || isset($_POST['PledgeSubmitAndAdd'])) {
                     }
                 }
                 $sSQL = "INSERT INTO pledge_plg (plg_famID, plg_FYID, plg_date, plg_amount, plg_schedule, plg_method, plg_comment, plg_DateLastEdited, plg_EditedBy, plg_PledgeOrPayment, plg_fundID, plg_depID, plg_CheckNo, plg_scanString, plg_aut_ID, plg_NonDeductible, plg_GroupKey)
-			VALUES ('".$iFamily."','".$iFYID."','".$dDate."','".$nAmount[$fun_id]."','".$iSchedule."','".$iMethod."','".$sComment[$fun_id]."'";
-                $sSQL .= ",'".date('YmdHis')."',".AuthenticationManager::getCurrentUser()->getId().",'".$PledgeOrPayment."',".$fun_id.','.$iCurrentDeposit.','.$iCheckNo.",'".$tScanString."','".$iAutID."','".$nNonDeductible[$fun_id]."','".$sGroupKey."')";
+			VALUES ('" . $iFamily . "','" . $iFYID . "','" . $dDate . "','" . $nAmount[$fun_id] . "','" . $iSchedule . "','" . $iMethod . "','" . $sComment[$fun_id] . "'";
+                $sSQL .= ",'" . date('YmdHis') . "'," . AuthenticationManager::getCurrentUser()->getId() . ",'" . $PledgeOrPayment . "'," . $fun_id . ',' . $iCurrentDeposit . ',' . $iCheckNo . ",'" . $tScanString . "','" . $iAutID . "','" . $nNonDeductible[$fun_id] . "','" . $sGroupKey . "')";
             }
             if (isset($sSQL)) {
                 RunQuery($sSQL);
@@ -373,11 +376,11 @@ if (isset($_POST['PledgeSubmit']) || isset($_POST['PledgeSubmitAndAdd'])) {
                 RedirectUtils::redirect($linkBack);
             } else {
                 //Send to the view of this pledge
-                RedirectUtils::redirect('PledgeEditor.php?PledgeOrPayment='.$PledgeOrPayment.'&GroupKey='.$sGroupKey.'&linkBack=', $linkBack);
+                RedirectUtils::redirect('PledgeEditor.php?PledgeOrPayment=' . $PledgeOrPayment . '&GroupKey=' . $sGroupKey . '&linkBack=', $linkBack);
             }
         } elseif (isset($_POST['PledgeSubmitAndAdd'])) {
             //Reload to editor to add another record
-            RedirectUtils::redirect("PledgeEditor.php?CurrentDeposit=$iCurrentDeposit&PledgeOrPayment=".$PledgeOrPayment.'&linkBack=', $linkBack);
+            RedirectUtils::redirect("PledgeEditor.php?CurrentDeposit=$iCurrentDeposit&PledgeOrPayment=" . $PledgeOrPayment . '&linkBack=', $linkBack);
         }
     } // end if !$bErrorFlag
 } elseif (isset($_POST['MatchFamily']) || isset($_POST['MatchEnvelope']) || isset($_POST['SetDefaultCheck'])) {
@@ -389,7 +392,7 @@ if (isset($_POST['PledgeSubmit']) || isset($_POST['PledgeSubmitAndAdd'])) {
         $routeAndAccount = $micrObj->findRouteAndAccount($tScanString); // use routing and account number for matching
 
         if ($routeAndAccount) {
-            $sSQL = 'SELECT fam_ID FROM family_fam WHERE fam_scanCheck="'.$routeAndAccount.'"';
+            $sSQL = 'SELECT fam_ID FROM family_fam WHERE fam_scanCheck="' . $routeAndAccount . '"';
             $rsFam = RunQuery($sSQL);
             extract(mysqli_fetch_array($rsFam));
             $iFamily = $fam_ID;
@@ -404,7 +407,7 @@ if (isset($_POST['PledgeSubmit']) || isset($_POST['PledgeSubmitAndAdd'])) {
 
         $iEnvelope = InputUtils::legacyFilterInput($_POST['Envelope'], 'int');
         if ($iEnvelope && strlen($iEnvelope) > 0) {
-            $sSQL = 'SELECT fam_ID FROM family_fam WHERE fam_Envelope='.$iEnvelope;
+            $sSQL = 'SELECT fam_ID FROM family_fam WHERE fam_Envelope=' . $iEnvelope;
             $rsFam = RunQuery($sSQL);
             $numRows = mysqli_num_rows($rsFam);
             if ($numRows) {
@@ -422,7 +425,7 @@ if (isset($_POST['PledgeSubmit']) || isset($_POST['PledgeSubmitAndAdd'])) {
         $tScanString = InputUtils::legacyFilterInput($_POST['ScanInput']);
         $routeAndAccount = $micrObj->findRouteAndAccount($tScanString); // use routing and account number for matching
         $iFamily = InputUtils::legacyFilterInput($_POST['FamilyID'], 'int');
-        $sSQL = 'UPDATE family_fam SET fam_scanCheck="'.$routeAndAccount.'" WHERE fam_ID = '.$iFamily;
+        $sSQL = 'UPDATE family_fam SET fam_scanCheck="' . $routeAndAccount . '" WHERE fam_ID = ' . $iFamily;
         RunQuery($sSQL);
     }
 }
@@ -439,16 +442,16 @@ if ($iCurrentDeposit) {
 if ($PledgeOrPayment == 'Pledge') {
     $sPageTitle = gettext('Pledge Editor');
 } elseif ($iCurrentDeposit) {
-    $sPageTitle = gettext('Payment Editor: ').$dep_Type.gettext(' Deposit Slip #').$iCurrentDeposit." ($dep_Date)";
+    $sPageTitle = gettext('Payment Editor: ') . $dep_Type . gettext(' Deposit Slip #') . $iCurrentDeposit . " ($dep_Date)";
 
     $checksFit = SystemConfig::getValue('iChecksPerDepositForm');
 
-    $sSQL = 'SELECT plg_FamID, plg_plgID, plg_checkNo, plg_method from pledge_plg where plg_method="CHECK" and plg_depID='.$iCurrentDeposit;
+    $sSQL = 'SELECT plg_FamID, plg_plgID, plg_checkNo, plg_method from pledge_plg where plg_method="CHECK" and plg_depID=' . $iCurrentDeposit;
     $rsChecksThisDep = RunQuery($sSQL);
     $depositCount = 0;
     while ($aRow = mysqli_fetch_array($rsChecksThisDep)) {
         extract($aRow);
-        $chkKey = $plg_FamID.'|'.$plg_checkNo;
+        $chkKey = $plg_FamID . '|' . $plg_checkNo;
         if ($plg_method == 'CHECK' && (!array_key_exists($chkKey, $checkHash))) {
             $checkHash[$chkKey] = $plg_plgID;
             ++$depositCount;
@@ -460,7 +463,7 @@ if ($PledgeOrPayment == 'Pledge') {
     if ($roomForDeposits <= 0) {
         $sPageTitle .= '<span style="color: red;">';
     }
-    $sPageTitle .= ' ('.$roomForDeposits.gettext(' more entries will fit.').')';
+    $sPageTitle .= ' (' . $roomForDeposits . gettext(' more entries will fit.') . ')';
     if ($roomForDeposits <= 0) {
         $sPageTitle .= '</span>';
     }
@@ -473,17 +476,17 @@ if ($PledgeOrPayment == 'Pledge') {
 } // end if $PledgeOrPayment
 
 if ($dep_Closed && $sGroupKey && $PledgeOrPayment == 'Payment') {
-    $sPageTitle .= ' &nbsp; <span style="color: red;">'.gettext('Deposit closed').'</span>';
+    $sPageTitle .= ' &nbsp; <span style="color: red;">' . gettext('Deposit closed') . '</span>';
 }
 
 //$familySelectHtml = buildFamilySelect($iFamily, $sDirRoleHead, $sDirRoleSpouse);
 $sFamilyName = '';
 if ($iFamily) {
-    $sSQL = 'SELECT fam_Name, fam_Address1, fam_City, fam_State FROM family_fam WHERE fam_ID ='.$iFamily;
+    $sSQL = 'SELECT fam_Name, fam_Address1, fam_City, fam_State FROM family_fam WHERE fam_ID =' . $iFamily;
     $rsFindFam = RunQuery($sSQL);
     while ($aRow = mysqli_fetch_array($rsFindFam)) {
         extract($aRow);
-        $sFamilyName = $fam_Name.' '.FormatAddressLine($fam_Address1, $fam_City, $fam_State);
+        $sFamilyName = $fam_Name . ' ' . FormatAddressLine($fam_Address1, $fam_City, $fam_State);
     }
 }
 
@@ -647,7 +650,7 @@ require 'Include/Header.php';
         ?>
         <input type="submit" class="btn " value="<?= gettext('Save') ?>" name="PledgeSubmit">
         <?php if (AuthenticationManager::getCurrentUser()->isAddRecordsEnabled()) {
-            echo '<input type="submit" class="btn btn-primary" value="'.gettext('Save and Add').'" name="PledgeSubmitAndAdd">';
+            echo '<input type="submit" class="btn btn-primary" value="' . gettext('Save and Add') . '" name="PledgeSubmitAndAdd">';
         } ?>
           <?php
     } ?>

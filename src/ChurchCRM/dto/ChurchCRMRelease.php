@@ -51,7 +51,7 @@ class ChurchCRMRelease
     public function __toString()
     {
         try {
-            return (string) $this->MAJOR.".".$this->MINOR.".".$this->PATCH;
+            return (string) $this->MAJOR . "." . $this->MINOR . "." . $this->PATCH;
         } catch (\Exception $exception) {
             return '';
         }

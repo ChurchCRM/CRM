@@ -1,4 +1,5 @@
 <?php
+
 /*******************************************************************************
  *
  *  filename    : DonatedItemEditor.php
@@ -36,7 +37,7 @@ if ($iCurrentFundraiser) {
 
 // Get the current fundraiser data
 if ($iCurrentFundraiser) {
-    $sSQL = 'SELECT * from fundraiser_fr WHERE fr_ID = '.$iCurrentFundraiser;
+    $sSQL = 'SELECT * from fundraiser_fr WHERE fr_ID = ' . $iCurrentFundraiser;
     $rsDeposit = RunQuery($sSQL);
     extract(mysqli_fetch_array($rsDeposit));
 }
@@ -68,14 +69,14 @@ if (isset($_POST['DonatedItemSubmit']) || isset($_POST['DonatedItemSubmitAndAdd'
     // New DonatedItem or deposit
     if (strlen($iDonatedItemID) < 1) {
         $sSQL = 'INSERT INTO donateditem_di (di_FR_ID, di_Item, di_multibuy, di_donor_ID, di_buyer_ID, di_title, di_description, di_sellprice, di_estprice, di_materialvalue, di_minimum, di_picture, di_EnteredBy, di_EnteredDate)
-		VALUES ('.$iCurrentFundraiser.",'".$sItem."','".$bMultibuy."','".$iDonor."','".$iBuyer."','".html_entity_decode($sTitle)."','".html_entity_decode($sDescription)."','".$nSellPrice."','".$nEstPrice."','".$nMaterialValue."','".$nMinimumPrice."','".mysqli_real_escape_string($cnInfoCentral, $sPictureURL)."'";
-        $sSQL .= ','.AuthenticationManager::getCurrentUser()->getId().",'".date('YmdHis')."')";
+		VALUES (' . $iCurrentFundraiser . ",'" . $sItem . "','" . $bMultibuy . "','" . $iDonor . "','" . $iBuyer . "','" . html_entity_decode($sTitle) . "','" . html_entity_decode($sDescription) . "','" . $nSellPrice . "','" . $nEstPrice . "','" . $nMaterialValue . "','" . $nMinimumPrice . "','" . mysqli_real_escape_string($cnInfoCentral, $sPictureURL) . "'";
+        $sSQL .= ',' . AuthenticationManager::getCurrentUser()->getId() . ",'" . date('YmdHis') . "')";
         $bGetKeyBack = true;
     // Existing record (update)
     } else {
-        $sSQL = 'UPDATE donateditem_di SET di_FR_ID = '.$iCurrentFundraiser.", di_Item = '".$sItem."', di_multibuy = '".$bMultibuy."', di_donor_ID = ".$iDonor.', di_buyer_ID = '.$iBuyer.", di_title = '".html_entity_decode($sTitle)."', di_description = '".html_entity_decode($sDescription)."', di_sellprice = '".$nSellPrice."', di_estprice = '".$nEstPrice."', di_materialvalue = '".$nMaterialValue."', di_minimum = '".$nMinimumPrice."', di_picture = '".mysqli_real_escape_string($cnInfoCentral, $sPictureURL)."', di_EnteredBy=".AuthenticationManager::getCurrentUser()->getId().", di_EnteredDate = '".date('YmdHis')."'";
-        $sSQL .= ' WHERE di_ID = '.$iDonatedItemID;
-        echo '<br><br><br><br><br><br>'.$sSQL;
+        $sSQL = 'UPDATE donateditem_di SET di_FR_ID = ' . $iCurrentFundraiser . ", di_Item = '" . $sItem . "', di_multibuy = '" . $bMultibuy . "', di_donor_ID = " . $iDonor . ', di_buyer_ID = ' . $iBuyer . ", di_title = '" . html_entity_decode($sTitle) . "', di_description = '" . html_entity_decode($sDescription) . "', di_sellprice = '" . $nSellPrice . "', di_estprice = '" . $nEstPrice . "', di_materialvalue = '" . $nMaterialValue . "', di_minimum = '" . $nMinimumPrice . "', di_picture = '" . mysqli_real_escape_string($cnInfoCentral, $sPictureURL) . "', di_EnteredBy=" . AuthenticationManager::getCurrentUser()->getId() . ", di_EnteredDate = '" . date('YmdHis') . "'";
+        $sSQL .= ' WHERE di_ID = ' . $iDonatedItemID;
+        echo '<br><br><br><br><br><br>' . $sSQL;
         $bGetKeyBack = false;
     }
 
@@ -95,7 +96,7 @@ if (isset($_POST['DonatedItemSubmit']) || isset($_POST['DonatedItemSubmitAndAdd'
             RedirectUtils::redirect($linkBack);
         } else {
             //Send to the view of this DonatedItem
-            RedirectUtils::redirect('DonatedItemEditor.php?DonatedItemID='.$iDonatedItemID.'&linkBack=', $linkBack);
+            RedirectUtils::redirect('DonatedItemEditor.php?DonatedItemID=' . $iDonatedItemID . '&linkBack=', $linkBack);
         }
     } elseif (isset($_POST['DonatedItemSubmitAndAdd'])) {
         //Reload to editor to add another record
@@ -116,7 +117,7 @@ if (isset($_POST['DonatedItemSubmit']) || isset($_POST['DonatedItemSubmitAndAdd'
 	         FROM donateditem_di
 	         LEFT JOIN person_per a ON di_donor_ID=a.per_ID
 	         LEFT JOIN person_per b ON di_buyer_ID=b.per_ID
-	         WHERE di_ID = '".$iDonatedItemID."'";
+	         WHERE di_ID = '" . $iDonatedItemID . "'";
         $rsDonatedItem = RunQuery($sSQL);
         extract(mysqli_fetch_array($rsDonatedItem));
 
@@ -157,12 +158,12 @@ $sPaddleSQL = 'SELECT pn_ID, pn_Num, pn_per_ID,
                       a.per_LastName AS buyerLastName
                       FROM paddlenum_pn
                       LEFT JOIN person_per a on a.per_ID=pn_per_ID
-                      WHERE pn_fr_ID='.$iCurrentFundraiser.' ORDER BY pn_Num';
+                      WHERE pn_fr_ID=' . $iCurrentFundraiser . ' ORDER BY pn_Num';
 
 require 'Include/Header.php';
 ?>
 
-<form method="post" action="DonatedItemEditor.php?<?= 'CurrentFundraiser='.$iCurrentFundraiser.'&DonatedItemID='.$iDonatedItemID.'&linkBack='.$linkBack; ?>" name="DonatedItemEditor">
+<form method="post" action="DonatedItemEditor.php?<?= 'CurrentFundraiser=' . $iCurrentFundraiser . '&DonatedItemID=' . $iDonatedItemID . '&linkBack=' . $linkBack; ?>" name="DonatedItemEditor">
     <div class="card card-primary">
         <div class="card-body">
             <div class="form-group">
@@ -188,12 +189,12 @@ require 'Include/Header.php';
 $rsPeople = RunQuery($sPeopleSQL);
 while ($aRow = mysqli_fetch_array($rsPeople)) {
     extract($aRow);
-    echo '<option value="'.$per_ID.'"';
+    echo '<option value="' . $per_ID . '"';
     if ($iDonor == $per_ID) {
         echo ' selected';
     }
-    echo '>'.$per_LastName.', '.$per_FirstName;
-    echo ' '.FormatAddressLine($fam_Address1, $fam_City, $fam_State);
+    echo '>' . $per_LastName . ', ' . $per_FirstName;
+    echo ' ' . FormatAddressLine($fam_Address1, $fam_City, $fam_State);
 }
 ?>
                             </select>
@@ -239,11 +240,11 @@ while ($aRow = mysqli_fetch_array($rsPeople)) {
     $rsBuyers = RunQuery($sPaddleSQL);
     while ($aRow = mysqli_fetch_array($rsBuyers)) {
         extract($aRow);
-        echo '<option value="'.$pn_per_ID.'"';
+        echo '<option value="' . $pn_per_ID . '"';
         if ($iBuyer == $pn_per_ID) {
             echo ' selected';
         }
-        echo '>'.$pn_Num.': '.$buyerFirstName.' '.$buyerLastName;
+        echo '>' . $pn_Num . ': ' . $buyerFirstName . ' ' . $buyerLastName;
     }
 }
 ?>

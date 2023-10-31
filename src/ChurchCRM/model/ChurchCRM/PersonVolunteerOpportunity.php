@@ -16,5 +16,4 @@ use ChurchCRM\Base\PersonVolunteerOpportunity as BasePersonVolunteerOpportunity;
  */
 class PersonVolunteerOpportunity extends BasePersonVolunteerOpportunity
 {
-
 }

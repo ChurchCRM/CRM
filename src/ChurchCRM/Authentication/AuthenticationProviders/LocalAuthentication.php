@@ -32,7 +32,7 @@ namespace ChurchCRM\Authentication\AuthenticationProviders {
         public function getPasswordChangeURL()
         {
           // this shouln't really be called, but it's necessarty to implement the IAuthenticationProvider interface
-            return SystemURLs::getRootPath().'/v2/user/current/changepassword';
+            return SystemURLs::getRootPath() . '/v2/user/current/changepassword';
         }
 
         public static function getIsTwoFactorAuthSupported()
@@ -40,7 +40,7 @@ namespace ChurchCRM\Authentication\AuthenticationProviders {
             return SystemConfig::getBooleanValue("bEnable2FA") && KeyManager::getAreAllSecretsDefined();
         }
 
-        public static function getTwoFactorQRCode($username, $secret):QrCode
+        public static function getTwoFactorQRCode($username, $secret): QrCode
         {
             $google2fa = new Google2FA();
             $g2faUrl = $google2fa->getQRCodeUrl(
@@ -145,7 +145,7 @@ namespace ChurchCRM\Authentication\AuthenticationProviders {
                   // Only redirect the user to the 2FA sign-ing page if it's
                   // enabled both at system AND user level.
                     $authenticationResult->isAuthenticated = false;
-                    $authenticationResult->nextStepURL = SystemURLs::getRootPath()."/session/two-factor";
+                    $authenticationResult->nextStepURL = SystemURLs::getRootPath() . "/session/two-factor";
                     $this->bPendingTwoFactorAuth = true;
                     LoggerUtils::getAuthLogger()->info("User partially authenticated, pending 2FA: " . $this->currentUser->getUserName());
                     return $authenticationResult;
@@ -176,13 +176,13 @@ namespace ChurchCRM\Authentication\AuthenticationProviders {
                 } else {
                     LoggerUtils::getAuthLogger()->info("Invalid 2FA code provided by partially authenticated user: " . $this->currentUser->getUserName());
                     $authenticationResult->isAuthenticated = false;
-                    $authenticationResult->nextStepURL = SystemURLs::getRootPath()."/session/two-factor";
+                    $authenticationResult->nextStepURL = SystemURLs::getRootPath() . "/session/two-factor";
                     return $authenticationResult;
                 }
             }
         }
 
-        public function validateUserSessionIsActive($updateLastOperationTimestamp) : AuthenticationResult
+        public function validateUserSessionIsActive($updateLastOperationTimestamp): AuthenticationResult
         {
 
             $authenticationResult = new AuthenticationResult();

@@ -11,12 +11,11 @@ use Propel\Runtime\ActiveQuery\Criteria;
 
 class AnniversariesCalendar implements SystemCalendar
 {
- 
     public static function isAvailable()
     {
         return true;
     }
-  
+
     public function getAccessToken()
     {
         return false;
@@ -26,7 +25,7 @@ class AnniversariesCalendar implements SystemCalendar
     {
         return "000000";
     }
-  
+
     public function getForegroundColor()
     {
         return "FFFFFF";
@@ -41,7 +40,7 @@ class AnniversariesCalendar implements SystemCalendar
     {
         return gettext("Anniversaries");
     }
-    
+
     public function getEvents($start, $end)
     {
         $families = FamilyQuery::create()
@@ -49,7 +48,7 @@ class AnniversariesCalendar implements SystemCalendar
             ->find();
         return $this->familyCollectionToEvents($families);
     }
-  
+
     public function getEventById($Id)
     {
         $families = FamilyQuery::create()
@@ -58,7 +57,7 @@ class AnniversariesCalendar implements SystemCalendar
             ->find();
         return $this->familyCollectionToEvents($families);
     }
-  
+
     private function familyCollectionToEvents(ObjectCollection $Families)
     {
         $events = new ObjectCollection();
@@ -67,9 +66,9 @@ class AnniversariesCalendar implements SystemCalendar
             $anniversary = new Event();
             $anniversary->setId($family->getId());
             $anniversary->setEditable(false);
-            $anniversary->setTitle(gettext("Anniversary").": ".$family->getFamilyString());
+            $anniversary->setTitle(gettext("Anniversary") . ": " . $family->getFamilyString());
             $year = date('Y');
-            $anniversary->setStart($year.'-'.$family->getWeddingMonth().'-'.$family->getWeddingDay());
+            $anniversary->setStart($year . '-' . $family->getWeddingMonth() . '-' . $family->getWeddingDay());
             $anniversary->setURL($family->getViewURI());
             $events->push($anniversary);
         }

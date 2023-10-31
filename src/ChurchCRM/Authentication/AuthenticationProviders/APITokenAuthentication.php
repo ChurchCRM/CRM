@@ -11,7 +11,6 @@ namespace ChurchCRM\Authentication\AuthenticationProviders {
 
     class APITokenAuthentication implements IAuthenticationProvider
     {
-
         /***
          * @var ChurchCRM\User
          */
@@ -41,7 +40,7 @@ namespace ChurchCRM\Authentication\AuthenticationProviders {
             return $authenticationResult;
         }
 
-        public function validateUserSessionIsActive($updateLastOperationTimestamp) : AuthenticationResult
+        public function validateUserSessionIsActive($updateLastOperationTimestamp): AuthenticationResult
         {
             // APITokens are sessionless, so just always say false.
             $authenticationResult = new AuthenticationResult();

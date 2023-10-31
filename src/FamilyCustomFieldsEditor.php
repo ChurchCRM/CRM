@@ -1,4 +1,5 @@
 <?php
+
 /*******************************************************************************
 *
 *  filename    : FamilyCustomFieldsEditor.php
@@ -63,7 +64,7 @@ if (isset($_POST['SaveChanges'])) {
     }
 
     for ($iFieldID = 1; $iFieldID <= $numRows; $iFieldID++) {
-        $aNameFields[$iFieldID] = InputUtils::legacyFilterInput($_POST[$iFieldID.'name']);
+        $aNameFields[$iFieldID] = InputUtils::legacyFilterInput($_POST[$iFieldID . 'name']);
 
         if (strlen($aNameFields[$iFieldID]) == 0) {
             $aNameErrors[$iFieldID] = true;
@@ -72,10 +73,10 @@ if (isset($_POST['SaveChanges'])) {
             $aNameErrors[$iFieldID] = false;
         }
 
-        $aFieldSecurity[$iFieldID] = $_POST[$iFieldID.'FieldSec'];
+        $aFieldSecurity[$iFieldID] = $_POST[$iFieldID . 'FieldSec'];
 
-        if (isset($_POST[$iFieldID.'special'])) {
-            $aSpecialFields[$iFieldID] = InputUtils::legacyFilterInput($_POST[$iFieldID.'special'], 'int');
+        if (isset($_POST[$iFieldID . 'special'])) {
+            $aSpecialFields[$iFieldID] = InputUtils::legacyFilterInput($_POST[$iFieldID . 'special'], 'int');
 
             if ($aSpecialFields[$iFieldID] == 0) {
                 $aSpecialErrors[$iFieldID] = true;
@@ -90,10 +91,10 @@ if (isset($_POST['SaveChanges'])) {
     if (!$bErrorFlag) {
         for ($iFieldID = 1; $iFieldID <= $numRows; $iFieldID++) {
             $sSQL = "UPDATE family_custom_master
-                    SET `fam_custom_Name` = '".$aNameFields[$iFieldID]."',
-                        `fam_custom_Special` = ".$aSpecialFields[$iFieldID].",
-                        `fam_custom_FieldSec` = ".$aFieldSecurity[$iFieldID]."
-                    WHERE `fam_custom_Field` = '".$aFieldFields[$iFieldID]."';";
+                    SET `fam_custom_Name` = '" . $aNameFields[$iFieldID] . "',
+                        `fam_custom_Special` = " . $aSpecialFields[$iFieldID] . ",
+                        `fam_custom_FieldSec` = " . $aFieldSecurity[$iFieldID] . "
+                    WHERE `fam_custom_Field` = '" . $aFieldFields[$iFieldID] . "';";
 
             RunQuery($sSQL);
         }
@@ -150,7 +151,7 @@ if (isset($_POST['SaveChanges'])) {
                     }
 
                     // Insert into the lists table with an example option.
-                    $sSQL = "INSERT INTO list_lst VALUES ($newListID, 1, 1,'".gettext('Default Option')."')";
+                    $sSQL = "INSERT INTO list_lst VALUES ($newListID, 1, 1,'" . gettext('Default Option') . "')";
                     RunQuery($sSQL);
 
                     $newSpecial = "'$newListID'";
@@ -162,11 +163,11 @@ if (isset($_POST['SaveChanges'])) {
                 $newOrderID = $last + 1;
                 $sSQL = "INSERT INTO `family_custom_master`
                         (`fam_custom_Order` , `fam_custom_Field` , `fam_custom_Name` ,  `fam_custom_Special` , `fam_custom_FieldSec` , `type_ID`)
-                        VALUES ('".$newOrderID."', 'c".$newFieldNum."', '".$newFieldName."', ".$newSpecial.", '".$newFieldSec."', '".$newFieldType."');";
+                        VALUES ('" . $newOrderID . "', 'c" . $newFieldNum . "', '" . $newFieldName . "', " . $newSpecial . ", '" . $newFieldSec . "', '" . $newFieldType . "');";
                 RunQuery($sSQL);
 
                 // Insert into the custom fields table
-                $sSQL = 'ALTER TABLE `family_custom` ADD `c'.$newFieldNum.'` ';
+                $sSQL = 'ALTER TABLE `family_custom` ADD `c' . $newFieldNum . '` ';
 
                 switch ($newFieldType) {
                     case 1:
@@ -247,16 +248,16 @@ while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
 
 function GetSecurityList($aSecGrp, $fld_name, $currOpt = 'bAll')
 {
-    $sOptList = '<select name="'.$fld_name.'">';
+    $sOptList = '<select name="' . $fld_name . '">';
     $grp_Count = count($aSecGrp);
 
     for ($i = 0; $i < $grp_Count; $i++) {
         $aAryRow = $aSecGrp[$i];
-        $sOptList .= '<option value="'.$aAryRow['lst_OptionID'].'"';
+        $sOptList .= '<option value="' . $aAryRow['lst_OptionID'] . '"';
         if ($aAryRow['lst_OptionName'] == $currOpt) {
             $sOptList .= ' selected';
         }
-        $sOptList .= '>'.$aAryRow['lst_OptionName']."</option>\n";
+        $sOptList .= '>' . $aAryRow['lst_OptionName'] . "</option>\n";
     }
     $sOptList .= '</select>';
 
@@ -268,7 +269,7 @@ function GetSecurityList($aSecGrp, $fld_name, $currOpt = 'bAll')
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>" >
 function confirmDeleteField( Field ) {
-    var answer = confirm (<?= "'".gettext('Warning:  By deleting this field, you will irrevokably lose all family data assigned for this field!')."'" ?>)
+    var answer = confirm (<?= "'" . gettext('Warning:  By deleting this field, you will irrevokably lose all family data assigned for this field!') . "'" ?>)
     if ( answer )
     {
         window.location="FamilyCustomFieldsRowOps.php?Field=" + Field +"&Action=delete";
@@ -297,7 +298,7 @@ if ($numRows == 0) {
     <tr><td colspan="7">
     <?php
     if ($bErrorFlag) {
-        echo '<span class="LargeText" style="color: red;"><BR>'.gettext('Invalid fields or selections. Changes not saved! Please correct and try again!').'</span>';
+        echo '<span class="LargeText" style="color: red;"><BR>' . gettext('Invalid fields or selections. Changes not saved! Please correct and try again!') . '</span>';
     } ?>
     </td></tr>
         <tr>
@@ -316,17 +317,17 @@ if ($numRows == 0) {
                 <?= $aPropTypes[$aTypeFields[$row]] ?>
             </td>
             <td class="TextColumn" align="center">
-                <input type="text" name="<?= $row.'name' ?>" value="<?= htmlentities(stripslashes($aNameFields[$row]), ENT_NOQUOTES, 'UTF-8') ?>" size="35" maxlength="40">
+                <input type="text" name="<?= $row . 'name' ?>" value="<?= htmlentities(stripslashes($aNameFields[$row]), ENT_NOQUOTES, 'UTF-8') ?>" size="35" maxlength="40">
                 <?php
                 if ($aNameErrors[$row]) {
-                    echo '<span style="color: red;"><BR>'.gettext('You must enter a name').' </span>';
+                    echo '<span style="color: red;"><BR>' . gettext('You must enter a name') . ' </span>';
                 } ?>
             </td>
             <td class="TextColumn" align="center">
 
             <?php
             if ($aTypeFields[$row] == 9) {
-                echo '<select name="'.$row.'special">';
+                echo '<select name="' . $row . 'special">';
                 echo '<option value="0" selected>Select a group</option>';
 
                 $sSQL = 'SELECT grp_ID,grp_Name FROM group_grp ORDER BY grp_Name';
@@ -335,27 +336,27 @@ if ($numRows == 0) {
                 while ($aRow = mysqli_fetch_array($rsGroupList)) {
                     extract($aRow);
 
-                    echo '<option value="'.$grp_ID.'"';
+                    echo '<option value="' . $grp_ID . '"';
                     if ($aSpecialFields[$row] == $grp_ID) {
                         echo ' selected';
                     }
-                    echo '>'.$grp_Name;
+                    echo '>' . $grp_Name;
                 }
 
                 echo '</select>';
                 if ($aSpecialErrors[$row]) {
-                    echo '<span style="color: red;"><BR>'.gettext('You must select a group.').'</span>';
+                    echo '<span style="color: red;"><BR>' . gettext('You must select a group.') . '</span>';
                 }
             } elseif ($aTypeFields[$row] == 12) {
                 // TLH 6-23-07 Added scrollbars to the popup so long lists can be edited.
-                echo "<a href=\"javascript:void(0)\" onClick=\"Newwin=window.open('OptionManager.php?mode=famcustom&ListID=$aSpecialFields[$row]','Newwin','toolbar=no,status=no,width=400,height=500,scrollbars=1')\">".gettext('Edit List Options').'</a>';
+                echo "<a href=\"javascript:void(0)\" onClick=\"Newwin=window.open('OptionManager.php?mode=famcustom&ListID=$aSpecialFields[$row]','Newwin','toolbar=no,status=no,width=400,height=500,scrollbars=1')\">" . gettext('Edit List Options') . '</a>';
             } else {
                 echo '&nbsp;';
             } ?>
 
             </td>
             <td class="TextColumn" align="center" nowrap>
-                <?= GetSecurityList($aSecurityGrp, $row.'FieldSec', $aSecurityType[$aFieldSecurity[$row]]) ?>
+                <?= GetSecurityList($aSecurityGrp, $row . 'FieldSec', $aSecurityType[$aFieldSecurity[$row]]) ?>
             </td>
             <td>
                 <input type="button" class="btn btn-danger" value="<?= gettext('Delete') ?>"   name="delete" onclick="return confirmDeleteField('<?= $aFieldFields[$row] ?>');">
@@ -363,10 +364,10 @@ if ($numRows == 0) {
             <td class="TextColumn" width="5%" nowrap>
                 <?php
                 if ($row > 1) {
-                    echo "<a href=\"FamilyCustomFieldsRowOps.php?OrderID=$row&Field=".$aFieldFields[$row].'&Action=up"><i class="fa fa-arrow-up"></i></a>';
+                    echo "<a href=\"FamilyCustomFieldsRowOps.php?OrderID=$row&Field=" . $aFieldFields[$row] . '&Action=up"><i class="fa fa-arrow-up"></i></a>';
                 }
                 if ($row < $numRows) {
-                    echo "<a href=\"FamilyCustomFieldsRowOps.php?OrderID=$row&Field=".$aFieldFields[$row].'&Action=down"><i class="fa fa-arrow-down"></i></a>';
+                    echo "<a href=\"FamilyCustomFieldsRowOps.php?OrderID=$row&Field=" . $aFieldFields[$row] . '&Action=down"><i class="fa fa-arrow-down"></i></a>';
                 } ?>
             </td>
 
@@ -402,8 +403,8 @@ if ($numRows == 0) {
                         echo '<select name="newFieldType">';
 
                     for ($iOptionID = 1; $iOptionID <= count($aPropTypes); $iOptionID++) {
-                        echo '<option value="'.$iOptionID.'"';
-                        echo '>'.$aPropTypes[$iOptionID];
+                        echo '<option value="' . $iOptionID . '"';
+                        echo '>' . $aPropTypes[$iOptionID];
                     }
                         echo '</select>';
                     ?><BR>
@@ -414,10 +415,10 @@ if ($numRows == 0) {
                         <input type="text" name="newFieldName" size="30" maxlength="40">
                         <?php
                         if ($bNewNameError) {
-                            echo '<div><span style="color: red;"><BR>'.gettext('You must enter a name').'</span></div>';
+                            echo '<div><span style="color: red;"><BR>' . gettext('You must enter a name') . '</span></div>';
                         }
                         if ($bDuplicateNameError) {
-                            echo '<div><span style="color: red;"><BR>'.gettext('That field name already exists.').'</span></div>';
+                            echo '<div><span style="color: red;"><BR>' . gettext('That field name already exists.') . '</span></div>';
                         }
                         ?>
                         &nbsp;
@@ -427,7 +428,7 @@ if ($numRows == 0) {
                         <?= GetSecurityList($aSecurityGrp, 'newFieldSec') ?>
                     </td>
                     <td>
-                        <input type="submit" class="btn btn-primary" <?= 'value="'.gettext('Add New Field').'"' ?> Name="AddField">
+                        <input type="submit" class="btn btn-primary" <?= 'value="' . gettext('Add New Field') . '"' ?> Name="AddField">
                     </td>
                     <td width="15%"></td>
                 </tr>

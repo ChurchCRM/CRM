@@ -9,7 +9,6 @@ use Slim\Http\Response;
 
 abstract class BaseAuthRoleMiddleware
 {
-
     /**
      * @var  User $user
      */

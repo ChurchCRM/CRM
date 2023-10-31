@@ -1,4 +1,5 @@
 <?php
+
 /*******************************************************************************
 *
 *  filename    : Reports/ReminderReport.php
@@ -53,13 +54,13 @@ if (!empty($_POST['classList'])) {
                 if ($inClassList == '(') {
                     $inClassList .= $lst_OptionID;
                 } else {
-                    $inClassList .= ','.$lst_OptionID;
+                    $inClassList .= ',' . $lst_OptionID;
                 }
             } else {
                 if ($notInClassList == '(') {
                     $notInClassList .= $lst_OptionID;
                 } else {
-                    $notInClassList .= ','.$lst_OptionID;
+                    $notInClassList .= ',' . $lst_OptionID;
                 }
             }
         }
@@ -93,7 +94,7 @@ if (!empty($_POST['family'])) {
         if ($fam[0]) {
             $q = " fam_ID='$fam[0]'";
             if ($criteria) {
-                $criteria .= ' AND'.$q;
+                $criteria .= ' AND' . $q;
             } else {
                 $criteria = $q;
             }
@@ -101,7 +102,7 @@ if (!empty($_POST['family'])) {
     } else {
         $q = " (fam_ID='$fam[0]'";
         if ($criteria) {
-            $criteria .= ' AND'.$q;
+            $criteria .= ' AND' . $q;
         } else {
             $criteria = $q;
         }
@@ -113,9 +114,9 @@ if (!empty($_POST['family'])) {
 }
 
 if ($classList[0]) {
-    $q = ' per_cls_ID IN '.$inClassList.' AND per_fam_ID NOT IN (SELECT DISTINCT per_fam_ID FROM person_per WHERE per_cls_ID IN '.$notInClassList.')';
+    $q = ' per_cls_ID IN ' . $inClassList . ' AND per_fam_ID NOT IN (SELECT DISTINCT per_fam_ID FROM person_per WHERE per_cls_ID IN ' . $notInClassList . ')';
     if ($criteria) {
-        $criteria .= ' AND'.$q;
+        $criteria .= ' AND' . $q;
     } else {
         $criteria = $q;
     }
@@ -162,7 +163,7 @@ if ($fundCount > 0) {
         $fundOnlyString = gettext('for funds ');
     }
     for ($i = 0; $i < $fundCount; $i++) {
-        $sSQL = 'SELECT fun_Name FROM donationfund_fun WHERE fun_ID='.$fund[$i];
+        $sSQL = 'SELECT fun_Name FROM donationfund_fun WHERE fun_ID=' . $fund[$i];
         $rsOneFund = RunQuery($sSQL);
         $aFundName = mysqli_fetch_array($rsOneFund);
         $fundOnlyString .= $aFundName['fun_Name'];
@@ -195,7 +196,7 @@ class PdfReminderReport extends ChurchInfoReport
     {
         $curY = $this->startLetterPage($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country);
         $curY += 2 * SystemConfig::getValue('incrementY');
-        $blurb = SystemConfig::getValue('sReminder1').MakeFYString($iFYID).$fundOnlyString.'.';
+        $blurb = SystemConfig::getValue('sReminder1') . MakeFYString($iFYID) . $fundOnlyString . '.';
         $this->writeAt(SystemConfig::getValue('leftX'), $curY, $blurb);
         $curY += 2 * SystemConfig::getValue('incrementY');
 
@@ -205,7 +206,7 @@ class PdfReminderReport extends ChurchInfoReport
     public function finishPage($curY)
     {
         $curY += 2 * SystemConfig::getValue('incrementY');
-        $this->writeAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sConfirmSincerely').',');
+        $this->writeAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sConfirmSincerely') . ',');
         $curY += 4 * SystemConfig::getValue('incrementY');
         $this->writeAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sReminderSigner'));
     }
@@ -221,7 +222,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
     // Check for pledges if filtering by pledges
     if ($pledge_filter == 'pledge') {
         $temp = "SELECT plg_plgID FROM pledge_plg
-            WHERE plg_FamID='$fam_ID' AND plg_PledgeOrPayment='Pledge' AND plg_FYID=$iFYID".$sSQLFundCriteria;
+            WHERE plg_FamID='$fam_ID' AND plg_PledgeOrPayment='Pledge' AND plg_FYID=$iFYID" . $sSQLFundCriteria;
         $rsPledgeCheck = RunQuery($temp);
         if (mysqli_num_rows($rsPledgeCheck) == 0) {
             continue;
@@ -231,7 +232,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
     // Get pledges and payments for this family and this fiscal year
     $sSQL = 'SELECT *, b.fun_Name AS fundName FROM pledge_plg
              LEFT JOIN donationfund_fun b ON plg_fundID = b.fun_ID
-             WHERE plg_FamID = '.$fam_ID.' AND plg_FYID = '.$iFYID.$sSQLFundCriteria.' ORDER BY plg_date';
+             WHERE plg_FamID = ' . $fam_ID . ' AND plg_FYID = ' . $iFYID . $sSQLFundCriteria . ' ORDER BY plg_date';
 
     $rsPledges = RunQuery($sSQL);
 
@@ -276,7 +277,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
     // Get pledges only
     $sSQL = 'SELECT *, b.fun_Name AS fundName FROM pledge_plg
              LEFT JOIN donationfund_fun b ON plg_fundID = b.fun_ID
-             WHERE plg_FamID = '.$fam_ID.' AND plg_FYID = '.$iFYID.$sSQLFundCriteria." AND plg_PledgeOrPayment = 'Pledge' ORDER BY plg_date";
+             WHERE plg_FamID = ' . $fam_ID . ' AND plg_FYID = ' . $iFYID . $sSQLFundCriteria . " AND plg_PledgeOrPayment = 'Pledge' ORDER BY plg_date";
     $rsPledges = RunQuery($sSQL);
 
     $totalAmountPledges = 0;
@@ -294,7 +295,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
 
     if (mysqli_num_rows($rsPledges) == 0) {
         $curY += $summaryIntervalY;
-        $noPledgeString = SystemConfig::getValue('sReminderNoPledge').'('.$fundOnlyString.')';
+        $noPledgeString = SystemConfig::getValue('sReminderNoPledge') . '(' . $fundOnlyString . ')';
         $pdf->writeAt($summaryDateX, $curY, $noPledgeString);
         $curY += 2 * $summaryIntervalY;
     } else {
@@ -318,7 +319,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
             extract($aRow);
 
             if (strlen($fundName) > 19) {
-                $fundName = mb_substr($fundName, 0, 18).'...';
+                $fundName = mb_substr($fundName, 0, 18) . '...';
             }
 
             $pdf->SetFont('Times', '', 10);
@@ -354,7 +355,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
     // Get payments only
     $sSQL = 'SELECT *, b.fun_Name AS fundName FROM pledge_plg
              LEFT JOIN donationfund_fun b ON plg_fundID = b.fun_ID
-             WHERE plg_FamID = '.$fam_ID.' AND plg_FYID = '.$iFYID.$sSQLFundCriteria." AND plg_PledgeOrPayment = 'Payment' ORDER BY plg_date";
+             WHERE plg_FamID = ' . $fam_ID . ' AND plg_FYID = ' . $iFYID . $sSQLFundCriteria . " AND plg_PledgeOrPayment = 'Payment' ORDER BY plg_date";
     $rsPledges = RunQuery($sSQL);
 
     $totalAmountPayments = 0;
@@ -402,13 +403,13 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
 
             // Format Data
             if (strlen($plg_CheckNo) > 8) {
-                $plg_CheckNo = '...'.mb_substr($plg_CheckNo, -8, 8);
+                $plg_CheckNo = '...' . mb_substr($plg_CheckNo, -8, 8);
             }
             if (strlen($fundName) > 19) {
-                $fundName = mb_substr($fundName, 0, 18).'...';
+                $fundName = mb_substr($fundName, 0, 18) . '...';
             }
             if (strlen($plg_comment) > 30) {
-                $plg_comment = mb_substr($plg_comment, 0, 30).'...';
+                $plg_comment = mb_substr($plg_comment, 0, 30) . '...';
             }
 
             $pdf->SetFont('Times', '', 10);
@@ -475,7 +476,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
 }
 
 if (SystemConfig::getValue('iPDFOutputType') == 1) {
-    $pdf->Output('ReminderReport'.date(SystemConfig::getValue("sDateFilenameFormat")).'.pdf', 'D');
+    $pdf->Output('ReminderReport' . date(SystemConfig::getValue("sDateFilenameFormat")) . '.pdf', 'D');
 } else {
     $pdf->Output();
 }

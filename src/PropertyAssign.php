@@ -1,4 +1,5 @@
 <?php
+
 /*******************************************************************************
  *
  *  filename    : PropertyAssign.php
@@ -40,25 +41,25 @@ if (isset($_GET['PersonID']) && AuthenticationManager::getCurrentUser()->isEditR
     // Is there a PersonID in the querystring?
     $iPersonID = InputUtils::legacyFilterInput($_GET['PersonID'], 'int');
     $iRecordID = $iPersonID;
-    $sQuerystring = '?PersonID='.$iPersonID;
+    $sQuerystring = '?PersonID=' . $iPersonID;
     $sTypeName = gettext('Person');
-    $sBackPage = 'PersonView.php?PersonID='.$iPersonID;
+    $sBackPage = 'PersonView.php?PersonID=' . $iPersonID;
 
     // Get the name of the person
-    $sSQL = 'SELECT per_FirstName, per_LastName FROM person_per WHERE per_ID = '.$iPersonID;
+    $sSQL = 'SELECT per_FirstName, per_LastName FROM person_per WHERE per_ID = ' . $iPersonID;
     $rsName = RunQuery($sSQL);
     $aRow = mysqli_fetch_array($rsName);
-    $sName = $aRow['per_LastName'].', '.$aRow['per_FirstName'];
+    $sName = $aRow['per_LastName'] . ', ' . $aRow['per_FirstName'];
 } elseif (isset($_GET['GroupID']) && AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) {
     // Is there a GroupID in the querystring?
     $iGroupID = InputUtils::legacyFilterInput($_GET['GroupID'], 'int');
     $iRecordID = $iGroupID;
-    $sQuerystring = '?GroupID='.$iGroupID;
+    $sQuerystring = '?GroupID=' . $iGroupID;
     $sTypeName = gettext('Group');
-    $sBackPage = 'GroupView.php?GroupID='.$iGroupID;
+    $sBackPage = 'GroupView.php?GroupID=' . $iGroupID;
 
     // Get the name of the group
-    $sSQL = 'SELECT grp_Name FROM group_grp WHERE grp_ID = '.$iGroupID;
+    $sSQL = 'SELECT grp_Name FROM group_grp WHERE grp_ID = ' . $iGroupID;
     $rsName = RunQuery($sSQL);
     $aRow = mysqli_fetch_array($rsName);
     $sName = $aRow['grp_Name'];
@@ -66,12 +67,12 @@ if (isset($_GET['PersonID']) && AuthenticationManager::getCurrentUser()->isEditR
     // Is there a FamilyID in the querystring?
     $iFamilyID = InputUtils::legacyFilterInput($_GET['FamilyID'], 'int');
     $iRecordID = $iFamilyID;
-    $sQuerystring = '?FamilyID='.$iFamilyID;
+    $sQuerystring = '?FamilyID=' . $iFamilyID;
     $sTypeName = gettext('Family');
-    $sBackPage = 'v2/family/'.$iFamilyID;
+    $sBackPage = 'v2/family/' . $iFamilyID;
 
     // Get the name of the family
-    $sSQL = 'SELECT fam_Name FROM family_fam WHERE fam_ID = '.$iFamilyID;
+    $sSQL = 'SELECT fam_Name FROM family_fam WHERE fam_ID = ' . $iFamilyID;
     $rsName = RunQuery($sSQL);
     $aRow = mysqli_fetch_array($rsName);
     $sName = $aRow['fam_Name'];
@@ -123,7 +124,7 @@ if (isset($_POST['SecondPass'])) {
 }
 
 // Get the name of the property
-$sSQL = 'SELECT pro_Name, pro_Prompt FROM property_pro WHERE pro_ID = '.$iPropertyID;
+$sSQL = 'SELECT pro_Name, pro_Prompt FROM property_pro WHERE pro_ID = ' . $iPropertyID;
 $rsProperty = RunQuery($sSQL);
 $aRow = mysqli_fetch_array($rsProperty);
 $sPropertyName = $aRow['pro_Name'];
@@ -142,18 +143,18 @@ if (strlen($sPrompt) == 0) {
 
 // If we're editing, get the value
 if ($sAction == 'edit') {
-    $sSQL = 'SELECT r2p_Value FROM record2property_r2p WHERE r2p_pro_ID = '.$iPropertyID.' AND r2p_record_ID = '.$iRecordID;
+    $sSQL = 'SELECT r2p_Value FROM record2property_r2p WHERE r2p_pro_ID = ' . $iPropertyID . ' AND r2p_record_ID = ' . $iRecordID;
     $rsValue = RunQuery($sSQL);
     $aRow = mysqli_fetch_array($rsValue);
     $sValue = $aRow['r2p_Value'];
 }
 
 // Set the page title and include HTML header
-$sPageTitle = $sTypeName.' : '.gettext(' Property Assignment');
+$sPageTitle = $sTypeName . ' : ' . gettext(' Property Assignment');
 require 'Include/Header.php';
 ?>
 
-<form method="post" action="PropertyAssign.php<?= $sQuerystring.'&PropertyID='.$iPropertyID ?>">
+<form method="post" action="PropertyAssign.php<?= $sQuerystring . '&PropertyID=' . $iPropertyID ?>">
 <input type="hidden" name="SecondPass" value="True">
 <input type="hidden" name="Action" value="<?= $sAction ?>">
 <div class="table-responsive">

@@ -8,29 +8,29 @@ class OpenLPNotification
     protected $OLPUsername;
     protected $OLPPassword;
     protected $AlertText;
- 
+
     public function __construct($OLPAddress, $OLPUsername, $OLPPassword)
     {
-        $this->OLPAddress=$OLPAddress;
-        $this->OLPUsername=$OLPUsername;
-        $this->OLPPassword=$OLPPassword;
+        $this->OLPAddress = $OLPAddress;
+        $this->OLPUsername = $OLPUsername;
+        $this->OLPPassword = $OLPPassword;
     }
-  
+
     public function setAlertText($text)
     {
         $this->AlertText = (string)$text;
     }
-  
+
     private function getAuthorizationHeader()
     {
-        return base64_encode(SystemConfig::getValue("sOLPUserName").":".SystemConfig::getValue("sOLPPassword"));
+        return base64_encode(SystemConfig::getValue("sOLPUserName") . ":" . SystemConfig::getValue("sOLPPassword"));
     }
-  
+
     public function send()
     {
         $headers = [
         'http' => [
-        'method' =>"GET",
+        'method' => "GET",
         'timeout' => 5
         ],
         "ssl" => [
@@ -40,11 +40,11 @@ class OpenLPNotification
         ]
         ];
         if (SystemConfig::getValue("sOLPUserName")) {
-            $headers['http']['header'] = "Authorization: Basic ".$this->getAuthorizationHeader()."\r\n";
+            $headers['http']['header'] = "Authorization: Basic " . $this->getAuthorizationHeader() . "\r\n";
         }
       //return json_encode($headers);
-        $request = ["request" => ["text" =>$this->AlertText]];
-        $url = $this->OLPAddress."/api/alert?data=".urlencode(json_encode($request));
+        $request = ["request" => ["text" => $this->AlertText]];
+        $url = $this->OLPAddress . "/api/alert?data=" . urlencode(json_encode($request));
         $context = stream_context_create($headers);
         $response = file_get_contents($url, false, $context);
         return $response;

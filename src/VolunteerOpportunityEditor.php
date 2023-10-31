@@ -1,4 +1,5 @@
 <?php
+
 /*******************************************************************************
  *
  *  filename    : VolunteerOpportunityEditor.php
@@ -62,7 +63,7 @@ if (($sAction == 'delete') && $iOpp > 0) {
         exit;
     }
 
-    $sSQL = "SELECT * FROM `volunteeropportunity_vol` WHERE `vol_ID` = '".$iOpp."'";
+    $sSQL = "SELECT * FROM `volunteeropportunity_vol` WHERE `vol_ID` = '" . $iOpp . "'";
     $rsOpps = RunQuery($sSQL);
     $aRow = mysqli_fetch_array($rsOpps);
     extract($aRow);
@@ -91,14 +92,14 @@ if (($sAction == 'delete') && $iOpp > 0) {
     $sSQL = 'SELECT `per_FirstName`, `per_LastName` FROM `person_per` ';
     $sSQL .= 'LEFT JOIN `person2volunteeropp_p2vo` ';
     $sSQL .= 'ON `p2vo_per_ID`=`per_ID` ';
-    $sSQL .= "WHERE `p2vo_vol_ID` = '".$iOpp."' ";
+    $sSQL .= "WHERE `p2vo_vol_ID` = '" . $iOpp . "' ";
     $sSQL .= 'ORDER BY `per_LastName`, `per_FirstName` ';
     $rsPeople = RunQuery($sSQL);
     $numRows = mysqli_num_rows($rsPeople);
     if ($numRows > 0) {
-        echo "\n<br><h3>".gettext('Warning').'!</h3>';
-        echo "\n<h3>".gettext('There are people assigned to this Volunteer Opportunity.').'</h3>';
-        echo "\n<br>".gettext('Volunteer Opportunity will be unassigned for the following people.');
+        echo "\n<br><h3>" . gettext('Warning') . '!</h3>';
+        echo "\n<h3>" . gettext('There are people assigned to this Volunteer Opportunity.') . '</h3>';
+        echo "\n<br>" . gettext('Volunteer Opportunity will be unassigned for the following people.');
         echo "\n<br>";
         for ($i = 0; $i < $numRows; $i++) {
             $aRow = mysqli_fetch_array($rsPeople);
@@ -106,10 +107,10 @@ if (($sAction == 'delete') && $iOpp > 0) {
             echo "\n<br><b> $per_FirstName $per_LastName</b>";
         }
     }
-    echo "\n<br><a class='btn btn-danger' href=\"VolunteerOpportunityEditor.php?act=ConfDelete&amp;Opp=".$iOpp.'"> ';
-    echo gettext('Yes, delete this Volunteer Opportunity').' </a>';
+    echo "\n<br><a class='btn btn-danger' href=\"VolunteerOpportunityEditor.php?act=ConfDelete&amp;Opp=" . $iOpp . '"> ';
+    echo gettext('Yes, delete this Volunteer Opportunity') . ' </a>';
     echo "\n<a href=\"VolunteerOpportunityEditor.php\" class='btn btn-default'> ";
-    echo gettext('No, cancel this deletion').' </a>';
+    echo gettext('No, cancel this deletion') . ' </a>';
     echo '</div>';
     require 'Include/Footer.php';
     exit;
@@ -128,9 +129,9 @@ if (($sAction == 'ConfDelete') && $iOpp > 0) {
     $rsOrder = RunQuery($sSQL);
     $aRow = mysqli_fetch_array($rsOrder);
     $orderVal = $aRow[0];
-    $sSQL = "DELETE FROM `volunteeropportunity_vol` WHERE `vol_ID` = '".$iOpp."'";
+    $sSQL = "DELETE FROM `volunteeropportunity_vol` WHERE `vol_ID` = '" . $iOpp . "'";
     RunQuery($sSQL);
-    $sSQL = "DELETE FROM `person2volunteeropp_p2vo` WHERE `p2vo_vol_ID` = '".$iOpp."'";
+    $sSQL = "DELETE FROM `person2volunteeropp_p2vo` WHERE `p2vo_vol_ID` = '" . $iOpp . "'";
     RunQuery($sSQL);
     // pull back all the vol_Order fields that are higher than the one just deleted
     $sSQL = "UPDATE volunteeropportunity_vol SET vol_Order=vol_Order-1 WHERE vol_Order>=$orderVal";
@@ -164,9 +165,9 @@ if ($iRowNum == 0) {
             $aRow = mysqli_fetch_array($rsOrder);
             extract($aRow);
             $num_vol_Order = $Max_vol_Order + $row;
-            $sSQL = 'UPDATE `volunteeropportunity_vol` '.
-                    "SET `vol_Order` = '".$num_vol_Order."' ".
-                    "WHERE `vol_ID` = '".$vol_ID."'";
+            $sSQL = 'UPDATE `volunteeropportunity_vol` ' .
+                    "SET `vol_Order` = '" . $num_vol_Order . "' " .
+                    "WHERE `vol_ID` = '" . $vol_ID . "'";
             RunQuery($sSQL);
         }
     }
@@ -182,9 +183,9 @@ if ($iRowNum == 0) {
         $aRow = mysqli_fetch_array($rsOpps);
         extract($aRow);
         if ($orderCounter != $vol_Order) { // found hole, update all records to the end
-            $sSQL = 'UPDATE `volunteeropportunity_vol` '.
-                 "SET `vol_Order` = '".$orderCounter."' ".
-                 "WHERE `vol_ID` = '".$vol_ID."'";
+            $sSQL = 'UPDATE `volunteeropportunity_vol` ' .
+                 "SET `vol_Order` = '" . $orderCounter . "' " .
+                 "WHERE `vol_ID` = '" . $vol_ID . "'";
             RunQuery($sSQL);
         }
         ++$orderCounter;
@@ -202,8 +203,8 @@ if (isset($_POST['SaveChanges'])) {
     $numRows = mysqli_num_rows($rsOpps);
 
     for ($iFieldID = 1; $iFieldID <= $numRows; $iFieldID++) {
-        $nameName = $iFieldID.'name';
-        $descName = $iFieldID.'desc';
+        $nameName = $iFieldID . 'name';
+        $descName = $iFieldID . 'desc';
         if (array_key_exists($nameName, $_POST)) {
             $aNameFields[$iFieldID] = InputUtils::legacyFilterInput($_POST[$nameName]);
 
@@ -226,9 +227,9 @@ if (isset($_POST['SaveChanges'])) {
         for ($iFieldID = 1; $iFieldID <= $numRows; $iFieldID++) {
             if (array_key_exists($iFieldID, $aNameFields)) {
                 $sSQL = "UPDATE volunteeropportunity_vol
-	                     SET vol_Name = '".$aNameFields[$iFieldID]."',
-	                     vol_Description = '".$aDescFields[$iFieldID].
-                         "' WHERE vol_ID = '".$aIDFields[$iFieldID]."';";
+	                     SET vol_Name = '" . $aNameFields[$iFieldID] . "',
+	                     vol_Description = '" . $aDescFields[$iFieldID] .
+                         "' WHERE vol_ID = '" . $aIDFields[$iFieldID] . "';";
                 RunQuery($sSQL);
             }
         }
@@ -247,7 +248,7 @@ if (isset($_POST['SaveChanges'])) {
             $newOrder = $numRows + 1;
             $sSQL = "INSERT INTO `volunteeropportunity_vol`
            ( `vol_Order` , `vol_Name` , `vol_Description`)
-           VALUES ( '".$newOrder."', '".$newFieldName."', '".$newFieldDesc."');";
+           VALUES ( '" . $newOrder . "', '" . $newFieldName . "', '" . $newFieldDesc . "');";
             RunQuery($sSQL);
             $bNewNameError = false;
         }
@@ -296,15 +297,15 @@ if ($numRows == 0) {
 
         if (array_key_exists($swapRow, $aIDFields)) {
             $sSQL = "UPDATE volunteeropportunity_vol
-	               SET vol_Order = '".$newRow."' ".
-            "WHERE vol_ID = '".$aIDFields[$swapRow]."';";
+	               SET vol_Order = '" . $newRow . "' " .
+            "WHERE vol_ID = '" . $aIDFields[$swapRow] . "';";
             RunQuery($sSQL);
         }
 
         if (array_key_exists($newRow, $aIDFields)) {
             $sSQL = "UPDATE volunteeropportunity_vol
-	               SET vol_Order = '".$swapRow."' ".
-            "WHERE vol_ID = '".$aIDFields[$newRow]."';";
+	               SET vol_Order = '" . $swapRow . "' " .
+            "WHERE vol_ID = '" . $aIDFields[$newRow] . "';";
             RunQuery($sSQL);
         }
 
@@ -360,27 +361,27 @@ if ($numRows == 0) {
 for ($row = 1; $row <= $numRows; $row++) {
     if (array_key_exists($row, $aNameFields)) {
         echo '<tr>';
-        echo '<td class="LabelColumn"><b>'.$row.'</b></td>';
+        echo '<td class="LabelColumn"><b>' . $row . '</b></td>';
         echo '<td class="TextColumn">';
         if ($row == 1) {
-            echo '<a href="VolunteerOpportunityEditor.php?act=na&amp;row_num='.$row."\"><i class='fa fa-fw'></i></a>";
+            echo '<a href="VolunteerOpportunityEditor.php?act=na&amp;row_num=' . $row . "\"><i class='fa fa-fw'></i></a>";
         } else {
-            echo '<a href="VolunteerOpportunityEditor.php?act=up&amp;row_num='.$row."\"> <i class='fa fa-arrow-up'></i></a> ";
+            echo '<a href="VolunteerOpportunityEditor.php?act=up&amp;row_num=' . $row . "\"> <i class='fa fa-arrow-up'></i></a> ";
         }
         if ($row != $numRows) {
-            echo '<a href="VolunteerOpportunityEditor.php?act=down&amp;row_num='.$row."\"> <i class='fa fa-arrow-down'></i></a> ";
+            echo '<a href="VolunteerOpportunityEditor.php?act=down&amp;row_num=' . $row . "\"> <i class='fa fa-arrow-down'></i></a> ";
         } else {
-            echo '<a href="VolunteerOpportunityEditor.php?act=na&amp;row_num='.$row."\"> <i class='fa fa-fw'></i></a> ";
+            echo '<a href="VolunteerOpportunityEditor.php?act=na&amp;row_num=' . $row . "\"> <i class='fa fa-fw'></i></a> ";
         }
 
-        echo '<a href="VolunteerOpportunityEditor.php?act=delete&amp;Opp='.$aIDFields[$row]."\"> <i class='fa fa-times'></i></a></td>"; ?>
+        echo '<a href="VolunteerOpportunityEditor.php?act=delete&amp;Opp=' . $aIDFields[$row] . "\"> <i class='fa fa-times'></i></a></td>"; ?>
 
        <td class="TextColumn" align="center">
-       <input type="text" name="<?= $row.'name' ?>" value="<?= htmlentities(stripslashes($aNameFields[$row]), ENT_NOQUOTES, 'UTF-8') ?>" class="form-control" size="20" maxlength="30">
+       <input type="text" name="<?= $row . 'name' ?>" value="<?= htmlentities(stripslashes($aNameFields[$row]), ENT_NOQUOTES, 'UTF-8') ?>" class="form-control" size="20" maxlength="30">
         <?php
 
         if (array_key_exists($row, $aNameErrors) && $aNameErrors[$row]) {
-            echo '<span style="color: red;"><BR>'.gettext('You must enter a name').' </span>';
+            echo '<span style="color: red;"><BR>' . gettext('You must enter a name') . ' </span>';
         } ?>
        </td>
 
@@ -421,7 +422,7 @@ for ($row = 1; $row <= $numRows; $row++) {
 <div><?= gettext('Name') ?>:</div>
 <input type="text" name="newFieldName" size="30" maxlength="30" class="form-control">
 <?php if ($bNewNameError) {
-    echo '<div><span style="color: red;"><BR>'.gettext('You must enter a name').'</span></div>';
+    echo '<div><span style="color: red;"><BR>' . gettext('You must enter a name') . '</span></div>';
 } ?>
 &nbsp;
 </td>

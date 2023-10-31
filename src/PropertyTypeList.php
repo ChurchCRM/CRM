@@ -1,4 +1,5 @@
 <?php
+
 /*******************************************************************************
  *
  *  filename    : PropertyTypeList.php
@@ -32,18 +33,18 @@ require 'Include/Header.php';
     <div class="table-responsive">
 <?php //Display the new property link
 if (AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled()) {
-    echo "<p align=\"center\"><a class='btn btn-primary' href=\"PropertyTypeEditor.php\">".gettext('Add a New Property Type').'</a></p>';
+    echo "<p align=\"center\"><a class='btn btn-primary' href=\"PropertyTypeEditor.php\">" . gettext('Add a New Property Type') . '</a></p>';
 }
 
 //Start the table
 echo "<table class='table table-hover'>";
 echo '<tr>';
-echo '<th>'.gettext('Name').'</th>';
-echo '<th>'.gettext('Class').'</th>';
-echo '<th align="center">'.gettext('Properties').'</th>';
+echo '<th>' . gettext('Name') . '</th>';
+echo '<th>' . gettext('Class') . '</th>';
+echo '<th align="center">' . gettext('Properties') . '</th>';
 if (AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled()) {
-    echo '<th>'.gettext('Edit').'</th>';
-    echo '<th>'.gettext('Delete').'</th>';
+    echo '<th>' . gettext('Edit') . '</th>';
+    echo '<th>' . gettext('Delete') . '</th>';
 }
 echo '</tr>';
 
@@ -56,8 +57,8 @@ while ($aRow = mysqli_fetch_array($rsPropertyTypes)) {
 
     $sRowClass = AlternateRowStyle($sRowClass);
 
-    echo '<tr class="'.$sRowClass.'">';
-    echo '<td>'.$prt_Name.'</td>';
+    echo '<tr class="' . $sRowClass . '">';
+    echo '<td>' . $prt_Name . '</td>';
     echo '<td>';
     switch ($prt_Class) {
         case 'p':
@@ -70,13 +71,13 @@ while ($aRow = mysqli_fetch_array($rsPropertyTypes)) {
             echo gettext('Group');
             break;
     }
-    echo '<td align="center">'.$Properties.'</td>';
+    echo '<td align="center">' . $Properties . '</td>';
     if (AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled()) {
-        echo "<td><a class='btn btn-info' href=\"PropertyTypeEditor.php?PropertyTypeID=".$prt_ID.'">'.gettext('Edit').'</a></td>';
+        echo "<td><a class='btn btn-info' href=\"PropertyTypeEditor.php?PropertyTypeID=" . $prt_ID . '">' . gettext('Edit') . '</a></td>';
         if ($Properties == 0) {
-            echo "<td><a class='btn btn-danger' href=\"PropertyTypeDelete.php?PropertyTypeID=".$prt_ID.'">'.gettext('Delete').'</a></td>';
+            echo "<td><a class='btn btn-danger' href=\"PropertyTypeDelete.php?PropertyTypeID=" . $prt_ID . '">' . gettext('Delete') . '</a></td>';
         } else {
-            echo "<td><a class='btn btn-danger' href=\"PropertyTypeDelete.php?PropertyTypeID=".$prt_ID.'&Warn">'.gettext('Delete').'</a></td>';
+            echo "<td><a class='btn btn-danger' href=\"PropertyTypeDelete.php?PropertyTypeID=" . $prt_ID . '&Warn">' . gettext('Delete') . '</a></td>';
         }
     }
     echo '</tr>';

@@ -6,7 +6,6 @@ use ChurchCRM\ListOptionQuery;
 
 class Classification
 {
-
     public static function getAll()
     {
         return ListOptionQuery::create()->filterById(1)->orderByOptionSequence()->find();

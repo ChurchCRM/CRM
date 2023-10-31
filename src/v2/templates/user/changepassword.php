@@ -1,11 +1,10 @@
 <?php
 
-
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 
 //Set the page title
-$sPageTitle = gettext("Change Password") .": " . $user->getFullName();
+$sPageTitle = gettext("Change Password") . ": " . $user->getFullName();
 include SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
 
@@ -15,7 +14,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <!-- general form elements -->
         <div class="card card-primary">
             <div class="card-header with-border">
-                <?= gettext('Enter your current password, then your new password twice.  Passwords must be at least').' '.SystemConfig::getValue('iMinPasswordLength').' '.gettext('characters in length.') ?>
+                <?= gettext('Enter your current password, then your new password twice.  Passwords must be at least') . ' ' . SystemConfig::getValue('iMinPasswordLength') . ' ' . gettext('characters in length.') ?>
             </div>
             <!-- /.box-header -->
             <!-- form start -->

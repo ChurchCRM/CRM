@@ -1,4 +1,5 @@
 <?php
+
 /*******************************************************************************
  *
  *  filename    : SundaySchoolReports.php
@@ -77,51 +78,51 @@ if (isset($_POST['SubmitPhotoBook']) || isset($_POST['SubmitClassList']) || isse
     $currentUser->save();
 
     if ($bAtLeastOneGroup && isset($_POST['SubmitPhotoBook']) && $aGrpID != 0) {
-        RedirectUtils::redirect('Reports/PhotoBook.php?GroupID='.$aGrpID.'&FYID='.$iFYID.'&FirstSunday='.$dFirstSunday.'&LastSunday='.$dLastSunday.'&AllRoles='.$allroles.'&pictures='.$withPictures);
+        RedirectUtils::redirect('Reports/PhotoBook.php?GroupID=' . $aGrpID . '&FYID=' . $iFYID . '&FirstSunday=' . $dFirstSunday . '&LastSunday=' . $dLastSunday . '&AllRoles=' . $allroles . '&pictures=' . $withPictures);
     } elseif ($bAtLeastOneGroup && isset($_POST['SubmitClassList']) && $aGrpID != 0) {
-        RedirectUtils::redirect('Reports/ClassList.php?GroupID='.$aGrpID.'&FYID='.$iFYID.'&FirstSunday='.$dFirstSunday.'&LastSunday='.$dLastSunday.'&AllRoles='.$allroles.'&pictures='.$withPictures);
+        RedirectUtils::redirect('Reports/ClassList.php?GroupID=' . $aGrpID . '&FYID=' . $iFYID . '&FirstSunday=' . $dFirstSunday . '&LastSunday=' . $dLastSunday . '&AllRoles=' . $allroles . '&pictures=' . $withPictures);
     } elseif ($bAtLeastOneGroup && isset($_POST['SubmitClassAttendance']) && $aGrpID != 0) {
         $toStr = 'Reports/ClassAttendance.php?';
         //        $toStr .= "GroupID=" . $iGroupID;
-        $toStr .= 'GroupID='.$aGrpID;
-        $toStr .= '&FYID='.$iFYID;
-        $toStr .= '&FirstSunday='.$dFirstSunday;
-        $toStr .= '&LastSunday='.$dLastSunday;
-        $toStr .= '&AllRoles='.$allroles;
-        $toStr .= '&withPictures='.$withPictures;
+        $toStr .= 'GroupID=' . $aGrpID;
+        $toStr .= '&FYID=' . $iFYID;
+        $toStr .= '&FirstSunday=' . $dFirstSunday;
+        $toStr .= '&LastSunday=' . $dLastSunday;
+        $toStr .= '&AllRoles=' . $allroles;
+        $toStr .= '&withPictures=' . $withPictures;
         if ($dNoSchool1) {
-            $toStr .= '&NoSchool1='.$dNoSchool1;
+            $toStr .= '&NoSchool1=' . $dNoSchool1;
         }
         if ($dNoSchool2) {
-            $toStr .= '&NoSchool2='.$dNoSchool2;
+            $toStr .= '&NoSchool2=' . $dNoSchool2;
         }
         if ($dNoSchool3) {
-            $toStr .= '&NoSchool3='.$dNoSchool3;
+            $toStr .= '&NoSchool3=' . $dNoSchool3;
         }
         if ($dNoSchool4) {
-            $toStr .= '&NoSchool4='.$dNoSchool4;
+            $toStr .= '&NoSchool4=' . $dNoSchool4;
         }
         if ($dNoSchool5) {
-            $toStr .= '&NoSchool5='.$dNoSchool5;
+            $toStr .= '&NoSchool5=' . $dNoSchool5;
         }
         if ($dNoSchool6) {
-            $toStr .= '&NoSchool6='.$dNoSchool6;
+            $toStr .= '&NoSchool6=' . $dNoSchool6;
         }
         if ($dNoSchool7) {
-            $toStr .= '&NoSchool7='.$dNoSchool7;
+            $toStr .= '&NoSchool7=' . $dNoSchool7;
         }
         if ($dNoSchool8) {
-            $toStr .= '&NoSchool8='.$dNoSchool8;
+            $toStr .= '&NoSchool8=' . $dNoSchool8;
         }
         if ($iExtraStudents) {
-            $toStr .= '&ExtraStudents='.$iExtraStudents;
+            $toStr .= '&ExtraStudents=' . $iExtraStudents;
         }
         if ($iExtraTeachers) {
-            $toStr .= '&ExtraTeachers='.$iExtraTeachers;
+            $toStr .= '&ExtraTeachers=' . $iExtraTeachers;
         }
         RedirectUtils::redirect($toStr);
     } elseif (!$bAtLeastOneGroup || $aGrpID == 0) {
-        echo "<p class=\"alert alert-danger\"><span class=\"fa fa-exclamation-triangle\"> ".gettext('At least one group must be selected to make class lists or attendance sheets.')."</span></p>";
+        echo "<p class=\"alert alert-danger\"><span class=\"fa fa-exclamation-triangle\"> " . gettext('At least one group must be selected to make class lists or attendance sheets.') . "</span></p>";
     }
 } else {
     $iFYID = $_SESSION['idefaultFY'];
@@ -188,14 +189,14 @@ $dNoSchool8 = change_date_for_place_holder($dNoSchool6);
           <td>
             <?php
             // Create the group select drop-down
-            echo '<select id="GroupID" name="GroupID[]" multiple size="8" onChange="UpdateRoles();"><option value="0">'.gettext('None').'</option>';
+            echo '<select id="GroupID" name="GroupID[]" multiple size="8" onChange="UpdateRoles();"><option value="0">' . gettext('None') . '</option>';
             foreach ($groups as $group) {
-                echo '<option value="'.$group->getID().'">'.$group->getName().'</option>';
+                echo '<option value="' . $group->getID() . '">' . $group->getName() . '</option>';
             }
             echo '</select><br>';
             echo gettext('Multiple groups will have a Page Break between Groups<br>');
             echo '<input type="checkbox" Name="allroles" value="1" checked>';
-            echo gettext('List all Roles (unchecked will list Teacher/Student roles only)')."<br>";
+            echo gettext('List all Roles (unchecked will list Teacher/Student roles only)') . "<br>";
             echo '<input type="checkbox" Name="withPictures" value="1" checked>';
             echo gettext('With Photos');
             ?>

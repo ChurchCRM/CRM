@@ -1,4 +1,5 @@
 <?php
+
 /*******************************************************************************
  *
  *  filename    : BackupDatabase.php
@@ -53,8 +54,8 @@ require 'Include/Header.php';
         <?= gettext('Re-type Password') ?>:<input type="password" name="pw2">
         <BR><span id="passworderror" style="color: red"></span><BR><BR>
 
-        <input type="button" class="btn btn-primary" id="doBackup" <?= 'value="'.gettext('Generate Backup').'"' ?>>
-        <input type="button" class="btn btn-primary" id="doRemoteBackup" <?= 'value="'.gettext('Generate and Ship Backup to External Storage').'"' ?>>
+        <input type="button" class="btn btn-primary" id="doBackup" <?= 'value="' . gettext('Generate Backup') . '"' ?>>
+        <input type="button" class="btn btn-primary" id="doRemoteBackup" <?= 'value="' . gettext('Generate and Ship Backup to External Storage') . '"' ?>>
 
         </form>
     </div>

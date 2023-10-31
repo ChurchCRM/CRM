@@ -16,7 +16,7 @@
     <arg name="parallel" value="75"/>
     <arg value="np"/>
 
-    <rule ref="PSR2"/>
+    <rule ref="PSR12"/>
     <rule ref="Generic.Arrays.DisallowLongArraySyntax"/>
 
     <!-- Don't hide tokenizer exceptions -->

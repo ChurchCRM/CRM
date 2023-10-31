@@ -1,4 +1,5 @@
 <?php
+
 /*******************************************************************************
 *
 *  filename    : Reports/NameTags.php
@@ -31,7 +32,7 @@ if ($sFontSize != 'default') {
 //if($sFontSize != "default")
 //  $pdf->SetFontSize($sFontSize);
 
-$sSQL = 'SELECT * FROM person_per WHERE per_ID IN ('.convertCartToString($_SESSION['aPeopleCart']).') ORDER BY per_LastName';
+$sSQL = 'SELECT * FROM person_per WHERE per_ID IN (' . convertCartToString($_SESSION['aPeopleCart']) . ') ORDER BY per_LastName';
 $rsPersons = RunQuery($sSQL);
 
 while ($aPer = mysqli_fetch_array($rsPersons)) {
@@ -40,7 +41,7 @@ while ($aPer = mysqli_fetch_array($rsPersons)) {
     $PosX = $pdf->_Margin_Left + ($pdf->_COUNTX * ($pdf->_Width + $pdf->_X_Space));
     $PosY = $pdf->_Margin_Top + ($pdf->_COUNTY * ($pdf->_Height + $pdf->_Y_Space));
 
-    $perimg = '../Images/Person/'.$per_ID.'.jpg';
+    $perimg = '../Images/Person/' . $per_ID . '.jpg';
     if (file_exists($perimg)) {
         $s = getimagesize($perimg);
         $h = ($pdf->_Width / $s[0]) * $s[1];
@@ -70,7 +71,7 @@ while ($aPer = mysqli_fetch_array($rsPersons)) {
         $pdf->addPdfLabel('');
     } else {
         $labelStr = sprintf("%s %s\n\n%d", $per_FirstName, $per_LastName, $per_ID);
-        $nameWid = $pdf->GetStringWidth($per_FirstName.' '.$per_LastName);
+        $nameWid = $pdf->GetStringWidth($per_FirstName . ' ' . $per_LastName);
         $useWid = $pdf->_Width - 2;
         if ($nameWid > $useWid) {
             $useFontSize = (int) ($sFontSize * $useWid / $nameWid);
@@ -83,7 +84,7 @@ while ($aPer = mysqli_fetch_array($rsPersons)) {
 
 header('Pragma: public');  // Needed for IE when using a shared SSL certificate
 if (SystemConfig::getValue('iPDFOutputType') == 1) {
-    $pdf->Output('NameTags'.date(SystemConfig::getValue("sDateFilenameFormat")).'.pdf', 'D');
+    $pdf->Output('NameTags' . date(SystemConfig::getValue("sDateFilenameFormat")) . '.pdf', 'D');
 } else {
     $pdf->Output();
 }

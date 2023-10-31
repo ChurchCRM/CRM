@@ -1,4 +1,5 @@
 <?php
+
 /*******************************************************************************
  *
  *  filename    : Register.php
@@ -17,8 +18,8 @@ use ChurchCRM\Service\SystemService;
 // Set the page title and include HTML header
 $sPageTitle = gettext('Software Registration');
 $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? 'https://' : 'http://';
-$domainName = $_SERVER['HTTP_HOST'].str_replace('Register.php', '', $_SERVER['REQUEST_URI']);
-$ChurchCRMURL = $protocol.$domainName;
+$domainName = $_SERVER['HTTP_HOST'] . str_replace('Register.php', '', $_SERVER['REQUEST_URI']);
+$ChurchCRMURL = $protocol . $domainName;
 
 require 'Include/Header.php';
 ?>

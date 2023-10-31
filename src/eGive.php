@@ -1,4 +1,5 @@
 <?php
+
 /*******************************************************************************
  *
  *  filename    : eGive.php
@@ -80,7 +81,7 @@ if (isset($_POST['ApiGet'])) {
     $startDate = $_POST['StartDate'];
     $endDate = $_POST['EndDate'];
 
-    $url = $eGiveURL.'/api/login/?apiKey='.$eGiveApiKey;
+    $url = $eGiveURL . '/api/login/?apiKey=' . $eGiveApiKey;
     //var_dump($url);
     $fp = fopen($url, 'r');
 
@@ -100,11 +101,11 @@ if (isset($_POST['ApiGet'])) {
         $api_error = 0;
         $token = $logon['token'];
 
-        $url = $eGiveURL.'/api/transactions/'.$eGiveOrgID.'/'.$startDate;
+        $url = $eGiveURL . '/api/transactions/' . $eGiveOrgID . '/' . $startDate;
         if ($endDate) {
-            $url .= '/'.$endDate;
+            $url .= '/' . $endDate;
         }
-        $url .= '/?token='.$token;
+        $url .= '/?token=' . $token;
 
         //var_dump($url);
         $fp = fopen($url, 'r');
@@ -152,7 +153,7 @@ if (isset($_POST['ApiGet'])) {
                         $fundId = getFundId($eGiveFundName);
 
                         if ($eGiveFund[$fundId]) {
-                            $eGiveFund[$fundId] .= ','.$eGiveFundName;
+                            $eGiveFund[$fundId] .= ',' . $eGiveFundName;
                         } else {
                             $eGiveFund[$fundId] = $eGiveFundName;
                         }
@@ -172,7 +173,7 @@ if (isset($_POST['ApiGet'])) {
 
                     $fundId = getFundId($eGiveFundName);
                     if ($eGiveFund[$fundId]) {
-                        $eGiveFund[$fundId] .= ','.$eGiveFundName;
+                        $eGiveFund[$fundId] .= ',' . $eGiveFundName;
                     } else {
                         $eGiveFund[$fundId] = $eGiveFundName;
                     }
@@ -194,7 +195,7 @@ if (isset($_POST['ApiGet'])) {
                         if ($famID) {
                             updateDB($famID, $transId, $date, $name, $am, $fundId, $comment, $frequency, $groupKey);
                         } else {
-                            $missingValue = $transId.'|'.$date.'|'.$egiveID.'|'.$name.'|'.$am.'|'.$fundId.'|'.$comment.'|'.$frequency.'|'.$groupKey;
+                            $missingValue = $transId . '|' . $date . '|' . $egiveID . '|' . $name . '|' . $am . '|' . $fundId . '|' . $comment . '|' . $frequency . '|' . $groupKey;
                             $giftDataMissingEgiveID[] = $missingValue;
                             ++$importError;
                         }
@@ -203,7 +204,7 @@ if (isset($_POST['ApiGet'])) {
             }
         }
     }
-    $url = $eGiveURL.'/api/logout/?apiKey='.$eGiveApiKey;
+    $url = $eGiveURL . '/api/logout/?apiKey=' . $eGiveApiKey;
     $fp = fopen($url, 'r');
 
     $json = stream_get_contents($fp);
@@ -225,11 +226,11 @@ if (isset($_POST['ApiGet'])) {
     $importNoChange = 0;
     $importError = 0;
     foreach ($egiveID2NameWithUnderscores as $egiveID => $nameWithUnderscores) {
-        $famID = $_POST['MissingEgive_FamID_'.$nameWithUnderscores];
-        $doUpdate = $_POST['MissingEgive_Set_'.$nameWithUnderscores];
+        $famID = $_POST['MissingEgive_FamID_' . $nameWithUnderscores];
+        $doUpdate = $_POST['MissingEgive_Set_' . $nameWithUnderscores];
         if ($famID) {
             if ($doUpdate) {
-                $sSQL = "INSERT INTO egive_egv (egv_egiveID, egv_famID, egv_DateEntered, egv_EnteredBy) VALUES ('".$egiveID."','".$famID."','".date('YmdHis')."','".AuthenticationManager::getCurrentUser()->getId()."');";
+                $sSQL = "INSERT INTO egive_egv (egv_egiveID, egv_famID, egv_DateEntered, egv_EnteredBy) VALUES ('" . $egiveID . "','" . $famID . "','" . date('YmdHis') . "','" . AuthenticationManager::getCurrentUser()->getId() . "');";
                 RunQuery($sSQL);
             }
 
@@ -285,7 +286,7 @@ function updateDB($famID, $transId, $date, $name, $amount, $fundId, $comment, $f
     if ($eGiveExisting && array_key_exists($keyExisting, $eGiveExisting)) {
         ++$importNoChange;
     } elseif ($famID) { //  insert a new record
-        $sSQL = "INSERT INTO pledge_plg (plg_famID, plg_FYID, plg_date, plg_amount, plg_schedule, plg_method, plg_comment, plg_DateLastEdited, plg_EditedBy, plg_PledgeOrPayment, plg_fundID, plg_depID, plg_CheckNo, plg_NonDeductible, plg_GroupKey) VALUES ('".$famID."','".$iFYID."','".$date."','".$amount."','".$frequency."','EGIVE','".$comment."','".date('YmdHis')."',".AuthenticationManager::getCurrentUser()->getId().",'Payment',".$fundId.",'".$iDepositSlipID."','".$transId."','0','".$groupKey."')";
+        $sSQL = "INSERT INTO pledge_plg (plg_famID, plg_FYID, plg_date, plg_amount, plg_schedule, plg_method, plg_comment, plg_DateLastEdited, plg_EditedBy, plg_PledgeOrPayment, plg_fundID, plg_depID, plg_CheckNo, plg_NonDeductible, plg_GroupKey) VALUES ('" . $famID . "','" . $iFYID . "','" . $date . "','" . $amount . "','" . $frequency . "','EGIVE','" . $comment . "','" . date('YmdHis') . "'," . AuthenticationManager::getCurrentUser()->getId() . ",'Payment'," . $fundId . ",'" . $iDepositSlipID . "','" . $transId . "','0','" . $groupKey . "')";
         ++$importCreated;
         RunQuery($sSQL);
     }
@@ -335,7 +336,7 @@ function importDoneFixOrContinue()
         foreach ($egiveID2NameWithUnderscores as $egiveID => $nameWithUnderscores) {
             $name = preg_replace('/_/', ' ', $nameWithUnderscores);
             echo '<tr>';
-            echo '<td>'.$name.'&nbsp;</td>'; ?>
+            echo '<td>' . $name . '&nbsp;</td>'; ?>
             <td><class="TextColumn"><input type="text" name="MissingEgive_ID_<?= $nameWithUnderscores ?>" value="<?= $egiveID ?>" maxlength="10"></td>
             <td class="TextColumn">
             <select name="MissingEgive_FamID_<?= $nameWithUnderscores ?>">
@@ -354,7 +355,7 @@ function importDoneFixOrContinue()
         <?php
     } ?>
 
-    <p class="MediumLargeText"> <?= gettext('Data import results: ').$importCreated.gettext(' gifts were imported, ').$importNoChange.gettext(' gifts unchanged, and ').$importError.gettext(' gifts not imported due to problems') ?></p>
+    <p class="MediumLargeText"> <?= gettext('Data import results: ') . $importCreated . gettext(' gifts were imported, ') . $importNoChange . gettext(' gifts unchanged, and ') . $importError . gettext(' gifts not imported due to problems') ?></p>
     <input type="button" class="btn btn-default" value="<?= gettext('Back to Deposit Slip') ?>" onclick="javascript:document.location='DepositSlipEditor.php?DepositSlipID=<?= $iDepositSlipID ?>'"
     <?php
 }
@@ -383,7 +384,7 @@ function get_api_data($json)
         return $result;
     } else {
         ?>
-        <span style="color: red;"><?= gettext("Fatal error in eGive API datastream: '").$error ?>"'</span><br><br>
+        <span style="color: red;"><?= gettext("Fatal error in eGive API datastream: '") . $error ?>"'</span><br><br>
         <input type="button" class="btn btn-default" value="<?= gettext('Back to Deposit Slip') ?>" onclick="javascript:document.location='DepositSlipEditor.php?DepositSlipID=<?= $iDepositSlipID ?>'"
         <?php
         return 0;
@@ -403,14 +404,14 @@ function yearFirstDate($date)
     }
     $dateArray[0] = sprintf('%02d', $dateArray[0]);
     $dateArray[1] = sprintf('%02d', $dateArray[1]);
-    $dateCI = $dateArray[2].'-'.$dateArray[0].'-'.$dateArray[1];
+    $dateCI = $dateArray[2] . '-' . $dateArray[0] . '-' . $dateArray[1];
 
     return $dateCI;
 }
 
 function eGiveExistingKey($transId, $famID, $date, $fundId, $comment)
 {
-    $key = $transId.'|'.$famID.'|'.$date.'|'.$fundId.'|'.$comment;
+    $key = $transId . '|' . $famID . '|' . $date . '|' . $fundId . '|' . $comment;
 
     return $key;
 }

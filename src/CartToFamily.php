@@ -1,4 +1,5 @@
 <?php
+
 /*******************************************************************************
  *
  *  filename    : CartToFamily.php
@@ -36,7 +37,7 @@ if (isset($_POST['Submit']) && count($_SESSION['aPeopleCart']) > 0) {
 
         $dWeddingDate = InputUtils::legacyFilterInput($_POST['WeddingDate']);
         if (strlen($dWeddingDate) > 0) {
-            $dWeddingDate = '"'.$dWeddingDate.'"';
+            $dWeddingDate = '"' . $dWeddingDate . '"';
         } else {
             $dWeddingDate = 'NULL';
         }
@@ -44,7 +45,7 @@ if (isset($_POST['Submit']) && count($_SESSION['aPeopleCart']) > 0) {
         $iPersonAddress = InputUtils::legacyFilterInput($_POST['PersonAddress']);
 
         if ($iPersonAddress != 0) {
-            $sSQL = 'SELECT * FROM person_per WHERE per_ID = '.$iPersonAddress;
+            $sSQL = 'SELECT * FROM person_per WHERE per_ID = ' . $iPersonAddress;
             $rsPerson = RunQuery($sSQL);
             extract(mysqli_fetch_array($rsPerson));
         }
@@ -81,10 +82,10 @@ if (isset($_POST['Submit']) && count($_SESSION['aPeopleCart']) > 0) {
         $sEmail = SelectWhichInfo(InputUtils::legacyFilterInput($_POST['Email']), $per_Email);
 
         if (strlen($sFamilyName) == 0) {
-            $sError = '<p class="callout callout-warning" align="center" style="color:red;">'.gettext('No family name entered!').'</p>';
+            $sError = '<p class="callout callout-warning" align="center" style="color:red;">' . gettext('No family name entered!') . '</p>';
             $bError = true;
         } else {
-            $sSQL = "INSERT INTO family_fam (fam_Name, fam_Address1, fam_Address2, fam_City, fam_State, fam_Zip, fam_Country, fam_HomePhone, fam_WorkPhone, fam_CellPhone, fam_Email, fam_WeddingDate, fam_DateEntered, fam_EnteredBy) VALUES ('".$sFamilyName."','".$sAddress1."','".$sAddress2."','".$sCity."','".$sState."','".$sZip."','".$sCountry."','".$sHomePhone."','".$sWorkPhone."','".$sCellPhone."','".$sEmail."',".$dWeddingDate.",'".date('YmdHis')."',".AuthenticationManager::getCurrentUser()->getId().')';
+            $sSQL = "INSERT INTO family_fam (fam_Name, fam_Address1, fam_Address2, fam_City, fam_State, fam_Zip, fam_Country, fam_HomePhone, fam_WorkPhone, fam_CellPhone, fam_Email, fam_WeddingDate, fam_DateEntered, fam_EnteredBy) VALUES ('" . $sFamilyName . "','" . $sAddress1 . "','" . $sAddress2 . "','" . $sCity . "','" . $sState . "','" . $sZip . "','" . $sCountry . "','" . $sHomePhone . "','" . $sWorkPhone . "','" . $sCellPhone . "','" . $sEmail . "'," . $dWeddingDate . ",'" . date('YmdHis') . "'," . AuthenticationManager::getCurrentUser()->getId() . ')';
             RunQuery($sSQL);
 
             //Get the key back
@@ -99,23 +100,23 @@ if (isset($_POST['Submit']) && count($_SESSION['aPeopleCart']) > 0) {
         $iCount = 0;
         while ($element = each($_SESSION['aPeopleCart'])) {
             $iPersonID = $_SESSION['aPeopleCart'][$element[key]];
-            $sSQL = 'SELECT per_fam_ID FROM person_per WHERE per_ID = '.$iPersonID;
+            $sSQL = 'SELECT per_fam_ID FROM person_per WHERE per_ID = ' . $iPersonID;
             $rsPerson = RunQuery($sSQL);
             extract(mysqli_fetch_array($rsPerson));
 
             // Make sure they are not already in a family
             if ($per_fam_ID == 0) {
-                $iFamilyRoleID = InputUtils::legacyFilterInput($_POST['role'.$iPersonID], 'int');
+                $iFamilyRoleID = InputUtils::legacyFilterInput($_POST['role' . $iPersonID], 'int');
 
-                $sSQL = 'UPDATE person_per SET per_fam_ID = '.$iFamilyID.', per_fmr_ID = '.$iFamilyRoleID.' WHERE per_ID = '.$iPersonID;
+                $sSQL = 'UPDATE person_per SET per_fam_ID = ' . $iFamilyID . ', per_fmr_ID = ' . $iFamilyRoleID . ' WHERE per_ID = ' . $iPersonID;
                 RunQuery($sSQL);
                 $iCount++;
             }
         }
 
-        $sGlobalMessage = $iCount.' records(s) successfully added to selected Family.';
+        $sGlobalMessage = $iCount . ' records(s) successfully added to selected Family.';
 
-        RedirectUtils::redirect('v2/family/'.$iFamilyID.'&Action=EmptyCart');
+        RedirectUtils::redirect('v2/family/' . $iFamilyID . '&Action=EmptyCart');
     }
 }
 
@@ -140,19 +141,19 @@ if (count($_SESSION['aPeopleCart']) > 0) {
     $sRoleOptionsHTML = '';
     while ($aRow = mysqli_fetch_array($rsFamilyRoles)) {
         extract($aRow);
-        $sRoleOptionsHTML .= '<option value="'.$lst_OptionID.'">'.$lst_OptionName.'</option>';
+        $sRoleOptionsHTML .= '<option value="' . $lst_OptionID . '">' . $lst_OptionName . '</option>';
     }
 
     $sSQL = 'SELECT per_Title, per_FirstName, per_MiddleName, per_LastName, per_Suffix, per_fam_ID, per_ID
-			FROM person_per WHERE per_ID IN ('.convertCartToString($_SESSION['aPeopleCart']).')
+			FROM person_per WHERE per_ID IN (' . convertCartToString($_SESSION['aPeopleCart']) . ')
 			ORDER BY per_LastName';
     $rsCartItems = RunQuery($sSQL);
 
     echo "<table class='table'>";
     echo '<tr>';
     echo '<td>&nbsp;</td>';
-    echo '<td><b>'.gettext('Name').'</b></td>';
-    echo '<td align="center"><b>'.gettext('Assign Role').'</b></td>';
+    echo '<td><b>' . gettext('Name') . '</b></td>';
+    echo '<td align="center"><b>' . gettext('Assign Role') . '</b></td>';
 
     $count = 1;
     while ($aRow = mysqli_fetch_array($rsCartItems)) {
@@ -160,13 +161,13 @@ if (count($_SESSION['aPeopleCart']) > 0) {
 
         extract($aRow);
 
-        echo '<tr class="'.$sRowClass.'">';
-        echo '<td align="center">'.$count++.'</td>';
-        echo "<td><img src='".SystemURLs::getRootPath().'/api/person/'.$per_ID."/thumbnail' class='direct-chat-img'> &nbsp <a href=\"PersonView.php?PersonID=".$per_ID.'">'.FormatFullName($per_Title, $per_FirstName, $per_MiddleName, $per_LastName, $per_Suffix, 1).'</a></td>';
+        echo '<tr class="' . $sRowClass . '">';
+        echo '<td align="center">' . $count++ . '</td>';
+        echo "<td><img src='" . SystemURLs::getRootPath() . '/api/person/' . $per_ID . "/thumbnail' class='direct-chat-img'> &nbsp <a href=\"PersonView.php?PersonID=" . $per_ID . '">' . FormatFullName($per_Title, $per_FirstName, $per_MiddleName, $per_LastName, $per_Suffix, 1) . '</a></td>';
 
         echo '<td align="center">';
         if ($per_fam_ID == 0) {
-            echo '<select name="role'.$per_ID.'">'.$sRoleOptionsHTML.'</select>';
+            echo '<select name="role' . $per_ID . '">' . $sRoleOptionsHTML . '</select>';
         } else {
             echo gettext('Already in a family');
         }
@@ -186,10 +187,10 @@ if (count($_SESSION['aPeopleCart']) > 0) {
             <?php
             // Create the family select drop-down
             echo '<select name="FamilyID">';
-            echo '<option value="0">'.gettext('Create new family').'</option>';
+            echo '<option value="0">' . gettext('Create new family') . '</option>';
             while ($aRow = mysqli_fetch_array($rsFamilies)) {
                 extract($aRow);
-                echo '<option value="'.$fam_ID.'">'.$fam_Name.'</option>';
+                echo '<option value="' . $fam_ID . '">' . $fam_Name . '</option>';
             }
             echo '</select>'; ?>
         </td>
@@ -208,7 +209,7 @@ if (count($_SESSION['aPeopleCart']) > 0) {
 
     <tr>
         <td class="LabelColumn"><?= gettext('Wedding Date') ?>:</td>
-        <td class="TextColumnWithBottomBorder"><input type="text" Name="WeddingDate" value="<?= $dWeddingDate ?>" maxlength="10" id="sel1" size="15"  class="form-control pull-right active date-picker"><span style="color: red;"><?php echo '<BR>'.$sWeddingDateError ?></span></td>
+        <td class="TextColumnWithBottomBorder"><input type="text" Name="WeddingDate" value="<?= $dWeddingDate ?>" maxlength="10" id="sel1" size="15"  class="form-control pull-right active date-picker"><span style="color: red;"><?php echo '<BR>' . $sWeddingDateError ?></span></td>
     </tr>
 
     <tr>
@@ -216,13 +217,13 @@ if (count($_SESSION['aPeopleCart']) > 0) {
         <td class="TextColumn">
             <?php
             echo '<select name="PersonAddress">';
-            echo '<option value="0">'.gettext('Only the new data below').'</option>';
+            echo '<option value="0">' . gettext('Only the new data below') . '</option>';
 
             mysqli_data_seek($rsCartItems, 0);
             while ($aRow = mysqli_fetch_array($rsCartItems)) {
                 extract($aRow);
                 if ($per_fam_ID == 0) {
-                    echo '<option value="'.$per_ID.'">'.$per_FirstName.' '.$per_LastName.'</option>';
+                    echo '<option value="' . $per_ID . '">' . $per_FirstName . ' ' . $per_LastName . '</option>';
                 }
             }
 
@@ -321,7 +322,7 @@ if (count($_SESSION['aPeopleCart']) > 0) {
 </form>
     <?php
 } else {
-        echo "<p align=\"center\" class='callout callout-warning'>".gettext('Your cart is empty!').'</p>';
+        echo "<p align=\"center\" class='callout callout-warning'>" . gettext('Your cart is empty!') . '</p>';
 }
 ?>
 </div>

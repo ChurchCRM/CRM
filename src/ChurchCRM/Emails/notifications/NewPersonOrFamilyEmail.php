@@ -51,8 +51,8 @@ class NewPersonOrFamilyEmail extends BaseEmail
         if (get_class($this->relatedObject) == \ChurchCRM\Family::class) {
           /* @var $family ChurchCRM\Family */
             $family = $this->relatedObject;
-            $myTokens['body'] = gettext("New Family Added")."\r\n".
-            gettext("Family Name").": ". $family->getName();
+            $myTokens['body'] = gettext("New Family Added") . "\r\n" .
+            gettext("Family Name") . ": " . $family->getName();
             $myTokens['FamilyEmail'] =  $family->getEmail();
             $myTokens['FamilyPhone'] = $family->getCellPhone();
             $myTokens['FamilyAddress'] =  $family->getAddress();
@@ -60,8 +60,8 @@ class NewPersonOrFamilyEmail extends BaseEmail
         } elseif (get_class($this->relatedObject) == \ChurchCRM\Person::class) {
           /* @var $person ChurchCRM\Person */
             $person = $this->relatedObject;
-            $myTokens['body'] = gettext("New Person Added")."\r\n".
-            gettext("Person Name").": ". $person->getFullName();
+            $myTokens['body'] = gettext("New Person Added") . "\r\n" .
+            gettext("Person Name") . ": " . $person->getFullName();
             $myTokens['PersonEmail'] = $person->getEmail();
             $myTokens['PersonPhone'] = $person->getCellPhone();
             $myTokens['PersonAddress'] = $person->getAddress();
@@ -79,7 +79,7 @@ class NewPersonOrFamilyEmail extends BaseEmail
         if (get_class($this->relatedObject) == \ChurchCRM\Family::class) {
             return SystemURLs::getURL() . "/v2/family/" . $this->relatedObject->getId();
         } elseif (get_class($this->relatedObject) == \ChurchCRM\Person::class) {
-            return SystemURLs::getURL()."/PersonView.php?PersonID=". $this->relatedObject->getId();
+            return SystemURLs::getURL() . "/PersonView.php?PersonID=" . $this->relatedObject->getId();
         }
     }
 

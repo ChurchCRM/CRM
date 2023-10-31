@@ -1,4 +1,5 @@
 <?php
+
 namespace ChurchCRM\dto;
 
 use ChurchCRM\Authentication\AuthenticationManager;

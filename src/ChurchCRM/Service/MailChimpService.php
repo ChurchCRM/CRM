@@ -3,7 +3,7 @@
 namespace ChurchCRM\Service;
 
 use ChurchCRM\dto\SystemConfig;
-use \DrewM\MailChimp\MailChimp;
+use DrewM\MailChimp\MailChimp;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\ExecutionTime;
 use PHPMailer\PHPMailer\Exception;
@@ -41,7 +41,7 @@ class MailChimpService
     {
         if (!isset($_SESSION['MailChimpLists'])) {
             LoggerUtils::getAppLogger()->debug("Updating MailChimp List Cache");
-            $time = new ExecutionTime;
+            $time = new ExecutionTime();
             $lists = $this->myMailchimp->get("lists")['lists'];
             LoggerUtils::getAppLogger()->debug("MailChimp list enumeration took: " . $time->getMilliseconds() . " ms.  Found " . count($lists) . " lists");
             foreach ($lists as &$list) {
@@ -62,7 +62,7 @@ class MailChimpService
                         "status" => $member["status"]
                         ]);
                 }
-                LoggerUtils::getAppLogger()->debug("MailChimp list ". $list['id'] . " membership ". count($list['members']));
+                LoggerUtils::getAppLogger()->debug("MailChimp list " . $list['id'] . " membership " . count($list['members']));
             }
             LoggerUtils::getAppLogger()->debug("MailChimp list and membership update took: " . $time->getMilliseconds() . " ms");
             $_SESSION['MailChimpLists'] = $lists;

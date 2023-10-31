@@ -1,4 +1,5 @@
 <?php
+
 /*******************************************************************************
  *
  *  filename    : PersonCustomFieldsEditor.php
@@ -58,7 +59,7 @@ require 'Include/Header.php'; ?>
         }
 
         for ($iFieldID = 1; $iFieldID <= $numRows; $iFieldID++) {
-            $aNameFields[$iFieldID] = InputUtils::legacyFilterInput($_POST[$iFieldID.'name']);
+            $aNameFields[$iFieldID] = InputUtils::legacyFilterInput($_POST[$iFieldID . 'name']);
 
             if (strlen($aNameFields[$iFieldID]) == 0) {
                 $aNameErrors[$iFieldID] = true;
@@ -67,10 +68,10 @@ require 'Include/Header.php'; ?>
                 $aNameErrors[$iFieldID] = false;
             }
 
-            $aFieldSecurity[$iFieldID] = $_POST[$iFieldID.'FieldSec'];
+            $aFieldSecurity[$iFieldID] = $_POST[$iFieldID . 'FieldSec'];
 
-            if (isset($_POST[$iFieldID.'special'])) {
-                $aSpecialFields[$iFieldID] = InputUtils::legacyFilterInput($_POST[$iFieldID.'special'], 'int');
+            if (isset($_POST[$iFieldID . 'special'])) {
+                $aSpecialFields[$iFieldID] = InputUtils::legacyFilterInput($_POST[$iFieldID . 'special'], 'int');
 
                 if ($aSpecialFields[$iFieldID] == 0) {
                     $aSpecialErrors[$iFieldID] = true;
@@ -85,10 +86,10 @@ require 'Include/Header.php'; ?>
         if (!$bErrorFlag) {
             for ($iFieldID = 1; $iFieldID <= $numRows; $iFieldID++) {
                 $sSQL = "UPDATE person_custom_master
-					SET custom_Name = '".$aNameFields[$iFieldID]."',
-						custom_Special = ".$aSpecialFields[$iFieldID].",
-						custom_FieldSec = ".$aFieldSecurity[$iFieldID]."
-					WHERE custom_Field = '".$aFieldFields[$iFieldID]."';";
+					SET custom_Name = '" . $aNameFields[$iFieldID] . "',
+						custom_Special = " . $aSpecialFields[$iFieldID] . ",
+						custom_FieldSec = " . $aFieldSecurity[$iFieldID] . "
+					WHERE custom_Field = '" . $aFieldFields[$iFieldID] . "';";
                 RunQuery($sSQL);
             }
         }
@@ -139,7 +140,7 @@ require 'Include/Header.php'; ?>
                         }
 
                         // Insert into the lists table with an example option.
-                        $sSQL = "INSERT INTO list_lst VALUES ($newListID, 1, 1,'".gettext('Default Option')."')";
+                        $sSQL = "INSERT INTO list_lst VALUES ($newListID, 1, 1,'" . gettext('Default Option') . "')";
                         RunQuery($sSQL);
 
                         $newSpecial = "'$newListID'";
@@ -151,11 +152,11 @@ require 'Include/Header.php'; ?>
                     $newOrderID = $last + 1;
                     $sSQL = "INSERT INTO person_custom_master
 						(custom_Order , custom_Field , custom_Name ,  custom_Special , custom_FieldSec, type_ID)
-						VALUES ('".$newOrderID."', 'c".$newFieldNum."', '".$newFieldName."', ".$newSpecial.", '".$newFieldSec."', '".$newFieldType."');";
+						VALUES ('" . $newOrderID . "', 'c" . $newFieldNum . "', '" . $newFieldName . "', " . $newSpecial . ", '" . $newFieldSec . "', '" . $newFieldType . "');";
                     RunQuery($sSQL);
 
                     // Insert into the custom fields table
-                    $sSQL = 'ALTER TABLE person_custom ADD c'.$newFieldNum.' ';
+                    $sSQL = 'ALTER TABLE person_custom ADD c' . $newFieldNum . ' ';
 
                     switch ($newFieldType) {
                         case 1:
@@ -234,18 +235,18 @@ require 'Include/Header.php'; ?>
     }
     function GetSecurityList($aSecGrp, $fld_name, $currOpt = 'bAll')
     {
-        $sOptList = '<select name="'.$fld_name.'">';
+        $sOptList = '<select name="' . $fld_name . '">';
         $grp_Count = count($aSecGrp);
 
         for ($i = 0; $i < $grp_Count; $i++) {
             $aAryRow = $aSecGrp[$i];
             //extract($aAryRow);
-            $sOptList .= '<option value="'.$aAryRow['lst_OptionID'].'"';
+            $sOptList .= '<option value="' . $aAryRow['lst_OptionID'] . '"';
             //        echo "lst_OptionName:".$aAryRow['lst_OptionName']."<br>";
             if ($aAryRow['lst_OptionName'] == $currOpt) {
                 $sOptList .= ' selected';
             }
-            $sOptList .= '>'.$aAryRow['lst_OptionName']."</option>\n";
+            $sOptList .= '>' . $aAryRow['lst_OptionName'] . "</option>\n";
         }
         $sOptList .= '</select>';
 
@@ -286,7 +287,7 @@ require 'Include/Header.php'; ?>
           <td colspan="6">
             <?php
             if ($bErrorFlag) {
-                echo '<span class="LargeText" style="color: red;"><BR>'.gettext('Invalid fields or selections. Changes not saved! Please correct and try again!').'</span>';
+                echo '<span class="LargeText" style="color: red;"><BR>' . gettext('Invalid fields or selections. Changes not saved! Please correct and try again!') . '</span>';
             } ?>
           </td>
         </tr>
@@ -313,13 +314,13 @@ require 'Include/Header.php'; ?>
                      maxlength="40">
                 <?php
                 if (array_key_exists($row, $aNameErrors) && $aNameErrors[$row]) {
-                    echo '<span style="color: red;"><BR>'.gettext('You must enter a name').' </span>';
+                    echo '<span style="color: red;"><BR>' . gettext('You must enter a name') . ' </span>';
                 } ?>
             </td>
             <td class="TextColumn" align="center">
                   <?php
                     if ($aTypeFields[$row] == 9) {
-                        echo '<select name="'.$row.'special">';
+                        echo '<select name="' . $row . 'special">';
                         echo '<option value="0" selected>Select a group</option>';
 
                         $sSQL = 'SELECT grp_ID,grp_Name FROM group_grp ORDER BY grp_Name';
@@ -328,19 +329,19 @@ require 'Include/Header.php'; ?>
                         while ($aRow = mysqli_fetch_array($rsGroupList)) {
                             extract($aRow);
 
-                            echo '<option value="'.$grp_ID.'"';
+                            echo '<option value="' . $grp_ID . '"';
                             if ($aSpecialFields[$row] == $grp_ID) {
                                 echo ' selected';
                             }
-                            echo '>'.$grp_Name.'</option>';
+                            echo '>' . $grp_Name . '</option>';
                         }
 
                         echo '</select>';
                         if ($aSpecialErrors[$row]) {
-                            echo '<span style="color: red;"><BR>'.gettext('You must select a group.').'</span>';
+                            echo '<span style="color: red;"><BR>' . gettext('You must select a group.') . '</span>';
                         }
                     } elseif ($aTypeFields[$row] == 12) {
-                        echo "<a href=\"javascript:void(0)\" onClick=\"Newwin=window.open('OptionManager.php?mode=custom&ListID=$aSpecialFields[$row]','Newwin','toolbar=no,status=no,width=400,height=500')\">".gettext('Edit List Options').'</a>';
+                        echo "<a href=\"javascript:void(0)\" onClick=\"Newwin=window.open('OptionManager.php?mode=custom&ListID=$aSpecialFields[$row]','Newwin','toolbar=no,status=no,width=400,height=500')\">" . gettext('Edit List Options') . '</a>';
                     } else {
                         echo '&nbsp;';
                     } ?>
@@ -349,22 +350,22 @@ require 'Include/Header.php'; ?>
             <td class="TextColumn" align="center" nowrap>
                   <?php
                     if (isset($aSecurityType[$aFieldSecurity[$row]])) {
-                        echo GetSecurityList($aSecurityGrp, $row.'FieldSec', $aSecurityType[$aFieldSecurity[$row]]);
+                        echo GetSecurityList($aSecurityGrp, $row . 'FieldSec', $aSecurityType[$aFieldSecurity[$row]]);
                     } else {
-                        echo GetSecurityList($aSecurityGrp, $row.'FieldSec');
+                        echo GetSecurityList($aSecurityGrp, $row . 'FieldSec');
                     } ?>
             </td>
             <td>
               <input type="button" class="btn btn-danger" value="<?= gettext('Delete') ?>" name="delete"
-                     onclick="return confirmDeleteField(<?= "'".$aFieldFields[$row]."'" ?>);" )">
+                     onclick="return confirmDeleteField(<?= "'" . $aFieldFields[$row] . "'" ?>);" )">
             </td>
             <td class="TextColumn" width="5%" nowrap>
                   <?php
                     if ($row != 1) {
-                        echo "<a href=\"PersonCustomFieldsRowOps.php?OrderID=$row&Field=".$aFieldFields[$row].'&Action=up"><i class="fa fa-arrow-up"></i></a>';
+                        echo "<a href=\"PersonCustomFieldsRowOps.php?OrderID=$row&Field=" . $aFieldFields[$row] . '&Action=up"><i class="fa fa-arrow-up"></i></a>';
                     }
                     if ($row < $numRows) {
-                        echo "<a href=\"PersonCustomFieldsRowOps.php?OrderID=$row&Field=".$aFieldFields[$row].'&Action=down"><i class="fa fa-arrow-down"></i></a>';
+                        echo "<a href=\"PersonCustomFieldsRowOps.php?OrderID=$row&Field=" . $aFieldFields[$row] . '&Action=down"><i class="fa fa-arrow-down"></i></a>';
                     } ?>
 
             </td>
@@ -405,8 +406,8 @@ require 'Include/Header.php'; ?>
                 echo '<select name="newFieldType">';
 
                 for ($iOptionID = 1; $iOptionID <= count($aPropTypes); $iOptionID++) {
-                    echo '<option value="'.$iOptionID.'"';
-                    echo '>'.$aPropTypes[$iOptionID].'</option>';
+                    echo '<option value="' . $iOptionID . '"';
+                    echo '>' . $aPropTypes[$iOptionID] . '</option>';
                 }
                 echo '</select>';
                 ?><BR>
@@ -417,10 +418,10 @@ require 'Include/Header.php'; ?>
                 <input type="text" name="newFieldName" size="30" maxlength="40">
                 <?php
                 if ($bNewNameError) {
-                    echo '<div><span style="color: red;"><BR>'.gettext('You must enter a name').'</span></div>';
+                    echo '<div><span style="color: red;"><BR>' . gettext('You must enter a name') . '</span></div>';
                 }
                 if ($bDuplicateNameError) {
-                    echo '<div><span style="color: red;"><BR>'.gettext('That field name already exists.').'</span></div>';
+                    echo '<div><span style="color: red;"><BR>' . gettext('That field name already exists.') . '</span></div>';
                 }
                 ?>
                 &nbsp;

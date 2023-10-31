@@ -1,4 +1,5 @@
 <?php
+
 /*******************************************************************************
  *
  *  filename    : GroupPropsEditor.php
@@ -31,14 +32,14 @@ $iGroupID = InputUtils::legacyFilterInput($_GET['GroupID'], 'int');
 $iPersonID = InputUtils::legacyFilterInput($_GET['PersonID'], 'int');
 
 // Get some info about this person.  per_Country is needed in case there are phone numbers.
-$sSQL = 'SELECT per_FirstName, per_LastName, per_Country, per_fam_ID FROM person_per WHERE per_ID = '.$iPersonID;
+$sSQL = 'SELECT per_FirstName, per_LastName, per_Country, per_fam_ID FROM person_per WHERE per_ID = ' . $iPersonID;
 $rsPersonInfo = RunQuery($sSQL);
 extract(mysqli_fetch_array($rsPersonInfo));
 
 $fam_Country = '';
 
 if ($per_fam_ID > 0) {
-    $sSQL = 'SELECT fam_Country FROM family_fam WHERE fam_ID = '.$per_fam_ID;
+    $sSQL = 'SELECT fam_Country FROM family_fam WHERE fam_ID = ' . $per_fam_ID;
     $rsFam = RunQuery($sSQL);
     extract(mysqli_fetch_array($rsFam));
 }
@@ -46,7 +47,7 @@ if ($per_fam_ID > 0) {
 $sPhoneCountry = SelectWhichInfo($per_Country, $fam_Country, false);
 
 // Get the name of this group.
-$sSQL = 'SELECT grp_Name FROM group_grp WHERE grp_ID = '.$iGroupID;
+$sSQL = 'SELECT grp_Name FROM group_grp WHERE grp_ID = ' . $iGroupID;
 $rsGroupInfo = RunQuery($sSQL);
 extract(mysqli_fetch_array($rsGroupInfo));
 
@@ -56,7 +57,7 @@ extract(mysqli_fetch_array($rsGroupInfo));
 // Get the properties list for this group: names, descriptions, types and prop_ID for ordering;  will process later..
 
 $sSQL = 'SELECT groupprop_master.* FROM groupprop_master
-			WHERE grp_ID = '.$iGroupID.' ORDER BY prop_ID';
+			WHERE grp_ID = ' . $iGroupID . ' ORDER BY prop_ID';
 $rsPropList = RunQuery($sSQL);
 
 $aPropErrors = [];
@@ -83,7 +84,7 @@ if (isset($_POST['GroupPropSubmit'])) {
     if (!$bErrorFlag) {
         mysqli_data_seek($rsPropList, 0);
 
-        $sSQL = 'UPDATE groupprop_'.$iGroupID.' SET ';
+        $sSQL = 'UPDATE groupprop_' . $iGroupID . ' SET ';
 
         while ($rowPropList = mysqli_fetch_array($rsPropList, MYSQLI_BOTH)) {
             extract($rowPropList);
@@ -95,20 +96,20 @@ if (isset($_POST['GroupPropSubmit'])) {
         // chop off the last 2 characters (comma and space) added in the last while loop iteration.
         $sSQL = mb_substr($sSQL, 0, -2);
 
-        $sSQL .= ' WHERE per_ID = '.$iPersonID;
+        $sSQL .= ' WHERE per_ID = ' . $iPersonID;
 
         //Execute the SQL
         RunQuery($sSQL);
 
         // Return to the Person View
-        RedirectUtils::redirect('PersonView.php?PersonID='.$iPersonID);
+        RedirectUtils::redirect('PersonView.php?PersonID=' . $iPersonID);
     }
 } else {
     // First Pass
     // we are always editing, because the record for a group member was created when they were added to the group
 
     // Get the existing data for this group member
-    $sSQL = 'SELECT * FROM groupprop_'.$iGroupID.' WHERE per_ID = '.$iPersonID;
+    $sSQL = 'SELECT * FROM groupprop_' . $iGroupID . ' WHERE per_ID = ' . $iPersonID;
     $rsPersonProps = RunQuery($sSQL);
     $aPersonProps = mysqli_fetch_array($rsPersonProps, MYSQLI_BOTH);
 }
@@ -128,10 +129,10 @@ if (mysqli_num_rows($rsPropList) == 0) {
 
   <div class="box ">
     <div class="card-header">
-      <h3 class="card-title"><?= gettext('Editing') ?> <i> <?= $grp_Name ?> </i> <?= gettext('data for member') ?> <i> <?= $per_FirstName.' '.$per_LastName ?> </i></h3>
+      <h3 class="card-title"><?= gettext('Editing') ?> <i> <?= $grp_Name ?> </i> <?= gettext('data for member') ?> <i> <?= $per_FirstName . ' ' . $per_LastName ?> </i></h3>
     </div>
     <div class="card-body">
-      <form method="post" action="GroupPropsEditor.php?<?= 'PersonID='.$iPersonID.'&GroupID='.$iGroupID ?>" name="GroupPropEditor">
+      <form method="post" action="GroupPropsEditor.php?<?= 'PersonID=' . $iPersonID . '&GroupID=' . $iGroupID ?>" name="GroupPropEditor">
 
         <table class="table">
           <?php
@@ -154,7 +155,7 @@ if (mysqli_num_rows($rsPropList) == 0) {
                     formCustomField($type_ID, $prop_Field, $currentFieldData, $prop_Special, !isset($_POST['GroupPropSubmit']));
 
                     if (array_key_exists($prop_Field, $aPropErrors)) {
-                        echo '<span style="color: red; ">'.$aPropErrors[$prop_Field].'</span>';
+                        echo '<span style="color: red; ">' . $aPropErrors[$prop_Field] . '</span>';
                     } ?>
               </td>
               <td><?= $prop_Description ?></td>

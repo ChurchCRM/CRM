@@ -1,6 +1,5 @@
 <?php
 
-
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\PropertyQuery;
 use ChurchCRM\RecordProperty;
@@ -83,7 +82,7 @@ function getProperties(Response $response, $type, $id)
     $finalProperties = [];
 
     foreach ($properties as $property) {
-        $rawProp =$property->getProperty();
+        $rawProp = $property->getProperty();
         if ($rawProp->getProClass() == $type) {
             $tempProp = [];
             $tempProp["id"] = $property->getPropertyId();

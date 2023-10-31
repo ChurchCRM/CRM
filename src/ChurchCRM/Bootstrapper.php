@@ -89,7 +89,7 @@ namespace ChurchCRM
         {
             $userLocale = "";
             try {
-                $userLocale=  AuthenticationManager::getCurrentUser()->getSetting("ui.locale");
+                $userLocale =  AuthenticationManager::getCurrentUser()->getSetting("ui.locale");
             } catch (\Exception $ex) {
                 //maybe user is logged in
             }
@@ -106,7 +106,7 @@ namespace ChurchCRM
 
             $localeInfo = Bootstrapper::getCurrentLocale();
             self::$bootStrapLogger->debug("Setting locale to: " . $localeInfo->getLocale());
-            setlocale(LC_ALL, $localeInfo->getLocale(), $localeInfo->getLocale().'.UTF-8', $localeInfo->getLocale().'.utf8');
+            setlocale(LC_ALL, $localeInfo->getLocale(), $localeInfo->getLocale() . '.UTF-8', $localeInfo->getLocale() . '.utf8');
 
             // Get numeric and monetary locale settings.
             $aLocaleInfo = $localeInfo->getLocaleInfo();
@@ -127,7 +127,7 @@ namespace ChurchCRM
         private static function initMySQLI()
         {
             global $cnInfoCentral; // need to stop using this everywhere....
-            self::$bootStrapLogger->debug("Initializing MySQLi to ". self::$databaseServerName . " as " . self::$databaseUser);
+            self::$bootStrapLogger->debug("Initializing MySQLi to " . self::$databaseServerName . " as " . self::$databaseUser);
             // Due to mysqli handling connections on 'localhost' via socket only, we need to tease out this case and handle
             // TCP/IP connections separately defaulting self::$databasePort to 3306 for the general case when self::$databasePort is not set.
             if (self::$databaseServerName == "localhost") {
@@ -136,11 +136,11 @@ namespace ChurchCRM
             } else {
                 if (!isset(self::$databasePort)) {
                     self::$bootStrapLogger->debug("MySQL connection did not specify a port.  Using 3306 as default");
-                    self::$databasePort=3306;
+                    self::$databasePort = 3306;
                 }
                 // Connect via TCP to specified port and pass a 'null' for database name.
                 // We specify the database name in a different call, ie 'mysqli_select_db()' just below here
-                self::$bootStrapLogger->debug("Connecting to ". self::$databaseServerName . " on port " . self::$databasePort . " as " . self::$databaseUser);
+                self::$bootStrapLogger->debug("Connecting to " . self::$databaseServerName . " on port " . self::$databasePort . " as " . self::$databaseUser);
                 try {
                     $cnInfoCentral = mysqli_connect(self::$databaseServerName, self::$databaseUser, self::$databasePassword, null, self::$databasePort);
                 } catch (\Exception $e) {
@@ -151,7 +151,7 @@ namespace ChurchCRM
             mysqli_set_charset($cnInfoCentral, 'utf8mb4');
             self::$bootStrapLogger->debug("Selecting database: " . self::$databaseName);
             mysqli_select_db($cnInfoCentral, self::$databaseName)
-            or Bootstrapper::systemFailure('Could not connect to the MySQL database <strong>'.self::$databaseName.'</strong>. Please check the settings in <strong>Include/Config.php</strong>.<br/>MySQL Error: '.mysqli_error($cnInfoCentral));
+            or Bootstrapper::systemFailure('Could not connect to the MySQL database <strong>' . self::$databaseName . '</strong>. Please check the settings in <strong>Include/Config.php</strong>.<br/>MySQL Error: ' . mysqli_error($cnInfoCentral));
             self::$bootStrapLogger->debug("Database selected: " . self::$databaseName);
         }
         private static function testMYSQLI()
@@ -160,9 +160,9 @@ namespace ChurchCRM
             // Do we have a connection to the database? If not, log it and tell the user
             if (!$cnInfoCentral) {
                 // Sanitise the mysqli_connect_error if required.
-                $sMYSQLERROR="none captured";
-                if (strlen(mysqli_connect_error())>0) {
-                    $sMYSQLERROR=mysqli_connect_error();
+                $sMYSQLERROR = "none captured";
+                if (strlen(mysqli_connect_error()) > 0) {
+                    $sMYSQLERROR = mysqli_connect_error();
                 }
                 // If connecting via a socket, convert self::$databasePort to something sensible.
                 if (self::$databaseServerName == "localhost") {
@@ -173,8 +173,8 @@ namespace ChurchCRM
                     SystemConfig::init();
                 }
                 // Log the error to the application log, and show an error page to user.
-                LoggerUtils::getAppLogger()->error("ERROR connecting to database at '".self::$databaseServerName."' on port '".self::$databasePort."' as user '".self::$databaseUser."' -  MySQL Error: '".$sMYSQLERROR."'");
-                Bootstrapper::systemFailure('Could not connect to MySQL on <strong>'.self::$databaseServerName.'</strong> on port <strong>'.self::$databasePort.'</strong> as <strong>'.self::$databaseUser.'</strong>. Please check the settings in <strong>Include/Config.php</strong>.<br/>MySQL Error: '.$sMYSQLERROR, 'Database Connection Failure');
+                LoggerUtils::getAppLogger()->error("ERROR connecting to database at '" . self::$databaseServerName . "' on port '" . self::$databasePort . "' as user '" . self::$databaseUser . "' -  MySQL Error: '" . $sMYSQLERROR . "'");
+                Bootstrapper::systemFailure('Could not connect to MySQL on <strong>' . self::$databaseServerName . '</strong> on port <strong>' . self::$databasePort . '</strong> as <strong>' . self::$databaseUser . '</strong>. Please check the settings in <strong>Include/Config.php</strong>.<br/>MySQL Error: ' . $sMYSQLERROR, 'Database Connection Failure');
             }
         }
         private static function initPropel()
@@ -199,7 +199,7 @@ namespace ChurchCRM
         {
             self::$bootStrapLogger->debug("Checking for ChurchCRM Database tables");
             $connection = Propel::getConnection();
-            $query = "SHOW TABLES FROM `".self::$databaseName."`";
+            $query = "SHOW TABLES FROM `" . self::$databaseName . "`";
             $statement = $connection->prepare($query);
             $resultset = $statement->execute();
             $results = $statement->fetchAll(\PDO::FETCH_ASSOC);
@@ -217,7 +217,7 @@ namespace ChurchCRM
             $version = new Version();
             $version->setVersion(SystemService::getInstalledVersion());
             $version->setUpdateStart(new \DateTime());
-            SQLUtils::sqlImport(SystemURLs::getDocumentRoot().'/mysql/install/Install.sql', $connection);
+            SQLUtils::sqlImport(SystemURLs::getDocumentRoot() . '/mysql/install/Install.sql', $connection);
             $version->setUpdateEnd(new \DateTime());
             $version->save();
             self::$bootStrapLogger->info("Installed ChurchCRM Schema version: " . SystemService::getInstalledVersion());
@@ -225,7 +225,7 @@ namespace ChurchCRM
         public static function initSession()
         {
             // Initialize the session
-            $sessionName = 'CRM-'.hash("md5", SystemURLs::getDocumentRoot());
+            $sessionName = 'CRM-' . hash("md5", SystemURLs::getDocumentRoot());
             session_cache_limiter('private_no_expire:');
             session_name($sessionName);
             session_start();
@@ -235,14 +235,14 @@ namespace ChurchCRM
         {
          // PHP Logs
             $phpLogPath = LoggerUtils::buildLogFilePath("php");
-            self::$bootStrapLogger->debug("Configuring PHP logs at :" .$phpLogPath);
+            self::$bootStrapLogger->debug("Configuring PHP logs at :" . $phpLogPath);
             ini_set('log_errors', 1);
             ini_set('error_log', $phpLogPath);
 
             // ORM Logs
             $ormLogPath = LoggerUtils::buildLogFilePath("orm");
             $ormLogger = new Logger('ormLogger');
-            self::$bootStrapLogger->debug("Configuring ORM logs at :" .$ormLogPath);
+            self::$bootStrapLogger->debug("Configuring ORM logs at :" . $ormLogPath);
             self::$dbClassName = '\\' . \Propel\Runtime\Connection\DebugPDO::class;
             self::$manager->setConfiguration(self::buildConnectionManagerConfig());
             $ormLogger->pushHandler(new StreamHandler($ormLogPath, LoggerUtils::getLogLevel()));
@@ -251,7 +251,7 @@ namespace ChurchCRM
 
         public static function getDSN()
         {
-            return 'mysql:host=' . self::$databaseServerName . ';port='.self::$databasePort.';dbname=' . self::$databaseName;
+            return 'mysql:host=' . self::$databaseServerName . ';port=' . self::$databasePort . ';dbname=' . self::$databaseName;
         }
 
         private static function buildConnectionManagerConfig()
@@ -281,7 +281,7 @@ namespace ChurchCRM
                 // Load user variables from user config table.
                 // **************************************************
                 $sSQL = 'SELECT ucfg_name, ucfg_value AS value '
-                ."FROM userconfig_ucfg WHERE ucfg_per_ID='".AuthenticationManager::getCurrentUser()->getId()."'";
+                . "FROM userconfig_ucfg WHERE ucfg_per_ID='" . AuthenticationManager::getCurrentUser()->getId() . "'";
                 $rsConfig = mysqli_query($cnInfoCentral, $sSQL);     // Can't use RunQuery -- not defined yet
                 if ($rsConfig) {
                     while ([$ucfg_name, $value] = mysqli_fetch_row($rsConfig)) {
@@ -314,7 +314,7 @@ namespace ChurchCRM
         {
             $dbVersion = SystemService::getDBVersion();
             $installVersion = SystemService::getInstalledVersion();
-            self::$bootStrapLogger->debug("Checking versions: " . $dbVersion. " == " .$installVersion);
+            self::$bootStrapLogger->debug("Checking versions: " . $dbVersion . " == " . $installVersion);
             return $dbVersion == $installVersion;
         }
     }

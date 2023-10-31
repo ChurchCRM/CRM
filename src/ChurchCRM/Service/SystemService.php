@@ -69,7 +69,7 @@ class SystemService
             $unmet = AppIntegrityService::getUnmetPrerequisites();
 
             $unmetNames = array_map(fn($o) => (string)($o->getName()), $unmet);
-            return "Missing Prerequisites: ".json_encode(array_values($unmetNames), JSON_THROW_ON_ERROR);
+            return "Missing Prerequisites: " . json_encode(array_values($unmetNames), JSON_THROW_ON_ERROR);
         }
     }
 
@@ -90,9 +90,9 @@ class SystemService
             'PHP Version | ' . phpversion() . "\r\n" .
             'SQL Version | ' . self::getDBServerVersion() . "\r\n" .
             'ChurchCRM Version |' . $_SESSION['sSoftwareInstalledVersion'] . "\r\n" .
-            'Reporting Browser |' . $_SERVER['HTTP_USER_AGENT'] . "\r\n".
-            'Prerequisite Status |' . self::getPrerequisiteStatus()."\r\n".
-            'Integrity check status |' . file_get_contents(SystemURLs::getDocumentRoot() . '/integrityCheck.json')."\r\n";
+            'Reporting Browser |' . $_SERVER['HTTP_USER_AGENT'] . "\r\n" .
+            'Prerequisite Status |' . self::getPrerequisiteStatus() . "\r\n" .
+            'Integrity check status |' . file_get_contents(SystemURLs::getDocumentRoot() . '/integrityCheck.json') . "\r\n";
 
         if (function_exists('apache_get_modules')) {
             $issueDescription .= 'Apache Modules    |' . implode(',', apache_get_modules());
@@ -141,8 +141,8 @@ class SystemService
             try {
                 if (self::isTimerThresholdExceeded(SystemConfig::getValue('sLastBackupTimeStamp'), SystemConfig::getValue('sExternalBackupAutoInterval'))) {
                   // if there was no previous backup, or if the interval suggests we do a backup now.
-                    LoggerUtils::getAppLogger()->info("Starting a backup job.  Last backup run: ".SystemConfig::getValue('sLastBackupTimeStamp'));
-                    $BaseName = preg_replace('/[^a-zA-Z0-9\-_]/', '', SystemConfig::getValue('sChurchName')). "-" . date(SystemConfig::getValue("sDateFilenameFormat"));
+                    LoggerUtils::getAppLogger()->info("Starting a backup job.  Last backup run: " . SystemConfig::getValue('sLastBackupTimeStamp'));
+                    $BaseName = preg_replace('/[^a-zA-Z0-9\-_]/', '', SystemConfig::getValue('sChurchName')) . "-" . date(SystemConfig::getValue("sDateFilenameFormat"));
                     $Backup = new BackupJob($BaseName, BackupType::FULL_BACKUP, SystemConfig::getValue('bBackupExtraneousImages'), false, '');
                     $Backup->execute();
                     $Backup->copyToWebDAV(SystemConfig::getValue('sExternalBackupEndpoint'), SystemConfig::getValue('sExternalBackupUsername'), SystemConfig::getValue('sExternalBackupPassword'));
@@ -150,11 +150,11 @@ class SystemService
                     SystemConfig::setValue('sLastBackupTimeStamp', $now->format(SystemConfig::getValue('sDateFilenameFormat')));
                     LoggerUtils::getAppLogger()->info("Backup job successful");
                 } else {
-                    LoggerUtils::getAppLogger()->info("Not starting a backup job.  Last backup run: ".SystemConfig::getValue('sLastBackupTimeStamp').".");
+                    LoggerUtils::getAppLogger()->info("Not starting a backup job.  Last backup run: " . SystemConfig::getValue('sLastBackupTimeStamp') . ".");
                 }
             } catch (\Exception $exc) {
                 // an error in the auto-backup shouldn't prevent the page from loading...
-                LoggerUtils::getAppLogger()->warning("Failure executing backup job: ". $exc->getMessage());
+                LoggerUtils::getAppLogger()->warning("Failure executing backup job: " . $exc->getMessage());
             }
         }
         if (SystemConfig::getBooleanValue('bEnableIntegrityCheck') && SystemConfig::getValue('iIntegrityCheckInterval') > 0) {
@@ -169,10 +169,10 @@ class SystemService
                 if ($appIntegrity['status'] == 'success') {
                     LoggerUtils::getAppLogger()->info("Application integrity check passed");
                 } else {
-                    LoggerUtils::getAppLogger()->warning("Application integrity check failed: ".$appIntegrity['message']);
+                    LoggerUtils::getAppLogger()->warning("Application integrity check failed: " . $appIntegrity['message']);
                 }
             } else {
-                 LoggerUtils::getAppLogger()->debug("Not starting application integrity check.  Last application integrity check run: ".SystemConfig::getValue('sLastIntegrityCheckTimeStamp'));
+                 LoggerUtils::getAppLogger()->debug("Not starting application integrity check.  Last application integrity check run: " . SystemConfig::getValue('sLastIntegrityCheckTimeStamp'));
             }
         }
         if (self::isTimerThresholdExceeded(SystemConfig::getValue('sLastSoftwareUpdateCheckTimeStamp'), SystemConfig::getValue('iSoftwareUpdateCheckInterval'))) {

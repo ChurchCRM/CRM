@@ -18,7 +18,7 @@ if (isset($_GET['groupId'])) {
     $iGroupId = InputUtils::legacyFilterInput($_GET['groupId'], 'int');
 }
 
-$sSQL = 'select * from group_grp where grp_ID ='.$iGroupId;
+$sSQL = 'select * from group_grp where grp_ID =' . $iGroupId;
 $rsSundaySchoolClass = RunQuery($sSQL);
 while ($aRow = mysqli_fetch_array($rsSundaySchoolClass)) {
     $iGroupName = $aRow['grp_Name'];
@@ -26,18 +26,18 @@ while ($aRow = mysqli_fetch_array($rsSundaySchoolClass)) {
 
 $birthDayMonthChartArray = [];
 foreach ($sundaySchoolService->getKidsBirthdayMonth($iGroupId) as $birthDayMonth => $kidsCount) {
-    array_push($birthDayMonthChartArray, "['".gettext($birthDayMonth)."', ".$kidsCount.' ]');
+    array_push($birthDayMonthChartArray, "['" . gettext($birthDayMonth) . "', " . $kidsCount . ' ]');
 }
 $birthDayMonthChartJSON = implode(',', $birthDayMonthChartArray);
 
 $genderChartArray = [];
 foreach ($sundaySchoolService->getKidsGender($iGroupId) as $gender => $kidsCount) {
-    array_push($genderChartArray, "{label: '".gettext($gender)."', data: ".$kidsCount.'}');
+    array_push($genderChartArray, "{label: '" . gettext($gender) . "', data: " . $kidsCount . '}');
 }
 $genderChartJSON = implode(',', $genderChartArray);
 
 $rsTeachers = $sundaySchoolService->getClassByRole($iGroupId, 'Teacher');
-$sPageTitle = gettext('Sunday School').': '.$iGroupName;
+$sPageTitle = gettext('Sunday School') . ': ' . $iGroupName;
 
 $TeachersEmails = [];
 $KidsEmails = [];
@@ -73,13 +73,13 @@ require '../Include/Header.php';
     <?php
     $sMailtoDelimiter = AuthenticationManager::getCurrentUser()->getUserConfigString("sMailtoDelimiter");
     $allEmails = array_unique([...$ParentsEmails, ...$KidsEmails, ...$TeachersEmails]);
-    $roleEmails->Parents = implode($sMailtoDelimiter, $ParentsEmails).',';
-    $roleEmails->Teachers = implode($sMailtoDelimiter, $TeachersEmails).',';
-    $roleEmails->Kids = implode($sMailtoDelimiter, $KidsEmails).',';
-    $sEmailLink = implode($sMailtoDelimiter, $allEmails).',';
+    $roleEmails->Parents = implode($sMailtoDelimiter, $ParentsEmails) . ',';
+    $roleEmails->Teachers = implode($sMailtoDelimiter, $TeachersEmails) . ',';
+    $roleEmails->Kids = implode($sMailtoDelimiter, $KidsEmails) . ',';
+    $sEmailLink = implode($sMailtoDelimiter, $allEmails) . ',';
     // Add default email if default email has been set and is not already in string
     if (SystemConfig::getValue('sToEmailAddress') != '' && !stristr($sEmailLink, (string) SystemConfig::getValue('sToEmailAddress'))) {
-        $sEmailLink .= $sMailtoDelimiter.SystemConfig::getValue('sToEmailAddress');
+        $sEmailLink .= $sMailtoDelimiter . SystemConfig::getValue('sToEmailAddress');
     }
     $sEmailLink = urlencode($sEmailLink);  // Mailto should comply with RFC 2368
 
@@ -132,7 +132,7 @@ require '../Include/Header.php';
         <!-- Begin user profile -->
         <div class="card card-info text-center user-profile-2">
           <div class="user-profile-inner">
-            <h4 class="white"><?= $teacher['per_FirstName'].' '.$teacher['per_LastName'] ?></h4>
+            <h4 class="white"><?= $teacher['per_FirstName'] . ' ' . $teacher['per_LastName'] ?></h4>
             <img src="<?= SystemURLs::getRootPath(); ?>/api/person/<?= $teacher['per_ID'] ?>/thumbnail"
                   alt="User Image" class="user-image initials-image" width="85" height="85" />
             <a href="mailto:<?= $teacher['per_Email'] ?>" type="button" class="btn btn-primary btn-sm btn-block"><i
@@ -227,17 +227,17 @@ require '../Include/Header.php';
             <img src="<?= SystemURLs::getRootPath(); ?>/api/person/<?= $child['kidId'] ?>/thumbnail"
                 alt="User Image" class="user-image initials-image" style="width: <?= SystemConfig::getValue('iProfilePictureListSize') ?>px !; height: <?= SystemConfig::getValue('iProfilePictureListSize') ?>px; max-width:none" />
           </td>
-          <td><a href="<?= SystemURLs::getRootPath(); ?>/PersonView.php?PersonID=<?= $child['kidId'] ?>"><?= $child['LastName'].', '.$child['firstName'] ?></a></td>
+          <td><a href="<?= SystemURLs::getRootPath(); ?>/PersonView.php?PersonID=<?= $child['kidId'] ?>"><?= $child['LastName'] . ', ' . $child['firstName'] ?></a></td>
           <td><?= $birthDate ?> </td>
           <td><?= MiscUtils::formatAge($child['birthMonth'], $child['birthDay'], $child['birthYear'], $child['flags']) ?></td>
           <td><?= $child['kidEmail'] ?></td>
           <td><?= $child['mobilePhone'] ?></td>
           <td><?= $child['homePhone'] ?></td>
-          <td><?= $child['Address1'].' '.$child['Address2'].' '.$child['city'].' '.$child['state'].' '.$child['zip'] ?></td>
-          <td><a href='<?= SystemURLs::getRootPath(); ?>/PersonView.php?PersonID=<?= $child['dadId'] ?>'><?= $child['dadFirstName'].' '.$child['dadLastName'] ?></a></td>
+          <td><?= $child['Address1'] . ' ' . $child['Address2'] . ' ' . $child['city'] . ' ' . $child['state'] . ' ' . $child['zip'] ?></td>
+          <td><a href='<?= SystemURLs::getRootPath(); ?>/PersonView.php?PersonID=<?= $child['dadId'] ?>'><?= $child['dadFirstName'] . ' ' . $child['dadLastName'] ?></a></td>
           <td><?= $child['dadCellPhone'] ?></td>
           <td><?= $child['dadEmail'] ?></td>
-          <td><a href='<?= SystemURLs::getRootPath(); ?>/PersonView.php?PersonID=<?= $child['momId'] ?>'><?= $child['momFirstName'].' '.$child['momLastName'] ?></td>
+          <td><a href='<?= SystemURLs::getRootPath(); ?>/PersonView.php?PersonID=<?= $child['momId'] ?>'><?= $child['momFirstName'] . ' ' . $child['momLastName'] ?></td>
           <td><?= $child['momCellPhone'] ?></td>
           <td><?= $child['momEmail'] ?></td>
           </tr>
@@ -260,7 +260,7 @@ function implodeUnique($array, $withQuotes)
         if ($withQuotes) {
             $string = implode("','", $array);
 
-            return "'".$string."'";
+            return "'" . $string . "'";
         } else {
             return implode(',', $array);
         }

@@ -22,8 +22,6 @@ use Propel\Runtime\Connection\ConnectionInterface;
  */
 class User extends BaseUser
 {
-
-
     private $provisional2FAKey;
 
     public function getId()
@@ -394,7 +392,7 @@ class User extends BaseUser
     {
         // generate an array of 2FA recovery codes, and store as an encrypted, comma-separated list
         $recoveryCodes = [];
-        for ($i=0; $i < 12; $i++) {
+        for ($i = 0; $i < 12; $i++) {
             $recoveryCodes[$i] = base64_encode(random_bytes(10));
         }
         $recoveryCodesString = implode(",", $recoveryCodes);

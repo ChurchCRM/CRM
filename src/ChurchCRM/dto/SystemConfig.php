@@ -18,11 +18,11 @@ class SystemConfig
 
     private static function getSupportedLocales()
     {
-        $localesFile = file_get_contents(SystemURLs::getDocumentRoot()."/locale/locales.json");
+        $localesFile = file_get_contents(SystemURLs::getDocumentRoot() . "/locale/locales.json");
         $locales = json_decode($localesFile, true, 512, JSON_THROW_ON_ERROR);
         $languagesChoices = [];
         foreach ($locales as $key => $value) {
-            array_push($languagesChoices, gettext($key).":".$value["locale"]);
+            array_push($languagesChoices, gettext($key) . ":" . $value["locale"]);
         }
 
         return ["Choices" => $languagesChoices ];
@@ -32,14 +32,14 @@ class SystemConfig
     {
         return [
             "Choices" => [
-                gettext("DEBUG").":".Logger::DEBUG,
-                gettext("INFO").":".Logger::INFO,
-                gettext("NOTICE").":".Logger::NOTICE,
-                gettext("WARNING").":".Logger::WARNING,
-                gettext("ERROR").":".Logger::ERROR,
-                gettext("CRITICAL").":".Logger::CRITICAL,
-                gettext("ALERT").":".Logger::ALERT,
-                gettext("EMERGENCY").":".Logger::EMERGENCY
+                gettext("DEBUG") . ":" . Logger::DEBUG,
+                gettext("INFO") . ":" . Logger::INFO,
+                gettext("NOTICE") . ":" . Logger::NOTICE,
+                gettext("WARNING") . ":" . Logger::WARNING,
+                gettext("ERROR") . ":" . Logger::ERROR,
+                gettext("CRITICAL") . ":" . Logger::CRITICAL,
+                gettext("ALERT") . ":" . Logger::ALERT,
+                gettext("EMERGENCY") . ":" . Logger::EMERGENCY
             ]
         ];
     }
@@ -48,15 +48,15 @@ class SystemConfig
     {
         return [
             "Choices" => [
-                gettext("Title FirstName MiddleName LastName").":0",
-                gettext("Title FirstName MiddleInitial. LastName").":1",
-                gettext("LastName, Title FirstName MiddleName").":2",
-                gettext("LastName, Title FirstName MiddleInitial").":3",
-                gettext("FirstName MiddleName LastName").":4",
-                gettext("Title FirstName LastName").":5",
-                gettext("LastName, Title FirstName").":6",
-                gettext("LastName FirstName").":7",
-                gettext("LastName, FirstName MiddleName").":8"
+                gettext("Title FirstName MiddleName LastName") . ":0",
+                gettext("Title FirstName MiddleInitial. LastName") . ":1",
+                gettext("LastName, Title FirstName MiddleName") . ":2",
+                gettext("LastName, Title FirstName MiddleInitial") . ":3",
+                gettext("FirstName MiddleName LastName") . ":4",
+                gettext("Title FirstName LastName") . ":5",
+                gettext("LastName, Title FirstName") . ":6",
+                gettext("LastName FirstName") . ":7",
+                gettext("LastName, FirstName MiddleName") . ":8"
             ]
         ];
     }
@@ -68,7 +68,7 @@ class SystemConfig
             $familyRoles = ListOptionQuery::create()->getFamilyRoles();
 
             foreach ($familyRoles as $familyRole) {
-                array_push($roles, $familyRole->getOptionName().":".$familyRole->getOptionId());
+                array_push($roles, $familyRole->getOptionName() . ":" . $familyRole->getOptionId());
             }
         } catch (Exception $e) {
         }
@@ -119,8 +119,8 @@ class SystemConfig
         "sGeoCoderProvider" => new ConfigItem(56, "sGeoCoderProvider", "choice", "GoogleMaps", gettext("Select GeoCoder Provider"), "https://github.com/geocoder-php/Geocoder/blob/3.x/README.md#address-based-providers", '{"Choices":["GoogleMaps", "BingMaps"]}'),
         "iChecksPerDepositForm" => new ConfigItem(57, "iChecksPerDepositForm", "number", "14", gettext("Number of checks for Deposit Slip Report")),
         "bUseScannedChecks" => new ConfigItem(58, "bUseScannedChecks", "boolean", "0", gettext("Set true to enable use of scanned checks")),
-        "sDistanceUnit" => new ConfigItem(64, "sDistanceUnit", "choice", "miles", gettext("Unit used to measure distance, miles or km."), "", '{"Choices":["'.gettext("miles").'","'.gettext("kilometers").'"]}'),
-        "sTimeZone" => new ConfigItem(65, "sTimeZone", "choice", "America/New_York", gettext("Time zone"), "http://php.net/manual/en/timezones.php", json_encode(["Choices"=>timezone_identifiers_list()], JSON_THROW_ON_ERROR)),
+        "sDistanceUnit" => new ConfigItem(64, "sDistanceUnit", "choice", "miles", gettext("Unit used to measure distance, miles or km."), "", '{"Choices":["' . gettext("miles") . '","' . gettext("kilometers") . '"]}'),
+        "sTimeZone" => new ConfigItem(65, "sTimeZone", "choice", "America/New_York", gettext("Time zone"), "http://php.net/manual/en/timezones.php", json_encode(["Choices" => timezone_identifiers_list()], JSON_THROW_ON_ERROR)),
         "sGMapIcons" => new ConfigItem(66, "sGMapIcons", "text", "green-dot,purple,yellow-dot,blue-dot,orange,yellow,green,blue,red,pink,lightblue", gettext("Names of markers for Google Maps in order of classification")),
         "bForceUppercaseZip" => new ConfigItem(67, "bForceUppercaseZip", "boolean", "0", gettext("Make user-entered zip/postcodes UPPERCASE when saving to the database.")),
         "bEnableNonDeductible" => new ConfigItem(72, "bEnableNonDeductible", "boolean", "0", gettext("Enable non-deductible payments")),
@@ -174,7 +174,7 @@ class SystemConfig
         "sChurchChkAcctNum" => new ConfigItem(1034, "sChurchChkAcctNum", "text", "", gettext("Church Checking Account Number")),
         "bEnableGravatarPhotos" => new ConfigItem(1035, "bEnableGravatarPhotos", "boolean", "0", gettext("lookup user images on Gravatar when no local image is present")),
         "bEnableExternalBackupTarget" => new ConfigItem(1036, "bEnableExternalBackupTarget", "boolean", "0", gettext("Enable Remote Backups to Cloud Services")),
-        "sExternalBackupType" => new ConfigItem(1037, "sExternalBackupType", "choice", "", gettext("Cloud Service Type (Supported values: WebDAV, Local)"), "", '{"Choices":["'.gettext("WebDAV").'","'.gettext("Local").'"]}'),
+        "sExternalBackupType" => new ConfigItem(1037, "sExternalBackupType", "choice", "", gettext("Cloud Service Type (Supported values: WebDAV, Local)"), "", '{"Choices":["' . gettext("WebDAV") . '","' . gettext("Local") . '"]}'),
         "sExternalBackupEndpoint" => new ConfigItem(1038, "sExternalBackupEndpoint", "text", "", gettext("Remote Backup Endpoint.  If WebDAV, this must be url encoded. ")),
         "sExternalBackupUsername" => new ConfigItem(1039, "sExternalBackupUsername", "text", "", gettext("Remote Backup Username")),
         "sExternalBackupPassword" => new ConfigItem(1040, "sExternalBackupPassword", "password", "", gettext("Remote Backup Password")),
@@ -266,7 +266,7 @@ class SystemConfig
     private static function buildCategories()
     {
         return [
-        gettext('Church Information') =>["sChurchName","sChurchAddress","sChurchCity","sChurchState","sChurchZip","sChurchCountry","sChurchPhone","sChurchEmail","sHomeAreaCode","sTimeZone","iChurchLatitude","iChurchLongitude", "sChurchWebSite","sChurchFB", "sChurchTwitter"],
+        gettext('Church Information') => ["sChurchName","sChurchAddress","sChurchCity","sChurchState","sChurchZip","sChurchCountry","sChurchPhone","sChurchEmail","sHomeAreaCode","sTimeZone","iChurchLatitude","iChurchLongitude", "sChurchWebSite","sChurchFB", "sChurchTwitter"],
         gettext('User Setup') => ["iMinPasswordLength","iMinPasswordChange","iMaxFailedLogins","iSessionTimeout","aDisallowedPasswords","bEnableLostPassword","bEnable2FA","bRequire2FA","s2FAApplicationName","bSendUserDeletedEmail"],
         gettext('Email Setup')  => ["sSMTPHost","bSMTPAuth","sSMTPUser","sSMTPPass", "iSMTPTimeout","sToEmailAddress", "bPHPMailerAutoTLS","sPHPMailerSMTPSecure"],
         gettext('People Setup')  => ["sDirClassifications","sDirRoleHead","sDirRoleSpouse","sDirRoleChild","sDefaultCity","sDefaultState","sDefaultCountry","bShowFamilyData","bHidePersonAddress","bHideFriendDate","bHideFamilyNewsletter","bHideWeddingDate","bHideLatLon","bForceUppercaseZip","bEnableSelfRegistration", "bAllowEmptyLastName", "iPersonNameStyle", "iProfilePictureListSize", "sNewPersonNotificationRecipientIDs", "IncludeDataInNewPersonNotifications","sGreeterCustomMsg1","sGreeterCustomMsg2"],
@@ -330,7 +330,7 @@ class SystemConfig
         if (isset(self::$configs[$name])) {
             return self::$configs[$name]->getValue();
         } else {
-            throw new \Exception(gettext("An invalid configuration name has been requested").": ".$name);
+            throw new \Exception(gettext("An invalid configuration name has been requested") . ": " . $name);
         }
     }
 
@@ -339,7 +339,7 @@ class SystemConfig
         if (isset(self::$configs[$name])) {
             return self::$configs[$name]->getBooleanValue();
         } else {
-            throw new \Exception(gettext("An invalid configuration name has been requested").": ".$name);
+            throw new \Exception(gettext("An invalid configuration name has been requested") . ": " . $name);
         }
     }
 
@@ -348,7 +348,7 @@ class SystemConfig
         if (isset(self::$configs[$name])) {
             self::$configs[$name]->setValue($value);
         } else {
-            throw new \Exception(gettext("An invalid configuration name has been requested").": ".$name);
+            throw new \Exception(gettext("An invalid configuration name has been requested") . ": " . $name);
         }
     }
 
@@ -362,7 +362,7 @@ class SystemConfig
             }
         }
         if (! $success) {
-            throw new \Exception(gettext("An invalid configuration id has been requested").": ".$Id);
+            throw new \Exception(gettext("An invalid configuration id has been requested") . ": " . $Id);
         }
     }
 

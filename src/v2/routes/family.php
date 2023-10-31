@@ -70,7 +70,7 @@ function viewFamily(Request $request, Response $response, array $args)
     $family = FamilyQuery::create()->findPk($familyId);
 
     if (empty($family)) {
-        return $response->withRedirect(SystemURLs::getRootPath() . "/v2/family/not-found?id=".$args["id"]);
+        return $response->withRedirect(SystemURLs::getRootPath() . "/v2/family/not-found?id=" . $args["id"]);
     }
 
     $timelineService = new TimelineService();

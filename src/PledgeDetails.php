@@ -1,4 +1,5 @@
 <?php
+
 /*******************************************************************************
  *
  *  filename    : PledgeDetails.php
@@ -33,11 +34,11 @@ if (isset($_POST['Back'])) {
     RedirectUtils::redirect($linkBack);
 }
 
-$sSQL = 'SELECT * FROM pledge_plg WHERE plg_plgID = '.$iPledgeID;
+$sSQL = 'SELECT * FROM pledge_plg WHERE plg_plgID = ' . $iPledgeID;
 $rsPledgeRec = RunQuery($sSQL);
 extract(mysqli_fetch_array($rsPledgeRec));
 
-$sSQL = 'SELECT * FROM result_res WHERE res_ID='.$plg_aut_ResultID;
+$sSQL = 'SELECT * FROM result_res WHERE res_ID=' . $plg_aut_ResultID;
 $rsResultRec = RunQuery($sSQL);
 
 require 'Include/Header.php';
@@ -50,7 +51,7 @@ if ($resArr) {
 
 ?>
 
-<form method="post" action="PledgeDetails.php?<?= 'PledgeID='.$iPledgeID.'&linkBack='.$linkBack ?>" name="PledgeDelete">
+<form method="post" action="PledgeDetails.php?<?= 'PledgeID=' . $iPledgeID . '&linkBack=' . $linkBack ?>" name="PledgeDelete">
 
 <table cellpadding="3" align="center">
 

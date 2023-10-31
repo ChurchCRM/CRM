@@ -1,4 +1,5 @@
 <?php
+
 /*******************************************************************************
  *
  *  filename    : PropertyTypeEditor.php
@@ -43,7 +44,7 @@ if (isset($_POST['Submit'])) {
 
     //Did they enter a name?
     if (strlen($sName) < 1) {
-        $sNameError = '<span style="color: red;">'.gettext('You must enter a name').'</span>';
+        $sNameError = '<span style="color: red;">' . gettext('You must enter a name') . '</span>';
         $bError = true;
     }
 
@@ -51,9 +52,9 @@ if (isset($_POST['Submit'])) {
     if (!$bError) {
         //Vary the SQL depending on if we're adding or editing
         if ($iPropertyTypeID == '') {
-            $sSQL = "INSERT INTO propertytype_prt (prt_Class,prt_Name,prt_Description) VALUES ('".$sClass."','".$sName."','".$sDescription."')";
+            $sSQL = "INSERT INTO propertytype_prt (prt_Class,prt_Name,prt_Description) VALUES ('" . $sClass . "','" . $sName . "','" . $sDescription . "')";
         } else {
-            $sSQL = "UPDATE propertytype_prt SET prt_Class = '".$sClass."', prt_Name = '".$sName."', prt_Description = '".$sDescription."' WHERE prt_ID = ".$iPropertyTypeID;
+            $sSQL = "UPDATE propertytype_prt SET prt_Class = '" . $sClass . "', prt_Name = '" . $sName . "', prt_Description = '" . $sDescription . "' WHERE prt_ID = " . $iPropertyTypeID;
         }
 
         //Execute the SQL
@@ -64,7 +65,7 @@ if (isset($_POST['Submit'])) {
     }
 } elseif ($iPropertyTypeID > 0) {
     //Get the data on this property
-    $sSQL = 'SELECT * FROM propertytype_prt WHERE prt_ID = '.$iPropertyTypeID;
+    $sSQL = 'SELECT * FROM propertytype_prt WHERE prt_ID = ' . $iPropertyTypeID;
     $rsProperty = mysqli_fetch_array(RunQuery($sSQL));
     extract($rsProperty);
 

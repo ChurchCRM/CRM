@@ -8,7 +8,6 @@ use Propel\Runtime\ActiveQuery\Criteria;
 
 class PersonRoleDataCheck implements TaskInterface
 {
-
     private $count;
 
     public function __construct()

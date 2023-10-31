@@ -7,7 +7,6 @@ use ChurchCRM\Map\ListOptionTableMap;
 
 class KioskDevice extends BaseKioskDevice
 {
-
     public function getActiveAssignment()
     {
         return $this->getKioskAssignments()[0];
@@ -40,10 +39,10 @@ class KioskDevice extends BaseKioskDevice
 
 
         return [
-        "Accepted"=>$this->getAccepted(),
-        "Name"=>$this->getName(),
-        "Assignment"=>$assignmentJSON,
-        "Commands"=>$this->getPendingCommands()
+        "Accepted" => $this->getAccepted(),
+        "Name" => $this->getName(),
+        "Assignment" => $assignmentJSON,
+        "Commands" => $this->getPendingCommands()
         ];
     }
 

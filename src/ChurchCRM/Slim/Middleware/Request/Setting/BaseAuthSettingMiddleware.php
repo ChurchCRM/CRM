@@ -8,7 +8,6 @@ use Slim\Http\Response;
 
 abstract class BaseAuthSettingMiddleware
 {
-
     public function __invoke(Request $request, Response $response, callable $next)
     {
         if (!SystemConfig::getBooleanValue($this->getSettingName())) {

@@ -49,7 +49,7 @@ class FamilySearchResultProvider extends BaseSearchResultProvider
             if (!empty($families)) {
                 $id++;
                 foreach ($families as $family) {
-                    array_push($searchResults, new SearchResult("family-name-".$id, $family->getFamilyString(SystemConfig::getBooleanValue("bSearchIncludeFamilyHOH")), $family->getViewURI()));
+                    array_push($searchResults, new SearchResult("family-name-" . $id, $family->getFamilyString(SystemConfig::getBooleanValue("bSearchIncludeFamilyHOH")), $family->getViewURI()));
                 }
             }
 
@@ -69,13 +69,13 @@ class FamilySearchResultProvider extends BaseSearchResultProvider
                     ->useFamilyCustomQuery();
             foreach ($customFields as $customField) {
                 // search the `family_custom` table for the supplied query using all available `c_` fields obtained from `family_custom_master`
-                $familyQuery->where($customField->getField()." LIKE ?", "%$SearchQuery%", \PDO::PARAM_STR);
+                $familyQuery->where($customField->getField() . " LIKE ?", "%$SearchQuery%", \PDO::PARAM_STR);
                 $familyQuery->_or();
             }
             $families = $familyQuery->endUse()->find();
             foreach ($families as $family) {
                 $id++;
-                array_push($searchResults, new SearchResult("family-custom-prop-".$id, $family->getFamilyString(SystemConfig::getBooleanValue("bSearchIncludeFamilyHOH")), $family->getViewURI()));
+                array_push($searchResults, new SearchResult("family-custom-prop-" . $id, $family->getFamilyString(SystemConfig::getBooleanValue("bSearchIncludeFamilyHOH")), $family->getViewURI()));
             }
         } catch (\Exception $e) {
             LoggerUtils::getAppLogger()->warning($e->getMessage());

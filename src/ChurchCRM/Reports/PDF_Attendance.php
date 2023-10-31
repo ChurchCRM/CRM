@@ -67,12 +67,12 @@ class PdfAttendance extends ChurchInfoReport
 
         $yTitle = 20;
         $yTeachers = $yTitle + $yIncrement;
-        $nameX = 10+$yIncrement/2;
+        $nameX = 10 + $yIncrement / 2;
         unset($NameList);
         $numMembers = 0;
         $aNameCount = 0;
 
-        $MaxLinesPerPage = -5*$yIncrement+66; // 36  lines for a yIncrement of 6, 16 lines for a yIncrement of 10, y=-5x+66
+        $MaxLinesPerPage = -5 * $yIncrement + 66; // 36  lines for a yIncrement of 6, 16 lines for a yIncrement of 10, y=-5x+66
 
         $fontTitleTitle = 16;
 
@@ -159,28 +159,28 @@ class PdfAttendance extends ChurchInfoReport
 
             $this->SetLineWidth(0.25);
             for ($row = $pRowStart; $row < $pRowEnd; $row++) {
-                $this->writeAt($nameX, $y + (($with_img==true)?3:1), $NameList[$row]);
+                $this->writeAt($nameX, $y + (($with_img == true) ? 3 : 1), $NameList[$row]);
 
                 if ($with_img == true) {
                     //$this->SetLineWidth(0.5);
-                    $this->Line($nameX-$yIncrement, $y, $nameX, $y);
-                    $this->Line($nameX-$yIncrement, $y+$yIncrement, $nameX, $y+$yIncrement);
-                    $this->Line($nameX-$yIncrement, $y, $nameX, $y);
-                    $this->Line($nameX-$yIncrement, $y, $nameX-$yIncrement, $y+$yIncrement);
+                    $this->Line($nameX - $yIncrement, $y, $nameX, $y);
+                    $this->Line($nameX - $yIncrement, $y + $yIncrement, $nameX, $y + $yIncrement);
+                    $this->Line($nameX - $yIncrement, $y, $nameX, $y);
+                    $this->Line($nameX - $yIncrement, $y, $nameX - $yIncrement, $y + $yIncrement);
 
                     // we build the cross in the case of there's no photo
                     //$this->SetLineWidth(0.25);
-                    $this->Line($nameX-$yIncrement, $y+$yIncrement, $nameX, $y);
-                    $this->Line($nameX-$yIncrement, $y, $nameX, $y+$yIncrement);
+                    $this->Line($nameX - $yIncrement, $y + $yIncrement, $nameX, $y);
+                    $this->Line($nameX - $yIncrement, $y, $nameX, $y + $yIncrement);
 
 
                     if ($NameList[$row] != '   ' && strlen($imgList[$row]) > 5 && file_exists($imgList[$row])) {
                         [$width, $height] = getimagesize($imgList[$row]);
-                        $factor = $yIncrement/$height;
-                        $nw = $width*$factor;
+                        $factor = $yIncrement / $height;
+                        $nw = $width * $factor;
                         $nh = $yIncrement;
 
-                        $this->Image($imgList[$row], $nameX-$nw, $y, $nw, $nh, 'JPG');
+                        $this->Image($imgList[$row], $nameX - $nw, $y, $nw, $nh, 'JPG');
                     }
                 }
 

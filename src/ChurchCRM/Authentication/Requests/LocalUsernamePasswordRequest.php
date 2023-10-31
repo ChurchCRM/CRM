@@ -6,7 +6,7 @@ namespace ChurchCRM\Authentication\Requests {
     {
         public $username;
         public $password;
-        
+
         public function __construct($username, $password)
         {
             $this->username = $username;

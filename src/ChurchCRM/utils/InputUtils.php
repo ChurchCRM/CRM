@@ -6,9 +6,8 @@ use ChurchCRM\dto\SystemConfig;
 
 class InputUtils
 {
-  
     private static string $AllowedHTMLTags = '<a><b><i><u><h1><h2><h3><h4><h5><h6><pre><address><img><table><td><tr><ol><li><ul><p><sub><sup><s><hr><span><blockquote><div><small><big><tt><code><kbd><samp><del><ins><cite><q>';
-  
+
     public static function legacyFilterInputArr($arr, $key, $type = 'string', $size = 1)
     {
         if (array_key_exists($key, $arr)) {
@@ -17,14 +16,14 @@ class InputUtils
             return InputUtils::legacyFilterInput('', $type, $size);
         }
     }
-  
+
     public static function translateSpecialCharset($string)
     {
         if (empty($string)) {
             return "";
         }
-    
-        return (SystemConfig::getValue("sCSVExportCharset") == "UTF-8")?gettext($string):iconv('UTF-8', SystemConfig::getValue("sCSVExportCharset"), gettext($string));
+
+        return (SystemConfig::getValue("sCSVExportCharset") == "UTF-8") ? gettext($string) : iconv('UTF-8', SystemConfig::getValue("sCSVExportCharset"), gettext($string));
     }
 
     public static function filterString($sInput)

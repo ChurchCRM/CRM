@@ -1,4 +1,5 @@
 <?php
+
 /*******************************************************************************
  *
  *  filename    : PersonEditor.php
@@ -41,7 +42,7 @@ if (array_key_exists('previousPage', $_GET)) {
 // Security: User must have Add or Edit Records permission to use this form in those manners
 // Clean error handling: (such as somebody typing an incorrect URL ?PersonID= manually)
 if ($iPersonID > 0) {
-    $sSQL = 'SELECT per_fam_ID FROM person_per WHERE per_ID = '.$iPersonID;
+    $sSQL = 'SELECT per_fam_ID FROM person_per WHERE per_ID = ' . $iPersonID;
     $rsPerson = RunQuery($sSQL);
     extract(mysqli_fetch_array($rsPerson));
 
@@ -50,11 +51,12 @@ if ($iPersonID > 0) {
         exit;
     }
 
-    if (!(
+    if (
+        !(
         AuthenticationManager::getCurrentUser()->isEditRecordsEnabled() ||
         (AuthenticationManager::getCurrentUser()->isEditSelfEnabled() && $iPersonID == AuthenticationManager::getCurrentUser()->getId()) ||
         (AuthenticationManager::getCurrentUser()->isEditSelfEnabled() && $per_fam_ID > 0 && $per_fam_ID == AuthenticationManager::getCurrentUser()->getPerson()->getFamId())
-    )
+        )
     ) {
         RedirectUtils::redirect('Menu.php');
         exit;
@@ -142,7 +144,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
 
     // Get their family's country in case person's country was not entered
     if ($iFamily > 0) {
-        $sSQL = 'SELECT fam_Country FROM family_fam WHERE fam_ID = '.$iFamily;
+        $sSQL = 'SELECT fam_Country FROM family_fam WHERE fam_ID = ' . $iFamily;
         $rsFamCountry = RunQuery($sSQL);
         extract(mysqli_fetch_array($rsFamCountry));
     }
@@ -199,7 +201,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
             $sLastNameError = gettext('You must enter a Last Name if no Family is selected.');
             $bErrorFlag = true;
         } else {
-            $sSQL = 'SELECT fam_Name FROM family_fam WHERE fam_ID = '.$iFamily;
+            $sSQL = 'SELECT fam_Name FROM family_fam WHERE fam_ID = ' . $iFamily;
             $rsFamName = RunQuery($sSQL);
             $aTemp = mysqli_fetch_array($rsFamName);
             $sLastName = $aTemp[0];
@@ -232,7 +234,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         $dateString = parseAndValidateDate($dFriendDate, $locale = 'US', $pasfut = 'past');
         if ($dateString === false) {
             $sFriendDateError = '<span style="color: red; ">'
-                .gettext('Not a valid Friend Date').'</span>';
+                . gettext('Not a valid Friend Date') . '</span>';
             $bErrorFlag = true;
         } else {
             $dFriendDate = $dateString;
@@ -244,7 +246,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         $dateString = parseAndValidateDate($dMembershipDate, $locale = 'US', $pasfut = 'past');
         if ($dateString === false) {
             $sMembershipDateError = '<span style="color: red; ">'
-                .gettext('Not a valid Membership Date').'</span>';
+                . gettext('Not a valid Membership Date') . '</span>';
             $bErrorFlag = true;
         } else {
             $dMembershipDate = $dateString;
@@ -255,7 +257,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
     if (strlen($sEmail) > 0) {
         if (checkEmail($sEmail) == false) {
             $sEmailError = '<span style="color: red; ">'
-                .gettext('Email is Not Valid').'</span>';
+                . gettext('Email is Not Valid') . '</span>';
             $bErrorFlag = true;
         } else {
             $sEmail = $sEmail;
@@ -266,7 +268,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
     if (strlen($sWorkEmail) > 0) {
         if (checkEmail($sWorkEmail) == false) {
             $sWorkEmailError = '<span style="color: red; ">'
-                .gettext('Work Email is Not Valid').'</span>';
+                . gettext('Work Email is Not Valid') . '</span>';
             $bErrorFlag = true;
         } else {
             $sWorkEmail = $sWorkEmail;
@@ -313,7 +315,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         // Family will be named by the Last Name.
         if ($iFamily == -1) {
             $sSQL = "INSERT INTO family_fam (fam_Name, fam_Address1, fam_Address2, fam_City, fam_State, fam_Zip, fam_Country, fam_HomePhone, fam_WorkPhone, fam_CellPhone, fam_Email, fam_DateEntered, fam_EnteredBy)
-					VALUES ('".$sLastName."','".$sAddress1."','".$sAddress2."','".$sCity."','".$sState."','".$sZip."','".$sCountry."','".$sHomePhone."','".$sWorkPhone."','".$sCellPhone."','".$sEmail."','".date('YmdHis')."',".AuthenticationManager::getCurrentUser()->getId().')';
+					VALUES ('" . $sLastName . "','" . $sAddress1 . "','" . $sAddress2 . "','" . $sCity . "','" . $sState . "','" . $sZip . "','" . $sCountry . "','" . $sHomePhone . "','" . $sWorkPhone . "','" . $sCellPhone . "','" . $sEmail . "','" . date('YmdHis') . "'," . AuthenticationManager::getCurrentUser()->getId() . ')';
             //Execute the SQL
             RunQuery($sSQL);
             //Get the key back
@@ -333,56 +335,56 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
             $iEnvelope = 0;
 
             $sSQL = "INSERT INTO person_per (per_Title, per_FirstName, per_MiddleName, per_LastName, per_Suffix, per_Gender, per_Address1, per_Address2, per_City, per_State, per_Zip, per_Country, per_HomePhone, per_WorkPhone, per_CellPhone, per_Email, per_WorkEmail, per_BirthMonth, per_BirthDay, per_BirthYear, per_Envelope, per_fam_ID, per_fmr_ID, per_MembershipDate, per_cls_ID, per_DateEntered, per_EnteredBy, per_FriendDate, per_Flags, per_Facebook, per_Twitter, per_LinkedIn)
-			         VALUES ('".$sTitle."','".$sFirstName."','".$sMiddleName."','".$sLastName."','".$sSuffix."',".$iGender.",'".$sAddress1."','".$sAddress2."','".$sCity."','".$sState."','".$sZip."','".$sCountry."','".$sHomePhone."','".$sWorkPhone."','".$sCellPhone."','".$sEmail."','".$sWorkEmail."',".$iBirthMonth.','.$iBirthDay.','.$iBirthYear.','.$iEnvelope.','.$iFamily.','.$iFamilyRole.',';
+			         VALUES ('" . $sTitle . "','" . $sFirstName . "','" . $sMiddleName . "','" . $sLastName . "','" . $sSuffix . "'," . $iGender . ",'" . $sAddress1 . "','" . $sAddress2 . "','" . $sCity . "','" . $sState . "','" . $sZip . "','" . $sCountry . "','" . $sHomePhone . "','" . $sWorkPhone . "','" . $sCellPhone . "','" . $sEmail . "','" . $sWorkEmail . "'," . $iBirthMonth . ',' . $iBirthDay . ',' . $iBirthYear . ',' . $iEnvelope . ',' . $iFamily . ',' . $iFamilyRole . ',';
             if (strlen($dMembershipDate) > 0) {
-                $sSQL .= '"'.$dMembershipDate.'"';
+                $sSQL .= '"' . $dMembershipDate . '"';
             } else {
                 $sSQL .= 'NULL';
             }
-            $sSQL .= ','.$iClassification.",'".date('YmdHis')."',".AuthenticationManager::getCurrentUser()->getId().',';
+            $sSQL .= ',' . $iClassification . ",'" . date('YmdHis') . "'," . AuthenticationManager::getCurrentUser()->getId() . ',';
 
             if (strlen($dFriendDate) > 0) {
-                $sSQL .= '"'.$dFriendDate.'"';
+                $sSQL .= '"' . $dFriendDate . '"';
             } else {
                 $sSQL .= 'NULL';
             }
 
-            $sSQL .= ', '.$per_Flags;
-            $sSQL .= ', "'. $sFacebook. '"';
-            $sSQL .= ', "'. $sTwitter.'"';
-            $sSQL .= ', "'. $sLinkedIn.'"';
+            $sSQL .= ', ' . $per_Flags;
+            $sSQL .= ', "' . $sFacebook . '"';
+            $sSQL .= ', "' . $sTwitter . '"';
+            $sSQL .= ', "' . $sLinkedIn . '"';
             $sSQL .= ')';
 
             $bGetKeyBack = true;
 
         // Existing person (update)
         } else {
-            $sSQL = "UPDATE person_per SET per_Title = '".$sTitle."',per_FirstName = '".$sFirstName."',per_MiddleName = '".$sMiddleName."', per_LastName = '".$sLastName."', per_Suffix = '".$sSuffix."', per_Gender = ".$iGender.", per_Address1 = '".$sAddress1."', per_Address2 = '".$sAddress2."', per_City = '".$sCity."', per_State = '".$sState."', per_Zip = '".$sZip."', per_Country = '".$sCountry."', per_HomePhone = '".$sHomePhone."', per_WorkPhone = '".$sWorkPhone."', per_CellPhone = '".$sCellPhone."', per_Email = '".$sEmail."', per_WorkEmail = '".$sWorkEmail."', per_BirthMonth = ".$iBirthMonth.', per_BirthDay = '.$iBirthDay.', '.'per_BirthYear = '.$iBirthYear.', per_fam_ID = '.$iFamily.', per_Fmr_ID = '.$iFamilyRole.', per_cls_ID = '.$iClassification.', per_MembershipDate = ';
+            $sSQL = "UPDATE person_per SET per_Title = '" . $sTitle . "',per_FirstName = '" . $sFirstName . "',per_MiddleName = '" . $sMiddleName . "', per_LastName = '" . $sLastName . "', per_Suffix = '" . $sSuffix . "', per_Gender = " . $iGender . ", per_Address1 = '" . $sAddress1 . "', per_Address2 = '" . $sAddress2 . "', per_City = '" . $sCity . "', per_State = '" . $sState . "', per_Zip = '" . $sZip . "', per_Country = '" . $sCountry . "', per_HomePhone = '" . $sHomePhone . "', per_WorkPhone = '" . $sWorkPhone . "', per_CellPhone = '" . $sCellPhone . "', per_Email = '" . $sEmail . "', per_WorkEmail = '" . $sWorkEmail . "', per_BirthMonth = " . $iBirthMonth . ', per_BirthDay = ' . $iBirthDay . ', ' . 'per_BirthYear = ' . $iBirthYear . ', per_fam_ID = ' . $iFamily . ', per_Fmr_ID = ' . $iFamilyRole . ', per_cls_ID = ' . $iClassification . ', per_MembershipDate = ';
             if (strlen($dMembershipDate) > 0) {
-                $sSQL .= '"'.$dMembershipDate.'"';
+                $sSQL .= '"' . $dMembershipDate . '"';
             } else {
                 $sSQL .= 'NULL';
             }
 
             if (AuthenticationManager::getCurrentUser()->isFinanceEnabled()) {
-                $sSQL .= ', per_Envelope = '.$iEnvelope;
+                $sSQL .= ', per_Envelope = ' . $iEnvelope;
             }
 
-            $sSQL .= ", per_DateLastEdited = '".date('YmdHis')."', per_EditedBy = ".AuthenticationManager::getCurrentUser()->getId().', per_FriendDate =';
+            $sSQL .= ", per_DateLastEdited = '" . date('YmdHis') . "', per_EditedBy = " . AuthenticationManager::getCurrentUser()->getId() . ', per_FriendDate =';
 
             if (strlen($dFriendDate) > 0) {
-                $sSQL .= '"'.$dFriendDate.'"';
+                $sSQL .= '"' . $dFriendDate . '"';
             } else {
                 $sSQL .= 'NULL';
             }
 
-            $sSQL .= ', per_Flags='.$per_Flags;
+            $sSQL .= ', per_Flags=' . $per_Flags;
 
-            $sSQL .= ', per_Facebook="'. $sFacebook.'"';
-            $sSQL .= ', per_Twitter="'. $sTwitter.'"';
-            $sSQL .= ', per_LinkedIn="'. $sLinkedIn.'"';
+            $sSQL .= ', per_Facebook="' . $sFacebook . '"';
+            $sSQL .= ', per_Twitter="' . $sTwitter . '"';
+            $sSQL .= ', per_LinkedIn="' . $sLinkedIn . '"';
 
-            $sSQL .= ' WHERE per_ID = '.$iPersonID;
+            $sSQL .= ' WHERE per_ID = ' . $iPersonID;
 
             $bGetKeyBack = false;
         }
@@ -398,7 +400,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
             $sSQL = 'SELECT MAX(per_ID) AS iPersonID FROM person_per';
             $rsPersonID = RunQuery($sSQL);
             extract(mysqli_fetch_array($rsPersonID));
-            $sSQL = "INSERT INTO person_custom (per_ID) VALUES ('".$iPersonID."')";
+            $sSQL = "INSERT INTO person_custom (per_ID) VALUES ('" . $iPersonID . "')";
             RunQuery($sSQL);
             $note->setPerId($iPersonID);
             $note->setText(gettext('Created'));
@@ -436,7 +438,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
 
             // chop off the last 2 characters (comma and space) added in the last while loop iteration.
             if ($sSQL > '') {
-                $sSQL = 'REPLACE INTO person_custom SET '.$sSQL.' per_ID = '.$iPersonID;
+                $sSQL = 'REPLACE INTO person_custom SET ' . $sSQL . ' per_ID = ' . $iPersonID;
                 //Execute the SQL
                 RunQuery($sSQL);
             }
@@ -445,10 +447,10 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         // Check for redirection to another page after saving information: (ie. PersonEditor.php?previousPage=prev.php?a=1;b=2;c=3)
         if ($sPreviousPage != '') {
             $sPreviousPage = str_replace(';', '&', $sPreviousPage);
-            RedirectUtils::redirect($sPreviousPage.$iPersonID);
+            RedirectUtils::redirect($sPreviousPage . $iPersonID);
         } elseif (isset($_POST['PersonSubmit'])) {
             //Send to the view of this person
-            RedirectUtils::redirect('PersonView.php?PersonID='.$iPersonID);
+            RedirectUtils::redirect('PersonView.php?PersonID=' . $iPersonID);
         } else {
             //Reload to editor to add another record
             RedirectUtils::redirect('PersonEditor.php');
@@ -464,7 +466,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         //Editing....
         //Get all the data on this record
 
-        $sSQL = 'SELECT * FROM person_per LEFT JOIN family_fam ON per_fam_ID = fam_ID WHERE per_ID = '.$iPersonID;
+        $sSQL = 'SELECT * FROM person_per LEFT JOIN family_fam ON per_fam_ID = fam_ID WHERE per_ID = ' . $iPersonID;
         $rsPerson = RunQuery($sSQL);
         extract(mysqli_fetch_array($rsPerson));
 
@@ -524,7 +526,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         $bTwitter =  strlen($per_Twitter);
         $bLinkedIn = strlen($per_LinkedIn);
 
-        $sSQL = 'SELECT * FROM person_custom WHERE per_ID = '.$iPersonID;
+        $sSQL = 'SELECT * FROM person_custom WHERE per_ID = ' . $iPersonID;
         $rsCustomData = RunQuery($sSQL);
         $aCustomData = [];
         if (mysqli_num_rows($rsCustomData) >= 1) {
@@ -741,7 +743,7 @@ require 'Include/Header.php';
                             <option value="0"><?= gettext('Select Day') ?></option>
                             <?php for ($x = 1; $x < 32; $x++) {
                                 if ($x < 10) {
-                                    $sDay = '0'.$x;
+                                    $sDay = '0' . $x;
                                 } else {
                                     $sDay = $x;
                                 } ?>
@@ -789,11 +791,11 @@ require 'Include/Header.php';
                     <option value="0" disabled>-----------------------</option>
                     <?php while ($aRow = mysqli_fetch_array($rsFamilyRoles)) {
                         extract($aRow);
-                        echo '<option value="'.$lst_OptionID.'"';
+                        echo '<option value="' . $lst_OptionID . '"';
                         if ($iFamilyRole == $lst_OptionID) {
                             echo ' selected';
                         }
-                        echo '>'.$lst_OptionName.'&nbsp;';
+                        echo '>' . $lst_OptionName . '&nbsp;';
                     } ?>
                 </select>
             </div>
@@ -807,11 +809,11 @@ require 'Include/Header.php';
                     <?php while ($aRow = mysqli_fetch_array($rsFamilies)) {
                         extract($aRow);
 
-                        echo '<option value="'.$fam_ID.'"';
+                        echo '<option value="' . $fam_ID . '"';
                         if ($iFamily == $fam_ID || $_GET['FamilyID'] == $fam_ID) {
                             echo ' selected';
                         }
-                        echo '>'.$fam_Name.'&nbsp;'.FormatAddressLine($fam_Address1, $fam_City, $fam_State);
+                        echo '>' . $fam_Name . '&nbsp;' . FormatAddressLine($fam_Address1, $fam_City, $fam_State);
                     } ?>
                 </select>
             </div>
@@ -834,7 +836,7 @@ require 'Include/Header.php';
                                     echo '<span style="color: red;">';
                                 }
 
-                                echo gettext('Address').' 1:';
+                                echo gettext('Address') . ' 1:';
 
                                 if ($bFamilyAddress1) {
                                     echo '</span>';
@@ -850,7 +852,7 @@ require 'Include/Header.php';
                                     echo '<span style="color: red;">';
                                 }
 
-                                echo gettext('Address').' 2:';
+                                echo gettext('Address') . ' 2:';
 
                                 if ($bFamilyAddress2) {
                                     echo '</span>';
@@ -866,7 +868,7 @@ require 'Include/Header.php';
                                     echo '<span style="color: red;">';
                                 }
 
-                                echo gettext('City').':';
+                                echo gettext('City') . ':';
 
                                 if ($bFamilyCity) {
                                     echo '</span>';
@@ -886,7 +888,7 @@ require 'Include/Header.php';
                                 echo '<span style="color: red;">';
                             }
 
-                            echo gettext('State').':';
+                            echo gettext('State') . ':';
 
                             if ($bFamilyState) {
                                 echo '</span>';
@@ -909,7 +911,7 @@ require 'Include/Header.php';
                                 echo '<span style="color: red;">';
                             }
 
-                            echo gettext('Zip').':';
+                            echo gettext('Zip') . ':';
 
                             if ($bFamilyZip) {
                                 echo '</span>';
@@ -922,7 +924,7 @@ require 'Include/Header.php';
                                 echo 'style="text-transform:uppercase" ';
                             }
 
-                            echo 'value="'.htmlentities(stripslashes($sZip), ENT_NOQUOTES, 'UTF-8').'" '; ?>
+                            echo 'value="' . htmlentities(stripslashes($sZip), ENT_NOQUOTES, 'UTF-8') . '" '; ?>
                                maxlength="10" size="8">
                     </div>
                     <div class="form-group col-md-2">
@@ -931,7 +933,7 @@ require 'Include/Header.php';
                                 echo '<span style="color: red;">';
                             }
 
-                            echo gettext('Country').':';
+                            echo gettext('Country') . ':';
 
                             if ($bFamilyCountry) {
                                 echo '</span>';
@@ -964,9 +966,9 @@ require 'Include/Header.php';
                     <label for="HomePhone">
                         <?php
                         if ($bFamilyHomePhone) {
-                            echo '<span style="color: red;">'.gettext('Home Phone').':</span>';
+                            echo '<span style="color: red;">' . gettext('Home Phone') . ':</span>';
                         } else {
-                            echo gettext('Home Phone').':';
+                            echo gettext('Home Phone') . ':';
                         }
                         ?>
                     </label>
@@ -987,9 +989,9 @@ require 'Include/Header.php';
                     <label for="WorkPhone">
                         <?php
                         if ($bFamilyWorkPhone) {
-                            echo '<span style="color: red;">'.gettext('Work Phone').':</span>';
+                            echo '<span style="color: red;">' . gettext('Work Phone') . ':</span>';
                         } else {
-                            echo gettext('Work Phone').':';
+                            echo gettext('Work Phone') . ':';
                         }
                         ?>
                     </label>
@@ -1012,9 +1014,9 @@ require 'Include/Header.php';
                     <label for="CellPhone">
                         <?php
                         if ($bFamilyCellPhone) {
-                            echo '<span style="color: red;">'.gettext('Mobile Phone').':</span>';
+                            echo '<span style="color: red;">' . gettext('Mobile Phone') . ':</span>';
                         } else {
-                            echo gettext('Mobile Phone').':';
+                            echo gettext('Mobile Phone') . ':';
                         }
                         ?>
                     </label>
@@ -1038,9 +1040,9 @@ require 'Include/Header.php';
                     <label for="Email">
                         <?php
                         if ($bFamilyEmail) {
-                            echo '<span style="color: red;">'.gettext('Email').':</span></td>';
+                            echo '<span style="color: red;">' . gettext('Email') . ':</span></td>';
                         } else {
-                            echo gettext('Email').':</td>';
+                            echo gettext('Email') . ':</td>';
                         }
                         ?>
                     </label>
@@ -1076,9 +1078,9 @@ require 'Include/Header.php';
                     <label for="Facebook">
                         <?php
                         if ($bFacebook) {
-                            echo '<span style="color: red;">'.gettext('Facebook').':</span></td>';
+                            echo '<span style="color: red;">' . gettext('Facebook') . ':</span></td>';
                         } else {
-                            echo gettext('Facebook').':</td>';
+                            echo gettext('Facebook') . ':</td>';
                         }
                         ?>
                     </label>
@@ -1141,11 +1143,11 @@ require 'Include/Header.php';
                   <option value="0" disabled>-----------------------</option>
                   <?php while ($aRow = mysqli_fetch_array($rsClassifications)) {
                             extract($aRow);
-                            echo '<option value="'.$lst_OptionID.'"';
+                            echo '<option value="' . $lst_OptionID . '"';
                         if ($iClassification == $lst_OptionID) {
                             echo ' selected';
                         }
-                            echo '>'.$lst_OptionName.'&nbsp;';
+                            echo '>' . $lst_OptionName . '&nbsp;';
                   } ?>
                 </select>
               </div>
@@ -1201,7 +1203,7 @@ require 'Include/Header.php';
                     extract($rowCustomField);
 
                     if (AuthenticationManager::getCurrentUser()->isEnabledSecurity($aSecurityType[$custom_FieldSec])) {
-                        echo "<div class='row'><div class=\"form-group col-md-3\"><label>".$custom_Name.'</label>';
+                        echo "<div class='row'><div class=\"form-group col-md-3\"><label>" . $custom_Name . '</label>';
 
                         if (array_key_exists($custom_Field, $aCustomData)) {
                             $currentFieldData = trim($aCustomData[$custom_Field]);
@@ -1215,7 +1217,7 @@ require 'Include/Header.php';
 
                         formCustomField($type_ID, $custom_Field, $currentFieldData, $custom_Special, !isset($_POST['PersonSubmit']));
                         if (isset($aCustomErrors[$custom_Field])) {
-                            echo '<span style="color: red; ">'.$aCustomErrors[$custom_Field].'</span>';
+                            echo '<span style="color: red; ">' . $aCustomErrors[$custom_Field] . '</span>';
                         }
                         echo '</div></div>';
                     }
@@ -1228,7 +1230,7 @@ require 'Include/Header.php';
     <div class="text-right">
     <input type="submit" class="btn btn-primary" id="PersonSaveButton" value="<?= gettext('Save') ?>" name="PersonSubmit">
     <?php if (AuthenticationManager::getCurrentUser()->isAddRecordsEnabled()) {
-                            echo '<input type="submit" class="btn btn-primary" value="'.gettext('Save and Add').'" name="PersonSubmitAndAdd">';
+                            echo '<input type="submit" class="btn btn-primary" value="' . gettext('Save and Add') . '" name="PersonSubmitAndAdd">';
     } ?>
     <input type="button" class="btn btn-primary" value="<?= gettext('Cancel') ?>" name="PersonCancel"
            onclick="javascript:document.location='v2/people';">

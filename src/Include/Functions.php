@@ -1,6 +1,5 @@
 <?php
 
-
 /*******************************************************************************
  *
  *  filename    : /Include/Functions.php
@@ -125,7 +124,7 @@ if (isset($_POST['BulkAddToCart'])) {
         for ($iCount = 0; $iCount < count($aItemsToProcess); $iCount++) {
             Cart::addPerson(str_replace(',', '', $aItemsToProcess[$iCount]));
         }
-        $sGlobalMessage = $iCount.' '.gettext('item(s) added to the Cart.');
+        $sGlobalMessage = $iCount . ' ' . gettext('item(s) added to the Cart.');
     }
 }
 
@@ -149,11 +148,11 @@ function CurrentFY()
 // PrintFYIDSelect: make a fiscal year selection menu.
 function PrintFYIDSelect($iFYID, $selectName)
 {
-    echo '<select class="form-control" name="'.$selectName.'">';
-    echo '<option value="0">'.gettext('Select Fiscal Year').'</option>';
+    echo '<select class="form-control" name="' . $selectName . '">';
+    echo '<option value="0">' . gettext('Select Fiscal Year') . '</option>';
 
     for ($fy = 1; $fy < CurrentFY() + 2; $fy++) {
-        echo '<option value="'.$fy.'"';
+        echo '<option value="' . $fy . '"';
         if ($iFYID == $fy) {
             echo ' selected';
         }
@@ -171,7 +170,7 @@ function MakeFYString($iFYID)
     if (SystemConfig::getValue('iFYMonth') == 1) {
         return 1996 + $iFYID;
     } else {
-        return 1995 + $iFYID.'/'.mb_substr(1996 + $iFYID, 2, 2);
+        return 1995 + $iFYID . '/' . mb_substr(1996 + $iFYID, 2, 2);
     }
 }
 
@@ -184,9 +183,9 @@ function RunQuery($sSQL, $bStopOnError = true)
     if ($result = mysqli_query($cnInfoCentral, $sSQL)) {
         return $result;
     } elseif ($bStopOnError) {
-        LoggerUtils::getAppLogger()->error(gettext('Cannot execute query.')." " . $sSQL . " -|- " . mysqli_error($cnInfoCentral));
+        LoggerUtils::getAppLogger()->error(gettext('Cannot execute query.') . " " . $sSQL . " -|- " . mysqli_error($cnInfoCentral));
         if (SystemConfig::getValue('sLogLevel') == "100") { // debug level
-            throw new Exception(gettext('Cannot execute query.')."<p>$sSQL<p>".mysqli_error($cnInfoCentral));
+            throw new Exception(gettext('Cannot execute query.') . "<p>$sSQL<p>" . mysqli_error($cnInfoCentral));
         } else {
             throw new Exception('Database error or invalid data, change sLogLevel to debug to see more.');
         }
@@ -200,7 +199,7 @@ function RunQuery($sSQL, $bStopOnError = true)
 //
 function AddVolunteerOpportunity($iPersonID, $iVolID)
 {
-    $sSQL = 'INSERT INTO person2volunteeropp_p2vo (p2vo_per_ID, p2vo_vol_ID) VALUES ('.$iPersonID.', '.$iVolID.')';
+    $sSQL = 'INSERT INTO person2volunteeropp_p2vo (p2vo_per_ID, p2vo_vol_ID) VALUES (' . $iPersonID . ', ' . $iVolID . ')';
     $result = RunQuery($sSQL, false);
 
     return $result;
@@ -208,7 +207,7 @@ function AddVolunteerOpportunity($iPersonID, $iVolID)
 
 function RemoveVolunteerOpportunity($iPersonID, $iVolID)
 {
-    $sSQL = 'DELETE FROM person2volunteeropp_p2vo WHERE p2vo_per_ID = '.$iPersonID.' AND p2vo_vol_ID = '.$iVolID;
+    $sSQL = 'DELETE FROM person2volunteeropp_p2vo WHERE p2vo_per_ID = ' . $iPersonID . ' AND p2vo_vol_ID = ' . $iVolID;
     RunQuery($sSQL);
 }
 
@@ -252,7 +251,7 @@ function SelectWhichInfo($sPersonInfo, $sFamilyInfo, $bFormat = false)
     }
 
     if ($bFormat && $isFamily) {
-        $finalData = $finalData."<i class='fa fa-fw fa-tree'></i>";
+        $finalData = $finalData . "<i class='fa fa-fw fa-tree'></i>";
     }
 
     return $finalData;
@@ -279,12 +278,12 @@ function SelectWhichAddress(&$sReturnAddress1, &$sReturnAddress2, $sPersonAddres
         } elseif ($sFamilyAddress1 || $sFamilyAddress2) {
             if ($bFormat) {
                 if ($sFamilyAddress1) {
-                    $sReturnAddress1 = $sFamilyInfoBegin.$sFamilyAddress1.$sFamilyInfoEnd;
+                    $sReturnAddress1 = $sFamilyInfoBegin . $sFamilyAddress1 . $sFamilyInfoEnd;
                 } else {
                     $sReturnAddress1 = '';
                 }
                 if ($sFamilyAddress2) {
-                    $sReturnAddress2 = $sFamilyInfoBegin.$sFamilyAddress2.$sFamilyInfoEnd;
+                    $sReturnAddress2 = $sFamilyInfoBegin . $sFamilyAddress2 . $sFamilyInfoEnd;
                 } else {
                     $sReturnAddress2 = '';
                 }
@@ -324,7 +323,7 @@ function ChopLastCharacter($sText)
 
 function change_date_for_place_holder($string)
 {
-    return ((strtotime($string) != "")?date(SystemConfig::getValue("sDatePickerFormat"), strtotime($string)):strtotime($string));
+    return ((strtotime($string) != "") ? date(SystemConfig::getValue("sDatePickerFormat"), strtotime($string)) : strtotime($string));
 }
 
 function FormatDateOutput()
@@ -352,7 +351,7 @@ function FormatDate($dDate, $bWithTime = false)
     }
 
     if (strlen($dDate) == 10) { // If only a date was passed append time
-        $dDate = $dDate.' 12:00:00';
+        $dDate = $dDate . ' 12:00:00';
     }  // Use noon to avoid a shift in daylight time causing
     // a date change.
 
@@ -373,9 +372,9 @@ function FormatDate($dDate, $bWithTime = false)
     // To handle a much wider range of dates use MySQL date functions.
 
     $sSQL = "SELECT DATE_FORMAT('$dDate', '%b') as mn, "
-    ."DAYOFMONTH('$dDate') as dm, YEAR('$dDate') as y, "
-    ."DATE_FORMAT('$dDate', '%k') as h, "
-    ."DATE_FORMAT('$dDate', ':%i') as m";
+    . "DAYOFMONTH('$dDate') as dm, YEAR('$dDate') as y, "
+    . "DATE_FORMAT('$dDate', '%k') as h, "
+    . "DATE_FORMAT('$dDate', ':%i') as m";
     extract(mysqli_fetch_array(RunQuery($sSQL)));
 
 
@@ -394,7 +393,7 @@ function FormatDate($dDate, $bWithTime = false)
     $fmt = FormatDateOutput();
 
     $localValue = SystemConfig::getValue("sLanguage");
-    setlocale(LC_ALL, $localValue, $localValue.'.UTF-8', $localValue.'.utf8');
+    setlocale(LC_ALL, $localValue, $localValue . '.UTF-8', $localValue . '.utf8');
 
     if ($bWithTime) {
         return utf8_encode(strftime("$fmt %H:%M $sAMPM", strtotime($dDate)));
@@ -504,14 +503,14 @@ function ExpandPhoneNumber($sPhoneNumber, $sPhoneCountry, &$bWeird)
                 return '';
             } elseif (mb_substr($sPhoneNumber, 7, 1) == 'e') {
                 // 7 digit phone # with extension
-                return mb_substr($sPhoneNumber, 0, 3).'-'.mb_substr($sPhoneNumber, 3, 4).' Ext.'.mb_substr($sPhoneNumber, 8, 6);
+                return mb_substr($sPhoneNumber, 0, 3) . '-' . mb_substr($sPhoneNumber, 3, 4) . ' Ext.' . mb_substr($sPhoneNumber, 8, 6);
             } elseif (mb_substr($sPhoneNumber, 10, 1) == 'e') {
                 // 10 digit phone # with extension
-                return mb_substr($sPhoneNumber, 0, 3).'-'.mb_substr($sPhoneNumber, 3, 3).'-'.mb_substr($sPhoneNumber, 6, 4).' Ext.'.mb_substr($sPhoneNumber, 11, 6);
+                return mb_substr($sPhoneNumber, 0, 3) . '-' . mb_substr($sPhoneNumber, 3, 3) . '-' . mb_substr($sPhoneNumber, 6, 4) . ' Ext.' . mb_substr($sPhoneNumber, 11, 6);
             } elseif ($length == 7) {
-                return mb_substr($sPhoneNumber, 0, 3).'-'.mb_substr($sPhoneNumber, 3, 4);
+                return mb_substr($sPhoneNumber, 0, 3) . '-' . mb_substr($sPhoneNumber, 3, 4);
             } elseif ($length == 10) {
-                return mb_substr($sPhoneNumber, 0, 3).'-'.mb_substr($sPhoneNumber, 3, 3).'-'.mb_substr($sPhoneNumber, 6, 4);
+                return mb_substr($sPhoneNumber, 0, 3) . '-' . mb_substr($sPhoneNumber, 3, 3) . '-' . mb_substr($sPhoneNumber, 6, 4);
             } else {
                 // Otherwise, there is something weird stored, so just leave it untouched and set the flag
                 $bWeird = true;
@@ -539,65 +538,65 @@ function FormatFullName($Title, $FirstName, $MiddleName, $LastName, $Suffix, $St
     switch ($Style) {
         case 0:
             if ($Title) {
-                $nameString .= $Title.' ';
+                $nameString .= $Title . ' ';
             }
             $nameString .= $FirstName;
             if ($MiddleName) {
-                $nameString .= ' '.$MiddleName;
+                $nameString .= ' ' . $MiddleName;
             }
             if ($LastName) {
-                $nameString .= ' '.$LastName;
+                $nameString .= ' ' . $LastName;
             }
             if ($Suffix) {
-                $nameString .= ', '.$Suffix;
+                $nameString .= ', ' . $Suffix;
             }
             break;
 
         case 1:
             if ($Title) {
-                $nameString .= $Title.' ';
+                $nameString .= $Title . ' ';
             }
             $nameString .= $FirstName;
             if ($MiddleName) {
-                $nameString .= ' '.mb_strtoupper(mb_substr($MiddleName, 0, 1)).'.';
+                $nameString .= ' ' . mb_strtoupper(mb_substr($MiddleName, 0, 1)) . '.';
             }
             if ($LastName) {
-                $nameString .= ' '.$LastName;
+                $nameString .= ' ' . $LastName;
             }
             if ($Suffix) {
-                $nameString .= ', '.$Suffix;
+                $nameString .= ', ' . $Suffix;
             }
             break;
 
         case 2:
             if ($LastName) {
-                $nameString .= $LastName.', ';
+                $nameString .= $LastName . ', ';
             }
             if ($Title) {
-                $nameString .= $Title.' ';
+                $nameString .= $Title . ' ';
             }
             $nameString .= $FirstName;
             if ($MiddleName) {
-                $nameString .= ' '.$MiddleName;
+                $nameString .= ' ' . $MiddleName;
             }
             if ($Suffix) {
-                $nameString .= ', '.$Suffix;
+                $nameString .= ', ' . $Suffix;
             }
             break;
 
         case 3:
             if ($LastName) {
-                $nameString .= $LastName.', ';
+                $nameString .= $LastName . ', ';
             }
             if ($Title) {
-                $nameString .= $Title.' ';
+                $nameString .= $Title . ' ';
             }
             $nameString .= $FirstName;
             if ($MiddleName) {
-                $nameString .= ' '.mb_strtoupper(mb_substr($MiddleName, 0, 1)).'.';
+                $nameString .= ' ' . mb_strtoupper(mb_substr($MiddleName, 0, 1)) . '.';
             }
             if ($Suffix) {
-                $nameString .= ', '.$Suffix;
+                $nameString .= ', ' . $Suffix;
             }
             break;
     }
@@ -675,11 +674,11 @@ function displayCustomField($type, $data, $special)
     // Handler for "person from group"
         case 9:
             if ($data > 0) {
-                $sSQL = 'SELECT per_FirstName, per_LastName FROM person_per WHERE per_ID ='.$data;
+                $sSQL = 'SELECT per_FirstName, per_LastName FROM person_per WHERE per_ID =' . $data;
                 $rsTemp = RunQuery($sSQL);
                 extract(mysqli_fetch_array($rsTemp));
 
-                return $per_FirstName.' '.$per_LastName;
+                return $per_FirstName . ' ' . $per_LastName;
             } else {
                 return '';
             }
@@ -720,73 +719,73 @@ function formCustomField($type, $fieldname, $data, $special, $bFirstPassFlag)
     switch ($type) {
     // Handler for boolean fields
         case 1:
-            echo '<div class="form-group">'.
-            '<div class="radio"><label><input type="radio" Name="'.$fieldname.'" value="true"'.($data == 'true' ? 'checked' : '').'>'.gettext('Yes').'</label></div>'.
-            '<div class="radio"><label><input type="radio" Name="'.$fieldname.'" value="false"'.($data == 'false' ? 'checked' : '').'>'.gettext('No').'</label></div>'.
-            '<div class="radio"><label><input type="radio" Name="'.$fieldname.'" value=""'.(strlen($data) == 0 ? 'checked' : '').'>'.gettext('Unknown').'</label></div>'.
+            echo '<div class="form-group">' .
+            '<div class="radio"><label><input type="radio" Name="' . $fieldname . '" value="true"' . ($data == 'true' ? 'checked' : '') . '>' . gettext('Yes') . '</label></div>' .
+            '<div class="radio"><label><input type="radio" Name="' . $fieldname . '" value="false"' . ($data == 'false' ? 'checked' : '') . '>' . gettext('No') . '</label></div>' .
+            '<div class="radio"><label><input type="radio" Name="' . $fieldname . '" value=""' . (strlen($data) == 0 ? 'checked' : '') . '>' . gettext('Unknown') . '</label></div>' .
             '</div>';
             break;
     // Handler for date fields
         case 2:
             // code rajouté par Philippe Logel
-            echo '<div class="input-group">'.
-            '<div class="input-group-addon">'.
-            '<i class="fa fa-calendar"></i>'.
-            '</div>'.
-            '<input class="form-control date-picker" type="text" id="'.$fieldname.'" Name="'.$fieldname.'" value="'.change_date_for_place_holder($data).'" placeholder="'.SystemConfig::getValue("sDatePickerPlaceHolder").'"> '.
+            echo '<div class="input-group">' .
+            '<div class="input-group-addon">' .
+            '<i class="fa fa-calendar"></i>' .
+            '</div>' .
+            '<input class="form-control date-picker" type="text" id="' . $fieldname . '" Name="' . $fieldname . '" value="' . change_date_for_place_holder($data) . '" placeholder="' . SystemConfig::getValue("sDatePickerPlaceHolder") . '"> ' .
             '</div>';
             break;
 
     // Handler for 50 character max. text fields
         case 3:
-            echo '<input class="form-control" type="text" Name="'.$fieldname.'" maxlength="50" size="50" value="'.htmlentities(stripslashes($data), ENT_NOQUOTES, 'UTF-8').'">';
+            echo '<input class="form-control" type="text" Name="' . $fieldname . '" maxlength="50" size="50" value="' . htmlentities(stripslashes($data), ENT_NOQUOTES, 'UTF-8') . '">';
             break;
 
     // Handler for 100 character max. text fields
         case 4:
-            echo '<textarea class="form-control" Name="'.$fieldname.'" cols="40" rows="2" onKeyPress="LimitTextSize(this, 100)">'.htmlentities(stripslashes($data), ENT_NOQUOTES, 'UTF-8').'</textarea>';
+            echo '<textarea class="form-control" Name="' . $fieldname . '" cols="40" rows="2" onKeyPress="LimitTextSize(this, 100)">' . htmlentities(stripslashes($data), ENT_NOQUOTES, 'UTF-8') . '</textarea>';
             break;
 
     // Handler for extended text fields (MySQL type TEXT, Max length: 2^16-1)
         case 5:
-            echo '<textarea class="form-control" Name="'.$fieldname.'" cols="60" rows="4" onKeyPress="LimitTextSize(this, 65535)">'.htmlentities(stripslashes($data), ENT_NOQUOTES, 'UTF-8').'</textarea>';
+            echo '<textarea class="form-control" Name="' . $fieldname . '" cols="60" rows="4" onKeyPress="LimitTextSize(this, 65535)">' . htmlentities(stripslashes($data), ENT_NOQUOTES, 'UTF-8') . '</textarea>';
             break;
 
     // Handler for 4-digit year
         case 6:
-            echo '<input class="form-control" type="text" Name="'.$fieldname.'" maxlength="4" size="6" value="'.$data.'">';
+            echo '<input class="form-control" type="text" Name="' . $fieldname . '" maxlength="4" size="6" value="' . $data . '">';
             break;
 
     // Handler for season (drop-down selection)
         case 7:
             echo "<select name=\"$fieldname\" class=\"form-control\" >";
-            echo '  <option value="none">'.gettext('Select Season').'</option>';
+            echo '  <option value="none">' . gettext('Select Season') . '</option>';
             echo '  <option value="winter"';
             if ($data == 'winter') {
                 echo ' selected';
             }
-            echo '>'.gettext('Winter').'</option>';
+            echo '>' . gettext('Winter') . '</option>';
             echo '  <option value="spring"';
             if ($data == 'spring') {
                 echo ' selected';
             }
-            echo '>'.gettext('Spring').'</option>';
+            echo '>' . gettext('Spring') . '</option>';
             echo '  <option value="summer"';
             if ($data == 'summer') {
                 echo 'selected';
             }
-            echo '>'.gettext('Summer').'</option>';
+            echo '>' . gettext('Summer') . '</option>';
             echo '  <option value="fall"';
             if ($data == 'fall') {
                 echo ' selected';
             }
-            echo '>'.gettext('Fall').'</option>';
+            echo '>' . gettext('Fall') . '</option>';
             echo '</select>';
             break;
 
     // Handler for integer numbers
         case 8:
-            echo '<input class="form-control" type="text" Name="'.$fieldname.'" maxlength="11" size="15" value="'.$data.'">';
+            echo '<input class="form-control" type="text" Name="' . $fieldname . '" maxlength="11" size="15" value="' . $data . '">';
             break;
 
     // Handler for "person from group"
@@ -798,26 +797,26 @@ function formCustomField($type, $fieldname, $data, $special, $bFirstPassFlag)
             $sSQL = 'SELECT person_per.per_ID, person_per.per_FirstName, person_per.per_LastName
                         FROM person2group2role_p2g2r
                         LEFT JOIN person_per ON person2group2role_p2g2r.p2g2r_per_ID = person_per.per_ID
-                        WHERE p2g2r_grp_ID = '.$special.' ORDER BY per_FirstName';
+                        WHERE p2g2r_grp_ID = ' . $special . ' ORDER BY per_FirstName';
 
             $rsGroupPeople = RunQuery($sSQL);
 
-            echo '<select name="'.$fieldname.'" class="form-control" >';
+            echo '<select name="' . $fieldname . '" class="form-control" >';
             echo '<option value="0"';
             if ($data <= 0) {
                 echo ' selected';
             }
-            echo '>'.gettext('Unassigned').'</option>';
+            echo '>' . gettext('Unassigned') . '</option>';
             echo '<option value="0">-----------------------</option>';
 
             while ($aRow = mysqli_fetch_array($rsGroupPeople)) {
                 extract($aRow);
 
-                echo '<option value="'.$per_ID.'"';
+                echo '<option value="' . $per_ID . '"';
                 if ($data == $per_ID) {
                     echo ' selected';
                 }
-                echo '>'.$per_FirstName.'&nbsp;'.$per_LastName.'</option>';
+                echo '>' . $per_FirstName . '&nbsp;' . $per_LastName . '</option>';
             }
 
             echo '</select>';
@@ -825,7 +824,7 @@ function formCustomField($type, $fieldname, $data, $special, $bFirstPassFlag)
 
     // Handler for money amounts
         case 10:
-            echo '<input class="form-control"  type="text" Name="'.$fieldname.'" maxlength="13" size="16" value="'.$data.'">';
+            echo '<input class="form-control"  type="text" Name="' . $fieldname . '" maxlength="13" size="16" value="' . $data . '">';
             break;
 
     // Handler for phone numbers
@@ -836,7 +835,7 @@ function formCustomField($type, $fieldname, $data, $special, $bFirstPassFlag)
               // in this case, $special is the phone country
                 $data = ExpandPhoneNumber($data, $special, $bNoFormat_Phone);
             }
-            if (isset($_POST[$fieldname.'noformat'])) {
+            if (isset($_POST[$fieldname . 'noformat'])) {
                 $bNoFormat_Phone = true;
             }
 
@@ -844,12 +843,12 @@ function formCustomField($type, $fieldname, $data, $special, $bFirstPassFlag)
             echo '<div class="input-group-addon">';
             echo '<i class="fa fa-phone"></i>';
             echo '</div>';
-            echo '<input class="form-control"  type="text" Name="'.$fieldname.'" maxlength="30" size="30" value="'.htmlentities(stripslashes($data), ENT_NOQUOTES, 'UTF-8').'" data-inputmask=\'"mask": "'.SystemConfig::getValue('sPhoneFormat').'"\' data-mask>';
-            echo '<br><input type="checkbox" name="'.$fieldname.'noformat" value="1"';
+            echo '<input class="form-control"  type="text" Name="' . $fieldname . '" maxlength="30" size="30" value="' . htmlentities(stripslashes($data), ENT_NOQUOTES, 'UTF-8') . '" data-inputmask=\'"mask": "' . SystemConfig::getValue('sPhoneFormat') . '"\' data-mask>';
+            echo '<br><input type="checkbox" name="' . $fieldname . 'noformat" value="1"';
             if ($bNoFormat_Phone) {
                 echo ' checked';
             }
-            echo '>'.gettext('Do not auto-format');
+            echo '>' . gettext('Do not auto-format');
             echo '</div>';
             break;
 
@@ -858,17 +857,17 @@ function formCustomField($type, $fieldname, $data, $special, $bFirstPassFlag)
             $sSQL = "SELECT * FROM list_lst WHERE lst_ID = $special ORDER BY lst_OptionSequence";
             $rsListOptions = RunQuery($sSQL);
 
-            echo '<select class="form-control" name="'.$fieldname.'">';
-            echo '<option value="0" selected>'.gettext('Unassigned').'</option>';
+            echo '<select class="form-control" name="' . $fieldname . '">';
+            echo '<option value="0" selected>' . gettext('Unassigned') . '</option>';
             echo '<option value="0">-----------------------</option>';
 
             while ($aRow = mysqli_fetch_array($rsListOptions)) {
                 extract($aRow);
-                echo '<option value="'.$lst_OptionID.'"';
+                echo '<option value="' . $lst_OptionID . '"';
                 if ($data == $lst_OptionID) {
                     echo ' selected';
                 }
-                echo '>'.$lst_OptionName.'</option>';
+                echo '>' . $lst_OptionName . '</option>';
             }
 
             echo '</select>';
@@ -876,7 +875,7 @@ function formCustomField($type, $fieldname, $data, $special, $bFirstPassFlag)
 
     // Otherwise, display error for debugging.
         default:
-            echo '<b>'.gettext('Error: Invalid Editor ID!').'</b>';
+            echo '<b>' . gettext('Error: Invalid Editor ID!') . '</b>';
             break;
     }
 }
@@ -902,18 +901,18 @@ function assembleYearMonthDay($sYear, $sMonth, $sDay, $pasfut = 'future')
         } elseif ($pasfut == 'future') {
             // Assume 2 digit year is in next 99 years
             if ($sYear > $twoDigit) {
-                $sYear = mb_substr($thisYear, 0, 2).$sYear;
+                $sYear = mb_substr($thisYear, 0, 2) . $sYear;
             } else {
                 $sNextCentury = $thisYear + 100;
-                $sYear = mb_substr($sNextCentury, 0, 2).$sYear;
+                $sYear = mb_substr($sNextCentury, 0, 2) . $sYear;
             }
         } else {
             // Assume 2 digit year was is last 99 years
             if ($sYear < $twoDigit) {
-                $sYear = mb_substr($thisYear, 0, 2).$sYear;
+                $sYear = mb_substr($thisYear, 0, 2) . $sYear;
             } else {
                 $sLastCentury = $thisYear - 100;
-                $sYear = mb_substr($sLastCentury, 0, 2).$sYear;
+                $sYear = mb_substr($sLastCentury, 0, 2) . $sYear;
             }
         }
     } elseif (strlen($sYear) == 4) {
@@ -925,7 +924,7 @@ function assembleYearMonthDay($sYear, $sMonth, $sDay, $pasfut = 'future')
     // Parse the Month
     // Take a one or two character month and return a two character month
     if (strlen($sMonth) == 1) {
-        $sMonth = '0'.$sMonth;
+        $sMonth = '0' . $sMonth;
     } elseif (strlen($sMonth) == 2) {
         $sMonth = $sMonth;
     } else {
@@ -935,14 +934,14 @@ function assembleYearMonthDay($sYear, $sMonth, $sDay, $pasfut = 'future')
     // Parse the Day
     // Take a one or two character day and return a two character day
     if (strlen($sDay) == 1) {
-        $sDay = '0'.$sDay;
+        $sDay = '0' . $sDay;
     } elseif (strlen($sDay) == 2) {
         $sDay = $sDay;
     } else {
         return false;
     }
 
-    $sScanString = $sYear.'-'.$sMonth.'-'.$sDay;
+    $sScanString = $sYear . '-' . $sMonth . '-' . $sDay;
     [$iYear, $iMonth, $iDay] = sscanf($sScanString, '%04d-%02d-%02d');
 
     if (checkdate($iMonth, $iDay, $iYear)) {
@@ -1098,7 +1097,7 @@ function validateCustomField($type, &$data, $col_Name, &$aErrors)
         case 8:
             if (strlen($data) != 0) {
                 if ($aLocalInfo['thousands_sep']) {
-                    $data = preg_replace('/'.$aLocaleInfo['thousands_sep'].'/i', '', $data);  // remove any thousands separators
+                    $data = preg_replace('/' . $aLocaleInfo['thousands_sep'] . '/i', '', $data);  // remove any thousands separators
                 }
                 if (!is_numeric($data)) {
                     $aErrors[$col_Name] = gettext('Invalid Number');
@@ -1114,7 +1113,7 @@ function validateCustomField($type, &$data, $col_Name, &$aErrors)
         case 10:
             if (strlen($data) != 0) {
                 if ($aLocaleInfo['mon_thousands_sep']) {
-                    $data = preg_replace('/'.$aLocaleInfo['mon_thousands_sep'].'/i', '', $data);
+                    $data = preg_replace('/' . $aLocaleInfo['mon_thousands_sep'] . '/i', '', $data);
                 }
                 if (!is_numeric($data)) {
                     $aErrors[$col_Name] = gettext('Invalid Number');
@@ -1155,33 +1154,33 @@ function sqlCustomField(&$sSQL, $type, $data, $col_Name, $special)
                     break;
             }
 
-            $sSQL .= $col_Name.' = '.$data.', ';
+            $sSQL .= $col_Name . ' = ' . $data . ', ';
             break;
 
     // date
         case 2:
             if (strlen($data) > 0) {
-                $sSQL .= $col_Name.' = "'.$data.'", ';
+                $sSQL .= $col_Name . ' = "' . $data . '", ';
             } else {
-                $sSQL .= $col_Name.' = NULL, ';
+                $sSQL .= $col_Name . ' = NULL, ';
             }
             break;
 
     // year
         case 6:
             if (strlen($data) > 0) {
-                $sSQL .= $col_Name." = '".$data."', ";
+                $sSQL .= $col_Name . " = '" . $data . "', ";
             } else {
-                $sSQL .= $col_Name.' = NULL, ';
+                $sSQL .= $col_Name . ' = NULL, ';
             }
             break;
 
     // season
         case 7:
             if ($data != 'none') {
-                $sSQL .= $col_Name." = '".$data."', ";
+                $sSQL .= $col_Name . " = '" . $data . "', ";
             } else {
-                $sSQL .= $col_Name.' = NULL, ';
+                $sSQL .= $col_Name . ' = NULL, ';
             }
             break;
 
@@ -1189,9 +1188,9 @@ function sqlCustomField(&$sSQL, $type, $data, $col_Name, $special)
         case 8:
         case 10:
             if (strlen($data) > 0) {
-                $sSQL .= $col_Name." = '".$data."', ";
+                $sSQL .= $col_Name . " = '" . $data . "', ";
             } else {
-                $sSQL .= $col_Name.' = NULL, ';
+                $sSQL .= $col_Name . ' = NULL, ';
             }
             break;
 
@@ -1199,9 +1198,9 @@ function sqlCustomField(&$sSQL, $type, $data, $col_Name, $special)
         case 9:
         case 12:
             if ($data != 0) {
-                $sSQL .= $col_Name." = '".$data."', ";
+                $sSQL .= $col_Name . " = '" . $data . "', ";
             } else {
-                $sSQL .= $col_Name.' = NULL, ';
+                $sSQL .= $col_Name . ' = NULL, ';
             }
             break;
 
@@ -1210,27 +1209,27 @@ function sqlCustomField(&$sSQL, $type, $data, $col_Name, $special)
         case 4:
         case 5:
             if (strlen($data) > 0) {
-                $sSQL .= $col_Name." = '".$data."', ";
+                $sSQL .= $col_Name . " = '" . $data . "', ";
             } else {
-                $sSQL .= $col_Name.' = NULL, ';
+                $sSQL .= $col_Name . ' = NULL, ';
             }
             break;
 
     // phone
         case 11:
             if (strlen($data) > 0) {
-                if (!isset($_POST[$col_Name.'noformat'])) {
-                    $sSQL .= $col_Name." = '".CollapsePhoneNumber($data, $special)."', ";
+                if (!isset($_POST[$col_Name . 'noformat'])) {
+                    $sSQL .= $col_Name . " = '" . CollapsePhoneNumber($data, $special) . "', ";
                 } else {
-                    $sSQL .= $col_Name." = '".$data."', ";
+                    $sSQL .= $col_Name . " = '" . $data . "', ";
                 }
             } else {
-                $sSQL .= $col_Name.' = NULL, ';
+                $sSQL .= $col_Name . ' = NULL, ';
             }
             break;
 
         default:
-            $sSQL .= $col_Name." = '".$data."', ";
+            $sSQL .= $col_Name . " = '" . $data . "', ";
             break;
     }
 }
@@ -1243,11 +1242,11 @@ function formatNumber($iNumber, $sMode = 'integer')
 
     switch ($sMode) {
         case 'money':
-            return $aLocaleInfo['currency_symbol'].' '.number_format($iNumber, $aLocaleInfo['frac_digits'], $aLocaleInfo['mon_decimal_point'], $aLocaleInfo['mon_thousands_sep']);
+            return $aLocaleInfo['currency_symbol'] . ' ' . number_format($iNumber, $aLocaleInfo['frac_digits'], $aLocaleInfo['mon_decimal_point'], $aLocaleInfo['mon_thousands_sep']);
         break;
 
         case 'intmoney':
-            return $aLocaleInfo['currency_symbol'].' '.number_format($iNumber, 0, '', $aLocaleInfo['mon_thousands_sep']);
+            return $aLocaleInfo['currency_symbol'] . ' ' . number_format($iNumber, 0, '', $aLocaleInfo['mon_thousands_sep']);
         break;
 
         case 'float':
@@ -1270,12 +1269,12 @@ function FilenameToFontname($filename, $family)
         return ucfirst($family);
     } else {
         if (strlen($filename) - strlen($family) == 2) {
-            return ucfirst($family).gettext(' Bold Italic');
+            return ucfirst($family) . gettext(' Bold Italic');
         } else {
             if (mb_substr($filename, strlen($filename) - 1) == 'i') {
-                return ucfirst($family).gettext(' Italic');
+                return ucfirst($family) . gettext(' Italic');
             } else {
-                return ucfirst($family).gettext(' Bold');
+                return ucfirst($family) . gettext(' Bold');
             }
         }
     }
@@ -1290,7 +1289,7 @@ function FontFromName($fontname)
         case 2:
             return [$fontinfo[0], mb_substr($fontinfo[1], 0, 1)];
         case 3:
-            return [$fontinfo[0], mb_substr($fontinfo[1], 0, 1).mb_substr($fontinfo[2], 0, 1)];
+            return [$fontinfo[0], mb_substr($fontinfo[1], 0, 1) . mb_substr($fontinfo[2], 0, 1)];
     }
 }
 
@@ -1306,7 +1305,7 @@ function createTimeDropdown($start, $stop, $mininc, $hoursel, $minsel)
             $ampm = 'PM';
         } elseif ($hour >= '13' && $hour <= '21') {
             $test = $hour - 12;
-            $disphour = ' '.$test;
+            $disphour = ' ' . $test;
             $ampm = 'PM';
         } elseif ($hour >= '22' && $hour <= '23') {
             $disphour = $hour - 12;
@@ -1320,29 +1319,29 @@ function createTimeDropdown($start, $stop, $mininc, $hoursel, $minsel)
             if ($hour >= '1' && $hour <= '9') {
                 if ($min >= '0' && $min <= '9') {
                     if ($hour == $hoursel && $min == $minsel) {
-                        echo '<option value="0'.$hour.':0'.$min.':00" selected> '.$disphour.':0'.$min.' '.$ampm.'</option>'."\n";
+                        echo '<option value="0' . $hour . ':0' . $min . ':00" selected> ' . $disphour . ':0' . $min . ' ' . $ampm . '</option>' . "\n";
                     } else {
-                        echo '<option value="0'.$hour.':0'.$min.':00"> '.$disphour.':0'.$min.' '.$ampm.'</option>'."\n";
+                        echo '<option value="0' . $hour . ':0' . $min . ':00"> ' . $disphour . ':0' . $min . ' ' . $ampm . '</option>' . "\n";
                     }
                 } else {
                     if ($hour == $hoursel && $min == $minsel) {
-                        echo '<option value="0'.$hour.':'.$min.':00" selected> '.$disphour.':'.$min.' '.$ampm.'</option>'."\n";
+                        echo '<option value="0' . $hour . ':' . $min . ':00" selected> ' . $disphour . ':' . $min . ' ' . $ampm . '</option>' . "\n";
                     } else {
-                        echo '<option value="0'.$hour.':'.$min.':00"> '.$disphour.':'.$min.' '.$ampm.'</option>'."\n";
+                        echo '<option value="0' . $hour . ':' . $min . ':00"> ' . $disphour . ':' . $min . ' ' . $ampm . '</option>' . "\n";
                     }
                 }
             } else {
                 if ($min >= '0' && $min <= '9') {
                     if ($hour == $hoursel && $min == $minsel) {
-                        echo '<option value="'.$hour.':0'.$min.':00" selected>'.$disphour.':0'.$min.' '.$ampm.'</option>'."\n";
+                        echo '<option value="' . $hour . ':0' . $min . ':00" selected>' . $disphour . ':0' . $min . ' ' . $ampm . '</option>' . "\n";
                     } else {
-                        echo '<option value="'.$hour.':0'.$min.':00">'.$disphour.':0'.$min.' '.$ampm.'</option>'."\n";
+                        echo '<option value="' . $hour . ':0' . $min . ':00">' . $disphour . ':0' . $min . ' ' . $ampm . '</option>' . "\n";
                     }
                 } else {
                     if ($hour == $hoursel && $min == $minsel) {
-                        echo '<option value="'.$hour.':'.$min.':00" selected>'.$disphour.':'.$min.' '.$ampm.'</option>'."\n";
+                        echo '<option value="' . $hour . ':' . $min . ':00" selected>' . $disphour . ':' . $min . ' ' . $ampm . '</option>' . "\n";
                     } else {
-                        echo '<option value="'.$hour.':'.$min.':00">'.$disphour.':'.$min.' '.$ampm.'</option>'."\n";
+                        echo '<option value="' . $hour . ':' . $min . ':00">' . $disphour . ':' . $min . ' ' . $ampm . '</option>' . "\n";
                     }
                 }
             }
@@ -1390,7 +1389,7 @@ function MySQLquote($sfield)
         if ((mb_substr($sfield, 0, 1) == "'") && (mb_substr($sfield, strlen($sfield) - 1, 1)) == "'") {
             return $sfield;
         } else {
-            return "'".$sfield."'";
+            return "'" . $sfield . "'";
         }
     }
 }
@@ -1450,7 +1449,7 @@ function checkEmail($email, $domainCheck = false, $verify = false, $return_error
                             echo "$mailers[$n] replied: $response\n";
                         }
                         $cmds = [
-                        'HELO '.SystemConfig::getValue('sSMTPHost'), // Be sure to set this correctly!
+                        'HELO ' . SystemConfig::getValue('sSMTPHost'), // Be sure to set this correctly!
                         "MAIL FROM: <$probe_address>",
                         "RCPT TO: <$email>",
                         'QUIT',
@@ -1466,7 +1465,7 @@ function checkEmail($email, $domainCheck = false, $verify = false, $return_error
                             $response = fgets($sock, 4096);
                             $t = 1000 * (microtime(true) - $before);
                             if ($checkEmailDebug) {
-                                echo htmlentities("$cmd\n$response").'('.sprintf('%.2f', $t)." ms)\n";
+                                echo htmlentities("$cmd\n$response") . '(' . sprintf('%.2f', $t) . " ms)\n";
                             }
                             if (!$meta['timed_out'] && preg_match('/^5\d\d[ -]/', $response)) {
                                 $error = "Unverified address: $mailers[$n] said: $response";
@@ -1519,14 +1518,14 @@ function getFamilyList($sDirRoleHead, $sDirRoleSpouse, $classification = 0, $sSe
 {
     if ($classification) {
         if ($sSearchTerm) {
-            $whereClause = " WHERE per_cls_ID='".$classification."' AND fam_Name LIKE '%".$sSearchTerm."%' ";
+            $whereClause = " WHERE per_cls_ID='" . $classification . "' AND fam_Name LIKE '%" . $sSearchTerm . "%' ";
         } else {
-            $whereClause = " WHERE per_cls_ID='".$classification."' ";
+            $whereClause = " WHERE per_cls_ID='" . $classification . "' ";
         }
         $sSQL = "SELECT fam_ID, fam_Name, fam_Address1, fam_City, fam_State FROM family_fam LEFT JOIN person_per ON fam_ID = per_fam_ID $whereClause ORDER BY fam_Name";
     } else {
         if ($sSearchTerm) {
-            $whereClause = " WHERE fam_Name LIKE '%".$sSearchTerm."%' ";
+            $whereClause = " WHERE fam_Name LIKE '%" . $sSearchTerm . "%' ";
         } else {
             $whereClause = '';
         }
@@ -1539,7 +1538,7 @@ function getFamilyList($sDirRoleHead, $sDirRoleSpouse, $classification = 0, $sSe
     if (!$sDirRoleHead) {
         $sDirRoleHead = '1';
     }
-    $head_criteria = ' per_fmr_ID = '.$sDirRoleHead;
+    $head_criteria = ' per_fmr_ID = ' . $sDirRoleHead;
     // If more than one role assigned to Head of Household, add OR
     $head_criteria = str_replace(',', ' OR per_fmr_ID = ', $head_criteria);
     // Add Spouse to criteria
@@ -1547,12 +1546,12 @@ function getFamilyList($sDirRoleHead, $sDirRoleSpouse, $classification = 0, $sSe
         $head_criteria .= " OR per_fmr_ID = $sDirRoleSpouse";
     }
     // Build array of Head of Households and Spouses with fam_ID as the key
-    $sSQL = 'SELECT per_FirstName, per_fam_ID FROM person_per WHERE per_fam_ID > 0 AND ('.$head_criteria.') ORDER BY per_fam_ID';
+    $sSQL = 'SELECT per_FirstName, per_fam_ID FROM person_per WHERE per_fam_ID > 0 AND (' . $head_criteria . ') ORDER BY per_fam_ID';
     $rs_head = RunQuery($sSQL);
     $aHead = [];
     while ([$head_firstname, $head_famid] = mysqli_fetch_row($rs_head)) {
         if ($head_firstname && isset($aHead[$head_famid])) {
-            $aHead[$head_famid] .= ' & '.$head_firstname;
+            $aHead[$head_famid] .= ' & ' . $head_firstname;
         } elseif ($head_firstname) {
             $aHead[$head_famid] = $head_firstname;
         }
@@ -1562,9 +1561,9 @@ function getFamilyList($sDirRoleHead, $sDirRoleSpouse, $classification = 0, $sSe
         extract($aRow);
         $name = $fam_Name;
         if (isset($aHead[$fam_ID])) {
-            $name .= ', '.$aHead[$fam_ID];
+            $name .= ', ' . $aHead[$fam_ID];
         }
-        $name .= ' '.FormatAddressLine($fam_Address1, $fam_City, $fam_State);
+        $name .= ' ' . FormatAddressLine($fam_Address1, $fam_City, $fam_State);
 
         $familyArray[$fam_ID] = $name;
     }
@@ -1577,11 +1576,11 @@ function buildFamilySelect($iFamily, $sDirRoleHead, $sDirRoleSpouse)
     //Get Families for the drop-down
     $familyArray = getFamilyList($sDirRoleHead, $sDirRoleSpouse);
     foreach ($familyArray as $fam_ID => $fam_Data) {
-        $html .= '<option value="'.$fam_ID.'"';
+        $html .= '<option value="' . $fam_ID . '"';
         if ($iFamily == $fam_ID) {
             $html .= ' selected';
         }
-        $html .= '>'.$fam_Data;
+        $html .= '>' . $fam_Data;
     }
 
     return $html;
@@ -1591,8 +1590,8 @@ function genGroupKey($methodSpecificID, $famID, $fundIDs, $date)
 {
     $uniqueNum = 0;
     while (1) {
-        $GroupKey = $methodSpecificID.'|'.$uniqueNum.'|'.$famID.'|'.$fundIDs.'|'.$date;
-        $sSQL = "SELECT COUNT(plg_GroupKey) FROM pledge_plg WHERE plg_PledgeOrPayment='Payment' AND plg_GroupKey='".$GroupKey."'";
+        $GroupKey = $methodSpecificID . '|' . $uniqueNum . '|' . $famID . '|' . $fundIDs . '|' . $date;
+        $sSQL = "SELECT COUNT(plg_GroupKey) FROM pledge_plg WHERE plg_PledgeOrPayment='Payment' AND plg_GroupKey='" . $GroupKey . "'";
         $rsResults = RunQuery($sSQL);
         [$numGroupKeys] = mysqli_fetch_row($rsResults);
         if ($numGroupKeys) {
@@ -1620,7 +1619,7 @@ function requireUserGroupMembership($allowedRoles = null)
     }
 
     //if we get to this point in the code, then the user is not authorized.
-    throw new Exception('User is not authorized to access '.debug_backtrace()[1]['function'], 401);
+    throw new Exception('User is not authorized to access ' . debug_backtrace()[1]['function'], 401);
 }
 
 function random_color_part()
@@ -1630,7 +1629,7 @@ function random_color_part()
 
 function random_color()
 {
-    return random_color_part().random_color_part().random_color_part();
+    return random_color_part() . random_color_part() . random_color_part();
 }
 
 function generateGroupRoleEmailDropdown($roleEmails, $href)
@@ -1638,11 +1637,11 @@ function generateGroupRoleEmailDropdown($roleEmails, $href)
     $sMailtoDelimiter = AuthenticationManager::getCurrentUser()->getUserConfigString("sMailtoDelimiter");
     foreach ($roleEmails as $role => $Email) {
         if (SystemConfig::getValue('sToEmailAddress') != '' && !stristr($Email, (string) SystemConfig::getValue('sToEmailAddress'))) {
-            $Email .= $sMailtoDelimiter.SystemConfig::getValue('sToEmailAddress');
+            $Email .= $sMailtoDelimiter . SystemConfig::getValue('sToEmailAddress');
         }
         $Email = urlencode($Email);  // Mailto should comply with RFC 2368
         ?>
-      <a class="dropdown-item" href="<?= $href.mb_substr($Email, 0, -3) ?>"><?=$role?></a>
+      <a class="dropdown-item" href="<?= $href . mb_substr($Email, 0, -3) ?>"><?=$role?></a>
         <?php
     }
 }

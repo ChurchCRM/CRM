@@ -1,4 +1,5 @@
 <?php
+
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\Bootstrapper;

@@ -17,7 +17,7 @@ class NotificationService
             if (isset($TempNotificaions->TTL)) {
                 $_SESSION['SystemNotifications'] = $TempNotificaions;
                 $_SESSION['SystemNotifications']->expires = new \DateTime();
-                $_SESSION['SystemNotifications']->expires->add(new \DateInterval("PT".$_SESSION['SystemNotifications']->TTL."S"));
+                $_SESSION['SystemNotifications']->expires->add(new \DateInterval("PT" . $_SESSION['SystemNotifications']->TTL . "S"));
             }
         } catch (\Exception $ex) {
           //a failure here should never prevent the page from loading.

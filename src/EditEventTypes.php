@@ -1,4 +1,5 @@
 <?php
+
 /*******************************************************************************
  *
  *  filename    : EventNames.php
@@ -14,6 +15,7 @@
  *  fields
  *
  ******************************************************************************/
+
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
@@ -49,7 +51,7 @@ if (strpos($_POST['Action'], 'DELETE_', 0) === 0) {
             $editing = 'FALSE';
             $eName = $_POST['newEvtName'];
             $theID = $_POST['EN_tyid'];
-            $sSQL = "UPDATE event_types SET type_name='".InputUtils::legacyFilterInput($eName)."' WHERE type_id='".InputUtils::legacyFilterInput($theID)."'";
+            $sSQL = "UPDATE event_types SET type_name='" . InputUtils::legacyFilterInput($eName) . "' WHERE type_id='" . InputUtils::legacyFilterInput($theID) . "'";
             RunQuery($sSQL);
             $theID = '';
             $_POST['Action'] = '';
@@ -59,7 +61,7 @@ if (strpos($_POST['Action'], 'DELETE_', 0) === 0) {
             $editing = 'FALSE';
             $eTime = $_POST['newEvtStartTime'];
             $theID = $_POST['EN_tyid'];
-            $sSQL = "UPDATE event_types SET type_defstarttime='".InputUtils::legacyFilterInput($eTime)."' WHERE type_id='".InputUtils::legacyFilterInput($theID)."'";
+            $sSQL = "UPDATE event_types SET type_defstarttime='" . InputUtils::legacyFilterInput($eTime) . "' WHERE type_id='" . InputUtils::legacyFilterInput($theID) . "'";
             RunQuery($sSQL);
             $theID = '';
             $_POST['Action'] = '';
@@ -87,13 +89,13 @@ switch ($aDefRecurType) {
         $recur = gettext('None');
         break;
     case 'weekly':
-        $recur = gettext('Weekly on').' '.gettext($aDefRecurDOW.'s');
+        $recur = gettext('Weekly on') . ' ' . gettext($aDefRecurDOW . 's');
         break;
     case 'monthly':
-        $recur = gettext('Monthly on').' '.date('dS', mktime(0, 0, 0, 1, $aDefRecurDOM, 2000));
+        $recur = gettext('Monthly on') . ' ' . date('dS', mktime(0, 0, 0, 1, $aDefRecurDOM, 2000));
         break;
     case 'yearly':
-        $recur = gettext('Yearly on').' '.mb_substr($aDefRecurDOY, 5);
+        $recur = gettext('Yearly on') . ' ' . mb_substr($aDefRecurDOY, 5);
         break;
     default:
         $recur = gettext('None');
@@ -129,7 +131,7 @@ if ($numCounts) {
 <table class='table'>
   <tr>
     <td class="LabelColumn" width="15%">
-      <strong><?= gettext('Event Type').':'.$aTypeID ?></strong>
+      <strong><?= gettext('Event Type') . ':' . $aTypeID ?></strong>
     </td>
     <td class="TextColumn" width="35%">
       <input type="text" class="form-control" name="newEvtName" value="<?= $aTypeName ?>" size="30" maxlength="35" autofocus />

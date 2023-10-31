@@ -6,7 +6,6 @@ use ChurchCRM\dto\SystemURLs;
 
 class RedirectUtils
 {
-
     /**
      * Convert a relative URL into an absolute URL and redirect the browser there.
      * @param string $sRelativeURL
@@ -31,8 +30,8 @@ class RedirectUtils
         header('Location: ' . $sTargetURL);
         exit;
     }
-    
-    
+
+
     public static function securityRedirect($missingRole)
     {
         LoggerUtils::getAppLogger()->info("Security Redirect Request due to Role: " . $missingRole);

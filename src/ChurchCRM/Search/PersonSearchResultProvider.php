@@ -45,7 +45,7 @@ class PersonSearchResultProvider extends BaseSearchResultProvider
             if (!empty($people)) {
                 $id++;
                 foreach ($people as $person) {
-                    array_push($searchResults, new SearchResult("person-name-".$id, $person->getFullName(), $person->getViewURI()));
+                    array_push($searchResults, new SearchResult("person-name-" . $id, $person->getFullName(), $person->getViewURI()));
                 }
             }
         } catch (\Exception $e) {

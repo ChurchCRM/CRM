@@ -31,13 +31,13 @@ $app->get('/', function ($request, $response, $args) use ($app) {
    $app->post('/triggerNotification', function ($request, $response, $args) use ($app) {
     $input = (object) $request->getParsedBody();
 
-    $Person =PersonQuery::create()
+    $Person = PersonQuery::create()
             ->findOneById($input->PersonId);
 
     $Notification = new Notification();
     $Notification->setPerson($Person);
     $Notification->setRecipients($Person->getFamily()->getAdults());
-    $Notification->setProjectorText($app->kiosk->getActiveAssignment()->getEvent()->getType()."-".$Person->getId());
+    $Notification->setProjectorText($app->kiosk->getActiveAssignment()->getEvent()->getType() . "-" . $Person->getId());
     $Status = $Notification->send();
 
     return $response->withJson($Status);
@@ -47,7 +47,7 @@ $app->get('/', function ($request, $response, $args) use ($app) {
    $app->get('/activeClassMembers', fn($request, $response, $args) => $app->kiosk->getActiveAssignment()->getActiveGroupMembers()->toJSON());
 
 
-   $app->get('/activeClassMember/{PersonId}/photo', function (ServerRequestInterface  $request, ResponseInterface  $response, $args) use ($app) {
+   $app->get('/activeClassMember/{PersonId}/photo', function (ServerRequestInterface $request, ResponseInterface $response, $args) use ($app) {
     $photo = new Photo("Person", $args['PersonId']);
     return $response->write($photo->getPhotoBytes())->withHeader('Content-type', $photo->getPhotoContentType());
    });

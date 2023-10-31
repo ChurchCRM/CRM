@@ -1,4 +1,5 @@
 <?php
+
 /*******************************************************************************
  *
  *  filename    : CanvassEditor.php
@@ -36,13 +37,13 @@ $sDateError = '';
 $bNotInterested = false;
 
 //Get Family name
-$sSQL = 'SELECT fam_Name FROM family_fam where fam_ID = '.$iFamily;
+$sSQL = 'SELECT fam_Name FROM family_fam where fam_ID = ' . $iFamily;
 $rsFamily = RunQuery($sSQL);
 extract(mysqli_fetch_array($rsFamily));
 
 $fyStr = MakeFYString($iFYID);
 
-$sPageTitle = gettext($fyStr.' Canvass Input for the '.$fam_Name.' family');
+$sPageTitle = gettext($fyStr . ' Canvass Input for the ' . $fam_Name . ' family');
 
 //Is this the second pass?
 if (isset($_POST['Submit'])) {
@@ -67,17 +68,17 @@ if (isset($_POST['Submit'])) {
         $sSQL = 'INSERT INTO canvassdata_can (can_famID, can_Canvasser, can_FYID, can_date, can_Positive,
 		                                      can_Critical, can_Insightful, can_Financial, can_Suggestion,
 											  can_NotInterested, can_WhyNotInterested)
-					VALUES ('.$iFamily.','.
-                            $iCanvasser.','.
-                            $iFYID.','.
-                            '"'.$dDate.'",'.
-                            '"'.$tPositive.'",'.
-                            '"'.$tCritical.'",'.
-                            '"'.$tInsightful.'",'.
-                            '"'.$tFinancial.'",'.
-                            '"'.$tSuggestion.'",'.
-                            '"'.$bNotInterested.'",'.
-                            '"'.$tWhyNotInterested.'")';
+					VALUES (' . $iFamily . ',' .
+                            $iCanvasser . ',' .
+                            $iFYID . ',' .
+                            '"' . $dDate . '",' .
+                            '"' . $tPositive . '",' .
+                            '"' . $tCritical . '",' .
+                            '"' . $tInsightful . '",' .
+                            '"' . $tFinancial . '",' .
+                            '"' . $tSuggestion . '",' .
+                            '"' . $bNotInterested . '",' .
+                            '"' . $tWhyNotInterested . '")';
         //Execute the SQL
         RunQuery($sSQL);
         $sSQL = 'SELECT MAX(can_ID) AS iCanvassID FROM canvassdata_can';
@@ -85,18 +86,18 @@ if (isset($_POST['Submit'])) {
         $newRec = mysqli_fetch_array($rsLastEntry);
         $iCanvassID = $newRec['iCanvassID'];
     } else {
-        $sSQL = 'UPDATE canvassdata_can SET can_famID='.$iFamily.','.
-                                          'can_Canvasser='.$iCanvasser.','.
-                                          'can_FYID='.$iFYID.','.
-                                          'can_date="'.$dDate.'",'.
-                                          'can_Positive="'.$tPositive.'",'.
-                                          'can_Critical="'.$tCritical.'",'.
-                                          'can_Insightful="'.$tInsightful.'",'.
-                                          'can_Financial="'.$tFinancial.'",'.
-                                          'can_Suggestion="'.$tSuggestion.'",'.
-                                          'can_NotInterested="'.$bNotInterested.'",'.
-                                          'can_WhyNotInterested="'.$tWhyNotInterested.
-                                          '" WHERE can_FamID = '.$iFamily;
+        $sSQL = 'UPDATE canvassdata_can SET can_famID=' . $iFamily . ',' .
+                                          'can_Canvasser=' . $iCanvasser . ',' .
+                                          'can_FYID=' . $iFYID . ',' .
+                                          'can_date="' . $dDate . '",' .
+                                          'can_Positive="' . $tPositive . '",' .
+                                          'can_Critical="' . $tCritical . '",' .
+                                          'can_Insightful="' . $tInsightful . '",' .
+                                          'can_Financial="' . $tFinancial . '",' .
+                                          'can_Suggestion="' . $tSuggestion . '",' .
+                                          'can_NotInterested="' . $bNotInterested . '",' .
+                                          'can_WhyNotInterested="' . $tWhyNotInterested .
+                                          '" WHERE can_FamID = ' . $iFamily;
         //Execute the SQL
         RunQuery($sSQL);
     }
@@ -106,11 +107,11 @@ if (isset($_POST['Submit'])) {
         if ($linkBack != '') {
             RedirectUtils::redirect($linkBack);
         } else {
-            RedirectUtils::redirect('CanvassEditor.php?FamilyID='.$iFamily.'&FYID='.$iFYID.'&CanvassID='.$iCanvassID.'&linkBack=', $linkBack);
+            RedirectUtils::redirect('CanvassEditor.php?FamilyID=' . $iFamily . '&FYID=' . $iFYID . '&CanvassID=' . $iCanvassID . '&linkBack=', $linkBack);
         }
     }
 } else {
-    $sSQL = 'SELECT * FROM canvassdata_can WHERE can_famID = '.$iFamily.' AND can_FYID='.$iFYID;
+    $sSQL = 'SELECT * FROM canvassdata_can WHERE can_famID = ' . $iFamily . ' AND can_FYID=' . $iFYID;
     $rsCanvass = RunQuery($sSQL);
     if (mysqli_num_rows($rsCanvass) > 0) {
         extract(mysqli_fetch_array($rsCanvass));
@@ -150,7 +151,7 @@ require 'Include/Header.php';
 ?>
 
 <div class="card card-body">
-<form method="post" action="CanvassEditor.php?<?= 'FamilyID='.$iFamily.'&FYID='.$iFYID.'&CanvassID='.$iCanvassID.'&linkBack='.$linkBack ?>" name="CanvassEditor">
+<form method="post" action="CanvassEditor.php?<?= 'FamilyID=' . $iFamily . '&FYID=' . $iFYID . '&CanvassID=' . $iCanvassID . '&linkBack=' . $linkBack ?>" name="CanvassEditor">
 <div class="table-responsive">
 <table class="table" cellpadding="3" align="center">
 
@@ -159,31 +160,33 @@ require 'Include/Header.php';
         <td>
 
             <?php
-            if (($rsBraveCanvassers != 0 && mysqli_num_rows($rsBraveCanvassers) > 0) ||
-                ($rsCanvassers != 0 && mysqli_num_rows($rsCanvassers) > 0)) {
-                echo "<tr><td class='LabelColumn'>".gettext('Canvasser:')."</td>\n";
+            if (
+                ($rsBraveCanvassers != 0 && mysqli_num_rows($rsBraveCanvassers) > 0) ||
+                ($rsCanvassers != 0 && mysqli_num_rows($rsCanvassers) > 0)
+            ) {
+                echo "<tr><td class='LabelColumn'>" . gettext('Canvasser:') . "</td>\n";
                 echo "<td class='TextColumnWithBottomBorder'>";
                 // Display all canvassers
                 echo "<select name='Canvasser'><option value=\"0\">None selected</option>";
                 if ($rsBraveCanvassers != 0) {
                     while ($aCanvasser = mysqli_fetch_array($rsBraveCanvassers)) {
-                        echo '<option value="'.$aCanvasser['per_ID'].'"';
+                        echo '<option value="' . $aCanvasser['per_ID'] . '"';
                         if ($aCanvasser['per_ID'] == $iCanvasser) {
                             echo ' selected';
                         }
                         echo '>';
-                        echo $aCanvasser['per_FirstName'].' '.$aCanvasser['per_LastName'];
+                        echo $aCanvasser['per_FirstName'] . ' ' . $aCanvasser['per_LastName'];
                         echo '</option>';
                     }
                 }
                 if ($rsCanvassers != 0) {
                     while ($aCanvasser = mysqli_fetch_array($rsCanvassers)) {
-                        echo '<option value="'.$aCanvasser['per_ID'].'"';
+                        echo '<option value="' . $aCanvasser['per_ID'] . '"';
                         if ($aCanvasser['per_ID'] == $iCanvasser) {
                             echo ' selected';
                         }
                         echo '>';
-                        echo $aCanvasser['per_FirstName'].' '.$aCanvasser['per_LastName'];
+                        echo $aCanvasser['per_FirstName'] . ' ' . $aCanvasser['per_LastName'];
                         echo '</option>';
                     }
                 }

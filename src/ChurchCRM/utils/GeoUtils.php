@@ -14,7 +14,6 @@ use ChurchCRM\Bootstrapper;
 
 class GeoUtils
 {
-
     public static function getLatLong($address)
     {
 
@@ -35,7 +34,7 @@ class GeoUtils
                     $provider = new BingMaps($adapter, SystemConfig::getValue("sBingMapKey"));
                     break;
             }
-            $logger->debug("Using: Geo Provider -  ". $provider->getName());
+            $logger->debug("Using: Geo Provider -  " . $provider->getName());
             $geoCoder = new StatefulGeocoder($provider, $localeInfo->getShortLocale());
             $result = $geoCoder->geocodeQuery(GeocodeQuery::create($address));
             $logger->debug("We have " . $result->count() . " results");

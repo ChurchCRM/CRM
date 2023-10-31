@@ -1,6 +1,5 @@
 <?php
 
-
 namespace ChurchCRM\Dashboard;
 
 use ChurchCRM\dto\SystemURLs;
@@ -8,7 +7,6 @@ use ChurchCRM\Bootstrapper;
 
 class CurrentLocaleMetadata implements DashboardItemInterface
 {
-
     public static function getDashboardItemName()
     {
         return "PageLocale";

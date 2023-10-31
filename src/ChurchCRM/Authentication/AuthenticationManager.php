@@ -15,15 +15,15 @@ namespace ChurchCRM\Authentication {
 
     class AuthenticationManager
     {
-
         // This class exists to abstract the implementations of various authentication providers
         // Currently, only local auth is implemented; hence the zero-indexed array elements.
 
         public static function getAuthenticationProvider()
         {
-            if (isset($_SESSION) &&
-            array_key_exists('AuthenticationProvider', $_SESSION) &&
-            $_SESSION['AuthenticationProvider'] instanceof IAuthenticationProvider
+            if (
+                isset($_SESSION) &&
+                array_key_exists('AuthenticationProvider', $_SESSION) &&
+                $_SESSION['AuthenticationProvider'] instanceof IAuthenticationProvider
             ) {
                 return $_SESSION['AuthenticationProvider'];
             } else {
@@ -36,7 +36,7 @@ namespace ChurchCRM\Authentication {
             $_SESSION['AuthenticationProvider'] = $AuthenticationProvider;
         }
 
-        public static function getCurrentUser() : User
+        public static function getCurrentUser(): User
         {
             try {
                 $currentUser = self::getAuthenticationProvider()->getCurrentUser();

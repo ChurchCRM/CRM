@@ -1,4 +1,5 @@
 <?php
+
 /*******************************************************************************
  *
  *  filename    : GeoPage.php
@@ -339,8 +340,9 @@ $families = FamilyQuery::create()
         <?php
         $aPersonIDs = [];
 
-        if ($iFamily != 0 &&
-        (isset($_POST['FindNeighbors']) ||
+        if (
+            $iFamily != 0 &&
+            (isset($_POST['FindNeighbors']) ||
             isset($_POST['PersonIDList']))
         ) {
             $resultsByDistance = FamilyInfoByDistance($iFamily);

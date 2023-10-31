@@ -1,4 +1,5 @@
 <?php
+
 namespace ChurchCRM\dto;
 
 use ChurchCRM\Utils\GeoUtils;
@@ -90,7 +91,7 @@ class ChurchMetaData
         }
         return SystemConfig::getValue('iChurchLongitude');
     }
-    
+
     public static function getChurchTimeZone()
     {
         return SystemConfig::getValue('sTimeZone');

@@ -1,4 +1,5 @@
 <?php
+
 /*******************************************************************************
  *
  *  filename    : QueryList.php
@@ -30,7 +31,7 @@ require 'Include/Header.php';
         <p class="text-right">
             <?php
             if (AuthenticationManager::getCurrentUser()->isAdmin()) {
-                echo '<a href="QuerySQL.php" class="text-red">'.gettext('Run a Free-Text Query').'</a>';
+                echo '<a href="QuerySQL.php" class="text-red">' . gettext('Run a Free-Text Query') . '</a>';
             }
             ?>
         </p>
@@ -45,7 +46,7 @@ require 'Include/Header.php';
                     // Filter out finance-related queries if the user doesn't have finance permissions
                 if (AuthenticationManager::getCurrentUser()->isFinanceEnabled() || !in_array($qry_ID, $aFinanceQueries)) {
                     // Display the query name and description
-                    echo '<a href="QueryView.php?QueryID='.$qry_ID.'">'.gettext($qry_Name).'</a>:';
+                    echo '<a href="QueryView.php?QueryID=' . $qry_ID . '">' . gettext($qry_Name) . '</a>:';
                     echo '<br>';
                     echo gettext($qry_Description);
                 }

@@ -1,4 +1,5 @@
 <?php
+
 /*******************************************************************************
  *
  *  filename    : PropertyDelete.php
@@ -30,17 +31,17 @@ $iPropertyID = InputUtils::legacyFilterInput($_GET['PropertyID'], 'int');
 
 //Do we have deletion confirmation?
 if (isset($_GET['Confirmed'])) {
-    $sSQL = 'DELETE FROM property_pro WHERE pro_ID = '.$iPropertyID;
+    $sSQL = 'DELETE FROM property_pro WHERE pro_ID = ' . $iPropertyID;
     RunQuery($sSQL);
 
-    $sSQL = 'DELETE FROM record2property_r2p WHERE r2p_pro_ID = '.$iPropertyID;
+    $sSQL = 'DELETE FROM record2property_r2p WHERE r2p_pro_ID = ' . $iPropertyID;
     RunQuery($sSQL);
 
-    RedirectUtils::redirect('PropertyList.php?Type='.$sType);
+    RedirectUtils::redirect('PropertyList.php?Type=' . $sType);
 }
 
 //Get the family record in question
-$sSQL = 'SELECT * FROM property_pro WHERE pro_ID = '.$iPropertyID;
+$sSQL = 'SELECT * FROM property_pro WHERE pro_ID = ' . $iPropertyID;
 $rsProperty = RunQuery($sSQL);
 extract(mysqli_fetch_array($rsProperty));
 

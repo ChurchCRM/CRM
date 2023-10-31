@@ -1,4 +1,5 @@
 <?php
+
 /*******************************************************************************
 *
 *  filename    : sundayschol/SundaySchoolClassListExport.php
@@ -6,6 +7,7 @@
 *  description : Creates a csv for a Sunday School Class List
 
 ******************************************************************************/
+
 require '../Include/Config.php';
 require '../Include/Functions.php';
 
@@ -24,8 +26,8 @@ header('Pragma: no-cache');
 header('Expires: 0');
 header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
 header('Content-Description: File Transfer');
-header('Content-Type: text/csv;charset='.SystemConfig::getValue("sCSVExportCharset"));
-header('Content-Disposition: attachment; filename=SundaySchool-'.date(SystemConfig::getValue("sDateFilenameFormat")).'.csv');
+header('Content-Type: text/csv;charset=' . SystemConfig::getValue("sCSVExportCharset"));
+header('Content-Disposition: attachment; filename=SundaySchool-' . date(SystemConfig::getValue("sDateFilenameFormat")) . '.csv');
 header('Content-Transfer-Encoding: binary');
 
 $delimiter = SystemConfig::getValue("sCSVExportDelimiter");
@@ -34,7 +36,7 @@ $out = fopen('php://output', 'w');
 
 //add BOM to fix UTF-8 in Excel 2016 but not under, so the problem is solved with the sCSVExportCharset variable
 if (SystemConfig::getValue("sCSVExportCharset") == "UTF-8") {
-    fputs($out, $bom =(chr(0xEF) . chr(0xBB) . chr(0xBF)));
+    fputs($out, $bom = (chr(0xEF) . chr(0xBB) . chr(0xBF)));
 }
 
 
@@ -59,25 +61,25 @@ $groups = GroupQuery::create()
                     ->orderByName(Criteria::ASC)
                     ->filterByType(4)
                     ->find();
-                    
+
 
 foreach ($groups as $group) {
     $iGroupID = $group->getID();
     $sundayschoolClass = $group->getName();
-        
-        
+
+
     $groupRoleMemberships = ChurchCRM\Person2group2roleP2g2rQuery::create()
                             ->joinWithPerson()
                             ->orderBy(PersonTableMap::COL_PER_LASTNAME)
                             ->_and()->orderBy(PersonTableMap::COL_PER_FIRSTNAME) // I've try to reproduce per_LastName, per_FirstName
                             ->findByGroupId($iGroupID);
-                            
+
     foreach ($groupRoleMemberships as $groupRoleMembership) {
         $groupRole = ChurchCRM\ListOptionQuery::create()->filterById($group->getRoleListId())->filterByOptionId($groupRoleMembership->getRoleId())->findOne();
-            
+
         $lst_OptionName = $groupRole->getOptionName();
         $member = $groupRoleMembership->getPerson();
-    
+
         $firstName = $member->getFirstName();
         $middlename = $member->getMiddleName();
         $lastname = $member->getLastName();
@@ -87,13 +89,13 @@ foreach ($groups as $group) {
         $homePhone = $member->getHomePhone();
         $mobilePhone = $member->getCellPhone();
         $hideAge = $member->hideAge();
-                    
+
         $family = $member->getFamily();
-        
+
         $Address1 = $Address2 = $city = $state = $zip = " ";
         $dadFirstName = $dadLastName = $dadCellPhone = $dadEmail = " ";
         $momFirstName = $momLastName = $momCellPhone = $momEmail = " ";
-        
+
         if (!empty($family)) {
             $famID = $family->getID();
             $Address1 = $family->getAddress1();
@@ -101,12 +103,12 @@ foreach ($groups as $group) {
             $city = $family->getCity();
             $state = $family->getState();
             $zip = $family->getZip();
-                
-                
+
+
             if ($lst_OptionName == "Student") {
                 // only for a student
                 $FAmembers = FamilyQuery::create()->findOneByID($famID)->getAdults();
-            
+
                 // il faut encore chercher les membres de la famille
                 foreach ($FAmembers as $maf) {
                     if ($maf->getGender() == 1) {
@@ -125,32 +127,32 @@ foreach ($groups as $group) {
                 }
             }
         }
-        
+
         $assignedProperties = $member->getProperties();
         $props = " ";
         if ($lst_OptionName == "Student" && !empty($assignedProperties)) {
             foreach ($assignedProperties as $property) {
-                $props.= $property->getProName().", ";
+                $props .= $property->getProName() . ", ";
             }
-                
+
             $props = chop($props, ", ");
         }
-        
+
         $birthDate = '';
         if ($birthYear != '' && !$birthDate && (!$member->getFlags() || $lst_OptionName == "Student")) {
-            $publishDate = DateTime::createFromFormat('Y-m-d', $birthYear.'-'.$birthMonth.'-'.$birthDay);
+            $publishDate = DateTime::createFromFormat('Y-m-d', $birthYear . '-' . $birthMonth . '-' . $birthDay);
             $birthDate = $publishDate->format(SystemConfig::getValue("sDateFormatLong"));
         }
-        
+
         fputcsv($out, [
             InputUtils::translateSpecialCharset($sundayschoolClass),
             InputUtils::translateSpecialCharset($lst_OptionName),
             InputUtils::translateSpecialCharset($firstName),
             InputUtils::translateSpecialCharset($lastname),
             $birthDate, $mobilePhone, $homePhone,
-            InputUtils::translateSpecialCharset($Address1).' '.InputUtils::translateSpecialCharset($Address2).' '.InputUtils::translateSpecialCharset($city).' '.InputUtils::translateSpecialCharset($state).' '.$zip,
-            InputUtils::translateSpecialCharset($dadFirstName).' '.InputUtils::translateSpecialCharset($dadLastName), $dadCellPhone, $dadEmail,
-            InputUtils::translateSpecialCharset($momFirstName).' '.InputUtils::translateSpecialCharset($momLastName), $momCellPhone, $momEmail, $props], $delimiter);
+            InputUtils::translateSpecialCharset($Address1) . ' ' . InputUtils::translateSpecialCharset($Address2) . ' ' . InputUtils::translateSpecialCharset($city) . ' ' . InputUtils::translateSpecialCharset($state) . ' ' . $zip,
+            InputUtils::translateSpecialCharset($dadFirstName) . ' ' . InputUtils::translateSpecialCharset($dadLastName), $dadCellPhone, $dadEmail,
+            InputUtils::translateSpecialCharset($momFirstName) . ' ' . InputUtils::translateSpecialCharset($momLastName), $momCellPhone, $momEmail, $props], $delimiter);
     }
 }
 

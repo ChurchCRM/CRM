@@ -1,4 +1,5 @@
 <?php
+
 /*******************************************************************************
  *
  *  filename    : PaddleNumEditor.php
@@ -35,13 +36,13 @@ if ($iCurrentFundraiser == '') {
 
 // Get the current fundraiser data
 if ($iCurrentFundraiser) {
-    $sSQL = 'SELECT * from fundraiser_fr WHERE fr_ID = '.$iCurrentFundraiser;
+    $sSQL = 'SELECT * from fundraiser_fr WHERE fr_ID = ' . $iCurrentFundraiser;
     $rsDeposit = RunQuery($sSQL);
     extract(mysqli_fetch_array($rsDeposit));
 }
 
 // SQL to get multibuy items
-$sMultibuyItemsSQL = "SELECT di_ID, di_title FROM donateditem_di WHERE di_multibuy='1' AND di_FR_ID=".$iCurrentFundraiser;
+$sMultibuyItemsSQL = "SELECT di_ID, di_title FROM donateditem_di WHERE di_multibuy='1' AND di_FR_ID=" . $iCurrentFundraiser;
 
 //Set the page title
 $sPageTitle = gettext('Buyer Number Editor');
@@ -55,21 +56,21 @@ if (isset($_POST['PaddleNumSubmit']) || isset($_POST['PaddleNumSubmitAndAdd']) |
     $rsMBItems = RunQuery($sMultibuyItemsSQL); // Go through the multibuy items, see if this person bought any
     while ($aRow = mysqli_fetch_array($rsMBItems)) {
         extract($aRow);
-        $mbName = 'MBItem'.$di_ID;
+        $mbName = 'MBItem' . $di_ID;
         $iMBCount = InputUtils::legacyFilterInput($_POST[$mbName], 'int');
         if ($iMBCount > 0) { // count for this item is positive.  If a multibuy record exists, update it.  If not, create it.
-            $sqlNumBought = 'SELECT mb_count from multibuy_mb WHERE mb_per_ID='.$iPerID.' AND mb_item_ID='.$di_ID;
+            $sqlNumBought = 'SELECT mb_count from multibuy_mb WHERE mb_per_ID=' . $iPerID . ' AND mb_item_ID=' . $di_ID;
             $rsNumBought = RunQuery($sqlNumBought);
             $numBoughtRow = mysqli_fetch_array($rsNumBought);
             if ($numBoughtRow) {
-                $sSQL = 'UPDATE multibuy_mb SET mb_count='.$iMBCount.' WHERE mb_per_ID='.$iPerID.' AND mb_item_ID='.$di_ID;
+                $sSQL = 'UPDATE multibuy_mb SET mb_count=' . $iMBCount . ' WHERE mb_per_ID=' . $iPerID . ' AND mb_item_ID=' . $di_ID;
                 RunQuery($sSQL);
             } else {
-                $sSQL = 'INSERT INTO multibuy_mb (mb_per_ID, mb_item_ID, mb_count) VALUES ('.$iPerID.','.$di_ID.','.$iMBCount.')';
+                $sSQL = 'INSERT INTO multibuy_mb (mb_per_ID, mb_item_ID, mb_count) VALUES (' . $iPerID . ',' . $di_ID . ',' . $iMBCount . ')';
                 RunQuery($sSQL);
             }
         } else { // count is zero, if it was positive before there is a multibuy record that needs to be deleted
-            $sSQL = 'DELETE FROM multibuy_mb WHERE mb_per_ID='.$iPerID.' AND mb_item_ID='.$di_ID;
+            $sSQL = 'DELETE FROM multibuy_mb WHERE mb_per_ID=' . $iPerID . ' AND mb_item_ID=' . $di_ID;
             RunQuery($sSQL);
         }
     }
@@ -77,12 +78,12 @@ if (isset($_POST['PaddleNumSubmit']) || isset($_POST['PaddleNumSubmitAndAdd']) |
     // New PaddleNum
     if (strlen($iPaddleNumID) < 1) {
         $sSQL = 'INSERT INTO paddlenum_pn (pn_fr_ID, pn_Num, pn_per_ID)
-		         VALUES ('.$iCurrentFundraiser.",'".$iNum."','".$iPerID."')";
+		         VALUES (' . $iCurrentFundraiser . ",'" . $iNum . "','" . $iPerID . "')";
         $bGetKeyBack = true;
     // Existing record (update)
     } else {
-        $sSQL = 'UPDATE paddlenum_pn SET pn_fr_ID = '.$iCurrentFundraiser.", pn_Num = '".$iNum."', pn_per_ID = '".$iPerID."'";
-        $sSQL .= ' WHERE pn_ID = '.$iPaddleNumID;
+        $sSQL = 'UPDATE paddlenum_pn SET pn_fr_ID = ' . $iCurrentFundraiser . ", pn_Num = '" . $iNum . "', pn_per_ID = '" . $iPerID . "'";
+        $sSQL .= ' WHERE pn_ID = ' . $iPaddleNumID;
         $bGetKeyBack = false;
     }
 
@@ -97,7 +98,7 @@ if (isset($_POST['PaddleNumSubmit']) || isset($_POST['PaddleNumSubmitAndAdd']) |
     }
 
     if (isset($_POST['PaddleNumSubmit'])) {
-        RedirectUtils::redirect('PaddleNumEditor.php?PaddleNumID='.$iPaddleNumID.'&linkBack='.$linkBack);
+        RedirectUtils::redirect('PaddleNumEditor.php?PaddleNumID=' . $iPaddleNumID . '&linkBack=' . $linkBack);
     } elseif (isset($_POST['PaddleNumSubmitAndAdd'])) {
         //Reload to editor to add another record
         RedirectUtils::redirect("PaddleNumEditor.php?CurrentFundraiser=$iCurrentFundraiser&linkBack=", $linkBack);
@@ -115,7 +116,7 @@ if (isset($_POST['PaddleNumSubmit']) || isset($_POST['PaddleNumSubmitAndAdd']) |
 	                       a.per_FirstName as buyerFirstName, a.per_LastName as buyerLastName
 	         FROM paddlenum_pn
 	         LEFT JOIN person_per a ON pn_per_ID=a.per_ID
-	         WHERE pn_ID = '".$iPaddleNumID."'";
+	         WHERE pn_ID = '" . $iPaddleNumID . "'";
         $rsPaddleNum = RunQuery($sSQL);
         extract(mysqli_fetch_array($rsPaddleNum));
 
@@ -124,7 +125,7 @@ if (isset($_POST['PaddleNumSubmit']) || isset($_POST['PaddleNumSubmitAndAdd']) |
     } else {
         //Adding....
         //Set defaults
-        $sSQL = 'SELECT COUNT(*) AS topNum FROM paddlenum_pn WHERE pn_fr_ID='.$iCurrentFundraiser;
+        $sSQL = 'SELECT COUNT(*) AS topNum FROM paddlenum_pn WHERE pn_fr_ID=' . $iCurrentFundraiser;
         $rsGetMaxNum = RunQuery($sSQL);
         extract(mysqli_fetch_array($rsGetMaxNum));
 
@@ -140,7 +141,7 @@ require 'Include/Header.php';
 
 ?>
 <div class="card card-body">
-<form method="post" action="PaddleNumEditor.php?<?= 'CurrentFundraiser='.$iCurrentFundraiser.'&PaddleNumID='.$iPaddleNumID.'&linkBack='.$linkBack ?>" name="PaddleNumEditor">
+<form method="post" action="PaddleNumEditor.php?<?= 'CurrentFundraiser=' . $iCurrentFundraiser . '&PaddleNumID=' . $iPaddleNumID . '&linkBack=' . $linkBack ?>" name="PaddleNumEditor">
 <div class="table-responsive">
 <table class="table" cellpadding="3" align="center">
     <tr>
@@ -148,7 +149,7 @@ require 'Include/Header.php';
             <input type="submit" class="btn btn-default" value="<?= gettext('Save') ?>" name="PaddleNumSubmit">
             <input type="submit" class="btn btn-default" value="<?= gettext('Generate Statement') ?>" name="GenerateStatement">
             <?php if (AuthenticationManager::getCurrentUser()->isAddRecordsEnabled()) {
-                echo '<input type="submit" class="btn btn-default" value="'.gettext('Save and Add')."\" name=\"PaddleNumSubmitAndAdd\">\n";
+                echo '<input type="submit" class="btn btn-default" value="' . gettext('Save and Add') . "\" name=\"PaddleNumSubmitAndAdd\">\n";
             } ?>
             <input type="button" class="btn btn-default" value="<?= gettext('Back') ?>" name="PaddleNumCancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) {
                 echo $linkBack;
@@ -179,12 +180,12 @@ require 'Include/Header.php';
                             $rsPeople = RunQuery($sPeopleSQL);
                             while ($aRow = mysqli_fetch_array($rsPeople)) {
                                 extract($aRow);
-                                echo '<option value="'.$per_ID.'"';
+                                echo '<option value="' . $per_ID . '"';
                                 if ($iPerID == $per_ID) {
                                     echo ' selected';
                                 }
-                                echo '>'.$per_LastName.', '.$per_FirstName;
-                                echo ' '.FormatAddressLine($fam_Address1, $fam_City, $fam_State);
+                                echo '>' . $per_LastName . ', ' . $per_FirstName;
+                                echo ' ' . FormatAddressLine($fam_Address1, $fam_City, $fam_State);
                             }
                             ?>
 
@@ -201,7 +202,7 @@ require 'Include/Header.php';
                     while ($aRow = mysqli_fetch_array($rsMBItems)) {
                         extract($aRow);
 
-                        $sqlNumBought = 'SELECT mb_count from multibuy_mb WHERE mb_per_ID='.$iPerID.' AND mb_item_ID='.$di_ID;
+                        $sqlNumBought = 'SELECT mb_count from multibuy_mb WHERE mb_per_ID=' . $iPerID . ' AND mb_item_ID=' . $di_ID;
                         $rsNumBought = RunQuery($sqlNumBought);
                         $numBoughtRow = mysqli_fetch_array($rsNumBought);
                         if ($numBoughtRow) {

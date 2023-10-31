@@ -3,7 +3,7 @@
 namespace ChurchCRM\Service;
 
 $bSuppressSessionTests = true; // DO NOT MOVE
-require_once dirname(__DIR__).'/../Include/Functions.php';
+require_once dirname(__DIR__) . '/../Include/Functions.php';
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
@@ -14,7 +14,6 @@ use ChurchCRM\Authentication\AuthenticationManager;
 
 class FinancialService
 {
-
     public function deletePayment($groupKey)
     {
         requireUserGroupMembership('bFinance');
@@ -29,12 +28,12 @@ class FinancialService
             $micrObj = new MICRReader(); // Instantiate the MICR class
             $routeAndAccount = $micrObj->findRouteAndAccount($tScanString); // use routing and account number for matching
             if ($routeAndAccount) {
-                $sSQL = 'SELECT fam_ID, fam_Name FROM family_fam WHERE fam_scanCheck="'.$routeAndAccount.'"';
+                $sSQL = 'SELECT fam_ID, fam_Name FROM family_fam WHERE fam_scanCheck="' . $routeAndAccount . '"';
                 $rsFam = RunQuery($sSQL);
                 extract(mysqli_fetch_array($rsFam));
                 $iCheckNo = $micrObj->findCheckNo($tScanString);
 
-                return '{"ScanString": "'.$tScanString.'" , "RouteAndAccount": "'.$routeAndAccount.'" , "CheckNumber": "'.$iCheckNo.'" ,"fam_ID": "'.$fam_ID.'" , "fam_Name": "'.$fam_Name.'"}';
+                return '{"ScanString": "' . $tScanString . '" , "RouteAndAccount": "' . $routeAndAccount . '" , "CheckNumber": "' . $iCheckNo . '" ,"fam_ID": "' . $fam_ID . '" , "fam_Name": "' . $fam_Name . '"}';
             } else {
                 throw new \Exception('error in locating family');
             }
@@ -46,17 +45,17 @@ class FinancialService
     public function setDeposit($depositType, $depositComment, $depositDate, $iDepositSlipID = null, $depositClosed = false)
     {
         if ($iDepositSlipID) {
-            $sSQL = "UPDATE deposit_dep SET dep_Date = '".$depositDate."', dep_Comment = '".$depositComment."', dep_EnteredBy = ".AuthenticationManager::getCurrentUser()->getId().', dep_Closed = '.intval($depositClosed).' WHERE dep_ID = '.$iDepositSlipID.';';
+            $sSQL = "UPDATE deposit_dep SET dep_Date = '" . $depositDate . "', dep_Comment = '" . $depositComment . "', dep_EnteredBy = " . AuthenticationManager::getCurrentUser()->getId() . ', dep_Closed = ' . intval($depositClosed) . ' WHERE dep_ID = ' . $iDepositSlipID . ';';
             $bGetKeyBack = false;
             if ($depositClosed && ($depositType == 'CreditCard' || $depositType == 'BankDraft')) {
                 // Delete any failed transactions on this deposit slip now that it is closing
-                $q = 'DELETE FROM pledge_plg WHERE plg_depID = '.$iDepositSlipID.' AND plg_PledgeOrPayment="Payment" AND plg_aut_Cleared=0';
+                $q = 'DELETE FROM pledge_plg WHERE plg_depID = ' . $iDepositSlipID . ' AND plg_PledgeOrPayment="Payment" AND plg_aut_Cleared=0';
                 RunQuery($q);
             }
             RunQuery($sSQL);
         } else {
             $sSQL = "INSERT INTO deposit_dep (dep_Date, dep_Comment, dep_EnteredBy,  dep_Type)
-            VALUES ('".$depositDate."','".$depositComment."',".AuthenticationManager::getCurrentUser()->getId().",'".$depositType."')";
+            VALUES ('" . $depositDate . "','" . $depositComment . "'," . AuthenticationManager::getCurrentUser()->getId() . ",'" . $depositType . "')";
             RunQuery($sSQL);
             $sSQL = 'SELECT MAX(dep_ID) AS iDepositSlipID FROM deposit_dep';
             $rsDepositSlipID = RunQuery($sSQL);
@@ -72,10 +71,10 @@ class FinancialService
         requireUserGroupMembership('bFinance');
         $sqlClause = '';
         if ($type) {
-            $sqlClause = "AND plg_method = '".$type."'";
+            $sqlClause = "AND plg_method = '" . $type . "'";
         }
     // Get deposit total
-        $sSQL = "SELECT SUM(plg_amount) AS deposit_total FROM pledge_plg WHERE plg_depID = '$id' AND plg_PledgeOrPayment = 'Payment' ".$sqlClause;
+        $sSQL = "SELECT SUM(plg_amount) AS deposit_total FROM pledge_plg WHERE plg_depID = '$id' AND plg_PledgeOrPayment = 'Payment' " . $sqlClause;
         $rsDepositTotal = RunQuery($sSQL);
         [$deposit_total] = mysqli_fetch_row($rsDepositTotal);
 
@@ -85,7 +84,7 @@ class FinancialService
     public function getPaymentJSON($payments)
     {
         if ($payments) {
-            return '{"payments":'.json_encode($payments, JSON_THROW_ON_ERROR).'}';
+            return '{"payments":' . json_encode($payments, JSON_THROW_ON_ERROR) . '}';
         } else {
             return false;
         }
@@ -101,7 +100,7 @@ class FinancialService
             pledge_plg.plg_fundID = donationfund_fun.fun_ID';
 
         if ($depID) {
-            $sSQL .= ' WHERE plg_depID = '.$depID;
+            $sSQL .= ' WHERE plg_depID = ' . $depID;
         }
         $rsDep = RunQuery($sSQL);
 
@@ -143,12 +142,12 @@ class FinancialService
 
     public function getPaymentViewURI($groupKey)
     {
-        return SystemURLs::getRootPath().'/PledgeEditor.php?GroupKey='.$groupKey;
+        return SystemURLs::getRootPath() . '/PledgeEditor.php?GroupKey=' . $groupKey;
     }
 
     public function getViewURI($Id)
     {
-        return SystemURLs::getRootPath().'/DepositSlipEditor.php?DepositSlipID='.$Id;
+        return SystemURLs::getRootPath() . '/DepositSlipEditor.php?DepositSlipID=' . $Id;
     }
 
     private function validateDate($payment)
@@ -194,8 +193,8 @@ class FinancialService
     {
         requireUserGroupMembership('bFinance');
         $sSQL = 'SELECT count(plg_FamID) from pledge_plg
-                 WHERE plg_CheckNo = '.$checkNumber.' AND
-                 plg_FamID = '.$fam_ID;
+                 WHERE plg_CheckNo = ' . $checkNumber . ' AND
+                 plg_FamID = ' . $fam_ID;
         $rCount = RunQuery($sSQL);
 
         return mysqli_fetch_array($rCount)[0];
@@ -216,7 +215,7 @@ class FinancialService
                 throw new \Exception(gettext("Check number not valid for 'CASH' payment"));
             } elseif ($payment->iMethod == 'CHECK' and $this->locateFamilyCheck($payment->iCheckNo, $payment->FamilyID)) {
                 //build routine to make sure this check number hasn't been used by this family yet (look at group key)
-                throw new \Exception("Check number '".$payment->iCheckNo."' for selected family already exists.");
+                throw new \Exception("Check number '" . $payment->iCheckNo . "' for selected family already exists.");
             }
         }
     }
@@ -226,7 +225,7 @@ class FinancialService
         $currencyDenoms = json_decode($payment->cashDenominations, null, 512, JSON_THROW_ON_ERROR);
         foreach ($currencyDenoms as $cdom) {
             $sSQL = "INSERT INTO pledge_denominations_pdem (pdem_plg_GroupKey, plg_depID, pdem_denominationID, pdem_denominationQuantity)
-      VALUES ('".$groupKey."','".$payment->DepositID."','".$cdom->currencyID."','".$cdom->Count."')";
+      VALUES ('" . $groupKey . "','" . $payment->DepositID . "','" . $cdom->currencyID . "','" . $cdom->Count . "')";
             if (isset($sSQL)) {
                 RunQuery($sSQL);
                 unset($sSQL);
@@ -278,24 +277,24 @@ class FinancialService
                     plg_aut_ID,
                     plg_NonDeductible,
                     plg_GroupKey)
-                    VALUES ('".
-                $payment->FamilyID."','".
-                $payment->FYID."','".
-                $payment->Date."','".
-                $Fund->Amount."','".
-                ($payment->schedule ?? 'NULL')."','".
-                $payment->iMethod."','".
-                $Fund->Comment."','".
-                date('YmdHis')."',".
-                AuthenticationManager::getCurrentUser()->getId().",'".
-                $payment->type."',".
-                $Fund->FundID.','.
-                $payment->DepositID.','.
-                ($payment->iCheckNo ?? 'NULL').",'".
-                ($payment->tScanString ?? 'NULL')."','".
-                ($payment->iAutID ?? 'NULL')."','".
-                ($Fund->NonDeductible ?? 'NULL')."','".
-                $sGroupKey."')";
+                    VALUES ('" .
+                $payment->FamilyID . "','" .
+                $payment->FYID . "','" .
+                $payment->Date . "','" .
+                $Fund->Amount . "','" .
+                ($payment->schedule ?? 'NULL') . "','" .
+                $payment->iMethod . "','" .
+                $Fund->Comment . "','" .
+                date('YmdHis') . "'," .
+                AuthenticationManager::getCurrentUser()->getId() . ",'" .
+                $payment->type . "'," .
+                $Fund->FundID . ',' .
+                $payment->DepositID . ',' .
+                ($payment->iCheckNo ?? 'NULL') . ",'" .
+                ($payment->tScanString ?? 'NULL') . "','" .
+                ($payment->iAutID ?? 'NULL') . "','" .
+                ($Fund->NonDeductible ?? 'NULL') . "','" .
+                $sGroupKey . "')";
 
                 if (isset($sSQL)) {
                     RunQuery($sSQL);
@@ -322,7 +321,7 @@ class FinancialService
     {
         requireUserGroupMembership('bFinance');
         $total = 0;
-        $sSQL = 'SELECT plg_plgID, plg_FamID, plg_date, plg_fundID, plg_amount, plg_NonDeductible,plg_comment, plg_FYID, plg_method, plg_EditedBy from pledge_plg where plg_GroupKey="'.$GroupKey.'"';
+        $sSQL = 'SELECT plg_plgID, plg_FamID, plg_date, plg_fundID, plg_amount, plg_NonDeductible,plg_comment, plg_FYID, plg_method, plg_EditedBy from pledge_plg where plg_GroupKey="' . $GroupKey . '"';
         $rsKeys = RunQuery($sSQL);
         $payment = new \stdClass();
         $payment->funds = [];
@@ -429,7 +428,7 @@ class FinancialService
 
         $thisReport->pdf->SetXY($thisReport->depositSummaryParameters->title->x, $thisReport->depositSummaryParameters->title->y);
         $thisReport->pdf->SetFont('Courier', 'B', 20);
-        $thisReport->pdf->Write(8, 'Deposit Summary '.$thisReport->deposit->dep_ID);
+        $thisReport->pdf->Write(8, 'Deposit Summary ' . $thisReport->deposit->dep_ID);
         $thisReport->pdf->SetFont('Times', 'B', 10);
 
         $thisReport->curX = $thisReport->depositSummaryParameters->summary->x;
@@ -463,16 +462,16 @@ class FinancialService
 
           // Format Data
             if (strlen($payment->plg_CheckNo) > 8) {
-                $payment->plg_CheckNo = '...'.mb_substr($payment->plg_CheckNo, -8, 8);
+                $payment->plg_CheckNo = '...' . mb_substr($payment->plg_CheckNo, -8, 8);
             }
             if (strlen($payment->fun_Name) > 20) {
-                $payment->fun_Name = mb_substr($payment->fun_Name, 0, 20).'...';
+                $payment->fun_Name = mb_substr($payment->fun_Name, 0, 20) . '...';
             }
             if (strlen($payment->plg_comment) > 40) {
-                $payment->plg_comment = mb_substr($payment->plg_comment, 0, 38).'...';
+                $payment->plg_comment = mb_substr($payment->plg_comment, 0, 38) . '...';
             }
             if (strlen($payment->familyName) > 25) {
-                $payment->familyName = mb_substr($payment->familyName, 0, 24).'...';
+                $payment->familyName = mb_substr($payment->familyName, 0, 24) . '...';
             }
 
             $thisReport->pdf->printRightJustified($thisReport->curX + 2, $thisReport->curY, $payment->plg_CheckNo);
@@ -561,20 +560,20 @@ class FinancialService
         foreach ($payments[0] as $key => $value) {
             array_push($line, $key);
         }
-        $retstring = implode(',', $line)."\n";
+        $retstring = implode(',', $line) . "\n";
         $line = [];
         foreach ($payments as $payment) {
             $line = [];
             foreach ($payment as $key => $value) {
                 array_push($line, str_replace(',', '', $value));
             }
-            $retstring .= implode(',', $line)."\n";
+            $retstring .= implode(',', $line) . "\n";
         }
 
         $CSVReturn = new \stdClass();
         $CSVReturn->content = $retstring;
     // Export file
-        $CSVReturn->header = 'Content-Disposition: attachment; filename=ChurchCRM-DepositCSV-'.$depID.'-'.date(SystemConfig::getValue("sDateFilenameFormat")).'.csv';
+        $CSVReturn->header = 'Content-Disposition: attachment; filename=ChurchCRM-DepositCSV-' . $depID . '-' . date(SystemConfig::getValue("sDateFilenameFormat")) . '.csv';
 
         return $CSVReturn;
     }
@@ -584,9 +583,9 @@ class FinancialService
         $currencies = [];
     // Get the list of Currency denominations
         $sSQL = 'select sum(pdem_denominationQuantity) from pledge_denominations_pdem
-                 where  plg_depID = '.$depositID.'
+                 where  plg_depID = ' . $depositID . '
                  AND
-                 pdem_denominationID = '.$currencyID;
+                 pdem_denominationID = ' . $currencyID;
         $rscurrencyDenomination = RunQuery($sSQL);
 
         return mysqli_fetch_array($rscurrencyDenomination)[0];

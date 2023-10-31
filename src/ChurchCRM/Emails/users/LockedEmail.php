@@ -4,7 +4,6 @@ namespace ChurchCRM\Emails;
 
 class LockedEmail extends BaseUserEmail
 {
-
     protected function getSubSubject()
     {
         return gettext("Account Locked");

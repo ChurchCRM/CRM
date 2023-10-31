@@ -1,4 +1,5 @@
 <?php
+
 echo <<<'EOD'
 <div class="card">
     <div class="card-header with-border">

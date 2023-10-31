@@ -1,9 +1,11 @@
 <?php
+
 /**
  * User: George Dawoud
  * Date: 1/17/2016
  * Time: 8:01 AM.
  */
+
 require 'Include/Config.php';
 require 'Include/Functions.php';
 
@@ -68,7 +70,7 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
         if (!stristr($sEmailLink, $sEmail)) {
             $sEmailLink .= $sEmail .= $sMailtoDelimiter;
             if (!array_key_exists($virt_RoleName, $roleEmails)) {
-                $roleEmails[$virt_RoleName] ="";
+                $roleEmails[$virt_RoleName] = "";
             }
             $roleEmails[$virt_RoleName] .= $sEmail;
         }
@@ -103,7 +105,7 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
         if ($sEmailLink) {
             // Add default email if default email has been set and is not already in string
             if (SystemConfig::getValue('sToEmailAddress') != '' && !stristr($sEmailLink, SystemConfig::getValue('sToEmailAddress'))) {
-                $sEmailLink .= $sMailtoDelimiter.SystemConfig::getValue('sToEmailAddress');
+                $sEmailLink .= $sMailtoDelimiter . SystemConfig::getValue('sToEmailAddress');
             }
             $sEmailLink = urlencode($sEmailLink);  // Mailto should comply with RFC 2368
             if (AuthenticationManager::getCurrentUser()->isEmailEnabled()) { // Does user have permission to email groups

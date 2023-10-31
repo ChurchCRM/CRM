@@ -4,7 +4,6 @@ namespace ChurchCRM\Dashboard;
 
 class ClassificationDashboardItem implements DashboardItemInterface
 {
-
     public static function getDashboardItemName()
     {
         return "ClassificationBreakdown";
@@ -28,6 +27,6 @@ class ClassificationDashboardItem implements DashboardItemInterface
 
     public static function shouldInclude($PageName)
     {
-        return $PageName=="PeopleDashboard.php"; // this ID would be found on all pages.
+        return $PageName == "PeopleDashboard.php"; // this ID would be found on all pages.
     }
 }

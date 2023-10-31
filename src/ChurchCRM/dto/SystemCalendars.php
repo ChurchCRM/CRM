@@ -8,14 +8,13 @@ use Propel\Runtime\Collection\ObjectCollection;
 
 class SystemCalendars
 {
-
     private static function getCalendars()
     {
         $systemCalendarNamespace = "ChurchCRM\SystemCalendars\\";
         $systemCalendarNames = ["BirthdaysCalendar", "AnniversariesCalendar", "HolidayCalendar","UnpinnedEvents"];
         $calendars = [];
         foreach ($systemCalendarNames as $systemCalendarName) {
-            $className = $systemCalendarNamespace.$systemCalendarName;
+            $className = $systemCalendarNamespace . $systemCalendarName;
             if ($className::isAvailable()) {
                 array_push($calendars, new $className());
             }

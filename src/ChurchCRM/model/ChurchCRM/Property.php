@@ -16,5 +16,4 @@ use ChurchCRM\Base\Property as BaseProperty;
  */
 class Property extends BaseProperty
 {
-
 }

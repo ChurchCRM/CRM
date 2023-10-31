@@ -50,8 +50,8 @@ class RestoreJob extends JobBase
         }
         $rawUploadedFile = $_FILES['restoreFile'];
         $this->TempFolder = $this->createEmptyTempFolder();
-        $this->RestoreFile = new \SplFileInfo($this->TempFolder."/" . $rawUploadedFile['name']);
-        LoggerUtils::getAppLogger()->debug("Moving ".$rawUploadedFile['tmp_name']. " to ". $this->RestoreFile);
+        $this->RestoreFile = new \SplFileInfo($this->TempFolder . "/" . $rawUploadedFile['name']);
+        LoggerUtils::getAppLogger()->debug("Moving " . $rawUploadedFile['tmp_name'] . " to " . $this->RestoreFile);
         move_uploaded_file($rawUploadedFile['tmp_name'], $this->RestoreFile);
         LoggerUtils::getAppLogger()->debug("File move complete");
         $this->discoverBackupType();
@@ -63,7 +63,7 @@ class RestoreJob extends JobBase
     {
         LoggerUtils::getAppLogger()->info("Decrypting file: " . $this->RestoreFile);
         $this->restorePassword = InputUtils::filterString($_POST['restorePassword']);
-        $tempfile = new \SplFileInfo($this->RestoreFile->getPathname()."temp");
+        $tempfile = new \SplFileInfo($this->RestoreFile->getPathname() . "temp");
 
         try {
             File::decryptFileWithPassword($this->RestoreFile, $tempfile, $this->restorePassword);
@@ -83,9 +83,9 @@ class RestoreJob extends JobBase
         switch ($this->RestoreFile->getExtension()) {
             case "gz":
                 $basename = $this->RestoreFile->getBasename();
-                if (substr($basename, strlen($basename)-6, 6) == "tar.gz") {
+                if (substr($basename, strlen($basename) - 6, 6) == "tar.gz") {
                     $this->BackupType = BackupType::FULL_BACKUP;
-                } elseif (substr($basename, strlen($basename)-6, 6) == "sql.gz") {
+                } elseif (substr($basename, strlen($basename) - 6, 6) == "sql.gz") {
                     $this->BackupType = BackupType::GZSQL;
                 }
                 break;
@@ -98,7 +98,7 @@ class RestoreJob extends JobBase
     private function restoreSQLBackup($SQLFileInfo)
     {
         $connection = Propel::getConnection();
-        LoggerUtils::getAppLogger()->debug("Restoring SQL file from: ".$SQLFileInfo);
+        LoggerUtils::getAppLogger()->debug("Restoring SQL file from: " . $SQLFileInfo);
         SQLUtils::sqlImport($SQLFileInfo, $connection);
         LoggerUtils::getAppLogger()->debug("Finished restoring SQL table");
     }
@@ -107,29 +107,29 @@ class RestoreJob extends JobBase
     {
         LoggerUtils::getAppLogger()->debug("Restoring full archive");
         $phar = new PharData($this->RestoreFile);
-        LoggerUtils::getAppLogger()->debug("Extracting " . $this->RestoreFile . " to ". $this->TempFolder);
+        LoggerUtils::getAppLogger()->debug("Extracting " . $this->RestoreFile . " to " . $this->TempFolder);
         $phar->extractTo($this->TempFolder);
         LoggerUtils::getAppLogger()->debug("Finished extraction");
-        $sqlFile =  $this->TempFolder."/ChurchCRM-Database.sql";
+        $sqlFile =  $this->TempFolder . "/ChurchCRM-Database.sql";
         if (file_exists($sqlFile)) {
             $this->restoreSQLBackup($sqlFile);
             LoggerUtils::getAppLogger()->debug("Removing images from live instance");
             FileSystemUtils::recursiveRemoveDirectory(SystemURLs::getDocumentRoot() . '/Images');
             LoggerUtils::getAppLogger()->debug("Removal complete; Copying restored images to live instance");
-            FileSystemUtils::recursiveCopyDirectory($this->TempFolder. '/Images/', SystemURLs::getImagesRoot());
+            FileSystemUtils::recursiveCopyDirectory($this->TempFolder . '/Images/', SystemURLs::getImagesRoot());
             LoggerUtils::getAppLogger()->debug("Finished copying images");
         } else {
-            throw new Exception(gettext("Backup archive does not contain a database").": " .$this->RestoreFile);
+            throw new Exception(gettext("Backup archive does not contain a database") . ": " . $this->RestoreFile);
         }
         LoggerUtils::getAppLogger()->debug("Finished restoring full archive");
     }
 
     private function restoreGZSQL()
     {
-        LoggerUtils::getAppLogger()->debug("Decompressing gzipped SQL file: ". $this->RestoreFile);
+        LoggerUtils::getAppLogger()->debug("Decompressing gzipped SQL file: " . $this->RestoreFile);
         $gzf = gzopen($this->RestoreFile, 'r');
         $buffer_size = 4096;
-        $SqlFile = new \SplFileInfo($this->TempFolder."/".'ChurchCRM-Database.sql');
+        $SqlFile = new \SplFileInfo($this->TempFolder . "/" . 'ChurchCRM-Database.sql');
         $out_file = fopen($SqlFile, 'wb');
         while (!gzeof($gzf)) {
             fwrite($out_file, gzread($gzf, $buffer_size));

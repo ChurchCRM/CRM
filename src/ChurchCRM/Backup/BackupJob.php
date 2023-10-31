@@ -16,7 +16,7 @@ use ChurchCRM\Bootstrapper;
 class BackupJob extends JobBase
 {
     private string $BackupFileBaseName;
-    
+
     private ?\SplFileInfo $BackupFile = null;
     /**
      *
@@ -51,7 +51,7 @@ class BackupJob extends JobBase
     {
         $this->BackupType = $BackupType;
         $this->TempFolder =  $this->createEmptyTempFolder();
-        $this->BackupFileBaseName = $this->TempFolder .'/'.$BaseName;
+        $this->BackupFileBaseName = $this->TempFolder . '/' . $BaseName;
         $this->IncludeExtraneousFiles = $IncludeExtraneousFiles;
         $this->shouldEncrypt = $EncryptBackup;
         $this->BackupPassword = $BackupPassword;
@@ -60,8 +60,8 @@ class BackupJob extends JobBase
                 $this->BackupType .
                 "' Temp Folder: '" .
                 $this->TempFolder .
-                "' BaseName: '" . $this->BackupFileBaseName.
-                "' Include extra files: '". ($this->IncludeExtraneousFiles ? 'true':'false') ."'"
+                "' BaseName: '" . $this->BackupFileBaseName .
+                "' Include extra files: '" . ($this->IncludeExtraneousFiles ? 'true' : 'false') . "'"
         );
     }
 
@@ -70,9 +70,9 @@ class BackupJob extends JobBase
         LoggerUtils::getAppLogger()->info("Beginning to copy backup to: " . $Endpoint);
         try {
             $fh = fopen($this->BackupFile->getPathname(), 'r');
-            $remoteUrl = $Endpoint.urlencode($this->BackupFile->getFilename());
-            LoggerUtils::getAppLogger()->debug("Full remote URL: " .$remoteUrl);
-            $credentials = $Username.":".$Password;
+            $remoteUrl = $Endpoint . urlencode($this->BackupFile->getFilename());
+            LoggerUtils::getAppLogger()->debug("Full remote URL: " . $remoteUrl);
+            $credentials = $Username . ":" . $Password;
             $ch = curl_init($remoteUrl);
             curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_ANY);
             curl_setopt($ch, CURLOPT_USERPWD, $credentials);
@@ -90,7 +90,7 @@ class BackupJob extends JobBase
             fclose($fh);
 
             if (isset($error_msg)) {
-                throw new \Exception("Error backing up to remote: ". $error_msg);
+                throw new \Exception("Error backing up to remote: " . $error_msg);
             }
             LoggerUtils::getAppLogger()->debug("File send complete.  Took: " . $time->getMilliseconds() . "ms");
         } catch (\Exception $e) {
@@ -109,7 +109,7 @@ class BackupJob extends JobBase
             $dump->start($SqlFilePath->getPathname());
             LoggerUtils::getAppLogger()->debug("Finished backing up database to " . $SqlFilePath->getPathname());
         } catch (\Exception $e) {
-            $message = "Failed to backup database to: " . $SqlFilePath->getPathname(). " Exception: " . $e;
+            $message = "Failed to backup database to: " . $SqlFilePath->getPathname() . " Exception: " . $e;
             LoggerUtils::getAppLogger()->error($message);
             throw new Exception($message, 500);
         }
@@ -127,12 +127,12 @@ class BackupJob extends JobBase
     private function createFullArchive()
     {
         $imagesAddedToArchive = [];
-        $this->BackupFile = new \SplFileInfo($this->BackupFileBaseName.".tar");
+        $this->BackupFile = new \SplFileInfo($this->BackupFileBaseName . ".tar");
         $phar = new PharData($this->BackupFile->getPathname());
-        LoggerUtils::getAppLogger()->debug("Archive opened at: ".$this->BackupFile->getPathname());
+        LoggerUtils::getAppLogger()->debug("Archive opened at: " . $this->BackupFile->getPathname());
         $phar->startBuffering();
 
-        $SqlFile =  new \SplFileInfo($this->TempFolder."/".'ChurchCRM-Database.sql');
+        $SqlFile =  new \SplFileInfo($this->TempFolder . "/" . 'ChurchCRM-Database.sql');
         $this->captureSQLFile($SqlFile);
         $phar->addFile($SqlFile, 'ChurchCRM-Database.sql');
         LoggerUtils::getAppLogger()->debug("Database added to archive");
@@ -144,7 +144,7 @@ class BackupJob extends JobBase
                 array_push($imagesAddedToArchive, $imageFile->getRealPath());
             }
         }
-        LoggerUtils::getAppLogger()->debug("Images files added to archive: ". join(";", $imagesAddedToArchive));
+        LoggerUtils::getAppLogger()->debug("Images files added to archive: " . join(";", $imagesAddedToArchive));
         $phar->stopBuffering();
         LoggerUtils::getAppLogger()->debug("Finished creating archive.  Beginning to compress");
         $phar->compress(\Phar::GZ);
@@ -152,7 +152,7 @@ class BackupJob extends JobBase
         unset($phar);
         unlink($this->BackupFile->getPathname());
         LoggerUtils::getAppLogger()->debug("Initial .tar archive deleted: " . $this->BackupFile->getPathname());
-        $this->BackupFile = new \SplFileInfo($this->BackupFileBaseName.".tar.gz");
+        $this->BackupFile = new \SplFileInfo($this->BackupFileBaseName . ".tar.gz");
         LoggerUtils::getAppLogger()->debug("New backup file: " .  $this->BackupFile);
         unlink($SqlFile);
         LoggerUtils::getAppLogger()->debug("Temp Database backup deleted: " . $SqlFile);
@@ -160,9 +160,9 @@ class BackupJob extends JobBase
 
     private function createGZSql()
     {
-        $SqlFile =  new \SplFileInfo($this->TempFolder."/".'ChurchCRM-Database.sql');
+        $SqlFile =  new \SplFileInfo($this->TempFolder . "/" . 'ChurchCRM-Database.sql');
         $this->captureSQLFile($SqlFile);
-        $this->BackupFile = new \SplFileInfo($this->BackupFileBaseName.'.sql.gz');
+        $this->BackupFile = new \SplFileInfo($this->BackupFileBaseName . '.sql.gz');
         $gzf = gzopen($this->BackupFile->getPathname(), 'w6');
         gzwrite($gzf, file_get_contents($SqlFile->getPathname()));
         gzclose($gzf);
@@ -171,8 +171,8 @@ class BackupJob extends JobBase
 
     private function encryptBackupFile()
     {
-        LoggerUtils::getAppLogger()->info("Encrypting backup file: ".$this->BackupFile);
-        $tempfile = new \SplFileInfo($this->BackupFile->getPathname()."temp");
+        LoggerUtils::getAppLogger()->info("Encrypting backup file: " . $this->BackupFile);
+        $tempfile = new \SplFileInfo($this->BackupFile->getPathname() . "temp");
         rename($this->BackupFile, $tempfile);
         File::encryptFileWithPassword($tempfile, $this->BackupFile, $this->BackupPassword);
         LoggerUtils::getAppLogger()->info("Finished ecrypting backup file");
@@ -184,7 +184,7 @@ class BackupJob extends JobBase
         if ($this->BackupType == BackupType::FULL_BACKUP) {
             $this->createFullArchive();
         } elseif ($this->BackupType == BackupType::SQL) {
-            $this->BackupFile = new \SplFileInfo($this->BackupFileBaseName.".sql");
+            $this->BackupFile = new \SplFileInfo($this->BackupFileBaseName . ".sql");
             $this->captureSQLFile($this->BackupFile);
         } elseif ($this->BackupType == BackupType::GZSQL) {
             $this->createGZSql();
@@ -193,11 +193,11 @@ class BackupJob extends JobBase
             $this->encryptBackupFile();
         }
         $time->end();
-        $percentExecutionTime = (($time->getMilliseconds()/1000)/ini_get('max_execution_time'))*100;
-        LoggerUtils::getAppLogger()->info("Completed backup job.  Took : " . $time->getMilliseconds()."ms. ".$percentExecutionTime."% of max_execution_time");
+        $percentExecutionTime = (($time->getMilliseconds() / 1000) / ini_get('max_execution_time')) * 100;
+        LoggerUtils::getAppLogger()->info("Completed backup job.  Took : " . $time->getMilliseconds() . "ms. " . $percentExecutionTime . "% of max_execution_time");
         if ($percentExecutionTime > 80) {
             // if the backup took more than 80% of the max_execution_time, then write a warning to the log
-            LoggerUtils::getAppLogger()->warning("Backup task took more than 80% of max_execution_time (".ini_get('max_execution_time').").  Consider increasing this time to avoid a failure");
+            LoggerUtils::getAppLogger()->warning("Backup task took more than 80% of max_execution_time (" . ini_get('max_execution_time') . ").  Consider increasing this time to avoid a failure");
         }
         $this->BackupDownloadFileName  = $this->BackupFile->getFilename();
         return true;

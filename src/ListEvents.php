@@ -1,4 +1,5 @@
 <?php
+
 /*******************************************************************************
 *
 *  filename    : ListEvents.php
@@ -38,7 +39,7 @@ if ($eType != 'All') {
     $rsOpps = RunQuery($sSQL);
     $aRow = mysqli_fetch_array($rsOpps, MYSQLI_BOTH);
     extract($aRow);
-    $sPageTitle = gettext('Listing Events of Type = ').$type_name;
+    $sPageTitle = gettext('Listing Events of Type = ') . $type_name;
 } else {
     $sPageTitle = gettext('Listing All Church Events');
 }
@@ -58,13 +59,13 @@ if (isset($_POST['Action']) && isset($_POST['EID']) && AuthenticationManager::ge
     $eID = InputUtils::legacyFilterInput($_POST['EID'], 'int');
     $action = InputUtils::legacyFilterInput($_POST['Action']);
     if ($action == 'Delete' && $eID) {
-        $sSQL = 'DELETE FROM events_event WHERE event_id = '.$eID.' LIMIT 1';
+        $sSQL = 'DELETE FROM events_event WHERE event_id = ' . $eID . ' LIMIT 1';
         RunQuery($sSQL);
 
-        $sSQL = 'DELETE FROM eventcounts_evtcnt WHERE evtcnt_eventid = '.$eID;
+        $sSQL = 'DELETE FROM eventcounts_evtcnt WHERE evtcnt_eventid = ' . $eID;
         RunQuery($sSQL);
     } elseif ($action == 'Activate' && $eID) {
-        $sSQL = 'UPDATE events_event SET inactive = 0 WHERE event_id = '.$eID.' LIMIT 1';
+        $sSQL = 'UPDATE events_event SET inactive = 0 WHERE event_id = ' . $eID . ' LIMIT 1';
         RunQuery($sSQL);
     }
 }
@@ -163,7 +164,7 @@ foreach ($allMonths as $mKey => $mVal) {
         $sSQL .= '';
     } else {
         //$sSQL .= " WHERE (TO_DAYS(event_start_date) - TO_DAYS(now()) < 30)";
-        $sSQL .= ' WHERE t1.event_type = t2.type_id'.$eTypeSQL.' AND MONTH(t1.event_start) = '.$mVal." AND YEAR(t1.event_start)=$EventYear";
+        $sSQL .= ' WHERE t1.event_type = t2.type_id' . $eTypeSQL . ' AND MONTH(t1.event_start) = ' . $mVal . " AND YEAR(t1.event_start)=$EventYear";
     }
     $sSQL .= ' ORDER BY t1.event_start ';
 
@@ -197,7 +198,7 @@ foreach ($allMonths as $mKey => $mVal) {
         ?>
   <div class='box'>
     <div class='box-header'>
-      <h3 class='box-title'><?= ($numRows == 1 ? gettext('There is') : gettext('There are')).' '.$numRows.' '.($numRows == 1 ? gettext('event') : gettext('events')).' '.'for'.'  '.gettext(date('F', mktime(0, 0, 0, $mVal, 1, $currYear))) ?></h3>
+      <h3 class='box-title'><?= ($numRows == 1 ? gettext('There is') : gettext('There are')) . ' ' . $numRows . ' ' . ($numRows == 1 ? gettext('event') : gettext('events')) . ' ' . 'for' . '  ' . gettext(date('F', mktime(0, 0, 0, $mVal, 1, $currYear))) ?></h3>
     </div>
     <div class='box-body'>
   <table id="listEvents" class='table data-table table-striped table-bordered table-responsive'>
@@ -239,7 +240,7 @@ foreach ($allMonths as $mKey => $mVal) {
                       <input type="hidden" name="EName" value="<?= $aEventTitle[$row] ?>">
                       <input type="hidden" name="EDesc" value="<?= $aEventDesc[$row] ?>">
                       <input type="hidden" name="EDate" value="<?= FormatDate($aEventStartDateTime[$row], 1) ?>">
-                      <input type="submit" name="Action" value="<?= gettext('Attendees').'('.$attNumRows[$row].')' ?>" class="btn btn-info btn-sm btn-block" >
+                      <input type="submit" name="Action" value="<?= gettext('Attendees') . '(' . $attNumRows[$row] . ')' ?>" class="btn btn-info btn-sm btn-block" >
                     </form>
                   </td>
                   <td>

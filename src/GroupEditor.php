@@ -1,4 +1,5 @@
 <?php
+
 /*******************************************************************************
  *
  *  filename    : GroupEditor.php
@@ -39,7 +40,7 @@ if (array_key_exists('GroupID', $_GET)) {
 
 $thisGroup = GroupQuery::create()->findOneById($iGroupID);   //get this group from the group service.
 $rsGroupTypes = ListOptionQuery::create()->filterById('3')->find();     // Get Group Types for the drop-down
-$rsGroupRoleSeed = GroupQuery::create()->filterByRoleListId(['min'=>0], $comparison)->find();     //Group Group Role List
+$rsGroupRoleSeed = GroupQuery::create()->filterByRoleListId(['min' => 0], $comparison)->find();     //Group Group Role List
 require 'Include/Header.php';
 ?>
 <!-- GROUP SPECIFIC PROPERTIES MODAL-->
@@ -64,7 +65,7 @@ require 'Include/Header.php';
 
 <div class="card">
   <div class="card-header">
-    <h3 class="card-title"><?= (($thisGroup->isSundaySchool())?gettext("Special Group Settings : Sunday School Type"):gettext('Group Settings')) ?></h3>
+    <h3 class="card-title"><?= (($thisGroup->isSundaySchool()) ? gettext("Special Group Settings : Sunday School Type") : gettext('Group Settings')) ?></h3>
   </div>
   <div class="card-body">
     <form name="groupEditForm" id="groupEditForm">
@@ -96,11 +97,11 @@ require 'Include/Header.php';
               <option value="0">-----------------------</option>
               <?php
                 foreach ($rsGroupTypes as $groupType) {
-                    echo '<option value="'.$groupType->getOptionId().'"';
+                    echo '<option value="' . $groupType->getOptionId() . '"';
                     if ($thisGroup->getType() == $groupType->getOptionId()) {
                         echo ' selected';
                     }
-                    echo '>'.$groupType->getOptionName().'</option>';
+                    echo '>' . $groupType->getOptionName() . '</option>';
                 } ?>
             </select>
             <?php
@@ -138,7 +139,7 @@ require 'Include/Header.php';
 
                 <?php
                 foreach ($rsGroupRoleSeed as $groupRoleTemplate) {
-                    echo '<option value="'.$groupRoleTemplate['grp_ID'].'">'.$groupRoleTemplate['grp_Name'].'</option>';
+                    echo '<option value="' . $groupRoleTemplate['grp_ID'] . '">' . $groupRoleTemplate['grp_Name'] . '</option>';
                 } ?>
               </select><?php
             }
@@ -152,12 +153,12 @@ require 'Include/Header.php';
 
             <?php
             if ($thisGroup->getHasSpecialProps()) {
-                echo gettext('Enabled').'<br/>';
-                echo '<button type="button" id="disableGroupProps" class="btn btn-danger groupSpecificProperties">'.gettext('Disable Group Specific Properties').'</button><br/>';
-                echo '<a  class="btn btn-success" href="GroupPropsFormEditor.php?GroupID='.$iGroupID.'">'.gettext('Edit Group-Specific Properties Form').' </a>';
+                echo gettext('Enabled') . '<br/>';
+                echo '<button type="button" id="disableGroupProps" class="btn btn-danger groupSpecificProperties">' . gettext('Disable Group Specific Properties') . '</button><br/>';
+                echo '<a  class="btn btn-success" href="GroupPropsFormEditor.php?GroupID=' . $iGroupID . '">' . gettext('Edit Group-Specific Properties Form') . ' </a>';
             } else {
-                echo gettext('Disabled').'<br/>';
-                echo '<button type="button" id="enableGroupProps" class="btn btn-danger groupSpecificProperties">'.gettext('Enable Group Specific Properties').'</button>&nbsp;';
+                echo gettext('Disabled') . '<br/>';
+                echo '<button type="button" id="enableGroupProps" class="btn btn-danger groupSpecificProperties">' . gettext('Enable Group Specific Properties') . '</button>&nbsp;';
             }
             ?>
           </div>
@@ -165,7 +166,7 @@ require 'Include/Header.php';
         <br>
         <div class="row">
           <div class="col-sm-3">
-            <input type="submit" id="saveGroup" class="btn btn-primary" <?= 'value="'.gettext('Save').'"' ?> Name="GroupSubmit">
+            <input type="submit" id="saveGroup" class="btn btn-primary" <?= 'value="' . gettext('Save') . '"' ?> Name="GroupSubmit">
           </div>
         </div>
       </div>

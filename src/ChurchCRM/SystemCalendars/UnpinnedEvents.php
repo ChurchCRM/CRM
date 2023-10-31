@@ -9,12 +9,11 @@ use Propel\Runtime\ActiveQuery\Criteria;
 
 class UnpinnedEvents implements SystemCalendar
 {
- 
     public static function isAvailable()
     {
         return true;
     }
-  
+
     public function getAccessToken()
     {
         return false;
@@ -24,7 +23,7 @@ class UnpinnedEvents implements SystemCalendar
     {
         return "FF0000";
     }
-  
+
     public function getForegroundColor()
     {
         return "FFFFFF";
@@ -39,7 +38,7 @@ class UnpinnedEvents implements SystemCalendar
     {
         return gettext("Unpinned Events");
     }
-    
+
     public function getEvents($start, $end)
     {
         $Events = EventQuery::create()
@@ -51,7 +50,7 @@ class UnpinnedEvents implements SystemCalendar
         ->find();
         return $Events;
     }
-  
+
     public function getEventById($Id)
     {
         $Event = EventQuery::create()

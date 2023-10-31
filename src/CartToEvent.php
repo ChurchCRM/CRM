@@ -1,4 +1,5 @@
 <?php
+
 /*******************************************************************************
  *
  *  filename    : CartToEvent.php
@@ -37,15 +38,15 @@ if (isset($_POST['Submit']) && count($_SESSION['aPeopleCart']) > 0 && isset($_PO
     while ($element = each($_SESSION['aPeopleCart'])) {
         // Enter ID into event
         $sSQL = 'INSERT IGNORE INTO event_attend (event_id, person_id)';
-        $sSQL .= " VALUES ('".$iEventID."','".$_SESSION['aPeopleCart'][$element['key']]."')";
+        $sSQL .= " VALUES ('" . $iEventID . "','" . $_SESSION['aPeopleCart'][$element['key']] . "')";
         RunQuery($sSQL);
         $iCount++;
     }
     Cart::emptyAll();
 
-    $sGlobalMessage = $iCount.' records(s) successfully added to selected Event.';
+    $sGlobalMessage = $iCount . ' records(s) successfully added to selected Event.';
     // TODO: do this in API
-    RedirectUtils::redirect('v2/cart?Action=EmptyCart&Message=aMessage&iCount='.$iCount.'&iEID='.$iEventID);
+    RedirectUtils::redirect('v2/cart?Action=EmptyCart&Message=aMessage&iCount=' . $iCount . '&iEID=' . $iEventID);
 }
 
 // Set the page title and include HTML header
@@ -74,7 +75,7 @@ if (count($_SESSION['aPeopleCart']) > 0) {
                         echo '<select name="EventID">';
                         while ($aRow = mysqli_fetch_array($rsEvents)) {
                             extract($aRow);
-                            echo '<option value="'.$event_id.'">'.$event_title.'</option>';
+                            echo '<option value="' . $event_id . '">' . $event_title . '</option>';
                         }
                         echo '</select>'; ?>
                 </td>
@@ -82,7 +83,7 @@ if (count($_SESSION['aPeopleCart']) > 0) {
 </table>
 <p align="center">
 <BR>
-<input type="submit" name="Submit" value=<?= '"'.gettext('Add Cart to Event').'"' ?> class="btn btn-primary">
+<input type="submit" name="Submit" value=<?= '"' . gettext('Add Cart to Event') . '"' ?> class="btn btn-primary">
 <BR><BR>--<?= gettext('OR') ?>--<BR><BR>
 <a href="EventEditor.php" class="btn btn-info"><?= gettext('Add New Event') ?></a>
 <BR><BR>
@@ -91,7 +92,7 @@ if (count($_SESSION['aPeopleCart']) > 0) {
 </div>
     <?php
 } else {
-        echo '<p align="center" class="callout callout-warning">'.gettext('Your cart is empty!').'</p>';
+        echo '<p align="center" class="callout callout-warning">' . gettext('Your cart is empty!') . '</p>';
 }
 
 require 'Include/Footer.php';

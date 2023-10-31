@@ -1,4 +1,5 @@
 <?php
+
 /*******************************************************************************
  *
  *  filename    : NoteDelete.php
@@ -31,16 +32,16 @@ $sPageTitle = gettext('Note Delete Confirmation');
 $iNoteID = InputUtils::legacyFilterInput($_GET['NoteID'], 'int');
 
 //Get the data on this note
-$sSQL = 'SELECT * FROM note_nte WHERE nte_ID = '.$iNoteID;
+$sSQL = 'SELECT * FROM note_nte WHERE nte_ID = ' . $iNoteID;
 $rsNote = RunQuery($sSQL);
 extract(mysqli_fetch_array($rsNote));
 
 //If deleting a note for a person, set the PersonView page as the redirect
 if ($nte_per_ID > 0) {
-    $sReroute = 'PersonView.php?PersonID='.$nte_per_ID;
+    $sReroute = 'PersonView.php?PersonID=' . $nte_per_ID;
 } elseif ($nte_fam_ID > 0) {
     //If deleting a note for a family, set the FamilyView page as the redirect
-    $sReroute = 'v2/family/'.$nte_fam_ID;
+    $sReroute = 'v2/family/' . $nte_fam_ID;
 }
 
 //Do we have confirmation?

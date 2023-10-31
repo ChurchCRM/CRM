@@ -1,4 +1,5 @@
 <?php
+
 /*******************************************************************************
  *
  *  filename    : OptionsManager.php
@@ -98,7 +99,7 @@ switch ($mode) {
         $listID = InputUtils::legacyFilterInput($_GET['ListID'], 'int');
         $embedded = true;
 
-        $sSQL = 'SELECT grp_DefaultRole FROM group_grp WHERE grp_RoleListID = '.$listID;
+        $sSQL = 'SELECT grp_DefaultRole FROM group_grp WHERE grp_RoleListID = ' . $listID;
         $rsTemp = RunQuery($sSQL);
 
         // Validate that this list ID is really for a group roles list. (for security)
@@ -119,7 +120,7 @@ switch ($mode) {
         $listID = InputUtils::legacyFilterInput($_GET['ListID'], 'int');
         $embedded = true;
 
-        $sSQL = "SELECT '' FROM person_custom_master WHERE type_ID = 12 AND custom_Special = ".$listID;
+        $sSQL = "SELECT '' FROM person_custom_master WHERE type_ID = 12 AND custom_Special = " . $listID;
         $rsTemp = RunQuery($sSQL);
 
         // Validate that this is a valid person-custom field custom list
@@ -137,7 +138,7 @@ switch ($mode) {
         $listID = InputUtils::legacyFilterInput($_GET['ListID'], 'int');
         $embedded = true;
 
-        $sSQL = "SELECT '' FROM groupprop_master WHERE type_ID = 12 AND prop_Special = ".$listID;
+        $sSQL = "SELECT '' FROM groupprop_master WHERE type_ID = 12 AND prop_Special = " . $listID;
         $rsTemp = RunQuery($sSQL);
 
         // Validate that this is a valid group-specific-property field custom list
@@ -155,7 +156,7 @@ switch ($mode) {
         $listID = InputUtils::legacyFilterInput($_GET['ListID'], 'int');
         $embedded = true;
 
-        $sSQL = "SELECT '' FROM family_custom_master WHERE type_ID = 12 AND fam_custom_Special = ".$listID;
+        $sSQL = "SELECT '' FROM family_custom_master WHERE type_ID = 12 AND fam_custom_Special = " . $listID;
         $rsTemp = RunQuery($sSQL);
 
         // Validate that this is a valid family_custom field custom list
@@ -180,7 +181,7 @@ if (isset($_POST['AddField'])) {
         $iNewNameError = 1;
     } else {
         // Check for a duplicate option name
-        $sSQL = "SELECT '' FROM list_lst WHERE lst_ID = $listID AND lst_OptionName = '".$newFieldName."'";
+        $sSQL = "SELECT '' FROM list_lst WHERE lst_ID = $listID AND lst_OptionName = '" . $newFieldName . "'";
         $rsCount = RunQuery($sSQL);
         if (mysqli_num_rows($rsCount) > 0) {
             $iNewNameError = 2;
@@ -199,7 +200,7 @@ if (isset($_POST['AddField'])) {
 
             // Insert into the appropriate options table
             $sSQL = 'INSERT INTO list_lst (lst_ID, lst_OptionID, lst_OptionName, lst_OptionSequence)
-					VALUES ('.$listID.','.$newOptionID.",'".$newFieldName."',".$newOptionSequence.')';
+					VALUES (' . $listID . ',' . $newOptionID . ",'" . $newFieldName . "'," . $newOptionSequence . ')';
 
             RunQuery($sSQL);
             $iNewNameError = 0;
@@ -230,7 +231,7 @@ if (isset($_POST['SaveChanges'])) {
         //addition save off sequence also
         $aSeqs[$row] = $aRow['lst_OptionSequence'];
 
-        $aNameFields[$row] = InputUtils::legacyFilterInput($_POST[$row.'name']);
+        $aNameFields[$row] = InputUtils::legacyFilterInput($_POST[$row . 'name']);
     }
 
     for ($row = 1; $row <= $numRows; $row++) {
@@ -257,7 +258,7 @@ if (isset($_POST['SaveChanges'])) {
         for ($row = 1; $row <= $numRows; $row++) {
             // Update the type's name if it has changed from what was previously stored
             if ($aOldNameFields[$row] != $aNameFields[$row]) {
-                $sSQL = "UPDATE list_lst SET `lst_OptionName` = '".$aNameFields[$row]."' WHERE `lst_ID` = '$listID' AND `lst_OptionSequence` = '".$row."'";
+                $sSQL = "UPDATE list_lst SET `lst_OptionName` = '" . $aNameFields[$row] . "' WHERE `lst_ID` = '$listID' AND `lst_OptionSequence` = '" . $row . "'";
                 RunQuery($sSQL);
             }
         }
@@ -306,9 +307,9 @@ if ($embedded) {
 if ($bErrorFlag) {
     echo '<span class="MediumLargeText" style="color: red;">';
     if ($bDuplicateFound) {
-        echo '<br>'.gettext('Error: Duplicate').' '.$adjplusnameplural.' '.gettext('are not allowed.');
+        echo '<br>' . gettext('Error: Duplicate') . ' ' . $adjplusnameplural . ' ' . gettext('are not allowed.');
     }
-    echo '<br>'.gettext('Invalid fields or selections. Changes not saved! Please correct and try again!').'</span><br><br>';
+    echo '<br>' . gettext('Invalid fields or selections. Changes not saved! Please correct and try again!') . '</span><br><br>';
 }
 ?>
 
@@ -323,7 +324,7 @@ for ($row = 1; $row <= $numRows; $row++) {
             <b>
             <?php
             if ($mode == 'grproles' && $aIDs[$row] == $iDefaultRole) {
-                echo gettext('Default').' ';
+                echo gettext('Default') . ' ';
             }
             echo $row; ?>
             </b>
@@ -333,30 +334,30 @@ for ($row = 1; $row <= $numRows; $row++) {
 
             <?php
             if ($row != 1) {
-                echo "<a href=\"OptionManagerRowOps.php?mode=$mode&Order=$aSeqs[$row]&ListID=$listID&ID=".$aIDs[$row].'&Action=up"><i class="fa fa-arrow-up"></i></a>';
+                echo "<a href=\"OptionManagerRowOps.php?mode=$mode&Order=$aSeqs[$row]&ListID=$listID&ID=" . $aIDs[$row] . '&Action=up"><i class="fa fa-arrow-up"></i></a>';
             }
             if ($row < $numRows) {
-                echo "<a href=\"OptionManagerRowOps.php?mode=$mode&Order=$aSeqs[$row]&ListID=$listID&ID=".$aIDs[$row].'&Action=down"><i class="fa fa-arrow-down"></i></a>';
+                echo "<a href=\"OptionManagerRowOps.php?mode=$mode&Order=$aSeqs[$row]&ListID=$listID&ID=" . $aIDs[$row] . '&Action=down"><i class="fa fa-arrow-down"></i></a>';
             }
             if ($numRows > 0) {
-                echo "<a href=\"OptionManagerRowOps.php?mode=$mode&Order=$aSeqs[$row]&ListID=$listID&ID=".$aIDs[$row].'&Action=delete"><i class="fa fa-times"></i></a>';
+                echo "<a href=\"OptionManagerRowOps.php?mode=$mode&Order=$aSeqs[$row]&ListID=$listID&ID=" . $aIDs[$row] . '&Action=delete"><i class="fa fa-times"></i></a>';
             } ?>
         </td>
         <td class="TextColumn">
             <span class="SmallText">
-                <input class="input-small" type="text" name="<?= $row.'name' ?>" value="<?= htmlentities(stripslashes($aNameFields[$row]), ENT_NOQUOTES, 'UTF-8') ?>" size="30" maxlength="40">
+                <input class="input-small" type="text" name="<?= $row . 'name' ?>" value="<?= htmlentities(stripslashes($aNameFields[$row]), ENT_NOQUOTES, 'UTF-8') ?>" size="30" maxlength="40">
             </span>
             <?php
 
             if ($aNameErrors[$row] == 1) {
-                echo '<span style="color: red;"><BR>'.gettext('You must enter a name').' </span>';
+                echo '<span style="color: red;"><BR>' . gettext('You must enter a name') . ' </span>';
             } elseif ($aNameErrors[$row] == 2) {
-                echo '<span style="color: red;"><BR>'.gettext('Duplicate name found.').' </span>';
+                echo '<span style="color: red;"><BR>' . gettext('Duplicate name found.') . ' </span>';
             } ?>
         </td>
         <?php
         if ($mode == 'grproles') {
-            echo '<td class="TextColumn"><input class="form-control input-small" type="button" class="btn btn-default" value="'.gettext('Make Default')."\" Name=\"default\" onclick=\"javascript:document.location='OptionManagerRowOps.php?mode=".$mode.'&ListID='.$listID.'&ID='.$aIDs[$row]."&Action=makedefault';\" ></td>";
+            echo '<td class="TextColumn"><input class="form-control input-small" type="button" class="btn btn-default" value="' . gettext('Make Default') . "\" Name=\"default\" onclick=\"javascript:document.location='OptionManagerRowOps.php?mode=" . $mode . '&ListID=' . $listID . '&ID=' . $aIDs[$row] . "&Action=makedefault';\" ></td>";
         } ?>
 
     </tr>
@@ -383,19 +384,19 @@ for ($row = 1; $row <= $numRows; $row++) {
 
 <div class="card card-primary">
     <div class="card-body">
-<?=  gettext('Name for New').' '.$noun ?>:&nbsp;
+<?=  gettext('Name for New') . ' ' . $noun ?>:&nbsp;
 <span class="SmallText">
     <input class="form-control input-small" type="text" name="newFieldName" size="30" maxlength="40">
 </span>
 <p>  </p>
-<input type="submit" class="btn btn-default" value="<?= gettext('Add New').' '.$adjplusname ?>" Name="AddField">
+<input type="submit" class="btn btn-default" value="<?= gettext('Add New') . ' ' . $adjplusname ?>" Name="AddField">
 <?php
 if ($iNewNameError > 0) {
     echo '<div><span style="color: red;"><BR>';
     if ($iNewNameError == 1) {
         echo gettext('Error: You must enter a name');
     } else {
-        echo gettext('Error: A ').$noun.gettext(' by that name already exists.');
+        echo gettext('Error: A ') . $noun . gettext(' by that name already exists.');
     }
     echo '</span></div>';
 }

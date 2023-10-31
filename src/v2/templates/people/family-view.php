@@ -1,6 +1,5 @@
 <?php
 
-
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\Classification;
 use ChurchCRM\dto\SystemConfig;
@@ -11,7 +10,7 @@ use ChurchCRM\Service\MailChimpService;
 $sPageTitle =  $family->getName() . " - " . gettext("Family");
 include SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
-$curYear = (new DateTime)->format("Y");
+$curYear = (new DateTime())->format("Y");
 $familyAddress = $family->getAddress();
 $mailchimp = new MailChimpService();
 ?>
@@ -21,7 +20,7 @@ $mailchimp = new MailChimpService();
     window.CRM.currentFamilyName = "<?= $family->getName() ?>";
     window.CRM.currentActive = <?= $family->isActive() ? "true" : "false" ?>;
     window.CRM.currentFamilyView = 2;
-    window.CRM.plugin.mailchimp = <?= $mailchimp->isActive()? "true" : "false" ?>;
+    window.CRM.plugin.mailchimp = <?= $mailchimp->isActive() ? "true" : "false" ?>;
 </script>
 
 
@@ -145,7 +144,7 @@ $mailchimp = new MailChimpService();
                             <?php
                             if (!SystemConfig::getBooleanValue("bHideFamilyNewsletter")) { /* Newsletter can be hidden - General Settings */ ?>
                                 <li><i class="fa-li fa fa-hacker-news"></i><?= gettext("Send Newsletter") ?>:
-                                    <span style="color:<?= ($family->isSendNewsletter()? "green" : "red") ?>"><i
+                                    <span style="color:<?= ($family->isSendNewsletter() ? "green" : "red") ?>"><i
                                             class="fa fa-<?= ($family->isSendNewsletter() ? "check" : "times") ?>"></i></span>
                                 </li>
                                 <?php
@@ -194,7 +193,7 @@ $mailchimp = new MailChimpService();
                                 <?php }
                             }
                             foreach ($familyCustom as $customField) {
-                                echo '<li><i class="fa-li ' . $customField->getIcon() . '"></i>'. $customField->getDisplayValue().': <span>';
+                                echo '<li><i class="fa-li ' . $customField->getIcon() . '"></i>' . $customField->getDisplayValue() . ': <span>';
                                 if ($customField->getLink()) {
                                     echo "<a href=\"" . $customField->getLink() . "\">" . $customField->getFormattedValue() . "</a>";
                                 } else {

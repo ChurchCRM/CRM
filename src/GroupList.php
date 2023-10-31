@@ -1,4 +1,5 @@
 <?php
+
 /*******************************************************************************
 *
 *  filename    : GroupList.php
@@ -12,6 +13,7 @@
 *  2016 Charles Crossan
 
 ******************************************************************************/
+
 //Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
@@ -34,9 +36,9 @@ $rsGroupTypes = ListOptionQuery::create()->filterById('3')->find();
 <select id="table-filter" class="form-control input-sm">
 <option value=""><?= gettext("All") ?></option>
 <?php
-  echo '<option>'.gettext("Unassigned").'</option>';
+  echo '<option>' . gettext("Unassigned") . '</option>';
 foreach ($rsGroupTypes as $groupType) {
-    echo '<option>'.$groupType->getOptionName().'</option>';
+    echo '<option>' . $groupType->getOptionName() . '</option>';
 } ?>
 </select>
 </label>

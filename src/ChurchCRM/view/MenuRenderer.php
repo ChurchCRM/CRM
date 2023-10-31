@@ -24,7 +24,7 @@ class MenuRenderer
     private static function renderMenuItem(MenuItem $menuItem)
     {
         ?>
-        <li class="nav-item <?= $menuItem->isActive()? "active" : ""?>">
+        <li class="nav-item <?= $menuItem->isActive() ? "active" : ""?>">
             <a href="<?= $menuItem->getURI() ?>" <?= $menuItem->isExternal() ? "target='_blank'" : "" ?> class="nav-link">
                 <i class='fa <?= $menuItem->getIcon() ?>'></i>
                 <p>
@@ -39,7 +39,7 @@ class MenuRenderer
     private static function renderSubMenuItem(MenuItem $menuItem)
     {
         ?>
-        <div class="nav-item <?= $menuItem->openMenu()? "menu-open active" : "" ?>">
+        <div class="nav-item <?= $menuItem->openMenu() ? "menu-open active" : "" ?>">
             <a href="#" class="nav-link">
                 <i class="fa <?= $menuItem->getIcon() ?>"></i>
                 <span>

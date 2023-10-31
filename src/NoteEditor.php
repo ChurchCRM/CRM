@@ -1,4 +1,5 @@
 <?php
+
 /*******************************************************************************
  *
  *  filename    : NoteEditor.php
@@ -43,9 +44,9 @@ if (isset($_GET['FamilyID'])) {
 
 //To which page do we send the user if they cancel?
 if ($iPersonID > 0) {
-    $sBackPage = 'PersonView.php?PersonID='.$iPersonID;
+    $sBackPage = 'PersonView.php?PersonID=' . $iPersonID;
 } else {
-    $sBackPage = 'v2/family/'.$iFamilyID;
+    $sBackPage = 'v2/family/' . $iFamilyID;
 }
 
 //Has the form been submitted?

@@ -1,4 +1,5 @@
 <?php
+
 /*******************************************************************************
  *
  *  filename    : EventNames.php
@@ -55,37 +56,37 @@ if (isset($_POST['Action'])) {
           # See: https://dev.mysql.com/doc/refman/en/sql-mode.html#sql-mode-strict
           # Special thanks to @chiebert (GitHub) for the fix!
             $insert = "INSERT INTO event_types (type_name";
-            $values = " VALUES ('".InputUtils::legacyFilterInput($eName)."'";
+            $values = " VALUES ('" . InputUtils::legacyFilterInput($eName) . "'";
             if (!empty($eTime)) {
                 $insert .= ", type_defstarttime";
-                $values .= ",'".InputUtils::legacyFilterInput($eTime)."'";
+                $values .= ",'" . InputUtils::legacyFilterInput($eTime) . "'";
             }
             if (!empty($eRecur)) {
                 $insert .= ", type_defrecurtype";
-                $values .= ",'".InputUtils::legacyFilterInput($eRecur)."'";
+                $values .= ",'" . InputUtils::legacyFilterInput($eRecur) . "'";
             }
             if (!empty($eDOW)) {
                 $insert .= ", type_defrecurDOW";
-                $values .= ",'".InputUtils::legacyFilterInput($eDOW)."'";
+                $values .= ",'" . InputUtils::legacyFilterInput($eDOW) . "'";
             }
             if (!empty($eDOM)) {
                 $insert .= ", type_defrecurDOM";
-                $values .= ",'".InputUtils::legacyFilterInput($eDOM)."'";
+                $values .= ",'" . InputUtils::legacyFilterInput($eDOM) . "'";
             }
             if (!empty($eDOY)) {
                 $insert .= ", type_defrecurDOY";
-                $values .= ",'".InputUtils::legacyFilterInput($eDOY)."'";
+                $values .= ",'" . InputUtils::legacyFilterInput($eDOY) . "'";
             }
             $insert .= ")";
             $values .= ")";
 
-            $sSQL = $insert.$values;
+            $sSQL = $insert . $values;
             RunQuery($sSQL);
             $theID = mysqli_insert_id($cnInfoCentral);
 
             for ($j = 0; $j < $eCntNum; $j++) {
                 $cCnt = ltrim(rtrim($eCntArray[$j]));
-                $sSQL = "INSERT eventcountnames_evctnm (evctnm_eventtypeid, evctnm_countname) VALUES ('".InputUtils::legacyFilterInput($theID)."','".InputUtils::legacyFilterInput($cCnt)."') ON DUPLICATE KEY UPDATE evctnm_countname='$cCnt'";
+                $sSQL = "INSERT eventcountnames_evctnm (evctnm_eventtypeid, evctnm_countname) VALUES ('" . InputUtils::legacyFilterInput($theID) . "','" . InputUtils::legacyFilterInput($cCnt) . "') ON DUPLICATE KEY UPDATE evctnm_countname='$cCnt'";
                 RunQuery($sSQL);
             }
             RedirectUtils::redirect('EventNames.php'); // clear POST
@@ -93,9 +94,9 @@ if (isset($_POST['Action'])) {
 
         case 'DELETE':
             $theID = $_POST['theID'];
-            $sSQL = "DELETE FROM event_types WHERE type_id='".InputUtils::legacyFilterInput($theID)."' LIMIT 1";
+            $sSQL = "DELETE FROM event_types WHERE type_id='" . InputUtils::legacyFilterInput($theID) . "' LIMIT 1";
             RunQuery($sSQL);
-            $sSQL = "DELETE FROM eventcountnames_evctnm WHERE evctnm_eventtypeid='".InputUtils::legacyFilterInput($theID)."'";
+            $sSQL = "DELETE FROM eventcountnames_evctnm WHERE evctnm_eventtypeid='" . InputUtils::legacyFilterInput($theID) . "'";
             RunQuery($sSQL);
             $theID = '';
             $_POST['Action'] = '';
@@ -128,13 +129,13 @@ for ($row = 1; $row <= $numRows; $row++) {
                 $recur[$row] = gettext('None');
             break;
         case 'weekly':
-                  $recur[$row] = gettext('Weekly on').' '.gettext($aDefRecurDOW[$row].'s');
+                  $recur[$row] = gettext('Weekly on') . ' ' . gettext($aDefRecurDOW[$row] . 's');
             break;
         case 'monthly':
-            $recur[$row] = gettext('Monthly on').' '.date('dS', mktime(0, 0, 0, 1, $aDefRecurDOM[$row], 2000));
+            $recur[$row] = gettext('Monthly on') . ' ' . date('dS', mktime(0, 0, 0, 1, $aDefRecurDOM[$row], 2000));
             break;
         case 'yearly':
-            $recur[$row] = gettext('Yearly on').' '.mb_substr($aDefRecurDOY[$row], 5);
+            $recur[$row] = gettext('Yearly on') . ' ' . mb_substr($aDefRecurDOY[$row], 5);
             break;
         default:
             $recur[$row] = gettext('None');
@@ -268,7 +269,7 @@ if (InputUtils::legacyFilterInput($_POST['Action']) == 'NEW') {
   <div class="card-header">
     <?php if ($numRows > 0) {
         ?>
-      <h3 class="card-title"><?= ($numRows == 1 ? gettext('There currently is') : gettext('There currently are')).' '.$numRows.' '.($numRows == 1 ? gettext('custom event type') : gettext('custom event types')) ?></h3>
+      <h3 class="card-title"><?= ($numRows == 1 ? gettext('There currently is') : gettext('There currently are')) . ' ' . $numRows . ' ' . ($numRows == 1 ? gettext('custom event type') : gettext('custom event types')) ?></h3>
         <?php
     } ?>
   </div>
@@ -320,7 +321,7 @@ if (InputUtils::legacyFilterInput($_POST['Action']) == 'NEW') {
                     <td>
                       <form name="ProcessEventType" action="EventNames.php" method="POST" class="pull-left">
                         <input type="hidden" name="theID" value="<?= $aTypeID[$row] ?>">
-                        <button type="submit" class="btn btn-default btn-sm" title="<?= gettext('Delete') ?>" name="Action" value="DELETE" onClick="return confirm("<?= gettext('Deleting this event TYPE will NOT delete any existing Events or Attendance Counts.  Are you sure you want to DELETE Event Type ID: ').$aTypeID[$row] ?>")">
+                        <button type="submit" class="btn btn-default btn-sm" title="<?= gettext('Delete') ?>" name="Action" value="DELETE" onClick="return confirm("<?= gettext('Deleting this event TYPE will NOT delete any existing Events or Attendance Counts.  Are you sure you want to DELETE Event Type ID: ') . $aTypeID[$row] ?>")">
                           <i class='fa fa-trash'></i>
                         </button>
                       </form>

@@ -20,7 +20,6 @@ use Propel\Runtime\ActiveQuery\Join;
  */
 class KioskAssignment extends BaseKioskAssignment
 {
-
     private function getActiveEvent()
     {
         if ($this->getAssignmentType() == KioskAssignmentTypes::EVENTATTENDANCEKIOSK) {

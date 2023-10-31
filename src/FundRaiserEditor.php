@@ -1,4 +1,5 @@
 <?php
+
 /*******************************************************************************
  *
  *  filename    : FundRaiserEditor.php
@@ -21,7 +22,7 @@ $iFundRaiserID = InputUtils::legacyFilterInputArr($_GET, 'FundRaiserID');
 
 if ($iFundRaiserID > 0) {
     // Get the current fund raiser record
-    $sSQL = 'SELECT * from fundraiser_fr WHERE fr_ID = '.$iFundRaiserID;
+    $sSQL = 'SELECT * from fundraiser_fr WHERE fr_ID = ' . $iFundRaiserID;
     $rsFRR = RunQuery($sSQL);
     extract(mysqli_fetch_array($rsFRR));
     // Set current fundraiser
@@ -29,7 +30,7 @@ if ($iFundRaiserID > 0) {
 }
 
 if ($iFundRaiserID > 0) {
-    $sPageTitle = gettext('Fundraiser').' #'.$iFundRaiserID.' '.$fr_title;
+    $sPageTitle = gettext('Fundraiser') . ' #' . $iFundRaiserID . ' ' . $fr_title;
 } else {
     $sPageTitle = gettext('Create New Fund Raiser');
 }
@@ -50,7 +51,7 @@ if (isset($_POST['FundRaiserSubmit'])) {
     if (strlen($dDate) > 0) {
         list($iYear, $iMonth, $iDay) = sscanf($dDate, '%04d-%02d-%02d');
         if (!checkdate($iMonth, $iDay, $iYear)) {
-            $sDateError = '<span style="color: red; ">'.gettext('Not a valid date').'</span>';
+            $sDateError = '<span style="color: red; ">' . gettext('Not a valid date') . '</span>';
             $bErrorFlag = true;
         }
     }
@@ -59,12 +60,12 @@ if (isset($_POST['FundRaiserSubmit'])) {
     if (!$bErrorFlag) {
         // New deposit slip
         if ($iFundRaiserID <= 0) {
-            $sSQL = 'INSERT INTO fundraiser_fr (fr_date, fr_title, fr_description, fr_EnteredBy, fr_EnteredDate) VALUES ('.
-            "'".$dDate."','".$sTitle."','".$sDescription."',".AuthenticationManager::getCurrentUser()->getId().",'".date('YmdHis')."')";
+            $sSQL = 'INSERT INTO fundraiser_fr (fr_date, fr_title, fr_description, fr_EnteredBy, fr_EnteredDate) VALUES (' .
+            "'" . $dDate . "','" . $sTitle . "','" . $sDescription . "'," . AuthenticationManager::getCurrentUser()->getId() . ",'" . date('YmdHis') . "')";
             $bGetKeyBack = true;
         // Existing record (update)
         } else {
-            $sSQL = "UPDATE fundraiser_fr SET fr_date = '".$dDate."', fr_title = '".$sTitle."', fr_description = '".$sDescription."', fr_EnteredBy = ".AuthenticationManager::getCurrentUser()->getId().", fr_EnteredDate='".date('YmdHis')."' WHERE fr_ID = ".$iFundRaiserID.';';
+            $sSQL = "UPDATE fundraiser_fr SET fr_date = '" . $dDate . "', fr_title = '" . $sTitle . "', fr_description = '" . $sDescription . "', fr_EnteredBy = " . AuthenticationManager::getCurrentUser()->getId() . ", fr_EnteredDate='" . date('YmdHis') . "' WHERE fr_ID = " . $iFundRaiserID . ';';
             $bGetKeyBack = false;
         }
         //Execute the SQL
@@ -83,7 +84,7 @@ if (isset($_POST['FundRaiserSubmit'])) {
                 RedirectUtils::redirect($linkBack);
             } else {
                 //Send to the view of this FundRaiser
-                RedirectUtils::redirect('FundRaiserEditor.php?linkBack='.$linkBack.'&FundRaiserID='.$iFundRaiserID);
+                RedirectUtils::redirect('FundRaiserEditor.php?linkBack=' . $linkBack . '&FundRaiserID=' . $iFundRaiserID);
             }
         }
     }
@@ -94,7 +95,7 @@ if (isset($_POST['FundRaiserSubmit'])) {
         //Editing....
         //Get all the data on this record
 
-        $sSQL = 'SELECT * FROM fundraiser_fr WHERE fr_ID = '.$iFundRaiserID;
+        $sSQL = 'SELECT * FROM fundraiser_fr WHERE fr_ID = ' . $iFundRaiserID;
         $rsFundRaiser = RunQuery($sSQL);
         extract(mysqli_fetch_array($rsFundRaiser));
 
@@ -117,7 +118,7 @@ if ($iFundRaiserID > 0) {
 	         FROM donateditem_di
 	         LEFT JOIN person_per a ON di_donor_ID=a.per_ID
 	         LEFT JOIN person_per b ON di_buyer_ID=b.per_ID
-	         WHERE di_FR_ID = '".$iFundRaiserID."' ORDER BY di_multibuy,SUBSTR(di_item,1,1),cast(SUBSTR(di_item,2) as unsigned integer),SUBSTR(di_item,4)";
+	         WHERE di_FR_ID = '" . $iFundRaiserID . "' ORDER BY di_multibuy,SUBSTR(di_item,1,1),cast(SUBSTR(di_item,2) as unsigned integer),SUBSTR(di_item,4)";
     $rsDonatedItems = RunQuery($sSQL);
 } else {
     $rsDonatedItems = 0;
@@ -133,7 +134,7 @@ require 'Include/Header.php';
 
 ?>
 <div class="card card-body">
-<form method="post" action="FundRaiserEditor.php?<?= 'linkBack='.$linkBack.'&FundRaiserID='.$iFundRaiserID ?>" name="FundRaiserEditor">
+<form method="post" action="FundRaiserEditor.php?<?= 'linkBack=' . $linkBack . '&FundRaiserID=' . $iFundRaiserID ?>" name="FundRaiserEditor">
 
 <table cellpadding="3" align="center">
 
@@ -147,11 +148,11 @@ require 'Include/Header.php';
                                                                 } ?>';">
             <?php
             if ($iFundRaiserID > 0) {
-                echo '<input type=button class=btn value="'.gettext('Add Donated Item')."\" name=AddDonatedItem onclick=\"javascript:document.location='DonatedItemEditor.php?CurrentFundraiser=$iFundRaiserID&linkBack=FundRaiserEditor.php?FundRaiserID=$iFundRaiserID&CurrentFundraiser=$iFundRaiserID';\">\n";
-                echo '<input type=button class=btn value="'.gettext('Generate Catalog')."\" name=GenerateCatalog onclick=\"javascript:document.location='Reports/FRCatalog.php?CurrentFundraiser=$iFundRaiserID';\">\n";
-                echo '<input type=button class=btn value="'.gettext('Generate Bid Sheets')."\" name=GenerateBidSheets onclick=\"javascript:document.location='Reports/FRBidSheets.php?CurrentFundraiser=$iFundRaiserID';\">\n";
-                echo '<input type=button class=btn value="'.gettext('Generate Certificates')."\" name=GenerateCertificates onclick=\"javascript:document.location='Reports/FRCertificates.php?CurrentFundraiser=$iFundRaiserID';\">\n";
-                echo '<input type=button class=btn value="'.gettext('Batch Winner Entry')."\" name=BatchWinnerEntry onclick=\"javascript:document.location='BatchWinnerEntry.php?CurrentFundraiser=$iFundRaiserID&linkBack=FundRaiserEditor.php?FundRaiserID=$iFundRaiserID&CurrentFundraiser=$iFundRaiserID';\">\n";
+                echo '<input type=button class=btn value="' . gettext('Add Donated Item') . "\" name=AddDonatedItem onclick=\"javascript:document.location='DonatedItemEditor.php?CurrentFundraiser=$iFundRaiserID&linkBack=FundRaiserEditor.php?FundRaiserID=$iFundRaiserID&CurrentFundraiser=$iFundRaiserID';\">\n";
+                echo '<input type=button class=btn value="' . gettext('Generate Catalog') . "\" name=GenerateCatalog onclick=\"javascript:document.location='Reports/FRCatalog.php?CurrentFundraiser=$iFundRaiserID';\">\n";
+                echo '<input type=button class=btn value="' . gettext('Generate Bid Sheets') . "\" name=GenerateBidSheets onclick=\"javascript:document.location='Reports/FRBidSheets.php?CurrentFundraiser=$iFundRaiserID';\">\n";
+                echo '<input type=button class=btn value="' . gettext('Generate Certificates') . "\" name=GenerateCertificates onclick=\"javascript:document.location='Reports/FRCertificates.php?CurrentFundraiser=$iFundRaiserID';\">\n";
+                echo '<input type=button class=btn value="' . gettext('Batch Winner Entry') . "\" name=BatchWinnerEntry onclick=\"javascript:document.location='BatchWinnerEntry.php?CurrentFundraiser=$iFundRaiserID&linkBack=FundRaiserEditor.php?FundRaiserID=$iFundRaiserID&CurrentFundraiser=$iFundRaiserID';\">\n";
             }
             ?>
         </td>
@@ -215,7 +216,7 @@ if ($rsDonatedItems != 0) {
         $sRowClass = 'RowColorA'; ?>
         <tr class="<?= $sRowClass ?>">
             <td>
-                <a href="DonatedItemEditor.php?DonatedItemID=<?= $di_ID.'&linkBack=FundRaiserEditor.php?FundRaiserID='.$iFundRaiserID ?>"><?= $di_Item ?></a>
+                <a href="DonatedItemEditor.php?DonatedItemID=<?= $di_ID . '&linkBack=FundRaiserEditor.php?FundRaiserID=' . $iFundRaiserID ?>"><?= $di_Item ?></a>
             </td>
             <td>
                 <?php if ($di_multibuy) {
@@ -223,13 +224,13 @@ if ($rsDonatedItems != 0) {
                 } ?>&nbsp;
             </td>
             <td>
-                <?= $donorFirstName.' '.$donorLastName ?>&nbsp;
+                <?= $donorFirstName . ' ' . $donorLastName ?>&nbsp;
             </td>
             <td>
                 <?php if ($di_multibuy) {
                     echo gettext('Multiple');
                 } else {
-                    echo $buyerFirstName.' '.$buyerLastName;
+                    echo $buyerFirstName . ' ' . $buyerLastName;
                 } ?>&nbsp;
             </td>
             <td>
@@ -248,7 +249,7 @@ if ($rsDonatedItems != 0) {
                 <?= $di_minimum ?>&nbsp;
             </td>
             <td>
-                <a href="DonatedItemDelete.php?DonatedItemID=<?= $di_ID.'&linkBack=FundRaiserEditor.php?FundRaiserID='.$iFundRaiserID ?>">Delete</a>
+                <a href="DonatedItemDelete.php?DonatedItemID=<?= $di_ID . '&linkBack=FundRaiserEditor.php?FundRaiserID=' . $iFundRaiserID ?>">Delete</a>
             </td>
         </tr>
         <?php

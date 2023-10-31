@@ -70,8 +70,8 @@ class LoggerUtils
             $call = $callers[5];
         }
         return [
-        "ContextClass"=> array_key_exists("class", $call) ? $call['class'] : "",
-        "ContextMethod"=> $call['function']
+        "ContextClass" => array_key_exists("class", $call) ? $call['class'] : "",
+        "ContextMethod" => $call['function']
         ];
     }
 

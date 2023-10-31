@@ -16,5 +16,4 @@ use ChurchCRM\Base\EventAudienceQuery as BaseEventAudienceQuery;
  */
 class EventAudienceQuery extends BaseEventAudienceQuery
 {
-
 }

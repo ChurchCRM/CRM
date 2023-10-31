@@ -9,7 +9,7 @@ class PersonService
 {
     public function search($searchTerm, $includeFamilyRole = true)
     {
-        $searchLikeString = '%'.$searchTerm.'%';
+        $searchLikeString = '%' . $searchTerm . '%';
         $people = PersonQuery::create()->
         filterByFirstName($searchLikeString, Criteria::LIKE)->
         _or()->filterByLastName($searchLikeString, Criteria::LIKE)->

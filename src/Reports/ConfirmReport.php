@@ -1,4 +1,5 @@
 <?php
+
 /*******************************************************************************
 *
 *  filename    : Reports/ConfirmReport.php
@@ -62,7 +63,7 @@ class PdfConfirmReport extends ChurchInfoReport
         //If the Reports Settings Menu's SystemConfig::getValue("sConfirmSigner") is set, then display the closing statement.  Hide it otherwise.
         if (SystemConfig::getValue('sConfirmSigner')) {
             $curY += 4 * SystemConfig::getValue('incrementY');
-            $this->writeAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sConfirmSincerely').',');
+            $this->writeAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sConfirmSincerely') . ',');
             $curY += 4 * SystemConfig::getValue('incrementY');
             $this->writeAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sConfirmSigner'));
         }
@@ -71,7 +72,7 @@ class PdfConfirmReport extends ChurchInfoReport
 
 // Instantiate the directory class and build the report.
 $pdf = new PdfConfirmReport();
-$filename = 'ConfirmReport'.date(SystemConfig::getValue("sDateFilenameFormat")).'.pdf';
+$filename = 'ConfirmReport' . date(SystemConfig::getValue("sDateFilenameFormat")) . '.pdf';
 
 // Get the list of custom person fields
 $sSQL = 'SELECT person_custom_master.* FROM person_custom_master ORDER BY custom_Order';
@@ -89,11 +90,11 @@ if ($numCustomFields > 0) {
 
 $sSubQuery = ' 1 ';
 if ($_GET['familyId']) {
-    $sSubQuery = ' fam_id in ('.$_GET['familyId'].') ';
+    $sSubQuery = ' fam_id in (' . $_GET['familyId'] . ') ';
 }
 
 // Get all the families
-$sSQL = 'SELECT * FROM family_fam WHERE '.$sSubQuery.' ORDER BY fam_Name';
+$sSQL = 'SELECT * FROM family_fam WHERE ' . $sSubQuery . ' ORDER BY fam_Name';
 $rsFamilies = RunQuery($sSQL);
 
 $dataCol = 55;
@@ -105,7 +106,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
 
     //If this is a report for a single family, name the file accordingly.
     if ($_GET['familyId']) {
-        $filename = 'ConfirmReport-'.$fam_Name.'.pdf';
+        $filename = 'ConfirmReport-' . $fam_Name . '.pdf';
     }
 
     $curY = $pdf->startNewPage(
@@ -138,7 +139,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
     $pdf->SetFont('Times', 'B', 10);
     $pdf->writeAtCell(SystemConfig::getValue('leftX'), $curY, $dataCol - SystemConfig::getValue('leftX'), gettext('City, State, Zip'));
     $pdf->SetFont('Times', '', 10);
-    $pdf->writeAtCell($dataCol, $curY, $dataWid, ($fam_City.', '.$fam_State.'  '.$fam_Zip));
+    $pdf->writeAtCell($dataCol, $curY, $dataWid, ($fam_City . ', ' . $fam_State . '  ' . $fam_Zip));
     $curY += SystemConfig::getValue('incrementY');
     $pdf->SetFont('Times', 'B', 10);
     $pdf->writeAtCell(SystemConfig::getValue('leftX'), $curY, $dataCol - SystemConfig::getValue('leftX'), gettext('Home Phone'));
@@ -173,7 +174,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
     $sSQL = 'SELECT *, cls.lst_OptionName AS sClassName, fmr.lst_OptionName AS sFamRole FROM person_per 
 				LEFT JOIN list_lst cls ON per_cls_ID = cls.lst_OptionID AND cls.lst_ID = 1
 				LEFT JOIN list_lst fmr ON per_fmr_ID = fmr.lst_OptionID AND fmr.lst_ID = 2
-				WHERE per_fam_ID = '.$fam_ID.' ORDER BY per_fmr_ID';
+				WHERE per_fam_ID = ' . $fam_ID . ' ORDER BY per_fmr_ID';
     $rsFamilyMembers = RunQuery($sSQL);
 
     $XName = 10;
@@ -220,7 +221,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
         }
         $iPersonID = $per_ID;
         $pdf->SetFont('Times', 'B', 10);
-        $pdf->writeAtCell($XName, $curY, $XGender - $XName, $per_FirstName.' '.$per_MiddleName.' '.$per_LastName);
+        $pdf->writeAtCell($XName, $curY, $XGender - $XName, $per_FirstName . ' ' . $per_MiddleName . ' ' . $per_LastName);
         $pdf->SetFont('Times', '', 10);
         $genderStr = ($per_Gender == 1 ? 'M' : 'F');
         $pdf->writeAtCell($XGender, $curY, $XRole - $XGender, $genderStr);
@@ -242,7 +243,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
         $curY += SystemConfig::getValue('incrementY');
         // Missing the following information for the personal record: ? Is this the place to put this data ?
         // Work Phone
-        $pdf->writeAtCell($XWorkPhone, $curY, $XRight - $XWorkPhone, gettext('Work Phone').':'.$per_WorkPhone);
+        $pdf->writeAtCell($XWorkPhone, $curY, $XRight - $XWorkPhone, gettext('Work Phone') . ':' . $per_WorkPhone);
         $curY += SystemConfig::getValue('incrementY');
         $curY += SystemConfig::getValue('incrementY');
 
@@ -253,7 +254,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
         $numCustomFields = mysqli_num_rows($rsCustomFields);
         if ($numCustomFields > 0) {
             extract($aMember);
-            $sSQL = 'SELECT * FROM person_custom WHERE per_ID = '.$per_ID;
+            $sSQL = 'SELECT * FROM person_custom WHERE per_ID = ' . $per_ID;
             $rsCustomData = RunQuery($sSQL);
             $aCustomData = mysqli_fetch_array($rsCustomData, MYSQLI_BOTH);
             $numCustomData = mysqli_num_rows($rsCustomData);
@@ -271,7 +272,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
                 if ($sCustomFieldName[$custom_Order - 1]) {
                     $currentFieldData = trim($aCustomData[$custom_Field]);
 
-                    $OutStr = $sCustomFieldName[$custom_Order - 1].' : '.$currentFieldData.'    ';
+                    $OutStr = $sCustomFieldName[$custom_Order - 1] . ' : ' . $currentFieldData . '    ';
                     $pdf->writeAtCell($xInc, $curY, $xSize, $sCustomFieldName[$custom_Order - 1]);
                     if ($currentFieldData == '') {
                         $pdf->SetFont('Times', 'B', 6);
@@ -300,7 +301,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
     if (($curY + 2 * $numFamilyMembers * SystemConfig::getValue('incrementY')) >= 260) {
         $curY = $pdf->startLetterPage($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country);
     }
-    $sSQL = 'SELECT * FROM person_per WHERE per_fam_ID = '.$fam_ID.' ORDER BY per_fmr_ID';
+    $sSQL = 'SELECT * FROM person_per WHERE per_fam_ID = ' . $fam_ID . ' ORDER BY per_fmr_ID';
     $rsFamilyMembers = RunQuery($sSQL);
     while ($aMember = mysqli_fetch_array($rsFamilyMembers)) {
         extract($aMember);
@@ -310,15 +311,15 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
 				FROM group_grp
 				LEFT JOIN person2group2role_p2g2r ON p2g2r_grp_ID = grp_ID
 				LEFT JOIN list_lst role ON lst_OptionID = p2g2r_rle_ID AND lst_ID = grp_RoleListID
-				WHERE person2group2role_p2g2r.p2g2r_per_ID = '.$per_ID.'
+				WHERE person2group2role_p2g2r.p2g2r_per_ID = ' . $per_ID . '
 				ORDER BY grp_Name';
         $rsAssignedGroups = RunQuery($sSQL);
         if (mysqli_num_rows($rsAssignedGroups) > 0) {
-            $groupStr = 'Assigned groups for '.$per_FirstName.' '.$per_LastName.': ';
+            $groupStr = 'Assigned groups for ' . $per_FirstName . ' ' . $per_LastName . ': ';
 
             while ($aGroup = mysqli_fetch_array($rsAssignedGroups)) {
                 extract($aGroup);
-                $groupStr .= $grp_Name.' ('.$roleName.') ';
+                $groupStr .= $grp_Name . ' (' . $roleName . ') ';
             }
 
             $pdf->writeAt(SystemConfig::getValue('leftX'), $curY, $groupStr);

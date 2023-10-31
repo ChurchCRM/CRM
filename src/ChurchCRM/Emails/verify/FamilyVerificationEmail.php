@@ -30,7 +30,7 @@ class FamilyVerificationEmail extends BaseEmail
 
     protected function getFullURL()
     {
-        return SystemURLs::getURL() . "/external/verify/". $this->token->getToken();
+        return SystemURLs::getURL() . "/external/verify/" . $this->token->getToken();
     }
 
     protected function getButtonText()

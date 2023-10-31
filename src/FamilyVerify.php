@@ -14,5 +14,5 @@ $family =  FamilyQuery::create()
 
 $family->verify();
 
-header('Location: '.$family->getViewURI());
+header('Location: ' . $family->getViewURI());
 exit;

@@ -1,4 +1,5 @@
 <?php
+
 /*******************************************************************************
  *
  *  filename    : DepositSlipEditor.php
@@ -51,7 +52,7 @@ if ($iDepositSlipID) {
 }
 
 //Set the page title
-$sPageTitle = $thisDeposit->getType().' '.gettext('Deposit Slip Number: ').$iDepositSlipID;
+$sPageTitle = $thisDeposit->getType() . ' ' . gettext('Deposit Slip Number: ') . $iDepositSlipID;
 
 //Is this the second pass?
 if (isset($_POST['DepositSlipLoadAuthorized'])) {
@@ -103,7 +104,7 @@ require 'Include/Header.php';
           </div>
           <?php
             if ($thisDeposit->getType() == 'BankDraft' || $thisDeposit->getType() == 'CreditCard') {
-                echo '<p>'.gettext('Important note: failed transactions will be deleted permanently when the deposit slip is closed.').'</p>';
+                echo '<p>' . gettext('Important note: failed transactions will be deleted permanently when the deposit slip is closed.') . '</p>';
             }
             ?>
       </div>
@@ -120,12 +121,12 @@ require 'Include/Header.php';
           <ul style="margin:0px; border:0px; padding:0px;">
           <?php
           // Get deposit totals
-            echo '<li><b>TOTAL ('.$thisDeposit->getPledges()->count().'):</b> $'.$thisDeposit->getVirtualColumn('totalAmount').'</li>';
+            echo '<li><b>TOTAL (' . $thisDeposit->getPledges()->count() . '):</b> $' . $thisDeposit->getVirtualColumn('totalAmount') . '</li>';
             if ($thisDeposit->getCountCash()) {
-                echo '<li><b>CASH ('.$thisDeposit->getCountCash().'):</b> $'.$thisDeposit->getTotalCash().'</li>';
+                echo '<li><b>CASH (' . $thisDeposit->getCountCash() . '):</b> $' . $thisDeposit->getTotalCash() . '</li>';
             }
             if ($thisDeposit->getCountChecks()) {
-                echo '<li><b>CHECKS ('.$thisDeposit->getCountChecks().'):</b> $'.$thisDeposit->getTotalChecks().' </li>';
+                echo '<li><b>CHECKS (' . $thisDeposit->getCountChecks() . '):</b> $' . $thisDeposit->getTotalChecks() . ' </li>';
             }
             ?>
             </ul>
@@ -135,7 +136,7 @@ require 'Include/Header.php';
           <ul style="margin:0px; border:0px; padding:0px;">
           <?php
             foreach ($thisDeposit->getFundTotals() as $fund) {
-                echo '<li><b>'.$fund['Name'].'</b>: $'.$fund['Total'].'</li>';
+                echo '<li><b>' . $fund['Name'] . '</b>: $' . $fund['Total'] . '</li>';
             }
             ?>
         </div>
@@ -150,9 +151,9 @@ require 'Include/Header.php';
       <?php
         if ($iDepositSlipID and $thisDeposit->getType() and !$thisDeposit->getClosed()) {
             if ($thisDeposit->getType() == 'eGive') {
-                echo '<input type=button class=btn value="'.gettext('Import eGive')."\" name=ImporteGive onclick=\"javascript:document.location='eGive.php?DepositSlipID=$iDepositSlipID&linkBack=DepositSlipEditor.php?DepositSlipID=$iDepositSlipID&PledgeOrPayment=Payment&CurrentDeposit=$iDepositSlipID';\">";
+                echo '<input type=button class=btn value="' . gettext('Import eGive') . "\" name=ImporteGive onclick=\"javascript:document.location='eGive.php?DepositSlipID=$iDepositSlipID&linkBack=DepositSlipEditor.php?DepositSlipID=$iDepositSlipID&PledgeOrPayment=Payment&CurrentDeposit=$iDepositSlipID';\">";
             } else {
-                echo '<input type=button class="btn btn-success" value="'.gettext('Add Payment')."\" name=AddPayment onclick=\"javascript:document.location='PledgeEditor.php?CurrentDeposit=$iDepositSlipID&PledgeOrPayment=Payment&linkBack=DepositSlipEditor.php?DepositSlipID=$iDepositSlipID&PledgeOrPayment=Payment&CurrentDeposit=$iDepositSlipID';\">";
+                echo '<input type=button class="btn btn-success" value="' . gettext('Add Payment') . "\" name=AddPayment onclick=\"javascript:document.location='PledgeEditor.php?CurrentDeposit=$iDepositSlipID&PledgeOrPayment=Payment&linkBack=DepositSlipEditor.php?DepositSlipID=$iDepositSlipID&PledgeOrPayment=Payment&CurrentDeposit=$iDepositSlipID';\">";
             }
             if ($thisDeposit->getType() == 'BankDraft' || $thisDeposit->getType() == 'CreditCard') {
                 ?>
@@ -187,7 +188,7 @@ require 'Include/Header.php';
 foreach ($thisDeposit->getFundTotals() as $tmpfund) {
     $label = $tmpfund['Name'];
     $data = $tmpfund['Total'];
-    $backgroundColor = '#'.random_color();
+    $backgroundColor = '#' . random_color();
     array_push($fundLabels, $label);
     array_push($fundData, $data);
     array_push($fundBackgroundColor, $backgroundColor);

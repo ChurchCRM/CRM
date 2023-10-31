@@ -8,7 +8,6 @@ use Vonage\Client\Credentials\Basic;
 
 class Notification
 {
-
     protected $projectorText;
     protected $recipients;
     protected $person;
@@ -37,7 +36,7 @@ class Notification
 
     public function setProjectorText($text)
     {
-        $this->projectorText=$text;
+        $this->projectorText = $text;
     }
 
     private function sendEmail()
@@ -48,7 +47,7 @@ class Notification
         }
         try {
             $email = new NotificationEmail($emailaddresses, $this->person->getFullName());
-            $emailStatus=$email->send();
+            $emailStatus = $email->send();
             return $emailStatus;
         } catch (\Exception $ex) {
             return false;
@@ -94,19 +93,19 @@ class Notification
         $methods = [];
         if (SystemConfig::hasValidMailServerSettings()) {
             $send = $this->sendEmail();
-            array_push($methods, "email: ".$send);
+            array_push($methods, "email: " . $send);
         }
         if (SystemConfig::hasValidSMSServerSettings()) {
-            $send = (boolean)$this->sendSMS();
-            array_push($methods, "sms: ".$send);
+            $send = (bool)$this->sendSMS();
+            array_push($methods, "sms: " . $send);
         }
         if (SystemConfig::hasValidOpenLPSettings()) {
-            $send = (boolean)($this->sendProjector());
-            array_push($methods, "projector: ".$send);
+            $send = (bool)($this->sendProjector());
+            array_push($methods, "projector: " . $send);
         }
         $sendStatus = [
-        "status"=>"",
-        "methods"=>$methods
+        "status" => "",
+        "methods" => $methods
         ];
 
         return json_encode($sendStatus, JSON_THROW_ON_ERROR);

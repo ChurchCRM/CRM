@@ -1,4 +1,5 @@
 <?php
+
 /*******************************************************************************
  *
  *  filename    : PledgeDelete.php
@@ -31,7 +32,7 @@ if (!AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled()) {
 
 //Is this the second pass?
 if (isset($_POST['Delete'])) {
-    $sSQL = "DELETE FROM `pledge_plg` WHERE `plg_GroupKey` = '".$sGroupKey."';";
+    $sSQL = "DELETE FROM `pledge_plg` WHERE `plg_GroupKey` = '" . $sGroupKey . "';";
     RunQuery($sSQL);
 
     if ($linkBack != '') {
@@ -45,7 +46,7 @@ require 'Include/Header.php';
 
 ?>
 
-<form method="post" action="PledgeDelete.php?<?= 'GroupKey='.$sGroupKey.'&linkBack='.$linkBack ?>" name="PledgeDelete">
+<form method="post" action="PledgeDelete.php?<?= 'GroupKey=' . $sGroupKey . '&linkBack=' . $linkBack ?>" name="PledgeDelete">
 
 <table cellpadding="3" align="center">
 

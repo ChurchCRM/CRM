@@ -1,4 +1,5 @@
 <?php
+
 /*******************************************************************************
 *
 *  filename    : Reports/PrintDeposit.php
@@ -59,7 +60,7 @@ if ((!AuthenticationManager::getCurrentUser()->isAdmin() && $bCSVAdminOnly && $o
 }
 
 if ($output == "pdf") {
-    header('Location: '.SystemURLs::getRootPath()."/api/deposits/".$iDepositSlipID."/pdf");
+    header('Location: ' . SystemURLs::getRootPath() . "/api/deposits/" . $iDepositSlipID . "/pdf");
 } elseif ($output == "csv") {
-    header('Location: '.SystemURLs::getRootPath()."/api/deposits/".$iDepositSlipID."/csv");
+    header('Location: ' . SystemURLs::getRootPath() . "/api/deposits/" . $iDepositSlipID . "/csv");
 }

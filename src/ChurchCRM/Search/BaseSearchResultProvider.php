@@ -14,7 +14,7 @@ abstract class BaseSearchResultProvider
     protected function formatSearchGroup()
     {
         if (!empty($this->searchResults)) {
-            return new SearchResultGroup(gettext($this->pluralNoun)." (". count($this->searchResults).")", $this->searchResults);
+            return new SearchResultGroup(gettext($this->pluralNoun) . " (" . count($this->searchResults) . ")", $this->searchResults);
         }
         return [];
     }

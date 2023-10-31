@@ -26,17 +26,17 @@ class ExecutionTime
       // if End() has not yet been called, this returns the current number of running seconds.
       // Otherwise, returns the ending number of seconds
         if ($this->endTime === null) {
-            $value = (microtime(true) - $this->startTime)*1000;
+            $value = (microtime(true) - $this->startTime) * 1000;
         } else {
-            $value = ($this->endTime - $this->startTime)*1000;
+            $value = ($this->endTime - $this->startTime) * 1000;
         }
         return round($value, 2);
     }
 
     private function runTime($ru, $rus, $index)
     {
-        return ($ru["ru_$index.tv_sec"]*1000 + intval($ru["ru_$index.tv_usec"]/1000))
-        -  ($rus["ru_$index.tv_sec"]*1000 + intval($rus["ru_$index.tv_usec"]/1000));
+        return ($ru["ru_$index.tv_sec"] * 1000 + intval($ru["ru_$index.tv_usec"] / 1000))
+        -  ($rus["ru_$index.tv_sec"] * 1000 + intval($rus["ru_$index.tv_usec"] / 1000));
     }
 
     public function __toString()

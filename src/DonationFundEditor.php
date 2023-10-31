@@ -1,4 +1,5 @@
 <?php
+
 /*******************************************************************************
  *
  *  filename    : DonationFundEditor.php
@@ -68,9 +69,9 @@ $donationFunds = DonationFundQuery::create()
 if (isset($_POST['SaveChanges'])) {
     for ($iFieldID = 0; $iFieldID < $donationFunds->count(); $iFieldID++) {
         $donation = $donationFunds[$iFieldID];
-        $donation->setName(InputUtils::filterString($_POST[$iFieldID.'name']));
-        $donation->setDescription(InputUtils::legacyFilterInput($_POST[$iFieldID.'desc']));
-        $donation->setActive($_POST[$iFieldID.'active'] == 1);
+        $donation->setName(InputUtils::filterString($_POST[$iFieldID . 'name']));
+        $donation->setDescription(InputUtils::legacyFilterInput($_POST[$iFieldID . 'desc']));
+        $donation->setActive($_POST[$iFieldID . 'active'] == 1);
         if (strlen($donation->getName()) == 0) {
             $aNameErrors[$iFieldID] = true;
             $bErrorFlag &= $aNameErrors[$iFieldID];
@@ -114,7 +115,7 @@ for ($row = 0; $row < $donationFunds->count(); $row++) {
 <script nonce="<?= SystemURLs::getCSPNonce() ?>" >
 
 function confirmDeleteFund( Fund ) {
-var answer = confirm (<?= '"'.gettext('Are you sure you want to delete this fund?').'"' ?>)
+var answer = confirm (<?= '"' . gettext('Are you sure you want to delete this fund?') . '"' ?>)
 if ( answer )
     window.location="DonationFundEditor.php?Fund=" + Fund + "&Action=delete"
 }
@@ -162,15 +163,15 @@ if ($donationFunds->count() == 0) {
 
 
             <td class="TextColumn" align="center">
-                <input type="text" name="<?= $row.'name' ?>" value="<?= htmlentities(stripslashes($aNameFields[$row]), ENT_NOQUOTES, 'UTF-8') ?>" size="20" maxlength="30">
+                <input type="text" name="<?= $row . 'name' ?>" value="<?= htmlentities(stripslashes($aNameFields[$row]), ENT_NOQUOTES, 'UTF-8') ?>" size="20" maxlength="30">
                 <?php
                 if ($aNameErrors[$row]) {
-                    echo '<span style="color: red;"><BR>'.gettext('You must enter a name').' .</span>';
+                    echo '<span style="color: red;"><BR>' . gettext('You must enter a name') . ' .</span>';
                 } ?>
             </td>
 
             <td class="TextColumn">
-                <input type="text" Name="<?php echo $row.'desc' ?>" value="<?= htmlentities(stripslashes($aDescFields[$row]), ENT_NOQUOTES, 'UTF-8') ?>" size="40" maxlength="100">
+                <input type="text" Name="<?php echo $row . 'desc' ?>" value="<?= htmlentities(stripslashes($aDescFields[$row]), ENT_NOQUOTES, 'UTF-8') ?>" size="40" maxlength="100">
             </td>
             <td class="TextColumn" align="center" nowrap>
                 <input type="radio" Name="<?= $row ?>active" value="1" <?php if ($aActiveFields[$row]) {
@@ -214,7 +215,7 @@ if ($donationFunds->count() == 0) {
                         <div><?= gettext('Name') ?>:</div>
                         <input type="text" name="newFieldName" size="30" maxlength="30">
                         <?php if ($bNewNameError) {
-                            echo '<div><span style="color: red;"><BR>'.gettext('You must enter a name').'</span></div>';
+                            echo '<div><span style="color: red;"><BR>' . gettext('You must enter a name') . '</span></div>';
                         } ?>
                         &nbsp;
                     </td>

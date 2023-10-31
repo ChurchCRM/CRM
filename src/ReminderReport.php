@@ -1,4 +1,5 @@
 <?php
+
 /*******************************************************************************
  *
  *  filename    : ReminderReport.php
@@ -30,7 +31,7 @@ require 'Include/Header.php';
 if (isset($_POST['Submit'])) {
     $iFYID = InputUtils::legacyFilterInput($_POST['FYID'], 'int');
     $_SESSION['idefaultFY'] = $iFYID;
-    RedirectUtils::redirect('Reports/ReminderReport.php?FYID='.$_SESSION['idefaultFY']);
+    RedirectUtils::redirect('Reports/ReminderReport.php?FYID=' . $_SESSION['idefaultFY']);
 } else {
     $iFYID = $_SESSION['idefaultFY'];
 }

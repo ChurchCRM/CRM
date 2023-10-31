@@ -3,7 +3,6 @@
 namespace ChurchCRM\Search;
 
 use ChurchCRM\GroupQuery;
-
 use Propel\Runtime\ActiveQuery\Criteria;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Search\SearchResult;
@@ -38,7 +37,7 @@ class GroupSearchResultProvider extends BaseSearchResultProvider
             if (!empty($groups)) {
                 $id++;
                 foreach ($groups as $group) {
-                    array_push($searchResults, new SearchResult("group-name-".$id, $group->getName(), $group->getViewURI()));
+                    array_push($searchResults, new SearchResult("group-name-" . $id, $group->getName(), $group->getViewURI()));
                 }
             }
         } catch (\Exception $e) {

@@ -18,7 +18,6 @@ use Propel\Runtime\Map\TableMap;
  */
 class Event extends BaseEvent
 {
-
     private bool $editable = true;
 
     public function __construct()
@@ -60,7 +59,7 @@ class Event extends BaseEvent
         ->setCheckoutDate(null)
         ->save();
 
-        return ["status"=>"success"];
+        return ["status" => "success"];
     }
 
     public function checkOutPerson($PersonId)
@@ -76,11 +75,11 @@ class Event extends BaseEvent
         ->setCheckoutDate(date('Y-m-d H:i:s'))
         ->save();
 
-        return ["status"=>"success"];
+        return ["status" => "success"];
     }
 
     public function getViewURI()
     {
-        return SystemURLs::getRootPath()."/EventEditor.php?calendarAction=".$this->getID();
+        return SystemURLs::getRootPath() . "/EventEditor.php?calendarAction=" . $this->getID();
     }
 }

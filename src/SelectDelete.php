@@ -1,4 +1,5 @@
 <?php
+
 /*******************************************************************************
  *
  *  filename    : SelectDelete
@@ -120,7 +121,7 @@ if (isset($_GET['Confirmed'])) {
     }
 
     // Redirect back to the family listing
-    RedirectUtils::redirect(SystemURLs::getRootPath().'/v2/family');
+    RedirectUtils::redirect(SystemURLs::getRootPath() . '/v2/family');
 }
 
 

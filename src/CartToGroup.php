@@ -1,4 +1,5 @@
 <?php
+
 /*******************************************************************************
  *
  *  filename    : CartToGroup.php
@@ -43,9 +44,9 @@ if ((isset($_GET['groupeCreationID']) || isset($_POST['Submit'])) && count($_SES
 
     Cart::emptyToGroup($iGroupID, $iGroupRole);
 
-    $sGlobalMessage = $iCount.' records(s) successfully added to selected Group.';
+    $sGlobalMessage = $iCount . ' records(s) successfully added to selected Group.';
 
-    RedirectUtils::redirect('GroupView.php?GroupID='.$iGroupID.'&Action=EmptyCart');
+    RedirectUtils::redirect('GroupView.php?GroupID=' . $iGroupID . '&Action=EmptyCart');
 }
 
 $ormGroups = GroupQuery::Create()
@@ -72,9 +73,9 @@ if (count($_SESSION['aPeopleCart']) > 0) {
             <td class="TextColumn">
               <?php
               // Create the group select drop-down
-                echo '<select id="GroupID" name="GroupID" onChange="UpdateRoles();"><option value="0">'.gettext('None').'</option>';
+                echo '<select id="GroupID" name="GroupID" onChange="UpdateRoles();"><option value="0">' . gettext('None') . '</option>';
                 foreach ($ormGroups as $ormGroup) {
-                    echo '<option value="'.$ormGroup->getID().'">'.$ormGroup->getName().'</option>';
+                    echo '<option value="' . $ormGroup->getID() . '">' . $ormGroup->getName() . '</option>';
                 }
                 echo '</select>'; ?>
             </td>
@@ -99,7 +100,7 @@ if (count($_SESSION['aPeopleCart']) > 0) {
     </div></div>
     <?php
 } else {
-        echo '<p align="center" class="LargeText">'.gettext('Your cart is empty!').'</p>';
+        echo '<p align="center" class="LargeText">' . gettext('Your cart is empty!') . '</p>';
 }
 
 

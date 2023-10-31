@@ -1,4 +1,5 @@
 <?php
+
 /*******************************************************************************
  *
  *  filename    : PropertyTypeDelete.php
@@ -30,23 +31,23 @@ $iPropertyTypeID = InputUtils::legacyFilterInput($_GET['PropertyTypeID'], 'int')
 
 //Do we have deletion confirmation?
 if (isset($_GET['Confirmed'])) {
-    $sSQL = 'DELETE FROM propertytype_prt WHERE prt_ID = '.$iPropertyTypeID;
+    $sSQL = 'DELETE FROM propertytype_prt WHERE prt_ID = ' . $iPropertyTypeID;
     RunQuery($sSQL);
 
-    $sSQL = 'SELECT pro_ID FROM property_pro WHERE pro_prt_ID = '.$iPropertyTypeID;
+    $sSQL = 'SELECT pro_ID FROM property_pro WHERE pro_prt_ID = ' . $iPropertyTypeID;
     $result = RunQuery($sSQL);
     while ($aRow = mysqli_fetch_array($result)) {
-        $sSQL = 'DELETE FROM record2property_r2p WHERE r2p_pro_ID = '.$aRow['pro_ID'];
+        $sSQL = 'DELETE FROM record2property_r2p WHERE r2p_pro_ID = ' . $aRow['pro_ID'];
         RunQuery($sSQL);
     }
 
-    $sSQL = 'DELETE FROM property_pro WHERE pro_prt_ID = '.$iPropertyTypeID;
+    $sSQL = 'DELETE FROM property_pro WHERE pro_prt_ID = ' . $iPropertyTypeID;
     RunQuery($sSQL);
 
     RedirectUtils::redirect('PropertyTypeList.php');
 }
 
-$sSQL = 'SELECT * FROM propertytype_prt WHERE prt_ID = '.$iPropertyTypeID;
+$sSQL = 'SELECT * FROM propertytype_prt WHERE prt_ID = ' . $iPropertyTypeID;
 $rsProperty = RunQuery($sSQL);
 extract(mysqli_fetch_array($rsProperty));
 $sType = '';
@@ -56,7 +57,7 @@ require 'Include/Header.php';
 if (isset($_GET['Warn'])) {
     ?>
     <p align="center" class="LargeError">
-        <?= '<b>'.gettext('Warning').': </b>'.gettext('This property type is still being used by at least one property.').'<BR>'.gettext('If you delete this type, you will also remove all properties using').'<BR>'.gettext('it and lose any corresponding property assignments.'); ?>
+        <?= '<b>' . gettext('Warning') . ': </b>' . gettext('This property type is still being used by at least one property.') . '<BR>' . gettext('If you delete this type, you will also remove all properties using') . '<BR>' . gettext('it and lose any corresponding property assignments.'); ?>
     </p>
     <?php
 } ?>

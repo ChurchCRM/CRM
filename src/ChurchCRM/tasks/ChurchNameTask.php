@@ -1,4 +1,5 @@
 <?php
+
 namespace ChurchCRM\Tasks;
 
 use ChurchCRM\dto\SystemConfig;

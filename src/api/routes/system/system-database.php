@@ -32,7 +32,7 @@ $app->group('/database', function () use ($app) {
 
     $app->post('/backup', function ($request, $response, $args) {
         $input = (object)$request->getParsedBody();
-        $BaseName = preg_replace('/[^a-zA-Z0-9\-_]/', '', SystemConfig::getValue('sChurchName')). "-" . date(SystemConfig::getValue("sDateFilenameFormat"));
+        $BaseName = preg_replace('/[^a-zA-Z0-9\-_]/', '', SystemConfig::getValue('sChurchName')) . "-" . date(SystemConfig::getValue("sDateFilenameFormat"));
         $BackupType = $input->BackupType;
         $Backup = new BackupJob(
             $BaseName,
@@ -48,7 +48,7 @@ $app->group('/database', function () use ($app) {
     $app->post('/backupRemote', function ($request, $response, $args) {
         if (SystemConfig::getValue('sExternalBackupUsername') && SystemConfig::getValue('sExternalBackupPassword') && SystemConfig::getValue('sExternalBackupEndpoint')) {
             $input = (object)$request->getParsedBody();
-            $BaseName = preg_replace('/[^a-zA-Z0-9\-_]/', '', SystemConfig::getValue('sChurchName')). "-" . date(SystemConfig::getValue("sDateFilenameFormat"));
+            $BaseName = preg_replace('/[^a-zA-Z0-9\-_]/', '', SystemConfig::getValue('sChurchName')) . "-" . date(SystemConfig::getValue("sDateFilenameFormat"));
             $BackupType = $input->BackupType;
             $Backup = new BackupJob(
                 $BaseName,
@@ -108,7 +108,7 @@ function exportChMeetings(Request $request, Response $response, array $p_args)
             $familyRole = "Primary";
         }
 
-        $chPerson = [$person->getFirstName(), $person->getLastName(), $person->getMiddleName(), $person->getGenderName(), '', $annaversery, "", $person->getFormattedBirthDate(), $person->getCellPhone(), $person->getHomePhone(), $person->getEmail(), $person->getFacebookID(), "", "", "", "", "", $person->getAddress1(), $person->getAddress2(), $person->getCity(), $person->getState(), $person->getZip(), "", $person->getMembershipDate(SystemConfig::getValue("sDateFormatShort")), ($family? $family->getId(): ""), $familyRole, "", "", ""];
+        $chPerson = [$person->getFirstName(), $person->getLastName(), $person->getMiddleName(), $person->getGenderName(), '', $annaversery, "", $person->getFormattedBirthDate(), $person->getCellPhone(), $person->getHomePhone(), $person->getEmail(), $person->getFacebookID(), "", "", "", "", "", $person->getAddress1(), $person->getAddress2(), $person->getCity(), $person->getState(), $person->getZip(), "", $person->getMembershipDate(SystemConfig::getValue("sDateFormatShort")), ($family ? $family->getId() : ""), $familyRole, "", "", ""];
         array_push($list, $chPerson);
     }
 
@@ -121,7 +121,7 @@ function exportChMeetings(Request $request, Response $response, array $p_args)
     rewind($stream);
 
     $response = $response->withHeader('Content-Type', 'text/csv');
-    $response = $response->withHeader('Content-Disposition', 'attachment; filename="ChMeetings-'.date(SystemConfig::getValue("sDateFilenameFormat")).'.csv"');
+    $response = $response->withHeader('Content-Disposition', 'attachment; filename="ChMeetings-' . date(SystemConfig::getValue("sDateFilenameFormat")) . '.csv"');
 
     return $response->withBody(new \Slim\Http\Stream($stream));
 }
@@ -155,7 +155,7 @@ function resetDatabase(Request $request, Response $response, array $p_args)
         $dbAlterStatement = $connection->exec($alterSQL);
         $logger->info("DB Update: " . $alterSQL . " done.");
     }
-    
+
     AuthenticationManager::endSession();
 
     return $response->withJson(['success' => true, 'msg' => gettext('The database has been cleared.')]);

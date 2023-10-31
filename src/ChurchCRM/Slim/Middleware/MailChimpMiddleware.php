@@ -8,7 +8,6 @@ use Slim\Http\Response;
 
 class MailChimpMiddleware
 {
-
     public function __invoke(Request $request, Response $response, callable $next)
     {
         $mailchimpService = new MailChimpService();

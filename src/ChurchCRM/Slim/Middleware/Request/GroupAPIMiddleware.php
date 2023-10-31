@@ -13,12 +13,12 @@ class GroupAPIMiddleware
 
         $groupId = $request->getAttribute("route")->getArgument("groupId");
         if (empty(trim($groupId))) {
-            return $response->withStatus(412, gettext("Missing"). " GroupId");
+            return $response->withStatus(412, gettext("Missing") . " GroupId");
         }
 
         $group = GroupQuery::create()->findPk($groupId);
         if (empty($group)) {
-            return $response->withStatus(412, "GroupId: " . $groupId . " ". gettext("not found"));
+            return $response->withStatus(412, "GroupId: " . $groupId . " " . gettext("not found"));
         }
 
         $request = $request->withAttribute("group", $group);

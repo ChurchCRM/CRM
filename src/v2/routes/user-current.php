@@ -52,7 +52,7 @@ function changepassword(Request $request, Response $response, array $args)
                 $curUser->userChangePassword($loginRequestBody->OldPassword, $loginRequestBody->NewPassword1);
                 return $renderer->render($response, "common/success-changepassword.php", $pageArgs);
             } catch (PasswordChangeException $pwChangeExc) {
-                $pageArgs['s'.$pwChangeExc->AffectedPassword.'PasswordError'] =  $pwChangeExc->getMessage();
+                $pageArgs['s' . $pwChangeExc->AffectedPassword . 'PasswordError'] =  $pwChangeExc->getMessage();
             }
         }
 

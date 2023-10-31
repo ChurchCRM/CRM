@@ -26,7 +26,6 @@ use Propel\Runtime\Map\TableMap;
  */
 class Person extends BasePerson implements PhotoInterface
 {
-
     public const SELF_REGISTER = -1;
     public const SELF_VERIFY = -2;
     private ?\ChurchCRM\dto\Photo $photo = null;
@@ -63,7 +62,8 @@ class Person extends BasePerson implements PhotoInterface
 
     public function getBirthDate()
     {
-        if ($this->getBirthDay() !== null && $this->getBirthDay() !== '' &&
+        if (
+            $this->getBirthDay() !== null && $this->getBirthDay() !== '' &&
             $this->getBirthMonth() !== null && $this->getBirthMonth() !== ''
         ) {
             $birthYear = $this->getBirthYear();
@@ -141,7 +141,7 @@ class Person extends BasePerson implements PhotoInterface
         if (!empty(SystemConfig::getValue("sNewPersonNotificationRecipientIDs"))) {
             $NotificationEmail = new NewPersonOrFamilyEmail($this);
             if (!$NotificationEmail->send()) {
-                LoggerUtils::getAppLogger()->warning(gettext("New Person Notification Email Error"). " :". $NotificationEmail->getError());
+                LoggerUtils::getAppLogger()->warning(gettext("New Person Notification Email Error") . " :" . $NotificationEmail->getError());
             }
         }
     }
@@ -547,7 +547,7 @@ class Person extends BasePerson implements PhotoInterface
         $personProperties = PropertyQuery::create()
           ->filterByProClass("p")
           ->leftJoinRecordProperty()
-          ->where('r2p_record_ID='.$this->getId())
+          ->where('r2p_record_ID=' . $this->getId())
           ->find();
 
         $PropertiesList = [];
@@ -593,7 +593,7 @@ class Person extends BasePerson implements PhotoInterface
     {
         $GroupList = GroupQuery::create()
         ->leftJoinPerson2group2roleP2g2r()
-        ->where('p2g2r_per_ID='.$this->getId())
+        ->where('p2g2r_per_ID=' . $this->getId())
         ->find();
 
         $group = [];
@@ -605,7 +605,7 @@ class Person extends BasePerson implements PhotoInterface
 
     public function getNumericCellPhone()
     {
-        return "1".preg_replace('/[^\.0-9]/', "", $this->getCellPhone());
+        return "1" . preg_replace('/[^\.0-9]/', "", $this->getCellPhone());
     }
 
     public function postSave(ConnectionInterface $con = null)
@@ -654,13 +654,13 @@ class Person extends BasePerson implements PhotoInterface
     /* Philippe Logel 2017 */
     public function getFullNameWithAge()
     {
-        return $this->getFullName()." ".$this->getAge();
+        return $this->getFullName() . " " . $this->getAge();
     }
 
     public function toArray($keyType = TableMap::TYPE_PHPNAME, $includeLazyLoadColumns = true, $alreadyDumpedObjects = [], $includeForeignObjects = false)
     {
         $array = parent::toArray();
-        $array['Address']=$this->getAddress();
+        $array['Address'] = $this->getAddress();
         return $array;
     }
 

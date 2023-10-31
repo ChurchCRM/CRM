@@ -1,4 +1,5 @@
 <?php
+
 /*******************************************************************************
  *
  *  filename    : UpdateAllLatLon.php
@@ -25,7 +26,7 @@ $families = FamilyQuery::create()
     ->limit(250)
     ->find();
 
-echo '<h4>' . gettext('Families without Geo Info') . ": " . $families->count() .'</h4>';
+echo '<h4>' . gettext('Families without Geo Info') . ": " . $families->count() . '</h4>';
 
 foreach ($families as $family) {
     $family->updateLanLng();
@@ -49,7 +50,7 @@ if ($families->count() > 0) {
             <?php
 
             foreach ($families as $family) {
-                echo '<li><a href="'.$family->getViewURI().'">' . $family->getName() . '</a> ' . $family->getAddress() . '</li>';
+                echo '<li><a href="' . $family->getViewURI() . '">' . $family->getName() . '</a> ' . $family->getAddress() . '</li>';
             } ?>
         </div>
     </div>

@@ -62,7 +62,7 @@ Header_body_scripts();
               
           </div>
           <p></p>
-          <input type="button" class="btn btn-primary" id="acceptUpgradeTaskWarking" <?= 'value="'.gettext('I Understand').'"' ?>>
+          <input type="button" class="btn btn-primary" id="acceptUpgradeTaskWarking" <?= 'value="' . gettext('I Understand') . '"' ?>>
         </div>
       </div>
     </li>
@@ -112,7 +112,7 @@ Header_body_scripts();
                     <?php
                 } ?>
             </div>
-          <input type="button" class="btn btn-primary" id="acceptIntegrityCheckWarking" <?= 'value="'.gettext('I Understand').'"' ?>>
+          <input type="button" class="btn btn-primary" id="acceptIntegrityCheckWarking" <?= 'value="' . gettext('I Understand') . '"' ?>>
         </div>
       </div>
     </li>
@@ -125,7 +125,7 @@ Header_body_scripts();
         <h3 class="timeline-header"><?= gettext('Step 1: Backup Database') ?> <span id="status1"></span></h3>
         <div class="timeline-body" id="backupPhase" <?= (AppIntegrityService::getIntegrityCheckStatus() == gettext("Failed") || count($preUpgradeTasks) > 0) ? 'style="display:none"' : '' ?>>
           <p><?= gettext('Please create a database backup before beginning the upgrade process.')?></p>
-          <input type="button" class="btn btn-primary" id="doBackup" <?= 'value="'.gettext('Generate Database Backup').'"' ?>>
+          <input type="button" class="btn btn-primary" id="doBackup" <?= 'value="' . gettext('Generate Database Backup') . '"' ?>>
           <span id="backupStatus"></span>
           <div id="resultFiles" style="margin-top:10px">
           </div>
@@ -136,9 +136,9 @@ Header_body_scripts();
       <i class="fa fa-cloud-download bg-blue"></i>
       <div class="timeline-item" >
         <h3 class="timeline-header"><?= gettext('Step 2: Fetch Update Package on Server') ?> <span id="status2"></span></h3>
-        <div class="timeline-body" id="fetchPhase" <?= $expertMode ? '':'style="display: none"' ?>>
+        <div class="timeline-body" id="fetchPhase" <?= $expertMode ? '' : 'style="display: none"' ?>>
           <p><?= gettext('Fetch the latest files from the ChurchCRM GitHub release page')?></p>
-          <input type="button" class="btn btn-primary" id="fetchUpdate" <?= 'value="'.gettext('Fetch Update Files').'"' ?> >
+          <input type="button" class="btn btn-primary" id="fetchUpdate" <?= 'value="' . gettext('Fetch Update Files') . '"' ?> >
         </div>
       </div>
     </li>
@@ -146,7 +146,7 @@ Header_body_scripts();
       <i class="fa fa-cogs bg-blue"></i>
       <div class="timeline-item" >
         <h3 class="timeline-header"><?= gettext('Step 3: Apply Update Package on Server') ?> <span id="status3"></span></h3>
-        <div class="timeline-body" id="updatePhase" <?= $expertMode ? '':'style="display: none"' ?>>
+        <div class="timeline-body" id="updatePhase" <?= $expertMode ? '' : 'style="display: none"' ?>>
           <p><?= gettext('Extract the upgrade archive, and apply the new files')?></p>
           <h4><?= gettext('Release Notes') ?></h4>
           <pre id="releaseNotes"></pre>
@@ -164,7 +164,7 @@ Header_body_scripts();
       <i class="fa fa-sign-in bg-blue"></i>
       <div class="timeline-item" >
         <h3 class="timeline-header"><?= gettext('Step 4: Login') ?></h3>
-        <div class="timeline-body" id="finalPhase" <?= $expertMode ? '':'style="display: none"' ?>>
+        <div class="timeline-body" id="finalPhase" <?= $expertMode ? '' : 'style="display: none"' ?>>
           <a href="Logoff.php" class="btn btn-primary"><?= gettext('Login to Upgraded System') ?> </a>
         </div>
       </div>

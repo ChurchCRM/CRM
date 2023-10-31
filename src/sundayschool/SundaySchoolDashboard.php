@@ -218,16 +218,16 @@ require '../Include/Header.php';
             $birthDate = MiscUtils::formatBirthDate($birthYear, $birthMonth, $birthDay, '-', $flags);
 
             echo '<tr>';
-            echo "<td><a href='../PersonView.php?PersonID=".$kidId."'>";
+            echo "<td><a href='../PersonView.php?PersonID=" . $kidId . "'>";
             echo '	<span class="fa-stack">';
             echo '	<i class="fa fa-square fa-stack-2x"></i>';
             echo '	<i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>';
             echo '	</span></a></td>';
-            echo '<td>'.$firstName.'</td>';
-            echo '<td>'.$LastName.'</td>';
-            echo '<td>'.$birthDate.'</td>';
-            echo "<td>".MiscUtils::formatAge($birthMonth, $birthDay, $birthYear, $hideAge)."</td>";
-            echo '<td>'.$Address1.' '.$Address2.' '.$city.' '.$state.' '.$zip.'</td>';
+            echo '<td>' . $firstName . '</td>';
+            echo '<td>' . $LastName . '</td>';
+            echo '<td>' . $birthDate . '</td>';
+            echo "<td>" . MiscUtils::formatAge($birthMonth, $birthDay, $birthYear, $hideAge) . "</td>";
+            echo '<td>' . $Address1 . ' ' . $Address2 . ' ' . $city . ' ' . $state . ' ' . $zip . '</td>';
             echo '</tr>';
         }
 

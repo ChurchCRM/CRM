@@ -1,4 +1,5 @@
 <?php
+
 /*******************************************************************************
  *
  *  filename    : FindFundRaiser.php
@@ -149,7 +150,7 @@ if ($Result_Set < $Total && $Result_Set > 0) {
     if ($thisLinkResult < 0) {
         $thisLinkResult = 0;
     }
-    echo '<a href="FindFundRaiser.php?Result_Set='.$thisLinkResult.'&Sort='.$sSort.'">'.gettext('Previous Page').'</a>&nbsp;&nbsp;';
+    echo '<a href="FindFundRaiser.php?Result_Set=' . $thisLinkResult . '&Sort=' . $sSort . '">' . gettext('Previous Page') . '</a>&nbsp;&nbsp;';
 }
 
 // Calculate starting and ending Page-Number Links
@@ -176,7 +177,7 @@ if ($Pages > 1) {
         if ($thisLinkResult != $Result_Set) {
             echo "<a href=\"FindFundRaiser.php?Result_Set=$thisLinkResult&Sort=$sSort&ID=$iID&DateStart=$dDateStart&DateEnd=$dDateEnd\">$c</a>&nbsp;";
         } else {
-            echo '&nbsp;&nbsp;[ '.$c.' ]&nbsp;&nbsp;';
+            echo '&nbsp;&nbsp;[ ' . $c . ' ]&nbsp;&nbsp;';
         }
     }
 }
@@ -191,14 +192,14 @@ if ($endpage != $Pages) {
 if ($Result_Set >= 0 && $Result_Set < $Total) {
     $thisLinkResult = $Result_Set + $iPerPage;
     if ($thisLinkResult < $Total) {
-        echo "&nbsp;&nbsp;<a href='FindFundRaiser.php?Result_Set=$thisLinkResult&Sort=$sSort'>".gettext('Next Page').'</a>&nbsp;&nbsp;';
+        echo "&nbsp;&nbsp;<a href='FindFundRaiser.php?Result_Set=$thisLinkResult&Sort=$sSort'>" . gettext('Next Page') . '</a>&nbsp;&nbsp;';
     }
 }
 
 // Display Record Limit
-echo '<input type="hidden" name="Result_Set" value="'.$Result_Set.'">';
+echo '<input type="hidden" name="Result_Set" value="' . $Result_Set . '">';
 if (isset($sSort)) {
-    echo '<input type="hidden" name="Sort" value="'.$sSort.'">';
+    echo '<input type="hidden" name="Sort" value="' . $sSort . '">';
 }
 
 $sLimit5 = '';
@@ -223,7 +224,7 @@ if ($iPerPage == '50') {
     $sLimit50 = 'selected';
 }
 
-echo '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.gettext('Display:')."&nbsp;
+echo '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' . gettext('Display:') . "&nbsp;
 	<select class=\"SmallText\" name=\"Number\">
 		<option value=\"5\" $sLimit5>5</option>
 		<option value=\"10\" $sLimit10>10</option>
@@ -231,21 +232,21 @@ echo '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.gettext('Display:')."&nbsp;
 		<option value=\"25\" $sLimit25>25</option>
 		<option value=\"50\" $sLimit50>50</option>
 	</select>&nbsp;
-	<input type=\"submit\" class=\"icTinyButton\" value=\"".gettext('Go').'">
+	<input type=\"submit\" class=\"icTinyButton\" value=\"" . gettext('Go') . '">
 	</form></div><br>';
 
 // Column Headings
 echo "<table cellpadding='4' align='center' cellspacing='0' width='100%'>\n
 	<tr class='TableHeader'>\n
-	<td width='25'>".gettext('Edit')."</td>\n
-	<td><a href='FindFundRaiser.php?Sort=number&ID=$iID&DateStart=$dDateStart&DateEnd=$dDateEnd'>".gettext('Number')."</a></td>\n
-	<td><a href='FindFundRaiser.php?Sort=date'&ID=$iID&DateStart=$dDateStart&DateEnd=$dDateEnd>".gettext('Date')."</a></td>\n
-	<td>".gettext('Title')."</td>\n
+	<td width='25'>" . gettext('Edit') . "</td>\n
+	<td><a href='FindFundRaiser.php?Sort=number&ID=$iID&DateStart=$dDateStart&DateEnd=$dDateEnd'>" . gettext('Number') . "</a></td>\n
+	<td><a href='FindFundRaiser.php?Sort=date'&ID=$iID&DateStart=$dDateStart&DateEnd=$dDateEnd>" . gettext('Date') . "</a></td>\n
+	<td>" . gettext('Title') . "</td>\n
 	</tr>";
 
 // Display Deposits
 while (list($fr_ID, $fr_Date, $fr_Title) = mysqli_fetch_row($rsDep)) {
-    echo "<tr><td><a href='FundRaiserEditor.php?FundRaiserID=$fr_ID'>".gettext('Edit').'</td>';
+    echo "<tr><td><a href='FundRaiserEditor.php?FundRaiserID=$fr_ID'>" . gettext('Edit') . '</td>';
     echo "<td>$fr_ID</td>";
     echo "<td>$fr_Date</td>";
     // Get deposit total

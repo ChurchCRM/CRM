@@ -1,4 +1,5 @@
 <?php
+
 /*******************************************************************************
  *
  *  filename    : DirectoryReports.php
@@ -84,11 +85,11 @@ while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
             <?php
             while ($aRow = mysqli_fetch_array($rsClassifications)) {
                 extract($aRow);
-                echo '<option value="'.$lst_OptionID.'"';
+                echo '<option value="' . $lst_OptionID . '"';
                 if (in_array($lst_OptionID, $aDefaultClasses)) {
                     echo ' selected';
                 }
-                echo '>'.gettext($lst_OptionName).'</option>';
+                echo '>' . gettext($lst_OptionName) . '</option>';
             } ?>
             </select>
         </td>
@@ -101,7 +102,7 @@ while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
                 <?php
                 while ($aRow = mysqli_fetch_array($rsGroups)) {
                     extract($aRow);
-                    echo '<option value="'.$grp_ID.'">'.$grp_Name.'</option>';
+                    echo '<option value="' . $grp_ID . '">' . $grp_Name . '</option>';
                 } ?>
             </select>
         </td>
@@ -119,11 +120,11 @@ while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
             <?php
             while ($aRow = mysqli_fetch_array($rsFamilyRoles)) {
                 extract($aRow);
-                echo '<option value="'.$lst_OptionID.'"';
+                echo '<option value="' . $lst_OptionID . '"';
                 if (in_array($lst_OptionID, $aDirRoleHead)) {
                     echo ' selected';
                 }
-                echo '>'.gettext($lst_OptionName).'</option>';
+                echo '>' . gettext($lst_OptionName) . '</option>';
             }
             ?>
             </select>
@@ -138,11 +139,11 @@ while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
                 mysqli_data_seek($rsFamilyRoles, 0);
             while ($aRow = mysqli_fetch_array($rsFamilyRoles)) {
                 extract($aRow);
-                echo '<option value="'.$lst_OptionID.'"';
+                echo '<option value="' . $lst_OptionID . '"';
                 if (in_array($lst_OptionID, $aDirRoleSpouse)) {
                     echo ' selected';
                 }
-                echo '>'.gettext($lst_OptionName).'</option>';
+                echo '>' . gettext($lst_OptionName) . '</option>';
             }
             ?>
             </select>
@@ -157,11 +158,11 @@ while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
                 mysqli_data_seek($rsFamilyRoles, 0);
             while ($aRow = mysqli_fetch_array($rsFamilyRoles)) {
                 extract($aRow);
-                echo '<option value="'.$lst_OptionID.'"';
+                echo '<option value="' . $lst_OptionID . '"';
                 if (in_array($lst_OptionID, $aDirRoleChild)) {
                     echo ' selected';
                 }
-                echo '>'.gettext($lst_OptionName).'</option>';
+                echo '>' . gettext($lst_OptionName) . '</option>';
             }
             ?>
             </select>
@@ -265,7 +266,7 @@ while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
                 </tr>
                 <tr>
                     <td><?= gettext('Disclaimer') ?></td>
-                    <td><textarea Name="sDirectoryDisclaimer" cols="35" rows="4"><?= SystemConfig::getValue('sDirectoryDisclaimer1').' '.SystemConfig::getValue('sDirectoryDisclaimer2') ?></textarea></td>
+                    <td><textarea Name="sDirectoryDisclaimer" cols="35" rows="4"><?= SystemConfig::getValue('sDirectoryDisclaimer1') . ' ' . SystemConfig::getValue('sDirectoryDisclaimer2') ?></textarea></td>
                 </tr>
 
             </table>
@@ -284,7 +285,7 @@ while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
 <p align="center">
 <BR>
 <input type="submit" class="btn btn-primary" name="Submit" value="<?= gettext('Create Directory') ?>">
-<input type="button" class="btn btn-default" name="Cancel" <?= 'value="'.gettext('Cancel').'"' ?> onclick="javascript:document.location='Menu.php';">
+<input type="button" class="btn btn-default" name="Cancel" <?= 'value="' . gettext('Cancel') . '"' ?> onclick="javascript:document.location='Menu.php';">
 </p>
 </form>
 </div>
