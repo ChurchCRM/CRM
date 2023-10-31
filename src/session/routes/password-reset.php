@@ -56,7 +56,7 @@ function forgotPassword($request, $response, $args)
     $renderer = new PhpRenderer('templates/password/');
     $pageArgs = [
         'sRootPath' => SystemURLs::getRootPath(),
-        "PasswordResetXHREndpoint" => AuthenticationManager::GetForgotPasswordURL()
+        "PasswordResetXHREndpoint" => AuthenticationManager::getForgotPasswordURL()
     ];
     return $renderer->render($response, 'enter-username.php', $pageArgs);
 }

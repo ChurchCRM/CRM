@@ -15,8 +15,8 @@ require 'Include/Functions.php';
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Utils\RedirectUtils;
 
-if (!AuthenticationManager::GetCurrentUser()->isAdmin()) {
-    RedirectUtils::SecurityRedirect("Admin");
+if (!AuthenticationManager::getCurrentUser()->isAdmin()) {
+    RedirectUtils::securityRedirect("Admin");
 }
 
 // Set the page title
@@ -31,7 +31,7 @@ require 'Include/Header.php';
 <div class="card card-body">
     <div class="table-responsive">
 <?php //Display the new property link
-if (AuthenticationManager::GetCurrentUser()->isMenuOptionsEnabled()) {
+if (AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled()) {
     echo "<p align=\"center\"><a class='btn btn-primary' href=\"PropertyTypeEditor.php\">".gettext('Add a New Property Type').'</a></p>';
 }
 
@@ -41,7 +41,7 @@ echo '<tr>';
 echo '<th>'.gettext('Name').'</th>';
 echo '<th>'.gettext('Class').'</th>';
 echo '<th align="center">'.gettext('Properties').'</th>';
-if (AuthenticationManager::GetCurrentUser()->isMenuOptionsEnabled()) {
+if (AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled()) {
     echo '<th>'.gettext('Edit').'</th>';
     echo '<th>'.gettext('Delete').'</th>';
 }
@@ -71,7 +71,7 @@ while ($aRow = mysqli_fetch_array($rsPropertyTypes)) {
             break;
     }
     echo '<td align="center">'.$Properties.'</td>';
-    if (AuthenticationManager::GetCurrentUser()->isMenuOptionsEnabled()) {
+    if (AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled()) {
         echo "<td><a class='btn btn-info' href=\"PropertyTypeEditor.php?PropertyTypeID=".$prt_ID.'">'.gettext('Edit').'</a></td>';
         if ($Properties == 0) {
             echo "<td><a class='btn btn-danger' href=\"PropertyTypeDelete.php?PropertyTypeID=".$prt_ID.'">'.gettext('Delete').'</a></td>';

@@ -8,6 +8,8 @@
 
 ******************************************************************************/
 
+namespace ChurchCRM\Reports;
+
 require '../Include/Config.php';
 require '../Include/Functions.php';
 
@@ -18,8 +20,8 @@ use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Authentication\AuthenticationManager;
 
 // Security
-if (!AuthenticationManager::GetCurrentUser()->isFinanceEnabled()) {
-    RedirectUtils::Redirect('Menu.php');
+if (!AuthenticationManager::getCurrentUser()->isFinanceEnabled()) {
+    RedirectUtils::redirect('Menu.php');
     exit;
 }
 
@@ -55,21 +57,21 @@ if (!empty($_POST['classList'])) {
 }
 
 //Get the Fiscal Year ID out of the querystring
-$iFYID = InputUtils::LegacyFilterInput($_POST['FYID'], 'int');
+$iFYID = InputUtils::legacyFilterInput($_POST['FYID'], 'int');
 $_SESSION['idefaultFY'] = $iFYID; // Remember the chosen FYID
-$output = InputUtils::LegacyFilterInput($_POST['output']);
+$output = InputUtils::legacyFilterInput($_POST['output']);
 $pledge_filter = '';
 if (array_key_exists('pledge_filter', $_POST)) {
-    $pledge_filter = InputUtils::LegacyFilterInput($_POST['pledge_filter']);
+    $pledge_filter = InputUtils::legacyFilterInput($_POST['pledge_filter']);
 }
 $only_owe = '';
 if (array_key_exists('only_owe', $_POST)) {
-    $only_owe = InputUtils::LegacyFilterInput($_POST['only_owe']);
+    $only_owe = InputUtils::legacyFilterInput($_POST['only_owe']);
 }
 
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
-if (!AuthenticationManager::GetCurrentUser()->isAdmin() && SystemConfig::getValue('bCSVAdminOnly')) {
-    RedirectUtils::Redirect('Menu.php');
+if (!AuthenticationManager::getCurrentUser()->isAdmin() && SystemConfig::getValue('bCSVAdminOnly')) {
+    RedirectUtils::redirect('Menu.php');
     exit;
 }
 
@@ -100,7 +102,7 @@ $sSQL .= $criteria.' ORDER BY fam_Name';
 if (!empty($_POST['family'])) {
     $count = 0;
     foreach ($_POST['family'] as $famID) {
-        $fam[$count++] = InputUtils::LegacyFilterInput($famID, 'int');
+        $fam[$count++] = InputUtils::legacyFilterInput($famID, 'int');
     }
     if ($count == 1) {
         if ($fam[0]) {
@@ -122,7 +124,7 @@ $sSQLFundCriteria = '';
 if (!empty($_POST['funds'])) {
     $fundCount = 0;
     foreach ($_POST['funds'] as $fundID) {
-        $fund[$fundCount++] = InputUtils::LegacyFilterInput($fundID, 'int');
+        $fund[$fundCount++] = InputUtils::legacyFilterInput($fundID, 'int');
     }
     if ($fundCount == 1) {
         if ($fund[0]) {
@@ -173,7 +175,7 @@ while ($row = mysqli_fetch_array($rsFunds)) {
 
 // Create PDF Report
 // *****************
-class PDF_FamilyPledgeSummaryReport extends ChurchInfoReport
+class PdfFamilyPledgeSummaryReport extends ChurchInfoReport
 {
     // Constructor
     public function __construct()
@@ -188,8 +190,8 @@ class PDF_FamilyPledgeSummaryReport extends ChurchInfoReport
 }
 
 // Instantiate the directory class and build the report.
-$pdf = new PDF_FamilyPledgeSummaryReport();
-$pdf->AddPage();
+$pdf = new PdfFamilyPledgeSummaryReport();
+$pdf->addPage();
 
 $leftX = 10;
 $famNameX = 10;
@@ -210,15 +212,15 @@ $pageTop = 10;
 $y = $pageTop;
 $lineInc = 4;
 
-$pdf->WriteAt($leftX, $y, gettext('Pledge Summary By Family'));
+$pdf->writeAt($leftX, $y, gettext('Pledge Summary By Family'));
 $y += $lineInc;
 
-$pdf->WriteAtCell($famNameX, $y, $famNameWid, gettext('Name'));
-$pdf->WriteAtCell($famMethodX, $y, $famMethodWid, gettext('Method'));
-$pdf->WriteAtCell($famFundX, $y, $famFundWid, gettext('Fund'));
-$pdf->WriteAtCell($famPledgeX, $y, $famPledgeWid, gettext('Pledge'));
-$pdf->WriteAtCell($famPayX, $y, $famPayWid, gettext('Paid'));
-$pdf->WriteAtCell($famOweX, $y, $famOweWid, gettext('Owe'));
+$pdf->writeAtCell($famNameX, $y, $famNameWid, gettext('Name'));
+$pdf->writeAtCell($famMethodX, $y, $famMethodWid, gettext('Method'));
+$pdf->writeAtCell($famFundX, $y, $famFundWid, gettext('Fund'));
+$pdf->writeAtCell($famPledgeX, $y, $famPledgeWid, gettext('Pledge'));
+$pdf->writeAtCell($famPayX, $y, $famPayWid, gettext('Paid'));
+$pdf->writeAtCell($famOweX, $y, $famOweWid, gettext('Owe'));
 $y += $lineInc;
 
 // Loop through families
@@ -328,15 +330,15 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
                     $amountDue = 0;
                 }
 
-                $pdf->WriteAtCell($famNameX, $y, $famNameWid, $pdf->MakeSalutation($fam_ID));
-                $pdf->WriteAtCell($famPledgeX, $y, $famPledgeWid, $fundPledgeTotal[$fun_name]);
-                $pdf->WriteAtCell($famMethodX, $y, $famMethodWid, $fundPledgeMethod[$fun_name]);
-                $pdf->WriteAtCell($famFundX, $y, $famFundWid, $fun_name);
-                $pdf->WriteAtCell($famPayX, $y, $famPayWid, $fundPaymentTotal[$fun_name]);
-                $pdf->WriteAtCell($famOweX, $y, $famOweWid, $amountDue);
+                $pdf->writeAtCell($famNameX, $y, $famNameWid, $pdf->makeSalutation($fam_ID));
+                $pdf->writeAtCell($famPledgeX, $y, $famPledgeWid, $fundPledgeTotal[$fun_name]);
+                $pdf->writeAtCell($famMethodX, $y, $famMethodWid, $fundPledgeMethod[$fun_name]);
+                $pdf->writeAtCell($famFundX, $y, $famFundWid, $fun_name);
+                $pdf->writeAtCell($famPayX, $y, $famPayWid, $fundPaymentTotal[$fun_name]);
+                $pdf->writeAtCell($famOweX, $y, $famOweWid, $amountDue);
                 $y += $lineInc;
                 if ($y > 250) {
-                    $pdf->AddPage();
+                    $pdf->addPage();
                     $y = $pageTop;
                 }
             }

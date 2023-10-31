@@ -63,7 +63,7 @@ class TaskService
     {
         $tasks = [];
         foreach ($this->taskClasses as $taskClass) {
-            if ($taskClass->isActive() && (!$taskClass->isAdmin() || ($taskClass->isAdmin() && AuthenticationManager::GetCurrentUser()->isAdmin()))) {
+            if ($taskClass->isActive() && (!$taskClass->isAdmin() || ($taskClass->isAdmin() && AuthenticationManager::getCurrentUser()->isAdmin()))) {
                 array_push($tasks, ['title' => $taskClass->getTitle(),
                     'link' => $taskClass->getLink(),
                     'admin' => $taskClass->isAdmin(),

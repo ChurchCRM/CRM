@@ -26,7 +26,7 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Authentication\AuthenticationManager;
 
 //Get the GroupID out of the querystring
-$iGroupID = InputUtils::LegacyFilterInput($_GET['GroupID'], 'int');
+$iGroupID = InputUtils::legacyFilterInput($_GET['GroupID'], 'int');
 
 //Get the data on this group
 $thisGroup = ChurchCRM\GroupQuery::create()->findOneById($iGroupID);
@@ -72,7 +72,7 @@ require 'Include/Header.php';
   <div class="card-body">
 
     <?php
-    if (AuthenticationManager::GetCurrentUser()->isManageGroupsEnabled()) {
+    if (AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) {
         echo '<a class="btn btn-app" href="GroupEditor.php?GroupID=' . $thisGroup->getId() . '"><i class="fas fa-pen"></i>' . gettext('Edit this Group') . '</a>';
         echo '<button class="btn btn-app"  id="deleteGroupButton"><i class="fa fa-trash"></i>' . gettext('Delete this Group') . '</button>'; ?>
 
@@ -104,7 +104,7 @@ require 'Include/Header.php';
     $rsEmailList = RunQuery($sSQL);
     $sEmailLink = '';
     $roleEmails = [];
-    $sMailtoDelimiter = AuthenticationManager::GetCurrentUser()->getUserConfigString("sMailtoDelimiter");
+    $sMailtoDelimiter = AuthenticationManager::getCurrentUser()->getUserConfigString("sMailtoDelimiter");
     while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailList)) {
         $sEmail = SelectWhichInfo($per_Email, $fam_Email, false);
         if ($sEmail) {
@@ -124,7 +124,7 @@ require 'Include/Header.php';
         }
         $sEmailLink = urlencode($sEmailLink);  // Mailto should comply with RFC 2368
 
-        if (AuthenticationManager::GetCurrentUser()->isEmailEnabled()) { // Does user have permission to email groups
+        if (AuthenticationManager::getCurrentUser()->isEmailEnabled()) { // Does user have permission to email groups
         // Display link
             ?>
         <div class="btn-group">
@@ -180,7 +180,7 @@ require 'Include/Header.php';
         }
     }
     if ($sPhoneLink) {
-        if (AuthenticationManager::GetCurrentUser()->isEmailEnabled()) { // Does user have permission to email groups
+        if (AuthenticationManager::getCurrentUser()->isEmailEnabled()) { // Does user have permission to email groups
             // Display link
             echo '<a class="btn btn-app" href="javascript:void(0)" onclick="allPhonesCommaD()"><i class="fa fa-mobile-phone"></i>'.gettext('Text Group').'</a>';
             echo '<script nonce="'. SystemURLs::getCSPNonce() .'">function allPhonesCommaD() {prompt("'.gettext("Press CTRL + C to copy all group members\' phone numbers").'", "'.mb_substr($sPhoneLink, 0, -2).'")};</script>';
@@ -291,7 +291,7 @@ require 'Include/Header.php';
                   <td valign="top"><b><?= gettext('Name') ?></b>
                   <td valign="top"><b><?= gettext('Value') ?></td>
                   <?php
-                    if (AuthenticationManager::GetCurrentUser()->isManageGroupsEnabled()) {
+                    if (AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) {
                         echo '<td valign="top"><b>'.gettext('Edit Value').'</td>';
                         echo '<td valign="top"><b>'.gettext('Remove').'</td>';
                     }
@@ -327,13 +327,13 @@ require 'Include/Header.php';
                         echo '<td valign="top">'.$pro_Name.'&nbsp;</td>';
                         echo '<td valign="top">'.$r2p_Value.'&nbsp;</td>';
 
-                        if (strlen($pro_Prompt) > 0 && AuthenticationManager::GetCurrentUser()->isManageGroupsEnabled()) {
+                        if (strlen($pro_Prompt) > 0 && AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) {
                             echo '<td valign="top"><a href="PropertyAssign.php?GroupID='.$iGroupID.'&amp;PropertyID='.$pro_ID.'">'.gettext('Edit Value').'</a></td>';
                         } else {
                             echo '<td>&nbsp;</td>';
                         }
 
-                        if (AuthenticationManager::GetCurrentUser()->isManageGroupsEnabled()) {
+                        if (AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) {
                             echo '<td valign="top"><a href="PropertyUnassign.php?GroupID='.$iGroupID.'&amp;PropertyID='.$pro_ID.'">'.gettext('Remove').'</a>';
                         } else {
                             echo '<td>&nbsp;</td>';
@@ -350,7 +350,7 @@ require 'Include/Header.php';
                     echo '</table>';
             }
 
-            if (AuthenticationManager::GetCurrentUser()->isManageGroupsEnabled()) {
+            if (AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) {
                 echo '<form method="post" action="PropertyAssign.php?GroupID='.$iGroupID.'">';
                 echo '<p>';
                 echo '<span>'.gettext('Assign a New Property:').'</span>';

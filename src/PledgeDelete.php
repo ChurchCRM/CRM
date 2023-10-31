@@ -19,13 +19,13 @@ use ChurchCRM\Authentication\AuthenticationManager;
 //Set the page title
 $sPageTitle = gettext('Confirm Delete');
 
-$linkBack = InputUtils::LegacyFilterInput($_GET['linkBack']);
-$sGroupKey = InputUtils::LegacyFilterInput($_GET['GroupKey'], 'string');
+$linkBack = InputUtils::legacyFilterInput($_GET['linkBack']);
+$sGroupKey = InputUtils::legacyFilterInput($_GET['GroupKey'], 'string');
 
 // Security: User must have Add or Edit Records permission to use this form in those manners
 // Clean error handling: (such as somebody typing an incorrect URL ?PersonID= manually)
-if (!AuthenticationManager::GetCurrentUser()->isDeleteRecordsEnabled()) {
-    RedirectUtils::Redirect('Menu.php');
+if (!AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled()) {
+    RedirectUtils::redirect('Menu.php');
     exit;
 }
 
@@ -35,10 +35,10 @@ if (isset($_POST['Delete'])) {
     RunQuery($sSQL);
 
     if ($linkBack != '') {
-        RedirectUtils::Redirect($linkBack);
+        RedirectUtils::redirect($linkBack);
     }
 } elseif (isset($_POST['Cancel'])) {
-    RedirectUtils::Redirect($linkBack);
+    RedirectUtils::redirect($linkBack);
 }
 
 require 'Include/Header.php';

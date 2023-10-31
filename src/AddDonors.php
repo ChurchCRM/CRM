@@ -19,9 +19,9 @@ use ChurchCRM\Utils\RedirectUtils;
 
 $linkBack = '';
 if (array_key_exists('linkBack', $_GET)) {
-    InputUtils::LegacyFilterInput($_GET['linkBack']);
+    InputUtils::legacyFilterInput($_GET['linkBack']);
 }
-$iFundRaiserID = InputUtils::LegacyFilterInput($_GET['FundRaiserID']);
+$iFundRaiserID = InputUtils::legacyFilterInput($_GET['FundRaiserID']);
 
 if ($linkBack == '') {
     $linkBack = "PaddleNumList.php?FundRaiserID=$iFundRaiserID";
@@ -35,7 +35,7 @@ if ($iFundRaiserID > 0) {
     // Set current fundraiser
     $_SESSION['iCurrentFundraiser'] = $iFundRaiserID;
 } else {
-    RedirectUtils::Redirect($linkBack);
+    RedirectUtils::redirect($linkBack);
 }
 
 // Get all the people listed as donors for this fundraiser
@@ -67,4 +67,4 @@ while ($donorRow = mysqli_fetch_array($rsDonors)) {
         $extraPaddleNum = $extraPaddleNum + 1;
     }
 }
-RedirectUtils::Redirect($linkBack);
+RedirectUtils::redirect($linkBack);

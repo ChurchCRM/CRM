@@ -23,7 +23,7 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Authentication\AuthenticationManager;
 
-if (!AuthenticationManager::GetCurrentUser()->isAddEvent()) {
+if (!AuthenticationManager::getCurrentUser()->isAddEvent()) {
     header('Location: Menu.php');
 }
 
@@ -36,7 +36,7 @@ require 'Include/Header.php';
 //
 
 if (isset($_POST['Action'])) {
-    switch (InputUtils::LegacyFilterInput($_POST['Action'])) {
+    switch (InputUtils::legacyFilterInput($_POST['Action'])) {
         case 'CREATE':
         // Insert into the event_name table
             $eName = $_POST['newEvtName'];
@@ -55,26 +55,26 @@ if (isset($_POST['Action'])) {
           # See: https://dev.mysql.com/doc/refman/en/sql-mode.html#sql-mode-strict
           # Special thanks to @chiebert (GitHub) for the fix!
             $insert = "INSERT INTO event_types (type_name";
-            $values = " VALUES ('".InputUtils::LegacyFilterInput($eName)."'";
+            $values = " VALUES ('".InputUtils::legacyFilterInput($eName)."'";
             if (!empty($eTime)) {
                 $insert .= ", type_defstarttime";
-                $values .= ",'".InputUtils::LegacyFilterInput($eTime)."'";
+                $values .= ",'".InputUtils::legacyFilterInput($eTime)."'";
             }
             if (!empty($eRecur)) {
                 $insert .= ", type_defrecurtype";
-                $values .= ",'".InputUtils::LegacyFilterInput($eRecur)."'";
+                $values .= ",'".InputUtils::legacyFilterInput($eRecur)."'";
             }
             if (!empty($eDOW)) {
                 $insert .= ", type_defrecurDOW";
-                $values .= ",'".InputUtils::LegacyFilterInput($eDOW)."'";
+                $values .= ",'".InputUtils::legacyFilterInput($eDOW)."'";
             }
             if (!empty($eDOM)) {
                 $insert .= ", type_defrecurDOM";
-                $values .= ",'".InputUtils::LegacyFilterInput($eDOM)."'";
+                $values .= ",'".InputUtils::legacyFilterInput($eDOM)."'";
             }
             if (!empty($eDOY)) {
                 $insert .= ", type_defrecurDOY";
-                $values .= ",'".InputUtils::LegacyFilterInput($eDOY)."'";
+                $values .= ",'".InputUtils::legacyFilterInput($eDOY)."'";
             }
             $insert .= ")";
             $values .= ")";
@@ -85,17 +85,17 @@ if (isset($_POST['Action'])) {
 
             for ($j = 0; $j < $eCntNum; $j++) {
                 $cCnt = ltrim(rtrim($eCntArray[$j]));
-                $sSQL = "INSERT eventcountnames_evctnm (evctnm_eventtypeid, evctnm_countname) VALUES ('".InputUtils::LegacyFilterInput($theID)."','".InputUtils::LegacyFilterInput($cCnt)."') ON DUPLICATE KEY UPDATE evctnm_countname='$cCnt'";
+                $sSQL = "INSERT eventcountnames_evctnm (evctnm_eventtypeid, evctnm_countname) VALUES ('".InputUtils::legacyFilterInput($theID)."','".InputUtils::legacyFilterInput($cCnt)."') ON DUPLICATE KEY UPDATE evctnm_countname='$cCnt'";
                 RunQuery($sSQL);
             }
-            RedirectUtils::Redirect('EventNames.php'); // clear POST
+            RedirectUtils::redirect('EventNames.php'); // clear POST
             break;
 
         case 'DELETE':
             $theID = $_POST['theID'];
-            $sSQL = "DELETE FROM event_types WHERE type_id='".InputUtils::LegacyFilterInput($theID)."' LIMIT 1";
+            $sSQL = "DELETE FROM event_types WHERE type_id='".InputUtils::legacyFilterInput($theID)."' LIMIT 1";
             RunQuery($sSQL);
-            $sSQL = "DELETE FROM eventcountnames_evctnm WHERE evctnm_eventtypeid='".InputUtils::LegacyFilterInput($theID)."'";
+            $sSQL = "DELETE FROM eventcountnames_evctnm WHERE evctnm_eventtypeid='".InputUtils::legacyFilterInput($theID)."'";
             RunQuery($sSQL);
             $theID = '';
             $_POST['Action'] = '';
@@ -160,7 +160,7 @@ for ($row = 1; $row <= $numRows; $row++) {
     }
 }
 
-if (InputUtils::LegacyFilterInput($_POST['Action']) == 'NEW') {
+if (InputUtils::legacyFilterInput($_POST['Action']) == 'NEW') {
     ?>
   <div class='card card-primary'>
     <div class='box-body'>
@@ -340,7 +340,7 @@ if (InputUtils::LegacyFilterInput($_POST['Action']) == 'NEW') {
 </div>
 
 <?php
-if (InputUtils::LegacyFilterInput($_POST['Action']) != 'NEW') {
+if (InputUtils::legacyFilterInput($_POST['Action']) != 'NEW') {
     ?>
   <div class="text-center">
     <form name="AddEventNames" action="EventNames.php" method="POST">

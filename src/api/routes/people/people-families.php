@@ -83,7 +83,7 @@ $app->group('/families', function () use ($app) {
 
     $app->get('/pending-self-verify', function ($request, $response, $args) {
         $pendingTokens = TokenQuery::create()
-            ->filterByType(Token::typeFamilyVerify)
+            ->filterByType(Token::TYPE_FAMILY_VERIFY)
             ->filterByRemainingUses(['min' => 1])
             ->filterByValidUntilDate(['min' => new DateTime()])
             ->addJoin(TokenTableMap::COL_REFERENCE_ID, FamilyTableMap::COL_FAM_ID)
@@ -129,7 +129,7 @@ $app->group('/families', function () use ($app) {
                 $note->setText(gettext('Activated the Family'));
             }
             $note->setType('edit');
-            $note->setEntered(AuthenticationManager::GetCurrentUser()->getId());
+            $note->setEntered(AuthenticationManager::getCurrentUser()->getId());
             $note->save();
         }
         return $response->withJson(['success' => true]);

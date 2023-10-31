@@ -63,19 +63,19 @@ while ($aRow = mysqli_fetch_array($rsFunds)) {
 
 // Handle URL via _GET first
 if (array_key_exists('PledgeOrPayment', $_GET)) {
-    $PledgeOrPayment = InputUtils::LegacyFilterInput($_GET['PledgeOrPayment'], 'string');
+    $PledgeOrPayment = InputUtils::legacyFilterInput($_GET['PledgeOrPayment'], 'string');
 }
 $sGroupKey = '';
 if (array_key_exists('GroupKey', $_GET)) {
-    $sGroupKey = InputUtils::LegacyFilterInput($_GET['GroupKey'], 'string');
+    $sGroupKey = InputUtils::legacyFilterInput($_GET['GroupKey'], 'string');
 } // this will only be set if someone pressed the 'edit' button on the Pledge or Deposit line
 if (array_key_exists('CurrentDeposit', $_GET)) {
-    $iCurrentDeposit = InputUtils::LegacyFilterInput($_GET['CurrentDeposit'], 'integer');
+    $iCurrentDeposit = InputUtils::legacyFilterInput($_GET['CurrentDeposit'], 'integer');
 }
-$linkBack = InputUtils::LegacyFilterInput($_GET['linkBack'], 'string');
+$linkBack = InputUtils::legacyFilterInput($_GET['linkBack'], 'string');
 $iFamily = 0;
 if (array_key_exists('FamilyID', $_GET)) {
-    $iFamily = InputUtils::LegacyFilterInput($_GET['FamilyID'], 'int');
+    $iFamily = InputUtils::legacyFilterInput($_GET['FamilyID'], 'int');
 }
 
 $fund2PlgIds = []; // this will be the array cross-referencing funds to existing plg_plgid's
@@ -90,8 +90,8 @@ if ($sGroupKey) {
         $fund2PlgIds[$oneFundID] = $onePlgID;
 
         // Security: User must have Finance permission or be the one who entered this record originally
-        if (!(AuthenticationManager::GetCurrentUser()->isFinanceEnabled() || AuthenticationManager::GetCurrentUser()->getId() == $aRow['plg_EditedBy'])) {
-            RedirectUtils::Redirect('Menu.php');
+        if (!(AuthenticationManager::getCurrentUser()->isFinanceEnabled() || AuthenticationManager::getCurrentUser()->getId() == $aRow['plg_EditedBy'])) {
+            RedirectUtils::redirect('Menu.php');
             exit;
         }
     }
@@ -104,9 +104,9 @@ if (isset($_POST['PledgeSubmit']) or
     isset($_POST['MatchEnvelope']) or
     isset($_POST['SetDefaultCheck']) or
     isset($_POST['SetFundTypeSelection'])) {
-    $iFamily = InputUtils::LegacyFilterInput($_POST['FamilyID'], 'int');
+    $iFamily = InputUtils::legacyFilterInput($_POST['FamilyID'], 'int');
 
-    $dDate = InputUtils::LegacyFilterInput($_POST['Date']);
+    $dDate = InputUtils::legacyFilterInput($_POST['Date']);
     if (!$dDate) {
         if (array_key_exists('idefaultDate', $_SESSION)) {
             $dDate = $_SESSION['idefaultDate'];
@@ -117,7 +117,7 @@ if (isset($_POST['PledgeSubmit']) or
     $_SESSION['idefaultDate'] = $dDate;
 
     // set from drop-down if set, saved session default, or by calcuation
-    $iFYID = InputUtils::LegacyFilterInput($_POST['FYID'], 'int');
+    $iFYID = InputUtils::legacyFilterInput($_POST['FYID'], 'int');
     if (!$iFYID) {
         $iFYID = $_SESSION['idefaultFY'];
     }
@@ -127,19 +127,19 @@ if (isset($_POST['PledgeSubmit']) or
     $_SESSION['idefaultFY'] = $iFYID;
 
     if (array_key_exists('CheckNo', $_POST)) {
-        $iCheckNo = InputUtils::LegacyFilterInput($_POST['CheckNo'], 'int');
+        $iCheckNo = InputUtils::legacyFilterInput($_POST['CheckNo'], 'int');
     } else {
         $iCheckNo = 0;
     }
 
     if (array_key_exists('Schedule', $_POST)) {
-        $iSchedule = InputUtils::LegacyFilterInput($_POST['Schedule']);
+        $iSchedule = InputUtils::legacyFilterInput($_POST['Schedule']);
     } else {
         $iSchedule = 'Once';
     }
     $_SESSION['iDefaultSchedule'] = $iSchedule;
 
-    $iMethod = InputUtils::LegacyFilterInput($_POST['Method']);
+    $iMethod = InputUtils::legacyFilterInput($_POST['Method']);
     if (!$iMethod) {
         if ($sGroupKey) {
             $sSQL = "SELECT DISTINCT plg_method FROM pledge_plg WHERE plg_GroupKey='".$sGroupKey."'";
@@ -163,7 +163,7 @@ if (isset($_POST['PledgeSubmit']) or
 
     $iEnvelope = 0;
     if (array_key_exists('Envelope', $_POST)) {
-        $iEnvelope = InputUtils::LegacyFilterInput($_POST['Envelope'], 'int');
+        $iEnvelope = InputUtils::legacyFilterInput($_POST['Envelope'], 'int');
     }
 } else { // Form was not up previously, take data from existing records or make default values
     if ($sGroupKey) {
@@ -259,14 +259,14 @@ if (isset($_POST['PledgeSubmit']) || isset($_POST['PledgeSubmitAndAdd'])) {
     $nonZeroFundAmountEntered = 0;
     foreach ($fundId2Name as $fun_id => $fun_name) {
         //$fun_active = $fundActive[$fun_id];
-        $nAmount[$fun_id] = InputUtils::LegacyFilterInput($_POST[$fun_id.'_Amount']);
-        $sComment[$fun_id] = InputUtils::LegacyFilterInput($_POST[$fun_id.'_Comment']);
+        $nAmount[$fun_id] = InputUtils::legacyFilterInput($_POST[$fun_id.'_Amount']);
+        $sComment[$fun_id] = InputUtils::legacyFilterInput($_POST[$fun_id.'_Comment']);
         if ($nAmount[$fun_id] > 0) {
             ++$nonZeroFundAmountEntered;
         }
 
         if ($bEnableNonDeductible) {
-            $nNonDeductible[$fun_id] = InputUtils::LegacyFilterInput($_POST[$fun_id.'_NonDeductible']);
+            $nNonDeductible[$fun_id] = InputUtils::legacyFilterInput($_POST[$fun_id.'_NonDeductible']);
             //Validate the NonDeductible Amount
             if ($nNonDeductible[$fun_id] > $nAmount[$fun_id]) { //Validate the NonDeductible Amount
                 $sNonDeductibleError[$fun_id] = gettext("NonDeductible amount can't be greater than total amount.");
@@ -282,15 +282,15 @@ if (isset($_POST['PledgeSubmit']) || isset($_POST['PledgeSubmitAndAdd'])) {
 
 
     if (array_key_exists('ScanInput', $_POST)) {
-        $tScanString = InputUtils::LegacyFilterInput($_POST['ScanInput']);
+        $tScanString = InputUtils::legacyFilterInput($_POST['ScanInput']);
     } else {
         $tScanString = '';
     }
     $iAutID = 0;
     if (array_key_exists('AutoPay', $_POST)) {
-        $iAutID = InputUtils::LegacyFilterInput($_POST['AutoPay']);
+        $iAutID = InputUtils::legacyFilterInput($_POST['AutoPay']);
     }
-    //$iEnvelope = InputUtils::LegacyFilterInput($_POST["Envelope"], 'int');
+    //$iEnvelope = InputUtils::legacyFilterInput($_POST["Envelope"], 'int');
 
     if ($PledgeOrPayment == 'Payment' && !$iCheckNo && $iMethod == 'CHECK') {
         $sCheckNoError = '<span style="color: red; ">'.gettext('Must specify non-zero check number').'</span>';
@@ -333,7 +333,7 @@ if (isset($_POST['PledgeSubmit']) || isset($_POST['PledgeSubmitAndAdd'])) {
             if ($fund2PlgIds && array_key_exists($fun_id, $fund2PlgIds)) {
                 if ($nAmount[$fun_id] > 0) {
                     $sSQL = "UPDATE pledge_plg SET plg_famID = '".$iFamily."',plg_FYID = '".$iFYID."',plg_date = '".$dDate."', plg_amount = '".$nAmount[$fun_id]."', plg_schedule = '".$iSchedule."', plg_method = '".$iMethod."', plg_comment = '".$sComment[$fun_id]."'";
-                    $sSQL .= ", plg_DateLastEdited = '".date('YmdHis')."', plg_EditedBy = ".AuthenticationManager::GetCurrentUser()->getId().", plg_CheckNo = '".$iCheckNo."', plg_scanString = '".$tScanString."', plg_aut_ID='".$iAutID."', plg_NonDeductible='".$nNonDeductible[$fun_id]."' WHERE plg_plgID='".$fund2PlgIds[$fun_id]."'";
+                    $sSQL .= ", plg_DateLastEdited = '".date('YmdHis')."', plg_EditedBy = ".AuthenticationManager::getCurrentUser()->getId().", plg_CheckNo = '".$iCheckNo."', plg_scanString = '".$tScanString."', plg_aut_ID='".$iAutID."', plg_NonDeductible='".$nNonDeductible[$fun_id]."' WHERE plg_plgID='".$fund2PlgIds[$fun_id]."'";
                 } else { // delete that record
                     $sSQL = 'DELETE FROM pledge_plg WHERE plg_plgID ='.$fund2PlgIds[$fun_id];
                 }
@@ -360,7 +360,7 @@ if (isset($_POST['PledgeSubmit']) || isset($_POST['PledgeSubmitAndAdd'])) {
                 }
                 $sSQL = "INSERT INTO pledge_plg (plg_famID, plg_FYID, plg_date, plg_amount, plg_schedule, plg_method, plg_comment, plg_DateLastEdited, plg_EditedBy, plg_PledgeOrPayment, plg_fundID, plg_depID, plg_CheckNo, plg_scanString, plg_aut_ID, plg_NonDeductible, plg_GroupKey)
 			VALUES ('".$iFamily."','".$iFYID."','".$dDate."','".$nAmount[$fun_id]."','".$iSchedule."','".$iMethod."','".$sComment[$fun_id]."'";
-                $sSQL .= ",'".date('YmdHis')."',".AuthenticationManager::GetCurrentUser()->getId().",'".$PledgeOrPayment."',".$fun_id.','.$iCurrentDeposit.','.$iCheckNo.",'".$tScanString."','".$iAutID."','".$nNonDeductible[$fun_id]."','".$sGroupKey."')";
+                $sSQL .= ",'".date('YmdHis')."',".AuthenticationManager::getCurrentUser()->getId().",'".$PledgeOrPayment."',".$fun_id.','.$iCurrentDeposit.','.$iCheckNo.",'".$tScanString."','".$iAutID."','".$nNonDeductible[$fun_id]."','".$sGroupKey."')";
             }
             if (isset($sSQL)) {
                 RunQuery($sSQL);
@@ -370,23 +370,23 @@ if (isset($_POST['PledgeSubmit']) || isset($_POST['PledgeSubmitAndAdd'])) {
         if (isset($_POST['PledgeSubmit'])) {
             // Check for redirection to another page after saving information: (ie. PledgeEditor.php?previousPage=prev.php?a=1;b=2;c=3)
             if ($linkBack != '') {
-                RedirectUtils::Redirect($linkBack);
+                RedirectUtils::redirect($linkBack);
             } else {
                 //Send to the view of this pledge
-                RedirectUtils::Redirect('PledgeEditor.php?PledgeOrPayment='.$PledgeOrPayment.'&GroupKey='.$sGroupKey.'&linkBack=', $linkBack);
+                RedirectUtils::redirect('PledgeEditor.php?PledgeOrPayment='.$PledgeOrPayment.'&GroupKey='.$sGroupKey.'&linkBack=', $linkBack);
             }
         } elseif (isset($_POST['PledgeSubmitAndAdd'])) {
             //Reload to editor to add another record
-            RedirectUtils::Redirect("PledgeEditor.php?CurrentDeposit=$iCurrentDeposit&PledgeOrPayment=".$PledgeOrPayment.'&linkBack=', $linkBack);
+            RedirectUtils::redirect("PledgeEditor.php?CurrentDeposit=$iCurrentDeposit&PledgeOrPayment=".$PledgeOrPayment.'&linkBack=', $linkBack);
         }
     } // end if !$bErrorFlag
 } elseif (isset($_POST['MatchFamily']) || isset($_POST['MatchEnvelope']) || isset($_POST['SetDefaultCheck'])) {
     //$iCheckNo = 0;
     // Take care of match-family first- select the family based on the scanned check
     if (SystemConfig::getValue('bUseScannedChecks') && isset($_POST['MatchFamily'])) {
-        $tScanString = InputUtils::LegacyFilterInput($_POST['ScanInput']);
+        $tScanString = InputUtils::legacyFilterInput($_POST['ScanInput']);
 
-        $routeAndAccount = $micrObj->FindRouteAndAccount($tScanString); // use routing and account number for matching
+        $routeAndAccount = $micrObj->findRouteAndAccount($tScanString); // use routing and account number for matching
 
         if ($routeAndAccount) {
             $sSQL = 'SELECT fam_ID FROM family_fam WHERE fam_scanCheck="'.$routeAndAccount.'"';
@@ -394,15 +394,15 @@ if (isset($_POST['PledgeSubmit']) || isset($_POST['PledgeSubmitAndAdd'])) {
             extract(mysqli_fetch_array($rsFam));
             $iFamily = $fam_ID;
 
-            $iCheckNo = $micrObj->FindCheckNo($tScanString);
+            $iCheckNo = $micrObj->findCheckNo($tScanString);
         } else {
-            $iFamily = InputUtils::LegacyFilterInput($_POST['FamilyID'], 'int');
-            $iCheckNo = InputUtils::LegacyFilterInput($_POST['CheckNo'], 'int');
+            $iFamily = InputUtils::legacyFilterInput($_POST['FamilyID'], 'int');
+            $iCheckNo = InputUtils::legacyFilterInput($_POST['CheckNo'], 'int');
         }
     } elseif (isset($_POST['MatchEnvelope'])) {
         // Match envelope is similar to match check- use the envelope number to choose a family
 
-        $iEnvelope = InputUtils::LegacyFilterInput($_POST['Envelope'], 'int');
+        $iEnvelope = InputUtils::legacyFilterInput($_POST['Envelope'], 'int');
         if ($iEnvelope && strlen($iEnvelope) > 0) {
             $sSQL = 'SELECT fam_ID FROM family_fam WHERE fam_Envelope='.$iEnvelope;
             $rsFam = RunQuery($sSQL);
@@ -413,15 +413,15 @@ if (isset($_POST['PledgeSubmit']) || isset($_POST['PledgeSubmitAndAdd'])) {
             }
         }
     } else {
-        $iFamily = InputUtils::LegacyFilterInput($_POST['FamilyID']);
-        $iCheckNo = InputUtils::LegacyFilterInput($_POST['CheckNo'], 'int');
+        $iFamily = InputUtils::legacyFilterInput($_POST['FamilyID']);
+        $iCheckNo = InputUtils::legacyFilterInput($_POST['CheckNo'], 'int');
     }
 
     // Handle special buttons at the bottom of the form.
     if (isset($_POST['SetDefaultCheck'])) {
-        $tScanString = InputUtils::LegacyFilterInput($_POST['ScanInput']);
-        $routeAndAccount = $micrObj->FindRouteAndAccount($tScanString); // use routing and account number for matching
-        $iFamily = InputUtils::LegacyFilterInput($_POST['FamilyID'], 'int');
+        $tScanString = InputUtils::legacyFilterInput($_POST['ScanInput']);
+        $routeAndAccount = $micrObj->findRouteAndAccount($tScanString); // use routing and account number for matching
+        $iFamily = InputUtils::legacyFilterInput($_POST['FamilyID'], 'int');
         $sSQL = 'UPDATE family_fam SET fam_scanCheck="'.$routeAndAccount.'" WHERE fam_ID = '.$iFamily;
         RunQuery($sSQL);
     }
@@ -430,7 +430,7 @@ if (isset($_POST['PledgeSubmit']) || isset($_POST['PledgeSubmitAndAdd'])) {
 // Set Current Deposit setting for user
 if ($iCurrentDeposit) {
     /* @var $currentUser \ChurchCRM\User */
-    $currentUser = AuthenticationManager::GetCurrentUser();
+    $currentUser = AuthenticationManager::getCurrentUser();
     $currentUser->setCurrentDeposit($iCurrentDeposit);
     $currentUser->save();
 }
@@ -646,7 +646,7 @@ require 'Include/Header.php';
     <?php if (!$dep_Closed) {
         ?>
         <input type="submit" class="btn " value="<?= gettext('Save') ?>" name="PledgeSubmit">
-        <?php if (AuthenticationManager::GetCurrentUser()->isAddRecordsEnabled()) {
+        <?php if (AuthenticationManager::getCurrentUser()->isAddRecordsEnabled()) {
             echo '<input type="submit" class="btn btn-primary" value="'.gettext('Save and Add').'" name="PledgeSubmitAndAdd">';
         } ?>
           <?php

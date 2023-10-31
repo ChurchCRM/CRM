@@ -20,28 +20,28 @@ use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Authentication\AuthenticationManager;
 
 // Security: User must have add records permission
-if (!AuthenticationManager::GetCurrentUser()->isAddRecordsEnabled()) {
-    RedirectUtils::Redirect('Menu.php');
+if (!AuthenticationManager::getCurrentUser()->isAddRecordsEnabled()) {
+    RedirectUtils::redirect('Menu.php');
     exit;
 }
 
 // Was the form submitted?
 if (isset($_POST['Submit']) && count($_SESSION['aPeopleCart']) > 0) {
     // Get the FamilyID
-    $iFamilyID = InputUtils::LegacyFilterInput($_POST['FamilyID'], 'int');
+    $iFamilyID = InputUtils::legacyFilterInput($_POST['FamilyID'], 'int');
 
     // Are we creating a new family
     if ($iFamilyID == 0) {
-        $sFamilyName = InputUtils::LegacyFilterInput($_POST['FamilyName']);
+        $sFamilyName = InputUtils::legacyFilterInput($_POST['FamilyName']);
 
-        $dWeddingDate = InputUtils::LegacyFilterInput($_POST['WeddingDate']);
+        $dWeddingDate = InputUtils::legacyFilterInput($_POST['WeddingDate']);
         if (strlen($dWeddingDate) > 0) {
             $dWeddingDate = '"'.$dWeddingDate.'"';
         } else {
             $dWeddingDate = 'NULL';
         }
 
-        $iPersonAddress = InputUtils::LegacyFilterInput($_POST['PersonAddress']);
+        $iPersonAddress = InputUtils::legacyFilterInput($_POST['PersonAddress']);
 
         if ($iPersonAddress != 0) {
             $sSQL = 'SELECT * FROM person_per WHERE per_ID = '.$iPersonAddress;
@@ -49,22 +49,22 @@ if (isset($_POST['Submit']) && count($_SESSION['aPeopleCart']) > 0) {
             extract(mysqli_fetch_array($rsPerson));
         }
 
-        SelectWhichAddress($sAddress1, $sAddress2, InputUtils::LegacyFilterInput($_POST['Address1']), InputUtils::LegacyFilterInput($_POST['Address2']), $per_Address1, $per_Address2, false);
-        $sCity = SelectWhichInfo(InputUtils::LegacyFilterInput($_POST['City']), $per_City);
-        $sZip = SelectWhichInfo(InputUtils::LegacyFilterInput($_POST['Zip']), $per_Zip);
-        $sCountry = SelectWhichInfo(InputUtils::LegacyFilterInput($_POST['Country']), $per_Country);
+        SelectWhichAddress($sAddress1, $sAddress2, InputUtils::legacyFilterInput($_POST['Address1']), InputUtils::legacyFilterInput($_POST['Address2']), $per_Address1, $per_Address2, false);
+        $sCity = SelectWhichInfo(InputUtils::legacyFilterInput($_POST['City']), $per_City);
+        $sZip = SelectWhichInfo(InputUtils::legacyFilterInput($_POST['Zip']), $per_Zip);
+        $sCountry = SelectWhichInfo(InputUtils::legacyFilterInput($_POST['Country']), $per_Country);
 
         if ($sCountry == 'United States' || $sCountry == 'Canada') {
-            $sState = InputUtils::LegacyFilterInput($_POST['State']);
+            $sState = InputUtils::legacyFilterInput($_POST['State']);
         } else {
-            $sState = InputUtils::LegacyFilterInput($_POST['StateTextbox']);
+            $sState = InputUtils::legacyFilterInput($_POST['StateTextbox']);
         }
         $sState = SelectWhichInfo($sState, $per_State);
 
         // Get and format any phone data from the form.
-        $sHomePhone = InputUtils::LegacyFilterInput($_POST['HomePhone']);
-        $sWorkPhone = InputUtils::LegacyFilterInput($_POST['WorkPhone']);
-        $sCellPhone = InputUtils::LegacyFilterInput($_POST['CellPhone']);
+        $sHomePhone = InputUtils::legacyFilterInput($_POST['HomePhone']);
+        $sWorkPhone = InputUtils::legacyFilterInput($_POST['WorkPhone']);
+        $sCellPhone = InputUtils::legacyFilterInput($_POST['CellPhone']);
         if (!isset($_POST['NoFormat_HomePhone'])) {
             $sHomePhone = CollapsePhoneNumber($sHomePhone, $sCountry);
         }
@@ -78,13 +78,13 @@ if (isset($_POST['Submit']) && count($_SESSION['aPeopleCart']) > 0) {
         $sHomePhone = SelectWhichInfo($sHomePhone, $per_HomePhone);
         $sWorkPhone = SelectWhichInfo($sWorkPhone, $per_WorkPhone);
         $sCellPhone = SelectWhichInfo($sCellPhone, $per_CellPhone);
-        $sEmail = SelectWhichInfo(InputUtils::LegacyFilterInput($_POST['Email']), $per_Email);
+        $sEmail = SelectWhichInfo(InputUtils::legacyFilterInput($_POST['Email']), $per_Email);
 
         if (strlen($sFamilyName) == 0) {
             $sError = '<p class="callout callout-warning" align="center" style="color:red;">'.gettext('No family name entered!').'</p>';
             $bError = true;
         } else {
-            $sSQL = "INSERT INTO family_fam (fam_Name, fam_Address1, fam_Address2, fam_City, fam_State, fam_Zip, fam_Country, fam_HomePhone, fam_WorkPhone, fam_CellPhone, fam_Email, fam_WeddingDate, fam_DateEntered, fam_EnteredBy) VALUES ('".$sFamilyName."','".$sAddress1."','".$sAddress2."','".$sCity."','".$sState."','".$sZip."','".$sCountry."','".$sHomePhone."','".$sWorkPhone."','".$sCellPhone."','".$sEmail."',".$dWeddingDate.",'".date('YmdHis')."',".AuthenticationManager::GetCurrentUser()->getId().')';
+            $sSQL = "INSERT INTO family_fam (fam_Name, fam_Address1, fam_Address2, fam_City, fam_State, fam_Zip, fam_Country, fam_HomePhone, fam_WorkPhone, fam_CellPhone, fam_Email, fam_WeddingDate, fam_DateEntered, fam_EnteredBy) VALUES ('".$sFamilyName."','".$sAddress1."','".$sAddress2."','".$sCity."','".$sState."','".$sZip."','".$sCountry."','".$sHomePhone."','".$sWorkPhone."','".$sCellPhone."','".$sEmail."',".$dWeddingDate.",'".date('YmdHis')."',".AuthenticationManager::getCurrentUser()->getId().')';
             RunQuery($sSQL);
 
             //Get the key back
@@ -105,7 +105,7 @@ if (isset($_POST['Submit']) && count($_SESSION['aPeopleCart']) > 0) {
 
             // Make sure they are not already in a family
             if ($per_fam_ID == 0) {
-                $iFamilyRoleID = InputUtils::LegacyFilterInput($_POST['role'.$iPersonID], 'int');
+                $iFamilyRoleID = InputUtils::legacyFilterInput($_POST['role'.$iPersonID], 'int');
 
                 $sSQL = 'UPDATE person_per SET per_fam_ID = '.$iFamilyID.', per_fmr_ID = '.$iFamilyRoleID.' WHERE per_ID = '.$iPersonID;
                 RunQuery($sSQL);
@@ -115,7 +115,7 @@ if (isset($_POST['Submit']) && count($_SESSION['aPeopleCart']) > 0) {
 
         $sGlobalMessage = $iCount.' records(s) successfully added to selected Family.';
 
-        RedirectUtils::Redirect('v2/family/'.$iFamilyID.'&Action=EmptyCart');
+        RedirectUtils::redirect('v2/family/'.$iFamilyID.'&Action=EmptyCart');
     }
 }
 
@@ -144,7 +144,7 @@ if (count($_SESSION['aPeopleCart']) > 0) {
     }
 
     $sSQL = 'SELECT per_Title, per_FirstName, per_MiddleName, per_LastName, per_Suffix, per_fam_ID, per_ID
-			FROM person_per WHERE per_ID IN ('.ConvertCartToString($_SESSION['aPeopleCart']).')
+			FROM person_per WHERE per_ID IN ('.convertCartToString($_SESSION['aPeopleCart']).')
 			ORDER BY per_LastName';
     $rsCartItems = RunQuery($sSQL);
 

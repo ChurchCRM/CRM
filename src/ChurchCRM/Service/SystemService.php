@@ -68,7 +68,7 @@ class SystemService
         } else {
             $unmet = AppIntegrityService::getUnmetPrerequisites();
 
-            $unmetNames = array_map(fn($o) => (string)($o->GetName()), $unmet);
+            $unmetNames = array_map(fn($o) => (string)($o->getName()), $unmet);
             return "Missing Prerequisites: ".json_encode(array_values($unmetNames), JSON_THROW_ON_ERROR);
         }
     }
@@ -99,7 +99,7 @@ class SystemService
         }
 
         $postdata = new \stdClass();
-        $postdata->issueTitle = InputUtils::LegacyFilterInput($data->issueTitle);
+        $postdata->issueTitle = InputUtils::legacyFilterInput($data->issueTitle);
         $postdata->issueDescription = $issueDescription;
 
         $curlService = curl_init($serviceURL);
@@ -118,7 +118,7 @@ class SystemService
         return $result;
     }
 
-    private static function IsTimerThresholdExceeded(string $LastTime, int $ThresholdHours)
+    private static function isTimerThresholdExceeded(string $LastTime, int $ThresholdHours)
     {
         if (empty($LastTime)) {
             return true;
@@ -139,13 +139,13 @@ class SystemService
         //start the external backup timer job
         if (SystemConfig::getBooleanValue('bEnableExternalBackupTarget') && SystemConfig::getValue('sExternalBackupAutoInterval') > 0) {  //if remote backups are enabled, and the interval is greater than zero
             try {
-                if (self::IsTimerThresholdExceeded(SystemConfig::getValue('sLastBackupTimeStamp'), SystemConfig::getValue('sExternalBackupAutoInterval'))) {
+                if (self::isTimerThresholdExceeded(SystemConfig::getValue('sLastBackupTimeStamp'), SystemConfig::getValue('sExternalBackupAutoInterval'))) {
                   // if there was no previous backup, or if the interval suggests we do a backup now.
                     LoggerUtils::getAppLogger()->info("Starting a backup job.  Last backup run: ".SystemConfig::getValue('sLastBackupTimeStamp'));
                     $BaseName = preg_replace('/[^a-zA-Z0-9\-_]/', '', SystemConfig::getValue('sChurchName')). "-" . date(SystemConfig::getValue("sDateFilenameFormat"));
-                    $Backup = new BackupJob($BaseName, BackupType::FullBackup, SystemConfig::getValue('bBackupExtraneousImages'), false, '');
-                    $Backup->Execute();
-                    $Backup->CopyToWebDAV(SystemConfig::getValue('sExternalBackupEndpoint'), SystemConfig::getValue('sExternalBackupUsername'), SystemConfig::getValue('sExternalBackupPassword'));
+                    $Backup = new BackupJob($BaseName, BackupType::FULL_BACKUP, SystemConfig::getValue('bBackupExtraneousImages'), false, '');
+                    $Backup->execute();
+                    $Backup->copyToWebDAV(SystemConfig::getValue('sExternalBackupEndpoint'), SystemConfig::getValue('sExternalBackupUsername'), SystemConfig::getValue('sExternalBackupPassword'));
                     $now = new \DateTime();  // update the LastBackupTimeStamp.
                     SystemConfig::setValue('sLastBackupTimeStamp', $now->format(SystemConfig::getValue('sDateFilenameFormat')));
                     LoggerUtils::getAppLogger()->info("Backup job successful");
@@ -158,7 +158,7 @@ class SystemService
             }
         }
         if (SystemConfig::getBooleanValue('bEnableIntegrityCheck') && SystemConfig::getValue('iIntegrityCheckInterval') > 0) {
-            if (self::IsTimerThresholdExceeded(SystemConfig::getValue('sLastIntegrityCheckTimeStamp'), SystemConfig::getValue('iIntegrityCheckInterval'))) {
+            if (self::isTimerThresholdExceeded(SystemConfig::getValue('sLastIntegrityCheckTimeStamp'), SystemConfig::getValue('iIntegrityCheckInterval'))) {
                 // if there was no integrity check, or if the interval suggests we do one now.
                 LoggerUtils::getAppLogger()->info("Starting application integrity check");
                 $integrityCheckFile = SystemURLs::getDocumentRoot() . '/integrityCheck.json';
@@ -175,7 +175,7 @@ class SystemService
                  LoggerUtils::getAppLogger()->debug("Not starting application integrity check.  Last application integrity check run: ".SystemConfig::getValue('sLastIntegrityCheckTimeStamp'));
             }
         }
-        if (self::IsTimerThresholdExceeded(SystemConfig::getValue('sLastSoftwareUpdateCheckTimeStamp'), SystemConfig::getValue('iSoftwareUpdateCheckInterval'))) {
+        if (self::isTimerThresholdExceeded(SystemConfig::getValue('sLastSoftwareUpdateCheckTimeStamp'), SystemConfig::getValue('iSoftwareUpdateCheckInterval'))) {
           // Since checking for updates from GitHub is a potentially expensive operation,
           // Run this task as part of the "background jobs" API call
           // Inside ChurchCRMReleaseManager, the restults are stored to the $_SESSION
@@ -195,20 +195,20 @@ class SystemService
     public static function getMaxUploadFileSize($humanFormat = true)
     {
       //select maximum upload size
-        $max_upload = SystemService::parse_size(ini_get('upload_max_filesize'));
+        $max_upload = SystemService::parseSize(ini_get('upload_max_filesize'));
       //select post limit
-        $max_post = SystemService::parse_size(ini_get('post_max_size'));
+        $max_post = SystemService::parseSize(ini_get('post_max_size'));
       //select memory limit
-        $memory_limit = SystemService::parse_size(ini_get('memory_limit'));
+        $memory_limit = SystemService::parseSize(ini_get('memory_limit'));
       // return the smallest of them, this defines the real limit
         if ($humanFormat) {
-            return SystemService::human_filesize(min($max_upload, $max_post, $memory_limit));
+            return SystemService::humanFilesize(min($max_upload, $max_post, $memory_limit));
         } else {
             return min($max_upload, $max_post, $memory_limit);
         }
     }
 
-    public static function parse_size($size)
+    private static function parseSize(string $size)
     {
         $unit = preg_replace('/[^bkmgtpezy]/i', '', $size); // Remove the non-unit characters from the size.
         $size = preg_replace('/[^0-9\.]/', '', $size); // Remove the non-numeric characters from the size.
@@ -220,7 +220,7 @@ class SystemService
         }
     }
 
-    static function human_filesize($bytes, $decimals = 2)
+    private static function humanFilesize($bytes, $decimals = 2)
     {
         $size = ['B', 'kB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
         $factor = floor((strlen($bytes) - 1) / 3);

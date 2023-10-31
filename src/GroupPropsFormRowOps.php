@@ -17,15 +17,15 @@ use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Authentication\AuthenticationManager;
 
 // Security: user must be allowed to edit records to use this page.
-if (!AuthenticationManager::GetCurrentUser()->isManageGroupsEnabled()) {
-    RedirectUtils::Redirect('Menu.php');
+if (!AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) {
+    RedirectUtils::redirect('Menu.php');
     exit;
 }
 
 // Get the Group, Property, and Action from the querystring
-$iGroupID = InputUtils::LegacyFilterInput($_GET['GroupID'], 'int');
-$iPropID = InputUtils::LegacyFilterInput($_GET['PropID'], 'int');
-$sField = InputUtils::LegacyFilterInput($_GET['Field']);
+$iGroupID = InputUtils::legacyFilterInput($_GET['GroupID'], 'int');
+$iPropID = InputUtils::legacyFilterInput($_GET['PropID'], 'int');
+$sField = InputUtils::legacyFilterInput($_GET['Field']);
 $sAction = $_GET['Action'];
 
 // Get the group information
@@ -35,7 +35,7 @@ extract(mysqli_fetch_array($rsGroupInfo));
 
 // Abort if user tries to load with group having no special properties.
 if ($grp_hasSpecialProps == false) {
-    RedirectUtils::Redirect('GroupView.php?GroupID='.$iGroupID);
+    RedirectUtils::redirect('GroupView.php?GroupID='.$iGroupID);
 }
 
 switch ($sAction) {
@@ -87,10 +87,10 @@ switch ($sAction) {
 
         // If no valid action was specified, abort and return to the GroupView
     default:
-        RedirectUtils::Redirect('GroupView.php?GroupID='.$iGroupID);
+        RedirectUtils::redirect('GroupView.php?GroupID='.$iGroupID);
         break;
 }
 
 // Reload the Form Editor page
-RedirectUtils::Redirect('GroupPropsFormEditor.php?GroupID='.$iGroupID);
+RedirectUtils::redirect('GroupPropsFormEditor.php?GroupID='.$iGroupID);
 exit;

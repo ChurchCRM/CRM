@@ -65,8 +65,8 @@ function FamilyInfoByDistance($iFamily)
     foreach ($families as $family) {
         $familyID = $family->getId();
         if ($iFamily) {
-            $results[$familyID]['Distance'] = floatval(GeoUtils::LatLonDistance($selectedFamily->getLatitude(), $selectedFamily->getLongitude(), $family->getLatitude(), $family->getLongitude()));
-            $results[$familyID]['Bearing'] = GeoUtils::LatLonBearing($selectedFamily->getLatitude(), $selectedFamily->getLongitude(), $family->getLatitude(), $family->getLongitude());
+            $results[$familyID]['Distance'] = floatval(GeoUtils::latLonDistance($selectedFamily->getLatitude(), $selectedFamily->getLongitude(), $family->getLatitude(), $family->getLongitude()));
+            $results[$familyID]['Bearing'] = GeoUtils::latLonBearing($selectedFamily->getLatitude(), $selectedFamily->getLongitude(), $family->getLatitude(), $family->getLongitude());
         }
         $results[$familyID]['fam_Name'] = $family->getName();
         $results[$familyID]['fam_Address'] = $family->getAddress();
@@ -114,10 +114,10 @@ $iFamily = -1;
 $iNumNeighbors = 15;
 $nMaxDistance = 10;
 if (array_key_exists('Family', $_GET)) {
-    $iFamily = InputUtils::LegacyFilterInput($_GET['Family'], 'int');
+    $iFamily = InputUtils::legacyFilterInput($_GET['Family'], 'int');
 }
 if (array_key_exists('NumNeighbors', $_GET)) {
-    $iNumNeighbors = InputUtils::LegacyFilterInput($_GET['NumNeighbors'], 'int');
+    $iNumNeighbors = InputUtils::legacyFilterInput($_GET['NumNeighbors'], 'int');
 }
 
 $bClassificationPost = false;
@@ -129,15 +129,15 @@ $sCoordFileName = '';
 //Is this the second pass?
 if (isset($_POST['FindNeighbors']) || isset($_POST['DataFile']) || isset($_POST['PersonIDList'])) {
     //Get all the variables from the request object and assign them locally
-    $iFamily = InputUtils::LegacyFilterInput($_POST['Family']);
-    $iNumNeighbors = InputUtils::LegacyFilterInput($_POST['NumNeighbors']);
-    $nMaxDistance = InputUtils::LegacyFilterInput($_POST['MaxDistance']);
-    $sCoordFileName = InputUtils::LegacyFilterInput($_POST['CoordFileName']);
+    $iFamily = InputUtils::legacyFilterInput($_POST['Family']);
+    $iNumNeighbors = InputUtils::legacyFilterInput($_POST['NumNeighbors']);
+    $nMaxDistance = InputUtils::legacyFilterInput($_POST['MaxDistance']);
+    $sCoordFileName = InputUtils::legacyFilterInput($_POST['CoordFileName']);
     if (array_key_exists('CoordFileFormat', $_POST)) {
-        $sCoordFileFormat = InputUtils::LegacyFilterInput($_POST['CoordFileFormat']);
+        $sCoordFileFormat = InputUtils::legacyFilterInput($_POST['CoordFileFormat']);
     }
     if (array_key_exists('CoordFileFamilies', $_POST)) {
-        $sCoordFileFamilies = InputUtils::LegacyFilterInput($_POST['CoordFileFamilies']);
+        $sCoordFileFamilies = InputUtils::legacyFilterInput($_POST['CoordFileFamilies']);
     }
 
     foreach ($aClassificationName as $key => $value) {

@@ -15,7 +15,7 @@ use ChurchCRM\Bootstrapper;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\SystemService;
 
-$isAdmin = AuthenticationManager::GetCurrentUser()->isAdmin();
+$isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
 ?>
 </div>
 </section><!-- /.content -->
@@ -79,7 +79,7 @@ $isAdmin = AuthenticationManager::GetCurrentUser()->isAdmin();
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/fastclick/fastclick.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/bootstrap-toggle/bootstrap-toggle.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/i18next/i18next.min.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/locale/js/<?= Bootstrapper::GetCurrentLocale()->getLocale() ?>.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/locale/js/<?= Bootstrapper::getCurrentLocale()->getLocale() ?>.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/bootstrap-validator/validator.min.js"></script>
 
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/IssueReporter.js"></script>

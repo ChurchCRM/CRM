@@ -17,8 +17,8 @@ use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Authentication\AuthenticationManager;
 
 // If user does not have CSV Export permission, redirect to the menu.
-if (!AuthenticationManager::GetCurrentUser()->isCSVExport()) {
-    RedirectUtils::SecurityRedirect("CSVExport");
+if (!AuthenticationManager::getCurrentUser()->isCSVExport()) {
+    RedirectUtils::securityRedirect("CSVExport");
 }
 
 //Get Classifications for the drop-down

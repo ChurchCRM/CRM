@@ -81,7 +81,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     </tr>
                     <tr>
                         <td>DSN</td>
-                        <td><?= Bootstrapper::GetDSN() ?></td>
+                        <td><?= Bootstrapper::getDSN() ?></td>
                     </tr>
                 </table>
             </div>
@@ -173,8 +173,8 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <table class="table table-striped">
                     <?php foreach (AppIntegrityService::getApplicationPrerequisites() as $prerequisite) { ?>
                         <tr>
-                          <td><a href='<?=$prerequisite->GetWikiLink()?>'><?= $prerequisite->getName()?></a></td>
-                          <td><?= $prerequisite->GetStatusText()?></td>
+                          <td><a href='<?=$prerequisite->getWikiLink()?>'><?= $prerequisite->getName()?></a></td>
+                          <td><?= $prerequisite->getStatusText()?></td>
                         </tr>
                     <?php } ?>
                 </table>

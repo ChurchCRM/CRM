@@ -16,7 +16,7 @@ class TimelineService
 
     public function __construct()
     {
-        $this->currentUser = AuthenticationManager::GetCurrentUser();
+        $this->currentUser = AuthenticationManager::getCurrentUser();
     }
 
     public function getForFamily($familyID)
@@ -159,6 +159,7 @@ class TimelineService
                 break;
             case 'photo':
                 $item['style'] = 'fa-camera bg-green';
+                break;
             case 'group':
                 $item['style'] = 'fa-users bg-gray';
                 break;
@@ -167,8 +168,10 @@ class TimelineService
                 break;
             case 'verify':
                 $item['style'] = 'fa-circle-check bg-teal';
+                break;
             case 'verify-link':
                 $item['style'] = 'fa-circle-check bg-teal';
+                break;
             case 'verify-URL':
                 $item['style'] = 'fa-circle-check bg-teal';
                 break;

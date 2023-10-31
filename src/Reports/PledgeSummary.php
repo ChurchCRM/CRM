@@ -7,6 +7,8 @@
 
 ******************************************************************************/
 
+namespace ChurchCRM\Reports;
+
 require '../Include/Config.php';
 require '../Include/Functions.php';
 
@@ -17,19 +19,19 @@ use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Authentication\AuthenticationManager;
 
 // Security
-if (!AuthenticationManager::GetCurrentUser()->isFinanceEnabled()) {
-    RedirectUtils::Redirect('Menu.php');
+if (!AuthenticationManager::getCurrentUser()->isFinanceEnabled()) {
+    RedirectUtils::redirect('Menu.php');
     exit;
 }
 
 // Filter Values
-$output = InputUtils::LegacyFilterInput($_POST['output']);
-$iFYID = InputUtils::LegacyFilterInput($_POST['FYID'], 'int');
+$output = InputUtils::legacyFilterInput($_POST['output']);
+$iFYID = InputUtils::legacyFilterInput($_POST['FYID'], 'int');
 $_SESSION['idefaultFY'] = $iFYID; // Remember the chosen FYID
 
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
-if (!AuthenticationManager::GetCurrentUser()->isAdmin() && SystemConfig::getValue('bCSVAdminOnly') && $output != 'pdf') {
-    RedirectUtils::Redirect('Menu.php');
+if (!AuthenticationManager::getCurrentUser()->isAdmin() && SystemConfig::getValue('bCSVAdminOnly') && $output != 'pdf') {
+    RedirectUtils::redirect('Menu.php');
     exit;
 }
 
@@ -65,7 +67,7 @@ $sSQL = 'SELECT plg_plgID, plg_FYID, plg_amount, plg_PledgeOrPayment, plg_fundID
 if (!empty($_POST['funds'])) {
     $count = 0;
     foreach ($_POST['funds'] as $fundID) {
-        $fund[$count++] = InputUtils::LegacyFilterInput($fundID, 'int');
+        $fund[$count++] = InputUtils::legacyFilterInput($fundID, 'int');
     }
     if ($count == 1) {
         if ($fund[0]) {
@@ -90,7 +92,7 @@ $rsPledges = RunQuery($sSQL);
 // Create PDF Report
 // *****************
 if ($output == 'pdf') {
-    class PDF_PledgeSummaryReport extends ChurchInfoReport
+    class PdfPledgeSummaryReport extends ChurchInfoReport
     {
         // Constructor
         public function __construct()
@@ -101,12 +103,12 @@ if ($output == 'pdf') {
             $this->SetMargins(0, 0);
 
             $this->SetAutoPageBreak(false);
-            $this->AddPage();
+            $this->addPage();
         }
     }
 
     // Instantiate the directory class and build the report.
-    $pdf = new PDF_PledgeSummaryReport();
+    $pdf = new PdfPledgeSummaryReport();
 
     // Total all the pledges and payments by fund.  Compute overpaid and underpaid for each family as
     // we go through them.
@@ -201,30 +203,30 @@ if ($output == 'pdf') {
     $overpaidX = 170;
     $curY = 20;
 
-    $pdf->WriteAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sChurchName'));
+    $pdf->writeAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sChurchName'));
     $curY += SystemConfig::getValue('incrementY');
-    $pdf->WriteAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sChurchAddress'));
+    $pdf->writeAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sChurchAddress'));
     $curY += SystemConfig::getValue('incrementY');
-    $pdf->WriteAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sChurchCity').', '.SystemConfig::getValue('sChurchState').'  '.SystemConfig::getValue('sChurchZip'));
+    $pdf->writeAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sChurchCity').', '.SystemConfig::getValue('sChurchState').'  '.SystemConfig::getValue('sChurchZip'));
     $curY += SystemConfig::getValue('incrementY');
-    $pdf->WriteAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sChurchPhone').'  '.SystemConfig::getValue('sChurchEmail'));
+    $pdf->writeAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sChurchPhone').'  '.SystemConfig::getValue('sChurchEmail'));
     $curY += 2 * SystemConfig::getValue('incrementY');
 
     $blurb = SystemConfig::getValue('sPledgeSummary1').' ';
     $blurb .= MakeFYString($iFYID);
     $blurb .= SystemConfig::getValue('sPledgeSummary2').' '.date('Y-m-d').'.';
-    $pdf->WriteAt($nameX, $curY, $blurb);
+    $pdf->writeAt($nameX, $curY, $blurb);
 
     $curY += 3 * SystemConfig::getValue('incrementY');
 
     $pdf->SetFont('Times', 'B', 10);
-    $pdf->WriteAt($nameX, $curY, 'Fund');
-    $pdf->PrintRightJustified($pledgeX, $curY, 'Pledges');
-    $pdf->PrintRightJustified($paymentX, $curY, 'Payments');
-    $pdf->PrintRightJustified($pledgeCountX, $curY, '# Pledges');
-    $pdf->PrintRightJustified($paymentCountX, $curY, '# Payments');
-    $pdf->PrintRightJustified($underpaidX, $curY, 'Overpaid');
-    $pdf->PrintRightJustified($overpaidX, $curY, 'Underpaid');
+    $pdf->writeAt($nameX, $curY, 'Fund');
+    $pdf->printRightJustified($pledgeX, $curY, 'Pledges');
+    $pdf->printRightJustified($paymentX, $curY, 'Payments');
+    $pdf->printRightJustified($pledgeCountX, $curY, '# Pledges');
+    $pdf->printRightJustified($paymentCountX, $curY, '# Payments');
+    $pdf->printRightJustified($underpaidX, $curY, 'Overpaid');
+    $pdf->printRightJustified($overpaidX, $curY, 'Underpaid');
     $pdf->SetFont('Times', '', 10);
     $curY += SystemConfig::getValue('incrementY');
 
@@ -237,30 +239,30 @@ if ($output == 'pdf') {
             } else {
                 $short_fun_name = $fun_name;
             }
-            $pdf->WriteAt($nameX, $curY, $short_fun_name);
+            $pdf->writeAt($nameX, $curY, $short_fun_name);
             $amountStr = sprintf('%.2f', $pledgeFundTotal[$fun_name]);
-            $pdf->PrintRightJustified($pledgeX, $curY, $amountStr);
+            $pdf->printRightJustified($pledgeX, $curY, $amountStr);
             $amountStr = sprintf('%.2f', $paymentFundTotal[$fun_name]);
-            $pdf->PrintRightJustified($paymentX, $curY, $amountStr);
-            $pdf->PrintRightJustified($pledgeCountX, $curY, $pledgeCnt[$fun_name]);
-            $pdf->PrintRightJustified($paymentCountX, $curY, $paymentCnt[$fun_name]);
+            $pdf->printRightJustified($paymentX, $curY, $amountStr);
+            $pdf->printRightJustified($pledgeCountX, $curY, $pledgeCnt[$fun_name]);
+            $pdf->printRightJustified($paymentCountX, $curY, $paymentCnt[$fun_name]);
 
             $amountStr = sprintf('%.2f', $overpaid[$fun_name]);
-            $pdf->PrintRightJustified($underpaidX, $curY, $amountStr);
+            $pdf->printRightJustified($underpaidX, $curY, $amountStr);
             $amountStr = sprintf('%.2f', $underpaid[$fun_name]);
-            $pdf->PrintRightJustified($overpaidX, $curY, $amountStr);
+            $pdf->printRightJustified($overpaidX, $curY, $amountStr);
             $curY += SystemConfig::getValue('incrementY');
         }
     }
 
     if ($pledgeFundTotal['Unassigned'] > 0 || $paymentFundTotal['Unassigned'] > 0) {
-        $pdf->WriteAt($nameX, $curY, 'Unassigned');
+        $pdf->writeAt($nameX, $curY, 'Unassigned');
         $amountStr = sprintf('%.2f', $pledgeFundTotal['Unassigned']);
-        $pdf->PrintRightJustified($pledgeX, $curY, $amountStr);
+        $pdf->printRightJustified($pledgeX, $curY, $amountStr);
         $amountStr = sprintf('%.2f', $paymentFundTotal['Unassigned']);
-        $pdf->PrintRightJustified($paymentX, $curY, $amountStr);
-        $pdf->PrintRightJustified($pledgeCountX, $curY, $pledgeCnt['Unassigned']);
-        $pdf->PrintRightJustified($paymentCountX, $curY, $paymentCnt['Unassigned']);
+        $pdf->printRightJustified($paymentX, $curY, $amountStr);
+        $pdf->printRightJustified($pledgeCountX, $curY, $pledgeCnt['Unassigned']);
+        $pdf->printRightJustified($paymentCountX, $curY, $paymentCnt['Unassigned']);
         $curY += SystemConfig::getValue('incrementY');
     }
 

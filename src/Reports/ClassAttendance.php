@@ -11,7 +11,7 @@
 require '../Include/Config.php';
 require '../Include/Functions.php';
 
-use ChurchCRM\Reports\PDF_Attendance;
+use ChurchCRM\Reports\PdfAttendance;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\dto\SystemURLs;
@@ -22,31 +22,31 @@ use ChurchCRM\Person2group2roleP2g2r;
 use ChurchCRM\Map\PersonTableMap;
 use Propel\Runtime\ActiveQuery\Criteria;
 
-$iGroupID = InputUtils::LegacyFilterInput($_GET['GroupID']);
+$iGroupID = InputUtils::legacyFilterInput($_GET['GroupID']);
 $aGrp = explode(',', $iGroupID);
 $nGrps = count($aGrp);
 //echo $iGroupID;
 
-$iFYID = InputUtils::LegacyFilterInput($_GET['FYID'], 'int');
+$iFYID = InputUtils::legacyFilterInput($_GET['FYID'], 'int');
 
-$tFirstSunday = InputUtils::LegacyFilterInput($_GET['FirstSunday']);
-$tLastSunday = InputUtils::LegacyFilterInput($_GET['LastSunday']);
-$tAllRoles = InputUtils::LegacyFilterInput($_GET['AllRoles'], 'int');
-$withPictures = InputUtils::LegacyFilterInput($_GET['withPictures'], 'int');
+$tFirstSunday = InputUtils::legacyFilterInput($_GET['FirstSunday']);
+$tLastSunday = InputUtils::legacyFilterInput($_GET['LastSunday']);
+$tAllRoles = InputUtils::legacyFilterInput($_GET['AllRoles'], 'int');
+$withPictures = InputUtils::legacyFilterInput($_GET['withPictures'], 'int');
 
 //echo "all roles ={$tAllRoles}";
 
-$tNoSchool1 = InputUtils::LegacyFilterInputArr($_GET, 'NoSchool1');
-$tNoSchool2 = InputUtils::LegacyFilterInputArr($_GET, 'NoSchool2');
-$tNoSchool3 = InputUtils::LegacyFilterInputArr($_GET, 'NoSchool3');
-$tNoSchool4 = InputUtils::LegacyFilterInputArr($_GET, 'NoSchool4');
-$tNoSchool5 = InputUtils::LegacyFilterInputArr($_GET, 'NoSchool5');
-$tNoSchool6 = InputUtils::LegacyFilterInputArr($_GET, 'NoSchool6');
-$tNoSchool7 = InputUtils::LegacyFilterInputArr($_GET, 'NoSchool7');
-$tNoSchool8 = InputUtils::LegacyFilterInputArr($_GET, 'NoSchool8');
+$tNoSchool1 = InputUtils::legacyFilterInputArr($_GET, 'NoSchool1');
+$tNoSchool2 = InputUtils::legacyFilterInputArr($_GET, 'NoSchool2');
+$tNoSchool3 = InputUtils::legacyFilterInputArr($_GET, 'NoSchool3');
+$tNoSchool4 = InputUtils::legacyFilterInputArr($_GET, 'NoSchool4');
+$tNoSchool5 = InputUtils::legacyFilterInputArr($_GET, 'NoSchool5');
+$tNoSchool6 = InputUtils::legacyFilterInputArr($_GET, 'NoSchool6');
+$tNoSchool7 = InputUtils::legacyFilterInputArr($_GET, 'NoSchool7');
+$tNoSchool8 = InputUtils::legacyFilterInputArr($_GET, 'NoSchool8');
 
-$iExtraStudents = InputUtils::LegacyFilterInputArr($_GET, 'ExtraStudents', 'int');
-$iExtraTeachers = InputUtils::LegacyFilterInputArr($_GET, 'ExtraTeachers', 'int');
+$iExtraStudents = InputUtils::legacyFilterInputArr($_GET, 'ExtraStudents', 'int');
+$iExtraTeachers = InputUtils::legacyFilterInputArr($_GET, 'ExtraTeachers', 'int');
 
 $dFirstSunday = strtotime($tFirstSunday);
 $dLastSunday = strtotime($tLastSunday);
@@ -79,13 +79,13 @@ $yTeachers = $yTitle + 6;
 $nameX = 10;
 $epd = 3;
 
-$pdf = new PDF_Attendance();
+$pdf = new PdfAttendance();
 
 for ($i = 0; $i < $nGrps; $i++) {
     $iGroupID = $aGrp[$i];
     //  uset($aStudents);
     if ($i > 0) {
-        $pdf->AddPage();
+        $pdf->addPage();
     }
     //Get the data on this group
     $group = GroupQuery::Create()->findOneById($iGroupID);
@@ -148,7 +148,7 @@ for ($i = 0; $i < $nGrps; $i++) {
                 $person->getPhoto()->createThumbnail();
                 $aStudentsIMG[$iStudentCnt++] = $person->getPhoto()->getThumbnailURI();
             } elseif ($lst_OptionName == gettext('Liaison')) {
-                $liaisonString .= gettext('Liaison').':'.$person->getFullName().' '.$pdf->StripPhone($homePhone).' ';
+                $liaisonString .= gettext('Liaison').':'.$person->getFullName().' '.$pdf->stripPhone($homePhone).' ';
             }
         }
         
@@ -160,15 +160,15 @@ for ($i = 0; $i < $nGrps; $i++) {
         $pdf->SetFont('Times', 'B', 12);
 
         $y = $yTeachers;
-        $pdf->WriteAt($nameX, $y, $teacherString);
+        $pdf->writeAt($nameX, $y, $teacherString);
         $y += 4;
 
         if ($iTeacherCnt >= $iMaxTeachersFit) {
-            $pdf->WriteAt($nameX, $y, $liaisonString);
+            $pdf->writeAt($nameX, $y, $liaisonString);
             $y += 4;
         }
 
-        $y = $pdf->DrawAttendanceCalendar(
+        $y = $pdf->drawAttendanceCalendar(
             $nameX,
             $y + 6,
             $aStudents,
@@ -192,11 +192,11 @@ for ($i = 0; $i < $nGrps; $i++) {
         
         // we start a new page
         if ($y > $yTeachers+10) {
-            $pdf->AddPage();
+            $pdf->addPage();
         }
                                                                         
         $y = $yTeachers;
-        $pdf->DrawAttendanceCalendar(
+        $pdf->drawAttendanceCalendar(
             $nameX,
             $y + 6,
             $aTeachers,
@@ -235,7 +235,7 @@ for ($i = 0; $i < $nGrps; $i++) {
 
         $y = $yTeachers;
 
-        $y = $pdf->DrawAttendanceCalendar(
+        $y = $pdf->drawAttendanceCalendar(
             $nameX,
             $y + 6,
             $aStudents,

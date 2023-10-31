@@ -72,7 +72,7 @@ class KioskDevice extends BaseKioskDevice
     public function preInsert(\Propel\Runtime\Connection\ConnectionInterface $con = null)
     {
         if (!isset($this->Name)) {
-            $this->setName(Utils\MiscUtils::random_word());
+            $this->setName(Utils\MiscUtils::randomWord());
         }
         return true;
     }

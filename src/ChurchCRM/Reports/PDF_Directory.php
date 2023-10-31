@@ -7,7 +7,7 @@ use ChurchCRM\Utils\MiscUtils;
 use ChurchCRM\FamilyQuery;
 use ChurchCRM\PersonQuery;
 
-class PDF_Directory extends ChurchInfoReport
+class PdfDirectory extends ChurchInfoReport
 {
     // Private properties
     public $_Margin_Left = 13;        // Left Margin
@@ -26,7 +26,7 @@ class PDF_Directory extends ChurchInfoReport
     public $_PS = 'Letter';
     public $sSortBy = '';
 
-    public function Header()
+    public function header()
     {
         global $bDirUseTitlePage;
 
@@ -43,7 +43,7 @@ class PDF_Directory extends ChurchInfoReport
         }
     }
 
-    public function Footer()
+    public function footer()
     {
         global $bDirUseTitlePage;
 
@@ -61,7 +61,7 @@ class PDF_Directory extends ChurchInfoReport
         }
     }
 
-    public function TitlePage()
+    public function titlePage()
     {
         global $sDirectoryDisclaimer;
         //Select Arial bold 15
@@ -84,12 +84,12 @@ class PDF_Directory extends ChurchInfoReport
         $this->Cell(10);
         $sDirectoryDisclaimer = iconv('UTF-8', 'ISO-8859-1', $sDirectoryDisclaimer);
         $this->MultiCell(197, 10, $sDirectoryDisclaimer, 0, 'C');
-        $this->AddPage();
+        $this->addPage();
     }
 
     // Sets the character size
     // This changes the line height too
-    public function Set_Char_Size($pt)
+    public function setCharSize($pt)
     {
         if ($pt > 3) {
             $this->_Char_Size = $pt;
@@ -105,18 +105,18 @@ class PDF_Directory extends ChurchInfoReport
         $this->_LS = $ls;
         $this->SetMargins(0, 0);
 
-        $this->Set_Char_Size($this->_Char_Size);
+        $this->setCharSize($this->_Char_Size);
         $this->SetAutoPageBreak(false);
         $this->_NCols = $nc;
         $this->_ColWidth = 190 / $nc - $this->_Gutter;
     }
 
-    public function AddCustomField($order, $use)
+    public function addCustomField($order, $use)
     {
         $this->_Custom[$order] = $use;
     }
 
-    public function NbLines($w, $txt)
+    public function nbLines($w, $txt)
     {
         //Computes the number of lines a MultiCell of width w will take
         $cw = &$this->CurrentFont['cw'];
@@ -168,7 +168,7 @@ class PDF_Directory extends ChurchInfoReport
         return $nl;
     }
 
-    public function Check_Lines($numlines, $img)
+    public function checkLines($numlines, $img)
     {
         // Need to determine if we will extend beyoned 17mm from the bottom of
         // the page.
@@ -186,7 +186,7 @@ class PDF_Directory extends ChurchInfoReport
             if ($this->_Column == $this->_NCols - 1) {
                 $this->_Column = 0;
                 $this->SetY(25);
-                $this->AddPage();
+                $this->addPage();
             } else {
                 $this->_Column++;
                 $this->SetY(25);
@@ -196,9 +196,9 @@ class PDF_Directory extends ChurchInfoReport
 
     // This function prints out the heading when a letter
     // changes.
-    public function Add_Header($sLetter)
+    public function addHeader($sLetter)
     {
-        $this->Check_Lines(2, null);
+        $this->checkLines(2, null);
         $this->SetTextColor(255);
         $this->SetFont($this->_Font, 'B', $this->_Char_Size);
 //        $_PosX = $this->_Column == 0 ? $this->_Margin_Left : $this->w - $this->_Margin_Left - $this->_ColWidth;
@@ -214,7 +214,7 @@ class PDF_Directory extends ChurchInfoReport
     }
 
     // This prints the family name in BOLD
-    public function Print_Name($sName)
+    public function printName($sName)
     {
         $this->SetFont($this->_Font, 'BU', $this->_Char_Size);
 //        $_PosX = $this->_Column == 0 ? $this->_Margin_Left : $this->w - $this->_Margin_Left - $this->_ColWidth;
@@ -223,8 +223,8 @@ class PDF_Directory extends ChurchInfoReport
         $this->SetXY($_PosX, $_PosY);
 //        $this->MultiCell($this->_ColWidth, 5, $sName);
         $this->MultiCell($this->_ColWidth, $this->_LS, $sName);
-//        $this->SetY($_PosY + $this->NbLines($this->_ColWidth, $sName) * 5);
-        $this->SetY($_PosY + $this->NbLines($this->_ColWidth, $sName) * $this->_LS);
+//        $this->SetY($_PosY + $this->nbLines($this->_ColWidth, $sName) * 5);
+        $this->SetY($_PosY + $this->nbLines($this->_ColWidth, $sName) * $this->_LS);
         $this->SetFont($this->_Font, '', $this->_Char_Size);
     }
 
@@ -261,7 +261,7 @@ class PDF_Directory extends ChurchInfoReport
     public function getBirthdayString($bDirBirthday, $per_BirthMonth, $per_BirthDay, $per_BirthYear, $per_Flags)
     {
         if ($bDirBirthday && $per_BirthDay > 0 && $per_BirthMonth > 0) {
-            return MiscUtils::FormatBirthDate($per_BirthYear, $per_BirthMonth, $per_BirthDay, "/", $per_Flags);
+            return MiscUtils::formatBirthDate($per_BirthYear, $per_BirthMonth, $per_BirthDay, "/", $per_Flags);
         }
         return '';
     }
@@ -448,7 +448,7 @@ class PDF_Directory extends ChurchInfoReport
     }
 
     // Number of lines is only for the $text parameter
-    public function Add_Record($sName, $text, $numlines, $fid, $pid)
+    public function addRecord($sName, $text, $numlines, $fid, $pid)
     {
         $dirimg = '';
         if ($fid !== null) {
@@ -463,9 +463,9 @@ class PDF_Directory extends ChurchInfoReport
                 $dirimg = $person->getPhoto()->getPhotoURI();
             }
         }
-        $this->Check_Lines($numlines, $dirimg);
+        $this->checkLines($numlines, $dirimg);
 
-        $this->Print_Name(iconv('UTF-8', 'ISO-8859-1', $sName));
+        $this->printName(iconv('UTF-8', 'ISO-8859-1', $sName));
 
         $_PosX = ($this->_Column * ($this->_ColWidth + $this->_Gutter)) + $this->_Margin_Left;
         $_PosY = $this->GetY();

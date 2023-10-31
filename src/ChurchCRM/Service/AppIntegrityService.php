@@ -177,7 +177,7 @@ class AppIntegrityService
     {
         return array_filter(
             AppIntegrityService::getApplicationPrerequisites(),
-            fn($prereq) => !$prereq->IsPrerequisiteMet()
+            fn($prereq) => !$prereq->isPrerequisiteMet()
         );
     }
 

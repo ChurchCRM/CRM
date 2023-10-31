@@ -21,13 +21,13 @@ function getCartView(Request $request, Response $response, array $args)
       'PageJSVars' => []
     ];
 
-    if (!Cart::HasPeople()) {
+    if (!Cart::hasPeople()) {
         return $renderer->render($response, 'cartempty.php', $pageArgs);
     } else {
         $pageArgs = array_merge($pageArgs, [
         'sEmailLink' => Cart::getEmailLink(),
         'sPhoneLink' => Cart::getSMSLink(),
-        'iNumFamilies' => Cart::CountFamilies(),
+        'iNumFamilies' => Cart::countFamilies(),
         'cartPeople' => Cart::getCartPeople()
         ]);
         return $renderer->render($response, 'cartview.php', $pageArgs);

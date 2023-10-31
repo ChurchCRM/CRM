@@ -5,8 +5,10 @@
 *  last change : 2005-03-26
 *  description : Creates a PDF with all the tax letters for a particular calendar year.
 *  Copyright 2012 Michael Wilt
-
+*
 ******************************************************************************/
+
+namespace ChurchCRM\Reports;
 
 require '../Include/Config.php';
 require '../Include/Functions.php';
@@ -18,22 +20,22 @@ use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Authentication\AuthenticationManager;
 
 // Security
-if (!AuthenticationManager::GetCurrentUser()->isFinanceEnabled()) {
-    RedirectUtils::Redirect('Menu.php');
+if (!AuthenticationManager::getCurrentUser()->isFinanceEnabled()) {
+    RedirectUtils::redirect('Menu.php');
     exit;
 }
 
 // Filter values
-$output = InputUtils::LegacyFilterInput($_POST['output']);
-$sDateStart = InputUtils::LegacyFilterInput($_POST['DateStart'], 'date');
-$sDateEnd = InputUtils::LegacyFilterInput($_POST['DateEnd'], 'date');
+$output = InputUtils::legacyFilterInput($_POST['output']);
+$sDateStart = InputUtils::legacyFilterInput($_POST['DateStart'], 'date');
+$sDateEnd = InputUtils::legacyFilterInput($_POST['DateEnd'], 'date');
 
-$letterhead = InputUtils::LegacyFilterInput($_POST['letterhead']);
-$remittance = InputUtils::LegacyFilterInput($_POST['remittance']);
+$letterhead = InputUtils::legacyFilterInput($_POST['letterhead']);
+$remittance = InputUtils::legacyFilterInput($_POST['remittance']);
 
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
-if (!AuthenticationManager::GetCurrentUser()->isAdmin() && SystemConfig::getValue('bCSVAdminOnly') && $output != 'pdf') {
-    RedirectUtils::Redirect('Menu.php');
+if (!AuthenticationManager::getCurrentUser()->isAdmin() && SystemConfig::getValue('bCSVAdminOnly') && $output != 'pdf') {
+    RedirectUtils::redirect('Menu.php');
     exit;
 }
 
@@ -80,7 +82,7 @@ if ($output == 'pdf') {
         $bottom_border2 = 250;
     }
 
-    class PDF_ZeroGivers extends ChurchInfoReport
+    class PdfZeroGivers extends ChurchInfoReport
     {
         // Constructor
         public function __construct()
@@ -92,10 +94,10 @@ if ($output == 'pdf') {
             $this->SetAutoPageBreak(false);
         }
 
-        public function StartNewPage($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country)
+        public function startNewPage($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country)
         {
             global $letterhead, $sDateStart, $sDateEnd;
-            $curY = $this->StartLetterPage($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $letterhead);
+            $curY = $this->startLetterPage($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $letterhead);
             $curY += 2 * SystemConfig::getValue('incrementY');
             if ($sDateStart == $sDateEnd) {
                 $DateString = date('F j, Y', strtotime($sDateStart));
@@ -104,37 +106,37 @@ if ($output == 'pdf') {
             }
 
             $blurb = SystemConfig::getValue('sTaxReport1').' '.$DateString.' '.SystemConfig::getValue('sZeroGivers');
-            $this->WriteAt(SystemConfig::getValue('leftX'), $curY, $blurb);
+            $this->writeAt(SystemConfig::getValue('leftX'), $curY, $blurb);
             $curY += 30 * SystemConfig::getValue('incrementY');
 
             return $curY;
         }
 
-        public function FinishPage($curY, $fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country)
+        public function finishPage($curY, $fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country)
         {
             global $remittance;
             $curY += 2 * SystemConfig::getValue('incrementY');
             $blurb = SystemConfig::getValue('sZeroGivers2');
-            $this->WriteAt(SystemConfig::getValue('leftX'), $curY, $blurb);
+            $this->writeAt(SystemConfig::getValue('leftX'), $curY, $blurb);
             $curY += 3 * SystemConfig::getValue('incrementY');
             $blurb = SystemConfig::getValue('sZeroGivers3');
-            $this->WriteAt(SystemConfig::getValue('leftX'), $curY, $blurb);
+            $this->writeAt(SystemConfig::getValue('leftX'), $curY, $blurb);
             $curY += 3 * SystemConfig::getValue('incrementY');
-            $this->WriteAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sConfirmSincerely').',');
+            $this->writeAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sConfirmSincerely').',');
             $curY += 4 * SystemConfig::getValue('incrementY');
-            $this->WriteAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sTaxSigner'));
+            $this->writeAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sTaxSigner'));
         }
     }
 
     // Instantiate the directory class and build the report.
-    $pdf = new PDF_ZeroGivers();
+    $pdf = new PdfZeroGivers();
 
     // Loop through result array
     while ($row = mysqli_fetch_array($rsReport)) {
         extract($row);
-        $curY = $pdf->StartNewPage($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country);
+        $curY = $pdf->startNewPage($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country);
 
-        $pdf->FinishPage($curY, $fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country);
+        $pdf->finishPage($curY, $fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country);
     }
 
     if (SystemConfig::getValue('iPDFOutputType') == 1) {

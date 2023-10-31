@@ -14,15 +14,15 @@ require '../Include/Config.php';
 require '../Include/Functions.php';
 
 use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\Reports\PDF_Directory;
+use ChurchCRM\Reports\PdfDirectory;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\MiscUtils;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Authentication\AuthenticationManager;
 
 // Check for Create Directory user permission.
-if (!AuthenticationManager::GetCurrentUser()->isCreateDirectoryEnabled()) {
-    RedirectUtils::Redirect('Menu.php');
+if (!AuthenticationManager::getCurrentUser()->isCreateDirectoryEnabled()) {
+    RedirectUtils::redirect('Menu.php');
     exit;
 }
 
@@ -30,7 +30,7 @@ if (!AuthenticationManager::GetCurrentUser()->isCreateDirectoryEnabled()) {
 $aClasses = [];
 if (array_key_exists('sDirClassifications', $_POST) and $_POST['sDirClassifications'] != '') {
     foreach ($_POST['sDirClassifications'] as $Cls) {
-        $aClasses[] = InputUtils::LegacyFilterInput($Cls, 'int');
+        $aClasses[] = InputUtils::legacyFilterInput($Cls, 'int');
     }
     $sDirClassifications = implode(',', $aClasses);
 } else {
@@ -38,19 +38,19 @@ if (array_key_exists('sDirClassifications', $_POST) and $_POST['sDirClassificati
 }
 $aHeads = [];
 foreach ($_POST['sDirRoleHead'] as $Head) {
-    $aHeads[] = InputUtils::LegacyFilterInput($Head, 'int');
+    $aHeads[] = InputUtils::legacyFilterInput($Head, 'int');
 }
 $sDirRoleHeads = implode(',', $aHeads);
 
 $aSpouses = [];
 foreach ($_POST['sDirRoleSpouse'] as $Spouse) {
-    $aSpouses[] = InputUtils::LegacyFilterInput($Spouse, 'int');
+    $aSpouses[] = InputUtils::legacyFilterInput($Spouse, 'int');
 }
 $sDirRoleSpouses = implode(',', $aSpouses);
 
 $aChildren = [];
 foreach ($_POST['sDirRoleChild'] as $Child) {
-    $aChildren[] = InputUtils::LegacyFilterInput($Child, 'int');
+    $aChildren[] = InputUtils::legacyFilterInput($Child, 'int');
 }
 
 //Exclude inactive families
@@ -71,19 +71,19 @@ $bDirPersonalEmail = isset($_POST['bDirPersonalEmail']);
 $bDirPersonalWorkEmail = isset($_POST['bDirPersonalWorkEmail']);
 $bDirPhoto = isset($_POST['bDirPhoto']);
 
-$sChurchName = InputUtils::LegacyFilterInput($_POST['sChurchName']);
-$sDirectoryDisclaimer = InputUtils::LegacyFilterInput($_POST['sDirectoryDisclaimer']);
-$sChurchAddress = InputUtils::LegacyFilterInput($_POST['sChurchAddress']);
-$sChurchCity = InputUtils::LegacyFilterInput($_POST['sChurchCity']);
-$sChurchState = InputUtils::LegacyFilterInput($_POST['sChurchState']);
-$sChurchZip = InputUtils::LegacyFilterInput($_POST['sChurchZip']);
-$sChurchPhone = InputUtils::LegacyFilterInput($_POST['sChurchPhone']);
+$sChurchName = InputUtils::legacyFilterInput($_POST['sChurchName']);
+$sDirectoryDisclaimer = InputUtils::legacyFilterInput($_POST['sDirectoryDisclaimer']);
+$sChurchAddress = InputUtils::legacyFilterInput($_POST['sChurchAddress']);
+$sChurchCity = InputUtils::legacyFilterInput($_POST['sChurchCity']);
+$sChurchState = InputUtils::legacyFilterInput($_POST['sChurchState']);
+$sChurchZip = InputUtils::legacyFilterInput($_POST['sChurchZip']);
+$sChurchPhone = InputUtils::legacyFilterInput($_POST['sChurchPhone']);
 
 $bDirUseTitlePage = isset($_POST['bDirUseTitlePage']);
 
-$bNumberofColumns = InputUtils::LegacyFilterInput($_POST['NumCols'] ?? '1', 'int');
-$bPageSize = InputUtils::LegacyFilterInput($_POST['PageSize'] ?? 'letter', 'int');
-$bFontSz = InputUtils::LegacyFilterInput($_POST['FSize'] ?? '8', 'int');
+$bNumberofColumns = InputUtils::legacyFilterInput($_POST['NumCols'] ?? '1', 'int');
+$bPageSize = InputUtils::legacyFilterInput($_POST['PageSize'] ?? 'letter', 'int');
+$bFontSz = InputUtils::legacyFilterInput($_POST['FSize'] ?? '8', 'int');
 $bLineSp = $bFontSz / 3;
 
 if ($bPageSize != 'letter' && $bPageSize != 'a4') {
@@ -94,7 +94,7 @@ if ($bPageSize != 'letter' && $bPageSize != 'a4') {
 
 // Instantiate the directory class and build the report.
 //echo "font sz = {$bFontSz} and line sp={$bLineSp}";
-$pdf = new PDF_Directory($bNumberofColumns, $bPageSize, $bFontSz, $bLineSp);
+$pdf = new PdfDirectory($bNumberofColumns, $bPageSize, $bFontSz, $bLineSp);
 
 // Get the list of custom person fields
 $sSQL = 'SELECT person_custom_master.* FROM person_custom_master ORDER BY custom_Order';
@@ -103,17 +103,17 @@ $numCustomFields = mysqli_num_rows($rsCustomFields);
 
 if ($numCustomFields > 0) {
     while ($rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQLI_ASSOC)) {
-        $pdf->AddCustomField(
+        $pdf->addCustomField(
             $rowCustomField['custom_Order'],
             isset($_POST['bCustom'.$rowCustomField['custom_Order']])
         );
     }
 }
 
-$pdf->AddPage();
+$pdf->addPage();
 
 if ($bDirUseTitlePage) {
-    $pdf->TitlePage();
+    $pdf->titlePage();
 }
 
 $sClassQualifier = '';
@@ -127,7 +127,7 @@ if (!empty($_POST['GroupID'])) {
 
     $aGroups = [];
     foreach ($_POST['GroupID'] as $Grp) {
-        $aGroups[] = InputUtils::LegacyFilterInput($Grp, 'int');
+        $aGroups[] = InputUtils::legacyFilterInput($Grp, 'int');
     }
     $sGroupsList = implode(',', $aGroups);
 
@@ -148,7 +148,7 @@ if ($bExcludeInactive) {
 }
 
 if (array_key_exists('cartdir', $_POST)) {
-    $sWhereExt .= 'AND per_ID IN ('.ConvertCartToString($_SESSION['aPeopleCart']).')';
+    $sWhereExt .= 'AND per_ID IN ('.convertCartToString($_SESSION['aPeopleCart']).')';
 }
 
 $mysqlinfo = mysqli_get_server_info($cnInfoCentral);
@@ -307,16 +307,16 @@ while ($aRow = mysqli_fetch_array($rsRecords)) {
 
     // Count the number of lines in the output string
     if (strlen($OutStr)) {
-        $numlines = $pdf->NbLines($pdf->_ColWidth, $OutStr);
+        $numlines = $pdf->nbLines($pdf->_ColWidth, $OutStr);
     } else {
         $numlines = 0;
     }
 
     if ($numlines > 0) {
         if (strtoupper($sLastLetter) != strtoupper(mb_substr($pdf->sSortBy, 0, 1))) {
-            $pdf->Check_Lines($numlines + 2, null);
+            $pdf->checkLines($numlines + 2, null);
             $sLastLetter = strtoupper(mb_substr($pdf->sSortBy, 0, 1));
-            $pdf->Add_Header($sLastLetter);
+            $pdf->addHeader($sLastLetter);
         }
 
         // if photo include pass the id, otherwise 0 equates to no family/pers
@@ -329,7 +329,7 @@ while ($aRow = mysqli_fetch_array($rsRecords)) {
                 $pid = $per_ID;
             }
         }
-        $pdf->Add_Record($pdf->sRecordName, $OutStr, $numlines, $fid, $pid);  // another hack: added +1
+        $pdf->addRecord($pdf->sRecordName, $OutStr, $numlines, $fid, $pid);  // another hack: added +1
     }
 }
 

@@ -28,7 +28,7 @@ $eType = 'All';
 $ThisYear = date('Y');
 
 if (isset($_POST['WhichType'])) {
-    $eType = InputUtils::LegacyFilterInput($_POST['WhichType']);
+    $eType = InputUtils::legacyFilterInput($_POST['WhichType']);
 } else {
     $eType = 'All';
 }
@@ -46,7 +46,7 @@ if ($eType != 'All') {
 // retrieve the year selector
 
 if (isset($_POST['WhichYear'])) {
-    $EventYear = InputUtils::LegacyFilterInput($_POST['WhichYear'], 'int');
+    $EventYear = InputUtils::legacyFilterInput($_POST['WhichYear'], 'int');
 } else {
     $EventYear = date('Y');
 }
@@ -54,9 +54,9 @@ if (isset($_POST['WhichYear'])) {
 ///////////////////////
 require 'Include/Header.php';
 
-if (isset($_POST['Action']) && isset($_POST['EID']) && AuthenticationManager::GetCurrentUser()->isAddEvent()) {
-    $eID = InputUtils::LegacyFilterInput($_POST['EID'], 'int');
-    $action = InputUtils::LegacyFilterInput($_POST['Action']);
+if (isset($_POST['Action']) && isset($_POST['EID']) && AuthenticationManager::getCurrentUser()->isAddEvent()) {
+    $eID = InputUtils::legacyFilterInput($_POST['EID'], 'int');
+    $action = InputUtils::legacyFilterInput($_POST['Action']);
     if ($action == 'Delete' && $eID) {
         $sSQL = 'DELETE FROM events_event WHERE event_id = '.$eID.' LIMIT 1';
         RunQuery($sSQL);
@@ -203,7 +203,7 @@ foreach ($allMonths as $mKey => $mVal) {
   <table id="listEvents" class='table data-table table-striped table-bordered table-responsive'>
     <thead>
       <tr class="TableHeader">
-        <?php if (AuthenticationManager::GetCurrentUser()->isAddEvent()) {
+        <?php if (AuthenticationManager::getCurrentUser()->isAddEvent()) {
             ?>
         <th><?= gettext('Action') ?></th>
             <?php
@@ -220,7 +220,7 @@ foreach ($allMonths as $mKey => $mVal) {
         for ($row = 1; $row <= $numRows; $row++) {
             ?>
           <tr>
-            <?php if (AuthenticationManager::GetCurrentUser()->isAddEvent()) {
+            <?php if (AuthenticationManager::getCurrentUser()->isAddEvent()) {
                 ?>
               <td>
               <table class='table-responsive'>

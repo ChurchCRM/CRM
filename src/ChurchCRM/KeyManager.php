@@ -11,12 +11,12 @@ namespace ChurchCRM
             self::$TwoFASecretKey = $TwoFASecretKey;
         }
 
-        public static function GetTwoFASecretKey()
+        public static function getTwoFASecretKey()
         {
             return self::$TwoFASecretKey;
         }
 
-        public static function GetAreAllSecretsDefined()
+        public static function getAreAllSecretsDefined()
         {
             return !empty(self::$TwoFASecretKey);
         }

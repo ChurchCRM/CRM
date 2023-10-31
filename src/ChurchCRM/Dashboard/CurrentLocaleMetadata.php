@@ -21,7 +21,7 @@ class CurrentLocaleMetadata implements DashboardItemInterface
 
     public static function getDashboardItemValue()
     {
-        $localeInfo = Bootstrapper::GetCurrentLocale();
+        $localeInfo = Bootstrapper::getCurrentLocale();
         $data["name"] = $localeInfo->getName();
         $data["code"] = $localeInfo->getLocale();
         $data["countryFlagCode"] = strtolower($localeInfo->getCountryCode());

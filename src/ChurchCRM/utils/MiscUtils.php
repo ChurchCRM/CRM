@@ -28,7 +28,7 @@ class MiscUtils
         return implode($apiKey); //turn the array into a string
     }
 
-    public static function random_word($length = 6)
+    public static function randomWord($length = 6)
     {
         $cons = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'r', 's', 't', 'v', 'w', 'x', 'z', 'pt', 'gl', 'gr', 'ch', 'ph', 'ps', 'sh', 'st', 'th', 'wh'];
         $cons_cant_start = ['ck', 'cm', 'dr', 'ds', 'ft', 'gh', 'gn', 'kr', 'ks', 'ls', 'lt', 'lr', 'mp', 'mt', 'ms', 'ng', 'ns', 'rd', 'rg', 'rs', 'rt', 'ss', 'ts', 'tch'];
@@ -66,13 +66,13 @@ class MiscUtils
         return time() + $cacheLength ;
     }
 
-    public static function FormatAge($Month, $Day, $Year, $Flags)
+    public static function formatAge($Month, $Day, $Year, $Flags)
     {
         if ($Flags || $Year === null || $Year === '') {
             return;
         }
       
-        $birthDate = MiscUtils::BirthDate($Year, $Month, $Day);
+        $birthDate = MiscUtils::birthDate($Year, $Month, $Day);
         $ageSuffix = gettext('Unknown');
         $ageValue = 0;
 
@@ -88,9 +88,9 @@ class MiscUtils
 
   // Format a BirthDate
   // Optionally, the separator may be specified.  Default is YEAR-MN-DY
-    public static function FormatBirthDate($per_BirthYear, $per_BirthMonth, $per_BirthDay, $sSeparator, $bFlags)
+    public static function formatBirthDate($per_BirthYear, $per_BirthMonth, $per_BirthDay, $sSeparator, $bFlags)
     {
-        $birthDate = MiscUtils::BirthDate($per_BirthYear, $per_BirthMonth, $per_BirthDay);
+        $birthDate = MiscUtils::birthDate($per_BirthYear, $per_BirthMonth, $per_BirthDay);
         if (!$birthDate) {
             return false;
         }
@@ -101,7 +101,7 @@ class MiscUtils
         return $birthDate->format(SystemConfig::getValue("sDateFormatLong"));
     }
   
-    public static function BirthDate($year, $month, $day)
+    public static function birthDate($year, $month, $day)
     {
         if (!$day !== null && $day !== '' && $month !== null && $month !== '') {
             if ($year === null || $year === '') {
@@ -114,7 +114,7 @@ class MiscUtils
         return false;
     }
   
-    public static function GetGitHubWikiAnchorLink($text)
+    public static function getGitHubWikiAnchorLink($text)
     {
       // roughly adapted from https://gist.github.com/asabaylus/3071099#gistcomment-1593627
         $anchor = strtolower($text);

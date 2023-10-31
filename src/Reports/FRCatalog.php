@@ -1,12 +1,14 @@
 <?php
 /*******************************************************************************
 *
-*  filename    : Reports/ConfirmReport.php
+*  filename    : Reports/FRCatalog.php
 *  last change : 2003-08-30
 *  description : Creates a PDF with all the confirmation letters asking member
 *                families to verify the information in the database.
 
 ******************************************************************************/
+
+namespace ChurchCRM\Reports;
 
 require '../Include/Config.php';
 require '../Include/Functions.php';
@@ -18,7 +20,7 @@ $iCurrentFundraiser = $_GET['CurrentFundraiser'];
 
 $curY = 0;
 
-class PDF_FRCatalogReport extends ChurchInfoReport
+class PdfFRCatalogReport extends ChurchInfoReport
 {
     // Constructor
     public function __construct()
@@ -27,15 +29,15 @@ class PDF_FRCatalogReport extends ChurchInfoReport
         $this->SetFont('Times', '', 10);
         $this->SetMargins(10, 20);
 
-        $this->AddPage();
+        $this->addPage();
         $this->SetAutoPageBreak(true, 25);
     }
 
-    public function AddPage($orientation = '', $format = '', $rotation = 0)
+    public function addPage($orientation = '', $format = '', $rotation = 0)
     {
         global $fr_title, $fr_description, $curY;
 
-        parent::AddPage($orientation, $format, $rotation);
+        parent::addPage($orientation, $format, $rotation);
 
         $this->SetFont('Times', 'B', 16);
         $this->Write(8, $fr_title."\n");
@@ -57,7 +59,7 @@ $sSQL = 'SELECT * FROM donateditem_di LEFT JOIN person_per on per_ID=di_donor_ID
 ' ORDER BY SUBSTR(di_item,1,1),cast(SUBSTR(di_item,2) as unsigned integer),SUBSTR(di_item,4)';
 $rsItems = RunQuery($sSQL);
 
-$pdf = new PDF_FRCatalogReport();
+$pdf = new PdfFRCatalogReport();
 $pdf->SetTitle($fr_title);
 
 // Loop through items
@@ -72,7 +74,7 @@ while ($oneItem = mysqli_fetch_array($rsItems)) {
         $maxYNewPage = 120;
     }
     if ($pdf->GetY() > $maxYNewPage || ($idFirstChar != '' && $idFirstChar != $newIdFirstChar)) {
-        $pdf->AddPage();
+        $pdf->addPage();
     }
     $idFirstChar = $newIdFirstChar;
 

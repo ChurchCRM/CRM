@@ -22,7 +22,7 @@ require '../Include/Config.php';
 require '../Include/Functions.php';
 
 use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\Reports\PDF_Label;
+use ChurchCRM\Reports\PdfLabel;
 use ChurchCRM\Utils\InputUtils;
 
 function GroupBySalutation($famID, $aAdultRole, $aChildRole)
@@ -51,7 +51,7 @@ function GroupBySalutation($famID, $aAdultRole, $aChildRole)
 
     // Only get family members that are in the cart
     $sSQL = 'SELECT * FROM person_per WHERE per_fam_ID='.$famID.' AND per_ID IN ('
-    .ConvertCartToString($_SESSION['aPeopleCart']).') ORDER BY per_LastName, per_FirstName';
+    .convertCartToString($_SESSION['aPeopleCart']).') ORDER BY per_LastName, per_FirstName';
 
     $rsMembers = RunQuery($sSQL);
     $numMembers = mysqli_num_rows($rsMembers);
@@ -617,7 +617,7 @@ function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComp
 
     $sSQL = 'SELECT * FROM person_per LEFT JOIN family_fam ';
     $sSQL .= 'ON person_per.per_fam_ID = family_fam.fam_ID ';
-    $sSQL .= 'WHERE per_ID IN ('.ConvertCartToString($_SESSION['aPeopleCart']).') ';
+    $sSQL .= 'WHERE per_ID IN ('.convertCartToString($_SESSION['aPeopleCart']).') ';
     $sSQL .= 'ORDER BY fam_Zip, per_LastName, per_FirstName';
     $rsCartItems = RunQuery($sSQL);
     $sRowClass = 'RowColorA';
@@ -707,7 +707,7 @@ function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComp
         $zipLabels = ZipBundleSort($sLabelList);
         if ($iBulkMailPresort == 2) {
             foreach ($zipLabels as $i => $sLT) {
-                $pdf->Add_PDF_Label(sprintf(
+                $pdf->addPdfLabel(sprintf(
                     "%s\n%s\n%s\n%s, %s %s",
                     $sLT['Note'],
                     $sLT['Name'],
@@ -719,7 +719,7 @@ function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComp
             } // end while
         } else {
             foreach ($zipLabels as $i => $sLT) {
-                $pdf->Add_PDF_Label(sprintf(
+                $pdf->addPdfLabel(sprintf(
                     "%s\n%s\n%s, %s %s",
                     $sLT['Name'],
                     $sLT['Address'],
@@ -731,7 +731,7 @@ function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComp
         } // end of if ($BulkMailPresort == 2)
     } else {
         foreach ($sLabelList as $i => $sLT) {
-            $pdf->Add_PDF_Label(sprintf(
+            $pdf->addPdfLabel(sprintf(
                 "%s\n%s\n%s, %s %s",
                 $sLT['Name'],
                 $sLT['Address'],
@@ -753,20 +753,20 @@ function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComp
 
 // Standard format
 
-$startcol = InputUtils::LegacyFilterInput($_GET['startcol'], 'int');
+$startcol = InputUtils::legacyFilterInput($_GET['startcol'], 'int');
 if ($startcol < 1) {
     $startcol = 1;
 }
 
-$startrow = InputUtils::LegacyFilterInput($_GET['startrow'], 'int');
+$startrow = InputUtils::legacyFilterInput($_GET['startrow'], 'int');
 if ($startrow < 1) {
     $startrow = 1;
 }
 
-$sLabelType = InputUtils::LegacyFilterInput($_GET['labeltype'], 'char', 8);
+$sLabelType = InputUtils::legacyFilterInput($_GET['labeltype'], 'char', 8);
 setcookie('labeltype', $sLabelType, ['expires' => time() + 60 * 60 * 24 * 90, 'path' => '/']);
 
-$pdf = new PDF_Label($sLabelType, $startcol, $startrow);
+$pdf = new PdfLabel($sLabelType, $startcol, $startrow);
 
 $sFontInfo = FontFromName($_GET['labelfont']);
 setcookie('labelfont', $_GET['labelfont'], ['expires' => time() + 60 * 60 * 24 * 90, 'path' => '/']);
@@ -778,11 +778,11 @@ if ($sFontSize == 'default') {
     $sFontSize = '10';
 }
 
-$pdf->Set_Char_Size($sFontSize);
+$pdf->setCharSize($sFontSize);
 
 // Manually add a new page if we're using offsets
 if ($startcol > 1 || $startrow > 1) {
-    $pdf->AddPage();
+    $pdf->addPage();
 }
 
 $mode = $_GET['groupbymode'];
@@ -817,7 +817,7 @@ setcookie('toparents', $bToParents, ['expires' => time() + 60 * 60 * 24 * 90, 'p
 
 $bOnlyComplete = ($_GET['onlyfull'] == 1);
 
-$sFileType = InputUtils::LegacyFilterInput($_GET['filetype'], 'char', 4);
+$sFileType = InputUtils::legacyFilterInput($_GET['filetype'], 'char', 4);
 
 $aLabelList = unserialize(
     GenerateLabels($pdf, $mode, $iBulkCode, $bToParents, $bOnlyComplete)
@@ -840,7 +840,7 @@ if ($sFileType == 'PDF') {
     }
     
 
-    $sCSVOutput .= '"'.InputUtils::translate_special_charset("Greeting").'"'.$delimiter.'"'.InputUtils::translate_special_charset("Name").'"'.$delimiter.'"'.InputUtils::translate_special_charset("Address").'"'.$delimiter.'"'.InputUtils::translate_special_charset("City").'"'.$delimiter.'"'.InputUtils::translate_special_charset("State").'"'.$delimiter.'"'.InputUtils::translate_special_charset("Zip").'"'."\n";
+    $sCSVOutput .= '"'.InputUtils::translateSpecialCharset("Greeting").'"'.$delimiter.'"'.InputUtils::translateSpecialCharset("Name").'"'.$delimiter.'"'.InputUtils::translateSpecialCharset("Address").'"'.$delimiter.'"'.InputUtils::translateSpecialCharset("City").'"'.$delimiter.'"'.InputUtils::translateSpecialCharset("State").'"'.$delimiter.'"'.InputUtils::translateSpecialCharset("Zip").'"'."\n";
 
     foreach ($aLabelList as $i => $sLT) {
         if ($iBulkCode) {
@@ -849,22 +849,22 @@ if ($sFileType == 'PDF') {
 
         $iNewline = (strpos($sLT['Name'], "\n"));
         if ($iNewline === false) { // There is no newline character
-            $sCSVOutput .= '""'.$delimiter.'"'.InputUtils::translate_special_charset($sLT['Name']).'"'.$delimiter;
+            $sCSVOutput .= '""'.$delimiter.'"'.InputUtils::translateSpecialCharset($sLT['Name']).'"'.$delimiter;
         } else {
-            $sCSVOutput .= '"'.InputUtils::translate_special_charset(mb_substr($sLT['Name'], 0, $iNewline)).'"'.$delimiter.
-                            '"'.InputUtils::translate_special_charset(mb_substr($sLT['Name'], $iNewline + 1)).'"'.$delimiter;
+            $sCSVOutput .= '"'.InputUtils::translateSpecialCharset(mb_substr($sLT['Name'], 0, $iNewline)).'"'.$delimiter.
+                            '"'.InputUtils::translateSpecialCharset(mb_substr($sLT['Name'], $iNewline + 1)).'"'.$delimiter;
         }
 
         $iNewline = (strpos($sLT['Address'], "\n"));
         if ($iNewline === false) { // There is no newline character
-            $sCSVOutput .= '"'.InputUtils::translate_special_charset($sLT['Address']).'"'.$delimiter;
+            $sCSVOutput .= '"'.InputUtils::translateSpecialCharset($sLT['Address']).'"'.$delimiter;
         } else {
-            $sCSVOutput .= '"'.InputUtils::translate_special_charset(mb_substr($sLT['Address'], 0, $iNewline)).'"'.$delimiter.
-                            '"'.InputUtils::translate_special_charset(mb_substr($sLT['Address'], $iNewline + 1)).'"'.$delimiter;
+            $sCSVOutput .= '"'.InputUtils::translateSpecialCharset(mb_substr($sLT['Address'], 0, $iNewline)).'"'.$delimiter.
+                            '"'.InputUtils::translateSpecialCharset(mb_substr($sLT['Address'], $iNewline + 1)).'"'.$delimiter;
         }
 
-        $sCSVOutput .= '"'.InputUtils::translate_special_charset($sLT['City']).'"'.$delimiter.
-                        '"'.InputUtils::translate_special_charset($sLT['State']).'"'.$delimiter.
+        $sCSVOutput .= '"'.InputUtils::translateSpecialCharset($sLT['City']).'"'.$delimiter.
+                        '"'.InputUtils::translateSpecialCharset($sLT['State']).'"'.$delimiter.
                         '"'.$sLT['Zip'].'"'."\n";
     }
 

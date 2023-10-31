@@ -18,5 +18,5 @@ abstract class BaseAuthSettingMiddleware
         return $next($request, $response);
     }
 
-    abstract function getSettingName();
+    abstract protected function getSettingName();
 }

@@ -8,15 +8,15 @@ use ChurchCRM\PersonQuery;
 
 class Cart
 {
-    private static function CheckCart()
+    private static function checkCart()
     {
         if (!isset($_SESSION['aPeopleCart'])) {
             $_SESSION['aPeopleCart'] = [];
         }
     }
-    public static function AddPerson($PersonID)
+    public static function addPerson($PersonID)
     {
-        self::CheckCart();
+        self::checkCart();
         if (!is_numeric($PersonID)) {
             throw new \Exception(gettext("PersonID for Cart must be numeric"), 400);
         }
@@ -25,14 +25,14 @@ class Cart
         }
     }
 
-    public static function AddPersonArray($PersonArray)
+    public static function addPersonArray($PersonArray)
     {
         foreach ($PersonArray as $PersonID) {
-            Cart::AddPerson($PersonID);
+            Cart::addPerson($PersonID);
         }
     }
 
-    public static function AddGroup($GroupID)
+    public static function addGroup($GroupID)
     {
         if (!is_numeric($GroupID)) {
             throw new \Exception(gettext("GroupID for Cart must be numeric"), 400);
@@ -41,11 +41,11 @@ class Cart
             ->filterByGroupId($GroupID)
             ->find();
         foreach ($GroupMembers as $GroupMember) {
-            Cart::AddPerson($GroupMember->getPersonId());
+            Cart::addPerson($GroupMember->getPersonId());
         }
     }
 
-    public static function AddFamily($FamilyID)
+    public static function addFamily($FamilyID)
     {
         if (!is_numeric($FamilyID)) {
             throw new \Exception(gettext("FamilyID for Cart must be numeric"), 400);
@@ -54,18 +54,18 @@ class Cart
             ->filterByFamId($FamilyID)
             ->find();
         foreach ($FamilyMembers as $FamilyMember) {
-            Cart::AddPerson($FamilyMember->getId());
+            Cart::addPerson($FamilyMember->getId());
         }
     }
 
-    public static function IntersectArrayWithPeopleCart($aIDs)
+    public static function intersectArrayWithPeopleCart($aIDs)
     {
         if (isset($_SESSION['aPeopleCart']) && is_array($aIDs)) {
             $_SESSION['aPeopleCart'] = array_intersect($_SESSION['aPeopleCart'], $aIDs);
         }
     }
 
-    public static function RemovePerson($PersonID)
+    public static function removePerson($PersonID)
     {
       // make sure the cart array exists
       // we can't remove anybody if there is no cart
@@ -78,7 +78,7 @@ class Cart
         }
     }
 
-    public static function RemovePersonArray($aIDs)
+    public static function removePersonArray($aIDs)
     {
       // make sure the cart array exists
       // we can't remove anybody if there is no cart
@@ -87,7 +87,7 @@ class Cart
         }
     }
 
-    public static function RemoveGroup($GroupID)
+    public static function removeGroup($GroupID)
     {
         if (!is_numeric($GroupID)) {
             throw new \Exception(gettext("GroupID for Cart must be numeric"), 400);
@@ -96,21 +96,21 @@ class Cart
             ->filterByGroupId($GroupID)
             ->find();
         foreach ($GroupMembers as $GroupMember) {
-            Cart::RemovePerson($GroupMember->getPersonId());
+            Cart::removePerson($GroupMember->getPersonId());
         }
     }
 
-    public static function HasPeople()
+    public static function hasPeople()
     {
         return array_key_exists('aPeopleCart', $_SESSION) && count($_SESSION['aPeopleCart']) != 0;
     }
 
-    public static function CountPeople()
+    public static function countPeople()
     {
         return count($_SESSION['aPeopleCart']);
     }
 
-    public static function ConvertCartToString($aCartArray)
+    public static function convertCartToString($aCartArray)
     {
         // Implode the array
         $sCartString = implode(',', $aCartArray);
@@ -126,7 +126,7 @@ class Cart
         return $sCartString;
     }
 
-    public static function CountFamilies()
+    public static function countFamilies()
     {
         $persons = PersonQuery::create()
             ->distinct()
@@ -137,7 +137,7 @@ class Cart
         return $persons->count();
     }
 
-    public static function EmptyToGroup($GroupID, $RoleID)
+    public static function emptyToGroup($GroupID, $RoleID)
     {
         $iCount = 0;
 
@@ -194,7 +194,7 @@ class Cart
                 array_push($emailAddressArray, $cartPerson->getEmail());
             }
         }
-        $delimiter = AuthenticationManager::GetCurrentUser()->getUserConfigString("sMailtoDelimiter");
+        $delimiter = AuthenticationManager::getCurrentUser()->getUserConfigString("sMailtoDelimiter");
         $sEmailLink = implode($delimiter, array_unique(array_filter($emailAddressArray)));
         if (!empty(SystemConfig::getValue('sToEmailAddress')) && !stristr($sEmailLink, (string) SystemConfig::getValue('sToEmailAddress'))) {
             $sEmailLink .= $delimiter . SystemConfig::getValue('sToEmailAddress');
@@ -217,8 +217,8 @@ class Cart
         return $sSMSLink;
     }
 
-    public static function EmptyAll()
+    public static function emptyAll()
     {
-        Cart::RemovePersonArray($_SESSION['aPeopleCart']);
+        Cart::removePersonArray($_SESSION['aPeopleCart']);
     }
 }

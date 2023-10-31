@@ -15,9 +15,10 @@ require 'Include/Functions.php';
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\Bootstrapper;
 
-$iPaddleNumID = InputUtils::LegacyFilterInputArr($_GET, 'PaddleNumID', 'int');
-$linkBack = InputUtils::LegacyFilterInputArr($_GET, 'linkBack');
+$iPaddleNumID = InputUtils::legacyFilterInputArr($_GET, 'PaddleNumID', 'int');
+$linkBack = InputUtils::legacyFilterInputArr($_GET, 'linkBack');
 
 if ($iPaddleNumID > 0) {
     $sSQL = "SELECT * FROM paddlenum_pn WHERE pn_ID = '$iPaddleNumID'";
@@ -29,7 +30,7 @@ if ($iPaddleNumID > 0) {
 }
 
 if ($iCurrentFundraiser == '') {
-    system_failure('No active Fundraiser', 'System Error');
+    Bootstrapper::systemFailure('No active Fundraiser', 'System Error');
 }
 
 // Get the current fundraiser data
@@ -48,14 +49,14 @@ $sPageTitle = gettext('Buyer Number Editor');
 //Is this the second pass?
 if (isset($_POST['PaddleNumSubmit']) || isset($_POST['PaddleNumSubmitAndAdd']) || isset($_POST['GenerateStatement'])) {
     //Get all the variables from the request object and assign them locally
-    $iNum = InputUtils::LegacyFilterInput($_POST['Num']);
-    $iPerID = InputUtils::LegacyFilterInput($_POST['PerID']);
+    $iNum = InputUtils::legacyFilterInput($_POST['Num']);
+    $iPerID = InputUtils::legacyFilterInput($_POST['PerID']);
 
     $rsMBItems = RunQuery($sMultibuyItemsSQL); // Go through the multibuy items, see if this person bought any
     while ($aRow = mysqli_fetch_array($rsMBItems)) {
         extract($aRow);
         $mbName = 'MBItem'.$di_ID;
-        $iMBCount = InputUtils::LegacyFilterInput($_POST[$mbName], 'int');
+        $iMBCount = InputUtils::legacyFilterInput($_POST[$mbName], 'int');
         if ($iMBCount > 0) { // count for this item is positive.  If a multibuy record exists, update it.  If not, create it.
             $sqlNumBought = 'SELECT mb_count from multibuy_mb WHERE mb_per_ID='.$iPerID.' AND mb_item_ID='.$di_ID;
             $rsNumBought = RunQuery($sqlNumBought);
@@ -96,13 +97,13 @@ if (isset($_POST['PaddleNumSubmit']) || isset($_POST['PaddleNumSubmitAndAdd']) |
     }
 
     if (isset($_POST['PaddleNumSubmit'])) {
-        RedirectUtils::Redirect('PaddleNumEditor.php?PaddleNumID='.$iPaddleNumID.'&linkBack='.$linkBack);
+        RedirectUtils::redirect('PaddleNumEditor.php?PaddleNumID='.$iPaddleNumID.'&linkBack='.$linkBack);
     } elseif (isset($_POST['PaddleNumSubmitAndAdd'])) {
         //Reload to editor to add another record
-        RedirectUtils::Redirect("PaddleNumEditor.php?CurrentFundraiser=$iCurrentFundraiser&linkBack=", $linkBack);
+        RedirectUtils::redirect("PaddleNumEditor.php?CurrentFundraiser=$iCurrentFundraiser&linkBack=", $linkBack);
     } elseif (isset($_POST['GenerateStatement'])) {
         //Jump straight to generating the statement report
-        RedirectUtils::Redirect("Reports/FundRaiserStatement.php?PaddleNumID=$iPaddleNumID");
+        RedirectUtils::redirect("Reports/FundRaiserStatement.php?PaddleNumID=$iPaddleNumID");
     }
 } else {
     //FirstPass
@@ -146,7 +147,7 @@ require 'Include/Header.php';
         <td align="center">
             <input type="submit" class="btn btn-default" value="<?= gettext('Save') ?>" name="PaddleNumSubmit">
             <input type="submit" class="btn btn-default" value="<?= gettext('Generate Statement') ?>" name="GenerateStatement">
-            <?php if (AuthenticationManager::GetCurrentUser()->isAddRecordsEnabled()) {
+            <?php if (AuthenticationManager::getCurrentUser()->isAddRecordsEnabled()) {
                 echo '<input type="submit" class="btn btn-default" value="'.gettext('Save and Add')."\" name=\"PaddleNumSubmitAndAdd\">\n";
             } ?>
             <input type="button" class="btn btn-default" value="<?= gettext('Back') ?>" name="PaddleNumCancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) {

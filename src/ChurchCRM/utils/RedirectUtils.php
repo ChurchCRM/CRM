@@ -12,7 +12,7 @@ class RedirectUtils
      * @param string $sRelativeURL
      * @throws \Exception
      */
-    public static function Redirect($sRelativeURL)
+    public static function redirect($sRelativeURL)
     {
         if (substr($sRelativeURL, 0, 1) != "/") {
             $sRelativeURL = "/" . $sRelativeURL;
@@ -26,14 +26,14 @@ class RedirectUtils
         exit;
     }
 
-    public static function AbsoluteRedirect($sTargetURL)
+    public static function absoluteRedirect($sTargetURL)
     {
         header('Location: ' . $sTargetURL);
         exit;
     }
     
     
-    public static function SecurityRedirect($missingRole)
+    public static function securityRedirect($missingRole)
     {
         LoggerUtils::getAppLogger()->info("Security Redirect Request due to Role: " . $missingRole);
         self::Redirect("Menu.php");

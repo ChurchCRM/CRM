@@ -25,12 +25,12 @@ class ResetPasswordTokenEmail extends BaseUserEmail
         return gettext("You can reset your ChurchCRM password by clicking this link").":";
     }
 
-    function getFullURL()
+    protected function getFullURL()
     {
         return SystemURLs::getURL() . "/session/forgot-password/set/".$this->token;
     }
 
-    function getButtonText()
+    protected function getButtonText()
     {
         return gettext('Reset Password');
     }

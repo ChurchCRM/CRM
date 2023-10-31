@@ -184,7 +184,7 @@ class User extends BaseUser
     {
         $note = new Note();
         $note->setPerId($this->getPersonId());
-        $note->setEntered(AuthenticationManager::GetCurrentUser()->getId());
+        $note->setEntered(AuthenticationManager::getCurrentUser()->getId());
         $note->setType('user');
 
         switch ($type) {
@@ -344,7 +344,7 @@ class User extends BaseUser
         // that the user is capapble of generating valid 2FA codes
         // encrypt the 2FA key since this object and its properties are serialized into the $_SESSION store
         // which is generally written to disk.
-        $this->provisional2FAKey = Crypto::encryptWithPassword($key, KeyManager::GetTwoFASecretKey());
+        $this->provisional2FAKey = Crypto::encryptWithPassword($key, KeyManager::getTwoFASecretKey());
         return $key;
     }
 
@@ -352,7 +352,7 @@ class User extends BaseUser
     {
         $google2fa = new Google2FA();
         $window = 2; //TODO: make this a system config
-        $pw = Crypto::decryptWithPassword($this->provisional2FAKey, KeyManager::GetTwoFASecretKey());
+        $pw = Crypto::decryptWithPassword($this->provisional2FAKey, KeyManager::getTwoFASecretKey());
         $isKeyValid = $google2fa->verifyKey($pw, $twoFACode, $window);
         if ($isKeyValid) {
             $this->setTwoFactorAuthSecret($this->provisional2FAKey);
@@ -370,12 +370,12 @@ class User extends BaseUser
 
     public function getDecryptedTwoFactorAuthSecret()
     {
-        return Crypto::decryptWithPassword($this->getTwoFactorAuthSecret(), KeyManager::GetTwoFASecretKey());
+        return Crypto::decryptWithPassword($this->getTwoFactorAuthSecret(), KeyManager::getTwoFASecretKey());
     }
 
     private function getDecryptedTwoFactorAuthRecoveryCodes()
     {
-        return explode(",", Crypto::decryptWithPassword($this->getTwoFactorAuthRecoveryCodes(), KeyManager::GetTwoFASecretKey()));
+        return explode(",", Crypto::decryptWithPassword($this->getTwoFactorAuthRecoveryCodes(), KeyManager::getTwoFASecretKey()));
     }
 
     public function disableTwoFactorAuthentication()
@@ -398,7 +398,7 @@ class User extends BaseUser
             $recoveryCodes[$i] = base64_encode(random_bytes(10));
         }
         $recoveryCodesString = implode(",", $recoveryCodes);
-        $this->setTwoFactorAuthRecoveryCodes(Crypto::encryptWithPassword($recoveryCodesString, KeyManager::GetTwoFASecretKey()));
+        $this->setTwoFactorAuthRecoveryCodes(Crypto::encryptWithPassword($recoveryCodesString, KeyManager::getTwoFASecretKey()));
         $this->save();
         return $recoveryCodes;
     }
@@ -425,7 +425,7 @@ class User extends BaseUser
         if (($key = array_search($twoFaRecoveryCode, $codes)) !== false) {
             unset($codes[$key]);
             $recoveryCodesString = implode(",", $codes);
-            $this->setTwoFactorAuthRecoveryCodes(Crypto::encryptWithPassword($recoveryCodesString, KeyManager::GetTwoFASecretKey()));
+            $this->setTwoFactorAuthRecoveryCodes(Crypto::encryptWithPassword($recoveryCodesString, KeyManager::getTwoFASecretKey()));
             return true;
         }
         return false;
@@ -446,7 +446,7 @@ class User extends BaseUser
             throw new PasswordChangeException("Old", gettext('Incorrect password supplied for current user'));
         }
 
-        if (!$this->GetIsPasswordPermissible($newPassword)) {
+        if (!$this->getIsPasswordPermissible($newPassword)) {
             throw new PasswordChangeException("New", gettext('Your password choice is too obvious. Please choose something else.'));
         }
 
@@ -468,7 +468,7 @@ class User extends BaseUser
         $this->createTimeLineNote("password-changed");
         return;
     }
-    private function GetIsPasswordPermissible($newPassword)
+    private function getIsPasswordPermissible($newPassword)
     {
         $aBadPasswords = explode(',', strtolower(SystemConfig::getValue('aDisallowedPasswords')));
         $aBadPasswords[] = strtolower($this->getPerson()->getFirstName());

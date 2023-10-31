@@ -22,12 +22,12 @@ use ChurchCRM\Authentication\AuthenticationManager;
 $sPageTitle = gettext('Query View');
 
 //Get the QueryID from the querystring
-$iQueryID = InputUtils::LegacyFilterInput($_GET['QueryID'], 'int');
+$iQueryID = InputUtils::legacyFilterInput($_GET['QueryID'], 'int');
 
 $aFinanceQueries = explode(',', SystemConfig::getValue('aFinanceQueries'));
 
-if (!AuthenticationManager::GetCurrentUser()->isFinanceEnabled() && in_array($iQueryID, $aFinanceQueries)) {
-    RedirectUtils::Redirect('Menu.php');
+if (!AuthenticationManager::getCurrentUser()->isFinanceEnabled() && in_array($iQueryID, $aFinanceQueries)) {
+    RedirectUtils::redirect('Menu.php');
     exit;
 }
 
@@ -91,10 +91,8 @@ function ValidateInput()
         if ($qrp_Required && empty($_POST[$qrp_Alias])) {
             $bError = true;
             $aErrorText[$qrp_Alias] = gettext('This value is required.');
-        }
-
-        //Assuming there was no error above...
-        else {
+        } else {
+            //Assuming there was no error above...
             //Validate differently depending on the contents of the qrp_Validation field
             switch ($qrp_Validation) {
                 //Numeric validation
@@ -108,15 +106,14 @@ function ValidateInput()
                         if ($_POST[$qrp_Alias] < $qrp_NumericMin) {
                             $bError = true;
                             $aErrorText[$qrp_Alias] = gettext('This value must be at least ').$qrp_NumericMin;
-                        }
-                        //Is it less than the maximum?
-                        elseif ($_POST[$qrp_Alias] > $qrp_NumericMax) {
+                        } elseif ($_POST[$qrp_Alias] > $qrp_NumericMax) {
+                            //Is it less than the maximum?
                             $bError = true;
                             $aErrorText[$qrp_Alias] = gettext('This value cannot be more than ').$qrp_NumericMax;
                         }
                     }
 
-                    $vPOST[$qrp_Alias] = InputUtils::LegacyFilterInput($_POST[$qrp_Alias], 'int');
+                    $vPOST[$qrp_Alias] = InputUtils::legacyFilterInput($_POST[$qrp_Alias], 'int');
                     break;
 
                 //Alpha validation
@@ -125,14 +122,13 @@ function ValidateInput()
                     if (strlen($_POST[$qrp_Alias]) > $qrp_AlphaMaxLength) {
                         $bError = true;
                         $aErrorText[$qrp_Alias] = gettext('This value cannot be more than ').$qrp_AlphaMaxLength.gettext(' characters long');
-                    }
-                    //is the length more than the minimum?
-                    elseif (strlen($_POST[$qrp_Alias]) < $qrp_AlphaMinLength) {
+                    } elseif (strlen($_POST[$qrp_Alias]) < $qrp_AlphaMinLength) {
+                        //is the length more than the minimum?
                         $bError = true;
                         $aErrorText[$qrp_Alias] = gettext('This value cannot be less than ').$qrp_AlphaMinLength.gettext(' characters long');
                     }
 
-                    $vPOST[$qrp_Alias] = InputUtils::LegacyFilterInput($_POST[$qrp_Alias]);
+                    $vPOST[$qrp_Alias] = InputUtils::legacyFilterInput($_POST[$qrp_Alias]);
                     break;
 
                 default:
@@ -243,9 +239,8 @@ function DoQuery()
                 <?php
 
                 $aAddToCartIDs[] = $aRow[$iCount];
-            }
-            //...otherwise just render the field
-            else {
+            } else {
+                //...otherwise just render the field
                 //Write the actual value of this row
                 echo '<td>'.$aRow[$iCount].'</td>';
             }

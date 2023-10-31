@@ -90,7 +90,7 @@ require 'Include/Header.php';
     </div>
     <?php
 } else {
-                                $iGroupID = InputUtils::LegacyFilterInput($_POST['GroupID'], 'int'); ?>
+                                $iGroupID = InputUtils::legacyFilterInput($_POST['GroupID'], 'int'); ?>
     <div class="row">
         <div class="col-lg-12">
             <div class="card">

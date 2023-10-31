@@ -2,7 +2,7 @@
 
 namespace ChurchCRM\Reports;
 
-class PDF_AddressReport extends ChurchInfoReport
+class PdfAddressReport extends ChurchInfoReport
 {
     // Private properties
     private int $_Margin_Left = 12;         // Left Margin
@@ -14,7 +14,7 @@ class PDF_AddressReport extends ChurchInfoReport
     private $sFamily;
     private $sLastName;
 
-    public function num_lines_in_fpdf_cell($w, $txt)
+    private function numLinesInFpdfCell($w, $txt)
     {
         //Computes the number of lines a MultiCell of width w will take
         $cw = &$this->CurrentFont['cw'];
@@ -68,7 +68,7 @@ class PDF_AddressReport extends ChurchInfoReport
 
     // Sets the character size
     // This changes the line height too
-    public function Set_Char_Size($pt)
+    public function setCharSize($pt)
     {
         if ($pt > 3) {
             $this->_Char_Size = $pt;
@@ -83,16 +83,16 @@ class PDF_AddressReport extends ChurchInfoReport
         parent::__construct('P', 'mm', $this->paperFormat);
         $this->SetMargins(0, 0);
 
-        $this->Set_Char_Size(12);
-        $this->AddPage();
+        $this->setCharSize(12);
+        $this->addPage();
         $this->SetAutoPageBreak(false);
 
-        $this->Set_Char_Size(20);
+        $this->setCharSize(20);
         $this->Write(10, 'ChurchCRM USPS Address Verification Report');
-        $this->Set_Char_Size(12);
+        $this->setCharSize(12);
     }
 
-    public function Check_Lines($numlines)
+    public function checkLines($numlines)
     {
         $CurY = $this->GetY();  // Temporarily store off the position
 
@@ -102,18 +102,18 @@ class PDF_AddressReport extends ChurchInfoReport
         if ($this->_Margin_Top + (($this->_CurLine + $numlines) * 5) > $this->GetY()) {
             // Next Page
             $this->_CurLine = 5;
-            $this->AddPage();
+            $this->addPage();
         }
         $this->SetY($CurY); // Put the position back
     }
 
     // Number of lines is only for the $text parameter
-    public function Add_Record($fam_Str, $sLuStr, $sErrStr)
+    public function addRecord($fam_Str, $sLuStr, $sErrStr)
     {
         $sLuStr .= "\n".$sErrStr;
 
-        $numlines1 = $this->num_lines_in_fpdf_cell(90, $fam_Str);
-        $numlines2 = $this->num_lines_in_fpdf_cell(90, $sLuStr);
+        $numlines1 = $this->numLinesInFpdfCell(90, $fam_Str);
+        $numlines2 = $this->numLinesInFpdfCell(90, $sLuStr);
 
         if ($numlines1 > $numlines2) {
             $numlines = $numlines1;
@@ -121,7 +121,7 @@ class PDF_AddressReport extends ChurchInfoReport
             $numlines = $numlines2;
         }
 
-        $this->Check_Lines($numlines);
+        $this->checkLines($numlines);
 
         $_PosX = $this->_Margin_Left;
         $_PosY = $this->_Margin_Top + ($this->_CurLine * 5);

@@ -32,8 +32,8 @@ use ChurchCRM\Authentication\AuthenticationManager;
 
 // Security: User must be an Admin to access this page.
 // Otherwise re-direct to the main menu.
-if (!AuthenticationManager::GetCurrentUser()->isAdmin()) {
-    RedirectUtils::Redirect('Menu.php');
+if (!AuthenticationManager::getCurrentUser()->isAdmin()) {
+    RedirectUtils::redirect('Menu.php');
     exit;
 }
 
@@ -43,25 +43,25 @@ $bShowPersonSelect = false;
 
 // Get the PersonID out of either querystring or the form, depending and what we're doing
 if (isset($_GET['PersonID'])) {
-    $iPersonID = InputUtils::LegacyFilterInput($_GET['PersonID'], 'int');
+    $iPersonID = InputUtils::legacyFilterInput($_GET['PersonID'], 'int');
     $bNewUser = false;
 } elseif (isset($_POST['PersonID'])) {
-    $iPersonID = InputUtils::LegacyFilterInput($_POST['PersonID'], 'int');
+    $iPersonID = InputUtils::legacyFilterInput($_POST['PersonID'], 'int');
     $bNewUser = false;
 } elseif (isset($_GET['NewPersonID'])) {
-    $iPersonID = InputUtils::LegacyFilterInput($_GET['NewPersonID'], 'int');
+    $iPersonID = InputUtils::legacyFilterInput($_GET['NewPersonID'], 'int');
     $bNewUser = true;
 }
 
 if (isset($_GET['ErrorText'])) {
-    $sErrorText = InputUtils::LegacyFilterInput($_GET['ErrorText'], 'string');
+    $sErrorText = InputUtils::legacyFilterInput($_GET['ErrorText'], 'string');
 } else {
     $sErrorText = '';
 }
 
 //Value to help determine correct return state on error
 if (isset($_POST['NewUser'])) {
-    $NewUser = InputUtils::LegacyFilterInput($_POST['NewUser'], 'string');
+    $NewUser = InputUtils::legacyFilterInput($_POST['NewUser'], 'string');
 }
 
 // Has the form been submitted?
@@ -70,15 +70,15 @@ if (isset($_POST['save']) && $iPersonID > 0) {
     $sAction = $_POST['Action'];
 
     $defaultFY = CurrentFY();
-    $sUserName = InputUtils::LegacyFilterInput($_POST['UserName']);
+    $sUserName = InputUtils::legacyFilterInput($_POST['UserName']);
 
     if (strlen($sUserName) < 3) {
         if ($NewUser == false) {
             //Report error for current user creation
-            RedirectUtils::Redirect('UserEditor.php?PersonID=' . $iPersonID . '&ErrorText=Login must be a least 3 characters!');
+            RedirectUtils::redirect('UserEditor.php?PersonID=' . $iPersonID . '&ErrorText=Login must be a least 3 characters!');
         } else {
             //Report error for new user creation
-            RedirectUtils::Redirect('UserEditor.php?NewPersonID=' . $iPersonID . '&ErrorText=Login must be a least 3 characters!');
+            RedirectUtils::redirect('UserEditor.php?NewPersonID=' . $iPersonID . '&ErrorText=Login must be a least 3 characters!');
         }
     } else {
         if (isset($_POST['AddRecords'])) {
@@ -132,7 +132,7 @@ if (isset($_POST['save']) && $iPersonID > 0) {
         } else {
             $Admin = 0;
         }
-        $Style = InputUtils::LegacyFilterInput($_POST['Style']);
+        $Style = InputUtils::legacyFilterInput($_POST['Style']);
 
         // Initialize error flag
         $bErrorFlag = false;
@@ -155,7 +155,7 @@ if (isset($_POST['save']) && $iPersonID > 0) {
                     $email->send();
                 } else {
                     // Set the error text for duplicate when new user
-                    RedirectUtils::Redirect('UserEditor.php?NewPersonID=' . $PersonID . '&ErrorText=Login already in use, please select a different login!');
+                    RedirectUtils::redirect('UserEditor.php?NewPersonID=' . $PersonID . '&ErrorText=Login already in use, please select a different login!');
                 }
             } else {
                 if ($undupCount == 0) {
@@ -166,7 +166,7 @@ if (isset($_POST['save']) && $iPersonID > 0) {
                     $user->createTimeLineNote("updated");
                 } else {
                     // Set the error text for duplicate when currently existing
-                    RedirectUtils::Redirect('UserEditor.php?PersonID=' . $iPersonID . '&ErrorText=Login already in use, please select a different login!');
+                    RedirectUtils::redirect('UserEditor.php?PersonID=' . $iPersonID . '&ErrorText=Login already in use, please select a different login!');
                 }
             }
         }
@@ -257,11 +257,11 @@ if (isset($_POST['save']) && ($iPersonID > 0)) {
         $id = key($type);
         // Filter Input
         if ($current_type == 'text' || $current_type == 'textarea') {
-            $value = InputUtils::LegacyFilterInput($new_value[$id]);
+            $value = InputUtils::legacyFilterInput($new_value[$id]);
         } elseif ($current_type == 'number') {
-            $value = InputUtils::LegacyFilterInput($new_value[$id], 'float');
+            $value = InputUtils::legacyFilterInput($new_value[$id], 'float');
         } elseif ($current_type == 'date') {
-            $value = InputUtils::LegacyFilterInput($new_value[$id], 'date');
+            $value = InputUtils::legacyFilterInput($new_value[$id], 'date');
         } elseif ($current_type == 'boolean') {
             if ($new_value[$id] != '1') {
                 $value = '';
@@ -313,7 +313,7 @@ if (isset($_POST['save']) && ($iPersonID > 0)) {
         next($type);
     }
 
-    RedirectUtils::Redirect('UserList.php');
+    RedirectUtils::redirect('UserList.php');
     exit;
 }
 

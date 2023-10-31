@@ -2,7 +2,7 @@
 
 namespace ChurchCRM\Reports;
 
-class PDF_DepositReport extends ChurchInfoReport
+class PdfDepositReport extends ChurchInfoReport
 {
     // Private properties
     public $_Char_Size = 10;        // Character size
@@ -10,7 +10,7 @@ class PDF_DepositReport extends ChurchInfoReport
 
   // Sets the character size
   // This changes the line height too
-    public function Set_Char_Size($pt)
+    public function setCharSize($pt)
     {
         if ($pt > 3) {
             $this->_Char_Size = $pt;
@@ -18,7 +18,7 @@ class PDF_DepositReport extends ChurchInfoReport
         }
     }
 
-    public function PrintRightJustified($x, $y, $str)
+    public function printRightJustified($x, $y, $str)
     {
         $iLen = strlen($str);
         $nMoveBy = 10 - 2 * $iLen;
@@ -34,7 +34,7 @@ class PDF_DepositReport extends ChurchInfoReport
       //
         $this->SetFont('courier');
         $this->SetMargins(0, 0);
-        $this->Set_Char_Size(10);
+        $this->setCharSize(10);
         $this->SetAutoPageBreak(false);
     }
 }

@@ -16,7 +16,7 @@ class UserAPIMiddleware
             return $response->withStatus(412, gettext("Missing"). " UserId");
         }
 
-        $loggedInUser = AuthenticationManager::GetCurrentUser();
+        $loggedInUser = AuthenticationManager::getCurrentUser();
         if ($loggedInUser->getId() == $userId) {
             $user = $loggedInUser;
         } elseif ($loggedInUser->isAdmin()) {

@@ -20,8 +20,8 @@ use ChurchCRM\Authentication\AuthenticationManager;
 
 // Security: User must have Manage Groups or Edit Records permissions
 // Otherwise, re-direct them to the main menu.
-if (!AuthenticationManager::GetCurrentUser()->isManageGroupsEnabled() && !AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled()) {
-    RedirectUtils::Redirect('Menu.php');
+if (!AuthenticationManager::getCurrentUser()->isManageGroupsEnabled() && !AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) {
+    RedirectUtils::redirect('Menu.php');
     exit;
 }
 
@@ -29,16 +29,16 @@ $sValue = '';
 
 // Get the new property value from the request
 if (isset($_POST['PropertyID'])) {
-    $iPropertyID = InputUtils::LegacyFilterInput($_POST['PropertyID'], 'int');
+    $iPropertyID = InputUtils::legacyFilterInput($_POST['PropertyID'], 'int');
     $sAction = 'add';
 } else {
-    $iPropertyID = InputUtils::LegacyFilterInput($_GET['PropertyID'], 'int');
+    $iPropertyID = InputUtils::legacyFilterInput($_GET['PropertyID'], 'int');
     $sAction = 'edit';
 }
 
-if (isset($_GET['PersonID']) && AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled()) {
+if (isset($_GET['PersonID']) && AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) {
     // Is there a PersonID in the querystring?
-    $iPersonID = InputUtils::LegacyFilterInput($_GET['PersonID'], 'int');
+    $iPersonID = InputUtils::legacyFilterInput($_GET['PersonID'], 'int');
     $iRecordID = $iPersonID;
     $sQuerystring = '?PersonID='.$iPersonID;
     $sTypeName = gettext('Person');
@@ -49,9 +49,9 @@ if (isset($_GET['PersonID']) && AuthenticationManager::GetCurrentUser()->isEditR
     $rsName = RunQuery($sSQL);
     $aRow = mysqli_fetch_array($rsName);
     $sName = $aRow['per_LastName'].', '.$aRow['per_FirstName'];
-} elseif (isset($_GET['GroupID']) && AuthenticationManager::GetCurrentUser()->isManageGroupsEnabled()) {
+} elseif (isset($_GET['GroupID']) && AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) {
     // Is there a GroupID in the querystring?
-    $iGroupID = InputUtils::LegacyFilterInput($_GET['GroupID'], 'int');
+    $iGroupID = InputUtils::legacyFilterInput($_GET['GroupID'], 'int');
     $iRecordID = $iGroupID;
     $sQuerystring = '?GroupID='.$iGroupID;
     $sTypeName = gettext('Group');
@@ -62,9 +62,9 @@ if (isset($_GET['PersonID']) && AuthenticationManager::GetCurrentUser()->isEditR
     $rsName = RunQuery($sSQL);
     $aRow = mysqli_fetch_array($rsName);
     $sName = $aRow['grp_Name'];
-} elseif (isset($_GET['FamilyID']) && AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled()) {
+} elseif (isset($_GET['FamilyID']) && AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) {
     // Is there a FamilyID in the querystring?
-    $iFamilyID = InputUtils::LegacyFilterInput($_GET['FamilyID'], 'int');
+    $iFamilyID = InputUtils::legacyFilterInput($_GET['FamilyID'], 'int');
     $iRecordID = $iFamilyID;
     $sQuerystring = '?FamilyID='.$iFamilyID;
     $sTypeName = gettext('Family');
@@ -77,12 +77,12 @@ if (isset($_GET['PersonID']) && AuthenticationManager::GetCurrentUser()->isEditR
     $sName = $aRow['fam_Name'];
 } else {
     // Somebody tried to call the script with no options
-    RedirectUtils::Redirect('Menu.php');
+    RedirectUtils::redirect('Menu.php');
 }
 
 // If no property, return to previous page
 if (!$iPropertyID) {
-    RedirectUtils::Redirect("$sBackPage");
+    RedirectUtils::redirect("$sBackPage");
 }
 
 function UpdateProperty($iRecordID, $sValue, $iPropertyID, $sAction)
@@ -110,7 +110,7 @@ if (isset($_POST['SecondPass'])) {
     $sAction = $_POST['Action'];
 
     // Get the value
-    $sValue = InputUtils::LegacyFilterInput($_POST['Value']);
+    $sValue = InputUtils::legacyFilterInput($_POST['Value']);
 
     // Update the property
     UpdateProperty($iRecordID, $sValue, $iPropertyID, $sAction);
@@ -119,7 +119,7 @@ if (isset($_POST['SecondPass'])) {
     $_SESSION['sGlobalMessage'] = gettext('Property successfully assigned.');
 
     // Back to the PersonView
-    RedirectUtils::Redirect($sBackPage);
+    RedirectUtils::redirect($sBackPage);
 }
 
 // Get the name of the property
@@ -137,7 +137,7 @@ if (strlen($sPrompt) == 0) {
     $_SESSION['sGlobalMessage'] = gettext('Property successfully assigned.');
 
     // Back to the PersonView
-    RedirectUtils::Redirect($sBackPage);
+    RedirectUtils::redirect($sBackPage);
 }
 
 // If we're editing, get the value

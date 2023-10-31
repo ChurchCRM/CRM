@@ -35,7 +35,7 @@ class NotificationService
             $notifications = [];
             foreach ($_SESSION['SystemNotifications']->messages as $message) {
                 if ($message->targetVersion == $_SESSION['sSoftwareInstalledVersion']) {
-                    if (! $message->adminOnly ||  AuthenticationManager::GetCurrentUser()->isAdmin()) {
+                    if (! $message->adminOnly ||  AuthenticationManager::getCurrentUser()->isAdmin()) {
                         array_push($notifications, $message);
                     }
                 }

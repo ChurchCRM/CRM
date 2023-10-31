@@ -20,13 +20,13 @@ $app->group('/user/current', function () use ($app) {
 function enroll2fa(Request $request, Response $response, array $args)
 {
     $renderer = new PhpRenderer('templates/user/');
-    $curUser = AuthenticationManager::GetCurrentUser();
+    $curUser = AuthenticationManager::getCurrentUser();
     $pageArgs = [
         'sRootPath' => SystemURLs::getRootPath(),
         'user' => $curUser,
     ];
 
-    if (LocalAuthentication::GetIsTwoFactorAuthSupported()) {
+    if (LocalAuthentication::getIsTwoFactorAuthSupported()) {
         return $renderer->render($response, 'manage-2fa.php', $pageArgs);
     } else {
         return $renderer->render($response, 'unsupported-2fa.php', $pageArgs);
@@ -36,8 +36,8 @@ function enroll2fa(Request $request, Response $response, array $args)
 function changepassword(Request $request, Response $response, array $args)
 {
     $renderer = new PhpRenderer('templates/');
-    $authenticationProvider = AuthenticationManager::GetAuthenticationProvider();
-    $curUser = AuthenticationManager::GetCurrentUser();
+    $authenticationProvider = AuthenticationManager::getAuthenticationProvider();
+    $curUser = AuthenticationManager::getCurrentUser();
     $pageArgs = [
         'sRootPath' => SystemURLs::getRootPath(),
         'user' => $curUser,
@@ -57,12 +57,12 @@ function changepassword(Request $request, Response $response, array $args)
         }
 
         return $renderer->render($response, 'user/changepassword.php', $pageArgs);
-    } elseif (empty($authenticationProvider->GetPasswordChangeURL())) {
+    } elseif (empty($authenticationProvider->getPasswordChangeURL())) {
         // if the authentication provider includes a URL for self-service password change
         // then direct the user there
         // i.e. SSO will usually be a password change "portal," so we would redirect here.
         // but this will come later when we add more AuthenticationProviders
-        RedirectUtils::AbsoluteRedirect($authenticationProvider->GetPasswordChangeURL());
+        RedirectUtils::absoluteRedirect($authenticationProvider->getPasswordChangeURL());
     } else {
         // we're not using LocalAuth, and the AuthProvider does not specify a password change url
         // so tell the user we can't help them

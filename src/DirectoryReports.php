@@ -20,8 +20,8 @@ use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Authentication\AuthenticationManager;
 
 // Check for Create Directory user permission.
-if (!AuthenticationManager::GetCurrentUser()->isCreateDirectoryEnabled()) {
-    RedirectUtils::Redirect('Menu.php');
+if (!AuthenticationManager::getCurrentUser()->isCreateDirectoryEnabled()) {
+    RedirectUtils::redirect('Menu.php');
     exit;
 }
 

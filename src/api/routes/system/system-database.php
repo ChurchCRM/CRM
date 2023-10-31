@@ -41,7 +41,7 @@ $app->group('/database', function () use ($app) {
             $input->EncryptBackup ?? "",
             $input->BackupPassword ?? ""
         );
-        $Backup->Execute();
+        $Backup->execute();
         return $response->withJson($Backup);
     });
 
@@ -57,8 +57,8 @@ $app->group('/database', function () use ($app) {
                 $input->EncryptBackup ?? "",
                 $input->BackupPassword ?? ""
             );
-            $Backup->Execute();
-            $copyStatus = $Backup->CopyToWebDAV(SystemConfig::getValue('sExternalBackupEndpoint'), SystemConfig::getValue('sExternalBackupUsername'), SystemConfig::getValue('sExternalBackupPassword'));
+            $Backup->execute();
+            $copyStatus = $Backup->copyToWebDAV(SystemConfig::getValue('sExternalBackupEndpoint'), SystemConfig::getValue('sExternalBackupUsername'), SystemConfig::getValue('sExternalBackupPassword'));
             return $response->withJson($copyStatus);
         } else {
             throw new \Exception('WebDAV backups are not correctly configured.  Please ensure endpoint, username, and password are set', 500);
@@ -67,13 +67,13 @@ $app->group('/database', function () use ($app) {
 
     $app->post('/restore', function ($request, $response, $args) {
         $RestoreJob = new RestoreJob();
-        $RestoreJob->Execute();
+        $RestoreJob->execute();
         return $response->withJson($RestoreJob);
     });
 
     $app->get('/download/{filename}', function ($request, $response, $args) {
         $filename = $args['filename'];
-        BackupDownloader::DownloadBackup($filename);
+        BackupDownloader::downloadBackup($filename);
     });
 })->add(new AdminRoleAuthMiddleware());
 
@@ -156,7 +156,7 @@ function resetDatabase(Request $request, Response $response, array $p_args)
         $logger->info("DB Update: " . $alterSQL . " done.");
     }
     
-    AuthenticationManager::EndSession();
+    AuthenticationManager::endSession();
 
     return $response->withJson(['success' => true, 'msg' => gettext('The database has been cleared.')]);
 }
@@ -165,7 +165,7 @@ function clearPeopleTables(Request $request, Response $response, array $p_args)
 {
     $connection = Propel::getConnection();
     $logger = LoggerUtils::getAppLogger();
-    $curUserId = AuthenticationManager::GetCurrentUser()->getId();
+    $curUserId = AuthenticationManager::getCurrentUser()->getId();
     $logger->info("People DB Clear started ");
 
 

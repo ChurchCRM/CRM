@@ -29,18 +29,18 @@ namespace ChurchCRM\Authentication\AuthenticationProviders {
         private ?bool $bPendingTwoFactorAuth = null;
         private ?int $tLastOperationTimestamp = null;
 
-        public function GetPasswordChangeURL()
+        public function getPasswordChangeURL()
         {
           // this shouln't really be called, but it's necessarty to implement the IAuthenticationProvider interface
             return SystemURLs::getRootPath().'/v2/user/current/changepassword';
         }
 
-        public static function GetIsTwoFactorAuthSupported()
+        public static function getIsTwoFactorAuthSupported()
         {
-            return SystemConfig::getBooleanValue("bEnable2FA") && KeyManager::GetAreAllSecretsDefined();
+            return SystemConfig::getBooleanValue("bEnable2FA") && KeyManager::getAreAllSecretsDefined();
         }
 
-        public static function GetTwoFactorQRCode($username, $secret):QrCode
+        public static function getTwoFactorQRCode($username, $secret):QrCode
         {
             $google2fa = new Google2FA();
             $g2faUrl = $google2fa->getQRCodeUrl(
@@ -57,12 +57,12 @@ namespace ChurchCRM\Authentication\AuthenticationProviders {
         {
         }
 
-        public function GetCurrentUser()
+        public function getCurrentUser()
         {
             return $this->currentUser;
         }
 
-        public function EndSession()
+        public function endSession()
         {
 
             if (!empty($this->currentUser)) {
@@ -101,7 +101,7 @@ namespace ChurchCRM\Authentication\AuthenticationProviders {
             $_SESSION['iCurrentDeposit'] = $this->currentUser->getCurrentDeposit();
         }
 
-        public function Authenticate(AuthenticationRequest $AuthenticationRequest)
+        public function authenticate(AuthenticationRequest $AuthenticationRequest)
         {
 
             if (!($AuthenticationRequest instanceof LocalUsernamePasswordRequest  || $AuthenticationRequest instanceof LocalTwoFactorTokenRequest)) {
@@ -116,19 +116,20 @@ namespace ChurchCRM\Authentication\AuthenticationProviders {
           // Get the information for the selected user
                 $this->currentUser = UserQuery::create()->findOneByUserName($AuthenticationRequest->username);
                 if ($this->currentUser == null) {
-                  // Set the error text
+                    // Set the error text
                     $authenticationResult->isAuthenticated = false;
                     $authenticationResult->message = gettext('Invalid login or password');
                     return $authenticationResult;
-                } // Block the login if a maximum login failure count has been reached
-                elseif ($this->currentUser->isLocked()) {
+                } elseif ($this->currentUser->isLocked()) {
+                    // Block the login if a maximum login failure count has been reached
                     $authenticationResult->isAuthenticated = false;
                     $authenticationResult->message = gettext('Too many failed logins: your account has been locked.  Please contact an administrator.');
                     LoggerUtils::getAuthLogger()->warning("Authentication attempt for locked account: " . $this->currentUser->getUserName());
                     return $authenticationResult;
-                } // Does the password match?
-                elseif (!$this->currentUser->isPasswordValid($AuthenticationRequest->password)) {
-                  // Increment the FailedLogins
+                } elseif (!$this->currentUser->isPasswordValid($AuthenticationRequest->password)) {
+                    // Does the password match?
+
+                    // Increment the FailedLogins
                     $this->currentUser->setFailedLogins($this->currentUser->getFailedLogins() + 1);
                     $this->currentUser->save();
                     if (!empty($this->currentUser->getEmail()) && $this->currentUser->isLocked()) {
@@ -181,7 +182,7 @@ namespace ChurchCRM\Authentication\AuthenticationProviders {
             }
         }
 
-        public function ValidateUserSessionIsActive($updateLastOperationTimestamp) : AuthenticationResult
+        public function validateUserSessionIsActive($updateLastOperationTimestamp) : AuthenticationResult
         {
 
             $authenticationResult = new AuthenticationResult();
@@ -199,7 +200,7 @@ namespace ChurchCRM\Authentication\AuthenticationProviders {
                 $this->currentUser->reload();
             } catch (\Exception $exc) {
                 LoggerUtils::getAuthLogger()->debug("User with active session no longer exists in the database.  Expiring session");
-                AuthenticationManager::EndSession();
+                AuthenticationManager::endSession();
                 $authenticationResult->isAuthenticated = false;
                 return $authenticationResult;
             }
@@ -217,11 +218,11 @@ namespace ChurchCRM\Authentication\AuthenticationProviders {
 
       // Next, if this user needs to change password, send to that page
       // but don't redirect them if they're already on the password change page
-            $IsUserOnPasswordChangePageNow = $_SERVER["REQUEST_URI"] == $this->GetPasswordChangeURL();
+            $IsUserOnPasswordChangePageNow = $_SERVER["REQUEST_URI"] == $this->getPasswordChangeURL();
             if ($this->currentUser->getNeedPasswordChange() && ! $IsUserOnPasswordChangePageNow) {
                 LoggerUtils::getAuthLogger()->info("User needs password change; redirecting to password change");
                 $authenticationResult->isAuthenticated = false;
-                $authenticationResult->nextStepURL = $this->GetPasswordChangeURL();
+                $authenticationResult->nextStepURL = $this->getPasswordChangeURL();
             }
 
 

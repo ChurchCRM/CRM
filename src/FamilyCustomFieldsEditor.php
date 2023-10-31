@@ -23,8 +23,8 @@ use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Authentication\AuthenticationManager;
 
 // Security: user must be administrator to use this page
-if (!AuthenticationManager::GetCurrentUser()->isAdmin()) {
-    RedirectUtils::Redirect('Menu.php');
+if (!AuthenticationManager::getCurrentUser()->isAdmin()) {
+    RedirectUtils::redirect('Menu.php');
     exit;
 }
 
@@ -63,7 +63,7 @@ if (isset($_POST['SaveChanges'])) {
     }
 
     for ($iFieldID = 1; $iFieldID <= $numRows; $iFieldID++) {
-        $aNameFields[$iFieldID] = InputUtils::LegacyFilterInput($_POST[$iFieldID.'name']);
+        $aNameFields[$iFieldID] = InputUtils::legacyFilterInput($_POST[$iFieldID.'name']);
 
         if (strlen($aNameFields[$iFieldID]) == 0) {
             $aNameErrors[$iFieldID] = true;
@@ -75,7 +75,7 @@ if (isset($_POST['SaveChanges'])) {
         $aFieldSecurity[$iFieldID] = $_POST[$iFieldID.'FieldSec'];
 
         if (isset($_POST[$iFieldID.'special'])) {
-            $aSpecialFields[$iFieldID] = InputUtils::LegacyFilterInput($_POST[$iFieldID.'special'], 'int');
+            $aSpecialFields[$iFieldID] = InputUtils::legacyFilterInput($_POST[$iFieldID.'special'], 'int');
 
             if ($aSpecialFields[$iFieldID] == 0) {
                 $aSpecialErrors[$iFieldID] = true;
@@ -101,8 +101,8 @@ if (isset($_POST['SaveChanges'])) {
 } else {
     // Check if we're adding a field
     if (isset($_POST['AddField'])) {
-        $newFieldType = InputUtils::LegacyFilterInput($_POST['newFieldType'], 'int');
-        $newFieldName = InputUtils::LegacyFilterInput($_POST['newFieldName']);
+        $newFieldType = InputUtils::legacyFilterInput($_POST['newFieldType'], 'int');
+        $newFieldName = InputUtils::legacyFilterInput($_POST['newFieldName']);
         $newFieldSec = $_POST['newFieldSec'];
 
         if (strlen($newFieldName) == 0) {

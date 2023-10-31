@@ -19,8 +19,8 @@ use ChurchCRM\Authentication\AuthenticationManager;
 
 // Security: User must have Notes permission
 // Otherwise, re-direct them to the main menu.
-if (!AuthenticationManager::GetCurrentUser()->isNotesEnabled()) {
-    RedirectUtils::Redirect('Menu.php');
+if (!AuthenticationManager::getCurrentUser()->isNotesEnabled()) {
+    RedirectUtils::redirect('Menu.php');
     exit;
 }
 
@@ -28,7 +28,7 @@ if (!AuthenticationManager::GetCurrentUser()->isNotesEnabled()) {
 $sPageTitle = gettext('Note Delete Confirmation');
 
 //Get the NoteID from the querystring
-$iNoteID = InputUtils::LegacyFilterInput($_GET['NoteID'], 'int');
+$iNoteID = InputUtils::legacyFilterInput($_GET['NoteID'], 'int');
 
 //Get the data on this note
 $sSQL = 'SELECT * FROM note_nte WHERE nte_ID = '.$iNoteID;
@@ -38,10 +38,8 @@ extract(mysqli_fetch_array($rsNote));
 //If deleting a note for a person, set the PersonView page as the redirect
 if ($nte_per_ID > 0) {
     $sReroute = 'PersonView.php?PersonID='.$nte_per_ID;
-}
-
-//If deleting a note for a family, set the FamilyView page as the redirect
-elseif ($nte_fam_ID > 0) {
+} elseif ($nte_fam_ID > 0) {
+    //If deleting a note for a family, set the FamilyView page as the redirect
     $sReroute = 'v2/family/'.$nte_fam_ID;
 }
 
@@ -51,7 +49,7 @@ if (isset($_GET['Confirmed'])) {
     $note->delete();
 
     //Send back to the page they came from
-    RedirectUtils::Redirect($sReroute);
+    RedirectUtils::redirect($sReroute);
 }
 
 require 'Include/Header.php';

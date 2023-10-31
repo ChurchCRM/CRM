@@ -27,7 +27,7 @@ function listFamilies(Request $request, Response $response, array $args)
     $sMode = 'Active';
   // Filter received user input as needed
     if (isset($_GET['mode'])) {
-        $sMode = InputUtils::LegacyFilterInput($_GET['mode']);
+        $sMode = InputUtils::legacyFilterInput($_GET['mode']);
     }
     if (strtolower($sMode) == 'inactive') {
         $families = FamilyQuery::create()
@@ -89,7 +89,7 @@ function viewFamily(Request $request, Response $response, array $args)
     if ($appFamilyCustomFields) {
         $familyCustom = [];
         foreach ($allFamilyCustomFields as $customfield) {
-            if (AuthenticationManager::GetCurrentUser()->isEnabledSecurity($customfield->getFieldSecurity())) {
+            if (AuthenticationManager::getCurrentUser()->isEnabledSecurity($customfield->getFieldSecurity())) {
                 $value = $appFamilyCustomFields->getVirtualColumn($customfield->getField());
                 if (!empty($value)) {
                     $item = new PeopleCustomField($customfield, $value);

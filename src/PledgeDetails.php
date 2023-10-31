@@ -18,19 +18,19 @@ use ChurchCRM\Authentication\AuthenticationManager;
 $sPageTitle = gettext('Electronic Transaction Details');
 
 //Get the PledgeID out of the querystring
-$iPledgeID = InputUtils::LegacyFilterInput($_GET['PledgeID'], 'int');
-$linkBack = InputUtils::LegacyFilterInput($_GET['linkBack']);
+$iPledgeID = InputUtils::legacyFilterInput($_GET['PledgeID'], 'int');
+$linkBack = InputUtils::legacyFilterInput($_GET['linkBack']);
 
 // Security: User must have Finance permission to use this form.
 // Clean error handling: (such as somebody typing an incorrect URL ?PersonID= manually)
-if (!AuthenticationManager::GetCurrentUser()->isFinanceEnabled()) {
-    RedirectUtils::Redirect('Menu.php');
+if (!AuthenticationManager::getCurrentUser()->isFinanceEnabled()) {
+    RedirectUtils::redirect('Menu.php');
     exit;
 }
 
 //Is this the second pass?
 if (isset($_POST['Back'])) {
-    RedirectUtils::Redirect($linkBack);
+    RedirectUtils::redirect($linkBack);
 }
 
 $sSQL = 'SELECT * FROM pledge_plg WHERE plg_plgID = '.$iPledgeID;

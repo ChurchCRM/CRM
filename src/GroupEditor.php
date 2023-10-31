@@ -22,8 +22,8 @@ use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Authentication\AuthenticationManager;
 
 // Security: User must have Manage Groups permission
-if (!AuthenticationManager::GetCurrentUser()->isManageGroupsEnabled()) {
-    RedirectUtils::Redirect('Menu.php');
+if (!AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) {
+    RedirectUtils::redirect('Menu.php');
     exit;
 }
 
@@ -32,9 +32,9 @@ $sPageTitle = gettext('Group Editor');
 $groupService = new GroupService();
 //Get the GroupID from the querystring.  Redirect to Menu if no groupID is present, since this is an edit-only form.
 if (array_key_exists('GroupID', $_GET)) {
-    $iGroupID = InputUtils::LegacyFilterInput($_GET['GroupID'], 'int');
+    $iGroupID = InputUtils::legacyFilterInput($_GET['GroupID'], 'int');
 } else {
-    RedirectUtils::Redirect('GroupList.php');
+    RedirectUtils::redirect('GroupList.php');
 }
 
 $thisGroup = GroupQuery::create()->findOneById($iGroupID);   //get this group from the group service.

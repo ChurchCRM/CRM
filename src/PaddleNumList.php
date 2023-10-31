@@ -14,7 +14,7 @@ require 'Include/Functions.php';
 
 use ChurchCRM\Utils\InputUtils;
 
-$linkBack = InputUtils::LegacyFilterInputArr($_GET, 'linkBack');
+$linkBack = InputUtils::legacyFilterInputArr($_GET, 'linkBack');
 
 $iFundRaiserID = $_SESSION['iCurrentFundraiser'];
 

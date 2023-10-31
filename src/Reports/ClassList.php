@@ -4,8 +4,10 @@
 *  filename    : Reports/ClassList.php
 *  last change : 2017-11-04 Philippe Logel
 *  description : Creates a PDF for a Sunday School Class List
-
+*
 ******************************************************************************/
+
+namespace ChurchCRM\Reports;
 
 require '../Include/Config.php';
 require '../Include/Functions.php';
@@ -22,16 +24,16 @@ use ChurchCRM\Person2group2roleP2g2r;
 use ChurchCRM\Map\PersonTableMap;
 use Propel\Runtime\ActiveQuery\Criteria;
 
-$iGroupID = InputUtils::LegacyFilterInput($_GET['GroupID']);
+$iGroupID = InputUtils::legacyFilterInput($_GET['GroupID']);
 $aGrp = explode(',', $iGroupID);
 $nGrps = count($aGrp);
 
-$iFYID = InputUtils::LegacyFilterInput($_GET['FYID'], 'int');
-$dFirstSunday = InputUtils::LegacyFilterInput($_GET['FirstSunday']);
-$dLastSunday = InputUtils::LegacyFilterInput($_GET['LastSunday']);
-$withPictures = InputUtils::LegacyFilterInput($_GET['pictures']);
+$iFYID = InputUtils::legacyFilterInput($_GET['FYID'], 'int');
+$dFirstSunday = InputUtils::legacyFilterInput($_GET['FirstSunday']);
+$dLastSunday = InputUtils::legacyFilterInput($_GET['LastSunday']);
+$withPictures = InputUtils::legacyFilterInput($_GET['pictures']);
 
-class PDF_ClassList extends ChurchInfoReport
+class PdfClassList extends ChurchInfoReport
 {
     // Constructor
     public function __construct()
@@ -42,18 +44,18 @@ class PDF_ClassList extends ChurchInfoReport
 
         $this->SetFont('Times', '', 14);
         $this->SetAutoPageBreak(false);
-        $this->AddPage();
+        $this->addPage();
     }
 }
 
 // Instantiate the directory class and build the report.
-$pdf = new PDF_ClassList();
+$pdf = new PdfClassList();
 
 for ($i = 0; $i < $nGrps; $i++) {
     $iGroupID = $aGrp[$i];
     
     if ($i > 0) {
-        $pdf->AddPage();
+        $pdf->addPage();
     }
     
     $group = GroupQuery::Create()->findOneById($iGroupID);
@@ -70,10 +72,10 @@ for ($i = 0; $i < $nGrps; $i++) {
 
     $pdf->SetFont('Times', 'B', 16);
 
-    $pdf->WriteAt($nameX, $yTitle, ($group->getName().' - '));
+    $pdf->writeAt($nameX, $yTitle, ($group->getName().' - '));
 
     $FYString = MakeFYString($iFYID);
-    $pdf->WriteAt($phoneX, $yTitle, $FYString);
+    $pdf->writeAt($phoneX, $yTitle, $FYString);
 
     $pdf->SetLineWidth(0.5);
     $pdf->Line($nameX, $yTeachers - 0.75, 195, $yTeachers - 0.75);
@@ -115,7 +117,7 @@ for ($i = 0; $i < $nGrps; $i++) {
         $lst_OptionName = $groupRole->getOptionName();
         
         if ($lst_OptionName == 'Teacher') {
-            $phone = $pdf->StripPhone($homePhone);
+            $phone = $pdf->stripPhone($homePhone);
             if ($teacherCount >= $teachersThatFit) {
                 if (!$bFirstTeacher2) {
                     $teacherString2 .= ', ';
@@ -144,15 +146,15 @@ for ($i = 0; $i < $nGrps; $i++) {
 
     $y = $yTeachers;
 
-    $pdf->WriteAt($nameX, $y, $teacherString1);
+    $pdf->writeAt($nameX, $y, $teacherString1);
     $y += $yIncrement;
 
     if ($teacherCount > $teachersThatFit) {
-        $pdf->WriteAt($nameX, $y, $teacherString2);
+        $pdf->writeAt($nameX, $y, $teacherString2);
         $y += $yIncrement;
     }
 
-    $pdf->WriteAt($nameX, $y, $liaisonString);
+    $pdf->writeAt($nameX, $y, $liaisonString);
     $y += $yOffsetStartStudents;
 
     $pdf->SetFont('Times', '', 12);
@@ -172,12 +174,12 @@ for ($i = 0; $i < $nGrps; $i++) {
         $studentName = ($person->getFullName());
         
         if ($studentName != $prevStudentName) {
-            $pdf->WriteAt($nameX, $y, $studentName);
+            $pdf->writeAt($nameX, $y, $studentName);
                 
             $imgName = $person->getPhoto()->getThumbnailURI();
             
             $birthdayStr = change_date_for_place_holder($person->getBirthYear().'-'.$person->getBirthMonth().'-'.$person->getBirthDay());
-            $pdf->WriteAt($birthdayX, $y, $birthdayStr);
+            $pdf->writeAt($birthdayX, $y, $birthdayStr);
 
             if ($withPictures) {
                 $imageHeight=9;
@@ -222,7 +224,7 @@ for ($i = 0; $i < $nGrps; $i++) {
                     $props = " !!! ".$props;
                     
                     $pdf->SetFont('Times', 'B', 10);
-                    $pdf->WriteAt($nameX, $y+3.5, $props);
+                    $pdf->writeAt($nameX, $y+3.5, $props);
                     $pdf->SetFont('Times', '', 12);
                 }
             }
@@ -230,7 +232,7 @@ for ($i = 0; $i < $nGrps; $i++) {
         
         $parentsStr = $phone = "";
         if (!empty($family)) {
-            $parentsStr = $pdf->MakeSalutation($family->getId());
+            $parentsStr = $pdf->makeSalutation($family->getId());
         
             $phone = $family->getHomePhone();
         
@@ -243,9 +245,9 @@ for ($i = 0; $i < $nGrps; $i++) {
             }
         }
 
-        $pdf->WriteAt($parentsX, $y, $parentsStr);
+        $pdf->writeAt($parentsX, $y, $parentsStr);
         
-        $pdf->WriteAt($phoneX, $y, $pdf->StripPhone($phone));
+        $pdf->writeAt($phoneX, $y, $pdf->stripPhone($phone));
         $y += $yIncrement;
 
         $addrStr = "";
@@ -256,19 +258,19 @@ for ($i = 0; $i < $nGrps; $i++) {
             }
             $addrStr .= ', '.$family->getCity().', '.$family->getState().'  '.$family->getZip();
         }
-        $pdf->WriteAt($parentsX, $y, $addrStr);
+        $pdf->writeAt($parentsX, $y, $addrStr);
 
         $prevStudentName = $studentName;
         $y += 1.5 * $yIncrement;
 
         if ($y > 250) {
-            $pdf->AddPage();
+            $pdf->addPage();
             $y = 20;
         }
     }
 
     $pdf->SetFont('Times', 'B', 12);
-    $pdf->WriteAt($phoneX-7, $y+5, FormatDate(date('Y-m-d')));
+    $pdf->writeAt($phoneX-7, $y+5, FormatDate(date('Y-m-d')));
 }
 
 header('Pragma: public');  // Needed for IE when using a shared SSL certificate

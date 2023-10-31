@@ -7,6 +7,8 @@
 *
 ******************************************************************************/
 
+namespace ChurchCRM\Reports;
+
 require '../Include/Config.php';
 require '../Include/Functions.php';
 
@@ -18,12 +20,12 @@ use ChurchCRM\Map\PersonTableMap;
 use ChurchCRM\ListOptionQuery;
 use ChurchCRM\Person2group2roleP2g2rQuery;
 
-$iGroupID = InputUtils::LegacyFilterInput($_GET['GroupID']);
+$iGroupID = InputUtils::legacyFilterInput($_GET['GroupID']);
 $aGrp = explode(',', $iGroupID);
 
-$iFYID = InputUtils::LegacyFilterInput($_GET['FYID'], 'int');
+$iFYID = InputUtils::legacyFilterInput($_GET['FYID'], 'int');
 
-class PDF_PhotoBook extends ChurchInfoReport
+class PdfPhotoBook extends ChurchInfoReport
 {
     private $group;
     private $FYIDString;
@@ -51,9 +53,9 @@ class PDF_PhotoBook extends ChurchInfoReport
         $this->SetMargins(0, 0); // use our own margin logic.
         $this->SetFont('Times', '', 14);
         $this->SetAutoPageBreak(false);
-        $this->AddPage();
+        $this->addPage();
         $this->drawGroupMebersByRole("Teacher", gettext("Teachers"));
-        $this->AddPage();
+        $this->addPage();
         $this->drawGroupMebersByRole("Student", gettext("Students"));
     }
     
@@ -63,9 +65,9 @@ class PDF_PhotoBook extends ChurchInfoReport
         $this->currentY = $this->pageMarginT;
 
         $this->SetFont('Times', 'B', 16);
-        $this->WriteAt($this->currentX, $this->currentY, $title);
+        $this->writeAt($this->currentX, $this->currentY, $title);
         $this->currentX = 170;
-        $this->WriteAt($this->currentX, $this->currentY, $this->FYIDString);
+        $this->writeAt($this->currentX, $this->currentY, $this->FYIDString);
         $this->SetLineWidth(0.5);
         $this->Line($this->pageMarginL, 25.25, $this->GetPageWidth() - $this->pageMarginR, 25.25);
     }
@@ -93,7 +95,7 @@ class PDF_PhotoBook extends ChurchInfoReport
         # move the cursor, and draw the teacher name
         $this->currentX -= $offset;
         $this->currentY += $this->personImageHeight + 2;
-        $this->WriteAt($this->currentX, $this->currentY, $name);
+        $this->writeAt($this->currentX, $this->currentY, $name);
     
         $this->currentX += $offset;
         $this->currentY -= $this->personImageHeight + 2;
@@ -124,7 +126,7 @@ class PDF_PhotoBook extends ChurchInfoReport
                 $this->currentX = $this->pageMarginL;
             }
             if ($this->currentY + $this->personImageHeight+10 >= $this->GetPageHeight() - $this->pageMarginB) {
-                $this->AddPage();
+                $this->addPage();
                 $this->drawPageHeader((gettext("PhotoBook").' - '.$this->group->getName().' - '.$roleDisplayName." (".$groupRoleMemberships->count().")"));
                 $this->currentX = $this->pageMarginL;
                 $this->currentY += 10;
@@ -133,7 +135,7 @@ class PDF_PhotoBook extends ChurchInfoReport
     }
 }
 // Instantiate the directory class and build the report.
-$pdf = new PDF_PhotoBook($iFYID);
+$pdf = new PdfPhotoBook($iFYID);
 foreach ($aGrp as $groupID) {
     $pdf->drawGroup($groupID);
 }

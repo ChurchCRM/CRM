@@ -17,19 +17,19 @@ use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Authentication\AuthenticationManager;
 
 // Security
-if (!AuthenticationManager::GetCurrentUser()->isFinanceEnabled()) {
-    RedirectUtils::Redirect('Menu.php');
+if (!AuthenticationManager::getCurrentUser()->isFinanceEnabled()) {
+    RedirectUtils::redirect('Menu.php');
     exit;
 }
 
 $sReportType = '';
 
 if (array_key_exists('ReportType', $_POST)) {
-    $sReportType = InputUtils::LegacyFilterInput($_POST['ReportType']);
+    $sReportType = InputUtils::legacyFilterInput($_POST['ReportType']);
 }
 
 if ($sReportType == '' && array_key_exists('ReportType', $_GET)) {
-    $sReportType = InputUtils::LegacyFilterInput($_GET['ReportType']);
+    $sReportType = InputUtils::legacyFilterInput($_GET['ReportType']);
 }
 
 // Set the page title and include HTML header
@@ -312,7 +312,7 @@ if ($sReportType == '') {
         echo '<td class=TextColumnWithBottomBorder><input name=RequireDonationYears type=text value=0 size=5></td></tr>';
     }
 
-    if (((AuthenticationManager::GetCurrentUser()->isAdmin() && $bCSVAdminOnly) || !$bCSVAdminOnly)
+    if (((AuthenticationManager::getCurrentUser()->isAdmin() && $bCSVAdminOnly) || !$bCSVAdminOnly)
         && ($sReportType == 'Pledge Summary' || $sReportType == 'Giving Report' || $sReportType == 'Individual Deposit Report' || $sReportType == 'Advanced Deposit Report' || $sReportType == 'Zero Givers')) {
         echo '<tr><td class=LabelColumn>'.gettext('Output Method:').'</td>';
         echo "<td class=TextColumnWithBottomBorder><input name=output type=radio checked value='pdf'>PDF";

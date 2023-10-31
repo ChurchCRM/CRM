@@ -27,7 +27,7 @@ $timelineService = new TimelineService();
 $mailchimp = new MailChimpService();
 
 // Get the person ID from the querystring
-$iPersonID = InputUtils::LegacyFilterInput($_GET['PersonID'], 'int');
+$iPersonID = InputUtils::legacyFilterInput($_GET['PersonID'], 'int');
 
 $person = PersonQuery::create()->findPk($iPersonID);
 
@@ -43,10 +43,10 @@ require 'Include/Header.php';
 
 $iRemoveVO = 0;
 if (array_key_exists('RemoveVO', $_GET)) {
-    $iRemoveVO = InputUtils::LegacyFilterInput($_GET['RemoveVO'], 'int');
+    $iRemoveVO = InputUtils::legacyFilterInput($_GET['RemoveVO'], 'int');
 }
 
-if (isset($_POST['VolunteerOpportunityAssign']) && AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled()) {
+if (isset($_POST['VolunteerOpportunityAssign']) && AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) {
     $volIDs = $_POST['VolunteerOpportunityIDs'];
     if ($volIDs) {
         foreach ($volIDs as $volID) {
@@ -56,7 +56,7 @@ if (isset($_POST['VolunteerOpportunityAssign']) && AuthenticationManager::GetCur
 }
 
 // Service remove-volunteer-opportunity (these links set RemoveVO)
-if ($iRemoveVO > 0 && AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled()) {
+if ($iRemoveVO > 0 && AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) {
     RemoveVolunteerOpportunity($iPersonID, $iRemoveVO);
 }
 
@@ -197,9 +197,9 @@ if ($per_Envelope > 0) {
 $iTableSpacerWidth = 10;
 
 $bOkToEdit = (
-    AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled() ||
-    (AuthenticationManager::GetCurrentUser()->isEditSelfEnabled() && $per_ID == AuthenticationManager::GetCurrentUser()->getId()) ||
-    (AuthenticationManager::GetCurrentUser()->isEditSelfEnabled() && $per_fam_ID == AuthenticationManager::GetCurrentUser()->getPerson()->getFamId())
+    AuthenticationManager::getCurrentUser()->isEditRecordsEnabled() ||
+    (AuthenticationManager::getCurrentUser()->isEditSelfEnabled() && $per_ID == AuthenticationManager::getCurrentUser()->getId()) ||
+    (AuthenticationManager::getCurrentUser()->isEditSelfEnabled() && $per_fam_ID == AuthenticationManager::getCurrentUser()->getPerson()->getFamId())
 );
 
 ?>
@@ -340,13 +340,13 @@ $bOkToEdit = (
 
                     if (strlen($per_Facebook) > 0) {
                         ?>
-                        <li><i class="fa-li fa-brands fa-facebook-official"></i><?= gettext('Facebook') ?>: <span><a href="https://www.facebook.com/<?= InputUtils::FilterString($per_Facebook) ?> " target="_blank"><?= $per_Facebook ?></a></span></li>
+                        <li><i class="fa-li fa-brands fa-facebook-official"></i><?= gettext('Facebook') ?>: <span><a href="https://www.facebook.com/<?= InputUtils::filterString($per_Facebook) ?> " target="_blank"><?= $per_Facebook ?></a></span></li>
                         <?php
                     }
 
                     if (strlen($per_Twitter) > 0) {
                         ?>
-                        <li><i class="fa-li fa-brands fa-twitter"></i><?= gettext('Twitter') ?>: <span><a href="https://www.twitter.com/<?= InputUtils::FilterString($per_Twitter) ?>" target="_blank"><?= $per_Twitter ?></a></span></li>
+                        <li><i class="fa-li fa-brands fa-twitter"></i><?= gettext('Twitter') ?>: <span><a href="https://www.twitter.com/<?= InputUtils::filterString($per_Twitter) ?>" target="_blank"><?= $per_Twitter ?></a></span></li>
                         <?php
                     }
 
@@ -392,20 +392,20 @@ $bOkToEdit = (
         <div class="row">
             <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/PrintView.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-print"></i> <?= gettext("Printable Page") ?></a>
             <a class="btn btn-app AddToPeopleCart" id="AddPersonToCart" data-cartpersonid="<?= $iPersonID ?>"><i class="fa fa-cart-plus"></i><span class="cartActionDescription"><?= gettext("Add to Cart") ?></span></a>
-            <?php if (AuthenticationManager::GetCurrentUser()->isNotesEnabled()) {
+            <?php if (AuthenticationManager::getCurrentUser()->isNotesEnabled()) {
                 ?>
                 <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/WhyCameEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-question-circle"></i> <?= gettext("Edit \"Why Came\" Notes") ?></a>
                 <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/NoteEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa fa-sticky-note"></i> <?= gettext("Add a Note") ?></a>
                 <?php
             }
-            if (AuthenticationManager::GetCurrentUser()->isManageGroupsEnabled()) {
+            if (AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) {
                 ?>
                 <a class="btn btn-app" id="addGroup"><i class="fa fa-users"></i> <?= gettext("Assign New Group") ?></a>
                 <?php
             } ?>
             <a class="btn btn-app" role="button" href="<?= SystemURLs::getRootPath() ?>/v2/people"><i class="fa fa-list"></i> <?= gettext("List Members") ?></span></a>
             <?php
-            if (AuthenticationManager::GetCurrentUser()->isDeleteRecordsEnabled()) {
+            if (AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled()) {
                 ?>
                 <a id="deletePersonBtn" class="btn btn-app bg-maroon delete-person" data-person_name="<?= $person->getFullName() ?>" data-person_id="<?= $iPersonID ?>"><i class="fa fa-trash-can"></i> <?= gettext("Delete this Record") ?></a>
                 <?php
@@ -413,7 +413,7 @@ $bOkToEdit = (
             ?>
             <br />
             <?php
-            if (AuthenticationManager::GetCurrentUser()->isAdmin()) {
+            if (AuthenticationManager::getCurrentUser()->isAdmin()) {
                 if (!$person->isUser()) {
                     ?>
                     <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/UserEditor.php?NewPersonID=<?= $iPersonID ?>"><i class="fa fa-person-chalkboard"></i> <?= gettext('Make User') ?></a>
@@ -425,7 +425,7 @@ $bOkToEdit = (
                     <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= $iPersonID ?>/changePassword"><i class="fa fa-key"></i> <?= gettext("Change Password") ?></a>
                     <?php
                 }
-            } elseif ($person->isUser() && $person->getId() == AuthenticationManager::GetCurrentUser()->getId()) {
+            } elseif ($person->isUser() && $person->getId() == AuthenticationManager::getCurrentUser()->getId()) {
                 ?>
                 <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= $iPersonID ?>"><i class="fa fa-eye"></i> <?= gettext('View User') ?></a>
                 <a class="btn btn-app" href="<?= SystemURLs::getRootPath() ?>/v2/user/current/changepassword"><i class="fa fa-key"></i> <?= gettext("Change Password") ?></a>
@@ -528,7 +528,7 @@ $bOkToEdit = (
 
                                     <div class="timeline-item">
                                         <span class="time">
-                                            <?php if (AuthenticationManager::GetCurrentUser()->isNotesEnabled() && (isset($item["editLink"]) || isset($item["deleteLink"]))) {
+                                            <?php if (AuthenticationManager::getCurrentUser()->isNotesEnabled() && (isset($item["editLink"]) || isset($item["deleteLink"]))) {
                                                 ?>
                                                 <?php if (isset($item["editLink"])) {
                                                     ?>
@@ -636,7 +636,7 @@ $bOkToEdit = (
                                                 } ?>
                                                 <div class="card-footer">
                                                     <code>
-                                                        <?php if (AuthenticationManager::GetCurrentUser()->isManageGroupsEnabled()) {
+                                                        <?php if (AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) {
                                                             ?>
                                                             <a href="<?= SystemURLs::getRootPath() ?>/GroupView.php?GroupID=<?= $grp_ID ?>" class="btn btn-default" role="button"><i class="fa fa-list"></i></a>
                                                             <div class="btn-group">
@@ -797,7 +797,7 @@ $bOkToEdit = (
                                     echo '<tr class="TableHeader">';
                                     echo '<th>' . gettext('Name') . '</th>';
                                     echo '<th>' . gettext('Description') . '</th>';
-                                    if (AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled()) {
+                                    if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) {
                                         echo '<th>' . gettext('Remove') . '</th>';
                                     }
                                     echo '</tr>';
@@ -815,7 +815,7 @@ $bOkToEdit = (
                                         echo '<td>' . $vol_Name . '</a></td>';
                                         echo '<td>' . $vol_Description . '</a></td>';
 
-                                        if (AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled()) {
+                                        if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) {
                                             echo '<td><a class="SmallText" href="<?= SystemURLs::getRootPath() ?>/PersonView.php?PersonID=' . $per_ID . '&RemoveVO=' . $vol_ID . '">' . gettext('Remove') . '</a></td>';
                                         }
 
@@ -828,7 +828,7 @@ $bOkToEdit = (
                                     echo '</table>';
                                 } ?>
 
-                                <?php if (AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled() && $rsVolunteerOpps->num_rows) : ?>
+                                <?php if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled() && $rsVolunteerOpps->num_rows) : ?>
                                     <div class="alert alert-info">
                                         <div>
                                             <h4><strong><?= gettext('Assign a New Volunteer Opportunity') ?>:</strong></h4>

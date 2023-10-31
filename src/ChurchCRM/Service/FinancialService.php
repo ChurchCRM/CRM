@@ -27,12 +27,12 @@ class FinancialService
         if (SystemConfig::getValue('bUseScannedChecks')) {
             require '../Include/MICRFunctions.php';
             $micrObj = new MICRReader(); // Instantiate the MICR class
-            $routeAndAccount = $micrObj->FindRouteAndAccount($tScanString); // use routing and account number for matching
+            $routeAndAccount = $micrObj->findRouteAndAccount($tScanString); // use routing and account number for matching
             if ($routeAndAccount) {
                 $sSQL = 'SELECT fam_ID, fam_Name FROM family_fam WHERE fam_scanCheck="'.$routeAndAccount.'"';
                 $rsFam = RunQuery($sSQL);
                 extract(mysqli_fetch_array($rsFam));
-                $iCheckNo = $micrObj->FindCheckNo($tScanString);
+                $iCheckNo = $micrObj->findCheckNo($tScanString);
 
                 return '{"ScanString": "'.$tScanString.'" , "RouteAndAccount": "'.$routeAndAccount.'" , "CheckNumber": "'.$iCheckNo.'" ,"fam_ID": "'.$fam_ID.'" , "fam_Name": "'.$fam_Name.'"}';
             } else {
@@ -46,7 +46,7 @@ class FinancialService
     public function setDeposit($depositType, $depositComment, $depositDate, $iDepositSlipID = null, $depositClosed = false)
     {
         if ($iDepositSlipID) {
-            $sSQL = "UPDATE deposit_dep SET dep_Date = '".$depositDate."', dep_Comment = '".$depositComment."', dep_EnteredBy = ".AuthenticationManager::GetCurrentUser()->getId().', dep_Closed = '.intval($depositClosed).' WHERE dep_ID = '.$iDepositSlipID.';';
+            $sSQL = "UPDATE deposit_dep SET dep_Date = '".$depositDate."', dep_Comment = '".$depositComment."', dep_EnteredBy = ".AuthenticationManager::getCurrentUser()->getId().', dep_Closed = '.intval($depositClosed).' WHERE dep_ID = '.$iDepositSlipID.';';
             $bGetKeyBack = false;
             if ($depositClosed && ($depositType == 'CreditCard' || $depositType == 'BankDraft')) {
                 // Delete any failed transactions on this deposit slip now that it is closing
@@ -56,7 +56,7 @@ class FinancialService
             RunQuery($sSQL);
         } else {
             $sSQL = "INSERT INTO deposit_dep (dep_Date, dep_Comment, dep_EnteredBy,  dep_Type)
-            VALUES ('".$depositDate."','".$depositComment."',".AuthenticationManager::GetCurrentUser()->getId().",'".$depositType."')";
+            VALUES ('".$depositDate."','".$depositComment."',".AuthenticationManager::getCurrentUser()->getId().",'".$depositType."')";
             RunQuery($sSQL);
             $sSQL = 'SELECT MAX(dep_ID) AS iDepositSlipID FROM deposit_dep';
             $rsDepositSlipID = RunQuery($sSQL);
@@ -214,8 +214,8 @@ class FinancialService
         if ($payment->type == 'Payment' and isset($payment->iCheckNo)) {
             if ($payment->iMethod == 'CASH') {
                 throw new \Exception(gettext("Check number not valid for 'CASH' payment"));
-            } //build routine to make sure this check number hasn't been used by this family yet (look at group key)
-            elseif ($payment->iMethod == 'CHECK' and $this->locateFamilyCheck($payment->iCheckNo, $payment->FamilyID)) {
+            } elseif ($payment->iMethod == 'CHECK' and $this->locateFamilyCheck($payment->iCheckNo, $payment->FamilyID)) {
+                //build routine to make sure this check number hasn't been used by this family yet (look at group key)
                 throw new \Exception("Check number '".$payment->iCheckNo."' for selected family already exists.");
             }
         }
@@ -287,7 +287,7 @@ class FinancialService
                 $payment->iMethod."','".
                 $Fund->Comment."','".
                 date('YmdHis')."',".
-                AuthenticationManager::GetCurrentUser()->getId().",'".
+                AuthenticationManager::getCurrentUser()->getId().",'".
                 $payment->type."',".
                 $Fund->FundID.','.
                 $payment->DepositID.','.
@@ -353,7 +353,7 @@ class FinancialService
     {
         // --------------------------------
     // BEGIN FRONT OF BANK DEPOSIT SLIP
-        $thisReport->pdf->AddPage('L', [187, 84]);
+        $thisReport->pdf->addPage('L', [187, 84]);
         $thisReport->pdf->SetFont('Courier', '', 18);
     // Print Deposit Slip portion of report
 
@@ -390,7 +390,7 @@ class FinancialService
     // --------------------------------
     // BEGIN BACK OF BANK DEPOSIT SLIP
 
-        $thisReport->pdf->AddPage('P', [84, 187]);
+        $thisReport->pdf->addPage('P', [84, 187]);
         $numItems = 0;
         foreach ($thisReport->payments as $payment) {
             // List all the checks and total the cash
@@ -423,7 +423,7 @@ class FinancialService
         $thisReport->depositSummaryParameters->aggregateX = 135;
         $thisReport->depositSummaryParameters->displayBillCounts = false;
 
-        $thisReport->pdf->AddPage();
+        $thisReport->pdf->addPage();
         $thisReport->pdf->SetXY($thisReport->depositSummaryParameters->date->x, $thisReport->depositSummaryParameters->date->y);
         $thisReport->pdf->Write(8, $thisReport->deposit->dep_Date);
 
@@ -475,7 +475,7 @@ class FinancialService
                 $payment->familyName = mb_substr($payment->familyName, 0, 24).'...';
             }
 
-            $thisReport->pdf->PrintRightJustified($thisReport->curX + 2, $thisReport->curY, $payment->plg_CheckNo);
+            $thisReport->pdf->printRightJustified($thisReport->curX + 2, $thisReport->curY, $payment->plg_CheckNo);
 
             $thisReport->pdf->SetXY($thisReport->curX + $thisReport->depositSummaryParameters->summary->FundX, $thisReport->curY);
             $thisReport->pdf->Write(8, $payment->fun_Name);
@@ -491,12 +491,12 @@ class FinancialService
 
             $thisReport->pdf->SetFont('Courier', '', 8);
 
-            $thisReport->pdf->PrintRightJustified($thisReport->curX + $thisReport->depositSummaryParameters->summary->AmountX, $thisReport->curY, $payment->plg_amount);
+            $thisReport->pdf->printRightJustified($thisReport->curX + $thisReport->depositSummaryParameters->summary->AmountX, $thisReport->curY, $payment->plg_amount);
 
             $thisReport->curY += $thisReport->depositSummaryParameters->summary->intervalY;
 
             if ($thisReport->curY >= 250) {
-                $thisReport->pdf->AddPage();
+                $thisReport->pdf->addPage();
                 $thisReport->curY = $thisReport->topY;
             }
         }
@@ -507,7 +507,7 @@ class FinancialService
         $thisReport->pdf->Write(8, 'Deposit total');
 
         $grandTotalStr = sprintf('%.2f', $thisReport->deposit->dep_Total);
-        $thisReport->pdf->PrintRightJustified($thisReport->curX + $thisReport->depositSummaryParameters->summary->AmountX, $thisReport->curY, $grandTotalStr);
+        $thisReport->pdf->printRightJustified($thisReport->curX + $thisReport->depositSummaryParameters->summary->AmountX, $thisReport->curY, $grandTotalStr);
 
     // Now print deposit totals by fund
         $thisReport->curY += 2 * $thisReport->depositSummaryParameters->summary->intervalY;

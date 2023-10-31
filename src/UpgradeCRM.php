@@ -15,8 +15,8 @@ use ChurchCRM\Authentication\AuthenticationManager;
 // Set the page title and include HTML header
 $sPageTitle = gettext('Upgrade ChurchCRM');
 
-if (!AuthenticationManager::GetCurrentUser()->isAdmin()) {
-    RedirectUtils::Redirect('index.php');
+if (!AuthenticationManager::getCurrentUser()->isAdmin()) {
+    RedirectUtils::redirect('index.php');
     exit;
 }
 $expertMode = false;

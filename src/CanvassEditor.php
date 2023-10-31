@@ -17,8 +17,8 @@ use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Authentication\AuthenticationManager;
 
 // Security: User must have canvasser permission to use this form
-if (!AuthenticationManager::GetCurrentUser()->isCanvasserEnabled()) {
-    RedirectUtils::Redirect('Menu.php');
+if (!AuthenticationManager::getCurrentUser()->isCanvasserEnabled()) {
+    RedirectUtils::redirect('Menu.php');
     exit;
 }
 
@@ -26,11 +26,11 @@ require 'Include/CanvassUtilities.php';
 
 $iCanvassID = 0;
 if (array_key_exists('CanvassID', $_GET)) {
-    $iCanvassID = InputUtils::LegacyFilterInput($_GET['CanvassID'], 'int');
+    $iCanvassID = InputUtils::legacyFilterInput($_GET['CanvassID'], 'int');
 }
-$linkBack = InputUtils::LegacyFilterInput($_GET['linkBack']);
-$iFamily = InputUtils::LegacyFilterInput($_GET['FamilyID']);
-$iFYID = InputUtils::LegacyFilterInput($_GET['FYID']);
+$linkBack = InputUtils::legacyFilterInput($_GET['linkBack']);
+$iFamily = InputUtils::legacyFilterInput($_GET['FamilyID']);
+$iFYID = InputUtils::legacyFilterInput($_GET['FYID']);
 
 $sDateError = '';
 $bNotInterested = false;
@@ -46,21 +46,21 @@ $sPageTitle = gettext($fyStr.' Canvass Input for the '.$fam_Name.' family');
 
 //Is this the second pass?
 if (isset($_POST['Submit'])) {
-    $iCanvasser = InputUtils::LegacyFilterInput($_POST['Canvasser']);
+    $iCanvasser = InputUtils::legacyFilterInput($_POST['Canvasser']);
     if (!$iCanvasser) {
         $iCanvasser = 0;
     }
-    $dDate = InputUtils::LegacyFilterInput($_POST['Date']);
-    $tPositive = InputUtils::LegacyFilterInput($_POST['Positive']);
-    $tCritical = InputUtils::LegacyFilterInput($_POST['Critical']);
-    $tInsightful = InputUtils::LegacyFilterInput($_POST['Insightful']);
-    $tFinancial = InputUtils::LegacyFilterInput($_POST['Financial']);
-    $tSuggestion = InputUtils::LegacyFilterInput($_POST['Suggestion']);
+    $dDate = InputUtils::legacyFilterInput($_POST['Date']);
+    $tPositive = InputUtils::legacyFilterInput($_POST['Positive']);
+    $tCritical = InputUtils::legacyFilterInput($_POST['Critical']);
+    $tInsightful = InputUtils::legacyFilterInput($_POST['Insightful']);
+    $tFinancial = InputUtils::legacyFilterInput($_POST['Financial']);
+    $tSuggestion = InputUtils::legacyFilterInput($_POST['Suggestion']);
     $bNotInterested = isset($_POST['NotInterested']);
     if ($bNotInterested == '') {
         $bNotInterested = 0;
     }
-    $tWhyNotInterested = InputUtils::LegacyFilterInput($_POST['WhyNotInterested']);
+    $tWhyNotInterested = InputUtils::legacyFilterInput($_POST['WhyNotInterested']);
 
     // New canvas input (add)
     if ($iCanvassID < 1) {
@@ -104,9 +104,9 @@ if (isset($_POST['Submit'])) {
     if (isset($_POST['Submit'])) {
         // Check for redirection to another page after saving information: (ie. PledgeEditor.php?previousPage=prev.php?a=1;b=2;c=3)
         if ($linkBack != '') {
-            RedirectUtils::Redirect($linkBack);
+            RedirectUtils::redirect($linkBack);
         } else {
-            RedirectUtils::Redirect('CanvassEditor.php?FamilyID='.$iFamily.'&FYID='.$iFYID.'&CanvassID='.$iCanvassID.'&linkBack=', $linkBack);
+            RedirectUtils::redirect('CanvassEditor.php?FamilyID='.$iFamily.'&FYID='.$iFYID.'&CanvassID='.$iCanvassID.'&linkBack=', $linkBack);
         }
     }
 } else {
@@ -128,7 +128,7 @@ if (isset($_POST['Submit'])) {
         $tWhyNotInterested = $can_WhyNotInterested;
     } else {
         // Set some default values
-        $iCanvasser = AuthenticationManager::GetCurrentUser()->getId();
+        $iCanvasser = AuthenticationManager::getCurrentUser()->getId();
         $dDate = date('Y-m-d');
 
         $dDate = '';

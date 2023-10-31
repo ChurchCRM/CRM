@@ -17,8 +17,8 @@ use ChurchCRM\Base\Token as BaseToken;
 class Token extends BaseToken
 {
 
-    public const typeFamilyVerify = "verifyFamily";
-    public const typePassword = "password";
+    public const TYPE_FAMILY_VERIFY = "verifyFamily";
+    private const TYPE_PASSWORD = "password";
 
     public function build($type, $referenceId)
     {
@@ -40,12 +40,12 @@ class Token extends BaseToken
 
     public function isVerifyFamilyToken()
     {
-        return self::typeFamilyVerify === $this->getType();
+        return self::TYPE_FAMILY_VERIFY === $this->getType();
     }
 
     public function isPasswordResetToken()
     {
-        return self::typePassword === $this->getType();
+        return self::TYPE_PASSWORD === $this->getType();
     }
 
     public function isValid()

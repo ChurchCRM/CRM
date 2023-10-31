@@ -11,15 +11,15 @@ require '../Include/Config.php';
 require '../Include/Functions.php';
 
 use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\Reports\PDF_Label;
+use ChurchCRM\Reports\PdfLabel;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\FamilyQuery;
 
-$sLabelFormat = InputUtils::LegacyFilterInput($_GET['labeltype']);
+$sLabelFormat = InputUtils::legacyFilterInput($_GET['labeltype']);
 $bRecipientNamingMethod = $_GET['recipientnamingmethod'];
 setcookie('labeltype', $sLabelFormat, ['expires' => time() + 60 * 60 * 24 * 90, 'path' => '/']);
 
-$pdf = new PDF_Label($sLabelFormat);
+$pdf = new PdfLabel($sLabelFormat);
 
 $sFontInfo = FontFromName($_GET['labelfont']);
 setcookie('labelfont', $_GET['labelfont'], ['expires' => time() + 60 * 60 * 24 * 90, 'path' => '/']);
@@ -27,7 +27,7 @@ $sFontSize = $_GET['labelfontsize'];
 setcookie('labelfontsize', $sFontSize, ['expires' => time() + 60 * 60 * 24 * 90, 'path' => '/']);
 $pdf->SetFont($sFontInfo[0], $sFontInfo[1]);
 if ($sFontSize != 'default') {
-    $pdf->Set_Char_Size($sFontSize);
+    $pdf->setCharSize($sFontSize);
 }
 
 // Get all the families which receive the newsletter by mail
@@ -39,7 +39,7 @@ foreach ($families as $family) {
     if ($bRecipientNamingMethod == "familyname") {
         $labelText = $family->getName();
     } else {
-        $labelText = $pdf->MakeSalutation($family->getID());
+        $labelText = $pdf->makeSalutation($family->getID());
     }
     if ($family->getAddress1() != '') {
         $labelText .= "\n".$family->getAddress1();
@@ -53,7 +53,7 @@ foreach ($families as $family) {
         $labelText .= "\n".$family->getCountry();
     }
 
-    $pdf->Add_PDF_Label($labelText);
+    $pdf->addPdfLabel($labelText);
 }
 
 header('Pragma: public');  // Needed for IE when using a shared SSL certificate

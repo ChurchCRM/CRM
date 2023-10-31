@@ -4,4 +4,4 @@ require 'Include/Config.php';
 
 use ChurchCRM\Utils\RedirectUtils;
 
-RedirectUtils::Redirect('v2/dashboard');
+RedirectUtils::redirect('v2/dashboard');

@@ -78,8 +78,8 @@ function Header_modals()
 
 function Header_body_scripts()
 {
-    $localeInfo = Bootstrapper::GetCurrentLocale();
-    $tableSizeSetting =  AuthenticationManager::GetCurrentUser()->getSetting("ui.table.size");
+    $localeInfo = Bootstrapper::getCurrentLocale();
+    $tableSizeSetting =  AuthenticationManager::getCurrentUser()->getSetting("ui.table.size");
     if (empty($tableSizeSetting)) {
         $tableSize = 10;
     } else {
@@ -90,7 +90,7 @@ function Header_body_scripts()
             root: "<?= SystemURLs::getRootPath() ?>",
             fullURL:"<?= SystemURLs::getURL() ?>",
             lang: "<?= $localeInfo->getLanguageCode() ?>",
-            userId: "<?= AuthenticationManager::GetCurrentUser()->getId() ?>",
+            userId: "<?= AuthenticationManager::getCurrentUser()->getId() ?>",
             systemLocale: "<?= $localeInfo->getSystemLocale() ?>",
             locale: "<?= $localeInfo->getLocale() ?>",
             shortLocale: "<?= $localeInfo->getShortLocale() ?>",
@@ -99,7 +99,7 @@ function Header_body_scripts()
             datePickerformat:"<?= SystemConfig::getValue('sDatePickerPlaceHolder') ?>",
             churchWebSite:"<?= SystemConfig::getValue('sChurchWebSite') ?>",
             systemConfigs: {
-              sDateTimeFormat: "<?= PHPToMomentJSConverter::ConvertFormatString(SystemConfig::getValue('sDateTimeFormat'))?>",
+              sDateTimeFormat: "<?= PHPToMomentJSConverter::convertFormatString(SystemConfig::getValue('sDateTimeFormat'))?>",
             },
             iDashboardServiceIntervalTime:"<?= SystemConfig::getValue('iDashboardServiceIntervalTime') ?>",
             plugin: {
@@ -110,7 +110,7 @@ function Header_body_scripts()
                         "url": "<?= SystemURLs::getRootPath() ?>/locale/datatables/<?= $localeInfo->getDataTables() ?>.json"
                     },
                     responsive: true,
-                    dom: "<'row'<'col-sm-4'<?= AuthenticationManager::GetCurrentUser()->isCSVExport() ? "B" : "" ?>><'col-sm-4'r><'col-sm-4 searchStyle'f>>" +
+                    dom: "<'row'<'col-sm-4'<?= AuthenticationManager::getCurrentUser()->isCSVExport() ? "B" : "" ?>><'col-sm-4'r><'col-sm-4 searchStyle'f>>" +
                             "<'row'<'col-sm-12't>>" +
                             "<'row'<'col-sm-4'l><'col-sm-4'i><'col-sm-4'p>>"
                 }

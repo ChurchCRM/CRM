@@ -21,8 +21,8 @@ use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Authentication\AuthenticationManager;
 
 // Security: User must have Manage Groups & Roles permission
-if (!AuthenticationManager::GetCurrentUser()->isManageGroupsEnabled()) {
-    RedirectUtils::Redirect('Menu.php');
+if (!AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) {
+    RedirectUtils::redirect('Menu.php');
     exit;
 }
 
@@ -30,22 +30,22 @@ if (!AuthenticationManager::GetCurrentUser()->isManageGroupsEnabled()) {
 if ((isset($_GET['groupeCreationID']) || isset($_POST['Submit'])) && count($_SESSION['aPeopleCart']) > 0) {
     // Get the GroupID
     if (isset($_POST['Submit'])) {
-        $iGroupID = InputUtils::LegacyFilterInput($_POST['GroupID'], 'int');
+        $iGroupID = InputUtils::legacyFilterInput($_POST['GroupID'], 'int');
     } else {
-        $iGroupID = InputUtils::LegacyFilterInput($_GET['groupeCreationID'], 'int');
+        $iGroupID = InputUtils::legacyFilterInput($_GET['groupeCreationID'], 'int');
     }
 
     if (array_key_exists('GroupRole', $_POST)) {
-        $iGroupRole = InputUtils::LegacyFilterInput($_POST['GroupRole'], 'int');
+        $iGroupRole = InputUtils::legacyFilterInput($_POST['GroupRole'], 'int');
     } else {
         $iGroupRole = 0;
     }
 
-    Cart::EmptyToGroup($iGroupID, $iGroupRole);
+    Cart::emptyToGroup($iGroupID, $iGroupRole);
 
     $sGlobalMessage = $iCount.' records(s) successfully added to selected Group.';
 
-    RedirectUtils::Redirect('GroupView.php?GroupID='.$iGroupID.'&Action=EmptyCart');
+    RedirectUtils::redirect('GroupView.php?GroupID='.$iGroupID.'&Action=EmptyCart');
 }
 
 $ormGroups = GroupQuery::Create()

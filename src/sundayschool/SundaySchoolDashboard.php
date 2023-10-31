@@ -46,7 +46,7 @@ require '../Include/Header.php';
     <h3 class="card-title"><?= gettext('Functions') ?></h3>
   </div>
   <div class="card-body">
-    <?php if (AuthenticationManager::GetCurrentUser()->isManageGroupsEnabled()) {
+    <?php if (AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) {
         ?>
       <button class="btn btn-app" data-toggle="modal" data-target="#add-class"><i
           class="fa fa-plus-square"></i><?= gettext('Add New Class') ?></button>
@@ -215,7 +215,7 @@ require '../Include/Header.php';
             extract($child);
 
             $hideAge = $flags == 1 || $birthYear == '' || $birthYear == '0';
-            $birthDate = MiscUtils::FormatBirthDate($birthYear, $birthMonth, $birthDay, '-', $flags);
+            $birthDate = MiscUtils::formatBirthDate($birthYear, $birthMonth, $birthDay, '-', $flags);
 
             echo '<tr>';
             echo "<td><a href='../PersonView.php?PersonID=".$kidId."'>";
@@ -226,7 +226,7 @@ require '../Include/Header.php';
             echo '<td>'.$firstName.'</td>';
             echo '<td>'.$LastName.'</td>';
             echo '<td>'.$birthDate.'</td>';
-            echo "<td>".MiscUtils::FormatAge($birthMonth, $birthDay, $birthYear, $hideAge)."</td>";
+            echo "<td>".MiscUtils::formatAge($birthMonth, $birthDay, $birthYear, $hideAge)."</td>";
             echo '<td>'.$Address1.' '.$Address2.' '.$city.' '.$state.' '.$zip.'</td>';
             echo '</tr>';
         }
@@ -236,7 +236,7 @@ require '../Include/Header.php';
     </table>
   </div>
 </div>
-<?php if (AuthenticationManager::GetCurrentUser()->isManageGroupsEnabled()) {
+<?php if (AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) {
     ?>
   <div class="modal fade" id="add-class" tabindex="-1" role="dialog" aria-labelledby="add-class-label"
        aria-hidden="true">

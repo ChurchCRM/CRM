@@ -108,7 +108,7 @@ abstract class BaseEmail
         return $commonTokens;
     }
 
-    abstract function getTokens();
-    abstract function getFullURL();
-    abstract function getButtonText();
+    abstract public function getTokens();
+    abstract protected function getFullURL();
+    abstract protected function getButtonText();
 }

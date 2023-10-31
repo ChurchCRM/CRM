@@ -10,7 +10,7 @@ class ChurchAddress implements iTask
 {
     public function isActive(): bool
     {
-        return AuthenticationManager::GetCurrentUser()->isAdmin() && empty(SystemConfig::getValue('sChurchAddress'));
+        return AuthenticationManager::getCurrentUser()->isAdmin() && empty(SystemConfig::getValue('sChurchAddress'));
     }
 
     public function isAdmin(): bool

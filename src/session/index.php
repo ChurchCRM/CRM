@@ -41,7 +41,7 @@ $app->post('/two-factor', 'processTwoFactorPost');
 function processTwoFactorGet(Request $request, Response $response, array $args)
 {
     $renderer = new PhpRenderer('templates/');
-    $curUser = AuthenticationManager::GetCurrentUser();
+    $curUser = AuthenticationManager::getCurrentUser();
     $pageArgs = [
         'sRootPath' => SystemURLs::getRootPath(),
         'user' => $curUser,
@@ -55,12 +55,12 @@ function processTwoFactorPost(Request $request, Response $response, array $args)
 {
     $loginRequestBody = (object)$request->getParsedBody();
     $request = new LocalTwoFactorTokenRequest($loginRequestBody->TwoFACode);
-    AuthenticationManager::Authenticate($request);
+    AuthenticationManager::authenticate($request);
 }
 
 function endSession(Request $request, Response $response, array $args)
 {
-    AuthenticationManager::EndSession();
+    AuthenticationManager::endSession();
 }
 
 
@@ -68,14 +68,14 @@ function beginSession(Request $request, Response $response, array $args)
 {
     $pageArgs = [
         'sRootPath' => SystemURLs::getRootPath(),
-        'localAuthNextStepURL' => AuthenticationManager::GetSessionBeginURL(),
-        'forgotPasswordURL' => AuthenticationManager::GetForgotPasswordURL()
+        'localAuthNextStepURL' => AuthenticationManager::getSessionBeginURL(),
+        'forgotPasswordURL' => AuthenticationManager::getForgotPasswordURL()
     ];
 
     if ($request->getMethod() == "POST") {
         $loginRequestBody = (object)$request->getParsedBody();
         $request = new LocalUsernamePasswordRequest($loginRequestBody->User, $loginRequestBody->Password);
-        $authenticationResult = AuthenticationManager::Authenticate($request);
+        $authenticationResult = AuthenticationManager::authenticate($request);
         $pageArgs['sErrorText'] = $authenticationResult->message;
     }
 

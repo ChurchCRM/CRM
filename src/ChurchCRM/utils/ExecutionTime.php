@@ -15,7 +15,7 @@ class ExecutionTime
         $this->startR = getrusage();
     }
 
-    public function End()
+    public function end()
     {
         $this->endTime = microtime(true);
         $this->endR = getrusage();

@@ -38,21 +38,21 @@ if (SystemConfig::getValue("sCSVExportCharset") == "UTF-8") {
 }
 
 
-fputcsv($out, [InputUtils::translate_special_charset('Class'),
-  InputUtils::translate_special_charset('Role'),
-  InputUtils::translate_special_charset('First Name'),
-  InputUtils::translate_special_charset('Last Name'),
-  InputUtils::translate_special_charset('Birth Date'),
-  InputUtils::translate_special_charset('Mobile'),
-  InputUtils::translate_special_charset('Home Phone'),
-  InputUtils::translate_special_charset('Home Address'),
-  InputUtils::translate_special_charset('Dad Name'),
-  InputUtils::translate_special_charset('Dad Mobile') ,
-  InputUtils::translate_special_charset('Dad Email'),
-  InputUtils::translate_special_charset('Mom Name'),
-  InputUtils::translate_special_charset('Mom Mobile'),
-  InputUtils::translate_special_charset('Mom Email'),
-  InputUtils::translate_special_charset('Properties') ], $delimiter);
+fputcsv($out, [InputUtils::translateSpecialCharset('Class'),
+  InputUtils::translateSpecialCharset('Role'),
+  InputUtils::translateSpecialCharset('First Name'),
+  InputUtils::translateSpecialCharset('Last Name'),
+  InputUtils::translateSpecialCharset('Birth Date'),
+  InputUtils::translateSpecialCharset('Mobile'),
+  InputUtils::translateSpecialCharset('Home Phone'),
+  InputUtils::translateSpecialCharset('Home Address'),
+  InputUtils::translateSpecialCharset('Dad Name'),
+  InputUtils::translateSpecialCharset('Dad Mobile') ,
+  InputUtils::translateSpecialCharset('Dad Email'),
+  InputUtils::translateSpecialCharset('Mom Name'),
+  InputUtils::translateSpecialCharset('Mom Mobile'),
+  InputUtils::translateSpecialCharset('Mom Email'),
+  InputUtils::translateSpecialCharset('Properties') ], $delimiter);
 
 // only the unday groups
 $groups = GroupQuery::create()
@@ -143,14 +143,14 @@ foreach ($groups as $group) {
         }
         
         fputcsv($out, [
-            InputUtils::translate_special_charset($sundayschoolClass),
-            InputUtils::translate_special_charset($lst_OptionName),
-            InputUtils::translate_special_charset($firstName),
-            InputUtils::translate_special_charset($lastname),
+            InputUtils::translateSpecialCharset($sundayschoolClass),
+            InputUtils::translateSpecialCharset($lst_OptionName),
+            InputUtils::translateSpecialCharset($firstName),
+            InputUtils::translateSpecialCharset($lastname),
             $birthDate, $mobilePhone, $homePhone,
-            InputUtils::translate_special_charset($Address1).' '.InputUtils::translate_special_charset($Address2).' '.InputUtils::translate_special_charset($city).' '.InputUtils::translate_special_charset($state).' '.$zip,
-            InputUtils::translate_special_charset($dadFirstName).' '.InputUtils::translate_special_charset($dadLastName), $dadCellPhone, $dadEmail,
-            InputUtils::translate_special_charset($momFirstName).' '.InputUtils::translate_special_charset($momLastName), $momCellPhone, $momEmail, $props], $delimiter);
+            InputUtils::translateSpecialCharset($Address1).' '.InputUtils::translateSpecialCharset($Address2).' '.InputUtils::translateSpecialCharset($city).' '.InputUtils::translateSpecialCharset($state).' '.$zip,
+            InputUtils::translateSpecialCharset($dadFirstName).' '.InputUtils::translateSpecialCharset($dadLastName), $dadCellPhone, $dadEmail,
+            InputUtils::translateSpecialCharset($momFirstName).' '.InputUtils::translateSpecialCharset($momLastName), $momCellPhone, $momEmail, $props], $delimiter);
     }
 }
 

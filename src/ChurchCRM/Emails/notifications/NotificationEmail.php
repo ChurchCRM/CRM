@@ -31,12 +31,12 @@ class NotificationEmail extends BaseEmail
         return array_merge($this->getCommonTokens(), $myTokens);
     }
 
-    function getFullURL()
+    protected function getFullURL()
     {
         // TODO: Implement getFullURL() method.
     }
 
-    function getButtonText()
+    protected function getButtonText()
     {
         // TODO: Implement getButtonText() method.
     }

@@ -23,7 +23,7 @@ class IntegrityCheckTask implements iTask
 
     public function isActive(): bool
     {
-        return AuthenticationManager::GetCurrentUser()->isAdmin() && ($this->integrityCheckData == null || $this->integrityCheckData->status == 'failure');
+        return AuthenticationManager::getCurrentUser()->isAdmin() && ($this->integrityCheckData == null || $this->integrityCheckData->status == 'failure');
     }
 
     public function isAdmin(): bool

@@ -21,7 +21,7 @@ class FinanceDepositSearchResultProvider extends BaseSearchResultProvider
 
     public function getSearchResults(string $SearchQuery)
     {
-        if (AuthenticationManager::GetCurrentUser()->isFinanceEnabled()) {
+        if (AuthenticationManager::getCurrentUser()->isFinanceEnabled()) {
             if (SystemConfig::getBooleanValue("bSearchIncludeDeposits")) {
                 $this->addSearchResults($this->getDepositSearchResults($SearchQuery));
             }

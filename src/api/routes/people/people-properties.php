@@ -89,7 +89,7 @@ function getProperties(Response $response, $type, $id)
             $tempProp["id"] = $property->getPropertyId();
             $tempProp["name"] = $rawProp->getProName();
             $tempProp["value"] = $property->getPropertyValue();
-            if (AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled()) {
+            if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) {
                 $tempProp["allowEdit"] = !empty(trim($rawProp->getProPrompt()));
                 $tempProp["allowDelete"] = true;
             } else {

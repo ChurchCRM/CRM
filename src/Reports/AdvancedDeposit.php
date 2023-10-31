@@ -7,6 +7,8 @@
 
 ******************************************************************************/
 
+namespace ChurchCRM\Reports;
+
 require '../Include/Config.php';
 require '../Include/Functions.php';
 
@@ -17,19 +19,19 @@ use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Authentication\AuthenticationManager;
 
 // Security
-if (!AuthenticationManager::GetCurrentUser()->isFinanceEnabled()) {
-    RedirectUtils::Redirect('Menu.php');
+if (!AuthenticationManager::getCurrentUser()->isFinanceEnabled()) {
+    RedirectUtils::redirect('Menu.php');
     exit;
 }
 
 // Filter values
-$sort = InputUtils::LegacyFilterInput($_POST['sort']);
-$detail_level = InputUtils::LegacyFilterInput($_POST['detail_level']);
-$datetype = InputUtils::LegacyFilterInput($_POST['datetype']);
-$output = InputUtils::LegacyFilterInput($_POST['output']);
-$sDateStart = InputUtils::LegacyFilterInput($_POST['DateStart'], 'date');
-$sDateEnd = InputUtils::LegacyFilterInput($_POST['DateEnd'], 'date');
-$iDepID = InputUtils::LegacyFilterInput($_POST['deposit'], 'int');
+$sort = InputUtils::legacyFilterInput($_POST['sort']);
+$detail_level = InputUtils::legacyFilterInput($_POST['detail_level']);
+$datetype = InputUtils::legacyFilterInput($_POST['datetype']);
+$output = InputUtils::legacyFilterInput($_POST['output']);
+$sDateStart = InputUtils::legacyFilterInput($_POST['DateStart'], 'date');
+$sDateEnd = InputUtils::legacyFilterInput($_POST['DateEnd'], 'date');
+$iDepID = InputUtils::legacyFilterInput($_POST['deposit'], 'int');
 
 if (!empty($_POST['classList'])) {
     $classList = $_POST['classList'];
@@ -77,8 +79,8 @@ if (!$output) {
 }
 
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
-if (!AuthenticationManager::GetCurrentUser()->isAdmin() && SystemConfig::getValue('bCSVAdminOnly') && $output != 'pdf') {
-    RedirectUtils::Redirect('Menu.php');
+if (!AuthenticationManager::getCurrentUser()->isAdmin() && SystemConfig::getValue('bCSVAdminOnly') && $output != 'pdf') {
+    RedirectUtils::redirect('Menu.php');
     exit;
 }
 
@@ -127,7 +129,7 @@ if ($iDepID > 0) {
 if (!empty($_POST['funds'])) {
     $count = 0;
     foreach ($_POST['funds'] as $fundID) {
-        $fund[$count++] = InputUtils::LegacyFilterInput($fundID, 'int');
+        $fund[$count++] = InputUtils::legacyFilterInput($fundID, 'int');
     }
     if ($count == 1) {
         if ($fund[0]) {
@@ -146,7 +148,7 @@ if (!empty($_POST['funds'])) {
 if ($familyList) {
     $count = 0;
     foreach ($familyList as $famID) {
-        $fam[$count++] = InputUtils::LegacyFilterInput($famID, 'int');
+        $fam[$count++] = InputUtils::legacyFilterInput($famID, 'int');
     }
     if ($count == 1) {
         if ($fam[0]) {
@@ -169,7 +171,7 @@ if ($classList[0]) {
 if (!empty($_POST['method'])) {
     $count = 0;
     foreach ($_POST['method'] as $MethodItem) {
-        $aMethod[$count++] = InputUtils::LegacyFilterInput($MethodItem);
+        $aMethod[$count++] = InputUtils::legacyFilterInput($MethodItem);
     }
     if ($count == 1) {
         if ($aMethod[0]) {
@@ -213,7 +215,7 @@ if ($output == 'pdf') {
     $summaryIntervalY = 4;
     $page = 1;
 
-    class PDF_TaxReport extends ChurchInfoReport
+    class PdfTaxReport extends ChurchInfoReport
     {
         // Constructor
         public function __construct()
@@ -225,7 +227,7 @@ if ($output == 'pdf') {
             $this->SetAutoPageBreak(false);
         }
 
-        public function PrintRightJustified($x, $y, $str)
+        public function printRightJustified($x, $y, $str)
         {
             $iLen = strlen($str);
             $nMoveBy = 2 * $iLen;
@@ -233,21 +235,21 @@ if ($output == 'pdf') {
             $this->Write(8, $str);
         }
 
-        public function StartFirstPage()
+        public function startFirstPage()
         {
             global $sDateStart, $sDateEnd, $sort, $iDepID, $datetype;
-            $this->AddPage();
+            $this->addPage();
             $curY = 20;
             $curX = 60;
             $this->SetFont('Times', 'B', 14);
-            $this->WriteAt($curX, $curY, SystemConfig::getValue('sChurchName').' Deposit Report');
+            $this->writeAt($curX, $curY, SystemConfig::getValue('sChurchName').' Deposit Report');
             $curY += 2 * SystemConfig::getValue('incrementY');
             $this->SetFont('Times', 'B', 10);
             $curX = SystemConfig::getValue('leftX');
-            $this->WriteAt($curX, $curY, 'Data sorted by '.ucwords($sort));
+            $this->writeAt($curX, $curY, 'Data sorted by '.ucwords($sort));
             $curY += SystemConfig::getValue('incrementY');
             if (!$iDepID) {
-                $this->WriteAt($curX, $curY, "$datetype Dates: $sDateStart through $sDateEnd");
+                $this->writeAt($curX, $curY, "$datetype Dates: $sDateStart through $sDateEnd");
                 $curY += SystemConfig::getValue('incrementY');
             }
             if ($iDepID || $_POST['family'][0] || $_POST['funds'][0] || $_POST['method'][0]) {
@@ -268,77 +270,77 @@ if ($output == 'pdf') {
             } else {
                 $heading = 'Showing all records for report dates.';
             }
-            $this->WriteAt($curX, $curY, $heading);
+            $this->writeAt($curX, $curY, $heading);
             $curY += 2 * SystemConfig::getValue('incrementY');
             $this->SetFont('Times', '', 10);
 
             return $curY;
         }
 
-        public function PageBreak($page)
+        public function pageBreak($page)
         {
             // Finish footer of previous page if necessary and add new page
             global $curY, $bottom_border, $detail_level;
             if ($curY > $bottom_border) {
-                $this->FinishPage($page);
+                $this->finishPage($page);
                 $page++;
-                $this->AddPage();
+                $this->addPage();
                 $curY = 20;
                 if ($detail_level == 'detail') {
-                    $curY = $this->Headings($curY);
+                    $curY = $this->headings($curY);
                 }
             }
 
             return $page;
         }
 
-        public function Headings($curY)
+        public function headings($curY)
         {
             global $sort, $summaryIntervalY;
             if ($sort == 'deposit') {
                 $curX = SystemConfig::getValue('leftX');
                 $this->SetFont('Times', 'BU', 10);
-                $this->WriteAt($curX, $curY, 'Chk No.');
-                $this->WriteAt(40, $curY, 'Fund');
-                $this->WriteAt(80, $curY, 'Received From');
-                $this->WriteAt(135, $curY, 'Memo');
-                $this->WriteAt(181, $curY, 'Amount');
+                $this->writeAt($curX, $curY, 'Chk No.');
+                $this->writeAt(40, $curY, 'Fund');
+                $this->writeAt(80, $curY, 'Received From');
+                $this->writeAt(135, $curY, 'Memo');
+                $this->writeAt(181, $curY, 'Amount');
                 $curY += 2 * $summaryIntervalY;
             } elseif ($sort == 'fund') {
                 $curX = SystemConfig::getValue('leftX');
                 $this->SetFont('Times', 'BU', 10);
-                $this->WriteAt($curX, $curY, 'Chk No.');
-                $this->WriteAt(40, $curY, 'Deposit No./ Date');
-                $this->WriteAt(80, $curY, 'Received From');
-                $this->WriteAt(135, $curY, 'Memo');
-                $this->WriteAt(181, $curY, 'Amount');
+                $this->writeAt($curX, $curY, 'Chk No.');
+                $this->writeAt(40, $curY, 'Deposit No./ Date');
+                $this->writeAt(80, $curY, 'Received From');
+                $this->writeAt(135, $curY, 'Memo');
+                $this->writeAt(181, $curY, 'Amount');
                 $curY += 2 * $summaryIntervalY;
             } elseif ($sort == 'family') {
                 $curX = SystemConfig::getValue('leftX');
                 $this->SetFont('Times', 'BU', 10);
-                $this->WriteAt($curX, $curY, 'Chk No.');
-                $this->WriteAt(40, $curY, 'Deposit No./Date');
-                $this->WriteAt(80, $curY, 'Fund');
-                $this->WriteAt(135, $curY, 'Memo');
-                $this->WriteAt(181, $curY, 'Amount');
+                $this->writeAt($curX, $curY, 'Chk No.');
+                $this->writeAt(40, $curY, 'Deposit No./Date');
+                $this->writeAt(80, $curY, 'Fund');
+                $this->writeAt(135, $curY, 'Memo');
+                $this->writeAt(181, $curY, 'Amount');
                 $curY += 2 * $summaryIntervalY;
             }
 
             return $curY;
         }
 
-        public function FinishPage($page)
+        public function finishPage($page)
         {
             $footer = "Page $page   Generated on ".date(SystemConfig::getValue("sDateTimeFormat"));
             $this->SetFont('Times', 'I', 9);
-            $this->WriteAt(80, 258, $footer);
+            $this->writeAt(80, 258, $footer);
         }
     }
 
     // Instantiate the directory class and build the report.
-    $pdf = new PDF_TaxReport();
+    $pdf = new PdfTaxReport();
 
-    $curY = $pdf->StartFirstPage();
+    $curY = $pdf->startFirstPage();
     $curX = 0;
 
     $currentDepositID = 0;
@@ -358,7 +360,7 @@ if ($output == 'pdf') {
     // **********************
     if ($sort == 'deposit') {
         if ($detail_level == 'detail') {
-            $curY = $pdf->Headings($curY);
+            $curY = $pdf->headings($curY);
         }
 
         while ($aRow = mysqli_fetch_array($rsReport)) {
@@ -375,7 +377,7 @@ if ($output == 'pdf') {
             if (!$currentDepositID && $detail_level != 'summary') {
                 $sDepositTitle = "Deposit #$plg_depID ($dep_Date)";
                 $pdf->SetFont('Times', 'B', 10);
-                $pdf->WriteAt(20, $curY, $sDepositTitle);
+                $pdf->writeAt(20, $curY, $sDepositTitle);
                 $curY += 1.5 * $summaryIntervalY;
             }
             // Check for new fund
@@ -394,7 +396,7 @@ if ($output == 'pdf') {
                 $curY += 1.75 * $summaryIntervalY;
                 $countFund = 0;
                 $currentFundAmount = 0;
-                $page = $pdf->PageBreak($page);
+                $page = $pdf->pageBreak($page);
             }
             // Check for new deposit
             if ($currentDepositID != $plg_depID && $currentDepositID) {
@@ -412,13 +414,13 @@ if ($output == 'pdf') {
                 if ($detail_level != 'summary') {
                     $pdf->line(40, $curY - 2, 195, $curY - 2);
                 }
-                $page = $pdf->PageBreak($page);
+                $page = $pdf->pageBreak($page);
 
                 // New Deposit Title
                 if ($detail_level != 'summary') {
                     $sDepositTitle = "Deposit #$plg_depID ($dep_Date)";
                     $pdf->SetFont('Times', 'B', 10);
-                    $pdf->WriteAt(20, $curY, $sDepositTitle);
+                    $pdf->writeAt(20, $curY, $sDepositTitle);
                     $curY += 1.5 * $summaryIntervalY;
                 }
                 $countDeposit = 0;
@@ -464,7 +466,7 @@ if ($output == 'pdf') {
                 $pdf->Cell(25, $summaryIntervalY, $plg_amount, 0, 0, 'R');
                 $pdf->SetFont('Times', '', 10);
                 $curY += $summaryIntervalY;
-                $page = $pdf->PageBreak($page);
+                $page = $pdf->pageBreak($page);
             }
             // Update running totals
             $totalAmount += $plg_amount;
@@ -499,7 +501,7 @@ if ($output == 'pdf') {
             $pdf->SetFont('Times', 'I', 10);
             $pdf->Cell(176, $summaryIntervalY, $sFundSummary, 0, 0, 'R');
             $curY += 1.75 * $summaryIntervalY;
-            $page = $pdf->PageBreak($page);
+            $page = $pdf->pageBreak($page);
         }
         // Print Deposit Summary
         if ($countDeposit > 1) {
@@ -512,14 +514,14 @@ if ($output == 'pdf') {
         $pdf->SetFont('Times', 'B', 10);
         $pdf->Cell(176, $summaryIntervalY, $sDepositSummary, 0, 0, 'R');
         $curY += 2 * $summaryIntervalY;
-        $page = $pdf->PageBreak($page);
+        $page = $pdf->pageBreak($page);
     } elseif ($sort == 'fund') {
         // **********************
         // Sort by Fund  Report
         // **********************
 
         if ($detail_level == 'detail') {
-            $curY = $pdf->Headings($curY);
+            $curY = $pdf->headings($curY);
         }
 
         while ($aRow = mysqli_fetch_array($rsReport)) {
@@ -536,7 +538,7 @@ if ($output == 'pdf') {
             if (!$currentFundName && $detail_level != 'summary') {
                 $sFundTitle = "Fund: $fun_Name";
                 $pdf->SetFont('Times', 'B', 10);
-                $pdf->WriteAt(20, $curY, $sFundTitle);
+                $pdf->writeAt(20, $curY, $sFundTitle);
                 $curY += 1.5 * $summaryIntervalY;
             }
             // Check for new Family
@@ -555,7 +557,7 @@ if ($output == 'pdf') {
                 $curY += 1.75 * $summaryIntervalY;
                 $countFamily = 0;
                 $currentFamilyAmount = 0;
-                $page = $pdf->PageBreak($page);
+                $page = $pdf->pageBreak($page);
             }
             // Check for new Fund
             if ($currentFundID != $fun_ID && $currentFundID) {
@@ -573,13 +575,13 @@ if ($output == 'pdf') {
                 if ($detail_level != 'summary') {
                     $pdf->line(40, $curY - 2, 195, $curY - 2);
                 }
-                $page = $pdf->PageBreak($page);
+                $page = $pdf->pageBreak($page);
 
                 // New Fund Title
                 if ($detail_level != 'summary') {
                     $sFundTitle = "Fund: $fun_Name";
                     $pdf->SetFont('Times', 'B', 10);
-                    $pdf->WriteAt(20, $curY, $sFundTitle);
+                    $pdf->writeAt(20, $curY, $sFundTitle);
                     $curY += 1.5 * $summaryIntervalY;
                 }
                 $countFund = 0;
@@ -624,7 +626,7 @@ if ($output == 'pdf') {
                 $pdf->Cell(25, $summaryIntervalY, $plg_amount, 0, 0, 'R');
                 $pdf->SetFont('Times', '', 10);
                 $curY += $summaryIntervalY;
-                $page = $pdf->PageBreak($page);
+                $page = $pdf->pageBreak($page);
             }
             // Update running totals
             $totalAmount += $plg_amount;
@@ -660,7 +662,7 @@ if ($output == 'pdf') {
             $pdf->SetFont('Times', 'I', 10);
             $pdf->Cell(176, $summaryIntervalY, $sFamilySummary, 0, 0, 'R');
             $curY += 1.75 * $summaryIntervalY;
-            $page = $pdf->PageBreak($page);
+            $page = $pdf->pageBreak($page);
         }
         // Print Fund Summary
         if ($countFund > 1) {
@@ -676,7 +678,7 @@ if ($output == 'pdf') {
         if ($detail_level != 'summary') {
             $pdf->line(40, $curY - 2, 195, $curY - 2);
         }
-        $page = $pdf->PageBreak($page);
+        $page = $pdf->pageBreak($page);
     } elseif ($sort == 'family') {
         // **********************
         // Sort by Family  Report
@@ -697,7 +699,7 @@ if ($output == 'pdf') {
             if (!$currentFamilyID && $detail_level != 'summary') {
                 $sFamilyTitle = "$fam_Name - $fam_Address1";
                 $pdf->SetFont('Times', 'B', 10);
-                $pdf->WriteAt(20, $curY, $sFamilyTitle);
+                $pdf->writeAt(20, $curY, $sFamilyTitle);
                 $curY += 1.5 * $summaryIntervalY;
             }
             // Check for new Fund
@@ -716,7 +718,7 @@ if ($output == 'pdf') {
                 $curY += 1.75 * $summaryIntervalY;
                 $countFund = 0;
                 $currentFundAmount = 0;
-                $page = $pdf->PageBreak($page);
+                $page = $pdf->pageBreak($page);
             }
             // Check for new Family
             if ($currentFamilyID != $fam_ID && $currentFamilyID) {
@@ -734,13 +736,13 @@ if ($output == 'pdf') {
                 if ($detail_level != 'summary') {
                     $pdf->line(40, $curY - 2, 195, $curY - 2);
                 }
-                $page = $pdf->PageBreak($page);
+                $page = $pdf->pageBreak($page);
 
                 // New Family Title
                 if ($detail_level != 'summary') {
                     $sFamilyTitle = "$fam_Name - $fam_Address1";
                     $pdf->SetFont('Times', 'B', 10);
-                    $pdf->WriteAt(20, $curY, $sFamilyTitle);
+                    $pdf->writeAt(20, $curY, $sFamilyTitle);
                     $curY += 1.5 * $summaryIntervalY;
                 }
                 $countFamily = 0;
@@ -785,7 +787,7 @@ if ($output == 'pdf') {
                 $pdf->Cell(25, $summaryIntervalY, $plg_amount, 0, 0, 'R');
                 $pdf->SetFont('Times', '', 10);
                 $curY += $summaryIntervalY;
-                $page = $pdf->PageBreak($page);
+                $page = $pdf->pageBreak($page);
             }
             // Update running totals
             $totalAmount += $plg_amount;
@@ -821,7 +823,7 @@ if ($output == 'pdf') {
             $pdf->SetFont('Times', 'I', 10);
             $pdf->Cell(176, $summaryIntervalY, $sFundSummary, 0, 0, 'R');
             $curY += 1.75 * $summaryIntervalY;
-            $page = $pdf->PageBreak($page);
+            $page = $pdf->pageBreak($page);
         }
         // Print Family Summary
         if ($countFamily > 1) {
@@ -837,7 +839,7 @@ if ($output == 'pdf') {
         if ($detail_level != 'summary') {
             $pdf->line(40, $curY - 2, 195, $curY - 2);
         }
-        $page = $pdf->PageBreak($page);
+        $page = $pdf->pageBreak($page);
     }
 
     // Print Report Summary
@@ -852,12 +854,12 @@ if ($output == 'pdf') {
     $pdf->Cell(176, $summaryIntervalY, $sReportSummary, 0, 0, 'R');
     $pdf->line(40, $curY - 2, 195, $curY - 2);
     $curY += 2.5 * $summaryIntervalY;
-    $page = $pdf->PageBreak($page);
+    $page = $pdf->pageBreak($page);
 
     // Print Fund Totals
     $pdf->SetFont('Times', 'B', 10);
     $pdf->SetXY($curX, $curY);
-    $pdf->WriteAt(20, $curY, 'Deposit totals by fund');
+    $pdf->writeAt(20, $curY, 'Deposit totals by fund');
     $pdf->SetFont('Courier', '', 10);
     $curY += 1.5 * $summaryIntervalY;
     ksort($totalFund);
@@ -872,11 +874,11 @@ if ($output == 'pdf') {
         $pdf->Cell(45, $summaryIntervalY, $sfun_Name);
         $pdf->Cell(25, $summaryIntervalY, number_format($FundTotal, 2, '.', ','), 0, 0, 'R');
         $curY += $summaryIntervalY;
-        $page = $pdf->PageBreak($page);
+        $page = $pdf->pageBreak($page);
         next($totalFund);
     }
 
-    $pdf->FinishPage($page);
+    $pdf->finishPage($page);
     $pdf->Output('DepositReport-'.date(SystemConfig::getValue("sDateFilenameFormat")).'.pdf', 'D');
 
     // Output a text file

@@ -17,7 +17,7 @@ $sPageTitle = gettext('View on Map');
 
 require 'Include/Header.php';
 
-$iGroupID = InputUtils::LegacyFilterInput($_GET['GroupID'], 'int');
+$iGroupID = InputUtils::legacyFilterInput($_GET['GroupID'], 'int');
 ?>
 
 <div class="callout callout-info">

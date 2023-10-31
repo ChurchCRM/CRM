@@ -17,9 +17,9 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Authentication\AuthenticationManager;
 
-$iDonatedItemID = InputUtils::LegacyFilterInputArr($_GET, 'DonatedItemID', 'int');
-$linkBack = InputUtils::LegacyFilterInputArr($_GET, 'linkBack');
-$iCurrentFundraiser = InputUtils::LegacyFilterInputArr($_GET, 'CurrentFundraiser');
+$iDonatedItemID = InputUtils::legacyFilterInputArr($_GET, 'DonatedItemID', 'int');
+$linkBack = InputUtils::legacyFilterInputArr($_GET, 'linkBack');
+$iCurrentFundraiser = InputUtils::legacyFilterInputArr($_GET, 'CurrentFundraiser');
 
 if ($iDonatedItemID > 0) {
     $sSQL = "SELECT * FROM donateditem_di WHERE di_ID = '$iDonatedItemID'";
@@ -47,17 +47,17 @@ $sPageTitle = gettext('Donated Item Editor');
 //Is this the second pass?
 if (isset($_POST['DonatedItemSubmit']) || isset($_POST['DonatedItemSubmitAndAdd'])) {
     //Get all the variables from the request object and assign them locally
-    $sItem = InputUtils::LegacyFilterInputArr($_POST, 'Item');
-    $bMultibuy = InputUtils::LegacyFilterInputArr($_POST, 'Multibuy', 'int');
-    $iDonor = InputUtils::LegacyFilterInputArr($_POST, 'Donor', 'int');
-    $iBuyer = InputUtils::LegacyFilterInputArr($_POST, 'Buyer', 'int');
-    $sTitle = InputUtils::LegacyFilterInputArr($_POST, 'Title');
-    $sDescription = InputUtils::LegacyFilterInputArr($_POST, 'Description');
-    $nSellPrice = InputUtils::LegacyFilterInputArr($_POST, 'SellPrice');
-    $nEstPrice = InputUtils::LegacyFilterInputArr($_POST, 'EstPrice');
-    $nMaterialValue = InputUtils::LegacyFilterInputArr($_POST, 'MaterialValue');
-    $nMinimumPrice = InputUtils::LegacyFilterInputArr($_POST, 'MinimumPrice');
-    $sPictureURL = InputUtils::LegacyFilterInputArr($_POST, 'PictureURL');
+    $sItem = InputUtils::legacyFilterInputArr($_POST, 'Item');
+    $bMultibuy = InputUtils::legacyFilterInputArr($_POST, 'Multibuy', 'int');
+    $iDonor = InputUtils::legacyFilterInputArr($_POST, 'Donor', 'int');
+    $iBuyer = InputUtils::legacyFilterInputArr($_POST, 'Buyer', 'int');
+    $sTitle = InputUtils::legacyFilterInputArr($_POST, 'Title');
+    $sDescription = InputUtils::legacyFilterInputArr($_POST, 'Description');
+    $nSellPrice = InputUtils::legacyFilterInputArr($_POST, 'SellPrice');
+    $nEstPrice = InputUtils::legacyFilterInputArr($_POST, 'EstPrice');
+    $nMaterialValue = InputUtils::legacyFilterInputArr($_POST, 'MaterialValue');
+    $nMinimumPrice = InputUtils::legacyFilterInputArr($_POST, 'MinimumPrice');
+    $sPictureURL = InputUtils::legacyFilterInputArr($_POST, 'PictureURL');
 
     if (!$bMultibuy) {
         $bMultibuy = 0;
@@ -69,11 +69,11 @@ if (isset($_POST['DonatedItemSubmit']) || isset($_POST['DonatedItemSubmitAndAdd'
     if (strlen($iDonatedItemID) < 1) {
         $sSQL = 'INSERT INTO donateditem_di (di_FR_ID, di_Item, di_multibuy, di_donor_ID, di_buyer_ID, di_title, di_description, di_sellprice, di_estprice, di_materialvalue, di_minimum, di_picture, di_EnteredBy, di_EnteredDate)
 		VALUES ('.$iCurrentFundraiser.",'".$sItem."','".$bMultibuy."','".$iDonor."','".$iBuyer."','".html_entity_decode($sTitle)."','".html_entity_decode($sDescription)."','".$nSellPrice."','".$nEstPrice."','".$nMaterialValue."','".$nMinimumPrice."','".mysqli_real_escape_string($cnInfoCentral, $sPictureURL)."'";
-        $sSQL .= ','.AuthenticationManager::GetCurrentUser()->getId().",'".date('YmdHis')."')";
+        $sSQL .= ','.AuthenticationManager::getCurrentUser()->getId().",'".date('YmdHis')."')";
         $bGetKeyBack = true;
     // Existing record (update)
     } else {
-        $sSQL = 'UPDATE donateditem_di SET di_FR_ID = '.$iCurrentFundraiser.", di_Item = '".$sItem."', di_multibuy = '".$bMultibuy."', di_donor_ID = ".$iDonor.', di_buyer_ID = '.$iBuyer.", di_title = '".html_entity_decode($sTitle)."', di_description = '".html_entity_decode($sDescription)."', di_sellprice = '".$nSellPrice."', di_estprice = '".$nEstPrice."', di_materialvalue = '".$nMaterialValue."', di_minimum = '".$nMinimumPrice."', di_picture = '".mysqli_real_escape_string($cnInfoCentral, $sPictureURL)."', di_EnteredBy=".AuthenticationManager::GetCurrentUser()->getId().", di_EnteredDate = '".date('YmdHis')."'";
+        $sSQL = 'UPDATE donateditem_di SET di_FR_ID = '.$iCurrentFundraiser.", di_Item = '".$sItem."', di_multibuy = '".$bMultibuy."', di_donor_ID = ".$iDonor.', di_buyer_ID = '.$iBuyer.", di_title = '".html_entity_decode($sTitle)."', di_description = '".html_entity_decode($sDescription)."', di_sellprice = '".$nSellPrice."', di_estprice = '".$nEstPrice."', di_materialvalue = '".$nMaterialValue."', di_minimum = '".$nMinimumPrice."', di_picture = '".mysqli_real_escape_string($cnInfoCentral, $sPictureURL)."', di_EnteredBy=".AuthenticationManager::getCurrentUser()->getId().", di_EnteredDate = '".date('YmdHis')."'";
         $sSQL .= ' WHERE di_ID = '.$iDonatedItemID;
         echo '<br><br><br><br><br><br>'.$sSQL;
         $bGetKeyBack = false;
@@ -92,14 +92,14 @@ if (isset($_POST['DonatedItemSubmit']) || isset($_POST['DonatedItemSubmitAndAdd'
     if (isset($_POST['DonatedItemSubmit'])) {
         // Check for redirection to another page after saving information: (ie. DonatedItemEditor.php?previousPage=prev.php?a=1;b=2;c=3)
         if ($linkBack != '') {
-            RedirectUtils::Redirect($linkBack);
+            RedirectUtils::redirect($linkBack);
         } else {
             //Send to the view of this DonatedItem
-            RedirectUtils::Redirect('DonatedItemEditor.php?DonatedItemID='.$iDonatedItemID.'&linkBack=', $linkBack);
+            RedirectUtils::redirect('DonatedItemEditor.php?DonatedItemID='.$iDonatedItemID.'&linkBack=', $linkBack);
         }
     } elseif (isset($_POST['DonatedItemSubmitAndAdd'])) {
         //Reload to editor to add another record
-        RedirectUtils::Redirect("DonatedItemEditor.php?CurrentFundraiser=$iCurrentFundraiser&linkBack=", $linkBack);
+        RedirectUtils::redirect("DonatedItemEditor.php?CurrentFundraiser=$iCurrentFundraiser&linkBack=", $linkBack);
     }
 } else {
   //FirstPass
@@ -291,7 +291,7 @@ while ($aRow = mysqli_fetch_array($rsPeople)) {
 
             <div class="form-group text-center">
                 <input type="submit" class="btn btn-primary" value="<?= gettext('Save') ?>" name="DonatedItemSubmit">
-                <?php if (AuthenticationManager::GetCurrentUser()->isAddRecordsEnabled()) : ?>
+                <?php if (AuthenticationManager::getCurrentUser()->isAddRecordsEnabled()) : ?>
                     <input type="submit" class="btn btn-primary" value="<?= gettext('Save and Add'); ?>" name="DonatedItemSubmitAndAdd">
                 <?php endif; ?>
                 <input type="button" class="btn btn-default" value="<?= gettext('Cancel') ?>" name="DonatedItemCancel"

@@ -28,12 +28,12 @@ class FamilyVerificationEmail extends BaseEmail
         return array_merge($this->getCommonTokens(), $myTokens);
     }
 
-    function getFullURL()
+    protected function getFullURL()
     {
         return SystemURLs::getURL() . "/external/verify/". $this->token->getToken();
     }
 
-    function getButtonText()
+    protected function getButtonText()
     {
         return gettext("Verify");
     }

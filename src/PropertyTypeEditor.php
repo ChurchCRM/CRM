@@ -17,8 +17,8 @@ use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Authentication\AuthenticationManager;
 
 // Security: User must have property and classification editing permission
-if (!AuthenticationManager::GetCurrentUser()->isMenuOptionsEnabled()) {
-    RedirectUtils::Redirect('Menu.php');
+if (!AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled()) {
+    RedirectUtils::redirect('Menu.php');
     exit;
 }
 
@@ -28,7 +28,7 @@ $sPageTitle = gettext('Property Type Editor');
 //Get the PropertyID
 $iPropertyTypeID = 0;
 if (array_key_exists('PropertyTypeID', $_GET)) {
-    $iPropertyTypeID = InputUtils::LegacyFilterInput($_GET['PropertyTypeID'], 'int');
+    $iPropertyTypeID = InputUtils::legacyFilterInput($_GET['PropertyTypeID'], 'int');
 }
 
 $sClass = '';
@@ -37,9 +37,9 @@ $bError = false;
 
 //Was the form submitted?
 if (isset($_POST['Submit'])) {
-    $sName = InputUtils::LegacyFilterInput($_POST['Name']);
-    $sDescription = InputUtils::LegacyFilterInput($_POST['Description']);
-    $sClass = InputUtils::LegacyFilterInput($_POST['Class'], 'char', 1);
+    $sName = InputUtils::legacyFilterInput($_POST['Name']);
+    $sDescription = InputUtils::legacyFilterInput($_POST['Description']);
+    $sClass = InputUtils::legacyFilterInput($_POST['Class'], 'char', 1);
 
     //Did they enter a name?
     if (strlen($sName) < 1) {
@@ -60,7 +60,7 @@ if (isset($_POST['Submit'])) {
         RunQuery($sSQL);
 
         //Route back to the list
-        RedirectUtils::Redirect('PropertyTypeList.php');
+        RedirectUtils::redirect('PropertyTypeList.php');
     }
 } elseif ($iPropertyTypeID > 0) {
     //Get the data on this property

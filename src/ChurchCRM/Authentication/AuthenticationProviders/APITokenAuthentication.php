@@ -17,12 +17,12 @@ namespace ChurchCRM\Authentication\AuthenticationProviders {
          */
         private $currentUser;
 
-        public function GetCurrentUser()
+        public function getCurrentUser()
         {
             return $this->currentUser;
         }
 
-        public function Authenticate(AuthenticationRequest $AuthenticationRequest)
+        public function authenticate(AuthenticationRequest $AuthenticationRequest)
         {
             if (! $AuthenticationRequest instanceof APITokenAuthenticationRequest) {
                 throw new \Exception("Unable to process request as APITokenAuthenticationRequest");
@@ -41,7 +41,7 @@ namespace ChurchCRM\Authentication\AuthenticationProviders {
             return $authenticationResult;
         }
 
-        public function ValidateUserSessionIsActive($updateLastOperationTimestamp) : AuthenticationResult
+        public function validateUserSessionIsActive($updateLastOperationTimestamp) : AuthenticationResult
         {
             // APITokens are sessionless, so just always say false.
             $authenticationResult = new AuthenticationResult();
@@ -49,12 +49,12 @@ namespace ChurchCRM\Authentication\AuthenticationProviders {
             return $authenticationResult;
         }
 
-        public function EndSession()
+        public function endSession()
         {
             $this->currentUser = null;
         }
 
-        public function GetPasswordChangeURL()
+        public function getPasswordChangeURL()
         {
             throw new NotImplementedException();
         }

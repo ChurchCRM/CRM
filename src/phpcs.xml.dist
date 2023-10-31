@@ -8,6 +8,8 @@
     <exclude-pattern>*\.(inc|css|js)</exclude-pattern>
     <exclude-pattern>*/bin/google-map/*$</exclude-pattern>
 
+    <exclude-pattern>*/ChurchCRM/model/ChurchCRM/Base/*$</exclude-pattern>
+    <exclude-pattern>*/ChurchCRM/model/ChurchCRM/Map/*$</exclude-pattern>
 
     <arg name="basepath" value="."/>
     <arg name="colors"/>

@@ -22,15 +22,15 @@ use ChurchCRM\dto\Cart;
 use ChurchCRM\Authentication\AuthenticationManager;
 
 // Security: User must have Manage Groups & Roles permission
-if (!AuthenticationManager::GetCurrentUser()->isManageGroupsEnabled()) {
-    RedirectUtils::Redirect('Menu.php');
+if (!AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) {
+    RedirectUtils::redirect('Menu.php');
     exit;
 }
 
 // Was the form submitted?
 if (isset($_POST['Submit']) && count($_SESSION['aPeopleCart']) > 0 && isset($_POST['EventID'])) {
         // Get the PersonID
-    $iEventID = InputUtils::LegacyFilterInput($_POST['EventID'], 'int');
+    $iEventID = InputUtils::legacyFilterInput($_POST['EventID'], 'int');
 
     // Loop through the session array
     $iCount = 0;
@@ -41,11 +41,11 @@ if (isset($_POST['Submit']) && count($_SESSION['aPeopleCart']) > 0 && isset($_PO
         RunQuery($sSQL);
         $iCount++;
     }
-    Cart::EmptyAll();
+    Cart::emptyAll();
 
     $sGlobalMessage = $iCount.' records(s) successfully added to selected Event.';
     // TODO: do this in API
-    RedirectUtils::Redirect('v2/cart?Action=EmptyCart&Message=aMessage&iCount='.$iCount.'&iEID='.$iEventID);
+    RedirectUtils::redirect('v2/cart?Action=EmptyCart&Message=aMessage&iCount='.$iCount.'&iEID='.$iEventID);
 }
 
 // Set the page title and include HTML header

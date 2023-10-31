@@ -40,7 +40,7 @@ foreach ($ListItem as $element) {
 $ListItem = PersonCustomMasterQuery::create()->select(['Name', 'FieldSecurity'])->find();
 $CustomList[] = "Unassigned";
 foreach ($ListItem as $element) {
-    if (AuthenticationManager::GetCurrentUser()->isEnabledSecurity($element["FieldSecurity"])) {
+    if (AuthenticationManager::getCurrentUser()->isEnabledSecurity($element["FieldSecurity"])) {
         $CustomList[] = $element["Name"];
     }
 }

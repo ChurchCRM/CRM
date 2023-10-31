@@ -313,12 +313,12 @@ class Person extends BasePerson implements iPhoto
 
     public function deletePhoto()
     {
-        if (AuthenticationManager::GetCurrentUser()->isDeleteRecordsEnabled()) {
+        if (AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled()) {
             if ($this->getPhoto()->delete()) {
                 $note = new Note();
                 $note->setText(gettext("Profile Image Deleted"));
                 $note->setType("photo");
-                $note->setEntered(AuthenticationManager::GetCurrentUser()->getId());
+                $note->setEntered(AuthenticationManager::getCurrentUser()->getId());
                 $note->setPerId($this->getId());
                 $note->save();
                 return true;
@@ -337,11 +337,11 @@ class Person extends BasePerson implements iPhoto
 
     public function setImageFromBase64($base64)
     {
-        if (AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled()) {
+        if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) {
             $note = new Note();
             $note->setText(gettext("Profile Image uploaded"));
             $note->setType("photo");
-            $note->setEntered(AuthenticationManager::GetCurrentUser()->getId());
+            $note->setEntered(AuthenticationManager::getCurrentUser()->getId());
             $this->getPhoto()->setImageFromBase64($base64);
             $note->setPerId($this->getId());
             $note->save();
@@ -567,7 +567,7 @@ class Person extends BasePerson implements iPhoto
       // add custom fields to person_custom table since they are not defined in the propel schema
         $rawQry =  PersonCustomQuery::create();
         foreach ($allPersonCustomFields as $customfield) {
-            if (AuthenticationManager::GetCurrentUser()->isEnabledSecurity($customfield->getFieldSecurity())) {
+            if (AuthenticationManager::getCurrentUser()->isEnabledSecurity($customfield->getFieldSecurity())) {
                 $rawQry->withColumn($customfield->getId());
             }
         }
@@ -577,7 +577,7 @@ class Person extends BasePerson implements iPhoto
         $personCustom = [];
         if ($rawQry->count() > 0) {
             foreach ($allPersonCustomFields as $customfield) {
-                if (AuthenticationManager::GetCurrentUser()->isEnabledSecurity($customfield->getFieldSecurity())) {
+                if (AuthenticationManager::getCurrentUser()->isEnabledSecurity($customfield->getFieldSecurity())) {
                     $value = $thisPersonCustomFields->getVirtualColumn($customfield->getId());
                     if (!empty($value)) {
                         $personCustom[] = $customfield->getName();

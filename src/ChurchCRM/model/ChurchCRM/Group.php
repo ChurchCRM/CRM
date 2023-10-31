@@ -99,11 +99,11 @@ class Group extends BaseGroup
         foreach ($groupMemberships as $groupMembership) {
             if (!isset($_SESSION['aPeopleCart'])) {
                 $bAllInCart = false;
-            } // Cart does not exist.  This person is not in cart.
-            elseif (!in_array($groupMembership->getPersonId(), $_SESSION['aPeopleCart'], false)) {
+            } elseif (!in_array($groupMembership->getPersonId(), $_SESSION['aPeopleCart'], false)) {
+                // Cart does not exist.  This person is not in cart.
                 $bAllInCart = false;
-            } // This person is not in cart.
-            elseif (in_array($groupMembership->getPersonId(), $_SESSION['aPeopleCart'], false)) {
+            } elseif (in_array($groupMembership->getPersonId(), $_SESSION['aPeopleCart'], false)) {
+                // This person is not in cart.
                 $bNoneInCart = false;
             } // This person is in the cart
         }

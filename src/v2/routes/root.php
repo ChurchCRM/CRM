@@ -54,7 +54,7 @@ function viewDashboard(Request $request, Response $response, array $args)
         'sPageTitle' => gettext('Welcome to').' '. ChurchMetaData::getChurchName(),
         'dashboardCounts' => $dashboardCounts,
         'sundaySchoolEnabled' => SystemConfig::getBooleanValue("bEnabledSundaySchool"),
-        'depositEnabled' => AuthenticationManager::GetCurrentUser()->isFinanceEnabled()
+        'depositEnabled' => AuthenticationManager::getCurrentUser()->isFinanceEnabled()
     ];
 
     return $renderer->render($response, 'dashboard.php', $pageArgs);

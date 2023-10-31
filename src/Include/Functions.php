@@ -27,7 +27,7 @@ $_SESSION['sSoftwareInstalledVersion'] = SystemService::getInstalledVersion();
 //
 
 if (empty($bSuppressSessionTests)) {  // This is used for the login page only.
-    AuthenticationManager::EnsureAuthentication();
+    AuthenticationManager::ensureAuthentication();
 }
 // End of basic security checks
 
@@ -81,13 +81,13 @@ if (isset($_GET['PDFEmailed'])) {
 
 // Are they adding an entire group to the cart?
 if (isset($_GET['AddGroupToPeopleCart'])) {
-    AddGroupToPeopleCart(InputUtils::LegacyFilterInput($_GET['AddGroupToPeopleCart'], 'int'));
+    AddGroupToPeopleCart(InputUtils::legacyFilterInput($_GET['AddGroupToPeopleCart'], 'int'));
     $sGlobalMessage = gettext('Group successfully added to the Cart.');
 }
 
 // Are they removing an entire group from the Cart?
 if (isset($_GET['RemoveGroupFromPeopleCart'])) {
-    RemoveGroupFromPeopleCart(InputUtils::LegacyFilterInput($_GET['RemoveGroupFromPeopleCart'], 'int'));
+    RemoveGroupFromPeopleCart(InputUtils::legacyFilterInput($_GET['RemoveGroupFromPeopleCart'], 'int'));
     $sGlobalMessage = gettext('Group successfully removed from the Cart.');
 }
 
@@ -106,7 +106,7 @@ if (isset($_GET['ProfileImageUploadedError'])) {
 
 // Are they removing a person from the Cart?
 if (isset($_GET['RemoveFromPeopleCart'])) {
-    RemoveFromPeopleCart(InputUtils::LegacyFilterInput($_GET['RemoveFromPeopleCart'], 'int'));
+    RemoveFromPeopleCart(InputUtils::legacyFilterInput($_GET['RemoveFromPeopleCart'], 'int'));
     $sGlobalMessage = gettext('Selected record successfully removed from the Cart.');
 }
 
@@ -123,7 +123,7 @@ if (isset($_POST['BulkAddToCart'])) {
         }
     } else {
         for ($iCount = 0; $iCount < count($aItemsToProcess); $iCount++) {
-            Cart::AddPerson(str_replace(',', '', $aItemsToProcess[$iCount]));
+            Cart::addPerson(str_replace(',', '', $aItemsToProcess[$iCount]));
         }
         $sGlobalMessage = $iCount.' '.gettext('item(s) added to the Cart.');
     }
@@ -212,7 +212,7 @@ function RemoveVolunteerOpportunity($iPersonID, $iVolID)
     RunQuery($sSQL);
 }
 
-function ConvertCartToString($aCartArray)
+function convertCartToString($aCartArray)
 {
     // Implode the array
     $sCartString = implode(',', $aCartArray);
@@ -465,8 +465,8 @@ function CollapsePhoneNumber($sPhoneNumber, $sPhoneCountry)
                 if (ord($sThisCharacter) >= 48 && ord($sThisCharacter) <= 57) {
                     // Yes, add it to the returned value.
                     $sCollapsedPhoneNumber .= $sThisCharacter;
-                } // Is the user trying to add an extension?
-                elseif (!$bHasExtension && ($sThisCharacter == 'e' || $sThisCharacter == 'E')) {
+                } elseif (!$bHasExtension && ($sThisCharacter == 'e' || $sThisCharacter == 'E')) {
+                    // Is the user trying to add an extension?
                     // Yes, add the extension identifier 'e' to the stored string.
                     $sCollapsedPhoneNumber .= 'e';
                     // From now on, ignore other non-digits and process normally
@@ -502,18 +502,18 @@ function ExpandPhoneNumber($sPhoneNumber, $sPhoneCountry, &$bWeird)
         case 'United States' || 'Canada':
             if ($length == 0) {
                 return '';
-            } // 7 digit phone # with extension
-            elseif (mb_substr($sPhoneNumber, 7, 1) == 'e') {
+            } elseif (mb_substr($sPhoneNumber, 7, 1) == 'e') {
+                // 7 digit phone # with extension
                 return mb_substr($sPhoneNumber, 0, 3).'-'.mb_substr($sPhoneNumber, 3, 4).' Ext.'.mb_substr($sPhoneNumber, 8, 6);
-            } // 10 digit phone # with extension
-            elseif (mb_substr($sPhoneNumber, 10, 1) == 'e') {
+            } elseif (mb_substr($sPhoneNumber, 10, 1) == 'e') {
+                // 10 digit phone # with extension
                 return mb_substr($sPhoneNumber, 0, 3).'-'.mb_substr($sPhoneNumber, 3, 3).'-'.mb_substr($sPhoneNumber, 6, 4).' Ext.'.mb_substr($sPhoneNumber, 11, 6);
             } elseif ($length == 7) {
                 return mb_substr($sPhoneNumber, 0, 3).'-'.mb_substr($sPhoneNumber, 3, 4);
             } elseif ($length == 10) {
                 return mb_substr($sPhoneNumber, 0, 3).'-'.mb_substr($sPhoneNumber, 3, 3).'-'.mb_substr($sPhoneNumber, 6, 4);
-            } // Otherwise, there is something weird stored, so just leave it untouched and set the flag
-            else {
+            } else {
+                // Otherwise, there is something weird stored, so just leave it untouched and set the flag
                 $bWeird = true;
 
                 return $sPhoneNumber;
@@ -1068,7 +1068,7 @@ function validateCustomField($type, &$data, $col_Name, &$aErrors)
         case 2:
             // this part will work with each date format
             // Philippe logel
-            $data = InputUtils::FilterDate($data);
+            $data = InputUtils::filterDate($data);
 
             if (strlen($data) > 0) {
                 $dateString = parseAndValidateDate($data);
@@ -1608,7 +1608,7 @@ function requireUserGroupMembership($allowedRoles = null)
     if (!$allowedRoles) {
         throw new Exception('Role(s) must be defined for the function which you are trying to access.  End users should never see this error unless something went horribly wrong.');
     }
-    if ($_SESSION[$allowedRoles] || AuthenticationManager::GetCurrentUser()->isAdmin()) {  //most of the time the API endpoint will specify a single permitted role, or the user is an admin
+    if ($_SESSION[$allowedRoles] || AuthenticationManager::getCurrentUser()->isAdmin()) {  //most of the time the API endpoint will specify a single permitted role, or the user is an admin
         return true;
     } elseif (is_array($allowedRoles)) {  //sometimes we might have an array of allowed roles.
         foreach ($allowedRoles as $role) {
@@ -1635,7 +1635,7 @@ function random_color()
 
 function generateGroupRoleEmailDropdown($roleEmails, $href)
 {
-    $sMailtoDelimiter = AuthenticationManager::GetCurrentUser()->getUserConfigString("sMailtoDelimiter");
+    $sMailtoDelimiter = AuthenticationManager::getCurrentUser()->getUserConfigString("sMailtoDelimiter");
     foreach ($roleEmails as $role => $Email) {
         if (SystemConfig::getValue('sToEmailAddress') != '' && !stristr($Email, (string) SystemConfig::getValue('sToEmailAddress'))) {
             $Email .= $sMailtoDelimiter.SystemConfig::getValue('sToEmailAddress');

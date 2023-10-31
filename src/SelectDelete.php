@@ -26,8 +26,8 @@ use ChurchCRM\Authentication\AuthenticationManager;
 
 // Security: User must have Delete records permission
 // Otherwise, re-direct them to the main menu.
-if (!AuthenticationManager::GetCurrentUser()->isDeleteRecordsEnabled()) {
-    RedirectUtils::Redirect('Menu.php');
+if (!AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled()) {
+    RedirectUtils::redirect('Menu.php');
     exit;
 }
 
@@ -37,32 +37,32 @@ $iDonationFamilyID = 0;
 $sMode = 'family';
 
 if (!empty($_GET['FamilyID'])) {
-    $iFamilyID = InputUtils::LegacyFilterInput($_GET['FamilyID'], 'int');
+    $iFamilyID = InputUtils::legacyFilterInput($_GET['FamilyID'], 'int');
 }
 if (!empty($_GET['DonationFamilyID'])) {
-    $iDonationFamilyID = InputUtils::LegacyFilterInput($_GET['DonationFamilyID'], 'int');
+    $iDonationFamilyID = InputUtils::legacyFilterInput($_GET['DonationFamilyID'], 'int');
 }
 if (!empty($_GET['mode'])) {
     $sMode = $_GET['mode'];
 }
 
 if (isset($_GET['CancelFamily'])) {
-    RedirectUtils::Redirect("v2/family/$iFamilyID");
+    RedirectUtils::redirect("v2/family/$iFamilyID");
     exit;
 }
 
 $DonationMessage = '';
 
 // Move Donations from 1 family to another
-if (AuthenticationManager::GetCurrentUser()->isFinanceEnabled() && isset($_GET['MoveDonations']) && $iFamilyID && $iDonationFamilyID && $iFamilyID != $iDonationFamilyID) {
+if (AuthenticationManager::getCurrentUser()->isFinanceEnabled() && isset($_GET['MoveDonations']) && $iFamilyID && $iDonationFamilyID && $iFamilyID != $iDonationFamilyID) {
     $today = date('Y-m-d');
     $sSQL = "UPDATE pledge_plg SET plg_FamID='$iDonationFamilyID',
-		plg_DateLastEdited ='$today', plg_EditedBy='" . AuthenticationManager::GetCurrentUser()->getId()
+		plg_DateLastEdited ='$today', plg_EditedBy='" . AuthenticationManager::getCurrentUser()->getId()
         . "' WHERE plg_FamID='$iFamilyID'";
     RunQuery($sSQL);
 
     $sSQL = "UPDATE egive_egv SET egv_famID='$iDonationFamilyID',
-		egv_DateLastEdited ='$today', egv_EditedBy='" . AuthenticationManager::GetCurrentUser()->getId()
+		egv_DateLastEdited ='$today', egv_EditedBy='" . AuthenticationManager::getCurrentUser()->getId()
         . "' WHERE egv_famID='$iFamilyID'";
     RunQuery($sSQL);
 
@@ -120,7 +120,7 @@ if (isset($_GET['Confirmed'])) {
     }
 
     // Redirect back to the family listing
-    RedirectUtils::Redirect(SystemURLs::getRootPath().'/v2/family');
+    RedirectUtils::redirect(SystemURLs::getRootPath().'/v2/family');
 }
 
 
@@ -141,11 +141,11 @@ require 'Include/Header.php';
         $rsDonations = RunQuery($sSQL);
         $bIsDonor = (mysqli_num_rows($rsDonations) > 0);
 
-        if ($bIsDonor && !AuthenticationManager::GetCurrentUser()->isFinanceEnabled()) {
+        if ($bIsDonor && !AuthenticationManager::getCurrentUser()->isFinanceEnabled()) {
             // Donations from Family. Current user not authorized for Finance
             echo '<p class="LargeText">' . gettext('Sorry, there are records of donations from this family. This family may not be deleted.') . '<br><br>';
             echo '<a href="v2/family/' . $iFamilyID . '">' . gettext('Return to Family View') . '</a></p>';
-        } elseif ($bIsDonor && AuthenticationManager::GetCurrentUser()->isFinanceEnabled()) {
+        } elseif ($bIsDonor && AuthenticationManager::getCurrentUser()->isFinanceEnabled()) {
             // Donations from Family. Current user authorized for Finance.
             // Select another family to move donations to.
             echo '<p class="LargeText">' . gettext('WARNING: This family has records of donations and may NOT be deleted until these donations are associated with another family.') . '</p>';

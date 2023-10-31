@@ -1,7 +1,7 @@
 <?php
 
 ////////////////////////////////////////////////////
-// PDF_Label
+// PdfLabel
 //
 // Class to print labels in Avery or custom formats
 //
@@ -15,7 +15,7 @@
 // 1.1  : +    : Added unit in the constructor
 //          + : Now Positions start @ (1,1).. then the first image @top-left of a page is (1,1)
 //          + : Added in the description of a label :
-//                font-size     : default char size (can be changed by calling Set_Char_Size(xx);
+//                font-size     : default char size (can be changed by calling setCharSize(xx);
 //                paper-size    : Size of the paper for this sheet (thanx to Al Canton)
 //                metric        : type of unit used in this description
 //                              You can define your label properties in inches by setting metric to 'in'
@@ -27,7 +27,7 @@
 ////////////////////////////////////////////////////
 
 /**
- * PDF_Label - PDF label editing.
+ * PdfLabel - PDF label editing.
  *
  * @author Laurent PASSEBECQ <lpasseb@numericable.fr>
  * @copyright 2003 Laurent PASSEBECQ
@@ -41,7 +41,7 @@
 
 namespace ChurchCRM\Reports;
 
-class PDF_Label extends ChurchInfoReport
+class PdfLabel extends ChurchInfoReport
 {
     // Private properties
     public $_Avery_Name = '';        // Name of format
@@ -76,7 +76,7 @@ class PDF_Label extends ChurchInfoReport
 
     // convert units (in to mm, mm to in)
     // $src and $dest must be 'in' or 'mm'
-    public function _Convert_Metric($value, $src, $dest)
+    private function convertMetric($value, $src, $dest)
     {
         if ($src != $dest) {
             $tab['in'] = 39.37008;
@@ -89,7 +89,7 @@ class PDF_Label extends ChurchInfoReport
     }
 
     // Give the height for a char size given.
-    public function _Get_Height_Chars($pt)
+    private function getHeightChars($pt)
     {
         // Array matching character sizes and line heights
         $_Table_Hauteur_Chars = [6=>2, 7=>2.5, 8=>3, 9=>4, 10=>5, 11=>6, 12=>7, 13=>8, 14=>7.5, 15=>9, 16=>8, 18=>9];
@@ -100,19 +100,19 @@ class PDF_Label extends ChurchInfoReport
         }
     }
 
-    public function _Set_Format($format)
+    public function setFormat($format)
     {
         $this->_Metric = $format['metric'];
         $this->_Avery_Name = $format['name'];
-        $this->_Margin_Left = $this->_Convert_Metric($format['marginLeft'], $this->_Metric, $this->_Metric_Doc);
-        $this->_Margin_Top = $this->_Convert_Metric($format['marginTop'], $this->_Metric, $this->_Metric_Doc);
-        $this->_X_Space = $this->_Convert_Metric($format['SpaceX'], $this->_Metric, $this->_Metric_Doc);
-        $this->_Y_Space = $this->_Convert_Metric($format['SpaceY'], $this->_Metric, $this->_Metric_Doc);
+        $this->_Margin_Left = $this->convertMetric($format['marginLeft'], $this->_Metric, $this->_Metric_Doc);
+        $this->_Margin_Top = $this->convertMetric($format['marginTop'], $this->_Metric, $this->_Metric_Doc);
+        $this->_X_Space = $this->convertMetric($format['SpaceX'], $this->_Metric, $this->_Metric_Doc);
+        $this->_Y_Space = $this->convertMetric($format['SpaceY'], $this->_Metric, $this->_Metric_Doc);
         $this->_X_Number = $format['NX'];
         $this->_Y_Number = $format['NY'];
-        $this->_Width = $this->_Convert_Metric($format['width'], $this->_Metric, $this->_Metric_Doc);
-        $this->_Height = $this->_Convert_Metric($format['height'], $this->_Metric, $this->_Metric_Doc);
-        $this->Set_Char_Size($format['font-size']);
+        $this->_Width = $this->convertMetric($format['width'], $this->_Metric, $this->_Metric_Doc);
+        $this->_Height = $this->convertMetric($format['height'], $this->_Metric, $this->_Metric_Doc);
+        $this->setCharSize($format['font-size']);
     }
 
     // Constructor
@@ -144,26 +144,26 @@ class PDF_Label extends ChurchInfoReport
         }
         $this->_COUNTX = $posX;
         $this->_COUNTY = $posY;
-        $this->_Set_Format($Tformat);
+        $this->setFormat($Tformat);
     }
 
     // Sets the character size
     // This changes the line height too
-    public function Set_Char_Size($pt)
+    public function setCharSize($pt)
     {
         if ($pt > 3) {
             $this->_Char_Size = $pt;
-            $this->_Line_Height = $this->_Get_Height_Chars($pt);
+            $this->_Line_Height = $this->getHeightChars($pt);
             $this->SetFontSize($pt);
         }
     }
 
     // Print a label
-    public function Add_PDF_Label($texte)
+    public function addPdfLabel($texte)
     {
         // We are in a new page, then we must add a page
         if ($this->_COUNTX == 0 && $this->_COUNTY == 0) {
-            $this->AddPage();
+            $this->addPage();
         }
 
         $_PosX = $this->_Margin_Left + ($this->_COUNTX * ($this->_Width + $this->_X_Space));

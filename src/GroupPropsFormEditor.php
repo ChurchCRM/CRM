@@ -23,13 +23,13 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Authentication\AuthenticationManager;
 
 // Security: user must be allowed to edit records to use this page.
-if (!AuthenticationManager::GetCurrentUser()->isManageGroupsEnabled()) {
-    RedirectUtils::Redirect('Menu.php');
+if (!AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) {
+    RedirectUtils::redirect('Menu.php');
     exit;
 }
 
 // Get the Group from the querystring
-$iGroupID = InputUtils::LegacyFilterInput($_GET['GroupID'], 'int');
+$iGroupID = InputUtils::legacyFilterInput($_GET['GroupID'], 'int');
 
 // Get the group information
 $sSQL = 'SELECT * FROM group_grp WHERE grp_ID = '.$iGroupID;
@@ -38,7 +38,7 @@ extract(mysqli_fetch_array($rsGroupInfo));
 
 // Abort if user tries to load with group having no special properties.
 if ($grp_hasSpecialProps == false) {
-    RedirectUtils::Redirect('GroupView.php?GroupID='.$iGroupID);
+    RedirectUtils::redirect('GroupView.php?GroupID='.$iGroupID);
 }
 
 $sPageTitle = gettext('Group-Specific Properties Form Editor:').'  '.$grp_Name;
@@ -75,7 +75,7 @@ if (isset($_POST['SaveChanges'])) {
     }
 
     for ($iPropID = 1; $iPropID <= $numRows; $iPropID++) {
-        $aNameFields[$iPropID] = InputUtils::LegacyFilterInput($_POST[$iPropID.'name']);
+        $aNameFields[$iPropID] = InputUtils::legacyFilterInput($_POST[$iPropID.'name']);
 
         if (strlen($aNameFields[$iPropID]) == 0) {
             $aNameErrors[$iPropID] = true;
@@ -84,10 +84,10 @@ if (isset($_POST['SaveChanges'])) {
             $aNameErrors[$iPropID] = false;
         }
 
-        $aDescFields[$iPropID] = InputUtils::LegacyFilterInput($_POST[$iPropID.'desc']);
+        $aDescFields[$iPropID] = InputUtils::legacyFilterInput($_POST[$iPropID.'desc']);
 
         if (isset($_POST[$iPropID.'special'])) {
-            $aSpecialFields[$iPropID] = InputUtils::LegacyFilterInput($_POST[$iPropID.'special'], 'int');
+            $aSpecialFields[$iPropID] = InputUtils::legacyFilterInput($_POST[$iPropID.'special'], 'int');
 
             if ($aSpecialFields[$iPropID] == 0) {
                 $aSpecialErrors[$iPropID] = true;
@@ -126,9 +126,9 @@ if (isset($_POST['SaveChanges'])) {
 } else {
     // Check if we're adding a field
     if (isset($_POST['AddField'])) {
-        $newFieldType = InputUtils::LegacyFilterInput($_POST['newFieldType'], 'int');
-        $newFieldName = InputUtils::LegacyFilterInput($_POST['newFieldName']);
-        $newFieldDesc = InputUtils::LegacyFilterInput($_POST['newFieldDesc']);
+        $newFieldType = InputUtils::legacyFilterInput($_POST['newFieldType'], 'int');
+        $newFieldName = InputUtils::legacyFilterInput($_POST['newFieldName']);
+        $newFieldDesc = InputUtils::legacyFilterInput($_POST['newFieldDesc']);
 
         if (strlen($newFieldName) == 0) {
             $bNewNameError = true;

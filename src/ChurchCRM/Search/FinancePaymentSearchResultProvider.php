@@ -21,7 +21,7 @@ class FinancePaymentSearchResultProvider extends BaseSearchResultProvider
 
     public function getSearchResults(string $SearchQuery)
     {
-        if (AuthenticationManager::GetCurrentUser()->isFinanceEnabled()) {
+        if (AuthenticationManager::getCurrentUser()->isFinanceEnabled()) {
             if (SystemConfig::getBooleanValue("bSearchIncludePayments")) {
                 $this->addSearchResults($this->getPaymentSearchResults($SearchQuery));
                 if (count(explode("-", $SearchQuery)) == 2) {

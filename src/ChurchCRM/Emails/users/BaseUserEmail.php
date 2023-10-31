@@ -35,12 +35,12 @@ abstract class BaseUserEmail extends BaseEmail
         return array_merge($this->getCommonTokens(), $myTokens);
     }
 
-    function getFullURL()
+    protected function getFullURL()
     {
         return SystemURLs::getURL() . "/session/begin?username=". $this->user->getUserName();
     }
 
-    function getButtonText()
+    protected function getButtonText()
     {
         return $this->user->getUserName();
     }

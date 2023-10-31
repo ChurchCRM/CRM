@@ -205,15 +205,15 @@ class Family extends BaseFamily implements iPhoto
                 break;
             case "verify":
                 $note->setText(gettext('Family Data Verified'));
-                $note->setEnteredBy(AuthenticationManager::GetCurrentUser()->getId());
+                $note->setEnteredBy(AuthenticationManager::getCurrentUser()->getId());
                 break;
             case "verify-link":
                 $note->setText(gettext('Verification email sent'));
-                $note->setEnteredBy(AuthenticationManager::GetCurrentUser()->getId());
+                $note->setEnteredBy(AuthenticationManager::getCurrentUser()->getId());
                 break;
             case "verify-URL":
                 $note->setText(gettext('Verification URL created'));
-                $note->setEnteredBy(AuthenticationManager::GetCurrentUser()->getId());
+                $note->setEnteredBy(AuthenticationManager::getCurrentUser()->getId());
                 break;
         }
 
@@ -233,12 +233,12 @@ class Family extends BaseFamily implements iPhoto
 
     public function deletePhoto()
     {
-        if (AuthenticationManager::GetCurrentUser()->isDeleteRecordsEnabled()) {
+        if (AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled()) {
             if ($this->getPhoto()->delete()) {
                 $note = new Note();
                 $note->setText(gettext("Profile Image Deleted"));
                 $note->setType("photo");
-                $note->setEntered(AuthenticationManager::GetCurrentUser()->getId());
+                $note->setEntered(AuthenticationManager::getCurrentUser()->getId());
                 $note->setPerId($this->getId());
                 $note->save();
                 return true;
@@ -248,11 +248,11 @@ class Family extends BaseFamily implements iPhoto
     }
     public function setImageFromBase64($base64)
     {
-        if (AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled()) {
+        if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) {
             $note = new Note();
             $note->setText(gettext("Profile Image uploaded"));
             $note->setType("photo");
-            $note->setEntered(AuthenticationManager::GetCurrentUser()->getId());
+            $note->setEntered(AuthenticationManager::getCurrentUser()->getId());
             $this->getPhoto()->setImageFromBase64($base64);
             $note->setFamId($this->getId());
             $note->save();

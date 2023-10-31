@@ -130,7 +130,7 @@ function newEvent($request, $response, $args)
     $event->setDesc($input->Desc);
     $event->setStart(str_replace("T", " ", $input->Start));
     $event->setEnd(str_replace("T", " ", $input->End));
-    $event->setText(InputUtils::FilterHTML($input->Text));
+    $event->setText(InputUtils::filterHTML($input->Text));
     $event->setCalendars($calendars);
     $event->save();
 

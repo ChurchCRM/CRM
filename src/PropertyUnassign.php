@@ -18,17 +18,17 @@ use ChurchCRM\Authentication\AuthenticationManager;
 
 // Security: User must have Manage Groups or Edit Records permissions
 // Otherwise, re-direct them to the main menu.
-if (!AuthenticationManager::GetCurrentUser()->isManageGroupsEnabled() && !AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled()) {
-    RedirectUtils::Redirect('Menu.php');
+if (!AuthenticationManager::getCurrentUser()->isManageGroupsEnabled() && !AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) {
+    RedirectUtils::redirect('Menu.php');
     exit;
 }
 
 //Get the new property value from the post collection
-$iPropertyID = InputUtils::LegacyFilterInput($_GET['PropertyID'], 'int');
+$iPropertyID = InputUtils::legacyFilterInput($_GET['PropertyID'], 'int');
 
 // Is there a PersonID in the querystring?
-if (isset($_GET['PersonID']) && AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled()) {
-    $iPersonID = InputUtils::LegacyFilterInput($_GET['PersonID'], 'int');
+if (isset($_GET['PersonID']) && AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) {
+    $iPersonID = InputUtils::legacyFilterInput($_GET['PersonID'], 'int');
     $iRecordID = $iPersonID;
     $sQuerystring = '?PersonID='.$iPersonID;
     $sTypeName = 'Person';
@@ -39,11 +39,9 @@ if (isset($_GET['PersonID']) && AuthenticationManager::GetCurrentUser()->isEditR
     $rsName = RunQuery($sSQL);
     $aRow = mysqli_fetch_array($rsName);
     $sName = $aRow['per_LastName'].', '.$aRow['per_FirstName'];
-}
-
-// Is there a GroupID in the querystring?
-elseif (isset($_GET['GroupID']) && AuthenticationManager::GetCurrentUser()->isManageGroupsEnabled()) {
-    $iGroupID = InputUtils::LegacyFilterInput($_GET['GroupID'], 'int');
+} elseif (isset($_GET['GroupID']) && AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) {
+    // Is there a GroupID in the querystring?
+    $iGroupID = InputUtils::legacyFilterInput($_GET['GroupID'], 'int');
     $iRecordID = $iGroupID;
     $sQuerystring = '?GroupID='.$iGroupID;
     $sTypeName = 'Group';
@@ -54,11 +52,9 @@ elseif (isset($_GET['GroupID']) && AuthenticationManager::GetCurrentUser()->isMa
     $rsName = RunQuery($sSQL);
     $aRow = mysqli_fetch_array($rsName);
     $sName = $aRow['grp_Name'];
-}
-
-// Is there a FamilyID in the querystring?
-elseif (isset($_GET['FamilyID']) && AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled()) {
-    $iFamilyID = InputUtils::LegacyFilterInput($_GET['FamilyID'], 'int');
+} elseif (isset($_GET['FamilyID']) && AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) {
+    // Is there a FamilyID in the querystring?
+    $iFamilyID = InputUtils::legacyFilterInput($_GET['FamilyID'], 'int');
     $iRecordID = $iFamilyID;
     $sQuerystring = '?FamilyID='.$iFamilyID;
     $sTypeName = 'Family';
@@ -69,11 +65,9 @@ elseif (isset($_GET['FamilyID']) && AuthenticationManager::GetCurrentUser()->isE
     $rsName = RunQuery($sSQL);
     $aRow = mysqli_fetch_array($rsName);
     $sName = $aRow['fam_Name'];
-}
-
-// Somebody tried to call the script with no options
-else {
-    RedirectUtils::Redirect('Menu.php');
+} else {
+    // Somebody tried to call the script with no options
+    RedirectUtils::redirect('Menu.php');
     exit;
 }
 
@@ -81,7 +75,7 @@ else {
 if (isset($_GET['Confirmed'])) {
     $sSQL = 'DELETE FROM record2property_r2p WHERE r2p_record_ID = '.$iRecordID.' AND r2p_pro_ID = '.$iPropertyID;
     RunQuery($sSQL);
-    RedirectUtils::Redirect($sBackPage);
+    RedirectUtils::redirect($sBackPage);
     exit;
 }
 

@@ -9,7 +9,7 @@ class HttpsTask implements iTask
 {
     public function isActive(): bool
     {
-        return AuthenticationManager::GetCurrentUser()->isAdmin() && !isset($_SERVER['HTTPS']);
+        return AuthenticationManager::getCurrentUser()->isAdmin() && !isset($_SERVER['HTTPS']);
     }
 
     public function isAdmin(): bool

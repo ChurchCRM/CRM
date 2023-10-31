@@ -16,8 +16,8 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Authentication\AuthenticationManager;
 
-if (!AuthenticationManager::GetCurrentUser()->isMenuOptionsEnabled()) {
-    RedirectUtils::Redirect('Menu.php');
+if (!AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled()) {
+    RedirectUtils::redirect('Menu.php');
     exit;
 }
 
@@ -26,7 +26,7 @@ $sPageTitle = gettext('Property Delete Confirmation');
 
 // Get the Type and Property
 $sType = $_GET['Type'];
-$iPropertyID = InputUtils::LegacyFilterInput($_GET['PropertyID'], 'int');
+$iPropertyID = InputUtils::legacyFilterInput($_GET['PropertyID'], 'int');
 
 //Do we have deletion confirmation?
 if (isset($_GET['Confirmed'])) {
@@ -36,7 +36,7 @@ if (isset($_GET['Confirmed'])) {
     $sSQL = 'DELETE FROM record2property_r2p WHERE r2p_pro_ID = '.$iPropertyID;
     RunQuery($sSQL);
 
-    RedirectUtils::Redirect('PropertyList.php?Type='.$sType);
+    RedirectUtils::redirect('PropertyList.php?Type='.$sType);
 }
 
 //Get the family record in question

@@ -124,11 +124,11 @@ class Deposit extends BaseDeposit
         $thisReport->pdf->SetXY($thisReport->curX, $thisReport->curY);
         $thisReport->pdf->Write(8, 'Checks: ');
         $thisReport->pdf->write(8, '('.$this->getCountChecks().')');
-        $thisReport->pdf->PrintRightJustified($thisReport->curX + 55, $thisReport->curY, sprintf('%.2f', $this->getTotalChecks()));
+        $thisReport->pdf->printRightJustified($thisReport->curX + 55, $thisReport->curY, sprintf('%.2f', $this->getTotalChecks()));
         $thisReport->curY += 4;
         $thisReport->pdf->SetXY($thisReport->curX, $thisReport->curY);
         $thisReport->pdf->Write(8, 'Cash: ');
-        $thisReport->pdf->PrintRightJustified($thisReport->curX + 55, $thisReport->curY, sprintf('%.2f', $this->getTotalCash()));
+        $thisReport->pdf->printRightJustified($thisReport->curX + 55, $thisReport->curY, sprintf('%.2f', $this->getTotalCash()));
     }
 
     private function generateTotalsByFund($thisReport)
@@ -144,14 +144,14 @@ class Deposit extends BaseDeposit
             $thisReport->pdf->SetXY($thisReport->curX, $thisReport->curY);
             $thisReport->pdf->Write(8, $fund['Name']);
             $amountStr = sprintf('%.2f', $fund['Total']);
-            $thisReport->pdf->PrintRightJustified($thisReport->curX + 55, $thisReport->curY, $amountStr);
+            $thisReport->pdf->printRightJustified($thisReport->curX + 55, $thisReport->curY, $amountStr);
             $thisReport->curY += 4;
         }
     }
 
     private function generateQBDepositSlip($thisReport)
     {
-        $thisReport->pdf->AddPage();
+        $thisReport->pdf->addPage();
 
         $thisReport->QBDepositTicketParameters = json_decode(SystemConfig::getValue('sQBDTSettings'), null, 512, JSON_THROW_ON_ERROR);
         $thisReport->pdf->SetXY($thisReport->QBDepositTicketParameters->date1->x, $thisReport->QBDepositTicketParameters->date1->y);
@@ -161,7 +161,7 @@ class Deposit extends BaseDeposit
         //logically, we print the cash in the first possible key=value pair column
         if ($this->getTotalCash() > 0) {
             $totalCashStr = sprintf('%.2f', $this->getTotalCash());
-            $thisReport->pdf->PrintRightJustified($thisReport->QBDepositTicketParameters->leftX + $thisReport->QBDepositTicketParameters->amountOffsetX, $thisReport->QBDepositTicketParameters->topY, $totalCashStr);
+            $thisReport->pdf->printRightJustified($thisReport->QBDepositTicketParameters->leftX + $thisReport->QBDepositTicketParameters->amountOffsetX, $thisReport->QBDepositTicketParameters->topY, $totalCashStr);
         }
         $thisReport->curX = $thisReport->QBDepositTicketParameters->leftX + $thisReport->QBDepositTicketParameters->lineItemInterval->x;
         $thisReport->curY = $thisReport->QBDepositTicketParameters->topY;
@@ -176,8 +176,8 @@ class Deposit extends BaseDeposit
         foreach ($pledges as $pledge) {
             // then all of the checks in key-value pairs, in 3 separate columns.  Left to right, then top to bottom.
             if ($pledge->getMethod() == 'CHECK') {
-                $thisReport->pdf->PrintRightJustified($thisReport->curX, $thisReport->curY, $pledge->getCheckNo());
-                $thisReport->pdf->PrintRightJustified($thisReport->curX + $thisReport->QBDepositTicketParameters->amountOffsetX, $thisReport->curY, $pledge->getsumAmount());
+                $thisReport->pdf->printRightJustified($thisReport->curX, $thisReport->curY, $pledge->getCheckNo());
+                $thisReport->pdf->printRightJustified($thisReport->curX + $thisReport->QBDepositTicketParameters->amountOffsetX, $thisReport->curY, $pledge->getsumAmount());
 
                 $thisReport->curX += $thisReport->QBDepositTicketParameters->lineItemInterval->x;
                 if ($thisReport->curX > $thisReport->QBDepositTicketParameters->max->x) {
@@ -188,10 +188,10 @@ class Deposit extends BaseDeposit
         }
 
         $grandTotalStr = sprintf('%.2f', $this->getTotalAmount());
-        $thisReport->pdf->PrintRightJustified($thisReport->QBDepositTicketParameters->subTotal->x, $thisReport->QBDepositTicketParameters->subTotal->y, $grandTotalStr);
-        $thisReport->pdf->PrintRightJustified($thisReport->QBDepositTicketParameters->topTotal->x, $thisReport->QBDepositTicketParameters->topTotal->y, $grandTotalStr);
+        $thisReport->pdf->printRightJustified($thisReport->QBDepositTicketParameters->subTotal->x, $thisReport->QBDepositTicketParameters->subTotal->y, $grandTotalStr);
+        $thisReport->pdf->printRightJustified($thisReport->QBDepositTicketParameters->topTotal->x, $thisReport->QBDepositTicketParameters->topTotal->y, $grandTotalStr);
         $numItemsString = sprintf('%d', ($this->getCountCash() > 0 ? 1 : 0) + $this->getCountChecks());
-        $thisReport->pdf->PrintRightJustified($thisReport->QBDepositTicketParameters->numberOfItems->x, $thisReport->QBDepositTicketParameters->numberOfItems->y, $numItemsString);
+        $thisReport->pdf->printRightJustified($thisReport->QBDepositTicketParameters->numberOfItems->x, $thisReport->QBDepositTicketParameters->numberOfItems->y, $numItemsString);
 
         $thisReport->curY = $thisReport->QBDepositTicketParameters->perforationY;
         $thisReport->pdf->SetXY($thisReport->QBDepositTicketParameters->titleX, $thisReport->curY);
@@ -220,7 +220,7 @@ class Deposit extends BaseDeposit
         $thisReport->pdf->SetFont('Times', 'B', 10);
         $thisReport->pdf->Write(8, 'Deposit total');
         $grandTotalStr = sprintf('%.2f', $this->getTotalAmount());
-        $thisReport->pdf->PrintRightJustified($thisReport->curX + 55, $thisReport->curY, $grandTotalStr);
+        $thisReport->pdf->printRightJustified($thisReport->curX + 55, $thisReport->curY, $grandTotalStr);
         $thisReport->pdf->SetFont('Courier', '', 8);
     }
 
@@ -240,7 +240,7 @@ class Deposit extends BaseDeposit
         $thisReport->depositSummaryParameters->summary->AmountX = 185;
         $thisReport->depositSummaryParameters->aggregateX = 135;
 
-        $thisReport->pdf->AddPage();
+        $thisReport->pdf->addPage();
         $thisReport->pdf->SetXY($thisReport->depositSummaryParameters->date->x, $thisReport->depositSummaryParameters->date->y);
         $thisReport->pdf->Write(8, $thisReport->deposit->dep_Date);
 
@@ -303,7 +303,7 @@ class Deposit extends BaseDeposit
                 $familyName = mb_substr($familyName, 0, 24).'...';
             }
 
-            $thisReport->pdf->PrintRightJustified($thisReport->curX + 2, $thisReport->curY, $checkNo);
+            $thisReport->pdf->printRightJustified($thisReport->curX + 2, $thisReport->curY, $checkNo);
 
             $thisReport->pdf->SetXY($thisReport->curX + $thisReport->depositSummaryParameters->summary->FundX, $thisReport->curY);
             $thisReport->pdf->Write(8, $fundName);
@@ -319,12 +319,12 @@ class Deposit extends BaseDeposit
 
             $thisReport->pdf->SetFont('Courier', '', 8);
 
-            $thisReport->pdf->PrintRightJustified($thisReport->curX + $thisReport->depositSummaryParameters->summary->AmountX, $thisReport->curY, $payment->getAmount());
+            $thisReport->pdf->printRightJustified($thisReport->curX + $thisReport->depositSummaryParameters->summary->AmountX, $thisReport->curY, $payment->getAmount());
 
             $thisReport->curY += $thisReport->depositSummaryParameters->summary->intervalY;
 
             if ($thisReport->curY >= 250) {
-                $thisReport->pdf->AddPage();
+                $thisReport->pdf->addPage();
                 $thisReport->curY = $thisReport->topY;
             }
         }
@@ -335,7 +335,7 @@ class Deposit extends BaseDeposit
         $thisReport->pdf->Write(8, 'Deposit total');
 
         $grandTotalStr = sprintf('%.2f', $this->getTotalAmount());
-        $thisReport->pdf->PrintRightJustified($thisReport->curX + $thisReport->depositSummaryParameters->summary->AmountX, $thisReport->curY, $grandTotalStr);
+        $thisReport->pdf->printRightJustified($thisReport->curX + $thisReport->depositSummaryParameters->summary->AmountX, $thisReport->curY, $grandTotalStr);
         $thisReport->curY += $thisReport->depositSummaryParameters->summary->intervalY * 2;
 
         // Now print deposit totals by fund
@@ -389,7 +389,7 @@ class Deposit extends BaseDeposit
             throw new \Exception('No Payments on this Deposit', 404);
         }
 
-        $Report->pdf = new \ChurchCRM\Reports\PDF_DepositReport();
+        $Report->pdf = new \ChurchCRM\Reports\PdfDepositReport();
         $Report->funds = DonationFundQuery::create()->find();
 
         //in 2.2.0, this setting will be part of the database, but to avoid 2.1.7 schema changes, I'm defining it in code.

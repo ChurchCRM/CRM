@@ -7,6 +7,8 @@
 
 ******************************************************************************/
 
+namespace ChurchCRM\Reports;
+
 require '../Include/Config.php';
 require '../Include/Functions.php';
 
@@ -15,12 +17,12 @@ use ChurchCRM\Reports\ChurchInfoReport;
 use ChurchCRM\Utils\InputUtils;
 
 //Get the Fiscal Year ID out of the querystring
-$iFYID = InputUtils::LegacyFilterInput($_POST['FYID'], 'int');
+$iFYID = InputUtils::legacyFilterInput($_POST['FYID'], 'int');
 $_SESSION['idefaultFY'] = $iFYID; // Remember the chosen FYID
-$iRequireDonationYears = InputUtils::LegacyFilterInput($_POST['RequireDonationYears'], 'int');
-$output = InputUtils::LegacyFilterInput($_POST['output']);
+$iRequireDonationYears = InputUtils::legacyFilterInput($_POST['RequireDonationYears'], 'int');
+$output = InputUtils::legacyFilterInput($_POST['output']);
 
-class PDF_VotingMembers extends ChurchInfoReport
+class PdfVotingMembers extends ChurchInfoReport
 {
     // Constructor
     public function __construct()
@@ -31,16 +33,16 @@ class PDF_VotingMembers extends ChurchInfoReport
         $this->SetMargins(20, 20);
 
         $this->SetAutoPageBreak(false);
-        $this->AddPage();
+        $this->addPage();
     }
 }
 
-$pdf = new PDF_VotingMembers();
+$pdf = new PdfVotingMembers();
 
 $topY = 10;
 $curY = $topY;
 
-$pdf->WriteAt(SystemConfig::getValue('leftX'), $curY, (gettext('Voting members ').MakeFYString($iFYID)));
+$pdf->writeAt(SystemConfig::getValue('leftX'), $curY, (gettext('Voting members ').MakeFYString($iFYID)));
 $curY += 10;
 
 $votingMemberCount = 0;
@@ -73,7 +75,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
     }
 
     if (($iRequireDonationYears == 0) || $donation == 'yes') {
-        $pdf->WriteAt(SystemConfig::getValue('leftX'), $curY, $fam_Name);
+        $pdf->writeAt(SystemConfig::getValue('leftX'), $curY, $fam_Name);
 
         //Get the family members for this family
         $sSQL = 'SELECT per_FirstName, per_LastName, cls.lst_OptionName AS sClassName
@@ -89,23 +91,23 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
 
         while ($aMember = mysqli_fetch_array($rsFamilyMembers)) {
             extract($aMember);
-            $pdf->WriteAt(SystemConfig::getValue('leftX') + 30, $curY, ($per_FirstName.' '.$per_LastName));
+            $pdf->writeAt(SystemConfig::getValue('leftX') + 30, $curY, ($per_FirstName.' '.$per_LastName));
             $curY += 5;
             if ($curY > 245) {
-                $pdf->AddPage();
+                $pdf->addPage();
                 $curY = $topY;
             }
             $votingMemberCount += 1;
         }
         if ($curY > 245) {
-            $pdf->AddPage();
+            $pdf->addPage();
             $curY = $topY;
         }
     }
 }
 
 $curY += 5;
-$pdf->WriteAt(SystemConfig::getValue('leftX'), $curY, 'Number of Voting Members: '.$votingMemberCount);
+$pdf->writeAt(SystemConfig::getValue('leftX'), $curY, 'Number of Voting Members: '.$votingMemberCount);
 
 header('Pragma: public');  // Needed for IE when using a shared SSL certificate
 if (SystemConfig::getValue('iPDFOutputType') == 1) {

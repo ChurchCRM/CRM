@@ -25,16 +25,16 @@ $iID = '';
 $sSort = '';
 
 if (array_key_exists('DateStart', $_GET)) {
-    $dDateStart = InputUtils::LegacyFilterInput($_GET['DateStart']);
+    $dDateStart = InputUtils::legacyFilterInput($_GET['DateStart']);
 }
 if (array_key_exists('DateEnd', $_GET)) {
-    $dDateEnd = InputUtils::LegacyFilterInput($_GET['DateEnd']);
+    $dDateEnd = InputUtils::legacyFilterInput($_GET['DateEnd']);
 }
 if (array_key_exists('ID', $_GET)) {
-    $iID = InputUtils::LegacyFilterInput($_GET['ID']);
+    $iID = InputUtils::legacyFilterInput($_GET['ID']);
 }
 if (array_key_exists('Sort', $_GET)) {
-    $sSort = InputUtils::LegacyFilterInput($_GET['Sort']);
+    $sSort = InputUtils::legacyFilterInput($_GET['Sort']);
 }
 
 // Build SQL Criteria
@@ -102,8 +102,8 @@ require 'Include/Header.php';
 // Save record limit if changed
 if (isset($_GET['Number'])) {
     /* @var $currentUser \ChurchCRM\User */
-    $currentUser = AuthenticationManager::GetCurrentUser();
-    $currentUser->setSearchLimit(InputUtils::LegacyFilterInput($_GET['Number'], 'int'));
+    $currentUser = AuthenticationManager::getCurrentUser();
+    $currentUser->setSearchLimit(InputUtils::legacyFilterInput($_GET['Number'], 'int'));
     $currentUser->save();
 }
 
@@ -118,7 +118,7 @@ switch ($sSort) {
 }
 
 // Append a LIMIT clause to the SQL statement
-$tableSizeSetting = AuthenticationManager::GetCurrentUser()
+$tableSizeSetting = AuthenticationManager::getCurrentUser()
     ->getSetting("ui.table.size");
 if (empty($tableSizeSetting)) {
     $iPerPage = 10;
@@ -128,7 +128,7 @@ if (empty($tableSizeSetting)) {
 if (empty($_GET['Result_Set'])) {
     $Result_Set = 0;
 } else {
-    $Result_Set = InputUtils::LegacyFilterInput($_GET['Result_Set'], 'int');
+    $Result_Set = InputUtils::legacyFilterInput($_GET['Result_Set'], 'int');
 }
 $sLimitSQL = " LIMIT $Result_Set, $iPerPage";
 

@@ -21,8 +21,8 @@ $sPageTitle = gettext('Free-Text Query');
 
 // Security: User must be an Admin to access this page.  It allows unrestricted database access!
 // Otherwise, re-direct them to the main menu.
-if (!AuthenticationManager::GetCurrentUser()->isAdmin()) {
-    RedirectUtils::Redirect('Menu.php');
+if (!AuthenticationManager::getCurrentUser()->isAdmin()) {
+    RedirectUtils::redirect('Menu.php');
     exit;
 }
 
@@ -162,9 +162,7 @@ function RunFreeQuery()
                 $fieldInfo = mysqli_fetch_field_direct($rsQueryResults, $iCount);
                 if ($fieldInfo->name == 'AddToCart') {
                     $aHiddenFormField[] = $aRow[$iCount];
-                }
-                //...otherwise just render the field
-                else {
+                } else {  //...otherwise just render the field
                     //Write the actual value of this row
                     echo '<td align="center">'.$aRow[$iCount].'</td>';
                 }

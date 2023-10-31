@@ -18,8 +18,8 @@ use ChurchCRM\Authentication\AuthenticationManager;
 // For now ... require $bAdmin
 // Future ... $bManageVol
 
-if (!AuthenticationManager::GetCurrentUser()->isAdmin()) {
-    RedirectUtils::Redirect('Menu.php');
+if (!AuthenticationManager::getCurrentUser()->isAdmin()) {
+    RedirectUtils::redirect('Menu.php');
     exit;
 }
 
@@ -41,13 +41,13 @@ $aNameErrors = [];
 $bNewNameError = false;
 
 if (array_key_exists('act', $_GET)) {
-    $sAction = InputUtils::LegacyFilterInput($_GET['act']);
+    $sAction = InputUtils::legacyFilterInput($_GET['act']);
 }
 if (array_key_exists('Opp', $_GET)) {
-    $iOpp = InputUtils::LegacyFilterInput($_GET['Opp'], 'int');
+    $iOpp = InputUtils::legacyFilterInput($_GET['Opp'], 'int');
 }
 if (array_key_exists('row_num', $_GET)) {
-    $iRowNum = InputUtils::LegacyFilterInput($_GET['row_num'], 'int');
+    $iRowNum = InputUtils::legacyFilterInput($_GET['row_num'], 'int');
 }
 
 $sDeleteError = '';
@@ -57,8 +57,8 @@ if (($sAction == 'delete') && $iOpp > 0) {
 
     // Security: User must have Delete records permission
     // Otherwise, redirect to the main menu
-    if (!AuthenticationManager::GetCurrentUser()->isDeleteRecordsEnabled()) {
-        RedirectUtils::Redirect('Menu.php');
+    if (!AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled()) {
+        RedirectUtils::redirect('Menu.php');
         exit;
     }
 
@@ -118,8 +118,8 @@ if (($sAction == 'delete') && $iOpp > 0) {
 if (($sAction == 'ConfDelete') && $iOpp > 0) {
     // Security: User must have Delete records permission
     // Otherwise, redirect to the main menu
-    if (!AuthenticationManager::GetCurrentUser()->isDeleteRecordsEnabled()) {
-        RedirectUtils::Redirect('Menu.php');
+    if (!AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled()) {
+        RedirectUtils::redirect('Menu.php');
         exit;
     }
 
@@ -205,7 +205,7 @@ if (isset($_POST['SaveChanges'])) {
         $nameName = $iFieldID.'name';
         $descName = $iFieldID.'desc';
         if (array_key_exists($nameName, $_POST)) {
-            $aNameFields[$iFieldID] = InputUtils::LegacyFilterInput($_POST[$nameName]);
+            $aNameFields[$iFieldID] = InputUtils::legacyFilterInput($_POST[$nameName]);
 
             if (strlen($aNameFields[$iFieldID]) == 0) {
                 $aNameErrors[$iFieldID] = true;
@@ -214,7 +214,7 @@ if (isset($_POST['SaveChanges'])) {
                 $aNameErrors[$iFieldID] = false;
             }
 
-            $aDescFields[$iFieldID] = InputUtils::LegacyFilterInput($_POST[$descName]);
+            $aDescFields[$iFieldID] = InputUtils::legacyFilterInput($_POST[$descName]);
 
             $aRow = mysqli_fetch_array($rsOpps);
             $aIDFields[$iFieldID] = $aRow[0];
@@ -235,8 +235,8 @@ if (isset($_POST['SaveChanges'])) {
     }
 } else {
     if (isset($_POST['AddField'])) { // Check if we're adding a VolOp
-        $newFieldName = InputUtils::LegacyFilterInput($_POST['newFieldName']);
-        $newFieldDesc = InputUtils::LegacyFilterInput($_POST['newFieldDesc']);
+        $newFieldName = InputUtils::legacyFilterInput($_POST['newFieldName']);
+        $newFieldDesc = InputUtils::legacyFilterInput($_POST['newFieldDesc']);
         if (strlen($newFieldName) == 0) {
             $bNewNameError = true;
         } else { // Insert into table

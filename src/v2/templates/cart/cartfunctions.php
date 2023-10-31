@@ -11,12 +11,12 @@ use ChurchCRM\dto\SystemURLs;
   </div>
   <div class="card-body">
     <a href="#" id="emptyCart" class="btn btn-app emptyCart"><i class="fa fa-trash"></i><?= gettext('Empty Cart') ?></a>
-    <?php if (AuthenticationManager::GetCurrentUser()->isManageGroupsEnabled()) {
+    <?php if (AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) {
         ?>
       <a id="emptyCartToGroup" class="btn btn-app"><i class="fa fa-object-ungroup"></i><?= gettext('Empty Cart to Group') ?></a>
         <?php
     }
-    if (AuthenticationManager::GetCurrentUser()->isAddRecordsEnabled()) {
+    if (AuthenticationManager::getCurrentUser()->isAddRecordsEnabled()) {
         ?>
       <a href="<?= SystemURLs::getRootPath()."/CartToFamily.php"?>" class="btn btn-app"><i
           class="fa fa-users"></i><?= gettext('Empty Cart to Family') ?></a>
@@ -25,7 +25,7 @@ use ChurchCRM\dto\SystemURLs;
     <a href="<?= SystemURLs::getRootPath()."/CartToEvent.php"?>" class="btn btn-app"><i
         class="fa fa-ticket"></i><?= gettext('Empty Cart to Event') ?></a>
 
-    <?php if (AuthenticationManager::GetCurrentUser()->isCSVExport()) {
+    <?php if (AuthenticationManager::getCurrentUser()->isCSVExport()) {
         ?>
       <a href="<?= SystemURLs::getRootPath()."/CSVExport.php?Source=cart" ?>" class="btn btn-app"><i
           class="fa fa-file-excel"></i><?= gettext('CSV Export') ?></a>
@@ -37,7 +37,7 @@ use ChurchCRM\dto\SystemURLs;
         class="fa fa-file-pdf"></i><?= gettext('Name Tags') ?></a>
       <?php
 
-        if (AuthenticationManager::GetCurrentUser()->isEmailEnabled()) { // Does user have permission to email groups
+        if (AuthenticationManager::getCurrentUser()->isEmailEnabled()) { // Does user have permission to email groups
             // Display link
             echo "<a href='mailto:" . $sEmailLink . "' class='btn btn-app'><i class='fa fa-paper-plane'></i>" . gettext('Email Cart') . '</a>';
             echo "<a href='mailto:?bcc=" . $sEmailLink . "' class='btn btn-app'><i class='fa fa-send'></i>" . gettext('Email (BCC)') . '</a>';

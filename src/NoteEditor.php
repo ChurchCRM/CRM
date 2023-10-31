@@ -21,8 +21,8 @@ use ChurchCRM\Authentication\AuthenticationManager;
 
 // Security: User must have Notes permission
 // Otherwise, re-direct them to the main menu.
-if (!AuthenticationManager::GetCurrentUser()->isNotesEnabled()) {
-    RedirectUtils::Redirect('Menu.php');
+if (!AuthenticationManager::getCurrentUser()->isNotesEnabled()) {
+    RedirectUtils::redirect('Menu.php');
     exit;
 }
 
@@ -30,13 +30,13 @@ if (!AuthenticationManager::GetCurrentUser()->isNotesEnabled()) {
 $sPageTitle = gettext('Note Editor');
 
 if (isset($_GET['PersonID'])) {
-    $iPersonID = InputUtils::LegacyFilterInput($_GET['PersonID'], 'int');
+    $iPersonID = InputUtils::legacyFilterInput($_GET['PersonID'], 'int');
 } else {
     $iPersonID = 0;
 }
 
 if (isset($_GET['FamilyID'])) {
-    $iFamilyID = InputUtils::LegacyFilterInput($_GET['FamilyID'], 'int');
+    $iFamilyID = InputUtils::legacyFilterInput($_GET['FamilyID'], 'int');
 } else {
     $iFamilyID = 0;
 }
@@ -54,8 +54,8 @@ if (isset($_POST['Submit'])) {
     $bErrorFlag = false;
 
     //Assign all variables locally
-    $iNoteID = InputUtils::LegacyFilterInput($_POST['NoteID'], 'int');
-    $sNoteText = InputUtils::FilterHTML($_POST['NoteText'], 'htmltext');
+    $iNoteID = InputUtils::legacyFilterInput($_POST['NoteID'], 'int');
+    $sNoteText = InputUtils::filterHTML($_POST['NoteText'], 'htmltext');
 
     //If they didn't check the private box, set the value to 0
     if (isset($_POST['Private'])) {
@@ -80,25 +80,25 @@ if (isset($_POST['Submit'])) {
             $note->setPrivate($bPrivate);
             $note->setText($sNoteText);
             $note->setType('note');
-            $note->setEntered(AuthenticationManager::GetCurrentUser()->getId());
+            $note->setEntered(AuthenticationManager::getCurrentUser()->getId());
             $note->save();
         } else {
             $note = NoteQuery::create()->findPk($iNoteID);
             $note->setPrivate($bPrivate);
             $note->setText($sNoteText);
             $note->setDateLastEdited(new DateTime());
-            $note->setEditedBy(AuthenticationManager::GetCurrentUser()->getId());
+            $note->setEditedBy(AuthenticationManager::getCurrentUser()->getId());
             $note->save();
         }
 
         //Send them back to wherever they came from
-        RedirectUtils::Redirect($sBackPage);
+        RedirectUtils::redirect($sBackPage);
     }
 } else {
     //Are we adding or editing?
     if (isset($_GET['NoteID'])) {
         //Get the NoteID from the querystring
-        $iNoteID = InputUtils::LegacyFilterInput($_GET['NoteID'], 'int');
+        $iNoteID = InputUtils::legacyFilterInput($_GET['NoteID'], 'int');
         $dbNote = NoteQuery::create()->findPk($iNoteID);
 
         //Assign everything locally

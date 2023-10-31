@@ -22,7 +22,7 @@ $iDepositSlipID = 0;
 $thisDeposit = 0;
 
 if (array_key_exists('DepositSlipID', $_GET)) {
-    $iDepositSlipID = InputUtils::LegacyFilterInput($_GET['DepositSlipID'], 'int');
+    $iDepositSlipID = InputUtils::legacyFilterInput($_GET['DepositSlipID'], 'int');
 }
 
 if ($iDepositSlipID) {
@@ -39,15 +39,15 @@ if ($iDepositSlipID) {
     }
 
     // Security: User must have finance permission or be the one who created this deposit
-    if (!(AuthenticationManager::GetCurrentUser()->isFinanceEnabled() || AuthenticationManager::GetCurrentUser()->getId() == $thisDeposit->getEnteredby())) {
-        RedirectUtils::Redirect('Menu.php');
+    if (!(AuthenticationManager::getCurrentUser()->isFinanceEnabled() || AuthenticationManager::getCurrentUser()->getId() == $thisDeposit->getEnteredby())) {
+        RedirectUtils::redirect('Menu.php');
         exit;
     }
 } elseif ($iDepositSlipID == 0) {
-    RedirectUtils::Redirect('FindDepositSlip.php');
+    RedirectUtils::redirect('FindDepositSlip.php');
     exit;
 } else {
-    RedirectUtils::Redirect('Menu.php');
+    RedirectUtils::redirect('Menu.php');
 }
 
 //Set the page title
@@ -63,7 +63,7 @@ if (isset($_POST['DepositSlipLoadAuthorized'])) {
 $_SESSION['iCurrentDeposit'] = $iDepositSlipID;  // Probably redundant
 
 /* @var $currentUser User */
-$currentUser = AuthenticationManager::GetCurrentUser();
+$currentUser = AuthenticationManager::getCurrentUser();
 $currentUser->setCurrentDeposit($iDepositSlipID);
 $currentUser->save();
 

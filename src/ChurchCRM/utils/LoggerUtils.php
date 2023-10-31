@@ -18,7 +18,7 @@ class LoggerUtils
     private static ?\Monolog\Handler\StreamHandler $authLogHandler = null;
     private static ?string $correlationId = null;
 
-    public static function GetCorrelationId()
+    public static function getCorrelationId()
     {
         if (empty(self::$correlationId)) {
             self::$correlationId = uniqid();
@@ -49,13 +49,13 @@ class LoggerUtils
                 $level = self::getLogLevel();
             }
             self::$appLogger = new Logger('defaultLogger');
-          //hold a reference to the handler object so that ResetAppLoggerLevel can be called later on
+          //hold a reference to the handler object so that resetAppLoggerLevel can be called later on
             self::$appLogHandler = new StreamHandler(self::buildLogFilePath("app"), $level);
             self::$appLogger->pushHandler(self::$appLogHandler);
             self::$appLogger->pushProcessor(function ($entry) {
                 $entry['extra']['url'] = $_SERVER['REQUEST_URI'];
                 $entry['extra']['remote_ip'] = $_SERVER['REMOTE_ADDR'];
-                $entry['extra']['correlation_id'] = self::GetCorrelationId();
+                $entry['extra']['correlation_id'] = self::getCorrelationId();
                 return $entry;
             });
         }
@@ -88,13 +88,13 @@ class LoggerUtils
                 $level = self::getLogLevel();
             }
             self::$authLogger = new Logger('authLogger');
-          //hold a reference to the handler object so that ResetAppLoggerLevel can be called later on
+          //hold a reference to the handler object so that resetAppLoggerLevel can be called later on
             self::$authLogHandler = new StreamHandler(self::buildLogFilePath("auth"), $level);
             self::$authLogger->pushHandler(self::$authLogHandler);
             self::$authLogger->pushProcessor(function ($entry) {
                 $entry['extra']['url'] = $_SERVER['REQUEST_URI'];
                 $entry['extra']['remote_ip'] = $_SERVER['REMOTE_ADDR'];
-                $entry['extra']['correlation_id'] = self::GetCorrelationId();
+                $entry['extra']['correlation_id'] = self::getCorrelationId();
                 $entry['extra']['context'] = self::getCaller();
 
                 return $entry;
@@ -103,7 +103,7 @@ class LoggerUtils
         return self::$authLogger;
     }
 
-    public static function ResetAppLoggerLevel()
+    public static function resetAppLoggerLevel()
     {
       // if the app log handler was initialized (in the boostrapper) to a specific level
       // before the database initialization occurred

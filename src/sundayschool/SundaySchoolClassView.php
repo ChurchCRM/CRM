@@ -15,7 +15,7 @@ $sundaySchoolService = new SundaySchoolService();
 $iGroupId = '-1';
 $iGroupName = 'Unknown';
 if (isset($_GET['groupId'])) {
-    $iGroupId = InputUtils::LegacyFilterInput($_GET['groupId'], 'int');
+    $iGroupId = InputUtils::legacyFilterInput($_GET['groupId'], 'int');
 }
 
 $sSQL = 'select * from group_grp where grp_ID ='.$iGroupId;
@@ -71,7 +71,7 @@ require '../Include/Header.php';
   </div>
   <div class="card-body">
     <?php
-    $sMailtoDelimiter = AuthenticationManager::GetCurrentUser()->getUserConfigString("sMailtoDelimiter");
+    $sMailtoDelimiter = AuthenticationManager::getCurrentUser()->getUserConfigString("sMailtoDelimiter");
     $allEmails = array_unique([...$ParentsEmails, ...$KidsEmails, ...$TeachersEmails]);
     $roleEmails->Parents = implode($sMailtoDelimiter, $ParentsEmails).',';
     $roleEmails->Teachers = implode($sMailtoDelimiter, $TeachersEmails).',';
@@ -83,7 +83,7 @@ require '../Include/Header.php';
     }
     $sEmailLink = urlencode($sEmailLink);  // Mailto should comply with RFC 2368
 
-    if (AuthenticationManager::GetCurrentUser()->isEmailEnabled()) { // Does user have permission to email groups
+    if (AuthenticationManager::getCurrentUser()->isEmailEnabled()) { // Does user have permission to email groups
       // Display link
         ?>
       <div class="btn-group">
@@ -221,7 +221,7 @@ require '../Include/Header.php';
 
         foreach ($thisClassChildren as $child) {
             $hideAge = $child['flags'] == 1 || $child['birthYear'] == '' || $child['birthYear'] == '0';
-            $birthDate = MiscUtils::FormatBirthDate($child['birthYear'], $child['birthMonth'], $child['birthDay'], '-', $child['flags']); ?>
+            $birthDate = MiscUtils::formatBirthDate($child['birthYear'], $child['birthMonth'], $child['birthDay'], '-', $child['flags']); ?>
           <tr>
           <td>
             <img src="<?= SystemURLs::getRootPath(); ?>/api/person/<?= $child['kidId'] ?>/thumbnail"
@@ -229,7 +229,7 @@ require '../Include/Header.php';
           </td>
           <td><a href="<?= SystemURLs::getRootPath(); ?>/PersonView.php?PersonID=<?= $child['kidId'] ?>"><?= $child['LastName'].', '.$child['firstName'] ?></a></td>
           <td><?= $birthDate ?> </td>
-          <td><?= MiscUtils::FormatAge($child['birthMonth'], $child['birthDay'], $child['birthYear'], $child['flags']) ?></td>
+          <td><?= MiscUtils::formatAge($child['birthMonth'], $child['birthDay'], $child['birthYear'], $child['flags']) ?></td>
           <td><?= $child['kidEmail'] ?></td>
           <td><?= $child['mobilePhone'] ?></td>
           <td><?= $child['homePhone'] ?></td>

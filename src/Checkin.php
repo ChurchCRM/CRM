@@ -36,17 +36,17 @@ $iAdultID = 0;
 
 
 if (array_key_exists('EventID', $_POST)) {
-    $EventID = InputUtils::LegacyFilterInput($_POST['EventID'], 'int');
+    $EventID = InputUtils::legacyFilterInput($_POST['EventID'], 'int');
 } // from ListEvents button=Attendees
 if (isset($_POST['CheckOutBtn']) || isset($_POST['DeleteBtn'])) {
     $CheckoutOrDelete =  true;
 }
 
 if (isset($_POST['child-id'])) {
-    $iChildID = InputUtils::LegacyFilterInput($_POST['child-id'], 'int');
+    $iChildID = InputUtils::legacyFilterInput($_POST['child-id'], 'int');
 }
 if (isset($_POST['adult-id'])) {
-    $iAdultID = InputUtils::LegacyFilterInput($_POST['adult-id'], 'int');
+    $iAdultID = InputUtils::legacyFilterInput($_POST['adult-id'], 'int');
 }
 
 //
@@ -233,7 +233,7 @@ if (isset($_POST['EventID']) && isset($_POST['child-id']) && (isset($_POST['Chec
 if (isset($_POST['EventID']) && isset($_POST['child-id']) &&
     (isset($_POST['CheckOutBtn']) || isset($_POST['DeleteBtn']))
 ) {
-    $iChildID = InputUtils::LegacyFilterInput($_POST['child-id'], 'int');
+    $iChildID = InputUtils::legacyFilterInput($_POST['child-id'], 'int');
 
     $formTitle = (isset($_POST['CheckOutBtn']) ? gettext("CheckOut Person") : gettext("Delete Checkin in Entry")); ?>
 

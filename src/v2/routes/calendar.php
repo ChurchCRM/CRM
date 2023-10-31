@@ -30,7 +30,7 @@ function getCalendar(Request $request, Response $response, array $args)
 function getCalendarJSArgs()
 {
     return [
-        'isModifiable' => AuthenticationManager::GetCurrentUser()->isAddEvent(),
+        'isModifiable' => AuthenticationManager::getCurrentUser()->isAddEvent(),
         'countCalendarAccessTokens' => CalendarQuery::create()->filterByAccessToken(null, Criteria::NOT_EQUAL)->count(),
         'bEnableExternalCalendarAPI' => SystemConfig::getBooleanValue("bEnableExternalCalendarAPI")
     ];

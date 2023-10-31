@@ -28,14 +28,14 @@ $sPageTitle = gettext('Person Editor');
 
 //Get the PersonID out of the querystring
 if (array_key_exists('PersonID', $_GET)) {
-    $iPersonID = InputUtils::LegacyFilterInput($_GET['PersonID'], 'int');
+    $iPersonID = InputUtils::legacyFilterInput($_GET['PersonID'], 'int');
 } else {
     $iPersonID = 0;
 }
 
 $sPreviousPage = '';
 if (array_key_exists('previousPage', $_GET)) {
-    $sPreviousPage = InputUtils::LegacyFilterInput($_GET['previousPage']);
+    $sPreviousPage = InputUtils::legacyFilterInput($_GET['previousPage']);
 }
 
 // Security: User must have Add or Edit Records permission to use this form in those manners
@@ -46,21 +46,21 @@ if ($iPersonID > 0) {
     extract(mysqli_fetch_array($rsPerson));
 
     if (mysqli_num_rows($rsPerson) == 0) {
-        RedirectUtils::Redirect('Menu.php');
+        RedirectUtils::redirect('Menu.php');
         exit;
     }
 
     if (!(
-        AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled() ||
-        (AuthenticationManager::GetCurrentUser()->isEditSelfEnabled() && $iPersonID == AuthenticationManager::GetCurrentUser()->getId()) ||
-        (AuthenticationManager::GetCurrentUser()->isEditSelfEnabled() && $per_fam_ID > 0 && $per_fam_ID == AuthenticationManager::GetCurrentUser()->getPerson()->getFamId())
+        AuthenticationManager::getCurrentUser()->isEditRecordsEnabled() ||
+        (AuthenticationManager::getCurrentUser()->isEditSelfEnabled() && $iPersonID == AuthenticationManager::getCurrentUser()->getId()) ||
+        (AuthenticationManager::getCurrentUser()->isEditSelfEnabled() && $per_fam_ID > 0 && $per_fam_ID == AuthenticationManager::getCurrentUser()->getPerson()->getFamId())
     )
     ) {
-        RedirectUtils::Redirect('Menu.php');
+        RedirectUtils::redirect('Menu.php');
         exit;
     }
-} elseif (!AuthenticationManager::GetCurrentUser()->isAddRecordsEnabled()) {
-    RedirectUtils::Redirect('Menu.php');
+} elseif (!AuthenticationManager::getCurrentUser()->isAddRecordsEnabled()) {
+    RedirectUtils::redirect('Menu.php');
     exit;
 }
 // Get Field Security List Matrix
@@ -102,12 +102,12 @@ $sLinkedInError = false;
 //Is this the second pass?
 if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
     //Get all the variables from the request object and assign them locally
-    $sTitle = InputUtils::LegacyFilterInput($_POST['Title']);
-    $sFirstName = InputUtils::LegacyFilterInput($_POST['FirstName']);
-    $sMiddleName = InputUtils::LegacyFilterInput($_POST['MiddleName']);
-    $sLastName = InputUtils::LegacyFilterInput($_POST['LastName']);
-    $sSuffix = InputUtils::LegacyFilterInput($_POST['Suffix']);
-    $iGender = InputUtils::LegacyFilterInput($_POST['Gender'], 'int');
+    $sTitle = InputUtils::legacyFilterInput($_POST['Title']);
+    $sFirstName = InputUtils::legacyFilterInput($_POST['FirstName']);
+    $sMiddleName = InputUtils::legacyFilterInput($_POST['MiddleName']);
+    $sLastName = InputUtils::legacyFilterInput($_POST['LastName']);
+    $sSuffix = InputUtils::legacyFilterInput($_POST['Suffix']);
+    $iGender = InputUtils::legacyFilterInput($_POST['Gender'], 'int');
 
     // Person address stuff is normally suppressed in favor of family address info
     $sAddress1 = '';
@@ -116,16 +116,16 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
     $sZip = '';
     $sCountry = '';
     if (array_key_exists('Address1', $_POST)) {
-        $sAddress1 = InputUtils::LegacyFilterInput($_POST['Address1']);
+        $sAddress1 = InputUtils::legacyFilterInput($_POST['Address1']);
     }
     if (array_key_exists('Address2', $_POST)) {
-        $sAddress2 = InputUtils::LegacyFilterInput($_POST['Address2']);
+        $sAddress2 = InputUtils::legacyFilterInput($_POST['Address2']);
     }
     if (array_key_exists('City', $_POST)) {
-        $sCity = InputUtils::LegacyFilterInput($_POST['City']);
+        $sCity = InputUtils::legacyFilterInput($_POST['City']);
     }
     if (array_key_exists('Zip', $_POST)) {
-        $sZip = InputUtils::LegacyFilterInput($_POST['Zip']);
+        $sZip = InputUtils::legacyFilterInput($_POST['Zip']);
     }
 
     // bevand10 2012-04-26 Add support for uppercase ZIP - controlled by administrator via cfg param
@@ -134,11 +134,11 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
     }
 
     if (array_key_exists('Country', $_POST)) {
-        $sCountry = InputUtils::LegacyFilterInput($_POST['Country']);
+        $sCountry = InputUtils::legacyFilterInput($_POST['Country']);
     }
 
-    $iFamily = InputUtils::LegacyFilterInput($_POST['Family'], 'int');
-    $iFamilyRole = InputUtils::LegacyFilterInput($_POST['FamilyRole'], 'int');
+    $iFamily = InputUtils::legacyFilterInput($_POST['Family'], 'int');
+    $iFamilyRole = InputUtils::legacyFilterInput($_POST['FamilyRole'], 'int');
 
     // Get their family's country in case person's country was not entered
     if ($iFamily > 0) {
@@ -151,38 +151,38 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
     $sState = '';
     if ($sCountryTest == 'United States' || $sCountryTest == 'Canada') {
         if (array_key_exists('State', $_POST)) {
-            $sState = InputUtils::LegacyFilterInput($_POST['State']);
+            $sState = InputUtils::legacyFilterInput($_POST['State']);
         }
     } else {
         if (array_key_exists('StateTextbox', $_POST)) {
-            $sState = InputUtils::LegacyFilterInput($_POST['StateTextbox']);
+            $sState = InputUtils::legacyFilterInput($_POST['StateTextbox']);
         }
     }
 
-    $sHomePhone = InputUtils::LegacyFilterInput($_POST['HomePhone']);
-    $sWorkPhone = InputUtils::LegacyFilterInput($_POST['WorkPhone']);
-    $sCellPhone = InputUtils::LegacyFilterInput($_POST['CellPhone']);
-    $sEmail = InputUtils::LegacyFilterInput($_POST['Email']);
-    $sWorkEmail = InputUtils::LegacyFilterInput($_POST['WorkEmail']);
-    $iBirthMonth = InputUtils::LegacyFilterInput($_POST['BirthMonth'], 'int');
-    $iBirthDay = InputUtils::LegacyFilterInput($_POST['BirthDay'], 'int');
-    $iBirthYear = InputUtils::LegacyFilterInput($_POST['BirthYear'], 'int');
+    $sHomePhone = InputUtils::legacyFilterInput($_POST['HomePhone']);
+    $sWorkPhone = InputUtils::legacyFilterInput($_POST['WorkPhone']);
+    $sCellPhone = InputUtils::legacyFilterInput($_POST['CellPhone']);
+    $sEmail = InputUtils::legacyFilterInput($_POST['Email']);
+    $sWorkEmail = InputUtils::legacyFilterInput($_POST['WorkEmail']);
+    $iBirthMonth = InputUtils::legacyFilterInput($_POST['BirthMonth'], 'int');
+    $iBirthDay = InputUtils::legacyFilterInput($_POST['BirthDay'], 'int');
+    $iBirthYear = InputUtils::legacyFilterInput($_POST['BirthYear'], 'int');
     $bHideAge = isset($_POST['HideAge']);
     // Philippe Logel
-    $dFriendDate = InputUtils::FilterDate($_POST['FriendDate']);
-    $dMembershipDate = InputUtils::FilterDate($_POST['MembershipDate']);
-    $iClassification = InputUtils::LegacyFilterInput($_POST['Classification'], 'int');
+    $dFriendDate = InputUtils::filterDate($_POST['FriendDate']);
+    $dMembershipDate = InputUtils::filterDate($_POST['MembershipDate']);
+    $iClassification = InputUtils::legacyFilterInput($_POST['Classification'], 'int');
     $iEnvelope = 0;
     if (array_key_exists('EnvID', $_POST)) {
-        $iEnvelope = InputUtils::LegacyFilterInput($_POST['EnvID'], 'int');
+        $iEnvelope = InputUtils::legacyFilterInput($_POST['EnvID'], 'int');
     }
     if (array_key_exists('updateBirthYear', $_POST)) {
-        $iupdateBirthYear = InputUtils::LegacyFilterInput($_POST['updateBirthYear'], 'int');
+        $iupdateBirthYear = InputUtils::legacyFilterInput($_POST['updateBirthYear'], 'int');
     }
 
-    $sFacebook = InputUtils::FilterString($_POST['Facebook']);
-    $sTwitter = InputUtils::FilterString($_POST['Twitter']);
-    $sLinkedIn = InputUtils::FilterString($_POST['LinkedIn']);
+    $sFacebook = InputUtils::filterString($_POST['Facebook']);
+    $sTwitter = InputUtils::filterString($_POST['Twitter']);
+    $sLinkedIn = InputUtils::filterString($_POST['LinkedIn']);
 
     $bNoFormat_HomePhone = isset($_POST['NoFormat_HomePhone']);
     $bNoFormat_WorkPhone = isset($_POST['NoFormat_WorkPhone']);
@@ -278,8 +278,8 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
     while ($rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQLI_BOTH)) {
         extract($rowCustomField);
 
-        if (AuthenticationManager::GetCurrentUser()->isEnabledSecurity($aSecurityType[$custom_FieldSec])) {
-            $currentFieldData = InputUtils::LegacyFilterInput($_POST[$custom_Field]);
+        if (AuthenticationManager::getCurrentUser()->isEnabledSecurity($aSecurityType[$custom_FieldSec])) {
+            $currentFieldData = InputUtils::legacyFilterInput($_POST[$custom_Field]);
 
             $bErrorFlag |= !validateCustomField($type_ID, $currentFieldData, $custom_Field, $aCustomErrors);
 
@@ -313,7 +313,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         // Family will be named by the Last Name.
         if ($iFamily == -1) {
             $sSQL = "INSERT INTO family_fam (fam_Name, fam_Address1, fam_Address2, fam_City, fam_State, fam_Zip, fam_Country, fam_HomePhone, fam_WorkPhone, fam_CellPhone, fam_Email, fam_DateEntered, fam_EnteredBy)
-					VALUES ('".$sLastName."','".$sAddress1."','".$sAddress2."','".$sCity."','".$sState."','".$sZip."','".$sCountry."','".$sHomePhone."','".$sWorkPhone."','".$sCellPhone."','".$sEmail."','".date('YmdHis')."',".AuthenticationManager::GetCurrentUser()->getId().')';
+					VALUES ('".$sLastName."','".$sAddress1."','".$sAddress2."','".$sCity."','".$sState."','".$sZip."','".$sCountry."','".$sHomePhone."','".$sWorkPhone."','".$sCellPhone."','".$sEmail."','".date('YmdHis')."',".AuthenticationManager::getCurrentUser()->getId().')';
             //Execute the SQL
             RunQuery($sSQL);
             //Get the key back
@@ -339,7 +339,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
             } else {
                 $sSQL .= 'NULL';
             }
-            $sSQL .= ','.$iClassification.",'".date('YmdHis')."',".AuthenticationManager::GetCurrentUser()->getId().',';
+            $sSQL .= ','.$iClassification.",'".date('YmdHis')."',".AuthenticationManager::getCurrentUser()->getId().',';
 
             if (strlen($dFriendDate) > 0) {
                 $sSQL .= '"'.$dFriendDate.'"';
@@ -364,11 +364,11 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
                 $sSQL .= 'NULL';
             }
 
-            if (AuthenticationManager::GetCurrentUser()->isFinanceEnabled()) {
+            if (AuthenticationManager::getCurrentUser()->isFinanceEnabled()) {
                 $sSQL .= ', per_Envelope = '.$iEnvelope;
             }
 
-            $sSQL .= ", per_DateLastEdited = '".date('YmdHis')."', per_EditedBy = ".AuthenticationManager::GetCurrentUser()->getId().', per_FriendDate =';
+            $sSQL .= ", per_DateLastEdited = '".date('YmdHis')."', per_EditedBy = ".AuthenticationManager::getCurrentUser()->getId().', per_FriendDate =';
 
             if (strlen($dFriendDate) > 0) {
                 $sSQL .= '"'.$dFriendDate.'"';
@@ -392,7 +392,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
 
 
         $note = new Note();
-        $note->setEntered(AuthenticationManager::GetCurrentUser()->getId());
+        $note->setEntered(AuthenticationManager::getCurrentUser()->getId());
         // If this is a new person, get the key back and insert a blank row into the person_custom table
         if ($bGetKeyBack) {
             $sSQL = 'SELECT MAX(per_ID) AS iPersonID FROM person_per';
@@ -428,7 +428,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
             $sSQL = '';
             while ($rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQLI_BOTH)) {
                 extract($rowCustomField);
-                if (AuthenticationManager::GetCurrentUser()->isEnabledSecurity($aSecurityType[$custom_FieldSec])) {
+                if (AuthenticationManager::getCurrentUser()->isEnabledSecurity($aSecurityType[$custom_FieldSec])) {
                     $currentFieldData = trim($aCustomData[$custom_Field]);
                     sqlCustomField($sSQL, $type_ID, $currentFieldData, $custom_Field, $sPhoneCountry);
                 }
@@ -445,13 +445,13 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         // Check for redirection to another page after saving information: (ie. PersonEditor.php?previousPage=prev.php?a=1;b=2;c=3)
         if ($sPreviousPage != '') {
             $sPreviousPage = str_replace(';', '&', $sPreviousPage);
-            RedirectUtils::Redirect($sPreviousPage.$iPersonID);
+            RedirectUtils::redirect($sPreviousPage.$iPersonID);
         } elseif (isset($_POST['PersonSubmit'])) {
             //Send to the view of this person
-            RedirectUtils::Redirect('PersonView.php?PersonID='.$iPersonID);
+            RedirectUtils::redirect('PersonView.php?PersonID='.$iPersonID);
         } else {
             //Reload to editor to add another record
-            RedirectUtils::Redirect('PersonEditor.php');
+            RedirectUtils::redirect('PersonEditor.php');
         }
     }
 
@@ -1200,7 +1200,7 @@ require 'Include/Header.php';
                 while ($rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQLI_BOTH)) {
                     extract($rowCustomField);
 
-                    if (AuthenticationManager::GetCurrentUser()->isEnabledSecurity($aSecurityType[$custom_FieldSec])) {
+                    if (AuthenticationManager::getCurrentUser()->isEnabledSecurity($aSecurityType[$custom_FieldSec])) {
                         echo "<div class='row'><div class=\"form-group col-md-3\"><label>".$custom_Name.'</label>';
 
                         if (array_key_exists($custom_Field, $aCustomData)) {
@@ -1227,7 +1227,7 @@ require 'Include/Header.php';
   } ?>
     <div class="text-right">
     <input type="submit" class="btn btn-primary" id="PersonSaveButton" value="<?= gettext('Save') ?>" name="PersonSubmit">
-    <?php if (AuthenticationManager::GetCurrentUser()->isAddRecordsEnabled()) {
+    <?php if (AuthenticationManager::getCurrentUser()->isAddRecordsEnabled()) {
                             echo '<input type="submit" class="btn btn-primary" value="'.gettext('Save and Add').'" name="PersonSubmitAndAdd">';
     } ?>
     <input type="button" class="btn btn-primary" value="<?= gettext('Cancel') ?>" name="PersonCancel"

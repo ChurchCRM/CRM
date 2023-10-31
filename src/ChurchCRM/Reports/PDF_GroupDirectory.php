@@ -2,7 +2,7 @@
 
 namespace ChurchCRM\Reports;
 
-class PDF_GroupDirectory extends ChurchInfoReport
+class PdfGroupDirectory extends ChurchInfoReport
 {
     // Private properties
     public $_Margin_Left = 12;         // Left Margin
@@ -14,7 +14,7 @@ class PDF_GroupDirectory extends ChurchInfoReport
     public $sFamily;
     public $sLastName;
 
-    public function Header()
+    public function header()
     {
         if ($this->PageNo() == 1) {
             global $sGroupName;
@@ -34,7 +34,7 @@ class PDF_GroupDirectory extends ChurchInfoReport
         }
     }
 
-    public function Footer()
+    public function footer()
     {
         //Go to 1.5 cm from bottom
         $this->SetY(-15);
@@ -46,7 +46,7 @@ class PDF_GroupDirectory extends ChurchInfoReport
 
     // Sets the character size
     // This changes the line height too
-    public function Set_Char_Size($pt)
+    public function setCharSize($pt)
     {
         if ($pt > 3) {
             $this->_Char_Size = $pt;
@@ -59,12 +59,12 @@ class PDF_GroupDirectory extends ChurchInfoReport
     {
         parent::__construct('P', 'mm', $this->paperFormat);
         $this->SetMargins(0, 0);
-        $this->Set_Char_Size(12);
-        $this->AddPage();
+        $this->setCharSize(12);
+        $this->addPage();
         $this->SetAutoPageBreak(false);
     }
 
-    public function Check_Lines($numlines)
+    public function checkLines($numlines)
     {
         $CurY = $this->GetY();  // Temporarily store off the position
 
@@ -76,7 +76,7 @@ class PDF_GroupDirectory extends ChurchInfoReport
             if ($this->_Column == 1) {
                 $this->_Column = 0;
                 $this->_CurLine = 2;
-                $this->AddPage();
+                $this->addPage();
             } else {
                 $this->_Column = 1;
                 $this->_CurLine = 2;
@@ -87,9 +87,9 @@ class PDF_GroupDirectory extends ChurchInfoReport
 
     // This function prints out the heading when a letter
     // changes.
-/*  function Add_Header($sLetter)
+/*  function addHeader($sLetter)
     {
-        $this->Check_Lines(2);
+        $this->checkLines(2);
         $this->SetTextColor(255);
         $this->SetFont($this->_Font,'B',12);
         $_PosX = $this->_Margin_Left+($this->_Column*108);
@@ -103,7 +103,7 @@ class PDF_GroupDirectory extends ChurchInfoReport
 */
 
     // This prints the name in BOLD
-    public function Print_Name($sName)
+    public function printName($sName)
     {
         $this->SetFont($this->_Font, 'B', 12);
         $_PosX = $this->_Margin_Left + ($this->_Column * 108);
@@ -115,11 +115,11 @@ class PDF_GroupDirectory extends ChurchInfoReport
     }
 
     // Number of lines is only for the $text parameter
-    public function Add_Record($sName, $text, $numlines)
+    public function addRecord($sName, $text, $numlines)
     {
-        $this->Check_Lines($numlines);
+        $this->checkLines($numlines);
 
-        $this->Print_Name($sName);
+        $this->printName($sName);
 
         $_PosX = $this->_Margin_Left + ($this->_Column * 108);
         $_PosY = $this->_Margin_Top + ($this->_CurLine * 5);

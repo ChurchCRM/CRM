@@ -15,8 +15,8 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Authentication\AuthenticationManager;
 
-if (!AuthenticationManager::GetCurrentUser()->isFinanceEnabled()) {
-    RedirectUtils::Redirect('Menu.php');
+if (!AuthenticationManager::getCurrentUser()->isFinanceEnabled()) {
+    RedirectUtils::redirect('Menu.php');
     exit;
 }
 
@@ -25,7 +25,7 @@ $dDate = date('Y-m-d', $now);
 $lwDate = date('Y-m-d', $now - (6 * 24 * 60 * 60));
 
 $iFYID = CurrentFY();
-$iDepositSlipID = InputUtils::LegacyFilterInput($_GET['DepositSlipID']);
+$iDepositSlipID = InputUtils::legacyFilterInput($_GET['DepositSlipID']);
 
 include 'Include/eGiveConfig.php'; // Specific account information is in here
 
@@ -229,7 +229,7 @@ if (isset($_POST['ApiGet'])) {
         $doUpdate = $_POST['MissingEgive_Set_'.$nameWithUnderscores];
         if ($famID) {
             if ($doUpdate) {
-                $sSQL = "INSERT INTO egive_egv (egv_egiveID, egv_famID, egv_DateEntered, egv_EnteredBy) VALUES ('".$egiveID."','".$famID."','".date('YmdHis')."','".AuthenticationManager::GetCurrentUser()->getId()."');";
+                $sSQL = "INSERT INTO egive_egv (egv_egiveID, egv_famID, egv_DateEntered, egv_EnteredBy) VALUES ('".$egiveID."','".$famID."','".date('YmdHis')."','".AuthenticationManager::getCurrentUser()->getId()."');";
                 RunQuery($sSQL);
             }
 
@@ -285,7 +285,7 @@ function updateDB($famID, $transId, $date, $name, $amount, $fundId, $comment, $f
     if ($eGiveExisting && array_key_exists($keyExisting, $eGiveExisting)) {
         ++$importNoChange;
     } elseif ($famID) { //  insert a new record
-        $sSQL = "INSERT INTO pledge_plg (plg_famID, plg_FYID, plg_date, plg_amount, plg_schedule, plg_method, plg_comment, plg_DateLastEdited, plg_EditedBy, plg_PledgeOrPayment, plg_fundID, plg_depID, plg_CheckNo, plg_NonDeductible, plg_GroupKey) VALUES ('".$famID."','".$iFYID."','".$date."','".$amount."','".$frequency."','EGIVE','".$comment."','".date('YmdHis')."',".AuthenticationManager::GetCurrentUser()->getId().",'Payment',".$fundId.",'".$iDepositSlipID."','".$transId."','0','".$groupKey."')";
+        $sSQL = "INSERT INTO pledge_plg (plg_famID, plg_FYID, plg_date, plg_amount, plg_schedule, plg_method, plg_comment, plg_DateLastEdited, plg_EditedBy, plg_PledgeOrPayment, plg_fundID, plg_depID, plg_CheckNo, plg_NonDeductible, plg_GroupKey) VALUES ('".$famID."','".$iFYID."','".$date."','".$amount."','".$frequency."','EGIVE','".$comment."','".date('YmdHis')."',".AuthenticationManager::getCurrentUser()->getId().",'Payment',".$fundId.",'".$iDepositSlipID."','".$transId."','0','".$groupKey."')";
         ++$importCreated;
         RunQuery($sSQL);
     }

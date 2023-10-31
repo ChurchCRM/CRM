@@ -17,8 +17,8 @@ use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Authentication\AuthenticationManager;
 
 // Security: User must have property and classification editing permission
-if (!AuthenticationManager::GetCurrentUser()->isMenuOptionsEnabled()) {
-    RedirectUtils::Redirect('Menu.php');
+if (!AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled()) {
+    RedirectUtils::redirect('Menu.php');
     exit;
 }
 
@@ -28,11 +28,11 @@ $sNameError = '';
 //Get the PropertyID
 $iPropertyID = 0;
 if (array_key_exists('PropertyID', $_GET)) {
-    $iPropertyID = InputUtils::LegacyFilterInput($_GET['PropertyID'], 'int');
+    $iPropertyID = InputUtils::legacyFilterInput($_GET['PropertyID'], 'int');
 }
 
 //Get the Type
-$sType = InputUtils::LegacyFilterInput($_GET['Type'], 'char', 1);
+$sType = InputUtils::legacyFilterInput($_GET['Type'], 'char', 1);
 
 //Based on the type, set the TypeName
 switch ($sType) {
@@ -49,7 +49,7 @@ switch ($sType) {
         break;
 
     default:
-        RedirectUtils::Redirect('Menu.php');
+        RedirectUtils::redirect('Menu.php');
         exit;
         break;
 }
@@ -62,10 +62,10 @@ $iType = 0;
 
 //Was the form submitted?
 if (isset($_POST['Submit'])) {
-    $sName = addslashes(InputUtils::LegacyFilterInput($_POST['Name']));
-    $sDescription = addslashes(InputUtils::LegacyFilterInput($_POST['Description']));
-    $iClass = InputUtils::LegacyFilterInput($_POST['Class'], 'int');
-    $sPrompt = InputUtils::LegacyFilterInput($_POST['Prompt']);
+    $sName = addslashes(InputUtils::legacyFilterInput($_POST['Name']));
+    $sDescription = addslashes(InputUtils::legacyFilterInput($_POST['Description']));
+    $iClass = InputUtils::legacyFilterInput($_POST['Class'], 'int');
+    $sPrompt = InputUtils::legacyFilterInput($_POST['Prompt']);
 
     //Did they enter a name?
     if (strlen($sName) < 1) {
@@ -92,7 +92,7 @@ if (isset($_POST['Submit'])) {
         RunQuery($sSQL);
 
         //Route back to the list
-        RedirectUtils::Redirect('PropertyList.php?Type='.$sType);
+        RedirectUtils::redirect('PropertyList.php?Type='.$sType);
     }
 } else {
     if ($iPropertyID != 0) {

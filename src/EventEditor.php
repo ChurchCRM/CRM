@@ -29,7 +29,7 @@ use ChurchCRM\Authentication\AuthenticationManager;
 
 $sPageTitle = gettext('Church Event Editor');
 
-if (!AuthenticationManager::GetCurrentUser()->isAddEvent()) {
+if (!AuthenticationManager::getCurrentUser()->isAddEvent()) {
     header('Location: Menu.php');
 }
 
@@ -50,8 +50,7 @@ if (isset($_GET['calendarAction'])) {
 
     if (array_key_exists('EN_tyid', $_POST)) {
         $tyid = $_POST['EN_tyid'];
-    } // from event type list page
-    else {
+    } else {  // from event type list page
         $tyid = 0;
     }
 }
@@ -300,7 +299,7 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
         $bEventTypeError = true;
         $iErrors++;
     } else {
-        $sSQL = "SELECT type_name FROM event_types WHERE type_id = '".InputUtils::LegacyFilterInput($iTypeID)."' LIMIT 1";
+        $sSQL = "SELECT type_name FROM event_types WHERE type_id = '".InputUtils::legacyFilterInput($iTypeID)."' LIMIT 1";
         $rsOpps = RunQuery($sSQL);
         $aRow = mysqli_fetch_array($rsOpps, MYSQLI_BOTH);
         extract($aRow);
@@ -346,13 +345,13 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
     if ($iErrors == 0) {
         if ($EventExists == 0) {
             $sSQL = "INSERT events_event
-                     SET `event_type` = '".InputUtils::LegacyFilterInput($iTypeID)."',
-                     `event_title` = '".InputUtils::LegacyFilterInput($sEventTitle)."',
-                     `event_desc` = '".InputUtils::LegacyFilterInput($sEventDesc)."',
-                     `event_text` = '".InputUtils::FilterHTML($sEventText)."',
-                     `event_start` = '".InputUtils::LegacyFilterInput($sEventStart)."',
-                     `event_end` = '".InputUtils::LegacyFilterInput($sEventEnd)."',
-                     `inactive` = '".InputUtils::LegacyFilterInput($iEventStatus)."';";
+                     SET `event_type` = '".InputUtils::legacyFilterInput($iTypeID)."',
+                     `event_title` = '".InputUtils::legacyFilterInput($sEventTitle)."',
+                     `event_desc` = '".InputUtils::legacyFilterInput($sEventDesc)."',
+                     `event_text` = '".InputUtils::filterHTML($sEventText)."',
+                     `event_start` = '".InputUtils::legacyFilterInput($sEventStart)."',
+                     `event_end` = '".InputUtils::legacyFilterInput($sEventEnd)."',
+                     `inactive` = '".InputUtils::legacyFilterInput($iEventStatus)."';";
             RunQuery($sSQL);
             $iEventID = mysqli_insert_id($cnInfoCentral);
             for ($c = 0; $c < $iNumCounts; $c++) {
@@ -360,23 +359,23 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
                 $sSQL = "INSERT eventcounts_evtcnt
                        (evtcnt_eventid, evtcnt_countid, evtcnt_countname, evtcnt_countcount, evtcnt_notes)
                        VALUES
-                       ('".InputUtils::LegacyFilterInput($iEventID)."',
-                        '".InputUtils::LegacyFilterInput($aCountID[$c])."',
-                        '".InputUtils::LegacyFilterInput($aCountName[$c])."',
-                        '".InputUtils::LegacyFilterInput($aCount[$c])."',
-                        '".InputUtils::LegacyFilterInput($sCountNotes)."') ON DUPLICATE KEY UPDATE evtcnt_countcount='$aCount[$c]', evtcnt_notes='$sCountNotes'";
+                       ('".InputUtils::legacyFilterInput($iEventID)."',
+                        '".InputUtils::legacyFilterInput($aCountID[$c])."',
+                        '".InputUtils::legacyFilterInput($aCountName[$c])."',
+                        '".InputUtils::legacyFilterInput($aCount[$c])."',
+                        '".InputUtils::legacyFilterInput($sCountNotes)."') ON DUPLICATE KEY UPDATE evtcnt_countcount='$aCount[$c]', evtcnt_notes='$sCountNotes'";
                 RunQuery($sSQL);
             }
         } else {
             $sSQL = "UPDATE events_event
-                     SET `event_type` = '".InputUtils::LegacyFilterInput($iTypeID)."',
-                     `event_title` = '".InputUtils::LegacyFilterInput($sEventTitle)."',
-                     `event_desc` = '".InputUtils::LegacyFilterInput($sEventDesc)."',
-                     `event_text` = '".InputUtils::FilterHTML($sEventText)."',
-                     `event_start` = '".InputUtils::LegacyFilterInput($sEventStart)."',
-                     `event_end` = '".InputUtils::LegacyFilterInput($sEventEnd)."',
-                     `inactive` = '".InputUtils::LegacyFilterInput($iEventStatus)."'
-                      WHERE `event_id` = '".InputUtils::LegacyFilterInput($iEventID)."';";
+                     SET `event_type` = '".InputUtils::legacyFilterInput($iTypeID)."',
+                     `event_title` = '".InputUtils::legacyFilterInput($sEventTitle)."',
+                     `event_desc` = '".InputUtils::legacyFilterInput($sEventDesc)."',
+                     `event_text` = '".InputUtils::filterHTML($sEventText)."',
+                     `event_start` = '".InputUtils::legacyFilterInput($sEventStart)."',
+                     `event_end` = '".InputUtils::legacyFilterInput($sEventEnd)."',
+                     `inactive` = '".InputUtils::legacyFilterInput($iEventStatus)."'
+                      WHERE `event_id` = '".InputUtils::legacyFilterInput($iEventID)."';";
             echo $sSQL;
             RunQuery($sSQL);
             for ($c = 0; $c < $iNumCounts; $c++) {
@@ -384,11 +383,11 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
                 $sSQL = "INSERT eventcounts_evtcnt
                        (evtcnt_eventid, evtcnt_countid, evtcnt_countname, evtcnt_countcount, evtcnt_notes)
                        VALUES
-                       ('".InputUtils::LegacyFilterInput($iEventID)."',
-                        '".InputUtils::LegacyFilterInput($aCountID[$c])."',
-                        '".InputUtils::LegacyFilterInput($aCountName[$c])."',
-                        '".InputUtils::LegacyFilterInput($aCount[$c])."',
-                        '".InputUtils::LegacyFilterInput($sCountNotes)."') ON DUPLICATE KEY UPDATE evtcnt_countcount='$aCount[$c]', evtcnt_notes='$sCountNotes'";
+                       ('".InputUtils::legacyFilterInput($iEventID)."',
+                        '".InputUtils::legacyFilterInput($aCountID[$c])."',
+                        '".InputUtils::legacyFilterInput($aCountName[$c])."',
+                        '".InputUtils::legacyFilterInput($aCount[$c])."',
+                        '".InputUtils::legacyFilterInput($sCountNotes)."') ON DUPLICATE KEY UPDATE evtcnt_countcount='$aCount[$c]', evtcnt_notes='$sCountNotes'";
                 RunQuery($sSQL);
             }
         }

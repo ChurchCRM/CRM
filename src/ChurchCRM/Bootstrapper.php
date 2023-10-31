@@ -49,7 +49,7 @@ namespace ChurchCRM
             try {
                 SystemURLs::init($sRootPath, $URL, dirname(__DIR__));
             } catch (\Exception $e) {
-                Bootstrapper::system_failure($e->getMessage());
+                Bootstrapper::systemFailure($e->getMessage());
             }
             if ($debugBootstrapper) {
                 self::$bootStrapLogger = LoggerUtils::getAppLogger(Logger::DEBUG);
@@ -69,34 +69,34 @@ namespace ChurchCRM
             SystemConfig::init(ConfigQuery::create()->find());
             self::configureLogging();
             self::configureUserEnvironment();
-            self::ConfigureLocale();
+            self::configureLocale();
             if (!self::isDBCurrent()) {
                 if (!strpos($_SERVER['SCRIPT_NAME'], "SystemDBUpdate")) {
                     self::$bootStrapLogger->info("Database is not current, redirecting to SystemDBUpdate");
-                    RedirectUtils::Redirect('SystemDBUpdate.php');
+                    RedirectUtils::redirect('SystemDBUpdate.php');
                 } else {
                     self::$bootStrapLogger->debug("Database is not current, not redirecting to SystemDBUpdate since we're already on it");
                 }
             }
-            LoggerUtils::ResetAppLoggerLevel();
+            LoggerUtils::resetAppLoggerLevel();
         }
         /***
          * Gets a LocaleInfo object for the currently configured system sLanguage
          *
          * @return ChurchCRM\LocaleInfo
          */
-        public static function GetCurrentLocale()
+        public static function getCurrentLocale()
         {
             $userLocale = "";
             try {
-                $userLocale=  AuthenticationManager::GetCurrentUser()->getSetting("ui.locale");
+                $userLocale=  AuthenticationManager::getCurrentUser()->getSetting("ui.locale");
             } catch (\Exception $ex) {
                 //maybe user is logged in
             }
             return new LocaleInfo(SystemConfig::getValue('sLanguage'), $userLocale);
         }
 
-        private static function ConfigureLocale()
+        private static function configureLocale()
         {
             global $aLocaleInfo,$localeInfo;
             if (SystemConfig::getValue('sTimeZone')) {
@@ -104,7 +104,7 @@ namespace ChurchCRM
                 date_default_timezone_set(SystemConfig::getValue('sTimeZone'));
             }
 
-            $localeInfo = Bootstrapper::GetCurrentLocale();
+            $localeInfo = Bootstrapper::getCurrentLocale();
             self::$bootStrapLogger->debug("Setting locale to: " . $localeInfo->getLocale());
             setlocale(LC_ALL, $localeInfo->getLocale(), $localeInfo->getLocale().'.UTF-8', $localeInfo->getLocale().'.utf8');
 
@@ -144,14 +144,14 @@ namespace ChurchCRM
                 try {
                     $cnInfoCentral = mysqli_connect(self::$databaseServerName, self::$databaseUser, self::$databasePassword, null, self::$databasePort);
                 } catch (\Exception $e) {
-                    Bootstrapper::system_failure($e->getMessage());
+                    Bootstrapper::systemFailure($e->getMessage());
                 }
             }
             self::testMYSQLI();
             mysqli_set_charset($cnInfoCentral, 'utf8mb4');
             self::$bootStrapLogger->debug("Selecting database: " . self::$databaseName);
             mysqli_select_db($cnInfoCentral, self::$databaseName)
-            or Bootstrapper::system_failure('Could not connect to the MySQL database <strong>'.self::$databaseName.'</strong>. Please check the settings in <strong>Include/Config.php</strong>.<br/>MySQL Error: '.mysqli_error($cnInfoCentral));
+            or Bootstrapper::systemFailure('Could not connect to the MySQL database <strong>'.self::$databaseName.'</strong>. Please check the settings in <strong>Include/Config.php</strong>.<br/>MySQL Error: '.mysqli_error($cnInfoCentral));
             self::$bootStrapLogger->debug("Database selected: " . self::$databaseName);
         }
         private static function testMYSQLI()
@@ -174,7 +174,7 @@ namespace ChurchCRM
                 }
                 // Log the error to the application log, and show an error page to user.
                 LoggerUtils::getAppLogger()->error("ERROR connecting to database at '".self::$databaseServerName."' on port '".self::$databasePort."' as user '".self::$databaseUser."' -  MySQL Error: '".$sMYSQLERROR."'");
-                Bootstrapper::system_failure('Could not connect to MySQL on <strong>'.self::$databaseServerName.'</strong> on port <strong>'.self::$databasePort.'</strong> as <strong>'.self::$databaseUser.'</strong>. Please check the settings in <strong>Include/Config.php</strong>.<br/>MySQL Error: '.$sMYSQLERROR, 'Database Connection Failure');
+                Bootstrapper::systemFailure('Could not connect to MySQL on <strong>'.self::$databaseServerName.'</strong> on port <strong>'.self::$databasePort.'</strong> as <strong>'.self::$databaseUser.'</strong>. Please check the settings in <strong>Include/Config.php</strong>.<br/>MySQL Error: '.$sMYSQLERROR, 'Database Connection Failure');
             }
         }
         private static function initPropel()
@@ -249,7 +249,7 @@ namespace ChurchCRM
             self::$serviceContainer->setLogger('defaultLogger', $ormLogger);
         }
 
-        public static function GetDSN()
+        public static function getDSN()
         {
             return 'mysql:host=' . self::$databaseServerName . ';port='.self::$databasePort.';dbname=' . self::$databaseName;
         }
@@ -260,7 +260,7 @@ namespace ChurchCRM
                 self::$databasePort = 3306;
             }
             return [
-            'dsn' => Bootstrapper::GetDSN(),
+            'dsn' => Bootstrapper::getDSN(),
             'user' => self::$databaseUser,
             'password' => self::$databasePassword,
             'settings' => [
@@ -277,11 +277,11 @@ namespace ChurchCRM
         private static function configureUserEnvironment()  // TODO: This function needs to stop creating global variable-variables.
         {
             global $cnInfoCentral;
-            if (AuthenticationManager::ValidateUserSessionIsActive(false)) {      // set on POST to /session/begin
+            if (AuthenticationManager::validateUserSessionIsActive(false)) {      // set on POST to /session/begin
                 // Load user variables from user config table.
                 // **************************************************
                 $sSQL = 'SELECT ucfg_name, ucfg_value AS value '
-                ."FROM userconfig_ucfg WHERE ucfg_per_ID='".AuthenticationManager::GetCurrentUser()->getId()."'";
+                ."FROM userconfig_ucfg WHERE ucfg_per_ID='".AuthenticationManager::getCurrentUser()->getId()."'";
                 $rsConfig = mysqli_query($cnInfoCentral, $sSQL);     // Can't use RunQuery -- not defined yet
                 if ($rsConfig) {
                     while ([$ucfg_name, $value] = mysqli_fetch_row($rsConfig)) {
@@ -293,7 +293,7 @@ namespace ChurchCRM
                 }
             }
         }
-        private static function system_failure($message, $header = 'Setup failure')
+        private static function systemFailure($message, $header = 'Setup failure')
         {
             $sPageTitle = $header;
             if (!SystemConfig::isInitialized()) {

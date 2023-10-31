@@ -22,8 +22,8 @@ use ChurchCRM\Authentication\AuthenticationManager;
 $sPageTitle = gettext('Envelope Manager');
 
 // Security: User must have finance permission to use this form
-if (!AuthenticationManager::GetCurrentUser()->isFinanceEnabled()) {
-    RedirectUtils::Redirect('Menu.php');
+if (!AuthenticationManager::getCurrentUser()->isFinanceEnabled()) {
+    RedirectUtils::redirect('Menu.php');
     exit;
 }
 
@@ -95,7 +95,7 @@ $updateEnvelopes = 0;
 
 // Service the action buttons
 if (isset($_POST['PrintReport'])) {
-    RedirectUtils::Redirect('Reports/EnvelopeReport.php');
+    RedirectUtils::redirect('Reports/EnvelopeReport.php');
 } elseif (isset($_POST['AssignAllFamilies'])) {
     $newEnvNum = $iAssignStartNum;
     $envelopesToWrite = []; // zero it out

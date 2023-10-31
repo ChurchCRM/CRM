@@ -23,8 +23,8 @@ use ChurchCRM\Bootstrapper;
 use ChurchCRM\Authentication\AuthenticationManager;
 
 // Security
-if (!AuthenticationManager::GetCurrentUser()->isAdmin()) {
-    RedirectUtils::Redirect('Menu.php');
+if (!AuthenticationManager::getCurrentUser()->isAdmin()) {
+    RedirectUtils::redirect('Menu.php');
     exit;
 }
 
@@ -44,19 +44,19 @@ if (isset($_POST['save'])) {
         $id = key($type);
         // Filter Input
         if ($id == $iHTMLHeaderRow) {  // Special handling of header value so HTML doesn't get removed
-            $value = InputUtils::FilterHTML($new_value[$id]);
+            $value = InputUtils::filterHTML($new_value[$id]);
         } elseif ($current_type == 'text' || $current_type == 'textarea' || $current_type == 'password') {
-            $value = InputUtils::FilterString($new_value[$id]);
+            $value = InputUtils::filterString($new_value[$id]);
         } elseif ($current_type == 'number') {
-            $value = InputUtils::FilterFloat($new_value[$id]);
+            $value = InputUtils::filterFloat($new_value[$id]);
         } elseif ($current_type == 'date') {
-            $value = InputUtils::FilterDate($new_value[$id]);
+            $value = InputUtils::filterDate($new_value[$id]);
         } elseif ($current_type == 'json') {
             $value = $new_value[$id];
         } elseif ($current_type == 'choice') {
-            $value = InputUtils::FilterString($new_value[$id]);
+            $value = InputUtils::filterString($new_value[$id]);
         } elseif ($current_type == 'ajax') {
-            $value = InputUtils::FilterString($new_value[$id]);
+            $value = InputUtils::filterString($new_value[$id]);
         } elseif ($current_type == 'boolean') {
             if ($new_value[$id] != '1') {
                 $value = '';
@@ -66,8 +66,8 @@ if (isset($_POST['save'])) {
         }
 
         // If changing the locale, translate the menu options
-        if ($id == 39 && $value != Bootstrapper::GetCurrentLocale()->getLocale()) {
-            $localeInfo = new LocaleInfo($value, AuthenticationManager::GetCurrentUser()->getSetting("ui.locale"));
+        if ($id == 39 && $value != Bootstrapper::getCurrentLocale()->getLocale()) {
+            $localeInfo = new LocaleInfo($value, AuthenticationManager::getCurrentUser()->getSetting("ui.locale"));
             setlocale(LC_ALL, $localeInfo->getLocale(), $localeInfo->getLocale() . '.UTF-8', $localeInfo->getLocale() . '.utf8');
             $aLocaleInfo = $localeInfo->getLocaleInfo();
         }
@@ -79,7 +79,7 @@ if (isset($_POST['save'])) {
         SystemConfig::setValueById($id, $value);
         next($type);
     }
-    RedirectUtils::Redirect("SystemSettings.php?saved=true");
+    RedirectUtils::redirect("SystemSettings.php?saved=true");
 }
 
 if (isset($_GET['saved'])) {

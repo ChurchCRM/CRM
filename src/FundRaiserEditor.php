@@ -16,8 +16,8 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Authentication\AuthenticationManager;
 
-$linkBack = InputUtils::LegacyFilterInputArr($_GET, 'linkBack');
-$iFundRaiserID = InputUtils::LegacyFilterInputArr($_GET, 'FundRaiserID');
+$linkBack = InputUtils::legacyFilterInputArr($_GET, 'linkBack');
+$iFundRaiserID = InputUtils::legacyFilterInputArr($_GET, 'FundRaiserID');
 
 if ($iFundRaiserID > 0) {
     // Get the current fund raiser record
@@ -39,9 +39,9 @@ $sDateError = '';
 //Is this the second pass?
 if (isset($_POST['FundRaiserSubmit'])) {
     //Get all the variables from the request object and assign them locally
-    $dDate = InputUtils::LegacyFilterInputArr($_POST, 'Date');
-    $sTitle = InputUtils::LegacyFilterInputArr($_POST, 'Title');
-    $sDescription = InputUtils::LegacyFilterInputArr($_POST, 'Description');
+    $dDate = InputUtils::legacyFilterInputArr($_POST, 'Date');
+    $sTitle = InputUtils::legacyFilterInputArr($_POST, 'Title');
+    $sDescription = InputUtils::legacyFilterInputArr($_POST, 'Description');
 
     //Initialize the error flag
     $bErrorFlag = false;
@@ -60,11 +60,11 @@ if (isset($_POST['FundRaiserSubmit'])) {
         // New deposit slip
         if ($iFundRaiserID <= 0) {
             $sSQL = 'INSERT INTO fundraiser_fr (fr_date, fr_title, fr_description, fr_EnteredBy, fr_EnteredDate) VALUES ('.
-            "'".$dDate."','".$sTitle."','".$sDescription."',".AuthenticationManager::GetCurrentUser()->getId().",'".date('YmdHis')."')";
+            "'".$dDate."','".$sTitle."','".$sDescription."',".AuthenticationManager::getCurrentUser()->getId().",'".date('YmdHis')."')";
             $bGetKeyBack = true;
         // Existing record (update)
         } else {
-            $sSQL = "UPDATE fundraiser_fr SET fr_date = '".$dDate."', fr_title = '".$sTitle."', fr_description = '".$sDescription."', fr_EnteredBy = ".AuthenticationManager::GetCurrentUser()->getId().", fr_EnteredDate='".date('YmdHis')."' WHERE fr_ID = ".$iFundRaiserID.';';
+            $sSQL = "UPDATE fundraiser_fr SET fr_date = '".$dDate."', fr_title = '".$sTitle."', fr_description = '".$sDescription."', fr_EnteredBy = ".AuthenticationManager::getCurrentUser()->getId().", fr_EnteredDate='".date('YmdHis')."' WHERE fr_ID = ".$iFundRaiserID.';';
             $bGetKeyBack = false;
         }
         //Execute the SQL
@@ -80,10 +80,10 @@ if (isset($_POST['FundRaiserSubmit'])) {
 
         if (isset($_POST['FundRaiserSubmit'])) {
             if ($linkBack != '') {
-                RedirectUtils::Redirect($linkBack);
+                RedirectUtils::redirect($linkBack);
             } else {
                 //Send to the view of this FundRaiser
-                RedirectUtils::Redirect('FundRaiserEditor.php?linkBack='.$linkBack.'&FundRaiserID='.$iFundRaiserID);
+                RedirectUtils::redirect('FundRaiserEditor.php?linkBack='.$linkBack.'&FundRaiserID='.$iFundRaiserID);
             }
         }
     }

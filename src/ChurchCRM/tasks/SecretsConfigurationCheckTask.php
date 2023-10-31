@@ -9,7 +9,7 @@ class SecretsConfigurationCheckTask implements iTask
 {
     public function isActive(): bool
     {
-        return ! KeyManager::GetAreAllSecretsDefined();
+        return ! KeyManager::getAreAllSecretsDefined();
     }
 
     public function isAdmin(): bool

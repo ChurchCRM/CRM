@@ -5,10 +5,10 @@ namespace ChurchCRM\Authentication\AuthenticationProviders {
 
     interface IAuthenticationProvider
     {
-        public function Authenticate(AuthenticationRequest $AuthenticationRequest);
-        public function ValidateUserSessionIsActive(bool $updateLastOperationTimestamp);
-        public function GetCurrentUser();
-        public function EndSession();
-        public function GetPasswordChangeURL();
+        public function authenticate(AuthenticationRequest $AuthenticationRequest);
+        public function validateUserSessionIsActive(bool $updateLastOperationTimestamp);
+        public function getCurrentUser();
+        public function endSession();
+        public function getPasswordChangeURL();
     }
 }

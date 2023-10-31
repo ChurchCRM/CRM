@@ -2,7 +2,7 @@
 
 /*******************************************************************************
 *
-*  filename    : ChurchCRM/Reports/PDF_Attendance.php
+*  filename    : ChurchCRM/Reports/PdfAttendance.php
 *  last change : 2017-10-23
 *  description : Creates a PDF for a Sunday School Class Attendance List
 *  Udpdated    : 2017-10-26
@@ -11,7 +11,7 @@
 
 namespace ChurchCRM\Reports;
 
-class PDF_Attendance extends ChurchInfoReport
+class PdfAttendance extends ChurchInfoReport
 {
     /////////////////////////////////////////////////////////////////////////////
 //
@@ -33,10 +33,10 @@ class PDF_Attendance extends ChurchInfoReport
 
         $this->SetFont('Times', '', 14);
         $this->SetAutoPageBreak(false);
-        $this->AddPage();
+        $this->addPage();
     }
 
-    public function DrawAttendanceCalendar(
+    public function drawAttendanceCalendar(
         $nameX,
         $yTop,
         $aNames,
@@ -130,10 +130,10 @@ class PDF_Attendance extends ChurchInfoReport
             //  Paint the title section- class name and year on the top, then teachers/liaison
             //
             if ($p > 0) {
-                $this->AddPage();
+                $this->addPage();
             }
             $this->SetFont('Times', 'B', $fontTitleTitle);
-            $this->WriteAt($nameX, $yTitle, $rptHeader);
+            $this->writeAt($nameX, $yTitle, $rptHeader);
 
             $this->SetLineWidth(0.5);
             //$this->Line($nameX-5, $yTeachers - 0.45, 195, $yTeachers - 0.45); // unusefull
@@ -144,7 +144,7 @@ class PDF_Attendance extends ChurchInfoReport
     //  put title on the page
     //
             $this->SetFont('Times', 'B', $fontTitleNormal);
-            $this->WriteAt($nameX, $yDays + 1, $tTitle);
+            $this->writeAt($nameX, $yDays + 1, $tTitle);
             $this->SetFont('Times', '', $fontTitleNormal);
 
     //
@@ -159,7 +159,7 @@ class PDF_Attendance extends ChurchInfoReport
 
             $this->SetLineWidth(0.25);
             for ($row = $pRowStart; $row < $pRowEnd; $row++) {
-                $this->WriteAt($nameX, $y + (($with_img==true)?3:1), $NameList[$row]);
+                $this->writeAt($nameX, $y + (($with_img==true)?3:1), $NameList[$row]);
 
                 if ($with_img == true) {
                     //$this->SetLineWidth(0.5);
@@ -190,7 +190,7 @@ class PDF_Attendance extends ChurchInfoReport
     // write a totals text at the bottom
     //
             $this->SetFont('Times', 'B', $fontTitleNormal);
-            $this->WriteAt($nameX, $y + 1, gettext('Totals'));
+            $this->writeAt($nameX, $y + 1, gettext('Totals'));
             $this->SetFont('Times', '', $fontTitleNormal);
 
             $bottomY = $y + $yIncrement;
@@ -244,7 +244,7 @@ class PDF_Attendance extends ChurchInfoReport
                 }
 
                 if (date('n', $dWhichSunday) != $whichMonth) { // Finish the previous month
-                    $this->WriteAt($monthX, $yMonths + 1, mb_substr(gettext(date('F', $dWhichMonthDate)), 0, 3));
+                    $this->writeAt($monthX, $yMonths + 1, mb_substr(gettext(date('F', $dWhichMonthDate)), 0, 3));
                     $aHeavyVerticalX[$heavyVerticalXCnt++] = $monthX;
                     $whichMonth = date('n', $dWhichSunday);
                     $dWhichMonthDate = $dWhichSunday;
@@ -273,7 +273,7 @@ class PDF_Attendance extends ChurchInfoReport
                 $tWhichSunday = date('Y-m-d', $dWhichSunday);
             }
             $aHeavyVerticalX[$heavyVerticalXCnt++] = $monthX;
-            $this->WriteAt($monthX, $yMonths + 1, substr(gettext(date('F', $dWhichMonthDate)), 0, 3));
+            $this->writeAt($monthX, $yMonths + 1, substr(gettext(date('F', $dWhichMonthDate)), 0, 3));
 
             $rightEdgeX = $dayX;
 
@@ -311,7 +311,7 @@ class PDF_Attendance extends ChurchInfoReport
             }
 
             for ($i = 0; $i < $dayCounter; $i++) {
-                $this->WriteAt($dayListX[$i], $yDays + 1, $dayListNum[$i]);
+                $this->writeAt($dayListX[$i], $yDays + 1, $dayListNum[$i]);
             }
 
             // Draw heavy lines to delimit the Months and totals
@@ -331,7 +331,7 @@ class PDF_Attendance extends ChurchInfoReport
                 $y += $yIncrement;
             }
 
-            //$this->AddPage();
+            //$this->addPage();
         }
 
         return $bottomY;

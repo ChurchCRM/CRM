@@ -21,8 +21,8 @@ use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Authentication\AuthenticationManager;
 
 // Security: user must be administrator to use this page
-if (!AuthenticationManager::GetCurrentUser()->isAdmin()) {
-    RedirectUtils::Redirect('Menu.php');
+if (!AuthenticationManager::getCurrentUser()->isAdmin()) {
+    RedirectUtils::redirect('Menu.php');
     exit;
 }
 
@@ -32,7 +32,7 @@ if (isset($_GET['Action'])) {
     $sAction = '';
 }
 if (isset($_GET['Fund'])) {
-    $sFund = InputUtils::LegacyFilterInput($_GET['Fund'], 'int');
+    $sFund = InputUtils::legacyFilterInput($_GET['Fund'], 'int');
 } else {
     $sFund = '';
 }
@@ -68,8 +68,8 @@ $donationFunds = DonationFundQuery::create()
 if (isset($_POST['SaveChanges'])) {
     for ($iFieldID = 0; $iFieldID < $donationFunds->count(); $iFieldID++) {
         $donation = $donationFunds[$iFieldID];
-        $donation->setName(InputUtils::FilterString($_POST[$iFieldID.'name']));
-        $donation->setDescription(InputUtils::LegacyFilterInput($_POST[$iFieldID.'desc']));
+        $donation->setName(InputUtils::filterString($_POST[$iFieldID.'name']));
+        $donation->setDescription(InputUtils::legacyFilterInput($_POST[$iFieldID.'desc']));
         $donation->setActive($_POST[$iFieldID.'active'] == 1);
         if (strlen($donation->getName()) == 0) {
             $aNameErrors[$iFieldID] = true;
@@ -89,8 +89,8 @@ if (isset($_POST['SaveChanges'])) {
             $bNewNameError = true;
         } else {
             $donation = new DonationFund();
-            $donation->setName(InputUtils::LegacyFilterInput($_POST['newFieldName']));
-            $donation->setDescription(InputUtils::LegacyFilterInput($_POST['newFieldDesc']));
+            $donation->setName(InputUtils::legacyFilterInput($_POST['newFieldName']));
+            $donation->setDescription(InputUtils::legacyFilterInput($_POST['newFieldDesc']));
             $donation->save();
             $donationFunds = DonationFundQuery::create()
             ->orderByName()

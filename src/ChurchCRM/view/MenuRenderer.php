@@ -7,7 +7,7 @@ use ChurchCRM\Config\Menu\MenuItem;
 
 class MenuRenderer
 {
-    public static function RenderMenu()
+    public static function renderMenu()
     {
         Menu::init();
         foreach (Menu::getMenu() as $menuItem) {

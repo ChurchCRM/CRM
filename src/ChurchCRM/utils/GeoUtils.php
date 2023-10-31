@@ -19,7 +19,7 @@ class GeoUtils
     {
 
         $logger = LoggerUtils::getAppLogger();
-        $localeInfo = Bootstrapper::GetCurrentLocale();
+        $localeInfo = Bootstrapper::getCurrentLocale();
 
         $provider = null;
         $adapter = new Client();
@@ -55,10 +55,10 @@ class GeoUtils
         ];
     }
 
-    public static function DrivingDistanceMatrix($address1, $address2)
+    public static function drivingDistanceMatrix($address1, $address2)
     {
         $logger = LoggerUtils::getAppLogger();
-        $localeInfo = Bootstrapper::GetCurrentLocale();
+        $localeInfo = Bootstrapper::getCurrentLocale();
         $url = "https://maps.googleapis.com/maps/api/distancematrix/json?";
         $url = $url . "language=" . $localeInfo->getShortLocale();
         $url = $url . "&origins=" . urlencode($address1);
@@ -76,7 +76,7 @@ class GeoUtils
     // Function takes latitude and longitude
     // of two places as input and returns the
     // distance in miles.
-    public static function LatLonDistance($lat1, $lon1, $lat2, $lon2)
+    public static function latLonDistance($lat1, $lon1, $lat2, $lon2)
     {
 
         // Formula for calculating radians between
@@ -118,7 +118,7 @@ class GeoUtils
         return $distance_f;
     }
 
-    public static function LatLonBearing($lat1, $lon1, $lat2, $lon2)
+    public static function latLonBearing($lat1, $lon1, $lat2, $lon2)
     {
         // Formula for determining the bearing from ($lat1,$lon1) to ($lat2,$lon2)
 

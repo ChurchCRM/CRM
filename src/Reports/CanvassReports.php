@@ -12,13 +12,13 @@ require '../Include/Config.php';
 require '../Include/Functions.php';
 
 use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\Reports\PDF_CanvassBriefingReport;
+use ChurchCRM\Reports\PdfCanvassBriefingReport;
 use ChurchCRM\Utils\InputUtils;
 use \ChurchCRM\Utils\MiscUtils;
 
 //Get the Fiscal Year ID out of the querystring
-$iFYID = InputUtils::LegacyFilterInput($_GET['FYID'], 'int');
-$sWhichReport = InputUtils::LegacyFilterInput($_GET['WhichReport']);
+$iFYID = InputUtils::legacyFilterInput($_GET['FYID'], 'int');
+$sWhichReport = InputUtils::legacyFilterInput($_GET['WhichReport']);
 
 function TopPledgersLevel($iFYID, $iPercent)
 {
@@ -38,24 +38,24 @@ require '../Include/CanvassUtilities.php';
 function CanvassProgressReport($iFYID)
 {
     // Instantiate the directory class and build the report.
-    $pdf = new PDF_CanvassBriefingReport();
+    $pdf = new PdfCanvassBriefingReport();
 
     $curY = 10;
 
     $pdf->SetFont('Times', '', 24);
-    $pdf->WriteAt(SystemConfig::getValue('leftX'), $curY, gettext('Canvass Progress Report').' '.date(SystemConfig::getValue("sDateFormatLong")));
+    $pdf->writeAt(SystemConfig::getValue('leftX'), $curY, gettext('Canvass Progress Report').' '.date(SystemConfig::getValue("sDateFormatLong")));
     $pdf->SetFont('Times', '', 14);
 
     $curY += 10;
 
     $pdf->SetFont('Times', '', 12);
-    $pdf->WriteAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sChurchName'));
+    $pdf->writeAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sChurchName'));
     $curY += SystemConfig::getValue('incrementY');
-    $pdf->WriteAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sChurchAddress'));
+    $pdf->writeAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sChurchAddress'));
     $curY += SystemConfig::getValue('incrementY');
-    $pdf->WriteAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sChurchCity').', '.SystemConfig::getValue('sChurchState').'  '.SystemConfig::getValue('sChurchZip'));
+    $pdf->writeAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sChurchCity').', '.SystemConfig::getValue('sChurchState').'  '.SystemConfig::getValue('sChurchZip'));
     $curY += SystemConfig::getValue('incrementY');
-    $pdf->WriteAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sChurchPhone').'  '.SystemConfig::getValue('sChurchEmail'));
+    $pdf->writeAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sChurchPhone').'  '.SystemConfig::getValue('sChurchEmail'));
     $curY += 10;
     $pdf->SetFont('Times', '', 14);
 
@@ -65,10 +65,10 @@ function CanvassProgressReport($iFYID)
     $percentX = 110;
 
     $pdf->SetFont('Times', 'B', 14);
-    $pdf->WriteAt($nameX, $curY, gettext('Name'));
-    $pdf->WriteAt($doneX, $curY, gettext('Done'));
-    $pdf->WriteAt($toDoX, $curY, gettext('Assigned'));
-    $pdf->WriteAt($percentX, $curY, gettext('Percent'));
+    $pdf->writeAt($nameX, $curY, gettext('Name'));
+    $pdf->writeAt($doneX, $curY, gettext('Done'));
+    $pdf->writeAt($toDoX, $curY, gettext('Assigned'));
+    $pdf->writeAt($percentX, $curY, gettext('Percent'));
     $pdf->SetFont('Times', '', 14);
 
     $curY += 6;
@@ -107,15 +107,15 @@ function CanvassProgressReport($iFYID)
             $totalDone += $thisCanvasserDone;
 
             // Write the status output line for this canvasser
-            $pdf->WriteAt($nameX, $curY, $aCanvasser['per_FirstName'].' '.$aCanvasser['per_LastName']);
-            $pdf->WriteAt($doneX, $curY, $thisCanvasserDone);
-            $pdf->WriteAt($toDoX, $curY, $thisCanvasserToDo);
+            $pdf->writeAt($nameX, $curY, $aCanvasser['per_FirstName'].' '.$aCanvasser['per_LastName']);
+            $pdf->writeAt($doneX, $curY, $thisCanvasserDone);
+            $pdf->writeAt($toDoX, $curY, $thisCanvasserToDo);
             if ($thisCanvasserToDo > 0) {
                 $percentStr = sprintf('%.0f%%', ($thisCanvasserDone / $thisCanvasserToDo) * 100);
             } else {
                 $percentStr = 'N/A';
             }
-            $pdf->WriteAt($percentX, $curY, $percentStr);
+            $pdf->writeAt($percentX, $curY, $percentStr);
             $curY += 6;
         }
     }
@@ -123,11 +123,11 @@ function CanvassProgressReport($iFYID)
     // Summary status
     $pdf->SetFont('Times', 'B', 14);
 
-    $pdf->WriteAt($nameX, $curY, gettext('Total'));
-    $pdf->WriteAt($doneX, $curY, $totalDone);
-    $pdf->WriteAt($toDoX, $curY, $totalToDo);
+    $pdf->writeAt($nameX, $curY, gettext('Total'));
+    $pdf->writeAt($doneX, $curY, $totalDone);
+    $pdf->writeAt($toDoX, $curY, $totalToDo);
     $percentStr = sprintf('%.0f%%', ($totalDone / $totalToDo) * 100);
-    $pdf->WriteAt($percentX, $curY, $percentStr);
+    $pdf->writeAt($percentX, $curY, $percentStr);
 
     $pdf->Output('CanvassProgress'.date(SystemConfig::getValue("sDateFormatLong")).'.pdf', 'D');
 }
@@ -135,7 +135,7 @@ function CanvassProgressReport($iFYID)
 function CanvassBriefingSheets($iFYID)
 {
     // Instantiate the directory class and build the report.
-    $pdf = new PDF_CanvassBriefingReport();
+    $pdf = new PdfCanvassBriefingReport();
 
     $aQuestions = file('CanvassQuestions.txt');
     $iNumQuestions = count($aQuestions);
@@ -163,32 +163,32 @@ function CanvassBriefingSheets($iFYID)
 
         $pdf->SetFont('Times', '', 24);
 
-        $pdf->WriteAt(SystemConfig::getValue('leftX'), $curY, $aFamily['fam_Name']);
+        $pdf->writeAt(SystemConfig::getValue('leftX'), $curY, $aFamily['fam_Name']);
 
         $pdf->SetFont('Times', '', 16);
-        $pdf->PrintRightJustified($canvasserX, $curY, gettext('Canvasser').': '.$aFamily['CanvasserFirstName'].' '.$aFamily['CanvasserLastName']);
+        $pdf->printRightJustified($canvasserX, $curY, gettext('Canvasser').': '.$aFamily['CanvasserFirstName'].' '.$aFamily['CanvasserLastName']);
 
         $curY += 8;
 
         $pdf->SetFont('Times', '', 14);
 
-        $pdf->WriteAt(SystemConfig::getValue('leftX'), $curY, $pdf->MakeSalutation($aFamily['fam_ID']));
+        $pdf->writeAt(SystemConfig::getValue('leftX'), $curY, $pdf->makeSalutation($aFamily['fam_ID']));
         $curY += 5;
         if ($aFamily['fam_Address1'] != '') {
-            $pdf->WriteAt(SystemConfig::getValue('leftX'), $curY, $aFamily['fam_Address1']);
+            $pdf->writeAt(SystemConfig::getValue('leftX'), $curY, $aFamily['fam_Address1']);
             $curY += 5;
         }
         if ($aFamily['fam_Address2'] != '') {
-            $pdf->WriteAt(SystemConfig::getValue('leftX'), $curY, $aFamily['fam_Address2']);
+            $pdf->writeAt(SystemConfig::getValue('leftX'), $curY, $aFamily['fam_Address2']);
             $curY += 5;
         }
-        $pdf->WriteAt(SystemConfig::getValue('leftX'), $curY, $aFamily['fam_City'].', '.$aFamily['fam_State'].'  '.$aFamily['fam_Zip']);
+        $pdf->writeAt(SystemConfig::getValue('leftX'), $curY, $aFamily['fam_City'].', '.$aFamily['fam_State'].'  '.$aFamily['fam_Zip']);
         $curY += 5;
         if ($aFamily['fam_Country'] != '' && $aFamily['fam_Country'] != 'United States' && $aFamily['fam_Country'] != 'USA') {
-            $pdf->WriteAt(SystemConfig::getValue('leftX'), $curY, $aFamily['fam_Country']);
+            $pdf->writeAt(SystemConfig::getValue('leftX'), $curY, $aFamily['fam_Country']);
             $curY += 5;
         }
-        $pdf->WriteAt(SystemConfig::getValue('leftX'), $curY, $pdf->StripPhone($aFamily['fam_HomePhone']));
+        $pdf->writeAt(SystemConfig::getValue('leftX'), $curY, $pdf->stripPhone($aFamily['fam_HomePhone']));
         $curY += 5;
 
         // Get pledges for this fiscal year, this family
@@ -213,9 +213,9 @@ function CanvassBriefingSheets($iFYID)
         $curY += SystemConfig::getValue('incrementY');
 
         $pdf->SetFont('Times', '', 12);
-        $pdf->WriteAt(SystemConfig::getValue('leftX'), $curY, gettext('Pledge status').': ');
+        $pdf->writeAt(SystemConfig::getValue('leftX'), $curY, gettext('Pledge status').': ');
         $pdf->SetFont('Times', 'B', 12);
-        $pdf->WriteAt(SystemConfig::getValue('leftX') + 25, $curY, $sPledgeStatus);
+        $pdf->writeAt(SystemConfig::getValue('leftX') + 25, $curY, $sPledgeStatus);
         $pdf->SetFont('Times', '', 12);
 
         $curY += 2 * SystemConfig::getValue('incrementY');
@@ -233,13 +233,13 @@ function CanvassBriefingSheets($iFYID)
 
         $pdf->SetFont('Times', 'B', 10);
 
-        $pdf->WriteAt($memberNameX, $curY, gettext('Name'));
-        $pdf->WriteAt($memberGenderX, $curY, gettext('M/F'));
-        $pdf->WriteAt($memberRoleX, $curY, gettext('Role'));
-        $pdf->WriteAt($memberAgeX, $curY, gettext('Age'));
-        $pdf->WriteAt($memberClassX, $curY, gettext('Member'));
-        $pdf->WriteAt($memberCellX, $curY, gettext('Cell Phone'));
-        $pdf->WriteAt($memberEmailX, $curY, gettext('Email'));
+        $pdf->writeAt($memberNameX, $curY, gettext('Name'));
+        $pdf->writeAt($memberGenderX, $curY, gettext('M/F'));
+        $pdf->writeAt($memberRoleX, $curY, gettext('Role'));
+        $pdf->writeAt($memberAgeX, $curY, gettext('Age'));
+        $pdf->writeAt($memberClassX, $curY, gettext('Member'));
+        $pdf->writeAt($memberCellX, $curY, gettext('Cell Phone'));
+        $pdf->writeAt($memberEmailX, $curY, gettext('Email'));
         $curY += SystemConfig::getValue('incrementY');
 
         $pdf->SetFont('Times', '', 10);
@@ -250,14 +250,14 @@ function CanvassBriefingSheets($iFYID)
             } else {
                 $sGender = 'F';
             }
-            $sAge = MiscUtils::FormatAge($aFamilyMember['per_BirthMonth'], $aFamilyMember['per_BirthDay'], $aFamilyMember['per_BirthYear'], $aFamilyMember['per_Flags']);
-            $pdf->WriteAt($memberNameX, $curY, $aFamilyMember['per_FirstName'].' '.$aFamilyMember['per_LastName']);
-            $pdf->WriteAt($memberGenderX, $curY, $sGender);
-            $pdf->WriteAt($memberRoleX, $curY, $aFamilyMember['sFamRole']);
-            $pdf->WriteAt($memberAgeX, $curY, $sAge);
-            $pdf->WriteAt($memberClassX, $curY, $aFamilyMember['sClassName']);
-            $pdf->WriteAt($memberCellX, $curY, $pdf->StripPhone($aFamilyMember['per_CellPhone']));
-            $pdf->WriteAt($memberEmailX, $curY, $aFamilyMember['per_Email']);
+            $sAge = MiscUtils::formatAge($aFamilyMember['per_BirthMonth'], $aFamilyMember['per_BirthDay'], $aFamilyMember['per_BirthYear'], $aFamilyMember['per_Flags']);
+            $pdf->writeAt($memberNameX, $curY, $aFamilyMember['per_FirstName'].' '.$aFamilyMember['per_LastName']);
+            $pdf->writeAt($memberGenderX, $curY, $sGender);
+            $pdf->writeAt($memberRoleX, $curY, $aFamilyMember['sFamRole']);
+            $pdf->writeAt($memberAgeX, $curY, $sAge);
+            $pdf->writeAt($memberClassX, $curY, $aFamilyMember['sClassName']);
+            $pdf->writeAt($memberCellX, $curY, $pdf->stripPhone($aFamilyMember['per_CellPhone']));
+            $pdf->writeAt($memberEmailX, $curY, $aFamilyMember['per_Email']);
             $curY += SystemConfig::getValue('incrementY');
         }
 
@@ -285,11 +285,11 @@ function CanvassBriefingSheets($iFYID)
 
                         if (++$countGroups >= 2) {
                             $countGroups = 0;
-                            $pdf->WriteAt(SystemConfig::getValue('leftX'), $curY, $groupStr);
+                            $pdf->writeAt(SystemConfig::getValue('leftX'), $curY, $groupStr);
                             $groupStr = '        ';
                         }
                     }
-                    $pdf->WriteAt(SystemConfig::getValue('leftX'), $curY, $groupStr);
+                    $pdf->writeAt(SystemConfig::getValue('leftX'), $curY, $groupStr);
                 }
             }
         }
@@ -297,11 +297,11 @@ function CanvassBriefingSheets($iFYID)
         $spaceLeft = 275 - $curY;
         $spacePerQuestion = $spaceLeft / $iNumQuestions;
         for ($i = 0; $i < $iNumQuestions; $i++) {
-            $pdf->WriteAt(SystemConfig::getValue('leftX'), $curY, ($i + 1).'. '.$aQuestions[$i]);
+            $pdf->writeAt(SystemConfig::getValue('leftX'), $curY, ($i + 1).'. '.$aQuestions[$i]);
             $curY += $spacePerQuestion;
         }
 
-        $pdf->AddPage();
+        $pdf->addPage();
     }
 
     $pdf->Output('CanvassBriefing'.date(SystemConfig::getValue("sDateFormatLong")).'.pdf', 'D');
@@ -310,7 +310,7 @@ function CanvassBriefingSheets($iFYID)
 function CanvassSummaryReport($iFYID)
 {
     // Instantiate the directory class and build the report.
-    $pdf = new PDF_CanvassBriefingReport();
+    $pdf = new PdfCanvassBriefingReport();
 
     $pdf->SetMargins(20, 20);
 
@@ -318,20 +318,20 @@ function CanvassSummaryReport($iFYID)
 
     $pdf->SetFont('Times', '', 24);
 
-    $pdf->WriteAt(SystemConfig::getValue('leftX'), $curY, gettext('Canvass Summary Report').' '.date(SystemConfig::getValue("sDateFormatLong")));
+    $pdf->writeAt(SystemConfig::getValue('leftX'), $curY, gettext('Canvass Summary Report').' '.date(SystemConfig::getValue("sDateFormatLong")));
 
     $pdf->SetFont('Times', '', 14);
 
     $curY += 10;
 
     $pdf->SetFont('Times', '', 12);
-    $pdf->WriteAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sChurchName'));
+    $pdf->writeAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sChurchName'));
     $curY += SystemConfig::getValue('incrementY');
-    $pdf->WriteAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sChurchAddress'));
+    $pdf->writeAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sChurchAddress'));
     $curY += SystemConfig::getValue('incrementY');
-    $pdf->WriteAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sChurchCity').', '.SystemConfig::getValue('sChurchState').'  '.SystemConfig::getValue('sChurchZip'));
+    $pdf->writeAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sChurchCity').', '.SystemConfig::getValue('sChurchState').'  '.SystemConfig::getValue('sChurchZip'));
     $curY += SystemConfig::getValue('incrementY');
-    $pdf->WriteAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sChurchPhone').'  '.SystemConfig::getValue('sChurchEmail'));
+    $pdf->writeAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sChurchPhone').'  '.SystemConfig::getValue('sChurchEmail'));
     $curY += 10;
     $pdf->SetFont('Times', '', 14);
 
@@ -365,26 +365,26 @@ function CanvassSummaryReport($iFYID)
 function CanvassNotInterestedReport($iFYID)
 {
     // Instantiate the directory class and build the report.
-    $pdf = new PDF_CanvassBriefingReport();
+    $pdf = new PdfCanvassBriefingReport();
 
     $pdf->SetMargins(20, 20);
 
     $curY = 10;
 
     $pdf->SetFont('Times', '', 24);
-    $pdf->WriteAt(SystemConfig::getValue('leftX'), $curY, gettext('Canvass Not Interested Report').' '.date(SystemConfig::getValue("sDateFormatLong")));
+    $pdf->writeAt(SystemConfig::getValue('leftX'), $curY, gettext('Canvass Not Interested Report').' '.date(SystemConfig::getValue("sDateFormatLong")));
     $pdf->SetFont('Times', '', 14);
 
     $curY += 10;
 
     $pdf->SetFont('Times', '', 12);
-    $pdf->WriteAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sChurchName'));
+    $pdf->writeAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sChurchName'));
     $curY += SystemConfig::getValue('incrementY');
-    $pdf->WriteAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sChurchAddress'));
+    $pdf->writeAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sChurchAddress'));
     $curY += SystemConfig::getValue('incrementY');
-    $pdf->WriteAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sChurchCity').', '.SystemConfig::getValue('sChurchState').'  '.SystemConfig::getValue('sChurchZip'));
+    $pdf->writeAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sChurchCity').', '.SystemConfig::getValue('sChurchState').'  '.SystemConfig::getValue('sChurchZip'));
     $curY += SystemConfig::getValue('incrementY');
-    $pdf->WriteAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sChurchPhone').'  '.SystemConfig::getValue('sChurchEmail'));
+    $pdf->writeAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sChurchPhone').'  '.SystemConfig::getValue('sChurchEmail'));
     $curY += 10;
     $pdf->SetFont('Times', '', 14);
 

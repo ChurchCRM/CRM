@@ -10,7 +10,7 @@ class EmailTask implements iTask
 {
     public function isActive(): bool
     {
-        return AuthenticationManager::GetCurrentUser()->isAdmin() && empty(SystemConfig::hasValidMailServerSettings());
+        return AuthenticationManager::getCurrentUser()->isAdmin() && empty(SystemConfig::hasValidMailServerSettings());
     }
 
     public function isAdmin(): bool

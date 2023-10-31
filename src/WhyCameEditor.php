@@ -20,9 +20,9 @@ require 'Include/Functions.php';
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
-$linkBack = InputUtils::LegacyFilterInput($_GET['linkBack']);
-$iPerson = InputUtils::LegacyFilterInput($_GET['PersonID']);
-$iWhyCameID = InputUtils::LegacyFilterInput($_GET['WhyCameID']);
+$linkBack = InputUtils::legacyFilterInput($_GET['linkBack']);
+$iPerson = InputUtils::legacyFilterInput($_GET['PersonID']);
+$iWhyCameID = InputUtils::legacyFilterInput($_GET['WhyCameID']);
 
 //Get name
 $sSQL = 'SELECT per_FirstName, per_LastName FROM person_per where per_ID = '.$iPerson;
@@ -33,10 +33,10 @@ $sPageTitle = gettext('"Why Came" notes for ').$per_FirstName.' '.$per_LastName;
 
 //Is this the second pass?
 if (isset($_POST['Submit'])) {
-    $tJoin = InputUtils::LegacyFilterInput($_POST['Join']);
-    $tCome = InputUtils::LegacyFilterInput($_POST['Come']);
-    $tSuggest = InputUtils::LegacyFilterInput($_POST['Suggest']);
-    $tHearOfUs = InputUtils::LegacyFilterInput($_POST['HearOfUs']);
+    $tJoin = InputUtils::legacyFilterInput($_POST['Join']);
+    $tCome = InputUtils::legacyFilterInput($_POST['Come']);
+    $tSuggest = InputUtils::legacyFilterInput($_POST['Suggest']);
+    $tHearOfUs = InputUtils::legacyFilterInput($_POST['HearOfUs']);
 
     // New input (add)
     if (strlen($iWhyCameID) < 1) {
@@ -54,10 +54,10 @@ if (isset($_POST['Submit'])) {
     if (isset($_POST['Submit'])) {
         // Check for redirection to another page after saving information: (ie. PledgeEditor.php?previousPage=prev.php?a=1;b=2;c=3)
         if ($linkBack != '') {
-            RedirectUtils::Redirect($linkBack);
+            RedirectUtils::redirect($linkBack);
         } else {
             //Send to the view of this pledge
-            RedirectUtils::Redirect('WhyCameEditor.php?PersonID='.$iPerson.'&WhyCameID='.$iWhyCameID.'&linkBack=', $linkBack);
+            RedirectUtils::redirect('WhyCameEditor.php?PersonID='.$iPerson.'&WhyCameID='.$iWhyCameID.'&linkBack=', $linkBack);
         }
     }
 } else {

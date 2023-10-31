@@ -60,7 +60,7 @@ $sSQL = "SELECT per_Email, fam_Email, lst_OptionName as virt_RoleName FROM perso
 
 $rsEmailList = RunQuery($sSQL);
 $sEmailLink = '';
-$sMailtoDelimiter = AuthenticationManager::GetCurrentUser()->getUserConfigString("sMailtoDelimiter");
+$sMailtoDelimiter = AuthenticationManager::getCurrentUser()->getUserConfigString("sMailtoDelimiter");
 $roleEmails = [];
 while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailList)) {
     $sEmail = SelectWhichInfo($per_Email, $fam_Email, false);
@@ -106,7 +106,7 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
                 $sEmailLink .= $sMailtoDelimiter.SystemConfig::getValue('sToEmailAddress');
             }
             $sEmailLink = urlencode($sEmailLink);  // Mailto should comply with RFC 2368
-            if (AuthenticationManager::GetCurrentUser()->isEmailEnabled()) { // Does user have permission to email groups
+            if (AuthenticationManager::getCurrentUser()->isEmailEnabled()) { // Does user have permission to email groups
         // Display link
                 ?>
         <div class="btn-group">
@@ -246,7 +246,7 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
         <br>
         <?php echo gettext('Report on group and roles selected (it may be a multi-page PDF).'); ?>
         </p>
-        <?php if (AuthenticationManager::GetCurrentUser()->isCreateDirectoryEnabled()) {
+        <?php if (AuthenticationManager::getCurrentUser()->isCreateDirectoryEnabled()) {
             ?>
           <p><a class="MediumText"
                 href="DirectoryReports.php"><?= gettext('People Directory') ?></a><br><?= gettext('Printable directory of all people, grouped by family where assigned') ?>

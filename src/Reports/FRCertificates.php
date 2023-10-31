@@ -11,7 +11,7 @@ require '../Include/Config.php';
 require '../Include/Functions.php';
 
 use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\Reports\PDF_CertificatesReport;
+use ChurchCRM\Reports\PdfCertificatesReport;
 
 $iCurrentFundraiser = $_GET['CurrentFundraiser'];
 $curY = 0;
@@ -26,14 +26,14 @@ extract($thisFR);
 $sSQL = 'SELECT * FROM donateditem_di LEFT JOIN person_per on per_ID=di_donor_ID WHERE di_FR_ID='.$iCurrentFundraiser.' ORDER BY di_item';
 $rsItems = RunQuery($sSQL);
 
-$pdf = new PDF_CertificatesReport();
+$pdf = new PdfCertificatesReport();
 $pdf->SetTitle($fr_title);
 
 // Loop through items
 while ($oneItem = mysqli_fetch_array($rsItems)) {
     extract($oneItem);
 
-    $pdf->AddPage();
+    $pdf->addPage();
 
     $pdf->SetFont('Times', 'B', 24);
     $pdf->Write(8, $di_item.":\t");

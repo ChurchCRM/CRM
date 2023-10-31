@@ -61,7 +61,7 @@ class PublicCalendarAPIMiddleware
         }
 
         if (array_key_exists('max', $params)) {
-            $max_events = InputUtils::FilterInt($params['max']);
+            $max_events = InputUtils::filterInt($params['max']);
             $events->limit($max_events);
         }
 

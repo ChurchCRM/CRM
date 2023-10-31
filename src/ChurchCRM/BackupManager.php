@@ -23,7 +23,7 @@ namespace ChurchCRM\Backup
     {
         public const GZSQL = 0;
         public const SQL = 2;
-        public const FullBackup = 3;
+        public const FULL_BACKUP = 3;
     }
 
     class JobBase
@@ -40,7 +40,7 @@ namespace ChurchCRM\Backup
          */
         protected $TempFolder;
 
-        protected function CreateEmptyTempFolder()
+        protected function createEmptyTempFolder()
         {
             // both backup and restore operations require a clean temporary working folder.  Create it.
             $TempFolder = SystemURLs::getDocumentRoot() . "/tmp_attach/ChurchCRMBackups";
@@ -90,7 +90,7 @@ namespace ChurchCRM\Backup
         public function __construct($BaseName, $BackupType, $IncludeExtraneousFiles, $EncryptBackup, $BackupPassword)
         {
             $this->BackupType = $BackupType;
-            $this->TempFolder =  $this->CreateEmptyTempFolder();
+            $this->TempFolder =  $this->createEmptyTempFolder();
             $this->BackupFileBaseName = $this->TempFolder .'/'.$BaseName;
             $this->IncludeExtraneousFiles = $IncludeExtraneousFiles;
             $this->shouldEncrypt = $EncryptBackup;
@@ -105,7 +105,7 @@ namespace ChurchCRM\Backup
             );
         }
 
-        public function CopyToWebDAV($Endpoint, $Username, $Password)
+        public function copyToWebDAV($Endpoint, $Username, $Password)
         {
             LoggerUtils::getAppLogger()->info("Beginning to copy backup to: " . $Endpoint);
             try {
@@ -140,12 +140,12 @@ namespace ChurchCRM\Backup
             return $result;
         }
 
-        private function CaptureSQLFile(\SplFileInfo $SqlFilePath)
+        private function captureSQLFile(\SplFileInfo $SqlFilePath)
         {
             global $sSERVERNAME, $sDATABASE, $sUSER, $sPASSWORD;
             LoggerUtils::getAppLogger()->debug("Beginning to backup database to: " . $SqlFilePath->getPathname());
             try {
-                $dump = new Mysqldump(Bootstrapper::GetDSN(), $sUSER, $sPASSWORD, ['add-drop-table' => true]);
+                $dump = new Mysqldump(Bootstrapper::getDSN(), $sUSER, $sPASSWORD, ['add-drop-table' => true]);
                 $dump->start($SqlFilePath->getPathname());
                 LoggerUtils::getAppLogger()->debug("Finished backing up database to " . $SqlFilePath->getPathname());
             } catch (\Exception $e) {
@@ -155,7 +155,7 @@ namespace ChurchCRM\Backup
             }
         }
 
-        private function ShouldBackupImageFile(SplFileInfo $ImageFile)
+        private function shouldBackupImageFile(SplFileInfo $ImageFile)
         {
             $isExtraneousFile = strpos($ImageFile->getFileName(), "-initials") != false ||
             strpos($ImageFile->getFileName(), "-remote") != false ||
@@ -164,7 +164,7 @@ namespace ChurchCRM\Backup
             return $ImageFile->isFile() && !(!$this->IncludeExtraneousFiles && $isExtraneousFile); //todo: figure out this logic
         }
 
-        private function CreateFullArchive()
+        private function createFullArchive()
         {
             $imagesAddedToArchive = [];
             $this->BackupFile = new \SplFileInfo($this->BackupFileBaseName.".tar");
@@ -173,12 +173,12 @@ namespace ChurchCRM\Backup
             $phar->startBuffering();
 
             $SqlFile =  new \SplFileInfo($this->TempFolder."/".'ChurchCRM-Database.sql');
-            $this->CaptureSQLFile($SqlFile);
+            $this->captureSQLFile($SqlFile);
             $phar->addFile($SqlFile, 'ChurchCRM-Database.sql');
             LoggerUtils::getAppLogger()->debug("Database added to archive");
             $imageFiles = new RecursiveIteratorIterator(new RecursiveDirectoryIterator(SystemURLs::getImagesRoot()));
             foreach ($imageFiles as $imageFile) {
-                if ($this->ShouldBackupImageFile($imageFile)) {
+                if ($this->shouldBackupImageFile($imageFile)) {
                     $localName = substr(str_replace(SystemURLs::getDocumentRoot(), '', $imageFile->getRealPath()), 1);
                     $phar->addFile($imageFile->getRealPath(), $localName);
                     array_push($imagesAddedToArchive, $imageFile->getRealPath());
@@ -198,10 +198,10 @@ namespace ChurchCRM\Backup
             LoggerUtils::getAppLogger()->debug("Temp Database backup deleted: " . $SqlFile);
         }
 
-        private function CreateGZSql()
+        private function createGZSql()
         {
             $SqlFile =  new \SplFileInfo($this->TempFolder."/".'ChurchCRM-Database.sql');
-            $this->CaptureSQLFile($SqlFile);
+            $this->captureSQLFile($SqlFile);
             $this->BackupFile = new \SplFileInfo($this->BackupFileBaseName.'.sql.gz');
             $gzf = gzopen($this->BackupFile->getPathname(), 'w6');
             gzwrite($gzf, file_get_contents($SqlFile->getPathname()));
@@ -209,7 +209,7 @@ namespace ChurchCRM\Backup
             unlink($SqlFile->getPathname());
         }
 
-        private function EncryptBackupFile()
+        private function encryptBackupFile()
         {
             LoggerUtils::getAppLogger()->info("Encrypting backup file: ".$this->BackupFile);
             $tempfile = new \SplFileInfo($this->BackupFile->getPathname()."temp");
@@ -217,22 +217,22 @@ namespace ChurchCRM\Backup
             File::encryptFileWithPassword($tempfile, $this->BackupFile, $this->BackupPassword);
             LoggerUtils::getAppLogger()->info("Finished ecrypting backup file");
         }
-        public function Execute()
+        public function execute()
         {
             $time = new \ChurchCRM\Utils\ExecutionTime();
             LoggerUtils::getAppLogger()->info("Beginning backup job. Type: " . $this->BackupType . ". BaseName: " . $this->BackupFileBaseName);
-            if ($this->BackupType == BackupType::FullBackup) {
-                $this->CreateFullArchive();
+            if ($this->BackupType == BackupType::FULL_BACKUP) {
+                $this->createFullArchive();
             } elseif ($this->BackupType == BackupType::SQL) {
                 $this->BackupFile = new \SplFileInfo($this->BackupFileBaseName.".sql");
-                $this->CaptureSQLFile($this->BackupFile);
+                $this->captureSQLFile($this->BackupFile);
             } elseif ($this->BackupType == BackupType::GZSQL) {
-                $this->CreateGZSql();
+                $this->createGZSql();
             }
             if ($this->shouldEncrypt) {
-                $this->EncryptBackupFile();
+                $this->encryptBackupFile();
             }
-            $time->End();
+            $time->end();
             $percentExecutionTime = (($time->getMilliseconds()/1000)/ini_get('max_execution_time'))*100;
             LoggerUtils::getAppLogger()->info("Completed backup job.  Took : " . $time->getMilliseconds()."ms. ".$percentExecutionTime."% of max_execution_time");
             if ($percentExecutionTime > 80) {
@@ -264,7 +264,7 @@ namespace ChurchCRM\Backup
          */
         private $restorePassword;
 
-        private function IsIncomingFileFailed()
+        private function isIncomingFileFailed()
         {
             // Not actually sure what this is supposed to do, but it was working before??
             return $_SERVER['REQUEST_METHOD'] == 'POST' && empty($_POST) && empty($_FILES) && $_SERVER['CONTENT_LENGTH'] > 0;
@@ -273,26 +273,26 @@ namespace ChurchCRM\Backup
         public function __construct()
         {
             LoggerUtils::getAppLogger()->info("Beginning to process incoming archive for restoration");
-            if ($this->IsIncomingFileFailed()) {
+            if ($this->isIncomingFileFailed()) {
                 $message = "The selected file exceeds this servers maximum upload size of: " . SystemService::getMaxUploadFileSize();
                 LoggerUtils::getAppLogger()->error($message);
                 throw new \Exception($message, 500);
             }
             $rawUploadedFile = $_FILES['restoreFile'];
-            $this->TempFolder = $this->CreateEmptyTempFolder();
+            $this->TempFolder = $this->createEmptyTempFolder();
             $this->RestoreFile = new \SplFileInfo($this->TempFolder."/" . $rawUploadedFile['name']);
             LoggerUtils::getAppLogger()->debug("Moving ".$rawUploadedFile['tmp_name']. " to ". $this->RestoreFile);
             move_uploaded_file($rawUploadedFile['tmp_name'], $this->RestoreFile);
             LoggerUtils::getAppLogger()->debug("File move complete");
-            $this->DiscoverBackupType();
+            $this->discoverBackupType();
             LoggerUtils::getAppLogger()->debug("Detected backup type: " . $this->BackupType);
             LoggerUtils::getAppLogger()->info("Restore job created; ready to execute");
         }
 
-        private function DecryptBackup()
+        private function decryptBackup()
         {
             LoggerUtils::getAppLogger()->info("Decrypting file: " . $this->RestoreFile);
-            $this->restorePassword = InputUtils::FilterString($_POST['restorePassword']);
+            $this->restorePassword = InputUtils::filterString($_POST['restorePassword']);
             $tempfile = new \SplFileInfo($this->RestoreFile->getPathname()."temp");
 
             try {
@@ -308,13 +308,13 @@ namespace ChurchCRM\Backup
                 }
             }
         }
-        private function DiscoverBackupType()
+        private function discoverBackupType()
         {
             switch ($this->RestoreFile->getExtension()) {
                 case "gz":
                     $basename = $this->RestoreFile->getBasename();
                     if (substr($basename, strlen($basename)-6, 6) == "tar.gz") {
-                        $this->BackupType = BackupType::FullBackup;
+                        $this->BackupType = BackupType::FULL_BACKUP;
                     } elseif (substr($basename, strlen($basename)-6, 6) == "sql.gz") {
                         $this->BackupType = BackupType::GZSQL;
                     }
@@ -325,7 +325,7 @@ namespace ChurchCRM\Backup
             }
         }
 
-        private function RestoreSQLBackup($SQLFileInfo)
+        private function restoreSQLBackup($SQLFileInfo)
         {
             $connection = Propel::getConnection();
             LoggerUtils::getAppLogger()->debug("Restoring SQL file from: ".$SQLFileInfo);
@@ -333,7 +333,7 @@ namespace ChurchCRM\Backup
             LoggerUtils::getAppLogger()->debug("Finished restoring SQL table");
         }
 
-        private function RestoreFullBackup()
+        private function restoreFullBackup()
         {
             LoggerUtils::getAppLogger()->debug("Restoring full archive");
             $phar = new PharData($this->RestoreFile);
@@ -342,7 +342,7 @@ namespace ChurchCRM\Backup
             LoggerUtils::getAppLogger()->debug("Finished extraction");
             $sqlFile =  $this->TempFolder."/ChurchCRM-Database.sql";
             if (file_exists($sqlFile)) {
-                $this->RestoreSQLBackup($sqlFile);
+                $this->restoreSQLBackup($sqlFile);
                 LoggerUtils::getAppLogger()->debug("Removing images from live instance");
                 FileSystemUtils::recursiveRemoveDirectory(SystemURLs::getDocumentRoot() . '/Images');
                 LoggerUtils::getAppLogger()->debug("Removal complete; Copying restored images to live instance");
@@ -354,7 +354,7 @@ namespace ChurchCRM\Backup
             LoggerUtils::getAppLogger()->debug("Finished restoring full archive");
         }
 
-        private function RestoreGZSQL()
+        private function restoreGZSQL()
         {
             LoggerUtils::getAppLogger()->debug("Decompressing gzipped SQL file: ". $this->RestoreFile);
             $gzf = gzopen($this->RestoreFile, 'r');
@@ -366,12 +366,12 @@ namespace ChurchCRM\Backup
             }
             fclose($out_file);
             gzclose($gzf);
-            $this->RestoreSQLBackup($SqlFile);
+            $this->restoreSQLBackup($SqlFile);
             unlink($this->RestoreFile);
             unlink($SqlFile->getPathname());
         }
 
-        private function PostRestoreCleanup()
+        private function postRestoreCleanup()
         {
             //When restoring a database, do NOT let the database continue to create remote backups.
             //This can be very troublesome for users in a testing environment.
@@ -382,35 +382,35 @@ namespace ChurchCRM\Backup
             LoggerUtils::getAppLogger()->debug("Reset System Settings for: bEnableExternalBackupTarget and sLastIntegrityCheckTimeStamp");
         }
 
-        public function Execute()
+        public function execute()
         {
             LoggerUtils::getAppLogger()->info("Executing restore job");
             try {
-                $this->DecryptBackup();
+                $this->decryptBackup();
                 switch ($this->BackupType) {
                     case BackupType::SQL:
-                        $this->RestoreSQLBackup($this->RestoreFile);
+                        $this->restoreSQLBackup($this->RestoreFile);
                         break;
                     case BackupType::GZSQL:
-                        $this->RestoreGZSQL();
+                        $this->restoreGZSQL();
                         break;
-                    case BackupType::FullBackup:
-                        $this->RestoreFullBackup();
+                    case BackupType::FULL_BACKUP:
+                        $this->restoreFullBackup();
                         break;
                 }
-                $this->PostRestoreCleanup();
+                $this->postRestoreCleanup();
                 LoggerUtils::getAppLogger()->info("Finished executing restore job.  Cleaning out temp folder.");
             } catch (Exception $ex) {
                 LoggerUtils::getAppLogger()->error("Error restoring backup: " . $ex);
             }
-            $this->TempFolder = $this->CreateEmptyTempFolder();
+            $this->TempFolder = $this->createEmptyTempFolder();
         }
     }
 
 
     class BackupDownloader
     {
-        public static function DownloadBackup($filename)
+        public static function downloadBackup($filename)
         {
             $path = SystemURLs::getDocumentRoot() . "/tmp_attach/ChurchCRMBackups/$filename";
             LoggerUtils::getAppLogger()->info("Download requested for :" . $path);

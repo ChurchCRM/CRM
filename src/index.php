@@ -32,7 +32,7 @@ if (!empty($_GET["location"])) {
 }
 
 // First, ensure that the user is authenticated.
-AuthenticationManager::EnsureAuthentication();
+AuthenticationManager::ensureAuthentication();
 
 if (strtolower($shortName) == 'index.php' || strtolower($fileName) == 'index.php') {
     // Index.php -> Menu.php

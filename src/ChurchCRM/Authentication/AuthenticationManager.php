@@ -19,7 +19,7 @@ namespace ChurchCRM\Authentication {
         // This class exists to abstract the implementations of various authentication providers
         // Currently, only local auth is implemented; hence the zero-indexed array elements.
 
-        public static function GetAuthenticationProvider()
+        public static function getAuthenticationProvider()
         {
             if (isset($_SESSION) &&
             array_key_exists('AuthenticationProvider', $_SESSION) &&
@@ -31,17 +31,17 @@ namespace ChurchCRM\Authentication {
             }
         }
 
-        private static function SetAuthenticationProvider(IAuthenticationProvider $AuthenticationProvider)
+        private static function setAuthenticationProvider(IAuthenticationProvider $AuthenticationProvider)
         {
             $_SESSION['AuthenticationProvider'] = $AuthenticationProvider;
         }
 
-        public static function GetCurrentUser() : User
+        public static function getCurrentUser() : User
         {
             try {
-                $currentUser = self::GetAuthenticationProvider()->GetCurrentUser();
+                $currentUser = self::getAuthenticationProvider()->getCurrentUser();
                 if (empty($currentUser)) {
-                    throw new \Exception("No current user provided by current authentication provider: " . get_class(self::GetAuthenticationProvider()));
+                    throw new \Exception("No current user provided by current authentication provider: " . get_class(self::getAuthenticationProvider()));
                 }
                 return $currentUser;
             } catch (\Exception $e) {
@@ -50,20 +50,20 @@ namespace ChurchCRM\Authentication {
             }
         }
 
-        public static function EndSession($preventRedirect = false)
+        public static function endSession($preventRedirect = false)
         {
             $logger = LoggerUtils::getAuthLogger();
             $currentSessionUserName = "Unknown";
             try {
-                if (self::GetCurrentUser() != null) {
-                    $currentSessionUserName = self::GetCurrentUser()->getName();
+                if (self::getCurrentUser() != null) {
+                    $currentSessionUserName = self::getCurrentUser()->getName();
                 }
             } catch (\Exception $e) {
           //unable to get name of user logging out. Don't really care.
             }
 
             try {
-                $result = self::GetAuthenticationProvider()->EndSession();
+                $result = self::getAuthenticationProvider()->endSession();
                 $_COOKIE = [];
                 $_SESSION = [];
                 session_destroy();
@@ -73,26 +73,26 @@ namespace ChurchCRM\Authentication {
                 $logger->warning('Error destroying session', ['exception' => $e]);
             } finally {
                 if (!$preventRedirect) {
-                        RedirectUtils::Redirect(self::GetSessionBeginURL());
+                        RedirectUtils::redirect(self::getSessionBeginURL());
                 }
             }
         }
 
-        public static function Authenticate(AuthenticationRequest $AuthenticationRequest)
+        public static function authenticate(AuthenticationRequest $AuthenticationRequest)
         {
             $logger = LoggerUtils::getAppLogger();
             switch (get_class($AuthenticationRequest)) {
                 case \ChurchCRM\Authentication\Requests\APITokenAuthenticationRequest::class:
                     $AuthenticationProvider = new APITokenAuthentication();
-                    self::SetAuthenticationProvider($AuthenticationProvider);
+                    self::setAuthenticationProvider($AuthenticationProvider);
                     break;
                 case \ChurchCRM\Authentication\Requests\LocalUsernamePasswordRequest::class:
                     $AuthenticationProvider = new LocalAuthentication();
-                    self::SetAuthenticationProvider($AuthenticationProvider);
+                    self::setAuthenticationProvider($AuthenticationProvider);
                     break;
                 case \ChurchCRM\Authentication\Requests\LocalTwoFactorTokenRequest::class:
                     try {
-                        self::GetAuthenticationProvider();
+                        self::getAuthenticationProvider();
                     } catch (\Exception $e) {
                         $logger->warning("Tried to supply two factor authentication code, but didn't have an existing session.  This shouldn't ever happen", ['exception' => $e]);
                     }
@@ -102,26 +102,26 @@ namespace ChurchCRM\Authentication {
                     break;
             }
 
-            $result = self::GetAuthenticationProvider()->Authenticate($AuthenticationRequest);
+            $result = self::getAuthenticationProvider()->authenticate($AuthenticationRequest);
 
             if (null !== $result->nextStepURL) {
                 $logger->debug("Authentication requires additional step: " . $result->nextStepURL);
-                RedirectUtils::Redirect($result->nextStepURL);
+                RedirectUtils::redirect($result->nextStepURL);
             }
 
             if ($result->isAuthenticated && ! $result->preventRedirect) {
                 $redirectLocation = array_key_exists("location", $_SESSION) ? $_SESSION['location'] : 'Menu.php';
                 NotificationService::updateNotifications();
                 $logger->debug("Authentication Successful; redirecting to: " . $redirectLocation);
-                RedirectUtils::Redirect($redirectLocation);
+                RedirectUtils::redirect($redirectLocation);
             }
             return $result;
         }
 
-        public static function ValidateUserSessionIsActive($updateLastOperationTimestamp = true)
+        public static function validateUserSessionIsActive($updateLastOperationTimestamp = true)
         {
             try {
-                $result = self::GetAuthenticationProvider()->ValidateUserSessionIsActive($updateLastOperationTimestamp);
+                $result = self::getAuthenticationProvider()->validateUserSessionIsActive($updateLastOperationTimestamp);
                 return $result->isAuthenticated;
             } catch (\Exception $error) {
                 LoggerUtils::getAuthLogger()->debug("Error determining session authentication status.", ['exception' => $error]);
@@ -129,37 +129,37 @@ namespace ChurchCRM\Authentication {
             }
         }
 
-        public static function EnsureAuthentication()
+        public static function ensureAuthentication()
         {
           // This function differs from the sematinc `ValidateUserSessionIsActive` in that it will
           // take corrective action to redirect the user to an appropriate login location
           // if the current session is not actually authenticated
 
             try {
-                $result = self::GetAuthenticationProvider()->ValidateUserSessionIsActive(true);
+                $result = self::getAuthenticationProvider()->validateUserSessionIsActive(true);
             // Auth providers will always include a `nextStepURL` if authentication fails.
             // Sometimes other actions may require a `nextStepURL` that should be enforced with
             // an authentication request (2FA, Expired Password, etc).
                 if (!$result->isAuthenticated) {
                     LoggerUtils::getAuthLogger()->debug("Session not authenticated.  Redirecting to login page");
-                    RedirectUtils::Redirect(self::GetSessionBeginURL());
+                    RedirectUtils::redirect(self::getSessionBeginURL());
                 } elseif (null !== $result->nextStepURL) {
                     LoggerUtils::getAuthLogger()->debug("Session authenticated, but redirect requested by authentication provider.");
-                    RedirectUtils::Redirect($result->nextStepURL);
+                    RedirectUtils::redirect($result->nextStepURL);
                 }
                 LoggerUtils::getAuthLogger()->debug("Session valid");
             } catch (\Throwable $error) {
                 LoggerUtils::getAuthLogger()->debug("Error determining session authentication status.  Redirecting to login page.", ['exception' => $error]);
-                RedirectUtils::Redirect(self::GetSessionBeginURL());
+                RedirectUtils::redirect(self::getSessionBeginURL());
             }
         }
 
-        public static function GetSessionBeginURL()
+        public static function getSessionBeginURL()
         {
             return SystemURLs::getRootPath() . "/session/begin";
         }
 
-        public static function GetForgotPasswordURL()
+        public static function getForgotPasswordURL()
         {
           // this assumes we're using local authentication
           // TODO: when we implement other authentication providers (SAML/etc)

@@ -23,7 +23,7 @@ use ChurchCRM\Utils\MiscUtils;
 use ChurchCRM\Authentication\AuthenticationManager;
 
 // Get the person ID from the querystring
-$iPersonID = InputUtils::LegacyFilterInput($_GET['PersonID'], 'int');
+$iPersonID = InputUtils::legacyFilterInput($_GET['PersonID'], 'int');
 
 // Get this person
 $sSQL = 'SELECT a.*, family_fam.*, cls.lst_OptionName AS sClassName, fmr.lst_OptionName AS sFamRole, b.per_FirstName AS EnteredFirstName,
@@ -57,7 +57,7 @@ $sSQL = $sSQL.'FROM note_nte ';
 $sSQL = $sSQL.'LEFT JOIN person_per a ON nte_EnteredBy = a.per_ID ';
 $sSQL = $sSQL.'LEFT JOIN person_per b ON nte_EditedBy = b.per_ID ';
 $sSQL = $sSQL.'WHERE nte_per_ID = '.$iPersonID.' ';
-$sSQL = $sSQL.'AND (nte_Private = 0 OR nte_Private = '.AuthenticationManager::GetCurrentUser()->getId().')';
+$sSQL = $sSQL.'AND (nte_Private = 0 OR nte_Private = '.AuthenticationManager::getCurrentUser()->getId().')';
 $rsNotes = RunQuery($sSQL);
 
 // Get the Groups this Person is assigned to
@@ -88,7 +88,7 @@ while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
 }
 
 // Format the BirthDate
-$dBirthDate = MiscUtils::FormatBirthDate($per_BirthYear, $per_BirthMonth, $per_BirthDay, '-', $per_Flags);
+$dBirthDate = MiscUtils::formatBirthDate($per_BirthYear, $per_BirthMonth, $per_BirthDay, '-', $per_Flags);
 //if ($per_BirthMonth > 0 && $per_BirthDay > 0)
 //{
 //  $dBirthDate = $per_BirthMonth . "/" . $per_BirthDay;
@@ -384,7 +384,7 @@ if ($fam_ID) {
             <td>
         <?= $sFamRole ?>&nbsp;
             </td>
-      <td><?= MiscUtils::FormatAge($per_BirthMonth, $per_BirthDay, $per_BirthYear, $per_Flags) ?></td>
+      <td><?= MiscUtils::formatAge($per_BirthMonth, $per_BirthDay, $per_BirthYear, $per_Flags) ?></td>
         </tr>
         <?php
     }
@@ -503,7 +503,7 @@ if (mysqli_num_rows($rsAssignedProperties) == 0) {
     echo '</table>';
 }
 
-if (AuthenticationManager::GetCurrentUser()->isNotesEnabled()) {
+if (AuthenticationManager::getCurrentUser()->isNotesEnabled()) {
     echo '<p><b>'.gettext('Notes:').'</b></p>';
 
     // Loop through all the notes

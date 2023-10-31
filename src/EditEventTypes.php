@@ -20,7 +20,7 @@ require 'Include/Functions.php';
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Authentication\AuthenticationManager;
 
-if (!AuthenticationManager::GetCurrentUser()->isAdmin()) {
+if (!AuthenticationManager::getCurrentUser()->isAdmin()) {
     header('Location: Menu.php');
 }
 $sPageTitle = gettext('Edit Event Types');
@@ -49,7 +49,7 @@ if (strpos($_POST['Action'], 'DELETE_', 0) === 0) {
             $editing = 'FALSE';
             $eName = $_POST['newEvtName'];
             $theID = $_POST['EN_tyid'];
-            $sSQL = "UPDATE event_types SET type_name='".InputUtils::LegacyFilterInput($eName)."' WHERE type_id='".InputUtils::LegacyFilterInput($theID)."'";
+            $sSQL = "UPDATE event_types SET type_name='".InputUtils::legacyFilterInput($eName)."' WHERE type_id='".InputUtils::legacyFilterInput($theID)."'";
             RunQuery($sSQL);
             $theID = '';
             $_POST['Action'] = '';
@@ -59,7 +59,7 @@ if (strpos($_POST['Action'], 'DELETE_', 0) === 0) {
             $editing = 'FALSE';
             $eTime = $_POST['newEvtStartTime'];
             $theID = $_POST['EN_tyid'];
-            $sSQL = "UPDATE event_types SET type_defstarttime='".InputUtils::LegacyFilterInput($eTime)."' WHERE type_id='".InputUtils::LegacyFilterInput($theID)."'";
+            $sSQL = "UPDATE event_types SET type_defstarttime='".InputUtils::legacyFilterInput($eTime)."' WHERE type_id='".InputUtils::legacyFilterInput($theID)."'";
             RunQuery($sSQL);
             $theID = '';
             $_POST['Action'] = '';

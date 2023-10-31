@@ -17,8 +17,8 @@ use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Authentication\AuthenticationManager;
 
 // Security: User must have property and classification editing permission
-if (!AuthenticationManager::GetCurrentUser()->isMenuOptionsEnabled()) {
-    RedirectUtils::Redirect('Menu.php');
+if (!AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled()) {
+    RedirectUtils::redirect('Menu.php');
     exit;
 }
 
@@ -26,7 +26,7 @@ if (!AuthenticationManager::GetCurrentUser()->isMenuOptionsEnabled()) {
 $sPageTitle = gettext('Property Type Delete Confirmation');
 
 //Get the PersonID from the querystring
-$iPropertyTypeID = InputUtils::LegacyFilterInput($_GET['PropertyTypeID'], 'int');
+$iPropertyTypeID = InputUtils::legacyFilterInput($_GET['PropertyTypeID'], 'int');
 
 //Do we have deletion confirmation?
 if (isset($_GET['Confirmed'])) {
@@ -43,7 +43,7 @@ if (isset($_GET['Confirmed'])) {
     $sSQL = 'DELETE FROM property_pro WHERE pro_prt_ID = '.$iPropertyTypeID;
     RunQuery($sSQL);
 
-    RedirectUtils::Redirect('PropertyTypeList.php');
+    RedirectUtils::redirect('PropertyTypeList.php');
 }
 
 $sSQL = 'SELECT * FROM propertytype_prt WHERE prt_ID = '.$iPropertyTypeID;

@@ -4,13 +4,12 @@ namespace ChurchCRM\Slim\Middleware\Request\Auth;
 
 class FinanceRoleAuthMiddleware extends BaseAuthRoleMiddleware
 {
-
-    function hasRole()
+    protected function hasRole()
     {
         return $this->user->isFinanceEnabled();
     }
 
-    function noRoleMessage()
+    protected function noRoleMessage()
     {
         return gettext('User must have Finance permission');
     }

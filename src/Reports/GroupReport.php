@@ -14,15 +14,15 @@ require '../Include/Config.php';
 require '../Include/Functions.php';
 
 use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\Reports\PDF_GroupDirectory;
+use ChurchCRM\Reports\PdfGroupDirectory;
 use ChurchCRM\Utils\InputUtils;
 
 $bOnlyCartMembers = $_POST['OnlyCart'];
-$iGroupID = InputUtils::LegacyFilterInput($_POST['GroupID'], 'int');
-$iMode = InputUtils::LegacyFilterInput($_POST['ReportModel'], 'int');
+$iGroupID = InputUtils::legacyFilterInput($_POST['GroupID'], 'int');
+$iMode = InputUtils::legacyFilterInput($_POST['ReportModel'], 'int');
 
 if ($iMode == 1) {
-    $iRoleID = InputUtils::LegacyFilterInput($_POST['GroupRole'], 'int');
+    $iRoleID = InputUtils::legacyFilterInput($_POST['GroupRole'], 'int');
 } else {
     $iRoleID = 0;
 }
@@ -49,7 +49,7 @@ if ($iRoleID > 0) {
     }
 }
 
-$pdf = new PDF_GroupDirectory();
+$pdf = new PdfGroupDirectory();
 
 // See if this group has special properties.
 $sSQL = 'SELECT * FROM groupprop_master WHERE grp_ID = '.$iGroupID.' ORDER BY prop_ID';
@@ -71,7 +71,7 @@ if ($iRoleID > 0) {
 }
 
 if ($bOnlyCartMembers && count($_SESSION['aPeopleCart']) > 0) {
-    $sSQL .= ' AND person_per.per_ID IN ('.ConvertCartToString($_SESSION['aPeopleCart']).')';
+    $sSQL .= ' AND person_per.per_ID IN ('.convertCartToString($_SESSION['aPeopleCart']).')';
 }
 
 $sSQL .= ' ORDER BY per_LastName';
@@ -158,11 +158,11 @@ while ($aRow = mysqli_fetch_array($rsRecords)) {
     //{
     /* if (strtoupper($sLastLetter) != strtoupper(mb_substr($pdf->sFamily,0,1)))
     {
-        $pdf->Check_Lines($numlines+2);
+        $pdf->checkLines($numlines+2);
         $sLastLetter = strtoupper(mb_substr($pdf->sFamily,0,1));
-        $pdf->Add_Header($sLastLetter);
+        $pdf->addHeader($sLastLetter);
     } */
-    $pdf->Add_Record($pdf->sFamily, $OutStr, $numlines);
+    $pdf->addRecord($pdf->sFamily, $OutStr, $numlines);
     // }
 }
 

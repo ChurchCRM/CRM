@@ -74,7 +74,7 @@ class NewPersonOrFamilyEmail extends BaseEmail
         return array_merge($this->getCommonTokens(), $myTokens);
     }
 
-    function getFullURL()
+    protected function getFullURL()
     {
         if (get_class($this->relatedObject) == \ChurchCRM\Family::class) {
             return SystemURLs::getURL() . "/v2/family/" . $this->relatedObject->getId();
@@ -83,7 +83,7 @@ class NewPersonOrFamilyEmail extends BaseEmail
         }
     }
 
-    function getButtonText()
+    protected function getButtonText()
     {
         if (get_class($this->relatedObject) == \ChurchCRM\Family::class) {
             return gettext("View Family Page");

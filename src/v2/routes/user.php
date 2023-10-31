@@ -33,7 +33,7 @@ function viewUserNotFound(Request $request, Response $response, array $args)
 function viewUser(Request $request, Response $response, array $args)
 {
     $renderer = new PhpRenderer('templates/user/');
-    $curUser = AuthenticationManager::GetCurrentUser();
+    $curUser = AuthenticationManager::getCurrentUser();
     $userId = $args["id"];
 
     if (!$curUser->isAdmin() && $curUser->getId() != $userId) {
@@ -58,7 +58,7 @@ function adminChangeUserPassword(Request $request, Response $response, array $ar
 {
     $renderer = new PhpRenderer('templates/');
     $userId = $args["id"];
-    $curUser = AuthenticationManager::GetCurrentUser();
+    $curUser = AuthenticationManager::getCurrentUser();
 
     // make sure that the currently logged in user has
     // admin permissions to change other users' passwords

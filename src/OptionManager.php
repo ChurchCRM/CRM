@@ -25,8 +25,8 @@ $mode = trim($_GET['mode']);
 switch ($mode) {
     case 'famroles':
     case 'classes':
-        if (!AuthenticationManager::GetCurrentUser()->isMenuOptionsEnabled()) {
-            RedirectUtils::Redirect('Menu.php');
+        if (!AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled()) {
+            RedirectUtils::redirect('Menu.php');
             exit;
         }
         break;
@@ -34,8 +34,8 @@ switch ($mode) {
     case 'grptypes':
     case 'grproles':
     case 'groupcustom':
-        if (!AuthenticationManager::GetCurrentUser()->isManageGroupsEnabled()) {
-            RedirectUtils::Redirect('Menu.php');
+        if (!AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) {
+            RedirectUtils::redirect('Menu.php');
             exit;
         }
         break;
@@ -43,14 +43,14 @@ switch ($mode) {
     case 'custom':
     case 'famcustom':
     case 'securitygrp':
-        if (!AuthenticationManager::GetCurrentUser()->isAdmin()) {
-            RedirectUtils::Redirect('Menu.php');
+        if (!AuthenticationManager::getCurrentUser()->isAdmin()) {
+            RedirectUtils::redirect('Menu.php');
             exit;
         }
         break;
 
     default:
-        RedirectUtils::Redirect('Menu.php');
+        RedirectUtils::redirect('Menu.php');
         break;
 }
 
@@ -95,7 +95,7 @@ switch ($mode) {
         $adjplusname = gettext('Group Member Role');
         $adjplusnameplural = gettext('Group Member Roles');
         $sPageTitle = gettext('Group Member Roles Editor');
-        $listID = InputUtils::LegacyFilterInput($_GET['ListID'], 'int');
+        $listID = InputUtils::legacyFilterInput($_GET['ListID'], 'int');
         $embedded = true;
 
         $sSQL = 'SELECT grp_DefaultRole FROM group_grp WHERE grp_RoleListID = '.$listID;
@@ -103,7 +103,7 @@ switch ($mode) {
 
         // Validate that this list ID is really for a group roles list. (for security)
         if (mysqli_num_rows($rsTemp) == 0) {
-            RedirectUtils::Redirect('Menu.php');
+            RedirectUtils::redirect('Menu.php');
             break;
         }
 
@@ -116,7 +116,7 @@ switch ($mode) {
         $adjplusname = gettext('Person Custom List Option');
         $adjplusnameplural = gettext('Person Custom List Options');
         $sPageTitle = gettext('Person Custom List Options Editor');
-        $listID = InputUtils::LegacyFilterInput($_GET['ListID'], 'int');
+        $listID = InputUtils::legacyFilterInput($_GET['ListID'], 'int');
         $embedded = true;
 
         $sSQL = "SELECT '' FROM person_custom_master WHERE type_ID = 12 AND custom_Special = ".$listID;
@@ -124,7 +124,7 @@ switch ($mode) {
 
         // Validate that this is a valid person-custom field custom list
         if (mysqli_num_rows($rsTemp) == 0) {
-            RedirectUtils::Redirect('Menu.php');
+            RedirectUtils::redirect('Menu.php');
             break;
         }
 
@@ -134,7 +134,7 @@ switch ($mode) {
         $adjplusname = gettext('Custom List Option');
         $adjplusnameplural = gettext('Custom List Options');
         $sPageTitle = gettext('Custom List Options Editor');
-        $listID = InputUtils::LegacyFilterInput($_GET['ListID'], 'int');
+        $listID = InputUtils::legacyFilterInput($_GET['ListID'], 'int');
         $embedded = true;
 
         $sSQL = "SELECT '' FROM groupprop_master WHERE type_ID = 12 AND prop_Special = ".$listID;
@@ -142,7 +142,7 @@ switch ($mode) {
 
         // Validate that this is a valid group-specific-property field custom list
         if (mysqli_num_rows($rsTemp) == 0) {
-            RedirectUtils::Redirect('Menu.php');
+            RedirectUtils::redirect('Menu.php');
             break;
         }
 
@@ -152,7 +152,7 @@ switch ($mode) {
         $adjplusname = gettext('Family Custom List Option');
         $adjplusnameplural = gettext('Family Custom List Options');
         $sPageTitle = gettext('Family Custom List Options Editor');
-        $listID = InputUtils::LegacyFilterInput($_GET['ListID'], 'int');
+        $listID = InputUtils::legacyFilterInput($_GET['ListID'], 'int');
         $embedded = true;
 
         $sSQL = "SELECT '' FROM family_custom_master WHERE type_ID = 12 AND fam_custom_Special = ".$listID;
@@ -160,13 +160,13 @@ switch ($mode) {
 
         // Validate that this is a valid family_custom field custom list
         if (mysqli_num_rows($rsTemp) == 0) {
-            RedirectUtils::Redirect('Menu.php');
+            RedirectUtils::redirect('Menu.php');
             break;
         }
 
         break;
     default:
-        RedirectUtils::Redirect('Menu.php');
+        RedirectUtils::redirect('Menu.php');
         break;
 }
 
@@ -174,7 +174,7 @@ $iNewNameError = 0;
 
 // Check if we're adding a field
 if (isset($_POST['AddField'])) {
-    $newFieldName = InputUtils::LegacyFilterInput($_POST['newFieldName']);
+    $newFieldName = InputUtils::legacyFilterInput($_POST['newFieldName']);
 
     if (strlen($newFieldName) == 0) {
         $iNewNameError = 1;
@@ -230,7 +230,7 @@ if (isset($_POST['SaveChanges'])) {
         //addition save off sequence also
         $aSeqs[$row] = $aRow['lst_OptionSequence'];
 
-        $aNameFields[$row] = InputUtils::LegacyFilterInput($_POST[$row.'name']);
+        $aNameFields[$row] = InputUtils::legacyFilterInput($_POST[$row.'name']);
     }
 
     for ($row = 1; $row <= $numRows; $row++) {

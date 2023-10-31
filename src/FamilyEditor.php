@@ -30,24 +30,24 @@ $iFamilyID = -1;
 
 //Get the FamilyID from the querystring
 if (array_key_exists('FamilyID', $_GET)) {
-    $iFamilyID = InputUtils::LegacyFilterInput($_GET['FamilyID'], 'int');
+    $iFamilyID = InputUtils::legacyFilterInput($_GET['FamilyID'], 'int');
 }
 
 // Security: User must have Add or Edit Records permission to use this form in those manners
 // Clean error handling: (such as somebody typing an incorrect URL ?PersonID= manually)
 if ($iFamilyID > 0) {
-    if (!(AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled() || (AuthenticationManager::GetCurrentUser()->isEditSelfEnabled() && $iFamilyID == AuthenticationManager::GetCurrentUser()->getPerson()->getFamId()))) {
-        RedirectUtils::Redirect('Menu.php');
+    if (!(AuthenticationManager::getCurrentUser()->isEditRecordsEnabled() || (AuthenticationManager::getCurrentUser()->isEditSelfEnabled() && $iFamilyID == AuthenticationManager::getCurrentUser()->getPerson()->getFamId()))) {
+        RedirectUtils::redirect('Menu.php');
         exit;
     }
 
     $sSQL = 'SELECT fam_ID FROM family_fam WHERE fam_ID = '.$iFamilyID;
     if (mysqli_num_rows(RunQuery($sSQL)) == 0) {
-        RedirectUtils::Redirect('Menu.php');
+        RedirectUtils::redirect('Menu.php');
         exit;
     }
-} elseif (!AuthenticationManager::GetCurrentUser()->isAddRecordsEnabled()) {
-    RedirectUtils::Redirect('Menu.php');
+} elseif (!AuthenticationManager::getCurrentUser()->isAddRecordsEnabled()) {
+    RedirectUtils::redirect('Menu.php');
     exit;
 }
 
@@ -85,41 +85,41 @@ $aperFlags = [];
 //Is this the second pass?
 if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
     //Assign everything locally
-    $sName = InputUtils::LegacyFilterInput($_POST['Name']);
+    $sName = InputUtils::legacyFilterInput($_POST['Name']);
     // Strip commas out of address fields because they are problematic when
     // exporting addresses to CSV file
-    $sAddress1 = str_replace(',', '', InputUtils::LegacyFilterInput($_POST['Address1']));
-    $sAddress2 = str_replace(',', '', InputUtils::LegacyFilterInput($_POST['Address2']));
-    $sCity = InputUtils::LegacyFilterInput($_POST['City']);
-    $sZip = InputUtils::LegacyFilterInput($_POST['Zip']);
+    $sAddress1 = str_replace(',', '', InputUtils::legacyFilterInput($_POST['Address1']));
+    $sAddress2 = str_replace(',', '', InputUtils::legacyFilterInput($_POST['Address2']));
+    $sCity = InputUtils::legacyFilterInput($_POST['City']);
+    $sZip = InputUtils::legacyFilterInput($_POST['Zip']);
 
     // bevand10 2012-04-26 Add support for uppercase ZIP - controlled by administrator via cfg param
     if (SystemConfig::getBooleanValue('bForceUppercaseZip')) {
         $sZip = strtoupper($sZip);
     }
 
-    $sCountry = InputUtils::LegacyFilterInput($_POST['Country']);
-    $iFamilyMemberRows = InputUtils::LegacyFilterInput($_POST['FamCount']);
+    $sCountry = InputUtils::legacyFilterInput($_POST['Country']);
+    $iFamilyMemberRows = InputUtils::legacyFilterInput($_POST['FamCount']);
 
     if ($_POST['stateType'] == "dropDown") {
-        $sState = InputUtils::LegacyFilterInput($_POST['State']);
+        $sState = InputUtils::legacyFilterInput($_POST['State']);
     } else {
-        $sState = InputUtils::LegacyFilterInput($_POST['StateTextbox']);
+        $sState = InputUtils::legacyFilterInput($_POST['StateTextbox']);
     }
 
-    $sHomePhone = InputUtils::LegacyFilterInput($_POST['HomePhone']);
-    $sWorkPhone = InputUtils::LegacyFilterInput($_POST['WorkPhone']);
-    $sCellPhone = InputUtils::LegacyFilterInput($_POST['CellPhone']);
-    $sEmail = InputUtils::LegacyFilterInput($_POST['Email']);
+    $sHomePhone = InputUtils::legacyFilterInput($_POST['HomePhone']);
+    $sWorkPhone = InputUtils::legacyFilterInput($_POST['WorkPhone']);
+    $sCellPhone = InputUtils::legacyFilterInput($_POST['CellPhone']);
+    $sEmail = InputUtils::legacyFilterInput($_POST['Email']);
     $bSendNewsLetter = isset($_POST['SendNewsLetter']);
 
     $nLatitude = 0.0;
     $nLongitude = 0.0;
     if (array_key_exists('Latitude', $_POST)) {
-        $nLatitude = InputUtils::LegacyFilterInput($_POST['Latitude'], 'float');
+        $nLatitude = InputUtils::legacyFilterInput($_POST['Latitude'], 'float');
     }
     if (array_key_exists('Longitude', $_POST)) {
-        $nLongitude = InputUtils::LegacyFilterInput($_POST['Longitude'], 'float');
+        $nLongitude = InputUtils::legacyFilterInput($_POST['Longitude'], 'float');
     }
 
 
@@ -137,7 +137,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
 
     $nEnvelope = 0;
     if (array_key_exists('Envelope', $_POST)) {
-        $nEnvelope = InputUtils::LegacyFilterInput($_POST['Envelope'], 'int');
+        $nEnvelope = InputUtils::legacyFilterInput($_POST['Envelope'], 'int');
     }
 
     if (is_numeric($nEnvelope)) { // Only integers are allowed as Envelope Numbers
@@ -151,13 +151,13 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
     }
 
     $iCanvasser = 0;
-    if (AuthenticationManager::GetCurrentUser()->isCanvasserEnabled()) { // Only take modifications to this field if the current user is a canvasser
+    if (AuthenticationManager::getCurrentUser()->isCanvasserEnabled()) { // Only take modifications to this field if the current user is a canvasser
         $bOkToCanvass = isset($_POST['OkToCanvass']);
         if (array_key_exists('Canvasser', $_POST)) {
-            $iCanvasser = InputUtils::LegacyFilterInput($_POST['Canvasser']);
+            $iCanvasser = InputUtils::legacyFilterInput($_POST['Canvasser']);
         }
         if ((!$iCanvasser) && array_key_exists('BraveCanvasser', $_POST)) {
-            $iCanvasser = InputUtils::LegacyFilterInput($_POST['BraveCanvasser']);
+            $iCanvasser = InputUtils::legacyFilterInput($_POST['BraveCanvasser']);
         }
         if (empty($iCanvasser)) {
             $iCanvasser = 0;
@@ -166,9 +166,9 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
 
     $iPropertyID = 0;
     if (array_key_exists('PropertyID', $_POST)) {
-        $iPropertyID = InputUtils::LegacyFilterInput($_POST['PropertyID'], 'int');
+        $iPropertyID = InputUtils::legacyFilterInput($_POST['PropertyID'], 'int');
     }
-    $dWeddingDate = InputUtils::LegacyFilterInput($_POST['WeddingDate']);
+    $dWeddingDate = InputUtils::legacyFilterInput($_POST['WeddingDate']);
 
     $bNoFormat_HomePhone = isset($_POST['NoFormat_HomePhone']);
     $bNoFormat_WorkPhone = isset($_POST['NoFormat_WorkPhone']);
@@ -177,18 +177,18 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
     //Loop through the Family Member 'quick entry' form fields
     for ($iCount = 1; $iCount <= $iFamilyMemberRows; $iCount++) {
         // Assign everything to arrays
-        $aFirstNames[$iCount] = InputUtils::LegacyFilterInput($_POST['FirstName'.$iCount]);
-        $aMiddleNames[$iCount] = InputUtils::LegacyFilterInput($_POST['MiddleName'.$iCount]);
-        $aLastNames[$iCount] = InputUtils::LegacyFilterInput($_POST['LastName'.$iCount]);
-        $aSuffix[$iCount] = InputUtils::LegacyFilterInput($_POST['Suffix'.$iCount]);
-        $aRoles[$iCount] = InputUtils::LegacyFilterInput($_POST['Role'.$iCount], 'int');
-        $aGenders[$iCount] = InputUtils::LegacyFilterInput($_POST['Gender'.$iCount], 'int');
-        $aBirthDays[$iCount] = InputUtils::LegacyFilterInput($_POST['BirthDay'.$iCount], 'int');
-        $aBirthMonths[$iCount] = InputUtils::LegacyFilterInput($_POST['BirthMonth'.$iCount], 'int');
-        $aBirthYears[$iCount] = InputUtils::LegacyFilterInput($_POST['BirthYear'.$iCount], 'int');
-        $aClassification[$iCount] = InputUtils::LegacyFilterInput($_POST['Classification'.$iCount], 'int');
-        $aPersonIDs[$iCount] = InputUtils::LegacyFilterInput($_POST['PersonID'.$iCount], 'int');
-        $aUpdateBirthYear[$iCount] = InputUtils::LegacyFilterInput($_POST['UpdateBirthYear'], 'int');
+        $aFirstNames[$iCount] = InputUtils::legacyFilterInput($_POST['FirstName'.$iCount]);
+        $aMiddleNames[$iCount] = InputUtils::legacyFilterInput($_POST['MiddleName'.$iCount]);
+        $aLastNames[$iCount] = InputUtils::legacyFilterInput($_POST['LastName'.$iCount]);
+        $aSuffix[$iCount] = InputUtils::legacyFilterInput($_POST['Suffix'.$iCount]);
+        $aRoles[$iCount] = InputUtils::legacyFilterInput($_POST['Role'.$iCount], 'int');
+        $aGenders[$iCount] = InputUtils::legacyFilterInput($_POST['Gender'.$iCount], 'int');
+        $aBirthDays[$iCount] = InputUtils::legacyFilterInput($_POST['BirthDay'.$iCount], 'int');
+        $aBirthMonths[$iCount] = InputUtils::legacyFilterInput($_POST['BirthMonth'.$iCount], 'int');
+        $aBirthYears[$iCount] = InputUtils::legacyFilterInput($_POST['BirthYear'.$iCount], 'int');
+        $aClassification[$iCount] = InputUtils::legacyFilterInput($_POST['Classification'.$iCount], 'int');
+        $aPersonIDs[$iCount] = InputUtils::legacyFilterInput($_POST['PersonID'.$iCount], 'int');
+        $aUpdateBirthYear[$iCount] = InputUtils::legacyFilterInput($_POST['UpdateBirthYear'], 'int');
 
         // Make sure first names were entered if editing existing family
         if ($iFamilyID > 0) {
@@ -254,7 +254,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
     while ($rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQLI_BOTH)) {
         extract($rowCustomField);
 
-        $currentFieldData = InputUtils::LegacyFilterInput($_POST[$fam_custom_Field]);
+        $currentFieldData = InputUtils::legacyFilterInput($_POST[$fam_custom_Field]);
 
         $bErrorFlag |= !validateCustomField($type_ID, $currentFieldData, $fam_custom_Field, $aCustomErrors);
 
@@ -322,7 +322,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
                         $sEmail."',".
                         $dWeddingDate.",'".
                         date('YmdHis')."',".
-                        AuthenticationManager::GetCurrentUser()->getId().','.
+                        AuthenticationManager::getCurrentUser()->getId().','.
                         $bSendNewsLetterString.','.
                         $bOkToCanvassString.",'".
                         $iCanvasser."',".
@@ -347,9 +347,9 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
                         'fam_WeddingDate='.$dWeddingDate.','.
                         'fam_Envelope='.$nEnvelope.','.
                         "fam_DateLastEdited='".date('YmdHis')."',".
-                        'fam_EditedBy = '.AuthenticationManager::GetCurrentUser()->getId().','.
+                        'fam_EditedBy = '.AuthenticationManager::getCurrentUser()->getId().','.
                         'fam_SendNewsLetter = '.$bSendNewsLetterString;
-            if (AuthenticationManager::GetCurrentUser()->isCanvasserEnabled()) {
+            if (AuthenticationManager::getCurrentUser()->isCanvasserEnabled()) {
                 $sSQL .= ', fam_OkToCanvass = '.$bOkToCanvassString.
                                     ", fam_Canvasser = '".$iCanvasser."'";
             }
@@ -413,7 +413,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
 								$iFamilyID,
 								$aRoles[$iCount],
 								'".date('YmdHis')."',
-								".AuthenticationManager::GetCurrentUser()->getId().",
+								".AuthenticationManager::getCurrentUser()->getId().",
 								$aGenders[$iCount],
 								$aBirthDays[$iCount],
 								$aBirthMonths[$iCount],
@@ -425,7 +425,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
                     $note->setPerId($dbPersonId);
                     $note->setText(gettext('Created via Family'));
                     $note->setType('create');
-                    $note->setEntered(AuthenticationManager::GetCurrentUser()->getId());
+                    $note->setEntered(AuthenticationManager::getCurrentUser()->getId());
                     $note->save();
                     $sSQL = 'INSERT INTO person_custom (per_ID) VALUES ('
                                 .$dbPersonId.')';
@@ -466,7 +466,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
                     $note->setPerId($aPersonIDs[$iCount]);
                     $note->setText(gettext('Updated via Family'));
                     $note->setType('edit');
-                    $note->setEntered(AuthenticationManager::GetCurrentUser()->getId());
+                    $note->setEntered(AuthenticationManager::getCurrentUser()->getId());
                     $note->save();
                 }
             }
@@ -482,7 +482,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
 
             while ($rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQLI_BOTH)) {
                 extract($rowCustomField);
-                if (AuthenticationManager::GetCurrentUser()->isEnabledSecurity($aSecurityType[$fam_custom_FieldSec])) {
+                if (AuthenticationManager::getCurrentUser()->isEnabledSecurity($aSecurityType[$fam_custom_FieldSec])) {
                     $currentFieldData = trim($aCustomData[$fam_custom_Field]);
 
                     sqlCustomField($sSQL, $type_ID, $currentFieldData, $fam_custom_Field, $sCountry);
@@ -501,10 +501,10 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
         //Which submit button did they press?
         if (isset($_POST['FamilySubmit'])) {
             //Send to the view of this person
-            RedirectUtils::Redirect('v2/family/'.$iFamilyID);
+            RedirectUtils::redirect('v2/family/'.$iFamilyID);
         } else {
             //Reload to editor to add another record
-            RedirectUtils::Redirect('FamilyEditor.php');
+            RedirectUtils::redirect('FamilyEditor.php');
         }
     }
 } else {
@@ -811,7 +811,7 @@ require 'Include/Header.php';
                 <?php
             } /* Wedding date can be hidden - General Settings */ ?>
             <div class="row">
-                <?php if (AuthenticationManager::GetCurrentUser()->isCanvasserEnabled()) { // Only show this field if the current user is a canvasser?>
+                <?php if (AuthenticationManager::getCurrentUser()->isCanvasserEnabled()) { // Only show this field if the current user is a canvasser?>
                     <div class="form-group col-md-4">
                         <label><?= gettext('Ok To Canvass') ?>: </label><br/>
                         <input type="checkbox" Name="OkToCanvass" value="1" <?php if ($bOkToCanvass) {
@@ -894,7 +894,7 @@ require 'Include/Header.php';
         <?php mysqli_data_seek($rsCustomFields, 0);
         while ($rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQLI_BOTH)) {
             extract($rowCustomField);
-            if (AuthenticationManager::GetCurrentUser()->isEnabledSecurity($aSecurityType[$fam_custom_FieldSec])) {
+            if (AuthenticationManager::getCurrentUser()->isEnabledSecurity($aSecurityType[$fam_custom_FieldSec])) {
                 ?>
             <div class="row">
                 <div class="form-group col-md-4">
@@ -1111,7 +1111,7 @@ require 'Include/Header.php';
     echo '<input type="hidden" Name="UpdateBirthYear" value="'.$UpdateBirthYear.'">';
 
     echo '<input type="submit" class="btn btn-primary" value="'.gettext('Save').'" Name="FamilySubmit" id="FamilySubmitBottom"> ';
-    if (AuthenticationManager::GetCurrentUser()->isAddRecordsEnabled()) {
+    if (AuthenticationManager::getCurrentUser()->isAddRecordsEnabled()) {
         echo ' <input type="submit" class="btn btn-info" value="'.gettext('Save and Add').'" name="FamilySubmitAndAdd"> ';
     }
     echo ' <input type="button" class="btn btn-default" value="'.gettext('Cancel').'" Name="FamilyCancel"';

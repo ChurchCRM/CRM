@@ -10,6 +10,8 @@
   *
  ******************************************************************************/
 
+namespace ChurchCRM;
+
 // Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
@@ -21,12 +23,13 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Authentication\AuthenticationManager;
 
-if (!AuthenticationManager::GetCurrentUser()->isAdmin()) {
-    RedirectUtils::Redirect('Menu.php');
+if (!AuthenticationManager::getCurrentUser()->isAdmin()) {
+    RedirectUtils::redirect('Menu.php');
     exit;
 }
+
 /**
- A monogamous society is assumed, however  it can be patriarchal or matriarchal
+ * A monogamous society is assumed, however  it can be patriarchal or matriarchal
  **/
 class Family
 {
@@ -53,7 +56,7 @@ class Family
     }
 
     /** Add what we need to know about members for role assignment later **/
-    public function AddMember($PersonID, $Gender, $Age, $Wedding, $Phone, $Envelope)
+    public function addMember($PersonID, $Gender, $Age, $Wedding, $Phone, $Envelope)
     {
         // add member with un-assigned role
         $this->Members[] = ['personid'     => $PersonID,
@@ -75,7 +78,7 @@ class Family
     }
 
     /** Assigning of roles to be called after all members added **/
-    public function AssignRoles()
+    public function assignRoles()
     {
         // only one member, must be "head"
         if ($this->MemberCount == 1) {
@@ -127,10 +130,8 @@ if (isset($_POST['UploadCSV'])) {
     // Check if a valid CSV file was actually uploaded
     if ($_FILES['CSVfile']['name'] == '') {
         $csvError = gettext('No file selected for upload.');
-    }
-
-    // Valid file, so save it and display the import mapping form.
-    else {
+    } else {
+        // Valid file, so save it and display the import mapping form.
         $csvTempFile = 'import.csv';
         $system_temp = ini_get('session.save_path');
         if (strlen($system_temp) > 0) {
@@ -310,9 +311,9 @@ if (isset($_POST['DoImport'])) {
         $pFile = fopen($csvTempFile, 'r');
 
         $bHasCustom = false;
-        $sDefaultCountry = InputUtils::LegacyFilterInput($_POST['Country']);
-        $iClassID = InputUtils::LegacyFilterInput($_POST['Classification'], 'int');
-        $iDateMode = InputUtils::LegacyFilterInput($_POST['DateMode'], 'int');
+        $sDefaultCountry = InputUtils::legacyFilterInput($_POST['Country']);
+        $iClassID = InputUtils::legacyFilterInput($_POST['Classification'], 'int');
+        $iDateMode = InputUtils::legacyFilterInput($_POST['DateMode'], 'int');
 
         // Get the number of CSV columns for future reference
         $aData = fgetcsv($pFile, 2048, ',');
@@ -470,7 +471,7 @@ if (isset($_POST['DoImport'])) {
 
                         // Donation envelope.. make sure it's available!
                         case 7:
-                            $iEnv = InputUtils::LegacyFilterInput($aData[$col], 'int');
+                            $iEnv = InputUtils::legacyFilterInput($aData[$col], 'int');
                             if ($iEnv == '') {
                                 $iEnvelope = 0;
                             } else {
@@ -574,7 +575,7 @@ if (isset($_POST['DoImport'])) {
 
             // Finish up the person_per SQL..
             $sSQLpersonData .= $iClassID.",'".addslashes($sCountry)."',";
-            $sSQLpersonData .= "'".date('YmdHis')."',".AuthenticationManager::GetCurrentUser()->getId();
+            $sSQLpersonData .= "'".date('YmdHis')."',".AuthenticationManager::getCurrentUser()->getId();
             $sSQLpersonData .= ')';
 
             $sSQLpersonFields .= 'per_cls_ID, per_Country, per_DateEntered, per_EnteredBy';
@@ -617,7 +618,7 @@ if (isset($_POST['DoImport'])) {
                     extract(mysqli_fetch_array($rsExistingFamily));
                     $famid = $fam_ID;
                     if (array_key_exists($famid, $Families)) {
-                        $Families[$famid]->AddMember(
+                        $Families[$famid]->addMember(
                             $per_ID,
                             $iGender,
                             GetAge($iBirthMonth, $iBirthDay, $iBirthYear),
@@ -654,7 +655,7 @@ if (isset($_POST['DoImport'])) {
                                      '"'.$per_CellPhone.'", '.
                                      '"'.$per_Email.'",'.
                                      '"'.date('YmdHis').'",'.
-                                     '"'.AuthenticationManager::GetCurrentUser()->getId().'");';
+                                     '"'.AuthenticationManager::getCurrentUser()->getId().'");';
                     RunQuery($sSQL);
 
                     $sSQL = 'SELECT LAST_INSERT_ID()';
@@ -665,13 +666,13 @@ if (isset($_POST['DoImport'])) {
                     $note->setFamId($famid);
                     $note->setText(gettext('Imported'));
                     $note->setType('create');
-                    $note->setEntered(AuthenticationManager::GetCurrentUser()->getId());
+                    $note->setEntered(AuthenticationManager::getCurrentUser()->getId());
                     $note->save();
                     $sSQL = "INSERT INTO `family_custom` (`fam_ID`) VALUES ('".$famid."')";
                     RunQuery($sSQL);
 
-                    $fFamily = new Family(InputUtils::LegacyFilterInput($_POST['FamilyMode'], 'int'));
-                    $fFamily->AddMember(
+                    $fFamily = new Family(InputUtils::legacyFilterInput($_POST['FamilyMode'], 'int'));
+                    $fFamily->addMember(
                         $per_ID,
                         $iGender,
                         GetAge($iBirthMonth, $iBirthDay, $iBirthYear),
@@ -710,9 +711,8 @@ if (isset($_POST['DoImport'])) {
                                 } else {
                                     $currentFieldData = implode('-', $aDate);
                                 }
-                            }
-                            // If boolean, convert to the expected values for custom field
-                            elseif ($currentType == 1) {
+                            } elseif ($currentType == 1) {
+                                // If boolean, convert to the expected values for custom field
                                 if (strlen($currentFieldData)) {
                                     $currentFieldData = ConvertToBoolean($currentFieldData);
                                 }
@@ -740,7 +740,7 @@ if (isset($_POST['DoImport'])) {
             $note->setPerId($iPersonID);
             $note->setText(gettext('Imported'));
             $note->setType('create');
-            $note->setEntered(AuthenticationManager::GetCurrentUser()->getId());
+            $note->setEntered(AuthenticationManager::getCurrentUser()->getId());
             $note->save();
             if ($bHasCustom) {
                 $sSQL = "INSERT INTO `person_custom` (`per_ID`) VALUES ('".$iPersonID."')";
@@ -761,9 +761,8 @@ if (isset($_POST['DoImport'])) {
                             } else {
                                 $currentFieldData = implode('-', $aDate);
                             }
-                        }
-                        // If boolean, convert to the expected values for custom field
-                        elseif ($currentType == 1) {
+                        } elseif ($currentType == 1) {
+                            // If boolean, convert to the expected values for custom field
                             if (strlen($currentFieldData)) {
                                 $currentFieldData = ConvertToBoolean($currentFieldData);
                             }
@@ -797,7 +796,7 @@ if (isset($_POST['DoImport'])) {
 
         // update roles now that we have complete family data.
         foreach ($Families as $fid => $family) {
-            $family->AssignRoles();
+            $family->assignRoles();
             foreach ($family->Members as $member) {
                 switch ($member['role']) {
                     case 1:

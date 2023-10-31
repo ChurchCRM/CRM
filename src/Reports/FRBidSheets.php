@@ -7,6 +7,8 @@
 
 ******************************************************************************/
 
+namespace ChurchCRM\Reports;
+
 require '../Include/Config.php';
 require '../Include/Functions.php';
 
@@ -15,7 +17,7 @@ use ChurchCRM\Reports\ChurchInfoReport;
 
 $iCurrentFundraiser = $_GET['CurrentFundraiser'];
 
-class PDF_FRBidSheetsReport extends ChurchInfoReport
+class PdfFRBidSheetsReport extends ChurchInfoReport
 {
     // Constructor
     public function __construct()
@@ -27,11 +29,11 @@ class PDF_FRBidSheetsReport extends ChurchInfoReport
         $this->SetAutoPageBreak(true, 25);
     }
 
-    public function AddPage($orientation = '', $format = '', $rotation = 0)
+    public function addPage($orientation = '', $format = '', $rotation = 0)
     {
         global $fr_title, $fr_description;
 
-        parent::AddPage($orientation, $format, $rotation);
+        parent::addPage($orientation, $format, $rotation);
 
         //      $this->SetFont("Times",'B',16);
 //      $this->Write (8, $fr_title."\n");
@@ -55,14 +57,14 @@ $sSQL = 'SELECT * FROM donateditem_di LEFT JOIN person_per on per_ID=di_donor_ID
 
 $rsItems = RunQuery($sSQL);
 
-$pdf = new PDF_FRBidSheetsReport();
+$pdf = new PdfFRBidSheetsReport();
 $pdf->SetTitle($fr_title);
 
 // Loop through items
 while ($oneItem = mysqli_fetch_array($rsItems)) {
     extract($oneItem);
 
-    $pdf->AddPage();
+    $pdf->addPage();
 
     $pdf->SetFont('Times', 'B', 24);
     $pdf->Write(5, $di_item.":\t");

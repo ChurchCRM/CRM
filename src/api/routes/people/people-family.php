@@ -47,7 +47,7 @@ $app->group('/family/{familyId:[0-9]+}', function () use ($app) {
         $family = $request->getAttribute("family");
         $familyAddress = $family->getAddress();
         $familyLatLong = GeoUtils::getLatLong($familyAddress);
-        $familyDrivingInfo = GeoUtils::DrivingDistanceMatrix($familyAddress, ChurchMetaData::getChurchAddress());
+        $familyDrivingInfo = GeoUtils::drivingDistanceMatrix($familyAddress, ChurchMetaData::getChurchAddress());
         $geoLocationInfo = array_merge($familyDrivingInfo, $familyLatLong);
         return $response->withJson($geoLocationInfo);
     });

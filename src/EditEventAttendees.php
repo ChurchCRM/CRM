@@ -18,8 +18,8 @@ $EvtDate = $_POST['EDate'];
 // process the action inputs
 //
 if ($sAction == 'Delete') {
-    $dpeEventID = InputUtils::LegacyFilterInput($_POST['DelPerEventID'], 'int');
-    $dpePerID = InputUtils::LegacyFilterInput($_POST['DelPerID'], 'int');
+    $dpeEventID = InputUtils::legacyFilterInput($_POST['DelPerEventID'], 'int');
+    $dpePerID = InputUtils::legacyFilterInput($_POST['DelPerID'], 'int');
     $dpeSQL = "DELETE FROM event_attend WHERE event_id=$dpeEventID AND person_id=$dpePerID LIMIT 1";
     RunQuery($dpeSQL);
     $ShowAttendees = 1;
