@@ -50,8 +50,4 @@ function getDBTerms(Request $request, Response $response, array $p_args)
 
 
     return $response->withJson(['terms' => $terms]);
-
 }
-
-
-

@@ -23,17 +23,17 @@ require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
                 </p>
 
                 <?php
-                    if (isset($_GET['Timeout'])) {
-                        $loginPageMsg = gettext('Your previous session timed out.  Please login again.');
-                    }
+                if (isset($_GET['Timeout'])) {
+                    $loginPageMsg = gettext('Your previous session timed out.  Please login again.');
+                }
 
                     // output warning and error messages
-                    if (isset($sErrorText)) {
-                        echo '<div class="callout callout-danger">' . $sErrorText . '</div>';
-                    }
-                    if (isset($loginPageMsg)) {
-                        echo '<div class="callout callout-warning">' . $loginPageMsg . '</div>';
-                    }
+                if (isset($sErrorText)) {
+                    echo '<div class="callout callout-danger">' . $sErrorText . '</div>';
+                }
+                if (isset($loginPageMsg)) {
+                    echo '<div class="callout callout-warning">' . $loginPageMsg . '</div>';
+                }
                 ?>
                 <form class="form-signin" role="form" method="post" name="LoginForm" action="<?= $localAuthNextStepURL ?>">
                     <div class="input-group mb-3">

@@ -2,14 +2,14 @@
 
 namespace ChurchCRM\Slim\Middleware\Request\Auth;
 
-class EditRecordsRoleAuthMiddleware extends BaseAuthRoleMiddleware {
-
-    function hasRole()
+class EditRecordsRoleAuthMiddleware extends BaseAuthRoleMiddleware
+{
+    protected function hasRole()
     {
         return $this->user->isEditRecordsEnabled();
     }
 
-    function noRoleMessage()
+    protected function noRoleMessage()
     {
         return gettext('User must have Edit Records permission');
     }

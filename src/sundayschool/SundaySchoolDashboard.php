@@ -46,12 +46,12 @@ require '../Include/Header.php';
     <h3 class="card-title"><?= gettext('Functions') ?></h3>
   </div>
   <div class="card-body">
-    <?php if (AuthenticationManager::GetCurrentUser()->isManageGroupsEnabled()) {
-    ?>
+    <?php if (AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) {
+        ?>
       <button class="btn btn-app" data-toggle="modal" data-target="#add-class"><i
           class="fa fa-plus-square"></i><?= gettext('Add New Class') ?></button>
-    <?php
-} ?>
+        <?php
+    } ?>
     <a href="SundaySchoolReports.php" class="btn btn-app"
        title="<?= gettext('Generate class lists and attendance sheets'); ?>"><i
         class="fa fa-file-pdf"></i><?= gettext('Reports'); ?></a>
@@ -157,19 +157,19 @@ require '../Include/Header.php';
       </thead>
       <tbody>
       <?php foreach ($classStats as $class) {
-        ?>
+            ?>
         <tr>
           <td style="width:80px">
-          	<a href='SundaySchoolClassView.php?groupId=<?= $class['id'] ?>'>
+            <a href='SundaySchoolClassView.php?groupId=<?= $class['id'] ?>'>
             <span class="fa-stack">
-							<i class="fa fa-square fa-stack-2x"></i>
-							<i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
+                            <i class="fa fa-square fa-stack-2x"></i>
+                            <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
             </span>
             </a>
-          	<a href='<?= SystemURLs::getRootPath() ?>/GroupEditor.php?GroupID=<?= $class['id'] ?>'>
+            <a href='<?= SystemURLs::getRootPath() ?>/GroupEditor.php?GroupID=<?= $class['id'] ?>'>
             <span class="fa-stack">
-							<i class="fa fa-square fa-stack-2x"></i>
-							<i class="fa fas fa-pen fa-stack-1x fa-inverse"></i>
+                            <i class="fa fa-square fa-stack-2x"></i>
+                            <i class="fa fas fa-pen fa-stack-1x fa-inverse"></i>
             </span>
             </a>
           </td>
@@ -177,8 +177,8 @@ require '../Include/Header.php';
           <td><?= $class['teachers'] ?></td>
           <td><?= $class['kids'] ?></td>
         </tr>
-      <?php
-    } ?>
+            <?php
+      } ?>
       </tbody>
     </table>
   </div>
@@ -211,33 +211,33 @@ require '../Include/Header.php';
       <tbody>
       <?php
 
-      foreach ($kidsWithoutClasses as $child) {
-          extract($child);
+        foreach ($kidsWithoutClasses as $child) {
+            extract($child);
 
-          $hideAge = $flags == 1 || $birthYear == '' || $birthYear == '0';
-          $birthDate = MiscUtils::FormatBirthDate($birthYear, $birthMonth, $birthDay, '-', $flags);
+            $hideAge = $flags == 1 || $birthYear == '' || $birthYear == '0';
+            $birthDate = MiscUtils::formatBirthDate($birthYear, $birthMonth, $birthDay, '-', $flags);
 
-          echo '<tr>';
-          echo "<td><a href='../PersonView.php?PersonID=".$kidId."'>";
-          echo '	<span class="fa-stack">';
-          echo '	<i class="fa fa-square fa-stack-2x"></i>';
-          echo '	<i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>';
-          echo '	</span></a></td>';
-          echo '<td>'.$firstName.'</td>';
-          echo '<td>'.$LastName.'</td>';
-          echo '<td>'.$birthDate.'</td>';
-          echo "<td>".MiscUtils::FormatAge($birthMonth, $birthDay, $birthYear, $hideAge)."</td>";
-          echo '<td>'.$Address1.' '.$Address2.' '.$city.' '.$state.' '.$zip.'</td>';
-          echo '</tr>';
-      }
+            echo '<tr>';
+            echo "<td><a href='../PersonView.php?PersonID=" . $kidId . "'>";
+            echo '	<span class="fa-stack">';
+            echo '	<i class="fa fa-square fa-stack-2x"></i>';
+            echo '	<i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>';
+            echo '	</span></a></td>';
+            echo '<td>' . $firstName . '</td>';
+            echo '<td>' . $LastName . '</td>';
+            echo '<td>' . $birthDate . '</td>';
+            echo "<td>" . MiscUtils::formatAge($birthMonth, $birthDay, $birthYear, $hideAge) . "</td>";
+            echo '<td>' . $Address1 . ' ' . $Address2 . ' ' . $city . ' ' . $state . ' ' . $zip . '</td>';
+            echo '</tr>';
+        }
 
-      ?>
+        ?>
       </tbody>
     </table>
   </div>
 </div>
-<?php if (AuthenticationManager::GetCurrentUser()->isManageGroupsEnabled()) {
-          ?>
+<?php if (AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) {
+    ?>
   <div class="modal fade" id="add-class" tabindex="-1" role="dialog" aria-labelledby="add-class-label"
        aria-hidden="true">
     <div class="modal-dialog">
@@ -292,6 +292,6 @@ require '../Include/Header.php';
     });
   </script>
 
-<?php
-      }
+    <?php
+}
 require '../Include/Footer.php' ?>

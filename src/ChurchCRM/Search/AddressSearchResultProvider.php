@@ -9,25 +9,27 @@ use ChurchCRM\Search\SearchResult;
 use ChurchCRM\Search\BaseSearchResultProvider;
 use ChurchCRM\dto\SystemConfig;
 
-class AddressSearchResultProvider extends BaseSearchResultProvider {
+class AddressSearchResultProvider extends BaseSearchResultProvider
+{
     public function __construct()
     {
         $this->pluralNoun = "Address";
         parent::__construct();
     }
 
-    public function getSearchResults(string $SearchQuery) {
+    public function getSearchResults(string $SearchQuery)
+    {
         if (SystemConfig::getBooleanValue("bSearchIncludeAddresses")) {
              $this->addSearchResults($this->getPersonSearchResultsByPartialAddress($SearchQuery));
         }
         return $this->formatSearchGroup();
     }
 
-    private function getPersonSearchResultsByPartialAddress(string $SearchQuery) {
+    private function getPersonSearchResultsByPartialAddress(string $SearchQuery)
+    {
         $searchResults = [];
         $id = 0;
         try {
-
             $searchLikeString = '%' . $SearchQuery . '%';
             $addresses = FamilyQuery::create()->
             filterByCity($searchLikeString, Criteria::LIKE)->
@@ -40,7 +42,7 @@ class AddressSearchResultProvider extends BaseSearchResultProvider {
             if (!empty($addresses)) {
                 $id++;
                 foreach ($addresses as $address) {
-                    array_push($searchResults, new SearchResult("person-address-".$id, $address->getFamilyString(SystemConfig::getBooleanValue("bSearchIncludeFamilyHOH")),$address->getViewURI()));
+                    array_push($searchResults, new SearchResult("person-address-" . $id, $address->getFamilyString(SystemConfig::getBooleanValue("bSearchIncludeFamilyHOH")), $address->getViewURI()));
                 }
             }
         } catch (\Exception $e) {
@@ -49,9 +51,4 @@ class AddressSearchResultProvider extends BaseSearchResultProvider {
 
         return $searchResults;
     }
-
-
-
-
-
 }

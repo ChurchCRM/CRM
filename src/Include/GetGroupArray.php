@@ -1,4 +1,5 @@
 <?php
+
 /*******************************************************************************
  *
  *  filename    : Include/GetGroupArray.php
@@ -14,18 +15,18 @@ function GetGroupArray($iGroupID)
 		   FROM record2property_r2p
 		   LEFT JOIN property_pro ON pro_ID = r2p_pro_ID
 		   LEFT JOIN propertytype_prt ON propertytype_prt.prt_ID = property_pro.pro_prt_ID
-		   WHERE pro_Class = 'g' AND r2p_record_ID = ".$iGroupID.
+		   WHERE pro_Class = 'g' AND r2p_record_ID = " . $iGroupID .
     ' ORDER BY prt_Name, pro_Name';
     $rsAssignedProperties = RunQuery($sSQL);
 
     // Get the group's role list ID
-    $sSQL = 'SELECT grp_RoleListID,grp_hasSpecialProps FROM group_grp WHERE grp_ID ='.$iGroupID;
+    $sSQL = 'SELECT grp_RoleListID,grp_hasSpecialProps FROM group_grp WHERE grp_ID =' . $iGroupID;
     $aTemp = mysqli_fetch_array(RunQuery($sSQL));
     $iRoleListID = $aTemp[0];
     $bHasSpecialProps = ($aTemp[1] == 'true');
 
     // Get the roles
-    $sSQL = 'SELECT * FROM list_lst WHERE lst_ID = '.$iRoleListID.' ORDER BY lst_OptionSequence';
+    $sSQL = 'SELECT * FROM list_lst WHERE lst_ID = ' . $iRoleListID . ' ORDER BY lst_OptionSequence';
     $rsRoles = RunQuery($sSQL);
     $numRoles = mysqli_num_rows($rsRoles);
 
@@ -40,7 +41,7 @@ function GetGroupArray($iGroupID)
 			   LEFT JOIN list_lst ON p2g2r_rle_ID = lst_OptionID AND lst_ID = $iRoleListID
 			   LEFT JOIN group_grp ON grp_ID = p2g2r_grp_ID
 			   LEFT JOIN family_fam ON per_fam_ID = family_fam.fam_ID
-		   WHERE p2g2r_grp_ID = ".$iGroupID.' ORDER BY per_LastName, per_FirstName';
+		   WHERE p2g2r_grp_ID = " . $iGroupID . ' ORDER BY per_LastName, per_FirstName';
     $rsGroupMembers = RunQuery($sSQL);
     $row = 0;
     while ($aGroupMember = mysqli_fetch_array($rsGroupMembers)) {

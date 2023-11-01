@@ -13,7 +13,6 @@ use Slim\Http\Request;
 use Slim\Http\Response;
 use ChurchCRM\Utils\LoggerUtils;
 
-
 $app->group('/forgot-password', function () use ($app) {
     if (SystemConfig::getBooleanValue('bEnableLostPassword')) {
         $app->get('/reset-request', "forgotPassword");
@@ -30,7 +29,7 @@ $app->group('/forgot-password', function () use ($app) {
                     $token->save();
                     $password = $user->resetPasswordToRandom();
                     $user->save();
-                    LoggerUtils::getAuthLogger()->info("Password reset for user ". $user->getUserName());
+                    LoggerUtils::getAuthLogger()->info("Password reset for user " . $user->getUserName());
                     $email = new ResetPasswordEmail($user, $password);
                     if ($email->send()) {
                         return $renderer->render($response, 'password/password-check-email.php', ['sRootPath' => SystemURLs::getRootPath()]);
@@ -43,8 +42,7 @@ $app->group('/forgot-password', function () use ($app) {
 
             return $renderer->render($response, "error.php", ["message" => gettext("Unable to reset password")]);
         });
-    }
-    else {
+    } else {
         $app->get('/{foo:.*}', function ($request, $response, $args) {
             $renderer = new PhpRenderer('templates');
             return $renderer->render($response, '/error.php', ["message" => gettext("Password reset not available.  Please contact your system administrator")]);
@@ -53,11 +51,12 @@ $app->group('/forgot-password', function () use ($app) {
 });
 
 
-function forgotPassword($request, $response, $args) {
+function forgotPassword($request, $response, $args)
+{
     $renderer = new PhpRenderer('templates/password/');
     $pageArgs = [
         'sRootPath' => SystemURLs::getRootPath(),
-        "PasswordResetXHREndpoint" => AuthenticationManager::GetForgotPasswordURL()
+        "PasswordResetXHREndpoint" => AuthenticationManager::getForgotPasswordURL()
     ];
     return $renderer->render($response, 'enter-username.php', $pageArgs);
 }
@@ -78,10 +77,10 @@ function userPasswordReset(Request $request, Response $response, array $args)
             if (!$email->send()) {
                 LoggerUtils::getAppLogger()->error($email->getError());
             }
-            LoggerUtils::getAuthLogger()->info("Password reset token for ". $user->getUserName() . " sent to email address: " . $user->getEmail());
+            LoggerUtils::getAuthLogger()->info("Password reset token for " . $user->getUserName() . " sent to email address: " . $user->getEmail());
             return $response->withStatus(200);
         } else {
-            return $response->withStatus(404, gettext("User") . " [" . $userName . "] ". gettext("no found or user without an email"));
+            return $response->withStatus(404, gettext("User") . " [" . $userName . "] " . gettext("no found or user without an email"));
         }
     }
     return $response->withStatus(400, gettext("UserName not set"));

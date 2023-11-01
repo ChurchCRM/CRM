@@ -4,7 +4,7 @@ use ChurchCRM\dto\SystemURLs;
 
 // Set the page title and include HTML header
 $sPageTitle = "ChurchCRM - Sunday School Device Kiosk";
-require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
+require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
 ?>
 <link rel="stylesheet" href="<?= SystemURLs::getRootPath() ?>/skin/kiosk.css">
 
@@ -34,5 +34,5 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
 
 <?php
 // Add the page footer
-require(SystemURLs::getDocumentRoot(). "/Include/FooterNotLoggedIn.php");
+require(SystemURLs::getDocumentRoot() . "/Include/FooterNotLoggedIn.php");
 ?>

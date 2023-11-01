@@ -1,4 +1,5 @@
 <?php
+
 echo <<<'EOD'
 <div class="card">
     <div class="card-header with-border">
@@ -15,7 +16,7 @@ echo '  <td>';
 echo '  <input name="bulkmailpresort" type="checkbox" onclick="codename()"';
 echo '  id="BulkMailPresort" value="1" ';
 if (array_key_exists('buildmailpresort', $_COOKIE) && $_COOKIE['bulkmailpresort']) {
-echo 'checked';
+    echo 'checked';
 }
 echo '  ><br></td></tr>';
 
@@ -23,13 +24,13 @@ echo '  <tr><td>' . gettext('Quiet Presort') . '</td>';
 echo '  <td>';
 echo '  <input ';
 if (array_key_exists('buildmailpresort', $_COOKIE) && !$_COOKIE['bulkmailpresort']) {
-echo 'disabled ';
+    echo 'disabled ';
 }   // This would be better with $_SESSION variable
 // instead of cookie ... (save $_SESSION in MySQL)
 echo 'name="bulkmailquiet" type="checkbox" onclick="codename()"';
 echo '  id="QuietBulkMail" value="1" ';
 if (array_key_exists('bulkmailquiet', $_COOKIE) && $_COOKIE['bulkmailquiet'] && array_key_exists('buildmailpresort', $_COOKIE) && $_COOKIE['bulkmailpresort']) {
-echo 'checked';
+    echo 'checked';
 }
 echo '  ><br></td></tr>';
 

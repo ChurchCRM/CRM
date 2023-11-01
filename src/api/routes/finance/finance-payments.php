@@ -20,16 +20,16 @@ $app->group('/payments', function () use ($app) {
     $app->get('/family/{familyId:[0-9]+}/list', function (Request $request, Response $response, array $args) {
         $familyId = $request->getAttribute("route")->getArgument("familyId");
         $query = PledgeQuery::create()->filterByFamId($familyId);
-        if (!empty(AuthenticationManager::GetCurrentUser()->getShowSince())) {
-            $query->filterByDate(AuthenticationManager::GetCurrentUser()->getShowSince(), Criteria::GREATER_EQUAL);
+        if (!empty(AuthenticationManager::getCurrentUser()->getShowSince())) {
+            $query->filterByDate(AuthenticationManager::getCurrentUser()->getShowSince(), Criteria::GREATER_EQUAL);
         }
-        if (!AuthenticationManager::GetCurrentUser()->isShowPayments()) {
+        if (!AuthenticationManager::getCurrentUser()->isShowPayments()) {
             $query->filterByPledgeOrPayment("Payment", Criteria::NOT_EQUAL);
         }
-        if (!AuthenticationManager::GetCurrentUser()->isShowPledges()) {
+        if (!AuthenticationManager::getCurrentUser()->isShowPledges()) {
             $query->filterByPledgeOrPayment("Pledge", Criteria::NOT_EQUAL);
         }
-        $query->innerJoinDonationFund()->withColumn("donationfund_fun.fun_Name" , "PledgeName");
+        $query->innerJoinDonationFund()->withColumn("donationfund_fun.fun_Name", "PledgeName");
         $data = $query->find();
 
         $rows = [];

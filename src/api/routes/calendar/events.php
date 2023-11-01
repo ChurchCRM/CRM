@@ -17,8 +17,8 @@ $app->group('/events', function () use ($app) {
     $app->get('/', 'getAllEvents');
     $app->get('', 'getAllEvents');
     $app->get("/types", "getEventTypes");
-    $app->get('/{id}', 'getEvent')->add(new EventsMiddleware);
-    $app->get('/{id}/', 'getEvent')->add(new EventsMiddleware);
+    $app->get('/{id}', 'getEvent')->add(new EventsMiddleware());
+    $app->get('/{id}/', 'getEvent')->add(new EventsMiddleware());
     $app->get('/{id}/primarycontact', 'getEventPrimaryContact');
     $app->get('/{id}/secondarycontact', 'getEventSecondaryContact');
     $app->get('/{id}/location', 'getEventLocation');
@@ -26,11 +26,10 @@ $app->group('/events', function () use ($app) {
 
     $app->post('/', 'newEvent')->add(new AddEventsRoleAuthMiddleware());
     $app->post('', 'newEvent')->add(new AddEventsRoleAuthMiddleware());
-    $app->post('/{id}', 'updateEvent')->add(new AddEventsRoleAuthMiddleware())->add(new EventsMiddleware);
+    $app->post('/{id}', 'updateEvent')->add(new AddEventsRoleAuthMiddleware())->add(new EventsMiddleware());
     $app->post('/{id}/time', 'setEventTime')->add(new AddEventsRoleAuthMiddleware());
 
     $app->delete("/{id}", 'deleteEvent')->add(new AddEventsRoleAuthMiddleware());
-
 });
 
 function getAllEvents($request, Response $response, $args)
@@ -125,13 +124,13 @@ function newEvent($request, $response, $args)
     }
 
     // we have event type and pined calendars.  now create the event.
-    $event = new Event;
+    $event = new Event();
     $event->setTitle($input->Title);
     $event->setEventType($type);
     $event->setDesc($input->Desc);
     $event->setStart(str_replace("T", " ", $input->Start));
     $event->setEnd(str_replace("T", " ", $input->End));
-    $event->setText(InputUtils::FilterHTML($input->Text));
+    $event->setText(InputUtils::filterHTML($input->Text));
     $event->setCalendars($calendars);
     $event->save();
 
@@ -142,7 +141,7 @@ function updateEvent($request, $response, $args)
 {
 
 
-    $e=new Event();
+    $e = new Event();
     //$e->getId();
     $input = $request->getParsedBody();
     $Event = $request->getAttribute("event");
@@ -170,14 +169,13 @@ function setEventTime($request, Response $response, $args)
     $event->setEnd($input->endTime);
     $event->save();
     return $response->withJson(["status" => "success"]);
-
 }
 
 
 function unusedSetEventAttendance()
 {
     if ($input->Total > 0 || $input->Visitors || $input->Members) {
-        $eventCount = new EventCounts;
+        $eventCount = new EventCounts();
         $eventCount->setEvtcntEventid($event->getID());
         $eventCount->setEvtcntCountid(1);
         $eventCount->setEvtcntCountname('Total');
@@ -185,7 +183,7 @@ function unusedSetEventAttendance()
         $eventCount->setEvtcntNotes($input->EventCountNotes);
         $eventCount->save();
 
-        $eventCount = new EventCounts;
+        $eventCount = new EventCounts();
         $eventCount->setEvtcntEventid($event->getID());
         $eventCount->setEvtcntCountid(2);
         $eventCount->setEvtcntCountname('Members');
@@ -193,7 +191,7 @@ function unusedSetEventAttendance()
         $eventCount->setEvtcntNotes($input->EventCountNotes);
         $eventCount->save();
 
-        $eventCount = new EventCounts;
+        $eventCount = new EventCounts();
         $eventCount->setEvtcntEventid($event->getID());
         $eventCount->setEvtcntCountid(3);
         $eventCount->setEvtcntCountname('Visitors');

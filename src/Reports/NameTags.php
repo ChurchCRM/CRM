@@ -1,4 +1,5 @@
 <?php
+
 /*******************************************************************************
 *
 *  filename    : Reports/NameTags.php
@@ -11,13 +12,13 @@ require '../Include/Config.php';
 require '../Include/Functions.php';
 
 use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\Reports\PDF_Label;
+use ChurchCRM\Reports\PdfLabel;
 use ChurchCRM\Utils\InputUtils;
 
-$sLabelFormat = InputUtils::LegacyFilterInput($_GET['labeltype']);
+$sLabelFormat = InputUtils::legacyFilterInput($_GET['labeltype']);
 setcookie('labeltype', $sLabelFormat, ['expires' => time() + 60 * 60 * 24 * 90, 'path' => '/']);
 
-$pdf = new PDF_Label($sLabelFormat);
+$pdf = new PdfLabel($sLabelFormat);
 
 $sFontInfo = FontFromName($_GET['labelfont']);
 setcookie('labelfont', $_GET['labelfont'], ['expires' => time() + 60 * 60 * 24 * 90, 'path' => '/']);
@@ -26,12 +27,12 @@ setcookie('labelfontsize', $sFontSize, ['expires' => time() + 60 * 60 * 24 * 90,
 $pdf->SetFont($sFontInfo[0], $sFontInfo[1]);
 
 if ($sFontSize != 'default') {
-    $pdf->Set_Char_Size($sFontSize);
+    $pdf->setCharSize($sFontSize);
 }
 //if($sFontSize != "default")
-//	$pdf->SetFontSize($sFontSize);
+//  $pdf->SetFontSize($sFontSize);
 
-$sSQL = 'SELECT * FROM person_per WHERE per_ID IN ('.ConvertCartToString($_SESSION['aPeopleCart']).') ORDER BY per_LastName';
+$sSQL = 'SELECT * FROM person_per WHERE per_ID IN (' . convertCartToString($_SESSION['aPeopleCart']) . ') ORDER BY per_LastName';
 $rsPersons = RunQuery($sSQL);
 
 while ($aPer = mysqli_fetch_array($rsPersons)) {
@@ -40,7 +41,7 @@ while ($aPer = mysqli_fetch_array($rsPersons)) {
     $PosX = $pdf->_Margin_Left + ($pdf->_COUNTX * ($pdf->_Width + $pdf->_X_Space));
     $PosY = $pdf->_Margin_Top + ($pdf->_COUNTY * ($pdf->_Height + $pdf->_Y_Space));
 
-    $perimg = '../Images/Person/'.$per_ID.'.jpg';
+    $perimg = '../Images/Person/' . $per_ID . '.jpg';
     if (file_exists($perimg)) {
         $s = getimagesize($perimg);
         $h = ($pdf->_Width / $s[0]) * $s[1];
@@ -61,29 +62,29 @@ while ($aPer = mysqli_fetch_array($rsPersons)) {
 
         if ($maxWid > $useWid) {
             $useFontSize = (int) ($sFontSize * $useWid / $maxWid);
-            $pdf->Set_Char_Size($useFontSize);
+            $pdf->setCharSize($useFontSize);
         }
 
         $pdf->SetXY($PosX + $pdf->_Width / 2, $PosY + 3);
         $pdf->MultiCell($pdf->_Width / 2, $pdf->_Line_Height, iconv('UTF-8', 'ISO-8859-1', $labelStr));
-        $pdf->Set_Char_Size($sFontSize);
-        $pdf->Add_PDF_Label('');
+        $pdf->setCharSize($sFontSize);
+        $pdf->addPdfLabel('');
     } else {
         $labelStr = sprintf("%s %s\n\n%d", $per_FirstName, $per_LastName, $per_ID);
-        $nameWid = $pdf->GetStringWidth($per_FirstName.' '.$per_LastName);
+        $nameWid = $pdf->GetStringWidth($per_FirstName . ' ' . $per_LastName);
         $useWid = $pdf->_Width - 2;
         if ($nameWid > $useWid) {
             $useFontSize = (int) ($sFontSize * $useWid / $nameWid);
-            $pdf->Set_Char_Size($useFontSize);
+            $pdf->setCharSize($useFontSize);
         }
-        $pdf->Add_PDF_Label($labelStr);
-        $pdf->Set_Char_Size($sFontSize);
+        $pdf->addPdfLabel($labelStr);
+        $pdf->setCharSize($sFontSize);
     }
 }
 
 header('Pragma: public');  // Needed for IE when using a shared SSL certificate
 if (SystemConfig::getValue('iPDFOutputType') == 1) {
-    $pdf->Output('NameTags'.date(SystemConfig::getValue("sDateFilenameFormat")).'.pdf', 'D');
+    $pdf->Output('NameTags' . date(SystemConfig::getValue("sDateFilenameFormat")) . '.pdf', 'D');
 } else {
     $pdf->Output();
 }

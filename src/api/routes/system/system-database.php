@@ -32,7 +32,7 @@ $app->group('/database', function () use ($app) {
 
     $app->post('/backup', function ($request, $response, $args) {
         $input = (object)$request->getParsedBody();
-        $BaseName = preg_replace('/[^a-zA-Z0-9\-_]/','', SystemConfig::getValue('sChurchName')). "-" . date(SystemConfig::getValue("sDateFilenameFormat"));
+        $BaseName = preg_replace('/[^a-zA-Z0-9\-_]/', '', SystemConfig::getValue('sChurchName')) . "-" . date(SystemConfig::getValue("sDateFilenameFormat"));
         $BackupType = $input->BackupType;
         $Backup = new BackupJob(
             $BaseName,
@@ -41,40 +41,39 @@ $app->group('/database', function () use ($app) {
             $input->EncryptBackup ?? "",
             $input->BackupPassword ?? ""
         );
-        $Backup->Execute();
+        $Backup->execute();
         return $response->withJson($Backup);
     });
 
     $app->post('/backupRemote', function ($request, $response, $args) {
-      if (SystemConfig::getValue('sExternalBackupUsername') && SystemConfig::getValue('sExternalBackupPassword') && SystemConfig::getValue('sExternalBackupEndpoint')) {
-        $input = (object)$request->getParsedBody();
-        $BaseName = preg_replace('/[^a-zA-Z0-9\-_]/','', SystemConfig::getValue('sChurchName')). "-" . date(SystemConfig::getValue("sDateFilenameFormat"));
-        $BackupType = $input->BackupType;
-        $Backup = new BackupJob(
-            $BaseName,
-            $BackupType,
-            SystemConfig::getValue('bBackupExtraneousImages'),
-            $input->EncryptBackup ?? "",
-            $input->BackupPassword ?? ""
-        );
-        $Backup->Execute();
-        $copyStatus = $Backup->CopyToWebDAV(SystemConfig::getValue('sExternalBackupEndpoint'), SystemConfig::getValue('sExternalBackupUsername'), SystemConfig::getValue('sExternalBackupPassword'));
-        return $response->withJson($copyStatus);
-      }
-      else {
-        throw new \Exception('WebDAV backups are not correctly configured.  Please ensure endpoint, username, and password are set', 500);
-      }
+        if (SystemConfig::getValue('sExternalBackupUsername') && SystemConfig::getValue('sExternalBackupPassword') && SystemConfig::getValue('sExternalBackupEndpoint')) {
+            $input = (object)$request->getParsedBody();
+            $BaseName = preg_replace('/[^a-zA-Z0-9\-_]/', '', SystemConfig::getValue('sChurchName')) . "-" . date(SystemConfig::getValue("sDateFilenameFormat"));
+            $BackupType = $input->BackupType;
+            $Backup = new BackupJob(
+                $BaseName,
+                $BackupType,
+                SystemConfig::getValue('bBackupExtraneousImages'),
+                $input->EncryptBackup ?? "",
+                $input->BackupPassword ?? ""
+            );
+            $Backup->execute();
+            $copyStatus = $Backup->copyToWebDAV(SystemConfig::getValue('sExternalBackupEndpoint'), SystemConfig::getValue('sExternalBackupUsername'), SystemConfig::getValue('sExternalBackupPassword'));
+            return $response->withJson($copyStatus);
+        } else {
+            throw new \Exception('WebDAV backups are not correctly configured.  Please ensure endpoint, username, and password are set', 500);
+        }
     });
 
     $app->post('/restore', function ($request, $response, $args) {
         $RestoreJob = new RestoreJob();
-        $RestoreJob->Execute();
+        $RestoreJob->execute();
         return $response->withJson($RestoreJob);
     });
 
     $app->get('/download/{filename}', function ($request, $response, $args) {
         $filename = $args['filename'];
-        BackupDownloader::DownloadBackup($filename);
+        BackupDownloader::downloadBackup($filename);
     });
 })->add(new AdminRoleAuthMiddleware());
 
@@ -87,7 +86,8 @@ $app->group('/database', function () use ($app) {
  * @param array $p_args Arguments
  * @return \Slim\Http\Response The augmented response.
  */
-function exportChMeetings(Request $request, Response $response, array $p_args) {
+function exportChMeetings(Request $request, Response $response, array $p_args)
+{
 
     $header_data = [
         'First Name','Last Name','Middle Name','Gender',
@@ -108,12 +108,12 @@ function exportChMeetings(Request $request, Response $response, array $p_args) {
             $familyRole = "Primary";
         }
 
-        $chPerson = [$person->getFirstName(), $person->getLastName(), $person->getMiddleName(), $person->getGenderName(), '', $annaversery, "", $person->getFormattedBirthDate(), $person->getCellPhone(), $person->getHomePhone(), $person->getEmail(), $person->getFacebookID(), "", "", "", "", "", $person->getAddress1(), $person->getAddress2(), $person->getCity(), $person->getState(), $person->getZip(), "", $person->getMembershipDate(SystemConfig::getValue("sDateFormatShort")), ($family? $family->getId(): ""), $familyRole, "", "", ""];
+        $chPerson = [$person->getFirstName(), $person->getLastName(), $person->getMiddleName(), $person->getGenderName(), '', $annaversery, "", $person->getFormattedBirthDate(), $person->getCellPhone(), $person->getHomePhone(), $person->getEmail(), $person->getFacebookID(), "", "", "", "", "", $person->getAddress1(), $person->getAddress2(), $person->getCity(), $person->getState(), $person->getZip(), "", $person->getMembershipDate(SystemConfig::getValue("sDateFormatShort")), ($family ? $family->getId() : ""), $familyRole, "", "", ""];
         array_push($list, $chPerson);
     }
 
     $stream = fopen('php://memory', 'w+');
-    fputcsv($stream,$header_data);
+    fputcsv($stream, $header_data);
     foreach ($list as $fields) {
         fputcsv($stream, $fields, ',');
     }
@@ -121,7 +121,7 @@ function exportChMeetings(Request $request, Response $response, array $p_args) {
     rewind($stream);
 
     $response = $response->withHeader('Content-Type', 'text/csv');
-    $response = $response->withHeader('Content-Disposition', 'attachment; filename="ChMeetings-'.date(SystemConfig::getValue("sDateFilenameFormat")).'.csv"');
+    $response = $response->withHeader('Content-Disposition', 'attachment; filename="ChMeetings-' . date(SystemConfig::getValue("sDateFilenameFormat")) . '.csv"');
 
     return $response->withBody(new \Slim\Http\Stream($stream));
 }
@@ -155,8 +155,8 @@ function resetDatabase(Request $request, Response $response, array $p_args)
         $dbAlterStatement = $connection->exec($alterSQL);
         $logger->info("DB Update: " . $alterSQL . " done.");
     }
-    
-    AuthenticationManager::EndSession();
+
+    AuthenticationManager::endSession();
 
     return $response->withJson(['success' => true, 'msg' => gettext('The database has been cleared.')]);
 }
@@ -165,7 +165,7 @@ function clearPeopleTables(Request $request, Response $response, array $p_args)
 {
     $connection = Propel::getConnection();
     $logger = LoggerUtils::getAppLogger();
-    $curUserId = AuthenticationManager::GetCurrentUser()->getId();
+    $curUserId = AuthenticationManager::getCurrentUser()->getId();
     $logger->info("People DB Clear started ");
 
 
@@ -206,4 +206,3 @@ function clearPeopleTables(Request $request, Response $response, array $p_args)
 
     return $response->withJson(['success' => true, 'msg' => gettext('The people and families has been cleared from the database.')]);
 }
-

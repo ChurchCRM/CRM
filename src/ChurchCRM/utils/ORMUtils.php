@@ -2,7 +2,6 @@
 
 namespace ChurchCRM\Utils;
 
-
 class ORMUtils
 {
     public static function getValidationErrors($failures)

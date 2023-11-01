@@ -11,7 +11,7 @@ if (empty($message)) {
     $mailer->send();
 } else {
     echo $message;
- } ?>
+} ?>
 </pre>
 
 <?php

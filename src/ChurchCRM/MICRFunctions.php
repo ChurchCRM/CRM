@@ -11,7 +11,7 @@ class MICRFunctions
     public $ROUTE_FIRST2 = 3;   // t<route>t o<account>o <check>
     public $NOT_RECOGNIZED = 4;
 
-    public function IdentifyFormat($micr)
+    public function identifyFormat($micr)
     {
         // t000000000t0000o0000000000000o ROUTE_FIRST2
         // t000000000t 0000000000o   0000 ROUTE_FIRST1
@@ -37,25 +37,25 @@ class MICRFunctions
         }
     }
 
-    public function FindRoute($micr)
+    public function findRoute($micr)
     {
-        $routeAndAccount = $this->FindRouteAndAccount($micr);
+        $routeAndAccount = $this->findRouteAndAccount($micr);
         $breakChar = strpos($routeAndAccount, 't', 1);
 
         return mb_substr($micr, 1, $breakChar - 1);
     }
 
-    public function FindAccount($micr)
+    public function findAccount($micr)
     {
-        $routeAndAccount = $this->FindRouteAndAccount($micr);
+        $routeAndAccount = $this->findRouteAndAccount($micr);
         $breakChar = strpos($routeAndAccount, 't', 1);
 
         return mb_substr($routeAndAccount, $breakChar + 1, strlen($micr) - $breakChar);
     }
 
-    public function FindRouteAndAccount($micr)
+    public function findRouteAndAccount($micr)
     {
-        $formatID = $this->IdentifyFormat($micr);
+        $formatID = $this->identifyFormat($micr);
 
         if ($formatID == $this->CHECKNO_FIRST) {
             $firstSmallT = strpos($micr, 't');
@@ -72,15 +72,15 @@ class MICRFunctions
             $firstSmallO = strpos($micr, 'o');
             $accountNo = mb_substr($micr, $firstSmallO, strlen($micr) - $firstSmallO);
 
-            return $routeNo.$accountNo;
+            return $routeNo . $accountNo;
         } else {
             return '';
         }
     }
 
-    public function FindCheckNo($micr)
+    public function findCheckNo($micr)
     {
-        $formatID = $this->IdentifyFormat($micr);
+        $formatID = $this->identifyFormat($micr);
         if ($formatID == $this->CHECKNO_FIRST) {
             $micrWithoutFirstO = mb_substr($micr, 1, strlen($micr) - 1);
             $secondSmallO = strpos($micrWithoutFirstO, 'o');

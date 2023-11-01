@@ -2,11 +2,9 @@
 
 namespace ChurchCRM\Slim\Middleware\Request\Setting;
 
-
 class PublicRegistrationAuthMiddleware extends BaseAuthSettingMiddleware
 {
-
-    function getSettingName()
+    protected function getSettingName()
     {
         return "bEnableSelfRegistration";
     }

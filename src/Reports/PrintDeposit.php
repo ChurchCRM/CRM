@@ -1,4 +1,5 @@
 <?php
+
 /*******************************************************************************
 *
 *  filename    : Reports/PrintDeposit.php
@@ -23,28 +24,28 @@ use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Authentication\AuthenticationManager;
 
 //Security
-if (!AuthenticationManager::GetCurrentUser()->isFinanceEnabled()) {
-    RedirectUtils::Redirect("Menu.php");
+if (!AuthenticationManager::getCurrentUser()->isFinanceEnabled()) {
+    RedirectUtils::redirect("Menu.php");
     exit;
 }
 
 $iBankSlip = 0;
 if (array_key_exists("BankSlip", $_GET)) {
-    $iBankSlip = InputUtils::LegacyFilterInput($_GET["BankSlip"], 'int');
+    $iBankSlip = InputUtils::legacyFilterInput($_GET["BankSlip"], 'int');
 }
 if (!$iBankSlip && array_key_exists("report_type", $_POST)) {
-    $iBankSlip = InputUtils::LegacyFilterInput($_POST["report_type"], 'int');
+    $iBankSlip = InputUtils::legacyFilterInput($_POST["report_type"], 'int');
 }
 
 $output = "pdf";
 if (array_key_exists("output", $_POST)) {
-    $output = InputUtils::LegacyFilterInput($_POST["output"]);
+    $output = InputUtils::legacyFilterInput($_POST["output"]);
 }
 
 
 $iDepositSlipID = 0;
 if (array_key_exists("deposit", $_POST)) {
-    $iDepositSlipID = InputUtils::LegacyFilterInput($_POST["deposit"], "int");
+    $iDepositSlipID = InputUtils::legacyFilterInput($_POST["deposit"], "int");
 }
 
 if (!$iDepositSlipID && array_key_exists('iCurrentDeposit', $_SESSION)) {
@@ -53,13 +54,13 @@ if (!$iDepositSlipID && array_key_exists('iCurrentDeposit', $_SESSION)) {
 
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
 // If no DepositSlipId, redirect to the menu
-if ((!AuthenticationManager::GetCurrentUser()->isAdmin() && $bCSVAdminOnly && $output != "pdf") || !$iDepositSlipID) {
-    RedirectUtils::Redirect("Menu.php");
+if ((!AuthenticationManager::getCurrentUser()->isAdmin() && $bCSVAdminOnly && $output != "pdf") || !$iDepositSlipID) {
+    RedirectUtils::redirect("Menu.php");
     exit;
 }
 
 if ($output == "pdf") {
-    header('Location: '.SystemURLs::getRootPath()."/api/deposits/".$iDepositSlipID."/pdf");
+    header('Location: ' . SystemURLs::getRootPath() . "/api/deposits/" . $iDepositSlipID . "/pdf");
 } elseif ($output == "csv") {
-    header('Location: '.SystemURLs::getRootPath()."/api/deposits/".$iDepositSlipID."/csv");
+    header('Location: ' . SystemURLs::getRootPath() . "/api/deposits/" . $iDepositSlipID . "/csv");
 }

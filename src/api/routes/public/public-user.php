@@ -7,7 +7,6 @@ use Slim\Http\Response;
 $app->group('/public/user', function () use ($app) {
     $app->post('/login', 'userLogin');
     $app->post('/login/', 'userLogin');
-
 });
 
 function userLogin(Request $request, Response $response, array $args)
@@ -26,4 +25,3 @@ function userLogin(Request $request, Response $response, array $args)
     }
     return $response->withStatus(404);
 }
-

@@ -1,4 +1,5 @@
 <?php
+
 /*******************************************************************************
  *
  *  filename    : AddDonors.php
@@ -19,9 +20,9 @@ use ChurchCRM\Utils\RedirectUtils;
 
 $linkBack = '';
 if (array_key_exists('linkBack', $_GET)) {
-    InputUtils::LegacyFilterInput($_GET['linkBack']);
+    InputUtils::legacyFilterInput($_GET['linkBack']);
 }
-$iFundRaiserID = InputUtils::LegacyFilterInput($_GET['FundRaiserID']);
+$iFundRaiserID = InputUtils::legacyFilterInput($_GET['FundRaiserID']);
 
 if ($linkBack == '') {
     $linkBack = "PaddleNumList.php?FundRaiserID=$iFundRaiserID";
@@ -29,23 +30,23 @@ if ($linkBack == '') {
 
 if ($iFundRaiserID > 0) {
     // Get the current fund raiser record
-    $sSQL = 'SELECT * from fundraiser_fr WHERE fr_ID = '.$iFundRaiserID;
+    $sSQL = 'SELECT * from fundraiser_fr WHERE fr_ID = ' . $iFundRaiserID;
     $rsFRR = RunQuery($sSQL);
     extract(mysqli_fetch_array($rsFRR));
     // Set current fundraiser
     $_SESSION['iCurrentFundraiser'] = $iFundRaiserID;
 } else {
-    RedirectUtils::Redirect($linkBack);
+    RedirectUtils::redirect($linkBack);
 }
 
 // Get all the people listed as donors for this fundraiser
 $sSQL = "SELECT a.per_id as donorID FROM donateditem_di
     	     LEFT JOIN person_per a ON di_donor_ID=a.per_ID
-         WHERE di_FR_ID = '".$iFundRaiserID."' ORDER BY a.per_id";
+         WHERE di_FR_ID = '" . $iFundRaiserID . "' ORDER BY a.per_id";
 $rsDonors = RunQuery($sSQL);
 
 $extraPaddleNum = 1;
-$sSQL = "SELECT MAX(pn_NUM) AS pn_max FROM paddlenum_pn WHERE pn_FR_ID = '".$iFundRaiserID."'";
+$sSQL = "SELECT MAX(pn_NUM) AS pn_max FROM paddlenum_pn WHERE pn_FR_ID = '" . $iFundRaiserID . "'";
 $rsMaxPaddle = RunQuery($sSQL);
 if (mysqli_num_rows($rsMaxPaddle) > 0) {
     $oneRow = mysqli_fetch_array($rsMaxPaddle);
@@ -67,4 +68,4 @@ while ($donorRow = mysqli_fetch_array($rsDonors)) {
         $extraPaddleNum = $extraPaddleNum + 1;
     }
 }
-RedirectUtils::Redirect($linkBack);
+RedirectUtils::redirect($linkBack);

@@ -1,6 +1,5 @@
 <?php
 
-
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\PropertyQuery;
 use ChurchCRM\RecordProperty;
@@ -12,7 +11,6 @@ use ChurchCRM\Slim\Middleware\Request\PropertyAPIMiddleware;
 use ChurchCRM\Utils\LoggerUtils;
 use Slim\Http\Request;
 use Slim\Http\Response;
-
 
 $app->group('/people/properties', function () use ($app) {
 
@@ -30,8 +28,6 @@ $app->group('/people/properties', function () use ($app) {
     $app->get('/family/{familyId}', 'getFamilyProperties')->add($familyAPIMiddleware);
     $app->post('/family/{familyId}/{propertyId}', 'addPropertyToFamily')->add($familyAPIMiddleware)->add($familyPropertyAPIMiddleware);
     $app->delete('/family/{familyId}/{propertyId}', 'removePropertyFromFamily')->add($familyAPIMiddleware)->add($familyPropertyAPIMiddleware);
-
-
 })->add(new MenuOptionsRoleAuthMiddleware());
 
 
@@ -43,13 +39,13 @@ function getAllPersonProperties(Request $request, Response $response, array $arg
     return $response->withJson($properties->toArray());
 }
 
-function addPropertyToPerson (Request $request, Response $response, array $args)
+function addPropertyToPerson(Request $request, Response $response, array $args)
 {
     $person = $request->getAttribute("person");
     return addProperty($request, $response, $person->getId(), $request->getAttribute("property"));
 }
 
-function removePropertyFromPerson ($request, $response, $args)
+function removePropertyFromPerson($request, $response, $args)
 {
     $person = $request->getAttribute("person");
     return removeProperty($response, $person->getId(), $request->getAttribute("property"));
@@ -77,7 +73,8 @@ function getFamilyProperties(Request $request, Response $response, array $args)
 }
 
 
-function getProperties(Response $response, $type, $id) {
+function getProperties(Response $response, $type, $id)
+{
     $properties = RecordPropertyQuery::create()
         ->filterByRecordId($id)
         ->find();
@@ -85,16 +82,16 @@ function getProperties(Response $response, $type, $id) {
     $finalProperties = [];
 
     foreach ($properties as $property) {
-        $rawProp =$property->getProperty();
+        $rawProp = $property->getProperty();
         if ($rawProp->getProClass() == $type) {
             $tempProp = [];
             $tempProp["id"] = $property->getPropertyId();
             $tempProp["name"] = $rawProp->getProName();
             $tempProp["value"] = $property->getPropertyValue();
-            if (AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled()) {
+            if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) {
                 $tempProp["allowEdit"] = !empty(trim($rawProp->getProPrompt()));
                 $tempProp["allowDelete"] = true;
-            }  else {
+            } else {
                 $tempProp["allowEdit"] = false;
                 $tempProp["allowDelete"] = false;
             }
@@ -105,18 +102,20 @@ function getProperties(Response $response, $type, $id) {
     return $response->withJson($finalProperties);
 }
 
-function addPropertyToFamily (Request $request, Response $response, array $args) {
+function addPropertyToFamily(Request $request, Response $response, array $args)
+{
     $family = $request->getAttribute("family");
     return addProperty($request, $response, $family->getId(), $request->getAttribute("property"));
 }
 
-function removePropertyFromFamily ($request, $response, $args)
+function removePropertyFromFamily($request, $response, $args)
 {
     $family = $request->getAttribute("family");
     return removeProperty($response, $family->getId(), $request->getAttribute("property"));
 }
 
-function addProperty(Request $request, Response $response, $id, $property) {
+function addProperty(Request $request, Response $response, $id, $property)
+{
 
     $personProperty = RecordPropertyQuery::create()
         ->filterByRecordId($id)
@@ -153,7 +152,8 @@ function addProperty(Request $request, Response $response, $id, $property) {
     return $response->withStatus(500, gettext('The property could not be assigned.'));
 }
 
-function removeProperty($response, $id, $property) {
+function removeProperty($response, $id, $property)
+{
 
     $personProperty = RecordPropertyQuery::create()
         ->filterByRecordId($id)

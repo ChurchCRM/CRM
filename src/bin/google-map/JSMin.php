@@ -149,7 +149,8 @@ class JSMin
                         }
                         if (ord($this->a) <= self::ORD_LF) {
                             throw new JSMin_UnterminatedStringException(
-                                'Unterminated String: '.var_export($str, true));
+                                'Unterminated String: '.var_export($str, true)
+                            );
                         }
                         $str .= $this->a;
                         if ($this->a === '\\') {
@@ -176,7 +177,8 @@ class JSMin
                             $pattern .= $this->a;
                         } elseif (ord($this->a) <= self::ORD_LF) {
                             throw new JSMin_UnterminatedRegExpException(
-                                'Unterminated RegExp: '.var_export($pattern, true));
+                                'Unterminated RegExp: '.var_export($pattern, true)
+                            );
                         }
                         $this->output .= $this->a;
                     }
@@ -310,9 +312,12 @@ class JSMin
             return $get;
         }
         switch ($this->peek()) {
-            case '/': return $this->singleLineComment();
-            case '*': return $this->multipleLineComment();
-            default: return $get;
+            case '/':
+                return $this->singleLineComment();
+            case '*':
+                return $this->multipleLineComment();
+            default:
+                return $get;
         }
     }
 }

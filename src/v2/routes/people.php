@@ -8,13 +8,11 @@ use Slim\Http\Request;
 use Slim\Http\Response;
 use Slim\Views\PhpRenderer;
 
-
 // entity can be a person, family, or business
 $app->group('/people', function () use ($app) {
-    $app->get('','listPeople');
+    $app->get('', 'listPeople');
     $app->get('/', 'listPeople');
-    $app->get('/verify','viewPeopleVerify');
-
+    $app->get('/verify', 'viewPeopleVerify');
 });
 
 function viewPeopleVerify(Request $request, Response $response, array $args)
@@ -31,7 +29,7 @@ function viewPeopleVerify(Request $request, Response $response, array $args)
     }
 
     if ($request->getQueryParam("AllPDFsEmailed")) {
-        $headerArgs = ['sGlobalMessage' =>  gettext('PDFs successfully emailed ').$request->getQueryParam("AllPDFsEmailed").' '.gettext('families').".",
+        $headerArgs = ['sGlobalMessage' =>  gettext('PDFs successfully emailed ') . $request->getQueryParam("AllPDFsEmailed") . ' ' . gettext('families') . ".",
         "sGlobalMessageClass" => "success"];
         $pageArgs =  array_merge($pageArgs, $headerArgs);
     }
@@ -71,21 +69,20 @@ function listPeople(Request $request, Response $response, array $args)
 
     $filterByClsId = '';
     if (isset($_GET['Classification'])) {
-        $id = InputUtils::LegacyFilterInput($_GET['Classification']);
+        $id = InputUtils::legacyFilterInput($_GET['Classification']);
         $option =  ListOptionQuery::create()->filterById(1)->filterByOptionId($id)->findOne();
         if ($id == 0) {
             $filterByClsId = gettext('Unassigned');
             $sMode = $filterByClsId;
         } else {
-           $filterByClsId = $option->getOptionName();
+            $filterByClsId = $option->getOptionName();
             $sMode = $filterByClsId;
         }
-
     }
 
     $filterByFmrId = '';
     if (isset($_GET['FamilyRole'])) {
-        $id = InputUtils::LegacyFilterInput($_GET['FamilyRole']);
+        $id = InputUtils::legacyFilterInput($_GET['FamilyRole']);
         $option =  ListOptionQuery::create()->filterById(2)->filterByOptionId($id)->findOne();
 
         if ($id == 0) {
@@ -99,7 +96,7 @@ function listPeople(Request $request, Response $response, array $args)
 
     $filterByGender = '';
     if (isset($_GET['Gender'])) {
-        $id = InputUtils::LegacyFilterInput($_GET['Gender']);
+        $id = InputUtils::legacyFilterInput($_GET['Gender']);
 
         switch ($id) {
             case 0:
@@ -111,7 +108,7 @@ function listPeople(Request $request, Response $response, array $args)
                 $sMode = $sMode . " - " . $filterByGender;
                 break;
             case 2:
-            $filterByGender = gettext('Female');
+                $filterByGender = gettext('Female');
                 $sMode = $sMode . " - " . $filterByGender;
                 break;
         }

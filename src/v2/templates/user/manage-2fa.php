@@ -1,6 +1,5 @@
 <?php
 
-
 use ChurchCRM\dto\SystemURLs;
 
 //Set the page title

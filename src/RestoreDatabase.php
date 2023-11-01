@@ -1,4 +1,5 @@
 <?php
+
 /*******************************************************************************
  *
  *  filename    : RestoreDatabase.php
@@ -20,8 +21,8 @@ use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Authentication\AuthenticationManager;
 
 // Security: User must have Manage Groups permission
-if (!AuthenticationManager::GetCurrentUser()->isAdmin()) {
-    RedirectUtils::Redirect('Menu.php');
+if (!AuthenticationManager::getCurrentUser()->isAdmin()) {
+    RedirectUtils::redirect('Menu.php');
     exit;
 }
 

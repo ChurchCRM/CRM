@@ -1,10 +1,11 @@
 <?php
+
 /*******************************************************************************
  *
  *  filename    : ReminderReport.php
  *  last change : 2003-09-03
  *  description : form to invoke user access report
-  *
+ *
  ******************************************************************************/
 
 // Include the function library
@@ -17,8 +18,8 @@ use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Authentication\AuthenticationManager;
 
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
-if (!AuthenticationManager::GetCurrentUser()->isAdmin() && SystemConfig::getValue('bCSVAdminOnly')) {
-    RedirectUtils::Redirect('Menu.php');
+if (!AuthenticationManager::getCurrentUser()->isAdmin() && SystemConfig::getValue('bCSVAdminOnly')) {
+    RedirectUtils::redirect('Menu.php');
     exit;
 }
 
@@ -28,9 +29,9 @@ require 'Include/Header.php';
 
 // Is this the second pass?
 if (isset($_POST['Submit'])) {
-    $iFYID = InputUtils::LegacyFilterInput($_POST['FYID'], 'int');
+    $iFYID = InputUtils::legacyFilterInput($_POST['FYID'], 'int');
     $_SESSION['idefaultFY'] = $iFYID;
-    RedirectUtils::Redirect('Reports/ReminderReport.php?FYID='.$_SESSION['idefaultFY']);
+    RedirectUtils::redirect('Reports/ReminderReport.php?FYID=' . $_SESSION['idefaultFY']);
 } else {
     $iFYID = $_SESSION['idefaultFY'];
 }

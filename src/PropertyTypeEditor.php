@@ -1,4 +1,5 @@
 <?php
+
 /*******************************************************************************
  *
  *  filename    : PropertyTypeEditor.php
@@ -17,8 +18,8 @@ use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Authentication\AuthenticationManager;
 
 // Security: User must have property and classification editing permission
-if (!AuthenticationManager::GetCurrentUser()->isMenuOptionsEnabled()) {
-    RedirectUtils::Redirect('Menu.php');
+if (!AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled()) {
+    RedirectUtils::redirect('Menu.php');
     exit;
 }
 
@@ -28,7 +29,7 @@ $sPageTitle = gettext('Property Type Editor');
 //Get the PropertyID
 $iPropertyTypeID = 0;
 if (array_key_exists('PropertyTypeID', $_GET)) {
-    $iPropertyTypeID = InputUtils::LegacyFilterInput($_GET['PropertyTypeID'], 'int');
+    $iPropertyTypeID = InputUtils::legacyFilterInput($_GET['PropertyTypeID'], 'int');
 }
 
 $sClass = '';
@@ -37,13 +38,13 @@ $bError = false;
 
 //Was the form submitted?
 if (isset($_POST['Submit'])) {
-    $sName = InputUtils::LegacyFilterInput($_POST['Name']);
-    $sDescription = InputUtils::LegacyFilterInput($_POST['Description']);
-    $sClass = InputUtils::LegacyFilterInput($_POST['Class'], 'char', 1);
+    $sName = InputUtils::legacyFilterInput($_POST['Name']);
+    $sDescription = InputUtils::legacyFilterInput($_POST['Description']);
+    $sClass = InputUtils::legacyFilterInput($_POST['Class'], 'char', 1);
 
     //Did they enter a name?
     if (strlen($sName) < 1) {
-        $sNameError = '<span style="color: red;">'.gettext('You must enter a name').'</span>';
+        $sNameError = '<span style="color: red;">' . gettext('You must enter a name') . '</span>';
         $bError = true;
     }
 
@@ -51,20 +52,20 @@ if (isset($_POST['Submit'])) {
     if (!$bError) {
         //Vary the SQL depending on if we're adding or editing
         if ($iPropertyTypeID == '') {
-            $sSQL = "INSERT INTO propertytype_prt (prt_Class,prt_Name,prt_Description) VALUES ('".$sClass."','".$sName."','".$sDescription."')";
+            $sSQL = "INSERT INTO propertytype_prt (prt_Class,prt_Name,prt_Description) VALUES ('" . $sClass . "','" . $sName . "','" . $sDescription . "')";
         } else {
-            $sSQL = "UPDATE propertytype_prt SET prt_Class = '".$sClass."', prt_Name = '".$sName."', prt_Description = '".$sDescription."' WHERE prt_ID = ".$iPropertyTypeID;
+            $sSQL = "UPDATE propertytype_prt SET prt_Class = '" . $sClass . "', prt_Name = '" . $sName . "', prt_Description = '" . $sDescription . "' WHERE prt_ID = " . $iPropertyTypeID;
         }
 
         //Execute the SQL
         RunQuery($sSQL);
 
         //Route back to the list
-        RedirectUtils::Redirect('PropertyTypeList.php');
+        RedirectUtils::redirect('PropertyTypeList.php');
     }
 } elseif ($iPropertyTypeID > 0) {
     //Get the data on this property
-    $sSQL = 'SELECT * FROM propertytype_prt WHERE prt_ID = '.$iPropertyTypeID;
+    $sSQL = 'SELECT * FROM propertytype_prt WHERE prt_ID = ' . $iPropertyTypeID;
     $rsProperty = mysqli_fetch_array(RunQuery($sSQL));
     extract($rsProperty);
 

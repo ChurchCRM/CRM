@@ -2,14 +2,14 @@
 
 namespace ChurchCRM\Slim\Middleware\Request\Auth;
 
-class DeleteRecordRoleAuthMiddleware extends BaseAuthRoleMiddleware {
-
-    function hasRole()
+class DeleteRecordRoleAuthMiddleware extends BaseAuthRoleMiddleware
+{
+    protected function hasRole()
     {
         return $this->user->isDeleteRecordsEnabled();
     }
 
-    function noRoleMessage()
+    protected function noRoleMessage()
     {
         return gettext('User must have Delete Records permission');
     }

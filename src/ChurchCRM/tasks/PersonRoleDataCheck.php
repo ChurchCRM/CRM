@@ -6,9 +6,8 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\PersonQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
 
-class PersonRoleDataCheck implements iTask
+class PersonRoleDataCheck implements TaskInterface
 {
-
     private $count;
 
     public function __construct()
@@ -44,5 +43,4 @@ class PersonRoleDataCheck implements iTask
     {
         return gettext("Missing Role Data for Some People");
     }
-
 }

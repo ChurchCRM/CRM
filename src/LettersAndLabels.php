@@ -1,4 +1,5 @@
 <?php
+
 /*******************************************************************************
  *
  *  filename    : LettersAndLabels.php
@@ -28,16 +29,16 @@ require 'Include/Header.php';
 
 // Is this the second pass?
 if (isset($_POST['SubmitNewsLetter']) || isset($_POST['SubmitConfirmReport']) || isset($_POST['SubmitConfirmLabels']) || isset($_POST['SubmitConfirmReportEmail'])) {
-    $sLabelFormat = InputUtils::LegacyFilterInput($_POST['labeltype']);
+    $sLabelFormat = InputUtils::legacyFilterInput($_POST['labeltype']);
     $sFontInfo = $_POST['labelfont'];
     $sFontSize = $_POST['labelfontsize'];
     $bRecipientNamingMethod = $_POST['recipientnamingmethod'];
-    $sLabelInfo = '&labelfont='.urlencode($sFontInfo).'&labelfontsize='.$sFontSize."&recipientnamingmethod=".$bRecipientNamingMethod;
+    $sLabelInfo = '&labelfont=' . urlencode($sFontInfo) . '&labelfontsize=' . $sFontSize . "&recipientnamingmethod=" . $bRecipientNamingMethod;
 
     if (isset($_POST['SubmitNewsLetter'])) {
-        RedirectUtils::Redirect('Reports/NewsLetterLabels.php?labeltype='.$sLabelFormat.$sLabelInfo);
+        RedirectUtils::redirect('Reports/NewsLetterLabels.php?labeltype=' . $sLabelFormat . $sLabelInfo);
     } elseif (isset($_POST['SubmitConfirmLabels'])) {
-        RedirectUtils::Redirect('Reports/ConfirmLabels.php?labeltype='.$sLabelFormat.$sLabelInfo);
+        RedirectUtils::redirect('Reports/ConfirmLabels.php?labeltype=' . $sLabelFormat . $sLabelInfo);
     }
 } else {
     $sLabelFormat = 'Tractor';

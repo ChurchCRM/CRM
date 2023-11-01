@@ -24,7 +24,7 @@ class GroupQuery extends BaseGroupQuery
         $this->withColumn('COUNT(person2group2role_p2g2r.PersonId)', 'memberCount');
         $this->groupBy('Group.Id');
         $groupTypeJoin = new Join();
-        $groupTypeJoin->addCondition("Group.Type", "list_lst.lst_OptionId", self::EQUAL );
+        $groupTypeJoin->addCondition("Group.Type", "list_lst.lst_OptionId", self::EQUAL);
         $groupTypeJoin->addForeignValueCondition("list_lst", "lst_ID", '', 3, self::EQUAL);
         $groupTypeJoin->setJoinType(Criteria::LEFT_JOIN);
         $this->addJoinObject($groupTypeJoin);

@@ -16,5 +16,4 @@ use ChurchCRM\Base\CalendarQuery as BaseCalendarQuery;
  */
 class CalendarQuery extends BaseCalendarQuery
 {
-
 }

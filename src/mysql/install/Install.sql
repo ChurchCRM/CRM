@@ -1273,7 +1273,6 @@ INSERT INTO `permissions` (`permission_id`, `permission_name`, `permission_desc`
 (14, 'emailMailto', 'Allow to see Mailto Links'),
 (15, 'createDirectory', 'Create Directories'),
 (16, 'exportCSV', 'Export CSV files'),
-(17, 'usAddressVerification', 'Use IST Address Verification'),
 (18, 'crudEvent', 'Manage Events');
 
 -- --------------------------------------------------------

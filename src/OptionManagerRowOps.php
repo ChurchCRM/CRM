@@ -1,4 +1,5 @@
 <?php
+
 /*******************************************************************************
  *
  *  filename    : OptionManagerRowOps.php
@@ -18,39 +19,39 @@ use ChurchCRM\Authentication\AuthenticationManager;
 
 // Get the Order, ID, Mode, and Action from the querystring
 if (array_key_exists('Order', $_GET)) {
-    $iOrder = InputUtils::LegacyFilterInput($_GET['Order'], 'int');
+    $iOrder = InputUtils::legacyFilterInput($_GET['Order'], 'int');
 }  // the option Sequence
 $sAction = $_GET['Action'];
-$iID = InputUtils::LegacyFilterInput($_GET['ID'], 'int');  // the option ID
+$iID = InputUtils::legacyFilterInput($_GET['ID'], 'int');  // the option ID
 $mode = trim($_GET['mode']);
 
 // Check security for the mode selected.
 switch ($mode) {
     case 'famroles':
     case 'classes':
-        if (!AuthenticationManager::GetCurrentUser()->isMenuOptionsEnabled()) {
-            RedirectUtils::Redirect('Menu.php');
+        if (!AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled()) {
+            RedirectUtils::redirect('Menu.php');
             exit;
         }
         break;
 
     case 'grptypes':
     case 'grproles':
-        if (!AuthenticationManager::GetCurrentUser()->isManageGroupsEnabled()) {
-            RedirectUtils::Redirect('Menu.php');
+        if (!AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) {
+            RedirectUtils::redirect('Menu.php');
             exit;
         }
         break;
 
     case 'custom':
     case 'famcustom':
-        if (!AuthenticationManager::GetCurrentUser()->isAdmin()) {
-            RedirectUtils::Redirect('Menu.php');
+        if (!AuthenticationManager::getCurrentUser()->isAdmin()) {
+            RedirectUtils::redirect('Menu.php');
             exit;
         }
         break;
     default:
-        RedirectUtils::Redirect('Menu.php');
+        RedirectUtils::redirect('Menu.php');
         break;
 }
 
@@ -75,37 +76,37 @@ switch ($mode) {
         $listID = 3;
         break;
     case 'grproles':
-        $listID = InputUtils::LegacyFilterInput($_GET['ListID'], 'int');
+        $listID = InputUtils::legacyFilterInput($_GET['ListID'], 'int');
 
         // Validate that this list ID is really for a group roles list. (for security)
-        $sSQL = "SELECT '' FROM group_grp WHERE grp_RoleListID = ".$listID;
+        $sSQL = "SELECT '' FROM group_grp WHERE grp_RoleListID = " . $listID;
         $rsTemp = RunQuery($sSQL);
         if (mysqli_num_rows($rsTemp) == 0) {
-            RedirectUtils::Redirect('Menu.php');
+            RedirectUtils::redirect('Menu.php');
             break;
         }
 
         break;
     case 'custom':
     case 'famcustom':
-        $listID = InputUtils::LegacyFilterInput($_GET['ListID'], 'int');
+        $listID = InputUtils::legacyFilterInput($_GET['ListID'], 'int');
         break;
 }
 
 switch ($sAction) {
     // Move a field up:  Swap the OptionSequence (ordering) of the selected row and the one above it
     case 'up':
-        $sSQL = "UPDATE list_lst SET lst_OptionSequence = '".$iOrder."' WHERE lst_ID = $listID AND lst_OptionSequence = '".($iOrder - 1)."'";
+        $sSQL = "UPDATE list_lst SET lst_OptionSequence = '" . $iOrder . "' WHERE lst_ID = $listID AND lst_OptionSequence = '" . ($iOrder - 1) . "'";
         RunQuery($sSQL);
-        $sSQL = "UPDATE list_lst SET lst_OptionSequence = '".($iOrder - 1)."' WHERE lst_ID = $listID AND lst_OptionID = '".$iID."'";
+        $sSQL = "UPDATE list_lst SET lst_OptionSequence = '" . ($iOrder - 1) . "' WHERE lst_ID = $listID AND lst_OptionID = '" . $iID . "'";
         RunQuery($sSQL);
         break;
 
         // Move a field down:  Swap the OptionSequence (ordering) of the selected row and the one below it
     case 'down':
-        $sSQL = "UPDATE list_lst SET lst_OptionSequence = '".$iOrder."' WHERE lst_ID = $listID AND lst_OptionSequence = '".($iOrder + 1)."'";
+        $sSQL = "UPDATE list_lst SET lst_OptionSequence = '" . $iOrder . "' WHERE lst_ID = $listID AND lst_OptionSequence = '" . ($iOrder + 1) . "'";
         RunQuery($sSQL);
-        $sSQL = "UPDATE list_lst SET lst_OptionSequence = '".($iOrder + 1)."' WHERE lst_ID = $listID AND lst_OptionID = '".$iID."'";
+        $sSQL = "UPDATE list_lst SET lst_OptionSequence = '" . ($iOrder + 1) . "' WHERE lst_ID = $listID AND lst_OptionID = '" . $iID . "'";
         RunQuery($sSQL);
         break;
 
@@ -117,12 +118,12 @@ switch ($sAction) {
 
         // Make sure we never delete the only option
         if ($numRows > 1) {
-            $sSQL = "DELETE FROM list_lst WHERE lst_ID = $listID AND lst_OptionSequence = '".$iOrder."'";
+            $sSQL = "DELETE FROM list_lst WHERE lst_ID = $listID AND lst_OptionSequence = '" . $iOrder . "'";
             RunQuery($sSQL);
 
             // Shift the remaining rows up by one
             for ($reorderRow = $iOrder + 1; $reorderRow <= $numRows + 1; $reorderRow++) {
-                $sSQL = "UPDATE list_lst SET lst_OptionSequence = '".($reorderRow - 1)."' WHERE lst_ID = $listID AND lst_OptionSequence = '".$reorderRow."'";
+                $sSQL = "UPDATE list_lst SET lst_OptionSequence = '" . ($reorderRow - 1) . "' WHERE lst_ID = $listID AND lst_OptionSequence = '" . $reorderRow . "'";
                 RunQuery($sSQL);
             }
 
@@ -141,12 +142,10 @@ switch ($sAction) {
 
                 $sSQL = "UPDATE person2group2role_p2g2r SET p2g2r_rle_ID = $aTemp[1] WHERE p2g2r_grp_ID = $aTemp[0] AND p2g2r_rle_ID = $iID";
                 RunQuery($sSQL);
-            }
-
-            // Otherwise, for other types of assignees having a deleted option, reset them to default of 0 (undefined).
-            else {
+            } else {
+                // Otherwise, for other types of assignees having a deleted option, reset them to default of 0 (undefined).
                 if ($deleteCleanupTable != 0) {
-                    $sSQL = "UPDATE $deleteCleanupTable SET $deleteCleanupColumn = $deleteCleanupResetTo WHERE $deleteCleanupColumn = ".$iID;
+                    $sSQL = "UPDATE $deleteCleanupTable SET $deleteCleanupColumn = $deleteCleanupResetTo WHERE $deleteCleanupColumn = " . $iID;
                     RunQuery($sSQL);
                 }
             }
@@ -161,10 +160,10 @@ switch ($sAction) {
 
         // If no valid action was specified, abort
     default:
-        RedirectUtils::Redirect('Menu.php');
+        RedirectUtils::redirect('Menu.php');
         break;
 }
 
 // Reload the option manager page
-RedirectUtils::Redirect("OptionManager.php?mode=$mode&ListID=$listID");
+RedirectUtils::redirect("OptionManager.php?mode=$mode&ListID=$listID");
 exit;

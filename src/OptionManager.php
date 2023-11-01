@@ -1,4 +1,5 @@
 <?php
+
 /*******************************************************************************
  *
  *  filename    : OptionsManager.php
@@ -25,8 +26,8 @@ $mode = trim($_GET['mode']);
 switch ($mode) {
     case 'famroles':
     case 'classes':
-        if (!AuthenticationManager::GetCurrentUser()->isMenuOptionsEnabled()) {
-            RedirectUtils::Redirect('Menu.php');
+        if (!AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled()) {
+            RedirectUtils::redirect('Menu.php');
             exit;
         }
         break;
@@ -34,8 +35,8 @@ switch ($mode) {
     case 'grptypes':
     case 'grproles':
     case 'groupcustom':
-        if (!AuthenticationManager::GetCurrentUser()->isManageGroupsEnabled()) {
-            RedirectUtils::Redirect('Menu.php');
+        if (!AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) {
+            RedirectUtils::redirect('Menu.php');
             exit;
         }
         break;
@@ -43,14 +44,14 @@ switch ($mode) {
     case 'custom':
     case 'famcustom':
     case 'securitygrp':
-        if (!AuthenticationManager::GetCurrentUser()->isAdmin()) {
-            RedirectUtils::Redirect('Menu.php');
+        if (!AuthenticationManager::getCurrentUser()->isAdmin()) {
+            RedirectUtils::redirect('Menu.php');
             exit;
         }
         break;
 
     default:
-        RedirectUtils::Redirect('Menu.php');
+        RedirectUtils::redirect('Menu.php');
         break;
 }
 
@@ -95,15 +96,15 @@ switch ($mode) {
         $adjplusname = gettext('Group Member Role');
         $adjplusnameplural = gettext('Group Member Roles');
         $sPageTitle = gettext('Group Member Roles Editor');
-        $listID = InputUtils::LegacyFilterInput($_GET['ListID'], 'int');
+        $listID = InputUtils::legacyFilterInput($_GET['ListID'], 'int');
         $embedded = true;
 
-        $sSQL = 'SELECT grp_DefaultRole FROM group_grp WHERE grp_RoleListID = '.$listID;
+        $sSQL = 'SELECT grp_DefaultRole FROM group_grp WHERE grp_RoleListID = ' . $listID;
         $rsTemp = RunQuery($sSQL);
 
         // Validate that this list ID is really for a group roles list. (for security)
         if (mysqli_num_rows($rsTemp) == 0) {
-            RedirectUtils::Redirect('Menu.php');
+            RedirectUtils::redirect('Menu.php');
             break;
         }
 
@@ -116,15 +117,15 @@ switch ($mode) {
         $adjplusname = gettext('Person Custom List Option');
         $adjplusnameplural = gettext('Person Custom List Options');
         $sPageTitle = gettext('Person Custom List Options Editor');
-        $listID = InputUtils::LegacyFilterInput($_GET['ListID'], 'int');
+        $listID = InputUtils::legacyFilterInput($_GET['ListID'], 'int');
         $embedded = true;
 
-        $sSQL = "SELECT '' FROM person_custom_master WHERE type_ID = 12 AND custom_Special = ".$listID;
+        $sSQL = "SELECT '' FROM person_custom_master WHERE type_ID = 12 AND custom_Special = " . $listID;
         $rsTemp = RunQuery($sSQL);
 
         // Validate that this is a valid person-custom field custom list
         if (mysqli_num_rows($rsTemp) == 0) {
-            RedirectUtils::Redirect('Menu.php');
+            RedirectUtils::redirect('Menu.php');
             break;
         }
 
@@ -134,15 +135,15 @@ switch ($mode) {
         $adjplusname = gettext('Custom List Option');
         $adjplusnameplural = gettext('Custom List Options');
         $sPageTitle = gettext('Custom List Options Editor');
-        $listID = InputUtils::LegacyFilterInput($_GET['ListID'], 'int');
+        $listID = InputUtils::legacyFilterInput($_GET['ListID'], 'int');
         $embedded = true;
 
-        $sSQL = "SELECT '' FROM groupprop_master WHERE type_ID = 12 AND prop_Special = ".$listID;
+        $sSQL = "SELECT '' FROM groupprop_master WHERE type_ID = 12 AND prop_Special = " . $listID;
         $rsTemp = RunQuery($sSQL);
 
         // Validate that this is a valid group-specific-property field custom list
         if (mysqli_num_rows($rsTemp) == 0) {
-            RedirectUtils::Redirect('Menu.php');
+            RedirectUtils::redirect('Menu.php');
             break;
         }
 
@@ -152,21 +153,21 @@ switch ($mode) {
         $adjplusname = gettext('Family Custom List Option');
         $adjplusnameplural = gettext('Family Custom List Options');
         $sPageTitle = gettext('Family Custom List Options Editor');
-        $listID = InputUtils::LegacyFilterInput($_GET['ListID'], 'int');
+        $listID = InputUtils::legacyFilterInput($_GET['ListID'], 'int');
         $embedded = true;
 
-        $sSQL = "SELECT '' FROM family_custom_master WHERE type_ID = 12 AND fam_custom_Special = ".$listID;
+        $sSQL = "SELECT '' FROM family_custom_master WHERE type_ID = 12 AND fam_custom_Special = " . $listID;
         $rsTemp = RunQuery($sSQL);
 
         // Validate that this is a valid family_custom field custom list
         if (mysqli_num_rows($rsTemp) == 0) {
-            RedirectUtils::Redirect('Menu.php');
+            RedirectUtils::redirect('Menu.php');
             break;
         }
 
         break;
     default:
-        RedirectUtils::Redirect('Menu.php');
+        RedirectUtils::redirect('Menu.php');
         break;
 }
 
@@ -174,13 +175,13 @@ $iNewNameError = 0;
 
 // Check if we're adding a field
 if (isset($_POST['AddField'])) {
-    $newFieldName = InputUtils::LegacyFilterInput($_POST['newFieldName']);
+    $newFieldName = InputUtils::legacyFilterInput($_POST['newFieldName']);
 
     if (strlen($newFieldName) == 0) {
         $iNewNameError = 1;
     } else {
         // Check for a duplicate option name
-        $sSQL = "SELECT '' FROM list_lst WHERE lst_ID = $listID AND lst_OptionName = '".$newFieldName."'";
+        $sSQL = "SELECT '' FROM list_lst WHERE lst_ID = $listID AND lst_OptionName = '" . $newFieldName . "'";
         $rsCount = RunQuery($sSQL);
         if (mysqli_num_rows($rsCount) > 0) {
             $iNewNameError = 2;
@@ -199,7 +200,7 @@ if (isset($_POST['AddField'])) {
 
             // Insert into the appropriate options table
             $sSQL = 'INSERT INTO list_lst (lst_ID, lst_OptionID, lst_OptionName, lst_OptionSequence)
-					VALUES ('.$listID.','.$newOptionID.",'".$newFieldName."',".$newOptionSequence.')';
+					VALUES (' . $listID . ',' . $newOptionID . ",'" . $newFieldName . "'," . $newOptionSequence . ')';
 
             RunQuery($sSQL);
             $iNewNameError = 0;
@@ -230,7 +231,7 @@ if (isset($_POST['SaveChanges'])) {
         //addition save off sequence also
         $aSeqs[$row] = $aRow['lst_OptionSequence'];
 
-        $aNameFields[$row] = InputUtils::LegacyFilterInput($_POST[$row.'name']);
+        $aNameFields[$row] = InputUtils::legacyFilterInput($_POST[$row . 'name']);
     }
 
     for ($row = 1; $row <= $numRows; $row++) {
@@ -257,7 +258,7 @@ if (isset($_POST['SaveChanges'])) {
         for ($row = 1; $row <= $numRows; $row++) {
             // Update the type's name if it has changed from what was previously stored
             if ($aOldNameFields[$row] != $aNameFields[$row]) {
-                $sSQL = "UPDATE list_lst SET `lst_OptionName` = '".$aNameFields[$row]."' WHERE `lst_ID` = '$listID' AND `lst_OptionSequence` = '".$row."'";
+                $sSQL = "UPDATE list_lst SET `lst_OptionName` = '" . $aNameFields[$row] . "' WHERE `lst_ID` = '$listID' AND `lst_OptionSequence` = '" . $row . "'";
                 RunQuery($sSQL);
             }
         }
@@ -296,7 +297,7 @@ if ($embedded) {
 
 ?>
 <div class="card">
-	<div class="card-body">
+    <div class="card-body">
 <form method="post" action="OptionManager.php?<?= "mode=$mode&ListID=$listID" ?>" name="OptionManager">
 
 <div class="callout callout-warning"><?= gettext('Warning: Removing will reset all assignments for all persons with the assignment!') ?></div>
@@ -306,9 +307,9 @@ if ($embedded) {
 if ($bErrorFlag) {
     echo '<span class="MediumLargeText" style="color: red;">';
     if ($bDuplicateFound) {
-        echo '<br>'.gettext('Error: Duplicate').' '.$adjplusnameplural.' '.gettext('are not allowed.');
+        echo '<br>' . gettext('Error: Duplicate') . ' ' . $adjplusnameplural . ' ' . gettext('are not allowed.');
     }
-    echo '<br>'.gettext('Invalid fields or selections. Changes not saved! Please correct and try again!').'</span><br><br>';
+    echo '<br>' . gettext('Invalid fields or selections. Changes not saved! Please correct and try again!') . '</span><br><br>';
 }
 ?>
 
@@ -318,91 +319,91 @@ if ($bErrorFlag) {
 <?php
 for ($row = 1; $row <= $numRows; $row++) {
     ?>
-	<tr align="center">
-		<td class="LabelColumn">
-			<b>
-			<?php
+    <tr align="center">
+        <td class="LabelColumn">
+            <b>
+            <?php
             if ($mode == 'grproles' && $aIDs[$row] == $iDefaultRole) {
-                echo gettext('Default').' ';
+                echo gettext('Default') . ' ';
             }
-    echo $row; ?>
-			</b>
-		</td>
+            echo $row; ?>
+            </b>
+        </td>
 
-		<td class="TextColumn" nowrap>
+        <td class="TextColumn" nowrap>
 
-			<?php
+            <?php
             if ($row != 1) {
-                echo "<a href=\"OptionManagerRowOps.php?mode=$mode&Order=$aSeqs[$row]&ListID=$listID&ID=".$aIDs[$row].'&Action=up"><i class="fa fa-arrow-up"></i></a>';
+                echo "<a href=\"OptionManagerRowOps.php?mode=$mode&Order=$aSeqs[$row]&ListID=$listID&ID=" . $aIDs[$row] . '&Action=up"><i class="fa fa-arrow-up"></i></a>';
             }
-    if ($row < $numRows) {
-        echo "<a href=\"OptionManagerRowOps.php?mode=$mode&Order=$aSeqs[$row]&ListID=$listID&ID=".$aIDs[$row].'&Action=down"><i class="fa fa-arrow-down"></i></a>';
-    }
-    if ($numRows > 0) {
-        echo "<a href=\"OptionManagerRowOps.php?mode=$mode&Order=$aSeqs[$row]&ListID=$listID&ID=".$aIDs[$row].'&Action=delete"><i class="fa fa-times"></i></a>';
-    } ?>
-		</td>
-		<td class="TextColumn">
-			<span class="SmallText">
-				<input class="input-small" type="text" name="<?= $row.'name' ?>" value="<?= htmlentities(stripslashes($aNameFields[$row]), ENT_NOQUOTES, 'UTF-8') ?>" size="30" maxlength="40">
-			</span>
-			<?php
+            if ($row < $numRows) {
+                echo "<a href=\"OptionManagerRowOps.php?mode=$mode&Order=$aSeqs[$row]&ListID=$listID&ID=" . $aIDs[$row] . '&Action=down"><i class="fa fa-arrow-down"></i></a>';
+            }
+            if ($numRows > 0) {
+                echo "<a href=\"OptionManagerRowOps.php?mode=$mode&Order=$aSeqs[$row]&ListID=$listID&ID=" . $aIDs[$row] . '&Action=delete"><i class="fa fa-times"></i></a>';
+            } ?>
+        </td>
+        <td class="TextColumn">
+            <span class="SmallText">
+                <input class="input-small" type="text" name="<?= $row . 'name' ?>" value="<?= htmlentities(stripslashes($aNameFields[$row]), ENT_NOQUOTES, 'UTF-8') ?>" size="30" maxlength="40">
+            </span>
+            <?php
 
             if ($aNameErrors[$row] == 1) {
-                echo '<span style="color: red;"><BR>'.gettext('You must enter a name').' </span>';
+                echo '<span style="color: red;"><BR>' . gettext('You must enter a name') . ' </span>';
             } elseif ($aNameErrors[$row] == 2) {
-                echo '<span style="color: red;"><BR>'.gettext('Duplicate name found.').' </span>';
+                echo '<span style="color: red;"><BR>' . gettext('Duplicate name found.') . ' </span>';
             } ?>
-		</td>
-		<?php
+        </td>
+        <?php
         if ($mode == 'grproles') {
-            echo '<td class="TextColumn"><input class="form-control input-small" type="button" class="btn btn-default" value="'.gettext('Make Default')."\" Name=\"default\" onclick=\"javascript:document.location='OptionManagerRowOps.php?mode=".$mode.'&ListID='.$listID.'&ID='.$aIDs[$row]."&Action=makedefault';\" ></td>";
+            echo '<td class="TextColumn"><input class="form-control input-small" type="button" class="btn btn-default" value="' . gettext('Make Default') . "\" Name=\"default\" onclick=\"javascript:document.location='OptionManagerRowOps.php?mode=" . $mode . '&ListID=' . $listID . '&ID=' . $aIDs[$row] . "&Action=makedefault';\" ></td>";
         } ?>
 
-	</tr>
-<?php
+    </tr>
+    <?php
 } ?>
 
 </table>
   <br/>
-	<input type="submit" class="btn btn-primary" value="<?= gettext('Save Changes') ?>" Name="SaveChanges">
+    <input type="submit" class="btn btn-primary" value="<?= gettext('Save Changes') ?>" Name="SaveChanges">
 
 
-	<?php if ($mode == 'groupcustom' || $mode == 'custom' || $mode == 'famcustom') {
-            ?>
-		<input type="button" class="btn btn-default" value="<?= gettext('Exit') ?>" Name="Exit" onclick="javascript:window.close();">
-	<?php
-        } elseif ($mode != 'grproles') {
-            ?>
-		<input type="button" class="btn btn-default" value="<?= gettext('Exit') ?>" Name="Exit" onclick="javascript:document.location='<?php
+    <?php if ($mode == 'groupcustom' || $mode == 'custom' || $mode == 'famcustom') {
+        ?>
+        <input type="button" class="btn btn-default" value="<?= gettext('Exit') ?>" Name="Exit" onclick="javascript:window.close();">
+        <?php
+    } elseif ($mode != 'grproles') {
+        ?>
+        <input type="button" class="btn btn-default" value="<?= gettext('Exit') ?>" Name="Exit" onclick="javascript:document.location='<?php
         echo 'Menu.php'; ?>';">
-	<?php
-        } ?>
-	</div>
+        <?php
+    } ?>
+    </div>
 </div>
 
 <div class="card card-primary">
-	<div class="card-body">
-<?=  gettext('Name for New').' '.$noun ?>:&nbsp;
+    <div class="card-body">
+<?=  gettext('Name for New') . ' ' . $noun ?>:&nbsp;
 <span class="SmallText">
-	<input class="form-control input-small" type="text" name="newFieldName" size="30" maxlength="40">
+    <input class="form-control input-small" type="text" name="newFieldName" size="30" maxlength="40">
 </span>
 <p>  </p>
-<input type="submit" class="btn btn-default" value="<?= gettext('Add New').' '.$adjplusname ?>" Name="AddField">
+<input type="submit" class="btn btn-default" value="<?= gettext('Add New') . ' ' . $adjplusname ?>" Name="AddField">
 <?php
-    if ($iNewNameError > 0) {
-        echo '<div><span style="color: red;"><BR>';
-        if ($iNewNameError == 1) {
-            echo gettext('Error: You must enter a name');
-        } else {
-            echo gettext('Error: A ').$noun.gettext(' by that name already exists.');
-        }
-        echo '</span></div>';
+if ($iNewNameError > 0) {
+    echo '<div><span style="color: red;"><BR>';
+    if ($iNewNameError == 1) {
+        echo gettext('Error: You must enter a name');
+    } else {
+        echo gettext('Error: A ') . $noun . gettext(' by that name already exists.');
     }
+    echo '</span></div>';
+}
 ?>
 </center>
 </form>
-	</div>
+    </div>
 </div>
 <?php
 if ($embedded) {

@@ -2,7 +2,8 @@
 
 namespace ChurchCRM\Authentication {
 
-    class AuthenticationResult {
+    class AuthenticationResult
+    {
         public $isAuthenticated;
         public $nextStepURL;
         public $message;

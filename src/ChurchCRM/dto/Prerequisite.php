@@ -1,46 +1,53 @@
 <?php
 
 namespace ChurchCRM\dto;
+
 use ChurchCRM\Utils\MiscUtils;
 
-class Prerequisite implements \JsonSerializable {
-  private string $name;
-  private $testFunction;
-  private ?bool $savedTestResult = null;
+class Prerequisite implements \JsonSerializable
+{
+    private string $name;
+    private $testFunction;
+    private ?bool $savedTestResult = null;
 
-  public function __construct(string $name, callable $testFunction) {
-    $this->name = $name;
-    $this->testFunction = $testFunction;
-  }
-  
-  public function IsPrerequisiteMet(){
-    $callable = $this->testFunction;
-    if ( $this->savedTestResult === null) {
-       $this->savedTestResult = (bool)$callable();
+    public function __construct(string $name, callable $testFunction)
+    {
+        $this->name = $name;
+        $this->testFunction = $testFunction;
     }
-    return $this->savedTestResult;
-  }
-  
-  public function GetName() {
-    return $this->name;
-  }
-  
-  public function GetWikiLink() {
-    return 'https://github.com/ChurchCRM/CRM/wiki/ChurchCRM-Application-Platform-Prerequisites#' . MiscUtils::GetGitHubWikiAnchorLink($this->name);
-  }
-  public function GetStatusText() {
-    if ($this->IsPrerequisiteMet()){
-      return gettext("Passed");
-    }
-    return gettext("Failed");
-  }
 
-  public function jsonSerialize(): array
-  {
-       return [
-           'Name' => $this->GetName(),
-           'WikiLink' => $this->GetWikiLink(),
-           'Satisfied' => $this->IsPrerequisiteMet()
-       ];
-   }
+    public function isPrerequisiteMet()
+    {
+        $callable = $this->testFunction;
+        if ($this->savedTestResult === null) {
+            $this->savedTestResult = (bool)$callable();
+        }
+        return $this->savedTestResult;
+    }
+
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    public function getWikiLink()
+    {
+        return 'https://github.com/ChurchCRM/CRM/wiki/ChurchCRM-Application-Platform-Prerequisites#' . MiscUtils::getGitHubWikiAnchorLink($this->name);
+    }
+    public function getStatusText()
+    {
+        if ($this->isPrerequisiteMet()) {
+            return gettext("Passed");
+        }
+        return gettext("Failed");
+    }
+
+    public function jsonSerialize(): array
+    {
+         return [
+           'Name' => $this->getName(),
+           'WikiLink' => $this->getWikiLink(),
+           'Satisfied' => $this->isPrerequisiteMet()
+         ];
+    }
 }

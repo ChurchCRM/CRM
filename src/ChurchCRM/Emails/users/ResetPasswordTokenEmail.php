@@ -6,10 +6,10 @@ use ChurchCRM\dto\SystemURLs;
 
 class ResetPasswordTokenEmail extends BaseUserEmail
 {
-
     protected $token;
 
-    public function __construct($user, $token) {
+    public function __construct($user, $token)
+    {
         $this->token = $token;
         parent::__construct($user);
     }
@@ -21,15 +21,15 @@ class ResetPasswordTokenEmail extends BaseUserEmail
 
     protected function buildMessageBody()
     {
-        return gettext("You can reset your ChurchCRM password by clicking this link").":";
+        return gettext("You can reset your ChurchCRM password by clicking this link") . ":";
     }
 
-    function getFullURL()
+    protected function getFullURL()
     {
-        return SystemURLs::getURL() . "/session/forgot-password/set/".$this->token;
+        return SystemURLs::getURL() . "/session/forgot-password/set/" . $this->token;
     }
 
-    function getButtonText()
+    protected function getButtonText()
     {
         return gettext('Reset Password');
     }

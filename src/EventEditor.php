@@ -1,4 +1,5 @@
 <?php
+
 /*******************************************************************************
  *
  *  filename    : EventEditor.php
@@ -10,6 +11,7 @@
  *  function    : Editor for Church Events
   *
  ******************************************************************************/
+
 // table fields
 //  event_id       int(11)
 //  event_type     enum('CS', 'SS', 'VOL')
@@ -29,7 +31,7 @@ use ChurchCRM\Authentication\AuthenticationManager;
 
 $sPageTitle = gettext('Church Event Editor');
 
-if (!AuthenticationManager::GetCurrentUser()->isAddEvent()) {
+if (!AuthenticationManager::getCurrentUser()->isAddEvent()) {
     header('Location: Menu.php');
 }
 
@@ -50,8 +52,7 @@ if (isset($_GET['calendarAction'])) {
 
     if (array_key_exists('EN_tyid', $_POST)) {
         $tyid = $_POST['EN_tyid'];
-    } // from event type list page
-    else {
+    } else {  // from event type list page
         $tyid = 0;
     }
 }
@@ -115,133 +116,133 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
     // definitions, recurrence type, etc.
     //
     switch ($sDefRecurType) {
-    case 'none':
-      $sEventStartDate = date('Y-m-d');
-      $sEventEndDate = $sEventStartDate;
-      $aStartTimeTokens = explode(':', $sDefStartTime);
-      $iEventStartHour = $aStartTimeTokens[0];
-      $iEventStartMins = $aStartTimeTokens[1];
-      $iEventEndHour = $aStartTimeTokens[0] + 1;
-      $iEventEndMins = $aStartTimeTokens[1];
-      break;
+        case 'none':
+            $sEventStartDate = date('Y-m-d');
+            $sEventEndDate = $sEventStartDate;
+            $aStartTimeTokens = explode(':', $sDefStartTime);
+            $iEventStartHour = $aStartTimeTokens[0];
+            $iEventStartMins = $aStartTimeTokens[1];
+            $iEventEndHour = $aStartTimeTokens[0] + 1;
+            $iEventEndMins = $aStartTimeTokens[1];
+            break;
 
-    case 'weekly':
-    // check for the last occurrence of this type_id in the events table and
-    // create a new event based on this date reference
-    //
-      $sSQL = "SELECT * FROM events_event WHERE event_type = '$iTypeID' ORDER BY event_start DESC LIMIT 1";
-      $ecOpps = RunQuery($sSQL);
-      $numRows = mysqli_num_rows($ecOpps);
-      if ($numRows > 0) {
-          // use the most recent event if it exists
-          $ecRow = mysqli_fetch_array($ecOpps, MYSQLI_BOTH);
-          extract($ecRow);
-          $aStartTokens = explode(' ', $event_start);
-          $ceEventStartDate = $aStartTokens[0];
-          $sEventStartDate = date('Y-m-d', strtotime("$ceEventStartDate +1 week"));
+        case 'weekly':
+        // check for the last occurrence of this type_id in the events table and
+        // create a new event based on this date reference
+        //
+            $sSQL = "SELECT * FROM events_event WHERE event_type = '$iTypeID' ORDER BY event_start DESC LIMIT 1";
+            $ecOpps = RunQuery($sSQL);
+            $numRows = mysqli_num_rows($ecOpps);
+            if ($numRows > 0) {
+              // use the most recent event if it exists
+                $ecRow = mysqli_fetch_array($ecOpps, MYSQLI_BOTH);
+                extract($ecRow);
+                $aStartTokens = explode(' ', $event_start);
+                $ceEventStartDate = $aStartTokens[0];
+                $sEventStartDate = date('Y-m-d', strtotime("$ceEventStartDate +1 week"));
 
-          $aEventStartTimeTokens = explode(':', $sDefStartTime);
-          $iEventStartHour = $aEventStartTimeTokens[0];
-          $iEventStartMins = $aEventStartTimeTokens[1];
+                $aEventStartTimeTokens = explode(':', $sDefStartTime);
+                $iEventStartHour = $aEventStartTimeTokens[0];
+                $iEventStartMins = $aEventStartTimeTokens[1];
 
-          $sEventEndDate = $sEventStartDate;
-          $iEventEndHour = $iEventStartHour + 1;
-          $iEventEndMins = $iEventStartMins;
-      } else {
-          // use the event type definition
-          $sEventStartDate = date('Y-m-d', strtotime("last $iDefRecurDOW"));
-          $aStartTimeTokens = explode(':', $sDefStartTime);
-          $iEventStartHour = $aStartTimeTokens[0];
-          $iEventStartMins = $aStartTimeTokens[1];
-          $sEventEndDate = $sEventStartDate;
-          $iEventEndHour = $aStartTimeTokens[0] + 1;
-          $iEventEndMins = $aStartTimeTokens[1];
-      }
-      break;
+                $sEventEndDate = $sEventStartDate;
+                $iEventEndHour = $iEventStartHour + 1;
+                $iEventEndMins = $iEventStartMins;
+            } else {
+            // use the event type definition
+                $sEventStartDate = date('Y-m-d', strtotime("last $iDefRecurDOW"));
+                $aStartTimeTokens = explode(':', $sDefStartTime);
+                $iEventStartHour = $aStartTimeTokens[0];
+                $iEventStartMins = $aStartTimeTokens[1];
+                $sEventEndDate = $sEventStartDate;
+                $iEventEndHour = $aStartTimeTokens[0] + 1;
+                $iEventEndMins = $aStartTimeTokens[1];
+            }
+            break;
 
-    case 'monthly':
-    // check for the last occurrence of this type_id in the events table and
-    // create a new event based on this date reference
-    //
-      $sSQL = "SELECT * FROM events_event WHERE event_type = '$iTypeID' ORDER BY event_start DESC LIMIT 1";
-      $ecOpps = RunQuery($sSQL);
-      $numRows = mysqli_num_rows($ecOpps);
-      if ($numRows > 0) {
-          // use the most recent event if it exists
-          $ecRow = mysqli_fetch_array($ecOpps, MYSQLI_BOTH);
-          extract($ecRow);
-          $aStartTokens = explode(' ', $event_start);
-          $ceEventStartDate = $aStartTokens[0];
-          $ceDMY = explode('-', $aStartTokens[0]);
-          $aEventStartTimeTokens = explode(':', $ceStartTokens[1]);
+        case 'monthly':
+        // check for the last occurrence of this type_id in the events table and
+        // create a new event based on this date reference
+        //
+            $sSQL = "SELECT * FROM events_event WHERE event_type = '$iTypeID' ORDER BY event_start DESC LIMIT 1";
+            $ecOpps = RunQuery($sSQL);
+            $numRows = mysqli_num_rows($ecOpps);
+            if ($numRows > 0) {
+              // use the most recent event if it exists
+                $ecRow = mysqli_fetch_array($ecOpps, MYSQLI_BOTH);
+                extract($ecRow);
+                $aStartTokens = explode(' ', $event_start);
+                $ceEventStartDate = $aStartTokens[0];
+                $ceDMY = explode('-', $aStartTokens[0]);
+                $aEventStartTimeTokens = explode(':', $ceStartTokens[1]);
 
-          $sEventStartDate = date('Y-m-d', mktime(0, 0, 0, $ceDMY[1] + 1, $ceDMY[2], $ceDMY[0]));
-          $iEventStartHour = $aEventStartTimeTokens[0];
-          $iEventStartMins = $aEventStartTimeTokens[1];
-          $sEventEndDate = $sEventStartDate;
-          $iEventEndHour = $aEventStartTimeTokens[0] + 1;
-          $iEventEndMins = $aEventStartTimeTokens[1];
-      } else {
-          // use the event type definition
-          $currentDOM = date('d');
-          if ($currentDOM < $iDefRecurDOM) {
-              $sEventStartDate = date('Y-m-d', mktime(0, 0, 0, date('m') - 1, $iDefRecurDOM, date('Y')));
-          } else {
-              $sEventStartDate = date('Y-m-d', mktime(0, 0, 0, date('m'), $iDefRecurDOM, date('Y')));
-          }
+                $sEventStartDate = date('Y-m-d', mktime(0, 0, 0, $ceDMY[1] + 1, $ceDMY[2], $ceDMY[0]));
+                $iEventStartHour = $aEventStartTimeTokens[0];
+                $iEventStartMins = $aEventStartTimeTokens[1];
+                $sEventEndDate = $sEventStartDate;
+                $iEventEndHour = $aEventStartTimeTokens[0] + 1;
+                $iEventEndMins = $aEventStartTimeTokens[1];
+            } else {
+            // use the event type definition
+                $currentDOM = date('d');
+                if ($currentDOM < $iDefRecurDOM) {
+                    $sEventStartDate = date('Y-m-d', mktime(0, 0, 0, date('m') - 1, $iDefRecurDOM, date('Y')));
+                } else {
+                    $sEventStartDate = date('Y-m-d', mktime(0, 0, 0, date('m'), $iDefRecurDOM, date('Y')));
+                }
 
-          $aStartTimeTokens = explode(':', $ceDefStartTime);
-          $iEventStartHour = $aStartTimeTokens[0];
-          $iEventStartMins = $aStartTimeTokens[1];
-          $sEventEndDate = $sEventStartDate;
-          $iEventEndHour = $aStartTimeTokens[0] + 1;
-          $iEventEndMins = $aStartTimeTokens[1];
-      }
-      break;
+                $aStartTimeTokens = explode(':', $ceDefStartTime);
+                $iEventStartHour = $aStartTimeTokens[0];
+                $iEventStartMins = $aStartTimeTokens[1];
+                $sEventEndDate = $sEventStartDate;
+                $iEventEndHour = $aStartTimeTokens[0] + 1;
+                $iEventEndMins = $aStartTimeTokens[1];
+            }
+            break;
 
-    case 'yearly':
-      $sSQL = "SELECT * FROM events_event WHERE event_type = '$iTypeID' ORDER BY event_start DESC LIMIT 1";
-      $ecOpps = RunQuery($sSQL);
-      $numRows = mysqli_num_rows($ecOpps);
-      if ($numRows > 0) {
-          // use the most recent event if it exists
-          $ecRow = mysqli_fetch_array($ecOpps, MYSQLI_BOTH);
-          extract($ecRow);
-          $aStartTokens = explode(' ', $event_start);
-          $sEventStartDate = $aStartTokens[0];
-          $aDMY = explode('-', $aStartTokens[0]);
-          $aEventStartTimeTokens = explode(':', $aStartTokens[1]);
+        case 'yearly':
+            $sSQL = "SELECT * FROM events_event WHERE event_type = '$iTypeID' ORDER BY event_start DESC LIMIT 1";
+            $ecOpps = RunQuery($sSQL);
+            $numRows = mysqli_num_rows($ecOpps);
+            if ($numRows > 0) {
+              // use the most recent event if it exists
+                $ecRow = mysqli_fetch_array($ecOpps, MYSQLI_BOTH);
+                extract($ecRow);
+                $aStartTokens = explode(' ', $event_start);
+                $sEventStartDate = $aStartTokens[0];
+                $aDMY = explode('-', $aStartTokens[0]);
+                $aEventStartTimeTokens = explode(':', $aStartTokens[1]);
 
-          $sEventStartDate = date('Y-m-d', mktime(0, 0, 0, $aDMY[1], $aDMY[2], $aDMY[0] + 1));
-          $iEventStartHour = $aEventStartTimeTokens[0];
-          $iEventStartMins = $aEventStartTimeTokens[1];
-          $sEventEndDate = $sEventStartDate;
-          $iEventEndHour = $aEventStartTimeTokens[0] + 1;
-          $iEventEndMins = $aEventStartTimeTokens[1];
-      } else {
-          // use the event type definition
-          $currentDOY = time();
-          $defaultDOY = strtotime($sDefRecurDOY);
-          if ($currentDOY < $defaultDOY) {  // event is future
-              $sEventStartDate = $sDefRecurDOY;
-          } elseif ($currentDOY > $defaultDOY + (365 * 24 * 60 * 60)) {  // event is over 1 year past
-              $aDMY = explode('-', $sDefRecurDOY);
-              $sEventStartDate = date('Y-m-d', mktime(0, 0, 0, $aDMY[1], $aDMY[2], date('Y') - 1));
-          } else { // event is past
-              $aDMY = explode('-', $sDefRecurDOY);
-              $sEventStartDate = date('Y-m-d', mktime(0, 0, 0, $aDMY[1], $aDMY[2], date('Y')));
-          }
+                $sEventStartDate = date('Y-m-d', mktime(0, 0, 0, $aDMY[1], $aDMY[2], $aDMY[0] + 1));
+                $iEventStartHour = $aEventStartTimeTokens[0];
+                $iEventStartMins = $aEventStartTimeTokens[1];
+                $sEventEndDate = $sEventStartDate;
+                $iEventEndHour = $aEventStartTimeTokens[0] + 1;
+                $iEventEndMins = $aEventStartTimeTokens[1];
+            } else {
+            // use the event type definition
+                $currentDOY = time();
+                $defaultDOY = strtotime($sDefRecurDOY);
+                if ($currentDOY < $defaultDOY) {  // event is future
+                    $sEventStartDate = $sDefRecurDOY;
+                } elseif ($currentDOY > $defaultDOY + (365 * 24 * 60 * 60)) {  // event is over 1 year past
+                    $aDMY = explode('-', $sDefRecurDOY);
+                    $sEventStartDate = date('Y-m-d', mktime(0, 0, 0, $aDMY[1], $aDMY[2], date('Y') - 1));
+                } else { // event is past
+                    $aDMY = explode('-', $sDefRecurDOY);
+                    $sEventStartDate = date('Y-m-d', mktime(0, 0, 0, $aDMY[1], $aDMY[2], date('Y')));
+                }
 
-          $aStartTimeTokens = explode(':', $sDefStartTime);
-          $iEventStartHour = $aStartTimeTokens[0];
-          $iEventStartMins = $aStartTimeTokens[1];
-          $sEventEndDate = $sEventStartDate;
-          $iEventEndHour = $aStartTimeTokens[0] + 1;
-          $iEventEndMins = $aStartTimeTokens[1];
-      }
-      break;
-  }
-    $sEventTitle = $sEventStartDate.'-'.$sTypeName;
+                $aStartTimeTokens = explode(':', $sDefStartTime);
+                $iEventStartHour = $aStartTimeTokens[0];
+                $iEventStartMins = $aStartTimeTokens[1];
+                $sEventEndDate = $sEventStartDate;
+                $iEventEndHour = $aStartTimeTokens[0] + 1;
+                $iEventEndMins = $aStartTimeTokens[1];
+            }
+            break;
+    }
+    $sEventTitle = $sEventStartDate . '-' . $sTypeName;
     $sEventDesc = '';
     $sEventText = '';
     $iEventStatus = 0;
@@ -249,7 +250,7 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
 } elseif ($sAction = 'Edit' && !empty($sOpp)) {
     // Get data for the form as it now exists..
     $EventExists = 1;
-    $sSQL = "SELECT * FROM events_event as t1, event_types as t2 WHERE t1.event_type = t2.type_id AND t1.event_id ='".$sOpp."' LIMIT 1";
+    $sSQL = "SELECT * FROM events_event as t1, event_types as t2 WHERE t1.event_type = t2.type_id AND t1.event_id ='" . $sOpp . "' LIMIT 1";
     $rsOpps = RunQuery($sSQL);
 
     $aRow = mysqli_fetch_array($rsOpps, MYSQLI_BOTH);
@@ -300,7 +301,7 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
         $bEventTypeError = true;
         $iErrors++;
     } else {
-        $sSQL = "SELECT type_name FROM event_types WHERE type_id = '".InputUtils::LegacyFilterInput($iTypeID)."' LIMIT 1";
+        $sSQL = "SELECT type_name FROM event_types WHERE type_id = '" . InputUtils::legacyFilterInput($iTypeID) . "' LIMIT 1";
         $rsOpps = RunQuery($sSQL);
         $aRow = mysqli_fetch_array($rsOpps, MYSQLI_BOTH);
         extract($aRow);
@@ -346,13 +347,13 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
     if ($iErrors == 0) {
         if ($EventExists == 0) {
             $sSQL = "INSERT events_event
-                     SET `event_type` = '".InputUtils::LegacyFilterInput($iTypeID)."',
-                     `event_title` = '".InputUtils::LegacyFilterInput($sEventTitle)."',
-                     `event_desc` = '".InputUtils::LegacyFilterInput($sEventDesc)."',
-                     `event_text` = '".InputUtils::FilterHTML($sEventText)."',
-                     `event_start` = '".InputUtils::LegacyFilterInput($sEventStart)."',
-                     `event_end` = '".InputUtils::LegacyFilterInput($sEventEnd)."',
-                     `inactive` = '".InputUtils::LegacyFilterInput($iEventStatus)."';";
+                     SET `event_type` = '" . InputUtils::legacyFilterInput($iTypeID) . "',
+                     `event_title` = '" . InputUtils::legacyFilterInput($sEventTitle) . "',
+                     `event_desc` = '" . InputUtils::legacyFilterInput($sEventDesc) . "',
+                     `event_text` = '" . InputUtils::filterHTML($sEventText) . "',
+                     `event_start` = '" . InputUtils::legacyFilterInput($sEventStart) . "',
+                     `event_end` = '" . InputUtils::legacyFilterInput($sEventEnd) . "',
+                     `inactive` = '" . InputUtils::legacyFilterInput($iEventStatus) . "';";
             RunQuery($sSQL);
             $iEventID = mysqli_insert_id($cnInfoCentral);
             for ($c = 0; $c < $iNumCounts; $c++) {
@@ -360,23 +361,23 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
                 $sSQL = "INSERT eventcounts_evtcnt
                        (evtcnt_eventid, evtcnt_countid, evtcnt_countname, evtcnt_countcount, evtcnt_notes)
                        VALUES
-                       ('".InputUtils::LegacyFilterInput($iEventID)."',
-                        '".InputUtils::LegacyFilterInput($aCountID[$c])."',
-                        '".InputUtils::LegacyFilterInput($aCountName[$c])."',
-                        '".InputUtils::LegacyFilterInput($aCount[$c])."',
-                        '".InputUtils::LegacyFilterInput($sCountNotes)."') ON DUPLICATE KEY UPDATE evtcnt_countcount='$aCount[$c]', evtcnt_notes='$sCountNotes'";
+                       ('" . InputUtils::legacyFilterInput($iEventID) . "',
+                        '" . InputUtils::legacyFilterInput($aCountID[$c]) . "',
+                        '" . InputUtils::legacyFilterInput($aCountName[$c]) . "',
+                        '" . InputUtils::legacyFilterInput($aCount[$c]) . "',
+                        '" . InputUtils::legacyFilterInput($sCountNotes) . "') ON DUPLICATE KEY UPDATE evtcnt_countcount='$aCount[$c]', evtcnt_notes='$sCountNotes'";
                 RunQuery($sSQL);
             }
         } else {
             $sSQL = "UPDATE events_event
-                     SET `event_type` = '".InputUtils::LegacyFilterInput($iTypeID)."',
-                     `event_title` = '".InputUtils::LegacyFilterInput($sEventTitle)."',
-                     `event_desc` = '".InputUtils::LegacyFilterInput($sEventDesc)."',
-                     `event_text` = '".InputUtils::FilterHTML($sEventText)."',
-                     `event_start` = '".InputUtils::LegacyFilterInput($sEventStart)."',
-                     `event_end` = '".InputUtils::LegacyFilterInput($sEventEnd)."',
-                     `inactive` = '".InputUtils::LegacyFilterInput($iEventStatus)."'
-                      WHERE `event_id` = '".InputUtils::LegacyFilterInput($iEventID)."';";
+                     SET `event_type` = '" . InputUtils::legacyFilterInput($iTypeID) . "',
+                     `event_title` = '" . InputUtils::legacyFilterInput($sEventTitle) . "',
+                     `event_desc` = '" . InputUtils::legacyFilterInput($sEventDesc) . "',
+                     `event_text` = '" . InputUtils::filterHTML($sEventText) . "',
+                     `event_start` = '" . InputUtils::legacyFilterInput($sEventStart) . "',
+                     `event_end` = '" . InputUtils::legacyFilterInput($sEventEnd) . "',
+                     `inactive` = '" . InputUtils::legacyFilterInput($iEventStatus) . "'
+                      WHERE `event_id` = '" . InputUtils::legacyFilterInput($iEventID) . "';";
             echo $sSQL;
             RunQuery($sSQL);
             for ($c = 0; $c < $iNumCounts; $c++) {
@@ -384,11 +385,11 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
                 $sSQL = "INSERT eventcounts_evtcnt
                        (evtcnt_eventid, evtcnt_countid, evtcnt_countname, evtcnt_countcount, evtcnt_notes)
                        VALUES
-                       ('".InputUtils::LegacyFilterInput($iEventID)."',
-                        '".InputUtils::LegacyFilterInput($aCountID[$c])."',
-                        '".InputUtils::LegacyFilterInput($aCountName[$c])."',
-                        '".InputUtils::LegacyFilterInput($aCount[$c])."',
-                        '".InputUtils::LegacyFilterInput($sCountNotes)."') ON DUPLICATE KEY UPDATE evtcnt_countcount='$aCount[$c]', evtcnt_notes='$sCountNotes'";
+                       ('" . InputUtils::legacyFilterInput($iEventID) . "',
+                        '" . InputUtils::legacyFilterInput($aCountID[$c]) . "',
+                        '" . InputUtils::legacyFilterInput($aCountName[$c]) . "',
+                        '" . InputUtils::legacyFilterInput($aCount[$c]) . "',
+                        '" . InputUtils::legacyFilterInput($sCountNotes) . "') ON DUPLICATE KEY UPDATE evtcnt_countcount='$aCount[$c]', evtcnt_notes='$sCountNotes'";
                 RunQuery($sSQL);
             }
         }
@@ -403,17 +404,17 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
 <div class='box'>
   <div class='box-header'>
     <h3 class='box-title'>
-      <?= ($EventExists == 0) ? gettext('Create a new Event') : gettext('Editing Event ID: ').$iEventID ?>
+      <?= ($EventExists == 0) ? gettext('Create a new Event') : gettext('Editing Event ID: ') . $iEventID ?>
     </h3>
   </div>
   <div class='box-header'>
     <?php
-        if ($iErrors != 0) {
-            echo "<div class='alert alert-danger'>".gettext('There were ').$iErrors.gettext(' errors. Please see below').'</div>';
-        } else {
-            echo '<div>'.gettext('Items with a ').'<span style="color: red">*</span>'.gettext(' are required').'</div>';
-        }
-        ?>
+    if ($iErrors != 0) {
+        echo "<div class='alert alert-danger'>" . gettext('There were ') . $iErrors . gettext(' errors. Please see below') . '</div>';
+    } else {
+        echo '<div>' . gettext('Items with a ') . '<span style="color: red">*</span>' . gettext(' are required') . '</div>';
+    }
+    ?>
   </div>
 
 <form method="post" action="EventEditor.php" name="EventsEditor">
@@ -422,7 +423,7 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
 
 <table class='table'>
 <?php if (empty($iTypeID)) {
-            ?>
+    ?>
 
   <tr>
     <td class="LabelColumn"><span style="color: red">*</span><?= gettext('Event Type') ?>:</td>
@@ -432,14 +433,14 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
         <?php
                     $sSQL = 'SELECT * FROM event_types';
             $rsEventTypes = RunQuery($sSQL);
-            while ($aRow = mysqli_fetch_array($rsEventTypes)) {
-                extract($aRow);
-                echo "<option value='".$type_id."' >".$type_name.'</option>';
-            } ?>
+        while ($aRow = mysqli_fetch_array($rsEventTypes)) {
+            extract($aRow);
+            echo "<option value='" . $type_id . "' >" . $type_name . '</option>';
+        } ?>
       </select>
       <?php if ($bEventTypeError) {
-                echo '<div><span style="color: red;">'.gettext('You must pick an event type.').'</span></div>';
-            } ?>
+                echo '<div><span style="color: red;">' . gettext('You must pick an event type.') . '</span></div>';
+      } ?>
       <script nonce="<?= SystemURLs::getCSPNonce() ?>" >
         $('#event_type_id').on('change', function(e) {
           e.preventDefault();
@@ -449,15 +450,14 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
     </td>
   </tr>
 
-<?php
-        } else { // if (empty($iTypeID))?>
-
+    <?php
+} else { // if (empty($iTypeID))?>
   <tr>
     <td class="LabelColumn"><span style="color: red">*</span><?= gettext('Event Type') ?>:</td>
     <td colspan="3" class="TextColumn">
     <input type="hidden" name="EventTypeName" value="<?= ($sTypeName) ?>">
     <input type="hidden" name="EventTypeID" value="<?= ($iTypeID) ?>">
-    <?= ($iTypeID.'-'.$sTypeName) ?>
+    <?= ($iTypeID . '-' . $sTypeName) ?>
     </td>
   </tr>
 
@@ -489,39 +489,39 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
     <td class="TextColumn" colspan="3">
       <input type="hidden" name="NumAttendCounts" value="<?= $nCnts ?>">
       <?php
-      if ($nCnts == 0) {
-          echo gettext('No Attendance counts recorded');
-      } else {
-          ?>
+        if ($nCnts == 0) {
+            echo gettext('No Attendance counts recorded');
+        } else {
+            ?>
     <table>
-      <?php
-      for ($c = 0; $c < $nCnts; $c++) {
-          ?><tr>
-          <td><strong><?= (gettext($aCountName[$c]).':') ?>&nbsp;</strong></td>
+            <?php
+            for ($c = 0; $c < $nCnts; $c++) {
+                ?><tr>
+          <td><strong><?= (gettext($aCountName[$c]) . ':') ?>&nbsp;</strong></td>
         <td>
         <input type="text" name="EventCount[]" value="<?= ($aCount[$c]) ?>" size="8" class='form-control'>
         <input type="hidden" name="EventCountID[]" value="<?= ($aCountID[$c]) ?>">
         <input type="hidden" name="EventCountName[]" value="<?= ($aCountName[$c]) ?>">
         </td>
         </tr>
-      <?php
-      } //end for loop
-      ?>
+                <?php
+            } //end for loop
+            ?>
       <tr>
       <td><strong><?= gettext('Attendance Notes: ') ?>&nbsp;</strong></td>
         <td><input type="text" name="EventCountNotes" value="<?= $sCountNotes ?>" class='form-control'>
         </td>
         </tr>
         </table>
-        <?php
-      } //endif
+            <?php
+        } //endif
         ?>
     </td>
   </tr>
 
   <tr>
     <td colspan="4" class="TextColumn"><?= gettext('Event Sermon') ?>:<br>
-    	<textarea id="#EventText" name="EventText" rows="5" cols="70" class='form-control'><?= ($sEventText) ?></textarea>
+        <textarea id="#EventText" name="EventText" rows="5" cols="70" class='form-control'><?= ($sEventText) ?></textarea>
     </td>
   </tr>
 
@@ -530,10 +530,10 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
     <td colspan="3" class="TextColumn">
       <input type="radio" name="EventStatus" value="0" <?php if ($iEventStatus == 0) {
             echo 'checked';
-        } ?>/> <?= _('Active')?>
+                                                       } ?>/> <?= _('Active')?>
       <input type="radio" name="EventStatus" value="1" <?php if ($iEventStatus == 1) {
             echo 'checked';
-        } ?>/> <?= _('Inactive')?>
+                                                       } ?>/> <?= _('Inactive')?>
     </td>
   </tr>
 
@@ -541,8 +541,8 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
     <td></td>
     <td><input type="submit" name="SaveChanges" value="<?= gettext('Save Changes') ?>" class="btn btn-primary"></td>
   </tr>
-<?php
-        } // if (empty($iTypeID))?>
+    <?php
+} // if (empty($iTypeID))?>
 </table>
 </form>
 </div>
@@ -554,8 +554,8 @@ if ($sAction == 'Create Event' && !empty($tyid)) {
   </a>
 </div>
 <?php
-$eventStart = $sEventStartDate.' '.$iEventStartHour.':'.$iEventStartMins;
-$eventEnd = $sEventEndDate.' '.$iEventEndHour.':'.$iEventEndMins;
+$eventStart = $sEventStartDate . ' ' . $iEventStartHour . ':' . $iEventStartMins;
+$eventEnd = $sEventEndDate . ' ' . $iEventEndHour . ':' . $iEventEndMins;
 ?>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     $( document ).ready(function() {

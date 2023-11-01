@@ -9,22 +9,22 @@ namespace ChurchCRM\Authentication\AuthenticationProviders {
     use ChurchCRM\Authentication\Requests\AuthenticationRequest;
     use ChurchCRM\Exceptions\NotImplementedException;
 
-class APITokenAuthentication implements IAuthenticationProvider
+    class APITokenAuthentication implements IAuthenticationProvider
     {
-
         /***
          * @var ChurchCRM\User
          */
         private $currentUser;
 
-        public function GetCurrentUser()
+        public function getCurrentUser()
         {
-          return $this->currentUser;
+            return $this->currentUser;
         }
 
-        public function Authenticate(AuthenticationRequest $AuthenticationRequest) {
-            if (! $AuthenticationRequest instanceof APITokenAuthenticationRequest ) {
-                throw new \Exception ("Unable to process request as APITokenAuthenticationRequest");
+        public function authenticate(AuthenticationRequest $AuthenticationRequest)
+        {
+            if (! $AuthenticationRequest instanceof APITokenAuthenticationRequest) {
+                throw new \Exception("Unable to process request as APITokenAuthenticationRequest");
             }
             $authenticationResult = new AuthenticationResult();
             $authenticationResult->isAuthenticated = false;
@@ -40,7 +40,7 @@ class APITokenAuthentication implements IAuthenticationProvider
             return $authenticationResult;
         }
 
-        public function ValidateUserSessionIsActive($updateLastOperationTimestamp) : AuthenticationResult
+        public function validateUserSessionIsActive($updateLastOperationTimestamp): AuthenticationResult
         {
             // APITokens are sessionless, so just always say false.
             $authenticationResult = new AuthenticationResult();
@@ -48,11 +48,13 @@ class APITokenAuthentication implements IAuthenticationProvider
             return $authenticationResult;
         }
 
-        public function EndSession() {
+        public function endSession()
+        {
             $this->currentUser = null;
         }
 
-        public function GetPasswordChangeURL() {
+        public function getPasswordChangeURL()
+        {
             throw new NotImplementedException();
         }
     }

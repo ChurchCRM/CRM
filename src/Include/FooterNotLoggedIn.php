@@ -1,4 +1,5 @@
 <?php
+
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\Bootstrapper;
@@ -28,7 +29,7 @@ use ChurchCRM\Bootstrapper;
 
   <script src="<?= SystemURLs::getRootPath() ?>/skin/external/i18next/i18next.min.js"></script>
   <script src="<?= SystemURLs::getRootPath() ?>/skin/external/bootstrap-show-password/bootstrap-show-password.min.js"></script>
-  <script src="<?= SystemURLs::getRootPath() ?>/locale/js/<?= Bootstrapper::GetCurrentLocale()->getLocale() ?>.js"></script>
+  <script src="<?= SystemURLs::getRootPath() ?>/locale/js/<?= Bootstrapper::getCurrentLocale()->getLocale() ?>.js"></script>
 
   <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     i18nextOpt = {
@@ -52,6 +53,6 @@ use ChurchCRM\Bootstrapper;
     if ($_SERVER['SCRIPT_NAME'] != '/setup/index.php') {
         include_once('analyticstracking.php');
     }
- ?>
+    ?>
 </body>
 </html>

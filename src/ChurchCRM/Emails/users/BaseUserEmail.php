@@ -6,7 +6,6 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\User;
 
-
 abstract class BaseUserEmail extends BaseEmail
 {
     protected $user;
@@ -36,15 +35,15 @@ abstract class BaseUserEmail extends BaseEmail
         return array_merge($this->getCommonTokens(), $myTokens);
     }
 
-    function getFullURL()
+    protected function getFullURL()
     {
-        return SystemURLs::getURL() . "/session/begin?username=". $this->user->getUserName();
+        return SystemURLs::getURL() . "/session/begin?username=" . $this->user->getUserName();
     }
 
-    function getButtonText()
+    protected function getButtonText()
     {
         return $this->user->getUserName();
     }
 
-    protected abstract function buildMessageBody();
+    abstract protected function buildMessageBody();
 }

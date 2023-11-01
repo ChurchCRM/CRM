@@ -16,5 +16,4 @@ use ChurchCRM\Base\EventType as BaseEventType;
  */
 class EventType extends BaseEventType
 {
-
 }

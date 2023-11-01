@@ -40,7 +40,7 @@ class MenuItem
     {
         //Review SessionVar stuff
         if (!empty($this->uri)) {
-            if (filter_var($this->uri, FILTER_VALIDATE_URL) === FALSE) {
+            if (filter_var($this->uri, FILTER_VALIDATE_URL) === false) {
                 return SystemURLs::getRootPath() . "/" . $this->uri;
             }
             $this->external = true;
@@ -113,7 +113,8 @@ class MenuItem
         return false;
     }
 
-    public function openMenu() {
+    public function openMenu()
+    {
         foreach ($this->subItems as $item) {
             if ($item->isActive()) {
                 return true;
@@ -129,5 +130,4 @@ class MenuItem
         }
         return $_SERVER["REQUEST_URI"] == $this->getURI();
     }
-
 }

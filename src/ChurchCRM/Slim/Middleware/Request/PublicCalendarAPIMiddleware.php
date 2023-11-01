@@ -23,14 +23,14 @@ class PublicCalendarAPIMiddleware
 
         $CAT = $request->getAttribute("route")->getArgument("CalendarAccessToken");
         if (empty(trim($CAT))) {
-          return $response->withStatus(400)->withJson(["message" => gettext("Missing calendar access token")]);
+            return $response->withStatus(400)->withJson(["message" => gettext("Missing calendar access token")]);
         }
 
         $calendar = CalendarQuery::create()
             ->filterByAccessToken($CAT)
             ->findOne();
         if (empty($calendar)) {
-          return $response->withStatus(404)->withJson(["message" => gettext("Calendar access token not found")]);
+            return $response->withStatus(404)->withJson(["message" => gettext("Calendar access token not found")]);
         }
 
         $request = $request->withAttribute("calendar", $calendar);
@@ -60,8 +60,8 @@ class PublicCalendarAPIMiddleware
             $events->filterByStart($start_date, Criteria::GREATER_EQUAL);
         }
 
-        if(array_key_exists('max',$params)) {
-            $max_events = InputUtils::FilterInt($params['max']);
+        if (array_key_exists('max', $params)) {
+            $max_events = InputUtils::filterInt($params['max']);
             $events->limit($max_events);
         }
 

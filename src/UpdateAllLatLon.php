@@ -1,4 +1,5 @@
 <?php
+
 /*******************************************************************************
  *
  *  filename    : UpdateAllLatLon.php
@@ -19,13 +20,13 @@ require 'Include/Header.php';
 echo '<div class="card card-body box-info">';
 
 $families = FamilyQuery::create()
-    ->filterByLongitude(array(null,0), Criteria::IN)
+    ->filterByLongitude([null,0], Criteria::IN)
     ->_or()
-    ->filterByLatitude(array(null,0), Criteria::IN)
+    ->filterByLatitude([null,0], Criteria::IN)
     ->limit(250)
     ->find();
 
-echo '<h4>' . gettext('Families without Geo Info') . ": " . $families->count() .'</h4>';
+echo '<h4>' . gettext('Families without Geo Info') . ": " . $families->count() . '</h4>';
 
 foreach ($families as $family) {
     $family->updateLanLng();
@@ -49,7 +50,7 @@ if ($families->count() > 0) {
             <?php
 
             foreach ($families as $family) {
-                echo '<li><a href="'.$family->getViewURI().'">' . $family->getName() . '</a> ' . $family->getAddress() . '</li>';
+                echo '<li><a href="' . $family->getViewURI() . '">' . $family->getName() . '</a> ' . $family->getAddress() . '</li>';
             } ?>
         </div>
     </div>

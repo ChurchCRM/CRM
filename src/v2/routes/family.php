@@ -15,45 +15,45 @@ use Slim\Http\Response;
 use Slim\Views\PhpRenderer;
 
 $app->group('/family', function () use ($app) {
-    $app->get('','listFamilies');
-    $app->get('/','listFamilies');
+    $app->get('', 'listFamilies');
+    $app->get('/', 'listFamilies');
     $app->get('/not-found', 'viewFamilyNotFound');
     $app->get('/{id}', 'viewFamily');
 });
 
 function listFamilies(Request $request, Response $response, array $args)
 {
-  $renderer = new PhpRenderer('templates/people/');
-  $sMode = 'Active';
+    $renderer = new PhpRenderer('templates/people/');
+    $sMode = 'Active';
   // Filter received user input as needed
-  if (isset($_GET['mode'])) {
-      $sMode = InputUtils::LegacyFilterInput($_GET['mode']);
-  }
-  if (strtolower($sMode) == 'inactive') {
-      $families = FamilyQuery::create()
+    if (isset($_GET['mode'])) {
+        $sMode = InputUtils::legacyFilterInput($_GET['mode']);
+    }
+    if (strtolower($sMode) == 'inactive') {
+        $families = FamilyQuery::create()
           ->filterByDateDeactivated(null, Criteria::ISNOTNULL)
               ->orderByName()
               ->find();
-  } else {
-      $sMode = 'Active';
-      $families = FamilyQuery::create()
+    } else {
+        $sMode = 'Active';
+        $families = FamilyQuery::create()
           ->filterByDateDeactivated(null)
               ->orderByName()
               ->find();
-  }
-  $pageArgs = [
+    }
+    $pageArgs = [
       'sMode' => $sMode,
       'sRootPath' => SystemURLs::getRootPath(),
       'families' => $families
-  ];
-  return $renderer->render($response, 'family-list.php', $pageArgs);
+    ];
+    return $renderer->render($response, 'family-list.php', $pageArgs);
 }
 
 function viewFamilyNotFound(Request $request, Response $response, array $args)
 {
-  $renderer = new PhpRenderer('templates/common/');
+    $renderer = new PhpRenderer('templates/common/');
 
-  $pageArgs = [
+    $pageArgs = [
         'sRootPath' => SystemURLs::getRootPath(),
         'memberType' => "Family",
         'id' => $request->getParam("id")
@@ -70,7 +70,7 @@ function viewFamily(Request $request, Response $response, array $args)
     $family = FamilyQuery::create()->findPk($familyId);
 
     if (empty($family)) {
-        return $response->withRedirect(SystemURLs::getRootPath() . "/v2/family/not-found?id=".$args["id"]);
+        return $response->withRedirect(SystemURLs::getRootPath() . "/v2/family/not-found?id=" . $args["id"]);
     }
 
     $timelineService = new TimelineService();
@@ -81,15 +81,15 @@ function viewFamily(Request $request, Response $response, array $args)
 
     // get family with all the extra columns created
     $rawQry =  FamilyCustomQuery::create();
-    foreach ($allFamilyCustomFields as $customfield ) {
+    foreach ($allFamilyCustomFields as $customfield) {
         $rawQry->withColumn($customfield->getField());
     }
     $appFamilyCustomFields = $rawQry->findOneByFamId($familyId);
 
     if ($appFamilyCustomFields) {
         $familyCustom = [];
-        foreach ($allFamilyCustomFields as $customfield ) {
-            if (AuthenticationManager::GetCurrentUser()->isEnabledSecurity($customfield->getFieldSecurity())) {
+        foreach ($allFamilyCustomFields as $customfield) {
+            if (AuthenticationManager::getCurrentUser()->isEnabledSecurity($customfield->getFieldSecurity())) {
                 $value = $appFamilyCustomFields->getVirtualColumn($customfield->getField());
                 if (!empty($value)) {
                     $item = new PeopleCustomField($customfield, $value);
@@ -108,6 +108,4 @@ function viewFamily(Request $request, Response $response, array $args)
     ];
 
     return $renderer->render($response, 'family-view.php', $pageArgs);
-
 }
-

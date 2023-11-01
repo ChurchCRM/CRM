@@ -15,5 +15,4 @@ use ChurchCRM\Base\PredefinedReportsQuery as BasePredefinedReportsQuery;
  */
 class PredefinedReportsQuery extends BasePredefinedReportsQuery
 {
-
 }

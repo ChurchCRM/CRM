@@ -16,5 +16,4 @@ use ChurchCRM\Base\MenuLinkQuery as BaseMenuLinkQuery;
  */
 class MenuLinkQuery extends BaseMenuLinkQuery
 {
-
 }

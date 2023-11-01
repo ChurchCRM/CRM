@@ -1,4 +1,5 @@
 <?php
+
 /*******************************************************************************
  *
  *  filename    : FindFundRaiser.php
@@ -25,16 +26,16 @@ $iID = '';
 $sSort = '';
 
 if (array_key_exists('DateStart', $_GET)) {
-    $dDateStart = InputUtils::LegacyFilterInput($_GET['DateStart']);
+    $dDateStart = InputUtils::legacyFilterInput($_GET['DateStart']);
 }
 if (array_key_exists('DateEnd', $_GET)) {
-    $dDateEnd = InputUtils::LegacyFilterInput($_GET['DateEnd']);
+    $dDateEnd = InputUtils::legacyFilterInput($_GET['DateEnd']);
 }
 if (array_key_exists('ID', $_GET)) {
-    $iID = InputUtils::LegacyFilterInput($_GET['ID']);
+    $iID = InputUtils::legacyFilterInput($_GET['ID']);
 }
 if (array_key_exists('Sort', $_GET)) {
-    $sSort = InputUtils::LegacyFilterInput($_GET['Sort']);
+    $sSort = InputUtils::legacyFilterInput($_GET['Sort']);
 }
 
 // Build SQL Criteria
@@ -69,31 +70,31 @@ require 'Include/Header.php';
 <input name="sort" type="hidden" value="<?= $sSort ?>"
 <table cellpadding="3" align="center">
 
-	<tr>
-		<td>
-		<table cellpadding="3">
-			<tr>
-				<td class="LabelColumn"><?= gettext('Number') ?>:</td>
-				<td class="TextColumn"><input type="text" name="ID" id="ID" value="<?= $iID ?>"></td>
-			</tr>
+    <tr>
+        <td>
+        <table cellpadding="3">
+            <tr>
+                <td class="LabelColumn"><?= gettext('Number') ?>:</td>
+                <td class="TextColumn"><input type="text" name="ID" id="ID" value="<?= $iID ?>"></td>
+            </tr>
 
-			<tr>
+            <tr>
                 <td class="LabelColumn"><?= gettext('Date Start') ?>:</td>
-				<td class="TextColumn"><input type="text" name="DateStart" maxlength="10" id="DateStart" size="11" value="<?= $dDateStart ?>" class="date-picker"></td>
-				<td align="center">
-					<input type="submit" class="btn btn-primary" value="<?= gettext('Apply Filters') ?>" name="FindFundRaiserSubmit">
-				</td>
-			</tr>
-			<tr>
-				<td class="LabelColumn"><?= gettext('Date End') ?>:</td>
-				<td class="TextColumn"><input type="text" name="DateEnd" maxlength="10" id="DateEnd" size="11" value="<?= $dDateEnd ?>" class="date-picker"></td>
-				<td align="center">
-					<input type="submit" class="btn btn-danger" value="<?= gettext('Clear Filters') ?>" name="FilterClear">
-				</td>
-			</tr>
-		</table>
-		</td>
-	</form>
+                <td class="TextColumn"><input type="text" name="DateStart" maxlength="10" id="DateStart" size="11" value="<?= $dDateStart ?>" class="date-picker"></td>
+                <td align="center">
+                    <input type="submit" class="btn btn-primary" value="<?= gettext('Apply Filters') ?>" name="FindFundRaiserSubmit">
+                </td>
+            </tr>
+            <tr>
+                <td class="LabelColumn"><?= gettext('Date End') ?>:</td>
+                <td class="TextColumn"><input type="text" name="DateEnd" maxlength="10" id="DateEnd" size="11" value="<?= $dDateEnd ?>" class="date-picker"></td>
+                <td align="center">
+                    <input type="submit" class="btn btn-danger" value="<?= gettext('Clear Filters') ?>" name="FilterClear">
+                </td>
+            </tr>
+        </table>
+        </td>
+    </form>
 </table>
 </div>
 <div class="card card-body">
@@ -102,8 +103,8 @@ require 'Include/Header.php';
 // Save record limit if changed
 if (isset($_GET['Number'])) {
     /* @var $currentUser \ChurchCRM\User */
-    $currentUser = AuthenticationManager::GetCurrentUser();
-    $currentUser->setSearchLimit(InputUtils::LegacyFilterInput($_GET['Number'], 'int'));
+    $currentUser = AuthenticationManager::getCurrentUser();
+    $currentUser->setSearchLimit(InputUtils::legacyFilterInput($_GET['Number'], 'int'));
     $currentUser->save();
 }
 
@@ -118,7 +119,7 @@ switch ($sSort) {
 }
 
 // Append a LIMIT clause to the SQL statement
-$tableSizeSetting = AuthenticationManager::GetCurrentUser()
+$tableSizeSetting = AuthenticationManager::getCurrentUser()
     ->getSetting("ui.table.size");
 if (empty($tableSizeSetting)) {
     $iPerPage = 10;
@@ -128,7 +129,7 @@ if (empty($tableSizeSetting)) {
 if (empty($_GET['Result_Set'])) {
     $Result_Set = 0;
 } else {
-    $Result_Set = InputUtils::LegacyFilterInput($_GET['Result_Set'], 'int');
+    $Result_Set = InputUtils::legacyFilterInput($_GET['Result_Set'], 'int');
 }
 $sLimitSQL = " LIMIT $Result_Set, $iPerPage";
 
@@ -149,7 +150,7 @@ if ($Result_Set < $Total && $Result_Set > 0) {
     if ($thisLinkResult < 0) {
         $thisLinkResult = 0;
     }
-    echo '<a href="FindFundRaiser.php?Result_Set='.$thisLinkResult.'&Sort='.$sSort.'">'.gettext('Previous Page').'</a>&nbsp;&nbsp;';
+    echo '<a href="FindFundRaiser.php?Result_Set=' . $thisLinkResult . '&Sort=' . $sSort . '">' . gettext('Previous Page') . '</a>&nbsp;&nbsp;';
 }
 
 // Calculate starting and ending Page-Number Links
@@ -176,7 +177,7 @@ if ($Pages > 1) {
         if ($thisLinkResult != $Result_Set) {
             echo "<a href=\"FindFundRaiser.php?Result_Set=$thisLinkResult&Sort=$sSort&ID=$iID&DateStart=$dDateStart&DateEnd=$dDateEnd\">$c</a>&nbsp;";
         } else {
-            echo '&nbsp;&nbsp;[ '.$c.' ]&nbsp;&nbsp;';
+            echo '&nbsp;&nbsp;[ ' . $c . ' ]&nbsp;&nbsp;';
         }
     }
 }
@@ -191,14 +192,14 @@ if ($endpage != $Pages) {
 if ($Result_Set >= 0 && $Result_Set < $Total) {
     $thisLinkResult = $Result_Set + $iPerPage;
     if ($thisLinkResult < $Total) {
-        echo "&nbsp;&nbsp;<a href='FindFundRaiser.php?Result_Set=$thisLinkResult&Sort=$sSort'>".gettext('Next Page').'</a>&nbsp;&nbsp;';
+        echo "&nbsp;&nbsp;<a href='FindFundRaiser.php?Result_Set=$thisLinkResult&Sort=$sSort'>" . gettext('Next Page') . '</a>&nbsp;&nbsp;';
     }
 }
 
 // Display Record Limit
-echo '<input type="hidden" name="Result_Set" value="'.$Result_Set.'">';
+echo '<input type="hidden" name="Result_Set" value="' . $Result_Set . '">';
 if (isset($sSort)) {
-    echo '<input type="hidden" name="Sort" value="'.$sSort.'">';
+    echo '<input type="hidden" name="Sort" value="' . $sSort . '">';
 }
 
 $sLimit5 = '';
@@ -223,7 +224,7 @@ if ($iPerPage == '50') {
     $sLimit50 = 'selected';
 }
 
-echo '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.gettext('Display:')."&nbsp;
+echo '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' . gettext('Display:') . "&nbsp;
 	<select class=\"SmallText\" name=\"Number\">
 		<option value=\"5\" $sLimit5>5</option>
 		<option value=\"10\" $sLimit10>10</option>
@@ -231,21 +232,21 @@ echo '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'.gettext('Display:')."&nbsp;
 		<option value=\"25\" $sLimit25>25</option>
 		<option value=\"50\" $sLimit50>50</option>
 	</select>&nbsp;
-	<input type=\"submit\" class=\"icTinyButton\" value=\"".gettext('Go').'">
+	<input type=\"submit\" class=\"icTinyButton\" value=\"" . gettext('Go') . '">
 	</form></div><br>';
 
 // Column Headings
 echo "<table cellpadding='4' align='center' cellspacing='0' width='100%'>\n
 	<tr class='TableHeader'>\n
-	<td width='25'>".gettext('Edit')."</td>\n
-	<td><a href='FindFundRaiser.php?Sort=number&ID=$iID&DateStart=$dDateStart&DateEnd=$dDateEnd'>".gettext('Number')."</a></td>\n
-	<td><a href='FindFundRaiser.php?Sort=date'&ID=$iID&DateStart=$dDateStart&DateEnd=$dDateEnd>".gettext('Date')."</a></td>\n
-	<td>".gettext('Title')."</td>\n
+	<td width='25'>" . gettext('Edit') . "</td>\n
+	<td><a href='FindFundRaiser.php?Sort=number&ID=$iID&DateStart=$dDateStart&DateEnd=$dDateEnd'>" . gettext('Number') . "</a></td>\n
+	<td><a href='FindFundRaiser.php?Sort=date'&ID=$iID&DateStart=$dDateStart&DateEnd=$dDateEnd>" . gettext('Date') . "</a></td>\n
+	<td>" . gettext('Title') . "</td>\n
 	</tr>";
 
 // Display Deposits
 while (list($fr_ID, $fr_Date, $fr_Title) = mysqli_fetch_row($rsDep)) {
-    echo "<tr><td><a href='FundRaiserEditor.php?FundRaiserID=$fr_ID'>".gettext('Edit').'</td>';
+    echo "<tr><td><a href='FundRaiserEditor.php?FundRaiserID=$fr_ID'>" . gettext('Edit') . '</td>';
     echo "<td>$fr_ID</td>";
     echo "<td>$fr_Date</td>";
     // Get deposit total

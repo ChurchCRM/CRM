@@ -5,32 +5,30 @@ namespace ChurchCRM\Tasks;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\KeyManager;
 
-
-class SecretsConfigurationCheckTask implements iTask
+class SecretsConfigurationCheckTask implements TaskInterface
 {
-  public function isActive(): bool
-  {
-    return ! KeyManager::GetAreAllSecretsDefined();
-  }
+    public function isActive(): bool
+    {
+        return ! KeyManager::getAreAllSecretsDefined();
+    }
 
-  public function isAdmin(): bool
-  {
-    return true;
-  }
+    public function isAdmin(): bool
+    {
+        return true;
+    }
 
-  public function getLink(): string
-  {
-      return SystemURLs::getSupportURL(array_pop(explode('\\', self::class)));
-  }
+    public function getLink(): string
+    {
+        return SystemURLs::getSupportURL(array_pop(explode('\\', self::class)));
+    }
 
-  public function getTitle(): string
-  {
-    return gettext('Secret Keys missing from Config.php');
-  }
+    public function getTitle(): string
+    {
+        return gettext('Secret Keys missing from Config.php');
+    }
 
-  public function getDesc(): string
-  {
-    return gettext('Secret Keys missing from Config.php');
-  }
-
+    public function getDesc(): string
+    {
+        return gettext('Secret Keys missing from Config.php');
+    }
 }

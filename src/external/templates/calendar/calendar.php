@@ -1,4 +1,5 @@
 <?php
+
 use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\SystemURLs;
 

@@ -16,5 +16,4 @@ use ChurchCRM\Base\TokenQuery as BaseTokenQuery;
  */
 class TokenQuery extends BaseTokenQuery
 {
-
 }

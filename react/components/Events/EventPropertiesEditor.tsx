@@ -74,7 +74,7 @@ const EventPropertiesEditor: React.FunctionComponent<{ event: CRMEvent, calendar
           <span className={event.PinnedCalendars.length ==0 ? "RequiredFormFieldUnsatisfied" : "RequiredFormFieldSatisfied"}>{window.i18next.t('This field is required')}</span>
             </td>
           <td className="TextColumn">
-            <Select name="PinnedCalendars" inputId="PinnedCalendars" options={calendarOptions} value={initialPinnedCalendarValue} onChange={pinnedCalendarChanged} isMulti="true"  />
+            <Select name="PinnedCalendars" inputId="PinnedCalendars" options={calendarOptions} value={initialPinnedCalendarValue} onChange={pinnedCalendarChanged} isMulti={true} />
             </td>
         </tr>
         <tr>

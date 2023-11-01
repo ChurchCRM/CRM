@@ -49,13 +49,13 @@ class SundaySchoolService
     {
         $sql = 'select person_per.*
               from person_per,group_grp grp, person2group2role_p2g2r person_grp, list_lst lst
-            where grp.grp_ID = '.$groupId."
+            where grp.grp_ID = ' . $groupId . "
               and grp_Type = 4
               and grp.grp_ID = person_grp.p2g2r_grp_ID
               and person_grp.p2g2r_per_ID = per_ID
               and lst.lst_ID = grp.grp_RoleListID
               and lst.lst_OptionID = person_grp.p2g2r_rle_ID
-              and lst.lst_OptionName = '".$role."'
+              and lst.lst_OptionName = '" . $role . "'
             order by per_FirstName";
         $rsMembers = RunQuery($sql);
         $members = [];
@@ -75,15 +75,15 @@ class SundaySchoolService
 
         foreach ($kids as $kid) {
             switch ($kid['per_Gender']) {
-        case 1:
-          $boys++;
-          break;
-        case 2:
-          $girls++;
-          break;
-        default:
-          $unknown++;
-      }
+                case 1:
+                    $boys++;
+                    break;
+                case 2:
+                    $girls++;
+                    break;
+                default:
+                    $unknown++;
+            }
         }
 
         return ['Boys' => $boys, 'Girls' => $girls, 'Unknown' => $unknown];
@@ -107,64 +107,64 @@ class SundaySchoolService
 
         foreach ($kids as $kid) {
             switch ($kid['per_BirthMonth']) {
-        case 1:
-          $Jan++;
-          break;
-        case 2:
-          $Feb++;
-          break;
-        case 3:
-          $Mar++;
-          break;
-        case 4:
-          $Apr++;
-          break;
-        case 5:
-          $May++;
-          break;
-        case 6:
-          $June++;
-          break;
-        case 7:
-          $July++;
-          break;
-        case 8:
-          $Aug++;
-          break;
-        case 9:
-          $Sept++;
-          break;
-        case 10:
-          $Oct++;
-          break;
-        case 11:
-          $Nov++;
-          break;
-        case 12:
-          $Dec++;
-          break;
-      }
+                case 1:
+                    $Jan++;
+                    break;
+                case 2:
+                    $Feb++;
+                    break;
+                case 3:
+                    $Mar++;
+                    break;
+                case 4:
+                    $Apr++;
+                    break;
+                case 5:
+                    $May++;
+                    break;
+                case 6:
+                    $June++;
+                    break;
+                case 7:
+                    $July++;
+                    break;
+                case 8:
+                    $Aug++;
+                    break;
+                case 9:
+                    $Sept++;
+                    break;
+                case 10:
+                    $Oct++;
+                    break;
+                case 11:
+                    $Nov++;
+                    break;
+                case 12:
+                    $Dec++;
+                    break;
+            }
         }
 
         return ['Jan' => $Jan,
-      'Feb'       => $Feb,
-      'Mar'       => $Mar,
-      'Apr'       => $Apr,
-      'May'       => $May,
-      'June'      => $June,
-      'July'      => $July,
-      'Aug'       => $Aug,
-      'Sept'      => $Sept,
-      'Oct'       => $Oct,
-      'Nov'       => $Nov,
-      'Dec'       => $Dec,
-    ];
+        'Feb'       => $Feb,
+        'Mar'       => $Mar,
+        'Apr'       => $Apr,
+        'May'       => $May,
+        'June'      => $June,
+        'July'      => $July,
+        'Aug'       => $Aug,
+        'Sept'      => $Sept,
+        'Oct'       => $Oct,
+        'Nov'       => $Nov,
+        'Dec'       => $Dec,
+        ];
     }
 
     public function getKidsFullDetails($groupId)
     {
         // Get all the groups
-    $sSQL = 'select grp.grp_Name sundayschoolClass, kid.per_ID kidId, kid.per_Gender kidGender, 
+        $sSQL = 'select grp.grp_Name sundayschoolClass, kid.per_ID kidId, kid.per_Gender kidGender, 
                 kid.per_FirstName firstName, kid.per_Email kidEmail, kid.per_LastName LastName, 
                   kid.per_BirthDay birthDay,  kid.per_BirthMonth birthMonth, kid.per_BirthYear birthYear, 
                   kid.per_CellPhone mobilePhone, kid.per_Flags flags, 
@@ -180,7 +180,7 @@ class SundaySchoolService
                 left Join person_per dad on fam.fam_id = dad.per_fam_id and dad.per_Gender = 1 and ( dad.per_fmr_ID = 1 or dad.per_fmr_ID = 2)
                 left join person_per mom on fam.fam_id = mom.per_fam_id and mom.per_Gender = 2 and (mom.per_fmr_ID = 1 or mom.per_fmr_ID = 2),`group_grp` grp, `person2group2role_p2g2r` person_grp
 
-            where kid.per_fam_id = fam.fam_ID and grp.grp_ID = '.$groupId."
+            where kid.per_fam_id = fam.fam_ID and grp.grp_ID = ' . $groupId . "
               and fam.fam_DateDeactivated is null
               and grp_Type = 4 and grp.grp_ID = person_grp.p2g2r_grp_ID  and person_grp.p2g2r_per_ID = kid.per_ID
               and lst.lst_OptionID = person_grp.p2g2r_rle_ID and lst.lst_ID = grp.grp_RoleListID and lst.lst_OptionName = 'Student'

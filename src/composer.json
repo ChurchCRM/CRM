@@ -1,6 +1,6 @@
 {
     "name": "churchcrm/crm",
-    "version": "5.0.5",
+    "version": "5.1.0",
     "type": "project",
     "keywords": [
         "church",
@@ -72,6 +72,7 @@
     },
     "require-dev": {
         "phpstan/phpstan": "^1.10",
-        "rector/rector": "^0.18.5"
+        "rector/rector": "^0.18.5",
+        "squizlabs/php_codesniffer": "^3.7"
     }
 }

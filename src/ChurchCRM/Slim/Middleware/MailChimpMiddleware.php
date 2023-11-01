@@ -6,9 +6,9 @@ use ChurchCRM\Service\MailChimpService;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
-class MailChimpMiddleware {
-
-    public function __invoke( Request $request, Response $response, callable $next )
+class MailChimpMiddleware
+{
+    public function __invoke(Request $request, Response $response, callable $next)
     {
         $mailchimpService = new MailChimpService();
 
@@ -16,7 +16,6 @@ class MailChimpMiddleware {
             return $response->withStatus(412)->withJson(["message" =>  gettext('Mailchimp is not active')]);
         }
         $request = $request->withAttribute("mailchimpService", $mailchimpService);
-        return $next( $request, $response );
+        return $next($request, $response);
     }
-
 }

@@ -1,4 +1,5 @@
 <?php
+
 /*******************************************************************************
  *
  *  filename    : UserList.php
@@ -26,8 +27,8 @@ use ChurchCRM\Authentication\AuthenticationManager;
 
 // Security: User must be an Admin to access this page.
 // Otherwise, re-direct them to the main menu.
-if (!AuthenticationManager::GetCurrentUser()->isAdmin()) {
-    RedirectUtils::SecurityRedirect("Admin");
+if (!AuthenticationManager::getCurrentUser()->isAdmin()) {
+    RedirectUtils::securityRedirect("Admin");
 }
 
 // Get all the User records
@@ -215,7 +216,7 @@ require 'Include/Header.php';
                         <a href="v2/user/<?= $user->getId() ?>">
                             <i class="fa fa-eye" aria-hidden="true"></i>
                         </a>&nbsp;&nbsp;
-                        <?php if ($user->getId() != AuthenticationManager::GetCurrentUser()->getId()) { ?>
+                        <?php if ($user->getId() != AuthenticationManager::getCurrentUser()->getId()) { ?>
                             <a href="#" onclick="deleteUser(<?= $user->getId() ?>, '<?= $user->getPerson()->getFullName() ?>')">
                                 <i class="fa fa-trash-can" aria-hidden="true"></i>
                             </a>
@@ -230,37 +231,37 @@ require 'Include/Header.php';
                         <?php if ($user->isLocked()) { ?>
                             <span class="text-red"><?= $user->getFailedLogins() ?></span>
                         <?php } else {
-    echo $user->getFailedLogins();
-}
-                            if ($user->getFailedLogins() > 0) { ?>
+                            echo $user->getFailedLogins();
+                        }
+                        if ($user->getFailedLogins() > 0) { ?>
                                 <a onclick="restUserLoginCount(<?= $user->getId() ?>, '<?= $user->getPerson()->getFullName() ?>')">
                                     <i class="fa fa-eraser" aria-hidden="true"></i>
                                 </a>
-                            <?php } ?>
+                        <?php } ?>
                     </td>
                     <td>
                         <a href="v2/user/<?= $user->getId() ?>/changePassword"><i class="fa fa-wrench"></i></a
                         >&nbsp;&nbsp;
-                        <?php if ($user->getId() != AuthenticationManager::GetCurrentUser()->getId() && !empty($user->getEmail())) {
-                                ?>
+                        <?php if ($user->getId() != AuthenticationManager::getCurrentUser()->getId() && !empty($user->getEmail())) {
+                            ?>
                             <a href="#" onclick="resetUserPassword(<?= $user->getId() ?>, '<?= $user->getPerson()->getFullName() ?>')">
                                 <i class="fas fa-paper-plane"></i></a>
                             <?php
-                            } ?>
+                        } ?>
                     </td>
                     <td>
                         <?= $user->is2FactorAuthEnabled() ? gettext("Enabled") : gettext("Disabled") ?>
                         <?php
-                            if ($user->is2FactorAuthEnabled()) {
-                                ?>
+                        if ($user->is2FactorAuthEnabled()) {
+                            ?>
                                 <a onclick="disableUserTwoFactorAuth(<?= $user->getId() ?>, '<?= $user->getPerson()->getFullName() ?>')">Disable</a>
                             <?php
-                            }
+                        }
                         ?>
                     </td>
                 </tr>
                 <?php
-} ?>
+            } ?>
             </tbody>
         </table>
     </div>

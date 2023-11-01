@@ -1,10 +1,14 @@
 <?php
+
 /*******************************************************************************
 *
 *  filename    : Reports/EnvelopeReport.php
 *  description : Creates a report showing all envelope assignments
 
 ******************************************************************************/
+
+namespace ChurchCRM\Reports;
+
 require '../Include/Config.php';
 require '../Include/Functions.php';
 
@@ -14,12 +18,12 @@ use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Authentication\AuthenticationManager;
 
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
-if (!AuthenticationManager::GetCurrentUser()->isAdmin() && SystemConfig::getValue('bCSVAdminOnly')) {
-    RedirectUtils::Redirect('Menu.php');
+if (!AuthenticationManager::getCurrentUser()->isAdmin() && SystemConfig::getValue('bCSVAdminOnly')) {
+    RedirectUtils::redirect('Menu.php');
     exit;
 }
 
-class PDF_EnvelopeReport extends ChurchInfoReport
+class PdfEnvelopeReport extends ChurchInfoReport
 {
     // Private properties
     public $_Margin_Left = 12;         // Left Margin
@@ -33,7 +37,7 @@ class PDF_EnvelopeReport extends ChurchInfoReport
 
     // Sets the character size
     // This changes the line height too
-    public function Set_Char_Size($pt)
+    public function setCharSize($pt)
     {
         if ($pt > 3) {
             $this->_Char_Size = $pt;
@@ -48,16 +52,16 @@ class PDF_EnvelopeReport extends ChurchInfoReport
         parent::__construct('P', 'mm', $this->paperFormat);
         $this->SetMargins(0, 0);
 
-        $this->Set_Char_Size(12);
-        $this->AddPage();
+        $this->setCharSize(12);
+        $this->addPage();
         $this->SetAutoPageBreak(false);
 
-        $this->Set_Char_Size(20);
-        $this->WriteAt(12, 12, 'Envelope Numbers for all Families');
-        $this->Set_Char_Size(12);
+        $this->setCharSize(20);
+        $this->writeAt(12, 12, 'Envelope Numbers for all Families');
+        $this->setCharSize(12);
     }
 
-    public function Check_Lines($numlines)
+    public function checkLines($numlines)
     {
         $CurY = $this->GetY();  // Temporarily store off the position
 
@@ -69,7 +73,7 @@ class PDF_EnvelopeReport extends ChurchInfoReport
             if ($this->_Column == 1) {
                 $this->_Column = 0;
                 $this->_CurLine = 2;
-                $this->AddPage();
+                $this->addPage();
             } else {
                 $this->_Column = 1;
                 $this->_CurLine = 2;
@@ -83,14 +87,14 @@ class PDF_EnvelopeReport extends ChurchInfoReport
     {
         extract($aRow); // Get a row from family_fam
 
-        return $fam_Envelope.' '.$this->MakeSalutation($fam_ID);
+        return $fam_Envelope . ' ' . $this->makeSalutation($fam_ID);
     }
 
     // Number of lines is only for the $text parameter
-    public function Add_Record($text, $numlines)
+    public function addRecord($text, $numlines)
     {
         $numlines++; // add an extra blank line after record
-        $this->Check_Lines($numlines);
+        $this->checkLines($numlines);
 
         $_PosX = $this->_Margin_Left + ($this->_Column * 108);
         $_PosY = $this->_Margin_Top + ($this->_CurLine * 5);
@@ -101,7 +105,7 @@ class PDF_EnvelopeReport extends ChurchInfoReport
 }
 
 // Instantiate the directory class and build the report.
-$pdf = new PDF_EnvelopeReport();
+$pdf = new PdfEnvelopeReport();
 
 $sSQL = 'SELECT fam_ID, fam_Envelope FROM family_fam WHERE fam_Envelope>0 ORDER BY fam_Envelope';
 $rsRecords = RunQuery($sSQL);
@@ -119,12 +123,12 @@ while ($aRow = mysqli_fetch_array($rsRecords)) {
         $numlines = 0;
     }
 
-    $pdf->Add_Record($OutStr, $numlines);
+    $pdf->addRecord($OutStr, $numlines);
 }
 
 header('Pragma: public');  // Needed for IE when using a shared SSL certificate
 if (SystemConfig::getValue('iPDFOutputType') == 1) {
-    $pdf->Output('EnvelopeAssignments-'.date(SystemConfig::getValue("sDateFilenameFormat")).'.pdf', 'D');
+    $pdf->Output('EnvelopeAssignments-' . date(SystemConfig::getValue("sDateFilenameFormat")) . '.pdf', 'D');
 } else {
     $pdf->Output();
 }

@@ -2,10 +2,8 @@
 
 namespace ChurchCRM\Emails;
 
-
 class AccountDeletedEmail extends BaseUserEmail
 {
-
     protected function getSubSubject()
     {
         return gettext("Your Account was Deleted");

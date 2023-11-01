@@ -8,7 +8,7 @@ use ChurchCRM\Utils\ORMUtils;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
-$app->group('/public/register', function () use ($app)  {
+$app->group('/public/register', function () use ($app) {
     $app->post('/family', 'registerFamilyAPI');
     $app->post('/family/', 'registerFamilyAPI');
     $app->post('/person', 'registerPersonAPI');
@@ -67,7 +67,6 @@ function registerFamilyAPI(Request $request, Response $response, array $args)
             }
             array_push($familyMembers, $person);
         }
-
     } else {
         return $response->withStatus(400)->withJson(["error" => gettext("Validation Error"),
             "failures" => ORMUtils::getValidationErrors($family->getValidationFailures())]);
@@ -81,7 +80,7 @@ function registerFamilyAPI(Request $request, Response $response, array $args)
     }
 
     $family->save();
-    return $response->withHeader('Content-Type','application/json')->write($family->exportTo('JSON'));
+    return $response->withHeader('Content-Type', 'application/json')->write($family->exportTo('JSON'));
 }
 
 function registerPersonAPI(Request $request, Response $response, array $args)
@@ -93,7 +92,7 @@ function registerPersonAPI(Request $request, Response $response, array $args)
     $person->setDateEntered(new \DateTime());
     if ($person->validate()) {
         $person->save();
-        return $response->withHeader('Content-Type','application/json')->write($person->exportTo('JSON'));
+        return $response->withHeader('Content-Type', 'application/json')->write($person->exportTo('JSON'));
     }
 
     return $response->withStatus(400)->withJson(["error" => gettext("Validation Error"),

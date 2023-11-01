@@ -1,4 +1,5 @@
 <?php
+
 /*******************************************************************************
  *
  *  filename    : GroupReports.php
@@ -44,11 +45,11 @@ require 'Include/Header.php';
                             <select id="GroupID" name="GroupID" onChange="UpdateRoles();">
                                 <?php
                                 // Create the group select drop-down
-                                echo '<option value="0">'.gettext('None').'</option>';
-    while ($aRow = mysqli_fetch_array($rsGroups)) {
-        extract($aRow);
-        echo '<option value="'.$grp_ID.'">'.$grp_Name.'</option>';
-    } ?>
+                                echo '<option value="0">' . gettext('None') . '</option>';
+                                while ($aRow = mysqli_fetch_array($rsGroups)) {
+                                    extract($aRow);
+                                    echo '<option value="' . $grp_ID . '">' . $grp_Name . '</option>';
+                                } ?>
                             </select>
                         </div>
                     </div>
@@ -90,7 +91,7 @@ require 'Include/Header.php';
     </div>
     <?php
 } else {
-                                $iGroupID = InputUtils::LegacyFilterInput($_POST['GroupID'], 'int'); ?>
+                                $iGroupID = InputUtils::legacyFilterInput($_POST['GroupID'], 'int'); ?>
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
@@ -100,19 +101,19 @@ require 'Include/Header.php';
                 <div class="card-body">
 
                     <form method="POST" action="Reports/GroupReport.php">
-                        <input type="hidden" Name="GroupID" <?= 'value="'.$iGroupID.'"' ?>>
+                        <input type="hidden" Name="GroupID" <?= 'value="' . $iGroupID . '"' ?>>
                         <input type="hidden" Name="GroupRole" <?php
                         if (array_key_exists('GroupRole', $_POST)) {
-                            echo 'value="'.$_POST['GroupRole'].'"';
+                            echo 'value="' . $_POST['GroupRole'] . '"';
                         } ?>>
                         <input type="hidden" Name="OnlyCart" <?php
                         if (array_key_exists('OnlyCart', $_POST)) {
-                            echo 'value="'.$_POST['OnlyCart'].'"';
+                            echo 'value="' . $_POST['OnlyCart'] . '"';
                         } ?>>
-                        <input type="hidden" Name="ReportModel" <?= 'value="'.$_POST['ReportModel'].'"' ?>>
+                        <input type="hidden" Name="ReportModel" <?= 'value="' . $_POST['ReportModel'] . '"' ?>>
 
                         <?php
-                        $sSQL = 'SELECT prop_Field, prop_Name FROM groupprop_master WHERE grp_ID = '.$iGroupID.' ORDER BY prop_ID';
+                        $sSQL = 'SELECT prop_Field, prop_Name FROM groupprop_master WHERE grp_ID = ' . $iGroupID . ' ORDER BY prop_ID';
                                 $rsPropFields = RunQuery($sSQL); ?>
 
                         <table align="center">
@@ -135,7 +136,7 @@ require 'Include/Header.php';
                                     if (mysqli_num_rows($rsPropFields) > 0) {
                                         while ($aRow = mysqli_fetch_array($rsPropFields)) {
                                             extract($aRow);
-                                            echo '<input type="checkbox" Name="'.$prop_Field.'enable" value="1">'.$prop_Name.'<br>';
+                                            echo '<input type="checkbox" Name="' . $prop_Field . 'enable" value="1">' . $prop_Name . '<br>';
                                         }
                                     } else {
                                         echo gettext('None');
@@ -157,6 +158,6 @@ require 'Include/Header.php';
     </div>
 
             <?php
-                            } ?>
+} ?>
 
 <?php require 'Include/Footer.php' ?>

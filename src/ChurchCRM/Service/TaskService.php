@@ -10,7 +10,7 @@ use ChurchCRM\Tasks\ChurchNameTask;
 use ChurchCRM\Tasks\EmailTask;
 use ChurchCRM\Tasks\HttpsTask;
 use ChurchCRM\Tasks\IntegrityCheckTask;
-use ChurchCRM\Tasks\iTask;
+use ChurchCRM\Tasks\TaskInterface;
 use ChurchCRM\Tasks\LatestReleaseTask;
 use ChurchCRM\Tasks\PersonClassificationDataCheck;
 use ChurchCRM\Tasks\PersonGenderDataCheck;
@@ -19,7 +19,7 @@ use ChurchCRM\Tasks\PrerequisiteCheckTask;
 use ChurchCRM\Tasks\RegisteredTask;
 use ChurchCRM\Tasks\UpdateFamilyCoordinatesTask;
 use ChurchCRM\Tasks\CheckExecutionTimeTask;
-use ChurchCRM\Tasks\iPreUpgradeTask;
+use ChurchCRM\Tasks\PreUpgradeTaskInterface;
 use ChurchCRM\Tasks\PHPPendingDeprecationVersionCheckTask;
 use ChurchCRM\Tasks\UnsupportedDepositCheck;
 use ChurchCRM\Tasks\PHPZipArchiveCheckTask;
@@ -28,7 +28,7 @@ use ChurchCRM\Tasks\SecretsConfigurationCheckTask;
 class TaskService
 {
     /**
-     * @var ObjectCollection|iTask[]
+     * @var ObjectCollection|TaskInterface[]
      */
     private $taskClasses;
     private array $notificationClasses = [
@@ -63,7 +63,7 @@ class TaskService
     {
         $tasks = [];
         foreach ($this->taskClasses as $taskClass) {
-            if ($taskClass->isActive() && (!$taskClass->isAdmin() || ($taskClass->isAdmin() && AuthenticationManager::GetCurrentUser()->isAdmin()))) {
+            if ($taskClass->isActive() && (!$taskClass->isAdmin() || ($taskClass->isAdmin() && AuthenticationManager::getCurrentUser()->isAdmin()))) {
                 array_push($tasks, ['title' => $taskClass->getTitle(),
                     'link' => $taskClass->getLink(),
                     'admin' => $taskClass->isAdmin(),
@@ -78,15 +78,17 @@ class TaskService
         $tasks = [];
         foreach ($this->notificationClasses as $taskClass) {
             if ($taskClass->isActive()) {
-                array_push($tasks,
-                    new UiNotification($taskClass->getTitle(), "wrench", $taskClass->getLink(), $taskClass->getDesc(), ($taskClass->isAdmin() ? "warning" : "info"), "12000", "bottom", "left"));
+                array_push(
+                    $tasks,
+                    new UiNotification($taskClass->getTitle(), "wrench", $taskClass->getLink(), $taskClass->getDesc(), ($taskClass->isAdmin() ? "warning" : "info"), "12000", "bottom", "left")
+                );
             }
         }
         return $tasks;
     }
 
-    public function getActivePreUpgradeTasks(): array {
-        return array_filter($this->taskClasses, fn($k) => $k instanceof iPreUpgradeTask && $k->isActive());
+    public function getActivePreUpgradeTasks(): array
+    {
+        return array_filter($this->taskClasses, fn($k) => $k instanceof PreUpgradeTaskInterface && $k->isActive());
     }
-
 }

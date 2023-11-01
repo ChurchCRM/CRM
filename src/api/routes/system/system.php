@@ -21,8 +21,7 @@ function logCSPReportAPI(Request $request, Response $response, array $args)
 
 function getUiNotificationAPI(Request $request, Response $response, array $args)
 {
-    if (NotificationService::isUpdateRequired())
-    {
+    if (NotificationService::isUpdateRequired()) {
         NotificationService::updateNotifications();
     }
     $notifications = [];

@@ -1,4 +1,5 @@
 <?php
+
 /*******************************************************************************
  *
  *  filename    : CSVImport.php
@@ -9,6 +10,8 @@
  *  Copyright 2003 Chris Gebhardt
   *
  ******************************************************************************/
+
+namespace ChurchCRM;
 
 // Include the function library
 require 'Include/Config.php';
@@ -21,12 +24,13 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Authentication\AuthenticationManager;
 
-if (!AuthenticationManager::GetCurrentUser()->isAdmin()) {
-    RedirectUtils::Redirect('Menu.php');
+if (!AuthenticationManager::getCurrentUser()->isAdmin()) {
+    RedirectUtils::redirect('Menu.php');
     exit;
 }
+
 /**
- A monogamous society is assumed, however  it can be patriarchal or matriarchal
+ * A monogamous society is assumed, however  it can be patriarchal or matriarchal
  **/
 class Family
 {
@@ -53,7 +57,7 @@ class Family
     }
 
     /** Add what we need to know about members for role assignment later **/
-    public function AddMember($PersonID, $Gender, $Age, $Wedding, $Phone, $Envelope)
+    public function addMember($PersonID, $Gender, $Age, $Wedding, $Phone, $Envelope)
     {
         // add member with un-assigned role
         $this->Members[] = ['personid'     => $PersonID,
@@ -61,7 +65,7 @@ class Family
                                  'gender'  => $Gender,
                                  'role'    => 0,
                                  'phone'   => $Phone,
-                                 'envelope'=> $Envelope, ];
+                                 'envelope' => $Envelope, ];
         if ($Wedding != '') {
             $this->WeddingDate = $Wedding;
         }
@@ -75,7 +79,7 @@ class Family
     }
 
     /** Assigning of roles to be called after all members added **/
-    public function AssignRoles()
+    public function assignRoles()
     {
         // only one member, must be "head"
         if ($this->MemberCount == 1) {
@@ -127,14 +131,12 @@ if (isset($_POST['UploadCSV'])) {
     // Check if a valid CSV file was actually uploaded
     if ($_FILES['CSVfile']['name'] == '') {
         $csvError = gettext('No file selected for upload.');
-    }
-
-    // Valid file, so save it and display the import mapping form.
-    else {
+    } else {
+        // Valid file, so save it and display the import mapping form.
         $csvTempFile = 'import.csv';
         $system_temp = ini_get('session.save_path');
         if (strlen($system_temp) > 0) {
-            $csvTempFile = $system_temp.'/'.$csvTempFile;
+            $csvTempFile = $system_temp . '/' . $csvTempFile;
         }
         move_uploaded_file($_FILES['CSVfile']['tmp_name'], $csvTempFile);
 
@@ -152,7 +154,7 @@ if (isset($_POST['UploadCSV'])) {
         <form method="post" action="CSVImport.php">
 
         <?php
-        echo gettext('Total number of rows in the CSV file:').$iNumRows;
+        echo gettext('Total number of rows in the CSV file:') . $iNumRows;
         echo '<br><br>';
         echo '<table class="table horizontal-scroll" id="importTable">';
 
@@ -163,7 +165,7 @@ if (isset($_POST['UploadCSV'])) {
 
             echo '<tr>';
             for ($col = 0; $col < $numCol; $col++) {
-                echo '<td>'.$aData[$col].'&nbsp;</td>';
+                echo '<td>' . $aData[$col] . '&nbsp;</td>';
             }
             echo '</tr>';
         }
@@ -178,7 +180,7 @@ if (isset($_POST['UploadCSV'])) {
             extract($aRow);
             // No easy way to import person-from-group or custom-list types
             if ($type_ID != 9 && $type_ID != 12) {
-                $sPerCustomFieldList .= '<option value="'.$custom_Field.'">'.$custom_Name."</option>\n";
+                $sPerCustomFieldList .= '<option value="' . $custom_Field . '">' . $custom_Name . "</option>\n";
             }
         }
 
@@ -189,7 +191,7 @@ if (isset($_POST['UploadCSV'])) {
         while ($aRow = mysqli_fetch_array($rsfamCustomFields)) {
             extract($aRow);
             if ($type_ID != 9 && $type_ID != 12) {
-                $sFamCustomFieldList .= '<option value="f'.$fam_custom_Field.'">'.$fam_custom_Name."</option>\n";
+                $sFamCustomFieldList .= '<option value="f' . $fam_custom_Field . '">' . $fam_custom_Name . "</option>\n";
             }
         }
 
@@ -206,7 +208,7 @@ if (isset($_POST['UploadCSV'])) {
         for ($col = 0; $col < $numCol; $col++) {
             ?>
             <td>
-            <select name="<?= 'col'.$col ?>" class="columns">
+            <select name="<?= 'col' . $col ?>" class="columns">
                 <option value="0"><?= gettext('Ignore this Field') ?></option>
                 <option value="1"><?= gettext('Title') ?></option>
                 <option value="2"><?= gettext('First Name') ?></option>
@@ -229,10 +231,10 @@ if (isset($_POST['UploadCSV'])) {
                 <option value="19"><?= gettext('Birth Date') ?></option>
                 <option value="20"><?= gettext('Membership Date') ?></option>
                 <option value="21"><?= gettext('Wedding Date') ?></option>
-                <?= $sPerCustomFieldList.$sFamCustomFieldList ?>
+                <?= $sPerCustomFieldList . $sFamCustomFieldList ?>
             </select>
             </td>
-        <?php
+            <?php
         }
 
         echo '</table>'; ?>
@@ -243,7 +245,7 @@ if (isset($_POST['UploadCSV'])) {
         <input type="checkbox" value="1" name="MakeFamilyRecords" checked="true">
         <select name="MakeFamilyRecordsMode">
             <option value="0"><?= gettext('Make Family records based on last name and address') ?></option>
-            <?= $sPerCustomFieldList.$sFamCustomFieldList ?>
+            <?= $sPerCustomFieldList . $sFamCustomFieldList ?>
         </select>
 
         <BR><BR>
@@ -273,11 +275,11 @@ if (isset($_POST['UploadCSV'])) {
             <option value="0">-----------------------</option>
 
             <?php
-                while ($aRow = mysqli_fetch_array($rsClassifications)) {
-                    extract($aRow);
-                    echo '<option value="'.$lst_OptionID.'"';
-                    echo '>'.$lst_OptionName.'&nbsp;';
-                } ?>
+            while ($aRow = mysqli_fetch_array($rsClassifications)) {
+                extract($aRow);
+                echo '<option value="' . $lst_OptionID . '"';
+                echo '>' . $lst_OptionName . '&nbsp;';
+            } ?>
         </select>
         <?= gettext('Classification') ?>
         <BR><BR>
@@ -299,7 +301,7 @@ if (isset($_POST['DoImport'])) {
     $csvTempFile = 'import.csv';
     $system_temp = ini_get('session.save_path');
     if (strlen($system_temp) > 0) {
-        $csvTempFile = $system_temp.'/'.$csvTempFile;
+        $csvTempFile = $system_temp . '/' . $csvTempFile;
     }
 
     $Families = [];
@@ -310,9 +312,9 @@ if (isset($_POST['DoImport'])) {
         $pFile = fopen($csvTempFile, 'r');
 
         $bHasCustom = false;
-        $sDefaultCountry = InputUtils::LegacyFilterInput($_POST['Country']);
-        $iClassID = InputUtils::LegacyFilterInput($_POST['Classification'], 'int');
-        $iDateMode = InputUtils::LegacyFilterInput($_POST['DateMode'], 'int');
+        $sDefaultCountry = InputUtils::legacyFilterInput($_POST['Country']);
+        $iClassID = InputUtils::legacyFilterInput($_POST['Classification'], 'int');
+        $iDateMode = InputUtils::legacyFilterInput($_POST['DateMode'], 'int');
 
         // Get the number of CSV columns for future reference
         $aData = fgetcsv($pFile, 2048, ',');
@@ -323,20 +325,20 @@ if (isset($_POST['DoImport'])) {
 
         // Put the column types from the mapping form into an array
         for ($col = 0; $col < $numCol; $col++) {
-            if (mb_substr($_POST['col'.$col], 0, 1) == 'c') {
+            if (mb_substr($_POST['col' . $col], 0, 1) == 'c') {
                 $aColumnCustom[$col] = 1;
                 $aFamColumnCustom[$col] = 0;
                 $bHasCustom = true;
             } else {
                 $aColumnCustom[$col] = 0;
-                if (mb_substr($_POST['col'.$col], 0, 2) == 'fc') {
+                if (mb_substr($_POST['col' . $col], 0, 2) == 'fc') {
                     $aFamColumnCustom[$col] = 1;
                     $bHasFamCustom = true;
                 } else {
                     $aFamColumnCustom[$col] = 0;
                 }
             }
-            $aColumnID[$col] = $_POST['col'.$col];
+            $aColumnID[$col] = $_POST['col' . $col];
         }
 
         if ($bHasCustom) {
@@ -362,12 +364,12 @@ if (isset($_POST['DoImport'])) {
         //
 
         $aPersonTableFields = [
-                1 => 'per_Title', 2=>'per_FirstName', 3=>'per_MiddleName', 4=>'per_LastName',
-                5 => 'per_Suffix', 6=>'per_Gender', 7=>'per_Envelope', 8=>'per_Address1', 9=>'per_Address2',
-                10=> 'per_City', 11=>'per_State', 12=>'per_Zip', 13=>'per_Country', 14=>'per_HomePhone',
-                15=> 'per_WorkPhone', 16=>'per_CellPhone', 17=>'per_Email', 18=>'per_WorkEmail',
-                19=> 'per_BirthYear, per_BirthMonth, per_BirthDay', 20=>'per_MembershipDate',
-                21=> 'fam_WeddingDate',
+                1 => 'per_Title', 2 => 'per_FirstName', 3 => 'per_MiddleName', 4 => 'per_LastName',
+                5 => 'per_Suffix', 6 => 'per_Gender', 7 => 'per_Envelope', 8 => 'per_Address1', 9 => 'per_Address2',
+                10 => 'per_City', 11 => 'per_State', 12 => 'per_Zip', 13 => 'per_Country', 14 => 'per_HomePhone',
+                15 => 'per_WorkPhone', 16 => 'per_CellPhone', 17 => 'per_Email', 18 => 'per_WorkEmail',
+                19 => 'per_BirthYear, per_BirthMonth, per_BirthDay', 20 => 'per_MembershipDate',
+                21 => 'fam_WeddingDate',
         ];
 
         $importCount = 0;
@@ -401,10 +403,14 @@ if (isset($_POST['DoImport'])) {
                     // handler for each of the 20 person_per table column possibilities
                     switch ($currentType) {
                         // Address goes with family record if creating families
-                        case 8: case 9: case 10: case 11: case 12:
+                        case 8:
+                        case 9:
+                        case 10:
+                        case 11:
+                        case 12:
                             // if not making family records, add to person
                             if (!isset($_POST['MakeFamilyRecords'])) {
-                                $sSQLpersonData .= "'".addslashes($aData[$col])."',";
+                                $sSQLpersonData .= "'" . addslashes($aData[$col]) . "',";
                             } else {
                                 switch ($currentType) {
                                     case 8:
@@ -426,9 +432,14 @@ if (isset($_POST['DoImport'])) {
                             break;
 
                         // Simple strings.. no special processing
-                        case 1: case 2: case 3: case 4: case 5:
-                        case 17: case 18:
-                            $sSQLpersonData .= "'".addslashes($aData[$col])."',";
+                        case 1:
+                        case 2:
+                        case 3:
+                        case 4:
+                        case 5:
+                        case 17:
+                        case 18:
+                                        $sSQLpersonData .= "'" . addslashes($aData[$col]) . "',";
                             break;
 
                         // Country.. also set $sCountry for use later!
@@ -439,13 +450,19 @@ if (isset($_POST['DoImport'])) {
                         // Gender.. check for multiple possible designations from input
                         case 6:
                             switch (strtolower($aData[$col])) {
-                                case 'male': case 'm': case 'boy': case 'man':
-                                    $sSQLpersonData .= '1, ';
-                                      $iGender = 1;
+                                case 'male':
+                                case 'm':
+                                case 'boy':
+                                case 'man':
+                                            $sSQLpersonData .= '1, ';
+                                            $iGender = 1;
                                     break;
-                                case 'female': case 'f': case 'girl': case 'woman':
-                                    $sSQLpersonData .= '2, ';
-                                      $iGender = 2;
+                                case 'female':
+                                case 'f':
+                                case 'girl':
+                                case 'woman':
+                                            $sSQLpersonData .= '2, ';
+                                            $iGender = 2;
                                     break;
                                 default:
                                     $sSQLpersonData .= '0, ';
@@ -455,11 +472,11 @@ if (isset($_POST['DoImport'])) {
 
                         // Donation envelope.. make sure it's available!
                         case 7:
-                            $iEnv = InputUtils::LegacyFilterInput($aData[$col], 'int');
+                            $iEnv = InputUtils::legacyFilterInput($aData[$col], 'int');
                             if ($iEnv == '') {
                                 $iEnvelope = 0;
                             } else {
-                                $sSQL = "SELECT '' FROM person_per WHERE per_Envelope = ".$iEnv;
+                                $sSQL = "SELECT '' FROM person_per WHERE per_Envelope = " . $iEnv;
                                 $rsTemp = RunQuery($sSQL);
                                 if (mysqli_num_rows($rsTemp) == 0) {
                                     $iEnvelope = $iEnv;
@@ -473,7 +490,7 @@ if (isset($_POST['DoImport'])) {
                         case 19:
                             $sDate = $aData[$col];
                             $aDate = ParseDate($sDate, $iDateMode);
-                            $sSQLpersonData .= $aDate[0].','.$aDate[1].','.$aDate[2].',';
+                            $sSQLpersonData .= $aDate[0] . ',' . $aDate[1] . ',' . $aDate[2] . ',';
                             // Save these for role calculation
                             $iBirthYear = $aDate[0];
                             $iBirthMonth = $aDate[1];
@@ -487,7 +504,7 @@ if (isset($_POST['DoImport'])) {
                             if ($aDate[0] == 'NULL' || $aDate[1] == 'NULL' || $aDate[2] == 'NULL') {
                                 $sSQLpersonData .= 'NULL,';
                             } else {
-                                $sSQLpersonData .= '"'.$aDate[0].'-'.$aDate[1].'-'.$aDate[2].'",';
+                                $sSQLpersonData .= '"' . $aDate[0] . '-' . $aDate[1] . '-' . $aDate[2] . '",';
                             }
                             break;
 
@@ -498,31 +515,41 @@ if (isset($_POST['DoImport'])) {
                             if ($aDate[0] == 'NULL' || $aDate[1] == 'NULL' || $aDate[2] == 'NULL') {
                                 $dWedding = 'NULL';
                             } else {
-                                $dWedding = $aDate[0].'-'.$aDate[1].'-'.$aDate[2];
+                                $dWedding = $aDate[0] . '-' . $aDate[1] . '-' . $aDate[2];
                             }
                             break;
 
                         // Ignore field option
                         case 0:
-
                         // Phone numbers.. uh oh.. don't know country yet.. wait to do a second pass!
-                        case 14: case 15: case 16:
+                        case 14:
+                        case 15:
+                        case 16:
                         default:
                             break;
-
                     }
 
                     switch ($currentType) {
-                        case 0: case 7: case 13: case 14: case 15: case 16: case 21:
+                        case 0:
+                        case 7:
+                        case 13:
+                        case 14:
+                        case 15:
+                        case 16:
+                        case 21:
                             break;
-                        case 8: case 9: case 10: case 11: case 12:
+                        case 8:
+                        case 9:
+                        case 10:
+                        case 11:
+                        case 12:
                             // if not making family records, add to person
                             if (!isset($_POST['MakeFamilyRecords'])) {
-                                $sSQLpersonFields .= $aPersonTableFields[$currentType].', ';
+                                $sSQLpersonFields .= $aPersonTableFields[$currentType] . ', ';
                             }
                             break;
                         default:
-                            $sSQLpersonFields .= $aPersonTableFields[$currentType].', ';
+                            $sSQLpersonFields .= $aPersonTableFields[$currentType] . ', ';
                             break;
                     }
                 }
@@ -535,9 +562,11 @@ if (isset($_POST['DoImport'])) {
                     $currentType = $aColumnID[$col];
                     switch ($currentType) {
                         // Phone numbers..
-                        case 14: case 15: case 16:
-                            $sSQLpersonData .= "'".addslashes(CollapsePhoneNumber($aData[$col], $sCountry))."',";
-                            $sSQLpersonFields .= $aPersonTableFields[$currentType].', ';
+                        case 14:
+                        case 15:
+                        case 16:
+                                $sSQLpersonData .= "'" . addslashes(CollapsePhoneNumber($aData[$col], $sCountry)) . "',";
+                                $sSQLpersonFields .= $aPersonTableFields[$currentType] . ', ';
                             break;
                         default:
                             break;
@@ -546,13 +575,13 @@ if (isset($_POST['DoImport'])) {
             }
 
             // Finish up the person_per SQL..
-            $sSQLpersonData .= $iClassID.",'".addslashes($sCountry)."',";
-            $sSQLpersonData .= "'".date('YmdHis')."',".AuthenticationManager::GetCurrentUser()->getId();
+            $sSQLpersonData .= $iClassID . ",'" . addslashes($sCountry) . "',";
+            $sSQLpersonData .= "'" . date('YmdHis') . "'," . AuthenticationManager::getCurrentUser()->getId();
             $sSQLpersonData .= ')';
 
             $sSQLpersonFields .= 'per_cls_ID, per_Country, per_DateEntered, per_EnteredBy';
             $sSQLpersonFields .= ')';
-            $sSQLperson = $sSQLpersonFields.$sSQLpersonData;
+            $sSQLperson = $sSQLpersonFields . $sSQLpersonData;
 
             RunQuery($sSQLperson);
 
@@ -561,7 +590,7 @@ if (isset($_POST['DoImport'])) {
                 $sSQL = 'SELECT MAX(per_ID) AS iPersonID FROM person_per';
                 $rsPersonID = RunQuery($sSQL);
                 extract(mysqli_fetch_array($rsPersonID));
-                $sSQL = 'SELECT * FROM person_per WHERE per_ID = '.$iPersonID;
+                $sSQL = 'SELECT * FROM person_per WHERE per_ID = ' . $iPersonID;
                 $rsNewPerson = RunQuery($sSQL);
                 extract(mysqli_fetch_array($rsNewPerson));
 
@@ -569,8 +598,8 @@ if (isset($_POST['DoImport'])) {
                 if (!isset($_POST['MakeFamilyRecordsMode']) || $_POST['MakeFamilyRecordsMode'] == '0') {
                     // ...with same last name and address
                     $sSQL = "SELECT fam_ID
-                             FROM family_fam where fam_Name = '".addslashes($per_LastName)."'
-                             AND fam_Address1 = '".$sAddress1."'"; // slashes added already
+                             FROM family_fam where fam_Name = '" . addslashes($per_LastName) . "'
+                             AND fam_Address1 = '" . $sAddress1 . "'"; // slashes added already
                 } else {
                     // ...with the same custom field values
                     $field = $_POST['MakeFamilyRecordsMode'];
@@ -582,7 +611,7 @@ if (isset($_POST['DoImport'])) {
                         }
                     }
                     $sSQL = 'SELECT f.fam_ID FROM family_fam f, family_custom c
-                             WHERE f.fam_ID = c.fam_ID AND c.'.addslashes(mb_substr($field, 1))." = '".addslashes($field_value)."'";
+                             WHERE f.fam_ID = c.fam_ID AND c.' . addslashes(mb_substr($field, 1)) . " = '" . addslashes($field_value) . "'";
                 }
                 $rsExistingFamily = RunQuery($sSQL);
                 $famid = 0;
@@ -590,7 +619,7 @@ if (isset($_POST['DoImport'])) {
                     extract(mysqli_fetch_array($rsExistingFamily));
                     $famid = $fam_ID;
                     if (array_key_exists($famid, $Families)) {
-                        $Families[$famid]->AddMember(
+                        $Families[$famid]->addMember(
                             $per_ID,
                             $iGender,
                             GetAge($iBirthMonth, $iBirthDay, $iBirthYear),
@@ -614,20 +643,20 @@ if (isset($_POST['DoImport'])) {
                                                      fam_Email,
                                                      fam_DateEntered,
                                                      fam_EnteredBy)
-                             VALUES (NULL, '.
-                                     '"'.$per_LastName.'", '.
-                                     '"'.$sAddress1.'", '.
-                                     '"'.$sAddress2.'", '.
-                                     '"'.$sCity.'", '.
-                                     '"'.$sState.'", '.
-                                     '"'.$sZip.'", '.
-                                     '"'.$per_Country.'", '.
-                                     '"'.$per_HomePhone.'", '.
-                                     '"'.$per_WorkPhone.'", '.
-                                     '"'.$per_CellPhone.'", '.
-                                     '"'.$per_Email.'",'.
-                                     '"'.date('YmdHis').'",'.
-                                     '"'.AuthenticationManager::GetCurrentUser()->getId().'");';
+                             VALUES (NULL, ' .
+                                     '"' . $per_LastName . '", ' .
+                                     '"' . $sAddress1 . '", ' .
+                                     '"' . $sAddress2 . '", ' .
+                                     '"' . $sCity . '", ' .
+                                     '"' . $sState . '", ' .
+                                     '"' . $sZip . '", ' .
+                                     '"' . $per_Country . '", ' .
+                                     '"' . $per_HomePhone . '", ' .
+                                     '"' . $per_WorkPhone . '", ' .
+                                     '"' . $per_CellPhone . '", ' .
+                                     '"' . $per_Email . '",' .
+                                     '"' . date('YmdHis') . '",' .
+                                     '"' . AuthenticationManager::getCurrentUser()->getId() . '");';
                     RunQuery($sSQL);
 
                     $sSQL = 'SELECT LAST_INSERT_ID()';
@@ -638,13 +667,13 @@ if (isset($_POST['DoImport'])) {
                     $note->setFamId($famid);
                     $note->setText(gettext('Imported'));
                     $note->setType('create');
-                    $note->setEntered(AuthenticationManager::GetCurrentUser()->getId());
+                    $note->setEntered(AuthenticationManager::getCurrentUser()->getId());
                     $note->save();
-                    $sSQL = "INSERT INTO `family_custom` (`fam_ID`) VALUES ('".$famid."')";
+                    $sSQL = "INSERT INTO `family_custom` (`fam_ID`) VALUES ('" . $famid . "')";
                     RunQuery($sSQL);
 
-                    $fFamily = new Family(InputUtils::LegacyFilterInput($_POST['FamilyMode'], 'int'));
-                    $fFamily->AddMember(
+                    $fFamily = new Family(InputUtils::legacyFilterInput($_POST['FamilyMode'], 'int'));
+                    $fFamily->addMember(
                         $per_ID,
                         $iGender,
                         GetAge($iBirthMonth, $iBirthDay, $iBirthYear),
@@ -654,7 +683,7 @@ if (isset($_POST['DoImport'])) {
                     );
                     $Families[$famid] = $fFamily;
                 }
-                $sSQL = 'UPDATE person_per SET per_fam_ID = '.$famid.' WHERE per_ID = '.$per_ID;
+                $sSQL = 'UPDATE person_per SET per_fam_ID = ' . $famid . ' WHERE per_ID = ' . $per_ID;
                 RunQuery($sSQL);
 
                 if ($bHasFamCustom) {
@@ -662,7 +691,7 @@ if (isset($_POST['DoImport'])) {
                     $sSQL = "SELECT fam_id FROM family_custom WHERE fam_id = $famid";
                     $rsFamCustomID = RunQuery($sSQL);
                     if (mysqli_num_rows($rsFamCustomID) == 0) {
-                        $sSQL = "INSERT INTO `family_custom` (`fam_ID`) VALUES ('".$famid."')";
+                        $sSQL = "INSERT INTO `family_custom` (`fam_ID`) VALUES ('" . $famid . "')";
                         RunQuery($sSQL);
                     }
 
@@ -683,9 +712,8 @@ if (isset($_POST['DoImport'])) {
                                 } else {
                                     $currentFieldData = implode('-', $aDate);
                                 }
-                            }
-                            // If boolean, convert to the expected values for custom field
-                            elseif ($currentType == 1) {
+                            } elseif ($currentType == 1) {
+                                // If boolean, convert to the expected values for custom field
                                 if (strlen($currentFieldData)) {
                                     $currentFieldData = ConvertToBoolean($currentFieldData);
                                 }
@@ -700,7 +728,7 @@ if (isset($_POST['DoImport'])) {
 
                     // Finalize and run the update for the person_custom table.
                     $sSQLFamCustom = mb_substr($sSQLFamCustom, 0, -2);
-                    $sSQLFamCustom .= ' WHERE fam_ID = '.$famid;
+                    $sSQLFamCustom .= ' WHERE fam_ID = ' . $famid;
                     RunQuery($sSQLFamCustom);
                 }
             }
@@ -713,10 +741,10 @@ if (isset($_POST['DoImport'])) {
             $note->setPerId($iPersonID);
             $note->setText(gettext('Imported'));
             $note->setType('create');
-            $note->setEntered(AuthenticationManager::GetCurrentUser()->getId());
+            $note->setEntered(AuthenticationManager::getCurrentUser()->getId());
             $note->save();
             if ($bHasCustom) {
-                $sSQL = "INSERT INTO `person_custom` (`per_ID`) VALUES ('".$iPersonID."')";
+                $sSQL = "INSERT INTO `person_custom` (`per_ID`) VALUES ('" . $iPersonID . "')";
                 RunQuery($sSQL);
 
                 // Build the person_custom SQL
@@ -734,9 +762,8 @@ if (isset($_POST['DoImport'])) {
                             } else {
                                 $currentFieldData = implode('-', $aDate);
                             }
-                        }
-                        // If boolean, convert to the expected values for custom field
-                        elseif ($currentType == 1) {
+                        } elseif ($currentType == 1) {
+                            // If boolean, convert to the expected values for custom field
                             if (strlen($currentFieldData)) {
                                 $currentFieldData = ConvertToBoolean($currentFieldData);
                             }
@@ -751,7 +778,7 @@ if (isset($_POST['DoImport'])) {
 
                 // Finalize and run the update for the person_custom table.
                 $sSQLcustom = mb_substr($sSQLcustom, 0, -2);
-                $sSQLcustom .= ' WHERE per_ID = '.$iPersonID;
+                $sSQLcustom .= ' WHERE per_ID = ' . $iPersonID;
                 RunQuery($sSQLcustom);
             }
 
@@ -769,8 +796,8 @@ if (isset($_POST['DoImport'])) {
         $aDirRoleChild = explode(',', SystemConfig::getValue('sDirRoleChild'));
 
         // update roles now that we have complete family data.
-        foreach ($Families as $fid=>$family) {
-            $family->AssignRoles();
+        foreach ($Families as $fid => $family) {
+            $family->assignRoles();
             foreach ($family->Members as $member) {
                 switch ($member['role']) {
                     case 1:
@@ -785,21 +812,21 @@ if (isset($_POST['DoImport'])) {
                     default:
                         $iRole = 0;
                 }
-                $sSQL = 'UPDATE person_per SET per_fmr_ID = '.$iRole.' WHERE per_ID = '.$member['personid'];
+                $sSQL = 'UPDATE person_per SET per_fmr_ID = ' . $iRole . ' WHERE per_ID = ' . $member['personid'];
                 RunQuery($sSQL);
             }
 
-            $sSQL = 'UPDATE family_fam SET fam_WeddingDate = '."'".$family->WeddingDate."'";
+            $sSQL = 'UPDATE family_fam SET fam_WeddingDate = ' . "'" . $family->WeddingDate . "'";
 
             if ($family->Phone != '') {
-                $sSQL .= ', fam_HomePhone ='."'".$family->Phone."'";
+                $sSQL .= ', fam_HomePhone =' . "'" . $family->Phone . "'";
             }
 
             if ($family->Envelope != 0) {
-                $sSQL .= ', fam_Envelope  = '.$family->Envelope;
+                $sSQL .= ', fam_Envelope  = ' . $family->Envelope;
             }
 
-            $sSQL .= ' WHERE fam_ID = '.$fid;
+            $sSQL .= ' WHERE fam_ID = ' . $fid;
             RunQuery($sSQL);
         }
 
@@ -823,7 +850,7 @@ if ($iStage == 1) {
 }
 
 if ($iStage == 3) {
-    echo '<p class="MediumLargeText">'.gettext('Data import successful.').' '.$importCount.' '.gettext('persons were imported').'</p>';
+    echo '<p class="MediumLargeText">' . gettext('Data import successful.') . ' ' . $importCount . ' ' . gettext('persons were imported') . '</p>';
 }
 
 // Returns a date array [year,month,day]
@@ -849,11 +876,11 @@ function ParseDate($sDate, $iDateMode)
             if (!is_numeric($cSeparator)) {
                 $sDate = str_replace($cSeparator, '', $sDate);
             }
-             if (strlen($sDate) == 8) {
-                 $aDate[0] = mb_substr($sDate, 0, 4);
-                 $aDate[1] = mb_substr($sDate, 4, 2);
-                 $aDate[2] = mb_substr($sDate, 6, 2);
-             }
+            if (strlen($sDate) == 8) {
+                $aDate[0] = mb_substr($sDate, 0, 4);
+                $aDate[1] = mb_substr($sDate, 4, 2);
+                $aDate[2] = mb_substr($sDate, 6, 2);
+            }
             break;
 
         // MM-DD-YYYY
@@ -862,8 +889,8 @@ function ParseDate($sDate, $iDateMode)
             if ($cSeparator != '') {
                 $tmpDate = explode($cSeparator, $sDate);
                 $aDate[0] = strlen($tmpDate[2]) == 4 ? $tmpDate[2] : '0000';
-                $aDate[1] = strlen($tmpDate[0]) == 2 ? $tmpDate[0] : '0'.$tmpDate[0];
-                $aDate[2] = strlen($tmpDate[1]) == 2 ? $tmpDate[1] : '0'.$tmpDate[1];
+                $aDate[1] = strlen($tmpDate[0]) == 2 ? $tmpDate[0] : '0' . $tmpDate[0];
+                $aDate[2] = strlen($tmpDate[1]) == 2 ? $tmpDate[1] : '0' . $tmpDate[1];
             } else {
                 if (strlen($sDate) == 8) {
                     $aDate[0] = mb_substr($sDate, 4, 4);
@@ -879,8 +906,8 @@ function ParseDate($sDate, $iDateMode)
             if ($cSeparator != '') {
                 $tmpDate = explode($cSeparator, $sDate);
                 $aDate[0] = strlen($tmpDate[2]) == 4 ? $tmpDate[2] : '0000';
-                $aDate[1] = strlen($tmpDate[1]) == 2 ? $tmpDate[1] : '0'.$tmpDate[1];
-                $aDate[2] = strlen($tmpDate[0]) == 2 ? $tmpDate[0] : '0'.$tmpDate[0];
+                $aDate[1] = strlen($tmpDate[1]) == 2 ? $tmpDate[1] : '0' . $tmpDate[1];
+                $aDate[2] = strlen($tmpDate[0]) == 2 ? $tmpDate[0] : '0' . $tmpDate[0];
             } else {
                 if (strlen($sDate) == 8) {
                     $aDate[0] = mb_substr($sDate, 4, 4);

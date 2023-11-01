@@ -15,5 +15,4 @@ use ChurchCRM\Base\PredefinedReports as BasePredefinedReports;
  */
 class PredefinedReports extends BasePredefinedReports
 {
-
 }

@@ -1,4 +1,5 @@
 <?php
+
 /*******************************************************************************
  *
  *  filename    : EventNames.php
@@ -23,7 +24,7 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Authentication\AuthenticationManager;
 
-if (!AuthenticationManager::GetCurrentUser()->isAddEvent()) {
+if (!AuthenticationManager::getCurrentUser()->isAddEvent()) {
     header('Location: Menu.php');
 }
 
@@ -36,70 +37,70 @@ require 'Include/Header.php';
 //
 
 if (isset($_POST['Action'])) {
-    switch (InputUtils::LegacyFilterInput($_POST['Action'])) {
-    case 'CREATE':
-    // Insert into the event_name table
-      $eName = $_POST['newEvtName'];
-      $eTime = $_POST['newEvtStartTime'];
-      $eDOM = $_POST['newEvtRecurDOM'];
-      $eDOW = $_POST['newEvtRecurDOW'];
-      $eDOY = $_POST['newEvtRecurDOY'];
-      $eRecur = $_POST['newEvtTypeRecur'];
-      $eCntLst = $_POST['newEvtTypeCntLst'];
-      $eCntArray = array_filter(array_map('trim', explode(',', $eCntLst)));
-      $eCntArray[] = 'Total';
-      $eCntNum = count($eCntArray);
-      $theID = $_POST['theID'];
+    switch (InputUtils::legacyFilterInput($_POST['Action'])) {
+        case 'CREATE':
+        // Insert into the event_name table
+            $eName = $_POST['newEvtName'];
+            $eTime = $_POST['newEvtStartTime'];
+            $eDOM = $_POST['newEvtRecurDOM'];
+            $eDOW = $_POST['newEvtRecurDOW'];
+            $eDOY = $_POST['newEvtRecurDOY'];
+            $eRecur = $_POST['newEvtTypeRecur'];
+            $eCntLst = $_POST['newEvtTypeCntLst'];
+            $eCntArray = array_filter(array_map('trim', explode(',', $eCntLst)));
+            $eCntArray[] = 'Total';
+            $eCntNum = count($eCntArray);
+            $theID = $_POST['theID'];
 
-      # We need to be able to handle database configurations where MySQL Strict mode is enabled. (#4273)
-      # See: https://dev.mysql.com/doc/refman/en/sql-mode.html#sql-mode-strict
-      # Special thanks to @chiebert (GitHub) for the fix!
-      $insert = "INSERT INTO event_types (type_name";
-      $values = " VALUES ('".InputUtils::LegacyFilterInput($eName)."'";
-      if (!empty($eTime)) {
-          $insert .= ", type_defstarttime";
-          $values .= ",'".InputUtils::LegacyFilterInput($eTime)."'";
-      }
-      if (!empty($eRecur)) {
-          $insert .= ", type_defrecurtype";
-          $values .= ",'".InputUtils::LegacyFilterInput($eRecur)."'";
-      }
-      if (!empty($eDOW)) {
-          $insert .= ", type_defrecurDOW";
-          $values .= ",'".InputUtils::LegacyFilterInput($eDOW)."'";
-      }
-      if (!empty($eDOM)) {
-          $insert .= ", type_defrecurDOM";
-          $values .= ",'".InputUtils::LegacyFilterInput($eDOM)."'";
-      }
-      if (!empty($eDOY)) {
-          $insert .= ", type_defrecurDOY";
-          $values .= ",'".InputUtils::LegacyFilterInput($eDOY)."'";
-      }
-      $insert .= ")";
-      $values .= ")";
+          # We need to be able to handle database configurations where MySQL Strict mode is enabled. (#4273)
+          # See: https://dev.mysql.com/doc/refman/en/sql-mode.html#sql-mode-strict
+          # Special thanks to @chiebert (GitHub) for the fix!
+            $insert = "INSERT INTO event_types (type_name";
+            $values = " VALUES ('" . InputUtils::legacyFilterInput($eName) . "'";
+            if (!empty($eTime)) {
+                $insert .= ", type_defstarttime";
+                $values .= ",'" . InputUtils::legacyFilterInput($eTime) . "'";
+            }
+            if (!empty($eRecur)) {
+                $insert .= ", type_defrecurtype";
+                $values .= ",'" . InputUtils::legacyFilterInput($eRecur) . "'";
+            }
+            if (!empty($eDOW)) {
+                $insert .= ", type_defrecurDOW";
+                $values .= ",'" . InputUtils::legacyFilterInput($eDOW) . "'";
+            }
+            if (!empty($eDOM)) {
+                $insert .= ", type_defrecurDOM";
+                $values .= ",'" . InputUtils::legacyFilterInput($eDOM) . "'";
+            }
+            if (!empty($eDOY)) {
+                $insert .= ", type_defrecurDOY";
+                $values .= ",'" . InputUtils::legacyFilterInput($eDOY) . "'";
+            }
+            $insert .= ")";
+            $values .= ")";
 
-      $sSQL = $insert.$values;
-      RunQuery($sSQL);
-    $theID = mysqli_insert_id($cnInfoCentral);
+            $sSQL = $insert . $values;
+            RunQuery($sSQL);
+            $theID = mysqli_insert_id($cnInfoCentral);
 
-      for ($j = 0; $j < $eCntNum; $j++) {
-          $cCnt = ltrim(rtrim($eCntArray[$j]));
-          $sSQL = "INSERT eventcountnames_evctnm (evctnm_eventtypeid, evctnm_countname) VALUES ('".InputUtils::LegacyFilterInput($theID)."','".InputUtils::LegacyFilterInput($cCnt)."') ON DUPLICATE KEY UPDATE evctnm_countname='$cCnt'";
-          RunQuery($sSQL);
-      }
-    RedirectUtils::Redirect('EventNames.php'); // clear POST
-    break;
+            for ($j = 0; $j < $eCntNum; $j++) {
+                $cCnt = ltrim(rtrim($eCntArray[$j]));
+                $sSQL = "INSERT eventcountnames_evctnm (evctnm_eventtypeid, evctnm_countname) VALUES ('" . InputUtils::legacyFilterInput($theID) . "','" . InputUtils::legacyFilterInput($cCnt) . "') ON DUPLICATE KEY UPDATE evctnm_countname='$cCnt'";
+                RunQuery($sSQL);
+            }
+            RedirectUtils::redirect('EventNames.php'); // clear POST
+            break;
 
-    case 'DELETE':
-      $theID = $_POST['theID'];
-      $sSQL = "DELETE FROM event_types WHERE type_id='".InputUtils::LegacyFilterInput($theID)."' LIMIT 1";
-      RunQuery($sSQL);
-      $sSQL = "DELETE FROM eventcountnames_evctnm WHERE evctnm_eventtypeid='".InputUtils::LegacyFilterInput($theID)."'";
-      RunQuery($sSQL);
-      $theID = '';
-      $_POST['Action'] = '';
-      break;
+        case 'DELETE':
+            $theID = $_POST['theID'];
+            $sSQL = "DELETE FROM event_types WHERE type_id='" . InputUtils::legacyFilterInput($theID) . "' LIMIT 1";
+            RunQuery($sSQL);
+            $sSQL = "DELETE FROM eventcountnames_evctnm WHERE evctnm_eventtypeid='" . InputUtils::legacyFilterInput($theID) . "'";
+            RunQuery($sSQL);
+            $theID = '';
+            $_POST['Action'] = '';
+            break;
     }
 }
 
@@ -110,57 +111,57 @@ $rsOpps = RunQuery($sSQL);
 $numRows = mysqli_num_rows($rsOpps);
 
         // Create arrays of the event types
-        for ($row = 1; $row <= $numRows; $row++) {
-            $aRow = mysqli_fetch_array($rsOpps, MYSQLI_BOTH);
-            extract($aRow);
+for ($row = 1; $row <= $numRows; $row++) {
+    $aRow = mysqli_fetch_array($rsOpps, MYSQLI_BOTH);
+    extract($aRow);
 
-            $aTypeID[$row] = $type_id;
-            $aTypeName[$row] = $type_name;
-            $aDefStartTime[$row] = $type_defstarttime;
-            $aDefRecurDOW[$row] = $type_defrecurDOW;
-            $aDefRecurDOM[$row] = $type_defrecurDOM;
-            $aDefRecurDOY[$row] = $type_defrecurDOY;
-            $aDefRecurType[$row] = $type_defrecurtype;
-            //                echo "$row:::DOW = $aDefRecurDOW[$row], DOM=$aDefRecurDOM[$row], DOY=$adefRecurDOY[$row] type=$aDefRecurType[$row]\n\r\n<br>";
+    $aTypeID[$row] = $type_id;
+    $aTypeName[$row] = $type_name;
+    $aDefStartTime[$row] = $type_defstarttime;
+    $aDefRecurDOW[$row] = $type_defrecurDOW;
+    $aDefRecurDOM[$row] = $type_defrecurDOM;
+    $aDefRecurDOY[$row] = $type_defrecurDOY;
+    $aDefRecurType[$row] = $type_defrecurtype;
+    //                echo "$row:::DOW = $aDefRecurDOW[$row], DOM=$aDefRecurDOM[$row], DOY=$adefRecurDOY[$row] type=$aDefRecurType[$row]\n\r\n<br>";
 
-            switch ($aDefRecurType[$row]) {
-                  case 'none':
-                    $recur[$row] = gettext('None');
-                    break;
-                  case 'weekly':
-                    $recur[$row] = gettext('Weekly on').' '.gettext($aDefRecurDOW[$row].'s');
-                    break;
-                  case 'monthly':
-                    $recur[$row] = gettext('Monthly on').' '.date('dS', mktime(0, 0, 0, 1, $aDefRecurDOM[$row], 2000));
-                    break;
-                  case 'yearly':
-                    $recur[$row] = gettext('Yearly on').' '.mb_substr($aDefRecurDOY[$row], 5);
-                    break;
-                  default:
-                    $recur[$row] = gettext('None');
-                }
-            // recur types = 1-DOW for weekly, 2-DOM for monthly, 3-DOY for yearly.
-            // repeats on DOW, DOM or DOY
-            //
-            // new - check the count definintions table for a list of count fields
-            $cSQL = "SELECT evctnm_countid, evctnm_countname FROM eventcountnames_evctnm WHERE evctnm_eventtypeid='$aTypeID[$row]' ORDER BY evctnm_countid";
-            $cOpps = RunQuery($cSQL);
-            $numCounts = mysqli_num_rows($cOpps);
-            if ($numCounts) {
-                $cCountName = [];
-                for ($c = 1; $c <= $numCounts; $c++) {
-                    $cRow = mysqli_fetch_array($cOpps, MYSQLI_BOTH);
-                    extract($cRow);
-                    $cCountID[$c] = $evctnm_countid;
-                    $cCountName[$c] = $evctnm_countname;
-                }
-                $cCountList[$row] = implode(', ', $cCountName);
-            } else {
-                $cCountList[$row] = '';
-            }
+    switch ($aDefRecurType[$row]) {
+        case 'none':
+                $recur[$row] = gettext('None');
+            break;
+        case 'weekly':
+                  $recur[$row] = gettext('Weekly on') . ' ' . gettext($aDefRecurDOW[$row] . 's');
+            break;
+        case 'monthly':
+            $recur[$row] = gettext('Monthly on') . ' ' . date('dS', mktime(0, 0, 0, 1, $aDefRecurDOM[$row], 2000));
+            break;
+        case 'yearly':
+            $recur[$row] = gettext('Yearly on') . ' ' . mb_substr($aDefRecurDOY[$row], 5);
+            break;
+        default:
+            $recur[$row] = gettext('None');
+    }
+    // recur types = 1-DOW for weekly, 2-DOM for monthly, 3-DOY for yearly.
+    // repeats on DOW, DOM or DOY
+    //
+    // new - check the count definintions table for a list of count fields
+    $cSQL = "SELECT evctnm_countid, evctnm_countname FROM eventcountnames_evctnm WHERE evctnm_eventtypeid='$aTypeID[$row]' ORDER BY evctnm_countid";
+    $cOpps = RunQuery($cSQL);
+    $numCounts = mysqli_num_rows($cOpps);
+    if ($numCounts) {
+        $cCountName = [];
+        for ($c = 1; $c <= $numCounts; $c++) {
+            $cRow = mysqli_fetch_array($cOpps, MYSQLI_BOTH);
+            extract($cRow);
+            $cCountID[$c] = $evctnm_countid;
+            $cCountName[$c] = $evctnm_countname;
         }
+        $cCountList[$row] = implode(', ', $cCountName);
+    } else {
+        $cCountList[$row] = '';
+    }
+}
 
-if (InputUtils::LegacyFilterInput($_POST['Action']) == 'NEW') {
+if (InputUtils::legacyFilterInput($_POST['Action']) == 'NEW') {
     ?>
   <div class='card card-primary'>
     <div class='box-body'>
@@ -210,7 +211,7 @@ if (InputUtils::LegacyFilterInput($_POST['Action']) == 'NEW') {
                     for ($kk = 1; $kk <= 31; $kk++) {
                         $DOM = date('dS', mktime(0, 0, 0, 1, $kk, 2000)); ?>
                       <option class="SmallText" value=<?= $kk ?>><?= $DOM ?></option>
-                      <?php
+                        <?php
                     } ?>
                  </select>
                </div>
@@ -259,7 +260,7 @@ if (InputUtils::LegacyFilterInput($_POST['Action']) == 'NEW') {
       </form>
     </div>
   </div>
-  <?php
+    <?php
 }
 
 // Construct the form
@@ -267,10 +268,10 @@ if (InputUtils::LegacyFilterInput($_POST['Action']) == 'NEW') {
 <div class="card">
   <div class="card-header">
     <?php if ($numRows > 0) {
-    ?>
-      <h3 class="card-title"><?= ($numRows == 1 ? gettext('There currently is') : gettext('There currently are')).' '.$numRows.' '.($numRows == 1 ? gettext('custom event type') : gettext('custom event types')) ?></h3>
-    <?php
-} ?>
+        ?>
+      <h3 class="card-title"><?= ($numRows == 1 ? gettext('There currently is') : gettext('There currently are')) . ' ' . $numRows . ' ' . ($numRows == 1 ? gettext('custom event type') : gettext('custom event types')) ?></h3>
+        <?php
+    } ?>
   </div>
 
   <div class='box-body'>
@@ -290,8 +291,8 @@ if (InputUtils::LegacyFilterInput($_POST['Action']) == 'NEW') {
         </thead>
         <tbody>
           <?php
-          for ($row = 1; $row <= $numRows; $row++) {
-              ?>
+            for ($row = 1; $row <= $numRows; $row++) {
+                ?>
             <tr>
               <td><?= $aTypeID[$row] ?></td>
               <td><?= $aTypeName[$row] ?></td>
@@ -320,7 +321,7 @@ if (InputUtils::LegacyFilterInput($_POST['Action']) == 'NEW') {
                     <td>
                       <form name="ProcessEventType" action="EventNames.php" method="POST" class="pull-left">
                         <input type="hidden" name="theID" value="<?= $aTypeID[$row] ?>">
-                        <button type="submit" class="btn btn-default btn-sm" title="<?= gettext('Delete') ?>" name="Action" value="DELETE" onClick="return confirm("<?= gettext('Deleting this event TYPE will NOT delete any existing Events or Attendance Counts.  Are you sure you want to DELETE Event Type ID: ').$aTypeID[$row] ?>")">
+                        <button type="submit" class="btn btn-default btn-sm" title="<?= gettext('Delete') ?>" name="Action" value="DELETE" onClick="return confirm("<?= gettext('Deleting this event TYPE will NOT delete any existing Events or Attendance Counts.  Are you sure you want to DELETE Event Type ID: ') . $aTypeID[$row] ?>")">
                           <i class='fa fa-trash'></i>
                         </button>
                       </form>
@@ -329,19 +330,19 @@ if (InputUtils::LegacyFilterInput($_POST['Action']) == 'NEW') {
                 </table>
               </td>
             </tr>
-            <?php
-          } ?>
+                <?php
+            } ?>
         </tbody>
       </table>
-      <?php
+        <?php
     }
     ?>
   </div>
 </div>
 
 <?php
-if (InputUtils::LegacyFilterInput($_POST['Action']) != 'NEW') {
-        ?>
+if (InputUtils::legacyFilterInput($_POST['Action']) != 'NEW') {
+    ?>
   <div class="text-center">
     <form name="AddEventNames" action="EventNames.php" method="POST">
       <button type="submit" Name="Action" value="NEW" class="btn btn-primary">
@@ -349,8 +350,8 @@ if (InputUtils::LegacyFilterInput($_POST['Action']) != 'NEW') {
       </button
     </form>
   </div>
-  <?php
-    }
+    <?php
+}
 ?>
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>" >

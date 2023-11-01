@@ -7,7 +7,6 @@ use ChurchCRM\Utils\ORMUtils;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
-
 $app->group('/system/menu', function () use ($app) {
     $app->get('', 'getMenus');
     $app->get('/', 'getMenus');
@@ -43,7 +42,7 @@ function delMenu(Request $request, Response $response, array $args)
 {
     $link = MenuLinkQuery::create()->findPk($args["linkId"]);
     if (empty($link)) {
-        return $response->withStatus(404, gettext("Link Not found"). ": " . $args["linkId"]);
+        return $response->withStatus(404, gettext("Link Not found") . ": " . $args["linkId"]);
     }
     $link->delete();
     return $response->withStatus(200);

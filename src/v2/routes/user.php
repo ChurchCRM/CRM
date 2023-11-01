@@ -33,7 +33,7 @@ function viewUserNotFound(Request $request, Response $response, array $args)
 function viewUser(Request $request, Response $response, array $args)
 {
     $renderer = new PhpRenderer('templates/user/');
-    $curUser = AuthenticationManager::GetCurrentUser();
+    $curUser = AuthenticationManager::getCurrentUser();
     $userId = $args["id"];
 
     if (!$curUser->isAdmin() && $curUser->getId() != $userId) {
@@ -43,7 +43,7 @@ function viewUser(Request $request, Response $response, array $args)
     $user = UserQuery::create()->findPk($userId);
 
     if (empty($user)) {
-        return $response->withRedirect(SystemURLs::getRootPath() . "/v2/admin/user/not-found?id=".$args["id"]);
+        return $response->withRedirect(SystemURLs::getRootPath() . "/v2/admin/user/not-found?id=" . $args["id"]);
     }
 
     $pageArgs = [
@@ -52,14 +52,13 @@ function viewUser(Request $request, Response $response, array $args)
     ];
 
     return $renderer->render($response, 'user.php', $pageArgs);
-
 }
 
 function adminChangeUserPassword(Request $request, Response $response, array $args)
 {
     $renderer = new PhpRenderer('templates/');
     $userId = $args["id"];
-    $curUser = AuthenticationManager::GetCurrentUser();
+    $curUser = AuthenticationManager::getCurrentUser();
 
     // make sure that the currently logged in user has
     // admin permissions to change other users' passwords
@@ -70,7 +69,7 @@ function adminChangeUserPassword(Request $request, Response $response, array $ar
     $user = UserQuery::create()->findPk($userId);
 
     if (empty($user)) {
-        return $response->withRedirect(SystemURLs::getRootPath() . "/v2/admin/user/not-found?id=".$args["id"]);
+        return $response->withRedirect(SystemURLs::getRootPath() . "/v2/admin/user/not-found?id=" . $args["id"]);
     }
 
     if ($user->equals($curUser)) {
@@ -88,13 +87,11 @@ function adminChangeUserPassword(Request $request, Response $response, array $ar
         $loginRequestBody = (object)$request->getParsedBody();
         try {
             $user->adminSetUserPassword($loginRequestBody->NewPassword1);
-            return $renderer->render($response,"common/success-changepassword.php",$pageArgs);
-        }
-        catch (PasswordChangeException $pwChangeExc) {
-            $pageArgs['s'.$pwChangeExc->AffectedPassword.'PasswordError'] =  $pwChangeExc->getMessage();
+            return $renderer->render($response, "common/success-changepassword.php", $pageArgs);
+        } catch (PasswordChangeException $pwChangeExc) {
+            $pageArgs['s' . $pwChangeExc->AffectedPassword . 'PasswordError'] =  $pwChangeExc->getMessage();
         }
     }
 
     return $renderer->render($response, 'admin/adminchangepassword.php', $pageArgs);
-
 }

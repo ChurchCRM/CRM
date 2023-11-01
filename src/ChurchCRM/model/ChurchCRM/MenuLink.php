@@ -16,5 +16,4 @@ use ChurchCRM\Base\MenuLink as BaseMenuLink;
  */
 class MenuLink extends BaseMenuLink
 {
-
 }

@@ -16,5 +16,4 @@ use ChurchCRM\Base\KioskAssignmentQuery as BaseKioskAssignmentQuery;
  */
 class KioskAssignmentQuery extends BaseKioskAssignmentQuery
 {
-
 }

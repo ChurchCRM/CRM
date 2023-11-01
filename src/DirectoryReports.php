@@ -1,4 +1,5 @@
 <?php
+
 /*******************************************************************************
  *
  *  filename    : DirectoryReports.php
@@ -20,8 +21,8 @@ use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Authentication\AuthenticationManager;
 
 // Check for Create Directory user permission.
-if (!AuthenticationManager::GetCurrentUser()->isCreateDirectoryEnabled()) {
-    RedirectUtils::Redirect('Menu.php');
+if (!AuthenticationManager::getCurrentUser()->isCreateDirectoryEnabled()) {
+    RedirectUtils::redirect('Menu.php');
     exit;
 }
 
@@ -82,14 +83,14 @@ while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
             <select name="sDirClassifications[]" size="5" multiple>
             <option value="0"><?= gettext("Unassigned") ?></option>
             <?php
-                while ($aRow = mysqli_fetch_array($rsClassifications)) {
-                    extract($aRow);
-                    echo '<option value="'.$lst_OptionID.'"';
-                    if (in_array($lst_OptionID, $aDefaultClasses)) {
-                        echo ' selected';
-                    }
-                    echo '>'.gettext($lst_OptionName).'</option>';
-                } ?>
+            while ($aRow = mysqli_fetch_array($rsClassifications)) {
+                extract($aRow);
+                echo '<option value="' . $lst_OptionID . '"';
+                if (in_array($lst_OptionID, $aDefaultClasses)) {
+                    echo ' selected';
+                }
+                echo '>' . gettext($lst_OptionName) . '</option>';
+            } ?>
             </select>
         </td>
     </tr>
@@ -101,13 +102,13 @@ while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
                 <?php
                 while ($aRow = mysqli_fetch_array($rsGroups)) {
                     extract($aRow);
-                    echo '<option value="'.$grp_ID.'">'.$grp_Name.'</option>';
+                    echo '<option value="' . $grp_ID . '">' . $grp_Name . '</option>';
                 } ?>
             </select>
         </td>
     </tr>
 
-<?php
+    <?php
 }
 ?>
 
@@ -117,14 +118,14 @@ while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
             <div class="SmallText"><?= gettext('Use Ctrl Key to select multiple') ?></div>
             <select name="sDirRoleHead[]" size="5" multiple>
             <?php
-                while ($aRow = mysqli_fetch_array($rsFamilyRoles)) {
-                    extract($aRow);
-                    echo '<option value="'.$lst_OptionID.'"';
-                    if (in_array($lst_OptionID, $aDirRoleHead)) {
-                        echo ' selected';
-                    }
-                    echo '>'.gettext($lst_OptionName).'</option>';
+            while ($aRow = mysqli_fetch_array($rsFamilyRoles)) {
+                extract($aRow);
+                echo '<option value="' . $lst_OptionID . '"';
+                if (in_array($lst_OptionID, $aDirRoleHead)) {
+                    echo ' selected';
                 }
+                echo '>' . gettext($lst_OptionName) . '</option>';
+            }
             ?>
             </select>
         </td>
@@ -136,14 +137,14 @@ while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
             <select name="sDirRoleSpouse[]" size="5" multiple>
             <?php
                 mysqli_data_seek($rsFamilyRoles, 0);
-                while ($aRow = mysqli_fetch_array($rsFamilyRoles)) {
-                    extract($aRow);
-                    echo '<option value="'.$lst_OptionID.'"';
-                    if (in_array($lst_OptionID, $aDirRoleSpouse)) {
-                        echo ' selected';
-                    }
-                    echo '>'.gettext($lst_OptionName).'</option>';
+            while ($aRow = mysqli_fetch_array($rsFamilyRoles)) {
+                extract($aRow);
+                echo '<option value="' . $lst_OptionID . '"';
+                if (in_array($lst_OptionID, $aDirRoleSpouse)) {
+                    echo ' selected';
                 }
+                echo '>' . gettext($lst_OptionName) . '</option>';
+            }
             ?>
             </select>
         </td>
@@ -155,14 +156,14 @@ while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
             <select name="sDirRoleChild[]" size="5" multiple>
             <?php
                 mysqli_data_seek($rsFamilyRoles, 0);
-                while ($aRow = mysqli_fetch_array($rsFamilyRoles)) {
-                    extract($aRow);
-                    echo '<option value="'.$lst_OptionID.'"';
-                    if (in_array($lst_OptionID, $aDirRoleChild)) {
-                        echo ' selected';
-                    }
-                    echo '>'.gettext($lst_OptionName).'</option>';
+            while ($aRow = mysqli_fetch_array($rsFamilyRoles)) {
+                extract($aRow);
+                echo '<option value="' . $lst_OptionID . '"';
+                if (in_array($lst_OptionID, $aDirRoleChild)) {
+                    echo ' selected';
                 }
+                echo '>' . gettext($lst_OptionName) . '</option>';
+            }
             ?>
             </select>
         </td>
@@ -186,51 +187,51 @@ while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
             <input type="checkbox" Name="bDirPersonalWorkEmail" value="1" checked><?= gettext('Personal Work/Other Email') ?><br>
             <input type="checkbox" Name="bDirPhoto" value="1" checked><?= gettext('Photos') ?><br>
          <?php
-         if ($numCustomFields > 0) {
-             while ($rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQLI_ASSOC)) {
-                 if (($aSecurityType[$rowCustomField['custom_FieldSec']] == 'bAll') || ($_SESSION[$aSecurityType[$rowCustomField['custom_FieldSec']]])) {
-                     ?>
-		            <input type="checkbox" Name="bCustom<?= $rowCustomField['custom_Order'] ?>" value="1" checked><?= $rowCustomField['custom_Name'] ?><br>
-         <?php
-                 }
-             }
-         }
-         ?>
+            if ($numCustomFields > 0) {
+                while ($rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQLI_ASSOC)) {
+                    if (($aSecurityType[$rowCustomField['custom_FieldSec']] == 'bAll') || ($_SESSION[$aSecurityType[$rowCustomField['custom_FieldSec']]])) {
+                        ?>
+                    <input type="checkbox" Name="bCustom<?= $rowCustomField['custom_Order'] ?>" value="1" checked><?= $rowCustomField['custom_Name'] ?><br>
+                        <?php
+                    }
+                }
+            }
+            ?>
 
         </td>
     </tr>
-	<tr>
-	 <td class="LabelColumn"><?= gettext('Number of Columns') ?>:</td>
- 	 <td class="TextColumn">
-		    <input type="radio" Name="NumCols" value=1>1 col<br>
-		    <input type="radio" Name="NumCols" value=2 checked>2 cols<br>
-		    <input type="radio" Name="NumCols" value=3>3 cols<br>
-	</td>
-	</tr>
-	<tr>
-	 <td class="LabelColumn"><?= gettext('Paper Size') ?>:</td>
- 	 <td class="TextColumn">
-		    <input type="radio" name="PageSize" value="letter" checked>Letter (8.5x11)<br>
-		    <input type="radio" name="PageSize" value="legal">Legal (8.5x14)<br>
-		    <input type="radio" name="PageSize" value="a4">A4
-	</td>
-	</tr>
-	<tr>
-	 <td class="LabelColumn"><?= gettext('Font Size') ?>:</td>
- 	 <td class="TextColumn">
-		<table>
-		<tr>
-		    <td><input type="radio" Name="FSize" value=6>6<br>
-		    <input type="radio" Name="FSize" value=8>8<br>
-		    <input type="radio" Name="FSize" value=10 checked>10<br></td>
+    <tr>
+     <td class="LabelColumn"><?= gettext('Number of Columns') ?>:</td>
+     <td class="TextColumn">
+            <input type="radio" Name="NumCols" value=1>1 col<br>
+            <input type="radio" Name="NumCols" value=2 checked>2 cols<br>
+            <input type="radio" Name="NumCols" value=3>3 cols<br>
+    </td>
+    </tr>
+    <tr>
+     <td class="LabelColumn"><?= gettext('Paper Size') ?>:</td>
+     <td class="TextColumn">
+            <input type="radio" name="PageSize" value="letter" checked>Letter (8.5x11)<br>
+            <input type="radio" name="PageSize" value="legal">Legal (8.5x14)<br>
+            <input type="radio" name="PageSize" value="a4">A4
+    </td>
+    </tr>
+    <tr>
+     <td class="LabelColumn"><?= gettext('Font Size') ?>:</td>
+     <td class="TextColumn">
+        <table>
+        <tr>
+            <td><input type="radio" Name="FSize" value=6>6<br>
+            <input type="radio" Name="FSize" value=8>8<br>
+            <input type="radio" Name="FSize" value=10 checked>10<br></td>
 
-		    <td><input type="radio" Name="FSize" value=12>12<br>
-		    <input type="radio" Name="FSize" value=14>14<br>
-		    <input type="radio" Name="FSize" value=16>16<br></td>
-		</tr>
-		</table>
-	</td>
-	</tr>
+            <td><input type="radio" Name="FSize" value=12>12<br>
+            <input type="radio" Name="FSize" value=14>14<br>
+            <input type="radio" Name="FSize" value=16>16<br></td>
+        </tr>
+        </table>
+    </td>
+    </tr>
     <tr>
         <td class="LabelColumn"><?= gettext('Title page') ?>:</td>
         <td class="TextColumn">
@@ -265,7 +266,7 @@ while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
                 </tr>
                 <tr>
                     <td><?= gettext('Disclaimer') ?></td>
-                    <td><textarea Name="sDirectoryDisclaimer" cols="35" rows="4"><?= SystemConfig::getValue('sDirectoryDisclaimer1').' '.SystemConfig::getValue('sDirectoryDisclaimer2') ?></textarea></td>
+                    <td><textarea Name="sDirectoryDisclaimer" cols="35" rows="4"><?= SystemConfig::getValue('sDirectoryDisclaimer1') . ' ' . SystemConfig::getValue('sDirectoryDisclaimer2') ?></textarea></td>
                 </tr>
 
             </table>
@@ -278,13 +279,13 @@ while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
 
 <?php if (array_key_exists('cartdir', $_GET)) {
              echo '<input type="hidden" name="cartdir" value="M">';
-         } ?>
+} ?>
 
 
 <p align="center">
 <BR>
 <input type="submit" class="btn btn-primary" name="Submit" value="<?= gettext('Create Directory') ?>">
-<input type="button" class="btn btn-default" name="Cancel" <?= 'value="'.gettext('Cancel').'"' ?> onclick="javascript:document.location='Menu.php';">
+<input type="button" class="btn btn-default" name="Cancel" <?= 'value="' . gettext('Cancel') . '"' ?> onclick="javascript:document.location='Menu.php';">
 </p>
 </form>
 </div>

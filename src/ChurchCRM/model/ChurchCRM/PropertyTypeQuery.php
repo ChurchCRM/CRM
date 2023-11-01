@@ -16,5 +16,4 @@ use ChurchCRM\Base\PropertyTypeQuery as BasePropertyTypeQuery;
  */
 class PropertyTypeQuery extends BasePropertyTypeQuery
 {
-
 }

@@ -6,7 +6,7 @@ use ChurchCRM\DepositQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
 use ChurchCRM\dto\SystemURLs;
 
-class UnsupportedDepositCheck implements iTask
+class UnsupportedDepositCheck implements TaskInterface
 {
     private $count;
 
@@ -42,5 +42,4 @@ class UnsupportedDepositCheck implements iTask
     {
         return gettext("Support for eGive, Credit Card, and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions.");
     }
-
 }

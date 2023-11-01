@@ -8,7 +8,7 @@ class NotificationEmail extends BaseEmail
 {
     private $notificationSource;
 
-    public function __construct($toAddresses,$notificationSource)
+    public function __construct($toAddresses, $notificationSource)
     {
         $this->notificationSource = $notificationSource;
         parent::__construct($toAddresses);
@@ -22,21 +22,21 @@ class NotificationEmail extends BaseEmail
         return gettext("Notification");
     }
 
-     public function getTokens()
+    public function getTokens()
     {
         $myTokens =  [
-            "toName" => gettext("Guardian(s) of") . " " . $this->notificationSource,
-            "body" => gettext("A notification was triggered by the classroom teacher at") . " " . date('Y-m-d H:i:s') . " " . gettext("Please go to this location")
+           "toName" => gettext("Guardian(s) of") . " " . $this->notificationSource,
+           "body" => gettext("A notification was triggered by the classroom teacher at") . " " . date('Y-m-d H:i:s') . " " . gettext("Please go to this location")
         ];
         return array_merge($this->getCommonTokens(), $myTokens);
     }
 
-    function getFullURL()
+    protected function getFullURL()
     {
         // TODO: Implement getFullURL() method.
     }
 
-    function getButtonText()
+    protected function getButtonText()
     {
         // TODO: Implement getButtonText() method.
     }

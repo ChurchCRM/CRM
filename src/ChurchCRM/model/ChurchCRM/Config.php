@@ -16,5 +16,4 @@ use ChurchCRM\Base\Config as BaseConfig;
  */
 class Config extends BaseConfig
 {
-
 }

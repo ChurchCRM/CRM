@@ -16,5 +16,4 @@ use ChurchCRM\Base\EventTypeQuery as BaseEventTypeQuery;
  */
 class EventTypeQuery extends BaseEventTypeQuery
 {
-
 }

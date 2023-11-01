@@ -1,4 +1,5 @@
 <?php
+
 /*******************************************************************************
  *
  *  filename    : CartToGroup.php
@@ -21,8 +22,8 @@ use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Authentication\AuthenticationManager;
 
 // Security: User must have Manage Groups & Roles permission
-if (!AuthenticationManager::GetCurrentUser()->isManageGroupsEnabled()) {
-    RedirectUtils::Redirect('Menu.php');
+if (!AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) {
+    RedirectUtils::redirect('Menu.php');
     exit;
 }
 
@@ -30,22 +31,22 @@ if (!AuthenticationManager::GetCurrentUser()->isManageGroupsEnabled()) {
 if ((isset($_GET['groupeCreationID']) || isset($_POST['Submit'])) && count($_SESSION['aPeopleCart']) > 0) {
     // Get the GroupID
     if (isset($_POST['Submit'])) {
-        $iGroupID = InputUtils::LegacyFilterInput($_POST['GroupID'], 'int');
+        $iGroupID = InputUtils::legacyFilterInput($_POST['GroupID'], 'int');
     } else {
-        $iGroupID = InputUtils::LegacyFilterInput($_GET['groupeCreationID'], 'int');
+        $iGroupID = InputUtils::legacyFilterInput($_GET['groupeCreationID'], 'int');
     }
 
     if (array_key_exists('GroupRole', $_POST)) {
-        $iGroupRole = InputUtils::LegacyFilterInput($_POST['GroupRole'], 'int');
+        $iGroupRole = InputUtils::legacyFilterInput($_POST['GroupRole'], 'int');
     } else {
         $iGroupRole = 0;
     }
 
-    Cart::EmptyToGroup($iGroupID, $iGroupRole);
+    Cart::emptyToGroup($iGroupID, $iGroupRole);
 
-    $sGlobalMessage = $iCount.' records(s) successfully added to selected Group.';
+    $sGlobalMessage = $iCount . ' records(s) successfully added to selected Group.';
 
-    RedirectUtils::Redirect('GroupView.php?GroupID='.$iGroupID.'&Action=EmptyCart');
+    RedirectUtils::redirect('GroupView.php?GroupID=' . $iGroupID . '&Action=EmptyCart');
 }
 
 $ormGroups = GroupQuery::Create()
@@ -72,11 +73,11 @@ if (count($_SESSION['aPeopleCart']) > 0) {
             <td class="TextColumn">
               <?php
               // Create the group select drop-down
-              echo '<select id="GroupID" name="GroupID" onChange="UpdateRoles();"><option value="0">'.gettext('None').'</option>';
-    foreach ($ormGroups as $ormGroup) {
-        echo '<option value="'.$ormGroup->getID().'">'.$ormGroup->getName().'</option>';
-    }
-    echo '</select>'; ?>
+                echo '<select id="GroupID" name="GroupID" onChange="UpdateRoles();"><option value="0">' . gettext('None') . '</option>';
+                foreach ($ormGroups as $ormGroup) {
+                    echo '<option value="' . $ormGroup->getID() . '">' . $ormGroup->getName() . '</option>';
+                }
+                echo '</select>'; ?>
             </td>
           </tr>
           <tr>
@@ -97,10 +98,10 @@ if (count($_SESSION['aPeopleCart']) > 0) {
         </p>
       </form>
     </div></div>
-  <?php
+    <?php
 } else {
-        echo '<p align="center" class="LargeText">'.gettext('Your cart is empty!').'</p>';
-    }
+        echo '<p align="center" class="LargeText">' . gettext('Your cart is empty!') . '</p>';
+}
 
 
 require 'Include/Footer.php';

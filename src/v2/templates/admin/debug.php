@@ -81,7 +81,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     </tr>
                     <tr>
                         <td>DSN</td>
-                        <td><?= Bootstrapper::GetDSN() ?></td>
+                        <td><?= Bootstrapper::getDSN() ?></td>
                     </tr>
                 </table>
             </div>
@@ -173,8 +173,8 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <table class="table table-striped">
                     <?php foreach (AppIntegrityService::getApplicationPrerequisites() as $prerequisite) { ?>
                         <tr>
-                          <td><a href='<?=$prerequisite->GetWikiLink()?>'><?= $prerequisite->getName()?></a></td>
-                          <td><?= $prerequisite->GetStatusText()?></td>
+                          <td><a href='<?=$prerequisite->getWikiLink()?>'><?= $prerequisite->getName()?></a></td>
+                          <td><?= $prerequisite->getStatusText()?></td>
                         </tr>
                     <?php } ?>
                 </table>
@@ -189,8 +189,8 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <div class="card-body">
               <p><?= gettext('Details:')?> <?=  AppIntegrityService::getIntegrityCheckMessage() ?></p>
                 <?php
-                  if (count(AppIntegrityService::getFilesFailingIntegrityCheck()) > 0) {
-                      ?>
+                if (count(AppIntegrityService::getFilesFailingIntegrityCheck()) > 0) {
+                    ?>
                     <p><?= gettext('Files failing integrity check') ?>:
                     <table class="display responsive no-wrap" width="100%" id="fileIntegrityCheckResultsTable">
                       <thead>
@@ -199,27 +199,26 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                       <td>Actual Hash</td>
                     </thead>
                       <?php
-                      foreach (AppIntegrityService::getFilesFailingIntegrityCheck() as $file) {
-                          ?>
+                        foreach (AppIntegrityService::getFilesFailingIntegrityCheck() as $file) {
+                            ?>
                     <tr>
                       <td><?= $file->filename ?></td>
                       <td><?= $file->expectedhash ?></td>
                       <td>
-                          <?php
-                          if ($file->status == 'File Missing') {
-                           echo gettext('File Missing');
-                          }
-                          else {
-                          echo $file->actualhash;
-                        }?>
+                            <?php
+                            if ($file->status == 'File Missing') {
+                                echo gettext('File Missing');
+                            } else {
+                                echo $file->actualhash;
+                            }?>
                       </td>
                     </tr>
-                        <?php
-                      }
-                      ?>
+                            <?php
+                        }
+                        ?>
                     </table>
                     <?php
-                  }
+                }
                 ?>
             </div>
         </div>

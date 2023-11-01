@@ -13,33 +13,33 @@ class SystemConfig
     /**
    * @var Config[]
    */
-  private static $configs;
-  private static $categories;
+    private static $configs;
+    private static $categories;
 
-  private static function getSupportedLocales()
-  {
-      $localesFile = file_get_contents(SystemURLs::getDocumentRoot()."/locale/locales.json");
-      $locales = json_decode($localesFile, true, 512, JSON_THROW_ON_ERROR);
-      $languagesChoices = [];
-      foreach ($locales as $key => $value) {
-          array_push($languagesChoices, gettext($key).":".$value["locale"]);
-      }
+    private static function getSupportedLocales()
+    {
+        $localesFile = file_get_contents(SystemURLs::getDocumentRoot() . "/locale/locales.json");
+        $locales = json_decode($localesFile, true, 512, JSON_THROW_ON_ERROR);
+        $languagesChoices = [];
+        foreach ($locales as $key => $value) {
+            array_push($languagesChoices, gettext($key) . ":" . $value["locale"]);
+        }
 
-      return ["Choices" => $languagesChoices ];
-  }
+        return ["Choices" => $languagesChoices ];
+    }
 
     public static function getMonoLogLevels()
     {
         return [
             "Choices" => [
-                gettext("DEBUG").":".Logger::DEBUG,
-                gettext("INFO").":".Logger::INFO,
-                gettext("NOTICE").":".Logger::NOTICE,
-                gettext("WARNING").":".Logger::WARNING,
-                gettext("ERROR").":".Logger::ERROR,
-                gettext("CRITICAL").":".Logger::CRITICAL,
-                gettext("ALERT").":".Logger::ALERT,
-                gettext("EMERGENCY").":".Logger::EMERGENCY
+                gettext("DEBUG") . ":" . Logger::DEBUG,
+                gettext("INFO") . ":" . Logger::INFO,
+                gettext("NOTICE") . ":" . Logger::NOTICE,
+                gettext("WARNING") . ":" . Logger::WARNING,
+                gettext("ERROR") . ":" . Logger::ERROR,
+                gettext("CRITICAL") . ":" . Logger::CRITICAL,
+                gettext("ALERT") . ":" . Logger::ALERT,
+                gettext("EMERGENCY") . ":" . Logger::EMERGENCY
             ]
         ];
     }
@@ -48,49 +48,48 @@ class SystemConfig
     {
         return [
             "Choices" => [
-                gettext("Title FirstName MiddleName LastName").":0",
-                gettext("Title FirstName MiddleInitial. LastName").":1",
-                gettext("LastName, Title FirstName MiddleName").":2",
-                gettext("LastName, Title FirstName MiddleInitial").":3",
-                gettext("FirstName MiddleName LastName").":4",
-                gettext("Title FirstName LastName").":5",
-                gettext("LastName, Title FirstName").":6",
-                gettext("LastName FirstName").":7",
-                gettext("LastName, FirstName MiddleName").":8"
+                gettext("Title FirstName MiddleName LastName") . ":0",
+                gettext("Title FirstName MiddleInitial. LastName") . ":1",
+                gettext("LastName, Title FirstName MiddleName") . ":2",
+                gettext("LastName, Title FirstName MiddleInitial") . ":3",
+                gettext("FirstName MiddleName LastName") . ":4",
+                gettext("Title FirstName LastName") . ":5",
+                gettext("LastName, Title FirstName") . ":6",
+                gettext("LastName FirstName") . ":7",
+                gettext("LastName, FirstName MiddleName") . ":8"
             ]
         ];
     }
 
     public static function getFamilyRoleChoices()
     {
-      $roles = [];
-      try {
-        $familyRoles = ListOptionQuery::create()->getFamilyRoles();
+        $roles = [];
+        try {
+            $familyRoles = ListOptionQuery::create()->getFamilyRoles();
 
-        foreach ($familyRoles as $familyRole) {
-          array_push($roles, $familyRole->getOptionName().":".$familyRole->getOptionId());
+            foreach ($familyRoles as $familyRole) {
+                array_push($roles, $familyRole->getOptionName() . ":" . $familyRole->getOptionId());
+            }
+        } catch (Exception $e) {
         }
-      } catch (Exception $e) {
-
-      }
-      return ["Choices" => $roles];
+        return ["Choices" => $roles];
     }
 
 
     private static function buildConfigs()
-  {
-    return [
+    {
+        return [
         "sLogLevel" => new ConfigItem(4, "sLogLevel", "choice", "200", gettext("Event Log severity to write, used by ORM and App Logs"), "", json_encode(SystemConfig::getMonoLogLevels(), JSON_THROW_ON_ERROR)),
         "sDirClassifications" => new ConfigItem(5, "sDirClassifications", "text", "1,2,4,5", gettext("Include only these classifications in the directory, comma separated")),
-        "sDirRoleHead" => new ConfigItem(6, "sDirRoleHead", "choice", "1", gettext("These are the family role numbers designated as head of house"),"", json_encode(SystemConfig::getFamilyRoleChoices(), JSON_THROW_ON_ERROR)),
-        "sDirRoleSpouse" => new ConfigItem(7, "sDirRoleSpouse", "choice", "2", gettext("These are the family role numbers designated as spouse"),"", json_encode(SystemConfig::getFamilyRoleChoices(), JSON_THROW_ON_ERROR)),
-        "sDirRoleChild" => new ConfigItem(8, "sDirRoleChild", "choice", "3", gettext("These are the family role numbers designated as child"),"", json_encode(SystemConfig::getFamilyRoleChoices(), JSON_THROW_ON_ERROR)),
+        "sDirRoleHead" => new ConfigItem(6, "sDirRoleHead", "choice", "1", gettext("These are the family role numbers designated as head of house"), "", json_encode(SystemConfig::getFamilyRoleChoices(), JSON_THROW_ON_ERROR)),
+        "sDirRoleSpouse" => new ConfigItem(7, "sDirRoleSpouse", "choice", "2", gettext("These are the family role numbers designated as spouse"), "", json_encode(SystemConfig::getFamilyRoleChoices(), JSON_THROW_ON_ERROR)),
+        "sDirRoleChild" => new ConfigItem(8, "sDirRoleChild", "choice", "3", gettext("These are the family role numbers designated as child"), "", json_encode(SystemConfig::getFamilyRoleChoices(), JSON_THROW_ON_ERROR)),
         "iSessionTimeout" => new ConfigItem(9, "iSessionTimeout", "number", "3600", gettext("Session timeout length in seconds\rSet to zero to disable session timeouts.")),
         "aFinanceQueries" => new ConfigItem(10, "aFinanceQueries", "text", "30,31,32", gettext("Queries for which user must have finance permissions to use:")),
         "bCSVAdminOnly" => new ConfigItem(11, "bCSVAdminOnly", "boolean", "1", gettext("Should only administrators have access to the CSV export system and directory report?")),
         "iMinPasswordLength" => new ConfigItem(13, "iMinPasswordLength", "number", "6", gettext("Minimum length a user may set their password to")),
         "iMinPasswordChange" => new ConfigItem(14, "iMinPasswordChange", "number", "4", gettext("Minimum amount that a new password must differ from the old one (# of characters changed)\rSet to zero to disable this feature")),
-        "aDisallowedPasswords" => new ConfigItem(15, "aDisallowedPasswords","text", "password,god,jesus,church,christian", gettext("A comma-separated list of disallowed (too obvious) passwords.")),
+        "aDisallowedPasswords" => new ConfigItem(15, "aDisallowedPasswords", "text", "password,god,jesus,church,christian", gettext("A comma-separated list of disallowed (too obvious) passwords.")),
         "iMaxFailedLogins" => new ConfigItem(16, "iMaxFailedLogins", "number", "5", gettext("Maximum number of failed logins to allow before a user account is locked.\rOnce the maximum has been reached, an administrator must re-enable the account.\rThis feature helps to protect against automated password guessing attacks.\rSet to zero to disable this feature.")),
         "iPDFOutputType" => new ConfigItem(20, "iPDFOutputType", "number", "1", gettext("PDF handling mode.\r1 = Save File dialog\r2 = Open in current browser window")),
         "sDefaultCity" => new ConfigItem(21, "sDefaultCity", "text", "", gettext("Default City")),
@@ -104,9 +103,9 @@ class SystemConfig
         "sSMTPPass" => new ConfigItem(30, "sSMTPPass", "password", "", gettext("SMTP Password")),
         "bShowFamilyData" => new ConfigItem(33, "bShowFamilyData", "boolean", "1", gettext("Unavailable person info inherited from assigned family for display?\rThis option causes certain info from a person's assigned family record to be\rdisplayed IF the corresponding info has NOT been entered for that person. ")),
         "sLanguage" => new ConfigItem(39, "sLanguage", "choice", "en_US", gettext("Internationalization (I18n) support"), "https://poeditor.com/join/project?hash=RABdnDSqAt", json_encode(SystemConfig::getSupportedLocales(), JSON_THROW_ON_ERROR)),
-        "iFYMonth" => new ConfigItem(40, "iFYMonth", "choice", "1", gettext("First month of the fiscal year"),"",'{"Choices":["1","2","3","4","5","6","7","8","9","10","11","12"]}'),
-        "sGoogleMapsGeocodeKey" => new ConfigItem(44, "sGoogleMapsGeocodeKey", "text", "", gettext("Google Maps API Key used for Geocoding addresses") , "https://developers.google.com/maps/documentation/javascript/get-api-key"),
-        "sBingMapKey" => new ConfigItem(10000, "sBingMapKey", "text", "", gettext("Bing map API requires a unique key") , "https://www.microsoft.com/maps/create-a-bing-maps-key.aspx"),
+        "iFYMonth" => new ConfigItem(40, "iFYMonth", "choice", "1", gettext("First month of the fiscal year"), "", '{"Choices":["1","2","3","4","5","6","7","8","9","10","11","12"]}'),
+        "sGoogleMapsGeocodeKey" => new ConfigItem(44, "sGoogleMapsGeocodeKey", "text", "", gettext("Google Maps API Key used for Geocoding addresses"), "https://developers.google.com/maps/documentation/javascript/get-api-key"),
+        "sBingMapKey" => new ConfigItem(10000, "sBingMapKey", "text", "", gettext("Bing map API requires a unique key"), "https://www.microsoft.com/maps/create-a-bing-maps-key.aspx"),
         "iMapZoom" => new ConfigItem(10001, "iMapZoom", "number", "10", gettext("Google Maps Zoom")),
         "iChurchLatitude" => new ConfigItem(45, "iChurchLatitude", "number", "", gettext("Latitude of the church, used to center the Google map")),
         "iChurchLongitude" => new ConfigItem(46, "iChurchLongitude", "number", "", gettext("Longitude of the church, used to center the Google map")),
@@ -117,12 +116,12 @@ class SystemConfig
         "bHideLatLon" => new ConfigItem(51, "bHideLatLon", "boolean", "0", gettext("Set true to disable entering Latitude and Longitude in Family Editor.  Set false to enable entering Latitude and Longitude in Family Editor.  Lookups are still performed, just not displayed.")),
         "bUseDonationEnvelopes" => new ConfigItem(52, "bUseDonationEnvelopes", "boolean", "0", gettext("Set true to enable use of donation envelopes")),
         "sHeader" => new ConfigItem(53, "sHeader", "textarea", "", gettext("Enter in HTML code which will be displayed as a header at the top of each page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A SECOND TIME to view the new header.")),
-        "sGeoCoderProvider" => new ConfigItem(56, "sGeoCoderProvider", "choice", "GoogleMaps", gettext("Select GeoCoder Provider") , "https://github.com/geocoder-php/Geocoder/blob/3.x/README.md#address-based-providers", '{"Choices":["GoogleMaps", "BingMaps"]}'),
+        "sGeoCoderProvider" => new ConfigItem(56, "sGeoCoderProvider", "choice", "GoogleMaps", gettext("Select GeoCoder Provider"), "https://github.com/geocoder-php/Geocoder/blob/3.x/README.md#address-based-providers", '{"Choices":["GoogleMaps", "BingMaps"]}'),
         "iChecksPerDepositForm" => new ConfigItem(57, "iChecksPerDepositForm", "number", "14", gettext("Number of checks for Deposit Slip Report")),
         "bUseScannedChecks" => new ConfigItem(58, "bUseScannedChecks", "boolean", "0", gettext("Set true to enable use of scanned checks")),
-        "sDistanceUnit" => new ConfigItem(64, "sDistanceUnit", "choice", "miles", gettext("Unit used to measure distance, miles or km."), "",'{"Choices":["'.gettext("miles").'","'.gettext("kilometers").'"]}'),
-        "sTimeZone" => new ConfigItem(65, "sTimeZone", "choice", "America/New_York", gettext("Time zone"), "http://php.net/manual/en/timezones.php", json_encode(["Choices"=>timezone_identifiers_list()], JSON_THROW_ON_ERROR)),
-        "sGMapIcons" => new ConfigItem(66, "sGMapIcons","text", "green-dot,purple,yellow-dot,blue-dot,orange,yellow,green,blue,red,pink,lightblue", gettext("Names of markers for Google Maps in order of classification")),
+        "sDistanceUnit" => new ConfigItem(64, "sDistanceUnit", "choice", "miles", gettext("Unit used to measure distance, miles or km."), "", '{"Choices":["' . gettext("miles") . '","' . gettext("kilometers") . '"]}'),
+        "sTimeZone" => new ConfigItem(65, "sTimeZone", "choice", "America/New_York", gettext("Time zone"), "http://php.net/manual/en/timezones.php", json_encode(["Choices" => timezone_identifiers_list()], JSON_THROW_ON_ERROR)),
+        "sGMapIcons" => new ConfigItem(66, "sGMapIcons", "text", "green-dot,purple,yellow-dot,blue-dot,orange,yellow,green,blue,red,pink,lightblue", gettext("Names of markers for Google Maps in order of classification")),
         "bForceUppercaseZip" => new ConfigItem(67, "bForceUppercaseZip", "boolean", "0", gettext("Make user-entered zip/postcodes UPPERCASE when saving to the database.")),
         "bEnableNonDeductible" => new ConfigItem(72, "bEnableNonDeductible", "boolean", "0", gettext("Enable non-deductible payments")),
         "bEnableSelfRegistration" => new ConfigItem(80, "bEnableSelfRegistration", "boolean", "0", gettext("Set true to enable family self registration.")),
@@ -175,24 +174,24 @@ class SystemConfig
         "sChurchChkAcctNum" => new ConfigItem(1034, "sChurchChkAcctNum", "text", "", gettext("Church Checking Account Number")),
         "bEnableGravatarPhotos" => new ConfigItem(1035, "bEnableGravatarPhotos", "boolean", "0", gettext("lookup user images on Gravatar when no local image is present")),
         "bEnableExternalBackupTarget" => new ConfigItem(1036, "bEnableExternalBackupTarget", "boolean", "0", gettext("Enable Remote Backups to Cloud Services")),
-        "sExternalBackupType" => new ConfigItem(1037, "sExternalBackupType", "choice", "", gettext("Cloud Service Type (Supported values: WebDAV, Local)"), "",'{"Choices":["'.gettext("WebDAV").'","'.gettext("Local").'"]}'),
+        "sExternalBackupType" => new ConfigItem(1037, "sExternalBackupType", "choice", "", gettext("Cloud Service Type (Supported values: WebDAV, Local)"), "", '{"Choices":["' . gettext("WebDAV") . '","' . gettext("Local") . '"]}'),
         "sExternalBackupEndpoint" => new ConfigItem(1038, "sExternalBackupEndpoint", "text", "", gettext("Remote Backup Endpoint.  If WebDAV, this must be url encoded. ")),
         "sExternalBackupUsername" => new ConfigItem(1039, "sExternalBackupUsername", "text", "", gettext("Remote Backup Username")),
         "sExternalBackupPassword" => new ConfigItem(1040, "sExternalBackupPassword", "password", "", gettext("Remote Backup Password")),
         "sExternalBackupAutoInterval" => new ConfigItem(1041, "sExternalBackupAutoInterval", "text", "", gettext("Interval in Hours for Automatic Remote Backups")),
         "sLastBackupTimeStamp" => new ConfigItem(1042, "sLastBackupTimeStamp", "text", "", gettext("Last Backup Timestamp")),
-        "sQBDTSettings" => new ConfigItem(1043, "sQBDTSettings", "json", '{"date1":{"x":"12","y":"42"},"date2X":"185","leftX":"64","topY":"7","perforationY":"97","amountOffsetX":"35","lineItemInterval":{"x":"49","y":"7"},"max":{"x":"200","y":"140"},"numberOfItems":{"x":"136","y":"68"},"subTotal":{"x":"197","y":"42"},"topTotal":{"x":"197","y":"68"},"titleX":"85"}' , gettext("QuickBooks Deposit Ticket Settings")),
+        "sQBDTSettings" => new ConfigItem(1043, "sQBDTSettings", "json", '{"date1":{"x":"12","y":"42"},"date2X":"185","leftX":"64","topY":"7","perforationY":"97","amountOffsetX":"35","lineItemInterval":{"x":"49","y":"7"},"max":{"x":"200","y":"140"},"numberOfItems":{"x":"136","y":"68"},"subTotal":{"x":"197","y":"42"},"topTotal":{"x":"197","y":"68"},"titleX":"85"}', gettext("QuickBooks Deposit Ticket Settings")),
         "bEnableIntegrityCheck" => new ConfigItem(1044, "bEnableIntegrityCheck", "boolean", "1", gettext("Enable Integrity Check")),
         "iIntegrityCheckInterval" => new ConfigItem(1045, "iIntegrityCheckInterval", "number", "168", gettext("Interval in Hours for Integrity Check")),
         "sLastIntegrityCheckTimeStamp" => new ConfigItem(1046, "sLastIntegrityCheckTimeStamp", "text", "", gettext("Last Integrity Check Timestamp")),
-        "sChurchCountry" => new ConfigItem(1047, "sChurchCountry", "choice", "", "", "",json_encode(["Choices" => Countries::getNames()], JSON_THROW_ON_ERROR)),
+        "sChurchCountry" => new ConfigItem(1047, "sChurchCountry", "choice", "", "", "", json_encode(["Choices" => Countries::getNames()], JSON_THROW_ON_ERROR)),
         "sConfirmSincerely" => new ConfigItem(1048, "sConfirmSincerely", "text", "Sincerely", gettext("Used to end a letter before Signer")),
         "sDear" => new ConfigItem(1049, "sDear", "text", "Dear", gettext("Text before name in emails/reports")),
         "sGoogleTrackingID" => new ConfigItem(1050, "sGoogleTrackingID", "text", "", gettext("Google Analytics Tracking Code")),
         "sMailChimpApiKey" => new ConfigItem(2000, "sMailChimpApiKey", "text", "", "", "http://kb.mailchimp.com/accounts/management/about-api-keys"),
-        "sDepositSlipType" => new ConfigItem(2001, "sDepositSlipType", "choice", "QBDT", gettext("Deposit ticket type.  QBDT - Quickbooks"), "",'{"Choices":["QBDT"]}'),
+        "sDepositSlipType" => new ConfigItem(2001, "sDepositSlipType", "choice", "QBDT", gettext("Deposit ticket type.  QBDT - Quickbooks"), "", '{"Choices":["QBDT"]}'),
         "bAllowEmptyLastName" => new ConfigItem(2010, "bAllowEmptyLastName", "boolean", "0", gettext("Set true to allow empty lastname in Person Editor.  Set false to validate last name and inherit from family when left empty.")),
-        "iPersonNameStyle" => new ConfigItem(2020, "iPersonNameStyle", "choice", "4", "","", json_encode(SystemConfig::getNameChoices(), JSON_THROW_ON_ERROR)),
+        "iPersonNameStyle" => new ConfigItem(2020, "iPersonNameStyle", "choice", "4", "", "", json_encode(SystemConfig::getNameChoices(), JSON_THROW_ON_ERROR)),
         "bDisplayBillCounts" => new ConfigItem(2002, "bDisplayBillCounts", "boolean", "1", gettext("Display bill counts on deposit slip")),
         "sCloudURL" => new ConfigItem(2003, "sCloudURL", "text", "http://demo.churchcrm.io/", gettext("ChurchCRM Cloud Access URL")),
         "sNexmoAPIKey" => new ConfigItem(2012, "sNexmoAPIKey", "text", "", gettext("Nexmo SMS API Key")),
@@ -231,11 +230,11 @@ class SystemConfig
         "iRemotePhotoCacheDuration" => new ConfigItem(2039, "iRemotePhotoCacheDuration", "number", "72 hours", gettext("Server cache time for remote images")),
         "iPersonConfessionFatherCustomField" => new ConfigItem(2040, "iPersonConfessionFatherCustomField", "ajax", "", gettext("Field where Father Of Confession is listed, must be a people of group type"), "", "/api/system/custom-fields/person/?typeId=9"),
         "iPersonConfessionDateCustomField" => new ConfigItem(2041, "iPersonConfessionDateCustomField", "ajax", "", gettext("Field where last Confession is stored, must be a date type"), "", "/api/system/custom-fields/person/?typeId=2"),
-        "bHSTSEnable" => new ConfigItem(20142,"bHSTSEnable","boolean","0",gettext("Require that this ChurchCRM Database is accessed over HTTPS")),
+        "bHSTSEnable" => new ConfigItem(20142, "bHSTSEnable", "boolean", "0", gettext("Require that this ChurchCRM Database is accessed over HTTPS")),
         "bEventsOnDashboardPresence" => new ConfigItem(2042, "bEventsOnDashboardPresence", "boolean", "1", gettext("Show Birthdates Anniversaries on start up of the CRM")),
         "iEventsOnDashboardPresenceTimeOut" => new ConfigItem(2043, "iEventsOnDashboardPresenceTimeOut", "number", "10", gettext("Number of seconds after page load until the banner disappears, default 10 seconds")),
         "bPHPMailerAutoTLS" => new ConfigItem(2045, "bPHPMailerAutoTLS", "boolean", "0", gettext("Automatically enable SMTP encryption if offered by the relaying server.")),
-        "sPHPMailerSMTPSecure" => new ConfigItem(2046, "sPHPMailerSMTPSecure", "choice", " ", gettext("Set the encryption system to use - ssl (deprecated) or tls"),"",'{"Choices":["None: ","TLS:tls","SSL:ssl"]}'),
+        "sPHPMailerSMTPSecure" => new ConfigItem(2046, "sPHPMailerSMTPSecure", "choice", " ", gettext("Set the encryption system to use - ssl (deprecated) or tls"), "", '{"Choices":["None: ","TLS:tls","SSL:ssl"]}'),
         "iDashboardServiceIntervalTime" => new ConfigItem(2047, "iDashboardServiceIntervalTime", "number", "60", gettext("Dashboard Service dynamic asynchronous refresh interval, default 60 second")),
         "iProfilePictureListSize" => new ConfigItem(2048, "iProfilePictureListSize", "number", "85", gettext("Set the standard profile picture icon size in pixels to be used in people lists, default 85 pixels.")),
         "bEnabledMenuLinks" => new ConfigItem(2050, "bEnabledMenuLinks", "boolean", "0", gettext("Show custom links on the left menu.")),
@@ -256,157 +255,144 @@ class SystemConfig
         "bAllowPrereleaseUpgrade" => new ConfigItem(2065, "bAllowPrereleaseUpgrade", "boolean", "0", gettext("Allow system upgrades to release marked as 'pre release' on GitHub")),
         "bSearchIncludeCalendarEvents" => new ConfigItem(2066, "bSearchIncludeCalendarEvents", "boolean", "1", gettext("Search Calendar Events")),
         "bSearchIncludeCalendarEventsMax" => new ConfigItem(2067, "bSearchIncludeCalendarEventsMax", "text", "15", gettext("Maximum number of Calendar Events")),
-        "bEnable2FA" => new ConfigItem(2068,"bEnable2FA", "boolean","1",gettext("Allow users to self-enroll in 2 factor authentication")),
-        "bRequire2FA" => new ConfigItem(2069,"bRequire2FA", "boolean","0",gettext("Requires users to self-enroll in 2 factor authentication")),
-        "s2FAApplicationName" => new ConfigItem(2070,"s2FAApplicationName", "text",gettext("ChurchCRM"),gettext("Specify the application name to be displayed in authenticator app")),
-        "bSendUserDeletedEmail" => new ConfigItem(2071,"bSendUserDeletedEmail", "boolean","0",gettext("Send an email notifying users when their account has been deleted")),
-        "sGoogleMapsRenderKey" => new ConfigItem(2072, "sGoogleMapsRenderKey", "text", "", gettext("Google Maps API Key used for rendering maps in browser") , "https://developers.google.com/maps/documentation/javascript/get-api-key")
-      ];
-  }
+        "bEnable2FA" => new ConfigItem(2068, "bEnable2FA", "boolean", "1", gettext("Allow users to self-enroll in 2 factor authentication")),
+        "bRequire2FA" => new ConfigItem(2069, "bRequire2FA", "boolean", "0", gettext("Requires users to self-enroll in 2 factor authentication")),
+        "s2FAApplicationName" => new ConfigItem(2070, "s2FAApplicationName", "text", gettext("ChurchCRM"), gettext("Specify the application name to be displayed in authenticator app")),
+        "bSendUserDeletedEmail" => new ConfigItem(2071, "bSendUserDeletedEmail", "boolean", "0", gettext("Send an email notifying users when their account has been deleted")),
+        "sGoogleMapsRenderKey" => new ConfigItem(2072, "sGoogleMapsRenderKey", "text", "", gettext("Google Maps API Key used for rendering maps in browser"), "https://developers.google.com/maps/documentation/javascript/get-api-key")
+        ];
+    }
 
-  private static function buildCategories()
-  {
-    return [
-      gettext('Church Information') =>["sChurchName","sChurchAddress","sChurchCity","sChurchState","sChurchZip","sChurchCountry","sChurchPhone","sChurchEmail","sHomeAreaCode","sTimeZone","iChurchLatitude","iChurchLongitude", "sChurchWebSite","sChurchFB", "sChurchTwitter"],
-      gettext('User Setup') => ["iMinPasswordLength","iMinPasswordChange","iMaxFailedLogins","iSessionTimeout","aDisallowedPasswords","bEnableLostPassword","bEnable2FA","bRequire2FA","s2FAApplicationName","bSendUserDeletedEmail"],
-      gettext('Email Setup')  => ["sSMTPHost","bSMTPAuth","sSMTPUser","sSMTPPass", "iSMTPTimeout","sToEmailAddress", "bPHPMailerAutoTLS","sPHPMailerSMTPSecure"],
-      gettext('People Setup')  => ["sDirClassifications","sDirRoleHead","sDirRoleSpouse","sDirRoleChild","sDefaultCity","sDefaultState","sDefaultCountry","bShowFamilyData","bHidePersonAddress","bHideFriendDate","bHideFamilyNewsletter","bHideWeddingDate","bHideLatLon","bForceUppercaseZip","bEnableSelfRegistration", "bAllowEmptyLastName", "iPersonNameStyle", "iProfilePictureListSize", "sNewPersonNotificationRecipientIDs", "IncludeDataInNewPersonNotifications","sGreeterCustomMsg1","sGreeterCustomMsg2"],
-      gettext('Enabled Features')  => ["bEnabledFinance", "bEnabledSundaySchool","bEnabledEvents","bEnabledCalendar","bEnabledFundraiser","bEnabledEmail", "bEnabledMenuLinks"],
-      gettext('Map Settings')  => ["sGeoCoderProvider","sGoogleMapsGeocodeKey","sGoogleMapsRenderKey","sBingMapKey","sGMapIcons", "iMapZoom"],
-      gettext('Report Settings')  => ["sQBDTSettings","leftX","incrementY","sTaxReport1","sTaxReport2","sTaxReport3","sTaxSigner","sReminder1","sReminderSigner","sReminderNoPledge","sReminderNoPayments","sConfirm1","sConfirm2","sConfirm3","sConfirm4","sConfirm5","sConfirm6","sDear","sConfirmSincerely","sConfirmSigner","sPledgeSummary1","sPledgeSummary2","sDirectoryDisclaimer1","sDirectoryDisclaimer2","bDirLetterHead","sZeroGivers","sZeroGivers2","sZeroGivers3", "iPDFOutputType"],
-      gettext('Financial Settings') => ["sDepositSlipType","iChecksPerDepositForm","bDisplayBillCounts","bUseScannedChecks","bEnableNonDeductible","iFYMonth","bUseDonationEnvelopes","aFinanceQueries"],
-      gettext('Quick Search') => ["bSearchIncludePersons","bSearchIncludePersonsMax","bSearchIncludeAddresses", "bSearchIncludeAddressesMax", "bSearchIncludeFamilies","bSearchIncludeFamiliesMax","bSearchIncludeFamilyHOH","bSearchIncludeFamilyHOHMax","bSearchIncludeGroups","bSearchIncludeGroupsMax","bSearchIncludeDeposits", "bSearchIncludeDepositsMax", "bSearchIncludePayments", "bSearchIncludePaymentsMax", "bSearchIncludeFamilyCustomProperties","bSearchIncludeCalendarEvents","bSearchIncludeCalendarEventsMax"],
-      gettext('Localization')  => ["sLanguage","sDistanceUnit","sPhoneFormat","sPhoneFormatWithExt","sPhoneFormatCell","sDateFormatLong","sDateFormatNoYear","sDateFormatShort","sDateTimeFormat","sDateFilenameFormat","sCSVExportDelimiter","sCSVExportCharset","sDatePickerFormat","sDatePickerPlaceHolder"],
-      gettext('Integration')  => ["sMailChimpApiKey","sGoogleTrackingID","bEnableGravatarPhotos","bEnableGooglePhotos","iRemotePhotoCacheDuration","sNexmoAPIKey","sNexmoAPISecret","sNexmoFromNumber","sOLPURL","sOLPUserName","sOLPPassword"],
-      gettext('Church Services')  => ["iPersonConfessionFatherCustomField","iPersonConfessionDateCustomField"],
-      gettext('Events')  => ["bEnableExternalCalendarAPI","bEventsOnDashboardPresence","iEventsOnDashboardPresenceTimeOut"],
-      gettext('Backup')  => ["sLastBackupTimeStamp","bEnableExternalBackupTarget","sExternalBackupType","sExternalBackupAutoInterval","sExternalBackupEndpoint","sExternalBackupUsername","sExternalBackupPassword","bBackupExtraneousImages"],
-      gettext('System Settings')  => ["sLogLevel", "bRegistered","bCSVAdminOnly","sHeader","bEnableIntegrityCheck","iIntegrityCheckInterval","sLastIntegrityCheckTimeStamp", "iPhotoClientCacheDuration","bHSTSEnable", "iDashboardServiceIntervalTime","iSoftwareUpdateCheckInterval","sLastSoftwareUpdateCheckTimeStamp","bAllowPrereleaseUpgrade"]
-    ];
-  }
+    private static function buildCategories()
+    {
+        return [
+        gettext('Church Information') => ["sChurchName","sChurchAddress","sChurchCity","sChurchState","sChurchZip","sChurchCountry","sChurchPhone","sChurchEmail","sHomeAreaCode","sTimeZone","iChurchLatitude","iChurchLongitude", "sChurchWebSite","sChurchFB", "sChurchTwitter"],
+        gettext('User Setup') => ["iMinPasswordLength","iMinPasswordChange","iMaxFailedLogins","iSessionTimeout","aDisallowedPasswords","bEnableLostPassword","bEnable2FA","bRequire2FA","s2FAApplicationName","bSendUserDeletedEmail"],
+        gettext('Email Setup')  => ["sSMTPHost","bSMTPAuth","sSMTPUser","sSMTPPass", "iSMTPTimeout","sToEmailAddress", "bPHPMailerAutoTLS","sPHPMailerSMTPSecure"],
+        gettext('People Setup')  => ["sDirClassifications","sDirRoleHead","sDirRoleSpouse","sDirRoleChild","sDefaultCity","sDefaultState","sDefaultCountry","bShowFamilyData","bHidePersonAddress","bHideFriendDate","bHideFamilyNewsletter","bHideWeddingDate","bHideLatLon","bForceUppercaseZip","bEnableSelfRegistration", "bAllowEmptyLastName", "iPersonNameStyle", "iProfilePictureListSize", "sNewPersonNotificationRecipientIDs", "IncludeDataInNewPersonNotifications","sGreeterCustomMsg1","sGreeterCustomMsg2"],
+        gettext('Enabled Features')  => ["bEnabledFinance", "bEnabledSundaySchool","bEnabledEvents","bEnabledCalendar","bEnabledFundraiser","bEnabledEmail", "bEnabledMenuLinks"],
+        gettext('Map Settings')  => ["sGeoCoderProvider","sGoogleMapsGeocodeKey","sGoogleMapsRenderKey","sBingMapKey","sGMapIcons", "iMapZoom"],
+        gettext('Report Settings')  => ["sQBDTSettings","leftX","incrementY","sTaxReport1","sTaxReport2","sTaxReport3","sTaxSigner","sReminder1","sReminderSigner","sReminderNoPledge","sReminderNoPayments","sConfirm1","sConfirm2","sConfirm3","sConfirm4","sConfirm5","sConfirm6","sDear","sConfirmSincerely","sConfirmSigner","sPledgeSummary1","sPledgeSummary2","sDirectoryDisclaimer1","sDirectoryDisclaimer2","bDirLetterHead","sZeroGivers","sZeroGivers2","sZeroGivers3", "iPDFOutputType"],
+        gettext('Financial Settings') => ["sDepositSlipType","iChecksPerDepositForm","bDisplayBillCounts","bUseScannedChecks","bEnableNonDeductible","iFYMonth","bUseDonationEnvelopes","aFinanceQueries"],
+        gettext('Quick Search') => ["bSearchIncludePersons","bSearchIncludePersonsMax","bSearchIncludeAddresses", "bSearchIncludeAddressesMax", "bSearchIncludeFamilies","bSearchIncludeFamiliesMax","bSearchIncludeFamilyHOH","bSearchIncludeFamilyHOHMax","bSearchIncludeGroups","bSearchIncludeGroupsMax","bSearchIncludeDeposits", "bSearchIncludeDepositsMax", "bSearchIncludePayments", "bSearchIncludePaymentsMax", "bSearchIncludeFamilyCustomProperties","bSearchIncludeCalendarEvents","bSearchIncludeCalendarEventsMax"],
+        gettext('Localization')  => ["sLanguage","sDistanceUnit","sPhoneFormat","sPhoneFormatWithExt","sPhoneFormatCell","sDateFormatLong","sDateFormatNoYear","sDateFormatShort","sDateTimeFormat","sDateFilenameFormat","sCSVExportDelimiter","sCSVExportCharset","sDatePickerFormat","sDatePickerPlaceHolder"],
+        gettext('Integration')  => ["sMailChimpApiKey","sGoogleTrackingID","bEnableGravatarPhotos","bEnableGooglePhotos","iRemotePhotoCacheDuration","sNexmoAPIKey","sNexmoAPISecret","sNexmoFromNumber","sOLPURL","sOLPUserName","sOLPPassword"],
+        gettext('Church Services')  => ["iPersonConfessionFatherCustomField","iPersonConfessionDateCustomField"],
+        gettext('Events')  => ["bEnableExternalCalendarAPI","bEventsOnDashboardPresence","iEventsOnDashboardPresenceTimeOut"],
+        gettext('Backup')  => ["sLastBackupTimeStamp","bEnableExternalBackupTarget","sExternalBackupType","sExternalBackupAutoInterval","sExternalBackupEndpoint","sExternalBackupUsername","sExternalBackupPassword","bBackupExtraneousImages"],
+        gettext('System Settings')  => ["sLogLevel", "bRegistered","bCSVAdminOnly","sHeader","bEnableIntegrityCheck","iIntegrityCheckInterval","sLastIntegrityCheckTimeStamp", "iPhotoClientCacheDuration","bHSTSEnable", "iDashboardServiceIntervalTime","iSoftwareUpdateCheckInterval","sLastSoftwareUpdateCheckTimeStamp","bAllowPrereleaseUpgrade"]
+        ];
+    }
 
   /**
    * @param Config[] $configs
    */
-  public static function init($configs=null)
-  {
-      self::$configs = self::buildConfigs();
-      self::$categories = self::buildCategories();
-      if (!empty($configs)) {
-        self::scrapeDBConfigs($configs);
-      }
-  }
-
-  public static function isInitialized() {
-    return isset(self::$configs);
-  }
-
-  public static function getCategories()
-  {
-    return self::$categories;
-  }
-
-  private static function scrapeDBConfigs($configs)
-  {
-    foreach ($configs as $config)
+    public static function init($configs = null)
     {
-      if ( isset( self::$configs[$config->getName()]))
-      {
-        //if the current config set defined by code contains the current config retrieved from the db, then cache it
-        self::$configs[$config->getName()]->setDBConfigObject($config);
-      }
-      else
-      {
-        //there's a config item in the DB that doesn't exist in the current code.
-        //delete it
-        $config->delete();
-      }
+        self::$configs = self::buildConfigs();
+        self::$categories = self::buildCategories();
+        if (!empty($configs)) {
+            self::scrapeDBConfigs($configs);
+        }
     }
-  }
+
+    public static function isInitialized()
+    {
+        return isset(self::$configs);
+    }
+
+    public static function getCategories()
+    {
+        return self::$categories;
+    }
+
+    private static function scrapeDBConfigs($configs)
+    {
+        foreach ($configs as $config) {
+            if (isset(self::$configs[$config->getName()])) {
+                //if the current config set defined by code contains the current config retrieved from the db, then cache it
+                self::$configs[$config->getName()]->setDBConfigObject($config);
+            } else {
+              //there's a config item in the DB that doesn't exist in the current code.
+              //delete it
+                $config->delete();
+            }
+        }
+    }
 
     public static function getConfigItem($name)
     {
-      return self::$configs[$name];
+        return self::$configs[$name];
     }
 
     public static function getValue($name)
     {
-      if ( isset(self::$configs[$name]) )
-      {
-        return self::$configs[$name]->getValue();
-      }
-      else
-      {
-        throw new \Exception (gettext("An invalid configuration name has been requested").": ".$name);
-      }
+        if (isset(self::$configs[$name])) {
+            return self::$configs[$name]->getValue();
+        } else {
+            throw new \Exception(gettext("An invalid configuration name has been requested") . ": " . $name);
+        }
     }
 
     public static function getBooleanValue($name)
     {
-      if ( isset(self::$configs[$name]) )
-      {
-        return self::$configs[$name]->getBooleanValue();
-      }
-      else
-      {
-        throw new \Exception (gettext("An invalid configuration name has been requested").": ".$name);
-      }
-
+        if (isset(self::$configs[$name])) {
+            return self::$configs[$name]->getBooleanValue();
+        } else {
+            throw new \Exception(gettext("An invalid configuration name has been requested") . ": " . $name);
+        }
     }
 
     public static function setValue($name, $value)
     {
-      if ( isset(self::$configs[$name]) )
-      {
-        self::$configs[$name]->setValue($value);
-      }
-      else
-      {
-        throw new \Exception (gettext("An invalid configuration name has been requested").": ".$name);
-      }
-
+        if (isset(self::$configs[$name])) {
+            self::$configs[$name]->setValue($value);
+        } else {
+            throw new \Exception(gettext("An invalid configuration name has been requested") . ": " . $name);
+        }
     }
 
     public static function setValueById($Id, $value)
     {
-      $success = false;
-      foreach (self::$configs as $configItem)
-      {
-        if ($configItem->getId() == $Id)
-        {
-          $configItem->setValue($value);
-          $success = true;
+        $success = false;
+        foreach (self::$configs as $configItem) {
+            if ($configItem->getId() == $Id) {
+                $configItem->setValue($value);
+                $success = true;
+            }
         }
-      }
-      if (! $success )
-      {
-        throw new \Exception (gettext("An invalid configuration id has been requested").": ".$Id);
-      }
+        if (! $success) {
+            throw new \Exception(gettext("An invalid configuration id has been requested") . ": " . $Id);
+        }
     }
 
-    public static function hasValidMailServerSettings() {
+    public static function hasValidMailServerSettings()
+    {
         $hasValidSettings = true;
         if (empty(self::getValue("sSMTPHost"))) {
             $hasValidSettings = false;
         }
 
-        if (SystemConfig::getBooleanValue("bSMTPAuth") and (empty(self::getValue("sSMTPUser")) or empty(self::getValue("sSMTPPass")))) {
+        if (SystemConfig::getBooleanValue("bSMTPAuth") && (empty(self::getValue("sSMTPUser")) || empty(self::getValue("sSMTPPass")))) {
             $hasValidSettings = false;
         }
 
         return $hasValidSettings;
     }
 
-    public static function hasValidSMSServerSettings() {
-      return (!empty(self::getValue("sNexmoAPIKey"))) && (!empty(self::getValue("sNexmoAPISecret"))) && (!empty(self::getValue("sNexmoFromNumber")));
+    public static function hasValidSMSServerSettings()
+    {
+        return (!empty(self::getValue("sNexmoAPIKey"))) && (!empty(self::getValue("sNexmoAPISecret"))) && (!empty(self::getValue("sNexmoFromNumber")));
     }
 
-    public static function hasValidOpenLPSettings() {
-       return (!empty(self::getValue("sOLPURL")));
+    public static function hasValidOpenLPSettings()
+    {
+        return (!empty(self::getValue("sOLPURL")));
     }
 
 
-    public static function debugEnabled() {
+    public static function debugEnabled()
+    {
         if (self::getValue("sLogLevel") == Logger::DEBUG) {
             return true;
         }

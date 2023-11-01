@@ -22,8 +22,6 @@ use Propel\Runtime\Connection\ConnectionInterface;
  */
 class User extends BaseUser
 {
-
-
     private $provisional2FAKey;
 
     public function getId()
@@ -144,7 +142,8 @@ class User extends BaseUser
         return SystemConfig::getValue('iMaxFailedLogins') > 0 && $this->getFailedLogins() >= SystemConfig::getValue('iMaxFailedLogins');
     }
 
-    public function resetPasswordToRandom() {
+    public function resetPasswordToRandom()
+    {
         $password = User::randomPassword();
         $this->updatePassword($password);
         $this->setNeedPasswordChange(true);
@@ -183,7 +182,7 @@ class User extends BaseUser
     {
         $note = new Note();
         $note->setPerId($this->getPersonId());
-        $note->setEntered(AuthenticationManager::GetCurrentUser()->getId());
+        $note->setEntered(AuthenticationManager::getCurrentUser()->getId());
         $note->setType('user');
 
         switch ($type) {
@@ -213,7 +212,8 @@ class User extends BaseUser
         $note->save();
     }
 
-    public function isEnabledSecurity($securityConfigName) {
+    public function isEnabledSecurity($securityConfigName)
+    {
         if ($this->isAdmin()) {
             return true;
         } else if ($securityConfigName == "bAdmin") {
@@ -261,15 +261,17 @@ class User extends BaseUser
         return false;
     }
 
-    public function getUserConfigString($userConfigName) {
-      foreach ($this->getUserConfigs() as $userConfig) {
-        if ($userConfig->getName() == $userConfigName) {
-          return $userConfig->getValue();
+    public function getUserConfigString($userConfigName)
+    {
+        foreach ($this->getUserConfigs() as $userConfig) {
+            if ($userConfig->getName() == $userConfigName) {
+                return $userConfig->getValue();
+            }
         }
-      }
     }
 
-    public function setUserConfigString($userConfigName, $value) {
+    public function setUserConfigString($userConfigName, $value)
+    {
         foreach ($this->getUserConfigs() as $userConfig) {
             if ($userConfig->getName() == $userConfigName) {
                 return $userConfig->setValue($value);
@@ -278,7 +280,8 @@ class User extends BaseUser
     }
 
 
-    public function setSetting($name, $value) {
+    public function setSetting($name, $value)
+    {
         $setting = $this->getSetting($name);
         if (!$setting) {
             $setting = new UserSetting();
@@ -289,12 +292,14 @@ class User extends BaseUser
         $setting->save();
     }
 
-    public function getSettingValue($name) {
+    public function getSettingValue($name)
+    {
         $userSetting = $this->getSetting($name);
-        return (is_null($userSetting) ? "" : $userSetting->getValue());
+        return $userSetting === null ? "" : $userSetting->getValue();
     }
 
-    public function getSetting($name) {
+    public function getSetting($name)
+    {
         foreach ($this->getUserSettings() as $userSetting) {
             if ($userSetting->getName() == $name) {
                 return $userSetting;
@@ -303,28 +308,33 @@ class User extends BaseUser
         return null;
     }
 
-    public function getStyle(){
-        $skin = is_null($this->getSetting(UserSetting::UI_STYLE)) ? "skin-red" : $this->getSetting(UserSetting::UI_STYLE);
+    public function getStyle()
+    {
+        $skin = $this->getSetting(UserSetting::UI_STYLE) ?? 'skin-red';
         $cssClasses = [];
         array_push($cssClasses, $skin);
         array_push($cssClasses, $this->getSetting(UserSetting::UI_BOXED));
         array_push($cssClasses, $this->getSetting(UserSetting::UI_SIDEBAR));
-        return implode(" ", $cssClasses);
+        return implode(' ', $cssClasses);
     }
 
-    public function isShowPledges() {
+    public function isShowPledges()
+    {
         return $this->getSettingValue(UserSetting::FINANCE_SHOW_PLEDGES) == "true";
     }
 
-    public function isShowPayments() {
+    public function isShowPayments()
+    {
         return $this->getSettingValue(UserSetting::FINANCE_SHOW_PAYMENTS) == "true";
     }
 
-    public function getShowSince() {
+    public function getShowSince()
+    {
         return $this->getSettingValue(UserSetting::FINANCE_SHOW_SINCE);
     }
 
-    public function provisionNew2FAKey() {
+    public function provisionNew2FAKey()
+    {
         $google2fa = new Google2FA();
         $key = $google2fa->generateSecretKey();
         // store the temporary 2FA key in a private variable on this User object
@@ -332,14 +342,15 @@ class User extends BaseUser
         // that the user is capapble of generating valid 2FA codes
         // encrypt the 2FA key since this object and its properties are serialized into the $_SESSION store
         // which is generally written to disk.
-        $this->provisional2FAKey = Crypto::encryptWithPassword($key, KeyManager::GetTwoFASecretKey());
+        $this->provisional2FAKey = Crypto::encryptWithPassword($key, KeyManager::getTwoFASecretKey());
         return $key;
     }
 
-    public function confirmProvisional2FACode($twoFACode) {
+    public function confirmProvisional2FACode($twoFACode)
+    {
         $google2fa = new Google2FA();
         $window = 2; //TODO: make this a system config
-        $pw = Crypto::decryptWithPassword($this->provisional2FAKey, KeyManager::GetTwoFASecretKey());
+        $pw = Crypto::decryptWithPassword($this->provisional2FAKey, KeyManager::getTwoFASecretKey());
         $isKeyValid = $google2fa->verifyKey($pw, $twoFACode, $window);
         if ($isKeyValid) {
             $this->setTwoFactorAuthSecret($this->provisional2FAKey);
@@ -347,45 +358,51 @@ class User extends BaseUser
             return true;
         }
         return $isKeyValid;
-
     }
 
-    public function remove2FAKey() {
+    public function remove2FAKey()
+    {
         $this->setTwoFactorAuthSecret(null);
         $this->save();
     }
 
-    public function getDecryptedTwoFactorAuthSecret() {
-        return Crypto::decryptWithPassword($this->getTwoFactorAuthSecret(), KeyManager::GetTwoFASecretKey());
+    public function getDecryptedTwoFactorAuthSecret()
+    {
+        return Crypto::decryptWithPassword($this->getTwoFactorAuthSecret(), KeyManager::getTwoFASecretKey());
     }
 
-    private function getDecryptedTwoFactorAuthRecoveryCodes() {
-        return explode(",",Crypto::decryptWithPassword($this->getTwoFactorAuthRecoveryCodes(), KeyManager::GetTwoFASecretKey()));
+    private function getDecryptedTwoFactorAuthRecoveryCodes()
+    {
+        return explode(",", Crypto::decryptWithPassword($this->getTwoFactorAuthRecoveryCodes(), KeyManager::getTwoFASecretKey()));
     }
 
-    public function disableTwoFactorAuthentication() {
+    public function disableTwoFactorAuthentication()
+    {
         $this->setTwoFactorAuthRecoveryCodes(null);
         $this->setTwoFactorAuthSecret(null);
         $this->save();
     }
 
-    public function is2FactorAuthEnabled() {
+    public function is2FactorAuthEnabled()
+    {
         return !empty($this->getTwoFactorAuthSecret());
     }
 
-    public function getNewTwoFARecoveryCodes() {
+    public function getNewTwoFARecoveryCodes()
+    {
         // generate an array of 2FA recovery codes, and store as an encrypted, comma-separated list
         $recoveryCodes = [];
-        for($i=0; $i < 12; $i++) {
+        for ($i = 0; $i < 12; $i++) {
             $recoveryCodes[$i] = base64_encode(random_bytes(10));
         }
-        $recoveryCodesString = implode(",",$recoveryCodes);
-        $this->setTwoFactorAuthRecoveryCodes(Crypto::encryptWithPassword($recoveryCodesString, KeyManager::GetTwoFASecretKey()));
+        $recoveryCodesString = implode(",", $recoveryCodes);
+        $this->setTwoFactorAuthRecoveryCodes(Crypto::encryptWithPassword($recoveryCodesString, KeyManager::getTwoFASecretKey()));
         $this->save();
         return $recoveryCodes;
     }
 
-    public function isTwoFACodeValid($twoFACode) {
+    public function isTwoFACodeValid($twoFACode)
+    {
         $google2fa = new Google2FA();
         $window = 2; //TODO: make this a system config
         $timestamp = $google2fa->verifyKeyNewer($this->getDecryptedTwoFactorAuthSecret(), $twoFACode, $this->getTwoFactorAuthLastKeyTimestamp(), $window);
@@ -398,14 +415,15 @@ class User extends BaseUser
         }
     }
 
-    public function isTwoFaRecoveryCodeValid($twoFaRecoveryCode) {
+    public function isTwoFaRecoveryCodeValid($twoFaRecoveryCode)
+    {
         // checks for validity of a 2FA recovery code
         // if the specified code was valid, the code is also removed.
         $codes = $this->getDecryptedTwoFactorAuthRecoveryCodes();
         if (($key = array_search($twoFaRecoveryCode, $codes)) !== false) {
             unset($codes[$key]);
-            $recoveryCodesString = implode(",",$codes);
-            $this->setTwoFactorAuthRecoveryCodes(Crypto::encryptWithPassword($recoveryCodesString, KeyManager::GetTwoFASecretKey()));
+            $recoveryCodesString = implode(",", $codes);
+            $this->setTwoFactorAuthRecoveryCodes(Crypto::encryptWithPassword($recoveryCodesString, KeyManager::getTwoFASecretKey()));
             return true;
         }
         return false;
@@ -426,7 +444,7 @@ class User extends BaseUser
             throw new PasswordChangeException("Old", gettext('Incorrect password supplied for current user'));
         }
 
-        if (!$this->GetIsPasswordPermissible($newPassword)) {
+        if (!$this->getIsPasswordPermissible($newPassword)) {
             throw new PasswordChangeException("New", gettext('Your password choice is too obvious. Please choose something else.'));
         }
 
@@ -448,11 +466,12 @@ class User extends BaseUser
         $this->createTimeLineNote("password-changed");
         return;
     }
-    private function GetIsPasswordPermissible($newPassword) {
+    private function getIsPasswordPermissible($newPassword)
+    {
         $aBadPasswords = explode(',', strtolower(SystemConfig::getValue('aDisallowedPasswords')));
         $aBadPasswords[] = strtolower($this->getPerson()->getFirstName());
         $aBadPasswords[] = strtolower($this->getPerson()->getMiddleName());
         $aBadPasswords[] = strtolower($this->getPerson()->getLastName());
         return ! in_array(strtolower($newPassword), $aBadPasswords);
-      }
+    }
 }

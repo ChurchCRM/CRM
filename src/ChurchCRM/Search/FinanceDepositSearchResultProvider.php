@@ -11,24 +11,26 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Authentication\AuthenticationManager;
 
-class FinanceDepositSearchResultProvider extends BaseSearchResultProvider  {
+class FinanceDepositSearchResultProvider extends BaseSearchResultProvider
+{
     public function __construct()
     {
         $this->pluralNoun = "Deposits";
         parent::__construct();
     }
 
-    public function getSearchResults(string $SearchQuery) {
-        if (AuthenticationManager::GetCurrentUser()->isFinanceEnabled()) {
+    public function getSearchResults(string $SearchQuery)
+    {
+        if (AuthenticationManager::getCurrentUser()->isFinanceEnabled()) {
             if (SystemConfig::getBooleanValue("bSearchIncludeDeposits")) {
                 $this->addSearchResults($this->getDepositSearchResults($SearchQuery));
             }
-
         }
         return $this->formatSearchGroup();
     }
 
-    private function getDepositSearchResults(string $SearchQuery) {
+    private function getDepositSearchResults(string $SearchQuery)
+    {
         $searchResults = [];
         $id = 0;
         try {
@@ -42,7 +44,7 @@ class FinanceDepositSearchResultProvider extends BaseSearchResultProvider  {
             if (!empty($Deposits)) {
                 $id++;
                 foreach ($Deposits->toArray() as $Deposit) {
-                    array_push($searchResults, new SearchResult("finance-deposit-".$id, $Deposit['displayName'], $Deposit['uri']));
+                    array_push($searchResults, new SearchResult("finance-deposit-" . $id, $Deposit['displayName'], $Deposit['uri']));
                 }
             }
         } catch (\Exception $e) {

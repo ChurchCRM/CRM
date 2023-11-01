@@ -9,7 +9,6 @@ use Slim\Http\Response;
 
 abstract class BaseAuthRoleMiddleware
 {
-
     /**
      * @var  User $user
      */
@@ -17,7 +16,7 @@ abstract class BaseAuthRoleMiddleware
 
     public function __invoke(Request $request, Response $response, callable $next)
     {
-        $this->user = AuthenticationManager::GetCurrentUser();
+        $this->user = AuthenticationManager::getCurrentUser();
         if (empty($this->user)) {
             return $response->withStatus(401, gettext('No logged in user'));
         }
@@ -28,7 +27,7 @@ abstract class BaseAuthRoleMiddleware
         return $next($request, $response);
     }
 
-    abstract function hasRole();
+    abstract protected function hasRole();
 
-    abstract function noRoleMessage();
+    abstract protected function noRoleMessage();
 }

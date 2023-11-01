@@ -1,4 +1,5 @@
 <?php
+
 /*******************************************************************************
  *
  *  filename    : /Include/LabelFunctions.php
@@ -20,7 +21,7 @@ function FontSelect($fieldname)
 {
     $sFPDF_PATH = 'vendor/setasign/fpdf';
 
-    $d = scandir($sFPDF_PATH.'/font/', SCANDIR_SORT_DESCENDING);
+    $d = scandir($sFPDF_PATH . '/font/', SCANDIR_SORT_DESCENDING);
     $fontnames = [];
     $family = ' ';
     foreach ($d as $entry) {
@@ -39,7 +40,7 @@ function FontSelect($fieldname)
     sort($fontnames);
 
     echo '<tr>';
-    echo '<td class="LabelColumn">'.gettext('Font').':</td>';
+    echo '<td class="LabelColumn">' . gettext('Font') . ':</td>';
     echo '<td class="TextColumn">';
     echo "<select name=\"$fieldname\">";
     foreach ($fontnames as $n) {
@@ -47,7 +48,7 @@ function FontSelect($fieldname)
         if (array_key_exists($fieldname, $_COOKIE) && $_COOKIE[$fieldname] == $n) {
             $sel = ' selected';
         }
-        echo '<option value="'.$n.'"'.$sel.'>'.gettext("$n").'</option>';
+        echo '<option value="' . $n . '"' . $sel . '>' . gettext("$n") . '</option>';
     }
     echo '</select>';
     echo '</td>';
@@ -58,7 +59,7 @@ function FontSizeSelect($fieldname)
 {
     $sizes = ['default', 6, 7, 8, 9, 10, 11, 12, 14, 16, 18];
     echo '<tr>';
-    echo '<td class="LabelColumn"> '.gettext('Font Size').':</td>';
+    echo '<td class="LabelColumn"> ' . gettext('Font Size') . ':</td>';
     echo '<td class="TextColumn">';
     echo "<select name=\"$fieldname\">";
     foreach ($sizes as $s) {
@@ -66,7 +67,7 @@ function FontSizeSelect($fieldname)
         if (array_key_exists($fieldname, $_COOKIE) && $_COOKIE[$fieldname] == $s) {
             $sel = ' selected';
         }
-        echo '<option value="'.$s.'"'.$sel.'>'.gettext("$s").'</option>';
+        echo '<option value="' . $s . '"' . $sel . '>' . gettext("$s") . '</option>';
     }
     echo '</select>';
     echo '</td>';
@@ -77,7 +78,7 @@ function LabelSelect($fieldname)
 {
     $labels = ['Tractor', '5160', '5161', '5162', '5163', '5164', '8600', 'L7163'];
     echo '<tr>';
-    echo '<td class="LabelColumn">'.gettext('Label Type').':</td>';
+    echo '<td class="LabelColumn">' . gettext('Label Type') . ':</td>';
     echo '<td class="TextColumn">';
     echo "<select name=\"$fieldname\">";
     foreach ($labels as $l) {
@@ -85,7 +86,7 @@ function LabelSelect($fieldname)
         if (array_key_exists($fieldname, $_COOKIE) && $_COOKIE[$fieldname] == $l) {
             $sel = ' selected';
         }
-        echo '<option value="'.$l.'"'.$sel.'>'.gettext("$l").'</option>';
+        echo '<option value="' . $l . '"' . $sel . '>' . gettext("$l") . '</option>';
     }
     echo '</select>';
     echo '</td>';
@@ -94,7 +95,7 @@ function LabelSelect($fieldname)
 
 function LabelGroupSelect($fieldname)
 {
-    echo '<tr><td class="LabelColumn">'.gettext('Label Grouping').'</td>';
+    echo '<tr><td class="LabelColumn">' . gettext('Label Grouping') . '</td>';
     echo '<td class="TextColumn">';
     echo "<input name=\"$fieldname\" type=\"radio\" value=\"indiv\" ";
 
@@ -102,19 +103,19 @@ function LabelGroupSelect($fieldname)
         echo 'checked';
     }
 
-    echo '>'.gettext('All Individuals').'<br>';
+    echo '>' . gettext('All Individuals') . '<br>';
     echo "<input name=\"$fieldname\" type=\"radio\" value=\"fam\" ";
 
     if (array_key_exists($fieldname, $_COOKIE) && $_COOKIE[$fieldname] == 'fam') {
         echo 'checked';
     }
 
-    echo '>'.gettext('Grouped by Family').'<br></td></tr>';
+    echo '>' . gettext('Grouped by Family') . '<br></td></tr>';
 }
 
 function ToParentsOfCheckBox($fieldname)
 {
-    echo '<tr><td class="LabelColumn">'.gettext('To the parents of').':</td>';
+    echo '<tr><td class="LabelColumn">' . gettext('To the parents of') . ':</td>';
     echo '<td class="TextColumn">';
     echo "<input name=\"$fieldname\" type=\"checkbox\" ";
     echo 'id="ToParent" value="1" ';
@@ -130,14 +131,14 @@ function StartRowStartColumn()
 {
     echo '
 	<tr>
-	<td class="LabelColumn">'.gettext('Start Row').':
+	<td class="LabelColumn">' . gettext('Start Row') . ':
 	</td>
 	<td class="TextColumn">
 	<input type="text" name="startrow" id="startrow" maxlength="2" size="3" value="1">
 	</td>
 	</tr>
 	<tr>
-	<td class="LabelColumn">'.gettext('Start Column').':
+	<td class="LabelColumn">' . gettext('Start Column') . ':
 	</td>
 	<td class="TextColumn">
 	<input type="text" name="startcol" id="startcol" maxlength="2" size="3" value="1">
@@ -149,7 +150,7 @@ function IgnoreIncompleteAddresses()
 {
     echo '
 	<tr>
-	<td class="LabelColumn">'.gettext('Ignore Incomplete<br>Addresses').':
+	<td class="LabelColumn">' . gettext('Ignore Incomplete<br>Addresses') . ':
 	</td>
 	<td class="TextColumn">
 	<input type="checkbox" name="onlyfull" id="onlyfull" value="1" checked>
@@ -161,7 +162,7 @@ function LabelFileType()
 {
     echo '
 	<tr>
-		<td class="LabelColumn">'.gettext('File Type').':
+		<td class="LabelColumn">' . gettext('File Type') . ':
 		</td>
 		<td class="TextColumn">
 			<select name="filetype">

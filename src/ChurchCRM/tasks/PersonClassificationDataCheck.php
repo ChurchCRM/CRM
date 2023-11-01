@@ -6,7 +6,7 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\PersonQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
 
-class PersonClassificationDataCheck implements iTask
+class PersonClassificationDataCheck implements TaskInterface
 {
     private $count;
 
@@ -43,5 +43,4 @@ class PersonClassificationDataCheck implements iTask
     {
         return gettext("Missing Classification Data for Some People");
     }
-
 }

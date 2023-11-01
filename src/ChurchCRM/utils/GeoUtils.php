@@ -14,12 +14,11 @@ use ChurchCRM\Bootstrapper;
 
 class GeoUtils
 {
-
     public static function getLatLong($address)
     {
 
         $logger = LoggerUtils::getAppLogger();
-        $localeInfo = Bootstrapper::GetCurrentLocale();
+        $localeInfo = Bootstrapper::getCurrentLocale();
 
         $provider = null;
         $adapter = new Client();
@@ -35,7 +34,7 @@ class GeoUtils
                     $provider = new BingMaps($adapter, SystemConfig::getValue("sBingMapKey"));
                     break;
             }
-            $logger->debug("Using: Geo Provider -  ". $provider->getName());
+            $logger->debug("Using: Geo Provider -  " . $provider->getName());
             $geoCoder = new StatefulGeocoder($provider, $localeInfo->getShortLocale());
             $result = $geoCoder->geocodeQuery(GeocodeQuery::create($address));
             $logger->debug("We have " . $result->count() . " results");
@@ -53,20 +52,19 @@ class GeoUtils
             'Latitude' => $lat,
             'Longitude' => $long
         ];
-
     }
 
-    public static function DrivingDistanceMatrix($address1, $address2)
+    public static function drivingDistanceMatrix($address1, $address2)
     {
         $logger = LoggerUtils::getAppLogger();
-        $localeInfo = Bootstrapper::GetCurrentLocale();
+        $localeInfo = Bootstrapper::getCurrentLocale();
         $url = "https://maps.googleapis.com/maps/api/distancematrix/json?";
         $url = $url . "language=" . $localeInfo->getShortLocale();
         $url = $url . "&origins=" . urlencode($address1);
         $url = $url . "&destinations=" . urlencode($address2);
         $logger->debug($url);
         $gMapsResponse = file_get_contents($url);
-        $details = json_decode($gMapsResponse, TRUE, 512, JSON_THROW_ON_ERROR);
+        $details = json_decode($gMapsResponse, true, 512, JSON_THROW_ON_ERROR);
         $matrixElements = $details['rows'][0]['elements'][0];
         return [
             'distance' => $matrixElements['distance']['text'],
@@ -77,7 +75,7 @@ class GeoUtils
     // Function takes latitude and longitude
     // of two places as input and returns the
     // distance in miles.
-    public static function LatLonDistance($lat1, $lon1, $lat2, $lon2)
+    public static function latLonDistance($lat1, $lon1, $lat2, $lon2)
     {
 
         // Formula for calculating radians between
@@ -119,7 +117,7 @@ class GeoUtils
         return $distance_f;
     }
 
-    public static function LatLonBearing($lat1, $lon1, $lat2, $lon2)
+    public static function latLonBearing($lat1, $lon1, $lat2, $lon2)
     {
         // Formula for determining the bearing from ($lat1,$lon1) to ($lat2,$lon2)
 
