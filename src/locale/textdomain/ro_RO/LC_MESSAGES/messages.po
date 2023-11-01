@@ -376,7 +376,7 @@ msgstr "au fost importate persoane"
 
 #: 
 msgid "Canvass Automation"
-msgstr "Dezbate automatizare"
+msgstr "Automatizarea Colectării de Informații"
 
 #: 
 msgid "Not confirmed."
@@ -384,27 +384,27 @@ msgstr "Nu a fost confirmat."
 
 #: 
 msgid "Canvassers"
-msgstr "Colportorii"
+msgstr "Colectorii de Informații"
 
 #: 
 msgid "BraveCanvassers"
-msgstr "ColportoriCurajoși"
+msgstr "ColectoriiDeInformațiiCurajoși"
 
 #: 
 msgid "Cleared all canvasser assignments."
-msgstr "S-au șters toate sarcinile de colporator."
+msgstr "Ștergere toate atribuirile colectorilor de informații"
 
 #: 
 msgid "Set Ok To Canvass for all families."
-msgstr "SET OK pentru a dezbate toate familiile."
+msgstr "Setare Ok pentru Colectarea De Informații pentru toate familiile"
 
 #: 
 msgid "Disabled Ok To Canvass for all families."
-msgstr "Dezactivat Ok pentru a dezbate toate familiile."
+msgstr "Dezactivare Ok pentru Colectarea de Informații pentru toate familiile"
 
 #: 
 msgid "ClearAllOkToCanvass button not confimed."
-msgstr "Butonul ClearAllOkToCanvass nu a fost confirmat."
+msgstr "Butonul de ȘtergereATuturorPermisiunilorPentruColectareaDeInformații nu a fost confirmat"
 
 #: 
 msgid "Set default fiscal year"
@@ -416,11 +416,11 @@ msgstr "Verificați pentru a confirma"
 
 #: 
 msgid "Assign Canvassers"
-msgstr "Atribuire evangheliști"
+msgstr "Atribuirea Colectorilor de Informații"
 
 #: 
 msgid "Randomly assign canvassers to all Families.  The Canvassers are taken from the &quot;Canvassers&quot; Group."
-msgstr "Alocă aleatoriu evangheliști către toate Familiile. Evangheliștii sunt luați din grupul &quot;Evangheliștilor&quot;"
+msgstr "Atribuire aleatorie a colectorilor de informații pentru toate familiile. Colectorii de informații sunt selectați din Grupul 'Colectorii de informații'."
 
 #: 
 msgid "Assign To Non Pledging"
@@ -428,35 +428,35 @@ msgstr "Alocare la Non Angajare"
 
 #: 
 msgid "Randomly assign canvassers to non-pledging Families.  The Canvassers are taken from the &quot;BraveCanvassers&quot; Group."
-msgstr "Alocați aleatoriu evangheliști pentru familiile care nu sunt angajeate. Evangheliștii sunt preluatț din grupul &quot;EvanghelistiCurajosi (BraveCanvassers)&quot;"
+msgstr "Atribuire aleatorie a colectorilor de informații pentru familiile care nu au făcut promisiuni. Colectorii de informații sunt selectați din Grupul 'Colectorii de informații Curajoși'."
 
 #: 
 msgid "Clear Canvasser Assignments"
-msgstr "Ștergeți atribuiriile evangheliștilor"
+msgstr "Ștergere atribuirilor colectorilor de informații"
 
 #: 
 msgid "Clear all the canvasser assignments for all families."
-msgstr "Anulează alocarea de evangheliști pentru toate familiile"
+msgstr "Ștergeți toate atribuirile colectorilor de informații pentru toate familiile."
 
 #: 
 msgid "Important note: this will lose any canvasser assignments that have been made by hand."
-msgstr "Notă importantă: aceasta va pierde toate atribuiriile evangheliștilor care au fost făcute manual."
+msgstr "Notă importantă: Aceasta va duce la pierderea oricăror atribuiri manuale ale colectorilor de informații."
 
 #: 
 msgid "Enable Canvass for All Families"
-msgstr "Activați Canvass pentru toate familiile"
+msgstr "Activare Colectare de Informații pentru Toate Familiile"
 
 #: 
 msgid "Turn on the &quot;Ok To Canvass&quot; field for all Families."
-msgstr "Activează câmpul &quot;Ok To Canvass&quot; pentru toate familile"
+msgstr "Activați câmpul 'Ok pentru Colectarea de Informații' pentru toate familiile."
 
 #: 
 msgid "Disable Canvass for All Families"
-msgstr "Dezactivați Canvass pentru toate familiile"
+msgstr "Dezactivare Colectare de Informații pentru Toate Familiile"
 
 #: 
 msgid "Turn off the &quot;Ok To Canvass&quot; field for all Families"
-msgstr "Ascunde câmpul &quot;Ok To Canvass&quot; pentru toate familiile"
+msgstr "Dezactivați câmpul 'Ok pentru Colectarea de Informații' pentru toate familiile."
 
 #: 
 msgid "Briefing Sheets"
@@ -464,7 +464,7 @@ msgstr "Fișe de prezentare"
 
 #: 
 msgid "Generate a PDF containing briefing sheets for all Families, sorted by canvasser."
-msgstr "Generare un PDF care conține foi informative, pentru toate familiile, sortate după evangheliști."
+msgstr "Generare PDF cu fișe informative pentru toate familiile, sortate după colectorul de informații"
 
 #: 
 msgid "Progress Report"
@@ -472,7 +472,7 @@ msgstr "Raport de activitate"
 
 #: 
 msgid "Generate a PDF containing a progress report.  The progress report includes information on the overall progress of the canvass, and the progress of individual canvassers."
-msgstr "Generați un PDF care conține un raport de progres. Raportul de progres include informații cu privire la evoluția generală a canvass și la progresele individuale ale evangheliștilor."
+msgstr "Generați un fișier PDF care conține un raport de progres. Raportul de progres include informații despre progresul general al colectării de informații și progresul colectorilor de informații individuali."
 
 #: 
 msgid "Summary Report"
@@ -480,7 +480,7 @@ msgstr "Raportul de sinteză"
 
 #: 
 msgid "Generate a PDF containing a summary report.  The summary report includes comments extracted from the canvass data."
-msgstr "Generați un PDF care conține un raport sumar. Raportul sumar include comentarii extrase din datele cercetării."
+msgstr "Generați un fișier PDF care conține un raport de rezumat. Raportul de rezumat include comentarii extrase din datele de colectare de informații."
 
 #: 
 msgid "Not Interested Report"
@@ -488,16 +488,16 @@ msgstr "Raportul nu este interesat"
 
 #: 
 msgid "Generate a PDF containing a report of the families marked &quot;Not Interested&quot; by the canvasser."
-msgstr "Generează un PDF cu familile ce au bifat &quot;Not Interested&quot;"
+msgstr "Generare PDF cu un raport al familiilor marcate 'Nu Interesate' de către colectorul de informații"
 
 #: 
 msgid " Canvass Input for the "
-msgstr "␣Introducere Evanghelizare pentru␣"
+msgstr "Intrare Colectare de Informații pentru Colectorul de Informații"
 
 #: 
 #, fuzzy
 msgid "Canvasser"
-msgstr "Evanghelist"
+msgstr "Colector de informatii"
 
 #: 
 msgid "Positive"
@@ -1237,7 +1237,7 @@ msgstr "Introduceți o listă a numărului de prezențe pe care doriți să le i
 
 #: 
 msgid "Separate each count_name with a comma. e.g. Members, Visitors, Campus, Children"
-msgstr "Separați fiecare contor de nume cu o virgulă. Ex. Membri, Vizitatori, Campus, Copii"
+msgstr "Separați fiecare contor_nume cu o virgulă. Ex. Membri, Vizitatori, Campus, Copii"
 
 #: 
 msgid "Every event type includes a Total count, you do not need to include it."
@@ -1245,11 +1245,11 @@ msgstr "Fiecare tip de eveniment include un număr total, nu trebuie să îl inc
 
 #: 
 msgid "Add Event Type"
-msgstr "Adauga Tip eveniment"
+msgstr "Adauga Tip Eveniment"
 
 #: 
 msgid "Custom Family Fields Editor"
-msgstr "Personalizat de familie Fields Editor"
+msgstr "Editor de câmpuri de familie personalizate"
 
 #: 
 msgid "Default Option"
@@ -1257,15 +1257,15 @@ msgstr "Opțiunea implicită"
 
 #: 
 msgid "Warning:  By deleting this field, you will irrevokably lose all family data assigned for this field!"
-msgstr "Atenție: Prin ștergerea acest domeniu, veți pierde irrevokably toate datele familie alocate pentru acest domeniu!"
+msgstr "Avertisment: Prin ștergerea acest domeniu, veți pierde irevocabil toate datele familiei alocate pentru acest câmp!"
 
 #: 
 msgid "Warning: Arrow and delete buttons take effect immediately.  Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!"
-msgstr "Atenție: Arrow și butoane de stergere avea efect imediat. Câmp schimbari de nume vor fi pierdute dacă nu \"Salvați modificările\" înainte de a utiliza o în sus, în jos, șterge sau adăuga &#39;nou&#39; buton!"
+msgstr "Avertisment: Butoanele săgeată și ștergere au efect imediat. Modificările numelor câmpurilor se vor pierde dacă nu „Salvați modificările” înainte de a utiliza butonul sus, jos, șterge sau „adăugați nou”!"
 
 #: 
 msgid "No custom Family fields have been added yet"
-msgstr "Nu câmpuri de familie personalizate au fost încă adăugate"
+msgstr "Nu au fost adăugate încă câmpuri personalizate pentru Familie"
 
 #: 
 msgid "Special option"
@@ -1281,11 +1281,11 @@ msgstr "Trebuie să selectați un grup."
 
 #: 
 msgid "Edit List Options"
-msgstr "Edita lista de opțiuni"
+msgstr "Editați opțiunile listei"
 
 #: 
 msgid "Help on types.."
-msgstr "Ajuta pe tipuri .."
+msgstr "Ajutor la tipuri .."
 
 #: 
 msgid "You must enter a name"
@@ -1293,7 +1293,7 @@ msgstr "Trebuie să introduceți un nume"
 
 #: 
 msgid "That field name already exists."
-msgstr "Că numele de câmp există deja."
+msgstr "Numele de câmp există deja."
 
 #: 
 msgid "Add New Field"
@@ -1305,7 +1305,7 @@ msgstr "Editor de familie"
 
 #: 
 msgid "First name must be entered"
-msgstr "Prenume trebuie să fie introduse"
+msgstr "Prenumele trebuie să fie introdus"
 
 #: 
 msgid "Invalid Year: allowable values are 1901 to 2155"
@@ -1317,7 +1317,7 @@ msgstr "Data Nasterii invalid."
 
 #: 
 msgid "Not a valid Wedding Date"
-msgstr "Nu este un Wedding Date valabile"
+msgstr "Nu este o dată validă a nunții"
 
 #: 
 msgid "Email is Not Valid"
@@ -1325,11 +1325,11 @@ msgstr "E-mail nu este valid"
 
 #: 
 msgid "Family Info"
-msgstr "Info familie"
+msgstr "Info Familie"
 
 #: 
 msgid "Contact Info"
-msgstr "Info contact"
+msgstr "Info Contact"
 
 #: 
 msgid "Other Info"
@@ -1338,17 +1338,17 @@ msgstr "Alte informații"
 #: 
 #, fuzzy
 msgid "Ok To Canvass"
-msgstr "Ok a dezbate"
+msgstr "Ok pentru Colectarea de Informații"
 
 #: 
 #, fuzzy
 msgid "Assign a Canvasser"
-msgstr "Alocați un colportor"
+msgstr "Atribuiți un Colector de Informații"
 
 #: 
 #, fuzzy
 msgid "Assign a Brave Canvasser"
-msgstr "Atribui un colportor Viteazul"
+msgstr "Atribuiți un Colector de Informații Curajos"
 
 #: 
 msgid "Envelope Info"
@@ -1364,11 +1364,11 @@ msgstr "Membrii de familie"
 
 #: 
 msgid "You may create family members now or add them later.  All entries will become <i>new</i> person records."
-msgstr "Puteți crea membri de familie acum sau adăugați-le mai târziu. Toate înscrierile vor deveni <i>noi recorduri</i> persoană."
+msgstr "Puteți crea acum membrii de familie sau îi puteți adăuga mai târziu. Toate înregistrările vor deveni înregistrări de persoane <i>noi</i>"
 
 #: 
 msgid "First"
-msgstr "În primul rând"
+msgstr "Primul"
 
 #: 
 msgid "Middle"
@@ -1376,7 +1376,7 @@ msgstr "De mijloc"
 
 #: 
 msgid "Last"
-msgstr "Trecut"
+msgstr "Ultimul"
 
 #: 
 msgid "Role"
@@ -1384,11 +1384,11 @@ msgstr "Rol"
 
 #: 
 msgid "Select Gender"
-msgstr "Selectați de gen"
+msgstr "Selectați Gen"
 
 #: 
 msgid "Select Role"
-msgstr "Selectați Rolul"
+msgstr "Selectați Rol"
 
 #: 
 msgid "Unknown"
@@ -1476,11 +1476,11 @@ msgstr "Adaugă membru nou"
 
 #: 
 msgid "Previous Family"
-msgstr "Familia anterior"
+msgstr "Familia anterioră"
 
 #: 
 msgid "Next Family"
-msgstr "Următor de familie"
+msgstr "Familia următoare"
 
 #: 
 msgid "Delete this Family"
@@ -1504,7 +1504,7 @@ msgstr "Adaugă toți membri familiei în coș"
 
 #: 
 msgid "Timeline"
-msgstr "Timeline"
+msgstr "Linie de timp"
 
 #: 
 msgid "Pledges and Payments"
@@ -1512,7 +1512,7 @@ msgstr "Angajamente și plăți"
 
 #: 
 msgid "No property assignments."
-msgstr "Nu misiuni de proprietate."
+msgstr "Fără atribuiri de proprietăți."
 
 #: 
 msgid "Value"
@@ -1525,11 +1525,11 @@ msgstr "Editare Valoare"
 #: 
 #, fuzzy
 msgid "Assign a New Property"
-msgstr "Atribui o nouă proprietate"
+msgstr "Atribuie o nouă proprietate"
 
 #: 
 msgid "Assign"
-msgstr "Atribui"
+msgstr "Atribuie"
 
 #: 
 msgid "Date Updated"
@@ -1541,11 +1541,11 @@ msgstr "Actualizat de"
 
 #: 
 msgid "Show Pledges"
-msgstr "Prezinte angajamentele"
+msgstr "Arată angajamentele"
 
 #: 
 msgid "Show Payments"
-msgstr "Arata Plăți"
+msgstr "Arată Plăți"
 
 #: 
 msgid "Since"
@@ -1557,7 +1557,7 @@ msgstr "Actualizare"
 
 #: 
 msgid "Pledge or Payment"
-msgstr "Gaj sau plata"
+msgstr "Angajament sau plata"
 
 #: 
 msgid "Date"
@@ -1569,7 +1569,7 @@ msgstr "Nedeductibile"
 
 #: 
 msgid "Schedule"
-msgstr "Programa"
+msgstr "Orar"
 
 #: 
 msgid "Method"
@@ -1585,11 +1585,11 @@ msgstr "Adauga un nou angajament"
 
 #: 
 msgid "Add a new payment"
-msgstr "Adauga un nou plată"
+msgstr "Adauga o nouă plată"
 
 #: 
 msgid " Canvass Entry"
-msgstr "Propagandă electorală de intrare"
+msgstr "Intrare Colectare de Informații"
 
 #: 
 msgid "Close"
@@ -1601,15 +1601,15 @@ msgstr "Confirmați ștergerea"
 
 #: 
 msgid "You are about to delete the profile photo, this procedure is irreversible."
-msgstr "Urmează să ștergeți poza de profil, nu puteți reveni"
+msgstr "Sunteți pe cale să ștergeți fotografia de profil, acest procedeu este ireversibil."
 
 #: 
 msgid "Do you want to proceed?"
-msgstr "Mergeți mai departe"
+msgstr "Doriți să continuați?"
 
 #: 
 msgid "You are about to email copy of the family information to the following emails"
-msgstr "Urmează să trimiteți informați informațiile familiei către următoarele adrese de email"
+msgstr "Sunteți pe cale să trimiteți prin email o copie a informațiilor de familie la adresele de email următoare"
 
 #: 
 msgid "Financial Reports"
@@ -1617,7 +1617,7 @@ msgstr "Rapoarte financiare"
 
 #: 
 msgid "No records were returned from the previous report."
-msgstr "Nu exista inregistrari s-au întors de la raportul precedent."
+msgstr "Nicio înregistrare nu a fost returnată din raportul anterior."
 
 #: 
 msgid "Report Type:"
@@ -1629,16 +1629,16 @@ msgstr "Selectați Tip de raport"
 
 #: 
 msgid "Pledge Summary"
-msgstr "Gaj Sumar"
+msgstr "Rezumat angajament"
 
 #: 
 #, fuzzy
 msgid "Pledge Family Summary"
-msgstr "FamilySummary gaj"
+msgstr "Rezumat angajament Familie"
 
 #: 
 msgid "Pledge Reminders"
-msgstr "Memento gaj"
+msgstr "Memento angajament"
 
 #: 
 msgid "Voting Members"
@@ -1646,7 +1646,7 @@ msgstr "Membrii cu drept de vot"
 
 #: 
 msgid "Giving Report (Tax Statements)"
-msgstr "Acordarea Raport (declaratiilor fiscale)"
+msgstr "Raport de Donatii (Declaratii Fiscale)"
 
 #: 
 msgid "Zero Givers"
@@ -1654,32 +1654,32 @@ msgstr "Zero donatori"
 
 #: 
 msgid "Individual Deposit Report"
-msgstr "Raportul a depozitelor individuale"
+msgstr "Raport Individual de Depozit"
 
 #: 
 msgid "Advanced Deposit Report"
-msgstr "Avansat depozitelor Raport"
+msgstr "Raport Avansat de Depozit"
 
 #: 
 msgid "Next"
-msgstr "Următor"
+msgstr "Următorul"
 
 #: 
 #, fuzzy
 msgid "Filter by Family"
-msgstr "Filtrul de familie"
+msgstr "Filtrare dupa Familie"
 
 #: 
 msgid "Report Start Date:"
-msgstr "Raport Start Data:"
+msgstr "Data de începere a raportului"
 
 #: 
 msgid "Report End Date:"
-msgstr "Raport final Data:"
+msgstr "Data de încheiere a raportului"
 
 #: 
 msgid "Apply Report Dates To:"
-msgstr "Aplicați Raport datele pentru a:"
+msgstr "Aplică Datele Raportului La"
 
 #: 
 msgid "Deposit Date (Default)"
@@ -1691,19 +1691,19 @@ msgstr "Data de Plata"
 
 #: 
 msgid "Filter by Deposit:"
-msgstr "Filtrul de Depozit:"
+msgstr "Filtrare dupa deposit"
 
 #: 
 msgid "If deposit is selected, date criteria will be ignored."
-msgstr "Dacă este selectat depozit, criteriile de data vor fi ignorate."
+msgstr "Dacă este selectat depozitul, criteriile de dată vor fi ignorate"
 
 #: 
 msgid "All deposits within date range"
-msgstr "Toate depozitelor în intervalul de date"
+msgstr "Toate depozitele în intervalul de date"
 
 #: 
 msgid "Filter by Payment Type:"
-msgstr "Filtrul de tipul de plată:"
+msgstr "Filtrare după Tipul Plății"
 
 #: 
 msgid "All Methods"
@@ -1711,7 +1711,7 @@ msgstr "Toate metodele"
 
 #: 
 msgid "Check"
-msgstr "Verifica"
+msgstr "Verificare"
 
 #: 
 msgid "Cash"
@@ -1719,7 +1719,7 @@ msgstr "Numerar"
 
 #: 
 msgid "Bank Draft"
-msgstr "Banca Proiect"
+msgstr "Ordin de plată bancar"
 
 #: 
 msgid "eGive"
@@ -1728,7 +1728,7 @@ msgstr "eGive"
 #: 
 #, fuzzy
 msgid "Minimum Total Amount:"
-msgstr "Minim total Suma:"
+msgstr "Suma minima totala"
 
 #: 
 msgid "0 - No Minimum"
@@ -1744,7 +1744,7 @@ msgstr "Includ:"
 
 #: 
 msgid "Only Payments with Pledges"
-msgstr "Plăți numai cu promisiuni"
+msgstr "Doar plati cu angajamente"
 
 #: 
 msgid "All Payments"
@@ -1752,7 +1752,7 @@ msgstr "Toate plățile"
 
 #: 
 msgid "Generate:"
-msgstr "Genera:"
+msgstr "Generare:"
 
 #: 
 msgid "Only Families with unpaid pledges"
@@ -1764,7 +1764,7 @@ msgstr "Toate familiile"
 
 #: 
 msgid "Report Heading:"
-msgstr "Raport Titlu:"
+msgstr "Antetul raportului"
 
 #: 
 msgid "Graphic"
@@ -1780,11 +1780,11 @@ msgstr "Gol"
 
 #: 
 msgid "Remittance Slip:"
-msgstr "Slip remitențe:"
+msgstr "Cupon de Remitere"
 
 #: 
 msgid "Sort Data by:"
-msgstr "Sortarea datelor de:"
+msgstr "Sortați Datele După"
 
 #: 
 msgid "Deposit"
@@ -1804,7 +1804,7 @@ msgstr "Date sumare"
 
 #: 
 msgid "Voting members must have made<br> a donation within this many years<br> (0 to not require a donation):"
-msgstr "Membrii votanți trebuie să fi făcut o donație de <br> în acești ani <br> (0 pentru a nu necesita o donație):"
+msgstr "Membrii cu drept de vot trebuie să fi efectuat o donație în ultimii ani (0 pentru a nu solicita o donație)"
 
 #: 
 msgid "CSV"
@@ -1816,15 +1816,15 @@ msgstr "Înapoi"
 
 #: 
 msgid "Create Report"
-msgstr "A crea un raport"
+msgstr "Generați Raportul"
 
 #: 
 msgid "Deposit Listing"
-msgstr "Listarea depozit"
+msgstr "Listă de Depozite"
 
 #: 
 msgid "Add New Deposit"
-msgstr "Adaudă depozit nou"
+msgstr "Adaugă depozit nou"
 
 #: 
 msgid "Deposits: "
@@ -1844,7 +1844,7 @@ msgstr "Exportă liniile selectate (CSV)"
 
 #: 
 msgid "Fundraiser Listing"
-msgstr "Strangere de fonduri Listarea"
+msgstr "Listă de Evenimente de Strângere de Fonduri"
 
 #: 
 #, fuzzy
@@ -1862,7 +1862,7 @@ msgstr "Data de încheiere"
 
 #: 
 msgid "Clear Filters"
-msgstr "Clear Filtre"
+msgstr "Anuleaza filtre"
 
 #: 
 msgid "Previous Page"
@@ -1874,7 +1874,7 @@ msgstr "Pagina următoare"
 
 #: 
 msgid "Display:"
-msgstr "Display:"
+msgstr "Afișare"
 
 #: 
 msgid "Number"
@@ -1882,28 +1882,28 @@ msgstr "Număr"
 
 #: 
 msgid "Create New Fund Raiser"
-msgstr "Crearea de noi strângerea de fonduri"
+msgstr "Creați un Eveniment Nou de Strângere de Fonduri"
 
 #: 
 msgid "Add Donated Item"
-msgstr "Adauga articol donate"
+msgstr "Adauga articol donat"
 
 #: 
 msgid "Generate Catalog"
-msgstr "Genera catalog"
+msgstr "Generare catalog"
 
 #: 
 msgid "Generate Bid Sheets"
-msgstr "Genera Foi de licitație"
+msgstr "Generați Fișele de Ofertare"
 
 #: 
 msgid "Generate Certificates"
-msgstr "Genera Certificate"
+msgstr "Generare Certificate"
 
 #: 
 #, fuzzy
 msgid "Donated items for this fundraiser"
-msgstr "Articole donate pentru aceasta strangere de fonduri"
+msgstr "Obiecte donate pentru acest eveniment de strângere de fonduri"
 
 #: 
 msgid "Donor"
@@ -1915,7 +1915,7 @@ msgstr "Cumpărător"
 
 #: 
 msgid "Sale Price"
-msgstr "Vanzare Pret"
+msgstr "Pret Vanzare"
 
 #: 
 msgid "Material Value"
@@ -1927,7 +1927,7 @@ msgstr "Pret minim"
 
 #: 
 msgid "Family Geographic Utilities"
-msgstr "Familie Geographic Utilități"
+msgstr "Utilități Geografice ale Familiilor"
 
 #: 
 msgid "Select Family:"
@@ -1943,19 +1943,19 @@ msgstr "Distanța maximă"
 
 #: 
 msgid "Data file format:"
-msgstr "Formatul de fișier de date:"
+msgstr "Formatul fișierului de date"
 
 #: 
 msgid "GPS Visualizer"
-msgstr "GPS-ul Visualizer"
+msgstr "Vizualizator GPS"
 
 #: 
 msgid "Street Atlas USA"
-msgstr "Street Atlas Statele Unite ale Americii"
+msgstr "Street Atlas USA"
 
 #: 
 msgid "Include families in coordinate file:"
-msgstr "Includeți familii din fișierul de coordonate:"
+msgstr "Includeți familiile în fișierul de coordonate"
 
 #: 
 msgid "Neighbor Families"
@@ -1963,11 +1963,11 @@ msgstr "Familiile vecine"
 
 #: 
 msgid "Make Data File"
-msgstr "Face fișier de date"
+msgstr "Creați Fișierul de Date"
 
 #: 
 msgid "Show Neighbors"
-msgstr "Arata Vecinii"
+msgstr "Afișați Vecinii"
 
 #: 
 msgid "Distance"
@@ -1991,7 +1991,7 @@ msgstr "Adauga in cos"
 
 #: 
 msgid "Intersect with Cart"
-msgstr "Se intersectează cu Coșul"
+msgstr "Intersectati cu Cosul"
 
 #: 
 msgid "Remove from Cart"
@@ -1999,30 +1999,30 @@ msgstr "Elimină din coș"
 
 #: 
 msgid "Text for Event ID: "
-msgstr "Textul de ID eveniment:"
+msgstr "Text pentru ID-ul Evenimentului"
 
 #: 
 msgid "Group Editor"
-msgstr "Group Editor"
+msgstr "Editor Grup"
 
 #: 
 msgid "Group Settings"
-msgstr "Setări grup"
+msgstr "Setări Grup"
 
 #: 
 #, fuzzy
 msgid "Type of Group"
-msgstr "Tipul Grupa"
+msgstr "Tipul Grupului"
 
 #: 
 #, fuzzy
 msgid "Group Member Roles"
-msgstr "Grupa Roluri membre"
+msgstr "Rolurile Membrilor Grupului"
 
 #: 
 #, fuzzy
 msgid "Clone roles"
-msgstr "Roluri Clone"
+msgstr "Clonare roluri"
 
 #: 
 #, fuzzy
@@ -2043,7 +2043,7 @@ msgstr "Activat"
 
 #: 
 msgid "Edit Group-Specific Properties Form"
-msgstr "Editare grup proprietăți specifice Form"
+msgstr "Editați Formularul Proprietăților Specifice Grupului"
 
 #: 
 msgid "Disabled"
@@ -2060,20 +2060,20 @@ msgstr "Roluri de grup"
 
 #: 
 msgid "Group role name changes are saved as soon as the box loses focus"
-msgstr "Schimbările de nume ale rolului grupului sunt salvate imediat ce caseta pierde focalizarea"
+msgstr "Schimbările de nume ale rolului grupului sunt salvate imediat ce caseta își pierde focusul"
 
 #: 
 #, fuzzy
 msgid "New Role"
-msgstr "Noul rol"
+msgstr "Rol nou"
 
 #: 
 msgid "Add New Role"
-msgstr "Adaugă rog nou"
+msgstr "Adaugă rol nou"
 
 #: 
 msgid "Group Listing"
-msgstr "Listarea grup"
+msgstr "Listă de Grupuri"
 
 #: 
 msgid "Add New Group"
@@ -2081,39 +2081,39 @@ msgstr "Adaugă grup nou"
 
 #: 
 msgid "Submit"
-msgstr "Prezenta"
+msgstr "Trimiteti"
 
 #: 
 msgid "Group Member Properties Editor"
-msgstr "Grupul de utilizatori Properties Editor"
+msgstr "Editor de Proprietăți pentru Membrii Grupului"
 
 #: 
 msgid "This group currently has no properties!  You can add them in the Group Editor."
-msgstr "Acest grup momentan nu are proprietăți! Le puteți adăuga în grupul Editor."
+msgstr "Acest grup nu are în prezent nicio proprietate! Le puteți adăuga în Editorul de Grup"
 
 #: 
 msgid "Return to Person Record"
-msgstr "Return to înregistrare Persoana"
+msgstr "Întoarceți-vă la Înregistrarea Persoanei"
 
 #: 
 msgid "Editing"
-msgstr "Editarea"
+msgstr "Editare"
 
 #: 
 msgid "data for member"
-msgstr "Date de membru"
+msgstr "date pentru membru"
 
 #: 
 msgid "Group-Specific Properties Form Editor:"
-msgstr "Specific de grup Form Properties Editor:"
+msgstr "Editorul Formularului de Proprietăți Specifice Grupului"
 
 #: 
 msgid "No properties have been added yet"
-msgstr "Nici o proprietate au fost încă adăugate"
+msgstr "Nicio proprietate nu a fost adăugată încă"
 
 #: 
 msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete, or 'add new' button!"
-msgstr "Atenție: modificările de câmp se vor pierde dacă nu \"Salvați modificările\" înainte de a utiliza o în sus, în jos, șterge, sau \"adăuga noi\" buton!"
+msgstr "Avertisment: Schimbările de câmp vor fi pierdute dacă nu faceți clic pe 'Salvează schimbările' înainte de a folosi butoanele 'Sus', 'Jos', 'Șterge' sau 'Adaugă nou'!"
 
 #: 
 msgid "Show in"
@@ -2121,7 +2121,7 @@ msgstr "Arată în"
 
 #: 
 msgid "Person View"
-msgstr "Persoana Vezi"
+msgstr "Vizualizare Persoană"
 
 #: 
 msgid "Group reports"
@@ -2130,7 +2130,7 @@ msgstr "Rapoarte de grup"
 #: 
 #, fuzzy
 msgid "Select the group you would like to report"
-msgstr "Selectați grupul pe care doriți să raporteze"
+msgstr "Selectați grupul pentru care doriți să generați raportul"
 
 #: 
 msgid "No Role Selected"
@@ -2139,12 +2139,12 @@ msgstr "Nici un rol selectat"
 #: 
 #, fuzzy
 msgid "Only cart persons?"
-msgstr "Cosul de numai persoanele?"
+msgstr "Cosul numai de persoanele?"
 
 #: 
 #, fuzzy
 msgid "Report Model"
-msgstr "Raport Model"
+msgstr "Model de Raport"
 
 #: 
 msgid "Report for group and role selected"
@@ -2152,7 +2152,7 @@ msgstr "Raportul de grup și rolul selectat"
 
 #: 
 msgid "Report for any role in group selected"
-msgstr "Raport pentru orice rol în grupă aleasă"
+msgstr "Raport pentru orice rol în grupul aleas"
 
 #: 
 msgid "Select which information you want to include"
@@ -2161,20 +2161,20 @@ msgstr "Selectați informațiile pe care doriți să le includeți"
 #: 
 #, fuzzy
 msgid "Standard Info"
-msgstr "Standard Info"
+msgstr "Informatii standard"
 
 #: 
 msgid "Other Email"
-msgstr "Alte e-mail"
+msgstr "Alt e-mail"
 
 #: 
 msgid "GroupRole"
-msgstr "GroupRole"
+msgstr "RolGrup"
 
 #: 
 #, fuzzy
 msgid "Group-Specific Property Fields"
-msgstr "Specific de grup câmpuri de proprietate"
+msgstr "Câmpurile Proprietăților Specifice Grupului"
 
 #: 
 msgid "Undefined"
@@ -2182,7 +2182,7 @@ msgstr "Nedefinit"
 
 #: 
 msgid "Group View"
-msgstr "Group Vezi"
+msgstr "Vezi Grup"
 
 #: 
 msgid "Group Functions"
@@ -2207,7 +2207,7 @@ msgstr "Vă rugăm să confirmați ștergerea acestei înregistrări grup"
 
 #: 
 msgid "This will also delete all Roles and Group-Specific Property data associated with this Group record."
-msgstr "Aceasta va șterge, de asemenea, toate rolurile și datele Property Group, specifice asociate cu acest record Group."
+msgstr "Aceasta va șterge toate rolurile și datele proprietăților specifice grupului asociate cu această înregistrare de grup"
 
 #: 
 msgid "All group membership and properties will be destroyed.  The group members themselves will not be altered."
@@ -2227,7 +2227,7 @@ msgstr "Harta acestui grup"
 
 #: 
 msgid "Email Group"
-msgstr "E-mail Group"
+msgstr "E-mail Grup"
 
 #: 
 #, fuzzy
@@ -2237,7 +2237,7 @@ msgstr "Total membri"
 #: 
 #, fuzzy
 msgid "Default Role"
-msgstr "Implicit Rol"
+msgstr "Rol implicit"
 
 #: 
 #, fuzzy
@@ -2287,36 +2287,36 @@ msgstr "Etichetele Newsletter"
 
 #: 
 msgid "Confirm data labels"
-msgstr "Confirmați etichete de date"
+msgstr "Confirmați etichetele datelor"
 
 #: 
 msgid "Listing Events of Type = "
-msgstr "Listarea evenimentelor de tip = ?"
+msgstr "Listarea evenimentelor de tip = "
 
 #: 
 msgid "Listing All Church Events"
-msgstr "Listarea Toate evenimentele Bisericii"
+msgstr "Listarea Tuturor Evenimentelor Bisericii"
 
 #: 
 msgid "Select Event Types To Display"
-msgstr "Selecta tipurile de evenimente să fie afișate"
+msgstr "Selectați Tipurile de Evenimente de Afișat"
 
 #: 
 msgid "Display Events in Year"
-msgstr "Afișarea Evenimente în anul"
+msgstr "Afișați Evenimentele din anul"
 
 #: 
 msgid "Start Date/Time"
-msgstr "Data de începere / Ora"
+msgstr "Data/Ora de Început"
 
 #: 
 msgid "No Attendance Recorded"
-msgstr "Nu Participarea înregistrate"
+msgstr "Fără Prezență Înregistrată"
 
 #: 
 #, fuzzy
 msgid "Attendees"
-msgstr "Participanti ("
+msgstr "Participanți"
 
 #: 
 msgid " Monthly Averages"
@@ -2324,11 +2324,11 @@ msgstr "Medii lunare"
 
 #: 
 msgid "Invalid login or password"
-msgstr "Invalid login sau parola"
+msgstr "Parola sau autentificare invalida"
 
 #: 
 msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
-msgstr "Prea mulți datele de conectare nu a reușit: contul dvs. a fost blocat. Vă rugăm să contactați un administrator."
+msgstr "Prea multe încercări eșuate de autentificare: contul dvs. a fost blocat. Vă rugăm să contactați un administrator"
 
 #: 
 msgid "Please Login"
@@ -2344,15 +2344,15 @@ msgstr "Parolă"
 
 #: 
 msgid "Login"
-msgstr "Login"
+msgstr "Autentificare"
 
 #: 
 msgid "Envelope Manager"
-msgstr "Plic Manager de"
+msgstr "Gestionarul de Plicuri"
 
 #: 
 msgid "Update Family Records"
-msgstr "Actualizare Records Family"
+msgstr "Actualizați Înregistrările de Familie"
 
 #: 
 msgid "Update Envelopes"
@@ -2360,7 +2360,7 @@ msgstr "Actualizați pricurile"
 
 #: 
 msgid "Confirm"
-msgstr "Confirma"
+msgstr "Confirmare"
 
 #: 
 msgid "Sort by"
@@ -3336,7 +3336,7 @@ msgstr "(Editare propria familie numai.)"
 
 #: 
 msgid "(Canvass volunteer.)"
-msgstr "(Cercetați voluntar.)"
+msgstr "Voluntar pentru Colectarea de Informații"
 
 #: 
 msgid "Admin"
@@ -3512,15 +3512,15 @@ msgstr "Panou eMail"
 
 #: 
 msgid "No families need canvassers assigned"
-msgstr "Nu familii au nevoie de colportori atribuite"
+msgstr "Nu sunt necesare atribuiri de colectori de informații pentru familii"
 
 #: 
 msgid "Canvassers assigned at random to %d families."
-msgstr "Colportorii atribuite in mod aleatoriu la familiile% d."
+msgstr "Colectorii de informații au fost atribuiți aleatoriu la %d familii."
 
 #: 
 msgid "Canvassers assigned at random to %d non-pledging families."
-msgstr "Colportorii atribuite in mod aleatoriu la% d familiile non-gaj."
+msgstr "Colectorii de informații au fost atribuiți aleatoriu la %d familii care nu au făcut promisiuni."
 
 #: 
 msgid "Assigned envelope numbers to all families with at least one member."
@@ -4680,11 +4680,11 @@ msgstr "An fiscal:"
 
 #: 
 msgid "Important note: this will lose any &quot;Ok To Canvass&quot; fields that have been set by hand."
-msgstr "Notă importantă: aceasta va pierde orice &quout; Ok To Canvass &quout. câmpuri care au fost setate de mână."
+msgstr "Notă importantă: aceasta va duce la pierderea oricăror câmpuri 'Ok pentru Colectarea de Informații' care au fost setate manual."
 
 #: 
 msgid "Canvasser:"
-msgstr "Agent comercial"
+msgstr "Colector de Informații:"
 
 #: 
 msgid "Add Attendees for Event"
@@ -5391,7 +5391,7 @@ msgstr "Prieteni recenți"
 
 #: 
 msgid "Families to Canvass"
-msgstr "Familii pe afișaj"
+msgstr "Familii pentru Colectare de Informații"
 
 #: 
 msgid "Pledge comparison"
@@ -5463,7 +5463,7 @@ msgstr "Prieteni înregistrați luna trecută"
 
 #: 
 msgid "People in families that are ok to canvass."
-msgstr "Oameni care acceptă să facă evanghelizare"
+msgstr "Persoane din familiile pentru care este permisă Colectarea de Informații."
 
 #: 
 msgid "Compare pledges between two fiscal years"
@@ -5515,7 +5515,7 @@ msgstr "Permite utilizatorului să adauge un eveniment nou"
 
 #: 
 msgid "Canvass Progress Report"
-msgstr "Raport stadiu evanghelizare"
+msgstr "Raport de Progres al Colectării de Informații"
 
 #: 
 msgid "Done"
@@ -5539,7 +5539,7 @@ msgstr "Stadiu gaj"
 
 #: 
 msgid "Canvass Summary Report"
-msgstr "Raport sumarizat tablou"
+msgstr "Raport sumarizat al Colectarii de Informatii"
 
 #: 
 msgid "Suggestion"
@@ -5555,7 +5555,7 @@ msgstr "Comentarii"
 
 #: 
 msgid "Canvass Not Interested Report"
-msgstr "Tablou de raport neinteresați"
+msgstr "Raport Colectare de Informații: Nepasători"
 
 #: 
 msgid "Weekly on"

@@ -13,13 +13,32 @@ msgid "State"
 msgstr "County"
 
 #: 
-#, fuzzy
 msgid "Zip"
-msgstr "Postcode"
+msgstr "Post Code"
+
+#: 
+msgid "Work/Other Email"
+msgstr "Work / Other Email"
+
+#: 
+msgid "Based on filters below.."
+msgstr "Based on filters below ..."
+
+#: 
+msgid "Select the event to which you would like to add your cart"
+msgstr "Select the event which you would like to add your cart"
 
 #: 
 msgid "(Use the textbox for countries other than US and Canada)"
 msgstr "(Use the textbox for countries other than the UK)"
+
+#: 
+msgid "Select the event to which you would like to check people in for"
+msgstr "Select the event which you would like to check people in for"
+
+#: 
+msgid "Load Authorized Transactions"
+msgstr "Load Authorised Transactions"
 
 #: 
 msgid "Family Cell Phone"
@@ -43,14 +62,37 @@ msgstr "Autumn"
 
 #: 
 msgid "City, State, Zip"
-msgstr "City, Postcode"
+msgstr "City, Post Code"
 
 #: 
-#, fuzzy
 msgid "Cell Phone"
 msgstr "Mobile Phone"
 
 #: 
 msgid "Cell"
 msgstr "Mobile"
+
+#: 
+msgid "Church Zip"
+msgstr "Church Post Code"
+
+#: 
+msgid "Zip Code"
+msgstr "Post Code"
+
+#: 
+msgid "Enter any part of the following: Name, City, State, Zip, Home Phone, Email, or Work Email."
+msgstr "Enter any part of the following: Name, City, Post Code, Home Phone, Email, or Work Email."
+
+#: 
+msgid "Search by any part of Name, City, State, Zip, Home Phone, Email, or Work Email."
+msgstr "Search by any part of Name, City, Post Code, Home Phone, Email, or Work Email."
+
+#: 
+msgid "Foreground Color"
+msgstr "Foreground Colour"
+
+#: 
+msgid "Background Color"
+msgstr "Background Colour"
 
