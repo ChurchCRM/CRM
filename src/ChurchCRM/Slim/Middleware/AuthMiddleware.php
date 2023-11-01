@@ -4,13 +4,15 @@ namespace ChurchCRM\Slim\Middleware;
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Authentication\Requests\APITokenAuthenticationRequest;
-use Slim\Http\Request;
-use Slim\Http\Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Psr\Http\Server\RequestHandlerInterface as RequestHandler;
+use Psr\Http\Message\ResponseInterface as Response;
 
 class AuthMiddleware
 {
-    public function __invoke(Request $request, Response $response, callable $next)
+    public function __invoke(Request $request, RequestHandler $handler) : Response
     {
+        $response = $handler->handle($request);
         if (!$this->isPath($request, "public")) {
             $apiKey = $request->getHeader("x-api-key");
             if (!empty($apiKey)) {
@@ -28,10 +30,7 @@ class AuthMiddleware
             } else {
                 return $response->withStatus(401, gettext('No logged in user'));
             }
-
-            return $next($request, $response)->withHeader("CRM_USER_ID", AuthenticationManager::getCurrentUser()->getId());
         }
-        return $next($request, $response);
     }
 
     private function isPath(Request $request, $pathPart)
