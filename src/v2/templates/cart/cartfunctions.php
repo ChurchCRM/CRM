@@ -1,3 +1,4 @@
+<!-- BEGIN CART FUNCTIONS -->
 <?php
 
 use ChurchCRM\Authentication\AuthenticationManager;
@@ -65,3 +66,4 @@ use ChurchCRM\dto\SystemURLs;
               </div>
               <!-- /.box-body -->
             </div>
+    <!-- END CART FUNCTIONS -->

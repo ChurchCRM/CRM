@@ -1,5 +1,4 @@
-<?php
-
+ <?php
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\ListOptionQuery;
 use ChurchCRM\dto\SystemConfig;
@@ -9,7 +8,7 @@ use ChurchCRM\dto\Classification;
 // Set the page title and include HTML header
 $sPageTitle = gettext("Family Verification");
 
-require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
+require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
 
 $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
 ?>
