@@ -39,7 +39,7 @@ class LoggerUtils
     /**
      * @return Logger
      */
-    public static function getSlimMVCLogger() {
+    public static function getSlimMVCLogger(): Logger {
         $logger = new Logger('slim-app');
         $streamHandler = new StreamHandler(__DIR__ . '/logs/slim-app.log', SystemConfig::getValue("sLogLevel"));
         $logger->pushHandler($streamHandler);
