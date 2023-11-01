@@ -15,12 +15,13 @@ use Slim\HttpCache\CacheProvider;
 // Instantiate the app
 $container = new Container();
 $container['cache'] = fn () => new CacheProvider();
-if (SystemConfig::debugEnabled()) {
-    $container["settings"]['displayErrorDetails'] = true;
-}
 
 // Add middleware to the application
 $app = new App($container);
+
+if (SystemConfig::debugEnabled()) {
+    $app->addErrorMiddleware(true, true, true);
+}
 
 # Add middleware - executed in reverse order of appearing here.
 $app->add(new VersionMiddleware());

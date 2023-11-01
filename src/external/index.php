@@ -11,8 +11,9 @@ require_once __DIR__ . '/../vendor/autoload.php';
 // Instantiate the app
 $app = new \Slim\App();
 $container = $app->getContainer();
+
 if (SystemConfig::debugEnabled()) {
-    $container["settings"]['displayErrorDetails'] = true;
+    $app->addErrorMiddleware(true, true, true);
 }
 
 // Set up

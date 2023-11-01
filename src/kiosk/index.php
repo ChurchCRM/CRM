@@ -6,12 +6,14 @@ require '../Include/Config.php';
 require_once __DIR__ . '/../vendor/autoload.php';
 
 use ChurchCRM\dto\SystemConfig;
+use Slim\App;
 
 // Instantiate the app
 $app = new App();
 $container = $app->getContainer();
+
 if (SystemConfig::debugEnabled()) {
-    $container["settings"]['displayErrorDetails'] = true;
+    $app->addErrorMiddleware(true, true, true);
 }
 
 // Set up

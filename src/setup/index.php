@@ -19,7 +19,7 @@ if (file_exists('../Include/Config.php')) {
     $app = new \Slim\App();
     $container = $app->getContainer();
     if (SystemConfig::debugEnabled()) {
-        $container["settings"]['displayErrorDetails'] = true;
+        $app->addErrorMiddleware(true, true, true);
     }
 
     require __DIR__ . '/../Include/slim/error-handler.php';
