@@ -17,10 +17,6 @@ $container = new Container();
 // Add middleware to the application
 $app = new App($container);
 
-if (SystemConfig::debugEnabled()) {
-    $app->addErrorMiddleware(true, true, true);
-}
-
 $app->add(new VersionMiddleware());
 $app->add(new AuthMiddleware());
 
@@ -45,6 +41,10 @@ require __DIR__ . '/routes/calendar.php';
 require __DIR__ . '/routes/cart.php';
 
 require __DIR__ . '/routes/user-current.php';
+
+if (SystemConfig::debugEnabled()) {
+    $app->addErrorMiddleware(true, true, true);
+}
 
 // Run app
 $app->run();

@@ -19,9 +19,6 @@ $container['cache'] = fn () => new CacheProvider();
 // Add middleware to the application
 $app = new App($container);
 
-if (SystemConfig::debugEnabled()) {
-    $app->addErrorMiddleware(true, true, true);
-}
 
 # Add middleware - executed in reverse order of appearing here.
 $app->add(new VersionMiddleware());
@@ -79,6 +76,11 @@ require __DIR__ . '/routes/users/user.php';
 require __DIR__ . '/routes/users/user-admin.php';
 require __DIR__ . '/routes/users/user-current.php';
 require __DIR__ . '/routes/users/user-settings.php';
+
+
+if (SystemConfig::debugEnabled()) {
+    $app->addErrorMiddleware(true, true, true);
+}
 
 // Run app
 $app->run();

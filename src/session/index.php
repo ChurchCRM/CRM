@@ -25,10 +25,6 @@ if (SystemConfig::debugEnabled()) {
 // Add middleware to the application
 $app = new App($container);
 
-if (SystemConfig::debugEnabled()) {
-    $app->addErrorMiddleware(true, true, true);
-}
-
 $app->add(new VersionMiddleware());
 
 // Set up
@@ -95,6 +91,10 @@ function beginSession(Request $request, Response $response, array $args)
     }
 
     return $renderer->render($response, 'begin-session.php', $pageArgs);
+}
+
+if (SystemConfig::debugEnabled()) {
+    $app->addErrorMiddleware(true, true, true);
 }
 
 // Run app
