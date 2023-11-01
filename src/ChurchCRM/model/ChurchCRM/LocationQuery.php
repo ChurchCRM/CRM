@@ -16,5 +16,4 @@ use ChurchCRM\Base\LocationQuery as BaseLocationQuery;
  */
 class LocationQuery extends BaseLocationQuery
 {
-
 }

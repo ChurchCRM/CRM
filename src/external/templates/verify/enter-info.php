@@ -1,10 +1,11 @@
 <?php
+
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 
 // Set the page title and include HTML header
 $sPageTitle = "ChurchCRM - Family Verification";
-require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
+require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
 ?>
 
     <div class="register-box">
@@ -46,4 +47,4 @@ require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
 
 <?php
 // Add the page footer
-require(SystemURLs::getDocumentRoot(). "/Include/FooterNotLoggedIn.php");
+require(SystemURLs::getDocumentRoot() . "/Include/FooterNotLoggedIn.php");

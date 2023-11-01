@@ -26,7 +26,7 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Authentication\AuthenticationManager;
 
 //Get the GroupID out of the querystring
-$iGroupID = InputUtils::LegacyFilterInput($_GET['GroupID'], 'int');
+$iGroupID = InputUtils::legacyFilterInput($_GET['GroupID'], 'int');
 
 //Get the data on this group
 $thisGroup = ChurchCRM\GroupQuery::create()->findOneById($iGroupID);
@@ -46,7 +46,7 @@ $sSQL = "SELECT pro_Name, pro_ID, pro_Prompt, r2p_Value, prt_Name, pro_prt_ID
         FROM record2property_r2p
         LEFT JOIN property_pro ON pro_ID = r2p_pro_ID
         LEFT JOIN propertytype_prt ON propertytype_prt.prt_ID = property_pro.pro_prt_ID
-        WHERE pro_Class = 'g' AND r2p_record_ID = ".$iGroupID.
+        WHERE pro_Class = 'g' AND r2p_record_ID = " . $iGroupID .
         ' ORDER BY prt_Name, pro_Name';
 $rsAssignedProperties = RunQuery($sSQL);
 
@@ -55,12 +55,12 @@ $sSQL = "SELECT * FROM property_pro WHERE pro_Class = 'g' ORDER BY pro_Name";
 $rsProperties = RunQuery($sSQL);
 
 // Get data for the form as it now exists..
-$sSQL = 'SELECT * FROM groupprop_master WHERE grp_ID = '.$iGroupID.' ORDER BY prop_ID';
+$sSQL = 'SELECT * FROM groupprop_master WHERE grp_ID = ' . $iGroupID . ' ORDER BY prop_ID';
 $rsPropList = RunQuery($sSQL);
 $numRows = mysqli_num_rows($rsPropList);
 
 //Set the page title
-$sPageTitle = gettext('Group View').' : '.$thisGroup->getName();
+$sPageTitle = gettext('Group View') . ' : ' . $thisGroup->getName();
 
 require 'Include/Header.php';
 ?>
@@ -72,14 +72,14 @@ require 'Include/Header.php';
   <div class="card-body">
 
     <?php
-    if (AuthenticationManager::GetCurrentUser()->isManageGroupsEnabled()) {
+    if (AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) {
         echo '<a class="btn btn-app" href="GroupEditor.php?GroupID=' . $thisGroup->getId() . '"><i class="fas fa-pen"></i>' . gettext('Edit this Group') . '</a>';
         echo '<button class="btn btn-app"  id="deleteGroupButton"><i class="fa fa-trash"></i>' . gettext('Delete this Group') . '</button>'; ?>
 
-      <?php
-      if ($thisGroup->getHasSpecialProps()) {
-          echo '<a class="btn btn-app" href="GroupPropsFormEditor.php?GroupID='.$thisGroup->getId().'"><i class="fa fa-list-alt"></i>'.gettext('Edit Group-Specific Properties Form').'</a>';
-      }
+        <?php
+        if ($thisGroup->getHasSpecialProps()) {
+            echo '<a class="btn btn-app" href="GroupPropsFormEditor.php?GroupID=' . $thisGroup->getId() . '"><i class="fa fa-list-alt"></i>' . gettext('Edit Group-Specific Properties Form') . '</a>';
+        }
     }?>
 
     <a class="btn btn-app" id="AddGroupMembersToCart" data-groupid="<?= $thisGroup->getId() ?>"><i class="fa fa-users"></i><?= gettext('Add Group Members to Cart') ?></a>
@@ -100,11 +100,11 @@ require 'Include/Header.php';
                 FROM person_per
                 INNER JOIN record2property_r2p ON r2p_record_ID = per_ID
                 INNER JOIN property_pro ON r2p_pro_ID = pro_ID AND pro_Name = 'Do Not Email')
-            AND p2g2r_grp_ID = ".$iGroupID;
+            AND p2g2r_grp_ID = " . $iGroupID;
     $rsEmailList = RunQuery($sSQL);
     $sEmailLink = '';
     $roleEmails = [];
-    $sMailtoDelimiter = AuthenticationManager::GetCurrentUser()->getUserConfigString("sMailtoDelimiter");
+    $sMailtoDelimiter = AuthenticationManager::getCurrentUser()->getUserConfigString("sMailtoDelimiter");
     while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailList)) {
         $sEmail = SelectWhichInfo($per_Email, $fam_Email, false);
         if ($sEmail) {
@@ -120,13 +120,13 @@ require 'Include/Header.php';
     if ($sEmailLink) {
         // Add default email if default email has been set and is not already in string
         if (SystemConfig::getValue('sToEmailAddress') != '' && !stristr($sEmailLink, SystemConfig::getValue('sToEmailAddress'))) {
-            $sEmailLink .= $sMailtoDelimiter.SystemConfig::getValue('sToEmailAddress');
+            $sEmailLink .= $sMailtoDelimiter . SystemConfig::getValue('sToEmailAddress');
         }
         $sEmailLink = urlencode($sEmailLink);  // Mailto should comply with RFC 2368
 
-        if (AuthenticationManager::GetCurrentUser()->isEmailEnabled()) { // Does user have permission to email groups
+        if (AuthenticationManager::getCurrentUser()->isEmailEnabled()) { // Does user have permission to email groups
         // Display link
-        ?>
+            ?>
         <div class="btn-group">
           <a  class="btn btn-app" href="mailto:<?= mb_substr($sEmailLink, 0, -3) ?>"><i class="fa fa-paper-plane"></i><?= gettext('Email Group') ?></a>
           <button type="button" class="btn btn-app dropdown-toggle" data-toggle="dropdown" >
@@ -149,7 +149,7 @@ require 'Include/Header.php';
           </ul>
         </div>
 
-        <?php
+            <?php
         }
     }
 // Group Text Message Comma Delimited - added by RSBC
@@ -164,7 +164,7 @@ require 'Include/Header.php';
             FROM person_per
             INNER JOIN record2property_r2p ON r2p_record_ID = per_ID
             INNER JOIN property_pro ON r2p_pro_ID = pro_ID AND pro_Name = 'Do Not SMS')
-        AND p2g2r_grp_ID = ".$iGroupID;
+        AND p2g2r_grp_ID = " . $iGroupID;
     $rsPhoneList = RunQuery($sSQL);
     $sPhoneLink = '';
     $sCommaDelimiter = ', ';
@@ -180,10 +180,10 @@ require 'Include/Header.php';
         }
     }
     if ($sPhoneLink) {
-        if (AuthenticationManager::GetCurrentUser()->isEmailEnabled()) { // Does user have permission to email groups
+        if (AuthenticationManager::getCurrentUser()->isEmailEnabled()) { // Does user have permission to email groups
             // Display link
-            echo '<a class="btn btn-app" href="javascript:void(0)" onclick="allPhonesCommaD()"><i class="fa fa-mobile-phone"></i>'.gettext('Text Group').'</a>';
-            echo '<script nonce="'. SystemURLs::getCSPNonce() .'">function allPhonesCommaD() {prompt("'.gettext("Press CTRL + C to copy all group members\' phone numbers").'", "'.mb_substr($sPhoneLink, 0, -2).'")};</script>';
+            echo '<a class="btn btn-app" href="javascript:void(0)" onclick="allPhonesCommaD()"><i class="fa fa-mobile-phone"></i>' . gettext('Text Group') . '</a>';
+            echo '<script nonce="' . SystemURLs::getCSPNonce() . '">function allPhonesCommaD() {prompt("' . gettext("Press CTRL + C to copy all group members\' phone numbers") . '", "' . mb_substr($sPhoneLink, 0, -2) . '")};</script>';
         }
     }
     ?>
@@ -198,11 +198,11 @@ require 'Include/Header.php';
             <?= gettext('Type of Group') ?> <span class="badge"> <?= $sGroupType ?> </span>
         </button>
         <button class="btn btn-info" type="button">
-        <?php if (!is_null($defaultRole)) {
-        ?>
+        <?php if ($defaultRole !== null) {
+            ?>
             <?= gettext('Default Role') ?> <span class="badge"><?= $defaultRole->getOptionName() ?></span>
-        <?php
-    } ?>
+            <?php
+        } ?>
         </button>
         <button class="btn btn-primary" type="button">
             <?= gettext('Total Members') ?> <span class="badge" id="iTotalMembers"></span>
@@ -234,55 +234,55 @@ require 'Include/Header.php';
           <b><?= gettext('Group-Specific Properties') ?>:</b>
 
           <?php
-          if ($thisGroup->getHasSpecialProps()) {
-              // Create arrays of the properties.
-              for ($row = 1; $row <= $numRows; $row++) {
-                  $aRow = mysqli_fetch_array($rsPropList, MYSQLI_BOTH);
-                  extract($aRow);
+            if ($thisGroup->getHasSpecialProps()) {
+                // Create arrays of the properties.
+                for ($row = 1; $row <= $numRows; $row++) {
+                    $aRow = mysqli_fetch_array($rsPropList, MYSQLI_BOTH);
+                    extract($aRow);
 
-                  $aNameFields[$row] = $prop_Name;
-                  $aDescFields[$row] = $prop_Description;
-                  $aFieldFields[$row] = $prop_Field;
-                  $aTypeFields[$row] = $type_ID;
-              }
+                    $aNameFields[$row] = $prop_Name;
+                    $aDescFields[$row] = $prop_Description;
+                    $aFieldFields[$row] = $prop_Field;
+                    $aTypeFields[$row] = $type_ID;
+                }
 
-              // Construct the table
+                // Construct the table
 
-              if (!$numRows) {
-                  echo '<p><?= gettext("No member properties have been created")?></p>';
-              } else {
-                  ?>
+                if (!$numRows) {
+                    echo '<p><?= gettext("No member properties have been created")?></p>';
+                } else {
+                    ?>
               <table width="100%" cellpadding="2" cellspacing="0">
                 <tr class="TableHeader">
                   <td><?= gettext('Type') ?></td>
                   <td><?= gettext('Name') ?></td>
                   <td><?= gettext('Description') ?></td>
                 </tr>
-                <?php
-                $sRowClass = 'RowColorA';
-                  for ($row = 1; $row <= $numRows; $row++) {
-                      $sRowClass = AlternateRowStyle($sRowClass);
-                      echo '<tr class="'.$sRowClass.'">';
-                      echo '<td>'.$aPropTypes[$aTypeFields[$row]].'</td>';
-                      echo '<td>'.$aNameFields[$row].'</td>';
-                      echo '<td>'.$aDescFields[$row].'&nbsp;</td>';
-                      echo '</tr>';
-                  }
-                  echo '</table>';
-              }
-          } else {
-              echo '<p>'.gettext('Disabled for this group.').'</p>';
-          }
+                    <?php
+                    $sRowClass = 'RowColorA';
+                    for ($row = 1; $row <= $numRows; $row++) {
+                        $sRowClass = AlternateRowStyle($sRowClass);
+                        echo '<tr class="' . $sRowClass . '">';
+                        echo '<td>' . $aPropTypes[$aTypeFields[$row]] . '</td>';
+                        echo '<td>' . $aNameFields[$row] . '</td>';
+                        echo '<td>' . $aDescFields[$row] . '&nbsp;</td>';
+                        echo '</tr>';
+                    }
+                    echo '</table>';
+                }
+            } else {
+                echo '<p>' . gettext('Disabled for this group.') . '</p>';
+            }
 
             //Print Assigned Properties
             echo '<br><hr/>';
-            echo '<b>'.gettext('Assigned Properties').':</b>';
+            echo '<b>' . gettext('Assigned Properties') . ':</b>';
             $sAssignedProperties = ',';
 
             //Was anything returned?
             if (mysqli_num_rows($rsAssignedProperties) == 0) {
                 // No, indicate nothing returned
-                echo '<p>'.gettext('No property assignments').'.</p>';
+                echo '<p>' . gettext('No property assignments') . '.</p>';
             } else {
                 // Display table of properties?>
               <table width="100%" cellpadding="2" cellspacing="0">
@@ -291,87 +291,87 @@ require 'Include/Header.php';
                   <td valign="top"><b><?= gettext('Name') ?></b>
                   <td valign="top"><b><?= gettext('Value') ?></td>
                   <?php
-                  if (AuthenticationManager::GetCurrentUser()->isManageGroupsEnabled()) {
-                      echo '<td valign="top"><b>'.gettext('Edit Value').'</td>';
-                      echo '<td valign="top"><b>'.gettext('Remove').'</td>';
-                  }
-                echo '</tr>';
-
-                $last_pro_prt_ID = '';
-                $bIsFirst = true;
-
-                //Loop through the rows
-                while ($aRow = mysqli_fetch_array($rsAssignedProperties)) {
-                    $pro_Prompt = '';
-                    $r2p_Value = '';
-
-                    extract($aRow);
-
-                    if ($pro_prt_ID != $last_pro_prt_ID) {
-                        echo '<tr class="';
-                        if ($bIsFirst) {
-                            echo 'RowColorB';
-                        } else {
-                            echo 'RowColorC';
-                        }
-                        echo '"><td><b>'.$prt_Name.'</b></td>';
-
-                        $bIsFirst = false;
-                        $last_pro_prt_ID = $pro_prt_ID;
-                        $sRowClass = 'RowColorB';
-                    } else {
-                        echo '<tr class="'.$sRowClass.'">';
-                        echo '<td valign="top">&nbsp;</td>';
+                    if (AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) {
+                        echo '<td valign="top"><b>' . gettext('Edit Value') . '</td>';
+                        echo '<td valign="top"><b>' . gettext('Remove') . '</td>';
                     }
-
-                    echo '<td valign="top">'.$pro_Name.'&nbsp;</td>';
-                    echo '<td valign="top">'.$r2p_Value.'&nbsp;</td>';
-
-                    if (strlen($pro_Prompt) > 0 && AuthenticationManager::GetCurrentUser()->isManageGroupsEnabled()) {
-                        echo '<td valign="top"><a href="PropertyAssign.php?GroupID='.$iGroupID.'&amp;PropertyID='.$pro_ID.'">'.gettext('Edit Value').'</a></td>';
-                    } else {
-                        echo '<td>&nbsp;</td>';
-                    }
-
-                    if (AuthenticationManager::GetCurrentUser()->isManageGroupsEnabled()) {
-                        echo '<td valign="top"><a href="PropertyUnassign.php?GroupID='.$iGroupID.'&amp;PropertyID='.$pro_ID.'">'.gettext('Remove').'</a>';
-                    } else {
-                        echo '<td>&nbsp;</td>';
-                    }
-
                     echo '</tr>';
 
-                    //Alternate the row style
-                    $sRowClass = AlternateRowStyle($sRowClass);
+                    $last_pro_prt_ID = '';
+                    $bIsFirst = true;
 
-                    $sAssignedProperties .= $pro_ID.',';
-                }
+                //Loop through the rows
+                    while ($aRow = mysqli_fetch_array($rsAssignedProperties)) {
+                        $pro_Prompt = '';
+                        $r2p_Value = '';
 
-                echo '</table>';
-            }
-
-                if (AuthenticationManager::GetCurrentUser()->isManageGroupsEnabled()) {
-                    echo '<form method="post" action="PropertyAssign.php?GroupID='.$iGroupID.'">';
-                    echo '<p>';
-                    echo '<span>'.gettext('Assign a New Property:').'</span>';
-                    echo '<select name="PropertyID">';
-
-                    while ($aRow = mysqli_fetch_array($rsProperties)) {
                         extract($aRow);
 
-                        //If the property doesn't already exist for this Person, write the <OPTION> tag
-                        if (strlen(strstr($sAssignedProperties, ','.$pro_ID.',')) == 0) {
-                            echo '<option value="'.$pro_ID.'">'.$pro_Name.'</option>';
+                        if ($pro_prt_ID != $last_pro_prt_ID) {
+                            echo '<tr class="';
+                            if ($bIsFirst) {
+                                echo 'RowColorB';
+                            } else {
+                                echo 'RowColorC';
+                            }
+                            echo '"><td><b>' . $prt_Name . '</b></td>';
+
+                            $bIsFirst = false;
+                            $last_pro_prt_ID = $pro_prt_ID;
+                            $sRowClass = 'RowColorB';
+                        } else {
+                            echo '<tr class="' . $sRowClass . '">';
+                            echo '<td valign="top">&nbsp;</td>';
                         }
+
+                        echo '<td valign="top">' . $pro_Name . '&nbsp;</td>';
+                        echo '<td valign="top">' . $r2p_Value . '&nbsp;</td>';
+
+                        if (strlen($pro_Prompt) > 0 && AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) {
+                            echo '<td valign="top"><a href="PropertyAssign.php?GroupID=' . $iGroupID . '&amp;PropertyID=' . $pro_ID . '">' . gettext('Edit Value') . '</a></td>';
+                        } else {
+                            echo '<td>&nbsp;</td>';
+                        }
+
+                        if (AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) {
+                            echo '<td valign="top"><a href="PropertyUnassign.php?GroupID=' . $iGroupID . '&amp;PropertyID=' . $pro_ID . '">' . gettext('Remove') . '</a>';
+                        } else {
+                            echo '<td>&nbsp;</td>';
+                        }
+
+                        echo '</tr>';
+
+                        //Alternate the row style
+                        $sRowClass = AlternateRowStyle($sRowClass);
+
+                        $sAssignedProperties .= $pro_ID . ',';
                     }
 
-                    echo '</select>';
-                    echo ' <input type="submit" class="btn btn-success" value="'.gettext('Assign').'" name="Submit" style="font-size: 8pt;">';
-                    echo '</p></form>';
-                } else {
-                    echo '<br><br><br>';
+                    echo '</table>';
+            }
+
+            if (AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) {
+                echo '<form method="post" action="PropertyAssign.php?GroupID=' . $iGroupID . '">';
+                echo '<p>';
+                echo '<span>' . gettext('Assign a New Property:') . '</span>';
+                echo '<select name="PropertyID">';
+
+                while ($aRow = mysqli_fetch_array($rsProperties)) {
+                    extract($aRow);
+
+                    //If the property doesn't already exist for this Person, write the <OPTION> tag
+                    if (strlen(strstr($sAssignedProperties, ',' . $pro_ID . ',')) == 0) {
+                        echo '<option value="' . $pro_ID . '">' . $pro_Name . '</option>';
+                    }
                 }
-                ?>
+
+                echo '</select>';
+                echo ' <input type="submit" class="btn btn-success" value="' . gettext('Assign') . '" name="Submit" style="font-size: 8pt;">';
+                echo '</p></form>';
+            } else {
+                echo '<br><br><br>';
+            }
+            ?>
 
 
 
@@ -421,12 +421,12 @@ require 'Include/Header.php';
               window.CRM.iProfilePictureListSize = <?= SystemConfig::getValue('iProfilePictureListSize') ?>;
               var dataT = 0;
               $(document).ready(function () {
-                $('#isGroupActive').prop('checked', <?= $thisGroup->isActive()? 'true': 'false' ?>).change();
-                $('#isGroupEmailExport').prop('checked', <?= $thisGroup->isIncludeInEmailExport()? 'true': 'false' ?>).change();
+                $('#isGroupActive').prop('checked', <?= $thisGroup->isActive() ? 'true' : 'false' ?>).change();
+                $('#isGroupEmailExport').prop('checked', <?= $thisGroup->isIncludeInEmailExport() ? 'true' : 'false' ?>).change();
                 $("#deleteGroupButton").click(function() {
                   console.log("click");
                   bootbox.setDefaults({
-									locale: window.CRM.shortLocale}),
+                                    locale: window.CRM.shortLocale}),
                   bootbox.confirm({
                     title: "<?= gettext("Confirm Delete Group") ?>",
                     message: '<p style="color: red">'+

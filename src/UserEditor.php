@@ -1,4 +1,5 @@
 <?php
+
 /*******************************************************************************
  *
  *  filename    : UserEditor.php
@@ -16,6 +17,7 @@
 
 
  ******************************************************************************/
+
 // Include the function library
 require 'Include/Config.php';
 require 'Include/Functions.php';
@@ -32,8 +34,8 @@ use ChurchCRM\Authentication\AuthenticationManager;
 
 // Security: User must be an Admin to access this page.
 // Otherwise re-direct to the main menu.
-if (!AuthenticationManager::GetCurrentUser()->isAdmin()) {
-    RedirectUtils::Redirect('Menu.php');
+if (!AuthenticationManager::getCurrentUser()->isAdmin()) {
+    RedirectUtils::redirect('Menu.php');
     exit;
 }
 
@@ -43,43 +45,42 @@ $bShowPersonSelect = false;
 
 // Get the PersonID out of either querystring or the form, depending and what we're doing
 if (isset($_GET['PersonID'])) {
-    $iPersonID = InputUtils::LegacyFilterInput($_GET['PersonID'], 'int');
+    $iPersonID = InputUtils::legacyFilterInput($_GET['PersonID'], 'int');
     $bNewUser = false;
 } elseif (isset($_POST['PersonID'])) {
-    $iPersonID = InputUtils::LegacyFilterInput($_POST['PersonID'], 'int');
+    $iPersonID = InputUtils::legacyFilterInput($_POST['PersonID'], 'int');
     $bNewUser = false;
 } elseif (isset($_GET['NewPersonID'])) {
-    $iPersonID = InputUtils::LegacyFilterInput($_GET['NewPersonID'], 'int');
+    $iPersonID = InputUtils::legacyFilterInput($_GET['NewPersonID'], 'int');
     $bNewUser = true;
 }
 
 if (isset($_GET['ErrorText'])) {
-    $sErrorText = InputUtils::LegacyFilterInput($_GET['ErrorText'], 'string');
+    $sErrorText = InputUtils::legacyFilterInput($_GET['ErrorText'], 'string');
 } else {
     $sErrorText = '';
 }
 
 //Value to help determine correct return state on error
 if (isset($_POST['NewUser'])) {
-    $NewUser = InputUtils::LegacyFilterInput($_POST['NewUser'], 'string');
+    $NewUser = InputUtils::legacyFilterInput($_POST['NewUser'], 'string');
 }
 
 // Has the form been submitted?
 if (isset($_POST['save']) && $iPersonID > 0) {
-
     // Assign all variables locally
     $sAction = $_POST['Action'];
 
     $defaultFY = CurrentFY();
-    $sUserName = InputUtils::LegacyFilterInput($_POST['UserName']);
+    $sUserName = InputUtils::legacyFilterInput($_POST['UserName']);
 
     if (strlen($sUserName) < 3) {
         if ($NewUser == false) {
             //Report error for current user creation
-            RedirectUtils::Redirect('UserEditor.php?PersonID=' . $iPersonID . '&ErrorText=Login must be a least 3 characters!');
+            RedirectUtils::redirect('UserEditor.php?PersonID=' . $iPersonID . '&ErrorText=Login must be a least 3 characters!');
         } else {
             //Report error for new user creation
-            RedirectUtils::Redirect('UserEditor.php?NewPersonID=' . $iPersonID . '&ErrorText=Login must be a least 3 characters!');
+            RedirectUtils::redirect('UserEditor.php?NewPersonID=' . $iPersonID . '&ErrorText=Login must be a least 3 characters!');
         }
     } else {
         if (isset($_POST['AddRecords'])) {
@@ -133,7 +134,7 @@ if (isset($_POST['save']) && $iPersonID > 0) {
         } else {
             $Admin = 0;
         }
-        $Style = InputUtils::LegacyFilterInput($_POST['Style']);
+        $Style = InputUtils::legacyFilterInput($_POST['Style']);
 
         // Initialize error flag
         $bErrorFlag = false;
@@ -156,7 +157,7 @@ if (isset($_POST['save']) && $iPersonID > 0) {
                     $email->send();
                 } else {
                     // Set the error text for duplicate when new user
-                    RedirectUtils::Redirect('UserEditor.php?NewPersonID=' . $PersonID . '&ErrorText=Login already in use, please select a different login!');
+                    RedirectUtils::redirect('UserEditor.php?NewPersonID=' . $PersonID . '&ErrorText=Login already in use, please select a different login!');
                 }
             } else {
                 if ($undupCount == 0) {
@@ -167,24 +168,23 @@ if (isset($_POST['save']) && $iPersonID > 0) {
                     $user->createTimeLineNote("updated");
                 } else {
                     // Set the error text for duplicate when currently existing
-                    RedirectUtils::Redirect('UserEditor.php?PersonID=' . $iPersonID . '&ErrorText=Login already in use, please select a different login!');
+                    RedirectUtils::redirect('UserEditor.php?PersonID=' . $iPersonID . '&ErrorText=Login already in use, please select a different login!');
                 }
             }
         }
     }
 } else {
-
     // Do we know which person yet?
     if ($iPersonID > 0) {
         $usr_per_ID = $iPersonID;
 
         if (!$bNewUser) {
             // Get the data on this user
-            $sSQL = 'SELECT * FROM user_usr INNER JOIN person_per ON person_per.per_ID = user_usr.usr_per_ID WHERE usr_per_ID = '.$iPersonID;
+            $sSQL = 'SELECT * FROM user_usr INNER JOIN person_per ON person_per.per_ID = user_usr.usr_per_ID WHERE usr_per_ID = ' . $iPersonID;
             $rsUser = RunQuery($sSQL);
             $aUser = mysqli_fetch_array($rsUser);
             extract($aUser);
-            $sUser = $per_LastName.', '.$per_FirstName;
+            $sUser = $per_LastName . ', ' . $per_FirstName;
             $sUserName = $usr_UserName;
             $sAction = 'edit';
         } else {
@@ -259,11 +259,11 @@ if (isset($_POST['save']) && ($iPersonID > 0)) {
         $id = key($type);
         // Filter Input
         if ($current_type == 'text' || $current_type == 'textarea') {
-            $value = InputUtils::LegacyFilterInput($new_value[$id]);
+            $value = InputUtils::legacyFilterInput($new_value[$id]);
         } elseif ($current_type == 'number') {
-            $value = InputUtils::LegacyFilterInput($new_value[$id], 'float');
+            $value = InputUtils::legacyFilterInput($new_value[$id], 'float');
         } elseif ($current_type == 'date') {
-            $value = InputUtils::LegacyFilterInput($new_value[$id], 'date');
+            $value = InputUtils::legacyFilterInput($new_value[$id], 'date');
         } elseif ($current_type == 'boolean') {
             if ($new_value[$id] != '1') {
                 $value = '';
@@ -315,7 +315,7 @@ if (isset($_POST['save']) && ($iPersonID > 0)) {
         next($type);
     }
 
-    RedirectUtils::Redirect('UserList.php');
+    RedirectUtils::redirect('UserList.php');
     exit;
 }
 
@@ -351,7 +351,7 @@ require 'Include/Header.php';
                                         extract($aRow); ?>
                                         <option value="<?= $per_ID ?>"<?php if ($per_ID == $iPersonID) {
                                             echo ' selected';
-                                        } ?>><?= $per_LastName . ', ' . $per_FirstName ?></option>
+                                                       } ?>><?= $per_LastName . ', ' . $per_FirstName ?></option>
                                         <?php
                                     } ?>
                                 </select>
@@ -384,69 +384,69 @@ require 'Include/Header.php';
                     <tr>
                         <td><?= gettext('Admin') ?>:</td>
                         <td><input type="checkbox" name="Admin" value="1"<?php if ($usr_Admin) {
-                        echo ' checked';
-                    } ?>>&nbsp;<span class="SmallText"><?= gettext('(Grants all privileges.)') ?></span></td>
+                            echo ' checked';
+                                                                         } ?>>&nbsp;<span class="SmallText"><?= gettext('(Grants all privileges.)') ?></span></td>
                     </tr>
                     <tr>
                         <td><?= gettext('Add Records') ?>:</td>
                         <td><input type="checkbox" name="AddRecords" value="1"<?php if ($usr_AddRecords) {
-                        echo ' checked';
-                    } ?>></td>
+                            echo ' checked';
+                                                                              } ?>></td>
                     </tr>
 
                     <tr>
                         <td><?= gettext('Edit Records') ?>:</td>
                         <td><input type="checkbox" name="EditRecords" value="1"<?php if ($usr_EditRecords) {
-                        echo ' checked';
-                    } ?>></td>
+                            echo ' checked';
+                                                                               } ?>></td>
                     </tr>
 
                     <tr>
                         <td><?= gettext('Delete Records') ?>:</td>
                         <td><input type="checkbox" name="DeleteRecords" value="1"<?php if ($usr_DeleteRecords) {
-                        echo ' checked';
-                    } ?>></td>
+                            echo ' checked';
+                                                                                 } ?>></td>
                     </tr>
 
                     <tr>
                         <td><?= gettext('Manage Properties and Classifications') ?>:</td>
                         <td><input type="checkbox" name="MenuOptions" value="1"<?php if ($usr_MenuOptions) {
-                        echo ' checked';
-                    } ?>></td>
+                            echo ' checked';
+                                                                               } ?>></td>
                     </tr>
 
                     <tr>
                         <td><?= gettext('Manage Groups and Roles') ?>:</td>
                         <td><input type="checkbox" name="ManageGroups" value="1"<?php if ($usr_ManageGroups) {
-                        echo ' checked';
-                    } ?>></td>
+                            echo ' checked';
+                                                                                } ?>></td>
                     </tr>
 
                     <tr>
                         <td><?= gettext('Manage Donations and Finance') ?>:</td>
                         <td><input type="checkbox" name="Finance" value="1"<?php if ($usr_Finance) {
-                        echo ' checked';
-                    } ?>></td>
+                            echo ' checked';
+                                                                           } ?>></td>
                     </tr>
 
                     <tr>
                         <td><?= gettext('View, Add and Edit Notes') ?>:</td>
                         <td><input type="checkbox" name="Notes" value="1"<?php if ($usr_Notes) {
-                        echo ' checked';
-                    } ?>></td>
+                            echo ' checked';
+                                                                         } ?>></td>
                     </tr>
 
                     <tr>
                         <td><?= gettext('Edit Self') ?>:</td>
                         <td><input type="checkbox" name="EditSelf" value="1"<?php if ($usr_EditSelf) {
-                        echo ' checked';
-                    } ?>>&nbsp;<span class="SmallText"><?= gettext('(Edit own family only.)') ?></span></td>
+                            echo ' checked';
+                                                                            } ?>>&nbsp;<span class="SmallText"><?= gettext('(Edit own family only.)') ?></span></td>
                     </tr>
                     <tr>
                         <td><?= gettext('Canvasser') ?>:</td>
                         <td><input type="checkbox" name="Canvasser" value="1"<?php if ($usr_Canvasser) {
-                        echo ' checked';
-                    } ?>>&nbsp;<span class="SmallText"><?= gettext('(Canvass volunteer.)') ?></span></td>
+                            echo ' checked';
+                                                                             } ?>>&nbsp;<span class="SmallText"><?= gettext('(Canvass volunteer.)') ?></span></td>
                     </tr>
                     <tr>
                         <td><?= gettext('Style') ?>:</td>

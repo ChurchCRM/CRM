@@ -7,14 +7,14 @@ use Propel\Runtime\ActiveQuery\Criteria;
 
 class PersonService
 {
-    public function search($searchTerm, $includeFamilyRole=true)
+    public function search($searchTerm, $includeFamilyRole = true)
     {
-        $searchLikeString = '%'.$searchTerm.'%';
+        $searchLikeString = '%' . $searchTerm . '%';
         $people = PersonQuery::create()->
-    filterByFirstName($searchLikeString, Criteria::LIKE)->
-    _or()->filterByLastName($searchLikeString, Criteria::LIKE)->
-    _or()->filterByEmail($searchLikeString, Criteria::LIKE)->
-      limit(15)->find();
+        filterByFirstName($searchLikeString, Criteria::LIKE)->
+        _or()->filterByLastName($searchLikeString, Criteria::LIKE)->
+        _or()->filterByEmail($searchLikeString, Criteria::LIKE)->
+        limit(15)->find();
         $return = [];
         foreach ($people as $person) {
             $values['id'] = $person->getId();

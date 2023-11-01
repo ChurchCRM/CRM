@@ -2,10 +2,9 @@
 
 namespace ChurchCRM\Reports;
 
-class PDF_NewsletterLabels extends PDF_Label
+class PdfNewsletterLabels extends PdfLabel
 {
-    // Constructor
-    public function PDF_NewsletterLabels($sLabelFormat)
+    public function __construct($sLabelFormat)
     {
         parent::__construct($sLabelFormat);
     }

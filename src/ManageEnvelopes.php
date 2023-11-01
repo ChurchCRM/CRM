@@ -1,4 +1,5 @@
 <?php
+
 /*******************************************************************************
  *
  *  filename    : ManageEnvelopes.php
@@ -22,8 +23,8 @@ use ChurchCRM\Authentication\AuthenticationManager;
 $sPageTitle = gettext('Envelope Manager');
 
 // Security: User must have finance permission to use this form
-if (!AuthenticationManager::GetCurrentUser()->isFinanceEnabled()) {
-    RedirectUtils::Redirect('Menu.php');
+if (!AuthenticationManager::getCurrentUser()->isFinanceEnabled()) {
+    RedirectUtils::redirect('Menu.php');
     exit;
 }
 
@@ -37,7 +38,7 @@ asort($familyArray);
 
 if (isset($_POST['Confirm'])) {
     foreach ($familyArray as $fam_ID => $fam_Data) {
-        $key = 'EnvelopeID_'.$fam_ID;
+        $key = 'EnvelopeID_' . $fam_ID;
         if (isset($_POST[$key])) {
             $newEnvelope = $_POST[$key];
             $priorEnvelope = $envelopesByFamID[$fam_ID];
@@ -48,7 +49,7 @@ if (isset($_POST['Confirm'])) {
         }
     }
     foreach ($envelopesToWrite as $fam_ID => $envelope) {
-        $dSQL = "UPDATE family_fam SET fam_Envelope='".$envelope."' WHERE fam_ID='".$fam_ID."'";
+        $dSQL = "UPDATE family_fam SET fam_Envelope='" . $envelope . "' WHERE fam_ID='" . $fam_ID . "'";
         RunQuery($dSQL);
     }
 }
@@ -95,7 +96,7 @@ $updateEnvelopes = 0;
 
 // Service the action buttons
 if (isset($_POST['PrintReport'])) {
-    RedirectUtils::Redirect('Reports/EnvelopeReport.php');
+    RedirectUtils::redirect('Reports/EnvelopeReport.php');
 } elseif (isset($_POST['AssignAllFamilies'])) {
     $newEnvNum = $iAssignStartNum;
     $envelopesToWrite = []; // zero it out
@@ -111,7 +112,7 @@ if (isset($_POST['PrintReport'])) {
     }
 }
 
-    ?>
+?>
 
 
 
@@ -148,11 +149,11 @@ if (isset($_POST['PrintReport'])) {
         <option value="0"><?= gettext('All') ?></option>
         <?php
         foreach ($classification as $lst_OptionID => $lst_OptionName) {
-            echo '<option value="'.$lst_OptionID.'"';
+            echo '<option value="' . $lst_OptionID . '"';
             if ($iClassification == $lst_OptionID) {
                 echo ' selected';
             }
-            echo '>'.$lst_OptionName.'&nbsp;';
+            echo '>' . $lst_OptionName . '&nbsp;';
         }
         ?>
         </select>
@@ -195,8 +196,8 @@ foreach ($arrayToLoop as $fam_ID => $value) {
         $envelope = $envelopesByFamID[$fam_ID];
     }
     echo '<tr>';
-    echo '<td>'.$fam_Data.'&nbsp;</td>';
-    if ($envelope and $duplicateEnvelopeHash and array_key_exists($envelope, $duplicateEnvelopeHash)) {
+    echo '<td>' . $fam_Data . '&nbsp;</td>';
+    if ($envelope && $duplicateEnvelopeHash && array_key_exists($envelope, $duplicateEnvelopeHash)) {
         $tdTag = "<td bgcolor='red'>";
     } else {
         $duplicateEnvelopeHash[$envelope] = $fam_ID;
@@ -218,7 +219,7 @@ foreach ($arrayToLoop as $fam_ID => $value) {
 function getEnvelopes($classification)
 {
     if ($classification) {
-        $sSQL = "SELECT fam_ID, fam_Envelope FROM family_fam LEFT JOIN person_per ON fam_ID = per_fam_ID WHERE per_cls_ID='".$classification."'";
+        $sSQL = "SELECT fam_ID, fam_Envelope FROM family_fam LEFT JOIN person_per ON fam_ID = per_fam_ID WHERE per_cls_ID='" . $classification . "'";
     } else {
         $sSQL = 'SELECT fam_ID, fam_Envelope FROM family_fam';
     }

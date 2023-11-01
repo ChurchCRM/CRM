@@ -36,7 +36,7 @@ $app->group('/person/{personId:[0-9]+}', function () use ($app) {
 
     $app->delete('', function (Request $request, Response $response, array $args) {
         $person = $request->getAttribute("person");
-        if (AuthenticationManager::GetCurrentUser()->getId() == $person->getId()) {
+        if (AuthenticationManager::getCurrentUser()->getId() == $person->getId()) {
             return $response->withStatus(403, gettext("Can't delete yourself"));
         }
         $person->delete();
@@ -46,7 +46,7 @@ $app->group('/person/{personId:[0-9]+}', function () use ($app) {
     $app->post('/role/{roleId:[0-9]+}', 'setPersonRoleAPI')->add(new EditRecordsRoleAuthMiddleware());
 
     $app->post('/addToCart', function (Request $request, Response $response, array $args) {
-        Cart::AddPerson($args['personId']);
+        Cart::addPerson($args['personId']);
     });
 
     $app->post('/photo', function (Request $request, Response $response, array $args) {
@@ -60,7 +60,6 @@ $app->group('/person/{personId:[0-9]+}', function () use ($app) {
         $person = $request->getAttribute("person");
         return $response->withJson(['success' => $person->deletePhoto()]);
     })->add(new DeleteRecordRoleAuthMiddleware());
-
 })->add(new PersonAPIMiddleware());
 
 

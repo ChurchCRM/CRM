@@ -1,4 +1,5 @@
 <?php
+
 /*******************************************************************************
  *
  *  filename    : Checkin.php
@@ -36,17 +37,17 @@ $iAdultID = 0;
 
 
 if (array_key_exists('EventID', $_POST)) {
-    $EventID = InputUtils::LegacyFilterInput($_POST['EventID'], 'int');
+    $EventID = InputUtils::legacyFilterInput($_POST['EventID'], 'int');
 } // from ListEvents button=Attendees
 if (isset($_POST['CheckOutBtn']) || isset($_POST['DeleteBtn'])) {
     $CheckoutOrDelete =  true;
 }
 
 if (isset($_POST['child-id'])) {
-    $iChildID = InputUtils::LegacyFilterInput($_POST['child-id'], 'int');
+    $iChildID = InputUtils::legacyFilterInput($_POST['child-id'], 'int');
 }
 if (isset($_POST['adult-id'])) {
-    $iAdultID = InputUtils::LegacyFilterInput($_POST['adult-id'], 'int');
+    $iAdultID = InputUtils::legacyFilterInput($_POST['adult-id'], 'int');
 }
 
 //
@@ -76,7 +77,7 @@ if ($EventID > 0) {
                         :</h3>
                 </div>
                 <div class="card-body">
-                    <?php if ($sGlobalMessage): ?>
+                    <?php if ($sGlobalMessage) : ?>
                         <p><?= $sGlobalMessage ?></p>
                     <?php endif; ?>
 
@@ -89,12 +90,12 @@ if ($EventID > 0) {
                                     <option value="<?= $EventID; ?>"
                                             disabled <?= ($EventID == 0) ? " Selected='selected'" : "" ?> ><?= gettext('Select event') ?></option>
                                     <?php foreach ($activeEvents as $event) {
-    ?>
+                                        ?>
                                         <option
                                             value="<?= $event->getId(); ?>" <?= ($EventID == $event->getId()) ? " Selected='selected'" : "" ?> >
                                             <?= $event->getTitle(); ?></option>
                                         <?php
-}
+                                    }
                                     ?>
                                 </select>
                             </div>
@@ -230,10 +231,11 @@ if (isset($_POST['EventID']) && isset($_POST['child-id']) && (isset($_POST['Chec
 //-- End checkin
 
 //  Checkout / Delete section
-if (isset($_POST['EventID']) && isset($_POST['child-id']) &&
+if (
+    isset($_POST['EventID']) && isset($_POST['child-id']) &&
     (isset($_POST['CheckOutBtn']) || isset($_POST['DeleteBtn']))
 ) {
-    $iChildID = InputUtils::LegacyFilterInput($_POST['child-id'], 'int');
+    $iChildID = InputUtils::legacyFilterInput($_POST['child-id'], 'int');
 
     $formTitle = (isset($_POST['CheckOutBtn']) ? gettext("CheckOut Person") : gettext("Delete Checkin in Entry")); ?>
 
@@ -324,28 +326,28 @@ if (isset($_POST['EventID'])) {
                     ->filterByEventId($EventID)
                     ->find();
 
-    foreach ($eventAttendees as $per) {
-        //Get Person who is checked in
-        $checkedInPerson = PersonQuery::create()
+                foreach ($eventAttendees as $per) {
+                    //Get Person who is checked in
+                    $checkedInPerson = PersonQuery::create()
                         ->findOneById($per->getPersonId());
 
-        $sPerson = $checkedInPerson->getFullName();
+                    $sPerson = $checkedInPerson->getFullName();
 
-        //Get Person who checked person in
-        $sCheckinby = "";
-        if ($per->getCheckinId()) {
-            $checkedInBy = PersonQuery::create()
+                    //Get Person who checked person in
+                    $sCheckinby = "";
+                    if ($per->getCheckinId()) {
+                        $checkedInBy = PersonQuery::create()
                             ->findOneById($per->getCheckinId());
-            $sCheckinby = $checkedInBy->getFullName();
-        }
+                        $sCheckinby = $checkedInBy->getFullName();
+                    }
 
-        //Get Person who checked person out
-        $sCheckoutby = "";
-        if ($per->getCheckoutId()) {
-            $checkedOutBy = PersonQuery::create()
+                    //Get Person who checked person out
+                    $sCheckoutby = "";
+                    if ($per->getCheckoutId()) {
+                        $checkedOutBy = PersonQuery::create()
                             ->findOneById($per->getCheckoutId());
-            $sCheckoutby = $checkedOutBy->getFullName();
-        } ?>
+                        $sCheckoutby = $checkedOutBy->getFullName();
+                    } ?>
                     <tr>
                         <td><img src="<?= SystemURLs::getRootPath() . '/api/person/' . $per->getPersonId() . '/thumbnail' ?>"
                                  class="direct-chat-img initials-image">&nbsp
@@ -376,8 +378,8 @@ if (isset($_POST['EventID'])) {
                             </form>
                         </td>
                     </tr>
-                    <?php
-    } ?>
+                                <?php
+                } ?>
                 </tbody>
             </table>
         </div>
@@ -447,21 +449,21 @@ function loadPerson($iPersonID)
     }
     $person = PersonQuery::create()
         ->findOneById($iPersonID);
-    $familyRole="(";
+    $familyRole = "(";
     if ($person->getFamId()) {
         if ($person->getFamilyRole()) {
             $familyRole .= $person->getFamilyRoleName();
         } else {
             $familyRole .=  gettext('Member');
         }
-        $familyRole .= gettext(' of the').' <a href="v2/family/'. $person->getFamId().'">'.$person->getFamily()->getName().'</a> '.gettext('family').' )';
+        $familyRole .= gettext(' of the') . ' <a href="v2/family/' . $person->getFamId() . '">' . $person->getFamily()->getName() . '</a> ' . gettext('family') . ' )';
     } else {
         $familyRole = gettext('(No assigned family)');
     }
 
 
     $html = '<div class="text-center">' .
-        '<a target="_top" href="PersonView.php?PersonID=' . $iPersonID . '"><h4>' . $person->getTitle(). ' ' . $person->getFullName() . '</h4></a>' .
+        '<a target="_top" href="PersonView.php?PersonID=' . $iPersonID . '"><h4>' . $person->getTitle() . ' ' . $person->getFullName() . '</h4></a>' .
         '<div class="">' . $familyRole . '</div>' .
         '<div class="text-center">' . $person->getAddress() . '</div>' .
         '<img src="' . SystemURLs::getRootPath() . '/api/person/' . $iPersonID . '/thumbnail" class="initials-image profile-user-img img-responsive img-circle"> </div>';

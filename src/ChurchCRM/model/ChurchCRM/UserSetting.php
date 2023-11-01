@@ -15,7 +15,6 @@ use ChurchCRM\Base\UserSetting as BaseUserSetting;
  */
 class UserSetting extends BaseUserSetting
 {
-
     public const UI_STYLE = "ui.style";
     public const UI_BOXED = "ui.boxed";
     public const UI_SIDEBAR = "ui.sidebar";

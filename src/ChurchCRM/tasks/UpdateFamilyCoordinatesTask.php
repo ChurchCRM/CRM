@@ -1,6 +1,5 @@
 <?php
 
-
 namespace ChurchCRM\Tasks;
 
 use ChurchCRM\FamilyQuery;

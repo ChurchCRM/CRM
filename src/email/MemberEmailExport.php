@@ -38,7 +38,7 @@ foreach ($groups as $group) {
 }
 
 header('Content-type: text/csv');
-header('Content-Disposition: attachment; filename=EmailExport-'.date(SystemConfig::getValue("sDateFilenameFormat")).'.csv');
+header('Content-Disposition: attachment; filename=EmailExport-' . date(SystemConfig::getValue("sDateFilenameFormat")) . '.csv');
 header('Pragma: no-cache');
 header('Expires: 0');
 

@@ -12,7 +12,7 @@ function EnvelopeAssignAllFamilies($bMembersOnly)
 {
     $sSQL = 'SELECT per_fam_ID, per_LastName FROM person_per';
     if ($bMembersOnly) {
-        $sSQL .= ' WHERE per_cls_ID='.FindMemberClassID();
+        $sSQL .= ' WHERE per_cls_ID=' . FindMemberClassID();
     }
     $sSQL .= ' ORDER BY per_LastName';
     $rsPeople = RunQuery($sSQL);
@@ -28,7 +28,7 @@ function EnvelopeAssignAllFamilies($bMembersOnly)
 
     $envelopeNo = 1;
     foreach ($famUnique as $oneFam) {
-        $sSQL = "UPDATE family_fam SET fam_Envelope='".$envelopeNo++."' WHERE fam_ID='".$oneFam."';";
+        $sSQL = "UPDATE family_fam SET fam_Envelope='" . $envelopeNo++ . "' WHERE fam_ID='" . $oneFam . "';";
         RunQuery($sSQL);
     }
     if ($bMembersOnly) {

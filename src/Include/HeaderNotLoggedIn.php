@@ -1,4 +1,5 @@
 <?php
+
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\SystemConfig;
 

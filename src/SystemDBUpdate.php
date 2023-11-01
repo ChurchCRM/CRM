@@ -13,21 +13,21 @@ $bSuppressSessionTests = true; // DO NOT MOVE
 require 'Include/Functions.php';
 
 if (Bootstrapper::isDBCurrent()) {
-    RedirectUtils::Redirect('Menu.php');
+    RedirectUtils::redirect('Menu.php');
     exit;
 }
 
 $logger = LoggerUtils::getAppLogger();
-if (isset($_GET['upgrade']) && InputUtils::FilterString($_GET['upgrade']) === "true") {
+if (isset($_GET['upgrade']) && InputUtils::filterString($_GET['upgrade']) === "true") {
     try {
         $logger->info("Beginning database upgrade");
         UpgradeService::upgradeDatabaseVersion();
         $logger->info("Complete database upgrade; redirecting to Main menu");
-        RedirectUtils::Redirect('Menu.php');
+        RedirectUtils::redirect('Menu.php');
         exit;
     } catch (\Exception $ex) {
         $errorMessage = $ex->getMessage();
-        $logger->error("Error updating database: " .$errorMessage, ['exception' => $ex]);
+        $logger->error("Error updating database: " . $errorMessage, ['exception' => $ex]);
     }
 }
 
@@ -53,7 +53,7 @@ require 'Include/HeaderNotLoggedIn.php'; ?>
         </div>
     </div>
     <?php if (empty($errorMessage)) {
-    ?>
+        ?>
         <div class="row center-block">
                 <p></br></p>
                 <form>
@@ -62,15 +62,15 @@ require 'Include/HeaderNotLoggedIn.php'; ?>
                             class="fa fa-database"></i> <?= gettext('Upgrade database') ?></button>
                 </form>
         </div>
-    <?php
-} else {
+        <?php
+    } else {
         ?>
         <div class="main-box-body clearfix" id="globalMessage">
             <div class="callout callout-danger fade in" id="globalMessageCallOut">
                 <i class="fa fa-warning fa-fw fa-lg"></i> <?= $errorMessage ?>
             </div>
         </div>
-    <?php
+        <?php
     } ?>
 </div>
 

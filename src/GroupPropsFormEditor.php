@@ -1,4 +1,5 @@
 <?php
+
 /*******************************************************************************
  *
  *  filename    : GroupPropsFormEditor.php
@@ -23,25 +24,25 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Authentication\AuthenticationManager;
 
 // Security: user must be allowed to edit records to use this page.
-if (!AuthenticationManager::GetCurrentUser()->isManageGroupsEnabled()) {
-    RedirectUtils::Redirect('Menu.php');
+if (!AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) {
+    RedirectUtils::redirect('Menu.php');
     exit;
 }
 
 // Get the Group from the querystring
-$iGroupID = InputUtils::LegacyFilterInput($_GET['GroupID'], 'int');
+$iGroupID = InputUtils::legacyFilterInput($_GET['GroupID'], 'int');
 
 // Get the group information
-$sSQL = 'SELECT * FROM group_grp WHERE grp_ID = '.$iGroupID;
+$sSQL = 'SELECT * FROM group_grp WHERE grp_ID = ' . $iGroupID;
 $rsGroupInfo = RunQuery($sSQL);
 extract(mysqli_fetch_array($rsGroupInfo));
 
 // Abort if user tries to load with group having no special properties.
 if ($grp_hasSpecialProps == false) {
-    RedirectUtils::Redirect('GroupView.php?GroupID='.$iGroupID);
+    RedirectUtils::redirect('GroupView.php?GroupID=' . $iGroupID);
 }
 
-$sPageTitle = gettext('Group-Specific Properties Form Editor:').'  '.$grp_Name;
+$sPageTitle = gettext('Group-Specific Properties Form Editor:') . '  ' . $grp_Name;
 
 require 'Include/Header.php'; ?>
 
@@ -55,9 +56,8 @@ $bDuplicateNameError = false;
 
 // Does the user want to save changes to text fields?
 if (isset($_POST['SaveChanges'])) {
-
     // Fill in the other needed property data arrays not gathered from the form submit
-    $sSQL = 'SELECT prop_ID, prop_Field, type_ID, prop_Special, prop_PersonDisplay FROM groupprop_master WHERE grp_ID = '.$iGroupID.' ORDER BY prop_ID';
+    $sSQL = 'SELECT prop_ID, prop_Field, type_ID, prop_Special, prop_PersonDisplay FROM groupprop_master WHERE grp_ID = ' . $iGroupID . ' ORDER BY prop_ID';
     $rsPropList = RunQuery($sSQL);
     $numRows = mysqli_num_rows($rsPropList);
 
@@ -76,7 +76,7 @@ if (isset($_POST['SaveChanges'])) {
     }
 
     for ($iPropID = 1; $iPropID <= $numRows; $iPropID++) {
-        $aNameFields[$iPropID] = InputUtils::LegacyFilterInput($_POST[$iPropID.'name']);
+        $aNameFields[$iPropID] = InputUtils::legacyFilterInput($_POST[$iPropID . 'name']);
 
         if (strlen($aNameFields[$iPropID]) == 0) {
             $aNameErrors[$iPropID] = true;
@@ -85,10 +85,10 @@ if (isset($_POST['SaveChanges'])) {
             $aNameErrors[$iPropID] = false;
         }
 
-        $aDescFields[$iPropID] = InputUtils::LegacyFilterInput($_POST[$iPropID.'desc']);
+        $aDescFields[$iPropID] = InputUtils::legacyFilterInput($_POST[$iPropID . 'desc']);
 
-        if (isset($_POST[$iPropID.'special'])) {
-            $aSpecialFields[$iPropID] = InputUtils::LegacyFilterInput($_POST[$iPropID.'special'], 'int');
+        if (isset($_POST[$iPropID . 'special'])) {
+            $aSpecialFields[$iPropID] = InputUtils::legacyFilterInput($_POST[$iPropID . 'special'], 'int');
 
             if ($aSpecialFields[$iPropID] == 0) {
                 $aSpecialErrors[$iPropID] = true;
@@ -98,7 +98,7 @@ if (isset($_POST['SaveChanges'])) {
             }
         }
 
-        if (isset($_POST[$iPropID.'show'])) {
+        if (isset($_POST[$iPropID . 'show'])) {
             $aPersonDisplayFields[$iPropID] = true;
         } else {
             $aPersonDisplayFields[$iPropID] = false;
@@ -115,11 +115,11 @@ if (isset($_POST['SaveChanges'])) {
             }
 
             $sSQL = "UPDATE groupprop_master
-					SET `prop_Name` = '".$aNameFields[$iPropID]."',
-						`prop_Description` = '".$aDescFields[$iPropID]."',
-						`prop_Special` = ".$aSpecialFields[$iPropID].",
-						`prop_PersonDisplay` = '".$temp."'
-					WHERE `grp_ID` = '".$iGroupID."' AND `prop_ID` = '".$iPropID."';";
+					SET `prop_Name` = '" . $aNameFields[$iPropID] . "',
+						`prop_Description` = '" . $aDescFields[$iPropID] . "',
+						`prop_Special` = " . $aSpecialFields[$iPropID] . ",
+						`prop_PersonDisplay` = '" . $temp . "'
+					WHERE `grp_ID` = '" . $iGroupID . "' AND `prop_ID` = '" . $iPropID . "';";
 
             RunQuery($sSQL);
         }
@@ -127,14 +127,14 @@ if (isset($_POST['SaveChanges'])) {
 } else {
     // Check if we're adding a field
     if (isset($_POST['AddField'])) {
-        $newFieldType = InputUtils::LegacyFilterInput($_POST['newFieldType'], 'int');
-        $newFieldName = InputUtils::LegacyFilterInput($_POST['newFieldName']);
-        $newFieldDesc = InputUtils::LegacyFilterInput($_POST['newFieldDesc']);
+        $newFieldType = InputUtils::legacyFilterInput($_POST['newFieldType'], 'int');
+        $newFieldName = InputUtils::legacyFilterInput($_POST['newFieldName']);
+        $newFieldDesc = InputUtils::legacyFilterInput($_POST['newFieldDesc']);
 
         if (strlen($newFieldName) == 0) {
             $bNewNameError = true;
         } else {
-            $sSQL = 'SELECT prop_Name FROM groupprop_master WHERE grp_ID = '.$iGroupID;
+            $sSQL = 'SELECT prop_Name FROM groupprop_master WHERE grp_ID = ' . $iGroupID;
             $rsPropNames = RunQuery($sSQL);
             while ($aRow = mysqli_fetch_array($rsPropNames)) {
                 if ($aRow[0] == $newFieldName) {
@@ -145,15 +145,15 @@ if (isset($_POST['SaveChanges'])) {
 
             if (!$bDuplicateNameError) {
                 // Get the new prop_ID (highest existing plus one)
-                $sSQL = 'SELECT prop_ID	FROM groupprop_master WHERE grp_ID = '.$iGroupID;
+                $sSQL = 'SELECT prop_ID	FROM groupprop_master WHERE grp_ID = ' . $iGroupID;
                 $rsPropList = RunQuery($sSQL);
                 $newRowNum = mysqli_num_rows($rsPropList) + 1;
 
                 // Find the highest existing field number in the group's table to determine the next free one.
                 // This is essentially an auto-incrementing system where deleted numbers are not re-used.
-                $tableName = 'groupprop_'.$iGroupID;
+                $tableName = 'groupprop_' . $iGroupID;
 
-                $fields = mysqli_query($cnInfoCentral, 'SELECT * FROM '.$tableName);
+                $fields = mysqli_query($cnInfoCentral, 'SELECT * FROM ' . $tableName);
                 $newFieldNum = mysqli_num_fields($fields);
 
                 // If we're inserting a new custom-list type field, create a new list and get its ID
@@ -168,7 +168,7 @@ if (isset($_POST['SaveChanges'])) {
                     }
 
                     // Insert into the lists table with an example option.
-                    $sSQL = "INSERT INTO list_lst VALUES ($newListID, 1, 1,".gettext("'Default Option'").')';
+                    $sSQL = "INSERT INTO list_lst VALUES ($newListID, 1, 1," . gettext("'Default Option'") . ')';
                     RunQuery($sSQL);
 
                     $newSpecial = "'$newListID'";
@@ -179,48 +179,48 @@ if (isset($_POST['SaveChanges'])) {
                 // Insert into the master table
                 $sSQL = "INSERT INTO `groupprop_master`
 							( `grp_ID` , `prop_ID` , `prop_Field` , `prop_Name` , `prop_Description` , `type_ID` , `prop_Special` )
-							VALUES ('".$iGroupID."', '".$newRowNum."', 'c".$newFieldNum."', '".$newFieldName."', '".$newFieldDesc."', '".$newFieldType."', $newSpecial);";
+							VALUES ('" . $iGroupID . "', '" . $newRowNum . "', 'c" . $newFieldNum . "', '" . $newFieldName . "', '" . $newFieldDesc . "', '" . $newFieldType . "', $newSpecial);";
                 RunQuery($sSQL);
 
                 // Insert into the group-specific properties table
-                $sSQL = 'ALTER TABLE `groupprop_'.$iGroupID.'` ADD `c'.$newFieldNum.'` ';
+                $sSQL = 'ALTER TABLE `groupprop_' . $iGroupID . '` ADD `c' . $newFieldNum . '` ';
 
                 switch ($newFieldType) {
-                case 1:
-                    $sSQL .= "ENUM('false', 'true')";
-                    break;
-                case 2:
-                    $sSQL .= 'DATE';
-                    break;
-                case 3:
-                    $sSQL .= 'VARCHAR(50)';
-                    break;
-                case 4:
-                    $sSQL .= 'VARCHAR(100)';
-                    break;
-                case 5:
-                    $sSQL .= 'TEXT';
-                    break;
-                case 6:
-                    $sSQL .= 'YEAR';
-                    break;
-                case 7:
-                    $sSQL .= "ENUM('winter', 'spring', 'summer', 'fall')";
-                    break;
-                case 8:
-                    $sSQL .= 'INT';
-                    break;
-                case 9:
-                    $sSQL .= 'MEDIUMINT(9)';
-                    break;
-                case 10:
-                    $sSQL .= 'DECIMAL(10,2)';
-                    break;
-                case 11:
-                    $sSQL .= 'VARCHAR(30)';
-                    break;
-                case 12:
-                    $sSQL .= 'TINYINT(4)';
+                    case 1:
+                        $sSQL .= "ENUM('false', 'true')";
+                        break;
+                    case 2:
+                        $sSQL .= 'DATE';
+                        break;
+                    case 3:
+                        $sSQL .= 'VARCHAR(50)';
+                        break;
+                    case 4:
+                        $sSQL .= 'VARCHAR(100)';
+                        break;
+                    case 5:
+                        $sSQL .= 'TEXT';
+                        break;
+                    case 6:
+                        $sSQL .= 'YEAR';
+                        break;
+                    case 7:
+                        $sSQL .= "ENUM('winter', 'spring', 'summer', 'fall')";
+                        break;
+                    case 8:
+                        $sSQL .= 'INT';
+                        break;
+                    case 9:
+                        $sSQL .= 'MEDIUMINT(9)';
+                        break;
+                    case 10:
+                        $sSQL .= 'DECIMAL(10,2)';
+                        break;
+                    case 11:
+                        $sSQL .= 'VARCHAR(30)';
+                        break;
+                    case 12:
+                        $sSQL .= 'TINYINT(4)';
                 }
 
                 $sSQL .= ' DEFAULT NULL ;';
@@ -232,7 +232,7 @@ if (isset($_POST['SaveChanges'])) {
     }
 
     // Get data for the form as it now exists..
-    $sSQL = 'SELECT * FROM groupprop_master WHERE grp_ID = '.$iGroupID.' ORDER BY prop_ID';
+    $sSQL = 'SELECT * FROM groupprop_master WHERE grp_ID = ' . $iGroupID . ' ORDER BY prop_ID';
 
     $rsPropList = RunQuery($sSQL);
     $numRows = mysqli_num_rows($rsPropList);
@@ -263,68 +263,68 @@ if (isset($_POST['SaveChanges'])) {
 <?php
 if ($numRows == 0) {
     ?>
-	<center><h2><?= gettext('No properties have been added yet') ?></h2>
-	</center>
-<?php
+    <center><h2><?= gettext('No properties have been added yet') ?></h2>
+    </center>
+    <?php
 } else {
-        ?>
-	<tr><td colspan="7">
-	<center><b><?= gettext("Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete, or 'add new' button!") ?></b></center>
-	</td></tr>
+    ?>
+    <tr><td colspan="7">
+    <center><b><?= gettext("Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete, or 'add new' button!") ?></b></center>
+    </td></tr>
 
-	<tr><td colspan="7" align="center">
-	<?php
+    <tr><td colspan="7" align="center">
+    <?php
     if ($bErrorFlag) {
-        echo '<span class="LargeText" style="color: red;">'.gettext('Invalid fields or selections. Changes not saved! Please correct and try again!').'</span>';
+        echo '<span class="LargeText" style="color: red;">' . gettext('Invalid fields or selections. Changes not saved! Please correct and try again!') . '</span>';
     } ?>
-	</td></tr>
+    </td></tr>
 
-		<tr>
-			<th></th>
-			<th></th>
-			<th><?= gettext('Type') ?></th>
-			<th><?= gettext('Name') ?></th>
-			<th><?= gettext('Description') ?></th>
-			<th><?= gettext('Special option') ?></th>
-			<th><?= gettext('Show in') ?><br><?= gettext('Person View') ?></th>
-		</tr>
+        <tr>
+            <th></th>
+            <th></th>
+            <th><?= gettext('Type') ?></th>
+            <th><?= gettext('Name') ?></th>
+            <th><?= gettext('Description') ?></th>
+            <th><?= gettext('Special option') ?></th>
+            <th><?= gettext('Show in') ?><br><?= gettext('Person View') ?></th>
+        </tr>
 
-	<?php
+    <?php
 
     for ($row = 1; $row <= $numRows; $row++) {
         ?>
-		<tr>
-			<td class="LabelColumn"><h2><b><?= $row ?></b></h2></td>
-			<td class="TextColumn" width="5%" nowrap>
-				<?php
+        <tr>
+            <td class="LabelColumn"><h2><b><?= $row ?></b></h2></td>
+            <td class="TextColumn" width="5%" nowrap>
+                <?php
                 if ($row != 1) {
-                    echo "<a href=\"GroupPropsFormRowOps.php?GroupID=$iGroupID&PropID=$row&Field=".$aFieldFields[$row].'&Action=up"><i class="fa fa-arrow-up"></i></a>';
+                    echo "<a href=\"GroupPropsFormRowOps.php?GroupID=$iGroupID&PropID=$row&Field=" . $aFieldFields[$row] . '&Action=up"><i class="fa fa-arrow-up"></i></a>';
                 }
-        if ($row < $numRows) {
-            echo "<a href=\"GroupPropsFormRowOps.php?GroupID=$iGroupID&PropID=$row&Field=".$aFieldFields[$row].'&Action=down"><i class="fa fa-arrow-down"></i></a>';
-        } ?>
-
-				<?= "<a href=\"GroupPropsFormRowOps.php?GroupID=$iGroupID&PropID=$row&Field=$aFieldFields[$row]&Action=delete\"><i class='fa fa-times' ></i></a>"; ?>
-			</td>
-			<td class="TextColumn" style="font-size:70%;">
-			<?= $aPropTypes[$aTypeFields[$row]]; ?>
-			</td>
-
-			<td class="TextColumn"><input type="text" name="<?= $row ?>name" value="<?= htmlentities(stripslashes($aNameFields[$row]), ENT_NOQUOTES, 'UTF-8') ?>" size="25" maxlength="40">
-				<?php
-                if (array_key_exists($row, $aNameErrors) && $aNameErrors[$row]) {
-                    echo '<span style="color: red;"><BR>'.gettext('You must enter a name').' </span>';
+                if ($row < $numRows) {
+                    echo "<a href=\"GroupPropsFormRowOps.php?GroupID=$iGroupID&PropID=$row&Field=" . $aFieldFields[$row] . '&Action=down"><i class="fa fa-arrow-down"></i></a>';
                 } ?>
-			</td>
 
-			<td class="TextColumn"><textarea name="<?= $row ?>desc" cols="30" rows="1" onKeyPress="LimitTextSize(this,60)"><?= htmlentities(stripslashes($aDescFields[$row]), ENT_NOQUOTES, 'UTF-8') ?></textarea></td>
+                <?= "<a href=\"GroupPropsFormRowOps.php?GroupID=$iGroupID&PropID=$row&Field=$aFieldFields[$row]&Action=delete\"><i class='fa fa-times' ></i></a>"; ?>
+            </td>
+            <td class="TextColumn" style="font-size:70%;">
+            <?= $aPropTypes[$aTypeFields[$row]]; ?>
+            </td>
 
-			<td class="TextColumn">
-			<?php
+            <td class="TextColumn"><input type="text" name="<?= $row ?>name" value="<?= htmlentities(stripslashes($aNameFields[$row]), ENT_NOQUOTES, 'UTF-8') ?>" size="25" maxlength="40">
+                <?php
+                if (array_key_exists($row, $aNameErrors) && $aNameErrors[$row]) {
+                    echo '<span style="color: red;"><BR>' . gettext('You must enter a name') . ' </span>';
+                } ?>
+            </td>
+
+            <td class="TextColumn"><textarea name="<?= $row ?>desc" cols="30" rows="1" onKeyPress="LimitTextSize(this,60)"><?= htmlentities(stripslashes($aDescFields[$row]), ENT_NOQUOTES, 'UTF-8') ?></textarea></td>
+
+            <td class="TextColumn">
+            <?php
 
             if ($aTypeFields[$row] == 9) {
-                echo '<select name="'.$row.'special">';
-                echo '<option value="0" selected>'.gettext('Select a group').'</option>';
+                echo '<select name="' . $row . 'special">';
+                echo '<option value="0" selected>' . gettext('Select a group') . '</option>';
 
                 $sSQL = 'SELECT grp_ID,grp_Name FROM group_grp ORDER BY grp_Name';
 
@@ -333,17 +333,17 @@ if ($numRows == 0) {
                 while ($aRow = mysqli_fetch_array($rsGroupList)) {
                     extract($aRow);
 
-                    echo '<option value="'.$grp_ID.'"';
+                    echo '<option value="' . $grp_ID . '"';
                     if ($aSpecialFields[$row] == $grp_ID) {
                         echo ' selected';
                     }
-                    echo '>'.$grp_Name;
+                    echo '>' . $grp_Name;
                 }
 
                 echo '</select>';
 
                 if ($aSpecialErrors[$row]) {
-                    echo '<span style="color: red;"><BR>'.gettext('You must select a group.').'</span>';
+                    echo '<span style="color: red;"><BR>' . gettext('You must select a group.') . '</span>';
                 }
             } elseif ($aTypeFields[$row] == 12) {
                 echo "<a href=\"javascript:void(0)\" onClick=\"Newwin=window.open('OptionManager.php?mode=groupcustom&ListID=$aSpecialFields[$row]','Newwin','toolbar=no,status=no,width=400,height=500')\">Edit List Options</a>";
@@ -351,79 +351,79 @@ if ($numRows == 0) {
                 echo '&nbsp;';
             } ?></td>
 
-			<td class="TextColumn">
-				<input type="checkbox" name="<?= $row ?>show" value="1"	<?php if ($aPersonDisplayFields[$row]) {
-                echo ' checked';
-            } ?>>
-			</td>
-		</tr>
-	<?php
+            <td class="TextColumn">
+                <input type="checkbox" name="<?= $row ?>show" value="1" <?php if ($aPersonDisplayFields[$row]) {
+                    echo ' checked';
+                                             } ?>>
+            </td>
+        </tr>
+        <?php
     } ?>
 
-		<tr>
-			<td colspan="7">
-			<table width="100%">
-				<tr>
-					<td width="30%"></td>
-					<td width="40%" align="center" valign="bottom">
-						<input type="submit" class="btn btn-default" value="<?= gettext('Save Changes') ?>" Name="SaveChanges">
-					</td>
-					<td width="30%"></td>
-				</tr>
-			</table>
-			</td>
-			<td>
-		</tr>
-<?php
-    } ?>
-		<tr><td colspan="7"><hr></td></tr>
-		<tr>
-			<td colspan="7">
-			<table width="100%">
-				<tr>
-					<td width="15%"></td>
-					<td valign="top">
-					<div><?= gettext('Type') ?>:</div>
-					<?php
+        <tr>
+            <td colspan="7">
+            <table width="100%">
+                <tr>
+                    <td width="30%"></td>
+                    <td width="40%" align="center" valign="bottom">
+                        <input type="submit" class="btn btn-default" value="<?= gettext('Save Changes') ?>" Name="SaveChanges">
+                    </td>
+                    <td width="30%"></td>
+                </tr>
+            </table>
+            </td>
+            <td>
+        </tr>
+    <?php
+} ?>
+        <tr><td colspan="7"><hr></td></tr>
+        <tr>
+            <td colspan="7">
+            <table width="100%">
+                <tr>
+                    <td width="15%"></td>
+                    <td valign="top">
+                    <div><?= gettext('Type') ?>:</div>
+                    <?php
                         echo '<select name="newFieldType">';
-                        for ($iOptionID = 1; $iOptionID <= count($aPropTypes); $iOptionID++) {
-                            echo '<option value="'.$iOptionID.'"';
-                            echo '>'.$aPropTypes[$iOptionID];
-                        }
+                    for ($iOptionID = 1; $iOptionID <= count($aPropTypes); $iOptionID++) {
+                        echo '<option value="' . $iOptionID . '"';
+                        echo '>' . $aPropTypes[$iOptionID];
+                    }
                         echo '</select>';
                     ?><BR>
-					<a href="<?= SystemURLs::getSupportURL() ?>"><?= gettext('Help on types..') ?></a>
-					</td>
-					<td valign="top">
-						<div><?= gettext('Name') ?>:</div>
-						<input type="text" name="newFieldName" size="25" maxlength="40">
-						<?php
+                    <a href="<?= SystemURLs::getSupportURL() ?>"><?= gettext('Help on types..') ?></a>
+                    </td>
+                    <td valign="top">
+                        <div><?= gettext('Name') ?>:</div>
+                        <input type="text" name="newFieldName" size="25" maxlength="40">
+                        <?php
                         if ($bNewNameError) {
-                            echo '<div><span style="color: red;"><BR>'.gettext('You must enter a name').'</span></div>';
+                            echo '<div><span style="color: red;"><BR>' . gettext('You must enter a name') . '</span></div>';
                         }
                         if ($bDuplicateNameError) {
-                            echo '<div><span style="color: red;"><BR>'.gettext('That field name already exists.').'</span></div>';
+                            echo '<div><span style="color: red;"><BR>' . gettext('That field name already exists.') . '</span></div>';
                         }
                         ?>
-						&nbsp;
-					</td>
-					<td valign="top">
-						<div><?= gettext('Description') ?>:</div>
-						<input type="text" name="newFieldDesc" size="30" maxlength="60">
-						&nbsp;
-					</td>
-					<td>
-						<input type="submit" class="btn btn-default" value="<?= gettext('Add New Field') ?>" Name="AddField">
-					</td>
-					<td width="15%"></td>
-				</tr>
-			</table>
-			</td>
-		</tr>
+                        &nbsp;
+                    </td>
+                    <td valign="top">
+                        <div><?= gettext('Description') ?>:</div>
+                        <input type="text" name="newFieldDesc" size="30" maxlength="60">
+                        &nbsp;
+                    </td>
+                    <td>
+                        <input type="submit" class="btn btn-default" value="<?= gettext('Add New Field') ?>" Name="AddField">
+                    </td>
+                    <td width="15%"></td>
+                </tr>
+            </table>
+            </td>
+        </tr>
 
-	</table>
+    </table>
     </div>
-	</form>
+    </form>
 
 </div>
 

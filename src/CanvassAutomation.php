@@ -1,4 +1,5 @@
 <?php
+
 /*******************************************************************************
  *
  *  filename    : CanvassAutomation.php
@@ -22,8 +23,8 @@ use ChurchCRM\Authentication\AuthenticationManager;
 $sPageTitle = gettext('Canvass Automation');
 
 // Security: User must have canvasser permission to use this form
-if (!AuthenticationManager::GetCurrentUser()->isCanvasserEnabled()) {
-    RedirectUtils::Redirect('Menu.php');
+if (!AuthenticationManager::getCurrentUser()->isCanvasserEnabled()) {
+    RedirectUtils::redirect('Menu.php');
     exit;
 }
 
@@ -32,7 +33,7 @@ if (array_key_exists('idefaultFY', $_SESSION)) {
     $iFYID = $_SESSION['idefaultFY'];
 }
 if (array_key_exists('FYID', $_POST)) {
-    $iFYID = InputUtils::LegacyFilterInput($_POST['FYID'], 'int');
+    $iFYID = InputUtils::legacyFilterInput($_POST['FYID'], 'int');
 } // Use FY from the form if it was set
 
 $_SESSION['idefaultFY'] = $iFYID; // Remember default fiscal year
@@ -86,16 +87,16 @@ if (isset($_POST['ClearAllOkToCanvass'])) {
     }
 }
 if (isset($_POST['BriefingSheets'])) {
-    RedirectUtils::Redirect('Reports/CanvassReports.php?FYID='.$iFYID.'&WhichReport=Briefing');
+    RedirectUtils::redirect('Reports/CanvassReports.php?FYID=' . $iFYID . '&WhichReport=Briefing');
 }
 if (isset($_POST['ProgressReport'])) {
-    RedirectUtils::Redirect('Reports/CanvassReports.php?FYID='.$iFYID.'&WhichReport=Progress');
+    RedirectUtils::redirect('Reports/CanvassReports.php?FYID=' . $iFYID . '&WhichReport=Progress');
 }
 if (isset($_POST['SummaryReport'])) {
-    RedirectUtils::Redirect('Reports/CanvassReports.php?FYID='.$iFYID.'&WhichReport=Summary');
+    RedirectUtils::redirect('Reports/CanvassReports.php?FYID=' . $iFYID . '&WhichReport=Summary');
 }
 if (isset($_POST['NotInterestedReport'])) {
-    RedirectUtils::Redirect('Reports/CanvassReports.php?FYID='.$iFYID.'&WhichReport=NotInterested');
+    RedirectUtils::redirect('Reports/CanvassReports.php?FYID=' . $iFYID . '&WhichReport=NotInterested');
 }
 
 require 'Include/Header.php';
@@ -107,7 +108,7 @@ if ($processNews != '') {
     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
     <strong><span style="color: red;"><?= $processNews ?></span></strong>
   </div>
-  <?php
+    <?php
 }
 ?>
 

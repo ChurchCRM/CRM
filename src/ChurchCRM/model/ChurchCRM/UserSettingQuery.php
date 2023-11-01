@@ -15,5 +15,4 @@ use ChurchCRM\Base\UserSettingQuery as BaseUserSettingQuery;
  */
 class UserSettingQuery extends BaseUserSettingQuery
 {
-
 }

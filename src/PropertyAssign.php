@@ -1,4 +1,5 @@
 <?php
+
 /*******************************************************************************
  *
  *  filename    : PropertyAssign.php
@@ -20,8 +21,8 @@ use ChurchCRM\Authentication\AuthenticationManager;
 
 // Security: User must have Manage Groups or Edit Records permissions
 // Otherwise, re-direct them to the main menu.
-if (!AuthenticationManager::GetCurrentUser()->isManageGroupsEnabled() && !AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled()) {
-    RedirectUtils::Redirect('Menu.php');
+if (!AuthenticationManager::getCurrentUser()->isManageGroupsEnabled() && !AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) {
+    RedirectUtils::redirect('Menu.php');
     exit;
 }
 
@@ -29,66 +30,60 @@ $sValue = '';
 
 // Get the new property value from the request
 if (isset($_POST['PropertyID'])) {
-    $iPropertyID = InputUtils::LegacyFilterInput($_POST['PropertyID'], 'int');
+    $iPropertyID = InputUtils::legacyFilterInput($_POST['PropertyID'], 'int');
     $sAction = 'add';
 } else {
-    $iPropertyID = InputUtils::LegacyFilterInput($_GET['PropertyID'], 'int');
+    $iPropertyID = InputUtils::legacyFilterInput($_GET['PropertyID'], 'int');
     $sAction = 'edit';
 }
 
-// Is there a PersonID in the querystring?
-if (isset($_GET['PersonID']) && AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled()) {
-    $iPersonID = InputUtils::LegacyFilterInput($_GET['PersonID'], 'int');
+if (isset($_GET['PersonID']) && AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) {
+    // Is there a PersonID in the querystring?
+    $iPersonID = InputUtils::legacyFilterInput($_GET['PersonID'], 'int');
     $iRecordID = $iPersonID;
-    $sQuerystring = '?PersonID='.$iPersonID;
+    $sQuerystring = '?PersonID=' . $iPersonID;
     $sTypeName = gettext('Person');
-    $sBackPage = 'PersonView.php?PersonID='.$iPersonID;
+    $sBackPage = 'PersonView.php?PersonID=' . $iPersonID;
 
     // Get the name of the person
-    $sSQL = 'SELECT per_FirstName, per_LastName FROM person_per WHERE per_ID = '.$iPersonID;
+    $sSQL = 'SELECT per_FirstName, per_LastName FROM person_per WHERE per_ID = ' . $iPersonID;
     $rsName = RunQuery($sSQL);
     $aRow = mysqli_fetch_array($rsName);
-    $sName = $aRow['per_LastName'].', '.$aRow['per_FirstName'];
-}
-
-// Is there a GroupID in the querystring?
-elseif (isset($_GET['GroupID']) && AuthenticationManager::GetCurrentUser()->isManageGroupsEnabled()) {
-    $iGroupID = InputUtils::LegacyFilterInput($_GET['GroupID'], 'int');
+    $sName = $aRow['per_LastName'] . ', ' . $aRow['per_FirstName'];
+} elseif (isset($_GET['GroupID']) && AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) {
+    // Is there a GroupID in the querystring?
+    $iGroupID = InputUtils::legacyFilterInput($_GET['GroupID'], 'int');
     $iRecordID = $iGroupID;
-    $sQuerystring = '?GroupID='.$iGroupID;
+    $sQuerystring = '?GroupID=' . $iGroupID;
     $sTypeName = gettext('Group');
-    $sBackPage = 'GroupView.php?GroupID='.$iGroupID;
+    $sBackPage = 'GroupView.php?GroupID=' . $iGroupID;
 
     // Get the name of the group
-    $sSQL = 'SELECT grp_Name FROM group_grp WHERE grp_ID = '.$iGroupID;
+    $sSQL = 'SELECT grp_Name FROM group_grp WHERE grp_ID = ' . $iGroupID;
     $rsName = RunQuery($sSQL);
     $aRow = mysqli_fetch_array($rsName);
     $sName = $aRow['grp_Name'];
-}
-
-// Is there a FamilyID in the querystring?
-elseif (isset($_GET['FamilyID']) && AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled()) {
-    $iFamilyID = InputUtils::LegacyFilterInput($_GET['FamilyID'], 'int');
+} elseif (isset($_GET['FamilyID']) && AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) {
+    // Is there a FamilyID in the querystring?
+    $iFamilyID = InputUtils::legacyFilterInput($_GET['FamilyID'], 'int');
     $iRecordID = $iFamilyID;
-    $sQuerystring = '?FamilyID='.$iFamilyID;
+    $sQuerystring = '?FamilyID=' . $iFamilyID;
     $sTypeName = gettext('Family');
-    $sBackPage = 'v2/family/'.$iFamilyID;
+    $sBackPage = 'v2/family/' . $iFamilyID;
 
     // Get the name of the family
-    $sSQL = 'SELECT fam_Name FROM family_fam WHERE fam_ID = '.$iFamilyID;
+    $sSQL = 'SELECT fam_Name FROM family_fam WHERE fam_ID = ' . $iFamilyID;
     $rsName = RunQuery($sSQL);
     $aRow = mysqli_fetch_array($rsName);
     $sName = $aRow['fam_Name'];
-}
-
-// Somebody tried to call the script with no options
-else {
-    RedirectUtils::Redirect('Menu.php');
+} else {
+    // Somebody tried to call the script with no options
+    RedirectUtils::redirect('Menu.php');
 }
 
 // If no property, return to previous page
 if (!$iPropertyID) {
-    RedirectUtils::Redirect("$sBackPage");
+    RedirectUtils::redirect("$sBackPage");
 }
 
 function UpdateProperty($iRecordID, $sValue, $iPropertyID, $sAction)
@@ -116,7 +111,7 @@ if (isset($_POST['SecondPass'])) {
     $sAction = $_POST['Action'];
 
     // Get the value
-    $sValue = InputUtils::LegacyFilterInput($_POST['Value']);
+    $sValue = InputUtils::legacyFilterInput($_POST['Value']);
 
     // Update the property
     UpdateProperty($iRecordID, $sValue, $iPropertyID, $sAction);
@@ -125,11 +120,11 @@ if (isset($_POST['SecondPass'])) {
     $_SESSION['sGlobalMessage'] = gettext('Property successfully assigned.');
 
     // Back to the PersonView
-    RedirectUtils::Redirect($sBackPage);
+    RedirectUtils::redirect($sBackPage);
 }
 
 // Get the name of the property
-$sSQL = 'SELECT pro_Name, pro_Prompt FROM property_pro WHERE pro_ID = '.$iPropertyID;
+$sSQL = 'SELECT pro_Name, pro_Prompt FROM property_pro WHERE pro_ID = ' . $iPropertyID;
 $rsProperty = RunQuery($sSQL);
 $aRow = mysqli_fetch_array($rsProperty);
 $sPropertyName = $aRow['pro_Name'];
@@ -143,38 +138,38 @@ if (strlen($sPrompt) == 0) {
     $_SESSION['sGlobalMessage'] = gettext('Property successfully assigned.');
 
     // Back to the PersonView
-    RedirectUtils::Redirect($sBackPage);
+    RedirectUtils::redirect($sBackPage);
 }
 
 // If we're editing, get the value
 if ($sAction == 'edit') {
-    $sSQL = 'SELECT r2p_Value FROM record2property_r2p WHERE r2p_pro_ID = '.$iPropertyID.' AND r2p_record_ID = '.$iRecordID;
+    $sSQL = 'SELECT r2p_Value FROM record2property_r2p WHERE r2p_pro_ID = ' . $iPropertyID . ' AND r2p_record_ID = ' . $iRecordID;
     $rsValue = RunQuery($sSQL);
     $aRow = mysqli_fetch_array($rsValue);
     $sValue = $aRow['r2p_Value'];
 }
 
 // Set the page title and include HTML header
-$sPageTitle = $sTypeName.' : '.gettext(' Property Assignment');
+$sPageTitle = $sTypeName . ' : ' . gettext(' Property Assignment');
 require 'Include/Header.php';
 ?>
 
-<form method="post" action="PropertyAssign.php<?= $sQuerystring.'&PropertyID='.$iPropertyID ?>">
+<form method="post" action="PropertyAssign.php<?= $sQuerystring . '&PropertyID=' . $iPropertyID ?>">
 <input type="hidden" name="SecondPass" value="True">
 <input type="hidden" name="Action" value="<?= $sAction ?>">
 <div class="table-responsive">
 <table class="table table-striped">
-	<tr>
-		<td align="right"><b><?= $sTypeName ?>:</b></td>
-		<td><?= $sName ?></td>
-	</tr>
-	<tr>
-		<td align="right"><b><?= gettext('Assigning') ?>:</b></td>
-		<td><?php echo $sPropertyName ?></td>
+    <tr>
+        <td align="right"><b><?= $sTypeName ?>:</b></td>
+        <td><?= $sName ?></td>
+    </tr>
+    <tr>
+        <td align="right"><b><?= gettext('Assigning') ?>:</b></td>
+        <td><?php echo $sPropertyName ?></td>
 <?php if (strlen($sPrompt)) {
     ?>
-		<tr>
-			<td align="right" valign="top">
+        <tr>
+            <td align="right" valign="top">
                 <b><?= gettext('Value') ?>:</b>
             </td>
             <td>
@@ -182,17 +177,17 @@ require 'Include/Header.php';
                 <p><br/></p>
                 <textarea name="Value" cols="60" rows="10"><?= $sValue ?></textarea>
             </td>
-		</tr>
-<?php
+        </tr>
+    <?php
 } ?>
 </table>
 </div>
 
 <p align="center"><input type="submit" class="btn btn-primary" <?= 'value="'; if ($sAction == 'add') {
         echo gettext('Assign');
-    } else {
-        echo gettext('Update');
-    } echo '"' ?> name="Submit"></p>
+                                                               } else {
+                                                                   echo gettext('Update');
+                                                               } echo '"' ?> name="Submit"></p>
 
 </form>
 

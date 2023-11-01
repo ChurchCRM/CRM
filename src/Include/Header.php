@@ -31,16 +31,16 @@ $MenuFirst = 1;
   <?php require 'Header-HTML-Scripts.php'; ?>
 </head>
 
-<body class="hold-transition <?= AuthenticationManager::GetCurrentUser()->getStyle() ?> sidebar-mini">
+<body class="hold-transition <?= AuthenticationManager::getCurrentUser()->getStyle() ?> sidebar-mini">
 <!-- Site wrapper -->
 <div class="wrapper">
   <?php
-  Header_modals();
-  Header_body_scripts();
+    Header_modals();
+    Header_body_scripts();
 
-  $loggedInUserPhoto = SystemURLs::getRootPath().'/api/person/'.AuthenticationManager::GetCurrentUser()->getId().'/thumbnail';
-  $MenuFirst = 1;
-  ?>
+    $loggedInUserPhoto = SystemURLs::getRootPath() . '/api/person/' . AuthenticationManager::getCurrentUser()->getId() . '/thumbnail';
+    $MenuFirst = 1;
+    ?>
 
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
         <!-- Left navbar links -->
@@ -89,9 +89,9 @@ $MenuFirst = 1;
                     <a href="https://poeditor.com/join/project?hash=RABdnDSqAt" class="dropdown-item">
                         <i class="fas fa-people-carry"></i> <?= gettext("Help translate this project")?>
                     </a>
-                    <?php if (AuthenticationManager::GetCurrentUser()->isAdmin()) { ?>
+                    <?php if (AuthenticationManager::getCurrentUser()->isAdmin()) { ?>
                     <div class="dropdown-divider"></div>
-                    <a href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= AuthenticationManager::GetCurrentUser()->getPersonId() ?>" class="dropdown-item">
+                    <a href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= AuthenticationManager::getCurrentUser()->getPersonId() ?>" class="dropdown-item">
                         <i class="fas fa-user-edit"></i> <span id="translationInfo"></span>
                     </a>
                     <?php } ?>
@@ -102,7 +102,7 @@ $MenuFirst = 1;
             <li class="nav-item dropdown show">
                 <a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="true">
                     <i class="fas fa-shopping-cart"></i>
-                    <span class="badge badge-info navbar-badge"><?= Cart::CountPeople() ?></span>
+                    <span class="badge badge-info navbar-badge"><?= Cart::countPeople() ?></span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right" style="left: inherit; right: 0px;">
                     <span id="cart-dropdown-menu"></span>
@@ -148,16 +148,16 @@ $MenuFirst = 1;
             <!-- Support Dropdown Menu -->
             <li class="nav-item dropdown show">
                 <a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="true">
-                    <i class="fas fa-user"></i> <?= AuthenticationManager::GetCurrentUser()->getName() ?>
+                    <i class="fas fa-user"></i> <?= AuthenticationManager::getCurrentUser()->getName() ?>
                 </a>
                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right" style="left: inherit; right: 0px;">
-                    <a href="<?= SystemURLs::getRootPath()?>/PersonView.php?PersonID=<?= AuthenticationManager::GetCurrentUser()->getPersonId() ?>" class="dropdown-item">
+                    <a href="<?= SystemURLs::getRootPath()?>/PersonView.php?PersonID=<?= AuthenticationManager::getCurrentUser()->getPersonId() ?>" class="dropdown-item">
                       <i class="fa fa-home"></i> <?= gettext("Profile") ?></a>
                   <a href="<?= SystemURLs::getRootPath() ?>/v2/user/current/changepassword" class="dropdown-item">
                       <i class="fa fa-key"></i> <?= gettext('Change Password') ?></a>
-                  <a href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= AuthenticationManager::GetCurrentUser()->getPersonId() ?>" class="dropdown-item">
+                  <a href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= AuthenticationManager::getCurrentUser()->getPersonId() ?>" class="dropdown-item">
                       <i class="fas fa-cogs"></i> <?= gettext('Change Settings') ?></a>
-                  <?php if (LocalAuthentication::GetIsTwoFactorAuthSupported()) { ?>
+                  <?php if (LocalAuthentication::getIsTwoFactorAuthSupported()) { ?>
                       <div class="dropdown-divider"></div>
                       <a href="<?= SystemURLs::getRootPath() ?>/v2/user/current/enroll2fa" class="dropdown-item">
                           <i class="fa fa-gear"></i> <?= gettext("Manage 2 Factor Authentication") ?></a>
@@ -187,12 +187,12 @@ $MenuFirst = 1;
           <img src="<?= SystemURLs::getRootPath() ?>/Images/CRM_50x50.png" alt="ChurchCRM Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
           <!-- logo for regular state and mobile devices -->
           <?php
-          $headerHTML = '<b>Church</b>CRM';
-          $sHeader = SystemConfig::getValue("sHeader");
-          if (!empty($sHeader)) {
-              $headerHTML = html_entity_decode($sHeader, ENT_QUOTES);
-          }
-          ?>
+            $headerHTML = '<b>Church</b>CRM';
+            $sHeader = SystemConfig::getValue("sHeader");
+            if (!empty($sHeader)) {
+                $headerHTML = html_entity_decode($sHeader, ENT_QUOTES);
+            }
+            ?>
           <span class="brand-text font-weight-light"><?= $headerHTML ?></span>
       </a>
     <!-- sidebar: style can be found in sidebar.less -->
@@ -210,7 +210,7 @@ $MenuFirst = 1;
 
         <nav class="mt-2">
             <ul class="nav nav-pills  nav-child-indent nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-        <?php MenuRenderer::RenderMenu(); ?>
+        <?php MenuRenderer::renderMenu(); ?>
             </ul>
         </nav>
     </div>

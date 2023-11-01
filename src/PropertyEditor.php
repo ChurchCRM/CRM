@@ -1,4 +1,5 @@
 <?php
+
 /*******************************************************************************
  *
  *  filename    : PropertyEditor.php
@@ -17,8 +18,8 @@ use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Authentication\AuthenticationManager;
 
 // Security: User must have property and classification editing permission
-if (!AuthenticationManager::GetCurrentUser()->isMenuOptionsEnabled()) {
-    RedirectUtils::Redirect('Menu.php');
+if (!AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled()) {
+    RedirectUtils::redirect('Menu.php');
     exit;
 }
 
@@ -28,11 +29,11 @@ $sNameError = '';
 //Get the PropertyID
 $iPropertyID = 0;
 if (array_key_exists('PropertyID', $_GET)) {
-    $iPropertyID = InputUtils::LegacyFilterInput($_GET['PropertyID'], 'int');
+    $iPropertyID = InputUtils::legacyFilterInput($_GET['PropertyID'], 'int');
 }
 
 //Get the Type
-$sType = InputUtils::LegacyFilterInput($_GET['Type'], 'char', 1);
+$sType = InputUtils::legacyFilterInput($_GET['Type'], 'char', 1);
 
 //Based on the type, set the TypeName
 switch ($sType) {
@@ -49,56 +50,55 @@ switch ($sType) {
         break;
 
     default:
-        RedirectUtils::Redirect('Menu.php');
+        RedirectUtils::redirect('Menu.php');
         exit;
         break;
 }
 
 //Set the page title
-$sPageTitle = $sTypeName.' '.gettext('Property Editor');
+$sPageTitle = $sTypeName . ' ' . gettext('Property Editor');
 
 $bError = false;
 $iType = 0;
 
 //Was the form submitted?
 if (isset($_POST['Submit'])) {
-    $sName = addslashes(InputUtils::LegacyFilterInput($_POST['Name']));
-    $sDescription = addslashes(InputUtils::LegacyFilterInput($_POST['Description']));
-    $iClass = InputUtils::LegacyFilterInput($_POST['Class'], 'int');
-    $sPrompt = InputUtils::LegacyFilterInput($_POST['Prompt']);
+    $sName = addslashes(InputUtils::legacyFilterInput($_POST['Name']));
+    $sDescription = addslashes(InputUtils::legacyFilterInput($_POST['Description']));
+    $iClass = InputUtils::legacyFilterInput($_POST['Class'], 'int');
+    $sPrompt = InputUtils::legacyFilterInput($_POST['Prompt']);
 
     //Did they enter a name?
     if (strlen($sName) < 1) {
-        $sNameError = '<br><span style="color: red;">'.gettext('You must enter a name').'</span>';
+        $sNameError = '<br><span style="color: red;">' . gettext('You must enter a name') . '</span>';
         $bError = true;
     }
 
     //Did they select a Type
     if (strlen($iClass) < 1) {
-        $sClassError = '<br><span style="color: red;">'.gettext('You must select a type').'</span>';
+        $sClassError = '<br><span style="color: red;">' . gettext('You must select a type') . '</span>';
         $bError = true;
     }
 
     //If no errors, let's update
     if (!$bError) {
-
         //Vary the SQL depending on if we're adding or editing
         if ($iPropertyID == 0) {
-            $sSQL = "INSERT INTO property_pro (pro_Class,pro_prt_ID,pro_Name,pro_Description,pro_Prompt) VALUES ('".$sType."',".$iClass.",'".$sName."','".$sDescription."','".$sPrompt."')";
+            $sSQL = "INSERT INTO property_pro (pro_Class,pro_prt_ID,pro_Name,pro_Description,pro_Prompt) VALUES ('" . $sType . "'," . $iClass . ",'" . $sName . "','" . $sDescription . "','" . $sPrompt . "')";
         } else {
-            $sSQL = 'UPDATE property_pro SET pro_prt_ID = '.$iClass.", pro_Name = '".$sName."', pro_Description = '".$sDescription."', pro_Prompt = '".$sPrompt."' WHERE pro_ID = ".$iPropertyID;
+            $sSQL = 'UPDATE property_pro SET pro_prt_ID = ' . $iClass . ", pro_Name = '" . $sName . "', pro_Description = '" . $sDescription . "', pro_Prompt = '" . $sPrompt . "' WHERE pro_ID = " . $iPropertyID;
         }
 
         //Execute the SQL
         RunQuery($sSQL);
 
         //Route back to the list
-        RedirectUtils::Redirect('PropertyList.php?Type='.$sType);
+        RedirectUtils::redirect('PropertyList.php?Type=' . $sType);
     }
 } else {
     if ($iPropertyID != 0) {
         //Get the data on this property
-        $sSQL = 'SELECT * FROM property_pro WHERE pro_ID = '.$iPropertyID;
+        $sSQL = 'SELECT * FROM property_pro WHERE pro_ID = ' . $iPropertyID;
         $rsProperty = mysqli_fetch_array(RunQuery($sSQL));
         extract($rsProperty);
 
@@ -116,7 +116,7 @@ if (isset($_POST['Submit'])) {
 }
 
 //Get the Property Types
-$sSQL = "SELECT * FROM propertytype_prt WHERE prt_Class = '".$sType."' ORDER BY prt_Name";
+$sSQL = "SELECT * FROM propertytype_prt WHERE prt_Class = '" . $sType . "' ORDER BY prt_Name";
 $rsPropertyTypes = RunQuery($sSQL);
 
 require 'Include/Header.php';
@@ -134,11 +134,11 @@ require 'Include/Header.php';
                     while ($aRow = mysqli_fetch_array($rsPropertyTypes)) {
                         extract($aRow);
 
-                        echo '<option value="'.$prt_ID.'"';
+                        echo '<option value="' . $prt_ID . '"';
                         if ($iType == $prt_ID) {
                             echo 'selected';
                         }
-                        echo '>'.$prt_Name.'</option>';
+                        echo '>' . $prt_Name . '</option>';
                     }
                     ?>
                 </select>

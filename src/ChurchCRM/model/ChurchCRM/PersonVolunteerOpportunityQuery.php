@@ -16,5 +16,4 @@ use ChurchCRM\Base\PersonVolunteerOpportunityQuery as BasePersonVolunteerOpportu
  */
 class PersonVolunteerOpportunityQuery extends BasePersonVolunteerOpportunityQuery
 {
-
 }

@@ -16,5 +16,4 @@ use ChurchCRM\Base\EventAudience as BaseEventAudience;
  */
 class EventAudience extends BaseEventAudience
 {
-
 }

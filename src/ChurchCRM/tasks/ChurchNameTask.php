@@ -1,30 +1,35 @@
 <?php
+
 namespace ChurchCRM\Tasks;
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Authentication\AuthenticationManager;
 
-class ChurchNameTask implements iTask
+class ChurchNameTask implements TaskInterface
 {
-  public function isActive(): bool
-  {
-    return AuthenticationManager::GetCurrentUser()->isAdmin() && SystemConfig::getValue('sChurchName') == 'Some Church';
-  }
+    public function isActive(): bool
+    {
+        return AuthenticationManager::getCurrentUser()->isAdmin() && SystemConfig::getValue('sChurchName') == 'Some Church';
+    }
 
-  public function isAdmin(): bool {
-    return true;
-  }
+    public function isAdmin(): bool
+    {
+        return true;
+    }
 
-  public function getLink(): string {
-    return SystemURLs::getRootPath() . '/SystemSettings.php';
-  }
+    public function getLink(): string
+    {
+        return SystemURLs::getRootPath() . '/SystemSettings.php';
+    }
 
-  public function getTitle(): string {
-    return gettext('Update Church Info');
-  }
+    public function getTitle(): string
+    {
+        return gettext('Update Church Info');
+    }
 
-  public function getDesc(): string {
-    return gettext("Church Name is set to default value");
-  }
+    public function getDesc(): string
+    {
+        return gettext("Church Name is set to default value");
+    }
 }

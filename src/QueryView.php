@@ -1,4 +1,5 @@
 <?php
+
 /*******************************************************************************
  *
  *  filename    : QueryView.php
@@ -22,12 +23,12 @@ use ChurchCRM\Authentication\AuthenticationManager;
 $sPageTitle = gettext('Query View');
 
 //Get the QueryID from the querystring
-$iQueryID = InputUtils::LegacyFilterInput($_GET['QueryID'], 'int');
+$iQueryID = InputUtils::legacyFilterInput($_GET['QueryID'], 'int');
 
 $aFinanceQueries = explode(',', SystemConfig::getValue('aFinanceQueries'));
 
-if (!AuthenticationManager::GetCurrentUser()->isFinanceEnabled() && in_array($iQueryID, $aFinanceQueries)) {
-    RedirectUtils::Redirect('Menu.php');
+if (!AuthenticationManager::getCurrentUser()->isFinanceEnabled() && in_array($iQueryID, $aFinanceQueries)) {
+    RedirectUtils::redirect('Menu.php');
     exit;
 }
 
@@ -35,12 +36,12 @@ if (!AuthenticationManager::GetCurrentUser()->isFinanceEnabled() && in_array($iQ
 require 'Include/Header.php';
 
 //Get the query information
-$sSQL = 'SELECT * FROM query_qry WHERE qry_ID = '.$iQueryID;
+$sSQL = 'SELECT * FROM query_qry WHERE qry_ID = ' . $iQueryID;
 $rsSQL = RunQuery($sSQL);
 extract(mysqli_fetch_array($rsSQL));
 
 //Get the parameters for this query
-$sSQL = 'SELECT * FROM queryparameters_qrp WHERE qrp_qry_ID = '.$iQueryID.' ORDER BY qrp_ID';
+$sSQL = 'SELECT * FROM queryparameters_qrp WHERE qrp_qry_ID = ' . $iQueryID . ' ORDER BY qrp_ID';
 $rsParameters = RunQuery($sSQL);
 
 //If the form was submitted or there are no parameters, run the query
@@ -91,15 +92,12 @@ function ValidateInput()
         if ($qrp_Required && empty($_POST[$qrp_Alias])) {
             $bError = true;
             $aErrorText[$qrp_Alias] = gettext('This value is required.');
-        }
-
-        //Assuming there was no error above...
-        else {
+        } else {
+            //Assuming there was no error above...
             //Validate differently depending on the contents of the qrp_Validation field
             switch ($qrp_Validation) {
                 //Numeric validation
                 case 'n':
-
                     //Is it a number?
                     if (!is_numeric($_POST[$qrp_Alias])) {
                         $bError = true;
@@ -108,33 +106,30 @@ function ValidateInput()
                         //Is it more than the minimum?
                         if ($_POST[$qrp_Alias] < $qrp_NumericMin) {
                             $bError = true;
-                            $aErrorText[$qrp_Alias] = gettext('This value must be at least ').$qrp_NumericMin;
-                        }
-                        //Is it less than the maximum?
-                        elseif ($_POST[$qrp_Alias] > $qrp_NumericMax) {
+                            $aErrorText[$qrp_Alias] = gettext('This value must be at least ') . $qrp_NumericMin;
+                        } elseif ($_POST[$qrp_Alias] > $qrp_NumericMax) {
+                            //Is it less than the maximum?
                             $bError = true;
-                            $aErrorText[$qrp_Alias] = gettext('This value cannot be more than ').$qrp_NumericMax;
+                            $aErrorText[$qrp_Alias] = gettext('This value cannot be more than ') . $qrp_NumericMax;
                         }
                     }
 
-                    $vPOST[$qrp_Alias] = InputUtils::LegacyFilterInput($_POST[$qrp_Alias], 'int');
+                    $vPOST[$qrp_Alias] = InputUtils::legacyFilterInput($_POST[$qrp_Alias], 'int');
                     break;
 
                 //Alpha validation
                 case 'a':
-
                     //Is the length less than the maximum?
                     if (strlen($_POST[$qrp_Alias]) > $qrp_AlphaMaxLength) {
                         $bError = true;
-                        $aErrorText[$qrp_Alias] = gettext('This value cannot be more than ').$qrp_AlphaMaxLength.gettext(' characters long');
-                    }
-                    //is the length more than the minimum?
-                    elseif (strlen($_POST[$qrp_Alias]) < $qrp_AlphaMinLength) {
+                        $aErrorText[$qrp_Alias] = gettext('This value cannot be more than ') . $qrp_AlphaMaxLength . gettext(' characters long');
+                    } elseif (strlen($_POST[$qrp_Alias]) < $qrp_AlphaMinLength) {
+                        //is the length more than the minimum?
                         $bError = true;
-                        $aErrorText[$qrp_Alias] = gettext('This value cannot be less than ').$qrp_AlphaMinLength.gettext(' characters long');
+                        $aErrorText[$qrp_Alias] = gettext('This value cannot be less than ') . $qrp_AlphaMinLength . gettext(' characters long');
                     }
 
-                    $vPOST[$qrp_Alias] = InputUtils::LegacyFilterInput($_POST[$qrp_Alias]);
+                    $vPOST[$qrp_Alias] = InputUtils::legacyFilterInput($_POST[$qrp_Alias]);
                     break;
 
                 default:
@@ -164,7 +159,7 @@ function ProcessSQL()
 
         //Replace the placeholder with the parameter value
         $qrp_Value = is_array($vPOST[$qrp_Alias]) ? implode(',', $vPOST[$qrp_Alias]) : $vPOST[$qrp_Alias];
-        $qry_SQL = str_replace('~'.$qrp_Alias.'~', $qrp_Value, $qry_SQL);
+        $qry_SQL = str_replace('~' . $qrp_Alias . '~', $qrp_Value, $qry_SQL);
     }
 }
 
@@ -178,7 +173,7 @@ function DisplayRecordCount()
     if ($qry_Count == 1) {
         //Display the count of the recordset
         echo '<p align="center">';
-        echo mysqli_num_rows($rsQueryResults).gettext(' record(s) returned');
+        echo mysqli_num_rows($rsQueryResults) . gettext(' record(s) returned');
         echo '</p>';
     }
 }
@@ -200,7 +195,7 @@ function DoQuery()
 
     <div class="card-body">
         <p class="text-right">
-            <?= $qry_Count ? mysqli_num_rows($rsQueryResults).gettext(' record(s) returned') : ''; ?>
+            <?= $qry_Count ? mysqli_num_rows($rsQueryResults) . gettext(' record(s) returned') : ''; ?>
         </p>
 
         <div class="table-responsive">
@@ -208,25 +203,25 @@ function DoQuery()
             <thead>
                 <?php
                     //Loop through the fields and write the header row
-                    for ($iCount = 0; $iCount < mysqli_num_fields($rsQueryResults); $iCount++) {
-                        //If this field is called "AddToCart", provision a headerless column to hold the cart action buttons
-                        $fieldInfo = mysqli_fetch_field_direct($rsQueryResults, $iCount);
-                        if ($fieldInfo->name != 'AddToCart') {
-                            echo '<th>'.$fieldInfo->name.'</th>';
-                        } else {
-                            echo '<th></th>';
-                        }
-                    } ?>
+                for ($iCount = 0; $iCount < mysqli_num_fields($rsQueryResults); $iCount++) {
+                    //If this field is called "AddToCart", provision a headerless column to hold the cart action buttons
+                    $fieldInfo = mysqli_fetch_field_direct($rsQueryResults, $iCount);
+                    if ($fieldInfo->name != 'AddToCart') {
+                        echo '<th>' . $fieldInfo->name . '</th>';
+                    } else {
+                        echo '<th></th>';
+                    }
+                } ?>
             </thead>
             <tbody>
-<?php
+    <?php
     $aAddToCartIDs = [];
 
     while ($aRow = mysqli_fetch_array($rsQueryResults)) {
         //Alternate the background color of the row
         $sRowClass = AlternateRowStyle($sRowClass);
 
-        echo '<tr class="'.$sRowClass.'">';
+        echo '<tr class="' . $sRowClass . '">';
 
         //Loop through the fields and write each one
         for ($iCount = 0; $iCount < mysqli_num_fields($rsQueryResults); $iCount++) {
@@ -245,11 +240,10 @@ function DoQuery()
                 <?php
 
                 $aAddToCartIDs[] = $aRow[$iCount];
-            }
-            //...otherwise just render the field
-            else {
+            } else {
+                //...otherwise just render the field
                 //Write the actual value of this row
-                echo '<td>'.$aRow[$iCount].'</td>';
+                echo '<td>' . $aRow[$iCount] . '</td>';
             }
         }
 
@@ -263,7 +257,6 @@ function DoQuery()
     <div class="card-footer">
         <p>
         <?php if (count($aAddToCartIDs)) { ?>
-
             <div class="col-sm-offset-1">
                 <input type="hidden" value="<?= implode(',', $aAddToCartIDs) ?>" name="BulkAddToCart">
                 <button type="button" id="addResultsToCart" class="btn btn-success" > <?= gettext('Add Results to Cart') ?></button>
@@ -287,7 +280,7 @@ function DoQuery()
         </p>
 
         <p class="text-right">
-            <?= '<a href="QueryView.php?QueryID='.$iQueryID.'">'.gettext('Run Query Again').'</a>'; ?>
+            <?= '<a href="QueryView.php?QueryID=' . $iQueryID . '">' . gettext('Run Query Again') . '</a>'; ?>
         </p>
     </div>
 
@@ -301,7 +294,7 @@ function DoQuery()
         <code><?= str_replace(chr(13), '<br>', htmlspecialchars($qry_SQL)); ?></code>
     </div>
 </div>
-<?php
+    <?php
 }
 
 
@@ -316,7 +309,7 @@ function DisplayQueryInfo()
         <p><?= gettext($qry_Description); ?></p>
     </div>
 </div>
-<?php
+    <?php
 }
 
 
@@ -333,22 +326,22 @@ function getQueryFormInput($queryParameters)
     switch ($qrp_Type) {
         //Standard INPUT box
         case 0:
-            $input = '<input size="'.$qrp_InputBoxSize.'" name="'.$qrp_Alias.'" type="text" value="'.$qrp_Default.'" class="form-control">';
+            $input = '<input size="' . $qrp_InputBoxSize . '" name="' . $qrp_Alias . '" type="text" value="' . $qrp_Default . '" class="form-control">';
             break;
 
         //SELECT box with OPTION tags supplied in the queryparameteroptions_qpo table
         case 1:
             //Get the query parameter options for this parameter
-            $sSQL = 'SELECT * FROM queryparameteroptions_qpo WHERE qpo_qrp_ID = '.$qrp_ID;
+            $sSQL = 'SELECT * FROM queryparameteroptions_qpo WHERE qpo_qrp_ID = ' . $qrp_ID;
             $rsParameterOptions = RunQuery($sSQL);
 
-            $input = '<select name="'.$qrp_Alias.'" class="form-control">';
-            $input .= '<option disabled selected value> -- ' . gettext("select an option"). ' -- </option>';
+            $input = '<select name="' . $qrp_Alias . '" class="form-control">';
+            $input .= '<option disabled selected value> -- ' . gettext("select an option") . ' -- </option>';
 
             //Loop through the parameter options
             while ($ThisRow = mysqli_fetch_array($rsParameterOptions)) {
                 extract($ThisRow);
-                $input .= '<option value="'.$qpo_Value.'">'.gettext($qpo_Display).'</option>';
+                $input .= '<option value="' . $qpo_Value . '">' . gettext($qpo_Display) . '</option>';
             }
 
             $input .= '</select>';
@@ -359,12 +352,12 @@ function getQueryFormInput($queryParameters)
             //Run the SQL to get the options
             $rsParameterOptions = RunQuery($qrp_OptionSQL);
 
-            $input .= '<select name="'.$qrp_Alias.'" class="form-control">';
+            $input .= '<select name="' . $qrp_Alias . '" class="form-control">';
             $input .= '<option disabled selected value> -- select an option -- </option>';
 
             while ($ThisRow = mysqli_fetch_array($rsParameterOptions)) {
                 extract($ThisRow);
-                $input .= '<option value="'.$Value.'">'.$Display.'</option>';
+                $input .= '<option value="' . $Value . '">' . $Display . '</option>';
             }
 
             $input .= '</select>';
@@ -374,12 +367,12 @@ function getQueryFormInput($queryParameters)
             //Run the SQL to get the options
             $rsParameterOptions = RunQuery($qrp_OptionSQL);
 
-            $input .= '<select name="'.$qrp_Alias.'[]" class="form-control" size="10" multiple="multiple">';
+            $input .= '<select name="' . $qrp_Alias . '[]" class="form-control" size="10" multiple="multiple">';
             $input .= '<option disabled selected value> -- select an option -- </option>';
 
             while ($ThisRow = mysqli_fetch_array($rsParameterOptions)) {
                 extract($ThisRow);
-                $input .= '<option value="'.$Value.'">'.$Display.'</option>';
+                $input .= '<option value="' . $Value . '">' . $Display . '</option>';
             }
 
             $input .= '</select>';
@@ -410,11 +403,11 @@ function DisplayParameterForm()
             <div class="card-body">
 
                 <form method="post" action="QueryView.php?QueryID=<?= $iQueryID ?>">
-<?php
+    <?php
 //Loop through the parameters and display an entry box for each one
-if (mysqli_num_rows($rsParameters)) {
-    mysqli_data_seek($rsParameters, 0);
-}
+    if (mysqli_num_rows($rsParameters)) {
+        mysqli_data_seek($rsParameters, 0);
+    }
     while ($aRow = mysqli_fetch_array($rsParameters)) {
         echo getQueryFormInput($aRow);
     } ?>
@@ -431,7 +424,7 @@ if (mysqli_num_rows($rsParameters)) {
 
 </div>
 
-<?php
+    <?php
 }
 
 require 'Include/Footer.php';

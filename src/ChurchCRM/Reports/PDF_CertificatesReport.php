@@ -2,7 +2,7 @@
 
 namespace ChurchCRM\Reports;
 
-class PDF_CertificatesReport extends ChurchInfoReport
+class PdfCertificatesReport extends ChurchInfoReport
 {
     // Constructor
     public function __construct()
@@ -14,19 +14,19 @@ class PDF_CertificatesReport extends ChurchInfoReport
         $this->SetAutoPageBreak(true, 25);
     }
 
-    public function AddPage($orientation = '', $format = '', $rotation=0)
+    public function addPage($orientation = '', $format = '', $rotation = 0)
     {
         global $fr_title, $fr_description, $curY;
 
-        parent::AddPage($orientation, $format, $rotation);
+        parent::addPage($orientation, $format, $rotation);
 
         $this->SetFont('Times', 'B', 16);
-        $this->Write(8, $fr_title."\n");
+        $this->Write(8, $fr_title . "\n");
         $curY += 8;
-        $this->Write(8, $fr_description."\n\n");
+        $this->Write(8, $fr_description . "\n\n");
         $curY += 8;
         $this->SetFont('Times', 'B', 36);
-        $this->Write(8, gettext('Certificate of Ownership')."\n\n");
+        $this->Write(8, gettext('Certificate of Ownership') . "\n\n");
         $curY += 8;
         $this->SetFont('Times', '', 10);
     }

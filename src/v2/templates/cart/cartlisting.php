@@ -25,7 +25,7 @@ $ListTitleText = gettext('Your cart contains') . ' ' . count($cartPeople) . ' ' 
         <?php
         /* @var $Person ChurchCRM\Person */
         foreach ($cartPeople as $Person) {
-          ?>
+            ?>
           <tr>
             <td>
               <img src="<?= $Person->getThumbnailURL(); ?>?>" class="direct-chat-img initials-image">&nbsp

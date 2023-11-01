@@ -1,4 +1,5 @@
 <?php
+
 /*******************************************************************************
  *
  *  filename    : Include/Footer.php
@@ -15,7 +16,7 @@ use ChurchCRM\Bootstrapper;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\SystemService;
 
-$isAdmin = AuthenticationManager::GetCurrentUser()->isAdmin();
+$isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
 ?>
 </div>
 </section><!-- /.content -->
@@ -41,11 +42,11 @@ $isAdmin = AuthenticationManager::GetCurrentUser()->isAdmin();
                     <!-- Task item -->
                     <div class="mb-1">
                         <a target="blank" href="<?= $task['link'] ?>">
-                            <i class="menu-icon fa fa-fw <?= $task['admin'] ? 'fa-lock' :'fa-info' ?>"></i> <?= $task['title'] ?>
+                            <i class="menu-icon fa fa-fw <?= $task['admin'] ? 'fa-lock' : 'fa-info' ?>"></i> <?= $task['title'] ?>
                         </a>
                     </div>
                     <!-- end task item -->
-                    <?php } ?>
+                <?php } ?>
             <!-- /.control-sidebar-menu -->
         </div>
         <!-- /.tab-pane -->
@@ -79,7 +80,7 @@ $isAdmin = AuthenticationManager::GetCurrentUser()->isAdmin();
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/fastclick/fastclick.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/bootstrap-toggle/bootstrap-toggle.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/i18next/i18next.min.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/locale/js/<?= Bootstrapper::GetCurrentLocale()->getLocale() ?>.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/locale/js/<?= Bootstrapper::getCurrentLocale()->getLocale() ?>.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/bootstrap-validator/validator.min.js"></script>
 
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/IssueReporter.js"></script>

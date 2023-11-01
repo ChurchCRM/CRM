@@ -61,7 +61,7 @@ function deleteUser(Request $request, Response $response, array $args)
     $user = $request->getAttribute("user");
     $userName = $user->getName();
     $userConfig = UserConfigQuery::create()->findPk($user->getId());
-    if (!is_null($userConfig)) {
+    if ($userConfig !== null) {
         $userConfig->delete();
     }
 

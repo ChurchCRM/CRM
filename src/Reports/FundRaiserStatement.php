@@ -1,4 +1,5 @@
 <?php
+
 /*******************************************************************************
 *
 *  filename    : Reports/FundRaiserStatement.php
@@ -8,6 +9,8 @@
 
 ******************************************************************************/
 
+namespace ChurchCRM\Reports;
+
 require '../Include/Config.php';
 require '../Include/Functions.php';
 
@@ -15,12 +18,12 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Reports\ChurchInfoReport;
 use ChurchCRM\Utils\InputUtils;
 
-$iPaddleNumID = InputUtils::LegacyFilterInputArr($_GET, 'PaddleNumID', 'int');
+$iPaddleNumID = InputUtils::legacyFilterInputArr($_GET, 'PaddleNumID', 'int');
 $iFundRaiserID = $_SESSION['iCurrentFundraiser'];
 
 //Get the paddlenum records for this fundraiser
 if ($iPaddleNumID > 0) {
-    $selectOneCrit = ' AND pn_ID='.$iPaddleNumID.' ';
+    $selectOneCrit = ' AND pn_ID=' . $iPaddleNumID . ' ';
 } else {
     $selectOneCrit = '';
 }
@@ -31,10 +34,10 @@ $sSQL = 'SELECT pn_ID, pn_fr_ID, pn_Num, pn_per_ID,
          FROM paddlenum_pn
          LEFT JOIN person_per a ON pn_per_ID=a.per_ID
          LEFT JOIN family_fam b ON fam_ID = a.per_fam_ID 
-         WHERE pn_FR_ID ='.$iFundRaiserID.$selectOneCrit.' ORDER BY pn_Num';
+         WHERE pn_FR_ID =' . $iFundRaiserID . $selectOneCrit . ' ORDER BY pn_Num';
 $rsPaddleNums = RunQuery($sSQL);
 
-class PDF_FundRaiserStatement extends ChurchInfoReport
+class PdfFundRaiserStatement extends ChurchInfoReport
 {
     // Constructor
     public function __construct()
@@ -46,19 +49,19 @@ class PDF_FundRaiserStatement extends ChurchInfoReport
         $this->SetAutoPageBreak(false);
     }
 
-    public function StartNewPage($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country)
+    public function startNewPage($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country)
     {
         global $letterhead;
-        $curY = $this->StartLetterPage($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $letterhead);
+        $curY = $this->startLetterPage($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $letterhead);
 
         return $curY;
     }
 
-    public function FinishPage($curY)
+    public function finishPage($curY)
     {
     }
 
-    public function CellWithWrap($curY, $curNewY, $ItemWid, $tableCellY, $txt, $bdr, $aligncode)
+    public function cellWithWrap($curY, $curNewY, $ItemWid, $tableCellY, $txt, $bdr, $aligncode)
     {
         $curPage = $this->PageNo();
         $leftX = $this->GetX();
@@ -76,7 +79,7 @@ class PDF_FundRaiserStatement extends ChurchInfoReport
 }
 
 // Instantiate the directory class and build the report.
-$pdf = new PDF_FundRaiserStatement();
+$pdf = new PdfFundRaiserStatement();
 
 // Loop through result array
 while ($row = mysqli_fetch_array($rsPaddleNums)) {
@@ -86,9 +89,9 @@ while ($row = mysqli_fetch_array($rsPaddleNums)) {
     // If running for all paddles check the _POST to see which ones are selected
     if ($iPaddleNumID || isset($_POST["Chk$pn_ID"])) {
         // Start page for this paddle number
-        $curY = $pdf->StartNewPage($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country);
+        $curY = $pdf->startNewPage($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country);
 
-        $pdf->WriteAt(SystemConfig::getValue('leftX'), $curY, gettext('Donated Items:'));
+        $pdf->writeAt(SystemConfig::getValue('leftX'), $curY, gettext('Donated Items:'));
         $curY += 2 * SystemConfig::getValue('incrementY');
 
         $ItemWid = 10;
@@ -108,7 +111,7 @@ while ($row = mysqli_fetch_array($rsPaddleNums)) {
 		                b.fam_homephone as buyerPhone
 		                FROM donateditem_di LEFT JOIN person_per a on a.per_ID = di_buyer_id 
 		                                    LEFT JOIN family_fam b on a.per_fam_id = b.fam_id
-		                WHERE di_FR_ID = '.$iFundRaiserID.' AND di_donor_id = '.$pn_per_ID;
+		                WHERE di_FR_ID = ' . $iFundRaiserID . ' AND di_donor_id = ' . $pn_per_ID;
         $rsDonatedItems = RunQuery($sSQL);
 
         $pdf->SetXY(SystemConfig::getValue('leftX'), $curY);
@@ -127,19 +130,19 @@ while ($row = mysqli_fetch_array($rsPaddleNums)) {
             extract($itemRow);
             $nextY = $curY;
             $pdf->SetXY(SystemConfig::getValue('leftX'), $curY);
-            $nextY = $pdf->CellWithWrap($curY, $nextY, $ItemWid, $tableCellY, $di_item, 0, 'L');
-            $nextY = $pdf->CellWithWrap($curY, $nextY, $TitleWid, $tableCellY, $di_title, 0, 'L');
-            $nextY = $pdf->CellWithWrap($curY, $nextY, $DonorWid, $tableCellY, $buyerFirstName.' '.$buyerLastName, 0, 'L');
-            $nextY = $pdf->CellWithWrap($curY, $nextY, $PhoneWid, $tableCellY, $buyerPhone, 0, 'L');
-            $nextY = $pdf->CellWithWrap($curY, $nextY, $EmailWid, $tableCellY, $buyerEmail, 0, 'L');
-            $nextY = $pdf->CellWithWrap($curY, $nextY, $PriceWid, $tableCellY, $di_sellprice, 0, 'R');
+            $nextY = $pdf->cellWithWrap($curY, $nextY, $ItemWid, $tableCellY, $di_item, 0, 'L');
+            $nextY = $pdf->cellWithWrap($curY, $nextY, $TitleWid, $tableCellY, $di_title, 0, 'L');
+            $nextY = $pdf->cellWithWrap($curY, $nextY, $DonorWid, $tableCellY, $buyerFirstName . ' ' . $buyerLastName, 0, 'L');
+            $nextY = $pdf->cellWithWrap($curY, $nextY, $PhoneWid, $tableCellY, $buyerPhone, 0, 'L');
+            $nextY = $pdf->cellWithWrap($curY, $nextY, $EmailWid, $tableCellY, $buyerEmail, 0, 'L');
+            $nextY = $pdf->cellWithWrap($curY, $nextY, $PriceWid, $tableCellY, $di_sellprice, 0, 'R');
             $curY = $nextY;
         }
 
         // Get purchased items and make the table
         $curY += 2 * $tableCellY;
         $pdf->SetFont('Times', '', 10);
-        $pdf->WriteAt(SystemConfig::getValue('leftX'), $curY, gettext('Purchased Items:'));
+        $pdf->writeAt(SystemConfig::getValue('leftX'), $curY, gettext('Purchased Items:'));
         $curY += 2 * SystemConfig::getValue('incrementY');
 
         $totalAmount = 0.0;
@@ -152,7 +155,7 @@ while ($row = mysqli_fetch_array($rsPaddleNums)) {
 		                b.fam_homePhone as donorPhone
 		                FROM donateditem_di LEFT JOIN person_per a on a.per_ID = di_donor_id
 		                                    LEFT JOIN family_fam b on a.per_fam_id=b.fam_id
-		                WHERE di_FR_ID = '.$iFundRaiserID.' AND di_buyer_id = '.$pn_per_ID;
+		                WHERE di_FR_ID = ' . $iFundRaiserID . ' AND di_buyer_id = ' . $pn_per_ID;
         $rsPurchasedItems = RunQuery($sSQL);
 
         $pdf->SetXY(SystemConfig::getValue('leftX'), $curY);
@@ -171,13 +174,13 @@ while ($row = mysqli_fetch_array($rsPaddleNums)) {
             extract($itemRow);
             $nextY = $curY;
             $pdf->SetXY(SystemConfig::getValue('leftX'), $curY);
-            $nextY = $pdf->CellWithWrap($curY, $nextY, $ItemWid, $tableCellY, $di_item, 0, 'L');
-            $nextY = $pdf->CellWithWrap($curY, $nextY, $QtyWid, $tableCellY, '1', 0, 'L'); // quantity 1 for all individual items
-            $nextY = $pdf->CellWithWrap($curY, $nextY, $TitleWid, $tableCellY, $di_title, 0, 'L');
-            $nextY = $pdf->CellWithWrap($curY, $nextY, $DonorWid, $tableCellY, ($donorFirstName.' '.$donorLastName), 0, 'L');
-            $nextY = $pdf->CellWithWrap($curY, $nextY, $PhoneWid, $tableCellY, $donorPhone, 0, 'L');
-            $nextY = $pdf->CellWithWrap($curY, $nextY, $EmailWid, $tableCellY, $donorEmail, 0, 'L');
-            $nextY = $pdf->CellWithWrap($curY, $nextY, $PriceWid, $tableCellY, '$'.$di_sellprice, 0, 'R');
+            $nextY = $pdf->cellWithWrap($curY, $nextY, $ItemWid, $tableCellY, $di_item, 0, 'L');
+            $nextY = $pdf->cellWithWrap($curY, $nextY, $QtyWid, $tableCellY, '1', 0, 'L'); // quantity 1 for all individual items
+            $nextY = $pdf->cellWithWrap($curY, $nextY, $TitleWid, $tableCellY, $di_title, 0, 'L');
+            $nextY = $pdf->cellWithWrap($curY, $nextY, $DonorWid, $tableCellY, ($donorFirstName . ' ' . $donorLastName), 0, 'L');
+            $nextY = $pdf->cellWithWrap($curY, $nextY, $PhoneWid, $tableCellY, $donorPhone, 0, 'L');
+            $nextY = $pdf->cellWithWrap($curY, $nextY, $EmailWid, $tableCellY, $donorEmail, 0, 'L');
+            $nextY = $pdf->cellWithWrap($curY, $nextY, $PriceWid, $tableCellY, '$' . $di_sellprice, 0, 'R');
             $curY = $nextY;
             $totalAmount += $di_sellprice;
         }
@@ -193,40 +196,40 @@ while ($row = mysqli_fetch_array($rsPaddleNums)) {
 						LEFT JOIN donateditem_di b ON mb_item_ID=b.di_ID
 						LEFT JOIN person_per a ON b.di_donor_id=a.per_ID 
 						LEFT JOIN family_fam c ON a.per_fam_id = c.fam_ID
-						WHERE b.di_FR_ID='.$iFundRaiserID.' AND mb_per_ID='.$pn_per_ID;
+						WHERE b.di_FR_ID=' . $iFundRaiserID . ' AND mb_per_ID=' . $pn_per_ID;
         $rsMultiBuy = RunQuery($sqlMultiBuy);
         while ($mbRow = mysqli_fetch_array($rsMultiBuy)) {
             extract($mbRow);
             $nextY = $curY;
             $pdf->SetXY(SystemConfig::getValue('leftX'), $curY);
-            $nextY = $pdf->CellWithWrap($curY, $nextY, $ItemWid, $tableCellY, $di_item, 0, 'L');
-            $nextY = $pdf->CellWithWrap($curY, $nextY, $QtyWid, $tableCellY, $mb_count, 0, 'L');
-            $nextY = $pdf->CellWithWrap($curY, $nextY, $TitleWid, $tableCellY, stripslashes($di_title), 0, 'L');
-            $nextY = $pdf->CellWithWrap($curY, $nextY, $DonorWid, $tableCellY, ($donorFirstName.' '.$donorLastName), 0, 'L');
-            $nextY = $pdf->CellWithWrap($curY, $nextY, $PhoneWid, $tableCellY, $donorPhone, 0, 'L');
-            $nextY = $pdf->CellWithWrap($curY, $nextY, $EmailWid, $tableCellY, $donorEmail, 0, 'L');
-            $nextY = $pdf->CellWithWrap($curY, $nextY, $PriceWid, $tableCellY, ('$'.($mb_count * $di_sellprice)), 0, 'R');
+            $nextY = $pdf->cellWithWrap($curY, $nextY, $ItemWid, $tableCellY, $di_item, 0, 'L');
+            $nextY = $pdf->cellWithWrap($curY, $nextY, $QtyWid, $tableCellY, $mb_count, 0, 'L');
+            $nextY = $pdf->cellWithWrap($curY, $nextY, $TitleWid, $tableCellY, stripslashes($di_title), 0, 'L');
+            $nextY = $pdf->cellWithWrap($curY, $nextY, $DonorWid, $tableCellY, ($donorFirstName . ' ' . $donorLastName), 0, 'L');
+            $nextY = $pdf->cellWithWrap($curY, $nextY, $PhoneWid, $tableCellY, $donorPhone, 0, 'L');
+            $nextY = $pdf->cellWithWrap($curY, $nextY, $EmailWid, $tableCellY, $donorEmail, 0, 'L');
+            $nextY = $pdf->cellWithWrap($curY, $nextY, $PriceWid, $tableCellY, ('$' . ($mb_count * $di_sellprice)), 0, 'R');
             $curY = $nextY;
             $totalAmount += $mb_count * $di_sellprice;
         }
 
         // Report total purchased items
-        $pdf->WriteAt(SystemConfig::getValue('leftX'), $curY, (gettext('Total of all purchases: $').$totalAmount));
+        $pdf->writeAt(SystemConfig::getValue('leftX'), $curY, (gettext('Total of all purchases: $') . $totalAmount));
         $curY += 2 * SystemConfig::getValue('incrementY');
 
         // Make the tear-off record for the bottom of the page
         $curY = 240;
-        $pdf->WriteAt(SystemConfig::getValue('leftX'), $curY, gettext('-----------------------------------------------------------------------------------------------------------------------------------------------'));
+        $pdf->writeAt(SystemConfig::getValue('leftX'), $curY, gettext('-----------------------------------------------------------------------------------------------------------------------------------------------'));
         $curY += 2 * SystemConfig::getValue('incrementY');
-        $pdf->WriteAt(SystemConfig::getValue('leftX'), $curY, (gettext('Buyer # ').$pn_Num.' : '.$paddleFirstName.' '.$paddleLastName.' : '.gettext('Total purchases: $').$totalAmount.' : '.gettext('Amount paid: ________________')));
+        $pdf->writeAt(SystemConfig::getValue('leftX'), $curY, (gettext('Buyer # ') . $pn_Num . ' : ' . $paddleFirstName . ' ' . $paddleLastName . ' : ' . gettext('Total purchases: $') . $totalAmount . ' : ' . gettext('Amount paid: ________________')));
         $curY += 2 * SystemConfig::getValue('incrementY');
-        $pdf->WriteAt(SystemConfig::getValue('leftX'), $curY, gettext('Paid by (  ) Cash    (  ) Check    (  ) Credit card __ __ __ __    __ __ __ __    __ __ __ __    __ __ __ __  Exp __ / __'));
+        $pdf->writeAt(SystemConfig::getValue('leftX'), $curY, gettext('Paid by (  ) Cash    (  ) Check    (  ) Credit card __ __ __ __    __ __ __ __    __ __ __ __    __ __ __ __  Exp __ / __'));
         $curY += 2 * SystemConfig::getValue('incrementY');
-        $pdf->WriteAt(SystemConfig::getValue('leftX'), $curY, gettext('                                        Signature ________________________________________________________________'));
+        $pdf->writeAt(SystemConfig::getValue('leftX'), $curY, gettext('                                        Signature ________________________________________________________________'));
 
-        $pdf->FinishPage($curY);
+        $pdf->finishPage($curY);
     }
 }
 
 header('Pragma: public');  // Needed for IE when using a shared SSL certificate
-$pdf->Output('FundRaiserStatement'.date(SystemConfig::getValue("sDateFilenameFormat")).'.pdf', 'D');
+$pdf->Output('FundRaiserStatement' . date(SystemConfig::getValue("sDateFilenameFormat")) . '.pdf', 'D');

@@ -37,7 +37,7 @@ $app->group('/families', function () use ($app) {
                 if (!$hasEmail) {
                     array_push($familiesWithoutEmails, $family->toArray());
                 }
-             }
+            }
         }
 
         return $response->withJson(["count" => count($familiesWithoutEmails), "families" => $familiesWithoutEmails]);
@@ -83,7 +83,7 @@ $app->group('/families', function () use ($app) {
 
     $app->get('/pending-self-verify', function ($request, $response, $args) {
         $pendingTokens = TokenQuery::create()
-            ->filterByType(Token::typeFamilyVerify)
+            ->filterByType(Token::TYPE_FAMILY_VERIFY)
             ->filterByRemainingUses(['min' => 1])
             ->filterByValidUntilDate(['min' => new DateTime()])
             ->addJoin(TokenTableMap::COL_REFERENCE_ID, FamilyTableMap::COL_FAM_ID)
@@ -116,7 +116,7 @@ $app->group('/families', function () use ($app) {
             if ($newStatus == "false") {
                 $family->setDateDeactivated(date('YmdHis'));
             } elseif ($newStatus == "true") {
-                $family->setDateDeactivated(Null);
+                $family->setDateDeactivated(null);
             }
             $family->save();
 
@@ -129,13 +129,11 @@ $app->group('/families', function () use ($app) {
                 $note->setText(gettext('Activated the Family'));
             }
             $note->setType('edit');
-            $note->setEntered(AuthenticationManager::GetCurrentUser()->getId());
+            $note->setEntered(AuthenticationManager::getCurrentUser()->getId());
             $note->save();
         }
         return $response->withJson(['success' => true]);
-
     });
-
 });
 
 
@@ -144,13 +142,12 @@ function getFamiliesWithAnniversaries(Request $request, Response $response, arra
     $families = FamilyQuery::create()
         ->filterByDateDeactivated(null)
         ->filterByWeddingdate(null, Criteria::NOT_EQUAL)
-        ->addUsingAlias(FamilyTableMap::COL_FAM_WEDDINGDATE,"MONTH(". FamilyTableMap::COL_FAM_WEDDINGDATE .") =" . date('m'),Criteria::CUSTOM)
-        ->addUsingAlias(FamilyTableMap::COL_FAM_WEDDINGDATE,"DAY(". FamilyTableMap::COL_FAM_WEDDINGDATE .") =" . date('d'),Criteria::CUSTOM)
+        ->addUsingAlias(FamilyTableMap::COL_FAM_WEDDINGDATE, "MONTH(" . FamilyTableMap::COL_FAM_WEDDINGDATE . ") =" . date('m'), Criteria::CUSTOM)
+        ->addUsingAlias(FamilyTableMap::COL_FAM_WEDDINGDATE, "DAY(" . FamilyTableMap::COL_FAM_WEDDINGDATE . ") =" . date('d'), Criteria::CUSTOM)
         ->orderByWeddingdate('DESC')
         ->find();
 
     return $response->withJson(buildFormattedFamilies($families, false, false, true));
-
 }
 function getLatestFamilies(Request $request, Response $response, array $p_args)
 {

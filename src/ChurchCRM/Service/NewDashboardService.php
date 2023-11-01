@@ -1,9 +1,9 @@
 <?php
 
 namespace ChurchCRM\Service;
+
 class NewDashboardService
 {
-
     public static function getDashboardItems($PageName)
     {
         $DashboardItems = [
@@ -28,5 +28,4 @@ class NewDashboardService
         }
         return $ReturnValues;
     }
-
 }

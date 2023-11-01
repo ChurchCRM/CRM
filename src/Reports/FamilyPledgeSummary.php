@@ -1,4 +1,5 @@
 <?php
+
 /*******************************************************************************
 *
 *  filename    : Reports/FamilyPledgeSummary.php
@@ -7,6 +8,8 @@
 *  Copyright 2004-2009  Michael Wilt
 
 ******************************************************************************/
+
+namespace ChurchCRM\Reports;
 
 require '../Include/Config.php';
 require '../Include/Functions.php';
@@ -18,8 +21,8 @@ use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Authentication\AuthenticationManager;
 
 // Security
-if (!AuthenticationManager::GetCurrentUser()->isFinanceEnabled()) {
-    RedirectUtils::Redirect('Menu.php');
+if (!AuthenticationManager::getCurrentUser()->isFinanceEnabled()) {
+    RedirectUtils::redirect('Menu.php');
     exit;
 }
 
@@ -39,13 +42,13 @@ if (!empty($_POST['classList'])) {
                 if ($inClassList == '(') {
                     $inClassList .= $lst_OptionID;
                 } else {
-                    $inClassList .= ','.$lst_OptionID;
+                    $inClassList .= ',' . $lst_OptionID;
                 }
             } else {
                 if ($notInClassList == '(') {
                     $notInClassList .= $lst_OptionID;
                 } else {
-                    $notInClassList .= ','.$lst_OptionID;
+                    $notInClassList .= ',' . $lst_OptionID;
                 }
             }
         }
@@ -55,21 +58,21 @@ if (!empty($_POST['classList'])) {
 }
 
 //Get the Fiscal Year ID out of the querystring
-$iFYID = InputUtils::LegacyFilterInput($_POST['FYID'], 'int');
+$iFYID = InputUtils::legacyFilterInput($_POST['FYID'], 'int');
 $_SESSION['idefaultFY'] = $iFYID; // Remember the chosen FYID
-$output = InputUtils::LegacyFilterInput($_POST['output']);
+$output = InputUtils::legacyFilterInput($_POST['output']);
 $pledge_filter = '';
 if (array_key_exists('pledge_filter', $_POST)) {
-    $pledge_filter = InputUtils::LegacyFilterInput($_POST['pledge_filter']);
+    $pledge_filter = InputUtils::legacyFilterInput($_POST['pledge_filter']);
 }
 $only_owe = '';
 if (array_key_exists('only_owe', $_POST)) {
-    $only_owe = InputUtils::LegacyFilterInput($_POST['only_owe']);
+    $only_owe = InputUtils::legacyFilterInput($_POST['only_owe']);
 }
 
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
-if (!AuthenticationManager::GetCurrentUser()->isAdmin() && SystemConfig::getValue('bCSVAdminOnly')) {
-    RedirectUtils::Redirect('Menu.php');
+if (!AuthenticationManager::getCurrentUser()->isAdmin() && SystemConfig::getValue('bCSVAdminOnly')) {
+    RedirectUtils::redirect('Menu.php');
     exit;
 }
 
@@ -83,9 +86,9 @@ $sSQL .= ' WHERE';
 
 $criteria = '';
 if ($classList[0]) {
-    $q = ' per_cls_ID IN '.$inClassList.' AND per_fam_ID NOT IN (SELECT DISTINCT per_fam_ID FROM person_per WHERE per_cls_ID IN '.$notInClassList.')';
+    $q = ' per_cls_ID IN ' . $inClassList . ' AND per_fam_ID NOT IN (SELECT DISTINCT per_fam_ID FROM person_per WHERE per_cls_ID IN ' . $notInClassList . ')';
     if ($criteria) {
-        $criteria .= ' AND'.$q;
+        $criteria .= ' AND' . $q;
     } else {
         $criteria = $q;
     }
@@ -94,13 +97,13 @@ if ($classList[0]) {
 if (!$criteria) {
     $criteria = ' 1';
 }
-$sSQL .= $criteria.' ORDER BY fam_Name';
+$sSQL .= $criteria . ' ORDER BY fam_Name';
 
 // Filter by Family
 if (!empty($_POST['family'])) {
     $count = 0;
     foreach ($_POST['family'] as $famID) {
-        $fam[$count++] = InputUtils::LegacyFilterInput($famID, 'int');
+        $fam[$count++] = InputUtils::legacyFilterInput($famID, 'int');
     }
     if ($count == 1) {
         if ($fam[0]) {
@@ -122,7 +125,7 @@ $sSQLFundCriteria = '';
 if (!empty($_POST['funds'])) {
     $fundCount = 0;
     foreach ($_POST['funds'] as $fundID) {
-        $fund[$fundCount++] = InputUtils::LegacyFilterInput($fundID, 'int');
+        $fund[$fundCount++] = InputUtils::legacyFilterInput($fundID, 'int');
     }
     if ($fundCount == 1) {
         if ($fund[0]) {
@@ -149,7 +152,7 @@ if ($fundCount > 0) {
         $fundOnlyString = gettext('for funds ');
     }
     for ($i = 0; $i < $fundCount; $i++) {
-        $sSQL = 'SELECT fun_Name FROM donationfund_fun WHERE fun_ID='.$fund[$i];
+        $sSQL = 'SELECT fun_Name FROM donationfund_fun WHERE fun_ID=' . $fund[$i];
         $rsOneFund = RunQuery($sSQL);
         $aFundName = mysqli_fetch_array($rsOneFund);
         $fundOnlyString .= $aFundName['fun_Name'];
@@ -173,7 +176,7 @@ while ($row = mysqli_fetch_array($rsFunds)) {
 
 // Create PDF Report
 // *****************
-class PDF_FamilyPledgeSummaryReport extends ChurchInfoReport
+class PdfFamilyPledgeSummaryReport extends ChurchInfoReport
 {
     // Constructor
     public function __construct()
@@ -188,8 +191,8 @@ class PDF_FamilyPledgeSummaryReport extends ChurchInfoReport
 }
 
 // Instantiate the directory class and build the report.
-$pdf = new PDF_FamilyPledgeSummaryReport();
-$pdf->AddPage();
+$pdf = new PdfFamilyPledgeSummaryReport();
+$pdf->addPage();
 
 $leftX = 10;
 $famNameX = 10;
@@ -210,15 +213,15 @@ $pageTop = 10;
 $y = $pageTop;
 $lineInc = 4;
 
-$pdf->WriteAt($leftX, $y, gettext('Pledge Summary By Family'));
+$pdf->writeAt($leftX, $y, gettext('Pledge Summary By Family'));
 $y += $lineInc;
 
-$pdf->WriteAtCell($famNameX, $y, $famNameWid, gettext('Name'));
-$pdf->WriteAtCell($famMethodX, $y, $famMethodWid, gettext('Method'));
-$pdf->WriteAtCell($famFundX, $y, $famFundWid, gettext('Fund'));
-$pdf->WriteAtCell($famPledgeX, $y, $famPledgeWid, gettext('Pledge'));
-$pdf->WriteAtCell($famPayX, $y, $famPayWid, gettext('Paid'));
-$pdf->WriteAtCell($famOweX, $y, $famOweWid, gettext('Owe'));
+$pdf->writeAtCell($famNameX, $y, $famNameWid, gettext('Name'));
+$pdf->writeAtCell($famMethodX, $y, $famMethodWid, gettext('Method'));
+$pdf->writeAtCell($famFundX, $y, $famFundWid, gettext('Fund'));
+$pdf->writeAtCell($famPledgeX, $y, $famPledgeWid, gettext('Pledge'));
+$pdf->writeAtCell($famPayX, $y, $famPayWid, gettext('Paid'));
+$pdf->writeAtCell($famOweX, $y, $famOweWid, gettext('Owe'));
 $y += $lineInc;
 
 // Loop through families
@@ -228,7 +231,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
     // Check for pledges if filtering by pledges
     if ($pledge_filter == 'pledge') {
         $temp = "SELECT plg_plgID FROM pledge_plg
-			WHERE plg_FamID='$fam_ID' AND plg_PledgeOrPayment='Pledge' AND plg_FYID=$iFYID".$sSQLFundCriteria;
+			WHERE plg_FamID='$fam_ID' AND plg_PledgeOrPayment='Pledge' AND plg_FYID=$iFYID" . $sSQLFundCriteria;
         $rsPledgeCheck = RunQuery($temp);
         if (mysqli_num_rows($rsPledgeCheck) == 0) {
             continue;
@@ -238,7 +241,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
     // Get pledges and payments for this family and this fiscal year
     $sSQL = 'SELECT *, b.fun_Name AS fundName FROM pledge_plg
 			 LEFT JOIN donationfund_fun b ON plg_fundID = b.fun_ID
-			 WHERE plg_FamID = '.$fam_ID.' AND plg_FYID = '.$iFYID.$sSQLFundCriteria.' ORDER BY plg_date';
+			 WHERE plg_FamID = ' . $fam_ID . ' AND plg_FYID = ' . $iFYID . $sSQLFundCriteria . ' ORDER BY plg_date';
 
     $rsPledges = RunQuery($sSQL);
 
@@ -272,7 +275,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
     // Get pledges only
     $sSQL = 'SELECT *, b.fun_Name AS fundName FROM pledge_plg
 			 LEFT JOIN donationfund_fun b ON plg_fundID = b.fun_ID
-			 WHERE plg_FamID = '.$fam_ID.' AND plg_FYID = '.$iFYID.$sSQLFundCriteria." AND plg_PledgeOrPayment = 'Pledge' ORDER BY plg_date";
+			 WHERE plg_FamID = ' . $fam_ID . ' AND plg_FYID = ' . $iFYID . $sSQLFundCriteria . " AND plg_PledgeOrPayment = 'Pledge' ORDER BY plg_date";
     $rsPledges = RunQuery($sSQL);
 
     $totalAmountPledges = 0;
@@ -285,7 +288,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
             extract($aRow);
 
             if (strlen($fundName) > 19) {
-                $fundName = mb_substr($fundName, 0, 18).'...';
+                $fundName = mb_substr($fundName, 0, 18) . '...';
             }
 
             $fundPledgeTotal[$fundName] += $plg_amount;
@@ -300,7 +303,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
     // Get payments only
     $sSQL = 'SELECT *, b.fun_Name AS fundName FROM pledge_plg
 			 LEFT JOIN donationfund_fun b ON plg_fundID = b.fun_ID
-			 WHERE plg_FamID = '.$fam_ID.' AND plg_FYID = '.$iFYID.$sSQLFundCriteria." AND plg_PledgeOrPayment = 'Payment' ORDER BY plg_date";
+			 WHERE plg_FamID = ' . $fam_ID . ' AND plg_FYID = ' . $iFYID . $sSQLFundCriteria . " AND plg_PledgeOrPayment = 'Payment' ORDER BY plg_date";
     $rsPledges = RunQuery($sSQL);
 
     $totalAmountPayments = 0;
@@ -328,15 +331,15 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
                     $amountDue = 0;
                 }
 
-                $pdf->WriteAtCell($famNameX, $y, $famNameWid, $pdf->MakeSalutation($fam_ID));
-                $pdf->WriteAtCell($famPledgeX, $y, $famPledgeWid, $fundPledgeTotal[$fun_name]);
-                $pdf->WriteAtCell($famMethodX, $y, $famMethodWid, $fundPledgeMethod[$fun_name]);
-                $pdf->WriteAtCell($famFundX, $y, $famFundWid, $fun_name);
-                $pdf->WriteAtCell($famPayX, $y, $famPayWid, $fundPaymentTotal[$fun_name]);
-                $pdf->WriteAtCell($famOweX, $y, $famOweWid, $amountDue);
+                $pdf->writeAtCell($famNameX, $y, $famNameWid, $pdf->makeSalutation($fam_ID));
+                $pdf->writeAtCell($famPledgeX, $y, $famPledgeWid, $fundPledgeTotal[$fun_name]);
+                $pdf->writeAtCell($famMethodX, $y, $famMethodWid, $fundPledgeMethod[$fun_name]);
+                $pdf->writeAtCell($famFundX, $y, $famFundWid, $fun_name);
+                $pdf->writeAtCell($famPayX, $y, $famPayWid, $fundPaymentTotal[$fun_name]);
+                $pdf->writeAtCell($famOweX, $y, $famOweWid, $amountDue);
                 $y += $lineInc;
                 if ($y > 250) {
-                    $pdf->AddPage();
+                    $pdf->addPage();
                     $y = $pageTop;
                 }
             }
@@ -348,7 +351,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
 
 header('Pragma: public');  // Needed for IE when using a shared SSL certificate
 if (SystemConfig::getValue('iPDFOutputType') == 1) {
-    $pdf->Output('FamilyPledgeSummary'.date(SystemConfig::getValue("sDateFilenameFormat")).'.pdf', 'D');
+    $pdf->Output('FamilyPledgeSummary' . date(SystemConfig::getValue("sDateFilenameFormat")) . '.pdf', 'D');
 } else {
     $pdf->Output();
 }

@@ -16,5 +16,4 @@ use ChurchCRM\Base\RecordPropertyQuery as BaseRecordPropertyQuery;
  */
 class RecordPropertyQuery extends BaseRecordPropertyQuery
 {
-
 }

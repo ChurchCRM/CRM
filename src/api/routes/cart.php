@@ -10,12 +10,12 @@ $app->group('/cart', function () use ($app) {
 
     $app->post('/', function ($request, $response, $args) {
         $cartPayload = (object)$request->getParsedBody();
-        if (isset ($cartPayload->Persons) && count($cartPayload->Persons) > 0) {
-            Cart::AddPersonArray($cartPayload->Persons);
-        } elseif (isset ($cartPayload->Family)) {
-            Cart::AddFamily($cartPayload->Family);
-        } elseif (isset ($cartPayload->Group)) {
-            Cart::AddGroup($cartPayload->Group);
+        if (isset($cartPayload->Persons) && count($cartPayload->Persons) > 0) {
+            Cart::addPersonArray($cartPayload->Persons);
+        } elseif (isset($cartPayload->Family)) {
+            Cart::addFamily($cartPayload->Family);
+        } elseif (isset($cartPayload->Group)) {
+            Cart::addGroup($cartPayload->Group);
         } else {
             throw new \Exception(gettext("POST to cart requires a Persons array, FamilyID, or GroupID"), 500);
         }
@@ -24,7 +24,7 @@ $app->group('/cart', function () use ($app) {
 
     $app->post('/emptyToGroup', function ($request, $response, $args) {
         $cartPayload = (object)$request->getParsedBody();
-        Cart::EmptyToGroup($cartPayload->groupID, $cartPayload->groupRoleID);
+        Cart::emptyToGroup($cartPayload->groupID, $cartPayload->groupRoleID);
         return $response->withJson([
             'status' => "success",
             'message' => gettext('records(s) successfully added to selected Group.')
@@ -33,7 +33,7 @@ $app->group('/cart', function () use ($app) {
 
     $app->post('/removeGroup', function ($request, $response, $args) {
         $cartPayload = (object)$request->getParsedBody();
-        Cart::RemoveGroup($cartPayload->Group);
+        Cart::removeGroup($cartPayload->Group);
         return $response->withJson([
             'status' => "success",
             'message' => gettext('records(s) successfully deleted from the selected Group.')
@@ -47,11 +47,11 @@ $app->group('/cart', function () use ($app) {
     $app->delete('/', function ($request, $response, $args) {
 
         $cartPayload = (object)$request->getParsedBody();
-        if (isset ($cartPayload->Persons) && count($cartPayload->Persons) > 0) {
-            Cart::RemovePersonArray($cartPayload->Persons);
+        if (isset($cartPayload->Persons) && count($cartPayload->Persons) > 0) {
+            Cart::removePersonArray($cartPayload->Persons);
         } else {
             $sMessage = gettext('Your cart is empty');
-            if (sizeof($_SESSION['aPeopleCart']) > 0) {
+            if (count($_SESSION['aPeopleCart']) > 0) {
                 $_SESSION['aPeopleCart'] = [];
                 $sMessage = gettext('Your cart has been successfully emptied');
             }
@@ -60,7 +60,5 @@ $app->group('/cart', function () use ($app) {
             'status' => "success",
             'message' => $sMessage
         ]);
-
     });
-
 });

@@ -2,12 +2,12 @@
 
 namespace ChurchCRM\Emails;
 
-
 class PasswordChangeEmail extends BaseUserEmail
 {
     protected $password;
 
-    public function __construct($user, $password) {
+    public function __construct($user, $password)
+    {
         $this->password = $password;
         parent::__construct($user);
     }
@@ -19,7 +19,7 @@ class PasswordChangeEmail extends BaseUserEmail
 
     protected function buildMessageBody()
     {
-        return gettext("Your ChurchCRM password was changed").":";
+        return gettext("Your ChurchCRM password was changed") . ":";
     }
 
     public function getTokens()

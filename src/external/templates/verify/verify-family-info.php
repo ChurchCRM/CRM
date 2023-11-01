@@ -1,4 +1,5 @@
- <?php
+<?php
+
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\ListOptionQuery;
 use ChurchCRM\dto\SystemConfig;
@@ -8,7 +9,7 @@ use ChurchCRM\dto\Classification;
 // Set the page title and include HTML header
 $sPageTitle = gettext("Family Verification");
 
-require(SystemURLs::getDocumentRoot(). "/Include/HeaderNotLoggedIn.php");
+require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
 
 $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
 ?>
@@ -23,18 +24,18 @@ $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
       <h2><?= $family->getName() ?></h2>
       <div class="text-muted font-bold m-b-xs">
         <i class="fa fa-fw fa-map-marker" title="<?= gettext("Home Address")?>"></i><?= $family->getAddress() ?><br/>
-          <?php if (!empty($family->getHomePhone()))  { ?>
+          <?php if (!empty($family->getHomePhone())) { ?>
           <i class="fa fa-fw fa-phone" title="<?= gettext("Home Phone")?>"> </i>(H) <?= $family->getHomePhone() ?><br/>
           <?php }  if (!empty($family->getEmail())) { ?>
           <i class="fa fa-fw fa-envelope" title="<?= gettext("Family Email") ?>"></i><?= $family->getEmail() ?><br/>
               <?php
           }
-          if( $family->getWeddingDate() !== null) {
-        ?>
+          if ($family->getWeddingDate() !== null) {
+                ?>
             <i class="fa fa-fw fa-heart" title="<?= gettext("Wedding Date")?>"></i><?= $family->getWeddingDate()->format(SystemConfig::getValue("sDateFormatLong")) ?><br/>
-        <?php
+              <?php
           }
-        ?>
+            ?>
 
         <i class="fa fa-fw fa-newspaper" title="<?= gettext("Send Newsletter")?>"></i><?= $family->getSendNewsletter() ?><br/>
       </div>
@@ -66,15 +67,15 @@ $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
 
                 <ul class="list-group list-group-unbordered">
                   <li class="list-group-item">
-                      <?php if (!empty($person->getHomePhone()))  { ?>
+                      <?php if (!empty($person->getHomePhone())) { ?>
                     <i class="fa fa-fw fa-phone" title="<?= gettext("Home Phone")?>"></i>(H) <?= $person->getHomePhone() ?><br/>
-                      <?php }  if (!empty($person->getWorkPhone()))  { ?>
+                      <?php }  if (!empty($person->getWorkPhone())) { ?>
                     <i class="fa fa-fw fa-briefcase" title="<?= gettext("Work Phone")?>"></i>(W) <?= $person->getWorkPhone() ?><br/>
-                      <?php }  if (!empty($person->getCellPhone()))  { ?>
+                      <?php }  if (!empty($person->getCellPhone())) { ?>
                     <i class="fa fa-fw fa-mobile" title="<?= gettext("Mobile Phone")?>"></i>(M) <?= $person->getCellPhone() ?><br/>
-                      <?php }  if (!empty($person->getEmail()))  { ?>
+                      <?php }  if (!empty($person->getEmail())) { ?>
                     <i class="fa fa-fw fa-envelope" title="<?= gettext("Email")?>"></i>(H) <?= $person->getEmail() ?><br/>
-                      <?php }  if (!empty($person->getWorkEmail()))  { ?>
+                      <?php }  if (!empty($person->getWorkEmail())) { ?>
                     <i class="fa fa-fw fa-envelope" title="<?= gettext("Work Email")?>"></i>(W) <?= $person->getWorkEmail() ?><br/>
                       <?php }  ?>
                     <i class="fa fa-fw fa-cake-candles" title="<?= gettext("Birthday")?>"></i> <?= $person->getFormattedBirthDate() ?><br/>
@@ -85,15 +86,15 @@ $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
                   <?php if (count($person->getPerson2group2roleP2g2rs()) > 0) {?>
                   <li class="list-group-item">
                     <h4>Groups</h4>
-                    <?php foreach ($person->getPerson2group2roleP2g2rs() as $groupMembership) {
-                        if ($groupMembership->getGroup() != null) {
-                            $listOption = ListOptionQuery::create()->filterById($groupMembership->getGroup()->getRoleListId())->filterByOptionId($groupMembership->getRoleId())->findOne()->getOptionName();
-                    ?>
+                        <?php foreach ($person->getPerson2group2roleP2g2rs() as $groupMembership) {
+                            if ($groupMembership->getGroup() != null) {
+                                $listOption = ListOptionQuery::create()->filterById($groupMembership->getGroup()->getRoleListId())->filterByOptionId($groupMembership->getRoleId())->findOne()->getOptionName();
+                                ?>
                         <b><?= $groupMembership->getGroup()->getName() ?></b>: <span class="pull-right"><?= $listOption ?></span><br/>
-                    <?php
+                                <?php
+                            }
                         }
-                    }
-                    ?>
+                        ?>
                   </li>
                   <?php } ?>
                 </ul>
@@ -206,4 +207,4 @@ $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
 
 <?php
 // Add the page footer
-require(SystemURLs::getDocumentRoot(). "/Include/FooterNotLoggedIn.php");
+require(SystemURLs::getDocumentRoot() . "/Include/FooterNotLoggedIn.php");

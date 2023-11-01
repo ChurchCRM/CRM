@@ -46,7 +46,7 @@ if ($sFormat == 'rollup') {
 }
 
 //Get membership classes
-$memberClass = array(0);
+$memberClass = [0];
 foreach (Classification::getAll() as $Member) {
     $memberClass[] = $Member->getOptionName();
 }
@@ -78,7 +78,7 @@ $sPerTable = 'person_per';
 
 // If our source is the cart contents, we don't need to build a WHERE filter string
 if ($sSource == 'cart') {
-    $sWhereExt = 'AND per_ID IN ('.ConvertCartToString($_SESSION['aPeopleCart']).')';
+    $sWhereExt = 'AND per_ID IN (' . convertCartToString($_SESSION['aPeopleCart']) . ')';
 } else {
     // If we're filtering by groups, include the p2g2r table
     if (!empty($_POST['GroupID'])) {
@@ -90,16 +90,16 @@ if ($sSource == 'cart') {
     if (!empty($_POST['Classification'])) {
         $count = 0;
         foreach ($_POST['Classification'] as $Cls) {
-            $Class[$count++] = InputUtils::LegacyFilterInput($Cls, 'int');
+            $Class[$count++] = InputUtils::legacyFilterInput($Cls, 'int');
         }
         if ($count == 1) {
             if ($Class[0]) {
-                $sWhereExt .= 'AND per_cls_ID = '.$Class[0].' ';
+                $sWhereExt .= 'AND per_cls_ID = ' . $Class[0] . ' ';
             }
         } else {
-            $sWhereExt .= 'AND (per_cls_ID = '.$Class[0];
+            $sWhereExt .= 'AND (per_cls_ID = ' . $Class[0];
             for ($i = 1; $i < $count; $i++) {
-                $sWhereExt .= ' OR per_cls_ID = '.$Class[$i];
+                $sWhereExt .= ' OR per_cls_ID = ' . $Class[$i];
             }
             $sWhereExt .= ') ';
             // this is silly: should be something like..  $sWhereExt .= "AND per_cls_ID IN
@@ -109,38 +109,38 @@ if ($sSource == 'cart') {
     if (!empty($_POST['FamilyRole'])) {
         $count = 0;
         foreach ($_POST['FamilyRole'] as $Fmr) {
-            $Class[$count++] = InputUtils::LegacyFilterInput($Fmr, 'int');
+            $Class[$count++] = InputUtils::legacyFilterInput($Fmr, 'int');
         }
         if ($count == 1) {
             if ($Class[0]) {
-                $sWhereExt .= 'AND per_fmr_ID = '.$Class[0].' ';
+                $sWhereExt .= 'AND per_fmr_ID = ' . $Class[0] . ' ';
             }
         } else {
-            $sWhereExt .= 'AND (per_fmr_ID = '.$Class[0];
+            $sWhereExt .= 'AND (per_fmr_ID = ' . $Class[0];
             for ($i = 1; $i < $count; $i++) {
-                $sWhereExt .= ' OR per_fmr_ID = '.$Class[$i];
+                $sWhereExt .= ' OR per_fmr_ID = ' . $Class[$i];
             }
             $sWhereExt .= ') ';
         }
     }
 
     if (!empty($_POST['Gender'])) {
-        $sWhereExt .= 'AND per_Gender = '.InputUtils::LegacyFilterInput($_POST['Gender'], 'int').' ';
+        $sWhereExt .= 'AND per_Gender = ' . InputUtils::legacyFilterInput($_POST['Gender'], 'int') . ' ';
     }
 
     if (!empty($_POST['GroupID'])) {
         $count = 0;
         foreach ($_POST['GroupID'] as $Grp) {
-            $Class[$count++] = InputUtils::LegacyFilterInput($Grp, 'int');
+            $Class[$count++] = InputUtils::legacyFilterInput($Grp, 'int');
         }
         if ($count == 1) {
             if ($Class[0]) {
-                $sWhereExt .= 'AND per_ID = p2g2r_per_ID AND p2g2r_grp_ID = '.$Class[0].' ';
+                $sWhereExt .= 'AND per_ID = p2g2r_per_ID AND p2g2r_grp_ID = ' . $Class[0] . ' ';
             }
         } else {
-            $sWhereExt .= 'AND per_ID = p2g2r_per_ID AND (p2g2r_grp_ID = '.$Class[0];
+            $sWhereExt .= 'AND per_ID = p2g2r_per_ID AND (p2g2r_grp_ID = ' . $Class[0];
             for ($i = 1; $i < $count; $i++) {
-                $sWhereExt .= ' OR p2g2r_grp_ID = '.$Class[$i];
+                $sWhereExt .= ' OR p2g2r_grp_ID = ' . $Class[$i];
             }
             $sWhereExt .= ') ';
         }
@@ -152,50 +152,50 @@ if ($sSource == 'cart') {
     }
 
     if (!empty($_POST['MembershipDate1'])) {
-        $sWhereExt .= "AND per_MembershipDate >= '".InputUtils::LegacyFilterInput($_POST['MembershipDate1'], 'char', 10)."' ";
+        $sWhereExt .= "AND per_MembershipDate >= '" . InputUtils::legacyFilterInput($_POST['MembershipDate1'], 'char', 10) . "' ";
     }
     if ($_POST['MembershipDate2'] != date('Y-m-d')) {
-        $sWhereExt .= "AND per_MembershipDate <= '".InputUtils::LegacyFilterInput($_POST['MembershipDate2'], 'char', 10)."' ";
+        $sWhereExt .= "AND per_MembershipDate <= '" . InputUtils::legacyFilterInput($_POST['MembershipDate2'], 'char', 10) . "' ";
     }
 
     $refDate = getdate(time());
 
     if (!empty($_POST['BirthDate1'])) {
-        $sWhereExt .= "AND DATE_FORMAT(CONCAT(per_BirthYear,'-',per_BirthMonth,'-',per_BirthDay),'%Y-%m-%d') >= '".InputUtils::LegacyFilterInput($_POST['BirthDate1'], 'char', 10)."' ";
+        $sWhereExt .= "AND DATE_FORMAT(CONCAT(per_BirthYear,'-',per_BirthMonth,'-',per_BirthDay),'%Y-%m-%d') >= '" . InputUtils::legacyFilterInput($_POST['BirthDate1'], 'char', 10) . "' ";
     }
 
     if ($_POST['BirthDate2'] != date('Y-m-d')) {
-        $sWhereExt .= "AND DATE_FORMAT(CONCAT(per_BirthYear,'-',per_BirthMonth,'-',per_BirthDay),'%Y-%m-%d') <= '".InputUtils::LegacyFilterInput($_POST['BirthDate2'], 'char', 10)."' ";
+        $sWhereExt .= "AND DATE_FORMAT(CONCAT(per_BirthYear,'-',per_BirthMonth,'-',per_BirthDay),'%Y-%m-%d') <= '" . InputUtils::legacyFilterInput($_POST['BirthDate2'], 'char', 10) . "' ";
     }
 
     if (!empty($_POST['AnniversaryDate1'])) {
-        $annivStart = getdate(strtotime(InputUtils::LegacyFilterInput($_POST['AnniversaryDate1'])));
+        $annivStart = getdate(strtotime(InputUtils::legacyFilterInput($_POST['AnniversaryDate1'])));
 
         // Add year to query if not in future
         if ($annivStart['year'] < date('Y') || ($annivStart['year'] == date('Y') && $annivStart['mon'] <= date('m') && $annivStart['mday'] <= date('d'))) {
-            $sWhereExt .= "AND fam_WeddingDate >= '".InputUtils::LegacyFilterInput($_POST['AnniversaryDate1'], 'char', 10)."' ";
+            $sWhereExt .= "AND fam_WeddingDate >= '" . InputUtils::legacyFilterInput($_POST['AnniversaryDate1'], 'char', 10) . "' ";
         } else {
-            $sWhereExt .= "AND DAYOFYEAR(fam_WeddingDate) >= DAYOFYEAR('".InputUtils::LegacyFilterInput($_POST['AnniversaryDate1'], 'char', 10)."') ";
+            $sWhereExt .= "AND DAYOFYEAR(fam_WeddingDate) >= DAYOFYEAR('" . InputUtils::legacyFilterInput($_POST['AnniversaryDate1'], 'char', 10) . "') ";
         }
     }
 
     if ($_POST['AnniversaryDate2'] != date('Y-m-d')) {
-        $annivEnd = getdate(strtotime(InputUtils::LegacyFilterInput($_POST['AnniversaryDate2'], 'char', 10)));
+        $annivEnd = getdate(strtotime(InputUtils::legacyFilterInput($_POST['AnniversaryDate2'], 'char', 10)));
 
         // Add year to query if not in future
         if ($annivEnd['year'] < date('Y') || ($annivEnd['year'] == date('Y') && $annivEnd['mon'] <= date('m') && $annivEnd['mday'] <= date('d'))) {
-            $sWhereExt .= "AND  fam_WeddingDate <= '".InputUtils::LegacyFilterInput($_POST['AnniversaryDate2'], 'char', 10)."' ";
+            $sWhereExt .= "AND  fam_WeddingDate <= '" . InputUtils::legacyFilterInput($_POST['AnniversaryDate2'], 'char', 10) . "' ";
         } else {
             $refDate = getdate(strtotime($_POST['AnniversaryDate2']));
-            $sWhereExt .= "AND  DAYOFYEAR(fam_WeddingDate) <= DAYOFYEAR('".InputUtils::LegacyFilterInput($_POST['AnniversaryDate2'], 'char', 10)."') ";
+            $sWhereExt .= "AND  DAYOFYEAR(fam_WeddingDate) <= DAYOFYEAR('" . InputUtils::legacyFilterInput($_POST['AnniversaryDate2'], 'char', 10) . "') ";
         }
     }
 
     if (!empty($_POST['EnterDate1'])) {
-        $sWhereExt .= "AND per_DateEntered >= '".InputUtils::LegacyFilterInput($_POST['EnterDate1'], 'char', 10)."' ";
+        $sWhereExt .= "AND per_DateEntered >= '" . InputUtils::legacyFilterInput($_POST['EnterDate1'], 'char', 10) . "' ";
     }
     if ($_POST['EnterDate2'] != date('Y-m-d')) {
-        $sWhereExt .= "AND per_DateEntered <= '".InputUtils::LegacyFilterInput($_POST['EnterDate2'], 'char', 10)."' ";
+        $sWhereExt .= "AND per_DateEntered <= '" . InputUtils::legacyFilterInput($_POST['EnterDate2'], 'char', 10) . "' ";
     }
 }
 
@@ -207,10 +207,10 @@ if ($sFormat == 'addtocart') {
     $rsLabelsToWrite = RunQuery($sSQL);
     while ($aRow = mysqli_fetch_array($rsLabelsToWrite)) {
         extract($aRow);
-        Cart::AddPerson($per_ID);
+        Cart::addPerson($per_ID);
     }
     //// TODO: do this in API
-    RedirectUtils::Redirect("v2/cart");
+    RedirectUtils::redirect("v2/cart");
 } else {
     // Build the complete SQL statement
 
@@ -226,90 +226,90 @@ if ($sFormat == 'addtocart') {
     $rsLabelsToWrite = RunQuery($sSQL);
 
     //Produce Header Based on Selected Fields
-    $headerString = '"'.InputUtils::translate_special_charset("Family").' ID "'.$delimiter;
+    $headerString = '"' . InputUtils::translateSpecialCharset("Family") . ' ID "' . $delimiter;
     if ($sFormat == 'rollup') {
-        $headerString .= '"'.InputUtils::translate_special_charset("Name").'"'.$delimiter;
+        $headerString .= '"' . InputUtils::translateSpecialCharset("Name") . '"' . $delimiter;
         // Add Salutation for family here...
-        $headerString .= '"'.InputUtils::translate_special_charset("Salutation").'"'.$delimiter;
+        $headerString .= '"' . InputUtils::translateSpecialCharset("Salutation") . '"' . $delimiter;
     } else {
-        $headerString .= '"'.InputUtils::translate_special_charset("Person").' Id"'.$delimiter;
-        $headerString .= '"'.InputUtils::translate_special_charset("Last Name").'"'.$delimiter;
+        $headerString .= '"' . InputUtils::translateSpecialCharset("Person") . ' Id"' . $delimiter;
+        $headerString .= '"' . InputUtils::translateSpecialCharset("Last Name") . '"' . $delimiter;
         if (!empty($_POST['Title'])) {
-            $headerString .= '"'.InputUtils::translate_special_charset("Title").'"'.$delimiter;
+            $headerString .= '"' . InputUtils::translateSpecialCharset("Title") . '"' . $delimiter;
         }
         if (!empty($_POST['FirstName'])) {
-            $headerString .= '"'.InputUtils::translate_special_charset("First Name").'"'.$delimiter;
+            $headerString .= '"' . InputUtils::translateSpecialCharset("First Name") . '"' . $delimiter;
         }
         if (!empty($_POST['Suffix'])) {
-            $headerString .= '"'.InputUtils::translate_special_charset("Suffix").'"'.$delimiter;
+            $headerString .= '"' . InputUtils::translateSpecialCharset("Suffix") . '"' . $delimiter;
         }
         if (!empty($_POST['MiddleName'])) {
-            $headerString .= '"'.InputUtils::translate_special_charset("Middle Name").'"'.$delimiter;
+            $headerString .= '"' . InputUtils::translateSpecialCharset("Middle Name") . '"' . $delimiter;
         }
     }
 
     if (!empty($_POST['Address1'])) {
-        $headerString .= '"'.InputUtils::translate_special_charset("Address 1").'"'.$delimiter;
+        $headerString .= '"' . InputUtils::translateSpecialCharset("Address 1") . '"' . $delimiter;
     }
     if (!empty($_POST['Address2'])) {
-        $headerString .= '"'.InputUtils::translate_special_charset("Address 2").'"'.$delimiter;
+        $headerString .= '"' . InputUtils::translateSpecialCharset("Address 2") . '"' . $delimiter;
     }
     if (!empty($_POST['City'])) {
-        $headerString .= '"'.InputUtils::translate_special_charset("City").'"'.$delimiter;
+        $headerString .= '"' . InputUtils::translateSpecialCharset("City") . '"' . $delimiter;
     }
     if (!empty($_POST['State'])) {
-        $headerString .= '"'.InputUtils::translate_special_charset("State").'"'.$delimiter;
+        $headerString .= '"' . InputUtils::translateSpecialCharset("State") . '"' . $delimiter;
     }
     if (!empty($_POST['Zip'])) {
-        $headerString .= '"'.InputUtils::translate_special_charset("Zip").'"'.$delimiter;
+        $headerString .= '"' . InputUtils::translateSpecialCharset("Zip") . '"' . $delimiter;
     }
     if (!empty($_POST['Country'])) {
-        $headerString .= '"'.InputUtils::translate_special_charset("Country").'"'.$delimiter;
+        $headerString .= '"' . InputUtils::translateSpecialCharset("Country") . '"' . $delimiter;
     }
     if (!empty($_POST['HomePhone'])) {
-        $headerString .= '"'.InputUtils::translate_special_charset("Home Phone").'"'.$delimiter;
+        $headerString .= '"' . InputUtils::translateSpecialCharset("Home Phone") . '"' . $delimiter;
     }
     if (!empty($_POST['WorkPhone'])) {
-        $headerString .= '"'.InputUtils::translate_special_charset("Work Phone").'"'.$delimiter;
+        $headerString .= '"' . InputUtils::translateSpecialCharset("Work Phone") . '"' . $delimiter;
     }
     if (!empty($_POST['CellPhone'])) {
-        $headerString .= '"'.InputUtils::translate_special_charset("Cell Phone").'"'.$delimiter;
+        $headerString .= '"' . InputUtils::translateSpecialCharset("Cell Phone") . '"' . $delimiter;
     }
     if (!empty($_POST['Email'])) {
-        $headerString .= '"'.InputUtils::translate_special_charset("Email").'"'.$delimiter;
+        $headerString .= '"' . InputUtils::translateSpecialCharset("Email") . '"' . $delimiter;
     }
     if (!empty($_POST['WorkEmail'])) {
-        $headerString .= '"'.InputUtils::translate_special_charset("Work Email").'"'.$delimiter;
+        $headerString .= '"' . InputUtils::translateSpecialCharset("Work Email") . '"' . $delimiter;
     }
     if (!empty($_POST['Envelope'])) {
-        $headerString .= '"'.InputUtils::translate_special_charset("Envelope Number").'"'.$delimiter;
+        $headerString .= '"' . InputUtils::translateSpecialCharset("Envelope Number") . '"' . $delimiter;
     }
     if (!empty($_POST['MembershipDate'])) {
-        $headerString .= '"'.InputUtils::translate_special_charset("MembershipDate").'"'.$delimiter;
+        $headerString .= '"' . InputUtils::translateSpecialCharset("MembershipDate") . '"' . $delimiter;
     }
 
     if ($sFormat == 'default') {
         if (!empty($_POST['BirthdayDate'])) {
-            $headerString .= '"'.InputUtils::translate_special_charset("Birth Date").'"'.$delimiter;
+            $headerString .= '"' . InputUtils::translateSpecialCharset("Birth Date") . '"' . $delimiter;
         }
         if (!empty($_POST['Age'])) {
-            $headerString .= '"'.InputUtils::translate_special_charset("Age").'"'.$delimiter;
+            $headerString .= '"' . InputUtils::translateSpecialCharset("Age") . '"' . $delimiter;
         }
         if (!empty($_POST['PrintMembershipStatus'])) {
-            $headerString .= '"'.InputUtils::translate_special_charset("Classification").'"'.$delimiter;
+            $headerString .= '"' . InputUtils::translateSpecialCharset("Classification") . '"' . $delimiter;
         }
         if (!empty($_POST['PrintFamilyRole'])) {
-            $headerString .= '"'.InputUtils::translate_special_charset("Family Role").'"'.$delimiter;
+            $headerString .= '"' . InputUtils::translateSpecialCharset("Family Role") . '"' . $delimiter;
         }
         if (!empty($_POST['PrintGender'])) {
-            $headerString .= '"'.InputUtils::translate_special_charset("Gender").'"'.$delimiter;
+            $headerString .= '"' . InputUtils::translateSpecialCharset("Gender") . '"' . $delimiter;
         }
     } else {
         if (!empty($_POST['Birthday Date'])) {
-            $headerString .= '"'.InputUtils::translate_special_charset("AnnivDate").'"'.$delimiter;
+            $headerString .= '"' . InputUtils::translateSpecialCharset("AnnivDate") . '"' . $delimiter;
         }
         if (!empty($_POST['Age'])) {
-            $headerString .= '"'.InputUtils::translate_special_charset("Anniv").'"'.$delimiter;
+            $headerString .= '"' . InputUtils::translateSpecialCharset("Anniv") . '"' . $delimiter;
         }
     }
 
@@ -320,7 +320,7 @@ if ($sFormat == 'addtocart') {
             extract($aRow);
             if (isset($_POST["$custom_Field"])) {
                 $bUsedCustomFields = true;
-                $headerString .= "\"".InputUtils::translate_special_charset($custom_Name)."\"".$delimiter;
+                $headerString .= "\"" . InputUtils::translateSpecialCharset($custom_Name) . "\"" . $delimiter;
             }
         }
         while ($aFamRow = mysqli_fetch_array($rsFamCustomFields)) {
@@ -328,7 +328,7 @@ if ($sFormat == 'addtocart') {
             if (($aSecurityType[$fam_custom_FieldSec] == 'bAll') || ($_SESSION[$aSecurityType[$fam_custom_FieldSec]])) {
                 if (isset($_POST["$fam_custom_Field"])) {
                     $bUsedCustomFields = true;
-                    $headerString .= "\"".InputUtils::translate_special_charset($fam_custom_Name)."\"".$delimiter;
+                    $headerString .= "\"" . InputUtils::translateSpecialCharset($fam_custom_Name) . "\"" . $delimiter;
                 }
             }
         }
@@ -340,7 +340,7 @@ if ($sFormat == 'addtocart') {
             if (($aSecurityType[$fam_custom_FieldSec] == 'bAll') || ($_SESSION[$aSecurityType[$fam_custom_FieldSec]])) {
                 if (isset($_POST["$fam_custom_Field"])) {
                     $bUsedCustomFields = true;
-                    $headerString .= "\"".InputUtils::translate_special_charset($fam_custom_Name)."\"".$delimiter;
+                    $headerString .= "\"" . InputUtils::translateSpecialCharset($fam_custom_Name) . "\"" . $delimiter;
                 }
             }
         }
@@ -349,8 +349,8 @@ if ($sFormat == 'addtocart') {
     $headerString = mb_substr($headerString, 0, -1);
     $headerString .= "\n";
 
-    header('Content-type: text/x-csv;charset='.SystemConfig::getValue("sCSVExportCharset"));
-    header('Content-Disposition: attachment; filename=churchcrm-export-'.date(SystemConfig::getValue("sDateFilenameFormat")).'.csv');
+    header('Content-type: text/x-csv;charset=' . SystemConfig::getValue("sCSVExportCharset"));
+    header('Content-Disposition: attachment; filename=churchcrm-export-' . date(SystemConfig::getValue("sDateFilenameFormat")) . '.csv');
 
     //add BOM to fix UTF-8 in Excel 2016 but not under, so the problem is solved with the sCSVExportCharset variable
     if (SystemConfig::getValue("sCSVExportCharset") == "UTF-8") {
@@ -413,9 +413,8 @@ if ($sFormat == 'addtocart') {
             $sState = SelectWhichInfo($fam_State, $per_State, false);
             $sZip = SelectWhichInfo($fam_Zip, $per_Zip, false);
             $sEmail = SelectWhichInfo($fam_Email, $per_Email, false);
-        }
-        // Otherwise, the individual data gets precedence over the family data
-        else {
+        } else {
+            // Otherwise, the individual data gets precedence over the family data
             $sPhoneCountry = SelectWhichInfo($per_Country, $fam_Country, false);
             $sHomePhone = SelectWhichInfo(ExpandPhoneNumber($per_HomePhone, $sPhoneCountry, $dummy), ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy), false);
             $sWorkPhone = SelectWhichInfo(ExpandPhoneNumber($per_WorkPhone, $sPhoneCountry, $dummy), ExpandPhoneNumber($fam_WorkPhone, $fam_Country, $dummy), false);
@@ -434,106 +433,106 @@ if ($sFormat == 'addtocart') {
             // ** should move this to the WHERE clause
             if (!($bSkipNoEnvelope && (strlen($fam_Envelope) == 0))) {
                 // If we are doing family roll-up, we use a single, formatted name field
-                $sString = '"'.($fam_ID? $fam_ID : "");
+                $sString = '"' . ($fam_ID ? $fam_ID : "");
                 if ($sFormat == 'default') {
-                    $sString .= '"'.$delimiter.'"'.$per_ID;
-                    $sString .= '"'.$delimiter.'"'.$per_LastName;
+                    $sString .= '"' . $delimiter . '"' . $per_ID;
+                    $sString .= '"' . $delimiter . '"' . $per_LastName;
                     if (isset($_POST['Title'])) {
-                        $sString .= '"'.$delimiter.'"'.InputUtils::translate_special_charset($per_Title);
+                        $sString .= '"' . $delimiter . '"' . InputUtils::translateSpecialCharset($per_Title);
                     }
                     if (isset($_POST['FirstName'])) {
-                        $sString .= '"'.$delimiter.'"'.InputUtils::translate_special_charset($per_FirstName);
+                        $sString .= '"' . $delimiter . '"' . InputUtils::translateSpecialCharset($per_FirstName);
                     }
                     if (isset($_POST['Suffix'])) {
-                        $sString .= '"'.$delimiter.'"'.InputUtils::translate_special_charset($per_Suffix);
+                        $sString .= '"' . $delimiter . '"' . InputUtils::translateSpecialCharset($per_Suffix);
                     }
                     if (isset($_POST['MiddleName'])) {
-                        $sString .= '"'.$delimiter.'"'.InputUtils::translate_special_charset($per_MiddleName);
+                        $sString .= '"' . $delimiter . '"' . InputUtils::translateSpecialCharset($per_MiddleName);
                     }
                 } elseif ($sFormat == 'rollup') {
                     $family = FamilyQuery::create()->findPk($fam_ID);
                     if ($memberCount > 1) {
-                        $sString .= '"'.$delimiter.'"'.$family->getSalutation();
-                        $sString .= '"'.$delimiter.'"'.$family->getFirstNameSalutation();
+                        $sString .= '"' . $delimiter . '"' . $family->getSalutation();
+                        $sString .= '"' . $delimiter . '"' . $family->getFirstNameSalutation();
                     } else {
-                        $sString .= '"'.$delimiter.'"'.$per_FirstName.' '.$per_LastName;
-                        $sString .= '"'.$delimiter.'"'.$per_FirstName;
+                        $sString .= '"' . $delimiter . '"' . $per_FirstName . ' ' . $per_LastName;
+                        $sString .= '"' . $delimiter . '"' . $per_FirstName;
                     }
                 }
 
                 if (isset($_POST['Address1'])) {
-                    $sString .= '"'.$delimiter.'"'.InputUtils::translate_special_charset($sAddress1);
+                    $sString .= '"' . $delimiter . '"' . InputUtils::translateSpecialCharset($sAddress1);
                 }
                 if (isset($_POST['Address2'])) {
-                    $sString .= '"'.$delimiter.'"'.InputUtils::translate_special_charset($sAddress2);
+                    $sString .= '"' . $delimiter . '"' . InputUtils::translateSpecialCharset($sAddress2);
                 }
                 if (isset($_POST['City'])) {
-                    $sString .= '"'.$delimiter.'"'.InputUtils::translate_special_charset($sCity);
+                    $sString .= '"' . $delimiter . '"' . InputUtils::translateSpecialCharset($sCity);
                 }
                 if (isset($_POST['State'])) {
-                    $sString .= '"'.$delimiter.'"'.InputUtils::translate_special_charset($sState);
+                    $sString .= '"' . $delimiter . '"' . InputUtils::translateSpecialCharset($sState);
                 }
                 if (isset($_POST['Zip'])) {
-                    $sString .= '"'.$delimiter.'"'.$sZip;
+                    $sString .= '"' . $delimiter . '"' . $sZip;
                 }
                 if (isset($_POST['Country'])) {
-                    $sString .= '"'.$delimiter.'"'.InputUtils::translate_special_charset($sCountry);
+                    $sString .= '"' . $delimiter . '"' . InputUtils::translateSpecialCharset($sCountry);
                 }
                 if (isset($_POST['HomePhone'])) {
-                    $sString .= '"'.$delimiter.'"'.$sHomePhone;
+                    $sString .= '"' . $delimiter . '"' . $sHomePhone;
                 }
                 if (isset($_POST['WorkPhone'])) {
-                    $sString .= '"'.$delimiter.'"'.$sWorkPhone;
+                    $sString .= '"' . $delimiter . '"' . $sWorkPhone;
                 }
                 if (isset($_POST['CellPhone'])) {
-                    $sString .= '"'.$delimiter.'"'.$sCellPhone;
+                    $sString .= '"' . $delimiter . '"' . $sCellPhone;
                 }
                 if (isset($_POST['Email'])) {
-                    $sString .= '"'.$delimiter.'"'.$sEmail;
+                    $sString .= '"' . $delimiter . '"' . $sEmail;
                 }
                 if (isset($_POST['WorkEmail'])) {
-                    $sString .= '"'.$delimiter.'"'.$per_WorkEmail;
+                    $sString .= '"' . $delimiter . '"' . $per_WorkEmail;
                 }
                 if (isset($_POST['Envelope'])) {
-                    $sString .= '"'.$delimiter.'"'.$fam_Envelope;
+                    $sString .= '"' . $delimiter . '"' . $fam_Envelope;
                 }
                 if (isset($_POST['MembershipDate'])) {
-                    $sString .= '"'.$delimiter.'"'.$per_MembershipDate;
+                    $sString .= '"' . $delimiter . '"' . $per_MembershipDate;
                 }
 
                 if ($sFormat == 'default') {
                     if (isset($_POST['BirthdayDate'])) {
-                        $sString .= '"'.$delimiter.'"';
+                        $sString .= '"' . $delimiter . '"';
                         if ($per_BirthYear != '') {
-                            $sString .= $per_BirthYear.'-';
+                            $sString .= $per_BirthYear . '-';
                         } else {
                             $sString .= '';
                         }
-                        $sString .= $per_BirthMonth.'-'.$per_BirthDay;
+                        $sString .= $per_BirthMonth . '-' . $per_BirthDay;
                     }
 
                     if (isset($_POST['Age'])) {
                         if (isset($per_BirthYear)) {
-                            $age = MiscUtils::FormatAge($per_BirthMonth, $per_BirthDay, $per_BirthYear, 0);
+                            $age = MiscUtils::formatAge($per_BirthMonth, $per_BirthDay, $per_BirthYear, 0);
                         } else {
                             $age = '';
                         }
 
-                        $sString .= '"'.$delimiter.'"'.$age;
+                        $sString .= '"' . $delimiter . '"' . $age;
                     }
 
                     if (isset($_POST['PrintMembershipStatus'])) {
-                        $sString .= '"'.$delimiter.'"'.InputUtils::translate_special_charset($memberClass[$per_cls_ID]);
+                        $sString .= '"' . $delimiter . '"' . InputUtils::translateSpecialCharset($memberClass[$per_cls_ID]);
                     }
                     if (isset($_POST['PrintFamilyRole'])) {
-                        $sString .= '"'.$delimiter.'"'.InputUtils::translate_special_charset($familyRoles[$per_fmr_ID]);
+                        $sString .= '"' . $delimiter . '"' . InputUtils::translateSpecialCharset($familyRoles[$per_fmr_ID]);
                     }
                     if (isset($_POST['PrintGender'])) {
-                        $sString .= '"'.$delimiter.'"'.InputUtils::translate_special_charset($person->getGenderName());
+                        $sString .= '"' . $delimiter . '"' . InputUtils::translateSpecialCharset($person->getGenderName());
                     }
                 } else {
                     if (isset($_POST['BirthdayDate'])) {
-                        $sString .= '"'.$delimiter.'"'.$fam_WeddingDate;
+                        $sString .= '"' . $delimiter . '"' . $fam_WeddingDate;
                     }
 
                     if (isset($_POST['Age'])) {
@@ -544,12 +543,12 @@ if ($sFormat == 'addtocart') {
                             $age = '';
                         }
 
-                        $sString .= '"'.$delimiter.'"'.$age;
+                        $sString .= '"' . $delimiter . '"' . $age;
                     }
                 }
 
                 if ($bUsedCustomFields && ($sFormat == 'default')) {
-                    $sSQLcustom = 'SELECT * FROM person_custom WHERE per_ID = '.$per_ID;
+                    $sSQLcustom = 'SELECT * FROM person_custom WHERE per_ID = ' . $per_ID;
                     $rsCustomData = RunQuery($sSQLcustom);
                     $aCustomData = mysqli_fetch_array($rsCustomData);
 
@@ -567,13 +566,13 @@ if ($sFormat == 'addtocart') {
                                     if ($type_ID == 11) {
                                         $custom_Special = $sCountry;
                                     }
-                                    $sString .= '"'.$delimiter.'"'.InputUtils::translate_special_charset(displayCustomField($type_ID, trim($aCustomData[$custom_Field]), $custom_Special));
+                                    $sString .= '"' . $delimiter . '"' . InputUtils::translateSpecialCharset(displayCustomField($type_ID, trim($aCustomData[$custom_Field]), $custom_Special));
                                 }
                             }
                         }
                     }
 
-                    $sSQLFamCustom = 'SELECT * FROM family_custom WHERE fam_ID = '.$per_fam_ID;
+                    $sSQLFamCustom = 'SELECT * FROM family_custom WHERE fam_ID = ' . $per_fam_ID;
                     $rsFamCustomData = RunQuery($sSQLFamCustom);
                     $aFamCustomData = mysqli_fetch_array($rsFamCustomData);
 
@@ -590,14 +589,14 @@ if ($sFormat == 'addtocart') {
                                 if ($type_ID == 11) {
                                     $fam_custom_Special = $sCountry;
                                 }
-                                $sString .= '"'.$delimiter.'"'.InputUtils::translate_special_charset(displayCustomField($type_ID, trim($aFamCustomData[$fam_custom_Field]), $fam_custom_Special));
+                                $sString .= '"' . $delimiter . '"' . InputUtils::translateSpecialCharset(displayCustomField($type_ID, trim($aFamCustomData[$fam_custom_Field]), $fam_custom_Special));
                             }
                         }
                     }
                 }
 
                 if ($bUsedCustomFields && ($sFormat == 'rollup')) {
-                    $sSQLFamCustom = 'SELECT * FROM family_custom WHERE fam_ID = '.$per_fam_ID;
+                    $sSQLFamCustom = 'SELECT * FROM family_custom WHERE fam_ID = ' . $per_fam_ID;
                     $rsFamCustomData = RunQuery($sSQLFamCustom);
                     $aFamCustomData = mysqli_fetch_array($rsFamCustomData);
 
@@ -614,7 +613,7 @@ if ($sFormat == 'addtocart') {
                                 if ($type_ID == 11) {
                                     $fam_custom_Special = $sCountry;
                                 }
-                                $sString .= '"'.$delimiter.'"'.InputUtils::translate_special_charset(displayCustomField($type_ID, trim($aFamCustomData[$fam_custom_Field]), $fam_custom_Special));
+                                $sString .= '"' . $delimiter . '"' . InputUtils::translateSpecialCharset(displayCustomField($type_ID, trim($aFamCustomData[$fam_custom_Field]), $fam_custom_Special));
                             }
                         }
                     }

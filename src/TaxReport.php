@@ -1,14 +1,11 @@
 <?php
+
 /*******************************************************************************
  *
  *  filename    : TaxReport.php
  *  last change : 2003-09-03
  *  description : form to invoke tax letter generation
  *
-
-
-
-
  *
  ******************************************************************************/
 
@@ -21,8 +18,8 @@ use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Authentication\AuthenticationManager;
 
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
-if (!AuthenticationManager::GetCurrentUser()->isAdmin() && SystemConfig::getValue('bCSVAdminOnly')) {
-    RedirectUtils::Redirect('Menu.php');
+if (!AuthenticationManager::getCurrentUser()->isAdmin() && SystemConfig::getValue('bCSVAdminOnly')) {
+    RedirectUtils::redirect('Menu.php');
     exit;
 }
 
@@ -32,8 +29,8 @@ require 'Include/Header.php';
 
 // Is this the second pass?
 if (isset($_POST['Submit'])) {
-    $iYear = InputUtils::LegacyFilterInput($_POST['Year'], 'int');
-    RedirectUtils::Redirect('Reports/TaxReport.php?Year='.$iYear);
+    $iYear = InputUtils::legacyFilterInput($_POST['Year'], 'int');
+    RedirectUtils::redirect('Reports/TaxReport.php?Year=' . $iYear);
 } else {
     $iYear = date('Y') - 1;
 }

@@ -16,7 +16,7 @@ class TimelineService
 
     public function __construct()
     {
-        $this->currentUser = AuthenticationManager::GetCurrentUser();
+        $this->currentUser = AuthenticationManager::getCurrentUser();
     }
 
     public function getForFamily($familyID)
@@ -25,7 +25,7 @@ class TimelineService
         $familyNotes = NoteQuery::create()->findByFamId($familyID);
         foreach ($familyNotes as $dbNote) {
             $item = $this->noteToTimelineItem($dbNote);
-            if (!is_null($item)) {
+            if ($item !== null) {
                 $timeline[$item['key']] = $item;
             }
         }
@@ -47,10 +47,16 @@ class TimelineService
         foreach ($eventsByPerson as $personEvent) {
             $event = $personEvent->getEvent();
             if ($event != null) {
-                $item = $this->createTimeLineItem($event->getId(), 'cal',
+                $item = $this->createTimeLineItem(
+                    $event->getId(),
+                    'cal',
                     $event->getStart('Y-m-d h:i:s'),
-                    $event->getTitle(), '',
-                    $event->getDesc(), '', '');
+                    $event->getTitle(),
+                    '',
+                    $event->getDesc(),
+                    '',
+                    ''
+                );
                 $timeline[$item['key']] = $item;
             }
         }
@@ -67,7 +73,7 @@ class TimelineService
         }
         foreach ($personQuery->find() as $dbNote) {
             $item = $this->noteToTimelineItem($dbNote);
-            if (!is_null($item)) {
+            if ($item !== null) {
                 $timeline[$item['key']] = $item;
             }
         }
@@ -124,9 +130,17 @@ class TimelineService
                     $displayEditedBy = $editor->getFullName();
                 }
             }
-            $item = $this->createTimeLineItem($dbNote->getId(), $dbNote->getType(), $dbNote->getDisplayEditedDate(),
-                $dbNote->getDisplayEditedDate("Y"),gettext('by') . ' ' . $displayEditedBy, '', $dbNote->getText(),
-                $dbNote->getEditLink(), $dbNote->getDeleteLink());
+            $item = $this->createTimeLineItem(
+                $dbNote->getId(),
+                $dbNote->getType(),
+                $dbNote->getDisplayEditedDate(),
+                $dbNote->getDisplayEditedDate("Y"),
+                gettext('by') . ' ' . $displayEditedBy,
+                '',
+                $dbNote->getText(),
+                $dbNote->getEditLink(),
+                $dbNote->getDeleteLink()
+            );
         }
 
         return $item;
@@ -145,6 +159,7 @@ class TimelineService
                 break;
             case 'photo':
                 $item['style'] = 'fa-camera bg-green';
+                break;
             case 'group':
                 $item['style'] = 'fa-users bg-gray';
                 break;
@@ -153,8 +168,10 @@ class TimelineService
                 break;
             case 'verify':
                 $item['style'] = 'fa-circle-check bg-teal';
+                break;
             case 'verify-link':
                 $item['style'] = 'fa-circle-check bg-teal';
+                break;
             case 'verify-URL':
                 $item['style'] = 'fa-circle-check bg-teal';
                 break;
@@ -173,7 +190,7 @@ class TimelineService
 
         $item['datetime'] = $datetime;
         $item['year'] = $year;
-        $item['key'] = $datetime.'-'.$id;
+        $item['key'] = $datetime . '-' . $id;
 
         return $item;
     }

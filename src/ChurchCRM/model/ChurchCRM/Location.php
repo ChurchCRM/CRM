@@ -16,5 +16,4 @@ use ChurchCRM\Base\Location as BaseLocation;
  */
 class Location extends BaseLocation
 {
-
 }

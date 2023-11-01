@@ -31,4 +31,4 @@ function updateUserConfig(Request $request, Response $response, array $args)
     if ($user->getUserConfigString($userConfigName) == $newValue) {
         return $response->withJson([$userConfigName => $newValue]);
     }
-};
+}

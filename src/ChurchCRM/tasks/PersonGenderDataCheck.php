@@ -6,7 +6,7 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\PersonQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
 
-class PersonGenderDataCheck implements iTask
+class PersonGenderDataCheck implements TaskInterface
 {
     private $count;
 
@@ -43,5 +43,4 @@ class PersonGenderDataCheck implements iTask
     {
         return gettext("Missing Gender Data for Some People");
     }
-
 }

@@ -1,6 +1,5 @@
 <?php
 
-
 namespace ChurchCRM\Tasks;
 
 use ChurchCRM\dto\SystemURLs;
@@ -38,5 +37,4 @@ class CheckExecutionTimeTask
     {
         return gettext("Increase the PHP execution time limit to allow for backup and restore.");
     }
-
 }

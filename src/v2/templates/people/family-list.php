@@ -1,6 +1,5 @@
 <?php
 
-
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 
@@ -36,7 +35,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <!--Populate the table with family details -->
             <?php foreach ($families as $family) {
               /* @var $family ChurchCRM\Family */
-    ?>
+                ?>
             <tr>
               <td><a href='<?= SystemURLs::getRootPath()?>/v2/family/<?= $family->getId() ?>'>
                       <i class="fa fa-search-plus"></i>
@@ -51,13 +50,13 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <td><?= $family->getEmail() ?></td>
                 <td><?= date_format($family->getDateEntered(), SystemConfig::getValue('sDateFormatLong')) ?></td>
                 <td>
-                  <?php if ($family->getDateLastEdited()) { 
-                    echo date_format($family->getDateLastEdited(), SystemConfig::getValue('sDateFormatLong')); 
+                  <?php if ($family->getDateLastEdited()) {
+                        echo date_format($family->getDateLastEdited(), SystemConfig::getValue('sDateFormatLong'));
                   } ?>
                 </td>
 
             </tr>
-<?php } ?>
+            <?php } ?>
             </tbody>
         </table>
     </div>

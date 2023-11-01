@@ -1,6 +1,5 @@
 <?php
 
-
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\Classification;
 use ChurchCRM\dto\SystemConfig;
@@ -11,7 +10,7 @@ use ChurchCRM\Service\MailChimpService;
 $sPageTitle =  $family->getName() . " - " . gettext("Family");
 include SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
-$curYear = (new DateTime)->format("Y");
+$curYear = (new DateTime())->format("Y");
 $familyAddress = $family->getAddress();
 $mailchimp = new MailChimpService();
 ?>
@@ -21,7 +20,7 @@ $mailchimp = new MailChimpService();
     window.CRM.currentFamilyName = "<?= $family->getName() ?>";
     window.CRM.currentActive = <?= $family->isActive() ? "true" : "false" ?>;
     window.CRM.currentFamilyView = 2;
-    window.CRM.plugin.mailchimp = <?= $mailchimp->isActive()? "true" : "false" ?>;
+    window.CRM.plugin.mailchimp = <?= $mailchimp->isActive() ? "true" : "false" ?>;
 </script>
 
 
@@ -50,7 +49,7 @@ $mailchimp = new MailChimpService();
                                     <a id="view-larger-image-btn" href="#" title="<?= gettext("View Photo") ?>">
                                         <i class="fa fa-search-plus"></i>
                                     </a>
-                                    <?php if (AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled()): ?>
+                                    <?php if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) : ?>
                                         &nbsp;
                                         <a href="#" data-toggle="modal" data-target="#upload-image"
                                            title="<?= gettext("Upload Photo") ?>">
@@ -89,19 +88,19 @@ $mailchimp = new MailChimpService();
                            href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?FamilyID=<?=$family->getId()?>"><i
                                 class="fa fa-plus-square"></i> <?= gettext('Add New Member') ?></a>
 
-                        <?php if (AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled()) { ?>
+                        <?php if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) { ?>
                             <button class="btn btn-app bg-orange" id="activateDeactivate">
                                 <i class="fa <?= (empty($family->isActive()) ? 'fa-toggle-on' : 'fa-toggle-off') ?> "></i><?php echo(($family->isActive() ? _('Deactivate') : _('Activate')) . _(' this Family')); ?>
                             </button>
                         <?php }
-                        if (AuthenticationManager::GetCurrentUser()->isDeleteRecordsEnabled()) {
+                        if (AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled()) {
                             ?>
                             <a id="deleteFamilyBtn" class="btn btn-app bg-maroon"
                                href="<?= SystemURLs::getRootPath() ?>/SelectDelete.php?FamilyID=<?=$family->getId()?>"><i
                                         class="fa fa-trash-can"></i><?= gettext('Delete this Family') ?></a>
                             <?php
                         }
-                        if (AuthenticationManager::GetCurrentUser()->isNotesEnabled()) {
+                        if (AuthenticationManager::getCurrentUser()->isNotesEnabled()) {
                             ?>
                             <a class="btn btn-app"
                                href="<?= SystemURLs::getRootPath() ?>/NoteEditor.php?FamilyID=<?= $family->getId()?>"><i
@@ -110,12 +109,12 @@ $mailchimp = new MailChimpService();
                         } ?>
                         <a class="btn btn-app" id="AddFamilyToCart" data-familyid="<?= $family->getId() ?>"> <i
                                 class="fa fa-cart-plus"></i> <?= gettext("Add All Family Members to Cart") ?></a>
-                        <?php if (AuthenticationManager::GetCurrentUser()->isCanvasserEnabled()) { ?>
+                        <?php if (AuthenticationManager::getCurrentUser()->isCanvasserEnabled()) { ?>
                             <a class="btn btn-app" href="<?= SystemURLs::getRootPath()?>/CanvassEditor.php?FamilyID=<?= $family->getId() ?>&FYID=<?= MakeFYString($_SESSION['idefaultFY']) ?>&amp;linkBack=v2/family/<?= $family->getId() ?>">
                                 <i class="fas fa-refresh"></i><?= MakeFYString($_SESSION['idefaultFY']) . gettext(" Canvass Entry") ?></a>
                         <?php } ?>
 
-                        <?php if (AuthenticationManager::GetCurrentUser()->isFinanceEnabled()) { ?>
+                        <?php if (AuthenticationManager::getCurrentUser()->isFinanceEnabled()) { ?>
                             <a class="btn btn-app"
                                href="<?= SystemURLs::getRootPath()?>/PledgeEditor.php?FamilyID=<?= $family->getId() ?>&amp;linkBack=v2/family/<?= $family->getId() ?>&amp;PledgeOrPayment=Pledge">
                                 <i class="fa fa-hand-holding-dollar"></i><?= gettext("Add a new pledge") ?></a>
@@ -145,15 +144,15 @@ $mailchimp = new MailChimpService();
                             <?php
                             if (!SystemConfig::getBooleanValue("bHideFamilyNewsletter")) { /* Newsletter can be hidden - General Settings */ ?>
                                 <li><i class="fa-li fa fa-hacker-news"></i><?= gettext("Send Newsletter") ?>:
-                                    <span style="color:<?= ($family->isSendNewsletter()? "green" : "red") ?>"><i
+                                    <span style="color:<?= ($family->isSendNewsletter() ? "green" : "red") ?>"><i
                                             class="fa fa-<?= ($family->isSendNewsletter() ? "check" : "times") ?>"></i></span>
                                 </li>
-<?php
+                                <?php
                             }
                             if (!SystemConfig::getBooleanValue("bHideWeddingDate") && !empty($family->getWeddingdate())) { /* Wedding Date can be hidden - General Settings */ ?>
                                 <li><i class="fa-li fa fa-magic"></i><?= gettext("Wedding Date") ?>:
                                     <span><?= $family->getWeddingDate()->format(SystemConfig::getValue("sDateFormatLong")) ?></span></li>
-<?php
+                                <?php
                             }
                             if (SystemConfig::getValue("bUseDonationEnvelopes")) {
                                 ?>
@@ -194,7 +193,7 @@ $mailchimp = new MailChimpService();
                                 <?php }
                             }
                             foreach ($familyCustom as $customField) {
-                                echo '<li><i class="fa-li ' . $customField->getIcon() . '"></i>'. $customField->getDisplayValue().': <span>';
+                                echo '<li><i class="fa-li ' . $customField->getIcon() . '"></i>' . $customField->getDisplayValue() . ': <span>';
                                 if ($customField->getLink()) {
                                     echo "<a href=\"" . $customField->getLink() . "\">" . $customField->getFormattedValue() . "</a>";
                                 } else {
@@ -283,7 +282,7 @@ $mailchimp = new MailChimpService();
                                                 if ($formattedBirthday) {?>
                                                 <i class="fa fa-fw fa-birthday-cake"
                                                    title="<?= gettext("Birthday") ?>"></i>
-                                                <?= $formattedBirthday ?>  <?= $person->getAge()?>
+                                                    <?= $formattedBirthday ?>  <?= $person->getAge()?>
                                                 </i>
                                                 <?php } ?>
                                             </li>
@@ -305,7 +304,7 @@ $mailchimp = new MailChimpService();
             <div class="card-header">
                 <h3 class="card-title"><i class="fa fa-hashtag"></i> <?= gettext("Properties") ?></h3>
                 <div class="card-tools pull-right">
-                    <?php if (AuthenticationManager::GetCurrentUser()->isEditRecordsEnabled()) { ?>
+                    <?php if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) { ?>
                     <button id="add-family-property" type="button" class="btn btn-box-tool hidden"><i class="fa fa-plus-circle text-blue"></i></button>
                     <?php } ?>
 
@@ -406,8 +405,8 @@ $mailchimp = new MailChimpService();
                             <i class="fa <?= $item['style'] ?>"></i>
                             <div class="timeline-item">
                                 <span class="time">
-                                    <?php if (AuthenticationManager::GetCurrentUser()->isNotesEnabled() && (isset($item["editLink"]) || isset($item["deleteLink"]))) {
-                                    ?>
+                                    <?php if (AuthenticationManager::getCurrentUser()->isNotesEnabled() && (isset($item["editLink"]) || isset($item["deleteLink"]))) {
+                                        ?>
                                         <?php if (isset($item["editLink"])) { ?>
                                             <a href="<?= $item["editLink"] ?>"><button type="button" class="btn btn-xs btn-primary"><i class="fa fa-pen"></i></button></a>
                                         <?php }
@@ -415,8 +414,8 @@ $mailchimp = new MailChimpService();
                                             <a href="<?= $item["deleteLink"] ?>"><button type="button" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i></button></a>
                                         <?php } ?>
                                         &nbsp;
-                                    <?php
-                                } ?>
+                                        <?php
+                                    } ?>
                                 <i class="fa fa-clock"></i> <?= $item['datetime'] ?></span>
                                 <?php if ($item['slim']) { ?>
                                     <h4 class="timeline-header">
@@ -453,8 +452,8 @@ $mailchimp = new MailChimpService();
     </div>
 </div>
 
-<?php if (AuthenticationManager::GetCurrentUser()->isFinanceEnabled()) {
-?>
+<?php if (AuthenticationManager::getCurrentUser()->isFinanceEnabled()) {
+    ?>
 <div class="row">
     <div class="col-lg-12">
         <div class="row">
@@ -463,18 +462,18 @@ $mailchimp = new MailChimpService();
                 <div class="card-header">
                     <h3 class="card-title"><i class="fa fa-circle-dollar-to-slot"></i> <?= gettext("Pledges and Payments") ?></h3>
                     <div class="card-tools pull-right">
-                        <input type="checkbox" id="ShowPledges" <?= AuthenticationManager::GetCurrentUser()->isShowPledges() ? "checked" : "" ?>> <?= gettext("Show Pledges") ?>
-                        <input type="checkbox" id="ShowPayments" <?= AuthenticationManager::GetCurrentUser()->isShowPayments() ? "checked" : "" ?>> <?= gettext("Show Payments") ?>
+                        <input type="checkbox" id="ShowPledges" <?= AuthenticationManager::getCurrentUser()->isShowPledges() ? "checked" : "" ?>> <?= gettext("Show Pledges") ?>
+                        <input type="checkbox" id="ShowPayments" <?= AuthenticationManager::getCurrentUser()->isShowPayments() ? "checked" : "" ?>> <?= gettext("Show Payments") ?>
                         <label for="ShowSinceDate"><?= gettext("Since") ?>:</label>
                         <input type="text" class="date-picker" id="ShowSinceDate"
-                               value="<?= AuthenticationManager::GetCurrentUser()->getShowSince() ?>" maxlength="10" id="ShowSinceDate" size="15">
+                               value="<?= AuthenticationManager::getCurrentUser()->getShowSince() ?>" maxlength="10" id="ShowSinceDate" size="15">
                     </div>
                 </div>
                 <div class="card-body">
                     <table id="pledge-payment-v2-table" class="table table-striped table-bordered table-responsive data-table">
                         <tbody></tbody>
                     </table>
-                    <?php } ?>
+<?php } ?>
                 </div>
             </div>
         </div>
@@ -550,17 +549,17 @@ $mailchimp = new MailChimpService();
                 <b><?= gettext("Select how do you want to request the family information to be verified") ?></b>
                 <p>
                     <?php if (count($family->getEmails()) > 0) {
-                    ?>
+                        ?>
                 <p><?= gettext("You are about to email copy of the family information to the following emails") ?>
                 <ul>
-                    <?php foreach ($family->getEmails() as $tmpEmail) { ?>
+                        <?php foreach ($family->getEmails() as $tmpEmail) { ?>
                         <li><?= $tmpEmail ?></li>
-                    <?php } ?>
+                        <?php } ?>
                 </ul>
                 </p>
             </div>
-            <?php
-            } ?>
+                        <?php
+                    } ?>
             <div class="modal-footer text-center">
                 <?php if (count($family->getEmails()) > 0 && !empty(SystemConfig::getValue('sSMTPHost'))) {
                     ?>
