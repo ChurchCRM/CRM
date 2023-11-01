@@ -16,7 +16,6 @@ use ChurchCRM\Tasks\PersonClassificationDataCheck;
 use ChurchCRM\Tasks\PersonGenderDataCheck;
 use ChurchCRM\Tasks\PersonRoleDataCheck;
 use ChurchCRM\Tasks\PrerequisiteCheckTask;
-use ChurchCRM\Tasks\RegisteredTask;
 use ChurchCRM\Tasks\UpdateFamilyCoordinatesTask;
 use ChurchCRM\Tasks\CheckExecutionTimeTask;
 use ChurchCRM\Tasks\PreUpgradeTaskInterface;
@@ -45,7 +44,6 @@ class TaskService
             new HttpsTask(),
             new IntegrityCheckTask(),
             new LatestReleaseTask(),
-            new RegisteredTask(),
             new PersonGenderDataCheck(),
             new PersonClassificationDataCheck(),
             new PersonRoleDataCheck(),
