@@ -291,7 +291,7 @@ class User extends BaseUser
 
     public function getSettingValue($name) {
         $userSetting = $this->getSetting($name);
-        return $userSetting === null ? "" : $userSetting->getValue();
+        return (is_null($userSetting) ? "" : $userSetting->getValue());
     }
 
     public function getSetting($name) {
@@ -304,12 +304,12 @@ class User extends BaseUser
     }
 
     public function getStyle(){
-        $skin = $this->getSetting(UserSetting::UI_STYLE) ?? 'skin-red';
+        $skin = is_null($this->getSetting(UserSetting::UI_STYLE)) ? "skin-red" : $this->getSetting(UserSetting::UI_STYLE);
         $cssClasses = [];
         array_push($cssClasses, $skin);
         array_push($cssClasses, $this->getSetting(UserSetting::UI_BOXED));
         array_push($cssClasses, $this->getSetting(UserSetting::UI_SIDEBAR));
-        return implode(' ', $cssClasses);
+        return implode(" ", $cssClasses);
     }
 
     public function isShowPledges() {

@@ -63,11 +63,11 @@ class Person extends BasePerson implements iPhoto
 
     public function getBirthDate()
     {
-        if ($this->getBirthDay() !== null && $this->getBirthDay() !== '' &&
-            $this->getBirthMonth() !== null && $this->getBirthMonth() !== ''
+        if (!is_null($this->getBirthDay()) && $this->getBirthDay() != '' &&
+            !is_null($this->getBirthMonth()) && $this->getBirthMonth() != ''
         ) {
             $birthYear = $this->getBirthYear();
-            if ($birthYear === '')
+            if ($birthYear == '')
             {
               $birthYear = 1900;
             }
@@ -114,7 +114,7 @@ class Person extends BasePerson implements iPhoto
     {
         $roleName = '';
         $role = $this->getFamilyRole();
-        if ($role !== null) {
+        if (!is_null($role)) {
             $roleName = $this->getFamilyRole()->getOptionName();
         }
 
@@ -135,7 +135,7 @@ class Person extends BasePerson implements iPhoto
     {
       $classificationName = '';
       $classification = $this->getClassification();
-      if ($classification !== null) {
+      if (!is_null($classification)) {
         $classificationName = $classification->getOptionName();
       }
       return $classificationName;
@@ -187,7 +187,7 @@ class Person extends BasePerson implements iPhoto
     {
         $user = UserQuery::create()->findPk($this->getId());
 
-        return $user !== null;
+        return !is_null($user);
     }
 
     /**
@@ -521,12 +521,12 @@ class Person extends BasePerson implements iPhoto
         }
 
         $perCustom = PersonCustomQuery::create()->findPk($this->getId(), $con);
-        if ($perCustom !== null) {
+        if (!is_null($perCustom)) {
             $perCustom->delete($con);
         }
 
         $user = UserQuery::create()->findPk($this->getId(), $con);
-        if ($user !== null) {
+        if (!is_null($user)) {
             $user->delete($con);
         }
 

@@ -64,7 +64,7 @@ class Family extends BaseFamily implements iPhoto
 
     public function getWeddingDay()
     {
-        if ($this->getWeddingdate() !== null && $this->getWeddingdate() !== '') {
+        if (!is_null($this->getWeddingdate()) && $this->getWeddingdate() != '') {
             $day = $this->getWeddingdate()->format('d');
 
             return $day;
@@ -75,7 +75,7 @@ class Family extends BaseFamily implements iPhoto
 
     public function getWeddingMonth()
     {
-        if ($this->getWeddingdate() !== null && $this->getWeddingdate() !== '') {
+        if (!is_null($this->getWeddingdate()) && $this->getWeddingdate() != '') {
             $month = $this->getWeddingdate()->format('m');
 
             return $month;

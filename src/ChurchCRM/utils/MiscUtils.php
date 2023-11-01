@@ -63,7 +63,7 @@ class MiscUtils {
 
   public static function FormatAge($Month, $Day, $Year, $Flags)
   {
-       if ($Flags || $Year === null || $Year === '') {
+       if ($Flags || is_null($Year) || $Year == '') {
           return;
       }
       
@@ -88,7 +88,7 @@ class MiscUtils {
       if (!$birthDate) {
         return false;
       }
-      if ($bFlags || $per_BirthYear === null || $per_BirthYear === '') {
+      if ($bFlags || is_null($per_BirthYear) || $per_BirthYear == '') {
         return $birthDate->format(SystemConfig::getValue("sDateFormatNoYear"));  
       }
 
@@ -97,8 +97,8 @@ class MiscUtils {
   
   public static function BirthDate($year, $month, $day)
   {
-     if (!$day !== null && $day !== '' && $month !== null && $month !== '') {
-        if ($year === null || $year === '') {
+     if (!is_null($day) && $day != '' && !is_null($month) && $month != '') {
+        if (is_null($year) || $year == '') {
           $year = 1900;
         }
 
