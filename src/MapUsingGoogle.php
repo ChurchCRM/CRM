@@ -215,8 +215,8 @@ $iGroupID = InputUtils::LegacyFilterInput($_GET['GroupID'], 'int');
             });
 
             <?php
-            $arr = [];
-        $arrPlotItems = [];
+            $arr = array();
+        $arrPlotItems = array();
         if ($plotFamily) {
             foreach ($families as $family) {
                 if ($family->hasLatitudeAndLongitude()) {
