@@ -8,17 +8,14 @@ require_once __DIR__ . '/../vendor/autoload.php';
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Slim\Middleware\AuthMiddleware;
 use ChurchCRM\Slim\Middleware\VersionMiddleware;
-use Slim\App;
-use Slim\Container;
+use Slim\Factory\AppFactory;
 use Slim\HttpCache\CacheProvider;
 
-// Instantiate the app
-$container = new Container();
+$app = AppFactory::create();
+$app->setBasePath('/api');
+
+$container = $app->getContainer();
 $container['cache'] = fn () => new CacheProvider();
-
-// Add middleware to the application
-$app = new App($container);
-
 
 # Add middleware - executed in reverse order of appearing here.
 $app->add(new VersionMiddleware());
@@ -76,7 +73,6 @@ require __DIR__ . '/routes/users/user.php';
 require __DIR__ . '/routes/users/user-admin.php';
 require __DIR__ . '/routes/users/user-current.php';
 require __DIR__ . '/routes/users/user-settings.php';
-
 
 if (SystemConfig::debugEnabled()) {
     $app->addErrorMiddleware(true, true, true);

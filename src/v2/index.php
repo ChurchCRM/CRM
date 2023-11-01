@@ -9,13 +9,12 @@ require_once __DIR__ . '/../vendor/autoload.php';
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Slim\Middleware\AuthMiddleware;
 use ChurchCRM\Slim\Middleware\VersionMiddleware;
-use Slim\App;
-use Slim\Container;
+use Slim\Factory\AppFactory;
+use Slim\HttpCache\CacheProvider;
 
-$container = new Container();
-
-// Add middleware to the application
-$app = new App($container);
+$app = AppFactory::create();
+$container = $app->getContainer();
+$app->setBasePath('/v2');
 
 $app->add(new VersionMiddleware());
 $app->add(new AuthMiddleware());

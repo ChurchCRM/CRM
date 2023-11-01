@@ -16,14 +16,10 @@ use Slim\Views\PhpRenderer;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Slim\Middleware\VersionMiddleware;
 use ChurchCRM\dto\SystemConfig;
+use Slim\Factory\AppFactory;
 
-// Instantiate the app
-$container = new Container();
-if (SystemConfig::debugEnabled()) {
-    $container["settings"]['displayErrorDetails'] = true;
-}
-// Add middleware to the application
-$app = new App($container);
+$app = AppFactory::create();
+$container = $app->getContainer();
 
 $app->add(new VersionMiddleware());
 
