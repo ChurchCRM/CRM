@@ -11,9 +11,13 @@ use Monolog\Logger;
 class SystemConfig
 {
     /**
-   * @var Config[]
-   */
+     * @var Config[]
+     */
     private static $configs;
+
+    /**
+     * @var array<string, string[]>
+     */
     private static $categories;
 
     private static function getSupportedLocales()
@@ -284,10 +288,10 @@ class SystemConfig
         ];
     }
 
-  /**
-   * @param Config[] $configs
-   */
-    public static function init($configs = null)
+    /**
+     * @param Config[] $configs
+     */
+    public static function init(?array $configs = null)
     {
         self::$configs = self::buildConfigs();
         self::$categories = self::buildCategories();
@@ -296,60 +300,66 @@ class SystemConfig
         }
     }
 
-    public static function isInitialized()
+    public static function isInitialized(): bool
     {
         return isset(self::$configs);
     }
 
-    public static function getCategories()
+    /**
+     * @return array<string, string[]>
+     */
+    public static function getCategories(): array 
     {
         return self::$categories;
     }
 
-    private static function scrapeDBConfigs($configs)
+    /**
+     * @param Config[] $configs
+     */
+    private static function scrapeDBConfigs(array $configs)
     {
         foreach ($configs as $config) {
             if (isset(self::$configs[$config->getName()])) {
                 //if the current config set defined by code contains the current config retrieved from the db, then cache it
                 self::$configs[$config->getName()]->setDBConfigObject($config);
             } else {
-              //there's a config item in the DB that doesn't exist in the current code.
-              //delete it
+                //there's a config item in the DB that doesn't exist in the current code.
+                //delete it
                 $config->delete();
             }
         }
     }
 
-    public static function getConfigItem($name)
+    public static function getConfigItem(string $name)
     {
         return self::$configs[$name];
     }
 
-    public static function getValue($name)
+    public static function getValue(string $name)
     {
-        if (isset(self::$configs[$name])) {
-            return self::$configs[$name]->getValue();
-        } else {
+        if (!isset(self::$configs[$name])) {
             throw new \Exception(gettext("An invalid configuration name has been requested") . ": " . $name);
         }
+
+        return self::$configs[$name]->getValue();
     }
 
-    public static function getBooleanValue($name)
+    public static function getBooleanValue(string $name): bool
     {
-        if (isset(self::$configs[$name])) {
-            return self::$configs[$name]->getBooleanValue();
-        } else {
+        if (!isset(self::$configs[$name])) {
             throw new \Exception(gettext("An invalid configuration name has been requested") . ": " . $name);
         }
+
+        return self::$configs[$name]->getBooleanValue();
     }
 
-    public static function setValue($name, $value)
+    public static function setValue(string $name, $value)
     {
-        if (isset(self::$configs[$name])) {
-            self::$configs[$name]->setValue($value);
-        } else {
+        if (!isset(self::$configs[$name])) {
             throw new \Exception(gettext("An invalid configuration name has been requested") . ": " . $name);
         }
+
+        self::$configs[$name]->setValue($value);
     }
 
     public static function setValueById($Id, $value)
@@ -361,12 +371,12 @@ class SystemConfig
                 $success = true;
             }
         }
-        if (! $success) {
+        if (!$success) {
             throw new \Exception(gettext("An invalid configuration id has been requested") . ": " . $Id);
         }
     }
 
-    public static function hasValidMailServerSettings()
+    public static function hasValidMailServerSettings(): bool
     {
         $hasValidSettings = true;
         if (empty(self::getValue("sSMTPHost"))) {
@@ -380,18 +390,18 @@ class SystemConfig
         return $hasValidSettings;
     }
 
-    public static function hasValidSMSServerSettings()
+    public static function hasValidSMSServerSettings(): bool
     {
         return (!empty(self::getValue("sNexmoAPIKey"))) && (!empty(self::getValue("sNexmoAPISecret"))) && (!empty(self::getValue("sNexmoFromNumber")));
     }
 
-    public static function hasValidOpenLPSettings()
+    public static function hasValidOpenLPSettings(): bool
     {
-        return (!empty(self::getValue("sOLPURL")));
+        return !empty(self::getValue("sOLPURL"));
     }
 
 
-    public static function debugEnabled()
+    public static function debugEnabled(): bool
     {
         if (self::getValue("sLogLevel") == Logger::DEBUG) {
             return true;

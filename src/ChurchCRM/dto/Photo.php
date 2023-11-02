@@ -4,6 +4,7 @@ namespace ChurchCRM\dto;
 
 use ChurchCRM\FamilyQuery;
 use ChurchCRM\PersonQuery;
+use ChurchCRM\Utils\LoggerUtils;
 
 class Photo
 {
@@ -38,18 +39,32 @@ class Photo
         $this->photoThumbURI = $this->thubmnailPath . $this->id . ".jpg";
     }
 
-    private function shouldRefreshPhotoFile($photoFile)
+    private function shouldRefreshPhotoFile($photoFile): bool
     {
-        if ($this->remotesEnabled) {
-          // if the system has remotes enabled, calculate the cutoff timestamp for refreshing remote photos.
-            $remotecachethreshold = date_create();
-            date_sub($remotecachethreshold, date_interval_create_from_date_string(SystemConfig::getValue("iRemotePhotoCacheDuration")));
-            if (strpos($photoFile, "remote") !== false || strpos($photoFile, "initials") !== false) {
-                return filemtime($photoFile) < date_timestamp_get($remotecachethreshold);
-            }
-        } else {
-          // if remotes are disabled, and the image contains remote, then we should re-gen
+        if (!$this->remotesEnabled) {
+            // if remotes are disabled, and the image contains remote, then we should re-gen
             return strpos($photoFile, "remote") !== false;
+        }
+ 
+        // if the system has remotes enabled, calculate the cutoff timestamp for refreshing remote photos.
+        $remotePhotoCacheDuration = SystemConfig::getValue("iRemotePhotoCacheDuration");
+        if (!$remotePhotoCacheDuration) {
+            LoggerUtils::getAppLogger()->error(
+                'config iRemotePhotoCacheDuration somehow not set, please investigate',
+                ['stacktrace' => debug_backtrace()]
+            );
+
+            // default defined in SystemConfig.php
+            $interval = new \DateInterval('72 hours');
+        } else {
+            $interval = \DateInterval::createFromDateString($remotePhotoCacheDuration);    
+        }
+
+        $remoteCacheThreshold = new \DateTimeImmutable();
+        $remoteCacheThreshold = $remoteCacheThreshold->sub($interval);
+
+        if (strpos($photoFile, "remote") !== false || strpos($photoFile, "initials") !== false) {
+            return filemtime($photoFile) < $remoteCacheThreshold->getTimestamp();
         }
     }
 
@@ -61,13 +76,13 @@ class Photo
         foreach ($extensions as $ext) {
             $photoFiles = [$baseName . "." . $ext, $baseName . "-remote." . $ext, $baseName . "-initials." . $ext];
             foreach ($photoFiles as $photoFile) {
-                if (file_exists($photoFile)) {
+                if (is_file($photoFile)) {
                     $this->setURIs($photoFile);
                     if ($ext !== "png") {
                         $this->convertToPNG();
                     }
                     if ($this->shouldRefreshPhotoFile($photoFile)) {
-                    //if we found the file, but it's remote and aged, then we should update it.
+                        //if we found the file, but it's remote and aged, then we should update it.
                         $this->delete();
                         break 2;
                     }
@@ -179,7 +194,7 @@ class Photo
 
     public function getThumbnailURI()
     {
-        if (!file_exists($this->photoThumbURI)) {
+        if (!is_file($this->photoThumbURI)) {
             $this->createThumbnail();
         }
         return $this->photoThumbURI;
@@ -289,18 +304,16 @@ class Photo
         }
     }
 
-    public function delete()
+    public function delete(): bool
     {
-        $deleted = false;
-        if (file_exists($this->photoURI)) {
-            unlink($this->photoURI);
-            $deleted = true;
+        $deleted = [];
+        if ($this->photoURI && is_file($this->photoURI)) {
+            $deleted[$this->photoURI] = unlink($this->photoURI);
         }
-        if (file_exists($this->photoThumbURI)) {
-            unlink($this->photoThumbURI);
-            $deleted = true;
+        if ($this->photoThumbURI && is_file($this->photoThumbURI)) {
+            $deleted[$this->photoThumbURI] = unlink($this->photoThumbURI);
         }
-        return $deleted;
+        return !in_array(false, $deleted);
     }
 
     public function refresh()
@@ -312,7 +325,7 @@ class Photo
         $this->photoThumbURI = SystemURLs::getImagesRoot() . "/" . $this->photoType . "/thumbnails/" . $this->id . ".jpg";
     }
 
-    public function isInitials()
+    public function isInitials(): bool
     {
         if ($this->photoType == "Person" && $this->id == 2) {
             echo $this->photoURI;
@@ -322,7 +335,7 @@ class Photo
         return strpos($this->photoURI, "initials") !== false;
     }
 
-    public function isRemote()
+    public function isRemote(): bool
     {
         return strpos($this->photoURI, "remote")  !== false;
     }
