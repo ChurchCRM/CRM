@@ -20,16 +20,18 @@ These are the steps needed to develop ChurchCRM with Docker
 
 ## Steps
 
-1. Clone ChurchCRM Repo `git clone git@github.com:ChurchCRM/CRM.git`
-2. `cd` into the project directory
-2. build docker `npm run docker-dev-build`
-3. start the containers `npm run docker-dev-start` . **Note:** Containers are started in the background
-4. ssh into the web container `npm run docker-dev-login-web`
-5. cd into src code `cd /home/ChurchCRM`
-6. build church crm web and php code `npm run deploy`
+1. Clone ChurchCRM Repo: `git clone git@github.com:ChurchCRM/CRM.git`
+2. `cd` into the project directory: `cd CRM`
+3. start the containers: `npm run docker-dev-start` .
+    * **Note:** Containers are started in the background
+4. launch a terminal into the web container: `npm run docker-dev-login-web`
+5. `cd` into project directory within the container: `cd /home/ChurchCRM`
+6. build ChurchCRM web and php code: `npm run deploy`
 7. make the application log folder writable: `chmod a+rwx src/logs`
-10. stop docker `npm run docker-dev-stop`. **Note:** Run this command from your host system
-11. To view the live logs run `npm run docker-dev-logs`. **Note:** Run this command from your host system
+8. stop docker: `npm run docker-dev-stop`.
+    * **Note:** Run this command from your host system
+9. To view the live logs: `npm run docker-dev-logs`.
+    * **Note:** Run this command from your host system
 
 ### Dev containers
    - database : Mariadb server
@@ -63,13 +65,12 @@ if you are developing on your local dev system and testing via docker, use the f
 ## Requirements
 
 * Docker
-* Docker Compose
+   * **Note:** requires Docker Compose, which has been built into Docker since 2020
 * GIT
 * node / npm
 
-1. Clone ChurchCRM Repo `git clone git@github.com:ChurchCRM/CRM.git`
-2. build code `npm run deploy`
-3. build docker `npm run docker-test-build`
-4. run docker `npm run docker-test-start`
-5. test code `npm run docker-ci`
-10. stop docker `npm run docker-test-stop`
+1. Clone ChurchCRM Repo: `git clone git@github.com:ChurchCRM/CRM.git`
+2. build code: `npm run deploy`
+3. run docker: `npm run docker-test-start`
+4. test code: `npm run test`
+5. stop docker: `npm run docker-test-stop`

@@ -3,6 +3,7 @@
 # file and then running "docker-compose -f docker-compose.develop.yaml build", and
 # "docker-compose -f docker-compose.develop.yaml up" in your terminal.
 version: "3.8"
+
 services:
   database:
     image: mariadb
@@ -20,9 +21,7 @@ services:
       timeout: 20s
       retries: 10
 
-
   webserver:
-    ## Look into: https://hub.docker.com/r/nimmis/apache-php7
     build:
       context: .
       dockerfile: Dockerfile.churchcrm-apache-php8-dev-debian
