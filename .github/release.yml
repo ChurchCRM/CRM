@@ -7,11 +7,11 @@ changelog:
     authors:
       - octocat
   categories:
-    - title: Breaking Changes 🛠
+    - title: 🛠 Breaking Changes 
       labels:
         - Semver-Major
         - breaking-change
-    - title: Exciting New Features 🎉
+    - title: 🎉 Exciting New Features 
       labels:
         - Semver-Minor
         - enhancement
@@ -19,7 +19,7 @@ changelog:
         - new
         - UI
         - API 
-    - title: Bugs
+    - title: 🪲 Bugs
       labels:
         - bug
         - 'P0 - Urgent'
@@ -27,7 +27,7 @@ changelog:
       labels:
         - 'Installation and Upgrade'
         - Configuration
-    - title: Localization
+    - title: 💬 Localization
       labels:
         - Localization
     - title: 'Inner Beauty'
@@ -36,7 +36,7 @@ changelog:
         - build
         - 'Code Smell'
         - 'Backend System'
-    - title: Dependencies 👒
+    - title: 👒 Dependencies 
       labels:
         - dependencies
         - 'Package Dependencies'
